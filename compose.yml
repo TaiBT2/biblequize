@@ -1,0 +1,19 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: biblequiz-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: biblequiz
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+  redis:
+    image: redis:7
+    container_name: biblequiz-redis
+    ports:
+      - "6379:6379"
+volumes:
+  db_data:
+
