@@ -10,4 +10,4 @@ build/
 /apps/api/build/
 /apps/api/out/
 /apps/api/target/
-
+compose.yml
