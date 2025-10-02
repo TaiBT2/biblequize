@@ -1,3 +1,399 @@
-:root { color-scheme: light dark; }
-body { margin: 0; font-family: system-ui, Arial, sans-serif; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', 'Courier New', monospace;
+  line-height: 1.6;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Neon Text Effects */
+.neon-text {
+  text-shadow: 
+    0 0 3px currentColor,
+    0 0 6px currentColor,
+    0 0 9px currentColor;
+  animation: neon-flicker 2s infinite alternate;
+}
+
+.neon-green {
+  color: #00ff41;
+  text-shadow: 
+    0 0 3px #00ff41,
+    0 0 6px #00ff41,
+    0 0 9px #00ff41;
+}
+
+.neon-pink {
+  color: #ff0080;
+  text-shadow: 
+    0 0 3px #ff0080,
+    0 0 6px #ff0080,
+    0 0 9px #ff0080;
+}
+
+.neon-orange {
+  color: #ff6600;
+  text-shadow: 
+    0 0 3px #ff6600,
+    0 0 6px #ff6600,
+    0 0 9px #ff6600;
+}
+
+.neon-blue {
+  color: #00bfff;
+  text-shadow: 
+    0 0 3px #00bfff,
+    0 0 6px #00bfff,
+    0 0 9px #00bfff;
+}
+
+/* Neon Animations */
+@keyframes neon-flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor,
+      0 0 20px currentColor;
+  }
+  20%, 24%, 55% {
+    text-shadow: 
+      0 0 2px currentColor,
+      0 0 5px currentColor,
+      0 0 8px currentColor,
+      0 0 12px currentColor;
+  }
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor,
+      0 0 20px currentColor;
+  }
+  50% {
+    opacity: 0.8;
+    text-shadow: 
+      0 0 2px currentColor,
+      0 0 5px currentColor,
+      0 0 8px currentColor,
+      0 0 12px currentColor;
+  }
+}
+
+/* Neon Border Effects */
+.neon-border {
+  border: 2px solid;
+  border-radius: 8px;
+  box-shadow: 
+    0 0 5px currentColor,
+    inset 0 0 5px currentColor;
+  animation: neon-border-flicker 3s infinite alternate;
+}
+
+.neon-border-blue {
+  border-color: #00bfff;
+  box-shadow: 
+    0 0 5px #00bfff,
+    0 0 10px #00bfff,
+    inset 0 0 5px #00bfff;
+}
+
+.neon-border-pink {
+  border-color: #ff0080;
+  box-shadow: 
+    0 0 5px #ff0080,
+    0 0 10px #ff0080,
+    inset 0 0 5px #ff0080;
+}
+
+@keyframes neon-border-flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    box-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      inset 0 0 5px currentColor;
+  }
+  20%, 24%, 55% {
+    box-shadow: 
+      0 0 2px currentColor,
+      0 0 5px currentColor,
+      inset 0 0 2px currentColor;
+  }
+}
+
+/* Neon Buttons */
+.neon-btn {
+  background: transparent;
+  border: 2px solid;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-family: 'Orbitron', monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.neon-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 30px currentColor;
+}
+
+/* Practice button - gentle hover */
+.neon-btn-green:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 8px #00ff41,
+    0 0 16px #00ff41,
+    0 0 24px #00ff41;
+}
+
+/* Ranked button - stronger hover for competitive feel */
+.neon-btn-orange:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 0 12px #ff6600,
+    0 0 24px #ff6600,
+    0 0 36px #ff6600;
+  border-width: 3px;
+}
+
+/* Logout button - red for destructive action */
+.neon-btn-red {
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 100, 100, 0.1));
+  border: 2px solid #ff4444;
+  color: #ff6666;
+  transition: all 0.3s ease;
+}
+
+.neon-btn-red:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 8px #ff4444,
+    0 0 16px #ff4444,
+    0 0 24px #ff4444;
+  border-color: #ff6666;
+  color: #ff8888;
+}
+
+/* Input styling */
+.neon-input {
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.neon-input:focus {
+  box-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor;
+}
+
+.neon-input option {
+  background-color: #1f2937;
+  color: #ffffff;
+}
+
+.neon-btn:active {
+  transform: translateY(0);
+}
+
+.neon-btn-green {
+  color: #00ff41;
+  border-color: #00ff41;
+}
+
+.neon-btn-pink {
+  color: #ff0080;
+  border-color: #ff0080;
+}
+
+.neon-btn-orange {
+  color: #ff6600;
+  border-color: #ff6600;
+}
+
+.neon-btn-blue {
+  color: #00bfff;
+  border-color: #00bfff;
+}
+
+/* Neon Cards */
+.neon-card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.neon-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(0, 191, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Background Pattern */
+.neon-bg {
+  position: relative;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(0, 191, 255, 0.1) 0%, transparent 50%);
+}
+
+.neon-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.02) 50%, transparent 60%),
+    linear-gradient(-45deg, transparent 40%, rgba(255, 255, 255, 0.02) 50%, transparent 60%);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #00ff41, #ff0080);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #00ff41, #ff0080);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+/* Loading animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Focus styles */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 2px rgba(0, 191, 255, 0.5),
+    0 0 10px rgba(0, 191, 255, 0.3);
+}
+
+/* Improved readability for small text */
+.text-small {
+  font-weight: 500;
+  text-shadow: 
+    0 0 2px currentColor,
+    0 0 4px currentColor;
+}
+
+.text-description {
+  font-weight: 600;
+  text-shadow: 
+    0 0 1px rgba(255, 255, 255, 0.4),
+    0 0 2px rgba(255, 255, 255, 0.3);
+  line-height: 1.5;
+}
+
+.text-email {
+  font-weight: 700;
+  text-shadow: 
+    0 0 1px rgba(255, 255, 255, 0.5),
+    0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+/* User stats styling */
+.user-stat-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-shadow: 
+    0 0 3px currentColor,
+    0 0 6px currentColor,
+    0 0 9px currentColor;
+}
+
+.user-stat-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.user-stat-icon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+}
+
+/* Glitch effect for special elements */
+.glitch {
+  position: relative;
+  animation: glitch 2s infinite;
+}
+
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
 

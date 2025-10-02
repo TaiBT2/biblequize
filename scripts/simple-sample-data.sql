@@ -1,0 +1,40 @@
+-- Insert sample books (first 10 books)
+INSERT INTO books (id, name, name_vi, testament, order_index) VALUES
+('1', 'Genesis', 'Sáng Thế Ký', 'OLD', 1),
+('2', 'Exodus', 'Xuất Ê-díp-tô Ký', 'OLD', 2),
+('3', 'Leviticus', 'Lê-vi Ký', 'OLD', 3),
+('4', 'Numbers', 'Dân Số Ký', 'OLD', 4),
+('5', 'Deuteronomy', 'Phục Truyền Luật Lệ Ký', 'OLD', 5),
+('6', 'Joshua', 'Giô-suê', 'OLD', 6),
+('7', 'Judges', 'Các Quan Xét', 'OLD', 7),
+('8', 'Ruth', 'Ru-tơ', 'OLD', 8),
+('9', '1 Samuel', '1 Sa-mu-ên', 'OLD', 9),
+('10', '2 Samuel', '2 Sa-mu-ên', 'OLD', 10),
+('40', 'Matthew', 'Ma-thi-ơ', 'NEW', 40),
+('41', 'Mark', 'Mác', 'NEW', 41),
+('42', 'Luke', 'Lu-ca', 'NEW', 42),
+('43', 'John', 'Giăng', 'NEW', 43),
+('44', 'Acts', 'Công Vụ', 'NEW', 44);
+
+-- Insert sample questions (20 questions)
+INSERT INTO questions (id, book, chapter, difficulty, type, content, options, correct_answer, explanation) VALUES
+('1', 'Genesis', 1, 'easy', 'multiple_choice_single', 'Trong Sáng Thế Ký 1:1, Đức Chúa Trời đã làm gì?', JSON_ARRAY('Dựng nên trời và đất', 'Dựng nên con người', 'Phán xét thế gian', 'Lập giao ước với Áp-ra-ham'), JSON_ARRAY(0), 'Sáng Thế Ký 1:1: "Ban đầu Đức Chúa Trời dựng nên trời và đất."'),
+('2', 'Genesis', 1, 'easy', 'multiple_choice_single', 'Ngày thứ mấy Đức Chúa Trời tạo ra con người?', JSON_ARRAY('Ngày thứ 5', 'Ngày thứ 6', 'Ngày thứ 7', 'Ngày thứ 8'), JSON_ARRAY(1), \'Sáng Thế Ký 1:26-31: Đức Chúa Trời tạo ra con người vào ngày thứ 6.'),
+('3', 'Genesis', 2, 'medium', 'multiple_choice_single', 'Cây nào trong vườn Ê-đen mà Đức Chúa Trời cấm con người ăn?', JSON_ARRAY('Cây sự sống', 'Cây biết điều thiện và điều ác', 'Cây tri thức', 'Cây khôn ngoan'), JSON_ARRAY(1), \'Sáng Thế Ký 2:17: "Nhưng về cây biết điều thiện và điều ác thì chớ hề ăn đến."'),
+('4', 'Genesis', 3, 'easy', 'multiple_choice_single', 'Ai đã cám dỗ Ê-va ăn trái cấm?', JSON_ARRAY('Con rắn', 'Con quỷ', 'Thiên sứ sa ngã', 'Con người'), JSON_ARRAY(0), \'Sáng Thế Ký 3:1: "Vả, con rắn là giống quỉ quyệt hơn mọi loài ngoài đồng."'),
+('5', 'Genesis', 4, 'medium', 'multiple_choice_single', 'Ca-in đã giết em trai mình là ai?', JSON_ARRAY('A-bên', 'Sết', 'Ê-nót', 'Kê-nan'), JSON_ARRAY(0), \'Sáng Thế Ký 4:8: "Ca-in nói cùng A-bên, em mình, rằng: Chúng ta hãy ra ngoài đồng. Khi hai người đang ở ngoài đồng, Ca-in xông vào A-bên, em mình, và giết đi."'),
+('6', 'Genesis', 6, 'easy', 'multiple_choice_single', 'Nô-ê đã đóng tàu để làm gì?', JSON_ARRAY('Đi du lịch', 'Tránh nạn lụt', 'Đánh cá', 'Vận chuyển hàng hóa'), JSON_ARRAY(1), \'Sáng Thế Ký 6:13-14: Đức Chúa Trời bảo Nô-ê đóng tàu để cứu gia đình và các loài động vật khỏi nạn lụt.'),
+('7', 'Genesis', 12, 'medium', 'multiple_choice_single', 'Áp-ra-ham được Đức Chúa Trời hứa ban cho điều gì?', JSON_ARRAY('Vàng bạc', 'Đất đai', 'Con cái đông như sao trên trời', 'Sự khôn ngoan'), JSON_ARRAY(2), \'Sáng Thế Ký 15:5: "Đức Giê-hô-va dẫn người ra ngoài, mà phán rằng: Ngươi hãy ngước mắt lên trời, đếm các ngôi sao, nếu đếm được. Ngài lại phán: Dòng dõi ngươi cũng sẽ như vậy."'),
+('8', 'Genesis', 22, 'hard', 'multiple_choice_single', 'Áp-ra-ham đã dâng con trai mình là Y-sác lên làm của lễ thiêu ở đâu?', JSON_ARRAY('Núi Mô-ri-a', 'Núi Si-na-i', 'Núi Ô-li-ve', 'Núi Ca-na-an'), JSON_ARRAY(0), \'Sáng Thế Ký 22:2: "Đức Chúa Trời phán: Hãy bắt đứa con một ngươi yêu dấu, là Y-sác, và đi đến xứ Mô-ri-a, nơi đó dâng đứa con làm của lễ thiêu."'),
+('9', 'Genesis', 25, 'medium', 'multiple_choice_single', 'Ê-sau và Gia-cốp là con trai của ai?', JSON_ARRAY('Áp-ra-ham', 'Y-sác', 'Gia-cốp', 'Giô-sép'), JSON_ARRAY(1), \'Sáng Thế Ký 25:19-26: "Đây là dòng dõi của Y-sác, con trai Áp-ra-ham... Rê-bê-ca vợ người thọ thai... Hai đứa con trai đang đánh nhau trong lòng mẹ... Đứa ra trước đỏ hồng, lông cùng mình như một áo tơi lông, đặt tên là Ê-sau. Kế em nó ra, tay nắm lấy gót Ê-sau, nên đặt tên là Gia-cốp."'),
+('10', 'Genesis', 37, 'easy', 'multiple_choice_single', 'Giô-sép có bao nhiêu anh em?', JSON_ARRAY('10', '11', '12', '13'), JSON_ARRAY(1), \'Sáng Thế Ký 37:2: "Đây là dòng dõi của Gia-cốp. Giô-sép, tuổi mười bảy, đi chăn chiên với các anh em mình." Giô-sép có 11 anh em.'),
+('11', 'Exodus', 3, 'easy', 'multiple_choice_single', 'Môi-se gặp Đức Chúa Trời trong bụi gai cháy ở đâu?', JSON_ARRAY('Núi Si-na-i', 'Núi Hô-rếp', 'Núi Mô-ri-a', 'Núi Ô-li-ve'), JSON_ARRAY(1), \'Xuất Ê-díp-tô Ký 3:1: "Vả, Môi-se chăn bầy chiên của Giê-trô, ông gia mình, là thầy tế lễ xứ Ma-đi-an. Dẫn bầy chiên qua bên kia đồng vắng, đến núi của Đức Chúa Trời, là Hô-rếp."'),
+('12', 'Exodus', 7, 'easy', 'multiple_choice_single', 'Pha-ra-ôn đã từ chối để dân Y-sơ-ra-ên đi thờ phượng Đức Chúa Trời bao nhiêu lần?', JSON_ARRAY('5 lần', '7 lần', '10 lần', '12 lần'), JSON_ARRAY(2), \'Xuất Ê-díp-tô Ký 7-12: Pha-ra-ôn từ chối 10 lần trước khi chịu để dân Y-sơ-ra-ên đi.'),
+('13', 'Exodus', 14, 'easy', 'multiple_choice_single', 'Dân Y-sơ-ra-ên đã vượt qua Biển Đỏ như thế nào?', JSON_ARRAY('Bơi qua', 'Đi trên cầu', 'Nước rẽ ra', 'Đi trên thuyền'), JSON_ARRAY(2), \'Xuất Ê-díp-tô Ký 14:21-22: "Môi-se giơ tay lên trên biển, Đức Giê-hô-va dẫn trận gió đông thổi mạnh đến, dồn biển lại trọn đêm; làm cho biển bày ra khô, nước bèn rẽ ra."'),
+('14', 'Exodus', 20, 'easy', 'multiple_choice_single', 'Mười điều răn được ban cho dân Y-sơ-ra-ên ở đâu?', JSON_ARRAY('Núi Si-na-i', 'Núi Hô-rếp', 'Núi Mô-ri-a', 'Núi Ô-li-ve'), JSON_ARRAY(0), \'Xuất Ê-díp-tô Ký 19:1-20:18: Mười điều răn được ban trên núi Si-na-i.'),
+('15', 'Exodus', 40, 'easy', 'multiple_choice_single', 'Khi đền tạm được dựng xong, điều gì đã xảy ra?', JSON_ARRAY('Động đất', 'Mây bao phủ', 'Lửa từ trời', 'Sấm sét'), JSON_ARRAY(1), \'Xuất Ê-díp-tô Ký 40:34: "Mây bao phủ hội mạc, và sự vinh quang của Đức Giê-hô-va đầy dẫy đền tạm."'),
+('16', 'Matthew', 1, 'easy', 'multiple_choice_single', 'Chúa Giê-su được sinh ra ở đâu?', JSON_ARRAY('Na-xa-rét', 'Bết-lê-hem', 'Giê-ru-sa-lem', 'Ga-li-lê'), JSON_ARRAY(1), \'Ma-thi-ơ 2:1: "Khi Đức Chúa Jêsus đã sanh tại Bết-lê-hem xứ Giu-đê."'),
+('17', 'Matthew', 3, 'easy', 'multiple_choice_single', 'Ai đã làm phép báp-tem cho Chúa Giê-su?', JSON_ARRAY('Phi-e-rơ', 'Gioan Báp-tít', 'Anh-rê', 'Gia-cơ'), JSON_ARRAY(1), \'Ma-thi-ơ 3:13: "Khi ấy, Đức Chúa Jêsus từ xứ Ga-li-lê đến cùng Giăng tại sông Giô-đanh, để người làm phép báp-tem cho."'),
+('18', 'Matthew', 5, 'easy', 'multiple_choice_single', 'Bài giảng trên núi bắt đầu với câu nào?', JSON_ARRAY('Phước cho những kẻ nghèo khó trong lòng', 'Hãy yêu kẻ thù nghịch', 'Các ngươi là muối của đất', 'Các ngươi là sự sáng của thế gian'), JSON_ARRAY(0), \'Ma-thi-ơ 5:3: "Phước cho những kẻ nghèo khó trong lòng, vì nước thiên đàng là của những kẻ ấy!"'),
+('19', 'Matthew', 6, 'medium', 'multiple_choice_single', 'Chúa Giê-su dạy cầu nguyện như thế nào?', JSON_ARRAY('Cầu nguyện nơi công cộng', 'Cầu nguyện trong phòng riêng', 'Cầu nguyện với nhiều lời', 'Cầu nguyện một mình'), JSON_ARRAY(1), \'Ma-thi-ơ 6:6: "Song khi ngươi cầu nguyện, hãy vào phòng riêng, đóng cửa lại, rồi cầu nguyện Cha ngươi, ở nơi kín nhiệm đó."'),
+('20', 'Matthew', 7, 'easy', 'multiple_choice_single', 'Chúa Giê-su dạy: "Hãy xin, sẽ được; hãy tìm, sẽ gặp; hãy gõ, cửa sẽ mở cho." Điều này nói về gì?', JSON_ARRAY('Sự cầu nguyện', 'Sự tìm kiếm', 'Sự gõ cửa', 'Tất cả các điều trên'), JSON_ARRAY(3), \'Ma-thi-ơ 7:7-8: "Hãy xin, sẽ được; hãy tìm thì gặp; hãy gõ cửa, sẽ mở cho. Bởi vì hễ ai xin thì được; ai tìm thì gặp; ai gõ cửa thì được mở."');
