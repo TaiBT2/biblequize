@@ -1,299 +1,374 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { api } from '../api/client'
 
 interface UserStats {
-  totalQuestions: number
-  correctAnswers: number
-  accuracy: number
-  currentStreak: number
-  longestStreak: number
-  totalPoints: number
-  rank: number
   level: number
+  highScore: number
+  streak: number
+  totalQuestions: number
+  totalPoints: number
+  accuracy: number
 }
 
-export default function Profile() {
-  const { user: authUser, logout } = useAuth()
-  const navigate = useNavigate()
-  const [userStats, setUserStats] = useState<UserStats | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [isEditing, setIsEditing] = useState(false)
-  const [editName, setEditName] = useState('')
+interface Achievement {
+  id: string
+  name: string
+  icon: string
+  category: string
+  unlockedAt?: string
+}
+
+const Profile: React.FC = () => {
+  const { user, isAuthenticated } = useAuth()
+  const [stats, setStats] = useState<UserStats>({
+    level: 1,
+    highScore: 0,
+    streak: 0,
+    totalQuestions: 0,
+    totalPoints: 0,
+    accuracy: 0
+  })
+  const [achievements, setAchievements] = useState<Achievement[]>([])
+  const [loading, setLoading] = useState(true)
+  const [animationPhase, setAnimationPhase] = useState(0)
+  const [hoveredPoint, setHoveredPoint] = useState<number | null>(null)
+  const [selectedAchievement, setSelectedAchievement] = useState<number | null>(null)
 
   useEffect(() => {
-    if (!authUser) {
-      navigate('/login')
-      return
-    }
-
-    const fetchUserStats = async () => {
+    const loadProfileData = async () => {
+      if (!user) return
+      
+      setLoading(true)
       try {
-        const response = await api.get('/user/stats')
-        setUserStats(response.data)
-      } catch (error) {
-        console.error('Error fetching user stats:', error)
-        // Mock data for now
-        setUserStats({
-          totalQuestions: 150,
-          correctAnswers: 120,
-          accuracy: 80,
-          currentStreak: 5,
-          longestStreak: 12,
-          totalPoints: 1200,
-          rank: 25,
-          level: 3
+        const [achievementsRes, statsRes] = await Promise.all([
+          api.get('/api/achievements/my-achievements'),
+          api.get('/api/achievements/stats')
+        ])
+        
+        setAchievements(achievementsRes.data || [])
+        
+        // Calculate stats from achievements data
+        const userAchievements = achievementsRes.data || []
+        const totalPoints = userAchievements.reduce((sum: number, ach: any) => sum + (ach.points || 0), 0)
+        const level = Math.floor(totalPoints / 1000) + 1
+        
+        setStats({
+          level,
+          highScore: totalPoints,
+          streak: Math.floor(Math.random() * 20) + 1, // Mock streak
+          totalQuestions: Math.floor(Math.random() * 100) + 10,
+          totalPoints,
+          accuracy: Math.floor(Math.random() * 30) + 70
         })
+      } catch (error) {
+        console.error('Failed to load profile data:', error)
+      } finally {
+        setLoading(false)
+        // Start animation sequence
+        startAnimationSequence()
       }
-      setIsLoading(false)
     }
+    
+    loadProfileData()
+  }, [user])
 
-    fetchUserStats()
-  }, [authUser, navigate])
-
-  const handleSave = async () => {
-    try {
-      await api.put('/user/profile', { name: editName })
-      // Update auth context
-      // Note: In a real app, you'd refresh the user data
-      setIsEditing(false)
-    } catch (error) {
-      console.error('Error updating profile:', error)
-    }
+  const startAnimationSequence = () => {
+    // Phase 1: Title appears
+    setTimeout(() => setAnimationPhase(1), 200)
+    // Phase 2: Player card fades in
+    setTimeout(() => setAnimationPhase(2), 800)
+    // Phase 3: Graph draws
+    setTimeout(() => setAnimationPhase(3), 1500)
+    // Phase 4: Achievements light up
+    setTimeout(() => setAnimationPhase(4), 2500)
   }
 
-  const handleCancel = () => {
-    setEditName(authUser?.name || '')
-    setIsEditing(false)
+  const getProgressData = () => {
+    // Mock progress data for line graph
+    return [
+      { book: 'Genesis', progress: 85 },
+      { book: 'Exodus', progress: 70 },
+      { book: 'Leviticus', progress: 45 },
+      { book: 'Numbers', progress: 30 },
+      { book: 'Deuteronomy', progress: 15 }
+    ]
   }
 
-  if (isLoading) {
+  const getTopAchievements = () => {
+    const unlocked = achievements.filter(a => a.unlockedAt)
+    const mockAchievements = [
+      { name: 'TÂN BINH ÁNH LÀNG', icon: '⭐', color: 'neon-pink' },
+      { name: 'HỌC GIẢ SÁNG THẾ', icon: '📖', color: 'neon-green' },
+      { name: 'HỌC GIẢ', icon: '🌳', color: 'neon-orange' },
+      { name: 'CHIẾN BINH HOÀN HẢO', icon: '7️⃣', color: 'neon-red' },
+      { name: 'VUA BẢNG XẾP HẠNG', icon: '👑', color: 'neon-blue' }
+    ]
+    
+    return mockAchievements.slice(0, 5)
+  }
+
+  if (!isAuthenticated || !user) {
     return (
-      <div className="min-h-screen neon-bg flex items-center justify-center relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-20 left-20 text-5xl neon-green opacity-20 animate-pulse">👤</div>
-        <div className="absolute bottom-20 right-20 text-5xl neon-pink opacity-20 animate-pulse">📊</div>
-        
-        <div className="text-center">
-          <div className="neon-card p-8">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-neon-blue mx-auto mb-4"></div>
-            <p className="neon-text text-white">Đang tải...</p>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (!authUser) {
-    return (
-      <div className="min-h-screen neon-bg flex items-center justify-center relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-20 left-20 text-5xl neon-red opacity-20 animate-pulse">❌</div>
-        <div className="absolute bottom-20 right-20 text-5xl neon-blue opacity-20 animate-pulse">🔐</div>
-        
-        <div className="text-center">
-          <div className="neon-card p-8">
-            <p className="neon-text text-white mb-6">Bạn cần đăng nhập để xem hồ sơ</p>
-            <Link 
-              to="/login" 
-              className="neon-btn neon-btn-blue px-6 py-2"
-            >
-              Đăng Nhập
-            </Link>
-          </div>
+      <div className="min-h-screen neon-bg flex items-center justify-center">
+        <div className="neon-card p-8 text-center">
+          <h2 className="text-2xl neon-text mb-4">Vui lòng đăng nhập</h2>
+          <p className="text-white opacity-80 mb-6">Bạn cần đăng nhập để xem hồ sơ</p>
+          <Link to="/login" className="neon-btn neon-btn-blue px-6 py-3">
+            Đăng Nhập
+          </Link>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen neon-bg flex items-center justify-center relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-10 left-10 text-4xl neon-green opacity-20 animate-pulse">👤</div>
-      <div className="absolute top-20 right-20 text-4xl neon-pink opacity-20 animate-pulse">📊</div>
-      <div className="absolute bottom-20 left-20 text-3xl neon-blue opacity-15 animate-pulse">🏆</div>
-      <div className="absolute bottom-10 right-10 text-3xl neon-orange opacity-15 animate-pulse">⚡</div>
+    <div className="min-h-screen neon-bg relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-10 left-10 w-2 h-2 neon-pink rounded-full animate-ping"></div>
+        <div className="absolute top-20 right-20 w-1 h-1 neon-green rounded-full animate-ping"></div>
+        <div className="absolute top-1/3 left-1/4 w-1 h-1 neon-blue rounded-full animate-ping"></div>
+        <div className="absolute top-2/3 right-1/3 w-2 h-2 neon-orange rounded-full animate-ping"></div>
+        <div className="absolute bottom-20 left-1/3 w-1 h-1 neon-purple rounded-full animate-ping"></div>
+        <div className="absolute bottom-10 right-10 w-2 h-2 neon-green rounded-full animate-ping"></div>
+      </div>
       
-      <div className="max-w-6xl w-full mx-auto px-4 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="neon-border-blue p-8 rounded-2xl mb-8 bg-black bg-opacity-30">
-            <h1 className="text-6xl font-bold mb-4 glitch">
-              <span className="neon-blue">H</span>
-              <span className="neon-pink">Ồ</span>
-              <span className="neon-green"> S</span>
-              <span className="neon-orange">Ơ</span>
-              <span className="neon-pink"> C</span>
-              <span className="neon-blue">Á</span>
-              <span className="neon-green"> N</span>
-              <span className="neon-orange">H</span>
-              <span className="neon-pink">Â</span>
-              <span className="neon-blue">N</span>
-            </h1>
-            <p className="text-xl neon-text text-white">Thông tin cá nhân và thống kê</p>
+      {/* Circuit Board Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon-blue to-transparent"></div>
+        <div className="absolute top-1/2 right-0 w-px h-32 bg-gradient-to-b from-transparent via-neon-pink to-transparent"></div>
+        <div className="absolute bottom-1/3 left-0 w-px h-24 bg-gradient-to-b from-transparent via-neon-green to-transparent"></div>
+        <div className="absolute top-1/3 right-1/4 w-px h-20 bg-gradient-to-b from-transparent via-neon-orange to-transparent"></div>
+      </div>
+
+      <div className="container mx-auto max-w-6xl p-4 relative z-10">
+        {/* Main Title */}
+        <h1 className={`neon-text text-6xl text-center mb-12 font-bold tracking-wider transition-all duration-1000 ${
+          animationPhase >= 1 
+            ? 'opacity-100 transform translate-y-0' 
+            : 'opacity-0 transform translate-y-8'
+        }`}>
+          HỒ SƠ NGƯỜI CHƠI
+        </h1>
+
+        {/* Player Card */}
+        <div className={`neon-card p-8 mb-12 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 transition-all duration-1200 ${
+          animationPhase >= 2 
+            ? 'opacity-100 transform translate-y-0' 
+            : 'opacity-0 transform translate-y-12'
+        }`}>
+          {/* Player Name and Avatar */}
+          <div className="flex items-center mb-8">
+            <div className="w-16 h-16 neon-border-green rounded-full flex items-center justify-center mr-6">
+              <svg className="w-8 h-8 neon-green" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <h2 className="text-4xl font-bold neon-pink">{user.name?.toUpperCase()}</h2>
+          </div>
+
+          {/* Player Stats */}
+          <div className="grid grid-cols-2 gap-8 mb-8">
+            {/* Left Side Stats */}
+            <div className="space-y-6">
+              <div className="flex items-center">
+                <div className="w-12 h-12 neon-border-yellow rounded-full flex items-center justify-center mr-4">
+                  <span className="text-2xl">⭐</span>
+                </div>
+                <div>
+                  <div className="text-white opacity-80">Level</div>
+                  <div className="text-2xl font-bold neon-yellow">{stats.level}</div>
+                </div>
+              </div>
+
+              <div className="flex items-center">
+                <div className="w-12 h-12 neon-border-yellow rounded-full flex items-center justify-center mr-4">
+                  <span className="text-2xl">🏆</span>
+                </div>
+                <div>
+                  <div className="text-white opacity-80">ĐIỂM CAO</div>
+                  <div className="text-2xl font-bold neon-yellow">{stats.highScore}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Side Stats */}
+            <div className="space-y-6">
+              <div className="flex items-center">
+                <div className="w-12 h-12 neon-border-red rounded-full flex items-center justify-center mr-4">
+                  <span className="text-2xl">💰</span>
+                </div>
+                <div>
+                  <div className="text-white opacity-80">ĐIỂM: {stats.totalPoints}</div>
+                  <div className="text-2xl font-bold neon-red">{stats.totalPoints}</div>
+                </div>
+              </div>
+
+              <div className="flex items-center">
+                <div className="w-12 h-12 neon-border-red rounded-full flex items-center justify-center mr-4">
+                  <span className="text-2xl">🔥</span>
+                </div>
+                <div>
+                  <div className="text-white opacity-80">Streak: {stats.streak}</div>
+                  <div className="text-2xl font-bold neon-red">{stats.streak}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Progress Graph */}
+          <div className="mt-8">
+            <h3 className="text-xl font-bold neon-green mb-4">TIẾN ĐỘ THEO SÁCH</h3>
+            <div className="bg-black bg-opacity-30 p-4 rounded-lg relative">
+              {/* Neon Line Graph */}
+              <svg className="absolute inset-0 w-full h-32" viewBox="0 0 400 120">
+                <defs>
+                  <linearGradient id="neonLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#00ff00" stopOpacity="0.8"/>
+                    <stop offset="50%" stopColor="#00ffff" stopOpacity="1"/>
+                    <stop offset="100%" stopColor="#00ff00" stopOpacity="0.8"/>
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M 20 100 Q 100 60 180 80 T 360 40"
+                  stroke="url(#neonLine)"
+                  strokeWidth="3"
+                  fill="none"
+                  filter="drop-shadow(0 0 8px #00ff00)"
+                  className={`transition-all duration-2000 ${
+                    animationPhase >= 3 ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  style={{
+                    strokeDasharray: animationPhase >= 3 ? 'none' : '1000',
+                    strokeDashoffset: animationPhase >= 3 ? '0' : '1000',
+                    transition: 'stroke-dashoffset 2s ease-in-out'
+                  }}
+                />
+                {/* Data Points */}
+                {getProgressData().map((item, index) => {
+                  const points = [
+                    { x: 20, y: 100 },
+                    { x: 100, y: 60 },
+                    { x: 180, y: 80 },
+                    { x: 260, y: 50 },
+                    { x: 360, y: 40 }
+                  ]
+                  const point = points[index]
+                  const isHovered = hoveredPoint === index
+                  
+                  return (
+                    <circle 
+                      key={index}
+                      cx={point.x} 
+                      cy={point.y} 
+                      r={isHovered ? 8 : 4} 
+                      fill="#00ff00" 
+                      filter={`drop-shadow(0 0 ${isHovered ? 12 : 6}px #00ff00)`}
+                      className={`transition-all duration-300 cursor-pointer ${
+                        animationPhase >= 3 ? 'opacity-100' : 'opacity-0'
+                      }`}
+                      onMouseEnter={() => setHoveredPoint(index)}
+                      onMouseLeave={() => setHoveredPoint(null)}
+                      style={{
+                        animationDelay: `${index * 200}ms`
+                      }}
+                    />
+                  )
+                })}
+              </svg>
+              
+              {/* Book Labels */}
+              <div className="flex justify-between items-end h-32 relative z-10">
+                {getProgressData().map((item, index) => (
+                  <div key={index} className="flex flex-col items-center">
+                    <div className={`text-xs text-center mt-auto transition-all duration-300 ${
+                      hoveredPoint === index 
+                        ? 'text-neon-green font-bold text-sm scale-110' 
+                        : 'text-white opacity-80'
+                    }`}>
+                      {item.book}<br/>{item.progress}%
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Profile Info */}
-          <div className="neon-card p-8">
-            <h2 className="text-2xl font-bold neon-blue mb-6 text-center">Thông tin cá nhân</h2>
-            
-            <div className="text-center mb-8">
-              <div className="w-32 h-32 neon-border-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-16 h-16 neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-            </div>
+        {/* Achievement Section */}
+        <h2 className={`neon-text text-4xl text-center mb-8 font-bold tracking-wider transition-all duration-1000 ${
+          animationPhase >= 4 
+            ? 'opacity-100 transform translate-y-0' 
+            : 'opacity-0 transform translate-y-8'
+        }`}>
+          THÀNH TÍCH CỦA TÔI
+        </h2>
 
-            <div className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium neon-green mb-2">
-                  Tên
-                </label>
-                {isEditing ? (
-                  <input
-                    type="text"
-                    value={editName}
-                    onChange={(e) => setEditName(e.target.value)}
-                    className="w-full p-3 bg-black bg-opacity-50 border-2 border-neon-blue rounded-lg text-white neon-blue focus:neon-border-pink transition-all duration-300"
-                  />
-                ) : (
-                  <p className="text-white text-lg">{authUser.name}</p>
-                )}
+        {/* Achievement Badges */}
+        <div className="flex justify-center gap-8 mb-12">
+          {getTopAchievements().map((achievement, index) => (
+            <div key={index} className="text-center group">
+              {/* Neon Sign Badge */}
+              <div 
+                className={`relative w-32 h-20 neon-border-glow rounded-lg flex items-center justify-center mb-3 transition-all duration-500 cursor-pointer ${
+                  animationPhase >= 4 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-12'
+                } group-hover:scale-110 group-hover:brightness-150 ${achievement.color}`}
+                style={{ animationDelay: `${index * 200}ms` }}
+                onClick={() => setSelectedAchievement(selectedAchievement === index ? null : index)}
+              >
+                {/* Neon Sign Effect */}
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-transparent via-white/5 to-transparent animate-pulse"></div>
+                
+                {/* Icon */}
+                <div className="relative z-10">
+                  <span className="text-3xl">{achievement.icon}</span>
+                </div>
+                
+                {/* Neon Sign Border */}
+                <div className="absolute inset-0 rounded-lg border-2 border-current opacity-50"></div>
+                
+                {/* Hover Glow Effect */}
+                <div className="absolute inset-0 rounded-lg bg-current opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               </div>
-
-              <div>
-                <label className="block text-sm font-medium neon-green mb-2">
-                  Email
-                </label>
-                <p className="text-white text-lg text-email">{authUser.email}</p>
+              
+              {/* Achievement Name */}
+              <div className="text-sm font-bold neon-text text-center max-w-24 leading-tight">
+                {achievement.name}
               </div>
-
-              <div>
-                <label className="block text-sm font-medium neon-green mb-2">
-                  Vai trò
-                </label>
-                <p className="text-white text-lg">Người chơi</p>
-              </div>
-            </div>
-
-            <div className="mt-8 flex justify-center space-x-4">
-              {isEditing ? (
-                <>
-                  <button
-                    onClick={handleSave}
-                    className="neon-btn neon-btn-green px-6 py-2"
-                  >
-                    Lưu
-                  </button>
-                  <button
-                    onClick={handleCancel}
-                    className="neon-btn neon-btn-pink px-6 py-2"
-                  >
-                    Hủy
-                  </button>
-                </>
-              ) : (
-                <button
-                  onClick={() => {
-                    setEditName(authUser.name)
-                    setIsEditing(true)
-                  }}
-                  className="neon-btn neon-btn-blue px-6 py-2"
-                >
-                  Chỉnh Sửa
-                </button>
+              
+              {/* Achievement Popup */}
+              {selectedAchievement === index && (
+                <div className="absolute z-50 mt-2 p-4 bg-black bg-opacity-90 neon-border-blue rounded-lg max-w-48">
+                  <div className="text-sm text-white">
+                    <div className="font-bold neon-blue mb-2">{achievement.name}</div>
+                    <div className="text-xs opacity-80">
+                      {achievement.name === 'TÂN BINH ÁNH LÀNG' && 'Hoàn thành quiz đầu tiên của bạn!'}
+                      {achievement.name === 'HỌC GIẢ SÁNG THẾ' && 'Đọc và hiểu sách Genesis hoàn chỉnh!'}
+                      {achievement.name === 'HỌC GIẢ' && 'Trở thành học giả Kinh Thánh!'}
+                      {achievement.name === 'CHIẾN BINH HOÀN HẢO' && 'Đạt điểm hoàn hảo trong một quiz!'}
+                      {achievement.name === 'VUA BẢNG XẾP HẠNG' && 'Dẫn đầu bảng xếp hạng!'}
+                    </div>
+                  </div>
+                </div>
               )}
             </div>
-          </div>
-
-          {/* Stats */}
-          <div className="neon-card p-8">
-            <h2 className="text-2xl font-bold neon-pink mb-6 text-center">Thống kê</h2>
-            
-            {userStats && (
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 neon-border-green rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-8 h-8 neon-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                  </div>
-                  <div className="user-stat-value neon-green">{userStats.totalQuestions}</div>
-                  <div className="user-stat-label neon-green">Tổng câu hỏi</div>
-                </div>
-
-                <div className="text-center">
-                  <div className="w-16 h-16 neon-border-pink rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-8 h-8 neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div className="user-stat-value neon-pink">{userStats.accuracy}%</div>
-                  <div className="user-stat-label neon-pink">Độ chính xác</div>
-                </div>
-
-                <div className="text-center">
-                  <div className="w-16 h-16 neon-border-orange rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-8 h-8 neon-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <div className="user-stat-value neon-orange">{userStats.currentStreak}</div>
-                  <div className="user-stat-label neon-orange">Streak hiện tại</div>
-                </div>
-
-                <div className="text-center">
-                  <div className="w-16 h-16 neon-border-blue rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-8 h-8 neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                    </svg>
-                  </div>
-                  <div className="user-stat-value neon-blue">{userStats.totalPoints}</div>
-                  <div className="user-stat-label neon-blue">Tổng điểm</div>
-                </div>
-
-                <div className="text-center col-span-2">
-                  <div className="w-16 h-16 neon-border-green rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-8 h-8 neon-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                  </div>
-                  <div className="user-stat-value neon-green">Level {userStats.level}</div>
-                  <div className="user-stat-label neon-green">Cấp độ hiện tại</div>
-                </div>
-              </div>
-            )}
-          </div>
+          ))}
         </div>
 
-        {/* Action Buttons */}
-        <div className="text-center mt-8 space-y-4">
-          <button
-            onClick={logout}
-            className="neon-btn neon-btn-red px-8 py-3 text-lg"
+        {/* Navigation Button */}
+        <div className="text-center">
+          <Link 
+            to="/" 
+            className="neon-btn neon-btn-blue px-12 py-4 text-xl font-bold tracking-wider"
           >
-            Đăng Xuất
-          </button>
-          
-          <div>
-            <Link 
-              to="/" 
-              className="neon-btn neon-btn-green px-6 py-2"
-            >
-              ← Quay lại trang chủ
-            </Link>
-          </div>
+            QUAY VỀ SẢNH CHỜ
+          </Link>
         </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon-blue to-transparent opacity-50"></div>
-        <div className="absolute top-1/3 right-0 w-px h-32 bg-gradient-to-b from-transparent via-neon-pink to-transparent opacity-50"></div>
-        <div className="absolute bottom-1/4 left-0 w-px h-24 bg-gradient-to-b from-transparent via-neon-green to-transparent opacity-50"></div>
       </div>
     </div>
   )
 }
+
+export default Profile

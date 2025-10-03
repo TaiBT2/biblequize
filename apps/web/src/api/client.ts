@@ -9,8 +9,14 @@ export const api = axios.create({
 api.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     const token = localStorage.getItem('accessToken')
+    console.log('=== API CLIENT: Request Interceptor ===')
+    console.log('URL:', config.url)
+    console.log('Token exists:', !!token)
+    console.log('Token preview:', token ? token.substring(0, 20) + '...' : 'null')
+    
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`
+      console.log('Authorization header set:', `Bearer ${token.substring(0, 20)}...`)
     }
     return config
   },
