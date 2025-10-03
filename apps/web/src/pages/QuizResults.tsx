@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
+import { api } from '../api/client'
 
 interface Question {
   id: string
@@ -36,14 +37,18 @@ interface QuizResultsProps {
   stats: QuizStats
   onPlayAgain: () => void
   onBackToHome: () => void
+  isRanked?: boolean
+  sessionId?: string
 }
 
-const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToHome }) => {
+const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToHome, isRanked = false, sessionId }) => {
   const navigate = useNavigate()
   const [showDetailedReview, setShowDetailedReview] = useState(false)
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState<number | null>(null)
 
   console.log('QuizResults rendering with stats:', stats);
+  console.log('Questions in stats:', stats.questions);
+  console.log('User answers:', stats.userAnswers);
 
   // Fallback if no stats
   if (!stats) {
@@ -70,6 +75,31 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
   // Simple version for testing
   const totalMinutes = Math.floor((stats.totalTime || 0) / 60000)
   const totalSeconds = Math.floor(((stats.totalTime || 0) % 60000) / 1000)
+
+  const saveProgress = async () => {
+    try {
+      // Save to localStorage for immediate UI update
+      const prev = JSON.parse(localStorage.getItem('rankedProgress') || '{}')
+      const today = new Date().toISOString().slice(0,10)
+      const updated = {
+        date: today,
+        livesRemaining: Math.max(0, (prev.livesRemaining ?? 1000) - (stats.totalQuestions - stats.correctAnswers)),
+        questionsCounted: (prev.questionsCounted ?? 0) + stats.totalQuestions,
+        pointsToday: (prev.pointsToday ?? 0) + (stats.totalScore ?? 0),
+        cap: 1000,
+        dailyLives: 1000,
+      }
+      localStorage.setItem('rankedProgress', JSON.stringify(updated))
+      
+      // Note: Database updates are handled in Quiz.tsx during gameplay
+      // No need to submit again here to avoid duplicate submissions
+    } catch (error) {
+      console.error('Failed to save progress:', error)
+    }
+  }
+
+  // Save once when mounted
+  React.useEffect(() => { saveProgress() }, [])
 
   return (
     <div className="min-h-screen neon-bg flex items-center justify-center p-4">

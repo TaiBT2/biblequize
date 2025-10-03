@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { api } from '../api/client'
 
 const statusColor = (status?: string) => {
@@ -13,6 +14,7 @@ const statusColor = (status?: string) => {
 }
 
 const Rooms: React.FC = () => {
+  const navigate = useNavigate()
   const [roomId, setRoomId] = useState('')
   const [playerName, setPlayerName] = useState('Guest')
   const [room, setRoom] = useState<any>(null)
@@ -72,12 +74,21 @@ const Rooms: React.FC = () => {
       const res = await api.post(`/api/rooms/${room.id}/start`)
       setRoom(res.data)
       setMessage('Phòng đã bắt đầu')
+      // Điều hướng sang quiz khi bắt đầu
+      navigate(`/room/${res.data.id}/quiz`)
     } catch (e: any) {
       setError('Không thể bắt đầu phòng. Vui lòng thử lại.')
     } finally {
       setLoading(false)
     }
   }
+
+  // Nếu phòng đang IN_PROGRESS (ví dụ host đã bấm trước), tự động vào quiz
+  useEffect(() => {
+    if (room?.status === 'IN_PROGRESS') {
+      navigate(`/room/${room.id}/quiz`)
+    }
+  }, [room?.status])
 
   const copyCode = async () => {
     if (!room?.id) return

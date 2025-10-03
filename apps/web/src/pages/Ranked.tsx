@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { api } from '../api/client'
+import BookProgress from '../components/BookProgress'
 
 interface RankedStatus {
   date: string
@@ -14,38 +16,91 @@ interface RankedStatus {
   currentDifficulty: string
   nextBook?: string
   resetAt: string
+  bookProgress?: {
+    currentIndex: number
+    totalBooks: number
+    currentBook: string
+    nextBook: string
+    isCompleted: boolean
+    progressPercentage: number
+  }
+  questionsInCurrentBook?: number
+  correctAnswersInCurrentBook?: number
 }
 
 export default function Ranked() {
   const [rankedStatus, setRankedStatus] = useState<RankedStatus | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isQuizStarted, setIsQuizStarted] = useState(false)
+  const navigate = useNavigate()
+
+  const fetchStatus = async () => {
+    setIsLoading(true)
+    try {
+      const res = await api.get('/api/me/ranked-status')
+      // Always use API data only, completely ignore localStorage
+      let merged = res.data
+      console.log('API Response:', res.data)
+      
+      // Clear any old localStorage data to prevent conflicts
+      localStorage.removeItem('rankedProgress')
+      
+      console.log('Setting rankedStatus to:', merged)
+      setRankedStatus(merged)
+    } catch (e) {
+      console.error('Failed to load ranked status', e)
+      setRankedStatus(null)
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   useEffect(() => {
-    // TODO: Fetch ranked status from API
-    // Mock data for now
-    setTimeout(() => {
-      setRankedStatus({
-        date: '2024-01-15',
-        livesRemaining: 8,
-        questionsCounted: 15,
-        pointsToday: 120,
-        cap: 50,
-        dailyLives: 10,
-        currentBook: 'Genesis',
-        currentBookIndex: 0,
-        isPostCycle: false,
-        currentDifficulty: 'all',
-        nextBook: 'Exodus',
-        resetAt: '2024-01-16T00:00:00Z'
-      })
-      setIsLoading(false)
-    }, 1000)
+    // Initial load
+    fetchStatus()
+    
+    // Auto-refresh only when page becomes visible (user comes back from quiz)
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        fetchStatus()
+      }
+    }
+    
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    
+    // Cleanup event listener on unmount
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
   }, [])
 
-  const startRankedQuiz = () => {
-    // TODO: Start ranked quiz session
-    setIsQuizStarted(true)
+  const startRankedQuiz = async () => {
+    try {
+      const res = await api.post('/api/ranked/sessions')
+      const sessionId = res.data.sessionId
+      // Fetch ranked questions (default 10, current book if available)
+      let questions: any[] = []
+      try {
+        const params1: any = { limit: 10 }
+        if (rankedStatus?.currentBook) params1.book = rankedStatus.currentBook
+        // Only pass difficulty when not 'all'
+        if (rankedStatus?.currentDifficulty && rankedStatus.currentDifficulty !== 'all') {
+          params1.difficulty = rankedStatus.currentDifficulty
+        }
+        const q = await api.get('/api/questions', { params: params1 })
+        questions = q.data || []
+        if (!questions || questions.length === 0) {
+          // Fallback: fetch with no filters
+          const q2 = await api.get('/api/questions', { params: { limit: 10 } })
+          questions = q2.data || []
+        }
+      } catch (e) {
+        console.error('Failed to fetch ranked questions', e)
+      }
+      setIsQuizStarted(true)
+      navigate('/quiz', { state: { sessionId, mode: 'ranked', questions, showExplanation: false, isRanked: true } })
+    } catch (e) {
+      console.error('Failed to start ranked session', e)
+      alert('Không thể bắt đầu xếp hạng, vui lòng thử lại')
+    }
   }
 
   if (isLoading) {
@@ -89,6 +144,13 @@ export default function Ranked() {
 
   const canPlay = rankedStatus.livesRemaining > 0 && rankedStatus.questionsCounted < rankedStatus.cap
   const progressPercentage = (rankedStatus.questionsCounted / rankedStatus.cap) * 100
+  
+  console.log('Ranked Status Debug:', {
+    livesRemaining: rankedStatus.livesRemaining,
+    questionsCounted: rankedStatus.questionsCounted,
+    cap: rankedStatus.cap,
+    canPlay: canPlay
+  })
 
   return (
     <div className="min-h-screen neon-bg flex items-center justify-center relative overflow-hidden">
@@ -189,6 +251,20 @@ export default function Ranked() {
           </div>
         </div>
 
+        {/* Book Progression */}
+        <div className="mb-8">
+          <BookProgress 
+            currentBook={rankedStatus.currentBook}
+            nextBook={rankedStatus.nextBook}
+            currentIndex={rankedStatus.bookProgress?.currentIndex || rankedStatus.currentBookIndex + 1}
+            totalBooks={rankedStatus.bookProgress?.totalBooks || 66}
+            progressPercentage={rankedStatus.bookProgress?.progressPercentage || 0}
+            isCompleted={rankedStatus.bookProgress?.isCompleted || rankedStatus.isPostCycle}
+            questionsInCurrentBook={rankedStatus.questionsInCurrentBook || 0}
+            correctAnswersInCurrentBook={rankedStatus.correctAnswersInCurrentBook || 0}
+          />
+        </div>
+
         {/* Status Messages */}
         {!canPlay && (
           <div className="neon-border-orange p-6 mb-8 bg-black bg-opacity-30">
@@ -235,7 +311,7 @@ export default function Ranked() {
               Bắt Đầu Xếp Hạng
             </button>
           ) : (
-            <div className="space-y-6">
+            <div className="flex justify-center gap-6">
               <button
                 disabled
                 className="neon-btn neon-btn-blue px-12 py-4 text-xl opacity-50 cursor-not-allowed"
@@ -244,7 +320,7 @@ export default function Ranked() {
               </button>
               <Link
                 to="/practice"
-                className="neon-btn neon-btn-green px-12 py-4 text-xl inline-block"
+                className="neon-btn neon-btn-green px-12 py-4 text-xl"
               >
                 Chuyển sang Luyện Tập
               </Link>
@@ -258,7 +334,7 @@ export default function Ranked() {
           </div>
         </div>
 
-        {/* Back to Home */}
+        {/* Actions */}
         <div className="text-center mt-8">
           <Link 
             to="/" 
@@ -266,6 +342,21 @@ export default function Ranked() {
           >
             ← Quay lại trang chủ
           </Link>
+          <Link 
+            to="/leaderboard" 
+            className="neon-btn neon-btn-blue px-6 py-2 ml-3"
+          >
+            📊 Bảng Xếp Hạng
+          </Link>
+          <button
+            onClick={() => {
+              setIsLoading(true)
+              fetchStatus()
+            }}
+            className="neon-btn neon-btn-orange px-4 py-2 ml-3 text-sm"
+          >
+            🔄 Refresh
+          </button>
         </div>
 
         {/* Decorative Elements */}

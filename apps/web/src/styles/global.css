@@ -397,3 +397,32 @@ body {
   }
 }
 
+.neon-purple {
+  color: #a855f7;
+  text-shadow: 0 0 9px #a855f7, 0 0 18px #a855f7, 0 0 27px #a855f7;
+}
+
+.neon-yellow {
+  color: #ffd700;
+  text-shadow: 0 0 9px #ffd700, 0 0 18px #ffd700, 0 0 27px #ffd700;
+}
+
+.neon-red {
+  color: #ff4444;
+  text-shadow: 0 0 9px #ff4444, 0 0 18px #ff4444, 0 0 27px #ff4444;
+}
+
+.neon-border-yellow {
+  border: 2px solid #ffd700;
+  box-shadow: 
+    0 0 5px #ffd700,
+    inset 0 0 5px #ffd700;
+}
+
+.neon-border-red {
+  border: 2px solid #ff4444;
+  box-shadow: 
+    0 0 5px #ff4444,
+    inset 0 0 5px #ff4444;
+}
+

@@ -14,6 +14,18 @@ export default function Home() {
       <div className="absolute bottom-20 left-20 text-4xl neon-green opacity-20 animate-pulse">✦</div>
       <div className="absolute bottom-10 right-10 text-4xl neon-blue opacity-20 animate-pulse">◆</div>
       
+      {/* Additional Background Effects */}
+      <div className="absolute top-1/4 left-1/4 text-3xl neon-pink opacity-20 animate-bounce">★</div>
+      <div className="absolute top-3/4 right-1/4 text-3xl neon-green opacity-20 animate-bounce">◆</div>
+      <div className="absolute top-1/2 left-1/6 text-2xl neon-orange opacity-15 animate-pulse">●</div>
+      <div className="absolute top-1/3 right-1/6 text-2xl neon-blue opacity-15 animate-pulse">▲</div>
+      
+      {/* Floating Particles */}
+      <div className="absolute top-1/5 left-1/3 w-2 h-2 neon-pink rounded-full opacity-30 animate-ping"></div>
+      <div className="absolute top-2/3 right-1/3 w-2 h-2 neon-green rounded-full opacity-30 animate-ping"></div>
+      <div className="absolute top-1/2 left-1/5 w-1 h-1 neon-orange rounded-full opacity-40 animate-ping"></div>
+      <div className="absolute top-1/4 right-1/5 w-1 h-1 neon-blue rounded-full opacity-40 animate-ping"></div>
+      
       <div className="max-w-6xl mx-auto px-4 py-8 relative z-10">
         {/* Main Title */}
         <div className="text-center mb-16">
@@ -75,6 +87,10 @@ export default function Home() {
               >
                 Tham Gia Xếp Hạng
               </Link>
+              <div className="mt-3">
+                <Link to="/leaderboard" className="neon-btn neon-btn-blue px-4 py-2 text-sm inline-block">Xem Bảng Xếp Hạng</Link>
+                <Link to="/achievements" className="neon-btn neon-btn-pink px-4 py-2 text-sm inline-block ml-2">🏆 Thành Tích</Link>
+              </div>
             </div>
           </div>
 
@@ -141,12 +157,20 @@ export default function Home() {
                     <div className="user-stat-value neon-orange">0</div>
                   </div>
                 </div>
-                <button 
-                  onClick={logout}
-                  className="neon-btn neon-btn-pink px-6 py-2 text-sm"
-                >
-                  Đăng Xuất
-                </button>
+                <div className="flex justify-center gap-4">
+                  <Link 
+                    to="/profile" 
+                    className="neon-btn neon-btn-blue px-6 py-2 text-sm"
+                  >
+                    👤 Hồ Sơ
+                  </Link>
+                  <button 
+                    onClick={logout}
+                    className="neon-btn neon-btn-red px-6 py-2 text-sm"
+                  >
+                    Đăng Xuất
+                  </button>
+                </div>
               </div>
             </div>
           ) : (

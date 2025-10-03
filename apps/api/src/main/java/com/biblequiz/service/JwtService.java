@@ -93,12 +93,25 @@ public class JwtService {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts
-                .parserBuilder()
-                .setSigningKey(getSignInKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
+        try {
+            System.out.println("=== JWT DEBUG: extractAllClaims ===");
+            System.out.println("Token preview: " + (token != null ? token.substring(0, Math.min(20, token.length())) + "..." : "null"));
+            System.out.println("Secret key preview: " + (secretKey != null ? secretKey.substring(0, Math.min(10, secretKey.length())) + "..." : "null"));
+            
+            Claims claims = Jwts
+                    .parserBuilder()
+                    .setSigningKey(getSignInKey())
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+            
+            System.out.println("JWT parsing successful");
+            return claims;
+        } catch (Exception e) {
+            System.err.println("JWT parsing failed: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     private Key getSignInKey() {

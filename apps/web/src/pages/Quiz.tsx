@@ -128,7 +128,41 @@ const Quiz: React.FC = () => {
     const timeTaken = 30 - timeLeft
     let isCorrect = false
     try {
-      if (settings?.sessionId) {
+      if (settings?.mode === 'ranked' && settings?.sessionId) {
+        // Ranked mode: submit to ranked progress endpoint
+        console.log('=== FRONTEND: Making API call ===')
+        console.log('URL:', `/api/ranked/sessions/${settings.sessionId}/answer`)
+        console.log('Payload:', {
+          questionId: currentQuestion.id,
+          answer: answerIndex,
+          clientElapsedMs: (30 - timeLeft) * 1000,
+          isCorrect: answerIndex === currentQuestion.correctAnswer[0]
+        })
+        
+        const res = await api.post(`/api/ranked/sessions/${settings.sessionId}/answer`, {
+          questionId: currentQuestion.id,
+          answer: answerIndex,
+          clientElapsedMs: (30 - timeLeft) * 1000,
+          isCorrect: answerIndex === currentQuestion.correctAnswer[0]
+        })
+        
+        console.log('=== FRONTEND: API Response ===')
+        console.log('Response:', res.data)
+        
+        const data = res.data
+        isCorrect = answerIndex === currentQuestion.correctAnswer[0]
+        // If lives dropped to 0 -> end quiz immediately
+        if (typeof data.livesRemaining === 'number' && data.livesRemaining <= 0) {
+          setQuizStats(prev => ({
+            ...prev,
+            totalTime: Date.now() - quizStartTime,
+            userAnswers: userAnswers,
+            questionScores: questionScores
+          }))
+          setIsQuizCompleted(true)
+          return
+        }
+      } else if (settings?.sessionId) {
         const res = await api.post(`/sessions/${settings.sessionId}/answer`, {
           questionId: currentQuestion.id,
           answer: answerIndex,
@@ -215,7 +249,8 @@ const Quiz: React.FC = () => {
         ...prev,
         totalTime: Date.now() - quizStartTime,
         userAnswers: userAnswers,
-        questionScores: questionScores
+        questionScores: questionScores,
+        questions: questions // Ensure questions are included
       }))
       console.log('Setting isQuizCompleted to true');
       setIsQuizCompleted(true)
@@ -291,6 +326,9 @@ const Quiz: React.FC = () => {
           }))
         }}
         onBackToHome={() => navigate('/')}
+        // Pass ranked mode info
+        isRanked={location.state?.isRanked || false}
+        sessionId={location.state?.sessionId}
       />
     )
   }
