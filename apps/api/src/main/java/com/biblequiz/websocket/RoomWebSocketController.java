@@ -157,14 +157,8 @@ public class RoomWebSocketController {
             // Broadcast to room
             messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
 
-            // MVP: ngay khi bắt đầu, phát câu hỏi đầu tiên để client không phải chờ
-            // (Sẽ thay bằng luồng phát câu hỏi thực tế)
-            Map<String, Object> demoQuestion = Map.of(
-                "id", "demo-1",
-                "content", "Ai dẫn dân Israel ra khỏi Ai Cập?",
-                "options", java.util.List.of("Môi-se", "Giô-suê", "Đa-vít", "Sa-lô-môn")
-            );
-            broadcastQuestionStart(roomId, 0, 10, demoQuestion, 20);
+            // Thực tế: việc phát câu hỏi sẽ do luồng quiz điều phối từ RoomService/SessionService
+            // Ở đây chỉ báo bắt đầu để client chuyển trạng thái
             
         } catch (Exception e) {
             sendError(roomId, "START_ERROR", "Lỗi khi bắt đầu quiz: " + e.getMessage());

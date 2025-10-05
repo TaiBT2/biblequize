@@ -19,19 +19,22 @@ public class SessionService {
     private final AnswerRepository answerRepository;
     private final UserRepository userRepository;
     private final ObjectMapper objectMapper;
+    private final QuestionService questionService;
 
     public SessionService(QuizSessionRepository quizSessionRepository,
                           QuizSessionQuestionRepository quizSessionQuestionRepository,
                           QuestionRepository questionRepository,
                           AnswerRepository answerRepository,
                           UserRepository userRepository,
-                          ObjectMapper objectMapper) {
+                          ObjectMapper objectMapper,
+                          QuestionService questionService) {
         this.quizSessionRepository = quizSessionRepository;
         this.quizSessionQuestionRepository = quizSessionQuestionRepository;
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
         this.userRepository = userRepository;
         this.objectMapper = objectMapper;
+        this.questionService = questionService;
     }
 
     @Transactional
@@ -54,18 +57,7 @@ public class SessionService {
         int questionCount = ((Number) config.getOrDefault("questionCount", 10)).intValue();
         String book = (String) config.getOrDefault("book", null);
         String difficultyStr = (String) config.getOrDefault("difficulty", null);
-        Question.Difficulty difficulty = null;
-        if (difficultyStr != null && !"all".equalsIgnoreCase(difficultyStr)) {
-            difficulty = Question.Difficulty.valueOf(difficultyStr);
-        }
-
-        List<String> excludeIds = Collections.emptyList();
-        List<Question> questions;
-        if (book != null || difficulty != null) {
-            questions = questionRepository.findRandomQuestionsWithFilters(book, difficulty, excludeIds, PageRequest.of(0, questionCount));
-        } else {
-            questions = questionRepository.findRandomQuestionsExcluding(excludeIds, PageRequest.of(0, questionCount));
-        }
+        List<Question> questions = questionService.getRandomQuestions(book, difficultyStr, questionCount);
 
         int order = 0;
         for (Question q : questions) {

@@ -231,6 +231,7 @@ public class Question {
         return createdBy;
     }
     
+    @JsonIgnore
     public void setCreatedBy(User createdBy) {
         this.createdBy = createdBy;
     }
