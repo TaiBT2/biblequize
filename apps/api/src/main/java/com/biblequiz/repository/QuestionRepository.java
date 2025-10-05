@@ -39,17 +39,7 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
                                   @Param("language") String language,
                                   Pageable pageable);
     
-    @Query("SELECT q FROM Question q WHERE q.isActive = true AND q.id NOT IN :excludeIds ORDER BY RAND()")
-    List<Question> findRandomQuestionsExcluding(@Param("excludeIds") List<String> excludeIds, Pageable pageable);
-    
-    @Query("SELECT q FROM Question q WHERE q.isActive = true AND " +
-           "(:book IS NULL OR q.book = :book) AND " +
-           "(:difficulty IS NULL OR q.difficulty = :difficulty) AND " +
-           "q.id NOT IN :excludeIds ORDER BY RAND()")
-    List<Question> findRandomQuestionsWithFilters(@Param("book") String book,
-                                                 @Param("difficulty") Question.Difficulty difficulty,
-                                                 @Param("excludeIds") List<String> excludeIds,
-                                                 Pageable pageable);
+    // Random selection will be implemented in service layer using count + random page
     
     long countByIsActiveTrue();
     
@@ -57,16 +47,6 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
     
     long countByDifficultyAndIsActiveTrue(Question.Difficulty difficulty);
     
-    // New methods for QuestionController
-    @Query(value = "SELECT * FROM questions WHERE is_active = true AND book = :book ORDER BY RAND() LIMIT ?2", nativeQuery = true)
-    List<Question> findByBook(@Param("book") String book, @Param("limit") int limit);
-    
-    @Query(value = "SELECT * FROM questions WHERE is_active = true AND book = :book AND difficulty = :difficulty ORDER BY RAND() LIMIT ?3", nativeQuery = true)
-    List<Question> findByBookAndDifficulty(@Param("book") String book, @Param("difficulty") String difficulty, @Param("limit") int limit);
-    
-    @Query(value = "SELECT * FROM questions WHERE is_active = true AND difficulty = :difficulty ORDER BY RAND() LIMIT ?2", nativeQuery = true)
-    List<Question> findByDifficulty(@Param("difficulty") String difficulty, @Param("limit") int limit);
-    
-    @Query(value = "SELECT * FROM questions WHERE is_active = true ORDER BY RAND() LIMIT ?1", nativeQuery = true)
-    List<Question> findRandomQuestions(@Param("limit") int limit);
+    // Derived queries to support service-side randomization and filtering
+    Page<Question> findByBookAndDifficultyAndIsActiveTrue(String book, Question.Difficulty difficulty, Pageable pageable);
 }

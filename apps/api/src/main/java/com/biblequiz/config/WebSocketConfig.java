@@ -1,5 +1,6 @@
 package com.biblequiz.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
@@ -9,6 +10,9 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+
+    @Value("${cors.allowed-origins:http://localhost:5173}")
+    private String allowedOrigins;
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
@@ -25,13 +29,14 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // Register the WebSocket endpoints that clients will connect to
+        String[] origins = java.util.Arrays.stream(allowedOrigins.split(",")).map(String::trim).filter(s -> !s.isEmpty()).toArray(String[]::new);
         registry.addEndpoint("/ws")
-                .setAllowedOriginPatterns("*") // Allow all origins for development
+                .setAllowedOrigins(origins)
                 .withSockJS(); // Enable SockJS fallback options
         
         // Add public room endpoint for room-based communication
         registry.addEndpoint("/ws/rooms/{roomId}")
-                .setAllowedOriginPatterns("*")
+                .setAllowedOrigins(origins)
                 .withSockJS();
     }
 }

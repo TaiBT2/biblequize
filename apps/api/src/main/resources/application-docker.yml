@@ -31,12 +31,17 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
     show-sql: false
+    defer-datasource-initialization: false
+
+  # SQL data initialization disabled in docker profile; we import via MySQL directly
   
   # Flyway Configuration
   flyway:
     enabled: true
     locations: classpath:db/migration
     baseline-on-migrate: true
+
+  # SQL init disabled; seeding handled by Flyway repeatable migration R__seed_questions
   
   # Redis Configuration
   data:

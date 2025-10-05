@@ -5,6 +5,7 @@ import com.biblequiz.security.JwtAuthenticationFilter;
 import com.biblequiz.security.OAuth2SuccessHandler;
 import com.biblequiz.security.OAuth2FailureHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
@@ -38,6 +39,9 @@ public class SecurityConfig {
     @Autowired
     private OAuth2FailureHandler oAuth2FailureHandler;
 
+    @Value("${cors.allowed-origins:http://localhost:5173}")
+    private String allowedOrigins;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         System.out.println("[SECURITY] Configuring OAuth2SuccessHandler: " + (oAuth2SuccessHandler != null ? "OK" : "NULL"));
@@ -54,15 +58,8 @@ public class SecurityConfig {
                     "/actuator/**",
                     "/error",
                     "/favicon.ico",
-                    "/books",
-                    "/questions",
                     "/api/books",
                     "/api/questions",
-                    "/api/rooms/**",
-                    "/api/me/ranked-status",
-                    "/api/ranked/sessions/**",
-                    "/api/leaderboard/**",
-                    "/api/achievements/**",
                     "/auth/**",
                     "/oauth2/**",
                     "/oauth2/authorization/**",
@@ -83,7 +80,12 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(List.of("*"));
+        // Use explicit origins (no wildcard) when allowCredentials is true
+        List<String> origins = Arrays.stream(allowedOrigins.split(","))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .toList();
+        configuration.setAllowedOrigins(origins);
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);

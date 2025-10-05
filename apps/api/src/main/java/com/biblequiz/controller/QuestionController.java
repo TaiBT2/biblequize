@@ -1,7 +1,7 @@
 package com.biblequiz.controller;
 
 import com.biblequiz.entity.Question;
-import com.biblequiz.repository.QuestionRepository;
+import com.biblequiz.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ import java.util.List;
 public class QuestionController {
 
     @Autowired
-    private QuestionRepository questionRepository;
+    private QuestionService questionService;
 
     @GetMapping("/questions")
     public List<Question> getQuestions(
@@ -20,16 +20,6 @@ public class QuestionController {
             @RequestParam(required = false) String difficulty,
             @RequestParam(required = false, defaultValue = "10") int limit) {
         
-        if (book != null && !book.isEmpty()) {
-            if (difficulty != null && !difficulty.isEmpty()) {
-                return questionRepository.findByBookAndDifficulty(book, difficulty, limit);
-            } else {
-                return questionRepository.findByBook(book, limit);
-            }
-        } else if (difficulty != null && !difficulty.isEmpty()) {
-            return questionRepository.findByDifficulty(difficulty, limit);
-        } else {
-            return questionRepository.findRandomQuestions(limit);
-        }
+        return questionService.getRandomQuestions(book, difficulty, limit);
     }
 }
