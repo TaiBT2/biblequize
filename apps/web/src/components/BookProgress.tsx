@@ -56,11 +56,20 @@ const BookProgress: React.FC<BookProgressProps> = ({
 
       {/* Progress Bar */}
       <div className="mb-4">
-        <div className="bg-gray-700 rounded-full h-3 mb-2">
+        <div className="w-full h-6 bg-gray-700 rounded-full overflow-hidden mb-2 relative">
           <div 
-            className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-full h-3 transition-all duration-300"
-            style={{ width: `${progressPercentage}%` }}
-          />
+            className="h-full bg-gradient-to-r from-cyan-400 to-green-400 rounded-full transition-all duration-1000 relative"
+            style={{ 
+              width: `${progressPercentage}%`,
+              boxShadow: '0 0 15px rgba(0, 255, 255, 0.6)'
+            }}
+          >
+            {/* Glowing end effect */}
+            <div className="absolute right-0 top-0 w-2 h-full bg-white opacity-80 rounded-r-full"></div>
+            <div className="absolute right-0 top-0 w-1 h-full bg-white opacity-100 rounded-r-full"></div>
+          </div>
+          {/* Shimmer effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30 animate-pulse"></div>
         </div>
         <div className="text-right text-sm text-gray-400">
           {progressPercentage.toFixed(1)}% hoàn thành

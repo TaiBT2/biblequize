@@ -3,13 +3,14 @@ import React, { createContext, useContext, useEffect, useState, ReactNode } from
 interface User {
   name: string
   email: string
+  avatar?: string
 }
 
 interface AuthContextType {
   user: User | null
   isAuthenticated: boolean
   isLoading: boolean
-  login: (tokens: { accessToken: string; refreshToken: string; name: string; email: string }) => void
+  login: (tokens: { accessToken: string; refreshToken: string; name: string; email: string; avatar?: string }) => void
   logout: () => void
   checkAuth: () => void
 }
@@ -34,15 +35,19 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const isAuthenticated = !!user
 
-  const login = (tokens: { accessToken: string; refreshToken: string; name: string; email: string }) => {
+  const login = (tokens: { accessToken: string; refreshToken: string; name: string; email: string; avatar?: string }) => {
     localStorage.setItem('accessToken', tokens.accessToken)
     localStorage.setItem('refreshToken', tokens.refreshToken)
     localStorage.setItem('userName', tokens.name)
     localStorage.setItem('userEmail', tokens.email)
+    if (tokens.avatar) {
+      localStorage.setItem('userAvatar', tokens.avatar)
+    }
     
     setUser({
       name: tokens.name,
-      email: tokens.email
+      email: tokens.email,
+      avatar: tokens.avatar
     })
     
     console.log('[AUTH_CONTEXT] User logged in:', tokens.name)
@@ -53,6 +58,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     localStorage.removeItem('refreshToken')
     localStorage.removeItem('userName')
     localStorage.removeItem('userEmail')
+    localStorage.removeItem('userAvatar')
     
     setUser(null)
     
@@ -63,9 +69,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const token = localStorage.getItem('accessToken')
     const name = localStorage.getItem('userName')
     const email = localStorage.getItem('userEmail')
+    const avatar = localStorage.getItem('userAvatar')
 
     if (token && name && email) {
-      setUser({ name, email })
+      setUser({ name, email, avatar: avatar || undefined })
       console.log('[AUTH_CONTEXT] User authenticated from localStorage:', name)
     } else {
       setUser(null)

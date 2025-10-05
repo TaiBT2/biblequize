@@ -75,7 +75,7 @@ export default function Practice() {
   }
 
   return (
-    <div className="min-h-screen neon-bg">
+    <div className="min-h-screen" style={{ backgroundColor: '#0E0B1A' }}>
       {/* Header */}
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">

@@ -58,15 +58,15 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
     long countByDifficultyAndIsActiveTrue(Question.Difficulty difficulty);
     
     // New methods for QuestionController
-    @Query(value = "SELECT * FROM questions WHERE is_active = true AND book = :book ORDER BY RAND() LIMIT :limit", nativeQuery = true)
+    @Query(value = "SELECT * FROM questions WHERE is_active = true AND book = :book ORDER BY RAND() LIMIT ?2", nativeQuery = true)
     List<Question> findByBook(@Param("book") String book, @Param("limit") int limit);
     
-    @Query(value = "SELECT * FROM questions WHERE is_active = true AND book = :book AND difficulty = :difficulty ORDER BY RAND() LIMIT :limit", nativeQuery = true)
+    @Query(value = "SELECT * FROM questions WHERE is_active = true AND book = :book AND difficulty = :difficulty ORDER BY RAND() LIMIT ?3", nativeQuery = true)
     List<Question> findByBookAndDifficulty(@Param("book") String book, @Param("difficulty") String difficulty, @Param("limit") int limit);
     
-    @Query(value = "SELECT * FROM questions WHERE is_active = true AND difficulty = :difficulty ORDER BY RAND() LIMIT :limit", nativeQuery = true)
+    @Query(value = "SELECT * FROM questions WHERE is_active = true AND difficulty = :difficulty ORDER BY RAND() LIMIT ?2", nativeQuery = true)
     List<Question> findByDifficulty(@Param("difficulty") String difficulty, @Param("limit") int limit);
     
-    @Query(value = "SELECT * FROM questions WHERE is_active = true ORDER BY RAND() LIMIT :limit", nativeQuery = true)
+    @Query(value = "SELECT * FROM questions WHERE is_active = true ORDER BY RAND() LIMIT ?1", nativeQuery = true)
     List<Question> findRandomQuestions(@Param("limit") int limit);
 }

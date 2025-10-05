@@ -283,7 +283,7 @@ const Quiz: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen neon-bg flex items-center justify-center">
+      <div className="min-h-screen style={{ backgroundColor: '#0E0B1A' }} flex items-center justify-center">
         <div className="neon-card p-8 text-center">
           <div className="neon-text text-2xl mb-4">Đang tải câu hỏi...</div>
           <div className="animate-spin w-8 h-8 border-2 border-neon-blue border-t-transparent rounded-full mx-auto"></div>
@@ -335,7 +335,7 @@ const Quiz: React.FC = () => {
 
   if (!currentQuestion) {
     return (
-      <div className="min-h-screen neon-bg flex items-center justify-center">
+      <div className="min-h-screen style={{ backgroundColor: '#0E0B1A' }} flex items-center justify-center">
         <div className="neon-card p-8 text-center">
           <div className="neon-text text-2xl mb-4">Không có câu hỏi</div>
           <button
@@ -350,7 +350,7 @@ const Quiz: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen neon-bg">
+    <div className="min-h-screen style={{ backgroundColor: '#0E0B1A' }}">
       {/* Header */}
       <div className="container mx-auto px-4 py-6">
         <div className="flex justify-between items-center mb-6">

@@ -16,6 +16,7 @@ export default function AuthCallback() {
         const refreshToken = searchParams.get('refreshToken')
         const name = searchParams.get('name')
         const email = searchParams.get('email')
+        const avatar = searchParams.get('avatar')
         const error = searchParams.get('error')
 
         console.log('[AUTH_CALLBACK] Processing callback with params:', {
@@ -40,7 +41,8 @@ export default function AuthCallback() {
             accessToken: token,
             refreshToken: refreshToken,
             name: name || 'User',
-            email: email || 'user@example.com'
+            email: email || 'user@example.com',
+            avatar: avatar || undefined
           })
           
           console.log('[AUTH_CALLBACK] User logged in via AuthContext')

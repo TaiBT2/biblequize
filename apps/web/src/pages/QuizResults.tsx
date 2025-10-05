@@ -53,7 +53,7 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
   // Fallback if no stats
   if (!stats) {
     return (
-      <div className="min-h-screen neon-bg flex items-center justify-center p-4">
+      <div className="min-h-screen style={{ backgroundColor: '#0E0B1A' }} flex items-center justify-center p-4">
         <div className="neon-card p-8 text-center max-w-md">
           <h2 className="neon-text text-2xl mb-4">⚠️ Không có dữ liệu kết quả</h2>
           <p className="text-gray-300 mb-6">
@@ -102,7 +102,7 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
   React.useEffect(() => { saveProgress() }, [])
 
   return (
-    <div className="min-h-screen neon-bg flex items-center justify-center p-4">
+    <div className="min-h-screen style={{ backgroundColor: '#0E0B1A' }} flex items-center justify-center p-4">
       <div className="neon-card p-8 text-center max-w-4xl w-full">
         <h2 className="neon-text text-4xl mb-8">🎯 Kết Quả Bài Quiz</h2>
         
