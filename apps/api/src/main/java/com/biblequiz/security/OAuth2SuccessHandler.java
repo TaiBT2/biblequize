@@ -95,13 +95,14 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
                   // Redirect to frontend callback page with tokens
                   String frontendUrl = System.getenv("FRONTEND_URL");
                   if (frontendUrl == null || frontendUrl.isEmpty()) {
-                      frontendUrl = "http://localhost:3000"; // Default for development
+                      frontendUrl = "http://localhost:5174"; // Default for development
                   }
                   System.out.println("[OAUTH2][SUCCESS] Frontend URL: " + frontendUrl);
                   String safeName = java.net.URLEncoder.encode(name == null ? "User" : name, java.nio.charset.StandardCharsets.UTF_8);
                   String safeEmail = java.net.URLEncoder.encode(email == null ? "" : email, java.nio.charset.StandardCharsets.UTF_8);
-                  String redirectUrl = String.format("%s/auth/callback?token=%s&refreshToken=%s&name=%s&email=%s",
-                                                    frontendUrl, token, refreshToken, safeName, safeEmail);
+                  String safeAvatar = java.net.URLEncoder.encode(avatarUrl == null ? "" : avatarUrl, java.nio.charset.StandardCharsets.UTF_8);
+                  String redirectUrl = String.format("%s/auth/callback?token=%s&refreshToken=%s&name=%s&email=%s&avatar=%s",
+                                                    frontendUrl, token, refreshToken, safeName, safeEmail, safeAvatar);
             
             System.out.println("[OAUTH2][SUCCESS] Redirecting to: " + redirectUrl);
             getRedirectStrategy().sendRedirect(request, response, redirectUrl);

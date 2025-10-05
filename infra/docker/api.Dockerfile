@@ -23,9 +23,9 @@ RUN apt-get update \
     && /var/lib/dpkg/info/ca-certificates-java.postinst configure \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy and run Google CA import script
-COPY scripts/import-google-ca.sh /tmp/import-google-ca.sh
-RUN chmod +x /tmp/import-google-ca.sh && /tmp/import-google-ca.sh
+# Copy and run Google CA import script (commented out for now)
+# COPY scripts/import-google-ca.sh /tmp/import-google-ca.sh
+# RUN chmod +x /tmp/import-google-ca.sh && /tmp/import-google-ca.sh
 
 EXPOSE 8080
 

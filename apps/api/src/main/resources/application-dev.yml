@@ -22,7 +22,7 @@ spring:
   sql:
     init:
       mode: always
-      data-locations: classpath:data.sql,classpath:questions.sql,classpath:more-questions.sql,classpath:comprehensive-questions.sql,classpath:psalms-questions.sql,classpath:matthew-questions.sql
+      data-locations: classpath:data.sql,classpath:questions.sql,classpath:more-questions.sql
       continue-on-error: false
 
   flyway:
@@ -55,7 +55,7 @@ spring:
             user-name-attribute: sub
 
 jwt:
-  secret: ${JWT_SECRET:your-super-secret-jwt-key-here-make-it-long-and-random}
+  secret: ${JWT_SECRET:biblequiz-super-secret-jwt-key-2024-make-it-long-and-random-for-security}
   expiration: ${JWT_EXPIRATION:900000}
   refresh-expiration: ${JWT_REFRESH_EXPIRATION:2592000000}
 
@@ -70,6 +70,8 @@ logging:
     com.biblequiz: DEBUG
     org.springframework.security: DEBUG
     org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
