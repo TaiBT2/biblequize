@@ -61,10 +61,6 @@ public class Question {
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by")
-    @JsonIgnore
-    private User createdBy;
     
     @CreationTimestamp
     @Column(name = "created_at")
@@ -88,7 +84,7 @@ public class Question {
     public Question(String id, String book, Integer chapter, Integer verseStart, Integer verseEnd,
                    Difficulty difficulty, Type type, String content, List<String> options, 
                    List<Integer> correctAnswer, String explanation, String tags, String source, 
-                   String language, User createdBy) {
+                   String language) {
         this.id = id;
         this.book = book;
         this.chapter = chapter;
@@ -103,7 +99,6 @@ public class Question {
         this.tags = tags;
         this.source = source;
         this.language = language;
-        this.createdBy = createdBy;
     }
     
     // Getters and Setters
@@ -227,14 +222,6 @@ public class Question {
         this.isActive = isActive;
     }
     
-    public User getCreatedBy() {
-        return createdBy;
-    }
-    
-    @JsonIgnore
-    public void setCreatedBy(User createdBy) {
-        this.createdBy = createdBy;
-    }
     
     public LocalDateTime getCreatedAt() {
         return createdAt;

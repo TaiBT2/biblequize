@@ -37,13 +37,13 @@ export default function Login() {
   const handleGoogleLogin = () => {
     setIsLoading(true)
     // TODO: Implement Google OAuth login
-    window.location.href = 'http://localhost:8081/oauth2/authorization/google'
+    window.location.href = 'http://localhost:8080/oauth2/authorization/google'
   }
 
   const handleFacebookLogin = () => {
     setIsLoading(true)
     // TODO: Implement Facebook OAuth login
-    window.location.href = 'http://localhost:8081/oauth2/authorization/facebook'
+    window.location.href = 'http://localhost:8080/oauth2/authorization/facebook'
   }
 
   return (

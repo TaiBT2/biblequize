@@ -1,0 +1,119 @@
+Hệ Thống Luật Chơi Chế Độ Xếp Hạng - "Hành Trình Chinh Phục Kinh Thánh"
+I. Tổng Quan & Mục Tiêu
+Mục tiêu của người chơi: Trở thành người am hiểu Kinh Thánh nhất bằng cách hoàn thành (master) tất cả 66 sách và đạt thứ hạng cao nhất trên Bảng Xếp Hạng Mùa Giải.
+
+Triết lý thiết kế: Thưởng cho sự kiên trì (chơi hàng ngày), kiến thức sâu rộng (tỷ lệ đúng cao) và tốc độ phản xạ (thưởng thời gian).
+
+II. Cấu Trúc Leo Rank: Hành Trình 66 Sách
+66 Màn Chơi (Levels): Tương ứng với 66 sách trong Kinh Thánh. Người chơi sẽ bắt đầu từ sách Sáng Thế Ký (Genesis) và đi theo thứ tự kinh điển.
+
+Ngân Hàng Câu Hỏi: Mỗi sách (màn) có một ngân hàng 100 câu hỏi riêng biệt với các độ khó khác nhau.
+
+Mở Khóa: Người chơi phải "chinh phục" xong sách hiện tại để mở khóa sách tiếp theo. Ví dụ: Phải hoàn thành Sáng Thế Ký mới được bắt đầu Xuất Ê-díp-tô Ký.
+
+III. Luật Chơi Hằng Ngày
+Đây là những quy tắc áp dụng cho mỗi ngày, reset vào 00:00 (nửa đêm) giờ Việt Nam.
+
+Giới Hạn Lượt Chơi: Mỗi ngày, người chơi được trả lời tối đa 50 câu hỏi trong chế độ xếp hạng.
+
+Hệ Thống Mạng (Lives):
+
+Mỗi ngày, người chơi có 30 mạng.
+
+Trả lời SAI một câu, bị trừ 1 mạng.
+
+Hết thời gian mà không trả lời, cũng bị trừ 1 mạng.
+
+Nếu hết 30 mạng, phiên chơi xếp hạng của ngày hôm đó sẽ kết thúc ngay lập tức, dù người chơi chưa trả lời đủ 50 câu.
+
+Mạng không được cộng dồn qua ngày hôm sau.
+
+IV. Hệ Thống Tính Điểm
+Điểm số là yếu tố cốt lõi để xếp hạng. Điểm được tính trên từng câu trả lời.
+
+Điểm Cơ Bản: Mỗi câu trả lời ĐÚNG nhận được +100 điểm.
+
+Điểm Thưởng Thời Gian: Trả lời càng nhanh, điểm thưởng càng cao.
+
+Công thức: Điểm thưởng = (Thời gian còn lại / Tổng thời gian) * 50.
+
+Ví dụ: Câu hỏi có 20 giây. Nếu bạn trả lời đúng lúc còn 15 giây, bạn nhận thêm (15/20) * 50 = 37.5 ≈ 38 điểm thưởng.
+
+Điểm Thưởng Chuỗi (Streak Bonus): Thưởng cho việc trả lời đúng liên tiếp để khuyến khích sự tập trung.
+
+Chuỗi 5 câu đúng liên tiếp: +50 điểm thưởng.
+
+Chuỗi 10 câu đúng liên tiếp: +120 điểm thưởng.
+
+Chuỗi 15 câu đúng liên tiếp: +200 điểm thưởng.
+
+Trả lời sai một câu sẽ reset chuỗi về 0.
+
+Phạt: Trả lời SAI sẽ không bị trừ điểm, nhưng sẽ mất 1 mạng và reset chuỗi thưởng. Đây là hình phạt đủ lớn.
+
+V. Điều Kiện Qua Màn & Mở Khóa (Quan trọng nhất)
+Đây là câu trả lời cho câu hỏi của bạn. Để tránh việc người dùng trả lời cho có lệ, chúng ta cần đặt ra điều kiện "Chinh Phục" (Mastery) cho mỗi sách.
+
+Để qua một màn (hoàn thành một sách), người chơi phải đạt CẢ HAI điều kiện sau:
+
+Điều kiện về Kiến Thức (Knowledge Gate):
+
+Người chơi phải đạt tỷ lệ trả lời đúng tối thiểu là 70% cho sách đó. Tức là phải trả lời đúng ít nhất 70/100 câu hỏi trong ngân hàng câu hỏi của sách.
+
+Điều kiện về Nỗ Lực (Effort Gate):
+
+Người chơi phải trả lời hết 100 câu hỏi khác nhau trong ngân hàng câu hỏi của sách đó.
+
+Kịch bản hoạt động:
+
+Một người chơi không thể qua màn trong 1 ngày, vì họ chỉ có thể trả lời tối đa 50 câu/ngày. Họ cần ít nhất 2 ngày để hoàn thành điều kiện về nỗ lực.
+
+Ví dụ:
+
+Ngày 1: Người chơi trả lời 50 câu trong sách Sáng Thế Ký, đúng 40 câu. Tiến độ: Đã trả lời 50/100 câu, tỷ lệ đúng 40/50 = 80%.
+
+Ngày 2: Người chơi trả lời 50 câu còn lại, đúng 35 câu.
+
+Tổng kết:
+
+Đã trả lời 100/100 câu (Đạt điều kiện nỗ lực).
+
+Tổng số câu đúng: 40 + 35 = 75 câu (Đạt điều kiện kiến thức 75% > 70%).
+
+Kết quả: Chúc mừng! Bạn đã chinh phục Sáng Thế Ký. Ngày mai, bạn có thể bắt đầu chơi sách Xuất Ê-díp-tô Ký.
+
+Nếu không đạt tỷ lệ đúng? Giả sử sau khi trả lời hết 100 câu, người chơi chỉ đúng 65 câu. Họ sẽ phải tiếp tục chơi các câu hỏi của sách Sáng Thế Ký trong những ngày tiếp theo (hệ thống sẽ ưu tiên các câu họ đã trả lời sai) cho đến khi tổng số câu đúng của họ đạt mốc 70.
+
+VI. Hệ Thống Xếp Hạng & Mùa Giải (Seasons)
+Bảng Xếp Hạng: Thứ hạng của người chơi được quyết định bởi Tổng Điểm Mùa - là tổng tất cả điểm họ kiếm được trong suốt mùa giải.
+
+Mùa Giải:
+
+Mỗi mùa giải kéo dài 3 tháng.
+
+Khi một mùa giải kết thúc, bảng xếp hạng sẽ được chốt lại, phần thưởng sẽ được trao.
+
+Reset khi sang mùa mới:
+
+Điểm số mùa của tất cả người chơi sẽ reset về 0.
+
+Bảng xếp hạng sẽ reset.
+
+QUAN TRỌNG: Tiến độ chinh phục 66 sách của người chơi sẽ được giữ lại. Nếu mùa trước họ đã qua sách Xuất Ê-díp-tô Ký, mùa này họ sẽ bắt đầu chơi từ sách Lê-vi Ký. Điều này ghi nhận nỗ lực dài hạn của họ.
+
+Tóm Tắt Luồng Chơi Của Người Dùng
+Vào Chế độ Xếp Hạng.
+
+Hệ thống hiển thị màn hình Dashboard (như bạn đã thiết kế), cho biết sách hiện tại, tiến độ, mạng và câu hỏi còn lại trong ngày.
+
+Nhấn "Bắt Đầu".
+
+Trả lời các câu hỏi từ sách hiện tại. Mỗi câu trả lời đúng sẽ cộng điểm, trả lời sai trừ mạng.
+
+Chơi cho đến khi hết 50 câu hoặc hết 30 mạng.
+
+Màn hình kết quả phiên chơi xuất hiện, thông báo điểm kiếm được, XP, v.v.
+
+Ngày hôm sau, chu trình lặp lại.
+
+Khi đạt đủ điều kiện của một sách, một thông báo chúc mừng sẽ hiện ra, và sách tiếp theo được mở khóa cho ngày chơi kế tiếp.

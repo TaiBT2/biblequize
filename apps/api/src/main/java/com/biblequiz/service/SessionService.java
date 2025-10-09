@@ -57,7 +57,7 @@ public class SessionService {
         int questionCount = ((Number) config.getOrDefault("questionCount", 10)).intValue();
         String book = (String) config.getOrDefault("book", null);
         String difficultyStr = (String) config.getOrDefault("difficulty", null);
-        List<Question> questions = questionService.getRandomQuestions(book, difficultyStr, questionCount);
+        List<Question> questions = questionService.getRandomQuestions(book, difficultyStr, questionCount, null);
 
         int order = 0;
         for (Question q : questions) {
@@ -145,12 +145,27 @@ public class SessionService {
 
     @Transactional(readOnly = true)
     public Map<String, Object> getReview(String sessionId) {
+        QuizSession session = quizSessionRepository.findById(sessionId).orElseThrow();
         List<Answer> answers = answerRepository.findBySessionIdOrderByCreatedAt(sessionId);
+
         List<Map<String, Object>> review = new ArrayList<>();
+        int totalQuestions = answers.size();
+        int correctAnswers = 0;
+        int totalScore = 0;
+        long totalTime = 0L;
+        List<Integer> timePerQuestion = new ArrayList<>();
+
+        Map<String, Object> easy = new HashMap<>(Map.of("correct", 0, "total", 0, "score", 0));
+        Map<String, Object> medium = new HashMap<>(Map.of("correct", 0, "total", 0, "score", 0));
+        Map<String, Object> hard = new HashMap<>(Map.of("correct", 0, "total", 0, "score", 0));
+
         for (Answer a : answers) {
             Question q = a.getQuestion();
             Map<String, Object> item = new HashMap<>();
             item.put("questionId", q.getId());
+            item.put("book", q.getBook());
+            item.put("chapter", q.getChapter());
+            item.put("difficulty", q.getDifficulty() != null ? q.getDifficulty().name() : null);
             item.put("content", q.getContent());
             item.put("options", q.getOptions());
             item.put("correctAnswer", q.getCorrectAnswer());
@@ -160,8 +175,53 @@ public class SessionService {
             item.put("elapsedMs", a.getElapsedMs());
             item.put("scoreEarned", a.getScoreEarned());
             review.add(item);
+
+            if (Boolean.TRUE.equals(a.getIsCorrect())) correctAnswers++;
+            totalScore += Optional.ofNullable(a.getScoreEarned()).orElse(0);
+            int elapsed = Optional.ofNullable(a.getElapsedMs()).orElse(0);
+            totalTime += elapsed;
+            timePerQuestion.add(elapsed);
+
+            String diff = q.getDifficulty() != null ? q.getDifficulty().name() : "easy";
+            Map<String, Object> bucket;
+            if ("medium".equals(diff)) {
+                bucket = medium;
+            } else if ("hard".equals(diff)) {
+                bucket = hard;
+            } else {
+                bucket = easy;
+            }
+            bucket.put("total", ((Integer) bucket.get("total")) + 1);
+            if (Boolean.TRUE.equals(a.getIsCorrect())) {
+                bucket.put("correct", ((Integer) bucket.get("correct")) + 1);
+                bucket.put("score", ((Integer) bucket.get("score")) + Optional.ofNullable(a.getScoreEarned()).orElse(0));
+            }
         }
-        return Map.of("items", review);
+
+        double accuracy = totalQuestions > 0 ? (correctAnswers * 100.0 / totalQuestions) : 0.0;
+        double averageTime = totalQuestions > 0 ? (totalTime / (double) totalQuestions) : 0.0;
+
+        Map<String, Object> difficultyBreakdown = new HashMap<>();
+        difficultyBreakdown.put("easy", easy);
+        difficultyBreakdown.put("medium", medium);
+        difficultyBreakdown.put("hard", hard);
+
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("totalScore", totalScore);
+        stats.put("correctAnswers", correctAnswers);
+        stats.put("totalQuestions", totalQuestions);
+        stats.put("accuracy", accuracy);
+        stats.put("averageTime", averageTime);
+        stats.put("totalTime", totalTime);
+        stats.put("difficultyBreakdown", difficultyBreakdown);
+        stats.put("timePerQuestion", timePerQuestion);
+        stats.put("sessionScore", session.getScore());
+        stats.put("sessionCorrectAnswers", session.getCorrectAnswers());
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("items", review);
+        response.put("stats", stats);
+        return response;
     }
 
     private List<Map<String, Object>> mapToQuestionDTOs(List<Question> questions) {

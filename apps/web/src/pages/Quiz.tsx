@@ -50,6 +50,7 @@ const Quiz: React.FC = () => {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
   const [showResult, setShowResult] = useState(false)
   const [score, setScore] = useState(0)
+  const [scoreBump, setScoreBump] = useState(false)
   const [correctAnswers, setCorrectAnswers] = useState(0)
   const [timeLeft, setTimeLeft] = useState(30)
   const [isQuizCompleted, setIsQuizCompleted] = useState(false)
@@ -77,6 +78,57 @@ const Quiz: React.FC = () => {
   const [questionScores, setQuestionScores] = useState<number[]>([])
 
   const currentQuestion = questions[currentQuestionIndex]
+
+  // Simple WebAudio tones for feedback
+  const playTone = (frequency: number, durationMs: number, type: OscillatorType = 'sine', volume = 0.1) => {
+    try {
+      const ctx = new (window.AudioContext || (window as any).webkitAudioContext)()
+      const osc = ctx.createOscillator()
+      const gain = ctx.createGain()
+      osc.type = type
+      osc.frequency.value = frequency
+      gain.gain.value = volume
+      osc.connect(gain)
+      gain.connect(ctx.destination)
+      osc.start()
+      setTimeout(() => { osc.stop(); ctx.close() }, durationMs)
+    } catch {}
+  }
+  const playCorrectSound = () => {
+    playTone(880, 120, 'sine', 0.12)
+  }
+  const playWrongSound = () => {
+    playTone(200, 180, 'square', 0.08)
+  }
+
+  // When quiz is completed and we have a server session, fetch aggregated stats from backend
+  useEffect(() => {
+    const fetchBackendStats = async () => {
+      if (!settings?.sessionId) return
+      try {
+        const res = await api.get(`/sessions/${settings.sessionId}/review`)
+        const serverStats = res.data?.stats
+        if (serverStats) {
+          setQuizStats(prev => ({
+            ...prev,
+            totalScore: serverStats.totalScore ?? prev.totalScore,
+            correctAnswers: serverStats.correctAnswers ?? prev.correctAnswers,
+            totalQuestions: serverStats.totalQuestions ?? prev.totalQuestions,
+            accuracy: serverStats.accuracy ?? prev.accuracy,
+            averageTime: serverStats.averageTime ?? prev.averageTime,
+            totalTime: serverStats.totalTime ?? prev.totalTime,
+            difficultyBreakdown: serverStats.difficultyBreakdown ?? prev.difficultyBreakdown,
+            timePerQuestion: serverStats.timePerQuestion ?? prev.timePerQuestion
+          }))
+        }
+      } catch (e) {
+        console.error('Failed to load backend review stats', e)
+      }
+    }
+    if (isQuizCompleted) {
+      fetchBackendStats()
+    }
+  }, [isQuizCompleted, settings?.sessionId])
 
   // Timer effect
   useEffect(() => {
@@ -127,6 +179,7 @@ const Quiz: React.FC = () => {
     // Calculate time taken for this question
     const timeTaken = 30 - timeLeft
     let isCorrect = false
+    let rankedResponse: any = null
     try {
       if (settings?.mode === 'ranked' && settings?.sessionId) {
         // Ranked mode: submit to ranked progress endpoint
@@ -148,9 +201,27 @@ const Quiz: React.FC = () => {
         
         console.log('=== FRONTEND: API Response ===')
         console.log('Response:', res.data)
+        console.log('questionsCounted in response:', res.data?.questionsCounted)
+        console.log('pointsToday in response:', res.data?.pointsToday)
+        console.log('livesRemaining in response:', res.data?.livesRemaining)
         
         const data = res.data
+        rankedResponse = data
         isCorrect = answerIndex === currentQuestion.correctAnswer[0]
+        
+        // Update askedQuestionIds in localStorage for ranked mode
+        try {
+          const today = new Date().toISOString().slice(0, 10)
+          const currentAskedIds = JSON.parse(localStorage.getItem('askedQuestionIds') || '[]')
+          if (!currentAskedIds.includes(currentQuestion.id)) {
+            currentAskedIds.push(currentQuestion.id)
+            localStorage.setItem('askedQuestionIds', JSON.stringify(currentAskedIds))
+            localStorage.setItem('lastAskedDate', today)
+          }
+        } catch (e) {
+          console.warn('Failed to update askedQuestionIds:', e)
+        }
+        
         // If lives dropped to 0 -> end quiz immediately
         if (typeof data.livesRemaining === 'number' && data.livesRemaining <= 0) {
           setQuizStats(prev => ({
@@ -161,6 +232,56 @@ const Quiz: React.FC = () => {
           }))
           setIsQuizCompleted(true)
           return
+        }
+        
+        // Update ranked status in localStorage for real-time display
+        try {
+          const today = new Date().toISOString().slice(0, 10)
+          
+          // Simple and direct update
+          const updatedData = {
+            date: today,
+            livesRemaining: data.livesRemaining,
+            questionsCounted: data.questionsCounted,
+            pointsToday: data.pointsToday,
+            cap: 500,
+            dailyLives: 30
+          }
+          
+          // Update all localStorage keys with the same data
+          localStorage.setItem('rankedSnapshot', JSON.stringify(updatedData))
+          localStorage.setItem('rankedProgress', JSON.stringify(updatedData))
+          localStorage.setItem('rankedStatus', JSON.stringify(updatedData))
+          
+          // Create backup for recovery in case of localStorage clear
+          localStorage.setItem('sessionBackup', JSON.stringify(updatedData))
+          
+          console.log('=== UPDATING LOCALSTORAGE ===')
+          console.log('Updated data:', updatedData)
+          console.log('questionsCounted:', data.questionsCounted)
+          
+          // Dispatch custom event for real-time updates
+          window.dispatchEvent(new CustomEvent('rankedStatusUpdate', { 
+            detail: updatedData 
+          }))
+        } catch (e) {
+          console.warn('Failed to update ranked status:', e)
+        }
+        
+        // Additional sync to server to prevent data loss
+        try {
+          await api.post('/api/ranked/sync-progress', {
+            livesRemaining: data.livesRemaining,
+            questionsCounted: data.questionsCounted,
+            pointsToday: data.pointsToday,
+            currentBook: data.currentBook || 'Genesis',
+            currentBookIndex: data.currentBookIndex || 0,
+            isPostCycle: data.isPostCycle || false,
+            currentDifficulty: data.currentDifficulty || 'all'
+          })
+          console.log('=== SYNCED TO SERVER ===')
+        } catch (syncError) {
+          console.warn('Failed to sync progress to server:', syncError)
         }
       } else if (settings?.sessionId) {
         const res = await api.post(`/sessions/${settings.sessionId}/answer`, {
@@ -200,7 +321,12 @@ const Quiz: React.FC = () => {
       questionScore = Math.floor((baseScore + timeBonus + perfectBonus) * difficultyMultiplier)
       
       setScore(score + questionScore)
+      setScoreBump(true)
+      setTimeout(() => setScoreBump(false), 250)
+      playCorrectSound()
       setCorrectAnswers(correctAnswers + 1)
+    } else {
+      playWrongSound()
     }
     
     // Update user answers and question scores
@@ -240,6 +366,34 @@ const Quiz: React.FC = () => {
       
       return newStats
     })
+
+    // Update optimistic ranked snapshot AFTER computing questionScore for accurate points
+    if (settings?.mode === 'ranked' && settings?.sessionId) {
+      try {
+        const today = new Date().toISOString().slice(0,10)
+        
+        // Always use server response if available
+        if (rankedResponse) {
+          const finalSnap = {
+            date: today,
+            livesRemaining: rankedResponse.livesRemaining || 30,
+            questionsCounted: rankedResponse.questionsCounted || 0,
+            pointsToday: rankedResponse.pointsToday || 0,
+            cap: 500,
+            dailyLives: 30
+          }
+          console.log('[RANKED] Using server response:', finalSnap)
+          localStorage.setItem('rankedSnapshot', JSON.stringify(finalSnap))
+          
+          // Dispatch update event for real-time UI updates
+          window.dispatchEvent(new CustomEvent('rankedStatusUpdate', { 
+            detail: finalSnap 
+          }))
+        }
+      } catch (e) {
+        console.warn('Failed to update ranked snapshot:', e)
+      }
+    }
   }
 
   const nextQuestion = () => {
@@ -260,6 +414,7 @@ const Quiz: React.FC = () => {
       setShowResult(false)
       setTimeLeft(30) // Reset timer for next question
       setQuestionStartTime(Date.now()) // Reset question start time
+      // Note: Removed duplicate ranked-status call to prevent double counting
     }
   }
 
@@ -293,9 +448,26 @@ const Quiz: React.FC = () => {
   }
 
   if (isQuizCompleted) {
+    const answeredCount = userAnswers.filter(a => a !== null && a !== undefined).length
+    const ensuredTotalTime = quizStats.totalTime || (Date.now() - quizStartTime)
+    const ensuredAvgTime = quizStats.timePerQuestion.length > 0
+      ? quizStats.timePerQuestion.reduce((a, b) => a + b, 0) / quizStats.timePerQuestion.length
+      : (answeredCount > 0 ? ensuredTotalTime / answeredCount / 1000 : 0)
+    const finalizedStats = {
+      ...quizStats,
+      totalScore: score,
+      correctAnswers: correctAnswers,
+      totalQuestions: questions.length,
+      accuracy: questions.length > 0 ? (correctAnswers / questions.length) * 100 : 0,
+      totalTime: ensuredTotalTime,
+      averageTime: ensuredAvgTime,
+      questions,
+      userAnswers,
+      questionScores,
+    }
     return (
       <QuizResults
-        stats={quizStats}
+        stats={finalizedStats}
         onPlayAgain={() => {
           setCurrentQuestionIndex(0)
           setSelectedAnswer(null)
@@ -325,7 +497,7 @@ const Quiz: React.FC = () => {
             questionScores: new Array(questions.length).fill(0)
           }))
         }}
-        onBackToHome={() => navigate('/')}
+        onBackToHome={() => navigate(location.state?.isRanked ? '/ranked' : '/')}
         // Pass ranked mode info
         isRanked={location.state?.isRanked || false}
         sessionId={location.state?.sessionId}
@@ -357,58 +529,71 @@ const Quiz: React.FC = () => {
           <div className="neon-text text-xl">
             Câu {currentQuestionIndex + 1}/{questions.length}
           </div>
-          <div className="neon-green text-xl font-bold">
+          <div className={`neon-green text-xl font-bold transition-transform ${scoreBump ? 'scale-125' : 'scale-100'}`}>
             Điểm: {score}
           </div>
         </div>
         
         {/* Progress Bar */}
-        <div className="w-full bg-gray-800 rounded-full h-2 mb-6">
+        <div className="w-full bg-gray-800/80 rounded-full h-2 mb-6 glow-cyan">
           <div 
-            className="bg-gradient-to-r from-neon-blue to-neon-pink h-2 rounded-full transition-all duration-300"
+            className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-fuchsia-400 h-2 rounded-full progress-animated"
             style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
           ></div>
         </div>
 
         {/* Timer */}
         <div className="text-center mb-6">
-          <div className={`neon-text text-3xl font-bold ${timeLeft <= 10 ? 'neon-red' : 'neon-blue'}`}>
-            {timeLeft}s
+          <div className="inline-flex items-center justify-center relative">
+            <svg width="64" height="64" className="mr-3">
+              <circle cx="32" cy="32" r="28" stroke="rgba(0,255,255,0.15)" strokeWidth="6" fill="none" />
+              <circle
+                cx="32" cy="32" r="28"
+                stroke={timeLeft <= 5 ? 'rgba(239,68,68,0.85)' : 'rgba(34,211,238,0.85)'}
+                strokeWidth="6"
+                fill="none"
+                strokeLinecap="round"
+                style={{ transform: 'rotate(-90deg)', transformOrigin: '50% 50%' }}
+                strokeDasharray={2 * Math.PI * 28}
+                strokeDashoffset={(1 - (timeLeft / 30)) * 2 * Math.PI * 28}
+              />
+            </svg>
+            <div className={`neon-text text-3xl font-bold ${timeLeft <= 5 ? 'neon-red animate-icon-shake' : 'neon-blue'} ${timeLeft <= 5 ? 'animate-number-glow' : ''} glow-cyan` }>
+              {timeLeft}s
+            </div>
           </div>
         </div>
       </div>
 
       {/* Question Card */}
       <div className="container mx-auto px-4">
-        <div className="neon-card p-8 max-w-4xl mx-auto">
+          <div className="neon-card p-8 max-w-4xl mx-auto">
           {/* Question Header */}
-          <div className="mb-6">
-            <div className="neon-blue text-2xl font-bold mb-2">
-              {currentQuestion.book}
+            <div className="mb-6 space-y-2">
+              <div className="text-gray-300 text-base">
+                {currentQuestion.book}
+              </div>
+              <div className="text-gray-400 text-sm">Chương {currentQuestion.chapter}</div>
+              <div className={`text-xs ${getDifficultyColor(currentQuestion.difficulty)}`}>
+                Độ khó: {getDifficultyText(currentQuestion.difficulty)}
+              </div>
             </div>
-            <div className="text-gray-300 mb-2">
-              Chương {currentQuestion.chapter}
-            </div>
-            <div className={`text-sm ${getDifficultyColor(currentQuestion.difficulty)}`}>
-              Độ khó: {getDifficultyText(currentQuestion.difficulty)}
-            </div>
-          </div>
 
           {/* Question */}
-          <div className="neon-text text-xl mb-8 leading-relaxed">
+          <div className="neon-text text-2xl font-bold mb-8 leading-relaxed">
             {currentQuestion.content}
           </div>
 
           {/* Answer Options */}
           <div className="space-y-4 mb-8">
             {currentQuestion.options.map((option, index) => {
-              let buttonClass = "neon-btn w-full p-4 text-left"
+              let buttonClass = "neon-btn w-full p-4 text-left transition-all answer-hover rounded-xl shadow-[0_0_6px_rgba(255,255,255,0.06)] border-2"
               
               if (showResult) {
                 if (index === currentQuestion.correctAnswer[0]) {
-                  buttonClass += " neon-btn-green" // Correct answer
+                  buttonClass += " neon-btn-green ring-2 ring-green-300 glow-green feedback-pulse" // Correct answer highlight
                 } else if (index === selectedAnswer && index !== currentQuestion.correctAnswer[0]) {
-                  buttonClass += " neon-btn-red" // Wrong answer
+                  buttonClass += " neon-btn-red ring-2 ring-red-300 glow-red feedback-pulse" // Wrong answer
                 } else {
                   buttonClass += " neon-btn-gray" // Other options
                 }
@@ -476,10 +661,14 @@ const Quiz: React.FC = () => {
           {/* Navigation */}
           <div className="flex justify-between">
             <button
-              onClick={() => navigate('/practice')}
-              className="neon-btn neon-btn-gray px-6 py-2"
+              onClick={() => {
+                if (confirm('Bạn có chắc muốn kết thúc bài làm tại đây? Tiến trình hiện tại sẽ không được lưu.')) {
+                  navigate('/practice')
+                }
+              }}
+              className="neon-btn neon-btn-gray px-6 py-2 rounded-xl"
             >
-              ← Quay Lại
+              ⏹️ Kết thúc
             </button>
             
             {showResult && (

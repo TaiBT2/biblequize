@@ -2,9 +2,11 @@ package com.biblequiz.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.UpdateTimestamp;
+import com.biblequiz.converter.JsonListConverter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "user_daily_progress")
@@ -46,6 +48,10 @@ public class UserDailyProgress {
     @UpdateTimestamp
     @Column(name = "last_updated_at")
     private LocalDateTime lastUpdatedAt;
+
+    @Column(name = "asked_question_ids", columnDefinition = "JSON")
+    @Convert(converter = JsonListConverter.class)
+    private List<String> askedQuestionIds;
     
     public enum Difficulty {
         easy, medium, hard, all
@@ -147,5 +153,13 @@ public class UserDailyProgress {
     
     public void setLastUpdatedAt(LocalDateTime lastUpdatedAt) {
         this.lastUpdatedAt = lastUpdatedAt;
+    }
+
+    public List<String> getAskedQuestionIds() {
+        return askedQuestionIds;
+    }
+
+    public void setAskedQuestionIds(List<String> askedQuestionIds) {
+        this.askedQuestionIds = askedQuestionIds;
     }
 }

@@ -2,7 +2,7 @@
 -- Câu hỏi bổ sung cho Bible Quiz - Nội dung sâu sắc và thú vị
 
 -- Câu hỏi về Châm Ngôn (Proverbs)
-INSERT IGNORE INTO questions (id, book, chapter, verse_start, verse_end, difficulty, type, content, options, correct_answer, explanation, tags, source, language, is_active, created_by, created_at, updated_at) VALUES
+INSERT IGNORE INTO questions (id, book, chapter, verse_start, verse_end, difficulty, type, content, options, correct_answer, explanation, tags, source, language, is_active, created_at, updated_at) VALUES
 ('q-pro-001', 'Proverbs', 3, 5, 6, 'easy', 'multiple_choice_single',
 'Trong Châm Ngôn 3:5-6, "Hãy hết lòng tin cậy Đức Giê-hô-va, chớ nương cậy nơi sự thông sáng của con". Từ "tin cậy" trong tiếng Hê-bơ-rơ có nghĩa gì?',
 '["Batah - Tin cậy, nương dựa", "Aman - Tin tưởng", "Chasah - Ẩn náu", "Yachal - Hy vọng"]',
@@ -12,7 +12,7 @@ INSERT IGNORE INTO questions (id, book, chapter, verse_start, verse_end, difficu
 'Wisdom Literature',
 'vi',
 true,
-'user-001',
+
 NOW(),
 NOW()),
 
@@ -25,7 +25,7 @@ NOW()),
 'Wisdom Literature',
 'vi',
 true,
-'user-001',
+
 NOW(),
 NOW()),
 
@@ -39,7 +39,7 @@ NOW()),
 'Messianic Prophecy',
 'vi',
 true,
-'user-001',
+
 NOW(),
 NOW()),
 
@@ -52,7 +52,7 @@ NOW()),
 'Messianic Prophecy',
 'vi',
 true,
-'user-001',
+
 NOW(),
 NOW()),
 
@@ -66,7 +66,7 @@ NOW()),
 'Gospel Studies',
 'vi',
 true,
-'user-001',
+
 NOW(),
 NOW()),
 
@@ -79,7 +79,7 @@ NOW()),
 'Gospel Studies',
 'vi',
 true,
-'user-001',
+
 NOW(),
 NOW()),
 
@@ -93,7 +93,7 @@ NOW()),
 'Acts Studies',
 'vi',
 true,
-'user-001',
+
 NOW(),
 NOW()),
 
@@ -106,7 +106,7 @@ NOW()),
 'Acts Studies',
 'vi',
 true,
-'user-001',
+
 NOW(),
 NOW()),
 
@@ -120,7 +120,7 @@ NOW()),
 'Pauline Studies',
 'vi',
 true,
-'user-001',
+
 NOW(),
 NOW()),
 
@@ -133,7 +133,7 @@ NOW()),
 'Pauline Studies',
 'vi',
 true,
-'user-001',
+
 NOW(),
 NOW()),
 
@@ -147,7 +147,7 @@ NOW()),
 'Pauline Studies',
 'vi',
 true,
-'user-001',
+
 NOW(),
 NOW()),
 
@@ -160,7 +160,7 @@ NOW()),
 'Pauline Studies',
 'vi',
 true,
-'user-001',
+
 NOW(),
 NOW());
 

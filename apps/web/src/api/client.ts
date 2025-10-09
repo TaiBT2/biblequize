@@ -1,7 +1,8 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { getApiBaseUrl, isDebug } from './config'
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8081',
+  baseURL: getApiBaseUrl(),
   timeout: 10000
 })
 
@@ -9,14 +10,18 @@ export const api = axios.create({
 api.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     const token = localStorage.getItem('accessToken')
-    console.log('=== API CLIENT: Request Interceptor ===')
-    console.log('URL:', config.url)
-    console.log('Token exists:', !!token)
-    console.log('Token preview:', token ? token.substring(0, 20) + '...' : 'null')
+    if (isDebug()) {
+      console.log('=== API CLIENT: Request Interceptor ===')
+      console.log('URL:', config.url)
+      console.log('Token exists:', !!token)
+      console.log('Token preview:', token ? token.substring(0, 20) + '...' : 'null')
+    }
     
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`
-      console.log('Authorization header set:', `Bearer ${token.substring(0, 20)}...`)
+      if (isDebug()) {
+        console.log('Authorization header set:', `Bearer ${token.substring(0, 20)}...`)
+      }
     }
     return config
   },
@@ -31,7 +36,7 @@ api.interceptors.response.use(
     return response
   },
   async (error) => {
-    const originalRequest = error.config
+    const originalRequest = error.config as (AxiosRequestConfig & { _retry?: boolean })
 
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true
@@ -48,6 +53,7 @@ api.interceptors.response.use(
           localStorage.setItem('accessToken', accessToken)
 
           // Retry the original request with new token
+          if (!originalRequest.headers) originalRequest.headers = {}
           originalRequest.headers.Authorization = `Bearer ${accessToken}`
           return api(originalRequest)
         }

@@ -35,7 +35,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const isAuthenticated = !!user
 
-  const login = (tokens: { accessToken: string; refreshToken: string; name: string; email: string; avatar?: string }) => {
+  const login = async (tokens: { accessToken: string; refreshToken: string; name: string; email: string; avatar?: string }) => {
     localStorage.setItem('accessToken', tokens.accessToken)
     localStorage.setItem('refreshToken', tokens.refreshToken)
     localStorage.setItem('userName', tokens.name)
@@ -50,10 +50,44 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       avatar: tokens.avatar
     })
     
-    console.log('[AUTH_CONTEXT] User logged in:', tokens.name)
+    // Restore ranked progress from database after login
+    try {
+      const today = new Date().toISOString().slice(0, 10)
+      const currentSnapshot = localStorage.getItem('rankedSnapshot')
+      
+      // Only restore if localStorage is empty or has old data
+      if (!currentSnapshot || JSON.parse(currentSnapshot).date !== today) {
+        console.log('[AUTH_CONTEXT] Restoring ranked progress from database after login')
+        // Trigger ranked data sync
+        window.dispatchEvent(new CustomEvent('localStorageCleared'))
+      }
+    } catch (error) {
+      console.warn('[AUTH_CONTEXT] Failed to restore ranked progress after login:', error)
+    }
+    
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('[AUTH_CONTEXT] User logged in:', tokens.name)
+    }
   }
 
-  const logout = () => {
+  const logout = async () => {
+    // Save current ranked progress to database before logout
+    try {
+      const rankedSnapshot = localStorage.getItem('rankedSnapshot')
+      if (rankedSnapshot) {
+        const data = JSON.parse(rankedSnapshot)
+        if (data.questionsCounted > 0 || data.pointsToday > 0) {
+          console.log('[AUTH_CONTEXT] Syncing ranked progress before logout:', data)
+          // Call sync API to ensure data is saved to database
+          const { api } = await import('../api/client')
+          await api.post('/api/ranked/sync-progress')
+          console.log('[AUTH_CONTEXT] Successfully synced progress to database')
+        }
+      }
+    } catch (error) {
+      console.warn('[AUTH_CONTEXT] Failed to sync ranked progress before logout:', error)
+    }
+    
     localStorage.removeItem('accessToken')
     localStorage.removeItem('refreshToken')
     localStorage.removeItem('userName')
@@ -62,7 +96,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     
     setUser(null)
     
-    console.log('[AUTH_CONTEXT] User logged out')
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('[AUTH_CONTEXT] User logged out')
+    }
   }
 
   const checkAuth = () => {
@@ -73,10 +109,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     if (token && name && email) {
       setUser({ name, email, avatar: avatar || undefined })
-      console.log('[AUTH_CONTEXT] User authenticated from localStorage:', name)
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('[AUTH_CONTEXT] User authenticated from localStorage:', name)
+      }
     } else {
       setUser(null)
-      console.log('[AUTH_CONTEXT] No valid authentication found')
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('[AUTH_CONTEXT] No valid authentication found')
+      }
     }
   }
 

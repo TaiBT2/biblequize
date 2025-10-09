@@ -6,8 +6,10 @@ build/
 .DS_Store
 .env
 .env.*
+env.local
 /apps/api/.gradle/
 /apps/api/build/
 /apps/api/out/
 /apps/api/target/
-compose.yml
+*.log
+api.log

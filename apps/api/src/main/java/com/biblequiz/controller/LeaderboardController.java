@@ -39,10 +39,10 @@ public class LeaderboardController {
             .limit(size)
             .map(udp -> {
                 java.util.Map<String, Object> m = new java.util.HashMap<>();
-                m.put("userId", udp.getUser().getId());
-                m.put("name", udp.getUser().getName());
-                m.put("points", udp.getPointsCounted());
-                m.put("questions", udp.getQuestionsCounted());
+                m.put("userId", udp.getUser() != null ? udp.getUser().getId() : null);
+                m.put("name", udp.getUser() != null ? udp.getUser().getName() : "Ẩn danh");
+                m.put("points", udp.getPointsCounted() != null ? udp.getPointsCounted() : 0);
+                m.put("questions", udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0);
                 return m;
             })
             .collect(Collectors.toList());

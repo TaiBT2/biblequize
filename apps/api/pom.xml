@@ -106,6 +106,30 @@
       <optional>true</optional>
     </dependency>
     
+    <!-- Documentation -->
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.2.0</version>
+    </dependency>
+    
+    <!-- AOP for performance monitoring -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-aop</artifactId>
+    </dependency>
+
+    <!-- Lombok for reducing boilerplate code -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <!-- Spring Cloud for service discovery and gateway -->
+    <!-- Removed Eureka client to avoid pulling Spring Cloud with incompatible version -->
+    <!-- Removed gateway to avoid MVC vs reactive conflict in single API app -->
+    
     <!-- Testing -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

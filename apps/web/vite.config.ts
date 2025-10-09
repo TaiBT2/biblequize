@@ -13,9 +13,8 @@ export default defineConfig(({ mode }) => {
       proxy: {
         // Proxy API requests to backend
         '/api': {
-          target: env.VITE_API_BASE_URL || 'http://localhost:8081',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, '')
+          target: env.VITE_API_BASE_URL || 'http://localhost:8080',
+          changeOrigin: true
         }
       }
     },
@@ -40,8 +39,7 @@ export default defineConfig(({ mode }) => {
         output: {
           manualChunks: {
             vendor: ['react', 'react-dom'],
-            router: ['react-router-dom'],
-            ui: ['@headlessui/react']
+            router: ['react-router-dom']
           }
         }
       }

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Client, IMessage, StompSubscription } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
+import { getApiBaseUrl } from '../api/config';
 
 export interface StompOptions {
   url?: string; // default /ws
@@ -17,8 +18,24 @@ export function useStomp({ url = '/ws', roomId, onMessage, onConnect, onDisconne
 
   useEffect(() => {
     // SockJS expects http(s) URL, not ws(s)
-    const httpProto = window.location.protocol === 'https:' ? 'https' : 'http';
-    const sockUrl = `${httpProto}://${window.location.hostname}:8081${url}`;
+    const apiBase = getApiBaseUrl();
+    let sockUrl: string;
+    if (apiBase.startsWith('http')) {
+      // Absolute API base
+      try {
+        const u = new URL(apiBase);
+        u.pathname = url;
+        u.search = '';
+        u.hash = '';
+        sockUrl = u.toString();
+      } catch {
+        sockUrl = url;
+      }
+    } else {
+      // Relative API base, use same-origin
+      const httpProto = window.location.protocol === 'https:' ? 'https' : 'http';
+      sockUrl = `${httpProto}//${window.location.host}${url}`;
+    }
     const socketFactory = () => new SockJS(sockUrl);
     const client = new Client({
       webSocketFactory: socketFactory as any,

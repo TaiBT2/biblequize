@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
+import logoUrl from '../assets/logo-new.png'
 
 const Header: React.FC = () => {
   const navigate = useNavigate()
@@ -18,7 +19,7 @@ const Header: React.FC = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-xl blur-sm opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
               <img 
-                src="/src/assets/logo-new.png" 
+                src={logoUrl} 
                 alt="Bible Quiz Logo" 
                 className="relative w-12 h-12 transition-all duration-300 group-hover:scale-110 rounded-xl"
                 style={{
