@@ -39,22 +39,22 @@ const SearchableSelect: React.FC<Props> = ({ options, value, onChange, placehold
       <button
         type="button"
         onClick={() => setOpen(v => !v)}
-        className="neon-input w-full p-3 bg-gray-800 border border-cyan-400 rounded-lg focus:border-cyan-300 focus:outline-none flex items-center justify-between"
+        className="w-full p-3 bg-white border-2 border-[#d6cfc4] rounded-xl text-[#4a3f35] font-semibold focus:border-[#4bbf9f] focus:outline-none flex items-center justify-between hover:border-[#4bbf9f] transition-colors"
         aria-haspopup="listbox"
         aria-expanded={open}
       >
-        <span className="text-left truncate text-gray-200">{selected || placeholder}</span>
-        <svg className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" /></svg>
+        <span className="text-left truncate">{selected || placeholder}</span>
+        <svg className={`w-4 h-4 text-[#8a7a6e] transition-transform ${open ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" /></svg>
       </button>
       {open && (
-        <div className="absolute z-50 mt-2 w-full rounded-lg border border-cyan-400 bg-gray-900 shadow-xl">
-          <div className="p-2 border-b border-cyan-400/40">
+        <div className="absolute z-50 mt-1 w-full rounded-xl border-2 border-[#d6cfc4] bg-white shadow-xl overflow-hidden">
+          <div className="p-2 border-b border-[#e8e0d5]">
             <input
               autoFocus
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={placeholder || 'Tìm kiếm...'}
-              className="w-full p-2 rounded bg-gray-800 text-gray-200 focus:outline-none border border-cyan-400/50 focus:border-cyan-300"
+              className="w-full p-2 rounded-lg bg-[#f9f6f1] text-[#4a3f35] placeholder-[#b0a090] focus:outline-none border border-[#d6cfc4] focus:border-[#4bbf9f] text-sm"
             />
           </div>
           <ul role="listbox" className="max-h-56 overflow-auto py-1">
@@ -62,7 +62,7 @@ const SearchableSelect: React.FC<Props> = ({ options, value, onChange, placehold
               <button
                 type="button"
                 onClick={() => { onChange(''); setOpen(false); }}
-                className={`w-full text-left px-3 py-2 text-sm ${value === '' ? 'bg-cyan-900/40 text-cyan-200' : 'text-gray-200 hover:bg-cyan-900/30'}`}
+                className={`w-full text-left px-3 py-2 text-sm font-semibold transition-colors ${value === '' ? 'bg-[#edfaf5] text-[#2e7a65]' : 'text-[#4a3f35] hover:bg-[#f5f0ea]'}`}
               >{allLabel}</button>
             </li>
             {filtered.map(opt => (
@@ -70,12 +70,12 @@ const SearchableSelect: React.FC<Props> = ({ options, value, onChange, placehold
                 <button
                   type="button"
                   onClick={() => { onChange(opt.value); setOpen(false); setQuery(''); }}
-                  className={`w-full text-left px-3 py-2 text-sm ${value === opt.value ? 'bg-cyan-900/40 text-cyan-200' : 'text-gray-200 hover:bg-cyan-900/30'}`}
+                  className={`w-full text-left px-3 py-2 text-sm transition-colors ${value === opt.value ? 'bg-[#edfaf5] text-[#2e7a65] font-semibold' : 'text-[#4a3f35] hover:bg-[#f5f0ea]'}`}
                 >{opt.label}</button>
               </li>
             ))}
             {filtered.length === 0 && (
-              <li className="px-3 py-2 text-sm text-gray-400">Không tìm thấy</li>
+              <li className="px-3 py-2 text-sm text-[#a09080]">Không tìm thấy</li>
             )}
           </ul>
         </div>

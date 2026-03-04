@@ -57,13 +57,16 @@ public class SessionService {
         int questionCount = ((Number) config.getOrDefault("questionCount", 10)).intValue();
         String book = (String) config.getOrDefault("book", null);
         String difficultyStr = (String) config.getOrDefault("difficulty", null);
-        List<Question> questions = questionService.getRandomQuestions(book, difficultyStr, questionCount, null);
+        @SuppressWarnings("unchecked")
+        List<String> excludeIds = (List<String>) config.getOrDefault("excludeQuestionIds", null);
+        List<Question> questions = questionService.getRandomQuestions(book, difficultyStr, questionCount, excludeIds);
 
+        List<QuizSessionQuestion> qsqList = new ArrayList<>();
         int order = 0;
         for (Question q : questions) {
-            QuizSessionQuestion qsq = new QuizSessionQuestion(UUID.randomUUID().toString(), session, q, order++, 30);
-            quizSessionQuestionRepository.save(qsq);
+            qsqList.add(new QuizSessionQuestion(UUID.randomUUID().toString(), session, q, order++, 30));
         }
+        quizSessionQuestionRepository.saveAll(qsqList);
 
         session.setTotalQuestions(questions.size());
         quizSessionRepository.save(session);
@@ -237,7 +240,7 @@ public class SessionService {
             dto.put("id", q.getId());
             dto.put("book", q.getBook());
             dto.put("chapter", q.getChapter());
-            dto.put("difficulty", q.getDifficulty().name());
+            dto.put("difficulty", q.getDifficulty() != null ? q.getDifficulty().name() : null);
             dto.put("content", q.getContent());
             dto.put("options", q.getOptions());
             dto.put("type", q.getType().name());

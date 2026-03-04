@@ -67,63 +67,68 @@ export default function Practice() {
   }
 
   return (
-    <div className="min-h-screen neon-bg">
+    <div className="min-h-screen practice-bg py-8">
       {/* Header */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center mb-10">
-          <h1 className="neon-text text-4xl font-bold mb-3">LUYỆN TẬP</h1>
-          <p className="text-gray-300 text-base">Tùy chỉnh bài luyện tập của bạn và bắt đầu ngay</p>
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-8 relative z-10">
+          <h1 className="practice-title">LUYỆN TẬP</h1>
+          <p className="practice-subtitle mt-2">Tùy chỉnh bài luyện tập của bạn và bắt đầu ngay</p>
         </div>
 
         {/* Settings Panel */}
         <form
           onSubmit={(e) => { e.preventDefault(); if (!isLoading && !isBooksLoading) startQuiz() }}
-          className="neon-card p-6 md:p-10 max-w-3xl mx-auto shadow-2xl"
+          className="practice-book-card p-6 md:p-12 max-w-4xl mx-auto"
           aria-label="Thiết lập luyện tập"
         >
           {/* Error banner */}
           {errorMsg && (
-            <div className="mb-8 rounded-lg border border-red-400 bg-red-900/30 px-4 py-3 text-red-200">
-              {errorMsg}
+            <div className="mb-8 flex flex-col items-center justify-center cute-bird-error">
+              <div className="text-4xl mb-2 hover:animate-icon-wiggle cursor-default transition-transform" style={{ filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.2))' }}>🐦‍⬛</div>
+              <div className="bg-white/10 px-6 py-3 rounded-2xl border-2 border-red-500/50 text-red-400 font-bold shadow-lg relative backdrop-blur-md">
+                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-red-500 border-t-2 border-l-2 border-red-500/50 rotate-45"></div>
+                {errorMsg}
+              </div>
             </div>
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10 mb-10">
             {/* Left Column: Primary filters */}
-            <div className="space-y-8">
-              {/* Book Selection */}
+            <div className="space-y-10">
+              {/* Box 1: Chọn sách */}
               <div>
-                <div className="flex items-baseline justify-between mb-2">
-                  <label className="text-lg font-semibold block" style={{ color: '#00FFFF', textShadow: '0 0 8px rgba(0,255,255,0.5)' }}>
-                    <span className="mr-2">📖</span>Chọn sách
+                <div className="flex items-center justify-between mb-3">
+                  <label className="practice-label">
+                    <span className="text-2xl drop-shadow-sm">📜</span> Chọn sách
                   </label>
-                  <span className="text-gray-400 text-xs">{filteredBooks.length} / {books.length} sách</span>
+                  <span className="text-[#00FFFF] font-bold text-sm bg-[#00FFFF]/10 px-3 py-1 rounded-full border border-[#00FFFF]/30 max-h-8 flex items-center shadow-sm">
+                    {filteredBooks.length} / {books.length} sách
+                  </span>
                 </div>
-                <SearchableSelect
-                  options={books.map(b => ({ value: b.name, label: `${b.nameVi} (${b.name})` }))}
-                  value={selectedBook}
-                  onChange={setSelectedBook}
-                  placeholder="Tìm kiếm sách..."
-                  allLabel="Tất cả các sách"
-                />
-                <p className="text-xs text-gray-500 mt-2 italic">Để trống để lấy ngẫu nhiên từ tất cả các sách.</p>
+                <div className="relative z-[100]">
+                  <SearchableSelect
+                    options={books.map(b => ({ value: b.name, label: `${b.nameVi} (${b.name})` }))}
+                    value={selectedBook}
+                    onChange={setSelectedBook}
+                    placeholder="Tìm kiếm sách..."
+                    allLabel="Tất cả các sách"
+                  />
+                </div>
+                <p className="text-sm text-[#00FFFF]/70 mt-3 italic font-medium">💡 Để trống để lấy ngẫu nhiên từ tất cả các sách.</p>
               </div>
 
-              {/* Question Count */}
+              {/* Box 2: Question Count */}
               <div>
-                <label className="text-lg font-semibold block mb-3" style={{ color: '#00FFFF', textShadow: '0 0 8px rgba(0,255,255,0.5)' }}>
-                  <span className="mr-2">#️⃣</span>Số câu hỏi
+                <label className="practice-label mb-3">
+                  <span className="text-2xl drop-shadow-sm">🧮</span> Số câu hỏi
                 </label>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-4">
                   {[5, 10, 20, 50].map(num => (
                     <button
                       key={num}
                       type="button"
                       onClick={() => setQuestionCount(num)}
-                      className={`px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-200 ${questionCount === num
-                        ? 'border-cyan-400 text-black bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.4)] ring-1 ring-cyan-300'
-                        : 'border-gray-700 text-gray-400 bg-gray-800/50 hover:border-cyan-400/50 hover:text-gray-200'
-                        }`}
+                      className={`px-5 py-2 text-lg font-bold practice-option-btn ${questionCount === num ? 'selected' : ''}`}
                     >
                       {num} câu
                     </button>
@@ -133,13 +138,13 @@ export default function Practice() {
             </div>
 
             {/* Right Column: Secondary options */}
-            <div className="space-y-8">
+            <div className="space-y-10 mt-1 md:mt-0">
               {/* Difficulty */}
               <div>
-                <label className="text-lg font-semibold block mb-3" style={{ color: '#00FFFF', textShadow: '0 0 8px rgba(0,255,255,0.5)' }}>
-                  <span className="mr-2">📊</span>Độ khó
+                <label className="practice-label mb-3">
+                  <span className="text-2xl drop-shadow-sm">✨</span> Độ khó
                 </label>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-4">
                   {[
                     { key: 'all', label: 'Tất cả' },
                     { key: 'easy', label: 'Dễ' },
@@ -150,10 +155,7 @@ export default function Practice() {
                       key={d.key}
                       type="button"
                       onClick={() => setSelectedDifficulty(d.key)}
-                      className={`px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-200 ${selectedDifficulty === d.key
-                        ? 'border-cyan-400 text-black bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.4)] ring-1 ring-cyan-300'
-                        : 'border-gray-700 text-gray-400 bg-gray-800/50 hover:border-cyan-400/50 hover:text-gray-200'
-                        }`}
+                      className={`px-5 py-2 text-lg font-bold practice-option-btn ${selectedDifficulty === d.key ? 'selected' : ''}`}
                     >
                       {d.label}
                     </button>
@@ -163,22 +165,21 @@ export default function Practice() {
 
               {/* Show Explanation */}
               <div>
-                <label className="text-lg font-semibold block mb-3" style={{ color: '#00FFFF', textShadow: '0 0 8px rgba(0,255,255,0.5)' }}>
-                  <span className="mr-2">💡</span>Hiển thị giải thích
+                <label className="practice-label mb-3">
+                  <span className="text-2xl drop-shadow-sm">💡</span> Hiển thị giải thích
                 </label>
                 <div
-                  className="flex items-center space-x-3 p-3 rounded-lg bg-gray-800/30 border border-gray-700/50 cursor-pointer hover:bg-gray-800/50 transition-colors"
+                  className="inline-flex items-center space-x-3 p-3 px-5 rounded-2xl cursor-pointer transition-all bg-[#f8f9fa] hover:bg-[#f1f3f5] text-[#4a3f35] w-full border border-transparent hover:border-[#e2e8f0]"
                   onClick={() => setShowExplanation(!showExplanation)}
                 >
-                  <input
-                    type="checkbox"
-                    id="showExplanation"
-                    checked={showExplanation}
-                    onChange={(e) => setShowExplanation(e.target.checked)}
-                    className="w-5 h-5 text-cyan-500 bg-gray-900 border-gray-600 rounded focus:ring-cyan-400 focus:ring-offset-gray-900"
-                    onClick={(e) => e.stopPropagation()}
-                  />
-                  <label htmlFor="showExplanation" className="text-gray-300 cursor-pointer select-none">
+                  <div className={`w-6 h-6 rounded-md border-2 flex items-center justify-center transition-colors shadow-sm ${showExplanation ? 'bg-[#4bbf9f] border-[#4bbf9f]' : 'bg-white border-[#cbd5e1]'}`}>
+                    {showExplanation && (
+                      <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </div>
+                  <label className="text-base font-bold font-['Nunito'] cursor-pointer select-none">
                     Hiển thị giải thích sau mỗi câu
                   </label>
                 </div>
@@ -187,34 +188,29 @@ export default function Practice() {
           </div>
 
           {/* Action Area */}
-          <div className="pt-8 border-t border-white/10 flex flex-col items-center space-y-6">
-            <div className="text-center group">
-              <span className="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-[11px] font-medium tracking-wider mb-2 opacity-80 group-hover:opacity-100 transition-opacity">
-                MẸO: THỬ ĐỘ KHÓ "KHÓ" ĐỂ NHẬN NHIỀU XP HƠN!
-              </span>
+          <div className="pt-12 mt-6 flex flex-col items-center space-y-6 relative">
+            <div className="text-center group relative z-10 w-full flex justify-center">
               <button
                 type="submit"
                 disabled={isLoading || isBooksLoading}
-                className="w-full sm:w-auto px-12 py-5 text-xl font-bold rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed text-[#0E0B1A] transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] shadow-2xl relative overflow-hidden group/btn"
-                style={{ background: 'linear-gradient(135deg, #22c55e 0%, #4ade80 100%)', boxShadow: '0 10px 30px -10px rgba(34,197,94,0.5)' }}
+                className="practice-start-btn disabled:opacity-50 disabled:cursor-not-allowed group/btn"
               >
-                <span className="relative z-10">
+                <span className="relative z-10 flex items-center justify-center gap-3">
                   {isLoading || isBooksLoading ? 'ĐANG TẠO PHIÊN...' : 'BẮT ĐẦU LUYỆN TẬP'}
+                  {!isLoading && !isBooksLoading && <span className="text-2xl group-hover/btn:translate-x-3 group-hover/btn:-translate-y-2 group-hover/btn:scale-110 transition-transform duration-300" style={{ transform: 'rotate(15deg)' }}>🚀</span>}
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:animate-[shimmer_1.5s_infinite] pointer-events-none"></div>
               </button>
             </div>
           </div>
         </form>
 
         {/* Back Button */}
-        <div className="text-center mt-8">
+        <div className="text-center mt-12 mb-8">
           <Link
             to="/"
-            className="px-6 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-[1.02]"
-            style={{ border: '1px solid rgba(34,197,94,0.6)', color: '#86efac', boxShadow: '0 0 0 rgba(0,0,0,0)' }}
+            className="practice-back-btn px-6 py-3 inline-flex items-center gap-2 font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1"
           >
-            ← QUAY LẠI TRANG CHỦ
+            🧭 QUAY LẠI TRANG CHỦ
           </Link>
         </div>
       </div>

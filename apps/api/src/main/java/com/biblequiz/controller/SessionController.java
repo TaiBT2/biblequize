@@ -40,14 +40,20 @@ public class SessionController {
             return ResponseEntity.status(401).body(Map.of("error", "Unauthorized"));
         }
 
-        QuizSession.Mode mode = QuizSession.Mode.valueOf(request.getMode().toLowerCase());
+        QuizSession.Mode mode;
+        try {
+            mode = QuizSession.Mode.valueOf(request.getMode().toLowerCase());
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Invalid mode: " + request.getMode()));
+        }
+
         Map<String, Object> config = new java.util.HashMap<>();
         config.put("questionCount", request.getQuestionCount() != null ? request.getQuestionCount() : 10);
         config.put("book", request.getBook() != null ? request.getBook() : "");
         config.put("difficulty", request.getDifficulty() != null ? request.getDifficulty() : "all");
         config.put("timePerQuestion", request.getTimePerQuestion() != null ? request.getTimePerQuestion() : 30);
         config.put("excludeQuestionIds",
-                request.getExcludeQuestionIds() != null ? request.getExcludeQuestionIds() : "");
+                request.getExcludeQuestionIds() != null ? request.getExcludeQuestionIds() : java.util.List.of());
         config.put("shuffleQuestions", request.getShuffleQuestions() != null ? request.getShuffleQuestions() : true);
         config.put("showExplanation", request.getShowExplanation() != null ? request.getShowExplanation() : true);
 

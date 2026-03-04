@@ -29,15 +29,16 @@ public class QuestionService {
     }
 
     public List<Question> getRandomQuestions(String book, String difficultyStr, int limit, List<String> excludeIds) {
-        // Check cache first
-        String cacheKey = buildCacheKey(book, difficultyStr, limit);
+        // Check cache first (cache is keyed by book+difficulty only, not limit)
         if (excludeIds == null || excludeIds.isEmpty()) {
             Optional<List<Question>> cached = cacheService.getCachedQuestionList(book, difficultyStr);
             if (cached.isPresent()) {
-                return cached.get();
+                List<Question> cachedList = new ArrayList<>(cached.get());
+                Collections.shuffle(cachedList, random);
+                return cachedList.size() <= limit ? cachedList : cachedList.subList(0, limit);
             }
         }
-        
+
         Question.Difficulty difficulty = null;
         if (difficultyStr != null && !difficultyStr.isEmpty() && !"all".equalsIgnoreCase(difficultyStr)) {
             try {
@@ -77,31 +78,38 @@ public class QuestionService {
         int pageIndex = startPage;
         int attempts = 0;
         int maxAttempts = totalPages * 2; // Prevent infinite loop
-        
+
         while (result.size() < limit && attempts < maxAttempts) {
             Page<Question> page;
             if (book != null && !book.isEmpty() && difficulty != null) {
-                page = questionRepository.findByBookAndDifficultyAndIsActiveTrue(book, difficulty, PageRequest.of(pageIndex, pageSize));
+                page = questionRepository.findByBookAndDifficultyAndIsActiveTrue(book, difficulty,
+                        PageRequest.of(pageIndex, pageSize));
             } else if (book != null && !book.isEmpty()) {
                 page = questionRepository.findByBookAndIsActiveTrue(book, PageRequest.of(pageIndex, pageSize));
             } else if (difficulty != null) {
-                page = questionRepository.findByDifficultyAndIsActiveTrue(difficulty, PageRequest.of(pageIndex, pageSize));
+                page = questionRepository.findByDifficultyAndIsActiveTrue(difficulty,
+                        PageRequest.of(pageIndex, pageSize));
             } else {
                 page = questionRepository.findByIsActiveTrue(PageRequest.of(pageIndex, pageSize));
             }
-            
+
             for (Question q : page.getContent()) {
-                if (result.size() >= limit) break;
-                if (excludeSet.contains(q.getId())) continue;
-                if (result.stream().anyMatch(existing -> existing.getId().equals(q.getId()))) continue;
+                if (result.size() >= limit)
+                    break;
+                if (excludeSet.contains(q.getId()))
+                    continue;
+                if (result.stream().anyMatch(existing -> existing.getId().equals(q.getId())))
+                    continue;
                 result.add(q);
                 excludeSet.add(q.getId()); // Add to exclude set to prevent duplicates within this call
             }
-            
-            if (totalPages <= 1) break;
+
+            if (totalPages <= 1)
+                break;
             pageIndex = (pageIndex + 1) % totalPages;
             attempts++;
-            if (pageIndex == startPage) break; // full cycle
+            if (pageIndex == startPage)
+                break; // full cycle
         }
 
         // Shuffle to approximate randomness within collected window
@@ -109,12 +117,12 @@ public class QuestionService {
         if (result.size() > limit) {
             result = new ArrayList<>(result.subList(0, limit));
         }
-        
+
         // Cache the result if no exclusions
         if (excludeIds == null || excludeIds.isEmpty()) {
             cacheService.cacheQuestions(book, difficultyStr, result);
         }
-        
+
         return result;
     }
 
@@ -124,9 +132,10 @@ public class QuestionService {
         if (cached.isPresent()) {
             return cached.get();
         }
-        
+
         long total = questionRepository.countByIsActiveTrue();
-        if (total == 0) return null;
+        if (total == 0)
+            return null;
         // Deterministic daily index based on date
         long seed = Long.parseLong(java.time.LocalDate.now().format(java.time.format.DateTimeFormatter.BASIC_ISO_DATE));
         Random seeded = new Random(seed);
@@ -135,18 +144,13 @@ public class QuestionService {
         if (page.isEmpty()) {
             return questionRepository.findByIsActiveTrue(PageRequest.of(0, 1)).stream().findFirst().orElse(null);
         }
-        
+
         Question question = page.getContent().get(0);
-        
+
         // Cache the result
         cacheService.cacheQuestionOfTheDay(language, question);
-        
+
         return question;
     }
-    
-    private String buildCacheKey(String book, String difficulty, int limit) {
-        return String.format("%s:%s:%d", book != null ? book : "all", difficulty != null ? difficulty : "all", limit);
-    }
+
 }
-
-

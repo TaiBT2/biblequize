@@ -4,13 +4,15 @@ package com.biblequiz.controller;
 import com.biblequiz.service.AuthCodeService;
 import com.biblequiz.service.AuthService;
 import com.biblequiz.service.JwtService;
+import com.biblequiz.service.UserService;
 import com.biblequiz.entity.User;
+import io.jsonwebtoken.JwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.client.registration.ClientRegistration;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +22,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*")
 public class AuthController {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
@@ -31,6 +32,8 @@ public class AuthController {
     private AuthCodeService authCodeService;
     @Autowired
     private JwtService jwtService;
+    @Autowired
+    private UserService userService;
     @Autowired
     private ClientRegistrationRepository clientRegistrationRepository;
 
@@ -93,10 +96,25 @@ public class AuthController {
                     "error", "INVALID_REFRESH_TOKEN",
                     "message", "Refresh token is required"));
         }
-        // TODO: Implement full refresh token rotation
-        return ResponseEntity.ok(Map.of(
-                "accessToken", "new_access_token",
-                "refreshToken", "new_refresh_token"));
+        try {
+            String username = jwtService.extractUsername(refreshToken);
+            UserDetails userDetails = userService.loadUserByUsername(username);
+            if (!jwtService.isTokenValid(refreshToken, userDetails)) {
+                return ResponseEntity.status(401).body(Map.of(
+                        "error", "INVALID_REFRESH_TOKEN",
+                        "message", "Refresh token is invalid or expired. Please log in again."));
+            }
+            String newAccessToken = jwtService.generateToken(userDetails);
+            String newRefreshToken = jwtService.generateRefreshToken(userDetails);
+            return ResponseEntity.ok(Map.of(
+                    "accessToken", newAccessToken,
+                    "refreshToken", newRefreshToken));
+        } catch (JwtException | org.springframework.security.core.userdetails.UsernameNotFoundException e) {
+            logger.warn("[AUTH] Refresh token validation failed: {}", e.getMessage());
+            return ResponseEntity.status(401).body(Map.of(
+                    "error", "INVALID_REFRESH_TOKEN",
+                    "message", "Refresh token is invalid or expired. Please log in again."));
+        }
     }
 
     @PostMapping("/logout")
