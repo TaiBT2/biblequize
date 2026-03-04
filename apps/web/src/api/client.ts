@@ -8,7 +8,7 @@ export const api = axios.create({
 
 // Request interceptor to add JWT token
 api.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  (config: any) => {
     const token = localStorage.getItem('accessToken')
     if (isDebug()) {
       console.log('=== API CLIENT: Request Interceptor ===')
@@ -16,7 +16,7 @@ api.interceptors.request.use(
       console.log('Token exists:', !!token)
       console.log('Token preview:', token ? token.substring(0, 20) + '...' : 'null')
     }
-    
+
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`
       if (isDebug()) {
@@ -45,7 +45,7 @@ api.interceptors.response.use(
         const refreshToken = localStorage.getItem('refreshToken')
         if (refreshToken) {
           // Try to refresh the token
-          const response = await axios.post(`${api.defaults.baseURL}/auth/refresh`, {
+          const response = await axios.post(`${api.defaults.baseURL}/api/auth/refresh`, {
             refreshToken
           })
 

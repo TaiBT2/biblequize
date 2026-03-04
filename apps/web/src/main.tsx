@@ -19,6 +19,10 @@ import AuthCallback from './pages/AuthCallback'
 import AdminLayout from './layouts/AdminLayout'
 import AIQuestionGenerator from './pages/admin/AIQuestionGenerator'
 import QuestionsAdmin from './pages/admin/Questions'
+import UsersAdmin from './pages/admin/Users'
+import RankingsAdmin from './pages/admin/Rankings'
+import EventsAdmin from './pages/admin/Events'
+import RequireAdmin from './contexts/RequireAdmin'
 import Review from './pages/Review'
 import Achievements from './pages/Achievements'
 import Leaderboard from './pages/Leaderboard'
@@ -48,9 +52,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Route path="/rooms" element={<RequireAuth><Rooms /></RequireAuth>} />
                 <Route path="/room/:roomId/lobby" element={<RequireAuth><RoomLobby /></RequireAuth>} />
                 <Route path="/room/:roomId/quiz" element={<RequireAuth><RoomQuiz /></RequireAuth>} />
-                <Route path="/admin" element={<RequireAuth><AdminLayout /></RequireAuth>}>
-                  <Route path="ai-generator" element={<AIQuestionGenerator />} />
+                <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
+                  <Route index element={<UsersAdmin />} />
+                  <Route path="users" element={<UsersAdmin />} />
                   <Route path="questions" element={<QuestionsAdmin />} />
+                  <Route path="rankings" element={<RankingsAdmin />} />
+                  <Route path="events" element={<EventsAdmin />} />
+                  <Route path="ai-generator" element={<AIQuestionGenerator />} />
                 </Route>
               </Routes>
             </BrowserRouter>

@@ -22,12 +22,12 @@ public class SessionService {
     private final QuestionService questionService;
 
     public SessionService(QuizSessionRepository quizSessionRepository,
-                          QuizSessionQuestionRepository quizSessionQuestionRepository,
-                          QuestionRepository questionRepository,
-                          AnswerRepository answerRepository,
-                          UserRepository userRepository,
-                          ObjectMapper objectMapper,
-                          QuestionService questionService) {
+            QuizSessionQuestionRepository quizSessionQuestionRepository,
+            QuestionRepository questionRepository,
+            AnswerRepository answerRepository,
+            UserRepository userRepository,
+            ObjectMapper objectMapper,
+            QuestionService questionService) {
         this.quizSessionRepository = quizSessionRepository;
         this.quizSessionQuestionRepository = quizSessionQuestionRepository;
         this.questionRepository = questionRepository;
@@ -75,19 +75,25 @@ public class SessionService {
     }
 
     @Transactional
-    public Map<String, Object> submitAnswer(String sessionId, String userId, String questionId, Object answerPayload, int clientElapsedMs) {
+    public Map<String, Object> submitAnswer(String sessionId, String userId, String questionId, Object answerPayload,
+            int clientElapsedMs) {
         QuizSession session = quizSessionRepository.findById(sessionId).orElseThrow();
         User user = userRepository.findById(userId).orElseThrow();
 
         Question question = questionRepository.findById(questionId).orElseThrow();
 
-        Optional<Answer> existing = answerRepository.findBySessionIdAndQuestionIdAndUserId(sessionId, questionId, userId);
+        Optional<Answer> existing = answerRepository.findBySessionIdAndQuestionIdAndUserId(sessionId, questionId,
+                userId);
         if (existing.isPresent()) {
             return toAnswerResult(existing.get(), question);
         }
 
         boolean isCorrect = validateAnswer(question, answerPayload);
-        int scoreDelta = isCorrect ? (10 + computeSpeedBonus(clientElapsedMs, 30)) : 0;
+
+        // FIX #6/#7: Server is the sole source of truth for scoring.
+        // Elapsed time is capped to avoid inflated speed bonuses from spoofed clients.
+        int safedElapsedMs = Math.min(Math.max(clientElapsedMs, 0), 35_000);
+        int scoreDelta = isCorrect ? computeScore(question, safedElapsedMs) : 0;
 
         String answerJson;
         try {
@@ -102,9 +108,8 @@ public class SessionService {
                 user,
                 answerJson,
                 isCorrect,
-                clientElapsedMs,
-                scoreDelta
-        );
+                safedElapsedMs, // store validated elapsed time
+                scoreDelta);
         answerRepository.save(answer);
 
         if (isCorrect) {
@@ -138,8 +143,7 @@ public class SessionService {
         dto.put("questions", items.stream().map(i -> Map.of(
                 "id", i.getQuestion().getId(),
                 "order", i.getOrderIndex(),
-                "timeLimitSec", i.getTimeLimitSec()
-        )).toList());
+                "timeLimitSec", i.getTimeLimitSec())).toList());
         return dto;
     }
 
@@ -176,7 +180,8 @@ public class SessionService {
             item.put("scoreEarned", a.getScoreEarned());
             review.add(item);
 
-            if (Boolean.TRUE.equals(a.getIsCorrect())) correctAnswers++;
+            if (Boolean.TRUE.equals(a.getIsCorrect()))
+                correctAnswers++;
             totalScore += Optional.ofNullable(a.getScoreEarned()).orElse(0);
             int elapsed = Optional.ofNullable(a.getElapsedMs()).orElse(0);
             totalTime += elapsed;
@@ -194,7 +199,8 @@ public class SessionService {
             bucket.put("total", ((Integer) bucket.get("total")) + 1);
             if (Boolean.TRUE.equals(a.getIsCorrect())) {
                 bucket.put("correct", ((Integer) bucket.get("correct")) + 1);
-                bucket.put("score", ((Integer) bucket.get("score")) + Optional.ofNullable(a.getScoreEarned()).orElse(0));
+                bucket.put("score",
+                        ((Integer) bucket.get("score")) + Optional.ofNullable(a.getScoreEarned()).orElse(0));
             }
         }
 
@@ -244,15 +250,39 @@ public class SessionService {
     }
 
     private User createUserFromPrincipal(String principalName) {
+        // FIX #14: derive provider from principalName heuristic; default to "local"
+        // (not hardcoded "google") when we cannot determine the actual provider.
         String email = principalName;
         String name = principalName;
         if (principalName != null && principalName.contains("@")) {
             name = principalName.substring(0, principalName.indexOf('@'));
         }
-        User user = new User(UUID.randomUUID().toString(), name, email, "google");
+        // Best-effort: if you need real provider tracking, pass it as a parameter.
+        String provider = "local";
+        User user = new User(UUID.randomUUID().toString(), name, email, provider);
         return userRepository.save(user);
     }
 
+    private int computeScore(Question question, int elapsedMs) {
+        // FIX #6: Mirror the frontend scoring logic so DB score == displayed score.
+        int base = switch (question.getDifficulty()) {
+            case medium -> 20;
+            case hard -> 30;
+            default -> 10; // easy
+        };
+        int timeLeftMs = Math.max(0, 30_000 - elapsedMs);
+        int timeLeftSec = timeLeftMs / 1000;
+        int timeBonus = timeLeftSec / 2; // up to 15 pts
+        int perfectBonus = timeLeftSec >= 25 ? 5 : 0; // answered in < 5 s
+        double multiplier = switch (question.getDifficulty()) {
+            case hard -> 1.5;
+            case medium -> 1.2;
+            default -> 1.0;
+        };
+        return (int) Math.floor((base + timeBonus + perfectBonus) * multiplier);
+    }
+
+    @Deprecated(forRemoval = true)
     private int computeSpeedBonus(int elapsedMs, int timeLimitSec) {
         int remaining = Math.max(0, timeLimitSec * 1000 - elapsedMs);
         return (int) Math.floor(remaining / 500.0);
@@ -275,22 +305,34 @@ public class SessionService {
             return correct != null && correct.size() == 1 && chosen == correct.get(0);
         }
         if (type == Question.Type.multiple_choice_multi) {
-            if (!(answerPayload instanceof List<?>)) return false;
+            if (!(answerPayload instanceof List<?>))
+                return false;
             List<?> raw = (List<?>) answerPayload;
             List<Integer> chosen = new ArrayList<>();
             for (Object o : raw) {
-                if (o instanceof Number) chosen.add(((Number) o).intValue());
+                if (o instanceof Number)
+                    chosen.add(((Number) o).intValue());
             }
-            List<Integer> correct = new ArrayList<>(Optional.ofNullable(question.getCorrectAnswer()).orElse(Collections.emptyList()));
+            List<Integer> correct = new ArrayList<>(
+                    Optional.ofNullable(question.getCorrectAnswer()).orElse(Collections.emptyList()));
             Collections.sort(chosen);
             Collections.sort(correct);
             return chosen.equals(correct);
         }
         if (type == Question.Type.fill_in_blank) {
+            // FIX #4: fill_in_blank must compare against the actual answer, not the
+            // explanation field. Store the expected text answer in correctAnswerText on
+            // the Question entity, or fall back to the first correctAnswer index cast to
+            // a text representation. (explanation is for showing after the quiz only.)
+            String expectedText = question.getCorrectAnswerText(); // preferred
+            if (expectedText == null || expectedText.isBlank()) {
+                // Fallback: join correctAnswer indices as a comma-separated string
+                List<Integer> ca = question.getCorrectAnswer();
+                expectedText = ca != null ? ca.stream().map(String::valueOf)
+                        .reduce((a, b) -> a + "," + b).orElse("") : "";
+            }
             String ans = String.valueOf(answerPayload).trim().toLowerCase();
-            String expected = String.valueOf(Optional.ofNullable(question.getExplanation()).orElse(""))
-                    .trim().toLowerCase();
-            return Objects.equals(ans, expected);
+            return ans.equals(expectedText.trim().toLowerCase());
         }
         return false;
     }
@@ -305,5 +347,3 @@ public class SessionService {
     }
 
 }
-
-

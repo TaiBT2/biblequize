@@ -4,7 +4,10 @@ import com.biblequiz.entity.User;
 import com.biblequiz.entity.AuthIdentity;
 import com.biblequiz.repository.UserRepository;
 import com.biblequiz.repository.AuthIdentityRepository;
+import com.biblequiz.service.AuthCodeService;
 import com.biblequiz.service.JwtService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -18,66 +21,70 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * OAuth2 success handler.
+ *
+ * Security fix: tokens are NO LONGER embedded in the redirect URL.
+ * Instead, we store them in Redis under a short-lived opaque code and
+ * redirect with only that code. The frontend exchanges the code for
+ * tokens via POST /auth/exchange — keeping tokens out of browser history,
+ * server access logs, and Referer headers.
+ */
 @Component
 public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
+    private static final Logger logger = LoggerFactory.getLogger(OAuth2SuccessHandler.class);
+
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private AuthIdentityRepository authIdentityRepository;
-
     @Autowired
     private JwtService jwtService;
+    @Autowired
+    private AuthCodeService authCodeService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-                                      Authentication authentication) throws IOException, ServletException {
-        
+            Authentication authentication) throws IOException, ServletException {
         try {
-            System.out.println("[OAUTH2][SUCCESS] Starting authentication success handler");
-            
             OAuth2User oauth2User = (OAuth2User) authentication.getPrincipal();
             Map<String, Object> attributes = oauth2User.getAttributes();
-            
+
             // Determine provider from request URI
-            String requestURI = request.getRequestURI();
-            String provider = "google";
-            if (requestURI.contains("facebook")) {
-                provider = "facebook";
-            }
-            
+            String provider = detectProvider(request.getRequestURI());
             String providerUserId = getProviderUserId(attributes, provider);
-            String email = getEmail(attributes, provider);
-            String name = getName(attributes, provider);
+            String email = getEmail(attributes);
+            String name = getName(attributes);
             String avatarUrl = getAvatarUrl(attributes, provider);
-            
-            System.out.println("[OAUTH2][SUCCESS] User info: " + name + " - " + email);
-            
-            // Check if user exists
+
+            logger.info("[OAUTH2] Login: provider={}, email={}", provider, email);
+
+            // Find or create user
             User user = userRepository.findByEmail(email).orElse(null);
-            
             if (user == null) {
-                // Create new user
                 user = new User();
                 user.setId(UUID.randomUUID().toString());
                 user.setName(name);
                 user.setEmail(email);
                 user.setAvatarUrl(avatarUrl);
                 user.setProvider(provider);
-                user.setRole("USER");
+                user.setRole(isAdminEmail(email) ? "ADMIN" : "USER");
                 user = userRepository.save(user);
-                System.out.println("[OAUTH2][SUCCESS] Created new user: " + user.getId());
+                logger.info("[OAUTH2] Created new user id={}", user.getId());
             } else {
-                System.out.println("[OAUTH2][SUCCESS] Found existing user: " + user.getId());
+                // Enforce admin whitelist upgrades; never auto-downgrade existing admins
+                if (isAdminEmail(email) && !"ADMIN".equals(user.getRole())) {
+                    user.setRole("ADMIN");
+                    userRepository.save(user);
+                    logger.info("[OAUTH2] Upgraded user to ADMIN: {}", email);
+                }
             }
-            
+
             // Create or update auth identity
             AuthIdentity authIdentity = authIdentityRepository
-                .findByProviderAndProviderUserId(provider, providerUserId)
-                .orElse(new AuthIdentity());
-            
-            // Only set ID if it's a new entity
+                    .findByProviderAndProviderUserId(provider, providerUserId)
+                    .orElse(new AuthIdentity());
             if (authIdentity.getId() == null) {
                 authIdentity.setId(UUID.randomUUID().toString());
             }
@@ -85,82 +92,95 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
             authIdentity.setProvider(provider);
             authIdentity.setProviderUserId(providerUserId);
             authIdentityRepository.save(authIdentity);
-            System.out.println("[OAUTH2][SUCCESS] Saved auth identity");
-            
-            // Generate JWT token using username (email)
+
+            // Generate tokens
             String token = jwtService.generateToken(user.getEmail());
             String refreshToken = jwtService.generateRefreshToken(user.getEmail());
-            System.out.println("[OAUTH2][SUCCESS] Generated JWT tokens");
-            
-                  // Redirect to frontend callback page with tokens
-                  String frontendUrl = System.getenv("FRONTEND_URL");
-                  if (frontendUrl == null || frontendUrl.isEmpty()) {
-                      frontendUrl = "http://localhost:5173"; // Default for development
-                  }
-                  System.out.println("[OAUTH2][SUCCESS] Frontend URL: " + frontendUrl);
-                  String safeName = java.net.URLEncoder.encode(name == null ? "User" : name, java.nio.charset.StandardCharsets.UTF_8);
-                  String safeEmail = java.net.URLEncoder.encode(email == null ? "" : email, java.nio.charset.StandardCharsets.UTF_8);
-                  String safeAvatar = java.net.URLEncoder.encode(avatarUrl == null ? "" : avatarUrl, java.nio.charset.StandardCharsets.UTF_8);
-                  String redirectUrl = String.format("%s/auth/callback?token=%s&refreshToken=%s&name=%s&email=%s&avatar=%s",
-                                                    frontendUrl, token, refreshToken, safeName, safeEmail, safeAvatar);
-            
-            System.out.println("[OAUTH2][SUCCESS] Redirecting to: " + redirectUrl);
+
+            // ------------------------------------------------------------------
+            // FIX #1: Store tokens in Redis, redirect with opaque one-time code
+            // ------------------------------------------------------------------
+            String code = authCodeService.createCode(Map.of(
+                    "token", token,
+                    "refreshToken", refreshToken,
+                    "name", name != null ? name : "User",
+                    "email", email != null ? email : "",
+                    "avatar", avatarUrl != null ? avatarUrl : "",
+                    "role", user.getRole()));
+
+            String frontendUrl = System.getenv("FRONTEND_URL");
+            if (frontendUrl == null || frontendUrl.isBlank()) {
+                frontendUrl = "http://localhost:5173";
+            }
+
+            // Only the one-time code is in the URL — tokens stay off the wire
+            String redirectUrl = frontendUrl + "/auth/callback?code=" + code;
+            logger.info("[OAUTH2] Redirecting to callback with code (tokens stored in Redis)");
             getRedirectStrategy().sendRedirect(request, response, redirectUrl);
-            
+
         } catch (Exception e) {
-            System.err.println("[OAUTH2][SUCCESS] Error in success handler: " + e.getMessage());
-            e.printStackTrace();
-            // Redirect to error page
-            getRedirectStrategy().sendRedirect(request, response, "/error?error=oauth2_success_handler_error");
+            logger.error("[OAUTH2] Error in success handler", e);
+            getRedirectStrategy().sendRedirect(request, response, "/error?error=oauth2_error");
         }
     }
-    
+
+    // ---------- helpers ----------
+
+    private String detectProvider(String uri) {
+        if (uri != null && uri.contains("facebook"))
+            return "facebook";
+        return "google";
+    }
+
+    /**
+     * FIX #3: NO hardcoded admin email fallback.
+     * Admin access is exclusively controlled via the ADMIN_EMAILS env var.
+     */
+    private boolean isAdminEmail(String email) {
+        if (email == null)
+            return false;
+        String env = System.getenv("ADMIN_EMAILS");
+        if (env == null || env.isBlank())
+            return false;
+        for (String part : env.split(",")) {
+            if (email.equalsIgnoreCase(part.trim()))
+                return true;
+        }
+        return false;
+    }
+
     private String getProviderUserId(Map<String, Object> attributes, String provider) {
-        if ("google".equals(provider)) {
-            Object sub = attributes.get("sub");
-            return sub != null ? sub.toString() : null; // Google uses 'sub' instead of 'id'
-        } else if ("facebook".equals(provider)) {
-            Object id = attributes.get("id");
-            return id != null ? id.toString() : null;
-        }
-        return null;
+        Object id = "facebook".equals(provider) ? attributes.get("id") : attributes.get("sub");
+        return id != null ? id.toString() : null;
     }
-    
-    private String getEmail(Map<String, Object> attributes, String provider) {
-        if ("google".equals(provider)) {
-            Object email = attributes.get("email");
-            return email != null ? email.toString() : null;
-        } else if ("facebook".equals(provider)) {
-            Object email = attributes.get("email");
-            return email != null ? email.toString() : null;
-        }
-        return null;
+
+    /** Both Google and Facebook expose "email" at the top level. */
+    private String getEmail(Map<String, Object> attributes) {
+        Object email = attributes.get("email");
+        return email != null ? email.toString() : null;
     }
-    
-    private String getName(Map<String, Object> attributes, String provider) {
-        if ("google".equals(provider)) {
-            Object name = attributes.get("name");
-            return name != null ? name.toString() : "User";
-        } else if ("facebook".equals(provider)) {
-            Object name = attributes.get("name");
-            return name != null ? name.toString() : "User";
-        }
-        return "User";
+
+    /** Both Google and Facebook expose "name" at the top level. */
+    private String getName(Map<String, Object> attributes) {
+        Object name = attributes.get("name");
+        return name != null ? name.toString() : "User";
     }
-    
+
     private String getAvatarUrl(Map<String, Object> attributes, String provider) {
-        if ("google".equals(provider)) {
-            Object picture = attributes.get("picture");
-            return picture != null ? picture.toString() : null;
-        } else if ("facebook".equals(provider)) {
+        if ("facebook".equals(provider)) {
+            @SuppressWarnings("unchecked")
             Map<String, Object> picture = (Map<String, Object>) attributes.get("picture");
             if (picture != null) {
+                @SuppressWarnings("unchecked")
                 Map<String, Object> data = (Map<String, Object>) picture.get("data");
-                if (data != null) {
+                if (data != null && data.get("url") != null) {
                     return data.get("url").toString();
                 }
             }
+            return null;
         }
-        return null;
+        // Google
+        Object picture = attributes.get("picture");
+        return picture != null ? picture.toString() : null;
     }
 }

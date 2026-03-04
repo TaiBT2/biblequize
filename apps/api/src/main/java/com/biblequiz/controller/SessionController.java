@@ -17,7 +17,7 @@ import java.security.Principal;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/sessions")
+@RequestMapping("/api/sessions")
 @Tag(name = "Sessions", description = "Quiz session management endpoints")
 public class SessionController {
 
@@ -39,18 +39,18 @@ public class SessionController {
         if (userId == null || userId.isEmpty()) {
             return ResponseEntity.status(401).body(Map.of("error", "Unauthorized"));
         }
-        
-        QuizSession.Mode mode = QuizSession.Mode.valueOf(request.getMode().toUpperCase());
-        Map<String, Object> config = Map.of(
-                "questionCount", request.getQuestionCount(),
-                "book", request.getBook() != null ? request.getBook() : "",
-                "difficulty", request.getDifficulty(),
-                "timePerQuestion", request.getTimePerQuestion(),
-                "excludeQuestionIds", request.getExcludeQuestionIds() != null ? request.getExcludeQuestionIds() : "",
-                "shuffleQuestions", request.getShuffleQuestions(),
-                "showExplanation", request.getShowExplanation()
-        );
-        
+
+        QuizSession.Mode mode = QuizSession.Mode.valueOf(request.getMode().toLowerCase());
+        Map<String, Object> config = new java.util.HashMap<>();
+        config.put("questionCount", request.getQuestionCount() != null ? request.getQuestionCount() : 10);
+        config.put("book", request.getBook() != null ? request.getBook() : "");
+        config.put("difficulty", request.getDifficulty() != null ? request.getDifficulty() : "all");
+        config.put("timePerQuestion", request.getTimePerQuestion() != null ? request.getTimePerQuestion() : 30);
+        config.put("excludeQuestionIds",
+                request.getExcludeQuestionIds() != null ? request.getExcludeQuestionIds() : "");
+        config.put("shuffleQuestions", request.getShuffleQuestions() != null ? request.getShuffleQuestions() : true);
+        config.put("showExplanation", request.getShowExplanation() != null ? request.getShowExplanation() : true);
+
         return ResponseEntity.ok(sessionService.createSession(userId, mode, config));
     }
 
@@ -63,20 +63,19 @@ public class SessionController {
             @ApiResponse(responseCode = "404", description = "Session or question not found")
     })
     public ResponseEntity<?> answer(@Parameter(description = "Session ID") @PathVariable("id") String sessionId,
-                                    @Valid @RequestBody SubmitAnswerRequest request,
-                                    Principal principal) {
+            @Valid @RequestBody SubmitAnswerRequest request,
+            Principal principal) {
         String userId = principal != null ? principal.getName() : null;
         if (userId == null || userId.isEmpty()) {
             return ResponseEntity.status(401).body(Map.of("error", "Unauthorized"));
         }
-        
+
         return ResponseEntity.ok(sessionService.submitAnswer(
-                sessionId, 
-                userId, 
-                request.getQuestionId(), 
-                request.getAnswer(), 
-                request.getElapsedMs()
-        ));
+                sessionId,
+                userId,
+                request.getQuestionId(),
+                request.getAnswer(),
+                request.getElapsedMs()));
     }
 
     @GetMapping("/{id}")
@@ -89,5 +88,3 @@ public class SessionController {
         return ResponseEntity.ok(sessionService.getReview(sessionId));
     }
 }
-
-

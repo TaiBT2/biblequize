@@ -40,10 +40,21 @@ interface QuizStats {
   questionScores: number[]
 }
 
+// FIX #16: Typed interface instead of `as any`
+interface QuizPageSettings {
+  sessionId?: string
+  questions?: Question[]
+  mode?: 'practice' | 'ranked' | 'room'
+  book?: string
+  difficulty?: string
+  showExplanation?: boolean
+  isRanked?: boolean
+}
+
 const Quiz: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const settings = location.state as any
+  const settings = location.state as QuizPageSettings | null
 
   const [questions, setQuestions] = useState<Question[]>([])
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -92,7 +103,7 @@ const Quiz: React.FC = () => {
       gain.connect(ctx.destination)
       osc.start()
       setTimeout(() => { osc.stop(); ctx.close() }, durationMs)
-    } catch {}
+    } catch { }
   }
   const playCorrectSound = () => {
     playTone(880, 120, 'sine', 0.12)
@@ -106,7 +117,7 @@ const Quiz: React.FC = () => {
     const fetchBackendStats = async () => {
       if (!settings?.sessionId) return
       try {
-        const res = await api.get(`/sessions/${settings.sessionId}/review`)
+        const res = await api.get(`/api/sessions/${settings.sessionId}/review`)
         const serverStats = res.data?.stats
         if (serverStats) {
           setQuizStats(prev => ({
@@ -172,43 +183,27 @@ const Quiz: React.FC = () => {
 
   const handleAnswerSelect = async (answerIndex: number) => {
     if (showResult) return
-    
+
     setSelectedAnswer(answerIndex)
     setShowResult(true)
-    
+
     // Calculate time taken for this question
     const timeTaken = 30 - timeLeft
     let isCorrect = false
     let rankedResponse: any = null
     try {
       if (settings?.mode === 'ranked' && settings?.sessionId) {
-        // Ranked mode: submit to ranked progress endpoint
-        console.log('=== FRONTEND: Making API call ===')
-        console.log('URL:', `/api/ranked/sessions/${settings.sessionId}/answer`)
-        console.log('Payload:', {
-          questionId: currentQuestion.id,
-          answer: answerIndex,
-          clientElapsedMs: (30 - timeLeft) * 1000,
-          isCorrect: answerIndex === currentQuestion.correctAnswer[0]
-        })
-        
         const res = await api.post(`/api/ranked/sessions/${settings.sessionId}/answer`, {
           questionId: currentQuestion.id,
           answer: answerIndex,
-          clientElapsedMs: (30 - timeLeft) * 1000,
-          isCorrect: answerIndex === currentQuestion.correctAnswer[0]
+          clientElapsedMs: (30 - timeLeft) * 1000
+          // FIX #5: Removed client-sent isCorrect — server validates independently
         })
-        
-        console.log('=== FRONTEND: API Response ===')
-        console.log('Response:', res.data)
-        console.log('questionsCounted in response:', res.data?.questionsCounted)
-        console.log('pointsToday in response:', res.data?.pointsToday)
-        console.log('livesRemaining in response:', res.data?.livesRemaining)
-        
+
         const data = res.data
         rankedResponse = data
         isCorrect = answerIndex === currentQuestion.correctAnswer[0]
-        
+
         // Update askedQuestionIds in localStorage for ranked mode
         try {
           const today = new Date().toISOString().slice(0, 10)
@@ -221,7 +216,7 @@ const Quiz: React.FC = () => {
         } catch (e) {
           console.warn('Failed to update askedQuestionIds:', e)
         }
-        
+
         // If lives dropped to 0 -> end quiz immediately
         if (typeof data.livesRemaining === 'number' && data.livesRemaining <= 0) {
           setQuizStats(prev => ({
@@ -233,11 +228,11 @@ const Quiz: React.FC = () => {
           setIsQuizCompleted(true)
           return
         }
-        
+
         // Update ranked status in localStorage for real-time display
         try {
           const today = new Date().toISOString().slice(0, 10)
-          
+
           // Simple and direct update
           const updatedData = {
             date: today,
@@ -247,27 +242,20 @@ const Quiz: React.FC = () => {
             cap: 500,
             dailyLives: 30
           }
-          
-          // Update all localStorage keys with the same data
+
           localStorage.setItem('rankedSnapshot', JSON.stringify(updatedData))
           localStorage.setItem('rankedProgress', JSON.stringify(updatedData))
           localStorage.setItem('rankedStatus', JSON.stringify(updatedData))
-          
-          // Create backup for recovery in case of localStorage clear
           localStorage.setItem('sessionBackup', JSON.stringify(updatedData))
-          
-          console.log('=== UPDATING LOCALSTORAGE ===')
-          console.log('Updated data:', updatedData)
-          console.log('questionsCounted:', data.questionsCounted)
-          
+
           // Dispatch custom event for real-time updates
-          window.dispatchEvent(new CustomEvent('rankedStatusUpdate', { 
-            detail: updatedData 
+          window.dispatchEvent(new CustomEvent('rankedStatusUpdate', {
+            detail: updatedData
           }))
         } catch (e) {
           console.warn('Failed to update ranked status:', e)
         }
-        
+
         // Additional sync to server to prevent data loss
         try {
           await api.post('/api/ranked/sync-progress', {
@@ -281,10 +269,10 @@ const Quiz: React.FC = () => {
           })
           console.log('=== SYNCED TO SERVER ===')
         } catch (syncError) {
-          console.warn('Failed to sync progress to server:', syncError)
+          // non-critical — progress already persisted on server
         }
       } else if (settings?.sessionId) {
-        const res = await api.post(`/sessions/${settings.sessionId}/answer`, {
+        const res = await api.post(`/api/sessions/${settings.sessionId}/answer`, {
           questionId: currentQuestion.id,
           answer: answerIndex,
           clientElapsedMs: (30 - timeLeft) * 1000
@@ -300,26 +288,26 @@ const Quiz: React.FC = () => {
       // Fallback local check if API fails
       isCorrect = answerIndex === currentQuestion.correctAnswer[0]
     }
-    
+
     // Enhanced scoring system
     let questionScore = 0
     if (isCorrect) {
       // Base score by difficulty
-      const baseScore = currentQuestion.difficulty === 'easy' ? 10 : 
-                       currentQuestion.difficulty === 'medium' ? 20 : 30
-      
+      const baseScore = currentQuestion.difficulty === 'easy' ? 10 :
+        currentQuestion.difficulty === 'medium' ? 20 : 30
+
       // Time bonus (more points for faster answers)
       const timeBonus = Math.floor(timeLeft / 2) // Up to 15 points for quick answers
-      
+
       // Perfect time bonus (answered in first 5 seconds)
       const perfectBonus = timeLeft >= 25 ? 5 : 0
-      
+
       // Difficulty multiplier
-      const difficultyMultiplier = currentQuestion.difficulty === 'hard' ? 1.5 : 
-                                  currentQuestion.difficulty === 'medium' ? 1.2 : 1
-      
+      const difficultyMultiplier = currentQuestion.difficulty === 'hard' ? 1.5 :
+        currentQuestion.difficulty === 'medium' ? 1.2 : 1
+
       questionScore = Math.floor((baseScore + timeBonus + perfectBonus) * difficultyMultiplier)
-      
+
       setScore(score + questionScore)
       setScoreBump(true)
       setTimeout(() => setScoreBump(false), 250)
@@ -328,20 +316,20 @@ const Quiz: React.FC = () => {
     } else {
       playWrongSound()
     }
-    
+
     // Update user answers and question scores
     const newUserAnswers = [...userAnswers]
     newUserAnswers[currentQuestionIndex] = answerIndex
     setUserAnswers(newUserAnswers)
-    
+
     const newQuestionScores = [...questionScores]
     newQuestionScores[currentQuestionIndex] = questionScore
     setQuestionScores(newQuestionScores)
-    
+
     // Update quiz stats
     setQuizStats(prev => {
       const newStats = { ...prev }
-      
+
       // Update difficulty breakdown
       const difficulty = currentQuestion.difficulty as 'easy' | 'medium' | 'hard'
       newStats.difficultyBreakdown[difficulty].total += 1
@@ -349,30 +337,28 @@ const Quiz: React.FC = () => {
         newStats.difficultyBreakdown[difficulty].correct += 1
         newStats.difficultyBreakdown[difficulty].score += questionScore
       }
-      
+
       // Update time tracking
       newStats.timePerQuestion.push(timeTaken)
       newStats.totalTime = Date.now() - quizStartTime
       newStats.averageTime = newStats.timePerQuestion.reduce((a, b) => a + b, 0) / newStats.timePerQuestion.length
-      
+
       // Update overall stats
       newStats.totalScore = score + questionScore
       newStats.correctAnswers = correctAnswers + (isCorrect ? 1 : 0)
       newStats.accuracy = (newStats.correctAnswers / newStats.totalQuestions) * 100
-      
+
       // Update arrays
       newStats.userAnswers = newUserAnswers
       newStats.questionScores = newQuestionScores
-      
+
       return newStats
     })
 
     // Update optimistic ranked snapshot AFTER computing questionScore for accurate points
     if (settings?.mode === 'ranked' && settings?.sessionId) {
       try {
-        const today = new Date().toISOString().slice(0,10)
-        
-        // Always use server response if available
+        const today = new Date().toISOString().slice(0, 10)
         if (rankedResponse) {
           const finalSnap = {
             date: today,
@@ -382,17 +368,10 @@ const Quiz: React.FC = () => {
             cap: 500,
             dailyLives: 30
           }
-          console.log('[RANKED] Using server response:', finalSnap)
           localStorage.setItem('rankedSnapshot', JSON.stringify(finalSnap))
-          
-          // Dispatch update event for real-time UI updates
-          window.dispatchEvent(new CustomEvent('rankedStatusUpdate', { 
-            detail: finalSnap 
-          }))
+          window.dispatchEvent(new CustomEvent('rankedStatusUpdate', { detail: finalSnap }))
         }
-      } catch (e) {
-        console.warn('Failed to update ranked snapshot:', e)
-      }
+      } catch (_) { /* non-critical */ }
     }
   }
 
@@ -412,9 +391,8 @@ const Quiz: React.FC = () => {
       setCurrentQuestionIndex(currentQuestionIndex + 1)
       setSelectedAnswer(null)
       setShowResult(false)
-      setTimeLeft(30) // Reset timer for next question
-      setQuestionStartTime(Date.now()) // Reset question start time
-      // Note: Removed duplicate ranked-status call to prevent double counting
+      setTimeLeft(30)
+      setQuestionStartTime(Date.now())
     }
   }
 
@@ -438,7 +416,7 @@ const Quiz: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen style={{ backgroundColor: '#0E0B1A' }} flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#0E0B1A' }}>
         <div className="neon-card p-8 text-center">
           <div className="neon-text text-2xl mb-4">Đang tải câu hỏi...</div>
           <div className="animate-spin w-8 h-8 border-2 border-neon-blue border-t-transparent rounded-full mx-auto"></div>
@@ -507,7 +485,7 @@ const Quiz: React.FC = () => {
 
   if (!currentQuestion) {
     return (
-      <div className="min-h-screen style={{ backgroundColor: '#0E0B1A' }} flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#0E0B1A' }}>
         <div className="neon-card p-8 text-center">
           <div className="neon-text text-2xl mb-4">Không có câu hỏi</div>
           <button
@@ -522,7 +500,7 @@ const Quiz: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen style={{ backgroundColor: '#0E0B1A' }}">
+    <div className="min-h-screen" style={{ backgroundColor: '#0E0B1A' }}>
       {/* Header */}
       <div className="container mx-auto px-4 py-6">
         <div className="flex justify-between items-center mb-6">
@@ -533,10 +511,10 @@ const Quiz: React.FC = () => {
             Điểm: {score}
           </div>
         </div>
-        
+
         {/* Progress Bar */}
         <div className="w-full bg-gray-800/80 rounded-full h-2 mb-6 glow-cyan">
-          <div 
+          <div
             className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-fuchsia-400 h-2 rounded-full progress-animated"
             style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
           ></div>
@@ -558,7 +536,7 @@ const Quiz: React.FC = () => {
                 strokeDashoffset={(1 - (timeLeft / 30)) * 2 * Math.PI * 28}
               />
             </svg>
-            <div className={`neon-text text-3xl font-bold ${timeLeft <= 5 ? 'neon-red animate-icon-shake' : 'neon-blue'} ${timeLeft <= 5 ? 'animate-number-glow' : ''} glow-cyan` }>
+            <div className={`neon-text text-3xl font-bold ${timeLeft <= 5 ? 'neon-red animate-icon-shake' : 'neon-blue'} ${timeLeft <= 5 ? 'animate-number-glow' : ''} glow-cyan`}>
               {timeLeft}s
             </div>
           </div>
@@ -567,17 +545,17 @@ const Quiz: React.FC = () => {
 
       {/* Question Card */}
       <div className="container mx-auto px-4">
-          <div className="neon-card p-8 max-w-4xl mx-auto">
+        <div className="neon-card p-8 max-w-4xl mx-auto">
           {/* Question Header */}
-            <div className="mb-6 space-y-2">
-              <div className="text-gray-300 text-base">
-                {currentQuestion.book}
-              </div>
-              <div className="text-gray-400 text-sm">Chương {currentQuestion.chapter}</div>
-              <div className={`text-xs ${getDifficultyColor(currentQuestion.difficulty)}`}>
-                Độ khó: {getDifficultyText(currentQuestion.difficulty)}
-              </div>
+          <div className="mb-6 space-y-2">
+            <div className="text-gray-300 text-base">
+              {currentQuestion.book}
             </div>
+            <div className="text-gray-400 text-sm">Chương {currentQuestion.chapter}</div>
+            <div className={`text-xs ${getDifficultyColor(currentQuestion.difficulty)}`}>
+              Độ khó: {getDifficultyText(currentQuestion.difficulty)}
+            </div>
+          </div>
 
           {/* Question */}
           <div className="neon-text text-2xl font-bold mb-8 leading-relaxed">
@@ -588,7 +566,7 @@ const Quiz: React.FC = () => {
           <div className="space-y-4 mb-8">
             {currentQuestion.options.map((option, index) => {
               let buttonClass = "neon-btn w-full p-4 text-left transition-all answer-hover rounded-xl shadow-[0_0_6px_rgba(255,255,255,0.06)] border-2"
-              
+
               if (showResult) {
                 if (index === currentQuestion.correctAnswer[0]) {
                   buttonClass += " neon-btn-green ring-2 ring-green-300 glow-green feedback-pulse" // Correct answer highlight
@@ -631,16 +609,16 @@ const Quiz: React.FC = () => {
                   </div>
                 )}
               </div>
-              
+
               {/* Score for this question */}
               {selectedAnswer === currentQuestion.correctAnswer[0] && (
                 <div className="mb-4">
                   <div className="neon-blue text-lg">
-                    +{Math.floor(((currentQuestion.difficulty === 'easy' ? 10 : 
-                      currentQuestion.difficulty === 'medium' ? 20 : 30) + 
-                      Math.floor(timeLeft / 2) + (timeLeft >= 25 ? 5 : 0)) * 
-                      (currentQuestion.difficulty === 'hard' ? 1.5 : 
-                       currentQuestion.difficulty === 'medium' ? 1.2 : 1))} điểm
+                    +{Math.floor(((currentQuestion.difficulty === 'easy' ? 10 :
+                      currentQuestion.difficulty === 'medium' ? 20 : 30) +
+                      Math.floor(timeLeft / 2) + (timeLeft >= 25 ? 5 : 0)) *
+                      (currentQuestion.difficulty === 'hard' ? 1.5 :
+                        currentQuestion.difficulty === 'medium' ? 1.2 : 1))} điểm
                   </div>
                   {timeLeft >= 25 && (
                     <div className="neon-pink text-sm">
@@ -649,8 +627,8 @@ const Quiz: React.FC = () => {
                   )}
                 </div>
               )}
-              
-              {settings.showExplanation && (
+
+              {settings?.showExplanation && (
                 <div className="neon-text text-sm leading-relaxed">
                   <strong>Giải thích:</strong> {currentQuestion.explanation}
                 </div>
@@ -670,7 +648,7 @@ const Quiz: React.FC = () => {
             >
               ⏹️ Kết thúc
             </button>
-            
+
             {showResult && (
               <button
                 onClick={nextQuestion}

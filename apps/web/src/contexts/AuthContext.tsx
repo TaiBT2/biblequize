@@ -4,12 +4,14 @@ interface User {
   name: string
   email: string
   avatar?: string
+  role?: string
 }
 
 interface AuthContextType {
   user: User | null
   isAuthenticated: boolean
   isLoading: boolean
+  isAdmin: boolean
   login: (tokens: { accessToken: string; refreshToken: string; name: string; email: string; avatar?: string }) => void
   logout: () => void
   checkAuth: () => void
@@ -34,6 +36,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
 
   const isAuthenticated = !!user
+  const isAdmin = !!user && user.role === 'ADMIN'
 
   const login = async (tokens: { accessToken: string; refreshToken: string; name: string; email: string; avatar?: string }) => {
     localStorage.setItem('accessToken', tokens.accessToken)
@@ -101,16 +104,37 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   }
 
-  const checkAuth = () => {
+  const checkAuth = async () => {
     const token = localStorage.getItem('accessToken')
     const name = localStorage.getItem('userName')
     const email = localStorage.getItem('userEmail')
     const avatar = localStorage.getItem('userAvatar')
 
     if (token && name && email) {
+      // Prime basic user info from localStorage
       setUser({ name, email, avatar: avatar || undefined })
       if (process.env.NODE_ENV !== 'production') {
         console.log('[AUTH_CONTEXT] User authenticated from localStorage:', name)
+      }
+      // Try to fetch role and fresh profile from backend
+      try {
+        const { api } = await import('../api/client')
+        console.log('[AUTH_CONTEXT] Attempting to fetch /api/me with token:', token ? 'present' : 'missing')
+        const res = await api.get('/api/me')
+        const role = res.data?.role as string | undefined
+        const updated: User = {
+          name: res.data?.name ?? name,
+          email: res.data?.email ?? email,
+          avatar: res.data?.avatarUrl ?? avatar ?? undefined,
+          role
+        }
+        setUser(updated)
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('[AUTH_CONTEXT] Refreshed user profile from /api/me with role:', role)
+        }
+      } catch (e) {
+        console.error('[AUTH_CONTEXT] Failed to fetch /api/me profile:', e)
+        console.error('[AUTH_CONTEXT] Error details:', e.response?.data || e.message)
       }
     } else {
       setUser(null)
@@ -121,14 +145,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }
 
   useEffect(() => {
-    checkAuth()
-    setIsLoading(false)
+    ;(async () => {
+      await checkAuth()
+      setIsLoading(false)
+    })()
   }, [])
 
   const value: AuthContextType = {
     user,
     isAuthenticated,
     isLoading,
+    isAdmin,
     login,
     logout,
     checkAuth
