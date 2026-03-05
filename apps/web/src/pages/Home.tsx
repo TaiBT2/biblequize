@@ -587,8 +587,8 @@ export default function Home() {
       </section>
 
 
-      {/* Artistic Glowing Divider */}
-      <div className="relative w-full h-[2px] mt-24 overflow-hidden">
+      {/* Artistic Glowing Divider - Increased Spacing for Perfection */}
+      <div className="relative w-full h-[2px] mt-40 overflow-hidden">
         <div
           className="absolute inset-x-0 top-0 h-full bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"
           style={{
@@ -608,9 +608,20 @@ export default function Home() {
                 BIBLE QUIZ
               </span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-xs font-medium opacity-80">
+            <p className="text-gray-400 text-sm leading-relaxed max-w-xs font-medium opacity-80 mb-6">
               Khám phá kho tàng tri thức Kinh Thánh qua những thử thách đầy thú vị và ý nghĩa. Vừa chơi, vừa học, vừa thăng trưởng đức tin mỗi ngày.
             </p>
+            <div className="flex items-center space-x-5">
+              <a href="#" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00FFFF] hover:border-[#00FFFF] hover:scale-110 transition-all duration-300 shadow-lg" title="Facebook">
+                <span className="text-xs">FB</span>
+              </a>
+              <a href="#" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00FFFF] hover:border-[#00FFFF] hover:scale-110 transition-all duration-300 shadow-lg" title="YouTube">
+                <span className="text-xs">YT</span>
+              </a>
+              <a href="#" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00FFFF] hover:border-[#00FFFF] hover:scale-110 transition-all duration-300 shadow-lg" title="TikTok">
+                <span className="text-xs">TT</span>
+              </a>
+            </div>
           </div>
 
           {/* Column 2: Quick Links */}
@@ -631,15 +642,20 @@ export default function Home() {
               <Link to="/privacy" className="text-white hover:text-[#00FFFF] transition-all duration-300 text-sm font-bold w-fit">Chính sách bảo mật</Link>
               <Link to="/terms" className="text-white hover:text-[#00FFFF] transition-all duration-300 text-sm font-bold w-fit">Điều khoản sử dụng</Link>
             </div>
+          </div>
+        </div>
 
-            <div className="pt-8 border-t border-white/5 space-y-2">
-              <p className="text-gray-500 text-[11px] font-black uppercase tracking-widest leading-relaxed">
-                © 2024 BIBLE QUIZ. <span className="text-gray-600 font-bold">ALL RIGHTS RESERVED.</span>
-              </p>
-              <p className="text-gray-500/60 text-[10px] font-bold italic">
-                Cảm hứng từ Kinh Thánh • Kết nối đức tin • Tri thức mỗi ngày
-              </p>
-            </div>
+        {/* Centered Copyright - Final Perfection Accent */}
+        <div className="mt-24 pt-12 border-t border-white/5 text-center space-y-3">
+          <p className="text-gray-500 text-[11px] font-black uppercase tracking-[0.4em] leading-relaxed">
+            © 2024 BIBLE QUIZ. <span className="text-gray-600 font-bold">ALL RIGHTS RESERVED.</span>
+          </p>
+          <div className="flex items-center justify-center space-x-3 text-gray-500/40 text-[10px] font-bold italic">
+            <span>🛡️ Bảo mật tuyệt đối</span>
+            <span className="w-1 h-1 rounded-full bg-gray-500/20"></span>
+            <span>⚡ Tốc độ tối ưu</span>
+            <span className="w-1 h-1 rounded-full bg-gray-500/20"></span>
+            <span>❤️ Made for Community</span>
           </div>
         </div>
       </footer>
