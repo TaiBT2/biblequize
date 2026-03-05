@@ -416,10 +416,10 @@ const Quiz: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#0E0B1A' }}>
-        <div className="neon-card p-8 text-center">
-          <div className="neon-text text-2xl mb-4">Đang tải câu hỏi...</div>
-          <div className="animate-spin w-8 h-8 border-2 border-neon-blue border-t-transparent rounded-full mx-auto"></div>
+      <div className="min-h-screen page-bg flex items-center justify-center">
+        <div className="page-card p-8 text-center max-w-xs w-full">
+          <div className="text-xl font-bold mb-4">Đang tải câu hỏi...</div>
+          <div className="animate-spin w-8 h-8 border-4 border-[#4bbf9f] border-t-transparent rounded-full mx-auto"></div>
         </div>
       </div>
     )
@@ -485,12 +485,12 @@ const Quiz: React.FC = () => {
 
   if (!currentQuestion) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#0E0B1A' }}>
-        <div className="neon-card p-8 text-center">
-          <div className="neon-text text-2xl mb-4">Không có câu hỏi</div>
+      <div className="min-h-screen page-bg flex items-center justify-center">
+        <div className="page-card p-8 text-center max-w-sm w-full">
+          <div className="text-2xl font-bold mb-4">Không có câu hỏi</div>
           <button
             onClick={() => navigate('/practice')}
-            className="neon-btn neon-btn-green px-6 py-2"
+            className="btn-primary"
           >
             Quay Lại
           </button>
@@ -500,44 +500,45 @@ const Quiz: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#0E0B1A' }}>
+    <div className="min-h-screen page-bg pb-12">
       {/* Header */}
-      <div className="container mx-auto px-4 py-6">
-        <div className="flex justify-between items-center mb-6">
-          <div className="neon-text text-xl">
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex justify-between items-end mb-6">
+          <div className="text-[#f5f0e0] opacity-90 font-bold text-lg">
             Câu {currentQuestionIndex + 1}/{questions.length}
           </div>
-          <div className={`neon-green text-xl font-bold transition-transform ${scoreBump ? 'scale-125' : 'scale-100'}`}>
-            Điểm: {score}
+          <div className={`text-[#4bbf9f] bg-[#f5f0e4] px-6 py-2 rounded-full shadow-lg font-black text-2xl transition-transform ${scoreBump ? 'scale-110' : 'scale-100'}`}>
+            ĐIỂM: {score}
           </div>
         </div>
 
         {/* Progress Bar */}
-        <div className="w-full bg-gray-800/80 rounded-full h-2 mb-6 glow-cyan">
+        <div className="w-full bg-white/10 rounded-full h-3 mb-8 overflow-hidden backdrop-blur-sm border border-white/5">
           <div
-            className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-fuchsia-400 h-2 rounded-full progress-animated"
+            className="bg-gradient-to-r from-[#4bbf9f] to-[#2e9e7a] h-full progress-animated shadow-[0_0_15px_rgba(75,191,159,0.3)]"
             style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
           ></div>
         </div>
 
         {/* Timer */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center relative">
-            <svg width="64" height="64" className="mr-3">
-              <circle cx="32" cy="32" r="28" stroke="rgba(0,255,255,0.15)" strokeWidth="6" fill="none" />
+            <svg width="80" height="80">
+              <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" strokeWidth="6" fill="none" />
               <circle
-                cx="32" cy="32" r="28"
-                stroke={timeLeft <= 5 ? 'rgba(239,68,68,0.85)' : 'rgba(34,211,238,0.85)'}
+                cx="40" cy="40" r="34"
+                stroke={timeLeft <= 5 ? '#e05c5c' : '#4bbf9f'}
                 strokeWidth="6"
                 fill="none"
                 strokeLinecap="round"
                 style={{ transform: 'rotate(-90deg)', transformOrigin: '50% 50%' }}
-                strokeDasharray={2 * Math.PI * 28}
-                strokeDashoffset={(1 - (timeLeft / 30)) * 2 * Math.PI * 28}
+                strokeDasharray={2 * Math.PI * 34}
+                strokeDashoffset={(1 - (timeLeft / 30)) * 2 * Math.PI * 34}
+                className="transition-all duration-1000"
               />
             </svg>
-            <div className={`neon-text text-3xl font-bold ${timeLeft <= 5 ? 'neon-red animate-icon-shake' : 'neon-blue'} ${timeLeft <= 5 ? 'animate-number-glow' : ''} glow-cyan`}>
-              {timeLeft}s
+            <div className={`absolute inset-0 flex items-center justify-center text-3xl font-black ${timeLeft <= 5 ? 'text-[#e05c5c] animate-pulse' : 'text-[#f5f0e0]'}`}>
+              {timeLeft}
             </div>
           </div>
         </div>
@@ -545,38 +546,41 @@ const Quiz: React.FC = () => {
 
       {/* Question Card */}
       <div className="container mx-auto px-4">
-        <div className="neon-card p-8 max-w-4xl mx-auto">
+        <div className="page-card p-8 md:p-12 max-w-4xl mx-auto">
           {/* Question Header */}
-          <div className="mb-6 space-y-2">
-            <div className="text-gray-300 text-base">
+          <div className="mb-8 flex flex-wrap gap-3 items-center">
+            <span className="bg-[#eeeae0] text-[#7a6a5a] px-3 py-1 rounded-md text-sm font-bold">
               {currentQuestion.book}
-            </div>
-            <div className="text-gray-400 text-sm">Chương {currentQuestion.chapter}</div>
-            <div className={`text-xs ${getDifficultyColor(currentQuestion.difficulty)}`}>
-              Độ khó: {getDifficultyText(currentQuestion.difficulty)}
-            </div>
+            </span>
+            <span className="bg-[#eeeae0] text-[#7a6a5a] px-3 py-1 rounded-md text-sm font-bold">
+              Chương {currentQuestion.chapter}
+            </span>
+            <span className={
+              currentQuestion.difficulty === 'easy' ? 'badge-easy' :
+                currentQuestion.difficulty === 'hard' ? 'badge-hard' : 'badge-medium'
+            }>
+              {getDifficultyText(currentQuestion.difficulty)}
+            </span>
           </div>
 
           {/* Question */}
-          <div className="neon-text text-2xl font-bold mb-8 leading-relaxed">
+          <div className="text-[#4a3f35] text-2xl md:text-3xl font-bold mb-10 leading-tight parchment-serif">
             {currentQuestion.content}
           </div>
 
           {/* Answer Options */}
-          <div className="space-y-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
             {currentQuestion.options.map((option, index) => {
-              let buttonClass = "neon-btn w-full p-4 text-left transition-all answer-hover rounded-xl shadow-[0_0_6px_rgba(255,255,255,0.06)] border-2"
+              let buttonClass = "answer-btn min-h-[80px]"
 
               if (showResult) {
                 if (index === currentQuestion.correctAnswer[0]) {
-                  buttonClass += " neon-btn-green ring-2 ring-green-300 glow-green feedback-pulse" // Correct answer highlight
+                  buttonClass = "answer-btn answer-btn-correct min-h-[80px]"
                 } else if (index === selectedAnswer && index !== currentQuestion.correctAnswer[0]) {
-                  buttonClass += " neon-btn-red ring-2 ring-red-300 glow-red feedback-pulse" // Wrong answer
+                  buttonClass = "answer-btn answer-btn-wrong min-h-[80px]"
                 } else {
-                  buttonClass += " neon-btn-gray" // Other options
+                  buttonClass = "answer-btn opacity-60 min-h-[80px]"
                 }
-              } else {
-                buttonClass += selectedAnswer === index ? " neon-btn-blue" : " neon-btn-gray"
               }
 
               return (
@@ -586,10 +590,12 @@ const Quiz: React.FC = () => {
                   disabled={showResult}
                   className={buttonClass}
                 >
-                  <span className="font-bold mr-3">
-                    {String.fromCharCode(65 + index)}.
-                  </span>
-                  {option}
+                  <div className="flex items-start">
+                    <span className="font-black mr-3 text-[#4bbf9f]">
+                      {String.fromCharCode(65 + index)}.
+                    </span>
+                    <span>{option}</span>
+                  </div>
                 </button>
               )
             })}
@@ -597,39 +603,36 @@ const Quiz: React.FC = () => {
 
           {/* Result Display */}
           {showResult && (
-            <div className="neon-card p-6 mb-6">
-              <div className="mb-4">
+            <div className={`p-6 rounded-2xl mb-8 border-2 ${selectedAnswer === currentQuestion.correctAnswer[0]
+              ? 'bg-green-50 border-green-200'
+              : 'bg-red-50 border-red-200'
+              }`}>
+              <div className="flex items-center gap-3 mb-4">
                 {selectedAnswer === currentQuestion.correctAnswer[0] ? (
-                  <div className="neon-green text-xl font-bold mb-2">
-                    ✅ Đúng rồi!
-                  </div>
+                  <span className="text-2xl">✅</span>
                 ) : (
-                  <div className="neon-red text-xl font-bold mb-2">
-                    ❌ Sai rồi!
-                  </div>
+                  <span className="text-2xl">❌</span>
                 )}
+                <span className={`text-xl font-bold ${selectedAnswer === currentQuestion.correctAnswer[0] ? 'text-green-700' : 'text-red-700'
+                  }`}>
+                  {selectedAnswer === currentQuestion.correctAnswer[0] ? 'Đúng rồi!' : 'Sai rồi!'}
+                </span>
               </div>
 
-              {/* Score for this question */}
               {selectedAnswer === currentQuestion.correctAnswer[0] && (
                 <div className="mb-4">
-                  <div className="neon-blue text-lg">
+                  <div className="text-[#4bbf9f] font-bold text-lg">
                     +{Math.floor(((currentQuestion.difficulty === 'easy' ? 10 :
                       currentQuestion.difficulty === 'medium' ? 20 : 30) +
                       Math.floor(timeLeft / 2) + (timeLeft >= 25 ? 5 : 0)) *
                       (currentQuestion.difficulty === 'hard' ? 1.5 :
                         currentQuestion.difficulty === 'medium' ? 1.2 : 1))} điểm
                   </div>
-                  {timeLeft >= 25 && (
-                    <div className="neon-pink text-sm">
-                      +5 điểm thưởng tốc độ!
-                    </div>
-                  )}
                 </div>
               )}
 
               {settings?.showExplanation && (
-                <div className="neon-text text-sm leading-relaxed">
+                <div className="text-[#7a6a5a] text-sm leading-relaxed italic border-t border-black/5 pt-4">
                   <strong>Giải thích:</strong> {currentQuestion.explanation}
                 </div>
               )}
@@ -637,24 +640,24 @@ const Quiz: React.FC = () => {
           )}
 
           {/* Navigation */}
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center bg-[#fdfaf3] p-4 rounded-xl border border-[#eeeae0]">
             <button
               onClick={() => {
                 if (confirm('Bạn có chắc muốn kết thúc bài làm tại đây? Tiến trình hiện tại sẽ không được lưu.')) {
                   navigate('/practice')
                 }
               }}
-              className="neon-btn neon-btn-gray px-6 py-2 rounded-xl"
+              className="text-[#7a6a5a] font-bold px-4 py-2 hover:bg-[#eeeae0] rounded-lg transition-all"
             >
-              ⏹️ Kết thúc
+              ⏹️ Thoát
             </button>
 
             {showResult && (
               <button
                 onClick={nextQuestion}
-                className="neon-btn neon-btn-green px-6 py-2"
+                className="btn-primary"
               >
-                {currentQuestionIndex + 1 >= questions.length ? 'Kết Thúc' : 'Câu Tiếp →'}
+                {currentQuestionIndex + 1 >= questions.length ? 'Xem Kết Quả' : 'Tiếp Theo →'}
               </button>
             )}
           </div>

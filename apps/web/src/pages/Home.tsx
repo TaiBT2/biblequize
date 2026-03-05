@@ -58,18 +58,19 @@ export default function Home() {
               </div>
 
               <h1
-                className="text-5xl lg:text-7xl font-black bg-gradient-to-r from-white via-cyan-200 to-purple-200 bg-clip-text text-transparent mb-6"
+                className="text-5xl lg:text-7xl font-black bg-gradient-to-r from-white via-cyan-200 to-purple-200 bg-clip-text text-transparent mb-6 tracking-wide"
                 style={{
                   lineHeight: '1.3',
-                  textShadow: '0 0 30px rgba(0, 255, 255, 0.3)'
+                  textShadow: '0 0 30px rgba(0, 255, 255, 0.3)',
+                  letterSpacing: '0.02em'
                 }}
               >
                 KHƠI NGUỒN TRI THỨC - THẮP SÁNG TÂM LINH ⚡
               </h1>
 
               <p
-                className="text-xl lg:text-2xl max-w-2xl font-medium"
-                style={{ color: '#E0E0E0', lineHeight: '1.6' }}
+                className="text-xl lg:text-2xl max-w-2xl font-medium leading-[1.8] text-glow"
+                style={{ color: '#E0E0E0', textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}
               >
                 Hàng ngàn câu hỏi thú vị đang chờ đón. Vừa chơi, vừa học, vừa thăng trưởng đức tin mỗi ngày! 🚀
               </p>
@@ -110,33 +111,40 @@ export default function Home() {
               <div className="relative w-80 h-80">
                 {/* Main central element */}
                 <div
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full flex items-center justify-center bg-gradient-to-br from-cyan-400 to-purple-500 shadow-2xl animate-pulse"
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full flex items-center justify-center bg-gradient-to-br from-cyan-400 to-purple-500 shadow-2xl animate-pulse z-10 neon-glow"
                 >
-                  <span className="text-6xl">📖</span>
+                  <span className="text-7xl">📖</span>
                 </div>
 
-                {/* Floating icons around */}
+                {/* Floating icons around in a circle */}
                 {[
-                  { icon: '👤', color: 'from-cyan-400 to-blue-500', position: 'top-4 left-1/2 -translate-x-1/2', delay: '0s' },
-                  { icon: '⭐', color: 'from-yellow-400 to-orange-500', position: 'top-1/2 -right-4 -translate-y-1/2', delay: '0.5s' },
-                  { icon: '🏆', color: 'from-purple-400 to-pink-500', position: 'bottom-4 left-1/2 -translate-x-1/2', delay: '1s' },
-                  { icon: '💎', color: 'from-emerald-400 to-cyan-500', position: 'top-1/2 -left-4 -translate-y-1/2', delay: '1.5s' },
-                  { icon: '🎯', color: 'from-red-400 to-pink-500', position: 'top-8 left-8', delay: '2s' },
-                  { icon: '🚀', color: 'from-indigo-400 to-purple-500', position: 'top-8 right-8', delay: '2.5s' },
-                  { icon: '💫', color: 'from-pink-400 to-rose-500', position: 'bottom-8 left-8', delay: '3s' },
-                  { icon: '🌟', color: 'from-yellow-400 to-amber-500', position: 'bottom-8 right-8', delay: '3.5s' }
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className={`absolute w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br ${item.color} shadow-lg animate-bounce ${item.position}`}
-                    style={{
-                      animationDelay: item.delay,
-                      animationDuration: '2s'
-                    }}
-                  >
-                    <span className="text-xl">{item.icon}</span>
-                  </div>
-                ))}
+                  { icon: '👤', color: 'from-cyan-400 to-blue-500' },
+                  { icon: '⭐', color: 'from-yellow-400 to-orange-500' },
+                  { icon: '🏆', color: 'from-purple-400 to-pink-500' },
+                  { icon: '💎', color: 'from-emerald-400 to-cyan-500' },
+                  { icon: '🎯', color: 'from-red-400 to-pink-500' },
+                  { icon: '🚀', color: 'from-indigo-400 to-purple-500' },
+                  { icon: '💫', color: 'from-pink-400 to-rose-500' },
+                  { icon: '🌟', color: 'from-yellow-400 to-amber-500' }
+                ].map((item, index, array) => {
+                  const angle = (index / array.length) * 2 * Math.PI;
+                  const radius = 160; // Increased radius
+                  const x = Math.cos(angle) * radius;
+                  const y = Math.sin(angle) * radius;
+                  return (
+                    <div
+                      key={index}
+                      className={`absolute w-16 h-16 rounded-full flex items-center justify-center bg-gradient-to-br ${item.color} shadow-2xl animate-float neon-glow hover:scale-125 transition-transform duration-300`}
+                      style={{
+                        top: `calc(50% + ${y}px - 32px)`,
+                        left: `calc(50% + ${x}px - 32px)`,
+                        animationDelay: `${index * 0.4}s`
+                      }}
+                    >
+                      <span className="text-3xl">{item.icon}</span>
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Stats */}
@@ -160,7 +168,7 @@ export default function Home() {
       </section>
 
       {/* Game Modes Section */}
-      <section className="container mx-auto px-6 py-24 relative" style={{ marginTop: '80px' }}>
+      <section className="container mx-auto px-6 py-12 relative" style={{ marginTop: '0px' }}>
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/5 to-transparent"></div>
 
@@ -168,96 +176,81 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-10">
             {/* Single Player Card */}
-            <div
-              className="gaming-card group"
-              style={{ border: '2px solid #00FFFF', boxShadow: '0 0 10px rgba(0, 255, 255, 0.1)' }}
-            >
-              <div className="text-center">
-                <div
-                  className="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center transition-all bg-[#00FFFF] shadow-[0_0_20px_#00FFFF] group-hover:shadow-[0_0_30px_#00FFFF] group-hover:scale-110"
-                >
-                  <span className="text-4xl">📖</span>
-                </div>
-                <h3 className="text-2xl font-black mb-1 text-[#00FFFF]">
-                  ÔN LUYỆN
-                </h3>
-                <p className="text-sm italic mb-4 text-[#B0B0B0]">
-                  Học Không Áp Lực
-                </p>
-                <p className="text-lg mb-8 leading-relaxed text-[#E0E0E0]">
-                  <span className="text-cyan-300 font-semibold">Ôn tập kiến thức</span> theo từng sách Kinh Thánh, không giới hạn thời gian.
-                  <br />
-                  <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mt-4" style={{ backgroundColor: 'rgba(0, 255, 255, 0.1)', color: '#00FFFF', border: '1px solid rgba(0, 255, 255, 0.3)' }}>💡 Kinh Thánh</span>
-                </p>
-                <Link
-                  to="/practice"
-                  className="inline-block w-full py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 bg-[#00FFFF] text-[#0E0B1A] shadow-[0_0_15px_rgba(0,255,255,0.4)] hover:shadow-[0_0_25px_rgba(0,255,255,0.6)]"
-                >
-                  BẮT ĐẦU NGAY
-                </Link>
+            <div className="page-card group p-8 flex flex-col items-center text-center">
+              <div
+                className="w-20 h-20 mb-6 rounded-2xl flex items-center justify-center transition-all bg-[#4bbf9f] shadow-[0_8px_20px_rgba(75,191,159,0.3)] group-hover:scale-110"
+              >
+                <span className="text-4xl">📖</span>
               </div>
+              <h3 className="text-2xl font-black mb-1 text-[#4a3f35] parchment-headline">
+                ÔN LUYỆN
+              </h3>
+              <p className="text-sm italic mb-4 text-[#7a6a5a]">
+                Học Không Áp Lực
+              </p>
+              <p className="text-base mb-8 leading-relaxed text-[#5a5048]">
+                <span className="text-[#2e9e7a] font-bold">Ôn tập kiến thức</span> theo từng sách Kinh Thánh, không giới hạn thời gian.
+                <br />
+                <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mt-4 bg-[#eeeae0] text-[#7a6a5a]">📜 Kinh Thánh</span>
+              </p>
+              <Link
+                to="/practice"
+                className="btn-primary w-full py-4 text-center"
+              >
+                BẮT ĐẦU NGAY
+              </Link>
             </div>
 
             {/* Team Battle Card */}
-            <div
-              className="gaming-card group"
-              style={{ border: '2px solid #FF8C00', boxShadow: '0 0 10px rgba(255, 140, 0, 0.1)' }}
-            >
-              <div className="text-center">
-                <div
-                  className="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center transition-all bg-[#FF8C00] shadow-[0_0_20px_#FF8C00] group-hover:shadow-[0_0_30px_#FF8C00] group-hover:scale-110 group-hover:animate-pulse"
-                >
-                  <span className="text-4xl group-hover:animate-icon-shake">⚔️</span>
-                </div>
-                <h3 className="text-2xl font-black mb-1 text-[#FF8C00]">
-                  THI ĐẤU
-                </h3>
-                <p className="text-sm italic mb-4 text-[#B0B0B0]">
-                  So Trình Đối Kháng
-                </p>
-                <p className="text-lg mb-8 leading-relaxed text-[#E0E0E0]">
-                  <span className="text-orange-300 font-semibold">Thách đấu cùng bạn bè</span> hoặc đối thủ ngẫu nhiên để khẳng định vị thế!
-                  <br />
-                  <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mt-4" style={{ backgroundColor: 'rgba(255, 140, 0, 0.1)', color: '#FF8C00', border: '1px solid rgba(255, 140, 0, 0.3)' }}>🏆 Đối kháng</span>
-                </p>
-                <Link
-                  to="/rooms"
-                  className="inline-block w-full py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 bg-[#FF8C00] text-[#0E0B1A] shadow-[0_0_15px_rgba(255,140,0,0.4)] hover:shadow-[0_0_25px_rgba(255,140,0,0.6)]"
-                >
-                  THAM GIA PHÒNG
-                </Link>
+            <div className="page-card group p-8 flex flex-col items-center text-center">
+              <div
+                className="w-20 h-20 mb-6 rounded-2xl flex items-center justify-center transition-all bg-[#e05c5c] shadow-[0_8px_20px_rgba(224,92,92,0.3)] group-hover:scale-110"
+              >
+                <span className="text-4xl">⚔️</span>
               </div>
+              <h3 className="text-2xl font-black mb-1 text-[#4a3f35] parchment-headline">
+                THI ĐẤU
+              </h3>
+              <p className="text-sm italic mb-4 text-[#7a6a5a]">
+                So Trình Đối Kháng
+              </p>
+              <p className="text-base mb-8 leading-relaxed text-[#5a5048]">
+                <span className="text-[#c04a4a] font-bold">Thách đấu cùng bạn bè</span> hoặc đối thủ ngẫu nhiên để khẳng định vị thế!
+                <br />
+                <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mt-4 bg-[#eeeae0] text-[#7a6a5a]">🏆 Đối kháng</span>
+              </p>
+              <Link
+                to="/rooms"
+                className="btn-primary w-full py-4 text-center"
+              >
+                THAM GIA PHÒNG
+              </Link>
             </div>
 
             {/* Daily Challenge Card */}
-            <div
-              className="gaming-card group"
-              style={{ border: '2px solid #FFFF00', boxShadow: '0 0 10px rgba(255, 255, 0, 0.1)' }}
-            >
-              <div className="text-center">
-                <div
-                  className="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center transition-all bg-[#FFFF00] shadow-[0_0_20px_#FFFF00] group-hover:shadow-[0_0_30px_#FFFF00] group-hover:scale-110 group-hover:animate-pulse"
-                >
-                  <span className="text-4xl">🛡️</span>
-                </div>
-                <h3 className="text-2xl font-black mb-1 text-[#FFFF00]">
-                  ĐẤU XẾP HẠNG
-                </h3>
-                <p className="text-sm italic mb-4 text-[#B0B0B0]">
-                  Vinh Danh Anh Tài
-                </p>
-                <p className="text-lg mb-8 leading-relaxed text-[#E0E0E0]">
-                  <span className="text-yellow-300 font-semibold">Leo bảng vàng</span>, nhận danh hiệu độc quyền và phần thưởng hấp dẫn!
-                  <br />
-                  <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mt-4" style={{ backgroundColor: 'rgba(255, 255, 0, 0.1)', color: '#FFFF00', border: '1px solid rgba(255, 255, 0, 0.3)' }}>⚡ Thăng tiến</span>
-                </p>
-                <Link
-                  to="/ranked"
-                  className="inline-block w-full py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 bg-[#FFFF00] text-[#0E0B1A] shadow-[0_0_15px_rgba(255,255,0,0.4)] hover:shadow-[0_0_25px_rgba(255,255,0,0.6)]"
-                >
-                  LEO RANK NGAY
-                </Link>
+            <div className="page-card group p-8 flex flex-col items-center text-center border-2 border-[#f59e0b]">
+              <div
+                className="w-20 h-20 mb-6 rounded-2xl flex items-center justify-center transition-all bg-[#f59e0b] shadow-[0_8px_20px_rgba(245,158,11,0.3)] group-hover:scale-110"
+              >
+                <span className="text-4xl">🛡️</span>
               </div>
+              <h3 className="text-2xl font-black mb-1 text-[#4a3f35] parchment-headline">
+                ĐẤU XẾP HẠNG
+              </h3>
+              <p className="text-sm italic mb-4 text-[#7a6a5a]">
+                Vinh Danh Anh Tài
+              </p>
+              <p className="text-base mb-8 leading-relaxed text-[#5a5048]">
+                <span className="text-[#b45309] font-bold">Leo bảng vàng</span>, nhận danh hiệu độc quyền và phần thưởng hấp dẫn!
+                <br />
+                <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mt-4 bg-[#eeeae0] text-[#7a6a5a]">⚡ Thăng tiến</span>
+              </p>
+              <Link
+                to="/ranked"
+                className="btn-primary neon-glow w-full py-4 text-center"
+              >
+                LEO RANK NGAY
+              </Link>
             </div>
           </div>
         </div>
@@ -265,123 +258,72 @@ export default function Home() {
 
       {/* User Progress Section */}
       {isAuthenticated && (
-        <section className="container mx-auto px-6 py-16 relative" style={{ marginTop: '80px' }}>
+        <section className="container mx-auto px-6 py-8 relative" style={{ marginTop: '20px' }} id="user-progress-section">
           <div className="relative z-10">
             <div className="text-center mb-12">
               <h2
-                className="text-3xl font-bold mb-4"
-                style={{ color: '#00FFFF' }}
+                className="text-3xl font-bold mb-4 flex items-center justify-center gap-4"
+                style={{ color: '#00FFFF', textShadow: '0 0 10px rgba(0,255,255,0.3)' }}
               >
                 Hành Trình Tâm Linh Của Bạn 🗺️
+                <button className="btn-share animate-pulse" title="Chia sẻ hành trình">
+                  📤
+                </button>
               </h2>
-              <p className="text-lg" style={{ color: '#E0E0E0' }}>
+              <p className="text-lg leading-relaxed" style={{ color: '#E0E0E0' }}>
                 Từ <span className="text-cyan-300 font-semibold">"Người Tìm Hiểu"</span> đến <span className="text-purple-300 font-semibold">"Trưởng Lão Đáng Kính"</span> -
                 Mỗi bước tiến đều mang ý nghĩa thiêng liêng!
               </p>
             </div>
 
-            <div className="max-w-2xl mx-auto">
-              <div
-                className="p-8 rounded-3xl mb-8 transition-all duration-300 hover:scale-105 group relative overflow-hidden"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(0, 255, 255, 0.05) 100%)',
-                  border: '2px solid #00FFFF',
-                  boxShadow: '0 0 25px rgba(0, 255, 255, 0.4), inset 0 0 20px rgba(0, 255, 255, 0.1)',
-                  backdropFilter: 'blur(10px)'
-                }}
-              >
-                {/* Glow effect overlay */}
-                <div
-                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    background: 'radial-gradient(circle at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%)',
-                    boxShadow: '0 0 40px #00FFFF, 0 0 80px #00FFFF'
-                  }}
-                />
-                <div className="grid md:grid-cols-3 gap-6 text-center">
+            <div className="max-w-4xl mx-auto">
+              <div className="page-card p-10 md:p-12 mb-8 transition-all duration-300 hover:shadow-2xl relative overflow-hidden card-hover-effect">
+                <div className="grid md:grid-cols-3 gap-8 text-center items-center">
                   {/* Current Level */}
-                  <div>
+                  <div className="relative">
                     <div
-                      className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl font-bold"
+                      className="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center text-3xl font-black"
                       style={{
-                        backgroundColor: '#00FFFF',
-                        color: '#0E0B1A',
-                        boxShadow: '0 0 15px #00FFFF'
+                        background: 'linear-gradient(135deg, #4bbf9f 0%, #2e9e7a 100%)',
+                        color: '#ffffff',
+                        boxShadow: '0 8px 20px rgba(75,191,159,0.3)'
                       }}
                     >
                       5
                     </div>
-                    <h3 className="text-xl font-bold mb-2" style={{ color: '#FFFFFF' }}>Cấp 5</h3>
-                    <p className="text-sm" style={{ color: '#E0E0E0' }}>Người Tìm Hiểu</p>
-                    <p className="text-xs" style={{ color: '#90EE90' }}>✨ Đang kiến thiết nền tảng đức tin</p>
+                    <h3 className="text-xl font-bold mb-1 text-[#2d241e] parchment-headline">Cấp 5</h3>
+                    <p className="text-sm font-bold text-[#4a3f35]">Người Tìm Hiểu</p>
                   </div>
 
                   {/* XP Progress */}
                   <div className="md:col-span-2">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-lg font-bold" style={{ color: '#FFFFFF' }}>Trí Tuệ Tích Lũy 📚</span>
-                      <span className="text-sm" style={{ color: '#00FFFF' }}>750/1000 XP</span>
+                    <div className="flex justify-between items-end mb-3">
+                      <span className="text-lg font-bold text-[#4a3f35]">Trí Tuệ Tích Lũy 📚</span>
+                      <span className="text-sm font-black text-[#4bbf9f] pr-4">750 / 1000 XP</span>
                     </div>
-                    <div
-                      className="w-full h-6 rounded-full overflow-hidden relative"
-                      style={{
-                        border: '1px solid rgba(0, 255, 255, 0.3)',
-                        boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.3)'
-                      }}
-                    >
+                    <div className="w-full h-4 bg-[#eeeae0] rounded-full overflow-hidden shadow-inner">
                       <div
-                        className="h-full rounded-full transition-all duration-500 relative"
-                        style={{
-                          width: '75%',
-                          background: 'linear-gradient(90deg, #00FFFF 0%, #00BFFF 50%, #0080FF 100%)',
-                          boxShadow: '0 0 15px rgba(0, 255, 255, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
-                        }}
-                      >
-                        {/* Glow effect at the end */}
-                        <div
-                          className="absolute right-0 top-0 w-2 h-full rounded-r-full"
-                          style={{
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 100%)',
-                            boxShadow: '0 0 10px rgba(0, 255, 255, 0.8)'
-                          }}
-                        />
-                      </div>
+                        className="h-full rounded-full transition-all duration-700 bg-gradient-to-r from-[#4bbf9f] to-[#2e9e7a]"
+                        style={{ width: '75%' }}
+                      ></div>
                     </div>
-                    <p className="text-xs mt-3 font-medium" style={{ color: '#E0E0E0' }}>
-                      Chỉ cần thêm <span className="text-cyan-300 font-bold">250 XP</span> nữa để thăng cấp danh hiệu mới. <span className="text-purple-300">Đừng dừng lại nhé!</span> 🌟
+                    <p className="text-xs mt-4 text-[#4a3f35] font-semibold leading-loose">
+                      Chỉ cần thêm <span className="text-[#2e9e7a] font-black">250 XP</span> nữa để thăng cấp danh hiệu mới. <span className="text-[#4bbf9f] font-black">Cố gắng lên nhé!</span> 🌟
                     </p>
                   </div>
                 </div>
 
                 {/* Ranking */}
-                <div className="mt-6 pt-6 border-t" style={{ borderColor: '#00FFFF' }}>
+                <div className="mt-10 pt-8 border-t border-[#eeeae0]">
                   <div className="flex justify-between items-center">
                     <div>
-                      <h4 className="text-lg font-bold mb-1" style={{ color: '#FFFFFF' }}>Địa Vị Trong Cộng Đồng 👑</h4>
-                      <p className="text-sm" style={{ color: '#E0E0E0' }}>
-                        Vị trí của bạn trong <span className="text-cyan-300 font-semibold">cộng đồng học giả Kinh Thánh</span>
+                      <h4 className="text-lg font-bold text-[#4a3f35] parchment-headline mb-1">Thứ Hạng Cộng Đồng 👑</h4>
+                      <p className="text-sm text-[#7a6a5a]">
+                        Thứ hạng của bạn so với các học giả khác.
                       </p>
                     </div>
-                    <div className="text-right">
-                      <div
-                        className="inline-flex items-center px-6 py-3 relative"
-                        style={{
-                          background: 'linear-gradient(135deg, #00FFFF 0%, #00BFFF 100%)',
-                          color: '#0E0B1A',
-                          clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%)',
-                          boxShadow: '0 0 20px rgba(0, 255, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3)'
-                        }}
-                      >
-                        <span className="text-lg mr-2">🏆</span>
-                        <span className="text-xl font-bold">#25</span>
-                        <div
-                          className="absolute -top-1 -right-1 w-3 h-3 rounded-full"
-                          style={{
-                            background: 'linear-gradient(45deg, #FFD700, #FFA500)',
-                            boxShadow: '0 0 8px rgba(255, 215, 0, 0.6)'
-                          }}
-                        />
-                      </div>
+                    <div className="bg-[#fdfaf3] border-2 border-[#4bbf9f] px-6 py-2 rounded-full shadow-sm">
+                      <span className="text-2xl font-black text-[#4bbf9f]">#25</span>
                     </div>
                   </div>
                 </div>
@@ -401,504 +343,242 @@ export default function Home() {
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-pink-900/10 rounded-3xl pointer-events-none"></div>
 
-        <div className="relative z-10">
-          <div>
+        <div className="relative z-10 pt-10">
+          <div className="text-center mb-12">
             <h2
-              className="text-4xl font-black mb-2"
-              style={{ color: '#FF00FF' }}
+              className="text-4xl font-black mb-3 text-[#4bbf9f] parchment-headline tracking-tight"
             >
               BẢNG XẾP HẠNG
             </h2>
-            <p className="text-[#B0B0B0] text-lg mb-8 italic">Vị trí số 1 đang chờ tên bạn. Bắt đầu thi đấu để lật đổ vương triều ngay! 👑</p>
+            <p className="text-[#7a6a5a] text-lg italic max-w-2xl mx-auto">Vị trí số 1 đang chờ tên bạn. Bắt đầu thi đấu để lật đổ vương triều ngay! 👑</p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
-            <div className="space-y-4">
+          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+            <div className="flex flex-col h-full space-y-4">
               {/* Time Period Tabs */}
-              <div className="flex space-x-8 mb-4">
-                {/* Active Tab - Theo ngày */}
-                <button
-                  className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative group"
-                  style={{
-                    backgroundColor: 'rgba(255, 0, 255, 0.15)',
-                    color: '#FF00FF',
-                    border: '2px solid #FF00FF',
-                    boxShadow: '0 0 20px #FF00FF, inset 0 0 20px rgba(255, 0, 255, 0.1)'
-                  }}
-                >
-                  <span className="relative z-10 font-bold">Theo ngày</span>
-                  {/* Active underline */}
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
-                    style={{
-                      background: 'linear-gradient(90deg, #FF00FF, #00FFFF, #FF00FF)',
-                      boxShadow: '0 0 10px #FF00FF'
-                    }}
-                  />
-                  {/* Active glow effect */}
-                  <div
-                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      background: 'linear-gradient(45deg, rgba(255, 0, 255, 0.2), rgba(0, 255, 255, 0.1))',
-                      boxShadow: '0 0 30px #FF00FF, 0 0 60px #FF00FF'
-                    }}
-                  />
-                </button>
-
-                {/* Inactive Tab - Theo tuần */}
-                <button
-                  className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105 group relative"
-                  style={{
-                    backgroundColor: 'transparent',
-                    color: '#B0B0B0',
-                    border: '1px solid rgba(255, 0, 255, 0.3)',
-                    boxShadow: '0 0 10px rgba(255, 0, 255, 0.2)'
-                  }}
-                >
-                  <span className="relative z-10">Theo tuần</span>
-                  <div
-                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      background: 'linear-gradient(45deg, rgba(255, 0, 255, 0.1), rgba(255, 0, 255, 0.2))',
-                      boxShadow: 'inset 0 0 15px rgba(255, 0, 255, 0.3)'
-                    }}
-                  />
-                  <div
-                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"
-                    style={{
-                      boxShadow: '0 0 20px #FF00FF, 0 0 40px #FF00FF'
-                    }}
-                  />
-                  {/* Hover underline */}
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      background: 'linear-gradient(90deg, #FF00FF, #00FFFF)',
-                      boxShadow: '0 0 8px #FF00FF'
-                    }}
-                  />
-                </button>
-
-                {/* Inactive Tab - Theo tháng */}
-                <button
-                  className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105 group relative"
-                  style={{
-                    backgroundColor: 'transparent',
-                    color: '#B0B0B0',
-                    border: '1px solid rgba(255, 0, 255, 0.3)',
-                    boxShadow: '0 0 5px rgba(255, 0, 255, 0.2)'
-                  }}
-                >
-                  <span className="relative z-10">Theo tháng</span>
-                  <div
-                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      background: 'linear-gradient(45deg, rgba(255, 0, 255, 0.1), rgba(255, 0, 255, 0.2))',
-                      boxShadow: 'inset 0 0 15px rgba(255, 0, 255, 0.3)'
-                    }}
-                  />
-                  <div
-                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"
-                    style={{
-                      boxShadow: '0 0 20px #FF00FF, 0 0 40px #FF00FF'
-                    }}
-                  />
-                  {/* Hover underline */}
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      background: 'linear-gradient(90deg, #FF00FF, #00FFFF)',
-                      boxShadow: '0 0 8px #FF00FF'
-                    }}
-                  />
-                </button>
+              <div className="flex justify-start mb-6">
+                <div className="segmented-control">
+                  <button className="segmented-control-item active">Theo ngày</button>
+                  <button className="segmented-control-item">Theo tuần</button>
+                  <button className="segmented-control-item">Theo tháng</button>
+                </div>
               </div>
 
-              {/* Top Players */}
-              <div
-                className="rounded-2xl"
-                style={{
-                  backgroundColor: '#161228',
-                  border: '2px solid #FF00FF',
-                  boxShadow: '0 0 8px rgba(255, 0, 255, 0.4)',
-                  padding: '32px 24px'
-                }}
-              >
-                <div className="space-y-4">
+              {/* Top Players List */}
+              <div className="page-card parchment-texture premium-border p-4 md:p-6 card-hover-effect">
+                <div className="mb-6 flex justify-center">
+                  <div className="relative w-full max-w-xs">
+                    <input
+                      type="text"
+                      placeholder="Tìm đối thủ..."
+                      className="w-full bg-[#fdfaf3]/60 border border-[#eeeae0] rounded-full py-1.5 px-10 text-xs focus:outline-none focus:border-[#00FFFF] transition-all shadow-inner font-bold text-[#4a3f35]"
+                    />
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 opacity-60 text-xs">🔍</div>
+                  </div>
+                </div>
+                <div className="space-y-4 max-h-[480px] overflow-y-auto pr-2 custom-scrollbar" id="leaderboard-scroll-container">
                   {/* 1st Place */}
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center gap-6 p-4 rounded-2xl bg-[#fdfaf3] border-2 border-[#4bbf9f] shadow-lg relative overflow-hidden group/rank neon-glow">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#f59e0b]/10 to-transparent rounded-bl-full pointer-events-none"></div>
                     <div
-                      className="w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold"
+                      className="w-16 h-16 rounded-full flex items-center justify-center text-4xl font-black shrink-0"
                       style={{
-                        backgroundColor: '#FFFF00',
-                        color: '#0E0B1A',
-                        boxShadow: '0 0 20px #FFFF00'
+                        background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                        color: '#ffffff',
+                        boxShadow: '0 8px 15px rgba(245,158,11,0.3)'
                       }}
                     >
                       1
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center space-x-2 mb-1">
-                        <h3 className="text-2xl font-black tracking-wide" style={{ color: '#FFFFFF' }}>Nguyễn Văn A</h3>
-                        {user?.name === 'Nguyễn Văn A' && (
-                          <span
-                            className="px-2 py-1 rounded-full text-xs font-bold"
-                            style={{
-                              backgroundColor: '#00FFFF',
-                              color: '#0E0B1A'
-                            }}
-                          >
-                            Bạn
-                          </span>
-                        )}
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="text-xl font-bold text-[#4a3f35]" >Nguyễn Văn A</h3>
+                        <span className="bg-[#4bbf9f] text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-sm">BẠN</span>
                       </div>
-                      <div className="flex items-center space-x-2 mb-2">
-                        <p className="text-lg" style={{ color: '#FFFFFF' }}>Thành viên VIP</p>
-                        <div className="relative group">
-                          <span
-                            className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold cursor-help transition-all duration-300"
-                            style={{
-                              backgroundColor: '#00FFFF',
-                              color: '#0E0B1A',
-                              boxShadow: '0 0 8px #00FFFF'
-                            }}
-                          >
-                            i
-                          </span>
-                          <div
-                            className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"
-                            style={{
-                              backgroundColor: '#161228',
-                              color: '#FFFFFF',
-                              border: '1px solid #00FFFF',
-                              boxShadow: '0 0 15px rgba(0, 255, 255, 0.3)',
-                              whiteSpace: 'nowrap'
-                            }}
-                          >
-                            VIP: Trên 1,000 điểm
-                            <div
-                              className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0"
-                              style={{
-                                borderLeft: '4px solid transparent',
-                                borderRight: '4px solid transparent',
-                                borderTop: '4px solid #00FFFF'
-                              }}
-                            />
-                          </div>
-                        </div>
+                      <div className="flex items-center gap-2 text-sm text-[#7a6a5a]">
+                        <span>Thành viên VIP</span>
+                        <span className="w-1 h-1 rounded-full bg-[#eeeae0]"></span>
+                        <span className="parchment-serif italic">1,550 điểm</span>
                       </div>
-                      <p className="text-xl font-bold" style={{ color: '#00FFFF' }}>1,550 điểm</p>
                     </div>
+                    <div className="text-2xl">👑</div>
                   </div>
 
                   {/* 2nd Place */}
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center gap-6 p-4 rounded-2xl bg-[#fdfaf3] border border-[#eeeae0] shadow-sm relative overflow-hidden group/rank">
                     <div
-                      className="w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold"
+                      className="w-14 h-14 rounded-full flex items-center justify-center text-3xl font-black shrink-0"
                       style={{
-                        backgroundColor: '#00FFFF',
-                        color: '#0E0B1A',
-                        boxShadow: '0 0 20px #00FFFF'
+                        background: 'linear-gradient(135deg, #94a3b8 0%, #64748b 100%)',
+                        color: '#ffffff',
+                        boxShadow: '0 8px 15px rgba(148,163,184,0.3)'
                       }}
                     >
                       2
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center space-x-2 mb-1">
-                        <h3 className="text-2xl font-black tracking-wide" style={{ color: '#FFFFFF' }}>Trần Thị B</h3>
-                        {user?.name === 'Trần Thị B' && (
-                          <span
-                            className="px-2 py-1 rounded-full text-xs font-bold"
-                            style={{
-                              backgroundColor: '#00FFFF',
-                              color: '#0E0B1A'
-                            }}
-                          >
-                            Bạn
-                          </span>
-                        )}
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="text-lg font-bold text-[#4a3f35]">Trần Thị B</h3>
                       </div>
-                      <div className="flex items-center space-x-2 mb-2">
-                        <p className="text-lg" style={{ color: '#FFFFFF' }}>Thành viên Pro</p>
-                        <div className="relative group">
-                          <span
-                            className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold cursor-help transition-all duration-300"
-                            style={{
-                              backgroundColor: '#00FFFF',
-                              color: '#0E0B1A',
-                              boxShadow: '0 0 8px #00FFFF'
-                            }}
-                          >
-                            i
-                          </span>
-                          <div
-                            className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"
-                            style={{
-                              backgroundColor: '#161228',
-                              color: '#FFFFFF',
-                              border: '1px solid #00FFFF',
-                              boxShadow: '0 0 15px rgba(0, 255, 255, 0.3)',
-                              whiteSpace: 'nowrap'
-                            }}
-                          >
-                            Pro: 500-1,000 điểm
-                            <div
-                              className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0"
-                              style={{
-                                borderLeft: '4px solid transparent',
-                                borderRight: '4px solid transparent',
-                                borderTop: '4px solid #00FFFF'
-                              }}
-                            />
-                          </div>
-                        </div>
+                      <div className="flex items-center gap-2 text-sm text-[#7a6a5a]">
+                        <span>Thành viên Pro</span>
+                        <span className="w-1 h-1 rounded-full bg-[#eeeae0]"></span>
+                        <span className="parchment-serif italic">1,250 điểm</span>
                       </div>
-                      <p className="text-xl font-bold" style={{ color: '#00FFFF' }}>50k điểm</p>
                     </div>
+                    <div className="text-2xl">🥈</div>
                   </div>
 
+
                   {/* 3rd Place */}
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center gap-6 p-4 rounded-2xl bg-[#fdfaf3] border border-[#eeeae0] shadow-sm relative overflow-hidden group/rank">
                     <div
-                      className="w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold"
+                      className="w-14 h-14 rounded-full flex items-center justify-center text-3xl font-black shrink-0"
                       style={{
-                        backgroundColor: '#FF00FF',
-                        color: '#0E0B1A',
-                        boxShadow: '0 0 20px #FF00FF'
+                        background: 'linear-gradient(135deg, #b45309 0%, #78350f 100%)',
+                        color: '#ffffff',
+                        boxShadow: '0 8px 15px rgba(180,83,9,0.3)'
                       }}
                     >
                       3
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center space-x-2 mb-1">
-                        <h3 className="text-2xl font-black tracking-wide" style={{ color: '#FFFFFF' }}>Lê Văn C</h3>
-                        {user?.name === 'Lê Văn C' && (
-                          <span
-                            className="px-2 py-1 rounded-full text-xs font-bold"
-                            style={{
-                              backgroundColor: '#00FFFF',
-                              color: '#0E0B1A'
-                            }}
-                          >
-                            Bạn
-                          </span>
-                        )}
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="text-lg font-bold text-[#4a3f35]">Lê Văn C</h3>
                       </div>
-                      <div className="flex items-center space-x-2 mb-2">
-                        <p className="text-lg" style={{ color: '#FFFFFF' }}>Thành viên</p>
-                        <div className="relative group">
-                          <span
-                            className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold cursor-help transition-all duration-300"
-                            style={{
-                              backgroundColor: '#00FFFF',
-                              color: '#0E0B1A',
-                              boxShadow: '0 0 8px #00FFFF'
-                            }}
-                          >
-                            i
-                          </span>
-                          <div
-                            className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"
-                            style={{
-                              backgroundColor: '#161228',
-                              color: '#FFFFFF',
-                              border: '1px solid #00FFFF',
-                              boxShadow: '0 0 15px rgba(0, 255, 255, 0.3)',
-                              whiteSpace: 'nowrap'
-                            }}
-                          >
-                            Thành viên: Dưới 500 điểm
-                            <div
-                              className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0"
-                              style={{
-                                borderLeft: '4px solid transparent',
-                                borderRight: '4px solid transparent',
-                                borderTop: '4px solid #00FFFF'
-                              }}
-                            />
-                          </div>
-                        </div>
+                      <div className="flex items-center gap-2 text-sm text-[#7a6a5a]">
+                        <span>Thành viên</span>
+                        <span className="w-1 h-1 rounded-full bg-[#eeeae0]"></span>
+                        <span className="parchment-serif italic">980 điểm</span>
                       </div>
-                      <p className="text-xl font-bold" style={{ color: '#FF00FF' }}>290k điểm</p>
+                    </div>
+                    <div className="text-2xl">🥉</div>
+                  </div>
+
+                  {/* 4th Place */}
+                  <div className="flex items-center gap-6 p-4 rounded-2xl bg-[#fdfaf3]/50 border border-[#eeeae0] shadow-sm relative overflow-hidden group/rank">
+                    <div
+                      className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-black shrink-0"
+                      style={{
+                        background: '#eeeae0',
+                        color: '#4a3f35',
+                        border: '2px solid #d6cfc4'
+                      }}
+                    >
+                      4
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="text-base font-bold text-[#4a3f35]">Phạm Văn D</h4>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-[#7a6a5a]">
+                        <span className="parchment-serif italic">850 điểm</span>
+                      </div>
                     </div>
                   </div>
+
+                  {/* 5th Place */}
+                  <div className="flex items-center gap-6 p-4 rounded-2xl bg-[#fdfaf3]/50 border border-[#eeeae0] shadow-sm relative overflow-hidden group/rank">
+                    <div
+                      className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-black shrink-0"
+                      style={{
+                        background: '#eeeae0',
+                        color: '#4a3f35',
+                        border: '2px solid #d6cfc4'
+                      }}
+                    >
+                      5
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="text-base font-bold text-[#4a3f35]">Hoàng Thị E</h4>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-[#7a6a5a]">
+                        <span className="parchment-serif italic">720 điểm</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Rank 6 - 10 */}
+                  {[
+                    { rank: 6, name: 'Chu Văn F', points: 650 },
+                    { rank: 7, name: 'Đặng Thị G', points: 580 },
+                    { rank: 8, name: 'Bùi Văn H', points: 510 },
+                    { rank: 9, name: 'Ngô Thị I', points: 440 },
+                    { rank: 10, name: 'Lý Văn K', points: 370 },
+                  ].map((player) => (
+                    <div key={player.rank} className="flex items-center gap-6 p-4 rounded-2xl bg-[#fdfaf3]/30 border border-[#eeeae0]/50 shadow-sm relative overflow-hidden group/rank">
+                      <div
+                        className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-black shrink-0"
+                        style={{
+                          background: '#f1ede4',
+                          color: '#4a3f35',
+                          border: '2px solid #d6cfc4'
+                        }}
+                      >
+                        {player.rank}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="text-base font-bold text-[#4a3f35]/80">{player.name}</h4>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-[#7a6a5a]/70">
+                          <span className="parchment-serif italic">{player.points} điểm</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
+
               </div>
             </div>
 
             {/* Trophy Illustration */}
             <div className="flex justify-center lg:justify-end">
-              <div className="text-center">
-                <div className="mb-8">
-                  <div className="relative group">
-                    <div
-                      className="w-40 h-40 mx-auto mb-6 rounded-full flex items-center justify-center relative animate-pulse"
-                      style={{
-                        background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
-                        boxShadow: '0 20px 40px rgba(255, 215, 0, 0.4), 0 0 60px rgba(255, 215, 0, 0.2)'
-                      }}
-                    >
-                      <span className="text-8xl group-hover:scale-110 transition-transform duration-300">🏆</span>
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400/50 to-orange-400/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    {/* Trophy Tooltip */}
-                    <div
-                      className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"
-                      style={{
-                        backgroundColor: '#161228',
-                        color: '#FFFFFF',
-                        border: '1px solid #FFD700',
-                        boxShadow: '0 0 15px rgba(255, 215, 0, 0.3)',
-                        whiteSpace: 'nowrap'
-                      }}
-                    >
-                      Cúp vàng - Biểu tượng chiến thắng
-                      <div
-                        className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0"
-                        style={{
-                          borderLeft: '4px solid transparent',
-                          borderRight: '4px solid transparent',
-                          borderTop: '4px solid #FFD700'
-                        }}
-                      />
-                    </div>
+              <div className="page-card parchment-texture premium-border p-6 text-center max-w-sm relative card-hover-effect flex flex-col items-center">
+                <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 50% 30%, #4bbf9f 0%, transparent 70%)' }}></div>
+
+                <div className="relative z-10 w-full">
+                  <div className="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center text-4xl shadow-xl bg-white border-2 border-[#eeeae0] relative">
+                    <div className="absolute inset-0 rounded-full animate-ping bg-[#4bbf9f]/10"></div>
+                    🏆
                   </div>
 
-                  <div className="flex justify-center space-x-6 mb-6">
-                    {[
-                      { rank: '1', color: 'from-yellow-400 to-orange-500', icon: '👑', tooltip: 'Vương miện - Hạng nhất' },
-                      { rank: '2', color: 'from-cyan-400 to-blue-500', icon: '🥈', tooltip: 'Huy chương bạc - Hạng nhì' },
-                      { rank: '3', color: 'from-pink-400 to-purple-500', icon: '🥉', tooltip: 'Huy chương đồng - Hạng ba' }
-                    ].map((item, index) => (
-                      <div key={index} className="relative group">
-                        <div
-                          className="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold hover:scale-110 transition-transform duration-300"
-                          style={{
-                            background: `linear-gradient(135deg, ${item.color})`,
-                            boxShadow: '0 8px 20px rgba(0, 0, 0, 0.3)'
-                          }}
-                        >
-                          <span className="text-xl">{item.icon}</span>
-                        </div>
-                        {/* Medal Tooltip */}
-                        <div
-                          className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"
-                          style={{
-                            backgroundColor: '#161228',
-                            color: '#FFFFFF',
-                            border: '1px solid #00FFFF',
-                            boxShadow: '0 0 15px rgba(0, 255, 255, 0.3)',
-                            whiteSpace: 'nowrap'
-                          }}
-                        >
-                          {item.tooltip}
-                          <div
-                            className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0"
-                            style={{
-                              borderLeft: '4px solid transparent',
-                              borderRight: '4px solid transparent',
-                              borderTop: '4px solid #00FFFF'
-                            }}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex justify-center space-x-3 mb-6">
-                    <div className="relative group">
-                      <span className="text-3xl animate-bounce cursor-help" style={{ animationDelay: '0s' }}>⭐</span>
-                      <div
-                        className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"
-                        style={{
-                          backgroundColor: '#161228',
-                          color: '#FFFFFF',
-                          border: '1px solid #FFD700',
-                          boxShadow: '0 0 15px rgba(255, 215, 0, 0.3)',
-                          whiteSpace: 'nowrap'
-                        }}
-                      >
-                        Ngôi sao - Điểm thành tích
-                        <div
-                          className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0"
-                          style={{
-                            borderLeft: '4px solid transparent',
-                            borderRight: '4px solid transparent',
-                            borderTop: '4px solid #FFD700'
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <div className="relative group">
-                      <span className="text-3xl animate-bounce cursor-help" style={{ animationDelay: '0.2s' }}>❤️</span>
-                      <div
-                        className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"
-                        style={{
-                          backgroundColor: '#161228',
-                          color: '#FFFFFF',
-                          border: '1px solid #FF69B4',
-                          boxShadow: '0 0 15px rgba(255, 105, 180, 0.3)',
-                          whiteSpace: 'nowrap'
-                        }}
-                      >
-                        Trái tim - Sự yêu thích
-                        <div
-                          className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0"
-                          style={{
-                            borderLeft: '4px solid transparent',
-                            borderRight: '4px solid transparent',
-                            borderTop: '4px solid #FF69B4'
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <div className="relative group">
-                      <span className="text-3xl animate-bounce cursor-help" style={{ animationDelay: '0.4s' }}>⭐</span>
-                      <div
-                        className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"
-                        style={{
-                          backgroundColor: '#161228',
-                          color: '#FFFFFF',
-                          border: '1px solid #FFD700',
-                          boxShadow: '0 0 15px rgba(255, 215, 0, 0.3)',
-                          whiteSpace: 'nowrap'
-                        }}
-                      >
-                        Ngôi sao - Điểm thành tích
-                        <div
-                          className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0"
-                          style={{
-                            borderLeft: '4px solid transparent',
-                            borderRight: '4px solid transparent',
-                            borderTop: '4px solid #FFD700'
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <p
-                    className="text-2xl font-bold bg-gradient-to-r from-white via-yellow-200 to-orange-200 bg-clip-text text-transparent"
-                  >
-                    Bạn có thể trở thành người dẫn đầu!
+                  <h4 className="text-xl font-black text-[#4a3f35] parchment-headline mb-1 uppercase tracking-wider">Vinh Quang</h4>
+                  <p className="text-[#4a3f35] text-xs leading-relaxed mb-4 font-bold italic">
+                    "Dành cho những tâm hồn kiên trì và trí tuệ mẫn tiệp nhất."
                   </p>
-                  <p className="text-lg text-gray-300">
-                    Tham gia ngay để cạnh tranh và leo lên top
-                  </p>
-                  <Link
-                    to="/practice"
-                    className="inline-flex items-center px-6 py-3 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 group/btn"
-                    style={{
-                      background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
-                      color: '#000000',
-                      boxShadow: '0 4px 15px rgba(255, 215, 0, 0.4)'
-                    }}
-                  >
-                    <span className="mr-2">🚀</span>
-                    BẮT ĐẦU THI ĐẤU
-                  </Link>
+
+                  <div className="flex justify-center gap-4 mb-6">
+                    <div className="text-center">
+                      <div className="text-xl mb-1">⭐</div>
+                      <div className="text-[9px] font-black text-[#4bbf9f] uppercase">Kiên Trì</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-xl mb-1">✨</div>
+                      <div className="text-[9px] font-black text-[#4bbf9f] uppercase">Trí Tuệ</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-xl mb-1">🌟</div>
+                      <div className="text-[9px] font-black text-[#4bbf9f] uppercase">Mẫn Tiệp</div>
+                    </div>
+                  </div>
+
+                  <div className="bg-[#fdfaf3]/80 p-5 rounded-2xl border border-[#eeeae0] backdrop-blur-sm">
+                    <p className="text-lg font-black text-[#4a3f35] parchment-headline mb-1">
+                      SẴN SÀNG CHƯA?
+                    </p>
+                    <p className="text-xs text-[#7a6a5a] mb-3">
+                      Vị trí của bạn đang chờ trên bảng vàng danh dự.
+                    </p>
+                    <Link
+                      to="/practice"
+                      className="btn-primary w-full py-3 text-center flex items-center justify-center gap-2 group text-sm"
+                    >
+                      🚀 BẮT ĐẦU NGAY
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -907,40 +587,60 @@ export default function Home() {
       </section>
 
 
-      {/* Gradient divider above footer */}
-      <div className="w-full h-px mt-20" style={{ background: 'linear-gradient(90deg, transparent, rgba(0,255,255,0.5), transparent)', opacity: 0.8 }}></div>
-      {/* Footer */}
-      <footer
-        className="container mx-auto px-4 py-8"
-      >
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="flex items-center space-x-3 mb-4 md:mb-0">
-            <img
-              src="/src/assets/logo-new.png"
-              alt="Bible Quiz Logo"
-              className="w-8 h-8"
-              style={{
-                filter: 'drop-shadow(0 0 8px #00FFFF) drop-shadow(0 0 16px #00FFFF)'
-              }}
-            />
-            <span className="text-xl font-bold" style={{ color: '#00FFFF' }}>BIBLE QUIZ</span>
+      {/* Artistic Glowing Divider */}
+      <div className="relative w-full h-[2px] mt-24 overflow-hidden">
+        <div
+          className="absolute inset-x-0 top-0 h-full bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"
+          style={{
+            animation: 'pulse-glow 3s ease-in-out infinite alternate',
+            boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
+          }}
+        ></div>
+      </div>
+
+      {/* Refined Footer V2.4 - Integrated & Balanced */}
+      <footer className="w-full pt-32 pb-24 px-6 container mx-auto relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
+          {/* Column 1: Brand & Slogan */}
+          <div className="space-y-6">
+            <div className="flex items-center space-x-2">
+              <span className="text-3xl font-black bg-gradient-to-r from-white via-cyan-200 to-purple-200 bg-clip-text text-transparent tracking-tighter drop-shadow-[0_0_15px_rgba(0,255,255,0.3)]">
+                BIBLE QUIZ
+              </span>
+            </div>
+            <p className="text-gray-400 text-sm leading-relaxed max-w-xs font-medium opacity-80">
+              Khám phá kho tàng tri thức Kinh Thánh qua những thử thách đầy thú vị và ý nghĩa. Vừa chơi, vừa học, vừa thăng trưởng đức tin mỗi ngày.
+            </p>
           </div>
-          <div className="flex space-x-6">
-            <Link to="/privacy" className="text-lg text-[#D9B8FF] hover:text-cyan-400 hover:drop-shadow-[0_0_8px_#00FFFF] transition-all duration-300">
-              Chính sách
-            </Link>
-            <Link to="/terms" className="text-lg text-[#D9B8FF] hover:text-cyan-400 hover:drop-shadow-[0_0_8px_#00FFFF] transition-all duration-300">
-              Điều khoản
-            </Link>
-            <Link to="/support" className="text-lg text-[#D9B8FF] hover:text-cyan-400 hover:drop-shadow-[0_0_8px_#00FFFF] transition-all duration-300">
-              Hỗ trợ
-            </Link>
+
+          {/* Column 2: Quick Links */}
+          <div className="space-y-8">
+            <h3 className="text-white text-xs font-black uppercase tracking-[0.3em] opacity-50">Hành trình</h3>
+            <div className="flex flex-col space-y-4">
+              <Link to="/about" className="text-white hover:text-[#00FFFF] transition-all duration-300 text-sm font-bold w-fit">Về Chúng Tôi</Link>
+              <Link to="/practice" className="text-white hover:text-[#00FFFF] transition-all duration-300 text-sm font-bold w-fit">Ôn luyện Kinh Thánh</Link>
+              <Link to="/ranked" className="text-white hover:text-[#00FFFF] transition-all duration-300 text-sm font-bold w-fit">Thử thách Xếp hạng</Link>
+              <Link to="/support" className="text-white hover:text-[#00FFFF] transition-all duration-300 text-sm font-bold w-fit">Hỗ trợ cộng đồng</Link>
+            </div>
           </div>
-        </div>
-        <div className="text-center mt-8">
-          <p style={{ color: '#D9B8FF' }}>
-            © 2024 Bible Quiz. Tất cả quyền được bảo lưu.
-          </p>
+
+          {/* Column 3: Policy & Rights */}
+          <div className="space-y-8 md:text-right">
+            <h3 className="text-white text-xs font-black uppercase tracking-[0.3em] opacity-50">Quy định</h3>
+            <div className="flex flex-col space-y-4 md:items-end">
+              <Link to="/privacy" className="text-white hover:text-[#00FFFF] transition-all duration-300 text-sm font-bold w-fit">Chính sách bảo mật</Link>
+              <Link to="/terms" className="text-white hover:text-[#00FFFF] transition-all duration-300 text-sm font-bold w-fit">Điều khoản sử dụng</Link>
+            </div>
+
+            <div className="pt-8 border-t border-white/5 space-y-2">
+              <p className="text-gray-500 text-[11px] font-black uppercase tracking-widest leading-relaxed">
+                © 2024 BIBLE QUIZ. <span className="text-gray-600 font-bold">ALL RIGHTS RESERVED.</span>
+              </p>
+              <p className="text-gray-500/60 text-[10px] font-bold italic">
+                Cảm hứng từ Kinh Thánh • Kết nối đức tin • Tri thức mỗi ngày
+              </p>
+            </div>
+          </div>
         </div>
       </footer>
     </div>

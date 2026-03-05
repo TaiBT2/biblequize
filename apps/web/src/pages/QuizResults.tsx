@@ -56,16 +56,16 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
   // Fallback if no stats
   if (!stats) {
     return (
-      <div className="min-h-screen style={{ backgroundColor: '#0E0B1A' }} flex items-center justify-center p-4">
-        <div className="neon-card p-8 text-center max-w-md">
-          <h2 className="neon-text text-2xl mb-4">⚠️ Không có dữ liệu kết quả</h2>
-          <p className="text-gray-300 mb-6">
+      <div className="min-h-screen page-bg flex items-center justify-center p-4">
+        <div className="page-card p-8 text-center max-w-md w-full">
+          <h2 className="text-2xl font-black mb-4 text-[#e05c5c] parchment-headline">⚠️ Không có dữ liệu kết quả</h2>
+          <p className="text-[#7a6a5a] mb-6">
             Có vẻ như có lỗi khi tải dữ liệu quiz. Vui lòng thử lại.
           </p>
           <div className="space-y-4">
             <button
               onClick={onBackToHome}
-              className="neon-btn neon-btn-blue px-6 py-2"
+              className="btn-secondary w-full"
             >
               Về Trang Chủ
             </button>
@@ -101,15 +101,15 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
     try {
       // Only save progress for ranked mode
       if (!isRanked) return
-      
+
       // Don't call server API here as it will overwrite the current progress
       // The progress is already saved during gameplay in Quiz.tsx
       console.log('QuizResults: Skipping server API call to avoid overwriting progress')
-      
+
       // Just ensure localStorage has today's data
       const today = new Date().toISOString().slice(0, 10)
       const currentSnapshot = JSON.parse(localStorage.getItem('rankedSnapshot') || '{}')
-      
+
       if (currentSnapshot.date === today) {
         console.log('QuizResults: Using existing localStorage data:', currentSnapshot)
         localStorage.setItem('rankedProgress', JSON.stringify({
@@ -139,29 +139,29 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
   React.useEffect(() => { saveProgress() }, [])
 
   return (
-    <div className="min-h-screen style={{ backgroundColor: '#0E0B1A' }} flex items-center justify-center p-4">
-      <div className="neon-card p-8 text-center max-w-4xl w-full">
-        <h2 className="neon-text text-4xl mb-8">🎯 Kết Quả Bài Quiz</h2>
-        
+    <div className="min-h-screen page-bg flex items-center justify-center p-4 py-12">
+      <div className="page-card p-8 md:p-12 text-center max-w-4xl w-full">
+        <h2 className="text-[#4bbf9f] text-4xl font-black mb-10 parchment-headline tracking-tight">🎯 KẾT QUẢ BÀI QUIZ</h2>
+
         {/* Simple Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="neon-card p-6">
-            <div className="neon-green text-3xl font-bold mb-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="bg-[#fdfaf3] border-2 border-[#eeeae0] rounded-2xl p-6 shadow-sm">
+            <div className="text-[#4bbf9f] text-4xl font-black mb-2">
               {scoreDisplay}
             </div>
-            <div className="text-gray-300">Tổng điểm</div>
+            <div className="text-[#7a6a5a] font-bold uppercase text-xs tracking-wider">Tổng điểm</div>
           </div>
-          <div className="neon-card p-6">
-            <div className="neon-blue text-3xl font-bold mb-2">
+          <div className="bg-[#fdfaf3] border-2 border-[#eeeae0] rounded-2xl p-6 shadow-sm">
+            <div className="text-[#4bbf9f] text-4xl font-black mb-2">
               {correctDisplay}/{stats.totalQuestions || 0}
             </div>
-            <div className="text-gray-300">Câu đúng</div>
+            <div className="text-[#7a6a5a] font-bold uppercase text-xs tracking-wider">Câu đúng</div>
           </div>
-          <div className="neon-card p-6">
-            <div className="neon-pink text-3xl font-bold mb-2">
+          <div className="bg-[#fdfaf3] border-2 border-[#eeeae0] rounded-2xl p-6 shadow-sm">
+            <div className="text-[#4bbf9f] text-4xl font-black mb-2">
               {totalMinutes}:{totalSeconds.toString().padStart(2, '0')}
             </div>
-            <div className="text-gray-300">Tổng thời gian</div>
+            <div className="text-[#7a6a5a] font-bold uppercase text-xs tracking-wider">Thời gian</div>
           </div>
         </div>
 
@@ -193,32 +193,33 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
         )}
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-4">
           <button
             onClick={() => navigate('/review', { state: { stats } })}
-            className="neon-btn neon-btn-orange px-8 py-3 text-lg"
+            className="btn-secondary px-8 py-3.5 text-lg"
           >
-            🔎 Xem Lại Câu Trả Lời
+            🔎 Xem Lại
           </button>
           <button
             onClick={onPlayAgain}
-            className="px-8 py-3 text-lg font-semibold rounded-xl text-[#0E0B1A]"
-            style={{ background: 'linear-gradient(135deg, #22c55e 0%, #86efac 100%)', boxShadow: '0 8px 25px rgba(34,197,94,0.35)' }}
+            className="btn-primary px-10 py-3.5 text-lg"
           >
             🔄 Chơi Tiếp
           </button>
           <button
             onClick={onBackToHome}
-            className="neon-btn neon-btn-blue px-8 py-3 text-lg"
+            className="btn-secondary px-8 py-3.5 text-lg"
           >
-            🏠 Về Màn Ranked
+            🏠 Trang Chủ
           </button>
         </div>
 
         {/* Performance insights */}
         {stats.questions && stats.questions.length > 0 && (
-          <div className="mt-10 text-left max-w-3xl mx-auto">
-            <h3 className="text-gray-200 font-semibold mb-3">📊 Phân tích hiệu suất</h3>
+          <div className="mt-12 text-left bg-[#f8f9fa] p-8 rounded-3xl border border-[#eeeae0]">
+            <h3 className="text-[#4a3f35] font-black text-xl mb-6 flex items-center gap-2">
+              <span className="text-2xl">📊</span> Phân tích kết quả
+            </h3>
             <Insights stats={stats} />
           </div>
         )}
@@ -259,13 +260,17 @@ const Insights: React.FC<{ stats: QuizStats }> = ({ stats }) => {
   const allPerfect = minAcc === maxAcc && maxAcc === 1
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <div className="neon-card p-4">
-        <div className="text-green-300 font-bold mb-1">🏆 Chủ đề mạnh nhất</div>
-        <div className="text-gray-200">{`${strongest.book} (${Math.round(strongest.acc * 100)}%)`}</div>
+      <div className="bg-white p-5 rounded-2xl border border-[#eeeae0] shadow-sm">
+        <div className="text-[#4bbf9f] font-black mb-2 flex items-center gap-2">
+          <span>🏆</span> Chủ đề mạnh nhất
+        </div>
+        <div className="text-[#4a3f35] font-bold text-lg">{`${strongest.book} (${Math.round(strongest.acc * 100)}%)`}</div>
       </div>
-      <div className="neon-card p-4">
-        <div className="text-pink-300 font-bold mb-1">✏️ Cần cải thiện</div>
-        <div className="text-gray-200">{allPerfect ? 'Không có! Bạn đã nắm vững tất cả.' : `${weakest.book} (${Math.round(weakest.acc * 100)}%)`}</div>
+      <div className="bg-white p-5 rounded-2xl border border-[#eeeae0] shadow-sm">
+        <div className="text-[#e05c5c] font-black mb-2 flex items-center gap-2">
+          <span>✏️</span> Cần cải thiện
+        </div>
+        <div className="text-[#4a3f35] font-bold text-lg">{allPerfect ? 'Không có! Bạn đã nắm vững tất cả.' : `${weakest.book} (${Math.round(weakest.acc * 100)}%)`}</div>
       </div>
     </div>
   )

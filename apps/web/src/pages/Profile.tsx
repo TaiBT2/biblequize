@@ -19,11 +19,11 @@ const Profile: React.FC = () => {
   useEffect(() => {
     const loadProfileData = async () => {
       if (!user) return
-      
+
       try {
         // Simulate loading delay for animation
         setTimeout(() => {
-        setStats({
+          setStats({
             level: 3,
             highScore: 0,
             totalPoints: 0,
@@ -37,7 +37,7 @@ const Profile: React.FC = () => {
         setLoading(false)
       }
     }
-    
+
     loadProfileData()
   }, [user])
 
@@ -131,7 +131,7 @@ const Profile: React.FC = () => {
 
   const getProgressData = () => {
     const bibleData = getBibleData()
-    
+
     if (selectedGroup === 'TOÀN BỘ') {
       // Return all books for overview
       return Object.values(bibleData).flat()
@@ -143,14 +143,14 @@ const Profile: React.FC = () => {
         ...bibleData['SÁCH TIÊN TRI']
       ]
     } else if (selectedGroup === 'TÂN ƯỚC') {
-    return [
+      return [
         ...bibleData['SÁCH TIN MỪNG'],
         ...bibleData['SÁCH CÔNG VỤ'],
         ...bibleData['CÁC THƯ TÍN'],
         ...bibleData['SÁCH KHẢI HUYỀN']
       ]
     } else {
-      return bibleData[selectedGroup] || []
+      return (bibleData as Record<string, any>)[selectedGroup] || []
     }
   }
 
@@ -161,8 +161,8 @@ const Profile: React.FC = () => {
           <h2 className="text-2xl font-bold mb-4" style={{ color: '#00FFFF' }}>
             Vui lòng đăng nhập để xem hồ sơ
           </h2>
-          <Link 
-            to="/login" 
+          <Link
+            to="/login"
             className="px-6 py-3 rounded-lg font-medium transition-all duration-300"
             style={{
               background: 'linear-gradient(135deg, #00FFFF 0%, #9333EA 100%)',
@@ -191,125 +191,110 @@ const Profile: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#0E0B1A' }}>
-      <div className="container mx-auto px-4 py-8">
+    <div className="page-bg min-h-screen">
+      <div className="container mx-auto px-4 py-12">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-2" style={{ 
-            color: '#00FFFF',
-            textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
-          }}>
+        <div className="text-center mb-12">
+          <h1 className="page-title text-4xl mb-4">
             NHẬT KÝ HÀNH TRÌNH
           </h1>
-          <p className="text-lg opacity-80" style={{ color: '#B0B0B0' }}>
-            Theo dõi tiến độ học tập của bạn
+          <p className="text-[#7a6a5a] text-lg font-medium">
+            Theo dõi tiến độ học tập và sự thăng tiến của bạn
           </p>
-      </div>
-      
+        </div>
+
         {/* User Info */}
-        <div className="bg-black bg-opacity-40 rounded-2xl p-6 mb-8" style={{
-          border: '1px solid rgba(0, 255, 255, 0.3)',
-          boxShadow: '0 0 20px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.1)'
-        }}>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold"
-                   style={{
-                     background: 'linear-gradient(135deg, #00FFFF, #9333EA)',
-                     color: '#0E0B1A',
-                     boxShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
-                   }}>
+        <div className="page-card p-8 mb-8 relative overflow-hidden">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="w-24 h-24 rounded-full flex items-center justify-center text-4xl font-black shadow-lg border-4 border-white"
+                style={{
+                  background: 'linear-gradient(135deg, #4bbf9f 0%, #38a169 100%)',
+                  color: '#ffffff'
+                }}>
                 {user.name?.charAt(0).toUpperCase()}
               </div>
-              <div>
-                <h2 className="text-2xl font-bold text-white">{user.name}</h2>
-                <div 
-                  className="relative"
+              <div className="text-center md:text-left">
+                <h2 className="text-3xl font-black text-[#4a3f35] parchment-headline mb-2">{user.name}</h2>
+                <div
+                  className="relative inline-block"
                   onMouseEnter={() => setShowTitleTooltip(true)}
                   onMouseLeave={() => setShowTitleTooltip(false)}
                 >
-                  <span className="text-sm opacity-80 cursor-help" style={{ color: '#E0E0E0' }}>
-                    {stats.level >= 10 ? '🌟 Bậc Thầy Học Thuật' : 
-                     stats.level >= 5 ? '⭐ Học Giả Tiên Tiến' : 
-                     '📚 Người Bắt Đầu'}
+                  <span className="px-4 py-1.5 rounded-full bg-[#fdfaf3] border border-[#eeeae0] text-[#7a6a5a] text-sm font-bold cursor-help shadow-sm">
+                    {stats.level >= 10 ? '🌟 Bậc Thầy Học Thuật' :
+                      stats.level >= 5 ? '⭐ Học Giả Tiên Tiến' :
+                        '📚 Người Bắt Đầu'}
                   </span>
-                  
+
                   {/* Title Tooltip */}
                   {showTitleTooltip && (
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg z-50 whitespace-nowrap"
-                         style={{ border: '1px solid #00FFFF' }}>
-                      <div className="font-semibold mb-1">Danh hiệu của bạn</div>
-                      <div className="text-xs opacity-80">
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-4 py-3 bg-[#12103a] text-white text-xs rounded-xl shadow-xl z-50 min-w-[200px] border border-[#4bbf9f]/30">
+                      <div className="font-bold mb-1 text-[#4bbf9f]">Danh hiệu của bạn</div>
+                      <div className="text-xs opacity-90 leading-relaxed">
                         {stats.level >= 10 ? 'Bậc thầy học thuật - Đã chinh phục mọi thử thách!' :
-                         stats.level >= 5 ? 'Học giả tiên tiến - Đang trên đường trở thành bậc thầy!' :
-                         'Người bắt đầu - Hãy hoàn thành các thử thách để thăng tiến lên "Người Tìm Hiểu", "Môn Đồ", "Học Giả"...'}
+                          stats.level >= 5 ? 'Học giả tiên tiến - Đang trên đường trở thành bậc thầy!' :
+                            'Người bắt đầu - Hãy hoàn thành các thử thách để thăng tiến lên "Người Tìm Hiểu", "Môn Đồ", "Học Giả"...'}
                       </div>
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-t-[#12103a]"></div>
                     </div>
                   )}
                 </div>
               </div>
-      </div>
+            </div>
 
-            <div className="flex items-center space-x-6">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{
-                background: 'linear-gradient(135deg, #FF8C42, #FF6B9D)',
-                border: '2px solid #FF8C42',
-                boxShadow: '0 0 15px #FF8C42, inset 0 0 15px rgba(255, 140, 66, 0.1)'
-              }}>
-                <span className="text-2xl">⭐</span>
-              </div>
-              <div className="flex-1">
-                <div className="text-white opacity-80">Cấp độ {stats.level}</div>
-                <div className="text-2xl font-bold mb-2" style={{ color: '#FF8C42' }}>{stats.level}</div>
-                
+            <div className="flex flex-col items-center md:items-end gap-3 min-w-[200px]">
+              <div className="w-full">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-[#7a6a5a] font-bold text-sm uppercase tracking-wider">Cấp độ {stats.level}</span>
+                  <span className="text-[#4bbf9f] font-black">{Math.floor((stats.level % 10) * 10)}%</span>
+                </div>
+
                 {/* Level Progress Bar */}
-                <div 
+                <div
                   className="relative"
                   onMouseEnter={() => setShowProgressTooltip(true)}
                   onMouseLeave={() => setShowProgressTooltip(false)}
                 >
-                  <div className="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                  <div className="w-full h-3 bg-[#eeeae0] rounded-full overflow-hidden shadow-inner">
                     <div
-                      className="h-full bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full transition-all duration-1000"
+                      className="h-full bg-gradient-to-r from-[#4bbf9f] to-[#38a169] rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(75,191,159,0.3)]"
                       style={{
                         width: `${(stats.level % 10) * 10}%`,
-                        boxShadow: '0 0 10px rgba(255, 193, 7, 0.5)'
                       }}
                     ></div>
                   </div>
-                  
+
                   {/* Progress Tooltip */}
                   {showProgressTooltip && (
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg z-50 whitespace-nowrap"
-                         style={{ border: '1px solid #FF8C42' }}>
-                      <div className="font-semibold mb-1">Tiến độ lên cấp độ tiếp theo</div>
-                      <div className="text-xs opacity-80">
-                        {stats.level % 10 === 0 ? 'Đã đạt cấp độ mới!' : 
-                         `Cần thêm ${10 - (stats.level % 10)} cấp độ để thăng cấp`}
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-4 py-3 bg-[#12103a] text-white text-xs rounded-xl shadow-xl z-50 min-w-[200px] border border-[#4bbf9f]/30">
+                      <div className="font-bold mb-1 text-[#4bbf9f]">Tiến độ thăng cấp</div>
+                      <div className="text-xs opacity-90 leading-relaxed">
+                        {stats.level % 10 === 0 ? 'Đã đạt cấp độ mới!' :
+                          `Bạn cần thêm ${(10 - (stats.level % 10)) * 10} điểm kinh nghiệm để lên cấp.`}
                       </div>
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-t-[#12103a]"></div>
                     </div>
                   )}
                 </div>
               </div>
             </div>
-            </div>
           </div>
+        </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {/* Left Side Stats */}
-            <div className="space-y-6">
-              <div className="flex items-center">
+          {/* Left Side Stats */}
+          <div className="space-y-6">
+            <div className="flex items-center">
               <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{
                 background: 'linear-gradient(135deg, #FF8C42, #FF6B9D)',
                 border: '2px solid #FF8C42',
                 boxShadow: '0 0 15px #FF8C42, inset 0 0 15px rgba(255, 140, 66, 0.1)'
               }}>
                 <span className="text-2xl">🏆</span>
-                </div>
-                <div>
+              </div>
+              <div>
                 <div className="text-white opacity-80">ĐIỂM CAO</div>
                 {stats.highScore > 0 ? (
                   <div className="text-2xl font-bold" style={{ color: '#FF8C42' }}>{stats.highScore}</div>
@@ -318,18 +303,18 @@ const Profile: React.FC = () => {
                     Hãy ghi dấu ấn đầu tiên!
                   </div>
                 )}
-                </div>
               </div>
+            </div>
 
-              <div className="flex items-center">
+            <div className="flex items-center">
               <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{
                 background: 'linear-gradient(135deg, #FF6B9D, #9333EA)',
                 border: '2px solid #FF6B9D',
                 boxShadow: '0 0 15px #FF6B9D, inset 0 0 15px rgba(255, 107, 157, 0.1)'
               }}>
                 <span className="text-2xl">💰</span>
-                </div>
-                <div>
+              </div>
+              <div>
                 <div className="text-white opacity-80">ĐIỂM TỔNG</div>
                 {stats.totalPoints > 0 ? (
                   <div className="text-2xl font-bold" style={{ color: '#FF6B9D' }}>{stats.totalPoints}</div>
@@ -338,21 +323,21 @@ const Profile: React.FC = () => {
                     Sẵn sàng chinh phục!
                   </div>
                 )}
-                </div>
               </div>
             </div>
+          </div>
 
-            {/* Right Side Stats */}
-            <div className="space-y-6">
-              <div className="flex items-center">
+          {/* Right Side Stats */}
+          <div className="space-y-6">
+            <div className="flex items-center">
               <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{
                 background: 'linear-gradient(135deg, #FF6B9D, #9333EA)',
                 border: '2px solid #FF6B9D',
                 boxShadow: '0 0 15px #FF6B9D, inset 0 0 15px rgba(255, 107, 157, 0.1)'
               }}>
-                  <span className="text-2xl">🔥</span>
-                </div>
-                <div>
+                <span className="text-2xl">🔥</span>
+              </div>
+              <div>
                 <div className="text-white opacity-80">Chuỗi thắng: {stats.streak}</div>
                 {stats.streak > 0 ? (
                   <div className="text-2xl font-bold" style={{ color: '#FF6B9D' }}>{stats.streak}</div>
@@ -361,17 +346,17 @@ const Profile: React.FC = () => {
                     Bắt đầu ngay!
                   </div>
                 )}
-                </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Progress Graph */}
+        {/* Progress Graph */}
         <div className="bg-black bg-opacity-40 rounded-2xl p-6 mb-8" style={{
           border: '1px solid rgba(0, 255, 136, 0.3)',
           boxShadow: '0 0 20px rgba(0, 255, 136, 0.2), inset 0 0 20px rgba(0, 255, 136, 0.1)'
         }}>
-          <h3 className="text-2xl font-bold mb-2" style={{ 
+          <h3 className="text-2xl font-bold mb-2" style={{
             color: '#00FF88',
             textShadow: '0 0 20px rgba(0, 255, 136, 0.5)',
             fontSize: '1.5rem'
@@ -379,25 +364,24 @@ const Profile: React.FC = () => {
           <p className="text-sm italic mb-4" style={{ color: '#B0B0B0' }}>
             Tỷ lệ trả lời đúng trung bình theo Sách
           </p>
-          
+
           {/* Group Filter */}
           <div className="flex flex-wrap gap-2 mb-6">
             {['TOÀN BỘ', 'CỰU ƯỚC', 'TÂN ƯỚC', 'NGŨ KINH', 'SÁCH LỊCH SỬ', 'SÁCH THI CA', 'SÁCH TIÊN TRI', 'SÁCH TIN MỪNG', 'CÁC THƯ TÍN'].map((group) => (
-                <button
-                  key={group}
-                  onClick={() => setSelectedGroup(group)}
-                  className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 ${
-                    selectedGroup === group
-                      ? 'bg-gradient-to-r from-cyan-400 to-purple-400 text-black'
-                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+              <button
+                key={group}
+                onClick={() => setSelectedGroup(group)}
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 ${selectedGroup === group
+                  ? 'bg-gradient-to-r from-cyan-400 to-purple-400 text-black'
+                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                   }`}
-                  style={{
-                    boxShadow: selectedGroup === group ? '0 0 10px rgba(0, 255, 255, 0.3)' : 'none'
-                  }}
-                >
-                  {group}
-                </button>
-              ))}
+                style={{
+                  boxShadow: selectedGroup === group ? '0 0 10px rgba(0, 255, 255, 0.3)' : 'none'
+                }}
+              >
+                {group}
+              </button>
+            ))}
           </div>
 
           <div className="bg-black bg-opacity-40 p-6 rounded-2xl relative" style={{
@@ -406,14 +390,14 @@ const Profile: React.FC = () => {
           }}>
             {/* List View */}
             <div className="space-y-3 max-h-96 overflow-y-auto">
-              {getProgressData().map((item, index) => (
+              {getProgressData().map((item: { book: string; progress: number }, index: number) => (
                 <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300">
                   <div className="flex-1">
                     <div className="text-sm font-medium text-white mb-1">{item.book}</div>
                     <div className="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
-                      <div 
+                      <div
                         className="h-full bg-gradient-to-r from-cyan-400 to-green-400 rounded-full transition-all duration-1000"
-                      style={{
+                        style={{
                           width: `${item.progress}%`,
                           boxShadow: '0 0 8px rgba(0, 255, 255, 0.5)'
                         }}
@@ -426,20 +410,20 @@ const Profile: React.FC = () => {
                     </div>
                     <div className="text-xs text-gray-400">
                       {item.progress >= 80 ? '🌟 Xuất sắc' :
-                       item.progress >= 60 ? '⭐ Tốt' :
-                       item.progress >= 40 ? '📈 Đang tiến bộ' : '💪 Cần cố gắng'}
-                    </div>
+                        item.progress >= 60 ? '⭐ Tốt' :
+                          item.progress >= 40 ? '📈 Đang tiến bộ' : '💪 Cần cố gắng'}
                     </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
+          </div>
         </div>
 
         {/* Navigation Button */}
         <div className="text-center">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="px-12 py-4 text-xl font-bold tracking-wider rounded-2xl transition-all duration-300 group relative overflow-hidden"
             style={{
               border: '2px solid #00FFFF',
