@@ -476,7 +476,7 @@ export default function Ranked() {
       </div>
 
       {/* Action Section: The Hero Button Area */}
-      <div className="w-full flex flex-col items-center z-20">
+      <div className="w-full flex flex-col items-center z-20 gap-4">
         {canPlay ? (
           <button
             onClick={startRankedQuiz}
@@ -490,19 +490,51 @@ export default function Ranked() {
           </div>
         )}
 
-        <div className="mt-8 flex items-center gap-3 text-white/30 font-mono">
-          <span className="text-[10px] font-black uppercase tracking-widest">Reset Hàng Ngày:</span>
-          <span className="text-lg font-bold text-white tracking-widest">{timeLeft || '23 : 59 : 59'}</span>
+        {/* Reset Timer: Large bordered pill */}
+        <div
+          className="flex items-center justify-center gap-3 px-10 py-3 rounded-2xl border border-white/10 bg-black/30 backdrop-blur-sm"
+          style={{ minWidth: '340px' }}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/40 shrink-0">
+            <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+          </svg>
+          <span className="text-[11px] font-black uppercase tracking-widest text-white/40">Reset Hàng Ngày:</span>
+          <span className="text-[15px] font-black tracking-widest" style={{ color: '#FFC300' }}>{timeLeft || '23h : 59m : 59s'}</span>
         </div>
 
-        {/* Minimal Footer Nav */}
-        <div className="mt-12 flex items-center gap-10">
-          <Link to="/" className="text-[10px] font-black uppercase tracking-[0.2em] text-white/20 hover:text-[#00F5D4] transition-colors flex items-center gap-2">
-            <span className="text-lg">←</span> Quay lại trang chủ
+        {/* Footer Nav */}
+        <div className="flex flex-col items-center gap-3 mt-2">
+          <Link
+            to="/"
+            className="flex items-center gap-2 px-7 py-2.5 rounded-xl border border-white/10 bg-black/20 text-white/50 text-[10px] font-black uppercase tracking-[0.2em] hover:text-white hover:border-white/30 transition-all"
+          >
+            <span>←</span> Quay lại trang chủ
           </Link>
-          <div className="flex gap-4">
-            <Link to="/leaderboard" className="px-6 py-2 rounded-xl border border-white/5 bg-white/5 text-[#00F5D4] text-[10px] font-black uppercase tracking-widest hover:bg-[#00F5D4] hover:text-[#0B0E14] transition-all">Bảng xếp hạng</Link>
-            <button onClick={fetchStatus} className="px-6 py-2 rounded-xl border border-white/5 bg-white/5 text-[#FFC300] text-[10px] font-black uppercase tracking-widest hover:bg-[#FFC300] hover:text-[#0B0E14] transition-all">Refresh</button>
+          <div className="flex gap-3">
+            <Link
+              to="/leaderboard"
+              className="flex items-center gap-2 px-6 py-2.5 rounded-xl border text-[10px] font-black uppercase tracking-widest transition-all"
+              style={{ borderColor: '#00F5D4', color: '#00F5D4', background: 'rgba(0,245,212,0.05)' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(0,245,212,0.15)' }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(0,245,212,0.05)' }}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 21H16M12 21V13M17 4H7L6 9C6 11.21 8.69 13 12 13C15.31 13 18 11.21 18 9L17 4Z" /><path d="M7 4L4 5M17 4L20 5" />
+              </svg>
+              Bảng xếp hạng
+            </Link>
+            <button
+              onClick={fetchStatus}
+              className="flex items-center gap-2 px-6 py-2.5 rounded-xl border text-[10px] font-black uppercase tracking-widest transition-all"
+              style={{ borderColor: '#FF6B35', color: '#FF6B35', background: 'rgba(255,107,53,0.05)' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,107,53,0.15)' }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,107,53,0.05)' }}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="23 4 23 10 17 10" /><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+              </svg>
+              Refresh
+            </button>
           </div>
         </div>
       </div>
