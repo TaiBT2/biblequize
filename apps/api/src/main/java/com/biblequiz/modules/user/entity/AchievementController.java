@@ -1,4 +1,4 @@
-package com.biblequiz.api;
+package com.biblequiz.modules.user.entity;
 
 import com.biblequiz.modules.user.entity.Achievement;
 import com.biblequiz.modules.user.entity.User;

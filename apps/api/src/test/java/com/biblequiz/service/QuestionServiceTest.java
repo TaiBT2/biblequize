@@ -1,7 +1,7 @@
 package com.biblequiz.service;
 
-import com.biblequiz.entity.Question;
-import com.biblequiz.repository.QuestionRepository;
+import com.biblequiz.modules.quiz.entity.Question;
+import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,12 +25,12 @@ class QuestionServiceTest {
 
     @Mock
     private QuestionRepository questionRepository;
-    
+
     @Mock
-    private CacheService cacheService;
+    private com.biblequiz.infrastructure.service.CacheService cacheService;
 
     @InjectMocks
-    private QuestionService questionService;
+    private com.biblequiz.modules.quiz.service.QuestionService questionService;
 
     private Question sampleQuestion;
     private List<Question> sampleQuestions;
@@ -49,8 +49,9 @@ class QuestionServiceTest {
         sampleQuestion.setIsActive(true);
 
         sampleQuestions = Arrays.asList(sampleQuestion);
-        
-        // Mock cache service to return empty by default (lenient to avoid unnecessary stubbing warnings)
+
+        // Mock cache service to return empty by default (lenient to avoid unnecessary
+        // stubbing warnings)
         lenient().when(cacheService.getCachedQuestionList(any(), any())).thenReturn(java.util.Optional.empty());
         lenient().when(cacheService.getCachedQuestionOfTheDay(any(), any())).thenReturn(java.util.Optional.empty());
     }
@@ -106,7 +107,8 @@ class QuestionServiceTest {
         assertNotNull(result);
         assertEquals(1, result.size());
         verify(questionRepository).countByDifficultyAndIsActiveTrue(Question.Difficulty.easy);
-        verify(questionRepository).findByDifficultyAndIsActiveTrue(eq(Question.Difficulty.easy), any(PageRequest.class));
+        verify(questionRepository).findByDifficultyAndIsActiveTrue(eq(Question.Difficulty.easy),
+                any(PageRequest.class));
     }
 
     @Test

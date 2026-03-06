@@ -1,8 +1,10 @@
 package com.biblequiz.modules.auth.service;
 
+import com.biblequiz.modules.auth.entity.AuthIdentity;
 import com.biblequiz.infrastructure.auth.JwtUtil;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
+import com.biblequiz.modules.auth.repository.AuthIdentityRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -28,15 +30,15 @@ public class OAuth2Service extends DefaultOAuth2UserService {
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2User oauth2User = super.loadUser(userRequest);
-        
+
         String provider = userRequest.getClientRegistration().getRegistrationId();
-        String providerUserId = oauth2User.getAttribute("sub") != null ? 
-            oauth2User.getAttribute("sub") : oauth2User.getAttribute("id");
-        
+        String providerUserId = oauth2User.getAttribute("sub") != null ? oauth2User.getAttribute("sub")
+                : oauth2User.getAttribute("id");
+
         // Check if user exists by OAuth identity
         AuthIdentity authIdentity = authIdentityRepository
-            .findByProviderAndProviderUserId(provider, providerUserId)
-            .orElse(null);
+                .findByProviderAndProviderUserId(provider, providerUserId)
+                .orElse(null);
 
         User user;
         if (authIdentity != null) {
@@ -45,7 +47,7 @@ public class OAuth2Service extends DefaultOAuth2UserService {
             // Create new user
             user = createUserFromOAuth2User(oauth2User, provider);
             user = userRepository.save(user);
-            
+
             // Create auth identity
             authIdentity = new AuthIdentity();
             authIdentity.setId(UUID.randomUUID().toString());
@@ -72,7 +74,7 @@ public class OAuth2Service extends DefaultOAuth2UserService {
     public String generateTokensForUser(User user) {
         String accessToken = jwtUtil.generateToken(user.getEmail());
         String refreshToken = jwtUtil.generateRefreshToken(user.getEmail());
-        
+
         // In a real implementation, you might want to store refresh tokens in database
         return accessToken;
     }

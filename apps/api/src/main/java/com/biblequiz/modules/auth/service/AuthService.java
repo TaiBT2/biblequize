@@ -1,13 +1,14 @@
 package com.biblequiz.modules.auth.service;
 
-import com.biblequiz.modules.user.entity.User;
-import com.biblequiz.modules.user.repository.UserRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.biblequiz.modules.auth.entity.AuthIdentity;
+import com.biblequiz.modules.user.entity.User;
+import com.biblequiz.modules.user.repository.UserRepository;
+import com.biblequiz.modules.auth.repository.AuthIdentityRepository;
 
 import java.util.UUID;
 
@@ -26,7 +27,7 @@ public class AuthService {
 
     public User findOrCreateUser(OAuth2User oauth2User, String provider) {
         String providerUserId = oauth2User.getName();
-        
+
         // Check if auth identity exists
         return authIdentityRepository.findByProviderAndProviderUserId(provider, providerUserId)
                 .map(AuthIdentity::getUser)

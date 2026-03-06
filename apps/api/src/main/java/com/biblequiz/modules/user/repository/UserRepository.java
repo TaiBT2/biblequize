@@ -1,6 +1,6 @@
-package com.biblequiz.repository;
+package com.biblequiz.modules.user.repository;
 
-import com.biblequiz.entity.User;
+import com.biblequiz.modules.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

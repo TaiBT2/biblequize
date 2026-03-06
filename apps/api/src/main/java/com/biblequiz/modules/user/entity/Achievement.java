@@ -1,4 +1,4 @@
-package com.biblequiz.entity;
+package com.biblequiz.modules.user.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

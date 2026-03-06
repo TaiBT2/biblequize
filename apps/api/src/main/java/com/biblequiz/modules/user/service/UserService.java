@@ -1,7 +1,7 @@
-package com.biblequiz.service;
+package com.biblequiz.modules.user.service;
 
-import com.biblequiz.entity.User;
-import com.biblequiz.repository.UserRepository;
+import com.biblequiz.modules.user.entity.User;
+import com.biblequiz.modules.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

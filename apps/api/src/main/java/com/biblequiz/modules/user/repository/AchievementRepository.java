@@ -1,6 +1,6 @@
-package com.biblequiz.repository;
+package com.biblequiz.modules.user.repository;
 
-import com.biblequiz.entity.Achievement;
+import com.biblequiz.modules.user.entity.Achievement;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

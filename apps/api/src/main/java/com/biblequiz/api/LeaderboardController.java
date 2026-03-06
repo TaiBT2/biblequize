@@ -33,7 +33,7 @@ public class LeaderboardController {
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "20") int size) {
         LocalDate d = date != null ? date : LocalDate.now();
-        java.util.List<com.biblequiz.entity.UserDailyProgress> rows = udpRepository
+        java.util.List<UserDailyProgress> rows = udpRepository
                 .findByDateOrderByPointsCountedDesc(d);
         java.util.List<java.util.Map<String, Object>> list = rows.stream()
                 .skip(page * size)
@@ -56,7 +56,7 @@ public class LeaderboardController {
             @RequestParam(value = "size", defaultValue = "20") int size) {
         LocalDate end = LocalDate.now();
         LocalDate start = end.minusDays(6);
-        java.util.List<com.biblequiz.entity.UserDailyProgress> rows = udpRepository
+        java.util.List<UserDailyProgress> rows = udpRepository
                 .findByDateBetweenOrderByPointsCountedDesc(start, end);
         java.util.List<java.util.Map<String, Object>> list = rows.stream()
                 .collect(Collectors.groupingBy(udp -> udp.getUser().getId()))
@@ -87,7 +87,7 @@ public class LeaderboardController {
             @RequestParam(value = "size", defaultValue = "20") int size) {
         LocalDate end = LocalDate.now();
         LocalDate start = end.minusYears(10);
-        java.util.List<com.biblequiz.entity.UserDailyProgress> rows = udpRepository
+        java.util.List<UserDailyProgress> rows = udpRepository
                 .findByDateBetweenOrderByPointsCountedDesc(start, end);
         java.util.List<java.util.Map<String, Object>> list = rows.stream()
                 .collect(Collectors.groupingBy(udp -> udp.getUser().getId()))

@@ -1,9 +1,11 @@
 package com.biblequiz.infrastructure.security;
 
+import com.biblequiz.modules.auth.entity.AuthIdentity;
 import com.biblequiz.modules.auth.service.AuthCodeService;
 import com.biblequiz.modules.auth.service.JwtService;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
+import com.biblequiz.modules.auth.repository.AuthIdentityRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

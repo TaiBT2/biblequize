@@ -1,4 +1,4 @@
-package com.biblequiz.entity;
+package com.biblequiz.modules.user.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -7,6 +7,13 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.biblequiz.modules.auth.entity.AuthIdentity;
+import com.biblequiz.modules.quiz.entity.QuizSession;
+import com.biblequiz.modules.quiz.entity.Answer;
+import com.biblequiz.modules.quiz.entity.UserDailyProgress;
+import com.biblequiz.modules.feedback.entity.Feedback;
+import com.biblequiz.modules.quiz.entity.Bookmark;
 
 @Entity
 @Table(name = "users")
