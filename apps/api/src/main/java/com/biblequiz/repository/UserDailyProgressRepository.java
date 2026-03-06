@@ -16,10 +16,10 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
     @Query("SELECT udp FROM UserDailyProgress udp WHERE udp.user.id = :userId AND udp.date = :date")
     Optional<UserDailyProgress> findByUserIdAndDate(@Param("userId") String userId, @Param("date") LocalDate date);
     
-    @Query("SELECT udp FROM UserDailyProgress udp JOIN FETCH udp.user WHERE udp.date = :date ORDER BY COALESCE(udp.pointsCounted, 0) DESC")
+    @Query("SELECT udp FROM UserDailyProgress udp JOIN FETCH udp.user WHERE udp.date = :date ORDER BY COALESCE(udp.pointsCounted, 0) DESC, udp.user.id ASC")
     List<UserDailyProgress> findByDateOrderByPointsCountedDesc(@Param("date") LocalDate date);
     
-    @Query("SELECT udp FROM UserDailyProgress udp JOIN FETCH udp.user WHERE udp.date BETWEEN :startDate AND :endDate ORDER BY COALESCE(udp.pointsCounted, 0) DESC")
+    @Query("SELECT udp FROM UserDailyProgress udp JOIN FETCH udp.user WHERE udp.date BETWEEN :startDate AND :endDate ORDER BY COALESCE(udp.pointsCounted, 0) DESC, udp.user.id ASC")
     List<UserDailyProgress> findByDateBetweenOrderByPointsCountedDesc(@Param("startDate") LocalDate startDate, 
                                                                      @Param("endDate") LocalDate endDate);
     

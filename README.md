@@ -135,6 +135,17 @@ npm run dev
 - MySQL: localhost:3306
 - Redis: localhost:6379
 
+### 🛠️ Local Data Initialization
+
+Để khởi tạo dữ liệu giả (mock data) cho Bảng Xếp Hạng (Leaderboard), hãy chạy lệnh sau (yêu cầu Docker đang chạy):
+
+```bash
+# Sử dụng PowerShell
+Get-Content seed_mock_leaderboard.sql | docker exec -i biblequiz-mysql mysql -u biblequiz -ppass biblequiz
+```
+
+Lệnh này sẽ thêm 10 người dùng mẫu với điểm số ngẫu nhiên vào database để bạn có thể kiểm tra giao diện Podium và danh sách xếp hạng.
+
 ### Environment Configuration
 - Copy `env.example` to `env.local` và cấu hình các biến môi trường
 - OAuth2 credentials: Cấu hình Google/Facebook OAuth2
