@@ -67,7 +67,10 @@ public class SecurityConfig {
                                                                 "/oauth2/authorization/**",
                                                                 "/login/**",
                                                                 "/login/oauth2/**",
-                                                                "/api/me/bootstrap-admin")
+                                                                "/api/me/bootstrap-admin",
+                                                                "/swagger-ui/**",
+                                                                "/v3/api-docs/**",
+                                                                "/swagger-ui.html")
                                                 .permitAll()
                                                 .requestMatchers("/api/me", "/me").authenticated()
                                                 .anyRequest().authenticated())
