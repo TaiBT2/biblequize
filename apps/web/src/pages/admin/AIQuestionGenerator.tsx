@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { api, aiApi } from '../../api/client'
+import { getChapterCount, getVerseCount } from '../../data/bibleData'
 
 type Difficulty = 'easy' | 'medium' | 'hard'
 type QuestionType = 'multiple_choice_single' | 'multiple_choice_multi' | 'true_false' | 'fill_in_blank'
@@ -57,9 +58,10 @@ Yêu cầu:
 export default function AIQuestionGenerator() {
   // Form
   const [book, setBook]               = useState('')
-  const [chapter, setChapter]         = useState('')
-  const [verseStart, setVerseStart]   = useState('')
-  const [verseEnd, setVerseEnd]       = useState('')
+  const [chapter, setChapter]         = useState(1)
+  const [chapterEnd, setChapterEnd]   = useState(1)
+  const [verseStart, setVerseStart]   = useState(1)
+  const [verseEnd, setVerseEnd]       = useState(1)
   const [scriptureText, setText]      = useState('')
   const [difficulty, setDifficulty]   = useState<Difficulty>('easy')
   const [qType, setQType]             = useState<QuestionType>('multiple_choice_single')
@@ -82,28 +84,52 @@ export default function AIQuestionGenerator() {
   const [editData, setEditData]         = useState<Partial<DraftQuestion>>({})
   const [savingId, setSavingId]         = useState<string | null>(null)
 
+  const totalChapters = book ? getChapterCount(book) : 0
+  const maxVerseStart = book && chapter ? getVerseCount(book, chapter) : 30
+  const maxVerseEnd   = book && chapterEnd ? getVerseCount(book, chapterEnd) : 30
+  const isRange       = chapterEnd > chapter
+
+  const onBookChange = (b: string) => {
+    setBook(b); setChapter(1); setChapterEnd(1); setVerseStart(1); setVerseEnd(1)
+  }
+  const onChapterChange = (c: number) => {
+    setChapter(c)
+    if (chapterEnd < c) setChapterEnd(c)
+    setVerseStart(1)
+    setVerseEnd(getVerseCount(book, c))
+  }
+  const onChapterEndChange = (c: number) => {
+    setChapterEnd(c)
+    setVerseEnd(getVerseCount(book, c))
+  }
+
+  const scriptureRef = isRange
+    ? `${book} ${chapter}-${chapterEnd}`
+    : `${book} ${chapter}:${verseStart}-${verseEnd}`
+
   const builtPrompt = prompt
     .replace('{count}', String(count))
     .replace('{type}', qType)
     .replace('{book}', book)
-    .replace('{chapter}', chapter)
-    .replace('{verseStart}', verseStart || '?')
-    .replace('{verseEnd}', verseEnd || '?')
+    .replace('{chapter}', String(chapter))
+    .replace('{verseStart}', String(verseStart))
+    .replace('{verseEnd}', String(verseEnd))
     .replace('{scriptureText}', scriptureText || '(không có)')
     .replace('{difficulty}', difficulty)
     .replace('{language}', language)
 
   const handleGenerate = async () => {
-    if (!book || !chapter) { setError('Vui lòng chọn sách và nhập số chương'); return }
+    if (!book) { setError('Vui lòng chọn sách'); return }
     setError(null)
     setIsGenerating(true)
     try {
       const res = await aiApi.post('/api/admin/ai/generate', {
         scripture: {
           book,
-          chapter: Number(chapter),
-          verseStart: verseStart ? Number(verseStart) : undefined,
-          verseEnd:   verseEnd   ? Number(verseEnd)   : undefined,
+          chapter,
+          chapterEnd: isRange ? chapterEnd : undefined,
+          verseStart: isRange ? 1 : verseStart,
+          verseEnd:   isRange ? maxVerseEnd : verseEnd,
           text: scriptureText || undefined,
         },
         prompt: builtPrompt,
@@ -117,9 +143,9 @@ export default function AIQuestionGenerator() {
         id:            `draft-${Date.now()}-${i}`,
         status:        'pending',
         book,
-        chapter:       Number(chapter),
-        verseStart:    verseStart ? Number(verseStart) : 0,
-        verseEnd:      verseEnd   ? Number(verseEnd)   : 0,
+        chapter,
+        verseStart,
+        verseEnd,
         difficulty:    (q.difficulty ?? difficulty) as Difficulty,
         type:          normalizeType(q.type ?? qType),
         language:      q.language ?? language,
@@ -240,26 +266,50 @@ export default function AIQuestionGenerator() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">Chương</label>
-                <input type="number" min={1} value={chapter}
-                  onChange={e => setChapter(e.target.value)}
-                  placeholder="VD: 1" className="form-input" />
+                <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">
+                  Chương {totalChapters > 0 && <span className="text-[#b0a090] normal-case font-normal">({totalChapters} chương)</span>}
+                </label>
+                <div className="flex items-center gap-1.5">
+                  <select value={chapter} onChange={e => onChapterChange(Number(e.target.value))}
+                    disabled={!book} className="form-select flex-1">
+                    {Array.from({length: totalChapters}, (_, i) => i + 1).map(c =>
+                      <option key={c} value={c}>{c}</option>)}
+                  </select>
+                  <span className="text-[#7a6a5a] text-xs font-bold">đến</span>
+                  <select value={chapterEnd} onChange={e => onChapterEndChange(Number(e.target.value))}
+                    disabled={!book} className="form-select flex-1">
+                    {Array.from({length: totalChapters}, (_, i) => i + 1)
+                      .filter(c => c >= chapter)
+                      .map(c => <option key={c} value={c}>{c}</option>)}
+                  </select>
+                </div>
               </div>
             </div>
+            {!isRange && (
             <div className="grid grid-cols-2 gap-3 mb-3">
               <div>
-                <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">Câu bắt đầu</label>
-                <input type="number" min={1} value={verseStart}
-                  onChange={e => setVerseStart(e.target.value)}
-                  placeholder="VD: 1" className="form-input" />
+                <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">
+                  Câu bắt đầu <span className="text-[#b0a090] normal-case font-normal">(/ {maxVerseStart})</span>
+                </label>
+                <select value={verseStart} onChange={e => { const v = Number(e.target.value); setVerseStart(v); if (verseEnd < v) setVerseEnd(v) }}
+                  disabled={!book} className="form-select">
+                  {Array.from({length: maxVerseStart}, (_, i) => i + 1).map(v =>
+                    <option key={v} value={v}>{v}</option>)}
+                </select>
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">Câu kết thúc</label>
-                <input type="number" min={1} value={verseEnd}
-                  onChange={e => setVerseEnd(e.target.value)}
-                  placeholder="VD: 10" className="form-input" />
+                <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">
+                  Câu kết thúc <span className="text-[#b0a090] normal-case font-normal">(/ {maxVerseStart})</span>
+                </label>
+                <select value={verseEnd} onChange={e => setVerseEnd(Number(e.target.value))}
+                  disabled={!book} className="form-select">
+                  {Array.from({length: maxVerseStart}, (_, i) => i + 1)
+                    .filter(v => v >= verseStart)
+                    .map(v => <option key={v} value={v}>{v}</option>)}
+                </select>
               </div>
             </div>
+            )}
             <div>
               <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">
                 Nội dung đoạn <span className="text-[#b0a090] normal-case font-normal">(tuỳ chọn — giúp AI chính xác hơn)</span>
