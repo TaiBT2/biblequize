@@ -152,13 +152,20 @@ npm install
 npm run dev -- --force
 ```
 
-## Tiếp theo - Sprint 2
-Sprint 2 sẽ triển khai:
-- Single-player & Practice Mode
-- Quiz session management
-- Question selection logic
-- Scoring system
-- Practice mode UI
+## Account Admin
+Bước 1 — Tạo tài khoản:
+```
+curl -X POST http://localhost:8080/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Admin","email":"admin@biblequiz.com","password":"Admin@1234"}'
 
+```
+Bước 2 — Promote lên ADMIN:
+```
+curl -X POST http://localhost:8080/api/me/bootstrap-admin \
+  -H "Content-Type: application/json" \
+  -d '{"email":"admin@biblequiz.com"}'
+
+```
 ## Liên hệ
 Nếu gặp vấn đề, vui lòng tạo issue trên GitHub repository.

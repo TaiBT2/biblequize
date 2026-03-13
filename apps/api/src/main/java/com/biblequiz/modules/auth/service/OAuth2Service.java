@@ -1,7 +1,6 @@
 package com.biblequiz.modules.auth.service;
 
 import com.biblequiz.modules.auth.entity.AuthIdentity;
-import com.biblequiz.infrastructure.auth.JwtUtil;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 import com.biblequiz.modules.auth.repository.AuthIdentityRepository;
@@ -25,7 +24,7 @@ public class OAuth2Service extends DefaultOAuth2UserService {
     private AuthIdentityRepository authIdentityRepository;
 
     @Autowired
-    private JwtUtil jwtUtil;
+    private JwtService jwtService;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -72,8 +71,8 @@ public class OAuth2Service extends DefaultOAuth2UserService {
     }
 
     public String generateTokensForUser(User user) {
-        String accessToken = jwtUtil.generateToken(user.getEmail());
-        String refreshToken = jwtUtil.generateRefreshToken(user.getEmail());
+        String accessToken = jwtService.generateToken(user.getEmail());
+        String refreshToken = jwtService.generateRefreshToken(user.getEmail());
 
         // In a real implementation, you might want to store refresh tokens in database
         return accessToken;

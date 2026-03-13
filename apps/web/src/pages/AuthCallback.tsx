@@ -35,18 +35,20 @@ export default function AuthCallback() {
         }
 
         // --- NEW FLOW: Exchange code for tokens via POST ---
+        // The refresh token is set by the backend as an httpOnly cookie.
+        // We only receive the accessToken and user profile in JSON.
         const { api } = await import('../api/client');
         const response = await api.post('/api/auth/exchange', { code });
-        const { token, refreshToken, name, email, avatar } = response.data;
+        const { accessToken, name, email, avatar, role } = response.data;
 
-        if (token && refreshToken) {
-          // Use AuthContext to store tokens and user info
+        if (accessToken) {
+          // Use AuthContext to store access token in memory and user profile
           login({
-            accessToken: token,
-            refreshToken: refreshToken,
+            accessToken,
             name: name || 'User',
             email: email || 'user@example.com',
-            avatar: avatar || undefined
+            avatar: avatar || undefined,
+            role
           });
 
           console.log('[AUTH_CALLBACK] User logged in via exchange success');
@@ -56,7 +58,7 @@ export default function AuthCallback() {
             navigate('/');
           }, 1500);
         } else {
-          console.error('[AUTH_CALLBACK] Exchange failed: No tokens in response');
+          console.error('[AUTH_CALLBACK] Exchange failed: No access token in response');
           setError('Failed to retrieve authentication tokens');
           setTimeout(() => navigate('/login?error=no_tokens'), 2000);
         }

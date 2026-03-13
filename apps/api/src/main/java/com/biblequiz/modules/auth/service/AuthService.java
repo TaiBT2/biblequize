@@ -1,7 +1,9 @@
 package com.biblequiz.modules.auth.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +26,9 @@ public class AuthService {
 
     @Autowired
     private JwtService jwtService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public User findOrCreateUser(OAuth2User oauth2User, String provider) {
         String providerUserId = oauth2User.getName();
@@ -60,6 +65,32 @@ public class AuthService {
 
         authIdentityRepository.save(authIdentity);
 
+        return user;
+    }
+
+    public User registerLocal(String name, String email, String rawPassword) {
+        if (userRepository.existsByEmail(email)) {
+            throw new IllegalArgumentException("Email already registered");
+        }
+        User user = new User();
+        user.setId(UUID.randomUUID().toString());
+        user.setName(name);
+        user.setEmail(email);
+        user.setProvider("local");
+        user.setPasswordHash(passwordEncoder.encode(rawPassword));
+        user.setRole("USER");
+        return userRepository.save(user);
+    }
+
+    public User loginLocal(String email, String rawPassword) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new BadCredentialsException("Email hoặc mật khẩu không đúng"));
+        if (!"local".equals(user.getProvider())) {
+            throw new BadCredentialsException("Tài khoản này dùng đăng nhập mạng xã hội");
+        }
+        if (user.getPasswordHash() == null || !passwordEncoder.matches(rawPassword, user.getPasswordHash())) {
+            throw new BadCredentialsException("Email hoặc mật khẩu không đúng");
+        }
         return user;
     }
 

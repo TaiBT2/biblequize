@@ -28,7 +28,7 @@ public class UserService implements UserDetailsService {
 
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getEmail())
-                .password("") // OAuth users don't have passwords
+                .password(user.getPasswordHash() != null ? user.getPasswordHash() : "")
                 .authorities(Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getRole())))
                 .build();
     }

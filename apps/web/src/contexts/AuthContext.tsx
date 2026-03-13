@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react'
+import { setAccessToken } from '../api/tokenStore'
 
 interface User {
   name: string
@@ -12,7 +13,7 @@ interface AuthContextType {
   isAuthenticated: boolean
   isLoading: boolean
   isAdmin: boolean
-  login: (tokens: { accessToken: string; refreshToken: string; name: string; email: string; avatar?: string }) => void
+  login: (tokens: { accessToken: string; name: string; email: string; avatar?: string; role?: string }) => void
   logout: () => void
   checkAuth: () => void
 }
@@ -38,108 +39,121 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const isAuthenticated = !!user
   const isAdmin = !!user && user.role === 'ADMIN'
 
-  const login = async (tokens: { accessToken: string; refreshToken: string; name: string; email: string; avatar?: string }) => {
-    localStorage.setItem('accessToken', tokens.accessToken)
-    localStorage.setItem('refreshToken', tokens.refreshToken)
+  const login = (tokens: { accessToken: string; name: string; email: string; avatar?: string; role?: string }) => {
+    // Access token stored in memory only — not localStorage (XSS protection)
+    setAccessToken(tokens.accessToken)
+    // Only non-sensitive user profile data goes to localStorage
     localStorage.setItem('userName', tokens.name)
     localStorage.setItem('userEmail', tokens.email)
     if (tokens.avatar) {
       localStorage.setItem('userAvatar', tokens.avatar)
     }
-    
+
     setUser({
       name: tokens.name,
       email: tokens.email,
-      avatar: tokens.avatar
+      avatar: tokens.avatar,
+      role: tokens.role
     })
-    
+
     // Restore ranked progress from database after login
     try {
       const today = new Date().toISOString().slice(0, 10)
       const currentSnapshot = localStorage.getItem('rankedSnapshot')
-      
-      // Only restore if localStorage is empty or has old data
       if (!currentSnapshot || JSON.parse(currentSnapshot).date !== today) {
-        console.log('[AUTH_CONTEXT] Restoring ranked progress from database after login')
-        // Trigger ranked data sync
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('[AUTH_CONTEXT] Restoring ranked progress from database after login')
+        }
         window.dispatchEvent(new CustomEvent('localStorageCleared'))
       }
     } catch (error) {
       console.warn('[AUTH_CONTEXT] Failed to restore ranked progress after login:', error)
     }
-    
+
     if (process.env.NODE_ENV !== 'production') {
       console.log('[AUTH_CONTEXT] User logged in:', tokens.name)
     }
   }
 
   const logout = async () => {
-    // Save current ranked progress to database before logout
+    // Sync ranked progress before logout
     try {
       const rankedSnapshot = localStorage.getItem('rankedSnapshot')
       if (rankedSnapshot) {
         const data = JSON.parse(rankedSnapshot)
         if (data.questionsCounted > 0 || data.pointsToday > 0) {
-          console.log('[AUTH_CONTEXT] Syncing ranked progress before logout:', data)
-          // Call sync API to ensure data is saved to database
+          if (process.env.NODE_ENV !== 'production') {
+            console.log('[AUTH_CONTEXT] Syncing ranked progress before logout:', data)
+          }
           const { api } = await import('../api/client')
           await api.post('/api/ranked/sync-progress')
-          console.log('[AUTH_CONTEXT] Successfully synced progress to database')
         }
       }
     } catch (error) {
       console.warn('[AUTH_CONTEXT] Failed to sync ranked progress before logout:', error)
     }
-    
-    localStorage.removeItem('accessToken')
-    localStorage.removeItem('refreshToken')
+
+    // Blacklist current access token and clear the httpOnly refresh cookie
+    try {
+      const { api } = await import('../api/client')
+      await api.post('/api/auth/logout')
+    } catch (error) {
+      console.warn('[AUTH_CONTEXT] Logout request failed:', error)
+    }
+
+    // Clear in-memory access token
+    setAccessToken(null)
+    // Clear profile data from localStorage
     localStorage.removeItem('userName')
     localStorage.removeItem('userEmail')
     localStorage.removeItem('userAvatar')
-    
+
     setUser(null)
-    
+
     if (process.env.NODE_ENV !== 'production') {
       console.log('[AUTH_CONTEXT] User logged out')
     }
   }
 
   const checkAuth = async () => {
-    const token = localStorage.getItem('accessToken')
     const name = localStorage.getItem('userName')
     const email = localStorage.getItem('userEmail')
     const avatar = localStorage.getItem('userAvatar')
 
-    if (token && name && email) {
-      // Prime basic user info from localStorage
-      setUser({ name, email, avatar: avatar || undefined })
+    // Try to restore session by refreshing the access token via httpOnly cookie
+    try {
+      const { api } = await import('../api/client')
       if (process.env.NODE_ENV !== 'production') {
-        console.log('[AUTH_CONTEXT] User authenticated from localStorage:', name)
+        console.log('[AUTH_CONTEXT] Attempting token refresh on startup')
       }
-      // Try to fetch role and fresh profile from backend
-      try {
-        const { api } = await import('../api/client')
-        console.log('[AUTH_CONTEXT] Attempting to fetch /api/me with token:', token ? 'present' : 'missing')
-        const res = await api.get('/api/me')
-        const role = res.data?.role as string | undefined
-        const updated: User = {
-          name: res.data?.name ?? name,
-          email: res.data?.email ?? email,
-          avatar: res.data?.avatarUrl ?? avatar ?? undefined,
-          role
-        }
-        setUser(updated)
-        if (process.env.NODE_ENV !== 'production') {
-          console.log('[AUTH_CONTEXT] Refreshed user profile from /api/me with role:', role)
-        }
-      } catch (e) {
-        console.error('[AUTH_CONTEXT] Failed to fetch /api/me profile:', e)
-        console.error('[AUTH_CONTEXT] Error details:', e.response?.data || e.message)
+      const refreshRes = await api.post('/api/auth/refresh')
+      const { accessToken } = refreshRes.data
+      setAccessToken(accessToken)
+
+      // Fetch fresh profile
+      const meRes = await api.get('/api/me')
+      const role = meRes.data?.role as string | undefined
+      const updated: User = {
+        name: meRes.data?.name ?? name ?? 'User',
+        email: meRes.data?.email ?? email ?? '',
+        avatar: meRes.data?.avatarUrl ?? avatar ?? undefined,
+        role
       }
-    } else {
+      // Update localStorage profile cache
+      localStorage.setItem('userName', updated.name)
+      localStorage.setItem('userEmail', updated.email)
+      if (updated.avatar) localStorage.setItem('userAvatar', updated.avatar)
+
+      setUser(updated)
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('[AUTH_CONTEXT] Session restored, role:', role)
+      }
+    } catch (e) {
+      // No valid session (refresh token missing or expired)
+      setAccessToken(null)
       setUser(null)
       if (process.env.NODE_ENV !== 'production') {
-        console.log('[AUTH_CONTEXT] No valid authentication found')
+        console.log('[AUTH_CONTEXT] No valid session found')
       }
     }
   }

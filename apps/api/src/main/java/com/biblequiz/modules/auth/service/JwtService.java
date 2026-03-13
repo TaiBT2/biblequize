@@ -11,9 +11,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
+import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.function.Function;
 
 @Service
@@ -30,6 +32,16 @@ public class JwtService {
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
+    }
+
+    public String extractJti(String token) {
+        return extractClaim(token, Claims::getId);
+    }
+
+    public Duration getTokenRemainingTtl(String token) {
+        Date expiration = extractClaim(token, Claims::getExpiration);
+        long remaining = expiration.getTime() - System.currentTimeMillis();
+        return remaining > 0 ? Duration.ofMillis(remaining) : Duration.ZERO;
     }
 
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
@@ -63,6 +75,7 @@ public class JwtService {
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
+                .setId(UUID.randomUUID().toString())
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
@@ -73,6 +86,7 @@ public class JwtService {
     private String buildTokenForSubject(String subject, long expiration) {
         return Jwts
                 .builder()
+                .setId(UUID.randomUUID().toString())
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
@@ -103,13 +117,7 @@ public class JwtService {
     }
 
     private Key getSignInKey() {
-        try {
-            byte[] keyBytes = Decoders.BASE64.decode(secretKey);
-            return Keys.hmacShaKeyFor(keyBytes);
-        } catch (Exception e) {
-            // Fallback for non-base64 strings to prevent application crash
-            byte[] keyBytes = secretKey.getBytes(java.nio.charset.StandardCharsets.UTF_8);
-            return Keys.hmacShaKeyFor(keyBytes);
-        }
+        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 }
