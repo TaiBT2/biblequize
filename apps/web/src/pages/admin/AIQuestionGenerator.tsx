@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { api } from '../../api/client'
+import React, { useState, useEffect } from 'react'
+import { api, aiApi } from '../../api/client'
 
 type Difficulty = 'easy' | 'medium' | 'hard'
 type QuestionType = 'multiple_choice_single' | 'multiple_choice_multi' | 'true_false' | 'fill_in_blank'
@@ -68,6 +68,12 @@ export default function AIQuestionGenerator() {
   const [prompt, setPrompt]           = useState(DEFAULT_PROMPT)
   const [showPrompt, setShowPrompt]   = useState(false)
 
+  // AI info
+  const [aiInfo, setAiInfo] = useState<{ provider: string; model: string; configured: boolean } | null>(null)
+  useEffect(() => {
+    api.get('/api/admin/ai/info').then(r => setAiInfo(r.data)).catch(() => {})
+  }, [])
+
   // State
   const [isGenerating, setIsGenerating] = useState(false)
   const [error, setError]               = useState<string | null>(null)
@@ -92,7 +98,7 @@ export default function AIQuestionGenerator() {
     setError(null)
     setIsGenerating(true)
     try {
-      const res = await api.post('/api/admin/ai/generate', {
+      const res = await aiApi.post('/api/admin/ai/generate', {
         scripture: {
           book,
           chapter: Number(chapter),
@@ -185,7 +191,18 @@ export default function AIQuestionGenerator() {
           <h2 className="text-2xl font-black parchment-headline" style={{ color: '#f5f0e0' }}>
             AI Question Generator
           </h2>
-          <p className="text-[#8b949e] text-sm mt-0.5">Tạo câu hỏi Kinh Thánh tự động và duyệt trước khi lưu</p>
+          <p className="text-[#8b949e] text-sm mt-0.5 flex items-center gap-2">
+            Tạo câu hỏi Kinh Thánh tự động và duyệt trước khi lưu
+            {aiInfo && (
+              <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold border ${
+                aiInfo.configured
+                  ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
+                  : 'bg-yellow-500/15 text-yellow-400 border-yellow-500/30'
+              }`}>
+                {aiInfo.configured ? '🤖' : '⚠️'} {aiInfo.model}
+              </span>
+            )}
+          </p>
         </div>
         {drafts.length > 0 && (
           <div className="flex items-center gap-2 text-sm">

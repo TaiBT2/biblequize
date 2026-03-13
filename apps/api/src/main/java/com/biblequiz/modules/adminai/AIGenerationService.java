@@ -19,12 +19,13 @@ import java.util.Map;
 public class AIGenerationService {
 
     private static final Logger log = LoggerFactory.getLogger(AIGenerationService.class);
-    private static final String ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages";
+    private static final String GEMINI_API_URL =
+            "https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent?key=%s";
 
-    @Value("${anthropic.api-key:}")
+    @Value("${gemini.api-key:}")
     private String apiKey;
 
-    @Value("${anthropic.model:claude-haiku-4-5-20251001}")
+    @Value("${gemini.model:gemini-2.0-flash}")
     private String model;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -32,8 +33,28 @@ public class AIGenerationService {
             .connectTimeout(Duration.ofSeconds(30))
             .build();
 
+    public Map<String, Object> listModels() {
+        if (!isConfigured()) return Map.of("error", "API key not configured");
+        try {
+            String url = "https://generativelanguage.googleapis.com/v1beta/models?key=" + apiKey;
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(url))
+                    .GET()
+                    .timeout(Duration.ofSeconds(15))
+                    .build();
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            return objectMapper.readValue(response.body(), new TypeReference<>() {});
+        } catch (Exception e) {
+            return Map.of("error", e.getMessage());
+        }
+    }
+
     public boolean isConfigured() {
         return apiKey != null && !apiKey.isBlank();
+    }
+
+    public String getModel() {
+        return model;
     }
 
     public List<Map<String, Object>> generate(
@@ -45,19 +66,20 @@ public class AIGenerationService {
                 difficulty, type, language, count, scriptureText, customPrompt);
 
         Map<String, Object> requestBody = Map.of(
-                "model", model,
-                "max_tokens", 4096,
-                "messages", List.of(Map.of("role", "user", "content", prompt))
+                "contents", List.of(
+                        Map.of("parts", List.of(Map.of("text", prompt)))
+                )
         );
 
         String requestJson = objectMapper.writeValueAsString(requestBody);
-        log.info("[AI] Calling Anthropic API: model={}, book={} {}:{}-{}, count={}", model, book, chapter, verseStart, verseEnd, count);
+        String url = String.format(GEMINI_API_URL, model, apiKey);
+
+        log.info("[AI] Calling Gemini API: model={}, book={} {}:{}-{}, count={}",
+                model, book, chapter, verseStart, verseEnd, count);
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(ANTHROPIC_API_URL))
+                .uri(URI.create(url))
                 .header("Content-Type", "application/json")
-                .header("x-api-key", apiKey)
-                .header("anthropic-version", "2023-06-01")
                 .POST(HttpRequest.BodyPublishers.ofString(requestJson))
                 .timeout(Duration.ofSeconds(60))
                 .build();
@@ -65,23 +87,35 @@ public class AIGenerationService {
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
         if (response.statusCode() != 200) {
-            log.error("[AI] Anthropic API error: status={} body={}", response.statusCode(), response.body());
-            throw new RuntimeException("Anthropic API returned " + response.statusCode());
+            log.error("[AI] Gemini API error: status={} body={}", response.statusCode(), response.body());
+            throw new RuntimeException("Gemini API returned " + response.statusCode() + ": " + response.body());
         }
 
+        // Parse Gemini response structure
         Map<String, Object> responseBody = objectMapper.readValue(response.body(), new TypeReference<>() {});
         @SuppressWarnings("unchecked")
-        List<Map<String, Object>> contentBlocks = (List<Map<String, Object>>) responseBody.get("content");
-        if (contentBlocks == null || contentBlocks.isEmpty()) {
-            throw new RuntimeException("Empty response from Anthropic API");
+        List<Map<String, Object>> candidates = (List<Map<String, Object>>) responseBody.get("candidates");
+        if (candidates == null || candidates.isEmpty()) {
+            throw new RuntimeException("Empty candidates from Gemini API");
         }
 
-        String text = (String) contentBlocks.get(0).get("text");
+        @SuppressWarnings("unchecked")
+        Map<String, Object> content = (Map<String, Object>) candidates.get(0).get("content");
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> parts = (List<Map<String, Object>>) content.get("parts");
+        String text = (String) parts.get(0).get("text");
+
         log.debug("[AI] Raw response text: {}", text);
 
-        // Extract JSON array from the response text
+        // Strip markdown code fences if present
+        text = text.strip();
+        if (text.startsWith("```")) {
+            text = text.replaceFirst("```(?:json)?\\s*", "").replaceAll("```\\s*$", "").strip();
+        }
+
+        // Extract JSON array
         int start = text.indexOf('[');
-        int end = text.lastIndexOf(']') + 1;
+        int end   = text.lastIndexOf(']') + 1;
         if (start == -1 || end <= 0) {
             log.error("[AI] No JSON array found in response: {}", text);
             throw new RuntimeException("AI response did not contain a JSON array");
@@ -97,28 +131,32 @@ public class AIGenerationService {
                                 String difficulty, String type, String language, int count,
                                 String scriptureText, String customPrompt) {
         boolean isVi = "vi".equals(language);
-        String ref = book + " " + chapter + ":" + verseStart + (verseEnd != verseStart ? "-" + verseEnd : "");
+        String ref = book + " " + chapter + ":" + verseStart
+                + (verseEnd != verseStart ? "-" + verseEnd : "");
         String langName = isVi ? "Vietnamese (Tiếng Việt)" : "English";
 
         String typeInstruction = switch (type) {
             case "true_false" -> isVi
-                    ? "true_false (Đúng/Sai): options phải là [\"Đúng\", \"Sai\"], correctAnswer là 0 (Đúng) hoặc 1 (Sai)"
+                    ? "true_false: options phải là [\"Đúng\", \"Sai\"], correctAnswer là 0 (Đúng) hoặc 1 (Sai)"
                     : "true_false: options must be [\"True\", \"False\"], correctAnswer is 0 (True) or 1 (False)";
             case "fill_in_blank" -> isVi
-                    ? "fill_in_blank (Điền vào chỗ trống): options là mảng rỗng [], correctAnswer là 0, nội dung câu hỏi có ___ là chỗ cần điền"
-                    : "fill_in_blank: options is empty array [], correctAnswer is 0, question content has ___ as blank";
+                    ? "fill_in_blank: options là [], correctAnswer là 0, câu hỏi có ___ là chỗ điền"
+                    : "fill_in_blank: options is [], correctAnswer is 0, question has ___ as the blank";
             case "multiple_choice_multi" -> isVi
-                    ? "multiple_choice_multi (Nhiều đáp án): 4 options, correctAnswer là mảng các index đúng VD [0,2]"
+                    ? "multiple_choice_multi: 4 options, correctAnswer là mảng các index đúng, VD [0,2]"
                     : "multiple_choice_multi: 4 options, correctAnswer is array of correct indices e.g. [0,2]";
             default -> isVi
-                    ? "multiple_choice_single (Trắc nghiệm 1 đáp án): 4 options (A,B,C,D), correctAnswer là index 0-3 của đáp án đúng"
-                    : "multiple_choice_single: 4 options (A,B,C,D), correctAnswer is 0-based index of the correct answer";
+                    ? "multiple_choice_single: 4 options (A,B,C,D), correctAnswer là index 0-3 của đáp án đúng"
+                    : "multiple_choice_single: 4 options (A,B,C,D), correctAnswer is 0-based index of correct answer";
         };
 
         String difficultyNote = switch (difficulty) {
-            case "hard" -> isVi ? "Khó: câu hỏi đòi hỏi hiểu sâu, chi tiết cụ thể, bối cảnh lịch sử" : "Hard: requires deep understanding, specific details, historical context";
-            case "medium" -> isVi ? "Trung bình: câu hỏi về nội dung chính, nhân vật, sự kiện quan trọng" : "Medium: questions about main content, key characters, important events";
-            default -> isVi ? "Dễ: câu hỏi về ý nghĩa cơ bản, nội dung rõ ràng trong đoạn" : "Easy: questions about basic meaning, clear content in the passage";
+            case "hard"   -> isVi ? "đòi hỏi hiểu sâu, chi tiết cụ thể, bối cảnh lịch sử"
+                                  : "deep understanding, specific details, historical context";
+            case "medium" -> isVi ? "nội dung chính, nhân vật, sự kiện quan trọng"
+                                  : "main content, key characters, important events";
+            default       -> isVi ? "ý nghĩa cơ bản, nội dung rõ ràng trong đoạn"
+                                  : "basic meaning, clear content in the passage";
         };
 
         StringBuilder sb = new StringBuilder();
@@ -127,35 +165,36 @@ public class AIGenerationService {
             sb.append(customPrompt).append("\n\n");
         }
 
-        sb.append("You are a Bible quiz question generator. Generate exactly ").append(count)
-                .append(" quiz question(s) based on ").append(ref).append(".\n\n");
+        sb.append("Bạn là chuyên gia tạo câu hỏi trắc nghiệm Kinh Thánh. ");
+        sb.append("Hãy tạo đúng ").append(count).append(" câu hỏi dựa trên ").append(ref).append(".\n\n");
 
-        sb.append("Language: ").append(langName).append("\n");
-        sb.append("Difficulty: ").append(difficulty).append(" — ").append(difficultyNote).append("\n");
-        sb.append("Question type: ").append(typeInstruction).append("\n\n");
+        sb.append("Ngôn ngữ: ").append(langName).append("\n");
+        sb.append("Độ khó: ").append(difficulty).append(" — ").append(difficultyNote).append("\n");
+        sb.append("Loại câu hỏi: ").append(typeInstruction).append("\n\n");
 
         if (scriptureText != null && !scriptureText.isBlank()) {
-            sb.append("Scripture text:\n").append(scriptureText).append("\n\n");
+            sb.append("Nội dung đoạn Kinh Thánh:\n").append(scriptureText).append("\n\n");
         }
 
-        sb.append("Return ONLY a valid JSON array (no markdown, no extra text) with exactly ").append(count).append(" object(s):\n");
+        sb.append("Trả về ONLY một mảng JSON hợp lệ (không markdown, không text thừa) với đúng ")
+          .append(count).append(" object:\n");
         sb.append("[\n  {\n");
-        sb.append("    \"content\": \"question text in ").append(langName).append("\",\n");
+        sb.append("    \"content\": \"nội dung câu hỏi bằng ").append(langName).append("\",\n");
         sb.append("    \"type\": \"").append(type).append("\",\n");
         sb.append("    \"difficulty\": \"").append(difficulty).append("\",\n");
         sb.append("    \"language\": \"").append(language).append("\",\n");
-        sb.append("    \"options\": [\"option A\", \"option B\", \"option C\", \"option D\"],\n");
+        sb.append("    \"options\": [\"Lựa chọn A\", \"Lựa chọn B\", \"Lựa chọn C\", \"Lựa chọn D\"],\n");
         sb.append("    \"correctAnswer\": 0,\n");
-        sb.append("    \"explanation\": \"brief explanation in ").append(langName).append("\",\n");
+        sb.append("    \"explanation\": \"giải thích ngắn gọn bằng ").append(langName).append("\",\n");
         sb.append("    \"book\": \"").append(book).append("\",\n");
         sb.append("    \"chapter\": ").append(chapter).append(",\n");
         sb.append("    \"verseStart\": ").append(verseStart).append(",\n");
         sb.append("    \"verseEnd\": ").append(verseEnd).append(",\n");
         sb.append("    \"tags\": [\"").append(book.toLowerCase().replace(" ", ""))
-                .append("\", \"chapter").append(chapter).append("\"],\n");
+          .append("\", \"chapter").append(chapter).append("\"],\n");
         sb.append("    \"source\": \"").append(isVi ? "Kinh Thánh" : "Holy Bible").append("\"\n");
         sb.append("  }\n]\n\n");
-        sb.append("Make every question biblically accurate. Use the actual content of ").append(ref).append(".");
+        sb.append("Quan trọng: mỗi câu hỏi phải chính xác về mặt Kinh Thánh, dựa trên nội dung thực của ").append(ref).append(".");
 
         return sb.toString();
     }

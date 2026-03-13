@@ -24,6 +24,20 @@ public class AIAdminController {
         this.aiGenerationService = aiGenerationService;
     }
 
+    @GetMapping("/models")
+    public ResponseEntity<?> listModels() {
+        return ResponseEntity.ok(aiGenerationService.listModels());
+    }
+
+    @GetMapping("/info")
+    public ResponseEntity<?> info() {
+        return ResponseEntity.ok(Map.of(
+                "provider",     "Google Gemini",
+                "model",        aiGenerationService.getModel(),
+                "configured",   aiGenerationService.isConfigured()
+        ));
+    }
+
     @PostMapping("/generate")
     public ResponseEntity<?> generate(@RequestBody Map<String, Object> payload) {
         @SuppressWarnings("unchecked")
