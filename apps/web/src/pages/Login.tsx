@@ -20,6 +20,7 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [rememberMe, setRememberMe] = useState(false)
 
   useEffect(() => {
     const errorParam = searchParams.get('error')
@@ -71,7 +72,7 @@ export default function Login() {
       const { api } = await import('../api/client')
       const endpoint = emailMode === 'login' ? '/api/auth/login' : '/api/auth/register'
       const payload = emailMode === 'login'
-        ? { email: email.trim(), password }
+        ? { email: email.trim(), password, rememberMe }
         : { name: name.trim(), email: email.trim(), password }
 
       const res = await api.post(endpoint, payload)
@@ -274,6 +275,32 @@ export default function Login() {
                       className="form-input"
                     />
                   </div>
+                )}
+
+                {emailMode === 'login' && (
+                  <label className="flex items-center gap-2.5 cursor-pointer select-none group">
+                    <div className="relative">
+                      <input
+                        type="checkbox"
+                        checked={rememberMe}
+                        onChange={e => setRememberMe(e.target.checked)}
+                        className="sr-only"
+                      />
+                      <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${
+                        rememberMe
+                          ? 'bg-[#4bbf9f] border-[#4bbf9f]'
+                          : 'bg-white border-[#d6cfc4] group-hover:border-[#4bbf9f]'
+                      }`}>
+                        {rememberMe && (
+                          <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                          </svg>
+                        )}
+                      </div>
+                    </div>
+                    <span className="text-sm font-semibold text-[#5a5048]">Nhớ đăng nhập</span>
+                    <span className="text-xs text-[#a09080] ml-auto">30 ngày</span>
+                  </label>
                 )}
 
                 <div className="pt-1">

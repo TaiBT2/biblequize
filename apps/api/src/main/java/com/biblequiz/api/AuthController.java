@@ -56,15 +56,19 @@ public class AuthController {
         this.tokenBlacklistService = tokenBlacklistService;
     }
 
-    private void setRefreshTokenCookie(HttpServletResponse response, String refreshToken) {
+    private void setRefreshTokenCookie(HttpServletResponse response, String refreshToken, int maxAge) {
         Cookie cookie = new Cookie(REFRESH_TOKEN_COOKIE, refreshToken);
         cookie.setHttpOnly(true);
         cookie.setSecure(cookieSecure);
         cookie.setPath("/api/auth");
-        cookie.setMaxAge(REFRESH_TOKEN_COOKIE_MAX_AGE);
+        cookie.setMaxAge(maxAge);
         response.addCookie(cookie);
     }
 
+
+    private void setRefreshTokenCookie(HttpServletResponse response, String refreshToken) {
+        setRefreshTokenCookie(response, refreshToken, COOKIE_MAX_AGE_SESSION);
+    }
     private void clearRefreshTokenCookie(HttpServletResponse response) {
         Cookie cookie = new Cookie(REFRESH_TOKEN_COOKIE, "");
         cookie.setHttpOnly(true);
@@ -236,11 +240,14 @@ public class AuthController {
                     "message", "Email và mật khẩu là bắt buộc"));
         }
 
+        boolean rememberMe = Boolean.parseBoolean(body.getOrDefault("rememberMe", "false"));
+        int cookieMaxAge = rememberMe ? COOKIE_MAX_AGE_REMEMBER : COOKIE_MAX_AGE_SESSION;
+
         try {
             User user = authService.loginLocal(email.trim().toLowerCase(), password);
             String accessToken = authService.generateTokenForUser(user);
             String refreshToken = authService.generateRefreshTokenForUser(user);
-            setRefreshTokenCookie(response, refreshToken);
+            setRefreshTokenCookie(response, refreshToken, cookieMaxAge);
             logger.info("[AUTH] Local login successful: {}", user.getEmail());
             return ResponseEntity.ok(Map.of(
                     "accessToken", accessToken,

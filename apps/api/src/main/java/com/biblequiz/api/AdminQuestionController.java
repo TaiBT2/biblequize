@@ -41,7 +41,7 @@ public class AdminQuestionController {
 
     @PostMapping
     public ResponseEntity<Question> create(@RequestBody Question q) {
-        q.setId(null);
+        q.setId(UUID.randomUUID().toString());
         return ResponseEntity.ok(questionRepository.save(q));
     }
 
