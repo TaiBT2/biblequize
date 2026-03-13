@@ -28,4 +28,21 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
     List<UserDailyProgress> findByUserIdOrderByDateDesc(@Param("userId") String userId);
     
     boolean existsByUserIdAndDate(String userId, LocalDate date);
+
+    @Query("SELECT udp FROM UserDailyProgress udp WHERE udp.user.id = :userId AND udp.date BETWEEN :startDate AND :endDate")
+    List<UserDailyProgress> findByUserIdAndDateBetween(@Param("userId") String userId,
+            @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+
+    // Count users with strictly more points on a given date (for daily rank)
+    @Query("SELECT COUNT(DISTINCT udp.user.id) FROM UserDailyProgress udp WHERE udp.date = :date AND COALESCE(udp.pointsCounted, 0) > :points")
+    long countUsersAheadOnDate(@Param("date") LocalDate date, @Param("points") int points);
+
+    // Count users with strictly more total points in a date range (for weekly rank)
+    @Query(value = "SELECT COUNT(*) FROM (SELECT SUM(COALESCE(points_counted, 0)) AS total FROM user_daily_progress WHERE date BETWEEN :startDate AND :endDate GROUP BY user_id HAVING total > :points) t", nativeQuery = true)
+    long countUsersAheadInDateRange(@Param("startDate") LocalDate startDate,
+            @Param("endDate") LocalDate endDate, @Param("points") int points);
+
+    // Count users with strictly more total points all time (for all-time rank)
+    @Query(value = "SELECT COUNT(*) FROM (SELECT SUM(COALESCE(points_counted, 0)) AS total FROM user_daily_progress GROUP BY user_id HAVING total > :points) t", nativeQuery = true)
+    long countUsersAheadAllTime(@Param("points") int points);
 }

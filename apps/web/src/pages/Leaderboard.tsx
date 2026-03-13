@@ -12,9 +12,11 @@ const StarIcon = ({ size = 16, color = '#FFC300' }: { size?: number; color?: str
   </svg>
 )
 
-const BookIcon = ({ size = 16, color = '#00F5D4' }: { size?: number; color?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color }}>
-    <path d="M4 19.5A2.5 2.5 0 016.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+const BookIcon = ({ size = 20, color = 'currentColor' }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 10C20 4.47715 24.4772 0 30 0H90C95.5228 0 100 4.47715 100 10V110C100 115.523 95.5228 120 90 120H30C24.4772 120 20 115.523 20 110V10Z" fill="#13161C" stroke={color} strokeWidth="2" />
+    <path d="M20 20H10C4.47715 20 0 24.4772 0 30V110C0 115.523 4.47715 120 10 120H20V20Z" fill="#0B0E14" stroke={color} strokeWidth="2" />
+    <path d="M50 30V70M30 50H70" stroke={color} strokeWidth="4" strokeLinecap="round" />
   </svg>
 )
 
@@ -428,11 +430,15 @@ const Leaderboard: React.FC = () => {
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-pink-500/10 blur-[120px] rounded-full pointer-events-none"></div>
 
-      {/* Header Buttons */}
-      <div className="absolute top-6 left-6 flex items-center gap-2 text-white/40 hover:text-white transition-colors text-[10px] font-black uppercase tracking-widest no-underline group z-50">
-        <Link to="/" className="flex items-center gap-2 no-underline text-inherit">
-          <span className="text-sm group-hover:-translate-x-1 transition-transform">←</span>
+      {/* Top Navigation Quick Menu */}
+      <div className="absolute top-6 left-6 flex items-center gap-3 z-50">
+        <Link to="/" className="flex items-center gap-2 px-4 py-2 bg-black/40 border border-white/10 rounded-xl text-white/40 hover:text-[#00F5D4] hover:border-[#00F5D4]/30 transition-all text-[10px] font-black uppercase tracking-widest no-underline group backdrop-blur-md">
+          <span className="group-hover:-translate-x-1 transition-transform">←</span>
           <span>Trang chủ</span>
+        </Link>
+        <Link to="/ranked" className="flex items-center gap-2 px-4 py-2 bg-black/40 border border-white/10 rounded-xl text-white/40 hover:text-[#FFC300] hover:border-[#FFC300]/30 transition-all text-[10px] font-black uppercase tracking-widest no-underline group backdrop-blur-md">
+          <SwordIcon size={12} />
+          <span>XẾP HẠNG</span>
         </Link>
       </div>
 
@@ -524,151 +530,188 @@ const Leaderboard: React.FC = () => {
             )}
 
             {/* TẦNG 2: YOUR RANK BAR (Top) */}
-            <UserRankBar userRank={userRank} user={user} />
+            {userRank && (!isFirstPage || userRank.rank > 3) && (
+              <UserRankBar userRank={userRank} user={user} />
+            )}
 
             <div className="h-4 w-full"></div>
 
             {/* TẦNG 3: DETAILED LIST (Cyber Table) */}
-            {listRows.length > 0 ? (
-              <>
-                <div className="w-full mb-6 rounded-t-[2rem] rounded-b-xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/5 relative"
+            {listRows.length > 0 && (
+              <div className="w-full mb-6 rounded-t-[2rem] rounded-b-xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/5 relative"
+                style={{
+                  background: 'rgba(15, 20, 30, 0.85)',
+                  backdropFilter: 'blur(20px)',
+                }}>
+                {/* Running Light Border */}
+                <div className="absolute inset-0 pointer-events-none border-2 border-transparent"
                   style={{
-                    background: 'rgba(15, 20, 30, 0.85)',
-                    backdropFilter: 'blur(20px)',
-                  }}>
-                  {/* Running Light Border */}
-                  <div className="absolute inset-0 pointer-events-none border-2 border-transparent"
-                    style={{
-                      borderImage: 'linear-gradient(90deg, transparent, #00F5D4, transparent) 1',
-                      maskImage: 'linear-gradient(90deg, black, transparent, black)',
-                      opacity: 0.3
-                    }} />
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr style={{ background: 'rgba(255,255,255,0.03)' }}>
-                        <th className="px-10 py-6 text-left text-[10px] font-black text-white/50 uppercase tracking-[0.25em]">HẠNG</th>
-                        <th className="px-10 py-6 text-left text-[10px] font-black text-white/50 uppercase tracking-[0.25em]">NGƯỜI CHƠI</th>
-                        <th className="px-10 py-6 text-right text-[10px] font-black text-white/50 uppercase tracking-[0.25em]">ĐIỂM (⭐)</th>
-                        <th className="px-10 py-6 text-right text-[10px] font-black text-white/50 uppercase tracking-[0.25em]">CÂU (📁)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {listRows.map((r, i) => {
-                        const absoluteRank = isFirstPage ? i + 4 : (currentPage - 1) * pageSize + i + 1
-                        const isMe = r.name === (user?.name || userRank?.name)
+                    borderImage: 'linear-gradient(90deg, transparent, #00F5D4, transparent) 1',
+                    maskImage: 'linear-gradient(90deg, black, transparent, black)',
+                    opacity: 0.3
+                  }} />
+                <table className="w-full border-collapse">
+                  <thead>
+                    <tr style={{ background: 'rgba(255,255,255,0.03)' }}>
+                      <th className="px-10 py-6 text-left text-[10px] font-black text-white/50 uppercase tracking-[0.25em]">HẠNG</th>
+                      <th className="px-10 py-6 text-left text-[10px] font-black text-white/50 uppercase tracking-[0.25em]">NGƯỜI CHƠI</th>
+                      <th className="px-10 py-6 text-right text-[10px] font-black text-white/50 uppercase tracking-[0.25em]">ĐIỂM (⭐)</th>
+                      <th className="px-10 py-6 text-right text-[10px] font-black text-white/50 uppercase tracking-[0.25em]">CÂU (📁)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {listRows.map((r, i) => {
+                      const absoluteRank = isFirstPage ? i + 4 : currentPage * pageSize + i + 1
+                      const isMe = r.name === (user?.name || userRank?.name)
 
-                        // Premium Data Simulation
-                        const trendNum = (r.points % 5) - 2 // -2 to +2
-                        const badges = [
-                          r.points > 1000 && { icon: <GemIcon />, title: 'Chiến Thần' },
-                          r.questions > 50 && { icon: <FireIcon />, title: 'Chăm Chỉ' },
-                          r.points % 7 === 0 && { icon: <ZapIcon />, title: 'Chuỗi Thắng' }
-                        ].filter(Boolean) as any[]
+                      // Premium Data Simulation
+                      const trendNum = (r.points % 5) - 2 // -2 to +2
+                      const badges = [
+                        r.points > 1000 && { icon: <GemIcon />, title: 'Chiến Thần' },
+                        r.questions > 50 && { icon: <FireIcon />, title: 'Chăm Chỉ' },
+                        r.points % 7 === 0 && { icon: <ZapIcon />, title: 'Chuỗi Thắng' }
+                      ].filter(Boolean) as any[]
 
-                        return (
-                          <tr key={i}
-                            className={`
+                      return (
+                        <tr key={i}
+                          className={`
                               border-t border-white/5 transition-all duration-300
                               ${isMe ? 'bg-[#00F5D4]/15 border-[#00F5D4]/40 shadow-[0_0_20px_rgba(0,245,212,0.15)] pulse-neon' : i % 2 === 0 ? 'bg-white/[0.01]' : 'hover:bg-white/[0.03]'}
                             `}
-                          >
-                            <td className="px-10 py-4">
-                              <div className="flex items-center gap-3">
-                                <span className={`text-lg font-black ${isMe ? 'text-[#00F5D4]' : 'text-white/30'}`}>#{absoluteRank}</span>
-                                {trendNum !== 0 && (
-                                  <div className={`flex items-center gap-0.5 text-[10px] font-bold ${trendNum > 0 ? 'text-[#00e676]' : 'text-[#ff1744]'}`}>
-                                    <span>{trendNum > 0 ? '↑' : '↓'}</span>
-                                    <span>{Math.abs(trendNum)}</span>
-                                  </div>
-                                )}
-                              </div>
-                            </td>
-                            <td className="px-10 py-4">
-                              <div className="flex items-center gap-5 group/name cursor-pointer" onClick={() => setSelectedPlayer(r)}>
-                                <Avatar name={r.name} src={r.avatarUrl} size={36} borderColor={isMe ? '#00F5D4' : 'rgba(255,255,255,0.1)'} frame={isMe ? 'neon' : undefined} />
-                                <div className="flex flex-col">
-                                  <div className="flex items-center gap-2">
-                                    <span className={`font-black uppercase text-sm tracking-wide ${isMe ? 'text-[#00F5D4]' : 'text-white/90'}`}>{r.name}</span>
-                                    <div className="flex gap-1">
-                                      {badges.map((b, idx) => (
-                                        <div key={idx} title={b.title} className="opacity-80 hover:opacity-100 transition-opacity">
-                                          {b.icon}
-                                        </div>
-                                      ))}
-                                    </div>
+                        >
+                          <td className="px-10 py-4">
+                            <div className="flex items-center gap-3">
+                              <span className={`text-lg font-black ${isMe ? 'text-[#00F5D4]' : 'text-white/30'}`}>#{absoluteRank}</span>
+                              {trendNum !== 0 && (
+                                <div className={`flex items-center gap-0.5 text-[10px] font-bold ${trendNum > 0 ? 'text-[#00e676]' : 'text-[#ff1744]'}`}>
+                                  <span>{trendNum > 0 ? '↑' : '↓'}</span>
+                                  <span>{Math.abs(trendNum)}</span>
+                                </div>
+                              )}
+                            </div>
+                          </td>
+                          <td className="px-10 py-4">
+                            <div className="flex items-center gap-5 group/name cursor-pointer" onClick={() => setSelectedPlayer(r)}>
+                              <Avatar name={r.name} src={r.avatarUrl} size={36} borderColor={isMe ? '#00F5D4' : 'rgba(255,255,255,0.1)'} frame={isMe ? 'neon' : undefined} />
+                              <div className="flex flex-col">
+                                <div className="flex items-center gap-2">
+                                  <span className={`font-black uppercase text-sm tracking-wide ${isMe ? 'text-[#00F5D4]' : 'text-white/90'}`}>{r.name}</span>
+                                  <div className="flex gap-1">
+                                    {badges.map((b, idx) => (
+                                      <div key={idx} title={b.title} className="opacity-80 hover:opacity-100 transition-opacity">
+                                        {b.icon}
+                                      </div>
+                                    ))}
                                   </div>
                                 </div>
                               </div>
-                            </td>
-                            <td className="px-10 py-4 text-right">
-                              <div className="inline-flex flex-col items-end w-24">
-                                <span className="text-xl font-black text-[#FFC300] italic"><NumberTicker value={r.points} /></span>
-                                <div className="w-full h-1 bg-white/5 rounded-full mt-1 overflow-hidden relative">
-                                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-[running-light_2s_linear_infinite]" style={{ backgroundSize: '200% 100%' }} />
-                                  <div className="h-full bg-[#FFC300] relative z-10" style={{ width: `${Math.min((r.points / (rows[0]?.points || 1)) * 100, 100)}%` }}></div>
-                                </div>
+                            </div>
+                          </td>
+                          <td className="px-10 py-4 text-right">
+                            <div className="inline-flex flex-col items-end w-24">
+                              <span className="text-xl font-black text-[#FFC300] italic"><NumberTicker value={r.points} /></span>
+                              <div className="w-full h-1 bg-white/5 rounded-full mt-1 overflow-hidden relative">
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-[running-light_2s_linear_infinite]" style={{ backgroundSize: '200% 100%' }} />
+                                <div className="h-full bg-[#FFC300] relative z-10" style={{ width: `${Math.min((r.points / (rows[0]?.points || 1)) * 100, 100)}%` }}></div>
                               </div>
-                            </td>
-                            <td className="px-10 py-4 text-right">
-                              <span className="text-xl font-black text-[#00F5D4] italic opacity-90"><NumberTicker value={r.questions} /></span>
-                            </td>
-                          </tr>
-                        )
-                      })}
-                    </tbody>
-                  </table>
-                </div>
+                            </div>
+                          </td>
+                          <td className="px-10 py-4 text-right">
+                            <span className="text-xl font-black text-[#00F5D4] italic opacity-90"><NumberTicker value={r.questions} /></span>
+                          </td>
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </table>
+              </div>
 
-                {/* TẦNG 4: YOUR RANK BAR (Bottom) */}
-                <div className="mt-4">
-                  <UserRankBar userRank={userRank} user={user} />
-                </div>
-              </>
-            ) : rows.length === 0 && !loading && (
-              <div className="py-20 text-center opacity-30 font-black tracking-widest uppercase text-sm">Trống</div>
             )}
 
-            {/* Pagination Controls */}
+            {/* TẦNG 4: ACTION CENTER (Shortcuts + Pagination) */}
             {rows.length > 0 && (
-              <div className="flex items-center justify-center gap-4 mb-12 w-full mt-6">
-                <button
-                  onClick={() => setCurrentPage(p => Math.max(0, p - 1))}
-                  disabled={currentPage === 0}
-                  className="flex items-center gap-3 px-8 py-3.5 rounded-2xl border border-white/10 bg-black/40 text-[11px] font-black text-white/40 uppercase tracking-widest hover:text-[#00F5D4] hover:border-[#00F5D4]/40 hover:bg-[#00F5D4]/5 disabled:opacity-20 transition-all cursor-pointer shadow-lg"
-                >
-                  <span className="text-lg">←</span> Trang Trước
-                </button>
-                <div className="flex items-center gap-3">
-                  {[...Array(3)].map((_, idx) => {
-                    const pg = idx + 1;
-                    const isActive = (currentPage + 1) === pg;
-                    return (
+              <div className="w-full flex flex-col items-center mt-4 gap-6">
+                {/* QUICK NAVIGATION SHORTCUTS */}
+                <div className="w-full flex flex-col items-center gap-4">
+                  <div className="flex items-center justify-center gap-4 w-full max-w-xl px-4">
+                    <Link to="/ranked" className="flex-1 no-underline group/btn">
                       <button
-                        key={idx}
-                        onClick={() => setCurrentPage(idx)}
-                        className={`w-12 h-12 flex items-center justify-center rounded-xl border transition-all font-black text-sm cursor-pointer ${isActive
-                          ? 'bg-[#00F5D4] border-[#00F5D4] text-black shadow-[0_0_25px_rgba(0,245,212,0.6)] scale-110'
-                          : 'bg-white/5 border-white/10 text-white/40 hover:text-white hover:border-white/20'
-                          }`}
+                        className="w-full py-3.5 relative font-black uppercase tracking-[0.15em] transition-all duration-300 cursor-pointer overflow-hidden"
+                        style={{
+                          background: 'linear-gradient(90deg, #00F5D4 0%, #00D1B2 50%, #00F5D4 100%)',
+                          backgroundSize: '200% auto',
+                          color: '#000',
+                          fontSize: '13px',
+                          border: 'none',
+                          clipPath: 'polygon(20px 0%, 100% 0%, calc(100% - 20px) 100%, 0% 100%)',
+                          boxShadow: '0 0 30px rgba(0, 245, 212, 0.45)',
+                        }}
                       >
-                        {pg}
+                        <span className="relative z-10 flex items-center justify-center gap-2 group-hover/btn:scale-110 transition-transform">
+                          <BookIcon size={20} color="#000" />
+                          ĐẤU TIẾP
+                        </span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent shine-sweep pointer-events-none" />
                       </button>
-                    );
-                  })}
-                  <div className="text-white/20 px-1 font-black">...</div>
+                    </Link>
+
+                    <Link to="/" className="flex-1 no-underline group/btn">
+                      <button
+                        className="w-full py-3.5 relative font-black uppercase tracking-[0.15em] transition-all duration-300 cursor-pointer overflow-hidden"
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.05)',
+                          backdropFilter: 'blur(15px)',
+                          color: '#E0B0FF',
+                          fontSize: '13px',
+                          border: '2px solid rgba(168, 85, 247, 0.6)',
+                          clipPath: 'polygon(0% 0%, calc(100% - 20px) 0%, 100% 100%, 20px 100%)',
+                          boxShadow: '0 0 20px rgba(168, 85, 247, 0.1)',
+                        }}
+                      >
+                        <span className="relative z-10 flex items-center justify-center gap-2 group-hover/btn:text-white transition-colors">
+                          <SwordIcon size={18} />
+                          CHẾ ĐỘ KHÁC
+                        </span>
+                        <div className="absolute inset-0 bg-purple-600/20 opacity-0 group-hover/btn:opacity-100 transition-opacity" />
+                      </button>
+                    </Link>
+                  </div>
+                  <div className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em]">CHỌN HÀNH ĐỘNG TIẾP THEO</div>
                 </div>
-                <button
-                  onClick={() => setCurrentPage(p => p + 1)}
-                  disabled={!hasNextPage}
-                  className="flex items-center gap-3 px-8 py-3.5 rounded-2xl border border-[#00F5D4]/30 bg-[#00F5D4]/10 text-[11px] font-black text-[#00F5D4] uppercase tracking-widest hover:bg-[#00F5D4]/20 hover:shadow-[0_0_20px_rgba(0,245,212,0.2)] transition-all cursor-pointer"
-                >
-                  Trang Sau <span className="text-lg">→</span>
-                </button>
+
+                {/* Pagination Controls - PIXEL PERFECT SPACING */}
+                <div className="flex items-center justify-center gap-4 mb-12 w-full mt-4">
+                  <button
+                    onClick={() => setCurrentPage(p => Math.max(0, p - 1))}
+                    disabled={currentPage === 0}
+                    className="flex items-center gap-3 px-8 py-3.5 rounded-2xl border border-white/10 bg-black/40 text-[11px] font-black text-white/40 uppercase tracking-widest hover:text-[#00F5D4] hover:border-[#00F5D4]/40 hover:bg-[#00F5D4]/5 disabled:opacity-20 transition-all cursor-pointer shadow-xl"
+                  >
+                    <span className="text-xl">←</span> Trang Trước
+                  </button>
+                  <div className="flex items-center gap-3">
+                    <button
+                      className="w-12 h-12 flex items-center justify-center rounded-xl border transition-all font-black text-sm bg-[#00F5D4] border-[#00F5D4] text-black shadow-[0_0_30px_rgba(0,245,212,0.6)]"
+                    >
+                      {currentPage + 1}
+                    </button>
+                    {hasNextPage && <div className="text-white/40 px-1 font-black text-lg">...</div>}
+                  </div>
+                  <button
+                    onClick={() => setCurrentPage(p => p + 1)}
+                    disabled={!hasNextPage}
+                    className={`flex items-center gap-3 px-8 py-3.5 rounded-2xl border transition-all cursor-pointer ${hasNextPage
+                      ? 'border-[#00F5D4]/40 bg-[#00F5D4]/10 text-[#00F5D4] hover:bg-[#00F5D4]/20 hover:shadow-[0_0_25px_rgba(0,245,212,0.3)] shadow-xl'
+                      : 'border-white/10 bg-white/5 text-white/20 opacity-20 pointer-events-none'
+                      } text-[11px] font-black uppercase tracking-widest`}
+                  >
+                    Trang Sau <span className="text-xl">→</span>
+                  </button>
+                </div>
               </div>
             )}
 
-            <div className="mb-10 text-[8px] font-black text-white/20 uppercase tracking-[0.4em] text-center w-full">
-              Cập nhật lần cuối: {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true })}
+            <div className="mb-10 text-[8px] font-black text-white/10 uppercase tracking-[0.4em] text-center w-full">
+              KẾT QUẢ ĐƯỢC ĐỒNG BỘ THEO UTC • {new Date().toLocaleDateString('vi-VN')}
             </div>
           </>
         )}

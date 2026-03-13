@@ -15,35 +15,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
+import com.biblequiz.modules.ranked.service.RankedSessionService;
+import com.biblequiz.modules.ranked.service.RankedSessionService.Progress;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
 public class RankedController {
 
-    private static class Progress {
-        String date;
-        int livesRemaining = 30;
-        int questionsCounted = 0;
-        int pointsToday = 0;
-        int cap = 500;
-        int dailyLives = 30;
-        String currentBook = "Genesis";
-        int currentBookIndex = 0;
-        int questionsInCurrentBook = 0;
-        int correctAnswersInCurrentBook = 0;
-        boolean isPostCycle = false;
-        String currentDifficulty = "all";
-        int currentStreak = 0;
-    }
+    private static final Logger log = LoggerFactory.getLogger(RankedController.class);
 
-    private final Map<String, Progress> sessionIdToProgress = new ConcurrentHashMap<>();
+    @Autowired
+    private RankedSessionService rankedSessionService;
 
     @Autowired
     private UserDailyProgressRepository udpRepository;
@@ -56,6 +48,9 @@ public class RankedController {
 
     @Autowired
     private UserBookProgressRepository userBookProgressRepository;
+
+    @Autowired
+    private com.biblequiz.modules.quiz.repository.QuestionRepository questionRepository;
 
     private String resolveEmail(Authentication authentication) {
         if (authentication == null)
@@ -105,7 +100,7 @@ public class RankedController {
         BookProgressionService.BookProgress bookProgress = bookProgressionService.getBookProgress(p.currentBook);
         p.currentBookIndex = bookProgress.currentIndex - 1; // Convert to 0-based index
 
-        sessionIdToProgress.put(sessionId, p);
+        rankedSessionService.save(sessionId, p);
         body.put("sessionId", sessionId);
         body.put("currentBook", p.currentBook);
         body.put("bookProgress", bookProgress);
@@ -118,15 +113,43 @@ public class RankedController {
             @PathVariable("id") String sessionId,
             @RequestBody Map<String, Object> payload,
             Authentication authentication) {
-        System.out.println("=== submitRankedAnswer METHOD CALLED ===");
         try {
-            System.out.println("submitRankedAnswer called with sessionId: " + sessionId);
-            System.out.println("Payload: " + payload);
-            System.out.println("Authentication: " + (authentication != null ? authentication.getName() : "null"));
+            log.debug("submitRankedAnswer called with sessionId: {}", sessionId);
 
             // Enforce daily caps and compute scoring
-            boolean isCorrect = Boolean.TRUE.equals(payload.get("isCorrect"));
             String questionId = payload.get("questionId") != null ? payload.get("questionId").toString() : null;
+            boolean isCorrect = false;
+            if (payload.containsKey("isCorrect")) {
+                isCorrect = Boolean.TRUE.equals(payload.get("isCorrect"));
+            } else if (questionId != null && payload.containsKey("answer")) {
+                // Server-side validation
+                com.biblequiz.modules.quiz.entity.Question q = questionRepository.findById(questionId).orElse(null);
+                if (q != null && q.getCorrectAnswer() != null && !q.getCorrectAnswer().isEmpty()) {
+                    Object answerObj = payload.get("answer");
+                    if (q.getType() == com.biblequiz.modules.quiz.entity.Question.Type.multiple_choice_single) {
+                        int clientAnswer = -1;
+                        try {
+                            clientAnswer = Integer.parseInt(answerObj.toString());
+                        } catch (Exception ignore) {
+                        }
+                        if (clientAnswer == q.getCorrectAnswer().get(0)) {
+                            isCorrect = true;
+                        }
+                    } else if (q.getType() == com.biblequiz.modules.quiz.entity.Question.Type.fill_in_blank) {
+                        String expected = q.getCorrectAnswerText();
+                        String provided = answerObj != null ? answerObj.toString().trim().toLowerCase() : "";
+                        if (expected != null && provided.equals(expected.trim().toLowerCase())) {
+                            isCorrect = true;
+                        }
+                    }
+                }
+            }
+
+            // Get question difficulty for scoring
+            com.biblequiz.modules.quiz.entity.Question currentQ = null;
+            if (questionId != null) {
+                currentQ = questionRepository.findById(questionId).orElse(null);
+            }
             int clientElapsedMs = 0;
             try {
                 clientElapsedMs = payload.get("clientElapsedMs") instanceof Number
@@ -135,17 +158,8 @@ public class RankedController {
             } catch (Exception ignore) {
             }
             int timeLimitSec = 30;
-            System.out.println("isCorrect: " + isCorrect);
-            Progress p = sessionIdToProgress.computeIfAbsent(sessionId, id -> {
-                Progress np = new Progress();
-                np.date = LocalDate.now(ZoneOffset.UTC).toString();
-                System.out.println("=== DEBUG: Creating new session progress for sessionId: " + sessionId + " ===");
-                return np;
-            });
-            System.out.println("=== DEBUG: submitRankedAnswer ===");
-            System.out.println("SessionId: " + sessionId);
-            System.out.println("Current questionsCounted: " + p.questionsCounted);
-            System.out.println("Current livesRemaining: " + p.livesRemaining);
+            Progress p = rankedSessionService.getOrCreate(sessionId);
+
             if (p.questionsCounted >= 500 || p.livesRemaining <= 0) {
                 Map<String, Object> resp = new HashMap<>();
                 resp.put("sessionId", sessionId);
@@ -160,33 +174,50 @@ public class RankedController {
                 p.currentStreak = 0;
             }
             p.questionsCounted = Math.min(500, p.questionsCounted + 1);
-            System.out.println("After increment - questionsCounted: " + p.questionsCounted);
 
             // Update book-specific progress
             p.questionsInCurrentBook += 1;
+            int earned = 0;
+            int baseScoreVal = 0;
+            int timeBonusVal = 0;
+            int streakBonusVal = 0;
+
             if (isCorrect) {
                 p.correctAnswersInCurrentBook += 1;
-                int base = 100;
-                int remainingMs = Math.max(0, timeLimitSec * 1000 - clientElapsedMs);
-                int timeBonus = (int) Math.round((remainingMs / (double) (timeLimitSec * 1000)) * 50.0);
-                p.currentStreak += 1;
-                int streakBonus = 0;
-                if (p.currentStreak >= 15)
-                    streakBonus = 200;
-                else if (p.currentStreak >= 10)
-                    streakBonus = 120;
-                else if (p.currentStreak >= 5)
-                    streakBonus = 50;
-                int earned = base + timeBonus + streakBonus;
-                p.pointsToday += earned;
+                int timeLeft = Math.max(0, timeLimitSec - (clientElapsedMs / 1000));
+                baseScoreVal = 10;
+                double diffMultiplier = 1.0;
 
-                System.out.println("=== POINTS CALCULATION ===");
-                System.out.println("Base points: " + base);
-                System.out.println("Time bonus: " + timeBonus);
-                System.out.println("Streak bonus: " + streakBonus);
-                System.out.println("Earned this answer: " + earned);
-                System.out.println("Total points today: " + p.pointsToday);
+                if (currentQ != null) {
+                    if (currentQ.getDifficulty() == com.biblequiz.modules.quiz.entity.Question.Difficulty.medium) {
+                        baseScoreVal = 20;
+                        diffMultiplier = 1.2;
+                    } else if (currentQ.getDifficulty() == com.biblequiz.modules.quiz.entity.Question.Difficulty.hard) {
+                        baseScoreVal = 30;
+                        diffMultiplier = 1.5;
+                    }
+                }
+
+                timeBonusVal = timeLeft / 2;
+                int perfectBonus = (timeLeft >= 25) ? 5 : 0;
+                earned = (int) Math.floor((baseScoreVal + timeBonusVal + perfectBonus) * diffMultiplier);
+
+                p.currentStreak += 1;
+                if (p.currentStreak >= 15)
+                    streakBonusVal = 200;
+                else if (p.currentStreak >= 10)
+                    streakBonusVal = 120;
+                else if (p.currentStreak >= 5)
+                    streakBonusVal = 50;
+
+                earned += streakBonusVal;
+                p.pointsToday += earned;
+            } else {
+                p.currentStreak = 0;
             }
+
+            log.debug("Points: base={} timeBonus={} streakBonus={} earned={} total={}",
+                    baseScoreVal, timeBonusVal, streakBonusVal, earned, p.pointsToday);
 
             // Check if should advance to next book
             boolean shouldAdvance = bookProgressionService.shouldAdvanceToNextBook(
@@ -195,13 +226,13 @@ public class RankedController {
             if (shouldAdvance) {
                 String nextBook = bookProgressionService.getNextBook(p.currentBook);
                 if (nextBook != null) {
-                    System.out.println("Advancing from " + p.currentBook + " to " + nextBook);
+                    log.debug("Advancing from {} to {}", p.currentBook, nextBook);
                     p.currentBook = nextBook;
                     p.currentBookIndex = bookProgressionService.getBookProgress(nextBook).currentIndex - 1;
                     p.questionsInCurrentBook = 0;
                     p.correctAnswersInCurrentBook = 0;
                 } else {
-                    System.out.println("User completed all books! Switching to post-cycle mode.");
+                    log.info("User completed all books! Switching to post-cycle mode.");
                     p.isPostCycle = true;
                     p.currentDifficulty = "hard"; // Switch to hard questions after completing all books
                 }
@@ -227,11 +258,6 @@ public class RankedController {
                         // Update points based on computed earned score
                         udp.setPointsCounted(p.pointsToday);
 
-                        System.out.println("=== DATABASE UPDATE ===");
-                        System.out.println("Updating database with:");
-                        System.out.println("livesRemaining: " + p.livesRemaining);
-                        System.out.println("questionsCounted: " + p.questionsCounted);
-                        System.out.println("pointsToday: " + p.pointsToday);
                         // Append asked question id
                         if (questionId != null) {
                             java.util.List<String> asked = udp.getAskedQuestionIds();
@@ -240,8 +266,6 @@ public class RankedController {
                             if (!asked.contains(questionId)) {
                                 asked.add(questionId);
                                 udp.setAskedQuestionIds(asked);
-                                System.out.println("Added question " + questionId + " to asked list. Total asked: "
-                                        + asked.size());
                             }
                         }
 
@@ -298,8 +322,7 @@ public class RankedController {
                     }
                 }
             } catch (Exception e) {
-                System.err.println("Error saving ranked progress to database: " + e.getMessage());
-                e.printStackTrace();
+                log.error("Error saving ranked progress to database: {}", e.getMessage(), e);
             }
 
             // Update pointsToday from database if user is authenticated
@@ -317,6 +340,8 @@ public class RankedController {
                 }
             } catch (Exception ignore) {
             }
+
+            rankedSessionService.save(sessionId, p);
 
             Map<String, Object> resp = new HashMap<>();
             resp.put("sessionId", sessionId);
@@ -336,8 +361,7 @@ public class RankedController {
 
             return ResponseEntity.ok(resp);
         } catch (Exception e) {
-            System.err.println("Exception in submitRankedAnswer: " + e.getMessage());
-            e.printStackTrace();
+            log.error("Exception in submitRankedAnswer: {}", e.getMessage(), e);
             Map<String, Object> errorResp = new HashMap<>();
             errorResp.put("error", e.getMessage());
             return ResponseEntity.status(500).body(errorResp);
@@ -346,47 +370,12 @@ public class RankedController {
 
     @GetMapping("/me/ranked-status")
     public ResponseEntity<Map<String, Object>> getRankedStatus(Authentication authentication) {
-        System.out.println("=== getRankedStatus METHOD CALLED ===");
-        System.out.println("Authentication: " + (authentication != null ? authentication.getName() : "null"));
-
-        // Priority: Latest session data > Database data > Default values
         Progress p = new Progress();
         p.date = LocalDate.now(ZoneOffset.UTC).toString();
 
-        System.out.println("Today's date: " + p.date);
-        System.out.println("Total sessions in memory: " + sessionIdToProgress.size());
-
-        // First, check if there's any active session with more recent data
-        Progress latestSession = sessionIdToProgress.values().stream()
-                .filter(session -> session.date.equals(p.date))
-                .max((s1, s2) -> Integer.compare(s1.questionsCounted, s2.questionsCounted))
-                .orElse(null);
-
-        System.out.println("Latest session found: " + (latestSession != null ? "YES" : "NO"));
-        if (latestSession != null) {
-            System.out.println("=== Using latest session data ===");
-            System.out.println("Session questionsCounted: " + latestSession.questionsCounted);
-            System.out.println("Session livesRemaining: " + latestSession.livesRemaining);
-            System.out.println("Session pointsToday: " + latestSession.pointsToday);
-
-            // Use session data as base
-            p.livesRemaining = latestSession.livesRemaining;
-            p.questionsCounted = latestSession.questionsCounted;
-            p.pointsToday = latestSession.pointsToday;
-            p.currentBook = latestSession.currentBook;
-            p.currentBookIndex = latestSession.currentBookIndex;
-            p.questionsInCurrentBook = latestSession.questionsInCurrentBook;
-            p.correctAnswersInCurrentBook = latestSession.correctAnswersInCurrentBook;
-            p.isPostCycle = latestSession.isPostCycle;
-            p.currentDifficulty = latestSession.currentDifficulty;
-            p.currentStreak = latestSession.currentStreak;
-        } else {
-            System.out.println("=== No session data found, using database/defaults ===");
-        }
-
         try {
-            if (authentication != null && authentication.getName() != null) {
-                String email = authentication.getName();
+            String email = resolveEmail(authentication);
+            if (email != null) {
                 User user = userRepository.findByEmail(email).orElse(null);
                 if (user != null) {
                     LocalDate today = LocalDate.now(ZoneOffset.UTC);
@@ -479,11 +468,6 @@ public class RankedController {
             }
         } catch (Exception ignore) {
         }
-        System.out.println("=== Final response data ===");
-        System.out.println("Final questionsCounted: " + p.questionsCounted);
-        System.out.println("Final livesRemaining: " + p.livesRemaining);
-        System.out.println("Final pointsToday: " + p.pointsToday);
-
         Map<String, Object> body = new HashMap<>();
         body.put("date", p.date != null ? p.date : LocalDate.now(ZoneOffset.UTC).toString());
         body.put("livesRemaining", p.livesRemaining);
@@ -502,8 +486,8 @@ public class RankedController {
         body.put("bookProgress", bookProgress);
         // Attach asked ids summary
         try {
-            if (authentication != null && authentication.getName() != null) {
-                String email = authentication.getName();
+            String email = resolveEmail(authentication);
+            if (email != null) {
                 User user = userRepository.findByEmail(email).orElse(null);
                 if (user != null) {
                     LocalDate today = LocalDate.now(ZoneOffset.UTC);
@@ -550,54 +534,20 @@ public class RankedController {
                 return ResponseEntity.status(404).body(Map.of("error", "User not found"));
             }
 
-            // Find the most recent session with progress
-            Progress latestSession = sessionIdToProgress.values().stream()
-                    .filter(session -> session.date.equals(LocalDate.now(ZoneOffset.UTC).toString()))
-                    .max((s1, s2) -> Integer.compare(s1.questionsCounted, s2.questionsCounted))
-                    .orElse(null);
-
-            if (latestSession != null && (latestSession.questionsCounted > 0 || latestSession.pointsToday > 0)) {
-                System.out.println("Syncing session progress to database: " + latestSession.questionsCounted
-                        + " questions, " + latestSession.pointsToday + " points");
-
-                // Sync to database
-                LocalDate today = LocalDate.now(ZoneOffset.UTC);
-                UserDailyProgress udp = udpRepository.findByUserIdAndDate(user.getId(), today)
-                        .orElse(new UserDailyProgress(UUID.randomUUID().toString(), user, today));
-
-                udp.setLivesRemaining(latestSession.livesRemaining);
-                udp.setQuestionsCounted(latestSession.questionsCounted);
-                udp.setPointsCounted(latestSession.pointsToday);
-                udp.setCurrentBook(latestSession.currentBook);
-                udp.setCurrentBookIndex(latestSession.currentBookIndex);
-                udp.setIsPostCycle(latestSession.isPostCycle);
-                // Set difficulty if available
-                if (latestSession.currentDifficulty != null) {
-                    try {
-                        udp.setCurrentDifficulty(
-                                UserDailyProgress.Difficulty.valueOf(latestSession.currentDifficulty.toLowerCase()));
-                    } catch (Exception e) {
-                        udp.setCurrentDifficulty(UserDailyProgress.Difficulty.all);
-                    }
-                } else {
-                    udp.setCurrentDifficulty(UserDailyProgress.Difficulty.all);
-                }
-
-                udpRepository.save(udp);
-
-                System.out.println("Successfully synced progress to database");
+            LocalDate today = LocalDate.now(ZoneOffset.UTC);
+            java.util.Optional<UserDailyProgress> udpOpt = udpRepository.findByUserIdAndDate(user.getId(), today);
+            if (udpOpt.isPresent()) {
+                UserDailyProgress udp = udpOpt.get();
                 return ResponseEntity.ok(Map.of(
                         "success", true,
-                        "questionsCounted", latestSession.questionsCounted,
-                        "pointsToday", latestSession.pointsToday,
-                        "livesRemaining", latestSession.livesRemaining));
+                        "questionsCounted", udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0,
+                        "pointsToday", udp.getPointsCounted() != null ? udp.getPointsCounted() : 0,
+                        "livesRemaining", udp.getLivesRemaining() != null ? udp.getLivesRemaining() : 30));
             } else {
-                System.out.println("No session progress found to sync");
-                return ResponseEntity.ok(Map.of("success", true, "message", "No progress to sync"));
+                return ResponseEntity.ok(Map.of("success", true, "message", "No progress today"));
             }
         } catch (Exception e) {
-            System.err.println("Error syncing progress: " + e.getMessage());
-            e.printStackTrace();
+            log.error("Error syncing progress: {}", e.getMessage(), e);
             return ResponseEntity.status(500).body(Map.of("error", "Failed to sync progress"));
         }
     }

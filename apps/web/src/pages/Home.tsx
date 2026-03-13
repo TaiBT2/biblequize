@@ -2,12 +2,44 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import Header from '../components/Header'
-// import logo from '../assets/logo-new.png'
+import { api } from '../api/client'
+
+// -- Types --
+interface LeaderboardPlayer {
+  id: string
+  name: string
+  points: number
+  rank: number
+  tier: string
+}
 
 export default function Home() {
   const { user, isAuthenticated } = useAuth()
   const [playerCount, setPlayerCount] = useState(0)
   const [isCounting, setIsCounting] = useState(false)
+
+  // -- Leaderboard State --
+  const [timeframe, setTimeframe] = useState<'daily' | 'weekly' | 'all-time'>('daily')
+  const [leaderboardData, setLeaderboardData] = useState<LeaderboardPlayer[]>([])
+  const [loadingLeaderboard, setLoadingLeaderboard] = useState(true)
+
+  // -- API Fetching --
+  useEffect(() => {
+    const fetchLeaderboard = async () => {
+      setLoadingLeaderboard(true)
+      try {
+        const response = await api.get(`/api/leaderboard/${timeframe}`)
+        setLeaderboardData(response.data)
+      } catch (error) {
+        console.error("Failed to fetch leaderboard data", error)
+        // Fallback dummy data if API fails
+        setLeaderboardData([])
+      } finally {
+        setLoadingLeaderboard(false)
+      }
+    }
+    fetchLeaderboard()
+  }, [timeframe])
 
   useEffect(() => {
     // Start counting animation after component mounts
@@ -358,9 +390,18 @@ export default function Home() {
               {/* Time Period Tabs */}
               <div className="flex justify-start mb-6">
                 <div className="segmented-control">
-                  <button className="segmented-control-item active">Theo ngày</button>
-                  <button className="segmented-control-item">Theo tuần</button>
-                  <button className="segmented-control-item">Theo tháng</button>
+                  <button
+                    className={`segmented-control-item ${timeframe === 'daily' ? 'active' : ''}`}
+                    onClick={() => setTimeframe('daily')}
+                  >Theo ngày</button>
+                  <button
+                    className={`segmented-control-item ${timeframe === 'weekly' ? 'active' : ''}`}
+                    onClick={() => setTimeframe('weekly')}
+                  >Theo tuần</button>
+                  <button
+                    className={`segmented-control-item ${timeframe === 'all-time' ? 'active' : ''}`}
+                    onClick={() => setTimeframe('all-time')}
+                  >Tất cả</button>
                 </div>
               </div>
 
@@ -376,158 +417,168 @@ export default function Home() {
                     <div className="absolute left-4 top-1/2 -translate-y-1/2 opacity-60 text-xs">🔍</div>
                   </div>
                 </div>
-                <div className="space-y-4 max-h-[480px] overflow-y-auto pr-2 custom-scrollbar" id="leaderboard-scroll-container">
-                  {/* 1st Place */}
-                  <div className="flex items-center gap-6 p-4 rounded-2xl bg-[#fdfaf3] border-2 border-[#4bbf9f] shadow-lg relative overflow-hidden group/rank neon-glow">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#f59e0b]/10 to-transparent rounded-bl-full pointer-events-none"></div>
-                    <div
-                      className="w-16 h-16 rounded-full flex items-center justify-center text-4xl font-black shrink-0"
-                      style={{
-                        background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-                        color: '#ffffff',
-                        boxShadow: '0 8px 15px rgba(245,158,11,0.3)'
-                      }}
-                    >
-                      1
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="text-xl font-bold text-[#4a3f35]" >Nguyễn Văn A</h3>
-                        <span className="bg-[#4bbf9f] text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-sm">BẠN</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-[#7a6a5a]">
-                        <span>Thành viên VIP</span>
-                        <span className="w-1 h-1 rounded-full bg-[#eeeae0]"></span>
-                        <span className="parchment-serif italic">1,550 điểm</span>
-                      </div>
-                    </div>
-                    <div className="text-2xl">👑</div>
-                  </div>
 
-                  {/* 2nd Place */}
-                  <div className="flex items-center gap-6 p-4 rounded-2xl bg-[#fdfaf3] border border-[#eeeae0] shadow-sm relative overflow-hidden group/rank">
-                    <div
-                      className="w-14 h-14 rounded-full flex items-center justify-center text-3xl font-black shrink-0"
-                      style={{
-                        background: 'linear-gradient(135deg, #94a3b8 0%, #64748b 100%)',
-                        color: '#ffffff',
-                        boxShadow: '0 8px 15px rgba(148,163,184,0.3)'
-                      }}
-                    >
-                      2
+                <div className="space-y-4 max-h-[480px] overflow-y-auto pr-2 custom-scrollbar relative" id="leaderboard-scroll-container">
+                  {loadingLeaderboard && (
+                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#fdfaf3]/50 backdrop-blur-sm">
+                      <div className="w-8 h-8 rounded-full border-4 border-[#4bbf9f]/30 border-t-[#4bbf9f] animate-spin"></div>
                     </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="text-lg font-bold text-[#4a3f35]">Trần Thị B</h3>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-[#7a6a5a]">
-                        <span>Thành viên Pro</span>
-                        <span className="w-1 h-1 rounded-full bg-[#eeeae0]"></span>
-                        <span className="parchment-serif italic">1,250 điểm</span>
-                      </div>
-                    </div>
-                    <div className="text-2xl">🥈</div>
-                  </div>
+                  )}
 
+                  {leaderboardData.length === 0 && !loadingLeaderboard && (
+                    <div className="text-center py-10 text-[#7a6a5a]">Chưa có dữ liệu cho thời gian này.</div>
+                  )}
 
-                  {/* 3rd Place */}
-                  <div className="flex items-center gap-6 p-4 rounded-2xl bg-[#fdfaf3] border border-[#eeeae0] shadow-sm relative overflow-hidden group/rank">
-                    <div
-                      className="w-14 h-14 rounded-full flex items-center justify-center text-3xl font-black shrink-0"
-                      style={{
-                        background: 'linear-gradient(135deg, #b45309 0%, #78350f 100%)',
-                        color: '#ffffff',
-                        boxShadow: '0 8px 15px rgba(180,83,9,0.3)'
-                      }}
-                    >
-                      3
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="text-lg font-bold text-[#4a3f35]">Lê Văn C</h3>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-[#7a6a5a]">
-                        <span>Thành viên</span>
-                        <span className="w-1 h-1 rounded-full bg-[#eeeae0]"></span>
-                        <span className="parchment-serif italic">980 điểm</span>
-                      </div>
-                    </div>
-                    <div className="text-2xl">🥉</div>
-                  </div>
+                  {leaderboardData.slice(0, 10).map((player, index) => {
+                    // Update this check to match how 'user' is structured in AuthContext
+                    const isCurrentUser = user && (player.name === user.username)
+                    const displayRank = index + 1;
 
-                  {/* 4th Place */}
-                  <div className="flex items-center gap-6 p-4 rounded-2xl bg-[#fdfaf3]/50 border border-[#eeeae0] shadow-sm relative overflow-hidden group/rank">
-                    <div
-                      className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-black shrink-0"
-                      style={{
-                        background: '#eeeae0',
-                        color: '#4a3f35',
-                        border: '2px solid #d6cfc4'
-                      }}
-                    >
-                      4
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className="text-base font-bold text-[#4a3f35]">Phạm Văn D</h4>
-                      </div>
-                      <div className="flex items-center gap-2 text-xs text-[#7a6a5a]">
-                        <span className="parchment-serif italic">850 điểm</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 5th Place */}
-                  <div className="flex items-center gap-6 p-4 rounded-2xl bg-[#fdfaf3]/50 border border-[#eeeae0] shadow-sm relative overflow-hidden group/rank">
-                    <div
-                      className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-black shrink-0"
-                      style={{
-                        background: '#eeeae0',
-                        color: '#4a3f35',
-                        border: '2px solid #d6cfc4'
-                      }}
-                    >
-                      5
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className="text-base font-bold text-[#4a3f35]">Hoàng Thị E</h4>
-                      </div>
-                      <div className="flex items-center gap-2 text-xs text-[#7a6a5a]">
-                        <span className="parchment-serif italic">720 điểm</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Rank 6 - 10 */}
-                  {[
-                    { rank: 6, name: 'Chu Văn F', points: 650 },
-                    { rank: 7, name: 'Đặng Thị G', points: 580 },
-                    { rank: 8, name: 'Bùi Văn H', points: 510 },
-                    { rank: 9, name: 'Ngô Thị I', points: 440 },
-                    { rank: 10, name: 'Lý Văn K', points: 370 },
-                  ].map((player) => (
-                    <div key={player.rank} className="flex items-center gap-6 p-4 rounded-2xl bg-[#fdfaf3]/30 border border-[#eeeae0]/50 shadow-sm relative overflow-hidden group/rank">
-                      <div
-                        className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-black shrink-0"
-                        style={{
-                          background: '#f1ede4',
-                          color: '#4a3f35',
-                          border: '2px solid #d6cfc4'
-                        }}
-                      >
-                        {player.rank}
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <h4 className="text-base font-bold text-[#4a3f35]/80">{player.name}</h4>
+                    // Rank 1
+                    if (displayRank === 1) {
+                      return (
+                        <div key={player.id} className={`flex items-center gap-6 p-4 rounded-2xl ${isCurrentUser ? 'bg-[#f0fdf4]' : 'bg-[#fdfaf3]'} border-2 border-[#4bbf9f] shadow-lg relative overflow-hidden group/rank neon-glow`}>
+                          <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#f59e0b]/10 to-transparent rounded-bl-full pointer-events-none"></div>
+                          <div
+                            className="w-16 h-16 rounded-full flex items-center justify-center text-4xl font-black shrink-0"
+                            style={{
+                              background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                              color: '#ffffff',
+                              boxShadow: '0 8px 15px rgba(245,158,11,0.3)'
+                            }}
+                          >
+                            1
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <h3 className="text-xl font-bold text-[#4a3f35]">{player.name}</h3>
+                              {isCurrentUser && <span className="bg-[#4bbf9f] text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-sm">BẠN</span>}
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-[#7a6a5a]">
+                              <span>{player.tier || 'Thành viên VIP'}</span>
+                              <span className="w-1 h-1 rounded-full bg-[#eeeae0]"></span>
+                              <span className="parchment-serif italic">{player.points.toLocaleString()} điểm</span>
+                            </div>
+                          </div>
+                          <div className="text-2xl">👑</div>
                         </div>
-                        <div className="flex items-center gap-2 text-xs text-[#7a6a5a]/70">
-                          <span className="parchment-serif italic">{player.points} điểm</span>
+                      )
+                    }
+
+                    // Rank 2
+                    if (displayRank === 2) {
+                      return (
+                        <div key={player.id} className={`flex items-center gap-6 p-4 rounded-2xl ${isCurrentUser ? 'bg-[#f0fdfa]' : 'bg-[#fdfaf3]'} border ${isCurrentUser ? 'border-[#0ea5e9]' : 'border-[#eeeae0]'} shadow-sm relative overflow-hidden group/rank`}>
+                          <div
+                            className="w-14 h-14 rounded-full flex items-center justify-center text-3xl font-black shrink-0"
+                            style={{
+                              background: 'linear-gradient(135deg, #94a3b8 0%, #64748b 100%)',
+                              color: '#ffffff',
+                              boxShadow: '0 8px 15px rgba(148,163,184,0.3)'
+                            }}
+                          >
+                            2
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <h3 className="text-lg font-bold text-[#4a3f35]">{player.name}</h3>
+                              {isCurrentUser && <span className="bg-[#0ea5e9] text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-sm">BẠN</span>}
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-[#7a6a5a]">
+                              <span>{player.tier || 'Thành viên Pro'}</span>
+                              <span className="w-1 h-1 rounded-full bg-[#eeeae0]"></span>
+                              <span className="parchment-serif italic">{player.points.toLocaleString()} điểm</span>
+                            </div>
+                          </div>
+                          <div className="text-2xl">🥈</div>
+                        </div>
+                      )
+                    }
+
+                    // Rank 3
+                    if (displayRank === 3) {
+                      return (
+                        <div key={player.id} className={`flex items-center gap-6 p-4 rounded-2xl ${isCurrentUser ? 'bg-[#fff7ed]' : 'bg-[#fdfaf3]'} border ${isCurrentUser ? 'border-[#ea580c]' : 'border-[#eeeae0]'} shadow-sm relative overflow-hidden group/rank`}>
+                          <div
+                            className="w-14 h-14 rounded-full flex items-center justify-center text-3xl font-black shrink-0"
+                            style={{
+                              background: 'linear-gradient(135deg, #b45309 0%, #78350f 100%)',
+                              color: '#ffffff',
+                              boxShadow: '0 8px 15px rgba(180,83,9,0.3)'
+                            }}
+                          >
+                            3
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <h3 className="text-lg font-bold text-[#4a3f35]">{player.name}</h3>
+                              {isCurrentUser && <span className="bg-[#ea580c] text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-sm">BẠN</span>}
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-[#7a6a5a]">
+                              <span>{player.tier || 'Thành viên'}</span>
+                              <span className="w-1 h-1 rounded-full bg-[#eeeae0]"></span>
+                              <span className="parchment-serif italic">{player.points.toLocaleString()} điểm</span>
+                            </div>
+                          </div>
+                          <div className="text-2xl">🥉</div>
+                        </div>
+                      )
+                    }
+
+                    // Rank 4 & 5
+                    if (displayRank === 4 || displayRank === 5) {
+                      return (
+                        <div key={player.id} className={`flex items-center gap-6 p-4 rounded-2xl ${isCurrentUser ? 'bg-[#fdfaf3] border-cyan-400' : 'bg-[#fdfaf3]/50 border border-[#eeeae0]'} shadow-sm relative overflow-hidden group/rank`}>
+                          <div
+                            className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-black shrink-0"
+                            style={{
+                              background: isCurrentUser ? '#00FFFF' : '#eeeae0',
+                              color: isCurrentUser ? '#000' : '#4a3f35',
+                              border: isCurrentUser ? 'none' : '2px solid #d6cfc4',
+                              boxShadow: isCurrentUser ? '0 0 10px rgba(0, 255, 255, 0.4)' : 'none'
+                            }}
+                          >
+                            {displayRank}
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <h4 className="text-base font-bold text-[#4a3f35]">{player.name}</h4>
+                              {isCurrentUser && <span className="bg-cyan-400 text-black text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-sm">BẠN</span>}
+                            </div>
+                            <div className="flex items-center gap-2 text-xs text-[#7a6a5a]">
+                              <span className="parchment-serif italic">{player.points.toLocaleString()} điểm</span>
+                            </div>
+                          </div>
+                        </div>
+                      )
+                    }
+
+                    // Rank 6 - 10
+                    return (
+                      <div key={player.id} className={`flex items-center gap-6 p-4 rounded-2xl ${isCurrentUser ? 'bg-[#fdfaf3] border-cyan-400' : 'bg-[#fdfaf3]/30 border border-[#eeeae0]/50'} shadow-sm relative overflow-hidden group/rank`}>
+                        <div
+                          className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-black shrink-0"
+                          style={{
+                            background: isCurrentUser ? '#00FFFF' : '#f1ede4',
+                            color: isCurrentUser ? '#000' : '#4a3f35',
+                            border: isCurrentUser ? 'none' : '2px solid #d6cfc4',
+                            boxShadow: isCurrentUser ? '0 0 10px rgba(0, 255, 255, 0.4)' : 'none'
+                          }}
+                        >
+                          {displayRank}
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h4 className="text-base font-bold text-[#4a3f35]/80">{player.name}</h4>
+                            {isCurrentUser && <span className="bg-cyan-400 text-black text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-sm">BẠN</span>}
+                          </div>
+                          <div className="flex items-center gap-2 text-xs text-[#7a6a5a]/70">
+                            <span className="parchment-serif italic">{player.points.toLocaleString()} điểm</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
 
               </div>

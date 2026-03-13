@@ -11,7 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.Authentication;
 
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import java.time.LocalDate;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -27,12 +29,27 @@ public class LeaderboardController {
     @Autowired
     private UserRepository userRepository;
 
+    private String resolveEmail(Authentication authentication) {
+        if (authentication == null)
+            return null;
+        try {
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof OAuth2User oAuth2User) {
+                Object emailAttr = oAuth2User.getAttributes().get("email");
+                if (emailAttr != null)
+                    return emailAttr.toString();
+            }
+        } catch (Exception ignore) {
+        }
+        return authentication.getName();
+    }
+
     @GetMapping("/daily")
     public ResponseEntity<List<Map<String, Object>>> daily(
             @RequestParam(value = "date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "20") int size) {
-        LocalDate d = date != null ? date : LocalDate.now();
+        LocalDate d = date != null ? date : LocalDate.now(ZoneOffset.UTC);
         java.util.List<UserDailyProgress> rows = udpRepository
                 .findByDateOrderByPointsCountedDesc(d);
         java.util.List<java.util.Map<String, Object>> list = rows.stream()
@@ -42,6 +59,7 @@ public class LeaderboardController {
                     java.util.Map<String, Object> m = new java.util.HashMap<>();
                     m.put("userId", udp.getUser() != null ? udp.getUser().getId() : null);
                     m.put("name", udp.getUser() != null ? udp.getUser().getName() : "Ẩn danh");
+                    m.put("avatarUrl", udp.getUser() != null ? udp.getUser().getAvatarUrl() : null);
                     m.put("points", udp.getPointsCounted() != null ? udp.getPointsCounted() : 0);
                     m.put("questions", udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0);
                     return m;
@@ -54,7 +72,7 @@ public class LeaderboardController {
     public ResponseEntity<List<Map<String, Object>>> weekly(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "20") int size) {
-        LocalDate end = LocalDate.now();
+        LocalDate end = LocalDate.now(ZoneOffset.UTC);
         LocalDate start = end.minusDays(6);
         java.util.List<UserDailyProgress> rows = udpRepository
                 .findByDateBetweenOrderByPointsCountedDesc(start, end);
@@ -65,8 +83,8 @@ public class LeaderboardController {
                     java.util.Map<String, Object> m = new java.util.HashMap<>();
                     m.put("userId", e.getKey());
                     m.put("name", e.getValue().get(0).getUser().getName());
-                    m.put("points", e.getValue().stream().mapToInt(x -> x.getPointsCounted()).sum());
-                    m.put("questions", e.getValue().stream().mapToInt(x -> x.getQuestionsCounted()).sum());
+                    m.put("points", e.getValue().stream().mapToInt(x -> x.getPointsCounted() != null ? x.getPointsCounted() : 0).sum());
+                    m.put("questions", e.getValue().stream().mapToInt(x -> x.getQuestionsCounted() != null ? x.getQuestionsCounted() : 0).sum());
                     return m;
                 })
                 .sorted((a, b) -> {
@@ -85,7 +103,7 @@ public class LeaderboardController {
     public ResponseEntity<List<Map<String, Object>>> allTime(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "20") int size) {
-        LocalDate end = LocalDate.now();
+        LocalDate end = LocalDate.now(ZoneOffset.UTC);
         LocalDate start = end.minusYears(10);
         java.util.List<UserDailyProgress> rows = udpRepository
                 .findByDateBetweenOrderByPointsCountedDesc(start, end);
@@ -96,8 +114,8 @@ public class LeaderboardController {
                     java.util.Map<String, Object> m = new java.util.HashMap<>();
                     m.put("userId", e.getKey());
                     m.put("name", e.getValue().get(0).getUser().getName());
-                    m.put("points", e.getValue().stream().mapToInt(x -> x.getPointsCounted()).sum());
-                    m.put("questions", e.getValue().stream().mapToInt(x -> x.getQuestionsCounted()).sum());
+                    m.put("points", e.getValue().stream().mapToInt(x -> x.getPointsCounted() != null ? x.getPointsCounted() : 0).sum());
+                    m.put("questions", e.getValue().stream().mapToInt(x -> x.getQuestionsCounted() != null ? x.getQuestionsCounted() : 0).sum());
                     return m;
                 })
                 .sorted((a, b) -> {
@@ -120,41 +138,29 @@ public class LeaderboardController {
             return ResponseEntity.ok(null);
         }
 
-        LocalDate targetDate = date != null ? date : LocalDate.now();
-        String email = authentication.getName();
+        LocalDate targetDate = date != null ? date : LocalDate.now(ZoneOffset.UTC);
+        String email = resolveEmail(authentication);
         User user = userRepository.findByEmail(email).orElse(null);
 
         if (user == null) {
             return ResponseEntity.ok(null);
         }
 
-        // Get all daily progress for the date, ordered by points
-        List<Map<String, Object>> allProgress = udpRepository.findByDateOrderByPointsCountedDesc(targetDate)
-                .stream()
-                .map(udp -> {
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("userId", udp.getUser().getId());
-                    map.put("name", udp.getUser().getName());
-                    map.put("points", udp.getPointsCounted() != null ? udp.getPointsCounted() : 0);
-                    map.put("questions", udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0);
-                    return map;
-                })
-                .collect(Collectors.toList());
-
-        // Find user's rank
-        int rank = 1;
-        Map<String, Object> userData = null;
-
-        for (Map<String, Object> progress : allProgress) {
-            if (progress.get("userId").equals(user.getId())) {
-                userData = progress;
-                userData.put("rank", rank);
-                break;
-            }
-            rank++;
+        UserDailyProgress udp = udpRepository.findByUserIdAndDate(user.getId(), targetDate).orElse(null);
+        if (udp == null) {
+            return ResponseEntity.ok(null);
         }
 
-        return ResponseEntity.ok(userData);
+        int points = udp.getPointsCounted() != null ? udp.getPointsCounted() : 0;
+        int rank = (int) udpRepository.countUsersAheadOnDate(targetDate, points) + 1;
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("userId", user.getId());
+        result.put("name", user.getName());
+        result.put("points", points);
+        result.put("questions", udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0);
+        result.put("rank", rank);
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/weekly/my-rank")
@@ -163,53 +169,33 @@ public class LeaderboardController {
             return ResponseEntity.ok(null);
         }
 
-        String email = authentication.getName();
+        String email = resolveEmail(authentication);
         User user = userRepository.findByEmail(email).orElse(null);
 
         if (user == null) {
             return ResponseEntity.ok(null);
         }
 
-        // Get weekly leaderboard (last 7 days)
-        LocalDate weekStart = LocalDate.now().minusDays(6);
-        List<Map<String, Object>> weeklyData = udpRepository
-                .findByDateBetweenOrderByPointsCountedDesc(weekStart, LocalDate.now())
-                .stream()
-                .collect(Collectors.groupingBy(udp -> udp.getUser().getId()))
-                .entrySet()
-                .stream()
-                .map(e -> {
-                    Map<String, Object> m = new HashMap<>();
-                    m.put("userId", e.getKey());
-                    m.put("name", e.getValue().get(0).getUser().getName());
-                    m.put("points", e.getValue().stream()
-                            .mapToInt(x -> x.getPointsCounted() != null ? x.getPointsCounted() : 0).sum());
-                    m.put("questions", e.getValue().stream()
-                            .mapToInt(x -> x.getQuestionsCounted() != null ? x.getQuestionsCounted() : 0).sum());
-                    return m;
-                })
-                .sorted((a, b) -> {
-                    int cmp = ((Integer) b.get("points")).compareTo((Integer) a.get("points"));
-                    if (cmp != 0)
-                        return cmp;
-                    return ((String) a.get("userId")).compareTo((String) b.get("userId"));
-                })
-                .collect(Collectors.toList());
+        LocalDate end = LocalDate.now(ZoneOffset.UTC);
+        LocalDate weekStart = end.minusDays(6);
 
-        // Find user's rank
-        int rank = 1;
-        Map<String, Object> userData = null;
+        int myPoints = udpRepository.findByUserIdAndDateBetween(user.getId(), weekStart, end)
+                .stream()
+                .mapToInt(udp -> udp.getPointsCounted() != null ? udp.getPointsCounted() : 0)
+                .sum();
 
-        for (Map<String, Object> progress : weeklyData) {
-            if (progress.get("userId").equals(user.getId())) {
-                userData = progress;
-                userData.put("rank", rank);
-                break;
-            }
-            rank++;
+        if (myPoints == 0) {
+            return ResponseEntity.ok(null);
         }
 
-        return ResponseEntity.ok(userData);
+        int rank = (int) udpRepository.countUsersAheadInDateRange(weekStart, end, myPoints) + 1;
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("userId", user.getId());
+        result.put("name", user.getName());
+        result.put("points", myPoints);
+        result.put("rank", rank);
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/all-time/my-rank")
@@ -218,50 +204,29 @@ public class LeaderboardController {
             return ResponseEntity.ok(null);
         }
 
-        String email = authentication.getName();
+        String email = resolveEmail(authentication);
         User user = userRepository.findByEmail(email).orElse(null);
 
         if (user == null) {
             return ResponseEntity.ok(null);
         }
 
-        // Get all-time leaderboard (all data)
-        List<Map<String, Object>> allTimeData = udpRepository.findAll()
+        int myPoints = udpRepository.findByUserIdOrderByDateDesc(user.getId())
                 .stream()
-                .collect(Collectors.groupingBy(udp -> udp.getUser().getId()))
-                .entrySet()
-                .stream()
-                .map(e -> {
-                    Map<String, Object> m = new HashMap<>();
-                    m.put("userId", e.getKey());
-                    m.put("name", e.getValue().get(0).getUser().getName());
-                    m.put("points", e.getValue().stream()
-                            .mapToInt(x -> x.getPointsCounted() != null ? x.getPointsCounted() : 0).sum());
-                    m.put("questions", e.getValue().stream()
-                            .mapToInt(x -> x.getQuestionsCounted() != null ? x.getQuestionsCounted() : 0).sum());
-                    return m;
-                })
-                .sorted((a, b) -> {
-                    int cmp = ((Integer) b.get("points")).compareTo((Integer) a.get("points"));
-                    if (cmp != 0)
-                        return cmp;
-                    return ((String) a.get("userId")).compareTo((String) b.get("userId"));
-                })
-                .collect(Collectors.toList());
+                .mapToInt(udp -> udp.getPointsCounted() != null ? udp.getPointsCounted() : 0)
+                .sum();
 
-        // Find user's rank
-        int rank = 1;
-        Map<String, Object> userData = null;
-
-        for (Map<String, Object> progress : allTimeData) {
-            if (progress.get("userId").equals(user.getId())) {
-                userData = progress;
-                userData.put("rank", rank);
-                break;
-            }
-            rank++;
+        if (myPoints == 0) {
+            return ResponseEntity.ok(null);
         }
 
-        return ResponseEntity.ok(userData);
+        int rank = (int) udpRepository.countUsersAheadAllTime(myPoints) + 1;
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("userId", user.getId());
+        result.put("name", user.getName());
+        result.put("points", myPoints);
+        result.put("rank", rank);
+        return ResponseEntity.ok(result);
     }
 }
