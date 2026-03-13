@@ -22,6 +22,7 @@ import QuestionsAdmin from './pages/admin/Questions'
 import UsersAdmin from './pages/admin/Users'
 import RankingsAdmin from './pages/admin/Rankings'
 import EventsAdmin from './pages/admin/Events'
+import FeedbackAdmin from './pages/admin/Feedback'
 import RequireAdmin from './contexts/RequireAdmin'
 import Review from './pages/Review'
 import Achievements from './pages/Achievements'
@@ -56,6 +57,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route index element={<UsersAdmin />} />
                   <Route path="users" element={<UsersAdmin />} />
                   <Route path="questions" element={<QuestionsAdmin />} />
+                  <Route path="feedback" element={<FeedbackAdmin />} />
                   <Route path="rankings" element={<RankingsAdmin />} />
                   <Route path="events" element={<EventsAdmin />} />
                   <Route path="ai-generator" element={<AIQuestionGenerator />} />

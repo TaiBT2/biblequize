@@ -13,6 +13,7 @@ export default function AdminLayout() {
           <nav className="hidden md:flex items-center gap-2">
             <NavLink to="/admin/users" className={navLinkClass}>Users</NavLink>
             <NavLink to="/admin/questions" className={navLinkClass}>Questions</NavLink>
+            <NavLink to="/admin/feedback" className={navLinkClass}>Feedback</NavLink>
             <NavLink to="/admin/rankings" className={navLinkClass}>Rankings</NavLink>
             <NavLink to="/admin/events" className={navLinkClass}>Events</NavLink>
             <NavLink to="/admin/ai-generator" className={navLinkClass}>AI Generator</NavLink>
@@ -28,6 +29,7 @@ export default function AdminLayout() {
             <div className="flex md:flex-col gap-2">
               <NavLink to="/admin/users" className={navLinkClass}>Users</NavLink>
               <NavLink to="/admin/questions" className={navLinkClass}>Questions</NavLink>
+              <NavLink to="/admin/feedback" className={navLinkClass}>Feedback</NavLink>
               <NavLink to="/admin/rankings" className={navLinkClass}>Rankings</NavLink>
               <NavLink to="/admin/events" className={navLinkClass}>Events</NavLink>
               <NavLink to="/admin/ai-generator" className={navLinkClass}>AI Generator</NavLink>

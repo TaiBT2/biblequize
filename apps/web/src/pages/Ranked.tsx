@@ -406,8 +406,8 @@ export default function Ranked() {
             onClick={startRankedQuiz}
             className="btn-hero-mint animate-pulse hover:animate-none"
           >
-            <BookIcon size={24} color="#00F5D4" />
-            <span className="ml-3">BẮT ĐẦU XẾP HẠNG</span>
+            <BookIcon size={22} color="#0B0E14" />
+            <span>BẮT ĐẦU XẾP HẠNG</span>
           </button>
         ) : (
           <div className="px-14 py-5 rounded-2xl bg-white/5 border border-white/15 text-white/50 font-black uppercase tracking-[0.4em] backdrop-blur-3xl shadow-inner text-center">
@@ -450,9 +450,9 @@ export default function Ranked() {
             <button
               onClick={fetchStatus}
               className="flex items-center gap-2 px-6 py-2.5 rounded-xl border text-[10px] font-black uppercase tracking-widest transition-all"
-              style={{ borderColor: '#FF6B35', color: '#FF6B35', background: 'rgba(255,107,53,0.05)' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,107,53,0.15)' }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,107,53,0.05)' }}
+              style={{ borderColor: 'rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.5)', background: 'rgba(0,0,0,0.2)' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.9)'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.4)' }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.5)'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.15)' }}
             >
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="23 4 23 10 17 10" /><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />

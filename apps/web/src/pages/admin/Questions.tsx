@@ -27,6 +27,41 @@ export default function QuestionsAdmin() {
   const [pageSize, setPageSize] = useState(50)
   const [isSaving, setIsSaving] = useState(false)
   const [editing, setEditing] = useState<Partial<Question> & { id?: string } | null>(null)
+  const [importOpen, setImportOpen] = useState(false)
+  const [importFile, setImportFile] = useState<File | null>(null)
+  const [importDryResult, setImportDryResult] = useState<any>(null)
+  const [importResult, setImportResult] = useState<any>(null)
+  const [importLoading, setImportLoading] = useState(false)
+
+  const runImport = async (dryRun: boolean) => {
+    if (!importFile) return
+    setImportLoading(true)
+    try {
+      const { api } = await import('../../api/client')
+      const form = new FormData()
+      form.append('file', importFile)
+      const res = await api.post(`/api/admin/questions/import?dryRun=${dryRun}`, form, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      })
+      if (dryRun) {
+        setImportDryResult(res.data)
+      } else {
+        setImportResult(res.data)
+        await refresh()
+      }
+    } catch (e: any) {
+      alert('Import lỗi: ' + (e?.response?.data?.error || e?.message || 'Unknown error'))
+    } finally {
+      setImportLoading(false)
+    }
+  }
+
+  const closeImport = () => {
+    setImportOpen(false)
+    setImportFile(null)
+    setImportDryResult(null)
+    setImportResult(null)
+  }
 
   const refresh = async () => {
     setIsLoading(true)
@@ -136,8 +171,8 @@ export default function QuestionsAdmin() {
             <input type="number" min={1} max={200} value={limit} onChange={e => setLimit(Number(e.target.value))} className="w-24 px-3 py-2 rounded-md bg-white/10 border border-white/10" />
           </div>
           <button type="button" onClick={() => setQuestions(q => [...q])} className="h-9 px-3 rounded-md bg-blue-600 hover:bg-blue-500">Refresh</button>
-          <button type="button" className="h-9 px-3 rounded-md bg-emerald-600 hover:bg-emerald-500">Create</button>
-          <button type="button" className="h-9 px-3 rounded-md bg-white/10 border border-white/10">Import</button>
+          <button type="button" onClick={() => setEditing({})} className="h-9 px-3 rounded-md bg-emerald-600 hover:bg-emerald-500">Create</button>
+          <button type="button" onClick={() => { setImportOpen(true); setImportDryResult(null); setImportResult(null) }} className="h-9 px-3 rounded-md bg-white/10 border border-white/10 hover:bg-white/20">Import</button>
         </div>
       </div>
 
@@ -289,6 +324,90 @@ export default function QuestionsAdmin() {
         </div>
       </div>
     ) : null}
+
+    {/* Import Modal */}
+    {importOpen && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+        <div className="w-full max-w-lg rounded-xl border border-white/10 bg-[#111018] p-6 shadow-2xl">
+          <div className="flex items-center justify-between mb-4">
+            <div className="text-lg font-semibold">Import Questions</div>
+            <button onClick={closeImport} className="px-2 py-1 rounded bg-white/10 hover:bg-white/20">✕</button>
+          </div>
+
+          {!importResult ? (
+            <>
+              <p className="text-sm text-white/60 mb-4">
+                Hỗ trợ định dạng <strong>.csv</strong> và <strong>.json</strong>.<br />
+                CSV header: <code className="text-xs bg-white/10 px-1 rounded">book, chapter, type, text, optionA, optionB, optionC, optionD, correctAnswer, difficulty, explanation</code>
+              </p>
+
+              <div className="mb-4">
+                <label className="block text-xs text-white/60 mb-1">Chọn file</label>
+                <input
+                  type="file"
+                  accept=".csv,.json"
+                  onChange={e => { setImportFile(e.target.files?.[0] ?? null); setImportDryResult(null) }}
+                  className="text-sm text-white/80 file:mr-3 file:px-3 file:py-1.5 file:rounded file:bg-white/10 file:border-0 file:text-sm file:text-white/80 file:cursor-pointer"
+                />
+              </div>
+
+              {importDryResult && (
+                <div className="mb-4 p-3 rounded-lg border border-white/10 bg-white/5 text-sm space-y-2">
+                  <div className="font-medium text-white/80">Kết quả Dry-run:</div>
+                  <div className="flex gap-4">
+                    <span className="text-emerald-400">✓ Sẽ import: <strong>{importDryResult.willImport}</strong></span>
+                    {importDryResult.errors?.length > 0 && (
+                      <span className="text-rose-400">✗ Lỗi: <strong>{importDryResult.errors.length}</strong></span>
+                    )}
+                  </div>
+                  {importDryResult.errors?.length > 0 && (
+                    <div className="mt-2 max-h-28 overflow-y-auto space-y-1">
+                      {importDryResult.errors.map((e: any, i: number) => (
+                        <div key={i} className="text-xs text-rose-300">
+                          {e.line ? `Dòng ${e.line}` : e.index ? `#${e.index}` : ''}: {e.error}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div className="flex items-center justify-end gap-2 mt-2">
+                <button onClick={closeImport} className="px-3 py-2 rounded bg-white/10 text-sm">Hủy</button>
+                <button
+                  disabled={!importFile || importLoading}
+                  onClick={() => runImport(true)}
+                  className="px-3 py-2 rounded bg-blue-600/80 hover:bg-blue-600 disabled:opacity-50 text-sm"
+                >
+                  {importLoading ? 'Đang xử lý...' : 'Dry-run Preview'}
+                </button>
+                {importDryResult && (importDryResult.willImport ?? 0) > 0 && (
+                  <button
+                    disabled={importLoading}
+                    onClick={() => runImport(false)}
+                    className="px-3 py-2 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-sm font-medium"
+                  >
+                    {importLoading ? 'Đang import...' : `Import ${importDryResult.willImport} câu hỏi`}
+                  </button>
+                )}
+              </div>
+            </>
+          ) : (
+            <div className="text-center py-4">
+              <div className="text-4xl mb-3">✅</div>
+              <div className="text-lg font-semibold text-emerald-400 mb-1">Import thành công!</div>
+              <div className="text-sm text-white/70">
+                Đã thêm <strong>{importResult.imported}</strong> câu hỏi vào database.
+                {importResult.errors?.length > 0 && (
+                  <span className="text-rose-300 ml-2">{importResult.errors.length} dòng bị lỗi.</span>
+                )}
+              </div>
+              <button onClick={closeImport} className="mt-4 px-4 py-2 rounded bg-white/10 hover:bg-white/20 text-sm">Đóng</button>
+            </div>
+          )}
+        </div>
+      </div>
+    )}
     </>
   )
 }
