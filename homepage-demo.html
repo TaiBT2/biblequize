@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BibleQuiz — Không phải giờ học giáo lý đâu</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --bg:    #0A0A0E;
+  --bg2:   #111118;
+  --card:  #16161F;
+  --gold:  #D4A843;
+  --gold2: #F5C842;
+  --lime:  #B8F55A;
+  --coral: #FF6B5B;
+  --text:  #F0E8D0;
+  --muted: #6B6355;
+  --b1: rgba(212,168,67,.2);
+  --b2: rgba(212,168,67,.4);
+}
+
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Nunito',sans-serif;
+  overflow-x:hidden;
+}
+
+/* Grain texture overlay */
+body::after{
+  content:'';
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:999;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat:repeat;
+  background-size:128px;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 6%;height:64px;
+  border-bottom:1px solid rgba(212,168,67,.08);
+  background:rgba(10,10,14,.85);
+  backdrop-filter:blur(12px);
+}
+.logo{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;
+  color:var(--gold2);letter-spacing:-.02em;text-decoration:none;
+  display:flex;align-items:center;gap:8px;
+}
+.logo-icon{
+  width:26px;height:26px;
+  background:var(--gold);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-style:normal;
+  transform:rotate(-5deg);
+  transition:transform .3s;
+}
+.logo:hover .logo-icon{transform:rotate(5deg);}
+
+.nav-r{display:flex;align-items:center;gap:1rem;}
+.nav-link{
+  font-size:.85rem;font-weight:600;color:var(--muted);
+  text-decoration:none;letter-spacing:.02em;
+  transition:color .2s;
+}
+.nav-link:hover{color:var(--text);}
+.nav-btn{
+  padding:.45rem 1.2rem;
+  background:var(--gold);
+  border:none;border-radius:6px;
+  color:#0A0A0E;font-family:'Nunito',sans-serif;
+  font-weight:800;font-size:.85rem;
+  cursor:pointer;text-decoration:none;
+  transition:background .2s,transform .15s;
+}
+.nav-btn:hover{background:var(--gold2);transform:translateY(-1px);}
+.nav-btn:active{transform:scale(.97);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:4rem;
+  padding:100px 6% 60px;
+  position:relative;overflow:hidden;
+}
+
+/* Tilted background text */
+.hero-bg-text{
+  position:absolute;
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:22vw;line-height:.85;
+  color:rgba(212,168,67,.03);
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-8deg);
+  white-space:nowrap;pointer-events:none;
+  user-select:none;letter-spacing:-.05em;
+}
+
+.hero-left{position:relative;z-index:2;}
+
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(184,245,90,.1);
+  border:1px solid rgba(184,245,90,.25);
+  border-radius:100px;
+  padding:.3rem .9rem;
+  font-size:.75rem;font-weight:700;letter-spacing:.08em;
+  color:var(--lime);text-transform:uppercase;
+  margin-bottom:1.5rem;
+  animation:popIn .5s cubic-bezier(.34,1.56,.64,1) both;
+}
+.hero-tag .fire{animation:wiggle 1s ease infinite;}
+@keyframes wiggle{0%,100%{transform:rotate(-10deg);}50%{transform:rotate(10deg);}}
+
+.hero-h1{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(3rem,6vw,5rem);
+  font-weight:800;line-height:1;
+  letter-spacing:-.03em;
+  margin-bottom:1.5rem;
+  animation:slideUp .6s .1s cubic-bezier(.22,1,.36,1) both;
+}
+.hero-h1 .line1{
+  display:block;color:#fff;
+}
+.hero-h1 .line2{
+  display:block;
+  color:var(--gold2);
+  position:relative;
+}
+.hero-h1 .line2::after{
+  content:'';
+  position:absolute;bottom:-4px;left:0;right:0;height:3px;
+  background:var(--gold2);
+  transform:scaleX(0);transform-origin:left;
+  animation:underline .5s .8s cubic-bezier(.22,1,.36,1) forwards;
+}
+@keyframes underline{to{transform:scaleX(1);}}
+
+.hero-h1 .line3{
+  display:block;color:var(--muted);
+  font-size:.55em;font-weight:600;letter-spacing:-.01em;
+  margin-top:.3rem;
+}
+
+.hero-sub{
+  font-size:1.05rem;line-height:1.7;
+  color:rgba(240,232,208,.6);
+  max-width:440px;margin-bottom:2rem;
+  animation:slideUp .6s .2s cubic-bezier(.22,1,.36,1) both;
+}
+
+.hero-actions{
+  display:flex;align-items:center;gap:.85rem;flex-wrap:wrap;
+  animation:slideUp .6s .3s cubic-bezier(.22,1,.36,1) both;
+}
+
+.btn-big{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.9rem 2rem;
+  background:var(--gold);
+  border:none;border-radius:8px;
+  color:#0A0A0E;font-family:'Nunito',sans-serif;
+  font-weight:800;font-size:1rem;letter-spacing:-.01em;
+  cursor:pointer;text-decoration:none;
+  transition:all .2s cubic-bezier(.34,1.56,.64,1);
+  position:relative;overflow:hidden;
+}
+.btn-big::after{
+  content:'';position:absolute;inset:0;
+  background:rgba(255,255,255,.15);
+  transform:translateX(-100%) skewX(-20deg);
+  transition:transform .3s;
+}
+.btn-big:hover{background:var(--gold2);transform:translateY(-3px) scale(1.02);box-shadow:0 8px 30px rgba(212,168,67,.35);}
+.btn-big:hover::after{transform:translateX(200%) skewX(-20deg);}
+.btn-big:active{transform:scale(.97);}
+
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.9rem 1.6rem;
+  background:transparent;
+  border:1.5px solid rgba(240,232,208,.15);
+  border-radius:8px;
+  color:rgba(240,232,208,.6);font-family:'Nunito',sans-serif;
+  font-weight:700;font-size:1rem;
+  cursor:pointer;text-decoration:none;
+  transition:all .2s;
+}
+.btn-ghost:hover{border-color:var(--b2);color:var(--gold2);}
+
+/* Social proof */
+.hero-proof{
+  display:flex;align-items:center;gap:1rem;
+  margin-top:2rem;
+  animation:slideUp .6s .4s cubic-bezier(.22,1,.36,1) both;
+}
+.proof-avatars{display:flex;}
+.proof-av{
+  width:32px;height:32px;border-radius:50%;
+  border:2px solid var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;font-weight:700;
+  margin-left:-8px;
+}
+.proof-av:first-child{margin-left:0;}
+.proof-text{font-size:.8rem;color:var(--muted);line-height:1.4;}
+.proof-text strong{color:var(--text);font-weight:700;}
+
+/* ── HERO RIGHT: Interactive demo card ── */
+.hero-right{
+  position:relative;z-index:2;
+  animation:slideRight .7s .2s cubic-bezier(.22,1,.36,1) both;
+}
+
+.demo-card{
+  background:var(--card);
+  border:1px solid var(--b1);
+  border-radius:16px;
+  padding:1.75rem;
+  position:relative;
+  overflow:hidden;
+}
+.demo-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--gold2),var(--lime));
+}
+
+.demo-top{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1.25rem;
+}
+.demo-mode{
+  font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);
+  display:flex;align-items:center;gap:.4rem;
+}
+.demo-mode .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse2 1.5s ease infinite;}
+@keyframes pulse2{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.8);}}
+
+.demo-timer{
+  display:flex;align-items:center;gap:.4rem;
+  font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;
+  color:var(--coral);
+}
+.demo-timer-bar{
+  width:60px;height:4px;background:rgba(255,107,91,.15);border-radius:2px;overflow:hidden;
+}
+.demo-timer-fill{
+  height:100%;width:40%;background:var(--coral);border-radius:2px;
+  animation:timerDrain 8s linear infinite;
+}
+@keyframes timerDrain{0%{width:100%;}100%{width:0%;}}
+
+.demo-q{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:1.05rem;line-height:1.4;color:#fff;
+  margin-bottom:1.25rem;
+}
+.demo-q .verse{
+  display:inline-block;
+  font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:600;
+  color:var(--gold);background:rgba(212,168,67,.1);
+  padding:.1rem .5rem;border-radius:4px;margin-bottom:.5rem;
+}
+
+.demo-options{display:flex;flex-direction:column;gap:.6rem;}
+
+.demo-opt{
+  padding:.75rem 1rem;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:8px;
+  font-size:.875rem;font-weight:600;color:var(--text);
+  cursor:pointer;
+  display:flex;align-items:center;gap:.75rem;
+  transition:all .15s cubic-bezier(.34,1.56,.64,1);
+  user-select:none;
+}
+.demo-opt:hover{
+  background:rgba(212,168,67,.08);
+  border-color:var(--b2);
+  transform:translateX(4px);
+}
+.demo-opt:active{transform:scale(.98);}
+.demo-opt.correct{
+  background:rgba(184,245,90,.12);
+  border-color:rgba(184,245,90,.4);
+  color:var(--lime);
+  animation:correctPop .4s cubic-bezier(.34,1.56,.64,1);
+}
+.demo-opt.wrong{
+  background:rgba(255,107,91,.1);
+  border-color:rgba(255,107,91,.35);
+  color:var(--coral);
+  animation:shake .4s ease;
+}
+@keyframes correctPop{0%{transform:scale(1);}50%{transform:scale(1.03);}100%{transform:scale(1);}}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+
+.demo-opt-key{
+  width:22px;height:22px;border-radius:5px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;font-weight:800;color:var(--muted);
+  flex-shrink:0;
+}
+.demo-opt.correct .demo-opt-key{background:rgba(184,245,90,.2);border-color:rgba(184,245,90,.4);color:var(--lime);}
+.demo-opt.wrong   .demo-opt-key{background:rgba(255,107,91,.2);border-color:rgba(255,107,91,.4);color:var(--coral);}
+
+.demo-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:1.25rem;padding-top:1rem;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.demo-players{font-size:.75rem;color:var(--muted);}
+.demo-players strong{color:var(--text);}
+.demo-streak{
+  display:flex;align-items:center;gap:.3rem;
+  font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;
+  color:var(--gold);
+}
+
+/* Floating badge on card */
+.demo-float-badge{
+  position:absolute;top:-14px;right:20px;
+  background:var(--lime);color:#0A0A0E;
+  font-family:'Syne',sans-serif;font-weight:800;font-size:.7rem;
+  padding:.3rem .75rem;border-radius:100px;
+  animation:floatBadge 3s ease-in-out infinite;
+  white-space:nowrap;
+}
+@keyframes floatBadge{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+
+/* Floating score popup */
+.score-pop{
+  position:absolute;right:-20px;top:30%;
+  background:var(--card);border:1px solid var(--b2);
+  border-radius:12px;padding:.75rem 1rem;
+  font-family:'Syne',sans-serif;
+  animation:floatRight 4s ease-in-out infinite;
+  box-shadow:0 8px 30px rgba(0,0,0,.4);
+}
+.score-pop-num{font-size:1.4rem;font-weight:800;color:var(--gold2);}
+.score-pop-label{font-size:.65rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.08em;}
+@keyframes floatRight{0%,100%{transform:translateY(0) rotate(2deg);}50%{transform:translateY(-8px) rotate(2deg);}}
+
+/* ── TICKER ── */
+.ticker{
+  background:var(--gold);
+  padding:.5rem 0;
+  overflow:hidden;
+  white-space:nowrap;
+  border-top:1px solid rgba(0,0,0,.1);
+}
+.ticker-inner{
+  display:inline-flex;gap:0;
+  animation:ticker 25s linear infinite;
+}
+.ticker-inner span{
+  font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;
+  color:#0A0A0E;padding:0 2rem;letter-spacing:.06em;text-transform:uppercase;
+}
+.ticker-inner span.sep{color:rgba(10,10,14,.3);}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* ── MODES ── */
+.modes-section{padding:90px 6%;background:var(--bg2);}
+
+.section-eyebrow{
+  display:flex;align-items:center;gap:.75rem;
+  font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.75rem;
+}
+.section-eyebrow::before{content:'//'; opacity:.5;}
+
+.section-h2{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(2rem,4vw,3.2rem);
+  letter-spacing:-.03em;line-height:1.05;color:#fff;
+  margin-bottom:.75rem;
+}
+.section-sub{font-size:1rem;color:var(--muted);line-height:1.65;max-width:480px;}
+
+/* Two-column layout for solo modes */
+.modes-top{
+  display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;
+  max-width:1080px;margin:3rem auto 1.25rem;
+}
+
+.mode-big{
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;padding:2rem;
+  position:relative;overflow:hidden;
+  cursor:pointer;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1), border-color .25s, box-shadow .25s;
+}
+.mode-big:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.5);}
+.mode-big.practice:hover{border-color:rgba(155,89,182,.4);}
+.mode-big.ranked:hover{border-color:rgba(230,126,34,.4);}
+
+.mode-big-accent{
+  position:absolute;top:0;left:0;right:0;height:3px;
+}
+.mode-big.practice .mode-big-accent{background:linear-gradient(90deg,#9B59B6,#C39BD3);}
+.mode-big.ranked   .mode-big-accent{background:linear-gradient(90deg,#E67E22,#F5A623);}
+
+.mode-big-icon{
+  width:48px;height:48px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:1.25rem;
+}
+.mode-big.practice .mode-big-icon{background:rgba(155,89,182,.12);}
+.mode-big.ranked   .mode-big-icon{background:rgba(230,126,34,.12);}
+
+.mode-big-title{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1.35rem;
+  color:#fff;letter-spacing:-.02em;margin-bottom:.4rem;
+}
+.mode-big-desc{font-size:.875rem;color:var(--muted);line-height:1.6;margin-bottom:1.25rem;}
+
+.mode-pill{
+  display:inline-flex;align-items:center;gap:.35rem;
+  padding:.25rem .7rem;border-radius:100px;
+  font-size:.7rem;font-weight:700;letter-spacing:.05em;
+}
+.mode-big.practice .mode-pill{background:rgba(155,89,182,.1);color:#C39BD3;border:1px solid rgba(155,89,182,.2);}
+.mode-big.ranked   .mode-pill{background:rgba(230,126,34,.1);color:#F5A623;border:1px solid rgba(230,126,34,.2);}
+
+/* Lives row */
+.lives-row{display:flex;align-items:center;gap:.35rem;margin:1rem 0 .25rem;}
+.life{width:11px;height:11px;border-radius:50%;background:var(--coral);}
+.life.dead{background:rgba(255,107,91,.15);border:1px solid rgba(255,107,91,.2);}
+.lives-label{font-size:.7rem;color:var(--muted);margin-left:.25rem;}
+
+/* Progress bar */
+.prog{margin:1rem 0 .5rem;}
+.prog-label{display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-bottom:.4rem;}
+.prog-bar{height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:3px;transition:width .6s ease;}
+.mode-big.ranked .prog-fill{background:linear-gradient(90deg,#E67E22,#F5A623);width:46%;}
+
+/* Features list */
+.feat-list{list-style:none;display:flex;flex-direction:column;gap:.4rem;margin-top:1.1rem;}
+.feat-list li{font-size:.8rem;color:var(--muted);display:flex;align-items:flex-start;gap:.5rem;}
+.feat-list li::before{
+  content:'';flex-shrink:0;width:4px;height:4px;border-radius:50%;
+  margin-top:.45em;
+}
+.mode-big.practice .feat-list li::before{background:#9B59B6;}
+.mode-big.ranked   .feat-list li::before{background:#E67E22;}
+
+/* Divider */
+.modes-divider{
+  max-width:1080px;margin:0 auto 1.25rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.mdline{flex:1;height:1px;background:rgba(255,255,255,.06);}
+.mdtxt{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+
+/* 4 multiplayer cards */
+.modes-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+  max-width:1080px;margin:0 auto;
+}
+@media(max-width:900px){.modes-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:580px){.modes-grid{grid-template-columns:1fr;}.modes-top{grid-template-columns:1fr;}}
+
+.mode-sm{
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;padding:1.5rem;
+  cursor:pointer;position:relative;overflow:hidden;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),border-color .25s;
+}
+.mode-sm:hover{transform:translateY(-4px);}
+.mode-sm.battle:hover{border-color:rgba(212,168,67,.4);}
+.mode-sm.speed:hover{border-color:rgba(52,152,219,.4);}
+.mode-sm.team:hover{border-color:rgba(46,213,115,.4);}
+.mode-sm.sudden:hover{border-color:rgba(255,107,91,.4);}
+
+.mode-sm-tag{
+  font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:1rem;opacity:.7;
+}
+.mode-sm.battle .mode-sm-tag{color:var(--gold);}
+.mode-sm.speed  .mode-sm-tag{color:#5DADE2;}
+.mode-sm.team   .mode-sm-tag{color:#58D68D;}
+.mode-sm.sudden .mode-sm-tag{color:var(--coral);}
+
+.mode-sm-emoji{font-size:1.8rem;display:block;margin-bottom:.75rem;}
+.mode-sm-name{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;
+  color:#fff;margin-bottom:.4rem;letter-spacing:-.02em;
+}
+.mode-sm-desc{font-size:.78rem;color:var(--muted);line-height:1.55;}
+.mode-sm-count{
+  font-size:.7rem;color:var(--muted);margin-top:.75rem;
+  display:flex;align-items:center;gap:.3rem;
+}
+.mode-sm-count::before{content:'👥';font-size:.65rem;}
+
+/* Glow orb */
+.mode-sm .orb{
+  position:absolute;bottom:-20px;right:-20px;
+  width:80px;height:80px;border-radius:50%;
+  opacity:.12;pointer-events:none;
+  transition:opacity .3s;filter:blur(20px);
+}
+.mode-sm:hover .orb{opacity:.25;}
+.mode-sm.battle .orb{background:var(--gold);}
+.mode-sm.speed  .orb{background:#3498DB;}
+.mode-sm.team   .orb{background:#2ED573;}
+.mode-sm.sudden .orb{background:var(--coral);}
+
+/* ── FEATURES / WHY ── */
+.why-section{padding:90px 6%;background:var(--bg);}
+
+.why-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;
+  max-width:1080px;margin:3rem auto 0;
+}
+@media(max-width:700px){.why-grid{grid-template-columns:1fr;}}
+
+.why-card{
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;padding:1.75rem;
+  background:var(--card);
+  transition:border-color .25s,transform .25s cubic-bezier(.34,1.56,.64,1);
+}
+.why-card:hover{border-color:var(--b2);transform:translateY(-4px);}
+.why-num{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:2.5rem;line-height:1;color:rgba(212,168,67,.2);
+  margin-bottom:1rem;
+}
+.why-title{
+  font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;
+  color:#fff;margin-bottom:.5rem;letter-spacing:-.01em;
+}
+.why-desc{font-size:.875rem;color:var(--muted);line-height:1.65;}
+
+/* ── LEADERBOARD ── */
+.lb-section{padding:90px 6%;background:var(--bg2);}
+.lb-inner{max-width:700px;margin:3rem auto 0;}
+
+.lb-tabs{
+  display:flex;gap:.5rem;margin-bottom:1.5rem;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.lb-tab{
+  padding:.5rem 1rem;
+  font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted);cursor:pointer;border:none;background:none;
+  border-bottom:2px solid transparent;margin-bottom:-1px;
+  transition:color .2s,border-color .2s;font-family:'Nunito',sans-serif;
+}
+.lb-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+.lb-rows{display:flex;flex-direction:column;gap:.5rem;}
+
+.lb-row{
+  display:flex;align-items:center;gap:1rem;
+  padding:.9rem 1.1rem;
+  background:var(--card);border:1px solid rgba(255,255,255,.07);
+  border-radius:10px;
+  transition:border-color .2s,transform .2s;
+}
+.lb-row:hover{border-color:var(--b1);transform:translateX(3px);}
+
+.lb-rank{
+  font-family:'Syne',sans-serif;font-weight:800;
+  width:26px;text-align:center;font-size:.9rem;
+}
+.lb-row:nth-child(1) .lb-rank{color:var(--gold2);}
+.lb-row:nth-child(2) .lb-rank{color:#B0B8C4;}
+.lb-row:nth-child(3) .lb-rank{color:#CD7F32;}
+.lb-rank-num{color:var(--muted);}
+
+.lb-av{
+  width:36px;height:36px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:.8rem;flex-shrink:0;
+}
+.lb-info{flex:1;}
+.lb-name{font-weight:700;font-size:.9rem;color:#fff;}
+.lb-meta{font-size:.7rem;color:var(--muted);margin-top:.1rem;}
+.lb-score{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:.95rem;color:var(--gold2);
+  text-align:right;
+}
+.lb-score small{display:block;font-family:'Nunito',sans-serif;font-size:.65rem;font-weight:600;color:var(--muted);}
+
+/* Streak badge */
+.streak-badge{
+  display:flex;align-items:center;gap:.25rem;
+  padding:.15rem .5rem;border-radius:100px;
+  background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.2);
+  font-size:.65rem;font-weight:700;color:var(--gold2);
+}
+
+/* ── QUOTE ── */
+.quote-section{
+  padding:80px 6%;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+}
+.quote-inner{max-width:640px;text-align:center;}
+.quote-text{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:clamp(1.3rem,3vw,2rem);
+  color:rgba(240,232,208,.85);line-height:1.45;
+  letter-spacing:-.02em;margin-bottom:1rem;
+}
+.quote-text em{color:var(--gold2);font-style:normal;}
+.quote-ref{
+  font-size:.75rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);
+}
+
+/* ── CTA ── */
+.cta-section{
+  padding:100px 6%;background:var(--bg2);
+  text-align:center;position:relative;overflow:hidden;
+}
+.cta-blob{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:600px;height:300px;
+  background:radial-gradient(ellipse,rgba(212,168,67,.07),transparent 70%);
+  pointer-events:none;
+}
+.cta-h2{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(2.5rem,5vw,4rem);
+  letter-spacing:-.03em;color:#fff;margin-bottom:.75rem;
+  position:relative;z-index:1;
+}
+.cta-h2 span{color:var(--gold2);}
+.cta-sub{font-size:1rem;color:var(--muted);margin-bottom:2.5rem;position:relative;z-index:1;}
+.cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;position:relative;z-index:1;}
+.cta-note{font-size:.75rem;color:var(--muted);margin-top:1rem;position:relative;z-index:1;}
+
+/* ── FOOTER ── */
+footer{
+  padding:2rem 6%;
+  border-top:1px solid rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.foot-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;color:var(--muted);}
+.foot-links{display:flex;gap:1.5rem;list-style:none;}
+.foot-links a{font-size:.78rem;color:var(--muted);text-decoration:none;transition:color .2s;}
+.foot-links a:hover{color:var(--gold);}
+.foot-copy{font-size:.75rem;color:rgba(107,99,85,.5);}
+
+/* ── KEYFRAMES ── */
+@keyframes popIn{from{opacity:0;transform:scale(.8);}to{opacity:1;transform:scale(1);}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes slideRight{from{opacity:0;transform:translateX(30px);}to{opacity:1;transform:translateX(0);}}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1);}
+.reveal.on{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <em class="logo-icon">✝</em>
+    BibleQuiz
+  </a>
+  <div class="nav-r">
+    <a class="nav-link" href="#modes">Chế độ</a>
+    <a class="nav-link" href="#lb-section">Rank</a>
+    <a class="nav-btn" href="#">Chơi ngay</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">BIBLE</div>
+
+  <div class="hero-left">
+    <div class="hero-tag">
+      <span class="fire">🔥</span> 2,847 người đang online ngay lúc này
+    </div>
+
+    <h1 class="hero-h1">
+      <span class="line1">Kinh Thánh.</span>
+      <span class="line2">Thời gian thực.</span>
+      <span class="line3">Không phải giờ học giáo lý đâu nhé.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Thi đua câu hỏi Kinh Thánh với hàng nghìn người — Battle Royale, Speed Race, 1v1 Sudden Death.
+      Học thật sự, cạnh tranh thật sự.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#" class="btn-big">Bắt đầu — miễn phí ↗</a>
+      <a href="#modes" class="btn-ghost">Xem chế độ chơi</a>
+    </div>
+
+    <div class="hero-proof">
+      <div class="proof-avatars">
+        <div class="proof-av" style="background:#2C1F5E;color:#9B7FE8;">TH</div>
+        <div class="proof-av" style="background:#1A3A1A;color:#58D68D;">MK</div>
+        <div class="proof-av" style="background:#3A1A0A;color:#F5A623;">LP</div>
+        <div class="proof-av" style="background:#1A1A3A;color:#5DADE2;">HN</div>
+        <div class="proof-av" style="background:#3A1A2A;color:#F1948A;">QL</div>
+      </div>
+      <div class="proof-text">
+        <strong>31,240 người</strong> đã tham gia<br>
+        Câu hỏi mới mỗi ngày · 66 sách Kinh Thánh
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive demo card -->
+  <div class="hero-right">
+    <div class="score-pop">
+      <div class="score-pop-num">+150</div>
+      <div class="score-pop-label">Speed bonus!</div>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-float-badge">🔴 LIVE · Battle Royale</div>
+
+      <div class="demo-top">
+        <div class="demo-mode">
+          <div class="dot"></div>
+          Câu 12 / 20 · 43 người còn lại
+        </div>
+        <div class="demo-timer">
+          <div class="demo-timer-bar"><div class="demo-timer-fill"></div></div>
+          <span id="timer-num">8s</span>
+        </div>
+      </div>
+
+      <div class="demo-q">
+        <div class="verse">Sáng thế ký 7:1–4</div>
+        Đức Chúa Trời bảo Nô-ê đưa bao nhiêu đôi thú sạch vào tàu?
+      </div>
+
+      <div class="demo-options" id="demo-opts">
+        <div class="demo-opt" data-ans="wrong" onclick="pickAns(this)">
+          <span class="demo-opt-key">A</span> Một đôi
+        </div>
+        <div class="demo-opt" data-ans="wrong" onclick="pickAns(this)">
+          <span class="demo-opt-key">B</span> Hai đôi
+        </div>
+        <div class="demo-opt" data-ans="correct" onclick="pickAns(this)">
+          <span class="demo-opt-key">C</span> Bảy đôi
+        </div>
+        <div class="demo-opt" data-ans="wrong" onclick="pickAns(this)">
+          <span class="demo-opt-key">D</span> Mười đôi
+        </div>
+      </div>
+
+      <div class="demo-bottom">
+        <div class="demo-players">👥 <strong>43</strong> người còn lại</div>
+        <div class="demo-streak">🔥 Streak ×7</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker">
+    <span>Battle Royale</span><span class="sep">✦</span>
+    <span>Speed Race</span><span class="sep">✦</span>
+    <span>Team vs Team</span><span class="sep">✦</span>
+    <span>Sudden Death 1v1</span><span class="sep">✦</span>
+    <span>Leo Rank hàng ngày</span><span class="sep">✦</span>
+    <span>Luyện tập tự do</span><span class="sep">✦</span>
+    <span>66 sách Kinh Thánh</span><span class="sep">✦</span>
+    <span>8,500+ câu hỏi</span><span class="sep">✦</span>
+    <span>Battle Royale</span><span class="sep">✦</span>
+    <span>Speed Race</span><span class="sep">✦</span>
+    <span>Team vs Team</span><span class="sep">✦</span>
+    <span>Sudden Death 1v1</span><span class="sep">✦</span>
+    <span>Leo Rank hàng ngày</span><span class="sep">✦</span>
+    <span>Luyện tập tự do</span><span class="sep">✦</span>
+    <span>66 sách Kinh Thánh</span><span class="sep">✦</span>
+    <span>8,500+ câu hỏi</span><span class="sep">✦</span>
+  </div>
+</div>
+
+<!-- MODES -->
+<section class="modes-section" id="modes">
+  <div class="section-eyebrow reveal">Chế độ chơi</div>
+  <h2 class="section-h2 reveal">Chọn cách bạn<br>muốn thống trị.</h2>
+  <p class="section-sub reveal">Solo, đội nhóm, hay một mình đấu cả phòng — BibleQuiz có đủ.</p>
+
+  <!-- Solo modes -->
+  <div class="modes-top">
+    <div class="mode-big practice reveal" style="transition-delay:.05s">
+      <div class="mode-big-accent"></div>
+      <div class="mode-big-icon">📖</div>
+      <div class="mode-big-title">Luyện Tập</div>
+      <p class="mode-big-desc">Không áp lực, không giới hạn. Tự chọn sách, độ khó, số câu. Lý tưởng cho người mới bắt đầu hoặc ôn lại trước khi leo rank.</p>
+      <ul class="feat-list">
+        <li>Chọn bất kỳ sách nào trong 66 sách</li>
+        <li>Xem giải thích sau mỗi câu</li>
+        <li>Lưu câu sai để ôn lại</li>
+        <li>Không ảnh hưởng điểm rank</li>
+      </ul>
+      <div class="mode-pill" style="margin-top:1.25rem;">✨ Bắt đầu ở đây</div>
+    </div>
+
+    <div class="mode-big ranked reveal" style="transition-delay:.1s">
+      <div class="mode-big-accent"></div>
+      <div class="mode-big-icon">🏆</div>
+      <div class="mode-big-title">Leo Rank</div>
+      <p class="mode-big-desc">Hành trình có hệ thống từ Genesis đến Revelation. Mỗi ngày 50 câu, 10 mạng — sai là mất mạng, hết mạng là hết ngày.</p>
+
+      <div class="lives-row">
+        <div class="life"></div><div class="life"></div><div class="life"></div>
+        <div class="life"></div><div class="life"></div><div class="life"></div>
+        <div class="life"></div>
+        <div class="life dead"></div><div class="life dead"></div><div class="life dead"></div>
+        <span class="lives-label">7/10 mạng còn lại</span>
+      </div>
+
+      <div class="prog">
+        <div class="prog-label">
+          <span>Genesis 12</span>
+          <span>23 / 50 câu hôm nay</span>
+        </div>
+        <div class="prog-bar"><div class="prog-fill"></div></div>
+      </div>
+
+      <ul class="feat-list">
+        <li>Genesis → Revelation theo thứ tự</li>
+        <li>Câu khó dần sau khi hoàn thành toàn bộ</li>
+        <li>Reset lúc nửa đêm mỗi ngày</li>
+      </ul>
+      <div class="mode-pill" style="margin-top:1rem;">🔥 Tính điểm xếp hạng</div>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="modes-divider reveal">
+    <div class="mdline"></div>
+    <div class="mdtxt">Multiplayer · Realtime</div>
+    <div class="mdline"></div>
+  </div>
+
+  <!-- 4 multiplayer cards -->
+  <div class="modes-grid">
+    <div class="mode-sm battle reveal" style="transition-delay:.05s">
+      <div class="mode-sm-tag">5–100 người</div>
+      <span class="mode-sm-emoji">⚔️</span>
+      <div class="mode-sm-name">Battle Royale</div>
+      <p class="mode-sm-desc">Sai là bay. Người cuối sống sót thắng. Top 3 nhận huy chương.</p>
+      <div class="mode-sm-count">5 – 100 người</div>
+      <div class="orb"></div>
+    </div>
+
+    <div class="mode-sm speed reveal" style="transition-delay:.1s">
+      <div class="mode-sm-tag">2–20 người</div>
+      <span class="mode-sm-emoji">⚡</span>
+      <div class="mode-sm-name">Speed Race</div>
+      <p class="mode-sm-desc">Không ai bị loại, nhưng tốc độ tính điểm. Đúng + nhanh = thống trị.</p>
+      <div class="mode-sm-count">2 – 20 người</div>
+      <div class="orb"></div>
+    </div>
+
+    <div class="mode-sm team reveal" style="transition-delay:.15s">
+      <div class="mode-sm-tag">4–40 người</div>
+      <span class="mode-sm-emoji">🤝</span>
+      <div class="mode-sm-name">Team vs Team</div>
+      <p class="mode-sm-desc">Hai đội đấu. Cả đội đúng hết được Perfect Round bonus +50 điểm.</p>
+      <div class="mode-sm-count">4 – 40 người</div>
+      <div class="orb"></div>
+    </div>
+
+    <div class="mode-sm sudden reveal" style="transition-delay:.2s">
+      <div class="mode-sm-tag">1 đấu 1</div>
+      <span class="mode-sm-emoji">💀</span>
+      <div class="mode-sm-name">Sudden Death</div>
+      <p class="mode-sm-desc">Ai sai trước thua. Người thắng giữ ghế. Hàng chờ vô tận.</p>
+      <div class="mode-sm-count">2 người · 1v1</div>
+      <div class="orb"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why-section">
+  <div class="section-eyebrow reveal">Tại sao BibleQuiz</div>
+  <h2 class="section-h2 reveal">Khác với những app<br>Kinh Thánh khác.</h2>
+
+  <div class="why-grid">
+    <div class="why-card reveal" style="transition-delay:.05s">
+      <div class="why-num">01</div>
+      <div class="why-title">Học bằng cách thi đấu, không phải đọc</div>
+      <p class="why-desc">Não bộ nhớ lâu hơn khi có áp lực và cảm xúc. Battle Royale tạo ra đúng điều đó — bạn sẽ không quên câu trả lời sau khi bị loại vì nó.</p>
+    </div>
+    <div class="why-card reveal" style="transition-delay:.1s">
+      <div class="why-num">02</div>
+      <div class="why-title">Streak và rank khiến bạn quay lại</div>
+      <p class="why-desc">Hệ thống Leo Rank daily reset, streak ngày liên tiếp, và bảng xếp hạng realtime tạo động lực học mỗi ngày — không cần ý chí.</p>
+    </div>
+    <div class="why-card reveal" style="transition-delay:.15s">
+      <div class="why-num">03</div>
+      <div class="why-title">Chơi cùng nhóm nhà thờ, không cần setup phức tạp</div>
+      <p class="why-desc">Tạo phòng, chia sẻ mã 6 ký tự, bắt đầu trong 30 giây. Team vs Team hoàn hảo cho lớp học Kinh Thánh hoặc sự kiện nhóm.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERBOARD -->
+<section class="lb-section" id="lb-section">
+  <div class="section-eyebrow reveal">Bảng xếp hạng</div>
+  <h2 class="section-h2 reveal">Ai đang dẫn đầu<br>tuần này?</h2>
+
+  <div class="lb-inner">
+    <div class="lb-tabs reveal">
+      <button class="lb-tab active">Tuần này</button>
+      <button class="lb-tab">Hôm nay</button>
+      <button class="lb-tab">Mọi thời đại</button>
+    </div>
+
+    <div class="lb-rows reveal">
+      <div class="lb-row">
+        <div class="lb-rank">🥇</div>
+        <div class="lb-av" style="background:rgba(155,89,182,.2);color:#C39BD3;">TH</div>
+        <div class="lb-info">
+          <div class="lb-name">Thanh Hằng</div>
+          <div class="lb-meta">Battle Royale · 28 trận thắng liên tiếp</div>
+        </div>
+        <div class="streak-badge">🔥 28</div>
+        <div class="lb-score">124,850 <small>điểm</small></div>
+      </div>
+
+      <div class="lb-row">
+        <div class="lb-rank">🥈</div>
+        <div class="lb-av" style="background:rgba(52,152,219,.2);color:#5DADE2;">MK</div>
+        <div class="lb-info">
+          <div class="lb-name">Minh Khoa</div>
+          <div class="lb-meta">Speed Race · Avg 2.1s / câu</div>
+        </div>
+        <div class="streak-badge">🔥 14</div>
+        <div class="lb-score">118,420 <small>điểm</small></div>
+      </div>
+
+      <div class="lb-row">
+        <div class="lb-rank">🥉</div>
+        <div class="lb-av" style="background:rgba(46,213,115,.2);color:#58D68D;">LP</div>
+        <div class="lb-info">
+          <div class="lb-name">Lan Phương</div>
+          <div class="lb-meta">Team vs Team · 95% accuracy</div>
+        </div>
+        <div class="streak-badge">🔥 9</div>
+        <div class="lb-score">103,710 <small>điểm</small></div>
+      </div>
+
+      <div class="lb-row">
+        <div class="lb-rank"><span class="lb-rank-num">4</span></div>
+        <div class="lb-av" style="background:rgba(230,126,34,.2);color:#F5A623;">HN</div>
+        <div class="lb-info">
+          <div class="lb-name">Hoàng Nam</div>
+          <div class="lb-meta">Sudden Death · 41 trận giữ ghế</div>
+        </div>
+        <div class="lb-score">97,300 <small>điểm</small></div>
+      </div>
+
+      <div class="lb-row">
+        <div class="lb-rank"><span class="lb-rank-num">5</span></div>
+        <div class="lb-av" style="background:rgba(255,107,91,.2);color:#FF6B5B;">QL</div>
+        <div class="lb-info">
+          <div class="lb-name">Quỳnh Liên</div>
+          <div class="lb-meta">Leo Rank · 22 ngày streak</div>
+        </div>
+        <div class="lb-score">89,150 <small>điểm</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="quote-inner reveal">
+    <div class="quote-text">
+      Hãy <em>siêng năng dạy</em> những điều này cho con cái ngươi — hoặc là dùng BibleQuiz, cũng được.
+    </div>
+    <div class="quote-ref">Phục Truyền 6:7 · (có chút diễn giải)</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-blob"></div>
+  <div class="cta-h2 reveal">Đăng nhập.<br><span>Bắt đầu. Thắng.</span></div>
+  <p class="cta-sub reveal">Không cần tạo tài khoản. Đăng nhập Google là chơi ngay.</p>
+  <div class="cta-btns reveal">
+    <a href="#" class="btn-big" style="font-size:1.05rem;padding:1rem 2.5rem;">
+      Chơi ngay — miễn phí ↗
+    </a>
+    <a href="#modes" class="btn-ghost" style="font-size:1.05rem;">Xem chế độ chơi</a>
+  </div>
+  <div class="cta-note reveal">Miễn phí · Không quảng cáo · 66 sách Kinh Thánh đầy đủ</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">✝ BibleQuiz</div>
+  <ul class="foot-links">
+    <li><a href="#">Về chúng tôi</a></li>
+    <li><a href="#">Điều khoản</a></li>
+    <li><a href="#">Quyền riêng tư</a></li>
+    <li><a href="#">Liên hệ</a></li>
+  </ul>
+  <div class="foot-copy">© 2026 BibleQuiz</div>
+</footer>
+
+<script>
+// ── Demo card interaction ──
+let answered = false;
+function pickAns(el){
+  if(answered)return;
+  answered = true;
+  const isCorrect = el.dataset.ans === 'correct';
+  el.classList.add(isCorrect ? 'correct' : 'wrong');
+  if(!isCorrect){
+    // show correct after 600ms
+    setTimeout(()=>{
+      document.querySelectorAll('.demo-opt').forEach(o=>{
+        if(o.dataset.ans==='correct') o.classList.add('correct');
+      });
+    },600);
+  }
+  // reset after 3s
+  setTimeout(()=>{
+    document.querySelectorAll('.demo-opt').forEach(o=>{
+      o.classList.remove('correct','wrong');
+    });
+    answered = false;
+  },3200);
+}
+
+// ── Timer countdown ──
+let secs = 8;
+const timerEl = document.getElementById('timer-num');
+setInterval(()=>{
+  secs--;
+  if(secs<0) secs=20;
+  timerEl.textContent = secs+'s';
+  if(secs<=5) timerEl.style.color='var(--coral)';
+  else timerEl.style.color='var(--coral)';
+},1000);
+
+// ── Leaderboard tab toggle ──
+document.querySelectorAll('.lb-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.lb-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+
+// ── Scroll reveal ──
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── Mode card hover tilt ──
+document.querySelectorAll('.mode-big,.mode-sm').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`translateY(-5px) perspective(500px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`;
+  });
+  card.addEventListener('mouseleave',()=>{ card.style.transform=''; });
+});
+</script>
+</body>
+</html>

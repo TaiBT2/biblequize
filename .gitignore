@@ -6,8 +6,22 @@ build/
 .DS_Store
 .env
 .env.*
+env.local
+# app secrets and local config - keep out of git
+/apps/api/src/main/resources/application-local.yml
+/apps/api/src/main/resources/application-dev.yml
+/apps/api/src/main/resources/application-prod.yml
+/apps/api/src/main/resources/application.yml
+compose.yml
 /apps/api/.gradle/
 /apps/api/build/
 /apps/api/out/
 /apps/api/target/
-compose.yml
+*.log
+api.log
+/apps/api/logs/
+
+# One-time scripts & temp files
+*.py
+all_files.txt
+rule-rank.txt

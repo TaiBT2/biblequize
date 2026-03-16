@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { resolveWsUrl } from '../api/config';
 
 export interface WebSocketMessage {
   type: string;
@@ -134,25 +135,31 @@ export const useWebSocket = ({
 
   const connect = () => {
     try {
-      const wsUrl = url.startsWith('ws') ? url : `ws://localhost:8081${url}`;
+      const wsUrl = resolveWsUrl(url);
       const newSocket = new WebSocket(wsUrl);
 
       newSocket.onopen = () => {
-        console.log('[WebSocket] Connected to:', wsUrl);
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('[WebSocket] Connected to:', wsUrl);
+        }
         setIsConnected(true);
         setError(null);
         reconnectAttemptsRef.current = 0;
       };
 
       newSocket.onclose = (event) => {
-        console.log('[WebSocket] Connection closed:', event.code, event.reason);
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('[WebSocket] Connection closed:', event.code, event.reason);
+        }
         setIsConnected(false);
         
         // Attempt to reconnect if not manually closed
         if (event.code !== 1000 && reconnectAttemptsRef.current < maxReconnectAttempts) {
           reconnectAttemptsRef.current++;
           const delay = Math.min(1000 * Math.pow(2, reconnectAttemptsRef.current), 30000);
-          console.log(`[WebSocket] Attempting to reconnect in ${delay}ms (attempt ${reconnectAttemptsRef.current}/${maxReconnectAttempts})`);
+          if (process.env.NODE_ENV !== 'production') {
+            console.log(`[WebSocket] Attempting to reconnect in ${delay}ms (attempt ${reconnectAttemptsRef.current}/${maxReconnectAttempts})`);
+          }
           
           reconnectTimeoutRef.current = setTimeout(() => {
             connect();
@@ -161,14 +168,18 @@ export const useWebSocket = ({
       };
 
       newSocket.onerror = (event) => {
-        console.error('[WebSocket] Error:', event);
+        if (process.env.NODE_ENV !== 'production') {
+          console.error('[WebSocket] Error:', event);
+        }
         setError('WebSocket connection error');
       };
 
       newSocket.onmessage = (event) => {
         try {
           const message: WebSocketMessage = JSON.parse(event.data);
-          console.log('[WebSocket] Received message:', message);
+          if (process.env.NODE_ENV !== 'production') {
+            console.log('[WebSocket] Received message:', message);
+          }
 
           // Call general message handler
           onMessage?.(message);
@@ -240,7 +251,9 @@ export const useWebSocket = ({
         data,
         timestamp: String(Date.now())
       };
-      console.log('[WebSocket] Sending message:', message);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('[WebSocket] Sending message:', message);
+      }
       socket.send(JSON.stringify(message));
     } else {
       console.warn('[WebSocket] Cannot send message: socket not connected');

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../api/client'
+import { useQuery } from '@tanstack/react-query'
+import SearchableSelect from '../components/ui/SearchableSelect'
 
 interface Book {
   id: string
@@ -18,42 +20,32 @@ export default function Practice() {
   const [questionCount, setQuestionCount] = useState(10)
   const [showExplanation, setShowExplanation] = useState(true)
   const [isLoading, setIsLoading] = useState(false)
+  const [bookSearch, setBookSearch] = useState('')
+  const [errorMsg, setErrorMsg] = useState<string>('')
+  const filteredBooks = books.filter(b => (b.name + ' ' + b.nameVi).toLowerCase().includes(bookSearch.toLowerCase()))
+
+  const { data: booksData, isLoading: isBooksLoading } = useQuery({
+    queryKey: ['books'],
+    queryFn: async () => {
+      const response = await api.get('/api/books')
+      return response.data as Book[]
+    }
+  })
 
   useEffect(() => {
-    const fetchBooks = async () => {
-      try {
-        const response = await api.get('/api/books')
-        setBooks(response.data)
-      } catch (error) {
-        console.error('Error fetching books:', error)
-        // Fallback to mock data
-        setBooks([
-          { id: '1', name: 'Genesis', nameVi: 'Sáng Thế Ký', testament: 'OLD', orderIndex: 1 },
-          { id: '2', name: 'Exodus', nameVi: 'Xuất Ê-díp-tô Ký', testament: 'OLD', orderIndex: 2 },
-          { id: '3', name: 'Matthew', nameVi: 'Ma-thi-ơ', testament: 'NEW', orderIndex: 40 },
-          { id: '4', name: 'John', nameVi: 'Giăng', testament: 'NEW', orderIndex: 43 }
-        ])
-      }
-    }
-    
-    fetchBooks()
-  }, [])
+    if (booksData) setBooks(booksData)
+  }, [booksData])
 
   const startQuiz = async () => {
-    if (!selectedBook) {
-      alert('Vui lòng chọn sách')
-      return
-    }
     try {
       setIsLoading(true)
-      const res = await api.post('/sessions', {
+      setErrorMsg('')
+      const res = await api.post('/api/sessions', {
         mode: 'practice',
-        config: {
-          book: selectedBook,
-          difficulty: selectedDifficulty,
-          questionCount: questionCount,
-          showExplanationOnSubmit: showExplanation
-        }
+        book: selectedBook,
+        difficulty: selectedDifficulty,
+        questionCount: questionCount,
+        showExplanation: showExplanation
       })
       const { sessionId, questions } = res.data
       navigate('/quiz', {
@@ -68,96 +60,126 @@ export default function Practice() {
       })
     } catch (e) {
       console.error(e)
-      alert('Không tạo được phiên luyện tập. Vui lòng thử lại.')
+      setErrorMsg('Không tạo được phiên luyện tập. Vui lòng thử lại.')
     } finally {
       setIsLoading(false)
     }
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#0E0B1A' }}>
+    <div className="min-h-screen practice-bg py-8">
       {/* Header */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center mb-8">
-          <h1 className="neon-text text-4xl font-bold mb-4">LUYỆN TẬP</h1>
-          <p className="text-gray-300 text-lg">Chọn cài đặt và bắt đầu luyện tập</p>
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-8 relative z-10">
+          <h1 className="practice-title">LUYỆN TẬP</h1>
+          <p className="practice-subtitle mt-2">Tùy chỉnh bài luyện tập của bạn và bắt đầu ngay</p>
         </div>
 
         {/* Settings Panel */}
-        <div className="neon-card p-8 max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Left Column */}
-            <div className="space-y-6">
-              {/* Book Selection */}
+        <form
+          onSubmit={(e) => { e.preventDefault(); if (!isLoading && !isBooksLoading) startQuiz() }}
+          className="practice-book-card p-6 md:p-12 max-w-4xl mx-auto"
+          aria-label="Thiết lập luyện tập"
+        >
+          {/* Error banner */}
+          {errorMsg && (
+            <div className="mb-8 flex flex-col items-center justify-center cute-bird-error">
+              <div className="text-4xl mb-2 hover:animate-icon-wiggle cursor-default transition-transform" style={{ filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.2))' }}>🐦‍⬛</div>
+              <div className="bg-white/10 px-6 py-3 rounded-2xl border-2 border-red-500/50 text-red-400 font-bold shadow-lg relative backdrop-blur-md">
+                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-red-500 border-t-2 border-l-2 border-red-500/50 rotate-45"></div>
+                {errorMsg}
+              </div>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10 mb-10">
+            {/* Left Column: Primary filters */}
+            <div className="space-y-10">
+              {/* Box 1: Chọn sách */}
               <div>
-                <label className="neon-blue text-lg font-semibold block mb-3">
-                  Chọn sách
-                </label>
-                <select
-                  value={selectedBook}
-                  onChange={(e) => setSelectedBook(e.target.value)}
-                  className="neon-input w-full p-3 bg-gray-800 border border-blue-400 rounded-lg focus:border-blue-300 focus:outline-none"
-                >
-                  <option value="">-- Chọn sách --</option>
-                  {books.map((book) => (
-                    <option key={book.id} value={book.name}>
-                      {book.nameVi} ({book.name})
-                    </option>
-                  ))}
-                </select>
+                <div className="flex items-center justify-between mb-3">
+                  <label className="practice-label">
+                    <span className="text-2xl drop-shadow-sm">📜</span> Chọn sách
+                  </label>
+                  <span className="text-[#00FFFF] font-bold text-sm bg-[#00FFFF]/10 px-3 py-1 rounded-full border border-[#00FFFF]/30 max-h-8 flex items-center shadow-sm">
+                    {filteredBooks.length} / {books.length} sách
+                  </span>
+                </div>
+                <div className="relative z-[100]">
+                  <SearchableSelect
+                    options={books.map(b => ({ value: b.name, label: `${b.nameVi} (${b.name})` }))}
+                    value={selectedBook}
+                    onChange={setSelectedBook}
+                    placeholder="Tìm kiếm sách..."
+                    allLabel="Tất cả các sách"
+                  />
+                </div>
+                <p className="text-sm text-[#00FFFF]/70 mt-3 italic font-medium">💡 Để trống để lấy ngẫu nhiên từ tất cả các sách.</p>
               </div>
 
-              {/* Question Count */}
+              {/* Box 2: Question Count */}
               <div>
-                <label className="neon-orange text-lg font-semibold block mb-3">
-                  Số câu hỏi
+                <label className="practice-label mb-3">
+                  <span className="text-2xl drop-shadow-sm">🧮</span> Số câu hỏi
                 </label>
-                <select
-                  value={questionCount}
-                  onChange={(e) => setQuestionCount(Number(e.target.value))}
-                  className="neon-input w-full p-3 bg-gray-800 border border-orange-400 rounded-lg focus:border-orange-300 focus:outline-none"
-                >
-                  <option value={5}>5 câu</option>
-                  <option value={10}>10 câu</option>
-                  <option value={20}>20 câu</option>
-                  <option value={50}>50 câu</option>
-                </select>
+                <div className="flex flex-wrap gap-4">
+                  {[5, 10, 20, 50].map(num => (
+                    <button
+                      key={num}
+                      type="button"
+                      onClick={() => setQuestionCount(num)}
+                      className={`px-5 py-2 text-lg font-bold practice-option-btn ${questionCount === num ? 'selected' : ''}`}
+                    >
+                      {num} câu
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Right Column */}
-            <div className="space-y-6">
+            {/* Right Column: Secondary options */}
+            <div className="space-y-10 mt-1 md:mt-0">
               {/* Difficulty */}
               <div>
-                <label className="neon-green text-lg font-semibold block mb-3">
-                  Độ khó
+                <label className="practice-label mb-3">
+                  <span className="text-2xl drop-shadow-sm">✨</span> Độ khó
                 </label>
-                <select
-                  value={selectedDifficulty}
-                  onChange={(e) => setSelectedDifficulty(e.target.value)}
-                  className="neon-input w-full p-3 bg-gray-800 border border-green-400 rounded-lg focus:border-green-300 focus:outline-none"
-                >
-                  <option value="all">Tất cả</option>
-                  <option value="easy">Dễ</option>
-                  <option value="medium">Trung bình</option>
-                  <option value="hard">Khó</option>
-                </select>
+                <div className="flex flex-wrap gap-4">
+                  {[
+                    { key: 'all', label: 'Tất cả' },
+                    { key: 'easy', label: 'Dễ' },
+                    { key: 'medium', label: 'Trung bình' },
+                    { key: 'hard', label: 'Khó' }
+                  ].map(d => (
+                    <button
+                      key={d.key}
+                      type="button"
+                      onClick={() => setSelectedDifficulty(d.key)}
+                      className={`px-5 py-2 text-lg font-bold practice-option-btn ${selectedDifficulty === d.key ? 'selected' : ''}`}
+                    >
+                      {d.label}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* Show Explanation */}
               <div>
-                <label className="neon-pink text-lg font-semibold block mb-3">
-                  Hiển thị giải thích
+                <label className="practice-label mb-3">
+                  <span className="text-2xl drop-shadow-sm">💡</span> Hiển thị giải thích
                 </label>
-                <div className="flex items-center space-x-3">
-                  <input
-                    type="checkbox"
-                    id="showExplanation"
-                    checked={showExplanation}
-                    onChange={(e) => setShowExplanation(e.target.checked)}
-                    className="w-5 h-5 text-pink-400 bg-gray-800 border-pink-400 rounded focus:ring-pink-300"
-                  />
-                  <label htmlFor="showExplanation" className="text-gray-300">
+                <div
+                  className="inline-flex items-center space-x-3 p-3 px-5 rounded-2xl cursor-pointer transition-all bg-[#f8f9fa] hover:bg-[#f1f3f5] text-[#4a3f35] w-full border border-transparent hover:border-[#e2e8f0]"
+                  onClick={() => setShowExplanation(!showExplanation)}
+                >
+                  <div className={`w-6 h-6 rounded-md border-2 flex items-center justify-center transition-colors shadow-sm ${showExplanation ? 'bg-[#4bbf9f] border-[#4bbf9f]' : 'bg-white border-[#cbd5e1]'}`}>
+                    {showExplanation && (
+                      <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </div>
+                  <label className="text-base font-bold font-['Nunito'] cursor-pointer select-none">
                     Hiển thị giải thích sau mỗi câu
                   </label>
                 </div>
@@ -165,25 +187,30 @@ export default function Practice() {
             </div>
           </div>
 
-          {/* Start Button */}
-          <div className="text-center mt-8">
-            <button
-              onClick={startQuiz}
-              disabled={isLoading}
-              className="neon-btn neon-btn-green px-8 py-3 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isLoading ? 'ĐANG TẢI...' : 'BẮT ĐẦU LUYỆN TẬP'}
-            </button>
+          {/* Action Area */}
+          <div className="pt-12 mt-6 flex flex-col items-center space-y-6 relative">
+            <div className="text-center group relative z-10 w-full flex justify-center">
+              <button
+                type="submit"
+                disabled={isLoading || isBooksLoading}
+                className="practice-start-btn disabled:opacity-50 disabled:cursor-not-allowed group/btn"
+              >
+                <span className="relative z-10 flex items-center justify-center gap-3">
+                  {isLoading || isBooksLoading ? 'ĐANG TẠO PHIÊN...' : 'BẮT ĐẦU LUYỆN TẬP'}
+                  {!isLoading && !isBooksLoading && <span className="text-2xl group-hover/btn:translate-x-3 group-hover/btn:-translate-y-2 group-hover/btn:scale-110 transition-transform duration-300" style={{ transform: 'rotate(15deg)' }}>🚀</span>}
+                </span>
+              </button>
+            </div>
           </div>
-        </div>
+        </form>
 
         {/* Back Button */}
-        <div className="text-center mt-8">
+        <div className="text-center mt-12 mb-8">
           <Link
             to="/"
-            className="neon-btn neon-btn-green px-6 py-2"
+            className="practice-back-btn px-6 py-3 inline-flex items-center gap-2 font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1"
           >
-            ← QUAY LẠI TRANG CHỦ
+            🧭 QUAY LẠI TRANG CHỦ
           </Link>
         </div>
       </div>

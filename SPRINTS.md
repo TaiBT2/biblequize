@@ -238,59 +238,135 @@ Dự án được chia thành **7 Sprint** theo độ ưu tiên và phụ thuộ
 ## 👨‍💼 **Sprint 6: Admin Panel & AI Generator** (3-4 tuần)
 **Mục tiêu**: Quản lý nội dung
 
-### Backend Tasks
-- [ ] Admin authentication & authorization
-  - [ ] Role-based access control
-  - [ ] Admin-only endpoints
-- [ ] Question management
-  - [ ] `POST /admin/questions` - Create question
-  - [ ] `PUT /admin/questions/{id}` - Update question
-  - [ ] `DELETE /admin/questions/{id}` - Delete question
-  - [ ] Question validation
-- [ ] Import system
-  - [ ] CSV/JSON import
-  - [ ] Dry-run functionality
-  - [ ] Batch processing
-- [ ] AI Question Generator
-  - [ ] AWS Bedrock integration
-  - [ ] `POST /admin/ai/generate` - Generate questions
-  - [ ] `GET /admin/ai/jobs/{id}` - Job status
-  - [ ] Draft management & approval
-- [ ] Feedback management
-  - [ ] `GET /admin/feedback` - List feedback
-  - [ ] `PATCH /admin/feedback/{id}` - Update status
-- [ ] Analytics
-  - [ ] Question usage statistics
-  - [ ] User activity metrics
-  - [ ] Performance dashboards
+> **Trạng thái hiện tại** (cập nhật 2026-03-13):
+> - ✅ Admin auth (ROLE_ADMIN, SecurityConfig, AdminBootstrapRunner, RequireAdmin guard)
+> - ✅ Question CRUD backend (`AdminQuestionController`) + frontend (`Questions.tsx` đầy đủ)
+> - ✅ Audit Events (AuditEvent entity, AuditService, AdminAuditController)
+> - ✅ Admin layout + routing (AdminLayout, RequireAdmin)
+> - 🔶 AI Generator: BE mock trả dữ liệu cứng, FE form thiếu submit handler
+> - 🔶 Feedback: entity + repository có sẵn, chưa có controller/API
+> - ❌ Import CSV/JSON: chưa có BE lẫn FE thực sự
+> - ❌ Analytics: chưa có BE, FE chỉ là placeholder
+> - ❌ User Management: chưa có admin API, FE là placeholder
 
-### Frontend Tasks
-- [ ] Admin authentication
-  - [ ] Admin login flow
-  - [ ] Role-based UI access
-- [ ] Question management UI
-  - [ ] Question CRUD forms
-  - [ ] Question list with filters
-  - [ ] Bulk operations
-- [ ] AI Generator interface
-  - [ ] Scripture input form
-  - [ ] Prompt customization
-  - [ ] Generation progress
-  - [ ] Draft review & approval
-- [ ] Import interface
-  - [ ] File upload
-  - [ ] Preview & validation
-  - [ ] Import progress
-- [ ] Analytics dashboard
-  - [ ] Charts & graphs
-  - [ ] Export functionality
+---
 
-### Acceptance Criteria
-- [ ] Admin có thể CRUD questions
-- [ ] AI Generator tạo được questions từ scripture
-- [ ] Import system hoạt động với CSV/JSON
-- [ ] Analytics dashboard hiển thị metrics
-- [ ] Feedback được quản lý hiệu quả
+### 🔴 P1 — Phải làm (chặn release)
+
+#### Backend
+- [x] Admin authentication & authorization (RBAC, `@PreAuthorize`)
+- [x] `POST/PUT/DELETE /api/admin/questions` — Question CRUD
+- [ ] **Feedback Controller**
+  - [ ] `GET /api/admin/feedback?status=&type=&page=` — list + filter
+  - [ ] `PATCH /api/admin/feedback/{id}` — update status (pending → in_progress → resolved/rejected)
+  - [ ] `POST /api/feedback` — user endpoint nộp feedback về câu hỏi
+- [ ] **Import System**
+  - [ ] `POST /api/admin/questions/import` — nhận multipart file (CSV hoặc JSON)
+  - [ ] Parse & validate từng dòng, trả về kết quả: `{imported, skipped, errors[]}`
+  - [ ] Dry-run mode (`?dryRun=true`) để preview trước khi ghi
+  - [ ] Xử lý batch: commit từng nhóm 100 records, không rollback toàn bộ nếu một dòng lỗi
+
+#### Frontend
+- [ ] **Import UI** (gắn vào trang Questions hiện có)
+  - [ ] Nút "Import" mở modal upload file (CSV/JSON)
+  - [ ] Hiển thị preview kết quả dry-run (bao nhiêu sẽ import, bao nhiêu lỗi)
+  - [ ] Confirm → gọi real import, hiển thị progress + kết quả cuối
+- [ ] **Feedback Management page** (`/admin/feedback`)
+  - [ ] Table: người dùng, loại (report/question/general), nội dung, câu hỏi liên quan, status, ngày tạo
+  - [ ] Filter theo status + type
+  - [ ] Click vào row → xem chi tiết, đổi status, ghi chú xử lý
+
+---
+
+### 🟡 P2 — Nên làm sprint này
+
+#### Backend
+- [ ] **AI Generator — kết nối thật**
+  - [ ] Tích hợp Anthropic Claude API (thay mock) hoặc AWS Bedrock
+  - [ ] `POST /api/admin/ai/generate` nhận `{book, chapter, verseStart, verseEnd, scripture, prompt, count}`
+  - [ ] Trả về danh sách draft questions (chưa lưu vào DB)
+  - [ ] `POST /api/admin/ai/generate/save` — lưu các draft được chọn vào questions table
+- [ ] **User Management APIs**
+  - [ ] `GET /api/admin/users?page=&search=` — danh sách users
+  - [ ] `GET /api/admin/users/{id}` — chi tiết user + activity tóm tắt
+  - [ ] `PATCH /api/admin/users/{id}/role` — đổi role (cấp/thu ADMIN)
+  - [ ] `PATCH /api/admin/users/{id}/ban` — ban/unban user
+
+#### Frontend
+- [ ] **AI Generator — hoàn thiện UI** (`AIQuestionGenerator.tsx`)
+  - [ ] Gắn submit handler gọi `POST /api/admin/ai/generate`
+  - [ ] Hiển thị danh sách draft questions sau khi generate
+  - [ ] Cho phép edit từng draft trước khi lưu
+  - [ ] Checkbox chọn + nút "Lưu vào DB"
+- [ ] **User Management page** (`/admin/users`)
+  - [ ] Table users với search, phân trang
+  - [ ] Badge role (ADMIN / USER)
+  - [ ] Action: cấp/thu ADMIN, ban user
+  - [ ] Click row → xem lịch sử hoạt động (quiz sessions, points)
+
+---
+
+### 🟢 P3 — Nice to have (nếu còn thời gian)
+
+#### Backend
+- [ ] **Analytics API**
+  - [ ] `GET /api/admin/analytics/questions` — top questions by usage, accuracy rate per question
+  - [ ] `GET /api/admin/analytics/users` — DAU/WAU, new users per day, retention D1/D7
+  - [ ] `GET /api/admin/analytics/ranked` — ranked mode engagement (sessions/day, avg points)
+- [ ] **Question validation nâng cao**
+  - [ ] Kiểm tra duplicate question text khi create/import
+  - [ ] Cảnh báo nếu correctAnswer index vượt quá số options
+
+#### Frontend
+- [ ] **Analytics Dashboard** (`/admin/analytics`)
+  - [ ] Line chart: DAU 30 ngày (dùng Recharts hoặc Chart.js)
+  - [ ] Bar chart: questions per book
+  - [ ] Stats cards: tổng users, tổng questions, sessions hôm nay
+
+---
+
+### ✅ Acceptance Criteria
+- [ ] Admin có thể CRUD questions (đã xong)
+- [ ] Feedback từ user được submit và admin quản lý được (P1)
+- [ ] Import CSV/JSON hoạt động với 1000+ questions, dry-run trước (P1)
+- [ ] AI Generator thực sự tạo questions từ scripture qua LLM (P2)
+- [ ] Admin quản lý được users (cấp role, ban) (P2)
+- [ ] Analytics dashboard hiển thị metrics cơ bản (P3)
+
+---
+
+### 📋 Thứ tự thực hiện đề xuất
+
+```
+Tuần 1:  Feedback Controller (BE) + Feedback page (FE)
+         Import System BE (parse CSV/JSON, dry-run, batch)
+Tuần 2:  Import UI (FE modal + preview + progress)
+         AI Generator — wiring FE form + kết nối Anthropic API
+Tuần 3:  User Management API (BE) + User page (FE)
+         (nếu còn thời gian) Analytics API + Dashboard
+Tuần 4:  Bug fixes, polish, acceptance testing
+```
+
+### 📎 Format CSV import mẫu
+```csv
+book,chapter,type,text,optionA,optionB,optionC,optionD,correctAnswer,difficulty,explanation
+Genesis,1,multiple_choice,"Ai tạo ra vũ trụ?",Đức Chúa Trời,Con người,Thiên thần,Không ai,0,easy,"Sáng thế ký 1:1"
+```
+
+### 📎 Format JSON import mẫu
+```json
+[
+  {
+    "book": "Genesis", "chapter": 1,
+    "type": "multiple_choice",
+    "text": "Ai tạo ra vũ trụ?",
+    "options": ["Đức Chúa Trời", "Con người", "Thiên thần", "Không ai"],
+    "correctAnswer": [0],
+    "difficulty": "easy",
+    "explanation": "Sáng thế ký 1:1"
+  }
+]
+```
 
 ---
 

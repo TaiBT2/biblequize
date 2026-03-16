@@ -12,59 +12,65 @@ export default function AuthCallback() {
   useEffect(() => {
     const processAuthCallback = async () => {
       try {
-        const token = searchParams.get('token')
-        const refreshToken = searchParams.get('refreshToken')
-        const name = searchParams.get('name')
-        const email = searchParams.get('email')
-        const avatar = searchParams.get('avatar')
-        const error = searchParams.get('error')
+        const code = searchParams.get('code');
+        const errorParam = searchParams.get('error');
 
-        console.log('[AUTH_CALLBACK] Processing callback with params:', {
-          token: token ? 'present' : 'missing',
-          refreshToken: refreshToken ? 'present' : 'missing',
-          name,
-          email,
-          error
-        })
+        console.log('[AUTH_CALLBACK] Processing callback:', {
+          code: code ? 'present' : 'missing',
+          error: errorParam
+        });
 
-        if (error) {
-          // Handle OAuth error
-          console.error('[AUTH_CALLBACK] OAuth error:', error)
-          setError(`OAuth error: ${error}`)
-          setTimeout(() => navigate('/login?error=oauth_failed'), 2000)
-          return
+        if (errorParam) {
+          console.error('[AUTH_CALLBACK] OAuth error:', errorParam);
+          setError(`OAuth error: ${errorParam}`);
+          setTimeout(() => navigate('/login?error=oauth_failed'), 2000);
+          return;
         }
 
-        if (token && refreshToken) {
-          // Use AuthContext to store tokens and user info
+        if (!code) {
+          console.error('[AUTH_CALLBACK] No code received in URL');
+          setError('No authentication code received');
+          setTimeout(() => navigate('/login?error=no_tokens'), 2000);
+          return;
+        }
+
+        // --- NEW FLOW: Exchange code for tokens via POST ---
+        // The refresh token is set by the backend as an httpOnly cookie.
+        // We only receive the accessToken and user profile in JSON.
+        const { api } = await import('../api/client');
+        const response = await api.post('/api/auth/exchange', { code });
+        const { accessToken, name, email, avatar, role } = response.data;
+
+        if (accessToken) {
+          // Use AuthContext to store access token in memory and user profile
           login({
-            accessToken: token,
-            refreshToken: refreshToken,
+            accessToken,
             name: name || 'User',
             email: email || 'user@example.com',
-            avatar: avatar || undefined
-          })
-          
-          console.log('[AUTH_CALLBACK] User logged in via AuthContext')
-          
+            avatar: avatar || undefined,
+            role
+          });
+
+          console.log('[AUTH_CALLBACK] User logged in via exchange success');
+
           // Show success message briefly then redirect
           setTimeout(() => {
-            navigate('/')
-          }, 1500)
+            navigate('/');
+          }, 1500);
         } else {
-          // No tokens received - this shouldn't happen with our current flow
-          console.error('[AUTH_CALLBACK] No tokens received')
-          setError('No authentication tokens received')
-          setTimeout(() => navigate('/login?error=no_tokens'), 2000)
+          console.error('[AUTH_CALLBACK] Exchange failed: No access token in response');
+          setError('Failed to retrieve authentication tokens');
+          setTimeout(() => navigate('/login?error=no_tokens'), 2000);
         }
-      } catch (err) {
-        console.error('[AUTH_CALLBACK] Error processing callback:', err)
-        setError('Error processing authentication')
-        setTimeout(() => navigate('/login?error=processing_failed'), 2000)
+      } catch (err: any) {
+        console.error('[AUTH_CALLBACK] Error processing callback:', err);
+        const backendError = err.response?.data?.message || err.message;
+        setError(`Lỗi xác thực: ${backendError}`);
+        setTimeout(() => navigate('/login?error=processing_failed'), 3000);
       } finally {
-        setIsProcessing(false)
+        setIsProcessing(false);
       }
-    }
+    };
 
     processAuthCallback()
   }, [searchParams, navigate])
@@ -74,7 +80,7 @@ export default function AuthCallback() {
       {/* Background Elements */}
       <div className="absolute top-20 left-20 text-5xl neon-green opacity-20 animate-pulse">🔐</div>
       <div className="absolute bottom-20 right-20 text-5xl neon-pink opacity-20 animate-pulse">⚡</div>
-      
+
       <div className="text-center">
         <div className="neon-card p-8">
           {isProcessing ? (

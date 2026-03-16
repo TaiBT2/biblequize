@@ -107,6 +107,29 @@ logging:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
 
+# Application Configuration
+app:
+  name: biblequiz
+  version: 1.0.0
+  environment: production
+  
+  # Rate Limiting Configuration
+  rate-limit:
+    admin:
+      requests: 100
+      window: 3600  # 1 hour
+    general:
+      requests: 1000
+      window: 3600  # 1 hour
+  
+  # Performance Configuration
+  performance:
+    cache:
+      ttl: 1800  # 30 minutes
+    rate-limit:
+      requests: 1000
+      window: 3600
+
 # Management endpoints
 management:
   endpoints:

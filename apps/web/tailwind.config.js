@@ -27,7 +27,9 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Orbitron', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        sans: ['Nunito', 'Inter', 'Orbitron', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
+        cursive: ['Caveat', 'cursive'],
         mono: ['Orbitron', 'Courier New', 'monospace'],
       },
       animation: {
