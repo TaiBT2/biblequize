@@ -2,7 +2,6 @@ package com.biblequiz.modules.business;
 
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.room.entity.Room;
-import com.biblequiz.modules.user.entity.Achievement;
 import com.biblequiz.modules.user.entity.User;
 
 import org.slf4j.Logger;

@@ -22,8 +22,11 @@ CREATE TABLE IF NOT EXISTS season_rankings (
     UNIQUE KEY uk_season_user (season_id, user_id)
 );
 
--- Achievement / Badge system
-CREATE TABLE IF NOT EXISTS achievements (
+-- Achievement / Badge system — drop old schema if exists, recreate with new columns
+DROP TABLE IF EXISTS user_achievements;
+DROP TABLE IF EXISTS achievements;
+
+CREATE TABLE achievements (
     id VARCHAR(36) PRIMARY KEY,
     key_name VARCHAR(50) NOT NULL UNIQUE,
     name VARCHAR(100) NOT NULL,
@@ -33,7 +36,7 @@ CREATE TABLE IF NOT EXISTS achievements (
     threshold INT NOT NULL DEFAULT 0
 );
 
-CREATE TABLE IF NOT EXISTS user_achievements (
+CREATE TABLE user_achievements (
     id VARCHAR(36) PRIMARY KEY,
     user_id VARCHAR(36) NOT NULL,
     achievement_id VARCHAR(36) NOT NULL,
@@ -45,10 +48,10 @@ CREATE TABLE IF NOT EXISTS user_achievements (
 
 -- Seed default achievements
 INSERT INTO achievements (id, key_name, name, description, icon, category, threshold) VALUES
-    (UUID(), 'flame_7', 'Ngọn Lửa', 'Chơi 7 ngày liên tiếp', 'flame', 'streak', 7),
-    (UUID(), 'scholar_10', 'Học Giả', 'Hoàn thành 10 sách Kinh Thánh', 'book', 'progress', 10),
-    (UUID(), 'champion_3', 'Vô Địch', 'Đạt Top 1 daily 3 lần', 'crown', 'rank', 3),
-    (UUID(), 'persistent_1000', 'Kiên Trì', 'Trả lời 1000 câu hỏi', 'target', 'participation', 1000),
-    (UUID(), 'perfect_20', 'Hoàn Hảo', 'Đạt streak 20 liên tiếp', 'zap', 'streak', 20),
-    (UUID(), 'elder', 'Trưởng Lão', 'Đạt tier Trưởng Lão', 'shield', 'tier', 8000),
-    (UUID(), 'apostle', 'Sứ Đồ', 'Đạt tier Sứ Đồ', 'star', 'tier', 80000);
+    (UUID(), 'flame_7', 'Ngon Lua', 'Choi 7 ngay lien tiep', 'flame', 'streak', 7),
+    (UUID(), 'scholar_10', 'Hoc Gia', 'Hoan thanh 10 sach Kinh Thanh', 'book', 'progress', 10),
+    (UUID(), 'champion_3', 'Vo Dich', 'Dat Top 1 daily 3 lan', 'crown', 'rank', 3),
+    (UUID(), 'persistent_1000', 'Kien Tri', 'Tra loi 1000 cau hoi', 'target', 'participation', 1000),
+    (UUID(), 'perfect_20', 'Hoan Hao', 'Dat streak 20 lien tiep', 'zap', 'streak', 20),
+    (UUID(), 'elder', 'Truong Lao', 'Dat tier Truong Lao', 'shield', 'tier', 8000),
+    (UUID(), 'apostle', 'Su Do', 'Dat tier Su Do', 'star', 'tier', 80000);
