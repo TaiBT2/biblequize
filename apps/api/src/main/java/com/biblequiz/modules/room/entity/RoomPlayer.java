@@ -33,6 +33,20 @@ public class RoomPlayer {
     
     @Column(name = "is_ready", nullable = false)
     private Boolean isReady = false;
+
+    @Column(name = "team", length = 1)
+    @Enumerated(EnumType.STRING)
+    private Team team;
+
+    @Column(name = "player_status", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private PlayerStatus playerStatus = PlayerStatus.ACTIVE;
+
+    @Column(name = "final_rank")
+    private Integer finalRank;
+
+    @Column(name = "winning_streak", nullable = false)
+    private Integer winningStreak = 0;
     
     @Column(name = "score", nullable = false)
     private Integer score = 0;
@@ -56,6 +70,14 @@ public class RoomPlayer {
     @Column(name = "joined_at", nullable = false, updatable = false)
     private LocalDateTime joinedAt;
     
+    public enum Team { A, B }
+
+    public enum PlayerStatus {
+        ACTIVE,
+        ELIMINATED,
+        SPECTATOR
+    }
+
     // Constructors
     public RoomPlayer() {}
     
@@ -121,4 +143,16 @@ public class RoomPlayer {
     
     public LocalDateTime getJoinedAt() { return joinedAt; }
     public void setJoinedAt(LocalDateTime joinedAt) { this.joinedAt = joinedAt; }
+
+    public Team getTeam() { return team; }
+    public void setTeam(Team team) { this.team = team; }
+
+    public PlayerStatus getPlayerStatus() { return playerStatus; }
+    public void setPlayerStatus(PlayerStatus playerStatus) { this.playerStatus = playerStatus; }
+
+    public Integer getFinalRank() { return finalRank; }
+    public void setFinalRank(Integer finalRank) { this.finalRank = finalRank; }
+
+    public Integer getWinningStreak() { return winningStreak; }
+    public void setWinningStreak(Integer winningStreak) { this.winningStreak = winningStreak; }
 }

@@ -45,4 +45,8 @@ public interface RoomRepository extends JpaRepository<Room, String> {
     // Delete expired rooms
     @Query("DELETE FROM Room r WHERE r.status = 'ENDED' AND r.updatedAt < :expireTime")
     int deleteExpiredRooms(@Param("expireTime") LocalDateTime expireTime);
+
+    // Tìm phòng công khai đang lobby (Speed Race, Team vs Team)
+    @Query("SELECT r FROM Room r WHERE r.isPublic = true AND r.status = 'LOBBY' AND r.mode IN ('SPEED_RACE','TEAM_VS_TEAM') ORDER BY r.createdAt DESC")
+    List<Room> findPublicLobbyRooms();
 }

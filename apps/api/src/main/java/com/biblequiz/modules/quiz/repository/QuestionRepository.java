@@ -85,6 +85,21 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
     // Review workflow
     Page<Question> findByReviewStatus(Question.ReviewStatus reviewStatus, Pageable pageable);
 
+    // Admin list with all filters (no isActive restriction)
+    @Query("SELECT q FROM Question q WHERE " +
+           "(:book IS NULL OR q.book = :book) AND " +
+           "(:difficulty IS NULL OR q.difficulty = :difficulty) AND " +
+           "(:type IS NULL OR q.type = :type) AND " +
+           "(:reviewStatus IS NULL OR q.reviewStatus = :reviewStatus) AND " +
+           "(:search IS NULL OR LOWER(q.content) LIKE :search)")
+    Page<Question> findWithAdminFilters(
+            @Param("book") String book,
+            @Param("difficulty") Question.Difficulty difficulty,
+            @Param("type") Question.Type type,
+            @Param("reviewStatus") Question.ReviewStatus reviewStatus,
+            @Param("search") String search,
+            Pageable pageable);
+
     long countByReviewStatus(Question.ReviewStatus reviewStatus);
 
     // Index hints for better performance

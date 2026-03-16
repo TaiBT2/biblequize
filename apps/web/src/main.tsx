@@ -30,6 +30,9 @@ import Achievements from './pages/Achievements'
 import Leaderboard from './pages/Leaderboard'
 import RoomLobby from './pages/RoomLobby'
 import RoomQuiz from './pages/RoomQuiz'
+import CreateRoom from './pages/CreateRoom'
+import JoinRoom from './pages/JoinRoom'
+import Multiplayer from './pages/Multiplayer'
 
 const queryClient = new QueryClient()
 
@@ -52,6 +55,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Route path="/ranked" element={<Ranked />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="/rooms" element={<RequireAuth><Rooms /></RequireAuth>} />
+                <Route path="/multiplayer" element={<RequireAuth><Multiplayer /></RequireAuth>} />
+                <Route path="/room/create" element={<RequireAuth><CreateRoom /></RequireAuth>} />
+                <Route path="/room/join" element={<RequireAuth><JoinRoom /></RequireAuth>} />
                 <Route path="/room/:roomId/lobby" element={<RequireAuth><RoomLobby /></RequireAuth>} />
                 <Route path="/room/:roomId/quiz" element={<RequireAuth><RoomQuiz /></RequireAuth>} />
                 <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>

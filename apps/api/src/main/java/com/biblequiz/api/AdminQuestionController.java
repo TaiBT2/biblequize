@@ -39,6 +39,48 @@ public class AdminQuestionController {
         return ResponseEntity.ok(Map.of("status", "ok"));
     }
 
+    @GetMapping
+    public ResponseEntity<?> list(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "25") int size,
+            @RequestParam(required = false) String book,
+            @RequestParam(required = false) String difficulty,
+            @RequestParam(required = false) String type,
+            @RequestParam(required = false) String reviewStatus,
+            @RequestParam(required = false) String search) {
+
+        Question.Difficulty diff = null;
+        if (difficulty != null && !difficulty.isBlank()) {
+            try { diff = Question.Difficulty.valueOf(difficulty); } catch (Exception ignored) {}
+        }
+        Question.Type qType = null;
+        if (type != null && !type.isBlank()) {
+            try { qType = Question.Type.valueOf(type.replace("-", "_")); } catch (Exception ignored) {}
+        }
+        Question.ReviewStatus rs = null;
+        if (reviewStatus != null && !reviewStatus.isBlank()) {
+            try { rs = Question.ReviewStatus.valueOf(reviewStatus); } catch (Exception ignored) {}
+        }
+        String searchParam = (search != null && !search.isBlank())
+                ? "%" + search.toLowerCase() + "%" : null;
+        String bookParam = (book != null && !book.isBlank()) ? book : null;
+
+        var pageable = org.springframework.data.domain.PageRequest.of(
+                page, Math.min(size, 200),
+                org.springframework.data.domain.Sort.by("createdAt").descending());
+
+        var result = questionRepository.findWithAdminFilters(
+                bookParam, diff, qType, rs, searchParam, pageable);
+
+        return ResponseEntity.ok(Map.of(
+                "questions", result.getContent(),
+                "total", result.getTotalElements(),
+                "page", page,
+                "size", size,
+                "totalPages", result.getTotalPages()
+        ));
+    }
+
     @PostMapping
     public ResponseEntity<Question> create(
             @RequestBody Question q,
@@ -75,6 +117,16 @@ public class AdminQuestionController {
             if (body.getTags() != null) q.setTags(body.getTags());
             if (body.getLanguage() != null) q.setLanguage(body.getLanguage());
             if (body.getIsActive() != null) q.setIsActive(body.getIsActive());
+            if (body.getCorrectAnswerText() != null) q.setCorrectAnswerText(body.getCorrectAnswerText());
+            if (body.getReviewStatus() != null) {
+                q.setReviewStatus(body.getReviewStatus());
+                if (body.getReviewStatus() == Question.ReviewStatus.ACTIVE) {
+                    q.setIsActive(true);
+                    if (q.getApprovalsCount() < 2) q.setApprovalsCount(2);
+                } else {
+                    q.setIsActive(false);
+                }
+            }
             Question saved = questionRepository.save(q);
             log.info("[ADMIN] Update question id={} success", id);
             return ResponseEntity.ok(saved);

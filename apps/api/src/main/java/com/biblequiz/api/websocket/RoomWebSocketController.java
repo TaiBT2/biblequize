@@ -2,11 +2,14 @@ package com.biblequiz.api.websocket;
 
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
-import com.biblequiz.modules.quiz.service.SessionService;
-import com.biblequiz.modules.room.entity.RoomPlayer;
+import com.biblequiz.modules.room.entity.RoomAnswer;
+import com.biblequiz.modules.room.entity.RoomRound;
+import com.biblequiz.modules.room.repository.RoomAnswerRepository;
 import com.biblequiz.modules.room.repository.RoomPlayerRepository;
+import com.biblequiz.modules.room.repository.RoomRoundRepository;
 import com.biblequiz.modules.room.service.RoomService;
 import com.biblequiz.modules.room.service.RoomStateService;
+import com.biblequiz.modules.room.service.SpeedRaceScoringService;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 
@@ -20,6 +23,7 @@ import org.springframework.stereotype.Controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 public class RoomWebSocketController {
@@ -40,7 +44,16 @@ public class RoomWebSocketController {
     private RoomPlayerRepository roomPlayerRepository;
 
     @Autowired
+    private RoomAnswerRepository roomAnswerRepository;
+
+    @Autowired
+    private RoomRoundRepository roomRoundRepository;
+
+    @Autowired
     private QuestionRepository questionRepository;
+
+    @Autowired
+    private SpeedRaceScoringService speedRaceScoringService;
 
     /**
      * Handle player joining room
@@ -52,26 +65,22 @@ public class RoomWebSocketController {
             String username = authentication.getName();
             User user = userRepository.findByEmail(username).orElseThrow();
 
-            // Get updated room details
             RoomService.RoomDetailsDTO roomDetails = roomService.getRoomDetails(roomId);
 
-            // Create player joined message
             WebSocketMessage.PlayerJoinedData playerData = new WebSocketMessage.PlayerJoinedData(
                     user.getId(),
                     user.getName(),
                     user.getAvatarUrl(),
                     roomDetails.players.stream()
-                            .filter(p -> p.username.equals(user.getName()))
+                            .filter(p -> p.userId.equals(user.getId()))
                             .findFirst()
-                            .get());
+                            .orElse(null));
 
-            WebSocketMessage.Message message = new WebSocketMessage.Message(WebSocketMessage.MessageTypes.PLAYER_JOINED,
-                    playerData);
-
-            // Broadcast to room
+            WebSocketMessage.Message message = new WebSocketMessage.Message(
+                    WebSocketMessage.MessageTypes.PLAYER_JOINED, playerData);
             messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
 
-            // Gửi lại câu hiện tại (nếu có) cho người vừa vào phòng (Re-sync)
+            // Re-sync câu hỏi hiện tại nếu game đang chạy
             roomStateService.getCurrentQuestion(roomId).ifPresent(current -> {
                 WebSocketMessage.Message syncMsg = new WebSocketMessage.Message(
                         WebSocketMessage.MessageTypes.QUESTION_START, current);
@@ -93,18 +102,14 @@ public class RoomWebSocketController {
             String username = authentication.getName();
             User user = userRepository.findByEmail(username).orElseThrow();
 
-            // Remove player
             roomService.leaveRoom(roomId, user.getId());
 
-            // Create player left message
             Map<String, Object> leaveData = Map.of(
                     "playerId", user.getId(),
                     "username", user.getName());
 
-            WebSocketMessage.Message message = new WebSocketMessage.Message(WebSocketMessage.MessageTypes.PLAYER_LEFT,
-                    leaveData);
-
-            // Broadcast to room
+            WebSocketMessage.Message message = new WebSocketMessage.Message(
+                    WebSocketMessage.MessageTypes.PLAYER_LEFT, leaveData);
             messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
 
         } catch (Exception e) {
@@ -121,25 +126,20 @@ public class RoomWebSocketController {
             String username = authentication.getName();
             User user = userRepository.findByEmail(username).orElseThrow();
 
-            // Toggle ready status
             roomService.togglePlayerReady(roomId, user.getId());
 
-            // Get current room玩家 details
             RoomService.RoomDetailsDTO roomDetails = roomService.getRoomDetails(roomId);
             RoomService.PlayerInfoDTO player = roomDetails.players.stream()
-                    .filter(p -> p.username.equals(user.getName()))
+                    .filter(p -> p.userId.equals(user.getId()))
                     .findFirst()
-                    .get();
+                    .orElseThrow();
 
-            // Create ready message
-            WebSocketMessage.PlayerReadyData readyData = new WebSocketMessage.PlayerReadyData(user.getId(),
-                    user.getName(), player.isReady);
+            WebSocketMessage.PlayerReadyData readyData = new WebSocketMessage.PlayerReadyData(
+                    user.getId(), user.getName(), player.isReady);
             WebSocketMessage.Message message = new WebSocketMessage.Message(
                     player.isReady ? WebSocketMessage.MessageTypes.PLAYER_READY
                             : WebSocketMessage.MessageTypes.PLAYER_UNREADY,
                     readyData);
-
-            // Broadcast to room
             messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
 
         } catch (Exception e) {
@@ -148,41 +148,21 @@ public class RoomWebSocketController {
     }
 
     /**
-     * Handle starting quiz
+     * Handle starting quiz (broadcast only — actual start is done via REST /api/rooms/{id}/start)
      */
     @MessageMapping("/room/{roomId}/start")
     public void handleStartQuiz(@DestinationVariable String roomId, @Payload Map<String, Object> payload,
             Authentication authentication) {
-        try {
-            String username = authentication.getName();
-            User user = userRepository.findByEmail(username).orElseThrow();
-
-            // Start the room
-            roomService.startRoom(roomId, user.getId());
-
-            // Create room starting message
-            Map<String, Object> startData = Map.of(
-                    "roomId", roomId,
-                    "startedBy", username,
-                    "timestamp", System.currentTimeMillis());
-
-            WebSocketMessage.Message message = new WebSocketMessage.Message(WebSocketMessage.MessageTypes.ROOM_STARTING,
-                    startData);
-
-            // Broadcast to room
-            messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
-
-            // Thực tế: việc phát câu hỏi sẽ do luồng quiz điều phối từ
-            // RoomService/SessionService
-            // Ở đây chỉ báo bắt đầu để client chuyển trạng thái
-
-        } catch (Exception e) {
-            sendError(roomId, "START_ERROR", "Lỗi khi bắt đầu quiz: " + e.getMessage());
-        }
+        Map<String, Object> startData = Map.of(
+                "roomId", roomId,
+                "timestamp", System.currentTimeMillis());
+        WebSocketMessage.Message message = new WebSocketMessage.Message(
+                WebSocketMessage.MessageTypes.ROOM_STARTING, startData);
+        messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
     }
 
     /**
-     * Handle submitting answer
+     * Handle submitting answer — Speed Race scoring với anti-cheat
      */
     @MessageMapping("/room/{roomId}/answer")
     public void handleAnswerSubmission(@DestinationVariable String roomId, @Payload Map<String, Object> payload,
@@ -193,49 +173,89 @@ public class RoomWebSocketController {
 
             int questionIndex = ((Number) payload.get("questionIndex")).intValue();
             int answerIndex = ((Number) payload.get("answerIndex")).intValue();
-            long reactionTimeMs = ((Number) payload.get("reactionTimeMs")).longValue();
+            int reactionTimeMs = ((Number) payload.get("reactionTimeMs")).intValue();
+
+            // Lấy round hiện tại
+            String roundId = roomStateService.getCurrentRoundId(roomId).orElse(null);
+
+            // Anti-cheat: mỗi player chỉ được submit 1 lần/round
+            if (roundId != null && roomAnswerRepository.existsByRoundIdAndUserId(roundId, user.getId())) {
+                return;
+            }
+
+            // Battle Royale: chỉ ACTIVE players mới được answer
+            var playerOpt = roomPlayerRepository.findByRoomIdAndUserId(roomId, user.getId());
+            if (playerOpt.isPresent()) {
+                var playerStatus = playerOpt.get().getPlayerStatus();
+                if (playerStatus == com.biblequiz.modules.room.entity.RoomPlayer.PlayerStatus.ELIMINATED
+                        || playerStatus == com.biblequiz.modules.room.entity.RoomPlayer.PlayerStatus.SPECTATOR) {
+                    return;
+                }
+            }
 
             // Server-side answer validation
             boolean isCorrect = false;
-            int timeBonus = 0;
+            int pointsEarned = 0;
+            int timeLimit = 30;
 
-            java.util.Optional<WebSocketMessage.QuestionStartData> questionState = roomStateService
-                    .getCurrentQuestion(roomId);
+            java.util.Optional<WebSocketMessage.QuestionStartData> questionState =
+                    roomStateService.getCurrentQuestion(roomId);
             if (questionState.isPresent()) {
                 WebSocketMessage.QuestionStartData state = questionState.get();
+                timeLimit = state.timeLimit;
                 String questionId = extractQuestionId(state.question);
                 if (questionId != null) {
                     Question question = questionRepository.findById(questionId).orElse(null);
                     if (question != null && question.getCorrectAnswer() != null
                             && !question.getCorrectAnswer().isEmpty()) {
                         isCorrect = (answerIndex == question.getCorrectAnswer().get(0));
-                        if (isCorrect && state.timeLimit > 0) {
-                            long timeLeftMs = (state.timeLimit * 1000L) - reactionTimeMs;
-                            timeBonus = (int) Math.max(0, timeLeftMs / 1000);
-                        }
+                        // Speed Race scoring
+                        pointsEarned = speedRaceScoringService.calculateScore(isCorrect, timeLimit, reactionTimeMs);
                     }
                 }
             }
 
-            // Update RoomPlayer score in database
-            final boolean answerIsCorrect = isCorrect;
-            final int bonus = timeBonus;
-            roomPlayerRepository.findByRoomIdAndUserId(roomId, user.getId()).ifPresent(roomPlayer -> {
-                String answerJson = String.format(
-                        "{\"questionIndex\":%d,\"answerIndex\":%d,\"isCorrect\":%b,\"reactionTimeMs\":%d}",
-                        questionIndex, answerIndex, answerIsCorrect, reactionTimeMs);
-                roomPlayer.addAnswer(questionIndex, answerJson);
-                if (answerIsCorrect && bonus > 0) {
-                    roomPlayer.setScore(roomPlayer.getScore() + bonus);
+            // Lưu RoomAnswer entity
+            if (roundId != null) {
+                final int pts = pointsEarned;
+                RoomRound round = roomRoundRepository.findById(roundId).orElse(null);
+                if (round != null) {
+                    RoomAnswer answer = new RoomAnswer(
+                            UUID.randomUUID().toString(), round, user.getId(),
+                            answerIndex, isCorrect, reactionTimeMs, pts);
+                    roomAnswerRepository.save(answer);
                 }
+            }
+
+            // Update RoomPlayer score
+            final boolean answerIsCorrect = isCorrect;
+            final int finalPoints = pointsEarned;
+            roomPlayerRepository.findByRoomIdAndUserId(roomId, user.getId()).ifPresent(roomPlayer -> {
+                // Cập nhật điểm theo Speed Race formula
+                roomPlayer.setScore(roomPlayer.getScore() + finalPoints);
+                roomPlayer.setTotalAnswered(roomPlayer.getTotalAnswered() + 1);
+                if (answerIsCorrect) {
+                    roomPlayer.setCorrectAnswers(roomPlayer.getCorrectAnswers() + 1);
+                }
+                // Cập nhật average reaction time
+                int total = roomPlayer.getTotalAnswered();
+                double newAvg = (roomPlayer.getAverageReactionTime() * (total - 1) + reactionTimeMs) / total;
+                roomPlayer.setAverageReactionTime(newAvg);
                 roomPlayerRepository.save(roomPlayer);
+
                 broadcastScoreUpdate(roomId, user.getId(), roomPlayer.getScore(),
                         roomPlayer.getCorrectAnswers(), roomPlayer.getTotalAnswered());
             });
 
-            // Broadcast answer submitted with server-validated result
-            WebSocketMessage.AnswerSubmittedData answerData = new WebSocketMessage.AnswerSubmittedData(
-                    user.getId(), user.getName(), questionIndex, answerIndex, reactionTimeMs, isCorrect);
+            // Broadcast answer submitted với pointsEarned
+            Map<String, Object> answerData = Map.of(
+                    "playerId", user.getId(),
+                    "username", user.getName(),
+                    "questionIndex", questionIndex,
+                    "answerIndex", answerIndex,
+                    "reactionTimeMs", reactionTimeMs,
+                    "isCorrect", isCorrect,
+                    "pointsEarned", finalPoints);
             WebSocketMessage.Message message = new WebSocketMessage.Message(
                     WebSocketMessage.MessageTypes.ANSWER_SUBMITTED, answerData);
             messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
@@ -259,14 +279,10 @@ public class RoomWebSocketController {
         return null;
     }
 
-    /**
-     * Send error message to room
-     */
     private void sendError(String roomId, String errorType, String message) {
         WebSocketMessage.ErrorData errorData = new WebSocketMessage.ErrorData(errorType, message);
-        WebSocketMessage.Message errorMessage = new WebSocketMessage.Message(WebSocketMessage.MessageTypes.ERROR,
-                errorData);
-
+        WebSocketMessage.Message errorMessage = new WebSocketMessage.Message(
+                WebSocketMessage.MessageTypes.ERROR, errorData);
         messagingTemplate.convertAndSend("/topic/room/" + roomId, errorMessage);
     }
 
@@ -278,11 +294,24 @@ public class RoomWebSocketController {
             List<RoomService.LeaderboardEntryDTO> leaderboard = roomService.getRoomLeaderboard(roomId);
             WebSocketMessage.Message message = new WebSocketMessage.Message(
                     WebSocketMessage.MessageTypes.LEADERBOARD_UPDATE, leaderboard);
-
             messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
-
         } catch (Exception e) {
             sendError(roomId, "LEADERBOARD_ERROR", "Lỗi khi cập nhật bảng xếp hạng: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Broadcast ROUND_END với correctIndex và leaderboard (sau khi timer hết)
+     */
+    public void broadcastRoundEnd(String roomId, int correctIndex) {
+        try {
+            List<RoomService.LeaderboardEntryDTO> leaderboard = roomService.getRoomLeaderboard(roomId);
+            WebSocketMessage.RoundEndData roundEndData = new WebSocketMessage.RoundEndData(correctIndex, leaderboard);
+            WebSocketMessage.Message message = new WebSocketMessage.Message(
+                    WebSocketMessage.MessageTypes.ROUND_END, roundEndData);
+            messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
+        } catch (Exception e) {
+            sendError(roomId, "ROUND_END_ERROR", "Lỗi khi kết thúc câu: " + e.getMessage());
         }
     }
 
@@ -292,21 +321,18 @@ public class RoomWebSocketController {
     public void broadcastScoreUpdate(String roomId, String playerId, int newScore, int correctAnswers,
             int totalAnswered) {
         try {
-            // Get player username
             RoomService.RoomDetailsDTO roomDetails = roomService.getRoomDetails(roomId);
             String username = roomDetails.players.stream()
-                    .filter(p -> p.id.equals(playerId))
+                    .filter(p -> p.userId.equals(playerId))
                     .findFirst()
                     .map(p -> p.username)
                     .orElse("Unknown");
 
-            WebSocketMessage.ScoreUpdateData scoreData = new WebSocketMessage.ScoreUpdateData(playerId, username,
-                    newScore, correctAnswers, totalAnswered);
-            WebSocketMessage.Message message = new WebSocketMessage.Message(WebSocketMessage.MessageTypes.SCORE_UPDATE,
-                    scoreData);
-
+            WebSocketMessage.ScoreUpdateData scoreData = new WebSocketMessage.ScoreUpdateData(
+                    playerId, username, newScore, correctAnswers, totalAnswered);
+            WebSocketMessage.Message message = new WebSocketMessage.Message(
+                    WebSocketMessage.MessageTypes.SCORE_UPDATE, scoreData);
             messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
-
         } catch (Exception e) {
             sendError(roomId, "SCORE_ERROR", "Lỗi khi cập nhật điểm: " + e.getMessage());
         }
@@ -315,14 +341,13 @@ public class RoomWebSocketController {
     /**
      * Broadcast question start
      */
-    public void broadcastQuestionStart(String roomId, int questionIndex, int totalQuestions, Object question,
-            int timeLimit) {
-        WebSocketMessage.QuestionStartData questionData = new WebSocketMessage.QuestionStartData(questionIndex,
-                totalQuestions, question, timeLimit);
+    public void broadcastQuestionStart(String roomId, int questionIndex, int totalQuestions,
+            Object question, int timeLimit) {
+        WebSocketMessage.QuestionStartData questionData = new WebSocketMessage.QuestionStartData(
+                questionIndex, totalQuestions, question, timeLimit);
         roomStateService.setCurrentQuestion(roomId, questionData);
-        WebSocketMessage.Message message = new WebSocketMessage.Message(WebSocketMessage.MessageTypes.QUESTION_START,
-                questionData);
-
+        WebSocketMessage.Message message = new WebSocketMessage.Message(
+                WebSocketMessage.MessageTypes.QUESTION_START, questionData);
         messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
     }
 
@@ -335,9 +360,81 @@ public class RoomWebSocketController {
                 "roomId", roomId,
                 "timestamp", System.currentTimeMillis(),
                 "finalResults", finalResults);
+        WebSocketMessage.Message message = new WebSocketMessage.Message(
+                WebSocketMessage.MessageTypes.QUIZ_END, endData);
+        messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
+    }
 
-        WebSocketMessage.Message message = new WebSocketMessage.Message(WebSocketMessage.MessageTypes.QUIZ_END,
-                endData);
+    /**
+     * Broadcast player eliminated (Battle Royale)
+     */
+    public void broadcastPlayerEliminated(String roomId, String userId, String username, int rank, int activeRemaining) {
+        WebSocketMessage.PlayerEliminatedData data =
+                new WebSocketMessage.PlayerEliminatedData(userId, username, rank, activeRemaining);
+        WebSocketMessage.Message msg = new WebSocketMessage.Message(
+                WebSocketMessage.MessageTypes.PLAYER_ELIMINATED, data);
+        messagingTemplate.convertAndSend("/topic/room/" + roomId, msg);
+    }
+
+    /**
+     * Broadcast active player count update (Battle Royale)
+     */
+    public void broadcastBattleRoyaleUpdate(String roomId, int activeCount, int totalCount) {
+        WebSocketMessage.BattleRoyaleUpdateData data =
+                new WebSocketMessage.BattleRoyaleUpdateData(activeCount, totalCount);
+        WebSocketMessage.Message msg = new WebSocketMessage.Message(
+                WebSocketMessage.MessageTypes.BATTLE_ROYALE_UPDATE, data);
+        messagingTemplate.convertAndSend("/topic/room/" + roomId, msg);
+    }
+
+    /**
+     * Broadcast team assignment (Team vs Team)
+     */
+    public void broadcastTeamAssignment(String roomId, java.util.List<WebSocketMessage.TeamAssignmentData.TeamPlayerInfo> players) {
+        WebSocketMessage.TeamAssignmentData data = new WebSocketMessage.TeamAssignmentData(players);
+        sendToRoom(roomId, new WebSocketMessage.Message(WebSocketMessage.MessageTypes.TEAM_ASSIGNMENT, data));
+    }
+
+    /**
+     * Broadcast team score update (Team vs Team)
+     */
+    public void broadcastTeamScoreUpdate(String roomId, int scoreA, int scoreB) {
+        WebSocketMessage.TeamScoreUpdateData data = new WebSocketMessage.TeamScoreUpdateData(scoreA, scoreB);
+        sendToRoom(roomId, new WebSocketMessage.Message(WebSocketMessage.MessageTypes.TEAM_SCORE_UPDATE, data));
+    }
+
+    /**
+     * Broadcast perfect round (Team vs Team)
+     */
+    public void broadcastPerfectRound(String roomId, boolean teamAPerfect, boolean teamBPerfect) {
+        WebSocketMessage.PerfectRoundData data = new WebSocketMessage.PerfectRoundData(teamAPerfect, teamBPerfect);
+        sendToRoom(roomId, new WebSocketMessage.Message(WebSocketMessage.MessageTypes.PERFECT_ROUND, data));
+    }
+
+    /**
+     * Broadcast match start (Sudden Death)
+     */
+    public void broadcastMatchStart(String roomId, String championId, String championName, int championStreak,
+                                    String challengerId, String challengerName, int queueRemaining) {
+        WebSocketMessage.MatchStartData data = new WebSocketMessage.MatchStartData(
+                championId, championName, championStreak, challengerId, challengerName, queueRemaining);
+        sendToRoom(roomId, new WebSocketMessage.Message(WebSocketMessage.MessageTypes.MATCH_START, data));
+    }
+
+    /**
+     * Broadcast match end (Sudden Death)
+     */
+    public void broadcastMatchEnd(String roomId, String winnerId, String winnerName, int winnerStreak,
+                                  String loserId, String loserName) {
+        WebSocketMessage.MatchEndData data = new WebSocketMessage.MatchEndData(
+                winnerId, winnerName, winnerStreak, loserId, loserName);
+        sendToRoom(roomId, new WebSocketMessage.Message(WebSocketMessage.MessageTypes.MATCH_END, data));
+    }
+
+    /**
+     * Send a generic message to a room topic
+     */
+    public void sendToRoom(String roomId, WebSocketMessage.Message message) {
         messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
     }
 }

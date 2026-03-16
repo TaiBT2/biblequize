@@ -4,24 +4,35 @@ import SockJS from 'sockjs-client';
 import { getApiBaseUrl } from '../api/config';
 
 export interface StompOptions {
-  url?: string; // default /ws
+  url?: string;
   roomId?: string;
   onMessage?: (msg: any) => void;
   onConnect?: () => void;
+  onReconnect?: () => void;  // called on 2nd+ successful connect
   onDisconnect?: () => void;
 }
 
-export function useStomp({ url = '/ws', roomId, onMessage, onConnect, onDisconnect }: StompOptions) {
+export function useStomp({ url = '/ws', roomId, onMessage, onConnect, onReconnect, onDisconnect }: StompOptions) {
   const clientRef = useRef<Client | null>(null);
   const subsRef = useRef<StompSubscription | null>(null);
   const [connected, setConnected] = useState(false);
+  const [reconnecting, setReconnecting] = useState(false);
+  const connectedOnceRef = useRef(false);
+
+  // Keep callbacks fresh without recreating the STOMP client
+  const onMessageRef = useRef(onMessage);
+  const onConnectRef = useRef(onConnect);
+  const onReconnectRef = useRef(onReconnect);
+  const onDisconnectRef = useRef(onDisconnect);
+  useEffect(() => { onMessageRef.current = onMessage; }, [onMessage]);
+  useEffect(() => { onConnectRef.current = onConnect; }, [onConnect]);
+  useEffect(() => { onReconnectRef.current = onReconnect; }, [onReconnect]);
+  useEffect(() => { onDisconnectRef.current = onDisconnect; }, [onDisconnect]);
 
   useEffect(() => {
-    // SockJS expects http(s) URL, not ws(s)
     const apiBase = getApiBaseUrl();
     let sockUrl: string;
     if (apiBase.startsWith('http')) {
-      // Absolute API base
       try {
         const u = new URL(apiBase);
         u.pathname = url;
@@ -32,51 +43,70 @@ export function useStomp({ url = '/ws', roomId, onMessage, onConnect, onDisconne
         sockUrl = url;
       }
     } else {
-      // Relative API base, use same-origin
       const httpProto = window.location.protocol === 'https:' ? 'https' : 'http';
       sockUrl = `${httpProto}//${window.location.host}${url}`;
     }
+
     const socketFactory = () => new SockJS(sockUrl);
+
     const client = new Client({
       webSocketFactory: socketFactory as any,
       reconnectDelay: 2000,
       heartbeatIncoming: 10000,
       heartbeatOutgoing: 10000,
+      connectHeaders: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken') ?? ''}`,
+      },
       onConnect: () => {
         setConnected(true);
-        onConnect && onConnect();
+        setReconnecting(false);
+
+        const isReconnect = connectedOnceRef.current;
+        connectedOnceRef.current = true;
+
         if (roomId) {
+          try { subsRef.current?.unsubscribe(); } catch {}
           subsRef.current = client.subscribe(`/topic/room/${roomId}`, (frame: IMessage) => {
             try {
               const body = JSON.parse(frame.body);
-              onMessage && onMessage(body);
-            } catch {
-              // noop
-            }
+              onMessageRef.current?.(body);
+            } catch {}
           });
+        }
+
+        if (isReconnect) {
+          onReconnectRef.current?.();
+        } else {
+          onConnectRef.current?.();
         }
       },
       onStompError: () => {},
       onWebSocketClose: () => {
         setConnected(false);
-        onDisconnect && onDisconnect();
+        if (connectedOnceRef.current) setReconnecting(true);
+        onDisconnectRef.current?.();
       },
     });
+
     clientRef.current = client;
     client.activate();
+
     return () => {
       try { subsRef.current?.unsubscribe(); } catch {}
       client.deactivate();
       clientRef.current = null;
+      connectedOnceRef.current = false;
     };
   }, [url, roomId]);
 
   const send = (destination: string, payload: any) => {
     if (!clientRef.current || !connected) return;
-    clientRef.current.publish({ destination, body: JSON.stringify(payload) });
+    clientRef.current.publish({
+      destination,
+      body: JSON.stringify(payload),
+      headers: { Authorization: `Bearer ${localStorage.getItem('accessToken') ?? ''}` },
+    });
   };
 
-  return { connected, send };
+  return { connected, reconnecting, send };
 }
-
-

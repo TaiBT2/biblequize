@@ -252,7 +252,7 @@ export default function Home() {
                 <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mt-4 bg-[#eeeae0] text-[#7a6a5a]">🏆 Đối kháng</span>
               </p>
               <Link
-                to="/rooms"
+                to="/multiplayer"
                 className="btn-primary w-full py-4 text-center"
               >
                 THAM GIA PHÒNG

@@ -12,7 +12,7 @@ const JoinRoom: React.FC = () => {
   // Redirect if not authenticated
   React.useEffect(() => {
     if (!isAuthenticated) {
-      navigate('/auth/login');
+      navigate('/login');
     }
   }, [isAuthenticated, navigate]);
 
@@ -145,7 +145,7 @@ const JoinRoom: React.FC = () => {
             <div className="flex space-x-4">
               <button
                 type="button"
-                onClick={() => navigate('/home')}
+                onClick={() => navigate('/')}
                 className="flex-1 py-3 px-6 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-medium transition-all duration-300"
               >
                 Hủy bỏ

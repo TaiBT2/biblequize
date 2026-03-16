@@ -40,6 +40,19 @@ public class Room {
     @Enumerated(EnumType.STRING)
     private RoomStatus status = RoomStatus.LOBBY;
     
+    @Column(name = "mode", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private RoomMode mode = RoomMode.SPEED_RACE;
+
+    @Column(name = "is_public", nullable = false)
+    private Boolean isPublic = false;
+
+    @Column(name = "started_at")
+    private LocalDateTime startedAt;
+
+    @Column(name = "ended_at")
+    private LocalDateTime endedAt;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "host_id", nullable = false)
     private User host;
@@ -62,6 +75,13 @@ public class Room {
         IN_PROGRESS,     // Quiz đang chạy
         ENDED,           // Quiz đã kết thúc
         CANCELLED        // Room bị hủy
+    }
+
+    public enum RoomMode {
+        SPEED_RACE,
+        BATTLE_ROYALE,
+        TEAM_VS_TEAM,
+        SUDDEN_DEATH
     }
     
     // Constructors
@@ -135,4 +155,16 @@ public class Room {
     
     public LocalDateTime getUpdatedAt() { return updatedAt; }
     public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
+
+    public RoomMode getMode() { return mode; }
+    public void setMode(RoomMode mode) { this.mode = mode; }
+
+    public Boolean getIsPublic() { return isPublic; }
+    public void setIsPublic(Boolean isPublic) { this.isPublic = isPublic; }
+
+    public LocalDateTime getStartedAt() { return startedAt; }
+    public void setStartedAt(LocalDateTime startedAt) { this.startedAt = startedAt; }
+
+    public LocalDateTime getEndedAt() { return endedAt; }
+    public void setEndedAt(LocalDateTime endedAt) { this.endedAt = endedAt; }
 }

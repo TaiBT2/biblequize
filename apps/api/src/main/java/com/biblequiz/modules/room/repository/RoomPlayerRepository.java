@@ -33,4 +33,13 @@ public interface RoomPlayerRepository extends JpaRepository<RoomPlayer, String> 
     // Find top players by score
     @Query("SELECT rp FROM RoomPlayer rp WHERE rp.room.id = :roomId ORDER BY rp.score DESC LIMIT :limit")
     List<RoomPlayer> findTopByRoomId(@Param("roomId") String roomId, @Param("limit") int limit);
+
+    // Find players by status (Battle Royale)
+    List<RoomPlayer> findByRoomIdAndPlayerStatus(String roomId, RoomPlayer.PlayerStatus playerStatus);
+
+    // Count players by status (Battle Royale)
+    long countByRoomIdAndPlayerStatus(String roomId, RoomPlayer.PlayerStatus playerStatus);
+
+    // Find players by team (Team vs Team)
+    List<RoomPlayer> findByRoomIdAndTeam(String roomId, RoomPlayer.Team team);
 }
