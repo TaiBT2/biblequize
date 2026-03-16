@@ -140,9 +140,9 @@ public class AIGenerationService {
     /** Auto-select the best Claude model for the given difficulty. */
     private String selectModelForDifficulty(String difficulty) {
         return switch (difficulty) {
-            case "hard"   -> "claude-sonnet-4-6";           // Newest Sonnet for hard questions
-            case "medium" -> "claude-sonnet-4-5-20250929";  // Sonnet 4.5 for medium
-            default       -> "claude-haiku-4-5-20251001";   // Haiku for easy (fast + cheap)
+            case "hard"   -> "claude-sonnet-4-6";        // Sonnet 4.6 for hard questions
+            case "medium" -> "claude-sonnet-4-6";        // Sonnet 4.6 for medium
+            default       -> "claude-haiku-4-5-20251001"; // Haiku for easy (fast + cheap)
         };
     }
 

@@ -58,9 +58,8 @@ Yêu cầu:
 
 const CLAUDE_MODELS = [
   { id: 'claude-haiku-4-5-20251001', label: 'Haiku 4.5', note: 'Nhanh · Rẻ' },
-  { id: 'claude-sonnet-4-5-20250929', label: 'Sonnet 4.5', note: 'Cân bằng' },
-  { id: 'claude-sonnet-4-6', label: 'Sonnet 4.6', note: 'Mới nhất' },
-  { id: 'claude-opus-4-5-20251101', label: 'Opus 4.5', note: 'Chất lượng cao' },
+  { id: 'claude-sonnet-4-6', label: 'Sonnet 4.6', note: 'Cân bằng · Mới nhất' },
+  { id: 'claude-opus-4-6', label: 'Opus 4.6', note: 'Chất lượng cao' },
 ]
 
 const DRAFTS_STORAGE_KEY = 'ai_question_drafts'

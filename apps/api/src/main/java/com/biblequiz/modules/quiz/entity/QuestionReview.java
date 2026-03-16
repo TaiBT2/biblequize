@@ -16,7 +16,7 @@ public class QuestionReview {
     @Column(name = "question_id", nullable = false, length = 36)
     private String questionId;
 
-    @Column(name = "admin_id", nullable = false, length = 36)
+    @Column(name = "admin_id", nullable = false, length = 255)
     private String adminId;
 
     @Column(name = "admin_email", length = 255)
