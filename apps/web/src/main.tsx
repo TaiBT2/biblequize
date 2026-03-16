@@ -18,6 +18,7 @@ import Rooms from './pages/Rooms'
 import AuthCallback from './pages/AuthCallback'
 import AdminLayout from './layouts/AdminLayout'
 import AIQuestionGenerator from './pages/admin/AIQuestionGenerator'
+import ReviewQueue from './pages/admin/ReviewQueue'
 import QuestionsAdmin from './pages/admin/Questions'
 import UsersAdmin from './pages/admin/Users'
 import RankingsAdmin from './pages/admin/Rankings'
@@ -61,6 +62,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="rankings" element={<RankingsAdmin />} />
                   <Route path="events" element={<EventsAdmin />} />
                   <Route path="ai-generator" element={<AIQuestionGenerator />} />
+                  <Route path="review-queue" element={<ReviewQueue />} />
                 </Route>
               </Routes>
             </BrowserRouter>

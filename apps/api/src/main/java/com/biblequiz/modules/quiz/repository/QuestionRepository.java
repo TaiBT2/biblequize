@@ -82,6 +82,11 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
                        @Param("difficulty") Question.Difficulty difficulty,
                        @Param("type") Question.Type type);
     
+    // Review workflow
+    Page<Question> findByReviewStatus(Question.ReviewStatus reviewStatus, Pageable pageable);
+
+    long countByReviewStatus(Question.ReviewStatus reviewStatus);
+
     // Index hints for better performance
     @Query(value = "SELECT * FROM questions q USE INDEX (idx_is_active) WHERE q.is_active = true ORDER BY RAND() LIMIT :limit", 
            nativeQuery = true)

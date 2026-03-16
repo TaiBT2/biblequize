@@ -32,49 +32,59 @@ public class AIAdminController {
     @GetMapping("/info")
     public ResponseEntity<?> info() {
         return ResponseEntity.ok(Map.of(
-                "provider",     "Google Gemini",
-                "model",        aiGenerationService.getModel(),
-                "configured",   aiGenerationService.isConfigured()
+                "providers", Map.of(
+                        "gemini", Map.of(
+                                "configured", aiGenerationService.isConfigured(),
+                                "model",      aiGenerationService.getModel()
+                        ),
+                        "claude", Map.of(
+                                "configured", aiGenerationService.isClaudeConfigured(),
+                                "model",      aiGenerationService.getClaudeModel()
+                        )
+                )
         ));
     }
 
     @PostMapping("/generate")
-    public ResponseEntity<?> generate(@RequestBody Map<String, Object> payload) {
-        @SuppressWarnings("unchecked")
-        Map<String, Object> scripture = payload.containsKey("scripture")
-                ? (Map<String, Object>) payload.get("scripture")
-                : Map.of();
+    public ResponseEntity<?> generate(@RequestBody AIGenerationRequest req) {
+        AIGenerationRequest.ScriptureRef scripture =
+                req.scripture() != null ? req.scripture() : new AIGenerationRequest.ScriptureRef(
+                        "Genesis", 1, 1, 1, 1, null);
 
-        String book       = (String)  scripture.getOrDefault("book",       "Genesis");
-        Object chapterObj = scripture.getOrDefault("chapter", 1);
-        int    chapter    = chapterObj instanceof Number n ? n.intValue() : 1;
-        Object vsObj      = scripture.getOrDefault("verseStart", 1);
-        Object veObj      = scripture.getOrDefault("verseEnd",   1);
-        int    verseStart = vsObj instanceof Number n ? n.intValue() : 1;
-        int    verseEnd   = veObj instanceof Number n ? n.intValue() : verseStart;
-        String scriptureText = scripture.get("text") instanceof String s ? s : null;
+        String book       = scripture.book() != null && !scripture.book().isBlank() ? scripture.book().trim() : "Genesis";
+        int    chapter    = scripture.chapter()    != null ? scripture.chapter()    : 1;
+        int    verseStart = scripture.verseStart() != null ? scripture.verseStart() : 1;
+        int    verseEnd   = scripture.verseEnd()   != null ? scripture.verseEnd()   : verseStart;
+        String t = scripture.text();
+        String scriptureText = t != null && !t.isBlank() ? t.trim() : null;
 
-        String difficulty   = (String) payload.getOrDefault("difficulty", "easy");
-        String type         = (String) payload.getOrDefault("type",       "multiple_choice_single");
-        String language     = (String) payload.getOrDefault("language",   "vi");
-        String customPrompt = payload.get("prompt") instanceof String s ? s : null;
-        int    count        = payload.get("count") instanceof Number n ? n.intValue() : 3;
-        count = Math.max(1, Math.min(count, 10));
+        String difficulty    = req.validDifficulty();
+        String type          = req.validType();
+        String language      = req.validLanguage();
+        int    count         = req.validCount();
+        String customPrompt  = req.sanitizedPrompt();
+        String provider      = req.validProvider();
 
-        if (aiGenerationService.isConfigured()) {
+        boolean useGemini = "gemini".equals(provider) && aiGenerationService.isConfigured();
+        boolean useClaude = "claude".equals(provider) && aiGenerationService.isClaudeConfigured();
+        java.util.List<String> claudeModels = req.claudeModels();
+
+        if (useGemini || useClaude) {
             try {
-                List<Map<String, Object>> questions = aiGenerationService.generate(
-                        book, chapter, verseStart, verseEnd,
-                        difficulty, type, language, count,
-                        scriptureText, customPrompt);
+                List<Map<String, Object>> questions = useClaude
+                        ? aiGenerationService.generateWithClaude(book, chapter, verseStart, verseEnd,
+                                difficulty, type, language, count, scriptureText, customPrompt, claudeModels)
+                        : aiGenerationService.generate(book, chapter, verseStart, verseEnd,
+                                difficulty, type, language, count, scriptureText, customPrompt);
                 return ResponseEntity.ok(Map.of(
-                        "jobId",     "ai-job-" + System.currentTimeMillis(),
+                        "jobId",     provider + "-job-" + System.currentTimeMillis(),
                         "status",    "completed",
+                        "provider",  provider,
                         "count",     questions.size(),
                         "questions", questions
                 ));
             } catch (Exception e) {
-                log.error("[AI] Generation failed: {}", e.getMessage(), e);
+                log.error("[AI][{}] Generation failed: {}", provider, e.getMessage(), e);
                 return ResponseEntity.internalServerError().body(Map.of(
                         "error",   "AI_GENERATION_FAILED",
                         "message", e.getMessage()
@@ -82,8 +92,8 @@ public class AIAdminController {
             }
         }
 
-        // Fallback: mock data when API key not configured
-        log.warn("[AI] ANTHROPIC_API_KEY not configured — returning mock data");
+        // Fallback: mock data when no provider is configured
+        log.warn("[AI] Provider '{}' not configured — returning mock data", provider);
         List<Map<String, Object>> questions = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             questions.add(buildMockQuestion(book, chapter, verseStart, verseEnd, difficulty, type, language, i));
@@ -139,8 +149,8 @@ public class AIAdminController {
                     : List.of("Option A (mock)", "Option B (mock)", "Option C (mock)", "Option D (mock)");
             correctAnswer = idx % 4;
             explanation = isVi
-                    ? "⚠️ Đây là dữ liệu mô phỏng. Cấu hình ANTHROPIC_API_KEY để dùng AI thực."
-                    : "⚠️ This is mock data. Set ANTHROPIC_API_KEY to use real AI generation.";
+                    ? "⚠️ Đây là dữ liệu mô phỏng. Cấu hình gemini.api-key để dùng AI thực."
+                    : "⚠️ This is mock data. Set gemini.api-key to use real AI generation.";
         }
 
         var result = new java.util.LinkedHashMap<String, Object>();

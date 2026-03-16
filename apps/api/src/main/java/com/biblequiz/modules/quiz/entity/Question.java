@@ -69,6 +69,17 @@ public class Question {
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "review_status", nullable = false)
+    private ReviewStatus reviewStatus = ReviewStatus.ACTIVE;
+
+    @Column(name = "approvals_count", nullable = false)
+    private Integer approvalsCount = 0;
+
+    public enum ReviewStatus {
+        PENDING, ACTIVE, REJECTED
+    }
+
     @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -252,5 +263,21 @@ public class Question {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public ReviewStatus getReviewStatus() {
+        return reviewStatus;
+    }
+
+    public void setReviewStatus(ReviewStatus reviewStatus) {
+        this.reviewStatus = reviewStatus;
+    }
+
+    public Integer getApprovalsCount() {
+        return approvalsCount;
+    }
+
+    public void setApprovalsCount(Integer approvalsCount) {
+        this.approvalsCount = approvalsCount;
     }
 }

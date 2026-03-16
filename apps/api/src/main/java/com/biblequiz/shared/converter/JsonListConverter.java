@@ -29,11 +29,16 @@ public class JsonListConverter implements AttributeConverter<List<?>, String> {
             if (dbData == null || dbData.trim().isEmpty()) {
                 return null;
             }
-            // Handle both JSON array strings and actual JSON arrays
-            if (dbData.startsWith("[") && dbData.endsWith("]")) {
-                return objectMapper.readValue(dbData, new TypeReference<List<?>>() {});
-            } else {
-                // If it's not a JSON array, return null
+            String trimmed = dbData.trim();
+            if (trimmed.startsWith("[") && trimmed.endsWith("]")) {
+                return objectMapper.readValue(trimmed, new TypeReference<List<?>>() {});
+            }
+            // Fallback: plain number stored without array brackets (e.g. "0" → [0])
+            try {
+                int index = Integer.parseInt(trimmed);
+                return java.util.List.of(index);
+            } catch (NumberFormatException nfe) {
+                System.err.println("Unrecognized correct_answer format: " + dbData);
                 return null;
             }
         } catch (JsonProcessingException e) {

@@ -17,6 +17,7 @@ export default function AdminLayout() {
             <NavLink to="/admin/rankings" className={navLinkClass}>Rankings</NavLink>
             <NavLink to="/admin/events" className={navLinkClass}>Events</NavLink>
             <NavLink to="/admin/ai-generator" className={navLinkClass}>AI Generator</NavLink>
+            <NavLink to="/admin/review-queue" className={navLinkClass}>Review Queue</NavLink>
             <Link to="/" className="ml-2 px-3 py-2 rounded-md text-sm font-medium bg-emerald-600 hover:bg-emerald-500 text-white">Home</Link>
           </nav>
         </div>
@@ -33,6 +34,7 @@ export default function AdminLayout() {
               <NavLink to="/admin/rankings" className={navLinkClass}>Rankings</NavLink>
               <NavLink to="/admin/events" className={navLinkClass}>Events</NavLink>
               <NavLink to="/admin/ai-generator" className={navLinkClass}>AI Generator</NavLink>
+              <NavLink to="/admin/review-queue" className={navLinkClass}>Review Queue</NavLink>
             </div>
           </div>
         </aside>

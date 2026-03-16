@@ -40,8 +40,18 @@ public class AdminQuestionController {
     }
 
     @PostMapping
-    public ResponseEntity<Question> create(@RequestBody Question q) {
+    public ResponseEntity<Question> create(
+            @RequestBody Question q,
+            @RequestParam(value = "pending", defaultValue = "false") boolean pending) {
         q.setId(UUID.randomUUID().toString());
+        if (pending) {
+            q.setIsActive(false);
+            q.setReviewStatus(Question.ReviewStatus.PENDING);
+            q.setApprovalsCount(0);
+        } else {
+            q.setReviewStatus(Question.ReviewStatus.ACTIVE);
+            q.setApprovalsCount(2);
+        }
         return ResponseEntity.ok(questionRepository.save(q));
     }
 

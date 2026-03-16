@@ -202,7 +202,7 @@ const Quiz: React.FC = () => {
 
         const data = res.data
         rankedResponse = data
-        isCorrect = answerIndex === currentQuestion.correctAnswer[0]
+        isCorrect = answerIndex === (currentQuestion.correctAnswer?.[0] ?? -1)
 
         // Update askedQuestionIds in localStorage for ranked mode
         try {
@@ -281,12 +281,12 @@ const Quiz: React.FC = () => {
         isCorrect = !!data.isCorrect
       } else {
         // No server session in practice mode; local validation
-        isCorrect = answerIndex === currentQuestion.correctAnswer[0]
+        isCorrect = answerIndex === (currentQuestion.correctAnswer?.[0] ?? -1)
       }
     } catch (e) {
       console.error('submit answer failed', e)
       // Fallback local check if API fails
-      isCorrect = answerIndex === currentQuestion.correctAnswer[0]
+      isCorrect = answerIndex === (currentQuestion.correctAnswer?.[0] ?? -1)
     }
 
     // Enhanced scoring system
@@ -572,11 +572,12 @@ const Quiz: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
             {currentQuestion.options.map((option, index) => {
               let buttonClass = "answer-btn min-h-[80px]"
+              const correctIdx = currentQuestion.correctAnswer?.[0] ?? -1
 
               if (showResult) {
-                if (index === currentQuestion.correctAnswer[0]) {
+                if (index === correctIdx) {
                   buttonClass = "answer-btn answer-btn-correct min-h-[80px]"
-                } else if (index === selectedAnswer && index !== currentQuestion.correctAnswer[0]) {
+                } else if (index === selectedAnswer && index !== correctIdx) {
                   buttonClass = "answer-btn answer-btn-wrong min-h-[80px]"
                 } else {
                   buttonClass = "answer-btn opacity-60 min-h-[80px]"
@@ -603,23 +604,23 @@ const Quiz: React.FC = () => {
 
           {/* Result Display */}
           {showResult && (
-            <div className={`p-6 rounded-2xl mb-8 border-2 ${selectedAnswer === currentQuestion.correctAnswer[0]
+            <div className={`p-6 rounded-2xl mb-8 border-2 ${selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1)
               ? 'bg-green-50 border-green-200'
               : 'bg-red-50 border-red-200'
               }`}>
               <div className="flex items-center gap-3 mb-4">
-                {selectedAnswer === currentQuestion.correctAnswer[0] ? (
+                {selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) ? (
                   <span className="text-2xl">✅</span>
                 ) : (
                   <span className="text-2xl">❌</span>
                 )}
-                <span className={`text-xl font-bold ${selectedAnswer === currentQuestion.correctAnswer[0] ? 'text-green-700' : 'text-red-700'
+                <span className={`text-xl font-bold ${selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) ? 'text-green-700' : 'text-red-700'
                   }`}>
-                  {selectedAnswer === currentQuestion.correctAnswer[0] ? 'Đúng rồi!' : 'Sai rồi!'}
+                  {selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) ? 'Đúng rồi!' : 'Sai rồi!'}
                 </span>
               </div>
 
-              {selectedAnswer === currentQuestion.correctAnswer[0] && (
+              {selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) && (
                 <div className="mb-4">
                   <div className="text-[#4bbf9f] font-bold text-lg">
                     +{Math.floor(((currentQuestion.difficulty === 'easy' ? 10 :

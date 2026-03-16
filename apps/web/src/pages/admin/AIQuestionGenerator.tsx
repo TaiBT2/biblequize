@@ -8,6 +8,7 @@ type QuestionType = 'multiple_choice_single' | 'multiple_choice_multi' | 'true_f
 const VALID_TYPES: QuestionType[] = ['multiple_choice_single', 'multiple_choice_multi', 'true_false', 'fill_in_blank']
 const normalizeType = (t: string): QuestionType =>
   VALID_TYPES.includes(t as QuestionType) ? (t as QuestionType) : 'multiple_choice_single'
+
 type DraftStatus = 'pending' | 'approved' | 'rejected'
 
 interface DraftQuestion {
@@ -22,11 +23,13 @@ interface DraftQuestion {
   language: string
   content: string
   options: string[]
-  correctAnswer: number
+  correctAnswer: number | number[]
   explanation: string
   tags: string[]
   source: string
   approvedId?: string
+  saveError?: string
+  generatedBy?: string
 }
 
 const BOOKS = [
@@ -53,6 +56,32 @@ Yêu cầu:
 - Có giải thích chi tiết dựa trên Kinh Thánh
 - Đúng với nội dung Kinh Thánh, không thêm thần học bên ngoài`
 
+const CLAUDE_MODELS = [
+  { id: 'claude-haiku-4-5-20251001', label: 'Haiku 4.5', note: 'Nhanh · Rẻ' },
+  { id: 'claude-sonnet-4-5-20250929', label: 'Sonnet 4.5', note: 'Cân bằng' },
+  { id: 'claude-sonnet-4-6', label: 'Sonnet 4.6', note: 'Mới nhất' },
+  { id: 'claude-opus-4-5-20251101', label: 'Opus 4.5', note: 'Chất lượng cao' },
+]
+
+const DRAFTS_STORAGE_KEY = 'ai_question_drafts'
+
+function loadDraftsFromStorage(): DraftQuestion[] {
+  try {
+    const raw = sessionStorage.getItem(DRAFTS_STORAGE_KEY)
+    return raw ? JSON.parse(raw) : []
+  } catch {
+    return []
+  }
+}
+
+function saveDraftsToStorage(drafts: DraftQuestion[]) {
+  try {
+    sessionStorage.setItem(DRAFTS_STORAGE_KEY, JSON.stringify(drafts))
+  } catch {
+    // sessionStorage full — ignore
+  }
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function AIQuestionGenerator() {
@@ -67,25 +96,39 @@ export default function AIQuestionGenerator() {
   const [qType, setQType]             = useState<QuestionType>('multiple_choice_single')
   const [language, setLanguage]       = useState('vi')
   const [count, setCount]             = useState(3)
+  const [provider, setProvider]       = useState<'gemini' | 'claude'>('gemini')
+  const [claudeModels, setClaudeModels] = useState<string[]>(['auto'])
+  const [claudeAutoMode, setClaudeAutoMode] = useState(true)
   const [prompt, setPrompt]           = useState(DEFAULT_PROMPT)
   const [showPrompt, setShowPrompt]   = useState(false)
 
   // AI info
-  const [aiInfo, setAiInfo] = useState<{ provider: string; model: string; configured: boolean } | null>(null)
+  const [aiInfo, setAiInfo] = useState<{
+    providers: {
+      gemini: { configured: boolean; model: string }
+      claude: { configured: boolean; model: string }
+    }
+  } | null>(null)
   useEffect(() => {
     api.get('/api/admin/ai/info').then(r => setAiInfo(r.data)).catch(() => {})
   }, [])
 
   // State
-  const [isGenerating, setIsGenerating] = useState(false)
-  const [error, setError]               = useState<string | null>(null)
-  const [drafts, setDrafts]             = useState<DraftQuestion[]>([])
-  const [editingId, setEditingId]       = useState<string | null>(null)
-  const [editData, setEditData]         = useState<Partial<DraftQuestion>>({})
-  const [savingId, setSavingId]         = useState<string | null>(null)
+  const [isGenerating, setIsGenerating]   = useState(false)
+  const [isSavingAll, setIsSavingAll]     = useState(false)
+  const [error, setError]                 = useState<string | null>(null)
+  const [drafts, setDrafts]               = useState<DraftQuestion[]>(loadDraftsFromStorage)
+  const [editingId, setEditingId]         = useState<string | null>(null)
+  const [editData, setEditData]           = useState<Partial<DraftQuestion>>({})
+  const [savingId, setSavingId]           = useState<string | null>(null)
+
+  // Persist drafts to sessionStorage whenever they change
+  useEffect(() => {
+    saveDraftsToStorage(drafts)
+  }, [drafts])
 
   const totalChapters = book ? getChapterCount(book) : 0
-  const maxVerseStart = book && chapter ? getVerseCount(book, chapter) : 30
+  const maxVerseStart = book && chapter    ? getVerseCount(book, chapter)    : 30
   const maxVerseEnd   = book && chapterEnd ? getVerseCount(book, chapterEnd) : 30
   const isRange       = chapterEnd > chapter
 
@@ -107,7 +150,8 @@ export default function AIQuestionGenerator() {
     ? `${book} ${chapter}-${chapterEnd}`
     : `${book} ${chapter}:${verseStart}-${verseEnd}`
 
-  const builtPrompt = prompt
+  // Only send custom prompt when the user has actually edited it
+  const customPromptToSend = prompt !== DEFAULT_PROMPT ? prompt
     .replace('{count}', String(count))
     .replace('{type}', qType)
     .replace('{book}', book)
@@ -117,9 +161,11 @@ export default function AIQuestionGenerator() {
     .replace('{scriptureText}', scriptureText || '(không có)')
     .replace('{difficulty}', difficulty)
     .replace('{language}', language)
+    : undefined
 
   const handleGenerate = async () => {
-    if (!book) { setError('Vui lòng chọn sách'); return }
+    if (!book) { setError('Vui lòng chọn sách trước khi tạo câu hỏi'); return }
+    if (!chapter) { setError('Vui lòng chọn chương'); return }
     setError(null)
     setIsGenerating(true)
     try {
@@ -132,11 +178,13 @@ export default function AIQuestionGenerator() {
           verseEnd:   isRange ? maxVerseEnd : verseEnd,
           text: scriptureText || undefined,
         },
-        prompt: builtPrompt,
+        prompt: customPromptToSend,
         difficulty,
         type: qType,
         language,
         count,
+        provider,
+        claudeModels: provider === 'claude' ? (claudeAutoMode ? ['auto'] : claudeModels) : undefined,
       })
       const raw: any[] = res.data.questions ?? []
       const newDrafts: DraftQuestion[] = raw.map((q, i) => ({
@@ -151,11 +199,15 @@ export default function AIQuestionGenerator() {
         language:      q.language ?? language,
         content:       q.content ?? q.question ?? '',
         options:       Array.isArray(q.options) ? q.options : [],
-        correctAnswer: typeof q.correctAnswer === 'number' ? q.correctAnswer
-          : Array.isArray(q.options) ? q.options.indexOf(q.answer) : 0,
+        correctAnswer: Array.isArray(q.correctAnswer)
+          ? q.correctAnswer
+          : typeof q.correctAnswer === 'number'
+            ? q.correctAnswer
+            : Array.isArray(q.options) ? q.options.indexOf(q.answer) : 0,
         explanation:   q.explanation ?? '',
         tags:          Array.isArray(q.tags) ? q.tags : [],
         source:        q.source ?? 'Kinh Thánh',
+        generatedBy:   q._generatedBy,
       }))
       setDrafts(prev => [...newDrafts, ...prev])
     } catch (e: any) {
@@ -173,32 +225,59 @@ export default function AIQuestionGenerator() {
     cancelEdit()
   }
 
+  const buildSavePayload = (d: DraftQuestion) => {
+    const correctAnswerList = Array.isArray(d.correctAnswer)
+      ? d.correctAnswer
+      : [d.correctAnswer as number]
+    return {
+      book: d.book, chapter: d.chapter,
+      verseStart: d.verseStart, verseEnd: d.verseEnd,
+      difficulty: d.difficulty, type: normalizeType(d.type), language: d.language,
+      content: d.content, options: d.options ?? [],
+      correctAnswer: correctAnswerList,
+      explanation: d.explanation,
+      tags: JSON.stringify(Array.isArray(d.tags) ? d.tags : (d.tags ? [d.tags] : [])),
+      source: d.source,
+      isActive: true,
+    }
+  }
+
   const approveDraft = async (draft: DraftQuestion) => {
     const d = editingId === draft.id ? { ...draft, ...editData } as DraftQuestion : draft
     setSavingId(d.id)
+    // Clear any previous save error on this draft
+    setDrafts(prev => prev.map(x => x.id === d.id ? { ...x, saveError: undefined } : x))
     try {
-      const opts = d.options ?? []
-      // Backend expects correctAnswer as List<Integer>
-      const correctAnswerList = Array.isArray(d.correctAnswer)
-        ? d.correctAnswer
-        : typeof d.correctAnswer === 'number' ? [d.correctAnswer] : [0]
-      const res = await api.post('/api/admin/questions', {
-        book: d.book, chapter: d.chapter,
-        verseStart: d.verseStart, verseEnd: d.verseEnd,
-        difficulty: d.difficulty, type: normalizeType(d.type), language: d.language,
-        content: d.content, options: opts,
-        correctAnswer: correctAnswerList,
-        explanation: d.explanation,
-        tags: JSON.stringify(Array.isArray(d.tags) ? d.tags : (d.tags ? [d.tags] : [])), source: d.source, isActive: true,
-      })
+      const res = await api.post('/api/admin/questions?pending=true', buildSavePayload(d))
       setDrafts(prev => prev.map(x => x.id === d.id
-        ? { ...x, ...d, status: 'approved', approvedId: res.data?.id } : x))
+        ? { ...x, ...d, status: 'approved', approvedId: res.data?.id, saveError: undefined } : x))
       if (editingId === d.id) cancelEdit()
     } catch (e: any) {
-      setError(e.response?.data?.message ?? 'Lỗi khi lưu câu hỏi')
+      const msg = e.response?.data?.message ?? 'Lỗi khi lưu câu hỏi'
+      setDrafts(prev => prev.map(x => x.id === d.id ? { ...x, saveError: msg } : x))
     } finally {
       setSavingId(null)
     }
+  }
+
+  const saveAllPending = async () => {
+    const pending = drafts.filter(d => d.status === 'pending')
+    if (pending.length === 0) return
+    setIsSavingAll(true)
+    for (const draft of pending) {
+      setSavingId(draft.id)
+      setDrafts(prev => prev.map(x => x.id === draft.id ? { ...x, saveError: undefined } : x))
+      try {
+        const res = await api.post('/api/admin/questions?pending=true', buildSavePayload(draft))
+        setDrafts(prev => prev.map(x => x.id === draft.id
+          ? { ...x, status: 'approved', approvedId: res.data?.id, saveError: undefined } : x))
+      } catch (e: any) {
+        const msg = e.response?.data?.message ?? 'Lỗi khi lưu câu hỏi'
+        setDrafts(prev => prev.map(x => x.id === draft.id ? { ...x, saveError: msg } : x))
+      }
+    }
+    setSavingId(null)
+    setIsSavingAll(false)
   }
 
   const rejectDraft  = (id: string) => setDrafts(prev => prev.map(d => d.id === id ? { ...d, status: 'rejected' } : d))
@@ -219,25 +298,36 @@ export default function AIQuestionGenerator() {
           </h2>
           <p className="text-[#8b949e] text-sm mt-0.5 flex items-center gap-2">
             Tạo câu hỏi Kinh Thánh tự động và duyệt trước khi lưu
-            {aiInfo && (
-              <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold border ${
-                aiInfo.configured
-                  ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
-                  : 'bg-yellow-500/15 text-yellow-400 border-yellow-500/30'
-              }`}>
-                {aiInfo.configured ? '🤖' : '⚠️'} {aiInfo.model}
-              </span>
-            )}
+            {aiInfo && (['gemini', 'claude'] as const).map(p => {
+              const info = aiInfo.providers[p]
+              return (
+                <span key={p} className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold border ${
+                  info.configured
+                    ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
+                    : 'bg-red-500/15 text-red-400 border-red-500/30'
+                }`}>
+                  {info.configured ? '✓' : '✗'} {p === 'gemini' ? 'Gemini' : 'Claude'} {info.configured ? info.model : 'chưa cấu hình'}
+                </span>
+              )
+            })}
           </p>
         </div>
         {drafts.length > 0 && (
-          <div className="flex items-center gap-2 text-sm">
+          <div className="flex items-center gap-2 text-sm flex-wrap">
             <span className="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 font-bold border border-yellow-500/30">
               {pendingCount} chờ duyệt
             </span>
             <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">
               {approvedCount} đã lưu
             </span>
+            {pendingCount > 1 && (
+              <button
+                onClick={saveAllPending}
+                disabled={isSavingAll}
+                className="px-3 py-1 rounded-full bg-[#4bbf9f]/20 text-[#4bbf9f] font-bold border border-[#4bbf9f]/30 hover:bg-[#4bbf9f]/30 transition-colors disabled:opacity-50">
+                {isSavingAll ? 'Đang lưu...' : `Lưu tất cả (${pendingCount})`}
+              </button>
+            )}
           </div>
         )}
       </div>
@@ -255,7 +345,7 @@ export default function AIQuestionGenerator() {
             <div className="grid grid-cols-2 gap-3 mb-3">
               <div>
                 <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">Sách</label>
-                <select value={book} onChange={e => setBook(e.target.value)} className="form-select">
+                <select value={book} onChange={e => onBookChange(e.target.value)} className="form-select">
                   <option value="">-- Chọn sách --</option>
                   <optgroup label="Cựu Ước">
                     {BOOKS.slice(0, 39).map(b => <option key={b} value={b}>{b}</option>)}
@@ -299,11 +389,11 @@ export default function AIQuestionGenerator() {
               </div>
               <div>
                 <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">
-                  Câu kết thúc <span className="text-[#b0a090] normal-case font-normal">(/ {maxVerseStart})</span>
+                  Câu kết thúc <span className="text-[#b0a090] normal-case font-normal">(/ {maxVerseEnd})</span>
                 </label>
                 <select value={verseEnd} onChange={e => setVerseEnd(Number(e.target.value))}
                   disabled={!book} className="form-select">
-                  {Array.from({length: maxVerseStart}, (_, i) => i + 1)
+                  {Array.from({length: maxVerseEnd}, (_, i) => i + 1)
                     .filter(v => v >= verseStart)
                     .map(v => <option key={v} value={v}>{v}</option>)}
                 </select>
@@ -345,7 +435,8 @@ export default function AIQuestionGenerator() {
             <div>
               <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">Loại câu hỏi</label>
               <select value={qType} onChange={e => setQType(e.target.value as QuestionType)} className="form-select text-sm">
-                <option value="multiple_choice_single">Trắc nghiệm</option>
+                <option value="multiple_choice_single">Trắc nghiệm (1 đáp án)</option>
+                <option value="multiple_choice_multi">Trắc nghiệm (nhiều đáp án)</option>
                 <option value="true_false">Đúng / Sai</option>
                 <option value="fill_in_blank">Điền khuyết</option>
               </select>
@@ -376,6 +467,96 @@ export default function AIQuestionGenerator() {
             </div>
           </div>
 
+          {/* Provider selector */}
+          <div>
+            <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">AI Provider</label>
+            <div className="segmented-control">
+              {(['gemini', 'claude'] as const).map(p => {
+                const info = aiInfo?.providers[p]
+                const configured = info?.configured ?? false
+                return (
+                  <button key={p} onClick={() => setProvider(p)}
+                    className={`segmented-control-item flex-1 cursor-pointer${provider === p ? ' active' : ''}${!configured ? ' opacity-50' : ''}`}>
+                    {p === 'gemini' ? '✦ Gemini' : '◆ Claude'}
+                    {!configured && <span className="ml-1 text-[10px]">⚠</span>}
+                  </button>
+                )
+              })}
+            </div>
+            {aiInfo && !aiInfo.providers[provider].configured && (
+              <p className="text-xs text-yellow-600 mt-1.5">
+                {provider === 'claude' ? 'Thêm ANTHROPIC_API_KEY vào application.yml' : 'Thêm GEMINI_API_KEY vào application.yml'}
+              </p>
+            )}
+          </div>
+
+          {/* Claude model selector */}
+          {provider === 'claude' && (
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <label className="text-xs font-bold text-[#7a6a5a] uppercase tracking-wider">Claude Models</label>
+                <label className="flex items-center gap-1.5 cursor-pointer">
+                  <input type="checkbox" checked={claudeAutoMode} onChange={e => setClaudeAutoMode(e.target.checked)}
+                    className="accent-violet-500 w-3.5 h-3.5" />
+                  <span className="text-xs font-bold text-violet-600">Auto theo độ khó</span>
+                </label>
+              </div>
+
+              {claudeAutoMode ? (
+                <div className="grid grid-cols-3 gap-1.5">
+                  {[
+                    { label: 'Dễ', model: 'Haiku 4.5', note: 'Nhanh · Rẻ' },
+                    { label: 'Trung bình', model: 'Sonnet 4.5', note: 'Cân bằng' },
+                    { label: 'Khó', model: 'Sonnet 4.6', note: 'Mới nhất' },
+                  ].map(item => (
+                    <div key={item.label} className={`px-2.5 py-2 rounded-lg border text-center transition-all ${
+                      difficulty === (item.label === 'Dễ' ? 'easy' : item.label === 'Trung bình' ? 'medium' : 'hard')
+                        ? 'bg-violet-50 border-violet-300'
+                        : 'bg-[#faf8f5] border-[#d6cfc4] opacity-50'
+                    }`}>
+                      <div className="text-[10px] font-bold text-[#7a6a5a]">{item.label}</div>
+                      <div className="text-xs font-black text-violet-700">{item.model}</div>
+                      <div className="text-[9px] text-[#b0a090]">{item.note}</div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <>
+                  <div className="grid grid-cols-2 gap-2">
+                    {CLAUDE_MODELS.map(m => {
+                      const checked = claudeModels.includes(m.id)
+                      return (
+                        <label key={m.id} className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg border cursor-pointer transition-all ${
+                          checked
+                            ? 'bg-violet-50 border-violet-300 text-[#4a3f35]'
+                            : 'bg-[#faf8f5] border-[#d6cfc4] text-[#9a8a7a] hover:border-[#b0a090]'
+                        }`}>
+                          <input type="checkbox" checked={checked} onChange={e => {
+                            if (e.target.checked) {
+                              setClaudeModels(prev => [...prev.filter(id => id !== 'auto'), m.id])
+                            } else {
+                              const next = claudeModels.filter(id => id !== m.id)
+                              setClaudeModels(next.length === 0 ? [m.id] : next)
+                            }
+                          }} className="accent-violet-500 w-3.5 h-3.5 flex-shrink-0" />
+                          <div className="min-w-0">
+                            <div className="text-xs font-bold truncate">{m.label}</div>
+                            <div className="text-[10px] text-[#b0a090]">{m.note}</div>
+                          </div>
+                        </label>
+                      )
+                    })}
+                  </div>
+                  {claudeModels.filter(id => id !== 'auto').length > 1 && (
+                    <p className="text-xs text-violet-600 mt-1.5 font-medium">
+                      ✦ {claudeModels.length} models × {count} câu = tối đa {claudeModels.length * count} câu
+                    </p>
+                  )}
+                </>
+              )}
+            </div>
+          )}
+
           {/* Prompt toggle */}
           <div>
             <button onClick={() => setShowPrompt(p => !p)}
@@ -388,6 +569,9 @@ export default function AIQuestionGenerator() {
             </button>
             {showPrompt && (
               <div className="mt-2 space-y-1.5">
+                <p className="text-xs text-[#9a8a7a]">
+                  Prompt này sẽ được gửi kèm như ghi chú bổ sung. Backend luôn tự tạo prompt chuẩn.
+                </p>
                 <textarea rows={7} value={prompt} onChange={e => setPrompt(e.target.value)}
                   className="form-input resize-none text-xs font-mono leading-relaxed" />
                 <button onClick={() => setPrompt(DEFAULT_PROMPT)}
@@ -410,7 +594,7 @@ export default function AIQuestionGenerator() {
 
           {/* Generate button */}
           <button onClick={handleGenerate}
-            disabled={isGenerating || !book || !chapter}
+            disabled={isGenerating}
             className="practice-start-btn w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
             {isGenerating ? (
               <>
@@ -506,6 +690,9 @@ function DraftCard({ draft, isEditing, isSaving, editData, onEdit, onChange, onS
   const opts = Array.isArray(cur.options) ? cur.options : []
   const OPT_LABELS = ['A','B','C','D','E']
 
+  const isCorrect = (i: number) =>
+    Array.isArray(cur.correctAnswer) ? cur.correctAnswer.includes(i) : cur.correctAnswer === i
+
   const DIFF_STYLE: Record<string, string> = {
     easy:   'bg-emerald-100 text-emerald-700',
     medium: 'bg-amber-100 text-amber-700',
@@ -542,6 +729,11 @@ function DraftCard({ draft, isEditing, isSaving, editData, onEdit, onChange, onS
           {cur.book} {cur.chapter}
           {(cur.verseStart || cur.verseEnd) ? `:${cur.verseStart || '?'}–${cur.verseEnd || '?'}` : ''}
         </span>
+        {draft.generatedBy && (
+          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-violet-100 text-violet-600 border border-violet-200">
+            {CLAUDE_MODELS.find(m => m.id === draft.generatedBy)?.label ?? draft.generatedBy}
+          </span>
+        )}
         {draft.status !== 'approved' && (
           <button onClick={onRemove} className="ml-auto text-[#c8bfb0] hover:text-red-400 transition-colors">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -559,15 +751,15 @@ function DraftCard({ draft, isEditing, isSaving, editData, onEdit, onChange, onS
             <div className="space-y-1.5">
               {opts.map((opt, i) => (
                 <div key={i} className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm border ${
-                  cur.correctAnswer === i
+                  isCorrect(i)
                     ? 'bg-[#f0fbf7] border-[#4bbf9f] text-[#2e7a65] font-semibold'
                     : 'bg-[#faf9f5] border-[#e8e3d8] text-[#5a5048]'
                 }`}>
                   <span className={`w-5 h-5 rounded-full text-xs font-black flex items-center justify-center flex-shrink-0 ${
-                    cur.correctAnswer === i ? 'bg-[#4bbf9f] text-white' : 'bg-[#d6cfc4] text-[#7a6a5a]'
+                    isCorrect(i) ? 'bg-[#4bbf9f] text-white' : 'bg-[#d6cfc4] text-[#7a6a5a]'
                   }`}>{OPT_LABELS[i]}</span>
                   <span className="flex-1">{opt}</span>
-                  {cur.correctAnswer === i && (
+                  {isCorrect(i) && (
                     <svg className="w-4 h-4 text-[#4bbf9f] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                     </svg>
@@ -602,7 +794,7 @@ function DraftCard({ draft, isEditing, isSaving, editData, onEdit, onChange, onS
               {opts.map((opt, i) => (
                 <div key={i} className="flex items-center gap-2 mb-2">
                   <span className={`w-6 h-6 rounded-full text-xs font-black flex items-center justify-center flex-shrink-0 ${
-                    cur.correctAnswer === i ? 'bg-[#4bbf9f] text-white' : 'bg-[#eeeae0] text-[#7a6a5a]'
+                    isCorrect(i) ? 'bg-[#4bbf9f] text-white' : 'bg-[#eeeae0] text-[#7a6a5a]'
                   }`}>{OPT_LABELS[i]}</span>
                   <input type="text" value={opt}
                     onChange={e => {
@@ -612,7 +804,7 @@ function DraftCard({ draft, isEditing, isSaving, editData, onEdit, onChange, onS
                     className="form-input text-sm py-2 flex-1" />
                   <button onClick={() => onChange('correctAnswer', i)}
                     className={`w-8 h-8 rounded-lg text-sm font-black transition-all flex-shrink-0 ${
-                      cur.correctAnswer === i ? 'bg-[#4bbf9f] text-white' : 'bg-[#eeeae0] text-[#9a8a7a] hover:bg-[#d6cfc4]'
+                      isCorrect(i) ? 'bg-[#4bbf9f] text-white' : 'bg-[#eeeae0] text-[#9a8a7a] hover:bg-[#d6cfc4]'
                     }`}>✓</button>
                 </div>
               ))}
@@ -656,6 +848,16 @@ function DraftCard({ draft, isEditing, isSaving, editData, onEdit, onChange, onS
               Huỷ
             </button>
           </div>
+        </div>
+      )}
+
+      {/* ── Per-card save error ── */}
+      {draft.saveError && (
+        <div className="mt-3 flex items-start gap-2 px-3 py-2.5 rounded-xl bg-red-50 border border-red-200">
+          <svg className="w-3.5 h-3.5 text-red-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+          </svg>
+          <p className="text-red-600 text-xs font-semibold leading-snug">{draft.saveError}</p>
         </div>
       )}
 

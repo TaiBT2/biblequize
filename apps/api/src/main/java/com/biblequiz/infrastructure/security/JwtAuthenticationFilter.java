@@ -64,7 +64,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         try {
             String userEmail = jwtService.extractUsername(jwt);
 
-            if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            if (userEmail != null) {
                 String jti = jwtService.extractJti(jwt);
                 if (jti != null && tokenBlacklistService.isBlacklisted(jti)) {
                     logger.warn("JWT token has been blacklisted (jti={})", jti);
