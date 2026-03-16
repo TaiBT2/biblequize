@@ -4,6 +4,7 @@ import com.biblequiz.modules.quiz.entity.UserDailyProgress;
 import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
+import com.biblequiz.infrastructure.service.CacheService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,6 +18,7 @@ import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -28,6 +30,9 @@ public class LeaderboardController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CacheService cacheService;
 
     private String resolveEmail(Authentication authentication) {
         if (authentication == null)
@@ -45,89 +50,88 @@ public class LeaderboardController {
     }
 
     @GetMapping("/daily")
+    @SuppressWarnings("unchecked")
     public ResponseEntity<List<Map<String, Object>>> daily(
             @RequestParam(value = "date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "20") int size) {
         LocalDate d = date != null ? date : LocalDate.now(ZoneOffset.UTC);
-        java.util.List<UserDailyProgress> rows = udpRepository
-                .findByDateOrderByPointsCountedDesc(d);
-        java.util.List<java.util.Map<String, Object>> list = rows.stream()
-                .skip(page * size)
-                .limit(size)
-                .map(udp -> {
-                    java.util.Map<String, Object> m = new java.util.HashMap<>();
-                    m.put("userId", udp.getUser() != null ? udp.getUser().getId() : null);
-                    m.put("name", udp.getUser() != null ? udp.getUser().getName() : "Ẩn danh");
-                    m.put("avatarUrl", udp.getUser() != null ? udp.getUser().getAvatarUrl() : null);
-                    m.put("points", udp.getPointsCounted() != null ? udp.getPointsCounted() : 0);
-                    m.put("questions", udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0);
-                    return m;
-                })
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(list);
+        String cacheKey = CacheService.LEADERBOARD_CACHE_PREFIX + "daily:" + d + ":p" + page + ":s" + size;
+        Optional<List> cached = cacheService.get(cacheKey, List.class);
+        if (cached.isPresent()) {
+            return ResponseEntity.ok(cached.get());
+        }
+        List<Object[]> rows = udpRepository.findDailyLeaderboard(d, size, page * size);
+        List<Map<String, Object>> result = mapLeaderboardRows(rows);
+        cacheService.cacheLeaderboard("daily:" + d + ":p" + page + ":s" + size, result);
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/weekly")
+    @SuppressWarnings("unchecked")
     public ResponseEntity<List<Map<String, Object>>> weekly(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "20") int size) {
         LocalDate end = LocalDate.now(ZoneOffset.UTC);
         LocalDate start = end.minusDays(6);
-        java.util.List<UserDailyProgress> rows = udpRepository
-                .findByDateBetweenOrderByPointsCountedDesc(start, end);
-        java.util.List<java.util.Map<String, Object>> list = rows.stream()
-                .collect(Collectors.groupingBy(udp -> udp.getUser().getId()))
-                .entrySet().stream()
-                .map(e -> {
-                    java.util.Map<String, Object> m = new java.util.HashMap<>();
-                    m.put("userId", e.getKey());
-                    m.put("name", e.getValue().get(0).getUser().getName());
-                    m.put("points", e.getValue().stream().mapToInt(x -> x.getPointsCounted() != null ? x.getPointsCounted() : 0).sum());
-                    m.put("questions", e.getValue().stream().mapToInt(x -> x.getQuestionsCounted() != null ? x.getQuestionsCounted() : 0).sum());
-                    return m;
-                })
-                .sorted((a, b) -> {
-                    int cmp = ((Integer) b.get("points")).compareTo((Integer) a.get("points"));
-                    if (cmp != 0)
-                        return cmp;
-                    return ((String) a.get("userId")).compareTo((String) b.get("userId"));
-                })
-                .skip(page * size)
-                .limit(size)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(list);
+        String cacheKey = CacheService.LEADERBOARD_CACHE_PREFIX + "weekly:" + start + ":" + end + ":p" + page + ":s" + size;
+        Optional<List> cached = cacheService.get(cacheKey, List.class);
+        if (cached.isPresent()) {
+            return ResponseEntity.ok(cached.get());
+        }
+        List<Object[]> rows = udpRepository.findWeeklyLeaderboard(start, end, size, page * size);
+        List<Map<String, Object>> result = mapLeaderboardRows(rows);
+        cacheService.cacheLeaderboard("weekly:" + start + ":" + end + ":p" + page + ":s" + size, result);
+        return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/all-time")
-    public ResponseEntity<List<Map<String, Object>>> allTime(
+    @GetMapping("/monthly")
+    @SuppressWarnings("unchecked")
+    public ResponseEntity<List<Map<String, Object>>> monthly(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "20") int size) {
         LocalDate end = LocalDate.now(ZoneOffset.UTC);
-        LocalDate start = end.minusYears(10);
-        java.util.List<UserDailyProgress> rows = udpRepository
-                .findByDateBetweenOrderByPointsCountedDesc(start, end);
-        java.util.List<java.util.Map<String, Object>> list = rows.stream()
-                .collect(Collectors.groupingBy(udp -> udp.getUser().getId()))
-                .entrySet().stream()
-                .map(e -> {
-                    java.util.Map<String, Object> m = new java.util.HashMap<>();
-                    m.put("userId", e.getKey());
-                    m.put("name", e.getValue().get(0).getUser().getName());
-                    m.put("points", e.getValue().stream().mapToInt(x -> x.getPointsCounted() != null ? x.getPointsCounted() : 0).sum());
-                    m.put("questions", e.getValue().stream().mapToInt(x -> x.getQuestionsCounted() != null ? x.getQuestionsCounted() : 0).sum());
-                    return m;
-                })
-                .sorted((a, b) -> {
-                    int cmp = ((Integer) b.get("points")).compareTo((Integer) a.get("points"));
-                    if (cmp != 0)
-                        return cmp;
-                    return ((String) a.get("userId")).compareTo((String) b.get("userId"));
-                })
-                .skip(page * size)
-                .limit(size)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(list);
+        LocalDate start = end.withDayOfMonth(1);
+        String cacheKey = CacheService.LEADERBOARD_CACHE_PREFIX + "monthly:" + start + ":" + end + ":p" + page + ":s" + size;
+        Optional<List> cached = cacheService.get(cacheKey, List.class);
+        if (cached.isPresent()) {
+            return ResponseEntity.ok(cached.get());
+        }
+        List<Object[]> rows = udpRepository.findWeeklyLeaderboard(start, end, size, page * size);
+        List<Map<String, Object>> result = mapLeaderboardRows(rows);
+        cacheService.cacheLeaderboard("monthly:" + start + ":" + end + ":p" + page + ":s" + size, result);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/all-time")
+    @SuppressWarnings("unchecked")
+    public ResponseEntity<List<Map<String, Object>>> allTime(
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "20") int size) {
+        String cacheKey = CacheService.LEADERBOARD_CACHE_PREFIX + "all-time:p" + page + ":s" + size;
+        Optional<List> cached = cacheService.get(cacheKey, List.class);
+        if (cached.isPresent()) {
+            return ResponseEntity.ok(cached.get());
+        }
+        List<Object[]> rows = udpRepository.findAllTimeLeaderboard(size, page * size);
+        List<Map<String, Object>> result = mapLeaderboardRows(rows);
+        cacheService.cacheLeaderboard("all-time:p" + page + ":s" + size, result);
+        return ResponseEntity.ok(result);
+    }
+
+    /**
+     * Maps native query result rows [userId, name, avatarUrl, points, questions] to response maps.
+     */
+    private List<Map<String, Object>> mapLeaderboardRows(List<Object[]> rows) {
+        return rows.stream().map(row -> {
+            Map<String, Object> m = new HashMap<>();
+            m.put("userId", row[0]);
+            m.put("name", row[1] != null ? row[1] : "An danh");
+            m.put("avatarUrl", row[2]);
+            m.put("points", row[3] != null ? ((Number) row[3]).intValue() : 0);
+            m.put("questions", row[4] != null ? ((Number) row[4]).intValue() : 0);
+            return m;
+        }).collect(Collectors.toList());
     }
 
     @GetMapping("/daily/my-rank")
@@ -189,6 +193,41 @@ public class LeaderboardController {
         }
 
         int rank = (int) udpRepository.countUsersAheadInDateRange(weekStart, end, myPoints) + 1;
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("userId", user.getId());
+        result.put("name", user.getName());
+        result.put("points", myPoints);
+        result.put("rank", rank);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/monthly/my-rank")
+    public ResponseEntity<Map<String, Object>> getMyMonthlyRank(Authentication authentication) {
+        if (authentication == null) {
+            return ResponseEntity.ok(null);
+        }
+
+        String email = resolveEmail(authentication);
+        User user = userRepository.findByEmail(email).orElse(null);
+
+        if (user == null) {
+            return ResponseEntity.ok(null);
+        }
+
+        LocalDate end = LocalDate.now(ZoneOffset.UTC);
+        LocalDate monthStart = end.withDayOfMonth(1);
+
+        int myPoints = udpRepository.findByUserIdAndDateBetween(user.getId(), monthStart, end)
+                .stream()
+                .mapToInt(udp -> udp.getPointsCounted() != null ? udp.getPointsCounted() : 0)
+                .sum();
+
+        if (myPoints == 0) {
+            return ResponseEntity.ok(null);
+        }
+
+        int rank = (int) udpRepository.countUsersAheadInMonth(monthStart, end, myPoints) + 1;
 
         Map<String, Object> result = new HashMap<>();
         result.put("userId", user.getId());

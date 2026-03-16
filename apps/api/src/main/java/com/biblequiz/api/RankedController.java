@@ -52,6 +52,18 @@ public class RankedController {
     @Autowired
     private com.biblequiz.modules.quiz.repository.QuestionRepository questionRepository;
 
+    @Autowired
+    private com.biblequiz.infrastructure.service.CacheService cacheService;
+
+    @Autowired
+    private com.biblequiz.modules.season.service.SeasonService seasonService;
+
+    @Autowired
+    private com.biblequiz.modules.achievement.service.AchievementService achievementService;
+
+    @Autowired
+    private com.biblequiz.modules.ranked.service.ScoringService scoringService;
+
     private String resolveEmail(Authentication authentication) {
         if (authentication == null)
             return null;
@@ -67,7 +79,26 @@ public class RankedController {
         return authentication.getName();
     }
 
-    // initial version removed in favor of merged progress version below
+    private static final int MAX_LIVES = 30;
+    private static final int RECOVERY_INTERVAL_MINUTES = 30;
+    private static final int STREAK_LIVES_BONUS = 3;
+    private static final int STREAK_LIVES_THRESHOLD = 10;
+
+    /**
+     * Recovers lives based on elapsed time since lastUpdatedAt.
+     * +1 life per 30 minutes, capped at MAX_LIVES.
+     */
+    private int recoverLives(int currentLives, LocalDateTime lastUpdatedAt) {
+        if (lastUpdatedAt == null || currentLives >= MAX_LIVES) {
+            return currentLives;
+        }
+        long minutesElapsed = java.time.Duration.between(lastUpdatedAt, LocalDateTime.now(ZoneOffset.UTC)).toMinutes();
+        int recovered = (int) (minutesElapsed / RECOVERY_INTERVAL_MINUTES);
+        if (recovered > 0) {
+            return Math.min(MAX_LIVES, currentLives + recovered);
+        }
+        return currentLives;
+    }
 
     @PostMapping("/ranked/sessions")
     public ResponseEntity<Map<String, Object>> startRankedSession(Authentication authentication) {
@@ -116,39 +147,19 @@ public class RankedController {
         try {
             log.debug("submitRankedAnswer called with sessionId: {}", sessionId);
 
-            // Enforce daily caps and compute scoring
+            // Enforce daily caps and compute scoring — server-side validation only
             String questionId = payload.get("questionId") != null ? payload.get("questionId").toString() : null;
-            boolean isCorrect = false;
-            if (payload.containsKey("isCorrect")) {
-                isCorrect = Boolean.TRUE.equals(payload.get("isCorrect"));
-            } else if (questionId != null && payload.containsKey("answer")) {
-                // Server-side validation
-                com.biblequiz.modules.quiz.entity.Question q = questionRepository.findById(questionId).orElse(null);
-                if (q != null && q.getCorrectAnswer() != null && !q.getCorrectAnswer().isEmpty()) {
-                    Object answerObj = payload.get("answer");
-                    if (q.getType() == com.biblequiz.modules.quiz.entity.Question.Type.multiple_choice_single) {
-                        int clientAnswer = -1;
-                        try {
-                            clientAnswer = Integer.parseInt(answerObj.toString());
-                        } catch (Exception ignore) {
-                        }
-                        if (clientAnswer == q.getCorrectAnswer().get(0)) {
-                            isCorrect = true;
-                        }
-                    } else if (q.getType() == com.biblequiz.modules.quiz.entity.Question.Type.fill_in_blank) {
-                        String expected = q.getCorrectAnswerText();
-                        String provided = answerObj != null ? answerObj.toString().trim().toLowerCase() : "";
-                        if (expected != null && provided.equals(expected.trim().toLowerCase())) {
-                            isCorrect = true;
-                        }
-                    }
-                }
-            }
+            com.biblequiz.modules.quiz.entity.Question currentQ = questionId != null
+                    ? questionRepository.findById(questionId).orElse(null) : null;
 
-            // Get question difficulty for scoring
-            com.biblequiz.modules.quiz.entity.Question currentQ = null;
-            if (questionId != null) {
-                currentQ = questionRepository.findById(questionId).orElse(null);
+            boolean isCorrect = false;
+            if (currentQ != null && payload.containsKey("answer")) {
+                Object answerObj = payload.get("answer");
+                if (currentQ.getType() == com.biblequiz.modules.quiz.entity.Question.Type.multiple_choice_single) {
+                    isCorrect = scoringService.validateMultipleChoiceSingle(currentQ, answerObj);
+                } else if (currentQ.getType() == com.biblequiz.modules.quiz.entity.Question.Type.fill_in_blank) {
+                    isCorrect = scoringService.validateFillInBlank(currentQ, answerObj);
+                }
             }
             int clientElapsedMs = 0;
             try {
@@ -157,8 +168,22 @@ public class RankedController {
                         : 0;
             } catch (Exception ignore) {
             }
-            int timeLimitSec = 30;
             Progress p = rankedSessionService.getOrCreate(sessionId);
+
+            // Recover lives based on time elapsed since last activity
+            try {
+                String email = resolveEmail(authentication);
+                if (email != null) {
+                    User user = email != null ? userRepository.findByEmail(email).orElse(null) : null;
+                    if (user != null) {
+                        UserDailyProgress udp = udpRepository.findByUserIdAndDate(user.getId(), LocalDate.now(ZoneOffset.UTC)).orElse(null);
+                        if (udp != null && udp.getLastUpdatedAt() != null) {
+                            p.livesRemaining = recoverLives(p.livesRemaining, udp.getLastUpdatedAt());
+                        }
+                    }
+                }
+            } catch (Exception ignore) {
+            }
 
             if (p.questionsCounted >= 500 || p.livesRemaining <= 0) {
                 Map<String, Object> resp = new HashMap<>();
@@ -178,46 +203,27 @@ public class RankedController {
             // Update book-specific progress
             p.questionsInCurrentBook += 1;
             int earned = 0;
-            int baseScoreVal = 0;
-            int timeBonusVal = 0;
-            int streakBonusVal = 0;
 
             if (isCorrect) {
                 p.correctAnswersInCurrentBook += 1;
-                int timeLeft = Math.max(0, timeLimitSec - (clientElapsedMs / 1000));
-                baseScoreVal = 10;
-                double diffMultiplier = 1.0;
-
-                if (currentQ != null) {
-                    if (currentQ.getDifficulty() == com.biblequiz.modules.quiz.entity.Question.Difficulty.medium) {
-                        baseScoreVal = 20;
-                        diffMultiplier = 1.2;
-                    } else if (currentQ.getDifficulty() == com.biblequiz.modules.quiz.entity.Question.Difficulty.hard) {
-                        baseScoreVal = 30;
-                        diffMultiplier = 1.5;
-                    }
-                }
-
-                timeBonusVal = timeLeft / 2;
-                int perfectBonus = (timeLeft >= 25) ? 5 : 0;
-                earned = (int) Math.floor((baseScoreVal + timeBonusVal + perfectBonus) * diffMultiplier);
-
                 p.currentStreak += 1;
-                if (p.currentStreak >= 15)
-                    streakBonusVal = 200;
-                else if (p.currentStreak >= 10)
-                    streakBonusVal = 120;
-                else if (p.currentStreak >= 5)
-                    streakBonusVal = 50;
 
-                earned += streakBonusVal;
+                com.biblequiz.modules.ranked.service.ScoringService.ScoreResult score =
+                        scoringService.calculate(
+                                currentQ != null ? currentQ.getDifficulty() : null,
+                                clientElapsedMs, p.currentStreak);
+                earned = score.earned;
                 p.pointsToday += earned;
+
+                // Lives bonus: +3 lives when hitting streak 10 (exactly once per streak)
+                if (p.currentStreak == STREAK_LIVES_THRESHOLD) {
+                    p.livesRemaining = Math.min(MAX_LIVES, p.livesRemaining + STREAK_LIVES_BONUS);
+                }
             } else {
                 p.currentStreak = 0;
             }
 
-            log.debug("Points: base={} timeBonus={} streakBonus={} earned={} total={}",
-                    baseScoreVal, timeBonusVal, streakBonusVal, earned, p.pointsToday);
+            log.debug("Points: earned={} total={} streak={}", earned, p.pointsToday, p.currentStreak);
 
             // Check if should advance to next book
             boolean shouldAdvance = bookProgressionService.shouldAdvanceToNextBook(
@@ -281,6 +287,26 @@ public class RankedController {
                         }
 
                         udpRepository.save(udp);
+
+                        // Invalidate leaderboard cache after score update
+                        cacheService.deletePattern(com.biblequiz.infrastructure.service.CacheService.LEADERBOARD_CACHE_PREFIX + "*");
+
+                        // Update season ranking if active season exists
+                        if (earned > 0) {
+                            seasonService.addPoints(user, earned, 1);
+                        }
+
+                        // Check achievements
+                        try {
+                            int allTimePoints = udpRepository.findByUserIdOrderByDateDesc(user.getId())
+                                    .stream().mapToInt(u -> u.getPointsCounted() != null ? u.getPointsCounted() : 0).sum();
+                            int allTimeQuestions = udpRepository.findByUserIdOrderByDateDesc(user.getId())
+                                    .stream().mapToInt(u -> u.getQuestionsCounted() != null ? u.getQuestionsCounted() : 0).sum();
+                            achievementService.checkAndAward(user, allTimePoints, allTimeQuestions,
+                                    p.currentStreak, p.currentBookIndex);
+                        } catch (Exception ex) {
+                            log.debug("Achievement check failed: {}", ex.getMessage());
+                        }
 
                         // Per-book mastery tracking
                         if (questionId != null) {
@@ -382,7 +408,8 @@ public class RankedController {
                     java.util.Optional<UserDailyProgress> opt = udpRepository.findByUserIdAndDate(user.getId(), today);
                     if (opt.isPresent()) {
                         UserDailyProgress udp = opt.get();
-                        p.livesRemaining = udp.getLivesRemaining() != null ? udp.getLivesRemaining() : 30;
+                        int rawLives = udp.getLivesRemaining() != null ? udp.getLivesRemaining() : 30;
+                        p.livesRemaining = recoverLives(rawLives, udp.getLastUpdatedAt());
                         p.questionsCounted = udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0;
                         p.pointsToday = udp.getPointsCounted() != null ? udp.getPointsCounted() : 0;
                         p.currentBook = udp.getCurrentBook() != null ? udp.getCurrentBook() : "Genesis";
@@ -399,26 +426,33 @@ public class RankedController {
                             UserDailyProgress lastRecord = recentRecords.get(0);
                             LocalDate lastDate = lastRecord.getDate();
 
-                            // If last record is from a different day, reset progress
+                            // If last record is from a different day, carry over book progression but reset daily stats
                             if (!lastDate.equals(today)) {
+                                String carryBook = lastRecord.getCurrentBook() != null ? lastRecord.getCurrentBook() : "Genesis";
+                                Integer carryBookIndex = lastRecord.getCurrentBookIndex() != null ? lastRecord.getCurrentBookIndex() : 0;
+                                boolean carryPostCycle = lastRecord.getIsPostCycle() != null && lastRecord.getIsPostCycle();
+                                UserDailyProgress.Difficulty carryDifficulty = lastRecord.getCurrentDifficulty() != null
+                                        ? lastRecord.getCurrentDifficulty() : UserDailyProgress.Difficulty.all;
+
                                 UserDailyProgress newUdp = new UserDailyProgress(UUID.randomUUID().toString(), user,
                                         today);
                                 newUdp.setLivesRemaining(30);
                                 newUdp.setQuestionsCounted(0);
                                 newUdp.setPointsCounted(0);
-                                newUdp.setCurrentBook("Genesis");
-                                newUdp.setCurrentBookIndex(0);
-                                newUdp.setCurrentDifficulty(UserDailyProgress.Difficulty.all);
-                                newUdp.setIsPostCycle(false);
+                                newUdp.setCurrentBook(carryBook);
+                                newUdp.setCurrentBookIndex(carryBookIndex);
+                                newUdp.setCurrentDifficulty(carryDifficulty);
+                                newUdp.setIsPostCycle(carryPostCycle);
                                 newUdp.setAskedQuestionIds(new java.util.ArrayList<>());
                                 udpRepository.save(newUdp);
 
                                 p.livesRemaining = 30;
                                 p.questionsCounted = 0;
                                 p.pointsToday = 0;
-                                p.currentBook = "Genesis";
-                                p.currentDifficulty = "all";
-                                p.isPostCycle = false;
+                                p.currentBook = carryBook;
+                                p.currentBookIndex = carryBookIndex;
+                                p.currentDifficulty = carryDifficulty.name();
+                                p.isPostCycle = carryPostCycle;
                                 p.date = today.toString();
                             } else {
                                 // Same day, use existing record
@@ -550,5 +584,45 @@ public class RankedController {
             log.error("Error syncing progress: {}", e.getMessage(), e);
             return ResponseEntity.status(500).body(Map.of("error", "Failed to sync progress"));
         }
+    }
+
+    @GetMapping("/me/tier")
+    public ResponseEntity<Map<String, Object>> getMyTier(Authentication authentication) {
+        if (authentication == null) {
+            return ResponseEntity.status(401).body(Map.of("error", "Not authenticated"));
+        }
+        String email = resolveEmail(authentication);
+        User user = email != null ? userRepository.findByEmail(email).orElse(null) : null;
+        if (user == null) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        int totalPoints = udpRepository.findByUserIdOrderByDateDesc(user.getId())
+                .stream()
+                .mapToInt(udp -> udp.getPointsCounted() != null ? udp.getPointsCounted() : 0)
+                .sum();
+
+        com.biblequiz.modules.ranked.model.RankTier currentTier =
+                com.biblequiz.modules.ranked.model.RankTier.fromPoints(totalPoints);
+        com.biblequiz.modules.ranked.model.RankTier nextTier = currentTier.next();
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("totalPoints", totalPoints);
+        result.put("tier", currentTier.getKey());
+        result.put("tierName", currentTier.getDisplayName());
+        result.put("tierMinPoints", currentTier.getRequiredPoints());
+        if (nextTier != null) {
+            result.put("nextTier", nextTier.getKey());
+            result.put("nextTierName", nextTier.getDisplayName());
+            result.put("nextTierMinPoints", nextTier.getRequiredPoints());
+            result.put("pointsToNextTier", nextTier.getRequiredPoints() - totalPoints);
+            int range = nextTier.getRequiredPoints() - currentTier.getRequiredPoints();
+            int progress = totalPoints - currentTier.getRequiredPoints();
+            result.put("progressPercent", range > 0 ? Math.min(100, (int) ((progress * 100L) / range)) : 100);
+        } else {
+            result.put("nextTier", null);
+            result.put("progressPercent", 100);
+        }
+        return ResponseEntity.ok(result);
     }
 }

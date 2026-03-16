@@ -47,6 +47,12 @@ public class RateLimitingFilter extends OncePerRequestFilter {
     @Value("${app.rate-limit.general.window:3600}")
     private int generalWindowSeconds;
 
+    @Value("${app.rate-limit.ranked.requests:30}")
+    private int rankedRateLimit;
+
+    @Value("${app.rate-limit.ranked.window:60}")
+    private int rankedWindowSeconds;
+
     /**
      * Comma-separated list of trusted proxy IP addresses.
      * Only when the direct connection comes from one of these IPs will the
@@ -68,11 +74,27 @@ public class RateLimitingFilter extends OncePerRequestFilter {
         boolean isAdminEndpoint = requestPath.startsWith("/api/me/promote-admin")
                 || requestPath.startsWith("/api/me/bootstrap-admin")
                 || requestPath.startsWith("/admin/");
+        boolean isRankedEndpoint = requestPath.matches("/api/ranked/sessions/.+/answer");
 
-        int rateLimit = isAdminEndpoint ? adminRateLimit : generalRateLimit;
-        int windowSeconds = isAdminEndpoint ? adminWindowSeconds : generalWindowSeconds;
+        int rateLimit;
+        int windowSeconds;
+        String rateLimitKey;
 
-        if (!isAllowed(clientIp, rateLimit, windowSeconds)) {
+        if (isRankedEndpoint) {
+            rateLimit = rankedRateLimit;
+            windowSeconds = rankedWindowSeconds;
+            rateLimitKey = clientIp + ":ranked";
+        } else if (isAdminEndpoint) {
+            rateLimit = adminRateLimit;
+            windowSeconds = adminWindowSeconds;
+            rateLimitKey = clientIp + ":admin";
+        } else {
+            rateLimit = generalRateLimit;
+            windowSeconds = generalWindowSeconds;
+            rateLimitKey = clientIp;
+        }
+
+        if (!isAllowed(rateLimitKey, rateLimit, windowSeconds)) {
             logger.warn("Rate limit exceeded for IP: {} on path: {}", clientIp, requestPath);
             response.setStatus(429);
             response.setContentType("application/json");
@@ -84,7 +106,7 @@ public class RateLimitingFilter extends OncePerRequestFilter {
             return;
         }
 
-        RateLimitInfo info = rateLimitMap.get(clientIp);
+        RateLimitInfo info = rateLimitMap.get(rateLimitKey);
         if (info != null) {
             response.setHeader("X-RateLimit-Limit", String.valueOf(rateLimit));
             response.setHeader("X-RateLimit-Remaining", String.valueOf(Math.max(0, rateLimit - info.getCount())));
