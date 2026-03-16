@@ -19,3 +19,9 @@ compose.yml
 /apps/api/target/
 *.log
 api.log
+/apps/api/logs/
+
+# One-time scripts & temp files
+*.py
+all_files.txt
+rule-rank.txt
