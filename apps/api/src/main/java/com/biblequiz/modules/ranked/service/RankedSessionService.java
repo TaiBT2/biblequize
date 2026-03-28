@@ -12,11 +12,11 @@ public class RankedSessionService {
 
     public static class Progress {
         public String date;
-        public int livesRemaining = 30;
+        public int livesRemaining = 100;  // SPEC-v2: energy (100/day, -5 per wrong)
         public int questionsCounted = 0;
         public int pointsToday = 0;
-        public int cap = 500;
-        public int dailyLives = 30;
+        public int cap = 100;             // SPEC-v2: 100 questions/day (was 500)
+        public int dailyLives = 100;      // SPEC-v2: 100 energy
         public String currentBook = "Genesis";
         public int currentBookIndex = 0;
         public int questionsInCurrentBook = 0;

@@ -1,715 +1,838 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
-import Header from '../components/Header'
 import { api } from '../api/client'
+import { useAuth } from '../contexts/AuthContext'
+import styles from './Home.module.css'
 
-// -- Types --
+// ─── Types ────────────────────────────────────────────────────────────────────
 interface LeaderboardPlayer {
   id: string
   name: string
   points: number
   rank: number
-  tier: string
+  tier?: string
 }
 
-export default function Home() {
-  const { user, isAuthenticated } = useAuth()
-  const [playerCount, setPlayerCount] = useState(0)
-  const [isCounting, setIsCounting] = useState(false)
-
-  // -- Leaderboard State --
-  const [timeframe, setTimeframe] = useState<'daily' | 'weekly' | 'all-time'>('daily')
-  const [leaderboardData, setLeaderboardData] = useState<LeaderboardPlayer[]>([])
-  const [loadingLeaderboard, setLoadingLeaderboard] = useState(true)
-
-  // -- API Fetching --
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+function useScrollReveal() {
+  const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    const fetchLeaderboard = async () => {
-      setLoadingLeaderboard(true)
-      try {
-        const response = await api.get(`/api/leaderboard/${timeframe}`)
-        setLeaderboardData(response.data)
-      } catch (error) {
-        console.error("Failed to fetch leaderboard data", error)
-        // Fallback dummy data if API fails
-        setLeaderboardData([])
-      } finally {
-        setLoadingLeaderboard(false)
-      }
-    }
-    fetchLeaderboard()
-  }, [timeframe])
+    const el = ref.current
+    if (!el) return
+    if (el.classList.contains('hp-on')) return
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { el.classList.add('hp-on'); obs.unobserve(el) } },
+      { threshold: 0.12 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+  return ref
+}
+
+function RevealDiv({ children, style, className = '' }: { children: React.ReactNode; style?: React.CSSProperties; className?: string }) {
+  const ref = useScrollReveal()
+  return <div ref={ref} className={`hp-reveal ${className}`} style={style}>{children}</div>
+}
+
+// ─── Nav ──────────────────────────────────────────────────────────────────────
+function Nav({ onOpenLogin, onLoggedOut }: { onOpenLogin: () => void; onLoggedOut: () => void }) {
+  const [scrolled, setScrolled] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const { user, isAuthenticated, logout } = useAuth()
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Start counting animation after component mounts
-    const timer = setTimeout(() => {
-      setIsCounting(true)
-    }, 500)
-
-    return () => clearTimeout(timer)
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
-    if (isCounting) {
-      const targetCount = 10000
-      const duration = 2000 // 2 seconds
-      const increment = targetCount / (duration / 16) // 60fps
-
-      const counter = setInterval(() => {
-        setPlayerCount(prev => {
-          if (prev >= targetCount) {
-            clearInterval(counter)
-            return targetCount
-          }
-          return Math.min(prev + increment, targetCount)
-        })
-      }, 16)
-
-      return () => clearInterval(counter)
+    const handler = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false)
+      }
     }
-  }, [isCounting])
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
+
+  const handleLogout = async () => {
+    setDropdownOpen(false)
+    await logout()
+    onLoggedOut()
+  }
+
+  const initials = user?.name?.split(' ').filter(Boolean).map(w => w[0]).slice(-2).join('').toUpperCase() ?? '?'
+  const shortName = user?.name?.split(' ').slice(-1)[0] ?? ''
 
   return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <Header />
+    <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
+      <a href="/" className={styles.navLogo}>
+        <em className={styles.navLogoIcon}>✝</em>
+        BibleQuiz
+      </a>
+      <div className={styles.navLinks}>
+        <a href="#modes" className={styles.navLink}>Chế độ</a>
+        <a href="#lb-section" className={styles.navLink}>Rank</a>
 
-      {/* Hero Section */}
-      <section className="container mx-auto px-6 py-24 relative" style={{ marginTop: '120px' }}>
-        {/* Background effects */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-cyan-900/10 rounded-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-full blur-3xl"></div>
+        {isAuthenticated ? (
+          <div className={styles.navUser} ref={dropdownRef}>
+            <button
+              className={styles.navAvatarBtn}
+              onClick={() => setDropdownOpen(o => !o)}
+              aria-label="Tài khoản"
+            >
+              {user?.avatar
+                ? <img src={user.avatar} className={styles.navAvatarImg} alt={user.name} />
+                : <div className={styles.navAvatarInitial}>{initials}</div>
+              }
+              <span className={styles.navUserName}>{shortName}</span>
+              <span className={styles.navAvatarChevron} data-open={dropdownOpen}>▾</span>
+            </button>
 
-        <div className="grid lg:grid-cols-2 gap-20 items-center relative z-10">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30">
-                <span className="text-cyan-400 mr-2">✨</span>
-                <span className="text-sm font-medium text-cyan-300">Học tập thú vị</span>
-              </div>
-
-              <h1
-                className="text-5xl lg:text-7xl font-black bg-gradient-to-r from-white via-cyan-200 to-purple-200 bg-clip-text text-transparent mb-6 tracking-wide"
-                style={{
-                  lineHeight: '1.3',
-                  textShadow: '0 0 30px rgba(0, 255, 255, 0.3)',
-                  letterSpacing: '0.02em'
-                }}
-              >
-                KHƠI NGUỒN TRI THỨC - THẮP SÁNG TÂM LINH ⚡
-              </h1>
-
-              <p
-                className="text-xl lg:text-2xl max-w-2xl font-medium leading-[1.8] text-glow"
-                style={{ color: '#E0E0E0', textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}
-              >
-                Hàng ngàn câu hỏi thú vị đang chờ đón. Vừa chơi, vừa học, vừa thăng trưởng đức tin mỗi ngày! 🚀
-              </p>
-            </div>
-
-            <div className="mt-12" style={{ marginBottom: '80px' }}>
-              <Link
-                to="/ranked"
-                className="inline-block px-12 py-5 rounded-2xl font-black text-2xl transition-all duration-300 hover:scale-105 relative overflow-hidden group"
-                style={{
-                  backgroundColor: '#00FFFF',
-                  color: '#0E0B1A',
-                  boxShadow: '0 0 15px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.2)',
-                  animation: 'pulse-glow 2.5s ease-in-out infinite alternate'
-                }}
-              >
-                <span className="relative z-10 flex items-center space-x-3">
-                  <span>🚀</span>
-                  <span>BẮT ĐẦU HÀNH TRÌNH</span>
-                  <span>🎯</span>
-                </span>
-
-                {/* Animated background */}
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    background: 'linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(0, 255, 255, 0.3), rgba(255, 255, 255, 0.2))',
-                    animation: 'shimmer 1.5s ease-in-out infinite'
-                  }}
-                />
-              </Link>
-            </div>
-          </div>
-
-          <div className="flex justify-center">
-            <div className="relative">
-              {/* Floating elements */}
-              <div className="relative w-80 h-80">
-                {/* Main central element */}
-                <div
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full flex items-center justify-center bg-gradient-to-br from-cyan-400 to-purple-500 shadow-2xl animate-pulse z-10 neon-glow"
-                >
-                  <span className="text-7xl">📖</span>
+            {dropdownOpen && (
+              <div className={styles.navDropdown}>
+                <div className={styles.navDropdownHeader}>
+                  <div className={styles.navDropdownName}>{user?.name}</div>
+                  <div className={styles.navDropdownEmail}>{user?.email}</div>
                 </div>
-
-                {/* Floating icons around in a circle */}
-                {[
-                  { icon: '👤', color: 'from-cyan-400 to-blue-500' },
-                  { icon: '⭐', color: 'from-yellow-400 to-orange-500' },
-                  { icon: '🏆', color: 'from-purple-400 to-pink-500' },
-                  { icon: '💎', color: 'from-emerald-400 to-cyan-500' },
-                  { icon: '🎯', color: 'from-red-400 to-pink-500' },
-                  { icon: '🚀', color: 'from-indigo-400 to-purple-500' },
-                  { icon: '💫', color: 'from-pink-400 to-rose-500' },
-                  { icon: '🌟', color: 'from-yellow-400 to-amber-500' }
-                ].map((item, index, array) => {
-                  const angle = (index / array.length) * 2 * Math.PI;
-                  const radius = 160; // Increased radius
-                  const x = Math.cos(angle) * radius;
-                  const y = Math.sin(angle) * radius;
-                  return (
-                    <div
-                      key={index}
-                      className={`absolute w-16 h-16 rounded-full flex items-center justify-center bg-gradient-to-br ${item.color} shadow-2xl animate-float neon-glow hover:scale-125 transition-transform duration-300`}
-                      style={{
-                        top: `calc(50% + ${y}px - 32px)`,
-                        left: `calc(50% + ${x}px - 32px)`,
-                        animationDelay: `${index * 0.4}s`
-                      }}
-                    >
-                      <span className="text-3xl">{item.icon}</span>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Stats */}
-              <div className="mt-8 text-center space-y-4">
-                <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30">
-                  <span className="text-2xl mr-3">👥</span>
-                  <div className="text-left">
-                    <div className="text-2xl font-bold text-white animate-number-glow">
-                      {Math.floor(playerCount).toLocaleString()}+
-                    </div>
-                    <div className="text-sm text-gray-300">Người chơi</div>
-                  </div>
-                </div>
-                <p className="text-lg font-medium" style={{ color: '#E0E0E0' }}>
-                  Tham gia cùng hàng nghìn người chơi!
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Game Modes Section */}
-      <section className="container mx-auto px-6 py-12 relative" style={{ marginTop: '0px' }}>
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/5 to-transparent"></div>
-
-        <div className="relative z-10">
-
-          <div className="grid md:grid-cols-3 gap-10">
-            {/* Single Player Card */}
-            <div className="page-card group p-8 flex flex-col items-center text-center">
-              <div
-                className="w-20 h-20 mb-6 rounded-2xl flex items-center justify-center transition-all bg-[#4bbf9f] shadow-[0_8px_20px_rgba(75,191,159,0.3)] group-hover:scale-110"
-              >
-                <span className="text-4xl">📖</span>
-              </div>
-              <h3 className="text-2xl font-black mb-1 text-[#4a3f35] parchment-headline">
-                ÔN LUYỆN
-              </h3>
-              <p className="text-sm italic mb-4 text-[#7a6a5a]">
-                Học Không Áp Lực
-              </p>
-              <p className="text-base mb-8 leading-relaxed text-[#5a5048]">
-                <span className="text-[#2e9e7a] font-bold">Ôn tập kiến thức</span> theo từng sách Kinh Thánh, không giới hạn thời gian.
-                <br />
-                <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mt-4 bg-[#eeeae0] text-[#7a6a5a]">📜 Kinh Thánh</span>
-              </p>
-              <Link
-                to="/practice"
-                className="btn-primary w-full py-4 text-center"
-              >
-                BẮT ĐẦU NGAY
-              </Link>
-            </div>
-
-            {/* Team Battle Card */}
-            <div className="page-card group p-8 flex flex-col items-center text-center">
-              <div
-                className="w-20 h-20 mb-6 rounded-2xl flex items-center justify-center transition-all bg-[#e05c5c] shadow-[0_8px_20px_rgba(224,92,92,0.3)] group-hover:scale-110"
-              >
-                <span className="text-4xl">⚔️</span>
-              </div>
-              <h3 className="text-2xl font-black mb-1 text-[#4a3f35] parchment-headline">
-                THI ĐẤU
-              </h3>
-              <p className="text-sm italic mb-4 text-[#7a6a5a]">
-                So Trình Đối Kháng
-              </p>
-              <p className="text-base mb-8 leading-relaxed text-[#5a5048]">
-                <span className="text-[#c04a4a] font-bold">Thách đấu cùng bạn bè</span> hoặc đối thủ ngẫu nhiên để khẳng định vị thế!
-                <br />
-                <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mt-4 bg-[#eeeae0] text-[#7a6a5a]">🏆 Đối kháng</span>
-              </p>
-              <Link
-                to="/multiplayer"
-                className="btn-primary w-full py-4 text-center"
-              >
-                THAM GIA PHÒNG
-              </Link>
-            </div>
-
-            {/* Daily Challenge Card */}
-            <div className="page-card group p-8 flex flex-col items-center text-center border-2 border-[#f59e0b]">
-              <div
-                className="w-20 h-20 mb-6 rounded-2xl flex items-center justify-center transition-all bg-[#f59e0b] shadow-[0_8px_20px_rgba(245,158,11,0.3)] group-hover:scale-110"
-              >
-                <span className="text-4xl">🛡️</span>
-              </div>
-              <h3 className="text-2xl font-black mb-1 text-[#4a3f35] parchment-headline">
-                ĐẤU XẾP HẠNG
-              </h3>
-              <p className="text-sm italic mb-4 text-[#7a6a5a]">
-                Vinh Danh Anh Tài
-              </p>
-              <p className="text-base mb-8 leading-relaxed text-[#5a5048]">
-                <span className="text-[#b45309] font-bold">Leo bảng vàng</span>, nhận danh hiệu độc quyền và phần thưởng hấp dẫn!
-                <br />
-                <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mt-4 bg-[#eeeae0] text-[#7a6a5a]">⚡ Thăng tiến</span>
-              </p>
-              <Link
-                to="/ranked"
-                className="btn-primary neon-glow w-full py-4 text-center"
-              >
-                LEO RANK NGAY
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* User Progress Section */}
-      {isAuthenticated && (
-        <section className="container mx-auto px-6 py-8 relative" style={{ marginTop: '20px' }} id="user-progress-section">
-          <div className="relative z-10">
-            <div className="text-center mb-12">
-              <h2
-                className="text-3xl font-bold mb-4 flex items-center justify-center gap-4"
-                style={{ color: '#00FFFF', textShadow: '0 0 10px rgba(0,255,255,0.3)' }}
-              >
-                Hành Trình Tâm Linh Của Bạn 🗺️
-                <button className="btn-share animate-pulse" title="Chia sẻ hành trình">
-                  📤
+                <div className={styles.navDropdownDivider} />
+                <Link to="/profile" className={styles.navDropdownItem} onClick={() => setDropdownOpen(false)}>
+                  <span>👤</span> Hồ sơ của tôi
+                </Link>
+                <Link to="/achievements" className={styles.navDropdownItem} onClick={() => setDropdownOpen(false)}>
+                  <span>🏆</span> Thành tích
+                </Link>
+                <Link to="/leaderboard" className={styles.navDropdownItem} onClick={() => setDropdownOpen(false)}>
+                  <span>📊</span> Lịch sử thi đấu
+                </Link>
+                <div className={styles.navDropdownDivider} />
+                <button className={`${styles.navDropdownItem} ${styles.navDropdownLogout}`} onClick={handleLogout}>
+                  <span>↩</span> Đăng xuất
                 </button>
-              </h2>
-              <p className="text-lg leading-relaxed" style={{ color: '#E0E0E0' }}>
-                Từ <span className="text-cyan-300 font-semibold">"Người Tìm Hiểu"</span> đến <span className="text-purple-300 font-semibold">"Trưởng Lão Đáng Kính"</span> -
-                Mỗi bước tiến đều mang ý nghĩa thiêng liêng!
-              </p>
+              </div>
+            )}
+          </div>
+        ) : (
+          <>
+            <button className={styles.navLoginBtn} onClick={onOpenLogin}>Đăng nhập</button>
+            <Link to="/ranked" className={`${styles.navCta} ${styles.navCtaGlow}`}>Chơi ngay — miễn phí</Link>
+          </>
+        )}
+      </div>
+    </nav>
+  )
+}
+
+// ─── Login Modal ──────────────────────────────────────────────────────────────
+function LoginModal({ onClose }: { onClose: () => void }) {
+  const [mode, setMode] = useState<'login' | 'register'>('login')
+  const [loading, setLoading] = useState(false)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [errors, setErrors] = useState<{ name?: string; email?: string; password?: string; confirm?: string; general?: string }>({})
+  const { login } = useAuth()
+
+  const backendUrl = (import.meta.env.VITE_API_BASE_URL as string) ?? 'http://localhost:8080'
+
+  const handleBackdrop = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) onClose()
+  }
+
+  const handleGoogle = () => {
+    window.location.href = `${backendUrl}/oauth2/authorization/google`
+  }
+
+  const validate = () => {
+    const errs: typeof errors = {}
+    if (mode === 'register' && !name.trim()) errs.name = 'Vui lòng nhập họ tên'
+    if (!email.trim()) errs.email = 'Vui lòng nhập email'
+    else if (!/\S+@\S+\.\S+/.test(email)) errs.email = 'Email không hợp lệ'
+    if (!password) errs.password = 'Vui lòng nhập mật khẩu'
+    else if (mode === 'register' && password.length < 8) errs.password = 'Mật khẩu phải có ít nhất 8 ký tự'
+    if (mode === 'register' && password !== confirmPassword) errs.confirm = 'Mật khẩu xác nhận không khớp'
+    return errs
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    const errs = validate()
+    if (Object.keys(errs).length) { setErrors(errs); return }
+    setLoading(true)
+    setErrors({})
+    try {
+      const { api: apiClient } = await import('../api/client')
+      const endpoint = mode === 'login' ? '/api/auth/login' : '/api/auth/register'
+      const payload = mode === 'login'
+        ? { email: email.trim(), password, rememberMe: true }
+        : { name: name.trim(), email: email.trim(), password }
+      const res = await apiClient.post(endpoint, payload)
+      const { accessToken, name: userName, email: userEmail, avatar, role } = res.data
+      login({ accessToken, name: userName, email: userEmail, avatar: avatar || undefined, role })
+      onClose()
+    } catch (err: any) {
+      const message = err.response?.data?.message
+      setErrors({ general: message || (mode === 'login' ? 'Sai email hoặc mật khẩu.' : 'Đăng ký thất bại. Vui lòng thử lại.') })
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const switchMode = (m: 'login' | 'register') => {
+    setMode(m); setErrors({}); setPassword(''); setConfirmPassword('')
+  }
+
+  return (
+    <div className={styles.modalOverlay} onClick={handleBackdrop}>
+      <div className={styles.modalBox}>
+        <button className={styles.modalClose} onClick={onClose} aria-label="Đóng">✕</button>
+
+        <div className={styles.modalHeader}>
+          <div className={styles.modalLogo}>✝ BibleQuiz</div>
+          <h2 className={styles.modalTitle}>{mode === 'login' ? 'Đăng nhập' : 'Đăng ký'}</h2>
+          <p className={styles.modalSub}>{mode === 'login' ? 'Chào mừng bạn trở lại' : 'Tạo tài khoản miễn phí'}</p>
+        </div>
+
+        <button className={styles.modalGoogleBtn} onClick={handleGoogle} type="button">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 01-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.616z" fill="#4285F4"/>
+            <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z" fill="#34A853"/>
+            <path d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
+            <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+          </svg>
+          Tiếp tục với Google
+        </button>
+
+        <div className={styles.modalDivider}>
+          <div className={styles.modalDividerLine} />
+          <span className={styles.modalDividerText}>hoặc</span>
+          <div className={styles.modalDividerLine} />
+        </div>
+
+        <form onSubmit={handleSubmit} noValidate>
+          {errors.general && <div className={styles.modalErrorBanner}>{errors.general}</div>}
+
+          {mode === 'register' && (
+            <div className={styles.modalField}>
+              <label className={styles.modalLabel}>Họ và tên</label>
+              <input
+                className={`${styles.modalInput} ${errors.name ? styles.modalInputErr : ''}`}
+                type="text" placeholder="Nguyễn Văn A"
+                value={name} onChange={e => setName(e.target.value)} autoComplete="name"
+              />
+              {errors.name && <span className={styles.modalFieldError}>{errors.name}</span>}
             </div>
+          )}
 
-            <div className="max-w-4xl mx-auto">
-              <div className="page-card p-10 md:p-12 mb-8 transition-all duration-300 hover:shadow-2xl relative overflow-hidden card-hover-effect">
-                <div className="grid md:grid-cols-3 gap-8 text-center items-center">
-                  {/* Current Level */}
-                  <div className="relative">
-                    <div
-                      className="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center text-3xl font-black"
-                      style={{
-                        background: 'linear-gradient(135deg, #4bbf9f 0%, #2e9e7a 100%)',
-                        color: '#ffffff',
-                        boxShadow: '0 8px 20px rgba(75,191,159,0.3)'
-                      }}
-                    >
-                      5
-                    </div>
-                    <h3 className="text-xl font-bold mb-1 text-[#2d241e] parchment-headline">Cấp 5</h3>
-                    <p className="text-sm font-bold text-[#4a3f35]">Người Tìm Hiểu</p>
-                  </div>
+          <div className={styles.modalField}>
+            <label className={styles.modalLabel}>Email</label>
+            <input
+              className={`${styles.modalInput} ${errors.email ? styles.modalInputErr : ''}`}
+              type="email" placeholder="email@example.com"
+              value={email} onChange={e => setEmail(e.target.value)} autoComplete="email"
+            />
+            {errors.email && <span className={styles.modalFieldError}>{errors.email}</span>}
+          </div>
 
-                  {/* XP Progress */}
-                  <div className="md:col-span-2">
-                    <div className="flex justify-between items-end mb-3">
-                      <span className="text-lg font-bold text-[#4a3f35]">Trí Tuệ Tích Lũy 📚</span>
-                      <span className="text-sm font-black text-[#4bbf9f] pr-4">750 / 1000 XP</span>
-                    </div>
-                    <div className="w-full h-4 bg-[#eeeae0] rounded-full overflow-hidden shadow-inner">
-                      <div
-                        className="h-full rounded-full transition-all duration-700 bg-gradient-to-r from-[#4bbf9f] to-[#2e9e7a]"
-                        style={{ width: '75%' }}
-                      ></div>
-                    </div>
-                    <p className="text-xs mt-4 text-[#4a3f35] font-semibold leading-loose">
-                      Chỉ cần thêm <span className="text-[#2e9e7a] font-black">250 XP</span> nữa để thăng cấp danh hiệu mới. <span className="text-[#4bbf9f] font-black">Cố gắng lên nhé!</span> 🌟
-                    </p>
-                  </div>
+          <div className={styles.modalField}>
+            <label className={styles.modalLabel}>Mật khẩu</label>
+            <input
+              className={`${styles.modalInput} ${errors.password ? styles.modalInputErr : ''}`}
+              type="password" placeholder={mode === 'register' ? 'Ít nhất 8 ký tự' : '••••••••'}
+              value={password} onChange={e => setPassword(e.target.value)}
+              autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+            />
+            {errors.password && <span className={styles.modalFieldError}>{errors.password}</span>}
+          </div>
+
+          {mode === 'register' && (
+            <div className={styles.modalField}>
+              <label className={styles.modalLabel}>Xác nhận mật khẩu</label>
+              <input
+                className={`${styles.modalInput} ${errors.confirm ? styles.modalInputErr : ''}`}
+                type="password" placeholder="Nhập lại mật khẩu"
+                value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}
+                autoComplete="new-password"
+              />
+              {errors.confirm && <span className={styles.modalFieldError}>{errors.confirm}</span>}
+            </div>
+          )}
+
+          <button className={styles.modalSubmitBtn} type="submit" disabled={loading}>
+            {loading && <span className={styles.modalSpinner} />}
+            {mode === 'login' ? 'Đăng nhập' : 'Tạo tài khoản'}
+          </button>
+        </form>
+
+        <div className={styles.modalSwitch}>
+          {mode === 'login'
+            ? <><span>Chưa có tài khoản? </span><button className={styles.modalSwitchLink} onClick={() => switchMode('register')}>Đăng ký ngay</button></>
+            : <><span>Đã có tài khoản? </span><button className={styles.modalSwitchLink} onClick={() => switchMode('login')}>Đăng nhập</button></>
+          }
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Toast ────────────────────────────────────────────────────────────────────
+function Toast({ message }: { message: string }) {
+  return (
+    <div className={styles.toast}>
+      <span className={styles.toastIcon}>✓</span>
+      {message}
+    </div>
+  )
+}
+
+// ─── Demo Card ────────────────────────────────────────────────────────────────
+function DemoCard() {
+  const [answered, setAnswered] = useState(false)
+  const [selected, setSelected] = useState<number | null>(null)
+  const [timerSecs, setTimerSecs] = useState(8)
+
+  const options = [
+    { key: 'A', text: 'Một đôi',   correct: false },
+    { key: 'B', text: 'Hai đôi',   correct: false },
+    { key: 'C', text: 'Bảy đôi',   correct: true  },
+    { key: 'D', text: 'Mười đôi',  correct: false },
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimerSecs(s => { if (s <= 1) return 20; return s - 1 })
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const pick = useCallback((idx: number) => {
+    if (answered) return
+    setAnswered(true)
+    setSelected(idx)
+    setTimeout(() => { setAnswered(false); setSelected(null) }, 3200)
+  }, [answered])
+
+  return (
+    <div className={styles.demoWrap}>
+      {/* Score popup */}
+      <div className={styles.scorePopup}>
+        <div className={styles.scorePopupValue}>+150</div>
+        <div className={styles.scorePopupLabel}>Speed bonus!</div>
+      </div>
+
+      <div className={styles.demoCard}>
+        <div className={styles.demoStrip} />
+        <div className={styles.demoBadge}>🔴 LIVE · Battle Royale</div>
+
+        <div className={styles.demoHeader}>
+          <div className={styles.demoStatus}>
+            <span className={styles.demoPulse} />
+            Câu 12 / 20 · 43 người còn lại
+          </div>
+          <div className={styles.demoTimer}>
+            <div className={styles.demoTimerBar}>
+              <div className={styles.demoTimerFill} />
+            </div>
+            <span>{timerSecs}s</span>
+          </div>
+        </div>
+
+        <div className={styles.demoQuestion}>
+          <div className={styles.demoRef}>Sáng thế ký 7:1–4</div>
+          <div>Đức Chúa Trời bảo Nô-ê đưa bao nhiêu đôi thú sạch vào tàu?</div>
+        </div>
+
+        <div className={styles.demoOptions}>
+          {options.map((opt, idx) => (
+            <div
+              key={opt.key}
+              className={styles.demoOption}
+              data-answered={answered}
+              data-selected={selected === idx}
+              data-correct={opt.correct}
+              onClick={() => pick(idx)}
+            >
+              <span className={styles.demoOptionKey}>{opt.key}</span>
+              {opt.text}
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.demoFooter}>
+          <div className={styles.demoFooterPeople}>
+            👥 <strong style={{ color: 'var(--hp-text)' }}>43</strong> người còn lại
+          </div>
+          <div className={styles.demoFooterStreak}>🔥 Streak ×7</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Hero Section ─────────────────────────────────────────────────────────────
+function HeroSection() {
+  const AVATARS = [
+    { bg: '#2C1F5E', color: '#9B7FE8', text: 'TH' },
+    { bg: '#1A3A1A', color: '#58D68D', text: 'MK' },
+    { bg: '#3A1A0A', color: '#F5A623', text: 'LP' },
+    { bg: '#1A1A3A', color: '#5DADE2', text: 'HN' },
+    { bg: '#3A1A2A', color: '#F1948A', text: 'QL' },
+  ]
+
+  return (
+    <section className={styles.hero}>
+      <div className={styles.heroBg}>BIBLE</div>
+
+      {/* Left */}
+      <div className={styles.heroLeft}>
+        <div className={styles.heroLiveBadge}>
+          <span className={styles.heroLiveBadgeEmoji}>🔥</span>
+          2,847 người đang online ngay lúc này
+        </div>
+
+        <h1 className={styles.heroTitle}>
+          <span className={styles.heroTitleLine1}>Kinh Thánh.</span>
+          <span className={styles.heroTitleLine2}>
+            Thời gian thực.
+            <span className={styles.heroUnderline} />
+          </span>
+          <span className={styles.heroTitleSub}>Không phải giờ học giáo lý đâu nhé.</span>
+        </h1>
+
+        <p className={styles.heroSub}>
+          Thi đua câu hỏi Kinh Thánh với hàng nghìn người — Battle Royale, Speed Race, 1v1 Sudden Death.
+          Học thật sự, cạnh tranh thật sự.
+        </p>
+
+        <div className={styles.heroBtns}>
+          <Link to="/ranked" className={styles.heroBtnPrimary}>
+            Bắt đầu — miễn phí ↗
+          </Link>
+          <a href="#modes" className={styles.heroBtnSecondary}>
+            Xem chế độ chơi
+          </a>
+        </div>
+
+        <div className={styles.heroSocial}>
+          <div className={styles.heroAvatars}>
+            {AVATARS.map((av, i) => (
+              <div key={i} className={styles.heroAvatar} style={{ background: av.bg, color: av.color }}>
+                {av.text}
+              </div>
+            ))}
+          </div>
+          <div className={styles.heroSocialText}>
+            <strong style={{ color: 'var(--hp-text)' }}>31,240 người</strong> đã tham gia<br />
+            Câu hỏi mới mỗi ngày · 66 sách Kinh Thánh
+          </div>
+        </div>
+      </div>
+
+      {/* Right: Demo Card */}
+      <div className={styles.heroRight}>
+        <div className={styles.heroDemoWrap}>
+          <DemoCard />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Ticker ───────────────────────────────────────────────────────────────────
+function TickerBanner() {
+  const items = ['Battle Royale', 'Speed Race', 'Team vs Team', 'Sudden Death 1v1', 'Leo Rank hàng ngày', 'Luyện tập tự do', '66 sách Kinh Thánh', '8,500+ câu hỏi']
+  const doubled = [...items, ...items]
+  return (
+    <div className={styles.ticker}>
+      <div className={styles.tickerInner}>
+        {doubled.map((item, i) => (
+          <span key={i}>
+            <span className={styles.tickerItem}>{item}</span>
+            <span className={styles.tickerSep}>✦</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ─── Modes Section ────────────────────────────────────────────────────────────
+function ModesSection() {
+  const r1 = useScrollReveal(), r2 = useScrollReveal(), r3 = useScrollReveal()
+
+  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget
+    const rect = card.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width - .5
+    const y = (e.clientY - rect.top) / rect.height - .5
+    card.style.transform = `translateY(-5px) perspective(500px) rotateX(${-y * 5}deg) rotateY(${x * 5}deg)`
+  }
+
+  const multiCards = [
+    { id: 'battle', accentRgb: '212,168,67', emoji: '⚔️', name: 'Battle Royale', desc: 'Sai là bay. Người cuối sống sót thắng. Top 3 nhận huy chương.', count: '5 – 100 người', tag: '5–100 người', delay: '.05s', orb: 'var(--hp-gold)', accentColor: 'var(--hp-gold)', hot: true },
+    { id: 'speed',  accentRgb: '52,152,219',  emoji: '⚡', name: 'Speed Race',   desc: 'Không ai bị loại, nhưng tốc độ tính điểm. Đúng + nhanh = thống trị.', count: '2 – 20 người', tag: '2–20 người', delay: '.1s', orb: '#3498DB', accentColor: '#5DADE2', hot: false },
+    { id: 'team',   accentRgb: '46,213,115',  emoji: '🤝', name: 'Team vs Team', desc: 'Hai đội đấu. Cả đội đúng hết được Perfect Round bonus +50 điểm.', count: '4 – 40 người', tag: '4–40 người', delay: '.15s', orb: '#2ED573', accentColor: '#58D68D', hot: false },
+    { id: 'sudden', accentRgb: '255,107,91',  emoji: '💀', name: 'Sudden Death', desc: 'Ai sai trước thua. Người thắng giữ ghế. Hàng chờ vô tận.', count: '2 người · 1v1', tag: '1 đấu 1', delay: '.2s', orb: 'var(--hp-coral)', accentColor: 'var(--hp-coral)', hot: false },
+  ]
+
+  return (
+    <section id="modes" className={styles.modes}>
+      <div ref={r1} className="hp-reveal" style={{ marginBottom: '.75rem' }}>
+        <div className={styles.sectionLabel}>
+          <span className={styles.sectionLabelSlash}>//</span> Chế độ chơi
+        </div>
+      </div>
+      <h2 ref={r2} className={`hp-reveal ${styles.sectionTitle}`}>
+        Chọn cách bạn<br />muốn thống trị.
+      </h2>
+      <p ref={r3} className={`hp-reveal ${styles.sectionSub}`}>
+        Solo, đội nhóm, hay một mình đấu cả phòng — BibleQuiz có đủ.
+      </p>
+
+      {/* Solo modes */}
+      <div className={styles.modesSoloGrid}>
+        {/* Practice card */}
+        <RevealDiv style={{ transitionDelay: '.05s' }}>
+          <Link to="/practice" style={{ textDecoration: 'none' }}>
+            <div
+              className={`${styles.modeCard} ${styles.modeCardGold}`}
+              style={{ '--accent-rgb': '212,168,67' } as React.CSSProperties}
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={e => { e.currentTarget.style.transform = '' }}
+            >
+              <div className={styles.modeCardStrip} style={{ background: 'linear-gradient(90deg,var(--hp-gold),var(--hp-gold2))' }} />
+              <div className={styles.modeCardIconWrap} style={{ background: 'rgba(212,168,67,.12)' }}>📖</div>
+              <div className={styles.modeCardTitle}>Luyện Tập</div>
+              <p className={styles.modeCardDesc}>
+                Không áp lực, không giới hạn. Tự chọn sách, độ khó, số câu. Lý tưởng cho người mới bắt đầu hoặc ôn lại trước khi leo rank.
+              </p>
+              <ul className={styles.modeCardList}>
+                {['Chọn bất kỳ sách nào trong 66 sách', 'Xem giải thích sau mỗi câu', 'Lưu câu sai để ôn lại', 'Không ảnh hưởng điểm rank'].map(f => (
+                  <li key={f} className={styles.modeCardListItem}>
+                    <span className={styles.modeCardDot} style={{ background: 'var(--hp-gold)' }} />{f}
+                  </li>
+                ))}
+              </ul>
+              <span className={styles.modeCardTag} style={{ background: 'rgba(212,168,67,.1)', color: 'var(--hp-gold2)', border: '1px solid rgba(212,168,67,.2)' }}>✨ Bắt đầu ở đây</span>
+            </div>
+          </Link>
+        </RevealDiv>
+
+        {/* Ranked card */}
+        <RevealDiv style={{ transitionDelay: '.1s' }}>
+          <Link to="/ranked" style={{ textDecoration: 'none' }}>
+            <div
+              className={`${styles.modeCard} ${styles.modeCardOrange}`}
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={e => { e.currentTarget.style.transform = '' }}
+            >
+              <div className={styles.modeCardStrip} style={{ background: 'linear-gradient(90deg,#E67E22,#F5A623)' }} />
+              <div className={styles.modeCardIconWrap} style={{ background: 'rgba(230,126,34,.12)' }}>🏆</div>
+              <div className={styles.modeCardTitle}>Leo Rank</div>
+              <p className={styles.modeCardDesc}>
+                Hành trình có hệ thống từ Genesis đến Revelation. Mỗi ngày 50 câu, 10 mạng — sai là mất mạng, hết mạng là hết ngày.
+              </p>
+              {/* Lives */}
+              <div className={styles.livesDots}>
+                {Array.from({ length: 10 }, (_, i) => (
+                  <div key={i} className={styles.livesDot} data-active={i < 7} />
+                ))}
+                <span className={styles.livesDotLabel}>7/10 mạng còn lại</span>
+              </div>
+              {/* Progress */}
+              <div className={styles.rankedProgress}>
+                <div className={styles.rankedProgressRow}>
+                  <span>Genesis 12</span><span>23 / 50 câu hôm nay</span>
                 </div>
-
-                {/* Ranking */}
-                <div className="mt-10 pt-8 border-t border-[#eeeae0]">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <h4 className="text-lg font-bold text-[#4a3f35] parchment-headline mb-1">Thứ Hạng Cộng Đồng 👑</h4>
-                      <p className="text-sm text-[#7a6a5a]">
-                        Thứ hạng của bạn so với các học giả khác.
-                      </p>
-                    </div>
-                    <div className="bg-[#fdfaf3] border-2 border-[#4bbf9f] px-6 py-2 rounded-full shadow-sm">
-                      <span className="text-2xl font-black text-[#4bbf9f]">#25</span>
-                    </div>
-                  </div>
+                <div className={styles.rankedProgressBar}>
+                  <div className={styles.rankedProgressFill} />
                 </div>
               </div>
+              <ul className={styles.modeCardList}>
+                {['Genesis → Revelation theo thứ tự', 'Câu khó dần sau khi hoàn thành toàn bộ', 'Reset lúc nửa đêm mỗi ngày'].map(f => (
+                  <li key={f} className={styles.modeCardListItem}>
+                    <span className={styles.modeCardDot} style={{ background: '#E67E22' }} />{f}
+                  </li>
+                ))}
+              </ul>
+              <span className={styles.modeCardTag} style={{ background: 'rgba(230,126,34,.1)', color: '#F5A623', border: '1px solid rgba(230,126,34,.2)' }}>🔥 Tính điểm xếp hạng</span>
             </div>
-          </div>
-        </section>
-      )}
+          </Link>
+        </RevealDiv>
+      </div>
 
       {/* Divider */}
-      <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent relative my-10">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-px bg-cyan-400 shadow-[0_0_15px_#22d3ee]"></div>
-      </div>
+      <RevealDiv>
+        <div className={styles.modesDivider}>
+          <div className={styles.modesDividerLine} />
+          <div className={styles.modesDividerText}>Multiplayer · Realtime</div>
+          <div className={styles.modesDividerLine} />
+        </div>
+      </RevealDiv>
 
-      {/* Leaderboard Section */}
-      <section className="container mx-auto px-6 py-12 relative" style={{ marginTop: '20px' }}>
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-pink-900/10 rounded-3xl pointer-events-none"></div>
-
-        <div className="relative z-10 pt-10">
-          <div className="text-center mb-12">
-            <h2
-              className="text-4xl font-black mb-3 text-[#4bbf9f] parchment-headline tracking-tight"
+      {/* 4 multiplayer cards */}
+      <div className={styles.modesMultiGrid}>
+        {multiCards.map(card => (
+          <RevealDiv key={card.id} style={{ transitionDelay: card.delay }}>
+            <div
+              className={styles.multiCard}
+              style={{ '--accent-rgb': card.accentRgb } as React.CSSProperties}
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={e => { e.currentTarget.style.transform = '' }}
             >
-              BẢNG XẾP HẠNG
-            </h2>
-            <p className="text-[#7a6a5a] text-lg italic max-w-2xl mx-auto">Vị trí số 1 đang chờ tên bạn. Bắt đầu thi đấu để lật đổ vương triều ngay! 👑</p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
-            <div className="flex flex-col h-full space-y-4">
-              {/* Time Period Tabs */}
-              <div className="flex justify-start mb-6">
-                <div className="segmented-control">
-                  <button
-                    className={`segmented-control-item ${timeframe === 'daily' ? 'active' : ''}`}
-                    onClick={() => setTimeframe('daily')}
-                  >Theo ngày</button>
-                  <button
-                    className={`segmented-control-item ${timeframe === 'weekly' ? 'active' : ''}`}
-                    onClick={() => setTimeframe('weekly')}
-                  >Theo tuần</button>
-                  <button
-                    className={`segmented-control-item ${timeframe === 'all-time' ? 'active' : ''}`}
-                    onClick={() => setTimeframe('all-time')}
-                  >Tất cả</button>
-                </div>
+              {card.hot && <div className={styles.multiCardHot}>HOT</div>}
+              <div className={styles.multiCardTag} style={{ color: card.accentColor }}>{card.tag}</div>
+              <span className={styles.multiCardEmoji} style={{ '--accent-rgb': card.accentRgb } as React.CSSProperties}>{card.emoji}</span>
+              <div className={styles.multiCardName}>{card.name}</div>
+              <p className={styles.multiCardDesc}>{card.desc}</p>
+              <div className={styles.multiCardCount}>
+                <span style={{ fontSize: '.65rem' }}>👥</span> {card.count}
               </div>
-
-              {/* Top Players List */}
-              <div className="page-card parchment-texture premium-border p-4 md:p-6 card-hover-effect">
-                <div className="mb-6 flex justify-center">
-                  <div className="relative w-full max-w-xs">
-                    <input
-                      type="text"
-                      placeholder="Tìm đối thủ..."
-                      className="w-full bg-[#fdfaf3]/60 border border-[#eeeae0] rounded-full py-1.5 px-10 text-xs focus:outline-none focus:border-[#00FFFF] transition-all shadow-inner font-bold text-[#4a3f35]"
-                    />
-                    <div className="absolute left-4 top-1/2 -translate-y-1/2 opacity-60 text-xs">🔍</div>
-                  </div>
-                </div>
-
-                <div className="space-y-4 max-h-[480px] overflow-y-auto pr-2 custom-scrollbar relative" id="leaderboard-scroll-container">
-                  {loadingLeaderboard && (
-                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#fdfaf3]/50 backdrop-blur-sm">
-                      <div className="w-8 h-8 rounded-full border-4 border-[#4bbf9f]/30 border-t-[#4bbf9f] animate-spin"></div>
-                    </div>
-                  )}
-
-                  {leaderboardData.length === 0 && !loadingLeaderboard && (
-                    <div className="text-center py-10 text-[#7a6a5a]">Chưa có dữ liệu cho thời gian này.</div>
-                  )}
-
-                  {leaderboardData.slice(0, 10).map((player, index) => {
-                    // Update this check to match how 'user' is structured in AuthContext
-                    const isCurrentUser = user && (player.name === user.username)
-                    const displayRank = index + 1;
-
-                    // Rank 1
-                    if (displayRank === 1) {
-                      return (
-                        <div key={player.id} className={`flex items-center gap-6 p-4 rounded-2xl ${isCurrentUser ? 'bg-[#f0fdf4]' : 'bg-[#fdfaf3]'} border-2 border-[#4bbf9f] shadow-lg relative overflow-hidden group/rank neon-glow`}>
-                          <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#f59e0b]/10 to-transparent rounded-bl-full pointer-events-none"></div>
-                          <div
-                            className="w-16 h-16 rounded-full flex items-center justify-center text-4xl font-black shrink-0"
-                            style={{
-                              background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-                              color: '#ffffff',
-                              boxShadow: '0 8px 15px rgba(245,158,11,0.3)'
-                            }}
-                          >
-                            1
-                          </div>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-1">
-                              <h3 className="text-xl font-bold text-[#4a3f35]">{player.name}</h3>
-                              {isCurrentUser && <span className="bg-[#4bbf9f] text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-sm">BẠN</span>}
-                            </div>
-                            <div className="flex items-center gap-2 text-sm text-[#7a6a5a]">
-                              <span>{player.tier || 'Thành viên VIP'}</span>
-                              <span className="w-1 h-1 rounded-full bg-[#eeeae0]"></span>
-                              <span className="parchment-serif italic">{player.points.toLocaleString()} điểm</span>
-                            </div>
-                          </div>
-                          <div className="text-2xl">👑</div>
-                        </div>
-                      )
-                    }
-
-                    // Rank 2
-                    if (displayRank === 2) {
-                      return (
-                        <div key={player.id} className={`flex items-center gap-6 p-4 rounded-2xl ${isCurrentUser ? 'bg-[#f0fdfa]' : 'bg-[#fdfaf3]'} border ${isCurrentUser ? 'border-[#0ea5e9]' : 'border-[#eeeae0]'} shadow-sm relative overflow-hidden group/rank`}>
-                          <div
-                            className="w-14 h-14 rounded-full flex items-center justify-center text-3xl font-black shrink-0"
-                            style={{
-                              background: 'linear-gradient(135deg, #94a3b8 0%, #64748b 100%)',
-                              color: '#ffffff',
-                              boxShadow: '0 8px 15px rgba(148,163,184,0.3)'
-                            }}
-                          >
-                            2
-                          </div>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-1">
-                              <h3 className="text-lg font-bold text-[#4a3f35]">{player.name}</h3>
-                              {isCurrentUser && <span className="bg-[#0ea5e9] text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-sm">BẠN</span>}
-                            </div>
-                            <div className="flex items-center gap-2 text-sm text-[#7a6a5a]">
-                              <span>{player.tier || 'Thành viên Pro'}</span>
-                              <span className="w-1 h-1 rounded-full bg-[#eeeae0]"></span>
-                              <span className="parchment-serif italic">{player.points.toLocaleString()} điểm</span>
-                            </div>
-                          </div>
-                          <div className="text-2xl">🥈</div>
-                        </div>
-                      )
-                    }
-
-                    // Rank 3
-                    if (displayRank === 3) {
-                      return (
-                        <div key={player.id} className={`flex items-center gap-6 p-4 rounded-2xl ${isCurrentUser ? 'bg-[#fff7ed]' : 'bg-[#fdfaf3]'} border ${isCurrentUser ? 'border-[#ea580c]' : 'border-[#eeeae0]'} shadow-sm relative overflow-hidden group/rank`}>
-                          <div
-                            className="w-14 h-14 rounded-full flex items-center justify-center text-3xl font-black shrink-0"
-                            style={{
-                              background: 'linear-gradient(135deg, #b45309 0%, #78350f 100%)',
-                              color: '#ffffff',
-                              boxShadow: '0 8px 15px rgba(180,83,9,0.3)'
-                            }}
-                          >
-                            3
-                          </div>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-1">
-                              <h3 className="text-lg font-bold text-[#4a3f35]">{player.name}</h3>
-                              {isCurrentUser && <span className="bg-[#ea580c] text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-sm">BẠN</span>}
-                            </div>
-                            <div className="flex items-center gap-2 text-sm text-[#7a6a5a]">
-                              <span>{player.tier || 'Thành viên'}</span>
-                              <span className="w-1 h-1 rounded-full bg-[#eeeae0]"></span>
-                              <span className="parchment-serif italic">{player.points.toLocaleString()} điểm</span>
-                            </div>
-                          </div>
-                          <div className="text-2xl">🥉</div>
-                        </div>
-                      )
-                    }
-
-                    // Rank 4 & 5
-                    if (displayRank === 4 || displayRank === 5) {
-                      return (
-                        <div key={player.id} className={`flex items-center gap-6 p-4 rounded-2xl ${isCurrentUser ? 'bg-[#fdfaf3] border-cyan-400' : 'bg-[#fdfaf3]/50 border border-[#eeeae0]'} shadow-sm relative overflow-hidden group/rank`}>
-                          <div
-                            className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-black shrink-0"
-                            style={{
-                              background: isCurrentUser ? '#00FFFF' : '#eeeae0',
-                              color: isCurrentUser ? '#000' : '#4a3f35',
-                              border: isCurrentUser ? 'none' : '2px solid #d6cfc4',
-                              boxShadow: isCurrentUser ? '0 0 10px rgba(0, 255, 255, 0.4)' : 'none'
-                            }}
-                          >
-                            {displayRank}
-                          </div>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-1">
-                              <h4 className="text-base font-bold text-[#4a3f35]">{player.name}</h4>
-                              {isCurrentUser && <span className="bg-cyan-400 text-black text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-sm">BẠN</span>}
-                            </div>
-                            <div className="flex items-center gap-2 text-xs text-[#7a6a5a]">
-                              <span className="parchment-serif italic">{player.points.toLocaleString()} điểm</span>
-                            </div>
-                          </div>
-                        </div>
-                      )
-                    }
-
-                    // Rank 6 - 10
-                    return (
-                      <div key={player.id} className={`flex items-center gap-6 p-4 rounded-2xl ${isCurrentUser ? 'bg-[#fdfaf3] border-cyan-400' : 'bg-[#fdfaf3]/30 border border-[#eeeae0]/50'} shadow-sm relative overflow-hidden group/rank`}>
-                        <div
-                          className="w-12 h-12 rounded-full flex items-center justify-center text-xl font-black shrink-0"
-                          style={{
-                            background: isCurrentUser ? '#00FFFF' : '#f1ede4',
-                            color: isCurrentUser ? '#000' : '#4a3f35',
-                            border: isCurrentUser ? 'none' : '2px solid #d6cfc4',
-                            boxShadow: isCurrentUser ? '0 0 10px rgba(0, 255, 255, 0.4)' : 'none'
-                          }}
-                        >
-                          {displayRank}
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-1">
-                            <h4 className="text-base font-bold text-[#4a3f35]/80">{player.name}</h4>
-                            {isCurrentUser && <span className="bg-cyan-400 text-black text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter shadow-sm">BẠN</span>}
-                          </div>
-                          <div className="flex items-center gap-2 text-xs text-[#7a6a5a]/70">
-                            <span className="parchment-serif italic">{player.points.toLocaleString()} điểm</span>
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-
-              </div>
+              <div className={styles.multiCardOrb} style={{ background: card.orb }} />
             </div>
-
-            {/* Trophy Illustration */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="page-card parchment-texture premium-border p-6 text-center max-w-sm relative card-hover-effect flex flex-col items-center">
-                <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 50% 30%, #4bbf9f 0%, transparent 70%)' }}></div>
-
-                <div className="relative z-10 w-full">
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center text-4xl shadow-xl bg-white border-2 border-[#eeeae0] relative">
-                    <div className="absolute inset-0 rounded-full animate-ping bg-[#4bbf9f]/10"></div>
-                    🏆
-                  </div>
-
-                  <h4 className="text-xl font-black text-[#4a3f35] parchment-headline mb-1 uppercase tracking-wider">Vinh Quang</h4>
-                  <p className="text-[#4a3f35] text-xs leading-relaxed mb-4 font-bold italic">
-                    "Dành cho những tâm hồn kiên trì và trí tuệ mẫn tiệp nhất."
-                  </p>
-
-                  <div className="flex justify-center gap-4 mb-6">
-                    <div className="text-center">
-                      <div className="text-xl mb-1">⭐</div>
-                      <div className="text-[9px] font-black text-[#4bbf9f] uppercase">Kiên Trì</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-xl mb-1">✨</div>
-                      <div className="text-[9px] font-black text-[#4bbf9f] uppercase">Trí Tuệ</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-xl mb-1">🌟</div>
-                      <div className="text-[9px] font-black text-[#4bbf9f] uppercase">Mẫn Tiệp</div>
-                    </div>
-                  </div>
-
-                  <div className="bg-[#fdfaf3]/80 p-5 rounded-2xl border border-[#eeeae0] backdrop-blur-sm">
-                    <p className="text-lg font-black text-[#4a3f35] parchment-headline mb-1">
-                      SẴN SÀNG CHƯA?
-                    </p>
-                    <p className="text-xs text-[#7a6a5a] mb-3">
-                      Vị trí của bạn đang chờ trên bảng vàng danh dự.
-                    </p>
-                    <Link
-                      to="/practice"
-                      className="btn-primary w-full py-3 text-center flex items-center justify-center gap-2 group text-sm"
-                    >
-                      🚀 BẮT ĐẦU NGAY
-                      <span className="group-hover:translate-x-1 transition-transform">→</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      {/* Artistic Glowing Divider - Increased Spacing for Perfection */}
-      <div className="relative w-full h-[2px] mt-40 overflow-hidden">
-        <div
-          className="absolute inset-x-0 top-0 h-full bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"
-          style={{
-            animation: 'pulse-glow 3s ease-in-out infinite alternate',
-            boxShadow: '0 0 15px rgba(0, 255, 255, 0.5)'
-          }}
-        ></div>
+          </RevealDiv>
+        ))}
       </div>
+    </section>
+  )
+}
 
-      {/* Refined Footer V2.4 - Integrated & Balanced */}
-      <footer className="w-full pt-32 pb-24 px-6 container mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
-          {/* Column 1: Brand & Slogan */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-2">
-              <span className="text-3xl font-black bg-gradient-to-r from-white via-cyan-200 to-purple-200 bg-clip-text text-transparent tracking-tighter drop-shadow-[0_0_15px_rgba(0,255,255,0.3)]">
-                BIBLE QUIZ
-              </span>
-            </div>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-xs font-medium opacity-80 mb-6">
-              Khám phá kho tàng tri thức Kinh Thánh qua những thử thách đầy thú vị và ý nghĩa. Vừa chơi, vừa học, vừa thăng trưởng đức tin mỗi ngày.
-            </p>
-            <div className="flex items-center space-x-5">
-              <a href="#" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00FFFF] hover:border-[#00FFFF] hover:scale-110 transition-all duration-300 shadow-lg" title="Facebook">
-                <span className="text-xs">FB</span>
-              </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00FFFF] hover:border-[#00FFFF] hover:scale-110 transition-all duration-300 shadow-lg" title="YouTube">
-                <span className="text-xs">YT</span>
-              </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00FFFF] hover:border-[#00FFFF] hover:scale-110 transition-all duration-300 shadow-lg" title="TikTok">
-                <span className="text-xs">TT</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Column 2: Quick Links */}
-          <div className="space-y-8">
-            <h3 className="text-white text-xs font-black uppercase tracking-[0.3em] opacity-50">Hành trình</h3>
-            <div className="flex flex-col space-y-4">
-              <Link to="/about" className="text-white hover:text-[#00FFFF] transition-all duration-300 text-sm font-bold w-fit">Về Chúng Tôi</Link>
-              <Link to="/practice" className="text-white hover:text-[#00FFFF] transition-all duration-300 text-sm font-bold w-fit">Ôn luyện Kinh Thánh</Link>
-              <Link to="/ranked" className="text-white hover:text-[#00FFFF] transition-all duration-300 text-sm font-bold w-fit">Thử thách Xếp hạng</Link>
-              <Link to="/support" className="text-white hover:text-[#00FFFF] transition-all duration-300 text-sm font-bold w-fit">Hỗ trợ cộng đồng</Link>
-            </div>
-          </div>
-
-          {/* Column 3: Policy & Rights */}
-          <div className="space-y-8 md:text-right">
-            <h3 className="text-white text-xs font-black uppercase tracking-[0.3em] opacity-50">Quy định</h3>
-            <div className="flex flex-col space-y-4 md:items-end">
-              <Link to="/privacy" className="text-white hover:text-[#00FFFF] transition-all duration-300 text-sm font-bold w-fit">Chính sách bảo mật</Link>
-              <Link to="/terms" className="text-white hover:text-[#00FFFF] transition-all duration-300 text-sm font-bold w-fit">Điều khoản sử dụng</Link>
-            </div>
-          </div>
+// ─── Why Section ──────────────────────────────────────────────────────────────
+function WhySection() {
+  const cards = [
+    { num: '01', icon: '🏆', title: 'Học bằng cách thi đấu, không phải đọc', desc: 'Não bộ nhớ lâu hơn khi có áp lực và cảm xúc. Battle Royale tạo ra đúng điều đó — bạn sẽ không quên câu trả lời sau khi bị loại vì nó.' },
+    { num: '02', icon: '📈', title: 'Streak và rank khiến bạn quay lại', desc: 'Hệ thống Leo Rank daily reset, streak ngày liên tiếp, và bảng xếp hạng realtime tạo động lực học mỗi ngày — không cần ý chí.' },
+    { num: '03', icon: '👥', title: 'Chơi cùng nhóm nhà thờ, không cần setup phức tạp', desc: 'Tạo phòng, chia sẻ mã 6 ký tự, bắt đầu trong 30 giây. Team vs Team hoàn hảo cho lớp học Kinh Thánh hoặc sự kiện nhóm.' },
+  ]
+  const r1 = useScrollReveal(), r2 = useScrollReveal()
+  return (
+    <section className={styles.why}>
+      <div ref={r1} className="hp-reveal">
+        <div className={styles.sectionLabel}>
+          <span className={styles.sectionLabelSlash}>//</span> Tại sao BibleQuiz
         </div>
+      </div>
+      <h2 ref={r2} className={`hp-reveal ${styles.whyTitle}`}>
+        Khác với những app<br />Kinh Thánh khác.
+      </h2>
+      <div className={styles.whyGrid}>
+        {cards.map((card, i) => (
+          <RevealDiv key={card.num} style={{ transitionDelay: `${i * .05 + .05}s` }}>
+            <div className={styles.whyCard}>
+              <div className={styles.whyCardIcon}>{card.icon}</div>
+              <div className={styles.whyNum}>{card.num}</div>
+              <div className={styles.whyCardTitle}>{card.title}</div>
+              <p className={styles.whyCardDesc}>{card.desc}</p>
+            </div>
+          </RevealDiv>
+        ))}
+      </div>
+    </section>
+  )
+}
 
-        {/* Centered Copyright - Final Perfection Accent */}
-        <div className="mt-24 pt-12 border-t border-white/5 text-center space-y-3">
-          <p className="text-gray-500 text-[11px] font-black uppercase tracking-[0.4em] leading-relaxed">
-            © 2024 BIBLE QUIZ. <span className="text-gray-600 font-bold">ALL RIGHTS RESERVED.</span>
-          </p>
-          <div className="flex items-center justify-center space-x-3 text-gray-500/40 text-[10px] font-bold italic">
-            <span>🛡️ Bảo mật tuyệt đối</span>
-            <span className="w-1 h-1 rounded-full bg-gray-500/20"></span>
-            <span>⚡ Tốc độ tối ưu</span>
-            <span className="w-1 h-1 rounded-full bg-gray-500/20"></span>
-            <span>❤️ Made for Community</span>
-          </div>
+// ─── Leaderboard Section ──────────────────────────────────────────────────────
+const MOCK_LB: LeaderboardPlayer[] = [
+  { id: '1', name: 'Thanh Hằng',  points: 124850, rank: 1, tier: 'Battle Royale · 28 trận thắng liên tiếp' },
+  { id: '2', name: 'Minh Khoa',   points: 118420, rank: 2, tier: 'Speed Race · Avg 2.1s / câu' },
+  { id: '3', name: 'Lan Phương',  points: 103710, rank: 3, tier: 'Team vs Team · 95% accuracy' },
+  { id: '4', name: 'Hoàng Nam',   points: 97300,  rank: 4, tier: 'Sudden Death · 41 trận giữ ghế' },
+  { id: '5', name: 'Quỳnh Liên',  points: 89150,  rank: 5, tier: 'Leo Rank · 22 ngày streak' },
+]
+
+const LB_AVATARS = [
+  { bg: 'rgba(155,89,182,.2)',  color: '#C39BD3', text: 'TH' },
+  { bg: 'rgba(52,152,219,.2)',  color: '#5DADE2', text: 'MK' },
+  { bg: 'rgba(46,213,115,.2)', color: '#58D68D', text: 'LP' },
+  { bg: 'rgba(230,126,34,.2)', color: '#F5A623', text: 'HN' },
+  { bg: 'rgba(255,107,91,.2)', color: '#FF6B5B', text: 'QL' },
+]
+
+const LB_STREAKS = [28, 14, 9]
+const LB_RANK_EMOJIS = ['🥇', '🥈', '🥉']
+
+function LeaderboardSection() {
+  const [activeTab, setActiveTab] = useState(0)
+  const [data, setData] = useState<LeaderboardPlayer[]>(MOCK_LB)
+  const [loading, setLoading] = useState(false)
+  const tabs = ['Tuần này', 'Hôm nay', 'Mọi thời đại']
+  const timeframes = ['weekly', 'daily', 'all-time']
+  const r1 = useScrollReveal(), r2 = useScrollReveal()
+
+  useEffect(() => {
+    setLoading(true)
+    api.get(`/api/leaderboard/${timeframes[activeTab]}`)
+      .then(res => { if (res.data?.length >= 5) { setData(res.data.slice(0, 5)) } else { setData(MOCK_LB) } })
+      .catch(() => setData(MOCK_LB))
+      .finally(() => setLoading(false))
+  }, [activeTab])
+
+  return (
+    <section id="lb-section" className={styles.lb}>
+      <div ref={r1} className="hp-reveal">
+        <div className={styles.sectionLabel}>
+          <span className={styles.sectionLabelSlash}>//</span> Bảng xếp hạng
         </div>
-      </footer>
+      </div>
+      <h2 ref={r2} className={`hp-reveal ${styles.lbTitle}`}>
+        Ai đang dẫn đầu<br />tuần này?
+      </h2>
+
+      <div className={styles.lbInner}>
+        {/* Tabs */}
+        <RevealDiv>
+          <div className={styles.lbTabs}>
+            {tabs.map((tab, i) => (
+              <button
+                key={tab}
+                className={styles.lbTab}
+                data-active={activeTab === i}
+                onClick={() => setActiveTab(i)}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+        </RevealDiv>
+
+        {/* Rows */}
+        <RevealDiv>
+          <div className={styles.lbRows}>
+            {loading && (
+              <div className={styles.lbOverlay}>
+                <div className={styles.lbSpinner} />
+              </div>
+            )}
+            <div key={activeTab} className={styles.lbTabContent}>
+            {data.map((player, i) => (
+              <div key={player.id} className={`${styles.lbRow} ${i === 0 ? styles.lbRowTop : ''}`}>
+                <div className={styles.lbRank} data-rank={i < 3 ? i : 3}>
+                  {i < 3 ? LB_RANK_EMOJIS[i] : i + 1}
+                </div>
+                <div
+                  className={styles.lbAvatar}
+                  style={{
+                    background: LB_AVATARS[i]?.bg ?? 'rgba(255,255,255,.1)',
+                    color: LB_AVATARS[i]?.color ?? '#fff',
+                    border: i === 0 ? '2px solid var(--hp-gold)' : i === 1 ? '2px solid #B0B8C4' : i === 2 ? '2px solid #CD7F32' : 'none'
+                  }}
+                >
+                  {LB_AVATARS[i]?.text ?? player.name.slice(0, 2).toUpperCase()}
+                </div>
+                <div className={styles.lbInfo}>
+                  <div className={styles.lbName}>{player.name}</div>
+                  <div className={styles.lbTier}>{player.tier}</div>
+                </div>
+                {i < 3 && (
+                  <div className={styles.lbStreak}>🔥 {LB_STREAKS[i]}</div>
+                )}
+                <div className={styles.lbPoints}>
+                  {player.points.toLocaleString()}
+                  <small className={styles.lbPointsLabel}>điểm</small>
+                </div>
+              </div>
+            ))}
+            </div>
+          </div>
+        </RevealDiv>
+
+        {/* View all link */}
+        <RevealDiv>
+          <div className={styles.lbViewAll}>
+            <Link to="/leaderboard" className={styles.lbViewAllLink}>
+              Xem toàn bộ bảng xếp hạng ↗
+            </Link>
+          </div>
+        </RevealDiv>
+      </div>
+    </section>
+  )
+}
+
+// ─── Quote Section ────────────────────────────────────────────────────────────
+function QuoteSection() {
+  const r = useScrollReveal()
+  return (
+    <section className={styles.quote}>
+      <div ref={r} className={`hp-reveal ${styles.quoteInner}`}>
+        <div className={styles.quoteText}>
+          Hãy <em className={styles.quoteEm}>siêng năng dạy</em> những điều này cho con cái ngươi — hoặc là dùng BibleQuiz, cũng được.
+        </div>
+        <div className={styles.quoteRef}>
+          Phục Truyền 6:7 · (có chút diễn giải)
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── CTA Section ──────────────────────────────────────────────────────────────
+function CTASection() {
+  return (
+    <section className={styles.cta}>
+      <div className={styles.ctaGlow} />
+      <RevealDiv>
+        <h2 className={styles.ctaTitle}>
+          Đăng nhập.<br /><span className={styles.ctaTitleHighlight}>Bắt đầu. Thắng.</span>
+        </h2>
+        <p className={styles.ctaSub}>Không cần tạo tài khoản. Đăng nhập Google là chơi ngay.</p>
+        <div className={styles.ctaBtns}>
+          <Link to="/ranked" className={styles.ctaBtnPrimary}>Chơi ngay — miễn phí ↗</Link>
+          <a href="#modes" className={styles.ctaBtnSecondary}>Xem chế độ chơi</a>
+        </div>
+        <div className={styles.ctaFootnote}>Miễn phí · Không quảng cáo · 66 sách Kinh Thánh đầy đủ</div>
+      </RevealDiv>
+    </section>
+  )
+}
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
+function Footer() {
+  return (
+    <footer className={styles.footer}>
+      <div className={styles.footerLeft}>
+        <div className={styles.footerLogo}>✝ BibleQuiz</div>
+        <div className={styles.footerTagline}>Quiz Kinh Thánh · Competitive Gaming</div>
+      </div>
+      <ul className={styles.footerLinks}>
+        {['Về chúng tôi', 'Điều khoản', 'Quyền riêng tư', 'Liên hệ'].map(link => (
+          <li key={link}>
+            <a href="#" className={styles.footerLink}>{link}</a>
+          </li>
+        ))}
+      </ul>
+      <div className={styles.footerCopy}>© 2026 BibleQuiz</div>
+    </footer>
+  )
+}
+
+// ─── Home Page ────────────────────────────────────────────────────────────────
+export default function Home() {
+  const [showLogin, setShowLogin] = useState(false)
+  const [toast, setToast] = useState<string | null>(null)
+
+  const fireToast = (msg: string) => {
+    setToast(msg)
+    setTimeout(() => setToast(null), 3200)
+  }
+
+  return (
+    <div className={styles.root}>
+      <Nav onOpenLogin={() => setShowLogin(true)} onLoggedOut={() => fireToast('Đã đăng xuất ✓')} />
+      <HeroSection />
+      <TickerBanner />
+      <ModesSection />
+      <WhySection />
+      <LeaderboardSection />
+      <QuoteSection />
+      <CTASection />
+      <Footer />
+      {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
+      {toast && <Toast message={toast} />}
     </div>
   )
 }

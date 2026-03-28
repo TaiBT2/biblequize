@@ -25,3 +25,10 @@ api.log
 *.py
 all_files.txt
 rule-rank.txt
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

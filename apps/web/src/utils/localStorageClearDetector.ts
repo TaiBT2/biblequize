@@ -62,8 +62,11 @@ export const detectLocalStorageClear = () => {
     updateKnownKeys()
   }
   
-  // Check periodically for clear
-  setInterval(checkForClear, 500) // Check every 500ms for faster detection
+  // Check periodically for DevTools manual clears (programmatic clears already handled above)
+  setInterval(checkForClear, 2000)
+
+  // Also catch cross-tab storage events
+  window.addEventListener('storage', () => checkForClear())
 }
 
 // Auto-initialize

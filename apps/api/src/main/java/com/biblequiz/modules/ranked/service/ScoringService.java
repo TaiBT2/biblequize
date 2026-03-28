@@ -3,61 +3,85 @@ package com.biblequiz.modules.ranked.service;
 import com.biblequiz.modules.quiz.entity.Question;
 import org.springframework.stereotype.Service;
 
+/**
+ * SPEC-v2 scoring engine.
+ *
+ * Base points: Easy 8, Medium 12, Hard 18
+ * Speed bonus (quadratic): floor(basePoints * 0.5 * speedRatio²)
+ *   where speedRatio = (timeLimitMs - elapsedMs) / timeLimitMs
+ * Combo multiplier: 5-streak → x1.2, 10-streak → x1.5
+ * Daily first-question bonus: x2
+ */
 @Service
 public class ScoringService {
 
-    private static final int TIME_LIMIT_SEC = 30;
-    private static final int PERFECT_BONUS_THRESHOLD = 15; // seconds remaining
-    private static final int PERFECT_BONUS_POINTS = 5;
-    private static final int STREAK_START = 3;
-    private static final int STREAK_BONUS_PER_LEVEL = 10;
+    private static final int TIME_LIMIT_MS = 30_000;
 
     public static class ScoreResult {
         public final int earned;
         public final int baseScore;
-        public final int timeBonus;
-        public final int streakBonus;
-        public final int perfectBonus;
+        public final int speedBonus;
+        public final int comboMultiplierPercent; // 100 = x1.0, 120 = x1.2, 150 = x1.5
+        public final boolean isDailyFirst;
 
-        public ScoreResult(int earned, int baseScore, int timeBonus, int streakBonus, int perfectBonus) {
+        public ScoreResult(int earned, int baseScore, int speedBonus, int comboMultiplierPercent, boolean isDailyFirst) {
             this.earned = earned;
             this.baseScore = baseScore;
-            this.timeBonus = timeBonus;
-            this.streakBonus = streakBonus;
-            this.perfectBonus = perfectBonus;
+            this.speedBonus = speedBonus;
+            this.comboMultiplierPercent = comboMultiplierPercent;
+            this.isDailyFirst = isDailyFirst;
         }
     }
 
     /**
-     * Calculates score for a correct answer.
+     * Calculates score for a correct answer per SPEC-v2.
      *
-     * @param difficulty     question difficulty (may be null for default/easy)
-     * @param clientElapsedMs time the user spent answering in milliseconds
-     * @param currentStreak  streak AFTER incrementing (i.e., already includes this answer)
-     * @return ScoreResult with breakdown
+     * @param difficulty       question difficulty (null defaults to easy)
+     * @param clientElapsedMs  time the user spent answering in milliseconds
+     * @param currentStreak    streak of consecutive correct answers in this session
+     * @param isDailyFirst     true if this is the user's first ranked answer today
+     */
+    public ScoreResult calculate(Question.Difficulty difficulty, int clientElapsedMs,
+                                  int currentStreak, boolean isDailyFirst) {
+        int baseScore = getBaseScore(difficulty);
+
+        // Quadratic speed bonus: floor(basePoints * 0.5 * speedRatio²)
+        double speedRatio = Math.max(0.0, (double) (TIME_LIMIT_MS - clientElapsedMs) / TIME_LIMIT_MS);
+        int speedBonus = (int) Math.floor(baseScore * 0.5 * speedRatio * speedRatio);
+
+        int subtotal = baseScore + speedBonus;
+
+        // Combo multiplier
+        int comboPercent = 100;
+        if (currentStreak >= 10) {
+            comboPercent = 150;
+        } else if (currentStreak >= 5) {
+            comboPercent = 120;
+        }
+        subtotal = subtotal * comboPercent / 100;
+
+        // Daily first-question bonus
+        if (isDailyFirst) {
+            subtotal = subtotal * 2;
+        }
+
+        return new ScoreResult(subtotal, baseScore, speedBonus, comboPercent, isDailyFirst);
+    }
+
+    /**
+     * Backwards-compatible overload (no daily-first flag).
      */
     public ScoreResult calculate(Question.Difficulty difficulty, int clientElapsedMs, int currentStreak) {
-        int timeLeft = Math.max(0, TIME_LIMIT_SEC - (clientElapsedMs / 1000));
+        return calculate(difficulty, clientElapsedMs, currentStreak, false);
+    }
 
-        // Base score includes difficulty — no separate multiplier
-        int baseScore = 10; // easy
-        if (difficulty == Question.Difficulty.medium) {
-            baseScore = 25;
-        } else if (difficulty == Question.Difficulty.hard) {
-            baseScore = 50;
-        }
-
-        int timeBonus = timeLeft / 2;
-        int perfectBonus = (timeLeft >= PERFECT_BONUS_THRESHOLD) ? PERFECT_BONUS_POINTS : 0;
-
-        // Linear streak bonus: +10 per streak starting from streak 3
-        int streakBonus = 0;
-        if (currentStreak >= STREAK_START) {
-            streakBonus = (currentStreak - (STREAK_START - 1)) * STREAK_BONUS_PER_LEVEL;
-        }
-
-        int earned = baseScore + timeBonus + perfectBonus + streakBonus;
-        return new ScoreResult(earned, baseScore, timeBonus, streakBonus, perfectBonus);
+    private int getBaseScore(Question.Difficulty difficulty) {
+        if (difficulty == null) return 8;
+        return switch (difficulty) {
+            case easy -> 8;
+            case medium -> 12;
+            case hard -> 18;
+        };
     }
 
     /**

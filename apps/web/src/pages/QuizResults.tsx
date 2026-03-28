@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
-import { api } from '../api/client'
+import { useNavigate } from 'react-router-dom'
+import styles from './QuizResults.module.css'
 
 interface Question {
   id: string
@@ -58,8 +57,8 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
     return (
       <div className="min-h-screen page-bg flex items-center justify-center p-4">
         <div className="page-card p-8 text-center max-w-md w-full">
-          <h2 className="text-2xl font-black mb-4 text-[#e05c5c] parchment-headline">⚠️ Không có dữ liệu kết quả</h2>
-          <p className="text-[#7a6a5a] mb-6">
+          <h2 className={`text-2xl font-black mb-4 ${styles.noDataTitle}`}>⚠️ Không có dữ liệu kết quả</h2>
+          <p className={styles.noDataText}>
             Có vẻ như có lỗi khi tải dữ liệu quiz. Vui lòng thử lại.
           </p>
           <div className="space-y-4">
@@ -141,37 +140,28 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
   return (
     <div className="min-h-screen page-bg flex items-center justify-center p-4 py-12">
       <div className="page-card p-8 md:p-12 text-center max-w-4xl w-full">
-        <h2 className="text-[#4bbf9f] text-4xl font-black mb-10 parchment-headline tracking-tight">🎯 KẾT QUẢ BÀI QUIZ</h2>
+        <h2 className={styles.title}>🎯 Kết quả bài quiz</h2>
 
         {/* Simple Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-[#fdfaf3] border-2 border-[#eeeae0] rounded-2xl p-6 shadow-sm">
-            <div className="text-[#4bbf9f] text-4xl font-black mb-2">
-              {scoreDisplay}
+          {[
+            { value: String(scoreDisplay), label: 'Tổng điểm' },
+            { value: `${correctDisplay}/${stats.totalQuestions || 0}`, label: 'Câu đúng' },
+            { value: `${totalMinutes}:${totalSeconds.toString().padStart(2, '0')}`, label: 'Thời gian' },
+          ].map(({ value, label }) => (
+            <div key={label} className={styles.statCard}>
+              <div className={styles.statValue}>
+                {value}
+              </div>
+              <div className={styles.statLabel}>{label}</div>
             </div>
-            <div className="text-[#7a6a5a] font-bold uppercase text-xs tracking-wider">Tổng điểm</div>
-          </div>
-          <div className="bg-[#fdfaf3] border-2 border-[#eeeae0] rounded-2xl p-6 shadow-sm">
-            <div className="text-[#4bbf9f] text-4xl font-black mb-2">
-              {correctDisplay}/{stats.totalQuestions || 0}
-            </div>
-            <div className="text-[#7a6a5a] font-bold uppercase text-xs tracking-wider">Câu đúng</div>
-          </div>
-          <div className="bg-[#fdfaf3] border-2 border-[#eeeae0] rounded-2xl p-6 shadow-sm">
-            <div className="text-[#4bbf9f] text-4xl font-black mb-2">
-              {totalMinutes}:{totalSeconds.toString().padStart(2, '0')}
-            </div>
-            <div className="text-[#7a6a5a] font-bold uppercase text-xs tracking-wider">Thời gian</div>
-          </div>
+          ))}
         </div>
 
         {/* Celebration particles for good performance */}
         {stats.totalQuestions > 0 && stats.correctAnswers / stats.totalQuestions >= 0.8 && (
           <div className="relative h-0">
-            <div className="pointer-events-none select-none" style={{
-              position: 'absolute', left: 0, right: 0, top: -12, height: 0,
-              filter: 'drop-shadow(0 0 4px rgba(255,255,255,0.45))'
-            }}>
+            <div className={styles.confettiWrapper}>
               {Array.from({ length: 12 }).map((_, i) => (
                 <span
                   key={i}
@@ -216,9 +206,9 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
 
         {/* Performance insights */}
         {stats.questions && stats.questions.length > 0 && (
-          <div className="mt-12 text-left bg-[#f8f9fa] p-8 rounded-3xl border border-[#eeeae0]">
-            <h3 className="text-[#4a3f35] font-black text-xl mb-6 flex items-center gap-2">
-              <span className="text-2xl">📊</span> Phân tích kết quả
+          <div className={styles.insightsPanel}>
+            <h3 className={styles.insightsPanelTitle}>
+              <span>📊</span> Phân tích kết quả
             </h3>
             <Insights stats={stats} />
           </div>
@@ -243,12 +233,12 @@ const Insights: React.FC<{ stats: QuizStats }> = ({ stats }) => {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="neon-card p-4">
-          <div className="text-green-300 font-bold mb-1">🏆 Chủ đề mạnh nhất</div>
-          <div className="text-gray-200">—</div>
+          <div className={styles.insightCardLabelStrong}>🏆 Chủ đề mạnh nhất</div>
+          <div className={styles.insightCardMuted}>—</div>
         </div>
-        <div className="neon-card p-4">
-          <div className="text-pink-300 font-bold mb-1">✏️ Cần cải thiện</div>
-          <div className="text-gray-200">—</div>
+        <div className={styles.insightCardWeak}>
+          <div className={styles.insightCardLabelWeak}>✏️ Cần cải thiện</div>
+          <div className={styles.insightCardMuted}>—</div>
         </div>
       </div>
     )
@@ -260,17 +250,17 @@ const Insights: React.FC<{ stats: QuizStats }> = ({ stats }) => {
   const allPerfect = minAcc === maxAcc && maxAcc === 1
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <div className="bg-white p-5 rounded-2xl border border-[#eeeae0] shadow-sm">
-        <div className="text-[#4bbf9f] font-black mb-2 flex items-center gap-2">
+      <div className={styles.insightCardStrong}>
+        <div className={styles.insightCardLabelStrong}>
           <span>🏆</span> Chủ đề mạnh nhất
         </div>
-        <div className="text-[#4a3f35] font-bold text-lg">{`${strongest.book} (${Math.round(strongest.acc * 100)}%)`}</div>
+        <div className={styles.insightCardValue}>{`${strongest.book} (${Math.round(strongest.acc * 100)}%)`}</div>
       </div>
-      <div className="bg-white p-5 rounded-2xl border border-[#eeeae0] shadow-sm">
-        <div className="text-[#e05c5c] font-black mb-2 flex items-center gap-2">
+      <div className={styles.insightCardWeak}>
+        <div className={styles.insightCardLabelWeak}>
           <span>✏️</span> Cần cải thiện
         </div>
-        <div className="text-[#4a3f35] font-bold text-lg">{allPerfect ? 'Không có! Bạn đã nắm vững tất cả.' : `${weakest.book} (${Math.round(weakest.acc * 100)}%)`}</div>
+        <div className={styles.insightCardValue}>{allPerfect ? 'Không có! Bạn đã nắm vững tất cả.' : `${weakest.book} (${Math.round(weakest.acc * 100)}%)`}</div>
       </div>
     </div>
   )

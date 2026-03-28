@@ -78,12 +78,16 @@ api.interceptors.response.use(
         originalRequest.headers.Authorization = `Bearer ${accessToken}`
         return api(originalRequest)
       } catch (refreshError) {
-        // Refresh failed — clear in-memory token and redirect to login
+        // Refresh failed — clear in-memory token
         setAccessToken(null)
         localStorage.removeItem('userName')
         localStorage.removeItem('userEmail')
         localStorage.removeItem('userAvatar')
-        window.location.href = '/login'
+        // Only redirect on protected pages — public pages handle unauthenticated state themselves
+        const PUBLIC_PATHS = ['/', '/login', '/auth/callback', '/practice', '/leaderboard']
+        if (!PUBLIC_PATHS.includes(window.location.pathname)) {
+          window.location.href = '/login'
+        }
       }
     }
 

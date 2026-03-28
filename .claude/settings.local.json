@@ -1,16 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "Bash(xargs grep:*)",
-      "Bash(grep -E \"\\\\.\\(md|txt\\)$\")",
-      "Bash(grep -r \"TODO\\\\|FIXME\\\\|BUG\" /d/code/biblequize/apps/api/src/main/java --include=*.java)",
-      "Bash(docker compose:*)",
-      "Bash(docker exec:*)",
-      "Bash(./mvnw spring-boot:run)",
-      "Bash(taskkill //F //PID 15716)",
-      "Bash(curl -s \"http://localhost:8080/api/ranked/sessions\" -X POST -H \"Content-Type: application/json\")",
-      "Bash(grep -E \"\\\\.\\(tsx|ts|jsx|js\\)$\")",
-      "Bash(grep -l \"admin\" /d/code/biblequize/apps/web/src/api/*.ts)"
+      "Bash(*)"
     ]
   }
 }

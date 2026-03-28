@@ -95,6 +95,8 @@ public class SecurityConfig {
                                                                 "/login/**",
                                                                 "/login/oauth2/**",
                                                                 "/api/me/bootstrap-admin",
+                                                "/api/daily-challenge",
+                                                "/api/share/*/view",
                                                                 "/swagger-ui/**",
                                                                 "/v3/api-docs/**",
                                                                 "/swagger-ui.html")

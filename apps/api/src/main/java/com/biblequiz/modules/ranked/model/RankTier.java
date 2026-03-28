@@ -3,11 +3,11 @@ package com.biblequiz.modules.ranked.model;
 public enum RankTier {
 
     TAN_TIN_HUU("Tân Tín Hữu", 0, "newcomer"),
-    MON_DO("Môn Đồ", 500, "disciple"),
-    THAY_GIANG("Thầy Giảng", 2_000, "preacher"),
-    TRUONG_LAO("Trưởng Lão", 8_000, "elder"),
-    TIEN_TRI("Tiên Tri", 25_000, "prophet"),
-    SU_DO("Sứ Đồ", 80_000, "apostle");
+    NGUOI_TIM_KIEM("Người Tìm Kiếm", 1_000, "seeker"),
+    MON_DO("Môn Đồ", 5_000, "disciple"),
+    HIEN_TRIET("Hiền Triết", 15_000, "sage"),
+    TIEN_TRI("Tiên Tri", 40_000, "prophet"),
+    SU_DO("Sứ Đồ", 100_000, "apostle");
 
     private final String displayName;
     private final int requiredPoints;

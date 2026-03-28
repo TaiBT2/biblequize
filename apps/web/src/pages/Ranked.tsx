@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../api/client'
 import BookProgress from '../components/BookProgress'
 import { useAuth } from '../contexts/AuthContext'
 import { useRankedDataSync } from '../hooks/useRankedDataSync'
+import styles from './Ranked.module.css'
 
 // ── Icons (Consistent with Leaderboard) ────────────────────────────────────
 const BookIcon = ({ size = 20, color = 'currentColor' }: { size?: number; color?: string }) => (
@@ -236,18 +237,12 @@ export default function Ranked() {
 
   if (isLoading || !isInitialized) {
     return (
-      <div className="min-h-screen neon-bg flex items-center justify-center relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-20 left-20 text-5xl neon-orange opacity-20 animate-pulse">🏆</div>
-        <div className="absolute bottom-20 right-20 text-5xl neon-pink opacity-20 animate-pulse">⚡</div>
-
-        <div className="text-center">
-          <div className="neon-card p-8">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-neon-blue mx-auto mb-4"></div>
-            <p className="neon-text text-white">
-              {!isInitialized ? 'Đang đồng bộ dữ liệu...' : 'Đang tải...'}
-            </p>
-          </div>
+      <div className="min-h-screen page-bg flex items-center justify-center">
+        <div className="page-card p-8 text-center">
+          <div className={`animate-spin rounded-full h-12 w-12 border-4 border-t-transparent mx-auto mb-4 ${styles.loadingSpinner}`}></div>
+          <p className={styles.loadingText}>
+            {!isInitialized ? 'Đang đồng bộ dữ liệu...' : 'Đang tải...'}
+          </p>
         </div>
       </div>
     )
@@ -255,21 +250,10 @@ export default function Ranked() {
 
   if (!rankedStatus) {
     return (
-      <div className="min-h-screen neon-bg flex items-center justify-center relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-20 left-20 text-5xl neon-red opacity-20 animate-pulse">❌</div>
-        <div className="absolute bottom-20 right-20 text-5xl neon-blue opacity-20 animate-pulse">🔄</div>
-
-        <div className="text-center">
-          <div className="neon-card p-8">
-            <p className="neon-text text-white mb-6">Không thể tải trạng thái xếp hạng</p>
-            <Link
-              to="/"
-              className="neon-btn neon-btn-blue px-6 py-2"
-            >
-              Về Trang Chủ
-            </Link>
-          </div>
+      <div className="min-h-screen page-bg flex items-center justify-center">
+        <div className="page-card p-8 text-center">
+          <p className={styles.errorText}>Không thể tải trạng thái xếp hạng</p>
+          <Link to="/" className="btn-primary">Về Trang Chủ</Link>
         </div>
       </div>
     )
@@ -285,13 +269,7 @@ export default function Ranked() {
 
       {/* Header Section */}
       <div className="text-center z-10 w-full px-4 mb-2">
-        <h1 className="text-6xl font-black mb-3 tracking-tighter text-glow"
-          style={{
-            background: 'linear-gradient(to bottom, #00F5D4, #00D2FF)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            textShadow: '0 0 30px rgba(0, 245, 212, 0.5)'
-          }}>
+        <h1 className={`text-6xl font-black mb-3 tracking-tighter text-glow ${styles.heroTitle}`}>
           CHẾ ĐỘ XẾP HẠNG
         </h1>
         <div className="flex items-center justify-center gap-6 text-[11px] font-black uppercase tracking-[0.3em] text-white/80">
@@ -308,7 +286,7 @@ export default function Ranked() {
         style={{ filter: canPlay ? 'none' : 'grayscale(1) opacity(0.6)' }}>
         <div className="absolute inset-0 mockup-dark-card rounded-[3rem] border-white/5 shadow-2 shadow-2xl overflow-hidden">
           {/* Decorative Scrolls Pattern */}
-          <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: `url('https://www.transparenttextures.com/patterns/ancient-pavilion.png')` }}></div>
+          <div className={`absolute inset-0 opacity-[0.04] pointer-events-none ${styles.scrollPattern}`}></div>
 
           <div className="h-full w-full flex flex-col justify-center px-16 relative">
             {/* Top Row: Stats & Rank Circle */}
@@ -359,7 +337,7 @@ export default function Ranked() {
             <div className="flex items-center justify-between px-24">
               <div className="flex flex-col items-center gap-4 group">
                 <div className="transition-all duration-500 group-hover:scale-110">
-                  <svg width="70" height="85" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0 0 20px rgba(0, 245, 212, 0.4))' }}>
+                  <svg width="70" height="85" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.currentBookIcon}>
                     <path d="M20 10C20 4.47715 24.4772 0 30 0H90C95.5228 0 100 4.47715 100 10V110C100 115.523 95.5228 120 90 120H30C24.4772 120 20 115.523 20 110V10Z" fill="#13161C" stroke="#00F5D4" strokeWidth="2" />
                     <path d="M20 20H10C4.47715 20 0 24.4772 0 30V110C0 115.523 4.47715 120 10 120H20V20Z" fill="#0B0E14" stroke="#00F5D4" strokeWidth="2" />
                     <path d="M50 30V70M30 50H70" stroke="#00F5D4" strokeWidth="4" strokeLinecap="round" />
@@ -373,13 +351,13 @@ export default function Ranked() {
 
               <div className="flex-1 flex items-center justify-center px-12">
                 <svg width="100" height="30" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="animate-pulse">
-                  <path d="M5 12H90M90 12L80 5M90 12L80 19" stroke="#00F5D4" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" style={{ filter: 'drop-shadow(0 0 10px #00F5D4)' }} />
+                  <path d="M5 12H90M90 12L80 5M90 12L80 19" stroke="#00F5D4" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className={styles.arrowFilter} />
                 </svg>
               </div>
 
               <div className="flex flex-col items-center gap-4 group">
                 <div className="transition-all duration-500 group-hover:scale-110">
-                  <svg width="70" height="85" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0 0 20px rgba(255, 195, 0, 0.4))' }}>
+                  <svg width="70" height="85" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.nextBookIcon}>
                     <path d="M20 10C20 4.47715 24.4772 0 30 0H90C95.5228 0 100 4.47715 100 10V110C100 115.523 95.5228 120 90 120H30C24.4772 120 20 115.523 20 110V10Z" fill="#13161C" stroke="#FFC300" strokeWidth="2" />
                     <path d="M20 20H10C4.47715 20 0 24.4772 0 30V110C0 115.523 4.47715 120 10 120H20V20Z" fill="#0B0E14" stroke="#FFC300" strokeWidth="2" />
                     <path d="M50 30V70M30 50H70" stroke="#FFC300" strokeWidth="4" strokeLinecap="round" />
@@ -416,15 +394,12 @@ export default function Ranked() {
         )}
 
         {/* Reset Timer: Large bordered pill */}
-        <div
-          className="flex items-center justify-center gap-3 px-10 py-3 rounded-2xl border border-white/10 bg-black/30 backdrop-blur-sm"
-          style={{ minWidth: '340px' }}
-        >
+        <div className={`flex items-center justify-center gap-3 px-10 py-3 rounded-2xl border border-white/10 bg-black/30 backdrop-blur-sm ${styles.resetTimer}`}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/40 shrink-0">
             <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
           </svg>
           <span className="text-[11px] font-black uppercase tracking-widest text-white/40">Reset Hàng Ngày:</span>
-          <span className="text-[15px] font-black tracking-widest" style={{ color: '#FFC300' }}>{timeLeft || '23h : 59m : 59s'}</span>
+          <span className={`text-[15px] font-black tracking-widest ${styles.resetCountdown}`}>{timeLeft || '23h : 59m : 59s'}</span>
         </div>
 
         {/* Footer Nav */}
@@ -439,20 +414,14 @@ export default function Ranked() {
           <div className="flex gap-4">
             <Link
               to="/leaderboard"
-              className="flex items-center gap-2 px-6 py-2.5 rounded-xl border text-[10px] font-black uppercase tracking-widest transition-all"
-              style={{ borderColor: '#00F5D4', color: '#00F5D4', background: 'rgba(0,245,212,0.05)' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(0,245,212,0.15)' }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(0,245,212,0.05)' }}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-xl border text-[10px] font-black uppercase tracking-widest transition-all ${styles.leaderboardLink}`}
             >
               <TrophyIcon size={14} />
               Bảng xếp hạng
             </Link>
             <button
               onClick={fetchStatus}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-xl border text-[10px] font-black uppercase tracking-widest transition-all"
-              style={{ borderColor: 'rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.5)', background: 'rgba(0,0,0,0.2)' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.9)'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.4)' }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.5)'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.15)' }}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-xl border text-[10px] font-black uppercase tracking-widest transition-all ${styles.refreshButton}`}
             >
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="23 4 23 10 17 10" /><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />

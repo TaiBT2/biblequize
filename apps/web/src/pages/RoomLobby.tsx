@@ -1,6 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useStomp } from '../hooks/useStomp';
+import styles from './RoomLobby.module.css';
 
 type Player = {
   id: string; userId: string; username: string; avatarUrl?: string;
@@ -135,117 +136,118 @@ const RoomLobby: React.FC = () => {
 
   if (countdown !== null) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-8xl font-bold neon-text animate-bounce">{countdown}</div>
-          <p className="text-purple-300 text-xl mt-4">Trò chơi bắt đầu!</p>
+      <div className={`min-h-screen page-bg ${styles.centeredPage}`}>
+        <div className={styles.countdownWrap}>
+          <div className={styles.countdownNumber}>{countdown}</div>
+          <p className={styles.countdownLabel}>Trò chơi bắt đầu!</p>
         </div>
       </div>
     );
   }
 
-  if (error) return <div className="p-6 text-red-400">{error}</div>;
-  if (!room) return <div className="min-h-screen flex items-center justify-center text-white">Đang tải phòng...</div>;
+  if (error) return (
+    <div className={`min-h-screen page-bg ${styles.centeredPage}`}>
+      <p className={styles.errorText}>{error}</p>
+    </div>
+  );
+
+  if (!room) return (
+    <div className={`min-h-screen page-bg ${styles.centeredPage}`}>
+      <p className={styles.loadingText}>Đang tải phòng...</p>
+    </div>
+  );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 p-6">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen page-bg">
+      <div className={styles.inner}>
+
         {/* Reconnecting banner */}
         {reconnecting && (
-          <div className="mb-4 px-4 py-2.5 bg-yellow-900/40 border border-yellow-500/50 rounded-lg text-yellow-300 text-sm text-center animate-pulse">
+          <div className={styles.reconnectBanner}>
             ⚠️ Mất kết nối, đang kết nối lại...
           </div>
         )}
+
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
+        <div className={styles.header}>
           <div>
-            <h1 className="text-2xl font-bold neon-text">{room.roomName}</h1>
-            <span className="text-xs text-purple-300 mt-1">{MODE_LABELS[room.mode] ?? room.mode}</span>
+            <h1 className={styles.roomName}>{room.roomName}</h1>
+            <span className={styles.modeLabel}>{MODE_LABELS[room.mode] ?? room.mode}</span>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="text-sm text-purple-300 bg-black/30 px-3 py-1.5 rounded-lg border border-purple-500/30">
-              Mã: <span className="font-mono font-bold text-white">{room.roomCode}</span>
+          <div className={styles.headerRight}>
+            <div className={styles.roomCodeBadge}>
+              Mã: <span className={styles.roomCodeValue}>{room.roomCode}</span>
             </div>
-            <button
-              onClick={handleCopyCode}
-              className="text-xs bg-purple-600/40 hover:bg-purple-600/60 text-purple-200 px-3 py-1.5 rounded-lg border border-purple-500/40 transition"
-            >
+            <button onClick={handleCopyCode} className={styles.copyBtn}>
               Sao chép
             </button>
-            <div className={`w-2 h-2 rounded-full ${connected ? 'bg-green-400' : 'bg-red-400'}`} title={connected ? 'Connected' : 'Disconnected'} />
+            <div
+              className={styles.connectionDot}
+              data-connected={String(connected)}
+              title={connected ? 'Connected' : 'Disconnected'}
+            />
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {/* Players list — mode-specific layout */}
-          <div className="md:col-span-2 bg-black/40 border border-purple-500/30 rounded-xl p-4">
-            <div className="flex items-center justify-between mb-3">
-              <div className="text-purple-200 text-sm">
+        <div className={styles.mainGrid}>
+          {/* Players list */}
+          <div className={styles.card}>
+            <div className={styles.playersHeader}>
+              <span className={styles.playersHeaderText}>
                 Người chơi ({room.currentPlayers}/{room.maxPlayers})
-              </div>
-              <div className="text-purple-200 text-sm">
+              </span>
+              <span className={styles.playersHeaderText}>
                 Sẵn sàng: {readyCount}/{room.currentPlayers}
-              </div>
+              </span>
             </div>
 
             {/* Team vs Team: 2 columns */}
             {isTeamVsTeam ? (
-              <div className="grid grid-cols-2 gap-3">
-                {/* Team A */}
+              <div className={styles.teamGrid}>
                 <div>
-                  <div className="text-blue-400 text-xs font-bold mb-2 flex items-center gap-1">
-                    🔵 TEAM A
-                    {myPlayer?.team === 'A' && <span className="text-yellow-400">(bạn)</span>}
+                  <div className={`${styles.teamLabel} ${styles.teamLabelBlue}`}>
+                    🔵 TEAM A {myPlayer?.team === 'A' && <span className={styles.teamYouBadge}>(bạn)</span>}
                   </div>
-                  <div className="space-y-2">
+                  <div className={styles.teamPlayerList}>
                     {teamAPlayers.map(p => (
                       <PlayerCard key={p.id} player={p} hostId={room.hostId} myUsername={myUsername()} teamColor="blue" />
                     ))}
                     {teamAPlayers.length === 0 && (
-                      <div className="text-gray-500 text-xs text-center py-3 border border-dashed border-gray-700 rounded-lg">Chưa có ai</div>
+                      <div className={styles.emptyTeamSlot}>Chưa có ai</div>
                     )}
                   </div>
                 </div>
-                {/* Team B */}
                 <div>
-                  <div className="text-red-400 text-xs font-bold mb-2 flex items-center gap-1">
-                    🔴 TEAM B
-                    {myPlayer?.team === 'B' && <span className="text-yellow-400">(bạn)</span>}
+                  <div className={`${styles.teamLabel} ${styles.teamLabelRed}`}>
+                    🔴 TEAM B {myPlayer?.team === 'B' && <span className={styles.teamYouBadge}>(bạn)</span>}
                   </div>
-                  <div className="space-y-2">
+                  <div className={styles.teamPlayerList}>
                     {teamBPlayers.map(p => (
                       <PlayerCard key={p.id} player={p} hostId={room.hostId} myUsername={myUsername()} teamColor="red" />
                     ))}
                     {teamBPlayers.length === 0 && (
-                      <div className="text-gray-500 text-xs text-center py-3 border border-dashed border-gray-700 rounded-lg">Chưa có ai</div>
+                      <div className={styles.emptyTeamSlot}>Chưa có ai</div>
                     )}
                   </div>
                 </div>
               </div>
             ) : isSuddenDeath ? (
-              /* Sudden Death: show queue order */
               <div>
-                <div className="text-yellow-400 text-xs font-bold mb-3">👑 Thứ tự thi đấu (King of the Hill)</div>
-                <div className="space-y-2">
+                <div className={styles.sdTitle}>
+                  👑 Thứ tự thi đấu (King of the Hill)
+                </div>
+                <div className={styles.sdList}>
                   {room.players.map((p, idx) => (
-                    <div key={p.id} className={`flex items-center gap-3 p-2.5 rounded-lg border ${
-                      idx === 0 ? 'border-yellow-400/60 bg-yellow-900/10' :
-                      idx === 1 ? 'border-orange-400/60 bg-orange-900/10' :
-                      'border-purple-500/30 bg-black/30'
-                    }`}>
-                      <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
-                        idx === 0 ? 'bg-yellow-500/20 text-yellow-300' :
-                        idx === 1 ? 'bg-orange-500/20 text-orange-300' :
-                        'bg-gray-700 text-gray-400'
-                      }`}>
+                    <div key={p.id} className={styles.sdRow} data-rank={idx < 2 ? String(idx) : 'other'}>
+                      <div className={styles.sdBadge} data-rank={idx < 2 ? String(idx) : 'other'}>
                         {idx === 0 ? '👑' : idx === 1 ? '⚔️' : `#${idx + 1}`}
                       </div>
-                      <div>
-                        <div className="text-white text-sm font-medium">{p.username}{p.username === myUsername() ? ' (bạn)' : ''}</div>
-                        <div className="text-gray-400 text-xs">{idx === 0 ? 'Giữ ghế nóng' : idx === 1 ? 'Challenger' : 'Đang chờ'}</div>
+                      <div className={styles.sdPlayerInfo}>
+                        <div className={styles.sdPlayerName}>{p.username}{p.username === myUsername() ? ' (bạn)' : ''}</div>
+                        <div className={styles.sdPlayerRole}>{idx === 0 ? 'Giữ ghế nóng' : idx === 1 ? 'Challenger' : 'Đang chờ'}</div>
                       </div>
-                      {p.userId === room.hostId && <span className="ml-auto text-yellow-400 text-xs">👑 Host</span>}
-                      <div className={`ml-auto text-xs px-2 py-0.5 rounded ${p.isReady ? 'bg-green-600/40 text-green-200' : 'bg-gray-600/40 text-gray-300'}`}>
+                      {p.userId === room.hostId && <span className={styles.sdHostBadge}>👑 Host</span>}
+                      <div className={styles.sdReadyBadge} data-ready={String(p.isReady)}>
                         {p.isReady ? '✓' : 'WAIT'}
                       </div>
                     </div>
@@ -253,23 +255,24 @@ const RoomLobby: React.FC = () => {
                 </div>
               </div>
             ) : (
-              /* Default: grid */
-              <div className="grid grid-cols-2 gap-3">
+              /* Default grid */
+              <div className={styles.defaultPlayerGrid}>
                 {room.players.map((p) => (
                   <div
                     key={p.id}
-                    className={`p-3 rounded-lg border ${p.isReady ? 'border-green-500/60 bg-green-900/10' : 'border-purple-500/30 bg-black/30'} flex items-center justify-between`}
+                    className={styles.defaultPlayerRow}
+                    data-ready={String(p.isReady)}
                   >
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-purple-800/40 border border-purple-500/40 flex items-center justify-center">
-                        <span className="text-lg">{p.username?.[0]?.toUpperCase() || 'U'}</span>
+                    <div className={styles.defaultPlayerLeft}>
+                      <div className={styles.defaultAvatar}>
+                        {p.username?.[0]?.toUpperCase() || 'U'}
                       </div>
                       <div>
-                        <div className="text-white font-medium text-sm">{p.username}</div>
-                        {p.userId === room.hostId && <div className="text-xs text-yellow-400">👑 Host</div>}
+                        <div className={styles.defaultPlayerName}>{p.username}</div>
+                        {p.userId === room.hostId && <div className={styles.defaultHostBadge}>👑 Host</div>}
                       </div>
                     </div>
-                    <div className={`text-xs px-2 py-1 rounded ${p.isReady ? 'bg-green-600/40 text-green-200' : 'bg-gray-600/40 text-gray-300'}`}>
+                    <div className={styles.defaultReadyBadge} data-ready={String(p.isReady)}>
                       {p.isReady ? '✓ READY' : 'WAIT'}
                     </div>
                   </div>
@@ -279,43 +282,53 @@ const RoomLobby: React.FC = () => {
           </div>
 
           {/* Room info + controls */}
-          <div className="bg-black/40 border border-purple-500/30 rounded-xl p-4 flex flex-col justify-between">
-            <div className="space-y-2 text-sm text-purple-200 mb-4">
-              <div>Chế độ: <b className="text-white">{MODE_LABELS[room.mode] ?? room.mode}</b></div>
-              <div>Tổng câu: <b className="text-white">{room.questionCount}</b></div>
-              <div>Thời gian/câu: <b className="text-white">{room.timePerQuestion}s</b></div>
-              <div>Chủ phòng: <b className="text-white">{room.hostName}</b></div>
-              <div>{room.isPublic ? '🌐 Công khai' : '🔒 Riêng tư'}</div>
+          <div className={styles.cardSidebar}>
+            <div className={styles.infoList}>
+              {[
+                { label: 'Chế độ', value: MODE_LABELS[room.mode] ?? room.mode },
+                { label: 'Tổng câu', value: String(room.questionCount) },
+                { label: 'Thời gian/câu', value: `${room.timePerQuestion}s` },
+                { label: 'Chủ phòng', value: room.hostName },
+              ].map(({ label, value }) => (
+                <div key={label} className={styles.infoRow}>
+                  <span className={styles.infoLabel}>{label}</span>
+                  <span className={styles.infoValue}>{value}</span>
+                </div>
+              ))}
+              <div className={styles.visibilityText}>
+                {room.isPublic ? '🌐 Công khai' : '🔒 Riêng tư'}
+              </div>
               {isTeamVsTeam && myPlayer && (
-                <div className="mt-1 p-2 rounded-lg border border-purple-500/30 bg-purple-900/10">
+                <div className={styles.myTeamBox}>
                   Đội của bạn:{' '}
-                  <b className={myPlayer.team === 'A' ? 'text-blue-400' : 'text-red-400'}>
+                  <strong className={styles.myTeamValue} data-team={myPlayer.team}>
                     {myPlayer.team === 'A' ? '🔵 Team A' : '🔴 Team B'}
-                  </b>
+                  </strong>
                 </div>
               )}
             </div>
-            <div className="space-y-3">
-              {/* Switch team button (Team vs Team only) */}
+
+            <div className={styles.buttonGroup}>
               {isTeamVsTeam && (
                 <button
                   onClick={handleSwitchTeam}
                   disabled={switchingTeam}
-                  className="w-full py-2 rounded-lg bg-blue-700/40 hover:bg-blue-700/60 transition text-blue-200 font-medium text-sm border border-blue-500/30"
+                  className={styles.switchTeamBtn}
                 >
                   🔄 Đổi đội
                 </button>
               )}
               <button
                 onClick={handleToggleReady}
-                className="w-full py-2.5 rounded-lg bg-purple-600 hover:bg-purple-500 transition text-white font-medium text-sm"
+                className={styles.readyBtn}
+                data-ready={String(myPlayer?.isReady ?? false)}
               >
                 {myPlayer?.isReady ? '🔄 Hủy sẵn sàng' : '✅ Sẵn sàng'}
               </button>
               <button
                 onClick={handleStart}
                 disabled={room.status !== 'LOBBY' || readyCount < 2}
-                className="w-full py-2.5 rounded-lg bg-green-600 hover:bg-green-500 transition text-white font-medium text-sm disabled:opacity-40 disabled:cursor-not-allowed"
+                className={`practice-start-btn ${styles.startBtn}`}
               >
                 🚀 Bắt đầu
               </button>
@@ -331,7 +344,7 @@ const RoomLobby: React.FC = () => {
                   }
                   navigate('/multiplayer');
                 }}
-                className="w-full py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition text-gray-300 text-sm"
+                className={styles.leaveBtn}
               >
                 ← Rời phòng
               </button>
@@ -344,21 +357,21 @@ const RoomLobby: React.FC = () => {
 };
 
 const PlayerCard: React.FC<{ player: Player; hostId: string; myUsername: string; teamColor: 'blue' | 'red' }> = ({ player, hostId, myUsername: me, teamColor }) => (
-  <div className={`flex items-center gap-2 p-2.5 rounded-lg border ${
-    player.isReady
-      ? teamColor === 'blue' ? 'border-blue-400/50 bg-blue-900/10' : 'border-red-400/50 bg-red-900/10'
-      : 'border-gray-600/40 bg-black/20'
-  }`}>
-    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold border ${
-      teamColor === 'blue' ? 'bg-blue-900/40 border-blue-500/40' : 'bg-red-900/40 border-red-500/40'
-    }`}>
+  <div
+    className={styles.playerCard}
+    data-ready={String(player.isReady)}
+    data-team={teamColor}
+  >
+    <div className={styles.playerAvatar} data-team={teamColor}>
       {player.username?.[0]?.toUpperCase() || 'U'}
     </div>
-    <div className="flex-1 min-w-0">
-      <div className="text-white text-xs font-medium truncate">{player.username}{player.username === me ? ' (bạn)' : ''}</div>
-      {player.userId === hostId && <div className="text-yellow-400 text-xs">👑 Host</div>}
+    <div className={styles.playerInfo}>
+      <div className={styles.playerName}>
+        {player.username}{player.username === me ? ' (bạn)' : ''}
+      </div>
+      {player.userId === hostId && <div className={styles.playerHostBadge}>👑 Host</div>}
     </div>
-    <div className={`text-xs px-1.5 py-0.5 rounded ${player.isReady ? 'bg-green-600/40 text-green-200' : 'bg-gray-600/40 text-gray-400'}`}>
+    <div className={styles.readyBadge} data-ready={String(player.isReady)}>
       {player.isReady ? '✓' : '—'}
     </div>
   </div>

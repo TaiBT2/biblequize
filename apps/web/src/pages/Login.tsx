@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect, type FormEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
+import styles from './Login.module.css'
 
 type Tab = 'social' | 'email'
 type EmailMode = 'login' | 'register'
@@ -57,7 +58,7 @@ export default function Login() {
     window.location.href = 'http://localhost:8080/oauth2/authorization/facebook'
   }
 
-  const handleEmailSubmit = async (e: React.FormEvent) => {
+  const handleEmailSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setError(null)
 
@@ -102,16 +103,19 @@ export default function Login() {
 
           {/* Logo & Header */}
           <div className="text-center mb-8">
-            <img src="/app-logo.png" alt="Bible Quiz Logo" className="mx-auto w-56 h-auto mb-5" />
-            <h1 className="parchment-headline text-3xl text-[#4a3f35] mb-1">Đăng nhập</h1>
-            <p className="text-sm text-[#9a8a7a] font-medium">Chào mừng bạn trở lại</p>
+            <div className={styles.logoRow}>
+              <em className={styles.logoIcon}>✝</em>
+              BibleQuiz
+            </div>
+            <h1 className={styles.pageTitle}>Đăng nhập</h1>
+            <p className={styles.pageSubtitle}>Chào mừng bạn trở lại</p>
           </div>
 
-          {/* Divider with cross */}
+          {/* Divider */}
           <div className="flex items-center gap-3 mb-6">
-            <div className="flex-1 h-px bg-[#d6cfc4]" />
-            <span className="text-[#c8bfb0] text-sm select-none">✦</span>
-            <div className="flex-1 h-px bg-[#d6cfc4]" />
+            <div className={styles.dividerLine} />
+            <span className={styles.dividerStar}>✦</span>
+            <div className={styles.dividerLine} />
           </div>
 
           {/* Main Tab Switcher */}
@@ -132,11 +136,11 @@ export default function Login() {
 
           {/* Error Message */}
           {error && (
-            <div className="mb-5 flex items-start gap-3 px-4 py-3 rounded-xl bg-red-50 border border-red-200">
-              <svg className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <div className={`mb-5 flex items-start gap-3 px-4 py-3 rounded-xl ${styles.errorBanner}`}>
+              <svg className={`w-4 h-4 mt-0.5 flex-shrink-0 ${styles.errorIcon}`} fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
               </svg>
-              <p className="text-red-600 text-sm font-semibold leading-snug">{error}</p>
+              <p className={styles.errorText}>{error}</p>
             </div>
           )}
 
@@ -146,7 +150,7 @@ export default function Login() {
               <button
                 onClick={handleGoogleLogin}
                 disabled={isLoading}
-                className="w-full bg-white border-2 border-[#d6cfc4] rounded-2xl flex items-center px-5 py-3.5 font-bold text-[#4a3f35] hover:border-[#4bbf9f] hover:bg-[#f7fdfb] transition-all disabled:opacity-50 group"
+                className={`w-full rounded-xl flex items-center px-5 py-3.5 font-bold transition-all disabled:opacity-50 ${styles.googleBtn}`}
               >
                 <svg className="w-5 h-5 mr-3 flex-shrink-0" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -162,7 +166,7 @@ export default function Login() {
               <button
                 onClick={handleFacebookLogin}
                 disabled={isLoading}
-                className="w-full bg-[#1877F2] text-white border-2 border-[#1877F2] rounded-2xl flex items-center px-5 py-3.5 font-bold hover:bg-[#166fe5] hover:border-[#166fe5] transition-all disabled:opacity-50"
+                className={`w-full rounded-xl flex items-center px-5 py-3.5 font-bold transition-all disabled:opacity-50 ${styles.facebookBtn}`}
               >
                 <svg className="w-5 h-5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -172,7 +176,7 @@ export default function Login() {
                 </span>
               </button>
 
-              <p className="text-center text-xs text-[#b0a090] pt-1">
+              <p className={styles.oauthNote}>
                 Đăng nhập an toàn qua OAuth2
               </p>
             </div>
@@ -200,7 +204,7 @@ export default function Login() {
               <form onSubmit={handleEmailSubmit} className="space-y-4">
                 {emailMode === 'register' && (
                   <div>
-                    <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">
+                    <label className={`block text-xs font-bold uppercase tracking-wider mb-1.5 ${styles.fieldLabel}`}>
                       Họ tên
                     </label>
                     <input
@@ -215,7 +219,7 @@ export default function Login() {
                 )}
 
                 <div>
-                  <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">
+                  <label className={`block text-xs font-bold uppercase tracking-wider mb-1.5 ${styles.fieldLabel}`}>
                     Email
                   </label>
                   <input
@@ -229,7 +233,7 @@ export default function Login() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">
+                  <label className={`block text-xs font-bold uppercase tracking-wider mb-1.5 ${styles.fieldLabel}`}>
                     Mật khẩu
                   </label>
                   <div className="relative">
@@ -244,7 +248,7 @@ export default function Login() {
                     <button
                       type="button"
                       onClick={() => setShowPassword(p => !p)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-[#a09080] hover:text-[#4a3f35] transition-colors"
+                      className={`absolute right-3 top-1/2 -translate-y-1/2 transition-colors ${styles.togglePasswordBtn}`}
                       aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
                     >
                       {showPassword ? (
@@ -263,7 +267,7 @@ export default function Login() {
 
                 {emailMode === 'register' && (
                   <div>
-                    <label className="block text-xs font-bold text-[#7a6a5a] uppercase tracking-wider mb-1.5">
+                    <label className={`block text-xs font-bold uppercase tracking-wider mb-1.5 ${styles.fieldLabel}`}>
                       Xác nhận mật khẩu
                     </label>
                     <input
@@ -286,20 +290,19 @@ export default function Login() {
                         onChange={e => setRememberMe(e.target.checked)}
                         className="sr-only"
                       />
-                      <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${
-                        rememberMe
-                          ? 'bg-[#4bbf9f] border-[#4bbf9f]'
-                          : 'bg-white border-[#d6cfc4] group-hover:border-[#4bbf9f]'
-                      }`}>
+                      <div
+                        className={styles.checkboxBox}
+                        data-checked={rememberMe ? 'true' : 'false'}
+                      >
                         {rememberMe && (
-                          <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-3 h-3" fill="none" stroke="#0A0A0E" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                           </svg>
                         )}
                       </div>
                     </div>
-                    <span className="text-sm font-semibold text-[#5a5048]">Nhớ đăng nhập</span>
-                    <span className="text-xs text-[#a09080] ml-auto">30 ngày</span>
+                    <span className={styles.rememberLabel}>Nhớ đăng nhập</span>
+                    <span className={styles.rememberDays}>30 ngày</span>
                   </label>
                 )}
 
@@ -321,25 +324,25 @@ export default function Login() {
           {/* Footer */}
           <div className="mt-8">
             <div className="flex items-center gap-3 mb-5">
-              <div className="flex-1 h-px bg-[#e8e3d8]" />
-              <span className="text-[#c8bfb0] text-xs select-none">✦</span>
-              <div className="flex-1 h-px bg-[#e8e3d8]" />
+              <div className={styles.dividerLine} />
+              <span className={styles.dividerStarSm}>✦</span>
+              <div className={styles.dividerLine} />
             </div>
 
-            <p className="text-xs text-[#a09080] text-center leading-relaxed mb-4">
+            <p className={styles.termsText}>
               Bằng cách đăng nhập, bạn đồng ý với{' '}
-              <Link to="/terms" className="text-[#4bbf9f] font-semibold hover:underline">
+              <Link to="/terms" className={styles.termsLink}>
                 Điều khoản sử dụng
               </Link>{' '}
               và{' '}
-              <Link to="/privacy" className="text-[#4bbf9f] font-semibold hover:underline">
+              <Link to="/privacy" className={styles.termsLink}>
                 Chính sách bảo mật
               </Link>
             </p>
 
             <Link
               to="/"
-              className="flex items-center justify-center gap-1.5 text-sm text-[#9a8a7a] font-semibold hover:text-[#4bbf9f] transition-colors"
+              className={`flex items-center justify-center gap-1.5 text-sm font-semibold transition-colors ${styles.backLink}`}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />

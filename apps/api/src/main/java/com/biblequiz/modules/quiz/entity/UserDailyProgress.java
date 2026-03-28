@@ -25,8 +25,10 @@ public class UserDailyProgress {
     @Column(nullable = false)
     private LocalDate date;
     
+    // SPEC-v2: "energy" system (stored as lives_remaining column for backward compat)
+    // 100 energy/day, -5 per wrong answer, regen 20/hr
     @Column(name = "lives_remaining", nullable = false)
-    private Integer livesRemaining = 10;
+    private Integer livesRemaining = 100;
     
     @Column(name = "questions_counted", nullable = false)
     private Integer questionsCounted = 0;

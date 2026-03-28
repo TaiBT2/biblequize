@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect
+  flyway:
+    enabled: false
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: test-client-id
+            client-secret: test-client-secret
+
+jwt:
+  secret: dGVzdC1zZWNyZXQta2V5LWZvci1iaWJsZXF1aXotYXBpLXRlc3RpbmctcHVycG9zZXM=
+  expiration: 900000
+  refresh-expiration: 2592000000
+
+cors:
+  allowed-origins: http://localhost:3000
+
+app:
+  cookie:
+    secure: false
+
+logging:
+  level:
+    org.springframework.web: WARN
+    com.biblequiz: INFO

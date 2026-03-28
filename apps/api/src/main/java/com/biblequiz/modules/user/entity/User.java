@@ -47,6 +47,19 @@ public class User {
     @Column(nullable = false, length = 20)
     private Role role = Role.USER;
 
+    // SPEC-v2: Streak system
+    @Column(name = "current_streak", nullable = false)
+    private Integer currentStreak = 0;
+
+    @Column(name = "longest_streak", nullable = false)
+    private Integer longestStreak = 0;
+
+    @Column(name = "last_played_at")
+    private LocalDateTime lastPlayedAt;
+
+    @Column(name = "streak_freeze_used_this_week", nullable = false)
+    private Boolean streakFreezeUsedThisWeek = false;
+
     @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -218,4 +231,17 @@ public class User {
     public void setBookmarks(List<Bookmark> bookmarks) {
         this.bookmarks = bookmarks;
     }
+
+    // SPEC-v2: Streak getters/setters
+    public Integer getCurrentStreak() { return currentStreak; }
+    public void setCurrentStreak(Integer currentStreak) { this.currentStreak = currentStreak; }
+
+    public Integer getLongestStreak() { return longestStreak; }
+    public void setLongestStreak(Integer longestStreak) { this.longestStreak = longestStreak; }
+
+    public LocalDateTime getLastPlayedAt() { return lastPlayedAt; }
+    public void setLastPlayedAt(LocalDateTime lastPlayedAt) { this.lastPlayedAt = lastPlayedAt; }
+
+    public Boolean getStreakFreezeUsedThisWeek() { return streakFreezeUsedThisWeek; }
+    public void setStreakFreezeUsedThisWeek(Boolean used) { this.streakFreezeUsedThisWeek = used; }
 }

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Client, IMessage, StompSubscription } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import { getApiBaseUrl } from '../api/config';
+import { getAccessToken } from '../api/tokenStore';
 
 export interface StompOptions {
   url?: string;
@@ -55,7 +56,7 @@ export function useStomp({ url = '/ws', roomId, onMessage, onConnect, onReconnec
       heartbeatIncoming: 10000,
       heartbeatOutgoing: 10000,
       connectHeaders: {
-        Authorization: `Bearer ${localStorage.getItem('accessToken') ?? ''}`,
+        Authorization: `Bearer ${getAccessToken() ?? ''}`,
       },
       onConnect: () => {
         setConnected(true);
@@ -104,7 +105,7 @@ export function useStomp({ url = '/ws', roomId, onMessage, onConnect, onReconnec
     clientRef.current.publish({
       destination,
       body: JSON.stringify(payload),
-      headers: { Authorization: `Bearer ${localStorage.getItem('accessToken') ?? ''}` },
+      headers: { Authorization: `Bearer ${getAccessToken() ?? ''}` },
     });
   };
 

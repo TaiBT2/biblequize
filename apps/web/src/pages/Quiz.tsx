@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { api } from '../api/client'
 import QuizResults from './QuizResults'
+import styles from './Quiz.module.css'
 
 interface Question {
   id: string
@@ -419,7 +420,7 @@ const Quiz: React.FC = () => {
       <div className="min-h-screen page-bg flex items-center justify-center">
         <div className="page-card p-8 text-center max-w-xs w-full">
           <div className="text-xl font-bold mb-4">Đang tải câu hỏi...</div>
-          <div className="animate-spin w-8 h-8 border-4 border-[#4bbf9f] border-t-transparent rounded-full mx-auto"></div>
+          <div className={`animate-spin w-8 h-8 border-4 border-t-transparent rounded-full mx-auto ${styles.loadingSpinner}`}></div>
         </div>
       </div>
     )
@@ -504,18 +505,18 @@ const Quiz: React.FC = () => {
       {/* Header */}
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-end mb-6">
-          <div className="text-[#f5f0e0] opacity-90 font-bold text-lg">
+          <div className={styles.questionCounter}>
             Câu {currentQuestionIndex + 1}/{questions.length}
           </div>
-          <div className={`text-[#4bbf9f] bg-[#f5f0e4] px-6 py-2 rounded-full shadow-lg font-black text-2xl transition-transform ${scoreBump ? 'scale-110' : 'scale-100'}`}>
+          <div className={`${styles.scorePill} transition-transform ${scoreBump ? 'scale-110' : 'scale-100'}`}>
             ĐIỂM: {score}
           </div>
         </div>
 
         {/* Progress Bar */}
-        <div className="w-full bg-white/10 rounded-full h-3 mb-8 overflow-hidden backdrop-blur-sm border border-white/5">
+        <div className={`w-full rounded-full h-3 mb-8 overflow-hidden ${styles.progressTrack}`}>
           <div
-            className="bg-gradient-to-r from-[#4bbf9f] to-[#2e9e7a] h-full progress-animated shadow-[0_0_15px_rgba(75,191,159,0.3)]"
+            className={`progress-animated ${styles.progressFill}`}
             style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
           ></div>
         </div>
@@ -527,17 +528,16 @@ const Quiz: React.FC = () => {
               <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" strokeWidth="6" fill="none" />
               <circle
                 cx="40" cy="40" r="34"
-                stroke={timeLeft <= 5 ? '#e05c5c' : '#4bbf9f'}
+                stroke={timeLeft <= 5 ? 'var(--hp-coral)' : 'var(--hp-gold)'}
                 strokeWidth="6"
                 fill="none"
                 strokeLinecap="round"
-                style={{ transform: 'rotate(-90deg)', transformOrigin: '50% 50%' }}
+                className={`transition-all duration-1000 ${styles.timerCircle}`}
                 strokeDasharray={2 * Math.PI * 34}
                 strokeDashoffset={(1 - (timeLeft / 30)) * 2 * Math.PI * 34}
-                className="transition-all duration-1000"
               />
             </svg>
-            <div className={`absolute inset-0 flex items-center justify-center text-3xl font-black ${timeLeft <= 5 ? 'text-[#e05c5c] animate-pulse' : 'text-[#f5f0e0]'}`}>
+            <div className={`absolute inset-0 flex items-center justify-center text-3xl font-black ${timeLeft <= 5 ? 'animate-pulse' : ''} ${styles.timerNumber}`} style={{ color: timeLeft <= 5 ? 'var(--hp-coral)' : 'var(--hp-text)' }}>
               {timeLeft}
             </div>
           </div>
@@ -549,10 +549,10 @@ const Quiz: React.FC = () => {
         <div className="page-card p-8 md:p-12 max-w-4xl mx-auto">
           {/* Question Header */}
           <div className="mb-8 flex flex-wrap gap-3 items-center">
-            <span className="bg-[#eeeae0] text-[#7a6a5a] px-3 py-1 rounded-md text-sm font-bold">
+            <span className={styles.metaBadge}>
               {currentQuestion.book}
             </span>
-            <span className="bg-[#eeeae0] text-[#7a6a5a] px-3 py-1 rounded-md text-sm font-bold">
+            <span className={styles.metaBadge}>
               Chương {currentQuestion.chapter}
             </span>
             <span className={
@@ -564,7 +564,7 @@ const Quiz: React.FC = () => {
           </div>
 
           {/* Question */}
-          <div className="text-[#4a3f35] text-2xl md:text-3xl font-bold mb-10 leading-tight parchment-serif">
+          <div className={`text-2xl md:text-3xl font-bold mb-10 leading-tight ${styles.questionText}`}>
             {currentQuestion.content}
           </div>
 
@@ -592,7 +592,7 @@ const Quiz: React.FC = () => {
                   className={buttonClass}
                 >
                   <div className="flex items-start">
-                    <span className="font-black mr-3 text-[#4bbf9f]">
+                    <span className={styles.answerLetter}>
                       {String.fromCharCode(65 + index)}.
                     </span>
                     <span>{option}</span>
@@ -604,36 +604,34 @@ const Quiz: React.FC = () => {
 
           {/* Result Display */}
           {showResult && (
-            <div className={`p-6 rounded-2xl mb-8 border-2 ${selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1)
-              ? 'bg-green-50 border-green-200'
-              : 'bg-red-50 border-red-200'
-              }`}>
-              <div className="flex items-center gap-3 mb-4">
-                {selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) ? (
-                  <span className="text-2xl">✅</span>
-                ) : (
-                  <span className="text-2xl">❌</span>
-                )}
-                <span className={`text-xl font-bold ${selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) ? 'text-green-700' : 'text-red-700'
-                  }`}>
+            <div
+              className={styles.resultBox}
+              data-correct={selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) ? 'true' : 'false'}
+            >
+              <div className={styles.resultHeader}>
+                <span className={styles.resultIcon}>
+                  {selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) ? '✅' : '❌'}
+                </span>
+                <span
+                  className={styles.resultLabel}
+                  data-correct={selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) ? 'true' : 'false'}
+                >
                   {selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) ? 'Đúng rồi!' : 'Sai rồi!'}
                 </span>
               </div>
 
               {selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) && (
-                <div className="mb-4">
-                  <div className="text-[#4bbf9f] font-bold text-lg">
-                    +{Math.floor(((currentQuestion.difficulty === 'easy' ? 10 :
-                      currentQuestion.difficulty === 'medium' ? 20 : 30) +
-                      Math.floor(timeLeft / 2) + (timeLeft >= 25 ? 5 : 0)) *
-                      (currentQuestion.difficulty === 'hard' ? 1.5 :
-                        currentQuestion.difficulty === 'medium' ? 1.2 : 1))} điểm
-                  </div>
+                <div className={styles.scoreEarned}>
+                  +{Math.floor(((currentQuestion.difficulty === 'easy' ? 10 :
+                    currentQuestion.difficulty === 'medium' ? 20 : 30) +
+                    Math.floor(timeLeft / 2) + (timeLeft >= 25 ? 5 : 0)) *
+                    (currentQuestion.difficulty === 'hard' ? 1.5 :
+                      currentQuestion.difficulty === 'medium' ? 1.2 : 1))} điểm
                 </div>
               )}
 
               {settings?.showExplanation && (
-                <div className="text-[#7a6a5a] text-sm leading-relaxed italic border-t border-black/5 pt-4">
+                <div className={styles.explanation}>
                   <strong>Giải thích:</strong> {currentQuestion.explanation}
                 </div>
               )}
@@ -641,14 +639,14 @@ const Quiz: React.FC = () => {
           )}
 
           {/* Navigation */}
-          <div className="flex justify-between items-center bg-[#fdfaf3] p-4 rounded-xl border border-[#eeeae0]">
+          <div className={styles.navBar}>
             <button
               onClick={() => {
                 if (confirm('Bạn có chắc muốn kết thúc bài làm tại đây? Tiến trình hiện tại sẽ không được lưu.')) {
                   navigate('/practice')
                 }
               }}
-              className="text-[#7a6a5a] font-bold px-4 py-2 hover:bg-[#eeeae0] rounded-lg transition-all"
+              className={styles.exitBtn}
             >
               ⏹️ Thoát
             </button>

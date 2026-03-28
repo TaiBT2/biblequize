@@ -1,0 +1,17 @@
+{
+  "name": "biblequize",
+  "version": "1.0.0",
+  "description": "[![Java](https://img.shields.io/badge/Java-17+-orange.svg)](https://openjdk.java.net/)\r [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green.svg)](https://spring.io/projects/spring-boot)\r [![React](https://img.shields.io/badge/React-18+-blue.svg)](https://reactjs.org/)\r [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/)\r [![MySQL](https://img.shields.io/badge/MySQL-8.0-blue.svg)](https://www.mysql.com/)\r [![Redis](https://img.shields.io/badge/Redis-7.x-red.svg)](https://redis.io/)\r [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)",
+  "main": "test-complete-flow.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.5.0"
+  }
+}

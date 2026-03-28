@@ -13,28 +13,37 @@
     "preview": "vite preview",
     "preview:dev": "vite preview --mode development",
     "lint": "echo 'Linting not configured yet'",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@stomp/stompjs": "^7.0.0",
+    "@tanstack/react-query": "^5.56.2",
+    "axios": "^1.7.2",
+    "clsx": "^2.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.0",
-    "zustand": "^4.5.2",
-    "axios": "^1.7.2",
-    "@tanstack/react-query": "^5.56.2",
-    "@stomp/stompjs": "^7.0.0",
-    "sockjs-client": "^1.6.1"
+    "sockjs-client": "^1.6.1",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^20.11.30",
     "@types/react": "^18.2.67",
     "@types/react-dom": "^18.2.22",
-    "@types/node": "^20.11.30",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.16",
+    "happy-dom": "^20.8.9",
+    "jsdom": "^27.0.1",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
     "typescript": "^5.4.5",
     "vite": "^5.3.1",
-    "tailwindcss": "^3.4.0",
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.32"
+    "vitest": "^4.1.2"
   }
 }
-

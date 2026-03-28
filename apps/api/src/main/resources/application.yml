@@ -2,11 +2,13 @@ server:
   port: 8080
 
 spring:
+  profiles:
+    active: dev
   application:
     name: biblequiz-api
 
   datasource:
-    url: jdbc:mysql://localhost:3306/biblequiz?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8&useUnicode=true&connectionCollation=utf8mb4_unicode_ci
+    url: jdbc:mysql://localhost:3307/biblequiz?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8&useUnicode=true&connectionCollation=utf8mb4_unicode_ci
     username: root
     password: pass
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -45,16 +47,16 @@ spring:
       client:
         registration:
           google:
-            client-id: ${GOOGLE_CLIENT_ID:your-google-client-id}
-            client-secret: ${GOOGLE_CLIENT_SECRET:your-google-client-secret}
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
             scope: openid,profile,email
-            redirect-uri: ${OAUTH2_REDIRECT_URI:http://localhost:8081/login/oauth2/code/google}
+            redirect-uri: ${OAUTH2_REDIRECT_URI:http://localhost:8080/login/oauth2/code/google}
         provider:
           google:
             user-name-attribute: sub
 
 jwt:
-  secret: ${JWT_SECRET:your-super-secret-jwt-key-here-make-it-long-and-random}
+  secret: ${JWT_SECRET:YmlibGVxdWl6LXN1cGVyLXNlY3JldC1qd3Qta2V5LTIwMjQtbWFrZS1pdC1sb25nLWFuZC1yYW5kb20=}
   expiration: ${JWT_EXPIRATION:900000}
   refresh-expiration: ${JWT_REFRESH_EXPIRATION:2592000000}
 
@@ -81,3 +83,23 @@ management:
   endpoint:
     health:
       show-details: when-authorized
+
+# FIX #2: Comma-separated list of trusted proxy IP addresses.
+# Rate limiter will trust X-Forwarded-For ONLY when the direct TCP peer is in this list.
+# Example for production behind a known load-balancer: "10.0.0.1,172.16.0.2"
+gemini:
+  api-key: ${GEMINI_API_KEY:AIzaSyC09pswY57C3BzvsRjFwwuOYuQ2DxWewO4}
+  model: ${GEMINI_MODEL:gemini-2.5-flash}
+
+app:
+  trusted-proxies: ${TRUSTED_PROXIES:}
+  cookie:
+    # Set to true in production (HTTPS). Keep false for local HTTP development.
+    secure: ${COOKIE_SECURE:false}
+  rate-limit:
+    admin:
+      requests: ${RATE_LIMIT_ADMIN_REQUESTS:100}
+      window: ${RATE_LIMIT_ADMIN_WINDOW:3600}
+    general:
+      requests: ${RATE_LIMIT_GENERAL_REQUESTS:1000}
+      window: ${RATE_LIMIT_GENERAL_WINDOW:3600}

@@ -81,9 +81,9 @@ public class AchievementService {
         // Scholar — 10 books completed
         tryAward(user, "scholar_10", booksCompleted >= 10, newlyAwarded);
 
-        // Tier-based achievements
-        tryAward(user, "elder", totalPoints >= 8000, newlyAwarded);
-        tryAward(user, "apostle", totalPoints >= 80000, newlyAwarded);
+        // Tier-based achievements (aligned with SPEC-v2 tiers)
+        tryAward(user, "sage", totalPoints >= 15000, newlyAwarded);     // Hiền Triết tier
+        tryAward(user, "apostle", totalPoints >= 100000, newlyAwarded); // Sứ Đồ tier
 
         return newlyAwarded;
     }

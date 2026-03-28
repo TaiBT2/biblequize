@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import styles from './CreateRoom.module.css';
 
 const MODE_INFO: Record<string, { icon: string; label: string }> = {
   SPEED_RACE: { icon: '🏃', label: 'Speed Race' },
@@ -42,7 +43,6 @@ const CreateRoom: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-
     try {
       const response = await fetch('/api/rooms', {
         method: 'POST',
@@ -52,9 +52,7 @@ const CreateRoom: React.FC = () => {
         },
         body: JSON.stringify(formData),
       });
-
       const result = await response.json();
-
       if (result.success) {
         navigate(`/room/${result.room.id}/lobby`, { state: { room: result.room } });
       } else {
@@ -70,28 +68,22 @@ const CreateRoom: React.FC = () => {
   if (!isAuthenticated) return null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex items-center justify-center p-6 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(50)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-white rounded-full opacity-20 animate-pulse"
-            style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 2}s` }}
-          />
-        ))}
-      </div>
-
-      <div className="relative z-10 w-full max-w-md">
-        <div className="bg-black/40 backdrop-blur-lg rounded-2xl p-8 border border-purple-500/30 shadow-2xl">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold neon-text mb-4">🎮 TẠO PHÒNG CHƠI</h1>
-            <p className="text-gray-300 text-sm">Tạo phòng và mời bạn bè tham gia quiz cùng bạn</p>
+    <div className={`min-h-screen page-bg ${styles.pageWrapper}`}>
+      <div className={styles.inner}>
+        <div className={`page-card ${styles.card}`}>
+          <div className={styles.header}>
+            <h1 className={styles.title}>
+              🎮 Tạo phòng chơi
+            </h1>
+            <p className={styles.subtitle}>
+              Tạo phòng và mời bạn bè tham gia quiz cùng bạn
+            </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className={styles.form}>
             {/* Room Name */}
             <div>
-              <label className="block text-sm font-medium neon-pink mb-2">Tên phòng</label>
+              <label className={styles.fieldLabel}>Tên phòng</label>
               <input
                 name="roomName"
                 type="text"
@@ -99,51 +91,33 @@ const CreateRoom: React.FC = () => {
                 value={formData.roomName}
                 onChange={handleTextChange}
                 placeholder="Nhập tên phòng..."
-                className="w-full px-4 py-3 bg-black/50 border border-purple-500/50 rounded-lg text-white placeholder-gray-400 focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 focus:outline-none transition-all duration-300 neon-input"
+                className="form-input"
               />
             </div>
 
             {/* Mode Selection */}
             <div>
-              <label className="block text-sm font-medium neon-pink mb-2">Chế độ chơi</label>
-              <div className="grid grid-cols-2 gap-2">
-                {Object.entries(MODE_INFO).map(([id, info]) => {
-                  const isAvailable = true; // all modes available
-                  const selected = formData.mode === id;
-                  return (
-                    <button
-                      key={id}
-                      type="button"
-                      disabled={!isAvailable}
-                      onClick={() => { if (isAvailable) setFormData(prev => ({ ...prev, mode: id })); }}
-                      className={`relative flex items-center gap-2 px-3 py-2.5 rounded-lg border text-sm font-medium transition-all duration-200 ${
-                        selected
-                          ? 'bg-purple-600/40 border-purple-400 text-white'
-                          : isAvailable
-                          ? 'bg-black/30 border-gray-600 text-gray-300 hover:border-gray-400'
-                          : 'bg-black/20 border-gray-700 text-gray-600 cursor-not-allowed'
-                      }`}
-                    >
-                      <span>{info.icon}</span>
-                      <span>{info.label}</span>
-                      {!isAvailable && (
-                        <span className="absolute top-1 right-1 text-xs text-gray-500">🔒</span>
-                      )}
-                    </button>
-                  );
-                })}
+              <label className={styles.fieldLabel}>Chế độ chơi</label>
+              <div className={styles.modeGrid}>
+                {Object.entries(MODE_INFO).map(([id, info]) => (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, mode: id }))}
+                    className={styles.modeBtn}
+                    data-active={formData.mode === id}
+                  >
+                    <span>{info.icon}</span>
+                    <span>{info.label}</span>
+                  </button>
+                ))}
               </div>
             </div>
 
             {/* Max Players */}
             <div>
-              <label className="block text-sm font-medium neon-pink mb-2">Số người chơi tối đa</label>
-              <select
-                name="maxPlayers"
-                value={formData.maxPlayers}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-black/50 border border-purple-500/50 rounded-lg text-white focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 focus:outline-none transition-all duration-300"
-              >
+              <label className={styles.fieldLabel}>Số người chơi tối đa</label>
+              <select name="maxPlayers" value={formData.maxPlayers} onChange={handleInputChange} className="form-select">
                 <option value={2}>2 người</option>
                 <option value={4}>4 người</option>
                 <option value={6}>6 người</option>
@@ -156,13 +130,8 @@ const CreateRoom: React.FC = () => {
 
             {/* Question Count */}
             <div>
-              <label className="block text-sm font-medium neon-pink mb-2">Số câu hỏi</label>
-              <select
-                name="questionCount"
-                value={formData.questionCount}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-black/50 border border-purple-500/50 rounded-lg text-white focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 focus:outline-none transition-all duration-300"
-              >
+              <label className={styles.fieldLabel}>Số câu hỏi</label>
+              <select name="questionCount" value={formData.questionCount} onChange={handleInputChange} className="form-select">
                 <option value={5}>5 câu</option>
                 <option value={10}>10 câu</option>
                 <option value={15}>15 câu</option>
@@ -173,13 +142,8 @@ const CreateRoom: React.FC = () => {
 
             {/* Time Per Question */}
             <div>
-              <label className="block text-sm font-medium neon-pink mb-2">Thời gian mỗi câu (giây)</label>
-              <select
-                name="timePerQuestion"
-                value={formData.timePerQuestion}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-black/50 border border-purple-500/50 rounded-lg text-white focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 focus:outline-none transition-all duration-300"
-              >
+              <label className={styles.fieldLabel}>Thời gian mỗi câu (giây)</label>
+              <select name="timePerQuestion" value={formData.timePerQuestion} onChange={handleInputChange} className="form-select">
                 <option value={15}>15 giây</option>
                 <option value={20}>20 giây</option>
                 <option value={30}>30 giây</option>
@@ -189,43 +153,38 @@ const CreateRoom: React.FC = () => {
             </div>
 
             {/* Public toggle */}
-            <div className="flex items-center gap-3">
+            <div className={styles.toggleRow}>
               <button
                 type="button"
                 onClick={() => setFormData(prev => ({ ...prev, isPublic: !prev.isPublic }))}
-                className={`relative w-11 h-6 rounded-full transition-colors duration-200 ${
-                  formData.isPublic ? 'bg-purple-500' : 'bg-gray-600'
-                }`}
+                className={styles.toggleTrack}
+                data-active={formData.isPublic}
               >
-                <span
-                  className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-200 ${
-                    formData.isPublic ? 'translate-x-5' : 'translate-x-0'
-                  }`}
-                />
+                <span className={styles.toggleThumb} />
               </button>
-              <span className="text-sm text-gray-300">
+              <span className={styles.toggleLabel}>
                 {formData.isPublic ? '🌐 Phòng công khai' : '🔒 Phòng riêng tư'}
               </span>
             </div>
 
             {error && (
-              <div className="p-4 bg-red-900/30 border border-red-500/50 rounded-lg">
-                <p className="text-red-400 text-sm">{error}</p>
+              <div className={styles.errorBox}>
+                <p className={styles.errorText}>{error}</p>
               </div>
             )}
 
-            <div className="flex space-x-4">
+            <div className={styles.buttonRow}>
               <button
                 type="button"
                 onClick={() => navigate('/multiplayer')}
-                className="flex-1 py-3 px-6 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-medium transition-all duration-300"
+                className={styles.cancelBtn}
               >
                 Hủy bỏ
               </button>
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 py-3 px-6 bg-purple-600 hover:bg-primary-500 text-white rounded-lg font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed neon-btn"
+                className={`practice-start-btn ${styles.submitBtn}`}
               >
                 {loading ? 'Đang tạo...' : 'Tạo phòng'}
               </button>

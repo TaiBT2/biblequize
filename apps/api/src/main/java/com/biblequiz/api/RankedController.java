@@ -79,25 +79,26 @@ public class RankedController {
         return authentication.getName();
     }
 
-    private static final int MAX_LIVES = 30;
-    private static final int RECOVERY_INTERVAL_MINUTES = 30;
-    private static final int STREAK_LIVES_BONUS = 3;
-    private static final int STREAK_LIVES_THRESHOLD = 10;
+    // SPEC-v2: Energy system (100/day, -5 per wrong, regen 20/hr)
+    private static final int MAX_ENERGY = 100;
+    private static final int ENERGY_REGEN_PER_HOUR = 20;
+    private static final int ENERGY_COST_WRONG = 5;
+    private static final int DAILY_QUESTION_CAP = 100;
 
     /**
-     * Recovers lives based on elapsed time since lastUpdatedAt.
-     * +1 life per 30 minutes, capped at MAX_LIVES.
+     * Recovers energy based on elapsed time since lastUpdatedAt.
+     * SPEC-v2: +20 energy per hour, capped at MAX_ENERGY (100).
      */
-    private int recoverLives(int currentLives, LocalDateTime lastUpdatedAt) {
-        if (lastUpdatedAt == null || currentLives >= MAX_LIVES) {
-            return currentLives;
+    private int recoverEnergy(int currentEnergy, LocalDateTime lastUpdatedAt) {
+        if (lastUpdatedAt == null || currentEnergy >= MAX_ENERGY) {
+            return currentEnergy;
         }
         long minutesElapsed = java.time.Duration.between(lastUpdatedAt, LocalDateTime.now(ZoneOffset.UTC)).toMinutes();
-        int recovered = (int) (minutesElapsed / RECOVERY_INTERVAL_MINUTES);
+        int recovered = (int) (minutesElapsed * ENERGY_REGEN_PER_HOUR / 60);
         if (recovered > 0) {
-            return Math.min(MAX_LIVES, currentLives + recovered);
+            return Math.min(MAX_ENERGY, currentEnergy + recovered);
         }
-        return currentLives;
+        return currentEnergy;
     }
 
     @PostMapping("/ranked/sessions")
@@ -117,9 +118,9 @@ public class RankedController {
                         .orElse(null);
                 if (udp != null) {
                     p.livesRemaining = udp.getLivesRemaining() != null
-                            ? Math.max(0, Math.min(30, udp.getLivesRemaining()))
-                            : 30;
-                    p.questionsCounted = udp.getQuestionsCounted() != null ? Math.min(udp.getQuestionsCounted(), 500)
+                            ? Math.max(0, Math.min(MAX_ENERGY, udp.getLivesRemaining()))
+                            : MAX_ENERGY;
+                    p.questionsCounted = udp.getQuestionsCounted() != null ? Math.min(udp.getQuestionsCounted(), DAILY_QUESTION_CAP)
                             : 0;
                     p.pointsToday = udp.getPointsCounted() != null ? udp.getPointsCounted() : 0;
                     p.currentBook = udp.getCurrentBook() != null ? udp.getCurrentBook() : "Genesis";
@@ -178,14 +179,14 @@ public class RankedController {
                     if (user != null) {
                         UserDailyProgress udp = udpRepository.findByUserIdAndDate(user.getId(), LocalDate.now(ZoneOffset.UTC)).orElse(null);
                         if (udp != null && udp.getLastUpdatedAt() != null) {
-                            p.livesRemaining = recoverLives(p.livesRemaining, udp.getLastUpdatedAt());
+                            p.livesRemaining = recoverEnergy(p.livesRemaining, udp.getLastUpdatedAt());
                         }
                     }
                 }
             } catch (Exception ignore) {
             }
 
-            if (p.questionsCounted >= 500 || p.livesRemaining <= 0) {
+            if (p.questionsCounted >= DAILY_QUESTION_CAP || p.livesRemaining <= 0) {
                 Map<String, Object> resp = new HashMap<>();
                 resp.put("sessionId", sessionId);
                 resp.put("livesRemaining", p.livesRemaining);
@@ -195,10 +196,10 @@ public class RankedController {
                 return ResponseEntity.ok(resp);
             }
             if (!isCorrect) {
-                p.livesRemaining = Math.max(0, p.livesRemaining - 1);
+                p.livesRemaining = Math.max(0, p.livesRemaining - ENERGY_COST_WRONG);
                 p.currentStreak = 0;
             }
-            p.questionsCounted = Math.min(500, p.questionsCounted + 1);
+            p.questionsCounted = Math.min(DAILY_QUESTION_CAP, p.questionsCounted + 1);
 
             // Update book-specific progress
             p.questionsInCurrentBook += 1;
@@ -215,10 +216,7 @@ public class RankedController {
                 earned = score.earned;
                 p.pointsToday += earned;
 
-                // Lives bonus: +3 lives when hitting streak 10 (exactly once per streak)
-                if (p.currentStreak == STREAK_LIVES_THRESHOLD) {
-                    p.livesRemaining = Math.min(MAX_LIVES, p.livesRemaining + STREAK_LIVES_BONUS);
-                }
+                // SPEC-v2: energy system — no streak lives bonus (regen handles recovery)
             } else {
                 p.currentStreak = 0;
             }
@@ -256,7 +254,7 @@ public class RankedController {
 
                         // Initialize with daily defaults if new record
                         if (udp.getLivesRemaining() == null) {
-                            udp.setLivesRemaining(30);
+                            udp.setLivesRemaining(MAX_ENERGY);
                         }
                         // Sync session progress with database
                         udp.setLivesRemaining(p.livesRemaining);
@@ -408,8 +406,8 @@ public class RankedController {
                     java.util.Optional<UserDailyProgress> opt = udpRepository.findByUserIdAndDate(user.getId(), today);
                     if (opt.isPresent()) {
                         UserDailyProgress udp = opt.get();
-                        int rawLives = udp.getLivesRemaining() != null ? udp.getLivesRemaining() : 30;
-                        p.livesRemaining = recoverLives(rawLives, udp.getLastUpdatedAt());
+                        int rawLives = udp.getLivesRemaining() != null ? udp.getLivesRemaining() : MAX_ENERGY;
+                        p.livesRemaining = recoverEnergy(rawLives, udp.getLastUpdatedAt());
                         p.questionsCounted = udp.getQuestionsCounted() != null ? udp.getQuestionsCounted() : 0;
                         p.pointsToday = udp.getPointsCounted() != null ? udp.getPointsCounted() : 0;
                         p.currentBook = udp.getCurrentBook() != null ? udp.getCurrentBook() : "Genesis";
@@ -436,7 +434,7 @@ public class RankedController {
 
                                 UserDailyProgress newUdp = new UserDailyProgress(UUID.randomUUID().toString(), user,
                                         today);
-                                newUdp.setLivesRemaining(30);
+                                newUdp.setLivesRemaining(MAX_ENERGY);
                                 newUdp.setQuestionsCounted(0);
                                 newUdp.setPointsCounted(0);
                                 newUdp.setCurrentBook(carryBook);
@@ -446,7 +444,7 @@ public class RankedController {
                                 newUdp.setAskedQuestionIds(new java.util.ArrayList<>());
                                 udpRepository.save(newUdp);
 
-                                p.livesRemaining = 30;
+                                p.livesRemaining = MAX_ENERGY;
                                 p.questionsCounted = 0;
                                 p.pointsToday = 0;
                                 p.currentBook = carryBook;
@@ -458,7 +456,7 @@ public class RankedController {
                                 // Same day, use existing record
                                 p.livesRemaining = lastRecord.getLivesRemaining() != null
                                         ? lastRecord.getLivesRemaining()
-                                        : 30;
+                                        : MAX_ENERGY;
                                 p.questionsCounted = lastRecord.getQuestionsCounted() != null
                                         ? lastRecord.getQuestionsCounted()
                                         : 0;
@@ -479,7 +477,7 @@ public class RankedController {
                         } else {
                             // No previous records, create new one
                             UserDailyProgress newUdp = new UserDailyProgress(UUID.randomUUID().toString(), user, today);
-                            newUdp.setLivesRemaining(30);
+                            newUdp.setLivesRemaining(MAX_ENERGY);
                             newUdp.setQuestionsCounted(0);
                             newUdp.setPointsCounted(0);
                             newUdp.setCurrentBook("Genesis");
@@ -489,7 +487,7 @@ public class RankedController {
                             newUdp.setAskedQuestionIds(new java.util.ArrayList<>());
                             udpRepository.save(newUdp);
 
-                            p.livesRemaining = 30;
+                            p.livesRemaining = MAX_ENERGY;
                             p.questionsCounted = 0;
                             p.pointsToday = 0;
                             p.currentBook = "Genesis";

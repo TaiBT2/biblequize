@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import styles from './Multiplayer.module.css';
 
 interface PublicRoom {
   id: string;
@@ -18,9 +19,8 @@ const MODES = [
     icon: '🏃',
     players: '2–20 người',
     desc: 'Trả lời đúng và nhanh để ghi điểm cao hơn. Không ai bị loại — ai nhiều điểm nhất thắng!',
-    color: 'from-blue-500 to-cyan-500',
-    border: 'border-blue-500/50',
-    available: true,
+    accent: 'rgba(91,155,242,.2)',
+    accentBorder: 'rgba(91,155,242,.4)',
   },
   {
     id: 'BATTLE_ROYALE',
@@ -28,9 +28,8 @@ const MODES = [
     icon: '⚔️',
     players: '5–100 người',
     desc: 'Trả lời sai bị loại ngay. Top 3 người còn lại nhận huy chương!',
-    color: 'from-red-500 to-orange-500',
-    border: 'border-red-500/50',
-    available: true,
+    accent: 'rgba(255,107,91,.15)',
+    accentBorder: 'rgba(255,107,91,.4)',
   },
   {
     id: 'TEAM_VS_TEAM',
@@ -38,9 +37,8 @@ const MODES = [
     icon: '🫂',
     players: '4–40 người',
     desc: 'Chia 2 đội, cộng điểm theo đội. Bonus khi cả đội trả lời đúng!',
-    color: 'from-green-500 to-teal-500',
-    border: 'border-green-500/50',
-    available: true,
+    accent: 'rgba(184,245,90,.1)',
+    accentBorder: 'rgba(184,245,90,.35)',
   },
   {
     id: 'SUDDEN_DEATH',
@@ -48,9 +46,8 @@ const MODES = [
     icon: '🎯',
     players: '2+ người',
     desc: 'King of the Hill: ai sai trước thua, người thắng giữ ghế chờ đối thủ tiếp theo!',
-    color: 'from-purple-500 to-pink-500',
-    border: 'border-purple-500/50',
-    available: true,
+    accent: 'rgba(212,168,67,.12)',
+    accentBorder: 'rgba(212,168,67,.4)',
   },
 ];
 
@@ -83,132 +80,93 @@ const Multiplayer: React.FC = () => {
     }
   };
 
-  const handleCreate = (modeId: string) => {
-    navigate(`/room/create?mode=${modeId}`);
-  };
-
   if (!isAuthenticated) return null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 p-6 relative overflow-hidden">
-      {/* Background particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(40)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-white rounded-full opacity-10 animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-            }}
-          />
-        ))}
-      </div>
+    <div className={`min-h-screen page-bg ${styles.page}`}>
+      <div className={styles.inner}>
 
-      <div className="relative z-10 max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-10">
+        <div className={styles.header}>
           <button
             onClick={() => navigate('/')}
-            className="text-gray-400 hover:text-white text-sm mb-4 flex items-center gap-1 mx-auto transition-colors"
+            className={styles.backBtn}
           >
             ← Trang chủ
           </button>
-          <h1 className="text-4xl font-bold neon-text mb-3">🎮 CHƠI NHIỀU NGƯỜI</h1>
-          <p className="text-gray-300 text-base">Chọn chế độ chơi và thách đấu bạn bè</p>
+          <h1 className={styles.title}>
+            🎮 Chơi nhiều người
+          </h1>
+          <p className={styles.subtitle}>
+            Chọn chế độ chơi và thách đấu bạn bè
+          </p>
         </div>
 
         {/* Mode Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
+        <div className={styles.modesGrid}>
           {MODES.map((mode) => (
             <div
               key={mode.id}
-              className={`relative bg-black/40 backdrop-blur-lg rounded-2xl p-6 border ${mode.border} shadow-xl transition-all duration-300 ${
-                mode.available ? 'hover:scale-[1.02] hover:shadow-2xl' : 'opacity-60'
-              }`}
+              className={`page-card ${styles.modeCard}`}
+              style={{ border: `1px solid ${mode.accentBorder}`, background: `linear-gradient(135deg, var(--hp-card), ${mode.accent})` }}
             >
-              {!mode.available && (
-                <div className="absolute top-3 right-3 bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded-full">
-                  Sắp ra mắt
-                </div>
-              )}
-
-              <div className="flex items-start gap-4 mb-4">
-                <span className="text-4xl">{mode.icon}</span>
+              <div className={styles.modeCardTop}>
+                <span className={styles.modeIcon}>{mode.icon}</span>
                 <div>
-                  <h2 className="text-xl font-bold text-white">{mode.name}</h2>
-                  <span className="text-xs text-gray-400">{mode.players}</span>
+                  <h2 className={styles.modeName}>{mode.name}</h2>
+                  <span className={styles.modePlayers}>{mode.players}</span>
                 </div>
               </div>
-
-              <p className="text-gray-300 text-sm mb-5 leading-relaxed">{mode.desc}</p>
-
-              <div className="flex gap-3">
+              <p className={styles.modeDesc}>{mode.desc}</p>
+              <div className={styles.modeActions}>
                 <button
-                  onClick={() => mode.available && handleCreate(mode.id)}
-                  disabled={!mode.available}
-                  className={`flex-1 py-2.5 px-4 rounded-lg font-medium text-white text-sm transition-all duration-300 ${
-                    mode.available
-                      ? `bg-gradient-to-r ${mode.color} hover:opacity-90 neon-btn`
-                      : 'bg-gray-700 cursor-not-allowed'
-                  }`}
+                  onClick={() => navigate(`/room/create?mode=${mode.id}`)}
+                  className={`practice-start-btn ${styles.createBtn}`}
                 >
                   Tạo phòng
                 </button>
-                {mode.available && (
-                  <button
-                    onClick={() => navigate('/room/join')}
-                    className="flex-1 py-2.5 px-4 rounded-lg font-medium text-white text-sm bg-black/50 border border-gray-600 hover:border-gray-400 transition-all duration-300"
-                  >
-                    Nhập mã
-                  </button>
-                )}
-                {!mode.available && (
-                  <button
-                    disabled
-                    className="flex-1 py-2.5 px-4 rounded-lg font-medium text-sm bg-gray-700 text-gray-500 cursor-not-allowed"
-                  >
-                    Nhập mã
-                  </button>
-                )}
+                <button
+                  onClick={() => navigate('/room/join')}
+                  className={styles.joinBtn}
+                >
+                  Nhập mã
+                </button>
               </div>
             </div>
           ))}
         </div>
 
         {/* Public Rooms */}
-        <div className="bg-black/40 backdrop-blur-lg rounded-2xl p-6 border border-purple-500/30 shadow-xl">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold text-white">🌐 Phòng công khai đang mở</h2>
+        <div className={`page-card ${styles.publicRoomsCard}`}>
+          <div className={styles.publicRoomsHeader}>
+            <h2 className={styles.publicRoomsTitle}>
+              🌐 Phòng công khai đang mở
+            </h2>
             <button
               onClick={fetchPublicRooms}
-              className="text-purple-400 hover:text-purple-300 text-sm transition-colors"
+              className={styles.refreshBtn}
             >
-              {loadingRooms ? 'Đang tải...' : 'Làm mới'}
+              {loadingRooms ? 'Đang tải...' : 'Làm mới ↻'}
             </button>
           </div>
 
           {publicRooms.length === 0 ? (
-            <p className="text-gray-400 text-sm text-center py-4">
+            <p className={styles.emptyRooms}>
               Chưa có phòng nào đang chờ. Hãy tạo phòng đầu tiên!
             </p>
           ) : (
-            <div className="space-y-3">
+            <div className={styles.roomList}>
               {publicRooms.map((room) => (
-                <div
-                  key={room.id}
-                  className="flex items-center justify-between bg-black/30 rounded-lg px-4 py-3 border border-gray-700"
-                >
+                <div key={room.id} className={styles.roomRow}>
                   <div>
-                    <p className="text-white font-medium text-sm">{room.roomName}</p>
-                    <p className="text-gray-400 text-xs">
-                      {room.mode.replace('_', ' ')} · {room.currentPlayers}/{room.maxPlayers} người
+                    <p className={styles.roomName}>{room.roomName}</p>
+                    <p className={styles.roomMeta}>
+                      {room.mode.replace(/_/g, ' ')} · {room.currentPlayers}/{room.maxPlayers} người
                     </p>
                   </div>
                   <button
                     onClick={() => navigate(`/room/${room.id}/lobby`)}
-                    className="py-1.5 px-4 bg-purple-600 hover:bg-purple-500 text-white text-sm rounded-lg font-medium transition-colors"
+                    className={`practice-start-btn ${styles.joinRoomBtn}`}
                   >
                     Vào
                   </button>

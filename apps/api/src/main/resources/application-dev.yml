@@ -6,14 +6,14 @@ spring:
     name: biblequiz-api
 
   datasource:
-    url: jdbc:mysql://localhost:3306/biblequiz?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8&useUnicode=true&connectionCollation=utf8mb4_unicode_ci
+    url: jdbc:mysql://localhost:3307/biblequiz?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8&useUnicode=true&connectionCollation=utf8mb4_unicode_ci
     username: root
     password: pass
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
@@ -21,12 +21,10 @@ spring:
     show-sql: false
   sql:
     init:
-      mode: always
-      data-locations: classpath:data.sql,classpath:questions.sql,classpath:more-questions.sql
-      continue-on-error: false
+      mode: never
 
   flyway:
-    enabled: false
+    enabled: true
     locations: classpath:db/migration
     baseline-on-migrate: true
 
@@ -46,16 +44,16 @@ spring:
       client:
         registration:
           google:
-            client-id: ${GOOGLE_CLIENT_ID:your-google-client-id}
-            client-secret: ${GOOGLE_CLIENT_SECRET:your-google-client-secret}
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
             scope: openid,profile,email
-            redirect-uri: ${OAUTH2_REDIRECT_URI:http://localhost:8081/login/oauth2/code/google}
+            redirect-uri: ${OAUTH2_REDIRECT_URI:http://localhost:8080/login/oauth2/code/google}
         provider:
           google:
             user-name-attribute: sub
 
 jwt:
-  secret: ${JWT_SECRET:biblequiz-super-secret-jwt-key-2024-make-it-long-and-random-for-security}
+  secret: ${JWT_SECRET:YmlibGVxdWl6LXN1cGVyLXNlY3JldC1qd3Qta2V5LTIwMjQtbWFrZS1pdC1sb25nLWFuZC1yYW5kb20tZm9yLXNlY3VyaXR5}
   expiration: ${JWT_EXPIRATION:900000}
   refresh-expiration: ${JWT_REFRESH_EXPIRATION:2592000000}
 

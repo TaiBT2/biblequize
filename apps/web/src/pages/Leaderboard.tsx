@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { api } from '../api/client'
 import { useAuth } from '../contexts/AuthContext'
+import styles from './Leaderboard.module.css'
 
 type Tab = 'daily' | 'weekly' | 'all-time'
 
@@ -152,15 +153,9 @@ const PodiumCard = ({ rank, row, isMe }: { rank: 1 | 2 | 3; row: any; isMe: bool
   const isFirst = rank === 1
 
   return (
-    <div style={{
-      display: 'flex', flexDirection: 'column', alignItems: 'center',
-      flex: 1, zIndex: isFirst ? 10 : 1,
-      transform: isFirst ? 'translateY(-25px)' : 'translateY(0)',
-      maxWidth: isFirst ? '220px' : '190px',
-      position: 'relative'
-    }}>
+    <div className={isFirst ? styles.podiumFirst : styles.podiumOther}>
       {isFirst && (
-        <div className="flex items-center gap-2 animate-bounce" style={{ marginBottom: 12 }}>
+        <div className={`flex items-center gap-2 animate-bounce ${styles.podiumCrownRow}`}>
           <CrownIcon />
           <div title="Legendary Reward" className="text-yellow-400 drop-shadow-[0_0_8px_rgba(255,195,0,0.8)]">
             <GiftIcon size={24} />
@@ -216,12 +211,7 @@ const PodiumCard = ({ rank, row, isMe }: { rank: 1 | 2 | 3; row: any; isMe: bool
         </div>
 
         {isMe && (
-          <div style={{
-            position: 'absolute', top: '20%', right: '5%',
-            background: '#00F5D4', color: '#000', fontSize: 8,
-            fontWeight: 900, padding: '1px 6px', borderRadius: 4,
-            boxShadow: '0 0 10px #00F5D4'
-          }}>BẠN</div>
+          <div className={styles.podiumBadge}>BẠN</div>
         )}
       </div>
     </div>
@@ -258,68 +248,29 @@ const UserRankBar = ({ userRank, user }: { userRank: any; user: any }) => {
   return (
     <div className="w-full mb-8 relative px-4">
       <div
-        className="w-full h-20 flex items-center relative group"
-        style={{
-          background: 'rgba(10, 15, 25, 0.9)',
-          backdropFilter: 'blur(15px)',
-          clipPath: cyberShape,
-          overflow: 'visible'
-        }}
+        className={`w-full h-20 flex items-center relative group ${styles.rankBarOuter}`}
+        style={{ clipPath: cyberShape, overflow: 'visible' }}
       >
         {/* Neon Border Wrapper */}
-        <div style={{
-          position: 'absolute',
-          inset: -1,
-          background: '#00F5D4',
-          clipPath: cyberShape,
-          zIndex: -1,
-          opacity: 0.7,
-          filter: 'drop-shadow(0 0 8px rgba(0, 245, 212, 0.4))'
-        }}></div>
+        <div
+          className={styles.rankBarNeonBorder}
+          style={{ clipPath: cyberShape }}
+        ></div>
 
         {/* Decorative Corner Brackets (Tech Accents) */}
-        {[
-          { top: 0, left: 0, borderTop: '2px solid #00F5D4', borderLeft: '2px solid #00F5D4', borderRadius: '4px 0 0 0' },
-          { top: 0, right: 0, borderTop: '2px solid #00F5D4', borderRight: '2px solid #00F5D4', borderRadius: '0 4px 0 0' },
-          { bottom: 0, left: 0, borderBottom: '2px solid #00F5D4', borderLeft: '2px solid #00F5D4', borderRadius: '0 0 0 4px' },
-          { bottom: 0, right: 0, borderBottom: '2px solid #00F5D4', borderRight: '2px solid #00F5D4', borderRadius: '0 0 4px 0' }
-        ].map((style, i) => (
-          <div key={i} style={{
-            position: 'absolute',
-            width: '12px',
-            height: '12px',
-            zIndex: 30,
-            opacity: 0.8,
-            boxShadow: '0 0 10px rgba(0, 245, 212, 0.5)',
-            ...style
-          }}></div>
-        ))}
+        <div className={`${styles.rankBarCornerBracket} ${styles.rankBarCornerTL}`}></div>
+        <div className={`${styles.rankBarCornerBracket} ${styles.rankBarCornerTR}`}></div>
+        <div className={`${styles.rankBarCornerBracket} ${styles.rankBarCornerBL}`}></div>
+        <div className={`${styles.rankBarCornerBracket} ${styles.rankBarCornerBR}`}></div>
 
         {/* Inner Shape with Circuit Lines */}
-        <div style={{
-          position: 'absolute',
-          inset: 1,
-          background: 'rgba(10, 15, 25, 0.95)',
-          clipPath: 'inherit',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '0 40px',
-          zIndex: 1
-        }}>
+        <div className={styles.rankBarInner}>
           {/* Circuit Lines Background */}
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            opacity: 0.1,
-            pointerEvents: 'none',
-            backgroundImage: `linear-gradient(rgba(0,245,212,0.2) 1px, transparent 1px)`,
-            backgroundSize: '100% 12px'
-          }}></div>
+          <div className={styles.rankBarCircuitLines}></div>
 
           {/* Left: Rank */}
           <div className="flex items-center gap-4 z-10">
-            <div className="text-5xl font-black italic tracking-tighter text-white" style={{ textShadow: '0 0 15px rgba(255,255,255,0.3)' }}>
+            <div className={`text-5xl font-black italic tracking-tighter text-white ${styles.rankNumber}`}>
               #{userRank.rank}
             </div>
           </div>
@@ -339,31 +290,14 @@ const UserRankBar = ({ userRank, user }: { userRank: any; user: any }) => {
               <span className="text-2xl font-black"><NumberTicker value={userRank.points} /></span>
             </div>
             <div className="flex items-center gap-3 text-[#FFC300]">
-              <div style={{
-                width: 20, height: 16, background: '#FFC300',
-                clipPath: 'polygon(0% 20%, 40% 20%, 50% 0%, 100% 0%, 100% 100%, 0% 100%)'
-              }}></div>
+              <div className={styles.rankBarChevron}></div>
               <span className="text-2xl font-black"><NumberTicker value={userRank.questions} /></span>
             </div>
           </div>
         </div>
 
         {/* Badge Label (Raised Center) */}
-        <div style={{
-          position: 'absolute',
-          top: '-15px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          background: '#00F5D4',
-          color: '#000',
-          padding: '2px 20px',
-          fontSize: '11px',
-          fontWeight: 900,
-          clipPath: 'polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%)',
-          zIndex: 20,
-          letterSpacing: '0.5px',
-          boxShadow: '0 0 15px rgba(0, 245, 212, 0.4)'
-        }}>
+        <div className={styles.rankBarBadge}>
           VỊ TRÍ CỦA BẠN
         </div>
       </div>
@@ -371,7 +305,7 @@ const UserRankBar = ({ userRank, user }: { userRank: any; user: any }) => {
   )
 }
 
-const Leaderboard: React.FC = () => {
+const Leaderboard = () => {
   const [tab, setTab] = useState<Tab>('daily')
   const [rows, setRows] = useState<Array<any>>([])
   const [date, setDate] = useState<string>('')
@@ -418,11 +352,7 @@ const Leaderboard: React.FC = () => {
   const listRows = isFirstPage ? rows.slice(3) : rows
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center py-10 px-4 relative overflow-x-hidden"
-      style={{
-        background: 'radial-gradient(circle at center, #1B2735 0%, #090A0F 100%)',
-        fontFamily: "'Inter', sans-serif"
-      }}>
+    <div className={`min-h-screen w-full flex flex-col items-center py-10 px-4 relative overflow-x-hidden ${styles.pageWrapper}`}>
 
       <style>{PREMIUM_CSS}</style>
 
@@ -454,21 +384,16 @@ const Leaderboard: React.FC = () => {
       <div className="w-full max-w-4xl flex flex-col items-center z-10">
 
         {/* Title */}
-        <h1 className="text-4xl font-black mb-1 text-center tracking-[0.1em]"
-          style={{
-            background: 'linear-gradient(to bottom, #FFE180 0%, #FFC300 50%, #FFA000 100%)',
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-            filter: 'drop-shadow(0 0 15px rgba(255,195,0,0.4))'
-          }}>
+        <h1 className={`text-4xl font-black mb-1 text-center tracking-[0.1em] ${styles.pageTitle}`}>
           BẢNG XẾP HẠNG
         </h1>
         <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20 mb-14">THE GREAT CHALLENGE</p>
 
         {/* Segmented Control & Date Picker Row */}
         <div className="flex items-center gap-6 mb-12 z-20">
-          <div className="relative p-1 bg-black/40 border border-white/10 rounded-full flex" style={{ minWidth: '300px', backdropFilter: 'blur(10px)' }}>
+          <div className={`relative p-1 bg-black/40 border border-white/10 rounded-full flex ${styles.tabContainer}`}>
             <div
-              className="absolute top-1 bottom-1 bg-[#00F5D4] rounded-full transition-all duration-300 ease-out shadow-[0_0_20px_#00F5D4]"
+              className={`absolute top-1 bottom-1 rounded-full transition-all duration-300 ease-out ${styles.tabSlider}`}
               style={{
                 width: `calc(100% / 3 - 4px)`,
                 left: `calc(2px + (${currentTabIndex} * (100% / 3)))`
@@ -481,8 +406,8 @@ const Leaderboard: React.FC = () => {
                   setTab(t.key);
                   setCurrentPage(0);
                 }}
-                className="flex-1 py-2 text-[10px] font-black uppercase tracking-widest transition-all relative z-10 no-underline border-none bg-transparent cursor-pointer"
-                style={{ color: tab === t.key ? '#000' : 'rgba(255,255,255,0.4)' }}
+                className={`flex-1 py-2 text-[10px] font-black uppercase tracking-widest transition-all relative z-10 no-underline border-none bg-transparent cursor-pointer ${styles.tabButton}`}
+                data-active={tab === t.key}
               >
                 {t.label}
               </button>
@@ -495,8 +420,7 @@ const Leaderboard: React.FC = () => {
               type="date"
               value={date}
               onChange={e => setDate(e.target.value)}
-              className="bg-transparent border-none text-[#00F5D4] text-[10px] outline-none cursor-pointer font-black uppercase"
-              style={{ colorScheme: 'dark' }}
+              className={`bg-transparent border-none text-[#00F5D4] text-[10px] outline-none cursor-pointer font-black uppercase ${styles.dateInput}`}
               placeholder="mm/dd/yyyy"
             />
           </div>
@@ -505,7 +429,7 @@ const Leaderboard: React.FC = () => {
         {/* LOADING STATE */}
         {loading && (
           <div className="flex flex-col items-center py-20 gap-4">
-            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#00F5D4]"></div>
+            <div className={`animate-spin rounded-full h-10 w-10 border-4 border-t-transparent ${styles.loadingSpinner}`}></div>
             <span className="text-[10px] font-black uppercase tracking-widest text-white/30">Đang đồng bộ...</span>
           </div>
         )}
@@ -538,21 +462,12 @@ const Leaderboard: React.FC = () => {
 
             {/* TẦNG 3: DETAILED LIST (Cyber Table) */}
             {listRows.length > 0 && (
-              <div className="w-full mb-6 rounded-t-[2rem] rounded-b-xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/5 relative"
-                style={{
-                  background: 'rgba(15, 20, 30, 0.85)',
-                  backdropFilter: 'blur(20px)',
-                }}>
+              <div className={`w-full mb-6 rounded-t-[2rem] rounded-b-xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/5 relative ${styles.listTable}`}>
                 {/* Running Light Border */}
-                <div className="absolute inset-0 pointer-events-none border-2 border-transparent"
-                  style={{
-                    borderImage: 'linear-gradient(90deg, transparent, #00F5D4, transparent) 1',
-                    maskImage: 'linear-gradient(90deg, black, transparent, black)',
-                    opacity: 0.3
-                  }} />
+                <div className={`absolute inset-0 pointer-events-none border-2 border-transparent ${styles.runningLightBorder}`} />
                 <table className="w-full border-collapse">
                   <thead>
-                    <tr style={{ background: 'rgba(255,255,255,0.03)' }}>
+                    <tr className={styles.tableHeader}>
                       <th className="px-10 py-6 text-left text-[10px] font-black text-white/50 uppercase tracking-[0.25em]">HẠNG</th>
                       <th className="px-10 py-6 text-left text-[10px] font-black text-white/50 uppercase tracking-[0.25em]">NGƯỜI CHƠI</th>
                       <th className="px-10 py-6 text-right text-[10px] font-black text-white/50 uppercase tracking-[0.25em]">ĐIỂM (⭐)</th>
@@ -576,7 +491,7 @@ const Leaderboard: React.FC = () => {
                         <tr key={i}
                           className={`
                               border-t border-white/5 transition-all duration-300
-                              ${isMe ? 'bg-[#00F5D4]/15 border-[#00F5D4]/40 shadow-[0_0_20px_rgba(0,245,212,0.15)] pulse-neon' : i % 2 === 0 ? 'bg-white/[0.01]' : 'hover:bg-white/[0.03]'}
+                              ${isMe ? 'border-yellow-500/40 shadow-[0_0_20px_rgba(212,168,67,0.2)] pulse-neon' : i % 2 === 0 ? 'bg-white/[0.01]' : 'hover:bg-white/[0.03]'}
                             `}
                         >
                           <td className="px-10 py-4">
@@ -611,7 +526,7 @@ const Leaderboard: React.FC = () => {
                             <div className="inline-flex flex-col items-end w-24">
                               <span className="text-xl font-black text-[#FFC300] italic"><NumberTicker value={r.points} /></span>
                               <div className="w-full h-1 bg-white/5 rounded-full mt-1 overflow-hidden relative">
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-[running-light_2s_linear_infinite]" style={{ backgroundSize: '200% 100%' }} />
+                                <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-[running-light_2s_linear_infinite] ${styles.runningLightBar}`} />
                                 <div className="h-full bg-[#FFC300] relative z-10" style={{ width: `${Math.min((r.points / (rows[0]?.points || 1)) * 100, 100)}%` }}></div>
                               </div>
                             </div>
@@ -636,16 +551,7 @@ const Leaderboard: React.FC = () => {
                   <div className="flex items-center justify-center gap-4 w-full max-w-xl px-4">
                     <Link to="/ranked" className="flex-1 no-underline group/btn">
                       <button
-                        className="w-full py-3.5 relative font-black uppercase tracking-[0.15em] transition-all duration-300 cursor-pointer overflow-hidden"
-                        style={{
-                          background: 'linear-gradient(90deg, #00F5D4 0%, #00D1B2 50%, #00F5D4 100%)',
-                          backgroundSize: '200% auto',
-                          color: '#000',
-                          fontSize: '13px',
-                          border: 'none',
-                          clipPath: 'polygon(20px 0%, 100% 0%, calc(100% - 20px) 100%, 0% 100%)',
-                          boxShadow: '0 0 30px rgba(0, 245, 212, 0.45)',
-                        }}
+                        className={`w-full py-3.5 relative font-black uppercase tracking-[0.15em] transition-all duration-300 cursor-pointer overflow-hidden ${styles.fightButton}`}
                       >
                         <span className="relative z-10 flex items-center justify-center gap-2 group-hover/btn:scale-110 transition-transform">
                           <BookIcon size={20} color="#000" />
@@ -657,16 +563,7 @@ const Leaderboard: React.FC = () => {
 
                     <Link to="/" className="flex-1 no-underline group/btn">
                       <button
-                        className="w-full py-3.5 relative font-black uppercase tracking-[0.15em] transition-all duration-300 cursor-pointer overflow-hidden"
-                        style={{
-                          background: 'rgba(255, 255, 255, 0.05)',
-                          backdropFilter: 'blur(15px)',
-                          color: '#E0B0FF',
-                          fontSize: '13px',
-                          border: '2px solid rgba(168, 85, 247, 0.6)',
-                          clipPath: 'polygon(0% 0%, calc(100% - 20px) 0%, 100% 100%, 20px 100%)',
-                          boxShadow: '0 0 20px rgba(168, 85, 247, 0.1)',
-                        }}
+                        className={`w-full py-3.5 relative font-black uppercase tracking-[0.15em] transition-all duration-300 cursor-pointer overflow-hidden ${styles.otherModeButton}`}
                       >
                         <span className="relative z-10 flex items-center justify-center gap-2 group-hover/btn:text-white transition-colors">
                           <SwordIcon size={18} />
