@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#1d1f2a",
+              "surface-container-lowest": "#0b0e18",
+              "tertiary": "#e7c268",
+              "tertiary-container": "#2b1f00",
+              "background": "#11131e",
+              "on-tertiary-fixed-variant": "#5a4400",
+              "surface-container-low": "#191b26",
+              "on-error-container": "#ffdad6",
+              "on-primary-fixed": "#151a34",
+              "on-secondary": "#412d00",
+              "inverse-on-surface": "#2e303c",
+              "secondary-fixed": "#ffdea7",
+              "on-error": "#690005",
+              "on-surface": "#e1e1f1",
+              "secondary-fixed-dim": "#f8bd45",
+              "surface-container-highest": "#323440",
+              "primary-fixed-dim": "#c0c4e8",
+              "outline-variant": "#46464d",
+              "on-primary-fixed-variant": "#404562",
+              "on-surface-variant": "#c7c5ce",
+              "primary-container": "#1a1f3a",
+              "surface-tint": "#c0c4e8",
+              "on-primary": "#2a2f4a",
+              "on-primary-container": "#8286a7",
+              "inverse-surface": "#e1e1f1",
+              "on-secondary-container": "#392600",
+              "on-background": "#e1e1f1",
+              "surface-bright": "#373845",
+              "error-container": "#93000a",
+              "surface-dim": "#11131e",
+              "surface-variant": "#323440",
+              "error": "#ffb4ab",
+              "on-secondary-fixed": "#271900",
+              "tertiary-fixed-dim": "#e7c268",
+              "on-tertiary-fixed": "#251a00",
+              "primary": "#c0c4e8",
+              "outline": "#919098",
+              "on-tertiary": "#3e2e00",
+              "on-secondary-fixed-variant": "#5e4200",
+              "secondary-container": "#bc8709",
+              "tertiary-fixed": "#ffdf96",
+              "surface": "#11131e",
+              "inverse-primary": "#585d7b",
+              "surface-container-high": "#272935",
+              "on-tertiary-container": "#a48431",
+              "primary-fixed": "#dee1ff",
+              "secondary": "#e8a832"
+            },
+            fontFamily: {
+              "headline": ["Be Vietnam Pro"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Be Vietnam Pro', sans-serif;
+        background-color: #11131e;
+        color: #e1e1f1;
+      }
+      .streak-grid {
+        display: grid;
+        grid-template-columns: repeat(20, 1fr);
+        gap: 4px;
+      }
+      .glass-effect {
+        background: rgba(50, 52, 64, 0.6);
+        backdrop-filter: blur(12px);
+      }
+      .gold-gradient {
+        background: linear-gradient(135deg, #e8a832 0%, #e7c268 100%);
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#11131e] dark:bg-[#11131e]">
+<div class="flex items-center gap-2">
+<span class="text-xl font-black text-[#e8a832] tracking-tighter">Bible Quiz</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#e1e1f1]/60 font-['Be_Vietnam_Pro'] tracking-tight font-bold text-lg hover:bg-[#1d1f2a] transition-colors duration-200 px-3 py-1 rounded" href="#">Trang chủ</a>
+<a class="text-[#e1e1f1]/60 font-['Be_Vietnam_Pro'] tracking-tight font-bold text-lg hover:bg-[#1d1f2a] transition-colors duration-200 px-3 py-1 rounded" href="#">Xếp hạng</a>
+<a class="text-[#e8a832] font-bold font-['Be_Vietnam_Pro'] tracking-tight text-lg" href="#">Cá nhân</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#e8a832] cursor-pointer" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="material-symbols-outlined text-[#e8a832] cursor-pointer" data-icon="stars">stars</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-secondary/20">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="professional portrait of a smiling young man in a minimalist studio setting with soft warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0DxVdZNLs1rkvNaH5SkURacWOiJl1HlWTerpq5lRZOcV3sozp3Ud0nTvkpp1R_awQi96_AL6EZkx07RWYzLRLAVblkjC5__wSCJ2hkSS72SmB7rBpsWl2oQkmQ6gGyMplOo5idyrXGGRX4g4piRC7ptM3E07C8bKrNC0I4kzfw7D2kbTcfoh_-7sHWb-3O0_72yHZV2AgK4i0IAPnXa-izUtBCMLX0YmuvvxJ-QS8AG78gSK3HNyvTr0rLcGgI6otCD71rNajZWQ"/>
+</div>
+</div>
+</nav>
+<!-- Sidebar (Web) -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 border-r border-[#1d1f2a] bg-[#11131e] hidden md:flex flex-col py-8 z-40">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high overflow-hidden border border-secondary/20">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="close-up profile photo of a person with friendly expression in soft atmospheric lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzORw6dX3UX13bl0ul7gBiyFZf7UYm2_AuCNVi5GIfHdMUc_rqWRnw7d_AMa1yRGss7oAlqPYvJ-nIpGAt2ByIs0r6S9P5wIoI1CbaPieUKrFzA7Kb2lO7N8Nb-g0gj-6Suhs5BcB8aAkxSoiBwi2sd6SAoyt95qT4wc820vHM5vy63pPBHynGIgIDPFUMZ6vPlvfHTLCsIDSOfsLpsq8IPcCk3vDMG3xf3JyLlFsNTwUAfBksFUV6E2fN86Muv44RRv-yssxA7Z4"/>
+</div>
+<div>
+<p class="font-black text-secondary text-sm uppercase tracking-wider">Người Học</p>
+<p class="text-on-surface-variant text-xs font-medium">Hạng Vàng</p>
+</div>
+</div>
+<button class="w-full gold-gradient text-on-secondary font-bold py-3 rounded-lg shadow-lg active:scale-95 transition-transform uppercase text-xs tracking-widest">Học Ngay</button>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-[#e1e1f1]/70 hover:text-[#e1e1f1] px-6 py-3 flex items-center gap-3 hover:bg-[#1d1f2a] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-medium text-sm uppercase tracking-wider">Trang chủ</span>
+</a>
+<a class="text-[#e1e1f1]/70 hover:text-[#e1e1f1] px-6 py-3 flex items-center gap-3 hover:bg-[#1d1f2a] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-medium text-sm uppercase tracking-wider">Xếp hạng</span>
+</a>
+<a class="text-[#e1e1f1]/70 hover:text-[#e1e1f1] px-6 py-3 flex items-center gap-3 hover:bg-[#1d1f2a] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-medium text-sm uppercase tracking-wider">Nhóm</span>
+</a>
+<a class="bg-[#e8a832] text-[#11131e] mx-2 px-4 py-3 flex items-center gap-3 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-bold text-sm uppercase tracking-wider">Cá nhân</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-64 pt-20 pb-24 md:pb-12 px-4 md:px-12 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="relative rounded-3xl overflow-hidden mb-12">
+<div class="h-48 md:h-72 relative">
+<img class="w-full h-full object-cover opacity-50" data-alt="dramatic mountain sunrise with golden rays piercing through morning mist in a sacred atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_2svHltkb34shYGCf9-PJfW2HOHx01DO6y2JrTlRvjlC_vZTTHkhGqs0F4n0VTURex5c6114-NHHBlkEnO7rZ_93rp-maO7WIucjrwDzki0RPNnhC9uQvSafCfrUHRRUdGdBh3BCwfciA5NJVr5qr8Bm3Tl9ltKBBQGZEmxsv9faaVUr8EanCHevebtowhmvYNCwxdF1DdJ34yD4qzbChuPdMU14lRuW1S1o-gveLcFFV88qOM4UAQdd7IHcCN9Q2k_7gkRLIOUQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+</div>
+<div class="absolute bottom-6 left-6 md:left-10 flex flex-col md:flex-row items-end gap-6 w-full pr-12">
+<div class="w-24 h-24 md:w-40 md:h-40 rounded-3xl border-4 border-background bg-surface-container-high overflow-hidden shadow-2xl relative z-10">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="detailed close-up of a person with contemplative expression in cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP5PpXpHAtcFcSJwbaIdBNeUoaxx07hCqk-27gR9A1zQ3lGwgrex4TF5GKVtAPXpJoVpXsGGx4GA1sPQ89bl3xQXewGAYRGMxAvYG2VZ1Hly5ExAxxgcyz4IF4vej4DEYCbAF40BMMQ2eB06NXCbSztvyPEwU0ABywxhIOM9NP5Kxw8qnHuJVj2Sm0NR8VkJ1XnEqo8JvRDeiKTWQtWut9CvCrxIGNxyj3YWwYDxAMkMMiM0qI3wNoN5k7Xd_D1CM6XWROSsRfEeg"/>
+</div>
+<div class="flex-1 pb-4">
+<h1 class="text-3xl md:text-5xl font-black text-on-surface tracking-tight mb-1">Nguyễn Văn A</h1>
+<p class="text-secondary font-bold flex items-center gap-2 text-lg">
+<span class="material-symbols-outlined text-xl" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        Tân Tín Hữu • Cấp độ 12
+                    </p>
+</div>
+<div class="hidden lg:flex gap-3 pb-4">
+<button class="px-6 py-3 bg-surface-container-highest border border-outline-variant/20 rounded-xl font-bold text-sm hover:bg-surface-bright transition-colors">Chỉnh sửa hồ sơ</button>
+<button class="p-3 bg-secondary/10 border border-secondary/20 rounded-xl text-secondary hover:bg-secondary/20 transition-colors">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Bento Grid Stats & Progress -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+<!-- Tier Progress -->
+<div class="md:col-span-2 bg-surface-container rounded-3xl p-10 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-xl font-bold text-on-surface tracking-tight uppercase">Tiến trình danh hiệu</h2>
+<span class="text-xs font-black bg-tertiary-container text-tertiary px-4 py-1.5 rounded-full uppercase tracking-widest">Sứ Đồ (Tiếp theo)</span>
+</div>
+<div class="relative h-5 w-full bg-primary-container rounded-full overflow-hidden mb-6">
+<div class="absolute top-0 left-0 h-full gold-gradient rounded-full shadow-[0_0_12px_rgba(232,168,50,0.3)]" style="width: 65%;"></div>
+</div>
+<div class="flex justify-between text-sm font-bold text-on-surface-variant uppercase tracking-tighter">
+<span>Tân Tín Hữu</span>
+<span>850 / 1,200 EXP</span>
+<span>Sứ Đồ</span>
+</div>
+</div>
+<div class="mt-10 flex gap-6 items-center">
+<div class="flex -space-x-3">
+<div class="w-12 h-12 rounded-full border-2 border-surface-container bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-2xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-surface-container bg-surface-container-high flex items-center justify-center text-on-surface-variant opacity-50">
+<span class="material-symbols-outlined text-2xl" data-icon="lock">lock</span>
+</div>
+</div>
+<p class="text-base text-on-surface-variant italic font-medium leading-relaxed">"Còn 350 EXP nữa để nhận danh hiệu Sứ Đồ và mở khóa phần thưởng đặc biệt."</p>
+</div>
+</div>
+<!-- Quick Stats Column -->
+<div class="grid grid-cols-2 md:grid-cols-1 gap-6">
+<div class="bg-surface-container rounded-3xl p-8 flex items-center gap-5">
+<div class="p-4 bg-secondary/10 rounded-2xl text-secondary">
+<span class="material-symbols-outlined text-3xl" data-icon="quiz">quiz</span>
+</div>
+<div>
+<p class="text-[11px] font-black uppercase text-on-surface-variant tracking-widest">Số câu hỏi</p>
+<p class="text-2xl font-black text-on-surface">1,420</p>
+</div>
+</div>
+<div class="bg-surface-container rounded-3xl p-8 flex items-center gap-5">
+<div class="p-4 bg-[#e7c268]/10 rounded-2xl text-[#e7c268]">
+<span class="material-symbols-outlined text-3xl" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<p class="text-[11px] font-black uppercase text-on-surface-variant tracking-widest">Chuỗi tốt nhất</p>
+<p class="text-2xl font-black text-on-surface">24 Ngày</p>
+</div>
+</div>
+<div class="bg-surface-container rounded-3xl p-8 flex items-center gap-5 hidden md:flex">
+<div class="p-4 bg-primary/10 rounded-2xl text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="target">target</span>
+</div>
+<div>
+<p class="text-[11px] font-black uppercase text-on-surface-variant tracking-widest">Độ chính xác</p>
+<p class="text-2xl font-black text-on-surface">92.5%</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Heatmap Section -->
+<section class="bg-surface-container rounded-3xl p-10 mb-12 overflow-hidden">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<h2 class="text-xl font-bold text-on-surface tracking-tight uppercase">Nhật ký học tập</h2>
+<div class="flex items-center gap-6 text-xs font-bold text-on-surface-variant">
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 bg-surface-container-high rounded-sm"></div>
+<span>Nghỉ ngơi</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 bg-secondary/30 rounded-sm"></div>
+<span>Học ít</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 bg-secondary rounded-sm"></div>
+<span>Năng nổ</span>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto pb-4">
+<div class="streak-grid min-w-[600px] gap-1.5">
+<!-- Row 1 -->
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/60 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-surface-container-high rounded-sm"></div>
+<div class="h-5 bg-secondary/30 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/80 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-surface-container-high rounded-sm"></div>
+<div class="h-5 bg-surface-container-high rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/60 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/30 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/80 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<!-- Row 2 -->
+<div class="h-5 bg-secondary/30 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-surface-container-high rounded-sm"></div>
+<div class="h-5 bg-surface-container-high rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/80 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/30 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-surface-container-high rounded-sm"></div>
+<div class="h-5 bg-secondary/30 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<!-- Row 3 -->
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/60 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-surface-container-high rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-surface-container-high rounded-sm"></div>
+<div class="h-5 bg-surface-container-high rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/80 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-surface-container-high rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/30 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/80 rounded-sm"></div>
+<!-- Row 4 -->
+<div class="h-5 bg-surface-container-high rounded-sm"></div>
+<div class="h-5 bg-surface-container-high rounded-sm"></div>
+<div class="h-5 bg-secondary/30 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/60 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/80 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-surface-container-high rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/30 rounded-sm"></div>
+<div class="h-5 bg-secondary rounded-sm"></div>
+<div class="h-5 bg-secondary/80 rounded-sm"></div>
+</div>
+</div>
+</section>
+<!-- Badge Collection -->
+<section>
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-xl font-bold text-on-surface tracking-tight uppercase">Bộ sưu tập huy hiệu</h2>
+<a class="text-secondary text-sm font-black uppercase tracking-widest hover:underline" href="#">Xem tất cả</a>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+<!-- Badge 1 -->
+<div class="bg-surface-container rounded-3xl p-8 flex flex-col items-center text-center group hover:bg-surface-container-high transition-all">
+<div class="w-20 h-20 rounded-full glass-effect flex items-center justify-center mb-5 border border-secondary/20 shadow-[0_0_15px_rgba(232,168,50,0.1)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl text-secondary" data-icon="auto_stories" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+</div>
+<p class="text-sm font-black text-on-surface mb-2">Học giả</p>
+<p class="text-xs text-on-surface-variant font-medium">Đọc 50 chương</p>
+</div>
+<!-- Badge 2 -->
+<div class="bg-surface-container rounded-3xl p-8 flex flex-col items-center text-center group hover:bg-surface-container-high transition-all">
+<div class="w-20 h-20 rounded-full glass-effect flex items-center justify-center mb-5 border border-secondary/20 shadow-[0_0_15px_rgba(232,168,50,0.1)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl text-secondary" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<p class="text-sm font-black text-on-surface mb-2">Rực cháy</p>
+<p class="text-xs text-on-surface-variant font-medium">7 ngày liên tiếp</p>
+</div>
+<!-- Badge 3 -->
+<div class="bg-surface-container rounded-3xl p-8 flex flex-col items-center text-center group hover:bg-surface-container-high transition-all">
+<div class="w-20 h-20 rounded-full glass-effect flex items-center justify-center mb-5 border border-secondary/20 shadow-[0_0_15px_rgba(232,168,50,0.1)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl text-secondary" data-icon="military_tech" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<p class="text-sm font-black text-on-surface mb-2">Vô địch</p>
+<p class="text-xs text-on-surface-variant font-medium">Top 1 tuần</p>
+</div>
+<!-- Badge 4 (Locked) -->
+<div class="bg-surface-container rounded-3xl p-8 flex flex-col items-center text-center opacity-40 grayscale group">
+<div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-5 border border-outline-variant/10">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="trophy">trophy</span>
+</div>
+<p class="text-sm font-black text-on-surface mb-2">Nhà truyền giáo</p>
+<p class="text-xs text-on-surface-variant font-medium">Mời 10 bạn bè</p>
+</div>
+<!-- Badge 5 (Locked) -->
+<div class="bg-surface-container rounded-3xl p-8 flex flex-col items-center text-center opacity-40 grayscale group">
+<div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-5 border border-outline-variant/10">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<p class="text-sm font-black text-on-surface mb-2">Thánh kinh</p>
+<p class="text-xs text-on-surface-variant font-medium">Hoàn thành 500 câu</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 md:hidden bg-[#11131e]/80 backdrop-blur-xl border-t border-[#e1e1f1]/10 shadow-[0_-4px_24px_rgba(11,14,24,0.06)]">
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/50 px-4 py-1.5 hover:text-[#e8a832] transition-all">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-[0.05em]">Trang chủ</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/50 px-4 py-1.5 hover:text-[#e8a832] transition-all">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-[0.05em]">Bảng xếp hạng</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/50 px-4 py-1.5 hover:text-[#e8a832] transition-all">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-[0.05em]">Nhóm</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#1d1f2a] text-[#e8a832] rounded-xl px-4 py-1.5 shadow-[0_0_12px_rgba(232,168,50,0.2)] active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-[0.05em]">Cá nhân</span>
+</div>
+</nav>
+</body></html>

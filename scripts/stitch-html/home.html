@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#1d1f2a",
+              "surface-container-lowest": "#0b0e18",
+              "tertiary": "#e8a832",
+              "tertiary-container": "#2b1f00",
+              "background": "#11131e",
+              "on-tertiary-fixed-variant": "#5a4400",
+              "surface-container-low": "#191b26",
+              "on-error-container": "#ffdad6",
+              "on-primary-fixed": "#151a34",
+              "on-secondary": "#271900",
+              "inverse-on-surface": "#2e303c",
+              "secondary-fixed": "#ffdea7",
+              "on-error": "#690005",
+              "on-surface": "#e1e1f1",
+              "secondary-fixed-dim": "#e8a832",
+              "surface-container-highest": "#323440",
+              "primary-fixed-dim": "#c0c4e8",
+              "outline-variant": "#46464d",
+              "on-primary-fixed-variant": "#404562",
+              "on-surface-variant": "#c7c5ce",
+              "primary-container": "#1a1f3a",
+              "surface-tint": "#c0c4e8",
+              "on-primary": "#2a2f4a",
+              "on-primary-container": "#8286a7",
+              "inverse-surface": "#e1e1f1",
+              "on-secondary-container": "#392600",
+              "on-background": "#e1e1f1",
+              "surface-bright": "#373845",
+              "error-container": "#93000a",
+              "surface-dim": "#11131e",
+              "surface-variant": "#323440",
+              "error": "#ffb4ab",
+              "on-secondary-fixed": "#271900",
+              "tertiary-fixed-dim": "#e8a832",
+              "on-tertiary-fixed": "#251a00",
+              "primary": "#c0c4e8",
+              "outline": "#919098",
+              "on-tertiary": "#3e2e00",
+              "on-secondary-fixed-variant": "#5e4200",
+              "secondary-container": "#e8a832",
+              "tertiary-fixed": "#ffdf96",
+              "surface": "#11131e",
+              "inverse-primary": "#585d7b",
+              "surface-container-high": "#272935",
+              "on-tertiary-container": "#a48431",
+              "primary-fixed": "#dee1ff",
+              "secondary": "#e8a832"
+            },
+            fontFamily: {
+              "headline": ["Be Vietnam Pro"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "3xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { font-family: 'Be Vietnam Pro', sans-serif; }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(50, 52, 64, 0.6);
+        backdrop-filter: blur(20px);
+      }
+      .gold-gradient {
+        background: linear-gradient(135deg, #e8a832 0%, #d49528 100%);
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#11131e]/90 backdrop-blur-md">
+<div class="text-2xl font-black text-[#e8a832] tracking-tighter">Bible Quiz</div>
+<div class="hidden md:flex items-center gap-10">
+<nav class="flex gap-8">
+<a class="text-[#e8a832] font-bold font-['Be_Vietnam_Pro'] tracking-tight text-lg" href="#">Trang chủ</a>
+<a class="text-[#e1e1f1]/60 font-['Be_Vietnam_Pro'] tracking-tight text-lg hover:text-on-surface transition-colors duration-200" href="#">Xếp hạng</a>
+<a class="text-[#e1e1f1]/60 font-['Be_Vietnam_Pro'] tracking-tight text-lg hover:text-on-surface transition-colors duration-200" href="#">Nhóm</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">favorite</span>
+<span class="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">bolt</span>
+<span class="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">stars</span>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-[#e8a832]/30 p-0.5">
+<img alt="User profile avatar" class="rounded-full w-full h-full object-cover" data-alt="close-up portrait of a smiling Vietnamese young man in a modern office setting with soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVynKZK-L07JCgm2RaDKuJnHP0RKhoDkhN6Tqh_k7B2SsnLpxMaCmow0KJhhuvBBCDXXAjd_-EnTc6j3nVFg-tQWirI9sziTm5_q-7jgv5iSeWGU4GCKq9gff4aoF6OlS6u025Yk-zT05mxPVjaz5vw1ZJtECNTtw8Rgw23eiCnZ8uHhuaOO2WfHrU4c-3zpwghWDUwazN3NammdCaI1YUfUV4m3NCMe9yBk56HD41qH_oPkhh7-xhTt5PiITEL1jijg9c_QtETiU"/>
+</div>
+</div>
+</header>
+<div class="flex pt-20 min-h-screen">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen sticky top-20 py-10 bg-[#11131e] w-72 border-r border-surface-container-high/50">
+<div class="px-8 mb-10">
+<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-2xl border border-surface-container-highest/20">
+<img alt="User Profile" class="w-12 h-12 rounded-full border border-secondary/20" data-alt="close-up profile photo of a user for a social application dashboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDE7TeEnDQe1syITip_VzVEWFGzgt3FdeJf8oEq16qrSaTZF7mXq2jarhS9rIZnPVqZK58HHbfxDF8EaA6dfWJl8-7vJBng3mdtBUHOW6UgDuuJTzZi4BL-K9dYTl2Qeu9JGgR7ktWl-bHRsGZc3RfyQl2REIcX_U2Ef8XNlwwW12faIxRRNqUKqhTvObSuqIrmWZFjwqir1lsfbNnQ7qgBAJ7d2y2MTPlLXZGPUC5uEN1sODd136o0eOgPr4LLY_2e80ldTxQU64"/>
+<div>
+<p class="font-['Be_Vietnam_Pro'] font-black text-[#e8a832] text-sm uppercase tracking-widest">Người Học</p>
+<p class="text-[#e1e1f1]/60 text-xs">Hạng Vàng</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-2 px-4">
+<a class="gold-gradient text-on-secondary rounded-xl px-6 py-4 flex items-center gap-4 font-bold text-sm uppercase tracking-widest shadow-lg shadow-secondary/10" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+                Trang chủ
+            </a>
+<a class="text-[#e1e1f1]/60 hover:text-on-surface px-6 py-4 flex items-center gap-4 font-bold text-sm uppercase tracking-widest hover:bg-surface-container rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+                Xếp hạng
+            </a>
+<a class="text-[#e1e1f1]/60 hover:text-on-surface px-6 py-4 flex items-center gap-4 font-bold text-sm uppercase tracking-widest hover:bg-surface-container rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">groups</span>
+                Nhóm
+            </a>
+<a class="text-[#e1e1f1]/60 hover:text-on-surface px-6 py-4 flex items-center gap-4 font-bold text-sm uppercase tracking-widest hover:bg-surface-container rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+                Cá nhân
+            </a>
+</nav>
+<div class="px-6 mt-auto pb-10">
+<button class="w-full gold-gradient text-on-secondary font-black py-4 rounded-2xl shadow-xl shadow-secondary/20 hover:scale-[1.02] active:scale-95 transition-all text-sm uppercase tracking-widest">
+                Học Ngay
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-8 md:p-14 overflow-y-auto bg-surface-dim">
+<div class="max-w-7xl mx-auto space-y-12">
+<!-- Stats Row (Editorial Bento) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-low p-8 rounded-2xl flex items-center justify-between border-l-8 border-[#e8a832] shadow-sm">
+<div>
+<p class="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] mb-2">Chuỗi ngày</p>
+<h3 class="text-4xl font-black text-on-surface">12 <span class="text-base font-medium text-on-surface-variant ml-1">Ngày</span></h3>
+</div>
+<div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#e8a832] text-4xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-2xl flex items-center justify-between border-l-8 border-[#e8a832]/20 shadow-sm">
+<div>
+<p class="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] mb-2">Hạng hiện tại</p>
+<h3 class="text-4xl font-black text-[#e8a832]">Vàng</h3>
+</div>
+<div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#e8a832] text-4xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-2xl flex items-center justify-between border-l-8 border-[#e8a832]/10 shadow-sm">
+<div>
+<p class="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] mb-2">Điểm tích lũy</p>
+<h3 class="text-4xl font-black text-on-surface">2,450 <span class="text-base font-medium text-on-surface-variant ml-1">XP</span></h3>
+</div>
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+</div>
+</section>
+<!-- Hero Section & Quick Play -->
+<section class="relative rounded-[2.5rem] overflow-hidden min-h-[480px] flex items-end p-10 md:p-16 shadow-2xl">
+<div class="absolute inset-0 z-0">
+<img alt="Bible background" class="w-full h-full object-cover opacity-50 scale-105" data-alt="atmospheric photo of an ancient open bible on a dark wooden table illuminated by a single warm candle light with soft bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOGhK8MzPaF9aU3Ox-wpEptXRqyaN0k3ZiEO04tv8vozZmVuj7dLIKf0JOlrmaau7x7bSAEJtPYIXI59F0E4kqwr-hFgRSkYlBhFxYD1hLgVtCAEm7ozuPMxKbQnJ_7wgvJP-D0ePu5F4ieF2yrhcDAY7-uO-loJTQuPf78JFwdpXH6GQgJA7qWcQHsD_ZvaoVIwzrZ4Ssg0nteoV_XVkEakzAqB2s9X8HMJw361MkY5vlVmkau0-2OQak8Jo_2QsiNv-yfsM-qww"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full md:w-3/4 space-y-8">
+<div class="inline-flex items-center gap-2 bg-[#e8a832]/20 border border-[#e8a832]/30 text-[#e8a832] px-5 py-2 rounded-full text-[11px] font-black uppercase tracking-[0.25em]">
+<span class="w-2 h-2 rounded-full bg-[#e8a832] animate-pulse"></span>
+                        Thử Thách Hàng Ngày
+                    </div>
+<h1 class="text-5xl md:text-7xl font-black leading-[1.1] tracking-tight text-on-surface">Khám Phá Lời Chúa <br/> Qua <span class="text-[#e8a832]">Trò Chơi</span></h1>
+<p class="text-on-surface-variant text-xl max-w-xl leading-relaxed font-medium">Tham gia thử thách hôm nay về các dụ ngôn của Chúa Giê-su và nhận gấp đôi điểm kinh nghiệm để thăng hạng.</p>
+<div class="flex flex-wrap gap-6 pt-4">
+<button class="gold-gradient text-on-secondary px-10 py-5 rounded-2xl font-black text-xl flex items-center gap-4 shadow-2xl shadow-secondary/30 hover:scale-105 hover:-translate-y-1 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                            CHƠI NGAY
+                        </button>
+<button class="bg-surface-container-highest/40 backdrop-blur-xl border border-outline-variant/20 text-on-surface px-10 py-5 rounded-2xl font-black text-xl hover:bg-surface-container-highest transition-all">
+                            Xem Bài Học
+                        </button>
+</div>
+</div>
+</section>
+<!-- Bento Content Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<!-- Left: Daily Verse & Scripture -->
+<div class="lg:col-span-2 space-y-12">
+<div class="bg-surface-container p-10 md:p-14 rounded-[2.5rem] relative overflow-hidden border border-surface-container-highest/10 shadow-lg">
+<div class="flex items-center gap-3 text-[#e8a832] mb-8">
+<span class="material-symbols-outlined text-3xl">format_quote</span>
+<span class="font-black text-xs uppercase tracking-[0.3em]">Câu Gốc Hôm Nay</span>
+</div>
+<blockquote class="text-3xl md:text-4xl font-semibold leading-snug italic mb-8 text-on-surface tracking-tight">
+                            "Lời Chúa là ngọn đèn cho chân con, là ánh sáng cho đường lối con."
+                        </blockquote>
+<div class="flex items-center gap-4">
+<div class="h-px w-12 bg-[#e8a832]"></div>
+<cite class="text-[#e8a832] font-black text-sm uppercase tracking-widest not-italic">Thi Thiên 119:105</cite>
+</div>
+<div class="absolute -right-12 -bottom-12 opacity-[0.03]">
+<span class="material-symbols-outlined text-[320px]">menu_book</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-surface-container-low p-8 rounded-3xl hover:bg-surface-container-high transition-all cursor-pointer group border border-surface-container-highest/10 hover:border-[#e8a832]/30 shadow-md">
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">history_edu</span>
+</div>
+<h4 class="text-2xl font-black mb-3">Cựu Ước</h4>
+<p class="text-on-surface-variant text-base leading-relaxed">Khám phá 345 câu đố về các vị vua vĩ đại và những tiên tri đầy quyền năng của Đức Chúa Trời.</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-3xl hover:bg-surface-container-high transition-all cursor-pointer group border border-surface-container-highest/10 hover:border-[#e8a832]/30 shadow-md">
+<div class="w-14 h-14 rounded-2xl bg-[#e8a832]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[#e8a832] text-3xl">church</span>
+</div>
+<h4 class="text-2xl font-black mb-3">Tân Ước</h4>
+<p class="text-on-surface-variant text-base leading-relaxed">Tham gia 520 câu đố về cuộc đời, các phép lạ và sự dạy dỗ tuyệt vời của Chúa Giê-su.</p>
+</div>
+</div>
+</div>
+<!-- Right: Leaderboard Preview -->
+<div class="bg-surface-container-low p-8 rounded-[2.5rem] h-fit border border-surface-container-highest/10 shadow-xl">
+<div class="flex justify-between items-center mb-10">
+<h3 class="font-black text-2xl tracking-tight">Bảng Xếp Hạng</h3>
+<a class="text-[#e8a832] text-sm font-black uppercase tracking-widest hover:underline" href="#">Xem tất cả</a>
+</div>
+<div class="space-y-6">
+<!-- Player 1 -->
+<div class="flex items-center gap-5 p-5 rounded-2xl bg-surface-container border-l-4 border-[#e8a832] shadow-sm">
+<span class="font-black text-[#e8a832] text-xl w-6 text-center">1</span>
+<img alt="Player 1" class="w-12 h-12 rounded-full border-2 border-secondary/20" data-alt="portrait of a focused young Asian woman with natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZctKjLKVQYpEVMnZkrOZKhQB1zXmgS18S_IrwRY09x6SDnd4X0smrJHBn6Sbd-JwKubSE8_jkVhVcOiaBVDshdiqDM0ZBtyEdKTJsTbHUJ0h7we44RVPfxMMUUTEbBMcafAuGTcowIpX05MMLs7PdZpiGk9z2xSWuoYVXO0ZhNPwVxvfhCJst2xcDyF0Xcwb4mgEH9TqNo6XA1sB4GyESiutQcWq_97zpUaJkq5zFsqV5BTD8jinbQ5HHZ9MLDpnEsTrJRr5tpso"/>
+<div class="flex-1">
+<p class="font-black text-base">An Nhiên</p>
+<p class="text-xs text-on-surface-variant font-bold">12,450 XP</p>
+</div>
+<span class="material-symbols-outlined text-[#e8a832] text-xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<!-- Player 2 -->
+<div class="flex items-center gap-5 p-5 rounded-2xl hover:bg-surface-container transition-all cursor-pointer">
+<span class="font-black text-on-surface-variant text-xl w-6 text-center">2</span>
+<img alt="Player 2" class="w-12 h-12 rounded-full" data-alt="close-up photo of a young man smiling softly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsIazIvgQgHaltYBj4UE_R7aFrpR29ltNOzVT9abYp7lEzEcuRT8fDqZCZrLZ0iEu7wU4s9eNsjKgd7_msGkg7JS-ifT2A4uqXUmJuxJNf9RH5sfsoBPiP0dKZKTLaJJoxcAtFoTAmv2vTa3M6EYMCbQKVxN0oI7LyxDV5rt1TJwQ0Yy1vruJF17TCGjFAHu0GWvPekif9ieH64klE4NQlYCRw4VnllYBWTA_RkEnLpt70QiP2ueGfTHuzFSi-6fQ_DkXF9VTWP_g"/>
+<div class="flex-1">
+<p class="font-black text-base">Minh Đức</p>
+<p class="text-xs text-on-surface-variant font-bold">11,200 XP</p>
+</div>
+</div>
+<!-- Player 3 -->
+<div class="flex items-center gap-5 p-5 rounded-2xl hover:bg-surface-container transition-all cursor-pointer">
+<span class="font-black text-on-surface-variant text-xl w-6 text-center">3</span>
+<img alt="Player 3" class="w-12 h-12 rounded-full" data-alt="portrait of a young Vietnamese woman with glasses and a warm smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOVZXhq1_ghjmgb_PxiZhLJ87_oEtMefs3seNqHXqccZgcF187kn3jnKJ3saAgiWW5x8JY96bzkIxmnTcElupe-g-7Sx_wzQHphA73HtrpKfn3W9BLTx4Q9MW5ABYn7Fh5sufCwp-xWIlBgQUAiqpt0xYBPUhn0anAlMAme-OpxRUw8JLDBDG-ahmvvVErZadjX4Ulgh-joFzbVm9Q0HzKjK0biiN3ZtbgL8-LiQ43Q0woPGbuU6jUi2wxSgOpJNl6DurqmMuC-dw"/>
+<div class="flex-1">
+<p class="font-black text-base">Khánh Linh</p>
+<p class="text-xs text-on-surface-variant font-bold">9,800 XP</p>
+</div>
+</div>
+<!-- Player Current -->
+<div class="mt-12 pt-8 border-t border-surface-container-highest/20">
+<div class="flex items-center gap-5 p-5 rounded-2xl bg-[#e8a832]/10 border border-[#e8a832]/20">
+<span class="font-black text-[#e8a832] text-xl w-6 text-center">24</span>
+<img alt="You" class="w-12 h-12 rounded-full border border-secondary/30" data-alt="user's own profile picture small thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_mXm4hWkfK2z5AXc01L8vqWintywpEws-X_2Pa_Ram1xs5bgggMtdDr2lIKMWQ57rAFZyQ1qDPPsVkES0CCZk8WFvwwuK1-eEhsg6OGYc-NPWfuPqG2VektqJIl6cnuCv0scCrqkucOuNQBl7kixI-sQR3co76a4IVw9rKEdWacqxsgIvxYM8x1epBdJGiTHaqdjTsm6VhHBTC7CeCaly0cGogjcxlN6opAJ6GJ84PoFNfYBbdZGckvZ-QSfO0BXV3W-EYT-wgE0"/>
+<div class="flex-1">
+<p class="font-black text-base">Người Học (Bạn)</p>
+<p class="text-xs text-on-surface-variant font-bold">2,450 XP</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Spacer for mobile nav -->
+<div class="h-24 md:hidden"></div>
+</main>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 md:hidden bg-[#11131e]/90 backdrop-blur-xl border-t border-surface-container-highest/20 rounded-t-[2rem] shadow-2xl">
+<a class="flex flex-col items-center justify-center bg-surface-container text-[#e8a832] rounded-2xl px-5 py-2.5 shadow-lg shadow-secondary/10" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-black uppercase tracking-widest">Trang chủ</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface/40 px-5 py-2.5 hover:text-[#e8a832] transition-all" href="#">
+<span class="material-symbols-outlined mb-1">leaderboard</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-black uppercase tracking-widest">Xếp hạng</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface/40 px-5 py-2.5 hover:text-[#e8a832] transition-all" href="#">
+<span class="material-symbols-outlined mb-1">groups</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-black uppercase tracking-widest">Nhóm</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface/40 px-5 py-2.5 hover:text-[#e8a832] transition-all" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-black uppercase tracking-widest">Cá nhân</span>
+</a>
+</nav>
+</body></html>
