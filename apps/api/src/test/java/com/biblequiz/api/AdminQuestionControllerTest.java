@@ -213,4 +213,26 @@ class AdminQuestionControllerTest extends BaseControllerTest {
                 .andExpect(jsonPath("$.dryRun").value(true))
                 .andExpect(jsonPath("$.willImport").value(1));
     }
+
+    // ── GET /api/admin/questions/coverage ──────────────────────────────────
+
+    @Test
+    @WithMockUser(username = "admin@test.com", roles = "ADMIN")
+    void getCoverage_shouldReturnBookStats() throws Exception {
+        when(questionRepository.findDistinctActiveBooks()).thenReturn(java.util.List.of("Genesis", "Matthew"));
+        when(questionRepository.countByBookAndDifficultyAndIsActiveTrue("Genesis", Question.Difficulty.easy)).thenReturn(35L);
+        when(questionRepository.countByBookAndDifficultyAndIsActiveTrue("Genesis", Question.Difficulty.medium)).thenReturn(25L);
+        when(questionRepository.countByBookAndDifficultyAndIsActiveTrue("Genesis", Question.Difficulty.hard)).thenReturn(12L);
+        when(questionRepository.countByBookAndDifficultyAndIsActiveTrue("Matthew", Question.Difficulty.easy)).thenReturn(10L);
+        when(questionRepository.countByBookAndDifficultyAndIsActiveTrue("Matthew", Question.Difficulty.medium)).thenReturn(5L);
+        when(questionRepository.countByBookAndDifficultyAndIsActiveTrue("Matthew", Question.Difficulty.hard)).thenReturn(2L);
+
+        mockMvc.perform(get("/api/admin/questions/coverage"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.books").isArray())
+                .andExpect(jsonPath("$.books[0].book").value("Genesis"))
+                .andExpect(jsonPath("$.books[0].meetsMinimum").value(true))
+                .andExpect(jsonPath("$.books[1].book").value("Matthew"))
+                .andExpect(jsonPath("$.books[1].meetsMinimum").value(false));
+    }
 }

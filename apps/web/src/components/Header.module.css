@@ -119,3 +119,20 @@
   transition: background .2s, transform .15s;
 }
 .loginBtn:hover { background: var(--hp-gold2); transform: translateY(-1px); }
+
+/* ── Notification bell ────────────────────────────────────────────────────── */
+
+.notificationWrap { position: relative; }
+.notifBtn { background: none; border: none; font-size: 1.2rem; cursor: pointer; position: relative; padding: 0.5rem; }
+.notifBadge { position: absolute; top: 0; right: 0; background: #FF4D4D; color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 11px; display: flex; align-items: center; justify-content: center; }
+.notifDropdown { position: absolute; right: 0; top: 100%; width: 320px; max-height: 400px; overflow-y: auto; background: var(--hp-card, #16161F); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; z-index: 100; box-shadow: 0 12px 40px rgba(0,0,0,.5); }
+.notifHeader { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--hp-gold, #D4A843); font-weight: 600; }
+.notifHeader button { background: none; border: none; color: var(--hp-gold, #D4A843); cursor: pointer; font-size: 0.8rem; font-weight: 600; font-family: 'Nunito', sans-serif; }
+.notifHeader button:hover { text-decoration: underline; }
+.notifItem { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: background .15s; }
+.notifItem:hover { background: rgba(255,255,255,0.03); }
+.notifUnread { border-left: 3px solid var(--hp-gold, #D4A843); }
+.notifTitle { font-weight: 600; font-size: 0.85rem; color: var(--hp-text, #F0E8D0); }
+.notifBody { font-size: 0.8rem; color: var(--hp-muted, #6B6355); margin-top: 0.25rem; }
+.notifTime { font-size: 0.7rem; color: var(--hp-muted, #6B6355); margin-top: 0.25rem; }
+.notifEmpty { padding: 2rem; text-align: center; color: var(--hp-muted, #6B6355); }

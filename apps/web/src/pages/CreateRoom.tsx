@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../store/authStore';
 import styles from './CreateRoom.module.css';
 
 const MODE_INFO: Record<string, { icon: string; label: string }> = {

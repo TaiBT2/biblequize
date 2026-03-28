@@ -1,18 +1,27 @@
 package com.biblequiz.modules.group.service;
 
 import com.biblequiz.modules.group.entity.ChurchGroup;
+import com.biblequiz.modules.group.entity.GroupAnnouncement;
 import com.biblequiz.modules.group.entity.GroupMember;
 import com.biblequiz.modules.group.entity.GroupQuizSet;
 import com.biblequiz.modules.group.repository.ChurchGroupRepository;
 import com.biblequiz.modules.group.repository.GroupAnnouncementRepository;
 import com.biblequiz.modules.group.repository.GroupMemberRepository;
 import com.biblequiz.modules.group.repository.GroupQuizSetRepository;
+import com.biblequiz.modules.quiz.entity.UserDailyProgress;
+import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.security.SecureRandom;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -33,6 +42,9 @@ public class ChurchGroupService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserDailyProgressRepository udpRepository;
 
     private static final String CODE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     private static final int CODE_LENGTH = 6;
@@ -147,19 +159,45 @@ public class ChurchGroupService {
 
     public List<Map<String, Object>> getLeaderboard(String groupId, String period) {
         List<GroupMember> members = groupMemberRepository.findByGroupId(groupId);
+        LocalDate today = LocalDate.now(ZoneOffset.UTC);
 
-        return members.stream().map(m -> {
+        List<Map<String, Object>> entries = members.stream().map(m -> {
+            String userId = m.getUser().getId();
+            int score = 0;
+            int questionsAnswered = 0;
+
+            if ("daily".equalsIgnoreCase(period)) {
+                Optional<UserDailyProgress> udp = udpRepository.findByUserIdAndDate(userId, today);
+                if (udp.isPresent()) {
+                    score = udp.get().getPointsCounted() != null ? udp.get().getPointsCounted() : 0;
+                    questionsAnswered = udp.get().getQuestionsCounted() != null ? udp.get().getQuestionsCounted() : 0;
+                }
+            } else if ("weekly".equalsIgnoreCase(period)) {
+                LocalDate weekStart = today.minusDays(6);
+                List<UserDailyProgress> udps = udpRepository.findByUserIdAndDateBetween(userId, weekStart, today);
+                score = udps.stream().mapToInt(u -> u.getPointsCounted() != null ? u.getPointsCounted() : 0).sum();
+                questionsAnswered = udps.stream().mapToInt(u -> u.getQuestionsCounted() != null ? u.getQuestionsCounted() : 0).sum();
+            } else {
+                // all_time
+                List<UserDailyProgress> all = udpRepository.findByUserIdOrderByDateDesc(userId);
+                score = all.stream().mapToInt(u -> u.getPointsCounted() != null ? u.getPointsCounted() : 0).sum();
+                questionsAnswered = all.stream().mapToInt(u -> u.getQuestionsCounted() != null ? u.getQuestionsCounted() : 0).sum();
+            }
+
             Map<String, Object> entry = new LinkedHashMap<>();
-            entry.put("userId", m.getUser().getId());
+            entry.put("userId", userId);
             entry.put("name", m.getUser().getName());
             entry.put("avatarUrl", m.getUser().getAvatarUrl());
             entry.put("role", m.getRole().name());
             entry.put("period", period);
-            // Placeholder - will need UserDailyProgress integration
-            entry.put("score", 0);
-            entry.put("questionsAnswered", 0);
+            entry.put("score", score);
+            entry.put("questionsAnswered", questionsAnswered);
             return entry;
         }).collect(Collectors.toList());
+
+        // Sort by score descending
+        entries.sort((a, b) -> Integer.compare((int) b.get("score"), (int) a.get("score")));
+        return entries;
     }
 
     public Map<String, Object> getAnalytics(String groupId, String requesterId) {
@@ -172,10 +210,19 @@ public class ChurchGroupService {
 
         int totalMembers = groupMemberRepository.countByGroupId(groupId);
 
+        // Count members who played today (have UserDailyProgress with questionsCounted > 0)
+        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        List<GroupMember> members = groupMemberRepository.findByGroupId(groupId);
+        long activeToday = members.stream()
+                .filter(m -> {
+                    Optional<UserDailyProgress> udp = udpRepository.findByUserIdAndDate(m.getUser().getId(), today);
+                    return udp.isPresent() && udp.get().getQuestionsCounted() != null && udp.get().getQuestionsCounted() > 0;
+                })
+                .count();
+
         Map<String, Object> result = new LinkedHashMap<>();
         result.put("totalMembers", totalMembers);
-        // Placeholder - will need integration with activity tracking
-        result.put("activeToday", 0);
+        result.put("activeToday", (int) activeToday);
         return result;
     }
 
@@ -203,6 +250,161 @@ public class ChurchGroupService {
         result.put("name", quizSet.getName());
         result.put("questionIds", questionIds);
         result.put("createdAt", quizSet.getCreatedAt());
+        return result;
+    }
+
+    // ── PATCH /groups/{id} ─────────────────────────────────────────────────
+
+    public Map<String, Object> updateGroup(String groupId, String requesterId,
+                                            String name, String description, Boolean isPublic, Integer maxMembers) {
+        ChurchGroup group = churchGroupRepository.findById(groupId)
+                .orElseThrow(() -> new RuntimeException("Nhom khong ton tai"));
+
+        if (group.isDeleted()) throw new RuntimeException("Nhom da bi xoa");
+
+        if (!group.getLeader().getId().equals(requesterId)) {
+            throw new RuntimeException("Chi leader moi duoc cap nhat nhom");
+        }
+
+        if (name != null && !name.isBlank()) group.setName(name);
+        if (description != null) group.setDescription(description);
+        if (isPublic != null) group.setIsPublic(isPublic);
+        if (maxMembers != null) {
+            if (maxMembers < group.getMemberCount()) {
+                throw new RuntimeException("maxMembers khong the nho hon so thanh vien hien tai (" + group.getMemberCount() + ")");
+            }
+            group.setMaxMembers(maxMembers);
+        }
+
+        churchGroupRepository.save(group);
+
+        Map<String, Object> result = new LinkedHashMap<>();
+        result.put("id", group.getId());
+        result.put("name", group.getName());
+        result.put("description", group.getDescription());
+        result.put("isPublic", group.getIsPublic());
+        result.put("maxMembers", group.getMaxMembers());
+        return result;
+    }
+
+    // ── DELETE /groups/{id} ──────────────────────────────────────────────
+
+    @Transactional
+    public Map<String, Object> deleteGroup(String groupId, String requesterId) {
+        ChurchGroup group = churchGroupRepository.findById(groupId)
+                .orElseThrow(() -> new RuntimeException("Nhom khong ton tai"));
+
+        if (!group.getLeader().getId().equals(requesterId)) {
+            throw new RuntimeException("Chi leader moi duoc xoa nhom");
+        }
+
+        // Soft delete
+        group.setDeletedAt(LocalDateTime.now(ZoneOffset.UTC));
+        churchGroupRepository.save(group);
+
+        // Remove all members
+        groupMemberRepository.deleteByGroupId(groupId);
+        group.setMemberCount(0);
+        churchGroupRepository.save(group);
+
+        Map<String, Object> result = new LinkedHashMap<>();
+        result.put("success", true);
+        result.put("groupId", groupId);
+        return result;
+    }
+
+    // ── DELETE /groups/{id}/members/{userId} ─────────────────────────────
+
+    public Map<String, Object> kickMember(String groupId, String requesterId, String targetUserId) {
+        if (requesterId.equals(targetUserId)) {
+            throw new RuntimeException("Khong the kick chinh minh");
+        }
+
+        GroupMember requester = groupMemberRepository.findByGroupIdAndUserId(groupId, requesterId)
+                .orElseThrow(() -> new RuntimeException("Ban khong phai thanh vien cua nhom"));
+
+        if (requester.getRole() != GroupMember.GroupRole.LEADER && requester.getRole() != GroupMember.GroupRole.MOD) {
+            throw new RuntimeException("Chi leader hoac mod moi duoc kick");
+        }
+
+        GroupMember target = groupMemberRepository.findByGroupIdAndUserId(groupId, targetUserId)
+                .orElseThrow(() -> new RuntimeException("Nguoi dung khong phai thanh vien cua nhom"));
+
+        if (target.getRole() == GroupMember.GroupRole.LEADER) {
+            throw new RuntimeException("Khong the kick leader");
+        }
+
+        groupMemberRepository.delete(target);
+
+        ChurchGroup group = churchGroupRepository.findById(groupId)
+                .orElseThrow(() -> new RuntimeException("Nhom khong ton tai"));
+        group.setMemberCount(Math.max(0, group.getMemberCount() - 1));
+        churchGroupRepository.save(group);
+
+        Map<String, Object> kickResult = new LinkedHashMap<>();
+        kickResult.put("success", true);
+        kickResult.put("kickedUserId", targetUserId);
+        return kickResult;
+    }
+
+    // ── POST /groups/{id}/announcements ──────────────────────────────────
+
+    public Map<String, Object> createAnnouncement(String groupId, String userId, String content) {
+        if (content == null || content.isBlank()) {
+            throw new RuntimeException("Noi dung thong bao khong duoc de trong");
+        }
+        if (content.length() > 500) {
+            throw new RuntimeException("Noi dung thong bao khong duoc vuot qua 500 ky tu");
+        }
+
+        GroupMember member = groupMemberRepository.findByGroupIdAndUserId(groupId, userId)
+                .orElseThrow(() -> new RuntimeException("Ban khong phai thanh vien cua nhom"));
+
+        if (member.getRole() != GroupMember.GroupRole.LEADER && member.getRole() != GroupMember.GroupRole.MOD) {
+            throw new RuntimeException("Chi leader hoac mod moi duoc tao thong bao");
+        }
+
+        ChurchGroup group = churchGroupRepository.findById(groupId)
+                .orElseThrow(() -> new RuntimeException("Nhom khong ton tai"));
+
+        GroupAnnouncement announcement = new GroupAnnouncement();
+        announcement.setId(UUID.randomUUID().toString());
+        announcement.setGroup(group);
+        announcement.setAuthor(member.getUser());
+        announcement.setContent(content);
+        groupAnnouncementRepository.save(announcement);
+
+        Map<String, Object> result = new LinkedHashMap<>();
+        result.put("id", announcement.getId());
+        result.put("content", announcement.getContent());
+        result.put("authorId", member.getUser().getId());
+        result.put("authorName", member.getUser().getName());
+        result.put("createdAt", announcement.getCreatedAt());
+        return result;
+    }
+
+    // ── GET /groups/{id}/announcements ───────────────────────────────────
+
+    public Map<String, Object> getAnnouncements(String groupId, int limit, int offset) {
+        List<GroupAnnouncement> announcements = groupAnnouncementRepository
+                .findByGroupIdPaginated(groupId, PageRequest.of(offset / Math.max(1, limit), limit));
+
+        List<Map<String, Object>> items = announcements.stream().map(a -> {
+            Map<String, Object> item = new LinkedHashMap<>();
+            item.put("id", a.getId());
+            item.put("content", a.getContent());
+            item.put("authorId", a.getAuthor().getId());
+            item.put("authorName", a.getAuthor().getName());
+            item.put("createdAt", a.getCreatedAt());
+            return item;
+        }).collect(Collectors.toList());
+
+        long total = groupAnnouncementRepository.countByGroupId(groupId);
+
+        Map<String, Object> result = new LinkedHashMap<>();
+        result.put("items", items);
+        result.put("total", total);
+        result.put("hasMore", offset + limit < total);
         return result;
     }
 

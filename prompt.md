@@ -35,3 +35,53 @@ Yêu cầu
 - Không dừng cho đến khi tất cả test pass
 - Báo cáo kết quả cuối cùng
 ```
+----
+Tạo cấu trúc thư mục và seed data ban đầu:
+
+scripts/
+├── seed/
+│   ├── README.md        ← hướng dẫn cách add content mới
+│   ├── genesis.sql      ← 20 câu hỏi Genesis
+│   ├── matthew.sql      ← 20 câu hỏi Matthew  
+│   └── psalms.sql       ← 20 câu hỏi Psalms
+└── utils/
+    └── validate_seed.sql ← query kiểm tra pool size đủ chưa
+
+Yêu cầu cho mỗi câu hỏi:
+- Đủ 4 fields bắt buộc: content, options, correctAnswer, explanation
+- explanation phải có trích dẫn câu Kinh Thánh cụ thể
+- Mix difficulty: 40% easy, 40% medium, 20% hard
+- Dùng Bản Truyền Thống 1926 (public domain)
+
+Sau khi tạo xong: 
+- Chạy validate_seed.sql để kiểm tra format
+- Chạy ./mvnw test để đảm bảo import pipeline hoạt động
+----
+Dùng Stitch MCP để lấy design BibleQuiz vừa tạo.
+
+Project ID: 534103079767883385267
+
+Thực hiện theo thứ tự:
+
+1. List tất cả screens trong project này
+2. Với mỗi screen, lấy HTML/CSS code
+3. Convert từng screen sang React + Tailwind:
+   - Home screen     → apps/web/src/pages/Home.tsx
+   - Quiz gameplay   → apps/web/src/pages/Quiz.tsx
+   - Leaderboard     → apps/web/src/pages/Leaderboard.tsx
+   - Church Group    → apps/web/src/pages/Groups.tsx
+   - Tournament      → apps/web/src/pages/Tournament.tsx
+   - Profile         → apps/web/src/pages/Profile.tsx
+
+Quy tắc khi convert:
+- Giữ đúng màu sắc, spacing, layout từ Stitch
+- Dùng Tailwind classes, không dùng inline style
+- Replace hardcode text bằng props hoặc placeholder
+- Dùng React Router <Link> cho navigation
+- Đảm bảo dark mode hoạt động
+- Dùng TanStack Query cho data fetching
+
+4. Sau mỗi component: chạy npm run build verify không lỗi
+5. Cập nhật TODO.md sau khi xong
+6. Báo cáo kết quả từng screen
+---

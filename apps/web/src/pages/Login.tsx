@@ -1,6 +1,6 @@
 import { useState, useEffect, type FormEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../store/authStore'
 import styles from './Login.module.css'
 
 type Tab = 'social' | 'email'

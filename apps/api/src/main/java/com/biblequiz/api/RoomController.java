@@ -144,6 +144,29 @@ public class RoomController {
     }
 
     /**
+     * POST /api/rooms/{id}/kick - Kick player (host only, lobby only)
+     */
+    @PostMapping("/{id}/kick")
+    public ResponseEntity<?> kickPlayer(@PathVariable String id,
+                                        @RequestBody Map<String, String> body,
+                                        Principal principal) {
+        try {
+            User user = getUser(principal);
+            String targetUserId = body.get("userId");
+            if (targetUserId == null || targetUserId.isBlank()) {
+                return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Thiếu userId"));
+            }
+            roomService.kickPlayer(id, user.getId(), targetUserId);
+            return ResponseEntity.ok(Map.of("success", true));
+        } catch (RuntimeException e) {
+            if ("FORBIDDEN".equals(e.getMessage())) {
+                return ResponseEntity.status(403).body(Map.of("success", false, "message", "Chỉ host mới được kick"));
+            }
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
      * GET /api/rooms/public - Danh sách phòng công khai đang lobby
      */
     @GetMapping("/public")

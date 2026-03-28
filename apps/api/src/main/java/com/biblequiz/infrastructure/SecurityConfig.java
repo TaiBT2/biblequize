@@ -97,6 +97,7 @@ public class SecurityConfig {
                                                                 "/api/me/bootstrap-admin",
                                                 "/api/daily-challenge",
                                                 "/api/share/*/view",
+                                                "/api/share/render/**",
                                                                 "/swagger-ui/**",
                                                                 "/v3/api-docs/**",
                                                                 "/swagger-ui.html")
@@ -126,7 +127,7 @@ public class SecurityConfig {
                                 .filter(s -> !s.isEmpty())
                                 .toList();
                 configuration.setAllowedOrigins(origins);
-                configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+                configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
                 configuration.setAllowedHeaders(Arrays.asList("*"));
                 configuration.setAllowCredentials(true);
 

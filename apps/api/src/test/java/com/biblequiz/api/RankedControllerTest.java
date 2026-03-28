@@ -2,6 +2,7 @@ package com.biblequiz.api;
 
 import com.biblequiz.infrastructure.service.CacheService;
 import com.biblequiz.modules.achievement.service.AchievementService;
+import com.biblequiz.modules.notification.service.NotificationService;
 import com.biblequiz.modules.quiz.entity.UserDailyProgress;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.quiz.repository.UserBookProgressRepository;
@@ -62,6 +63,9 @@ class RankedControllerTest extends BaseControllerTest {
 
     @MockBean
     private ScoringService scoringService;
+
+    @MockBean
+    private NotificationService notificationService;
 
     private User testUser;
 

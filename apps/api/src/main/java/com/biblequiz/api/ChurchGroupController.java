@@ -179,6 +179,89 @@ public class ChurchGroupController {
         }
     }
 
+    /**
+     * PATCH /api/groups/{id} - Cap nhat thong tin nhom (chi leader)
+     */
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> updateGroup(@PathVariable String id,
+                                         @RequestBody Map<String, Object> body,
+                                         Principal principal) {
+        try {
+            User user = getUser(principal);
+            String name = (String) body.get("name");
+            String description = (String) body.get("description");
+            Boolean isPublic = body.get("isPublic") instanceof Boolean b ? b : null;
+            Integer maxMembers = body.get("maxMembers") instanceof Number n ? n.intValue() : null;
+
+            Map<String, Object> result = churchGroupService.updateGroup(id, user.getId(), name, description, isPublic, maxMembers);
+            return ResponseEntity.ok(Map.of("success", true, "group", result));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * DELETE /api/groups/{id} - Xoa nhom (soft delete, chi leader)
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteGroup(@PathVariable String id, Principal principal) {
+        try {
+            User user = getUser(principal);
+            Map<String, Object> result = churchGroupService.deleteGroup(id, user.getId());
+            return ResponseEntity.ok(result);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * DELETE /api/groups/{id}/members/{userId} - Kick thanh vien (chi leader/mod)
+     */
+    @DeleteMapping("/{id}/members/{userId}")
+    public ResponseEntity<?> kickMember(@PathVariable String id,
+                                        @PathVariable String userId,
+                                        Principal principal) {
+        try {
+            User user = getUser(principal);
+            Map<String, Object> result = churchGroupService.kickMember(id, user.getId(), userId);
+            return ResponseEntity.ok(result);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * POST /api/groups/{id}/announcements - Tao thong bao (chi leader/mod)
+     */
+    @PostMapping("/{id}/announcements")
+    public ResponseEntity<?> createAnnouncement(@PathVariable String id,
+                                                @RequestBody Map<String, String> body,
+                                                Principal principal) {
+        try {
+            User user = getUser(principal);
+            String content = body.get("content");
+            Map<String, Object> result = churchGroupService.createAnnouncement(id, user.getId(), content);
+            return ResponseEntity.status(201).body(Map.of("success", true, "announcement", result));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * GET /api/groups/{id}/announcements - Danh sach thong bao
+     */
+    @GetMapping("/{id}/announcements")
+    public ResponseEntity<?> getAnnouncements(@PathVariable String id,
+                                              @RequestParam(defaultValue = "20") int limit,
+                                              @RequestParam(defaultValue = "0") int offset) {
+        try {
+            Map<String, Object> result = churchGroupService.getAnnouncements(id, limit, offset);
+            return ResponseEntity.ok(Map.of("success", true, "data", result));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
     private User getUser(Principal principal) {
         if (principal == null) throw new RuntimeException("Chua dang nhap");
         if (principal instanceof Authentication auth && auth.getPrincipal() instanceof OAuth2User oauth2User) {

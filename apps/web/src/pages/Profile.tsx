@@ -1,16 +1,60 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
+import { api } from '../api/client'
+import { useAuth } from '../store/authStore'
+
+// ─── Tier helpers ────────────────────────────────────────────────────────────
+const TIER_COLORS: Record<string, string> = {
+  newcomer: '#6B7280',
+  seeker: '#22C55E',
+  disciple: '#3B82F6',
+  sage: '#A855F7',
+  prophet: '#EAB308',
+  apostle: '#EF4444',
+}
+
+const TIER_ICONS: Record<string, string> = {
+  newcomer: '🌱',
+  seeker: '🔍',
+  disciple: '📖',
+  sage: '🧙',
+  prophet: '🔮',
+  apostle: '✝️',
+}
+
+interface RankedStatus {
+  livesRemaining: number
+  questionsCounted: number
+  pointsToday: number
+  currentBook: string
+  streak: number
+  highScore: number
+  totalPoints: number
+  accuracy: number
+}
+
+interface TierInfo {
+  totalPoints: number
+  tier: string
+  tierName: string
+  tierMinPoints: number
+  nextTier: string | null
+  nextTierName: string | null
+  nextTierMinPoints: number | null
+  pointsToNextTier: number | null
+  progressPercent: number
+}
 
 const Profile: React.FC = () => {
   const { user, isAuthenticated } = useAuth()
   const [stats, setStats] = useState({
-    level: 3,
+    level: 0,
     highScore: 0,
     totalPoints: 0,
     streak: 0,
     accuracy: 0
   })
+  const [tierInfo, setTierInfo] = useState<TierInfo | null>(null)
   const [loading, setLoading] = useState(true)
   const [showTitleTooltip, setShowTitleTooltip] = useState(false)
   const [showProgressTooltip, setShowProgressTooltip] = useState(false)
@@ -21,19 +65,25 @@ const Profile: React.FC = () => {
       if (!user) return
 
       try {
-        // Simulate loading delay for animation
-        setTimeout(() => {
-          setStats({
-            level: 3,
-            highScore: 0,
-            totalPoints: 0,
-            streak: 0,
-            accuracy: 0
-          })
-          setLoading(false)
-        }, 1000)
+        const [statusRes, tierRes] = await Promise.all([
+          api.get('/api/me/ranked-status'),
+          api.get('/api/me/tier'),
+        ])
+
+        const status: RankedStatus = statusRes.data
+        const tier: TierInfo = tierRes.data
+
+        setStats({
+          level: Math.floor(tier.totalPoints / 100),
+          highScore: status.highScore ?? 0,
+          totalPoints: tier.totalPoints ?? 0,
+          streak: status.streak ?? 0,
+          accuracy: status.accuracy ?? 0,
+        })
+        setTierInfo(tier)
       } catch (error) {
         console.error('Error loading profile data:', error)
+      } finally {
         setLoading(false)
       }
     }
@@ -221,10 +271,9 @@ const Profile: React.FC = () => {
                   onMouseEnter={() => setShowTitleTooltip(true)}
                   onMouseLeave={() => setShowTitleTooltip(false)}
                 >
-                  <span className="px-4 py-1.5 rounded-full bg-[#fdfaf3] border border-[#eeeae0] text-[#7a6a5a] text-sm font-bold cursor-help shadow-sm">
-                    {stats.level >= 10 ? '🌟 Bậc Thầy Học Thuật' :
-                      stats.level >= 5 ? '⭐ Học Giả Tiên Tiến' :
-                        '📚 Người Bắt Đầu'}
+                  <span className="px-4 py-1.5 rounded-full bg-[#fdfaf3] border border-[#eeeae0] text-sm font-bold cursor-help shadow-sm"
+                    style={{ color: tierInfo ? TIER_COLORS[tierInfo.tier] || '#7a6a5a' : '#7a6a5a' }}>
+                    {tierInfo ? `${TIER_ICONS[tierInfo.tier] || '🌱'} ${tierInfo.tierName}` : '📚 Người Bắt Đầu'}
                   </span>
 
                   {/* Title Tooltip */}
@@ -243,41 +292,60 @@ const Profile: React.FC = () => {
               </div>
             </div>
 
+            {/* Tier Progress */}
             <div className="flex flex-col items-center md:items-end gap-3 min-w-[200px]">
-              <div className="w-full">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-[#7a6a5a] font-bold text-sm uppercase tracking-wider">Cấp độ {stats.level}</span>
-                  <span className="text-[#4bbf9f] font-black">{Math.floor((stats.level % 10) * 10)}%</span>
-                </div>
-
-                {/* Level Progress Bar */}
-                <div
-                  className="relative"
-                  onMouseEnter={() => setShowProgressTooltip(true)}
-                  onMouseLeave={() => setShowProgressTooltip(false)}
-                >
-                  <div className="w-full h-3 bg-[#eeeae0] rounded-full overflow-hidden shadow-inner">
-                    <div
-                      className="h-full bg-gradient-to-r from-[#4bbf9f] to-[#38a169] rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(75,191,159,0.3)]"
-                      style={{
-                        width: `${(stats.level % 10) * 10}%`,
-                      }}
-                    ></div>
+              {tierInfo && (
+                <div className="w-full">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-[#7a6a5a] font-bold text-sm uppercase tracking-wider">
+                      {TIER_ICONS[tierInfo.tier] || '🌱'} {tierInfo.tierName}
+                    </span>
+                    <span style={{ color: TIER_COLORS[tierInfo.tier] || '#6B7280', fontWeight: 900 }}>
+                      {tierInfo.progressPercent}%
+                    </span>
                   </div>
 
-                  {/* Progress Tooltip */}
-                  {showProgressTooltip && (
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-4 py-3 bg-[#12103a] text-white text-xs rounded-xl shadow-xl z-50 min-w-[200px] border border-[#4bbf9f]/30">
-                      <div className="font-bold mb-1 text-[#4bbf9f]">Tiến độ thăng cấp</div>
-                      <div className="text-xs opacity-90 leading-relaxed">
-                        {stats.level % 10 === 0 ? 'Đã đạt cấp độ mới!' :
-                          `Bạn cần thêm ${(10 - (stats.level % 10)) * 10} điểm kinh nghiệm để lên cấp.`}
-                      </div>
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-t-[#12103a]"></div>
+                  {/* Tier Progress Bar */}
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setShowProgressTooltip(true)}
+                    onMouseLeave={() => setShowProgressTooltip(false)}
+                  >
+                    <div className="w-full h-3 bg-[#eeeae0] rounded-full overflow-hidden shadow-inner">
+                      <div
+                        className="h-full rounded-full transition-all duration-1000"
+                        style={{
+                          width: `${tierInfo.progressPercent}%`,
+                          backgroundColor: TIER_COLORS[tierInfo.tier] || '#6B7280',
+                          boxShadow: `0 0 10px ${TIER_COLORS[tierInfo.tier] || '#6B7280'}66`,
+                        }}
+                      ></div>
                     </div>
-                  )}
+
+                    {/* Progress Tooltip */}
+                    {showProgressTooltip && (
+                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-4 py-3 bg-[#12103a] text-white text-xs rounded-xl shadow-xl z-50 min-w-[220px] border border-[#4bbf9f]/30">
+                        <div className="font-bold mb-1" style={{ color: TIER_COLORS[tierInfo.tier] || '#4bbf9f' }}>
+                          Tiến độ thăng tier
+                        </div>
+                        <div className="text-xs opacity-90 leading-relaxed">
+                          {tierInfo.nextTier
+                            ? `Còn ${tierInfo.pointsToNextTier} điểm nữa để đạt ${tierInfo.nextTierName}`
+                            : 'Đã đạt tier cao nhất!'}
+                        </div>
+                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-t-[#12103a]"></div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Tier sub-text */}
+                  <div className="mt-2 text-xs text-center" style={{ color: '#7a6a5a' }}>
+                    {tierInfo.nextTier
+                      ? `Còn ${tierInfo.pointsToNextTier} điểm nữa để đạt ${tierInfo.nextTierName}`
+                      : '🏆 Đã đạt tier cao nhất!'}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -327,24 +395,48 @@ const Profile: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Side Stats */}
+          {/* Right Side Stats — Streak */}
           <div className="space-y-6">
             <div className="flex items-center">
               <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{
-                background: 'linear-gradient(135deg, #FF6B9D, #9333EA)',
+                background: stats.streak > 0
+                  ? 'linear-gradient(135deg, #FF6B9D, #FF8C42)'
+                  : 'linear-gradient(135deg, #FF6B9D, #9333EA)',
                 border: '2px solid #FF6B9D',
-                boxShadow: '0 0 15px #FF6B9D, inset 0 0 15px rgba(255, 107, 157, 0.1)'
+                boxShadow: stats.streak > 0
+                  ? '0 0 20px #FF6B9D, 0 0 40px rgba(255, 140, 66, 0.3)'
+                  : '0 0 15px #FF6B9D, inset 0 0 15px rgba(255, 107, 157, 0.1)',
+                animation: stats.streak > 0 ? 'pulse 2s ease-in-out infinite' : 'none',
               }}>
                 <span className="text-2xl">🔥</span>
               </div>
               <div>
-                <div className="text-white opacity-80">Chuỗi thắng: {stats.streak}</div>
                 {stats.streak > 0 ? (
-                  <div className="text-2xl font-bold" style={{ color: '#FF6B9D' }}>{stats.streak}</div>
+                  <>
+                    <div className="text-2xl font-bold" style={{
+                      color: '#FF6B9D',
+                      textShadow: '0 0 10px rgba(255, 107, 157, 0.5)',
+                    }}>
+                      🔥 {stats.streak} ngày liên tiếp
+                    </div>
+                    {stats.streak >= 30 && (
+                      <span className="inline-block mt-1 px-3 py-0.5 rounded-full text-xs font-bold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
+                        🏅 Trung tín
+                      </span>
+                    )}
+                    {stats.streak >= 7 && stats.streak < 30 && (
+                      <span className="inline-block mt-1 px-3 py-0.5 rounded-full text-xs font-bold bg-orange-500/20 text-orange-400 border border-orange-500/30">
+                        🏅 Chuyên cần
+                      </span>
+                    )}
+                  </>
                 ) : (
-                  <div className="text-lg font-semibold italic" style={{ color: '#FF6B9D' }}>
-                    Bắt đầu ngay!
-                  </div>
+                  <>
+                    <div className="text-white opacity-80">STREAK</div>
+                    <div className="text-lg font-semibold italic" style={{ color: '#FF6B9D' }}>
+                      Bắt đầu streak hôm nay!
+                    </div>
+                  </>
                 )}
               </div>
             </div>

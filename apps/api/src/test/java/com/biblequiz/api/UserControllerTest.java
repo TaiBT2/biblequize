@@ -1,8 +1,13 @@
 package com.biblequiz.api;
 
 import com.biblequiz.infrastructure.audit.AuditService;
+import com.biblequiz.modules.quiz.entity.QuizSession;
+import com.biblequiz.modules.quiz.repository.QuizSessionRepository;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
+
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,6 +33,9 @@ class UserControllerTest extends BaseControllerTest {
 
     @MockBean
     private AuditService auditService;
+
+    @MockBean
+    private QuizSessionRepository quizSessionRepository;
 
     private User testUser;
 
@@ -168,5 +176,37 @@ class UserControllerTest extends BaseControllerTest {
                         .content("{\"email\":\"\"}"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.code").value("BAD_REQUEST"));
+    }
+
+    // ── GET /api/me/history ───────────────────────────────────────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void getHistory_shouldReturn200WithPaginatedSessions() throws Exception {
+        when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.of(testUser));
+
+        QuizSession session = new QuizSession();
+        session.setId("sess-1");
+        session.setMode(QuizSession.Mode.practice);
+        session.setStatus(QuizSession.Status.completed);
+        session.setScore(100);
+        session.setTotalQuestions(10);
+        session.setCorrectAnswers(8);
+
+        when(quizSessionRepository.findByOwnerIdOrderByCreatedAtDesc(eq("user-1"), any(Pageable.class)))
+                .thenReturn(new PageImpl<>(List.of(session)));
+
+        mockMvc.perform(get("/api/me/history"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.items").isArray())
+                .andExpect(jsonPath("$.items[0].id").value("sess-1"))
+                .andExpect(jsonPath("$.items[0].score").value(100))
+                .andExpect(jsonPath("$.totalItems").value(1));
+    }
+
+    @Test
+    void getHistory_withoutAuth_shouldReturn401() throws Exception {
+        mockMvc.perform(get("/api/me/history"))
+                .andExpect(status().isUnauthorized());
     }
 }

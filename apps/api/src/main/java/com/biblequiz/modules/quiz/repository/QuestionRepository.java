@@ -102,6 +102,9 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
 
     long countByReviewStatus(Question.ReviewStatus reviewStatus);
 
+    @Query("SELECT DISTINCT q.book FROM Question q WHERE q.isActive = true ORDER BY q.book")
+    List<String> findDistinctActiveBooks();
+
     // Index hints for better performance
     @Query(value = "SELECT * FROM questions q USE INDEX (idx_is_active) WHERE q.is_active = true ORDER BY RAND() LIMIT :limit", 
            nativeQuery = true)

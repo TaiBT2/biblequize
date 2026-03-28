@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { api } from '../api/client'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../store/authStore'
 import styles from './Home.module.css'
 
 // ─── Types ────────────────────────────────────────────────────────────────────

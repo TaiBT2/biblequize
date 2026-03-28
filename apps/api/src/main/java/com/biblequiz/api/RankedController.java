@@ -64,6 +64,9 @@ public class RankedController {
     @Autowired
     private com.biblequiz.modules.ranked.service.ScoringService scoringService;
 
+    @Autowired
+    private com.biblequiz.modules.notification.service.NotificationService notificationService;
+
     private String resolveEmail(Authentication authentication) {
         if (authentication == null)
             return null;
@@ -302,6 +305,21 @@ public class RankedController {
                                     .stream().mapToInt(u -> u.getQuestionsCounted() != null ? u.getQuestionsCounted() : 0).sum();
                             achievementService.checkAndAward(user, allTimePoints, allTimeQuestions,
                                     p.currentStreak, p.currentBookIndex);
+
+                            // Check tier-up notification
+                            try {
+                                int previousPoints = allTimePoints - earned;
+                                com.biblequiz.modules.ranked.model.RankTier previousTier =
+                                        com.biblequiz.modules.ranked.model.RankTier.fromPoints(previousPoints);
+                                com.biblequiz.modules.ranked.model.RankTier currentTier =
+                                        com.biblequiz.modules.ranked.model.RankTier.fromPoints(allTimePoints);
+                                if (currentTier != previousTier) {
+                                    notificationService.createTierUpNotification(user,
+                                            currentTier.getDisplayName(), currentTier.getKey());
+                                }
+                            } catch (Exception tierEx) {
+                                log.debug("Tier notification check failed: {}", tierEx.getMessage());
+                            }
                         } catch (Exception ex) {
                             log.debug("Achievement check failed: {}", ex.getMessage());
                         }

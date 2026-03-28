@@ -217,10 +217,33 @@ class RoomControllerTest extends BaseControllerTest {
                 .andExpect(jsonPath("$.success").value(true));
     }
 
-    // ── TC-ROOM-005: POST /api/rooms/{id}/kick by host ──────────────────────
-    // NOTE: The kick endpoint does not exist in RoomController yet.
-    // This test documents expected behavior once the endpoint is implemented.
-    // For now it verifies that calling a non-existent kick endpoint returns an error.
+    // ── TC-ROOM-005: POST /api/rooms/{id}/kick ──────────────────────────────
+
+    @Test
+    @Order(13)
+    @WithMockUser(username = "test@example.com")
+    void TC_ROOM_005_kickPlayer_byHost_shouldReturn200() throws Exception {
+        doNothing().when(roomService).kickPlayer("room-1", "user-1", "player-2");
+
+        mockMvc.perform(post("/api/rooms/room-1/kick")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"userId\":\"player-2\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true));
+    }
+
+    @Test
+    @Order(14)
+    @WithMockUser(username = "test@example.com")
+    void kickPlayer_notHost_shouldReturn403() throws Exception {
+        doThrow(new RuntimeException("FORBIDDEN"))
+                .when(roomService).kickPlayer("room-1", "user-1", "player-2");
+
+        mockMvc.perform(post("/api/rooms/room-1/kick")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"userId\":\"player-2\"}"))
+                .andExpect(status().isForbidden());
+    }
 
     // ── TC-ROOM-006: POST /api/rooms/join when room full ────────────────────
 

@@ -87,6 +87,34 @@ public class SessionService {
     }
 
     @Transactional
+    public Map<String, Object> retrySession(String sessionId, String userId) {
+        QuizSession original = quizSessionRepository.findById(sessionId)
+                .orElseThrow(() -> new NoSuchElementException("Session not found"));
+
+        if (!original.getOwner().getId().equals(userId)
+                && !original.getOwner().getEmail().equals(userId)) {
+            throw new IllegalArgumentException("Session does not belong to this user");
+        }
+
+        // Parse original config and create new session with same settings
+        Map<String, Object> config;
+        try {
+            config = original.getConfig() != null
+                    ? objectMapper.readValue(original.getConfig(), new com.fasterxml.jackson.core.type.TypeReference<>() {})
+                    : new HashMap<>();
+        } catch (Exception e) {
+            config = new HashMap<>();
+        }
+
+        Map<String, Object> newSession = createSession(userId, original.getMode(), config);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("newSessionId", newSession.get("sessionId"));
+        result.put("originalSessionId", sessionId);
+        return result;
+    }
+
+    @Transactional
     public Map<String, Object> submitAnswer(String sessionId, String userId, String questionId, Object answerPayload,
             int clientElapsedMs) {
         QuizSession session = quizSessionRepository.findById(sessionId).orElseThrow();

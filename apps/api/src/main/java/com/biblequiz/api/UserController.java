@@ -20,6 +20,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
+import com.biblequiz.modules.quiz.entity.QuizSession;
+import com.biblequiz.modules.quiz.repository.QuizSessionRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +42,9 @@ public class UserController {
     
     @Autowired
     private AuditService auditService;
+
+    @Autowired
+    private QuizSessionRepository quizSessionRepository;
 
     @GetMapping
     public ResponseEntity<UserResponse> getCurrentUser(Authentication authentication) {
@@ -232,6 +240,54 @@ public class UserController {
                 "email", user.getEmail(),
                 "role", user.getRole()
             )
+        ));
+    }
+
+    /**
+     * GET /api/me/history — Session history (newest first, paginated)
+     */
+    @GetMapping("/history")
+    public ResponseEntity<?> getHistory(Authentication authentication,
+                                        @RequestParam(defaultValue = "20") int limit,
+                                        @RequestParam(defaultValue = "0") int page) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String email = null;
+        if (authentication.getPrincipal() instanceof UserDetails ud) {
+            email = ud.getUsername();
+        } else if (authentication.getPrincipal() instanceof OAuth2User oauth2) {
+            email = oauth2.getAttribute("email");
+        }
+
+        Optional<User> userOpt = email != null ? userRepository.findByEmail(email) : Optional.empty();
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        User user = userOpt.get();
+        Page<QuizSession> sessions = quizSessionRepository.findByOwnerIdOrderByCreatedAtDesc(
+                user.getId(), PageRequest.of(page, limit));
+
+        List<Map<String, Object>> items = sessions.getContent().stream().map(s -> {
+            Map<String, Object> item = new HashMap<>();
+            item.put("id", s.getId());
+            item.put("mode", s.getMode().name());
+            item.put("status", s.getStatus().name());
+            item.put("score", s.getScore());
+            item.put("totalQuestions", s.getTotalQuestions());
+            item.put("correctAnswers", s.getCorrectAnswers());
+            item.put("createdAt", s.getCreatedAt());
+            return item;
+        }).toList();
+
+        return ResponseEntity.ok(Map.of(
+                "items", items,
+                "totalPages", sessions.getTotalPages(),
+                "totalItems", sessions.getTotalElements(),
+                "currentPage", page,
+                "hasMore", sessions.hasNext()
         ));
     }
 }

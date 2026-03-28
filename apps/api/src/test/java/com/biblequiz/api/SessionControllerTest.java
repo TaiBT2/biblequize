@@ -185,8 +185,39 @@ class SessionControllerTest extends BaseControllerTest {
 
     @Test
     void rateLimitingFilter_isWiredInSecurityChain() throws Exception {
-        // Verify the rate limiting filter mock exists (it's part of BaseControllerTest)
-        // In production, this filter would reject requests exceeding rate limits
         org.junit.jupiter.api.Assertions.assertNotNull(rateLimitingFilter);
+    }
+
+    // ── TC-PRAC-003: POST /sessions/{id}/retry ──────────────────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void retrySession_shouldReturn201() throws Exception {
+        Map<String, Object> retryResult = Map.of(
+                "newSessionId", "session-2",
+                "originalSessionId", "session-1");
+
+        when(sessionService.retrySession(eq("session-1"), eq("test@example.com")))
+                .thenReturn(retryResult);
+
+        mockMvc.perform(post("/api/sessions/session-1/retry"))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.newSessionId").value("session-2"));
+    }
+
+    @Test
+    @WithMockUser(username = "attacker@example.com")
+    void retrySession_notOwner_shouldReturn403() throws Exception {
+        when(sessionService.retrySession(eq("session-1"), eq("attacker@example.com")))
+                .thenThrow(new IllegalArgumentException("Session does not belong to this user"));
+
+        mockMvc.perform(post("/api/sessions/session-1/retry"))
+                .andExpect(status().isForbidden());
+    }
+
+    @Test
+    void retrySession_withoutAuth_shouldReturn401() throws Exception {
+        mockMvc.perform(post("/api/sessions/session-1/retry"))
+                .andExpect(status().isUnauthorized());
     }
 }

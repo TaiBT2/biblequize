@@ -377,6 +377,33 @@ public class AdminQuestionController {
         return v != null ? v.toString().trim() : null;
     }
 
+    /**
+     * GET /api/admin/questions/coverage — Pool size per book per difficulty
+     */
+    @GetMapping("/coverage")
+    public ResponseEntity<?> getCoverage() {
+        List<String> books = questionRepository.findDistinctActiveBooks();
+
+        List<Map<String, Object>> bookStats = books.stream().map(book -> {
+            long easy = questionRepository.countByBookAndDifficultyAndIsActiveTrue(book, Question.Difficulty.easy);
+            long medium = questionRepository.countByBookAndDifficultyAndIsActiveTrue(book, Question.Difficulty.medium);
+            long hard = questionRepository.countByBookAndDifficultyAndIsActiveTrue(book, Question.Difficulty.hard);
+            boolean meetsMinimum = easy >= 30 && medium >= 20 && hard >= 10;
+
+            Map<String, Object> entry = new LinkedHashMap<>();
+            entry.put("book", book);
+            entry.put("easy", easy);
+            entry.put("medium", medium);
+            entry.put("hard", hard);
+            entry.put("total", easy + medium + hard);
+            entry.put("meetsMinimum", meetsMinimum);
+            entry.put("isActiveInRanked", meetsMinimum);
+            return entry;
+        }).collect(Collectors.toList());
+
+        return ResponseEntity.ok(Map.of("books", bookStats));
+    }
+
     private Question.Type normalizeType(String raw) {
         return switch (raw.toLowerCase().replace("-", "_")) {
             case "multiple_choice", "multiple_choice_single" -> Question.Type.multiple_choice_single;

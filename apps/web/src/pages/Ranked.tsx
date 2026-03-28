@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../api/client'
 import BookProgress from '../components/BookProgress'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../store/authStore'
 import { useRankedDataSync } from '../hooks/useRankedDataSync'
 import styles from './Ranked.module.css'
 

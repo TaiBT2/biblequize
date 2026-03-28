@@ -7,6 +7,8 @@ build/
 .env
 .env.*
 env.local
+.claude/settings.json
+.mcp.json
 # app secrets and local config - keep out of git
 /apps/api/src/main/resources/application-local.yml
 /apps/api/src/main/resources/application-dev.yml

@@ -1,0 +1,601 @@
+-- John (Giăng) seed data: 80 questions (35 easy, 28 medium, 17 hard)
+-- Source: Kinh Thanh Ban Truyen Thong 1926 (public domain)
+
+INSERT IGNORE INTO questions (
+  id, book, chapter, verse_start, verse_end,
+  difficulty, type, content, options, correct_answer,
+  explanation, tags, source, language, review_status, approvals_count, is_active,
+  created_at, updated_at
+) VALUES
+
+-- ═══════════════════════════════════════════════════════════════
+-- EASY (35 questions)
+-- ═══════════════════════════════════════════════════════════════
+
+-- Prologue (ch 1)
+('bq-joh-001', 'John', 1, 1, 1, 'easy', 'multiple_choice_single',
+ 'Theo Giăng 1:1, ban đầu có gì?',
+ '["Đất","Ánh sáng","Ngôi Lời","Nước"]',
+ '[2]',
+ 'Giăng 1:1 — "Ban đầu có Ngôi Lời, Ngôi Lời ở cùng Đức Chúa Trời, và Ngôi Lời là Đức Chúa Trời."',
+ '["Giăng","Ngôi Lời","Chương 1"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-002', 'John', 1, 14, 14, 'easy', 'multiple_choice_single',
+ 'Ngôi Lời đã trở nên gì? (Giăng 1:14)',
+ '["Thiên sứ","Gió","Ánh sáng","Xác thịt"]',
+ '[3]',
+ 'Giăng 1:14 — "Ngôi Lời đã trở nên xác thịt, ở giữa chúng ta, đầy ơn và lẽ thật."',
+ '["Giăng","Ngôi Lời","Nhập thể"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-003', 'John', 1, 29, 29, 'easy', 'multiple_choice_single',
+ 'Giăng Báp-tít gọi Chúa Jêsus là gì? (Giăng 1:29)',
+ '["Vua Y-sơ-ra-ên","Đấng tiên tri","Chiên con của Đức Chúa Trời","Thầy tế lễ"]',
+ '[2]',
+ 'Giăng 1:29 — "Kìa, Chiên con của Đức Chúa Trời, là Đấng cất tội lỗi thế gian đi."',
+ '["Giăng","Chiên con","Giăng Báp-tít"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-004', 'John', 1, 40, 42, 'easy', 'multiple_choice_single',
+ 'Anh-rê dẫn ai đến cùng Chúa Jêsus? (Giăng 1:42)',
+ '["Phi-líp","Si-môn Phi-e-rơ","Na-tha-na-ên","Gia-cơ"]',
+ '[1]',
+ 'Giăng 1:42 — "Người bèn dẫn Si-môn đến cùng Đức Chúa Jêsus."',
+ '["Giăng","Môn đồ","Si-môn"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Wedding at Cana (ch 2)
+('bq-joh-005', 'John', 2, 1, 2, 'easy', 'multiple_choice_single',
+ 'Tiệc cưới tại Ca-na xảy ra ở xứ nào? (Giăng 2:1)',
+ '["Giu-đê","Ga-li-lê","Sa-ma-ri","Bê-rê"]',
+ '[1]',
+ 'Giăng 2:1 — "Cách ba ngày sau, có đám cưới tại thành Ca-na, trong xứ Ga-li-lê."',
+ '["Giăng","Ca-na","Phép lạ"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-006', 'John', 2, 7, 9, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus hóa nước thành gì tại tiệc cưới Ca-na? (Giăng 2:9)',
+ '["Sữa","Dầu","Rượu","Mật ong"]',
+ '[2]',
+ 'Giăng 2:9 — "Khi kẻ coi tiệc nếm nước đã biến thành rượu."',
+ '["Giăng","Ca-na","Phép lạ"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-007', 'John', 2, 11, 11, 'easy', 'multiple_choice_single',
+ 'Phép lạ tại Ca-na là phép lạ thứ mấy của Chúa Jêsus trong sách Giăng? (Giăng 2:11)',
+ '["Thứ ba","Thứ hai","Thứ nhứt","Thứ tư"]',
+ '[2]',
+ 'Giăng 2:11 — "Ấy là tại Ca-na, trong xứ Ga-li-lê, mà Đức Chúa Jêsus làm phép lạ thứ nhứt."',
+ '["Giăng","Ca-na","Phép lạ đầu tiên"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Nicodemus (ch 3)
+('bq-joh-008', 'John', 3, 1, 2, 'easy', 'multiple_choice_single',
+ 'Ni-cô-đem thuộc nhóm người nào? (Giăng 3:1)',
+ '["Người thâu thuế","Người Sa-đu-sê","Người Pha-ri-si","Thầy tế lễ"]',
+ '[2]',
+ 'Giăng 3:1 — "Trong vòng người Pha-ri-si, có người tên là Ni-cô-đem, là một người trong những kẻ cai trị dân Giu-đa."',
+ '["Giăng","Ni-cô-đem","Pha-ri-si"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-009', 'John', 3, 16, 16, 'easy', 'multiple_choice_single',
+ 'Theo Giăng 3:16, Đức Chúa Trời yêu thương thế gian đến nỗi đã làm gì?',
+ '["Ban Con một của Ngài","Sai thiên sứ đến","Viết Kinh Thánh","Dựng nên đền thờ"]',
+ '[0]',
+ 'Giăng 3:16 — "Vì Đức Chúa Trời yêu thương thế gian, đến nỗi đã ban Con một của Ngài, hầu cho hễ ai tin Con ấy không bị hư mất mà được sự sống đời đời."',
+ '["Giăng","Tin lành","Sự sống đời đời"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Samaritan woman (ch 4)
+('bq-joh-010', 'John', 4, 5, 7, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus gặp người đàn bà Sa-ma-ri tại đâu? (Giăng 4:6)',
+ '["Bên sông Giô-đanh","Bên giếng Gia-cốp","Trong đền thờ","Ngoài đồng"]',
+ '[1]',
+ 'Giăng 4:6 — "Tại đó có cái giếng của Gia-cốp. Nhân đi đường mỏi mệt, Đức Chúa Jêsus ngồi gần bên giếng."',
+ '["Giăng","Sa-ma-ri","Giếng Gia-cốp"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-011', 'John', 4, 14, 14, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus hứa ban cho người đàn bà Sa-ma-ri loại nước gì? (Giăng 4:14)',
+ '["Nước giếng","Nước mưa","Nước sông","Nước sống"]',
+ '[3]',
+ 'Giăng 4:14 — "Nhưng uống nước ta sẽ cho, thì chẳng hề khát nữa. Nước ta cho sẽ thành một mạch nước trong người đó, văng ra cho đến sự sống đời đời."',
+ '["Giăng","Sa-ma-ri","Nước sống"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Healing (ch 5, 9)
+('bq-joh-012', 'John', 5, 2, 5, 'easy', 'multiple_choice_single',
+ 'Người bệnh tại ao Bê-tết-đa đã nằm bệnh bao lâu? (Giăng 5:5)',
+ '["Mười hai năm","Hai mươi năm","Bốn mươi năm","Ba mươi tám năm"]',
+ '[3]',
+ 'Giăng 5:5 — "Tại đó, có một người bị bịnh đã được ba mươi tám năm."',
+ '["Giăng","Phép lạ","Bê-tết-đa"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-013', 'John', 9, 1, 7, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus chữa lành người bị bệnh gì từ thuở sanh ra? (Giăng 9:1)',
+ '["Câm","Điếc","Mù","Bại"]',
+ '[2]',
+ 'Giăng 9:1 — "Khi Đức Chúa Jêsus đi qua, thấy một người mù từ thuở sanh ra."',
+ '["Giăng","Phép lạ","Mù"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-014', 'John', 9, 6, 7, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus bảo người mù đi rửa ở ao nào? (Giăng 9:7)',
+ '["Ao Bê-tết-đa","Sông Giô-đanh","Ao Si-lô-ê","Biển Ga-li-lê"]',
+ '[2]',
+ 'Giăng 9:7 — "Hãy đi, rửa nơi ao Si-lô-ê."',
+ '["Giăng","Phép lạ","Si-lô-ê"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Bread of life (ch 6)
+('bq-joh-015', 'John', 6, 35, 35, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus tự xưng là gì trong Giăng 6:35?',
+ '["Bánh của sự sống","Gốc nho","Cửa của chiên","Đường đi"]',
+ '[0]',
+ 'Giăng 6:35 — "Ta là bánh của sự sống; ai đến cùng ta chẳng hề đói, và ai tin ta chẳng hề khát."',
+ '["Giăng","Bánh sự sống","Danh xưng"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-016', 'John', 6, 9, 11, 'easy', 'multiple_choice_single',
+ 'Trong Giăng 6, ai có năm ổ bánh và hai con cá? (Giăng 6:9)',
+ '["Một người đàn ông","Một đứa con trai nhỏ","Phi-líp","An-drê"]',
+ '[1]',
+ 'Giăng 6:9 — "Đây có một đứa con trai nhỏ, có năm cái bánh mạch nha và hai con cá."',
+ '["Giăng","Phép lạ","Hóa bánh"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Good Shepherd (ch 10)
+('bq-joh-017', 'John', 10, 11, 11, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus tự xưng là gì trong Giăng 10:11?',
+ '["Người chăn hiền lành","Vua các vua","Thầy tế lễ","Tiên tri lớn"]',
+ '[0]',
+ 'Giăng 10:11 — "Ta là người chăn hiền lành; người chăn hiền lành vì chiên mình phó sự sống mình."',
+ '["Giăng","Người chăn","Danh xưng"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-018', 'John', 10, 10, 10, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus nói Ngài đến để chiên được gì? (Giăng 10:10)',
+ '["Sự giàu có","Danh vọng","Quyền lực","Sự sống và sự sống dư dật"]',
+ '[3]',
+ 'Giăng 10:10 — "Ta đã đến, hầu cho chiên được sự sống, và được sự sống dư dật."',
+ '["Giăng","Người chăn","Sự sống"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Lazarus (ch 11)
+('bq-joh-019', 'John', 11, 1, 3, 'easy', 'multiple_choice_single',
+ 'La-xa-rơ sống ở làng nào? (Giăng 11:1)',
+ '["Na-xa-rét","Ca-bê-na-um","Ca-na","Bê-tha-ni"]',
+ '[3]',
+ 'Giăng 11:1 — "Có một người đau, tên là La-xa-rơ, ở Bê-tha-ni, là làng của Ma-ri và chị người là Ma-thê."',
+ '["Giăng","La-xa-rơ","Bê-tha-ni"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-020', 'John', 11, 25, 25, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus tự xưng là gì khi nói với Ma-thê? (Giăng 11:25)',
+ '["Sự sống lại và sự sống","Đấng tiên tri","Vua hòa bình","Đấng phán xét"]',
+ '[0]',
+ 'Giăng 11:25 — "Ta là sự sống lại và sự sống; kẻ nào tin ta thì sẽ sống, mặc dầu đã chết rồi."',
+ '["Giăng","La-xa-rơ","Sự sống lại"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-021', 'John', 11, 35, 35, 'easy', 'multiple_choice_single',
+ 'Câu ngắn nhất trong Kinh Thánh là gì? (Giăng 11:35)',
+ '["Chúa khóc","Hãy cầu nguyện","Hãy vui mừng","Đức Chúa Jêsus khóc"]',
+ '[3]',
+ 'Giăng 11:35 — "Đức Chúa Jêsus khóc."',
+ '["Giăng","La-xa-rơ","Câu ngắn nhất"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-022', 'John', 11, 43, 44, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus kêu lớn tiếng nói gì trước mộ La-xa-rơ? (Giăng 11:43)',
+ '["La-xa-rơ, hãy ngủ yên","Mộ hãy mở ra","La-xa-rơ, hãy ra","La-xa-rơ, hãy thức dậy"]',
+ '[2]',
+ 'Giăng 11:43 — "Ngài kêu lên một tiếng lớn rằng: Hỡi La-xa-rơ, hãy ra!"',
+ '["Giăng","La-xa-rơ","Phép lạ"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Last Supper & Farewell (ch 13-17)
+('bq-joh-023', 'John', 13, 5, 5, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus làm gì cho các môn đồ trong bữa tiệc cuối? (Giăng 13:5)',
+ '["Rửa tay","Rửa chân","Rửa mặt","Xức dầu"]',
+ '[1]',
+ 'Giăng 13:5 — "Đoạn, Ngài đổ nước vào chậu, và rửa chân cho môn đồ."',
+ '["Giăng","Tiệc cuối","Rửa chân"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-024', 'John', 13, 34, 34, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus ban cho các môn đồ điều răn mới nào? (Giăng 13:34)',
+ '["Giữ ngày Sa-bát","Kiêng ăn","Yêu nhau","Dâng hiến"]',
+ '[2]',
+ 'Giăng 13:34 — "Ta ban cho các ngươi một điều răn mới, nghĩa là các ngươi phải yêu nhau."',
+ '["Giăng","Điều răn mới","Yêu nhau"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-025', 'John', 14, 6, 6, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus nói "Ta là đường đi, lẽ thật, và..." gì? (Giăng 14:6)',
+ '["Sự sống","Ánh sáng","Tình yêu","Sức mạnh"]',
+ '[0]',
+ 'Giăng 14:6 — "Ta là đường đi, lẽ thật, và sự sống; chẳng bởi ta thì không ai được đến cùng Cha."',
+ '["Giăng","Đường đi","Danh xưng"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-026', 'John', 15, 5, 5, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus tự ví mình là gì, và môn đồ là nhánh? (Giăng 15:5)',
+ '["Cây ô-li-ve","Gốc nho","Cây vả","Cây bách hương"]',
+ '[1]',
+ 'Giăng 15:5 — "Ta là gốc nho, các ngươi là nhánh."',
+ '["Giăng","Gốc nho","Danh xưng"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Passion (ch 18-19)
+('bq-joh-027', 'John', 19, 17, 18, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus bị đóng đinh tại nơi nào? (Giăng 19:17)',
+ '["Gô-gô-tha","Núi Si-na-i","Núi Ô-li-ve","Đền thờ"]',
+ '[0]',
+ 'Giăng 19:17 — "Đi đến nơi gọi là Đồi Sọ, tiếng Hê-bơ-rơ gọi là Gô-gô-tha."',
+ '["Giăng","Thương khó","Gô-gô-tha"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-028', 'John', 19, 30, 30, 'easy', 'multiple_choice_single',
+ 'Lời cuối cùng của Chúa Jêsus trên thập tự giá trong sách Giăng là gì? (Giăng 19:30)',
+ '["Cha ơi, tha cho họ","Sao Ngài lìa bỏ tôi","Mọi việc đã được trọn","Ta khát"]',
+ '[2]',
+ 'Giăng 19:30 — "Khi Đức Chúa Jêsus chịu lấy giấm ấy rồi, bèn phán rằng: Mọi việc đã được trọn."',
+ '["Giăng","Thương khó","Thập tự giá"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Resurrection (ch 20-21)
+('bq-joh-029', 'John', 20, 1, 1, 'easy', 'multiple_choice_single',
+ 'Ai đến mộ Chúa Jêsus đầu tiên vào sáng sớm? (Giăng 20:1)',
+ '["Phi-e-rơ","Ma-ri Ma-đơ-len","Giăng","Ma-thê"]',
+ '[1]',
+ 'Giăng 20:1 — "Ngày thứ nhứt trong tuần lễ, Ma-ri Ma-đơ-len đến mộ vừa tờ mờ sáng."',
+ '["Giăng","Phục sinh","Ma-ri Ma-đơ-len"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-030', 'John', 20, 27, 28, 'easy', 'multiple_choice_single',
+ 'Thô-ma thốt lên điều gì khi thấy Chúa Jêsus phục sinh? (Giăng 20:28)',
+ '["Chúa ơi!","Tôi đã sai","Ngài sống lại rồi","Lạy Chúa tôi và Đức Chúa Trời tôi"]',
+ '[3]',
+ 'Giăng 20:28 — "Thô-ma thưa rằng: Lạy Chúa tôi và Đức Chúa Trời tôi!"',
+ '["Giăng","Phục sinh","Thô-ma"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-031', 'John', 21, 15, 17, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus hỏi Phi-e-rơ "Ngươi yêu ta chăng?" bao nhiêu lần? (Giăng 21:15-17)',
+ '["Một lần","Ba lần","Hai lần","Bốn lần"]',
+ '[1]',
+ 'Giăng 21:15-17 — Chúa Jêsus hỏi Si-môn Phi-e-rơ ba lần "Ngươi yêu ta chăng?" và bảo "Hãy chăn chiên ta."',
+ '["Giăng","Phục sinh","Phi-e-rơ"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-032', 'John', 14, 2, 2, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus nói trong nhà Cha có nhiều gì? (Giăng 14:2)',
+ '["Chỗ ở","Kho báu","Thiên sứ","Sách"]',
+ '[0]',
+ 'Giăng 14:2 — "Trong nhà Cha ta có nhiều chỗ ở; bằng chẳng vậy, ta đã nói cho các ngươi rồi. Ta đi sắm sẵn cho các ngươi một chỗ."',
+ '["Giăng","Nhà Cha","Thiên đàng"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-033', 'John', 8, 12, 12, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus tự xưng là gì trong Giăng 8:12?',
+ '["Vua các vua","Sự sáng của thế gian","Bánh sự sống","Cửa của chiên"]',
+ '[1]',
+ 'Giăng 8:12 — "Ta là sự sáng của thế gian; người nào theo ta, chẳng đi trong nơi tối tăm, nhưng có ánh sáng của sự sống."',
+ '["Giăng","Sự sáng","Danh xưng"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-034', 'John', 10, 9, 9, 'easy', 'multiple_choice_single',
+ 'Chúa Jêsus nói "Ta là..." gì trong Giăng 10:9?',
+ '["Người chăn chiên","Ánh sáng","Cái cửa","Con đường"]',
+ '[2]',
+ 'Giăng 10:9 — "Ta là cái cửa: nếu ai bởi ta mà vào, thì sẽ được cứu rỗi."',
+ '["Giăng","Cửa","Danh xưng"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-035', 'John', 20, 31, 31, 'easy', 'multiple_choice_single',
+ 'Sách Giăng được viết để người đọc tin điều gì? (Giăng 20:31)',
+ '["Để tin Jêsus là Đấng Christ, Con Đức Chúa Trời","Để biết lịch sử","Để học luật pháp","Để hiểu tiên tri"]',
+ '[0]',
+ 'Giăng 20:31 — "Nhưng các việc nầy đã chép, để cho các ngươi tin rằng Đức Chúa Jêsus là Đấng Christ, Con Đức Chúa Trời."',
+ '["Giăng","Mục đích","Đức tin"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- ═══════════════════════════════════════════════════════════════
+-- MEDIUM (28 questions)
+-- ═══════════════════════════════════════════════════════════════
+
+-- Prologue (ch 1)
+('bq-joh-036', 'John', 1, 3, 3, 'medium', 'multiple_choice_single',
+ 'Theo Giăng 1:3, muôn vật được dựng nên bởi ai?',
+ '["Thiên sứ","Ngôi Lời","Môi-se","Tự nhiên"]',
+ '[1]',
+ 'Giăng 1:3 — "Muôn vật bởi Ngài làm nên, chẳng vật chi đã làm nên mà không bởi Ngài."',
+ '["Giăng","Ngôi Lời","Sáng tạo"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-037', 'John', 1, 11, 12, 'medium', 'multiple_choice_single',
+ 'Ai tin nhận Ngôi Lời thì được quyền gì? (Giăng 1:12)',
+ '["Trở nên vua","Trở nên con cái Đức Chúa Trời","Trở nên thiên sứ","Trở nên tiên tri"]',
+ '[1]',
+ 'Giăng 1:12 — "Nhưng hễ ai đã nhận Ngài, thì Ngài ban cho quyền phép trở nên con cái Đức Chúa Trời."',
+ '["Giăng","Ngôi Lời","Con cái Chúa"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Nicodemus (ch 3)
+('bq-joh-038', 'John', 3, 3, 3, 'medium', 'multiple_choice_single',
+ 'Chúa Jêsus nói với Ni-cô-đem phải làm gì để thấy nước Đức Chúa Trời? (Giăng 3:3)',
+ '["Giữ luật pháp","Dâng hiến nhiều","Sanh lại","Kiêng ăn"]',
+ '[2]',
+ 'Giăng 3:3 — "Quả thật, quả thật, ta nói cùng ngươi, nếu một người chẳng sanh lại, thì không thể thấy được nước Đức Chúa Trời."',
+ '["Giăng","Ni-cô-đem","Sanh lại"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-039', 'John', 3, 14, 15, 'medium', 'multiple_choice_single',
+ 'Chúa Jêsus so sánh việc Ngài bị treo lên giống ai trong Cựu Ước? (Giăng 3:14)',
+ '["Áp-ra-ham dâng Y-sác","Ê-li được cất lên trời","Đa-vít đánh Gô-li-át","Môi-se treo con rắn đồng"]',
+ '[3]',
+ 'Giăng 3:14 — "Xưa Môi-se treo con rắn lên nơi đồng vắng thể nào, thì Con người cũng phải bị treo lên dường ấy."',
+ '["Giăng","Rắn đồng","Tiên tri"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Samaritan woman (ch 4)
+('bq-joh-040', 'John', 4, 18, 18, 'medium', 'multiple_choice_single',
+ 'Người đàn bà Sa-ma-ri đã có mấy đời chồng? (Giăng 4:18)',
+ '["Năm","Bốn","Ba","Sáu"]',
+ '[0]',
+ 'Giăng 4:18 — "Vì ngươi đã có năm đời chồng, và người mà ngươi hiện có, chẳng phải là chồng ngươi."',
+ '["Giăng","Sa-ma-ri","Giếng Gia-cốp"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-041', 'John', 4, 24, 24, 'medium', 'multiple_choice_single',
+ 'Đức Chúa Trời là gì, và người thờ phượng phải thờ phượng bằng gì? (Giăng 4:24)',
+ '["Là tình yêu, bằng lễ vật","Là ánh sáng, bằng luật pháp","Là lửa, bằng sự sợ hãi","Là Thần, bằng tâm thần và lẽ thật"]',
+ '[3]',
+ 'Giăng 4:24 — "Đức Chúa Trời là Thần, nên ai thờ phượng Ngài thì phải lấy tâm thần và lẽ thật mà thờ phượng."',
+ '["Giăng","Thờ phượng","Tâm thần"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Healing & Signs
+('bq-joh-042', 'John', 5, 8, 9, 'medium', 'multiple_choice_single',
+ 'Chúa Jêsus bảo người bệnh tại ao Bê-tết-đa làm gì? (Giăng 5:8)',
+ '["Hãy nhảy xuống ao","Hãy chờ nước động","Hãy đứng dậy, vác giường mà đi","Hãy kêu cầu"]',
+ '[2]',
+ 'Giăng 5:8 — "Hãy đứng dậy, vác giường ngươi mà đi."',
+ '["Giăng","Phép lạ","Bê-tết-đa"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-043', 'John', 6, 19, 20, 'medium', 'multiple_choice_single',
+ 'Khi các môn đồ sợ hãi thấy Chúa đi trên mặt biển, Ngài nói gì? (Giăng 6:20)',
+ '["Hãy im lặng","Hãy chèo thuyền đi","Ấy là ta đây, đừng sợ","Hãy nhảy xuống nước"]',
+ '[2]',
+ 'Giăng 6:20 — "Nhưng Ngài phán rằng: Ấy là ta đây, đừng sợ!"',
+ '["Giăng","Phép lạ","Biển"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-044', 'John', 6, 68, 69, 'medium', 'multiple_choice_single',
+ 'Khi nhiều người bỏ đi, Phi-e-rơ nói gì với Chúa Jêsus? (Giăng 6:68)',
+ '["Chúng tôi cũng đi","Chúng tôi không hiểu","Xin giải thích thêm","Chúa có lời của sự sống đời đời"]',
+ '[3]',
+ 'Giăng 6:68 — "Si-môn Phi-e-rơ thưa rằng: Lạy Chúa, chúng tôi đi theo ai? Chúa có những lời của sự sống đời đời."',
+ '["Giăng","Phi-e-rơ","Đức tin"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Good Shepherd (ch 10)
+('bq-joh-045', 'John', 10, 27, 28, 'medium', 'multiple_choice_single',
+ 'Chúa Jêsus nói chiên Ngài sẽ chẳng bao giờ bị gì? (Giăng 10:28)',
+ '["Bị đau","Bị đói","Bị buồn","Bị hư mất"]',
+ '[3]',
+ 'Giăng 10:28 — "Ta ban cho nó sự sống đời đời; nó chẳng chết mất bao giờ, và chẳng ai cướp nó khỏi tay ta."',
+ '["Giăng","Người chăn","Bảo đảm"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-046', 'John', 10, 30, 30, 'medium', 'multiple_choice_single',
+ 'Chúa Jêsus tuyên bố mối quan hệ giữa Ngài và Cha thế nào? (Giăng 10:30)',
+ '["Ta là con Cha","Ta đến từ Cha","Ta và Cha là một","Ta vâng lời Cha"]',
+ '[2]',
+ 'Giăng 10:30 — "Ta với Cha là một."',
+ '["Giăng","Ba Ngôi","Hiệp nhất"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Lazarus (ch 11)
+('bq-joh-047', 'John', 11, 17, 17, 'medium', 'multiple_choice_single',
+ 'La-xa-rơ đã ở trong mộ bao nhiêu ngày khi Chúa đến? (Giăng 11:17)',
+ '["Hai ngày","Ba ngày","Bốn ngày","Bảy ngày"]',
+ '[2]',
+ 'Giăng 11:17 — "Khi Đức Chúa Jêsus đến nơi, thấy La-xa-rơ đã chôn trong mộ bốn ngày rồi."',
+ '["Giăng","La-xa-rơ","Mộ"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-048', 'John', 11, 39, 39, 'medium', 'multiple_choice_single',
+ 'Ma-thê phản đối mở mộ La-xa-rơ vì lý do gì? (Giăng 11:39)',
+ '["Sợ quỷ","Đã có mùi","Trời đã tối","Đá quá nặng"]',
+ '[1]',
+ 'Giăng 11:39 — "Ma-thê, chị người chết, thưa rằng: Lạy Chúa, đã có mùi, vì người chết đã được bốn ngày rồi."',
+ '["Giăng","La-xa-rơ","Ma-thê"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Last Supper & Farewell (ch 13-17)
+('bq-joh-049', 'John', 13, 23, 23, 'medium', 'multiple_choice_single',
+ 'Trong bữa tiệc cuối, môn đồ nào ngả đầu vào ngực Chúa Jêsus? (Giăng 13:23)',
+ '["Phi-e-rơ","Môn đồ mà Đức Chúa Jêsus yêu","Gia-cơ","Ma-thi-ơ"]',
+ '[1]',
+ 'Giăng 13:23 — "Vả, trong những môn đồ, có một người mà Đức Chúa Jêsus yêu, ngồi dựa vào ngực Ngài."',
+ '["Giăng","Tiệc cuối","Môn đồ yêu dấu"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-050', 'John', 14, 16, 17, 'medium', 'multiple_choice_single',
+ 'Chúa Jêsus hứa sẽ cầu xin Cha ban cho ai? (Giăng 14:16)',
+ '["Thiên sứ","Một tiên tri","Đấng Yên ủi khác","Vua mới"]',
+ '[2]',
+ 'Giăng 14:16 — "Ta lại sẽ nài xin Cha, Ngài sẽ ban cho các ngươi một Đấng Yên ủi khác."',
+ '["Giăng","Đức Thánh Linh","Đấng Yên ủi"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-051', 'John', 14, 26, 26, 'medium', 'multiple_choice_single',
+ 'Đấng Yên ủi sẽ dạy các môn đồ điều gì? (Giăng 14:26)',
+ '["Cách xây nhà","Cách đánh trận","Cách kiếm tiền","Mọi sự"]',
+ '[3]',
+ 'Giăng 14:26 — "Đức Thánh Linh, là Đấng Cha sẽ nhân danh ta mà sai xuống, Đấng ấy sẽ dạy dỗ các ngươi mọi sự."',
+ '["Giăng","Đức Thánh Linh","Dạy dỗ"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-052', 'John', 15, 13, 13, 'medium', 'multiple_choice_single',
+ 'Chẳng có sự yêu thương nào lớn hơn điều gì? (Giăng 15:13)',
+ '["Cho tiền","Xây nhà cho người khác","Nói lời hay","Vì bạn hữu mà phó sự sống mình"]',
+ '[3]',
+ 'Giăng 15:13 — "Chẳng có sự yêu thương nào lớn hơn là vì bạn hữu mà phó sự sống mình."',
+ '["Giăng","Yêu thương","Hy sinh"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-053', 'John', 16, 33, 33, 'medium', 'multiple_choice_single',
+ 'Chúa Jêsus nói "Trong thế gian các ngươi có..." gì? Nhưng Ngài đã thắng thế gian. (Giăng 16:33)',
+ '["Niềm vui","Sự hoạn nạn","Sự bình an","Sự giàu có"]',
+ '[1]',
+ 'Giăng 16:33 — "Các ngươi sẽ có sự hoạn nạn trong thế gian, nhưng hãy cứ vững lòng, ta đã thắng thế gian rồi!"',
+ '["Giăng","Hoạn nạn","Đắc thắng"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-054', 'John', 17, 3, 3, 'medium', 'multiple_choice_single',
+ 'Sự sống đời đời là gì theo Giăng 17:3?',
+ '["Nhận biết Đức Chúa Trời và Jêsus Christ","Sống lâu","Được giàu có","Lên thiên đàng"]',
+ '[0]',
+ 'Giăng 17:3 — "Vả, sự sống đời đời là nhận biết Cha, tức là Đức Chúa Trời có một và thật, cùng Jêsus Christ, là Đấng Cha đã sai đến."',
+ '["Giăng","Sự sống đời đời","Nhận biết Chúa"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Passion (ch 18-19)
+('bq-joh-055', 'John', 18, 10, 10, 'medium', 'multiple_choice_single',
+ 'Ai rút gươm chém đứt tai đầy tớ của thầy cả thượng phẩm? (Giăng 18:10)',
+ '["Gia-cơ","Giăng","Phi-e-rơ","An-drê"]',
+ '[2]',
+ 'Giăng 18:10 — "Si-môn Phi-e-rơ có một thanh gươm, bèn rút ra, đánh đầy tớ của thầy cả thượng phẩm, chém đứt tai bên hữu."',
+ '["Giăng","Thương khó","Phi-e-rơ"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-056', 'John', 18, 38, 38, 'medium', 'multiple_choice_single',
+ 'Phi-lát hỏi Chúa Jêsus câu nổi tiếng nào? (Giăng 18:38)',
+ '["Lẽ thật là cái gì?","Ngươi là ai?","Ngươi có tội không?","Ngươi từ đâu đến?"]',
+ '[0]',
+ 'Giăng 18:38 — "Phi-lát hỏi rằng: Lẽ thật là cái gì?"',
+ '["Giăng","Phi-lát","Lẽ thật"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- Resurrection (ch 20-21)
+('bq-joh-057', 'John', 20, 19, 19, 'medium', 'multiple_choice_single',
+ 'Lời đầu tiên Chúa Jêsus phục sinh nói với các môn đồ là gì? (Giăng 20:19)',
+ '["Đừng sợ","Bình an cho các ngươi","Hãy đi","Hãy tin"]',
+ '[1]',
+ 'Giăng 20:19 — "Đức Chúa Jêsus đến đứng chính giữa các môn đồ mà phán rằng: Bình an cho các ngươi!"',
+ '["Giăng","Phục sinh","Bình an"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-058', 'John', 20, 25, 25, 'medium', 'multiple_choice_single',
+ 'Thô-ma đòi phải làm gì mới tin Chúa sống lại? (Giăng 20:25)',
+ '["Xỏ ngón tay vào lỗ đinh","Thấy thiên sứ","Nghe tiếng Chúa","Mộ phải trống"]',
+ '[0]',
+ 'Giăng 20:25 — "Nếu tôi không thấy dấu đinh trong bàn tay Ngài, nếu tôi không xỏ ngón tay vào lỗ đinh, và không đặt bàn tay vào sườn Ngài, thì tôi không tin."',
+ '["Giăng","Thô-ma","Nghi ngờ"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-059', 'John', 21, 6, 6, 'medium', 'multiple_choice_single',
+ 'Chúa bảo các môn đồ thả lưới bên nào thuyền? (Giăng 21:6)',
+ '["Bên trái","Phía sau","Phía trước","Bên hữu"]',
+ '[3]',
+ 'Giăng 21:6 — "Hãy thả lưới bên hữu thuyền, thì các ngươi sẽ được."',
+ '["Giăng","Phục sinh","Đánh cá"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-060', 'John', 19, 26, 27, 'medium', 'multiple_choice_single',
+ 'Trên thập tự giá, Chúa Jêsus giao phó mẹ Ngài cho ai? (Giăng 19:26-27)',
+ '["Môn đồ mà Ngài yêu","Gia-cơ","Phi-e-rơ","Giô-sép người A-ri-ma-thê"]',
+ '[0]',
+ 'Giăng 19:26-27 — "Ngài phán cùng mẹ rằng: Hỡi đàn bà, đó là con của ngươi! Đoạn, Ngài lại phán cùng người môn đồ rằng: Đó là mẹ ngươi!"',
+ '["Giăng","Thương khó","Ma-ri"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-061', 'John', 12, 3, 3, 'medium', 'multiple_choice_single',
+ 'Ma-ri lấy dầu cam tùng hương xức cho phần nào của Chúa Jêsus? (Giăng 12:3)',
+ '["Tay","Chân","Đầu","Vai"]',
+ '[1]',
+ 'Giăng 12:3 — "Bấy giờ, Ma-ri lấy một cân dầu cam tùng hương thật rất quí giá, xức chân Đức Chúa Jêsus."',
+ '["Giăng","Ma-ri","Dầu cam tùng hương"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-062', 'John', 7, 37, 38, 'medium', 'multiple_choice_single',
+ 'Trong ngày lễ lớn, Chúa Jêsus kêu lớn tiếng mời ai đến cùng Ngài? (Giăng 7:37)',
+ '["Người khát","Người giàu","Người đau","Người mạnh"]',
+ '[0]',
+ 'Giăng 7:37 — "Nếu người nào khát, hãy đến cùng ta mà uống."',
+ '["Giăng","Nước sống","Lời mời"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-063', 'John', 15, 1, 2, 'medium', 'multiple_choice_single',
+ 'Cha là ai trong ví dụ về cây nho? (Giăng 15:1)',
+ '["Người chăn chiên","Người trồng nho","Người gặt lúa","Người xây nhà"]',
+ '[1]',
+ 'Giăng 15:1 — "Ta là gốc nho thật, và Cha ta là người trồng nho."',
+ '["Giăng","Gốc nho","Đức Chúa Cha"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+-- ═══════════════════════════════════════════════════════════════
+-- HARD (17 questions)
+-- ═══════════════════════════════════════════════════════════════
+
+('bq-joh-064', 'John', 1, 18, 18, 'hard', 'multiple_choice_single',
+ 'Theo Giăng 1:18, ai đã giãi bày Đức Chúa Trời cho loài người? (Giăng 1:18)',
+ '["Môi-se","Con một ở trong lòng Cha","Các tiên tri","Thiên sứ"]',
+ '[1]',
+ 'Giăng 1:18 — "Chẳng hề ai thấy Đức Chúa Trời; chỉ Con một ở trong lòng Cha, là Đấng đã giãi bày Cha cho chúng ta biết."',
+ '["Giăng","Ngôi Lời","Con một"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-065', 'John', 2, 6, 6, 'hard', 'multiple_choice_single',
+ 'Tại Ca-na có bao nhiêu cái ché đá, mỗi cái chứa bao nhiêu? (Giăng 2:6)',
+ '["Bốn ché, hai ba thùng","Mười ché, một thùng","Tám ché, một thùng","Sáu ché, hai ba thùng"]',
+ '[3]',
+ 'Giăng 2:6 — "Tại đó có sáu cái ché đá... mỗi cái chứa hai ba thùng nước."',
+ '["Giăng","Ca-na","Chi tiết"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-066', 'John', 3, 5, 5, 'hard', 'multiple_choice_single',
+ 'Chúa Jêsus nói phải sanh bởi gì để vào nước Đức Chúa Trời? (Giăng 3:5)',
+ '["Bởi máu và lửa","Bởi luật pháp và lễ nghi","Bởi nước và Thánh Linh","Bởi đức tin và việc làm"]',
+ '[2]',
+ 'Giăng 3:5 — "Nếu một người chẳng nhờ nước và Thánh Linh mà sanh, thì không được vào nước Đức Chúa Trời."',
+ '["Giăng","Ni-cô-đem","Sanh lại"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-067', 'John', 4, 35, 35, 'hard', 'multiple_choice_single',
+ 'Chúa Jêsus bảo các môn đồ ngước mắt lên xem gì? (Giăng 4:35)',
+ '["Trời xanh","Chim trời","Ngôi sao","Đồng ruộng đã vàng và sẵn cho mùa gặt"]',
+ '[3]',
+ 'Giăng 4:35 — "Hãy ngước mắt lên và xem đồng ruộng, đã vàng và sẵn cho mùa gặt."',
+ '["Giăng","Truyền giáo","Mùa gặt"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-068', 'John', 5, 39, 39, 'hard', 'multiple_choice_single',
+ 'Chúa Jêsus nói Kinh Thánh làm chứng về ai? (Giăng 5:39)',
+ '["Môi-se","Chính Ngài","Áp-ra-ham","Các tiên tri"]',
+ '[1]',
+ 'Giăng 5:39 — "Các ngươi dò xem Kinh Thánh, vì tưởng bởi đó được sự sống đời đời: ấy là Kinh Thánh làm chứng về ta vậy."',
+ '["Giăng","Kinh Thánh","Chứng cớ"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-069', 'John', 6, 53, 54, 'hard', 'multiple_choice_single',
+ 'Chúa Jêsus nói phải ăn gì và uống gì của Con người mới có sự sống? (Giăng 6:53)',
+ '["Ăn bánh và uống nước","Ăn mật và uống rượu","Ăn trái cây và uống sữa","Ăn thịt và uống huyết"]',
+ '[3]',
+ 'Giăng 6:53 — "Quả thật, quả thật, ta nói cùng các ngươi, nếu các ngươi không ăn thịt của Con người, cùng không uống huyết Ngài, thì chẳng có sự sống trong các ngươi đâu."',
+ '["Giăng","Bánh sự sống","Thịt huyết"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-070', 'John', 8, 32, 32, 'hard', 'multiple_choice_single',
+ 'Lẽ thật sẽ làm gì cho người biết nó? (Giăng 8:32)',
+ '["Tự do","Nổi tiếng","Buồn rầu","Giàu có"]',
+ '[0]',
+ 'Giăng 8:32 — "Các ngươi sẽ biết lẽ thật, và lẽ thật sẽ buông tha các ngươi."',
+ '["Giăng","Lẽ thật","Tự do"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-071', 'John', 8, 58, 58, 'hard', 'multiple_choice_single',
+ 'Chúa Jêsus tuyên bố điều gì khiến người Giu-đa muốn ném đá Ngài? (Giăng 8:58)',
+ '["Ta là tiên tri","Trước khi chưa có Áp-ra-ham, đã có ta","Ta là vua","Ta sẽ phá đền thờ"]',
+ '[1]',
+ 'Giăng 8:58 — "Quả thật, quả thật, ta nói cùng các ngươi, trước khi chưa có Áp-ra-ham, đã có ta."',
+ '["Giăng","Thần tính","Tiền hữu"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-072', 'John', 9, 25, 25, 'hard', 'multiple_choice_single',
+ 'Người mù được chữa lành trả lời người Pha-ri-si thế nào? (Giăng 9:25)',
+ '["Tôi chỉ biết tôi đã mù mà bây giờ tôi sáng","Ngài là Đấng Christ","Ngài là tiên tri","Tôi không biết"]',
+ '[0]',
+ 'Giăng 9:25 — "Tôi chỉ biết một điều, là tôi đã mù mà bây giờ tôi sáng."',
+ '["Giăng","Phép lạ","Làm chứng"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-073', 'John', 11, 4, 4, 'hard', 'multiple_choice_single',
+ 'Khi nghe La-xa-rơ bệnh, Chúa Jêsus nói bệnh ấy không đến nỗi chết nhưng vì gì? (Giăng 11:4)',
+ '["Vì luật pháp","Vì đức tin","Vì phép lạ","Vì sự vinh hiển của Đức Chúa Trời"]',
+ '[3]',
+ 'Giăng 11:4 — "Bịnh nầy không đến chết đâu, nhưng vì sự vinh hiển của Đức Chúa Trời, hầu cho Con Đức Chúa Trời nhân đó được vinh hiển."',
+ '["Giăng","La-xa-rơ","Vinh hiển"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-074', 'John', 12, 24, 24, 'hard', 'multiple_choice_single',
+ 'Chúa Jêsus ví sự chết của Ngài như gì? (Giăng 12:24)',
+ '["Như hột giống lúa mì rơi xuống đất mà chết","Như mặt trời lặn","Như lá rụng","Như sông chảy ra biển"]',
+ '[0]',
+ 'Giăng 12:24 — "Nếu hột giống lúa mì kia, chẳng chết sau khi gieo xuống đất, thì cứ ở một mình; nhưng nếu chết đi, thì kết quả được nhiều."',
+ '["Giăng","Hy sinh","Hột giống"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-075', 'John', 13, 27, 30, 'hard', 'multiple_choice_single',
+ 'Khi Giu-đa ra đi phản bội, tác giả Giăng ghi nhận điều gì? (Giăng 13:30)',
+ '["Trời đang mưa","Trời rất lạnh","Mọi người đang ngủ","Bấy giờ là ban đêm"]',
+ '[3]',
+ 'Giăng 13:30 — "Giu-đa lãnh miếng bánh rồi, liền đi ra. Bấy giờ đang ban đêm."',
+ '["Giăng","Giu-đa","Phản bội"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-076', 'John', 14, 27, 27, 'hard', 'multiple_choice_single',
+ 'Chúa Jêsus nói Ngài ban sự bình an cho môn đồ khác với thế gian thế nào? (Giăng 14:27)',
+ '["Ta cho các ngươi không phải như thế gian cho","Bình an lớn hơn","Bình an vĩnh viễn","Bình an giàu có"]',
+ '[0]',
+ 'Giăng 14:27 — "Ta để sự bình an lại cho các ngươi; ta ban sự bình an ta cho các ngươi; ta cho các ngươi sự bình an chẳng phải như thế gian cho."',
+ '["Giăng","Bình an","Khác biệt"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-077', 'John', 17, 17, 17, 'hard', 'multiple_choice_single',
+ 'Chúa Jêsus cầu xin Cha biệt riêng các môn đồ bằng gì? (Giăng 17:17)',
+ '["Bằng lẽ thật; Lời Cha tức là lẽ thật","Bằng quyền năng","Bằng phép lạ","Bằng luật pháp"]',
+ '[0]',
+ 'Giăng 17:17 — "Xin Cha lấy lẽ thật khiến họ nên thánh; lời Cha tức là lẽ thật."',
+ '["Giăng","Cầu nguyện","Nên thánh"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-078', 'John', 19, 34, 34, 'hard', 'multiple_choice_single',
+ 'Khi lính lấy giáo đâm sườn Chúa Jêsus, có gì chảy ra? (Giăng 19:34)',
+ '["Huyết và nước","Chỉ có máu","Chỉ có nước","Không có gì"]',
+ '[0]',
+ 'Giăng 19:34 — "Một tên lính lấy giáo đâm sườn Ngài; tức thì máu và nước chảy ra."',
+ '["Giăng","Thương khó","Huyết và nước"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-079', 'John', 20, 29, 29, 'hard', 'multiple_choice_single',
+ 'Chúa Jêsus nói phước cho ai hơn Thô-ma? (Giăng 20:29)',
+ '["Những kẻ thấy và tin","Những kẻ nghe và tin","Những kẻ không thấy mà tin","Những kẻ đọc Kinh Thánh"]',
+ '[2]',
+ 'Giăng 20:29 — "Phước cho những kẻ chẳng từng thấy mà đã tin vậy."',
+ '["Giăng","Thô-ma","Đức tin"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW()),
+
+('bq-joh-080', 'John', 21, 11, 11, 'hard', 'multiple_choice_single',
+ 'Khi kéo lưới lên bờ sau phép lạ, có bao nhiêu con cá lớn? (Giăng 21:11)',
+ '["Một trăm hai mươi","Ba trăm","Hai trăm","Một trăm năm mươi ba"]',
+ '[3]',
+ 'Giăng 21:11 — "Si-môn Phi-e-rơ xuống thuyền, kéo lưới lên bờ, đầy những cá lớn, số là một trăm năm mươi ba con."',
+ '["Giăng","Phục sinh","Đánh cá"]', 'BTT 1926', 'vi','ACTIVE', 0, 1, NOW(), NOW());

@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './styles/global.css'
-import { AuthProvider } from './contexts/AuthContext'
+import { useAuthStore } from './store/authStore'
 import { ErrorProvider } from './contexts/ErrorContext'
 import RequireAuth from './contexts/RequireAuth'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -33,21 +33,31 @@ import RoomQuiz from './pages/RoomQuiz'
 import CreateRoom from './pages/CreateRoom'
 import JoinRoom from './pages/JoinRoom'
 import Multiplayer from './pages/Multiplayer'
+import DailyChallenge from './pages/DailyChallenge'
+import Groups from './pages/Groups'
+import GroupDetail from './pages/GroupDetail'
+import GroupAnalytics from './pages/GroupAnalytics'
+import Tournaments from './pages/Tournaments'
+import TournamentDetail from './pages/TournamentDetail'
+import TournamentMatch from './pages/TournamentMatch'
 
 const queryClient = new QueryClient()
+
+// Initialize auth state on app startup (replaces AuthProvider useEffect)
+useAuthStore.getState().checkAuth()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <ErrorProvider>
-          <AuthProvider>
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/auth/callback" element={<AuthCallback />} />
                 <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
+                <Route path="/daily" element={<DailyChallenge />} />
                 <Route path="/practice" element={<Practice />} />
                 <Route path="/quiz" element={<Quiz />} />
                   <Route path="/review" element={<Review />} />
@@ -56,6 +66,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="/rooms" element={<RequireAuth><Rooms /></RequireAuth>} />
                 <Route path="/multiplayer" element={<RequireAuth><Multiplayer /></RequireAuth>} />
+                <Route path="/groups" element={<RequireAuth><Groups /></RequireAuth>} />
+                <Route path="/groups/:id" element={<RequireAuth><GroupDetail /></RequireAuth>} />
+                <Route path="/groups/:id/analytics" element={<RequireAuth><GroupAnalytics /></RequireAuth>} />
+                <Route path="/tournaments" element={<RequireAuth><Tournaments /></RequireAuth>} />
+                <Route path="/tournaments/:id" element={<RequireAuth><TournamentDetail /></RequireAuth>} />
+                <Route path="/tournaments/:id/match/:matchId" element={<RequireAuth><TournamentMatch /></RequireAuth>} />
                 <Route path="/room/create" element={<RequireAuth><CreateRoom /></RequireAuth>} />
                 <Route path="/room/join" element={<RequireAuth><JoinRoom /></RequireAuth>} />
                 <Route path="/room/:roomId/lobby" element={<RequireAuth><RoomLobby /></RequireAuth>} />
@@ -72,7 +88,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 </Route>
               </Routes>
             </BrowserRouter>
-          </AuthProvider>
         </ErrorProvider>
       </QueryClientProvider>
     </ErrorBoundary>

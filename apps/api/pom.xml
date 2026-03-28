@@ -109,6 +109,13 @@
       <scope>runtime</scope>
       <optional>true</optional>
     </dependency>
+
+    <!-- .env file support -->
+    <dependency>
+      <groupId>me.paulschwarz</groupId>
+      <artifactId>spring-dotenv</artifactId>
+      <version>4.0.0</version>
+    </dependency>
     
     <!-- Documentation -->
     <dependency>
@@ -145,11 +152,8 @@
       <artifactId>spring-security-test</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <scope>test</scope>
-    </dependency>
+    <!-- H2 removed: CLAUDE.md rule "Không dùng H2 in-memory cho test" -->
+    <!-- Load tests now use Mockito. For real DB load testing, use k6 scripts in infra/k6/ -->
   </dependencies>
   <build>
     <plugins>

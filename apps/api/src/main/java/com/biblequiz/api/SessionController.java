@@ -86,6 +86,22 @@ public class SessionController {
                 request.getElapsedMs()));
     }
 
+    @PostMapping("/{id}/retry")
+    @Operation(summary = "Retry session", description = "Create a new session with the same config as the original")
+    public ResponseEntity<?> retry(@PathVariable("id") String sessionId, Principal principal) {
+        String userId = principal != null ? principal.getName() : null;
+        if (userId == null || userId.isEmpty()) {
+            return ResponseEntity.status(401).body(Map.of("error", "Unauthorized"));
+        }
+        try {
+            return ResponseEntity.status(201).body(sessionService.retrySession(sessionId, userId));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("error", e.getMessage()));
+        } catch (java.util.NoSuchElementException e) {
+            return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));
+        }
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> get(@PathVariable("id") String sessionId) {
         return ResponseEntity.ok(sessionService.getSession(sessionId));

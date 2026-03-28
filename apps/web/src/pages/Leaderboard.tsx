@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { api } from '../api/client'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../store/authStore'
 import styles from './Leaderboard.module.css'
 
 type Tab = 'daily' | 'weekly' | 'all-time'

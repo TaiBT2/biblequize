@@ -38,6 +38,46 @@ cd apps/web && npm run dev                # 3. Frontend (terminal 2)
 2. Nếu test fail → tự fix → chạy test lại, lặp đến khi pass
 3. Không hỏi xác nhận, tự quyết định
 4. Không dừng giữa chừng trừ khi có lỗi không thể tự fix
+## Cấu trúc package backend
+
+```
+com.biblequiz/
+├── api/                    # REST Controllers + DTOs + WebSocket controllers
+│   ├── dto/                # Request/Response DTOs
+│   └── websocket/          # STOMP WebSocket controllers
+├── infrastructure/         # Cross-cutting concerns (không chứa business logic)
+│   ├── audit/              # Audit logging
+│   ├── exception/          # GlobalExceptionHandler, custom exceptions
+│   ├── security/           # JWT, OAuth2, RateLimiting filters
+│   └── service/            # CacheService, monitoring
+├── modules/                # Business logic, tổ chức theo domain
+│   ├── achievement/        # entity/ + repository/ + service/
+│   ├── auth/               # entity/ + repository/ + service/
+│   ├── daily/              # service/
+│   ├── group/              # entity/ + repository/ + service/  (Church Group)
+│   ├── quiz/               # entity/ + repository/ + service/  (Question, Session, Answer)
+│   ├── ranked/             # model/ + service/  (ScoringService, RankTier)
+│   ├── room/               # entity/ + repository/ + service/  (4 game mode engines)
+│   ├── season/             # entity/ + repository/ + service/
+│   ├── share/              # entity/ + repository/ + service/  (Share Card)
+│   ├── tournament/         # entity/ + repository/ + service/
+│   └── user/               # entity/ + repository/ + service/  (User, Streak)
+└── shared/                 # Utilities dùng chung giữa nhiều modules
+    ├── aspect/             # AOP (performance monitoring)
+    └── converter/          # JPA converters (JsonListConverter)
+```
+
+### Quy ước đặt file mới
+- **Controller mới** → `api/XxxController.java` (không bao giờ đặt trong modules/)
+- **Entity/Repository/Service mới** → `modules/{domain}/entity|repository|service/`
+- **Module mới** → tạo thư mục `modules/{tên}/` với sub-folders entity/, repository/, service/
+- **Filter, Security, Exception** → `infrastructure/{concern}/`
+- **Converter, Aspect dùng chung** → `shared/` (chỉ cho utilities không thuộc domain nào)
+
+### Shared/ — dùng cho gì, KHÔNG dùng cho gì
+- **DÙNG**: JPA converters, AOP aspects, utility classes dùng bởi >= 2 modules
+- **KHÔNG DÙNG**: Business logic, domain entities, DTOs, service classes — những thứ này thuộc modules/
+
 ## Quy ước code bắt buộc
 
 ### Backend
@@ -53,6 +93,8 @@ cd apps/web && npm run dev                # 3. Frontend (terminal 2)
 ### Frontend
 - Mọi API call qua TanStack Query — không dùng useEffect + fetch thủ công
 - State global dùng Zustand — không dùng Context cho global state
+  - Exception: ErrorContext (tree-scoped, render toasts trong React tree) được phép giữ Context
+  - Auth state đã migrate sang `src/store/authStore.ts` (Zustand)
 - Không hardcode URL — dùng import.meta.env.VITE_API_URL
 - Mọi form phải có loading state + error handling
 ## Quy tắc test

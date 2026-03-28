@@ -1,5 +1,6 @@
 package com.biblequiz.api;
 
+import com.biblequiz.modules.quiz.repository.QuizSessionRepository;
 import com.biblequiz.modules.share.service.ShareCardService;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
@@ -28,6 +29,9 @@ class ShareCardControllerTest extends BaseControllerTest {
 
     @MockBean
     private UserRepository userRepository;
+
+    @MockBean
+    private QuizSessionRepository quizSessionRepository;
 
     private User testUser;
 
@@ -105,5 +109,18 @@ class ShareCardControllerTest extends BaseControllerTest {
     void getSessionCard_withoutAuth_shouldReturn401() throws Exception {
         mockMvc.perform(get("/api/share/session/session-1"))
                 .andExpect(status().isUnauthorized());
+    }
+
+    // ── GET /api/share/render/session/{id} — public HTML render ───────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void renderSessionCard_shouldReturn200WithHtml() throws Exception {
+        when(shareCardService.renderSessionHtml(anyString(), anyInt(), anyInt(), anyInt(), anyString()))
+                .thenReturn("<html><body>Share Card</body></html>");
+
+        mockMvc.perform(get("/api/share/render/session/session-1"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith("text/html"));
     }
 }

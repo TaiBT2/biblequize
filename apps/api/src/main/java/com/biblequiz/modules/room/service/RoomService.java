@@ -139,6 +139,32 @@ public class RoomService {
     }
 
     /**
+     * Kick player from room (host only, lobby only)
+     */
+    public void kickPlayer(String roomId, String hostUserId, String targetUserId) {
+        Room room = roomRepository.findById(roomId)
+                .orElseThrow(() -> new RuntimeException("Phòng không tồn tại"));
+
+        if (!room.getHost().getId().equals(hostUserId)) {
+            throw new RuntimeException("FORBIDDEN");
+        }
+
+        if (room.getStatus() != Room.RoomStatus.LOBBY) {
+            throw new RuntimeException("Chỉ kick được khi phòng đang ở lobby");
+        }
+
+        if (hostUserId.equals(targetUserId)) {
+            throw new RuntimeException("Host không thể kick chính mình");
+        }
+
+        room.removePlayer(targetUserId);
+        roomRepository.save(room);
+
+        roomPlayerRepository.findByRoomIdAndUserId(roomId, targetUserId)
+                .ifPresent(roomPlayerRepository::delete);
+    }
+
+    /**
      * Toggle player ready status
      */
     public void togglePlayerReady(String roomId, String userId) throws Exception {

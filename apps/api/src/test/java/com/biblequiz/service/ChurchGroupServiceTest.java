@@ -7,7 +7,9 @@ import com.biblequiz.modules.group.repository.ChurchGroupRepository;
 import com.biblequiz.modules.group.repository.GroupAnnouncementRepository;
 import com.biblequiz.modules.group.repository.GroupMemberRepository;
 import com.biblequiz.modules.group.repository.GroupQuizSetRepository;
+import com.biblequiz.modules.group.entity.GroupAnnouncement;
 import com.biblequiz.modules.group.service.ChurchGroupService;
+import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 
@@ -43,6 +45,9 @@ class ChurchGroupServiceTest {
 
     @Mock
     private UserRepository userRepository;
+
+    @Mock
+    private UserDailyProgressRepository udpRepository;
 
     @InjectMocks
     private ChurchGroupService churchGroupService;
@@ -245,5 +250,197 @@ class ChurchGroupServiceTest {
 
         assertEquals("Khong co quyen tao quiz set", ex.getMessage());
         verify(groupQuizSetRepository, never()).save(any());
+    }
+
+    // ── updateGroup ───────────────────────────────────────────────────────
+
+    @Test
+    void updateGroup_leaderCanUpdate() {
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+        when(churchGroupRepository.save(any(ChurchGroup.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        Map<String, Object> result = churchGroupService.updateGroup("group-1", "leader-1",
+                "New Name", "New Desc", true, 100);
+
+        assertEquals("New Name", result.get("name"));
+        assertEquals("New Desc", result.get("description"));
+        assertEquals(true, result.get("isPublic"));
+        assertEquals(100, result.get("maxMembers"));
+    }
+
+    @Test
+    void updateGroup_nonLeader_shouldThrow() {
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+
+        assertThrows(RuntimeException.class,
+                () -> churchGroupService.updateGroup("group-1", "member-1", "X", null, null, null));
+    }
+
+    @Test
+    void updateGroup_maxMembersBelowCurrent_shouldThrow() {
+        testGroup.setMemberCount(10);
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> churchGroupService.updateGroup("group-1", "leader-1", null, null, null, 5));
+
+        assertTrue(ex.getMessage().contains("khong the nho hon"));
+    }
+
+    // ── deleteGroup ───────────────────────────────────────────────────────
+
+    @Test
+    void deleteGroup_leaderCanDelete() {
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+        when(churchGroupRepository.save(any(ChurchGroup.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        Map<String, Object> result = churchGroupService.deleteGroup("group-1", "leader-1");
+
+        assertEquals(true, result.get("success"));
+        verify(groupMemberRepository).deleteByGroupId("group-1");
+        verify(churchGroupRepository, atLeast(1)).save(argThat(g -> g.getDeletedAt() != null));
+    }
+
+    @Test
+    void deleteGroup_nonLeader_shouldThrow() {
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+
+        assertThrows(RuntimeException.class,
+                () -> churchGroupService.deleteGroup("group-1", "member-1"));
+    }
+
+    // ── kickMember ────────────────────────────────────────────────────────
+
+    @Test
+    void kickMember_leaderCanKickMember() {
+        GroupMember leaderMember = new GroupMember();
+        leaderMember.setRole(GroupMember.GroupRole.LEADER);
+        leaderMember.setUser(leaderUser);
+
+        GroupMember targetMember = new GroupMember();
+        targetMember.setRole(GroupMember.GroupRole.MEMBER);
+        targetMember.setUser(memberUser);
+
+        testGroup.setMemberCount(2);
+
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "leader-1"))
+                .thenReturn(Optional.of(leaderMember));
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "member-1"))
+                .thenReturn(Optional.of(targetMember));
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+        when(churchGroupRepository.save(any(ChurchGroup.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        Map<String, Object> result = churchGroupService.kickMember("group-1", "leader-1", "member-1");
+
+        assertEquals(true, result.get("success"));
+        verify(groupMemberRepository).delete(targetMember);
+    }
+
+    @Test
+    void kickMember_cannotKickSelf() {
+        assertThrows(RuntimeException.class,
+                () -> churchGroupService.kickMember("group-1", "leader-1", "leader-1"));
+    }
+
+    @Test
+    void kickMember_cannotKickLeader() {
+        GroupMember modMember = new GroupMember();
+        modMember.setRole(GroupMember.GroupRole.MOD);
+        modMember.setUser(memberUser);
+
+        GroupMember leaderMember = new GroupMember();
+        leaderMember.setRole(GroupMember.GroupRole.LEADER);
+        leaderMember.setUser(leaderUser);
+
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "member-1"))
+                .thenReturn(Optional.of(modMember));
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "leader-1"))
+                .thenReturn(Optional.of(leaderMember));
+
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> churchGroupService.kickMember("group-1", "member-1", "leader-1"));
+
+        assertEquals("Khong the kick leader", ex.getMessage());
+    }
+
+    @Test
+    void kickMember_regularMember_shouldThrow() {
+        GroupMember regularMember = new GroupMember();
+        regularMember.setRole(GroupMember.GroupRole.MEMBER);
+        regularMember.setUser(memberUser);
+
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "member-1"))
+                .thenReturn(Optional.of(regularMember));
+
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> churchGroupService.kickMember("group-1", "member-1", "other-user"));
+
+        assertEquals("Chi leader hoac mod moi duoc kick", ex.getMessage());
+    }
+
+    // ── createAnnouncement ────────────────────────────────────────────────
+
+    @Test
+    void createAnnouncement_leaderCanCreate() {
+        GroupMember leaderMember = new GroupMember();
+        leaderMember.setRole(GroupMember.GroupRole.LEADER);
+        leaderMember.setUser(leaderUser);
+
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "leader-1"))
+                .thenReturn(Optional.of(leaderMember));
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+        when(groupAnnouncementRepository.save(any(GroupAnnouncement.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        Map<String, Object> result = churchGroupService.createAnnouncement("group-1", "leader-1", "Hello group!");
+
+        assertEquals("Hello group!", result.get("content"));
+        assertNotNull(result.get("id"));
+        verify(groupAnnouncementRepository).save(any(GroupAnnouncement.class));
+    }
+
+    @Test
+    void createAnnouncement_tooLong_shouldThrow() {
+        String longContent = "x".repeat(501);
+
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> churchGroupService.createAnnouncement("group-1", "leader-1", longContent));
+
+        assertTrue(ex.getMessage().contains("500"));
+    }
+
+    @Test
+    void createAnnouncement_regularMember_shouldThrow() {
+        GroupMember regularMember = new GroupMember();
+        regularMember.setRole(GroupMember.GroupRole.MEMBER);
+        regularMember.setUser(memberUser);
+
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "member-1"))
+                .thenReturn(Optional.of(regularMember));
+
+        assertThrows(RuntimeException.class,
+                () -> churchGroupService.createAnnouncement("group-1", "member-1", "Test"));
+    }
+
+    // ── getAnnouncements ──────────────────────────────────────────────────
+
+    @Test
+    void getAnnouncements_shouldReturnPaginatedResults() {
+        GroupAnnouncement a1 = new GroupAnnouncement();
+        a1.setId("ann-1");
+        a1.setContent("First");
+        a1.setAuthor(leaderUser);
+
+        when(groupAnnouncementRepository.findByGroupIdPaginated(eq("group-1"), any()))
+                .thenReturn(List.of(a1));
+        when(groupAnnouncementRepository.countByGroupId("group-1")).thenReturn(1L);
+
+        Map<String, Object> result = churchGroupService.getAnnouncements("group-1", 20, 0);
+
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> items = (List<Map<String, Object>>) result.get("items");
+        assertEquals(1, items.size());
+        assertEquals("First", items.get(0).get("content"));
+        assertEquals(1L, result.get("total"));
+        assertEquals(false, result.get("hasMore"));
     }
 }

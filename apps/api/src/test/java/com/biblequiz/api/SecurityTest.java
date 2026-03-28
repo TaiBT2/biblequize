@@ -69,6 +69,9 @@ class SecurityTest extends BaseControllerTest {
     @MockBean
     private ScoringService scoringService;
 
+    @MockBean
+    private com.biblequiz.modules.notification.service.NotificationService notificationService;
+
     // DailyChallengeController dependencies
     @MockBean
     private DailyChallengeService dailyChallengeService;
