@@ -1,8 +1,7 @@
-import { useState, useEffect, useCallback } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect, useCallback, useMemo } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../api/client'
 import ShareCard from '../components/ShareCard'
-import styles from './DailyChallenge.module.css'
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 interface Question {
@@ -20,6 +19,10 @@ interface DailyChallengeData {
   alreadyCompleted: boolean
   sessionId: string
   date: string
+  title?: string
+  description?: string
+  questionCount?: number
+  timeLimit?: number
 }
 
 interface DailyResult {
@@ -30,15 +33,105 @@ interface DailyResult {
   sessionId?: string
 }
 
+interface LeaderboardEntry {
+  rank: number
+  name: string
+  group?: string
+  score: number
+  time: string
+  avatar?: string
+}
+
+interface DailyStats {
+  totalPlayers: number
+  averageScore: number
+  averageTime: string
+}
+
+interface StreakData {
+  currentStreak: number
+  history: { date: string; completed: boolean }[]
+}
+
+const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 const LETTERS = ['A', 'B', 'C', 'D']
+const DAY_LABELS = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
+
+// ─── Helpers ────────────────────────────────────────────────────────────────
+function formatCountdown(diff: number): string {
+  if (diff <= 0) return '00:00:00'
+  const hours = Math.floor(diff / (1000 * 60 * 60))
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+  return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+}
+
+function getToday(): string {
+  return new Date().toLocaleDateString('vi-VN', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  })
+}
+
+function getLast7Days(): { label: string; date: string; isToday: boolean }[] {
+  const days: { label: string; date: string; isToday: boolean }[] = []
+  const today = new Date()
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(today)
+    d.setDate(d.getDate() - i)
+    days.push({
+      label: i === 0 ? 'H.NAY' : DAY_LABELS[d.getDay()],
+      date: d.toISOString().split('T')[0],
+      isToday: i === 0,
+    })
+  }
+  return days
+}
+
+// ─── Loading Skeleton ───────────────────────────────────────────────────────
+function LoadingSkeleton() {
+  return (
+    <div className="max-w-5xl mx-auto space-y-12 animate-pulse">
+      {/* Header skeleton */}
+      <section className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="space-y-3">
+          <div className="h-10 w-80 bg-surface-container-high rounded-lg" />
+          <div className="h-4 w-40 bg-surface-container-high rounded" />
+        </div>
+        <div className="h-20 w-48 bg-surface-container-high rounded-2xl" />
+      </section>
+
+      {/* Hero skeleton */}
+      <div className="h-80 bg-surface-container rounded-[2rem]" />
+
+      {/* Stats skeleton */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="h-28 bg-surface-container-high rounded-2xl" />
+        ))}
+      </section>
+
+      {/* Bottom skeleton */}
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <div className="lg:col-span-3 h-80 bg-surface-container rounded-2xl" />
+        <div className="lg:col-span-2 h-80 bg-surface-container rounded-2xl" />
+      </div>
+    </div>
+  )
+}
 
 // ─── Component ──────────────────────────────────────────────────────────────
 const DailyChallenge: React.FC = () => {
+  const navigate = useNavigate()
+
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [challengeData, setChallengeData] = useState<DailyChallengeData | null>(null)
   const [sessionId, setSessionId] = useState<string | null>(null)
 
   // Quiz state
+  const [quizStarted, setQuizStarted] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
   const [answered, setAnswered] = useState(false)
@@ -49,30 +142,70 @@ const DailyChallenge: React.FC = () => {
   const [dailyResult, setDailyResult] = useState<DailyResult | null>(null)
   const [showShareCard, setShowShareCard] = useState(false)
 
+  // Landing page data
+  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([])
+  const [stats, setStats] = useState<DailyStats | null>(null)
+  const [streak, setStreak] = useState<StreakData | null>(null)
+
   // Countdown
   const [countdown, setCountdown] = useState('')
+
+  const last7Days = useMemo(() => getLast7Days(), [])
+
+  // ── Countdown timer to midnight (always running) ───────────────────────
+  useEffect(() => {
+    const updateCountdown = () => {
+      const now = new Date()
+      const tomorrow = new Date(now)
+      tomorrow.setDate(tomorrow.getDate() + 1)
+      tomorrow.setHours(0, 0, 0, 0)
+      setCountdown(formatCountdown(tomorrow.getTime() - now.getTime()))
+    }
+
+    updateCountdown()
+    const interval = setInterval(updateCountdown, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   // ── Load daily challenge ────────────────────────────────────────────────
   useEffect(() => {
     const loadChallenge = async () => {
       try {
-        const res = await api.get('/api/daily-challenge')
-        const data: DailyChallengeData = res.data
+        const [challengeRes, leaderboardRes] = await Promise.allSettled([
+          api.get('/api/daily-challenge'),
+          api.get('/api/leaderboard/daily'),
+        ])
 
-        setChallengeData(data)
+        if (challengeRes.status === 'fulfilled') {
+          const data: DailyChallengeData = challengeRes.value.data
+          setChallengeData(data)
 
-        if (data.alreadyCompleted) {
-          // Fetch result
-          const resultRes = await api.get('/api/daily-challenge/result')
-          setDailyResult(resultRes.data)
-          setShowResult(true)
+          if (data.alreadyCompleted) {
+            try {
+              const resultRes = await api.get('/api/daily-challenge/result')
+              setDailyResult(resultRes.data)
+              setShowResult(true)
+            } catch {
+              // Result not available yet, show landing
+            }
+          }
         } else {
-          // Start session
-          const startRes = await api.post('/api/daily-challenge/start')
-          setSessionId(startRes.data.sessionId)
+          setError('Không thể tải thử thách. Vui lòng thử lại sau.')
         }
-      } catch (error) {
-        console.error('Error loading daily challenge:', error)
+
+        if (leaderboardRes.status === 'fulfilled') {
+          const lb = leaderboardRes.value.data
+          if (Array.isArray(lb)) {
+            setLeaderboard(lb.slice(0, 5))
+          } else if (lb.entries) {
+            setLeaderboard(lb.entries.slice(0, 5))
+          }
+          if (lb.stats) setStats(lb.stats)
+          if (lb.streak) setStreak(lb.streak)
+        }
+      } catch (err) {
+        console.error('Error loading daily challenge:', err)
+        setError('Không thể tải thử thách. Vui lòng thử lại sau.')
       } finally {
         setLoading(false)
       }
@@ -81,30 +214,18 @@ const DailyChallenge: React.FC = () => {
     loadChallenge()
   }, [])
 
-  // ── Countdown timer to midnight ────────────────────────────────────────
-  useEffect(() => {
-    if (!showResult) return
-
-    const updateCountdown = () => {
-      const now = new Date()
-      const tomorrow = new Date(now)
-      tomorrow.setDate(tomorrow.getDate() + 1)
-      tomorrow.setHours(0, 0, 0, 0)
-
-      const diff = tomorrow.getTime() - now.getTime()
-      const hours = Math.floor(diff / (1000 * 60 * 60))
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000)
-
-      setCountdown(
-        `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-      )
+  // ── Start challenge ─────────────────────────────────────────────────────
+  const handleStart = useCallback(async () => {
+    if (!challengeData) return
+    try {
+      const startRes = await api.post('/api/daily-challenge/start')
+      setSessionId(startRes.data.sessionId)
+      setQuizStarted(true)
+    } catch (err) {
+      console.error('Error starting daily challenge:', err)
+      setError('Không thể bắt đầu thử thách. Vui lòng thử lại.')
     }
-
-    updateCountdown()
-    const interval = setInterval(updateCountdown, 1000)
-    return () => clearInterval(interval)
-  }, [showResult])
+  }, [challengeData])
 
   // ── Handle answer selection ─────────────────────────────────────────────
   const handleAnswer = useCallback(async (optionIndex: number) => {
@@ -117,7 +238,6 @@ const DailyChallenge: React.FC = () => {
     const isCorrect = question.correctAnswer.includes(optionIndex)
     setResults(prev => [...prev, isCorrect])
 
-    // Submit answer to API
     try {
       await api.post(`/api/sessions/${sessionId}/answer`, {
         questionId: question.id,
@@ -133,13 +253,11 @@ const DailyChallenge: React.FC = () => {
     if (!challengeData) return
 
     if (currentIndex + 1 >= challengeData.questions.length) {
-      // Quiz completed — fetch result
       try {
         const resultRes = await api.get('/api/daily-challenge/result')
         setDailyResult(resultRes.data)
       } catch {
-        // Construct from local data
-        const correctCount = results.length
+        const correctCount = results.filter(Boolean).length
         setDailyResult({
           completed: true,
           score: correctCount * 20,
@@ -158,12 +276,23 @@ const DailyChallenge: React.FC = () => {
 
   // ─── Loading ────────────────────────────────────────────────────────────
   if (loading) {
+    return <LoadingSkeleton />
+  }
+
+  // ─── Error ──────────────────────────────────────────────────────────────
+  if (error && !challengeData) {
     return (
-      <div className={styles.page}>
-        <div className={styles.loading}>
-          <div className={styles.spinner} />
-          <p style={{ marginTop: '1rem', color: '#8B7E6A' }}>Đang tải thử thách...</p>
+      <div className="max-w-5xl mx-auto flex flex-col items-center justify-center py-20 space-y-6">
+        <div className="w-20 h-20 bg-error-container/20 rounded-full flex items-center justify-center">
+          <span className="material-symbols-outlined text-5xl text-error">error</span>
         </div>
+        <p className="text-on-surface-variant text-lg">{error}</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="gold-gradient px-8 py-3 rounded-xl text-on-secondary font-bold transition-all hover:scale-[1.02] active:scale-95"
+        >
+          Thử lại
+        </button>
       </div>
     )
   }
@@ -174,70 +303,199 @@ const DailyChallenge: React.FC = () => {
     const resultSessionId = dailyResult.sessionId || sessionId || ''
 
     return (
-      <div className={styles.page}>
-        <div className={styles.container}>
-          <div className={styles.header}>
-            <h1 className={styles.title}>THỬ THÁCH HẰNG NGÀY</h1>
-            <p className={styles.subtitle}>Kết quả hôm nay</p>
+      <div className="max-w-5xl mx-auto space-y-12">
+        {/* Header */}
+        <section className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="space-y-2">
+            <h2 className="text-4xl font-extrabold tracking-tight text-on-surface">Kết Quả Hôm Nay</h2>
+            <div className="flex items-center gap-3 text-on-surface-variant">
+              <span className="material-symbols-outlined text-sm">calendar_today</span>
+              <span className="text-sm font-medium">{getToday()}</span>
+            </div>
           </div>
+          <div className="bg-surface-container-high px-6 py-3 rounded-2xl border border-secondary/20 gold-glow flex flex-col items-center">
+            <span className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">Làm mới sau</span>
+            <div className="font-mono text-2xl font-black text-secondary tracking-widest">
+              {countdown}
+            </div>
+          </div>
+        </section>
 
-          <div className={styles.resultCard}>
-            <div className={styles.resultScore}>{correctCount}/{totalQuestions}</div>
-            <div className={styles.resultLabel}>câu đúng</div>
+        {/* Result Card */}
+        <section className="relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-secondary/20 via-tertiary/20 to-secondary/20 rounded-[2rem] blur-xl opacity-50 group-hover:opacity-100 transition duration-1000" />
+          <div className="relative bg-surface-container border border-outline-variant/30 rounded-[2rem] overflow-hidden p-10 flex flex-col items-center text-center space-y-8">
+            <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
+              <span className="material-symbols-outlined text-5xl text-secondary" style={FILL_1}>emoji_events</span>
+            </div>
+            <div className="space-y-4">
+              <div className="text-6xl font-black text-on-surface">
+                {correctCount}<span className="text-2xl text-on-surface-variant font-medium">/{totalQuestions}</span>
+              </div>
+              <p className="text-on-surface-variant text-lg">Chúc mừng! Bạn đã hoàn thành thử thách hôm nay.</p>
 
-            <div className={styles.stars}>
-              {Array.from({ length: totalQuestions }, (_, i) => (
-                <span key={i}>{i < correctCount ? '★' : '☆'}</span>
-              ))}
+              {/* Stars */}
+              <div className="flex items-center justify-center gap-2">
+                {Array.from({ length: totalQuestions }, (_, i) => (
+                  <span
+                    key={i}
+                    className={`material-symbols-outlined text-3xl ${i < correctCount ? 'text-secondary' : 'text-outline-variant/30'}`}
+                    style={i < correctCount ? FILL_1 : undefined}
+                  >
+                    star
+                  </span>
+                ))}
+              </div>
             </div>
 
-            <div className={styles.actions}>
+            <div className="flex flex-wrap items-center justify-center gap-4">
               <button
-                className={styles.actionBtn}
                 onClick={() => setShowShareCard(true)}
+                className="gold-gradient px-8 py-4 rounded-2xl text-on-secondary font-black text-base shadow-lg hover:shadow-secondary/20 transition-all hover:scale-[1.02] active:scale-95 flex items-center gap-2"
               >
-                Chia sẻ 📤
+                <span className="material-symbols-outlined">share</span>
+                Chia sẻ kết quả
               </button>
-              <Link to="/leaderboard" className={styles.actionBtn}>
-                Xem bảng xếp hạng
+              <Link
+                to="/leaderboard"
+                className="bg-surface-container-high px-8 py-4 rounded-2xl text-on-surface font-bold border border-outline-variant/20 hover:bg-surface-container-highest transition-colors flex items-center gap-2"
+              >
+                <span className="material-symbols-outlined">leaderboard</span>
+                Xếp hạng
               </Link>
-              <Link to="/" className={styles.actionBtn}>
+              <Link
+                to="/"
+                className="bg-surface-container-high px-8 py-4 rounded-2xl text-on-surface font-bold border border-outline-variant/20 hover:bg-surface-container-highest transition-colors flex items-center gap-2"
+              >
+                <span className="material-symbols-outlined">home</span>
                 Trang chủ
               </Link>
             </div>
-
-            <div className={styles.countdown}>
-              Câu hỏi mới sau:
-              <span className={styles.countdownTime}>{countdown}</span>
-            </div>
           </div>
+        </section>
 
-          {showShareCard && resultSessionId && (
-            <div style={{ marginTop: '1.5rem' }}>
-              <ShareCard
-                sessionId={resultSessionId}
-                score={dailyResult.score}
-                correct={correctCount}
-                total={totalQuestions}
-                userName=""
-              />
-              <button
-                onClick={() => setShowShareCard(false)}
-                style={{
-                  display: 'block',
-                  margin: '1rem auto 0',
-                  background: 'none',
-                  border: 'none',
-                  color: '#8B7E6A',
-                  cursor: 'pointer',
-                  fontSize: '0.9rem',
-                }}
-              >
-                Đóng
-              </button>
-            </div>
-          )}
+        {/* Share Card */}
+        {showShareCard && resultSessionId && (
+          <section className="bg-surface-container rounded-2xl border border-outline-variant/10 p-6">
+            <ShareCard
+              sessionId={resultSessionId}
+              score={dailyResult.score}
+              correct={correctCount}
+              total={totalQuestions}
+              userName=""
+            />
+            <button
+              onClick={() => setShowShareCard(false)}
+              className="block mx-auto mt-4 text-on-surface-variant hover:text-on-surface transition-colors text-sm font-medium"
+            >
+              Đóng
+            </button>
+          </section>
+        )}
+      </div>
+    )
+  }
+
+  // ─── Quiz View ──────────────────────────────────────────────────────────
+  if (quizStarted && challengeData && challengeData.questions.length > 0) {
+    const question = challengeData.questions[currentIndex]
+    const totalQuestions = challengeData.questions.length
+
+    return (
+      <div className="max-w-3xl mx-auto space-y-8">
+        {/* Header */}
+        <section className="flex items-center justify-between">
+          <div className="space-y-1">
+            <h2 className="text-2xl font-extrabold tracking-tight text-on-surface">Thử Thách Hôm Nay</h2>
+            <p className="text-sm text-on-surface-variant">Câu {currentIndex + 1}/{totalQuestions}</p>
+          </div>
+          <div className="bg-surface-container-high px-4 py-2 rounded-xl border border-outline-variant/10 text-sm font-mono font-bold text-secondary">
+            {getToday()}
+          </div>
+        </section>
+
+        {/* Progress bar */}
+        <div className="flex gap-2">
+          {Array.from({ length: totalQuestions }, (_, i) => (
+            <div
+              key={i}
+              className={`h-1.5 flex-1 rounded-full transition-colors duration-300 ${
+                i < currentIndex
+                  ? results[i]
+                    ? 'bg-green-500'
+                    : 'bg-red-500'
+                  : i === currentIndex
+                    ? 'bg-secondary'
+                    : 'bg-outline-variant/20'
+              }`}
+            />
+          ))}
         </div>
+
+        {/* Question Card */}
+        <section className="relative group">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-secondary/10 via-tertiary/10 to-secondary/10 rounded-[2rem] blur-lg opacity-0 group-hover:opacity-100 transition duration-500" />
+          <div className="relative bg-surface-container border border-outline-variant/20 rounded-[2rem] p-8 space-y-6">
+            {question.book && (
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/30 border border-primary/10 text-[10px] uppercase tracking-wider font-bold text-on-primary-container">
+                <span className="material-symbols-outlined text-xs">menu_book</span>
+                {question.book} {question.chapter ? `- Chương ${question.chapter}` : ''}
+              </span>
+            )}
+
+            <h3 className="text-xl font-bold text-on-surface leading-relaxed">{question.content}</h3>
+
+            <div className="space-y-3">
+              {question.options.map((option, i) => {
+                let stateClasses = 'bg-surface-container-high border-outline-variant/20 hover:bg-surface-container-highest hover:border-secondary/30'
+                if (answered) {
+                  if (question.correctAnswer.includes(i)) {
+                    stateClasses = 'bg-green-500/10 border-green-500/40 text-green-400'
+                  } else if (i === selectedAnswer) {
+                    stateClasses = 'bg-red-500/10 border-red-500/40 text-red-400'
+                  } else {
+                    stateClasses = 'bg-surface-container-high border-outline-variant/10 opacity-50'
+                  }
+                }
+
+                return (
+                  <button
+                    key={i}
+                    className={`w-full text-left p-4 rounded-xl border transition-all duration-200 flex items-start gap-3 ${stateClasses} ${
+                      !answered ? 'cursor-pointer active:scale-[0.99]' : 'cursor-default'
+                    }`}
+                    onClick={() => handleAnswer(i)}
+                    disabled={answered}
+                  >
+                    <span className="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-sm font-black text-on-surface-variant shrink-0">
+                      {LETTERS[i]}
+                    </span>
+                    <span className="font-medium text-on-surface pt-1">{option}</span>
+                  </button>
+                )
+              })}
+            </div>
+
+            {/* Explanation */}
+            {answered && question.explanation && (
+              <div className="p-4 bg-primary-container/20 rounded-xl border border-primary/10">
+                <p className="text-[11px] uppercase tracking-widest text-on-primary-container font-bold mb-1">Giải thích</p>
+                <p className="text-sm leading-relaxed text-on-primary-container/80">{question.explanation}</p>
+              </div>
+            )}
+
+            {/* Next button */}
+            {answered && (
+              <button
+                onClick={handleNext}
+                className="w-full gold-gradient py-4 rounded-2xl text-on-secondary font-black text-base shadow-lg hover:shadow-secondary/20 transition-all hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-2"
+              >
+                {currentIndex + 1 >= totalQuestions ? 'Xem kết quả' : 'Câu tiếp theo'}
+                <span className="material-symbols-outlined">arrow_forward</span>
+              </button>
+            )}
+          </div>
+        </section>
       </div>
     )
   }
@@ -245,110 +503,252 @@ const DailyChallenge: React.FC = () => {
   // ─── No data ────────────────────────────────────────────────────────────
   if (!challengeData || challengeData.questions.length === 0) {
     return (
-      <div className={styles.page}>
-        <div className={styles.container}>
-          <div className={styles.header}>
-            <h1 className={styles.title}>THỬ THÁCH HẰNG NGÀY</h1>
-            <p className={styles.subtitle}>Không có câu hỏi hôm nay. Hãy quay lại sau!</p>
-          </div>
-          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-            <Link to="/" className={styles.actionBtn}>Trang chủ</Link>
-          </div>
+      <div className="max-w-5xl mx-auto flex flex-col items-center justify-center py-20 space-y-6">
+        <div className="w-20 h-20 bg-surface-container-high rounded-full flex items-center justify-center">
+          <span className="material-symbols-outlined text-5xl text-on-surface-variant">hourglass_empty</span>
         </div>
+        <h3 className="text-2xl font-bold text-on-surface">Không có câu hỏi hôm nay</h3>
+        <p className="text-on-surface-variant">Hãy quay lại sau!</p>
+        <Link
+          to="/"
+          className="gold-gradient px-8 py-3 rounded-xl text-on-secondary font-bold transition-all hover:scale-[1.02] active:scale-95"
+        >
+          Trang chủ
+        </Link>
       </div>
     )
   }
 
-  // ─── Quiz View ──────────────────────────────────────────────────────────
-  const question = challengeData.questions[currentIndex]
-  const totalQuestions = challengeData.questions.length
+  // ─── Landing Page (before quiz starts) ─────────────────────────────────
+  const completedDates = new Set(
+    streak?.history?.filter((h) => h.completed).map((h) => h.date) ?? []
+  )
+  const currentStreak = streak?.currentStreak ?? 0
+  const challengeTitle = challengeData.title ?? 'Vượt Qua Thử Thách Ngũ Kinh'
+  const challengeDesc = challengeData.description ?? 'Cùng ôn lại các kiến thức trọng tâm về 5 cuốn sách đầu tiên của Kinh Thánh.'
+  const questionCount = challengeData.questionCount ?? challengeData.questions.length
+  const timeLimit = challengeData.timeLimit ?? 5
 
   return (
-    <div className={styles.page}>
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <h1 className={styles.title}>THỬ THÁCH HẰNG NGÀY</h1>
-          <p className={styles.subtitle}>Trả lời {totalQuestions} câu hỏi mỗi ngày</p>
-        </div>
-
-        {/* Progress indicator */}
-        <div style={{
-          display: 'flex',
-          gap: '0.5rem',
-          justifyContent: 'center',
-          marginBottom: '1.5rem',
-        }}>
-          {Array.from({ length: totalQuestions }, (_, i) => (
-            <div
-              key={i}
-              style={{
-                width: '2rem',
-                height: '4px',
-                borderRadius: '2px',
-                background: i < currentIndex
-                  ? (results[i] ? '#22C55E' : '#EF4444')
-                  : i === currentIndex
-                    ? 'var(--hp-gold, #D4A843)'
-                    : 'rgba(212, 168, 67, 0.15)',
-                transition: 'background 0.3s',
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Question Card */}
-        <div className={styles.questionCard}>
-          <div className={styles.questionCounter}>
-            Câu {currentIndex + 1}/{totalQuestions}
+    <div className="max-w-5xl mx-auto space-y-12">
+      {/* Header Section */}
+      <section className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="space-y-2">
+          <h2 className="text-4xl font-extrabold tracking-tight text-on-surface">Thử Thách Hôm Nay</h2>
+          <div className="flex items-center gap-3 text-on-surface-variant">
+            <span className="material-symbols-outlined text-sm">calendar_today</span>
+            <span className="text-sm font-medium">{getToday()}</span>
           </div>
-
-          {question.book && (
-            <span className={styles.metaBadge}>
-              {question.book} {question.chapter ? `- Chương ${question.chapter}` : ''}
-            </span>
-          )}
-
-          <div className={styles.questionText}>{question.content}</div>
-
-          <div className={styles.optionsGrid}>
-            {question.options.map((option, i) => {
-              let extraClass = ''
-              if (answered) {
-                if (question.correctAnswer.includes(i)) {
-                  extraClass = styles.optionCorrect
-                } else if (i === selectedAnswer) {
-                  extraClass = styles.optionWrong
-                }
-              }
-
-              return (
-                <button
-                  key={i}
-                  className={`${styles.optionBtn} ${extraClass}`}
-                  onClick={() => handleAnswer(i)}
-                  disabled={answered}
-                >
-                  <span className={styles.answerLetter}>{LETTERS[i]}.</span>
-                  {option}
-                </button>
-              )
-            })}
+        </div>
+        <div className="bg-surface-container-high px-6 py-3 rounded-2xl border border-secondary/20 gold-glow flex flex-col items-center">
+          <span className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">Làm mới sau</span>
+          <div className="font-mono text-2xl font-black text-secondary tracking-widest">
+            {countdown}
           </div>
+        </div>
+      </section>
 
-          {/* Explanation after answer */}
-          {answered && question.explanation && (
-            <div className={styles.explanation}>
-              💡 {question.explanation}
+      {/* Hero Challenge Card */}
+      <section className="relative group">
+        <div className="absolute -inset-1 bg-gradient-to-r from-secondary/20 via-tertiary/20 to-secondary/20 rounded-[2rem] blur-xl opacity-50 group-hover:opacity-100 transition duration-1000" />
+        <div className="relative bg-surface-container border border-outline-variant/30 rounded-[2rem] overflow-hidden p-10 flex flex-col items-center text-center space-y-8">
+          <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
+            <span className="material-symbols-outlined text-5xl text-secondary" style={FILL_1}>local_fire_department</span>
+          </div>
+          <div className="space-y-4">
+            {!challengeData.alreadyCompleted && (
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-error-container/20 border border-error/20">
+                <span className="w-2 h-2 rounded-full bg-error animate-pulse" />
+                <span className="text-[10px] uppercase tracking-wider font-bold text-error">Chưa hoàn thành</span>
+              </div>
+            )}
+            <h3 className="text-3xl font-bold text-on-surface leading-tight">{challengeTitle}</h3>
+            <p className="text-on-surface-variant max-w-md mx-auto leading-relaxed">
+              {challengeDesc}
+            </p>
+            <div className="flex items-center justify-center gap-6 text-sm font-medium text-on-surface-variant/80">
+              <span className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-lg">quiz</span> {questionCount} câu hỏi
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-lg">timer</span> {timeLimit} phút
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-lg">public</span> Tất cả mọi người
+              </span>
             </div>
-          )}
-
-          {/* Next button */}
-          {answered && (
-            <button className={styles.nextBtn} onClick={handleNext}>
-              {currentIndex + 1 >= totalQuestions ? 'Xem kết quả' : 'Câu tiếp theo →'}
-            </button>
-          )}
+          </div>
+          <button
+            onClick={handleStart}
+            className="gold-gradient px-12 py-5 rounded-2xl text-on-secondary font-black text-lg shadow-lg hover:shadow-secondary/20 transition-all hover:scale-[1.02] active:scale-95"
+          >
+            Bắt Đầu Thử Thách
+          </button>
         </div>
+      </section>
+
+      {/* Stats Row */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-surface-container-high p-6 rounded-2xl border border-outline-variant/10 flex flex-col gap-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-surface-container-highest rounded-lg text-primary">
+              <span className="material-symbols-outlined">group</span>
+            </div>
+            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Tổng người chơi</span>
+          </div>
+          <div className="text-3xl font-black text-on-surface">
+            {stats?.totalPlayers?.toLocaleString() ?? '---'}
+          </div>
+        </div>
+        <div className="bg-surface-container-high p-6 rounded-2xl border border-outline-variant/10 flex flex-col gap-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-surface-container-highest rounded-lg text-secondary">
+              <span className="material-symbols-outlined">star</span>
+            </div>
+            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Điểm trung bình</span>
+          </div>
+          <div className="text-3xl font-black text-on-surface">
+            {stats?.averageScore != null ? `${stats.averageScore}%` : '---'}
+          </div>
+        </div>
+        <div className="bg-surface-container-high p-6 rounded-2xl border border-outline-variant/10 flex flex-col gap-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-surface-container-highest rounded-lg text-tertiary">
+              <span className="material-symbols-outlined">schedule</span>
+            </div>
+            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Thời gian trung bình</span>
+          </div>
+          <div className="text-3xl font-black text-on-surface">
+            {stats?.averageTime ?? '---'}
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom Layout: Leaderboard & History */}
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        {/* Leaderboard Preview */}
+        <section className="lg:col-span-3 space-y-6">
+          <div className="flex items-center justify-between">
+            <h4 className="text-xl font-bold text-on-surface">Xếp Hạng Hôm Nay</h4>
+            <Link to="/leaderboard" className="text-secondary text-sm font-bold flex items-center gap-1 hover:underline">
+              Xem đầy đủ <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            </Link>
+          </div>
+          <div className="bg-surface-container rounded-2xl border border-outline-variant/10 divide-y divide-outline-variant/5 overflow-hidden">
+            {leaderboard.length === 0 ? (
+              <div className="p-8 text-center text-on-surface-variant">
+                <span className="material-symbols-outlined text-4xl mb-2 block opacity-30">leaderboard</span>
+                <p className="text-sm">Chưa có ai hoàn thành thử thách hôm nay.</p>
+              </div>
+            ) : (
+              leaderboard.map((entry, idx) => (
+                <div
+                  key={entry.rank}
+                  className={`flex items-center justify-between p-4 transition-colors ${
+                    idx === 0
+                      ? 'bg-secondary/5 hover:bg-secondary/10'
+                      : 'hover:bg-surface-container-high'
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <span className={`w-6 text-center font-black ${idx === 0 ? 'text-secondary' : 'text-on-surface-variant'}`}>
+                      {entry.rank}
+                    </span>
+                    <div className={`w-10 h-10 rounded-full overflow-hidden ${
+                      idx === 0 ? 'border-2 border-secondary' : 'border border-outline-variant/30'
+                    }`}>
+                      {entry.avatar ? (
+                        <img alt="Avatar" className="w-full h-full object-cover" src={entry.avatar} />
+                      ) : (
+                        <div className="w-full h-full bg-surface-container-highest flex items-center justify-center">
+                          <span className="material-symbols-outlined text-on-surface-variant">person</span>
+                        </div>
+                      )}
+                    </div>
+                    <div>
+                      <p className="font-bold text-on-surface">{entry.name}</p>
+                      {entry.group && (
+                        <p className="text-[10px] font-bold text-on-surface-variant uppercase">{entry.group}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className={`font-black ${idx === 0 ? 'text-secondary' : 'text-on-surface'}`}>{entry.score}</p>
+                    {entry.time && (
+                      <p className="text-[10px] text-on-surface-variant font-medium">{entry.time}</p>
+                    )}
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </section>
+
+        {/* History Strip & Streak */}
+        <section className="lg:col-span-2 space-y-6">
+          <h4 className="text-xl font-bold text-on-surface">Lịch Sử & Chuỗi</h4>
+          <div className="bg-surface-container rounded-2xl border border-outline-variant/10 p-6 space-y-8">
+            {/* Streak info */}
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center text-secondary relative">
+                <span className="material-symbols-outlined text-4xl" style={FILL_1}>local_fire_department</span>
+                {currentStreak > 0 && (
+                  <div className="absolute -top-1 -right-1 w-6 h-6 bg-secondary text-on-secondary text-[10px] font-black rounded-full flex items-center justify-center border-4 border-surface-container">
+                    {currentStreak}
+                  </div>
+                )}
+              </div>
+              <div>
+                <p className="text-lg font-black text-on-surface">
+                  {currentStreak > 0 ? `Chuỗi ${currentStreak} ngày` : 'Bắt đầu chuỗi mới!'}
+                </p>
+                <p className="text-xs text-on-surface-variant font-medium">
+                  {currentStreak > 0
+                    ? `Đã hoàn thành ${currentStreak} thử thách liên tục!`
+                    : 'Hoàn thành thử thách hôm nay để bắt đầu.'
+                  }
+                </p>
+              </div>
+            </div>
+
+            {/* Calendar strip */}
+            <div className="space-y-4">
+              <p className="text-[10px] uppercase tracking-widest text-on-surface-variant font-black">7 Ngày Qua</p>
+              <div className="flex justify-between items-center px-1">
+                {last7Days.map((day) => {
+                  const completed = completedDates.has(day.date)
+                  const isFuture = !day.isToday && new Date(day.date) > new Date()
+
+                  return (
+                    <div key={day.date} className={`flex flex-col items-center gap-2 ${isFuture ? 'opacity-40' : ''}`}>
+                      <span className={`text-[10px] font-bold ${day.isToday ? 'text-secondary' : 'text-on-surface-variant'}`}>
+                        {day.label}
+                      </span>
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                        day.isToday && !completed
+                          ? 'bg-surface-container-highest border-2 border-dashed border-secondary/50'
+                          : completed
+                            ? 'bg-surface-container-high border border-outline-variant/20'
+                            : 'bg-surface-container-high border border-outline-variant/20'
+                      }`}>
+                        {completed && (
+                          <span className="material-symbols-outlined text-sm text-secondary" style={FILL_1}>check_circle</span>
+                        )}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Bible verse */}
+            <div className="p-4 bg-primary-container/20 rounded-xl border border-primary/10">
+              <p className="text-[11px] leading-relaxed italic text-on-primary-container">
+                "Lạy Chúa, xin dạy con đường lối Ngài, để con vững bước theo chân lý của Ngài." — Thánh Vịnh 86:11
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   )

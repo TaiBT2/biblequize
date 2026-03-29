@@ -1,7 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useStomp } from '../hooks/useStomp';
-import styles from './RoomLobby.module.css';
 
 type Player = {
   id: string; userId: string; username: string; avatarUrl?: string;
@@ -15,13 +14,26 @@ type RoomDetails = {
   questionCount: number; timePerQuestion: number;
   hostId: string; hostName: string; players: Player[];
 };
+type ChatMessage = {
+  sender: string;
+  text: string;
+  isHost?: boolean;
+};
 
 const MODE_LABELS: Record<string, string> = {
-  SPEED_RACE: '🏃 Speed Race',
-  BATTLE_ROYALE: '⚔️ Battle Royale',
-  TEAM_VS_TEAM: '🫂 Team vs Team',
-  SUDDEN_DEATH: '🎯 Sudden Death',
+  SPEED_RACE: 'Speed Race',
+  BATTLE_ROYALE: 'Battle Royale',
+  TEAM_VS_TEAM: 'Team vs Team',
+  SUDDEN_DEATH: 'Sudden Death',
 };
+
+const DIFFICULTY_LABELS: Record<string, string> = {
+  EASY: 'Dễ',
+  MEDIUM: 'Trung bình',
+  HARD: 'Khó',
+};
+
+const QUICK_EMOJIS = ['🙏', '🔥', '🙌', '💡', '✨'];
 
 const myUsername = () => localStorage.getItem('userName') ?? '';
 
@@ -34,6 +46,10 @@ const RoomLobby: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [countdown, setCountdown] = useState<number | null>(null);
   const [switchingTeam, setSwitchingTeam] = useState(false);
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
+  const [chatInput, setChatInput] = useState('');
+  const [codeCopied, setCodeCopied] = useState(false);
+  const chatEndRef = useRef<HTMLDivElement>(null);
 
   const { connected, reconnecting, send } = useStomp({
     roomId,
@@ -46,6 +62,11 @@ const RoomLobby: React.FC = () => {
         case 'PLAYER_UNREADY':
           fetchRoom();
           break;
+        case 'CHAT_MESSAGE': {
+          const d = msg.data as { sender: string; text: string };
+          setChatMessages(prev => [...prev, { sender: d.sender, text: d.text, isHost: d.sender === room?.hostName }]);
+          break;
+        }
         case 'GAME_STARTING': {
           const d = msg.data as { countdown: number };
           setCountdown(d.countdown);
@@ -88,6 +109,10 @@ const RoomLobby: React.FC = () => {
     if (!room) fetchRoom();
   }, []);
 
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [chatMessages]);
+
   const handleToggleReady = () => {
     if (!roomId) return;
     send(`/app/room/${roomId}/ready`, {});
@@ -124,7 +149,29 @@ const RoomLobby: React.FC = () => {
   };
 
   const handleCopyCode = () => {
-    if (room?.roomCode) navigator.clipboard.writeText(room.roomCode);
+    if (room?.roomCode) {
+      navigator.clipboard.writeText(room.roomCode);
+      setCodeCopied(true);
+      setTimeout(() => setCodeCopied(false), 2000);
+    }
+  };
+
+  const handleSendChat = (text: string) => {
+    if (!text.trim() || !roomId) return;
+    send(`/app/room/${roomId}/chat`, { text: text.trim() });
+    setChatInput('');
+  };
+
+  const handleLeave = async () => {
+    if (roomId) {
+      try {
+        await fetch(`/api/rooms/${roomId}/leave`, {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` },
+        });
+      } catch { /* ignore */ }
+    }
+    navigate('/multiplayer');
   };
 
   const readyCount = useMemo(() => room?.players.filter((p) => p.isReady).length ?? 0, [room]);
@@ -133,247 +180,418 @@ const RoomLobby: React.FC = () => {
   const teamAPlayers = room?.players.filter(p => p.team === 'A') ?? [];
   const teamBPlayers = room?.players.filter(p => p.team === 'B') ?? [];
   const myPlayer = room?.players.find(p => p.username === myUsername());
+  const isHost = myPlayer?.userId === room?.hostId;
+  const canStart = room?.status === 'LOBBY' && readyCount >= 2;
+  const emptySlots = room ? Math.max(0, room.maxPlayers - room.currentPlayers) : 0;
 
+  /* ---------- Countdown overlay ---------- */
   if (countdown !== null) {
     return (
-      <div className={`min-h-screen page-bg ${styles.centeredPage}`}>
-        <div className={styles.countdownWrap}>
-          <div className={styles.countdownNumber}>{countdown}</div>
-          <p className={styles.countdownLabel}>Trò chơi bắt đầu!</p>
+      <div className="min-h-screen bg-surface-dim flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-8xl font-bold text-secondary animate-bounce-in">{countdown}</div>
+          <p className="text-xl text-on-surface-variant mt-4">Trò chơi bắt đầu!</p>
         </div>
       </div>
     );
   }
 
+  /* ---------- Error state ---------- */
   if (error) return (
-    <div className={`min-h-screen page-bg ${styles.centeredPage}`}>
-      <p className={styles.errorText}>{error}</p>
+    <div className="min-h-screen bg-surface-dim flex items-center justify-center">
+      <div className="text-center space-y-4">
+        <span className="material-symbols-outlined text-error text-5xl">error</span>
+        <p className="text-error text-lg">{error}</p>
+        <button onClick={() => navigate('/multiplayer')} className="text-secondary underline text-sm">
+          Quay lại
+        </button>
+      </div>
     </div>
   );
 
+  /* ---------- Loading state ---------- */
   if (!room) return (
-    <div className={`min-h-screen page-bg ${styles.centeredPage}`}>
-      <p className={styles.loadingText}>Đang tải phòng...</p>
+    <div className="min-h-screen bg-surface-dim flex items-center justify-center">
+      <p className="text-on-surface-variant animate-pulse text-lg">Đang tải phòng...</p>
     </div>
   );
 
   return (
-    <div className="min-h-screen page-bg">
-      <div className={styles.inner}>
+    <div className="bg-surface-dim text-on-surface min-h-screen selection:bg-secondary/30">
+      {/* ── Reconnecting banner ── */}
+      {reconnecting && (
+        <div className="fixed top-0 left-0 right-0 z-[60] bg-error-container/90 text-on-error-container text-center py-2 text-sm font-medium">
+          <span className="material-symbols-outlined text-sm align-middle mr-1">wifi_off</span>
+          Mất kết nối, đang kết nối lại...
+        </div>
+      )}
 
-        {/* Reconnecting banner */}
-        {reconnecting && (
-          <div className={styles.reconnectBanner}>
-            ⚠️ Mất kết nối, đang kết nối lại...
-          </div>
-        )}
-
-        {/* Header */}
-        <div className={styles.header}>
-          <div>
-            <h1 className={styles.roomName}>{room.roomName}</h1>
-            <span className={styles.modeLabel}>{MODE_LABELS[room.mode] ?? room.mode}</span>
-          </div>
-          <div className={styles.headerRight}>
-            <div className={styles.roomCodeBadge}>
-              Mã: <span className={styles.roomCodeValue}>{room.roomCode}</span>
+      {/* ── Top Navigation Bar ── */}
+      <header className="bg-surface-container sticky top-0 z-50">
+        <div className="flex justify-between items-center w-full px-6 py-4 max-w-[900px] mx-auto">
+          <h1 className="text-xl font-bold tracking-tighter text-secondary uppercase">
+            BIBLE QUIZ LOBBY
+          </h1>
+          <div className="flex items-center gap-3">
+            {/* Connection status dot */}
+            <div className="flex items-center gap-1.5">
+              <span
+                className={`w-2 h-2 rounded-full ${connected ? 'bg-emerald-400 animate-pulse' : 'bg-red-400'}`}
+              />
+              <span className="text-[10px] uppercase tracking-wider text-on-surface-variant/60 font-bold">
+                {connected ? 'Online' : 'Offline'}
+              </span>
             </div>
-            <button onClick={handleCopyCode} className={styles.copyBtn}>
-              Sao chép
+            <button
+              onClick={handleCopyCode}
+              className="hover:bg-surface-container-high transition-colors p-2 rounded-lg active:scale-95 active:duration-150"
+              title="Chia sẻ mã phòng"
+            >
+              <span className="material-symbols-outlined text-on-surface">share</span>
             </button>
-            <div
-              className={styles.connectionDot}
-              data-connected={String(connected)}
-              title={connected ? 'Connected' : 'Disconnected'}
-            />
+          </div>
+        </div>
+      </header>
+
+      {/* ── Main Content ── */}
+      <main className="max-w-[900px] mx-auto px-6 pt-8 pb-32">
+        {/* ── Room Header Section ── */}
+        <div className="flex flex-col md:flex-row gap-6 items-center justify-between mb-10">
+          {/* Room Code + QR */}
+          <div className="flex items-center gap-4">
+            <div className="border-2 border-secondary/40 bg-surface-container-low px-6 py-3 rounded-xl flex items-center gap-4">
+              <span className="text-3xl font-mono font-bold tracking-widest text-secondary">
+                {room.roomCode}
+              </span>
+              <button
+                onClick={handleCopyCode}
+                className="text-on-surface-variant hover:text-secondary transition-colors"
+                title="Sao chép mã phòng"
+              >
+                <span className="material-symbols-outlined">
+                  {codeCopied ? 'check' : 'content_copy'}
+                </span>
+              </button>
+            </div>
+          </div>
+
+          {/* Game Settings Pill */}
+          <div className="flex flex-col items-end gap-2">
+            <div className="flex items-center gap-3 bg-surface-container-high px-4 py-2 rounded-full border border-outline-variant/10">
+              <div className="flex items-center gap-1.5 text-sm font-medium">
+                <span className="material-symbols-outlined text-xs text-secondary">list_alt</span>
+                <span>{room.questionCount} câu</span>
+              </div>
+              <div className="w-1 h-1 rounded-full bg-outline-variant/30" />
+              <div className="flex items-center gap-1.5 text-sm font-medium">
+                <span className="material-symbols-outlined text-xs text-secondary">timer</span>
+                <span>{room.timePerQuestion} giây/câu</span>
+              </div>
+              <div className="w-1 h-1 rounded-full bg-outline-variant/30" />
+              <div className="flex items-center gap-1.5 text-sm font-medium">
+                <span className="material-symbols-outlined text-xs text-secondary">trending_up</span>
+                <span>{MODE_LABELS[room.mode] ?? room.mode}</span>
+              </div>
+            </div>
+            {/* Visibility badge */}
+            <span className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/50 pr-2">
+              {room.isPublic ? '🌐 Công khai' : '🔒 Riêng tư'}
+            </span>
           </div>
         </div>
 
-        <div className={styles.mainGrid}>
-          {/* Players list */}
-          <div className={styles.card}>
-            <div className={styles.playersHeader}>
-              <span className={styles.playersHeaderText}>
-                Người chơi ({room.currentPlayers}/{room.maxPlayers})
-              </span>
-              <span className={styles.playersHeaderText}>
-                Sẵn sàng: {readyCount}/{room.currentPlayers}
-              </span>
-            </div>
+        {/* ── Main Layout: Players Grid + Chat ── */}
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-8">
 
-            {/* Team vs Team: 2 columns */}
+          {/* ── Players Grid (Left Side) ── */}
+          <section>
+            {/* Team vs Team layout */}
             {isTeamVsTeam ? (
-              <div className={styles.teamGrid}>
+              <div className="space-y-6">
+                {/* Team A */}
                 <div>
-                  <div className={`${styles.teamLabel} ${styles.teamLabelBlue}`}>
-                    🔵 TEAM A {myPlayer?.team === 'A' && <span className={styles.teamYouBadge}>(bạn)</span>}
+                  <div className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 flex items-center gap-2">
+                    🔵 TEAM A {myPlayer?.team === 'A' && <span className="text-on-surface-variant text-[10px]">(bạn)</span>}
                   </div>
-                  <div className={styles.teamPlayerList}>
+                  <div className="grid grid-cols-2 gap-4">
                     {teamAPlayers.map(p => (
-                      <PlayerCard key={p.id} player={p} hostId={room.hostId} myUsername={myUsername()} teamColor="blue" />
+                      <PlayerCard key={p.id} player={p} hostId={room.hostId} />
                     ))}
                     {teamAPlayers.length === 0 && (
-                      <div className={styles.emptyTeamSlot}>Chưa có ai</div>
+                      <EmptySlot />
                     )}
                   </div>
                 </div>
+                {/* Team B */}
                 <div>
-                  <div className={`${styles.teamLabel} ${styles.teamLabelRed}`}>
-                    🔴 TEAM B {myPlayer?.team === 'B' && <span className={styles.teamYouBadge}>(bạn)</span>}
+                  <div className="text-xs font-bold uppercase tracking-widest text-red-400 mb-3 flex items-center gap-2">
+                    🔴 TEAM B {myPlayer?.team === 'B' && <span className="text-on-surface-variant text-[10px]">(bạn)</span>}
                   </div>
-                  <div className={styles.teamPlayerList}>
+                  <div className="grid grid-cols-2 gap-4">
                     {teamBPlayers.map(p => (
-                      <PlayerCard key={p.id} player={p} hostId={room.hostId} myUsername={myUsername()} teamColor="red" />
+                      <PlayerCard key={p.id} player={p} hostId={room.hostId} />
                     ))}
                     {teamBPlayers.length === 0 && (
-                      <div className={styles.emptyTeamSlot}>Chưa có ai</div>
+                      <EmptySlot />
                     )}
                   </div>
                 </div>
+                {myPlayer && (
+                  <button
+                    onClick={handleSwitchTeam}
+                    disabled={switchingTeam}
+                    className="text-xs text-secondary border border-secondary/30 px-4 py-2 rounded-lg hover:bg-secondary/10 transition-colors disabled:opacity-50"
+                  >
+                    <span className="material-symbols-outlined text-sm align-middle mr-1">swap_horiz</span>
+                    Đổi đội
+                  </button>
+                )}
               </div>
             ) : isSuddenDeath ? (
+              /* Sudden Death layout */
               <div>
-                <div className={styles.sdTitle}>
+                <div className="text-xs font-bold uppercase tracking-widest text-secondary mb-4">
                   👑 Thứ tự thi đấu (King of the Hill)
                 </div>
-                <div className={styles.sdList}>
+                <div className="space-y-3">
                   {room.players.map((p, idx) => (
-                    <div key={p.id} className={styles.sdRow} data-rank={idx < 2 ? String(idx) : 'other'}>
-                      <div className={styles.sdBadge} data-rank={idx < 2 ? String(idx) : 'other'}>
+                    <div
+                      key={p.id}
+                      className={`bg-surface-container p-4 rounded-xl flex items-center gap-4 border transition-all ${
+                        idx === 0 ? 'border-secondary/30' : 'border-outline-variant/5'
+                      } hover:bg-surface-container-high`}
+                    >
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
+                        idx === 0 ? 'bg-secondary text-on-secondary' : idx === 1 ? 'bg-surface-container-highest text-on-surface' : 'bg-surface-container-low text-on-surface-variant'
+                      }`}>
                         {idx === 0 ? '👑' : idx === 1 ? '⚔️' : `#${idx + 1}`}
                       </div>
-                      <div className={styles.sdPlayerInfo}>
-                        <div className={styles.sdPlayerName}>{p.username}{p.username === myUsername() ? ' (bạn)' : ''}</div>
-                        <div className={styles.sdPlayerRole}>{idx === 0 ? 'Giữ ghế nóng' : idx === 1 ? 'Challenger' : 'Đang chờ'}</div>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-bold text-on-surface truncate">
+                          {p.username}{p.username === myUsername() ? ' (bạn)' : ''}
+                        </p>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">
+                          {idx === 0 ? 'Giữ ghế nóng' : idx === 1 ? 'Challenger' : 'Đang chờ'}
+                        </span>
                       </div>
-                      {p.userId === room.hostId && <span className={styles.sdHostBadge}>👑 Host</span>}
-                      <div className={styles.sdReadyBadge} data-ready={String(p.isReady)}>
-                        {p.isReady ? '✓' : 'WAIT'}
-                      </div>
+                      {p.userId === room.hostId && (
+                        <span className="text-[10px] font-bold text-secondary uppercase">Host</span>
+                      )}
+                      <span
+                        className={`material-symbols-outlined text-2xl ${p.isReady ? 'text-emerald-400' : 'text-on-surface-variant/20'}`}
+                        style={p.isReady ? { fontVariationSettings: "'FILL' 1" } : undefined}
+                      >
+                        {p.isReady ? 'check_circle' : 'pending'}
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
             ) : (
-              /* Default grid */
-              <div className={styles.defaultPlayerGrid}>
+              /* Default grid layout */
+              <div className="grid grid-cols-2 gap-4">
                 {room.players.map((p) => (
-                  <div
-                    key={p.id}
-                    className={styles.defaultPlayerRow}
-                    data-ready={String(p.isReady)}
-                  >
-                    <div className={styles.defaultPlayerLeft}>
-                      <div className={styles.defaultAvatar}>
-                        {p.username?.[0]?.toUpperCase() || 'U'}
-                      </div>
-                      <div>
-                        <div className={styles.defaultPlayerName}>{p.username}</div>
-                        {p.userId === room.hostId && <div className={styles.defaultHostBadge}>👑 Host</div>}
-                      </div>
-                    </div>
-                    <div className={styles.defaultReadyBadge} data-ready={String(p.isReady)}>
-                      {p.isReady ? '✓ READY' : 'WAIT'}
-                    </div>
-                  </div>
+                  <PlayerCard key={p.id} player={p} hostId={room.hostId} />
+                ))}
+                {/* Empty slots */}
+                {Array.from({ length: emptySlots }).map((_, i) => (
+                  <EmptySlot key={`empty-${i}`} />
                 ))}
               </div>
             )}
-          </div>
+          </section>
 
-          {/* Room info + controls */}
-          <div className={styles.cardSidebar}>
-            <div className={styles.infoList}>
-              {[
-                { label: 'Chế độ', value: MODE_LABELS[room.mode] ?? room.mode },
-                { label: 'Tổng câu', value: String(room.questionCount) },
-                { label: 'Thời gian/câu', value: `${room.timePerQuestion}s` },
-                { label: 'Chủ phòng', value: room.hostName },
-              ].map(({ label, value }) => (
-                <div key={label} className={styles.infoRow}>
-                  <span className={styles.infoLabel}>{label}</span>
-                  <span className={styles.infoValue}>{value}</span>
+          {/* ── Chat Panel (Right Side) ── */}
+          <aside className="flex flex-col h-[520px] bg-surface-container rounded-2xl overflow-hidden border border-outline-variant/5">
+            {/* Chat Header */}
+            <div className="p-4 border-b border-outline-variant/10 flex items-center gap-2">
+              <span className="material-symbols-outlined text-secondary text-sm">forum</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-on-surface">Trò chuyện</span>
+            </div>
+
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 text-sm">
+              {chatMessages.length === 0 && (
+                <p className="text-on-surface-variant/40 text-xs text-center italic mt-8">
+                  Chưa có tin nhắn nào...
+                </p>
+              )}
+              {chatMessages.map((msg, i) => (
+                <div key={i} className="space-y-1">
+                  <p className={`text-[10px] font-bold uppercase ${msg.isHost ? 'text-secondary' : 'text-on-primary-container'}`}>
+                    {msg.sender}
+                  </p>
+                  <div className={`${msg.isHost ? 'bg-surface-container-high' : 'bg-surface-container-highest'} px-3 py-2 rounded-xl rounded-tl-none inline-block`}>
+                    {msg.text}
+                  </div>
                 </div>
               ))}
-              <div className={styles.visibilityText}>
-                {room.isPublic ? '🌐 Công khai' : '🔒 Riêng tư'}
-              </div>
-              {isTeamVsTeam && myPlayer && (
-                <div className={styles.myTeamBox}>
-                  Đội của bạn:{' '}
-                  <strong className={styles.myTeamValue} data-team={myPlayer.team}>
-                    {myPlayer.team === 'A' ? '🔵 Team A' : '🔴 Team B'}
-                  </strong>
-                </div>
-              )}
+              <div ref={chatEndRef} />
             </div>
 
-            <div className={styles.buttonGroup}>
-              {isTeamVsTeam && (
+            {/* Footer Chat */}
+            <div className="p-3 bg-surface-container-low border-t border-outline-variant/10">
+              {/* Quick emoji row */}
+              <div className="flex gap-2 mb-3 overflow-x-auto pb-1">
+                {QUICK_EMOJIS.map(emoji => (
+                  <button
+                    key={emoji}
+                    onClick={() => handleSendChat(emoji)}
+                    className="bg-surface-container-highest w-8 h-8 rounded-full flex items-center justify-center text-lg hover:scale-110 transition-transform flex-shrink-0"
+                  >
+                    {emoji}
+                  </button>
+                ))}
+              </div>
+              {/* Text input */}
+              <div className="relative">
+                <input
+                  className="w-full bg-surface-container-highest border-none rounded-xl py-2.5 pl-4 pr-10 text-sm focus:ring-1 focus:ring-secondary/50 placeholder:text-on-surface-variant/40 text-on-surface outline-none"
+                  placeholder="Nhắn tin..."
+                  type="text"
+                  value={chatInput}
+                  onChange={(e) => setChatInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') handleSendChat(chatInput);
+                  }}
+                />
                 <button
-                  onClick={handleSwitchTeam}
-                  disabled={switchingTeam}
-                  className={styles.switchTeamBtn}
+                  onClick={() => handleSendChat(chatInput)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-secondary p-1"
                 >
-                  🔄 Đổi đội
+                  <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>send</span>
                 </button>
-              )}
-              <button
-                onClick={handleToggleReady}
-                className={styles.readyBtn}
-                data-ready={String(myPlayer?.isReady ?? false)}
-              >
-                {myPlayer?.isReady ? '🔄 Hủy sẵn sàng' : '✅ Sẵn sàng'}
-              </button>
-              <button
-                onClick={handleStart}
-                disabled={room.status !== 'LOBBY' || readyCount < 2}
-                className={`practice-start-btn ${styles.startBtn}`}
-              >
-                🚀 Bắt đầu
-              </button>
-              <button
-                onClick={async () => {
-                  if (roomId) {
-                    try {
-                      await fetch(`/api/rooms/${roomId}/leave`, {
-                        method: 'POST',
-                        headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` },
-                      });
-                    } catch {}
-                  }
-                  navigate('/multiplayer');
-                }}
-                className={styles.leaveBtn}
-              >
-                ← Rời phòng
-              </button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </main>
+
+      {/* ── Bottom Action Bar ── */}
+      <nav className="fixed bottom-0 left-0 w-full flex justify-center items-center px-4 pb-8 pt-6 z-50">
+        <div className="bg-surface-container/60 backdrop-blur-xl w-full max-w-[900px] flex justify-between items-center px-8 py-4 rounded-2xl shadow-[0_-4px_24px_rgba(11,14,24,0.6)] border border-outline-variant/5">
+          {/* Left: Leave Button */}
+          <button
+            onClick={handleLeave}
+            className="flex items-center gap-2 text-on-surface/80 hover:bg-error-container/20 hover:text-error transition-all px-6 py-3 rounded-xl border border-outline-variant/15 font-medium uppercase tracking-widest text-[11px] active:scale-[0.98] active:duration-100"
+          >
+            <span className="material-symbols-outlined text-sm">logout</span>
+            Rời phòng
+          </button>
+
+          {/* Center: Player Counter */}
+          <div className="flex flex-col items-center">
+            <div className="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant/60 mb-1">
+              {connected ? 'ĐANG KẾT NỐI' : 'MẤT KẾT NỐI'}
+            </div>
+            <div className="flex items-center gap-2">
+              <span className={`w-2 h-2 rounded-full ${connected ? 'bg-emerald-400 animate-pulse' : 'bg-red-400'}`} />
+              <span className="text-xl font-bold text-on-surface">
+                {room.currentPlayers} / {room.maxPlayers}
+              </span>
             </div>
           </div>
+
+          {/* Right: Ready / Start buttons */}
+          <div className="flex items-center gap-3">
+            {/* Ready toggle */}
+            <button
+              onClick={handleToggleReady}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-[11px] transition-all active:scale-[0.98] active:duration-100 ${
+                myPlayer?.isReady
+                  ? 'bg-surface-container-highest text-on-surface border border-outline-variant/20'
+                  : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+              }`}
+            >
+              <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>
+                {myPlayer?.isReady ? 'close' : 'check_circle'}
+              </span>
+              {myPlayer?.isReady ? 'Hủy' : 'Sẵn sàng'}
+            </button>
+
+            {/* Start button (host only) */}
+            {isHost && (
+              <button
+                onClick={handleStart}
+                disabled={!canStart}
+                className="gold-gradient flex items-center gap-2 text-surface-dim px-10 py-3 rounded-xl font-bold uppercase tracking-widest text-[11px] hover:opacity-90 transition-opacity active:scale-[0.98] active:duration-100 shadow-lg shadow-secondary/20 disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>play_arrow</span>
+                Bắt đầu
+              </button>
+            )}
+          </div>
         </div>
-      </div>
+      </nav>
     </div>
   );
 };
 
-const PlayerCard: React.FC<{ player: Player; hostId: string; myUsername: string; teamColor: 'blue' | 'red' }> = ({ player, hostId, myUsername: me, teamColor }) => (
-  <div
-    className={styles.playerCard}
-    data-ready={String(player.isReady)}
-    data-team={teamColor}
-  >
-    <div className={styles.playerAvatar} data-team={teamColor}>
-      {player.username?.[0]?.toUpperCase() || 'U'}
-    </div>
-    <div className={styles.playerInfo}>
-      <div className={styles.playerName}>
-        {player.username}{player.username === me ? ' (bạn)' : ''}
+/* ── Player Card Component ── */
+const PlayerCard: React.FC<{ player: Player; hostId: string }> = ({ player, hostId }) => {
+  const isHost = player.userId === hostId;
+  const isMe = player.username === myUsername();
+
+  return (
+    <div className={`bg-surface-container p-4 rounded-xl flex items-center gap-4 border transition-all hover:bg-surface-container-high ${
+      isHost ? 'border-secondary/20' : 'border-outline-variant/5'
+    }`}>
+      {/* Avatar */}
+      <div className="relative">
+        {player.avatarUrl ? (
+          <img
+            className={`w-14 h-14 rounded-full object-cover ${isHost ? 'border-2 border-secondary' : ''} ${!player.isReady ? 'opacity-60 grayscale' : ''}`}
+            src={player.avatarUrl}
+            alt={player.username}
+          />
+        ) : (
+          <div className={`w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold ${
+            isHost ? 'border-2 border-secondary bg-surface-container-high text-secondary' : 'bg-surface-container-highest text-on-surface'
+          } ${!player.isReady ? 'opacity-60 grayscale' : ''}`}>
+            {player.username?.[0]?.toUpperCase() || 'U'}
+          </div>
+        )}
+        {/* Host crown badge */}
+        {isHost && (
+          <div className="absolute -top-2 -left-2 bg-secondary text-on-secondary w-6 h-6 rounded-full flex items-center justify-center shadow-lg">
+            <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>workspace_premium</span>
+          </div>
+        )}
       </div>
-      {player.userId === hostId && <div className={styles.playerHostBadge}>👑 Host</div>}
+
+      {/* Info */}
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-1">
+          <p className={`font-bold truncate ${player.isReady ? 'text-on-surface' : 'text-on-surface-variant'}`}>
+            {player.username}{isMe ? ' (bạn)' : ''}
+          </p>
+          {isHost && (
+            <span className="material-symbols-outlined text-secondary text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>stars</span>
+          )}
+        </div>
+        <span className={`text-[10px] font-bold uppercase tracking-wider ${isHost ? 'text-secondary/70' : 'text-on-surface-variant'}`}>
+          {isHost ? 'CHỦ PHÒNG' : (player.isReady ? 'SẴN SÀNG' : 'ĐANG CHỜ')}
+        </span>
+      </div>
+
+      {/* Ready status icon */}
+      <span
+        className={`material-symbols-outlined text-2xl ${player.isReady ? 'text-emerald-400' : 'text-on-surface-variant/20'}`}
+        style={player.isReady ? { fontVariationSettings: "'FILL' 1" } : undefined}
+      >
+        {player.isReady ? 'check_circle' : 'pending'}
+      </span>
     </div>
-    <div className={styles.readyBadge} data-ready={String(player.isReady)}>
-      {player.isReady ? '✓' : '—'}
+  );
+};
+
+/* ── Empty Slot Component ── */
+const EmptySlot: React.FC = () => (
+  <div className="bg-surface-container-low border-2 border-dashed border-outline-variant/15 p-4 rounded-xl flex items-center justify-center gap-4 animate-pulse">
+    <div className="w-14 h-14 rounded-full bg-outline-variant/10 flex items-center justify-center">
+      <span className="material-symbols-outlined text-outline-variant/40">person_add</span>
     </div>
+    <span className="text-sm font-medium text-outline-variant/40 italic">Đang chờ...</span>
   </div>
 );
 

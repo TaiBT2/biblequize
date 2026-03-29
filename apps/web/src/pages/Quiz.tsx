@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { api } from '../api/client'
 import QuizResults from './QuizResults'
-import styles from './Quiz.module.css'
 
 interface Question {
   id: string
@@ -14,13 +13,6 @@ interface Question {
   options: string[]
   correctAnswer: number[]
   explanation: string
-}
-
-interface QuizSettings {
-  book: string
-  difficulty: string
-  questionCount: number
-  showExplanation: boolean
 }
 
 interface QuizStats {
@@ -41,7 +33,6 @@ interface QuizStats {
   questionScores: number[]
 }
 
-// FIX #16: Typed interface instead of `as any`
 interface QuizPageSettings {
   sessionId?: string
   questions?: Question[]
@@ -52,6 +43,9 @@ interface QuizPageSettings {
   isRanked?: boolean
 }
 
+const ANSWER_LETTERS = ['A', 'B', 'C', 'D']
+const FILL_STYLE = { fontVariationSettings: "'FILL' 1" } as const
+
 const Quiz: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -61,8 +55,10 @@ const Quiz: React.FC = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
   const [showResult, setShowResult] = useState(false)
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
+  const [combo, setCombo] = useState(0)
   const [score, setScore] = useState(0)
-  const [scoreBump, setScoreBump] = useState(false)
+  const [lives, setLives] = useState(5)
   const [correctAnswers, setCorrectAnswers] = useState(0)
   const [timeLeft, setTimeLeft] = useState(30)
   const [isQuizCompleted, setIsQuizCompleted] = useState(false)
@@ -84,17 +80,17 @@ const Quiz: React.FC = () => {
     userAnswers: [],
     questionScores: []
   })
-  const [questionStartTime, setQuestionStartTime] = useState<number>(Date.now())
   const [quizStartTime, setQuizStartTime] = useState<number>(Date.now())
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>([])
   const [questionScores, setQuestionScores] = useState<number[]>([])
+  const [lastQuestionScore, setLastQuestionScore] = useState(0)
 
   const currentQuestion = questions[currentQuestionIndex]
+  const progressPercent = questions.length > 0 ? ((currentQuestionIndex + 1) / questions.length) * 100 : 0
 
-  // Simple WebAudio tones for feedback
   const playTone = (frequency: number, durationMs: number, type: OscillatorType = 'sine', volume = 0.1) => {
     try {
-      const ctx = new (window.AudioContext || (window as any).webkitAudioContext)()
+      const ctx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)()
       const osc = ctx.createOscillator()
       const gain = ctx.createGain()
       osc.type = type
@@ -104,16 +100,11 @@ const Quiz: React.FC = () => {
       gain.connect(ctx.destination)
       osc.start()
       setTimeout(() => { osc.stop(); ctx.close() }, durationMs)
-    } catch { }
+    } catch { /* audio not available */ }
   }
-  const playCorrectSound = () => {
-    playTone(880, 120, 'sine', 0.12)
-  }
-  const playWrongSound = () => {
-    playTone(200, 180, 'square', 0.08)
-  }
+  const playCorrectSound = () => playTone(880, 120, 'sine', 0.12)
+  const playWrongSound = () => playTone(200, 180, 'square', 0.08)
 
-  // When quiz is completed and we have a server session, fetch aggregated stats from backend
   useEffect(() => {
     const fetchBackendStats = async () => {
       if (!settings?.sessionId) return
@@ -142,18 +133,15 @@ const Quiz: React.FC = () => {
     }
   }, [isQuizCompleted, settings?.sessionId])
 
-  // Timer effect
   useEffect(() => {
     if (timeLeft > 0 && !showResult && !isQuizCompleted) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000)
       return () => clearTimeout(timer)
     } else if (timeLeft === 0 && !showResult) {
-      // Time's up - auto submit
-      handleAnswerSelect(-1) // -1 means time's up
+      handleAnswerSelect(-1)
     }
   }, [timeLeft, showResult, isQuizCompleted])
 
-  // Load questions
   useEffect(() => {
     const boot = () => {
       try {
@@ -163,7 +151,6 @@ const Quiz: React.FC = () => {
           setQuestions(initialQuestions)
           setTimeLeft(30)
           setQuizStartTime(Date.now())
-          setQuestionStartTime(Date.now())
           setQuizStats(prev => ({
             ...prev,
             totalQuestions: initialQuestions.length,
@@ -188,24 +175,22 @@ const Quiz: React.FC = () => {
     setSelectedAnswer(answerIndex)
     setShowResult(true)
 
-    // Calculate time taken for this question
     const timeTaken = 30 - timeLeft
-    let isCorrect = false
-    let rankedResponse: any = null
+    let correct = false
+    let rankedResponse: Record<string, unknown> | null = null
+
     try {
       if (settings?.mode === 'ranked' && settings?.sessionId) {
         const res = await api.post(`/api/ranked/sessions/${settings.sessionId}/answer`, {
           questionId: currentQuestion.id,
           answer: answerIndex,
           clientElapsedMs: (30 - timeLeft) * 1000
-          // FIX #5: Removed client-sent isCorrect — server validates independently
         })
 
         const data = res.data
         rankedResponse = data
-        isCorrect = answerIndex === (currentQuestion.correctAnswer?.[0] ?? -1)
+        correct = answerIndex === (currentQuestion.correctAnswer?.[0] ?? -1)
 
-        // Update askedQuestionIds in localStorage for ranked mode
         try {
           const today = new Date().toISOString().slice(0, 10)
           const currentAskedIds = JSON.parse(localStorage.getItem('askedQuestionIds') || '[]')
@@ -218,7 +203,6 @@ const Quiz: React.FC = () => {
           console.warn('Failed to update askedQuestionIds:', e)
         }
 
-        // If lives dropped to 0 -> end quiz immediately
         if (typeof data.livesRemaining === 'number' && data.livesRemaining <= 0) {
           setQuizStats(prev => ({
             ...prev,
@@ -230,11 +214,8 @@ const Quiz: React.FC = () => {
           return
         }
 
-        // Update ranked status in localStorage for real-time display
         try {
           const today = new Date().toISOString().slice(0, 10)
-
-          // Simple and direct update
           const updatedData = {
             date: today,
             livesRemaining: data.livesRemaining,
@@ -243,21 +224,15 @@ const Quiz: React.FC = () => {
             cap: 500,
             dailyLives: 30
           }
-
           localStorage.setItem('rankedSnapshot', JSON.stringify(updatedData))
           localStorage.setItem('rankedProgress', JSON.stringify(updatedData))
           localStorage.setItem('rankedStatus', JSON.stringify(updatedData))
           localStorage.setItem('sessionBackup', JSON.stringify(updatedData))
-
-          // Dispatch custom event for real-time updates
-          window.dispatchEvent(new CustomEvent('rankedStatusUpdate', {
-            detail: updatedData
-          }))
+          window.dispatchEvent(new CustomEvent('rankedStatusUpdate', { detail: updatedData }))
         } catch (e) {
           console.warn('Failed to update ranked status:', e)
         }
 
-        // Additional sync to server to prevent data loss
         try {
           await api.post('/api/ranked/sync-progress', {
             livesRemaining: data.livesRemaining,
@@ -268,9 +243,8 @@ const Quiz: React.FC = () => {
             isPostCycle: data.isPostCycle || false,
             currentDifficulty: data.currentDifficulty || 'all'
           })
-          console.log('=== SYNCED TO SERVER ===')
-        } catch (syncError) {
-          // non-critical — progress already persisted on server
+        } catch {
+          // non-critical
         }
       } else if (settings?.sessionId) {
         const res = await api.post(`/api/sessions/${settings.sessionId}/answer`, {
@@ -279,46 +253,39 @@ const Quiz: React.FC = () => {
           clientElapsedMs: (30 - timeLeft) * 1000
         })
         const data = res.data
-        isCorrect = !!data.isCorrect
+        correct = !!data.isCorrect
       } else {
-        // No server session in practice mode; local validation
-        isCorrect = answerIndex === (currentQuestion.correctAnswer?.[0] ?? -1)
+        correct = answerIndex === (currentQuestion.correctAnswer?.[0] ?? -1)
       }
     } catch (e) {
       console.error('submit answer failed', e)
-      // Fallback local check if API fails
-      isCorrect = answerIndex === (currentQuestion.correctAnswer?.[0] ?? -1)
+      correct = answerIndex === (currentQuestion.correctAnswer?.[0] ?? -1)
     }
 
-    // Enhanced scoring system
+    setIsCorrect(correct)
+
     let questionScore = 0
-    if (isCorrect) {
-      // Base score by difficulty
+    if (correct) {
       const baseScore = currentQuestion.difficulty === 'easy' ? 10 :
         currentQuestion.difficulty === 'medium' ? 20 : 30
-
-      // Time bonus (more points for faster answers)
-      const timeBonus = Math.floor(timeLeft / 2) // Up to 15 points for quick answers
-
-      // Perfect time bonus (answered in first 5 seconds)
+      const timeBonus = Math.floor(timeLeft / 2)
       const perfectBonus = timeLeft >= 25 ? 5 : 0
-
-      // Difficulty multiplier
       const difficultyMultiplier = currentQuestion.difficulty === 'hard' ? 1.5 :
         currentQuestion.difficulty === 'medium' ? 1.2 : 1
-
       questionScore = Math.floor((baseScore + timeBonus + perfectBonus) * difficultyMultiplier)
 
-      setScore(score + questionScore)
-      setScoreBump(true)
-      setTimeout(() => setScoreBump(false), 250)
+      setScore(prev => prev + questionScore)
+      setCombo(prev => prev + 1)
       playCorrectSound()
-      setCorrectAnswers(correctAnswers + 1)
+      setCorrectAnswers(prev => prev + 1)
     } else {
+      setCombo(0)
+      setLives(prev => Math.max(0, prev - 1))
       playWrongSound()
     }
 
-    // Update user answers and question scores
+    setLastQuestionScore(questionScore)
+
     const newUserAnswers = [...userAnswers]
     newUserAnswers[currentQuestionIndex] = answerIndex
     setUserAnswers(newUserAnswers)
@@ -327,36 +294,25 @@ const Quiz: React.FC = () => {
     newQuestionScores[currentQuestionIndex] = questionScore
     setQuestionScores(newQuestionScores)
 
-    // Update quiz stats
     setQuizStats(prev => {
       const newStats = { ...prev }
-
-      // Update difficulty breakdown
       const difficulty = currentQuestion.difficulty as 'easy' | 'medium' | 'hard'
       newStats.difficultyBreakdown[difficulty].total += 1
-      if (isCorrect) {
+      if (correct) {
         newStats.difficultyBreakdown[difficulty].correct += 1
         newStats.difficultyBreakdown[difficulty].score += questionScore
       }
-
-      // Update time tracking
       newStats.timePerQuestion.push(timeTaken)
       newStats.totalTime = Date.now() - quizStartTime
       newStats.averageTime = newStats.timePerQuestion.reduce((a, b) => a + b, 0) / newStats.timePerQuestion.length
-
-      // Update overall stats
       newStats.totalScore = score + questionScore
-      newStats.correctAnswers = correctAnswers + (isCorrect ? 1 : 0)
+      newStats.correctAnswers = correctAnswers + (correct ? 1 : 0)
       newStats.accuracy = (newStats.correctAnswers / newStats.totalQuestions) * 100
-
-      // Update arrays
       newStats.userAnswers = newUserAnswers
       newStats.questionScores = newQuestionScores
-
       return newStats
     })
 
-    // Update optimistic ranked snapshot AFTER computing questionScore for accurate points
     if (settings?.mode === 'ranked' && settings?.sessionId) {
       try {
         const today = new Date().toISOString().slice(0, 10)
@@ -372,55 +328,36 @@ const Quiz: React.FC = () => {
           localStorage.setItem('rankedSnapshot', JSON.stringify(finalSnap))
           window.dispatchEvent(new CustomEvent('rankedStatusUpdate', { detail: finalSnap }))
         }
-      } catch (_) { /* non-critical */ }
+      } catch { /* non-critical */ }
     }
   }
 
   const nextQuestion = () => {
     if (currentQuestionIndex + 1 >= questions.length) {
-      // Quiz completed - finalize stats
       setQuizStats(prev => ({
         ...prev,
         totalTime: Date.now() - quizStartTime,
         userAnswers: userAnswers,
         questionScores: questionScores,
-        questions: questions // Ensure questions are included
+        questions: questions
       }))
-      console.log('Setting isQuizCompleted to true');
       setIsQuizCompleted(true)
     } else {
       setCurrentQuestionIndex(currentQuestionIndex + 1)
       setSelectedAnswer(null)
       setShowResult(false)
+      setIsCorrect(null)
       setTimeLeft(30)
-      setQuestionStartTime(Date.now())
-    }
-  }
-
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case 'easy': return 'text-green-400'
-      case 'medium': return 'text-yellow-400'
-      case 'hard': return 'text-red-400'
-      default: return 'text-blue-400'
-    }
-  }
-
-  const getDifficultyText = (difficulty: string) => {
-    switch (difficulty) {
-      case 'easy': return 'Dễ'
-      case 'medium': return 'Trung bình'
-      case 'hard': return 'Khó'
-      default: return 'Tất cả'
+      setLastQuestionScore(0)
     }
   }
 
   if (isLoading) {
     return (
-      <div className="min-h-screen page-bg flex items-center justify-center">
-        <div className="page-card p-8 text-center max-w-xs w-full">
-          <div className="text-xl font-bold mb-4">Đang tải câu hỏi...</div>
-          <div className={`animate-spin w-8 h-8 border-4 border-t-transparent rounded-full mx-auto ${styles.loadingSpinner}`}></div>
+      <div className="min-h-screen bg-surface flex items-center justify-center">
+        <div className="glass-panel p-8 text-center max-w-xs w-full rounded-3xl border border-outline-variant/10">
+          <div className="text-xl font-bold mb-4 text-on-surface">Đang tải câu hỏi...</div>
+          <div className="animate-spin w-8 h-8 border-4 border-secondary border-t-transparent rounded-full mx-auto"></div>
         </div>
       </div>
     )
@@ -451,14 +388,17 @@ const Quiz: React.FC = () => {
           setCurrentQuestionIndex(0)
           setSelectedAnswer(null)
           setShowResult(false)
+          setIsCorrect(null)
+          setCombo(0)
+          setLives(5)
           setScore(0)
           setCorrectAnswers(0)
           setTimeLeft(30)
           setIsQuizCompleted(false)
+          setLastQuestionScore(0)
           setUserAnswers(new Array(questions.length).fill(null))
           setQuestionScores(new Array(questions.length).fill(0))
           setQuizStartTime(Date.now())
-          setQuestionStartTime(Date.now())
           setQuizStats(prev => ({
             ...prev,
             totalScore: 0,
@@ -477,7 +417,6 @@ const Quiz: React.FC = () => {
           }))
         }}
         onBackToHome={() => navigate(location.state?.isRanked ? '/ranked' : '/')}
-        // Pass ranked mode info
         isRanked={location.state?.isRanked || false}
         sessionId={location.state?.sessionId}
       />
@@ -486,12 +425,12 @@ const Quiz: React.FC = () => {
 
   if (!currentQuestion) {
     return (
-      <div className="min-h-screen page-bg flex items-center justify-center">
-        <div className="page-card p-8 text-center max-w-sm w-full">
-          <div className="text-2xl font-bold mb-4">Không có câu hỏi</div>
+      <div className="min-h-screen bg-surface flex items-center justify-center">
+        <div className="glass-panel p-8 text-center max-w-sm w-full rounded-3xl border border-outline-variant/10">
+          <div className="text-2xl font-bold mb-4 text-on-surface">Không có câu hỏi</div>
           <button
             onClick={() => navigate('/practice')}
-            className="btn-primary"
+            className="bg-gradient-to-r from-secondary to-tertiary text-on-secondary px-8 py-3 rounded-2xl font-black text-sm shadow-xl active:scale-95 transition-all hover:brightness-110"
           >
             Quay Lại
           </button>
@@ -501,87 +440,176 @@ const Quiz: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen page-bg pb-12">
-      {/* Header */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-end mb-6">
-          <div className={styles.questionCounter}>
-            Câu {currentQuestionIndex + 1}/{questions.length}
-          </div>
-          <div className={`${styles.scorePill} transition-transform ${scoreBump ? 'scale-110' : 'scale-100'}`}>
-            ĐIỂM: {score}
+    <div className="min-h-screen bg-surface font-body text-on-surface overflow-hidden relative">
+      {/* Background Decorative Elements */}
+      <div className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/5 blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full"></div>
+      </div>
+
+      {/* Top Navigation Header */}
+      <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-surface-container-low border-b border-outline-variant/10">
+        <div className="flex items-center gap-3">
+          <Link
+            to={settings?.isRanked ? '/ranked' : '/practice'}
+            className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-variant transition-colors"
+            onClick={(e) => {
+              e.preventDefault()
+              if (confirm('Bạn có chắc muốn thoát? Tiến trình hiện tại sẽ không được lưu.')) {
+                navigate(settings?.isRanked ? '/ranked' : '/practice')
+              }
+            }}
+          >
+            <span className="material-symbols-outlined text-on-surface-variant">close</span>
+          </Link>
+          <div className="flex flex-col">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-secondary">
+              Câu hỏi {currentQuestionIndex + 1}/{questions.length}
+            </span>
+            <span className="font-headline font-bold text-sm tracking-tight">
+              {currentQuestion.book}{currentQuestion.chapter ? `: Chương ${currentQuestion.chapter}` : ''}
+            </span>
           </div>
         </div>
 
-        {/* Progress Bar */}
-        <div className={`w-full rounded-full h-3 mb-8 overflow-hidden ${styles.progressTrack}`}>
-          <div
-            className={`progress-animated ${styles.progressFill}`}
-            style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
-          ></div>
+        {/* Progress Bar Center (desktop) */}
+        <div className="absolute left-1/2 -translate-x-1/2 w-full max-w-md px-4 hidden md:block text-center">
+          <div className="flex items-center gap-4">
+            <div className="h-2 flex-1 bg-primary-container rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-secondary to-tertiary shadow-[0_0_8px_rgba(232,168,50,0.4)] transition-all duration-500"
+                style={{ width: `${progressPercent}%` }}
+              ></div>
+            </div>
+            <span className="text-[10px] font-black text-secondary whitespace-nowrap">
+              {currentQuestionIndex + 1} / {questions.length}
+            </span>
+          </div>
         </div>
 
-        {/* Timer */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center relative">
-            <svg width="80" height="80">
-              <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.1)" strokeWidth="6" fill="none" />
-              <circle
-                cx="40" cy="40" r="34"
-                stroke={timeLeft <= 5 ? 'var(--hp-coral)' : 'var(--hp-gold)'}
-                strokeWidth="6"
-                fill="none"
-                strokeLinecap="round"
-                className={`transition-all duration-1000 ${styles.timerCircle}`}
-                strokeDasharray={2 * Math.PI * 34}
-                strokeDashoffset={(1 - (timeLeft / 30)) * 2 * Math.PI * 34}
-              />
-            </svg>
-            <div className={`absolute inset-0 flex items-center justify-center text-3xl font-black ${timeLeft <= 5 ? 'animate-pulse' : ''} ${styles.timerNumber}`} style={{ color: timeLeft <= 5 ? 'var(--hp-coral)' : 'var(--hp-text)' }}>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-full border border-outline-variant/10">
+            <span className="material-symbols-outlined text-secondary text-lg" style={FILL_STYLE}>bolt</span>
+            <span className="font-bold text-sm">{score.toLocaleString()}</span>
+          </div>
+          <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-secondary/20 flex items-center justify-center bg-surface-container-high md:hidden">
+            <span className={`font-black text-sm ${timeLeft <= 5 ? 'text-error animate-pulse' : 'text-on-surface'}`}>
               {timeLeft}
+            </span>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Progress Bar */}
+      <div className="fixed top-16 left-0 w-full h-1 bg-primary-container md:hidden z-50">
+        <div
+          className="h-full bg-gradient-to-r from-secondary to-tertiary transition-all duration-500"
+          style={{ width: `${progressPercent}%` }}
+        ></div>
+      </div>
+
+      {/* Main Content */}
+      <main className="relative min-h-screen pt-24 pb-12 px-6 flex flex-col items-center justify-center max-w-5xl mx-auto">
+        {/* Top Stats Row */}
+        <div className="w-full flex justify-between items-end mb-8">
+          <div className="flex flex-col items-start gap-1">
+            <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">Combo chuỗi</span>
+            <div className={`flex items-center gap-2 glass-panel px-4 py-2 rounded-2xl border transition-all duration-300 ${combo > 0 ? 'border-secondary/20 gold-glow' : 'border-outline-variant/10'}`}>
+              <span className="material-symbols-outlined text-secondary" style={FILL_STYLE}>stars</span>
+              <span className={`font-headline font-black text-2xl italic ${combo > 0 ? 'text-secondary' : 'text-on-surface-variant'}`}>
+                x{combo}
+              </span>
+            </div>
+          </div>
+
+          {/* Circular Countdown Timer */}
+          <div className="hidden md:flex flex-col items-center gap-1">
+            <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">Thời gian</span>
+            <div className="relative w-14 h-14 flex items-center justify-center">
+              <svg className="timer-svg w-full h-full" viewBox="0 0 36 36">
+                <circle
+                  className="stroke-surface-container-highest"
+                  cx="18" cy="18" r="16"
+                  fill="none" strokeWidth="2"
+                />
+                <circle
+                  className={`timer-arc ${timeLeft <= 5 ? 'stroke-error' : 'stroke-secondary'}`}
+                  cx="18" cy="18" r="16"
+                  fill="none" strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeDasharray="100"
+                  strokeDashoffset={100 - (timeLeft / 30) * 100}
+                />
+              </svg>
+              <span className={`absolute font-headline font-black text-xl ${timeLeft <= 5 ? 'text-error animate-pulse' : 'text-secondary'}`}>
+                {timeLeft}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-end gap-1">
+            <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">Năng lượng</span>
+            <div className="flex gap-1">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div
+                  key={i}
+                  className={`w-2 h-6 rounded-full ${i < lives
+                    ? 'bg-secondary shadow-[0_0_10px_rgba(232,168,50,0.3)]'
+                    : 'bg-surface-container-highest'
+                  }`}
+                ></div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Question Card */}
-      <div className="container mx-auto px-4">
-        <div className="page-card p-8 md:p-12 max-w-4xl mx-auto">
-          {/* Question Header */}
-          <div className="mb-8 flex flex-wrap gap-3 items-center">
-            <span className={styles.metaBadge}>
-              {currentQuestion.book}
-            </span>
-            <span className={styles.metaBadge}>
-              Chương {currentQuestion.chapter}
-            </span>
-            <span className={
-              currentQuestion.difficulty === 'easy' ? 'badge-easy' :
-                currentQuestion.difficulty === 'hard' ? 'badge-hard' : 'badge-medium'
-            }>
-              {getDifficultyText(currentQuestion.difficulty)}
-            </span>
+        {/* Question Section */}
+        <div className="w-full space-y-16">
+          <div className="relative w-full aspect-[16/9] md:aspect-[21/7] flex flex-col items-center justify-center text-center p-10 bg-surface-container-low rounded-[2.5rem] border border-outline-variant/10 shadow-2xl overflow-hidden">
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-32 bg-secondary rounded-r-full"></div>
+            <h2 className="font-headline text-2xl md:text-4xl font-extrabold tracking-tight leading-snug max-w-3xl text-on-surface">
+              {currentQuestion.content}
+            </h2>
+            <div className="mt-8 flex items-center gap-2 text-on-surface-variant/60">
+              <span className="material-symbols-outlined text-sm">menu_book</span>
+              <span className="text-xs font-bold uppercase tracking-widest">
+                {currentQuestion.book}{currentQuestion.chapter ? ` - Chương ${currentQuestion.chapter}` : ''}
+              </span>
+            </div>
           </div>
 
-          {/* Question */}
-          <div className={`text-2xl md:text-3xl font-bold mb-10 leading-tight ${styles.questionText}`}>
-            {currentQuestion.content}
-          </div>
-
-          {/* Answer Options */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+          {/* Answers Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {currentQuestion.options.map((option, index) => {
-              let buttonClass = "answer-btn min-h-[80px]"
               const correctIdx = currentQuestion.correctAnswer?.[0] ?? -1
+              const isSelected = selectedAnswer === index
+              const isCorrectAnswer = showResult && index === correctIdx
+              const isWrongSelected = showResult && isSelected && index !== correctIdx
 
-              if (showResult) {
-                if (index === correctIdx) {
-                  buttonClass = "answer-btn answer-btn-correct min-h-[80px]"
-                } else if (index === selectedAnswer && index !== correctIdx) {
-                  buttonClass = "answer-btn answer-btn-wrong min-h-[80px]"
-                } else {
-                  buttonClass = "answer-btn opacity-60 min-h-[80px]"
-                }
+              let buttonClasses = 'group relative flex items-center p-8 rounded-[2rem] transition-all duration-300 text-left active:scale-[0.98]'
+              let letterClasses = 'w-14 h-14 flex items-center justify-center rounded-2xl font-black text-xl transition-colors flex-shrink-0'
+              let textClasses = 'ml-6 font-bold text-xl'
+
+              if (showResult && isCorrectAnswer) {
+                buttonClasses += ' bg-green-500/10 border-2 border-green-500'
+                letterClasses += ' bg-green-500 text-on-secondary shadow-lg'
+                textClasses += ' text-green-400'
+              } else if (isWrongSelected) {
+                buttonClasses += ' bg-error/10 border-2 border-error'
+                letterClasses += ' bg-error text-on-secondary shadow-lg'
+                textClasses += ' text-error'
+              } else if (isSelected && !showResult) {
+                buttonClasses += ' bg-secondary/10 border-2 border-secondary gold-glow'
+                letterClasses += ' bg-secondary text-on-secondary shadow-lg'
+                textClasses += ' text-secondary'
+              } else if (showResult) {
+                buttonClasses += ' bg-surface-container border-2 border-transparent opacity-60'
+                letterClasses += ' bg-surface-container-highest text-secondary'
+                textClasses += ' text-on-surface'
+              } else {
+                buttonClasses += ' bg-surface-container hover:bg-surface-container-high border-2 border-transparent hover:border-outline-variant/20'
+                letterClasses += ' bg-surface-container-highest text-secondary group-hover:bg-secondary group-hover:text-on-secondary'
+                textClasses += ' text-on-surface'
               }
 
               return (
@@ -589,79 +617,88 @@ const Quiz: React.FC = () => {
                   key={index}
                   onClick={() => handleAnswerSelect(index)}
                   disabled={showResult}
-                  className={buttonClass}
+                  className={buttonClasses}
                 >
-                  <div className="flex items-start">
-                    <span className={styles.answerLetter}>
-                      {String.fromCharCode(65 + index)}.
-                    </span>
-                    <span>{option}</span>
-                  </div>
+                  <div className={letterClasses}>{ANSWER_LETTERS[index]}</div>
+                  <span className={textClasses}>{option}</span>
+                  {showResult && isCorrectAnswer && (
+                    <div className="absolute right-8 top-1/2 -translate-y-1/2">
+                      <span className="material-symbols-outlined text-green-400 text-3xl" style={FILL_STYLE}>check_circle</span>
+                    </div>
+                  )}
+                  {isWrongSelected && (
+                    <div className="absolute right-8 top-1/2 -translate-y-1/2">
+                      <span className="material-symbols-outlined text-error text-3xl" style={FILL_STYLE}>cancel</span>
+                    </div>
+                  )}
                 </button>
               )
             })}
           </div>
+        </div>
 
-          {/* Result Display */}
-          {showResult && (
-            <div
-              className={styles.resultBox}
-              data-correct={selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) ? 'true' : 'false'}
-            >
-              <div className={styles.resultHeader}>
-                <span className={styles.resultIcon}>
-                  {selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) ? '✅' : '❌'}
-                </span>
+        {/* Gameplay Footer */}
+        <div className="mt-16 w-full flex justify-between items-center opacity-80">
+          <button className="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors">
+            <span className="material-symbols-outlined">lightbulb</span>
+            <span className="text-xs font-bold uppercase tracking-widest">Gợi ý (2)</span>
+          </button>
+          <button className="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors">
+            <span className="material-symbols-outlined">groups</span>
+            <span className="text-xs font-bold uppercase tracking-widest">Hỏi ý kiến</span>
+          </button>
+          <button
+            onClick={() => {
+              if (!showResult) {
+                handleAnswerSelect(-1)
+              }
+            }}
+            className="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors"
+          >
+            <span className="material-symbols-outlined">skip_next</span>
+            <span className="text-xs font-bold uppercase tracking-widest">Bỏ qua</span>
+          </button>
+        </div>
+      </main>
+
+      {/* Confirmation Modal */}
+      {showResult && (
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-3rem)] max-w-lg">
+          <div className="bg-surface-container-highest p-5 rounded-3xl border border-secondary/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center justify-between gap-4 glass-panel">
+            <div className="flex items-center gap-4">
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center ${isCorrect ? 'bg-secondary/20' : 'bg-error/20'}`}>
                 <span
-                  className={styles.resultLabel}
-                  data-correct={selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) ? 'true' : 'false'}
-                >
-                  {selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) ? 'Đúng rồi!' : 'Sai rồi!'}
-                </span>
+                  className={`material-symbols-outlined text-2xl ${isCorrect ? 'text-secondary' : 'text-error'}`}
+                  style={FILL_STYLE}
+                >{isCorrect ? 'verified' : 'cancel'}</span>
               </div>
-
-              {selectedAnswer === (currentQuestion.correctAnswer?.[0] ?? -1) && (
-                <div className={styles.scoreEarned}>
-                  +{Math.floor(((currentQuestion.difficulty === 'easy' ? 10 :
-                    currentQuestion.difficulty === 'medium' ? 20 : 30) +
-                    Math.floor(timeLeft / 2) + (timeLeft >= 25 ? 5 : 0)) *
-                    (currentQuestion.difficulty === 'hard' ? 1.5 :
-                      currentQuestion.difficulty === 'medium' ? 1.2 : 1))} điểm
-                </div>
-              )}
-
-              {settings?.showExplanation && (
-                <div className={styles.explanation}>
-                  <strong>Giải thích:</strong> {currentQuestion.explanation}
-                </div>
-              )}
+              <div>
+                <p className="text-base font-bold text-on-surface">
+                  {isCorrect ? 'Chính xác!' : 'Sai rồi!'}
+                </p>
+                <p className={`text-xs font-medium ${isCorrect ? 'text-secondary/80' : 'text-error/80'}`}>
+                  {isCorrect ? `+${lastQuestionScore} Điểm thưởng` : 'Không được điểm'}
+                </p>
+              </div>
             </div>
-          )}
-
-          {/* Navigation */}
-          <div className={styles.navBar}>
             <button
-              onClick={() => {
-                if (confirm('Bạn có chắc muốn kết thúc bài làm tại đây? Tiến trình hiện tại sẽ không được lưu.')) {
-                  navigate('/practice')
-                }
-              }}
-              className={styles.exitBtn}
+              onClick={nextQuestion}
+              className="bg-gradient-to-r from-secondary to-tertiary text-on-secondary px-8 py-3 rounded-2xl font-black text-sm shadow-xl active:scale-95 transition-all hover:brightness-110 whitespace-nowrap"
             >
-              ⏹️ Thoát
+              {currentQuestionIndex + 1 >= questions.length ? 'XEM KẾT QUẢ' : 'CÂU TIẾP THEO'}
             </button>
-
-            {showResult && (
-              <button
-                onClick={nextQuestion}
-                className="btn-primary"
-              >
-                {currentQuestionIndex + 1 >= questions.length ? 'Xem Kết Quả' : 'Tiếp Theo →'}
-              </button>
-            )}
           </div>
         </div>
-      </div>
+      )}
+
+      {/* Explanation overlay */}
+      {showResult && settings?.showExplanation && currentQuestion.explanation && (
+        <div className="fixed bottom-32 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg">
+          <div className="glass-panel p-4 rounded-2xl border border-outline-variant/10 text-sm text-on-surface-variant">
+            <strong className="text-on-surface">Giải thích:</strong> {currentQuestion.explanation}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

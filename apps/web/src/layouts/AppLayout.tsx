@@ -1,0 +1,126 @@
+import { Link, Outlet, useLocation } from 'react-router-dom'
+
+const navItems = [
+  { path: '/', label: 'Trang chủ', icon: 'home' },
+  { path: '/leaderboard', label: 'Xếp hạng', icon: 'leaderboard' },
+  { path: '/groups', label: 'Nhóm', icon: 'groups' },
+  { path: '/profile', label: 'Cá nhân', icon: 'person' },
+]
+
+export default function AppLayout() {
+  const location = useLocation()
+  const isActive = (path: string) => location.pathname === path
+
+  return (
+    <div className="min-h-screen bg-[#11131e] text-[#e1e1f1]">
+      {/* Top Navigation Bar */}
+      <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#11131e]/90 backdrop-blur-md">
+        <Link to="/" className="text-2xl font-black text-[#e8a832] tracking-tighter">
+          Bible Quiz
+        </Link>
+        <nav className="hidden md:flex items-center gap-10">
+          {navItems.map((item) => (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`font-bold tracking-tight text-lg transition-colors duration-200 ${
+                isActive(item.path)
+                  ? 'text-[#e8a832]'
+                  : 'text-[#e1e1f1]/60 hover:text-[#e1e1f1]'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <div className="flex items-center gap-6">
+          <span className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">favorite</span>
+          <span className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">bolt</span>
+          <span className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">stars</span>
+          <Link to="/profile" className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#e8a832]/30 p-0.5">
+            <div className="rounded-full w-full h-full bg-surface-container-highest flex items-center justify-center">
+              <span className="material-symbols-outlined text-[#e8a832]">person</span>
+            </div>
+          </Link>
+        </div>
+      </header>
+
+      <div className="flex pt-20 min-h-screen">
+        {/* Side Navigation Bar (Desktop) */}
+        <aside className="hidden md:flex flex-col h-screen sticky top-20 py-10 bg-[#11131e] w-72 border-r border-surface-container-high/50">
+          <div className="px-8 mb-10">
+            <Link to="/profile" className="flex items-center gap-4 p-4 bg-surface-container-low rounded-2xl border border-surface-container-highest/20">
+              <div className="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center border border-secondary/20">
+                <span className="material-symbols-outlined text-[#e8a832]">person</span>
+              </div>
+              <div>
+                <p className="font-black text-[#e8a832] text-sm uppercase tracking-widest">Người Học</p>
+                <p className="text-[#e1e1f1]/60 text-xs">Hạng Vàng</p>
+              </div>
+            </Link>
+          </div>
+          <nav className="flex-1 space-y-2 px-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`px-6 py-4 flex items-center gap-4 font-bold text-sm uppercase tracking-widest rounded-xl transition-all ${
+                  isActive(item.path)
+                    ? 'gold-gradient text-[#412d00] shadow-lg shadow-secondary/10'
+                    : 'text-[#e1e1f1]/60 hover:text-[#e1e1f1] hover:bg-surface-container'
+                }`}
+              >
+                <span
+                  className="material-symbols-outlined"
+                  style={isActive(item.path) ? { fontVariationSettings: "'FILL' 1" } : undefined}
+                >
+                  {item.icon}
+                </span>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="px-6 mt-auto pb-10">
+            <Link
+              to="/quiz"
+              className="block w-full gold-gradient text-[#412d00] font-black py-4 rounded-2xl shadow-xl shadow-secondary/20 hover:scale-[1.02] active:scale-95 transition-all text-sm uppercase tracking-widest text-center"
+            >
+              Học Ngay
+            </Link>
+          </div>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 p-8 md:p-14 overflow-y-auto bg-[#11131e]">
+          <div className="max-w-7xl mx-auto">
+            <Outlet />
+          </div>
+          <div className="h-24 md:hidden" />
+        </main>
+      </div>
+
+      {/* Bottom Navigation Bar (Mobile) */}
+      <nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 md:hidden bg-[#11131e]/90 backdrop-blur-xl border-t border-surface-container-highest/20 rounded-t-[2rem] shadow-2xl">
+        {navItems.map((item) => (
+          <Link
+            key={item.path}
+            to={item.path}
+            className={`flex flex-col items-center justify-center px-5 py-2.5 transition-all ${
+              isActive(item.path)
+                ? 'bg-surface-container text-[#e8a832] rounded-2xl shadow-lg shadow-secondary/10'
+                : 'text-[#e1e1f1]/40 hover:text-[#e8a832]'
+            }`}
+          >
+            <span
+              className="material-symbols-outlined mb-1"
+              style={isActive(item.path) ? { fontVariationSettings: "'FILL' 1" } : undefined}
+            >
+              {item.icon}
+            </span>
+            <span className="text-[10px] font-black uppercase tracking-widest">{item.label}</span>
+          </Link>
+        ))}
+      </nav>
+    </div>
+  )
+}

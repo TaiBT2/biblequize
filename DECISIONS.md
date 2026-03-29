@@ -136,6 +136,24 @@
 
 ## Frontend
 
+## 2026-03-29 — Accent colors riêng cho mỗi Game Mode card
+- Quyết định: Mỗi game mode card dùng accent color riêng: Practice #4a9eff (blue), Ranked #e8a832 (gold), Daily #ff8c42 (orange), Multiplayer #9b59b6 (purple)
+- Lý do: Giúp user phân biệt nhanh giữa các mode qua visual cue. Stitch design system cho phép accent colors ngoài palette chính cho functional differentiation.
+- Trade-off: Thêm 3 màu ngoài design system chính, nhưng chỉ dùng cho game mode cards.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-03-29 — Practice + Ranked tự thiết kế (không có Stitch screen)
+- Quyết định: Tạo Practice.tsx và Ranked.tsx theo design tokens từ DESIGN_STATUS.md thay vì chờ Stitch design
+- Lý do: Hai routes cần hoàn thành để Game Mode Hub hoạt động end-to-end. Design system đã đủ mature.
+- Trade-off: Có thể cần update lại nếu Stitch tạo design chính thức, nhưng logic/data flow giữ nguyên.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-03-29 — GameModeGrid tách thành component riêng
+- Quyết định: Tạo GameModeGrid.tsx riêng thay vì inline trong Home.tsx
+- Lý do: Component có logic riêng (4 API calls, countdown timer, state management), tách ra giữ Home.tsx clean.
+- Trade-off: Thêm 1 file, nhưng separation of concerns tốt hơn.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
 ## 2026-03-28 — Migrate AuthContext → Zustand store
 - Quyết định: Chuyển AuthContext (global state) sang Zustand store (`src/store/authStore.ts`). Giữ ErrorContext vì nó là tree-scoped UI concern (render toasts trong React tree).
 - Lý do: CLAUDE.md rule: "State global dùng Zustand — không dùng Context cho global state". AuthContext quản lý user/auth state toàn app = global state thuần. ErrorContext render `<ErrorToast>` components = cần React tree context.

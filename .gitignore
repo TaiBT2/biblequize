@@ -23,6 +23,9 @@ compose.yml
 api.log
 /apps/api/logs/
 
+# Stitch HTML source files
+scripts/stitch-html/
+
 # One-time scripts & temp files
 *.py
 all_files.txt

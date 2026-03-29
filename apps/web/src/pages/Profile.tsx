@@ -1,224 +1,73 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { api } from '../api/client'
 import { useAuth } from '../store/authStore'
 
-// ─── Tier helpers ────────────────────────────────────────────────────────────
-const TIER_COLORS: Record<string, string> = {
-  newcomer: '#6B7280',
-  seeker: '#22C55E',
-  disciple: '#3B82F6',
-  sage: '#A855F7',
-  prophet: '#EAB308',
-  apostle: '#EF4444',
+// --- Static data (to be replaced with API data later) ---
+
+const USER = {
+  name: 'Nguyễn Văn A',
+  title: 'Tân Tín Hữu',
+  level: 12,
+  coverImage:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuA_2svHltkb34shYGCf9-PJfW2HOHx01DO6y2JrTlRvjlC_vZTTHkhGqs0F4n0VTURex5c6114-NHHBlkEnO7rZ_93rp-maO7WIucjrwDzki0RPNnhC9uQvSafCfrUHRRUdGdBh3BCwfciA5NJVr5qr8Bm3Tl9ltKBBQGZEmxsv9faaVUr8EanCHevebtowhmvYNCwxdF1DdJ34yD4qzbChuPdMU14lRuW1S1o-gveLcFFV88qOM4UAQdd7IHcCN9Q2k_7gkRLIOUQ',
+  avatar:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuAP5PpXpHAtcFcSJwbaIdBNeUoaxx07hCqk-27gR9A1zQ3lGwgrex4TF5GKVtAPXpJoVpXsGGx4GA1sPQ89bl3xQXewGAYRGMxAvYG2VZ1Hly5ExAxxgcyz4IF4vej4DEYCbAF40BMMQ2eB06NXCbSztvyPEwU0ABywxhIOM9NP5Kxw8qnHuJVj2Sm0NR8VkJ1XnEqo8JvRDeiKTWQtWut9CvCrxIGNxyj3YWwYDxAMkMMiM0qI3wNoN5k7Xd_D1CM6XWROSsRfEeg',
 }
 
-const TIER_ICONS: Record<string, string> = {
-  newcomer: '🌱',
-  seeker: '🔍',
-  disciple: '📖',
-  sage: '🧙',
-  prophet: '🔮',
-  apostle: '✝️',
+const TIER_PROGRESS = {
+  currentTier: 'Tân Tín Hữu',
+  nextTier: 'Sứ Đồ',
+  currentExp: 850,
+  nextTierExp: 1200,
+  progressPercent: 65,
+  expRemaining: 350,
 }
 
-interface RankedStatus {
-  livesRemaining: number
-  questionsCounted: number
-  pointsToday: number
-  currentBook: string
-  streak: number
-  highScore: number
-  totalPoints: number
-  accuracy: number
-}
+const QUICK_STATS = [
+  { icon: 'quiz', iconFill: false, label: 'Số câu hỏi', value: '1,420', bgColor: 'bg-secondary/10', textColor: 'text-secondary' },
+  { icon: 'bolt', iconFill: true, label: 'Chuỗi tốt nhất', value: '24 Ngày', bgColor: 'bg-[#e7c268]/10', textColor: 'text-[#e7c268]' },
+  { icon: 'target', iconFill: false, label: 'Độ chính xác', value: '92.5%', bgColor: 'bg-primary/10', textColor: 'text-primary', hiddenOnMobile: true },
+]
 
-interface TierInfo {
-  totalPoints: number
-  tier: string
-  tierName: string
-  tierMinPoints: number
-  nextTier: string | null
-  nextTierName: string | null
-  nextTierMinPoints: number | null
-  pointsToNextTier: number | null
-  progressPercent: number
-}
+type HeatmapColor =
+  | 'bg-secondary'
+  | 'bg-secondary/60'
+  | 'bg-secondary/80'
+  | 'bg-secondary/30'
+  | 'bg-surface-container-high'
+
+const HEATMAP_CELLS: HeatmapColor[] = [
+  'bg-secondary', 'bg-secondary/60', 'bg-secondary', 'bg-surface-container-high', 'bg-secondary/30', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary/80', 'bg-secondary', 'bg-surface-container-high', 'bg-surface-container-high', 'bg-secondary', 'bg-secondary/60', 'bg-secondary', 'bg-secondary/30', 'bg-secondary', 'bg-secondary', 'bg-secondary/80', 'bg-secondary',
+  'bg-secondary/30', 'bg-secondary', 'bg-surface-container-high', 'bg-surface-container-high', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary/80', 'bg-secondary', 'bg-secondary', 'bg-secondary/30', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-surface-container-high', 'bg-secondary/30', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary',
+  'bg-secondary', 'bg-secondary/60', 'bg-secondary', 'bg-surface-container-high', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-surface-container-high', 'bg-surface-container-high', 'bg-secondary', 'bg-secondary/80', 'bg-secondary', 'bg-surface-container-high', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary/30', 'bg-secondary', 'bg-secondary/80',
+  'bg-surface-container-high', 'bg-surface-container-high', 'bg-secondary/30', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary/60', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary/80', 'bg-secondary', 'bg-secondary', 'bg-surface-container-high', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary/30', 'bg-secondary', 'bg-secondary/80',
+]
+
+const BADGES = [
+  { icon: 'auto_stories', name: 'Học giả', description: 'Đọc 50 chương', locked: false },
+  { icon: 'local_fire_department', name: 'Rực cháy', description: '7 ngày liên tiếp', locked: false },
+  { icon: 'military_tech', name: 'Vô địch', description: 'Top 1 tuần', locked: false },
+  { icon: 'trophy', name: 'Nhà truyền giáo', description: 'Mời 10 bạn bè', locked: true },
+  { icon: 'workspace_premium', name: 'Thánh kinh', description: 'Hoàn thành 500 câu', locked: true },
+]
+
+// --- Component ---
+
+const FILL_STYLE = { fontVariationSettings: "'FILL' 1" }
 
 const Profile: React.FC = () => {
   const { user, isAuthenticated } = useAuth()
-  const [stats, setStats] = useState({
-    level: 0,
-    highScore: 0,
-    totalPoints: 0,
-    streak: 0,
-    accuracy: 0
-  })
-  const [tierInfo, setTierInfo] = useState<TierInfo | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [showTitleTooltip, setShowTitleTooltip] = useState(false)
-  const [showProgressTooltip, setShowProgressTooltip] = useState(false)
-  const [selectedGroup, setSelectedGroup] = useState('TOÀN BỘ')
-
-  useEffect(() => {
-    const loadProfileData = async () => {
-      if (!user) return
-
-      try {
-        const [statusRes, tierRes] = await Promise.all([
-          api.get('/api/me/ranked-status'),
-          api.get('/api/me/tier'),
-        ])
-
-        const status: RankedStatus = statusRes.data
-        const tier: TierInfo = tierRes.data
-
-        setStats({
-          level: Math.floor(tier.totalPoints / 100),
-          highScore: status.highScore ?? 0,
-          totalPoints: tier.totalPoints ?? 0,
-          streak: status.streak ?? 0,
-          accuracy: status.accuracy ?? 0,
-        })
-        setTierInfo(tier)
-      } catch (error) {
-        console.error('Error loading profile data:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    loadProfileData()
-  }, [user])
-
-
-  const getBibleData = () => {
-    return {
-      'NGŨ KINH': [
-        { book: 'Sáng Thế Ký', progress: 85 },
-        { book: 'Xuất Ê-díp-tô Ký', progress: 70 },
-        { book: 'Lê-vi Ký', progress: 45 },
-        { book: 'Dân Số Ký', progress: 30 },
-        { book: 'Phục Truyền Luật Lệ Ký', progress: 15 }
-      ],
-      'SÁCH LỊCH SỬ': [
-        { book: 'Giô-suê', progress: 60 },
-        { book: 'Các Quan Xét', progress: 40 },
-        { book: 'Ru-tơ', progress: 90 },
-        { book: '1 Sa-mu-ên', progress: 25 },
-        { book: '2 Sa-mu-ên', progress: 20 },
-        { book: '1 Các Vua', progress: 15 },
-        { book: '2 Các Vua', progress: 10 },
-        { book: '1 Sử Ký', progress: 5 },
-        { book: '2 Sử Ký', progress: 5 },
-        { book: 'Ê-xơ-ra', progress: 30 },
-        { book: 'Nê-hê-mi', progress: 25 },
-        { book: 'Ê-xơ-tê', progress: 80 }
-      ],
-      'SÁCH THI CA': [
-        { book: 'Gióp', progress: 35 },
-        { book: 'Thi Thiên', progress: 70 },
-        { book: 'Châm Ngôn', progress: 55 },
-        { book: 'Truyền Đạo', progress: 40 },
-        { book: 'Nhã Ca', progress: 20 }
-      ],
-      'SÁCH TIÊN TRI': [
-        { book: 'Ê-sai', progress: 30 },
-        { book: 'Giê-rê-mi', progress: 20 },
-        { book: 'Ca Thương', progress: 15 },
-        { book: 'Ê-xê-chi-ên', progress: 10 },
-        { book: 'Đa-ni-ên', progress: 45 },
-        { book: 'Ô-sê', progress: 25 },
-        { book: 'Giô-ên', progress: 35 },
-        { book: 'A-mốt', progress: 20 },
-        { book: 'Áp-đia', progress: 15 },
-        { book: 'Giô-na', progress: 60 },
-        { book: 'Mi-chê', progress: 25 },
-        { book: 'Na-hum', progress: 20 },
-        { book: 'Ha-ba-cúc', progress: 15 },
-        { book: 'Sô-phô-ni', progress: 10 },
-        { book: 'A-ghê', progress: 30 },
-        { book: 'Xa-cha-ri', progress: 20 },
-        { book: 'Ma-la-chi', progress: 25 }
-      ],
-      'SÁCH TIN MỪNG': [
-        { book: 'Ma-thi-ơ', progress: 80 },
-        { book: 'Mác', progress: 75 },
-        { book: 'Lu-ca', progress: 70 },
-        { book: 'Giăng', progress: 85 }
-      ],
-      'SÁCH CÔNG VỤ': [
-        { book: 'Công Vụ', progress: 60 }
-      ],
-      'CÁC THƯ TÍN': [
-        { book: 'Rô-ma', progress: 45 },
-        { book: '1 Cô-rinh-tô', progress: 40 },
-        { book: '2 Cô-rinh-tô', progress: 35 },
-        { book: 'Ga-la-ti', progress: 50 },
-        { book: 'Ê-phê-sô', progress: 55 },
-        { book: 'Phi-líp', progress: 60 },
-        { book: 'Cô-lô-se', progress: 45 },
-        { book: '1 Tê-sa-lô-ni-ca', progress: 40 },
-        { book: '2 Tê-sa-lô-ni-ca', progress: 35 },
-        { book: '1 Ti-mô-thê', progress: 50 },
-        { book: '2 Ti-mô-thê', progress: 45 },
-        { book: 'Tít', progress: 40 },
-        { book: 'Phi-lê-môn', progress: 55 },
-        { book: 'Hê-bơ-rơ', progress: 30 },
-        { book: 'Gia-cơ', progress: 65 },
-        { book: '1 Phi-e-rơ', progress: 50 },
-        { book: '2 Phi-e-rơ', progress: 45 },
-        { book: '1 Giăng', progress: 60 },
-        { book: '2 Giăng', progress: 40 },
-        { book: '3 Giăng', progress: 35 },
-        { book: 'Giu-đe', progress: 30 }
-      ],
-      'SÁCH KHẢI HUYỀN': [
-        { book: 'Khải Huyền', progress: 25 }
-      ]
-    }
-  }
-
-  const getProgressData = () => {
-    const bibleData = getBibleData()
-
-    if (selectedGroup === 'TOÀN BỘ') {
-      // Return all books for overview
-      return Object.values(bibleData).flat()
-    } else if (selectedGroup === 'CỰU ƯỚC') {
-      return [
-        ...bibleData['NGŨ KINH'],
-        ...bibleData['SÁCH LỊCH SỬ'],
-        ...bibleData['SÁCH THI CA'],
-        ...bibleData['SÁCH TIÊN TRI']
-      ]
-    } else if (selectedGroup === 'TÂN ƯỚC') {
-      return [
-        ...bibleData['SÁCH TIN MỪNG'],
-        ...bibleData['SÁCH CÔNG VỤ'],
-        ...bibleData['CÁC THƯ TÍN'],
-        ...bibleData['SÁCH KHẢI HUYỀN']
-      ]
-    } else {
-      return (bibleData as Record<string, any>)[selectedGroup] || []
-    }
-  }
 
   if (!isAuthenticated || !user) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#0E0B1A' }}>
+      <div className="flex items-center justify-center py-24">
         <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4" style={{ color: '#00FFFF' }}>
+          <h2 className="text-2xl font-bold mb-4 text-secondary">
             Vui lòng đăng nhập để xem hồ sơ
           </h2>
           <Link
             to="/login"
-            className="px-6 py-3 rounded-lg font-medium transition-all duration-300"
-            style={{
-              background: 'linear-gradient(135deg, #00FFFF 0%, #9333EA 100%)',
-              color: '#0E0B1A',
-              boxShadow: '0 4px 15px rgba(0, 255, 255, 0.3)'
-            }}
+            className="px-6 py-3 rounded-lg font-bold gold-gradient text-on-secondary inline-block"
           >
             Đăng nhập
           </Link>
@@ -227,315 +76,200 @@ const Profile: React.FC = () => {
     )
   }
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#0E0B1A' }}>
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-xl font-medium" style={{ color: '#00FFFF' }}>
-            Đang tải hồ sơ...
-          </p>
+  return (
+    <>
+      {/* Hero Section */}
+      <section className="relative rounded-3xl overflow-hidden mb-12">
+        <div className="h-48 md:h-72 relative">
+          <img
+            className="w-full h-full object-cover opacity-50"
+            src={USER.coverImage}
+            alt="Cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+        </div>
+        <div className="absolute bottom-6 left-6 md:left-10 flex flex-col md:flex-row items-end gap-6 w-full pr-12">
+          <div className="w-24 h-24 md:w-40 md:h-40 rounded-3xl border-4 border-background bg-surface-container-high overflow-hidden shadow-2xl relative z-10">
+            <img
+              alt="User avatar"
+              className="w-full h-full object-cover"
+              src={(user as any).picture || USER.avatar}
+            />
+          </div>
+          <div className="flex-1 pb-4">
+            <h1 className="text-3xl md:text-5xl font-black text-on-surface tracking-tight mb-1">
+              {user.name || USER.name}
+            </h1>
+            <p className="text-secondary font-bold flex items-center gap-2 text-lg">
+              <span
+                className="material-symbols-outlined text-xl"
+                style={FILL_STYLE}
+              >
+                verified
+              </span>
+              {TIER_PROGRESS.currentTier} &bull; Cấp độ {USER.level}
+            </p>
+          </div>
+          <div className="hidden lg:flex gap-3 pb-4">
+            <button className="px-6 py-3 bg-surface-container-highest border border-outline-variant/20 rounded-xl font-bold text-sm hover:bg-surface-bright transition-colors">
+              Chỉnh sửa hồ sơ
+            </button>
+            <button className="p-3 bg-secondary/10 border border-secondary/20 rounded-xl text-secondary hover:bg-secondary/20 transition-colors">
+              <span className="material-symbols-outlined">share</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Bento Grid Stats & Progress */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+        {/* Tier Progress */}
+        <div className="md:col-span-2 bg-surface-container rounded-3xl p-10 flex flex-col justify-between">
+          <div>
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-xl font-bold text-on-surface tracking-tight uppercase">
+                Tiến trình danh hiệu
+              </h2>
+              <span className="text-xs font-black bg-tertiary-container text-tertiary px-4 py-1.5 rounded-full uppercase tracking-widest">
+                {TIER_PROGRESS.nextTier} (Tiếp theo)
+              </span>
+            </div>
+            <div className="relative h-5 w-full bg-primary-container rounded-full overflow-hidden mb-6">
+              <div
+                className="absolute top-0 left-0 h-full gold-gradient rounded-full shadow-[0_0_12px_rgba(232,168,50,0.3)]"
+                style={{ width: `${TIER_PROGRESS.progressPercent}%` }}
+              />
+            </div>
+            <div className="flex justify-between text-sm font-bold text-on-surface-variant uppercase tracking-tighter">
+              <span>{TIER_PROGRESS.currentTier}</span>
+              <span>
+                {TIER_PROGRESS.currentExp} / {TIER_PROGRESS.nextTierExp.toLocaleString()} EXP
+              </span>
+              <span>{TIER_PROGRESS.nextTier}</span>
+            </div>
+          </div>
+          <div className="mt-10 flex gap-6 items-center">
+            <div className="flex -space-x-3">
+              <div className="w-12 h-12 rounded-full border-2 border-surface-container bg-surface-container-high flex items-center justify-center text-secondary">
+                <span className="material-symbols-outlined text-2xl">auto_awesome</span>
+              </div>
+              <div className="w-12 h-12 rounded-full border-2 border-surface-container bg-surface-container-high flex items-center justify-center text-on-surface-variant opacity-50">
+                <span className="material-symbols-outlined text-2xl">lock</span>
+              </div>
+            </div>
+            <p className="text-base text-on-surface-variant italic font-medium leading-relaxed">
+              &ldquo;Còn {TIER_PROGRESS.expRemaining} EXP nữa để nhận danh hiệu{' '}
+              {TIER_PROGRESS.nextTier} và mở khóa phần thưởng đặc biệt.&rdquo;
+            </p>
+          </div>
+        </div>
+
+        {/* Quick Stats Column */}
+        <div className="grid grid-cols-2 md:grid-cols-1 gap-6">
+          {QUICK_STATS.map((stat) => (
+            <div
+              key={stat.label}
+              className={`bg-surface-container rounded-3xl p-8 flex items-center gap-5${
+                stat.hiddenOnMobile ? ' hidden md:flex' : ''
+              }`}
+            >
+              <div className={`p-4 ${stat.bgColor} rounded-2xl ${stat.textColor}`}>
+                <span
+                  className="material-symbols-outlined text-3xl"
+                  style={stat.iconFill ? FILL_STYLE : undefined}
+                >
+                  {stat.icon}
+                </span>
+              </div>
+              <div>
+                <p className="text-[11px] font-black uppercase text-on-surface-variant tracking-widest">
+                  {stat.label}
+                </p>
+                <p className="text-2xl font-black text-on-surface">{stat.value}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    )
-  }
 
-  return (
-    <div className="page-bg min-h-screen">
-      <div className="container mx-auto px-4 py-12">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="page-title text-4xl mb-4">
-            NHẬT KÝ HÀNH TRÌNH
-          </h1>
-          <p className="text-[#7a6a5a] text-lg font-medium">
-            Theo dõi tiến độ học tập và sự thăng tiến của bạn
-          </p>
-        </div>
-
-        {/* User Info */}
-        <div className="page-card p-8 mb-8 relative overflow-hidden">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="w-24 h-24 rounded-full flex items-center justify-center text-4xl font-black shadow-lg border-4 border-white"
-                style={{
-                  background: 'linear-gradient(135deg, #4bbf9f 0%, #38a169 100%)',
-                  color: '#ffffff'
-                }}>
-                {user.name?.charAt(0).toUpperCase()}
-              </div>
-              <div className="text-center md:text-left">
-                <h2 className="text-3xl font-black text-[#4a3f35] parchment-headline mb-2">{user.name}</h2>
-                <div
-                  className="relative inline-block"
-                  onMouseEnter={() => setShowTitleTooltip(true)}
-                  onMouseLeave={() => setShowTitleTooltip(false)}
-                >
-                  <span className="px-4 py-1.5 rounded-full bg-[#fdfaf3] border border-[#eeeae0] text-sm font-bold cursor-help shadow-sm"
-                    style={{ color: tierInfo ? TIER_COLORS[tierInfo.tier] || '#7a6a5a' : '#7a6a5a' }}>
-                    {tierInfo ? `${TIER_ICONS[tierInfo.tier] || '🌱'} ${tierInfo.tierName}` : '📚 Người Bắt Đầu'}
-                  </span>
-
-                  {/* Title Tooltip */}
-                  {showTitleTooltip && (
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-4 py-3 bg-[#12103a] text-white text-xs rounded-xl shadow-xl z-50 min-w-[200px] border border-[#4bbf9f]/30">
-                      <div className="font-bold mb-1 text-[#4bbf9f]">Danh hiệu của bạn</div>
-                      <div className="text-xs opacity-90 leading-relaxed">
-                        {stats.level >= 10 ? 'Bậc thầy học thuật - Đã chinh phục mọi thử thách!' :
-                          stats.level >= 5 ? 'Học giả tiên tiến - Đang trên đường trở thành bậc thầy!' :
-                            'Người bắt đầu - Hãy hoàn thành các thử thách để thăng tiến lên "Người Tìm Hiểu", "Môn Đồ", "Học Giả"...'}
-                      </div>
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-t-[#12103a]"></div>
-                    </div>
-                  )}
-                </div>
-              </div>
+      {/* Heatmap Section */}
+      <section className="bg-surface-container rounded-3xl p-10 mb-12 overflow-hidden">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+          <h2 className="text-xl font-bold text-on-surface tracking-tight uppercase">
+            Nhật ký học tập
+          </h2>
+          <div className="flex items-center gap-6 text-xs font-bold text-on-surface-variant">
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 bg-surface-container-high rounded-sm" />
+              <span>Nghỉ ngơi</span>
             </div>
-
-            {/* Tier Progress */}
-            <div className="flex flex-col items-center md:items-end gap-3 min-w-[200px]">
-              {tierInfo && (
-                <div className="w-full">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-[#7a6a5a] font-bold text-sm uppercase tracking-wider">
-                      {TIER_ICONS[tierInfo.tier] || '🌱'} {tierInfo.tierName}
-                    </span>
-                    <span style={{ color: TIER_COLORS[tierInfo.tier] || '#6B7280', fontWeight: 900 }}>
-                      {tierInfo.progressPercent}%
-                    </span>
-                  </div>
-
-                  {/* Tier Progress Bar */}
-                  <div
-                    className="relative"
-                    onMouseEnter={() => setShowProgressTooltip(true)}
-                    onMouseLeave={() => setShowProgressTooltip(false)}
-                  >
-                    <div className="w-full h-3 bg-[#eeeae0] rounded-full overflow-hidden shadow-inner">
-                      <div
-                        className="h-full rounded-full transition-all duration-1000"
-                        style={{
-                          width: `${tierInfo.progressPercent}%`,
-                          backgroundColor: TIER_COLORS[tierInfo.tier] || '#6B7280',
-                          boxShadow: `0 0 10px ${TIER_COLORS[tierInfo.tier] || '#6B7280'}66`,
-                        }}
-                      ></div>
-                    </div>
-
-                    {/* Progress Tooltip */}
-                    {showProgressTooltip && (
-                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-4 py-3 bg-[#12103a] text-white text-xs rounded-xl shadow-xl z-50 min-w-[220px] border border-[#4bbf9f]/30">
-                        <div className="font-bold mb-1" style={{ color: TIER_COLORS[tierInfo.tier] || '#4bbf9f' }}>
-                          Tiến độ thăng tier
-                        </div>
-                        <div className="text-xs opacity-90 leading-relaxed">
-                          {tierInfo.nextTier
-                            ? `Còn ${tierInfo.pointsToNextTier} điểm nữa để đạt ${tierInfo.nextTierName}`
-                            : 'Đã đạt tier cao nhất!'}
-                        </div>
-                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-6 border-r-6 border-t-6 border-transparent border-t-[#12103a]"></div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Tier sub-text */}
-                  <div className="mt-2 text-xs text-center" style={{ color: '#7a6a5a' }}>
-                    {tierInfo.nextTier
-                      ? `Còn ${tierInfo.pointsToNextTier} điểm nữa để đạt ${tierInfo.nextTierName}`
-                      : '🏆 Đã đạt tier cao nhất!'}
-                  </div>
-                </div>
-              )}
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 bg-secondary/30 rounded-sm" />
+              <span>Học ít</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 bg-secondary rounded-sm" />
+              <span>Năng nổ</span>
             </div>
           </div>
         </div>
-
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {/* Left Side Stats */}
-          <div className="space-y-6">
-            <div className="flex items-center">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{
-                background: 'linear-gradient(135deg, #FF8C42, #FF6B9D)',
-                border: '2px solid #FF8C42',
-                boxShadow: '0 0 15px #FF8C42, inset 0 0 15px rgba(255, 140, 66, 0.1)'
-              }}>
-                <span className="text-2xl">🏆</span>
-              </div>
-              <div>
-                <div className="text-white opacity-80">ĐIỂM CAO</div>
-                {stats.highScore > 0 ? (
-                  <div className="text-2xl font-bold" style={{ color: '#FF8C42' }}>{stats.highScore}</div>
-                ) : (
-                  <div className="text-lg font-semibold italic" style={{ color: '#FF8C42' }}>
-                    Hãy ghi dấu ấn đầu tiên!
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div className="flex items-center">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{
-                background: 'linear-gradient(135deg, #FF6B9D, #9333EA)',
-                border: '2px solid #FF6B9D',
-                boxShadow: '0 0 15px #FF6B9D, inset 0 0 15px rgba(255, 107, 157, 0.1)'
-              }}>
-                <span className="text-2xl">💰</span>
-              </div>
-              <div>
-                <div className="text-white opacity-80">ĐIỂM TỔNG</div>
-                {stats.totalPoints > 0 ? (
-                  <div className="text-2xl font-bold" style={{ color: '#FF6B9D' }}>{stats.totalPoints}</div>
-                ) : (
-                  <div className="text-lg font-semibold italic" style={{ color: '#FF6B9D' }}>
-                    Sẵn sàng chinh phục!
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Right Side Stats — Streak */}
-          <div className="space-y-6">
-            <div className="flex items-center">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{
-                background: stats.streak > 0
-                  ? 'linear-gradient(135deg, #FF6B9D, #FF8C42)'
-                  : 'linear-gradient(135deg, #FF6B9D, #9333EA)',
-                border: '2px solid #FF6B9D',
-                boxShadow: stats.streak > 0
-                  ? '0 0 20px #FF6B9D, 0 0 40px rgba(255, 140, 66, 0.3)'
-                  : '0 0 15px #FF6B9D, inset 0 0 15px rgba(255, 107, 157, 0.1)',
-                animation: stats.streak > 0 ? 'pulse 2s ease-in-out infinite' : 'none',
-              }}>
-                <span className="text-2xl">🔥</span>
-              </div>
-              <div>
-                {stats.streak > 0 ? (
-                  <>
-                    <div className="text-2xl font-bold" style={{
-                      color: '#FF6B9D',
-                      textShadow: '0 0 10px rgba(255, 107, 157, 0.5)',
-                    }}>
-                      🔥 {stats.streak} ngày liên tiếp
-                    </div>
-                    {stats.streak >= 30 && (
-                      <span className="inline-block mt-1 px-3 py-0.5 rounded-full text-xs font-bold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
-                        🏅 Trung tín
-                      </span>
-                    )}
-                    {stats.streak >= 7 && stats.streak < 30 && (
-                      <span className="inline-block mt-1 px-3 py-0.5 rounded-full text-xs font-bold bg-orange-500/20 text-orange-400 border border-orange-500/30">
-                        🏅 Chuyên cần
-                      </span>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <div className="text-white opacity-80">STREAK</div>
-                    <div className="text-lg font-semibold italic" style={{ color: '#FF6B9D' }}>
-                      Bắt đầu streak hôm nay!
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Progress Graph */}
-        <div className="bg-black bg-opacity-40 rounded-2xl p-6 mb-8" style={{
-          border: '1px solid rgba(0, 255, 136, 0.3)',
-          boxShadow: '0 0 20px rgba(0, 255, 136, 0.2), inset 0 0 20px rgba(0, 255, 136, 0.1)'
-        }}>
-          <h3 className="text-2xl font-bold mb-2" style={{
-            color: '#00FF88',
-            textShadow: '0 0 20px rgba(0, 255, 136, 0.5)',
-            fontSize: '1.5rem'
-          }}>TIẾN ĐỘ HỌC TẬP</h3>
-          <p className="text-sm italic mb-4" style={{ color: '#B0B0B0' }}>
-            Tỷ lệ trả lời đúng trung bình theo Sách
-          </p>
-
-          {/* Group Filter */}
-          <div className="flex flex-wrap gap-2 mb-6">
-            {['TOÀN BỘ', 'CỰU ƯỚC', 'TÂN ƯỚC', 'NGŨ KINH', 'SÁCH LỊCH SỬ', 'SÁCH THI CA', 'SÁCH TIÊN TRI', 'SÁCH TIN MỪNG', 'CÁC THƯ TÍN'].map((group) => (
-              <button
-                key={group}
-                onClick={() => setSelectedGroup(group)}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 ${selectedGroup === group
-                  ? 'bg-gradient-to-r from-cyan-400 to-purple-400 text-black'
-                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                  }`}
-                style={{
-                  boxShadow: selectedGroup === group ? '0 0 10px rgba(0, 255, 255, 0.3)' : 'none'
-                }}
-              >
-                {group}
-              </button>
+        <div className="overflow-x-auto pb-4">
+          <div className="streak-grid min-w-[600px] gap-1.5">
+            {HEATMAP_CELLS.map((colorClass, i) => (
+              <div key={i} className={`h-5 ${colorClass} rounded-sm`} />
             ))}
           </div>
-
-          <div className="bg-black bg-opacity-40 p-6 rounded-2xl relative" style={{
-            border: '1px solid rgba(0, 255, 136, 0.3)',
-            boxShadow: '0 0 20px rgba(0, 255, 136, 0.2), inset 0 0 20px rgba(0, 255, 136, 0.1)'
-          }}>
-            {/* List View */}
-            <div className="space-y-3 max-h-96 overflow-y-auto">
-              {getProgressData().map((item: { book: string; progress: number }, index: number) => (
-                <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300">
-                  <div className="flex-1">
-                    <div className="text-sm font-medium text-white mb-1">{item.book}</div>
-                    <div className="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-cyan-400 to-green-400 rounded-full transition-all duration-1000"
-                        style={{
-                          width: `${item.progress}%`,
-                          boxShadow: '0 0 8px rgba(0, 255, 255, 0.5)'
-                        }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="ml-4 text-right">
-                    <div className="text-lg font-bold" style={{ color: '#00FF88' }}>
-                      {item.progress}%
-                    </div>
-                    <div className="text-xs text-gray-400">
-                      {item.progress >= 80 ? '🌟 Xuất sắc' :
-                        item.progress >= 60 ? '⭐ Tốt' :
-                          item.progress >= 40 ? '📈 Đang tiến bộ' : '💪 Cần cố gắng'}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
+      </section>
 
-        {/* Navigation Button */}
-        <div className="text-center">
-          <Link
-            to="/"
-            className="px-12 py-4 text-xl font-bold tracking-wider rounded-2xl transition-all duration-300 group relative overflow-hidden"
-            style={{
-              border: '2px solid #00FFFF',
-              backgroundColor: '#161228',
-              boxShadow: '0 0 20px #00FFFF, inset 0 0 20px rgba(0, 255, 255, 0.1)',
-              color: '#00FFFF'
-            }}
+      {/* Badge Collection */}
+      <section>
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-xl font-bold text-on-surface tracking-tight uppercase">
+            Bộ sưu tập huy hiệu
+          </h2>
+          <a
+            className="text-secondary text-sm font-black uppercase tracking-widest hover:underline"
+            href="#"
           >
-            <span className="relative z-10">QUAY VỀ SẢNH CHỜ</span>
-            <div
-              className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style={{
-                background: 'linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(0, 255, 255, 0.2))',
-                boxShadow: '0 0 30px #00FFFF, 0 0 60px #00FFFF'
-              }}
-            />
-          </Link>
+            Xem tất cả
+          </a>
         </div>
-      </div>
-    </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+          {BADGES.map((badge) => (
+            <div
+              key={badge.name}
+              className={`bg-surface-container rounded-3xl p-8 flex flex-col items-center text-center group${
+                badge.locked
+                  ? ' opacity-40 grayscale'
+                  : ' hover:bg-surface-container-high'
+              } transition-all`}
+            >
+              <div
+                className={`w-20 h-20 rounded-full flex items-center justify-center mb-5 border ${
+                  badge.locked
+                    ? 'bg-surface-container-high border-outline-variant/10'
+                    : 'glass-effect border-secondary/20 shadow-[0_0_15px_rgba(232,168,50,0.1)] group-hover:scale-110'
+                } transition-transform`}
+              >
+                <span
+                  className={`material-symbols-outlined text-4xl ${
+                    badge.locked ? 'text-on-surface-variant' : 'text-secondary'
+                  }`}
+                  style={!badge.locked ? FILL_STYLE : undefined}
+                >
+                  {badge.icon}
+                </span>
+              </div>
+              <p className="text-sm font-black text-on-surface mb-2">{badge.name}</p>
+              <p className="text-xs text-on-surface-variant font-medium">
+                {badge.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   )
 }
 

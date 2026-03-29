@@ -1,8 +1,11 @@
 {
   "permissions": {
     "allow": [
+      "mcp__stitch__list_screens",
       "Bash(*)",
-      "mcp__stitch__get_screen"
+      "mcp__stitch__get_screen",
+      "Edit(*)",
+      "Write(*)"
     ]
   }
 }

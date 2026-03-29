@@ -17,6 +17,7 @@ import Ranked from './pages/Ranked'
 import Rooms from './pages/Rooms'
 import AuthCallback from './pages/AuthCallback'
 import AdminLayout from './layouts/AdminLayout'
+import AppLayout from './layouts/AppLayout'
 import AIQuestionGenerator from './pages/admin/AIQuestionGenerator'
 import ReviewQueue from './pages/admin/ReviewQueue'
 import QuestionsAdmin from './pages/admin/Questions'
@@ -53,29 +54,36 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <ErrorProvider>
             <BrowserRouter>
               <Routes>
-                <Route path="/" element={<Home />} />
+                {/* Pages with AppLayout (sidebar + nav) */}
+                <Route element={<AppLayout />}>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/leaderboard" element={<Leaderboard />} />
+                  <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
+                  <Route path="/groups" element={<RequireAuth><Groups /></RequireAuth>} />
+                  <Route path="/groups/:id" element={<RequireAuth><GroupDetail /></RequireAuth>} />
+                  <Route path="/groups/:id/analytics" element={<RequireAuth><GroupAnalytics /></RequireAuth>} />
+                  <Route path="/tournaments" element={<RequireAuth><Tournaments /></RequireAuth>} />
+                  <Route path="/tournaments/:id" element={<RequireAuth><TournamentDetail /></RequireAuth>} />
+                  <Route path="/tournaments/:id/match/:matchId" element={<RequireAuth><TournamentMatch /></RequireAuth>} />
+                  <Route path="/achievements" element={<Achievements />} />
+                  <Route path="/ranked" element={<Ranked />} />
+                  <Route path="/daily" element={<DailyChallenge />} />
+                </Route>
+
+                {/* Full-screen pages (no AppLayout) */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/auth/callback" element={<AuthCallback />} />
-                <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
-                <Route path="/daily" element={<DailyChallenge />} />
-                <Route path="/practice" element={<Practice />} />
                 <Route path="/quiz" element={<Quiz />} />
-                  <Route path="/review" element={<Review />} />
-                  <Route path="/achievements" element={<Achievements />} />
-                <Route path="/ranked" element={<Ranked />} />
-                <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route path="/practice" element={<Practice />} />
+                <Route path="/review" element={<Review />} />
                 <Route path="/rooms" element={<RequireAuth><Rooms /></RequireAuth>} />
                 <Route path="/multiplayer" element={<RequireAuth><Multiplayer /></RequireAuth>} />
-                <Route path="/groups" element={<RequireAuth><Groups /></RequireAuth>} />
-                <Route path="/groups/:id" element={<RequireAuth><GroupDetail /></RequireAuth>} />
-                <Route path="/groups/:id/analytics" element={<RequireAuth><GroupAnalytics /></RequireAuth>} />
-                <Route path="/tournaments" element={<RequireAuth><Tournaments /></RequireAuth>} />
-                <Route path="/tournaments/:id" element={<RequireAuth><TournamentDetail /></RequireAuth>} />
-                <Route path="/tournaments/:id/match/:matchId" element={<RequireAuth><TournamentMatch /></RequireAuth>} />
                 <Route path="/room/create" element={<RequireAuth><CreateRoom /></RequireAuth>} />
                 <Route path="/room/join" element={<RequireAuth><JoinRoom /></RequireAuth>} />
                 <Route path="/room/:roomId/lobby" element={<RequireAuth><RoomLobby /></RequireAuth>} />
                 <Route path="/room/:roomId/quiz" element={<RequireAuth><RoomQuiz /></RequireAuth>} />
+
+                {/* Admin */}
                 <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
                   <Route index element={<UsersAdmin />} />
                   <Route path="users" element={<UsersAdmin />} />
