@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BibleQuiz - Học Lời Chúa Mỗi Ngày</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-fixed-dim": "#c0c4e8",
+            "tertiary-container": "#2b1f00",
+            "secondary-fixed": "#ffdea7",
+            "secondary": "#f8bd45",
+            "secondary-container": "#bc8709",
+            "on-tertiary": "#3e2e00",
+            "on-background": "#e1e1f1",
+            "on-primary": "#2a2f4a",
+            "primary-fixed": "#dee1ff",
+            "on-error-container": "#ffdad6",
+            "surface-container-highest": "#323440",
+            "tertiary": "#e7c268",
+            "secondary-fixed-dim": "#f8bd45",
+            "error-container": "#93000a",
+            "inverse-on-surface": "#2e303c",
+            "tertiary-fixed": "#ffdf96",
+            "on-primary-fixed-variant": "#404562",
+            "error": "#ffb4ab",
+            "on-tertiary-container": "#a48431",
+            "on-secondary-fixed": "#271900",
+            "on-surface": "#e1e1f1",
+            "on-primary-container": "#8286a7",
+            "surface-variant": "#323440",
+            "surface-container-low": "#191b26",
+            "on-tertiary-fixed": "#251a00",
+            "surface-dim": "#11131e",
+            "tertiary-fixed-dim": "#e7c268",
+            "surface": "#11131e",
+            "inverse-surface": "#e1e1f1",
+            "background": "#11131e",
+            "on-error": "#690005",
+            "on-secondary": "#412d00",
+            "on-surface-variant": "#c7c5ce",
+            "surface-container-high": "#272935",
+            "primary-container": "#1a1f3a",
+            "on-secondary-container": "#392600",
+            "surface-bright": "#373845",
+            "inverse-primary": "#585d7b",
+            "outline": "#919098",
+            "on-primary-fixed": "#151a34",
+            "surface-container-lowest": "#0b0e18",
+            "primary": "#c0c4e8",
+            "on-tertiary-fixed-variant": "#5a4400",
+            "surface-container": "#1d1f2a",
+            "on-secondary-fixed-variant": "#5e4200",
+            "outline-variant": "#46464d",
+            "surface-tint": "#c0c4e8"
+          },
+          fontFamily: {
+            "headline": ["Be Vietnam Pro"],
+            "body": ["Be Vietnam Pro"],
+            "label": ["Be Vietnam Pro"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+    }
+    .gold-gradient {
+      background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%);
+    }
+    .glass-card {
+      background: rgba(50, 52, 64, 0.6);
+      backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="bg-background font-body text-on-surface selection:bg-secondary selection:text-on-secondary">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#11131e] shadow-sm shadow-[#0b0e18]/20">
+<div class="flex items-center gap-8 max-w-7xl mx-auto w-full">
+<div class="text-2xl font-bold tracking-tighter text-[#f8bd45] font-headline">BibleQuiz</div>
+<div class="hidden md:flex gap-6 items-center flex-1">
+<a class="font-be-vietnam-pro tracking-tight text-[#f8bd45] border-b-2 border-[#f8bd45] pb-1" href="#">Home</a>
+<a class="font-be-vietnam-pro tracking-tight text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-colors duration-300" href="#">Leaderboard</a>
+<a class="font-be-vietnam-pro tracking-tight text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-colors duration-300" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 text-sm font-semibold text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-colors active:scale-95">Login</button>
+<button class="gold-gradient px-6 py-2 rounded-xl text-on-secondary font-bold active:scale-95 transition-transform shadow-lg shadow-secondary/10">Register</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative pt-32 pb-20 px-6 overflow-hidden">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl -z-10 opacity-20 pointer-events-none">
+<div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-secondary rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-primary-container rounded-full blur-[100px]"></div>
+</div>
+<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+<div class="space-y-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/20 border border-secondary/20 text-secondary text-sm font-medium tracking-wide">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+          ỨNG DỤNG HỌC KINH THÁNH THẾ HỆ MỚI
+        </div>
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] text-on-surface">
+          Học Lời Chúa mỗi ngày qua những <span class="text-secondary">thử thách</span> thú vị
+        </h1>
+<p class="text-xl text-on-surface-variant leading-relaxed max-w-lg">
+          Khám phá kho tàng tri thức Kinh Thánh thông qua các trò chơi tương tác, thi đấu cùng cộng đồng và theo dõi tiến trình thuộc linh của bạn.
+        </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="gold-gradient px-8 py-4 rounded-xl text-on-secondary font-bold text-lg shadow-xl shadow-secondary/20 active:scale-95 transition-transform">Chơi Thử Ngay</button>
+<button class="px-8 py-4 rounded-xl border border-outline-variant/30 text-on-surface font-bold text-lg hover:bg-surface-container transition-colors active:scale-95">Đăng Nhập</button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-secondary/10 rounded-[2rem] blur-2xl group-hover:bg-secondary/20 transition-all"></div>
+<img alt="Bible and Light" class="relative rounded-[2rem] shadow-2xl border border-outline-variant/15 w-full object-cover aspect-[4/3]" data-alt="An open antique Bible on a dark wooden table illuminated by a warm ethereal golden glow from above with soft dust motes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpEFLF4HdAAZtQmV6p7ZFtq-07HGD2UVS1ZVgbPxSev4YKp18Amt4MdHqCFGh2JrRl5z8UyUtxx7O5an0EGofE1Kkzf-lnCx_fHn2-S1-sdjas2YKfjghtOoVc-9_Vb69hY_f1Kee_27xarqfLFbHwfQelEbTOKW_ouxi_PqBWzhBFPVaR7BQBwYz9FkBO6DlHAdNGeKKuOutu3XwrKIR75hoWBmThBK6KGHpGo8uO9ZNvkcSIwpmItnWjnMcoahC_NJDQhMWkspM"/>
+<div class="absolute -bottom-6 -left-6 glass-card p-6 rounded-2xl border border-outline-variant/20 shadow-xl hidden lg:block">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full gold-gradient flex items-center justify-center text-on-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div>
+<p class="text-xs uppercase tracking-widest text-secondary font-bold">Daily Streak</p>
+<p class="text-xl font-bold text-on-surface">15 Ngày Liên Tiếp</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Features Grid -->
+<section class="py-24 px-6 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold mb-4">Tính Năng Nổi Bật</h2>
+<div class="h-1 w-20 gold-gradient mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Feature 1 -->
+<div class="p-8 bg-surface-container rounded-2xl hover:bg-surface-container-high transition-all duration-300 border-b-2 border-transparent hover:border-secondary group">
+<div class="w-14 h-14 rounded-xl bg-primary-container flex items-center justify-center text-secondary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">menu_book</span>
+</div>
+<h3 class="text-xl font-bold mb-3">6 Chế Độ Chơi</h3>
+<p class="text-on-surface-variant">Từ trắc nghiệm nhanh đến thử thách trí nhớ và giải đố ô chữ Kinh Thánh.</p>
+</div>
+<!-- Feature 2 -->
+<div class="p-8 bg-surface-container rounded-2xl hover:bg-surface-container-high transition-all duration-300 border-b-2 border-transparent hover:border-secondary group">
+<div class="w-14 h-14 rounded-xl bg-primary-container flex items-center justify-center text-secondary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">stars</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Hạng Kinh Thánh</h3>
+<p class="text-on-surface-variant">Thăng cấp từ 'Người Tìm Hiểu' đến 'Bậc Thầy Kinh Thánh' qua từng bài học.</p>
+</div>
+<!-- Feature 3 -->
+<div class="p-8 bg-surface-container rounded-2xl hover:bg-surface-container-high transition-all duration-300 border-b-2 border-transparent hover:border-secondary group">
+<div class="w-14 h-14 rounded-xl bg-primary-container flex items-center justify-center text-secondary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">church</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Nhóm Hội Thánh</h3>
+<p class="text-on-surface-variant">Kết nối với ban ngành, cùng nhau học hỏi và tổ chức các giải đấu nội bộ.</p>
+</div>
+<!-- Feature 4 -->
+<div class="p-8 bg-surface-container rounded-2xl hover:bg-surface-container-high transition-all duration-300 border-b-2 border-transparent hover:border-secondary group">
+<div class="w-14 h-14 rounded-xl bg-primary-container flex items-center justify-center text-secondary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">workspace_premium</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Chuỗi Ngày &amp; Thành Tích</h3>
+<p class="text-on-surface-variant">Duy trì thói quen đọc Lời Chúa mỗi ngày để nhận những phần thưởng hấp dẫn.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Chơi Thử Ngay -->
+<section class="py-24 px-6">
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl font-bold mb-6">Trải Nghiệm Thử Thách</h2>
+<p class="text-lg text-on-surface-variant mb-10 leading-relaxed">
+          Không cần đăng ký, bạn có thể bắt đầu ngay bây giờ với các thử thách nhanh để kiểm tra kiến thức Kinh Thánh của mình.
+        </p>
+<div class="space-y-6">
+<div class="flex items-start gap-4 p-6 bg-surface-container rounded-2xl border-l-4 border-secondary">
+<span class="material-symbols-outlined text-secondary text-3xl mt-1">verified</span>
+<div>
+<h4 class="font-bold text-lg mb-1">Cập Nhật Thường Xuyên</h4>
+<p class="text-on-surface-variant text-sm">Hơn 5000+ câu hỏi được biên soạn kỹ lưỡng từ các mục sư và giáo sư thần học.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-6 bg-surface-container rounded-2xl border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary text-3xl mt-1">devices</span>
+<div>
+<h4 class="font-bold text-lg mb-1">Đa Nền Tảng</h4>
+<p class="text-on-surface-variant text-sm">Học trên web, máy tính bảng hoặc ứng dụng di động mọi lúc mọi nơi.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="grid gap-6">
+<!-- Daily Challenge Card -->
+<div class="bg-surface-container-high p-8 rounded-3xl relative overflow-hidden group border border-outline-variant/10">
+<div class="absolute top-0 right-0 p-4">
+<span class="px-3 py-1 bg-secondary/20 text-secondary text-xs font-bold rounded-full">POPULAR</span>
+</div>
+<h3 class="text-2xl font-bold mb-2">Thử Thách Hằng Ngày</h3>
+<p class="text-on-surface-variant mb-6">5 câu hỏi - 5 phút. Nội dung trọng tâm về các sự kiện trong tuần.</p>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-primary-container flex items-center justify-center text-[10px] font-bold">+1.2k players</div>
+</div>
+<button class="gold-gradient px-6 py-3 rounded-xl text-on-secondary font-bold active:scale-95 transition-transform">Thử Thách Ngay</button>
+</div>
+</div>
+<!-- Quick Practice Card -->
+<div class="bg-surface-container p-8 rounded-3xl border border-outline-variant/10 hover:bg-surface-container-high transition-colors">
+<h3 class="text-2xl font-bold mb-2">Luyện Tập Nhanh</h3>
+<p class="text-on-surface-variant mb-6">Thử 10 câu ngẫu nhiên từ toàn bộ kho dữ liệu Kinh Thánh.</p>
+<button class="w-full py-4 rounded-xl border border-secondary text-secondary font-bold hover:bg-secondary/10 transition-all active:scale-95">Bắt Đầu</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Leaderboard Section -->
+<section class="py-24 px-6 bg-surface-container-lowest">
+<div class="max-w-4xl mx-auto">
+<div class="text-center mb-12">
+<div class="inline-block px-6 py-2 rounded-full gold-gradient text-on-secondary font-extrabold text-lg mb-6 shadow-xl shadow-secondary/10">
+          MÙA PHỤC SINH 2025
+        </div>
+<h2 class="text-4xl font-extrabold tracking-tight">Bảng Xếp Hạng Toàn Quốc</h2>
+</div>
+<div class="bg-surface-container rounded-[2rem] overflow-hidden border border-outline-variant/15 shadow-2xl">
+<div class="grid grid-cols-12 px-8 py-4 bg-surface-container-high text-xs font-bold text-on-surface-variant uppercase tracking-widest">
+<div class="col-span-2">Hạng</div>
+<div class="col-span-6">Chiến Binh</div>
+<div class="col-span-2">XP</div>
+<div class="col-span-2 text-right">Danh Hiệu</div>
+</div>
+<div class="divide-y divide-outline-variant/10">
+<!-- Top 1 -->
+<div class="grid grid-cols-12 px-8 py-5 items-center bg-secondary/5">
+<div class="col-span-2 font-black text-2xl text-secondary">01</div>
+<div class="col-span-6 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-on-secondary font-bold">AN</div>
+<span class="font-bold text-lg">Nguyễn Văn An</span>
+</div>
+<div class="col-span-2 font-mono text-secondary">24,500</div>
+<div class="col-span-2 text-right text-xs font-bold text-secondary uppercase">Sứ Giả</div>
+</div>
+<!-- Other entries -->
+<div class="grid grid-cols-12 px-8 py-5 items-center hover:bg-surface-container-high transition-colors">
+<div class="col-span-2 font-bold text-on-surface-variant">02</div>
+<div class="col-span-6 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-primary font-bold">LH</div>
+<span class="font-bold">Lê Hồng Hạnh</span>
+</div>
+<div class="col-span-2 font-mono text-on-surface-variant">21,200</div>
+<div class="col-span-2 text-right text-xs font-bold text-primary uppercase">Trưởng Lão</div>
+</div>
+<div class="grid grid-cols-12 px-8 py-5 items-center hover:bg-surface-container-high transition-colors">
+<div class="col-span-2 font-bold text-on-surface-variant">03</div>
+<div class="col-span-6 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-primary font-bold">TM</div>
+<span class="font-bold">Trần Minh</span>
+</div>
+<div class="col-span-2 font-mono text-on-surface-variant">19,850</div>
+<div class="col-span-2 text-right text-xs font-bold text-primary uppercase">Chấp Sự</div>
+</div>
+<!-- Mock ellipsis -->
+<div class="text-center py-4 text-on-surface-variant/40">•••</div>
+<div class="grid grid-cols-12 px-8 py-5 items-center hover:bg-surface-container-high transition-colors">
+<div class="col-span-2 font-bold text-on-surface-variant">10</div>
+<div class="col-span-6 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-primary font-bold">DP</div>
+<span class="font-bold">Đặng Phương</span>
+</div>
+<div class="col-span-2 font-mono text-on-surface-variant">12,400</div>
+<div class="col-span-2 text-right text-xs font-bold text-on-surface-variant uppercase">Môn Đồ</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Church Group Showcase -->
+<section class="py-24 px-6 relative">
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1 relative">
+<div class="absolute -inset-10 bg-primary/10 rounded-full blur-[100px]"></div>
+<img alt="Group studying together" class="relative rounded-[2rem] shadow-2xl z-10" data-alt="A diverse group of cheerful friends sitting in a modern warm living room looking at a tablet together with soft window light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnm3LIt9EiyqGvjOzhF7rg8NoKMQoAjbDHWgkYgYTcjATw8YGu6nvIwD21ypU3A5cSNU5YgzZ4oStRZaYpVP37Fv9KrmqJ1yTWYyNV8MPJOP9EQDvi7dwbLUPj2GK18ZXveYRRuAkiOMNcerFyYD3JwSSOXaWoBWLHZnb1UJZSmhsA5ppJF4A78tXcbZMRiP5dnGucV58PQs__oVK1uan3IZwbSeQ1R7wfr--M3W8K2cn0zQGPw2NGpSpzUFnFsNsWkUcurItdKsw"/>
+<!-- Floating Stats Mockup -->
+<div class="absolute top-10 -right-8 glass-card p-6 rounded-2xl shadow-xl z-20 border border-white/10 hidden md:block">
+<div class="text-sm font-bold text-secondary mb-4 uppercase tracking-widest">Team Progress</div>
+<div class="space-y-3">
+<div class="h-2 w-48 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full w-[75%] gold-gradient"></div>
+</div>
+<div class="h-2 w-48 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full w-[45%] gold-gradient"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2 space-y-8">
+<h2 class="text-4xl font-bold leading-tight">Gắn Kết Cộng Đồng Hội Thánh Của Bạn</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+          Tạo không gian học tập riêng cho Hội Thánh, ban ngành hoặc nhóm nhỏ của bạn. Theo dõi tiến độ và khích lệ nhau mỗi ngày.
+        </p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">qr_code_2</span>
+<span class="text-on-surface font-medium">Tham gia nhanh qua mã QR cho từng nhóm</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">analytics</span>
+<span class="text-on-surface font-medium">Báo cáo tiến độ học tập hàng tuần của thành viên</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">emoji_events</span>
+<span class="text-on-surface font-medium">Tự tổ chức các giải đấu nội bộ theo chủ đề</span>
+</li>
+</ul>
+<button class="gold-gradient px-8 py-4 rounded-xl text-on-secondary font-bold text-lg active:scale-95 transition-transform shadow-xl shadow-secondary/10">Tạo Nhóm Miễn Phí</button>
+</div>
+</div>
+</section>
+<!-- Daily Verse -->
+<section class="py-24 px-6 bg-surface-container-low">
+<div class="max-w-4xl mx-auto text-center">
+<div class="w-16 h-1 bg-secondary mx-auto mb-10 rounded-full"></div>
+<div class="relative px-12">
+<span class="material-symbols-outlined text-7xl text-secondary/20 absolute -top-8 -left-2 scale-x-[-1]">format_quote</span>
+<blockquote class="text-3xl md:text-4xl font-light italic leading-relaxed text-on-surface mb-8">
+          "Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi."
+        </blockquote>
+<cite class="text-xl font-bold text-secondary not-italic">— Thi Thiên 119:105</cite>
+</div>
+</div>
+</section>
+<!-- Footer CTA -->
+<section class="py-32 px-6 relative overflow-hidden text-center">
+<div class="absolute inset-0 -z-10 bg-gradient-to-b from-surface to-primary-container/20"></div>
+<div class="max-w-2xl mx-auto space-y-10">
+<h2 class="text-4xl md:text-5xl font-extrabold tracking-tight">Sẵn sàng khám phá Lời Chúa?</h2>
+<p class="text-on-surface-variant text-lg">Gia nhập cộng đồng hơn 50,000 người đang học Kinh Thánh mỗi ngày.</p>
+<div class="flex flex-col items-center gap-4">
+<button class="flex items-center gap-3 bg-on-surface text-surface px-10 py-4 rounded-xl font-bold text-lg hover:bg-on-surface-variant transition-colors active:scale-95">
+<img alt="Google" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcJIraLBnXjAOS0EXUCIC2rsomKCPxGvpBNYCmt4hQSQzzTt3HaTfkiLVJf9Wgb_lImqBmvVodHASMpqGU5bh1M6pMBhnDWC4ACT6pdtz__gRW5ca7GOmAoVj9qqJAfvRUSwIg27rDceLWagSU29hiYRkHKoVLfsohGVdXJWj01Kae2VDprsg2QNIbxhKzQTIsCspOQnwjByjN_-TX-4TvnQUGIy7hPsg0H5mcnRNMACynXMRatZ3R8cLaWiPG4q6Qko0ODPnYMLE"/>
+          Đăng Ký Miễn Phí với Google
+        </button>
+<p class="text-sm text-on-surface-variant/60">Hoàn toàn miễn phí. Không quảng cáo. Không giới hạn.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 bg-[#11131e] border-t border-[#46464d]/15">
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="text-lg font-bold text-[#f8bd45]">BibleQuiz</div>
+<p class="font-be-vietnam-pro text-sm leading-relaxed text-[#e1e1f1]/60">© 2024 BibleQuiz. The Sacred Modernist Path.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-be-vietnam-pro text-sm text-[#e1e1f1]/50 hover:text-[#f8bd45] transition-colors cursor-pointer" href="#">About</a>
+<a class="font-be-vietnam-pro text-sm text-[#e1e1f1]/50 hover:text-[#f8bd45] transition-colors cursor-pointer" href="#">Contact</a>
+<a class="font-be-vietnam-pro text-sm text-[#e1e1f1]/50 hover:text-[#f8bd45] transition-colors cursor-pointer" href="#">Terms</a>
+</div>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-lg">language</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-lg">share</span>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,5 +1,38 @@
 # TODO
 
+## v2.4 — Complete All Remaining Pages (Custom Design System) [DONE]
+
+### Pages Redesigned
+- [x] Achievements.tsx — Tier progress, badge grid with categories, stats summary
+- [x] Multiplayer.tsx — Quick actions, public rooms list, active games (purple accent)
+- [x] RoomQuiz.tsx — Full-screen multiplayer gameplay, scoreboard overlay, results screens
+- [x] GroupDetail.tsx — Group header, tab navigation, members list, activity feed
+- [x] GroupAnalytics.tsx — Stats cards, weekly chart, top contributors, engagement metrics
+- [x] TournamentDetail.tsx — Bracket view, participants, registration
+- [x] TournamentMatch.tsx — Full-screen 1v1 match, HP hearts, gold confetti winner overlay
+- [x] NotFound.tsx (NEW) — 404 page with Bible verse, route `*` catch-all added
+
+### Build
+- [x] npm run build — 0 errors
+- [x] All routes covered: only Share Card, Notification Panel, Admin remain
+
+## v2.3 — Guest Landing Page + Dashboard Final Redesign (Stitch MCP Round 4) [DONE]
+
+### New Pages
+- [x] LandingPage.tsx (NEW) — Full guest landing page with hero, features, leaderboard, church group showcase, CTA
+- [x] Route `/landing` added to main.tsx
+
+### Updated Pages
+- [x] Home.tsx — Dashboard Final Redesign v5: greeting header, tier badge, activity feed, filter tabs on leaderboard
+
+### Design Artifacts
+- [x] docs/designs/stitch/ — HTML + screenshots for all new screens
+- [x] docs/designs/DESIGN_TOKENS.md — Complete design tokens reference
+- [x] DESIGN_STATUS.md — Updated with 31 total screens
+
+### Build
+- [x] npm run build — 0 errors
+
 ## v2.2 — Game Mode Hub + Practice/Ranked (Stitch MCP Round 3) [DONE]
 
 ### Home Game Hub Redesign

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { api } from '../api/client'
 import { useAuth } from '../store/authStore'
+
+// --- Types ---
 
 interface Achievement {
   id: string
@@ -13,6 +16,66 @@ interface Achievement {
   isNotified?: boolean
 }
 
+// --- Tier System ---
+
+interface TierInfo {
+  name: string
+  icon: string
+  color: string
+  bgColor: string
+  textColor: string
+  borderColor: string
+  minPoints: number
+}
+
+const TIERS: TierInfo[] = [
+  { name: 'Tân Tín Hữu', icon: 'person', color: '#919098', bgColor: 'bg-[#919098]/10', textColor: 'text-[#919098]', borderColor: 'border-[#919098]/30', minPoints: 0 },
+  { name: 'Người Tìm Kiếm', icon: 'search', color: '#4ade80', bgColor: 'bg-[#4ade80]/10', textColor: 'text-[#4ade80]', borderColor: 'border-[#4ade80]/30', minPoints: 500 },
+  { name: 'Môn Đồ', icon: 'school', color: '#4a9eff', bgColor: 'bg-[#4a9eff]/10', textColor: 'text-[#4a9eff]', borderColor: 'border-[#4a9eff]/30', minPoints: 1500 },
+  { name: 'Hiền Triết', icon: 'psychology', color: '#9b59b6', bgColor: 'bg-[#9b59b6]/10', textColor: 'text-[#9b59b6]', borderColor: 'border-[#9b59b6]/30', minPoints: 4000 },
+  { name: 'Tiên Tri', icon: 'auto_awesome', color: '#e8a832', bgColor: 'bg-secondary/10', textColor: 'text-secondary', borderColor: 'border-secondary/30', minPoints: 8000 },
+  { name: 'Sứ Đồ', icon: 'local_fire_department', color: '#ff6b6b', bgColor: 'bg-[#ff6b6b]/10', textColor: 'text-[#ff6b6b]', borderColor: 'border-[#ff6b6b]/30', minPoints: 15000 },
+]
+
+function getCurrentTier(points: number): { current: TierInfo; next: TierInfo | null; progress: number } {
+  let currentIdx = 0
+  for (let i = TIERS.length - 1; i >= 0; i--) {
+    if (points >= TIERS[i].minPoints) {
+      currentIdx = i
+      break
+    }
+  }
+  const current = TIERS[currentIdx]
+  const next = currentIdx < TIERS.length - 1 ? TIERS[currentIdx + 1] : null
+  const progress = next
+    ? ((points - current.minPoints) / (next.minPoints - current.minPoints)) * 100
+    : 100
+  return { current, next, progress: Math.min(progress, 100) }
+}
+
+// --- Category Helpers ---
+
+const CATEGORIES = [
+  { key: 'all', label: 'Tất cả', icon: 'emoji_events' },
+  { key: 'learning', label: 'Học tập', icon: 'auto_stories' },
+  { key: 'streak', label: 'Chuỗi', icon: 'local_fire_department' },
+  { key: 'social', label: 'Cộng đồng', icon: 'groups' },
+  { key: 'competition', label: 'Thi đấu', icon: 'military_tech' },
+  // Legacy categories mapped
+  { key: 'quiz', label: 'Quiz', icon: 'quiz' },
+  { key: 'points', label: 'Điểm', icon: 'toll' },
+  { key: 'books', label: 'Sách', icon: 'menu_book' },
+  { key: 'accuracy', label: 'Chính xác', icon: 'target' },
+]
+
+function getCategoryMeta(key: string) {
+  return CATEGORIES.find(c => c.key === key) || { key, label: key, icon: 'emoji_events' }
+}
+
+const FILL_STYLE = { fontVariationSettings: "'FILL' 1" }
+
+// --- Component ---
+
 const Achievements: React.FC = () => {
   const [achievements, setAchievements] = useState<Achievement[]>([])
   const [stats, setStats] = useState<any>({})
@@ -23,14 +86,14 @@ const Achievements: React.FC = () => {
   useEffect(() => {
     const loadAchievements = async () => {
       if (!user) return
-      
+
       setLoading(true)
       try {
         const [achievementsRes, statsRes] = await Promise.all([
           api.get('/api/achievements/my-achievements'),
           api.get('/api/achievements/stats')
         ])
-        
+
         setAchievements(achievementsRes.data || [])
         setStats(statsRes.data || {})
       } catch (error) {
@@ -39,209 +102,370 @@ const Achievements: React.FC = () => {
         setLoading(false)
       }
     }
-    
+
     loadAchievements()
   }, [user])
 
-  const categories = ['all', 'quiz', 'streak', 'points', 'books', 'accuracy']
-  
-  const filteredAchievements = activeTab === 'all' 
-    ? achievements 
+  const earnedCount = achievements.filter(a => a.unlockedAt).length
+  const totalPoints = achievements
+    .filter(a => a.unlockedAt)
+    .reduce((sum, a) => sum + (a.points || 0), 0)
+
+  const tierData = getCurrentTier(stats.totalPoints || totalPoints)
+
+  // Deduce visible category keys from actual data
+  const visibleCategoryKeys = new Set(achievements.map(a => a.category))
+  const visibleCategories = CATEGORIES.filter(
+    c => c.key === 'all' || visibleCategoryKeys.has(c.key)
+  )
+
+  const filteredAchievements = activeTab === 'all'
+    ? achievements
     : achievements.filter(a => a.category === activeTab)
 
-  const getCategoryIcon = (category: string) => {
-    const icons: { [key: string]: string } = {
-      quiz: '🎯',
-      streak: '🔥',
-      points: '💰',
-      books: '📚',
-      accuracy: '🎯'
-    }
-    return icons[category] || '🏆'
-  }
+  // Recently unlocked achievements (up to 3, sorted by date desc)
+  const recentUnlocked = achievements
+    .filter(a => a.unlockedAt)
+    .sort((a, b) => new Date(b.unlockedAt!).getTime() - new Date(a.unlockedAt!).getTime())
+    .slice(0, 3)
 
-  const getCategoryName = (category: string) => {
-    const names: { [key: string]: string } = {
-      quiz: 'Quiz',
-      streak: 'Chuỗi',
-      points: 'Điểm',
-      books: 'Sách',
-      accuracy: 'Chính xác'
-    }
-    return names[category] || category
-  }
+  const overallProgress = achievements.length > 0
+    ? Math.round((earnedCount / achievements.length) * 100)
+    : 0
 
-  const getCategoryColor = (category: string) => {
-    const colors: { [key: string]: string } = {
-      quiz: 'neon-green',
-      streak: 'neon-orange',
-      points: 'neon-pink',
-      books: 'neon-blue',
-      accuracy: 'neon-purple'
-    }
-    return colors[category] || 'neon-text'
-  }
+  // --- Not Logged In ---
 
   if (!user) {
     return (
-      <div className="min-h-screen neon-bg flex items-center justify-center">
-        <div className="neon-card p-8 text-center">
-          <h2 className="text-2xl neon-text mb-4">Đăng nhập để xem thành tích</h2>
-          <p className="text-white opacity-80">Bạn cần đăng nhập để xem các thành tích của mình</p>
+      <div className="flex items-center justify-center py-24">
+        <div className="text-center">
+          <span className="material-symbols-outlined text-6xl text-on-surface-variant mb-4 block" style={FILL_STYLE}>
+            lock
+          </span>
+          <h2 className="text-2xl font-bold mb-4 text-on-surface">
+            Đăng nhập để xem thành tích
+          </h2>
+          <p className="text-on-surface-variant mb-8">
+            Bạn cần đăng nhập để xem các thành tích của mình
+          </p>
+          <Link
+            to="/login"
+            className="px-6 py-3 rounded-xl font-bold gold-gradient text-on-secondary inline-block"
+          >
+            Đăng nhập
+          </Link>
         </div>
       </div>
     )
   }
 
+  // --- Loading ---
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center py-24 gap-4">
+        <div className="w-12 h-12 border-4 border-surface-container-highest border-t-secondary rounded-full animate-spin" />
+        <p className="text-on-surface-variant font-medium">Đang tải thành tích...</p>
+      </div>
+    )
+  }
+
   return (
-    <div className="min-h-screen neon-bg relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 left-10 w-2 h-2 neon-pink rounded-full animate-ping"></div>
-        <div className="absolute top-20 right-20 w-1 h-1 neon-green rounded-full animate-ping"></div>
-        <div className="absolute top-1/3 left-1/4 w-1 h-1 neon-blue rounded-full animate-ping"></div>
-        <div className="absolute top-2/3 right-1/3 w-2 h-2 neon-orange rounded-full animate-ping"></div>
-        <div className="absolute bottom-20 left-1/3 w-1 h-1 neon-pink rounded-full animate-ping"></div>
-        <div className="absolute bottom-10 right-10 w-2 h-2 neon-green rounded-full animate-ping"></div>
-      </div>
-      
-      {/* Circuit Board Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon-blue to-transparent"></div>
-        <div className="absolute top-1/2 right-0 w-px h-32 bg-gradient-to-b from-transparent via-neon-pink to-transparent"></div>
-        <div className="absolute bottom-1/3 left-0 w-px h-24 bg-gradient-to-b from-transparent via-neon-green to-transparent"></div>
-        <div className="absolute top-1/3 right-1/4 w-px h-20 bg-gradient-to-b from-transparent via-neon-orange to-transparent"></div>
-      </div>
-
-      <div className="container mx-auto max-w-6xl p-4 relative z-10">
-        <h1 className="neon-text text-6xl text-center mb-12 font-bold tracking-wider">
-          THÀNH TÍCH CỦA TÔI
-        </h1>
-        
-        {/* Stats Overview */}
-        <div className="neon-card p-6 mb-8">
-          <h2 className="text-2xl font-bold neon-blue mb-4">Tổng Quan</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="text-3xl font-bold neon-green">{stats.unlocked || 0}</div>
-              <div className="text-white opacity-80">Đã mở khóa</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold neon-pink">{stats.total || 0}</div>
-              <div className="text-white opacity-80">Tổng số</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold neon-orange">{stats.percentage || 0}%</div>
-              <div className="text-white opacity-80">Hoàn thành</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Category Tabs */}
-        <div className="flex justify-center gap-3 mb-8">
-          {categories.map(category => (
-            <button
-              key={category}
-              onClick={() => setActiveTab(category)}
-              className={`neon-btn px-4 py-2 ${
-                activeTab === category ? 'neon-btn-blue' : ''
-              }`}
-            >
-              {category === 'all' ? 'Tất cả' : `${getCategoryIcon(category)} ${getCategoryName(category)}`}
-            </button>
-          ))}
-        </div>
-
-        {/* Achievements Grid */}
-        {loading ? (
-          <div className="text-center text-white">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-neon-blue"></div>
-            <p className="mt-4 text-lg">Đang tải thành tích...</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {filteredAchievements.map(achievement => (
-              <div
-                key={achievement.id}
-                className={`relative group transition-all duration-500 ${
-                  achievement.unlockedAt ? 'transform hover:scale-110' : 'opacity-60'
-                }`}
+    <>
+      {/* -- Header -------------------------------------------------- */}
+      <header className="mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <h1 className="text-4xl font-black tracking-tight text-on-surface mb-2">
+              Thành Tích
+            </h1>
+            <p className="text-on-surface-variant flex items-center gap-2">
+              <span
+                className="material-symbols-outlined text-secondary text-sm"
+                style={FILL_STYLE}
               >
-                {/* Achievement Badge */}
-                <div className={`relative w-48 h-48 mx-auto mb-4 rounded-2xl ${
-                  achievement.unlockedAt 
-                    ? 'neon-border-glow bg-gradient-to-br from-black via-gray-900 to-black' 
-                    : 'border-2 border-gray-600 bg-gray-800'
-                }`}>
-                  {/* Glow Effect for Unlocked */}
-                  {achievement.unlockedAt && (
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-transparent via-white/5 to-transparent animate-pulse"></div>
-                  )}
-                  
-                  {/* Icon Container */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className={`text-8xl transition-all duration-300 ${
-                      achievement.unlockedAt 
-                        ? getCategoryColor(achievement.category)
-                        : 'text-gray-500'
-                    }`}>
-                      {achievement.icon}
-                    </div>
-                  </div>
-                  
-                  {/* Lock Icon for Locked Achievements */}
-                  {!achievement.unlockedAt && (
-                    <div className="absolute top-2 right-2 text-gray-400">
-                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                  )}
-                  
-                  {/* Points Badge */}
-                  <div className={`absolute bottom-2 right-2 px-2 py-1 rounded-full text-xs font-bold ${
-                    achievement.unlockedAt 
-                      ? 'bg-neon-orange text-black' 
-                      : 'bg-gray-600 text-gray-300'
-                  }`}>
-                    +{achievement.points}
-                  </div>
-                </div>
-                
-                {/* Achievement Info */}
-                <div className="text-center">
-                  <h3 className={`text-lg font-bold mb-2 ${
-                    achievement.unlockedAt ? 'neon-text' : 'text-gray-400'
-                  }`}>
-                    {achievement.name}
-                  </h3>
-                  <p className={`text-sm mb-3 ${
-                    achievement.unlockedAt ? 'text-white opacity-80' : 'text-gray-500'
-                  }`}>
-                    {achievement.description}
-                  </p>
-                  
-                  {/* Unlock Date */}
-                  {achievement.unlockedAt && (
-                    <div className="text-xs text-green-400 font-medium">
-                      Mở khóa: {new Date(achievement.unlockedAt).toLocaleDateString('vi-VN')}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
+                stars
+              </span>
+              {earnedCount}/{achievements.length} đã mở khóa
+            </p>
           </div>
-        )}
+          <div className="w-full md:w-72">
+            <div className="flex justify-between text-xs font-bold uppercase tracking-wider mb-2 text-on-surface-variant">
+              <span>Tiến trình tổng thể</span>
+              <span className="text-secondary">{overallProgress}%</span>
+            </div>
+            <div className="h-3 w-full bg-primary-container rounded-full overflow-hidden">
+              <div
+                className="h-full gold-gradient rounded-full transition-all duration-700"
+                style={{ width: `${overallProgress}%` }}
+              />
+            </div>
+          </div>
+        </div>
+      </header>
 
-        {filteredAchievements.length === 0 && !loading && (
-          <div className="text-center text-white">
-            <div className="text-6xl mb-4">🏆</div>
-            <h3 className="text-xl mb-2">Chưa có thành tích nào</h3>
-            <p className="opacity-80">Hãy chơi quiz để mở khóa các thành tích!</p>
+      {/* -- Main Grid Layout ---------------------------------------- */}
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+        {/* Left Column: Content */}
+        <div className="xl:col-span-9 space-y-10">
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap gap-2 pb-2 border-b border-outline-variant/15">
+            {visibleCategories.map((cat) => {
+              const isActive = activeTab === cat.key
+              return (
+                <button
+                  key={cat.key}
+                  onClick={() => setActiveTab(cat.key)}
+                  className={`px-5 py-2 rounded-full text-sm whitespace-nowrap transition-colors ${
+                    isActive
+                      ? 'font-bold bg-secondary text-on-secondary'
+                      : 'font-medium text-on-surface-variant hover:bg-surface-container-high'
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              )
+            })}
           </div>
-        )}
+
+          {/* Achievement Cards Grid */}
+          {filteredAchievements.length === 0 ? (
+            <div className="bg-surface-container rounded-3xl p-16 text-center">
+              <span className="material-symbols-outlined text-6xl text-on-surface-variant/30 mb-4 block">
+                emoji_events
+              </span>
+              <h3 className="text-xl font-bold text-on-surface mb-2">Chưa có thành tích nào</h3>
+              <p className="text-on-surface-variant">
+                Hãy chơi quiz để mở khóa các thành tích!
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredAchievements.map((achievement) => {
+                const isUnlocked = !!achievement.unlockedAt
+                const catMeta = getCategoryMeta(achievement.category)
+
+                if (isUnlocked) {
+                  return (
+                    <div
+                      key={achievement.id}
+                      className="glass-card p-6 rounded-xl border border-secondary/10 shadow-[0_0_20px_rgba(248,189,69,0.15)] relative overflow-hidden group"
+                    >
+                      {/* Glow orb */}
+                      <div className="absolute -right-4 -top-4 w-24 h-24 bg-secondary/5 rounded-full blur-2xl group-hover:bg-secondary/10 transition-colors" />
+
+                      {/* Top row: icon + status */}
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="w-14 h-14 rounded-full gold-gradient flex items-center justify-center shadow-lg">
+                          <span
+                            className="material-symbols-outlined text-on-secondary text-3xl"
+                            style={FILL_STYLE}
+                          >
+                            {achievement.icon || catMeta.icon}
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-2 py-1 rounded">
+                          Mở khóa
+                        </span>
+                      </div>
+
+                      {/* Name & description */}
+                      <h3 className="text-lg font-bold text-on-surface mb-1">
+                        {achievement.name}
+                      </h3>
+                      <p className="text-sm text-on-surface-variant leading-relaxed mb-4">
+                        {achievement.description}
+                      </p>
+
+                      {/* Footer: date */}
+                      <div className="pt-4 border-t border-outline-variant/10 flex items-center gap-2">
+                        <span className="material-symbols-outlined text-xs text-on-surface-variant">
+                          calendar_today
+                        </span>
+                        <span className="text-[11px] text-on-surface-variant font-medium">
+                          Đạt được vào {new Date(achievement.unlockedAt!).toLocaleDateString('vi-VN')}
+                        </span>
+                      </div>
+                    </div>
+                  )
+                }
+
+                // Locked card
+                return (
+                  <div
+                    key={achievement.id}
+                    className="bg-surface-container-low p-6 rounded-xl border border-transparent opacity-60 grayscale relative overflow-hidden"
+                  >
+                    {/* Top row: icon + lock */}
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="w-14 h-14 rounded-full bg-surface-container-highest flex items-center justify-center">
+                        <span className="material-symbols-outlined text-on-surface-variant text-3xl">
+                          {achievement.icon || catMeta.icon}
+                        </span>
+                      </div>
+                      <span className="material-symbols-outlined text-on-surface-variant text-sm">
+                        lock
+                      </span>
+                    </div>
+
+                    {/* Name & description */}
+                    <h3 className="text-lg font-bold text-on-surface mb-1">
+                      {achievement.name}
+                    </h3>
+                    <p className="text-sm text-on-surface-variant leading-relaxed mb-4">
+                      {achievement.description}
+                    </p>
+
+                    {/* Footer: progress bar */}
+                    <div className="pt-4 border-t border-outline-variant/10">
+                      <div className="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                        <div className="h-full bg-outline rounded-full" style={{ width: '0%' }} />
+                      </div>
+                      <p className="text-[10px] text-on-surface-variant font-medium mt-2">
+                        Chưa mở khóa
+                      </p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          )}
+        </div>
+
+        {/* Right Column: Sidebar Stats */}
+        <aside className="xl:col-span-3 space-y-8">
+          {/* Recently Unlocked */}
+          <section className="bg-surface-container p-6 rounded-2xl">
+            <h2 className="text-lg font-bold text-on-surface mb-6 flex items-center gap-2">
+              Gần đây đạt được
+            </h2>
+            <div className="space-y-6">
+              {recentUnlocked.length === 0 ? (
+                <p className="text-sm text-on-surface-variant">Chưa có thành tích nào.</p>
+              ) : (
+                recentUnlocked.map((a) => {
+                  const catMeta = getCategoryMeta(a.category)
+                  return (
+                    <div key={a.id} className="flex items-center gap-4 group">
+                      <div className="w-12 h-12 rounded-xl gold-gradient flex-shrink-0 flex items-center justify-center shadow-md">
+                        <span
+                          className="material-symbols-outlined text-on-secondary text-2xl"
+                          style={FILL_STYLE}
+                        >
+                          {a.icon || catMeta.icon}
+                        </span>
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-on-surface group-hover:text-secondary transition-colors">
+                          {a.name}
+                        </p>
+                        <p className="text-[11px] text-on-surface-variant">
+                          {a.description}
+                        </p>
+                      </div>
+                    </div>
+                  )
+                })
+              )}
+            </div>
+            <button className="w-full mt-8 py-3 rounded-xl border border-outline-variant/20 text-xs font-bold text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all">
+              Xem tất cả lịch sử
+            </button>
+          </section>
+
+          {/* Gamification Summary / Season Stats */}
+          <section className="bg-gradient-to-br from-surface-container to-surface-container-low p-6 rounded-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-2 opacity-5">
+              <span className="material-symbols-outlined text-8xl">trophy</span>
+            </div>
+            <h3 className="text-xs font-black uppercase tracking-widest text-secondary mb-4">
+              Thông số mùa giải
+            </h3>
+            <div className="space-y-4">
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-on-surface-variant">Hạng hiện tại</span>
+                <span className="text-sm font-bold text-on-surface">
+                  {tierData.current.name}
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-on-surface-variant">Điểm kinh nghiệm</span>
+                <span className="text-sm font-bold text-on-surface">
+                  {(stats.totalPoints || totalPoints).toLocaleString()} XP
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-on-surface-variant">Tỷ lệ chính xác</span>
+                <span className="text-sm font-bold text-on-surface">
+                  {stats.accuracy || 0}%
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-on-surface-variant">Chuỗi dài nhất</span>
+                <span className="text-sm font-bold text-on-surface">
+                  {stats.longestStreak || 0} ngày
+                </span>
+              </div>
+            </div>
+          </section>
+
+          {/* Tier Progress (compact sidebar version) */}
+          <section className={`bg-surface-container p-6 rounded-2xl border ${tierData.current.borderColor}`}>
+            <div className="flex items-center gap-4 mb-4">
+              <div className={`w-14 h-14 rounded-xl ${tierData.current.bgColor} flex items-center justify-center`}>
+                <span
+                  className={`material-symbols-outlined text-3xl ${tierData.current.textColor}`}
+                  style={FILL_STYLE}
+                >
+                  {tierData.current.icon}
+                </span>
+              </div>
+              <div>
+                <p className="text-sm font-black text-on-surface">{tierData.current.name}</p>
+                {tierData.next && (
+                  <p className="text-[11px] text-on-surface-variant">
+                    Tiếp: {tierData.next.name}
+                  </p>
+                )}
+              </div>
+            </div>
+            {tierData.next ? (
+              <>
+                <div className="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden mb-2">
+                  <div
+                    className="h-full rounded-full transition-all duration-700 ease-out"
+                    style={{
+                      width: `${tierData.progress}%`,
+                      background: `linear-gradient(135deg, ${tierData.current.color} 0%, ${tierData.next.color} 100%)`,
+                    }}
+                  />
+                </div>
+                <p className="text-[10px] text-on-surface-variant font-medium">
+                  {stats.totalPoints || totalPoints} / {tierData.next.minPoints} điểm
+                </p>
+              </>
+            ) : (
+              <p className="text-[11px] text-on-surface-variant italic">
+                Danh hiệu cao nhất!
+              </p>
+            )}
+          </section>
+
+          {/* Promotional Event Banner */}
+          <div className="rounded-2xl overflow-hidden h-48 relative group cursor-pointer">
+            <div className="w-full h-full bg-gradient-to-br from-secondary-container to-surface-container-low" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-5">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-secondary mb-1">
+                Sự kiện đặc biệt
+              </p>
+              <h4 className="text-sm font-bold text-white leading-tight">
+                Mở khóa Huy hiệu giới hạn ngay hôm nay!
+              </h4>
+            </div>
+          </div>
+        </aside>
       </div>
-    </div>
+    </>
   )
 }
 

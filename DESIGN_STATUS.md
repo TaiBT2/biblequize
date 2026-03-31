@@ -30,7 +30,18 @@
 | 17 | **Login Page** | `0ad2b28cf5384486858986a6e4798304` | **NEW** | 2560x2048 | **Active** | `Login.tsx` |
 | 18 | **Daily Challenge** | `1751ebd8a8394484b5a21d4265f90f1e` | **NEW** | 2560x2840 | **Active** | `DailyChallenge.tsx` |
 | 19 | **Multiplayer Lobby** | `12d729e3fe11497783ae8bd2519f27a0` | **NEW** | 2560x2048 | **Active** | `RoomLobby.tsx` |
-| 20 | **Home Dashboard - Game Hub** | `981a1b54219049f09c6e378792f07565` | **v4** | 2560x2916 | **Active** | `Home.tsx` |
+| 20 | Home Dashboard - Game Hub | `981a1b54219049f09c6e378792f07565` | v4 | 2560x2916 | Superseded | — |
+| 21 | **BibleQuiz Dashboard - Final Redesign** | `bd6304af02b04e87aa6832532d878387` | **v5** | 2560x2490 | **Active** | `Home.tsx` |
+| 22 | BibleQuiz Dashboard - Desktop Redesign | `de0afab3325642edace83872a7703674` | ref | 2560x2126 | Reference | — |
+| 23 | BibleQuiz Dashboard - Desktop Updated | `334e44e3ad7b48c5b1bced4926b8a9b6` | ref | 2560x2490 | Reference | — |
+| 24 | Home Dashboard - Font Fixed | `c9245066ef2b403ba76af56d472efa18` | patch | 2560x2916 | Reference | — |
+| 25 | Home Dashboard - Encoding Fixed | `8288eb386a3d444a945b27b779a55a67` | patch | 2560x2916 | Reference | — |
+| 26 | **Guest Landing Page (Desktop)** | `250b6372983640daa4db269a6e49e82b` | **NEW** | 2560x9158 | **Active** | `LandingPage.tsx` |
+| 27 | **Guest Landing Page (Mobile)** | `9fda1aa82d6c44119e67624db73cf4d5` | **NEW** | 780x8858 | Reference | `LandingPage.tsx` |
+| 28 | BibleQuiz Dashboard - Final Mobile | `2f3dae67a807463f8e166bc9c75f5907` | **NEW** | 780x2566 | Reference | — |
+| 29 | BibleQuiz Dashboard - Mobile Redesign | `586dfedbd9e44f659d5a02e89d971e5a` | ref | 780x2742 | Reference | — |
+| 30 | BibleQuiz Dashboard - Mobile Updated | `06f50bb87f6142efb9ff74e7066f7415` | ref | 780x3298 | Reference | — |
+| 31 | BibleQuiz Redesign PRD | `ad7916720cfe44c7b6f09e1308319b64` | doc | — | Document | — |
 
 ## Design System
 
@@ -179,25 +190,31 @@ Lưu tại `docs/design-screenshots/`:
 - `12-church-group-dataviz.png` (IMPROVED)
 - `13-home-loading-states.png` (REFERENCE)
 
-## Screens còn thiếu so với Routes hiện tại
+## Screens còn thiếu so với Routes hiện tại (11 còn lại — vẫn design cũ)
 
-Các routes trong `main.tsx` chưa có Stitch design:
+### Đã hoàn thành
 - [x] ~~**Login** (`/login`)~~ — Done (2026-03-29)
 - [x] ~~**Daily Challenge** (`/daily`)~~ — Done (2026-03-29)
 - [x] ~~**Room Lobby** (`/room/:roomId/lobby`)~~ — Done (2026-03-29)
-- [x] ~~**Practice** (`/practice`)~~ — Done (2026-03-29)
-- [x] ~~**Ranked** (`/ranked`)~~ — Done (2026-03-29)
-- [ ] **Achievements** (`/achievements`) — Achievement/badge detail page
-- [ ] **Multiplayer** (`/multiplayer`) — Multiplayer lobby list
-- [ ] **Room Quiz** (`/room/:roomId/quiz`) — Multiplayer quiz gameplay
-- [ ] **Group Detail** (`/groups/:id`) — Individual group detail
-- [ ] **Group Analytics** (`/groups/:id/analytics`) — Group analytics dashboard
-- [ ] **Tournament Detail** (`/tournaments/:id`) — Individual tournament detail
-- [ ] **Tournament Match** (`/tournaments/:id/match/:matchId`) — Live tournament match
-- [ ] **Admin Dashboard** (`/admin/*`) — Admin panel (7 sub-pages)
-- [ ] **Share Card** — Social sharing card component
-- [ ] **Notification Panel** — In-app notification dropdown
-- [ ] **404 / Error Page** — Not found page
+- [x] ~~**Practice** (`/practice`)~~ — Done (2026-03-29, custom design)
+- [x] ~~**Ranked** (`/ranked`)~~ — Done (2026-03-29, custom design)
+
+### Ưu tiên cao — User-facing chính
+- [x] ~~**Achievements** (`/achievements`)~~ — Done (2026-03-29, custom design)
+- [x] ~~**Multiplayer Lobby List** (`/multiplayer`)~~ — Done (2026-03-29, custom design)
+- [x] ~~**Room Quiz** (`/room/:roomId/quiz`)~~ — Done (2026-03-29, custom design)
+- [x] ~~**Group Detail** (`/groups/:id`)~~ — Done (2026-03-29, custom design)
+
+### Ưu tiên trung bình — Feature phụ
+- [x] ~~**Group Analytics** (`/groups/:id/analytics`)~~ — Done (2026-03-29, custom design)
+- [x] ~~**Tournament Detail** (`/tournaments/:id`)~~ — Done (2026-03-29, custom design)
+- [x] ~~**Tournament Match** (`/tournaments/:id/match/:matchId`)~~ — Done (2026-03-29, custom design)
+- [ ] **Share Card** — Component chia sẻ kết quả lên mạng xã hội
+- [ ] **Notification Panel** — Dropdown thông báo in-app
+
+### Ưu tiên thấp — Admin/System
+- [ ] **Admin Dashboard** (`/admin/*`) — 7 sub-pages (đang dùng AdminLayout riêng)
+- [x] ~~**404 / Error Page**~~ — Done (2026-03-29)
 
 ## Đề xuất cải thiện
 
@@ -226,11 +243,10 @@ Các routes trong `main.tsx` chưa có Stitch design:
 
 | Metric | Value |
 |--------|-------|
-| **Tổng screens trong Stitch** | 20 (6 v1 + 6 v2 + 4 v3 + 3 new + 1 v4) |
-| **Screens active** | 10 |
-| **Screens đã convert sang React** | 10/10 + 2 custom (Practice, Ranked) |
-| **Screens improved** | 3 (Quiz Timer, Tournament UX, Group DataViz) |
-| **Routes chưa có design** | 11 (giảm từ 13) |
+| **Tổng screens trong Stitch** | 31 |
+| **Screens active** | 11 (9 original + Guest Landing + Dashboard v5) |
+| **Screens đã convert sang React** | 21 (11 Stitch + 10 custom design) |
+| **Routes chưa có design** | 3 (Share Card, Notification Panel, Admin) |
 | **Screen đẹp nhất** | **Quiz Gameplay v3** — Timer added, clean focused UX |
 | **Screen ấn tượng nhất** | **Home Dashboard v2** — Hero section + bento grid |
 | **Screen mới tốt nhất** | **Login Page** — Split-screen hero + form, professional |

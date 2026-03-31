@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import ErrorBoundary from './components/ErrorBoundary'
 import './utils/localStorageClearDetector'
 import Home from './pages/Home'
+import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
 import Practice from './pages/Practice'
@@ -41,11 +42,20 @@ import GroupAnalytics from './pages/GroupAnalytics'
 import Tournaments from './pages/Tournaments'
 import TournamentDetail from './pages/TournamentDetail'
 import TournamentMatch from './pages/TournamentMatch'
+import NotFound from './pages/NotFound'
 
 const queryClient = new QueryClient()
 
 // Initialize auth state on app startup (replaces AuthProvider useEffect)
 useAuthStore.getState().checkAuth()
+
+/** Show LandingPage for guests, Home (inside AppLayout) for authenticated users */
+function HomeOrLanding() {
+  const { isAuthenticated, isLoading } = useAuthStore()
+  if (isLoading) return null // wait for auth check
+  if (!isAuthenticated) return <LandingPage />
+  return <AppLayout />
+}
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -54,9 +64,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <ErrorProvider>
             <BrowserRouter>
               <Routes>
-                {/* Pages with AppLayout (sidebar + nav) */}
-                <Route element={<AppLayout />}>
+                {/* "/" = LandingPage for guest, Home (with AppLayout) for authenticated */}
+                <Route element={<HomeOrLanding />}>
                   <Route path="/" element={<Home />} />
+                </Route>
+
+                {/* Pages with AppLayout (sidebar + nav) — requires auth check already done */}
+                <Route element={<AppLayout />}>
                   <Route path="/leaderboard" element={<Leaderboard />} />
                   <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
                   <Route path="/groups" element={<RequireAuth><Groups /></RequireAuth>} />
@@ -71,6 +85,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 </Route>
 
                 {/* Full-screen pages (no AppLayout) */}
+                <Route path="/landing" element={<LandingPage />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/auth/callback" element={<AuthCallback />} />
                 <Route path="/quiz" element={<Quiz />} />
@@ -94,6 +109,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="ai-generator" element={<AIQuestionGenerator />} />
                   <Route path="review-queue" element={<ReviewQueue />} />
                 </Route>
+
+                {/* Catch-all 404 */}
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
         </ErrorProvider>

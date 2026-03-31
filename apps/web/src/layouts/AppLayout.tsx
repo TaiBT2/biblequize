@@ -1,4 +1,6 @@
-import { Link, Outlet, useLocation } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { useAuthStore } from '../store/authStore'
 
 const navItems = [
   { path: '/', label: 'Trang chủ', icon: 'home' },
@@ -9,7 +11,27 @@ const navItems = [
 
 export default function AppLayout() {
   const location = useLocation()
+  const navigate = useNavigate()
+  const { user, isAuthenticated, logout } = useAuthStore()
+  const [showUserMenu, setShowUserMenu] = useState(false)
+  const [loggingOut, setLoggingOut] = useState(false)
   const isActive = (path: string) => location.pathname === path
+
+  const handleLogout = async () => {
+    setLoggingOut(true)
+    try {
+      await logout()
+      navigate('/landing')
+    } catch {
+      // logout already clears state
+    } finally {
+      setLoggingOut(false)
+      setShowUserMenu(false)
+    }
+  }
+
+  const displayName = user?.name || 'Người Học'
+  const displayRole = 'Hạng Vàng'
 
   return (
     <div className="min-h-screen bg-[#11131e] text-[#e1e1f1]">
@@ -37,11 +59,58 @@ export default function AppLayout() {
           <span className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">favorite</span>
           <span className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">bolt</span>
           <span className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">stars</span>
-          <Link to="/profile" className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#e8a832]/30 p-0.5">
-            <div className="rounded-full w-full h-full bg-surface-container-highest flex items-center justify-center">
-              <span className="material-symbols-outlined text-[#e8a832]">person</span>
-            </div>
-          </Link>
+          {/* User avatar + dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setShowUserMenu(!showUserMenu)}
+              className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#e8a832]/30 p-0.5 hover:border-[#e8a832] transition-colors"
+            >
+              {user?.avatar ? (
+                <img src={user.avatar} alt={displayName} className="rounded-full w-full h-full object-cover" />
+              ) : (
+                <div className="rounded-full w-full h-full bg-surface-container-highest flex items-center justify-center">
+                  <span className="material-symbols-outlined text-[#e8a832]">person</span>
+                </div>
+              )}
+            </button>
+            {showUserMenu && (
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setShowUserMenu(false)} />
+                <div className="absolute right-0 top-14 z-50 w-56 bg-surface-container-high rounded-2xl border border-outline-variant/20 shadow-2xl overflow-hidden">
+                  <div className="p-4 border-b border-outline-variant/10">
+                    <p className="font-bold text-sm text-on-surface truncate">{displayName}</p>
+                    <p className="text-xs text-on-surface-variant truncate">{user?.email}</p>
+                  </div>
+                  <div className="p-2">
+                    <Link
+                      to="/profile"
+                      onClick={() => setShowUserMenu(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container transition-colors text-sm"
+                    >
+                      <span className="material-symbols-outlined text-on-surface-variant text-xl">person</span>
+                      Hồ sơ
+                    </Link>
+                    <Link
+                      to="/achievements"
+                      onClick={() => setShowUserMenu(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container transition-colors text-sm"
+                    >
+                      <span className="material-symbols-outlined text-on-surface-variant text-xl">emoji_events</span>
+                      Thành tích
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      disabled={loggingOut}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-error/10 transition-colors text-sm w-full text-left text-error disabled:opacity-50"
+                    >
+                      <span className="material-symbols-outlined text-xl">logout</span>
+                      {loggingOut ? 'Đang đăng xuất...' : 'Đăng xuất'}
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </header>
 
@@ -50,12 +119,16 @@ export default function AppLayout() {
         <aside className="hidden md:flex flex-col h-screen sticky top-20 py-10 bg-[#11131e] w-72 border-r border-surface-container-high/50">
           <div className="px-8 mb-10">
             <Link to="/profile" className="flex items-center gap-4 p-4 bg-surface-container-low rounded-2xl border border-surface-container-highest/20">
-              <div className="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center border border-secondary/20">
-                <span className="material-symbols-outlined text-[#e8a832]">person</span>
+              <div className="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center border border-secondary/20 overflow-hidden">
+                {user?.avatar ? (
+                  <img src={user.avatar} alt={displayName} className="w-full h-full object-cover" />
+                ) : (
+                  <span className="material-symbols-outlined text-[#e8a832]">person</span>
+                )}
               </div>
               <div>
-                <p className="font-black text-[#e8a832] text-sm uppercase tracking-widest">Người Học</p>
-                <p className="text-[#e1e1f1]/60 text-xs">Hạng Vàng</p>
+                <p className="font-black text-[#e8a832] text-sm uppercase tracking-widest truncate max-w-[120px]">{displayName}</p>
+                <p className="text-[#e1e1f1]/60 text-xs">{displayRole}</p>
               </div>
             </Link>
           </div>

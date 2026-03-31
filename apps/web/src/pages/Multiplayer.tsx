@@ -1,61 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, type CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../store/authStore';
-import styles from './Multiplayer.module.css';
 
 interface PublicRoom {
   id: string;
   roomCode: string;
   roomName: string;
+  hostName?: string;
   mode: string;
+  difficulty?: string;
   currentPlayers: number;
   maxPlayers: number;
+  status?: 'WAITING' | 'IN_GAME' | 'FINISHED';
+  questionCount?: number;
+  topic?: string;
 }
 
-const MODES = [
-  {
-    id: 'SPEED_RACE',
-    name: 'Speed Race',
-    icon: '🏃',
-    players: '2–20 người',
-    desc: 'Trả lời đúng và nhanh để ghi điểm cao hơn. Không ai bị loại — ai nhiều điểm nhất thắng!',
-    accent: 'rgba(91,155,242,.2)',
-    accentBorder: 'rgba(91,155,242,.4)',
-  },
-  {
-    id: 'BATTLE_ROYALE',
-    name: 'Battle Royale',
-    icon: '⚔️',
-    players: '5–100 người',
-    desc: 'Trả lời sai bị loại ngay. Top 3 người còn lại nhận huy chương!',
-    accent: 'rgba(255,107,91,.15)',
-    accentBorder: 'rgba(255,107,91,.4)',
-  },
-  {
-    id: 'TEAM_VS_TEAM',
-    name: 'Team vs Team',
-    icon: '🫂',
-    players: '4–40 người',
-    desc: 'Chia 2 đội, cộng điểm theo đội. Bonus khi cả đội trả lời đúng!',
-    accent: 'rgba(184,245,90,.1)',
-    accentBorder: 'rgba(184,245,90,.35)',
-  },
-  {
-    id: 'SUDDEN_DEATH',
-    name: 'Sudden Death 1v1',
-    icon: '🎯',
-    players: '2+ người',
-    desc: 'King of the Hill: ai sai trước thua, người thắng giữ ghế chờ đối thủ tiếp theo!',
-    accent: 'rgba(212,168,67,.12)',
-    accentBorder: 'rgba(212,168,67,.4)',
-  },
-];
+const MODE_LABELS: Record<string, string> = {
+  SPEED_RACE: 'Speed Race',
+  BATTLE_ROYALE: 'Battle Royale',
+  TEAM_VS_TEAM: 'Team vs Team',
+  SUDDEN_DEATH: 'Sudden Death',
+};
 
-const Multiplayer: React.FC = () => {
+const DIFFICULTY_LABELS: Record<string, string> = {
+  easy: 'Easy',
+  medium: 'Medium',
+  hard: 'Hard',
+};
+
+const ROOM_ICONS = ['auto_stories', 'menu_book', 'psychology', 'emoji_events'];
+
+const FILL_1: CSSProperties = { fontVariationSettings: "'FILL' 1" };
+
+const Multiplayer = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
   const [publicRooms, setPublicRooms] = useState<PublicRoom[]>([]);
   const [loadingRooms, setLoadingRooms] = useState(false);
+  const [joinCode, setJoinCode] = useState('');
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -82,100 +65,231 @@ const Multiplayer: React.FC = () => {
 
   if (!isAuthenticated) return null;
 
+  const waitingRooms = publicRooms.filter(r => r.status === 'WAITING' || r.status === undefined);
+  const activeGames = publicRooms.filter(r => r.status === 'IN_GAME');
+  const finishedGames = publicRooms.filter(r => r.status === 'FINISHED');
+  const allRooms = [...waitingRooms, ...activeGames, ...finishedGames];
+  const liveCount = waitingRooms.length + activeGames.length;
+
+  const getRoomIcon = (index: number) => ROOM_ICONS[index % ROOM_ICONS.length];
+
+  const getStatusLabel = (room: PublicRoom) => {
+    if (room.status === 'IN_GAME') return { text: 'Dang Choi', className: 'text-error' };
+    if (room.status === 'FINISHED') return { text: 'Ket Thuc', className: 'text-on-surface-variant' };
+    return { text: 'Dang Cho', className: 'text-secondary' };
+  };
+
+  const isFull = (room: PublicRoom) => room.currentPlayers >= room.maxPlayers;
+
   return (
-    <div className={`min-h-screen page-bg ${styles.page}`}>
-      <div className={styles.inner}>
+    <div className="space-y-8">
 
-        {/* Header */}
-        <div className={styles.header}>
-          <button
-            onClick={() => navigate('/')}
-            className={styles.backBtn}
-          >
-            ← Trang chủ
-          </button>
-          <h1 className={styles.title}>
-            🎮 Chơi nhiều người
-          </h1>
-          <p className={styles.subtitle}>
-            Chọn chế độ chơi và thách đấu bạn bè
-          </p>
-        </div>
+      {/* -- Page Header -- */}
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-black text-on-surface tracking-tight">Phong Choi</h2>
+        <button
+          onClick={() => navigate('/room/create')}
+          className="flex items-center gap-2 py-2.5 px-6 rounded-lg gold-gradient text-on-secondary font-extrabold text-sm tracking-tight shadow-md hover:shadow-secondary/20 transition-all"
+        >
+          <span className="material-symbols-outlined text-sm">add_circle</span>
+          + Tao Phong
+        </button>
+      </div>
 
-        {/* Mode Cards */}
-        <div className={styles.modesGrid}>
-          {MODES.map((mode) => (
-            <div
-              key={mode.id}
-              className={`page-card ${styles.modeCard}`}
-              style={{ border: `1px solid ${mode.accentBorder}`, background: `linear-gradient(135deg, var(--hp-card), ${mode.accent})` }}
-            >
-              <div className={styles.modeCardTop}>
-                <span className={styles.modeIcon}>{mode.icon}</span>
-                <div>
-                  <h2 className={styles.modeName}>{mode.name}</h2>
-                  <span className={styles.modePlayers}>{mode.players}</span>
-                </div>
-              </div>
-              <p className={styles.modeDesc}>{mode.desc}</p>
-              <div className={styles.modeActions}>
-                <button
-                  onClick={() => navigate(`/room/create?mode=${mode.id}`)}
-                  className={`practice-start-btn ${styles.createBtn}`}
-                >
-                  Tạo phòng
-                </button>
-                <button
-                  onClick={() => navigate('/room/join')}
-                  className={styles.joinBtn}
-                >
-                  Nhập mã
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Public Rooms */}
-        <div className={`page-card ${styles.publicRoomsCard}`}>
-          <div className={styles.publicRoomsHeader}>
-            <h2 className={styles.publicRoomsTitle}>
-              🌐 Phòng công khai đang mở
-            </h2>
+      {/* -- Join Section: Code Input + Featured Card -- */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Join by code */}
+        <div className="md:col-span-2 p-8 rounded-2xl bg-surface-container flex flex-col md:flex-row items-center justify-between gap-6 border-l-4 border-secondary">
+          <div>
+            <h3 className="text-xl font-bold text-on-surface mb-1">Tham gia bang ma</h3>
+            <p className="text-on-surface-variant text-sm">Nhap ma 6 chu so de vao phong nhanh</p>
+          </div>
+          <div className="flex items-center gap-3 w-full md:w-auto">
+            <input
+              type="text"
+              value={joinCode}
+              onChange={e => setJoinCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ''))}
+              placeholder="123 456"
+              maxLength={6}
+              className="bg-surface-container-highest border-none rounded-xl px-4 py-3 text-center text-xl font-black tracking-[0.5em] text-secondary placeholder:text-outline/30 focus:ring-2 focus:ring-secondary/50 w-full md:w-48 outline-none"
+              onKeyDown={e => { if (e.key === 'Enter' && joinCode.trim()) navigate(`/room/join?code=${joinCode.trim()}`); }}
+            />
             <button
-              onClick={fetchPublicRooms}
-              className={styles.refreshBtn}
+              onClick={() => { if (joinCode.trim()) navigate(`/room/join?code=${joinCode.trim()}`); }}
+              disabled={!joinCode.trim()}
+              className="bg-surface-container-highest hover:bg-surface-variant text-secondary font-bold py-3 px-8 rounded-xl transition-all border border-secondary/20 disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              {loadingRooms ? 'Đang tải...' : 'Làm mới ↻'}
+              Tham Gia
             </button>
           </div>
-
-          {publicRooms.length === 0 ? (
-            <p className={styles.emptyRooms}>
-              Chưa có phòng nào đang chờ. Hãy tạo phòng đầu tiên!
-            </p>
-          ) : (
-            <div className={styles.roomList}>
-              {publicRooms.map((room) => (
-                <div key={room.id} className={styles.roomRow}>
-                  <div>
-                    <p className={styles.roomName}>{room.roomName}</p>
-                    <p className={styles.roomMeta}>
-                      {room.mode.replace(/_/g, ' ')} · {room.currentPlayers}/{room.maxPlayers} người
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => navigate(`/room/${room.id}/lobby`)}
-                    className={`practice-start-btn ${styles.joinRoomBtn}`}
-                  >
-                    Vào
-                  </button>
-                </div>
-              ))}
-            </div>
-          )}
         </div>
-      </div>
+
+        {/* Featured quiz card */}
+        <div className="glass-card p-6 rounded-2xl flex flex-col justify-center relative overflow-hidden group">
+          <div className="absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">
+            <span className="material-symbols-outlined text-8xl text-secondary">auto_awesome</span>
+          </div>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-secondary font-bold mb-2">De xuat hom nay</p>
+          <h4 className="text-lg font-bold leading-tight">Giai do Sang The Ky cung muc su</h4>
+          <p className="text-xs text-on-surface-variant mt-2 flex items-center gap-1">
+            <span className="material-symbols-outlined text-sm">schedule</span> 14:00 Chieu nay
+          </p>
+        </div>
+      </section>
+
+      {/* -- Room List Section -- */}
+      <section className="space-y-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <h3 className="text-lg font-bold">Phong Dang Cho</h3>
+            <span className="px-2 py-0.5 rounded bg-secondary/10 text-secondary text-[10px] font-bold uppercase tracking-widest">
+              Live {liveCount}
+            </span>
+          </div>
+          <div className="flex gap-2">
+            <button
+              onClick={fetchPublicRooms}
+              disabled={loadingRooms}
+              className="p-2 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors disabled:opacity-50"
+            >
+              <span className={`material-symbols-outlined ${loadingRooms ? 'animate-spin' : ''}`}>refresh</span>
+            </button>
+            <button className="p-2 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-on-surface">
+              <span className="material-symbols-outlined">filter_list</span>
+            </button>
+            <button className="p-2 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-on-surface">
+              <span className="material-symbols-outlined">search</span>
+            </button>
+          </div>
+        </div>
+
+        {allRooms.length === 0 ? (
+          /* Empty State */
+          <div className="flex flex-col items-center justify-center py-20 bg-surface-container-low rounded-3xl border-2 border-dashed border-outline-variant/20">
+            <div className="w-24 h-24 rounded-full bg-surface-variant flex items-center justify-center mb-6">
+              <span className="material-symbols-outlined text-5xl text-outline-variant">sentiment_dissatisfied</span>
+            </div>
+            <h5 className="text-xl font-bold text-on-surface mb-2">Chua co phong nao...</h5>
+            <p className="text-on-surface-variant max-w-xs text-center mb-8">
+              Hay la nguoi dau tien tao phong choi de bat dau cuoc dua tri tue ngay bay gio!
+            </p>
+            <button
+              onClick={() => navigate('/room/create')}
+              className="py-3 px-8 rounded-xl gold-gradient text-on-secondary font-bold shadow-lg"
+            >
+              Tao Phong Ngay
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {allRooms.map((room, index) => {
+              const status = getStatusLabel(room);
+              const roomFull = isFull(room);
+              const isFinished = room.status === 'FINISHED';
+              const isPlaying = room.status === 'IN_GAME';
+              const isWaiting = !isFinished && !isPlaying;
+
+              return (
+                <div
+                  key={room.id}
+                  className="group bg-surface-container hover:bg-surface-container-high p-6 rounded-2xl transition-all duration-300 flex flex-col gap-4"
+                >
+                  {/* Room header */}
+                  <div className="flex justify-between items-start">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-xl bg-surface-variant flex items-center justify-center text-secondary">
+                        <span className="material-symbols-outlined text-3xl">{getRoomIcon(index)}</span>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg text-on-surface group-hover:text-secondary transition-colors">
+                          {room.roomName}
+                        </h4>
+                        {room.hostName && (
+                          <p className="text-xs text-on-surface-variant">
+                            Host: <span className="text-on-surface">{room.hostName}</span>
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className={`flex items-center gap-1 text-on-surface font-black ${roomFull || isFinished ? 'opacity-50' : ''}`}>
+                        <span
+                          className={`material-symbols-outlined text-sm ${isWaiting && !roomFull ? 'text-secondary' : 'text-outline'}`}
+                          style={isWaiting && !roomFull ? FILL_1 : undefined}
+                        >
+                          person
+                        </span>
+                        {room.currentPlayers}/{room.maxPlayers}
+                      </div>
+                      <span className={`text-[10px] font-bold uppercase tracking-tighter ${status.className}`}>
+                        {status.text}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Settings pills */}
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {room.questionCount && (
+                      <span className="px-3 py-1 rounded-full bg-surface-container-highest text-[11px] text-on-surface-variant flex items-center gap-1">
+                        <span className="material-symbols-outlined text-xs">quiz</span> {room.questionCount} cau
+                      </span>
+                    )}
+                    {room.difficulty && (
+                      <span className="px-3 py-1 rounded-full bg-surface-container-highest text-[11px] text-on-surface-variant flex items-center gap-1">
+                        <span className="material-symbols-outlined text-xs">signal_cellular_alt</span> {DIFFICULTY_LABELS[room.difficulty] || room.difficulty}
+                      </span>
+                    )}
+                    {room.mode && (
+                      <span className="px-3 py-1 rounded-full bg-surface-container-highest text-[11px] text-on-surface-variant flex items-center gap-1">
+                        <span className="material-symbols-outlined text-xs">stadia_controller</span> {MODE_LABELS[room.mode] || room.mode.replace(/_/g, ' ')}
+                      </span>
+                    )}
+                    {room.topic && (
+                      <span className="px-3 py-1 rounded-full bg-secondary/10 text-[11px] text-secondary font-medium">
+                        {room.topic}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Action button */}
+                  {isWaiting && !roomFull && (
+                    <button
+                      onClick={() => navigate(`/room/${room.id}/lobby`)}
+                      className="mt-2 w-full py-3 rounded-xl border border-outline-variant/30 hover:bg-secondary hover:text-on-secondary hover:border-transparent font-bold text-sm transition-all flex items-center justify-center gap-2"
+                    >
+                      Vao Phong <span className="material-symbols-outlined text-sm">login</span>
+                    </button>
+                  )}
+                  {isWaiting && roomFull && (
+                    <button
+                      disabled
+                      className="mt-2 w-full py-3 rounded-xl bg-surface-container-highest text-on-surface-variant/40 font-bold text-sm cursor-not-allowed flex items-center justify-center gap-2"
+                    >
+                      Phong Da Day <span className="material-symbols-outlined text-sm">lock</span>
+                    </button>
+                  )}
+                  {isPlaying && (
+                    <button
+                      onClick={() => navigate(`/room/${room.id}/spectate`)}
+                      className="mt-2 w-full py-3 rounded-xl border border-outline-variant/30 hover:bg-secondary hover:text-on-secondary hover:border-transparent font-bold text-sm transition-all flex items-center justify-center gap-2"
+                    >
+                      Xem Tran Dau <span className="material-symbols-outlined text-sm">visibility</span>
+                    </button>
+                  )}
+                  {isFinished && (
+                    <button
+                      onClick={() => navigate(`/room/${room.id}/results`)}
+                      className="mt-2 w-full py-3 rounded-xl bg-surface-container-highest text-secondary font-bold text-sm hover:bg-surface-variant transition-all flex items-center justify-center gap-2"
+                    >
+                      Xem Ket Qua <span className="material-symbols-outlined text-sm">leaderboard</span>
+                    </button>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </section>
     </div>
   );
 };
