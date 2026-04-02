@@ -8,6 +8,8 @@ import com.biblequiz.modules.tournament.repository.TournamentMatchParticipantRep
 import com.biblequiz.modules.tournament.repository.TournamentMatchRepository;
 import com.biblequiz.modules.tournament.repository.TournamentParticipantRepository;
 import com.biblequiz.modules.tournament.repository.TournamentRepository;
+import com.biblequiz.modules.quiz.entity.UserDailyProgress;
+import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.user.entity.User;
 
 import org.slf4j.Logger;
@@ -35,6 +37,9 @@ public class TournamentService {
 
     @Autowired
     private TournamentMatchParticipantRepository matchParticipantRepository;
+
+    @Autowired
+    private UserDailyProgressRepository udpRepository;
 
     public Map<String, Object> createTournament(String name, User creator, int bracketSize) {
         Map<String, Object> result = new HashMap<>();
@@ -126,13 +131,13 @@ public class TournamentService {
         }
 
         List<TournamentParticipant> participants = participantRepository.findByTournamentId(tournamentId);
-        if (participants.size() < 2) {
-            result.put("error", "Need at least 2 participants to start");
+        if (participants.size() < 4) {
+            result.put("error", "Need at least 4 participants to start");
             return result;
         }
 
-        // Seed participants (shuffle, assign 1..N)
-        Collections.shuffle(participants);
+        // FIX-003: Seed by all-time points (highest → seed 1). Same points → random.
+        seedParticipantsByPoints(participants);
         for (int i = 0; i < participants.size(); i++) {
             participants.get(i).setSeed(i + 1);
             participantRepository.save(participants.get(i));
@@ -389,6 +394,37 @@ public class TournamentService {
 
         // Recursively check if the new round is already complete (all byes)
         checkAndAdvanceRound(tournament);
+    }
+
+    /**
+     * FIX-003: Seed participants by all-time points (highest first).
+     * Participants with equal points are randomized among themselves.
+     */
+    private void seedParticipantsByPoints(List<TournamentParticipant> participants) {
+        // Compute all-time points for each participant
+        Map<String, Integer> pointsMap = new HashMap<>();
+        for (TournamentParticipant p : participants) {
+            String userId = p.getUser().getId();
+            int totalPoints = udpRepository.findByUserIdOrderByDateDesc(userId).stream()
+                    .mapToInt(udp -> udp.getPointsCounted() != null ? udp.getPointsCounted() : 0)
+                    .sum();
+            pointsMap.put(userId, totalPoints);
+        }
+
+        // Shuffle first so equal-points participants get random order
+        Collections.shuffle(participants);
+        // Then stable-sort descending by points
+        participants.sort((a, b) -> {
+            int pa = pointsMap.getOrDefault(a.getUser().getId(), 0);
+            int pb = pointsMap.getOrDefault(b.getUser().getId(), 0);
+            return Integer.compare(pb, pa); // descending
+        });
+
+        log.info("[TOURNAMENT] Seeded {} participants by points: {}",
+                participants.size(),
+                participants.stream()
+                        .map(p -> p.getUser().getName() + "(" + pointsMap.get(p.getUser().getId()) + ")")
+                        .collect(Collectors.joining(", ")));
     }
 
     private User findUserFromParticipants(String tournamentId, String userId) {

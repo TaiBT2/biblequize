@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>THE MONOLITH - Question Quality Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #11131c;
+            color: #e1e1ef;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* Custom scrollbar for high-density tables */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0c0e17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #32343e;
+            border-radius: 2px;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #ffc667 0%, #e8a832 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-container": "#004681",
+                        "tertiary-container": "#80b6ff",
+                        "primary-container": "#e8a832",
+                        "on-secondary": "#2e303d",
+                        "on-primary": "#432c00",
+                        "outline-variant": "#504535",
+                        "surface-container-high": "#282933",
+                        "primary-fixed": "#ffdead",
+                        "outline": "#9d8f7b",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#e1e1ef",
+                        "on-primary-fixed": "#281900",
+                        "surface-container-low": "#191b25",
+                        "surface-tint": "#fdbb44",
+                        "on-tertiary": "#00315d",
+                        "on-surface": "#e1e1ef",
+                        "surface-container": "#1d1f29",
+                        "on-primary-fixed-variant": "#604100",
+                        "inverse-on-surface": "#2e303a",
+                        "surface-dim": "#11131c",
+                        "on-primary-container": "#5f4000",
+                        "on-secondary-container": "#b3b4c6",
+                        "surface-bright": "#373943",
+                        "on-background": "#e1e1ef",
+                        "tertiary": "#b3d1ff",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0c0e17",
+                        "on-tertiary-fixed": "#001c39",
+                        "surface-variant": "#32343e",
+                        "surface-container-highest": "#32343e",
+                        "surface": "#11131c",
+                        "tertiary-fixed-dim": "#a4c9ff",
+                        "on-secondary-fixed-variant": "#444655",
+                        "secondary-container": "#444655",
+                        "secondary": "#c5c5d7",
+                        "on-surface-variant": "#d5c4af",
+                        "on-secondary-fixed": "#191b28",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#7f5700",
+                        "tertiary-fixed": "#d4e3ff",
+                        "secondary-fixed": "#e1e1f4",
+                        "on-tertiary-fixed-variant": "#004883",
+                        "on-error": "#690005",
+                        "background": "#11131c",
+                        "secondary-fixed-dim": "#c5c5d7",
+                        "primary-fixed-dim": "#fdbb44",
+                        "primary": "#ffc667"
+                    },
+                    fontFamily: {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="flex min-h-screen overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 h-full w-64 bg-[#0c0e17] flex flex-col border-r border-[#1d1f29] z-50">
+<div class="p-6 border-b border-[#11131c]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-[#1d1f29] flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-[#e8a832]" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<h1 class="font-['JetBrains_Mono'] text-lg text-[#e8a832] leading-none">SACRED ADMIN</h1>
+<p class="font-['Be_Vietnam_Pro'] text-[10px] font-medium uppercase tracking-[0.2em] text-[#d5c4af] opacity-50 mt-1">V1.0.4-STABLE</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 mt-4">
+<a class="text-[#d5c4af] opacity-50 py-4 px-6 flex items-center gap-4 hover:bg-[#1d1f29] hover:opacity-100 transition-all font-['Be_Vietnam_Pro'] text-xs font-medium uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Users</span>
+</a>
+<a class="text-[#e8a832] bg-[#1d1f29] border-r-2 border-[#e8a832] py-4 px-6 flex items-center gap-4 font-['Be_Vietnam_Pro'] text-xs font-medium uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+<span>Questions</span>
+</a>
+<a class="text-[#d5c4af] opacity-50 py-4 px-6 flex items-center gap-4 hover:bg-[#1d1f29] hover:opacity-100 transition-all font-['Be_Vietnam_Pro'] text-xs font-medium uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span>AI Generator</span>
+</a>
+<a class="text-[#d5c4af] opacity-50 py-4 px-6 flex items-center gap-4 hover:bg-[#1d1f29] hover:opacity-100 transition-all font-['Be_Vietnam_Pro'] text-xs font-medium uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span>Analytics</span>
+</a>
+</nav>
+<div class="px-6 py-8">
+<button class="w-full py-3 px-4 gold-gradient text-[#281900] font-bold text-[10px] uppercase tracking-widest rounded transition-transform active:scale-95">
+                Generate Insights
+            </button>
+</div>
+<footer class="mt-auto border-t border-[#11131c]">
+<a class="text-[#d5c4af] opacity-50 py-4 px-6 flex items-center gap-4 hover:bg-[#1d1f29] hover:opacity-100 transition-all font-['Be_Vietnam_Pro'] text-xs font-medium uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Support</span>
+</a>
+<a class="text-[#d5c4af] opacity-50 py-4 px-6 flex items-center gap-4 hover:bg-[#1d1f29] hover:opacity-100 transition-all font-['Be_Vietnam_Pro'] text-xs font-medium uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</footer>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 flex flex-col min-w-0 bg-[#11131c]">
+<!-- TopNavBar -->
+<header class="bg-[#11131c] flex justify-between items-center w-full px-8 py-4 sticky top-0 z-40">
+<div class="flex items-center gap-6">
+<span class="font-['JetBrains_Mono'] font-bold text-[#e8a832] tracking-tighter text-xl uppercase">THE MONOLITH</span>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/40">search</span>
+<input class="bg-[#1d1f29] border-none text-sm px-10 py-2 w-64 rounded-sm focus:ring-1 focus:ring-[#e8a832] placeholder-[#d5c4af]/30" placeholder="Search parameters..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-5">
+<button class="relative hover:bg-[#32343e] p-2 rounded transition-colors text-[#d5c4af] opacity-70">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-[#e8a832] rounded-full"></span>
+</button>
+<button class="hover:bg-[#32343e] p-2 rounded transition-colors text-[#d5c4af] opacity-70">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-[#1d1f29]">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-semibold text-on-surface">Admin User</p>
+<p class="text-[10px] text-on-surface-variant/50">SYSTEM OVERSEER</p>
+</div>
+<img alt="Admin profile avatar" class="w-9 h-9 rounded-full grayscale border border-[#1d1f29]" data-alt="Close-up professional portrait of a tech administrator with neutral expression and sharp lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJywWbqFqyudvOXSG3nqd92qBCO5JOz7kYD83dgqKy00v-VL-jt8khRxibE8xkddmXLBVHAeRhsuTyZ643qfPSRY7DGvhe_qG0JAS-JMPdNuKCSXQMuCgZIHRu3MWoWDJErOEI9N-gwGkFTuHlvCjyRsErfPBKw1EJUo-wXhMZkYUMM3vwJ0iifIe4NZZCGP6Ut205gcZ2CCkIvkzKvirEYt1n7nVZfSYDfW62aA5ucfmJQVbVDEWHDBkimxXtfZuc7jnEm6exnQU"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 space-y-8 max-w-[1600px]">
+<!-- Header Section -->
+<div class="flex justify-between items-end border-b border-outline-variant/10 pb-6">
+<div>
+<h2 class="text-4xl font-extrabold tracking-tight text-on-surface">📈 Chất lượng câu hỏi</h2>
+<p class="text-on-surface-variant font-medium mt-2">Analysis of database health and engagement metrics.</p>
+</div>
+<div class="text-right">
+<p class="label-sm uppercase tracking-widest text-on-surface-variant/60 mb-1">Overall Quality Score</p>
+<span class="text-6xl font-bold text-[#e8a832] mono tracking-tighter">72<span class="text-2xl text-on-surface-variant/40">/100</span></span>
+</div>
+</div>
+<!-- Row 1: Problem Tables -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<!-- Table A -->
+<div class="bg-surface-container rounded-sm overflow-hidden flex flex-col h-[400px]">
+<div class="p-4 bg-surface-container-high flex justify-between items-center">
+<h3 class="text-xs font-bold uppercase tracking-widest text-[#f87171]">❌ Quá khó (&lt;20% accuracy)</h3>
+<span class="text-[10px] px-2 py-0.5 bg-error/10 text-error rounded-full mono">12 Items</span>
+</div>
+<div class="flex-1 overflow-auto">
+<table class="w-full text-left text-[11px] border-collapse">
+<thead class="sticky top-0 bg-surface-container-high z-10">
+<tr class="text-on-surface-variant/60 border-b border-outline-variant/5">
+<th class="p-3 font-semibold">Question</th>
+<th class="p-3 font-semibold">Book</th>
+<th class="p-3 font-semibold">Acc%</th>
+<th class="p-3 font-semibold">Used</th>
+<th class="p-3 font-semibold">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-3 truncate max-w-[120px]">Melchizedek genealogy...</td>
+<td class="p-3 text-on-surface-variant/70">Hebrews</td>
+<td class="p-3 mono text-error">12%</td>
+<td class="p-3 mono">450</td>
+<td class="p-3"><button class="text-[#e8a832] hover:underline">Edit</button></td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-3 truncate max-w-[120px]">Tabernacle dimensions...</td>
+<td class="p-3 text-on-surface-variant/70">Exodus</td>
+<td class="p-3 mono text-error">18%</td>
+<td class="p-3 mono">821</td>
+<td class="p-3"><button class="text-[#e8a832] hover:underline">Edit</button></td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-3 truncate max-w-[120px]">Kings of Edom list...</td>
+<td class="p-3 text-on-surface-variant/70">Genesis</td>
+<td class="p-3 mono text-error">15%</td>
+<td class="p-3 mono">312</td>
+<td class="p-3"><button class="text-[#e8a832] hover:underline">Edit</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Table B -->
+<div class="bg-surface-container rounded-sm overflow-hidden flex flex-col h-[400px]">
+<div class="p-4 bg-surface-container-high flex justify-between items-center">
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary">⚠️ Quá dễ (&gt;95% accuracy)</h3>
+<span class="text-[10px] px-2 py-0.5 bg-primary/10 text-primary rounded-full mono">48 Items</span>
+</div>
+<div class="flex-1 overflow-auto">
+<table class="w-full text-left text-[11px] border-collapse">
+<thead class="sticky top-0 bg-surface-container-high z-10">
+<tr class="text-on-surface-variant/60 border-b border-outline-variant/5">
+<th class="p-3 font-semibold">Question</th>
+<th class="p-3 font-semibold">Book</th>
+<th class="p-3 font-semibold">Acc%</th>
+<th class="p-3 font-semibold">Used</th>
+<th class="p-3 font-semibold">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-3 truncate max-w-[120px]">First man's name?</td>
+<td class="p-3 text-on-surface-variant/70">Genesis</td>
+<td class="p-3 mono text-primary">98%</td>
+<td class="p-3 mono">12.4k</td>
+<td class="p-3"><button class="text-[#e8a832] hover:underline">Archive</button></td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-3 truncate max-w-[120px]">Jesus birth town?</td>
+<td class="p-3 text-on-surface-variant/70">Matthew</td>
+<td class="p-3 mono text-primary">96%</td>
+<td class="p-3 mono">9.8k</td>
+<td class="p-3"><button class="text-[#e8a832] hover:underline">Archive</button></td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-3 truncate max-w-[120px]">Moses led who?</td>
+<td class="p-3 text-on-surface-variant/70">Exodus</td>
+<td class="p-3 mono text-primary">97%</td>
+<td class="p-3 mono">11.1k</td>
+<td class="p-3"><button class="text-[#e8a832] hover:underline">Archive</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Table C -->
+<div class="bg-surface-container rounded-sm overflow-hidden flex flex-col h-[400px]">
+<div class="p-4 bg-surface-container-high flex justify-between items-center">
+<h3 class="text-xs font-bold uppercase tracking-widest text-[#d5c4af]">🚫 Bị report nhiều</h3>
+<span class="text-[10px] px-2 py-0.5 bg-on-surface-variant/10 text-on-surface-variant rounded-full mono">8 Items</span>
+</div>
+<div class="flex-1 overflow-auto">
+<table class="w-full text-left text-[11px] border-collapse">
+<thead class="sticky top-0 bg-surface-container-high z-10">
+<tr class="text-on-surface-variant/60 border-b border-outline-variant/5">
+<th class="p-3 font-semibold">Question</th>
+<th class="p-3 font-semibold">Reports</th>
+<th class="p-3 font-semibold">Last Report</th>
+<th class="p-3 font-semibold">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-3 truncate max-w-[120px]">David vs Goliath stone...</td>
+<td class="p-3 mono text-[#f87171]">24</td>
+<td class="p-3 text-on-surface-variant/70 mono">2023-10-21</td>
+<td class="p-3"><button class="text-error hover:underline">Fix</button></td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-3 truncate max-w-[120px]">Elijah's chariot type...</td>
+<td class="p-3 mono text-[#f87171]">15</td>
+<td class="p-3 text-on-surface-variant/70 mono">2023-10-20</td>
+<td class="p-3"><button class="text-error hover:underline">Fix</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Row 2: Visual Analytics -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Phân bố độ khó -->
+<div class="bg-surface-container p-6 rounded-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-sm font-bold uppercase tracking-widest">Phân bố độ khó</h3>
+<div class="flex gap-4 text-[10px] font-bold">
+<span class="flex items-center gap-1"><span class="w-2 h-2 bg-primary"></span> EASY</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 bg-on-surface-variant/30"></span> MED</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 bg-error/60"></span> HARD</span>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Chart Bar Mockup -->
+<div class="grid grid-cols-[80px_1fr] items-center gap-4">
+<span class="text-[10px] font-bold opacity-60">GENESIS</span>
+<div class="h-6 flex rounded overflow-hidden">
+<div class="bg-primary w-[40%]"></div>
+<div class="bg-on-surface-variant/30 w-[45%]"></div>
+<div class="bg-error/60 w-[15%]"></div>
+</div>
+</div>
+<div class="grid grid-cols-[80px_1fr] items-center gap-4">
+<span class="text-[10px] font-bold opacity-60">EXODUS</span>
+<div class="h-6 flex rounded overflow-hidden">
+<div class="bg-primary w-[20%]"></div>
+<div class="bg-on-surface-variant/30 w-[50%]"></div>
+<div class="bg-error/60 w-[30%]"></div>
+</div>
+</div>
+<div class="grid grid-cols-[80px_1fr] items-center gap-4">
+<span class="text-[10px] font-bold opacity-60">MATTHEW</span>
+<div class="h-6 flex rounded overflow-hidden">
+<div class="bg-primary w-[60%]"></div>
+<div class="bg-on-surface-variant/30 w-[35%]"></div>
+<div class="bg-error/60 w-[5%]"></div>
+</div>
+</div>
+<div class="grid grid-cols-[80px_1fr] items-center gap-4">
+<span class="text-[10px] font-bold opacity-60">ROMANS</span>
+<div class="h-6 flex rounded overflow-hidden">
+<div class="bg-primary w-[10%]"></div>
+<div class="bg-on-surface-variant/30 w-[30%]"></div>
+<div class="bg-error/60 w-[60%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Accuracy Histogram -->
+<div class="bg-surface-container p-6 rounded-sm">
+<h3 class="text-sm font-bold uppercase tracking-widest mb-6">Accuracy Histogram</h3>
+<div class="relative h-[180px] flex items-end gap-1 px-2 border-b border-l border-outline-variant/10">
+<!-- Bars -->
+<div class="flex-1 bg-error/40 h-[10%] group relative">
+<div class="absolute -top-6 left-0 right-0 text-center opacity-0 group-hover:opacity-100 text-[8px] mono">12</div>
+</div>
+<div class="flex-1 bg-error/40 h-[15%] group relative"></div>
+<div class="flex-1 bg-on-surface-variant/20 h-[30%] group relative"></div>
+<div class="flex-1 bg-on-surface-variant/20 h-[55%] group relative"></div>
+<div class="flex-1 bg-on-surface-variant/20 h-[85%] group relative"></div>
+<div class="flex-1 bg-on-surface-variant/20 h-[70%] group relative"></div>
+<div class="flex-1 bg-on-surface-variant/20 h-[45%] group relative"></div>
+<div class="flex-1 bg-primary/40 h-[90%] group relative"></div>
+<div class="flex-1 bg-primary/40 h-[95%] group relative"></div>
+<div class="flex-1 bg-primary/40 h-[20%] group relative"></div>
+<!-- Red Zone Labels -->
+<div class="absolute bottom-[-24px] left-0 text-[9px] font-bold text-error">CRITICAL LOW</div>
+<div class="absolute bottom-[-24px] right-0 text-[9px] font-bold text-primary">TRIVIAL HIGH</div>
+</div>
+<div class="flex justify-between mt-8 px-2 text-[10px] text-on-surface-variant/40 mono">
+<span>0%</span>
+<span>25%</span>
+<span>50%</span>
+<span>75%</span>
+<span>100%</span>
+</div>
+</div>
+</div>
+<!-- Row 3: Quality Trends -->
+<div class="bg-surface-container p-6 rounded-sm">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="text-sm font-bold uppercase tracking-widest">Quality trends</h3>
+<p class="text-[10px] text-on-surface-variant/50 mt-1 uppercase tracking-wider">30-day performance tracking by source</p>
+</div>
+<div class="flex gap-6 text-[10px] font-bold">
+<span class="flex items-center gap-2"><span class="w-3 h-0.5 bg-[#e8a832]"></span> AI GENERATED</span>
+<span class="flex items-center gap-2"><span class="w-3 h-0.5 bg-[#80b6ff]"></span> MANUAL ENTRY</span>
+<span class="flex items-center gap-2"><span class="w-3 h-0.5 bg-on-surface-variant/40"></span> IMPORTED</span>
+</div>
+</div>
+<div class="relative h-[250px] w-full mt-4">
+<!-- SVG Chart Line Mockup -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 1000 200">
+<!-- AI Line -->
+<path d="M0,150 L100,140 L200,160 L300,130 L400,110 L500,90 L600,70 L700,85 L800,60 L900,40 L1000,30" fill="none" stroke="#e8a832" stroke-width="2"></path>
+<!-- Manual Line -->
+<path d="M0,50 L100,55 L200,52 L300,58 L400,60 L500,55 L600,52 L700,50 L800,51 L900,48 L1000,50" fill="none" stroke="#80b6ff" stroke-width="2"></path>
+<!-- Imported Line -->
+<path d="M0,180 L100,175 L200,182 L300,165 L400,170 L500,160 L600,155 L700,162 L800,158 L900,165 L1000,170" fill="none" stroke="#d5c4af" stroke-opacity="0.3" stroke-width="2"></path>
+<!-- Reference Lines -->
+<line stroke="#d5c4af" stroke-opacity="0.05" x1="0" x2="1000" y1="0" y2="0"></line>
+<line stroke="#d5c4af" stroke-opacity="0.05" x1="0" x2="1000" y1="50" y2="50"></line>
+<line stroke="#d5c4af" stroke-opacity="0.05" x1="0" x2="1000" y1="100" y2="100"></line>
+<line stroke="#d5c4af" stroke-opacity="0.05" x1="0" x2="1000" y1="150" y2="150"></line>
+<line stroke="#d5c4af" stroke-opacity="0.05" x1="0" x2="1000" y1="200" y2="200"></line>
+</svg>
+<div class="flex justify-between mt-4 text-[9px] text-on-surface-variant/40 mono uppercase">
+<span>30 Days Ago</span>
+<span>20 Days Ago</span>
+<span>10 Days Ago</span>
+<span>Today</span>
+</div>
+</div>
+</div>
+<!-- Row 4: Unused Questions Table -->
+<div class="bg-surface-container rounded-sm overflow-hidden">
+<div class="p-6 bg-surface-container-high flex justify-between items-center border-b border-outline-variant/10">
+<h3 class="text-sm font-bold uppercase tracking-widest">Unused questions</h3>
+<div class="flex items-center gap-4">
+<span class="text-[10px] text-on-surface-variant/60 font-medium">SORTED BY: DATE ADDED (DESC)</span>
+<button class="bg-[#32343e] p-2 rounded hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs border-collapse">
+<thead>
+<tr class="text-on-surface-variant/60 bg-surface-container-low/50">
+<th class="p-4 font-semibold uppercase tracking-tighter">ID</th>
+<th class="p-4 font-semibold uppercase tracking-tighter">Question Text</th>
+<th class="p-4 font-semibold uppercase tracking-tighter">Category</th>
+<th class="p-4 font-semibold uppercase tracking-tighter">Added Date</th>
+<th class="p-4 font-semibold uppercase tracking-tighter">Status</th>
+<th class="p-4 font-semibold uppercase tracking-tighter text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-4 mono text-on-surface-variant/60">BQ-9082</td>
+<td class="p-4 font-medium">What was the third plague of Egypt?</td>
+<td class="p-4"><span class="px-2 py-0.5 bg-tertiary/10 text-tertiary rounded text-[10px]">Exodus</span></td>
+<td class="p-4 mono text-on-surface-variant/60">2023-11-01</td>
+<td class="p-4"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant/30"></span> Inactive</span></td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-3">
+<button class="text-[#e8a832] font-bold text-[10px] uppercase tracking-widest hover:brightness-110">Activate</button>
+<button class="text-error font-bold text-[10px] uppercase tracking-widest hover:brightness-110">Delete</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-4 mono text-on-surface-variant/60">BQ-9077</td>
+<td class="p-4 font-medium">Who was the father of Methuselah?</td>
+<td class="p-4"><span class="px-2 py-0.5 bg-tertiary/10 text-tertiary rounded text-[10px]">Genesis</span></td>
+<td class="p-4 mono text-on-surface-variant/60">2023-11-01</td>
+<td class="p-4"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant/30"></span> Inactive</span></td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-3">
+<button class="text-[#e8a832] font-bold text-[10px] uppercase tracking-widest hover:brightness-110">Activate</button>
+<button class="text-error font-bold text-[10px] uppercase tracking-widest hover:brightness-110">Delete</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-4 mono text-on-surface-variant/60">BQ-9074</td>
+<td class="p-4 font-medium">In which city were believers first called Christians?</td>
+<td class="p-4"><span class="px-2 py-0.5 bg-tertiary/10 text-tertiary rounded text-[10px]">Acts</span></td>
+<td class="p-4 mono text-on-surface-variant/60">2023-10-31</td>
+<td class="p-4"><span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant/30"></span> Inactive</span></td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-3">
+<button class="text-[#e8a832] font-bold text-[10px] uppercase tracking-widest hover:brightness-110">Activate</button>
+<button class="text-error font-bold text-[10px] uppercase tracking-widest hover:brightness-110">Delete</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-surface-container-low text-center border-t border-outline-variant/10">
+<button class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50 hover:text-on-surface transition-colors">View All 124 Unused Questions</button>
+</div>
+</div>
+</div>
+<!-- Footer Credits -->
+<footer class="mt-auto p-8 border-t border-outline-variant/5 flex justify-between items-center text-[10px] text-on-surface-variant/30 uppercase tracking-[0.2em] font-medium">
+<p>© 2023 THE MONOLITH PROTOCOL. All Rights Reserved.</p>
+<div class="flex gap-6">
+<span>SECURE ENV</span>
+<span>DB: 1.4.0</span>
+<span>UI: 2.1.1</span>
+</div>
+</footer>
+</main>
+</body></html>

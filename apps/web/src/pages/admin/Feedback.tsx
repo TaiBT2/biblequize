@@ -75,7 +75,7 @@ export default function FeedbackAdmin() {
       case 'in_progress': return <span className={`${base} bg-blue-500/20 text-blue-300 border border-blue-500/30`}>In Progress</span>
       case 'resolved':    return <span className={`${base} bg-emerald-500/20 text-emerald-300 border border-emerald-500/30`}>Resolved</span>
       case 'rejected':    return <span className={`${base} bg-rose-500/20 text-rose-300 border border-rose-500/30`}>Rejected</span>
-      default: return <span className={`${base} bg-white/10 text-white/60`}>{s}</span>
+      default: return <span className={`${base} bg-white/10 text-[#d5c4af]/60`}>{s}</span>
     }
   }
 
@@ -85,7 +85,7 @@ export default function FeedbackAdmin() {
       case 'report':   return <span className={`${base} bg-rose-500/20 text-rose-300`}>Report</span>
       case 'question': return <span className={`${base} bg-purple-500/20 text-purple-300`}>Question</span>
       case 'general':  return <span className={`${base} bg-sky-500/20 text-sky-300`}>General</span>
-      default: return <span className={`${base} bg-white/10 text-white/60`}>{t}</span>
+      default: return <span className={`${base} bg-white/10 text-[#d5c4af]/60`}>{t}</span>
     }
   }
 
@@ -109,7 +109,7 @@ export default function FeedbackAdmin() {
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-semibold">Feedback</h2>
-            <p className="text-white/60 text-sm mt-0.5">{total} phản hồi từ người dùng</p>
+            <p className="text-[#d5c4af]/60 text-sm mt-0.5">{total} phản hồi từ người dùng</p>
           </div>
         </div>
 
@@ -120,11 +120,11 @@ export default function FeedbackAdmin() {
               key={key}
               onClick={() => setStatusFilter(statusFilter === key ? '' : key)}
               className={`p-3 rounded-lg border text-left transition-all cursor-pointer ${
-                statusFilter === key ? colorMap[color] : 'border-white/10 bg-white/5 hover:bg-white/10'
+                statusFilter === key ? colorMap[color] : 'border-[#d5c4af]/10 bg-[#1d1f29] hover:bg-white/10'
               }`}
             >
               <div className="text-2xl font-bold">{stats[key] ?? 0}</div>
-              <div className="text-xs text-white/60 mt-0.5">{label}</div>
+              <div className="text-xs text-[#d5c4af]/60 mt-0.5">{label}</div>
             </button>
           ))}
         </div>
@@ -134,7 +134,7 @@ export default function FeedbackAdmin() {
           <select
             value={statusFilter}
             onChange={e => setStatusFilter(e.target.value)}
-            className="px-3 py-2 rounded-md bg-white/10 border border-white/10 text-sm"
+            className="px-3 py-2 rounded-md bg-white/10 border border-[#d5c4af]/10 text-sm"
           >
             <option value="">All Status</option>
             <option value="pending">Pending</option>
@@ -145,7 +145,7 @@ export default function FeedbackAdmin() {
           <select
             value={typeFilter}
             onChange={e => setTypeFilter(e.target.value)}
-            className="px-3 py-2 rounded-md bg-white/10 border border-white/10 text-sm"
+            className="px-3 py-2 rounded-md bg-white/10 border border-[#d5c4af]/10 text-sm"
           >
             <option value="">All Types</option>
             <option value="report">Report</option>
@@ -161,9 +161,9 @@ export default function FeedbackAdmin() {
         </div>
 
         {/* Table */}
-        <div className="rounded-lg border border-white/10 overflow-hidden">
+        <div className="rounded-lg border border-[#d5c4af]/10 overflow-hidden">
           <table className="min-w-full text-sm">
-            <thead className="bg-white/5 text-white/70">
+            <thead className="bg-[#1d1f29] text-[#d5c4af]/70">
               <tr>
                 <th className="px-3 py-2 text-left">Người dùng</th>
                 <th className="px-3 py-2 text-left">Loại</th>
@@ -186,7 +186,7 @@ export default function FeedbackAdmin() {
                 >
                   <td className="px-3 py-2 whitespace-nowrap">
                     <div className="font-medium">{item.userName || '—'}</div>
-                    <div className="text-xs text-white/40">{item.userEmail || ''}</div>
+                    <div className="text-xs text-[#d5c4af]/40">{item.userEmail || ''}</div>
                   </td>
                   <td className="px-3 py-2">{typeBadge(item.type)}</td>
                   <td className="px-3 py-2 max-w-xs">
@@ -227,7 +227,7 @@ export default function FeedbackAdmin() {
       {/* Detail Modal */}
       {selected && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
-          <div className="w-full max-w-xl rounded-xl border border-white/10 bg-[#111018] p-6 shadow-2xl">
+          <div className="w-full max-w-xl rounded-xl border border-[#d5c4af]/10 bg-[#111018] p-6 shadow-2xl">
             <div className="flex items-center justify-between mb-4">
               <div className="text-lg font-semibold">Chi tiết Feedback</div>
               <button onClick={() => setSelected(null)} className="px-2 py-1 rounded bg-white/10 hover:bg-white/20">✕</button>
@@ -238,12 +238,12 @@ export default function FeedbackAdmin() {
                 {typeBadge(selected.type)}
                 {statusBadge(selected.status)}
                 {selected.handledBy && (
-                  <span className="text-xs text-white/40">Handled by: {selected.handledBy}</span>
+                  <span className="text-xs text-[#d5c4af]/40">Handled by: {selected.handledBy}</span>
                 )}
               </div>
 
               <div>
-                <div className="text-xs text-white/40 mb-1">Người gửi</div>
+                <div className="text-xs text-[#d5c4af]/40 mb-1">Người gửi</div>
                 <div className="font-medium">{selected.userName}
                   <span className="text-white/50 font-normal ml-2 text-xs">({selected.userEmail})</span>
                 </div>
@@ -251,28 +251,28 @@ export default function FeedbackAdmin() {
 
               {selected.question && (
                 <div>
-                  <div className="text-xs text-white/40 mb-1">Câu hỏi liên quan</div>
-                  <div className="px-3 py-2 rounded bg-white/5 border border-white/10 text-xs text-white/80">
+                  <div className="text-xs text-[#d5c4af]/40 mb-1">Câu hỏi liên quan</div>
+                  <div className="px-3 py-2 rounded bg-[#1d1f29] border border-[#d5c4af]/10 text-xs text-white/80">
                     [{selected.question.book}] {selected.question.content}
                   </div>
                 </div>
               )}
 
               <div>
-                <div className="text-xs text-white/40 mb-1">Nội dung</div>
-                <div className="px-3 py-2 rounded bg-white/5 border border-white/10 whitespace-pre-wrap text-white/80 max-h-40 overflow-y-auto">
+                <div className="text-xs text-[#d5c4af]/40 mb-1">Nội dung</div>
+                <div className="px-3 py-2 rounded bg-[#1d1f29] border border-[#d5c4af]/10 whitespace-pre-wrap text-white/80 max-h-40 overflow-y-auto">
                   {selected.content}
                 </div>
               </div>
 
               <div>
-                <div className="text-xs text-white/40 mb-1">Admin Note (tùy chọn)</div>
+                <div className="text-xs text-[#d5c4af]/40 mb-1">Admin Note (tùy chọn)</div>
                 <textarea
                   rows={2}
                   value={note}
                   onChange={e => setNote(e.target.value)}
                   placeholder="Ghi chú xử lý..."
-                  className="w-full px-3 py-2 rounded bg-white/10 border border-white/10 text-sm resize-none"
+                  className="w-full px-3 py-2 rounded bg-white/10 border border-[#d5c4af]/10 text-sm resize-none"
                 />
               </div>
             </div>

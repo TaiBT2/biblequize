@@ -1,47 +1,60 @@
-import React from 'react'
 import { getApiBaseUrl } from '../api/config'
 
+const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
+
 interface ShareCardProps {
-  sessionId: string
-  score: number
-  correct: number
-  total: number
+  sessionId?: string
+  score?: number
+  correct?: number
+  total?: number
   userName: string
-  type?: 'session' | 'tier_up'
+  tierName?: string
+  oldTierName?: string
+  date?: string
+  percentile?: number
+  type?: 'session' | 'daily' | 'tier_up'
   referenceId?: string
 }
 
-const ShareCard: React.FC<ShareCardProps> = ({
+export default function ShareCard({
   sessionId,
-  score,
-  correct,
-  total,
+  score = 0,
+  correct = 0,
+  total = 5,
   userName,
+  tierName,
+  oldTierName,
+  date,
+  percentile,
   type = 'session',
   referenceId,
-}) => {
+}: ShareCardProps) {
   const apiBase = getApiBaseUrl()
   const shareUrl =
     type === 'tier_up' && referenceId
       ? `${apiBase}/api/share/render/tier-up/${referenceId}`
-      : `${apiBase}/api/share/render/session/${sessionId}`
+      : type === 'daily'
+        ? `${apiBase}/api/share/render/daily/${date || new Date().toISOString().slice(0, 10)}`
+        : `${apiBase}/api/share/render/session/${sessionId}`
 
-  const shareText = `BibleQuiz - ${correct}/${total} câu đúng!`
+  const handleCopyUrl = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl)
+    } catch {
+      // fallback
+    }
+  }
 
   const handleShare = async () => {
+    const shareText = type === 'tier_up'
+      ? `BibleQuiz — Đạt cấp ${tierName}!`
+      : `BibleQuiz — ${correct}/${total} câu đúng!`
     if (navigator.share) {
       try {
-        await navigator.share({
-          title: 'BibleQuiz',
-          text: shareText,
-          url: shareUrl,
-        })
-      } catch {
-        // User cancelled or share failed — open in new tab
-        window.open(shareUrl, '_blank')
-      }
+        await navigator.share({ title: 'BibleQuiz', text: shareText, url: shareUrl })
+      } catch { /* cancelled */ }
     } else {
-      window.open(shareUrl, '_blank')
+      handleCopyUrl()
     }
   }
 
@@ -49,120 +62,130 @@ const ShareCard: React.FC<ShareCardProps> = ({
     window.open(shareUrl, '_blank')
   }
 
-  // Determine star display
-  const stars = Array.from({ length: total }, (_, i) => (i < correct ? '★' : '☆')).join(' ')
-
-  // Score percentage for color
   const pct = total > 0 ? (correct / total) * 100 : 0
-  const scoreColor = pct >= 80 ? '#22C55E' : pct >= 60 ? '#EAB308' : pct >= 40 ? '#F97316' : '#EF4444'
+  const circumference = 2 * Math.PI * 45
+  const strokeOffset = circumference - (pct / 100) * circumference
 
   return (
-    <div>
-      {/* Inline preview card */}
-      <div
-        style={{
-          background: 'linear-gradient(135deg, #1A1730 0%, #0E0B1A 100%)',
-          border: '1px solid rgba(212, 168, 67, 0.3)',
-          borderRadius: '1rem',
-          padding: '2rem',
-          textAlign: 'center',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
-          maxWidth: '360px',
-          margin: '0 auto',
-        }}
-      >
-        {/* Logo */}
-        <div
-          style={{
-            fontFamily: "'Syne', sans-serif",
-            fontSize: '1.2rem',
-            fontWeight: 900,
-            color: '#D4A843',
-            marginBottom: '0.5rem',
-            letterSpacing: '0.1em',
-          }}
-        >
-          ✝ BIBLEQUIZ
-        </div>
-
-        {/* Subtitle */}
-        <div style={{ color: '#8B7E6A', fontSize: '0.85rem', marginBottom: '1.5rem' }}>
-          Thử thách hằng ngày
-        </div>
-
-        {/* Score */}
-        <div
-          style={{
-            fontFamily: "'Syne', sans-serif",
-            fontSize: '3.5rem',
-            fontWeight: 900,
-            color: scoreColor,
-            textShadow: `0 0 20px ${scoreColor}66`,
-            lineHeight: 1,
-          }}
-        >
-          {correct}/{total}
-        </div>
-        <div style={{ color: '#8B7E6A', fontSize: '1rem', marginTop: '0.25rem', marginBottom: '1rem' }}>
-          câu đúng
-        </div>
-
-        {/* Stars */}
-        <div style={{ fontSize: '1.5rem', letterSpacing: '0.4rem', color: '#D4A843', marginBottom: '1rem' }}>
-          {stars}
-        </div>
-
-        {userName && (
-          <div style={{ color: '#F5F0E8', fontSize: '0.9rem', fontWeight: 700 }}>
-            {userName}
+    <div className="space-y-4">
+      {/* Card preview */}
+      <div className="max-w-sm mx-auto rounded-2xl overflow-hidden border border-outline-variant/20 shadow-2xl">
+        {/* Card background */}
+        <div className="bg-gradient-to-br from-[#11131e] to-[#1d1f2a] p-6 space-y-5">
+          {/* Logo header */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-secondary text-lg" style={FILL_1}>menu_book</span>
+              <span className="text-secondary font-black text-sm tracking-tight">BibleQuiz</span>
+            </div>
+            <div className="h-px flex-1 mx-3 bg-secondary/20" />
           </div>
-        )}
+
+          {type === 'tier_up' ? (
+            /* ── Tier Up Variant ── */
+            <div className="text-center space-y-4 py-4">
+              <span className="material-symbols-outlined text-5xl text-secondary" style={FILL_1}>celebration</span>
+              <div>
+                <p className="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Thăng hạng!</p>
+                <p className="text-2xl font-black text-on-surface">{oldTierName}</p>
+                <span className="material-symbols-outlined text-secondary text-2xl my-2">arrow_downward</span>
+                <p className="text-3xl font-black text-secondary">{tierName}</p>
+              </div>
+            </div>
+          ) : type === 'daily' ? (
+            /* ── Daily Challenge Variant ── */
+            <div className="text-center space-y-4 py-2">
+              <p className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">
+                Daily Challenge — {date || new Date().toLocaleDateString('vi-VN')}
+              </p>
+              {/* Stars */}
+              <div className="flex justify-center gap-1.5">
+                {Array.from({ length: total }).map((_, i) => (
+                  <span
+                    key={i}
+                    className={`material-symbols-outlined text-3xl ${i < correct ? 'text-secondary' : 'text-on-surface-variant/20'}`}
+                    style={FILL_1}
+                  >
+                    star
+                  </span>
+                ))}
+              </div>
+              <p className="text-on-surface font-bold text-lg">{correct}/{total} câu đúng</p>
+              {percentile && (
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20">
+                  <span className="material-symbols-outlined text-secondary text-sm" style={FILL_1}>emoji_events</span>
+                  <span className="text-sm font-bold text-secondary">Giỏi hơn {percentile}% người chơi</span>
+                </div>
+              )}
+            </div>
+          ) : (
+            /* ── Quiz Result Variant (default) ── */
+            <div className="text-center space-y-4 py-2">
+              {/* Score circle */}
+              <div className="relative w-28 h-28 mx-auto">
+                <svg className="w-28 h-28 -rotate-90" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="45" fill="transparent" stroke="#323440" strokeWidth="6" />
+                  <circle
+                    cx="50" cy="50" r="45" fill="transparent"
+                    stroke="#e8a832" strokeWidth="6" strokeLinecap="round"
+                    strokeDasharray={circumference}
+                    strokeDashoffset={strokeOffset}
+                    className="transition-all duration-700"
+                  />
+                </svg>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="text-2xl font-black text-on-surface">{correct}/{total}</span>
+                </div>
+              </div>
+              <p className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">
+                {pct >= 90 ? 'Xuất sắc!' : pct >= 70 ? 'Tốt lắm!' : 'Cố gắng thêm!'}
+              </p>
+              {score > 0 && (
+                <p className="text-sm text-secondary font-bold">+{score} XP</p>
+              )}
+            </div>
+          )}
+
+          {/* User info */}
+          <div className="flex items-center gap-3 pt-2 border-t border-outline-variant/10">
+            <div className="w-8 h-8 rounded-full bg-secondary/15 flex items-center justify-center">
+              <span className="material-symbols-outlined text-secondary text-sm" style={FILL_1}>person</span>
+            </div>
+            <div className="flex-1">
+              <p className="text-sm font-bold text-on-surface">{userName}</p>
+              {tierName && type !== 'tier_up' && (
+                <p className="text-[10px] text-secondary font-bold uppercase tracking-wider">{tierName}</p>
+              )}
+            </div>
+          </div>
+
+          {/* Watermark */}
+          <p className="text-center text-[10px] text-on-surface-variant/40 font-medium">biblequiz.app</p>
+        </div>
       </div>
 
       {/* Action buttons */}
-      <div
-        style={{
-          display: 'flex',
-          gap: '0.75rem',
-          justifyContent: 'center',
-          marginTop: '1rem',
-        }}
-      >
+      <div className="flex gap-3 justify-center max-w-sm mx-auto">
         <button
           onClick={handleShare}
-          style={{
-            padding: '0.75rem 1.5rem',
-            borderRadius: '0.75rem',
-            border: '1px solid rgba(212, 168, 67, 0.3)',
-            background: 'linear-gradient(135deg, #D4A843, #B8860B)',
-            color: '#0E0B1A',
-            fontWeight: 800,
-            fontSize: '0.95rem',
-            cursor: 'pointer',
-            transition: 'all 0.2s',
-          }}
+          className="flex-1 py-3 gold-gradient text-on-secondary font-bold rounded-xl shadow-lg shadow-secondary/10 active:scale-95 transition-all flex items-center justify-center gap-2 text-sm"
         >
-          Chia sẻ 📤
+          <span className="material-symbols-outlined text-lg">share</span>
+          Chia sẻ
+        </button>
+        <button
+          onClick={handleCopyUrl}
+          className="py-3 px-5 bg-surface-container-highest border border-outline-variant/20 text-on-surface-variant font-bold rounded-xl hover:text-on-surface transition-colors flex items-center justify-center gap-2 text-sm"
+        >
+          <span className="material-symbols-outlined text-lg">content_copy</span>
         </button>
         <button
           onClick={handleDownload}
-          style={{
-            padding: '0.75rem 1.5rem',
-            borderRadius: '0.75rem',
-            border: '1px solid rgba(212, 168, 67, 0.3)',
-            background: 'rgba(212, 168, 67, 0.08)',
-            color: '#D4A843',
-            fontWeight: 700,
-            fontSize: '0.95rem',
-            cursor: 'pointer',
-            transition: 'all 0.2s',
-          }}
+          className="py-3 px-5 bg-surface-container-highest border border-outline-variant/20 text-on-surface-variant font-bold rounded-xl hover:text-on-surface transition-colors flex items-center justify-center gap-2 text-sm"
         >
-          Tải xuống 📥
+          <span className="material-symbols-outlined text-lg">download</span>
         </button>
       </div>
     </div>
   )
 }
-
-export default ShareCard

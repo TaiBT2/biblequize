@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tạo phòng mới - BibleQuiz</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-variant": "#323440",
+                        "on-background": "#e1e1f1",
+                        "surface-dim": "#11131e",
+                        "on-error": "#690005",
+                        "primary-fixed": "#dee1ff",
+                        "tertiary-fixed-dim": "#e7c268",
+                        "primary": "#c0c4e8",
+                        "secondary-fixed": "#ffdea7",
+                        "surface-tint": "#c0c4e8",
+                        "on-primary": "#2a2f4a",
+                        "inverse-surface": "#e1e1f1",
+                        "surface-bright": "#373845",
+                        "error-container": "#93000a",
+                        "outline": "#919098",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-surface": "#e1e1f1",
+                        "inverse-on-surface": "#2e303c",
+                        "on-primary-container": "#8286a7",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#f8bd45",
+                        "on-tertiary": "#3e2e00",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#191b26",
+                        "surface-container-lowest": "#0b0e18",
+                        "on-surface-variant": "#c7c5ce",
+                        "surface-container-high": "#272935",
+                        "primary-fixed-dim": "#c0c4e8",
+                        "primary-container": "#1a1f3a",
+                        "secondary-container": "#bc8709",
+                        "on-secondary": "#412d00",
+                        "on-secondary-fixed": "#271900",
+                        "surface-container-highest": "#323440",
+                        "inverse-primary": "#585d7b",
+                        "tertiary-fixed": "#ffdf96",
+                        "on-primary-fixed-variant": "#404562",
+                        "on-secondary-container": "#392600",
+                        "background": "#11131e",
+                        "tertiary-container": "#2b1f00",
+                        "secondary": "#f8bd45",
+                        "on-primary-fixed": "#151a34",
+                        "on-tertiary-container": "#a48431",
+                        "tertiary": "#e7c268",
+                        "surface": "#11131e",
+                        "outline-variant": "#46464d",
+                        "surface-container": "#1d1f2a",
+                        "on-tertiary-fixed-variant": "#5a4400"
+                    },
+                    fontFamily: {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #f8bd45, #e7c268);
+        }
+        .glass-card {
+            background: rgba(29, 31, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(225, 225, 241, 0.08);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #323440;
+            border-radius: 10px;
+        }
+        input:focus {
+            outline: none !important;
+            border-color: #f8bd45 !important;
+            box-shadow: 0 0 0 1px #f8bd45 !important;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen selection:bg-secondary selection:text-on-secondary">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-[#1d1f2a] flex justify-between items-center px-6 h-16 w-full shadow-none">
+<div class="flex items-center gap-2">
+<span class="text-xl font-bold text-[#f8bd45] font-['Be_Vietnam_Pro'] tracking-tight">BibleQuiz</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#e1e1f1] opacity-70 hover:bg-[#1d1f2a] transition-colors font-['Be_Vietnam_Pro'] tracking-tight" href="#">Bảng điều khiển</a>
+<a class="text-[#f8bd45] font-bold border-b-2 border-[#f8bd45] font-['Be_Vietnam_Pro'] tracking-tight" href="#">Phòng chờ</a>
+<a class="text-[#e1e1f1] opacity-70 hover:bg-[#1d1f2a] transition-colors font-['Be_Vietnam_Pro'] tracking-tight" href="#">Xếp hạng</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#f8bd45] active:scale-95 transition-transform" data-icon="account_circle">account_circle</button>
+</div>
+</header>
+<!-- Side Navigation Anchor (Hidden on focused task page like Create Room) -->
+<!-- Suppressed for Focus Journey -->
+<main class="pt-24 pb-12 px-4 flex flex-col items-center justify-center min-h-screen">
+<div class="w-full max-w-[560px]">
+<!-- Header Section -->
+<div class="text-center mb-8">
+<div class="flex items-center justify-center gap-3 mb-2">
+<span class="text-2xl">🎮</span>
+<h1 class="text-2xl font-bold text-on-surface tracking-tight">Tạo phòng mới</h1>
+</div>
+<div class="h-0.5 w-[60px] gold-gradient mx-auto rounded-full"></div>
+</div>
+<!-- Main Form Card -->
+<div class="glass-card rounded-xl p-6 md:p-8 space-y-8">
+<!-- 1. Room Name -->
+<section class="space-y-2">
+<label class="block text-sm font-medium text-on-surface-variant">Tên phòng (tùy chọn)</label>
+<input class="w-full bg-surface-container-highest border-transparent rounded-lg py-3 px-4 text-on-surface placeholder:text-on-surface-variant/40 transition-all" placeholder="Phòng của [username]" type="text"/>
+<p class="text-xs text-on-surface-variant/60 italic">Để trống để dùng tên mặc định</p>
+</section>
+<!-- 2. Game Mode Selection -->
+<section class="space-y-4">
+<label class="block text-sm font-medium text-on-surface-variant">Chế độ chơi</label>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<!-- Speed Race (Selected) -->
+<div class="relative group cursor-pointer flex flex-col items-center justify-center text-center p-3 h-[140px] rounded-xl glass-card border-[#f8bd45] shadow-[0_0_15px_rgba(248,189,69,0.2)] transition-all active:scale-95">
+<div class="absolute top-0 left-0 w-full h-1 bg-[#3b82f6] rounded-t-xl opacity-80"></div>
+<span class="material-symbols-outlined text-[#3b82f6] text-3xl mb-2" data-icon="bolt">bolt</span>
+<span class="text-sm font-bold text-on-surface">Speed Race</span>
+<span class="text-[10px] text-on-surface-variant/60 leading-tight mt-1">Ai nhanh nhất thắng</span>
+</div>
+<!-- Battle Royale -->
+<div class="relative group cursor-pointer flex flex-col items-center justify-center text-center p-3 h-[140px] rounded-xl glass-card hover:bg-surface-container-high transition-all active:scale-95">
+<div class="absolute top-0 left-0 w-full h-1 bg-[#ef4444] rounded-t-xl opacity-40 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-[#ef4444] text-3xl mb-2" data-icon="favorite">favorite</span>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-on-surface">Battle Royale</span>
+<span class="text-[10px] text-on-surface-variant/60 leading-tight mt-1">Sai là bị loại</span>
+</div>
+<!-- Team Battle -->
+<div class="relative group cursor-pointer flex flex-col items-center justify-center text-center p-3 h-[140px] rounded-xl glass-card hover:bg-surface-container-high transition-all active:scale-95">
+<div class="absolute top-0 left-0 w-full h-1 bg-[#22c55e] rounded-t-xl opacity-40 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-[#22c55e] text-3xl mb-2" data-icon="groups">groups</span>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-on-surface">Team Battle</span>
+<span class="text-[10px] text-on-surface-variant/60 leading-tight mt-1">Chia đội thi đấu</span>
+</div>
+<!-- King of the Hill -->
+<div class="relative group cursor-pointer flex flex-col items-center justify-center text-center p-3 h-[140px] rounded-xl glass-card hover:bg-surface-container-high transition-all active:scale-95">
+<div class="absolute top-0 left-0 w-full h-1 bg-[#a855f7] rounded-t-xl opacity-40 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-[#a855f7] text-3xl mb-2" data-icon="workspace_premium">workspace_premium</span>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-on-surface">King of the Hill</span>
+<span class="text-[10px] text-on-surface-variant/60 leading-tight mt-1">1v1 giữ ngôi vương</span>
+</div>
+</div>
+<!-- 3. Mode Description Banner -->
+<div class="p-3 bg-surface-container-low/50 rounded-lg border-l-4 border-[#3b82f6] flex items-start gap-3">
+<span class="material-symbols-outlined text-[#3b82f6] text-lg mt-0.5" data-icon="info">info</span>
+<p class="text-xs text-on-surface-variant italic leading-relaxed">
+                            Tất cả cùng trả lời. Điểm tính theo tốc độ + đúng/sai. Tổng điểm cao nhất thắng.
+                        </p>
+</div>
+</section>
+<!-- 4. Settings Section Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Left Column -->
+<div class="space-y-6">
+<div class="space-y-3">
+<label class="text-sm font-medium text-on-surface-variant block">Số câu hỏi</label>
+<div class="flex bg-surface-container-highest p-1 rounded-lg">
+<button class="flex-1 py-1.5 text-xs font-bold bg-[#f8bd45] text-[#11131e] rounded-md shadow-sm">10</button>
+<button class="flex-1 py-1.5 text-xs font-medium text-on-surface-variant hover:text-on-surface transition-colors">15</button>
+<button class="flex-1 py-1.5 text-xs font-medium text-on-surface-variant hover:text-on-surface transition-colors">20</button>
+<button class="flex-1 py-1.5 text-xs font-medium text-on-surface-variant hover:text-on-surface transition-colors">30</button>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-sm font-medium text-on-surface-variant block">Th��i gian/câu</label>
+<div class="flex bg-surface-container-highest p-1 rounded-lg">
+<button class="flex-1 py-1.5 text-xs font-medium text-on-surface-variant hover:text-on-surface transition-colors">10s</button>
+<button class="flex-1 py-1.5 text-xs font-bold bg-[#f8bd45] text-[#11131e] rounded-md shadow-sm">15s</button>
+<button class="flex-1 py-1.5 text-xs font-medium text-on-surface-variant hover:text-on-surface transition-colors">20s</button>
+<button class="flex-1 py-1.5 text-xs font-medium text-on-surface-variant hover:text-on-surface transition-colors">30s</button>
+</div>
+</div>
+</div>
+<!-- Right Column -->
+<div class="space-y-6">
+<div class="space-y-3">
+<label class="text-sm font-medium text-on-surface-variant block">Độ khó</label>
+<div class="flex bg-surface-container-highest p-1 rounded-lg">
+<button class="flex-1 py-1.5 text-xs font-medium text-on-surface-variant hover:text-on-surface transition-colors">Dễ</button>
+<button class="flex-1 py-1.5 text-xs font-bold bg-[#f8bd45] text-[#11131e] rounded-md shadow-sm">TB</button>
+<button class="flex-1 py-1.5 text-xs font-medium text-on-surface-variant hover:text-on-surface transition-colors">Khó</button>
+<button class="flex-1 py-1.5 text-xs font-medium text-on-surface-variant hover:text-on-surface transition-colors">Hỗn hợp</button>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-sm font-medium text-on-surface-variant block">Sách Kinh Thánh</label>
+<select class="w-full bg-surface-container-highest border-transparent rounded-lg py-2.5 px-4 text-sm text-on-surface appearance-none focus:ring-0">
+<option>Tất cả</option>
+<option>Sáng Thế Ký</option>
+<option>Xuất Ê-díp-tô Ký</option>
+<option>Ma-thi-ơ</option>
+<option>Giăng</option>
+<option>Khải Huyền</option>
+</select>
+</div>
+</div>
+</div>
+<!-- 5. Advanced Settings (Collapsible) -->
+<div class="pt-4 border-t border-outline-variant/10">
+<details class="group">
+<summary class="flex items-center gap-2 cursor-pointer list-none text-sm text-on-surface-variant/80 hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-base group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
+<span>⚙️ Nâng cao</span>
+</summary>
+<div class="pt-6 space-y-8">
+<div class="space-y-6">
+<div class="flex justify-between items-center">
+<label class="text-sm font-medium text-on-surface-variant">Số người tối đa</label>
+<span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-xs font-bold">12</span>
+</div>
+<div class="relative h-2 w-full bg-surface-container-highest rounded-full">
+<div class="absolute top-0 left-0 h-full w-[60%] gold-gradient rounded-full"></div>
+<div class="absolute top-1/2 left-[60%] -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg border-2 border-secondary cursor-pointer"></div>
+<div class="flex justify-between mt-4 text-[10px] text-on-surface-variant/40">
+<span>2 người</span>
+<span>20 người</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl">
+<div class="space-y-1">
+<p class="text-sm font-medium text-on-surface">Phòng công khai</p>
+<p class="text-xs text-on-surface-variant/60">Mọi người có thể thấy phòng này</p>
+</div>
+<button class="w-12 h-6 bg-secondary rounded-full relative transition-colors">
+<span class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></span>
+</button>
+</div>
+</div>
+</details>
+</div>
+<!-- 6. CTA Section -->
+<div class="space-y-4 pt-4">
+<button class="w-full h-12 gold-gradient rounded-xl font-bold text-[#11131e] flex items-center justify-center gap-2 shadow-[0_8px_30px_rgba(248,189,69,0.2)] hover:opacity-90 active:scale-[0.98] transition-all">
+<span>Tạo phòng</span>
+<span class="material-symbols-outlined text-xl" data-icon="play_circle" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</button>
+<div class="text-center">
+<a class="text-sm text-on-surface-variant/60 hover:text-on-surface transition-colors flex items-center justify-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-base group-hover:-translate-x-1 transition-transform" data-icon="arrow_back">arrow_back</span>
+<span>Quay lại</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Visual Polish: Sacred Modernist Background Elements -->
+<div class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-secondary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary-container/20 rounded-full blur-[120px]"></div>
+</div>
+</body></html>

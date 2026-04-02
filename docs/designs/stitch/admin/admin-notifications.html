@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Monolith Protocol - Notifications Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .font-jetbrains { font-family: 'JetBrains Mono', monospace; }
+        .tonal-shift { transition: background-color 0.3s ease; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0c0e17; }
+        ::-webkit-scrollbar-thumb { background: #32343e; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #e8a832; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "secondary-container": "#444655",
+                "surface-bright": "#373943",
+                "on-primary-container": "#5f4000",
+                "on-secondary-container": "#b3b4c6",
+                "inverse-primary": "#7f5700",
+                "on-secondary": "#2e303d",
+                "on-error-container": "#ffdad6",
+                "surface": "#11131c",
+                "on-secondary-fixed": "#191b28",
+                "on-tertiary": "#00315d",
+                "surface-container-lowest": "#0c0e17",
+                "on-primary-fixed": "#281900",
+                "surface-container-low": "#191b25",
+                "primary-container": "#e8a832",
+                "outline-variant": "#504535",
+                "inverse-surface": "#e1e1ef",
+                "secondary": "#c5c5d7",
+                "on-background": "#e1e1ef",
+                "on-primary": "#432c00",
+                "tertiary-fixed-dim": "#a4c9ff",
+                "primary-fixed": "#ffdead",
+                "on-error": "#690005",
+                "tertiary": "#b3d1ff",
+                "tertiary-container": "#80b6ff",
+                "primary-fixed-dim": "#fdbb44",
+                "tertiary-fixed": "#d4e3ff",
+                "error-container": "#93000a",
+                "on-tertiary-fixed": "#001c39",
+                "primary": "#ffc667",
+                "surface-tint": "#fdbb44",
+                "on-surface-variant": "#d5c4af",
+                "error": "#ffb4ab",
+                "surface-dim": "#11131c",
+                "surface-container-highest": "#32343e",
+                "secondary-fixed": "#e1e1f4",
+                "outline": "#9d8f7b",
+                "on-primary-fixed-variant": "#604100",
+                "on-secondary-fixed-variant": "#444655",
+                "on-tertiary-container": "#004681",
+                "surface-variant": "#32343e",
+                "background": "#11131c",
+                "surface-container-high": "#282933",
+                "surface-container": "#1d1f29",
+                "inverse-on-surface": "#2e303a",
+                "on-tertiary-fixed-variant": "#004883",
+                "on-surface": "#e1e1ef",
+                "secondary-fixed-dim": "#c5c5d7"
+              },
+              fontFamily: {
+                "headline": ["Be Vietnam Pro"],
+                "body": ["Be Vietnam Pro"],
+                "label": ["Be Vietnam Pro"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface-dim text-on-surface font-body overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- SideNavBar Component -->
+<aside class="flex flex-col h-full py-8 px-4 docked left-0 h-screen w-64 border-r-0 tonal-shift bg-[#0c0e17] font-be-vietnam-pro text-sm tracking-tight">
+<div class="mb-10 px-4">
+<div class="text-xl font-bold text-[#e8a832] tracking-widest uppercase mb-1">The Monolith</div>
+<div class="text-[10px] opacity-40 tracking-widest uppercase">Protocol v1.0</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+<span>Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">help_center</span>
+<span>Questions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">quiz</span>
+<span>Quizzes</span>
+</a>
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-4 py-3 text-[#e8a832] font-semibold border-r-2 border-[#e8a832] bg-[#1d1f29] Active: opacity-90 transition-all" href="#">
+<span class="material-symbols-outlined text-lg">campaign</span>
+<span>Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4 pt-4 border-t border-surface-container-highest/20">
+<div class="flex items-center gap-3">
+<img alt="Admin Profile" class="w-8 h-8 rounded-lg bg-surface-container-highest" data-alt="Close up portrait of a sophisticated AI avatar in dark corporate attire with neon highlights in a futuristic office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9GAvfX3qEn7OWQyzNUYpO9uka1cph6OHb6vpxSPUZMLmC8FFXYXsKG8ddaO64mJr5zu2sHILybEZF6Wgw7qqpkjzeEbPDIYNs4R0GVNCIO2zeXQg2f58OJcgsPxVZNyOVP1Fm6m0JQJ6eMtxoPoqAJG_uwCEEm8BxxFC49umJbhiScNDs5mgmgi0R4Mg6AaP831xMuHY5DorSfDOcD8v_F6BYNtwCy4rzzLXkmZGqODHklSS247xk8IZQP8Nj5SYOghbxeVrz8Xo"/>
+<div class="overflow-hidden">
+<p class="font-bold text-xs truncate">ADMIN_ALPHA</p>
+<p class="text-[10px] text-on-surface-variant truncate">Master Controller</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="flex-1 flex flex-col min-w-0 bg-surface-dim">
+<!-- TopNavBar Component -->
+<header class="flex items-center justify-between px-8 w-full border-b border-[#1d1f29] docked top-0 h-16 bg-[#11131c]">
+<div class="flex items-center gap-6">
+<h1 class="text-lg font-extrabold tracking-tighter text-on-surface">NOTIFICATIONS <span class="text-primary-container">MANAGEMENT</span></h1>
+<div class="h-4 w-px bg-surface-container-highest"></div>
+<p class="font-jetbrains text-[10px] text-on-surface-variant tracking-widest opacity-60">BROADCAST.ENGINE_READY</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-sm text-on-surface-variant/50">search</span>
+<input class="bg-surface-container-low border-none text-[10px] font-jetbrains tracking-widest pl-10 pr-4 py-2 w-64 focus:ring-1 focus:ring-primary-container outline-none placeholder:opacity-30" placeholder="SEARCH_PROTOCOL..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications_active</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">account_circle</button>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<div class="grid grid-cols-12 gap-8 items-start">
+<!-- 1. Broadcast Section -->
+<section class="col-span-12 lg:col-span-7">
+<div class="bg-surface-container p-8 rounded-none shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary-container"></div>
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-sm font-bold tracking-[0.2em] uppercase flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">campaign</span> 🔔 Gửi thông báo
+                                </h2>
+<span class="font-jetbrains text-[10px] bg-primary/10 text-primary px-3 py-1 border border-primary/20">TARGET: ~1,247 USERS</span>
+</div>
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="text-[10px] font-bold tracking-widest text-on-surface-variant opacity-50 uppercase">Notification Title</label>
+<input class="w-full bg-surface-container-low border-none p-4 text-sm focus:ring-1 focus:ring-primary outline-none text-on-surface" placeholder="Nhập tiêu đề thông báo..." type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-bold tracking-widest text-on-surface-variant opacity-50 uppercase">Message Content</label>
+<textarea class="w-full bg-surface-container-low border-none p-4 text-sm focus:ring-1 focus:ring-primary outline-none text-on-surface resize-none" placeholder="Nhập nội dung thông báo cho người dùng..." rows="4"></textarea>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<label class="text-[10px] font-bold tracking-widest text-on-surface-variant opacity-50 uppercase">Target Audience</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 group cursor-pointer">
+<input class="appearance-none w-3 h-3 border border-outline bg-transparent checked:bg-primary checked:border-primary focus:ring-0" name="audience" type="radio"/>
+<span class="text-xs uppercase tracking-wider group-hover:text-primary transition-colors">Tất cả người dùng (All)</span>
+</label>
+<label class="flex items-center gap-3 group cursor-pointer">
+<input class="appearance-none w-3 h-3 border border-outline bg-transparent checked:bg-primary checked:border-primary focus:ring-0" name="audience" type="radio"/>
+<span class="text-xs uppercase tracking-wider group-hover:text-primary transition-colors">Theo phân hạng (Tier)</span>
+</label>
+<label class="flex items-center gap-3 group cursor-pointer">
+<input class="appearance-none w-3 h-3 border border-outline bg-transparent checked:bg-primary checked:border-primary focus:ring-0" name="audience" type="radio"/>
+<span class="text-xs uppercase tracking-wider group-hover:text-primary transition-colors">Theo vai trò (Role)</span>
+</label>
+</div>
+</div>
+<div class="space-y-4">
+<label class="text-[10px] font-bold tracking-widest text-on-surface-variant opacity-50 uppercase">Schedule Delivery</label>
+<div class="space-y-2">
+<label class="flex items-center gap-3 group cursor-pointer">
+<input class="appearance-none w-3 h-3 border border-outline bg-transparent checked:bg-primary checked:border-primary focus:ring-0" name="schedule" type="radio"/>
+<span class="text-xs uppercase tracking-wider group-hover:text-primary transition-colors">Gửi ngay lập tức (Now)</span>
+</label>
+<label class="flex items-center gap-3 group cursor-pointer">
+<input class="appearance-none w-3 h-3 border border-outline bg-transparent checked:bg-primary checked:border-primary focus:ring-0" name="schedule" type="radio"/>
+<span class="text-xs uppercase tracking-wider group-hover:text-primary transition-colors">Lên lịch (Later)</span>
+</label>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 pt-6">
+<button class="flex-1 bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed py-4 font-bold tracking-[0.2em] uppercase hover:opacity-90 transition-all">Gửi</button>
+<button class="flex-1 border border-outline-variant text-on-surface py-4 font-bold tracking-[0.2em] uppercase hover:bg-surface-container-highest transition-all">Xem trước</button>
+</div>
+</form>
+</div>
+</section>
+<!-- 3. Automated Notifications Section -->
+<section class="col-span-12 lg:col-span-5 space-y-6">
+<h2 class="text-sm font-bold tracking-[0.2em] uppercase flex items-center gap-3 px-2">
+<span class="material-symbols-outlined text-primary">auto_mode</span> Automated
+                        </h2>
+<div class="space-y-4">
+<!-- Item 1 -->
+<div class="bg-surface-container p-6 border-l-2 border-primary-container/40 flex items-center justify-between group hover:bg-surface-container-high transition-all">
+<div class="flex items-center gap-5">
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary opacity-70">bolt</span>
+</div>
+<div>
+<h3 class="text-sm font-bold tracking-wide uppercase">Nhắc streak</h3>
+<p class="text-[10px] text-on-surface-variant font-jetbrains tracking-wider opacity-60">FREQUENCY: HOURLY | TRIGGER: INACTIVE</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-[0.15em] opacity-40 font-bold mb-1">Status</p>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface-variant after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">tune</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container p-6 border-l-2 border-primary-container/40 flex items-center justify-between group hover:bg-surface-container-high transition-all">
+<div class="flex items-center gap-5">
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary opacity-70">calendar_today</span>
+</div>
+<div>
+<h3 class="text-sm font-bold tracking-wide uppercase">Nhắc daily</h3>
+<p class="text-[10px] text-on-surface-variant font-jetbrains tracking-wider opacity-60">SCHEDULE: 08:00 AM | TARGET: ALL</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-[0.15em] opacity-40 font-bold mb-1">Status</p>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface-variant after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">tune</button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container p-6 border-l-2 border-outline-variant/40 flex items-center justify-between group hover:bg-surface-container-high transition-all opacity-80">
+<div class="flex items-center gap-5">
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant opacity-40">summarize</span>
+</div>
+<div>
+<h3 class="text-sm font-bold tracking-wide uppercase">Tóm tắt tuần</h3>
+<p class="text-[10px] text-on-surface-variant font-jetbrains tracking-wider opacity-60">SCHEDULE: MON 09:00 AM | TARGET: TIER_A+</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-[0.15em] opacity-40 font-bold mb-1">Status</p>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface-variant after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">tune</button>
+</div>
+</div>
+</div>
+<div class="bg-[#11131c] p-6 border border-outline-variant/20">
+<div class="flex items-center gap-4 text-xs font-medium text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-primary text-lg">analytics</span> SYSTEM_INSIGHT
+                            </div>
+<p class="text-xs leading-relaxed text-on-surface-variant/80">Automated triggers have maintained a <span class="text-primary font-jetbrains">72.4%</span> engagement rate over the last 7 cycles. Recommended action: Optimize "Nhắc daily" payload for better retention.</p>
+</div>
+</section>
+<!-- 2. Sent History Table -->
+<section class="col-span-12">
+<div class="flex items-center justify-between mb-6 px-2">
+<h2 class="text-sm font-bold tracking-[0.2em] uppercase flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">history</span> Sent History
+                            </h2>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 bg-surface-container-highest px-4 py-2 text-[10px] font-bold tracking-widest uppercase hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                                </button>
+<button class="flex items-center gap-2 bg-surface-container-highest px-4 py-2 text-[10px] font-bold tracking-widest uppercase hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">download</span> Export
+                                </button>
+</div>
+</div>
+<div class="bg-surface-container overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high text-[10px] font-bold tracking-widest text-on-surface-variant uppercase">
+<th class="px-6 py-4">Tiêu đề</th>
+<th class="px-6 py-4">Đối tượng</th>
+<th class="px-6 py-4">Đã gửi</th>
+<th class="px-6 py-4">Tỷ lệ mở</th>
+<th class="px-6 py-4">Ngày</th>
+<th class="px-6 py-4">Trạng thái</th>
+<th class="px-6 py-4 text-right">Thao tác</th>
+</tr>
+</thead>
+<tbody class="text-sm font-medium">
+<!-- Row 1 -->
+<tr class="border-b border-surface-container-highest/10 hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-5">
+<span class="text-on-surface font-semibold tracking-wide">Cập nhật nội dung mới T6</span>
+<p class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-tighter">ID: MSG_8829</p>
+</td>
+<td class="px-6 py-5">
+<span class="font-jetbrains text-xs">ALL_USERS</span>
+</td>
+<td class="px-6 py-5">
+<span class="font-jetbrains text-xs">1,247</span>
+</td>
+<td class="px-6 py-5">
+<div class="w-40">
+<div class="flex justify-between text-[10px] mb-1 font-jetbrains">
+<span>342 / 1,247</span>
+<span class="text-primary">27%</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary" style="width: 27%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant font-jetbrains text-xs">20.10.2023</td>
+<td class="px-6 py-5">
+<span class="text-[9px] font-bold bg-green-500/10 text-green-400 border border-green-500/20 px-3 py-1 uppercase tracking-widest">Đã gửi</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-surface-container-highest/10 hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-5">
+<span class="text-on-surface font-semibold tracking-wide">Quà tặng đặc biệt cho VIP</span>
+<p class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-tighter">ID: MSG_9021</p>
+</td>
+<td class="px-6 py-5">
+<span class="font-jetbrains text-xs">TIER_VIP</span>
+</td>
+<td class="px-6 py-5">
+<span class="font-jetbrains text-xs">450</span>
+</td>
+<td class="px-6 py-5">
+<div class="w-40">
+<div class="flex justify-between text-[10px] mb-1 font-jetbrains">
+<span>0 / 450</span>
+<span class="text-on-surface-variant">0%</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-tertiary-container" style="width: 0%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant font-jetbrains text-xs">24.10.2023</td>
+<td class="px-6 py-5">
+<span class="text-[9px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 uppercase tracking-widest">Đã lên lịch</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-surface-container-highest/10 hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-5">
+<span class="text-on-surface font-semibold tracking-wide">Nhắc nhở nạp năng lượng</span>
+<p class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-tighter">ID: MSG_7712</p>
+</td>
+<td class="px-6 py-5">
+<span class="font-jetbrains text-xs">LOW_ENERGY</span>
+</td>
+<td class="px-6 py-5">
+<span class="font-jetbrains text-xs">156</span>
+</td>
+<td class="px-6 py-5">
+<div class="w-40">
+<div class="flex justify-between text-[10px] mb-1 font-jetbrains">
+<span>120 / 156</span>
+<span class="text-primary">77%</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary" style="width: 77%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant font-jetbrains text-xs">18.10.2023</td>
+<td class="px-6 py-5">
+<span class="text-[9px] font-bold bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-1 uppercase tracking-widest">Thất bại</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-5">
+<span class="text-on-surface font-semibold tracking-wide">Event Giáng Sinh 2023</span>
+<p class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-tighter">ID: MSG_0001</p>
+</td>
+<td class="px-6 py-5">
+<span class="font-jetbrains text-xs">UNDETERMINED</span>
+</td>
+<td class="px-6 py-5">
+<span class="font-jetbrains text-xs">0</span>
+</td>
+<td class="px-6 py-5">
+<div class="w-40">
+<div class="flex justify-between text-[10px] mb-1 font-jetbrains">
+<span>- / -</span>
+<span class="text-on-surface-variant">0%</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-surface-container-highest" style="width: 0%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant font-jetbrains text-xs">--.--.----</td>
+<td class="px-6 py-5">
+<span class="text-[9px] font-bold bg-on-surface-variant/10 text-on-surface-variant border border-on-surface-variant/20 px-3 py-1 uppercase tracking-widest">Nháp</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</div>
+<!-- Footer Stats Anchor -->
+<footer class="h-10 bg-surface-container-lowest border-t border-surface-container-highest/30 px-8 flex items-center justify-between">
+<div class="flex gap-6">
+<p class="text-[9px] font-bold tracking-widest opacity-40 uppercase">Engine_Status: <span class="text-green-500">OPTIMAL</span></p>
+<p class="text-[9px] font-bold tracking-widest opacity-40 uppercase">Latency: <span class="text-primary">12ms</span></p>
+</div>
+<p class="text-[9px] font-bold tracking-widest opacity-40 uppercase">Timestamp: <span class="font-jetbrains">2023-10-25_09:44:21_GMT</span></p>
+</footer>
+</main>
+</div>
+</body></html>

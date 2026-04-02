@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../api/client'
 
@@ -6,12 +6,8 @@ const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 
 /* ── Types ── */
 interface RankedStatus {
-  energy: number
-  maxEnergy: number
-}
-
-interface DailyStatus {
-  alreadyCompleted: boolean
+  livesRemaining: number
+  dailyLives: number
 }
 
 /* ── Helpers ── */
@@ -25,21 +21,112 @@ function formatCountdown(ms: number): string {
 
 function msUntilMidnight(): number {
   const now = new Date()
-  const midnight = new Date(now)
-  midnight.setHours(24, 0, 0, 0)
-  return midnight.getTime() - now.getTime()
+  const utcMidnight = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 0, 0, 0))
+  return utcMidnight.getTime() - now.getTime()
 }
+
+/* ── Card config ── */
+interface CardConfig {
+  id: string
+  title: string
+  desc: string
+  icon: string
+  color: string
+  borderHover: string
+  cta: string
+  ctaClass: string
+  route: string
+  iconFill?: boolean
+  borderDefault?: string
+  bgIcon?: string
+}
+
+const CARDS: CardConfig[] = [
+  {
+    id: 'practice',
+    title: 'Luyện Tập',
+    desc: 'Học không áp lực, không giới hạn thời gian và năng lượng.',
+    icon: 'menu_book',
+    color: 'text-secondary',
+    borderHover: 'hover:border-secondary/30',
+    cta: 'Bắt Đầu',
+    ctaClass: 'bg-surface-container-highest text-secondary border border-outline-variant/20 hover:bg-secondary hover:text-on-secondary',
+    route: '/practice',
+  },
+  {
+    id: 'ranked',
+    title: 'Thi Đấu Xếp Hạng',
+    desc: 'Tranh tài trực tiếp, tiêu tốn năng lượng để nhận điểm rank lớn.',
+    icon: 'bolt',
+    iconFill: true,
+    color: 'text-secondary',
+    borderHover: 'hover:shadow-[0_0_30px_rgba(248,189,69,0.05)]',
+    borderDefault: 'border-secondary/20',
+    bgIcon: 'text-secondary',
+    cta: 'Vào Thi Đấu',
+    ctaClass: 'gold-gradient text-on-secondary shadow-lg shadow-secondary/10 active:scale-95',
+    route: '/ranked',
+  },
+  {
+    id: 'daily',
+    title: 'Thử Thách Ngày',
+    desc: 'Mỗi ngày một chủ đề đặc biệt. Hoàn thành để duy trì Streak.',
+    icon: 'calendar_today',
+    color: 'text-tertiary',
+    borderHover: 'hover:border-tertiary/30',
+    bgIcon: 'text-tertiary',
+    cta: 'Thử Thách Ngay',
+    ctaClass: 'bg-tertiary/10 text-tertiary border border-tertiary/20 hover:bg-tertiary hover:text-on-tertiary',
+    route: '/daily',
+  },
+  {
+    id: 'group',
+    title: 'Nhóm Giáo Xứ',
+    desc: 'Cùng học và thi đấu với anh em trong nhóm hội thánh, nhóm tế bào.',
+    icon: 'church',
+    color: 'text-primary',
+    borderHover: 'hover:border-primary/30',
+    bgIcon: 'text-primary',
+    cta: 'Vào Nhóm',
+    ctaClass: 'bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-on-primary',
+    route: '/groups',
+  },
+  {
+    id: 'multiplayer',
+    title: 'Phòng Chơi',
+    desc: 'Tạo phòng bằng mã 6 chữ số hoặc share link. 2–20 người/phòng.',
+    icon: 'gamepad',
+    color: 'text-secondary',
+    borderHover: 'hover:border-secondary/30',
+    cta: 'Tạo Phòng',
+    ctaClass: 'bg-surface-container-highest text-secondary border border-outline-variant/20 hover:bg-secondary hover:text-on-secondary',
+    route: '/multiplayer',
+  },
+  {
+    id: 'tournament',
+    title: 'Giải Đấu',
+    desc: 'Bracket elimination 1v1. Leader nhóm hội thánh có thể tổ chức.',
+    icon: 'trophy',
+    color: 'text-error',
+    borderHover: 'hover:border-error/30',
+    bgIcon: 'text-error',
+    cta: 'Vào Giải Đấu',
+    ctaClass: 'bg-error/10 text-error border border-error/20 hover:bg-error hover:text-on-error',
+    route: '/tournaments',
+  },
+]
 
 /* ── Component ── */
 export default function GameModeGrid() {
   const navigate = useNavigate()
 
   // Ranked state
-  const [rankedStatus, setRankedStatus] = useState<RankedStatus>({ energy: 80, maxEnergy: 100 })
+  const [rankedStatus, setRankedStatus] = useState<RankedStatus>({ livesRemaining: 0, dailyLives: 100 })
   const [rankedLoading, setRankedLoading] = useState(true)
+  const [rankedError, setRankedError] = useState(false)
 
   // Daily state
-  const [dailyStatus, setDailyStatus] = useState<DailyStatus>({ alreadyCompleted: false })
+  const [dailyCompleted, setDailyCompleted] = useState(false)
   const [dailyLoading, setDailyLoading] = useState(true)
   const [countdown, setCountdown] = useState(msUntilMidnight())
 
@@ -53,9 +140,14 @@ export default function GameModeGrid() {
     ;(async () => {
       try {
         const res = await api.get('/api/me/ranked-status')
-        if (!cancelled) setRankedStatus(res.data)
+        if (!cancelled) {
+          setRankedStatus({
+            livesRemaining: res.data?.livesRemaining ?? 0,
+            dailyLives: res.data?.dailyLives ?? 100,
+          })
+        }
       } catch {
-        // keep defaults
+        if (!cancelled) setRankedError(true)
       } finally {
         if (!cancelled) setRankedLoading(false)
       }
@@ -69,12 +161,9 @@ export default function GameModeGrid() {
     ;(async () => {
       try {
         const res = await api.get('/api/daily-challenge')
-        if (!cancelled) setDailyStatus(res.data)
-      } catch {
-        // keep defaults
-      } finally {
-        if (!cancelled) setDailyLoading(false)
-      }
+        if (!cancelled) setDailyCompleted(res.data?.alreadyCompleted ?? false)
+      } catch { /* keep default */ }
+      finally { if (!cancelled) setDailyLoading(false) }
     })()
     return () => { cancelled = true }
   }, [])
@@ -86,169 +175,106 @@ export default function GameModeGrid() {
       try {
         const res = await api.get('/api/rooms/public')
         if (!cancelled) {
-          const count = Array.isArray(res.data) ? res.data.length : (res.data?.count ?? 0)
-          setRoomCount(count)
+          const rooms = res.data?.rooms
+          setRoomCount(Array.isArray(rooms) ? rooms.length : 0)
         }
-      } catch {
-        // keep defaults
-      } finally {
-        if (!cancelled) setRoomLoading(false)
-      }
+      } catch { /* keep default */ }
+      finally { if (!cancelled) setRoomLoading(false) }
     })()
     return () => { cancelled = true }
   }, [])
 
   // Countdown timer
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCountdown(msUntilMidnight())
-    }, 1_000)
+    const interval = setInterval(() => setCountdown(msUntilMidnight()), 1_000)
     return () => clearInterval(interval)
   }, [])
 
-  const energyPct = rankedStatus.maxEnergy > 0
-    ? Math.round((rankedStatus.energy / rankedStatus.maxEnergy) * 100)
-    : 0
-  const noEnergy = rankedStatus.energy <= 0
+  const noEnergy = rankedStatus.livesRemaining <= 0
+  const energyText = rankedLoading
+    ? '...'
+    : rankedError
+      ? '—'
+      : `${rankedStatus.livesRemaining}/${rankedStatus.dailyLives}`
 
-  return (
-    <div className="grid grid-cols-2 gap-6">
-      {/* ── Practice Card ── */}
-      <div
-        onClick={() => navigate('/practice')}
-        className="bg-surface-container min-h-[220px] rounded-3xl p-6 flex flex-col border border-white/5 hover:border-[#4a9eff]/30 transition-all hover:-translate-y-1 group cursor-pointer"
-      >
-        <div className="flex justify-between items-start mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-[#4a9eff]/10 flex items-center justify-center text-[#4a9eff]">
-            <span className="material-symbols-outlined text-3xl">menu_book</span>
-          </div>
-          <span className="px-3 py-1 bg-[#4a9eff]/10 text-[#4a9eff] text-[10px] font-bold uppercase tracking-wider rounded-full">
-            Không giới hạn
-          </span>
-        </div>
-        <h4 className="text-xl font-bold text-on-surface mb-2">Luyện Tập</h4>
-        <p className="text-sm text-on-surface-variant mb-auto">
-          Luyện tập tự do, không áp lực. Hoàn hảo để củng cố kiến thức mỗi ngày.
-        </p>
-        <button
-          onClick={(e) => { e.stopPropagation(); navigate('/practice') }}
-          className="w-full py-2.5 rounded-xl border border-[#4a9eff]/30 text-[#4a9eff] font-bold hover:bg-[#4a9eff] hover:text-white transition-all"
-        >
-          Bắt Đầu
-        </button>
-      </div>
-
-      {/* ── Ranked Card (FEATURED) ── */}
-      <div
-        onClick={() => !noEnergy && navigate('/ranked')}
-        className={`bg-surface-container-high min-h-[220px] rounded-3xl p-6 flex flex-col border-2 border-secondary/20 shadow-2xl shadow-secondary/5 hover:-translate-y-2 transition-all group relative overflow-hidden ${noEnergy ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}`}
-      >
-        {/* Featured badge */}
-        <div className="absolute top-0 right-0 p-4">
-          <span className="px-3 py-1 bg-secondary text-on-secondary text-[10px] font-black uppercase tracking-wider rounded-full flex items-center gap-1">
-            <span className="material-symbols-outlined text-[12px]" style={FILL_1}>local_fire_department</span>
-            {noEnergy ? 'Hết năng lượng' : 'Phổ biến nhất'}
-          </span>
-        </div>
-
-        <div className="flex items-start mb-6">
-          <div className="w-14 h-14 rounded-2xl gold-gradient-bg flex items-center justify-center text-on-secondary shadow-lg shadow-secondary/20">
-            <span className="material-symbols-outlined text-3xl" style={FILL_1}>workspace_premium</span>
-          </div>
-        </div>
-
-        <h4 className="text-2xl font-black text-on-surface mb-2">Xếp Hạng</h4>
-        <p className="text-sm text-on-surface-variant mb-4">
-          Thi đấu, leo hạng, cạnh tranh với các tín đồ khác trên toàn thế giới.
-        </p>
-
-        {/* Energy bar */}
-        <div className="mb-6 space-y-2">
-          <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
-            <span>Năng lượng</span>
-            <span className="text-secondary">
-              {rankedLoading ? '...' : `${rankedStatus.energy}/${rankedStatus.maxEnergy}`}
+  /* ── Status line per card ── */
+  function getStatusLine(id: string) {
+    switch (id) {
+      case 'practice':
+        return <span className="text-[10px] font-bold text-secondary-container uppercase">Không giới hạn</span>
+      case 'ranked':
+        return (
+          <div className="flex flex-col">
+            <span className="text-[10px] font-black text-secondary uppercase">
+              ⚡ {energyText} Năng lượng
             </span>
+            <span className="text-[8px] text-error font-medium">Sai -5 năng lượng/câu</span>
           </div>
-          <div className="h-1.5 w-full bg-primary-container rounded-full overflow-hidden">
-            <div
-              className="h-full bg-secondary rounded-full transition-all duration-500"
-              style={{ width: `${energyPct}%` }}
-            />
-          </div>
-        </div>
-
-        <button
-          onClick={(e) => { e.stopPropagation(); if (!noEnergy) navigate('/ranked') }}
-          disabled={noEnergy}
-          className="w-full py-3 rounded-xl gold-gradient-bg text-on-secondary font-black tracking-tight shadow-lg shadow-secondary/10 group-hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {noEnergy ? 'Hết Năng Lượng' : 'Vào Thi Đấu'}
-        </button>
-      </div>
-
-      {/* ── Daily Challenge Card ── */}
-      <div
-        onClick={() => navigate('/daily')}
-        className="bg-surface-container min-h-[220px] rounded-3xl p-6 flex flex-col border border-white/5 hover:border-[#ff8c42]/30 transition-all hover:-translate-y-1 group relative cursor-pointer"
-      >
-        <div className="flex justify-between items-start mb-6">
-          <div className={`w-12 h-12 rounded-2xl bg-[#ff8c42]/10 flex items-center justify-center text-[#ff8c42] ${!dailyStatus.alreadyCompleted ? 'animate-pulse' : ''}`}>
-            <span className="material-symbols-outlined text-3xl">calendar_today</span>
-          </div>
-          <span className="px-3 py-1 bg-[#ff8c42]/10 text-[#ff8c42] text-[10px] font-bold uppercase tracking-wider rounded-full">
-            {dailyLoading ? '...' : `Làm mới sau ${formatCountdown(countdown)}`}
+        )
+      case 'daily':
+        return (
+          <span className="text-[10px] font-bold text-tertiary uppercase">
+            {dailyLoading ? '...' : dailyCompleted ? '✅ Đã hoàn thành' : `Kết thúc sau ${formatCountdown(countdown)}`}
           </span>
-        </div>
-
-        <h4 className="text-xl font-bold text-on-surface mb-2">Thử Thách Ngày</h4>
-        <p className="text-sm text-on-surface-variant mb-2">
-          5 câu mỗi ngày cho mọi người. Tích lũy chuỗi ngày dài nhất.
-        </p>
-
-        {/* Completion status */}
-        {!dailyLoading && (
-          <div className={`flex items-center gap-2 mb-auto text-xs font-bold ${dailyStatus.alreadyCompleted ? 'text-green-400' : 'text-error'}`}>
-            <span className="material-symbols-outlined text-sm">
-              {dailyStatus.alreadyCompleted ? 'check_circle' : 'error_outline'}
-            </span>
-            {dailyStatus.alreadyCompleted ? 'Hôm nay: Đã hoàn thành' : 'Hôm nay: Chưa hoàn thành'}
-          </div>
-        )}
-        {dailyLoading && <div className="mb-auto" />}
-
-        <button
-          onClick={(e) => { e.stopPropagation(); navigate('/daily') }}
-          className="w-full mt-4 py-2.5 rounded-xl border border-[#ff8c42]/30 text-[#ff8c42] font-bold hover:bg-[#ff8c42] hover:text-white transition-all"
-        >
-          Thử Thách Ngay
-        </button>
-      </div>
-
-      {/* ── Multiplayer Card ── */}
-      <div
-        onClick={() => navigate('/multiplayer')}
-        className="bg-surface-container min-h-[220px] rounded-3xl p-6 flex flex-col border border-white/5 hover:border-[#9b59b6]/30 transition-all hover:-translate-y-1 group cursor-pointer"
-      >
-        <div className="flex justify-between items-start mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-[#9b59b6]/10 flex items-center justify-center text-[#9b59b6]">
-            <span className="material-symbols-outlined text-3xl">groups</span>
-          </div>
-          <span className="px-3 py-1 bg-[#9b59b6]/10 text-[#9b59b6] text-[10px] font-bold uppercase tracking-wider rounded-full">
+        )
+      case 'group':
+        return <span className="text-[10px] font-bold text-primary-fixed-dim uppercase">Nhóm Hội Thánh</span>
+      case 'multiplayer':
+        return (
+          <span className="text-[10px] font-bold text-secondary-container uppercase">
             {roomLoading ? '...' : `${roomCount} phòng đang mở`}
           </span>
-        </div>
-        <h4 className="text-xl font-bold text-on-surface mb-2">Nhiều Người</h4>
-        <p className="text-sm text-on-surface-variant mb-auto">
-          Tạo phòng, mời bạn bè cùng chơi hoặc tham gia phòng ngẫu nhiên.
-        </p>
-        <button
-          onClick={(e) => { e.stopPropagation(); navigate('/multiplayer') }}
-          className="w-full py-2.5 rounded-xl border border-[#9b59b6]/30 text-[#9b59b6] font-bold hover:bg-[#9b59b6] hover:text-white transition-all"
-        >
-          Vào Phòng
-        </button>
-      </div>
+        )
+      case 'tournament':
+        return <span className="text-[10px] font-bold text-error uppercase">Bracket 1v1</span>
+      default:
+        return null
+    }
+  }
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {CARDS.map((card) => {
+        const isDisabled = card.id === 'ranked' && noEnergy && !rankedLoading
+        return (
+          <div
+            key={card.id}
+            onClick={() => !isDisabled && navigate(card.route)}
+            className={`group bg-surface-container rounded-2xl p-6 border transition-all flex flex-col justify-between h-48 relative overflow-hidden ${
+              isDisabled ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'
+            } ${card.borderDefault ?? 'border-outline-variant/10'} ${card.borderHover}`}
+          >
+            {/* Watermark background icon */}
+            <div className={`absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity ${card.bgIcon ?? ''}`}>
+              <span className="material-symbols-outlined text-9xl">{card.icon}</span>
+            </div>
+
+            <div>
+              <div className="flex items-center gap-3 mb-3">
+                <span
+                  className={`material-symbols-outlined ${card.color}`}
+                  style={card.iconFill ? FILL_1 : undefined}
+                >
+                  {card.icon}
+                </span>
+                <h4 className="font-bold text-on-surface">{card.title}</h4>
+              </div>
+              <p className="text-xs text-on-surface-variant line-clamp-2">{card.desc}</p>
+            </div>
+
+            <div className="flex justify-between items-center relative z-10">
+              {getStatusLine(card.id)}
+              <button
+                onClick={(e) => { e.stopPropagation(); if (!isDisabled) navigate(card.route) }}
+                disabled={isDisabled}
+                className={`px-4 py-2 text-[10px] font-bold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed ${card.ctaClass}`}
+              >
+                {card.id === 'ranked' && isDisabled ? 'Hết Năng Lượng' : card.cta}
+              </button>
+            </div>
+          </div>
+        )
+      })}
     </div>
   )
 }

@@ -287,6 +287,31 @@ export default function Practice() {
         </div>
       </form>
 
+      {/* ── Retry Last Session ─────────────────────────────── */}
+      {MOCK_SESSIONS.length > 0 && MOCK_SESSIONS[0].accuracy < 100 && (
+        <div className="glass-card rounded-2xl p-5 border border-secondary/10 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center">
+              <span className="material-symbols-outlined text-secondary text-2xl" style={FILL_1}>replay</span>
+            </div>
+            <div>
+              <p className="font-bold text-on-surface text-sm">Làm lại câu sai</p>
+              <p className="text-xs text-on-surface-variant">Ôn lại những câu trả lời sai ở phiên gần nhất</p>
+            </div>
+          </div>
+          <button
+            onClick={() => {
+              api.post('/api/sessions/practice/retry-last')
+                .then(res => navigate('/quiz', { state: { sessionId: res.data.sessionId, mode: 'practice' } }))
+                .catch(() => {})
+            }}
+            className="px-5 py-2.5 rounded-xl border border-secondary/30 text-secondary font-bold text-sm hover:bg-secondary/10 transition-all active:scale-95"
+          >
+            Làm lại
+          </button>
+        </div>
+      )}
+
       {/* ── Recent Sessions ───────────────────────────────── */}
       <section>
         <div className="flex items-center gap-3 mb-6">

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BibleQuiz AI Generator | The Monolith</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#373943",
+                        "on-secondary-container": "#b3b4c6",
+                        "tertiary": "#b3d1ff",
+                        "error-container": "#93000a",
+                        "on-background": "#e1e1ef",
+                        "surface-dim": "#11131c",
+                        "on-primary-container": "#5f4000",
+                        "on-primary-fixed-variant": "#604100",
+                        "inverse-on-surface": "#2e303a",
+                        "on-surface": "#e1e1ef",
+                        "surface-tint": "#fdbb44",
+                        "on-tertiary": "#00315d",
+                        "surface-container": "#1d1f29",
+                        "on-primary-fixed": "#281900",
+                        "surface-container-low": "#191b25",
+                        "outline-variant": "#504535",
+                        "inverse-surface": "#e1e1ef",
+                        "surface-container-high": "#282933",
+                        "primary-fixed": "#ffdead",
+                        "outline": "#9d8f7b",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#2e303d",
+                        "on-primary": "#432c00",
+                        "primary-container": "#e8a832",
+                        "tertiary-container": "#80b6ff",
+                        "on-tertiary-container": "#004681",
+                        "primary": "#ffc667",
+                        "tertiary-fixed": "#d4e3ff",
+                        "secondary-fixed": "#e1e1f4",
+                        "on-tertiary-fixed-variant": "#004883",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#c5c5d7",
+                        "primary-fixed-dim": "#fdbb44",
+                        "background": "#11131c",
+                        "on-secondary-fixed": "#191b28",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#7f5700",
+                        "on-surface-variant": "#d5c4af",
+                        "secondary": "#c5c5d7",
+                        "secondary-container": "#444655",
+                        "tertiary-fixed-dim": "#a4c9ff",
+                        "on-secondary-fixed-variant": "#444655",
+                        "surface": "#11131c",
+                        "surface-variant": "#32343e",
+                        "surface-container-highest": "#32343e",
+                        "on-tertiary-fixed": "#001c39",
+                        "surface-container-lowest": "#0c0e17"
+                    },
+                    fontFamily: {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"],
+                        "mono": ["JetBrains Mono"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #ffc667 0%, #e8a832 100%);
+        }
+        .ghost-border {
+            outline: 1px solid rgba(80, 69, 53, 0.2);
+        }
+        /* Hide scrollbars but keep functionality */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface-dim text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r-0 bg-[#0c0e17] flex flex-col py-8 gap-2 z-50">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-primary-container text-2xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h1 class="text-lg font-black text-[#e8a832] font-headline">The Monolith</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant opacity-60">Protocol v1.0</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#d5c4af] opacity-60 font-['Be_Vietnam_Pro'] text-sm uppercase tracking-widest hover:bg-[#1d1f29] hover:text-[#e1e1ef] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#d5c4af] opacity-60 font-['Be_Vietnam_Pro'] text-sm uppercase tracking-widest hover:bg-[#1d1f29] hover:text-[#e1e1ef] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Users
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#d5c4af] opacity-60 font-['Be_Vietnam_Pro'] text-sm uppercase tracking-widest hover:bg-[#1d1f29] hover:text-[#e1e1ef] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+                Questions
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#e8a832] border-r-2 border-[#e8a832] bg-[#1d1f29] font-['Be_Vietnam_Pro'] text-sm uppercase tracking-widest transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+                AI Generator
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#d5c4af] opacity-60 font-['Be_Vietnam_Pro'] text-sm uppercase tracking-widest hover:bg-[#1d1f29] hover:text-[#e1e1ef] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+                Review Queue
+            </a>
+</nav>
+<div class="px-4 mt-auto space-y-1 border-t border-surface-container pt-6">
+<button class="w-full mb-4 py-3 gold-gradient text-on-primary-fixed font-bold text-xs uppercase tracking-widest rounded-lg flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Question
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#d5c4af] opacity-60 font-['Be_Vietnam_Pro'] text-sm uppercase tracking-widest hover:bg-[#1d1f29] hover:text-[#e1e1ef] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                Help
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#d5c4af] opacity-60 font-['Be_Vietnam_Pro'] text-sm uppercase tracking-widest hover:bg-[#1d1f29] hover:text-[#e1e1ef] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Cluster -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-[#11131c] sticky top-0 z-40 flex justify-between items-center w-full px-8 py-4 bg-[#1d1f29] border-b-0">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="absolute inset-y-0 left-3 flex items-center text-on-surface-variant/40">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</span>
+<input class="bg-surface-dim border-none rounded-full pl-10 pr-4 py-1.5 text-sm w-64 focus:ring-1 focus:ring-primary-container transition-all" placeholder="Tìm kiếm giao thức..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-[#d5c4af]">
+<button class="hover:bg-[#32343e] p-2 rounded-full transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:bg-[#32343e] p-2 rounded-full transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="flex items-center gap-3 pl-6 border-l border-surface-container-high">
+<div class="text-right">
+<p class="text-sm font-bold text-[#e1e1ef] tracking-tighter">BibleQuiz Admin</p>
+<p class="text-[10px] text-primary uppercase tracking-tighter">Level 4 Access</p>
+</div>
+<img alt="Admin profile" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="Close up portrait of a serious male administrator in professional attire with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ5OSP8ZXwUxA5yhOkcGdQt_gCczkBc_bpmATLGSYsp-PEsaorLYbNTilIXPE0wq6LLUM7ZR8LVqB60_VdicVAd7ARDiAKKhitbwtwGrxzPQAmb1LMRc6NivRid8qRWgAtsicn5uSEsx-h1GeZfS_Fj4VS6O0yw5fNUfx_Qt4heZw2GctAuaIxVMPLDuyGoE1aSvF7_Yn1OqYD-_b54hzAHJ1XgZz6vhQ8IazlNiIJQuDzSHcqfFbue1qduwCKNXdEicPLXzoDk1A"/>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="p-8 flex flex-col lg:flex-row gap-8 flex-1 overflow-hidden">
+<!-- Left Column: Configuration (60%) -->
+<section class="lg:w-[60%] flex flex-col gap-6 overflow-y-auto no-scrollbar">
+<div class="flex items-center justify-between">
+<h2 class="text-3xl font-black text-on-surface font-headline tracking-tighter flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="robot_2">robot_2</span>
+                        Tạo câu hỏi AI
+                    </h2>
+<div class="flex flex-col items-end">
+<div class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/60 mb-1">Quota Usage</div>
+<div class="flex items-center gap-3">
+<span class="font-mono text-xs text-primary font-bold">45/200 CÂU</span>
+<div class="w-32 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[22.5%]"></div>
+</div>
+<span class="font-mono text-xs text-on-surface-variant/80">$3.42 / $10.00</span>
+</div>
+</div>
+</div>
+<!-- Scripture Selector Card -->
+<div class="bg-surface-container rounded-xl p-6 ghost-border relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-8xl" data-icon="menu_book">menu_book</span>
+</div>
+<h3 class="label-sm uppercase tracking-widest text-primary mb-4 font-bold">Lựa chọn Phân đoạn</h3>
+<div class="grid grid-cols-12 gap-4">
+<div class="col-span-6">
+<label class="block text-[10px] uppercase text-on-surface-variant mb-1.5 font-bold">Sách Kinh Thánh</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg text-sm p-3 focus:ring-1 focus:ring-primary">
+<option>Sáng Thế Ký</option>
+<option>Xuất Ê-díp-tô Ký</option>
+<option>Lê-vi Ký</option>
+</select>
+</div>
+<div class="col-span-3">
+<label class="block text-[10px] uppercase text-on-surface-variant mb-1.5 font-bold">Chương</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm p-3 font-mono focus:ring-1 focus:ring-primary" type="text" value="1-3"/>
+</div>
+<div class="col-span-3">
+<label class="block text-[10px] uppercase text-on-surface-variant mb-1.5 font-bold">Câu</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg text-sm p-3 font-mono focus:ring-1 focus:ring-primary" type="text" value="1-24"/>
+</div>
+</div>
+<div class="mt-4 p-3 bg-surface-container-highest/30 rounded border-l-2 border-primary flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="visibility">visibility</span>
+<span class="text-sm italic text-on-surface-variant font-medium">Sáng Thế Ký 1:1—3:24</span>
+</div>
+</div>
+<!-- AI Configuration Card -->
+<div class="bg-surface-container rounded-xl p-6 ghost-border">
+<h3 class="label-sm uppercase tracking-widest text-primary mb-6 font-bold">Cấu hình mô hình &amp; Tham số</h3>
+<!-- Tabs for Model -->
+<div class="mb-8">
+<label class="block text-[10px] uppercase text-on-surface-variant mb-3 font-bold">Mô hình AI</label>
+<div class="flex p-1 bg-surface-container-low rounded-lg w-fit">
+<button class="px-6 py-2 rounded-md text-xs font-bold transition-all bg-surface-bright text-primary">GEMINI 1.5 PRO</button>
+<button class="px-6 py-2 rounded-md text-xs font-bold transition-all text-on-surface-variant hover:text-on-surface">CLAUDE 3.5 SONNET</button>
+<button class="px-6 py-2 rounded-md text-xs font-bold transition-all text-on-surface-variant hover:text-on-surface">GPT-4O</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8 mb-8">
+<div>
+<label class="block text-[10px] uppercase text-on-surface-variant mb-3 font-bold">Mức độ khó</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 text-[10px] font-bold border border-outline-variant/30 rounded hover:bg-surface-container-highest">DỄ</button>
+<button class="py-2 text-[10px] font-bold bg-primary text-on-primary rounded">TRUNG BÌNH</button>
+<button class="py-2 text-[10px] font-bold border border-outline-variant/30 rounded hover:bg-surface-container-highest">KHÓ</button>
+</div>
+</div>
+<div>
+<label class="block text-[10px] uppercase text-on-surface-variant mb-3 font-bold">Loại câu hỏi</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 text-[10px] font-bold bg-primary text-on-primary rounded">TRẮC NGHIỆM</button>
+<button class="py-2 text-[10px] font-bold border border-outline-variant/30 rounded hover:bg-surface-container-highest">TỰ LUẬN</button>
+</div>
+</div>
+</div>
+<div class="mb-8">
+<div class="flex justify-between items-center mb-4">
+<label class="text-[10px] uppercase text-on-surface-variant font-bold">Số lượng câu hỏi</label>
+<span class="font-mono text-primary font-bold">12</span>
+</div>
+<input class="w-full h-1 bg-surface-container-low rounded-lg appearance-none cursor-pointer accent-primary" max="20" min="1" type="range" value="12"/>
+</div>
+<div class="mb-8">
+<label class="block text-[10px] uppercase text-on-surface-variant mb-3 font-bold">Ngôn ngữ đầu ra</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg text-sm p-3 focus:ring-1 focus:ring-primary">
+<option>Tiếng Việt (Bản truyền thống)</option>
+<option>Tiếng Việt (Bản hiện đại)</option>
+<option>English (KJV)</option>
+<option>English (NIV)</option>
+</select>
+</div>
+<button class="w-full py-4 gold-gradient text-on-primary-fixed font-black uppercase tracking-[0.2em] rounded-lg shadow-xl shadow-primary-container/10 flex items-center justify-center gap-3 transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+                        Tạo câu hỏi ngay
+                    </button>
+</div>
+</section>
+<!-- Right Column: Draft Management (40%) -->
+<section class="lg:w-[40%] flex flex-col bg-surface-container rounded-2xl ghost-border overflow-hidden">
+<!-- Header with Actions -->
+<div class="p-6 border-b border-surface-container-highest bg-surface-container-low/50">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<h3 class="text-xl font-black font-headline tracking-tight">Drafts</h3>
+<span class="px-2 py-0.5 bg-primary-container text-on-primary-container text-[10px] font-bold rounded-full">08</span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-bright rounded text-on-surface-variant transition-colors" title="Làm mới">
+<span class="material-symbols-outlined text-sm" data-icon="refresh">refresh</span>
+</button>
+<button class="p-2 hover:bg-surface-bright rounded text-on-surface-variant transition-colors" title="Lọc">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 text-[10px] font-black uppercase tracking-widest gold-gradient text-on-primary-fixed rounded shadow-lg shadow-primary/5">Duyệt tất cả hợp lệ</button>
+<button class="px-4 py-2 text-[10px] font-black uppercase tracking-widest border border-error-container/30 text-error rounded hover:bg-error/10">Xóa tất cả</button>
+</div>
+</div>
+<!-- Draft List -->
+<div class="flex-1 overflow-y-auto p-6 space-y-4 no-scrollbar">
+<!-- Draft Card 1 -->
+<div class="bg-surface-dim p-4 rounded-xl ghost-border border-l-4 border-l-[#4ade80] hover:bg-surface-bright transition-colors group">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container-highest text-[9px] font-bold text-on-surface-variant rounded">DỄ</span>
+<span class="px-2 py-0.5 bg-surface-container-highest text-[9px] font-bold text-on-surface-variant rounded">TRẮC NGHIỆM</span>
+</div>
+<span class="flex items-center gap-1 text-[10px] font-bold text-[#4ade80]">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                                Valid
+                            </span>
+</div>
+<p class="text-sm line-clamp-2 text-on-surface leading-relaxed mb-4 font-medium">
+                            Đức Chúa Trời đã tạo dựng nên trời và đất trong vòng bao nhiêu ngày theo chương đầu tiên của Sáng Thế Ký?
+                        </p>
+<div class="flex justify-between items-center opacity-40 group-hover:opacity-100 transition-opacity">
+<span class="text-[10px] font-mono text-on-surface-variant">ID: #AI-00124</span>
+<div class="flex gap-1">
+<button class="p-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="edit">edit</span></button>
+<button class="p-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="done_all">done_all</span></button>
+<button class="p-1.5 hover:text-error transition-colors"><span class="material-symbols-outlined text-lg" data-icon="delete">delete</span></button>
+</div>
+</div>
+</div>
+<!-- Draft Card 2 (Invalid) -->
+<div class="bg-surface-dim p-4 rounded-xl ghost-border border-l-4 border-l-error hover:bg-surface-bright transition-colors group">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container-highest text-[9px] font-bold text-on-surface-variant rounded">KHÓ</span>
+<span class="px-2 py-0.5 bg-surface-container-highest text-[9px] font-bold text-on-surface-variant rounded">TỰ LUẬN</span>
+</div>
+<span class="flex items-center gap-1 text-[10px] font-bold text-error">
+<span class="material-symbols-outlined text-[14px]" data-icon="cancel">cancel</span>
+                                Invalid
+                            </span>
+</div>
+<p class="text-sm line-clamp-2 text-on-surface leading-relaxed mb-2 font-medium">
+                            Phân tích ý nghĩa thần học của việc đặt tên cho các loài động vật...
+                        </p>
+<p class="text-[10px] text-error mb-4 italic">Error: Câu hỏi quá ngắn so với yêu cầu mô hình.</p>
+<div class="flex justify-between items-center opacity-40 group-hover:opacity-100 transition-opacity">
+<span class="text-[10px] font-mono text-on-surface-variant">ID: #AI-00125</span>
+<div class="flex gap-1">
+<button class="p-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="edit">edit</span></button>
+<button class="p-1.5 hover:text-error transition-colors"><span class="material-symbols-outlined text-lg" data-icon="delete">delete</span></button>
+</div>
+</div>
+</div>
+<!-- Draft Card 3 -->
+<div class="bg-surface-dim p-4 rounded-xl ghost-border border-l-4 border-l-[#4ade80] hover:bg-surface-bright transition-colors group">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container-highest text-[9px] font-bold text-on-surface-variant rounded">TRUNG BÌNH</span>
+<span class="px-2 py-0.5 bg-surface-container-highest text-[9px] font-bold text-on-surface-variant rounded">TRẮC NGHIỆM</span>
+</div>
+<span class="flex items-center gap-1 text-[10px] font-bold text-[#4ade80]">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                                Valid
+                            </span>
+</div>
+<p class="text-sm line-clamp-2 text-on-surface leading-relaxed mb-4 font-medium">
+                            Tại sao Ca-in lại giết A-bên theo bối cảnh trong chương 4 của Sáng Thế Ký?
+                        </p>
+<div class="flex justify-between items-center opacity-40 group-hover:opacity-100 transition-opacity">
+<span class="text-[10px] font-mono text-on-surface-variant">ID: #AI-00126</span>
+<div class="flex gap-1">
+<button class="p-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="edit">edit</span></button>
+<button class="p-1.5 hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg" data-icon="done_all">done_all</span></button>
+<button class="p-1.5 hover:text-error transition-colors"><span class="material-symbols-outlined text-lg" data-icon="delete">delete</span></button>
+</div>
+</div>
+</div>
+<!-- Empty State (Placeholder) -->
+<!-- Uncomment to show empty state 
+                    <div class="flex-1 flex flex-col items-center justify-center text-center p-12 opacity-30">
+                        <span class="material-symbols-outlined text-8xl mb-4" data-icon="auto_awesome_motion">auto_awesome_motion</span>
+                        <h4 class="text-lg font-bold">Chưa có bản nháp</h4>
+                        <p class="text-xs">Chọn đoạn Kinh Thánh và nhấn Tạo để bắt đầu quy trình AI.</p>
+                    </div>
+                    -->
+</div>
+<div class="p-4 bg-surface-container-low text-center">
+<button class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors">Xem toàn bộ lịch sử tạo</button>
+</div>
+</section>
+</div>
+</main>
+</body></html>

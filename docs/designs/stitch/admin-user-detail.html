@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Monolith Protocol - User Detail Modal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface-variant": "#d5c4af",
+              "on-background": "#e1e1ef",
+              "surface-variant": "#32343e",
+              "primary-fixed": "#ffdead",
+              "secondary-fixed-dim": "#c5c5d7",
+              "primary-fixed-dim": "#fdbb44",
+              "tertiary": "#b3d1ff",
+              "on-tertiary-fixed-variant": "#004883",
+              "on-surface": "#e1e1ef",
+              "secondary": "#c5c5d7",
+              "tertiary-fixed-dim": "#a4c9ff",
+              "outline": "#9d8f7b",
+              "on-primary-container": "#5f4000",
+              "on-secondary-fixed": "#191b28",
+              "background": "#11131c",
+              "on-tertiary-container": "#004681",
+              "inverse-surface": "#e1e1ef",
+              "on-tertiary": "#00315d",
+              "on-primary": "#432c00",
+              "on-secondary-fixed-variant": "#444655",
+              "surface-container-lowest": "#0c0e17",
+              "on-secondary-container": "#b3b4c6",
+              "on-secondary": "#2e303d",
+              "on-error-container": "#ffdad6",
+              "surface-tint": "#fdbb44",
+              "primary-container": "#e8a832",
+              "surface-container-low": "#191b25",
+              "tertiary-container": "#80b6ff",
+              "surface-bright": "#373943",
+              "inverse-on-surface": "#2e303a",
+              "surface-container": "#1d1f29",
+              "inverse-primary": "#7f5700",
+              "outline-variant": "#504535",
+              "surface-dim": "#11131c",
+              "secondary-container": "#444655",
+              "on-primary-fixed": "#281900",
+              "error": "#f87171",
+              "error-container": "#450a0a",
+              "surface-container-highest": "#32343e",
+              "surface": "#11131c",
+              "on-tertiary-fixed": "#001c39",
+              "on-primary-fixed-variant": "#604100",
+              "secondary-fixed": "#e1e1f4",
+              "primary": "#ffc667",
+              "tertiary-fixed": "#d4e3ff",
+              "on-error": "#ffffff",
+              "surface-container-high": "#282933"
+            },
+            fontFamily: {
+              "headline": ["Be Vietnam Pro"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"],
+              "mono": ["JetBrains Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #0c0e17; }
+      ::-webkit-scrollbar-thumb { background: #32343e; border-radius: 10px; }
+      .sacred-gradient {
+        background: linear-gradient(135deg, #ffc667 0%, #e8a832 100%);
+      }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-16 w-full bg-[#11131c] bg-[#1d1f29] font-['Be_Vietnam_Pro'] text-sm tracking-tight">
+<div class="text-xl font-bold tracking-tighter text-[#e8a832] uppercase">The Monolith Protocol</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#d5c4af] hover:text-[#ffc667] transition-colors" href="#">Dashboard</a>
+<a class="text-[#e8a832] border-b-2 border-[#e8a832] pb-1" href="#">Logs</a>
+<a class="text-[#d5c4af] hover:text-[#ffc667] transition-colors" href="#">Reports</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#d5c4af] hover:text-[#ffc667]">notifications</button>
+<button class="material-symbols-outlined text-[#d5c4af] hover:text-[#ffc667]">settings</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="Administrator Avatar" class="w-full h-full object-cover" data-alt="Professional administrator profile portrait in cool studio lighting with deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlvsDQZ9EN8z0bpvm22podluk1saW8lMs7jO1dFYlv_YEo4zSasJ_AxPLKzxv--bOWy0qzQH8ZKYTUVhCoMYqaRETJatywnx79Jkh6dZyNA4T4EwlQMkMK_SzDCpd6x8AA6rKSbOzqhGA5ycSz2FgPhmP8eGu5PuyM55Twjv5V4-9bxWWPtPn5gQQnHR_u5iAkrI19WaiOSFqnuJJcMoau548eDCjr5pOono8eYYTcXRV0Q9jbQZX1DyLv2HiZgdiaOniUzyxXEyk"/>
+</div>
+<button class="sacred-gradient text-on-primary-fixed px-4 py-1.5 rounded-lg font-bold active:scale-95 duration-150">Execute Protocol</button>
+</div>
+</nav>
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-64 z-[60] bg-[#0c0e17] border-r border-[#504535]/20 shadow-2xl shadow-black/50 flex flex-col py-6 gap-2">
+<div class="px-6 mb-8">
+<div class="text-lg font-black text-[#e1e1ef]">Monolith Admin</div>
+<div class="text-[10px] uppercase tracking-widest text-on-surface-variant/60">Protocol Level 4</div>
+</div>
+<div class="px-3 space-y-1">
+<div class="flex items-center gap-4 px-4 py-3 cursor-pointer text-[#d5c4af]/60 hover:text-[#e1e1ef] hover:bg-[#1d1f29] transition-all duration-200 font-['Be_Vietnam_Pro'] text-xs font-medium uppercase tracking-widest">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 cursor-pointer text-[#e8a832] bg-[#1d1f29] border-r-4 border-[#e8a832] font-['Be_Vietnam_Pro'] text-xs font-medium uppercase tracking-widest">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Users</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 cursor-pointer text-[#d5c4af]/60 hover:text-[#e1e1ef] hover:bg-[#1d1f29] transition-all duration-200 font-['Be_Vietnam_Pro'] text-xs font-medium uppercase tracking-widest">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+<span>Questions</span>
+</div>
+</div>
+<div class="mt-auto px-6">
+<button class="w-full sacred-gradient text-on-primary-fixed py-3 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 active:opacity-80">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+                Deploy New Question
+            </button>
+</div>
+</aside>
+<!-- Modal Backdrop -->
+<div class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-[4px] flex items-center justify-center p-4">
+<!-- Modal Content -->
+<div class="w-full max-w-[800px] max-h-[870px] bg-[#161825] rounded-xl overflow-hidden shadow-2xl flex flex-col relative border border-outline-variant/10">
+<!-- Conditional Alert (Banned Version Hidden State) -->
+<!-- <div class="bg-error-container text-error px-6 py-2 text-xs font-bold tracking-widest flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">warning</span>
+                TÀI KHOẢN ĐANG BỊ KHÓA TRUY CẬP
+            </div> -->
+<!-- Header Section -->
+<div class="h-[120px] px-8 flex items-center justify-between border-b border-outline-variant/10 bg-surface-container">
+<div class="flex items-center gap-6">
+<div class="relative">
+<div class="w-[64px] h-[64px] rounded-full overflow-hidden border-2 border-primary-container p-0.5">
+<img alt="Nguyễn Văn An Avatar" class="w-full h-full object-cover rounded-full" data-alt="Close-up portrait of a young Vietnamese man with a friendly professional expression and clean office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiGedE1U2dcZJjf3XPvMnJ5fqBg1-4d2VsR-VO9ftkyj_Amu1xLJ7GllZAl5xYmDKzECCP1q_vYOBmwoxTKaSy5Sptpi-TZi55C-jguP9Y1v5P4cl4K6kaejvjybxqZXvGC4txgPjkelHsmJwmJmzN4-D5wNXOQHKcft2qIhFsPc0_itvgZI7BPuIelafOYYIplCCBH5cJJnAjvvWztV4mhkvJLDthYC9SWxqNXKc3BzecvgHfl_SB2rZS1red1meNWPf3-J1UOTU"/>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-3">
+<h1 class="text-xl font-bold text-on-surface">Nguyễn Văn An</h1>
+<span class="bg-[#34d399]/15 text-[#34d399] px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">GROUP LEADER</span>
+<span class="bg-primary-container/15 text-primary-container px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+                                Hiền Triết
+                            </span>
+</div>
+<div class="flex flex-col mt-0.5">
+<span class="text-on-surface-variant/70 text-sm">an.nguyen@example.com</span>
+<span class="text-on-surface-variant/50 text-[11px] mt-0.5">Tham gia: 12/05/2023</span>
+</div>
+</div>
+</div>
+<button class="w-9 h-9 flex items-center justify-center rounded-full bg-[#1a1d2e] text-on-surface hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">close</span>
+</button>
+</div>
+<!-- Content Body -->
+<div class="flex-1 overflow-y-auto p-8 grid grid-cols-10 gap-8">
+<!-- Left Column (60%) -->
+<div class="col-span-6 space-y-8">
+<!-- Stats Grid -->
+<div class="grid grid-cols-4 gap-3">
+<div class="bg-[#1a1d2e] p-3 rounded-lg border border-outline-variant/5">
+<div class="text-[10px] text-on-surface-variant/50 uppercase tracking-widest mb-1">Tổng Điểm</div>
+<div class="font-mono text-lg font-bold text-primary">24,500</div>
+</div>
+<div class="bg-[#1a1d2e] p-3 rounded-lg border border-outline-variant/5">
+<div class="text-[10px] text-on-surface-variant/50 uppercase tracking-widest mb-1">Chuỗi</div>
+<div class="font-mono text-lg font-bold text-on-surface">42 <span class="text-[10px]">Ngày</span></div>
+</div>
+<div class="bg-[#1a1d2e] p-3 rounded-lg border border-outline-variant/5">
+<div class="text-[10px] text-on-surface-variant/50 uppercase tracking-widest mb-1">Số Phiên</div>
+<div class="font-mono text-lg font-bold text-on-surface">158</div>
+</div>
+<div class="bg-[#1a1d2e] p-3 rounded-lg border border-outline-variant/5">
+<div class="text-[10px] text-on-surface-variant/50 uppercase tracking-widest mb-1">Độ Chính Xác</div>
+<div class="font-mono text-lg font-bold text-[#34d399]">78%</div>
+</div>
+</div>
+<!-- Sessions Tab Section -->
+<div class="space-y-4">
+<div class="flex gap-6 border-b border-outline-variant/10">
+<button class="pb-2 text-xs font-bold uppercase tracking-widest text-primary border-b-2 border-primary">Sessions</button>
+<button class="pb-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant/60 hover:text-on-surface transition-colors">Achievements</button>
+<button class="pb-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant/60 hover:text-on-surface transition-colors">Groups</button>
+</div>
+<div class="overflow-hidden">
+<table class="w-full text-left text-sm">
+<thead class="text-on-surface-variant/40 text-[10px] uppercase tracking-widest">
+<tr>
+<th class="pb-3 font-medium">Chế Độ</th>
+<th class="pb-3 font-medium">Bài Học</th>
+<th class="pb-3 font-medium">Kết Quả</th>
+<th class="pb-3 font-medium text-right">Ngày</th>
+</tr>
+</thead>
+<tbody class="space-y-2">
+<tr class="group hover:bg-surface-bright transition-colors rounded-lg">
+<td class="py-3">
+<span class="bg-secondary-container/30 text-secondary-fixed-dim px-1.5 py-0.5 rounded text-[9px] font-bold">ARCADE</span>
+</td>
+<td class="py-3 text-on-surface/80">Sáng Thế Ký 1-3</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<span class="font-mono text-[#34d399]">80%</span>
+<span class="text-[10px] text-on-surface-variant/40">(8/10)</span>
+</div>
+</td>
+<td class="py-3 text-right text-on-surface-variant/50 font-mono text-xs">24/10 14:02</td>
+</tr>
+<tr class="group hover:bg-surface-bright transition-colors">
+<td class="py-3">
+<span class="bg-secondary-container/30 text-secondary-fixed-dim px-1.5 py-0.5 rounded text-[9px] font-bold">STUDY</span>
+</td>
+<td class="py-3 text-on-surface/80">Xuất Hành 12</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<span class="font-mono text-[#34d399]">100%</span>
+<span class="text-[10px] text-on-surface-variant/40">(20/20)</span>
+</div>
+</td>
+<td class="py-3 text-right text-on-surface-variant/50 font-mono text-xs">22/10 09:15</td>
+</tr>
+<tr class="group hover:bg-surface-bright transition-colors">
+<td class="py-3">
+<span class="bg-secondary-container/30 text-secondary-fixed-dim px-1.5 py-0.5 rounded text-[9px] font-bold">COMPETITIVE</span>
+</td>
+<td class="py-3 text-on-surface/80">Luca 1-5</td>
+<td class="py-3">
+<div class="flex items-center gap-2">
+<span class="font-mono text-error">45%</span>
+<span class="text-[10px] text-on-surface-variant/40">(9/20)</span>
+</div>
+</td>
+<td class="py-3 text-right text-on-surface-variant/50 font-mono text-xs">20/10 21:30</td>
+</tr>
+</tbody>
+</table>
+</div>
+<a class="inline-block text-[11px] text-on-surface-variant/50 hover:text-primary transition-colors italic underline underline-offset-4" href="#">Xem toàn bộ lịch sử</a>
+</div>
+</div>
+<!-- Right Column (40%) -->
+<div class="col-span-4 space-y-6">
+<div class="bg-[#1a1d2e] p-6 rounded-lg border border-outline-variant/10">
+<h2 class="text-xs font-black text-primary uppercase tracking-[0.2em] mb-6 border-l-2 border-primary pl-3">Thao Tác Quản Trị</h2>
+<!-- Role Management -->
+<div class="space-y-4 mb-8">
+<label class="block text-[10px] uppercase tracking-widest text-on-surface-variant/60 font-bold">Phân Quyền Hiện Tại</label>
+<div class="bg-surface-container-low px-4 py-3 rounded text-sm text-on-surface-variant/80 cursor-not-allowed flex justify-between items-center">
+                                Group Leader
+                                <span class="material-symbols-outlined text-sm">lock</span>
+</div>
+<div class="relative">
+<select class="w-full bg-surface-container-highest border-none rounded px-4 py-3 text-sm text-on-surface focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
+<option>Thay đổi phân quyền...</option>
+<option>Admin</option>
+<option>Moderator</option>
+<option>Standard User</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant/50">expand_more</span>
+</div>
+</div>
+<!-- Account Lock -->
+<div class="space-y-4 pt-6 border-t border-outline-variant/10">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface/80">Khóa Tài Khoản</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface-variant after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-error"></div>
+</label>
+</div>
+<!-- State Hidden by Default (Account Lock UI) -->
+<div class="hidden space-y-3">
+<label class="block text-[10px] text-error font-bold uppercase tracking-widest">Lý Do Khóa</label>
+<textarea class="w-full bg-surface-container-low border-none rounded text-xs text-on-surface placeholder:text-on-surface-variant/30 focus:ring-1 focus:ring-error" placeholder="Nhập lý do vi phạm..." rows="3"></textarea>
+<button class="w-full bg-error text-white py-2 rounded text-[10px] font-black uppercase tracking-widest hover:opacity-90 active:scale-95 transition-all">Thực Hiện Khóa</button>
+</div>
+</div>
+<!-- Ban History -->
+<div class="space-y-3 mt-8 pt-6 border-t border-outline-variant/10">
+<span class="block text-[10px] uppercase tracking-widest text-on-surface-variant/60 font-bold">Lịch Sử Vi Phạm</span>
+<div class="flex items-center gap-3 text-on-surface-variant/40 italic text-xs py-2">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                                Chưa có vi phạm
+                            </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Section -->
+<div class="px-8 py-4 bg-surface-container-lowest flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-mono text-on-surface-variant/40">ID: usr_7f8a9x22_monolith_alpha</span>
+<button class="material-symbols-outlined text-[14px] text-on-surface-variant/30 hover:text-primary transition-colors">content_copy</button>
+</div>
+<button class="px-6 py-2 border border-outline-variant/20 text-on-surface-variant/80 text-xs font-bold uppercase tracking-widest hover:bg-surface-variant transition-colors rounded-lg">Đóng</button>
+</div>
+</div>
+</div>
+</body></html>

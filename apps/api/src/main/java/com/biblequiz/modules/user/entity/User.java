@@ -60,6 +60,15 @@ public class User {
     @Column(name = "streak_freeze_used_this_week", nullable = false)
     private Boolean streakFreezeUsedThisWeek = false;
 
+    @Column(name = "is_banned", nullable = false)
+    private Boolean isBanned = false;
+
+    @Column(name = "ban_reason")
+    private String banReason;
+
+    @Column(name = "banned_at")
+    private LocalDateTime bannedAt;
+
     @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -244,4 +253,11 @@ public class User {
 
     public Boolean getStreakFreezeUsedThisWeek() { return streakFreezeUsedThisWeek; }
     public void setStreakFreezeUsedThisWeek(Boolean used) { this.streakFreezeUsedThisWeek = used; }
+
+    public Boolean getIsBanned() { return isBanned; }
+    public void setIsBanned(Boolean banned) { this.isBanned = banned; }
+    public String getBanReason() { return banReason; }
+    public void setBanReason(String banReason) { this.banReason = banReason; }
+    public LocalDateTime getBannedAt() { return bannedAt; }
+    public void setBannedAt(LocalDateTime bannedAt) { this.bannedAt = bannedAt; }
 }

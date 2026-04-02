@@ -133,7 +133,9 @@ Thay "mất mạng khi sai" bằng hệ thống **Energy** nhẹ nhàng hơn:
 livesRemaining     → energyRemaining (0–100)
 questionsCounted   → giữ nguyên, cap 100 câu/ngày (tăng từ 50)
 ```
-
+- Ghi chú implementation: Code sử dụng field name `livesRemaining` / `dailyLives` 
+(từ spec v1). Semantic tương đương energyRemaining / dailyEnergy trong spec này. 
+Xem DECISIONS.md ngày 2026-04-02.
 ### 3.3 Book Progression (Ranked Mode)
 
 Giữ nguyên ý tưởng từ spec cũ, bổ sung:
@@ -187,7 +189,10 @@ Xem mục 5.3.
 
 ## 5. Social & Viral Loop
 
-### 5.1 Friend System
+### 5.1 Friend System (v2.5 — Chưa implement)
+> ⚠️ Feature này nằm trong roadmap v2.5. Chưa có trong codebase hiện tại.
+> Khi implement, cần thêm: Friend entity, FriendRequest entity, FriendController, notification integration, friend leaderboard tab.
+
 - Thêm bạn qua username hoặc link mời
 - Feed "hoạt động bạn bè": "Nguyễn A vừa đạt tier Hiền Triết 🎉"
 - Leaderboard "Bạn bè" — tab riêng bên cạnh leaderboard global
@@ -703,7 +708,7 @@ Server → Client:
 | Layer | Tech |
 |---|---|
 | Frontend | React (Vite) + React Router + Zustand + TanStack Query |
-| Backend | Spring Boot (Java 21) + Spring Security + Spring Data JPA |
+| Backend | Spring Boot 3.3 (Java 17) + Spring Security + Spring Data JPA |
 | Database | MySQL (AWS RDS) + Flyway migrations |
 | Cache | Redis (AWS ElastiCache) — session, leaderboard ZSET, room state |
 | Realtime | Spring WebSocket (STOMP) + Redis Pub/Sub |

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(50, 52, 64, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#e7c268",
+                        "on-tertiary-fixed": "#251a00",
+                        "surface-container-low": "#191b26",
+                        "outline-variant": "#46464d",
+                        "primary-container": "#1a1f3a",
+                        "outline": "#919098",
+                        "surface-dim": "#11131e",
+                        "surface-container-high": "#272935",
+                        "on-secondary": "#412d00",
+                        "surface": "#11131e",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "error-container": "#93000a",
+                        "on-primary": "#2a2f4a",
+                        "on-tertiary": "#3e2e00",
+                        "surface-tint": "#c0c4e8",
+                        "surface-container-highest": "#323440",
+                        "inverse-on-surface": "#2e303c",
+                        "inverse-primary": "#585d7b",
+                        "primary": "#c0c4e8",
+                        "surface-container-lowest": "#0b0e18",
+                        "secondary-fixed-dim": "#f8bd45",
+                        "on-tertiary-container": "#a48431",
+                        "surface-container": "#1d1f2a",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#8286a7",
+                        "on-surface": "#e1e1f1",
+                        "primary-fixed-dim": "#c0c4e8",
+                        "on-secondary-container": "#392600",
+                        "secondary": "#f8bd45",
+                        "secondary-container": "#bc8709",
+                        "surface-bright": "#373845",
+                        "tertiary-container": "#2b1f00",
+                        "tertiary-fixed": "#ffdf96",
+                        "surface-variant": "#323440",
+                        "on-tertiary-fixed-variant": "#5a4400",
+                        "on-surface-variant": "#c7c5ce",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e1e1f1",
+                        "tertiary": "#e7c268",
+                        "secondary-fixed": "#ffdea7",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#271900",
+                        "on-primary-fixed-variant": "#404562",
+                        "on-background": "#e1e1f1",
+                        "primary-fixed": "#dee1ff",
+                        "on-primary-fixed": "#151a34",
+                        "background": "#11131e"
+                    },
+                    fontFamily: {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen">
+<!-- Top Navigation Bar (Mobile only) -->
+<header class="fixed top-0 w-full z-50 bg-[#11131e] flex justify-between items-center px-6 h-16 w-full shadow-[0_24px_24px_-12px_rgba(11,14,24,0.06)] md:hidden">
+<div class="text-xl font-bold tracking-tighter text-[#f8bd45] font-be-vietnam-pro tracking-tight">BibleQuiz</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-[#f8bd45]">bolt</span>
+<span class="material-symbols-outlined text-[#f8bd45]">military_tech</span>
+</div>
+</header>
+<!-- Sidebar (Desktop) -->
+<aside class="fixed left-0 top-0 h-full w-64 z-40 bg-[#11131e] hidden md:flex flex-col p-4 space-y-6 font-be-vietnam-pro">
+<div class="text-2xl font-black text-[#f8bd45] mb-8">BibleQuiz</div>
+<div class="space-y-2 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-medium">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#f8bd45] to-[#e7c268] text-[#11131e] rounded-lg font-bold transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="font-medium">Ranked</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-medium">Scripture</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">task_alt</span>
+<span class="font-medium">Quests</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">workspace_premium</span>
+<span class="font-medium">Season</span>
+</a>
+</div>
+<div class="border-t border-outline-variant/15 pt-6">
+<div class="flex items-center gap-3 px-2 mb-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-secondary/20">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a thoughtful man in a library setting with soft warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDqd_-LSdWWpZXT6jwXTpErjVfADnIWQns1NEKgIcjvdhXbE9HylCXE1yM9gAhIg-yjgJOI-LA5Rji9uXng5-vhpeGeAD7h46GRByIz88X6lCsHWta5qikDjpARYSq9ORYqRat5tnKPLDFCdJs8_OgqNoT8JA1bYZ_tz19WFbAP0Y2iKIC3kDbyr-YUfC8L3YysoUjnES4jd9xZjQSj56I_GTrBwVHEzE5kO6btH3gBzitnXBN-AS5hhDC_JdEoSgONO8c-DWE5Lg"/>
+</div>
+<div>
+<div class="text-sm font-bold text-on-surface">Sacred Modernist</div>
+<div class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold">Gold League • Rank 14</div>
+</div>
+</div>
+<a class="flex items-center gap-3 px-4 py-2 text-[#e1e1f1]/70 hover:text-[#e1e1f1] text-sm" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-20 md:pt-10 px-6 pb-24 md:pb-10 max-w-5xl mx-auto">
+<!-- Header -->
+<header class="mb-10">
+<h1 class="text-4xl font-extrabold tracking-tight mb-2 flex items-center gap-3">
+<span>⚔️ Xếp hạng</span>
+</h1>
+<div class="flex items-center gap-2">
+<div class="flex items-center justify-center w-8 h-8 rounded-full bg-secondary/10 text-secondary border border-secondary/20 shadow-[0_0_15px_rgba(248,189,69,0.15)]">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<span class="text-secondary font-bold text-lg tracking-wide uppercase">Hiền Triết</span>
+</div>
+</header>
+<!-- Grid Layout for Stats -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Energy Card (Large Asymmetric Span) -->
+<section class="lg:col-span-12 glass-card rounded-xl p-6 border border-white/5 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-8xl">bolt</span>
+</div>
+<div class="flex justify-between items-end mb-4">
+<div>
+<div class="flex items-center gap-2 text-on-surface-variant uppercase text-xs font-bold tracking-widest mb-1">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                            Năng lượng
+                        </div>
+<div class="text-4xl font-black text-on-surface">75<span class="text-on-surface-variant text-xl font-normal">/100</span></div>
+</div>
+<div class="text-right">
+<div class="flex items-center gap-1 text-on-surface-variant text-sm font-medium">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                            Phục hồi: +20 trong 42 phút
+                        </div>
+</div>
+</div>
+<div class="h-3 w-full bg-primary-container rounded-full overflow-hidden">
+<div class="h-full gold-gradient rounded-full shadow-[0_0_10px_rgba(248,189,69,0.4)]" style="width: 75%"></div>
+</div>
+</section>
+<!-- Today's Progress -->
+<section class="lg:col-span-7 glass-card rounded-xl p-6 border border-white/5 flex flex-col justify-between min-h-[180px]">
+<h3 class="text-sm font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-sm">leaderboard</span>
+                    📊 Hôm nay
+                </h3>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+<div>
+<div class="text-on-surface-variant text-xs mb-1">Câu đã tính</div>
+<div class="font-bold text-on-surface mb-2">34<span class="text-on-surface-variant font-normal">/100</span></div>
+<div class="h-1 w-full bg-primary-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary/60 rounded-full" style="width: 34%"></div>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center border-l border-r border-outline-variant/10">
+<div class="text-on-surface-variant text-xs mb-1">Điểm hôm nay</div>
+<div class="text-4xl font-black text-secondary">456</div>
+</div>
+<div class="flex flex-col items-end justify-center">
+<div class="text-on-surface-variant text-xs mb-1">Streak</div>
+<div class="text-xl font-bold text-on-surface flex items-center gap-2">
+<span>🔥 7 ngày</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Current Book Card -->
+<section class="lg:col-span-5 glass-card rounded-xl p-6 border border-white/5 relative">
+<div class="absolute -left-1 top-6 w-1 h-12 bg-secondary rounded-full shadow-[0_0_10px_rgba(248,189,69,0.5)]"></div>
+<h3 class="text-sm font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-sm">menu_book</span>
+                    📖 Đang chơi
+                </h3>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="text-3xl font-black text-on-surface tracking-tight">Ma-thi-ơ</h4>
+<p class="text-sm text-on-surface-variant">Sách thứ 40/66</p>
+</div>
+<span class="bg-surface-container-high text-secondary text-[10px] font-bold px-3 py-1 rounded-full border border-secondary/20 uppercase tracking-tighter">Trung bình</span>
+</div>
+<div class="h-1 w-full bg-primary-container rounded-full overflow-hidden">
+<div class="h-full gold-gradient rounded-full" style="width: 60%"></div>
+</div>
+</section>
+<!-- Season Card -->
+<section class="lg:col-span-12 glass-card rounded-xl p-8 border border-white/5 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+<!-- Background decoration -->
+<div class="absolute -right-20 -bottom-20 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[300px]">trophy</span>
+</div>
+<div class="w-full md:w-1/3 text-center md:text-left">
+<h3 class="text-sm font-bold text-on-surface-variant uppercase tracking-widest flex items-center justify-center md:justify-start gap-2 mb-4">
+<span class="material-symbols-outlined text-sm">emoji_events</span>
+                        🏆 Mùa Phục Sinh 2026
+                    </h3>
+<div class="text-6xl font-black text-secondary mb-2">#42</div>
+<div class="text-on-surface font-medium">2,340 điểm</div>
+</div>
+<div class="w-full md:w-2/3 space-y-4">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface font-bold">Tiến trình mùa giải</span>
+<span class="text-on-surface-variant italic">Còn 45 ngày</span>
+</div>
+<div class="h-4 w-full bg-primary-container rounded-full overflow-hidden p-1">
+<div class="h-full gold-gradient rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]" style="width: 65%"></div>
+</div>
+<div class="flex justify-between text-[10px] uppercase font-bold tracking-widest text-on-surface-variant/60">
+<span>Bắt đầu</span>
+<span>Đỉnh cao</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Start CTA -->
+<div class="mt-10 mb-20">
+<button class="w-full gold-gradient text-on-secondary font-black py-5 rounded-xl text-xl uppercase tracking-widest shadow-[0_8px_30px_rgb(248,189,69,0.3)] active:scale-[0.98] transition-transform duration-150 flex items-center justify-center gap-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                Bắt đầu
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="fixed bottom-0 w-full z-50 bg-[#1d1f2a] flex justify-around items-center h-16 md:hidden shadow-[0_-8px_24px_rgba(0,0,0,0.2)]">
+<button class="flex flex-col items-center justify-center text-[#e1e1f1]/60">
+<span class="material-symbols-outlined">home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#f8bd45] font-bold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#e1e1f1]/60">
+<span class="material-symbols-outlined">auto_stories</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#e1e1f1]/60">
+<span class="material-symbols-outlined">task_alt</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#e1e1f1]/60">
+<span class="material-symbols-outlined">person</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,169 @@
+import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
+
+/**
+ * Phase A.1 — CreateRoom unit tests.
+ * Min 8 tests per CLAUDE.md rule.
+ */
+
+const mockNavigate = vi.fn()
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom')
+  return {
+    ...actual,
+    useNavigate: () => mockNavigate,
+    useSearchParams: () => [new URLSearchParams(), vi.fn()],
+  }
+})
+
+let authState = { isAuthenticated: true, isLoading: false, user: { name: 'Test', email: 'a@b.com' } }
+vi.mock('../../store/authStore', () => ({
+  useAuthStore: (s?: (st: any) => any) => s ? s(authState) : authState,
+  useAuth: () => authState,
+}))
+
+const mockApiPost = vi.fn()
+vi.mock('../../api/client', () => ({
+  api: { post: (...args: any[]) => mockApiPost(...args) },
+}))
+
+import CreateRoom from '../CreateRoom'
+
+function renderCreateRoom() {
+  return render(<MemoryRouter><CreateRoom /></MemoryRouter>)
+}
+
+describe('CreateRoom', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+    authState = { isAuthenticated: true, isLoading: false, user: { name: 'Test', email: 'a@b.com' } }
+  })
+
+  // 1. Render
+  it('renders form without crashing', () => {
+    renderCreateRoom()
+    expect(screen.getByText(/Tạo phòng mới/i)).toBeInTheDocument()
+  })
+
+  // 2. All 4 game mode cards
+  it('renders all 4 game mode cards', () => {
+    renderCreateRoom()
+    expect(screen.getByText('Speed Race')).toBeInTheDocument()
+    expect(screen.getByText('Battle Royale')).toBeInTheDocument()
+    expect(screen.getByText('Team vs Team')).toBeInTheDocument()
+    expect(screen.getByText('Sudden Death')).toBeInTheDocument()
+  })
+
+  // 3. Mode selection highlights active
+  it('highlights selected game mode', () => {
+    renderCreateRoom()
+    const brBtn = screen.getByText('Battle Royale').closest('button')!
+    fireEvent.click(brBtn)
+    expect(brBtn.className).toContain('border-secondary')
+  })
+
+  // 4. Segmented controls — question count
+  it('updates question count when segmented button clicked', () => {
+    renderCreateRoom()
+    const btn20 = screen.getAllByText('20')[0] // question count 20
+    fireEvent.click(btn20)
+    expect(btn20.className).toContain('gold-gradient')
+  })
+
+  // 5. Segmented controls — time per question
+  it('updates time per question when clicked', () => {
+    renderCreateRoom()
+    const btn30 = screen.getByText('30s')
+    fireEvent.click(btn30)
+    expect(btn30.className).toContain('gold-gradient')
+  })
+
+  // 6. Max players slider
+  it('renders max players slider with range 2-20', () => {
+    renderCreateRoom()
+    const slider = document.querySelector('input[type="range"]') as HTMLInputElement
+    expect(slider).toBeTruthy()
+    expect(slider.min).toBe('2')
+    expect(slider.max).toBe('20')
+  })
+
+  // 7. Visibility toggle
+  it('toggles public/private visibility', () => {
+    renderCreateRoom()
+    expect(screen.getByText('Phòng riêng tư')).toBeInTheDocument()
+    // Toggle is a button with rounded-full class inside the visibility section
+    const toggleBtns = document.querySelectorAll('button[type="button"]')
+    const toggleBtn = Array.from(toggleBtns).find(b => b.className.includes('rounded-full') && b.className.includes('w-12'))
+    expect(toggleBtn).toBeTruthy()
+    fireEvent.click(toggleBtn!)
+    expect(screen.getByText('Phòng công khai')).toBeInTheDocument()
+  })
+
+  // 8. Submit success → navigate to lobby
+  it('submits form and navigates to lobby on success', async () => {
+    mockApiPost.mockResolvedValue({ data: { id: 'room-123', roomCode: 'ABC123' } })
+    renderCreateRoom()
+    const submitBtn = screen.getByText('Tạo phòng').closest('button')!
+    fireEvent.click(submitBtn)
+
+    await waitFor(() => {
+      expect(mockApiPost).toHaveBeenCalledWith('/api/rooms', expect.objectContaining({
+        mode: 'SPEED_RACE',
+        questionCount: 10,
+      }))
+      expect(mockNavigate).toHaveBeenCalledWith('/room/room-123/lobby', expect.anything())
+    })
+  })
+
+  // 9. Submit error → show error message
+  it('shows error message on API failure', async () => {
+    mockApiPost.mockRejectedValue({ response: { data: { message: 'Server error' } } })
+    renderCreateRoom()
+    fireEvent.click(screen.getByText('Tạo phòng').closest('button')!)
+
+    await waitFor(() => {
+      expect(screen.getByText('Server error')).toBeInTheDocument()
+    })
+  })
+
+  // 10. Loading state
+  it('shows loading spinner while submitting', async () => {
+    mockApiPost.mockImplementation(() => new Promise(() => {})) // never resolves
+    renderCreateRoom()
+    fireEvent.click(screen.getByText('Tạo phòng').closest('button')!)
+
+    await waitFor(() => {
+      expect(screen.getByText('Đang tạo...')).toBeInTheDocument()
+    })
+  })
+
+  // 11. Back button navigates to /multiplayer
+  it('renders back link to /multiplayer', () => {
+    renderCreateRoom()
+    const backLink = screen.getByText('Quay lại').closest('a')
+    expect(backLink).toHaveAttribute('href', '/multiplayer')
+  })
+
+  // 12. Auth redirect
+  it('redirects to login when not authenticated', () => {
+    authState = { isAuthenticated: false, isLoading: false, user: null }
+    renderCreateRoom()
+    expect(mockNavigate).toHaveBeenCalledWith('/login', expect.anything())
+  })
+
+  // 13. Difficulty segmented control
+  it('updates difficulty when clicked', () => {
+    renderCreateRoom()
+    const hardBtn = screen.getByText('Khó')
+    fireEvent.click(hardBtn)
+    expect(hardBtn.className).toContain('gold-gradient')
+  })
+
+  // 14. Room name input
+  it('renders room name input with placeholder', () => {
+    renderCreateRoom()
+    const input = screen.getByPlaceholderText(/Phòng của bạn/i)
+    expect(input).toBeInTheDocument()
+  })
+})

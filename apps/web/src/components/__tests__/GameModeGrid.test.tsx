@@ -1,10 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 
 /**
- * Tests for GameModeGrid — the 4 game mode cards on the Home page.
- * Covers: rendering, API status fetching, countdown timer, disabled states.
+ * Tests for GameModeGrid — 6 game mode cards on the Home page (Stitch design).
+ * Covers: rendering, API status fetching, energy display, countdown,
+ * disabled states, room count, navigation.
  */
 
 const mockNavigate = vi.fn()
@@ -31,104 +33,235 @@ function renderGrid() {
 describe('GameModeGrid', () => {
   beforeEach(() => {
     vi.clearAllMocks()
-    mockApiGet.mockRejectedValue(new Error('Not mocked')) // default: API fails gracefully
+    mockApiGet.mockRejectedValue(new Error('Not mocked'))
   })
 
-  it('renders all 4 game mode cards', () => {
-    renderGrid()
-
-    expect(screen.getByText('Luyện Tập')).toBeInTheDocument()
-    expect(screen.getByText('Xếp Hạng')).toBeInTheDocument()
-    expect(screen.getByText('Thử Thách Ngày')).toBeInTheDocument()
-    expect(screen.getByText('Nhiều Người')).toBeInTheDocument()
-  })
-
-  it('renders Practice card with "Không giới hạn" badge', () => {
-    renderGrid()
-
-    expect(screen.getByText('Không giới hạn')).toBeInTheDocument()
-    expect(screen.getByText('Bắt Đầu')).toBeInTheDocument()
-  })
-
-  it('renders Ranked card with "Phổ biến nhất" badge', () => {
-    renderGrid()
-
-    expect(screen.getByText(/Phổ biến nhất/i)).toBeInTheDocument()
-    expect(screen.getByText('Vào Thi Đấu')).toBeInTheDocument()
-  })
-
-  it('shows energy bar on Ranked card when API returns data', async () => {
-    mockApiGet.mockImplementation((url: string) => {
-      if (url.includes('ranked-status')) {
-        return Promise.resolve({ data: { energy: 60, maxEnergy: 100 } })
-      }
-      return Promise.reject(new Error('Not found'))
+  describe('Rendering', () => {
+    it('renders all 6 game mode cards', () => {
+      renderGrid()
+      expect(screen.getByText('Luyện Tập')).toBeInTheDocument()
+      expect(screen.getByText('Thi Đấu Xếp Hạng')).toBeInTheDocument()
+      expect(screen.getByText('Thử Thách Ngày')).toBeInTheDocument()
+      expect(screen.getByText('Nhóm Giáo Xứ')).toBeInTheDocument()
+      expect(screen.getByText('Phòng Chơi')).toBeInTheDocument()
+      expect(screen.getByText('Giải Đấu')).toBeInTheDocument()
     })
 
-    renderGrid()
+    it('renders CTA buttons for all cards', () => {
+      renderGrid()
+      expect(screen.getByText('Bắt Đầu')).toBeInTheDocument()
+      expect(screen.getByText('Vào Thi Đấu')).toBeInTheDocument()
+      expect(screen.getByText('Thử Thách Ngay')).toBeInTheDocument()
+      expect(screen.getByText('Vào Nhóm')).toBeInTheDocument()
+      expect(screen.getByText('Tạo Phòng')).toBeInTheDocument()
+      expect(screen.getByText('Vào Giải Đấu')).toBeInTheDocument()
+    })
 
-    await waitFor(() => {
-      expect(screen.getByText('60/100')).toBeInTheDocument()
+    it('renders Practice card with "Không giới hạn" status', () => {
+      renderGrid()
+      expect(screen.getByText('Không giới hạn')).toBeInTheDocument()
     })
   })
 
-  it('shows "Đã hoàn thành" when daily challenge is completed', async () => {
-    mockApiGet.mockImplementation((url: string) => {
-      if (url.includes('daily-challenge')) {
-        return Promise.resolve({ data: { alreadyCompleted: true } })
-      }
-      return Promise.reject(new Error('Not found'))
+  describe('Energy display (Ranked card)', () => {
+    it('shows energy from API with correct field names (livesRemaining/dailyLives)', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: { livesRemaining: 75, dailyLives: 100 } })
+        return Promise.reject(new Error('Not found'))
+      })
+
+      renderGrid()
+
+      await waitFor(() => {
+        expect(screen.getByText(/75\/100 Năng lượng/)).toBeInTheDocument()
+      })
     })
 
-    renderGrid()
+    it('shows 0/100 when energy is zero', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: { livesRemaining: 0, dailyLives: 100 } })
+        return Promise.reject(new Error('Not found'))
+      })
 
-    await waitFor(() => {
-      expect(screen.getByText(/Đã hoàn thành/i)).toBeInTheDocument()
+      renderGrid()
+
+      await waitFor(() => {
+        expect(screen.getByText(/0\/100 Năng lượng/)).toBeInTheDocument()
+      })
+    })
+
+    it('shows "—" when energy API errors', async () => {
+      mockApiGet.mockRejectedValue(new Error('Network error'))
+
+      renderGrid()
+
+      await waitFor(() => {
+        expect(screen.getByText(/— Năng lượng/)).toBeInTheDocument()
+      })
+    })
+
+    it('shows "Hết Năng Lượng" CTA when energy is 0', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: { livesRemaining: 0, dailyLives: 100 } })
+        return Promise.reject(new Error('Not found'))
+      })
+
+      renderGrid()
+
+      await waitFor(() => {
+        expect(screen.getByText('Hết Năng Lượng')).toBeInTheDocument()
+      })
+    })
+
+    it('does NOT show UNDEFINED in energy display', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: {} }) // missing fields
+        return Promise.reject(new Error('Not found'))
+      })
+
+      renderGrid()
+
+      await waitFor(() => {
+        // Should fallback to 0/100, never show undefined
+        expect(screen.getByText(/0\/100 Năng lượng/)).toBeInTheDocument()
+        expect(screen.queryByText(/undefined/i)).not.toBeInTheDocument()
+      })
     })
   })
 
-  it('shows "Chưa hoàn thành" when daily challenge is not done', async () => {
-    mockApiGet.mockImplementation((url: string) => {
-      if (url.includes('daily-challenge')) {
-        return Promise.resolve({ data: { alreadyCompleted: false } })
-      }
-      return Promise.reject(new Error('Not found'))
+  describe('Daily Challenge card', () => {
+    it('shows "Đã hoàn thành" when daily is completed', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: true } })
+        return Promise.reject(new Error('Not found'))
+      })
+
+      renderGrid()
+
+      await waitFor(() => {
+        expect(screen.getByText(/Đã hoàn thành/i)).toBeInTheDocument()
+      })
     })
 
-    renderGrid()
+    it('shows countdown when daily is not completed', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: false } })
+        return Promise.reject(new Error('Not found'))
+      })
 
-    await waitFor(() => {
-      expect(screen.getByText(/Chưa hoàn thành/i)).toBeInTheDocument()
+      renderGrid()
+
+      await waitFor(() => {
+        expect(screen.getByText(/Kết thúc sau/)).toBeInTheDocument()
+      })
     })
   })
 
-  it('shows room count on Multiplayer card', async () => {
-    mockApiGet.mockImplementation((url: string) => {
-      if (url.includes('rooms/public')) {
-        return Promise.resolve({ data: [1, 2, 3, 4, 5] }) // 5 rooms
-      }
-      return Promise.reject(new Error('Not found'))
+  describe('Multiplayer card (room count)', () => {
+    it('shows room count from API (rooms array)', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('rooms/public'))
+          return Promise.resolve({ data: { success: true, rooms: [{}, {}, {}] } })
+        return Promise.reject(new Error('Not found'))
+      })
+
+      renderGrid()
+
+      await waitFor(() => {
+        expect(screen.getByText(/3 phòng đang mở/i)).toBeInTheDocument()
+      })
     })
 
-    renderGrid()
+    it('shows 0 rooms when API returns empty rooms', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('rooms/public'))
+          return Promise.resolve({ data: { success: true, rooms: [] } })
+        return Promise.reject(new Error('Not found'))
+      })
 
-    await waitFor(() => {
-      expect(screen.getByText(/5 phòng đang mở/i)).toBeInTheDocument()
+      renderGrid()
+
+      await waitFor(() => {
+        expect(screen.getByText(/0 phòng đang mở/i)).toBeInTheDocument()
+      })
+    })
+
+    it('shows 0 rooms when API errors', async () => {
+      mockApiGet.mockRejectedValue(new Error('Network error'))
+
+      renderGrid()
+
+      await waitFor(() => {
+        expect(screen.getByText(/0 phòng đang mở/i)).toBeInTheDocument()
+      })
     })
   })
 
-  it('handles API errors gracefully without crashing', () => {
-    mockApiGet.mockRejectedValue(new Error('Network error'))
+  describe('Navigation', () => {
+    it('navigates to /practice when Practice CTA clicked', async () => {
+      renderGrid()
+      const user = userEvent.setup()
+      await user.click(screen.getByText('Bắt Đầu'))
+      expect(mockNavigate).toHaveBeenCalledWith('/practice')
+    })
 
-    expect(() => renderGrid()).not.toThrow()
+    it('navigates to /daily when Daily CTA clicked', async () => {
+      renderGrid()
+      const user = userEvent.setup()
+      await user.click(screen.getByText('Thử Thách Ngay'))
+      expect(mockNavigate).toHaveBeenCalledWith('/daily')
+    })
+
+    it('navigates to /multiplayer when Multiplayer CTA clicked', async () => {
+      renderGrid()
+      const user = userEvent.setup()
+      await user.click(screen.getByText('Tạo Phòng'))
+      expect(mockNavigate).toHaveBeenCalledWith('/multiplayer')
+    })
+
+    it('navigates to /groups when Church Group CTA clicked', async () => {
+      renderGrid()
+      const user = userEvent.setup()
+      await user.click(screen.getByText('Vào Nhóm'))
+      expect(mockNavigate).toHaveBeenCalledWith('/groups')
+    })
+
+    it('navigates to /tournaments when Tournament CTA clicked', async () => {
+      renderGrid()
+      const user = userEvent.setup()
+      await user.click(screen.getByText('Vào Giải Đấu'))
+      expect(mockNavigate).toHaveBeenCalledWith('/tournaments')
+    })
+
+    it('does NOT navigate when Ranked card clicked with 0 energy', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: { livesRemaining: 0, dailyLives: 100 } })
+        return Promise.reject(new Error('Not found'))
+      })
+
+      renderGrid()
+
+      await waitFor(() => {
+        expect(screen.getByText('Hết Năng Lượng')).toBeInTheDocument()
+      })
+
+      const user = userEvent.setup()
+      await user.click(screen.getByText('Hết Năng Lượng'))
+      expect(mockNavigate).not.toHaveBeenCalledWith('/ranked')
+    })
   })
 
-  it('renders Daily Challenge card with timer badge', () => {
-    renderGrid()
-
-    const dailyCard = screen.getByText('Thử Thách Ngày')
-    expect(dailyCard).toBeInTheDocument()
-    // The card should exist and have a button
-    expect(screen.getByText('Thử Thách Ngay')).toBeInTheDocument()
+  describe('Error handling', () => {
+    it('handles all API errors gracefully without crashing', () => {
+      mockApiGet.mockRejectedValue(new Error('Network error'))
+      expect(() => renderGrid()).not.toThrow()
+    })
   })
 })

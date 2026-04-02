@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Monolith Protocol | BibleQuiz Admin Feedback</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed": "#191b28",
+                        "inverse-on-surface": "#2e303a",
+                        "primary-fixed": "#ffdead",
+                        "on-tertiary": "#00315d",
+                        "error-container": "#93000a",
+                        "surface-variant": "#32343e",
+                        "primary-fixed-dim": "#fdbb44",
+                        "surface-bright": "#373943",
+                        "secondary-fixed-dim": "#c5c5d7",
+                        "on-surface-variant": "#d5c4af",
+                        "on-surface": "#e1e1ef",
+                        "surface-container": "#1d1f29",
+                        "tertiary": "#b3d1ff",
+                        "tertiary-fixed-dim": "#a4c9ff",
+                        "primary-container": "#e8a832",
+                        "surface-dim": "#11131c",
+                        "on-primary-fixed-variant": "#604100",
+                        "on-background": "#e1e1ef",
+                        "surface": "#11131c",
+                        "on-tertiary-fixed-variant": "#004883",
+                        "on-primary-container": "#5f4000",
+                        "secondary": "#c5c5d7",
+                        "surface-tint": "#fdbb44",
+                        "inverse-surface": "#e1e1ef",
+                        "inverse-primary": "#7f5700",
+                        "on-primary": "#432c00",
+                        "on-tertiary-fixed": "#001c39",
+                        "outline-variant": "#504535",
+                        "on-secondary-container": "#b3b4c6",
+                        "secondary-container": "#444655",
+                        "on-secondary": "#2e303d",
+                        "outline": "#9d8f7b",
+                        "secondary-fixed": "#e1e1f4",
+                        "surface-container-highest": "#32343e",
+                        "tertiary-container": "#80b6ff",
+                        "tertiary-fixed": "#d4e3ff",
+                        "on-secondary-fixed-variant": "#444655",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0c0e17",
+                        "surface-container-low": "#191b25",
+                        "on-tertiary-container": "#004681",
+                        "on-primary-fixed": "#281900",
+                        "surface-container-high": "#282933",
+                        "on-error": "#690005",
+                        "background": "#11131c",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#ffc667"
+                    },
+                    fontFamily: {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"],
+                        "mono": ["JetBrains Mono"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; background-color: #11131c; color: #e1e1ef; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="overflow-hidden">
+<!-- SideNavBar (Authority: JSON + Conflict Protocol) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#0c0e17] flex flex-col py-8 px-4 border-none font-['Be_Vietnam_Pro'] text-sm tracking-tight">
+<div class="mb-10 px-2 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary-container flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-on-primary-container text-xl" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tighter text-[#e8a832] uppercase">Monolith</h1>
+<p class="text-[10px] text-on-surface-variant opacity-60 font-mono tracking-widest uppercase">Protocol Admin</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="text-[10px] uppercase font-bold text-outline tracking-[0.2em] mb-4 px-2">Main Core</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span>Question Bank</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>User Management</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#e8a832] border-r-2 border-[#e8a832] bg-[#1d1f29] font-semibold" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span>Quiz Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span>Sacred Texts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>System Settings</span>
+</a>
+</nav>
+<div class="mt-auto space-y-1">
+<button class="w-full mb-6 bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed py-2.5 px-4 rounded-lg font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 active:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+                Create New Entry
+            </button>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Log Out</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar (Authority: JSON + Conflict Protocol) -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-[#11131c] flex justify-between items-center px-8 z-10">
+<div class="flex items-center gap-8">
+<h2 class="text-lg font-black text-[#e8a832] tracking-widest uppercase">BibleQuiz Admin</h2>
+<nav class="flex gap-6">
+<a class="font-['Be_Vietnam_Pro'] text-xs font-medium text-[#d5c4af] hover:text-[#ffc667] transition-all" href="#">Global View</a>
+<a class="font-['Be_Vietnam_Pro'] text-xs font-medium text-[#d5c4af] hover:text-[#ffc667] transition-all" href="#">Audit Logs</a>
+<a class="font-['Be_Vietnam_Pro'] text-xs font-medium text-[#e8a832] font-bold border-b border-[#e8a832]" href="#">Queue</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4 items-center">
+<button class="text-on-surface-variant hover:text-primary transition-all focus:ring-1 focus:ring-[#e8a832]">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-all focus:ring-1 focus:ring-[#e8a832]">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant opacity-20"></div>
+<div class="flex items-center gap-3">
+<span class="text-xs font-medium text-on-surface">Admin_Root</span>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-primary/20" data-alt="close-up portrait of a professional male administrator in his 40s with a clean-cut look and neutral expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeQBSExmgkG0hN86Rkd5WDL7ZJ8PR9JkBR2nQKXNpwrmJfUStUUi5zUpZmhJaMfaRhwM_3qv4X4zsOmF1LC9fqzSPFKDUdzUDy-ElbN9tOHukqb4UAcDORVR6Itd7X80btjdQHImJjhWjdNiYOm4xM8spwr8ZV8nkH07-84N1mmb_JJsx-FXH8DQVhuGNd3lsxlEH1AnkgvgkMvzpVNIfHN6aZ76qR-x-b84CFAOWNiW3p38imhZU1NtJZpP08Nvs4yCmlpI1BNFI"/>
+</div>
+<button class="bg-surface-container-highest text-primary-fixed-dim px-4 py-1.5 rounded text-[10px] font-bold uppercase tracking-widest border border-outline-variant/20 hover:border-primary transition-all">
+                Deploy Updates
+            </button>
+</div>
+</header>
+<!-- Main Canvas (Sacred Modernist Layout) -->
+<main class="ml-64 mt-16 p-10 h-[calc(100vh-4rem)] overflow-y-auto no-scrollbar">
+<!-- Header Section -->
+<section class="mb-10">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-4xl font-black text-on-surface tracking-tighter mb-1">Feedback Console</h2>
+<p class="text-on-surface-variant font-medium opacity-60">Protocol-level user report management &amp; error tracking</p>
+</div>
+<div class="font-mono text-xs text-primary bg-primary/5 px-3 py-1 rounded border border-primary/10">
+                    LATENCY: 14ms | SYNC: ACTIVE
+                </div>
+</div>
+</section>
+<!-- Stats Grid (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+<div class="bg-surface-container p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<p class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-2">Open Issues</p>
+<h3 class="text-4xl font-mono font-medium text-error">12</h3>
+<span class="material-symbols-outlined absolute right-4 bottom-4 text-error/10 text-6xl group-hover:scale-110 transition-transform">priority_high</span>
+</div>
+<div class="bg-surface-container p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<p class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-2">In Review</p>
+<h3 class="text-4xl font-mono font-medium text-primary-container">05</h3>
+<span class="material-symbols-outlined absolute right-4 bottom-4 text-primary-container/10 text-6xl group-hover:scale-110 transition-transform">pending</span>
+</div>
+<div class="bg-surface-container p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-tertiary"></div>
+<p class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-2">Resolved</p>
+<h3 class="text-4xl font-mono font-medium text-tertiary">142</h3>
+<span class="material-symbols-outlined absolute right-4 bottom-4 text-tertiary/10 text-6xl group-hover:scale-110 transition-transform">check_circle</span>
+</div>
+<div class="bg-surface-container p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<p class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-2">Dismissed</p>
+<h3 class="text-4xl font-mono font-medium text-secondary opacity-60">28</h3>
+<span class="material-symbols-outlined absolute right-4 bottom-4 text-secondary/5 text-6xl group-hover:scale-110 transition-transform">block</span>
+</div>
+</section>
+<!-- Filters Bar -->
+<section class="bg-surface-container-low p-4 rounded-lg mb-8 flex flex-col gap-4">
+<div class="flex items-center gap-6">
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline">Status Filter</span>
+<div class="flex gap-2">
+<button class="px-4 py-1 text-xs font-bold rounded-full bg-primary text-on-primary">All</button>
+<button class="px-4 py-1 text-xs font-medium rounded-full bg-surface-container-highest text-on-surface-variant hover:text-on-surface">Open</button>
+<button class="px-4 py-1 text-xs font-medium rounded-full bg-surface-container-highest text-on-surface-variant hover:text-on-surface">In Review</button>
+<button class="px-4 py-1 text-xs font-medium rounded-full bg-surface-container-highest text-on-surface-variant hover:text-on-surface">Resolved</button>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant opacity-10"></div>
+<div class="flex items-center gap-6">
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline">Incident Type</span>
+<div class="flex gap-2">
+<button class="px-4 py-1 text-xs font-medium border border-outline-variant rounded-lg text-on-surface-variant hover:border-primary transition-colors">Question Error</button>
+<button class="px-4 py-1 text-xs font-medium border border-outline-variant rounded-lg text-on-surface-variant hover:border-primary transition-colors">Feature Request</button>
+<button class="px-4 py-1 text-xs font-medium border border-outline-variant rounded-lg text-on-surface-variant hover:border-primary transition-colors">Technical Issue</button>
+<button class="px-4 py-1 text-xs font-medium border border-outline-variant rounded-lg text-on-surface-variant hover:border-primary transition-colors">Other</button>
+</div>
+</div>
+</section>
+<!-- Feedback Table (Main Content) -->
+<section class="bg-surface-container rounded-lg overflow-hidden border border-outline-variant/10">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-high">
+<tr>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-black">User Protocol</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-black">Category</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-black">Data Preview</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-black">Reference ID</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-black">Lifecycle</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-black text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="User Avatar" class="w-8 h-8 rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="headshot of a smiling young man with dark hair, professional photography style with dark neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCousL_2zai8wQ4sfRdyKSccNv5cnv4x2g7GcQijaxYSo83WWvmAcrVAs-FjFuzLro5Jd81OGNIeM1mzZkxYCeCrlrWjHZHYPeVTW8fzHvIDFyUk2j2Z1tvzHtT9smBQGRRxextrJTu7nMPb6cYjbQkI6TL6q-y6JXVx_hNRKb6ZJhaD2s_Vpo0Y9WfuzR_6Kl2zP6vlJCGO3Yw1QG0rrBjugJEqhZs-XoSBJQ0EPyMKmPmWv3GykVvTsonxIrafdbOu1YwlbrTv0k"/>
+<div>
+<p class="text-sm font-semibold text-on-surface">Marcus Aurelius</p>
+<p class="text-[10px] font-mono text-on-surface-variant">USR_8829</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-error/10 text-error border border-error/20">Question Error</span>
+</td>
+<td class="px-6 py-4 max-w-xs">
+<p class="text-xs text-on-surface-variant line-clamp-1 italic">"The reference for John 3:16 in the Genesis quiz seems incorrect..."</p>
+</td>
+<td class="px-6 py-4 font-mono text-xs text-primary-container">Q_GEN_102</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></div>
+<span class="text-xs font-medium text-error uppercase tracking-tighter">Open</span>
+<span class="text-[10px] text-on-surface-variant opacity-40 ml-2">2h ago</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="px-4 py-1.5 bg-surface-container-highest text-primary-fixed-dim text-[10px] font-black uppercase tracking-widest border border-outline-variant/30 hover:border-primary-container transition-all">Xem</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container-low hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="User Avatar" class="w-8 h-8 rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="portrait of a young professional woman with light brown hair, studio lighting, soft expression, navy blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6orAE6RRc70wzulWppSXMmQSO_ahdGb8CMu_E2kiNU8kp-HWXq-mDqnWD77cRhIjNrWiyyAMw2dChVeGZNdLk_rKAWO4HJ_4DJArQMvXw2ICo8mHy8ehSfnIiTuieEvIjLPtw_7iqK8bBL5udNqAx6rJ7QFH9m7DPi_2-5CNc13Z16cdNkWDCKQgTR1113JEp4XfsvACQxbkf9fz1lOXOwPkCB2Zx48zWGg87wwb3eAwDk33oTn4Ez8utYPJINedxgigqHIVbPQU"/>
+<div>
+<p class="text-sm font-semibold text-on-surface">Sarah Cohen</p>
+<p class="text-[10px] font-mono text-on-surface-variant">USR_2190</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-tertiary/10 text-tertiary border border-tertiary/20">Feature Request</span>
+</td>
+<td class="px-6 py-4 max-w-xs">
+<p class="text-xs text-on-surface-variant line-clamp-1 italic">"Would love to see a dark mode toggle specifically for the reading section..."</p>
+</td>
+<td class="px-6 py-4 font-mono text-xs text-outline italic">N/A</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-primary-container"></div>
+<span class="text-xs font-medium text-primary-container uppercase tracking-tighter">In Review</span>
+<span class="text-[10px] text-on-surface-variant opacity-40 ml-2">5h ago</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="px-4 py-1.5 bg-surface-container-highest text-primary-fixed-dim text-[10px] font-black uppercase tracking-widest border border-outline-variant/30 hover:border-primary-container transition-all">Xem</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="User Avatar" class="w-8 h-8 rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="clean minimal portrait of a man wearing glasses, warm natural light, soft bokeh city background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWvDayzQs17SoAJN2zFrQ_pbQKZoUDmjreZelPCjwhbiUk0xJymbB1TfAG2fTRn981eIvQMEqPp4f7jYEib2-3yrq3B0h9leU2GXqbReF5rJad3Vmrd7MO11MqV6tc5tXXSEAT3il3Rmo0QX6OmIckfX_Ik9H0EFgGwsyzfc3afJy0KsWe1ruLKYCyeZf6SRWNPUAJemYR--z74wNeI0kPm2IyeW5EE2VsHODDzDKGt9dNZMqFO0He9uFv80INAx-Iv-54qq3PUgc"/>
+<div>
+<p class="text-sm font-semibold text-on-surface">David Levi</p>
+<p class="text-[10px] font-mono text-on-surface-variant">USR_4451</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-error/10 text-error border border-error/20">Technical Issue</span>
+</td>
+<td class="px-6 py-4 max-w-xs">
+<p class="text-xs text-on-surface-variant line-clamp-1 italic">"The app crashes when I try to upload my profile picture in the settings..."</p>
+</td>
+<td class="px-6 py-4 font-mono text-xs text-outline italic">SYS_LOG_9</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></div>
+<span class="text-xs font-medium text-error uppercase tracking-tighter">Open</span>
+<span class="text-[10px] text-on-surface-variant opacity-40 ml-2">12h ago</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="px-4 py-1.5 bg-surface-container-highest text-primary-fixed-dim text-[10px] font-black uppercase tracking-widest border border-outline-variant/30 hover:border-primary-container transition-all">Xem</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-surface-container-low hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="User Avatar" class="w-8 h-8 rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="elegant portrait of a mature woman with silver hair, minimalist studio aesthetic, gentle lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFwlLCHOxKY9KJhKXRdRaCk45HVW-PXoIm8blINIYqGC20xC02EHdiM1lklqwyH4I_Fp3M73LD1SUkoswA2nXvskF-R0Ak6zWQJXoL012-QsFeI968VALFNcoglcBlO00uRUV6pM85Ie_AIaGwngFY8e3NaVC7JN65ROR-AGEv3Nl2b_tQCY85u5vXZrwHNmF0_uRJRTl2ndcPIGpZUcC0uBXMM0iCfsoSuK07keWnnyAPJqdWOZdBsVUoN95nsgCAHkY0IEZc1D8"/>
+<div>
+<p class="text-sm font-semibold text-on-surface">Ruth Miller</p>
+<p class="text-[10px] font-mono text-on-surface-variant">USR_1002</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-secondary/10 text-secondary border border-secondary/20">Other</span>
+</td>
+<td class="px-6 py-4 max-w-xs">
+<p class="text-xs text-on-surface-variant line-clamp-1 italic">"Thank you for this amazing tool! It has helped our study group immensely..."</p>
+</td>
+<td class="px-6 py-4 font-mono text-xs text-outline italic">G_COMM_1</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary"></div>
+<span class="text-xs font-medium text-tertiary uppercase tracking-tighter">Resolved</span>
+<span class="text-[10px] text-on-surface-variant opacity-40 ml-2">1d ago</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="px-4 py-1.5 bg-surface-container-highest text-primary-fixed-dim text-[10px] font-black uppercase tracking-widest border border-outline-variant/30 hover:border-primary-container transition-all">Xem</button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="p-4 bg-surface-container-high border-t border-outline-variant/10 flex justify-between items-center">
+<p class="text-[10px] font-mono text-on-surface-variant">PAGE 01 OF 24 | SHOWING 10 ENTRIES</p>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center bg-surface-container text-on-surface-variant rounded border border-outline-variant/10 hover:border-primary transition-all">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center bg-primary text-on-primary rounded font-mono text-xs font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center bg-surface-container text-on-surface-variant rounded border border-outline-variant/10 hover:border-primary transition-all font-mono text-xs">2</button>
+<button class="w-8 h-8 flex items-center justify-center bg-surface-container text-on-surface-variant rounded border border-outline-variant/10 hover:border-primary transition-all font-mono text-xs">3</button>
+<button class="w-8 h-8 flex items-center justify-center bg-surface-container text-on-surface-variant rounded border border-outline-variant/10 hover:border-primary transition-all">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB Suppression Rule Met: Not a primary dashboard action screen, FAB is suppressed for data density. -->
+</body></html>

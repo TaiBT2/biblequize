@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BibleQuiz Tournament Match</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary": "#f8bd45",
+              "surface-container": "#1d1f2a",
+              "secondary-fixed-dim": "#f8bd45",
+              "on-tertiary": "#3e2e00",
+              "on-secondary-container": "#392600",
+              "surface-variant": "#323440",
+              "on-surface": "#e1e1f1",
+              "on-primary": "#2a2f4a",
+              "surface-container-highest": "#323440",
+              "tertiary-container": "#2b1f00",
+              "primary-container": "#1a1f3a",
+              "surface-dim": "#11131e",
+              "surface": "#11131e",
+              "tertiary": "#e7c268",
+              "on-background": "#e1e1f1",
+              "primary-fixed": "#dee1ff",
+              "on-primary-container": "#8286a7",
+              "primary-fixed-dim": "#c0c4e8",
+              "outline-variant": "#46464d",
+              "surface-container-lowest": "#0b0e18",
+              "error-container": "#93000a",
+              "on-tertiary-fixed-variant": "#5a4400",
+              "inverse-surface": "#e1e1f1",
+              "background": "#11131e",
+              "on-secondary-fixed-variant": "#5e4200",
+              "inverse-on-surface": "#2e303c",
+              "on-error": "#690005",
+              "secondary-container": "#bc8709",
+              "surface-tint": "#c0c4e8",
+              "secondary-fixed": "#ffdea7",
+              "inverse-primary": "#585d7b",
+              "on-primary-fixed-variant": "#404562",
+              "surface-container-high": "#272935",
+              "tertiary-fixed-dim": "#e7c268",
+              "on-surface-variant": "#c7c5ce",
+              "tertiary-fixed": "#ffdf96",
+              "surface-bright": "#373845",
+              "on-tertiary-fixed": "#251a00",
+              "on-primary-fixed": "#151a34",
+              "on-error-container": "#ffdad6",
+              "surface-container-low": "#191b26",
+              "on-secondary-fixed": "#271900",
+              "on-secondary": "#412d00",
+              "outline": "#919098",
+              "error": "#ffb4ab",
+              "on-tertiary-container": "#a48431",
+              "primary": "#c0c4e8"
+            },
+            fontFamily: {
+              "headline": ["Be Vietnam Pro"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(50, 52, 64, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .sacred-glow {
+            box-shadow: 0 0 20px rgba(248, 189, 69, 0.15);
+        }
+        .timer-svg {
+            transform: rotate(-90deg);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface overflow-hidden">
+<!-- Match Canvas -->
+<main class="relative h-screen w-full flex flex-col items-center">
+<!-- Top Bar: Player vs Player -->
+<header class="w-full max-w-5xl px-6 py-8 flex items-center justify-between z-10">
+<!-- Player 1 (Local) -->
+<div class="flex items-center gap-4 w-1/3">
+<div class="relative">
+<div class="w-16 h-16 rounded-full border-4 border-secondary p-1 overflow-hidden">
+<img class="w-full h-full object-cover rounded-full" data-alt="Close-up portrait of a young man with a friendly expression in warm cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqUS-8wCM5oOI3GTUhkVojLlbB4f7EKJj2Ut_TaJ2VPYNEjD6Qi_kxYyfG08r30pCGtFZt5mrhwRLmSC-IlMYg6pbW41Je5vgv7UnzCV74YejmtC5SjNontc68Z5WYjhZRs054QEMQs8WEWGGB81QaVuYx2LXWgaq0-T5ZJrBGKVpDWfUABxozT6iHRNb_EtcpNibbm-N2tl2JogftT00dd6N9po5aCSlUA_GalieTClbC_rzYqwIS1ZTaDZLaAgnWf_XEjS6yErc"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-secondary text-on-secondary text-[10px] font-bold px-2 py-0.5 rounded-full shadow-lg">
+                        GOL
+                    </div>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface font-bold text-lg tracking-tight">Vinh Nguyễn</span>
+<div class="flex gap-1 mt-1">
+<span class="material-symbols-outlined text-error text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="material-symbols-outlined text-error text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="material-symbols-outlined text-error text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="text-secondary font-extrabold text-2xl mt-1">1,420</div>
+</div>
+</div>
+<!-- VS Centerpiece -->
+<div class="flex flex-col items-center">
+<div class="text-on-surface-variant text-xs font-label uppercase tracking-[0.2em] mb-1">Vòng Tứ kết</div>
+<div class="relative">
+<span class="text-5xl font-black text-secondary/20 italic tracking-tighter">VS</span>
+<span class="absolute inset-0 flex items-center justify-center text-2xl font-black italic tracking-tighter text-secondary">VS</span>
+</div>
+</div>
+<!-- Player 2 (Opponent) -->
+<div class="flex items-center gap-4 w-1/3 flex-row-reverse text-right">
+<div class="relative">
+<div class="w-16 h-16 rounded-full border-4 border-outline-variant p-1 overflow-hidden">
+<img class="w-full h-full object-cover rounded-full" data-alt="Portrait of a focused woman with professional lighting and soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeIJrYYbhATr687OpYUYbGV31PjYLVM2n2xBUGxTft7N8XehfIb9eV5gJwtFPLl2I4BnfUHETqxO1a3GcJkT6Y3pOei39o1Vob5wMGmvhw5UYT7iyXLS_CCQAFM7aTM8s4B7ocFqGLVX77msK6-Aab7jNagL45tZXT1uiFMsZsXfzRrL4nTXYgHuxbeDYnyFZC1bkD3nd2G5HiyZRCj8drFK04b5vyg2dTcCu4z2ra-Q-r34eC9_gGVnTqhCLXxLHyXXfLIoYcEnA"/>
+</div>
+<div class="absolute -bottom-1 -left-1 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full">
+                        DIA
+                    </div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-on-surface font-bold text-lg tracking-tight">Thảo My</span>
+<div class="flex gap-1 mt-1">
+<span class="material-symbols-outlined text-error text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="material-symbols-outlined text-error text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="material-symbols-outlined text-outline-variant text-xl">favorite</span>
+</div>
+<div class="text-on-surface font-extrabold text-2xl mt-1">1,180</div>
+</div>
+</div>
+</header>
+<!-- Question Area -->
+<div class="flex-1 w-full max-w-3xl flex flex-col items-center px-6 pt-4 pb-12 relative">
+<!-- Timer Circle -->
+<div class="relative w-24 h-24 mb-8 flex items-center justify-center">
+<svg class="timer-svg w-full h-full" viewbox="0 0 100 100">
+<circle class="text-surface-container-highest" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-secondary" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-dasharray="282.7" stroke-dashoffset="100" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-black text-on-surface">11</span>
+</div>
+</div>
+<!-- Question Card -->
+<div class="text-center mb-10 w-full">
+<span class="text-secondary text-sm font-label uppercase tracking-widest font-bold block mb-4">Câu 3/10</span>
+<h1 class="text-3xl md:text-4xl font-bold leading-tight px-4">Đức Chúa Giê-su đã dùng bao nhiêu cái bánh và con cá để cho 5.000 người ăn?</h1>
+</div>
+<!-- Combo Indicator -->
+<div class="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="bg-gradient-to-tr from-secondary to-tertiary p-1 rounded-full sacred-glow">
+<div class="bg-surface p-3 rounded-full flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="text-secondary font-black text-xl">x3</span>
+</div>
+</div>
+<div class="text-[10px] font-bold text-secondary uppercase tracking-tighter mt-2">COMBO</div>
+</div>
+<!-- Feedback Notifications (Floating) -->
+<div class="absolute left-1/2 -translate-x-1/2 top-48 z-20 pointer-events-none">
+<!-- Correct Feedback -->
+<div class="flex items-center gap-2 bg-green-500/10 border border-green-500/20 px-4 py-2 rounded-full backdrop-blur-md mb-4 opacity-0">
+<span class="text-green-400 font-bold">+12 điểm</span>
+</div>
+<!-- Damage Feedback -->
+<div class="flex items-center gap-2 bg-error/10 border border-error/20 px-4 py-2 rounded-full backdrop-blur-md opacity-0">
+<span class="text-error font-bold">-1 ❤️</span>
+<span class="material-symbols-outlined text-error text-xl">heart_broken</span>
+</div>
+</div>
+<!-- Answer Options -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-auto">
+<button class="glass-card group text-left p-6 rounded-2xl flex items-center gap-4 transition-all duration-200 border border-transparent hover:border-secondary/40 active:scale-95">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container font-bold text-on-surface-variant group-hover:bg-secondary group-hover:text-on-secondary transition-colors">A</div>
+<span class="text-lg font-medium text-on-surface">5 cái bánh và 2 con cá</span>
+</button>
+<button class="glass-card group text-left p-6 rounded-2xl flex items-center gap-4 transition-all duration-200 border border-transparent hover:border-secondary/40 active:scale-95">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container font-bold text-on-surface-variant group-hover:bg-secondary group-hover:text-on-secondary transition-colors">B</div>
+<span class="text-lg font-medium text-on-surface">7 cái bánh và 2 con cá</span>
+</button>
+<button class="glass-card group text-left p-6 rounded-2xl flex items-center gap-4 transition-all duration-200 border-secondary bg-secondary/10 shadow-[0_0_20px_rgba(248,189,69,0.1)] active:scale-95">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-secondary font-bold text-on-secondary">C</div>
+<span class="text-lg font-medium text-on-surface">12 cái bánh và 5 con cá</span>
+</button>
+<button class="glass-card group text-left p-6 rounded-2xl flex items-center gap-4 transition-all duration-200 border border-transparent hover:border-secondary/40 active:scale-95">
+<div class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container font-bold text-on-surface-variant group-hover:bg-secondary group-hover:text-on-secondary transition-colors">D</div>
+<span class="text-lg font-medium text-on-surface">3 cái bánh và 1 con cá</span>
+</button>
+</div>
+</div>
+<!-- Section Spacing -->
+<div class="h-12 w-full"></div>
+</main>
+<!-- Overlay: Sudden Death (Hidden State Example) -->
+<div class="hidden fixed inset-0 z-50 pointer-events-none flex items-center justify-center">
+<div class="absolute inset-0 border-[12px] border-secondary/20 blur-sm"></div>
+<div class="absolute inset-0 border-[4px] border-secondary animate-pulse"></div>
+<div class="relative flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary text-8xl mb-2" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<h2 class="text-6xl font-black italic text-secondary tracking-widest uppercase">Sudden Death</h2>
+<p class="text-on-surface font-medium mt-2 bg-surface px-6 py-2 rounded-full">Sai một lần là thua cuộc!</p>
+</div>
+</div>
+<!-- Overlay: Match End - Winner (Hidden State Example) -->
+<div class="hidden fixed inset-0 z-[60] bg-surface/90 backdrop-blur-2xl flex flex-col items-center justify-center p-6 text-center">
+<div class="absolute top-0 w-full overflow-hidden pointer-events-none opacity-40">
+<!-- Simulated Confetti/Glow -->
+<div class="h-96 bg-gradient-to-b from-secondary/40 to-transparent blur-3xl"></div>
+</div>
+<div class="relative mb-8">
+<div class="w-32 h-32 bg-secondary/10 rounded-full flex items-center justify-center sacred-glow">
+<span class="material-symbols-outlined text-secondary text-6xl" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+</div>
+<div class="absolute -top-4 -right-4 bg-tertiary text-on-tertiary font-black px-4 py-1 rounded-full shadow-lg">WIN!</div>
+</div>
+<h2 class="text-5xl font-black text-on-surface tracking-tighter mb-2">CHIẾN THẮNG!</h2>
+<p class="text-on-surface-variant text-lg mb-8">Thứ hạng của bạn đã được cập nhật</p>
+<div class="grid grid-cols-3 gap-4 w-full max-w-md mb-12">
+<div class="surface-container-low p-4 rounded-2xl">
+<div class="text-secondary font-black text-xl">9/10</div>
+<div class="text-[10px] text-on-surface-variant font-bold uppercase mt-1">Chính xác</div>
+</div>
+<div class="surface-container-low p-4 rounded-2xl">
+<div class="text-secondary font-black text-xl">1.2s</div>
+<div class="text-[10px] text-on-surface-variant font-bold uppercase mt-1">Tb.Trả lời</div>
+</div>
+<div class="surface-container-low p-4 rounded-2xl">
+<div class="text-secondary font-black text-xl">x5</div>
+<div class="text-[10px] text-on-surface-variant font-bold uppercase mt-1">Max Combo</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 w-full max-w-sm">
+<button class="bg-gradient-to-r from-secondary to-tertiary text-on-secondary font-bold py-4 px-8 rounded-xl shadow-lg active:scale-95 transition-transform">
+                Xem bracket giải đấu
+            </button>
+<button class="text-on-surface font-bold py-4 px-8 rounded-xl border border-outline-variant/15 hover:bg-surface-container transition-colors">
+<span class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">share</span>
+                    Chia sẻ kết quả
+                </span>
+</button>
+</div>
+</div>
+</body></html>

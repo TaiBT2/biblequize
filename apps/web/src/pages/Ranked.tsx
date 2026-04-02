@@ -6,6 +6,7 @@ import { useRankedDataSync } from '../hooks/useRankedDataSync'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 
+/* ── Types ── */
 interface RankedStatus {
   date: string
   livesRemaining: number
@@ -27,19 +28,18 @@ interface RankedStatus {
     isCompleted: boolean
     progressPercentage: number
   }
-  questionsInCurrentBook?: number
-  correctAnswersInCurrentBook?: number
   askedQuestionIdsToday?: string[]
   askedQuestionCountToday?: number
 }
 
-// Tier definitions
+/* ── Tier System (SPEC-v2 section 2.1) ── */
 const TIERS = [
-  { name: 'Sắt', icon: 'shield', color: '#919098', minPoints: 0 },
-  { name: 'Đồng', icon: 'shield', color: '#cd7f32', minPoints: 500 },
-  { name: 'Bạc', icon: 'shield', color: '#c0c0c0', minPoints: 1500 },
-  { name: 'Vàng', icon: 'military_tech', color: '#e8a832', minPoints: 3000 },
-  { name: 'Kim Cương', icon: 'diamond', color: '#b9f2ff', minPoints: 6000 },
+  { name: 'Tân Tín Hữu', icon: 'spa', color: '#919098', minPoints: 0 },
+  { name: 'Người Tìm Kiếm', icon: 'eco', color: '#4ade80', minPoints: 1_000 },
+  { name: 'Môn Đồ', icon: 'scrollable_header', color: '#4a9eff', minPoints: 5_000 },
+  { name: 'Hiền Triết', icon: 'lightbulb', color: '#9b59b6', minPoints: 15_000 },
+  { name: 'Tiên Tri', icon: 'local_fire_department', color: '#f8bd45', minPoints: 40_000 },
+  { name: 'Sứ Đồ', icon: 'workspace_premium', color: '#ff6b6b', minPoints: 100_000 },
 ]
 
 function getCurrentTier(points: number) {
@@ -50,13 +50,23 @@ function getCurrentTier(points: number) {
   return tier
 }
 
-function getNextTier(points: number) {
-  for (const t of TIERS) {
-    if (points < t.minPoints) return t
-  }
-  return null
+/* ── Skeleton ── */
+function RankedSkeleton() {
+  return (
+    <div className="max-w-5xl mx-auto space-y-6 animate-pulse">
+      <div className="h-12 w-64 rounded-xl bg-surface-container" />
+      <div className="h-40 rounded-xl bg-surface-container" />
+      <div className="grid grid-cols-12 gap-6">
+        <div className="col-span-7 h-44 rounded-xl bg-surface-container" />
+        <div className="col-span-5 h-44 rounded-xl bg-surface-container" />
+      </div>
+      <div className="h-48 rounded-xl bg-surface-container" />
+      <div className="h-16 rounded-xl bg-surface-container" />
+    </div>
+  )
 }
 
+/* ── Main ── */
 export default function Ranked() {
   const [rankedStatus, setRankedStatus] = useState<RankedStatus | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -65,59 +75,25 @@ export default function Ranked() {
   const { isInitialized } = useRankedDataSync()
 
   const [userRank, setUserRank] = useState<any>(null)
-  const [timeLeft, setTimeLeft] = useState<string>('')
-  const [nextRankGap, setNextRankGap] = useState<number | null>(null)
+  const [timeLeft, setTimeLeft] = useState('')
 
   const fetchStatus = async () => {
     setIsLoading(true)
     try {
       const res = await api.get('/api/me/ranked-status')
       const data = res.data
-
       if (data?.askedQuestionIdsToday?.length > 0) {
         const today = new Date().toISOString().slice(0, 10)
         localStorage.setItem('askedQuestionIds', JSON.stringify(data.askedQuestionIdsToday))
         localStorage.setItem('lastAskedDate', today)
       }
-
       setRankedStatus(data ?? null)
-    } catch (e) {
-      console.error('Failed to load ranked status', e)
+    } catch {
       setRankedStatus(null)
     } finally {
       setIsLoading(false)
     }
   }
-
-  useEffect(() => {
-    if (isInitialized) {
-      fetchStatus()
-      fetchMyRank()
-    }
-  }, [isInitialized])
-
-  // Countdown logic
-  useEffect(() => {
-    if (!rankedStatus?.resetAt) return
-
-    const timer = setInterval(() => {
-      const resetTime = new Date(rankedStatus.resetAt).getTime()
-      const now = new Date().getTime()
-      const diff = resetTime - now
-
-      if (diff <= 0) {
-        setTimeLeft('00:00')
-        clearInterval(timer)
-      } else {
-        const h = Math.floor(diff / (1000 * 60 * 60))
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
-        const s = Math.floor((diff % (1000 * 60)) / 1000)
-        setTimeLeft(`${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`)
-      }
-    }, 1000)
-
-    return () => clearInterval(timer)
-  }, [rankedStatus?.resetAt])
 
   const fetchMyRank = async () => {
     if (!user) return
@@ -125,43 +101,38 @@ export default function Ranked() {
       const today = new Date().toISOString().slice(0, 10)
       const res = await api.get('/api/leaderboard/daily/my-rank', { params: { date: today } })
       setUserRank(res.data)
-
-      const topRes = await api.get('/api/leaderboard/daily', { params: { date: today, size: 50 } })
-      const leaders = Array.isArray(topRes.data) ? topRes.data : []
-      const myIndex = leaders.findIndex((r: any) => r.name === user.name)
-      if (myIndex > 0) {
-        setNextRankGap(leaders[myIndex - 1].points - (res.data?.points || 0))
-      }
-    } catch (err) {
-      console.log('Rank info not available')
-    }
+    } catch { /* rank info not available */ }
   }
 
   useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (!document.hidden && isInitialized) {
-        fetchStatus()
-      }
+    if (isInitialized) { fetchStatus(); fetchMyRank() }
+  }, [isInitialized])
+
+  // Countdown
+  useEffect(() => {
+    if (!rankedStatus?.resetAt) return
+    const timer = setInterval(() => {
+      const diff = new Date(rankedStatus.resetAt).getTime() - Date.now()
+      if (diff <= 0) { setTimeLeft('00:00:00'); clearInterval(timer); return }
+      const h = Math.floor(diff / 3_600_000)
+      const m = Math.floor((diff % 3_600_000) / 60_000)
+      const s = Math.floor((diff % 60_000) / 1_000)
+      setTimeLeft(`${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`)
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [rankedStatus?.resetAt])
+
+  // Visibility change refresh
+  useEffect(() => {
+    const handler = () => { if (!document.hidden && isInitialized) fetchStatus() }
+    const customHandler = (e: CustomEvent) => {
+      try { setRankedStatus(prev => ({ ...prev!, ...e.detail })) } catch { /* ignore */ }
     }
-
-    const handleRankedStatusUpdate = (e: CustomEvent) => {
-      try {
-        const updatedStatus = e.detail
-        setRankedStatus(prev => ({
-          ...prev,
-          ...updatedStatus
-        }))
-      } catch (err) {
-        console.warn('Failed to parse ranked status from custom event:', err)
-      }
-    }
-
-    document.addEventListener('visibilitychange', handleVisibilityChange)
-    window.addEventListener('rankedStatusUpdate', handleRankedStatusUpdate as EventListener)
-
+    document.addEventListener('visibilitychange', handler)
+    window.addEventListener('rankedStatusUpdate', customHandler as EventListener)
     return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange)
-      window.removeEventListener('rankedStatusUpdate', handleRankedStatusUpdate as EventListener)
+      document.removeEventListener('visibilitychange', handler)
+      window.removeEventListener('rankedStatusUpdate', customHandler as EventListener)
     }
   }, [isInitialized])
 
@@ -169,13 +140,11 @@ export default function Ranked() {
     try {
       const res = await api.post('/api/ranked/sessions')
       const sessionId = res.data.sessionId
-
       const serverAskedIds: string[] = rankedStatus?.askedQuestionIdsToday ?? []
-      const localAskedIds: string[] = (() => {
-        try { return JSON.parse(localStorage.getItem('askedQuestionIds') || '[]') } catch { return [] }
-      })()
+      const localAskedIds: string[] = (() => { try { return JSON.parse(localStorage.getItem('askedQuestionIds') || '[]') } catch { return [] } })()
       const exclude = new Set<string>([...serverAskedIds, ...localAskedIds])
 
+      let questions: any[] = []
       const addUnique = (items: any[]) => {
         for (const q of items ?? []) {
           if (!q?.id || exclude.has(q.id) || questions.find((x: any) => x.id === q.id)) continue
@@ -185,281 +154,195 @@ export default function Ranked() {
         }
       }
 
-      let questions: any[] = []
-      try {
-        if (questions.length < 10) {
-          const params: any = { limit: 10 - questions.length, excludeIds: Array.from(exclude) }
-          if (rankedStatus?.currentBook) params.book = rankedStatus.currentBook
-          if (rankedStatus?.currentDifficulty && rankedStatus.currentDifficulty !== 'all') params.difficulty = rankedStatus.currentDifficulty
-          addUnique((await api.get('/api/questions', { params })).data ?? [])
-        }
-        if (questions.length < 10 && rankedStatus?.currentBook) {
-          const params: any = { limit: 10 - questions.length, book: rankedStatus.currentBook, excludeIds: Array.from(exclude) }
-          addUnique((await api.get('/api/questions', { params })).data ?? [])
-        }
-        if (questions.length < 10) {
-          const params: any = { limit: 10 - questions.length, excludeIds: Array.from(exclude) }
-          addUnique((await api.get('/api/questions', { params })).data ?? [])
-        }
-      } catch (e) {
-        console.error('Failed to fetch ranked questions', e)
+      if (questions.length < 10) {
+        const params: any = { limit: 10 - questions.length, excludeIds: Array.from(exclude) }
+        if (rankedStatus?.currentBook) params.book = rankedStatus.currentBook
+        if (rankedStatus?.currentDifficulty && rankedStatus.currentDifficulty !== 'all') params.difficulty = rankedStatus.currentDifficulty
+        addUnique((await api.get('/api/questions', { params })).data ?? [])
+      }
+      if (questions.length < 10 && rankedStatus?.currentBook) {
+        addUnique((await api.get('/api/questions', { params: { limit: 10 - questions.length, book: rankedStatus.currentBook, excludeIds: Array.from(exclude) } })).data ?? [])
+      }
+      if (questions.length < 10) {
+        addUnique((await api.get('/api/questions', { params: { limit: 10 - questions.length, excludeIds: Array.from(exclude) } })).data ?? [])
       }
 
       navigate('/quiz', { state: { sessionId, mode: 'ranked', questions, showExplanation: false, isRanked: true } })
-    } catch (e) {
-      console.error('Failed to start ranked session', e)
-      alert('Khong the bat dau xep hang, vui long thu lai')
+    } catch {
+      alert('Không thể bắt đầu xếp hạng, vui lòng thử lại')
     }
   }
 
-  // ── Loading State ──────────────────────────────────────────────────────────
-  if (isLoading || !isInitialized) {
-    return (
-      <div className="flex items-center justify-center py-32">
-        <div className="text-center">
-          <div className="w-16 h-16 rounded-full border-4 border-secondary/30 border-t-secondary animate-spin mx-auto mb-6" />
-          <p className="text-on-surface-variant text-sm font-medium">
-            {!isInitialized ? 'Dang dong bo du lieu...' : 'Dang tai...'}
-          </p>
-        </div>
-      </div>
-    )
-  }
+  // ── Loading ──
+  if (isLoading || !isInitialized) return <RankedSkeleton />
 
-  // ── Error State ────────────────────────────────────────────────────────────
+  // ── Error ──
   if (!rankedStatus) {
     return (
       <div className="flex items-center justify-center py-32">
         <div className="bg-surface-container p-10 rounded-2xl text-center max-w-md">
           <span className="material-symbols-outlined text-error text-5xl mb-4 block">error</span>
-          <p className="text-on-surface font-bold text-lg mb-2">Khong the tai trang thai xep hang</p>
-          <p className="text-on-surface-variant text-sm mb-6">Vui long thu lai sau.</p>
+          <p className="text-on-surface font-bold text-lg mb-2">Không thể tải trạng thái xếp hạng</p>
+          <p className="text-on-surface-variant text-sm mb-6">Vui lòng thử lại sau.</p>
           <button onClick={fetchStatus} className="gold-gradient text-on-secondary font-black px-8 py-3 rounded-xl text-sm uppercase tracking-widest">
-            Thu lai
+            Thử lại
           </button>
         </div>
       </div>
     )
   }
 
-  // ── Derived Values ─────────────────────────────────────────────────────────
-  const energy = Number(rankedStatus.livesRemaining) * 20 // each life = 20 energy
-  const maxEnergy = Number(rankedStatus.dailyLives) * 20
-  const energyPercent = maxEnergy > 0 ? (energy / maxEnergy) * 100 : 0
-  const canPlay = Number(rankedStatus.livesRemaining) > 0 && Number(rankedStatus.questionsCounted) < Number(rankedStatus.cap)
-  const safePointsToday = Number(rankedStatus.pointsToday ?? 0)
-  const gamesPlayedToday = Math.floor(Number(rankedStatus.questionsCounted) / 10) // approximate
-  const maxGamesToday = 5
-  const currentTier = getCurrentTier(userRank?.points || safePointsToday)
-  const nextTier = getNextTier(userRank?.points || safePointsToday)
-  const pointsForNextTier = nextTier ? nextTier.minPoints - (userRank?.points || safePointsToday) : 0
+  // ── Derived ──
+  const energyPct = rankedStatus.dailyLives > 0 ? Math.round((rankedStatus.livesRemaining / rankedStatus.dailyLives) * 100) : 0
+  const canPlay = rankedStatus.livesRemaining > 0 && rankedStatus.questionsCounted < rankedStatus.cap
+  const totalPoints = userRank?.points ?? rankedStatus.pointsToday ?? 0
+  const currentTier = getCurrentTier(totalPoints)
+  const bookPct = rankedStatus.bookProgress?.progressPercentage ?? 0
+  const difficultyLabel = rankedStatus.currentDifficulty === 'all' ? 'Hỗn hợp'
+    : rankedStatus.currentDifficulty === 'easy' ? 'Dễ'
+    : rankedStatus.currentDifficulty === 'medium' ? 'Trung bình'
+    : rankedStatus.currentDifficulty === 'hard' ? 'Khó' : rankedStatus.currentDifficulty
 
   return (
-    <div className="max-w-7xl mx-auto space-y-10">
-
-      {/* ── 1. Header ─────────────────────────────────────────────────────── */}
-      <section className="flex items-center justify-between">
-        <div>
-          <h1 className="text-4xl font-black text-on-surface tracking-tight mb-2">Xep Hang</h1>
-          <p className="text-on-surface-variant text-sm">Thi dau de leo hang va nhan phan thuong mua giai.</p>
+    <main className="max-w-5xl mx-auto space-y-6">
+      {/* ── Header ── */}
+      <header className="mb-4">
+        <h1 className="text-4xl font-extrabold tracking-tight mb-2 flex items-center gap-3">
+          <span>⚔️ Xếp hạng</span>
+        </h1>
+        <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center w-8 h-8 rounded-full bg-secondary/10 text-secondary border border-secondary/20 shadow-[0_0_15px_rgba(248,189,69,0.15)]">
+            <span className="material-symbols-outlined text-lg" style={{ ...FILL_1, color: currentTier.color }}>{currentTier.icon}</span>
+          </div>
+          <span className="font-bold text-lg tracking-wide uppercase" style={{ color: currentTier.color }}>{currentTier.name}</span>
         </div>
-        <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-surface-container border border-outline-variant/20">
-          <span
-            className="material-symbols-outlined text-2xl"
-            style={{ ...FILL_1, color: currentTier.color }}
-          >
-            {currentTier.icon}
-          </span>
+      </header>
+
+      {/* ── Energy Card ── */}
+      <section className="glass-card rounded-xl p-6 border border-white/5 relative overflow-hidden">
+        <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+          <span className="material-symbols-outlined text-8xl">bolt</span>
+        </div>
+        <div className="flex justify-between items-end mb-4">
           <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.15em] text-on-surface-variant">Hang hien tai</p>
-            <p className="font-black text-on-surface" style={{ color: currentTier.color }}>
-              Hang {currentTier.name} {currentTier.name === 'Vang' ? 'III' : ''}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 2. Energy Section ─────────────────────────────────────────────── */}
-      <section className="bg-surface-container rounded-2xl p-8 border border-outline-variant/10">
-        <div className="flex items-center gap-3 mb-6">
-          <span className="material-symbols-outlined text-secondary text-3xl" style={FILL_1}>bolt</span>
-          <h2 className="text-xl font-black text-on-surface tracking-tight">Nang Luong</h2>
-        </div>
-
-        {/* Energy bar */}
-        <div className="relative h-5 w-full bg-surface-container-lowest rounded-full overflow-hidden mb-4">
-          <div
-            className="absolute inset-y-0 left-0 gold-gradient rounded-full transition-all duration-700 ease-out"
-            style={{ width: `${energyPercent}%` }}
-          />
-          {/* Glow effect on the bar tip */}
-          {energyPercent > 0 && (
-            <div
-              className="absolute inset-y-0 w-8 rounded-full"
-              style={{
-                left: `calc(${energyPercent}% - 16px)`,
-                background: 'radial-gradient(circle, rgba(232,168,50,0.6) 0%, transparent 70%)',
-              }}
-            />
-          )}
-        </div>
-
-        <div className="flex items-center justify-between">
-          <p className="text-on-surface font-bold text-lg">
-            {energy} / {maxEnergy}{' '}
-            <span className="text-on-surface-variant font-medium text-sm">Nang luong</span>
-          </p>
-          <div className="flex items-center gap-2 text-on-surface-variant text-sm">
-            <span className="material-symbols-outlined text-base">schedule</span>
-            <span>Phuc hoi sau: <span className="font-bold text-on-surface">{timeLeft || '--:--:--'}</span></span>
-          </div>
-        </div>
-
-        <p className="text-on-surface-variant text-xs mt-3">
-          Moi tran dau xep hang tieu ton 20 nang luong. Nang luong se duoc phuc hoi moi ngay.
-        </p>
-      </section>
-
-      {/* ── 3. Today's Progress ───────────────────────────────────────────── */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-surface-container-low p-7 rounded-2xl flex items-center justify-between border-l-8 border-secondary">
-          <div>
-            <p className="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] mb-2">Tran hom nay</p>
-            <h3 className="text-3xl font-black text-on-surface">
-              {gamesPlayedToday} <span className="text-base font-medium text-on-surface-variant">/ {maxGamesToday}</span>
-            </h3>
-          </div>
-          <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center">
-            <span className="material-symbols-outlined text-secondary text-3xl" style={FILL_1}>sports_esports</span>
-          </div>
-        </div>
-
-        <div className="bg-surface-container-low p-7 rounded-2xl flex items-center justify-between border-l-8 border-secondary/50">
-          <div>
-            <p className="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] mb-2">Diem hom nay</p>
-            <h3 className="text-3xl font-black text-secondary">{safePointsToday}</h3>
-          </div>
-          <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center">
-            <span className="material-symbols-outlined text-secondary text-3xl" style={FILL_1}>star</span>
-          </div>
-        </div>
-
-        <div className="bg-surface-container-low p-7 rounded-2xl flex items-center justify-between border-l-8 border-secondary/20">
-          <div>
-            <p className="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] mb-2">Ti le thang</p>
-            <h3 className="text-3xl font-black text-on-surface">
-              {rankedStatus.questionsCounted > 0
-                ? `${Math.round((safePointsToday / (rankedStatus.questionsCounted * 10)) * 100)}%`
-                : '--'}
-            </h3>
-          </div>
-          <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-            <span className="material-symbols-outlined text-primary text-3xl" style={FILL_1}>trending_up</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 4. Current Season ─────────────────────────────────────────────── */}
-      <section className="bg-surface-container rounded-2xl p-8 border border-outline-variant/10">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
-            <span className="material-symbols-outlined text-tertiary text-3xl" style={FILL_1}>emoji_events</span>
-            <div>
-              <h2 className="text-xl font-black text-on-surface tracking-tight">Mua Giai Hien Tai</h2>
-              <p className="text-on-surface-variant text-xs">Ket thuc sau: {timeLeft || '--:--:--'}</p>
+            <div className="flex items-center gap-2 text-on-surface-variant uppercase text-xs font-bold tracking-widest mb-1">
+              <span className="material-symbols-outlined text-sm">bolt</span>
+              Năng lượng
+            </div>
+            <div className="text-4xl font-black text-on-surface">
+              {rankedStatus.livesRemaining}<span className="text-on-surface-variant text-xl font-normal">/{rankedStatus.dailyLives}</span>
             </div>
           </div>
-          <button
-            onClick={() => { fetchStatus(); fetchMyRank(); }}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container-high text-on-surface-variant text-xs font-bold uppercase tracking-widest hover:bg-surface-container-highest transition-colors"
-          >
-            <span className="material-symbols-outlined text-base">refresh</span>
-            Lam moi
-          </button>
+          <div className="text-right">
+            <div className="flex items-center gap-1 text-on-surface-variant text-sm font-medium">
+              <span className="material-symbols-outlined text-sm">schedule</span>
+              Phục hồi: {timeLeft || '--:--:--'}
+            </div>
+          </div>
         </div>
+        <div className="h-3 w-full bg-primary-container rounded-full overflow-hidden">
+          <div className="h-full gold-gradient rounded-full shadow-[0_0_10px_rgba(248,189,69,0.4)]" style={{ width: `${energyPct}%` }} />
+        </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Current rank */}
-          <div className="glass-card rounded-2xl p-6 text-center">
-            <p className="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] mb-3">Vi tri xep hang</p>
-            <p className="text-5xl font-black text-secondary mb-1">#{userRank?.rank || '--'}</p>
-            {nextRankGap != null && nextRankGap > 0 && (
-              <p className="text-on-surface-variant text-xs">Can {nextRankGap} diem de vuot nguoi tren</p>
-            )}
+      {/* ── Today's Progress + Current Book ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        {/* Today's Progress */}
+        <section className="lg:col-span-7 glass-card rounded-xl p-6 border border-white/5 min-h-[180px]">
+          <h3 className="text-sm font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2 mb-6">
+            <span className="material-symbols-outlined text-sm">leaderboard</span>
+            Hôm nay
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div>
+              <div className="text-on-surface-variant text-xs mb-1">Câu đã tính</div>
+              <div className="font-bold text-on-surface mb-2">{rankedStatus.questionsCounted}<span className="text-on-surface-variant font-normal">/{rankedStatus.cap}</span></div>
+              <div className="h-1 w-full bg-primary-container rounded-full overflow-hidden">
+                <div className="h-full bg-secondary/60 rounded-full" style={{ width: `${rankedStatus.cap > 0 ? (rankedStatus.questionsCounted / rankedStatus.cap) * 100 : 0}%` }} />
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-center border-l border-r border-outline-variant/10">
+              <div className="text-on-surface-variant text-xs mb-1">Điểm hôm nay</div>
+              <div className="text-4xl font-black text-secondary">{rankedStatus.pointsToday ?? 0}</div>
+            </div>
+            <div className="flex flex-col items-end justify-center">
+              <div className="text-on-surface-variant text-xs mb-1">Xếp hạng</div>
+              <div className="text-xl font-bold text-on-surface flex items-center gap-2">
+                <span>#{userRank?.rank ?? '—'}</span>
+              </div>
+            </div>
           </div>
+        </section>
 
-          {/* Points needed for next tier */}
-          <div className="glass-card rounded-2xl p-6 text-center">
-            <p className="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] mb-3">Hang tiep theo</p>
-            {nextTier ? (
-              <>
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <span className="material-symbols-outlined text-2xl" style={{ ...FILL_1, color: nextTier.color }}>{nextTier.icon}</span>
-                  <p className="text-2xl font-black" style={{ color: nextTier.color }}>Hang {nextTier.name}</p>
-                </div>
-                <p className="text-on-surface-variant text-xs">Con {pointsForNextTier} diem</p>
-              </>
-            ) : (
-              <p className="text-2xl font-black text-tertiary">Hang cao nhat!</p>
-            )}
+        {/* Current Book */}
+        <section className="lg:col-span-5 glass-card rounded-xl p-6 border border-white/5 relative">
+          <div className="absolute -left-1 top-6 w-1 h-12 bg-secondary rounded-full shadow-[0_0_10px_rgba(248,189,69,0.5)]" />
+          <h3 className="text-sm font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2 mb-4">
+            <span className="material-symbols-outlined text-sm">menu_book</span>
+            Đang chơi
+          </h3>
+          <div className="flex justify-between items-start mb-4">
+            <div>
+              <h4 className="text-3xl font-black text-on-surface tracking-tight">{rankedStatus.currentBook}</h4>
+              <p className="text-sm text-on-surface-variant">
+                {rankedStatus.bookProgress ? `Sách thứ ${rankedStatus.bookProgress.currentIndex + 1}/${rankedStatus.bookProgress.totalBooks}` : ''}
+              </p>
+            </div>
+            <span className="bg-surface-container-high text-secondary text-[10px] font-bold px-3 py-1 rounded-full border border-secondary/20 uppercase tracking-tighter">
+              {difficultyLabel}
+            </span>
           </div>
+          <div className="h-1 w-full bg-primary-container rounded-full overflow-hidden">
+            <div className="h-full gold-gradient rounded-full" style={{ width: `${bookPct}%` }} />
+          </div>
+        </section>
+      </div>
 
-          {/* Book progress */}
-          <div className="glass-card rounded-2xl p-6 text-center">
-            <p className="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] mb-3">Sach hien tai</p>
-            <p className="text-2xl font-black text-on-surface mb-1">{rankedStatus.currentBook}</p>
-            <p className="text-on-surface-variant text-xs">
-              {rankedStatus.nextBook ? `Tiep theo: ${rankedStatus.nextBook}` : 'Dang tien ve dich'}
-            </p>
+      {/* ── Season Card ── */}
+      <section className="glass-card rounded-xl p-8 border border-white/5 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+        <div className="absolute -right-20 -bottom-20 opacity-5 pointer-events-none">
+          <span className="material-symbols-outlined text-[300px]">trophy</span>
+        </div>
+        <div className="w-full md:w-1/3 text-center md:text-left">
+          <h3 className="text-sm font-bold text-on-surface-variant uppercase tracking-widest flex items-center justify-center md:justify-start gap-2 mb-4">
+            <span className="material-symbols-outlined text-sm">emoji_events</span>
+            Mùa giải
+          </h3>
+          <div className="text-6xl font-black text-secondary mb-2">#{userRank?.rank ?? '—'}</div>
+          <div className="text-on-surface font-medium">{totalPoints.toLocaleString()} điểm</div>
+        </div>
+        <div className="w-full md:w-2/3 space-y-4">
+          <div className="flex justify-between items-center text-sm">
+            <span className="text-on-surface font-bold">Tiến trình mùa giải</span>
+            <span className="text-on-surface-variant italic">Reset: {timeLeft || '--:--:--'}</span>
+          </div>
+          <div className="h-4 w-full bg-primary-container rounded-full overflow-hidden p-1">
+            <div className="h-full gold-gradient rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]" style={{ width: '65%' }} />
+          </div>
+          <div className="flex justify-between text-[10px] uppercase font-bold tracking-widest text-on-surface-variant/60">
+            <span>Bắt đầu</span>
+            <span>Đỉnh cao</span>
           </div>
         </div>
       </section>
 
-      {/* ── 5. Quick Start Button ─────────────────────────────────────────── */}
-      <section className="flex justify-center">
+      {/* ── Start CTA ── */}
+      <div className="mt-4 mb-10">
         {canPlay ? (
           <button
             onClick={startRankedQuiz}
-            className="gold-gradient gold-glow text-on-secondary font-black text-lg px-16 py-5 rounded-2xl uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-4 shadow-xl shadow-secondary/20"
+            className="w-full gold-gradient text-on-secondary font-black py-5 rounded-xl text-xl uppercase tracking-widest shadow-[0_8px_30px_rgb(248,189,69,0.3)] active:scale-[0.98] transition-transform flex items-center justify-center gap-4"
           >
-            <span className="material-symbols-outlined text-2xl" style={FILL_1}>swords</span>
-            Bat Dau Thi Dau
+            <span className="material-symbols-outlined" style={FILL_1}>play_arrow</span>
+            Bắt đầu
           </button>
         ) : (
-          <div className="bg-surface-container-high text-on-surface-variant font-black text-lg px-16 py-5 rounded-2xl uppercase tracking-widest flex items-center gap-4 opacity-60 cursor-not-allowed">
-            <span className="material-symbols-outlined text-2xl">block</span>
-            Het Nang Luong — Cho phuc hoi
+          <div className="w-full bg-surface-container-high text-on-surface-variant font-black py-5 rounded-xl text-xl uppercase tracking-widest flex items-center justify-center gap-4 opacity-60 cursor-not-allowed">
+            <span className="material-symbols-outlined">block</span>
+            Hết năng lượng — Chờ phục hồi
           </div>
         )}
-      </section>
-
-      {/* ── 6. Personal Stats ─────────────────────────────────────────────── */}
-      <section>
-        <h2 className="text-lg font-black text-on-surface tracking-tight mb-5">Thong Ke Ca Nhan</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-surface-container-low rounded-2xl p-6 text-center">
-            <span className="material-symbols-outlined text-secondary text-4xl mb-3 block" style={FILL_1}>quiz</span>
-            <p className="text-3xl font-black text-on-surface mb-1">{rankedStatus.questionsCounted}</p>
-            <p className="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em]">Tong cau da tra loi</p>
-          </div>
-
-          <div className="bg-surface-container-low rounded-2xl p-6 text-center">
-            <span className="material-symbols-outlined text-tertiary text-4xl mb-3 block" style={FILL_1}>local_fire_department</span>
-            <p className="text-3xl font-black text-on-surface mb-1">
-              {rankedStatus.correctAnswersInCurrentBook ?? 0}
-            </p>
-            <p className="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em]">Chuoi tra loi dung</p>
-          </div>
-
-          <div className="bg-surface-container-low rounded-2xl p-6 text-center">
-            <span className="material-symbols-outlined text-primary text-4xl mb-3 block" style={FILL_1}>workspace_premium</span>
-            <p className="text-3xl font-black mb-1" style={{ color: currentTier.color }}>
-              Hang {currentTier.name}
-            </p>
-            <p className="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em]">Hang cao nhat dat duoc</p>
-          </div>
-        </div>
-      </section>
-    </div>
+      </div>
+    </main>
   )
 }

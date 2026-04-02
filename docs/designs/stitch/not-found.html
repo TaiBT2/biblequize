@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,700;0,800;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdf96",
+              "background": "#11131e",
+              "surface-tint": "#c0c4e8",
+              "tertiary-container": "#2b1f00",
+              "primary-container": "#1a1f3a",
+              "surface-container-lowest": "#0b0e18",
+              "surface": "#11131e",
+              "tertiary": "#e7c268",
+              "on-secondary": "#412d00",
+              "on-error-container": "#ffdad6",
+              "surface-container-high": "#272935",
+              "error": "#ffb4ab",
+              "on-surface": "#e1e1f1",
+              "error-container": "#93000a",
+              "on-tertiary-fixed-variant": "#5a4400",
+              "on-background": "#e1e1f1",
+              "secondary-fixed-dim": "#f8bd45",
+              "primary-fixed": "#dee1ff",
+              "secondary": "#f8bd45",
+              "surface-container-low": "#191b26",
+              "surface-container": "#1d1f2a",
+              "on-primary-container": "#8286a7",
+              "on-primary-fixed-variant": "#404562",
+              "on-tertiary-container": "#a48431",
+              "primary-fixed-dim": "#c0c4e8",
+              "tertiary-fixed-dim": "#e7c268",
+              "on-primary": "#2a2f4a",
+              "on-secondary-fixed-variant": "#5e4200",
+              "surface-bright": "#373845",
+              "inverse-on-surface": "#2e303c",
+              "on-tertiary-fixed": "#251a00",
+              "inverse-surface": "#e1e1f1",
+              "secondary-fixed": "#ffdea7",
+              "surface-dim": "#11131e",
+              "surface-container-highest": "#323440",
+              "secondary-container": "#bc8709",
+              "on-secondary-fixed": "#271900",
+              "outline-variant": "#46464d",
+              "on-surface-variant": "#c7c5ce",
+              "outline": "#919098",
+              "on-primary-fixed": "#151a34",
+              "surface-variant": "#323440",
+              "on-error": "#690005",
+              "on-tertiary": "#3e2e00",
+              "inverse-primary": "#585d7b",
+              "primary": "#c0c4e8",
+              "on-secondary-container": "#392600"
+            },
+            fontFamily: {
+              "headline": ["Be Vietnam Pro"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        background-color: #11131e;
+        color: #e1e1f1;
+        font-family: 'Be Vietnam Pro', sans-serif;
+      }
+      .gold-gradient-text {
+        background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .gold-gradient-bg {
+        background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%);
+      }
+      .radiant-glow {
+        box-shadow: 0 0 40px rgba(248, 189, 69, 0.15);
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+      }
+    </style>
+</head>
+<body class="overflow-hidden">
+<!-- 404 Content Canvas -->
+<main class="relative min-h-screen w-full flex flex-col items-center justify-center px-6 text-center select-none">
+<!-- Subtle Ambient Background Light -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none"></div>
+<!-- Decorative Illustration -->
+<div class="mb-8 opacity-90">
+<svg class="drop-shadow-2xl" fill="none" height="120" stroke="url(#gold_grad)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewbox="0 0 24 24" width="120">
+<defs>
+<lineargradient id="gold_grad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#f8bd45"></stop>
+<stop offset="100%" stop-color="#e7c268"></stop>
+</lineargradient>
+</defs>
+<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+<path d="M8 6h8" opacity="0.5" stroke-width="0.5"></path>
+<path d="M8 10h8" opacity="0.5" stroke-width="0.5"></path>
+<path d="M8 14h4" opacity="0.5" stroke-width="0.5"></path>
+</svg>
+</div>
+<!-- Error Code -->
+<h1 class="text-[120px] md:text-[160px] font-extrabold leading-none tracking-tighter gold-gradient-text">
+            404
+        </h1>
+<!-- Subtitle -->
+<h2 class="mt-4 text-2xl md:text-3xl font-medium text-on-surface-variant/80 tracking-tight">
+            Trang không tìm thấy
+        </h2>
+<!-- Scripture Quote Block -->
+<div class="mt-12 mb-16 max-w-md mx-auto">
+<div class="relative px-8 py-4 bg-surface-container-low rounded-xl">
+<div class="absolute left-0 top-1/4 bottom-1/4 w-1 bg-secondary rounded-full shadow-[0_0_8px_rgba(248,189,69,0.4)]"></div>
+<p class="italic text-on-surface-variant font-body text-lg leading-relaxed">
+                    "Hãy tìm, các ngươi sẽ gặp"
+                </p>
+<p class="mt-2 text-xs uppercase tracking-[0.2em] font-bold text-secondary/70 font-label">
+                    Ma-thi-ơ 7:7
+                </p>
+</div>
+</div>
+<!-- Call to Actions -->
+<div class="flex flex-col items-center gap-6 w-full max-w-xs">
+<!-- Primary CTA -->
+<a class="group relative w-full inline-flex items-center justify-center px-8 py-4 rounded-xl gold-gradient-bg text-on-secondary font-bold text-lg radiant-glow transition-all active:scale-95" href="/">
+<span class="relative z-10">Về trang chủ</span>
+<div class="absolute inset-0 rounded-xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</a>
+<!-- Secondary CTA -->
+<a class="flex items-center gap-2 text-on-surface-variant hover:text-secondary transition-colors font-medium tracking-wide" href="/daily-challenge">
+<span>Thử Daily Challenge</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Background Image Texture -->
+<div class="fixed inset-0 z-[-1] opacity-[0.03] pointer-events-none" data-alt="subtle dark texture of ancient parchment or stone wall in deep navy tones with very low contrast" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC5p2WhmcCpwKcAr-LyfOotSYH5Jt_PxKCoX_o4TUMjDirnvCyp_LJ3Eh0XGUMsrc7JF8NVt_X6Tn-x874yBtG7aH00vtUmuVWhT9bgA4QARHbOBIEcFnn2Daf2rRJ8WUgNXKUSyI-HNh8jVeemVJ9Fc-Auet-Ia7NlGh7fAUOsG18zf84fOFYpKV81gQW4JycsPa556W_CdEP5VAZm5x-_tunpBTJdBJIdwc1_us3vJZiqj5rZaY3LzE-hMcwzCbrzt7Tq6SbCZcI'); background-size: cover; background-position: center;">
+</div>
+</main>
+<!-- Suppressed navigation elements per "The Destination Rule" and "Automatic Suppression" -->
+<!-- This is a focus-intensive transactional-style error screen, so global navigation is hidden to prioritize the core message and redirection. -->
+</body></html>

@@ -8,6 +8,7 @@ import com.biblequiz.modules.quiz.repository.AnswerRepository;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.quiz.repository.QuizSessionQuestionRepository;
 import com.biblequiz.modules.quiz.repository.QuizSessionRepository;
+import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 
@@ -27,6 +28,7 @@ public class SessionService {
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
     private final UserRepository userRepository;
+    private final UserDailyProgressRepository userDailyProgressRepository;
     private final ObjectMapper objectMapper;
     private final QuestionService questionService;
 
@@ -35,6 +37,7 @@ public class SessionService {
             QuestionRepository questionRepository,
             AnswerRepository answerRepository,
             UserRepository userRepository,
+            UserDailyProgressRepository userDailyProgressRepository,
             ObjectMapper objectMapper,
             QuestionService questionService) {
         this.quizSessionRepository = quizSessionRepository;
@@ -42,6 +45,7 @@ public class SessionService {
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
         this.userRepository = userRepository;
+        this.userDailyProgressRepository = userDailyProgressRepository;
         this.objectMapper = objectMapper;
         this.questionService = questionService;
     }
@@ -118,7 +122,16 @@ public class SessionService {
     public Map<String, Object> submitAnswer(String sessionId, String userId, String questionId, Object answerPayload,
             int clientElapsedMs) {
         QuizSession session = quizSessionRepository.findById(sessionId).orElseThrow();
+
+        // FIX-002: Reject answers on abandoned sessions
+        if (session.getStatus() == QuizSession.Status.abandoned) {
+            throw new IllegalStateException("Session has been abandoned");
+        }
+
         User user = userRepository.findById(userId).orElseThrow();
+
+        // FIX-002: Update last activity for abandonment detection
+        session.setLastActivityAt(LocalDateTime.now());
 
         Question question = questionRepository.findById(questionId).orElseThrow();
 
@@ -375,6 +388,62 @@ public class SessionService {
             return ans.equals(expectedText.trim().toLowerCase());
         }
         return false;
+    }
+
+    /**
+     * FIX-002: Mark stale ranked sessions as abandoned.
+     * Called by scheduler every minute. Sessions with no activity for 2+ minutes are abandoned.
+     * Unanswered questions deduct 5 energy each.
+     */
+    private static final int ENERGY_COST_PER_WRONG = 5;
+
+    /**
+     * FIX-002: Mark stale ranked sessions as abandoned and deduct energy.
+     * Sessions with no activity for 2+ minutes: unanswered questions → -5 energy each.
+     */
+    @Transactional
+    public int processAbandonedSessions() {
+        LocalDateTime cutoff = LocalDateTime.now().minusMinutes(2);
+        List<QuizSession> staleSessions = quizSessionRepository.findAbandonedRankedSessions(cutoff);
+        int count = 0;
+        for (QuizSession session : staleSessions) {
+            session.setStatus(QuizSession.Status.abandoned);
+            session.setAbandonedAt(LocalDateTime.now());
+            session.setEndedAt(LocalDateTime.now());
+            quizSessionRepository.save(session);
+
+            // Deduct energy for unanswered questions (ranked mode only)
+            if (session.getMode() == QuizSession.Mode.ranked) {
+                int totalQ = session.getTotalQuestions() != null ? session.getTotalQuestions() : 0;
+                long answeredQ = answerRepository.countBySessionId(session.getId());
+                int unanswered = (int) Math.max(0, totalQ - answeredQ);
+                if (unanswered > 0) {
+                    int energyPenalty = unanswered * ENERGY_COST_PER_WRONG;
+                    deductEnergy(session.getOwner().getId(), energyPenalty);
+                }
+            }
+            count++;
+        }
+        return count;
+    }
+
+    private void deductEnergy(String userId, int amount) {
+        var today = java.time.LocalDate.now(java.time.ZoneOffset.UTC);
+        userDailyProgressRepository.findByUserIdAndDate(userId, today).ifPresent(udp -> {
+            int current = udp.getLivesRemaining() != null ? udp.getLivesRemaining() : 100;
+            udp.setLivesRemaining(Math.max(0, current - amount));
+            userDailyProgressRepository.save(udp);
+        });
+    }
+
+    /**
+     * Update last activity timestamp for a session (called on each answer submit).
+     */
+    public void touchSession(String sessionId) {
+        quizSessionRepository.findById(sessionId).ifPresent(session -> {
+            session.setLastActivityAt(LocalDateTime.now());
+            quizSessionRepository.save(session);
+        });
     }
 
     private Map<String, Object> toAnswerResult(Answer answer, Question q) {

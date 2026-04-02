@@ -37,6 +37,12 @@ public class TournamentMatch {
     @Column(name = "is_bye", nullable = false)
     private boolean isBye = false;
 
+    @Column(name = "is_sudden_death", nullable = false)
+    private boolean isSuddenDeath = false;
+
+    @Column(name = "sudden_death_round", nullable = false)
+    private int suddenDeathRound = 0;
+
     @Column(name = "started_at")
     private LocalDateTime startedAt;
 
@@ -137,5 +143,21 @@ public class TournamentMatch {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public boolean isSuddenDeath() {
+        return isSuddenDeath;
+    }
+
+    public void setSuddenDeath(boolean suddenDeath) {
+        isSuddenDeath = suddenDeath;
+    }
+
+    public int getSuddenDeathRound() {
+        return suddenDeathRound;
+    }
+
+    public void setSuddenDeathRound(int suddenDeathRound) {
+        this.suddenDeathRound = suddenDeathRound;
     }
 }

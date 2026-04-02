@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quiz Results - BibleQuiz</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#bc8709",
+              "outline": "#919098",
+              "on-tertiary": "#3e2e00",
+              "on-primary-container": "#8286a7",
+              "surface-bright": "#373845",
+              "on-surface-variant": "#c7c5ce",
+              "background": "#11131e",
+              "on-surface": "#e1e1f1",
+              "on-primary-fixed": "#151a34",
+              "surface-container-lowest": "#0b0e18",
+              "secondary-fixed": "#ffdea7",
+              "on-secondary-fixed-variant": "#5e4200",
+              "surface-container-low": "#191b26",
+              "tertiary": "#e7c268",
+              "inverse-primary": "#585d7b",
+              "on-tertiary-fixed": "#251a00",
+              "on-secondary-container": "#392600",
+              "error": "#ffb4ab",
+              "on-background": "#e1e1f1",
+              "primary-container": "#1a1f3a",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed": "#ffdf96",
+              "surface-dim": "#11131e",
+              "primary-fixed-dim": "#c0c4e8",
+              "on-error": "#690005",
+              "surface-container": "#1d1f2a",
+              "outline-variant": "#46464d",
+              "on-primary": "#2a2f4a",
+              "error-container": "#93000a",
+              "surface-container-high": "#272935",
+              "on-secondary": "#412d00",
+              "on-secondary-fixed": "#271900",
+              "inverse-surface": "#e1e1f1",
+              "surface-container-highest": "#323440",
+              "surface": "#11131e",
+              "surface-tint": "#c0c4e8",
+              "on-primary-fixed-variant": "#404562",
+              "on-tertiary-container": "#a48431",
+              "primary": "#c0c4e8",
+              "on-tertiary-fixed-variant": "#5a4400",
+              "inverse-on-surface": "#2e303c",
+              "primary-fixed": "#dee1ff",
+              "tertiary-container": "#2b1f00",
+              "secondary-fixed-dim": "#f8bd45",
+              "secondary": "#f8bd45",
+              "surface-variant": "#323440",
+              "tertiary-fixed-dim": "#e7c268"
+            },
+            fontFamily: {
+              "headline": ["Be Vietnam Pro"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: 'Be Vietnam Pro', sans-serif;
+        background-color: #11131e;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .gold-gradient {
+        background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%);
+      }
+      .gold-text-gradient {
+        background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .glass-card {
+        background: rgba(39, 41, 53, 0.6);
+        backdrop-filter: blur(16px);
+      }
+      .progress-ring__circle {
+        transition: stroke-dashoffset 0.35s;
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%;
+      }
+    </style>
+</head>
+<body class="text-on-surface min-h-screen overflow-x-hidden pb-24">
+<!-- Top Navigation (Shell suppressed but simulated for brand identity) -->
+<header class="flex justify-between items-center w-full px-6 py-4 bg-transparent text-[#f8bd45] font-['Be_Vietnam_Pro'] tracking-tight leading-tight">
+<div class="text-xl font-bold text-[#e1e1f1]">Quiz Results</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined p-2 hover:bg-[#1d1f2a]/50 rounded-full transition-colors duration-200 cursor-pointer" data-icon="share">share</span>
+<span class="material-symbols-outlined p-2 hover:bg-[#1d1f2a]/50 rounded-full transition-colors duration-200 cursor-pointer" data-icon="history">history</span>
+</div>
+</header>
+<main class="max-w-md mx-auto px-6 flex flex-col items-center gap-8 pt-4">
+<!-- Hero Section: Progress Circle -->
+<section class="relative flex flex-col items-center">
+<div class="relative w-44 h-44 flex items-center justify-center">
+<svg class="w-full h-full" viewbox="0 0 160 160">
+<circle class="text-surface-container-highest" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-width="12"></circle>
+<circle class="progress-ring__circle" cx="80" cy="80" fill="transparent" r="70" stroke="url(#goldGradient)" stroke-linecap="round" stroke-width="12" style="stroke-dasharray: 440; stroke-dashoffset: 88;"></circle>
+<defs>
+<lineargradient id="goldGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#f8bd45"></stop>
+<stop offset="100%" stop-color="#e7c268"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-4xl font-extrabold tracking-tighter">8/10</span>
+</div>
+</div>
+<div class="text-center mt-4">
+<p class="text-secondary font-bold text-lg tracking-wide uppercase tracking-[0.1em]">80% chính xác</p>
+<h1 class="text-3xl font-black text-[#4ade80] mt-1">Tốt lắm!</h1>
+</div>
+</section>
+<!-- Achievement Popup (Floating Glass) -->
+<div class="glass-card w-full rounded-2xl p-4 flex items-center gap-4 shadow-xl border border-secondary/10">
+<div class="w-12 h-12 gold-gradient rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(248,189,69,0.3)]">
+<span class="material-symbols-outlined text-on-secondary" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Mới mở khóa!</p>
+<h3 class="text-secondary font-bold">Ngọn Lửa Đức Tin</h3>
+</div>
+</div>
+<!-- Stats Row -->
+<div class="grid grid-cols-3 gap-3 w-full">
+<div class="glass-card rounded-2xl py-3 px-2 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-secondary mb-1" data-icon="schedule">schedule</span>
+<span class="text-sm font-bold">2m 34s</span>
+</div>
+<div class="glass-card rounded-2xl py-3 px-2 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-secondary mb-1" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="text-sm font-bold text-secondary">+150 XP</span>
+</div>
+<div class="glass-card rounded-2xl py-3 px-2 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-[#ff6b6b] mb-1" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="text-sm font-bold">7 ngày</span>
+</div>
+</div>
+<!-- Score Breakdown -->
+<div class="glass-card w-full rounded-3xl p-6 space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Điểm cơ bản:</span>
+<span class="font-bold">96</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Bonus tốc độ:</span>
+<span class="text-[#4ade80] font-bold">+24</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Bonus combo: <span class="text-xs text-on-tertiary-container">(max 5)</span></span>
+<span class="text-secondary font-bold">+18</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Bonus ngày:</span>
+<span class="text-[#60a5fa] font-bold">+12</span>
+</div>
+<div class="pt-4 mt-2 border-t border-outline-variant/20 flex justify-between items-center">
+<span class="text-lg font-bold">Tổng cộng:</span>
+<span class="text-3xl font-black gold-text-gradient">150 điểm</span>
+</div>
+</div>
+<!-- Tier Progress -->
+<div class="glass-card w-full rounded-3xl p-6">
+<div class="flex justify-between items-end mb-4">
+<div class="flex flex-col gap-1">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Hiền Triết</span>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="ac_unit">ac_unit</span>
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Tiên Tri</span>
+</div>
+</div>
+<div class="relative w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="absolute h-full gold-gradient rounded-full shadow-[0_0_8px_rgba(248,189,69,0.5)]" style="width: 83%;"></div>
+</div>
+<div class="mt-3 flex justify-between items-center">
+<span class="text-xs text-on-surface-variant">12,450 / 15,000 XP</span>
+<span class="text-xs font-black text-secondary">+150 điểm</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="w-full flex flex-col gap-4 mt-4">
+<div class="flex gap-4 w-full">
+<button class="flex-1 glass-card py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-surface-container-highest transition-all duration-200">
+<span class="material-symbols-outlined text-sm" data-icon="edit_note">edit_note</span>
+                    Xem lại
+                </button>
+<button class="flex-1 glass-card py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-surface-container-highest transition-all duration-200">
+<span class="material-symbols-outlined text-sm" data-icon="refresh">refresh</span>
+                    Chơi lại
+                </button>
+</div>
+<button class="w-full gold-gradient py-4 rounded-xl font-black text-on-secondary shadow-lg shadow-secondary/20 flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined" data-icon="ios_share" style="font-variation-settings: 'FILL' 1;">ios_share</span>
+                Chia sẻ kết quả
+            </button>
+<a class="text-center text-on-surface-variant text-sm font-bold uppercase tracking-widest mt-2 hover:text-on-surface transition-colors" href="#">
+                Trang chủ
+            </a>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Consistent with design system but dimmed for focus) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#11131e]/80 backdrop-blur-xl rounded-t-3xl shadow-[0_-4px_24px_rgba(11,14,24,0.06)]">
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/60 px-4 py-2 hover:text-[#f8bd45] transition-all">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-bold mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/60 px-4 py-2 hover:text-[#f8bd45] transition-all">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-bold mt-1">Study</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#f8bd45]/10 text-[#f8bd45] rounded-2xl px-4 py-2">
+<span class="material-symbols-outlined" data-icon="quiz" style="font-variation-settings: 'FILL' 1;">quiz</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-bold mt-1">Quiz</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/60 px-4 py-2 hover:text-[#f8bd45] transition-all">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-bold mt-1">Profile</span>
+</div>
+</nav>
+</body></html>

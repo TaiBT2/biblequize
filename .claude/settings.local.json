@@ -5,7 +5,8 @@
       "Bash(*)",
       "mcp__stitch__get_screen",
       "Edit(*)",
-      "Write(*)"
+      "Write(*)",
+      "WebFetch(domain:contribution.usercontent.google.com)"
     ]
   }
 }

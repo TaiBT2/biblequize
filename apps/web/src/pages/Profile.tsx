@@ -1,33 +1,43 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { api } from '../api/client'
 import { useAuth } from '../store/authStore'
+import { getTierByPoints, getNextTier } from '../data/tiers'
 
-// --- Static data (to be replaced with API data later) ---
+const FILL_STYLE = { fontVariationSettings: "'FILL' 1" }
 
-const USER = {
-  name: 'Nguyễn Văn A',
-  title: 'Tân Tín Hữu',
-  level: 12,
-  coverImage:
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuA_2svHltkb34shYGCf9-PJfW2HOHx01DO6y2JrTlRvjlC_vZTTHkhGqs0F4n0VTURex5c6114-NHHBlkEnO7rZ_93rp-maO7WIucjrwDzki0RPNnhC9uQvSafCfrUHRRUdGdBh3BCwfciA5NJVr5qr8Bm3Tl9ltKBBQGZEmxsv9faaVUr8EanCHevebtowhmvYNCwxdF1DdJ34yD4qzbChuPdMU14lRuW1S1o-gveLcFFV88qOM4UAQdd7IHcCN9Q2k_7gkRLIOUQ',
-  avatar:
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuAP5PpXpHAtcFcSJwbaIdBNeUoaxx07hCqk-27gR9A1zQ3lGwgrex4TF5GKVtAPXpJoVpXsGGx4GA1sPQ89bl3xQXewGAYRGMxAvYG2VZ1Hly5ExAxxgcyz4IF4vej4DEYCbAF40BMMQ2eB06NXCbSztvyPEwU0ABywxhIOM9NP5Kxw8qnHuJVj2Sm0NR8VkJ1XnEqo8JvRDeiKTWQtWut9CvCrxIGNxyj3YWwYDxAMkMMiM0qI3wNoN5k7Xd_D1CM6XWROSsRfEeg',
+interface UserProfile {
+  name: string
+  email: string
+  avatarUrl?: string
+  totalPoints: number
+  currentStreak: number
+  longestStreak: number
+  role: string
 }
 
-const TIER_PROGRESS = {
-  currentTier: 'Tân Tín Hữu',
-  nextTier: 'Sứ Đồ',
-  currentExp: 850,
-  nextTierExp: 1200,
-  progressPercent: 65,
-  expRemaining: 350,
+interface Achievement {
+  id: string
+  name: string
+  description: string
+  icon: string
+  unlockedAt: string | null
 }
 
-const QUICK_STATS = [
-  { icon: 'quiz', iconFill: false, label: 'Số câu hỏi', value: '1,420', bgColor: 'bg-secondary/10', textColor: 'text-secondary' },
-  { icon: 'bolt', iconFill: true, label: 'Chuỗi tốt nhất', value: '24 Ngày', bgColor: 'bg-[#e7c268]/10', textColor: 'text-[#e7c268]' },
-  { icon: 'target', iconFill: false, label: 'Độ chính xác', value: '92.5%', bgColor: 'bg-primary/10', textColor: 'text-primary', hiddenOnMobile: true },
-]
+interface SessionHistory {
+  id: string
+  completedAt: string
+  score: number
+}
+
+function buildQuickStats(profile: UserProfile) {
+  return [
+    { icon: 'quiz', iconFill: false, label: 'Tổng điểm', value: profile.totalPoints.toLocaleString(), bgColor: 'bg-secondary/10', textColor: 'text-secondary' },
+    { icon: 'bolt', iconFill: true, label: 'Chuỗi tốt nhất', value: `${profile.longestStreak} Ngày`, bgColor: 'bg-[#e7c268]/10', textColor: 'text-[#e7c268]' },
+    { icon: 'local_fire_department', iconFill: true, label: 'Chuỗi hiện tại', value: `${profile.currentStreak} Ngày`, bgColor: 'bg-primary/10', textColor: 'text-primary', hiddenOnMobile: true },
+  ]
+}
 
 type HeatmapColor =
   | 'bg-secondary'
@@ -36,29 +46,85 @@ type HeatmapColor =
   | 'bg-secondary/30'
   | 'bg-surface-container-high'
 
-const HEATMAP_CELLS: HeatmapColor[] = [
-  'bg-secondary', 'bg-secondary/60', 'bg-secondary', 'bg-surface-container-high', 'bg-secondary/30', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary/80', 'bg-secondary', 'bg-surface-container-high', 'bg-surface-container-high', 'bg-secondary', 'bg-secondary/60', 'bg-secondary', 'bg-secondary/30', 'bg-secondary', 'bg-secondary', 'bg-secondary/80', 'bg-secondary',
-  'bg-secondary/30', 'bg-secondary', 'bg-surface-container-high', 'bg-surface-container-high', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary/80', 'bg-secondary', 'bg-secondary', 'bg-secondary/30', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-surface-container-high', 'bg-secondary/30', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary',
-  'bg-secondary', 'bg-secondary/60', 'bg-secondary', 'bg-surface-container-high', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-surface-container-high', 'bg-surface-container-high', 'bg-secondary', 'bg-secondary/80', 'bg-secondary', 'bg-surface-container-high', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary/30', 'bg-secondary', 'bg-secondary/80',
-  'bg-surface-container-high', 'bg-surface-container-high', 'bg-secondary/30', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary/60', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary/80', 'bg-secondary', 'bg-secondary', 'bg-surface-container-high', 'bg-secondary', 'bg-secondary', 'bg-secondary', 'bg-secondary/30', 'bg-secondary', 'bg-secondary/80',
-]
+function buildHeatmapCells(history: SessionHistory[]): HeatmapColor[] {
+  if (!history || history.length === 0) return []
 
-const BADGES = [
-  { icon: 'auto_stories', name: 'Học giả', description: 'Đọc 50 chương', locked: false },
-  { icon: 'local_fire_department', name: 'Rực cháy', description: '7 ngày liên tiếp', locked: false },
-  { icon: 'military_tech', name: 'Vô địch', description: 'Top 1 tuần', locked: false },
-  { icon: 'trophy', name: 'Nhà truyền giáo', description: 'Mời 10 bạn bè', locked: true },
-  { icon: 'workspace_premium', name: 'Thánh kinh', description: 'Hoàn thành 500 câu', locked: true },
-]
+  const dateCounts = new Map<string, number>()
+  for (const session of history) {
+    const date = session.completedAt?.slice(0, 10)
+    if (date) {
+      dateCounts.set(date, (dateCounts.get(date) ?? 0) + 1)
+    }
+  }
 
-// --- Component ---
+  // Build last 80 days heatmap
+  const cells: HeatmapColor[] = []
+  const today = new Date()
+  for (let i = 79; i >= 0; i--) {
+    const d = new Date(today)
+    d.setDate(d.getDate() - i)
+    const key = d.toISOString().slice(0, 10)
+    const count = dateCounts.get(key) ?? 0
+    if (count === 0) cells.push('bg-surface-container-high')
+    else if (count <= 2) cells.push('bg-secondary/30')
+    else if (count <= 5) cells.push('bg-secondary/60')
+    else if (count <= 8) cells.push('bg-secondary/80')
+    else cells.push('bg-secondary')
+  }
+  return cells
+}
 
-const FILL_STYLE = { fontVariationSettings: "'FILL' 1" }
+function SkeletonBlock({ className }: { className: string }) {
+  return <div className={`animate-pulse bg-surface-container-high rounded-2xl ${className}`} />
+}
+
+function ProfileSkeleton() {
+  return (
+    <>
+      <section className="relative rounded-3xl overflow-hidden mb-12">
+        <SkeletonBlock className="h-48 md:h-72 rounded-3xl" />
+      </section>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+        <SkeletonBlock className="md:col-span-2 h-64" />
+        <div className="grid grid-cols-2 md:grid-cols-1 gap-6">
+          <SkeletonBlock className="h-28" />
+          <SkeletonBlock className="h-28" />
+        </div>
+      </div>
+      <SkeletonBlock className="h-48 mb-12" />
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+        {[1, 2, 3, 4, 5].map(i => <SkeletonBlock key={i} className="h-48" />)}
+      </div>
+    </>
+  )
+}
 
 const Profile: React.FC = () => {
-  const { user, isAuthenticated } = useAuth()
+  const { user: authUser, isAuthenticated } = useAuth()
 
-  if (!isAuthenticated || !user) {
+  const { data: profile, isLoading: profileLoading, error: profileError } = useQuery<UserProfile>({
+    queryKey: ['profile'],
+    queryFn: async () => (await api.get('/api/me')).data,
+    enabled: isAuthenticated,
+  })
+
+  const { data: achievements = [], isLoading: achievementsLoading } = useQuery<Achievement[]>({
+    queryKey: ['my-achievements'],
+    queryFn: async () => {
+      try { return (await api.get('/api/achievements/me')).data } catch { return [] }
+    },
+    enabled: isAuthenticated,
+  })
+
+  const { data: historyData } = useQuery<{ content?: SessionHistory[] }>({
+    queryKey: ['my-history'],
+    queryFn: async () => {
+      try { return (await api.get('/api/me/history')).data } catch { return { content: [] } }
+    },
+    enabled: isAuthenticated,
+  })
+
+  if (!isAuthenticated || !authUser) {
     return (
       <div className="flex items-center justify-center py-24">
         <div className="text-center">
@@ -76,38 +142,71 @@ const Profile: React.FC = () => {
     )
   }
 
+  if (profileLoading) return <ProfileSkeleton />
+
+  if (profileError || !profile) {
+    return (
+      <div className="flex items-center justify-center py-24">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold mb-4 text-error">
+            Không thể tải hồ sơ
+          </h2>
+          <p className="text-on-surface-variant mb-4">Vui lòng thử lại sau</p>
+        </div>
+      </div>
+    )
+  }
+
+  const currentTier = getTierByPoints(profile.totalPoints)
+  const nextTier = getNextTier(profile.totalPoints)
+  const tierProgress = {
+    currentTierName: currentTier.name,
+    nextTierName: nextTier?.name ?? 'Max',
+    currentExp: profile.totalPoints,
+    nextTierExp: nextTier?.minPoints ?? currentTier.maxPoints,
+    progressPercent: nextTier
+      ? Math.min(100, Math.round(((profile.totalPoints - currentTier.minPoints) / (nextTier.minPoints - currentTier.minPoints)) * 100))
+      : 100,
+    expRemaining: nextTier ? nextTier.minPoints - profile.totalPoints : 0,
+  }
+
+  const quickStats = buildQuickStats(profile)
+  const history = historyData?.content ?? (Array.isArray(historyData) ? historyData as unknown as SessionHistory[] : [])
+  const heatmapCells = buildHeatmapCells(history)
+  const hasHeatmapData = heatmapCells.length > 0
+
+  const badges = achievements.map(a => ({
+    icon: a.icon || 'emoji_events',
+    name: a.name,
+    description: a.description,
+    locked: !a.unlockedAt,
+  }))
+
   return (
     <>
       {/* Hero Section */}
       <section className="relative rounded-3xl overflow-hidden mb-12">
         <div className="h-48 md:h-72 relative">
-          <img
-            className="w-full h-full object-cover opacity-50"
-            src={USER.coverImage}
-            alt="Cover"
-          />
+          <div className="w-full h-full bg-gradient-to-br from-secondary/20 to-background" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         </div>
         <div className="absolute bottom-6 left-6 md:left-10 flex flex-col md:flex-row items-end gap-6 w-full pr-12">
           <div className="w-24 h-24 md:w-40 md:h-40 rounded-3xl border-4 border-background bg-surface-container-high overflow-hidden shadow-2xl relative z-10">
-            <img
-              alt="User avatar"
-              className="w-full h-full object-cover"
-              src={(user as any).picture || USER.avatar}
-            />
+            {profile.avatarUrl ? (
+              <img alt="User avatar" className="w-full h-full object-cover" src={profile.avatarUrl} />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-4xl text-secondary">
+                <span className="material-symbols-outlined text-6xl">person</span>
+              </div>
+            )}
           </div>
           <div className="flex-1 pb-4">
             <h1 className="text-3xl md:text-5xl font-black text-on-surface tracking-tight mb-1">
-              {user.name || USER.name}
+              {profile.name}
             </h1>
             <p className="text-secondary font-bold flex items-center gap-2 text-lg">
-              <span
-                className="material-symbols-outlined text-xl"
-                style={FILL_STYLE}
-              >
-                verified
-              </span>
-              {TIER_PROGRESS.currentTier} &bull; Cấp độ {USER.level}
+              <span className="material-symbols-outlined text-xl" style={FILL_STYLE}>verified</span>
+              {tierProgress.currentTierName}
             </p>
           </div>
           <div className="hidden lg:flex gap-3 pb-4">
@@ -131,21 +230,21 @@ const Profile: React.FC = () => {
                 Tiến trình danh hiệu
               </h2>
               <span className="text-xs font-black bg-tertiary-container text-tertiary px-4 py-1.5 rounded-full uppercase tracking-widest">
-                {TIER_PROGRESS.nextTier} (Tiếp theo)
+                {tierProgress.nextTierName} (Tiếp theo)
               </span>
             </div>
             <div className="relative h-5 w-full bg-primary-container rounded-full overflow-hidden mb-6">
               <div
                 className="absolute top-0 left-0 h-full gold-gradient rounded-full shadow-[0_0_12px_rgba(232,168,50,0.3)]"
-                style={{ width: `${TIER_PROGRESS.progressPercent}%` }}
+                style={{ width: `${tierProgress.progressPercent}%` }}
               />
             </div>
             <div className="flex justify-between text-sm font-bold text-on-surface-variant uppercase tracking-tighter">
-              <span>{TIER_PROGRESS.currentTier}</span>
+              <span>{tierProgress.currentTierName}</span>
               <span>
-                {TIER_PROGRESS.currentExp} / {TIER_PROGRESS.nextTierExp.toLocaleString()} EXP
+                {tierProgress.currentExp.toLocaleString()} / {tierProgress.nextTierExp.toLocaleString()} EXP
               </span>
-              <span>{TIER_PROGRESS.nextTier}</span>
+              <span>{tierProgress.nextTierName}</span>
             </div>
           </div>
           <div className="mt-10 flex gap-6 items-center">
@@ -158,15 +257,17 @@ const Profile: React.FC = () => {
               </div>
             </div>
             <p className="text-base text-on-surface-variant italic font-medium leading-relaxed">
-              &ldquo;Còn {TIER_PROGRESS.expRemaining} EXP nữa để nhận danh hiệu{' '}
-              {TIER_PROGRESS.nextTier} và mở khóa phần thưởng đặc biệt.&rdquo;
+              {tierProgress.expRemaining > 0
+                ? <>&ldquo;Còn {tierProgress.expRemaining.toLocaleString()} EXP nữa để nhận danh hiệu {tierProgress.nextTierName} và mở khóa phần thưởng đặc biệt.&rdquo;</>
+                : <>&ldquo;Bạn đã đạt danh hiệu cao nhất! Tiếp tục để duy trì vị trí.&rdquo;</>
+              }
             </p>
           </div>
         </div>
 
         {/* Quick Stats Column */}
         <div className="grid grid-cols-2 md:grid-cols-1 gap-6">
-          {QUICK_STATS.map((stat) => (
+          {quickStats.map((stat) => (
             <div
               key={stat.label}
               className={`bg-surface-container rounded-3xl p-8 flex items-center gap-5${
@@ -213,13 +314,19 @@ const Profile: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="overflow-x-auto pb-4">
-          <div className="streak-grid min-w-[600px] gap-1.5">
-            {HEATMAP_CELLS.map((colorClass, i) => (
-              <div key={i} className={`h-5 ${colorClass} rounded-sm`} />
-            ))}
+        {hasHeatmapData ? (
+          <div className="overflow-x-auto pb-4">
+            <div className="streak-grid min-w-[600px] gap-1.5">
+              {heatmapCells.map((colorClass, i) => (
+                <div key={i} className={`h-5 ${colorClass} rounded-sm`} />
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <p className="text-on-surface-variant text-center py-8">
+            Bắt đầu chơi để thấy hoạt động
+          </p>
+        )}
       </section>
 
       {/* Badge Collection */}
@@ -235,39 +342,49 @@ const Profile: React.FC = () => {
             Xem tất cả
           </a>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
-          {BADGES.map((badge) => (
-            <div
-              key={badge.name}
-              className={`bg-surface-container rounded-3xl p-8 flex flex-col items-center text-center group${
-                badge.locked
-                  ? ' opacity-40 grayscale'
-                  : ' hover:bg-surface-container-high'
-              } transition-all`}
-            >
+        {achievementsLoading ? (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+            {[1, 2, 3, 4, 5].map(i => <SkeletonBlock key={i} className="h-48" />)}
+          </div>
+        ) : badges.length === 0 ? (
+          <p className="text-on-surface-variant text-center py-8">
+            Chưa có huy hiệu
+          </p>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+            {badges.map((badge) => (
               <div
-                className={`w-20 h-20 rounded-full flex items-center justify-center mb-5 border ${
+                key={badge.name}
+                className={`bg-surface-container rounded-3xl p-8 flex flex-col items-center text-center group${
                   badge.locked
-                    ? 'bg-surface-container-high border-outline-variant/10'
-                    : 'glass-effect border-secondary/20 shadow-[0_0_15px_rgba(232,168,50,0.1)] group-hover:scale-110'
-                } transition-transform`}
+                    ? ' opacity-40 grayscale'
+                    : ' hover:bg-surface-container-high'
+                } transition-all`}
               >
-                <span
-                  className={`material-symbols-outlined text-4xl ${
-                    badge.locked ? 'text-on-surface-variant' : 'text-secondary'
-                  }`}
-                  style={!badge.locked ? FILL_STYLE : undefined}
+                <div
+                  className={`w-20 h-20 rounded-full flex items-center justify-center mb-5 border ${
+                    badge.locked
+                      ? 'bg-surface-container-high border-outline-variant/10'
+                      : 'glass-effect border-secondary/20 shadow-[0_0_15px_rgba(232,168,50,0.1)] group-hover:scale-110'
+                  } transition-transform`}
                 >
-                  {badge.icon}
-                </span>
+                  <span
+                    className={`material-symbols-outlined text-4xl ${
+                      badge.locked ? 'text-on-surface-variant' : 'text-secondary'
+                    }`}
+                    style={!badge.locked ? FILL_STYLE : undefined}
+                  >
+                    {badge.icon}
+                  </span>
+                </div>
+                <p className="text-sm font-black text-on-surface mb-2">{badge.name}</p>
+                <p className="text-xs text-on-surface-variant font-medium">
+                  {badge.description}
+                </p>
               </div>
-              <p className="text-sm font-black text-on-surface mb-2">{badge.name}</p>
-              <p className="text-xs text-on-surface-variant font-medium">
-                {badge.description}
-              </p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
     </>
   )

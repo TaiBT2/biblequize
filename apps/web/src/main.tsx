@@ -26,6 +26,12 @@ import UsersAdmin from './pages/admin/Users'
 import RankingsAdmin from './pages/admin/Rankings'
 import EventsAdmin from './pages/admin/Events'
 import FeedbackAdmin from './pages/admin/Feedback'
+import AdminDashboard from './pages/admin/Dashboard'
+import GroupsAdmin from './pages/admin/Groups'
+import NotificationsAdmin from './pages/admin/Notifications'
+import ConfigurationAdmin from './pages/admin/Configuration'
+import ExportCenter from './pages/admin/ExportCenter'
+import QuestionQuality from './pages/admin/QuestionQuality'
 import RequireAdmin from './contexts/RequireAdmin'
 import Review from './pages/Review'
 import Achievements from './pages/Achievements'
@@ -100,7 +106,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
                 {/* Admin */}
                 <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
-                  <Route index element={<UsersAdmin />} />
+                  <Route index element={<AdminDashboard />} />
                   <Route path="users" element={<UsersAdmin />} />
                   <Route path="questions" element={<QuestionsAdmin />} />
                   <Route path="feedback" element={<FeedbackAdmin />} />
@@ -108,6 +114,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="events" element={<EventsAdmin />} />
                   <Route path="ai-generator" element={<AIQuestionGenerator />} />
                   <Route path="review-queue" element={<ReviewQueue />} />
+                  <Route path="groups" element={<GroupsAdmin />} />
+                  <Route path="notifications" element={<NotificationsAdmin />} />
+                  <Route path="config" element={<ConfigurationAdmin />} />
+                  <Route path="export" element={<ExportCenter />} />
+                  <Route path="question-quality" element={<QuestionQuality />} />
                 </Route>
 
                 {/* Catch-all 404 */}

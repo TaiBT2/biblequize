@@ -31,7 +31,12 @@ public interface QuizSessionRepository extends JpaRepository<QuizSession, String
                                                              @Param("since") LocalDateTime since);
     
     long countByOwnerIdAndStatus(String ownerId, QuizSession.Status status);
+
+    @Query("SELECT qs FROM QuizSession qs WHERE qs.status = com.biblequiz.modules.quiz.entity.QuizSession.Status.in_progress AND qs.mode = com.biblequiz.modules.quiz.entity.QuizSession.Mode.ranked AND qs.lastActivityAt < :cutoff")
+    List<QuizSession> findAbandonedRankedSessions(@Param("cutoff") LocalDateTime cutoff);
     
     @Query("SELECT COUNT(qs) FROM QuizSession qs WHERE qs.owner.id = :ownerId AND qs.mode = 'ranked' AND qs.createdAt >= :since")
     long countRankedSessionsByOwnerIdAndCreatedAtAfter(@Param("ownerId") String ownerId, @Param("since") LocalDateTime since);
+
+    long countByCreatedAtAfter(LocalDateTime since);
 }

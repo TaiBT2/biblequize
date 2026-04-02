@@ -196,4 +196,139 @@ class TournamentMatchServiceTest {
 
         assertEquals("Match not found", result.get("error"));
     }
+
+    // ── FIX-004: Sudden Death tie-break tests ───────────────────────────────
+
+    @Order(6)
+    @Test
+    void triggerSuddenDeath_equalLives_shouldStartSuddenDeath() {
+        p1.setLives(2);
+        p2.setLives(2);
+
+        Map<String, Object> result = matchService.triggerSuddenDeath(MATCH_ID);
+
+        assertTrue((Boolean) result.get("suddenDeath"));
+        assertEquals(1, result.get("round"));
+        assertEquals(10, result.get("timeLimitSec"));
+        assertTrue(match.isSuddenDeath());
+        assertEquals(1, match.getSuddenDeathRound());
+    }
+
+    @Order(7)
+    @Test
+    void triggerSuddenDeath_unequalLives_shouldEndMatchImmediately() {
+        p1.setLives(2);
+        p2.setLives(1);
+
+        Map<String, Object> result = matchService.triggerSuddenDeath(MATCH_ID);
+
+        assertTrue((Boolean) result.get("matchEnded"));
+        assertEquals(USER_P1, result.get("winnerId"));
+        assertEquals("more_lives", result.get("reason"));
+    }
+
+    @Order(8)
+    @Test
+    void resolveSuddenDeath_p1CorrectP2Wrong_p1Wins() {
+        match.setSuddenDeath(true);
+        match.setSuddenDeathRound(1);
+
+        Map<String, Object> result = matchService.resolveSuddenDeathRound(
+                MATCH_ID, true, 3000, false, 5000);
+
+        assertTrue((Boolean) result.get("matchEnded"));
+        assertEquals(USER_P1, result.get("winnerId"));
+        assertEquals("correct_vs_wrong", result.get("reason"));
+    }
+
+    @Order(9)
+    @Test
+    void resolveSuddenDeath_p2CorrectP1Wrong_p2Wins() {
+        match.setSuddenDeath(true);
+        match.setSuddenDeathRound(1);
+
+        Map<String, Object> result = matchService.resolveSuddenDeathRound(
+                MATCH_ID, false, 5000, true, 3000);
+
+        assertTrue((Boolean) result.get("matchEnded"));
+        assertEquals(USER_P2, result.get("winnerId"));
+        assertEquals("correct_vs_wrong", result.get("reason"));
+    }
+
+    @Order(10)
+    @Test
+    void resolveSuddenDeath_bothCorrect_fasterWins() {
+        match.setSuddenDeath(true);
+        match.setSuddenDeathRound(1);
+
+        // P1 answers in 2000ms, P2 in 5000ms (diff=3000ms > 200ms threshold)
+        Map<String, Object> result = matchService.resolveSuddenDeathRound(
+                MATCH_ID, true, 2000, true, 5000);
+
+        assertTrue((Boolean) result.get("matchEnded"));
+        assertEquals(USER_P1, result.get("winnerId"));
+        assertEquals("faster_answer", result.get("reason"));
+    }
+
+    @Order(11)
+    @Test
+    void resolveSuddenDeath_bothCorrect_closeTimes_continues() {
+        match.setSuddenDeath(true);
+        match.setSuddenDeathRound(1);
+
+        // Both correct, diff < 200ms → continue
+        Map<String, Object> result = matchService.resolveSuddenDeathRound(
+                MATCH_ID, true, 3000, true, 3100);
+
+        assertTrue((Boolean) result.get("continue"));
+        assertEquals(2, result.get("nextRound"));
+        assertEquals(2, match.getSuddenDeathRound());
+    }
+
+    @Order(12)
+    @Test
+    void resolveSuddenDeath_bothWrong_continues() {
+        match.setSuddenDeath(true);
+        match.setSuddenDeathRound(1);
+
+        Map<String, Object> result = matchService.resolveSuddenDeathRound(
+                MATCH_ID, false, 5000, false, 6000);
+
+        assertTrue((Boolean) result.get("continue"));
+        assertEquals(2, result.get("nextRound"));
+    }
+
+    @Order(13)
+    @Test
+    void resolveSuddenDeath_maxRoundsReached_totalElapsedWins() {
+        match.setSuddenDeath(true);
+        match.setSuddenDeathRound(5); // max round
+
+        // Set accumulated elapsed: P1 total faster
+        p1.setTotalElapsedMs(10000);
+        p2.setTotalElapsedMs(15000);
+
+        Map<String, Object> result = matchService.resolveSuddenDeathRound(
+                MATCH_ID, false, 3000, false, 4000);
+
+        // P1 total: 10000+3000=13000, P2 total: 15000+4000=19000 → P1 wins
+        assertTrue((Boolean) result.get("matchEnded"));
+        assertEquals(USER_P1, result.get("winnerId"));
+        assertEquals("total_elapsed", result.get("reason"));
+    }
+
+    @Order(14)
+    @Test
+    void resolveSuddenDeath_p1CorrectP2Timeout_p1Wins() {
+        match.setSuddenDeath(true);
+        match.setSuddenDeathRound(1);
+
+        // P2 timeout = treated as wrong (isCorrect=false), elapsedMs = timeLimitMs (10000)
+        Map<String, Object> result = matchService.resolveSuddenDeathRound(
+                MATCH_ID, true, 3000, false, 10000);
+
+        assertTrue((Boolean) result.get("matchEnded"));
+        assertEquals(USER_P1, result.get("winnerId"));
+        assertEquals("correct_vs_wrong", result.get("reason"));
+    }
 }

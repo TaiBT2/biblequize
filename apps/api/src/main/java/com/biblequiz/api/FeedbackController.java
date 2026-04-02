@@ -95,7 +95,7 @@ public class FeedbackController {
     // ── Admin: list feedback ─────────────────────────────────────────────────
 
     @GetMapping("/api/admin/feedback")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'CONTENT_MOD')")
     @Transactional(readOnly = true)
     public ResponseEntity<Map<String, Object>> list(
             @RequestParam(value = "status", required = false) String statusStr,

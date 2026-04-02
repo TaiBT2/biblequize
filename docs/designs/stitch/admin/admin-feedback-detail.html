@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BibleQuiz Admin - Feedback Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed": "#191b28",
+                        "inverse-on-surface": "#2e303a",
+                        "primary-fixed": "#ffdead",
+                        "on-tertiary": "#00315d",
+                        "error-container": "#93000a",
+                        "surface-variant": "#32343e",
+                        "primary-fixed-dim": "#fdbb44",
+                        "surface-bright": "#373943",
+                        "secondary-fixed-dim": "#c5c5d7",
+                        "on-surface-variant": "#d5c4af",
+                        "on-surface": "#e1e1ef",
+                        "surface-container": "#1d1f29",
+                        "tertiary": "#b3d1ff",
+                        "tertiary-fixed-dim": "#a4c9ff",
+                        "primary-container": "#e8a832",
+                        "surface-dim": "#11131c",
+                        "on-primary-fixed-variant": "#604100",
+                        "on-background": "#e1e1ef",
+                        "surface": "#11131c",
+                        "on-tertiary-fixed-variant": "#004883",
+                        "on-primary-container": "#5f4000",
+                        "secondary": "#c5c5d7",
+                        "surface-tint": "#fdbb44",
+                        "inverse-surface": "#e1e1ef",
+                        "inverse-primary": "#7f5700",
+                        "on-primary": "#432c00",
+                        "on-tertiary-fixed": "#001c39",
+                        "outline-variant": "#504535",
+                        "on-secondary-container": "#b3b4c6",
+                        "secondary-container": "#444655",
+                        "on-secondary": "#2e303d",
+                        "outline": "#9d8f7b",
+                        "secondary-fixed": "#e1e1f4",
+                        "surface-container-highest": "#32343e",
+                        "tertiary-container": "#80b6ff",
+                        "tertiary-fixed": "#d4e3ff",
+                        "on-secondary-fixed-variant": "#444655",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0c0e17",
+                        "surface-container-low": "#191b25",
+                        "on-tertiary-container": "#004681",
+                        "on-primary-fixed": "#281900",
+                        "surface-container-high": "#282933",
+                        "on-error": "#690005",
+                        "background": "#11131c",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#ffc667"
+                    },
+                    fontFamily: {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"],
+                        "mono": ["JetBrains Mono"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #11131c;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #32343e;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface-dim text-on-surface font-body overflow-hidden">
+<!-- Sidebar (Shared Component Blueprint) -->
+<aside class="bg-[#0c0e17] h-screen w-64 fixed left-0 top-0 flex flex-col py-8 px-4 font-['Be_Vietnam_Pro'] text-sm tracking-tight">
+<div class="mb-10 px-4">
+<h1 class="text-xl font-bold tracking-tighter text-[#e8a832] uppercase">Monolith</h1>
+<p class="text-[10px] text-on-surface-variant opacity-50 tracking-widest mt-1">PROTOCOL ADMIN</p>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span>Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#e8a832] border-r-2 border-[#e8a832] bg-[#1d1f29] font-semibold cursor-pointer">
+<span class="material-symbols-outlined text-xl">database</span>
+<span>Question Bank</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-xl">group</span>
+<span>User Management</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-xl">insights</span>
+<span>Quiz Analytics</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-xl">auto_stories</span>
+<span>Sacred Texts</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span>System Settings</span>
+</div>
+</nav>
+<div class="mt-auto space-y-1 border-t border-surface-variant pt-6">
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-xl">menu_book</span>
+<span>Documentation</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-xl">logout</span>
+<span>Log Out</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area (Background) -->
+<main class="ml-64 w-[calc(100%-16rem)] min-h-screen p-8 opacity-20 pointer-events-none">
+<header class="flex justify-between items-center mb-12">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight text-on-surface">Question Bank</h2>
+<p class="text-on-surface-variant text-sm mt-1">Presiding over 12,402 sacred entries</p>
+</div>
+<div class="flex gap-4">
+<div class="h-10 px-4 flex items-center bg-surface-container rounded-lg border border-outline-variant/20">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+<span class="text-on-surface-variant text-xs">Search database...</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-4 gap-6">
+<div class="h-64 bg-surface-container rounded-xl"></div>
+<div class="h-64 bg-surface-container rounded-xl"></div>
+<div class="h-64 bg-surface-container rounded-xl"></div>
+<div class="h-64 bg-surface-container rounded-xl"></div>
+</div>
+</main>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 bg-surface-dim/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+<!-- MODAL CARD -->
+<section class="bg-[#161825] w-full max-w-[700px] max-h-[921px] rounded-xl overflow-hidden shadow-2xl flex flex-col ring-1 ring-outline-variant/30">
+<!-- HEADER -->
+<header class="p-6 bg-surface-container-high border-b border-outline-variant/10 flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="Administrator Profile" class="w-12 h-12 rounded-lg object-cover grayscale" data-alt="close-up portrait of a professional man with clean-cut style and neutral expression in soft directional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOPsk0Rpyczj7jaPoPfTMxC45DXbJHbQry3R5oar7AEIF66K3ugEYJfZtTfPSkBEQnI7V-qQIzujETElXyqbpTGS1DSxs26d-_AdoFMIryNHNiA4xMhBVNdM-JiR6UEdLUUp_nJMb0JaEX89cD8UQenBw47CtWvBkoK42UHrJOg5hF3k1_V_N95UL465uAQg2s8t9b3QtENxc0vvIAzPbG48i4VxWPzHX6QbhEaCH1_1YJ6cmAnklcfuKmnG7aIndYsHKyIA5oJgA"/>
+<span class="absolute -bottom-1 -right-1 w-4 h-4 bg-primary rounded-full border-2 border-[#161825]"></span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-on-surface leading-tight">Gabriel Thorne</h3>
+<p class="text-xs font-mono text-on-surface-variant/70">g.thorne@protocol.internal</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="px-3 py-1 bg-error-container/20 text-error text-[10px] font-bold tracking-widest uppercase rounded-full ring-1 ring-error/30">Content Error</span>
+<span class="text-[10px] font-mono text-on-surface-variant/50">ID: FB-992-X</span>
+</div>
+</header>
+<!-- SCROLLABLE CONTENT -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-8">
+<!-- CONTENT: Feedback Text -->
+<section>
+<div class="flex items-center gap-2 mb-3 text-on-surface-variant/50">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+<span class="text-[10px] font-bold tracking-wider uppercase">User Feedback Statement</span>
+</div>
+<blockquote class="text-on-surface text-base leading-relaxed font-light italic border-l-2 border-primary-container/30 pl-4">
+                        "The citation for the passage in the third round of the 'Prophets' quiz appears to be incorrect. It references Ezekiel 14:2, but the text provided is actually from Jeremiah 7. This is causing confusion in our study group."
+                    </blockquote>
+</section>
+<!-- LINKED QUESTION -->
+<section class="bg-surface-container-lowest p-4 rounded-lg border border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">link</span>
+<span class="text-[10px] font-bold tracking-wider uppercase text-on-surface-variant">Linked Question Preview</span>
+</div>
+<span class="font-mono text-[10px] text-primary">#QUE-88219</span>
+</div>
+<div class="space-y-2">
+<p class="text-sm font-medium text-on-surface">Which prophet was instructed to eat a scroll that tasted like honey?</p>
+<div class="grid grid-cols-2 gap-2 mt-4">
+<div class="p-2 bg-surface-container text-[11px] text-on-surface-variant/80 rounded border border-outline-variant/5">A) Jeremiah</div>
+<div class="p-2 bg-surface-container-high text-[11px] text-primary font-semibold rounded border border-primary/20">B) Ezekiel (Selected)</div>
+</div>
+</div>
+</section>
+<!-- ADMIN NOTES -->
+<section>
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">edit_note</span>
+<span class="text-[10px] font-bold tracking-wider uppercase text-on-surface-variant">Ghi chú admin</span>
+</div>
+<span class="text-[10px] text-on-surface-variant/40">Last updated: 14:22 PM</span>
+</div>
+<div class="relative">
+<textarea class="w-full bg-surface-container-low border-none rounded-lg p-4 text-sm text-on-surface focus:ring-1 focus:ring-primary h-24 placeholder:text-on-surface-variant/30 transition-all" placeholder="Enter resolution notes or internal observations..."></textarea>
+<button class="absolute bottom-3 right-3 bg-primary-container hover:bg-primary text-on-primary-fixed px-4 py-1.5 rounded text-[10px] font-bold uppercase tracking-widest transition-all">Lưu</button>
+</div>
+</section>
+<!-- HISTORY LOG -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">history</span>
+<span class="text-[10px] font-bold tracking-wider uppercase text-on-surface-variant">History Log</span>
+</div>
+<div class="space-y-6 relative before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-[1px] before:bg-outline-variant/20">
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-4 h-4 bg-surface-container-highest rounded-full border-2 border-primary flex items-center justify-center">
+<div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+</div>
+<p class="text-xs text-on-surface font-medium">Admin Sarah K. changed status to <span class="text-tertiary">In Review</span></p>
+<p class="text-[10px] font-mono text-on-surface-variant/50 mt-1">2h ago • System Node 04</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-4 h-4 bg-surface-container-highest rounded-full border-2 border-outline-variant flex items-center justify-center">
+<div class="w-1.5 h-1.5 bg-outline-variant rounded-full"></div>
+</div>
+<p class="text-xs text-on-surface-variant">Ticket assigned to Content Integrity Team</p>
+<p class="text-[10px] font-mono text-on-surface-variant/50 mt-1">4h ago • Automated Trigger</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-4 h-4 bg-surface-container-highest rounded-full border-2 border-outline-variant flex items-center justify-center">
+<div class="w-1.5 h-1.5 bg-outline-variant rounded-full"></div>
+</div>
+<p class="text-xs text-on-surface-variant">Feedback received from Gabriel Thorne</p>
+<p class="text-[10px] font-mono text-on-surface-variant/50 mt-1">6h ago • Client Interface</p>
+</div>
+</div>
+</section>
+</div>
+<!-- MANAGEMENT ACTIONS -->
+<footer class="p-6 bg-surface-container-high/50 border-t border-outline-variant/10">
+<div class="flex items-center gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 bg-tertiary/10 hover:bg-tertiary/20 text-tertiary py-3 rounded-lg text-xs font-bold uppercase tracking-widest transition-all border border-tertiary/20">
+<span class="material-symbols-outlined text-lg">play_arrow</span>
+                        Bắt đầu xem
+                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 bg-[#22c55e]/10 hover:bg-[#22c55e]/20 text-[#22c55e] py-3 rounded-lg text-xs font-bold uppercase tracking-widest transition-all border border-[#22c55e]/20">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+                        Đã xử lý
+                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 bg-surface-container-highest hover:bg-surface-bright text-on-surface-variant py-3 rounded-lg text-xs font-bold uppercase tracking-widest transition-all border border-outline-variant/10">
+<span class="material-symbols-outlined text-lg">block</span>
+                        Bỏ qua
+                    </button>
+</div>
+</footer>
+</section>
+</div>
+</body></html>

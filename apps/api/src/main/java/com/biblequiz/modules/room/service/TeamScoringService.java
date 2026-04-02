@@ -80,6 +80,54 @@ public class TeamScoringService {
         return "TIE";
     }
 
+    /**
+     * FIX: Tie-break khi 2 đội cùng điểm.
+     * 1. So perfectRoundCount → nhiều hơn thắng
+     * 2. So totalResponseMs → nhanh hơn thắng
+     * 3. Vẫn bằng → "TIE" thật
+     */
+    public TeamResult determineWinnerWithTieBreak(String roomId, int perfectRoundsA, int perfectRoundsB) {
+        TeamScores scores = calculateTeamScores(roomId);
+
+        if (scores.teamA > scores.teamB) return new TeamResult("A", "SCORE", scores);
+        if (scores.teamB > scores.teamA) return new TeamResult("B", "SCORE", scores);
+
+        // Tie → compare perfect rounds
+        if (perfectRoundsA > perfectRoundsB) return new TeamResult("A", "PERFECT_ROUNDS", scores);
+        if (perfectRoundsB > perfectRoundsA) return new TeamResult("B", "PERFECT_ROUNDS", scores);
+
+        // Tie → compare total response time (lower = faster = better)
+        List<RoomPlayer> players = roomPlayerRepository.findByRoomId(roomId);
+        double totalMsA = 0, totalMsB = 0;
+        int countA = 0, countB = 0;
+        for (RoomPlayer p : players) {
+            if (p.getTeam() == RoomPlayer.Team.A) {
+                totalMsA += p.getAverageReactionTime() * p.getTotalAnswered();
+                countA++;
+            } else if (p.getTeam() == RoomPlayer.Team.B) {
+                totalMsB += p.getAverageReactionTime() * p.getTotalAnswered();
+                countB++;
+            }
+        }
+        if (countA > 0 && countB > 0 && totalMsA != totalMsB) {
+            return new TeamResult(totalMsA < totalMsB ? "A" : "B", "SPEED", scores);
+        }
+
+        return new TeamResult("TIE", "TIE", scores);
+    }
+
+    public static class TeamResult {
+        public final String winningTeam; // "A", "B", or "TIE"
+        public final String reason;      // "SCORE", "PERFECT_ROUNDS", "SPEED", "TIE"
+        public final TeamScores scores;
+
+        public TeamResult(String winningTeam, String reason, TeamScores scores) {
+            this.winningTeam = winningTeam;
+            this.reason = reason;
+            this.scores = scores;
+        }
+    }
+
     // ── DTOs ──
 
     public static class TeamScores {

@@ -34,4 +34,6 @@ public interface AnswerRepository extends JpaRepository<Answer, String> {
     
     @Query("SELECT SUM(a.scoreEarned) FROM Answer a WHERE a.user.id = :userId AND a.createdAt >= :since")
     Long sumScoreEarnedByUserIdAndCreatedAtAfter(@Param("userId") String userId, @Param("since") LocalDateTime since);
+
+    long countBySessionId(String sessionId);
 }

@@ -14,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
@@ -71,7 +72,9 @@ class StreakServiceTest {
     @Test
     void recordActivity_sameDay_shouldNotChangeStreak() {
         testUser.setCurrentStreak(3);
-        testUser.setLastPlayedAt(LocalDateTime.now(ZoneOffset.UTC).minusHours(2));
+        // Use today's UTC date at noon to guarantee same day regardless of timezone
+        LocalDate todayUtc = LocalDate.now(ZoneOffset.UTC);
+        testUser.setLastPlayedAt(todayUtc.atTime(12, 0));
 
         streakService.recordActivity(testUser);
 

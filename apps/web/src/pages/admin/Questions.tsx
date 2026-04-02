@@ -249,7 +249,7 @@ export default function QuestionsAdmin() {
       {/* Header */}
       <div className="flex items-start justify-between gap-3 flex-wrap">
         <div>
-          <h2 className="text-2xl font-semibold">Questions</h2>
+          <h1 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight">Questions</h1>
           <p className="text-white/60 text-sm">
             {data ? `${data.total.toLocaleString()} câu hỏi` : 'Đang tải...'}
           </p>

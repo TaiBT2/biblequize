@@ -9,6 +9,8 @@ import com.biblequiz.modules.tournament.repository.TournamentMatchRepository;
 import com.biblequiz.modules.tournament.repository.TournamentParticipantRepository;
 import com.biblequiz.modules.tournament.repository.TournamentRepository;
 import com.biblequiz.modules.tournament.service.TournamentService;
+import com.biblequiz.modules.quiz.entity.UserDailyProgress;
+import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.user.entity.User;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -19,6 +21,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
@@ -38,6 +41,9 @@ class TournamentServiceTest {
 
     @Mock
     private TournamentMatchParticipantRepository matchParticipantRepository;
+
+    @Mock
+    private UserDailyProgressRepository udpRepository;
 
     @InjectMocks
     private TournamentService tournamentService;
@@ -142,6 +148,7 @@ class TournamentServiceTest {
             User u = new User();
             u.setId("user-" + i);
             u.setName("Player " + i);
+            u.setEmail("player" + i + "@test.com");
             TournamentParticipant p = new TournamentParticipant("p-" + i, testTournament, u);
             participants.add(p);
         }
@@ -152,6 +159,8 @@ class TournamentServiceTest {
         when(matchRepository.save(any(TournamentMatch.class))).thenAnswer(inv -> inv.getArgument(0));
         when(matchParticipantRepository.save(any(TournamentMatchParticipant.class))).thenAnswer(inv -> inv.getArgument(0));
         when(tournamentRepository.save(any(Tournament.class))).thenAnswer(inv -> inv.getArgument(0));
+        // FIX-003: seedParticipantsByPoints queries UDP for each participant
+        lenient().when(udpRepository.findByUserIdOrderByDateDesc(anyString())).thenReturn(List.of());
 
         // For checkAndAdvanceRound - return the matches we just created (none completed yet)
         lenient().when(matchRepository.findByTournamentIdAndRoundNumber(eq("tourn-1"), eq(1)))
@@ -169,6 +178,125 @@ class TournamentServiceTest {
         assertEquals(8, result.get("participantCount"));
         // 8 players => bracketSize 8 => 4 matches in round 1
         verify(matchRepository, times(4)).save(any(TournamentMatch.class));
+    }
+
+    @Test
+    void startTournament_lessThan4Players_shouldReturnError() {
+        // FIX-003: Minimum 4 participants
+        List<TournamentParticipant> participants = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            User u = new User();
+            u.setId("user-" + i);
+            u.setName("Player " + i);
+            participants.add(new TournamentParticipant("p-" + i, testTournament, u));
+        }
+
+        when(tournamentRepository.findById("tourn-1")).thenReturn(Optional.of(testTournament));
+        when(participantRepository.findByTournamentId("tourn-1")).thenReturn(participants);
+
+        Map<String, Object> result = tournamentService.startTournament("tourn-1", "creator-1");
+
+        assertEquals("Need at least 4 participants to start", result.get("error"));
+        verify(matchRepository, never()).save(any());
+    }
+
+    @Test
+    void startTournament_seedsByPointsDescending() {
+        // FIX-003: Players with higher all-time points should get lower seeds (seed 1 = best)
+        Tournament t4 = new Tournament("tourn-4", "Seeding Test", creatorUser, 4);
+        t4.setStatus(Tournament.Status.LOBBY);
+
+        List<TournamentParticipant> participants = new ArrayList<>();
+        String[] names = {"LowPts", "MidPts", "HighPts", "ZeroPts"};
+        int[] points = {100, 500, 1000, 0};
+        for (int i = 0; i < 4; i++) {
+            User u = new User();
+            u.setId("u-" + i);
+            u.setName(names[i]);
+            u.setEmail(names[i] + "@test.com");
+            participants.add(new TournamentParticipant("p-" + i, t4, u));
+        }
+
+        when(tournamentRepository.findById("tourn-4")).thenReturn(Optional.of(t4));
+        when(participantRepository.findByTournamentId("tourn-4")).thenReturn(participants);
+        when(participantRepository.save(any(TournamentParticipant.class))).thenAnswer(inv -> inv.getArgument(0));
+        when(matchRepository.save(any(TournamentMatch.class))).thenAnswer(inv -> inv.getArgument(0));
+        when(matchParticipantRepository.save(any(TournamentMatchParticipant.class))).thenAnswer(inv -> inv.getArgument(0));
+        when(tournamentRepository.save(any(Tournament.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        // Mock UDP: return points for each user
+        for (int i = 0; i < 4; i++) {
+            String uid = "u-" + i;
+            int pts = points[i];
+            UserDailyProgress udp = new UserDailyProgress();
+            udp.setPointsCounted(pts);
+            when(udpRepository.findByUserIdOrderByDateDesc(uid))
+                    .thenReturn(pts > 0 ? List.of(udp) : List.of());
+        }
+
+        lenient().when(matchRepository.findByTournamentIdAndRoundNumber(eq("tourn-4"), eq(1)))
+                .thenReturn(List.of(
+                        createPendingMatch(t4, 1, 0),
+                        createPendingMatch(t4, 1, 1)
+                ));
+
+        tournamentService.startTournament("tourn-4", "creator-1");
+
+        // Verify seeds were assigned: HighPts(1000)=seed1, MidPts(500)=seed2, LowPts(100)=seed3, ZeroPts(0)=seed4
+        // Capture all saved participants
+        var captor = org.mockito.ArgumentCaptor.forClass(TournamentParticipant.class);
+        verify(participantRepository, atLeast(4)).save(captor.capture());
+        Map<String, Integer> seedMap = new HashMap<>();
+        for (TournamentParticipant saved : captor.getAllValues()) {
+            if (saved.getSeed() != null) {
+                seedMap.put(saved.getUser().getName(), saved.getSeed());
+            }
+        }
+        assertEquals(1, seedMap.get("HighPts"));
+        assertEquals(2, seedMap.get("MidPts"));
+        assertEquals(3, seedMap.get("LowPts"));
+        assertEquals(4, seedMap.get("ZeroPts"));
+    }
+
+    @Test
+    void startTournament_with6PlayersInBracket8_shouldCreate2Byes() {
+        // FIX-003: 6 players in bracket 8 → seed 1 & 2 get byes
+        List<TournamentParticipant> participants = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            User u = new User();
+            u.setId("user-" + i);
+            u.setName("Player " + i);
+            u.setEmail("p" + i + "@test.com");
+            participants.add(new TournamentParticipant("p-" + i, testTournament, u));
+        }
+
+        when(tournamentRepository.findById("tourn-1")).thenReturn(Optional.of(testTournament));
+        when(participantRepository.findByTournamentId("tourn-1")).thenReturn(participants);
+        when(participantRepository.save(any(TournamentParticipant.class))).thenAnswer(inv -> inv.getArgument(0));
+        lenient().when(matchParticipantRepository.save(any(TournamentMatchParticipant.class))).thenAnswer(inv -> inv.getArgument(0));
+        when(tournamentRepository.save(any(Tournament.class))).thenAnswer(inv -> inv.getArgument(0));
+        lenient().when(udpRepository.findByUserIdOrderByDateDesc(anyString())).thenReturn(List.of());
+
+        // Track saved matches to count byes
+        List<TournamentMatch> savedMatches = new ArrayList<>();
+        when(matchRepository.save(any(TournamentMatch.class))).thenAnswer(inv -> {
+            TournamentMatch m = inv.getArgument(0);
+            savedMatches.add(m);
+            return m;
+        });
+        lenient().when(matchRepository.findByTournamentIdAndRoundNumber(eq("tourn-1"), anyInt()))
+                .thenAnswer(inv -> savedMatches.stream()
+                        .filter(m -> m.getRoundNumber() == (int) inv.getArgument(1))
+                        .collect(Collectors.toList()));
+
+        tournamentService.startTournament("tourn-1", "creator-1");
+
+        // 4 matches in round 1, 2 of them should be byes
+        List<TournamentMatch> round1 = savedMatches.stream()
+                .filter(m -> m.getRoundNumber() == 1).collect(Collectors.toList());
+        assertEquals(4, round1.size());
+        long byeCount = round1.stream().filter(TournamentMatch::isBye).count();
+        assertEquals(2, byeCount);
     }
 
     @Test

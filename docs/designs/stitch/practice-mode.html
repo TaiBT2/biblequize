@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BibleQuiz - Practice Mode</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed-variant": "#404562",
+              "surface-container-lowest": "#0b0e18",
+              "inverse-on-surface": "#2e303c",
+              "error": "#ffb4ab",
+              "surface-bright": "#373845",
+              "on-error": "#690005",
+              "tertiary": "#e7c268",
+              "primary-fixed-dim": "#c0c4e8",
+              "outline-variant": "#46464d",
+              "inverse-primary": "#585d7b",
+              "surface-tint": "#c0c4e8",
+              "on-primary-fixed": "#151a34",
+              "on-error-container": "#ffdad6",
+              "on-surface": "#e1e1f1",
+              "surface-variant": "#323440",
+              "on-surface-variant": "#c7c5ce",
+              "error-container": "#93000a",
+              "outline": "#919098",
+              "on-primary": "#2a2f4a",
+              "inverse-surface": "#e1e1f1",
+              "surface-container-low": "#191b26",
+              "on-secondary-fixed": "#271900",
+              "on-background": "#e1e1f1",
+              "on-tertiary-fixed": "#251a00",
+              "secondary-fixed-dim": "#f8bd45",
+              "tertiary-fixed-dim": "#e7c268",
+              "background": "#11131e",
+              "on-secondary": "#412d00",
+              "on-secondary-container": "#392600",
+              "primary-container": "#1a1f3a",
+              "surface": "#11131e",
+              "tertiary-fixed": "#ffdf96",
+              "tertiary-container": "#2b1f00",
+              "surface-container-high": "#272935",
+              "on-secondary-fixed-variant": "#5e4200",
+              "on-tertiary-fixed-variant": "#5a4400",
+              "secondary": "#f8bd45",
+              "on-tertiary-container": "#a48431",
+              "on-tertiary": "#3e2e00",
+              "secondary-container": "#bc8709",
+              "primary-fixed": "#dee1ff",
+              "surface-container": "#1d1f2a",
+              "surface-container-highest": "#323440",
+              "secondary-fixed": "#ffdea7",
+              "primary": "#c0c4e8",
+              "on-primary-container": "#8286a7",
+              "surface-dim": "#11131e"
+            },
+            fontFamily: {
+              "headline": ["Be Vietnam Pro"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { font-family: 'Be Vietnam Pro', sans-serif; }
+      .glass-card {
+        background-color: rgba(50, 52, 64, 0.6);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .gold-gradient {
+        background: linear-gradient(to right, #f8bd45, #e7c268);
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-full py-8 bg-[#1d1f2a] w-64 border-r border-[#46464d]/15 font-['Be_Vietnam_Pro'] font-medium">
+<div class="px-6 mb-8">
+<span class="text-2xl font-black text-[#f8bd45]">BibleQuiz</span>
+</div>
+<div class="px-4 mb-10 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="close-up portrait of a serene young man with a warm smile, soft natural lighting, religious student aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy6sEM-SZp2owS78j2X8oF9uQGMEh-uzBVfk3bezeISPRnDr6_pGixwSPIvCfPBWkX52q-rwVKWa8jV2gv3cgAQSzpWQjUPAtBgTeaKryotzufq7bRDEl3xrm6dnry2irnUKTkHe4RtXje9VxqwkT8Y6BnjvBfWAbKlgtO70VPHT8tQzHLoHtlhVaav_kyoACTBjOmHzVeQHAfPMAi3t0xoL9y_PFMf1s7sF6gPUSrmYP4sQNCyoG7qonKwiERja0eSu8z4l0ZDyw"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Faith Journey</p>
+<p class="text-xs text-on-surface-variant">Level 12 Seeker</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center text-[#e1e1f1]/70 hover:text-[#f8bd45] px-4 py-3 hover:bg-[#272935] duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center bg-gradient-to-r from-[#f8bd45] to-[#e7c268] text-[#11131e] rounded-lg mx-2 px-4 py-3 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span>Missions</span>
+</a>
+<a class="flex items-center text-[#e1e1f1]/70 hover:text-[#f8bd45] px-4 py-3 hover:bg-[#272935] duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="workspace_premium">workspace_premium</span>
+<span>Achievements</span>
+</a>
+<a class="flex items-center text-[#e1e1f1]/70 hover:text-[#f8bd45] px-4 py-3 hover:bg-[#272935] duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="church">church</span>
+<span>Church Group</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-1">
+<button class="w-full py-3 mb-4 rounded-xl gold-gradient text-on-secondary font-bold text-sm shadow-lg shadow-secondary/10 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="menu_book">menu_book</span>
+                    Daily Verse
+                </button>
+<a class="flex items-center text-[#e1e1f1]/70 hover:text-[#f8bd45] px-4 py-3 hover:bg-[#272935] duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center text-[#e1e1f1]/70 hover:text-[#f8bd45] px-4 py-3 hover:bg-[#272935] duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="help">help</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto relative bg-surface">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-30 flex justify-between items-center w-full px-6 py-4 bg-[#11131e] font-['Be_Vietnam_Pro'] tracking-tight shadow-[0_24px_24px_rgba(0,0,0,0.2)]">
+<div class="flex items-center gap-4">
+<span class="md:hidden text-xl font-bold text-[#f8bd45] uppercase tracking-wider">BibleQuiz</span>
+<h1 class="text-xl font-extrabold text-on-surface flex items-center gap-2">
+<span>📖 Tự luyện</span>
+</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex flex-col items-end">
+<span class="text-sm font-bold text-secondary">Novice Disciple</span>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant">Rank #402</span>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface active:scale-95 transition-transform hover:bg-[#272935]">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<div class="max-w-4xl mx-auto px-6 py-8 space-y-8">
+<!-- Header Section -->
+<section class="space-y-2">
+<h2 class="text-2xl font-bold text-on-surface tracking-tight">Luyện tập không giới hạn</h2>
+<p class="text-on-surface-variant">Luyện tập kiến thức Kinh Thánh mọi lúc, không ảnh hưởng đến điểm xếp hạng của bạn.</p>
+</section>
+<!-- Retry Banner -->
+<section class="glass-card rounded-xl p-5 flex flex-col md:flex-row items-center justify-between gap-4 border-l-4 border-secondary">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="history_edu">history_edu</span>
+<span class="font-medium">🔄 Bạn có 3 câu sai ở lần trước</span>
+</div>
+<button class="px-6 py-2 rounded-lg border border-secondary/30 text-secondary hover:bg-secondary/10 transition-colors text-sm font-semibold">
+                        Làm lại câu sai
+                    </button>
+</section>
+<!-- Config Bento Grid / Glass Card -->
+<section class="glass-card rounded-2xl p-8 space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Bible Book Selection -->
+<div class="space-y-3">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Sách Kinh Thánh</label>
+<div class="relative group">
+<select class="w-full bg-surface-container-highest border-none rounded-xl py-4 px-5 text-on-surface focus:ring-2 focus:ring-secondary/50 appearance-none cursor-pointer">
+<option>Ma-thi-ơ</option>
+<option>Sáng Thế Ký</option>
+<option>Công vụ các Sứ đồ</option>
+<option>Khải Huyền</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Difficulty -->
+<div class="space-y-3">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Mức độ khó</label>
+<div class="flex bg-surface-container-highest p-1 rounded-xl">
+<button class="flex-1 py-3 text-xs font-bold rounded-lg transition-all text-on-surface-variant hover:text-on-surface">Dễ</button>
+<button class="flex-1 py-3 text-xs font-bold rounded-lg transition-all text-on-surface-variant hover:text-on-surface">TB</button>
+<button class="flex-1 py-3 text-xs font-bold rounded-lg transition-all text-on-surface-variant hover:text-on-surface">Khó</button>
+<button class="flex-1 py-3 text-xs font-bold rounded-lg bg-surface-container text-secondary shadow-sm">Hỗn hợp</button>
+</div>
+</div>
+<!-- Question Count -->
+<div class="space-y-3">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Số lượng câu hỏi</label>
+<div class="grid grid-cols-4 gap-2">
+<button class="py-3 rounded-xl bg-surface-container-highest hover:bg-surface-variant text-sm transition-colors">5</button>
+<button class="py-3 rounded-xl bg-secondary text-on-secondary font-bold text-sm shadow-lg shadow-secondary/20 transition-colors">10</button>
+<button class="py-3 rounded-xl bg-surface-container-highest hover:bg-surface-variant text-sm transition-colors">15</button>
+<button class="py-3 rounded-xl bg-surface-container-highest hover:bg-surface-variant text-sm transition-colors">20</button>
+</div>
+</div>
+<!-- Toggle -->
+<div class="flex items-center justify-between bg-surface-container-low p-4 rounded-xl self-end">
+<span class="text-sm font-medium">Hiện giải thích sau mỗi câu</span>
+<button class="w-12 h-6 bg-secondary rounded-full relative flex items-center px-1">
+<div class="w-4 h-4 bg-on-secondary rounded-full absolute right-1"></div>
+</button>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="pt-6 border-t border-outline-variant/15 flex flex-col items-center space-y-4">
+<button class="w-full max-w-sm py-5 rounded-xl gold-gradient text-on-secondary font-black text-lg flex items-center justify-center gap-3 shadow-xl shadow-secondary/10 active:scale-95 transition-all">
+                            Bắt đầu luyện tập
+                            <span class="material-symbols-outlined" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<div class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs" data-icon="format_list_numbered">format_list_numbered</span> 10 câu</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs" data-icon="leaderboard">leaderboard</span> Hỗn hợp</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs" data-icon="book_5">book_5</span> Ma-thi-ơ</span>
+</div>
+</div>
+</section>
+<!-- Recent Sessions -->
+<section class="space-y-4 pb-20">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold tracking-tight">Lịch sử luyện tập</h3>
+<button class="text-sm text-secondary font-medium">Xem tất cả</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Session Card 1 -->
+<div class="glass-card p-4 rounded-xl flex items-center gap-4 group hover:bg-[#323440]/80 transition-all cursor-pointer">
+<div class="relative w-14 h-14 shrink-0">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(248, 189, 69, 0.1)" stroke-width="3"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#f8bd45" stroke-dasharray="80, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center text-xs font-bold">8/10</div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Ma-thi-ơ</p>
+<p class="text-[10px] text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[10px]" data-icon="calendar_today">calendar_today</span> 
+                                    Hôm nay, 14:30
+                                </p>
+<div class="flex gap-2 mt-2">
+<span class="text-[9px] uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">Dễ</span>
+<span class="text-[9px] uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">10 câu</span>
+</div>
+</div>
+<a class="text-secondary text-xs font-bold flex items-center group-hover:underline" href="#">
+                                Ôn lại
+                            </a>
+</div>
+<!-- Session Card 2 -->
+<div class="glass-card p-4 rounded-xl flex items-center gap-4 group hover:bg-[#323440]/80 transition-all cursor-pointer">
+<div class="relative w-14 h-14 shrink-0">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(248, 189, 69, 0.1)" stroke-width="3"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#f8bd45" stroke-dasharray="60, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center text-xs font-bold">6/10</div>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Sáng Thế Ký</p>
+<p class="text-[10px] text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[10px]" data-icon="calendar_today">calendar_today</span> 
+                                    Hôm qua, 20:15
+                                </p>
+<div class="flex gap-2 mt-2">
+<span class="text-[9px] uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">TB</span>
+<span class="text-[9px] uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">10 câu</span>
+</div>
+</div>
+<a class="text-secondary text-xs font-bold flex items-center group-hover:underline" href="#">
+                                Ôn lại
+                            </a>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 glass-card border-t border-outline-variant/10 px-4 py-3 flex justify-around items-center z-50">
+<button class="flex flex-col items-center gap-1 text-[#e1e1f1]/60">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-medium">Trang chủ</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#f8bd45] font-bold">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[10px]">Tự luyện</span>
+</button>
+<div class="relative -top-6">
+<button class="w-14 h-14 rounded-full gold-gradient shadow-xl shadow-secondary/30 flex items-center justify-center text-on-secondary">
+<span class="material-symbols-outlined text-3xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-[#e1e1f1]/60">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+<span class="text-[10px] font-medium">Bảng xếp hạng</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#e1e1f1]/60">
+<span class="material-symbols-outlined" data-icon="church">church</span>
+<span class="text-[10px] font-medium">Cộng đồng</span>
+</button>
+</nav>
+</div>
+</body></html>

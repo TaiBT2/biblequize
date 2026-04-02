@@ -22,4 +22,6 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     @Query("SELECT u FROM User u WHERE u.currentStreak > 0 AND (u.lastPlayedAt IS NULL OR u.lastPlayedAt < :since)")
     List<User> findUsersWithStreakAtRisk(@Param("since") LocalDateTime since);
+
+    long countByLastPlayedAtAfter(LocalDateTime since);
 }

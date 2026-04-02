@@ -5,10 +5,12 @@ import com.biblequiz.modules.quiz.entity.QuizSessionQuestion;
 import com.biblequiz.modules.quiz.entity.Answer;
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.user.entity.User;
+import com.biblequiz.modules.quiz.entity.UserDailyProgress;
 import com.biblequiz.modules.quiz.repository.QuizSessionRepository;
 import com.biblequiz.modules.quiz.repository.QuizSessionQuestionRepository;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.quiz.repository.AnswerRepository;
+import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.user.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,6 +42,8 @@ class SessionServiceTest {
         private AnswerRepository answerRepository;
         @Mock
         private UserRepository userRepository;
+        @Mock
+        private UserDailyProgressRepository userDailyProgressRepository;
         @Mock
         private ObjectMapper objectMapper;
         @Mock
@@ -323,5 +327,81 @@ class SessionServiceTest {
                 // Then
                 assertNotNull(result);
                 assertTrue((Boolean) result.get("isCorrect"));
+        }
+
+        // ── FIX-002: Abandoned session tests ──
+
+        @Test
+        void processAbandonedSessions_marksStaleRankedAsAbandoned() {
+                QuizSession stale = new QuizSession("s1", QuizSession.Mode.ranked, sampleUser, "{}");
+                stale.setStatus(QuizSession.Status.in_progress);
+                stale.setTotalQuestions(10);
+                when(quizSessionRepository.findAbandonedRankedSessions(any(LocalDateTime.class)))
+                        .thenReturn(List.of(stale));
+                when(quizSessionRepository.save(any())).thenAnswer(inv -> inv.getArgument(0));
+                when(answerRepository.countBySessionId("s1")).thenReturn(7L);
+                // 10 total - 7 answered = 3 unanswered → 15 energy deducted
+                UserDailyProgress udp = new UserDailyProgress();
+                udp.setLivesRemaining(80);
+                when(userDailyProgressRepository.findByUserIdAndDate(anyString(), any()))
+                        .thenReturn(Optional.of(udp));
+                when(userDailyProgressRepository.save(any())).thenAnswer(inv -> inv.getArgument(0));
+
+                int count = sessionService.processAbandonedSessions();
+
+                assertEquals(1, count);
+                assertEquals(QuizSession.Status.abandoned, stale.getStatus());
+                assertNotNull(stale.getAbandonedAt());
+                assertEquals(65, udp.getLivesRemaining()); // 80 - 15
+        }
+
+        @Test
+        void processAbandonedSessions_practiceMode_noEnergyDeduction() {
+                QuizSession stale = new QuizSession("s2", QuizSession.Mode.practice, sampleUser, "{}");
+                stale.setStatus(QuizSession.Status.in_progress);
+                stale.setTotalQuestions(10);
+                when(quizSessionRepository.findAbandonedRankedSessions(any(LocalDateTime.class)))
+                        .thenReturn(List.of(stale));
+                when(quizSessionRepository.save(any())).thenAnswer(inv -> inv.getArgument(0));
+
+                int count = sessionService.processAbandonedSessions();
+
+                assertEquals(1, count);
+                assertEquals(QuizSession.Status.abandoned, stale.getStatus());
+                verify(userDailyProgressRepository, never()).findByUserIdAndDate(anyString(), any());
+        }
+
+        @Test
+        void submitAnswer_onAbandonedSession_throwsException() {
+                QuizSession abandoned = new QuizSession("s3", QuizSession.Mode.ranked, sampleUser, "{}");
+                abandoned.setStatus(QuizSession.Status.abandoned);
+                when(quizSessionRepository.findById("s3")).thenReturn(Optional.of(abandoned));
+
+                assertThrows(IllegalStateException.class, () ->
+                        sessionService.submitAnswer("s3", "user-1", "q1", 0, 5000));
+        }
+
+        @Test
+        void processAbandonedSessions_noStale_returnsZero() {
+                when(quizSessionRepository.findAbandonedRankedSessions(any(LocalDateTime.class)))
+                        .thenReturn(List.of());
+
+                assertEquals(0, sessionService.processAbandonedSessions());
+        }
+
+        @Test
+        void processAbandonedSessions_allQuestionsAnswered_noDeduction() {
+                QuizSession stale = new QuizSession("s4", QuizSession.Mode.ranked, sampleUser, "{}");
+                stale.setStatus(QuizSession.Status.in_progress);
+                stale.setTotalQuestions(10);
+                when(quizSessionRepository.findAbandonedRankedSessions(any(LocalDateTime.class)))
+                        .thenReturn(List.of(stale));
+                when(quizSessionRepository.save(any())).thenAnswer(inv -> inv.getArgument(0));
+                when(answerRepository.countBySessionId("s4")).thenReturn(10L); // all answered
+
+                sessionService.processAbandonedSessions();
+
+                // 0 unanswered → no energy deduction call
+                verify(userDailyProgressRepository, never()).findByUserIdAndDate(anyString(), any());
         }
 }

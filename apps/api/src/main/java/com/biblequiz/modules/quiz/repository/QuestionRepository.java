@@ -106,7 +106,10 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
     List<String> findDistinctActiveBooks();
 
     // Index hints for better performance
-    @Query(value = "SELECT * FROM questions q USE INDEX (idx_is_active) WHERE q.is_active = true ORDER BY RAND() LIMIT :limit", 
+    @Query(value = "SELECT * FROM questions q USE INDEX (idx_is_active) WHERE q.is_active = true ORDER BY RAND() LIMIT :limit",
            nativeQuery = true)
     List<Question> findRandomQuestionsNative(@Param("limit") int limit);
+
+    @Query("SELECT CASE WHEN COUNT(q) > 0 THEN true ELSE false END FROM Question q WHERE LOWER(q.content) = :content")
+    boolean existsByContentIgnoreCase(@Param("content") String contentLowerCase);
 }

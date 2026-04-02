@@ -31,6 +31,9 @@ public class TournamentMatchParticipant {
     @Column(name = "total_answered", nullable = false)
     private int totalAnswered = 0;
 
+    @Column(name = "total_elapsed_ms", nullable = false)
+    private long totalElapsedMs = 0;
+
     @Column(name = "is_winner")
     private Boolean isWinner;
 
@@ -107,5 +110,13 @@ public class TournamentMatchParticipant {
 
     public void setIsWinner(Boolean isWinner) {
         this.isWinner = isWinner;
+    }
+
+    public long getTotalElapsedMs() {
+        return totalElapsedMs;
+    }
+
+    public void setTotalElapsedMs(long totalElapsedMs) {
+        this.totalElapsedMs = totalElapsedMs;
     }
 }

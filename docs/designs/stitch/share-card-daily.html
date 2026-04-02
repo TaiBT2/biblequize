@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#ffdad6",
+              "on-tertiary-fixed-variant": "#5a4400",
+              "inverse-on-surface": "#2e303c",
+              "outline": "#919098",
+              "surface-container-lowest": "#0b0e18",
+              "secondary-fixed-dim": "#f8bd45",
+              "on-primary-fixed": "#151a34",
+              "background": "#11131e",
+              "tertiary-container": "#2b1f00",
+              "on-secondary-container": "#392600",
+              "surface-container-high": "#272935",
+              "on-tertiary-container": "#a48431",
+              "on-tertiary": "#3e2e00",
+              "on-primary-container": "#8286a7",
+              "error": "#ffb4ab",
+              "tertiary-fixed": "#ffdf96",
+              "on-tertiary-fixed": "#251a00",
+              "on-surface": "#e1e1f1",
+              "inverse-primary": "#585d7b",
+              "primary": "#c0c4e8",
+              "error-container": "#93000a",
+              "primary-container": "#1a1f3a",
+              "on-primary-fixed-variant": "#404562",
+              "secondary": "#f8bd45",
+              "tertiary": "#e7c268",
+              "surface-variant": "#323440",
+              "surface-container": "#1d1f2a",
+              "on-surface-variant": "#c7c5ce",
+              "surface-container-low": "#191b26",
+              "on-secondary-fixed-variant": "#5e4200",
+              "surface-bright": "#373845",
+              "secondary-container": "#bc8709",
+              "primary-fixed": "#dee1ff",
+              "inverse-surface": "#e1e1f1",
+              "on-secondary": "#412d00",
+              "on-secondary-fixed": "#271900",
+              "surface-container-highest": "#323440",
+              "surface": "#11131e",
+              "on-background": "#e1e1f1",
+              "surface-tint": "#c0c4e8",
+              "on-primary": "#2a2f4a",
+              "on-error": "#690005",
+              "primary-fixed-dim": "#c0c4e8",
+              "secondary-fixed": "#ffdea7",
+              "surface-dim": "#11131e",
+              "outline-variant": "#46464d"
+            },
+            fontFamily: {
+              "headline": ["Be Vietnam Pro"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .gold-gradient-text {
+        background: linear-gradient(to right, #f8bd45, #e7c268);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .gold-gradient-bg {
+        background: linear-gradient(135deg, #f8bd45 0%, #bc8709 100%);
+      }
+      .diagonal-accents {
+        background-image: repeating-linear-gradient(45deg, rgba(248, 189, 69, 0.03) 0px, rgba(248, 189, 69, 0.03) 1px, transparent 1px, transparent 40px);
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .filled-star {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased flex items-center justify-center min-h-screen p-4">
+<!-- Share Card Container (1200x630px) -->
+<div class="relative w-[1200px] h-[630px] bg-surface-container-lowest overflow-hidden rounded-xl shadow-[0_32px_64px_-12px_rgba(0,0,0,0.8)] flex flex-col border border-white/5">
+<!-- Background Layers -->
+<div class="absolute inset-0 bg-gradient-to-br from-[#11131e] via-[#1d1f2a] to-[#11131e]"></div>
+<div class="absolute inset-0 diagonal-accents"></div>
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-secondary/5 rounded-full blur-[120px]"></div>
+<div class="absolute -bottom-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-[120px]"></div>
+<!-- Header -->
+<header class="relative z-10 flex justify-between items-center px-16 pt-16">
+<div class="flex items-center gap-3">
+<span class="text-3xl">🕊️</span>
+<span class="text-3xl font-black tracking-tighter text-secondary">BibleQuiz</span>
+</div>
+<div class="bg-surface-variant/40 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/5">
+<span class="text-lg font-semibold tracking-wide text-on-surface-variant uppercase">Daily Challenge — 02/04/2026</span>
+</div>
+</header>
+<!-- Main Content -->
+<main class="relative z-10 flex-grow flex flex-col items-center justify-center text-center">
+<!-- Achievement Stars -->
+<div class="flex gap-4 mb-8">
+<span class="material-symbols-outlined filled-star text-8xl gold-gradient-text" style="font-size: 110px;">star</span>
+<span class="material-symbols-outlined filled-star text-8xl gold-gradient-text" style="font-size: 110px;">star</span>
+<span class="material-symbols-outlined filled-star text-8xl gold-gradient-text" style="font-size: 110px;">star</span>
+<span class="material-symbols-outlined filled-star text-8xl gold-gradient-text" style="font-size: 110px;">star</span>
+<span class="material-symbols-outlined text-8xl text-outline/30" style="font-size: 110px;">star</span>
+</div>
+<!-- Score -->
+<h1 class="text-5xl font-bold mb-8 text-on-surface">4/5 câu đúng</h1>
+<!-- Social Proof Badge -->
+<div class="gold-gradient-bg px-10 py-4 rounded-full shadow-lg shadow-secondary/20 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-secondary font-bold" style="font-variation-settings: 'FILL' 1">military_tech</span>
+<span class="text-2xl font-extrabold text-on-secondary uppercase tracking-wider">🏆 Giỏi hơn 87% người chơi</span>
+</div>
+</main>
+<!-- Footer -->
+<footer class="relative z-10 px-16 pb-16 flex justify-between items-end">
+<div class="flex items-center gap-5 bg-surface-container-high/60 backdrop-blur-xl p-4 pr-10 rounded-full border border-white/10 shadow-2xl">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-secondary p-0.5">
+<img alt="User Profile" class="w-full h-full object-cover rounded-full" data-alt="portrait of a young man with a kind smile and professional attire, soft studio lighting, high-end photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7fDyFLSj3dSu72wjTFpX9eUi0qbBYjuIJggSGX3XEyqOIrWBUjNzk4B-wprIaP4tDzdvNdzoUU0SthDtONQw2vcyBWtEuLjt14osbjMm04YvkWRrDg_eSFeRCkLWKd6mvgArYzy363ZNPZQFWGyoLwCe7OtvwTRS625DCj6Rua5L_6lZm5hbEi3pzqZe7qoCM0cOG08WAYosDKtVpf_flq5bxiGKY-xCHig5PhqHNb8YdmFpMfahnILpHd_MAZ2iGjYvWU73jtNI"/>
+</div>
+<div class="flex flex-col text-left">
+<span class="text-2xl font-bold text-on-surface">Minh Nguyễn</span>
+<span class="text-sm font-medium uppercase tracking-[0.1em] text-secondary">Level 42 Disciple</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="text-on-surface-variant/40 text-sm font-medium tracking-widest uppercase mb-1">Join the path at</div>
+<div class="text-2xl font-black text-secondary tracking-tight opacity-90">biblequiz.app</div>
+</div>
+</footer>
+<!-- Decorative Accent Bar -->
+<div class="absolute bottom-0 left-0 right-0 h-1 gold-gradient-bg opacity-50"></div>
+</div>
+</body></html>

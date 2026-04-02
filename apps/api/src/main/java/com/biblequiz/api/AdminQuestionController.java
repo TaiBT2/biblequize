@@ -159,7 +159,8 @@ public class AdminQuestionController {
     @PostMapping(value = "/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Map<String, Object>> importQuestions(
             @RequestParam("file") MultipartFile file,
-            @RequestParam(value = "dryRun", defaultValue = "false") boolean dryRun) {
+            @RequestParam(value = "dryRun", defaultValue = "false") boolean dryRun,
+            @RequestParam(value = "skipDuplicates", defaultValue = "false") boolean skipDuplicates) {
         try {
             String filename = file.getOriginalFilename() != null ? file.getOriginalFilename().toLowerCase() : "";
             String contentType = file.getContentType() != null ? file.getContentType().toLowerCase() : "";
@@ -175,13 +176,82 @@ public class AdminQuestionController {
                 return ResponseEntity.badRequest().body(Map.of("error", "Unsupported file type. Use .json or .csv"));
             }
 
+            // ── Post-parse validation (IMP-1 through IMP-6) ──
+            List<Map<String, Object>> warnings = new ArrayList<>();
+            Set<String> seenContents = new HashSet<>();
+            int duplicateCount = 0;
+            Iterator<Question> it = toSave.iterator();
+            int idx = 0;
+            while (it.hasNext()) {
+                Question q = it.next();
+                idx++;
+                String label = "record " + idx;
+
+                // IMP-1: Explanation warning
+                if (q.getExplanation() == null || q.getExplanation().isBlank()) {
+                    warnings.add(Map.of("index", idx, "warning", label + ": thiếu explanation — câu sẽ ở trạng thái inactive"));
+                    q.setIsActive(false);
+                    q.setReviewStatus(Question.ReviewStatus.PENDING);
+                }
+
+                // IMP-2: Options validation per type
+                Question.Type qType = q.getType();
+                if (qType == Question.Type.multiple_choice_single || qType == Question.Type.multiple_choice_multi) {
+                    if (q.getOptions() == null || q.getOptions().size() < 2) {
+                        errors.add(Map.of("index", idx, "error", label + ": MCQ requires options (min 2)"));
+                        it.remove(); continue;
+                    }
+                    if (q.getCorrectAnswer() != null) {
+                        for (int ans : q.getCorrectAnswer()) {
+                            if (ans < 0 || ans >= q.getOptions().size()) {
+                                errors.add(Map.of("index", idx, "error", label + ": correctAnswer " + ans + " out of range (0-" + (q.getOptions().size() - 1) + ")"));
+                                it.remove(); break;
+                            }
+                        }
+                    }
+                }
+                if (qType == Question.Type.true_false) {
+                    if (q.getOptions() == null || q.getOptions().isEmpty()) {
+                        q.setOptions(List.of("Đúng", "Sai"));
+                    }
+                    if (q.getCorrectAnswer() != null && !q.getCorrectAnswer().isEmpty()) {
+                        int ans = q.getCorrectAnswer().get(0);
+                        if (ans != 0 && ans != 1) {
+                            errors.add(Map.of("index", idx, "error", label + ": true_false correctAnswer must be 0 or 1"));
+                            it.remove(); continue;
+                        }
+                    }
+                }
+
+                // IMP-3: Language default
+                if (q.getLanguage() == null || q.getLanguage().isBlank()) q.setLanguage("vi");
+
+                // IMP-4: Vietnamese book name normalization
+                q.setBook(normalizeBookName(q.getBook()));
+
+                // IMP-5: Duplicate detection
+                String contentKey = q.getContent() != null ? q.getContent().trim().toLowerCase() : "";
+                if (seenContents.contains(contentKey)) {
+                    warnings.add(Map.of("index", idx, "warning", label + ": trùng lặp với record khác trong file"));
+                    duplicateCount++;
+                    if (skipDuplicates) { it.remove(); continue; }
+                } else if (!contentKey.isEmpty() && questionRepository.existsByContentIgnoreCase(contentKey)) {
+                    warnings.add(Map.of("index", idx, "warning", label + ": có thể trùng lặp với câu đã có trong DB"));
+                    duplicateCount++;
+                    if (skipDuplicates) { it.remove(); continue; }
+                }
+                seenContents.add(contentKey);
+            }
+
+            Map<String, Object> response = new LinkedHashMap<>();
             if (dryRun) {
-                log.info("[ADMIN] Import dry-run: willImport={}, errors={}", toSave.size(), errors.size());
-                return ResponseEntity.ok(Map.of(
-                        "dryRun", true,
-                        "willImport", toSave.size(),
-                        "errors", errors
-                ));
+                log.info("[ADMIN] Import dry-run: willImport={}, errors={}, warnings={}", toSave.size(), errors.size(), warnings.size());
+                response.put("dryRun", true);
+                response.put("willImport", toSave.size());
+                response.put("errors", errors);
+                response.put("warnings", warnings);
+                response.put("duplicates", duplicateCount);
+                return ResponseEntity.ok(response);
             }
 
             // Save in batches of 100
@@ -191,11 +261,12 @@ public class AdminQuestionController {
                 questionRepository.saveAll(batch);
                 saved += batch.size();
             }
-            log.info("[ADMIN] Import done: saved={}, errors={}", saved, errors.size());
-            return ResponseEntity.ok(Map.of(
-                    "imported", saved,
-                    "errors", errors
-            ));
+            log.info("[ADMIN] Import done: saved={}, errors={}, warnings={}", saved, errors.size(), warnings.size());
+            response.put("imported", saved);
+            response.put("errors", errors);
+            response.put("warnings", warnings);
+            response.put("duplicates", duplicateCount);
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             log.error("[ADMIN] Import failed: {}", e.getMessage(), e);
             return ResponseEntity.internalServerError().body(Map.of("error", e.getMessage()));
@@ -412,5 +483,53 @@ public class AdminQuestionController {
             case "fill_in_blank" -> Question.Type.fill_in_blank;
             default -> throw new IllegalArgumentException("Unknown type: " + raw);
         };
+    }
+
+    // ── IMP-4: Vietnamese book name normalization ────────────────────────────
+    private static final Map<String, String> VI_BOOK_MAP = new HashMap<>();
+    static {
+        VI_BOOK_MAP.put("sáng thế ký", "Genesis"); VI_BOOK_MAP.put("sáng thế", "Genesis");
+        VI_BOOK_MAP.put("xuất ê-díp-tô ký", "Exodus"); VI_BOOK_MAP.put("xuất hành", "Exodus");
+        VI_BOOK_MAP.put("lê-vi ký", "Leviticus"); VI_BOOK_MAP.put("dân số ký", "Numbers");
+        VI_BOOK_MAP.put("phục truyền luật lệ ký", "Deuteronomy"); VI_BOOK_MAP.put("phục truyền", "Deuteronomy");
+        VI_BOOK_MAP.put("giô-suê", "Joshua"); VI_BOOK_MAP.put("các quan xét", "Judges");
+        VI_BOOK_MAP.put("ru-tơ", "Ruth");
+        VI_BOOK_MAP.put("1 sa-mu-ên", "1 Samuel"); VI_BOOK_MAP.put("2 sa-mu-ên", "2 Samuel");
+        VI_BOOK_MAP.put("1 các vua", "1 Kings"); VI_BOOK_MAP.put("2 các vua", "2 Kings");
+        VI_BOOK_MAP.put("1 sử ký", "1 Chronicles"); VI_BOOK_MAP.put("2 sử ký", "2 Chronicles");
+        VI_BOOK_MAP.put("e-xơ-ra", "Ezra"); VI_BOOK_MAP.put("nê-hê-mi", "Nehemiah");
+        VI_BOOK_MAP.put("ê-xơ-tê", "Esther"); VI_BOOK_MAP.put("gióp", "Job");
+        VI_BOOK_MAP.put("thi thiên", "Psalms"); VI_BOOK_MAP.put("châm ngôn", "Proverbs");
+        VI_BOOK_MAP.put("truyền đạo", "Ecclesiastes"); VI_BOOK_MAP.put("nhã ca", "Song of Solomon");
+        VI_BOOK_MAP.put("ê-sai", "Isaiah"); VI_BOOK_MAP.put("giê-rê-mi", "Jeremiah");
+        VI_BOOK_MAP.put("ca thương", "Lamentations"); VI_BOOK_MAP.put("ê-xê-chi-ên", "Ezekiel");
+        VI_BOOK_MAP.put("đa-ni-ên", "Daniel"); VI_BOOK_MAP.put("ô-sê", "Hosea");
+        VI_BOOK_MAP.put("giô-ên", "Joel"); VI_BOOK_MAP.put("a-mốt", "Amos");
+        VI_BOOK_MAP.put("áp-đia", "Obadiah"); VI_BOOK_MAP.put("giô-na", "Jonah");
+        VI_BOOK_MAP.put("mi-chê", "Micah"); VI_BOOK_MAP.put("na-hum", "Nahum");
+        VI_BOOK_MAP.put("ha-ba-cúc", "Habakkuk"); VI_BOOK_MAP.put("sô-phô-ni", "Zephaniah");
+        VI_BOOK_MAP.put("a-ghê", "Haggai"); VI_BOOK_MAP.put("xa-cha-ri", "Zechariah");
+        VI_BOOK_MAP.put("ma-la-chi", "Malachi");
+        VI_BOOK_MAP.put("ma-thi-ơ", "Matthew"); VI_BOOK_MAP.put("mác", "Mark");
+        VI_BOOK_MAP.put("lu-ca", "Luke"); VI_BOOK_MAP.put("giăng", "John");
+        VI_BOOK_MAP.put("công vụ", "Acts"); VI_BOOK_MAP.put("công vụ các sứ đồ", "Acts");
+        VI_BOOK_MAP.put("rô-ma", "Romans");
+        VI_BOOK_MAP.put("1 cô-rinh-tô", "1 Corinthians"); VI_BOOK_MAP.put("2 cô-rinh-tô", "2 Corinthians");
+        VI_BOOK_MAP.put("ga-la-ti", "Galatians"); VI_BOOK_MAP.put("ê-phê-sô", "Ephesians");
+        VI_BOOK_MAP.put("phi-líp", "Philippians"); VI_BOOK_MAP.put("cô-lô-se", "Colossians");
+        VI_BOOK_MAP.put("1 tê-sa-lô-ni-ca", "1 Thessalonians"); VI_BOOK_MAP.put("2 tê-sa-lô-ni-ca", "2 Thessalonians");
+        VI_BOOK_MAP.put("1 ti-mô-thê", "1 Timothy"); VI_BOOK_MAP.put("2 ti-mô-thê", "2 Timothy");
+        VI_BOOK_MAP.put("tít", "Titus"); VI_BOOK_MAP.put("phi-lê-môn", "Philemon");
+        VI_BOOK_MAP.put("hê-bơ-rơ", "Hebrews"); VI_BOOK_MAP.put("gia-cơ", "James");
+        VI_BOOK_MAP.put("1 phi-e-rơ", "1 Peter"); VI_BOOK_MAP.put("2 phi-e-rơ", "2 Peter");
+        VI_BOOK_MAP.put("1 giăng", "1 John"); VI_BOOK_MAP.put("2 giăng", "2 John");
+        VI_BOOK_MAP.put("3 giăng", "3 John"); VI_BOOK_MAP.put("giu-đe", "Jude");
+        VI_BOOK_MAP.put("khải huyền", "Revelation"); VI_BOOK_MAP.put("khải thị", "Revelation");
+    }
+
+    private String normalizeBookName(String book) {
+        if (book == null) return null;
+        String lower = book.trim().toLowerCase();
+        return VI_BOOK_MAP.getOrDefault(lower, book.trim());
     }
 }

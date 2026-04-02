@@ -51,6 +51,15 @@ public class ChurchGroup {
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
 
+    @Column(name = "is_locked", nullable = false)
+    private Boolean isLocked = false;
+
+    @Column(name = "lock_reason")
+    private String lockReason;
+
+    @Column(name = "locked_at")
+    private LocalDateTime lockedAt;
+
     public ChurchGroup() {
     }
 
@@ -96,4 +105,11 @@ public class ChurchGroup {
     public void setDeletedAt(LocalDateTime deletedAt) { this.deletedAt = deletedAt; }
 
     public boolean isDeleted() { return deletedAt != null; }
+
+    public Boolean getIsLocked() { return isLocked; }
+    public void setIsLocked(Boolean locked) { this.isLocked = locked; }
+    public String getLockReason() { return lockReason; }
+    public void setLockReason(String lockReason) { this.lockReason = lockReason; }
+    public LocalDateTime getLockedAt() { return lockedAt; }
+    public void setLockedAt(LocalDateTime lockedAt) { this.lockedAt = lockedAt; }
 }

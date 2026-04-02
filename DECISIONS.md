@@ -2,6 +2,16 @@
 
 ---
 
+## Naming & Conventions
+
+## 2026-04-02 — Giữ livesRemaining/dailyLives thay vì rename sang energyRemaining/dailyEnergy
+- Quyết định: Giữ nguyên field names `livesRemaining`/`dailyLives` trong DB, Entity, API response, và Frontend. KHÔNG rename sang `energyRemaining`/`dailyEnergy` dù SPEC-v2 dùng thuật ngữ "energy".
+- Lý do: Code hiện tại FE ↔ BE đã consistent (cùng dùng `livesRemaining`/`dailyLives`). Rename sẽ touch 1 entity + 1 service + 1 controller + 4 FE files + Flyway migration + tất cả tests. Entity đã có comment `// SPEC-v2: "energy" system (stored as lives_remaining column for backward compat)` giải thích mapping. Semantic meaning giống nhau (100/day, -5 per wrong).
+- Trade-off: Naming không match spec 100%, nhưng tránh được migration risk và multi-file refactor không cần thiết. Nếu cần rename trong tương lai → tạo task riêng với đầy đủ regression.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+---
+
 ## Cleanup & Dead Code
 
 ## 2026-03-28 — Xóa 8 dead infrastructure classes (1,649 lines)
@@ -29,6 +39,18 @@
 ---
 
 ## Game Modes & Scoring
+
+## 2026-04-02 — WebSocket rate limit: Redis sliding window, fail-open
+- Quyết định: Implement ChannelInterceptor (`WebSocketRateLimitInterceptor`) sử dụng Redis `INCREMENT` + `EXPIRE` cho sliding window counter. Mỗi user+event type có key riêng. Khi Redis unavailable → fail open (allow message).
+- Lý do: STOMP interceptor chặn tại inbound channel trước khi message đến @MessageMapping. Redis counter đảm bảo consistent across server restarts. Fail-open tránh block gameplay khi Redis tạm down.
+- Trade-off: Sliding window dạng fixed (không phải true sliding) — có thể burst 2x limit tại boundary giữa 2 windows. Chấp nhận được vì rate limits chủ yếu chống spam, không cần chính xác tuyệt đối.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-04-02 — Sudden Death tie-break: server-side resolution with max 5 rounds
+- Quyết định: Implement sudden death logic trong TournamentMatchService. Server nhận cả 2 player answers cùng lúc qua `resolveSuddenDeathRound()`, resolve theo bảng: correct>wrong, both correct→compare elapsedMs (>200ms diff → faster wins), both wrong→continue. Max 5 rounds, sau đó so total elapsedMs, cuối cùng random.
+- Lý do: Server-authoritative đảm bảo không cheat timing. Cả 2 answers submit cùng lúc tránh race condition. 200ms threshold tránh network jitter ảnh hưởng kết quả.
+- Trade-off: Frontend/WebSocket controller cần collect cả 2 answers trước khi gọi resolve (thay vì xử lý từng answer riêng). Đổi lại, logic đơn giản và deterministic.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
 
 ## 2026-03-20 — Tách riêng scoring engine cho mỗi game mode
 - Quyết định: Mỗi multiplayer game mode có service riêng: `SpeedRaceScoringService`, `BattleRoyaleEngine`, `TeamScoringService`, `SuddenDeathMatchService`. Ranked mode có `ScoringService` riêng.
@@ -135,6 +157,30 @@
 ---
 
 ## Frontend
+
+## 2026-04-02 — Deprecate Rooms.tsx, redirect /rooms → /multiplayer
+- Quyết định: Rooms.tsx chỉ còn `<Navigate to="/multiplayer" replace />`. Multiplayer.tsx thay thế hoàn toàn.
+- Lý do: Multiplayer đã có đầy đủ: room discovery, join by code, create room, game mode filter. Rooms.tsx là phiên bản cũ với inline SVG icons, old design.
+- Trade-off: URL `/rooms` vẫn hoạt động (redirect).
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-04-02 — Merge JoinRoom vào Multiplayer, redirect /room/join
+- Quyết định: JoinRoom.tsx chỉ còn `<Navigate to="/multiplayer" replace />`. Multiplayer.tsx đã có join-by-code input (Stitch design).
+- Lý do: Multiplayer đã có đầy đủ join flow (input code, validate, navigate to lobby). JoinRoom là page cũ duplicate functionality.
+- Trade-off: URL `/room/join` vẫn hoạt động (redirect), không break bookmarks.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-04-02 — Applied SPEC-v2 Errata [FIX-001 through FIX-012]
+- Quyết định: Apply 12 errata amendments to SPEC-v2.md. Key changes: Java 21→17 (FIX-001), abandoned session energy penalty (FIX-002), tournament bye/seeding rules (FIX-003), sudden death tie resolution (FIX-004), friend system deferred to v2.5 (FIX-005), share card Phase 1 = frontend canvas (FIX-006), daily challenge UTC timezone (FIX-010), WebSocket rate limits (FIX-011).
+- Lý do: Errata fixes spec gaps found during implementation. Each fix documented in SPEC_V2_ERRATA.md.
+- Trade-off: Some fixes (FIX-003, FIX-004) add complexity. Deferred features (FIX-005 friend, FIX-007 offline) reduce scope but clarify deliverables.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-04-02 — Share Card Phase 1: Frontend canvas, không Puppeteer
+- Quyết định: Share card render bằng frontend Canvas → toBlob() → upload S3. Không dùng Puppeteer container.
+- Lý do: Puppeteer container là premature optimization cho current scale. Frontend canvas đủ cho Phase 1.
+- Trade-off: Image quality khác nhau giữa devices. Khi scale lên → migrate sang Puppeteer server-side.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
 
 ## 2026-03-29 — Accent colors riêng cho mỗi Game Mode card
 - Quyết định: Mỗi game mode card dùng accent color riêng: Practice #4a9eff (blue), Ranked #e8a832 (gold), Daily #ff8c42 (orange), Multiplayer #9b59b6 (purple)

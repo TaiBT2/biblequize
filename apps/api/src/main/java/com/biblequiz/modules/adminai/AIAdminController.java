@@ -7,9 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
 @RequestMapping(path = "/api/admin/ai", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -18,10 +22,26 @@ public class AIAdminController {
 
     private static final Logger log = LoggerFactory.getLogger(AIAdminController.class);
 
+    private static final int DAILY_QUOTA = 200;
+    private static final double COST_ALERT_USD = 10.0;
+
     private final AIGenerationService aiGenerationService;
+
+    // In-memory daily quota tracking (reset on new UTC day)
+    private final ConcurrentHashMap<String, AtomicInteger> dailyQuota = new ConcurrentHashMap<>();
+    private volatile LocalDate quotaDate = LocalDate.now(ZoneOffset.UTC);
 
     public AIAdminController(AIGenerationService aiGenerationService) {
         this.aiGenerationService = aiGenerationService;
+    }
+
+    private AtomicInteger getQuotaCounter(String adminId) {
+        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        if (!today.equals(quotaDate)) {
+            dailyQuota.clear();
+            quotaDate = today;
+        }
+        return dailyQuota.computeIfAbsent(adminId, k -> new AtomicInteger(0));
     }
 
     @GetMapping("/models")
@@ -30,7 +50,9 @@ public class AIAdminController {
     }
 
     @GetMapping("/info")
-    public ResponseEntity<?> info() {
+    public ResponseEntity<?> info(org.springframework.security.core.Authentication auth) {
+        String adminId = auth != null ? auth.getName() : "unknown";
+        int used = getQuotaCounter(adminId).get();
         return ResponseEntity.ok(Map.of(
                 "providers", Map.of(
                         "gemini", Map.of(
@@ -41,12 +63,31 @@ public class AIAdminController {
                                 "configured", aiGenerationService.isClaudeConfigured(),
                                 "model",      aiGenerationService.getClaudeModel()
                         )
-                )
+                ),
+                "quotaToday", Map.of(
+                        "used", used,
+                        "limit", DAILY_QUOTA,
+                        "remaining", Math.max(0, DAILY_QUOTA - used)
+                ),
+                "costAlert", COST_ALERT_USD
         ));
     }
 
     @PostMapping("/generate")
-    public ResponseEntity<?> generate(@RequestBody AIGenerationRequest req) {
+    public ResponseEntity<?> generate(@RequestBody AIGenerationRequest req,
+            org.springframework.security.core.Authentication auth) {
+        // Quota check
+        String adminId = auth != null ? auth.getName() : "unknown";
+        int requestCount = req.validCount();
+        AtomicInteger counter = getQuotaCounter(adminId);
+        if (counter.get() + requestCount > DAILY_QUOTA) {
+            return ResponseEntity.status(429).body(Map.of(
+                    "error", "QUOTA_EXCEEDED",
+                    "message", "Đã vượt quota " + DAILY_QUOTA + " câu/ngày. Đã dùng: " + counter.get(),
+                    "used", counter.get(),
+                    "limit", DAILY_QUOTA
+            ));
+        }
         AIGenerationRequest.ScriptureRef scripture =
                 req.scripture() != null ? req.scripture() : new AIGenerationRequest.ScriptureRef(
                         "Genesis", 1, 1, 1, 1, null);
@@ -76,12 +117,16 @@ public class AIAdminController {
                                 difficulty, type, language, count, scriptureText, customPrompt, claudeModels)
                         : aiGenerationService.generate(book, chapter, verseStart, verseEnd,
                                 difficulty, type, language, count, scriptureText, customPrompt);
+                counter.addAndGet(questions.size());
+                log.info("[AI] Admin {} generated {} questions. Quota: {}/{}", adminId, questions.size(), counter.get(), DAILY_QUOTA);
                 return ResponseEntity.ok(Map.of(
                         "jobId",     provider + "-job-" + System.currentTimeMillis(),
                         "status",    "completed",
                         "provider",  provider,
                         "count",     questions.size(),
-                        "questions", questions
+                        "questions", questions,
+                        "quotaUsed", counter.get(),
+                        "quotaLimit", DAILY_QUOTA
                 ));
             } catch (Exception e) {
                 log.error("[AI][{}] Generation failed: {}", provider, e.getMessage(), e);

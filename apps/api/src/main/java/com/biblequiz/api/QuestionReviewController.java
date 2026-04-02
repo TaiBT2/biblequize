@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/admin/review")
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize("hasAnyRole('ADMIN', 'CONTENT_MOD')")
 public class QuestionReviewController {
 
     private static final Logger log = LoggerFactory.getLogger(QuestionReviewController.class);

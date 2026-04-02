@@ -49,7 +49,13 @@ public class QuizSession {
     
     @Column(name = "ended_at")
     private LocalDateTime endedAt;
-    
+
+    @Column(name = "abandoned_at")
+    private LocalDateTime abandonedAt;
+
+    @Column(name = "last_activity_at")
+    private LocalDateTime lastActivityAt;
+
     @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<QuizSessionQuestion> sessionQuestions = new ArrayList<>();
     
@@ -61,7 +67,7 @@ public class QuizSession {
     }
     
     public enum Status {
-        created, in_progress, completed, cancelled
+        created, in_progress, completed, cancelled, abandoned
     }
     
     // Constructors
@@ -163,6 +169,22 @@ public class QuizSession {
         this.endedAt = endedAt;
     }
     
+    public LocalDateTime getAbandonedAt() {
+        return abandonedAt;
+    }
+
+    public void setAbandonedAt(LocalDateTime abandonedAt) {
+        this.abandonedAt = abandonedAt;
+    }
+
+    public LocalDateTime getLastActivityAt() {
+        return lastActivityAt;
+    }
+
+    public void setLastActivityAt(LocalDateTime lastActivityAt) {
+        this.lastActivityAt = lastActivityAt;
+    }
+
     public List<QuizSessionQuestion> getSessionQuestions() {
         return sessionQuestions;
     }

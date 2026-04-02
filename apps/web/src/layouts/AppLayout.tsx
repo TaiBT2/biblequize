@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
+import { getTierName } from '../data/tiers'
 
 const navItems = [
   { path: '/', label: 'Trang chủ', icon: 'home' },
@@ -31,7 +32,7 @@ export default function AppLayout() {
   }
 
   const displayName = user?.name || 'Người Học'
-  const displayRole = 'Hạng Vàng'
+  const displayRole = getTierName(user?.totalPoints ?? 0)
 
   return (
     <div className="min-h-screen bg-[#11131e] text-[#e1e1f1]">
@@ -153,6 +154,20 @@ export default function AppLayout() {
               </Link>
             ))}
           </nav>
+          {/* Admin panel button (admin/content_mod only) */}
+          {(user?.role === 'ADMIN' || user?.role === 'admin' || user?.role === 'CONTENT_MOD' || user?.role === 'content_mod') && (
+            <div className="px-4 mb-4">
+              <div className="border-t border-white/5 mb-4" />
+              <Link
+                to="/admin"
+                className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-[#e8a832]/10 to-[#e7c268]/10 border border-[#e8a832]/20 text-[#e8a832] hover:bg-[#e8a832]/20 transition-colors text-sm font-medium"
+              >
+                <span className="material-symbols-outlined text-lg">admin_panel_settings</span>
+                <span>{user?.role === 'ADMIN' || user?.role === 'admin' ? 'Admin Panel' : 'Moderation'}</span>
+                <span className="material-symbols-outlined text-xs ml-auto">open_in_new</span>
+              </Link>
+            </div>
+          )}
           <div className="px-6 mt-auto pb-10">
             <Link
               to="/quiz"

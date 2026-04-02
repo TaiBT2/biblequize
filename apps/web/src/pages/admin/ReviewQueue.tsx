@@ -23,9 +23,9 @@ interface Stats { pending: number; active: number; rejected: number; approvalsRe
 
 const DIFF_LABEL: Record<string, string> = { easy: 'Dễ', medium: 'Trung bình', hard: 'Khó' }
 const DIFF_COLOR: Record<string, string> = {
-  easy: 'bg-emerald-100 text-emerald-700',
-  medium: 'bg-yellow-100 text-yellow-700',
-  hard: 'bg-red-100 text-red-700',
+  easy: 'bg-emerald-500/10 text-emerald-400',
+  medium: 'bg-yellow-500/10 text-yellow-400',
+  hard: 'bg-red-500/10 text-red-400',
 }
 
 export default function ReviewQueue() {
@@ -108,10 +108,10 @@ export default function ReviewQueue() {
 
       {/* Header */}
       <div>
-        <h2 className="text-2xl font-black parchment-headline" style={{ color: '#f5f0e0' }}>
+        <h2 className="text-2xl font-black text-[#e1e1ef]">
           Hàng Chờ Duyệt
         </h2>
-        <p className="text-[#8b949e] text-sm mt-0.5">Câu hỏi AI tạo ra cần {stats?.approvalsRequired ?? 2} admin duyệt mới trở thành chính thức</p>
+        <p className="text-[#d5c4af]/60 text-sm mt-0.5">Câu hỏi AI tạo ra cần {stats?.approvalsRequired ?? 2} admin duyệt mới trở thành chính thức</p>
       </div>
 
       {/* Stats */}
@@ -122,9 +122,9 @@ export default function ReviewQueue() {
             { label: 'Đã kích hoạt', value: stats.active, color: 'text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/20' },
             { label: 'Đã từ chối', value: stats.rejected, color: 'text-red-400', bg: 'bg-red-500/10 border-red-500/20' },
           ].map(s => (
-            <div key={s.label} className={`page-card p-4 border ${s.bg}`}>
+            <div key={s.label} className={`bg-[#1d1f29] rounded-lg p-4 border ${s.bg}`}>
               <div className={`text-3xl font-black ${s.color}`}>{s.value}</div>
-              <div className="text-xs text-[#8b949e] font-bold uppercase tracking-wider mt-1">{s.label}</div>
+              <div className="text-xs text-[#d5c4af]/60 font-bold uppercase tracking-wider mt-1">{s.label}</div>
             </div>
           ))}
         </div>
@@ -132,22 +132,22 @@ export default function ReviewQueue() {
 
       {/* List */}
       {isLoading ? (
-        <div className="page-card p-12 text-center text-[#8b949e]">Đang tải...</div>
+        <div className="bg-[#1d1f29] rounded-lg border border-[#504535]/10 p-12 text-center text-[#d5c4af]/60">Đang tải...</div>
       ) : items.length === 0 ? (
-        <div className="page-card p-12 text-center">
+        <div className="bg-[#1d1f29] rounded-lg border border-[#504535]/10 p-12 text-center">
           <div className="text-4xl mb-3">✅</div>
-          <div className="text-[#8b949e] font-bold">Không có câu hỏi nào đang chờ duyệt</div>
+          <div className="text-[#d5c4af]/60 font-bold">Không có câu hỏi nào đang chờ duyệt</div>
         </div>
       ) : (
         <div className="space-y-4">
           {items.map(q => (
-            <div key={q.id} className="page-card p-5 border-2 border-yellow-300/30">
+            <div key={q.id} className="bg-[#1d1f29] rounded-lg p-5 border border-[#504535]/20">
               {/* Header row */}
               <div className="flex items-center gap-2 mb-3 flex-wrap">
-                <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${DIFF_COLOR[q.difficulty] ?? 'bg-gray-100'}`}>
+                <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${DIFF_COLOR[q.difficulty] ?? 'bg-white/5'}`}>
                   {DIFF_LABEL[q.difficulty] ?? q.difficulty}
                 </span>
-                <span className="text-xs text-[#9a8a7a] font-medium">
+                <span className="text-xs text-[#d5c4af]/60 font-medium">
                   {q.book} {q.chapter}:{q.verseStart}–{q.verseEnd}
                 </span>
                 {/* Approval progress */}
@@ -156,25 +156,25 @@ export default function ReviewQueue() {
                     <span key={i} className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black ${
                       i < q.approvalsCount
                         ? 'bg-emerald-500 text-white'
-                        : 'bg-[#e8e0d8] text-[#b0a090]'
+                        : 'bg-[#504535]/30 text-[#d5c4af]/50'
                     }`}>✓</span>
                   ))}
-                  <span className="text-xs text-[#9a8a7a] font-medium ml-1">
+                  <span className="text-xs text-[#d5c4af]/60 font-medium ml-1">
                     {q.approvalsCount}/{q.approvalsRequired} duyệt
                   </span>
                 </span>
               </div>
 
               {/* Question content */}
-              <p className="font-bold text-[#4a3f35] mb-3 leading-snug">{q.content}</p>
+              <p className="font-bold text-[#e8a832] mb-3 leading-snug">{q.content}</p>
 
               {/* Options */}
               <div className="grid grid-cols-2 gap-1.5 mb-3">
                 {q.options.map((opt, i) => (
                   <div key={i} className={`text-sm px-3 py-1.5 rounded-lg ${
                     (q.correctAnswer ?? []).includes(i)
-                      ? 'bg-emerald-50 border border-emerald-200 text-emerald-700 font-bold'
-                      : 'bg-[#f5f0e8] text-[#7a6a5a]'
+                      ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold'
+                      : 'bg-white/5 text-[#d5c4af]'
                   }`}>
                     <span className="font-black mr-1">{String.fromCharCode(65 + i)}.</span> {opt}
                   </div>
@@ -187,7 +187,7 @@ export default function ReviewQueue() {
                 {expandedId === q.id ? '▾ Ẩn giải thích' : '▸ Xem giải thích'}
               </button>
               {expandedId === q.id && q.explanation && (
-                <p className="text-xs text-[#7a6a5a] italic bg-[#faf8f5] px-3 py-2 rounded-lg mb-3">{q.explanation}</p>
+                <p className="text-xs text-[#d5c4af] italic bg-white/5 px-3 py-2 rounded-lg mb-3">{q.explanation}</p>
               )}
 
               {/* Reviewer badges */}
@@ -196,8 +196,8 @@ export default function ReviewQueue() {
                   {q.reviews.map((r, i) => (
                     <span key={i} className={`text-xs px-2 py-0.5 rounded-full font-bold ${
                       r.action === 'APPROVE'
-                        ? 'bg-emerald-100 text-emerald-700'
-                        : 'bg-red-100 text-red-700'
+                        ? 'bg-emerald-500/10 text-emerald-400'
+                        : 'bg-red-500/10 text-red-400'
                     }`}>
                       {r.action === 'APPROVE' ? '✓' : '✗'} {r.adminEmail}
                     </span>
@@ -213,7 +213,7 @@ export default function ReviewQueue() {
                     value={rejectComment}
                     onChange={e => setRejectComment(e.target.value)}
                     placeholder="Lý do từ chối (tuỳ chọn)..."
-                    className="form-input text-sm resize-none w-full mb-2"
+                    className="w-full bg-[#191b25] border-none rounded text-sm text-[#e1e1ef] p-3 focus:ring-1 focus:ring-[#e8a832] resize-none mb-2"
                   />
                   <div className="flex gap-2">
                     <button onClick={() => reject(q.id)} disabled={actioningId === q.id}
@@ -221,7 +221,7 @@ export default function ReviewQueue() {
                       Xác nhận từ chối
                     </button>
                     <button onClick={() => { setRejectingId(null); setRejectComment('') }}
-                      className="px-4 py-1.5 bg-[#eeeae0] text-[#7a6a5a] text-xs font-bold rounded-lg">
+                      className="px-4 py-1.5 bg-[#32343e] text-[#d5c4af] text-xs font-bold rounded-lg">
                       Huỷ
                     </button>
                   </div>
@@ -236,7 +236,7 @@ export default function ReviewQueue() {
                     {actioningId === q.id ? '...' : '✓ Duyệt'}
                   </button>
                   <button onClick={() => setRejectingId(q.id)} disabled={actioningId === q.id}
-                    className="px-5 py-2 bg-red-100 hover:bg-red-200 text-red-600 text-sm font-bold rounded-xl transition-colors disabled:opacity-50">
+                    className="px-5 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 text-sm font-bold rounded-xl transition-colors disabled:opacity-50">
                     ✗ Từ chối
                   </button>
                 </div>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seasons &amp; Rankings | BibleQuiz Protocol</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed": "#001c39",
+              "inverse-on-surface": "#2e303a",
+              "on-error": "#690005",
+              "surface-bright": "#373943",
+              "on-primary-fixed": "#281900",
+              "primary-container": "#e8a832",
+              "outline": "#9d8f7b",
+              "tertiary": "#b3d1ff",
+              "surface-container-high": "#282933",
+              "surface-dim": "#11131c",
+              "secondary-container": "#444655",
+              "on-tertiary-fixed-variant": "#004883",
+              "surface-container-lowest": "#0c0e17",
+              "primary-fixed": "#ffdead",
+              "primary-fixed-dim": "#fdbb44",
+              "on-secondary-fixed": "#191b28",
+              "error-container": "#93000a",
+              "on-secondary-container": "#b3b4c6",
+              "on-primary": "#432c00",
+              "tertiary-container": "#80b6ff",
+              "background": "#11131c",
+              "surface-tint": "#fdbb44",
+              "on-secondary": "#2e303d",
+              "surface-container-low": "#191b25",
+              "inverse-primary": "#7f5700",
+              "on-background": "#e1e1ef",
+              "surface-variant": "#32343e",
+              "primary": "#ffc667",
+              "on-surface": "#e1e1ef",
+              "surface-container-highest": "#32343e",
+              "on-surface-variant": "#d5c4af",
+              "secondary": "#c5c5d7",
+              "tertiary-fixed": "#d4e3ff",
+              "on-error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#604100",
+              "on-tertiary-container": "#004681",
+              "error": "#ffb4ab",
+              "surface-container": "#1d1f29",
+              "outline-variant": "#504535",
+              "on-primary-container": "#5f4000",
+              "on-tertiary": "#00315d",
+              "secondary-fixed-dim": "#c5c5d7",
+              "on-secondary-fixed-variant": "#444655",
+              "inverse-surface": "#e1e1ef",
+              "tertiary-fixed-dim": "#a4c9ff",
+              "secondary-fixed": "#e1e1f4",
+              "surface": "#11131c"
+            },
+            fontFamily: {
+              "headline": ["Be Vietnam Pro"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .gold-gradient {
+        background: linear-gradient(135deg, #ffc667 0%, #e8a832 100%);
+      }
+      .glass-card {
+        background: rgba(29, 31, 41, 0.6);
+        backdrop-filter: blur(12px);
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- Sidebar Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-6 bg-[#0c0e17] w-64 font-['Be_Vietnam_Pro'] text-sm tracking-tight">
+<div class="px-6 mb-10 flex items-center gap-3">
+<div class="w-8 h-8 gold-gradient rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed text-lg" style="font-variation-settings: 'FILL' 1;">shrine</span>
+</div>
+<h1 class="text-xl font-bold tracking-tighter text-[#e8a832] uppercase">The Monolith</h1>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Users</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+<span>Questions</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span>AI Generator</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+<span>Review Queue</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-[#d5c4af] opacity-70 hover:bg-[#1d1f29] hover:text-[#e8a832] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span>Feedback</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-[#e8a832] font-semibold border-r-2 border-[#e8a832] bg-[#1d1f29]" href="#">
+<span class="material-symbols-outlined" data-icon="military_tech" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span>Seasons &amp; Rankings</span>
+</a>
+</nav>
+<div class="px-6 py-4">
+<button class="w-full py-2.5 px-4 gold-gradient text-on-primary-fixed rounded font-bold text-xs flex items-center justify-center gap-2 uppercase tracking-wider hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+                Generate Question
+            </button>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant/10">
+<a class="flex items-center gap-3 px-6 py-2 text-[#d5c4af] opacity-70 hover:text-[#e8a832]" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-2 text-[#d5c4af] opacity-70 hover:text-[#e8a832]" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center h-16 px-8 bg-[#11131c] sticky top-0 z-30">
+<div class="flex items-center gap-6">
+<div class="flex items-center bg-surface-container px-3 py-1.5 rounded-lg border border-outline-variant/10 min-w-[320px]">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-on-surface-variant/40" placeholder="Search protocol records..." type="text"/>
+</div>
+<div class="flex gap-6">
+<a class="font-['Be_Vietnam_Pro'] text-xs font-medium uppercase tracking-widest text-[#d5c4af] hover:text-[#ffc667] transition-all" href="#">System Status</a>
+<a class="font-['Be_Vietnam_Pro'] text-xs font-medium uppercase tracking-widest text-[#d5c4af] hover:text-[#ffc667] transition-all" href="#">Logs</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant/20"></div>
+<div class="flex items-center gap-3 bg-surface-container-low py-1.5 px-3 rounded-full border border-outline-variant/10">
+<div class="text-right">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold leading-none">Chief Moderator</p>
+<p class="text-xs font-medium text-on-surface">P. Alexander</p>
+</div>
+<img alt="Chief Moderator" class="w-8 h-8 rounded-full border border-primary/20 object-cover" data-alt="Professional portrait of a male administrator in a dark suit with a clean modern studio background and neutral lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmsSBwTABeOFMk2co9rjfLjEvY1fTJFVrYfBU6ca9eVzIneqUFoYt4nqin20Z9n3DK-ONAS_xo1Jli3tY38RZFbu9RnO6d4Vnywhw1Hyq6ZhhYxZHdv1kSbmQJObRc7bgwhOXSUCs2gOIn93sjeHXZwaEj1yaSMFWiTbDCR_qg674FyU7CsH8b4-RpvMR3qDU_L2cc2gUEa85vuaOiNpTT4HNQvjk8D4lSRU1SqpeutyLZHoh75N2NKGfRm2ogjOvwvufTOUylJxI"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-8 max-w-7xl mx-auto w-full space-y-8">
+<!-- Seasons Header -->
+<section class="flex justify-between items-end">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight font-headline flex items-center gap-3">
+<span class="text-primary-container">🏆</span> Quản lý mùa giải
+                    </h2>
+<p class="text-on-surface-variant text-sm mt-1">Presiding over the liturgical calendar and competitive tiers.</p>
+</div>
+<button class="gold-gradient px-6 py-2.5 rounded font-bold text-sm text-on-primary-fixed shadow-xl shadow-primary/10 hover:translate-y-[-1px] transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">workspace_premium</span>
+                    Tạo mùa mới
+                </button>
+</section>
+<!-- Seasonal Horizontal Cards -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Season: Ended -->
+<div class="bg-surface-container border border-outline-variant/5 p-5 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-16 h-16 bg-on-surface-variant/5 -mr-8 -mt-8 rotate-45 transition-transform group-hover:scale-110"></div>
+<div class="flex justify-between items-start mb-4">
+<span class="bg-surface-container-highest text-on-surface-variant px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest rounded-full">Ended</span>
+<span class="material-symbols-outlined text-on-surface-variant/30">history</span>
+</div>
+<h3 class="font-bold text-lg leading-tight mb-1">Mùa Giáng Sinh 2025</h3>
+<p class="text-xs text-on-surface-variant mb-4">Hoàn thành: 25/12/2025</p>
+<div class="flex items-center gap-4 text-xs font-mono text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">groups</span> 8,920
+                        </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">avg_pace</span> 68%
+                        </div>
+</div>
+</div>
+<!-- Season: Active -->
+<div class="bg-surface-container border-2 border-primary/20 p-5 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 -mr-12 -mt-12 rotate-45"></div>
+<div class="flex justify-between items-start mb-4">
+<span class="bg-primary-container text-on-primary-fixed px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest rounded-full shadow-lg shadow-primary/20">Active</span>
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+</div>
+<h3 class="font-bold text-lg leading-tight mb-1 text-primary">Mùa Phục Sinh 2026</h3>
+<p class="text-xs text-on-surface-variant mb-4">Kết thúc sau: <span class="text-primary font-bold">45 ngày</span></p>
+<div class="flex items-center gap-4 text-xs font-mono text-on-surface">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-primary">groups</span> 12,450
+                        </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-primary">trending_up</span> 72%
+                        </div>
+</div>
+</div>
+<!-- Season: Upcoming -->
+<div class="bg-surface-container border border-outline-variant/5 p-5 relative overflow-hidden group">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-tertiary-container text-on-tertiary-container px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest rounded-full">Upcoming</span>
+<span class="material-symbols-outlined text-tertiary/40">calendar_today</span>
+</div>
+<h3 class="font-bold text-lg leading-tight mb-1">Mùa Ngũ Tuần 2026</h3>
+<p class="text-xs text-on-surface-variant mb-4">Bắt đầu sau: 60 ngày</p>
+<div class="w-full bg-surface-container-low h-1 rounded-full overflow-hidden">
+<div class="bg-tertiary w-1/3 h-full"></div>
+</div>
+</div>
+</section>
+<!-- Detailed Analysis Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Tier Distribution & Stats -->
+<div class="lg:col-span-8 bg-surface-container p-8 space-y-8">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-xs font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-1">Detailed Analysis</h4>
+<h3 class="text-2xl font-bold">Thống kê Mùa Phục Sinh</h3>
+</div>
+<div class="flex gap-4">
+<div class="text-right">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold">Participants</p>
+<p class="text-xl font-mono font-bold text-primary">12,450</p>
+</div>
+<div class="w-[1px] h-10 bg-outline-variant/20"></div>
+<div class="text-right">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold">Avg. Accuracy</p>
+<p class="text-xl font-mono font-bold text-primary">72.4%</p>
+</div>
+</div>
+</div>
+<!-- Tiers (The Core Hierarchy) -->
+<div class="space-y-6">
+<div class="flex justify-between items-center mb-2">
+<h5 class="text-sm font-bold text-on-surface-variant">Phân bổ thứ hạng (Tier Distribution)</h5>
+<span class="text-[10px] text-on-surface-variant italic">N=12,450 souls</span>
+</div>
+<div class="space-y-4">
+<!-- Tier Item -->
+<div class="space-y-1.5">
+<div class="flex justify-between text-xs font-mono uppercase tracking-wider">
+<span class="text-on-surface">Sứ Đồ (Apostle)</span>
+<span class="text-primary font-bold">2.4%</span>
+</div>
+<div class="h-2 bg-surface-container-low rounded-full overflow-hidden">
+<div class="gold-gradient h-full" style="width: 2.4%"></div>
+</div>
+</div>
+<!-- Tier Item -->
+<div class="space-y-1.5">
+<div class="flex justify-between text-xs font-mono uppercase tracking-wider">
+<span class="text-on-surface">Tiên Tri (Prophet)</span>
+<span class="text-on-surface">8.1%</span>
+</div>
+<div class="h-2 bg-surface-container-low rounded-full overflow-hidden">
+<div class="bg-primary/60 h-full" style="width: 8.1%"></div>
+</div>
+</div>
+<!-- Tier Item -->
+<div class="space-y-1.5">
+<div class="flex justify-between text-xs font-mono uppercase tracking-wider">
+<span class="text-on-surface">Hiền Triết (Sage)</span>
+<span class="text-on-surface">15.5%</span>
+</div>
+<div class="h-2 bg-surface-container-low rounded-full overflow-hidden">
+<div class="bg-primary/40 h-full" style="width: 15.5%"></div>
+</div>
+</div>
+<!-- Tier Item -->
+<div class="space-y-1.5">
+<div class="flex justify-between text-xs font-mono uppercase tracking-wider">
+<span class="text-on-surface">Môn Đồ (Disciple)</span>
+<span class="text-on-surface">22.0%</span>
+</div>
+<div class="h-2 bg-surface-container-low rounded-full overflow-hidden">
+<div class="bg-primary/30 h-full" style="width: 22%"></div>
+</div>
+</div>
+<!-- Tier Item -->
+<div class="space-y-1.5">
+<div class="flex justify-between text-xs font-mono uppercase tracking-wider">
+<span class="text-on-surface">Người Tìm Kiếm (Seeker)</span>
+<span class="text-on-surface">34.2%</span>
+</div>
+<div class="h-2 bg-surface-container-low rounded-full overflow-hidden">
+<div class="bg-primary/20 h-full" style="width: 34.2%"></div>
+</div>
+</div>
+<!-- Tier Item -->
+<div class="space-y-1.5">
+<div class="flex justify-between text-xs font-mono uppercase tracking-wider">
+<span class="text-on-surface">Tân Tín Hữu (Neophyte)</span>
+<span class="text-on-surface">17.8%</span>
+</div>
+<div class="h-2 bg-surface-container-low rounded-full overflow-hidden">
+<div class="bg-primary/10 h-full" style="width: 17.8%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Top 10 Preview -->
+<div class="lg:col-span-4 space-y-6">
+<div class="bg-surface-container p-6">
+<h4 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-6 flex items-center justify-between">
+                            Top 10 Sanctum
+                            <a class="text-primary normal-case tracking-normal font-medium hover:underline" href="#">View All</a>
+</h4>
+<div class="space-y-4">
+<!-- User Entry -->
+<div class="flex items-center gap-4">
+<span class="font-mono text-xs text-primary font-bold w-4">01</span>
+<img alt="User Avatar" class="w-8 h-8 rounded-full bg-surface-variant object-cover" data-alt="Close up portrait of a young man with glasses smiling gently in soft natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0XWCQPjZJbENvK0Yp0QB0tJE1b83wWCRjr7STzRKLA-_OANfZqpHQ623hLMVbbsvG2DOa5o-qmrizK5Q3EEtBeuhpaUqtSabyWYLLBPub8VziZgoni0BXAGu5KIZshkHd75IqjGO_Dcun1_VqdwZQhqVmvHjq8aYUKOXxVDLgTfLRmqq3RdS8YG-ojFHty_AvV86AAAhKEhpE1tfo5QSXRniy6ysSVAreug08E554kg3TtOHmvxb8PAUc9ZVXzGlYLTiRMLr5A58"/>
+<div class="flex-1">
+<p class="text-sm font-bold truncate">John.The.Beloved</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Sứ Đồ • 14,200 XP</p>
+</div>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<!-- User Entry -->
+<div class="flex items-center gap-4 opacity-90">
+<span class="font-mono text-xs text-on-surface-variant w-4">02</span>
+<img alt="User Avatar" class="w-8 h-8 rounded-full bg-surface-variant object-cover" data-alt="Portrait of a contemplative woman in warm studio lighting with a dark artistic background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTy0IYvQfcnlmKfYKrrrF0I7m7PI5INrin71cSK78I0pDXT4zOv-k9OfK2kz2VF4yvYK6b9kx_PGc340qeLCJ02lu92N5VFLRwDc_oIr9VhpcQu5Q4BxqJrTKZ_WpYId8IV9YCF4hFZE2fuIie1GzyWhPOsxa01rvBuQPdPv47Ndt7_3_Qu9Ua8b28noYg_oyw2eiaYrS_ICks3zIyXQLwxpIfGdhzeVEpW-mRGcifqfhtMV3FrTEhR7O6_7FYsKXzSinWc-AIzZA"/>
+<div class="flex-1">
+<p class="text-sm font-bold truncate">Grace_Flows_88</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Sứ Đồ • 13,850 XP</p>
+</div>
+</div>
+<!-- User Entry -->
+<div class="flex items-center gap-4 opacity-80">
+<span class="font-mono text-xs text-on-surface-variant w-4">03</span>
+<img alt="User Avatar" class="w-8 h-8 rounded-full bg-surface-variant object-cover" data-alt="Sharp professional headshot of a middle-aged man with a graying beard and intense eyes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBblAIm1vfA7IbihpMBK1yW5XBZK0OOEiKpPMo6t3E0BC_PJkbpna7dNMNzJfCz4u8VLh4NefOHBJko_E4WrGNkrgaBMpdf4_DJS79yyRR5AZe8LPen02iKZEusqz58rjc-rCVD7USmsWH6OIpCHQzx4qMgHqm3-uFQ4QgBkW8Hdrpv0L1aC_6A9_SBU92bZVty-Ma6BaIE2JJOXWbasMtDcCU6K9eIwFOJiyUJOiRoF5yebd2jNw_ajZ3PrUQvC9ZxuBKS2VWAS5s"/>
+<div class="flex-1">
+<p class="text-sm font-bold truncate">Peter_Foundation</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Sứ Đồ • 13,400 XP</p>
+</div>
+</div>
+<!-- User Entry -->
+<div class="flex items-center gap-4 opacity-70">
+<span class="font-mono text-xs text-on-surface-variant w-4">04</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">MK</div>
+<div class="flex-1">
+<p class="text-sm font-bold truncate">Mary.Magdalene</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Tiên Tri • 12,900 XP</p>
+</div>
+</div>
+</div>
+</div>
+<!-- System Controls -->
+<div class="bg-surface-container border border-outline-variant/10 p-6 space-y-4">
+<div class="flex justify-between items-start">
+<h4 class="text-sm font-bold">Bảng xếp hạng hệ thống</h4>
+<span class="material-symbols-outlined text-primary text-sm">settings_suggest</span>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-xs">
+<span class="text-on-surface-variant">Lần tính toán cuối:</span>
+<span class="text-on-surface font-mono">15 phút trước</span>
+</div>
+<div class="flex justify-between text-xs items-center">
+<span class="text-on-surface-variant">System Health:</span>
+<div class="flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+<span class="text-on-surface">Stable <span class="text-[10px] text-on-surface-variant">(14ms)</span></span>
+</div>
+</div>
+</div>
+<button class="w-full py-2 border border-primary/40 text-primary text-xs font-bold uppercase tracking-widest hover:bg-primary/5 transition-colors">
+                            Tính lại ngay
+                        </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Create Season Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0c0e17]/80 backdrop-blur-sm">
+<div class="w-full max-w-lg bg-[#1d1f29] border border-outline-variant/20 shadow-2xl relative overflow-hidden">
+<!-- Modal Accent Line -->
+<div class="h-1 w-full gold-gradient"></div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h2 class="text-xl font-bold font-headline mb-1">Khởi tạo mùa giải mới</h2>
+<p class="text-xs text-on-surface-variant">Thiết lập thông số và thời gian cho chu kỳ thi đấu tiếp theo.</p>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant block">Tên mùa giải</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary text-sm py-3 px-4" placeholder="VD: Mùa Ngũ Tuần 2026" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant block">Mô tả mục tiêu</label>
+<textarea class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary text-sm py-3 px-4" placeholder="Ghi chú về chủ đề hoặc phần thưởng..." rows="2"></textarea>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant block">Ngày bắt đầu</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary text-sm py-3 px-4 [color-scheme:dark]" type="date"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant block">Ngày kết thúc</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary text-sm py-3 px-4 [color-scheme:dark]" type="date"/>
+</div>
+</div>
+<div class="flex items-start gap-3 bg-surface-container-low p-4 border-l-2 border-primary/50">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">info</span>
+<p class="text-[11px] leading-relaxed text-on-surface-variant">
+<strong class="text-primary uppercase tracking-tighter">Validation Rule:</strong> Không được chồng lấn thời gian với các mùa giải khác đang hoặc sắp diễn ra trong hệ thống.
+                        </p>
+</div>
+<div class="flex gap-4 pt-4">
+<button class="flex-1 py-3 bg-surface-container-highest text-on-surface font-bold text-xs uppercase tracking-widest hover:bg-surface-bright transition-colors" type="button">
+                            Hủy bỏ
+                        </button>
+<button class="flex-1 py-3 gold-gradient text-on-primary-fixed font-bold text-xs uppercase tracking-widest" type="submit">
+                            Xác nhận khởi tạo
+                        </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</body></html>

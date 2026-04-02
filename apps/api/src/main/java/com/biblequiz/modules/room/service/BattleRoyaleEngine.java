@@ -75,15 +75,31 @@ public class BattleRoyaleEngine {
     }
 
     /**
+     * Check if max rounds reached and game should end with forced ranking.
+     * maxRounds = min(questionCount * 2, 50)
+     * @return true if game should end
+     */
+    public boolean shouldEndGame(int currentRound, int questionCount, int activePlayersCount) {
+        if (activePlayersCount <= 1) return true;
+        int maxRounds = Math.min(questionCount * 2, 50);
+        return currentRound >= maxRounds;
+    }
+
+    /**
      * Gán rank cuối cho những active players còn lại khi game kết thúc.
-     * Sort theo điểm giảm dần: điểm cao nhất = rank 1.
+     * Sort theo: correctAnswers DESC → averageReactionTime ASC (faster = better).
      */
     @Transactional
     public void assignFinalRanks(String roomId) {
         List<RoomPlayer> remaining = roomPlayerRepository
                 .findByRoomIdAndPlayerStatus(roomId, RoomPlayer.PlayerStatus.ACTIVE);
 
-        remaining.sort((a, b) -> b.getScore() - a.getScore());
+        // Sort: correctAnswers DESC, then averageReactionTime ASC (faster better)
+        remaining.sort((a, b) -> {
+            int cmp = Integer.compare(b.getCorrectAnswers(), a.getCorrectAnswers());
+            if (cmp != 0) return cmp;
+            return Double.compare(a.getAverageReactionTime(), b.getAverageReactionTime());
+        });
 
         for (int i = 0; i < remaining.size(); i++) {
             RoomPlayer p = remaining.get(i);
