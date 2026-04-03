@@ -1,0 +1,23 @@
+# BibleQuiz — robots.txt
+# Chỉ cho phép crawl các trang public, không cần login
+
+User-agent: *
+Allow: /
+Allow: /landing
+Allow: /daily
+Allow: /share/
+
+Disallow: /admin/
+Disallow: /quiz
+Disallow: /ranked
+Disallow: /practice
+Disallow: /profile
+Disallow: /groups
+Disallow: /tournaments
+Disallow: /room/
+Disallow: /review
+Disallow: /achievements
+Disallow: /multiplayer
+Disallow: /settings
+
+Sitemap: https://biblequiz.app/sitemap.xml

@@ -1,6 +1,7 @@
 import { useState, useEffect, type FormEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../store/authStore'
+import PageMeta from '../components/PageMeta'
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false)
@@ -68,6 +69,7 @@ export default function Login() {
 
   return (
     <main className="flex min-h-screen">
+      <PageMeta title="Dang nhap" canonicalPath="/login" />
       {/* Left Side: Hero Section (60%) */}
       <section className="hidden lg:flex lg:w-[60%] relative overflow-hidden bg-surface-container-lowest">
         <div className="absolute inset-0 z-0">

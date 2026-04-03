@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { Client, IMessage, StompSubscription } from '@stomp/stompjs';
-import SockJS from 'sockjs-client';
 import { getApiBaseUrl } from '../api/config';
 import { getAccessToken } from '../api/tokenStore';
 
@@ -32,26 +31,25 @@ export function useStomp({ url = '/ws', roomId, onMessage, onConnect, onReconnec
 
   useEffect(() => {
     const apiBase = getApiBaseUrl();
-    let sockUrl: string;
+    let wsUrl: string;
     if (apiBase.startsWith('http')) {
       try {
         const u = new URL(apiBase);
+        u.protocol = u.protocol === 'https:' ? 'wss:' : 'ws:';
         u.pathname = url;
         u.search = '';
         u.hash = '';
-        sockUrl = u.toString();
+        wsUrl = u.toString();
       } catch {
-        sockUrl = url;
+        wsUrl = url;
       }
     } else {
-      const httpProto = window.location.protocol === 'https:' ? 'https' : 'http';
-      sockUrl = `${httpProto}//${window.location.host}${url}`;
+      const wsProto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      wsUrl = `${wsProto}//${window.location.host}${url}`;
     }
 
-    const socketFactory = () => new SockJS(sockUrl);
-
     const client = new Client({
-      webSocketFactory: socketFactory as any,
+      brokerURL: wsUrl,
       reconnectDelay: 2000,
       heartbeatIncoming: 10000,
       heartbeatOutgoing: 10000,

@@ -4,15 +4,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bible Quiz</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-    rel="stylesheet">
+
+  <!-- Primary Meta Tags -->
+  <title>BibleQuiz — Hoc Kinh Thanh qua Quiz & Thi dau</title>
+  <meta name="description" content="Nen tang hoc Kinh Thanh qua gamification — trac nghiem, thi dau multiplayer, nhom hoi thanh, xep hang theo mua. Hoan toan mien phi." />
+  <meta name="keywords" content="quiz kinh thanh, trac nghiem kinh thanh, hoc kinh thanh online, bible quiz tieng viet, app hoc kinh thanh cho gioi tre, thi dua kinh thanh nhom hoi thanh" />
+  <meta name="author" content="BibleQuiz" />
+  <meta name="theme-color" content="#11131e" />
+
+  <!-- Canonical + Language Alternates -->
+  <!-- Canonical set per-page via react-helmet-async PageMeta -->
+  <link rel="alternate" hreflang="vi" href="https://biblequiz.app" />
+  <link rel="alternate" hreflang="el" href="https://biblequiz.app/el" />
+  <link rel="alternate" hreflang="x-default" href="https://biblequiz.app" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BibleQuiz — Hoc Kinh Thanh qua Quiz & Thi dau" />
+  <meta property="og:description" content="Nen tang hoc Kinh Thanh qua gamification — trac nghiem, thi dau multiplayer, nhom hoi thanh, xep hang theo mua." />
+  <meta property="og:image" content="https://biblequiz.app/og-image.png" />
+  <meta property="og:url" content="https://biblequiz.app" />
+  <meta property="og:site_name" content="BibleQuiz" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta property="og:locale:alternate" content="el_GR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BibleQuiz — Hoc Kinh Thanh qua Quiz & Thi dau" />
+  <meta name="twitter:description" content="Nen tang hoc Kinh Thanh qua gamification — trac nghiem, thi dau multiplayer, nhom hoi thanh." />
+  <meta name="twitter:image" content="https://biblequiz.app/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Performance Hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://api.biblequiz.app" />
+
+  <!-- LCP Preload — hero image -->
+  <link rel="preload" as="image" href="https://lh3.googleusercontent.com/aida-public/AB6AXuBpEFLF4HdAAZtQmV6p7ZFtq-07HGD2UVS1ZVgbPxSev4YKp18Amt4MdHqCFGh2JrRl5z8UyUtxx7O5an0EGofE1Kkzf-lnCx_fHn2-S1-sdjas2YKfjghtOoVc-9_Vb69hY_f1Kee_27xarqfLFbHwfQelEbTOKW_ouxi_PqBWzhBFPVaR7BQBwYz9FkBO6DlHAdNGeKKuOutu3XwrKIR75hoWBmThBK6KGHpGo8uO9ZNvkcSIwpmItnWjnMcoahC_NJDQhMWkspM" />
+
+  <!-- Fonts — non-blocking with media swap -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" /></noscript>
+
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" /></noscript>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "BibleQuiz",
+      "description": "Nen tang hoc Kinh Thanh qua gamification — trac nghiem, thi dau, nhom hoi thanh",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "inLanguage": ["vi", "el"],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "BibleQuiz"
+      }
+    }
+  </script>
 </head>
 
 <body class="bg-[#11131e] text-[#e1e1f1] antialiased">

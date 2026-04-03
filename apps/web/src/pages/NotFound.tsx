@@ -1,10 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom'
+import PageMeta from '../components/PageMeta'
 
 export default function NotFound() {
   const navigate = useNavigate()
 
   return (
     <div className="relative min-h-screen bg-background flex items-center justify-center overflow-hidden px-4">
+      <PageMeta title="Trang khong tim thay" />
       {/* Decorative blur circles */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-secondary/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-primary/5 blur-3xl pointer-events-none" />

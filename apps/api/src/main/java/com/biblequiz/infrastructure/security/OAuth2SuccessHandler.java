@@ -10,6 +10,7 @@ import com.biblequiz.modules.auth.repository.AuthIdentityRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -35,6 +36,9 @@ import java.util.UUID;
 public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(OAuth2SuccessHandler.class);
+
+    @Value("${app.frontend-url:http://localhost:5173}")
+    private String frontendBaseUrl;
 
     @Autowired
     private UserRepository userRepository;
@@ -109,10 +113,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
                     "avatar", avatarUrl != null ? avatarUrl : "",
                     "role", user.getRole()));
 
-            String frontendUrl = System.getenv("FRONTEND_URL");
-            if (frontendUrl == null || frontendUrl.isBlank()) {
-                frontendUrl = "http://localhost:5173";
-            }
+            String frontendUrl = frontendBaseUrl;
 
             // Only the one-time code is in the URL — tokens stay off the wire
             String redirectUrl = frontendUrl + "/auth/callback?code=" + code;

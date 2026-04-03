@@ -98,6 +98,7 @@ public class SecurityConfig {
                                                 "/api/daily-challenge",
                                                 "/api/share/*/view",
                                                 "/api/share/render/**",
+                                                "/api/share/og/**",
                                                                 "/swagger-ui/**",
                                                                 "/v3/api-docs/**",
                                                                 "/swagger-ui.html")

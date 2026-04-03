@@ -7,6 +7,7 @@ import { ErrorProvider } from './contexts/ErrorContext'
 import RequireAuth from './contexts/RequireAuth'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import ErrorBoundary from './components/ErrorBoundary'
+import { HelmetProvider } from 'react-helmet-async'
 import './utils/localStorageClearDetector'
 import Home from './pages/Home'
 import LandingPage from './pages/LandingPage'
@@ -66,6 +67,7 @@ function HomeOrLanding() {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ErrorBoundary>
+      <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <ErrorProvider>
             <BrowserRouter>
@@ -127,6 +129,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             </BrowserRouter>
         </ErrorProvider>
       </QueryClientProvider>
+      </HelmetProvider>
     </ErrorBoundary>
   </React.StrictMode>
 )

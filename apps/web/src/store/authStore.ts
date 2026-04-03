@@ -111,6 +111,14 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   checkAuth: async () => {
+    // Skip refresh if user was never logged in (no cached profile)
+    // This avoids a 401 console error on guest/landing pages
+    const hadSession = localStorage.getItem('userName')
+    if (!hadSession) {
+      set({ user: null, isAuthenticated: false, isAdmin: false, isLoading: false })
+      return
+    }
+
     try {
       const { api } = await import('../api/client')
       if (import.meta.env.DEV) {

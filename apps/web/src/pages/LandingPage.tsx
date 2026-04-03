@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
+import PageMeta from '../components/PageMeta'
 
 /* ────────────────────────────── Guest Header ────────────────────────────── */
 
@@ -67,11 +68,11 @@ function HeroSection() {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] text-on-surface">
-            Học Lời Chúa mỗi ngày qua những <span className="text-secondary">thử thách</span> thú vị
+            Học Kinh Thánh mỗi ngày qua những <span className="text-secondary">trắc nghiệm</span> thú vị
           </h1>
 
           <p className="text-xl text-on-surface-variant leading-relaxed max-w-lg">
-            Khám phá kho tàng tri thức Kinh Thánh thông qua các trò chơi tương tác, thi đấu cùng cộng đồng và theo dõi tiến trình thuộc linh của bạn.
+            Quiz Kinh Thánh tiếng Việt — trắc nghiệm tương tác, thi đấu multiplayer cùng cộng đồng, nhóm hội thánh và theo dõi tiến trình học Kinh Thánh online của bạn.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -95,6 +96,9 @@ function HeroSection() {
           <div className="absolute -inset-4 bg-secondary/10 rounded-[2rem] blur-2xl group-hover:bg-secondary/20 transition-all" />
           <img
             alt="Bible and Light"
+            width={600}
+            height={450}
+            fetchPriority="high"
             className="relative rounded-[2rem] shadow-2xl border border-outline-variant/15 w-full object-cover aspect-[4/3]"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpEFLF4HdAAZtQmV6p7ZFtq-07HGD2UVS1ZVgbPxSev4YKp18Amt4MdHqCFGh2JrRl5z8UyUtxx7O5an0EGofE1Kkzf-lnCx_fHn2-S1-sdjas2YKfjghtOoVc-9_Vb69hY_f1Kee_27xarqfLFbHwfQelEbTOKW_ouxi_PqBWzhBFPVaR7BQBwYz9FkBO6DlHAdNGeKKuOutu3XwrKIR75hoWBmThBK6KGHpGo8uO9ZNvkcSIwpmItnWjnMcoahC_NJDQhMWkspM"
           />
@@ -133,7 +137,7 @@ const features = [
 
 function FeaturesGrid() {
   return (
-    <section className="py-24 px-6 bg-surface-container-low">
+    <section className="py-24 px-6 bg-surface-container-low" aria-label="Tính năng nổi bật">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-4">Tính Năng Nổi Bật</h2>
@@ -163,11 +167,11 @@ function FeaturesGrid() {
 
 function TryNowSection() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-24 px-6" aria-label="Trải nghiệm thử thách">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* Left info */}
         <div>
-          <h2 className="text-4xl font-bold mb-6">Trải Nghiệm Thử Thách</h2>
+          <h2 className="text-4xl font-bold mb-6">Trải Nghiệm Trắc Nghiệm Kinh Thánh</h2>
           <p className="text-lg text-on-surface-variant mb-10 leading-relaxed">
             Không cần đăng ký, bạn có thể bắt đầu ngay bây giờ với các thử thách nhanh để kiểm tra kiến thức Kinh Thánh của mình.
           </p>
@@ -176,7 +180,7 @@ function TryNowSection() {
             <div className="flex items-start gap-4 p-6 bg-surface-container rounded-2xl border-l-4 border-secondary">
               <span className="material-symbols-outlined text-secondary text-3xl mt-1">verified</span>
               <div>
-                <h4 className="font-bold text-lg mb-1">Cập Nhật Thường Xuyên</h4>
+                <h3 className="font-bold text-lg mb-1">Cập Nhật Thường Xuyên</h3>
                 <p className="text-on-surface-variant text-sm">
                   Hơn 5000+ câu hỏi được biên soạn kỹ lưỡng từ các mục sư và giáo sư thần học.
                 </p>
@@ -186,7 +190,7 @@ function TryNowSection() {
             <div className="flex items-start gap-4 p-6 bg-surface-container rounded-2xl border-l-4 border-primary">
               <span className="material-symbols-outlined text-primary text-3xl mt-1">devices</span>
               <div>
-                <h4 className="font-bold text-lg mb-1">Đa Nền Tảng</h4>
+                <h3 className="font-bold text-lg mb-1">Đa Nền Tảng</h3>
                 <p className="text-on-surface-variant text-sm">
                   Học trên web, máy tính bảng hoặc ứng dụng di động mọi lúc mọi nơi.
                 </p>
@@ -253,7 +257,7 @@ const leaderboardData = [
 
 function LeaderboardPreview() {
   return (
-    <section className="py-24 px-6 bg-surface-container-lowest">
+    <section className="py-24 px-6 bg-surface-container-lowest" aria-label="Bảng xếp hạng">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-block px-6 py-2 rounded-full gold-gradient text-on-secondary font-extrabold text-lg mb-6 shadow-xl shadow-secondary/10">
@@ -323,13 +327,16 @@ function LeaderboardPreview() {
 
 function ChurchGroupShowcase() {
   return (
-    <section className="py-24 px-6 relative">
+    <section className="py-24 px-6 relative" aria-label="Nhóm hội thánh">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* Image */}
         <div className="order-2 lg:order-1 relative">
           <div className="absolute -inset-10 bg-primary/10 rounded-full blur-[100px]" />
           <img
             alt="Group studying together"
+            width={600}
+            height={400}
+            loading="lazy"
             className="relative rounded-[2rem] shadow-2xl z-10"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnm3LIt9EiyqGvjOzhF7rg8NoKMQoAjbDHWgkYgYTcjATw8YGu6nvIwD21ypU3A5cSNU5YgzZ4oStRZaYpVP37Fv9KrmqJ1yTWYyNV8MPJOP9EQDvi7dwbLUPj2GK18ZXveYRRuAkiOMNcerFyYD3JwSSOXaWoBWLHZnb1UJZSmhsA5ppJF4A78tXcbZMRiP5dnGucV58PQs__oVK1uan3IZwbSeQ1R7wfr--M3W8K2cn0zQGPw2NGpSpzUFnFsNsWkUcurItdKsw"
           />
@@ -386,7 +393,7 @@ function ChurchGroupShowcase() {
 
 function DailyVerse() {
   return (
-    <section className="py-24 px-6 bg-surface-container-low">
+    <section className="py-24 px-6 bg-surface-container-low" aria-label="Câu Kinh Thánh mỗi ngày">
       <div className="max-w-4xl mx-auto text-center">
         <div className="w-16 h-1 bg-secondary mx-auto mb-10 rounded-full" />
         <div className="relative px-12">
@@ -411,7 +418,7 @@ function FooterCTA() {
   }
 
   return (
-    <section className="py-32 px-6 relative overflow-hidden text-center">
+    <section className="py-32 px-6 relative overflow-hidden text-center" aria-label="Đăng ký miễn phí">
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-surface to-primary-container/20" />
       <div className="max-w-2xl mx-auto space-y-10">
         <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
@@ -427,6 +434,9 @@ function FooterCTA() {
           >
             <img
               alt="Google"
+              width={24}
+              height={24}
+              loading="lazy"
               className="w-6 h-6"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcJIraLBnXjAOS0EXUCIC2rsomKCPxGvpBNYCmt4hQSQzzTt3HaTfkiLVJf9Wgb_lImqBmvVodHASMpqGU5bh1M6pMBhnDWC4ACT6pdtz__gRW5ca7GOmAoVj9qqJAfvRUSwIg27rDceLWagSU29hiYRkHKoVLfsohGVdXJWj01Kae2VDprsg2QNIbxhKzQTIsCspOQnwjByjN_-TX-4TvnQUGIy7hPsg0H5mcnRNMACynXMRatZ3R8cLaWiPG4q6Qko0ODPnYMLE"
             />
@@ -448,18 +458,18 @@ function Footer() {
     <footer className="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 bg-[#11131e] border-t border-[#46464d]/15">
       <div className="flex flex-col items-center md:items-start gap-2">
         <div className="text-lg font-bold text-[#f8bd45]">BibleQuiz</div>
-        <p className="font-be-vietnam-pro text-sm leading-relaxed text-[#e1e1f1]/60">
+        <p className="font-be-vietnam-pro text-sm leading-relaxed text-[#e1e1f1]/75">
           &copy; 2024 BibleQuiz. The Sacred Modernist Path.
         </p>
       </div>
       <div className="flex gap-8">
-        <a className="font-be-vietnam-pro text-sm text-[#e1e1f1]/50 hover:text-[#f8bd45] transition-colors cursor-pointer" href="#">
+        <a className="font-be-vietnam-pro text-sm text-[#e1e1f1]/70 hover:text-[#f8bd45] transition-colors cursor-pointer" href="#">
           About
         </a>
-        <a className="font-be-vietnam-pro text-sm text-[#e1e1f1]/50 hover:text-[#f8bd45] transition-colors cursor-pointer" href="#">
+        <a className="font-be-vietnam-pro text-sm text-[#e1e1f1]/70 hover:text-[#f8bd45] transition-colors cursor-pointer" href="#">
           Contact
         </a>
-        <a className="font-be-vietnam-pro text-sm text-[#e1e1f1]/50 hover:text-[#f8bd45] transition-colors cursor-pointer" href="#">
+        <a className="font-be-vietnam-pro text-sm text-[#e1e1f1]/70 hover:text-[#f8bd45] transition-colors cursor-pointer" href="#">
           Terms
         </a>
       </div>
@@ -492,14 +502,21 @@ export default function LandingPage() {
 
   return (
     <div className="bg-background font-body text-on-surface selection:bg-secondary selection:text-on-secondary min-h-screen">
+      <PageMeta
+        title="Hoc Kinh Thanh qua Quiz & Thi dau"
+        description="Quiz Kinh Thanh tieng Viet — trac nghiem tuong tac, thi dau multiplayer, nhom hoi thanh. Hoan toan mien phi."
+        canonicalPath="/"
+      />
       <GuestHeader />
-      <HeroSection />
-      <FeaturesGrid />
-      <TryNowSection />
-      <LeaderboardPreview />
-      <ChurchGroupShowcase />
-      <DailyVerse />
-      <FooterCTA />
+      <main>
+        <HeroSection />
+        <FeaturesGrid />
+        <TryNowSection />
+        <LeaderboardPreview />
+        <ChurchGroupShowcase />
+        <DailyVerse />
+        <FooterCTA />
+      </main>
       <Footer />
     </div>
   )

@@ -36,7 +36,7 @@ describe('LandingPage', () => {
 
   it('renders hero section with headline', () => {
     renderLanding()
-    expect(screen.getByText(/Học Lời Chúa/i)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/Học Kinh Thánh/i)
   })
 
   it('renders "Chơi Thử Ngay" CTA button', () => {
@@ -47,7 +47,7 @@ describe('LandingPage', () => {
   it('renders features grid section', () => {
     renderLanding()
     expect(screen.getByText(/6 Chế Độ Chơi/i)).toBeInTheDocument()
-    expect(screen.getByText(/Nhóm Hội Thánh/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/Nhóm Hội Thánh/i).length).toBeGreaterThanOrEqual(1)
   })
 
   it('renders leaderboard preview section', () => {

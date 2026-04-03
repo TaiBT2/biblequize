@@ -1,0 +1,14 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#11131e"/>
+  <text x="600" y="260" font-family="Be Vietnam Pro, sans-serif" font-size="72" font-weight="800" fill="#e8a832" text-anchor="middle">BibleQuiz</text>
+  <text x="600" y="340" font-family="Be Vietnam Pro, sans-serif" font-size="28" font-weight="400" fill="#e1e1f1" text-anchor="middle">Hoc Kinh Thanh qua Quiz &amp; Thi dau</text>
+  <text x="600" y="400" font-family="Be Vietnam Pro, sans-serif" font-size="20" font-weight="300" fill="#e1e1f1" opacity="0.6" text-anchor="middle">Trac nghiem tuong tac · Multiplayer · Nhom Hoi Thanh · Mien phi</text>
+  <rect x="480" y="440" width="240" height="48" rx="12" fill="url(#gold)"/>
+  <text x="600" y="472" font-family="Be Vietnam Pro, sans-serif" font-size="18" font-weight="700" fill="#11131e" text-anchor="middle">Choi Thu Ngay</text>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8a832"/>
+      <stop offset="100%" stop-color="#e7c268"/>
+    </linearGradient>
+  </defs>
+</svg>

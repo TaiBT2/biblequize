@@ -1,5 +1,257 @@
 # TODO
 
+## Lighthouse BP Fix — Round 2 [DONE]
+
+### Task LH2-1: Replace sockjs-client unload event
+- Status: [ ] TODO
+- File(s): apps/web/src/hooks/useWebSocket.ts, package.json
+- Root cause: sockjs-client uses deprecated `unload` event listener
+- Fix: switch to native WebSocket (drop sockjs-client) or use @stomp/stompjs only
+
+### Task LH2-2: Fix 401 console error on landing
+- Status: [ ] TODO
+- File(s): apps/web/src/store/authStore.ts
+- Root cause: checkAuth() calls /api/auth/refresh on every page load including guest landing
+- Fix: skip refresh if no token exists
+
+### Task LH2-3: Fix source maps detection
+- Status: [ ] TODO
+- File(s): apps/web/vite.config.ts
+- Root cause: sourcemap 'hidden' doesn't reference in JS → Lighthouse can't find
+- Fix: change to sourcemap: true
+
+### Task LH2-VERIFY: Rebuild + test
+- Status: [ ] TODO
+
+---
+
+## Lighthouse BP 77→99 + Perf 86→95 [DONE]
+
+### Task LH-1: Fix oversized favicons (1.3MB → <50KB)
+- Status: [ ] TODO
+- File(s): apps/web/public/favicon-*, apple-touch-icon, android-chrome-*
+- Checklist:
+  - [ ] Generate proper sized favicons via node script
+  - [ ] Create favicon.ico
+  - [ ] Commit: "fix: generate proper sized favicons"
+
+### Task LH-2: Fix font render blocking
+- Status: [ ] TODO
+- File(s): apps/web/index.html
+- Checklist:
+  - [ ] Font preload with media="print" onload trick
+  - [ ] Material Symbols same treatment
+  - [ ] Commit: "perf: fix font render blocking"
+
+### Task LH-3: Add width/height to Landing images + lazy load
+- Status: [ ] TODO
+- File(s): apps/web/src/pages/LandingPage.tsx
+- Checklist:
+  - [ ] Add width/height to all <img>
+  - [ ] Add loading="lazy" to below-fold images
+  - [ ] fetchpriority="high" on hero image
+  - [ ] Commit: "perf: image dimensions + lazy loading"
+
+### Task LH-4: Preload LCP element
+- Status: [ ] TODO
+- File(s): apps/web/index.html
+- Checklist:
+  - [ ] Preload hero image
+  - [ ] Commit: "perf: preload LCP hero image"
+
+### Task LH-5: Final security headers polish
+- Status: [ ] TODO
+- File(s): apps/web/vite.config.ts
+- Checklist:
+  - [ ] Permissions-Policy in vite headers
+  - [ ] Commit: "fix: add Permissions-Policy header"
+
+### Task LH-VERIFY: Rebuild + test + Lighthouse
+- Status: [ ] TODO
+- Checklist:
+  - [ ] npm run build pass
+  - [ ] FE 387 tests pass
+  - [ ] Lighthouse check
+
+---
+
+## Best Practices 77 → 99 [DONE]
+
+> Lighthouse Best Practices fix — 3 General + 5 Trust & Safety
+
+### Task BP-1: Fix deprecated APIs
+- Status: [x] DONE — no deprecated APIs in source code
+- File(s): apps/web/src/ (scan for deprecated usage)
+- Checklist:
+  - [ ] Search deprecated API usage (document.domain, keyCode, unload, etc.)
+  - [ ] Search deprecated React patterns (componentWillMount, findDOMNode, ReactDOM.render)
+  - [ ] Fix all findings
+  - [ ] Commit: "fix: remove deprecated API usage"
+
+### Task BP-2: Fix browser console errors
+- Status: [x] DONE — favicon files created, manifest icons updated
+- File(s): apps/web/public/ (missing assets), apps/web/src/ (API errors)
+- Checklist:
+  - [ ] Check missing favicon/icons → create if needed
+  - [ ] Check React key warnings
+  - [ ] Check API fetch errors on landing page
+  - [ ] Commit: "fix: resolve all browser console errors"
+
+### Task BP-3: Fix missing source maps
+- Status: [x] DONE — sourcemap: 'hidden' in vite.config.ts
+- File(s): apps/web/vite.config.ts
+- Checklist:
+  - [ ] Set sourcemap: 'hidden' in build config
+  - [ ] Verify .map files generated
+  - [ ] Commit: "fix: enable source maps for production build"
+
+### Task BP-4: Security headers (Nginx + Vite)
+- Status: [x] DONE — CSP, HSTS, COOP, XFO, Referrer, Permissions-Policy
+- File(s): infra/docker/nginx.conf, apps/web/vite.config.ts
+- Checklist:
+  - [ ] CSP header
+  - [ ] HSTS header
+  - [ ] COOP header
+  - [ ] X-Frame-Options
+  - [ ] X-Content-Type-Options
+  - [ ] Referrer-Policy
+  - [ ] Permissions-Policy
+  - [ ] Vite dev/preview headers
+  - [ ] Commit: "fix: add security headers for Best Practices"
+
+### Task BP-5: Console.log cleanup
+- Status: [x] DONE — esbuild.pure: ['console.log'] in production
+- File(s): apps/web/vite.config.ts, apps/web/src/
+- Checklist:
+  - [ ] Add esbuild.pure console.log strip
+  - [ ] Commit: "chore: strip console.log in production"
+
+### Task BP-VERIFY: Rebuild + test
+- Status: [x] DONE — build pass, 387/387 FE tests pass, .map files generated
+- Checklist:
+  - [ ] npm run build pass
+  - [ ] FE regression pass (387 tests)
+  - [ ] npm run preview → Chrome Console 0 errors
+
+---
+
+## SEO Audit + Fix [DONE]
+
+> Ref: PROMPT_SEO_AUDIT.md — Audit score: 4/15 → 14/15 (prerender blocked)
+
+### Task SEO-1: index.html — Meta tags đầy đủ + lang el
+- Status: [x] DONE
+- File(s): apps/web/index.html
+- Checklist:
+  - [x] title với keywords
+  - [x] meta description (150-160 chars)
+  - [x] OG tags (type, title, description, image, url, site_name, locale)
+  - [x] Twitter card (summary_large_image)
+  - [x] Canonical URL
+  - [x] hreflang vi + el + x-default
+  - [x] og:locale + og:locale:alternate el_GR
+  - [x] Favicon links (16, 32, apple-touch-icon)
+  - [x] Performance hints (preconnect, dns-prefetch api)
+  - [x] theme-color #11131e
+  - [x] Schema.org JSON-LD (SoftwareApplication, inLanguage vi+el)
+  - [ ] Commit: "seo: comprehensive meta tags in index.html"
+
+### Task SEO-2: robots.txt
+- Status: [x] DONE
+- File(s): apps/web/public/robots.txt
+- Checklist:
+  - [ ] Allow: /landing, /daily, /share/
+  - [ ] Disallow: /admin/, /quiz, /ranked, /practice, /profile, etc.
+  - [ ] Sitemap link
+  - [ ] Commit: "seo: robots.txt — allow public pages only"
+
+### Task SEO-3: sitemap.xml
+- Status: [x] DONE
+- File(s): apps/web/public/sitemap.xml
+- Checklist:
+  - [ ] / (priority 1.0, weekly)
+  - [ ] /landing (priority 0.9, weekly)
+  - [ ] /daily (priority 0.8, daily)
+  - [ ] Commit: "seo: sitemap.xml"
+
+### Task SEO-5: Landing Page optimize
+- Status: [x] DONE
+- File(s): apps/web/src/pages/LandingPage.tsx
+- Checklist:
+  - [ ] Semantic HTML (header, main, section, footer)
+  - [ ] Keywords tự nhiên
+  - [ ] H2 cho sub-sections
+  - [ ] Internal links CTA
+  - [ ] Commit: "seo: Landing Page — semantic HTML + keywords"
+
+### Task SEO-6: Schema.org structured data
+- Status: [x] DONE (đã gộp vào Task SEO-1)
+
+### Task SEO-8: Per-page title management (react-helmet-async)
+- Status: [x] DONE
+- File(s): apps/web/src/components/PageMeta.tsx (new), main.tsx, pages chính
+- Checklist:
+  - [ ] npm install react-helmet-async
+  - [ ] Tạo PageMeta component
+  - [ ] Wrap app trong HelmetProvider
+  - [ ] Thêm PageMeta vào Landing, Daily, Login, NotFound
+  - [ ] Commit: "seo: per-page title management with react-helmet-async"
+
+### Task SEO-9: OG Image
+- Status: [x] DONE
+- File(s): apps/web/public/og-image.svg
+- Checklist:
+  - [ ] Tạo SVG → export PNG 1200x630
+  - [ ] Dark bg #11131e, gold text "BibleQuiz"
+  - [ ] Commit: "seo: OG image 1200x630"
+
+### Task SEO-10: PWA Manifest
+- Status: [x] DONE
+- File(s): apps/web/public/manifest.json
+- Checklist:
+  - [ ] name, short_name, description
+  - [ ] start_url, display, theme_color, background_color
+  - [ ] icons 192x192, 512x512
+  - [ ] Commit: "seo: PWA manifest"
+
+### Task SEO-7: Share Card OG Tags (Backend)
+- Status: [x] DONE
+- File(s): apps/api/src/main/java/com/biblequiz/api/ShareCardController.java
+- Checklist:
+  - [ ] Detect bot User-Agent (facebookexternalhit, Zalo, Twitterbot, Googlebot)
+  - [ ] Bot → trả HTML với OG tags
+  - [ ] User → redirect sang SPA
+  - [ ] Test
+  - [ ] Commit: "seo: Share Card OG tags for social preview"
+
+### Task SEO-4: Prerender public pages
+- Status: [!] BLOCKED — vite-plugin-prerender ESM incompatible, skipped
+- File(s): apps/web/vite.config.ts, package.json
+- Checklist:
+  - [ ] npm install vite-plugin-prerender --save-dev
+  - [ ] Config prerender routes: /, /landing, /daily
+  - [ ] Verify build output có HTML content
+  - [ ] Commit: "seo: prerender landing + daily pages"
+
+### Task SEO-11: Nginx config — cache, gzip, security headers
+- Status: [x] DONE
+- File(s): infra/docker/nginx.conf
+- Checklist:
+  - [ ] /assets/* cache 1 year immutable
+  - [ ] /index.html no-cache
+  - [ ] Gzip enabled
+  - [ ] Security headers (X-Frame-Options, X-Content-Type-Options)
+  - [ ] Commit: "seo: server cache + security headers"
+
+### Task SEO-VERIFY: Post-fix audit
+- Status: [x] DONE — Score 14/15 (prerender blocked)
+- Checklist:
+  - [ ] Chạy verify script
+  - [ ] Score >= 13/15
+  - [ ] Full regression (FE tests)
+
+---
+
 ## Test Data Seeder [DONE]
 
 ### All tasks completed:

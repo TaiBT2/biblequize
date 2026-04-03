@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../api/client'
 import ShareCard from '../components/ShareCard'
+import PageMeta from '../components/PageMeta'
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 interface Question {
@@ -531,6 +532,11 @@ const DailyChallenge: React.FC = () => {
 
   return (
     <div className="max-w-5xl mx-auto space-y-12">
+      <PageMeta
+        title="Thu thach hang ngay"
+        description="5 cau hoi Kinh Thanh moi ngay — thu suc voi cong dong va chia se ket qua."
+        canonicalPath="/daily"
+      />
       {/* Header Section */}
       <section className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">

@@ -214,6 +214,7 @@ describe('authStore', () => {
 
   describe('checkAuth', () => {
     it('restores session when refresh token is valid', async () => {
+      localStorage.setItem('userName', 'Restored')
       mockApiPost.mockResolvedValue({ data: { accessToken: 'new-token' } })
       mockApiGet.mockResolvedValue({
         data: { name: 'Restored', email: 'restored@test.com', role: 'USER' },
@@ -229,9 +230,8 @@ describe('authStore', () => {
       expect(state.isLoading).toBe(false)
     })
 
-    it('sets isLoading false when no valid session', async () => {
-      mockApiPost.mockRejectedValue(new Error('No refresh token'))
-
+    it('skips refresh and sets guest state when no cached session', async () => {
+      // No userName in localStorage → should skip API call entirely
       await act(async () => {
         await useAuthStore.getState().checkAuth()
       })
@@ -242,6 +242,7 @@ describe('authStore', () => {
     })
 
     it('sets isAdmin when restored user has ADMIN role', async () => {
+      localStorage.setItem('userName', 'Admin')
       mockApiPost.mockResolvedValue({ data: { accessToken: 'admin-token' } })
       mockApiGet.mockResolvedValue({
         data: { name: 'Admin', email: 'admin@test.com', role: 'ADMIN' },
@@ -255,6 +256,7 @@ describe('authStore', () => {
     })
 
     it('always sets isLoading false even on error', async () => {
+      localStorage.setItem('userName', 'Test')
       mockApiPost.mockRejectedValue(new Error('Network'))
 
       await act(async () => {

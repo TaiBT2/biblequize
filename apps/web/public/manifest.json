@@ -1,0 +1,22 @@
+{
+  "name": "BibleQuiz — Hoc Kinh Thanh qua Quiz & Thi dau",
+  "short_name": "BibleQuiz",
+  "description": "Nen tang hoc Kinh Thanh qua gamification — trac nghiem, thi dau multiplayer, nhom hoi thanh.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#11131e",
+  "background_color": "#11131e",
+  "lang": "vi",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

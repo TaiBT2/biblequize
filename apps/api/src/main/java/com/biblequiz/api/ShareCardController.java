@@ -53,6 +53,119 @@ public class ShareCardController {
     }
 
     /**
+     * Social bot OG meta endpoint.
+     * Bots (Facebook, Zalo, Twitter, Google) get HTML with OG tags.
+     * Regular users get redirected to the SPA.
+     */
+    @GetMapping(value = "/og/session/{sessionId}", produces = MediaType.TEXT_HTML_VALUE)
+    public ResponseEntity<String> ogSessionCard(
+            @PathVariable String sessionId,
+            @RequestHeader(value = "User-Agent", defaultValue = "") String userAgent) {
+
+        if (!isSocialBot(userAgent)) {
+            return ResponseEntity.status(302)
+                    .header("Location", "https://biblequiz.app/share/session/" + sessionId)
+                    .build();
+        }
+
+        QuizSession session = quizSessionRepository.findById(sessionId).orElse(null);
+        String title = "BibleQuiz — Ket qua Quiz";
+        String description = "Thu thach kien thuc Kinh Thanh cung BibleQuiz!";
+
+        if (session != null) {
+            int correct = session.getCorrectAnswers() != null ? session.getCorrectAnswers() : 0;
+            int total = session.getTotalQuestions() != null ? session.getTotalQuestions() : 0;
+            String name = session.getOwner() != null ? session.getOwner().getName() : "Player";
+            title = "BibleQuiz — " + name + ": " + correct + "/" + total + " cau dung!";
+            int pct = total > 0 ? (correct * 100 / total) : 0;
+            description = name + " da tra loi dung " + correct + "/" + total + " cau (" + pct + "%). Ban co lam tot hon khong?";
+        }
+
+        String ogHtml = buildOgHtml(title, description, "https://biblequiz.app/og-image.png",
+                "https://biblequiz.app/share/session/" + sessionId);
+        return ResponseEntity.ok(ogHtml);
+    }
+
+    @GetMapping(value = "/og/tier-up/{tierKey}", produces = MediaType.TEXT_HTML_VALUE)
+    public ResponseEntity<String> ogTierUpCard(
+            @PathVariable String tierKey,
+            @RequestHeader(value = "User-Agent", defaultValue = "") String userAgent) {
+
+        if (!isSocialBot(userAgent)) {
+            return ResponseEntity.status(302)
+                    .header("Location", "https://biblequiz.app/share/tier-up/" + tierKey)
+                    .build();
+        }
+
+        RankTier tier = null;
+        for (RankTier t : RankTier.values()) {
+            if (t.getKey().equals(tierKey)) {
+                tier = t;
+                break;
+            }
+        }
+        String tierName = tier != null ? tier.getDisplayName() : tierKey;
+        String title = "BibleQuiz — Dat cap " + tierName + "!";
+        String description = "Dat thanh tich " + tierName + " tren BibleQuiz. Hoc Kinh Thanh moi ngay!";
+
+        String ogHtml = buildOgHtml(title, description, "https://biblequiz.app/og-image.png",
+                "https://biblequiz.app/share/tier-up/" + tierKey);
+        return ResponseEntity.ok(ogHtml);
+    }
+
+    @GetMapping(value = "/og/daily", produces = MediaType.TEXT_HTML_VALUE)
+    public ResponseEntity<String> ogDailyChallenge(
+            @RequestHeader(value = "User-Agent", defaultValue = "") String userAgent) {
+
+        if (!isSocialBot(userAgent)) {
+            return ResponseEntity.status(302)
+                    .header("Location", "https://biblequiz.app/daily")
+                    .build();
+        }
+
+        String date = LocalDate.now(ZoneOffset.UTC).toString();
+        String ogHtml = buildOgHtml(
+                "BibleQuiz — Thu thach ngay " + date,
+                "5 cau hoi Kinh Thanh moi ngay. Ban co the tra loi dung het khong?",
+                "https://biblequiz.app/og-image.png",
+                "https://biblequiz.app/daily");
+        return ResponseEntity.ok(ogHtml);
+    }
+
+    private boolean isSocialBot(String userAgent) {
+        if (userAgent == null) return false;
+        String ua = userAgent.toLowerCase();
+        return ua.contains("facebookexternalhit") || ua.contains("twitterbot")
+                || ua.contains("linkedinbot") || ua.contains("googlebot")
+                || ua.contains("zalo") || ua.contains("telegrambot")
+                || ua.contains("whatsapp") || ua.contains("slackbot");
+    }
+
+    private String buildOgHtml(String title, String description, String imageUrl, String url) {
+        return "<!DOCTYPE html><html lang=\"vi\"><head>"
+                + "<meta charset=\"UTF-8\">"
+                + "<meta property=\"og:type\" content=\"website\">"
+                + "<meta property=\"og:title\" content=\"" + escapeHtml(title) + "\">"
+                + "<meta property=\"og:description\" content=\"" + escapeHtml(description) + "\">"
+                + "<meta property=\"og:image\" content=\"" + imageUrl + "\">"
+                + "<meta property=\"og:url\" content=\"" + url + "\">"
+                + "<meta property=\"og:site_name\" content=\"BibleQuiz\">"
+                + "<meta property=\"og:locale\" content=\"vi_VN\">"
+                + "<meta name=\"twitter:card\" content=\"summary_large_image\">"
+                + "<meta name=\"twitter:title\" content=\"" + escapeHtml(title) + "\">"
+                + "<meta name=\"twitter:description\" content=\"" + escapeHtml(description) + "\">"
+                + "<meta name=\"twitter:image\" content=\"" + imageUrl + "\">"
+                + "<title>" + escapeHtml(title) + "</title>"
+                + "</head><body><p>" + escapeHtml(description) + "</p></body></html>";
+    }
+
+    private String escapeHtml(String s) {
+        if (s == null) return "";
+        return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+                .replace("\"", "&quot;").replace("'", "&#39;");
+    }
+
+    /**
      * Render session share card as self-contained HTML.
      * Frontend uses html-to-image to convert this to PNG client-side.
      */

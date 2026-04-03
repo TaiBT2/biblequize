@@ -84,6 +84,7 @@ management:
       show-details: when-authorized
 
 app:
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
   test-data:
     enabled: true
     reset: false
