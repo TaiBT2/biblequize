@@ -36,4 +36,6 @@ public interface AnswerRepository extends JpaRepository<Answer, String> {
     Long sumScoreEarnedByUserIdAndCreatedAtAfter(@Param("userId") String userId, @Param("since") LocalDateTime since);
 
     long countBySessionId(String sessionId);
+
+    void deleteBySessionId(String sessionId);
 }

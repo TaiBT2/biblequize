@@ -1,50 +1,22 @@
 # TODO
 
-## Test Data Seeder [IN PROGRESS]
+## Test Data Seeder [DONE]
 
-### Task S1: Config + Master TestDataSeeder
-- Status: [ ] TODO
-- File(s): application-dev.yml, TestDataSeeder.java, SeedResult.java
-- Commit: "feat: test data seeder infrastructure"
+### All tasks completed:
+- [x] S1: Config + Master TestDataSeeder + SeedResult
+- [x] S2: UserSeeder (20 users, ADMIN + USER roles only — Role enum has no GROUP_LEADER/CONTENT_MOD)
+- [x] S3: SeasonSeeder (2 seasons) + UserDailyProgressSeeder (points for leaderboard)
+- [x] S4: SessionSeeder (8 sessions/user × ~17 users = ~136 sessions with answers)
+- [x] S5: GroupSeeder (5 groups with members + announcements)
+- [x] S6: TournamentSeeder (3 tournaments: completed, in_progress, lobby)
+- [x] S7: NotificationSeeder + FeedbackSeeder (10 feedback items, ~50 notifications)
+- [x] S8: API Endpoint (POST/DELETE /api/admin/seed/test-data) + Auto-seeder
+- [x] S9: BE 494/494 tests pass
 
-### Task S2: UserSeeder (20 users)
-- Status: [ ] TODO
-- File(s): UserSeeder.java
-- Commit: "feat: UserSeeder — 20 test users"
-
-### Task S3: SeasonSeeder + UserDailyProgressSeeder (points for leaderboard)
-- Status: [ ] TODO
-- File(s): SeasonSeeder.java, UserDailyProgressSeeder.java
-- Commit: "feat: SeasonSeeder + UDP points"
-
-### Task S4: SessionSeeder (quiz sessions + answers)
-- Status: [ ] TODO
-- File(s): SessionSeeder.java
-- Commit: "feat: SessionSeeder — 150 sessions"
-
-### Task S5: GroupSeeder (5 groups + members + announcements)
-- Status: [ ] TODO
-- File(s): GroupSeeder.java
-- Commit: "feat: GroupSeeder — 5 groups"
-
-### Task S6: TournamentSeeder (3 tournaments)
-- Status: [ ] TODO
-- File(s): TournamentSeeder.java
-- Commit: "feat: TournamentSeeder"
-
-### Task S7: NotificationSeeder + FeedbackSeeder
-- Status: [ ] TODO
-- File(s): NotificationSeeder.java, FeedbackSeeder.java
-- Commit: "feat: Notification + Feedback seeders"
-
-### Task S8: API Endpoint + Auto-seeder
-- Status: [ ] TODO
-- File(s): TestDataSeedController.java, TestDataAutoSeeder.java
-- Commit: "feat: seed API endpoint + auto-seeder"
-
-### Task S9: Tests + DECISIONS.md
-- Status: [ ] TODO
-- Commit: "test: TestDataSeeder tests"
+### Files created:
+- infrastructure/seed/: TestDataSeeder, SeedResult, TestDataAutoSeeder, UserSeeder, SeasonSeeder, UserDailyProgressSeeder, SessionSeeder, GroupSeeder, TournamentSeeder, NotificationSeeder, FeedbackSeeder
+- api/TestDataSeedController.java
+- application-dev.yml: app.test-data.enabled=true
 
 ---
 

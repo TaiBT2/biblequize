@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-04-03 — Test Data Strategy
+- Quyết định: Spring Profile-based seeder + API trigger, NOT Flyway
+- Lý do: Flyway chạy mọi env, test data chỉ cần dev/test. Seeder dùng @Profile("!prod") nên endpoint không tồn tại trong production
+- Approach: TestDataAutoSeeder (@Order 200) chạy sau Flyway, idempotent (skip nếu admin@biblequiz.test đã tồn tại). Cleanup dùng email suffix @biblequiz.test
+- Trade-off: Phải maintain seeder code khi schema thay đổi, nhưng an toàn hơn data.sql hoặc Flyway
+- Key finding: User.Role enum chỉ có USER, ADMIN — không có GROUP_LEADER, CONTENT_MOD. Seeder chỉ dùng 2 roles này
+
+---
+
 ## Naming & Conventions
 
 ## 2026-04-02 — Giữ livesRemaining/dailyLives thay vì rename sang energyRemaining/dailyEnergy

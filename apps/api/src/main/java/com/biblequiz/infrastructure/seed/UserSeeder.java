@@ -30,9 +30,9 @@ public class UserSeeder {
         List<User> users = new ArrayList<>();
 
         users.add(makeUser("Admin Chính", "admin@biblequiz.test", "ADMIN", 42, 50));
-        users.add(makeUser("Mod Nội Dung", "mod@biblequiz.test", "CONTENT_MOD", 15, 20));
-        users.add(makeUser("Mục Sư Minh", "mucsu.minh@biblequiz.test", "GROUP_LEADER", 30, 35));
-        users.add(makeUser("Chị Hương", "huong@biblequiz.test", "GROUP_LEADER", 22, 28));
+        users.add(makeUser("Mod Nội Dung", "mod@biblequiz.test", "ADMIN", 15, 20));
+        users.add(makeUser("Mục Sư Minh", "mucsu.minh@biblequiz.test", "USER", 30, 35));
+        users.add(makeUser("Chị Hương", "huong@biblequiz.test", "USER", 22, 28));
 
         users.add(makeUser("Nguyễn Văn An", "an@biblequiz.test", "USER", 100, 105));
         users.add(makeUser("Trần Thị Bình", "binh@biblequiz.test", "USER", 60, 65));

@@ -34,13 +34,21 @@ public class GroupSeeder {
             return 0;
         }
 
-        List<User> leaders = userRepository.findAll().stream()
+        List<User> allTestUsers = userRepository.findAll().stream()
                 .filter(u -> u.getEmail() != null && u.getEmail().endsWith("@biblequiz.test"))
-                .filter(u -> "GROUP_LEADER".equalsIgnoreCase(u.getRole()))
+                .filter(u -> !Boolean.TRUE.equals(u.getIsBanned()))
                 .toList();
-        List<User> users = userRepository.findAll().stream()
-                .filter(u -> u.getEmail() != null && u.getEmail().endsWith("@biblequiz.test"))
-                .filter(u -> "USER".equalsIgnoreCase(u.getRole()))
+
+        // Use Mục Sư Minh and Chị Hương as leaders
+        User leader1 = allTestUsers.stream().filter(u -> "mucsu.minh@biblequiz.test".equals(u.getEmail())).findFirst().orElse(null);
+        User leader2 = allTestUsers.stream().filter(u -> "huong@biblequiz.test".equals(u.getEmail())).findFirst().orElse(null);
+        List<User> leaders = new ArrayList<>();
+        if (leader1 != null) leaders.add(leader1);
+        if (leader2 != null) leaders.add(leader2);
+
+        List<User> users = allTestUsers.stream()
+                .filter(u -> !"ADMIN".equalsIgnoreCase(u.getRole()))
+                .filter(u -> !leaders.contains(u))
                 .toList();
 
         if (leaders.size() < 2 || users.size() < 5) {
