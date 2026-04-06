@@ -30,14 +30,28 @@ public class QuestionService {
         this.random = new Random();
     }
 
+    /**
+     * Backward-compatible overload — defaults to language "vi".
+     */
     public List<Question> getRandomQuestions(String book, String difficultyStr, int limit, List<String> excludeIds) {
-        // Check cache first (cache is keyed by book+difficulty only, not limit)
+        return getRandomQuestions(book, difficultyStr, "vi", limit, excludeIds);
+    }
+
+    public List<Question> getRandomQuestions(String book, String difficultyStr, String language, int limit, List<String> excludeIds) {
+        String lang = (language != null && !language.isBlank()) ? language : "vi";
+
+        // Check cache first (keyed by book+difficulty+language)
+        String cacheKey = book + ":" + difficultyStr + ":" + lang;
         if (excludeIds == null || excludeIds.isEmpty()) {
             Optional<List<Question>> cached = cacheService.getCachedQuestionList(book, difficultyStr);
             if (cached.isPresent()) {
                 List<Question> cachedList = new ArrayList<>(cached.get());
-                Collections.shuffle(cachedList, random);
-                return cachedList.size() <= limit ? cachedList : cachedList.subList(0, limit);
+                // Filter by language in case cache has mixed
+                cachedList.removeIf(q -> !lang.equals(q.getLanguage()));
+                if (!cachedList.isEmpty()) {
+                    Collections.shuffle(cachedList, random);
+                    return cachedList.size() <= limit ? cachedList : cachedList.subList(0, limit);
+                }
             }
         }
 
@@ -46,7 +60,6 @@ public class QuestionService {
             try {
                 difficulty = Question.Difficulty.valueOf(difficultyStr);
             } catch (IllegalArgumentException ignored) {
-                // fall back to no difficulty filter
             }
         }
 
@@ -54,16 +67,17 @@ public class QuestionService {
             return Collections.emptyList();
         }
 
-        // Compute total count based on filters
+        // Compute total count based on filters + language
         long total;
-        if (book != null && !book.isEmpty() && difficulty != null) {
-            total = questionRepository.countByBookAndDifficultyAndIsActiveTrue(book, difficulty);
-        } else if (book != null && !book.isEmpty()) {
-            total = questionRepository.countByBookAndIsActiveTrue(book);
+        boolean hasBook = book != null && !book.isEmpty();
+        if (hasBook && difficulty != null) {
+            total = questionRepository.countByBookAndDifficultyAndLanguageAndIsActiveTrue(book, difficulty, lang);
+        } else if (hasBook) {
+            total = questionRepository.countByBookAndLanguageAndIsActiveTrue(book, lang);
         } else if (difficulty != null) {
-            total = questionRepository.countByDifficultyAndIsActiveTrue(difficulty);
+            total = questionRepository.countByDifficultyAndLanguageAndIsActiveTrue(difficulty, lang);
         } else {
-            total = questionRepository.countByIsActiveTrue();
+            total = questionRepository.countByLanguageAndIsActiveTrue(lang);
         }
 
         if (total == 0) {
@@ -79,48 +93,40 @@ public class QuestionService {
         Set<String> excludeSet = excludeIds != null ? new HashSet<>(excludeIds) : new HashSet<>();
         int pageIndex = startPage;
         int attempts = 0;
-        int maxAttempts = totalPages * 2; // Prevent infinite loop
+        int maxAttempts = totalPages * 2;
 
         while (result.size() < limit && attempts < maxAttempts) {
             Page<Question> page;
-            if (book != null && !book.isEmpty() && difficulty != null) {
-                page = questionRepository.findByBookAndDifficultyAndIsActiveTrue(book, difficulty,
+            if (hasBook && difficulty != null) {
+                page = questionRepository.findByLanguageAndBookAndDifficultyAndIsActiveTrue(lang, book, difficulty,
                         PageRequest.of(pageIndex, pageSize));
-            } else if (book != null && !book.isEmpty()) {
-                page = questionRepository.findByBookAndIsActiveTrue(book, PageRequest.of(pageIndex, pageSize));
+            } else if (hasBook) {
+                page = questionRepository.findByLanguageAndBookAndIsActiveTrue(lang, book, PageRequest.of(pageIndex, pageSize));
             } else if (difficulty != null) {
-                page = questionRepository.findByDifficultyAndIsActiveTrue(difficulty,
+                page = questionRepository.findByLanguageAndDifficultyAndIsActiveTrue(lang, difficulty,
                         PageRequest.of(pageIndex, pageSize));
             } else {
-                page = questionRepository.findByIsActiveTrue(PageRequest.of(pageIndex, pageSize));
+                page = questionRepository.findByLanguageAndIsActiveTrue(lang, PageRequest.of(pageIndex, pageSize));
             }
 
             for (Question q : page.getContent()) {
-                if (result.size() >= limit)
-                    break;
-                if (excludeSet.contains(q.getId()))
-                    continue;
-                if (result.stream().anyMatch(existing -> existing.getId().equals(q.getId())))
-                    continue;
+                if (result.size() >= limit) break;
+                if (excludeSet.contains(q.getId())) continue;
                 result.add(q);
-                excludeSet.add(q.getId()); // Add to exclude set to prevent duplicates within this call
+                excludeSet.add(q.getId());
             }
 
-            if (totalPages <= 1)
-                break;
+            if (totalPages <= 1) break;
             pageIndex = (pageIndex + 1) % totalPages;
             attempts++;
-            if (pageIndex == startPage)
-                break; // full cycle
+            if (pageIndex == startPage) break;
         }
 
-        // Shuffle to approximate randomness within collected window
         Collections.shuffle(result, random);
         if (result.size() > limit) {
             result = new ArrayList<>(result.subList(0, limit));
         }
 
-        // Cache the result if no exclusions
         if (excludeIds == null || excludeIds.isEmpty()) {
             cacheService.cacheQuestions(book, difficultyStr, result);
         }
@@ -129,29 +135,28 @@ public class QuestionService {
     }
 
     public Question getQuestionOfTheDay(String language) {
+        String lang = (language != null && !language.isBlank()) ? language : "vi";
         // Check cache first
-        Optional<Question> cached = cacheService.getCachedQuestionOfTheDay(language, Question.class);
+        Optional<Question> cached = cacheService.getCachedQuestionOfTheDay(lang, Question.class);
         if (cached.isPresent()) {
             return cached.get();
         }
 
-        long total = questionRepository.countByIsActiveTrue();
+        long total = questionRepository.countByLanguageAndIsActiveTrue(lang);
         if (total == 0)
             return null;
-        // Deterministic daily index based on date
+        // Deterministic daily index based on date + language
         long seed = Long.parseLong(java.time.LocalDate.now().format(java.time.format.DateTimeFormatter.BASIC_ISO_DATE));
+        seed = seed * 31 + lang.hashCode();
         Random seeded = new Random(seed);
         int index = seeded.nextInt((int) Math.min(Integer.MAX_VALUE, total));
-        Page<Question> page = questionRepository.findByIsActiveTrue(PageRequest.of(index, 1));
+        Page<Question> page = questionRepository.findByLanguageAndIsActiveTrue(lang, PageRequest.of(index, 1));
         if (page.isEmpty()) {
-            return questionRepository.findByIsActiveTrue(PageRequest.of(0, 1)).stream().findFirst().orElse(null);
+            return questionRepository.findByLanguageAndIsActiveTrue(lang, PageRequest.of(0, 1)).stream().findFirst().orElse(null);
         }
 
         Question question = page.getContent().get(0);
-
-        // Cache the result
-        cacheService.cacheQuestionOfTheDay(language, question);
-
+        cacheService.cacheQuestionOfTheDay(lang, question);
         return question;
     }
 

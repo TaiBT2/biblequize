@@ -1,5 +1,69 @@
 # TODO
 
+## Phase 1: Content English — Câu hỏi tiếng Anh [DONE]
+
+> Question entity + DB đã có language field. Cần wire vào business logic.
+
+### Task EN-1: Backend — Wire language vào SessionService + QuestionService
+- Status: [ ] TODO
+- File(s): SessionService.java, QuestionService.java
+- Checklist:
+  - [ ] QuestionService.getRandomQuestions() thêm language param, filter query
+  - [ ] SessionService.createSession() accept language từ config
+  - [ ] Cache key include language
+  - [ ] Default "vi" nếu không truyền
+  - [ ] Unit test
+  - [ ] Commit: "feat: filter questions by language in session creation"
+
+### Task EN-2: Backend — Wire language vào DailyChallengeService
+- Status: [ ] TODO
+- File(s): DailyChallengeService.java, DailyChallengeController.java
+- Checklist:
+  - [ ] getDailyQuestions() thêm language param
+  - [ ] Cache key include language
+  - [ ] Controller endpoint thêm ?language=en
+  - [ ] Unit test
+  - [ ] Commit: "feat: daily challenge filter by language"
+
+### Task EN-3: Backend — Update API endpoints + DTOs
+- Status: [ ] TODO
+- File(s): SessionController, RankedController, AdminQuestionController
+- Checklist:
+  - [ ] POST /sessions body thêm language
+  - [ ] POST /ranked/sessions body thêm language
+  - [ ] GET /daily-challenge?language=en
+  - [ ] GET /admin/questions?language=en
+  - [ ] countByFilters thêm language
+  - [ ] Commit: "feat: language param in all quiz API endpoints"
+
+### Task EN-4: Frontend — User quiz language selection
+- Status: [ ] TODO
+- File(s): Practice.tsx, CreateRoom.tsx, Profile.tsx, authStore.ts
+- Checklist:
+  - [ ] quizLanguage setting in authStore or localStorage
+  - [ ] Language selector in Practice page
+  - [ ] Language selector in CreateRoom
+  - [ ] All API calls pass language param
+  - [ ] Commit: "feat: user quiz language selection UI"
+
+### Task EN-5: Admin — Language filter + coverage
+- Status: [ ] TODO
+- File(s): Questions.tsx, Dashboard.tsx
+- Checklist:
+  - [ ] Language filter dropdown in Questions admin
+  - [ ] Coverage per language
+  - [ ] Commit: "feat: admin question management by language"
+
+### Task EN-6: Tests + Regression
+- Status: [ ] TODO
+- Checklist:
+  - [ ] BE: language filter tests
+  - [ ] FE: language selector tests
+  - [ ] Full regression BE + FE
+  - [ ] Commit: "test: multi-language question support"
+
+---
+
 ## Lighthouse BP Fix — Round 2 [DONE]
 
 ### Task LH2-1: Replace sockjs-client unload event

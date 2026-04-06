@@ -107,7 +107,7 @@ class SessionServiceTest {
 
                 when(userRepository.findById(ownerId)).thenReturn(Optional.of(sampleUser));
                 when(objectMapper.writeValueAsString(config)).thenReturn("{}");
-                when(questionService.getRandomQuestions("Genesis", "easy", 1, null))
+                when(questionService.getRandomQuestions("Genesis", "easy", "vi", 1, null))
                                 .thenReturn(Arrays.asList(sampleQuestion));
                 when(quizSessionRepository.save(any(QuizSession.class))).thenReturn(sampleSession);
 
@@ -136,7 +136,7 @@ class SessionServiceTest {
                 when(userRepository.findByEmail(ownerId)).thenReturn(Optional.empty());
                 when(userRepository.save(any(User.class))).thenReturn(sampleUser);
                 lenient().when(objectMapper.writeValueAsString(config)).thenReturn("{}");
-                when(questionService.getRandomQuestions(null, null, 1, null))
+                when(questionService.getRandomQuestions(null, null, "vi", 1, null))
                                 .thenReturn(Arrays.asList(sampleQuestion));
                 when(quizSessionRepository.save(any(QuizSession.class))).thenReturn(sampleSession);
 

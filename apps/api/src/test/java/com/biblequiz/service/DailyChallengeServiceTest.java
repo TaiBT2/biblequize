@@ -58,10 +58,10 @@ class DailyChallengeServiceTest {
     @Test
     void TC_DAILY_001_getDailyQuestions_shouldReturn5Questions() {
         // 20 active questions available
-        when(questionRepository.countByIsActiveTrue()).thenReturn(20L);
-        when(questionRepository.findByIsActiveTrue(any(Pageable.class)))
+        when(questionRepository.countByLanguageAndIsActiveTrue("vi")).thenReturn(20L);
+        when(questionRepository.findByLanguageAndIsActiveTrue(eq("vi"), any(Pageable.class)))
                 .thenAnswer(inv -> {
-                    int pageNumber = ((Pageable) inv.getArgument(0)).getPageNumber();
+                    int pageNumber = ((Pageable) inv.getArgument(1)).getPageNumber();
                     Question q = makeQuestion("q-" + pageNumber);
                     return new PageImpl<>(List.of(q));
                 });
@@ -97,10 +97,10 @@ class DailyChallengeServiceTest {
     @Order(3)
     @Test
     void TC_DAILY_005_getDailyQuestions_differentDates_shouldProduceDifferentResults() {
-        when(questionRepository.countByIsActiveTrue()).thenReturn(100L);
-        when(questionRepository.findByIsActiveTrue(any(Pageable.class)))
+        when(questionRepository.countByLanguageAndIsActiveTrue("vi")).thenReturn(100L);
+        when(questionRepository.findByLanguageAndIsActiveTrue(eq("vi"), any(Pageable.class)))
                 .thenAnswer(inv -> {
-                    int pageNumber = ((Pageable) inv.getArgument(0)).getPageNumber();
+                    int pageNumber = ((Pageable) inv.getArgument(1)).getPageNumber();
                     Question q = makeQuestion("q-" + pageNumber);
                     return new PageImpl<>(List.of(q));
                 });

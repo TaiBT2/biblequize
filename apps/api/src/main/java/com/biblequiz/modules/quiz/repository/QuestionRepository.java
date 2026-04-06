@@ -43,12 +43,28 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
     // Random selection will be implemented in service layer using count + random page
     
     long countByIsActiveTrue();
-    
+
     long countByBookAndIsActiveTrue(String book);
-    
+
     long countByDifficultyAndIsActiveTrue(Question.Difficulty difficulty);
-    
+
     long countByBookAndDifficultyAndIsActiveTrue(String book, Question.Difficulty difficulty);
+
+    // Language-aware counts
+    long countByLanguageAndIsActiveTrue(String language);
+
+    long countByBookAndLanguageAndIsActiveTrue(String book, String language);
+
+    long countByDifficultyAndLanguageAndIsActiveTrue(Question.Difficulty difficulty, String language);
+
+    long countByBookAndDifficultyAndLanguageAndIsActiveTrue(String book, Question.Difficulty difficulty, String language);
+
+    // Language-aware page queries
+    Page<Question> findByLanguageAndBookAndIsActiveTrue(String language, String book, Pageable pageable);
+
+    Page<Question> findByLanguageAndDifficultyAndIsActiveTrue(String language, Question.Difficulty difficulty, Pageable pageable);
+
+    Page<Question> findByLanguageAndBookAndDifficultyAndIsActiveTrue(String language, String book, Question.Difficulty difficulty, Pageable pageable);
     
     // Derived queries to support service-side randomization and filtering
     Page<Question> findByBookAndDifficultyAndIsActiveTrue(String book, Question.Difficulty difficulty, Pageable pageable);
@@ -77,10 +93,12 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
     @Query("SELECT COUNT(q) FROM Question q WHERE q.isActive = true AND " +
            "(:book IS NULL OR q.book = :book) AND " +
            "(:difficulty IS NULL OR q.difficulty = :difficulty) AND " +
-           "(:type IS NULL OR q.type = :type)")
-    long countByFilters(@Param("book") String book, 
+           "(:type IS NULL OR q.type = :type) AND " +
+           "(:language IS NULL OR q.language = :language)")
+    long countByFilters(@Param("book") String book,
                        @Param("difficulty") Question.Difficulty difficulty,
-                       @Param("type") Question.Type type);
+                       @Param("type") Question.Type type,
+                       @Param("language") String language);
     
     // Review workflow
     Page<Question> findByReviewStatus(Question.ReviewStatus reviewStatus, Pageable pageable);
@@ -90,12 +108,14 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
            "(:book IS NULL OR q.book = :book) AND " +
            "(:difficulty IS NULL OR q.difficulty = :difficulty) AND " +
            "(:type IS NULL OR q.type = :type) AND " +
+           "(:language IS NULL OR q.language = :language) AND " +
            "(:reviewStatus IS NULL OR q.reviewStatus = :reviewStatus) AND " +
            "(:search IS NULL OR LOWER(q.content) LIKE :search)")
     Page<Question> findWithAdminFilters(
             @Param("book") String book,
             @Param("difficulty") Question.Difficulty difficulty,
             @Param("type") Question.Type type,
+            @Param("language") String language,
             @Param("reviewStatus") Question.ReviewStatus reviewStatus,
             @Param("search") String search,
             Pageable pageable);

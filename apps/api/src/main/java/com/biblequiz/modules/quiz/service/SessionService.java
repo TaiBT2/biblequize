@@ -70,9 +70,10 @@ public class SessionService {
         int questionCount = ((Number) config.getOrDefault("questionCount", 10)).intValue();
         String book = (String) config.getOrDefault("book", null);
         String difficultyStr = (String) config.getOrDefault("difficulty", null);
+        String language = (String) config.getOrDefault("language", "vi");
         @SuppressWarnings("unchecked")
         List<String> excludeIds = (List<String>) config.getOrDefault("excludeQuestionIds", null);
-        List<Question> questions = questionService.getRandomQuestions(book, difficultyStr, questionCount, excludeIds);
+        List<Question> questions = questionService.getRandomQuestions(book, difficultyStr, language, questionCount, excludeIds);
 
         List<QuizSessionQuestion> qsqList = new ArrayList<>();
         int order = 0;

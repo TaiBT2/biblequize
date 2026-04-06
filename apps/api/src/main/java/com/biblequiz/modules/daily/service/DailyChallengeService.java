@@ -33,22 +33,23 @@ public class DailyChallengeService {
      * Get today's 5 challenge questions. Same questions for all users on the same day.
      */
     @SuppressWarnings("unchecked")
-    public List<Question> getDailyQuestions(LocalDate date) {
+    public List<Question> getDailyQuestions(LocalDate date, String language) {
         if (date == null) {
             date = LocalDate.now(ZoneOffset.UTC);
         }
+        String lang = (language != null && !language.isBlank()) ? language : "vi";
 
-        String cacheKey = CACHE_KEY_PREFIX + date.toString();
+        String cacheKey = CACHE_KEY_PREFIX + lang + ":" + date.toString();
         Optional<List> cached = cacheService.get(cacheKey, List.class);
         if (cached.isPresent()) {
             return cached.get();
         }
 
-        // Use date-based seed for deterministic selection
-        long seed = date.toEpochDay();
+        // Use date-based seed + language for deterministic selection per language
+        long seed = date.toEpochDay() * 31 + lang.hashCode();
         Random random = new Random(seed);
 
-        long totalActive = questionRepository.countByIsActiveTrue();
+        long totalActive = questionRepository.countByLanguageAndIsActiveTrue(lang);
         if (totalActive == 0) {
             return List.of();
         }
@@ -65,7 +66,7 @@ public class DailyChallengeService {
 
         List<Question> questions = new ArrayList<>();
         for (int index : selectedIndices) {
-            var page = questionRepository.findByIsActiveTrue(PageRequest.of(index, 1));
+            var page = questionRepository.findByLanguageAndIsActiveTrue(lang, PageRequest.of(index, 1));
             if (page.hasContent()) {
                 questions.add(page.getContent().get(0));
             }
@@ -78,10 +79,21 @@ public class DailyChallengeService {
     }
 
     /**
+     * Backward-compatible overload — defaults to "vi".
+     */
+    public List<Question> getDailyQuestions(LocalDate date) {
+        return getDailyQuestions(date, "vi");
+    }
+
+    /**
      * Get today's daily questions (convenience method).
      */
+    public List<Question> getTodayQuestions(String language) {
+        return getDailyQuestions(LocalDate.now(ZoneOffset.UTC), language);
+    }
+
     public List<Question> getTodayQuestions() {
-        return getDailyQuestions(LocalDate.now(ZoneOffset.UTC));
+        return getTodayQuestions("vi");
     }
 
     /**

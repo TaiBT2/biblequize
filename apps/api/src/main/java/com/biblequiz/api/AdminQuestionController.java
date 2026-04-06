@@ -47,7 +47,8 @@ public class AdminQuestionController {
             @RequestParam(required = false) String difficulty,
             @RequestParam(required = false) String type,
             @RequestParam(required = false) String reviewStatus,
-            @RequestParam(required = false) String search) {
+            @RequestParam(required = false) String search,
+            @RequestParam(required = false) String language) {
 
         Question.Difficulty diff = null;
         if (difficulty != null && !difficulty.isBlank()) {
@@ -64,13 +65,14 @@ public class AdminQuestionController {
         String searchParam = (search != null && !search.isBlank())
                 ? "%" + search.toLowerCase() + "%" : null;
         String bookParam = (book != null && !book.isBlank()) ? book : null;
+        String langParam = (language != null && !language.isBlank()) ? language : null;
 
         var pageable = org.springframework.data.domain.PageRequest.of(
                 page, Math.min(size, 200),
                 org.springframework.data.domain.Sort.by("createdAt").descending());
 
         var result = questionRepository.findWithAdminFilters(
-                bookParam, diff, qType, rs, searchParam, pageable);
+                bookParam, diff, qType, langParam, rs, searchParam, pageable);
 
         return ResponseEntity.ok(Map.of(
                 "questions", result.getContent(),

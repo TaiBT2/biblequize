@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../api/client'
 import ShareCard from '../components/ShareCard'
 import PageMeta from '../components/PageMeta'
+import { getQuizLanguage } from '../utils/quizLanguage'
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 interface Question {
@@ -173,7 +174,7 @@ const DailyChallenge: React.FC = () => {
     const loadChallenge = async () => {
       try {
         const [challengeRes, leaderboardRes] = await Promise.allSettled([
-          api.get('/api/daily-challenge'),
+          api.get(`/api/daily-challenge?language=${getQuizLanguage()}`),
           api.get('/api/leaderboard/daily'),
         ])
 

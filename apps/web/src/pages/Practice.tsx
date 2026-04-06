@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../api/client'
 import { useQuery } from '@tanstack/react-query'
 import SearchableSelect from '../components/ui/SearchableSelect'
+import QuizLanguageSelect from '../components/QuizLanguageSelect'
+import { getQuizLanguage, type QuizLanguage } from '../utils/quizLanguage'
 
 interface Book {
   id: string
@@ -46,6 +48,7 @@ export default function Practice() {
   const [selectedDifficulty, setSelectedDifficulty] = useState('all')
   const [questionCount, setQuestionCount] = useState(10)
   const [showExplanation, setShowExplanation] = useState(true)
+  const [quizLang, setQuizLang] = useState<QuizLanguage>(getQuizLanguage)
   const [isLoading, setIsLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState<string>('')
 
@@ -71,6 +74,7 @@ export default function Practice() {
         difficulty: selectedDifficulty,
         questionCount,
         showExplanation,
+        language: quizLang,
       })
       const { sessionId, questions } = res.data
       navigate('/quiz', {
@@ -125,6 +129,15 @@ export default function Practice() {
 
             {/* ── Left Column ──────────────────────────── */}
             <div className="space-y-8">
+
+              {/* Quiz Language */}
+              <div>
+                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant flex items-center gap-2 mb-3">
+                  <span className="material-symbols-outlined text-base text-secondary">translate</span>
+                  Ngôn ngữ câu hỏi
+                </label>
+                <QuizLanguageSelect onChange={setQuizLang} />
+              </div>
 
               {/* Book Selector */}
               <div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { getQuizLanguage } from '../utils/quizLanguage'
 import { useNavigate, useSearchParams, Link } from 'react-router-dom'
 import { useAuth } from '../store/authStore'
 import { api } from '../api/client'
@@ -47,7 +48,7 @@ export default function CreateRoom() {
     setLoading(true)
     setError(null)
     try {
-      const res = await api.post('/api/rooms', formData)
+      const res = await api.post('/api/rooms', { ...formData, language: getQuizLanguage() })
       const room = res.data
       navigate(`/room/${room.id}/lobby`, { state: { room, mode: formData.mode } })
     } catch (err: any) {

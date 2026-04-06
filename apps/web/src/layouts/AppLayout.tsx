@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
 import { getTierName } from '../data/tiers'
+import { getQuizLanguage, setQuizLanguage, type QuizLanguage } from '../utils/quizLanguage'
 
 const navItems = [
   { path: '/', label: 'Trang chủ', icon: 'home' },
@@ -9,6 +10,27 @@ const navItems = [
   { path: '/groups', label: 'Nhóm', icon: 'groups' },
   { path: '/profile', label: 'Cá nhân', icon: 'person' },
 ]
+
+function QuizLanguageToggle() {
+  const [lang, setLang] = useState<QuizLanguage>(getQuizLanguage)
+  const toggle = (l: QuizLanguage) => { setLang(l); setQuizLanguage(l) }
+  return (
+    <div className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm">
+      <span className="material-symbols-outlined text-on-surface-variant text-xl">translate</span>
+      <span className="flex-1 text-on-surface-variant">Câu hỏi</span>
+      <div className="flex gap-0.5 bg-surface-container rounded-lg p-0.5">
+        <button
+          onClick={() => toggle('vi')}
+          className={`px-2 py-1 rounded-md text-xs font-bold transition-colors ${lang === 'vi' ? 'bg-secondary text-on-secondary' : 'text-on-surface-variant hover:text-on-surface'}`}
+        >VI</button>
+        <button
+          onClick={() => toggle('en')}
+          className={`px-2 py-1 rounded-md text-xs font-bold transition-colors ${lang === 'en' ? 'bg-secondary text-on-secondary' : 'text-on-surface-variant hover:text-on-surface'}`}
+        >EN</button>
+      </div>
+    </div>
+  )
+}
 
 export default function AppLayout() {
   const location = useLocation()
@@ -99,6 +121,8 @@ export default function AppLayout() {
                       <span className="material-symbols-outlined text-on-surface-variant text-xl">emoji_events</span>
                       Thành tích
                     </Link>
+                    <QuizLanguageToggle />
+                    <div className="mx-2 my-1 border-t border-outline-variant/10" />
                     <button
                       onClick={handleLogout}
                       disabled={loggingOut}

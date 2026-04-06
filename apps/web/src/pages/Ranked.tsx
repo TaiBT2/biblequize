@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../api/client'
+import { getQuizLanguage } from '../utils/quizLanguage'
 import { useAuth } from '../store/authStore'
 import { useRankedDataSync } from '../hooks/useRankedDataSync'
 
@@ -138,7 +139,7 @@ export default function Ranked() {
 
   const startRankedQuiz = async () => {
     try {
-      const res = await api.post('/api/ranked/sessions')
+      const res = await api.post('/api/ranked/sessions', { language: getQuizLanguage() })
       const sessionId = res.data.sessionId
       const serverAskedIds: string[] = rankedStatus?.askedQuestionIdsToday ?? []
       const localAskedIds: string[] = (() => { try { return JSON.parse(localStorage.getItem('askedQuestionIds') || '[]') } catch { return [] } })()
