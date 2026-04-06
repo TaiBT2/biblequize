@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../store/authStore';
 import { api } from '../api/client';
 
@@ -47,11 +48,11 @@ function saveTournamentLocally(id: string, name: string) {
 }
 
 /* ── Helpers ── */
-function getRoundLabel(round: number, totalRounds: number): string {
-  if (round === totalRounds) return 'Chung kết';
-  if (round === totalRounds - 1) return 'Bán kết';
-  if (round === totalRounds - 2) return 'Tứ kết';
-  return `Vòng ${round}`;
+function getRoundLabel(round: number, totalRounds: number, t: (key: string, opts?: any) => string): string {
+  if (round === totalRounds) return t('tournaments.final');
+  if (round === totalRounds - 1) return t('tournaments.semiFinal');
+  if (round === totalRounds - 2) return t('tournaments.quarterFinal');
+  return t('tournaments.round', { number: round });
 }
 
 function HeartIcons({ count, max = 3 }: { count: number; max?: number }) {
@@ -71,10 +72,11 @@ function HeartIcons({ count, max = 3 }: { count: number; max?: number }) {
 }
 
 function StatusBadge({ status }: { status: string }) {
+  const { t } = useTranslation();
   const config: Record<string, { icon: string; label: string; cls: string }> = {
-    LOBBY: { icon: 'lock_open', label: 'Phong cho', cls: 'bg-primary-container text-primary' },
-    IN_PROGRESS: { icon: 'swords', label: 'Dang dien ra', cls: 'bg-secondary-container/40 text-secondary' },
-    COMPLETED: { icon: 'check_circle', label: 'Hoan thanh', cls: 'bg-surface-container-high text-tertiary' },
+    LOBBY: { icon: 'lock_open', label: t('tournaments.statusLobby'), cls: 'bg-primary-container text-primary' },
+    IN_PROGRESS: { icon: 'swords', label: t('tournaments.statusInProgress'), cls: 'bg-secondary-container/40 text-secondary' },
+    COMPLETED: { icon: 'check_circle', label: t('tournaments.statusCompleted'), cls: 'bg-surface-container-high text-tertiary' },
   };
   const c = config[status] || config.LOBBY;
   return (
@@ -93,6 +95,7 @@ const BracketView: React.FC<{
   status: string;
   onMatchClick: (match: Match) => void;
 }> = ({ rounds, totalRounds, currentRound, status, onMatchClick }) => {
+  const { t } = useTranslation();
   const roundNumbers = Array.from({ length: totalRounds }, (_, i) => i + 1);
 
   return (
@@ -100,7 +103,7 @@ const BracketView: React.FC<{
       {/* Mobile swipe hint */}
       <div className="mb-4 flex items-center gap-2 text-on-surface-variant md:hidden">
         <span className="material-symbols-outlined text-sm animate-pulse">swipe_left</span>
-        <span className="text-xs font-bold uppercase tracking-wider italic">Vuot de xem bracket</span>
+        <span className="text-xs font-bold uppercase tracking-wider italic">{t('tournaments.swipeHint')}</span>
       </div>
 
       <div className="inline-flex gap-16 min-w-max p-4 pt-0">
@@ -116,7 +119,7 @@ const BracketView: React.FC<{
                   <h3 className={`text-center font-bold uppercase tracking-widest text-xs ${
                     isFinal ? 'text-secondary tracking-[0.3em] text-sm' : 'text-on-surface-variant'
                   }`}>
-                    {getRoundLabel(roundNum, totalRounds)}
+                    {getRoundLabel(roundNum, totalRounds, t)}
                   </h3>
                 </div>
 
@@ -217,7 +220,7 @@ const BracketView: React.FC<{
                               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75" />
                               <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary" />
                             </span>
-                            <span className="text-[9px] font-bold text-secondary uppercase tracking-wider">Dang dien ra</span>
+                            <span className="text-[9px] font-bold text-secondary uppercase tracking-wider">{t('tournaments.inProgress')}</span>
                           </div>
                         )}
                         {/* Player 1 */}
@@ -316,6 +319,7 @@ const TournamentDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { isAuthenticated, user } = useAuth();
+  const { t } = useTranslation();
 
   const [bracket, setBracket] = useState<BracketData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -339,12 +343,12 @@ const TournamentDetail: React.FC = () => {
     } catch (err: any) {
       // Only set error on first load
       if (!bracket) {
-        setError(err.response?.data?.message || err.response?.data?.error || 'Khong the tai du lieu tournament');
+        setError(err.response?.data?.message || err.response?.data?.error || t('tournaments.errorLoadData'));
       }
     } finally {
       setLoading(false);
     }
-  }, [id, bracket]);
+  }, [id, bracket, t]);
 
   // Initial fetch
   useEffect(() => {
@@ -366,11 +370,11 @@ const TournamentDetail: React.FC = () => {
     setActionMsg(null);
     try {
       await api.post(`/api/tournaments/${id}/join`);
-      setActionMsg({ text: 'Da tham gia thanh cong!', type: 'success' });
+      setActionMsg({ text: t('tournaments.joinedSuccess'), type: 'success' });
       await fetchBracket();
     } catch (err: any) {
       setActionMsg({
-        text: err.response?.data?.message || err.response?.data?.error || 'Khong the tham gia',
+        text: err.response?.data?.message || err.response?.data?.error || t('tournaments.cannotJoin'),
         type: 'error',
       });
     } finally {
@@ -384,11 +388,11 @@ const TournamentDetail: React.FC = () => {
     setActionMsg(null);
     try {
       await api.post(`/api/tournaments/${id}/start`);
-      setActionMsg({ text: 'Tournament da bat dau!', type: 'success' });
+      setActionMsg({ text: t('tournaments.tournamentStarted'), type: 'success' });
       await fetchBracket();
     } catch (err: any) {
       setActionMsg({
-        text: err.response?.data?.message || err.response?.data?.error || 'Khong the bat dau',
+        text: err.response?.data?.message || err.response?.data?.error || t('tournaments.cannotStart'),
         type: 'error',
       });
     } finally {
@@ -420,7 +424,7 @@ const TournamentDetail: React.FC = () => {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
         <div className="w-10 h-10 border-3 border-outline-variant/20 border-t-secondary rounded-full animate-spin" />
-        <span className="text-on-surface-variant text-sm">Dang tai tournament...</span>
+        <span className="text-on-surface-variant text-sm">{t('tournaments.loadingTournament')}</span>
       </div>
     );
   }
@@ -434,7 +438,7 @@ const TournamentDetail: React.FC = () => {
           className="flex items-center gap-1.5 text-on-surface-variant hover:text-secondary transition-colors text-sm mb-8"
         >
           <span className="material-symbols-outlined text-lg">arrow_back</span>
-          Tournaments
+          {t('nav.tournaments')}
         </button>
         <div className="glass-card rounded-2xl p-12 text-center">
           <span className="material-symbols-outlined text-5xl text-error/60 mb-4 block">error</span>
@@ -443,7 +447,7 @@ const TournamentDetail: React.FC = () => {
             className="px-6 py-2.5 rounded-xl bg-secondary/10 border border-secondary/30 text-secondary font-bold text-sm hover:bg-secondary/20 transition-colors"
             onClick={() => { setLoading(true); setError(''); fetchBracket(); }}
           >
-            Thu lai
+            {t('common.retry')}
           </button>
         </div>
       </div>
@@ -469,7 +473,7 @@ const TournamentDetail: React.FC = () => {
         className="flex items-center gap-1.5 text-on-surface-variant hover:text-secondary transition-colors text-sm mb-8"
       >
         <span className="material-symbols-outlined text-lg">arrow_back</span>
-        Tournaments
+        {t('nav.tournaments')}
       </button>
 
       {/* ── Tournament Header ── */}
@@ -487,7 +491,7 @@ const TournamentDetail: React.FC = () => {
               {bracket.status !== 'LOBBY' && (
                 <span className="text-on-surface-variant text-sm flex items-center gap-1">
                   <span className="material-symbols-outlined text-base">bar_chart</span>
-                  Vong {bracket.currentRound}/{bracket.totalRounds}
+                  {t('tournaments.roundOf', { current: bracket.currentRound, total: bracket.totalRounds })}
                 </span>
               )}
             </div>
@@ -497,12 +501,12 @@ const TournamentDetail: React.FC = () => {
           <div className="glass-card p-5 rounded-xl flex items-center gap-6">
             <div className="text-center">
               <div className="text-2xl font-bold text-secondary">{participantCount}</div>
-              <div className="text-[10px] uppercase tracking-widest text-on-surface-variant">Thi sinh</div>
+              <div className="text-[10px] uppercase tracking-widest text-on-surface-variant">{t('tournaments.participants')}</div>
             </div>
             <div className="w-px h-10 bg-outline-variant/20" />
             <div className="text-center">
               <div className="text-2xl font-bold text-secondary">{bracket.totalRounds}</div>
-              <div className="text-[10px] uppercase tracking-widest text-on-surface-variant">Vong dau</div>
+              <div className="text-[10px] uppercase tracking-widest text-on-surface-variant">{t('tournaments.rounds')}</div>
             </div>
             <div className="w-px h-10 bg-outline-variant/20" />
             <div className="text-center">
@@ -525,24 +529,24 @@ const TournamentDetail: React.FC = () => {
           <div className="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center mb-3">
             <span className="material-symbols-outlined text-secondary">account_tree</span>
           </div>
-          <div className="font-bold text-on-surface mb-1">The thuc</div>
-          <p className="text-sm text-on-surface-variant">Single Elimination Bracket - {bracket.totalRounds} vong</p>
+          <div className="font-bold text-on-surface mb-1">{t('tournaments.format')}</div>
+          <p className="text-sm text-on-surface-variant">{t('tournaments.formatDesc', { rounds: bracket.totalRounds })}</p>
         </div>
         {/* Rules */}
         <div className="glass-card rounded-2xl p-6">
           <div className="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center mb-3">
             <span className="material-symbols-outlined text-secondary">gavel</span>
           </div>
-          <div className="font-bold text-on-surface mb-1">Luat choi</div>
-          <p className="text-sm text-on-surface-variant">3 mang, sai 3 cau bi loai. 15 giay moi cau hoi.</p>
+          <div className="font-bold text-on-surface mb-1">{t('tournaments.rules')}</div>
+          <p className="text-sm text-on-surface-variant">{t('tournaments.rulesDesc')}</p>
         </div>
         {/* Participants */}
         <div className="glass-card rounded-2xl p-6">
           <div className="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center mb-3">
             <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>groups</span>
           </div>
-          <div className="font-bold text-on-surface mb-1">Nguoi choi</div>
-          <p className="text-sm text-on-surface-variant">{participantCount} nguoi da dang ky tham gia</p>
+          <div className="font-bold text-on-surface mb-1">{t('tournaments.players')}</div>
+          <p className="text-sm text-on-surface-variant">{t('tournaments.playersRegistered', { count: participantCount })}</p>
         </div>
       </section>
 
@@ -553,8 +557,8 @@ const TournamentDetail: React.FC = () => {
             <span className="material-symbols-outlined text-5xl text-secondary mb-4 block" style={{ fontVariationSettings: "'FILL' 1" }}>
               how_to_reg
             </span>
-            <h2 className="text-xl font-bold text-on-surface mb-2">Phong cho dang mo</h2>
-            <p className="text-on-surface-variant text-sm mb-6">Tham gia ngay de duoc xep vao bracket khi giai dau bat dau.</p>
+            <h2 className="text-xl font-bold text-on-surface mb-2">{t('tournaments.lobbyOpen')}</h2>
+            <p className="text-on-surface-variant text-sm mb-6">{t('tournaments.lobbyDesc')}</p>
 
             <div className="flex gap-3 justify-center flex-wrap">
               <button
@@ -564,7 +568,7 @@ const TournamentDetail: React.FC = () => {
               >
                 <span className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-lg">swords</span>
-                  {joinLoading ? 'Dang tham gia...' : 'Dang Ky'}
+                  {joinLoading ? t('tournaments.registering') : t('tournaments.register')}
                 </span>
               </button>
               <button
@@ -574,7 +578,7 @@ const TournamentDetail: React.FC = () => {
               >
                 <span className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-lg">rocket_launch</span>
-                  {startLoading ? 'Dang bat dau...' : 'Bat Dau'}
+                  {startLoading ? t('tournaments.starting') : t('tournaments.startTournament')}
                 </span>
               </button>
             </div>
@@ -607,7 +611,7 @@ const TournamentDetail: React.FC = () => {
               >
                 workspace_premium
               </span>
-              <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-on-surface-variant mb-1">Nha vo dich</p>
+              <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-on-surface-variant mb-1">{t('tournaments.champion')}</p>
               <p className="text-2xl font-black text-secondary">{champion}</p>
             </div>
           </div>
@@ -619,7 +623,7 @@ const TournamentDetail: React.FC = () => {
         <section className="mb-10">
           <h2 className="text-lg font-bold text-on-surface mb-4 flex items-center gap-2">
             <span className="material-symbols-outlined text-secondary">group</span>
-            Nguoi choi da tham gia
+            {t('tournaments.participantsJoined')}
             <span className="text-xs font-bold text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full">
               {bracket.participants.length}
             </span>

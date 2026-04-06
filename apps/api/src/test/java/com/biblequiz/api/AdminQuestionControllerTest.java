@@ -71,7 +71,7 @@ class AdminQuestionControllerTest extends BaseControllerTest {
     @Test
     @WithMockUser(username = "admin@example.com", roles = {"ADMIN"})
     void listQuestions_shouldReturn200() throws Exception {
-        when(questionRepository.findWithAdminFilters(any(), any(), any(), any(), any(), any()))
+        when(questionRepository.findWithAdminFilters(any(), any(), any(), any(), any(), any(), any()))
                 .thenReturn(new PageImpl<>(List.of(sampleQuestion)));
 
         mockMvc.perform(get("/api/admin/questions"))
@@ -83,7 +83,7 @@ class AdminQuestionControllerTest extends BaseControllerTest {
     @Test
     @WithMockUser(username = "admin@example.com", roles = {"ADMIN"})
     void listQuestions_withFilters_shouldReturn200() throws Exception {
-        when(questionRepository.findWithAdminFilters(any(), any(), any(), any(), any(), any()))
+        when(questionRepository.findWithAdminFilters(any(), any(), any(), any(), any(), any(), any()))
                 .thenReturn(new PageImpl<>(List.of()));
 
         mockMvc.perform(get("/api/admin/questions")

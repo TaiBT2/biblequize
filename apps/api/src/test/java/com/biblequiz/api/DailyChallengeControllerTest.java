@@ -57,7 +57,7 @@ class DailyChallengeControllerTest extends BaseControllerTest {
     @Test
     @Order(1)
     void getDailyChallenge_public_shouldReturn200() throws Exception {
-        when(dailyChallengeService.getTodayQuestions()).thenReturn(sampleQuestions);
+        when(dailyChallengeService.getTodayQuestions(any())).thenReturn(sampleQuestions);
         when(dailyChallengeService.getDailyQuestionCount()).thenReturn(5);
 
         mockMvc.perform(get("/api/daily-challenge"))
@@ -74,7 +74,7 @@ class DailyChallengeControllerTest extends BaseControllerTest {
     @Order(2)
     @WithMockUser(username = "test@example.com")
     void getDailyChallenge_authenticated_shouldCheckCompletion() throws Exception {
-        when(dailyChallengeService.getTodayQuestions()).thenReturn(sampleQuestions);
+        when(dailyChallengeService.getTodayQuestions(any())).thenReturn(sampleQuestions);
         when(dailyChallengeService.getDailyQuestionCount()).thenReturn(5);
         when(dailyChallengeService.hasCompletedToday("test@example.com")).thenReturn(true);
 
@@ -86,7 +86,7 @@ class DailyChallengeControllerTest extends BaseControllerTest {
     @Test
     @Order(3)
     void getDailyChallenge_noQuestions_shouldReturnEmptyList() throws Exception {
-        when(dailyChallengeService.getTodayQuestions()).thenReturn(List.of());
+        when(dailyChallengeService.getTodayQuestions(any())).thenReturn(List.of());
         when(dailyChallengeService.getDailyQuestionCount()).thenReturn(5);
 
         mockMvc.perform(get("/api/daily-challenge"))
@@ -144,7 +144,7 @@ class DailyChallengeControllerTest extends BaseControllerTest {
     @Test
     @Order(8)
     void TC_DAILY_002_getDailyChallenge_guestAccess_shouldReturn200WithQuestions() throws Exception {
-        when(dailyChallengeService.getTodayQuestions()).thenReturn(sampleQuestions);
+        when(dailyChallengeService.getTodayQuestions(any())).thenReturn(sampleQuestions);
         when(dailyChallengeService.getDailyQuestionCount()).thenReturn(5);
 
         mockMvc.perform(get("/api/daily-challenge"))

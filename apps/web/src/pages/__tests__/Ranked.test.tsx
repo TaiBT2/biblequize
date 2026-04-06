@@ -65,7 +65,7 @@ describe('Ranked Mode Dashboard', () => {
   it('renders header with title and tier', async () => {
     renderRanked()
     await waitFor(() => {
-      expect(screen.getByText('⚔️ Xếp hạng')).toBeInTheDocument()
+      expect(screen.getByText('Thi Đấu Xếp Hạng')).toBeInTheDocument()
     })
   })
 
@@ -90,7 +90,7 @@ describe('Ranked Mode Dashboard', () => {
     renderRanked()
     await waitFor(() => {
       expect(screen.getByText('456')).toBeInTheDocument()
-      expect(screen.getByText('Hôm nay')).toBeInTheDocument()
+      expect(screen.getByText('Hôm Nay')).toBeInTheDocument()
     })
   })
 
@@ -113,7 +113,7 @@ describe('Ranked Mode Dashboard', () => {
   it('displays start button when energy > 0', async () => {
     renderRanked()
     await waitFor(() => {
-      const btn = screen.getByRole('button', { name: /Bắt đầu/ })
+      const btn = screen.getByRole('button', { name: /Vào Thi Đấu/ })
       expect(btn).toBeInTheDocument()
     })
   })
@@ -141,7 +141,7 @@ describe('Ranked Mode Dashboard', () => {
     mockApiGet.mockRejectedValue(new Error('Network error'))
     renderRanked()
     await waitFor(() => {
-      expect(screen.getByText(/Không thể tải trạng thái xếp hạng/)).toBeInTheDocument()
+      expect(screen.getByText(/Không thể tải dữ liệu thi đấu/)).toBeInTheDocument()
       expect(screen.getByText('Thử lại')).toBeInTheDocument()
     })
   })
@@ -150,9 +150,9 @@ describe('Ranked Mode Dashboard', () => {
     renderRanked()
     const user = userEvent.setup()
     await waitFor(() => {
-      expect(screen.getByRole('button', { name: /Bắt đầu/ })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /Vào Thi Đấu/ })).toBeInTheDocument()
     })
-    await user.click(screen.getByRole('button', { name: /Bắt đầu/ }))
+    await user.click(screen.getByRole('button', { name: /Vào Thi Đấu/ }))
     await waitFor(() => {
       expect(mockNavigate).toHaveBeenCalledWith('/quiz', expect.objectContaining({
         state: expect.objectContaining({ mode: 'ranked', isRanked: true }),

@@ -1,5 +1,6 @@
 import { useState, useEffect, type CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../store/authStore';
 
 interface PublicRoom {
@@ -34,6 +35,7 @@ const ROOM_ICONS = ['auto_stories', 'menu_book', 'psychology', 'emoji_events'];
 const FILL_1: CSSProperties = { fontVariationSettings: "'FILL' 1" };
 
 const Multiplayer = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
   const [publicRooms, setPublicRooms] = useState<PublicRoom[]>([]);
@@ -74,9 +76,9 @@ const Multiplayer = () => {
   const getRoomIcon = (index: number) => ROOM_ICONS[index % ROOM_ICONS.length];
 
   const getStatusLabel = (room: PublicRoom) => {
-    if (room.status === 'IN_GAME') return { text: 'Dang Choi', className: 'text-error' };
-    if (room.status === 'FINISHED') return { text: 'Ket Thuc', className: 'text-on-surface-variant' };
-    return { text: 'Dang Cho', className: 'text-secondary' };
+    if (room.status === 'IN_GAME') return { text: t('multiplayer.statusPlaying'), className: 'text-error' };
+    if (room.status === 'FINISHED') return { text: t('multiplayer.statusFinished'), className: 'text-on-surface-variant' };
+    return { text: t('multiplayer.statusWaiting'), className: 'text-secondary' };
   };
 
   const isFull = (room: PublicRoom) => room.currentPlayers >= room.maxPlayers;
@@ -86,13 +88,13 @@ const Multiplayer = () => {
 
       {/* -- Page Header -- */}
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-black text-on-surface tracking-tight">Phong Choi</h2>
+        <h2 className="text-2xl font-black text-on-surface tracking-tight">{t('multiplayer.title')}</h2>
         <button
           onClick={() => navigate('/room/create')}
           className="flex items-center gap-2 py-2.5 px-6 rounded-lg gold-gradient text-on-secondary font-extrabold text-sm tracking-tight shadow-md hover:shadow-secondary/20 transition-all"
         >
           <span className="material-symbols-outlined text-sm">add_circle</span>
-          + Tao Phong
+          + {t('multiplayer.createRoom')}
         </button>
       </div>
 
@@ -101,15 +103,15 @@ const Multiplayer = () => {
         {/* Join by code */}
         <div className="md:col-span-2 p-8 rounded-2xl bg-surface-container flex flex-col md:flex-row items-center justify-between gap-6 border-l-4 border-secondary">
           <div>
-            <h3 className="text-xl font-bold text-on-surface mb-1">Tham gia bang ma</h3>
-            <p className="text-on-surface-variant text-sm">Nhap ma 6 chu so de vao phong nhanh</p>
+            <h3 className="text-xl font-bold text-on-surface mb-1">{t('multiplayer.joinByCode')}</h3>
+            <p className="text-on-surface-variant text-sm">{t('multiplayer.joinByCodeDesc')}</p>
           </div>
           <div className="flex items-center gap-3 w-full md:w-auto">
             <input
               type="text"
               value={joinCode}
               onChange={e => setJoinCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ''))}
-              placeholder="123 456"
+              placeholder={t('multiplayer.codePlaceholder')}
               maxLength={6}
               className="bg-surface-container-highest border-none rounded-xl px-4 py-3 text-center text-xl font-black tracking-[0.5em] text-secondary placeholder:text-outline/30 focus:ring-2 focus:ring-secondary/50 w-full md:w-48 outline-none"
               onKeyDown={e => { if (e.key === 'Enter' && joinCode.trim()) navigate(`/room/join?code=${joinCode.trim()}`); }}
@@ -119,7 +121,7 @@ const Multiplayer = () => {
               disabled={!joinCode.trim()}
               className="bg-surface-container-highest hover:bg-surface-variant text-secondary font-bold py-3 px-8 rounded-xl transition-all border border-secondary/20 disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              Tham Gia
+              {t('multiplayer.joinBtn')}
             </button>
           </div>
         </div>
@@ -129,10 +131,10 @@ const Multiplayer = () => {
           <div className="absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">
             <span className="material-symbols-outlined text-8xl text-secondary">auto_awesome</span>
           </div>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-secondary font-bold mb-2">De xuat hom nay</p>
-          <h4 className="text-lg font-bold leading-tight">Giai do Sang The Ky cung muc su</h4>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-secondary font-bold mb-2">{t('multiplayer.featuredToday')}</p>
+          <h4 className="text-lg font-bold leading-tight">{t('multiplayer.featuredTitle')}</h4>
           <p className="text-xs text-on-surface-variant mt-2 flex items-center gap-1">
-            <span className="material-symbols-outlined text-sm">schedule</span> 14:00 Chieu nay
+            <span className="material-symbols-outlined text-sm">schedule</span> {t('multiplayer.featuredTime')}
           </p>
         </div>
       </section>
@@ -141,7 +143,7 @@ const Multiplayer = () => {
       <section className="space-y-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <h3 className="text-lg font-bold">Phong Dang Cho</h3>
+            <h3 className="text-lg font-bold">{t('multiplayer.waitingRooms')}</h3>
             <span className="px-2 py-0.5 rounded bg-secondary/10 text-secondary text-[10px] font-bold uppercase tracking-widest">
               Live {liveCount}
             </span>
@@ -169,15 +171,15 @@ const Multiplayer = () => {
             <div className="w-24 h-24 rounded-full bg-surface-variant flex items-center justify-center mb-6">
               <span className="material-symbols-outlined text-5xl text-outline-variant">sentiment_dissatisfied</span>
             </div>
-            <h5 className="text-xl font-bold text-on-surface mb-2">Chua co phong nao...</h5>
+            <h5 className="text-xl font-bold text-on-surface mb-2">{t('multiplayer.emptyTitle')}</h5>
             <p className="text-on-surface-variant max-w-xs text-center mb-8">
-              Hay la nguoi dau tien tao phong choi de bat dau cuoc dua tri tue ngay bay gio!
+              {t('multiplayer.emptyDesc')}
             </p>
             <button
               onClick={() => navigate('/room/create')}
               className="py-3 px-8 rounded-xl gold-gradient text-on-secondary font-bold shadow-lg"
             >
-              Tao Phong Ngay
+              {t('multiplayer.createRoomNow')}
             </button>
           </div>
         ) : (
@@ -231,7 +233,7 @@ const Multiplayer = () => {
                   <div className="flex flex-wrap gap-2 mt-2">
                     {room.questionCount && (
                       <span className="px-3 py-1 rounded-full bg-surface-container-highest text-[11px] text-on-surface-variant flex items-center gap-1">
-                        <span className="material-symbols-outlined text-xs">quiz</span> {room.questionCount} cau
+                        <span className="material-symbols-outlined text-xs">quiz</span> {room.questionCount} {t('multiplayer.questions')}
                       </span>
                     )}
                     {room.difficulty && (
@@ -257,7 +259,7 @@ const Multiplayer = () => {
                       onClick={() => navigate(`/room/${room.id}/lobby`)}
                       className="mt-2 w-full py-3 rounded-xl border border-outline-variant/30 hover:bg-secondary hover:text-on-secondary hover:border-transparent font-bold text-sm transition-all flex items-center justify-center gap-2"
                     >
-                      Vao Phong <span className="material-symbols-outlined text-sm">login</span>
+                      {t('multiplayer.enterRoom')} <span className="material-symbols-outlined text-sm">login</span>
                     </button>
                   )}
                   {isWaiting && roomFull && (
@@ -265,7 +267,7 @@ const Multiplayer = () => {
                       disabled
                       className="mt-2 w-full py-3 rounded-xl bg-surface-container-highest text-on-surface-variant/40 font-bold text-sm cursor-not-allowed flex items-center justify-center gap-2"
                     >
-                      Phong Da Day <span className="material-symbols-outlined text-sm">lock</span>
+                      {t('multiplayer.roomFull')} <span className="material-symbols-outlined text-sm">lock</span>
                     </button>
                   )}
                   {isPlaying && (
@@ -273,7 +275,7 @@ const Multiplayer = () => {
                       onClick={() => navigate(`/room/${room.id}/spectate`)}
                       className="mt-2 w-full py-3 rounded-xl border border-outline-variant/30 hover:bg-secondary hover:text-on-secondary hover:border-transparent font-bold text-sm transition-all flex items-center justify-center gap-2"
                     >
-                      Xem Tran Dau <span className="material-symbols-outlined text-sm">visibility</span>
+                      {t('multiplayer.spectate')} <span className="material-symbols-outlined text-sm">visibility</span>
                     </button>
                   )}
                   {isFinished && (
@@ -281,7 +283,7 @@ const Multiplayer = () => {
                       onClick={() => navigate(`/room/${room.id}/results`)}
                       className="mt-2 w-full py-3 rounded-xl bg-surface-container-highest text-secondary font-bold text-sm hover:bg-surface-variant transition-all flex items-center justify-center gap-2"
                     >
-                      Xem Ket Qua <span className="material-symbols-outlined text-sm">leaderboard</span>
+                      {t('multiplayer.viewResults')} <span className="material-symbols-outlined text-sm">leaderboard</span>
                     </button>
                   )}
                 </div>

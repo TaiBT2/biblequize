@@ -91,8 +91,8 @@ describe('TournamentDetail', () => {
   it('displays tournament name after loading', async () => {
     renderTD()
     await waitFor(() => {
-      const name = screen.queryByText(/Giải Đấu/i) || screen.queryByText(/Ngôi Lời/i)
-      expect(name).toBeTruthy()
+      const matches = screen.getAllByText(/Giải Đấu/i)
+      expect(matches.length).toBeGreaterThan(0)
     })
   })
 

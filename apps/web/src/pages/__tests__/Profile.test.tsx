@@ -86,7 +86,7 @@ describe('Profile page (API-driven)', () => {
     const matches = await screen.findAllByText(/Người Tìm Kiếm/)
     expect(matches.length).toBeGreaterThanOrEqual(1)
     // Next tier is "Môn Đồ"
-    expect(screen.getByText(/Môn Đồ \(Tiếp theo\)/)).toBeTruthy()
+    expect(screen.getByText(/Môn Đồ \(kế tiếp\)/)).toBeTruthy()
   })
 
   it('shows loading skeleton initially', () => {
@@ -103,15 +103,15 @@ describe('Profile page (API-driven)', () => {
     // totalPoints = 2,500
     expect(await screen.findByText('2,500')).toBeTruthy()
     // longestStreak = 12
-    expect(screen.getByText('12 Ngày')).toBeTruthy()
+    expect(screen.getByText('12 ngày')).toBeTruthy()
     // currentStreak = 5
-    expect(screen.getByText('5 Ngày')).toBeTruthy()
+    expect(screen.getByText('5 ngày')).toBeTruthy()
   })
 
   it('shows empty badges message when no achievements', async () => {
     setupMocks({ achievements: [] })
     renderProfile()
-    expect(await screen.findByText('Chưa có huy hiệu')).toBeTruthy()
+    expect(await screen.findByText('Chưa có huy hiệu nào')).toBeTruthy()
   })
 
   it('renders unlocked and locked badges', async () => {
@@ -124,7 +124,7 @@ describe('Profile page (API-driven)', () => {
   it('shows empty heatmap message when no history', async () => {
     setupMocks({ history: { content: [] } })
     renderProfile()
-    expect(await screen.findByText('Bắt đầu chơi để thấy hoạt động')).toBeTruthy()
+    expect(await screen.findByText('Bắt đầu chơi để xem nhật ký học tập')).toBeTruthy()
   })
 
   it('shows login prompt when not authenticated', () => {
@@ -148,6 +148,6 @@ describe('Profile page (API-driven)', () => {
   it('renders heatmap section heading', async () => {
     setupMocks()
     renderProfile()
-    expect(await screen.findByText(/Nhật ký học tập/)).toBeTruthy()
+    expect(await screen.findByText(/Nhật Ký Học Tập/)).toBeTruthy()
   })
 })

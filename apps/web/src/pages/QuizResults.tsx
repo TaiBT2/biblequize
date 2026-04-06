@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 
@@ -41,27 +42,28 @@ interface QuizResultsProps {
   sessionId?: string
 }
 
-function getGradeText(accuracy: number): { text: string; color: string } {
-  if (accuracy >= 90) return { text: 'Xuất sắc!', color: 'text-[#4ade80]' }
-  if (accuracy >= 70) return { text: 'Tốt lắm!', color: 'text-secondary' }
-  return { text: 'Cố gắng thêm!', color: 'text-error' }
-}
-
 const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToHome, isRanked = false, sessionId }) => {
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const [scoreDisplay, setScoreDisplay] = useState(0)
   const [correctDisplay, setCorrectDisplay] = useState(0)
   const [timeDisplay, setTimeDisplay] = useState(0)
+
+  function getGradeText(accuracy: number): { text: string; color: string } {
+    if (accuracy >= 90) return { text: t('results.excellent'), color: 'text-[#4ade80]' }
+    if (accuracy >= 70) return { text: t('results.good'), color: 'text-secondary' }
+    return { text: t('results.tryHarder'), color: 'text-error' }
+  }
 
   if (!stats) {
     return (
       <div className="min-h-screen bg-[#11131e] flex items-center justify-center p-4">
         <div className="glass-card p-8 rounded-2xl text-center max-w-md w-full border border-outline-variant/10">
           <span className="material-symbols-outlined text-error text-5xl mb-4 block">error</span>
-          <h2 className="text-2xl font-black text-on-surface mb-2">Không có dữ liệu kết quả</h2>
-          <p className="text-on-surface-variant text-sm mb-6">Có vẻ như có lỗi khi tải dữ liệu quiz.</p>
+          <h2 className="text-2xl font-black text-on-surface mb-2">{t('results.noData')}</h2>
+          <p className="text-on-surface-variant text-sm mb-6">{t('results.errorLoading')}</p>
           <button onClick={onBackToHome} className="gold-gradient text-on-secondary font-black px-8 py-3 rounded-xl">
-            Về Trang Chủ
+            {t('errors.goHome')}
           </button>
         </div>
       </div>
@@ -144,7 +146,7 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
             </div>
           </div>
           <div className="text-center mt-4">
-            <p className="text-secondary font-bold text-lg uppercase tracking-widest">{accuracy}% chính xác</p>
+            <p className="text-secondary font-bold text-lg uppercase tracking-widest">{accuracy}% {t('results.accuracy')}</p>
             <h1 className={`text-3xl font-black mt-1 ${grade.color}`}>{grade.text}</h1>
           </div>
         </section>
@@ -180,12 +182,12 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
         {/* Score Breakdown */}
         <div className="glass-card w-full rounded-2xl p-6 space-y-4 border border-white/5">
           <div className="flex justify-between items-center">
-            <span className="text-on-surface-variant font-medium">Điểm cơ bản:</span>
+            <span className="text-on-surface-variant font-medium">{t('results.baseScore')}:</span>
             <span className="font-bold text-on-surface">{stats.totalScore}</span>
           </div>
           <div className="pt-4 mt-2 border-t border-outline-variant/20 flex justify-between items-center">
-            <span className="text-lg font-bold text-on-surface">Tổng cộng:</span>
-            <span className="text-3xl font-black text-secondary">{scoreDisplay} điểm</span>
+            <span className="text-lg font-bold text-on-surface">{t('results.total')}:</span>
+            <span className="text-3xl font-black text-secondary">{scoreDisplay} {t('results.points')}</span>
           </div>
         </div>
 
@@ -194,17 +196,17 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
           <div className="glass-card w-full rounded-2xl p-6 border border-white/5">
             <h3 className="text-sm font-bold text-on-surface-variant uppercase tracking-widest mb-4 flex items-center gap-2">
               <span className="material-symbols-outlined text-sm">analytics</span>
-              Phân tích kết quả
+              {t('results.analysis')}
             </h3>
             <div className="grid grid-cols-2 gap-3">
               <div className="bg-[#4ade80]/5 border border-[#4ade80]/20 rounded-xl p-4">
-                <p className="text-[#4ade80] font-bold text-xs mb-1 flex items-center gap-1">🏆 Mạnh nhất</p>
+                <p className="text-[#4ade80] font-bold text-xs mb-1 flex items-center gap-1">{t('results.strongest')}</p>
                 <p className="text-on-surface font-bold text-sm">{strongest?.book} ({Math.round((strongest?.acc ?? 0) * 100)}%)</p>
               </div>
               <div className="bg-error/5 border border-error/20 rounded-xl p-4">
-                <p className="text-error font-bold text-xs mb-1 flex items-center gap-1">✏️ Cần cải thiện</p>
+                <p className="text-error font-bold text-xs mb-1 flex items-center gap-1">{t('results.needsImprovement')}</p>
                 <p className="text-on-surface font-bold text-sm">
-                  {weakest && weakest.acc < 1 ? `${weakest.book} (${Math.round(weakest.acc * 100)}%)` : 'Xuất sắc toàn bộ!'}
+                  {weakest && weakest.acc < 1 ? `${weakest.book} (${Math.round(weakest.acc * 100)}%)` : t('results.allExcellent')}
                 </p>
               </div>
             </div>
@@ -217,18 +219,18 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
             <button onClick={() => navigate('/review', { state: { stats } })}
               className="flex-1 glass-card py-4 rounded-xl font-bold text-on-surface flex items-center justify-center gap-2 hover:bg-surface-container-highest transition-all border border-white/5">
               <span className="material-symbols-outlined text-sm">edit_note</span>
-              Xem lại
+              {t('results.review')}
             </button>
             <button onClick={onPlayAgain}
               className="flex-1 glass-card py-4 rounded-xl font-bold text-on-surface flex items-center justify-center gap-2 hover:bg-surface-container-highest transition-all border border-white/5">
               <span className="material-symbols-outlined text-sm">refresh</span>
-              Chơi lại
+              {t('results.playAgain')}
             </button>
           </div>
           <button onClick={onBackToHome}
             className="w-full gold-gradient py-4 rounded-xl font-black text-on-secondary shadow-lg shadow-secondary/20 flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
             <span className="material-symbols-outlined" style={FILL_1}>home</span>
-            Trang chủ
+            {t('results.home')}
           </button>
         </div>
       </main>

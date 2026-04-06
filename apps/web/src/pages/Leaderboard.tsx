@@ -1,21 +1,16 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 import { useAuthStore } from '../store/authStore'
 
 type Tab = 'daily' | 'weekly' | 'all_time'
 
-const tabs: { key: Tab; label: string; apiPath: string }[] = [
-  { key: 'daily', label: 'Hàng ngày', apiPath: 'daily' },
-  { key: 'weekly', label: 'Hàng tuần', apiPath: 'weekly' },
-  { key: 'all_time', label: 'Tất cả', apiPath: 'all-time' },
-]
-
 const tierInfo = [
-  { icon: 'workspace_premium', iconColor: 'text-secondary', borderColor: 'border-secondary/40', name: 'Hạng Vàng', description: 'Top 5% người chơi có điểm số cao nhất mùa giải.', filled: true },
-  { icon: 'military_tech', iconColor: 'text-[#c0c0c0]', borderColor: 'border-[#c0c0c0]/40', name: 'Hạng Bạc', description: 'Top 15% người chơi tích cực trong tuần.', filled: true },
-  { icon: 'award_star', iconColor: 'text-[#cd7f32]', borderColor: 'border-[#cd7f32]/40', name: 'Hạng Đồng', description: 'Top 40% người chơi hoàn thành thử thách.', filled: true },
-  { icon: 'stars', iconColor: 'text-outline', borderColor: 'border-outline/40', name: 'Hạng Sắt', description: 'Hạng khởi đầu cho mọi thành viên mới.', filled: false },
+  { icon: 'workspace_premium', iconColor: 'text-secondary', borderColor: 'border-secondary/40', nameKey: 'leaderboard.tierGold', descKey: 'leaderboard.tierGoldDesc', filled: true },
+  { icon: 'military_tech', iconColor: 'text-[#c0c0c0]', borderColor: 'border-[#c0c0c0]/40', nameKey: 'leaderboard.tierSilver', descKey: 'leaderboard.tierSilverDesc', filled: true },
+  { icon: 'award_star', iconColor: 'text-[#cd7f32]', borderColor: 'border-[#cd7f32]/40', nameKey: 'leaderboard.tierBronze', descKey: 'leaderboard.tierBronzeDesc', filled: true },
+  { icon: 'stars', iconColor: 'text-outline', borderColor: 'border-outline/40', nameKey: 'leaderboard.tierIron', descKey: 'leaderboard.tierIronDesc', filled: false },
 ]
 
 const PODIUM_STYLES = [
@@ -25,8 +20,14 @@ const PODIUM_STYLES = [
 ]
 
 export default function Leaderboard() {
+  const { t } = useTranslation()
   const [activeTab, setActiveTab] = useState<Tab>('daily')
   const user = useAuthStore(s => s.user)
+  const tabs: { key: Tab; label: string; apiPath: string }[] = [
+    { key: 'daily', label: t('leaderboard.daily'), apiPath: 'daily' },
+    { key: 'weekly', label: t('leaderboard.weekly'), apiPath: 'weekly' },
+    { key: 'all_time', label: t('leaderboard.allTime'), apiPath: 'all-time' },
+  ]
   const apiPath = tabs.find(t => t.key === activeTab)?.apiPath ?? 'daily'
 
   const { data: entries, isLoading, isFetching } = useQuery({
@@ -55,11 +56,11 @@ export default function Leaderboard() {
   const seasonCountdown = season?.endAt
     ? (() => {
         const diff = new Date(season.endAt).getTime() - Date.now()
-        if (diff <= 0) return 'Đã kết thúc'
+        if (diff <= 0) return t('leaderboard.seasonEnded')
         const d = Math.floor(diff / 86400000)
         const h = Math.floor((diff % 86400000) / 3600000)
         const m = Math.floor((diff % 3600000) / 60000)
-        return `${String(d).padStart(2, '0')} Ngày : ${String(h).padStart(2, '0')} Giờ : ${String(m).padStart(2, '0')} Phút`
+        return `${String(d).padStart(2, '0')} ${t('common.days')} : ${String(h).padStart(2, '0')} ${t('common.hours')} : ${String(m).padStart(2, '0')} ${t('common.minutes')}`
       })()
     : null
 
@@ -68,14 +69,14 @@ export default function Leaderboard() {
       {/* Header & Countdown */}
       <header className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
         <div>
-          <h1 className="text-3xl font-black tracking-tight text-on-surface mb-2">Bảng Xếp Hạng</h1>
-          <p className="text-on-surface-variant text-sm">Tranh tài cùng cộng đồng tín hữu trên toàn thế giới.</p>
+          <h1 className="text-3xl font-black tracking-tight text-on-surface mb-2">{t('leaderboard.title')}</h1>
+          <p className="text-on-surface-variant text-sm">{t('leaderboard.description')}</p>
         </div>
         {seasonCountdown && (
           <div className="flex items-center gap-3 bg-surface-container-low px-4 py-3 rounded-xl border-l-4 border-secondary">
             <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>timer</span>
             <div>
-              <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Kết thúc mùa giải trong</p>
+              <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">{t('leaderboard.seasonEndsIn')}</p>
               <p className="text-secondary font-bold font-mono">{seasonCountdown}</p>
             </div>
           </div>
@@ -125,7 +126,7 @@ export default function Leaderboard() {
       ) : list.length === 0 ? (
         <div className="text-center py-16 mb-16">
           <span className="material-symbols-outlined text-5xl text-on-surface-variant/30 mb-4">leaderboard</span>
-          <p className="text-on-surface-variant text-sm">Chưa có dữ liệu xếp hạng. Hãy bắt đầu chơi!</p>
+          <p className="text-on-surface-variant text-sm">{t('leaderboard.noData')}</p>
         </div>
       ) : null}
 
@@ -159,12 +160,12 @@ export default function Leaderboard() {
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
                       <h3 className="font-black text-sm text-[#11131e]">{entry.name}</h3>
-                      <span className="bg-[#11131e]/10 text-[#11131e] text-[8px] font-black px-1.5 py-0.5 rounded uppercase tracking-tighter">Của Tôi</span>
+                      <span className="bg-[#11131e]/10 text-[#11131e] text-[8px] font-black px-1.5 py-0.5 rounded uppercase tracking-tighter">{t('leaderboard.me')}</span>
                     </div>
                   </div>
                   <div className="text-right">
                     <p className="text-[#11131e] font-black text-lg">{(entry.points ?? 0).toLocaleString()}</p>
-                    <p className="text-[10px] uppercase text-[#11131e]/60 font-bold">Điểm</p>
+                    <p className="text-[10px] uppercase text-[#11131e]/60 font-bold">{t('leaderboard.points')}</p>
                   </div>
                 </div>
               ) : (
@@ -180,7 +181,7 @@ export default function Leaderboard() {
                   </div>
                   <div className="text-right">
                     <p className="text-on-surface font-black text-sm">{(entry.points ?? 0).toLocaleString()}</p>
-                    <p className="text-[10px] uppercase text-on-surface-variant">Điểm</p>
+                    <p className="text-[10px] uppercase text-on-surface-variant">{t('leaderboard.points')}</p>
                   </div>
                 </div>
               )
@@ -196,12 +197,12 @@ export default function Leaderboard() {
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
                     <h3 className="font-black text-sm text-[#11131e]">{user?.name}</h3>
-                    <span className="bg-[#11131e]/10 text-[#11131e] text-[8px] font-black px-1.5 py-0.5 rounded uppercase tracking-tighter">Của Tôi</span>
+                    <span className="bg-[#11131e]/10 text-[#11131e] text-[8px] font-black px-1.5 py-0.5 rounded uppercase tracking-tighter">{t('leaderboard.me')}</span>
                   </div>
                 </div>
                 <div className="text-right">
                   <p className="text-[#11131e] font-black text-lg">{(myRank.points ?? 0).toLocaleString()}</p>
-                  <p className="text-[10px] uppercase text-[#11131e]/60 font-bold">Điểm</p>
+                  <p className="text-[10px] uppercase text-[#11131e]/60 font-bold">{t('leaderboard.points')}</p>
                 </div>
               </div>
             )}
@@ -213,14 +214,14 @@ export default function Leaderboard() {
       <section className="glass-card p-8 rounded-3xl mb-24 border border-outline-variant/10">
         <h4 className="text-lg font-black mb-8 flex items-center gap-2">
           <span className="material-symbols-outlined text-secondary">info</span>
-          Phân Hạng Mùa Giải
+          {t('leaderboard.seasonRanking')}
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {tierInfo.map((tier) => (
-            <div key={tier.name} className={`p-5 bg-surface-container-lowest rounded-2xl border-t-2 ${tier.borderColor}`}>
+            <div key={tier.nameKey} className={`p-5 bg-surface-container-lowest rounded-2xl border-t-2 ${tier.borderColor}`}>
               <span className={`material-symbols-outlined ${tier.iconColor} mb-3`} style={tier.filled ? { fontVariationSettings: "'FILL' 1" } : undefined}>{tier.icon}</span>
-              <p className="font-bold text-sm mb-2">{tier.name}</p>
-              <p className="text-[10px] text-on-surface-variant leading-relaxed">{tier.description}</p>
+              <p className="font-bold text-sm mb-2">{t(tier.nameKey)}</p>
+              <p className="text-[10px] text-on-surface-variant leading-relaxed">{t(tier.descKey)}</p>
             </div>
           ))}
         </div>

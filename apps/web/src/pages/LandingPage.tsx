@@ -1,41 +1,45 @@
 import { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '../store/authStore'
 import PageMeta from '../components/PageMeta'
+import QuizLanguageSelect from '../components/QuizLanguageSelect'
 
 /* ────────────────────────────── Guest Header ────────────────────────────── */
 
 function GuestHeader() {
+  const { t } = useTranslation()
   return (
     <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#11131e] shadow-sm shadow-[#0b0e18]/20">
       <div className="flex items-center gap-8 max-w-7xl mx-auto w-full">
         <div className="text-2xl font-bold tracking-tighter text-[#f8bd45] font-headline">BibleQuiz</div>
         <div className="hidden md:flex gap-6 items-center flex-1">
           <a className="font-be-vietnam-pro tracking-tight text-[#f8bd45] border-b-2 border-[#f8bd45] pb-1" href="#">
-            Home
+            {t('nav.home')}
           </a>
           <Link
             to="/leaderboard"
             className="font-be-vietnam-pro tracking-tight text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-colors duration-300"
           >
-            Leaderboard
+            {t('nav.leaderboard')}
           </Link>
           <a className="font-be-vietnam-pro tracking-tight text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-colors duration-300" href="#">
             About
           </a>
         </div>
         <div className="flex items-center gap-4">
+          <QuizLanguageSelect className="hidden sm:flex" />
           <Link
             to="/login"
             className="px-4 py-2 text-sm font-semibold text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-colors active:scale-95"
           >
-            Login
+            {t('auth.login')}
           </Link>
           <Link
             to="/login"
             className="gold-gradient px-6 py-2 rounded-xl text-on-secondary font-bold active:scale-95 transition-transform shadow-lg shadow-secondary/10 inline-block"
           >
-            Register
+            {t('auth.register')}
           </Link>
         </div>
       </div>
@@ -46,6 +50,7 @@ function GuestHeader() {
 /* ────────────────────────────── Hero Section ────────────────────────────── */
 
 function HeroSection() {
+  const { t } = useTranslation()
   return (
     <header className="relative pt-32 pb-20 px-6 overflow-hidden">
       {/* Background blurs */}
@@ -64,15 +69,15 @@ function HeroSection() {
             >
               auto_awesome
             </span>
-            ỨNG DỤNG HỌC KINH THÁNH THẾ HỆ MỚI
+            {t('landing.tagline')}
           </div>
 
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] text-on-surface">
-            Học Kinh Thánh mỗi ngày qua những <span className="text-secondary">trắc nghiệm</span> thú vị
+            {t('landing.heroTitle1')}<span className="text-secondary">{t('landing.heroHighlight')}</span>{t('landing.heroTitle2')}
           </h1>
 
           <p className="text-xl text-on-surface-variant leading-relaxed max-w-lg">
-            Quiz Kinh Thánh tiếng Việt — trắc nghiệm tương tác, thi đấu multiplayer cùng cộng đồng, nhóm hội thánh và theo dõi tiến trình học Kinh Thánh online của bạn.
+            {t('landing.heroDesc')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -80,13 +85,13 @@ function HeroSection() {
               to="/practice"
               className="gold-gradient px-8 py-4 rounded-xl text-on-secondary font-bold text-lg shadow-xl shadow-secondary/20 active:scale-95 transition-transform text-center"
             >
-              Chơi Thử Ngay
+              {t('landing.tryNow')}
             </Link>
             <Link
               to="/login"
               className="px-8 py-4 rounded-xl border border-outline-variant/30 text-on-surface font-bold text-lg hover:bg-surface-container transition-colors active:scale-95 text-center"
             >
-              Đăng Nhập
+              {t('auth.login')}
             </Link>
           </div>
         </div>
@@ -115,8 +120,8 @@ function HeroSection() {
                 </span>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest text-secondary font-bold">Daily Streak</p>
-                <p className="text-xl font-bold text-on-surface">15 Ngày Liên Tiếp</p>
+                <p className="text-xs uppercase tracking-widest text-secondary font-bold">{t('landing.dailyStreak')}</p>
+                <p className="text-xl font-bold text-on-surface">{t('landing.daysStreak', { count: 15 })}</p>
               </div>
             </div>
           </div>
@@ -128,24 +133,25 @@ function HeroSection() {
 
 /* ────────────────────────────── Features Grid ───────────────────────────── */
 
-const features = [
-  { icon: 'menu_book', title: '6 Chế Độ Chơi', desc: 'Từ trắc nghiệm nhanh đến thử thách trí nhớ và giải đố ô chữ Kinh Thánh.' },
-  { icon: 'stars', title: 'Hạng Kinh Thánh', desc: "Thăng cấp từ 'Người Tìm Hiểu' đến 'Bậc Thầy Kinh Thánh' qua từng bài học." },
-  { icon: 'church', title: 'Nhóm Hội Thánh', desc: 'Kết nối với ban ngành, cùng nhau học hỏi và tổ chức các giải đấu nội bộ.' },
-  { icon: 'workspace_premium', title: 'Chuỗi Ngày & Thành Tích', desc: 'Duy trì thói quen đọc Lời Chúa mỗi ngày để nhận những phần thưởng hấp dẫn.' },
+const featureKeys = [
+  { icon: 'menu_book', titleKey: 'landing.feature1Title', descKey: 'landing.feature1Desc' },
+  { icon: 'stars', titleKey: 'landing.feature2Title', descKey: 'landing.feature2Desc' },
+  { icon: 'church', titleKey: 'landing.feature3Title', descKey: 'landing.feature3Desc' },
+  { icon: 'workspace_premium', titleKey: 'landing.feature4Title', descKey: 'landing.feature4Desc' },
 ]
 
 function FeaturesGrid() {
+  const { t } = useTranslation()
   return (
-    <section className="py-24 px-6 bg-surface-container-low" aria-label="Tính năng nổi bật">
+    <section className="py-24 px-6 bg-surface-container-low" aria-label={t('landing.features')}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">Tính Năng Nổi Bật</h2>
+          <h2 className="text-3xl font-bold mb-4">{t('landing.features')}</h2>
           <div className="h-1 w-20 gold-gradient mx-auto rounded-full" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((f) => (
+          {featureKeys.map((f) => (
             <div
               key={f.icon}
               className="p-8 bg-surface-container rounded-2xl hover:bg-surface-container-high transition-all duration-300 border-b-2 border-transparent hover:border-secondary group"
@@ -153,8 +159,8 @@ function FeaturesGrid() {
               <div className="w-14 h-14 rounded-xl bg-primary-container flex items-center justify-center text-secondary mb-6 group-hover:scale-110 transition-transform">
                 <span className="material-symbols-outlined text-3xl">{f.icon}</span>
               </div>
-              <h3 className="text-xl font-bold mb-3">{f.title}</h3>
-              <p className="text-on-surface-variant">{f.desc}</p>
+              <h3 className="text-xl font-bold mb-3">{t(f.titleKey)}</h3>
+              <p className="text-on-surface-variant">{t(f.descKey)}</p>
             </div>
           ))}
         </div>
@@ -166,23 +172,24 @@ function FeaturesGrid() {
 /* ────────────────────────────── Try Now Section ─────────────────────────── */
 
 function TryNowSection() {
+  const { t } = useTranslation()
   return (
     <section className="py-24 px-6" aria-label="Trải nghiệm thử thách">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* Left info */}
         <div>
-          <h2 className="text-4xl font-bold mb-6">Trải Nghiệm Trắc Nghiệm Kinh Thánh</h2>
+          <h2 className="text-4xl font-bold mb-6">{t('landing.tryChallenge')}</h2>
           <p className="text-lg text-on-surface-variant mb-10 leading-relaxed">
-            Không cần đăng ký, bạn có thể bắt đầu ngay bây giờ với các thử thách nhanh để kiểm tra kiến thức Kinh Thánh của mình.
+            {t('landing.tryChallengeDesc')}
           </p>
 
           <div className="space-y-6">
             <div className="flex items-start gap-4 p-6 bg-surface-container rounded-2xl border-l-4 border-secondary">
               <span className="material-symbols-outlined text-secondary text-3xl mt-1">verified</span>
               <div>
-                <h3 className="font-bold text-lg mb-1">Cập Nhật Thường Xuyên</h3>
+                <h3 className="font-bold text-lg mb-1">{t('landing.updatedRegularly')}</h3>
                 <p className="text-on-surface-variant text-sm">
-                  Hơn 5000+ câu hỏi được biên soạn kỹ lưỡng từ các mục sư và giáo sư thần học.
+                  {t('landing.updatedRegularlyDesc')}
                 </p>
               </div>
             </div>
@@ -190,9 +197,9 @@ function TryNowSection() {
             <div className="flex items-start gap-4 p-6 bg-surface-container rounded-2xl border-l-4 border-primary">
               <span className="material-symbols-outlined text-primary text-3xl mt-1">devices</span>
               <div>
-                <h3 className="font-bold text-lg mb-1">Đa Nền Tảng</h3>
+                <h3 className="font-bold text-lg mb-1">{t('landing.multiPlatform')}</h3>
                 <p className="text-on-surface-variant text-sm">
-                  Học trên web, máy tính bảng hoặc ứng dụng di động mọi lúc mọi nơi.
+                  {t('landing.multiPlatformDesc')}
                 </p>
               </div>
             </div>
@@ -205,12 +212,12 @@ function TryNowSection() {
           <div className="bg-surface-container-high p-8 rounded-3xl relative overflow-hidden group border border-outline-variant/10">
             <div className="absolute top-0 right-0 p-4">
               <span className="px-3 py-1 bg-secondary/20 text-secondary text-xs font-bold rounded-full">
-                POPULAR
+                {t('landing.popular')}
               </span>
             </div>
-            <h3 className="text-2xl font-bold mb-2">Thử Thách Hằng Ngày</h3>
+            <h3 className="text-2xl font-bold mb-2">{t('landing.dailyChallenge')}</h3>
             <p className="text-on-surface-variant mb-6">
-              5 câu hỏi - 5 phút. Nội dung trọng tâm về các sự kiện trong tuần.
+              {t('landing.dailyChallengeDesc')}
             </p>
             <div className="flex items-center justify-between">
               <div className="flex -space-x-2">
@@ -222,22 +229,22 @@ function TryNowSection() {
                 to="/daily"
                 className="gold-gradient px-6 py-3 rounded-xl text-on-secondary font-bold active:scale-95 transition-transform inline-block"
               >
-                Thử Thách Ngay
+                {t('gameModes.dailyBtn')}
               </Link>
             </div>
           </div>
 
           {/* Quick Practice Card */}
           <div className="bg-surface-container p-8 rounded-3xl border border-outline-variant/10 hover:bg-surface-container-high transition-colors">
-            <h3 className="text-2xl font-bold mb-2">Luyện Tập Nhanh</h3>
+            <h3 className="text-2xl font-bold mb-2">{t('landing.quickPractice')}</h3>
             <p className="text-on-surface-variant mb-6">
-              Thử 10 câu ngẫu nhiên từ toàn bộ kho dữ liệu Kinh Thánh.
+              {t('landing.quickPracticeDesc')}
             </p>
             <Link
               to="/practice"
               className="block w-full py-4 rounded-xl border border-secondary text-secondary font-bold hover:bg-secondary/10 transition-all active:scale-95 text-center"
             >
-              Bắt Đầu
+              {t('common.startNow')}
             </Link>
           </div>
         </div>
@@ -249,28 +256,29 @@ function TryNowSection() {
 /* ────────────────────────────── Leaderboard Preview ─────────────────────── */
 
 const leaderboardData = [
-  { rank: '01', initials: 'AN', name: 'Nguyễn Văn An', xp: '24,500', title: 'Sứ Giả', top: true },
-  { rank: '02', initials: 'LH', name: 'Lê Hồng Hạnh', xp: '21,200', title: 'Trưởng Lão', top: false },
-  { rank: '03', initials: 'TM', name: 'Trần Minh', xp: '19,850', title: 'Chấp Sự', top: false },
-  { rank: '10', initials: 'DP', name: 'Đặng Phương', xp: '12,400', title: 'Môn Đồ', top: false },
+  { rank: '01', initials: 'AN', name: 'Nguyễn Văn An', xp: '24,500', titleKey: 'tiers.glory', top: true },
+  { rank: '02', initials: 'LH', name: 'Lê Hồng Hạnh', xp: '21,200', titleKey: 'tiers.star', top: false },
+  { rank: '03', initials: 'TM', name: 'Trần Minh', xp: '19,850', titleKey: 'tiers.flame', top: false },
+  { rank: '10', initials: 'DP', name: 'Đặng Phương', xp: '12,400', titleKey: 'tiers.lamp', top: false },
 ]
 
 function LeaderboardPreview() {
+  const { t } = useTranslation()
   return (
     <section className="py-24 px-6 bg-surface-container-lowest" aria-label="Bảng xếp hạng">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-block px-6 py-2 rounded-full gold-gradient text-on-secondary font-extrabold text-lg mb-6 shadow-xl shadow-secondary/10">
-            MÙA PHỤC SINH 2025
+            {import.meta.env.VITE_SEASON_NAME || t('landing.seasonDefault')}
           </div>
-          <h2 className="text-4xl font-extrabold tracking-tight">Bảng Xếp Hạng Toàn Quốc</h2>
+          <h2 className="text-4xl font-extrabold tracking-tight">{t('landing.nationalLeaderboard')}</h2>
         </div>
 
         <div className="bg-surface-container rounded-[2rem] overflow-hidden border border-outline-variant/15 shadow-2xl">
           {/* Header row */}
           <div className="grid grid-cols-12 px-8 py-4 bg-surface-container-high text-xs font-bold text-on-surface-variant uppercase tracking-widest">
-            <div className="col-span-2">Hạng</div>
-            <div className="col-span-6">Chiến Binh</div>
+            <div className="col-span-2">{t('landing.rank')}</div>
+            <div className="col-span-6">{t('landing.warrior')}</div>
             <div className="col-span-2">XP</div>
             <div className="col-span-2 text-right">Danh Hiệu</div>
           </div>
@@ -306,7 +314,7 @@ function LeaderboardPreview() {
                       entry.top ? 'text-secondary' : idx < 3 ? 'text-primary' : 'text-on-surface-variant'
                     }`}
                   >
-                    {entry.title}
+                    {t(entry.titleKey)}
                   </div>
                 </div>
 
@@ -326,6 +334,7 @@ function LeaderboardPreview() {
 /* ────────────────────────────── Church Group Showcase ────────────────────── */
 
 function ChurchGroupShowcase() {
+  const { t } = useTranslation()
   return (
     <section className="py-24 px-6 relative" aria-label="Nhóm hội thánh">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
@@ -343,7 +352,7 @@ function ChurchGroupShowcase() {
 
           {/* Floating stats */}
           <div className="absolute top-10 -right-8 glass-card p-6 rounded-2xl shadow-xl z-20 border border-white/10 hidden md:block">
-            <div className="text-sm font-bold text-secondary mb-4 uppercase tracking-widest">Team Progress</div>
+            <div className="text-sm font-bold text-secondary mb-4 uppercase tracking-widest">{t('landing.teamProgress')}</div>
             <div className="space-y-3">
               <div className="h-2 w-48 bg-surface-container-highest rounded-full overflow-hidden">
                 <div className="h-full w-[75%] gold-gradient" />
@@ -357,23 +366,23 @@ function ChurchGroupShowcase() {
 
         {/* Text + features */}
         <div className="order-1 lg:order-2 space-y-8">
-          <h2 className="text-4xl font-bold leading-tight">Gắn Kết Cộng Đồng Hội Thánh Của Bạn</h2>
+          <h2 className="text-4xl font-bold leading-tight">{t('landing.churchGroup')}</h2>
           <p className="text-lg text-on-surface-variant leading-relaxed">
-            Tạo không gian học tập riêng cho Hội Thánh, ban ngành hoặc nhóm nhỏ của bạn. Theo dõi tiến độ và khích lệ nhau mỗi ngày.
+            {t('landing.churchGroupDesc')}
           </p>
 
           <ul className="space-y-4">
             <li className="flex items-center gap-3">
               <span className="material-symbols-outlined text-secondary">qr_code_2</span>
-              <span className="text-on-surface font-medium">Tham gia nhanh qua mã QR cho từng nhóm</span>
+              <span className="text-on-surface font-medium">{t('landing.qrJoin')}</span>
             </li>
             <li className="flex items-center gap-3">
               <span className="material-symbols-outlined text-secondary">analytics</span>
-              <span className="text-on-surface font-medium">Báo cáo tiến độ học tập hàng tuần của thành viên</span>
+              <span className="text-on-surface font-medium">{t('landing.weeklyReport')}</span>
             </li>
             <li className="flex items-center gap-3">
               <span className="material-symbols-outlined text-secondary">emoji_events</span>
-              <span className="text-on-surface font-medium">Tự tổ chức các giải đấu nội bộ theo chủ đề</span>
+              <span className="text-on-surface font-medium">{t('landing.internalTournament')}</span>
             </li>
           </ul>
 
@@ -381,7 +390,7 @@ function ChurchGroupShowcase() {
             to="/groups"
             className="gold-gradient px-8 py-4 rounded-xl text-on-secondary font-bold text-lg active:scale-95 transition-transform shadow-xl shadow-secondary/10 inline-block"
           >
-            Tạo Nhóm Miễn Phí
+            {t('landing.createFreeGroup')}
           </Link>
         </div>
       </div>
@@ -392,6 +401,7 @@ function ChurchGroupShowcase() {
 /* ────────────────────────────── Daily Verse ──────────────────────────────── */
 
 function DailyVerse() {
+  const { t } = useTranslation()
   return (
     <section className="py-24 px-6 bg-surface-container-low" aria-label="Câu Kinh Thánh mỗi ngày">
       <div className="max-w-4xl mx-auto text-center">
@@ -401,9 +411,9 @@ function DailyVerse() {
             format_quote
           </span>
           <blockquote className="text-3xl md:text-4xl font-light italic leading-relaxed text-on-surface mb-8">
-            &ldquo;Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi.&rdquo;
+            &ldquo;{t('landing.verseText')}&rdquo;
           </blockquote>
-          <cite className="text-xl font-bold text-secondary not-italic">— Thi Thiên 119:105</cite>
+          <cite className="text-xl font-bold text-secondary not-italic">{t('landing.verseRef')}</cite>
         </div>
       </div>
     </section>
@@ -413,6 +423,7 @@ function DailyVerse() {
 /* ────────────────────────────── Footer CTA ───────────────────────────────── */
 
 function FooterCTA() {
+  const { t } = useTranslation()
   const handleGoogleSignup = () => {
     window.location.href = `${import.meta.env.VITE_API_URL || ''}/oauth2/authorization/google`
   }
@@ -422,10 +433,10 @@ function FooterCTA() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-surface to-primary-container/20" />
       <div className="max-w-2xl mx-auto space-y-10">
         <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-          Sẵn sàng khám phá Lời Chúa?
+          {t('landing.readyToExplore')}
         </h2>
         <p className="text-on-surface-variant text-lg">
-          Gia nhập cộng đồng hơn 50,000 người đang học Kinh Thánh mỗi ngày.
+          {t('landing.joinCommunity')}
         </p>
         <div className="flex flex-col items-center gap-4">
           <button
@@ -440,10 +451,10 @@ function FooterCTA() {
               className="w-6 h-6"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcJIraLBnXjAOS0EXUCIC2rsomKCPxGvpBNYCmt4hQSQzzTt3HaTfkiLVJf9Wgb_lImqBmvVodHASMpqGU5bh1M6pMBhnDWC4ACT6pdtz__gRW5ca7GOmAoVj9qqJAfvRUSwIg27rDceLWagSU29hiYRkHKoVLfsohGVdXJWj01Kae2VDprsg2QNIbxhKzQTIsCspOQnwjByjN_-TX-4TvnQUGIy7hPsg0H5mcnRNMACynXMRatZ3R8cLaWiPG4q6Qko0ODPnYMLE"
             />
-            Đăng Ký Miễn Phí với Google
+            {t('auth.loginWithGoogle')}
           </button>
           <p className="text-sm text-on-surface-variant/60">
-            Hoàn toàn miễn phí. Không quảng cáo. Không giới hạn.
+            {t('auth.freeNoAds')}
           </p>
         </div>
       </div>
@@ -454,12 +465,13 @@ function FooterCTA() {
 /* ────────────────────────────── Footer ───────────────────────────────────── */
 
 function Footer() {
+  const { t } = useTranslation()
   return (
     <footer className="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 bg-[#11131e] border-t border-[#46464d]/15">
       <div className="flex flex-col items-center md:items-start gap-2">
         <div className="text-lg font-bold text-[#f8bd45]">BibleQuiz</div>
         <p className="font-be-vietnam-pro text-sm leading-relaxed text-[#e1e1f1]/75">
-          &copy; 2024 BibleQuiz. The Sacred Modernist Path.
+          {t('landing.copyright')}
         </p>
       </div>
       <div className="flex gap-8">

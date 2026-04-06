@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, useRef } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useStomp } from '../hooks/useStomp';
 
 type Player = {
@@ -38,6 +39,7 @@ const QUICK_EMOJIS = ['🙏', '🔥', '🙌', '💡', '✨'];
 const myUsername = () => localStorage.getItem('userName') ?? '';
 
 const RoomLobby: React.FC = () => {
+  const { t } = useTranslation();
   const { roomId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -99,9 +101,9 @@ const RoomLobby: React.FC = () => {
       });
       const data = await res.json();
       if (data.success) setRoom(data.room);
-      else setError(data.message || 'Không lấy được thông tin phòng');
+      else setError(data.message || t('room.errorFetchRoom'));
     } catch {
-      setError('Lỗi mạng khi tải thông tin phòng');
+      setError(t('room.errorNetwork'));
     }
   };
 
@@ -127,7 +129,7 @@ const RoomLobby: React.FC = () => {
       });
       send(`/app/room/${roomId}/start`, {});
     } catch {
-      setError('Không thể bắt đầu phòng. Vui lòng thử lại.');
+      setError(t('room.errorStartRoom'));
     }
   };
 
@@ -142,7 +144,7 @@ const RoomLobby: React.FC = () => {
       const data = await res.json();
       if (data.success) setRoom(data.room);
     } catch {
-      setError('Không thể đổi đội');
+      setError(t('room.errorSwitchTeam'));
     } finally {
       setSwitchingTeam(false);
     }
@@ -190,7 +192,7 @@ const RoomLobby: React.FC = () => {
       <div className="min-h-screen bg-surface-dim flex items-center justify-center">
         <div className="text-center">
           <div className="text-8xl font-bold text-secondary animate-bounce-in">{countdown}</div>
-          <p className="text-xl text-on-surface-variant mt-4">Trò chơi bắt đầu!</p>
+          <p className="text-xl text-on-surface-variant mt-4">{t('room.gameStarting')}</p>
         </div>
       </div>
     );
@@ -203,7 +205,7 @@ const RoomLobby: React.FC = () => {
         <span className="material-symbols-outlined text-error text-5xl">error</span>
         <p className="text-error text-lg">{error}</p>
         <button onClick={() => navigate('/multiplayer')} className="text-secondary underline text-sm">
-          Quay lại
+          {t('common.back')}
         </button>
       </div>
     </div>
@@ -212,7 +214,7 @@ const RoomLobby: React.FC = () => {
   /* ---------- Loading state ---------- */
   if (!room) return (
     <div className="min-h-screen bg-surface-dim flex items-center justify-center">
-      <p className="text-on-surface-variant animate-pulse text-lg">Đang tải phòng...</p>
+      <p className="text-on-surface-variant animate-pulse text-lg">{t('room.loadingRoom')}</p>
     </div>
   );
 
@@ -222,7 +224,7 @@ const RoomLobby: React.FC = () => {
       {reconnecting && (
         <div className="fixed top-0 left-0 right-0 z-[60] bg-error-container/90 text-on-error-container text-center py-2 text-sm font-medium">
           <span className="material-symbols-outlined text-sm align-middle mr-1">wifi_off</span>
-          Mất kết nối, đang kết nối lại...
+          {t('room.reconnecting')}
         </div>
       )}
 
@@ -230,7 +232,7 @@ const RoomLobby: React.FC = () => {
       <header className="bg-surface-container sticky top-0 z-50">
         <div className="flex justify-between items-center w-full px-6 py-4 max-w-[900px] mx-auto">
           <h1 className="text-xl font-bold tracking-tighter text-secondary uppercase">
-            BIBLE QUIZ LOBBY
+            {t('room.lobbyTitle')}
           </h1>
           <div className="flex items-center gap-3">
             {/* Connection status dot */}
@@ -239,13 +241,13 @@ const RoomLobby: React.FC = () => {
                 className={`w-2 h-2 rounded-full ${connected ? 'bg-emerald-400 animate-pulse' : 'bg-red-400'}`}
               />
               <span className="text-[10px] uppercase tracking-wider text-on-surface-variant/60 font-bold">
-                {connected ? 'Online' : 'Offline'}
+                {connected ? t('room.online') : t('room.offline')}
               </span>
             </div>
             <button
               onClick={handleCopyCode}
               className="hover:bg-surface-container-high transition-colors p-2 rounded-lg active:scale-95 active:duration-150"
-              title="Chia sẻ mã phòng"
+              title={t('room.shareRoomCode')}
             >
               <span className="material-symbols-outlined text-on-surface">share</span>
             </button>
@@ -266,7 +268,7 @@ const RoomLobby: React.FC = () => {
               <button
                 onClick={handleCopyCode}
                 className="text-on-surface-variant hover:text-secondary transition-colors"
-                title="Sao chép mã phòng"
+                title={t('room.copyRoomCode')}
               >
                 <span className="material-symbols-outlined">
                   {codeCopied ? 'check' : 'content_copy'}
@@ -280,12 +282,12 @@ const RoomLobby: React.FC = () => {
             <div className="flex items-center gap-3 bg-surface-container-high px-4 py-2 rounded-full border border-outline-variant/10">
               <div className="flex items-center gap-1.5 text-sm font-medium">
                 <span className="material-symbols-outlined text-xs text-secondary">list_alt</span>
-                <span>{room.questionCount} câu</span>
+                <span>{t('room.questionsCount', { count: room.questionCount })}</span>
               </div>
               <div className="w-1 h-1 rounded-full bg-outline-variant/30" />
               <div className="flex items-center gap-1.5 text-sm font-medium">
                 <span className="material-symbols-outlined text-xs text-secondary">timer</span>
-                <span>{room.timePerQuestion} giây/câu</span>
+                <span>{t('room.timePerQuestion', { count: room.timePerQuestion })}</span>
               </div>
               <div className="w-1 h-1 rounded-full bg-outline-variant/30" />
               <div className="flex items-center gap-1.5 text-sm font-medium">
@@ -295,7 +297,7 @@ const RoomLobby: React.FC = () => {
             </div>
             {/* Visibility badge */}
             <span className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/50 pr-2">
-              {room.isPublic ? '🌐 Công khai' : '🔒 Riêng tư'}
+              {room.isPublic ? `🌐 ${t('room.public')}` : `🔒 ${t('room.private')}`}
             </span>
           </div>
         </div>
@@ -311,28 +313,28 @@ const RoomLobby: React.FC = () => {
                 {/* Team A */}
                 <div>
                   <div className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3 flex items-center gap-2">
-                    🔵 TEAM A {myPlayer?.team === 'A' && <span className="text-on-surface-variant text-[10px]">(bạn)</span>}
+                    🔵 {t('room.teamA')} {myPlayer?.team === 'A' && <span className="text-on-surface-variant text-[10px]">({t('room.you')})</span>}
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     {teamAPlayers.map(p => (
-                      <PlayerCard key={p.id} player={p} hostId={room.hostId} />
+                      <PlayerCard key={p.id} player={p} hostId={room.hostId} t={t} />
                     ))}
                     {teamAPlayers.length === 0 && (
-                      <EmptySlot />
+                      <EmptySlot t={t} />
                     )}
                   </div>
                 </div>
                 {/* Team B */}
                 <div>
                   <div className="text-xs font-bold uppercase tracking-widest text-red-400 mb-3 flex items-center gap-2">
-                    🔴 TEAM B {myPlayer?.team === 'B' && <span className="text-on-surface-variant text-[10px]">(bạn)</span>}
+                    🔴 {t('room.teamB')} {myPlayer?.team === 'B' && <span className="text-on-surface-variant text-[10px]">({t('room.you')})</span>}
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     {teamBPlayers.map(p => (
-                      <PlayerCard key={p.id} player={p} hostId={room.hostId} />
+                      <PlayerCard key={p.id} player={p} hostId={room.hostId} t={t} />
                     ))}
                     {teamBPlayers.length === 0 && (
-                      <EmptySlot />
+                      <EmptySlot t={t} />
                     )}
                   </div>
                 </div>
@@ -343,7 +345,7 @@ const RoomLobby: React.FC = () => {
                     className="text-xs text-secondary border border-secondary/30 px-4 py-2 rounded-lg hover:bg-secondary/10 transition-colors disabled:opacity-50"
                   >
                     <span className="material-symbols-outlined text-sm align-middle mr-1">swap_horiz</span>
-                    Đổi đội
+                    {t('room.switchTeam')}
                   </button>
                 )}
               </div>
@@ -351,7 +353,7 @@ const RoomLobby: React.FC = () => {
               /* Sudden Death layout */
               <div>
                 <div className="text-xs font-bold uppercase tracking-widest text-secondary mb-4">
-                  👑 Thứ tự thi đấu (King of the Hill)
+                  👑 {t('room.battleOrder')}
                 </div>
                 <div className="space-y-3">
                   {room.players.map((p, idx) => (
@@ -368,10 +370,10 @@ const RoomLobby: React.FC = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-bold text-on-surface truncate">
-                          {p.username}{p.username === myUsername() ? ' (bạn)' : ''}
+                          {p.username}{p.username === myUsername() ? ` (${t('room.you')})` : ''}
                         </p>
                         <span className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">
-                          {idx === 0 ? 'Giữ ghế nóng' : idx === 1 ? 'Challenger' : 'Đang chờ'}
+                          {idx === 0 ? t('room.hotSeat') : idx === 1 ? t('room.challenger') : t('room.waiting')}
                         </span>
                       </div>
                       {p.userId === room.hostId && (
@@ -391,11 +393,11 @@ const RoomLobby: React.FC = () => {
               /* Default grid layout */
               <div className="grid grid-cols-2 gap-4">
                 {room.players.map((p) => (
-                  <PlayerCard key={p.id} player={p} hostId={room.hostId} />
+                  <PlayerCard key={p.id} player={p} hostId={room.hostId} t={t} />
                 ))}
                 {/* Empty slots */}
                 {Array.from({ length: emptySlots }).map((_, i) => (
-                  <EmptySlot key={`empty-${i}`} />
+                  <EmptySlot key={`empty-${i}`} t={t} />
                 ))}
               </div>
             )}
@@ -406,14 +408,14 @@ const RoomLobby: React.FC = () => {
             {/* Chat Header */}
             <div className="p-4 border-b border-outline-variant/10 flex items-center gap-2">
               <span className="material-symbols-outlined text-secondary text-sm">forum</span>
-              <span className="text-xs font-bold uppercase tracking-widest text-on-surface">Trò chuyện</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-on-surface">{t('room.chat')}</span>
             </div>
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4 text-sm">
               {chatMessages.length === 0 && (
                 <p className="text-on-surface-variant/40 text-xs text-center italic mt-8">
-                  Chưa có tin nhắn nào...
+                  {t('room.noChatMessages')}
                 </p>
               )}
               {chatMessages.map((msg, i) => (
@@ -447,7 +449,7 @@ const RoomLobby: React.FC = () => {
               <div className="relative">
                 <input
                   className="w-full bg-surface-container-highest border-none rounded-xl py-2.5 pl-4 pr-10 text-sm focus:ring-1 focus:ring-secondary/50 placeholder:text-on-surface-variant/40 text-on-surface outline-none"
-                  placeholder="Nhắn tin..."
+                  placeholder={t('room.chatPlaceholder')}
                   type="text"
                   value={chatInput}
                   onChange={(e) => setChatInput(e.target.value)}
@@ -476,13 +478,13 @@ const RoomLobby: React.FC = () => {
             className="flex items-center gap-2 text-on-surface/80 hover:bg-error-container/20 hover:text-error transition-all px-6 py-3 rounded-xl border border-outline-variant/15 font-medium uppercase tracking-widest text-[11px] active:scale-[0.98] active:duration-100"
           >
             <span className="material-symbols-outlined text-sm">logout</span>
-            Rời phòng
+            {t('room.leaveRoom')}
           </button>
 
           {/* Center: Player Counter */}
           <div className="flex flex-col items-center">
             <div className="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant/60 mb-1">
-              {connected ? 'ĐANG KẾT NỐI' : 'MẤT KẾT NỐI'}
+              {connected ? t('room.connected') : t('room.disconnected')}
             </div>
             <div className="flex items-center gap-2">
               <span className={`w-2 h-2 rounded-full ${connected ? 'bg-emerald-400 animate-pulse' : 'bg-red-400'}`} />
@@ -506,7 +508,7 @@ const RoomLobby: React.FC = () => {
               <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>
                 {myPlayer?.isReady ? 'close' : 'check_circle'}
               </span>
-              {myPlayer?.isReady ? 'Hủy' : 'Sẵn sàng'}
+              {myPlayer?.isReady ? t('room.unready') : t('room.ready')}
             </button>
 
             {/* Start button (host only) */}
@@ -517,7 +519,7 @@ const RoomLobby: React.FC = () => {
                 className="gold-gradient flex items-center gap-2 text-surface-dim px-10 py-3 rounded-xl font-bold uppercase tracking-widest text-[11px] hover:opacity-90 transition-opacity active:scale-[0.98] active:duration-100 shadow-lg shadow-secondary/20 disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>play_arrow</span>
-                Bắt đầu
+                {t('room.startGame')}
               </button>
             )}
           </div>
@@ -528,7 +530,7 @@ const RoomLobby: React.FC = () => {
 };
 
 /* ── Player Card Component ── */
-const PlayerCard: React.FC<{ player: Player; hostId: string }> = ({ player, hostId }) => {
+const PlayerCard: React.FC<{ player: Player; hostId: string; t: (key: string) => string }> = ({ player, hostId, t }) => {
   const isHost = player.userId === hostId;
   const isMe = player.username === myUsername();
 
@@ -563,14 +565,14 @@ const PlayerCard: React.FC<{ player: Player; hostId: string }> = ({ player, host
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-1">
           <p className={`font-bold truncate ${player.isReady ? 'text-on-surface' : 'text-on-surface-variant'}`}>
-            {player.username}{isMe ? ' (bạn)' : ''}
+            {player.username}{isMe ? ` (${t('room.you')})` : ''}
           </p>
           {isHost && (
             <span className="material-symbols-outlined text-secondary text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>stars</span>
           )}
         </div>
         <span className={`text-[10px] font-bold uppercase tracking-wider ${isHost ? 'text-secondary/70' : 'text-on-surface-variant'}`}>
-          {isHost ? 'CHỦ PHÒNG' : (player.isReady ? 'SẴN SÀNG' : 'ĐANG CHỜ')}
+          {isHost ? t('room.hostLabel') : (player.isReady ? t('room.readyLabel') : t('room.waitingLabel'))}
         </span>
       </div>
 
@@ -586,12 +588,12 @@ const PlayerCard: React.FC<{ player: Player; hostId: string }> = ({ player, host
 };
 
 /* ── Empty Slot Component ── */
-const EmptySlot: React.FC = () => (
+const EmptySlot: React.FC<{ t: (key: string) => string }> = ({ t }) => (
   <div className="bg-surface-container-low border-2 border-dashed border-outline-variant/15 p-4 rounded-xl flex items-center justify-center gap-4 animate-pulse">
     <div className="w-14 h-14 rounded-full bg-outline-variant/10 flex items-center justify-center">
       <span className="material-symbols-outlined text-outline-variant/40">person_add</span>
     </div>
-    <span className="text-sm font-medium text-outline-variant/40 italic">Đang chờ...</span>
+    <span className="text-sm font-medium text-outline-variant/40 italic">{t('room.waitingSlot')}</span>
   </div>
 );
 

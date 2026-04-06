@@ -92,16 +92,16 @@ describe('Home Dashboard', () => {
       await waitFor(() => { expect(screen.getAllByText(/8,200/).length).toBeGreaterThan(0) })
     })
 
-    it('displays current tier (Môn Đồ)', async () => {
+    it('displays current tier (tiers.disciple fallback key)', async () => {
       renderHome()
-      await waitFor(() => { expect(screen.getAllByText('Môn Đồ').length).toBeGreaterThan(0) })
+      await waitFor(() => { expect(screen.getAllByText('tiers.disciple').length).toBeGreaterThan(0) })
     })
 
-    it('displays next rank preview (Hiền Triết)', async () => {
+    it('displays next rank preview (Bậc Thầy)', async () => {
       renderHome()
       await waitFor(() => {
         expect(screen.getByText('Hạng kế tiếp')).toBeInTheDocument()
-        expect(screen.getAllByText('Hiền Triết').length).toBeGreaterThanOrEqual(1)
+        expect(screen.getAllByText('Bậc Thầy').length).toBeGreaterThanOrEqual(1)
       })
     })
 
@@ -151,7 +151,7 @@ describe('Home Dashboard', () => {
       renderHome()
       await waitFor(() => {
         expect(screen.getByText('Chế độ chơi')).toBeInTheDocument()
-        expect(screen.getByText('Khám phá 6 chế độ')).toBeInTheDocument()
+        expect(screen.getByText('KHÁM PHÁ 6 CHẾ ĐỘ')).toBeInTheDocument()
       })
     })
   })

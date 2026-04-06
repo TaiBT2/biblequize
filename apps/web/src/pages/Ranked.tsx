@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
+import { getQuizLanguage } from '../utils/quizLanguage'
 import { useAuth } from '../store/authStore'
 import { useRankedDataSync } from '../hooks/useRankedDataSync'
 
@@ -34,12 +36,12 @@ interface RankedStatus {
 
 /* ── Tier System (SPEC-v2 section 2.1) ── */
 const TIERS = [
-  { name: 'Tân Tín Hữu', icon: 'spa', color: '#919098', minPoints: 0 },
-  { name: 'Người Tìm Kiếm', icon: 'eco', color: '#4ade80', minPoints: 1_000 },
-  { name: 'Môn Đồ', icon: 'scrollable_header', color: '#4a9eff', minPoints: 5_000 },
-  { name: 'Hiền Triết', icon: 'lightbulb', color: '#9b59b6', minPoints: 15_000 },
-  { name: 'Tiên Tri', icon: 'local_fire_department', color: '#f8bd45', minPoints: 40_000 },
-  { name: 'Sứ Đồ', icon: 'workspace_premium', color: '#ff6b6b', minPoints: 100_000 },
+  { nameKey: 'tiers.spark', icon: 'spa', color: '#919098', minPoints: 0 },
+  { nameKey: 'tiers.seeker', icon: 'eco', color: '#4ade80', minPoints: 1_000 },
+  { nameKey: 'tiers.disciple', icon: 'scrollable_header', color: '#4a9eff', minPoints: 5_000 },
+  { nameKey: 'tiers.sage', icon: 'lightbulb', color: '#9b59b6', minPoints: 15_000 },
+  { nameKey: 'tiers.prophet', icon: 'local_fire_department', color: '#f8bd45', minPoints: 40_000 },
+  { nameKey: 'tiers.apostle', icon: 'workspace_premium', color: '#ff6b6b', minPoints: 100_000 },
 ]
 
 function getCurrentTier(points: number) {
@@ -68,6 +70,7 @@ function RankedSkeleton() {
 
 /* ── Main ── */
 export default function Ranked() {
+  const { t } = useTranslation()
   const [rankedStatus, setRankedStatus] = useState<RankedStatus | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
@@ -138,7 +141,7 @@ export default function Ranked() {
 
   const startRankedQuiz = async () => {
     try {
-      const res = await api.post('/api/ranked/sessions')
+      const res = await api.post('/api/ranked/sessions', { language: getQuizLanguage() })
       const sessionId = res.data.sessionId
       const serverAskedIds: string[] = rankedStatus?.askedQuestionIdsToday ?? []
       const localAskedIds: string[] = (() => { try { return JSON.parse(localStorage.getItem('askedQuestionIds') || '[]') } catch { return [] } })()
@@ -169,7 +172,7 @@ export default function Ranked() {
 
       navigate('/quiz', { state: { sessionId, mode: 'ranked', questions, showExplanation: false, isRanked: true } })
     } catch {
-      alert('Không thể bắt đầu xếp hạng, vui lòng thử lại')
+      alert(t('ranked.cannotStart'))
     }
   }
 
@@ -182,10 +185,10 @@ export default function Ranked() {
       <div className="flex items-center justify-center py-32">
         <div className="bg-surface-container p-10 rounded-2xl text-center max-w-md">
           <span className="material-symbols-outlined text-error text-5xl mb-4 block">error</span>
-          <p className="text-on-surface font-bold text-lg mb-2">Không thể tải trạng thái xếp hạng</p>
-          <p className="text-on-surface-variant text-sm mb-6">Vui lòng thử lại sau.</p>
+          <p className="text-on-surface font-bold text-lg mb-2">{t('ranked.loadError')}</p>
+          <p className="text-on-surface-variant text-sm mb-6">{t('ranked.tryAgainLater')}</p>
           <button onClick={fetchStatus} className="gold-gradient text-on-secondary font-black px-8 py-3 rounded-xl text-sm uppercase tracking-widest">
-            Thử lại
+            {t('common.retry')}
           </button>
         </div>
       </div>
@@ -198,23 +201,23 @@ export default function Ranked() {
   const totalPoints = userRank?.points ?? rankedStatus.pointsToday ?? 0
   const currentTier = getCurrentTier(totalPoints)
   const bookPct = rankedStatus.bookProgress?.progressPercentage ?? 0
-  const difficultyLabel = rankedStatus.currentDifficulty === 'all' ? 'Hỗn hợp'
-    : rankedStatus.currentDifficulty === 'easy' ? 'Dễ'
-    : rankedStatus.currentDifficulty === 'medium' ? 'Trung bình'
-    : rankedStatus.currentDifficulty === 'hard' ? 'Khó' : rankedStatus.currentDifficulty
+  const difficultyLabel = rankedStatus.currentDifficulty === 'all' ? t('practice.mixed')
+    : rankedStatus.currentDifficulty === 'easy' ? t('practice.easy')
+    : rankedStatus.currentDifficulty === 'medium' ? t('practice.medium')
+    : rankedStatus.currentDifficulty === 'hard' ? t('practice.hard') : rankedStatus.currentDifficulty
 
   return (
     <main className="max-w-5xl mx-auto space-y-6">
       {/* ── Header ── */}
       <header className="mb-4">
         <h1 className="text-4xl font-extrabold tracking-tight mb-2 flex items-center gap-3">
-          <span>⚔️ Xếp hạng</span>
+          <span>{t('ranked.title')}</span>
         </h1>
         <div className="flex items-center gap-2">
           <div className="flex items-center justify-center w-8 h-8 rounded-full bg-secondary/10 text-secondary border border-secondary/20 shadow-[0_0_15px_rgba(248,189,69,0.15)]">
             <span className="material-symbols-outlined text-lg" style={{ ...FILL_1, color: currentTier.color }}>{currentTier.icon}</span>
           </div>
-          <span className="font-bold text-lg tracking-wide uppercase" style={{ color: currentTier.color }}>{currentTier.name}</span>
+          <span className="font-bold text-lg tracking-wide uppercase" style={{ color: currentTier.color }}>{t(currentTier.nameKey)}</span>
         </div>
       </header>
 
@@ -227,7 +230,7 @@ export default function Ranked() {
           <div>
             <div className="flex items-center gap-2 text-on-surface-variant uppercase text-xs font-bold tracking-widest mb-1">
               <span className="material-symbols-outlined text-sm">bolt</span>
-              Năng lượng
+              {t('ranked.energy')}
             </div>
             <div className="text-4xl font-black text-on-surface">
               {rankedStatus.livesRemaining}<span className="text-on-surface-variant text-xl font-normal">/{rankedStatus.dailyLives}</span>
@@ -236,7 +239,7 @@ export default function Ranked() {
           <div className="text-right">
             <div className="flex items-center gap-1 text-on-surface-variant text-sm font-medium">
               <span className="material-symbols-outlined text-sm">schedule</span>
-              Phục hồi: {timeLeft || '--:--:--'}
+              {t('ranked.recovery')}: {timeLeft || '--:--:--'}
             </div>
           </div>
         </div>
@@ -251,22 +254,22 @@ export default function Ranked() {
         <section className="lg:col-span-7 glass-card rounded-xl p-6 border border-white/5 min-h-[180px]">
           <h3 className="text-sm font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2 mb-6">
             <span className="material-symbols-outlined text-sm">leaderboard</span>
-            Hôm nay
+            {t('ranked.today')}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             <div>
-              <div className="text-on-surface-variant text-xs mb-1">Câu đã tính</div>
+              <div className="text-on-surface-variant text-xs mb-1">{t('ranked.questionsCounted')}</div>
               <div className="font-bold text-on-surface mb-2">{rankedStatus.questionsCounted}<span className="text-on-surface-variant font-normal">/{rankedStatus.cap}</span></div>
               <div className="h-1 w-full bg-primary-container rounded-full overflow-hidden">
                 <div className="h-full bg-secondary/60 rounded-full" style={{ width: `${rankedStatus.cap > 0 ? (rankedStatus.questionsCounted / rankedStatus.cap) * 100 : 0}%` }} />
               </div>
             </div>
             <div className="flex flex-col items-center justify-center border-l border-r border-outline-variant/10">
-              <div className="text-on-surface-variant text-xs mb-1">Điểm hôm nay</div>
+              <div className="text-on-surface-variant text-xs mb-1">{t('ranked.pointsToday')}</div>
               <div className="text-4xl font-black text-secondary">{rankedStatus.pointsToday ?? 0}</div>
             </div>
             <div className="flex flex-col items-end justify-center">
-              <div className="text-on-surface-variant text-xs mb-1">Xếp hạng</div>
+              <div className="text-on-surface-variant text-xs mb-1">{t('ranked.ranking')}</div>
               <div className="text-xl font-bold text-on-surface flex items-center gap-2">
                 <span>#{userRank?.rank ?? '—'}</span>
               </div>
@@ -279,13 +282,13 @@ export default function Ranked() {
           <div className="absolute -left-1 top-6 w-1 h-12 bg-secondary rounded-full shadow-[0_0_10px_rgba(248,189,69,0.5)]" />
           <h3 className="text-sm font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2 mb-4">
             <span className="material-symbols-outlined text-sm">menu_book</span>
-            Đang chơi
+            {t('ranked.currentlyPlaying')}
           </h3>
           <div className="flex justify-between items-start mb-4">
             <div>
               <h4 className="text-3xl font-black text-on-surface tracking-tight">{rankedStatus.currentBook}</h4>
               <p className="text-sm text-on-surface-variant">
-                {rankedStatus.bookProgress ? `Sách thứ ${rankedStatus.bookProgress.currentIndex + 1}/${rankedStatus.bookProgress.totalBooks}` : ''}
+                {rankedStatus.bookProgress ? t('ranked.bookOf', { current: rankedStatus.bookProgress.currentIndex + 1, total: rankedStatus.bookProgress.totalBooks }) : ''}
               </p>
             </div>
             <span className="bg-surface-container-high text-secondary text-[10px] font-bold px-3 py-1 rounded-full border border-secondary/20 uppercase tracking-tighter">
@@ -306,22 +309,22 @@ export default function Ranked() {
         <div className="w-full md:w-1/3 text-center md:text-left">
           <h3 className="text-sm font-bold text-on-surface-variant uppercase tracking-widest flex items-center justify-center md:justify-start gap-2 mb-4">
             <span className="material-symbols-outlined text-sm">emoji_events</span>
-            Mùa giải
+            {t('ranked.season')}
           </h3>
           <div className="text-6xl font-black text-secondary mb-2">#{userRank?.rank ?? '—'}</div>
-          <div className="text-on-surface font-medium">{totalPoints.toLocaleString()} điểm</div>
+          <div className="text-on-surface font-medium">{totalPoints.toLocaleString()} {t('ranked.points')}</div>
         </div>
         <div className="w-full md:w-2/3 space-y-4">
           <div className="flex justify-between items-center text-sm">
-            <span className="text-on-surface font-bold">Tiến trình mùa giải</span>
-            <span className="text-on-surface-variant italic">Reset: {timeLeft || '--:--:--'}</span>
+            <span className="text-on-surface font-bold">{t('ranked.seasonProgress')}</span>
+            <span className="text-on-surface-variant italic">{t('ranked.reset')}: {timeLeft || '--:--:--'}</span>
           </div>
           <div className="h-4 w-full bg-primary-container rounded-full overflow-hidden p-1">
             <div className="h-full gold-gradient rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]" style={{ width: '65%' }} />
           </div>
           <div className="flex justify-between text-[10px] uppercase font-bold tracking-widest text-on-surface-variant/60">
-            <span>Bắt đầu</span>
-            <span>Đỉnh cao</span>
+            <span>{t('ranked.start')}</span>
+            <span>{t('ranked.peak')}</span>
           </div>
         </div>
       </section>
@@ -334,12 +337,12 @@ export default function Ranked() {
             className="w-full gold-gradient text-on-secondary font-black py-5 rounded-xl text-xl uppercase tracking-widest shadow-[0_8px_30px_rgb(248,189,69,0.3)] active:scale-[0.98] transition-transform flex items-center justify-center gap-4"
           >
             <span className="material-symbols-outlined" style={FILL_1}>play_arrow</span>
-            Bắt đầu
+            {t('gameModes.rankedBtn')}
           </button>
         ) : (
           <div className="w-full bg-surface-container-high text-on-surface-variant font-black py-5 rounded-xl text-xl uppercase tracking-widest flex items-center justify-center gap-4 opacity-60 cursor-not-allowed">
             <span className="material-symbols-outlined">block</span>
-            Hết năng lượng — Chờ phục hồi
+            {t('ranked.outOfEnergy')}
           </div>
         )}
       </div>

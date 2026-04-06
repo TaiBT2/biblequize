@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../store/authStore';
 import { api } from '../api/client';
 
@@ -9,17 +10,6 @@ interface Analytics {
   totalQuizzes: number;
   avgScore: number;
 }
-
-/* Mock data for weekly chart (same style as Groups.tsx) */
-const WEEKLY_CHART_DATA = [
-  { label: 'T2', height: '35%', opacity: 'opacity-60', tooltip: '12 thanh vien' },
-  { label: 'T3', height: '55%', opacity: 'opacity-70', tooltip: '18 thanh vien' },
-  { label: 'T4', height: '70%', opacity: 'opacity-80', tooltip: '23 thanh vien' },
-  { label: 'T5', height: '60%', opacity: 'opacity-75', tooltip: '20 thanh vien' },
-  { label: 'T6', height: '85%', opacity: 'opacity-90', tooltip: '28 thanh vien' },
-  { label: 'T7', height: '45%', opacity: 'opacity-65', tooltip: '15 thanh vien' },
-  { label: 'CN', height: '100%', opacity: 'opacity-100', tooltip: '33 thanh vien' },
-];
 
 /* Mock top contributors */
 const MOCK_TOP_CONTRIBUTORS = [
@@ -34,10 +24,22 @@ const GroupAnalytics: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
+  const { t } = useTranslation();
 
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
+  /* Mock data for weekly chart */
+  const WEEKLY_CHART_DATA = [
+    { label: t('groupAnalytics.dayMon'), height: '35%', opacity: 'opacity-60', tooltip: t('groupAnalytics.memberTooltip', { count: 12 }) },
+    { label: t('groupAnalytics.dayTue'), height: '55%', opacity: 'opacity-70', tooltip: t('groupAnalytics.memberTooltip', { count: 18 }) },
+    { label: t('groupAnalytics.dayWed'), height: '70%', opacity: 'opacity-80', tooltip: t('groupAnalytics.memberTooltip', { count: 23 }) },
+    { label: t('groupAnalytics.dayThu'), height: '60%', opacity: 'opacity-75', tooltip: t('groupAnalytics.memberTooltip', { count: 20 }) },
+    { label: t('groupAnalytics.dayFri'), height: '85%', opacity: 'opacity-90', tooltip: t('groupAnalytics.memberTooltip', { count: 28 }) },
+    { label: t('groupAnalytics.daySat'), height: '45%', opacity: 'opacity-65', tooltip: t('groupAnalytics.memberTooltip', { count: 15 }) },
+    { label: t('groupAnalytics.daySun'), height: '100%', opacity: 'opacity-100', tooltip: t('groupAnalytics.memberTooltip', { count: 33 }) },
+  ];
 
   const fetchAnalytics = useCallback(async () => {
     setLoading(true);
@@ -47,18 +49,18 @@ const GroupAnalytics: React.FC = () => {
       if (res.data.success) {
         setAnalytics(res.data.analytics || res.data);
       } else {
-        setError(res.data.message || 'Khong the tai du lieu');
+        setError(res.data.message || t('groupAnalytics.errorLoadData'));
       }
     } catch (err: any) {
       if (err.response?.status === 403) {
-        setError('Ban khong co quyen xem phan tich nhom nay');
+        setError(t('groupAnalytics.noPermission'));
       } else {
-        setError(err.response?.data?.message || 'Loi ket noi');
+        setError(err.response?.data?.message || t('groupAnalytics.connectionError'));
       }
     } finally {
       setLoading(false);
     }
-  }, [id]);
+  }, [id, t]);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -87,14 +89,14 @@ const GroupAnalytics: React.FC = () => {
               onClick={fetchAnalytics}
               className="px-6 py-3 bg-surface-container-high text-on-surface rounded-xl font-bold text-sm hover:bg-surface-bright transition-all"
             >
-              Thu lai
+              {t('common.retry')}
             </button>
             <button
               onClick={() => navigate(`/groups/${id}`)}
               className="px-6 py-3 bg-secondary/10 text-secondary rounded-xl font-bold text-sm hover:bg-secondary/20 transition-all flex items-center gap-2"
             >
               <span className="material-symbols-outlined text-[18px]">arrow_back</span>
-              Quay lai nhom
+              {t('groupAnalytics.backToGroup')}
             </button>
           </div>
         </div>
@@ -104,7 +106,7 @@ const GroupAnalytics: React.FC = () => {
 
   const statCards = [
     {
-      label: 'Tong Thanh Vien',
+      label: t('groupAnalytics.totalMembers'),
       value: analytics?.totalMembers ?? 0,
       icon: 'groups',
       color: 'secondary',
@@ -112,7 +114,7 @@ const GroupAnalytics: React.FC = () => {
       iconBg: 'bg-secondary/20 text-secondary',
     },
     {
-      label: 'Hoat Dong Tuan Nay',
+      label: t('groupAnalytics.activeThisWeek'),
       value: analytics?.activeToday ?? 0,
       icon: 'trending_up',
       color: 'primary',
@@ -120,7 +122,7 @@ const GroupAnalytics: React.FC = () => {
       iconBg: 'bg-primary/20 text-primary',
     },
     {
-      label: 'Tong XP',
+      label: t('groupAnalytics.totalXP'),
       value: analytics?.totalQuizzes ?? 0,
       icon: 'workspace_premium',
       color: 'tertiary',
@@ -128,7 +130,7 @@ const GroupAnalytics: React.FC = () => {
       iconBg: 'bg-tertiary/20 text-tertiary',
     },
     {
-      label: 'Diem Trung Binh',
+      label: t('groupAnalytics.avgScore'),
       value: analytics?.avgScore ?? 0,
       icon: 'analytics',
       color: 'error',
@@ -149,7 +151,7 @@ const GroupAnalytics: React.FC = () => {
             className="flex items-center gap-1 text-on-surface-variant text-xs font-bold tracking-wider uppercase mb-4 hover:text-secondary transition-colors"
           >
             <span className="material-symbols-outlined text-[14px]">arrow_back</span>
-            Quay lai nhom
+            {t('groupAnalytics.backToGroup')}
           </button>
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-2xl gold-gradient flex items-center justify-center shadow-lg">
@@ -157,10 +159,10 @@ const GroupAnalytics: React.FC = () => {
             </div>
             <div>
               <h1 className="text-3xl md:text-4xl font-black tracking-tight text-on-surface">
-                Thong Ke Nhom
+                {t('groupAnalytics.title')}
               </h1>
               <p className="text-sm text-on-surface-variant font-medium mt-1">
-                Phan tich chi tiet hoat dong nhom
+                {t('groupAnalytics.subtitle')}
               </p>
             </div>
           </div>
@@ -198,13 +200,13 @@ const GroupAnalytics: React.FC = () => {
           <div className="flex items-center justify-between mb-10">
             <h2 className="text-2xl font-black tracking-tight flex items-center gap-3">
               <span className="material-symbols-outlined text-secondary text-3xl">bar_chart</span>
-              Hoat Dong Trong Tuan
+              {t('groupAnalytics.weeklyActivity')}
             </h2>
             <div className="flex gap-4">
               <div className="flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-secondary" />
                 <span className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">
-                  Thanh vien
+                  {t('groupAnalytics.membersLabel')}
                 </span>
               </div>
             </div>
@@ -258,7 +260,7 @@ const GroupAnalytics: React.FC = () => {
           <div className="bg-surface-container rounded-[2.5rem] p-8 shadow-xl border border-white/5">
             <h3 className="font-black text-xl mb-6 flex items-center gap-2">
               <span className="material-symbols-outlined text-secondary">emoji_events</span>
-              Top Dong Gop Tuan Nay
+              {t('groupAnalytics.topContributors')}
             </h3>
             <div className="space-y-4">
               {MOCK_TOP_CONTRIBUTORS.map((contributor, i) => (
@@ -295,11 +297,11 @@ const GroupAnalytics: React.FC = () => {
           <div className="relative z-10">
             <h3 className="font-black text-xl mb-6 flex items-center gap-2">
               <span className="material-symbols-outlined text-secondary">monitoring</span>
-              Thanh Vien Hoat Dong
+              {t('groupAnalytics.activeMembers')}
             </h3>
             <div className="space-y-6">
               <div className="flex justify-between items-center">
-                <span className="text-sm text-on-surface-variant font-bold uppercase tracking-wider">Hom nay</span>
+                <span className="text-sm text-on-surface-variant font-bold uppercase tracking-wider">{t('groupAnalytics.today')}</span>
                 <span className="text-2xl font-black text-secondary">{analytics?.activeToday ?? 0}</span>
               </div>
               <div className="w-full h-3 bg-primary-container rounded-full overflow-hidden shadow-inner">
@@ -312,22 +314,30 @@ const GroupAnalytics: React.FC = () => {
               </div>
               <p className="text-xs text-on-surface-variant leading-relaxed font-medium">
                 {analytics?.totalMembers
-                  ? `${Math.round(((analytics?.activeToday ?? 0) / analytics.totalMembers) * 100)}% thanh vien dang hoat dong hom nay`
-                  : 'Chua co du lieu'}
+                  ? t('groupAnalytics.activeTodayPercent', { percent: Math.round(((analytics?.activeToday ?? 0) / analytics.totalMembers) * 100) })
+                  : t('groupAnalytics.noData')}
               </p>
               {/* Mini trend indicators */}
               <div className="flex gap-3 pt-2">
-                {['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'].map((day, i) => {
+                {[
+                  { key: 'dayMon', i: 0 },
+                  { key: 'dayTue', i: 1 },
+                  { key: 'dayWed', i: 2 },
+                  { key: 'dayThu', i: 3 },
+                  { key: 'dayFri', i: 4 },
+                  { key: 'daySat', i: 5 },
+                  { key: 'daySun', i: 6 },
+                ].map(({ key, i }) => {
                   const heights = [30, 50, 65, 55, 80, 40, 100];
                   return (
-                    <div key={day} className="flex-1 flex flex-col items-center gap-1">
+                    <div key={key} className="flex-1 flex flex-col items-center gap-1">
                       <div className="w-full h-16 bg-surface-container-low rounded-lg relative overflow-hidden">
                         <div
                           className="absolute bottom-0 w-full gold-gradient rounded-t-sm"
                           style={{ height: `${heights[i]}%` }}
                         />
                       </div>
-                      <span className="text-[9px] font-black text-on-surface-variant">{day}</span>
+                      <span className="text-[9px] font-black text-on-surface-variant">{t(`groupAnalytics.${key}`)}</span>
                     </div>
                   );
                 })}
@@ -342,7 +352,7 @@ const GroupAnalytics: React.FC = () => {
           <div className="relative z-10">
             <h3 className="font-black text-xl mb-6 flex items-center gap-2">
               <span className="material-symbols-outlined text-tertiary">task_alt</span>
-              Ti Le Hoan Thanh Quiz
+              {t('groupAnalytics.quizCompletionRate')}
             </h3>
             <div className="space-y-6">
               {/* Big percentage */}
@@ -366,7 +376,7 @@ const GroupAnalytics: React.FC = () => {
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-3xl font-black text-secondary">{analytics?.avgScore ?? 0}%</span>
-                    <span className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant">Trung binh</span>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant">{t('groupAnalytics.average')}</span>
                   </div>
                 </div>
               </div>
@@ -374,15 +384,15 @@ const GroupAnalytics: React.FC = () => {
               {/* Breakdown */}
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-on-surface-variant font-bold">Tong bai quiz</span>
+                  <span className="text-sm text-on-surface-variant font-bold">{t('groupAnalytics.totalQuizzes')}</span>
                   <span className="text-sm font-black text-on-surface">{analytics?.totalQuizzes ?? 0}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-on-surface-variant font-bold">Diem cao nhat</span>
+                  <span className="text-sm text-on-surface-variant font-bold">{t('groupAnalytics.highestScore')}</span>
                   <span className="text-sm font-black text-secondary">100</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-on-surface-variant font-bold">Diem thap nhat</span>
+                  <span className="text-sm text-on-surface-variant font-bold">{t('groupAnalytics.lowestScore')}</span>
                   <span className="text-sm font-black text-on-surface-variant">42</span>
                 </div>
               </div>

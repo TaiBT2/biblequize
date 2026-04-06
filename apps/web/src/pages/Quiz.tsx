@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 import QuizResults from './QuizResults'
 
@@ -49,6 +50,7 @@ const FILL_STYLE = { fontVariationSettings: "'FILL' 1" } as const
 const Quiz: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
+  const { t } = useTranslation()
   const settings = location.state as QuizPageSettings | null
 
   const [questions, setQuestions] = useState<Question[]>([])
@@ -159,7 +161,7 @@ const Quiz: React.FC = () => {
           setUserAnswers(new Array(initialQuestions.length).fill(null))
           setQuestionScores(new Array(initialQuestions.length).fill(0))
         } else {
-          alert('Không có câu hỏi trong phiên này')
+          alert(t('quiz.noQuestions'))
           navigate('/practice')
         }
       } finally {
@@ -356,7 +358,7 @@ const Quiz: React.FC = () => {
     return (
       <div className="min-h-screen bg-surface flex items-center justify-center">
         <div className="glass-panel p-8 text-center max-w-xs w-full rounded-3xl border border-outline-variant/10">
-          <div className="text-xl font-bold mb-4 text-on-surface">Đang tải câu hỏi...</div>
+          <div className="text-xl font-bold mb-4 text-on-surface">{t('quiz.loading')}</div>
           <div className="animate-spin w-8 h-8 border-4 border-secondary border-t-transparent rounded-full mx-auto"></div>
         </div>
       </div>
@@ -427,12 +429,12 @@ const Quiz: React.FC = () => {
     return (
       <div className="min-h-screen bg-surface flex items-center justify-center">
         <div className="glass-panel p-8 text-center max-w-sm w-full rounded-3xl border border-outline-variant/10">
-          <div className="text-2xl font-bold mb-4 text-on-surface">Không có câu hỏi</div>
+          <div className="text-2xl font-bold mb-4 text-on-surface">{t('quiz.noQuestions')}</div>
           <button
             onClick={() => navigate('/practice')}
             className="bg-gradient-to-r from-secondary to-tertiary text-on-secondary px-8 py-3 rounded-2xl font-black text-sm shadow-xl active:scale-95 transition-all hover:brightness-110"
           >
-            Quay Lại
+            {t('quiz.goBack')}
           </button>
         </div>
       </div>
@@ -455,7 +457,7 @@ const Quiz: React.FC = () => {
             className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-variant transition-colors"
             onClick={(e) => {
               e.preventDefault()
-              if (confirm('Bạn có chắc muốn thoát? Tiến trình hiện tại sẽ không được lưu.')) {
+              if (confirm(t('quiz.confirmQuit'))) {
                 navigate(settings?.isRanked ? '/ranked' : '/practice')
               }
             }}
@@ -464,10 +466,10 @@ const Quiz: React.FC = () => {
           </Link>
           <div className="flex flex-col">
             <span className="text-[10px] font-bold uppercase tracking-wider text-secondary">
-              Câu hỏi {currentQuestionIndex + 1}/{questions.length}
+              {t('quiz.question', { current: currentQuestionIndex + 1, total: questions.length })}
             </span>
             <span className="font-headline font-bold text-sm tracking-tight">
-              {currentQuestion.book}{currentQuestion.chapter ? `: Chương ${currentQuestion.chapter}` : ''}
+              {currentQuestion.book}{currentQuestion.chapter ? `: ${t('quiz.chapter', { chapter: currentQuestion.chapter })}` : ''}
             </span>
           </div>
         </div>
@@ -513,7 +515,7 @@ const Quiz: React.FC = () => {
         {/* Top Stats Row */}
         <div className="w-full flex justify-between items-end mb-8">
           <div className="flex flex-col items-start gap-1">
-            <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">Combo chuỗi</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">{t('quiz.comboStreak')}</span>
             <div className={`flex items-center gap-2 glass-panel px-4 py-2 rounded-2xl border transition-all duration-300 ${combo > 0 ? 'border-secondary/20 gold-glow' : 'border-outline-variant/10'}`}>
               <span className="material-symbols-outlined text-secondary" style={FILL_STYLE}>stars</span>
               <span className={`font-headline font-black text-2xl italic ${combo > 0 ? 'text-secondary' : 'text-on-surface-variant'}`}>
@@ -524,7 +526,7 @@ const Quiz: React.FC = () => {
 
           {/* Circular Countdown Timer */}
           <div className="hidden md:flex flex-col items-center gap-1">
-            <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">Thời gian</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">{t('quiz.time')}</span>
             <div className="relative w-14 h-14 flex items-center justify-center">
               <svg className="timer-svg w-full h-full" viewBox="0 0 36 36">
                 <circle
@@ -548,7 +550,7 @@ const Quiz: React.FC = () => {
           </div>
 
           <div className="flex flex-col items-end gap-1">
-            <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">Năng lượng</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">{t('quiz.energy')}</span>
             <div className="flex gap-1">
               {Array.from({ length: 5 }).map((_, i) => (
                 <div
@@ -573,7 +575,7 @@ const Quiz: React.FC = () => {
             <div className="mt-8 flex items-center gap-2 text-on-surface-variant/60">
               <span className="material-symbols-outlined text-sm">menu_book</span>
               <span className="text-xs font-bold uppercase tracking-widest">
-                {currentQuestion.book}{currentQuestion.chapter ? ` - Chương ${currentQuestion.chapter}` : ''}
+                {currentQuestion.book}{currentQuestion.chapter ? ` - ${t('quiz.chapter', { chapter: currentQuestion.chapter })}` : ''}
               </span>
             </div>
           </div>
@@ -641,11 +643,11 @@ const Quiz: React.FC = () => {
         <div className="mt-16 w-full flex justify-between items-center opacity-80">
           <button className="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors">
             <span className="material-symbols-outlined">lightbulb</span>
-            <span className="text-xs font-bold uppercase tracking-widest">Gợi ý (2)</span>
+            <span className="text-xs font-bold uppercase tracking-widest">{t('quiz.hint')}</span>
           </button>
           <button className="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors">
             <span className="material-symbols-outlined">groups</span>
-            <span className="text-xs font-bold uppercase tracking-widest">Hỏi ý kiến</span>
+            <span className="text-xs font-bold uppercase tracking-widest">{t('quiz.askOpinion')}</span>
           </button>
           <button
             onClick={() => {
@@ -656,7 +658,7 @@ const Quiz: React.FC = () => {
             className="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors"
           >
             <span className="material-symbols-outlined">skip_next</span>
-            <span className="text-xs font-bold uppercase tracking-widest">Bỏ qua</span>
+            <span className="text-xs font-bold uppercase tracking-widest">{t('quiz.skip')}</span>
           </button>
         </div>
       </main>
@@ -674,10 +676,10 @@ const Quiz: React.FC = () => {
               </div>
               <div>
                 <p className="text-base font-bold text-on-surface">
-                  {isCorrect ? 'Chính xác!' : 'Sai rồi!'}
+                  {isCorrect ? t('quiz.correct') : t('quiz.incorrect')}
                 </p>
                 <p className={`text-xs font-medium ${isCorrect ? 'text-secondary/80' : 'text-error/80'}`}>
-                  {isCorrect ? `+${lastQuestionScore} Điểm thưởng` : 'Không được điểm'}
+                  {isCorrect ? t('quiz.bonusPoints', { points: lastQuestionScore }) : t('quiz.noPoints')}
                 </p>
               </div>
             </div>
@@ -685,7 +687,7 @@ const Quiz: React.FC = () => {
               onClick={nextQuestion}
               className="bg-gradient-to-r from-secondary to-tertiary text-on-secondary px-8 py-3 rounded-2xl font-black text-sm shadow-xl active:scale-95 transition-all hover:brightness-110 whitespace-nowrap"
             >
-              {currentQuestionIndex + 1 >= questions.length ? 'XEM KẾT QUẢ' : 'CÂU TIẾP THEO'}
+              {currentQuestionIndex + 1 >= questions.length ? t('quiz.viewResults') : t('quiz.nextQuestion')}
             </button>
           </div>
         </div>
@@ -695,7 +697,7 @@ const Quiz: React.FC = () => {
       {showResult && settings?.showExplanation && currentQuestion.explanation && (
         <div className="fixed bottom-32 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg">
           <div className="glass-panel p-4 rounded-2xl border border-outline-variant/10 text-sm text-on-surface-variant">
-            <strong className="text-on-surface">Giải thích:</strong> {currentQuestion.explanation}
+            <strong className="text-on-surface">{t('quiz.explanation')}:</strong> {currentQuestion.explanation}
           </div>
         </div>
       )}

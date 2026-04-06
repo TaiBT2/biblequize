@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
@@ -9,6 +10,7 @@ type FilterType = 'all' | 'wrong' | 'correct'
 export default function Review() {
   const navigate = useNavigate()
   const location = useLocation() as any
+  const { t } = useTranslation()
   const stats = location.state?.stats
 
   const [filter, setFilter] = useState<FilterType>('all')
@@ -72,10 +74,10 @@ export default function Review() {
       <div className="min-h-screen bg-[#11131e] flex items-center justify-center p-4">
         <div className="glass-card p-8 rounded-2xl text-center max-w-md border border-outline-variant/10">
           <span className="material-symbols-outlined text-on-surface-variant text-5xl mb-4 block">quiz</span>
-          <h2 className="text-xl font-bold text-on-surface mb-2">Không có dữ liệu để xem lại</h2>
-          <p className="text-on-surface-variant text-sm mb-6">Hãy hoàn thành một bài quiz trước.</p>
+          <h2 className="text-xl font-bold text-on-surface mb-2">{t('review.noData')}</h2>
+          <p className="text-on-surface-variant text-sm mb-6">{t('review.completeFirst')}</p>
           <button onClick={() => navigate('/practice')} className="gold-gradient text-on-secondary font-bold px-6 py-3 rounded-xl">
-            Về Luyện Tập
+            {t('review.backToPractice')}
           </button>
         </div>
       </div>
@@ -103,9 +105,9 @@ export default function Review() {
                 <span className="material-symbols-outlined text-on-surface">arrow_back</span>
               </button>
               <div>
-                <h2 className="text-lg md:text-xl font-bold tracking-tight text-on-surface">Xem lại bài làm</h2>
+                <h2 className="text-lg md:text-xl font-bold tracking-tight text-on-surface">{t('review.title')}</h2>
                 <div className="flex items-center gap-3 mt-0.5">
-                  <span className="text-xs font-bold text-secondary uppercase tracking-wider">{totalCorrect}/{totalQuestions} đúng ({accuracy}%)</span>
+                  <span className="text-xs font-bold text-secondary uppercase tracking-wider">{totalCorrect}/{totalQuestions} {t('review.correctLabel')} ({accuracy}%)</span>
                   <span className="text-[10px] text-on-surface-variant/40">•</span>
                   <span className="text-xs text-on-surface-variant/70 flex items-center gap-1">
                     <span className="material-symbols-outlined text-sm">schedule</span>
@@ -118,7 +120,7 @@ export default function Review() {
               <button onClick={handleRetry} disabled={retrying}
                 className="gold-gradient px-4 py-2 md:px-6 rounded-xl text-on-secondary font-bold text-sm flex items-center gap-2 shadow-lg shadow-secondary/10 active:scale-95 transition-transform disabled:opacity-50">
                 <span className="material-symbols-outlined text-sm">refresh</span>
-                <span className="hidden sm:inline">Làm lại câu sai</span>
+                <span className="hidden sm:inline">{t('review.retryWrong')}</span>
               </button>
             )}
           </div>
@@ -126,10 +128,10 @@ export default function Review() {
           {/* Filter Tabs */}
           <div className="px-6 flex gap-8 border-t border-outline-variant/5">
             {([
-              ['all', `Tất cả (${totalQuestions})`],
-              ['wrong', `Câu sai (${wrongCount})`],
-              ['correct', `Câu đúng (${correctCount})`],
-            ] as const).map(([key, label]) => (
+              ['all', t('review.all', { count: totalQuestions })] as [FilterType, string],
+              ['wrong', t('review.wrong', { count: wrongCount })] as [FilterType, string],
+              ['correct', t('review.correct', { count: correctCount })] as [FilterType, string],
+            ]).map(([key, label]) => (
               <button key={key} onClick={() => setFilter(key)}
                 className={`py-4 text-sm font-bold transition-colors ${filter === key ? 'text-on-surface border-b-2 border-secondary' : 'text-on-surface-variant/50 hover:text-on-surface'}`}>
                 {label}
@@ -148,10 +150,10 @@ export default function Review() {
                   {/* Question header */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <span className="text-sm font-black text-on-surface-variant/40">CÂU {String(q.index + 1).padStart(2, '0')}</span>
+                      <span className="text-sm font-black text-on-surface-variant/40">{t('review.questionNumber', { number: String(q.index + 1).padStart(2, '0') })}</span>
                       {diffBadge(q.difficulty)}
                       <span className="text-xs font-medium text-secondary/80 bg-secondary/5 px-2 py-0.5 rounded-lg">
-                        {q.book} {q.chapter ? `Chương ${q.chapter}` : ''}
+                        {q.book} {q.chapter ? `${t('review.chapter', { chapter: q.chapter })}` : ''}
                       </span>
                     </div>
                     <button onClick={() => toggleBookmark(q.id)} className={`transition-colors ${bookmarks.has(q.id) ? 'text-secondary' : 'text-on-surface-variant/20 hover:text-secondary'}`}>
@@ -176,17 +178,17 @@ export default function Review() {
                         borderClass = 'bg-surface-container-high border-l-4 border-green-500'
                         icon = 'check_circle'
                         iconColor = 'text-green-500'
-                        badge = <span className="text-[10px] font-bold text-green-400 uppercase tracking-widest px-2 py-1 bg-green-500/10 rounded">Câu trả lời của bạn</span>
+                        badge = <span className="text-[10px] font-bold text-green-400 uppercase tracking-widest px-2 py-1 bg-green-500/10 rounded">{t('review.yourAnswer')}</span>
                       } else if (isUserAnswer && !q.isCorrect) {
                         borderClass = 'bg-surface-container-high border-l-4 border-error'
                         icon = 'cancel'
                         iconColor = 'text-error'
-                        badge = <span className="text-[10px] font-bold text-error uppercase tracking-widest px-2 py-1 bg-error/10 rounded">Câu trả lời của bạn</span>
+                        badge = <span className="text-[10px] font-bold text-error uppercase tracking-widest px-2 py-1 bg-error/10 rounded">{t('review.yourAnswer')}</span>
                       } else if (isCorrectAnswer) {
                         borderClass = 'bg-surface-container-high border-l-4 border-green-500'
                         icon = 'check_circle'
                         iconColor = 'text-green-500'
-                        badge = <span className="text-[10px] font-bold text-green-400 uppercase tracking-widest px-2 py-1 bg-green-500/10 rounded">Đáp án đúng</span>
+                        badge = <span className="text-[10px] font-bold text-green-400 uppercase tracking-widest px-2 py-1 bg-green-500/10 rounded">{t('review.correctAnswer')}</span>
                       }
 
                       return (
@@ -224,7 +226,7 @@ export default function Review() {
           })}
 
           {filtered.length === 0 && (
-            <p className="text-center text-on-surface-variant py-16">Không có câu hỏi nào trong bộ lọc này.</p>
+            <p className="text-center text-on-surface-variant py-16">{t('review.noQuestionsInFilter')}</p>
           )}
         </div>
       </main>

@@ -25,6 +25,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.containsString;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -85,7 +86,7 @@ class SecurityTest extends BaseControllerTest {
     @Test
     @Order(1)
     void TC_AUTH_008_getDailyChallenge_withoutAuth_shouldReturn200() throws Exception {
-        when(dailyChallengeService.getTodayQuestions()).thenReturn(List.of());
+        when(dailyChallengeService.getTodayQuestions(any())).thenReturn(List.of());
         when(dailyChallengeService.getDailyQuestionCount()).thenReturn(5);
 
         mockMvc.perform(get("/api/daily-challenge"))
@@ -124,7 +125,7 @@ class SecurityTest extends BaseControllerTest {
     @Test
     @Order(5)
     void TC_SEC_008_errorResponse_shouldNotContainStackTrace() throws Exception {
-        when(dailyChallengeService.getTodayQuestions())
+        when(dailyChallengeService.getTodayQuestions(any()))
                 .thenThrow(new RuntimeException("Simulated internal error"));
 
         mockMvc.perform(get("/api/daily-challenge"))

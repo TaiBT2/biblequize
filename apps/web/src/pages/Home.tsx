@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
+import { useTranslation } from 'react-i18next'
 import GameModeGrid from '../components/GameModeGrid'
 import { useAuthStore } from '../store/authStore'
 import { api } from '../api/client'
@@ -10,12 +11,12 @@ const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 
 /* ── Tier System (from SPEC-v2 section 2.1) ── */
 const TIERS = [
-  { name: 'Tân Tín Hữu', minPoints: 0, icon: 'spa', color: 'text-outline' },
-  { name: 'Người Tìm Kiếm', minPoints: 1_000, icon: 'eco', color: 'text-green-400' },
-  { name: 'Môn Đồ', minPoints: 5_000, icon: 'scrollable_header', color: 'text-[#4a9eff]' },
-  { name: 'Hiền Triết', minPoints: 15_000, icon: 'lightbulb', color: 'text-[#9b59b6]' },
-  { name: 'Tiên Tri', minPoints: 40_000, icon: 'local_fire_department', color: 'text-secondary' },
-  { name: 'Sứ Đồ', minPoints: 100_000, icon: 'workspace_premium', color: 'text-[#ff6b6b]' },
+  { nameKey: 'tiers.spark', minPoints: 0, icon: 'spa', color: 'text-outline' },
+  { nameKey: 'tiers.seeker', minPoints: 1_000, icon: 'eco', color: 'text-green-400' },
+  { nameKey: 'tiers.disciple', minPoints: 5_000, icon: 'scrollable_header', color: 'text-[#4a9eff]' },
+  { nameKey: 'tiers.sage', minPoints: 15_000, icon: 'lightbulb', color: 'text-[#9b59b6]' },
+  { nameKey: 'tiers.prophet', minPoints: 40_000, icon: 'local_fire_department', color: 'text-secondary' },
+  { nameKey: 'tiers.apostle', minPoints: 100_000, icon: 'workspace_premium', color: 'text-[#ff6b6b]' },
 ]
 
 function getTierInfo(points: number) {
@@ -32,11 +33,11 @@ function getTierInfo(points: number) {
   return { current, next, progressPct, pointsToNext }
 }
 
-function getGreeting(): string {
+function getGreeting(t: any): string {
   const h = new Date().getHours()
-  if (h < 12) return 'Chào buổi sáng'
-  if (h < 18) return 'Chào buổi chiều'
-  return 'Chào buổi tối'
+  if (h < 12) return t('home.greetingMorning')
+  if (h < 18) return t('home.greetingAfternoon')
+  return t('home.greetingEvening')
 }
 
 /* ── Skeleton ── */
@@ -61,6 +62,7 @@ function HomeSkeleton() {
 
 /* ── Main ── */
 export default function Home() {
+  const { t } = useTranslation()
   const { user } = useAuthStore()
   const [lbPeriod, setLbPeriod] = useState<'daily' | 'weekly'>('daily')
 
@@ -91,9 +93,9 @@ export default function Home() {
   const totalPoints = meData?.totalPoints ?? 0
   const leaderboard: any[] = Array.isArray(lbData) ? lbData : []
   const myRank = rankData?.rank ?? null
-  const userName = user?.name || 'Người Học'
+  const userName = user?.name || t('home.defaultName')
   const tier = getTierInfo(totalPoints)
-  const greeting = getGreeting()
+  const greeting = getGreeting(t)
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto w-full">
@@ -107,7 +109,7 @@ export default function Home() {
                 <span className={`material-symbols-outlined text-6xl ${tier.current.color}`} style={FILL_1}>{tier.current.icon}</span>
               </div>
               <div className="absolute -bottom-2 -right-2 bg-secondary text-on-secondary text-[10px] font-black px-2 py-1 rounded-md shadow-lg uppercase tracking-tighter">
-                {tier.current.name}
+                {t(tier.current.nameKey)}
               </div>
             </div>
             <div className="flex-1 space-y-4">
@@ -117,17 +119,17 @@ export default function Home() {
                 </h1>
                 <p className="text-on-surface-variant text-sm font-medium">
                   {tier.next ? (
-                    <>Bạn đang trên hành trình trở thành <span className="text-secondary font-bold">{tier.next.name}</span>.</>
+                    <>{t('home.journeyTo')} <span className="text-secondary font-bold">{t(tier.next.nameKey)}</span>.</>
                   ) : (
-                    <span className="text-secondary font-bold">Đã đạt hạng cao nhất!</span>
+                    <span className="text-secondary font-bold">{t('home.maxTierReached')}</span>
                   )}
                 </p>
               </div>
               <div className="space-y-2">
                 <div className="flex justify-between items-end">
-                  <span className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Tiến trình hạng</span>
+                  <span className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">{t('home.tierProgress')}</span>
                   <span className="text-xs font-bold text-on-surface">
-                    {totalPoints.toLocaleString()} {tier.next ? `/ ${tier.next.minPoints.toLocaleString()} điểm` : 'điểm'}
+                    {totalPoints.toLocaleString()} {tier.next ? `/ ${tier.next.minPoints.toLocaleString()} ${t('home.points')}` : t('home.points')}
                   </span>
                 </div>
                 <div className="h-3 w-full bg-primary-container rounded-full overflow-hidden">
@@ -135,7 +137,7 @@ export default function Home() {
                 </div>
                 {tier.next && (
                   <p className="text-[10px] text-right text-on-surface-variant font-medium">
-                    Còn {tier.pointsToNext.toLocaleString()} điểm để đạt hạng {tier.next.name}
+                    {t('home.pointsToNext', { points: tier.pointsToNext.toLocaleString(), tier: t(tier.next.nameKey) })}
                   </p>
                 )}
               </div>
@@ -151,12 +153,12 @@ export default function Home() {
                 <span className={`material-symbols-outlined text-4xl ${tier.next.color}`} style={FILL_1}>{tier.next.icon}</span>
               </div>
               <div>
-                <h3 className="text-lg font-bold text-on-surface uppercase tracking-tight">Hạng kế tiếp</h3>
-                <p className={`text-2xl font-black ${tier.next.color}`}>{tier.next.name}</p>
+                <h3 className="text-lg font-bold text-on-surface uppercase tracking-tight">{t('home.nextTier')}</h3>
+                <p className={`text-2xl font-black ${tier.next.color}`}>{t(tier.next.nameKey)}</p>
               </div>
               <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary/10 border border-tertiary/20">
                 <span className="material-symbols-outlined text-xs text-tertiary">auto_awesome</span>
-                <span className="text-[10px] font-bold text-tertiary uppercase">Mở khóa phần thưởng đặc biệt</span>
+                <span className="text-[10px] font-bold text-tertiary uppercase">{t('home.unlockRewards')}</span>
               </div>
             </>
           ) : (
@@ -165,8 +167,8 @@ export default function Home() {
                 <span className="material-symbols-outlined text-4xl text-secondary" style={FILL_1}>workspace_premium</span>
               </div>
               <div>
-                <h3 className="text-lg font-bold text-secondary uppercase tracking-tight">Hạng cao nhất</h3>
-                <p className="text-sm text-on-surface-variant">Bạn đã chinh phục tất cả!</p>
+                <h3 className="text-lg font-bold text-secondary uppercase tracking-tight">{t('home.maxTier')}</h3>
+                <p className="text-sm text-on-surface-variant">{t('home.conqueredAll')}</p>
               </div>
             </>
           )}
@@ -176,8 +178,8 @@ export default function Home() {
       {/* ── Game Modes ── */}
       <section className="space-y-4">
         <div className="flex justify-between items-center">
-          <h2 className="text-xl font-black tracking-tight text-on-surface">Chế độ chơi</h2>
-          <span className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Khám phá 6 chế độ</span>
+          <h2 className="text-xl font-black tracking-tight text-on-surface">{t('home.gameModes')}</h2>
+          <span className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">{t('home.explore6Modes')}</span>
         </div>
         <GameModeGrid />
       </section>
@@ -186,16 +188,16 @@ export default function Home() {
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div className="lg:col-span-8 bg-surface-container rounded-2xl p-6 border border-outline-variant/10">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-            <h3 className="text-lg font-black tracking-tight text-on-surface">Bảng Xếp Hạng</h3>
+            <h3 className="text-lg font-black tracking-tight text-on-surface">{t('home.leaderboard')}</h3>
             {/* Period tabs */}
             <div className="flex p-1 bg-surface-container-high rounded-lg">
-              {([['daily', 'Hàng ngày'], ['weekly', 'Hàng tuần']] as const).map(([key, label]) => (
+              {([['daily', 'home.daily'], ['weekly', 'home.weekly']] as const).map(([key, labelKey]) => (
                 <button
                   key={key}
                   onClick={() => setLbPeriod(key)}
                   className={`px-3 py-1.5 text-[10px] font-bold rounded-md transition-all ${lbPeriod === key ? 'bg-secondary text-on-secondary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
                 >
-                  {label}
+                  {t(labelKey)}
                 </button>
               ))}
             </div>
@@ -203,7 +205,7 @@ export default function Home() {
 
           <div className={`space-y-3 transition-opacity duration-200 ${lbFetching ? 'opacity-50' : 'opacity-100'}`}>
             {leaderboard.length === 0 ? (
-              <p className="text-center text-on-surface-variant py-8">Chưa có dữ liệu xếp hạng</p>
+              <p className="text-center text-on-surface-variant py-8">{t('home.noLeaderboardData')}</p>
             ) : leaderboard.map((p: any, i: number) => (
               <div key={p.userId || i} className={`flex items-center justify-between p-4 rounded-xl ${i === 0 ? 'bg-secondary/5 border border-secondary/10' : 'hover:bg-surface-container-high transition-colors'}`}>
                 <div className="flex items-center gap-4">
@@ -219,7 +221,7 @@ export default function Home() {
                 </div>
                 <div className="text-right">
                   <p className={`font-black text-sm ${i === 0 ? 'text-secondary' : 'text-on-surface'}`}>{(p.points || 0).toLocaleString()} XP</p>
-                  <p className="text-[10px] font-bold text-on-surface-variant">{(p.questions || 0)} câu</p>
+                  <p className="text-[10px] font-bold text-on-surface-variant">{(p.questions || 0)} {t('home.questions')}</p>
                 </div>
               </div>
             ))}
@@ -231,20 +233,20 @@ export default function Home() {
                     <span className="material-symbols-outlined text-secondary text-sm">person</span>
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-on-surface">Bạn ({userName})</p>
-                    <p className="text-[10px] text-on-surface-variant font-medium">{tier.current.name}</p>
+                    <p className="text-sm font-bold text-on-surface">{t('home.you', { name: userName })}</p>
+                    <p className="text-[10px] text-on-surface-variant font-medium">{t(tier.current.nameKey)}</p>
                   </div>
                 </div>
                 <div className="text-right">
                   <p className="font-black text-on-surface text-sm">{totalPoints.toLocaleString()} XP</p>
-                  <p className="text-[10px] font-bold text-secondary uppercase tracking-tighter">{tier.current.name}</p>
+                  <p className="text-[10px] font-bold text-secondary uppercase tracking-tighter">{t(tier.current.nameKey)}</p>
                 </div>
               </div>
             )}
           </div>
 
           <Link to="/leaderboard" className="block mt-4 text-center text-xs font-bold text-secondary hover:underline uppercase tracking-widest">
-            Xem tất cả
+            {t('home.viewAll')}
           </Link>
         </div>
 
@@ -253,7 +255,7 @@ export default function Home() {
           {/* Activity Feed */}
           <div className="bg-surface-container rounded-2xl p-6 border border-outline-variant/10">
             <div className="flex items-center justify-between mb-4">
-              <h4 className="font-bold text-on-surface text-sm">Hoạt động gần đây</h4>
+              <h4 className="font-bold text-on-surface text-sm">{t('home.recentActivity')}</h4>
               <button className="material-symbols-outlined text-on-surface-variant text-sm hover:text-on-surface transition-colors">refresh</button>
             </div>
             <div className="space-y-4">
@@ -262,7 +264,7 @@ export default function Home() {
                   <span className="material-symbols-outlined text-secondary text-sm" style={FILL_1}>celebration</span>
                 </div>
                 <p className="text-xs text-on-surface leading-tight">
-                  <span className="font-bold">Nguyễn A</span> vừa đạt <span className="text-tertiary font-bold">Hiền Triết</span>
+                  <span className="font-bold">Nguyễn A</span> {t('home.activityReachedTier', { tier: t('tiers.sage') })}
                 </p>
               </div>
               <div className="flex gap-3">
@@ -270,7 +272,7 @@ export default function Home() {
                   <span className="material-symbols-outlined text-primary text-sm">group_add</span>
                 </div>
                 <p className="text-xs text-on-surface leading-tight">
-                  <span className="font-bold">Minh Tâm</span> đã tham gia vào Nhóm Giáo Xứ của bạn.
+                  <span className="font-bold">Minh Tâm</span> {t('home.activityJoinedGroup')}
                 </p>
               </div>
               <div className="flex gap-3">
@@ -278,7 +280,7 @@ export default function Home() {
                   <span className="material-symbols-outlined text-tertiary text-sm">local_fire_department</span>
                 </div>
                 <p className="text-xs text-on-surface leading-tight">
-                  <span className="font-bold">Hùng Dũng</span> đạt chuỗi học tập 30 ngày!
+                  <span className="font-bold">Hùng Dũng</span> {t('home.activityStreak', { days: 30 })}
                 </p>
               </div>
             </div>

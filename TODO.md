@@ -305,6 +305,92 @@
   - [ ] npx tsc --noEmit (no TS errors)
   - [ ] npx expo start (dev server runs)
   - [ ] Web regression: cd apps/web && npx vitest run (518 tests still pass — no web changes expected)
+## Phase 2: UI i18n — Giao diện tiếng Anh [DONE]
+
+### Task i18n-1: Setup react-i18next + translation files
+- Status: [ ] TODO
+- File(s): src/i18n/index.ts, src/i18n/vi.json, src/i18n/en.json, main.tsx
+- Commit: "feat: setup react-i18next + vi/en translations"
+
+### Task i18n-2: Update QuizLanguageSelect → i18n language switcher
+- Status: [ ] TODO
+- File(s): QuizLanguageSelect.tsx, AppLayout.tsx, LandingPage.tsx
+- Commit: "feat: language switcher uses i18n"
+
+### Task i18n-3: Migrate core pages (AppLayout, Home, LandingPage, Login, NotFound)
+- Status: [ ] TODO
+- Commit: "i18n: migrate core pages"
+
+### Task i18n-4: Migrate game pages (Practice, Ranked, DailyChallenge, Quiz)
+- Status: [ ] TODO
+- Commit: "i18n: migrate game pages"
+
+### Task i18n-5: Tests + Regression
+- Status: [ ] TODO
+
+---
+
+## Phase 1: Content English — Câu hỏi tiếng Anh [DONE]
+
+> Question entity + DB đã có language field. Cần wire vào business logic.
+
+### Task EN-1: Backend — Wire language vào SessionService + QuestionService
+- Status: [ ] TODO
+- File(s): SessionService.java, QuestionService.java
+- Checklist:
+  - [ ] QuestionService.getRandomQuestions() thêm language param, filter query
+  - [ ] SessionService.createSession() accept language từ config
+  - [ ] Cache key include language
+  - [ ] Default "vi" nếu không truyền
+  - [ ] Unit test
+  - [ ] Commit: "feat: filter questions by language in session creation"
+
+### Task EN-2: Backend — Wire language vào DailyChallengeService
+- Status: [ ] TODO
+- File(s): DailyChallengeService.java, DailyChallengeController.java
+- Checklist:
+  - [ ] getDailyQuestions() thêm language param
+  - [ ] Cache key include language
+  - [ ] Controller endpoint thêm ?language=en
+  - [ ] Unit test
+  - [ ] Commit: "feat: daily challenge filter by language"
+
+### Task EN-3: Backend — Update API endpoints + DTOs
+- Status: [ ] TODO
+- File(s): SessionController, RankedController, AdminQuestionController
+- Checklist:
+  - [ ] POST /sessions body thêm language
+  - [ ] POST /ranked/sessions body thêm language
+  - [ ] GET /daily-challenge?language=en
+  - [ ] GET /admin/questions?language=en
+  - [ ] countByFilters thêm language
+  - [ ] Commit: "feat: language param in all quiz API endpoints"
+
+### Task EN-4: Frontend — User quiz language selection
+- Status: [ ] TODO
+- File(s): Practice.tsx, CreateRoom.tsx, Profile.tsx, authStore.ts
+- Checklist:
+  - [ ] quizLanguage setting in authStore or localStorage
+  - [ ] Language selector in Practice page
+  - [ ] Language selector in CreateRoom
+  - [ ] All API calls pass language param
+  - [ ] Commit: "feat: user quiz language selection UI"
+
+### Task EN-5: Admin — Language filter + coverage
+- Status: [ ] TODO
+- File(s): Questions.tsx, Dashboard.tsx
+- Checklist:
+  - [ ] Language filter dropdown in Questions admin
+  - [ ] Coverage per language
+  - [ ] Commit: "feat: admin question management by language"
+
+### Task EN-6: Tests + Regression
+- Status: [ ] TODO
+- Checklist:
+  - [ ] BE: language filter tests
+  - [ ] FE: language selector tests
+  - [ ] Full regression BE + FE
+  - [ ] Commit: "test: multi-language question support"
 
 ---
 

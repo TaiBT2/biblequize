@@ -2,15 +2,40 @@ import { useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
 import { getTierName } from '../data/tiers'
+import { setQuizLanguage, type QuizLanguage } from '../utils/quizLanguage'
+import { useTranslation } from 'react-i18next'
 
 const navItems = [
-  { path: '/', label: 'Trang chủ', icon: 'home' },
-  { path: '/leaderboard', label: 'Xếp hạng', icon: 'leaderboard' },
-  { path: '/groups', label: 'Nhóm', icon: 'groups' },
-  { path: '/profile', label: 'Cá nhân', icon: 'person' },
+  { path: '/', labelKey: 'nav.home', icon: 'home' },
+  { path: '/leaderboard', labelKey: 'nav.leaderboard', icon: 'leaderboard' },
+  { path: '/groups', labelKey: 'nav.groups', icon: 'groups' },
+  { path: '/profile', labelKey: 'nav.profile', icon: 'person' },
 ]
 
+function QuizLanguageToggle() {
+  const { t, i18n } = useTranslation()
+  const lang = (i18n.language === 'en' ? 'en' : 'vi') as QuizLanguage
+  const toggle = (l: QuizLanguage) => { setQuizLanguage(l); i18n.changeLanguage(l) }
+  return (
+    <div className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm">
+      <span className="material-symbols-outlined text-on-surface-variant text-xl">translate</span>
+      <span className="flex-1 text-on-surface-variant">{t('profile.quizLang')}</span>
+      <div className="flex gap-0.5 bg-surface-container rounded-lg p-0.5">
+        <button
+          onClick={() => toggle('vi')}
+          className={`px-2 py-1 rounded-md text-xs font-bold transition-colors ${lang === 'vi' ? 'bg-secondary text-on-secondary' : 'text-on-surface-variant hover:text-on-surface'}`}
+        >VI</button>
+        <button
+          onClick={() => toggle('en')}
+          className={`px-2 py-1 rounded-md text-xs font-bold transition-colors ${lang === 'en' ? 'bg-secondary text-on-secondary' : 'text-on-surface-variant hover:text-on-surface'}`}
+        >EN</button>
+      </div>
+    </div>
+  )
+}
+
 export default function AppLayout() {
+  const { t } = useTranslation()
   const location = useLocation()
   const navigate = useNavigate()
   const { user, isAuthenticated, logout } = useAuthStore()
@@ -31,7 +56,7 @@ export default function AppLayout() {
     }
   }
 
-  const displayName = user?.name || 'Người Học'
+  const displayName = user?.name || t('home.defaultName')
   const displayRole = getTierName(user?.totalPoints ?? 0)
 
   return (
@@ -52,7 +77,7 @@ export default function AppLayout() {
                   : 'text-[#e1e1f1]/60 hover:text-[#e1e1f1]'
               }`}
             >
-              {item.label}
+              {t(item.labelKey)}
             </Link>
           ))}
         </nav>
@@ -89,7 +114,7 @@ export default function AppLayout() {
                       className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container transition-colors text-sm"
                     >
                       <span className="material-symbols-outlined text-on-surface-variant text-xl">person</span>
-                      Hồ sơ
+                      {t('profile.title')}
                     </Link>
                     <Link
                       to="/achievements"
@@ -97,15 +122,17 @@ export default function AppLayout() {
                       className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container transition-colors text-sm"
                     >
                       <span className="material-symbols-outlined text-on-surface-variant text-xl">emoji_events</span>
-                      Thành tích
+                      {t('profile.achievements')}
                     </Link>
+                    <QuizLanguageToggle />
+                    <div className="mx-2 my-1 border-t border-outline-variant/10" />
                     <button
                       onClick={handleLogout}
                       disabled={loggingOut}
                       className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-error/10 transition-colors text-sm w-full text-left text-error disabled:opacity-50"
                     >
                       <span className="material-symbols-outlined text-xl">logout</span>
-                      {loggingOut ? 'Đang đăng xuất...' : 'Đăng xuất'}
+                      {loggingOut ? t('auth.loggingOut') : t('auth.logout')}
                     </button>
                   </div>
                 </div>
@@ -150,7 +177,7 @@ export default function AppLayout() {
                 >
                   {item.icon}
                 </span>
-                {item.label}
+                {t(item.labelKey)}
               </Link>
             ))}
           </nav>
@@ -173,7 +200,7 @@ export default function AppLayout() {
               to="/quiz"
               className="block w-full gold-gradient text-[#412d00] font-black py-4 rounded-2xl shadow-xl shadow-secondary/20 hover:scale-[1.02] active:scale-95 transition-all text-sm uppercase tracking-widest text-center"
             >
-              Học Ngay
+              {t('common.startNow')}
             </Link>
           </div>
         </aside>
@@ -205,7 +232,7 @@ export default function AppLayout() {
             >
               {item.icon}
             </span>
-            <span className="text-[10px] font-black uppercase tracking-widest">{item.label}</span>
+            <span className="text-[10px] font-black uppercase tracking-widest">{t(item.labelKey)}</span>
           </Link>
         ))}
       </nav>

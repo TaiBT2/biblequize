@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
+import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 import { useAuth } from '../store/authStore'
 import { getTierByPoints, getNextTier } from '../data/tiers'
@@ -29,14 +30,6 @@ interface SessionHistory {
   id: string
   completedAt: string
   score: number
-}
-
-function buildQuickStats(profile: UserProfile) {
-  return [
-    { icon: 'quiz', iconFill: false, label: 'Tổng điểm', value: profile.totalPoints.toLocaleString(), bgColor: 'bg-secondary/10', textColor: 'text-secondary' },
-    { icon: 'bolt', iconFill: true, label: 'Chuỗi tốt nhất', value: `${profile.longestStreak} Ngày`, bgColor: 'bg-[#e7c268]/10', textColor: 'text-[#e7c268]' },
-    { icon: 'local_fire_department', iconFill: true, label: 'Chuỗi hiện tại', value: `${profile.currentStreak} Ngày`, bgColor: 'bg-primary/10', textColor: 'text-primary', hiddenOnMobile: true },
-  ]
 }
 
 type HeatmapColor =
@@ -100,6 +93,7 @@ function ProfileSkeleton() {
 }
 
 const Profile: React.FC = () => {
+  const { t } = useTranslation()
   const { user: authUser, isAuthenticated } = useAuth()
 
   const { data: profile, isLoading: profileLoading, error: profileError } = useQuery<UserProfile>({
@@ -129,13 +123,13 @@ const Profile: React.FC = () => {
       <div className="flex items-center justify-center py-24">
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-4 text-secondary">
-            Vui lòng đăng nhập để xem hồ sơ
+            {t('profile.loginRequired')}
           </h2>
           <Link
             to="/login"
             className="px-6 py-3 rounded-lg font-bold gold-gradient text-on-secondary inline-block"
           >
-            Đăng nhập
+            {t('auth.login')}
           </Link>
         </div>
       </div>
@@ -149,9 +143,9 @@ const Profile: React.FC = () => {
       <div className="flex items-center justify-center py-24">
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-4 text-error">
-            Không thể tải hồ sơ
+            {t('profile.loadError')}
           </h2>
-          <p className="text-on-surface-variant mb-4">Vui lòng thử lại sau</p>
+          <p className="text-on-surface-variant mb-4">{t('profile.tryAgainLater')}</p>
         </div>
       </div>
     )
@@ -170,7 +164,12 @@ const Profile: React.FC = () => {
     expRemaining: nextTier ? nextTier.minPoints - profile.totalPoints : 0,
   }
 
-  const quickStats = buildQuickStats(profile)
+  const quickStats = [
+    { icon: 'quiz', iconFill: false, label: t('profile.totalPoints'), value: profile.totalPoints.toLocaleString(), bgColor: 'bg-secondary/10', textColor: 'text-secondary' },
+    { icon: 'bolt', iconFill: true, label: t('profile.bestStreak'), value: `${profile.longestStreak} ${t('common.days')}`, bgColor: 'bg-[#e7c268]/10', textColor: 'text-[#e7c268]' },
+    { icon: 'local_fire_department', iconFill: true, label: t('profile.currentStreak'), value: `${profile.currentStreak} ${t('common.days')}`, bgColor: 'bg-primary/10', textColor: 'text-primary', hiddenOnMobile: true },
+  ]
+
   const history = historyData?.content ?? (Array.isArray(historyData) ? historyData as unknown as SessionHistory[] : [])
   const heatmapCells = buildHeatmapCells(history)
   const hasHeatmapData = heatmapCells.length > 0
@@ -211,7 +210,7 @@ const Profile: React.FC = () => {
           </div>
           <div className="hidden lg:flex gap-3 pb-4">
             <button className="px-6 py-3 bg-surface-container-highest border border-outline-variant/20 rounded-xl font-bold text-sm hover:bg-surface-bright transition-colors">
-              Chỉnh sửa hồ sơ
+              {t('profile.editProfile')}
             </button>
             <button className="p-3 bg-secondary/10 border border-secondary/20 rounded-xl text-secondary hover:bg-secondary/20 transition-colors">
               <span className="material-symbols-outlined">share</span>
@@ -227,10 +226,10 @@ const Profile: React.FC = () => {
           <div>
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-xl font-bold text-on-surface tracking-tight uppercase">
-                Tiến trình danh hiệu
+                {t('profile.tierProgress')}
               </h2>
               <span className="text-xs font-black bg-tertiary-container text-tertiary px-4 py-1.5 rounded-full uppercase tracking-widest">
-                {tierProgress.nextTierName} (Tiếp theo)
+                {tierProgress.nextTierName} ({t('profile.next')})
               </span>
             </div>
             <div className="relative h-5 w-full bg-primary-container rounded-full overflow-hidden mb-6">
@@ -258,8 +257,8 @@ const Profile: React.FC = () => {
             </div>
             <p className="text-base text-on-surface-variant italic font-medium leading-relaxed">
               {tierProgress.expRemaining > 0
-                ? <>&ldquo;Còn {tierProgress.expRemaining.toLocaleString()} EXP nữa để nhận danh hiệu {tierProgress.nextTierName} và mở khóa phần thưởng đặc biệt.&rdquo;</>
-                : <>&ldquo;Bạn đã đạt danh hiệu cao nhất! Tiếp tục để duy trì vị trí.&rdquo;</>
+                ? <>&ldquo;{t('profile.expRemaining', { exp: tierProgress.expRemaining.toLocaleString(), tier: tierProgress.nextTierName })}&rdquo;</>
+                : <>&ldquo;{t('profile.maxTierReached')}&rdquo;</>
               }
             </p>
           </div>
@@ -297,20 +296,20 @@ const Profile: React.FC = () => {
       <section className="bg-surface-container rounded-3xl p-10 mb-12 overflow-hidden">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <h2 className="text-xl font-bold text-on-surface tracking-tight uppercase">
-            Nhật ký học tập
+            {t('profile.learningLog')}
           </h2>
           <div className="flex items-center gap-6 text-xs font-bold text-on-surface-variant">
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 bg-surface-container-high rounded-sm" />
-              <span>Nghỉ ngơi</span>
+              <span>{t('profile.restDay')}</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 bg-secondary/30 rounded-sm" />
-              <span>Học ít</span>
+              <span>{t('profile.lightDay')}</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 bg-secondary rounded-sm" />
-              <span>Năng nổ</span>
+              <span>{t('profile.activeDay')}</span>
             </div>
           </div>
         </div>
@@ -324,7 +323,7 @@ const Profile: React.FC = () => {
           </div>
         ) : (
           <p className="text-on-surface-variant text-center py-8">
-            Bắt đầu chơi để thấy hoạt động
+            {t('profile.startPlaying')}
           </p>
         )}
       </section>
@@ -333,13 +332,13 @@ const Profile: React.FC = () => {
       <section>
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-xl font-bold text-on-surface tracking-tight uppercase">
-            Bộ sưu tập huy hiệu
+            {t('profile.badgeCollection')}
           </h2>
           <a
             className="text-secondary text-sm font-black uppercase tracking-widest hover:underline"
             href="#"
           >
-            Xem tất cả
+            {t('home.viewAll')}
           </a>
         </div>
         {achievementsLoading ? (
@@ -348,7 +347,7 @@ const Profile: React.FC = () => {
           </div>
         ) : badges.length === 0 ? (
           <p className="text-on-surface-variant text-center py-8">
-            Chưa có huy hiệu
+            {t('profile.noBadges')}
           </p>
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">

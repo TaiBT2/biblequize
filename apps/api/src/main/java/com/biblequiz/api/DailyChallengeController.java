@@ -29,9 +29,11 @@ public class DailyChallengeController {
      * Public endpoint (guests allowed).
      */
     @GetMapping
-    public ResponseEntity<Map<String, Object>> getDailyChallenge(Authentication authentication) {
+    public ResponseEntity<Map<String, Object>> getDailyChallenge(
+            Authentication authentication,
+            @RequestParam(defaultValue = "vi") String language) {
         LocalDate today = LocalDate.now(ZoneOffset.UTC);
-        List<Question> questions = dailyChallengeService.getTodayQuestions();
+        List<Question> questions = dailyChallengeService.getTodayQuestions(language);
 
         boolean alreadyCompleted = false;
         if (authentication != null) {

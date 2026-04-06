@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../store/authStore';
 import { api } from '../api/client';
 
@@ -65,20 +66,6 @@ function formatPoints(n: number): string {
   return String(n);
 }
 
-function timeAgo(iso: string): string {
-  try {
-    const diff = Date.now() - new Date(iso).getTime();
-    const mins = Math.floor(diff / 60000);
-    if (mins < 60) return `${mins} phút trước`;
-    const hours = Math.floor(mins / 60);
-    if (hours < 24) return `${hours} giờ trước`;
-    const days = Math.floor(hours / 24);
-    return `${days} ngày trước`;
-  } catch {
-    return '';
-  }
-}
-
 /* ─── Skeleton ─── */
 
 function GroupSkeleton() {
@@ -108,6 +95,8 @@ function NoGroupView({
   onCreateClick: () => void;
   onJoinClick: () => void;
 }) {
+  const { t } = useTranslation();
+
   return (
     <div className="max-w-lg mx-auto text-center py-16" data-testid="no-group">
       <span
@@ -117,23 +106,23 @@ function NoGroupView({
         groups
       </span>
       <h2 className="text-2xl font-black tracking-tight text-on-surface mb-3">
-        Bạn chưa tham gia nhóm nào
+        {t('groups.noGroupTitle')}
       </h2>
       <p className="text-on-surface-variant mb-10 leading-relaxed">
-        Tạo nhóm mới cho Hội Thánh của bạn hoặc tham gia nhóm bằng mã mời.
+        {t('groups.noGroupDesc')}
       </p>
       <div className="flex justify-center gap-4">
         <button
           onClick={onCreateClick}
           className="px-8 py-4 gold-gradient text-on-secondary rounded-2xl font-black text-xs uppercase tracking-widest hover:shadow-[0_0_30px_rgba(232,168,50,0.4)] transition-all active:scale-95 shadow-lg"
         >
-          Tạo Nhóm
+          {t('groups.createGroup')}
         </button>
         <button
           onClick={onJoinClick}
           className="px-8 py-4 bg-surface-container-highest/80 backdrop-blur text-on-surface rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-surface-bright transition-all active:scale-95 border border-white/5"
         >
-          Tìm Nhóm
+          {t('groups.findGroup')}
         </button>
       </div>
     </div>
@@ -143,6 +132,8 @@ function NoGroupView({
 /* ─── Group Overview ─── */
 
 function GroupOverview({ groupId }: { groupId: string }) {
+  const { t } = useTranslation();
+
   const {
     data: group,
     isLoading: groupLoading,
@@ -171,8 +162,8 @@ function GroupOverview({ groupId }: { groupId: string }) {
     return (
       <div className="glass-card rounded-2xl p-10 text-center" data-testid="group-error">
         <span className="material-symbols-outlined text-5xl text-error mb-4 block">error</span>
-        <p className="text-on-surface font-bold text-lg mb-2">Không thể tải thông tin nhóm</p>
-        <p className="text-on-surface-variant text-sm">Nhóm có thể đã bị xoá hoặc bạn không còn là thành viên.</p>
+        <p className="text-on-surface font-bold text-lg mb-2">{t('groups.errorLoadGroup')}</p>
+        <p className="text-on-surface-variant text-sm">{t('groups.errorLoadGroupDesc')}</p>
       </div>
     );
   }
@@ -212,12 +203,12 @@ function GroupOverview({ groupId }: { groupId: string }) {
               <div className="flex flex-wrap gap-5 text-xs font-black tracking-widest uppercase text-secondary">
                 <span className="flex items-center gap-2 bg-surface-container/50 px-3 py-1 rounded-full">
                   <span className="material-symbols-outlined text-[16px]">groups</span>{' '}
-                  {group.memberCount ?? 0} Thành viên
+                  {group.memberCount ?? 0} {t('groups.members')}
                 </span>
                 {group.totalPoints != null && (
                   <span className="flex items-center gap-2 bg-surface-container/50 px-3 py-1 rounded-full">
                     <span className="material-symbols-outlined text-[16px]">workspace_premium</span>{' '}
-                    {formatPoints(group.totalPoints)} Điểm
+                    {formatPoints(group.totalPoints)} {t('groups.points')}
                   </span>
                 )}
                 {group.location && (
@@ -240,15 +231,15 @@ function GroupOverview({ groupId }: { groupId: string }) {
             <div className="flex items-center justify-between mb-10">
               <h2 className="text-2xl font-black tracking-tight flex items-center gap-3">
                 <span className="material-symbols-outlined text-secondary text-3xl">leaderboard</span>
-                Bảng Xếp Hạng Thành Viên
+                {t('groups.leaderboard')}
               </h2>
               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant bg-surface-container-high px-4 py-2 rounded-full">
-                Tuần này
+                {t('groups.thisWeek')}
               </span>
             </div>
 
             {(!leaderboard || leaderboard.length === 0) && (
-              <p className="text-center text-on-surface-variant py-8">Chưa có dữ liệu xếp hạng.</p>
+              <p className="text-center text-on-surface-variant py-8">{t('groups.noLeaderboardData')}</p>
             )}
 
             {top3.length > 0 && (
@@ -351,23 +342,23 @@ function GroupOverview({ groupId }: { groupId: string }) {
         <aside className="space-y-10">
           <section className="bg-surface-container rounded-[2.5rem] p-10 overflow-hidden shadow-xl border border-white/5">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-black tracking-tight">Thông báo</h2>
+              <h2 className="text-2xl font-black tracking-tight">{t('groups.announcements')}</h2>
             </div>
             <div className="space-y-10">
               {/* Scripture Quote Block */}
               <div className="relative bg-surface-container-low p-6 rounded-3xl border border-white/5">
                 <div className="absolute left-0 top-6 bottom-6 w-1.5 bg-secondary rounded-full shadow-[0_0_10px_rgba(232,168,50,0.5)]" />
                 <p className="text-sm font-medium italic text-on-surface/90 leading-relaxed mb-4">
-                  "Lời Chúa là ngọn đèn cho chân tôi, là ánh sáng cho đường lối tôi."
+                  {t('groups.scriptureQuote')}
                 </p>
                 <p className="text-[10px] font-black uppercase tracking-widest text-secondary">
-                  Thi Thiên 119:105
+                  {t('groups.scriptureRef')}
                 </p>
               </div>
 
               {(!announcements || announcements.length === 0) && (
                 <p className="text-center text-on-surface-variant py-4 text-sm">
-                  Chưa có thông báo nào.
+                  {t('groups.noAnnouncements')}
                 </p>
               )}
 
@@ -381,7 +372,7 @@ function GroupOverview({ groupId }: { groupId: string }) {
                         }`}
                       />
                       <span className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">
-                        {item.author} &bull; {timeAgo(item.createdAt)}
+                        {item.author} &bull; {new Date(item.createdAt).toLocaleDateString()}
                       </span>
                     </div>
                     <h4 className="font-black text-base group-hover:text-secondary transition-colors">
@@ -401,6 +392,7 @@ function GroupOverview({ groupId }: { groupId: string }) {
 /* ─── Main Component ─── */
 
 const Groups: React.FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
 
@@ -441,10 +433,10 @@ const Groups: React.FC = () => {
         setCreateDesc('');
         navigate(`/groups/${group.id}`);
       } else {
-        setCreateError(res.data.message || 'Tạo nhóm thất bại');
+        setCreateError(res.data.message || t('groups.createFailed'));
       }
     } catch (err: any) {
-      setCreateError(err.response?.data?.message || 'Lỗi kết nối');
+      setCreateError(err.response?.data?.message || t('groups.connectionError'));
     } finally {
       setCreateLoading(false);
     }
@@ -466,10 +458,10 @@ const Groups: React.FC = () => {
         setJoinCode('');
         navigate(`/groups/${group.id}`);
       } else {
-        setJoinError(res.data.message || 'Tham gia thất bại');
+        setJoinError(res.data.message || t('groups.joinFailed'));
       }
     } catch (err: any) {
-      setJoinError(err.response?.data?.message || 'Mã nhóm không hợp lệ');
+      setJoinError(err.response?.data?.message || t('groups.invalidCode'));
     } finally {
       setJoinLoading(false);
     }
@@ -504,31 +496,31 @@ const Groups: React.FC = () => {
             </button>
             <h3 className="text-xl font-black mb-6 flex items-center gap-3">
               <span className="material-symbols-outlined text-secondary">add_circle</span>
-              Tạo nhóm mới
+              {t('groups.createGroupModal')}
             </h3>
             <form onSubmit={handleCreate} className="space-y-5">
               <div>
                 <label className="block text-xs font-black uppercase tracking-widest text-on-surface-variant mb-2">
-                  Tên nhóm *
+                  {t('groups.groupName')} *
                 </label>
                 <input
                   className="w-full bg-surface-container-low border border-white/10 rounded-xl px-5 py-4 text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary/50 transition-colors"
                   value={createName}
                   onChange={(e) => setCreateName(e.target.value)}
-                  placeholder="VD: Hội thánh Tin Lành ABC"
+                  placeholder={t('groups.groupNamePlaceholder')}
                   maxLength={100}
                   autoFocus
                 />
               </div>
               <div>
                 <label className="block text-xs font-black uppercase tracking-widest text-on-surface-variant mb-2">
-                  Mô tả
+                  {t('groups.description')}
                 </label>
                 <textarea
                   className="w-full bg-surface-container-low border border-white/10 rounded-xl px-5 py-4 text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary/50 transition-colors resize-none h-24"
                   value={createDesc}
                   onChange={(e) => setCreateDesc(e.target.value)}
-                  placeholder="Mô tả ngắn về nhóm (tuỳ chọn)"
+                  placeholder={t('groups.descriptionPlaceholder')}
                   maxLength={500}
                 />
               </div>
@@ -538,7 +530,7 @@ const Groups: React.FC = () => {
                 className="w-full py-4 gold-gradient text-on-secondary rounded-xl font-black text-sm uppercase tracking-widest shadow-lg hover:shadow-[0_4px_25px_rgba(232,168,50,0.4)] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={createLoading || !createName.trim()}
               >
-                {createLoading ? 'Đang tạo...' : 'Tạo nhóm'}
+                {createLoading ? t('groups.creating') : t('groups.createGroupBtn')}
               </button>
             </form>
           </div>
@@ -561,18 +553,18 @@ const Groups: React.FC = () => {
             </button>
             <h3 className="text-xl font-black mb-6 flex items-center gap-3">
               <span className="material-symbols-outlined text-tertiary">search</span>
-              Tham gia nhóm
+              {t('groups.joinGroupModal')}
             </h3>
             <form onSubmit={handleJoin} className="space-y-5">
               <div>
                 <label className="block text-xs font-black uppercase tracking-widest text-on-surface-variant mb-2">
-                  Mã mời nhóm
+                  {t('groups.inviteCode')}
                 </label>
                 <input
                   className="w-full bg-surface-container-low border border-white/10 rounded-xl px-5 py-4 text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary/50 transition-colors text-center text-lg tracking-[0.1em]"
                   value={joinCode}
                   onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
-                  placeholder="VD: ABC123"
+                  placeholder={t('groups.inviteCodePlaceholder')}
                   maxLength={20}
                   autoFocus
                 />
@@ -583,7 +575,7 @@ const Groups: React.FC = () => {
                 className="w-full py-4 gold-gradient text-on-secondary rounded-xl font-black text-sm uppercase tracking-widest shadow-lg hover:shadow-[0_4px_25px_rgba(232,168,50,0.4)] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={joinLoading || !joinCode.trim()}
               >
-                {joinLoading ? 'Đang tham gia...' : 'Tham gia'}
+                {joinLoading ? t('groups.joining') : t('groups.joinBtn')}
               </button>
             </form>
           </div>
