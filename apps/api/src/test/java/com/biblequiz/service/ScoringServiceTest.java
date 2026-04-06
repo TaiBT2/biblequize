@@ -23,7 +23,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ScoringServiceTest {
 
-    private final ScoringService scoringService = new ScoringService();
+    private final ScoringService scoringService = new ScoringService(
+            new com.biblequiz.modules.ranked.service.TierRewardsConfig());
 
     // ── Base scores ──────────────────────────────────────────────────────────
 

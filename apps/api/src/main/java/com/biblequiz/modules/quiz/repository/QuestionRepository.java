@@ -100,6 +100,19 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
                        @Param("type") Question.Type type,
                        @Param("language") String language);
     
+    // Smart question selection — list queries (no pagination)
+    @Query("SELECT q FROM Question q WHERE q.isActive = true AND q.language = :language")
+    List<Question> findAllActiveByLanguage(@Param("language") String language);
+
+    @Query("SELECT q FROM Question q WHERE q.isActive = true AND q.language = :language AND q.book = :book")
+    List<Question> findAllActiveByLanguageAndBook(@Param("language") String language, @Param("book") String book);
+
+    @Query("SELECT q FROM Question q WHERE q.isActive = true AND q.language = :language AND q.difficulty = :difficulty")
+    List<Question> findAllActiveByLanguageAndDifficulty(@Param("language") String language, @Param("difficulty") Question.Difficulty difficulty);
+
+    @Query("SELECT q FROM Question q WHERE q.isActive = true AND q.language = :language AND q.book = :book AND q.difficulty = :difficulty")
+    List<Question> findAllActiveByLanguageAndBookAndDifficulty(@Param("language") String language, @Param("book") String book, @Param("difficulty") Question.Difficulty difficulty);
+
     // Review workflow
     Page<Question> findByReviewStatus(Question.ReviewStatus reviewStatus, Pageable pageable);
 
