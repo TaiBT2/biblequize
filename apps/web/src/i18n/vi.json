@@ -1,4 +1,12 @@
 {
+  "tiers": {
+    "newBeliever": "Tân Tín Hữu",
+    "seeker": "Người Tìm Kiếm",
+    "disciple": "Môn Đồ",
+    "sage": "Hiền Triết",
+    "prophet": "Tiên Tri",
+    "apostle": "Sứ Đồ"
+  },
   "common": {
     "loading": "Đang tải...",
     "error": "Có lỗi xảy ra",
@@ -32,7 +40,7 @@
     "profile": "Cá nhân",
     "achievements": "Thành tích",
     "settings": "Cài đặt",
-    "adminPanel": "Admin Panel"
+    "adminPanel": "Quản trị"
   },
   "auth": {
     "login": "Đăng nhập",
@@ -511,7 +519,9 @@
     "tournament": "Giải Đấu",
     "tournamentDesc": "Bracket elimination 1v1. Leader nhóm hội thánh có thể tổ chức.",
     "tournamentTag": "BRACKET 1V1",
-    "tournamentBtn": "Vào Giải Đấu"
+    "tournamentBtn": "Vào Giải Đấu",
+    "noEnergy": "Hết Năng Lượng",
+    "dailyCompleted": "Đã hoàn thành"
   },
   "achievements": {
     "title": "Thành Tích",

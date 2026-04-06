@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
-import { getTierName } from '../data/tiers'
+import { getTierByPoints } from '../data/tiers'
 import { setQuizLanguage, type QuizLanguage } from '../utils/quizLanguage'
 import { useTranslation } from 'react-i18next'
 
@@ -57,7 +57,7 @@ export default function AppLayout() {
   }
 
   const displayName = user?.name || t('home.defaultName')
-  const displayRole = getTierName(user?.totalPoints ?? 0)
+  const displayRole = t(getTierByPoints(user?.totalPoints ?? 0).nameKey)
 
   return (
     <div className="min-h-screen bg-[#11131e] text-[#e1e1f1]">
@@ -190,7 +190,7 @@ export default function AppLayout() {
                 className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-[#e8a832]/10 to-[#e7c268]/10 border border-[#e8a832]/20 text-[#e8a832] hover:bg-[#e8a832]/20 transition-colors text-sm font-medium"
               >
                 <span className="material-symbols-outlined text-lg">admin_panel_settings</span>
-                <span>{user?.role === 'ADMIN' || user?.role === 'admin' ? 'Admin Panel' : 'Moderation'}</span>
+                <span>{t('nav.adminPanel')}</span>
                 <span className="material-symbols-outlined text-xs ml-auto">open_in_new</span>
               </Link>
             </div>

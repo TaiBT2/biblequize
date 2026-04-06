@@ -151,23 +151,24 @@ const Profile: React.FC = () => {
     )
   }
 
-  const currentTier = getTierByPoints(profile.totalPoints)
-  const nextTier = getNextTier(profile.totalPoints)
+  const points = profile.totalPoints ?? 0
+  const currentTier = getTierByPoints(points)
+  const nextTier = getNextTier(points)
   const tierProgress = {
-    currentTierName: currentTier.name,
-    nextTierName: nextTier?.name ?? 'Max',
-    currentExp: profile.totalPoints,
+    currentTierName: t(currentTier.nameKey),
+    nextTierName: nextTier ? t(nextTier.nameKey) : 'Max',
+    currentExp: points,
     nextTierExp: nextTier?.minPoints ?? currentTier.maxPoints,
     progressPercent: nextTier
-      ? Math.min(100, Math.round(((profile.totalPoints - currentTier.minPoints) / (nextTier.minPoints - currentTier.minPoints)) * 100))
+      ? Math.min(100, Math.round(((points - currentTier.minPoints) / (nextTier.minPoints - currentTier.minPoints)) * 100))
       : 100,
-    expRemaining: nextTier ? nextTier.minPoints - profile.totalPoints : 0,
+    expRemaining: nextTier ? nextTier.minPoints - points : 0,
   }
 
   const quickStats = [
-    { icon: 'quiz', iconFill: false, label: t('profile.totalPoints'), value: profile.totalPoints.toLocaleString(), bgColor: 'bg-secondary/10', textColor: 'text-secondary' },
-    { icon: 'bolt', iconFill: true, label: t('profile.bestStreak'), value: `${profile.longestStreak} ${t('common.days')}`, bgColor: 'bg-[#e7c268]/10', textColor: 'text-[#e7c268]' },
-    { icon: 'local_fire_department', iconFill: true, label: t('profile.currentStreak'), value: `${profile.currentStreak} ${t('common.days')}`, bgColor: 'bg-primary/10', textColor: 'text-primary', hiddenOnMobile: true },
+    { icon: 'quiz', iconFill: false, label: t('profile.totalPoints'), value: (profile.totalPoints ?? 0).toLocaleString(), bgColor: 'bg-secondary/10', textColor: 'text-secondary' },
+    { icon: 'bolt', iconFill: true, label: t('profile.bestStreak'), value: `${profile.longestStreak ?? 0} ${t('common.days')}`, bgColor: 'bg-[#e7c268]/10', textColor: 'text-[#e7c268]' },
+    { icon: 'local_fire_department', iconFill: true, label: t('profile.currentStreak'), value: `${profile.currentStreak ?? 0} ${t('common.days')}`, bgColor: 'bg-primary/10', textColor: 'text-primary', hiddenOnMobile: true },
   ]
 
   const history = historyData?.content ?? (Array.isArray(historyData) ? historyData as unknown as SessionHistory[] : [])

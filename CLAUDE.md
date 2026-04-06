@@ -592,3 +592,30 @@ Ví dụ:
 - Không "simplified version" khi sync Stitch — phải pixel-perfect
 - Không sync Stitch mà không viết DIFF table trước — phải liệt kê sections trước khi code
 - Không tự ý đổi layout/grid/color khác Stitch HTML — Stitch là source of truth
+## Mobile Code Rules
+- TẤT CẢ business logic PHẢI nằm trong src/logic/ hoặc src/utils/
+- Components CHỈ chứa UI render + gọi logic functions
+- Mỗi logic file PHẢI có test file tương ứng
+- KHÔNG viết logic trong component
+## Mobile Testing Rules
+
+### Bắt buộc mỗi PR (Claude Code tự chạy):
+
+1. **Logic test cho MỌI function trong src/logic/ và src/utils/**
+   - Chạy: `npm test`
+   - Target: 100% logic functions có test
+   
+2. **Component test cho MỌI screen và component mới/sửa**
+   - Render test: component hiện đúng text, elements
+   - Interaction test: press, input, navigation
+   - Chạy: `npm test`
+   
+3. **Snapshot test cho MỌI screen**
+   - Tạo snapshot lần đầu
+   - Verify snapshot không thay đổi ngoài ý muốn
+   
+4. **TypeScript strict — no any**
+   - `"strict": true` trong tsconfig.json
+   - Type errors = bugs tiềm ẩn
+
+### Code structure bắt buộc:
