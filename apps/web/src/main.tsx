@@ -34,6 +34,7 @@ import NotificationsAdmin from './pages/admin/Notifications'
 import ConfigurationAdmin from './pages/admin/Configuration'
 import ExportCenter from './pages/admin/ExportCenter'
 import QuestionQuality from './pages/admin/QuestionQuality'
+import TestPanel from './pages/admin/TestPanel'
 import RequireAdmin from './contexts/RequireAdmin'
 import Review from './pages/Review'
 import Achievements from './pages/Achievements'
@@ -122,6 +123,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="config" element={<ConfigurationAdmin />} />
                   <Route path="export" element={<ExportCenter />} />
                   <Route path="question-quality" element={<QuestionQuality />} />
+                  <Route path="test" element={<TestPanel />} />
                 </Route>
 
                 {/* Catch-all 404 */}
