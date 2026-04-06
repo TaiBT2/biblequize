@@ -161,4 +161,64 @@ class SmartQuestionSelectorTest {
             assertThat(ids.add(q.getId())).isTrue();
         }
     }
+
+    @Test
+    void selectQuestions_respectsDifficultyDistributionForTier() {
+        // Tier 3: 35% easy, 45% medium, 20% hard
+        // Use null difficulty to trigger tier-based distribution
+        QuestionFilter noDiffFilter = new QuestionFilter(null, null, "vi");
+
+        when(userTierService.getTierLevel(USER_ID)).thenReturn(3);
+        when(tierDifficultyConfig.getDistribution(3))
+                .thenReturn(new TierDifficultyConfig.DifficultyDistribution(35, 45, 20, 25));
+
+        // Create questions per difficulty
+        List<Question> easyQs = IntStream.range(0, 50).mapToObj(i -> {
+            Question q = createQuestion("easy-" + i);
+            q.setDifficulty(Question.Difficulty.easy);
+            return q;
+        }).toList();
+        List<Question> medQs = IntStream.range(0, 50).mapToObj(i -> {
+            Question q = createQuestion("med-" + i);
+            q.setDifficulty(Question.Difficulty.medium);
+            return q;
+        }).toList();
+        List<Question> hardQs = IntStream.range(0, 50).mapToObj(i -> {
+            Question q = createQuestion("hard-" + i);
+            q.setDifficulty(Question.Difficulty.hard);
+            return q;
+        }).toList();
+
+        when(questionRepository.findAllActiveByLanguageAndDifficulty("vi", Question.Difficulty.easy))
+                .thenReturn(new ArrayList<>(easyQs));
+        when(questionRepository.findAllActiveByLanguageAndDifficulty("vi", Question.Difficulty.medium))
+                .thenReturn(new ArrayList<>(medQs));
+        when(questionRepository.findAllActiveByLanguageAndDifficulty("vi", Question.Difficulty.hard))
+                .thenReturn(new ArrayList<>(hardQs));
+        when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
+        when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
+
+        List<Question> selected = selector.selectQuestions(USER_ID, 10, noDiffFilter);
+
+        assertThat(selected).hasSize(10);
+        long hardCount = selected.stream()
+                .filter(q -> q.getDifficulty() == Question.Difficulty.hard).count();
+        // ~20% of 10 = 2, allow 1-3 range
+        assertThat(hardCount).isBetween(1L, 3L);
+    }
+
+    @Test
+    void getTimerSeconds_returnsTierBasedValue() {
+        when(userTierService.getTierLevel(USER_ID)).thenReturn(1);
+        when(tierDifficultyConfig.getDistribution(1))
+                .thenReturn(new TierDifficultyConfig.DifficultyDistribution(70, 25, 5, 30));
+
+        assertThat(selector.getTimerSeconds(USER_ID)).isEqualTo(30);
+
+        when(userTierService.getTierLevel(USER_ID)).thenReturn(6);
+        when(tierDifficultyConfig.getDistribution(6))
+                .thenReturn(new TierDifficultyConfig.DifficultyDistribution(5, 35, 60, 18));
+
+        assertThat(selector.getTimerSeconds(USER_ID)).isEqualTo(18);
+    }
 }

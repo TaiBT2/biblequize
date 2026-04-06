@@ -1,5 +1,8 @@
 package com.biblequiz.service;
 
+import com.biblequiz.modules.quiz.entity.Question;
+import com.biblequiz.modules.ranked.service.ScoringService;
+import com.biblequiz.modules.ranked.service.ScoringService.ScoreResult;
 import com.biblequiz.modules.ranked.service.TierDifficultyConfig;
 import com.biblequiz.modules.ranked.service.TierDifficultyConfig.DifficultyDistribution;
 import com.biblequiz.modules.ranked.service.TierRewardsConfig;
@@ -129,5 +132,63 @@ class TierConfigTest {
     @Test
     void unknownModeIsNeverUnlocked() {
         assertThat(unlockConfig.isUnlocked("UNKNOWN_MODE", 6)).isFalse();
+    }
+
+    // === XP Multiplier Integration ===
+
+    @Test
+    void xpGained_multipliedByTier() {
+        ScoringService scoring = new ScoringService(rewardsConfig);
+        // Base score for easy, 30s elapsed (no speed bonus), streak 0
+        ScoreResult base = scoring.calculate(Question.Difficulty.easy, 30000, 0);
+        // Tier 5 = 1.5x
+        ScoreResult boosted = scoring.calculateWithTier(Question.Difficulty.easy, 30000, 0, false, 5);
+        assertThat(boosted.earned).isEqualTo((int) Math.round(base.earned * 1.5));
+    }
+
+    @Test
+    void tier1_xpNotBoosted() {
+        ScoringService scoring = new ScoringService(rewardsConfig);
+        ScoreResult base = scoring.calculate(Question.Difficulty.medium, 15000, 0);
+        ScoreResult tier1 = scoring.calculateWithTier(Question.Difficulty.medium, 15000, 0, false, 1);
+        // 1.0x → same score
+        assertThat(tier1.earned).isEqualTo(base.earned);
+    }
+
+    @Test
+    void tier6_xpDoubled() {
+        ScoringService scoring = new ScoringService(rewardsConfig);
+        ScoreResult base = scoring.calculate(Question.Difficulty.hard, 10000, 3);
+        ScoreResult tier6 = scoring.calculateWithTier(Question.Difficulty.hard, 10000, 3, false, 6);
+        // 2.0x
+        assertThat(tier6.earned).isEqualTo(base.earned * 2);
+    }
+
+    // === Tier Progression Monotonicity ===
+
+    @Test
+    void hardPercentIncreasesWithTier() {
+        int prev = 0;
+        for (int tier = 1; tier <= 6; tier++) {
+            int hard = diffConfig.getDistribution(tier).hardPercent();
+            assertThat(hard).isGreaterThanOrEqualTo(prev);
+            prev = hard;
+        }
+    }
+
+    @Test
+    void suddenDeathRequiresTier5() {
+        assertThat(unlockConfig.isUnlocked("SUDDEN_DEATH", 4)).isFalse();
+        assertThat(unlockConfig.isUnlocked("SUDDEN_DEATH", 5)).isTrue();
+    }
+
+    @Test
+    void gameModeInfoReturnsSortedByRequiredTier() {
+        List<GameModeInfo> modes = unlockConfig.getModesForTier(6);
+        int prevTier = 0;
+        for (GameModeInfo m : modes) {
+            assertThat(m.requiredTier()).isGreaterThanOrEqualTo(prevTier);
+            prevTier = m.requiredTier();
+        }
     }
 }
