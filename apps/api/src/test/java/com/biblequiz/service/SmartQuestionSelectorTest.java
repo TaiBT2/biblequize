@@ -1,0 +1,156 @@
+package com.biblequiz.service;
+
+import com.biblequiz.modules.quiz.entity.Question;
+import com.biblequiz.modules.quiz.entity.UserQuestionHistory;
+import com.biblequiz.modules.quiz.repository.QuestionRepository;
+import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
+import com.biblequiz.modules.quiz.service.SmartQuestionSelector;
+import com.biblequiz.modules.quiz.service.SmartQuestionSelector.QuestionFilter;
+import com.biblequiz.modules.user.entity.User;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.stream.IntStream;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
+class SmartQuestionSelectorTest {
+
+    @Mock
+    private QuestionRepository questionRepository;
+
+    @Mock
+    private UserQuestionHistoryRepository historyRepository;
+
+    @InjectMocks
+    private SmartQuestionSelector selector;
+
+    private static final String USER_ID = "user-1";
+    private QuestionFilter defaultFilter;
+    private List<Question> allQuestions;
+
+    @BeforeEach
+    void setUp() {
+        defaultFilter = new QuestionFilter(null, null, "vi");
+        allQuestions = IntStream.range(0, 100)
+                .mapToObj(i -> createQuestion("q-" + i))
+                .toList();
+    }
+
+    private Question createQuestion(String id) {
+        Question q = new Question();
+        q.setId(id);
+        q.setBook("Genesis");
+        q.setDifficulty(Question.Difficulty.easy);
+        q.setLanguage("vi");
+        q.setIsActive(true);
+        return q;
+    }
+
+    @Test
+    void selectQuestions_prioritizesUnseenQuestions() {
+        // User has seen 10 questions, DB has 100
+        List<String> seenIds = IntStream.range(0, 10)
+                .mapToObj(i -> "q-" + i).toList();
+
+        when(questionRepository.findAllActiveByLanguage("vi")).thenReturn(new ArrayList<>(allQuestions));
+        when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(seenIds);
+        when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
+
+        List<Question> selected = selector.selectQuestions(USER_ID, 10, defaultFilter);
+
+        assertThat(selected).hasSize(10);
+        // Most should be unseen (at least 6 out of 10 = 60%)
+        long unseenCount = selected.stream()
+                .filter(q -> !seenIds.contains(q.getId()))
+                .count();
+        assertThat(unseenCount).isGreaterThanOrEqualTo(6);
+    }
+
+    @Test
+    void selectQuestions_includesReviewQuestions() {
+        // 5 questions need review
+        List<String> seenIds = IntStream.range(0, 20)
+                .mapToObj(i -> "q-" + i).toList();
+        List<String> reviewIds = IntStream.range(0, 5)
+                .mapToObj(i -> "q-" + i).toList();
+
+        when(questionRepository.findAllActiveByLanguage("vi")).thenReturn(new ArrayList<>(allQuestions));
+        when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(seenIds);
+        when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(reviewIds);
+
+        List<Question> selected = selector.selectQuestions(USER_ID, 10, defaultFilter);
+
+        assertThat(selected).hasSize(10);
+    }
+
+    @Test
+    void selectQuestions_fallbackToSeenWhenNoNewQuestions() {
+        // All 20 questions seen, no new ones
+        List<Question> smallPool = allQuestions.subList(0, 20);
+        List<String> seenIds = IntStream.range(0, 20)
+                .mapToObj(i -> "q-" + i).toList();
+
+        when(questionRepository.findAllActiveByLanguage("vi")).thenReturn(new ArrayList<>(smallPool));
+        when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(seenIds);
+        when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
+        // Mock history for each seen question
+        for (String qId : seenIds) {
+            UserQuestionHistory h = new UserQuestionHistory();
+            h.setLastSeenAt(LocalDateTime.now().minusDays(5));
+            when(historyRepository.findByUserIdAndQuestionId(USER_ID, qId))
+                    .thenReturn(Optional.of(h));
+        }
+
+        List<Question> selected = selector.selectQuestions(USER_ID, 10, defaultFilter);
+
+        assertThat(selected).hasSize(10);
+    }
+
+    @Test
+    void selectQuestions_neverReturnsLessThanRequested_ifPoolSufficient() {
+        when(questionRepository.findAllActiveByLanguage("vi")).thenReturn(new ArrayList<>(allQuestions));
+        when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
+        when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
+
+        List<Question> selected = selector.selectQuestions(USER_ID, 10, defaultFilter);
+
+        assertThat(selected).hasSize(10);
+    }
+
+    @Test
+    void selectQuestions_returnsAvailable_ifPoolInsufficient() {
+        List<Question> smallPool = allQuestions.subList(0, 5);
+
+        when(questionRepository.findAllActiveByLanguage("vi")).thenReturn(new ArrayList<>(smallPool));
+        when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
+        when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
+
+        List<Question> selected = selector.selectQuestions(USER_ID, 10, defaultFilter);
+
+        assertThat(selected).hasSize(5);
+    }
+
+    @Test
+    void selectQuestions_noDuplicates() {
+        when(questionRepository.findAllActiveByLanguage("vi")).thenReturn(new ArrayList<>(allQuestions));
+        when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
+        when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
+
+        List<Question> selected = selector.selectQuestions(USER_ID, 20, defaultFilter);
+
+        Set<String> ids = new HashSet<>();
+        for (Question q : selected) {
+            assertThat(ids.add(q.getId())).isTrue();
+        }
+    }
+}

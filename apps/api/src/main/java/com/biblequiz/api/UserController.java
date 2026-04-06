@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
 import com.biblequiz.modules.quiz.entity.QuizSession;
+import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.quiz.repository.QuizSessionRepository;
+import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
@@ -45,6 +47,12 @@ public class UserController {
 
     @Autowired
     private QuizSessionRepository quizSessionRepository;
+
+    @Autowired
+    private QuestionRepository questionRepository;
+
+    @Autowired
+    private UserQuestionHistoryRepository userQuestionHistoryRepository;
 
     @GetMapping
     public ResponseEntity<UserResponse> getCurrentUser(Authentication authentication) {
@@ -288,6 +296,55 @@ public class UserController {
                 "totalItems", sessions.getTotalElements(),
                 "currentPage", page,
                 "hasMore", sessions.hasNext()
+        ));
+    }
+
+    @GetMapping("/question-coverage")
+    public ResponseEntity<?> getQuestionCoverage(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String email = null;
+        if (authentication.getPrincipal() instanceof UserDetails ud) {
+            email = ud.getUsername();
+        } else if (authentication.getPrincipal() instanceof OAuth2User oauth2) {
+            email = oauth2.getAttribute("email");
+        }
+
+        Optional<User> userOpt = email != null ? userRepository.findByEmail(email) : Optional.empty();
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        User user = userOpt.get();
+        long totalQuestions = questionRepository.countByFilters(null, null, null, null);
+        long seenQuestions = userQuestionHistoryRepository.countByUserId(user.getId());
+        long masteredQuestions = userQuestionHistoryRepository.countMasteredByUserId(user.getId());
+        long needReview = userQuestionHistoryRepository
+                .findNeedReviewQuestionIds(user.getId(), java.time.LocalDateTime.now()).size();
+
+        double coveragePercent = totalQuestions > 0
+                ? Math.round((double) seenQuestions / totalQuestions * 10000.0) / 100.0
+                : 0;
+
+        List<Object[]> bookCounts = userQuestionHistoryRepository.countSeenByBook(user.getId());
+        List<Map<String, Object>> byBook = bookCounts.stream().map(row -> {
+            String book = (String) row[0];
+            long seen = ((Number) row[1]).longValue();
+            long bookTotal = questionRepository.countByFilters(book, null, null, null);
+            double pct = bookTotal > 0 ? Math.round((double) seen / bookTotal * 10000.0) / 100.0 : 0;
+            return Map.<String, Object>of(
+                    "book", book, "total", bookTotal, "seen", seen, "percent", pct);
+        }).toList();
+
+        return ResponseEntity.ok(Map.of(
+                "totalQuestions", totalQuestions,
+                "seenQuestions", seenQuestions,
+                "coveragePercent", coveragePercent,
+                "byBook", byBook,
+                "needReview", needReview,
+                "masteredQuestions", masteredQuestions
         ));
     }
 }

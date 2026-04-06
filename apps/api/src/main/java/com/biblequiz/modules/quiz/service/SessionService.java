@@ -17,6 +17,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.biblequiz.modules.quiz.entity.UserQuestionHistory;
+import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
+
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -31,6 +34,8 @@ public class SessionService {
     private final UserDailyProgressRepository userDailyProgressRepository;
     private final ObjectMapper objectMapper;
     private final QuestionService questionService;
+    private final UserQuestionHistoryRepository userQuestionHistoryRepository;
+    private final SmartQuestionSelector smartQuestionSelector;
 
     public SessionService(QuizSessionRepository quizSessionRepository,
             QuizSessionQuestionRepository quizSessionQuestionRepository,
@@ -39,7 +44,9 @@ public class SessionService {
             UserRepository userRepository,
             UserDailyProgressRepository userDailyProgressRepository,
             ObjectMapper objectMapper,
-            QuestionService questionService) {
+            QuestionService questionService,
+            UserQuestionHistoryRepository userQuestionHistoryRepository,
+            SmartQuestionSelector smartQuestionSelector) {
         this.quizSessionRepository = quizSessionRepository;
         this.quizSessionQuestionRepository = quizSessionQuestionRepository;
         this.questionRepository = questionRepository;
@@ -48,6 +55,8 @@ public class SessionService {
         this.userDailyProgressRepository = userDailyProgressRepository;
         this.objectMapper = objectMapper;
         this.questionService = questionService;
+        this.userQuestionHistoryRepository = userQuestionHistoryRepository;
+        this.smartQuestionSelector = smartQuestionSelector;
     }
 
     @Transactional
@@ -71,9 +80,19 @@ public class SessionService {
         String book = (String) config.getOrDefault("book", null);
         String difficultyStr = (String) config.getOrDefault("difficulty", null);
         String language = (String) config.getOrDefault("language", "vi");
-        @SuppressWarnings("unchecked")
-        List<String> excludeIds = (List<String>) config.getOrDefault("excludeQuestionIds", null);
-        List<Question> questions = questionService.getRandomQuestions(book, difficultyStr, language, questionCount, excludeIds);
+
+        List<Question> questions;
+        boolean useSmartSelection = (mode == QuizSession.Mode.practice || mode == QuizSession.Mode.ranked);
+        if (useSmartSelection) {
+            // Smart selection: prioritize unseen + review questions for practice/ranked
+            var filter = new SmartQuestionSelector.QuestionFilter(book, difficultyStr, language);
+            questions = smartQuestionSelector.selectQuestions(owner.getId(), questionCount, filter);
+        } else {
+            // Random selection: daily/multiplayer need same questions for all users
+            @SuppressWarnings("unchecked")
+            List<String> excludeIds = (List<String>) config.getOrDefault("excludeQuestionIds", null);
+            questions = questionService.getRandomQuestions(book, difficultyStr, language, questionCount, excludeIds);
+        }
 
         List<QuizSessionQuestion> qsqList = new ArrayList<>();
         int order = 0;
@@ -179,6 +198,8 @@ public class SessionService {
             qsq.setScoreEarned(scoreDelta);
             quizSessionQuestionRepository.save(qsq);
         }
+
+        recordQuestionHistory(user, question, isCorrect);
 
         return toAnswerResult(answer, question);
     }
@@ -315,6 +336,37 @@ public class SessionService {
         String provider = "local";
         User user = new User(UUID.randomUUID().toString(), name, email, provider);
         return userRepository.save(user);
+    }
+
+    private void recordQuestionHistory(User user, Question question, boolean isCorrect) {
+        UserQuestionHistory history = userQuestionHistoryRepository
+                .findByUserIdAndQuestionId(user.getId(), question.getId())
+                .orElseGet(() -> {
+                    UserQuestionHistory h = new UserQuestionHistory(
+                            UUID.randomUUID().toString(), user, question);
+                    h.setTimesSeen(0);
+                    h.setTimesCorrect(0);
+                    h.setTimesWrong(0);
+                    return h;
+                });
+
+        history.setTimesSeen(history.getTimesSeen() + 1);
+        history.setLastSeenAt(LocalDateTime.now());
+
+        if (isCorrect) {
+            history.setTimesCorrect(history.getTimesCorrect() + 1);
+            history.setLastCorrectAt(LocalDateTime.now());
+            // SRS: correct → review later (3, 6, 9... max 30 days)
+            int days = Math.min(30, history.getTimesCorrect() * 3);
+            history.setNextReviewAt(LocalDateTime.now().plusDays(days));
+        } else {
+            history.setTimesWrong(history.getTimesWrong() + 1);
+            history.setLastWrongAt(LocalDateTime.now());
+            // SRS: wrong → review soon (1 day)
+            history.setNextReviewAt(LocalDateTime.now().plusDays(1));
+        }
+
+        userQuestionHistoryRepository.save(history);
     }
 
     private int computeScore(Question question, int elapsedMs) {
