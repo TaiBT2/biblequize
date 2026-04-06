@@ -3,6 +3,9 @@ package com.biblequiz.modules.quiz.service;
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
+import com.biblequiz.modules.ranked.service.TierDifficultyConfig;
+import com.biblequiz.modules.ranked.service.TierDifficultyConfig.DifficultyDistribution;
+import com.biblequiz.modules.ranked.service.UserTierService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -13,23 +16,80 @@ public class SmartQuestionSelector {
 
     private final QuestionRepository questionRepository;
     private final UserQuestionHistoryRepository historyRepository;
+    private final TierDifficultyConfig tierDifficultyConfig;
+    private final UserTierService userTierService;
 
     public SmartQuestionSelector(QuestionRepository questionRepository,
-                                 UserQuestionHistoryRepository historyRepository) {
+                                 UserQuestionHistoryRepository historyRepository,
+                                 TierDifficultyConfig tierDifficultyConfig,
+                                 UserTierService userTierService) {
         this.questionRepository = questionRepository;
         this.historyRepository = historyRepository;
+        this.tierDifficultyConfig = tierDifficultyConfig;
+        this.userTierService = userTierService;
     }
 
     /**
-     * Select questions intelligently based on user history.
-     *
-     * Priority pools:
-     * 1. Never seen (60%)
-     * 2. Need review — wrong > correct, past due (20%)
-     * 3. Seen long ago — >30 days (15%)
-     * 4. Seen recently — fallback (5%)
+     * Select questions with tier-based difficulty distribution + smart history.
+     * If filter already specifies a difficulty, uses that. Otherwise distributes by tier.
      */
     public List<Question> selectQuestions(String userId, int count, QuestionFilter filter) {
+        if (filter.difficulty() != null) {
+            // Explicit difficulty → use smart selection with that difficulty only
+            return selectWithSmartHistory(userId, count, filter);
+        }
+
+        // No explicit difficulty → distribute by tier
+        int tierLevel = userTierService.getTierLevel(userId);
+        DifficultyDistribution dist = tierDifficultyConfig.getDistribution(tierLevel);
+
+        int easyCount = (int) Math.round(count * dist.easyPercent() / 100.0);
+        int mediumCount = (int) Math.round(count * dist.mediumPercent() / 100.0);
+        int hardCount = count - easyCount - mediumCount;
+
+        List<Question> questions = new ArrayList<>();
+        questions.addAll(selectWithSmartHistory(userId, easyCount,
+                new QuestionFilter(filter.book(), "easy", filter.language())));
+        questions.addAll(selectWithSmartHistory(userId, mediumCount,
+                new QuestionFilter(filter.book(), "medium", filter.language())));
+        questions.addAll(selectWithSmartHistory(userId, hardCount,
+                new QuestionFilter(filter.book(), "hard", filter.language())));
+
+        // If not enough from per-difficulty, fill from any difficulty
+        if (questions.size() < count) {
+            int remaining = count - questions.size();
+            Set<String> selectedIds = new HashSet<>();
+            for (Question q : questions) selectedIds.add(q.getId());
+
+            List<Question> extra = selectWithSmartHistory(userId, remaining,
+                    new QuestionFilter(filter.book(), null, filter.language()));
+            for (Question q : extra) {
+                if (!selectedIds.contains(q.getId())) {
+                    questions.add(q);
+                    if (questions.size() >= count) break;
+                }
+            }
+        }
+
+        Collections.shuffle(questions);
+        return questions;
+    }
+
+    /**
+     * Get the timer seconds for a user based on their tier.
+     */
+    public int getTimerSeconds(String userId) {
+        int tierLevel = userTierService.getTierLevel(userId);
+        return tierDifficultyConfig.getDistribution(tierLevel).timerSeconds();
+    }
+
+    /**
+     * Smart selection from a single pool (with or without difficulty filter).
+     * Prioritizes: unseen → need review → seen long ago → seen recently.
+     */
+    private List<Question> selectWithSmartHistory(String userId, int count, QuestionFilter filter) {
+        if (count <= 0) return List.of();
+
         Set<String> seenIds = new HashSet<>(historyRepository.findQuestionIdsByUserId(userId));
         Set<String> reviewIds = new HashSet<>(
                 historyRepository.findNeedReviewQuestionIds(userId, LocalDateTime.now()));
@@ -67,7 +127,6 @@ public class SmartQuestionSelector {
 
         List<Question> selected = new ArrayList<>();
 
-        // Pool allocation
         int newCount = Math.min((int) (count * 0.6), neverSeen.size());
         selected.addAll(neverSeen.subList(0, newCount));
 
@@ -77,7 +136,6 @@ public class SmartQuestionSelector {
         int oldCount = Math.min((int) (count * 0.15), seenLongAgo.size());
         selected.addAll(seenLongAgo.subList(0, oldCount));
 
-        // Fill remaining from all pools
         int remaining = count - selected.size();
         if (remaining > 0) {
             List<Question> fallback = new ArrayList<>();
@@ -92,7 +150,6 @@ public class SmartQuestionSelector {
             selected.addAll(fallback.subList(0, Math.min(remaining, fallback.size())));
         }
 
-        Collections.shuffle(selected);
         return selected;
     }
 

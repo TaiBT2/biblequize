@@ -47,6 +47,9 @@ public class RankedController {
     private BookProgressionService bookProgressionService;
 
     @Autowired
+    private com.biblequiz.modules.ranked.service.GameModeUnlockConfig gameModeUnlockConfig;
+
+    @Autowired
     private UserBookProgressRepository userBookProgressRepository;
 
     @Autowired
@@ -640,5 +643,25 @@ public class RankedController {
             result.put("progressPercent", 100);
         }
         return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/me/game-modes")
+    public ResponseEntity<?> getGameModes(Authentication authentication) {
+        if (authentication == null) {
+            return ResponseEntity.status(401).body(Map.of("error", "Not authenticated"));
+        }
+        String email = resolveEmail(authentication);
+        User user = email != null ? userRepository.findByEmail(email).orElse(null) : null;
+        if (user == null) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        int totalPoints = udpRepository.findByUserIdOrderByDateDesc(user.getId())
+                .stream()
+                .mapToInt(udp -> udp.getPointsCounted() != null ? udp.getPointsCounted() : 0)
+                .sum();
+        int tierLevel = com.biblequiz.modules.ranked.model.RankTier.fromPoints(totalPoints).ordinal() + 1;
+
+        return ResponseEntity.ok(gameModeUnlockConfig.getModesForTier(tierLevel));
     }
 }

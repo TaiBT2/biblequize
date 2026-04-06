@@ -6,6 +6,8 @@ import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
 import com.biblequiz.modules.quiz.service.SmartQuestionSelector;
 import com.biblequiz.modules.quiz.service.SmartQuestionSelector.QuestionFilter;
+import com.biblequiz.modules.ranked.service.TierDifficultyConfig;
+import com.biblequiz.modules.ranked.service.UserTierService;
 import com.biblequiz.modules.user.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,6 +33,12 @@ class SmartQuestionSelectorTest {
     @Mock
     private UserQuestionHistoryRepository historyRepository;
 
+    @Mock
+    private TierDifficultyConfig tierDifficultyConfig;
+
+    @Mock
+    private UserTierService userTierService;
+
     @InjectMocks
     private SmartQuestionSelector selector;
 
@@ -40,7 +48,8 @@ class SmartQuestionSelectorTest {
 
     @BeforeEach
     void setUp() {
-        defaultFilter = new QuestionFilter(null, null, "vi");
+        // Use explicit difficulty to skip tier distribution logic for simpler tests
+        defaultFilter = new QuestionFilter(null, "easy", "vi");
         allQuestions = IntStream.range(0, 100)
                 .mapToObj(i -> createQuestion("q-" + i))
                 .toList();
@@ -62,7 +71,7 @@ class SmartQuestionSelectorTest {
         List<String> seenIds = IntStream.range(0, 10)
                 .mapToObj(i -> "q-" + i).toList();
 
-        when(questionRepository.findAllActiveByLanguage("vi")).thenReturn(new ArrayList<>(allQuestions));
+        when(questionRepository.findAllActiveByLanguageAndDifficulty(eq("vi"), eq(Question.Difficulty.easy))).thenReturn(new ArrayList<>(allQuestions));
         when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(seenIds);
         when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
 
@@ -84,7 +93,7 @@ class SmartQuestionSelectorTest {
         List<String> reviewIds = IntStream.range(0, 5)
                 .mapToObj(i -> "q-" + i).toList();
 
-        when(questionRepository.findAllActiveByLanguage("vi")).thenReturn(new ArrayList<>(allQuestions));
+        when(questionRepository.findAllActiveByLanguageAndDifficulty(eq("vi"), eq(Question.Difficulty.easy))).thenReturn(new ArrayList<>(allQuestions));
         when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(seenIds);
         when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(reviewIds);
 
@@ -100,10 +109,9 @@ class SmartQuestionSelectorTest {
         List<String> seenIds = IntStream.range(0, 20)
                 .mapToObj(i -> "q-" + i).toList();
 
-        when(questionRepository.findAllActiveByLanguage("vi")).thenReturn(new ArrayList<>(smallPool));
+        when(questionRepository.findAllActiveByLanguageAndDifficulty(eq("vi"), eq(Question.Difficulty.easy))).thenReturn(new ArrayList<>(smallPool));
         when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(seenIds);
         when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
-        // Mock history for each seen question
         for (String qId : seenIds) {
             UserQuestionHistory h = new UserQuestionHistory();
             h.setLastSeenAt(LocalDateTime.now().minusDays(5));
@@ -118,7 +126,7 @@ class SmartQuestionSelectorTest {
 
     @Test
     void selectQuestions_neverReturnsLessThanRequested_ifPoolSufficient() {
-        when(questionRepository.findAllActiveByLanguage("vi")).thenReturn(new ArrayList<>(allQuestions));
+        when(questionRepository.findAllActiveByLanguageAndDifficulty(eq("vi"), eq(Question.Difficulty.easy))).thenReturn(new ArrayList<>(allQuestions));
         when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
         when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
 
@@ -131,7 +139,7 @@ class SmartQuestionSelectorTest {
     void selectQuestions_returnsAvailable_ifPoolInsufficient() {
         List<Question> smallPool = allQuestions.subList(0, 5);
 
-        when(questionRepository.findAllActiveByLanguage("vi")).thenReturn(new ArrayList<>(smallPool));
+        when(questionRepository.findAllActiveByLanguageAndDifficulty(eq("vi"), eq(Question.Difficulty.easy))).thenReturn(new ArrayList<>(smallPool));
         when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
         when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
 
@@ -142,7 +150,7 @@ class SmartQuestionSelectorTest {
 
     @Test
     void selectQuestions_noDuplicates() {
-        when(questionRepository.findAllActiveByLanguage("vi")).thenReturn(new ArrayList<>(allQuestions));
+        when(questionRepository.findAllActiveByLanguageAndDifficulty(eq("vi"), eq(Question.Difficulty.easy))).thenReturn(new ArrayList<>(allQuestions));
         when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
         when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
 

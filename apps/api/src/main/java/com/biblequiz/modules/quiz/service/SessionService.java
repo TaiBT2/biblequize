@@ -94,10 +94,15 @@ public class SessionService {
             questions = questionService.getRandomQuestions(book, difficultyStr, language, questionCount, excludeIds);
         }
 
+        // Tier-based timer: higher tier → shorter timer
+        int timerSec = useSmartSelection
+                ? smartQuestionSelector.getTimerSeconds(owner.getId())
+                : 30;
+
         List<QuizSessionQuestion> qsqList = new ArrayList<>();
         int order = 0;
         for (Question q : questions) {
-            qsqList.add(new QuizSessionQuestion(UUID.randomUUID().toString(), session, q, order++, 30));
+            qsqList.add(new QuizSessionQuestion(UUID.randomUUID().toString(), session, q, order++, timerSec));
         }
         quizSessionQuestionRepository.saveAll(qsqList);
 

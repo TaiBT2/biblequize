@@ -16,6 +16,11 @@ import org.springframework.stereotype.Service;
 public class ScoringService {
 
     private static final int TIME_LIMIT_MS = 30_000;
+    private final TierRewardsConfig tierRewardsConfig;
+
+    public ScoringService(TierRewardsConfig tierRewardsConfig) {
+        this.tierRewardsConfig = tierRewardsConfig;
+    }
 
     public static class ScoreResult {
         public final int earned;
@@ -73,6 +78,18 @@ public class ScoringService {
      */
     public ScoreResult calculate(Question.Difficulty difficulty, int clientElapsedMs, int currentStreak) {
         return calculate(difficulty, clientElapsedMs, currentStreak, false);
+    }
+
+    /**
+     * Calculate with tier XP multiplier applied.
+     */
+    public ScoreResult calculateWithTier(Question.Difficulty difficulty, int clientElapsedMs,
+                                          int currentStreak, boolean isDailyFirst, int tierLevel) {
+        ScoreResult base = calculate(difficulty, clientElapsedMs, currentStreak, isDailyFirst);
+        double multiplier = tierRewardsConfig.getRewards(tierLevel).xpMultiplier();
+        int boosted = (int) Math.round(base.earned * multiplier);
+        return new ScoreResult(boosted, base.baseScore, base.speedBonus,
+                base.comboMultiplierPercent, base.isDailyFirst);
     }
 
     private int getBaseScore(Question.Difficulty difficulty) {

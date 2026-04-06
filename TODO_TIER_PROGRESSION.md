@@ -69,6 +69,19 @@
 
 ---
 
-## Phase 2: Difficulty Scaling theo Tier [TODO]
-## Phase 3: Tier Rewards — XP Multiplier + Energy [TODO]
-## Phase 4: Unlock Game Modes theo Tier [TODO]
+## Phase 2: Difficulty Scaling theo Tier [DONE]
+- TierDifficultyConfig: 6 tiers, difficulty % + timer seconds
+- SmartQuestionSelector: tier-based difficulty distribution
+- SessionService: timer seconds from tier (not hardcoded 30s)
+- Tests: 5 difficulty distribution tests
+
+## Phase 3: Tier Rewards — XP Multiplier + Energy [DONE]
+- TierRewardsConfig: xpMultiplier (1.0x-2.0x), energyRegen, streakFreezes
+- ScoringService.calculateWithTier(): applies XP multiplier
+- Tests: 4 reward tests
+
+## Phase 4: Unlock Game Modes theo Tier [DONE]
+- GameModeUnlockConfig: 8 modes with tier requirements
+- GET /api/me/game-modes endpoint
+- Tests: 6 unlock tests
+- UserTierService: reusable helper for tier level calculation
