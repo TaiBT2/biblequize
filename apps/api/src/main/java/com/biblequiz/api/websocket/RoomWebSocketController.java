@@ -432,6 +432,27 @@ public class RoomWebSocketController {
     }
 
     /**
+     * Handle real-time reaction (social fun).
+     * Rate limited: max 3 reactions per 10 seconds per user (handled by WebSocket rate limiter).
+     */
+    @MessageMapping("/room/{roomId}/reaction")
+    public void handleReaction(@DestinationVariable String roomId,
+                                @Payload WebSocketMessage.ReactionData reaction,
+                                Authentication authentication) {
+        try {
+            String username = authentication.getName();
+            User user = userRepository.findByEmail(username).orElseThrow();
+            reaction.setSenderId(user.getId());
+            reaction.setSenderName(user.getName());
+
+            sendToRoom(roomId, new WebSocketMessage.Message(
+                    WebSocketMessage.MessageTypes.REACTION, reaction));
+        } catch (Exception e) {
+            // Silently ignore reaction errors
+        }
+    }
+
+    /**
      * Send a generic message to a room topic
      */
     public void sendToRoom(String roomId, WebSocketMessage.Message message) {

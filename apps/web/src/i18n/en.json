@@ -523,6 +523,15 @@
     "noEnergy": "No Energy",
     "dailyCompleted": "Completed"
   },
+  "liveFeed": {
+    "correct1": "✅ {{name}} answered correctly! ({{time}}s)",
+    "correct2": "🎯 {{name}} nailed it!",
+    "correct3": "💪 {{name}} is on fire!",
+    "correct4": "⚡ {{name}} lightning fast! ({{time}}s)",
+    "wrong1": "❌ {{name}} got it wrong",
+    "wrong2": "😅 {{name}} missed that one",
+    "wrong3": "📖 {{name}} needs to study more"
+  },
   "achievements": {
     "title": "Achievements",
     "loading": "Loading...",
