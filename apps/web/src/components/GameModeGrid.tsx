@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
@@ -28,12 +29,12 @@ function msUntilMidnight(): number {
 /* ── Card config ── */
 interface CardConfig {
   id: string
-  title: string
-  desc: string
+  titleKey: string
+  descKey: string
   icon: string
   color: string
   borderHover: string
-  cta: string
+  ctaKey: string
   ctaClass: string
   route: string
   iconFill?: boolean
@@ -44,73 +45,73 @@ interface CardConfig {
 const CARDS: CardConfig[] = [
   {
     id: 'practice',
-    title: 'Luyện Tập',
-    desc: 'Học không áp lực, không giới hạn thời gian và năng lượng.',
+    titleKey: 'gameModes.practice',
+    descKey: 'gameModes.practiceDesc',
     icon: 'menu_book',
     color: 'text-secondary',
     borderHover: 'hover:border-secondary/30',
-    cta: 'Bắt Đầu',
+    ctaKey: 'common.startNow',
     ctaClass: 'bg-surface-container-highest text-secondary border border-outline-variant/20 hover:bg-secondary hover:text-on-secondary',
     route: '/practice',
   },
   {
     id: 'ranked',
-    title: 'Thi Đấu Xếp Hạng',
-    desc: 'Tranh tài trực tiếp, tiêu tốn năng lượng để nhận điểm rank lớn.',
+    titleKey: 'gameModes.ranked',
+    descKey: 'gameModes.rankedDesc',
     icon: 'bolt',
     iconFill: true,
     color: 'text-secondary',
     borderHover: 'hover:shadow-[0_0_30px_rgba(248,189,69,0.05)]',
     borderDefault: 'border-secondary/20',
     bgIcon: 'text-secondary',
-    cta: 'Vào Thi Đấu',
+    ctaKey: 'gameModes.rankedBtn',
     ctaClass: 'gold-gradient text-on-secondary shadow-lg shadow-secondary/10 active:scale-95',
     route: '/ranked',
   },
   {
     id: 'daily',
-    title: 'Thử Thách Ngày',
-    desc: 'Mỗi ngày một chủ đề đặc biệt. Hoàn thành để duy trì Streak.',
+    titleKey: 'gameModes.daily',
+    descKey: 'gameModes.dailyDesc',
     icon: 'calendar_today',
     color: 'text-tertiary',
     borderHover: 'hover:border-tertiary/30',
     bgIcon: 'text-tertiary',
-    cta: 'Thử Thách Ngay',
+    ctaKey: 'gameModes.dailyBtn',
     ctaClass: 'bg-tertiary/10 text-tertiary border border-tertiary/20 hover:bg-tertiary hover:text-on-tertiary',
     route: '/daily',
   },
   {
     id: 'group',
-    title: 'Nhóm Giáo Xứ',
-    desc: 'Cùng học và thi đấu với anh em trong nhóm hội thánh, nhóm tế bào.',
+    titleKey: 'gameModes.groups',
+    descKey: 'gameModes.groupsDesc',
     icon: 'church',
     color: 'text-primary',
     borderHover: 'hover:border-primary/30',
     bgIcon: 'text-primary',
-    cta: 'Vào Nhóm',
+    ctaKey: 'gameModes.groupsBtn',
     ctaClass: 'bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-on-primary',
     route: '/groups',
   },
   {
     id: 'multiplayer',
-    title: 'Phòng Chơi',
-    desc: 'Tạo phòng bằng mã 6 chữ số hoặc share link. 2–20 người/phòng.',
+    titleKey: 'gameModes.rooms',
+    descKey: 'gameModes.roomsDesc',
     icon: 'gamepad',
     color: 'text-secondary',
     borderHover: 'hover:border-secondary/30',
-    cta: 'Tạo Phòng',
+    ctaKey: 'gameModes.roomsBtn',
     ctaClass: 'bg-surface-container-highest text-secondary border border-outline-variant/20 hover:bg-secondary hover:text-on-secondary',
     route: '/multiplayer',
   },
   {
     id: 'tournament',
-    title: 'Giải Đấu',
-    desc: 'Bracket elimination 1v1. Leader nhóm hội thánh có thể tổ chức.',
+    titleKey: 'gameModes.tournament',
+    descKey: 'gameModes.tournamentDesc',
     icon: 'trophy',
     color: 'text-error',
     borderHover: 'hover:border-error/30',
     bgIcon: 'text-error',
-    cta: 'Vào Giải Đấu',
+    ctaKey: 'gameModes.tournamentBtn',
     ctaClass: 'bg-error/10 text-error border border-error/20 hover:bg-error hover:text-on-error',
     route: '/tournaments',
   },
@@ -118,6 +119,7 @@ const CARDS: CardConfig[] = [
 
 /* ── Component ── */
 export default function GameModeGrid() {
+  const { t } = useTranslation()
   const navigate = useNavigate()
 
   // Ranked state
@@ -201,32 +203,32 @@ export default function GameModeGrid() {
   function getStatusLine(id: string) {
     switch (id) {
       case 'practice':
-        return <span className="text-[10px] font-bold text-secondary-container uppercase">Không giới hạn</span>
+        return <span className="text-[10px] font-bold text-secondary-container uppercase">{t('gameModes.practiceTag')}</span>
       case 'ranked':
         return (
           <div className="flex flex-col">
             <span className="text-[10px] font-black text-secondary uppercase">
-              ⚡ {energyText} Năng lượng
+              ⚡ {t('gameModes.rankedEnergy', { current: rankedStatus.livesRemaining, max: rankedStatus.dailyLives })}
             </span>
-            <span className="text-[8px] text-error font-medium">Sai -5 năng lượng/câu</span>
+            <span className="text-[8px] text-error font-medium">{t('gameModes.rankedCost')}</span>
           </div>
         )
       case 'daily':
         return (
           <span className="text-[10px] font-bold text-tertiary uppercase">
-            {dailyLoading ? '...' : dailyCompleted ? '✅ Đã hoàn thành' : `Kết thúc sau ${formatCountdown(countdown)}`}
+            {dailyLoading ? '...' : dailyCompleted ? `✅ ${t('gameModes.dailyCompleted')}` : t('gameModes.dailyEndsIn', { time: formatCountdown(countdown) })}
           </span>
         )
       case 'group':
-        return <span className="text-[10px] font-bold text-primary-fixed-dim uppercase">Nhóm Hội Thánh</span>
+        return <span className="text-[10px] font-bold text-primary-fixed-dim uppercase">{t('gameModes.groupsTag')}</span>
       case 'multiplayer':
         return (
           <span className="text-[10px] font-bold text-secondary-container uppercase">
-            {roomLoading ? '...' : `${roomCount} phòng đang mở`}
+            {roomLoading ? '...' : t('gameModes.roomsTag', { count: roomCount })}
           </span>
         )
       case 'tournament':
-        return <span className="text-[10px] font-bold text-error uppercase">Bracket 1v1</span>
+        return <span className="text-[10px] font-bold text-error uppercase">{t('gameModes.tournamentTag')}</span>
       default:
         return null
     }
@@ -257,9 +259,9 @@ export default function GameModeGrid() {
                 >
                   {card.icon}
                 </span>
-                <h4 className="font-bold text-on-surface">{card.title}</h4>
+                <h4 className="font-bold text-on-surface">{t(card.titleKey)}</h4>
               </div>
-              <p className="text-xs text-on-surface-variant line-clamp-2">{card.desc}</p>
+              <p className="text-xs text-on-surface-variant line-clamp-2">{t(card.descKey)}</p>
             </div>
 
             <div className="flex justify-between items-center relative z-10">
@@ -269,7 +271,7 @@ export default function GameModeGrid() {
                 disabled={isDisabled}
                 className={`px-4 py-2 text-[10px] font-bold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed ${card.ctaClass}`}
               >
-                {card.id === 'ranked' && isDisabled ? 'Hết Năng Lượng' : card.cta}
+                {card.id === 'ranked' && isDisabled ? t('gameModes.noEnergy') : t(card.ctaKey)}
               </button>
             </div>
           </div>

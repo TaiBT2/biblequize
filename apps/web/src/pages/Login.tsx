@@ -44,7 +44,7 @@ export default function Login() {
 
   const handleGoogleLogin = () => {
     setIsGoogleLoading(true)
-    window.location.href = `${import.meta.env.VITE_API_URL || ''}/oauth2/authorization/google`
+    window.location.href = `${import.meta.env.VITE_API_BASE_URL || ''}/oauth2/authorization/google`
   }
 
   const handleEmailSubmit = async (e: FormEvent) => {

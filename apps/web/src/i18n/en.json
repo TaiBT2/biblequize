@@ -1,4 +1,12 @@
 {
+  "tiers": {
+    "newBeliever": "New Believer",
+    "seeker": "Seeker",
+    "disciple": "Disciple",
+    "sage": "Sage",
+    "prophet": "Prophet",
+    "apostle": "Apostle"
+  },
   "common": {
     "loading": "Loading...",
     "error": "An error occurred",
@@ -511,7 +519,9 @@
     "tournament": "Tournament",
     "tournamentDesc": "Bracket elimination 1v1. Church group leaders can organize.",
     "tournamentTag": "BRACKET 1V1",
-    "tournamentBtn": "Join Tournament"
+    "tournamentBtn": "Join Tournament",
+    "noEnergy": "No Energy",
+    "dailyCompleted": "Completed"
   },
   "achievements": {
     "title": "Achievements",
