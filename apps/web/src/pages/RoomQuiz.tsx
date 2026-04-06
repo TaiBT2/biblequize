@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useStomp } from '../hooks/useStomp';
+import ReactionBar from '../components/ReactionBar';
+import LiveFeed from '../components/LiveFeed';
 import {
   PodiumScreen, EliminationScreen, TeamScoreBar, TeamWinScreen,
   MatchResultOverlay, SdArenaHeader, RoundScoreboard,
@@ -71,6 +73,11 @@ const RoomQuiz: React.FC = () => {
   const [sdMatchResult, setSdMatchResult] = useState<{ winnerId: string; winnerName: string; loserId: string; loserName: string } | null>(null);
   const [sdSpectating, setSdSpectating] = useState(false);
   const [sdMyUserId, setSdMyUserId] = useState('');
+
+  // Social fun state
+  const [reactions, setReactions] = useState<Array<{ senderId: string; senderName: string; reaction: string }>>([]);
+  const [latestAnswer, setLatestAnswer] = useState<{ playerId: string; username: string; isCorrect: boolean; reactionTimeMs: number } | null>(null);
+  const myUserId = localStorage.getItem('userId') ?? '';
 
   const questionStartedAt = useRef<number>(0);
   const toastCounter = useRef(0);
@@ -181,6 +188,18 @@ const RoomQuiz: React.FC = () => {
           if (d.winnerName === sdChampionName || d.winnerName === sdChallengerName) {
             setSdChampionStreak(d.winnerNewStreak);
           }
+          break;
+        }
+
+        // ── Social Fun ──
+        case 'REACTION': {
+          const d = msg.data as { senderId: string; senderName: string; reaction: string };
+          setReactions(prev => [...prev, d]);
+          break;
+        }
+        case 'ANSWER_SUBMITTED': {
+          const d = msg.data as { playerId: string; username: string; isCorrect: boolean; reactionTimeMs: number };
+          setLatestAnswer(d);
           break;
         }
 
@@ -314,6 +333,13 @@ const RoomQuiz: React.FC = () => {
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#9b59b6]/5 blur-[120px] rounded-full" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-secondary/5 blur-[120px] rounded-full" />
       </div>
+
+      {/* Social Fun: Live Feed + Reactions */}
+      <LiveFeed incoming={latestAnswer} myId={myUserId} />
+      <ReactionBar
+        onSend={(emoji) => send(`/app/room/${roomId}/reaction`, { reaction: emoji })}
+        incoming={reactions.length > 0 ? reactions : null}
+      />
 
       {/* Reconnecting banner */}
       {reconnecting && (

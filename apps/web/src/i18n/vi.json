@@ -523,6 +523,15 @@
     "noEnergy": "Hết Năng Lượng",
     "dailyCompleted": "Đã hoàn thành"
   },
+  "liveFeed": {
+    "correct1": "✅ {{name}} trả lời đúng! ({{time}}s)",
+    "correct2": "🎯 {{name}} chính xác!",
+    "correct3": "💪 {{name}} quá giỏi!",
+    "correct4": "⚡ {{name}} nhanh như chớp! ({{time}}s)",
+    "wrong1": "❌ {{name}} trả lời sai",
+    "wrong2": "😅 {{name}} nhầm rồi",
+    "wrong3": "📖 {{name}} cần ôn thêm"
+  },
   "achievements": {
     "title": "Thành Tích",
     "loading": "Đang tải...",

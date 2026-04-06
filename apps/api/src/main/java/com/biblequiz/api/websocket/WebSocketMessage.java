@@ -47,6 +47,10 @@ public class WebSocketMessage {
         public static final String MATCH_END = "MATCH_END";
         public static final String SD_QUEUE_UPDATE = "SD_QUEUE_UPDATE";
 
+        // Social events
+        public static final String REACTION = "REACTION";
+        public static final String CHALLENGE_RECEIVED = "CHALLENGE_RECEIVED";
+
         // Error events
         public static final String ERROR = "ERROR";
     }
@@ -322,6 +326,29 @@ public class WebSocketMessage {
             this.loserId = loserId;
             this.loserName = loserName;
         }
+    }
+
+    /**
+     * Reaction data (social fun)
+     */
+    public static class ReactionData {
+        public String senderId;
+        public String senderName;
+        public String reaction;
+
+        public ReactionData() {}
+        public ReactionData(String senderId, String senderName, String reaction) {
+            this.senderId = senderId;
+            this.senderName = senderName;
+            this.reaction = reaction;
+        }
+
+        public String getSenderId() { return senderId; }
+        public void setSenderId(String senderId) { this.senderId = senderId; }
+        public String getSenderName() { return senderName; }
+        public void setSenderName(String senderName) { this.senderName = senderName; }
+        public String getReaction() { return reaction; }
+        public void setReaction(String reaction) { this.reaction = reaction; }
     }
 
     /**
