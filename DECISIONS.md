@@ -2,6 +2,34 @@
 
 ---
 
+## 2026-04-05 — Mobile Auth: 3 endpoints riêng, không sửa web
+- Quyết định: Tạo 3 endpoints mới `/api/auth/mobile/*` (login, refresh, google) trả refreshToken trong response body. Giữ nguyên 100% web endpoints (cookie-based refresh).
+- Lý do: Mobile không có httpOnly cookie. Web dùng cookie an toàn hơn → không đổi. Mobile cần refresh token trong body để lưu AsyncStorage.
+- Trade-off: 2 set endpoints cho cùng logic auth → duplicate code nhỏ (MobileAuthService reuse AuthService methods). Đổi lại, zero risk break web flow.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-04-05 — Google Mobile Auth: ID Token verification (không dùng auth code)
+- Quyết định: Mobile Google login nhận Google ID Token trực tiếp (từ Google Sign-In SDK), verify bằng google-api-client library server-side. Khác web flow (authorization code → redirect).
+- Lý do: Mobile không có browser redirect flow. Google Sign-In SDK trên mobile trả ID Token trực tiếp → backend verify chữ ký + audience.
+- Trade-off: Thêm dependency google-api-client 2.7.0. Nhưng đây là official Google library, production-ready.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+---
+
+## 2026-04-04 — React Native: Expo + monorepo apps/mobile/
+- Quyết định: Dùng Expo (blank-typescript template) thay vì bare React Native CLI. Đặt project trong `apps/mobile/` theo monorepo pattern (cùng level với `apps/web/` và `apps/api/`).
+- Lý do: Expo đơn giản hơn cho prototype, không cần native build tools ban đầu. Monorepo pattern nhất quán với cấu trúc hiện tại. Có thể migrate sang bare workflow sau nếu cần native modules (Firebase, deep links).
+- Trade-off: Expo có giới hạn với một số native modules (push notification cần expo-notifications thay vì @react-native-firebase). Đổi lại, dev cycle nhanh hơn nhiều, hot reload tốt, dễ test trên device thật qua Expo Go.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-04-04 — React Native: AsyncStorage cho refresh token (thay httpOnly cookie)
+- Quyết định: RN không có httpOnly cookie → lưu refresh token trong AsyncStorage, gửi qua request body thay vì cookie. Access token vẫn in-memory.
+- Lý do: React Native không có browser cookie mechanism. AsyncStorage là standard cho RN persistent storage. Backend cần endpoint variant chấp nhận refresh token trong body.
+- Trade-off: AsyncStorage kém an toàn hơn httpOnly cookie (accessible by JS). Mitigation: Expo SecureStore có thể dùng sau cho production.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+---
+
 ## 2026-04-03 — Test Data Strategy
 - Quyết định: Spring Profile-based seeder + API trigger, NOT Flyway
 - Lý do: Flyway chạy mọi env, test data chỉ cần dev/test. Seeder dùng @Profile("!prod") nên endpoint không tồn tại trong production

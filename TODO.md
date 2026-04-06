@@ -1,34 +1,342 @@
 # TODO
 
+## Backend Mobile Auth — 3 Endpoints [DONE]
+
+### Task MA-1: Google API dependency + config
+- Status: [x] DONE
+- File(s): pom.xml, application.yml, application-dev.yml
+- Checklist:
+  - [ ] Add google-api-client to pom.xml
+  - [ ] Add biblequiz.auth.google.android-client-id property
+  - [ ] Commit: "deps: add google-api-client + android client ID config"
+
+### Task MA-2: Mobile Auth DTOs
+- Status: [x] DONE
+- File(s): modules/auth/dto/ (new directory)
+- Checklist:
+  - [ ] MobileLoginRequest, MobileGoogleRequest, MobileRefreshRequest
+  - [ ] MobileAuthResponse (with refreshToken in body)
+  - [ ] Commit: "feat: mobile auth DTOs"
+
+### Task MA-3: MobileAuthService
+- Status: [x] DONE
+- File(s): modules/auth/service/MobileAuthService.java
+- Checklist:
+  - [ ] loginWithPassword() — reuse AuthService.loginLocal + trả refresh in body
+  - [ ] refreshToken() — nhận refresh từ body, verify, trả token mới
+  - [ ] loginWithGoogle() — verify Google ID Token, find/create user, trả tokens
+  - [ ] Commit: "feat: MobileAuthService"
+
+### Task MA-4: MobileAuthController + SecurityConfig
+- Status: [x] DONE (SecurityConfig already permits /api/auth/**)
+- File(s): api/MobileAuthController.java, SecurityConfig.java
+- Checklist:
+  - [ ] POST /api/auth/mobile/login
+  - [ ] POST /api/auth/mobile/refresh
+  - [ ] POST /api/auth/mobile/google
+  - [ ] SecurityConfig permitAll /api/auth/mobile/**
+  - [ ] Commit: "feat: MobileAuthController + security permit"
+
+### Task MA-5: Backend test + regression
+- Status: [x] DONE — all 3 endpoints tested, web endpoints verified not broken
+- Checklist:
+  - [ ] curl test 3 endpoints
+  - [ ] mvnw test pass (existing tests not broken)
+
+---
+
+## React Native — Phase 3: QuizResults + Practice + Daily + Ranked [DONE]
+
+### Task RN3-1: QuizResults Screen
+- Status: [x] DONE
+- File(s): apps/mobile/src/screens/quiz/QuizResultsScreen.tsx
+
+### Task RN3-2: Review Screen
+- Status: [x] DONE
+- File(s): apps/mobile/src/screens/quiz/ReviewScreen.tsx
+
+### Task RN3-3: Practice Screen
+- Status: [x] DONE
+- File(s): apps/mobile/src/screens/quiz/PracticeScreen.tsx
+
+### Task RN3-4: Ranked Screen
+- Status: [x] DONE
+- File(s): apps/mobile/src/screens/quiz/RankedScreen.tsx
+
+### Task RN3-5: Daily Challenge Screen
+- Status: [x] DONE
+- File(s): apps/mobile/src/screens/quiz/DailyChallengeScreen.tsx
+
+### Task RN3-VERIFY: tsc + web regression
+- Status: [x] DONE
+
+---
+
+## React Native — Phase 4: Multiplayer + WebSocket [DONE]
+
+### Task RN4-1: WebSocket client (STOMP)
+- Status: [x] DONE
+- File(s): apps/mobile/src/api/websocket.ts
+
+### Task RN4-2: Multiplayer Screen
+- Status: [x] DONE
+
+### Task RN4-3: CreateRoom Screen
+- Status: [x] DONE
+
+### Task RN4-4: RoomLobby Screen
+- Status: [x] DONE
+
+### Task RN4-5: RoomQuiz Screen
+- Status: [x] DONE
+
+### Task RN4-VERIFY: tsc + web regression
+- Status: [x] DONE
+
+---
+
+## React Native — Phase 5: Social Screens [DONE]
+
+### Task RN5-1: Leaderboard Screen
+- Status: [x] DONE
+
+### Task RN5-2: Groups Screen
+- Status: [x] DONE
+
+### Task RN5-3: GroupDetail Screen
+- Status: [x] DONE
+
+### Task RN5-4: Tournaments + TournamentDetail
+- Status: [x] DONE
+
+### Task RN5-5: Profile Screen
+- Status: [x] DONE
+
+### Task RN5-6: Achievements Screen
+- Status: [x] DONE
+
+### Task RN5-7: Settings Screen
+- Status: [x] DONE
+
+### Task RN5-VERIFY: tsc + web regression
+- Status: [x] DONE
+
+---
+
+## React Native — Phase 6: Native Features + Polish [DONE]
+
+### Task RN6-1: Push Notifications (expo-notifications)
+- Status: [x] DONE
+
+### Task RN6-2: Deep Links
+- Status: [x] DONE
+
+### Task RN6-3: App icon + Splash screen + app.json config
+- Status: [x] DONE
+
+### Task RN6-4: Store preparation metadata
+- Status: [x] DONE
+
+### Task RN6-VERIFY: tsc + web regression
+- Status: [x] DONE
+
+---
+
+## React Native — Phase 2: Core Screens — Home + Quiz [DONE]
+
+### Task RN2-1: Reusable components — Avatar, Badge, Timer, ProgressBar
+- Status: [x] DONE
+- File(s): apps/mobile/src/components/
+- Checklist:
+  - [ ] Avatar.tsx — circular image with fallback initials
+  - [ ] TierBadge.tsx — tier icon + name + color
+  - [ ] CircularTimer.tsx — SVG countdown (react-native-svg)
+  - [ ] ProgressBar.tsx — gold gradient bar
+  - [ ] EnergyBar.tsx — 5-bar lives display
+  - [ ] tsc --noEmit pass
+  - [ ] Commit: "feat(mobile): reusable components (Avatar, Timer, ProgressBar)"
+
+### Task RN2-2: Home Screen — full dashboard
+- Status: [x] DONE
+- File(s): apps/mobile/src/screens/home/HomeScreen.tsx
+- Sections (from web Home.tsx):
+  - [ ] Greeting (morning/afternoon/evening) + tier display + progress bar
+  - [ ] Game mode cards (vertical list, 6 modes)
+  - [ ] Mini leaderboard (daily/weekly toggle, top 5)
+  - [ ] Daily verse
+  - [ ] Pull-to-refresh
+  - [ ] Loading skeleton
+  - [ ] API: GET /api/me, GET /api/leaderboard, GET /api/me/ranked-status
+  - [ ] tsc --noEmit pass
+  - [ ] Commit: "feat(mobile): Home dashboard screen"
+
+### Task RN2-3: Quiz Screen — gameplay
+- Status: [x] DONE
+- File(s): apps/mobile/src/screens/quiz/QuizScreen.tsx
+- Features:
+  - [ ] Question display + answer buttons (4 options, min 56dp)
+  - [ ] Circular SVG timer (30s countdown)
+  - [ ] Progress bar (question X/total)
+  - [ ] Score + combo + lives display
+  - [ ] Answer result modal (correct/wrong + points)
+  - [ ] Haptic feedback (correct=light, wrong=heavy)
+  - [ ] Auto-submit on timeout
+  - [ ] API: POST /api/sessions/{id}/answer, POST /api/ranked/sessions/{id}/answer
+  - [ ] Navigate to QuizResults on completion
+  - [ ] tsc --noEmit pass
+  - [ ] Commit: "feat(mobile): Quiz gameplay screen"
+
+### Task RN2-VERIFY: TypeScript + regression
+- Status: [x] DONE — tsc clean, web 387/387 pass
+- Checklist:
+  - [ ] tsc --noEmit clean
+  - [ ] Web 386+ tests pass
+
+---
+
+## React Native — Phase 1: Navigation + Auth [DONE]
+
+### Task RN1-1: Navigation type definitions + complete stacks
+- Status: [x] DONE
+- File(s): apps/mobile/src/navigation/types.ts, all stack navigators
+- Checklist:
+  - [ ] Create navigation/types.ts (RootStackParamList, all screen params)
+  - [ ] Complete HomeStack (+ Leaderboard, Achievements screens)
+  - [ ] Complete QuizStack (+ Multiplayer, CreateRoom, RoomLobby, Quiz, QuizResults, Review)
+  - [ ] Complete GroupStack (+ GroupDetail, Tournaments, TournamentDetail)
+  - [ ] Complete ProfileStack (+ Settings)
+  - [ ] Type-safe useNavigation/useRoute hooks
+  - [ ] tsc --noEmit pass
+  - [ ] Commit: "feat(mobile): typed navigation + complete stack navigators"
+
+### Task RN1-2: Base components — GlassCard + GoldButton
+- Status: [x] DONE
+- File(s): apps/mobile/src/components/GlassCard.tsx, GoldButton.tsx
+- Checklist:
+  - [ ] GlassCard — match web .glass-card (rgba(50,52,64,0.6) + border)
+  - [ ] GoldButton — primary (gold bg) + outline variant + loading + disabled
+  - [ ] Haptic feedback on press (expo-haptics)
+  - [ ] tsc --noEmit pass
+  - [ ] Commit: "feat(mobile): GlassCard + GoldButton components"
+
+### Task RN1-3: Login Screen — Google OAuth + email/password
+- Status: [x] DONE
+- File(s): apps/mobile/src/screens/auth/LoginScreen.tsx
+- Deps: expo-auth-session, expo-web-browser
+- Checklist:
+  - [ ] Install expo-auth-session + expo-web-browser
+  - [ ] Google OAuth flow (expo-auth-session/providers/google)
+  - [ ] Email/password form (TextInput)
+  - [ ] Connect to authStore.login()
+  - [ ] Loading + error states
+  - [ ] Sacred Modernist design
+  - [ ] tsc --noEmit pass
+  - [ ] Commit: "feat(mobile): Login screen with Google OAuth + email"
+
+### Task RN1-VERIFY: Full TypeScript check + Expo runs
+- Status: [x] DONE — tsc clean, web 386/387 pass (pre-existing timeout)
+- Checklist:
+  - [ ] tsc --noEmit clean
+  - [ ] npx expo start works
+  - [ ] Web regression: 386+ tests pass
+
+---
+
+## React Native — Phase 0: Project Setup + Architecture [DONE]
+
+### Task RN0-1: Init Expo project + install dependencies
+- Status: [x] DONE
+- File(s): apps/mobile/ (new directory)
+- Checklist:
+  - [ ] npx create-expo-app apps/mobile --template expo-template-blank-typescript
+  - [ ] Install navigation: @react-navigation/native, bottom-tabs, native-stack
+  - [ ] Install state: zustand, @tanstack/react-query, axios
+  - [ ] Install UI: react-native-reanimated, react-native-gesture-handler, react-native-svg, expo-linear-gradient
+  - [ ] Install storage: @react-native-async-storage/async-storage
+  - [ ] Install haptics: expo-haptics
+  - [ ] Install icons: @expo/vector-icons
+  - [ ] Install WebSocket: @stomp/stompjs
+  - [ ] Verify: npx expo start works
+  - [ ] Commit: "feat: RN Expo project init + dependencies"
+
+### Task RN0-2: Design System — Sacred Modernist for RN
+- Status: [x] DONE
+- File(s): apps/mobile/src/theme/ (colors.ts, typography.ts, spacing.ts, shadows.ts)
+- Checklist:
+  - [ ] colors.ts — match DESIGN_TOKENS.md exactly
+  - [ ] typography.ts — Be Vietnam Pro font config
+  - [ ] spacing.ts — spacing scale
+  - [ ] shadows.ts — shadow definitions
+  - [ ] Commit: "feat: RN Sacred Modernist design system"
+
+### Task RN0-3: Copy + adapt reusable code from web
+- Status: [x] DONE
+- File(s): apps/mobile/src/api/, apps/mobile/src/stores/, apps/mobile/src/data/
+- Source files:
+  - api/client.ts → adapt (localStorage → AsyncStorage, URL → Platform-aware)
+  - api/config.ts → adapt for RN
+  - api/tokenStore.ts → adapt (AsyncStorage)
+  - store/authStore.ts → adapt (AsyncStorage)
+  - data/tiers.ts → copy as-is
+  - data/bibleData.ts → copy as-is
+  - data/verses.ts → copy as-is
+- Checklist:
+  - [ ] Create api/client.ts (RN version)
+  - [ ] Create api/config.ts (RN version)
+  - [ ] Create api/tokenStore.ts (AsyncStorage version)
+  - [ ] Create stores/authStore.ts (AsyncStorage version)
+  - [ ] Copy data files as-is
+  - [ ] Create api/types.ts (consolidated from web scattered types)
+  - [ ] Verify TypeScript compiles
+  - [ ] Commit: "feat: RN API client + stores + data (adapted from web)"
+
+### Task RN0-4: Project structure scaffold
+- Status: [x] DONE
+- File(s): apps/mobile/src/ (directories)
+- Checklist:
+  - [ ] Create folder structure per PROMPT_REACT_NATIVE.md
+  - [ ] src/components/, screens/, navigation/, hooks/, utils/
+  - [ ] Placeholder App.tsx with QueryClientProvider + theme
+  - [ ] Commit: "feat: RN project structure scaffold"
+
+### Task RN0-VERIFY: Expo builds + TypeScript compiles
+- Status: [x] DONE — tsc --noEmit clean, web 386/387 pass (1 pre-existing timeout)
+- Checklist:
+  - [ ] npx tsc --noEmit (no TS errors)
+  - [ ] npx expo start (dev server runs)
+  - [ ] Web regression: cd apps/web && npx vitest run (518 tests still pass — no web changes expected)
+
+---
+
 ## Lighthouse BP Fix — Round 2 [DONE]
 
 ### Task LH2-1: Replace sockjs-client unload event
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): apps/web/src/hooks/useWebSocket.ts, package.json
 - Root cause: sockjs-client uses deprecated `unload` event listener
 - Fix: switch to native WebSocket (drop sockjs-client) or use @stomp/stompjs only
 
 ### Task LH2-2: Fix 401 console error on landing
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): apps/web/src/store/authStore.ts
 - Root cause: checkAuth() calls /api/auth/refresh on every page load including guest landing
 - Fix: skip refresh if no token exists
 
 ### Task LH2-3: Fix source maps detection
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): apps/web/vite.config.ts
 - Root cause: sourcemap 'hidden' doesn't reference in JS → Lighthouse can't find
 - Fix: change to sourcemap: true
 
 ### Task LH2-VERIFY: Rebuild + test
-- Status: [ ] TODO
+- Status: [x] DONE
 
 ---
 
 ## Lighthouse BP 77→99 + Perf 86→95 [DONE]
 
 ### Task LH-1: Fix oversized favicons (1.3MB → <50KB)
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): apps/web/public/favicon-*, apple-touch-icon, android-chrome-*
 - Checklist:
   - [ ] Generate proper sized favicons via node script
@@ -36,7 +344,7 @@
   - [ ] Commit: "fix: generate proper sized favicons"
 
 ### Task LH-2: Fix font render blocking
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): apps/web/index.html
 - Checklist:
   - [ ] Font preload with media="print" onload trick
@@ -44,7 +352,7 @@
   - [ ] Commit: "perf: fix font render blocking"
 
 ### Task LH-3: Add width/height to Landing images + lazy load
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): apps/web/src/pages/LandingPage.tsx
 - Checklist:
   - [ ] Add width/height to all <img>
@@ -53,21 +361,21 @@
   - [ ] Commit: "perf: image dimensions + lazy loading"
 
 ### Task LH-4: Preload LCP element
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): apps/web/index.html
 - Checklist:
   - [ ] Preload hero image
   - [ ] Commit: "perf: preload LCP hero image"
 
 ### Task LH-5: Final security headers polish
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): apps/web/vite.config.ts
 - Checklist:
   - [ ] Permissions-Policy in vite headers
   - [ ] Commit: "fix: add Permissions-Policy header"
 
 ### Task LH-VERIFY: Rebuild + test + Lighthouse
-- Status: [ ] TODO
+- Status: [x] DONE
 - Checklist:
   - [ ] npm run build pass
   - [ ] FE 387 tests pass
@@ -342,7 +650,7 @@
 ## Fix Import Validation [IN PROGRESS]
 
 ### Task IMP-1: Explanation bắt buộc (warning + inactive)
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): AdminQuestionController.java
 - Checklist:
   - [ ] Thiếu explanation → warning + isActive=false
@@ -351,7 +659,7 @@
   - [ ] Commit: "fix: import warns on missing explanation"
 
 ### Task IMP-2: Options required cho MCQ
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): AdminQuestionController.java
 - Checklist:
   - [ ] MCQ: options min 2, correctAnswer in range
@@ -360,7 +668,7 @@
   - [ ] Commit: "fix: import validates options per type"
 
 ### Task IMP-3: Language + scriptureVersion defaults
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): AdminQuestionController.java
 - Checklist:
   - [ ] Default language="vi", scriptureVersion="VIE2011"
@@ -368,7 +676,7 @@
   - [ ] Commit: "feat: import supports language + scriptureVersion"
 
 ### Task IMP-4: Vietnamese book name support
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): shared/BookNameMapper.java (new)
 - Checklist:
   - [ ] VI→EN mapping 66 books
@@ -377,7 +685,7 @@
   - [ ] Commit: "feat: import supports Vietnamese book names"
 
 ### Task IMP-5: Duplicate detection
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): AdminQuestionController.java, QuestionRepository.java
 - Checklist:
   - [ ] Dry-run: warn on DB duplicate + batch duplicate
@@ -386,7 +694,7 @@
   - [ ] Commit: "feat: import duplicate detection"
 
 ### Task IMP-6: Update IMPORT_FORMAT.md + Regression
-- Status: [ ] TODO
+- Status: [x] DONE
 - Checklist:
   - [ ] Update doc with all changes
   - [ ] Full regression
