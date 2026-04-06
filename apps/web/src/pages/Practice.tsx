@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import SearchableSelect from '../components/ui/SearchableSelect'
 import QuizLanguageSelect from '../components/QuizLanguageSelect'
 import { getQuizLanguage, type QuizLanguage } from '../utils/quizLanguage'
+import { useTranslation } from 'react-i18next'
 
 interface Book {
   id: string
@@ -42,6 +43,7 @@ const TIPS = [
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 
 export default function Practice() {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const [books, setBooks] = useState<Book[]>([])
   const [selectedBook, setSelectedBook] = useState('')
@@ -81,7 +83,7 @@ export default function Practice() {
         state: { sessionId, questions, book: selectedBook, difficulty: selectedDifficulty, questionCount, showExplanation },
       })
     } catch {
-      setErrorMsg('Không tạo được phiên luyện tập. Vui lòng thử lại.')
+      setErrorMsg(t('practice.errorCreate'))
     } finally {
       setIsLoading(false)
     }
@@ -134,7 +136,7 @@ export default function Practice() {
               <div>
                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant flex items-center gap-2 mb-3">
                   <span className="material-symbols-outlined text-base text-secondary">translate</span>
-                  Ngôn ngữ câu hỏi
+                  {t('practice.quizLanguage')}
                 </label>
                 <QuizLanguageSelect onChange={setQuizLang} />
               </div>
@@ -144,7 +146,7 @@ export default function Practice() {
                 <div className="flex items-center justify-between mb-3">
                   <label className="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant flex items-center gap-2">
                     <span className="material-symbols-outlined text-base text-secondary">auto_stories</span>
-                    Sách Kinh Thánh
+                    {t('practice.selectBook')}
                   </label>
                   <span className="text-[10px] font-bold text-secondary/60 tracking-wider">
                     {books.length || 66}/66 sách
@@ -154,11 +156,11 @@ export default function Practice() {
                   options={books.map(b => ({ value: b.name, label: `${b.nameVi} (${b.name})` }))}
                   value={selectedBook}
                   onChange={setSelectedBook}
-                  placeholder="Tìm kiếm sách..."
-                  allLabel="Tất cả các sách"
+                  placeholder={t('practice.searchBook')}
+                  allLabel={t('practice.allBooks')}
                 />
                 <p className="text-on-surface-variant/50 text-xs mt-2">
-                  Để trống để lấy ngẫu nhiên từ tất cả 66 sách.
+                  {t('practice.bookHint')}
                 </p>
               </div>
 

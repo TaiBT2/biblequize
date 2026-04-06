@@ -1,5 +1,30 @@
 # TODO
 
+## Phase 2: UI i18n — Giao diện tiếng Anh [DONE]
+
+### Task i18n-1: Setup react-i18next + translation files
+- Status: [ ] TODO
+- File(s): src/i18n/index.ts, src/i18n/vi.json, src/i18n/en.json, main.tsx
+- Commit: "feat: setup react-i18next + vi/en translations"
+
+### Task i18n-2: Update QuizLanguageSelect → i18n language switcher
+- Status: [ ] TODO
+- File(s): QuizLanguageSelect.tsx, AppLayout.tsx, LandingPage.tsx
+- Commit: "feat: language switcher uses i18n"
+
+### Task i18n-3: Migrate core pages (AppLayout, Home, LandingPage, Login, NotFound)
+- Status: [ ] TODO
+- Commit: "i18n: migrate core pages"
+
+### Task i18n-4: Migrate game pages (Practice, Ranked, DailyChallenge, Quiz)
+- Status: [ ] TODO
+- Commit: "i18n: migrate game pages"
+
+### Task i18n-5: Tests + Regression
+- Status: [ ] TODO
+
+---
+
 ## Phase 1: Content English — Câu hỏi tiếng Anh [DONE]
 
 > Question entity + DB đã có language field. Cần wire vào business logic.

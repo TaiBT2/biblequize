@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../store/authStore';
 import { api } from '../api/client';
 
@@ -31,11 +32,11 @@ interface BracketData {
 }
 
 /* ── Helpers ── */
-function getRoundLabel(round: number, totalRounds: number): string {
-  if (round === totalRounds) return 'Chung ket';
-  if (round === totalRounds - 1) return 'Ban ket';
-  if (round === totalRounds - 2) return 'Tu ket';
-  return `Vong ${round}`;
+function getRoundLabel(round: number, totalRounds: number, t: (key: string, opts?: any) => string): string {
+  if (round === totalRounds) return t('tournaments.final');
+  if (round === totalRounds - 1) return t('tournaments.semiFinal');
+  if (round === totalRounds - 2) return t('tournaments.quarterFinal');
+  return t('tournaments.round', { number: round });
 }
 
 function HeartIcons({ count, max = 3, size = 'md' }: { count: number; max?: number; size?: 'sm' | 'md' | 'lg' }) {
@@ -96,6 +97,7 @@ const TournamentMatch: React.FC = () => {
   const { id, matchId } = useParams<{ id: string; matchId: string }>();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { t } = useTranslation();
 
   const [match, setMatch] = useState<Match | null>(null);
   const [tournamentName, setTournamentName] = useState('');
@@ -134,16 +136,16 @@ const TournamentMatch: React.FC = () => {
         }
         setError('');
       } else {
-        setError('Khong tim thay tran dau');
+        setError(t('tournaments.matchNotFound'));
       }
     } catch (err: any) {
       if (!match) {
-        setError(err.response?.data?.message || err.response?.data?.error || 'Khong the tai du lieu');
+        setError(err.response?.data?.message || err.response?.data?.error || t('tournaments.errorLoadMatch'));
       }
     } finally {
       setLoading(false);
     }
-  }, [id, matchId, match, showWinnerOverlay]);
+  }, [id, matchId, match, showWinnerOverlay, t]);
 
   // Initial fetch
   useEffect(() => {
@@ -164,7 +166,7 @@ const TournamentMatch: React.FC = () => {
       await api.post(`/api/tournaments/${id}/matches/${matchId}/forfeit`);
       await fetchMatch();
     } catch (err: any) {
-      alert(err.response?.data?.message || err.response?.data?.error || 'Khong the bo cuoc');
+      alert(err.response?.data?.message || err.response?.data?.error || t('tournaments.cannotForfeit'));
     } finally {
       setForfeitLoading(false);
     }
@@ -175,7 +177,7 @@ const TournamentMatch: React.FC = () => {
     return (
       <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-4">
         <div className="w-12 h-12 border-3 border-outline-variant/20 border-t-secondary rounded-full animate-spin" />
-        <span className="text-on-surface-variant text-sm">Dang tai tran dau...</span>
+        <span className="text-on-surface-variant text-sm">{t('tournaments.loadingMatch')}</span>
       </div>
     );
   }
@@ -190,7 +192,7 @@ const TournamentMatch: React.FC = () => {
             className="flex items-center gap-1.5 text-on-surface-variant hover:text-secondary transition-colors text-sm mb-8 mx-auto"
           >
             <span className="material-symbols-outlined text-lg">arrow_back</span>
-            Quay ve bracket
+            {t('tournaments.backToBracket')}
           </button>
           <span className="material-symbols-outlined text-5xl text-error/60 mb-4 block">error</span>
           <p className="text-error text-sm mb-6">{error}</p>
@@ -198,7 +200,7 @@ const TournamentMatch: React.FC = () => {
             className="px-6 py-2.5 rounded-xl bg-secondary/10 border border-secondary/30 text-secondary font-bold text-sm hover:bg-secondary/20 transition-colors"
             onClick={() => { setLoading(true); setError(''); fetchMatch(); }}
           >
-            Thu lai
+            {t('common.retry')}
           </button>
         </div>
       </div>
@@ -211,8 +213,8 @@ const TournamentMatch: React.FC = () => {
   const p2 = match.participants[1] || null;
   const winner = match.participants.find(p => p.isWinner);
   const roundLabel = totalRounds > 0
-    ? getRoundLabel(match.roundNumber, totalRounds)
-    : `Vong ${match.roundNumber}`;
+    ? getRoundLabel(match.roundNumber, totalRounds, t)
+    : t('tournaments.round', { number: match.roundNumber });
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -227,7 +229,7 @@ const TournamentMatch: React.FC = () => {
             className="flex items-center gap-1.5 text-on-surface-variant hover:text-secondary transition-colors text-sm mb-6"
           >
             <span className="material-symbols-outlined text-lg">arrow_back</span>
-            Quay ve bracket
+            {t('tournaments.backToBracket')}
           </button>
 
           <div className="text-center">
@@ -237,7 +239,7 @@ const TournamentMatch: React.FC = () => {
               </span>
             )}
             <h1 className="text-2xl md:text-3xl font-black text-on-surface tracking-tight mb-3">
-              {roundLabel} &mdash; Tran {match.matchIndex + 1}
+              {roundLabel} &mdash; {t('tournaments.matchLabel', { number: match.matchIndex + 1 })}
             </h1>
             <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider ${
               match.status === 'PENDING' ? 'bg-surface-container-high text-on-surface-variant' :
@@ -247,9 +249,9 @@ const TournamentMatch: React.FC = () => {
               <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>
                 {match.status === 'PENDING' ? 'schedule' : match.status === 'IN_PROGRESS' ? 'swords' : 'check_circle'}
               </span>
-              {match.status === 'PENDING' && 'Chua bat dau'}
-              {match.status === 'IN_PROGRESS' && 'Dang dien ra'}
-              {match.status === 'COMPLETED' && 'Hoan thanh'}
+              {match.status === 'PENDING' && t('tournaments.statusPending')}
+              {match.status === 'IN_PROGRESS' && t('tournaments.inProgress')}
+              {match.status === 'COMPLETED' && t('tournaments.statusCompleted')}
             </span>
           </div>
         </div>
@@ -262,8 +264,8 @@ const TournamentMatch: React.FC = () => {
             <span className="material-symbols-outlined text-5xl text-secondary mb-4 block" style={{ fontVariationSettings: "'FILL' 1" }}>
               shield
             </span>
-            <p className="text-on-surface font-bold text-lg mb-2">Tran BYE</p>
-            <p className="text-on-surface-variant text-sm mb-4">Nguoi choi tu dong di tiep vong sau</p>
+            <p className="text-on-surface font-bold text-lg mb-2">{t('tournaments.byeMatch')}</p>
+            <p className="text-on-surface-variant text-sm mb-4">{t('tournaments.byeDesc')}</p>
             {p1 && (
               <div className="inline-flex items-center gap-3 bg-secondary/10 rounded-full px-5 py-2 border border-secondary/20">
                 <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
@@ -281,7 +283,7 @@ const TournamentMatch: React.FC = () => {
         <div className="relative z-10 max-w-lg mx-auto px-6 mt-12">
           <div className="glass-card rounded-2xl p-10 text-center border border-outline-variant/10">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant/40 mb-4 block">hourglass_empty</span>
-            <p className="text-on-surface font-bold text-lg mb-2">Tran dau chua bat dau</p>
+            <p className="text-on-surface font-bold text-lg mb-2">{t('tournaments.pendingMatch')}</p>
             {p1 && p2 && (
               <div className="flex items-center justify-center gap-4 mt-6">
                 <div className="text-center">
@@ -354,12 +356,12 @@ const TournamentMatch: React.FC = () => {
                 {/* Score */}
                 <div className="bg-surface-container rounded-xl py-3 px-4">
                   <p className="text-3xl md:text-4xl font-black text-secondary">{p1.score}</p>
-                  <p className="text-[10px] uppercase tracking-widest text-on-surface-variant mt-1">Diem</p>
+                  <p className="text-[10px] uppercase tracking-widest text-on-surface-variant mt-1">{t('tournaments.score')}</p>
                 </div>
                 {match.status === 'COMPLETED' && p1.isWinner && (
                   <div className="mt-3 inline-flex items-center gap-1.5 bg-secondary/15 rounded-full px-4 py-1.5 border border-secondary/20">
                     <span className="material-symbols-outlined text-sm text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>emoji_events</span>
-                    <span className="text-xs font-bold text-secondary">Chien thang</span>
+                    <span className="text-xs font-bold text-secondary">{t('tournaments.victory')}</span>
                   </div>
                 )}
               </div>
@@ -405,12 +407,12 @@ const TournamentMatch: React.FC = () => {
                 </div>
                 <div className="bg-surface-container rounded-xl py-3 px-4">
                   <p className="text-3xl md:text-4xl font-black text-secondary">{p2.score}</p>
-                  <p className="text-[10px] uppercase tracking-widest text-on-surface-variant mt-1">Diem</p>
+                  <p className="text-[10px] uppercase tracking-widest text-on-surface-variant mt-1">{t('tournaments.score')}</p>
                 </div>
                 {match.status === 'COMPLETED' && p2.isWinner && (
                   <div className="mt-3 inline-flex items-center gap-1.5 bg-secondary/15 rounded-full px-4 py-1.5 border border-secondary/20">
                     <span className="material-symbols-outlined text-sm text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>emoji_events</span>
-                    <span className="text-xs font-bold text-secondary">Chien thang</span>
+                    <span className="text-xs font-bold text-secondary">{t('tournaments.victory')}</span>
                   </div>
                 )}
               </div>
@@ -427,7 +429,7 @@ const TournamentMatch: React.FC = () => {
               >
                 <span className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-lg">flag</span>
-                  {forfeitLoading ? 'Dang xu ly...' : 'Bo cuoc'}
+                  {forfeitLoading ? t('tournaments.forfeiting') : t('tournaments.forfeit')}
                 </span>
               </button>
             </div>
@@ -442,7 +444,7 @@ const TournamentMatch: React.FC = () => {
               >
                 <span className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-lg">arrow_back</span>
-                  Quay ve bracket
+                  {t('tournaments.backToBracket')}
                 </span>
               </button>
             </div>
@@ -482,7 +484,7 @@ const TournamentMatch: React.FC = () => {
               <p className="text-3xl md:text-4xl font-black text-secondary mb-2">
                 {winner.userName}
               </p>
-              <p className="text-on-surface-variant text-lg mb-8">da chien thang tran dau!</p>
+              <p className="text-on-surface-variant text-lg mb-8">{t('tournaments.wonMatch')}</p>
 
               <button
                 className="px-10 py-4 rounded-xl gold-gradient text-on-secondary font-bold text-sm uppercase tracking-widest shadow-[0_0_30px_rgba(232,168,50,0.35)] hover:scale-105 transition-transform"
@@ -493,7 +495,7 @@ const TournamentMatch: React.FC = () => {
               >
                 <span className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-lg">arrow_forward</span>
-                  Tiep Tuc
+                  {t('tournaments.continue')}
                 </span>
               </button>
             </div>

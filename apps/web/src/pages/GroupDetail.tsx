@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../store/authStore';
 import { api } from '../api/client';
 
@@ -47,13 +48,6 @@ interface QuizSet {
 
 type TabKey = 'leaderboard' | 'members' | 'announcements' | 'quizsets';
 
-const TABS: { key: TabKey; label: string; icon?: string; hasNotification?: boolean }[] = [
-  { key: 'leaderboard', label: 'Leaderboard' },
-  { key: 'members', label: 'Thanh vien' },
-  { key: 'announcements', label: 'Thong bao', hasNotification: true },
-  { key: 'quizsets', label: 'Quiz nhom' },
-];
-
 const GROUP_BANNER =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDFnTx3fGDw7x7TL7ge8vDEEkbSjq2ai-wsyEd__vq0byTyOGvi3d1WQJV-Z692ksccl6DDoOTaPZ-RL6J3WDmSBY0g8tNHqXPey9lmDhtJm5uWerKyh-E_CoWIffIBMnkKidiZmdYyryDzyan-U5KggGWHq86m0LjMDFuhdre8DhsrG1bfRTGgMv0gcxaS723-h-Ktb7hs3pnVXl86T0Bxzczh42s-_TVCqF9GGN9tV6Evi0FZeIe1ilRaSLf4vwUHB7Q31bszVCE';
 
@@ -83,9 +77,17 @@ function removeSavedGroup(id: string) {
 }
 
 const GroupDetail: React.FC = () => {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { user } = useAuth();
+
+  const TABS: { key: TabKey; label: string; icon?: string; hasNotification?: boolean }[] = [
+    { key: 'leaderboard', label: t('groups.leaderboardTab') },
+    { key: 'members', label: t('groups.membersTab') },
+    { key: 'announcements', label: t('groups.announcementsTab'), hasNotification: true },
+    { key: 'quizsets', label: t('groups.quizSetsTab') },
+  ];
 
   const [group, setGroup] = useState<Group | null>(null);
   const [loading, setLoading] = useState(true);
@@ -135,14 +137,14 @@ const GroupDetail: React.FC = () => {
         setGroup(res.data.group);
         updateSavedGroup(res.data.group);
       } else {
-        setError(res.data.message || 'Khong the tai thong tin nhom');
+        setError(res.data.message || t('groups.errorLoadGroupInfo'));
       }
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Loi ket noi');
+      setError(err.response?.data?.message || t('groups.connectionError'));
     } finally {
       setLoading(false);
     }
-  }, [id]);
+  }, [id, t]);
 
   const fetchLeaderboard = useCallback(async () => {
     setLbLoading(true);
@@ -213,7 +215,7 @@ const GroupDetail: React.FC = () => {
   };
 
   const handleKick = async (userId: string, name: string) => {
-    if (!confirm(`Ban co chac muon xoa ${name} khoi nhom?`)) return;
+    if (!confirm(t('groups.confirmKick', { name }))) return;
     try {
       await api.delete(`/api/groups/${id}/members/${userId}`);
       fetchGroup();
@@ -236,7 +238,7 @@ const GroupDetail: React.FC = () => {
   };
 
   const handleLeave = async () => {
-    if (!confirm('Ban co chac muon roi khoi nhom nay?')) return;
+    if (!confirm(t('groups.confirmLeave'))) return;
     try {
       await api.delete(`/api/groups/${id}/leave`);
       removeSavedGroup(id!);
@@ -259,10 +261,10 @@ const GroupDetail: React.FC = () => {
         setShowEditModal(false);
         fetchGroup();
       } else {
-        setEditError(res.data.message || 'Cap nhat that bai');
+        setEditError(res.data.message || t('groups.updateFailed'));
       }
     } catch (err: any) {
-      setEditError(err.response?.data?.message || 'Loi ket noi');
+      setEditError(err.response?.data?.message || t('groups.connectionError'));
     } finally {
       setEditLoading(false);
     }
@@ -293,12 +295,12 @@ const GroupDetail: React.FC = () => {
       <div className="px-12 py-20">
         <div className="bg-surface-container rounded-2xl p-12 text-center border border-outline-variant/10">
           <span className="material-symbols-outlined text-5xl text-error mb-4 block">error</span>
-          <p className="text-error font-bold mb-6">{error || 'Khong tim thay nhom'}</p>
+          <p className="text-error font-bold mb-6">{error || t('groups.groupNotFound')}</p>
           <button
             onClick={fetchGroup}
             className="px-6 py-3 bg-surface-container-high text-on-surface rounded-xl font-bold text-sm hover:bg-surface-bright transition-all"
           >
-            Thu lai
+            {t('common.retry')}
           </button>
         </div>
       </div>
@@ -335,7 +337,7 @@ const GroupDetail: React.FC = () => {
                 </span>
                 {group.isPublic && (
                   <span className="text-on-surface-variant flex items-center gap-1 text-xs">
-                    <span className="material-symbols-outlined text-sm">public</span> Public Group
+                    <span className="material-symbols-outlined text-sm">public</span> {t('groups.publicGroup')}
                   </span>
                 )}
                 {/* Invite Code Chip */}
@@ -344,7 +346,7 @@ const GroupDetail: React.FC = () => {
                   className="flex items-center gap-1.5 text-xs text-on-surface-variant hover:text-secondary transition-colors"
                 >
                   <span className="material-symbols-outlined text-sm">content_copy</span>
-                  {copied ? 'Da sao chep!' : group.code}
+                  {copied ? t('groups.copied') : group.code}
                 </button>
               </div>
               <h1 className="text-5xl font-black text-on-surface tracking-tighter mb-2 truncate">
@@ -364,7 +366,7 @@ const GroupDetail: React.FC = () => {
                   className="flex items-center gap-2 bg-surface-container-highest hover:bg-surface-variant text-on-surface px-6 py-3 rounded-xl font-bold transition-all border border-outline-variant/15"
                 >
                   <span className="material-symbols-outlined">settings</span>
-                  Cai Dat
+                  {t('groups.settings')}
                 </button>
               ) : (
                 <button
@@ -372,7 +374,7 @@ const GroupDetail: React.FC = () => {
                   className="flex items-center gap-2 bg-surface-container-highest hover:bg-surface-variant text-on-surface px-6 py-3 rounded-xl font-bold transition-all border border-outline-variant/15"
                 >
                   <span className="material-symbols-outlined">logout</span>
-                  Roi Nhom
+                  {t('groups.leaveGroup')}
                 </button>
               )}
               <button
@@ -380,7 +382,7 @@ const GroupDetail: React.FC = () => {
                 className="flex items-center gap-2 gold-gradient text-on-secondary px-8 py-3 rounded-xl font-bold shadow-lg shadow-secondary/10 transition-transform active:scale-95"
               >
                 <span className="material-symbols-outlined">person_add</span>
-                Moi
+                {t('groups.invite')}
               </button>
             </div>
           </div>
@@ -397,7 +399,7 @@ const GroupDetail: React.FC = () => {
             </div>
             <div>
               <p className="text-2xl font-black text-on-surface">{group.members?.length || 0}</p>
-              <p className="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Members</p>
+              <p className="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">{t('groups.members')}</p>
             </div>
           </div>
           {/* Total XP */}
@@ -407,7 +409,7 @@ const GroupDetail: React.FC = () => {
             </div>
             <div>
               <p className="text-2xl font-black text-on-surface">{totalXp.toLocaleString()}</p>
-              <p className="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Total XP</p>
+              <p className="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">{t('groups.totalXP')}</p>
             </div>
           </div>
           {/* Max Members */}
@@ -417,7 +419,7 @@ const GroupDetail: React.FC = () => {
             </div>
             <div>
               <p className="text-2xl font-black text-on-surface">{group.maxMembers}</p>
-              <p className="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Gioi Han</p>
+              <p className="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">{t('groups.limit')}</p>
             </div>
           </div>
           {/* Leader Mini Card */}
@@ -434,14 +436,14 @@ const GroupDetail: React.FC = () => {
                   </div>
                   <div className="min-w-0">
                     <p className="text-on-surface font-bold text-sm truncate">{leader.name}</p>
-                    <p className="text-xs text-on-surface-variant">Truong nhom</p>
+                    <p className="text-xs text-on-surface-variant">{t('groups.groupLeader')}</p>
                   </div>
                 </>
               )}
               {!leader && (
                 <div>
                   <p className="text-on-surface font-bold text-sm">--</p>
-                  <p className="text-xs text-on-surface-variant">Truong nhom</p>
+                  <p className="text-xs text-on-surface-variant">{t('groups.groupLeader')}</p>
                 </div>
               )}
             </div>
@@ -483,7 +485,7 @@ const GroupDetail: React.FC = () => {
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-black tracking-tight flex items-center gap-3">
               <span className="material-symbols-outlined text-secondary text-3xl">leaderboard</span>
-              Bang Xep Hang
+              {t('groups.leaderboardTitle')}
             </h2>
             <div className="flex gap-2">
               <button
@@ -494,7 +496,7 @@ const GroupDetail: React.FC = () => {
                     : 'text-on-surface-variant hover:text-on-surface bg-surface-container-high'
                 }`}
               >
-                Tuan nay
+                {t('groups.weekly')}
               </button>
               <button
                 onClick={() => setPeriod('all_time')}
@@ -504,7 +506,7 @@ const GroupDetail: React.FC = () => {
                     : 'text-on-surface-variant hover:text-on-surface bg-surface-container-high'
                 }`}
               >
-                Tat ca
+                {t('groups.allTime')}
               </button>
             </div>
           </div>
@@ -516,7 +518,7 @@ const GroupDetail: React.FC = () => {
           ) : leaderboard.length === 0 ? (
             <div className="text-center py-16">
               <span className="material-symbols-outlined text-6xl text-on-surface-variant/30 mb-4 block">emoji_events</span>
-              <p className="text-sm text-on-surface-variant font-bold">Chua co du lieu xep hang</p>
+              <p className="text-sm text-on-surface-variant font-bold">{t('groups.noRankingData')}</p>
             </div>
           ) : (
             <div className="grid grid-cols-12 gap-8">
@@ -539,7 +541,7 @@ const GroupDetail: React.FC = () => {
                         <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-surface-container-high text-on-surface text-xs font-black w-8 h-8 rounded-full flex items-center justify-center border-2 border-surface">2</div>
                       </div>
                       <p className="font-bold text-on-surface">{top3[1].name}</p>
-                      <p className="text-xs text-on-surface-variant mb-3">{top3[1].role || 'Member'}</p>
+                      <p className="text-xs text-on-surface-variant mb-3">{top3[1].role === 'LEADER' ? t('groups.leaderRole') : top3[1].role === 'MODERATOR' ? t('groups.moderatorRole') : t('groups.memberRole')}</p>
                       <div className="px-4 py-1 rounded-full bg-surface-container-high text-on-surface text-xs font-black">{top3[1].score.toLocaleString()} XP</div>
                     </div>
                   )}
@@ -562,7 +564,7 @@ const GroupDetail: React.FC = () => {
                         <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 gold-gradient text-on-secondary text-sm font-black w-10 h-10 rounded-full flex items-center justify-center border-4 border-surface shadow-lg">1</div>
                       </div>
                       <p className="font-black text-lg text-on-surface">{top3[0].name}</p>
-                      <p className="text-xs text-secondary mb-3 font-bold">{top3[0].role || 'Member'}</p>
+                      <p className="text-xs text-secondary mb-3 font-bold">{top3[0].role === 'LEADER' ? t('groups.leaderRole') : top3[0].role === 'MODERATOR' ? t('groups.moderatorRole') : t('groups.memberRole')}</p>
                       <div className="px-6 py-2 rounded-full gold-gradient text-on-secondary text-sm font-black shadow-xl shadow-secondary/20">{top3[0].score.toLocaleString()} XP</div>
                     </div>
                   )}
@@ -582,7 +584,7 @@ const GroupDetail: React.FC = () => {
                         <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-surface-container-high text-on-surface text-xs font-black w-8 h-8 rounded-full flex items-center justify-center border-2 border-surface">3</div>
                       </div>
                       <p className="font-bold text-on-surface">{top3[2].name}</p>
-                      <p className="text-xs text-on-surface-variant mb-3">{top3[2].role || 'Member'}</p>
+                      <p className="text-xs text-on-surface-variant mb-3">{top3[2].role === 'LEADER' ? t('groups.leaderRole') : top3[2].role === 'MODERATOR' ? t('groups.moderatorRole') : t('groups.memberRole')}</p>
                       <div className="px-4 py-1 rounded-full bg-surface-container-high text-on-surface text-xs font-black">{top3[2].score.toLocaleString()} XP</div>
                     </div>
                   )}
@@ -595,10 +597,10 @@ const GroupDetail: React.FC = () => {
                   <table className="w-full border-collapse">
                     <thead>
                       <tr className="bg-surface-container-high/50 text-left">
-                        <th className="py-5 px-8 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Rank</th>
-                        <th className="py-5 px-8 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Member</th>
-                        <th className="py-5 px-8 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Role</th>
-                        <th className="py-5 px-8 text-right text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Total XP</th>
+                        <th className="py-5 px-8 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">{t('groups.rankColumn')}</th>
+                        <th className="py-5 px-8 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">{t('groups.memberColumn')}</th>
+                        <th className="py-5 px-8 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">{t('groups.roleColumn')}</th>
+                        <th className="py-5 px-8 text-right text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">{t('groups.totalXP')}</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-outline-variant/5">
@@ -631,17 +633,17 @@ const GroupDetail: React.FC = () => {
                                 </div>
                                 <div className="flex flex-col">
                                   <span className="font-bold text-on-surface">
-                                    {entry.name}{isCurrentUser && ' (You)'}
+                                    {entry.name}{isCurrentUser && ` (${t('groups.you')})`}
                                   </span>
                                   {isCurrentUser && (
-                                    <span className="text-[10px] text-secondary font-bold uppercase tracking-tighter">Level up soon!</span>
+                                    <span className="text-[10px] text-secondary font-bold uppercase tracking-tighter">{t('groups.levelUpSoon')}</span>
                                   )}
                                 </div>
                               </div>
                             </td>
                             <td className="py-5 px-8">
                               <span className="px-3 py-1 rounded-lg bg-surface-container-highest text-on-surface-variant text-[10px] font-bold uppercase tracking-wider">
-                                {entry.role === 'LEADER' ? 'Truong nhom' : entry.role === 'MODERATOR' ? 'Quan ly' : 'Member'}
+                                {entry.role === 'LEADER' ? t('groups.leaderRole') : entry.role === 'MODERATOR' ? t('groups.moderatorRole') : t('groups.memberRole')}
                               </span>
                             </td>
                             <td className="py-5 px-8 text-right font-black text-on-surface">{entry.score.toLocaleString()}</td>
@@ -663,25 +665,25 @@ const GroupDetail: React.FC = () => {
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-black tracking-tight flex items-center gap-3">
               <span className="material-symbols-outlined text-secondary text-3xl">groups</span>
-              Thanh Vien ({group.members?.length || 0})
+              {t('groups.membersTitle')} ({group.members?.length || 0})
             </h2>
           </div>
 
           {(!group.members || group.members.length === 0) ? (
             <div className="text-center py-16">
               <span className="material-symbols-outlined text-6xl text-on-surface-variant/30 mb-4 block">group_off</span>
-              <p className="text-sm text-on-surface-variant font-bold">Chua co thanh vien</p>
+              <p className="text-sm text-on-surface-variant font-bold">{t('groups.noMembers')}</p>
             </div>
           ) : (
             <div className="glass-card rounded-3xl overflow-hidden border border-outline-variant/10">
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-surface-container-high/50 text-left">
-                    <th className="py-5 px-8 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Member</th>
-                    <th className="py-5 px-8 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Role</th>
-                    <th className="py-5 px-8 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Joined</th>
+                    <th className="py-5 px-8 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">{t('groups.memberColumn')}</th>
+                    <th className="py-5 px-8 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">{t('groups.roleColumn')}</th>
+                    <th className="py-5 px-8 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">{t('groups.joinedColumn')}</th>
                     {isLeader && (
-                      <th className="py-5 px-8 text-right text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Actions</th>
+                      <th className="py-5 px-8 text-right text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">{t('groups.actionsColumn')}</th>
                     )}
                   </tr>
                 </thead>
@@ -726,15 +728,15 @@ const GroupDetail: React.FC = () => {
                         <td className="py-5 px-8">
                           {member.role === 'LEADER' ? (
                             <span className="px-3 py-1 rounded-lg gold-gradient text-on-secondary text-[10px] font-black uppercase tracking-wider">
-                              Truong nhom
+                              {t('groups.leaderRole')}
                             </span>
                           ) : member.role === 'MODERATOR' ? (
                             <span className="px-3 py-1 rounded-lg bg-primary-container text-on-primary-container text-[10px] font-bold uppercase tracking-wider">
-                              Quan ly
+                              {t('groups.moderatorRole')}
                             </span>
                           ) : (
                             <span className="px-3 py-1 rounded-lg bg-surface-container-highest text-on-surface-variant text-[10px] font-bold uppercase tracking-wider">
-                              Member
+                              {t('groups.memberRole')}
                             </span>
                           )}
                         </td>
@@ -748,7 +750,7 @@ const GroupDetail: React.FC = () => {
                                 onClick={() => handleKick(member.userId, member.name)}
                                 className="px-4 py-2 bg-error-container/20 text-error rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-error-container/40 transition-all active:scale-95"
                               >
-                                Xoa
+                                {t('groups.kick')}
                               </button>
                             )}
                           </td>
@@ -773,7 +775,7 @@ const GroupDetail: React.FC = () => {
                   className="flex-1 px-5 py-3.5 bg-surface-container-low rounded-xl border border-outline-variant/10 text-on-surface font-medium text-sm outline-none focus:border-secondary/30 transition-all placeholder:text-on-surface-variant/50"
                   value={newAnnouncement}
                   onChange={e => setNewAnnouncement(e.target.value)}
-                  placeholder="Viet thong bao moi..."
+                  placeholder={t('groups.writeAnnouncement')}
                   onKeyDown={e => e.key === 'Enter' && handlePostAnnouncement()}
                 />
                 <button
@@ -782,7 +784,7 @@ const GroupDetail: React.FC = () => {
                   className="px-6 py-3.5 gold-gradient text-on-secondary rounded-xl font-black text-xs uppercase tracking-widest hover:shadow-[0_0_20px_rgba(232,168,50,0.3)] transition-all active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
                 >
                   <span className="material-symbols-outlined text-[18px]">send</span>
-                  {postingAnnouncement ? '...' : 'Gui'}
+                  {postingAnnouncement ? '...' : t('groups.send')}
                 </button>
               </div>
             </div>
@@ -792,7 +794,7 @@ const GroupDetail: React.FC = () => {
           <div className="glass-card rounded-3xl p-10 border border-outline-variant/10">
             <h2 className="text-2xl font-black tracking-tight flex items-center gap-3 mb-8">
               <span className="material-symbols-outlined text-secondary text-3xl">timeline</span>
-              Hoat Dong Gan Day
+              {t('groups.recentActivity')}
             </h2>
 
             {announcementsLoading ? (
@@ -802,7 +804,7 @@ const GroupDetail: React.FC = () => {
             ) : announcements.length === 0 ? (
               <div className="text-center py-16">
                 <span className="material-symbols-outlined text-6xl text-on-surface-variant/30 mb-4 block">history</span>
-                <p className="text-sm text-on-surface-variant font-bold">Chua co hoat dong nao</p>
+                <p className="text-sm text-on-surface-variant font-bold">{t('groups.noActivity')}</p>
               </div>
             ) : (
               <div className="relative">
@@ -845,7 +847,7 @@ const GroupDetail: React.FC = () => {
           <div className="glass-card rounded-3xl p-10 border border-outline-variant/10">
             <h2 className="text-2xl font-black tracking-tight flex items-center gap-3 mb-8">
               <span className="material-symbols-outlined text-tertiary text-3xl">quiz</span>
-              Bo Cau Hoi
+              {t('groups.quizSets')}
             </h2>
             {quizSetsLoading ? (
               <div className="flex justify-center py-6">
@@ -854,7 +856,7 @@ const GroupDetail: React.FC = () => {
             ) : quizSets.length === 0 ? (
               <div className="text-center py-12">
                 <span className="material-symbols-outlined text-5xl text-on-surface-variant/30 mb-3 block">description</span>
-                <p className="text-xs text-on-surface-variant font-bold">Chua co bo cau hoi nao</p>
+                <p className="text-xs text-on-surface-variant font-bold">{t('groups.noQuizSets')}</p>
               </div>
             ) : (
               <div className="space-y-3">
@@ -862,7 +864,7 @@ const GroupDetail: React.FC = () => {
                   <div key={qs.id} className="flex items-center justify-between p-5 bg-surface-container-low rounded-2xl hover:bg-surface-container-high transition-all border border-outline-variant/5">
                     <div>
                       <p className="font-bold text-sm text-on-surface">{qs.name}</p>
-                      <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">{qs.questionCount} cau hoi</p>
+                      <p className="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">{t('groups.questionsCount', { count: qs.questionCount })}</p>
                     </div>
                     <span className="material-symbols-outlined text-on-surface-variant text-xl">chevron_right</span>
                   </div>
@@ -878,14 +880,14 @@ const GroupDetail: React.FC = () => {
         <div className="flex justify-center gap-4 px-12 mt-12 pb-10">
           <button
             onClick={() => {
-              if (confirm('Ban co chac muon xoa nhom nay? Thao tac nay khong the hoan tac.')) {
+              if (confirm(t('groups.confirmDelete'))) {
                 // Delete group logic would go here
               }
             }}
             className="px-8 py-3.5 bg-error-container/20 text-error rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-error-container/40 transition-all active:scale-95 border border-error/10 flex items-center gap-2"
           >
             <span className="material-symbols-outlined text-[18px]">delete_forever</span>
-            Xoa Nhom
+            {t('groups.deleteGroup')}
           </button>
         </div>
       )}
@@ -904,12 +906,12 @@ const GroupDetail: React.FC = () => {
 
             <div className="flex items-center gap-3 mb-8">
               <span className="material-symbols-outlined text-secondary text-2xl">settings</span>
-              <h3 className="text-xl font-black tracking-tight">Cai Dat Nhom</h3>
+              <h3 className="text-xl font-black tracking-tight">{t('groups.settingsModal')}</h3>
             </div>
 
             <form onSubmit={handleEdit} className="space-y-5">
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-widest text-on-surface-variant mb-2">Ten nhom</label>
+                <label className="block text-[10px] font-black uppercase tracking-widest text-on-surface-variant mb-2">{t('groups.groupNameLabel')}</label>
                 <input
                   className="w-full px-5 py-3.5 bg-surface-container-low rounded-xl border border-outline-variant/10 text-on-surface font-medium text-sm outline-none focus:border-secondary/30 transition-all"
                   value={editName}
@@ -918,7 +920,7 @@ const GroupDetail: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-widest text-on-surface-variant mb-2">Mo ta</label>
+                <label className="block text-[10px] font-black uppercase tracking-widest text-on-surface-variant mb-2">{t('groups.descriptionLabel')}</label>
                 <textarea
                   className="w-full px-5 py-3.5 bg-surface-container-low rounded-xl border border-outline-variant/10 text-on-surface font-medium text-sm outline-none focus:border-secondary/30 transition-all resize-vertical min-h-[80px]"
                   value={editDesc}
@@ -934,10 +936,10 @@ const GroupDetail: React.FC = () => {
                   onChange={e => setEditPublic(e.target.checked)}
                   className="accent-secondary w-4 h-4"
                 />
-                <label htmlFor="editPublic" className="text-sm text-on-surface-variant font-bold">Nhom cong khai</label>
+                <label htmlFor="editPublic" className="text-sm text-on-surface-variant font-bold">{t('groups.publicGroup')}</label>
               </div>
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-widest text-on-surface-variant mb-2">So thanh vien toi da</label>
+                <label className="block text-[10px] font-black uppercase tracking-widest text-on-surface-variant mb-2">{t('groups.maxMembers')}</label>
                 <input
                   className="w-full px-5 py-3.5 bg-surface-container-low rounded-xl border border-outline-variant/10 text-on-surface font-medium text-sm outline-none focus:border-secondary/30 transition-all"
                   type="number"
@@ -955,7 +957,7 @@ const GroupDetail: React.FC = () => {
                 disabled={editLoading || !editName.trim()}
                 className="w-full py-4 gold-gradient text-on-secondary rounded-xl font-black text-xs uppercase tracking-widest hover:shadow-[0_0_20px_rgba(232,168,50,0.3)] transition-all active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                {editLoading ? 'Dang luu...' : 'Luu Thay Doi'}
+                {editLoading ? t('groups.saving') : t('groups.saveChanges')}
               </button>
             </form>
           </div>

@@ -43,22 +43,22 @@ describe('CreateRoom', () => {
   // 1. Render
   it('renders form without crashing', () => {
     renderCreateRoom()
-    expect(screen.getByText(/Tạo phòng mới/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/Tạo Phòng/).length).toBeGreaterThan(0)
   })
 
   // 2. All 4 game mode cards
   it('renders all 4 game mode cards', () => {
     renderCreateRoom()
-    expect(screen.getByText('Speed Race')).toBeInTheDocument()
-    expect(screen.getByText('Battle Royale')).toBeInTheDocument()
-    expect(screen.getByText('Team vs Team')).toBeInTheDocument()
-    expect(screen.getByText('Sudden Death')).toBeInTheDocument()
+    expect(screen.getByText('room.modes.speed_race')).toBeInTheDocument()
+    expect(screen.getByText('room.modes.battle_royale')).toBeInTheDocument()
+    expect(screen.getByText('room.modes.team_vs_team')).toBeInTheDocument()
+    expect(screen.getByText('room.modes.sudden_death')).toBeInTheDocument()
   })
 
   // 3. Mode selection highlights active
   it('highlights selected game mode', () => {
     renderCreateRoom()
-    const brBtn = screen.getByText('Battle Royale').closest('button')!
+    const brBtn = screen.getByText('room.modes.battle_royale').closest('button')!
     fireEvent.click(brBtn)
     expect(brBtn.className).toContain('border-secondary')
   })
@@ -91,20 +91,20 @@ describe('CreateRoom', () => {
   // 7. Visibility toggle
   it('toggles public/private visibility', () => {
     renderCreateRoom()
-    expect(screen.getByText('Phòng riêng tư')).toBeInTheDocument()
+    expect(screen.getByText('Riêng tư')).toBeInTheDocument()
     // Toggle is a button with rounded-full class inside the visibility section
     const toggleBtns = document.querySelectorAll('button[type="button"]')
     const toggleBtn = Array.from(toggleBtns).find(b => b.className.includes('rounded-full') && b.className.includes('w-12'))
     expect(toggleBtn).toBeTruthy()
     fireEvent.click(toggleBtn!)
-    expect(screen.getByText('Phòng công khai')).toBeInTheDocument()
+    expect(screen.getByText('Công khai')).toBeInTheDocument()
   })
 
   // 8. Submit success → navigate to lobby
   it('submits form and navigates to lobby on success', async () => {
     mockApiPost.mockResolvedValue({ data: { id: 'room-123', roomCode: 'ABC123' } })
     renderCreateRoom()
-    const submitBtn = screen.getByText('Tạo phòng').closest('button')!
+    const submitBtn = document.querySelector('button[type="submit"]')!
     fireEvent.click(submitBtn)
 
     await waitFor(() => {
@@ -120,7 +120,7 @@ describe('CreateRoom', () => {
   it('shows error message on API failure', async () => {
     mockApiPost.mockRejectedValue({ response: { data: { message: 'Server error' } } })
     renderCreateRoom()
-    fireEvent.click(screen.getByText('Tạo phòng').closest('button')!)
+    fireEvent.click(document.querySelector('button[type="submit"]')!)
 
     await waitFor(() => {
       expect(screen.getByText('Server error')).toBeInTheDocument()
@@ -131,7 +131,7 @@ describe('CreateRoom', () => {
   it('shows loading spinner while submitting', async () => {
     mockApiPost.mockImplementation(() => new Promise(() => {})) // never resolves
     renderCreateRoom()
-    fireEvent.click(screen.getByText('Tạo phòng').closest('button')!)
+    fireEvent.click(document.querySelector('button[type="submit"]')!)
 
     await waitFor(() => {
       expect(screen.getByText('Đang tạo...')).toBeInTheDocument()
@@ -163,7 +163,7 @@ describe('CreateRoom', () => {
   // 14. Room name input
   it('renders room name input with placeholder', () => {
     renderCreateRoom()
-    const input = screen.getByPlaceholderText(/Phòng của bạn/i)
+    const input = screen.getByPlaceholderText(/Phòng Kinh Thánh vui/i)
     expect(input).toBeInTheDocument()
   })
 })

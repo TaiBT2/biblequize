@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 import { useAuth } from '../store/authStore'
 
@@ -56,20 +57,20 @@ function getCurrentTier(points: number): { current: TierInfo; next: TierInfo | n
 // --- Category Helpers ---
 
 const CATEGORIES = [
-  { key: 'all', label: 'Tất cả', icon: 'emoji_events' },
-  { key: 'learning', label: 'Học tập', icon: 'auto_stories' },
-  { key: 'streak', label: 'Chuỗi', icon: 'local_fire_department' },
-  { key: 'social', label: 'Cộng đồng', icon: 'groups' },
-  { key: 'competition', label: 'Thi đấu', icon: 'military_tech' },
+  { key: 'all', labelKey: 'achievements.catAll', icon: 'emoji_events' },
+  { key: 'learning', labelKey: 'achievements.catLearning', icon: 'auto_stories' },
+  { key: 'streak', labelKey: 'achievements.catStreak', icon: 'local_fire_department' },
+  { key: 'social', labelKey: 'achievements.catSocial', icon: 'groups' },
+  { key: 'competition', labelKey: 'achievements.catCompetition', icon: 'military_tech' },
   // Legacy categories mapped
-  { key: 'quiz', label: 'Quiz', icon: 'quiz' },
-  { key: 'points', label: 'Điểm', icon: 'toll' },
-  { key: 'books', label: 'Sách', icon: 'menu_book' },
-  { key: 'accuracy', label: 'Chính xác', icon: 'target' },
+  { key: 'quiz', labelKey: 'achievements.catQuiz', icon: 'quiz' },
+  { key: 'points', labelKey: 'achievements.catPoints', icon: 'toll' },
+  { key: 'books', labelKey: 'achievements.catBooks', icon: 'menu_book' },
+  { key: 'accuracy', labelKey: 'achievements.catAccuracy', icon: 'target' },
 ]
 
 function getCategoryMeta(key: string) {
-  return CATEGORIES.find(c => c.key === key) || { key, label: key, icon: 'emoji_events' }
+  return CATEGORIES.find(c => c.key === key) || { key, labelKey: key, icon: 'emoji_events' }
 }
 
 const FILL_STYLE = { fontVariationSettings: "'FILL' 1" }
@@ -77,6 +78,7 @@ const FILL_STYLE = { fontVariationSettings: "'FILL' 1" }
 // --- Component ---
 
 const Achievements: React.FC = () => {
+  const { t } = useTranslation()
   const [achievements, setAchievements] = useState<Achievement[]>([])
   const [stats, setStats] = useState<any>({})
   const [loading, setLoading] = useState(true)
@@ -143,16 +145,16 @@ const Achievements: React.FC = () => {
             lock
           </span>
           <h2 className="text-2xl font-bold mb-4 text-on-surface">
-            Đăng nhập để xem thành tích
+            {t('achievements.loginRequired')}
           </h2>
           <p className="text-on-surface-variant mb-8">
-            Bạn cần đăng nhập để xem các thành tích của mình
+            {t('achievements.loginDescription')}
           </p>
           <Link
             to="/login"
             className="px-6 py-3 rounded-xl font-bold gold-gradient text-on-secondary inline-block"
           >
-            Đăng nhập
+            {t('auth.login')}
           </Link>
         </div>
       </div>
@@ -165,7 +167,7 @@ const Achievements: React.FC = () => {
     return (
       <div className="flex flex-col items-center justify-center py-24 gap-4">
         <div className="w-12 h-12 border-4 border-surface-container-highest border-t-secondary rounded-full animate-spin" />
-        <p className="text-on-surface-variant font-medium">Đang tải thành tích...</p>
+        <p className="text-on-surface-variant font-medium">{t('achievements.loading')}</p>
       </div>
     )
   }
@@ -177,7 +179,7 @@ const Achievements: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <h1 className="text-4xl font-black tracking-tight text-on-surface mb-2">
-              Thành Tích
+              {t('achievements.title')}
             </h1>
             <p className="text-on-surface-variant flex items-center gap-2">
               <span
@@ -186,12 +188,12 @@ const Achievements: React.FC = () => {
               >
                 stars
               </span>
-              {earnedCount}/{achievements.length} đã mở khóa
+              {earnedCount}/{achievements.length} {t('achievements.unlocked')}
             </p>
           </div>
           <div className="w-full md:w-72">
             <div className="flex justify-between text-xs font-bold uppercase tracking-wider mb-2 text-on-surface-variant">
-              <span>Tiến trình tổng thể</span>
+              <span>{t('achievements.overallProgress')}</span>
               <span className="text-secondary">{overallProgress}%</span>
             </div>
             <div className="h-3 w-full bg-primary-container rounded-full overflow-hidden">
@@ -222,7 +224,7 @@ const Achievements: React.FC = () => {
                       : 'font-medium text-on-surface-variant hover:bg-surface-container-high'
                   }`}
                 >
-                  {cat.label}
+                  {t(cat.labelKey)}
                 </button>
               )
             })}
@@ -234,9 +236,9 @@ const Achievements: React.FC = () => {
               <span className="material-symbols-outlined text-6xl text-on-surface-variant/30 mb-4 block">
                 emoji_events
               </span>
-              <h3 className="text-xl font-bold text-on-surface mb-2">Chưa có thành tích nào</h3>
+              <h3 className="text-xl font-bold text-on-surface mb-2">{t('achievements.noAchievements')}</h3>
               <p className="text-on-surface-variant">
-                Hãy chơi quiz để mở khóa các thành tích!
+                {t('achievements.playToUnlock')}
               </p>
             </div>
           ) : (
@@ -265,7 +267,7 @@ const Achievements: React.FC = () => {
                           </span>
                         </div>
                         <span className="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-2 py-1 rounded">
-                          Mở khóa
+                          {t('achievements.unlocked')}
                         </span>
                       </div>
 
@@ -283,7 +285,7 @@ const Achievements: React.FC = () => {
                           calendar_today
                         </span>
                         <span className="text-[11px] text-on-surface-variant font-medium">
-                          Đạt được vào {new Date(achievement.unlockedAt!).toLocaleDateString('vi-VN')}
+                          {t('achievements.earnedOn', { date: new Date(achievement.unlockedAt!).toLocaleDateString('vi-VN') })}
                         </span>
                       </div>
                     </div>
@@ -322,7 +324,7 @@ const Achievements: React.FC = () => {
                         <div className="h-full bg-outline rounded-full" style={{ width: '0%' }} />
                       </div>
                       <p className="text-[10px] text-on-surface-variant font-medium mt-2">
-                        Chưa mở khóa
+                        {t('achievements.locked')}
                       </p>
                     </div>
                   </div>
@@ -337,11 +339,11 @@ const Achievements: React.FC = () => {
           {/* Recently Unlocked */}
           <section className="bg-surface-container p-6 rounded-2xl">
             <h2 className="text-lg font-bold text-on-surface mb-6 flex items-center gap-2">
-              Gần đây đạt được
+              {t('achievements.recentlyEarned')}
             </h2>
             <div className="space-y-6">
               {recentUnlocked.length === 0 ? (
-                <p className="text-sm text-on-surface-variant">Chưa có thành tích nào.</p>
+                <p className="text-sm text-on-surface-variant">{t('achievements.noAchievements')}</p>
               ) : (
                 recentUnlocked.map((a) => {
                   const catMeta = getCategoryMeta(a.category)
@@ -369,7 +371,7 @@ const Achievements: React.FC = () => {
               )}
             </div>
             <button className="w-full mt-8 py-3 rounded-xl border border-outline-variant/20 text-xs font-bold text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all">
-              Xem tất cả lịch sử
+              {t('achievements.viewAllHistory')}
             </button>
           </section>
 
@@ -379,31 +381,31 @@ const Achievements: React.FC = () => {
               <span className="material-symbols-outlined text-8xl">trophy</span>
             </div>
             <h3 className="text-xs font-black uppercase tracking-widest text-secondary mb-4">
-              Thông số mùa giải
+              {t('achievements.seasonStats')}
             </h3>
             <div className="space-y-4">
               <div className="flex justify-between items-center">
-                <span className="text-sm text-on-surface-variant">Hạng hiện tại</span>
+                <span className="text-sm text-on-surface-variant">{t('achievements.currentRank')}</span>
                 <span className="text-sm font-bold text-on-surface">
                   {tierData.current.name}
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm text-on-surface-variant">Điểm kinh nghiệm</span>
+                <span className="text-sm text-on-surface-variant">{t('achievements.experiencePoints')}</span>
                 <span className="text-sm font-bold text-on-surface">
                   {(stats.totalPoints || totalPoints).toLocaleString()} XP
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm text-on-surface-variant">Tỷ lệ chính xác</span>
+                <span className="text-sm text-on-surface-variant">{t('achievements.accuracy')}</span>
                 <span className="text-sm font-bold text-on-surface">
                   {stats.accuracy || 0}%
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm text-on-surface-variant">Chuỗi dài nhất</span>
+                <span className="text-sm text-on-surface-variant">{t('achievements.longestStreak')}</span>
                 <span className="text-sm font-bold text-on-surface">
-                  {stats.longestStreak || 0} ngày
+                  {stats.longestStreak || 0} {t('common.days')}
                 </span>
               </div>
             </div>
@@ -424,7 +426,7 @@ const Achievements: React.FC = () => {
                 <p className="text-sm font-black text-on-surface">{tierData.current.name}</p>
                 {tierData.next && (
                   <p className="text-[11px] text-on-surface-variant">
-                    Tiếp: {tierData.next.name}
+                    {t('achievements.nextTier')}: {tierData.next.name}
                   </p>
                 )}
               </div>
@@ -441,12 +443,12 @@ const Achievements: React.FC = () => {
                   />
                 </div>
                 <p className="text-[10px] text-on-surface-variant font-medium">
-                  {stats.totalPoints || totalPoints} / {tierData.next.minPoints} điểm
+                  {stats.totalPoints || totalPoints} / {tierData.next.minPoints} {t('achievements.pointsUnit')}
                 </p>
               </>
             ) : (
               <p className="text-[11px] text-on-surface-variant italic">
-                Danh hiệu cao nhất!
+                {t('achievements.maxTier')}
               </p>
             )}
           </section>
@@ -456,10 +458,10 @@ const Achievements: React.FC = () => {
             <div className="w-full h-full bg-gradient-to-br from-secondary-container to-surface-container-low" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-5">
               <p className="text-[10px] font-bold uppercase tracking-widest text-secondary mb-1">
-                Sự kiện đặc biệt
+                {t('achievements.specialEvent')}
               </p>
               <h4 className="text-sm font-bold text-white leading-tight">
-                Mở khóa Huy hiệu giới hạn ngay hôm nay!
+                {t('achievements.unlockLimitedBadge')}
               </h4>
             </div>
           </div>

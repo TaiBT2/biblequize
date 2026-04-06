@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { getQuizLanguage, setQuizLanguage, type QuizLanguage } from '../utils/quizLanguage'
+import { useTranslation } from 'react-i18next'
+import { setQuizLanguage, type QuizLanguage } from '../utils/quizLanguage'
 
 interface Props {
   onChange?: (lang: QuizLanguage) => void
@@ -7,11 +7,12 @@ interface Props {
 }
 
 export default function QuizLanguageSelect({ onChange, className = '' }: Props) {
-  const [lang, setLang] = useState<QuizLanguage>(getQuizLanguage)
+  const { i18n } = useTranslation()
+  const lang = (i18n.language === 'en' ? 'en' : 'vi') as QuizLanguage
 
   const handleChange = (newLang: QuizLanguage) => {
-    setLang(newLang)
     setQuizLanguage(newLang)
+    i18n.changeLanguage(newLang)
     onChange?.(newLang)
   }
 

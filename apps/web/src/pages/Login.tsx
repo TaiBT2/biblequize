@@ -1,9 +1,11 @@
 import { useState, useEffect, type FormEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useAuth } from '../store/authStore'
 import PageMeta from '../components/PageMeta'
 
 export default function Login() {
+  const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(false)
   const [isGoogleLoading, setIsGoogleLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -20,19 +22,19 @@ export default function Login() {
     if (errorParam) {
       switch (errorParam) {
         case 'oauth_failed':
-          setError('Đăng nhập OAuth thất bại. Vui lòng thử lại.')
+          setError(t('auth.errorOAuthFailed'))
           break
         case 'no_tokens':
-          setError('Không nhận được token xác thực. Vui lòng thử lại.')
+          setError(t('auth.errorNoTokens'))
           break
         case 'processing_failed':
-          setError('Lỗi xử lý đăng nhập. Vui lòng thử lại.')
+          setError(t('auth.errorProcessingFailed'))
           break
         default:
-          setError('Có lỗi xảy ra trong quá trình đăng nhập.')
+          setError(t('auth.errorDefault'))
       }
     }
-  }, [searchParams])
+  }, [searchParams, t])
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -61,7 +63,7 @@ export default function Login() {
       navigate('/', { replace: true })
     } catch (err: any) {
       const message = err.response?.data?.message
-      setError(message || 'Đăng nhập thất bại')
+      setError(message || t('auth.errorInvalid'))
     } finally {
       setIsLoading(false)
     }
@@ -69,7 +71,7 @@ export default function Login() {
 
   return (
     <main className="flex min-h-screen">
-      <PageMeta title="Dang nhap" canonicalPath="/login" />
+      <PageMeta title={t('auth.login')} canonicalPath="/login" />
       {/* Left Side: Hero Section (60%) */}
       <section className="hidden lg:flex lg:w-[60%] relative overflow-hidden bg-surface-container-lowest">
         <div className="absolute inset-0 z-0">
@@ -86,18 +88,18 @@ export default function Login() {
         <div className="relative z-10 flex flex-col justify-end p-20 w-full h-full">
           <div className="max-w-2xl">
             <h1 className="text-6xl font-extrabold tracking-tight leading-tight mb-6 text-on-surface drop-shadow-2xl">
-              Khám Phá Lời Chúa <br />
-              <span className="text-secondary italic font-light">Qua Trò Chơi</span>
+              {t('auth.discoverWord')} <br />
+              <span className="text-secondary italic font-light">{t('auth.throughGames')}</span>
             </h1>
             <p className="text-xl text-on-surface-variant font-light max-w-lg leading-relaxed">
-              Hành trình học hỏi Kinh Thánh thú vị và đầy cảm hứng đang chờ đón bạn. Thử thách bản thân và kết nối với cộng đồng.
+              {t('auth.heroDesc')}
             </p>
           </div>
           {/* Scriptural Accent Block */}
           <div className="mt-12 flex items-center gap-4">
             <div className="h-12 w-1 gold-gradient rounded-full" />
             <p className="italic text-secondary/80 font-medium">
-              "Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi."
+              "{t('landing.verseText')}"
             </p>
           </div>
         </div>
@@ -122,8 +124,8 @@ export default function Login() {
           </div>
 
           <div className="space-y-2 text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-on-surface">Chào mừng trở lại</h2>
-            <p className="text-on-surface-variant">Đăng nhập để tiếp tục hành trình</p>
+            <h2 className="text-3xl font-bold tracking-tight text-on-surface">{t('auth.welcomeBack')}</h2>
+            <p className="text-on-surface-variant">{t('auth.loginToContinue')}</p>
           </div>
 
           {/* Error Message */}
@@ -163,14 +165,14 @@ export default function Login() {
                   />
                 </svg>
               )}
-              {isGoogleLoading ? 'Đang đăng nhập...' : 'Đăng nhập với Google'}
+              {isGoogleLoading ? t('auth.loggingIn') : t('auth.continueWithGoogle')}
             </button>
 
             {/* Divider */}
             <div className="flex items-center gap-4">
               <div className="h-[1px] flex-1 bg-outline-variant/30" />
               <span className="text-xs uppercase tracking-widest text-on-surface-variant/50 font-bold">
-                hoặc
+                {t('auth.orLoginWith')}
               </span>
               <div className="h-[1px] flex-1 bg-outline-variant/30" />
             </div>
@@ -179,7 +181,7 @@ export default function Login() {
             <form onSubmit={handleEmailSubmit} className="space-y-4">
               <div className="space-y-1.5">
                 <label className="text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1">
-                  Email
+                  {t('auth.email')}
                 </label>
                 <div className="relative group">
                   <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-secondary transition-colors">
@@ -199,13 +201,13 @@ export default function Login() {
               <div className="space-y-1.5">
                 <div className="flex justify-between items-end ml-1">
                   <label className="text-xs font-bold uppercase tracking-wider text-on-surface-variant">
-                    Mật khẩu
+                    {t('auth.password')}
                   </label>
                   <a
                     href="#"
                     className="text-[10px] uppercase tracking-tighter font-bold text-secondary/60 hover:text-secondary transition-colors"
                   >
-                    Quên mật khẩu?
+                    {t('auth.forgotPassword')}
                   </a>
                 </div>
                 <div className="relative group">
@@ -231,11 +233,11 @@ export default function Login() {
                 {isLoading ? (
                   <>
                     <span className="material-symbols-outlined animate-spin text-sm">progress_activity</span>
-                    Đang đăng nhập...
+                    {t('auth.loggingIn')}
                   </>
                 ) : (
                   <>
-                    Đăng nhập
+                    {t('auth.login')}
                     <span className="material-symbols-outlined text-sm">arrow_forward</span>
                   </>
                 )}
@@ -246,12 +248,12 @@ export default function Login() {
           {/* Footer Links */}
           <div className="pt-8 flex flex-col items-center gap-4 border-t border-outline-variant/10">
             <p className="text-sm text-on-surface-variant">
-              Chưa có tài khoản?{' '}
+              {t('auth.noAccount')}{' '}
               <Link
                 to="/register"
                 className="text-secondary font-bold hover:underline decoration-secondary/30 underline-offset-4 ml-1"
               >
-                Đăng ký ngay
+                {t('auth.registerNow')}
               </Link>
             </p>
             <Link
@@ -259,7 +261,7 @@ export default function Login() {
               className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant/60 hover:text-on-surface transition-colors py-2 px-4 rounded-full bg-surface-container-low"
             >
               <span className="material-symbols-outlined text-sm">stadium</span>
-              Chơi thử không cần đăng nhập
+              {t('auth.guestPlay')}
             </Link>
           </div>
         </div>

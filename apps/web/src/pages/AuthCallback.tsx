@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useAuth } from '../store/authStore'
 
 export default function AuthCallback() {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const [isProcessing, setIsProcessing] = useState(true)
@@ -65,7 +67,7 @@ export default function AuthCallback() {
       } catch (err: any) {
         console.error('[AUTH_CALLBACK] Error processing callback:', err);
         const backendError = err.response?.data?.message || err.message;
-        setError(`Lỗi xác thực: ${backendError}`);
+        setError(`${t('auth.errorAuth')}: ${backendError}`);
         setTimeout(() => navigate('/login?error=processing_failed'), 3000);
       } finally {
         setIsProcessing(false);
@@ -73,7 +75,7 @@ export default function AuthCallback() {
     };
 
     processAuthCallback()
-  }, [searchParams, navigate])
+  }, [searchParams, navigate, t])
 
   return (
     <div className="min-h-screen neon-bg flex items-center justify-center relative overflow-hidden">
@@ -86,19 +88,19 @@ export default function AuthCallback() {
           {isProcessing ? (
             <>
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-neon-blue mx-auto mb-4"></div>
-              <p className="neon-text text-white">Đang xử lý đăng nhập...</p>
+              <p className="neon-text text-white">{t('auth.processing')}</p>
             </>
           ) : error ? (
             <>
               <div className="text-6xl mb-4">❌</div>
               <p className="neon-text text-red-400 mb-4">{error}</p>
-              <p className="text-white opacity-70">Chuyển hướng về trang đăng nhập...</p>
+              <p className="text-white opacity-70">{t('auth.redirectingLogin')}</p>
             </>
           ) : (
             <>
               <div className="text-6xl mb-4">✅</div>
-              <p className="neon-text text-green-400 mb-4">Đăng nhập thành công!</p>
-              <p className="text-white opacity-70">Chuyển hướng về trang chủ...</p>
+              <p className="neon-text text-green-400 mb-4">{t('auth.loginSuccess')}</p>
+              <p className="text-white opacity-70">{t('auth.redirectingHome')}</p>
             </>
           )}
         </div>

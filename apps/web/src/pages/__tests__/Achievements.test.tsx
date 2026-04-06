@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 
@@ -18,8 +18,9 @@ vi.mock('../../store/authStore', () => ({
   useAuth: () => authState,
 }))
 
+const mockApiGet = vi.fn()
 vi.mock('../../api/client', () => ({
-  api: { get: vi.fn().mockResolvedValue({ data: { achievements: [], stats: {} } }) },
+  api: { get: (...args: any[]) => mockApiGet(...args) },
 }))
 
 import Achievements from '../Achievements'
@@ -29,13 +30,22 @@ function renderAchievements() {
 }
 
 describe('Achievements', () => {
+  beforeEach(() => {
+    mockApiGet.mockImplementation((url: string) => {
+      if (url.includes('my-achievements')) return Promise.resolve({ data: [] })
+      if (url.includes('stats')) return Promise.resolve({ data: {} })
+      return Promise.reject(new Error('Not found'))
+    })
+  })
+
   it('renders without crashing', () => {
     expect(() => renderAchievements()).not.toThrow()
   })
 
-  it('renders page title', () => {
+  it('renders page title', async () => {
     renderAchievements()
-    expect(screen.queryByText(/Thành Tích/i) || screen.queryByText(/Thành tựu/i)).toBeTruthy()
+    const matches = await screen.findAllByText(/Thành Tích/i)
+    expect(matches.length).toBeGreaterThan(0)
   })
 
   it('renders page structure with containers', () => {

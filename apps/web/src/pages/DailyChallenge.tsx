@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 import ShareCard from '../components/ShareCard'
 import PageMeta from '../components/PageMeta'
@@ -57,7 +58,6 @@ interface StreakData {
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 const LETTERS = ['A', 'B', 'C', 'D']
-const DAY_LABELS = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 function formatCountdown(diff: number): string {
@@ -76,14 +76,18 @@ function getToday(): string {
   })
 }
 
-function getLast7Days(): { label: string; date: string; isToday: boolean }[] {
+function getLast7Days(t: (key: string) => string): { label: string; date: string; isToday: boolean }[] {
+  const DAY_LABELS = [
+    t('daily.daySun'), t('daily.dayMon'), t('daily.dayTue'),
+    t('daily.dayWed'), t('daily.dayThu'), t('daily.dayFri'), t('daily.daySat'),
+  ]
   const days: { label: string; date: string; isToday: boolean }[] = []
   const today = new Date()
   for (let i = 6; i >= 0; i--) {
     const d = new Date(today)
     d.setDate(d.getDate() - i)
     days.push({
-      label: i === 0 ? 'H.NAY' : DAY_LABELS[d.getDay()],
+      label: i === 0 ? t('daily.today') : DAY_LABELS[d.getDay()],
       date: d.toISOString().split('T')[0],
       isToday: i === 0,
     })
@@ -125,6 +129,7 @@ function LoadingSkeleton() {
 
 // ─── Component ──────────────────────────────────────────────────────────────
 const DailyChallenge: React.FC = () => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
 
   const [loading, setLoading] = useState(true)
@@ -152,7 +157,7 @@ const DailyChallenge: React.FC = () => {
   // Countdown
   const [countdown, setCountdown] = useState('')
 
-  const last7Days = useMemo(() => getLast7Days(), [])
+  const last7Days = useMemo(() => getLast7Days(t), [t])
 
   // ── Countdown timer to midnight (always running) ───────────────────────
   useEffect(() => {
@@ -192,7 +197,7 @@ const DailyChallenge: React.FC = () => {
             }
           }
         } else {
-          setError('Không thể tải thử thách. Vui lòng thử lại sau.')
+          setError(t('daily.loadError'))
         }
 
         if (leaderboardRes.status === 'fulfilled') {
@@ -207,7 +212,7 @@ const DailyChallenge: React.FC = () => {
         }
       } catch (err) {
         console.error('Error loading daily challenge:', err)
-        setError('Không thể tải thử thách. Vui lòng thử lại sau.')
+        setError(t('daily.loadError'))
       } finally {
         setLoading(false)
       }
@@ -225,7 +230,7 @@ const DailyChallenge: React.FC = () => {
       setQuizStarted(true)
     } catch (err) {
       console.error('Error starting daily challenge:', err)
-      setError('Không thể bắt đầu thử thách. Vui lòng thử lại.')
+      setError(t('daily.startError'))
     }
   }, [challengeData])
 
@@ -293,7 +298,7 @@ const DailyChallenge: React.FC = () => {
           onClick={() => window.location.reload()}
           className="gold-gradient px-8 py-3 rounded-xl text-on-secondary font-bold transition-all hover:scale-[1.02] active:scale-95"
         >
-          Thử lại
+          {t('common.retry')}
         </button>
       </div>
     )
@@ -309,14 +314,14 @@ const DailyChallenge: React.FC = () => {
         {/* Header */}
         <section className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-2">
-            <h2 className="text-4xl font-extrabold tracking-tight text-on-surface">Kết Quả Hôm Nay</h2>
+            <h2 className="text-4xl font-extrabold tracking-tight text-on-surface">{t('daily.resultTitle')}</h2>
             <div className="flex items-center gap-3 text-on-surface-variant">
               <span className="material-symbols-outlined text-sm">calendar_today</span>
               <span className="text-sm font-medium">{getToday()}</span>
             </div>
           </div>
           <div className="bg-surface-container-high px-6 py-3 rounded-2xl border border-secondary/20 gold-glow flex flex-col items-center">
-            <span className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">Làm mới sau</span>
+            <span className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">{t('daily.refreshIn')}</span>
             <div className="font-mono text-2xl font-black text-secondary tracking-widest">
               {countdown}
             </div>
@@ -334,7 +339,7 @@ const DailyChallenge: React.FC = () => {
               <div className="text-6xl font-black text-on-surface">
                 {correctCount}<span className="text-2xl text-on-surface-variant font-medium">/{totalQuestions}</span>
               </div>
-              <p className="text-on-surface-variant text-lg">Chúc mừng! Bạn đã hoàn thành thử thách hôm nay.</p>
+              <p className="text-on-surface-variant text-lg">{t('daily.completedMessage')}</p>
 
               {/* Stars */}
               <div className="flex items-center justify-center gap-2">
@@ -356,21 +361,21 @@ const DailyChallenge: React.FC = () => {
                 className="gold-gradient px-8 py-4 rounded-2xl text-on-secondary font-black text-base shadow-lg hover:shadow-secondary/20 transition-all hover:scale-[1.02] active:scale-95 flex items-center gap-2"
               >
                 <span className="material-symbols-outlined">share</span>
-                Chia sẻ kết quả
+                {t('daily.shareResult')}
               </button>
               <Link
                 to="/leaderboard"
                 className="bg-surface-container-high px-8 py-4 rounded-2xl text-on-surface font-bold border border-outline-variant/20 hover:bg-surface-container-highest transition-colors flex items-center gap-2"
               >
                 <span className="material-symbols-outlined">leaderboard</span>
-                Xếp hạng
+                {t('daily.leaderboard')}
               </Link>
               <Link
                 to="/"
                 className="bg-surface-container-high px-8 py-4 rounded-2xl text-on-surface font-bold border border-outline-variant/20 hover:bg-surface-container-highest transition-colors flex items-center gap-2"
               >
                 <span className="material-symbols-outlined">home</span>
-                Trang chủ
+                {t('daily.home')}
               </Link>
             </div>
           </div>
@@ -390,7 +395,7 @@ const DailyChallenge: React.FC = () => {
               onClick={() => setShowShareCard(false)}
               className="block mx-auto mt-4 text-on-surface-variant hover:text-on-surface transition-colors text-sm font-medium"
             >
-              Đóng
+              {t('common.close')}
             </button>
           </section>
         )}
@@ -408,8 +413,8 @@ const DailyChallenge: React.FC = () => {
         {/* Header */}
         <section className="flex items-center justify-between">
           <div className="space-y-1">
-            <h2 className="text-2xl font-extrabold tracking-tight text-on-surface">Thử Thách Hôm Nay</h2>
-            <p className="text-sm text-on-surface-variant">Câu {currentIndex + 1}/{totalQuestions}</p>
+            <h2 className="text-2xl font-extrabold tracking-tight text-on-surface">{t('daily.title')}</h2>
+            <p className="text-sm text-on-surface-variant">{t('quiz.question', { current: currentIndex + 1, total: totalQuestions })}</p>
           </div>
           <div className="bg-surface-container-high px-4 py-2 rounded-xl border border-outline-variant/10 text-sm font-mono font-bold text-secondary">
             {getToday()}
@@ -441,7 +446,7 @@ const DailyChallenge: React.FC = () => {
             {question.book && (
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/30 border border-primary/10 text-[10px] uppercase tracking-wider font-bold text-on-primary-container">
                 <span className="material-symbols-outlined text-xs">menu_book</span>
-                {question.book} {question.chapter ? `- Chương ${question.chapter}` : ''}
+                {question.book} {question.chapter ? `- ${t('daily.chapter')} ${question.chapter}` : ''}
               </span>
             )}
 
@@ -481,7 +486,7 @@ const DailyChallenge: React.FC = () => {
             {/* Explanation */}
             {answered && question.explanation && (
               <div className="p-4 bg-primary-container/20 rounded-xl border border-primary/10">
-                <p className="text-[11px] uppercase tracking-widest text-on-primary-container font-bold mb-1">Giải thích</p>
+                <p className="text-[11px] uppercase tracking-widest text-on-primary-container font-bold mb-1">{t('daily.explanation')}</p>
                 <p className="text-sm leading-relaxed text-on-primary-container/80">{question.explanation}</p>
               </div>
             )}
@@ -492,7 +497,7 @@ const DailyChallenge: React.FC = () => {
                 onClick={handleNext}
                 className="w-full gold-gradient py-4 rounded-2xl text-on-secondary font-black text-base shadow-lg hover:shadow-secondary/20 transition-all hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-2"
               >
-                {currentIndex + 1 >= totalQuestions ? 'Xem kết quả' : 'Câu tiếp theo'}
+                {currentIndex + 1 >= totalQuestions ? t('daily.viewResult') : t('daily.nextQuestion')}
                 <span className="material-symbols-outlined">arrow_forward</span>
               </button>
             )}
@@ -509,13 +514,13 @@ const DailyChallenge: React.FC = () => {
         <div className="w-20 h-20 bg-surface-container-high rounded-full flex items-center justify-center">
           <span className="material-symbols-outlined text-5xl text-on-surface-variant">hourglass_empty</span>
         </div>
-        <h3 className="text-2xl font-bold text-on-surface">Không có câu hỏi hôm nay</h3>
-        <p className="text-on-surface-variant">Hãy quay lại sau!</p>
+        <h3 className="text-2xl font-bold text-on-surface">{t('daily.noQuestions')}</h3>
+        <p className="text-on-surface-variant">{t('daily.comeBackLater')}</p>
         <Link
           to="/"
           className="gold-gradient px-8 py-3 rounded-xl text-on-secondary font-bold transition-all hover:scale-[1.02] active:scale-95"
         >
-          Trang chủ
+          {t('daily.home')}
         </Link>
       </div>
     )
@@ -526,8 +531,8 @@ const DailyChallenge: React.FC = () => {
     streak?.history?.filter((h) => h.completed).map((h) => h.date) ?? []
   )
   const currentStreak = streak?.currentStreak ?? 0
-  const challengeTitle = challengeData.title ?? 'Vượt Qua Thử Thách Ngũ Kinh'
-  const challengeDesc = challengeData.description ?? 'Cùng ôn lại các kiến thức trọng tâm về 5 cuốn sách đầu tiên của Kinh Thánh.'
+  const challengeTitle = challengeData.title ?? t('daily.defaultTitle')
+  const challengeDesc = challengeData.description ?? t('daily.defaultDesc')
   const questionCount = challengeData.questionCount ?? challengeData.questions.length
   const timeLimit = challengeData.timeLimit ?? 5
 
@@ -541,14 +546,14 @@ const DailyChallenge: React.FC = () => {
       {/* Header Section */}
       <section className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">
-          <h2 className="text-4xl font-extrabold tracking-tight text-on-surface">Thử Thách Hôm Nay</h2>
+          <h2 className="text-4xl font-extrabold tracking-tight text-on-surface">{t('daily.title')}</h2>
           <div className="flex items-center gap-3 text-on-surface-variant">
             <span className="material-symbols-outlined text-sm">calendar_today</span>
             <span className="text-sm font-medium">{getToday()}</span>
           </div>
         </div>
         <div className="bg-surface-container-high px-6 py-3 rounded-2xl border border-secondary/20 gold-glow flex flex-col items-center">
-          <span className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">Làm mới sau</span>
+          <span className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">{t('daily.refreshIn')}</span>
           <div className="font-mono text-2xl font-black text-secondary tracking-widest">
             {countdown}
           </div>
@@ -566,7 +571,7 @@ const DailyChallenge: React.FC = () => {
             {!challengeData.alreadyCompleted && (
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-error-container/20 border border-error/20">
                 <span className="w-2 h-2 rounded-full bg-error animate-pulse" />
-                <span className="text-[10px] uppercase tracking-wider font-bold text-error">Chưa hoàn thành</span>
+                <span className="text-[10px] uppercase tracking-wider font-bold text-error">{t('daily.notCompleted')}</span>
               </div>
             )}
             <h3 className="text-3xl font-bold text-on-surface leading-tight">{challengeTitle}</h3>
@@ -575,13 +580,13 @@ const DailyChallenge: React.FC = () => {
             </p>
             <div className="flex items-center justify-center gap-6 text-sm font-medium text-on-surface-variant/80">
               <span className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-lg">quiz</span> {questionCount} câu hỏi
+                <span className="material-symbols-outlined text-lg">quiz</span> {t('daily.questionCount', { count: questionCount })}
               </span>
               <span className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-lg">timer</span> {timeLimit} phút
+                <span className="material-symbols-outlined text-lg">timer</span> {t('daily.timeLimit', { minutes: timeLimit })}
               </span>
               <span className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-lg">public</span> Tất cả mọi người
+                <span className="material-symbols-outlined text-lg">public</span> {t('daily.everyone')}
               </span>
             </div>
           </div>
@@ -589,7 +594,7 @@ const DailyChallenge: React.FC = () => {
             onClick={handleStart}
             className="gold-gradient px-12 py-5 rounded-2xl text-on-secondary font-black text-lg shadow-lg hover:shadow-secondary/20 transition-all hover:scale-[1.02] active:scale-95"
           >
-            Bắt Đầu Thử Thách
+            {t('daily.startChallenge')}
           </button>
         </div>
       </section>
@@ -601,7 +606,7 @@ const DailyChallenge: React.FC = () => {
             <div className="p-2 bg-surface-container-highest rounded-lg text-primary">
               <span className="material-symbols-outlined">group</span>
             </div>
-            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Tổng người chơi</span>
+            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">{t('daily.totalPlayers')}</span>
           </div>
           <div className="text-3xl font-black text-on-surface">
             {stats?.totalPlayers?.toLocaleString() ?? '---'}
@@ -612,7 +617,7 @@ const DailyChallenge: React.FC = () => {
             <div className="p-2 bg-surface-container-highest rounded-lg text-secondary">
               <span className="material-symbols-outlined">star</span>
             </div>
-            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Điểm trung bình</span>
+            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">{t('daily.averageScore')}</span>
           </div>
           <div className="text-3xl font-black text-on-surface">
             {stats?.averageScore != null ? `${stats.averageScore}%` : '---'}
@@ -623,7 +628,7 @@ const DailyChallenge: React.FC = () => {
             <div className="p-2 bg-surface-container-highest rounded-lg text-tertiary">
               <span className="material-symbols-outlined">schedule</span>
             </div>
-            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Thời gian trung bình</span>
+            <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">{t('daily.averageTime')}</span>
           </div>
           <div className="text-3xl font-black text-on-surface">
             {stats?.averageTime ?? '---'}
@@ -636,16 +641,16 @@ const DailyChallenge: React.FC = () => {
         {/* Leaderboard Preview */}
         <section className="lg:col-span-3 space-y-6">
           <div className="flex items-center justify-between">
-            <h4 className="text-xl font-bold text-on-surface">Xếp Hạng Hôm Nay</h4>
+            <h4 className="text-xl font-bold text-on-surface">{t('daily.todayLeaderboard')}</h4>
             <Link to="/leaderboard" className="text-secondary text-sm font-bold flex items-center gap-1 hover:underline">
-              Xem đầy đủ <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              {t('daily.viewFull')} <span className="material-symbols-outlined text-sm">arrow_forward</span>
             </Link>
           </div>
           <div className="bg-surface-container rounded-2xl border border-outline-variant/10 divide-y divide-outline-variant/5 overflow-hidden">
             {leaderboard.length === 0 ? (
               <div className="p-8 text-center text-on-surface-variant">
                 <span className="material-symbols-outlined text-4xl mb-2 block opacity-30">leaderboard</span>
-                <p className="text-sm">Chưa có ai hoàn thành thử thách hôm nay.</p>
+                <p className="text-sm">{t('daily.noOneCompleted')}</p>
               </div>
             ) : (
               leaderboard.map((entry, idx) => (
@@ -693,7 +698,7 @@ const DailyChallenge: React.FC = () => {
 
         {/* History Strip & Streak */}
         <section className="lg:col-span-2 space-y-6">
-          <h4 className="text-xl font-bold text-on-surface">Lịch Sử & Chuỗi</h4>
+          <h4 className="text-xl font-bold text-on-surface">{t('daily.historyAndStreak')}</h4>
           <div className="bg-surface-container rounded-2xl border border-outline-variant/10 p-6 space-y-8">
             {/* Streak info */}
             <div className="flex items-center gap-4">
@@ -707,12 +712,12 @@ const DailyChallenge: React.FC = () => {
               </div>
               <div>
                 <p className="text-lg font-black text-on-surface">
-                  {currentStreak > 0 ? `Chuỗi ${currentStreak} ngày` : 'Bắt đầu chuỗi mới!'}
+                  {currentStreak > 0 ? t('daily.streakDays', { count: currentStreak }) : t('daily.startNewStreak')}
                 </p>
                 <p className="text-xs text-on-surface-variant font-medium">
                   {currentStreak > 0
-                    ? `Đã hoàn thành ${currentStreak} thử thách liên tục!`
-                    : 'Hoàn thành thử thách hôm nay để bắt đầu.'
+                    ? t('daily.streakCompleted', { count: currentStreak })
+                    : t('daily.completeToStart')
                   }
                 </p>
               </div>
@@ -720,7 +725,7 @@ const DailyChallenge: React.FC = () => {
 
             {/* Calendar strip */}
             <div className="space-y-4">
-              <p className="text-[10px] uppercase tracking-widest text-on-surface-variant font-black">7 Ngày Qua</p>
+              <p className="text-[10px] uppercase tracking-widest text-on-surface-variant font-black">{t('daily.last7Days')}</p>
               <div className="flex justify-between items-center px-1">
                 {last7Days.map((day) => {
                   const completed = completedDates.has(day.date)
@@ -751,7 +756,7 @@ const DailyChallenge: React.FC = () => {
             {/* Bible verse */}
             <div className="p-4 bg-primary-container/20 rounded-xl border border-primary/10">
               <p className="text-[11px] leading-relaxed italic text-on-primary-container">
-                "Lạy Chúa, xin dạy con đường lối Ngài, để con vững bước theo chân lý của Ngài." — Thánh Vịnh 86:11
+                {t('daily.bibleVerse')}
               </p>
             </div>
           </div>
