@@ -310,11 +310,11 @@ public class AdminQuestionController {
                 return ResponseEntity.ok(response);
             }
 
-            // Ensure all imported questions are active
+            // Imported questions go to PENDING review queue
             for (Question q : toSave) {
-                if (q.getIsActive() == null) q.setIsActive(true);
-                if (q.getReviewStatus() == null) q.setReviewStatus(Question.ReviewStatus.ACTIVE);
-                if (q.getApprovalsCount() == null) q.setApprovalsCount(2);
+                q.setIsActive(false);
+                q.setReviewStatus(Question.ReviewStatus.PENDING);
+                q.setApprovalsCount(0);
             }
 
             // Save in batches of 100
