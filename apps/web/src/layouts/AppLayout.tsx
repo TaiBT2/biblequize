@@ -4,6 +4,7 @@ import { useAuthStore } from '../store/authStore'
 import { getTierByPoints } from '../data/tiers'
 import { setQuizLanguage, type QuizLanguage } from '../utils/quizLanguage'
 import { useTranslation } from 'react-i18next'
+import OfflineBanner from '../components/OfflineBanner'
 
 const navItems = [
   { path: '/', labelKey: 'nav.home', icon: 'home' },
@@ -61,6 +62,7 @@ export default function AppLayout() {
 
   return (
     <div className="min-h-screen bg-[#11131e] text-[#e1e1f1]">
+      <OfflineBanner />
       {/* Top Navigation Bar */}
       <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#11131e]/90 backdrop-blur-md">
         <Link to="/" className="text-2xl font-black text-[#e8a832] tracking-tighter">

@@ -475,14 +475,11 @@ function Footer() {
         </p>
       </div>
       <div className="flex gap-8">
-        <a className="font-be-vietnam-pro text-sm text-[#e1e1f1]/70 hover:text-[#f8bd45] transition-colors cursor-pointer" href="#">
-          About
+        <a className="font-be-vietnam-pro text-sm text-[#e1e1f1]/70 hover:text-[#f8bd45] transition-colors" href="/privacy">
+          {t('landing.privacy')}
         </a>
-        <a className="font-be-vietnam-pro text-sm text-[#e1e1f1]/70 hover:text-[#f8bd45] transition-colors cursor-pointer" href="#">
-          Contact
-        </a>
-        <a className="font-be-vietnam-pro text-sm text-[#e1e1f1]/70 hover:text-[#f8bd45] transition-colors cursor-pointer" href="#">
-          Terms
+        <a className="font-be-vietnam-pro text-sm text-[#e1e1f1]/70 hover:text-[#f8bd45] transition-colors" href="/terms">
+          {t('landing.terms')}
         </a>
       </div>
       <div className="flex gap-4">

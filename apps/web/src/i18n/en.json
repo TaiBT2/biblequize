@@ -26,7 +26,8 @@
     "startNow": "Start",
     "days": "days",
     "hours": "hours",
-    "minutes": "minutes"
+    "minutes": "minutes",
+    "offline": "No internet connection — Some features may not work"
   },
   "nav": {
     "home": "Home",
@@ -148,7 +149,9 @@
     "teamProgress": "Team Progress",
     "verseText": "Your word is a lamp for my feet, a light on my path.",
     "verseRef": "— Psalm 119:105",
-    "copyright": "© 2024 BibleQuiz. The Sacred Modernist Path."
+    "copyright": "© 2024 BibleQuiz. The Sacred Modernist Path.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
   },
   "quiz": {
     "question": "Question {{current}}/{{total}}",
@@ -248,7 +251,19 @@
     "startPlaying": "Start playing to see your learning log",
     "tierProgress": "Tier Progress",
     "totalPoints": "Total points",
-    "tryAgainLater": "Please try again later"
+    "tryAgainLater": "Please try again later",
+    "dangerZone": "Danger zone",
+    "deleteAccount": "Delete account",
+    "deleteAccountTitle": "Delete account",
+    "deleteAccountWarning": "This action CANNOT be undone. All data will be permanently deleted:",
+    "deleteAccountData1": "Scores, streak, tier, achievements",
+    "deleteAccountData2": "Quiz history and answers",
+    "deleteAccountData3": "Church groups and rankings",
+    "deleteAccountData4": "All personal data",
+    "deleteAccountConfirmLabel": "Type {{phrase}} to confirm:",
+    "deleteAccountConfirmPhrase": "DELETE ACCOUNT",
+    "deleteAccountBtn": "Delete permanently",
+    "deleteAccountDeleting": "Deleting..."
   },
   "tiers": {
     "spark": "New Believer",
@@ -651,5 +666,25 @@
     "seasonProgress": "Season Progress",
     "start": "Start",
     "tryAgainLater": "Please try again later"
+  },
+  "onboarding": {
+    "slide1Title": "Welcome to BibleQuiz",
+    "slide1Desc": "Learn the Bible through interactive daily quizzes",
+    "slide2Title": "Compete together",
+    "slide2Desc": "4 group game modes. Challenge your friends.",
+    "slide3Title": "Journey through 66 books",
+    "slide3Desc": "Conquer each book. Track your progress.",
+    "skip": "Skip",
+    "start": "Get Started",
+    "tryTitle": "Try 3 questions now!",
+    "tryDesc": "No login required. Explore right away.",
+    "tryResult": "You got {{correct}}/{{total}} correct!",
+    "trySignup": "Sign up free to continue",
+    "tryLater": "Later",
+    "chooseLanguage": "Choose your language",
+    "tutorialDaily": "Daily challenge — just 5 minutes a day!",
+    "tutorialStreak": "Play daily to maintain your streak!",
+    "tutorialModes": "Many game modes — explore now!",
+    "tutorialGotIt": "Got it!"
   }
 }

@@ -269,25 +269,19 @@ export default function Login() {
         {/* Absolute Footer */}
         <footer className="fixed bottom-4 right-4 flex gap-6 items-center">
           <a
-            href="#"
+            href="/privacy"
             className="text-xs tracking-widest uppercase text-on-surface/50 hover:text-secondary transition-opacity opacity-100 hover:opacity-80"
           >
-            Privacy Policy
+            {t('landing.privacy')}
           </a>
           <a
-            href="#"
+            href="/terms"
             className="text-xs tracking-widest uppercase text-on-surface/50 hover:text-secondary transition-opacity opacity-100 hover:opacity-80"
           >
-            Terms of Service
-          </a>
-          <a
-            href="#"
-            className="text-xs tracking-widest uppercase text-on-surface/50 hover:text-secondary transition-opacity opacity-100 hover:opacity-80"
-          >
-            Support
+            {t('landing.terms')}
           </a>
           <span className="text-xs tracking-widest uppercase text-tertiary opacity-60">
-            &copy; 2024 Bible Quiz Sanctuary
+            &copy; 2024 Bible Quiz
           </span>
         </footer>
       </section>

@@ -26,7 +26,8 @@
     "startNow": "Bắt Đầu",
     "days": "ngày",
     "hours": "giờ",
-    "minutes": "phút"
+    "minutes": "phút",
+    "offline": "Mất kết nối mạng — Một số tính năng có thể không hoạt động"
   },
   "nav": {
     "home": "Trang chủ",
@@ -148,7 +149,9 @@
     "teamProgress": "Tiến Độ Nhóm",
     "verseText": "Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi.",
     "verseRef": "— Thi Thiên 119:105",
-    "copyright": "© 2024 BibleQuiz. The Sacred Modernist Path."
+    "copyright": "© 2024 BibleQuiz. The Sacred Modernist Path.",
+    "privacy": "Chính sách Bảo mật",
+    "terms": "Điều khoản Sử dụng"
   },
   "quiz": {
     "question": "Câu hỏi {{current}}/{{total}}",
@@ -248,7 +251,19 @@
     "startPlaying": "Bắt đầu chơi để xem nhật ký học tập",
     "tierProgress": "Tiến Trình Hạng",
     "totalPoints": "Tổng điểm",
-    "tryAgainLater": "Vui lòng thử lại sau"
+    "tryAgainLater": "Vui lòng thử lại sau",
+    "dangerZone": "Vùng nguy hiểm",
+    "deleteAccount": "Xóa tài khoản",
+    "deleteAccountTitle": "Xóa tài khoản",
+    "deleteAccountWarning": "Hành động này KHÔNG THỂ hoàn tác. Tất cả dữ liệu sẽ bị xóa vĩnh viễn:",
+    "deleteAccountData1": "Điểm số, streak, tier, thành tích",
+    "deleteAccountData2": "Lịch sử quiz và câu trả lời",
+    "deleteAccountData3": "Nhóm hội thánh và bảng xếp hạng",
+    "deleteAccountData4": "Tất cả dữ liệu cá nhân",
+    "deleteAccountConfirmLabel": "Nhập {{phrase}} để xác nhận:",
+    "deleteAccountConfirmPhrase": "XÓA TÀI KHOẢN",
+    "deleteAccountBtn": "Xóa vĩnh viễn",
+    "deleteAccountDeleting": "Đang xóa..."
   },
   "tiers": {
     "spark": "Tân Tín Hữu",
@@ -651,5 +666,25 @@
     "seasonProgress": "Tiến Trình Mùa",
     "start": "Bắt đầu",
     "tryAgainLater": "Vui lòng thử lại sau"
+  },
+  "onboarding": {
+    "slide1Title": "Chào mừng đến BibleQuiz",
+    "slide1Desc": "Học Kinh Thánh qua quiz tương tác mỗi ngày",
+    "slide2Title": "Thi đấu cùng nhau",
+    "slide2Desc": "4 chế độ chơi nhóm. Thách đấu anh chị em.",
+    "slide3Title": "Hành trình 66 sách",
+    "slide3Desc": "Chinh phục từng sách. Theo dõi tiến trình.",
+    "skip": "Bỏ qua",
+    "start": "Bắt đầu",
+    "tryTitle": "Thử ngay 3 câu!",
+    "tryDesc": "Không cần đăng nhập. Khám phá ngay.",
+    "tryResult": "Bạn đúng {{correct}}/{{total}}!",
+    "trySignup": "Đăng ký miễn phí để tiếp tục",
+    "tryLater": "Để sau",
+    "chooseLanguage": "Chọn ngôn ngữ",
+    "tutorialDaily": "Thử thách hàng ngày — 5 phút mỗi ngày!",
+    "tutorialStreak": "Chơi mỗi ngày để giữ chuỗi liên tục!",
+    "tutorialModes": "Nhiều chế độ chơi — khám phá ngay!",
+    "tutorialGotIt": "Đã hiểu!"
   }
 }

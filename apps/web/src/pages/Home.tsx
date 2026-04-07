@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import GameModeGrid from '../components/GameModeGrid'
+import TutorialOverlay from '../components/TutorialOverlay'
 import { useAuthStore } from '../store/authStore'
 import { api } from '../api/client'
 import { getDailyVerse } from '../data/verses'
@@ -99,6 +100,7 @@ export default function Home() {
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto w-full">
+      <TutorialOverlay />
       {/* ── Hero: Greeting + Tier ── */}
       <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 relative overflow-hidden rounded-2xl bg-surface-container p-8 border border-outline-variant/10 group">
