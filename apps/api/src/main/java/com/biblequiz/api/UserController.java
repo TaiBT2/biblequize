@@ -7,6 +7,7 @@ import com.biblequiz.infrastructure.audit.AuditService;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 import com.biblequiz.modules.user.service.AccountDeletionService;
+import com.biblequiz.modules.quiz.service.BookMasteryService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -57,6 +58,9 @@ public class UserController {
 
     @Autowired
     private AccountDeletionService accountDeletionService;
+
+    @Autowired
+    private BookMasteryService bookMasteryService;
 
     @GetMapping
     public ResponseEntity<UserResponse> getCurrentUser(Authentication authentication) {
@@ -330,6 +334,28 @@ public class UserController {
 
         accountDeletionService.deleteUserAccount(userOpt.get().getId());
         return ResponseEntity.ok(Map.of("message", "Tài khoản đã được xóa"));
+    }
+
+    @GetMapping("/journey")
+    public ResponseEntity<?> getJourney(Authentication authentication,
+                                         @RequestParam(defaultValue = "vi") String language) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String email = null;
+        if (authentication.getPrincipal() instanceof UserDetails ud) {
+            email = ud.getUsername();
+        } else if (authentication.getPrincipal() instanceof OAuth2User oauth2) {
+            email = oauth2.getAttribute("email");
+        }
+
+        Optional<User> userOpt = email != null ? userRepository.findByEmail(email) : Optional.empty();
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        return ResponseEntity.ok(bookMasteryService.getJourney(userOpt.get().getId(), language));
     }
 
     @GetMapping("/question-coverage")

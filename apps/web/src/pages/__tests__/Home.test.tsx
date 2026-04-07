@@ -39,6 +39,8 @@ describe('Home Dashboard', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mockApiGet.mockImplementation((url: string) => {
+      if (url.includes('/api/me/journey'))
+        return Promise.resolve({ data: { summary: { totalBooks: 66, completedBooks: 0, inProgressBooks: 1, lockedBooks: 65, overallMasteryPercent: 0, currentBook: null }, books: [] } })
       if (url.includes('/api/me'))
         return Promise.resolve({ data: { totalPoints: 8200 } })
       if (url.includes('my-rank'))

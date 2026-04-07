@@ -686,5 +686,26 @@
     "tutorialStreak": "Chơi mỗi ngày để giữ chuỗi liên tục!",
     "tutorialModes": "Nhiều chế độ chơi — khám phá ngay!",
     "tutorialGotIt": "Đã hiểu!"
+  },
+  "journey": {
+    "title": "Hành trình Kinh Thánh",
+    "conquered": "Đã chinh phục: {{count}}/{{total}} sách ({{percent}}%)",
+    "oldTestament": "CỰU ƯỚC",
+    "newTestament": "TÂN ƯỚC",
+    "completed": "Hoàn thành",
+    "inProgress": "Đang chơi",
+    "locked": "Chưa mở",
+    "mastery": "{{percent}}%",
+    "completeToUnlock": "Hoàn thành {{book}} để mở",
+    "noQuestions": "Chưa có câu hỏi",
+    "practiceBook": "Luyện tập sách này",
+    "homeWidget": "Hành trình: {{count}}/{{total}} sách",
+    "currentBook": "Đang ở: {{book}} ({{percent}}%)",
+    "continueJourney": "Tiếp tục chinh phục",
+    "celebration": "Chinh phục!",
+    "unlockNext": "Mở khóa: {{book}}!",
+    "share": "Chia sẻ",
+    "continueBtn": "Tiếp tục hành trình",
+    "questions": "{{count}} câu"
   }
 }
