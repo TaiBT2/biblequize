@@ -426,6 +426,9 @@ public class AdminQuestionController {
         q.setType(normalizeType(typeStr));
         q.setContent(text);
         q.setDifficulty(Question.Difficulty.valueOf(difficultyStr.toLowerCase()));
+        q.setIsActive(false);
+        q.setReviewStatus(Question.ReviewStatus.PENDING);
+        q.setApprovalsCount(0);
 
         // Options: optionA–D (skip blanks)
         List<String> options = new ArrayList<>();
@@ -478,6 +481,9 @@ public class AdminQuestionController {
         q.setContent(text);
         q.setDifficulty(Question.Difficulty.valueOf(difficultyStr.toLowerCase()));
         q.setCorrectAnswer(ca);
+        q.setIsActive(false);
+        q.setReviewStatus(Question.ReviewStatus.PENDING);
+        q.setApprovalsCount(0);
 
         Object optionsObj = r.get("options");
         if (optionsObj instanceof List<?> list) {
