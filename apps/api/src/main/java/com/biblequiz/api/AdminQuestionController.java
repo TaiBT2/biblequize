@@ -236,11 +236,9 @@ public class AdminQuestionController {
                 idx++;
                 String label = "record " + idx;
 
-                // IMP-1: Explanation warning
+                // IMP-1: Explanation warning (chỉ cảnh báo, vẫn active)
                 if (q.getExplanation() == null || q.getExplanation().isBlank()) {
-                    warnings.add(Map.of("index", idx, "warning", label + ": thiếu explanation — câu sẽ ở trạng thái inactive"));
-                    q.setIsActive(false);
-                    q.setReviewStatus(Question.ReviewStatus.PENDING);
+                    warnings.add(Map.of("index", idx, "warning", label + ": thiếu explanation"));
                 }
 
                 // IMP-2: Options validation per type
@@ -310,6 +308,13 @@ public class AdminQuestionController {
                 response.put("warnings", warnings);
                 response.put("duplicates", duplicateCount);
                 return ResponseEntity.ok(response);
+            }
+
+            // Ensure all imported questions are active
+            for (Question q : toSave) {
+                if (q.getIsActive() == null) q.setIsActive(true);
+                if (q.getReviewStatus() == null) q.setReviewStatus(Question.ReviewStatus.ACTIVE);
+                if (q.getApprovalsCount() == null) q.setApprovalsCount(2);
             }
 
             // Save in batches of 100
