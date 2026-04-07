@@ -99,6 +99,7 @@ public class SecurityConfig {
                                                 "/api/share/*/view",
                                                 "/api/share/render/**",
                                                 "/api/share/og/**",
+                                                                "/api/public/**",
                                                                 "/swagger-ui/**",
                                                                 "/v3/api-docs/**",
                                                                 "/swagger-ui.html")

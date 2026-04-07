@@ -1,9 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
-import { useAuth } from '../store/authStore'
+import { useAuth, useAuthStore } from '../store/authStore'
 import { getTierByPoints, getNextTier } from '../data/tiers'
 
 const FILL_STYLE = { fontVariationSettings: "'FILL' 1" }
@@ -386,7 +386,97 @@ const Profile: React.FC = () => {
           </div>
         )}
       </section>
+
+      {/* Delete Account */}
+      <DeleteAccountSection />
     </>
+  )
+}
+
+function DeleteAccountSection() {
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+  const [showModal, setShowModal] = useState(false)
+  const [confirmPhrase, setConfirmPhrase] = useState('')
+  const [deleting, setDeleting] = useState(false)
+  const [error, setError] = useState('')
+
+  const expectedPhrase = t('profile.deleteAccountConfirmPhrase')
+  const isValid = confirmPhrase === expectedPhrase
+
+  const handleDelete = async () => {
+    setDeleting(true)
+    setError('')
+    try {
+      await api.delete('/api/me/account', { data: { confirmPhrase } })
+      useAuthStore.getState().logout()
+      localStorage.clear()
+      navigate('/login')
+    } catch (e: any) {
+      setError(e.response?.data?.error ?? e.userMessage ?? t('common.error'))
+      setDeleting(false)
+    }
+  }
+
+  return (
+    <section className="glass-card mt-8">
+      <div className="border-t border-error/20 pt-6">
+        <h3 className="text-error font-semibold mb-2">{t('profile.dangerZone')}</h3>
+        <button
+          onClick={() => setShowModal(true)}
+          className="text-error border border-error/30 px-4 py-2 rounded-lg text-sm hover:bg-error/10 transition-colors"
+        >
+          {t('profile.deleteAccount')}
+        </button>
+      </div>
+
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+          <div className="glass-card max-w-md w-full p-6 space-y-4">
+            <h2 className="text-xl font-bold text-error">{t('profile.deleteAccountTitle')}</h2>
+
+            <div className="bg-error/10 border border-error/30 rounded-lg p-4">
+              <p className="text-sm text-error">{t('profile.deleteAccountWarning')}</p>
+              <ul className="text-sm text-error/80 mt-2 space-y-1 list-disc pl-5">
+                <li>{t('profile.deleteAccountData1')}</li>
+                <li>{t('profile.deleteAccountData2')}</li>
+                <li>{t('profile.deleteAccountData3')}</li>
+                <li>{t('profile.deleteAccountData4')}</li>
+              </ul>
+            </div>
+
+            <p className="text-sm text-on-surface-variant">
+              {t('profile.deleteAccountConfirmLabel', { phrase: expectedPhrase })}
+            </p>
+            <input
+              type="text"
+              value={confirmPhrase}
+              onChange={(e) => setConfirmPhrase(e.target.value)}
+              placeholder={expectedPhrase}
+              className="w-full bg-surface-container-high border border-outline-variant/20 rounded-lg px-3 py-2 text-on-surface text-sm focus:border-error outline-none"
+            />
+
+            {error && <p className="text-sm text-error">{error}</p>}
+
+            <div className="flex gap-3">
+              <button
+                onClick={() => { setShowModal(false); setConfirmPhrase(''); setError('') }}
+                className="flex-1 px-4 py-2 rounded-lg border border-outline-variant/20 text-on-surface-variant text-sm hover:bg-surface-container-high"
+              >
+                {t('common.cancel')}
+              </button>
+              <button
+                onClick={handleDelete}
+                disabled={!isValid || deleting}
+                className="flex-1 bg-error text-on-error rounded-lg py-2 text-sm font-semibold disabled:opacity-30 transition-opacity"
+              >
+                {deleting ? t('profile.deleteAccountDeleting') : t('profile.deleteAccountBtn')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
   )
 }
 

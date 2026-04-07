@@ -6,6 +6,7 @@ import com.biblequiz.infrastructure.audit.AuditEventStatus;
 import com.biblequiz.infrastructure.audit.AuditService;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
+import com.biblequiz.modules.user.service.AccountDeletionService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -53,6 +54,9 @@ public class UserController {
 
     @Autowired
     private UserQuestionHistoryRepository userQuestionHistoryRepository;
+
+    @Autowired
+    private AccountDeletionService accountDeletionService;
 
     @GetMapping
     public ResponseEntity<UserResponse> getCurrentUser(Authentication authentication) {
@@ -297,6 +301,35 @@ public class UserController {
                 "currentPage", page,
                 "hasMore", sessions.hasNext()
         ));
+    }
+
+    @DeleteMapping("/account")
+    public ResponseEntity<?> deleteAccount(Authentication authentication,
+                                            @RequestBody Map<String, String> body) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String confirmPhrase = body.get("confirmPhrase");
+        if (!"XÓA TÀI KHOẢN".equals(confirmPhrase) && !"DELETE ACCOUNT".equals(confirmPhrase)) {
+            return ResponseEntity.badRequest()
+                    .body(Map.of("error", "Nhập 'XÓA TÀI KHOẢN' để xác nhận"));
+        }
+
+        String email = null;
+        if (authentication.getPrincipal() instanceof UserDetails ud) {
+            email = ud.getUsername();
+        } else if (authentication.getPrincipal() instanceof OAuth2User oauth2) {
+            email = oauth2.getAttribute("email");
+        }
+
+        Optional<User> userOpt = email != null ? userRepository.findByEmail(email) : Optional.empty();
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        accountDeletionService.deleteUserAccount(userOpt.get().getId());
+        return ResponseEntity.ok(Map.of("message", "Tài khoản đã được xóa"));
     }
 
     @GetMapping("/question-coverage")

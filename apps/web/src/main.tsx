@@ -52,17 +52,37 @@ import Tournaments from './pages/Tournaments'
 import TournamentDetail from './pages/TournamentDetail'
 import TournamentMatch from './pages/TournamentMatch'
 import NotFound from './pages/NotFound'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
+import Onboarding from './pages/Onboarding'
+import OnboardingTryQuiz from './pages/OnboardingTryQuiz'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 3,
+      retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 10000),
+      staleTime: 5 * 60 * 1000,
+    },
+    mutations: {
+      retry: 1,
+    },
+  },
+})
 
 // Initialize auth state on app startup (replaces AuthProvider useEffect)
 useAuthStore.getState().checkAuth()
 
-/** Show LandingPage for guests, Home (inside AppLayout) for authenticated users */
+/** Show LandingPage for guests, Home (inside AppLayout) for authenticated users.
+ *  First-time visitors go to Onboarding instead of LandingPage. */
 function HomeOrLanding() {
   const { isAuthenticated, isLoading } = useAuthStore()
   if (isLoading) return null // wait for auth check
-  if (!isAuthenticated) return <LandingPage />
+  if (!isAuthenticated) {
+    const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding')
+    if (!hasSeenOnboarding) return <Onboarding />
+    return <LandingPage />
+  }
   return <AppLayout />
 }
 
@@ -93,6 +113,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="/ranked" element={<Ranked />} />
                   <Route path="/daily" element={<DailyChallenge />} />
                 </Route>
+
+                {/* Public pages (no auth) */}
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/terms" element={<TermsOfService />} />
+                <Route path="/onboarding" element={<Onboarding />} />
+                <Route path="/onboarding/try" element={<OnboardingTryQuiz />} />
 
                 {/* Full-screen pages (no AppLayout) */}
                 <Route path="/landing" element={<LandingPage />} />
