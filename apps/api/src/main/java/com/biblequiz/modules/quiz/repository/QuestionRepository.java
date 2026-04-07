@@ -135,6 +135,17 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
 
     long countByReviewStatus(Question.ReviewStatus reviewStatus);
 
+    @Query("SELECT q FROM Question q WHERE q.reviewStatus = :status AND q.id NOT IN :excludeIds")
+    Page<Question> findByReviewStatusAndIdNotIn(
+            @Param("status") Question.ReviewStatus status,
+            @Param("excludeIds") List<String> excludeIds,
+            Pageable pageable);
+
+    @Query("SELECT COUNT(q) FROM Question q WHERE q.reviewStatus = :status AND q.id NOT IN :excludeIds")
+    long countByReviewStatusAndIdNotIn(
+            @Param("status") Question.ReviewStatus status,
+            @Param("excludeIds") List<String> excludeIds);
+
     @Query("SELECT DISTINCT q.book FROM Question q WHERE q.isActive = true ORDER BY q.book")
     List<String> findDistinctActiveBooks();
 

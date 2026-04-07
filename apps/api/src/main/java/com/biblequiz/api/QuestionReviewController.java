@@ -4,7 +4,6 @@ import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.entity.QuestionReview;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.quiz.repository.QuestionReviewRepository;
-import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 
 import org.slf4j.Logger;
@@ -17,6 +16,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -40,15 +40,20 @@ public class QuestionReviewController {
         this.userRepository = userRepository;
     }
 
-    /** List all PENDING questions with their review history */
+    /** List PENDING questions NOT yet reviewed by current admin */
     @GetMapping("/pending")
     public ResponseEntity<?> listPending(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "20") int size) {
+            @RequestParam(defaultValue = "20") int size,
+            @AuthenticationPrincipal UserDetails userDetails) {
 
-        var questions = questionRepository.findByReviewStatus(
-                Question.ReviewStatus.PENDING,
-                PageRequest.of(page, size, Sort.by("createdAt").descending()));
+        String adminEmail = userDetails.getUsername();
+        List<String> alreadyReviewed = reviewRepository.findQuestionIdsReviewedByAdmin(adminEmail);
+
+        var pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
+        var questions = alreadyReviewed.isEmpty()
+                ? questionRepository.findByReviewStatus(Question.ReviewStatus.PENDING, pageable)
+                : questionRepository.findByReviewStatusAndIdNotIn(Question.ReviewStatus.PENDING, alreadyReviewed, pageable);
 
         List<Map<String, Object>> result = questions.stream().map(q -> {
             List<QuestionReview> reviews = reviewRepository.findByQuestionId(q.getId());
@@ -123,7 +128,8 @@ public class QuestionReviewController {
         return ResponseEntity.ok(Map.of(
                 "approvalsCount", newCount,
                 "status", q.getReviewStatus(),
-                "activated", q.getReviewStatus() == Question.ReviewStatus.ACTIVE
+                "activated", q.getReviewStatus() == Question.ReviewStatus.ACTIVE,
+                "approvalsRequired", APPROVALS_REQUIRED
         ));
     }
 
@@ -144,7 +150,6 @@ public class QuestionReviewController {
         String adminEmail = userDetails.getUsername();
         String comment = body != null ? body.getOrDefault("comment", "") : "";
 
-        // Upsert: if admin already reviewed, update the action
         reviewRepository.findByQuestionIdAndAdminId(questionId, adminEmail).ifPresentOrElse(
                 r -> { r.setAction(QuestionReview.Action.REJECT); r.setComment(comment); reviewRepository.save(r); },
                 () -> reviewRepository.save(new QuestionReview(
@@ -160,17 +165,64 @@ public class QuestionReviewController {
         return ResponseEntity.ok(Map.of("status", "REJECTED"));
     }
 
-    /** Stats for the review dashboard */
+    /** Personalized stats for current admin */
     @GetMapping("/stats")
-    public ResponseEntity<?> stats() {
-        long pending  = questionRepository.countByReviewStatus(Question.ReviewStatus.PENDING);
-        long active   = questionRepository.countByReviewStatus(Question.ReviewStatus.ACTIVE);
+    public ResponseEntity<?> stats(@AuthenticationPrincipal UserDetails userDetails) {
+        String adminEmail = userDetails.getUsername();
+        List<String> alreadyReviewed = reviewRepository.findQuestionIdsReviewedByAdmin(adminEmail);
+
+        long totalPending = questionRepository.countByReviewStatus(Question.ReviewStatus.PENDING);
+        long pendingForMe = alreadyReviewed.isEmpty()
+                ? totalPending
+                : questionRepository.countByReviewStatusAndIdNotIn(Question.ReviewStatus.PENDING, alreadyReviewed);
+        long active = questionRepository.countByReviewStatus(Question.ReviewStatus.ACTIVE);
         long rejected = questionRepository.countByReviewStatus(Question.ReviewStatus.REJECTED);
+        long myActionsToday = reviewRepository.countByAdminIdAndCreatedAtAfter(
+                adminEmail, LocalDate.now().atStartOfDay());
+
         return ResponseEntity.ok(Map.of(
-                "pending", pending,
+                "pendingForMe", pendingForMe,
+                "totalPending", totalPending,
                 "active", active,
                 "rejected", rejected,
+                "myActionsToday", myActionsToday,
                 "approvalsRequired", APPROVALS_REQUIRED
+        ));
+    }
+
+    /** Review history for current admin */
+    @GetMapping("/my-history")
+    public ResponseEntity<?> myHistory(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size,
+            @AuthenticationPrincipal UserDetails userDetails) {
+
+        String adminEmail = userDetails.getUsername();
+        var history = reviewRepository.findByAdminIdOrderByCreatedAtDesc(
+                adminEmail, PageRequest.of(page, size));
+
+        // Enrich with question content
+        List<Map<String, Object>> items = history.stream().map(r -> {
+            Map<String, Object> item = new LinkedHashMap<>();
+            item.put("id", r.getId());
+            item.put("questionId", r.getQuestionId());
+            item.put("action", r.getAction());
+            item.put("comment", r.getComment());
+            item.put("createdAt", r.getCreatedAt());
+
+            questionRepository.findById(r.getQuestionId()).ifPresent(q -> {
+                item.put("questionContent", q.getContent());
+                item.put("questionBook", q.getBook());
+            });
+
+            return item;
+        }).toList();
+
+        return ResponseEntity.ok(Map.of(
+                "content", items,
+                "total", history.getTotalElements(),
+                "page", page,
+                "size", size
         ));
     }
 }
