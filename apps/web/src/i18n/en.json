@@ -686,5 +686,26 @@
     "tutorialStreak": "Play daily to maintain your streak!",
     "tutorialModes": "Many game modes — explore now!",
     "tutorialGotIt": "Got it!"
+  },
+  "journey": {
+    "title": "Bible Journey",
+    "conquered": "Conquered: {{count}}/{{total}} books ({{percent}}%)",
+    "oldTestament": "OLD TESTAMENT",
+    "newTestament": "NEW TESTAMENT",
+    "completed": "Completed",
+    "inProgress": "In Progress",
+    "locked": "Locked",
+    "mastery": "{{percent}}%",
+    "completeToUnlock": "Complete {{book}} to unlock",
+    "noQuestions": "No questions yet",
+    "practiceBook": "Practice this book",
+    "homeWidget": "Journey: {{count}}/{{total}} books",
+    "currentBook": "Current: {{book}} ({{percent}}%)",
+    "continueJourney": "Continue your journey",
+    "celebration": "Conquered!",
+    "unlockNext": "Unlocked: {{book}}!",
+    "share": "Share",
+    "continueBtn": "Continue journey",
+    "questions": "{{count}} questions"
   }
 }

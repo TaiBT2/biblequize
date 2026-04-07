@@ -186,6 +186,9 @@ export default function Home() {
         <GameModeGrid />
       </section>
 
+      {/* ── Journey Widget ── */}
+      <JourneyWidget />
+
       {/* ── Leaderboard + Feed ── */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div className="lg:col-span-8 bg-surface-container rounded-2xl p-6 border border-outline-variant/10">
@@ -304,5 +307,48 @@ export default function Home() {
         </div>
       </section>
     </div>
+  )
+}
+
+function JourneyWidget() {
+  const { t, i18n } = useTranslation()
+  const isVi = i18n.language === 'vi'
+
+  const { data } = useQuery<{ summary: { completedBooks: number; totalBooks: number; currentBook: string | null; overallMasteryPercent: number } }>({
+    queryKey: ['journey-summary', i18n.language],
+    queryFn: async () => (await api.get(`/api/me/journey?language=${i18n.language}`)).data,
+  })
+
+  if (!data) return null
+
+  const { summary } = data
+  const pct = summary.totalBooks > 0 ? Math.round((summary.completedBooks / summary.totalBooks) * 100) : 0
+
+  return (
+    <Link to="/journey" className="block">
+      <div className="bg-surface-container rounded-2xl p-5 border border-outline-variant/10 hover:border-secondary/20 transition-all group">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>map</span>
+            <div>
+              <p className="text-sm font-bold text-on-surface">
+                {t('journey.homeWidget', { count: summary.completedBooks, total: summary.totalBooks })}
+              </p>
+              {summary.currentBook && (
+                <p className="text-xs text-on-surface-variant">
+                  {t('journey.currentBook', { book: summary.currentBook, percent: summary.overallMasteryPercent })}
+                </p>
+              )}
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-16 h-2 bg-surface-container-high rounded-full overflow-hidden">
+              <div className="h-full bg-secondary rounded-full" style={{ width: `${pct}%` }} />
+            </div>
+            <span className="material-symbols-outlined text-on-surface-variant group-hover:text-secondary transition-colors">chevron_right</span>
+          </div>
+        </div>
+      </div>
+    </Link>
   )
 }

@@ -56,6 +56,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import Onboarding from './pages/Onboarding'
 import OnboardingTryQuiz from './pages/OnboardingTryQuiz'
+import Journey from './pages/Journey'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -110,6 +111,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="/tournaments/:id" element={<RequireAuth><TournamentDetail /></RequireAuth>} />
                   <Route path="/tournaments/:id/match/:matchId" element={<RequireAuth><TournamentMatch /></RequireAuth>} />
                   <Route path="/achievements" element={<Achievements />} />
+                  <Route path="/journey" element={<Journey />} />
                   <Route path="/ranked" element={<Ranked />} />
                   <Route path="/daily" element={<DailyChallenge />} />
                 </Route>

@@ -33,6 +33,10 @@ public interface UserQuestionHistoryRepository extends JpaRepository<UserQuestio
            "WHERE h.user.id = :userId AND h.timesCorrect >= 3")
     long countMasteredByUserId(@Param("userId") String userId);
 
+    @Query("SELECT COUNT(h) FROM UserQuestionHistory h " +
+           "WHERE h.user.id = :userId AND h.question.book = :book AND h.timesCorrect > 0")
+    long countCorrectByUserIdAndBook(@Param("userId") String userId, @Param("book") String book);
+
     @org.springframework.data.jpa.repository.Modifying
     @Query("DELETE FROM UserQuestionHistory h WHERE h.user.id = :userId")
     long deleteAllByUserId(@Param("userId") String userId);
