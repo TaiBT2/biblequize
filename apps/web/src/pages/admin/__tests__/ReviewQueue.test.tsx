@@ -27,13 +27,15 @@ const mockPending = {
   size: 50,
 }
 
-const mockStats = { pending: 5, active: 100, rejected: 10, approvalsRequired: 2 }
+const mockStats = { pendingForMe: 5, totalPending: 8, active: 100, rejected: 10, myActionsToday: 3, approvalsRequired: 2 }
+const mockHistory = { content: [], total: 0, page: 0, size: 20 }
 
 describe('ReviewQueue Admin', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mockApiGet.mockImplementation((url: string) => {
       if (url.includes('/stats')) return Promise.resolve({ data: mockStats })
+      if (url.includes('/my-history')) return Promise.resolve({ data: mockHistory })
       if (url.includes('/pending')) return Promise.resolve({ data: mockPending })
       return Promise.reject(new Error('Not found'))
     })

@@ -19,13 +19,21 @@ interface ReviewItem {
   reviews: { adminEmail: string; action: 'APPROVE' | 'REJECT'; comment: string; createdAt: string }[]
 }
 
-interface Stats { pending: number; active: number; rejected: number; approvalsRequired: number }
+interface Stats {
+  pendingForMe: number; totalPending: number; active: number; rejected: number
+  myActionsToday: number; approvalsRequired: number
+}
 
 const DIFF_LABEL: Record<string, string> = { easy: 'Dễ', medium: 'Trung bình', hard: 'Khó' }
 const DIFF_COLOR: Record<string, string> = {
   easy: 'bg-emerald-500/10 text-emerald-400',
   medium: 'bg-yellow-500/10 text-yellow-400',
   hard: 'bg-red-500/10 text-red-400',
+}
+
+interface HistoryItem {
+  id: string; questionId: string; action: 'APPROVE' | 'REJECT'
+  comment: string; createdAt: string; questionContent?: string; questionBook?: string
 }
 
 export default function ReviewQueue() {
@@ -37,6 +45,8 @@ export default function ReviewQueue() {
   const [rejectComment, setRejectComment] = useState('')
   const [rejectingId, setRejectingId] = useState<string | null>(null)
   const [toast, setToast] = useState<{ msg: string; type: 'success' | 'error' } | null>(null)
+  const [history, setHistory] = useState<HistoryItem[]>([])
+  const [showHistory, setShowHistory] = useState(false)
 
   const showToast = (msg: string, type: 'success' | 'error' = 'success') => {
     setToast({ msg, type })
@@ -46,12 +56,14 @@ export default function ReviewQueue() {
   const fetchData = useCallback(async () => {
     setIsLoading(true)
     try {
-      const [pendingRes, statsRes] = await Promise.all([
+      const [pendingRes, statsRes, historyRes] = await Promise.all([
         api.get('/api/admin/review/pending?size=50'),
         api.get('/api/admin/review/stats'),
+        api.get('/api/admin/review/my-history?size=20'),
       ])
       setItems(pendingRes.data.questions ?? [])
       setStats(statsRes.data)
+      setHistory(historyRes.data.content ?? [])
     } catch {
       showToast('Không thể tải dữ liệu', 'error')
     } finally {
@@ -114,19 +126,24 @@ export default function ReviewQueue() {
         <p className="text-[#d5c4af]/60 text-sm mt-0.5">Câu hỏi AI tạo ra cần {stats?.approvalsRequired ?? 2} admin duyệt mới trở thành chính thức</p>
       </div>
 
-      {/* Stats */}
+      {/* Personalized Stats */}
       {stats && (
         <div className="grid grid-cols-3 gap-4">
-          {[
-            { label: 'Chờ duyệt', value: stats.pending, color: 'text-yellow-400', bg: 'bg-yellow-500/10 border-yellow-500/20' },
-            { label: 'Đã kích hoạt', value: stats.active, color: 'text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/20' },
-            { label: 'Đã từ chối', value: stats.rejected, color: 'text-red-400', bg: 'bg-red-500/10 border-red-500/20' },
-          ].map(s => (
-            <div key={s.label} className={`bg-[#1d1f29] rounded-lg p-4 border ${s.bg}`}>
-              <div className={`text-3xl font-black ${s.color}`}>{s.value}</div>
-              <div className="text-xs text-[#d5c4af]/60 font-bold uppercase tracking-wider mt-1">{s.label}</div>
-            </div>
-          ))}
+          <div className="bg-[#1d1f29] rounded-lg p-4 border bg-yellow-500/10 border-yellow-500/20">
+            <div className="text-3xl font-black text-yellow-400">{stats.pendingForMe}</div>
+            <div className="text-xs text-yellow-400/80 font-bold uppercase tracking-wider mt-1">Cần bạn duyệt</div>
+          </div>
+          <div className="bg-[#1d1f29] rounded-lg p-4 border bg-blue-500/10 border-blue-500/20">
+            <div className="text-3xl font-black text-blue-400">{stats.totalPending}</div>
+            <div className="text-xs text-blue-400/80 font-bold uppercase tracking-wider mt-1">Tổng đang chờ</div>
+            {stats.totalPending > stats.pendingForMe && (
+              <div className="text-xs text-blue-400/50 mt-1">{stats.totalPending - stats.pendingForMe} câu bạn đã xử lý</div>
+            )}
+          </div>
+          <div className="bg-[#1d1f29] rounded-lg p-4 border bg-emerald-500/10 border-emerald-500/20">
+            <div className="text-3xl font-black text-emerald-400">{stats.myActionsToday}</div>
+            <div className="text-xs text-emerald-400/80 font-bold uppercase tracking-wider mt-1">Bạn đã duyệt hôm nay</div>
+          </div>
         </div>
       )}
 
@@ -134,9 +151,11 @@ export default function ReviewQueue() {
       {isLoading ? (
         <div className="bg-[#1d1f29] rounded-lg border border-[#504535]/10 p-12 text-center text-[#d5c4af]/60">Đang tải...</div>
       ) : items.length === 0 ? (
-        <div className="bg-[#1d1f29] rounded-lg border border-[#504535]/10 p-12 text-center">
-          <div className="text-4xl mb-3">✅</div>
-          <div className="text-[#d5c4af]/60 font-bold">Không có câu hỏi nào đang chờ duyệt</div>
+        <div className="bg-gradient-to-br from-emerald-500/10 to-blue-500/10 border border-emerald-500/30 rounded-2xl p-12 text-center">
+          <span className="text-6xl mb-4 block">🎉</span>
+          <h3 className="text-2xl font-bold text-[#e1e1ef] mb-2">Tuyệt vời! Bạn đã duyệt hết queue</h3>
+          <p className="text-[#d5c4af]/60">Không còn câu nào cần bạn xem xét. Nghỉ ngơi một chút nhé!</p>
+          <p className="text-[#d5c4af]/40 text-sm mt-4">Câu hỏi mới sẽ tự động xuất hiện khi có.</p>
         </div>
       ) : (
         <div className="space-y-4">
@@ -245,6 +264,34 @@ export default function ReviewQueue() {
           ))}
         </div>
       )}
+
+      {/* My Review History */}
+      <div className="mt-12">
+        <button onClick={() => setShowHistory(!showHistory)} className="text-lg font-semibold text-[#e1e1ef] flex items-center gap-2 mb-4">
+          <span className="material-symbols-outlined text-secondary">history</span>
+          Lịch sử duyệt của tôi
+          <span className="text-xs text-[#d5c4af]/50 ml-2">({history.length})</span>
+        </button>
+        {showHistory && (
+          <div className="space-y-2">
+            {history.length === 0 ? (
+              <p className="text-[#d5c4af]/40 text-center py-8">Bạn chưa duyệt câu hỏi nào.</p>
+            ) : history.map(item => (
+              <div key={item.id} className="bg-[#1d1f29] rounded-lg p-4 flex items-center justify-between border border-[#504535]/10">
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm text-[#e1e1ef]/80 truncate">{item.questionContent ?? item.questionId}</p>
+                  <p className="text-xs text-[#d5c4af]/50 mt-1">{item.questionBook} · {new Date(item.createdAt).toLocaleString('vi-VN')}</p>
+                </div>
+                <span className={`px-3 py-1 rounded-full text-xs font-bold ml-3 ${
+                  item.action === 'APPROVE' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'
+                }`}>
+                  {item.action === 'APPROVE' ? '✓ Đã duyệt' : '✗ Đã từ chối'}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   )
 }
