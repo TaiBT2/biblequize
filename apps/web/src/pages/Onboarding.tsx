@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { setQuizLanguage, type QuizLanguage } from '../utils/quizLanguage'
+import { useOnboardingStore } from '../store/onboardingStore'
 
 const SLIDES = [
   { icon: '✝️', titleKey: 'onboarding.slide1Title', descKey: 'onboarding.slide1Desc', color: '#e8a832' },
@@ -12,46 +13,56 @@ const SLIDES = [
 export default function Onboarding() {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
+  const { setHasSeenOnboarding, setLanguage } = useOnboardingStore()
   const [step, setStep] = useState<'language' | 'slides'>('language')
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const selectLanguage = (lang: QuizLanguage) => {
+    setLanguage(lang)
     setQuizLanguage(lang)
     i18n.changeLanguage(lang)
     setStep('slides')
   }
 
   const finish = () => {
-    localStorage.setItem('hasSeenOnboarding', 'true')
+    setHasSeenOnboarding(true)
     navigate('/onboarding/try')
   }
 
   const skip = () => {
-    localStorage.setItem('hasSeenOnboarding', 'true')
+    setHasSeenOnboarding(true)
     navigate('/login')
   }
 
   if (step === 'language') {
     return (
       <div className="min-h-screen bg-[#11131e] flex flex-col items-center justify-center p-8">
-        <h1 className="text-2xl font-bold text-on-surface mb-2">Choose your language</h1>
-        <p className="text-on-surface-variant mb-8">{t('onboarding.chooseLanguage')}</p>
+        {/* Logo */}
+        <h1 className="text-3xl font-black text-secondary tracking-tighter mb-16 font-headline">BibleQuiz</h1>
+
+        <p className="text-lg text-on-surface/60 mb-1">Choose your language</p>
+        <p className="text-lg text-on-surface/60 mb-10">{t('onboarding.chooseLanguage')}</p>
+
         <div className="space-y-3 w-full max-w-xs">
           <button
             onClick={() => selectLanguage('vi')}
-            className="w-full flex items-center gap-3 px-6 py-4 rounded-xl bg-surface-container border border-outline-variant/20 hover:border-secondary/40 transition-colors"
+            className="w-full flex items-center gap-4 px-6 py-5 rounded-2xl bg-on-surface/5 border border-on-surface/10 hover:border-secondary/40 hover:bg-secondary/10 transition-all"
           >
-            <span className="text-2xl">🇻🇳</span>
-            <span className="text-on-surface font-semibold">Tiếng Việt</span>
+            <span className="text-3xl">🇻🇳</span>
+            <span className="text-on-surface font-semibold text-lg">Tiếng Việt</span>
           </button>
           <button
             onClick={() => selectLanguage('en')}
-            className="w-full flex items-center gap-3 px-6 py-4 rounded-xl bg-surface-container border border-outline-variant/20 hover:border-secondary/40 transition-colors"
+            className="w-full flex items-center gap-4 px-6 py-5 rounded-2xl bg-on-surface/5 border border-on-surface/10 hover:border-secondary/40 hover:bg-secondary/10 transition-all"
           >
-            <span className="text-2xl">🇬🇧</span>
-            <span className="text-on-surface font-semibold">English</span>
+            <span className="text-3xl">🇬🇧</span>
+            <span className="text-on-surface font-semibold text-lg">English</span>
           </button>
         </div>
+
+        <p className="text-sm text-on-surface/40 mt-10 text-center">
+          {t('onboarding.changeLanguageLater', { defaultValue: 'You can change this later in settings' })}
+        </p>
       </div>
     )
   }
@@ -70,39 +81,41 @@ export default function Onboarding() {
 
       {/* Slide content */}
       <div className="flex-1 flex flex-col items-center justify-center text-center max-w-md">
-        <span className="text-7xl mb-8" style={{ filter: `drop-shadow(0 0 30px ${slide.color}40)` }}>
-          {slide.icon}
-        </span>
-        <h2 className="text-2xl font-bold text-on-surface mb-3">{t(slide.titleKey)}</h2>
-        <p className="text-on-surface-variant text-lg">{t(slide.descKey)}</p>
+        <div className="relative mb-12">
+          <div
+            className="absolute inset-0 rounded-full blur-3xl opacity-15"
+            style={{ backgroundColor: slide.color }}
+          />
+          <span className="text-8xl relative z-10 block">{slide.icon}</span>
+        </div>
+        <h2 className="text-3xl font-bold text-on-surface mb-4 font-headline">{t(slide.titleKey)}</h2>
+        <p className="text-on-surface-variant text-lg leading-relaxed">{t(slide.descKey)}</p>
       </div>
 
       {/* Dots + navigation */}
       <div className="w-full max-w-md space-y-6">
-        {/* Dots */}
         <div className="flex justify-center gap-2">
           {SLIDES.map((_, i) => (
             <div
               key={i}
-              className={`h-2 rounded-full transition-all ${
+              className={`h-2 rounded-full transition-all duration-300 ${
                 i === currentSlide ? 'w-8 bg-secondary' : 'w-2 bg-on-surface-variant/30'
               }`}
             />
           ))}
         </div>
 
-        {/* Button */}
         {isLast ? (
           <button
             onClick={finish}
-            className="w-full gold-gradient text-on-secondary py-3 rounded-xl font-bold text-lg"
+            className="w-full gold-gradient text-on-secondary py-4 rounded-xl font-bold text-lg active:scale-[0.98] transition-transform"
           >
             {t('onboarding.start')}
           </button>
         ) : (
           <button
             onClick={() => setCurrentSlide(currentSlide + 1)}
-            className="w-full bg-surface-container-high text-on-surface py-3 rounded-xl font-semibold border border-outline-variant/20 hover:border-secondary/30 transition-colors"
+            className="w-full bg-surface-container-high text-on-surface py-4 rounded-xl font-semibold border border-outline-variant/20 hover:border-secondary/30 transition-colors active:scale-[0.98]"
           >
             {t('common.next')}
           </button>

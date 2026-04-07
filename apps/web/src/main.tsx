@@ -55,6 +55,7 @@ import NotFound from './pages/NotFound'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import Onboarding from './pages/Onboarding'
+import { useOnboardingStore } from './store/onboardingStore'
 import OnboardingTryQuiz from './pages/OnboardingTryQuiz'
 import Journey from './pages/Journey'
 
@@ -78,9 +79,9 @@ useAuthStore.getState().checkAuth()
  *  First-time visitors go to Onboarding instead of LandingPage. */
 function HomeOrLanding() {
   const { isAuthenticated, isLoading } = useAuthStore()
+  const hasSeenOnboarding = useOnboardingStore(s => s.hasSeenOnboarding)
   if (isLoading) return null // wait for auth check
   if (!isAuthenticated) {
-    const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding')
     if (!hasSeenOnboarding) return <Onboarding />
     return <LandingPage />
   }

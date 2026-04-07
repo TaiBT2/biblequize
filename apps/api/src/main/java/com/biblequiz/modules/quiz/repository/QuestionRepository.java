@@ -138,6 +138,9 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
     @Query("SELECT DISTINCT q.book FROM Question q WHERE q.isActive = true ORDER BY q.book")
     List<String> findDistinctActiveBooks();
 
+    @Query("SELECT q FROM Question q WHERE q.isActive = true AND q.language = :lang AND q.difficulty = 'EASY' ORDER BY RAND()")
+    List<Question> findRandomEasyByLanguage(@Param("lang") String language, Pageable pageable);
+
     // Index hints for better performance
     @Query(value = "SELECT * FROM questions q USE INDEX (idx_is_active) WHERE q.is_active = true ORDER BY RAND() LIMIT :limit",
            nativeQuery = true)
