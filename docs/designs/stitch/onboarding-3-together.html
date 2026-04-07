@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BibleQuiz - Together in Faith</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#272935",
+                    "on-primary-fixed": "#151a34",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#373845",
+                    "tertiary-fixed-dim": "#e7c268",
+                    "on-tertiary": "#3e2e00",
+                    "on-secondary": "#412d00",
+                    "outline-variant": "#46464d",
+                    "surface-container-low": "#191b26",
+                    "on-tertiary-fixed-variant": "#5a4400",
+                    "on-primary-container": "#8286a7",
+                    "secondary-container": "#bc8709",
+                    "on-background": "#e1e1f1",
+                    "on-tertiary-container": "#a48431",
+                    "primary": "#c0c4e8",
+                    "surface-variant": "#323440",
+                    "outline": "#919098",
+                    "surface-tint": "#c0c4e8",
+                    "primary-fixed-dim": "#c0c4e8",
+                    "error": "#ffb4ab",
+                    "background": "#11131e",
+                    "surface-container-highest": "#323440",
+                    "surface": "#11131e",
+                    "on-primary-fixed-variant": "#404562",
+                    "on-secondary-fixed": "#271900",
+                    "primary-container": "#1a1f3a",
+                    "on-surface": "#e1e1f1",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "on-surface-variant": "#c7c5ce",
+                    "surface-container-lowest": "#0b0e18",
+                    "on-primary": "#2a2f4a",
+                    "on-error": "#690005",
+                    "inverse-surface": "#e1e1f1",
+                    "secondary-fixed": "#ffdea7",
+                    "tertiary-container": "#2b1f00",
+                    "on-secondary-container": "#392600",
+                    "inverse-on-surface": "#2e303c",
+                    "error-container": "#93000a",
+                    "secondary-fixed-dim": "#f8bd45",
+                    "surface-container": "#1d1f2a",
+                    "primary-fixed": "#dee1ff",
+                    "secondary": "#f8bd45",
+                    "inverse-primary": "#585d7b",
+                    "tertiary-fixed": "#ffdf96",
+                    "surface-dim": "#11131e",
+                    "on-tertiary-fixed": "#251a00",
+                    "tertiary": "#e7c268"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Be Vietnam Pro"],
+                    "body": ["Be Vietnam Pro"],
+                    "label": ["Be Vietnam Pro"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sacred-glow {
+            box-shadow: 0 0 40px -10px rgba(248, 189, 69, 0.2);
+        }
+        .sapphire-glow {
+            box-shadow: 0 0 60px -15px rgba(192, 196, 232, 0.15);
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary/30">
+<nav class="flex justify-between items-center w-full px-8 py-4 max-w-full fixed top-0 z-50 bg-[#11131e]">
+<div class="text-xl font-bold text-[#f8bd45] uppercase tracking-[0.05em] font-['Be_Vietnam_Pro']">
+            BibleQuiz
+        </div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#e1e1f1] opacity-70 hover:text-[#f8bd45] transition-colors duration-200 font-['Be_Vietnam_Pro'] tracking-tight" href="#">Explore</a>
+<a class="text-[#e1e1f1] opacity-70 hover:text-[#f8bd45] transition-colors duration-200 font-['Be_Vietnam_Pro'] tracking-tight" href="#">Leaderboard</a>
+<a class="text-[#e1e1f1] opacity-70 hover:text-[#f8bd45] transition-colors duration-200 font-['Be_Vietnam_Pro'] tracking-tight" href="#">Groups</a>
+</div>
+<div class="flex gap-4">
+<button class="text-[#e1e1f1] opacity-70 hover:text-[#f8bd45] transition-colors duration-200 font-['Be_Vietnam_Pro']">Skip</button>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-xl font-bold transition-transform active:scale-95 gold-gradient">Login</button>
+</div>
+</nav>
+<main class="min-h-screen flex items-center justify-center p-6 md:p-12 lg:p-20">
+<div class="w-full max-w-[1440px] grid grid-cols-1 lg:grid-cols-10 gap-12 items-center">
+<div class="lg:col-span-6 h-full flex flex-col justify-center items-center relative group">
+<div class="absolute inset-0 sapphire-glow rounded-full blur-[100px] opacity-30"></div>
+<div class="relative w-full aspect-square max-w-[600px] flex items-center justify-center">
+<div class="absolute w-full h-full border border-outline-variant/10 rounded-full animate-[pulse_8s_infinite]"></div>
+<div class="absolute w-3/4 h-3/4 border border-outline-variant/10 rounded-full animate-[pulse_6s_infinite]"></div>
+<div class="grid grid-cols-2 gap-8 relative z-10">
+<div class="p-6 bg-surface-container-high/40 backdrop-blur-xl rounded-full border border-secondary/10 sacred-glow">
+<img alt="avatar" class="w-24 h-24 rounded-full" data-alt="Stylized minimalist silhouette of a community member in soft navy tones with a subtle glowing gold halo effect" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNjI6srRVKaCI1cwyxoWECWLbmTGURDhVCynpuvPaF3Cx5d0bOqeS8D38YYQHyPfn_G6wiXfEtkPIkc08MY0Xy_6sGkMggurcQgfcPX41Y-8O18E5Eztyi_grQEQNE7e8PeQ7LW-EWNsi-HaCk1ffuV1citTHHIs3cLFljqm-uih_nssTNuIkZT_sjY8YbrOPhIoTeKJbE3UpENIRILNiqxLZo5xOvZMs_w5BMZ0BsawQ8SrdPIb0I77Rp5ml6aFW6BEt1RlOX-5k"/>
+</div>
+<div class="p-6 bg-surface-container-high/40 backdrop-blur-xl rounded-full border border-secondary/10 sacred-glow mt-12">
+<img alt="avatar" class="w-24 h-24 rounded-full" data-alt="Stylized minimalist silhouette of a community member in soft navy tones with a subtle glowing gold halo effect" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqaZd2wDNndRHxNrVaXhwSTyQL3VA7slwGgClhs9mYSADzhuQIstWoMoYOmZIu7MRAvRZ4JJ87kSoNSSl4GiG-TTVflioySPNll6useU8nTnKR5FOA5aMjaSYlIw3iivCiPI4rSQ_KqMgKSSiIiLByYERgznVE2TsLrlt2m-CFpAT32C7yqDootevggcEBpYyH3RkTH6Ykv8fY9RPxWuFOfxJNGwOULPs0vJNNenV8L5g_1G4uSmLhb10NoCaES-3qKazoEaIV7QE"/>
+</div>
+<div class="p-6 bg-surface-container-high/40 backdrop-blur-xl rounded-full border border-secondary/10 sacred-glow -mt-12">
+<img alt="avatar" class="w-24 h-24 rounded-full" data-alt="Stylized minimalist silhouette of a community member in soft navy tones with a subtle glowing gold halo effect" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAghOclc_5puYanWnBA5vXf-UGr_b7brGt_gYNcpUCAS_Ohka4vcPhVIW6BejQlpaUX-7MYW5fWdjtE8qNsjWlOrtJmv3OMzZzvDw7S1L41lB_GEJ3vBU4aBF4jfseorWeXwixiXn0X7blWOK-55fMup8WUtVRpNYa6Vhxa6OlyPHirQDPqgJmdoSMS0FDkDPVRt8PLtWNpsAh5OfLJGmbyN_UnkMZDk2ptVtt34xFLFKVQ9PyepiMaobeBs9PSvkVHBajC1TOQLHY"/>
+</div>
+<div class="p-6 bg-surface-container-high/40 backdrop-blur-xl rounded-full border border-secondary/10 sacred-glow">
+<img alt="avatar" class="w-24 h-24 rounded-full" data-alt="Stylized minimalist silhouette of a community member in soft navy tones with a subtle glowing gold halo effect" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoypGYxHs4Cls9nUp42HQKMxgemYXUBGT5sg9IirVIAeWDYHLVL6Qw4jaZfuqaERLtEv5s9Ah6ef4TeoyUzZSlUhxx1UUsl8SGqkd3GWh6Yvk1o8r0yB48Hi2uC0UJSXD7KIjTzKjuR-DTHGQ-3fTZYmUo1o_uLtO7VapuTZV_6ttv-4sIJ6O-1iq-ZconO1gcH6Z3fQpRlxDlP7FXEgVJhfoejaxTvwimD5JjVE6ZC1yEdnMBELpDBMyPRK5daddnag-S9P-0HvU"/>
+</div>
+</div>
+<svg class="absolute inset-0 w-full h-full pointer-events-none" fill="none" viewbox="0 0 600 600">
+<path d="M220 220 L380 380" opacity="0.4" stroke="url(#gold_grad)" stroke-dasharray="4 4" stroke-width="2"></path>
+<path d="M380 220 L220 380" opacity="0.4" stroke="url(#gold_grad)" stroke-dasharray="4 4" stroke-width="2"></path>
+<defs>
+<lineargradient id="gold_grad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#f8bd45"></stop>
+<stop offset="100%" stop-color="#e7c268"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute bottom-10 right-10 bg-surface-variant/60 backdrop-blur-md px-4 py-2 rounded-xl border border-outline-variant/15 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="text-sm font-label font-medium tracking-wide">4 Players Online</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-8 text-left pl-0 lg:pl-12">
+<div class="space-y-4">
+<span class="text-secondary font-label font-bold tracking-[0.1em] uppercase text-sm">02 / 03</span>
+<h1 class="text-5xl lg:text-6xl font-headline font-extrabold tracking-tight text-on-surface leading-[1.1]">
+                        Thi đấu <br/>cùng nhau
+                    </h1>
+</div>
+<div class="bg-surface-container-low border-l-4 border-secondary p-6 rounded-r-xl">
+<p class="text-on-surface-variant text-lg leading-relaxed font-body">
+                        4 chế độ chơi nhóm. Thách đấu anh chị em trong Hội Thánh. Học Lời Chúa qua sự gắn kết.
+                    </p>
+</div>
+<div class="flex items-center gap-3">
+<div class="h-1.5 w-1.5 rounded-full bg-outline-variant/30"></div>
+<div class="h-1.5 w-8 rounded-full gold-gradient"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-outline-variant/30"></div>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 mt-4">
+<button class="gold-gradient text-on-secondary px-10 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 hover:scale-[1.02] transition-all shadow-lg active:scale-95">
+                        Tiếp tục
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="px-8 py-4 rounded-xl font-bold text-on-surface-variant hover:text-secondary transition-colors border border-outline-variant/15">
+                        Quay lại
+                    </button>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-8 opacity-60">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="text-xs uppercase tracking-widest font-label">Real-time PvP</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="text-xs uppercase tracking-widest font-label">Guild Events</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="flex flex-col md:flex-row justify-between items-center px-12 w-full py-8 bg-[#11131e] border-t border-[#46464d]/15 fixed bottom-0 z-40">
+<div class="text-[#f8bd45] font-semibold font-['Be_Vietnam_Pro'] text-sm tracking-wide">
+            © 2024 BibleQuiz. The Sacred Path.
+        </div>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="text-[#e1e1f1]/60 hover:text-[#f8bd45] underline decoration-[#f8bd45]/30 font-['Be_Vietnam_Pro'] text-sm transition-all duration-300" href="#">Privacy Policy</a>
+<a class="text-[#e1e1f1]/60 hover:text-[#f8bd45] underline decoration-[#f8bd45]/30 font-['Be_Vietnam_Pro'] text-sm transition-all duration-300" href="#">Terms of Service</a>
+<a class="text-[#e1e1f1]/60 hover:text-[#f8bd45] underline decoration-[#f8bd45]/30 font-['Be_Vietnam_Pro'] text-sm transition-all duration-300" href="#">Help Center</a>
+</div>
+</footer>
+</body></html>

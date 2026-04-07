@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BibleQuiz - Kết Quả Trắc Nghiệm</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#272935",
+                    "on-primary-fixed": "#151a34",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#373845",
+                    "tertiary-fixed-dim": "#e7c268",
+                    "on-tertiary": "#3e2e00",
+                    "on-secondary": "#412d00",
+                    "outline-variant": "#46464d",
+                    "surface-container-low": "#191b26",
+                    "on-tertiary-fixed-variant": "#5a4400",
+                    "on-primary-container": "#8286a7",
+                    "secondary-container": "#bc8709",
+                    "on-background": "#e1e1f1",
+                    "on-tertiary-container": "#a48431",
+                    "primary": "#c0c4e8",
+                    "surface-variant": "#323440",
+                    "outline": "#919098",
+                    "surface-tint": "#c0c4e8",
+                    "primary-fixed-dim": "#c0c4e8",
+                    "error": "#ffb4ab",
+                    "background": "#11131e",
+                    "surface-container-highest": "#323440",
+                    "surface": "#11131e",
+                    "on-primary-fixed-variant": "#404562",
+                    "on-secondary-fixed": "#271900",
+                    "primary-container": "#1a1f3a",
+                    "on-surface": "#e1e1f1",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "on-surface-variant": "#c7c5ce",
+                    "surface-container-lowest": "#0b0e18",
+                    "on-primary": "#2a2f4a",
+                    "on-error": "#690005",
+                    "inverse-surface": "#e1e1f1",
+                    "secondary-fixed": "#ffdea7",
+                    "tertiary-container": "#2b1f00",
+                    "on-secondary-container": "#392600",
+                    "inverse-on-surface": "#2e303c",
+                    "error-container": "#93000a",
+                    "secondary-fixed-dim": "#f8bd45",
+                    "surface-container": "#1d1f2a",
+                    "primary-fixed": "#dee1ff",
+                    "secondary": "#f8bd45",
+                    "inverse-primary": "#585d7b",
+                    "tertiary-fixed": "#ffdf96",
+                    "surface-dim": "#11131e",
+                    "on-tertiary-fixed": "#251a00",
+                    "tertiary": "#e7c268"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Be Vietnam Pro"],
+                    "body": ["Be Vietnam Pro"],
+                    "label": ["Be Vietnam Pro"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%);
+        }
+        .sacred-glow {
+            box-shadow: 0 0 40px -10px rgba(248, 189, 69, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-[#11131e] flex justify-between items-center w-full px-8 py-4 max-w-full z-50 sticky top-0">
+<div class="text-xl font-bold text-[#f8bd45] uppercase tracking-[0.05em] font-['Be_Vietnam_Pro']">
+            BibleQuiz
+        </div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-[#e1e1f1] opacity-70 hover:text-[#f8bd45] transition-colors duration-200 font-['Be_Vietnam_Pro'] tracking-tight" href="#">Trang chủ</a>
+<a class="text-[#e1e1f1] opacity-70 hover:text-[#f8bd45] transition-colors duration-200 font-['Be_Vietnam_Pro'] tracking-tight" href="#">Thử thách</a>
+<a class="text-[#e1e1f1] opacity-70 hover:text-[#f8bd45] transition-colors duration-200 font-['Be_Vietnam_Pro'] tracking-tight" href="#">Cộng đồng</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-[#e1e1f1] opacity-70 hover:text-[#f8bd45] transition-colors duration-200 font-['Be_Vietnam_Pro'] tracking-tight">Skip</button>
+<button class="bg-[#1d1f2a] px-6 py-2 rounded-xl text-[#f8bd45] font-bold hover:scale-95 transition-transform active:scale-95">Login</button>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center px-6 py-12 md:px-12">
+<div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<!-- Left Column: Result Identity -->
+<div class="flex flex-col items-center md:items-start space-y-8">
+<div class="relative">
+<div class="absolute inset-0 gold-gradient blur-3xl opacity-10 rounded-full"></div>
+<div class="relative flex flex-col items-center md:items-start">
+<span class="text-[120px] md:text-[160px] font-extrabold leading-none tracking-tighter gold-gradient bg-clip-text text-transparent">
+                            2/3
+                        </span>
+<div class="h-1.5 w-32 gold-gradient rounded-full mt-2"></div>
+</div>
+</div>
+<div class="space-y-4 text-center md:text-left">
+<h1 class="text-4xl md:text-5xl font-bold text-on-surface tracking-tight leading-tight">
+                        Tốt lắm! Bạn có tiềm năng học Kinh Thánh!
+                    </h1>
+<p class="text-on-surface-variant text-lg max-w-md leading-relaxed">
+                        Bạn đã hoàn thành bài trắc nghiệm nhanh. Đây là bước đầu tiên trên hành trình khám phá Lời Chúa.
+                    </p>
+</div>
+<!-- Community Avatars -->
+<div class="pt-8 flex flex-col items-center md:items-start gap-4">
+<div class="flex -space-x-3 overflow-hidden">
+<img alt="User 1" class="inline-block h-10 w-10 rounded-full ring-2 ring-background object-cover" data-alt="portrait of a smiling young man in soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDImXzR8Oo7yoxgJ7Lo-rA3_dRhpjv2cUWvK5TkGltEylZS2sFy6CIm6YxBEZT6WweymhU2q2vfoy7hikTJ8s4oBAIpiuUiU5xOFOXaKT3oG0mT2gg2clKtlirdpBnpK36G90iuZ_UbU5tMC-OdalY-m7LfAyTKfiH8oa6lcOhdhCpHUqE7PPMNYgiPUq78qS-1v9GeIj9620Mthz1AAbMZZwnfhZDoyqADSkbmLdlM9b-uK6CKIYIs9Gco9Tt7vjUOmaFekMYTn0"/>
+<img alt="User 2" class="inline-block h-10 w-10 rounded-full ring-2 ring-background object-cover" data-alt="portrait of a cheerful young woman with a warm expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUQuZPBWPQDM7tSAqIU1HMviPwZyqAdjpDsv28pVp5yunYQrAU4S4p1-64IOtsBJ4LwNWMq9wNWLk2Ztj8tizO8tCqg02mRcWbijBOaYuiK7i_uvu7xa0Erh7kuVenvDIHeEz1UVhrr_K9WhvZYZp286yFhFvywqCJ4N5ioTTxGcJ55mlYLiUTsnWUdYPFdTvxE3yOYPaW0cKIJm7S8YMsFUemIj8IVMyDx5y0chO8rk6-zsfaf50LAl-srvuFLgBnxazhUGfCX40"/>
+<img alt="User 3" class="inline-block h-10 w-10 rounded-full ring-2 ring-background object-cover" data-alt="portrait of a man looking thoughtful in soft outdoor lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-p_l8M96NnUUMisyAVZz3TuPzl7vYujTWcj10f7A4wADi2v_OINyS6d6SjOK5ungNawxZugqmYLzIW8YkSB0ewdc8z9j6mFXcm_8EF19KUCmrXEkcTGEAaml2GBElhT3N-Gz8qFwsXsfz0nUtP5h0H0rfMHHzjjEXdE5mJgR1_3qDx_o6mOOElZSxdZ0_-EM0ySDU2e7PgIt6ZVtrq_J4WpzCcVY2PZLge2r15lRQZp3EQddvr6Ayy8RGwtjjH3hArBx_l-BdV2M"/>
+<div class="inline-block h-10 w-10 rounded-full ring-2 ring-background bg-surface-container-highest flex items-center justify-center text-xs font-bold text-secondary">
+                            +2k
+                        </div>
+</div>
+<p class="text-sm text-on-surface-variant">Tham gia cùng <span class="text-secondary font-semibold">2,405</span> người khác hôm nay</p>
+</div>
+</div>
+<!-- Right Column: Stats & CTA Card -->
+<div class="relative">
+<!-- Background Decorative Element -->
+<div class="absolute -top-20 -right-20 w-64 h-64 bg-secondary opacity-5 rounded-full blur-3xl"></div>
+<!-- Main Glass Card -->
+<div class="relative bg-surface-container/60 backdrop-blur-xl border border-outline-variant/15 p-8 md:p-12 rounded-[2rem] sacred-glow flex flex-col space-y-10">
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 gap-4">
+<div class="bg-surface-container-high p-5 rounded-2xl flex flex-col items-center space-y-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-2xl font-bold text-on-surface">Đúng 2</span>
+</div>
+<div class="bg-surface-container-high p-5 rounded-2xl flex flex-col items-center space-y-2">
+<span class="material-symbols-outlined text-error">cancel</span>
+<span class="text-2xl font-bold text-on-surface">Sai 1</span>
+</div>
+<div class="bg-surface-container-high p-5 rounded-2xl flex flex-col items-center space-y-2">
+<span class="material-symbols-outlined text-primary">timer</span>
+<span class="text-2xl font-bold text-on-surface">24s</span>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="space-y-6">
+<div class="space-y-2">
+<h3 class="text-xl font-bold text-on-surface text-center">Lưu lại tiến trình của bạn</h3>
+<p class="text-on-surface-variant text-sm text-center">Đăng ký để nhận lộ trình học tập cá nhân hóa miễn phí.</p>
+</div>
+<div class="flex flex-col gap-3">
+<button class="gold-gradient text-on-secondary font-bold py-4 px-8 rounded-xl flex items-center justify-center gap-3 hover:scale-[1.02] transition-all active:scale-95">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="currentColor"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="currentColor"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="currentColor"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="currentColor"></path>
+</svg>
+                                Đăng ký miễn phí với Google
+                            </button>
+<button class="text-on-surface-variant font-medium py-3 px-8 rounded-xl border border-outline-variant/20 hover:bg-surface-variant/30 transition-colors">
+                                Để sau
+                            </button>
+</div>
+</div>
+<!-- Trust Badge -->
+<div class="flex items-center justify-center gap-2 text-xs text-on-tertiary-fixed-variant/50 uppercase tracking-widest font-bold">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+                        Bảo mật và an toàn 100%
+                    </div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#11131e] border-t border-[#46464d]/15 flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full">
+<div class="text-[#f8bd45] font-semibold mb-4 md:mb-0">BibleQuiz</div>
+<div class="flex gap-8 text-[#e1e1f1]/60 text-sm tracking-wide font-['Be_Vietnam_Pro']">
+<a class="hover:text-[#f8bd45] underline decoration-[#f8bd45]/30 transition-all duration-300" href="#">Privacy Policy</a>
+<a class="hover:text-[#f8bd45] underline decoration-[#f8bd45]/30 transition-all duration-300" href="#">Terms of Service</a>
+<a class="hover:text-[#f8bd45] underline decoration-[#f8bd45]/30 transition-all duration-300" href="#">Help Center</a>
+</div>
+<div class="mt-4 md:mt-0 text-[#e1e1f1]/60 text-sm font-['Be_Vietnam_Pro']">
+            © 2024 BibleQuiz. The Sacred Path.
+        </div>
+</footer>
+</body></html>
