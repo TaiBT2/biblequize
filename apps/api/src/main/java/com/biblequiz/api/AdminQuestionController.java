@@ -2,6 +2,8 @@ package com.biblequiz.api;
 
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
+import com.biblequiz.modules.quiz.service.DuplicateDetectionService;
+import com.biblequiz.modules.quiz.service.DuplicateDetectionService.*;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -32,6 +34,9 @@ public class AdminQuestionController {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    private DuplicateDetectionService duplicateDetectionService;
 
     @GetMapping("/ping")
     public ResponseEntity<?> ping() {
@@ -84,9 +89,36 @@ public class AdminQuestionController {
     }
 
     @PostMapping
-    public ResponseEntity<Question> create(
+    public ResponseEntity<?> create(
             @RequestBody Question q,
-            @RequestParam(value = "pending", defaultValue = "false") boolean pending) {
+            @RequestParam(value = "pending", defaultValue = "false") boolean pending,
+            @RequestParam(value = "forceCreate", defaultValue = "false") boolean forceCreate) {
+
+        // Check duplicate BEFORE save
+        DuplicateCheckResult dupResult = duplicateDetectionService.checkDuplicate(
+                new DuplicateCheckRequest(
+                        q.getContent(), q.getCorrectAnswerText(), q.getBook(),
+                        q.getChapter(), q.getVerseStart(), q.getLanguage()
+                )
+        );
+
+        if (dupResult.blocked()) {
+            return ResponseEntity.status(409).body(Map.of(
+                    "error", "DUPLICATE",
+                    "message", dupResult.message(),
+                    "existingQuestion", dupResult.matches().isEmpty() ? Map.of() : dupResult.matches().get(0)
+            ));
+        }
+
+        if (!dupResult.matches().isEmpty() && !forceCreate) {
+            return ResponseEntity.status(409).body(Map.of(
+                    "error", "POSSIBLE_DUPLICATE",
+                    "message", dupResult.message(),
+                    "similarQuestions", dupResult.matches(),
+                    "hint", "Gửi lại với forceCreate=true nếu muốn tạo"
+            ));
+        }
+
         q.setId(UUID.randomUUID().toString());
         if (pending) {
             q.setIsActive(false);
@@ -97,6 +129,21 @@ public class AdminQuestionController {
             q.setApprovalsCount(2);
         }
         return ResponseEntity.ok(questionRepository.save(q));
+    }
+
+    @PostMapping("/check-duplicate")
+    public ResponseEntity<?> checkDuplicate(@RequestBody Map<String, Object> body) {
+        DuplicateCheckResult result = duplicateDetectionService.checkDuplicate(
+                new DuplicateCheckRequest(
+                        (String) body.get("content"),
+                        (String) body.get("correctAnswerText"),
+                        (String) body.get("book"),
+                        body.get("chapter") != null ? ((Number) body.get("chapter")).intValue() : null,
+                        body.get("verseStart") != null ? ((Number) body.get("verseStart")).intValue() : null,
+                        (String) body.get("language")
+                )
+        );
+        return ResponseEntity.ok(result);
     }
 
     @PutMapping(path = "/{id}")
@@ -231,16 +278,25 @@ public class AdminQuestionController {
                 // IMP-4: Vietnamese book name normalization
                 q.setBook(normalizeBookName(q.getBook()));
 
-                // IMP-5: Duplicate detection
+                // IMP-5: Duplicate detection (3-layer)
                 String contentKey = q.getContent() != null ? q.getContent().trim().toLowerCase() : "";
                 if (seenContents.contains(contentKey)) {
                     warnings.add(Map.of("index", idx, "warning", label + ": trùng lặp với record khác trong file"));
                     duplicateCount++;
                     if (skipDuplicates) { it.remove(); continue; }
-                } else if (!contentKey.isEmpty() && questionRepository.existsByContentIgnoreCase(contentKey)) {
-                    warnings.add(Map.of("index", idx, "warning", label + ": có thể trùng lặp với câu đã có trong DB"));
-                    duplicateCount++;
-                    if (skipDuplicates) { it.remove(); continue; }
+                } else {
+                    DuplicateCheckResult dupResult = duplicateDetectionService.checkDuplicate(
+                            new DuplicateCheckRequest(q.getContent(), q.getCorrectAnswerText(),
+                                    q.getBook(), q.getChapter(), q.getVerseStart(), q.getLanguage()));
+                    if (dupResult.status() == DuplicateStatus.EXACT_MATCH) {
+                        warnings.add(Map.of("index", idx, "warning", label + ": trùng hệt câu trong DB (BLOCKED)"));
+                        duplicateCount++;
+                        it.remove(); continue;
+                    } else if (dupResult.status() != DuplicateStatus.NO_MATCH) {
+                        warnings.add(Map.of("index", idx, "warning", label + ": " + dupResult.message()));
+                        duplicateCount++;
+                        if (skipDuplicates) { it.remove(); continue; }
+                    }
                 }
                 seenContents.add(contentKey);
             }
