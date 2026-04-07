@@ -66,8 +66,8 @@ export default function Onboarding() {
                 onClick={() => selectLanguage('vi')}
                 className="glass-card p-10 rounded-xl group cursor-pointer border border-outline-variant/15 hover:border-secondary/50 transition-all duration-500 flex flex-col items-center space-y-6"
               >
-                <div className="w-20 h-20 rounded-full overflow-hidden shadow-2xl group-hover:scale-110 transition-transform duration-500 ring-2 ring-secondary/20 flex items-center justify-center bg-surface-container-high text-5xl">
-                  🇻🇳
+                <div className="w-20 h-20 rounded-full overflow-hidden shadow-2xl group-hover:scale-110 transition-transform duration-500 ring-2 ring-secondary/20">
+                  <img alt="Flag of Vietnam" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDihXdQrvykTTGHwD-v83EmOX7ysb4sPtX03DQ0GEmYXstxBuN1PEvvQmshz36350XSESu4pN4GoHz8wwx4dHdaCs75JLnRauirsUXGlPyGCvvXV06Q4DNfwEFEf4y6qwBzKBV92HK0r-OLee6Gz0ouKdFRCMhKuUhvlKH6xQ8Fx9WHNmd_VbsRwiXJP38Co8QxRLguFU2gX29lFzh9Pc0_-zdKBTecRG6bludlvacDG7qlGsEHR3mm2Mv8pAj7judp4MpjC4N7n3c" />
                 </div>
                 <div className="space-y-2">
                   <p className="text-2xl font-bold text-on-surface">Tiếng Việt</p>
@@ -82,8 +82,8 @@ export default function Onboarding() {
                 onClick={() => selectLanguage('en')}
                 className="glass-card p-10 rounded-xl group cursor-pointer border border-outline-variant/15 hover:border-secondary/50 transition-all duration-500 flex flex-col items-center space-y-6"
               >
-                <div className="w-20 h-20 rounded-full overflow-hidden shadow-2xl group-hover:scale-110 transition-transform duration-500 ring-2 ring-secondary/20 flex items-center justify-center bg-surface-container-high text-5xl">
-                  🇬🇧
+                <div className="w-20 h-20 rounded-full overflow-hidden shadow-2xl group-hover:scale-110 transition-transform duration-500 ring-2 ring-secondary/20">
+                  <img alt="Flag of United Kingdom" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnGePCC9CJ6oD6XsSzm6QF7xjgnKJuwpJrN221Iz0Mwz7toi1A43JH85t06e9IzLaAUMsCoFCBs4eo9oG09SZ_dP7J3UzDlaRNx-qx6wMhA74juEvu05ZQWYgznz7T8OFIVoL_J2Yaqvuv5RbsetZWaJVLhg1JA1HpOUHiy-9TJreRxZN7TgTU5SGs0ic3YSYK04oCKkZYv572b1BYG11hd0WrMdXAOP0rz_blWLzL7w5v9Q3BUH7uRWd2S-lHcyB4LgF2j8zNI20" />
                 </div>
                 <div className="space-y-2">
                   <p className="text-2xl font-bold text-on-surface">English</p>
@@ -105,8 +105,13 @@ export default function Onboarding() {
         </main>
 
         {/* Footer */}
-        <footer className="bg-[#11131e] border-t border-[#46464d]/15 py-8 w-full flex justify-center items-center px-12">
-          <span className="text-[#f8bd45]/60 text-sm">© 2024 BibleQuiz. The Sacred Path.</span>
+        <footer className="bg-[#11131e] border-t border-[#46464d]/15 py-8 w-full flex flex-col md:flex-row justify-between items-center px-12 text-sm tracking-wide">
+          <div className="text-[#f8bd45]/60 mb-4 md:mb-0">© 2024 BibleQuiz. The Sacred Path.</div>
+          <div className="flex gap-8">
+            <a href="/privacy" className="text-[#e1e1f1]/60 hover:text-[#f8bd45] underline decoration-[#f8bd45]/30 transition-all duration-300">Privacy Policy</a>
+            <a href="/terms" className="text-[#e1e1f1]/60 hover:text-[#f8bd45] underline decoration-[#f8bd45]/30 transition-all duration-300">Terms of Service</a>
+            <a href="#" className="text-[#e1e1f1]/60 hover:text-[#f8bd45] underline decoration-[#f8bd45]/30 transition-all duration-300">Help Center</a>
+          </div>
         </footer>
       </div>
     )
