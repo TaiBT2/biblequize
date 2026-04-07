@@ -148,4 +148,13 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
 
     @Query("SELECT CASE WHEN COUNT(q) > 0 THEN true ELSE false END FROM Question q WHERE LOWER(q.content) = :content")
     boolean existsByContentIgnoreCase(@Param("content") String contentLowerCase);
+
+    @Query("SELECT q FROM Question q WHERE LOWER(REPLACE(REPLACE(q.content, '?', ''), '.', '')) = :normalized AND q.isActive = true")
+    List<Question> findByNormalizedContent(@Param("normalized") String normalizedContent);
+
+    List<Question> findByBookAndChapterAndVerseStartAndLanguageAndIsActiveTrue(
+            String book, Integer chapter, Integer verseStart, String language);
+
+    List<Question> findByBookAndChapterAndLanguageAndIsActiveTrue(
+            String book, Integer chapter, String language);
 }

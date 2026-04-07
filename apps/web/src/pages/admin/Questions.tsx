@@ -100,6 +100,7 @@ export default function QuestionsAdmin() {
   const [importDryResult, setImportDryResult] = useState<any>(null)
   const [importResult,    setImportResult]    = useState<any>(null)
   const [importLoading,   setImportLoading]   = useState(false)
+  const [duplicateWarning, setDuplicateWarning] = useState<any>(null)
 
   // ── Fetch ──────────────────────────────────────────────────────────────────
 
@@ -145,18 +146,29 @@ export default function QuestionsAdmin() {
 
   // ── CRUD ───────────────────────────────────────────────────────────────────
 
-  const openCreate = () => { setSaveError(null); setEditing({ ...EMPTY_QUESTION }) }
-  const openEdit   = (q: Question) => { setSaveError(null); setEditing({ ...q }) }
+  const openCreate = () => { setSaveError(null); setDuplicateWarning(null); setEditing({ ...EMPTY_QUESTION }) }
+  const openEdit   = (q: Question) => { setSaveError(null); setDuplicateWarning(null); setEditing({ ...q }) }
 
-  const saveQuestion = async () => {
+  const saveQuestion = async (forceCreate = false) => {
     if (!editing) return
-    setSaveError(null); setIsSaving(true)
+    setSaveError(null); setDuplicateWarning(null); setIsSaving(true)
     try {
-      if (editing.id) await api.put(`/api/admin/questions/${editing.id}`, editing)
-      else             await api.post('/api/admin/questions', editing)
+      if (editing.id) {
+        await api.put(`/api/admin/questions/${editing.id}`, editing)
+      } else {
+        const url = forceCreate ? '/api/admin/questions?forceCreate=true' : '/api/admin/questions'
+        await api.post(url, editing)
+      }
       setEditing(null); await refresh()
     } catch (e: any) {
-      setSaveError(e?.response?.data?.message ?? e?.response?.data?.error ?? 'Lưu thất bại')
+      const errData = e?.response?.data
+      if (e?.response?.status === 409 && errData?.error === 'POSSIBLE_DUPLICATE') {
+        setDuplicateWarning(errData)
+      } else if (e?.response?.status === 409 && errData?.error === 'DUPLICATE') {
+        setSaveError(`Trùng hệt: ${errData.message}`)
+      } else {
+        setSaveError(errData?.message ?? errData?.error ?? 'Lưu thất bại')
+      }
     } finally {
       setIsSaving(false)
     }
@@ -575,11 +587,31 @@ export default function QuestionsAdmin() {
             {saveError && (
               <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 text-sm">{saveError}</div>
             )}
+
+            {duplicateWarning && (
+              <div className="p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
+                <h4 className="text-yellow-400 font-semibold text-sm mb-2">⚠️ {duplicateWarning.message}</h4>
+                <div className="space-y-2 mb-3">
+                  {duplicateWarning.similarQuestions?.map((q: any) => (
+                    <div key={q.questionId} className="bg-white/5 rounded p-2 text-xs">
+                      <p className="text-on-surface">{q.content}</p>
+                      <p className="text-on-surface-variant mt-1">
+                        {q.book} {q.chapter}:{q.verseStart} · Similarity: {q.similarityPercent}%
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex gap-2">
+                  <button onClick={() => setDuplicateWarning(null)} className="px-3 py-1.5 rounded bg-white/10 hover:bg-white/20 text-xs">Hủy</button>
+                  <button onClick={() => saveQuestion(true)} className="px-3 py-1.5 rounded bg-yellow-600 hover:bg-yellow-500 text-xs font-medium">Vẫn tạo</button>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="flex items-center justify-end gap-2 mt-5">
             <button onClick={() => setEditing(null)} className="px-4 py-2 rounded bg-white/10 hover:bg-white/20 text-sm">Hủy</button>
-            <button disabled={isSaving} onClick={saveQuestion}
+            <button disabled={isSaving} onClick={() => saveQuestion()}
               className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-sm font-medium">
               {isSaving ? 'Đang lưu...' : (editing.id ? 'Cập nhật' : 'Tạo câu hỏi')}
             </button>
