@@ -24,6 +24,10 @@ vi.mock('../../store/authStore', () => ({
   useAuthStore: () => ({ user: mockUser }),
 }))
 
+vi.mock('../../store/onboardingStore', () => ({
+  useOnboardingStore: () => ({ hasDoneTutorial: true, setHasDoneTutorial: vi.fn() }),
+}))
+
 import Home from '../Home'
 
 function renderHome() {

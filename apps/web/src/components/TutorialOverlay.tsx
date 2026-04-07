@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useOnboardingStore } from '../store/onboardingStore'
 
 const TIPS = [
   { targetId: 'game-mode-daily', messageKey: 'onboarding.tutorialDaily' },
@@ -9,22 +10,16 @@ const TIPS = [
 
 export default function TutorialOverlay() {
   const { t } = useTranslation()
+  const { hasDoneTutorial, setHasDoneTutorial } = useOnboardingStore()
   const [step, setStep] = useState(0)
-  const [visible, setVisible] = useState(false)
 
-  useEffect(() => {
-    const done = localStorage.getItem('hasDoneTutorial')
-    if (!done) setVisible(true)
-  }, [])
-
-  if (!visible || step >= TIPS.length) return null
+  if (hasDoneTutorial || step >= TIPS.length) return null
 
   const tip = TIPS[step]
 
   const advance = () => {
     if (step >= TIPS.length - 1) {
-      localStorage.setItem('hasDoneTutorial', 'true')
-      setVisible(false)
+      setHasDoneTutorial(true)
     } else {
       setStep(step + 1)
     }
