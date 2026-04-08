@@ -536,7 +536,16 @@
     "tournamentTag": "BRACKET 1V1",
     "tournamentBtn": "Join Tournament",
     "noEnergy": "No Energy",
-    "dailyCompleted": "Completed"
+    "dailyCompleted": "Completed",
+    "weekly": "Weekly Theme",
+    "weeklyDesc": "A new theme each week. 10 questions, rotating 10 themes.",
+    "weeklyBtn": "Play Now",
+    "mystery": "Mystery Mode",
+    "mysteryDesc": "Completely random! Unknown book, unknown difficulty. 1.5x XP.",
+    "mysteryBtn": "I'm Brave Enough!",
+    "speed": "Speed Round",
+    "speedDesc": "10 questions × 10 seconds. Easy only. 2x XP!",
+    "speedBtn": "Start!"
   },
   "liveFeed": {
     "correct1": "✅ {{name}} answered correctly! ({{time}}s)",

@@ -24,7 +24,7 @@ public class CreateSessionRequest {
     @Pattern(regexp = "^(easy|medium|hard|all)$", message = "Difficulty must be easy, medium, hard, or all")
     private String difficulty = "all";
 
-    @Min(value = 30, message = "Time per question must be at least 30 seconds")
+    @Min(value = 5, message = "Time per question must be at least 5 seconds")
     @Max(value = 300, message = "Time per question cannot exceed 300 seconds")
     private Integer timePerQuestion = 30;
 

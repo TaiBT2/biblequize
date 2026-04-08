@@ -63,7 +63,7 @@ public class QuizSession {
     private List<Answer> answers = new ArrayList<>();
     
     public enum Mode {
-        single, practice, ranked
+        single, practice, ranked, weekly_quiz, mystery_mode, speed_round
     }
     
     public enum Status {
