@@ -1,17 +1,21 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { View, Text, StyleSheet, Pressable, Animated } from 'react-native'
+import { View, Text, StyleSheet, Pressable, Animated, Alert, BackHandler } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { useTranslation } from 'react-i18next'
 import SafeScreen from '../../components/layout/SafeScreen'
 import ProgressBar from '../../components/ui/ProgressBar'
 import { apiClient } from '../../api/client'
 import { calculateScore } from '../../logic/scoring'
+import { useHaptic } from '../../hooks/useHaptic'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
 const LETTERS = ['A', 'B', 'C', 'D']
 
 export default function QuizScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const route = useRoute<any>()
+  const { trigger: haptic } = useHaptic()
   const { questions = [], sessionId, mode = 'practice', timePerQuestion = 30, showExplanation = true } = route.params ?? {}
 
   const [qIndex, setQIndex] = useState(0)
@@ -27,6 +31,18 @@ export default function QuizScreen() {
 
   const question = questions[qIndex]
   const progress = questions.length > 0 ? ((qIndex + 1) / questions.length) * 100 : 0
+
+  // Back button quit confirmation
+  useEffect(() => {
+    const handler = BackHandler.addEventListener('hardwareBackPress', () => {
+      Alert.alert(t('quiz.quitTitle'), t('quiz.quitConfirm'), [
+        { text: t('common.cancel'), style: 'cancel' },
+        { text: t('common.yes'), style: 'destructive', onPress: () => navigation.goBack() },
+      ])
+      return true
+    })
+    return () => handler.remove()
+  }, [navigation, t])
 
   // Timer
   useEffect(() => {
@@ -46,6 +62,10 @@ export default function QuizScreen() {
     const correct = idx === (question?.correctAnswer?.[0] ?? -1)
     setIsCorrect(correct)
 
+    // Haptic feedback
+    if (correct) haptic('success')
+    else haptic('error')
+
     let qScore = 0
     if (correct) {
       qScore = calculateScore({
@@ -54,7 +74,7 @@ export default function QuizScreen() {
         elapsedMs: (timePerQuestion - timeLeft) * 1000,
         timeLimitMs: timePerQuestion * 1000,
         comboCount: combo,
-        tierMultiplier: 1.0,
+        tierMultiplier: 1.0, // TODO: fetch real tier multiplier from /api/me
       })
       setScore(s => s + qScore)
       setCombo(c => c + 1)
@@ -111,7 +131,10 @@ export default function QuizScreen() {
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
-          <Pressable onPress={() => navigation.goBack()} style={styles.closeBtn}>
+          <Pressable onPress={() => Alert.alert(t('quiz.quitTitle'), t('quiz.quitConfirm'), [
+            { text: t('common.cancel'), style: 'cancel' },
+            { text: t('common.yes'), style: 'destructive', onPress: () => navigation.goBack() },
+          ])} style={styles.closeBtn}>
             <Text style={styles.closeText}>✕</Text>
           </Pressable>
           <View style={styles.headerCenter}>

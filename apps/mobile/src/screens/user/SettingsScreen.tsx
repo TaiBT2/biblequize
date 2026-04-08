@@ -1,13 +1,16 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView, Pressable, Switch, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import SafeScreen from '../../components/layout/SafeScreen'
+import { apiClient } from '../../api/client'
 import { useAuthStore } from '../../stores/authStore'
 import { useSettingsStore } from '../../stores/settingsStore'
 import { useOnboardingStore } from '../../stores/onboardingStore'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
 export default function SettingsScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const { logout } = useAuthStore()
   const { soundEnabled, setSoundEnabled, hapticsEnabled, setHapticsEnabled } = useSettingsStore()
@@ -47,15 +50,32 @@ export default function SettingsScreen() {
           ))}
         </View>
 
-        <Text style={s.section}>Tài khoản</Text>
+        <Text style={s.section}>{t('settings.account')}</Text>
         <Pressable onPress={handleLogout} style={s.row}>
-          <Text style={[s.rowLabel, { color: colors.error }]}>Đăng xuất</Text>
+          <Text style={s.rowLabel}>{t('settings.logout')}</Text>
+        </Pressable>
+        <Pressable onPress={() => {
+          Alert.alert(
+            t('settings.deleteAccount'),
+            t('settings.deleteWarning'),
+            [
+              { text: t('common.cancel'), style: 'cancel' },
+              { text: t('common.delete'), style: 'destructive', onPress: async () => {
+                try {
+                  await apiClient.delete('/api/me/account', { data: { confirmPhrase: 'XOA TAI KHOAN' } })
+                  logout()
+                } catch (e: any) { Alert.alert(t('common.error'), e.response?.data?.error ?? t('errors.somethingWrong')) }
+              }},
+            ]
+          )
+        }} style={s.row}>
+          <Text style={[s.rowLabel, { color: colors.error }]}>{t('settings.deleteAccount')}</Text>
         </Pressable>
 
-        <Text style={s.section}>Thông tin</Text>
-        <Pressable style={s.row}><Text style={s.rowLabel}>Chính sách bảo mật</Text></Pressable>
-        <Pressable style={s.row}><Text style={s.rowLabel}>Điều khoản sử dụng</Text></Pressable>
-        <Text style={s.version}>BibleQuiz v2.0.0</Text>
+        <Text style={s.section}>{t('settings.info')}</Text>
+        <Pressable style={s.row}><Text style={s.rowLabel}>{t('settings.privacy')}</Text></Pressable>
+        <Pressable style={s.row}><Text style={s.rowLabel}>{t('settings.terms')}</Text></Pressable>
+        <Text style={s.version}>{t('settings.version')}</Text>
       </ScrollView>
     </SafeScreen>
   )

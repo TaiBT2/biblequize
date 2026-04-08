@@ -9,50 +9,254 @@
     "next": "Tiếp tục",
     "done": "Xong",
     "error": "Đã xảy ra lỗi",
-    "noData": "Không có dữ liệu"
+    "noData": "Không có dữ liệu",
+    "close": "Đóng",
+    "yes": "Có",
+    "no": "Không",
+    "all": "Tất cả",
+    "delete": "Xóa",
+    "edit": "Sửa",
+    "create": "Tạo",
+    "search": "Tìm kiếm",
+    "viewAll": "Xem tất cả"
   },
-  "onboarding": {
-    "selectLanguage": "Chọn ngôn ngữ",
-    "vietnamese": "Tiếng Việt",
-    "english": "English",
-    "continue": "Tiếp tục",
-    "skip": "Bỏ qua",
-    "tryNow": "Thử ngay",
-    "getStarted": "Bắt đầu"
-  },
-  "auth": {
-    "loginTitle": "Đăng nhập",
-    "loginWithGoogle": "Đăng nhập với Google",
-    "loginWithEmail": "Đăng nhập với Email"
-  },
-  "home": {
-    "greeting": "Xin chào",
-    "dailyChallenge": "Thử Thách Ngày",
-    "streak": "Chuỗi ngày",
-    "totalPoints": "Tổng điểm",
-    "gameModes": "Chế độ chơi"
-  },
-  "quiz": {
-    "correct": "Chính xác!",
-    "incorrect": "Sai rồi!",
-    "explanation": "Giải thích",
-    "nextQuestion": "Câu tiếp",
-    "viewResults": "Xem kết quả",
-    "bookmarkForReview": "Đánh dấu ôn lại"
-  },
-  "results": {
-    "score": "Điểm số",
-    "accuracy": "Độ chính xác",
-    "time": "Thời gian",
-    "playAgain": "Chơi lại",
-    "review": "Xem lại",
-    "backToHome": "Về trang chủ"
-  },
-  "tabs": {
+  "nav": {
     "home": "Trang chủ",
     "quiz": "Quiz",
     "multiplayer": "Chơi cùng",
     "groups": "Nhóm",
     "profile": "Hồ sơ"
+  },
+  "onboarding": {
+    "welcome": "Chào mừng / Welcome",
+    "selectLanguage": "Chọn ngôn ngữ để bắt đầu",
+    "continue": "Tiếp tục",
+    "skip": "Bỏ qua",
+    "tryNow": "Thử ngay",
+    "getStarted": "Bắt đầu",
+    "slide1Title": "Chào mừng đến BibleQuiz",
+    "slide1Desc": "Học Kinh Thánh qua quiz tương tác mỗi ngày. Hệ thống thông minh giúp bạn tiến bộ từng bước.",
+    "slide2Title": "Thi đấu cùng nhau",
+    "slide2Desc": "4 chế độ chơi nhóm: Speed Race, Battle Royale, Team vs Team, Sudden Death.",
+    "slide3Title": "Hành trình 66 sách",
+    "slide3Desc": "Chinh phục từng sách Kinh Thánh. Theo dõi tiến trình mastery của bạn.",
+    "registerFree": "Đăng ký miễn phí",
+    "later": "Để sau",
+    "potential": "Bạn có tiềm năng học Kinh Thánh!",
+    "joinedToday": "{{count}} người đã tham gia hôm nay"
+  },
+  "auth": {
+    "title": "BibleQuiz",
+    "tagline": "Học Kinh Thánh cùng anh chị em",
+    "freeNoAds": "Miễn phí, không quảng cáo",
+    "loginWithGoogle": "Đăng nhập với Google",
+    "loginWithEmail": "Đăng nhập với Email",
+    "or": "hoặc",
+    "agreeTerms": "Bằng việc đăng nhập, bạn đồng ý với",
+    "terms": "Điều khoản sử dụng",
+    "and": "và",
+    "privacy": "Chính sách bảo mật"
+  },
+  "home": {
+    "gameModes": "Chế độ chơi",
+    "leaderboard": "Bảng Xếp Hạng",
+    "practice": "Luyện Tập",
+    "practiceDesc": "Học không áp lực",
+    "ranked": "Thi Đấu",
+    "rankedDesc": "Tranh tài xếp hạng",
+    "daily": "Thử Thách Ngày",
+    "dailyDesc": "5 câu mỗi ngày",
+    "mystery": "Mystery",
+    "mysteryDesc": "Random 1.5x XP",
+    "speed": "Speed Round",
+    "speedDesc": "10 câu × 10s",
+    "multiplayer": "Chơi Cùng",
+    "multiplayerDesc": "Tạo phòng PvP",
+    "pointsToNext": "Còn {{points}} XP đến {{tier}}"
+  },
+  "quiz": {
+    "question": "Câu {{current}}/{{total}}",
+    "correct": "✓ Chính xác!",
+    "incorrect": "✗ Sai rồi!",
+    "explanation": "Giải thích",
+    "nextQuestion": "Tiếp →",
+    "viewResults": "Kết quả",
+    "bookmarkForReview": "Đánh dấu ôn lại",
+    "quitConfirm": "Bạn có chắc muốn thoát? Tiến trình sẽ mất.",
+    "quitTitle": "Thoát quiz?"
+  },
+  "results": {
+    "title": "Kết quả",
+    "score": "điểm",
+    "correct": "Đúng",
+    "wrong": "Sai",
+    "accuracy": "Chính xác",
+    "review": "Xem lại câu trả lời",
+    "backToHome": "Về trang chủ",
+    "excellent": "Xuất sắc!",
+    "good": "Tốt lắm!",
+    "ok": "Khá tốt!",
+    "tryHarder": "Cố gắng thêm!"
+  },
+  "practiceSelect": {
+    "title": "Luyện Tập",
+    "subtitle": "Chọn cấu hình quiz của bạn",
+    "difficulty": "Độ khó",
+    "questionCount": "Số câu hỏi",
+    "all": "Tất cả",
+    "easy": "Dễ",
+    "medium": "Trung bình",
+    "hard": "Khó",
+    "perQuestion": "/ câu",
+    "start": "Bắt đầu"
+  },
+  "ranked": {
+    "title": "Thi Đấu Xếp Hạng",
+    "energy": "Năng lượng",
+    "energyCost": "Sai -5 năng lượng/câu",
+    "autoDifficulty": "Độ khó tự động",
+    "autoDifficultyDesc": "Theo tier level của bạn",
+    "xpBoost": "XP nhân tier",
+    "xpBoostDesc": "Tier cao hơn = XP nhiều hơn",
+    "start": "Vào Thi Đấu"
+  },
+  "daily": {
+    "title": "Thử Thách Hàng Ngày",
+    "questionsToday": "câu hỏi hôm nay",
+    "minutes": "phút",
+    "xpBonus": "+50 XP",
+    "streak": "Streak",
+    "start": "Bắt đầu",
+    "loadingQuestions": "Đang tải câu hỏi..."
+  },
+  "review": {
+    "title": "Xem lại",
+    "correctCount": "{{correct}}/{{total}} đúng",
+    "explanation": "💡 Giải thích",
+    "youChose": "Bạn chọn"
+  },
+  "multiplayer": {
+    "title": "Nhiều Người Chơi",
+    "createRoom": "Tạo phòng",
+    "publicRooms": "Phòng công khai",
+    "noRooms": "Chưa có phòng nào",
+    "players": "người chơi",
+    "join": "Tham gia",
+    "wsPlaceholder": "Tính năng quiz multiplayer realtime sẽ được tích hợp với WebSocket STOMP"
+  },
+  "room": {
+    "title": "Phòng Chờ",
+    "youAreHost": "Bạn là chủ phòng",
+    "waitingForHost": "Đang chờ chủ phòng bắt đầu...",
+    "roomCode": "Mã phòng",
+    "playersCount": "Người chơi (0/8)",
+    "you": "Bạn",
+    "host": "👑 Chủ phòng",
+    "player": "Người chơi",
+    "ready": "Sẵn sàng",
+    "start": "Bắt đầu"
+  },
+  "roomResults": {
+    "title": "Kết quả"
+  },
+  "tournament": {
+    "title": "Giải đấu",
+    "bracketPlaceholder": "Bracket view sẽ hiển thị các trận đấu theo dạng cây loại trực tiếp",
+    "inProgress": "Đang diễn ra"
+  },
+  "groups": {
+    "myGroups": "Nhóm của tôi",
+    "join": "+ Tham gia",
+    "noGroups": "Chưa có nhóm",
+    "joinGroup": "Tham gia nhóm",
+    "createGroup": "Tạo nhóm mới",
+    "members": "thành viên",
+    "memberSection": "Thành viên",
+    "leader": "Trưởng nhóm",
+    "member": "Thành viên",
+    "code": "Mã",
+    "joinTitle": "Tham gia nhóm",
+    "joinSubtitle": "Nhập mã nhóm từ trưởng nhóm",
+    "codePlaceholder": "Mã nhóm (6 ký tự)",
+    "createTitle": "Tạo nhóm mới",
+    "namePlaceholder": "Tên nhóm",
+    "descPlaceholder": "Mô tả (tuỳ chọn)",
+    "success": "Thành công",
+    "joinedSuccess": "Đã tham gia nhóm!",
+    "createdSuccess": "Nhóm đã được tạo! Mã: {{code}}",
+    "invalidCode": "Mã nhóm không hợp lệ",
+    "createFailed": "Không thể tạo nhóm"
+  },
+  "leaderboard": {
+    "title": "Bảng Xếp Hạng",
+    "daily": "Ngày",
+    "weekly": "Tuần",
+    "allTime": "Tất cả",
+    "noData": "Chưa có dữ liệu",
+    "questions": "câu"
+  },
+  "profile": {
+    "totalPoints": "Tổng điểm",
+    "currentStreak": "Chuỗi ngày",
+    "longestStreak": "Kỷ lục",
+    "achievements": "🏆 Thành tích",
+    "settings": "⚙️ Cài đặt",
+    "challenge": "Thách đấu"
+  },
+  "achievements": {
+    "title": "Thành tích",
+    "unlocked": "{{unlocked}}/{{total}} đã mở khóa",
+    "loadingBadges": "Đang tải thành tích..."
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "soundHaptics": "Âm thanh & Rung",
+    "sound": "Âm thanh",
+    "haptics": "Rung phản hồi",
+    "language": "Ngôn ngữ",
+    "account": "Tài khoản",
+    "logout": "Đăng xuất",
+    "logoutConfirm": "Bạn có chắc muốn đăng xuất?",
+    "info": "Thông tin",
+    "privacy": "Chính sách bảo mật",
+    "terms": "Điều khoản sử dụng",
+    "version": "BibleQuiz v2.0.0",
+    "deleteAccount": "Xóa tài khoản",
+    "deleteConfirm": "Nhập 'XOA TAI KHOAN' để xác nhận",
+    "deleteWarning": "Hành động này không thể hoàn tác. Tất cả dữ liệu sẽ bị xóa."
+  },
+  "notifications": {
+    "title": "Thông báo",
+    "noNotifications": "Chưa có thông báo"
+  },
+  "tierUp": {
+    "congratulations": "Chúc mừng!",
+    "youReached": "Bạn đã thăng hạng!",
+    "xpDouble": "🎁 XP nhân đôi",
+    "moreEnergy": "⚡ Thêm năng lượng/giờ",
+    "newMode": "🔓 Mở khóa chế độ mới",
+    "continue": "Tiếp tục hành trình"
+  },
+  "legal": {
+    "privacyTitle": "Chính sách bảo mật",
+    "privacyBody": "BibleQuiz cam kết bảo vệ quyền riêng tư của bạn. Chúng tôi chỉ thu thập dữ liệu cần thiết để cung cấp dịch vụ: tên, email, tiến trình học tập. Dữ liệu không bao giờ được bán cho bên thứ ba. Bạn có quyền yêu cầu xóa tài khoản bất cứ lúc nào.",
+    "termsTitle": "Điều khoản sử dụng",
+    "termsBody": "Bằng việc sử dụng BibleQuiz, bạn đồng ý tuân thủ các điều khoản sau: sử dụng app cho mục đích học tập, không chia sẻ nội dung có bản quyền, tôn trọng cộng đồng. BibleQuiz có quyền chấm dứt tài khoản vi phạm.",
+    "aboutTitle": "Về BibleQuiz",
+    "aboutBody": "BibleQuiz là ứng dụng học Kinh Thánh qua quiz tương tác. Được phát triển với mục tiêu giúp cộng đồng Cơ Đốc nhân học hỏi Lời Chúa mỗi ngày. Miễn phí, không quảng cáo.",
+    "copyright": "© 2025 BibleQuiz. All rights reserved."
+  },
+  "errors": {
+    "networkError": "Không có kết nối mạng",
+    "serverError": "Lỗi máy chủ, thử lại sau",
+    "unauthorized": "Phiên đăng nhập hết hạn",
+    "offline": "Bạn đang offline",
+    "somethingWrong": "Đã có lỗi xảy ra"
+  },
+  "journey": {
+    "title": "Hành trình Kinh Thánh",
+    "oldTestament": "Cựu Ước",
+    "newTestament": "Tân Ước",
+    "questions": "questions"
   }
 }

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, Pressable, Alert } from 'react-native'
 import SafeScreen from '../../components/layout/SafeScreen'
@@ -7,6 +8,7 @@ import { apiClient } from '../../api/client'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
 export default function LoginScreen() {
+  const { t } = useTranslation()
   const { setAuth } = useAuthStore()
   const [loading, setLoading] = useState(false)
 

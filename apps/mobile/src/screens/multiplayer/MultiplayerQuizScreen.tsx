@@ -1,9 +1,11 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import SafeScreen from '../../components/layout/SafeScreen'
 import { colors, typography, spacing } from '../../theme'
 
 export default function MultiplayerQuizScreen() {
+  const { t } = useTranslation()
   return (
     <SafeScreen>
       <View style={s.container}>

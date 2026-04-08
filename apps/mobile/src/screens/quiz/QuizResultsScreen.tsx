@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native'
@@ -7,6 +8,7 @@ import Card from '../../components/ui/Card'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
 export default function QuizResultsScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const route = useRoute<any>()
   const stats = route.params?.stats

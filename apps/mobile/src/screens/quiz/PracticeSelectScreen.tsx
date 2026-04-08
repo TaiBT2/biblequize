@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -17,6 +18,7 @@ const DIFFICULTIES = [
 const COUNTS = [5, 10, 15, 20]
 
 export default function PracticeSelectScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const [difficulty, setDifficulty] = useState('all')
   const [count, setCount] = useState(10)

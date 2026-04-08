@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -29,6 +30,7 @@ const SAMPLE_QUESTIONS = [
 const LETTERS = ['A', 'B', 'C', 'D']
 
 export default function TryQuizScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const [qIndex, setQIndex] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)

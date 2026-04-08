@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -8,6 +9,7 @@ import Button from '../../components/ui/Button'
 import { colors, typography, spacing } from '../../theme'
 
 export default function MultiplayerResultsScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
 
   return (

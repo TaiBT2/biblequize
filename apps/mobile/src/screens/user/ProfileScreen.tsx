@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -12,6 +13,7 @@ import { getTierProgress } from '../../logic/tierProgression'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
 export default function ProfileScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const { user } = useAuthStore()
 

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -12,6 +13,7 @@ const LANGUAGES = [
 ]
 
 export default function LanguageSelectionScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const { preferredLanguage, setPreferredLanguage } = useOnboardingStore()
   const [selected, setSelected] = useState(preferredLanguage)
