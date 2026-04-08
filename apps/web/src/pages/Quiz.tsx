@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
+import { soundManager } from '../services/soundManager'
+import { haptic } from '../utils/haptics'
 import QuizResults from './QuizResults'
 
 interface Question {
@@ -86,26 +88,12 @@ const Quiz: React.FC = () => {
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>([])
   const [questionScores, setQuestionScores] = useState<number[]>([])
   const [lastQuestionScore, setLastQuestionScore] = useState(0)
+  const [showCombo, setShowCombo] = useState(false)
+  const [answerAnim, setAnswerAnim] = useState<'correct' | 'wrong' | null>(null)
+  const [scorePopping, setScorePopping] = useState(false)
 
   const currentQuestion = questions[currentQuestionIndex]
   const progressPercent = questions.length > 0 ? ((currentQuestionIndex + 1) / questions.length) * 100 : 0
-
-  const playTone = (frequency: number, durationMs: number, type: OscillatorType = 'sine', volume = 0.1) => {
-    try {
-      const ctx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)()
-      const osc = ctx.createOscillator()
-      const gain = ctx.createGain()
-      osc.type = type
-      osc.frequency.value = frequency
-      gain.gain.value = volume
-      osc.connect(gain)
-      gain.connect(ctx.destination)
-      osc.start()
-      setTimeout(() => { osc.stop(); ctx.close() }, durationMs)
-    } catch { /* audio not available */ }
-  }
-  const playCorrectSound = () => playTone(880, 120, 'sine', 0.12)
-  const playWrongSound = () => playTone(200, 180, 'square', 0.08)
 
   useEffect(() => {
     const fetchBackendStats = async () => {
@@ -141,6 +129,17 @@ const Quiz: React.FC = () => {
       return () => clearTimeout(timer)
     } else if (timeLeft === 0 && !showResult) {
       handleAnswerSelect(-1)
+    }
+  }, [timeLeft, showResult, isQuizCompleted])
+
+  // Timer warning sounds
+  useEffect(() => {
+    if (showResult || isQuizCompleted) return
+    if (timeLeft <= 5 && timeLeft > 0) {
+      soundManager.play('timerTick')
+      if (timeLeft <= 3) {
+        haptic.timerWarning()
+      }
     }
   }, [timeLeft, showResult, isQuizCompleted])
 
@@ -277,13 +276,38 @@ const Quiz: React.FC = () => {
       questionScore = Math.floor((baseScore + timeBonus + perfectBonus) * difficultyMultiplier)
 
       setScore(prev => prev + questionScore)
-      setCombo(prev => prev + 1)
-      playCorrectSound()
+      const newCombo = combo + 1
+      setCombo(newCombo)
+      soundManager.play('correctAnswer')
+      haptic.correct()
+      setAnswerAnim('correct')
+      setScorePopping(true)
+      setTimeout(() => setScorePopping(false), 500)
       setCorrectAnswers(prev => prev + 1)
+
+      // Combo sounds
+      if (newCombo === 3) {
+        soundManager.play('combo3')
+        haptic.combo()
+        setShowCombo(true)
+        setTimeout(() => setShowCombo(false), 1800)
+      } else if (newCombo === 5) {
+        soundManager.play('combo5')
+        haptic.combo()
+        setShowCombo(true)
+        setTimeout(() => setShowCombo(false), 1800)
+      } else if (newCombo === 10) {
+        soundManager.play('combo10')
+        haptic.combo()
+        setShowCombo(true)
+        setTimeout(() => setShowCombo(false), 2000)
+      }
     } else {
       setCombo(0)
       setLives(prev => Math.max(0, prev - 1))
-      playWrongSound()
+      soundManager.play('wrongAnswer')
+      haptic.wrong()
+      setAnswerAnim('wrong')
     }
 
     setLastQuestionScore(questionScore)
@@ -351,6 +375,7 @@ const Quiz: React.FC = () => {
       setIsCorrect(null)
       setTimeLeft(30)
       setLastQuestionScore(0)
+      setAnswerAnim(null)
     }
   }
 
@@ -510,6 +535,13 @@ const Quiz: React.FC = () => {
         ></div>
       </div>
 
+      {/* Combo Banner */}
+      {showCombo && (
+        <div className="combo-banner-anim fixed top-20 left-1/2 z-[60] px-6 py-3 rounded-full font-black text-lg shadow-lg bg-gradient-to-r from-orange-500 to-red-500 text-white whitespace-nowrap">
+          🔥 {combo}x COMBO!
+        </div>
+      )}
+
       {/* Main Content */}
       <main className="relative min-h-screen pt-24 pb-12 px-6 flex flex-col items-center justify-center max-w-5xl mx-auto">
         {/* Top Stats Row */}
@@ -518,7 +550,7 @@ const Quiz: React.FC = () => {
             <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">{t('quiz.comboStreak')}</span>
             <div className={`flex items-center gap-2 glass-panel px-4 py-2 rounded-2xl border transition-all duration-300 ${combo > 0 ? 'border-secondary/20 gold-glow' : 'border-outline-variant/10'}`}>
               <span className="material-symbols-outlined text-secondary" style={FILL_STYLE}>stars</span>
-              <span className={`font-headline font-black text-2xl italic ${combo > 0 ? 'text-secondary' : 'text-on-surface-variant'}`}>
+              <span className={`font-headline font-black text-2xl italic ${combo > 0 ? 'text-secondary' : 'text-on-surface-variant'} ${scorePopping ? 'score-pop-anim' : ''}`}>
                 x{combo}
               </span>
             </div>
@@ -527,7 +559,9 @@ const Quiz: React.FC = () => {
           {/* Circular Countdown Timer */}
           <div className="hidden md:flex flex-col items-center gap-1">
             <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">{t('quiz.time')}</span>
-            <div className="relative w-14 h-14 flex items-center justify-center">
+            <div className={`relative w-14 h-14 flex items-center justify-center ${
+              timeLeft <= 3 ? 'timer-critical-anim' : timeLeft <= 5 ? 'timer-warning-anim' : ''
+            }`}>
               <svg className="timer-svg w-full h-full" viewBox="0 0 36 36">
                 <circle
                   className="stroke-surface-container-highest"
@@ -535,7 +569,7 @@ const Quiz: React.FC = () => {
                   fill="none" strokeWidth="2"
                 />
                 <circle
-                  className={`timer-arc ${timeLeft <= 5 ? 'stroke-error' : 'stroke-secondary'}`}
+                  className={`timer-arc ${timeLeft <= 3 ? 'stroke-error' : timeLeft <= 5 ? 'stroke-yellow-500' : 'stroke-secondary'}`}
                   cx="18" cy="18" r="16"
                   fill="none" strokeWidth="2"
                   strokeLinecap="round"
@@ -543,7 +577,9 @@ const Quiz: React.FC = () => {
                   strokeDashoffset={100 - (timeLeft / 30) * 100}
                 />
               </svg>
-              <span className={`absolute font-headline font-black text-xl ${timeLeft <= 5 ? 'text-error animate-pulse' : 'text-secondary'}`}>
+              <span className={`absolute font-headline font-black text-xl ${
+                timeLeft <= 3 ? 'text-error' : timeLeft <= 5 ? 'text-yellow-500' : 'text-secondary'
+              }`}>
                 {timeLeft}
               </span>
             </div>
@@ -593,11 +629,11 @@ const Quiz: React.FC = () => {
               let textClasses = 'ml-6 font-bold text-xl'
 
               if (showResult && isCorrectAnswer) {
-                buttonClasses += ' bg-green-500/10 border-2 border-green-500'
+                buttonClasses += ' bg-green-500/10 border-2 border-green-500 answer-correct-anim'
                 letterClasses += ' bg-green-500 text-on-secondary shadow-lg'
                 textClasses += ' text-green-400'
               } else if (isWrongSelected) {
-                buttonClasses += ' bg-error/10 border-2 border-error'
+                buttonClasses += ' bg-error/10 border-2 border-error answer-wrong-anim'
                 letterClasses += ' bg-error text-on-secondary shadow-lg'
                 textClasses += ' text-error'
               } else if (isSelected && !showResult) {

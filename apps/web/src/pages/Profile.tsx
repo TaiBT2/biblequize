@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 import { useAuth, useAuthStore } from '../store/authStore'
 import { getTierByPoints, getNextTier } from '../data/tiers'
+import { soundManager } from '../services/soundManager'
+import { isHapticsEnabled, setHapticsEnabled } from '../utils/haptics'
 
 const FILL_STYLE = { fontVariationSettings: "'FILL' 1" }
 
@@ -387,12 +389,93 @@ const Profile: React.FC = () => {
         )}
       </section>
 
+      {/* Sound & Haptics Settings */}
+      <SoundHapticsSettings />
+
       {/* Prestige + Cosmetics */}
       <PrestigeSection />
 
       {/* Delete Account */}
       <DeleteAccountSection />
     </>
+  )
+}
+
+function SoundHapticsSettings() {
+  const [soundEnabled, setSoundEnabled] = useState(soundManager.enabled)
+  const [volume, setVolume] = useState(Math.round(soundManager.volume * 100))
+  const [hapticsOn, setHapticsOn] = useState(isHapticsEnabled())
+
+  return (
+    <section className="mt-8 space-y-4">
+      <div className="flex items-center gap-3">
+        <span className="material-symbols-outlined text-secondary" style={FILL_STYLE}>
+          volume_up
+        </span>
+        <h2 className="text-lg font-black text-on-surface">Âm thanh & Rung</h2>
+      </div>
+
+      <div className="bg-surface-container rounded-xl p-5 border border-outline-variant/10 space-y-4">
+        {/* Sound toggle */}
+        <div className="flex items-center justify-between">
+          <span className="text-sm text-on-surface">Âm thanh hiệu ứng</span>
+          <button
+            onClick={() => {
+              const next = !soundEnabled
+              setSoundEnabled(next)
+              soundManager.setEnabled(next)
+              if (next) soundManager.play('buttonTap')
+            }}
+            className={`w-12 h-6 rounded-full transition-colors relative ${
+              soundEnabled ? 'bg-secondary' : 'bg-surface-container-high'
+            }`}
+          >
+            <div className={`w-5 h-5 rounded-full bg-white absolute top-0.5 transition-transform ${
+              soundEnabled ? 'translate-x-6' : 'translate-x-0.5'
+            }`} />
+          </button>
+        </div>
+
+        {/* Volume slider */}
+        {soundEnabled && (
+          <div className="flex items-center gap-3">
+            <span className="material-symbols-outlined text-sm text-on-surface-variant">volume_down</span>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={volume}
+              onChange={(e) => {
+                const v = Number(e.target.value)
+                setVolume(v)
+                soundManager.setVolume(v / 100)
+              }}
+              className="flex-1 h-1 bg-surface-container-high rounded-full appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-secondary"
+            />
+            <span className="text-xs font-bold text-on-surface-variant w-8 text-right">{volume}%</span>
+          </div>
+        )}
+
+        {/* Haptics toggle */}
+        <div className="flex items-center justify-between">
+          <span className="text-sm text-on-surface">Rung phản hồi</span>
+          <button
+            onClick={() => {
+              const next = !hapticsOn
+              setHapticsOn(next)
+              setHapticsEnabled(next)
+            }}
+            className={`w-12 h-6 rounded-full transition-colors relative ${
+              hapticsOn ? 'bg-secondary' : 'bg-surface-container-high'
+            }`}
+          >
+            <div className={`w-5 h-5 rounded-full bg-white absolute top-0.5 transition-transform ${
+              hapticsOn ? 'translate-x-6' : 'translate-x-0.5'
+            }`} />
+          </button>
+        </div>
+      </div>
+    </section>
   )
 }
 

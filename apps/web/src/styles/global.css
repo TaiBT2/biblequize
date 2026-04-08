@@ -60,6 +60,71 @@ body {
 ::-webkit-scrollbar-track { background: #11131e; }
 ::-webkit-scrollbar-thumb { background: #323440; border-radius: 10px; }
 
+/* ── Quiz Answer Animations ── */
+@keyframes answer-correct-pulse {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+@keyframes answer-wrong-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+}
+.answer-correct-anim { animation: answer-correct-pulse 0.4s ease-out; }
+.answer-wrong-anim { animation: answer-wrong-shake 0.35s ease-out; }
+
+/* Combo banner */
+@keyframes combo-slide-in {
+  0% { transform: translate(-50%, -30px); opacity: 0; }
+  100% { transform: translate(-50%, 0); opacity: 1; }
+}
+@keyframes combo-pulse {
+  0%, 100% { transform: translate(-50%, 0) scale(1); }
+  50% { transform: translate(-50%, 0) scale(1.08); }
+}
+.combo-banner-anim {
+  animation: combo-slide-in 0.3s ease-out, combo-pulse 0.5s ease-in-out 0.3s;
+}
+
+/* Score pop */
+@keyframes score-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); color: #e8a832; }
+  100% { transform: scale(1); }
+}
+.score-pop-anim { animation: score-pop 0.5s ease-out; }
+
+/* Timer warning states */
+@keyframes timer-pulse-warning {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+@keyframes timer-pulse-critical {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.12); opacity: 0.8; }
+}
+.timer-warning-anim { animation: timer-pulse-warning 1s ease-in-out infinite; }
+.timer-critical-anim { animation: timer-pulse-critical 0.5s ease-in-out infinite; }
+
+/* Grade reveal */
+@keyframes grade-reveal {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.grade-reveal-anim { animation: grade-reveal 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+/* XP float */
+@keyframes xp-float {
+  0% { transform: translateY(20px); opacity: 0; }
+  40% { opacity: 1; }
+  100% { transform: translateY(-10px); opacity: 0; }
+}
+.xp-float-anim { animation: xp-float 1.2s ease-out forwards; }
+
 /* ── Homepage Design System (V3) ── */
 :root {
   --hp-bg:    #0A0A0E;

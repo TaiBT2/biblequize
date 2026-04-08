@@ -1,5 +1,40 @@
 # TODO
 
+## Sound Effects + Animations — "Feel" cho Quiz [IN PROGRESS]
+
+### Task SF-1: Sound Manager + generated sounds
+- Status: [ ] TODO
+- File(s): src/services/soundManager.ts
+
+### Task SF-2: Haptic feedback utility
+- Status: [ ] TODO
+- File(s): src/utils/haptics.ts
+
+### Task SF-3: Quiz answer animations + combo banner
+- Status: [ ] TODO
+- File(s): Quiz.tsx, global.css
+
+### Task SF-4: Timer warning animations + sounds
+- Status: [ ] TODO
+- File(s): Quiz.tsx, global.css
+
+### Task SF-5: Quiz Results celebrations + confetti
+- Status: [ ] TODO
+- File(s): QuizResults.tsx
+
+### Task SF-6: Tier Up celebration modal
+- Status: [ ] TODO
+- File(s): components/TierUpModal.tsx
+
+### Task SF-7: Sound + haptics settings
+- Status: [ ] TODO
+- File(s): Profile.tsx
+
+### Task SF-8: Tests + full regression
+- Status: [ ] TODO
+
+---
+
 ## Tier Progression Enhancement v1 [DONE]
 
 ### Task TP-1: P0-A Backend — TierProgressService + API
