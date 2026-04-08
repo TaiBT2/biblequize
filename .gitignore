@@ -3,6 +3,7 @@ dist/
 build/
 .idea/
 .vscode/
+key/
 .DS_Store
 .env
 .env.*

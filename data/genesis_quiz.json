@@ -1,0 +1,1386 @@
+[
+  {
+    "book": "Genesis",
+    "chapter": 1,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Ai đã dựng nên trời và đất?",
+    "options": [
+      "Môi-se",
+      "Đức Chúa Trời",
+      "Áp-ra-ham",
+      "Đa-vít"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 1:1 — 'Ban đầu, Đức Chúa Trời dựng nên trời và đất.' Đây là câu mở đầu của toàn bộ Kinh Thánh.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 1,
+    "verseStart": 27,
+    "difficulty": "easy",
+    "type": "true_false",
+    "text": "Đức Chúa Trời tạo dựng loài người theo hình ảnh của Ngài.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 1:27 — 'Đức Chúa Trời sáng tạo loài người theo hình ảnh Ngài. Ngài sáng tạo loài người theo hình ảnh Đức Chúa Trời.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 2,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Đức Chúa Trời dùng gì để tạo nên con người đầu tiên?",
+    "options": [
+      "Nước",
+      "Đá",
+      "Bụi đất",
+      "Gỗ"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng thế ký 2:7 — 'Giê-hô-va Đức Chúa Trời nắn loài người từ bụi đất, hà sinh khí vào lỗ mũi, và loài người trở nên một loài sinh linh.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 2,
+    "verseStart": 21,
+    "verseEnd": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Đức Chúa Trời dùng phần nào của A-đam để tạo nên Ê-va?",
+    "options": [
+      "Xương sườn",
+      "Bụi đất",
+      "Xương tay",
+      "Xương chân"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 2:21-22 — 'Giê-hô-va Đức Chúa Trời lấy một xương sườn của con người... và tạo nên một người nữ.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 3,
+    "verseStart": 1,
+    "verseEnd": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Con vật nào cám dỗ Ê-va ăn trái cấm?",
+    "options": [
+      "Sư tử",
+      "Con rắn",
+      "Con chim",
+      "Con dê"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 3:1 — 'Vả, trong các loài thú đồng mà Giê-hô-va Đức Chúa Trời đã tạo nên, có con rắn là loài quỷ quyệt hơn hết.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 3,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "true_false",
+    "text": "Chỉ có Ê-va ăn trái cấm, A-đam không ăn.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 3:6 — 'Người nữ... hái trái mà ăn, rồi trao cho chồng đang ở với mình, và chồng cũng ăn.' Cả hai đều ăn trái cấm.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 3,
+    "verseStart": 15,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Lời hứa đầu tiên về Đấng Cứu Thế (Protoevangelium) được tìm thấy ở đâu trong Sáng thế ký?",
+    "options": [
+      "1:26 — khi Chúa tạo dựng con người",
+      "3:15 — khi Chúa phán với con rắn",
+      "12:3 — khi Chúa gọi Áp-ram",
+      "22:18 — khi Chúa hứa với Áp-ra-ham"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 3:15 — 'Ta sẽ đặt mối thù nghịch giữa ngươi và người nữ, giữa dòng dõi ngươi với dòng dõi người nữ; người sẽ giày đạp đầu ngươi.' Đây được xem là lời tiên tri đầu tiên về Chúa Giê-xu.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 4,
+    "verseStart": 3,
+    "verseEnd": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Ca-in dâng lễ vật gì cho Đức Chúa Trời?",
+    "options": [
+      "Chiên đầu lòng",
+      "Thổ sản",
+      "Vàng bạc",
+      "Hương liệu"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 4:3 — 'Ca-in dâng thổ sản làm lễ vật cho Đức Giê-hô-va.' Trong khi A-bên dâng chiên đầu lòng.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 4,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Ca-in đã giết ai?",
+    "options": [
+      "A-đam",
+      "A-bên",
+      "Sết",
+      "Ê-nóc"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 4:8 — 'Ca-in trỗi dậy đánh A-bên, em mình, và giết đi.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 5,
+    "verseStart": 24,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Nhân vật nào trong Sáng thế ký không trải qua sự chết mà được Đức Chúa Trời đem đi?",
+    "options": [
+      "Nô-ê",
+      "Ê-nóc",
+      "Mê-tu-sê-la",
+      "La-méc"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 5:24 — 'Ê-nóc đồng đi với Đức Chúa Trời, rồi mất biệt, vì Đức Chúa Trời đem ông đi.' Hê-bơ-rơ 11:5 xác nhận Ê-nóc không trải qua sự chết.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 5,
+    "verseStart": 27,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Mê-tu-sê-la sống được bao nhiêu tuổi?",
+    "options": [
+      "777 tuổi",
+      "969 tuổi",
+      "930 tuổi",
+      "895 tuổi"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 5:27 — 'Mê-tu-sê-la hưởng thọ được chín trăm sáu mươi chín tuổi, rồi qua đời.' Ông là người sống lâu nhất trong Kinh Thánh.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 6,
+    "verseStart": 14,
+    "verseEnd": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Đức Chúa Trời bảo Nô-ê đóng tàu bằng loại gỗ gì?",
+    "options": [
+      "Gỗ bá hương",
+      "Gỗ gô-phe",
+      "Gỗ thông",
+      "Gỗ ô-liu"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 6:14 — 'Hãy đóng cho ngươi một chiếc tàu bằng gỗ gô-phe.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 7,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Nô-ê đem mỗi loài thú tinh sạch vào tàu bao nhiêu cặp?",
+    "options": [
+      "Một cặp",
+      "Bảy cặp",
+      "Ba cặp",
+      "Năm cặp"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 7:2 — 'Trong mỗi loài thú tinh sạch, hãy đem theo bảy cặp, đực và cái.' Thú không tinh sạch chỉ một cặp.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 7,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "true_false",
+    "text": "Trận đại hồng thủy có mưa suốt 40 ngày 40 đêm.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 7:12 — 'Mưa xuống mặt đất suốt bốn mươi ngày bốn mươi đêm.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 8,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "fill_in_blank",
+    "text": "Tàu Nô-ê tựa trên núi ___.",
+    "options": [
+      "A-ra-rát",
+      "Si-nai",
+      "Hê-rơ-môn",
+      "Mô-ri-a"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 8:4 — 'Ngày mười bảy tháng bảy, tàu tựa trên núi A-ra-rát.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 8,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Con chim bồ câu mang gì trở về cho Nô-ê sau cơn đại hồng thủy?",
+    "options": [
+      "Cành ô-liu",
+      "Hạt lúa",
+      "Cành hoa",
+      "Không mang gì"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 8:11 — 'Đến chiều, chim bồ câu bay về, và kìa, trong mỏ nó ngậm một lá ô-liu tươi.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 9,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Đức Chúa Trời dùng dấu hiệu gì làm giao ước với Nô-ê rằng sẽ không hủy diệt đất bằng nước lụt nữa?",
+    "options": [
+      "Ngôi sao",
+      "Cầu vồng",
+      "Đám mây",
+      "Ánh sáng"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 9:13 — 'Ta đặt cầu vồng của Ta trên mây, dùng nó làm dấu hiệu giao ước giữa Ta với đất.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 9,
+    "verseStart": 25,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Nô-ê nguyền rủa con cháu của ai vì sự việc sau cơn đại hồng thủy?",
+    "options": [
+      "Sem",
+      "Gia-phết",
+      "Ca-na-an (con Cham)",
+      "Cham"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng thế ký 9:25 — 'Ca-na-an đáng bị nguyền rủa! Nó sẽ làm đầy tớ của các đầy tớ cho anh em nó.' Nô-ê nguyền rủa Ca-na-an, con trai Cham.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 10,
+    "verseStart": 8,
+    "verseEnd": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Nim-rốt được mô tả là người như thế nào trên đất?",
+    "options": [
+      "Người chăn chiên giỏi",
+      "Thợ săn mạnh dạn",
+      "Thầy tế lễ đầu tiên",
+      "Vua công bình"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 10:9 — 'Nim-rốt là một thợ săn mạnh dạn trước mặt Đức Giê-hô-va.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 11,
+    "verseStart": 4,
+    "verseEnd": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Người ta xây tháp Ba-bên để làm gì?",
+    "options": [
+      "Thờ phượng Chúa",
+      "Để danh mình lừng lẫy và không bị tản ra",
+      "Chống lại kẻ thù",
+      "Làm nơi ở cho vua"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 11:4 — 'Nào! Chúng ta hãy xây một thành phố và dựng một tháp có chóp cao đến tận trời, để làm cho danh chúng ta lừng lẫy, kẻo chúng ta bị tản ra khắp mặt đất.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 11,
+    "verseStart": 31,
+    "difficulty": "medium",
+    "type": "fill_in_blank",
+    "text": "Gia đình Áp-ram ra đi từ thành ___ xứ Canh-đê.",
+    "options": [
+      "U-rơ",
+      "Ha-ran",
+      "Si-đôn",
+      "Ni-ni-ve"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 11:31 — 'Tha-rê dẫn Áp-ram... ra khỏi U-rơ, xứ Canh-đê, đặng qua xứ Ca-na-an.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 12,
+    "verseStart": 1,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Đức Chúa Trời gọi Áp-ram rời quê hương để đi đến xứ nào?",
+    "options": [
+      "Ai-cập",
+      "Ba-by-lôn",
+      "Ca-na-an",
+      "A-si-ri"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng thế ký 12:1,5 — Đức Chúa Trời gọi Áp-ram rời quê hương đến xứ Ca-na-an, vùng đất Ngài sẽ chỉ cho ông.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 12,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "true_false",
+    "text": "Áp-ram rời Ha-ran khi ông 75 tuổi.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 12:4 — 'Áp-ram được bảy mươi lăm tuổi khi ông rời Ha-ran.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 13,
+    "verseStart": 10,
+    "verseEnd": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Lót chọn vùng đất nào khi chia tay Áp-ram?",
+    "options": [
+      "Vùng núi Ca-na-an",
+      "Đồng bằng Giô-đanh",
+      "Xứ Ai-cập",
+      "Sa mạc Nê-ghép"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 13:11 — 'Lót chọn cho mình cả đồng bằng Giô-đanh.' Vùng đất này xanh tươi như vườn của Đức Giê-hô-va.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 14,
+    "verseStart": 18,
+    "verseEnd": 20,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Mên-chi-xê-đéc, vua Sa-lem, mang gì ra đón Áp-ram sau trận chiến?",
+    "options": [
+      "Vàng và bạc",
+      "Bánh và rượu",
+      "Áo choàng và kiếm",
+      "Chiên và bò"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 14:18 — 'Mên-chi-xê-đéc, vua Sa-lem, sai đem bánh và rượu ra. Vua cũng là thầy tế lễ của Đức Chúa Trời Chí Cao.' Hình bóng về Chúa Giê-xu trong Hê-bơ-rơ 7.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 15,
+    "verseStart": 5,
+    "verseEnd": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Đức Chúa Trời hứa dòng dõi Áp-ram sẽ đông như gì?",
+    "options": [
+      "Cát biển",
+      "Sao trên trời",
+      "Lá trên cây",
+      "Cá dưới biển"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 15:5 — 'Hãy nhìn lên trời và đếm các ngôi sao... Dòng dõi con sẽ như thế đó.' Lời hứa về sao trời xuất hiện ở đây; cát biển được nhắc ở 22:17.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 15,
+    "verseStart": 13,
+    "verseEnd": 14,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Đức Chúa Trời phán dòng dõi Áp-ram sẽ làm khách lạ và bị nô lệ bao lâu?",
+    "options": [
+      "100 năm",
+      "200 năm",
+      "400 năm",
+      "500 năm"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng thế ký 15:13 — 'Dòng dõi con sẽ làm khách lạ trong một xứ không thuộc về chúng, chúng sẽ phải phục dịch dân xứ đó và bị hà hiếp bốn trăm năm.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 16,
+    "verseStart": 15,
+    "verseEnd": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "A-ga sinh cho Áp-ram một con trai tên là gì?",
+    "options": [
+      "Y-sác",
+      "Ích-ma-ên",
+      "Gia-cốp",
+      "Ê-sau"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 16:15 — 'A-ga sinh cho Áp-ram một con trai, và Áp-ram đặt tên con trai mà A-ga sinh cho mình là Ích-ma-ên.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 17,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "fill_in_blank",
+    "text": "Đức Chúa Trời đổi tên Áp-ram thành ___.",
+    "options": [
+      "Áp-ra-ham",
+      "Y-sơ-ra-ên",
+      "Gia-cốp",
+      "Giô-suê"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 17:5 — 'Tên ngươi không còn là Áp-ram nữa, nhưng tên ngươi sẽ là Áp-ra-ham, vì Ta đã lập ngươi làm tổ phụ của nhiều dân tộc.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 17,
+    "verseStart": 10,
+    "verseEnd": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Dấu hiệu giao ước giữa Đức Chúa Trời và Áp-ra-ham là gì?",
+    "options": [
+      "Dâng sinh tế",
+      "Phép cắt bì",
+      "Giữ ngày Sa-bát",
+      "Dựng bàn thờ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 17:11 — 'Các ngươi phải chịu cắt bì; đó là dấu hiệu giao ước giữa Ta với các ngươi.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 18,
+    "verseStart": 10,
+    "verseEnd": 12,
+    "difficulty": "easy",
+    "type": "true_false",
+    "text": "Sa-ra cười khi nghe lời hứa rằng bà sẽ sinh con trai.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 18:12 — 'Sa-ra cười thầm, nói rằng: Tôi đã già rồi, lại còn hưởng được điều sung sướng nầy sao?'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 18,
+    "verseStart": 32,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Áp-ra-ham cầu xin Đức Chúa Trời tha Sô-đôm nếu tìm được bao nhiêu người công chính?",
+    "options": [
+      "Năm người",
+      "Mười người",
+      "Hai mươi người",
+      "Năm mươi người"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 18:32 — Áp-ra-ham xin từ 50 xuống còn 10 người công chính. Con số cuối cùng ông xin là mười người.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 19,
+    "verseStart": 24,
+    "verseEnd": 25,
+    "difficulty": "easy",
+    "type": "true_false",
+    "text": "Đức Chúa Trời hủy diệt Sô-đôm và Gô-mô-rơ bằng lửa và diêm sinh.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 19:24 — 'Đức Giê-hô-va giáng mưa lửa và diêm sinh từ trời xuống Sô-đôm và Gô-mô-rơ.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 20,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Áp-ra-ham nói Sa-ra là gì khi ở xứ Ghê-ra?",
+    "options": [
+      "Vợ mình",
+      "Em gái mình",
+      "Người giúp việc",
+      "Bà con xa"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 20:2 — 'Áp-ra-ham nói về Sa-ra, vợ mình rằng: Nàng là em gái tôi.' Vua A-bi-mê-léc sai người đem Sa-ra đi.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 21,
+    "verseStart": 3,
+    "verseEnd": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Con trai của Áp-ra-ham và Sa-ra tên là gì?",
+    "options": [
+      "Ích-ma-ên",
+      "Y-sác",
+      "Gia-cốp",
+      "Ê-sau"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 21:3 — 'Áp-ra-ham đặt tên con trai mà Sa-ra sinh cho mình là Y-sác.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 22,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Đức Chúa Trời thử Áp-ra-ham bằng cách bảo ông dâng ai làm sinh tế?",
+    "options": [
+      "Ích-ma-ên",
+      "Sa-ra",
+      "Y-sác",
+      "Một con chiên"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng thế ký 22:2 — 'Hãy bắt Y-sác, đứa con một mà con yêu quý, đi đến vùng Mô-ri-a, dâng nó làm tế lễ thiêu.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 22,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "fill_in_blank",
+    "text": "Khi Áp-ra-ham sắp dâng Y-sác, Đức Chúa Trời cung cấp một con ___ thay thế.",
+    "options": [
+      "chiên đực",
+      "bò đực",
+      "dê đực",
+      "chim bồ câu"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 22:13 — 'Áp-ra-ham ngước mắt lên, thấy phía sau một con chiên đực, sừng mắc trong bụi cây. Áp-ra-ham bắt con chiên đực đó dâng làm tế lễ thiêu thay cho con mình.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 23,
+    "verseStart": 19,
+    "verseEnd": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Áp-ra-ham chôn Sa-ra ở hang nào?",
+    "options": [
+      "Hang A-đu-lam",
+      "Hang Mặc-bê-la",
+      "Hang Ên-ghê-đi",
+      "Hang Si-lô-am"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 23:19 — 'Áp-ra-ham chôn Sa-ra, vợ mình, trong hang đá ở cánh đồng Mặc-bê-la.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 24,
+    "verseStart": 10,
+    "verseEnd": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Đầy tớ Áp-ra-ham gặp Rê-bê-ca ở đâu?",
+    "options": [
+      "Tại đền thờ",
+      "Bên giếng nước",
+      "Trên cánh đồng",
+      "Trong thành phố"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 24:13 — 'Kìa, tôi đứng đây bên giếng nước, các thiếu nữ trong thành sắp ra múc nước.' Đầy tớ cầu nguyện và gặp Rê-bê-ca tại giếng.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 24,
+    "verseStart": 15,
+    "verseEnd": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Ai trở thành vợ của Y-sác?",
+    "options": [
+      "Ra-chên",
+      "Rê-bê-ca",
+      "Lê-a",
+      "Đi-na"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 24:15,67 — Đầy tớ Áp-ra-ham gặp Rê-bê-ca tại giếng nước, và nàng trở thành vợ Y-sác.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 25,
+    "verseStart": 7,
+    "verseEnd": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Áp-ra-ham hưởng thọ bao nhiêu tuổi?",
+    "options": [
+      "150 tuổi",
+      "175 tuổi",
+      "180 tuổi",
+      "200 tuổi"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 25:7 — 'Áp-ra-ham hưởng thọ một trăm bảy mươi lăm tuổi.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 25,
+    "verseStart": 25,
+    "verseEnd": 26,
+    "difficulty": "easy",
+    "type": "true_false",
+    "text": "Ê-sau sinh ra trước Gia-cốp.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 25:25-26 — 'Đứa ra trước đỏ hồng... người ta đặt tên là Ê-sau. Sau đó, em nó sinh ra... người ta đặt tên là Gia-cốp.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 25,
+    "verseStart": 33,
+    "verseEnd": 34,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Ê-sau bán quyền trưởng nam cho Gia-cốp để đổi lấy gì?",
+    "options": [
+      "Vàng bạc",
+      "Bát canh đậu đỏ",
+      "Đàn chiên",
+      "Áo choàng"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 25:34 — 'Gia-cốp đưa cho Ê-sau bánh và canh đậu đỏ. Ê-sau ăn, uống, rồi đứng dậy đi. Ê-sau coi thường quyền trưởng nam mình như vậy.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 26,
+    "verseStart": 18,
+    "verseEnd": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Y-sác đào lại các giếng nước của ai mà người Phi-li-tin đã lấp?",
+    "options": [
+      "Nô-ê",
+      "Áp-ra-ham",
+      "Lót",
+      "Gia-cốp"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 26:18 — 'Y-sác đào lại các giếng nước đã được đào trong đời Áp-ra-ham, cha ông, vì sau khi Áp-ra-ham qua đời, người Phi-li-tin đã lấp các giếng đó.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 27,
+    "verseStart": 1,
+    "verseEnd": 29,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Ai giúp Gia-cốp lừa Y-sác để nhận phước lành thay Ê-sau?",
+    "options": [
+      "Ra-chên",
+      "A-ga",
+      "Rê-bê-ca",
+      "Đi-na"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng thế ký 27:6-17 — Rê-bê-ca bày mưu cho Gia-cốp mặc áo Ê-sau, dùng da dê phủ tay để lừa Y-sác ban phước lành.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 28,
+    "verseStart": 12,
+    "verseEnd": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Gia-cốp nằm mơ thấy gì tại Bê-tên?",
+    "options": [
+      "Đám mây lửa",
+      "Chiếc cầu vồng",
+      "Chiếc thang bắc lên trời",
+      "Dòng sông chảy từ trời"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng thế ký 28:12 — 'Ông nằm mơ, thấy một chiếc thang dựng dưới đất, đầu thang chạm đến trời, và kìa, các thiên sứ của Đức Chúa Trời đi lên đi xuống trên thang đó.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 29,
+    "verseStart": 18,
+    "verseEnd": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Gia-cốp phải làm việc bao nhiêu năm để cưới Ra-chên?",
+    "options": [
+      "3 năm",
+      "5 năm",
+      "7 năm",
+      "10 năm"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng thế ký 29:18,20 — 'Gia-cốp yêu Ra-chên nên nói: Tôi sẽ giúp việc cho cậu bảy năm để cưới Ra-chên.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 30,
+    "verseStart": 22,
+    "verseEnd": 24,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Con trai đầu lòng của Ra-chên tên là gì?",
+    "options": [
+      "Bên-gia-min",
+      "Giô-sép",
+      "Giu-đa",
+      "Ru-bên"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 30:23-24 — 'Nàng thụ thai, sinh một con trai... đặt tên là Giô-sép.' Bên-gia-min là con thứ hai của Ra-chên.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 31,
+    "verseStart": 19,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Ra-chên đã lấy trộm gì của La-ban khi Gia-cốp rời đi?",
+    "options": [
+      "Vàng bạc",
+      "Các pho tượng thần",
+      "Giao ước bằng văn tự",
+      "Đàn chiên"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 31:19 — 'Ra-chên lấy trộm các pho tượng thần của cha mình.' Đây là các thê-ra-phim, tượng thần gia đình.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 32,
+    "verseStart": 24,
+    "verseEnd": 25,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Gia-cốp vật lộn với thiên sứ suốt đêm tại bên bờ sông nào?",
+    "options": [
+      "Sông Giô-đanh",
+      "Sông Gia-bốc",
+      "Sông Ơ-phơ-rát",
+      "Sông Ni-lơ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 32:22-24 — Gia-cốp đưa gia đình qua rạch Gia-bốc, rồi ở lại một mình và vật lộn với một người cho đến rạng đông.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 32,
+    "verseStart": 28,
+    "difficulty": "easy",
+    "type": "fill_in_blank",
+    "text": "Sau khi vật lộn với thiên sứ, Gia-cốp được đổi tên thành ___.",
+    "options": [
+      "Y-sơ-ra-ên",
+      "Áp-ra-ham",
+      "Giô-suê",
+      "Đa-ni-ên"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 32:28 — 'Tên ngươi sẽ không còn là Gia-cốp nữa, nhưng là Y-sơ-ra-ên, vì ngươi đã chiến đấu với Đức Chúa Trời và người ta, và ngươi đã thắng.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 33,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "true_false",
+    "text": "Khi gặp lại Gia-cốp, Ê-sau đã ôm ông và khóc.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 33:4 — 'Ê-sau chạy đến đón Gia-cốp, ôm choàng lấy cổ ông và hôn; rồi cả hai đều khóc.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 34,
+    "verseStart": 25,
+    "verseEnd": 26,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Hai con trai nào của Gia-cốp tàn sát dân thành Si-chem để trả thù cho Đi-na?",
+    "options": [
+      "Ru-bên và Giu-đa",
+      "Si-mê-ôn và Lê-vi",
+      "Gát và A-se",
+      "Dan và Nép-ta-li"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 34:25 — 'Si-mê-ôn và Lê-vi, hai anh em của Đi-na, mỗi người cầm gươm xông vào thành đang yên ổn, giết tất cả đàn ông.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 35,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "true_false",
+    "text": "Đức Chúa Trời cũng xác nhận đổi tên Gia-cốp thành Y-sơ-ra-ên tại Bê-tên.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 35:10 — 'Tên ngươi là Gia-cốp, nhưng ngươi sẽ không còn mang tên Gia-cốp nữa; tên ngươi sẽ là Y-sơ-ra-ên.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 36,
+    "verseStart": 1,
+    "verseEnd": 8,
+    "difficulty": "medium",
+    "type": "true_false",
+    "text": "Ê-sau là tổ phụ của dân Ê-đôm.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 36:1 — 'Đây là dòng dõi Ê-sau, tức là Ê-đôm.' Ê-sau định cư tại vùng núi Sê-i-rơ, trở thành tổ phụ dân Ê-đôm.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 37,
+    "verseStart": 3,
+    "verseEnd": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Y-sơ-ra-ên (Gia-cốp) tặng Giô-sép món quà gì khiến các anh ghen tị?",
+    "options": [
+      "Chiếc nhẫn vàng",
+      "Đàn chiên riêng",
+      "Áo choàng nhiều màu sắc",
+      "Thanh gươm bạc"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng thế ký 37:3 — 'Y-sơ-ra-ên yêu Giô-sép hơn tất cả các con trai khác... và may cho chàng một cái áo choàng nhiều màu sắc.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 37,
+    "verseStart": 9,
+    "verseEnd": 10,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Trong giấc mơ thứ hai của Giô-sép, những gì quỳ lạy chàng?",
+    "options": [
+      "Mười một bó lúa",
+      "Mặt trời, mặt trăng, và mười một ngôi sao",
+      "Bảy con bò và bảy bông lúa",
+      "Các cây cối trong vườn"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 37:9 — 'Tôi lại thấy mặt trời, mặt trăng và mười một ngôi sao đều quỳ lạy tôi.' Mặt trời và mặt trăng tượng trưng cho cha mẹ.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 37,
+    "verseStart": 28,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Các anh của Giô-sép bán ông cho ai?",
+    "options": [
+      "Người Ai-cập",
+      "Người Phi-li-tin",
+      "Các thương buôn Ma-đi-an/Ích-ma-ên",
+      "Người Ca-na-an"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng thế ký 37:28 — 'Các anh kéo Giô-sép lên khỏi hố, bán cho các thương buôn Ích-ma-ên với giá hai mươi miếng bạc.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 38,
+    "verseStart": 27,
+    "verseEnd": 30,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Trong hai con trai sinh đôi của Giu-đa và Ta-ma, ai thò tay ra trước nhưng lại sinh sau?",
+    "options": [
+      "Phê-rết",
+      "Sê-rách",
+      "Ê-rơ",
+      "Ô-nan"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 38:28-30 — Sê-rách thò tay ra trước, bà mụ buộc sợi chỉ đỏ, nhưng Phê-rết lại sinh ra trước. Phê-rết nằm trong dòng dõi Chúa Giê-xu (Ma-thi-ơ 1:3).",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 39,
+    "verseStart": 1,
+    "verseEnd": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Giô-sép làm quản gia cho ai khi đến Ai-cập?",
+    "options": [
+      "Pha-ra-ôn",
+      "Phô-ti-pha",
+      "Tư lệnh quân đội",
+      "Quan cai ngục"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 39:1 — 'Phô-ti-pha, quan thị vệ của Pha-ra-ôn, người Ai-cập, mua Giô-sép.' Giô-sép được tin cậy giao quản lý cả nhà Phô-ti-pha.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 39,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "true_false",
+    "text": "Giô-sép bị bỏ tù vì bị vu cáo bởi vợ Phô-ti-pha.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 39:17-20 — Vợ Phô-ti-pha vu cáo Giô-sép xúc phạm nàng, nên Phô-ti-pha bỏ Giô-sép vào ngục.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 40,
+    "verseStart": 1,
+    "verseEnd": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "text": "Trong tù, Giô-sép giải mộng cho hai người nào của Pha-ra-ôn?",
+    "options": [
+      "Quan tư lệnh và quan cận vệ",
+      "Quan dâng rượu và quan làm bánh",
+      "Quan tế lễ và quan coi kho",
+      "Hai viên tướng quân"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 40:1-2 — 'Quan dâng rượu và quan làm bánh của vua Ai-cập phạm tội.' Giô-sép giải mộng cho cả hai trong tù.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 41,
+    "verseStart": 29,
+    "verseEnd": 30,
+    "difficulty": "medium",
+    "type": "true_false",
+    "text": "Giấc mơ của Pha-ra-ôn báo trước bảy năm được mùa rồi bảy năm đói kém.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 41:29-30 — 'Sẽ có bảy năm được mùa lớn trong toàn cõi Ai-cập. Nhưng sau đó sẽ có bảy năm đói kém.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 41,
+    "verseStart": 46,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Giô-sép bao nhiêu tuổi khi đứng trước mặt Pha-ra-ôn để giải mộng?",
+    "options": [
+      "25 tuổi",
+      "28 tuổi",
+      "30 tuổi",
+      "33 tuổi"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng thế ký 41:46 — 'Giô-sép được ba mươi tuổi khi ra mắt Pha-ra-ôn, vua Ai-cập.' So với Đa-vít cũng bắt đầu trị vì lúc 30 tuổi (2 Sa-mu-ên 5:4).",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 42,
+    "verseStart": 24,
+    "difficulty": "medium",
+    "type": "true_false",
+    "text": "Giô-sép giữ Ru-bên lại làm con tin khi các anh em trở về Ca-na-an.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 42:24 — 'Giô-sép bắt Si-mê-ôn trói lại trước mặt anh em.' Giô-sép giữ Si-mê-ôn, không phải Ru-bên.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 43,
+    "verseStart": 33,
+    "verseEnd": 34,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Tại bữa tiệc Giô-sép đãi các anh em, phần ăn của Bên-gia-min nhiều hơn bao nhiêu so với các anh khác?",
+    "options": [
+      "Gấp hai",
+      "Gấp ba",
+      "Gấp năm",
+      "Gấp mười"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng thế ký 43:34 — 'Giô-sép sai đem thức ăn từ bàn mình cho anh em, nhưng phần của Bên-gia-min nhiều gấp năm phần của các anh khác.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 44,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "fill_in_blank",
+    "text": "Giô-sép sai giấu chiếc ___ bạc trong bao lương thực của Bên-gia-min.",
+    "options": [
+      "cốc",
+      "nhẫn",
+      "dĩa",
+      "kiếm"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 44:2 — 'Hãy để chiếc cốc bạc của ta vào miệng bao lương thực của đứa út.' Đây là kế hoạch thử lòng các anh em.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 45,
+    "verseStart": 4,
+    "verseEnd": 5,
+    "difficulty": "easy",
+    "type": "true_false",
+    "text": "Giô-sép trách móc các anh khi tiết lộ mình là ai.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 45:5 — 'Bây giờ, đừng buồn rầu và cũng đừng tự trách mình vì đã bán tôi. Đức Chúa Trời đã sai tôi đến đây trước các anh để giữ gìn sự sống.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 45,
+    "verseStart": 10,
+    "verseEnd": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "text": "Giô-sép mời gia đình đến sống ở vùng nào của Ai-cập?",
+    "options": [
+      "Mem-phi",
+      "Gô-sen",
+      "Thê-be",
+      "Pi-thom"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 45:10 — 'Cha sẽ ở trong vùng Gô-sen, gần con — cha cùng các con trai, các cháu, các bầy súc vật và mọi tài sản của cha.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 46,
+    "verseStart": 26,
+    "verseEnd": 27,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Tổng cộng bao nhiêu người thuộc gia đình Gia-cốp đi xuống Ai-cập?",
+    "options": [
+      "50 người",
+      "60 người",
+      "70 người",
+      "80 người"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng thế ký 46:27 — 'Tổng số người nhà Gia-cốp đến Ai-cập là bảy mươi.' Con số 70 này cũng được nhắc trong Xuất Ê-díp-tô Ký 1:5.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 47,
+    "verseStart": 28,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Gia-cốp sống ở Ai-cập được bao nhiêu năm?",
+    "options": [
+      "10 năm",
+      "17 năm",
+      "20 năm",
+      "30 năm"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 47:28 — 'Gia-cốp sống trong xứ Ai-cập mười bảy năm. Gia-cốp hưởng thọ được một trăm bốn mươi bảy tuổi.'",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 48,
+    "verseStart": 13,
+    "verseEnd": 14,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Khi chúc phước cho hai con trai Giô-sép, Gia-cốp đặt tay phải lên đầu ai?",
+    "options": [
+      "Ma-na-se (con trưởng)",
+      "Ép-ra-im (con thứ)",
+      "Cả hai đều tay phải",
+      "Không đặt tay lên ai"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 48:14 — 'Y-sơ-ra-ên đưa tay phải đặt trên đầu Ép-ra-im, dù nó là con thứ, và đặt tay trái trên đầu Ma-na-se.' Gia-cốp cố ý ưu tiên con thứ.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 49,
+    "verseStart": 3,
+    "verseEnd": 4,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Ru-bên mất đặc quyền trưởng nam vì lý do gì?",
+    "options": [
+      "Thờ thần tượng",
+      "Nằm với thiếp của cha",
+      "Giết người vô tội",
+      "Bán Giô-sép"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sáng thế ký 49:3-4 — 'Ngươi đã lên giường cha... ngươi đã làm ô nhục giường cha.' Sự việc này được ghi ở 35:22 khi Ru-bên nằm với Bi-la, thiếp của Gia-cốp.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 49,
+    "verseStart": 10,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "text": "Gia-cốp tiên tri về chi phái nào rằng 'Cây phủ việt sẽ không rời khỏi... cho đến khi Đấng Si-lô hiện đến'?",
+    "options": [
+      "Ru-bên",
+      "Giô-sép",
+      "Giu-đa",
+      "Bên-gia-min"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sáng thế ký 49:10 — 'Cây phủ việt sẽ không rời khỏi Giu-đa... cho đến khi Đấng Si-lô hiện đến.' Lời tiên tri về Đấng Mê-si-a đến từ chi phái Giu-đa.",
+    "language": "vi"
+  },
+  {
+    "book": "Genesis",
+    "chapter": 50,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "fill_in_blank",
+    "text": "Giô-sép nói với các anh: 'Các anh toan hại tôi, nhưng ___ lại toan làm điều ích lợi.'",
+    "options": [
+      "Đức Chúa Trời",
+      "Pha-ra-ôn",
+      "Cha chúng ta",
+      "số phận"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sáng thế ký 50:20 — 'Các anh toan hại tôi, nhưng Đức Chúa Trời lại toan làm điều ích lợi để giữ cho nhiều người được sống.'",
+    "language": "vi"
+  }
+]

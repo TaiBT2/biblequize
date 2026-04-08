@@ -1,12 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "mcp__stitch__list_screens",
       "Bash(*)",
-      "mcp__stitch__get_screen",
       "Edit(*)",
       "Write(*)",
-      "WebFetch(domain:contribution.usercontent.google.com)"
+      "Read(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "mcp__stitch__*"
     ]
   }
 }
