@@ -37,6 +37,14 @@ public interface UserQuestionHistoryRepository extends JpaRepository<UserQuestio
            "WHERE h.user.id = :userId AND h.question.book = :book AND h.timesCorrect > 0")
     long countCorrectByUserIdAndBook(@Param("userId") String userId, @Param("book") String book);
 
+    /**
+     * Get accuracy stats per book: [book, timesSeen, timesCorrect, timesWrong]
+     */
+    @Query("SELECT h.question.book, SUM(h.timesSeen), SUM(h.timesCorrect), SUM(h.timesWrong) " +
+           "FROM UserQuestionHistory h WHERE h.user.id = :userId " +
+           "GROUP BY h.question.book")
+    List<Object[]> getAccuracyByBook(@Param("userId") String userId);
+
     @org.springframework.data.jpa.repository.Modifying
     @Query("DELETE FROM UserQuestionHistory h WHERE h.user.id = :userId")
     long deleteAllByUserId(@Param("userId") String userId);

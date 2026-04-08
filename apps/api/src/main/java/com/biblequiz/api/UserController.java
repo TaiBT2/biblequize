@@ -656,4 +656,67 @@ public class UserController {
         }
         return ResponseEntity.ok(result);
     }
+
+    @GetMapping("/weaknesses")
+    public ResponseEntity<?> getWeaknesses(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String email = null;
+        if (authentication.getPrincipal() instanceof UserDetails ud) {
+            email = ud.getUsername();
+        } else if (authentication.getPrincipal() instanceof OAuth2User oauth2) {
+            email = oauth2.getAttribute("email");
+        }
+
+        Optional<User> userOpt = email != null ? userRepository.findByEmail(email) : Optional.empty();
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        String userId = userOpt.get().getId();
+        List<Object[]> bookStats = userQuestionHistoryRepository.getAccuracyByBook(userId);
+
+        // Build accuracy list: only books with >= 5 answers
+        List<Map<String, Object>> bookAccuracies = new java.util.ArrayList<>();
+        for (Object[] row : bookStats) {
+            String book = (String) row[0];
+            long seen = ((Number) row[1]).longValue();
+            long correct = ((Number) row[2]).longValue();
+            long wrong = ((Number) row[3]).longValue();
+            long total = correct + wrong;
+            if (total < 5) continue;
+            double accuracy = total > 0 ? Math.round((double) correct / total * 1000.0) / 10.0 : 0;
+            bookAccuracies.add(Map.of(
+                "book", book,
+                "totalAnswered", total,
+                "correct", correct,
+                "wrong", wrong,
+                "accuracy", accuracy
+            ));
+        }
+
+        // Sort by accuracy ascending for weak books
+        bookAccuracies.sort((a, b) -> Double.compare(
+            ((Number) a.get("accuracy")).doubleValue(),
+            ((Number) b.get("accuracy")).doubleValue()
+        ));
+
+        List<Map<String, Object>> weakBooks = bookAccuracies.stream().limit(3).toList();
+        List<Map<String, Object>> strongBooks = bookAccuracies.stream()
+            .sorted((a, b) -> Double.compare(
+                ((Number) b.get("accuracy")).doubleValue(),
+                ((Number) a.get("accuracy")).doubleValue()
+            ))
+            .limit(3).toList();
+
+        String suggestedPractice = weakBooks.isEmpty() ? null : (String) weakBooks.get(0).get("book");
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("weakBooks", weakBooks);
+        response.put("strongBooks", strongBooks);
+        response.put("suggestedPractice", suggestedPractice);
+        return ResponseEntity.ok(response);
+    }
 }

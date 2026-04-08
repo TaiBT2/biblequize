@@ -203,21 +203,34 @@ export default function Review() {
                     })}
                   </div>
 
-                  {/* Explanation */}
-                  {q.explanation && (
-                    <div className="mt-4 p-6 bg-surface-container-low rounded-xl border border-outline-variant/5">
-                      <div className="flex items-start gap-4">
-                        <span className="material-symbols-outlined text-secondary">menu_book</span>
-                        <div className="space-y-3">
-                          <p className="text-secondary font-bold italic leading-relaxed">{q.explanation}</p>
-                          {q.contextNote && (
-                            <div className="flex items-center gap-2 pt-2 text-xs text-on-surface-variant/50 italic">
-                              <span className="material-symbols-outlined text-sm">map</span>
-                              {q.contextNote}
-                            </div>
-                          )}
+                  {/* Explanation + Scripture Reference */}
+                  {(q.explanation || q.verseStart) && (
+                    <div className="mt-4 p-5 bg-surface-container-low rounded-xl border border-outline-variant/5 space-y-3">
+                      {/* Scripture reference */}
+                      {q.verseStart && (
+                        <div className="flex items-center gap-2 text-secondary font-medium text-sm">
+                          <span className="material-symbols-outlined text-base">menu_book</span>
+                          <span>
+                            {q.book} {q.chapter}:{q.verseStart}
+                            {q.verseEnd && q.verseEnd !== q.verseStart ? `–${q.verseEnd}` : ''}
+                          </span>
                         </div>
-                      </div>
+                      )}
+
+                      {/* Explanation text */}
+                      {q.explanation && (
+                        <div className="flex items-start gap-3">
+                          <span className="material-symbols-outlined text-secondary/60 text-base mt-0.5">lightbulb</span>
+                          <p className="text-on-surface-variant leading-relaxed text-sm">{q.explanation}</p>
+                        </div>
+                      )}
+
+                      {q.contextNote && (
+                        <div className="flex items-center gap-2 pt-1 text-xs text-on-surface-variant/50 italic">
+                          <span className="material-symbols-outlined text-sm">map</span>
+                          {q.contextNote}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>

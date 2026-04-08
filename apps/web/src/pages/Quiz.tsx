@@ -10,6 +10,8 @@ interface Question {
   id: string
   book: string
   chapter: number
+  verseStart?: number
+  verseEnd?: number
   difficulty: 'easy' | 'medium' | 'hard'
   type: string
   content: string
@@ -729,9 +731,53 @@ const Quiz: React.FC = () => {
         </div>
       )}
 
-      {/* Explanation overlay */}
-      {showResult && settings?.showExplanation && currentQuestion.explanation && (
-        <div className="fixed bottom-32 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg">
+      {/* Explanation panel — always show for wrong answers */}
+      {showResult && isCorrect === false && (currentQuestion.explanation || currentQuestion.verseStart) && (
+        <div className="fixed bottom-28 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg animate-slide-up">
+          <div className="glass-panel p-5 rounded-2xl border border-error/20 space-y-3">
+            {/* Correct answer */}
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-green-400 text-sm" style={FILL_STYLE}>check_circle</span>
+              <span className="text-sm font-bold text-green-400">
+                {t('quiz.correctAnswerIs', { answer: currentQuestion.options[currentQuestion.correctAnswer?.[0] ?? 0] ?? '' })}
+              </span>
+            </div>
+
+            {/* Scripture reference */}
+            {currentQuestion.verseStart && (
+              <p className="text-secondary text-sm font-medium flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-sm">menu_book</span>
+                {currentQuestion.book} {currentQuestion.chapter}:{currentQuestion.verseStart}
+                {currentQuestion.verseEnd && currentQuestion.verseEnd !== currentQuestion.verseStart
+                  ? `–${currentQuestion.verseEnd}` : ''}
+              </p>
+            )}
+
+            {/* Explanation */}
+            {currentQuestion.explanation && (
+              <p className="text-on-surface-variant text-sm leading-relaxed flex items-start gap-1.5">
+                <span className="material-symbols-outlined text-sm mt-0.5 text-secondary/60">lightbulb</span>
+                <span>{currentQuestion.explanation}</span>
+              </p>
+            )}
+
+            {/* Bookmark button */}
+            <button
+              onClick={() => {
+                try { api.post('/api/me/bookmarks', { questionId: currentQuestion.id }) } catch {}
+              }}
+              className="flex items-center gap-1.5 text-xs font-bold text-secondary hover:text-secondary/80 transition-colors mt-1"
+            >
+              <span className="material-symbols-outlined text-sm">bookmark_add</span>
+              {t('quiz.bookmarkForReview', 'Đánh dấu ôn lại')}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Explanation for correct — only when showExplanation setting is on */}
+      {showResult && isCorrect === true && settings?.showExplanation && currentQuestion.explanation && (
+        <div className="fixed bottom-28 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg">
           <div className="glass-panel p-4 rounded-2xl border border-outline-variant/10 text-sm text-on-surface-variant">
             <strong className="text-on-surface">{t('quiz.explanation')}:</strong> {currentQuestion.explanation}
           </div>

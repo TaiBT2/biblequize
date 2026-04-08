@@ -7,6 +7,7 @@ import { useAuth, useAuthStore } from '../store/authStore'
 import { getTierByPoints, getNextTier } from '../data/tiers'
 import { soundManager } from '../services/soundManager'
 import { isHapticsEnabled, setHapticsEnabled } from '../utils/haptics'
+import WeaknessWidget from '../components/WeaknessWidget'
 
 const FILL_STYLE = { fontVariationSettings: "'FILL' 1" }
 
@@ -388,6 +389,9 @@ const Profile: React.FC = () => {
           </div>
         )}
       </section>
+
+      {/* Weakness Analysis */}
+      <WeaknessWidget />
 
       {/* Sound & Haptics Settings */}
       <SoundHapticsSettings />
