@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BibleQuiz Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#c0c4e8",
+                        "on-secondary-container": "#392600",
+                        "secondary": "#f8bd45",
+                        "on-surface-variant": "#c7c5ce",
+                        "outline": "#919098",
+                        "inverse-primary": "#585d7b",
+                        "secondary-fixed-dim": "#f8bd45",
+                        "tertiary-container": "#2b1f00",
+                        "on-tertiary": "#3e2e00",
+                        "tertiary-fixed": "#ffdf96",
+                        "surface-container-highest": "#323440",
+                        "surface-container": "#1d1f2a",
+                        "on-background": "#e1e1f1",
+                        "inverse-surface": "#e1e1f1",
+                        "surface-container-low": "#191b26",
+                        "background": "#11131e",
+                        "on-primary-fixed": "#151a34",
+                        "surface-dim": "#11131e",
+                        "tertiary": "#e7c268",
+                        "surface-bright": "#373845",
+                        "on-tertiary-container": "#a48431",
+                        "on-surface": "#e1e1f1",
+                        "surface-variant": "#323440",
+                        "on-tertiary-fixed": "#251a00",
+                        "surface-container-high": "#272935",
+                        "secondary-container": "#bc8709",
+                        "on-primary-container": "#8286a7",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "primary-container": "#1a1f3a",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "primary": "#c0c4e8",
+                        "inverse-on-surface": "#2e303c",
+                        "secondary-fixed": "#ffdea7",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#5a4400",
+                        "primary-fixed": "#dee1ff",
+                        "tertiary-fixed-dim": "#e7c268",
+                        "on-primary": "#2a2f4a",
+                        "surface-container-lowest": "#0b0e18",
+                        "on-primary-fixed-variant": "#404562",
+                        "on-error": "#690005",
+                        "surface": "#11131e",
+                        "on-secondary-fixed": "#271900",
+                        "primary-fixed-dim": "#c0c4e8",
+                        "on-secondary": "#412d00",
+                        "outline-variant": "#46464d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        .glass-card {
+            background: rgba(50, 52, 64, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+        }
+        .active-gold { color: #f8bd45; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-40 bg-[#11131e] flex justify-between items-center w-full px-6 py-4 font-be-vietnam-pro tracking-tight font-bold tonal-shift-no-border flat-no-shadows">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#f8bd45] text-2xl cursor-pointer hover:bg-[#272935] p-1 rounded-full transition-all duration-200" data-icon="arrow_back">arrow_back</span>
+<h1 class="text-[#e1e1f1] text-2xl font-bold">Cài đặt</h1>
+</div>
+<div class="w-6"></div> <!-- Spacer for centering -->
+</header>
+<main class="px-4 mt-4 space-y-8">
+<!-- SECTION: TÀI KHOẢN -->
+<section>
+<h2 class="px-2 mb-3 text-[11px] font-medium tracking-[0.15em] text-secondary uppercase">TÀI KHOẢN</h2>
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-highest/40 transition-colors">
+<img class="w-12 h-12 rounded-full border-2 border-secondary/20 object-cover" data-alt="Close-up portrait of a serene man with a gentle smile in soft natural morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmWrOTOfRik-bZ66jYVj0hY6Vznvoa0YCGS_sTXgznAVft5hgwvjRDEM_HRHLUSEA15n3Cebo8ZLJxRQ32Iev-QUpbI-AsRUqYbc1E1Kf-kcU33vQGt99DG-RC3VdV9KbagJ751lrT5xM50ml0Lv2QEoKjm9QAvZUlGEiNkQjJJya3Y05EVid4oc-7M8bM4wFk7RLUMlxE3Mk4OwfpiLUurA9tDPdxs7g6mNpkSWTp9OxUlyU0OGo5BIj0Cwdnl7Hz4U6ITJQoiNs"/>
+<div class="flex-1">
+<p class="font-semibold text-on-surface">Minh Quân</p>
+<p class="text-xs text-on-surface-variant">minhquan@example.com</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/50" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-highest/40 transition-colors text-left">
+<span class="text-sm">Đổi mật khẩu</span>
+<span class="material-symbols-outlined text-on-surface-variant/50" data-icon="lock">lock</span>
+</button>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-highest/40 transition-colors text-left">
+<span class="text-sm text-error">Xóa tài khoản</span>
+<span class="material-symbols-outlined text-error/70" data-icon="delete_forever">delete_forever</span>
+</button>
+</div>
+</section>
+<!-- SECTION: ỨNG DỤNG -->
+<section>
+<h2 class="px-2 mb-3 text-[11px] font-medium tracking-[0.15em] text-secondary uppercase">ỨNG DỤNG</h2>
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-highest/40 transition-colors cursor-pointer">
+<span class="text-sm">Ngôn ngữ</span>
+<div class="flex items-center gap-2">
+<span class="text-xs text-on-surface-variant">Tiếng Việt 🇻ietnam</span>
+<span class="material-symbols-outlined text-on-surface-variant/50" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-highest/40 transition-colors cursor-pointer">
+<span class="text-sm">Ngôn ngữ câu hỏi</span>
+<div class="flex items-center gap-2">
+<span class="text-xs text-on-surface-variant">Tiếng Việt</span>
+<span class="material-symbols-outlined text-on-surface-variant/50" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-highest/40 transition-colors cursor-pointer">
+<span class="text-sm">Giao diện</span>
+<div class="flex items-center gap-2">
+<span class="text-xs text-on-surface-variant">Tối</span>
+<span class="material-symbols-outlined active-gold" data-icon="dark_mode">dark_mode</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: THÔNG BÁO -->
+<section>
+<h2 class="px-2 mb-3 text-[11px] font-medium tracking-[0.15em] text-secondary uppercase">THÔNG BÁO</h2>
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="flex items-center justify-between p-4">
+<div>
+<p class="text-sm">Nhắc nhở hàng ngày</p>
+<p class="text-[10px] text-on-surface-variant">20:00 mỗi ngày</p>
+</div>
+<div class="w-10 h-5 bg-secondary/30 rounded-full relative flex items-center px-1">
+<div class="w-3.5 h-3.5 bg-secondary rounded-full absolute right-1 shadow-sm"></div>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<div class="flex items-center justify-between p-4">
+<span class="text-sm">Thử thách mới</span>
+<div class="w-10 h-5 bg-secondary/30 rounded-full relative flex items-center px-1">
+<div class="w-3.5 h-3.5 bg-secondary rounded-full absolute right-1 shadow-sm"></div>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<div class="flex items-center justify-between p-4">
+<span class="text-sm">Nhóm của tôi</span>
+<div class="w-10 h-5 bg-outline-variant/30 rounded-full relative flex items-center px-1">
+<div class="w-3.5 h-3.5 bg-on-surface-variant rounded-full absolute left-1 shadow-sm"></div>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<div class="flex items-center justify-between p-4">
+<span class="text-sm">Thăng hạng</span>
+<div class="w-10 h-5 bg-secondary/30 rounded-full relative flex items-center px-1">
+<div class="w-3.5 h-3.5 bg-secondary rounded-full absolute right-1 shadow-sm"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: ÂM THANH & RUNG -->
+<section>
+<h2 class="px-2 mb-3 text-[11px] font-medium tracking-[0.15em] text-secondary uppercase">ÂM THANH &amp; RUNG</h2>
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="flex items-center justify-between p-4">
+<span class="text-sm">Âm thanh hiệu ứng</span>
+<span class="material-symbols-outlined active-gold" data-icon="volume_up">volume_up</span>
+</div>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<div class="flex items-center justify-between p-4">
+<span class="text-sm">Nhạc nền</span>
+<span class="material-symbols-outlined text-on-surface-variant/50" data-icon="music_off">music_off</span>
+</div>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<div class="flex items-center justify-between p-4">
+<span class="text-sm">Phản hồi xúc giác (Rung)</span>
+<div class="w-10 h-5 bg-secondary/30 rounded-full relative flex items-center px-1">
+<div class="w-3.5 h-3.5 bg-secondary rounded-full absolute right-1 shadow-sm"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: DỮ LIỆU -->
+<section>
+<h2 class="px-2 mb-3 text-[11px] font-medium tracking-[0.15em] text-secondary uppercase">DỮ LIỆU</h2>
+<div class="glass-card rounded-xl overflow-hidden">
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-highest/40 transition-colors text-left">
+<span class="text-sm">Câu hỏi ngoại tuyến</span>
+<span class="material-symbols-outlined text-on-surface-variant/50" data-icon="download">download</span>
+</button>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-highest/40 transition-colors text-left">
+<div>
+<p class="text-sm">Xóa bộ nhớ đệm</p>
+<p class="text-[10px] text-on-surface-variant">12 MB đã dùng</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/50" data-icon="cleaning_services">cleaning_services</span>
+</button>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-highest/40 transition-colors text-left">
+<span class="text-sm">Khôi phục tiến trình</span>
+<span class="material-symbols-outlined active-gold" data-icon="restore">restore</span>
+</button>
+</div>
+</section>
+<!-- SECTION: VỀ BIBLEQUIZ -->
+<section>
+<h2 class="px-2 mb-3 text-[11px] font-medium tracking-[0.15em] text-secondary uppercase">VỀ BIBLEQUIZ</h2>
+<div class="glass-card rounded-xl overflow-hidden">
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-highest/40 transition-colors text-left">
+<span class="text-sm">Đánh giá ứng dụng</span>
+<span class="material-symbols-outlined active-gold" data-icon="star">star</span>
+</button>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-highest/40 transition-colors text-left">
+<span class="text-sm">Chia sẻ với bạn bè</span>
+<span class="material-symbols-outlined text-on-surface-variant/50" data-icon="share">share</span>
+</button>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-highest/40 transition-colors text-left">
+<span class="text-sm">Điều khoản sử dụng</span>
+<span class="material-symbols-outlined text-on-surface-variant/50" data-icon="description">description</span>
+</button>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-highest/40 transition-colors text-left">
+<span class="text-sm">Chính sách bảo mật</span>
+<span class="material-symbols-outlined text-on-surface-variant/50" data-icon="policy">policy</span>
+</button>
+<div class="h-[1px] bg-outline-variant/10 mx-4"></div>
+<div class="flex items-center justify-between p-4">
+<span class="text-sm">Phiên bản</span>
+<span class="text-xs text-on-surface-variant">1.0.0</span>
+</div>
+</div>
+</section>
+<!-- Logout Button -->
+<div class="pt-4 pb-8 flex justify-center">
+<button class="px-8 py-3 text-sm font-semibold text-error rounded-full bg-error/5 hover:bg-error/10 border border-error/20 transition-all duration-200">
+                Đăng xuất
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#11131e]/80 backdrop-blur-xl rounded-t-2xl shadow-[0_-4px_24px_rgba(11,14,24,0.06)] font-be-vietnam-pro text-[10px] uppercase tracking-widest font-medium">
+<div class="flex flex-col items-center justify-center text-[#9494a0] p-2 hover:text-[#e7c268] transition-transform scale-90">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span>Trang chủ</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#9494a0] p-2 hover:text-[#e7c268] transition-transform scale-90">
+<span class="material-symbols-outlined mb-1" data-icon="menu_book">menu_book</span>
+<span>Học tập</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#9494a0] p-2 hover:text-[#e7c268] transition-transform scale-90">
+<span class="material-symbols-outlined mb-1" data-icon="auto_stories">auto_stories</span>
+<span>Kế hoạch</span>
+</div>
+<!-- Active Tab: Cài đặt -->
+<div class="flex flex-col items-center justify-center bg-[#f8bd45]/10 text-[#f8bd45] rounded-xl p-2 transition-transform scale-90">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span>Cài đặt</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BibleQuiz - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;family=Crimson+Pro:wght@600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#323440",
+                        "on-tertiary-fixed": "#251a00",
+                        "surface-container-high": "#272935",
+                        "secondary-container": "#bc8709",
+                        "on-primary-container": "#8286a7",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "primary-container": "#1a1f3a",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "primary": "#c0c4e8",
+                        "inverse-on-surface": "#2e303c",
+                        "secondary-fixed": "#ffdea7",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#5a4400",
+                        "primary-fixed": "#dee1ff",
+                        "tertiary-fixed-dim": "#e7c268",
+                        "on-primary": "#2a2f4a",
+                        "surface-container-lowest": "#0b0e18",
+                        "on-primary-fixed-variant": "#404562",
+                        "on-error": "#690005",
+                        "surface": "#11131e",
+                        "on-secondary-fixed": "#271900",
+                        "primary-fixed-dim": "#c0c4e8",
+                        "on-secondary": "#412d00",
+                        "outline-variant": "#46464d",
+                        "surface-tint": "#c0c4e8",
+                        "on-secondary-container": "#392600",
+                        "secondary": "#f8bd45",
+                        "on-surface-variant": "#c7c5ce",
+                        "outline": "#919098",
+                        "inverse-primary": "#585d7b",
+                        "secondary-fixed-dim": "#f8bd45",
+                        "tertiary-container": "#2b1f00",
+                        "on-tertiary": "#3e2e00",
+                        "tertiary-fixed": "#ffdf96",
+                        "surface-container-highest": "#323440",
+                        "surface-container": "#1d1f2a",
+                        "on-background": "#e1e1f1",
+                        "inverse-surface": "#e1e1f1",
+                        "surface-container-low": "#191b26",
+                        "background": "#11131e",
+                        "on-primary-fixed": "#151a34",
+                        "surface-dim": "#11131e",
+                        "tertiary": "#e7c268",
+                        "surface-bright": "#373845",
+                        "on-tertiary-container": "#a48431",
+                        "on-surface": "#e1e1f1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"],
+                        "serif": ["Crimson Pro"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sacred-gradient {
+            background: radial-gradient(circle at 50% 50%, #1d1f2a 0%, #11131e 100%);
+        }
+        .gold-shimmer {
+            background: linear-gradient(90deg, #f8bd45 0%, #e7c268 50%, #f8bd45 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .geometric-path {
+            opacity: 0.08;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 L50 0 L100 50 L50 100 Z' fill='none' stroke='%23f8bd45' stroke-width='0.5'/%3E%3C/svg%3E");
+            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body overflow-hidden h-screen flex flex-col">
+<!-- Top Navigation Bar (Suppressed based on Transactional Screen Rule) -->
+<header class="flex items-center px-4 h-16 w-full fixed top-0 z-50 bg-[#11131e]">
+<span class="material-symbols-outlined text-[#f8bd45] cursor-pointer active:scale-95 duration-200">arrow_back</span>
+</header>
+<main class="flex-1 flex flex-col items-center justify-between sacred-gradient relative overflow-hidden">
+<!-- Hero Section (40%) -->
+<section class="h-[40%] w-full flex flex-col items-center justify-center px-8 z-10">
+<h1 class="font-serif text-[40px] font-bold gold-shimmer tracking-tight mb-2">
+                BibleQuiz
+            </h1>
+<p class="font-headline text-lg font-semibold text-on-surface text-center tracking-wide">
+                Học Kinh Thánh cùng anh chị em
+            </p>
+<p class="font-body text-sm text-on-surface-variant/70 mt-1">
+                Miễn phí, không quảng cáo
+            </p>
+</section>
+<!-- Middle Section: Geometric Path -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[200px] geometric-path pointer-events-none"></div>
+<!-- Bottom Section (40%) -->
+<section class="h-[45%] w-full flex flex-col items-center justify-start px-6 z-10 space-y-6">
+<!-- Google Login CTA -->
+<button class="w-full h-14 bg-white text-[#11131e] rounded-xl flex items-center justify-center space-x-3 font-semibold text-base transition-all active:scale-[0.98] shadow-lg shadow-black/20">
+<img alt="Google Logo" class="w-6 h-6" data-alt="Google colorful G logo centered on white background for authentication" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_eqDpmbLdTIyJy7gPqjaq1ucsolt3VItCrlWS7Mok7vR-9ozP-N0jYCfM80yu41VRHWHFFijaDhmluCReH-YqVyOdx-UOfjJxWLU1BrHx9CpsIGLCuFfjIA2aHHoUifzHoOikLDDva9fykOQVdCskv3_uzvu5z9oiRTpWKmnAsEL9yDaYE2dnjIvjsPVwaZnwZglpJSVd5-CQ8dRnrT8_LSjNRmfbGgro6HDf2jfk-USYmzYGuidyTPhnQhYSi7SrbJMrcK9SFNw"/>
+<span>Tiếp tục với Google</span>
+</button>
+<!-- Divider -->
+<div class="w-full flex items-center justify-center space-x-4">
+<div class="h-[0.5px] flex-1 bg-outline-variant/30"></div>
+<span class="text-on-surface-variant text-sm font-label uppercase tracking-widest">hoặc</span>
+<div class="h-[0.5px] flex-1 bg-outline-variant/30"></div>
+</div>
+<!-- Email Login -->
+<button class="w-full h-14 border border-secondary/40 rounded-xl flex items-center justify-center space-x-2 text-secondary font-medium transition-all hover:bg-secondary/5 active:scale-[0.98]">
+<span class="material-symbols-outlined text-sm">mail</span>
+<span>Đăng nhập bằng email</span>
+</button>
+<!-- Registration Link -->
+<div class="text-center pt-2">
+<p class="text-on-surface-variant text-sm">
+                    Chưa có tài khoản? 
+                    <a class="text-secondary font-bold ml-1 hover:underline decoration-secondary/30 transition-all" href="#">Đăng ký</a>
+</p>
+</div>
+<!-- Footer Microcopy -->
+<footer class="pt-8 pb-4 text-center max-w-[280px]">
+<p class="text-[10px] leading-relaxed text-on-surface-variant/60">
+                    Khi đăng nhập, bạn đồng ý với 
+                    <a class="text-secondary underline decoration-secondary/30" href="#">Điều khoản</a> 
+                    và 
+                    <a class="text-secondary underline decoration-secondary/30" href="#">Chính sách bảo mật</a>
+</p>
+</footer>
+</section>
+</main>
+<!-- Glass Overlay Decoration (Sacred Modernist Style) -->
+<div class="absolute -top-20 -right-20 w-64 h-64 bg-secondary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute -bottom-20 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+</body></html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;family=Crimson+Pro:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#392600",
+                        "on-primary-fixed-variant": "#404562",
+                        "secondary-fixed": "#ffdea7",
+                        "on-secondary-fixed": "#271900",
+                        "primary-fixed-dim": "#c0c4e8",
+                        "secondary-fixed-dim": "#f8bd45",
+                        "primary-fixed": "#dee1ff",
+                        "on-tertiary": "#3e2e00",
+                        "surface-dim": "#11131e",
+                        "tertiary-fixed-dim": "#e7c268",
+                        "on-surface": "#e1e1f1",
+                        "surface-bright": "#373845",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "surface-container-low": "#191b26",
+                        "secondary-container": "#bc8709",
+                        "on-background": "#e1e1f1",
+                        "outline-variant": "#46464d",
+                        "on-primary-fixed": "#151a34",
+                        "surface-tint": "#c0c4e8",
+                        "outline": "#919098",
+                        "surface-variant": "#323440",
+                        "surface-container-high": "#272935",
+                        "primary-container": "#1a1f3a",
+                        "on-tertiary-container": "#a48431",
+                        "on-error": "#690005",
+                        "surface-container": "#1d1f2a",
+                        "primary": "#c0c4e8",
+                        "on-primary-container": "#8286a7",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-secondary": "#412d00",
+                        "inverse-primary": "#585d7b",
+                        "tertiary-fixed": "#ffdf96",
+                        "tertiary-container": "#2b1f00",
+                        "surface-container-highest": "#323440",
+                        "inverse-surface": "#e1e1f1",
+                        "inverse-on-surface": "#2e303c",
+                        "surface-container-lowest": "#0b0e18",
+                        "surface": "#11131e",
+                        "background": "#11131e",
+                        "secondary": "#f8bd45",
+                        "on-surface-variant": "#c7c5ce",
+                        "on-tertiary-fixed-variant": "#5a4400",
+                        "on-primary": "#2a2f4a",
+                        "tertiary": "#e7c268"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"],
+                        "serif": ["Crimson Pro"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .tonal-shift-bottom {
+            box-shadow: 0 4px 20px -5px rgba(11, 14, 24, 0.5);
+        }
+        .glass-card {
+            background: rgba(50, 52, 64, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(to right, #f8bd45, #e7c268);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-cta-gradient {
+            background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%);
+        }
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<!-- Top Navigation Bar (Shared Component Strategy) -->
+<header class="w-full top-0 bg-[#11131e] flex justify-between items-center px-6 py-4 z-50">
+<button class="flex items-center justify-center w-10 h-10 rounded-xl hover:bg-[#272935] transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[#f8bd45]">close</span>
+</button>
+<div class="flex flex-col items-center gap-1">
+<div class="flex gap-1.5 items-center">
+<div class="progress-dot bg-secondary"></div>
+<div class="progress-dot bg-secondary"></div>
+<div class="progress-dot bg-secondary"></div>
+<div class="progress-dot bg-secondary"></div>
+<div class="progress-dot bg-surface-variant"></div>
+<div class="progress-dot bg-surface-variant"></div>
+<div class="progress-dot bg-surface-variant"></div>
+<div class="progress-dot bg-surface-variant"></div>
+<div class="progress-dot bg-surface-variant"></div>
+<div class="progress-dot bg-surface-variant"></div>
+</div>
+<span class="text-[10px] font-bold tracking-widest text-secondary uppercase">4/10</span>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-variant/40 px-3 py-1.5 rounded-full border border-outline-variant/10">
+<span class="text-sm">🔥</span>
+<span class="text-sm font-bold text-on-surface">5</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col items-center px-6 pb-10">
+<!-- Timer Section -->
+<section class="mt-4 mb-8 flex flex-col items-center">
+<div class="relative w-[72px] h-[72px] flex items-center justify-center">
+<!-- SVG Timer Ring -->
+<svg class="absolute inset-0 w-full h-full -rotate-90">
+<circle class="text-surface-variant" cx="36" cy="36" fill="transparent" r="32" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-secondary" cx="36" cy="36" fill="transparent" r="32" stroke="currentColor" stroke-dasharray="201" stroke-dashoffset="60" stroke-width="3"></circle>
+</svg>
+<span class="text-xl font-bold text-secondary">18s</span>
+</div>
+<span class="text-xs text-on-surface-variant mt-2 tracking-wide font-medium">Còn lại</span>
+</section>
+<!-- Question Card -->
+<article class="w-full glass-card rounded-3xl p-6 relative overflow-hidden mb-8 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">menu_book</span>
+<span class="text-xs font-bold tracking-wider text-secondary">SÁNG THẾ KÝ 1:1</span>
+</div>
+<span class="px-3 py-1 rounded-full bg-secondary-container/30 text-secondary text-[10px] font-bold border border-secondary/20">Trung bình</span>
+</div>
+<h2 class="font-serif text-2xl leading-relaxed text-on-surface mb-2">
+                Vào ngày thứ nhất, Đức Chúa Trời đã tạo nên điều gì?
+            </h2>
+<!-- Atmospheric Glow Background element -->
+<div class="absolute -bottom-10 -right-10 w-32 h-32 bg-secondary/5 rounded-full blur-3xl"></div>
+</article>
+<!-- Answers Section -->
+<section class="w-full space-y-4">
+<!-- Answer A -->
+<button class="w-full group flex items-center p-3 rounded-2xl bg-surface-container hover:bg-surface-container-high transition-all duration-200 border border-transparent hover:border-outline-variant/30 active:scale-[0.98]">
+<div class="w-12 h-12 rounded-full flex items-center justify-center bg-surface-container-high text-secondary text-lg font-bold mr-4 border border-outline-variant/20 group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+                    A
+                </div>
+<span class="text-base font-medium text-on-surface-variant group-hover:text-on-surface text-left">Ánh sáng và bóng tối</span>
+</button>
+<!-- Answer B (Example of Active/Focused state) -->
+<button class="w-full group flex items-center p-3 rounded-2xl bg-surface-container border border-secondary/40 ring-1 ring-secondary/20 shadow-[0_0_15px_rgba(248,189,69,0.1)] active:scale-[0.98]">
+<div class="w-12 h-12 rounded-full flex items-center justify-center bg-secondary text-on-secondary text-lg font-bold mr-4">
+                    B
+                </div>
+<span class="text-base font-semibold text-on-surface text-left">Bầu trời và nước</span>
+</button>
+<!-- Answer C -->
+<button class="w-full group flex items-center p-3 rounded-2xl bg-surface-container hover:bg-surface-container-high transition-all duration-200 border border-transparent hover:border-outline-variant/30 active:scale-[0.98]">
+<div class="w-12 h-12 rounded-full flex items-center justify-center bg-surface-container-high text-secondary text-lg font-bold mr-4 border border-outline-variant/20 group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+                    C
+                </div>
+<span class="text-base font-medium text-on-surface-variant group-hover:text-on-surface text-left">Cây cối và thảo mộc</span>
+</button>
+<!-- Answer D -->
+<button class="w-full group flex items-center p-3 rounded-2xl bg-surface-container hover:bg-surface-container-high transition-all duration-200 border border-transparent hover:border-outline-variant/30 active:scale-[0.98]">
+<div class="w-12 h-12 rounded-full flex items-center justify-center bg-surface-container-high text-secondary text-lg font-bold mr-4 border border-outline-variant/20 group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+                    D
+                </div>
+<span class="text-base font-medium text-on-surface-variant group-hover:text-on-surface text-left">Mặt trời và mặt trăng</span>
+</button>
+</section>
+<!-- Bottom Assistance -->
+<footer class="mt-auto pt-10 flex flex-col items-center gap-4">
+<button class="flex items-center gap-2 px-6 py-2 rounded-full group">
+<span class="material-symbols-outlined text-secondary text-xl group-hover:scale-110 transition-transform">lightbulb</span>
+<span class="text-sm font-bold text-secondary uppercase tracking-widest">Xem gợi ý</span>
+</button>
+<p class="text-[11px] text-on-surface-variant/60 italic font-medium">
+                Mẹo: đọc kỹ trước khi trả lời
+            </p>
+</footer>
+</main>
+<!-- Aesthetic Layer: Bottom Radiant Glow -->
+<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full h-24 bg-gradient-to-t from-secondary/5 to-transparent pointer-events-none"></div>
+</body></html>

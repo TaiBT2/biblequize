@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#919098",
+                        "on-surface": "#e1e1f1",
+                        "tertiary-container": "#2b1f00",
+                        "surface-container": "#1d1f2a",
+                        "surface-bright": "#373845",
+                        "on-secondary-container": "#392600",
+                        "surface-variant": "#323440",
+                        "on-secondary-fixed": "#271900",
+                        "tertiary-fixed": "#ffdf96",
+                        "on-primary-fixed": "#151a34",
+                        "background": "#11131e",
+                        "surface": "#11131e",
+                        "primary-fixed": "#dee1ff",
+                        "surface-dim": "#11131e",
+                        "outline-variant": "#46464d",
+                        "surface-container-highest": "#323440",
+                        "secondary": "#f8bd45",
+                        "on-tertiary-fixed-variant": "#5a4400",
+                        "on-secondary": "#412d00",
+                        "tertiary-fixed-dim": "#e7c268",
+                        "secondary-container": "#bc8709",
+                        "on-tertiary-fixed": "#251a00",
+                        "surface-container-low": "#191b26",
+                        "inverse-surface": "#e1e1f1",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-tertiary-container": "#a48431",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#c7c5ce",
+                        "surface-container-lowest": "#0b0e18",
+                        "inverse-primary": "#585d7b",
+                        "tertiary": "#e7c268",
+                        "on-primary-container": "#8286a7",
+                        "on-tertiary": "#3e2e00",
+                        "secondary-fixed-dim": "#f8bd45",
+                        "secondary-fixed": "#ffdea7",
+                        "on-primary": "#2a2f4a",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "primary-container": "#1a1f3a",
+                        "surface-tint": "#c0c4e8",
+                        "primary": "#c0c4e8",
+                        "on-background": "#e1e1f1",
+                        "primary-fixed-dim": "#c0c4e8",
+                        "on-primary-fixed-variant": "#404562",
+                        "inverse-on-surface": "#2e303c",
+                        "surface-container-high": "#272935"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%);
+        }
+        .glass-card {
+            background: rgba(50, 52, 64, 0.6);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<nav class="w-full sticky top-0 z-50 bg-[#1d1f2a] flex items-center justify-between px-4 h-16">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 hover:bg-[#272935] transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined text-[#f8bd45]">arrow_back</span>
+</button>
+<h1 class="font-['Be_Vietnam_Pro'] font-bold text-lg tracking-tight text-[#f8bd45]">Lỗi kết nối</h1>
+</div>
+<div class="w-10"></div> <!-- Spacer for symmetry -->
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-8 text-center">
+<!-- Animated Sacred Illustration Area -->
+<div class="relative mb-12">
+<!-- Decorative Glow Background -->
+<div class="absolute inset-0 bg-secondary/10 blur-[60px] rounded-full scale-150"></div>
+<!-- Icon Container -->
+<div class="relative w-32 h-32 flex items-center justify-center rounded-full glass-card border border-white/5">
+<span class="material-symbols-outlined text-secondary text-[120px] leading-none" style="font-variation-settings: 'wght' 200;">wifi_off</span>
+</div>
+<!-- Floating Decorative Particles -->
+<div class="absolute -top-4 -right-2 w-3 h-3 bg-tertiary rounded-full opacity-40 blur-[1px]"></div>
+<div class="absolute bottom-2 -left-4 w-2 h-2 bg-secondary rounded-full opacity-60 blur-[1px]"></div>
+</div>
+<!-- Text Content -->
+<div class="max-w-xs space-y-4">
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">Không có kết nối mạng</h2>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                Kiểm tra kết nối và thử lại. Một số nội dung offline vẫn có thể dùng.
+            </p>
+</div>
+<!-- Action Buttons -->
+<div class="mt-12 w-full max-w-xs space-y-6">
+<button class="w-full py-4 rounded-xl gold-gradient text-on-secondary font-bold tracking-wide active:scale-95 transition-transform shadow-[0_4px_24px_rgba(248,189,69,0.15)]">
+                Thử lại
+            </button>
+<button class="w-full py-2 text-secondary font-medium tracking-wide active:scale-95 transition-transform hover:opacity-80">
+                Chế độ offline
+            </button>
+</div>
+<!-- Subtle Achievement/Status Teaser (Editorial Layout) -->
+<div class="mt-16 w-full max-w-md">
+<div class="surface-container-low p-6 rounded-2xl border-l-4 border-secondary text-left flex items-center gap-4">
+<div class="p-3 bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined text-secondary">menu_book</span>
+</div>
+<div>
+<span class="text-[10px] uppercase tracking-[0.05em] font-medium text-on-surface-variant block mb-1">Tiếp tục học</span>
+<p class="text-sm font-semibold text-on-surface">Bài học: Sự Kiên Trì (Offline)</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Disabled BottomNavBar -->
+<section class="fixed bottom-0 w-full z-50 rounded-t-2xl bg-[#1d1f2a]/90 backdrop-blur-xl flex justify-around items-center h-20 pb-safe px-6 opacity-40 grayscale pointer-events-none">
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/60 px-4 py-1">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-medium">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/60 px-4 py-1">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-medium">Study</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/60 px-4 py-1">
+<span class="material-symbols-outlined">auto_graph</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-medium">Progress</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/60 px-4 py-1">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-medium">Profile</span>
+</div>
+</section>
+</body></html>

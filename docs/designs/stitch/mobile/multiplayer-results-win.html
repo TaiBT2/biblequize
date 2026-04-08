@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Victory Circle - Kết quả BibleQuiz</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#e1e1f1",
+                        "on-primary-container": "#8286a7",
+                        "on-error": "#690005",
+                        "inverse-primary": "#585d7b",
+                        "surface-container-high": "#272935",
+                        "on-background": "#e1e1f1",
+                        "on-primary-fixed-variant": "#404562",
+                        "inverse-on-surface": "#2e303c",
+                        "tertiary-fixed": "#ffdf96",
+                        "on-primary-fixed": "#151a34",
+                        "on-surface-variant": "#c7c5ce",
+                        "tertiary-fixed-dim": "#e7c268",
+                        "primary": "#c0c4e8",
+                        "on-surface": "#e1e1f1",
+                        "tertiary": "#e7c268",
+                        "surface-dim": "#11131e",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#bc8709",
+                        "primary-container": "#1a1f3a",
+                        "on-tertiary": "#3e2e00",
+                        "surface-tint": "#c0c4e8",
+                        "surface-variant": "#323440",
+                        "secondary": "#f8bd45",
+                        "surface-container-highest": "#323440",
+                        "tertiary-container": "#2b1f00",
+                        "surface-container": "#1d1f2a",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#ffdea7",
+                        "on-tertiary-fixed-variant": "#5a4400",
+                        "on-secondary-fixed": "#271900",
+                        "primary-fixed": "#dee1ff",
+                        "outline": "#919098",
+                        "on-secondary": "#412d00",
+                        "secondary-fixed-dim": "#f8bd45",
+                        "surface-container-lowest": "#0b0e18",
+                        "outline-variant": "#46464d",
+                        "error-container": "#93000a",
+                        "background": "#11131e",
+                        "surface-bright": "#373845",
+                        "surface": "#11131e",
+                        "on-tertiary-container": "#a48431",
+                        "surface-container-low": "#191b26",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-secondary-container": "#392600",
+                        "primary-fixed-dim": "#c0c4e8",
+                        "on-primary": "#2a2f4a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #11131e;
+            color: #e1e1f1;
+            margin: 0;
+            padding: 0;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(50, 52, 64, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .gold-glow {
+            box-shadow: 0 0 20px rgba(248, 189, 69, 0.2);
+        }
+        .podium-gradient-1 { background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%); }
+        .podium-gradient-2 { background: linear-gradient(135deg, #c7c5ce 0%, #919098 100%); }
+        .podium-gradient-3 { background: linear-gradient(135deg, #a48431 0%, #5a4400 100%); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen pb-32 overflow-x-hidden">
+<!-- Top AppBar (JSON Anchored) -->
+<header class="fixed top-0 w-full z-50 bg-[#11131e]/80 backdrop-blur-xl shadow-[0_4px_24px_rgba(11,14,24,0.06)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="active:scale-95 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-[#f8bd45]">close</span>
+</div>
+<h1 class="text-xl font-bold text-[#f8bd45] font-['Be_Vietnam_Pro'] tracking-tight">Victory Circle</h1>
+<div class="active:scale-95 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-[#f8bd45]">share</span>
+</div>
+</div>
+</header>
+<!-- Header Section (100px-ish visual height) -->
+<section class="mt-20 pt-8 pb-4 text-center relative">
+<!-- Particle Effect Decor -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none">
+<div class="absolute top-0 left-1/4 w-2 h-2 bg-secondary rounded-full opacity-40 animate-pulse"></div>
+<div class="absolute top-10 right-1/4 w-3 h-3 bg-tertiary rounded-full opacity-30"></div>
+<div class="absolute top-5 left-1/2 w-1 h-1 bg-white rounded-full opacity-60"></div>
+</div>
+<h2 class="text-4xl font-extrabold text-secondary tracking-tight mb-1">🏆 Chiến thắng!</h2>
+<p class="text-on-surface-variant font-medium tracking-wide text-sm opacity-80">Phòng Speed Race • 15 câu</p>
+</section>
+<!-- Podium Section (260px height) -->
+<section class="px-6 flex items-end justify-center gap-2 h-64 mb-8">
+<!-- Rank #2 -->
+<div class="flex flex-col items-center flex-1">
+<div class="relative mb-3">
+<img class="w-14 h-14 rounded-full border-2 border-outline-variant bg-surface-container-high" data-alt="portrait of a young man with glasses smiling friendly clean studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDykn3un1RaqCg4DwxQUOfDO4CXyS7v0z5DGt7Cm6E3cmd8k0Qs4VqsjCvnpb0W9IvGQoAdx19p9kd4sTLeQLHGhfp7_mzDzPm0WsldMXgbb93z7RLPFkdHOl90CtrMwIPdNXt0ue7h-t-p52eWfX0iOJsqmUSn3sNSskm6jU_VpZdx1DRbbwL1-YM8MfthYWqCv8NgOhNcwHGBAia8GNFblWZBlbRnSHAKLYQgjYuaEAZl4iTxK4m0kWpXqZjXGUMmU7kPsBXWOOk"/>
+<div class="absolute -bottom-2 -right-1 bg-surface-container-highest px-1.5 py-0.5 rounded text-[10px] font-bold border border-outline-variant">SILVER</div>
+</div>
+<span class="text-xs font-bold truncate w-full text-center mb-1">Hồng Phúc</span>
+<span class="text-[10px] text-on-surface-variant mb-2">128 pts</span>
+<div class="w-full podium-gradient-2 h-20 rounded-t-xl flex items-center justify-center shadow-lg">
+<span class="text-2xl font-black text-surface">2</span>
+</div>
+</div>
+<!-- Rank #1 -->
+<div class="flex flex-col items-center flex-1 z-10">
+<div class="relative mb-3">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 text-secondary animate-bounce">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">crown</span>
+</div>
+<img class="w-20 h-20 rounded-full border-4 border-secondary gold-glow bg-surface-container-high" data-alt="smiling young woman with braided hair bright warm studio lighting energetic expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMhluEr_Edno5FIJwLZqel2gxkPt4M0Sz_kqtMn2-q_ov5q__Nxj7UrqK7WaPoQ5pzNopRFTZ75oyqeheMdjT1hTY2QH82IdsepX1oXcvr4cpHWlDr6LoJI91smOKSsGdRTD1tvSDHR93ktac0HBlDQjHRUZkZUbjQoPSCYGxyunZcNATmdmUlcQc_v2W54bNBzgMKmAa9-gVXOW48hIO-Blx9lS3dqAUXXM503AyBTHL0ArYXDueXgdUmluIx3S04dQI4nXAcJp4"/>
+<div class="absolute -bottom-2 -right-1 bg-secondary text-on-secondary px-2 py-0.5 rounded text-[10px] font-black">GOLD I</div>
+</div>
+<span class="text-sm font-black truncate w-full text-center mb-1 text-secondary">Bạn (Linh)</span>
+<span class="text-xs text-secondary/80 font-bold mb-2">142 pts</span>
+<div class="w-full podium-gradient-1 h-32 rounded-t-xl flex items-center justify-center shadow-2xl relative overflow-hidden">
+<div class="absolute inset-0 bg-white/10 opacity-20 rotate-45 translate-y-10"></div>
+<span class="text-4xl font-black text-on-secondary">1</span>
+</div>
+</div>
+<!-- Rank #3 -->
+<div class="flex flex-col items-center flex-1">
+<div class="relative mb-3">
+<img class="w-14 h-14 rounded-full border-2 border-outline-variant bg-surface-container-high" data-alt="bearded man with thoughtful expression dark background cinematic soft lighting profile view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0arcdQ8oNiHZfKI72OpEltEDjkcShqGw-b3p0FpFo00qAk-kakUX5r8uXa6fE9bg_-U1yGEajpIjVrRNxWQVv8Y9cV8o_nfYP8Bgek6AvuOuhN42f8OAj43DhKGo1n66-S-1WzmBVKmW923t0EgbEVPyZji1D6jf0z5Ug8721WCBYHtP4CgY9ks4xbG_R437deRHEDdl4yowyfYlpsLOcFeAOf351ASLreCVFGPz4WIzd4Y-0n7GmDqWWxa3fsq86aXZpJrPmp1s"/>
+<div class="absolute -bottom-2 -right-1 bg-surface-container-highest px-1.5 py-0.5 rounded text-[10px] font-bold border border-outline-variant">BRONZE</div>
+</div>
+<span class="text-xs font-bold truncate w-full text-center mb-1">Minh Khôi</span>
+<span class="text-[10px] text-on-surface-variant mb-2">115 pts</span>
+<div class="w-full podium-gradient-3 h-16 rounded-t-xl flex items-center justify-center shadow-lg">
+<span class="text-2xl font-black text-white/50">3</span>
+</div>
+</div>
+</section>
+<!-- User Performance Card (120px) -->
+<section class="px-6 mb-8">
+<div class="glass-panel rounded-2xl p-5 border border-white/5 relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant mb-1">Thành tích của bạn</h3>
+<p class="text-2xl font-black text-secondary">Hạng #1</p>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Kinh nghiệm</span>
+<p class="text-lg font-bold text-tertiary">+85 XP</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 mb-5">
+<div class="bg-surface-container-low p-2 rounded-xl text-center border border-white/5">
+<p class="text-[10px] text-on-surface-variant mb-0.5">Điểm</p>
+<p class="text-sm font-bold">142</p>
+</div>
+<div class="bg-surface-container-low p-2 rounded-xl text-center border border-white/5">
+<p class="text-[10px] text-on-surface-variant mb-0.5">Chính xác</p>
+<p class="text-sm font-bold">12/15</p>
+</div>
+<div class="bg-surface-container-low p-2 rounded-xl text-center border border-white/5">
+<p class="text-[10px] text-on-surface-variant mb-0.5">Tốc độ</p>
+<p class="text-sm font-bold">4.2s</p>
+</div>
+</div>
+<!-- Tier Progress Bar -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-[10px] font-bold text-on-surface-variant">Đến Ngọn Lửa I</span>
+<span class="text-[10px] font-bold text-secondary">65%</span>
+</div>
+<div class="h-2 w-full bg-primary-container rounded-full overflow-hidden">
+<div class="h-full podium-gradient-1 w-[65%] rounded-full shadow-[0_0_8px_rgba(248,189,69,0.4)]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Leaderboard List -->
+<section class="px-6 space-y-3">
+<h3 class="text-sm font-bold text-on-surface-variant px-1 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">group</span>
+            Xếp hạng chi tiết
+        </h3>
+<!-- Row 4 -->
+<div class="flex items-center gap-4 bg-surface-container-low p-3 rounded-xl border border-white/5">
+<span class="text-sm font-bold text-on-surface-variant w-4">4</span>
+<img class="w-10 h-10 rounded-full bg-surface-container" data-alt="profile of a woman with short dark hair friendly look clean simple backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4tDJ26umbXJrGdVLkh5wYUtZiORtk_upynpKUuQ4lezShn01odE38Z1YHFr7oNy6KtE_dQ1WSUHqAkQ90kitsqykLE9PagoMAOapZwx03ZknedqSz9DJYpF7KS8tuLYwEzSdZ7l4eqN3TYEFuqYw5167J3wvhr45l2QVIsHCgkckWQzWcRU2OJ5HNwEmN_zxlPQCBVa5LbzXAvXkl3mIg9wf2xcnIxk9b7QWzM-qbCpr6LtPOU6ZTW-KtGrnQfnVeHpMAuOKNsf8"/>
+<div class="flex-1">
+<p class="text-sm font-bold">An</p>
+<div class="flex gap-3 mt-0.5">
+<span class="text-[10px] text-on-surface-variant">98 pts</span>
+<span class="text-[10px] text-on-surface-variant">10/15</span>
+<span class="text-[10px] text-on-surface-variant">5.1s</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">more_vert</span>
+</div>
+<!-- Row 5 -->
+<div class="flex items-center gap-4 bg-surface-container-low p-3 rounded-xl border border-white/5">
+<span class="text-sm font-bold text-on-surface-variant w-4">5</span>
+<img class="w-10 h-10 rounded-full bg-surface-container" data-alt="profile of a cheerful young woman with long hair wearing a casual sweater bright lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwzI8p8j3KghO13PI9spI7KakYluz8tQGRZmEfbavXLGdAOj35FsdfXfDbxaniVDEf3ojKTxbrQYAXV97I4nWyYdkIZxnzgL9HYlQOWcRwSw6bdtpvBgSATdI6vyvbNc0krYz57n6orzTwAATVnGtCJR8-4hludjBXmZgHf4qAja3CrfOkDZyDXWvL84h52wa1HRmZ-ndjMixu-L1GaeZsYiDUlAfRQODRXiTHR2NcVJGcDnnXMzXMUYH1Sx25QbKEzJjUPNCTrnw"/>
+<div class="flex-1">
+<p class="text-sm font-bold">Hương</p>
+<div class="flex gap-3 mt-0.5">
+<span class="text-[10px] text-on-surface-variant">85 pts</span>
+<span class="text-[10px] text-on-surface-variant">9/15</span>
+<span class="text-[10px] text-on-surface-variant">6.4s</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">more_vert</span>
+</div>
+<!-- Row 6 -->
+<div class="flex items-center gap-4 bg-surface-container-low p-3 rounded-xl border border-white/5 opacity-80">
+<span class="text-sm font-bold text-on-surface-variant w-4">6</span>
+<img class="w-10 h-10 rounded-full bg-surface-container" data-alt="profile of a man with curly hair smiling professional look neutral lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6OSicA72DUcoaXq4JR2fTcOkqDIs0u4galfOISiCKW4zwmfD1FIITckg1V050SByHQThdBHVAHwLyyVtdRIBceqzmkRhiabj6n1v52PDAZCprUw8rIEWtakdjj4in-OJ0Hpk587pUW1VxzhAQX-stUwFP9RXo0cvo_vf72NImrttj9OH9Qqj_IOkwv85xDPq37Ee0MWMp5YeJCdMMm9u_C7iC3cePFcySTsD5UVvtLL-zHQAifiEN4T3IQIOr4cw0Dj7gsE28IkQ"/>
+<div class="flex-1">
+<p class="text-sm font-bold">Đức</p>
+<div class="flex gap-3 mt-0.5">
+<span class="text-[10px] text-on-surface-variant">72 pts</span>
+<span class="text-[10px] text-on-surface-variant">8/15</span>
+<span class="text-[10px] text-on-surface-variant">7.0s</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">more_vert</span>
+</div>
+<!-- Row 7 -->
+<div class="flex items-center gap-4 bg-surface-container-low p-3 rounded-xl border border-white/5 opacity-60">
+<span class="text-sm font-bold text-on-surface-variant w-4">7</span>
+<img class="w-10 h-10 rounded-full bg-surface-container" data-alt="profile of a young man with a focused expression soft dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcAemh-pY0pwABedYIdPNpzza4CxIYqYEpfdWb2QsSA4-dnEPYNl3aisZo0mZvvZP8Qm4b8T_UKK0_9Pu8U3BcyOo-u6WuK3OCsywT2PFPOouuDYHtmre7MB3KIfLT-RMo5_EBhbGF5M4Iib8UdWeOBDLI8JImNhPTZwLmjgfTQ3x3haSxEYcNW-hRwqCoO9E8_E7VzXQdkUQm6FmPk1WrHnCs14EA8Qig9xB227s0n2_aN65DGdf08Q1vNJZBuyASFU1QwuPDScY"/>
+<div class="flex-1">
+<p class="text-sm font-bold">Nam</p>
+<div class="flex gap-3 mt-0.5">
+<span class="text-[10px] text-on-surface-variant">54 pts</span>
+<span class="text-[10px] text-on-surface-variant">6/15</span>
+<span class="text-[10px] text-on-surface-variant">8.2s</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">more_vert</span>
+</div>
+</section>
+<!-- Fixed Bottom Actions -->
+<footer class="fixed bottom-0 w-full glass-panel pt-4 pb-8 px-6 border-t border-white/5 z-50">
+<div class="flex flex-col gap-4">
+<div class="flex gap-3">
+<button class="flex-[3] podium-gradient-1 text-on-secondary font-extrabold py-3.5 rounded-xl shadow-lg active:scale-95 transition-all text-sm uppercase tracking-wider">
+                    Chơi lại
+                </button>
+<button class="flex-1 bg-surface-container-highest border border-outline-variant text-on-surface py-3.5 rounded-xl flex items-center justify-center active:scale-95 transition-all">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+<div class="flex items-center justify-between px-2">
+<button class="text-secondary text-sm font-bold underline decoration-secondary/30 underline-offset-4 active:opacity-70">
+                    Xem lại câu hỏi
+                </button>
+<button class="text-on-surface-variant text-sm font-medium hover:text-on-surface active:opacity-70">
+                    Về sảnh
+                </button>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (JSON Anchored - Hidden on results focusing on actions) -->
+<nav class="hidden">
+<!-- Rendered purely as reference to Shared Component structure -->
+<div class="fixed bottom-0 w-full rounded-t-2xl z-50 bg-[#11131e]/90 backdrop-blur-2xl shadow-[0_-4px_24px_rgba(11,14,24,0.1)] flex justify-around items-center px-4 pb-6 pt-3">
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/50 px-6 py-2">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-medium">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#f8bd45] to-[#e7c268] text-[#11131e] rounded-xl px-6 py-2">
+<span class="material-symbols-outlined">replay</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-medium">Rematch</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/50 px-6 py-2">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-medium">Leaderboard</span>
+</div>
+</div>
+</nav>
+</body></html>

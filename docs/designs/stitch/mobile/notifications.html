@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffdea7",
+                    "on-error-container": "#ffdad6",
+                    "on-background": "#e1e1f1",
+                    "surface-tint": "#c0c4e8",
+                    "tertiary-fixed-dim": "#e7c268",
+                    "on-secondary-fixed": "#271900",
+                    "surface": "#11131e",
+                    "on-tertiary-container": "#a48431",
+                    "on-tertiary": "#3e2e00",
+                    "secondary-fixed-dim": "#f8bd45",
+                    "on-secondary": "#412d00",
+                    "surface-container": "#1d1f2a",
+                    "on-primary": "#2a2f4a",
+                    "background": "#11131e",
+                    "surface-bright": "#373845",
+                    "inverse-on-surface": "#2e303c",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "secondary": "#f8bd45",
+                    "on-tertiary-fixed-variant": "#5a4400",
+                    "surface-variant": "#323440",
+                    "surface-dim": "#11131e",
+                    "outline": "#919098",
+                    "on-primary-container": "#8286a7",
+                    "surface-container-low": "#191b26",
+                    "on-surface": "#e1e1f1",
+                    "inverse-primary": "#585d7b",
+                    "surface-container-high": "#272935",
+                    "primary": "#c0c4e8",
+                    "outline-variant": "#46464d",
+                    "primary-fixed-dim": "#c0c4e8",
+                    "primary-container": "#1a1f3a",
+                    "tertiary": "#e7c268",
+                    "primary-fixed": "#dee1ff",
+                    "error-container": "#93000a",
+                    "on-primary-fixed-variant": "#404562",
+                    "surface-container-lowest": "#0b0e18",
+                    "surface-container-highest": "#323440",
+                    "on-secondary-container": "#392600",
+                    "on-primary-fixed": "#151a34",
+                    "error": "#ffb4ab",
+                    "on-error": "#690005",
+                    "tertiary-container": "#2b1f00",
+                    "on-tertiary-fixed": "#251a00",
+                    "on-surface-variant": "#c7c5ce",
+                    "tertiary-fixed": "#ffdf96",
+                    "secondary-container": "#bc8709",
+                    "inverse-surface": "#e1e1f1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Be Vietnam Pro"],
+                    "body": ["Be Vietnam Pro"],
+                    "label": ["Be Vietnam Pro"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#11131e] flex justify-between items-center px-6 h-16 w-full shadow-none">
+<div class="flex items-center gap-4">
+<button class="hover:bg-[#272935] transition-colors active:scale-95 duration-200 p-2 rounded-full">
+<span class="material-symbols-outlined text-[#e1e1f1]/60" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Be_Vietnam_Pro'] tracking-tight font-bold text-lg text-[#f8bd45]">Notifications</h1>
+</div>
+<button class="font-['Be_Vietnam_Pro'] tracking-tight font-bold text-lg text-[#f8bd45] hover:bg-[#272935] transition-colors active:scale-95 duration-200 px-3 py-1 rounded-lg">
+            Mark as read
+        </button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 mt-16 mb-20 px-4 overflow-y-auto">
+<!-- Filter Tabs -->
+<div class="sticky top-16 z-40 bg-surface pt-4 pb-2">
+<div class="flex items-center gap-6 border-b border-outline-variant/10">
+<button class="pb-3 px-1 border-b-2 border-secondary text-secondary font-bold text-sm">Tất cả (12)</button>
+<button class="pb-3 px-1 text-on-surface-variant font-medium text-sm hover:text-on-surface transition-colors">Chưa đọc (3)</button>
+<button class="pb-3 px-1 text-on-surface-variant font-medium text-sm hover:text-on-surface transition-colors">Quan trọng</button>
+</div>
+</div>
+<!-- Notification Sections -->
+<div class="space-y-8 mt-6">
+<!-- Section: Today -->
+<section>
+<h3 class="text-xs uppercase tracking-[0.15em] font-extrabold text-on-surface-variant/50 mb-4 px-2">Hôm nay</h3>
+<div class="space-y-1">
+<!-- Achievement Notification (Unread) -->
+<div class="h-20 flex items-center gap-4 px-3 py-2 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group relative">
+<div class="w-12 h-12 flex-shrink-0 rounded-full bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h4 class="font-bold text-sm text-on-surface truncate pr-6">Bạn đã đạt tier Ngọn Lửa!</h4>
+<span class="text-[10px] text-on-surface-variant/60 whitespace-nowrap">2m ago</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed">Tiếp tục duy trì chuỗi học tập để nhận thêm nhiều phần quà hấp dẫn từ hội thánh.</p>
+</div>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(248,189,69,0.5)]"></div>
+</div>
+<!-- Social Notification -->
+<div class="h-20 flex items-center gap-4 px-3 py-2 rounded-xl hover:bg-surface-container transition-all group">
+<div class="w-12 h-12 flex-shrink-0 rounded-full bg-blue-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-400" data-icon="person_add">person_add</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h4 class="font-medium text-sm text-on-surface-variant truncate">An đã thêm bạn làm bạn</h4>
+<span class="text-[10px] text-on-surface-variant/40 whitespace-nowrap">1h ago</span>
+</div>
+<p class="text-xs text-on-surface-variant/70 line-clamp-2 leading-relaxed">Hãy chào hỏi người bạn mới này và cùng nhau học hỏi lời Chúa nhé.</p>
+</div>
+</div>
+<!-- Quiz Notification -->
+<div class="h-20 flex items-center gap-4 px-3 py-2 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group relative">
+<div class="w-12 h-12 flex-shrink-0 rounded-full bg-green-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-400" data-icon="quiz">quiz</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h4 class="font-bold text-sm text-on-surface truncate pr-6">Thử thách hôm nay đã mới!</h4>
+<span class="text-[10px] text-on-surface-variant/60 whitespace-nowrap">3h ago</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed">Cập nhật những câu hỏi mới nhất về sách Sáng Thế Ký ngay bây giờ.</p>
+</div>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(248,189,69,0.5)]"></div>
+</div>
+</div>
+</section>
+<!-- Section: Yesterday -->
+<section>
+<h3 class="text-xs uppercase tracking-[0.15em] font-extrabold text-on-surface-variant/50 mb-4 px-2">Hôm qua</h3>
+<div class="space-y-1">
+<div class="h-20 flex items-center gap-4 px-3 py-2 rounded-xl hover:bg-surface-container transition-all group">
+<div class="w-12 h-12 flex-shrink-0 rounded-full bg-purple-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-purple-400" data-icon="group">group</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h4 class="font-medium text-sm text-on-surface-variant truncate">Minh đã nhắc bạn trong nhóm</h4>
+<span class="text-[10px] text-on-surface-variant/40 whitespace-nowrap">Yesterday</span>
+</div>
+<p class="text-xs text-on-surface-variant/70 line-clamp-2 leading-relaxed">"Bạn có muốn tham gia buổi thảo luận tối nay không?"</p>
+</div>
+</div>
+<div class="h-20 flex items-center gap-4 px-3 py-2 rounded-xl hover:bg-surface-container transition-all group">
+<div class="w-12 h-12 flex-shrink-0 rounded-full bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="military_tech">military_tech</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h4 class="font-medium text-sm text-on-surface-variant truncate">Huy hiệu mới: Chuyên cần</h4>
+<span class="text-[10px] text-on-surface-variant/40 whitespace-nowrap">Yesterday</span>
+</div>
+<p class="text-xs text-on-surface-variant/70 line-clamp-2 leading-relaxed">Bạn đã hoàn thành bài học liên tiếp trong 7 ngày. Tuyệt vời!</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: This Week -->
+<section>
+<h3 class="text-xs uppercase tracking-[0.15em] font-extrabold text-on-surface-variant/50 mb-4 px-2">Tuần này</h3>
+<div class="space-y-1">
+<div class="h-20 flex items-center gap-4 px-3 py-2 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group relative">
+<div class="w-12 h-12 flex-shrink-0 rounded-full bg-orange-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-400" data-icon="warning">warning</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h4 class="font-bold text-sm text-on-surface truncate pr-6">Chuỗi của bạn sắp gãy!</h4>
+<span class="text-[10px] text-on-surface-variant/60 whitespace-nowrap">Wed</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed">Chỉ còn vài giờ nữa để duy trì ngọn lửa học tập của bạn. Đừng bỏ lỡ!</p>
+</div>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(248,189,69,0.5)]"></div>
+</div>
+<div class="h-20 flex items-center gap-4 px-3 py-2 rounded-xl hover:bg-surface-container transition-all group">
+<div class="w-12 h-12 flex-shrink-0 rounded-full bg-green-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-400" data-icon="event">event</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-0.5">
+<h4 class="font-medium text-sm text-on-surface-variant truncate">Mùa Xuân 2026 đã bắt đầu!</h4>
+<span class="text-[10px] text-on-surface-variant/40 whitespace-nowrap">Mon</span>
+</div>
+<p class="text-xs text-on-surface-variant/70 line-clamp-2 leading-relaxed">Xếp hạng mới đã mở. Hãy bắt đầu chinh phục những vị trí cao nhất.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-2xl border-t border-[#46464d]/15 bg-[#11131e]/80 backdrop-blur-xl flex justify-around items-center h-20 pb-safe px-4 shadow-[0_-4px_24px_rgba(11,14,24,0.06)]">
+<a class="flex flex-col items-center justify-center text-[#e1e1f1]/50 hover:text-[#f8bd45] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="menu_book">menu_book</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-widest font-bold">Study</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e1e1f1]/50 hover:text-[#f8bd45] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-widest font-bold">Journey</span>
+</a>
+<!-- Active Tab: Notifications (Activity) -->
+<a class="flex flex-col items-center justify-center bg-[#f8bd45]/10 text-[#f8bd45] rounded-xl px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="notifications" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-widest font-bold">Activity</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e1e1f1]/50 hover:text-[#f8bd45] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-widest font-bold">Profile</span>
+</a>
+</nav>
+</body></html>
