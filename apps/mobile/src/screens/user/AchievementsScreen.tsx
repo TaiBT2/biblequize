@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { useQuery } from '@tanstack/react-query'
@@ -6,6 +7,7 @@ import { apiClient } from '../../api/client'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
 export default function AchievementsScreen() {
+  const { t } = useTranslation()
   const { data } = useQuery({
     queryKey: ['my-achievements'],
     queryFn: () => apiClient.get('/api/achievements/me').then(r => r.data).catch(() => []),

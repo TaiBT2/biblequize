@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React, { useState, useRef } from 'react'
 import { View, Text, StyleSheet, FlatList, Dimensions, Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -35,6 +36,7 @@ const SLIDES = [
 ]
 
 export default function WelcomeSlidesScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const [currentIndex, setCurrentIndex] = useState(0)
   const flatListRef = useRef<FlatList>(null)

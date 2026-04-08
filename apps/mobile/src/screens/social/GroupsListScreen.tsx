@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -9,6 +10,7 @@ import { apiClient } from '../../api/client'
 import { colors, typography, spacing } from '../../theme'
 
 export default function GroupsListScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const { data } = useQuery({ queryKey: ['my-groups'], queryFn: () => apiClient.get('/api/groups/my').then(r => r.data), staleTime: 60_000 })
   const groups: any[] = Array.isArray(data) ? data : []

@@ -57,4 +57,16 @@ describe('calculateScore', () => {
     // base 12 + speed floor(12*0.5*1) = 12 + 6 = 18
     expect(score).toBe(18)
   })
+
+  it('applies daily first-question 2x bonus', () => {
+    const normal = calculateScore(base())
+    const daily = calculateScore(base({ isDailyFirst: true }))
+    expect(daily).toBe(normal * 2)
+  })
+
+  it('does not apply daily bonus when false', () => {
+    const a = calculateScore(base())
+    const b = calculateScore(base({ isDailyFirst: false }))
+    expect(a).toBe(b)
+  })
 })

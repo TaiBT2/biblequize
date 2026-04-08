@@ -5,6 +5,7 @@ export interface ScoreInput {
   timeLimitMs: number
   comboCount: number
   tierMultiplier: number
+  isDailyFirst?: boolean
 }
 
 export function calculateScore(input: ScoreInput): number {
@@ -20,5 +21,11 @@ export function calculateScore(input: ScoreInput): number {
   if (input.comboCount >= 10) comboMultiplier = 1.5
   else if (input.comboCount >= 5) comboMultiplier = 1.2
 
-  return Math.floor((base + speedBonus) * comboMultiplier * input.tierMultiplier)
+  let total = Math.floor((base + speedBonus) * comboMultiplier * input.tierMultiplier)
+
+  if (input.isDailyFirst) {
+    total = total * 2
+  }
+
+  return total
 }

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, ScrollView, Pressable, TextInput, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -26,6 +27,7 @@ const BOOK_FILTERS = [
 ]
 
 export default function CreateRoomScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const [roomName, setRoomName] = useState('')
   const [selectedMode, setSelectedMode] = useState('SPEED_RACE')

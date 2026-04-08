@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { useRoute } from '@react-navigation/native'
@@ -20,6 +21,7 @@ const CONTENT: Record<string, { title: string; body: string }> = {
 }
 
 export default function LegalScreen() {
+  const { t } = useTranslation()
   const route = useRoute<any>()
   const type = route.params?.type ?? 'about'
   const { title, body } = CONTENT[type] ?? CONTENT.about

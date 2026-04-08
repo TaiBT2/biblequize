@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { useRoute } from '@react-navigation/native'
@@ -11,6 +12,7 @@ import { getTierProgress } from '../../logic/tierProgression'
 import { colors, typography, spacing } from '../../theme'
 
 export default function OtherProfileScreen() {
+  const { t } = useTranslation()
   const route = useRoute<any>()
   const { data } = useQuery({
     queryKey: ['user-profile', route.params?.userId],

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native'
 import { useQuery } from '@tanstack/react-query'
@@ -13,6 +14,7 @@ const TABS = [
 ]
 
 export default function LeaderboardScreen() {
+  const { t } = useTranslation()
   const [period, setPeriod] = useState('weekly')
 
   const { data, isLoading } = useQuery({

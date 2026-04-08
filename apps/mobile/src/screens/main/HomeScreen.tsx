@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -21,6 +22,7 @@ const GAME_MODES = [
 ]
 
 export default function HomeScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const { user } = useAuthStore()
 

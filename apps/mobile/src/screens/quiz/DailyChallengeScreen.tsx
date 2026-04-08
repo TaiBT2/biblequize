@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -9,6 +10,7 @@ import { apiClient } from '../../api/client'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
 export default function DailyChallengeScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const [starting, setStarting] = useState(false)
 

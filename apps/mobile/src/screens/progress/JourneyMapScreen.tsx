@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, ScrollView, Pressable, ActivityIndicator } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -30,6 +31,7 @@ interface JourneyData {
 type Testament = 'OT' | 'NT'
 
 export default function JourneyMapScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const [activeTab, setActiveTab] = useState<Testament>('OT')
 

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native'
@@ -7,6 +8,7 @@ import { useOnboardingStore } from '../../stores/onboardingStore'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
 export default function TryQuizResultScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const route = useRoute<any>()
   const { setHasSeenOnboarding } = useOnboardingStore()

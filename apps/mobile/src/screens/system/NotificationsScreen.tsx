@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { useQuery } from '@tanstack/react-query'
@@ -7,6 +8,7 @@ import { apiClient } from '../../api/client'
 import { colors, typography, spacing } from '../../theme'
 
 export default function NotificationsScreen() {
+  const { t } = useTranslation()
   const { data } = useQuery({
     queryKey: ['notifications'],
     queryFn: () => apiClient.get('/api/notifications').then(r => r.data).catch(() => []),

@@ -1,9 +1,11 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { colors, typography, spacing } from '../../theme'
 
 export default function TierUpScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
 
   return (

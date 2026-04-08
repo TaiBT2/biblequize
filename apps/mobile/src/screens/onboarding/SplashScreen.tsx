@@ -1,9 +1,11 @@
+import { useTranslation } from 'react-i18next'
 import React, { useEffect } from 'react'
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { colors, typography, spacing } from '../../theme'
 
 export default function SplashScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
 
   useEffect(() => {

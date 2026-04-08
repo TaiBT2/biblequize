@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView, Pressable, ActivityIndicator, RefreshControl } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -28,6 +29,7 @@ const MODE_LABELS: Record<string, { label: string; icon: string }> = {
 }
 
 export default function MultiplayerLobbyScreen() {
+  const { t } = useTranslation()
   const navigation = useNavigation<any>()
 
   const { data, isLoading, error, refetch, isRefetching } = useQuery<Room[]>({

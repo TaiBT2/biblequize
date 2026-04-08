@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { useRoute } from '@react-navigation/native'
@@ -9,6 +10,7 @@ import { apiClient } from '../../api/client'
 import { colors, typography, spacing } from '../../theme'
 
 export default function GroupDetailScreen() {
+  const { t } = useTranslation()
   const route = useRoute<any>()
   const { data } = useQuery({ queryKey: ['group', route.params?.groupId], queryFn: () => apiClient.get('/api/groups/' + route.params?.groupId).then(r => r.data), enabled: !!route.params?.groupId })
   const group = data ?? {}

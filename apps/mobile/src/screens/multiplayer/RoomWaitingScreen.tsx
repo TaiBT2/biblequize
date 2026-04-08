@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { useRoute } from '@react-navigation/native'
@@ -8,6 +9,7 @@ import Button from '../../components/ui/Button'
 import { colors, typography, spacing } from '../../theme'
 
 export default function RoomWaitingScreen() {
+  const { t } = useTranslation()
   const route = useRoute<any>()
   const isHost = route.params?.isHost ?? false
 

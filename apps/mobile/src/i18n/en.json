@@ -9,50 +9,254 @@
     "next": "Next",
     "done": "Done",
     "error": "An error occurred",
-    "noData": "No data"
+    "noData": "No data",
+    "close": "Close",
+    "yes": "Yes",
+    "no": "No",
+    "all": "All",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "viewAll": "View all"
   },
-  "onboarding": {
-    "selectLanguage": "Select language",
-    "vietnamese": "Tiếng Việt",
-    "english": "English",
-    "continue": "Continue",
-    "skip": "Skip",
-    "tryNow": "Try now",
-    "getStarted": "Get started"
-  },
-  "auth": {
-    "loginTitle": "Login",
-    "loginWithGoogle": "Login with Google",
-    "loginWithEmail": "Login with Email"
-  },
-  "home": {
-    "greeting": "Hello",
-    "dailyChallenge": "Daily Challenge",
-    "streak": "Streak",
-    "totalPoints": "Total Points",
-    "gameModes": "Game Modes"
-  },
-  "quiz": {
-    "correct": "Correct!",
-    "incorrect": "Wrong!",
-    "explanation": "Explanation",
-    "nextQuestion": "Next",
-    "viewResults": "View Results",
-    "bookmarkForReview": "Bookmark for review"
-  },
-  "results": {
-    "score": "Score",
-    "accuracy": "Accuracy",
-    "time": "Time",
-    "playAgain": "Play Again",
-    "review": "Review",
-    "backToHome": "Back to Home"
-  },
-  "tabs": {
+  "nav": {
     "home": "Home",
     "quiz": "Quiz",
     "multiplayer": "Multiplayer",
     "groups": "Groups",
     "profile": "Profile"
+  },
+  "onboarding": {
+    "welcome": "Welcome",
+    "selectLanguage": "Choose your language to begin",
+    "continue": "Continue",
+    "skip": "Skip",
+    "tryNow": "Try now",
+    "getStarted": "Get started",
+    "slide1Title": "Welcome to BibleQuiz",
+    "slide1Desc": "Learn the Bible through interactive quizzes every day. Smart system helps you progress step by step.",
+    "slide2Title": "Compete together",
+    "slide2Desc": "4 group play modes: Speed Race, Battle Royale, Team vs Team, Sudden Death.",
+    "slide3Title": "Journey of 66 books",
+    "slide3Desc": "Conquer each Bible book. Track your mastery progress.",
+    "registerFree": "Register for free",
+    "later": "Later",
+    "potential": "You have potential to learn the Bible!",
+    "joinedToday": "{{count}} people joined today"
+  },
+  "auth": {
+    "title": "BibleQuiz",
+    "tagline": "Study the Bible together",
+    "freeNoAds": "Free, no ads",
+    "loginWithGoogle": "Continue with Google",
+    "loginWithEmail": "Login with Email",
+    "or": "or",
+    "agreeTerms": "By logging in, you agree to the",
+    "terms": "Terms of Service",
+    "and": "and",
+    "privacy": "Privacy Policy"
+  },
+  "home": {
+    "gameModes": "Game Modes",
+    "leaderboard": "Leaderboard",
+    "practice": "Practice",
+    "practiceDesc": "Learn stress-free",
+    "ranked": "Ranked",
+    "rankedDesc": "Compete for ranking",
+    "daily": "Daily Challenge",
+    "dailyDesc": "5 questions daily",
+    "mystery": "Mystery",
+    "mysteryDesc": "Random 1.5x XP",
+    "speed": "Speed Round",
+    "speedDesc": "10 Q × 10s",
+    "multiplayer": "Multiplayer",
+    "multiplayerDesc": "Create PvP rooms",
+    "pointsToNext": "{{points}} XP to {{tier}}"
+  },
+  "quiz": {
+    "question": "Q {{current}}/{{total}}",
+    "correct": "✓ Correct!",
+    "incorrect": "✗ Wrong!",
+    "explanation": "Explanation",
+    "nextQuestion": "Next →",
+    "viewResults": "Results",
+    "bookmarkForReview": "Bookmark for review",
+    "quitConfirm": "Are you sure? Progress will be lost.",
+    "quitTitle": "Quit quiz?"
+  },
+  "results": {
+    "title": "Results",
+    "score": "points",
+    "correct": "Correct",
+    "wrong": "Wrong",
+    "accuracy": "Accuracy",
+    "review": "Review answers",
+    "backToHome": "Back to home",
+    "excellent": "Excellent!",
+    "good": "Well done!",
+    "ok": "Not bad!",
+    "tryHarder": "Keep trying!"
+  },
+  "practiceSelect": {
+    "title": "Practice",
+    "subtitle": "Configure your quiz",
+    "difficulty": "Difficulty",
+    "questionCount": "Questions",
+    "all": "All",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard",
+    "perQuestion": "/ question",
+    "start": "Start"
+  },
+  "ranked": {
+    "title": "Ranked Match",
+    "energy": "Energy",
+    "energyCost": "Wrong -5 energy/question",
+    "autoDifficulty": "Auto difficulty",
+    "autoDifficultyDesc": "Based on your tier",
+    "xpBoost": "Tier XP boost",
+    "xpBoostDesc": "Higher tier = more XP",
+    "start": "Enter Ranked"
+  },
+  "daily": {
+    "title": "Daily Challenge",
+    "questionsToday": "questions today",
+    "minutes": "minutes",
+    "xpBonus": "+50 XP",
+    "streak": "Streak",
+    "start": "Start",
+    "loadingQuestions": "Loading questions..."
+  },
+  "review": {
+    "title": "Review",
+    "correctCount": "{{correct}}/{{total}} correct",
+    "explanation": "💡 Explanation",
+    "youChose": "You chose"
+  },
+  "multiplayer": {
+    "title": "Multiplayer",
+    "createRoom": "Create Room",
+    "publicRooms": "Public Rooms",
+    "noRooms": "No rooms available",
+    "players": "players",
+    "join": "Join",
+    "wsPlaceholder": "Realtime multiplayer quiz will be integrated with WebSocket STOMP"
+  },
+  "room": {
+    "title": "Waiting Room",
+    "youAreHost": "You are the host",
+    "waitingForHost": "Waiting for host to start...",
+    "roomCode": "Room Code",
+    "playersCount": "Players (0/8)",
+    "you": "You",
+    "host": "👑 Host",
+    "player": "Player",
+    "ready": "Ready",
+    "start": "Start"
+  },
+  "roomResults": {
+    "title": "Results"
+  },
+  "tournament": {
+    "title": "Tournament",
+    "bracketPlaceholder": "Bracket view will show elimination matches",
+    "inProgress": "In Progress"
+  },
+  "groups": {
+    "myGroups": "My Groups",
+    "join": "+ Join",
+    "noGroups": "No groups yet",
+    "joinGroup": "Join Group",
+    "createGroup": "Create Group",
+    "members": "members",
+    "memberSection": "Members",
+    "leader": "Leader",
+    "member": "Member",
+    "code": "Code",
+    "joinTitle": "Join Group",
+    "joinSubtitle": "Enter group code from the leader",
+    "codePlaceholder": "Group code (6 chars)",
+    "createTitle": "Create New Group",
+    "namePlaceholder": "Group name",
+    "descPlaceholder": "Description (optional)",
+    "success": "Success",
+    "joinedSuccess": "Joined group!",
+    "createdSuccess": "Group created! Code: {{code}}",
+    "invalidCode": "Invalid group code",
+    "createFailed": "Cannot create group"
+  },
+  "leaderboard": {
+    "title": "Leaderboard",
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "allTime": "All Time",
+    "noData": "No data yet",
+    "questions": "questions"
+  },
+  "profile": {
+    "totalPoints": "Total Points",
+    "currentStreak": "Current Streak",
+    "longestStreak": "Record",
+    "achievements": "🏆 Achievements",
+    "settings": "⚙️ Settings",
+    "challenge": "Challenge"
+  },
+  "achievements": {
+    "title": "Achievements",
+    "unlocked": "{{unlocked}}/{{total}} unlocked",
+    "loadingBadges": "Loading achievements..."
+  },
+  "settings": {
+    "title": "Settings",
+    "soundHaptics": "Sound & Haptics",
+    "sound": "Sound",
+    "haptics": "Haptic Feedback",
+    "language": "Language",
+    "account": "Account",
+    "logout": "Logout",
+    "logoutConfirm": "Are you sure you want to logout?",
+    "info": "Information",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "version": "BibleQuiz v2.0.0",
+    "deleteAccount": "Delete Account",
+    "deleteConfirm": "Type 'DELETE ACCOUNT' to confirm",
+    "deleteWarning": "This action cannot be undone. All data will be deleted."
+  },
+  "notifications": {
+    "title": "Notifications",
+    "noNotifications": "No notifications"
+  },
+  "tierUp": {
+    "congratulations": "Congratulations!",
+    "youReached": "You've ranked up!",
+    "xpDouble": "🎁 Double XP",
+    "moreEnergy": "⚡ More energy/hour",
+    "newMode": "🔓 New mode unlocked",
+    "continue": "Continue the journey"
+  },
+  "legal": {
+    "privacyTitle": "Privacy Policy",
+    "privacyBody": "BibleQuiz is committed to protecting your privacy. We only collect necessary data to provide the service: name, email, learning progress. Data is never sold to third parties. You can request account deletion at any time.",
+    "termsTitle": "Terms of Service",
+    "termsBody": "By using BibleQuiz, you agree to: use the app for learning purposes, not share copyrighted content, respect the community. BibleQuiz reserves the right to terminate violating accounts.",
+    "aboutTitle": "About BibleQuiz",
+    "aboutBody": "BibleQuiz is an interactive Bible learning app through quizzes. Developed to help the Christian community learn God's Word every day. Free, no ads.",
+    "copyright": "© 2025 BibleQuiz. All rights reserved."
+  },
+  "errors": {
+    "networkError": "No network connection",
+    "serverError": "Server error, try again later",
+    "unauthorized": "Session expired",
+    "offline": "You are offline",
+    "somethingWrong": "Something went wrong"
+  },
+  "journey": {
+    "title": "Bible Journey",
+    "oldTestament": "Old Testament",
+    "newTestament": "New Testament",
+    "questions": "questions"
   }
 }
