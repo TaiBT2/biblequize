@@ -1,0 +1,58 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "back": "Back",
+    "next": "Next",
+    "done": "Done",
+    "error": "An error occurred",
+    "noData": "No data"
+  },
+  "onboarding": {
+    "selectLanguage": "Select language",
+    "vietnamese": "Tiếng Việt",
+    "english": "English",
+    "continue": "Continue",
+    "skip": "Skip",
+    "tryNow": "Try now",
+    "getStarted": "Get started"
+  },
+  "auth": {
+    "loginTitle": "Login",
+    "loginWithGoogle": "Login with Google",
+    "loginWithEmail": "Login with Email"
+  },
+  "home": {
+    "greeting": "Hello",
+    "dailyChallenge": "Daily Challenge",
+    "streak": "Streak",
+    "totalPoints": "Total Points",
+    "gameModes": "Game Modes"
+  },
+  "quiz": {
+    "correct": "Correct!",
+    "incorrect": "Wrong!",
+    "explanation": "Explanation",
+    "nextQuestion": "Next",
+    "viewResults": "View Results",
+    "bookmarkForReview": "Bookmark for review"
+  },
+  "results": {
+    "score": "Score",
+    "accuracy": "Accuracy",
+    "time": "Time",
+    "playAgain": "Play Again",
+    "review": "Review",
+    "backToHome": "Back to Home"
+  },
+  "tabs": {
+    "home": "Home",
+    "quiz": "Quiz",
+    "multiplayer": "Multiplayer",
+    "groups": "Groups",
+    "profile": "Profile"
+  }
+}
