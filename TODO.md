@@ -1,5 +1,136 @@
 # TODO
 
+## Sound Effects + Animations — "Feel" cho Quiz [IN PROGRESS]
+
+### Task SF-1: Sound Manager + generated sounds
+- Status: [ ] TODO
+- File(s): src/services/soundManager.ts
+
+### Task SF-2: Haptic feedback utility
+- Status: [ ] TODO
+- File(s): src/utils/haptics.ts
+
+### Task SF-3: Quiz answer animations + combo banner
+- Status: [ ] TODO
+- File(s): Quiz.tsx, global.css
+
+### Task SF-4: Timer warning animations + sounds
+- Status: [ ] TODO
+- File(s): Quiz.tsx, global.css
+
+### Task SF-5: Quiz Results celebrations + confetti
+- Status: [ ] TODO
+- File(s): QuizResults.tsx
+
+### Task SF-6: Tier Up celebration modal
+- Status: [ ] TODO
+- File(s): components/TierUpModal.tsx
+
+### Task SF-7: Sound + haptics settings
+- Status: [ ] TODO
+- File(s): Profile.tsx
+
+### Task SF-8: Tests + full regression
+- Status: [ ] TODO
+
+---
+
+## Tier Progression Enhancement v1 [DONE]
+
+### Task TP-1: P0-A Backend — TierProgressService + API
+- Status: [x] DONE
+- File(s): modules/ranked/service/TierProgressService.java, api/TierProgressController.java
+- Checklist:
+  - [ ] TierProgressService.getStarInfo(totalPoints) → StarInfo record
+  - [ ] TierProgressService.checkStarBoundary(userId, oldPoints, newPoints) → star event
+  - [ ] GET /api/me/tier-progress endpoint
+  - [ ] Unit test
+  - [ ] Commit: "feat: P0-A TierProgressService + /api/me/tier-progress"
+
+### Task TP-2: P0-A Frontend — TierProgressBar + Star Popup
+- Status: [x] DONE
+- File(s): components/TierProgressBar.tsx, components/StarPopup.tsx, pages/Home.tsx
+- Test: components/__tests__/TierProgressBar.test.tsx
+- Checklist:
+  - [ ] TierProgressBar component with 5 star dots
+  - [ ] StarPopup notification (auto-dismiss 2.5s)
+  - [ ] Integrate into Home page
+  - [ ] Unit test
+  - [ ] Commit: "feat: P0-A TierProgressBar + star popup"
+
+### Task TP-3: P0-B Backend — DailyMission entity + service + API
+- Status: [x] DONE
+- File(s): modules/quiz/entity/DailyMission.java, modules/quiz/repository/DailyMissionRepository.java, modules/quiz/service/DailyMissionService.java, api/DailyMissionController.java, V23 migration
+- Checklist:
+  - [ ] Flyway V23 migration for daily_mission table
+  - [ ] DailyMission entity
+  - [ ] DailyMissionRepository
+  - [ ] DailyMissionService (getOrCreate, trackProgress)
+  - [ ] GET /api/me/daily-missions endpoint
+  - [ ] Unit test
+  - [ ] Commit: "feat: P0-B DailyMission backend"
+
+### Task TP-4: P0-B Frontend — Daily Missions card
+- Status: [x] DONE
+- File(s): components/DailyMissionsCard.tsx, pages/Home.tsx
+- Test: components/__tests__/DailyMissionsCard.test.tsx
+- Checklist:
+  - [ ] DailyMissionsCard component
+  - [ ] Integrate into Home page
+  - [ ] Unit test
+  - [ ] Commit: "feat: P0-B DailyMissions card on Home"
+
+### Task TP-5: P1-A — Milestone Burst (backend + frontend)
+- Status: [x] DONE
+- File(s): TierProgressService.java, User.java, V24 migration, Home.tsx
+- Checklist:
+  - [ ] Add xp_surge_until to users table (V24 migration)
+  - [ ] Milestone detection (50%/90%) in TierProgressService
+  - [ ] XP surge multiplier in ScoringService
+  - [ ] Frontend milestone banner + countdown
+  - [ ] Unit test
+  - [ ] Commit: "feat: P1-A Milestone Burst"
+
+### Task TP-6: P1-B — Comeback Bridge (backend + frontend)
+- Status: [x] DONE
+- File(s): modules/user/service/ComebackService.java, api/ComebackController.java, V25 migration, frontend modal
+- Checklist:
+  - [ ] Add last_active_date, comeback_claimed_at to users (V25)
+  - [ ] ComebackService.checkAndGrant logic
+  - [ ] API endpoints (GET status, POST claim)
+  - [ ] Frontend comeback modal
+  - [ ] Unit test
+  - [ ] Commit: "feat: P1-B Comeback Bridge"
+
+### Task TP-7: P2-A — Tier Cosmetics (backend + frontend)
+- Status: [x] DONE
+- File(s): modules/user/entity/UserCosmetics.java, V26 migration, api/CosmeticController.java, frontend settings
+- Checklist:
+  - [ ] user_cosmetics table (V26)
+  - [ ] CosmeticService + auto-unlock on tier-up
+  - [ ] API endpoints (GET, PATCH)
+  - [ ] Frontend appearance settings
+  - [ ] Unit test
+  - [ ] Commit: "feat: P2-A Tier Cosmetics"
+
+### Task TP-8: P2-B — Prestige System (backend + frontend)
+- Status: [x] DONE
+- File(s): User.java fields, V27 migration, modules/ranked/service/PrestigeService.java, api/PrestigeController.java, frontend profile
+- Checklist:
+  - [ ] Add prestige fields to users (V27)
+  - [ ] PrestigeService (canPrestige, executePrestige)
+  - [ ] API endpoints (GET status, POST prestige)
+  - [ ] Frontend prestige UI
+  - [ ] Unit test
+  - [ ] Commit: "feat: P2-B Prestige System"
+
+### Task TP-9: Full regression
+- Status: [x] DONE
+- Checklist:
+  - [ ] npx vitest run
+  - [ ] Backend tests
+  - [ ] Test count >= baseline
+
 ## Backend Mobile Auth — 3 Endpoints [DONE]
 
 ### Task MA-1: Google API dependency + config
@@ -308,25 +439,25 @@
 ## Phase 2: UI i18n — Giao diện tiếng Anh [DONE]
 
 ### Task i18n-1: Setup react-i18next + translation files
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): src/i18n/index.ts, src/i18n/vi.json, src/i18n/en.json, main.tsx
 - Commit: "feat: setup react-i18next + vi/en translations"
 
 ### Task i18n-2: Update QuizLanguageSelect → i18n language switcher
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): QuizLanguageSelect.tsx, AppLayout.tsx, LandingPage.tsx
 - Commit: "feat: language switcher uses i18n"
 
 ### Task i18n-3: Migrate core pages (AppLayout, Home, LandingPage, Login, NotFound)
-- Status: [ ] TODO
+- Status: [x] DONE
 - Commit: "i18n: migrate core pages"
 
 ### Task i18n-4: Migrate game pages (Practice, Ranked, DailyChallenge, Quiz)
-- Status: [ ] TODO
+- Status: [x] DONE
 - Commit: "i18n: migrate game pages"
 
 ### Task i18n-5: Tests + Regression
-- Status: [ ] TODO
+- Status: [x] DONE
 
 ---
 
@@ -335,7 +466,7 @@
 > Question entity + DB đã có language field. Cần wire vào business logic.
 
 ### Task EN-1: Backend — Wire language vào SessionService + QuestionService
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): SessionService.java, QuestionService.java
 - Checklist:
   - [ ] QuestionService.getRandomQuestions() thêm language param, filter query
@@ -346,7 +477,7 @@
   - [ ] Commit: "feat: filter questions by language in session creation"
 
 ### Task EN-2: Backend — Wire language vào DailyChallengeService
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): DailyChallengeService.java, DailyChallengeController.java
 - Checklist:
   - [ ] getDailyQuestions() thêm language param
@@ -356,7 +487,7 @@
   - [ ] Commit: "feat: daily challenge filter by language"
 
 ### Task EN-3: Backend — Update API endpoints + DTOs
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): SessionController, RankedController, AdminQuestionController
 - Checklist:
   - [ ] POST /sessions body thêm language
@@ -367,7 +498,7 @@
   - [ ] Commit: "feat: language param in all quiz API endpoints"
 
 ### Task EN-4: Frontend — User quiz language selection
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): Practice.tsx, CreateRoom.tsx, Profile.tsx, authStore.ts
 - Checklist:
   - [ ] quizLanguage setting in authStore or localStorage
@@ -377,7 +508,7 @@
   - [ ] Commit: "feat: user quiz language selection UI"
 
 ### Task EN-5: Admin — Language filter + coverage
-- Status: [ ] TODO
+- Status: [x] DONE
 - File(s): Questions.tsx, Dashboard.tsx
 - Checklist:
   - [ ] Language filter dropdown in Questions admin
@@ -385,7 +516,7 @@
   - [ ] Commit: "feat: admin question management by language"
 
 ### Task EN-6: Tests + Regression
-- Status: [ ] TODO
+- Status: [x] DONE
 - Checklist:
   - [ ] BE: language filter tests
   - [ ] FE: language selector tests

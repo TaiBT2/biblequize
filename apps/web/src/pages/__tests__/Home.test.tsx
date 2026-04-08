@@ -43,6 +43,16 @@ describe('Home Dashboard', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mockApiGet.mockImplementation((url: string) => {
+      if (url.includes('/api/me/comeback-status'))
+        return Promise.resolve({ data: { daysSinceLastPlay: 0, rewardTier: 'NONE', claimed: false, reward: null } })
+      if (url.includes('/api/me/daily-missions'))
+        return Promise.resolve({ data: { date: '2026-04-07', missions: [
+          { slot: 1, type: 'answer_correct', description: 'Trả lời đúng 3 câu', progress: 1, target: 3, completed: false },
+          { slot: 2, type: 'complete_daily_challenge', description: 'Hoàn thành thử thách', progress: 0, target: 1, completed: false },
+          { slot: 3, type: 'answer_combo', description: 'Combo 5', progress: 0, target: 1, completed: false },
+        ], allCompleted: false, bonusClaimed: false, bonusXp: 50 } })
+      if (url.includes('/api/me/tier-progress'))
+        return Promise.resolve({ data: { tierLevel: 3, tierName: 'Môn Đồ', totalPoints: 8200, nextTierPoints: 15000, tierProgressPercent: 32.0, starIndex: 1, starXp: 7000, nextStarXp: 9000, starProgressPercent: 60.0, milestone: null } })
       if (url.includes('/api/me/journey'))
         return Promise.resolve({ data: { summary: { totalBooks: 66, completedBooks: 0, inProgressBooks: 1, lockedBooks: 65, overallMasteryPercent: 0, currentBook: null }, books: [] } })
       if (url.includes('/api/me'))

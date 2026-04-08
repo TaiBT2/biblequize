@@ -85,8 +85,20 @@ public class ScoringService {
      */
     public ScoreResult calculateWithTier(Question.Difficulty difficulty, int clientElapsedMs,
                                           int currentStreak, boolean isDailyFirst, int tierLevel) {
+        return calculateWithTier(difficulty, clientElapsedMs, currentStreak, isDailyFirst, tierLevel, false);
+    }
+
+    /**
+     * Calculate with tier XP multiplier + optional XP surge (1.5x from milestone burst).
+     */
+    public ScoreResult calculateWithTier(Question.Difficulty difficulty, int clientElapsedMs,
+                                          int currentStreak, boolean isDailyFirst, int tierLevel,
+                                          boolean xpSurgeActive) {
         ScoreResult base = calculate(difficulty, clientElapsedMs, currentStreak, isDailyFirst);
         double multiplier = tierRewardsConfig.getRewards(tierLevel).xpMultiplier();
+        if (xpSurgeActive) {
+            multiplier *= 1.5;
+        }
         int boosted = (int) Math.round(base.earned * multiplier);
         return new ScoreResult(boosted, base.baseScore, base.speedBonus,
                 base.comboMultiplierPercent, base.isDailyFirst);

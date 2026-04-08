@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { soundManager } from '../services/soundManager'
+import { haptic } from '../utils/haptics'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 
@@ -49,10 +51,12 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
   const [correctDisplay, setCorrectDisplay] = useState(0)
   const [timeDisplay, setTimeDisplay] = useState(0)
 
-  function getGradeText(accuracy: number): { text: string; color: string } {
-    if (accuracy >= 90) return { text: t('results.excellent'), color: 'text-[#4ade80]' }
-    if (accuracy >= 70) return { text: t('results.good'), color: 'text-secondary' }
-    return { text: t('results.tryHarder'), color: 'text-error' }
+  function getGradeText(accuracy: number): { text: string; color: string; emoji: string } {
+    if (accuracy >= 95) return { text: t('results.excellent'), color: 'text-yellow-400', emoji: '👑' }
+    if (accuracy >= 80) return { text: t('results.excellent'), color: 'text-[#4ade80]', emoji: '⭐' }
+    if (accuracy >= 60) return { text: t('results.good'), color: 'text-secondary', emoji: '💪' }
+    if (accuracy >= 40) return { text: t('results.tryHarder'), color: 'text-blue-400', emoji: '📖' }
+    return { text: t('results.tryHarder'), color: 'text-error', emoji: '🙏' }
   }
 
   if (!stats) {
@@ -87,6 +91,20 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
     }, 800 / steps)
     return () => clearInterval(interval)
   }, [stats.totalScore, stats.correctAnswers, stats.totalTime])
+
+  // Sound effects on mount
+  useEffect(() => {
+    const accuracy = stats.totalQuestions > 0 ? (stats.correctAnswers / stats.totalQuestions) * 100 : 0
+    if (accuracy >= 95) {
+      soundManager.play('perfectScore')
+      haptic.tierUp()
+    } else if (accuracy >= 70) {
+      soundManager.play('quizComplete')
+      haptic.correct()
+    } else {
+      soundManager.play('quizComplete')
+    }
+  }, [])
 
   // Save ranked progress
   useEffect(() => {
