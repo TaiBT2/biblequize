@@ -170,6 +170,33 @@ public class SmartQuestionSelector {
         }
     }
 
+    /**
+     * Select from a pre-built pool of questions with smart history prioritization.
+     */
+    public List<Question> selectFromPool(String userId, List<Question> pool, int count) {
+        if (pool.isEmpty() || count <= 0) return List.of();
+
+        Set<String> seenIds = new HashSet<>(historyRepository.findQuestionIdsByUserId(userId));
+
+        List<Question> unseen = new ArrayList<>();
+        List<Question> seen = new ArrayList<>();
+        for (Question q : pool) {
+            if (!seenIds.contains(q.getId())) unseen.add(q);
+            else seen.add(q);
+        }
+
+        Collections.shuffle(unseen);
+        Collections.shuffle(seen);
+
+        List<Question> result = new ArrayList<>();
+        result.addAll(unseen.subList(0, Math.min(count, unseen.size())));
+        int remaining = count - result.size();
+        if (remaining > 0) {
+            result.addAll(seen.subList(0, Math.min(remaining, seen.size())));
+        }
+        return result;
+    }
+
     public record QuestionFilter(String book, String difficulty, String language) {
         public QuestionFilter(String book, String difficulty) {
             this(book, difficulty, "vi");

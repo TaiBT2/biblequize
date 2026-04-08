@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import ComebackModal from '../components/ComebackModal'
+import DailyBonusModal from '../components/DailyBonusModal'
 import DailyMissionsCard from '../components/DailyMissionsCard'
 import GameModeGrid from '../components/GameModeGrid'
 import MilestoneBanner from '../components/MilestoneBanner'
@@ -105,6 +106,7 @@ export default function Home() {
   return (
     <div className="space-y-8 max-w-7xl mx-auto w-full">
       <ComebackModal />
+      <DailyBonusModal />
       <TutorialOverlay />
       {/* ── Hero: Greeting + Tier ── */}
       <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">

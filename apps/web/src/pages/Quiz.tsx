@@ -41,21 +41,24 @@ interface QuizStats {
 interface QuizPageSettings {
   sessionId?: string
   questions?: Question[]
-  mode?: 'practice' | 'ranked' | 'room'
+  mode?: string
   book?: string
   difficulty?: string
   showExplanation?: boolean
   isRanked?: boolean
+  timePerQuestion?: number
 }
 
 const ANSWER_LETTERS = ['A', 'B', 'C', 'D']
 const FILL_STYLE = { fontVariationSettings: "'FILL' 1" } as const
+const DEFAULT_TIMER = 30
 
 const Quiz: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { t } = useTranslation()
   const settings = location.state as QuizPageSettings | null
+  const timerLimit = settings?.timePerQuestion ?? DEFAULT_TIMER
 
   const [questions, setQuestions] = useState<Question[]>([])
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -152,7 +155,7 @@ const Quiz: React.FC = () => {
         const initialQuestions = settings?.questions || []
         if (initialQuestions.length > 0) {
           setQuestions(initialQuestions)
-          setTimeLeft(30)
+          setTimeLeft(timerLimit)
           setQuizStartTime(Date.now())
           setQuizStats(prev => ({
             ...prev,
@@ -178,7 +181,7 @@ const Quiz: React.FC = () => {
     setSelectedAnswer(answerIndex)
     setShowResult(true)
 
-    const timeTaken = 30 - timeLeft
+    const timeTaken = timerLimit - timeLeft
     let correct = false
     let rankedResponse: Record<string, unknown> | null = null
 
@@ -187,7 +190,7 @@ const Quiz: React.FC = () => {
         const res = await api.post(`/api/ranked/sessions/${settings.sessionId}/answer`, {
           questionId: currentQuestion.id,
           answer: answerIndex,
-          clientElapsedMs: (30 - timeLeft) * 1000
+          clientElapsedMs: (timerLimit - timeLeft) * 1000
         })
 
         const data = res.data
@@ -253,7 +256,7 @@ const Quiz: React.FC = () => {
         const res = await api.post(`/api/sessions/${settings.sessionId}/answer`, {
           questionId: currentQuestion.id,
           answer: answerIndex,
-          clientElapsedMs: (30 - timeLeft) * 1000
+          clientElapsedMs: (timerLimit - timeLeft) * 1000
         })
         const data = res.data
         correct = !!data.isCorrect
@@ -375,7 +378,7 @@ const Quiz: React.FC = () => {
       setSelectedAnswer(null)
       setShowResult(false)
       setIsCorrect(null)
-      setTimeLeft(30)
+      setTimeLeft(timerLimit)
       setLastQuestionScore(0)
       setAnswerAnim(null)
     }
@@ -422,7 +425,7 @@ const Quiz: React.FC = () => {
           setLives(5)
           setScore(0)
           setCorrectAnswers(0)
-          setTimeLeft(30)
+          setTimeLeft(timerLimit)
           setIsQuizCompleted(false)
           setLastQuestionScore(0)
           setUserAnswers(new Array(questions.length).fill(null))
@@ -576,7 +579,7 @@ const Quiz: React.FC = () => {
                   fill="none" strokeWidth="2"
                   strokeLinecap="round"
                   strokeDasharray="100"
-                  strokeDashoffset={100 - (timeLeft / 30) * 100}
+                  strokeDashoffset={100 - (timeLeft / timerLimit) * 100}
                 />
               </svg>
               <span className={`absolute font-headline font-black text-xl ${

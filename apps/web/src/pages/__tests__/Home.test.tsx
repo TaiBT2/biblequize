@@ -43,6 +43,8 @@ describe('Home Dashboard', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mockApiGet.mockImplementation((url: string) => {
+      if (url.includes('/api/quiz/daily-bonus'))
+        return Promise.resolve({ data: { hasBonus: false } })
       if (url.includes('/api/me/comeback-status'))
         return Promise.resolve({ data: { daysSinceLastPlay: 0, rewardTier: 'NONE', claimed: false, reward: null } })
       if (url.includes('/api/me/daily-missions'))

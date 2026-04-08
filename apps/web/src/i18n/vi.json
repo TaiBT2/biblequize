@@ -536,7 +536,16 @@
     "tournamentTag": "BRACKET 1V1",
     "tournamentBtn": "Vào Giải Đấu",
     "noEnergy": "Hết Năng Lượng",
-    "dailyCompleted": "Đã hoàn thành"
+    "dailyCompleted": "Đã hoàn thành",
+    "weekly": "Chủ Đề Tuần",
+    "weeklyDesc": "Mỗi tuần một chủ đề mới. 10 câu hỏi, xoay vòng 10 chủ đề.",
+    "weeklyBtn": "Chơi Ngay",
+    "mystery": "Mystery Mode",
+    "mysteryDesc": "Random hoàn toàn! Không biết sách, không biết độ khó. 1.5x XP.",
+    "mysteryBtn": "Tôi Đủ Can Đảm!",
+    "speed": "Speed Round",
+    "speedDesc": "10 câu × 10 giây. Chỉ câu dễ. 2x XP!",
+    "speedBtn": "Bắt Đầu!"
   },
   "liveFeed": {
     "correct1": "✅ {{name}} trả lời đúng! ({{time}}s)",
