@@ -1,177 +1,109 @@
-import { View, Text, ScrollView, StyleSheet, Alert, ActivityIndicator } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import React, { useState } from 'react'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useQuery } from '@tanstack/react-query'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { api } from '../../api/client'
-import { colors } from '../../theme/colors'
-import { spacing } from '../../theme/spacing'
-import { GlassCard } from '../../components/GlassCard'
-import { GoldButton } from '../../components/GoldButton'
-import { ProgressBar } from '../../components/ProgressBar'
-import { TierBadge } from '../../components/TierBadge'
-import { getTierByPoints, getNextTier } from '../../data/tiers'
+import SafeScreen from '../../components/layout/SafeScreen'
+import Button from '../../components/ui/Button'
+import Card from '../../components/ui/Card'
+import ProgressBar from '../../components/ui/ProgressBar'
+import { apiClient } from '../../api/client'
+import { getTierProgress } from '../../logic/tierProgression'
+import { colors, typography, spacing, borderRadius } from '../../theme'
 
-export const RankedScreen = () => {
+export default function RankedScreen() {
   const navigation = useNavigation<any>()
+  const [starting, setStarting] = useState(false)
 
-  const meQuery = useQuery({
+  const { data: meData } = useQuery({
     queryKey: ['me'],
-    queryFn: () => api.get('/api/me').then((r) => r.data),
-    staleTime: 5 * 60 * 1000,
+    queryFn: () => apiClient.get('/api/me').then(r => r.data),
+    staleTime: 5 * 60_000,
   })
 
-  const rankedQuery = useQuery({
-    queryKey: ['ranked-status'],
-    queryFn: () => api.get('/api/me/ranked-status').then((r) => r.data),
-    staleTime: 30 * 1000,
-  })
-
-  const seasonQuery = useQuery({
-    queryKey: ['active-season'],
-    queryFn: () => api.get('/api/seasons/active').then((r) => r.data),
-  })
-
-  const totalPoints = meQuery.data?.totalPoints ?? 0
-  const energy = rankedQuery.data?.livesRemaining ?? 0
-  const maxEnergy = rankedQuery.data?.dailyLives ?? 100
-  const questionsToday = rankedQuery.data?.questionsToday ?? 0
-  const currentBook = rankedQuery.data?.currentBook ?? ''
-  const tier = getTierByPoints(totalPoints)
-  const nextTier = getNextTier(totalPoints)
-  const tierProgress = nextTier
-    ? (totalPoints - tier.minPoints) / (nextTier.minPoints - tier.minPoints)
-    : 1
-  const noEnergy = energy <= 0 && !rankedQuery.isLoading
+  const totalPoints = meData?.totalPoints ?? 0
+  const tier = getTierProgress(totalPoints)
 
   const handleStart = async () => {
-    let rankedSessionId: string | undefined
+    setStarting(true)
     try {
-      // 1. Create ranked session (gets sessionId + currentBook)
-      const rankedRes = await api.post('/api/ranked/sessions')
-      rankedSessionId = rankedRes.data?.sessionId
-
-      // 2. Create a quiz session with questions from the ranked book
-      const sessionRes = await api.post('/api/sessions', {
-        mode: 'RANKED',
-        book: rankedRes.data?.currentBook,
+      const res = await apiClient.post('/api/sessions', {
+        mode: 'ranked',
         questionCount: 10,
+        difficulty: 'all',
       })
-      const sessionId = sessionRes.data?.sessionId ?? sessionRes.data?.id ?? rankedSessionId
-      if (sessionId) {
-        navigation.navigate('Quiz', { sessionId, mode: 'ranked' })
-      }
-    } catch (err: any) {
-      // Cleanup orphan ranked session if quiz session creation failed
-      if (rankedSessionId) {
-        api.delete(`/api/ranked/sessions/${rankedSessionId}`).catch(() => {})
-      }
-      Alert.alert('Lỗi', err.response?.data?.message ?? 'Không tạo được phiên ranked')
+      navigation.navigate('Quiz', {
+        sessionId: res.data.sessionId,
+        questions: res.data.questions,
+        mode: 'ranked',
+        isRanked: true,
+      })
+    } catch {
+      setStarting(false)
     }
   }
 
-  if (meQuery.isLoading || rankedQuery.isLoading) {
-    return (
-      <SafeAreaView style={styles.container}>
-        <View style={styles.loadingCenter}>
-          <ActivityIndicator size="large" color={colors.gold} />
-        </View>
-      </SafeAreaView>
-    )
-  }
-
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+    <SafeScreen>
+      <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.title}>Thi Đấu Xếp Hạng</Text>
 
-        {/* Tier */}
-        <GlassCard style={styles.tierCard}>
-          <TierBadge points={totalPoints} size="lg" />
-          <View style={styles.tierInfo}>
-            <Text style={styles.pointsText}>{totalPoints.toLocaleString()} điểm</Text>
-            {nextTier && (
-              <>
-                <ProgressBar progress={tierProgress} height={8} />
-                <Text style={styles.nextTierLabel}>
-                  Cần {(nextTier.minPoints - totalPoints).toLocaleString()} điểm → {nextTier.icon} {nextTier.name}
-                </Text>
-              </>
-            )}
+        {/* Tier card */}
+        <Card style={styles.tierCard}>
+          <View style={styles.tierHeader}>
+            <Text style={styles.tierIcon}>{tier.current.icon}</Text>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.tierName}>{tier.current.name}</Text>
+              <Text style={styles.tierPoints}>{totalPoints.toLocaleString()} XP</Text>
+            </View>
           </View>
-        </GlassCard>
+          <ProgressBar progress={tier.percent} height={8} />
+          {tier.next && (
+            <Text style={styles.tierNext}>Còn {tier.pointsToNext.toLocaleString()} XP đến {tier.next.name}</Text>
+          )}
+        </Card>
 
-        {/* Energy */}
-        <GlassCard style={styles.energyCard}>
-          <View style={styles.energyHeader}>
-            <MaterialCommunityIcons name="lightning-bolt" size={20} color={colors.gold} />
-            <Text style={styles.energyTitle}>Năng lượng</Text>
+        {/* Info */}
+        <Card>
+          <View style={styles.infoRow}>
+            <Text style={styles.infoIcon}>⚡</Text>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.infoTitle}>Năng lượng</Text>
+              <Text style={styles.infoDesc}>Sai -5 năng lượng/câu</Text>
+            </View>
           </View>
-          <View style={styles.energyBarContainer}>
-            <ProgressBar progress={energy / maxEnergy} height={12} />
+          <View style={styles.infoRow}>
+            <Text style={styles.infoIcon}>📊</Text>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.infoTitle}>Độ khó tự động</Text>
+              <Text style={styles.infoDesc}>Theo tier level của bạn</Text>
+            </View>
           </View>
-          <Text style={styles.energyText}>{energy} / {maxEnergy}</Text>
-          <Text style={styles.energySub}>Sai -5/câu • Reset mỗi ngày</Text>
-        </GlassCard>
+          <View style={styles.infoRow}>
+            <Text style={styles.infoIcon}>🏆</Text>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.infoTitle}>XP nhân tier</Text>
+              <Text style={styles.infoDesc}>Tier cao hơn = XP nhiều hơn</Text>
+            </View>
+          </View>
+        </Card>
 
-        {/* Stats */}
-        <View style={styles.statsRow}>
-          <GlassCard style={styles.statMini}>
-            <Text style={styles.statValue}>{questionsToday}</Text>
-            <Text style={styles.statLabel}>Câu hôm nay</Text>
-          </GlassCard>
-          <GlassCard style={styles.statMini}>
-            <Text style={styles.statValue}>{currentBook || '—'}</Text>
-            <Text style={styles.statLabel}>Sách hiện tại</Text>
-          </GlassCard>
-        </View>
-
-        {/* Season */}
-        {seasonQuery.data && (
-          <GlassCard style={styles.seasonCard}>
-            <MaterialCommunityIcons name="calendar-star" size={20} color={colors.gold} />
-            <Text style={styles.seasonText}>{seasonQuery.data.name ?? 'Mùa hiện tại'}</Text>
-          </GlassCard>
-        )}
-
-        {/* Start */}
-        <GoldButton
-          title={noEnergy ? 'Hết Năng Lượng' : 'Bắt Đầu Ranked'}
-          onPress={handleStart}
-          disabled={noEnergy}
-        />
+        <Button title="Vào Thi Đấu" onPress={handleStart} loading={starting} fullWidth />
       </ScrollView>
-    </SafeAreaView>
+    </SafeScreen>
   )
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.bg.primary },
-  loadingCenter: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  content: { padding: spacing.xl, paddingBottom: spacing['4xl'] },
-
-  title: { fontSize: 24, fontWeight: '700', color: colors.text.primary, marginBottom: spacing.xl },
-
-  tierCard: { flexDirection: 'row', alignItems: 'center', gap: spacing.lg, marginBottom: spacing.lg },
-  tierInfo: { flex: 1, gap: spacing.xs },
-  pointsText: { fontSize: 18, fontWeight: '700', color: colors.text.primary },
-  nextTierLabel: { fontSize: 12, color: colors.text.muted },
-
-  energyCard: { marginBottom: spacing.lg },
-  energyHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, marginBottom: spacing.md },
-  energyTitle: { fontSize: 15, fontWeight: '600', color: colors.text.primary },
-  energyBarContainer: { marginBottom: spacing.sm },
-  energyText: { fontSize: 20, fontWeight: '700', color: colors.gold, textAlign: 'center' },
-  energySub: { fontSize: 12, color: colors.text.muted, textAlign: 'center', marginTop: spacing.xs },
-
-  statsRow: { flexDirection: 'row', gap: spacing.md, marginBottom: spacing.lg },
-  statMini: { flex: 1, alignItems: 'center', paddingVertical: spacing.lg },
-  statValue: { fontSize: 20, fontWeight: '700', color: colors.text.primary, marginBottom: spacing.xs },
-  statLabel: { fontSize: 12, color: colors.text.secondary },
-
-  seasonCard: {
-    flexDirection: 'row', alignItems: 'center', gap: spacing.md,
-    marginBottom: spacing['2xl'],
-  },
-  seasonText: { fontSize: 14, color: colors.text.primary, fontWeight: '500' },
+  content: { padding: spacing.xl, gap: spacing.xl },
+  title: { fontSize: typography.size['2xl'], fontWeight: typography.weight.bold, color: colors.textPrimary },
+  tierCard: { gap: spacing.md },
+  tierHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  tierIcon: { fontSize: 40 },
+  tierName: { fontSize: typography.size.lg, fontWeight: typography.weight.bold, color: colors.gold },
+  tierPoints: { fontSize: typography.size.xs, color: colors.textMuted },
+  tierNext: { fontSize: typography.size.xs, color: colors.textMuted, textAlign: 'right' },
+  infoRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, paddingVertical: spacing.sm },
+  infoIcon: { fontSize: 20 },
+  infoTitle: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.textPrimary },
+  infoDesc: { fontSize: typography.size.xs, color: colors.textMuted },
 })

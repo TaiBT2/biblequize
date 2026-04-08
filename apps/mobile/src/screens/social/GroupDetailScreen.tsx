@@ -1,127 +1,43 @@
-import { useState } from 'react'
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { useNavigation, useRoute, type RouteProp } from '@react-navigation/native'
+import React from 'react'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import { useRoute } from '@react-navigation/native'
 import { useQuery } from '@tanstack/react-query'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { api } from '../../api/client'
-import { colors } from '../../theme/colors'
-import { spacing, borderRadius } from '../../theme/spacing'
-import { GlassCard } from '../../components/GlassCard'
-import { Avatar } from '../../components/Avatar'
-import type { GroupStackParamList } from '../../navigation/types'
+import SafeScreen from '../../components/layout/SafeScreen'
+import Card from '../../components/ui/Card'
+import Avatar from '../../components/ui/Avatar'
+import { apiClient } from '../../api/client'
+import { colors, typography, spacing } from '../../theme'
 
-type Tab = 'leaderboard' | 'members' | 'announcements'
-
-export const GroupDetailScreen = () => {
-  const navigation = useNavigation()
-  const route = useRoute<RouteProp<GroupStackParamList, 'GroupDetail'>>()
-  const { groupId } = route.params
-  const [tab, setTab] = useState<Tab>('leaderboard')
-
-  const groupQuery = useQuery({
-    queryKey: ['group', groupId],
-    queryFn: () => api.get(`/api/groups/${groupId}`).then((r) => r.data),
-  })
-
-  const lbQuery = useQuery({
-    queryKey: ['group-leaderboard', groupId],
-    queryFn: () => api.get(`/api/groups/${groupId}/leaderboard`).then((r) => r.data),
-    enabled: tab === 'leaderboard',
-  })
-
-  const group = groupQuery.data
-  const entries = lbQuery.data?.content ?? lbQuery.data ?? []
-
-  const TABS: { key: Tab; label: string }[] = [
-    { key: 'leaderboard', label: 'Xếp hạng' },
-    { key: 'members', label: 'Thành viên' },
-    { key: 'announcements', label: 'Thông báo' },
-  ]
+export default function GroupDetailScreen() {
+  const route = useRoute<any>()
+  const { data } = useQuery({ queryKey: ['group', route.params?.groupId], queryFn: () => apiClient.get('/api/groups/' + route.params?.groupId).then(r => r.data), enabled: !!route.params?.groupId })
+  const group = data ?? {}
+  const members: any[] = group.members ?? []
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <MaterialCommunityIcons name="arrow-left" size={24} color={colors.text.primary} />
-        </TouchableOpacity>
-        <View style={styles.headerInfo}>
-          <Text style={styles.groupName}>{group?.name ?? 'Nhóm'}</Text>
-          <Text style={styles.groupSub}>{group?.memberCount ?? 0} thành viên</Text>
-        </View>
-        <View style={{ width: 24 }} />
-      </View>
-
-      {/* Tabs */}
-      <View style={styles.tabs}>
-        {TABS.map((t) => (
-          <TouchableOpacity
-            key={t.key}
-            style={[styles.tab, tab === t.key && styles.tabActive]}
-            onPress={() => setTab(t.key)}
-          >
-            <Text style={[styles.tabText, tab === t.key && styles.tabTextActive]}>
-              {t.label}
-            </Text>
-          </TouchableOpacity>
+    <SafeScreen>
+      <ScrollView contentContainerStyle={s.content}>
+        <View style={s.header}><Text style={{ fontSize: 48 }}>⛪</Text><Text style={s.title}>{group.name ?? 'Nhóm'}</Text>
+          <Text style={s.meta}>{members.length} thành viên • Mã: {group.code ?? ''}</Text></View>
+        <Text style={s.section}>Thành viên</Text>
+        {members.map((m: any) => (
+          <Card key={m.userId} style={s.row}>
+            <Avatar uri={m.avatarUrl} name={m.name} size={36} />
+            <View style={{ flex: 1 }}><Text style={s.name}>{m.name}</Text><Text style={s.role}>{m.role === 'LEADER' ? 'Trưởng nhóm' : 'Thành viên'}</Text></View>
+            <Text style={s.pts}>{m.points?.toLocaleString() ?? 0} XP</Text>
+          </Card>
         ))}
-      </View>
-
-      {/* Content */}
-      {tab === 'leaderboard' && (
-        <FlatList
-          data={entries}
-          keyExtractor={(item: any, i) => item.userId ?? String(i)}
-          contentContainerStyle={styles.list}
-          renderItem={({ item, index }) => (
-            <GlassCard style={styles.row}>
-              <Text style={styles.rank}>{index + 1}</Text>
-              <Avatar uri={item.avatarUrl} name={item.name ?? 'User'} size={32} />
-              <Text style={styles.name} numberOfLines={1}>{item.name ?? 'User'}</Text>
-              <Text style={styles.score}>{(item.score ?? 0).toLocaleString()}</Text>
-            </GlassCard>
-          )}
-        />
-      )}
-
-      {tab === 'members' && (
-        <View style={styles.placeholder}>
-          <Text style={styles.placeholderText}>Danh sách thành viên</Text>
-        </View>
-      )}
-
-      {tab === 'announcements' && (
-        <View style={styles.placeholder}>
-          <Text style={styles.placeholderText}>Chưa có thông báo</Text>
-        </View>
-      )}
-    </SafeAreaView>
+      </ScrollView>
+    </SafeScreen>
   )
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.bg.primary },
-  header: {
-    flexDirection: 'row', alignItems: 'center', gap: spacing.md,
-    paddingHorizontal: spacing.xl, paddingVertical: spacing.md,
-  },
-  headerInfo: { flex: 1 },
-  groupName: { fontSize: 18, fontWeight: '700', color: colors.text.primary },
-  groupSub: { fontSize: 12, color: colors.text.secondary },
-
-  tabs: { flexDirection: 'row', paddingHorizontal: spacing.xl, gap: spacing.sm, marginBottom: spacing.lg },
-  tab: { flex: 1, alignItems: 'center', paddingVertical: spacing.sm, borderRadius: borderRadius.full },
-  tabActive: { backgroundColor: colors.goldLight },
-  tabText: { fontSize: 13, color: colors.text.muted, fontWeight: '500' },
-  tabTextActive: { color: colors.gold },
-
-  list: { paddingHorizontal: spacing.xl, gap: spacing.sm, paddingBottom: spacing['4xl'] },
-
-  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, marginBottom: 0 },
-  rank: { width: 24, fontSize: 14, fontWeight: '700', color: colors.text.secondary, textAlign: 'center' },
-  name: { flex: 1, fontSize: 14, color: colors.text.primary },
-  score: { fontSize: 14, fontWeight: '600', color: colors.gold },
-
-  placeholder: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  placeholderText: { color: colors.text.muted, fontSize: 15 },
+const s = StyleSheet.create({
+  content: { padding: spacing.lg, gap: spacing.md }, header: { alignItems: 'center', paddingVertical: spacing.xl },
+  title: { fontSize: typography.size['2xl'], fontWeight: typography.weight.bold, color: colors.textPrimary, marginTop: spacing.sm },
+  meta: { fontSize: typography.size.sm, color: colors.textMuted, marginTop: spacing.xs },
+  section: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.textMuted, textTransform: 'uppercase', letterSpacing: 1, marginTop: spacing.lg },
+  row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  name: { fontSize: typography.size.sm, fontWeight: typography.weight.semibold, color: colors.textPrimary },
+  role: { fontSize: 10, color: colors.textMuted }, pts: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold },
 })

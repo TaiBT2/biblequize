@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Room Lobby - Host View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ffb4ab",
+                        "on-surface": "#e1e1f1",
+                        "primary-container": "#1a1f3a",
+                        "on-primary-fixed-variant": "#404562",
+                        "on-tertiary": "#3e2e00",
+                        "on-secondary-container": "#392600",
+                        "on-secondary-fixed": "#271900",
+                        "surface-container-lowest": "#0b0e18",
+                        "on-error": "#690005",
+                        "on-secondary": "#412d00",
+                        "on-primary-container": "#8286a7",
+                        "inverse-primary": "#585d7b",
+                        "secondary-fixed": "#ffdea7",
+                        "primary": "#c0c4e8",
+                        "surface-container-low": "#191b26",
+                        "surface-bright": "#373845",
+                        "surface-variant": "#323440",
+                        "on-primary": "#2a2f4a",
+                        "surface-dim": "#11131e",
+                        "secondary": "#f8bd45",
+                        "surface-container-high": "#272935",
+                        "primary-fixed-dim": "#c0c4e8",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#e7c268",
+                        "surface-container-highest": "#323440",
+                        "on-tertiary-fixed-variant": "#5a4400",
+                        "tertiary-fixed": "#ffdf96",
+                        "on-surface-variant": "#c7c5ce",
+                        "on-primary-fixed": "#151a34",
+                        "tertiary": "#e7c268",
+                        "on-tertiary-container": "#a48431",
+                        "secondary-fixed-dim": "#f8bd45",
+                        "outline-variant": "#46464d",
+                        "outline": "#919098",
+                        "surface-tint": "#c0c4e8",
+                        "surface-container": "#1d1f2a",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#11131e",
+                        "tertiary-container": "#2b1f00",
+                        "primary-fixed": "#dee1ff",
+                        "inverse-on-surface": "#2e303c",
+                        "on-background": "#e1e1f1",
+                        "on-tertiary-fixed": "#251a00",
+                        "background": "#11131e",
+                        "inverse-surface": "#e1e1f1",
+                        "secondary-container": "#bc8709"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%);
+        }
+        .glass-card {
+            background: rgba(50, 52, 64, 0.6);
+            backdrop-filter: blur(16px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary/30">
+<!-- Header / TopAppBar Execution -->
+<header class="bg-[#1d1f2a] w-full top-0 sticky z-50 shadow-none">
+<div class="flex items-center justify-between px-6 h-[120px] w-full">
+<div class="flex items-center gap-4">
+<button class="text-[#f8bd45] hover:bg-[#272935] p-2 rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-be-vietnam-pro tracking-[-0.02em] font-bold text-xl text-[#e1e1f1]">Phòng của Minh</h1>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-xs font-label uppercase tracking-widest text-[#f8bd45] bg-[#272935] px-2 py-0.5 rounded">#ABC123</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant cursor-pointer hover:text-secondary">content_copy</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant cursor-pointer hover:text-secondary">share</span>
+</div>
+</div>
+</div>
+<button class="text-[#f8bd45] hover:bg-[#272935] p-2 rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-6 pb-40">
+<!-- Room Info Card -->
+<section class="mt-4 mb-8">
+<div class="bg-surface-container rounded-xl p-5 border-l-4 border-secondary relative overflow-hidden shadow-sm">
+<div class="flex justify-between items-start">
+<div class="z-10">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 bg-secondary-container/20 rounded-full mb-3">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="text-xs font-bold text-secondary uppercase tracking-wider">Speed Race</span>
+</div>
+<h2 class="text-on-surface font-bold text-lg mb-1">Sáng Thế Ký • 15 câu hỏi</h2>
+<p class="text-on-surface-variant text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">signal_cellular_alt</span> Trung bình
+                            <span class="mx-1 text-outline-variant opacity-30">|</span>
+<span class="material-symbols-outlined text-xs">schedule</span> ~8 phút
+                        </p>
+</div>
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-8xl text-secondary">menu_book</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Players Section -->
+<section class="mb-8">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-sm font-label uppercase tracking-[0.1em] text-on-surface-variant flex items-center gap-2">
+                    Người chơi (4/8) <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+</h3>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Slot 1: Minh (Host) -->
+<div class="bg-surface-container-high p-4 rounded-xl flex items-center gap-4 relative overflow-hidden">
+<div class="relative">
+<img alt="Minh" class="w-12 h-12 rounded-full bg-surface-container-highest" data-alt="Stylized 3D avatar of a young man with glasses and friendly expression on a dark navy background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfnRZkj9UsTLWIQi7NwhE2L7-qPXxImPgbuLaM9ffice2H-oC9bQVlAQudHdkjIi9RZM3J0SMPiZe65-Bet1ge74R42Qo1tafBdMGqbQvUQ7lVexCeaurR-kHsIik0B6XeKipe6sq9zEtDbmzYZoIy3B4Ubh0Mb_xAHUnE24F9DrlqH1jrchS3uFXsbWOLoZDq9nOc3-mcwu-YY193mlB3ElcuSW5oNtEOGK77j2MqxnkrqY3j5Jp0Q6P9nY0hP2e9S1knlEQ8xj0"/>
+<div class="absolute -bottom-1 -right-1 bg-secondary rounded-full p-0.5 border-2 border-surface-container-high">
+<span class="material-symbols-outlined text-[10px] text-on-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-1">
+<span class="text-sm font-bold">Minh</span>
+<span class="material-symbols-outlined text-green-400 text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="text-[10px] font-label uppercase tracking-tighter text-secondary">Tiên Tri</span>
+</div>
+</div>
+<!-- Slot 2: An -->
+<div class="bg-surface-container-high p-4 rounded-xl flex items-center gap-4">
+<img alt="An" class="w-12 h-12 rounded-full bg-surface-container-highest" data-alt="Minimalist avatar of a person with a bob haircut and a serene expression on a deep blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJNiZb88XYD6gZvbSLMTufj2LTdeRClr3YBUvHaNk7Qs8o3hH8IQJz9-we5l3usUWpfeWt_KuU48yk8d5HmJNbkvMVUCTXE7YUIgwTmW8DCogxiK8ltsXfPrjRvbGXM_-60KwGmE-_AzjHHAKbK9mEPvaExd6QG0sDuBy5XmEo_HqSkO2k9dAlbi4xZKLfk2TXV39kPWILajMVME53Hf6Q7ViVdZ5YlvnqEsySHQDDFbQivhjyD1VwlG9iHxGjENoQLNYpRngfb8g"/>
+<div>
+<div class="flex items-center gap-1">
+<span class="text-sm font-bold">An</span>
+<span class="material-symbols-outlined text-green-400 text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="text-[10px] font-label uppercase tracking-tighter text-on-surface-variant">Tân Tín Hữu</span>
+</div>
+</div>
+<!-- Slot 3: Hương -->
+<div class="bg-surface-container-high p-4 rounded-xl flex items-center gap-4">
+<img alt="Huong" class="w-12 h-12 rounded-full bg-surface-container-highest" data-alt="Avatar of a woman with long hair and a soft smile, elegant and calm style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVFJw_ZDV_CZOyiU0dQOReuzr3Yeyt4fKUI1XVmixjgyssAAEmc8g6oMqDY-kdiNXLh6m3YQ0pKXtOAH6tDWDNHR6gZJkKUHyBMw5PwQhP5gupDXPfIKBTJVvL--hP8KCmbUavgiY256BDhDDtnSh6--Jroi7PIN3oBa5w50BEyDDXhWhLaplAPyg8wS-wWUpouUDvaa9sJ81gkFeWleGGzyhLsuBxLZLJseSEEyEhzMGNGPk0gG9-ob5Cruibtp1yHcodZ1XXZ8c"/>
+<div>
+<div class="flex items-center gap-1">
+<span class="text-sm font-bold">Hương</span>
+<span class="material-symbols-outlined text-green-400 text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="text-[10px] font-label uppercase tracking-tighter text-on-surface-variant">Môn Đồ</span>
+</div>
+</div>
+<!-- Slot 4: Đức -->
+<div class="bg-surface-container-high p-4 rounded-xl flex items-center gap-4 ring-1 ring-secondary/20">
+<img alt="Duc" class="w-12 h-12 rounded-full bg-surface-container-highest grayscale opacity-70" data-alt="Avatar of a man with a short beard and curious expression in muted tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8_KwihlqqsdZLrvBk_oI8UfYglbwDhaUJwZX0zKFZe5yyyM8lRNdS63x_-CLc0sDwkGeFNyOkOQFnhqSsDsK4Owg3kX8PRlvOMOM3iB0PElkyoroiPgiVunPeNA0z-FCnYfsZd1CS8PcAUEGn-FYS0lfhTd450FFP93Di6i5u-d3dWK46wlB6cj8ovD8TDTtoDmtT7mP8TGKmtSxE886VaW-1-kqDfofUB19MX9FAExWD4aQWJP41AjnbGEy2gkDzaqg7hTGDkO8"/>
+<div>
+<div class="flex items-center gap-1">
+<span class="text-sm font-bold">Đức</span>
+</div>
+<span class="text-[10px] font-label text-secondary italic">Đang chờ...</span>
+</div>
+</div>
+<!-- Empty Slots -->
+<div class="border-2 border-dashed border-outline-variant/20 p-4 rounded-xl flex items-center justify-center gap-3 opacity-40">
+<span class="material-symbols-outlined text-on-surface-variant">add_circle</span>
+<span class="text-xs font-label">Chờ...</span>
+</div>
+<div class="border-2 border-dashed border-outline-variant/20 p-4 rounded-xl flex items-center justify-center gap-3 opacity-40">
+<span class="material-symbols-outlined text-on-surface-variant">add_circle</span>
+<span class="text-xs font-label">Chờ...</span>
+</div>
+<div class="border-2 border-dashed border-outline-variant/20 p-4 rounded-xl flex items-center justify-center gap-3 opacity-40">
+<span class="material-symbols-outlined text-on-surface-variant">add_circle</span>
+<span class="text-xs font-label">Chờ...</span>
+</div>
+<div class="border-2 border-dashed border-outline-variant/20 p-4 rounded-xl flex items-center justify-center gap-3 opacity-40">
+<span class="material-symbols-outlined text-on-surface-variant">add_circle</span>
+<span class="text-xs font-label">Chờ...</span>
+</div>
+</div>
+</section>
+<!-- Chat Preview -->
+<section class="glass-card rounded-2xl p-4 mb-8">
+<div class="space-y-3 mb-4 max-h-[120px] overflow-hidden">
+<div class="flex gap-2">
+<span class="text-secondary font-bold text-xs">Minh:</span>
+<span class="text-on-surface-variant text-xs">Chào mọi người!</span>
+</div>
+<div class="flex gap-2">
+<span class="text-on-surface font-bold text-xs">An:</span>
+<span class="text-on-surface-variant text-xs">Sẵn sàng rồi 💪</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex gap-4 justify-around py-1">
+<button class="text-lg hover:scale-125 transition-transform">👍</button>
+<button class="text-lg hover:scale-125 transition-transform">❤️</button>
+<button class="text-lg hover:scale-125 transition-transform">😂</button>
+<button class="text-lg hover:scale-125 transition-transform">🙏</button>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-highest rounded-full border-none px-5 py-2 text-sm focus:ring-1 focus:ring-secondary/50 placeholder:text-on-surface-variant/50" placeholder="Gõ tin nhắn..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-secondary">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Actions Sticky -->
+<div class="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-surface via-surface/95 to-transparent z-40">
+<div class="max-w-2xl mx-auto flex flex-col items-center gap-4">
+<div class="w-full flex flex-col items-center gap-2">
+<!-- Disabled State Style for Start Button -->
+<button class="w-full h-14 rounded-xl font-bold text-lg gold-gradient text-on-secondary opacity-50 cursor-not-allowed shadow-lg shadow-secondary/10 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">play_arrow</span>
+                    Bắt đầu game
+                </button>
+<p class="text-xs font-medium text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">info</span>
+                    Cần tất cả sẵn sàng (3/4)
+                </p>
+</div>
+<button class="text-error/80 text-sm font-semibold hover:text-error transition-colors underline underline-offset-4 decoration-error/30">
+                Hủy phòng
+            </button>
+</div>
+</div>
+</body></html>

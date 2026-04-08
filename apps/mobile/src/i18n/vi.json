@@ -1,0 +1,58 @@
+{
+  "common": {
+    "loading": "Đang tải...",
+    "retry": "Thử lại",
+    "cancel": "Huỷ",
+    "confirm": "Xác nhận",
+    "save": "Lưu",
+    "back": "Quay lại",
+    "next": "Tiếp tục",
+    "done": "Xong",
+    "error": "Đã xảy ra lỗi",
+    "noData": "Không có dữ liệu"
+  },
+  "onboarding": {
+    "selectLanguage": "Chọn ngôn ngữ",
+    "vietnamese": "Tiếng Việt",
+    "english": "English",
+    "continue": "Tiếp tục",
+    "skip": "Bỏ qua",
+    "tryNow": "Thử ngay",
+    "getStarted": "Bắt đầu"
+  },
+  "auth": {
+    "loginTitle": "Đăng nhập",
+    "loginWithGoogle": "Đăng nhập với Google",
+    "loginWithEmail": "Đăng nhập với Email"
+  },
+  "home": {
+    "greeting": "Xin chào",
+    "dailyChallenge": "Thử Thách Ngày",
+    "streak": "Chuỗi ngày",
+    "totalPoints": "Tổng điểm",
+    "gameModes": "Chế độ chơi"
+  },
+  "quiz": {
+    "correct": "Chính xác!",
+    "incorrect": "Sai rồi!",
+    "explanation": "Giải thích",
+    "nextQuestion": "Câu tiếp",
+    "viewResults": "Xem kết quả",
+    "bookmarkForReview": "Đánh dấu ôn lại"
+  },
+  "results": {
+    "score": "Điểm số",
+    "accuracy": "Độ chính xác",
+    "time": "Thời gian",
+    "playAgain": "Chơi lại",
+    "review": "Xem lại",
+    "backToHome": "Về trang chủ"
+  },
+  "tabs": {
+    "home": "Trang chủ",
+    "quiz": "Quiz",
+    "multiplayer": "Chơi cùng",
+    "groups": "Nhóm",
+    "profile": "Hồ sơ"
+  }
+}

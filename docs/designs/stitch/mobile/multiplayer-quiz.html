@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BibleQuiz - Multiplayer Battle</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;family=Crimson+Pro:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#dee1ff",
+                        "surface": "#11131e",
+                        "surface-dim": "#11131e",
+                        "outline-variant": "#46464d",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-secondary": "#412d00",
+                        "surface-container-highest": "#323440",
+                        "secondary": "#f8bd45",
+                        "on-tertiary-fixed-variant": "#5a4400",
+                        "surface-container-low": "#191b26",
+                        "inverse-surface": "#e1e1f1",
+                        "tertiary-fixed-dim": "#e7c268",
+                        "secondary-container": "#bc8709",
+                        "on-tertiary-fixed": "#251a00",
+                        "tertiary-container": "#2b1f00",
+                        "on-surface": "#e1e1f1",
+                        "outline": "#919098",
+                        "on-secondary-container": "#392600",
+                        "tertiary-fixed": "#ffdf96",
+                        "on-primary-fixed": "#151a34",
+                        "background": "#11131e",
+                        "surface-variant": "#323440",
+                        "on-secondary-fixed": "#271900",
+                        "surface-container": "#1d1f2a",
+                        "surface-bright": "#373845",
+                        "primary-fixed-dim": "#c0c4e8",
+                        "on-primary-fixed-variant": "#404562",
+                        "primary-container": "#1a1f3a",
+                        "surface-tint": "#c0c4e8",
+                        "primary": "#c0c4e8",
+                        "on-background": "#e1e1f1",
+                        "surface-container-high": "#272935",
+                        "inverse-on-surface": "#2e303c",
+                        "inverse-primary": "#585d7b",
+                        "surface-container-lowest": "#0b0e18",
+                        "on-tertiary-container": "#a48431",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#c7c5ce",
+                        "secondary-fixed-dim": "#f8bd45",
+                        "secondary-fixed": "#ffdea7",
+                        "error-container": "#93000a",
+                        "on-primary": "#2a2f4a",
+                        "error": "#ffb4ab",
+                        "tertiary": "#e7c268",
+                        "on-tertiary": "#3e2e00",
+                        "on-primary-container": "#8286a7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"],
+                        "serif": ["Crimson Pro"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(45, 47, 60, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .gold-glow {
+            box-shadow: 0 0 15px rgba(248, 189, 69, 0.3);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface min-h-screen overflow-hidden flex flex-col">
+<!-- Top App Bar (Shared Logic) -->
+<header class="flex justify-between items-center w-full px-6 h-16 bg-[#11131e] z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#f8bd45]">menu_book</span>
+<span class="font-['Be_Vietnam_Pro'] tracking-tight font-bold text-xl text-[#f8bd45]">BibleQuiz</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-high px-3 py-1 rounded-full flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-xs font-bold tracking-widest uppercase">🟢 4 PLAYERS</span>
+</div>
+<div class="relative w-10 h-10 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full -rotate-90">
+<circle class="text-surface-container-highest" cx="20" cy="20" fill="transparent" r="18" stroke="currentColor" stroke-width="2"></circle>
+<circle class="text-secondary" cx="20" cy="20" fill="transparent" r="18" stroke="currentColor" stroke-dasharray="113.1" stroke-dashoffset="30" stroke-width="2"></circle>
+</svg>
+<span class="text-xs font-bold text-secondary">18s</span>
+</div>
+</div>
+</header>
+<!-- Quiz Status Row -->
+<div class="px-6 py-2 flex justify-between items-center bg-surface">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-bold">Tiến trình</span>
+<span class="text-lg font-bold leading-none">3 / 15</span>
+</div>
+<div class="flex gap-1 h-1.5 w-32 bg-surface-container rounded-full overflow-hidden">
+<div class="w-1/5 h-full bg-secondary"></div>
+<div class="w-1/5 h-full bg-secondary"></div>
+<div class="w-1/5 h-full bg-secondary/40"></div>
+<div class="flex-1 h-full bg-surface-container-highest"></div>
+</div>
+</div>
+<!-- Mini Leaderboard -->
+<div class="w-full bg-surface-container/30 sticky top-0 py-4 z-40">
+<div class="flex overflow-x-auto gap-4 px-6 no-scrollbar">
+<!-- Rank 1 -->
+<div class="flex-shrink-0 flex items-center gap-3 bg-surface-container-high p-2 pr-4 rounded-xl border-b-2 border-transparent">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover grayscale opacity-80" data-alt="portrait of a young smiling man with professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkbvxhkFsQ3gq51OsHa8zq5d6Od7lqNQ1xkdZkHsJSSe5kbN6hw0cII2hY87JG1T-Z7FKvviTNEaj1LKb-HD4jacK5O7-sa7MxgDURsfIHwbgZQ4aVmL2_pjnUaIrYa8mlh6rOnEXO11Vl3tQFnPDlJDC8V2Z6dJk6mD_ewAvzyy-mvL_6MH5fA-Df58szg5qZb6u1_eV_ONiZgilhXEGVT6Q-MH_amrOnfefEstH6N6gwrwgjm1p5KELhNJu1fT2OLqb05CAtMps"/>
+<span class="absolute -bottom-1 -right-1 bg-secondary text-on-secondary text-[8px] font-black w-4 h-4 flex items-center justify-center rounded-full border-2 border-surface-container-high">1</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold">Minh</span>
+<span class="text-[10px] text-on-surface-variant">1,240 pts</span>
+</div>
+</div>
+<!-- Current User (Tai Thanh) -->
+<div class="flex-shrink-0 flex items-center gap-3 bg-surface-container-highest p-2 pr-4 rounded-xl ring-2 ring-secondary gold-glow">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="portrait of a confident man with warm evening lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADpGo5sZu1GZp4OZPAmu7mnQ1yQ7yD5MoNoJNlU2QUGkYsyQ7dv2jXDAc-5FBeYjefxgbXQtxdLAUmEUbfFU4-qi-o54saduaZpcwKUXCT38CyCaqv_Z8Ww6yKO3lwYc9pmebWHFaG4Cc1f2jZ_65tmFsrEg6Rv8fuw-xc7c3ZQSDyaL9FA-LnsXgDvaODoiHV5Ae0KHn7LEPr_oOXxr8PFdcg2b7u04n8yvZiZ27A15iYV9t0cJsaMnzjQ1aypr54IaPZnGjvA7g"/>
+<span class="absolute -bottom-1 -right-1 bg-secondary text-on-secondary text-[8px] font-black w-4 h-4 flex items-center justify-center rounded-full border-2 border-surface-container-highest">3</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-secondary">Tai Thanh</span>
+<span class="text-[10px] text-on-surface-variant">980 pts</span>
+</div>
+</div>
+<!-- Rank 2 -->
+<div class="flex-shrink-0 flex items-center gap-3 bg-surface-container-high p-2 pr-4 rounded-xl">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover grayscale opacity-80" data-alt="portrait of a young woman with a friendly smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeSsFba4TThYUnQw6MlWt2HJBFQ1G_kY_UcmZz_FLZVu26UNpQJ3mqq9IXW4JWBEWMlrvWe9AzSEPIOcJ33oYw4oNHuCX5J3GcXWC0eNt6MHyGvqh1gJsxmNZoBpwJ6ySxi-v2WphiXmt4zfrxTcanm8GslCp2VYCe65q6Rcuku4IU9ACPlCT59J6deJehuTWdZXJJHWRuHHv0HWSGnGbdk3uftdP4AWzbMfgMveoxG4f5AKyxn1JAGSilef4JxmqJy4XRQwHOOus"/>
+<span class="absolute -bottom-1 -right-1 bg-secondary text-on-secondary text-[8px] font-black w-4 h-4 flex items-center justify-center rounded-full border-2 border-surface-container-high">2</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold">An</span>
+<span class="text-[10px] text-on-surface-variant">1,050 pts</span>
+</div>
+</div>
+<!-- Rank 4 -->
+<div class="flex-shrink-0 flex items-center gap-3 bg-surface-container-high p-2 pr-4 rounded-xl">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover grayscale opacity-80" data-alt="portrait of a elegant woman looking at camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAreJm5ZNkiE7tyrAncOGYLuaOci9G2CBCcYSrSZ2hjb2vqS9tedRolKp_LylbpWiyX6KzUsBuUt8OZgjF1gqqibMY9SQYEaZKT1wQTlW55mCfA91RBYNXN9mbtNaeTzA5AR3vqFyos_JW_69AYvTaFGxDcs5Q5dCqhB0pN1XOmCqWQyLZ5uG7pa6_3-8zemZyzay-waQkxQyqPB12Ep19thBb6xSLjUMZix0I_du1Qi71zeW93BsIxtCbFrbU0s2CU8TNPlEgbz8"/>
+<span class="absolute -bottom-1 -right-1 bg-secondary text-on-secondary text-[8px] font-black w-4 h-4 flex items-center justify-center rounded-full border-2 border-surface-container-high">4</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold">Huong</span>
+<span class="text-[10px] text-on-surface-variant">870 pts</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col px-6 pt-6 pb-24 overflow-y-auto">
+<!-- Question Card -->
+<div class="glass-card rounded-3xl p-8 mb-8 border border-white/5 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5">
+<span class="material-symbols-outlined text-9xl">auto_stories</span>
+</div>
+<div class="inline-flex items-center gap-2 bg-secondary/10 px-3 py-1 rounded-full mb-6">
+<span class="material-symbols-outlined text-sm text-secondary">book</span>
+<span class="text-[10px] font-bold tracking-[0.1em] text-secondary uppercase">Gióp 38:4</span>
+</div>
+<h2 class="font-serif text-3xl leading-snug text-on-surface">
+                Khi Chúa đặt nền trái đất, <span class="italic text-secondary">ai đã reo mừng?</span>
+</h2>
+</div>
+<!-- Answers Grid -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Option A -->
+<button class="relative flex flex-col items-start p-5 bg-surface-container rounded-2xl border border-transparent transition-all active:scale-[0.98] group">
+<span class="text-[10px] font-bold text-on-surface-variant mb-2">A</span>
+<span class="text-sm font-medium text-left">Các thiên sứ trên cao</span>
+</button>
+<!-- Option B -->
+<button class="relative flex flex-col items-start p-5 bg-surface-container rounded-2xl border border-transparent transition-all active:scale-[0.98] group">
+<div class="absolute -top-1 -right-1 flex gap-0.5">
+<span class="w-2 h-2 rounded-full bg-secondary border border-surface shadow-sm"></span>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant mb-2">B</span>
+<span class="text-sm font-medium text-left">Các tiên tri của Chúa</span>
+</button>
+<!-- Option C (Selected) -->
+<button class="relative flex flex-col items-start p-5 bg-surface-container-highest rounded-2xl border-2 border-secondary gold-glow transition-all active:scale-[0.98]">
+<div class="absolute -top-1 -right-1 flex gap-0.5">
+<span class="w-2 h-2 rounded-full bg-white/40 border border-surface shadow-sm"></span>
+<span class="w-2 h-2 rounded-full bg-white/40 border border-surface shadow-sm"></span>
+</div>
+<span class="text-[10px] font-bold text-secondary mb-2">C</span>
+<span class="text-sm font-bold text-left text-secondary">Các con trai của Đức Chúa Trời</span>
+</button>
+<!-- Option D -->
+<button class="relative flex flex-col items-start p-5 bg-surface-container rounded-2xl border border-transparent transition-all active:scale-[0.98] group">
+<span class="text-[10px] font-bold text-on-surface-variant mb-2">D</span>
+<span class="text-sm font-medium text-left">Nhân loại mới tạo ra</span>
+</button>
+</div>
+</main>
+<!-- Feedback Overlay (Contextual Transactional UI) -->
+<div class="fixed bottom-32 left-0 right-0 px-6 z-50">
+<div class="bg-emerald-600/95 backdrop-blur-md text-white px-6 py-4 rounded-2xl flex justify-between items-center shadow-xl ring-1 ring-white/20">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+<div>
+<p class="text-sm font-bold leading-tight">Đúng! +15 điểm</p>
+<p class="text-[10px] opacity-80 uppercase tracking-widest">Tuyệt vời, Tai Thanh!</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1 text-white">
+<span class="material-symbols-outlined text-lg">trending_up</span>
+<span class="text-lg font-black italic">↑ 1 hạng</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Reactions Bar (Positioned above bottom nav zone) -->
+<div class="fixed bottom-6 left-0 right-0 flex justify-center z-40 px-6">
+<div class="flex items-center gap-3 bg-surface-container-highest/80 backdrop-blur-lg px-4 py-3 rounded-full border border-white/5 shadow-2xl">
+<button class="w-10 h-10 flex items-center justify-center text-xl transition-transform active:scale-125">👍</button>
+<button class="w-10 h-10 flex items-center justify-center text-xl transition-transform active:scale-125">❤️</button>
+<button class="w-10 h-10 flex items-center justify-center text-xl transition-transform active:scale-125">🔥</button>
+<button class="w-10 h-10 flex items-center justify-center text-xl transition-transform active:scale-125">😱</button>
+<button class="w-10 h-10 flex items-center justify-center text-xl transition-transform active:scale-125">💪</button>
+<button class="w-10 h-10 flex items-center justify-center text-xl transition-transform active:scale-125">🙏</button>
+<div class="w-[1px] h-6 bg-white/10 mx-1"></div>
+<button class="w-10 h-10 flex items-center justify-center bg-secondary/20 rounded-full transition-transform active:scale-95">
+<span class="material-symbols-outlined text-secondary text-lg">chat_bubble</span>
+</button>
+</div>
+</div>
+<!-- Background Elements for Sacred Atmosphere -->
+<div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+<div class="absolute -top-20 -left-20 w-80 h-80 bg-secondary/10 rounded-full blur-[100px]"></div>
+<div class="absolute top-1/2 -right-20 w-64 h-64 bg-primary/10 rounded-full blur-[80px]"></div>
+<div class="absolute bottom-0 left-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-[120px]"></div>
+</div>
+</body></html>

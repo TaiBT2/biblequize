@@ -1,79 +1,69 @@
-import type { NativeStackScreenProps } from '@react-navigation/native-stack'
-import type { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native'
-import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
-
-// === Root Stack ===
 export type RootStackParamList = {
+  Onboarding: undefined
+  Auth: undefined
+  Main: undefined
+}
+
+export type OnboardingStackParamList = {
+  Splash: undefined
+  LanguageSelection: undefined
+  WelcomeSlides: undefined
+  TryQuiz: undefined
+  TryQuizResult: { score: number; total: number }
+}
+
+export type AuthStackParamList = {
   Login: undefined
-  Main: NavigatorScreenParams<MainTabParamList>
 }
 
-// === Bottom Tabs ===
 export type MainTabParamList = {
-  HomeTab: NavigatorScreenParams<HomeStackParamList>
-  RankedTab: NavigatorScreenParams<QuizStackParamList>
-  DailyTab: undefined
-  GroupsTab: NavigatorScreenParams<GroupStackParamList>
-  ProfileTab: NavigatorScreenParams<ProfileStackParamList>
+  HomeTab: undefined
+  QuizTab: undefined
+  MultiplayerTab: undefined
+  GroupsTab: undefined
+  ProfileTab: undefined
 }
 
-// === Home Stack ===
 export type HomeStackParamList = {
   Home: undefined
   Leaderboard: undefined
-  Achievements: undefined
+  Journey: undefined
+  Notifications: undefined
 }
 
-// === Quiz Stack ===
 export type QuizStackParamList = {
+  PracticeSelect: undefined
+  Quiz: { sessionId?: string; questions?: any[]; mode?: string; timePerQuestion?: number; showExplanation?: boolean }
+  QuizResults: { stats: any }
+  QuizReview: { stats: any }
+  DailyChallenge: undefined
   Ranked: undefined
-  Practice: undefined
-  Multiplayer: undefined
+  WeeklyQuiz: undefined
+  MysteryMode: undefined
+  SpeedRound: undefined
+}
+
+export type MultiplayerStackParamList = {
+  MultiplayerLobby: undefined
   CreateRoom: undefined
-  RoomLobby: { roomId: string; roomCode: string }
-  Quiz: { sessionId: string; mode: 'practice' | 'ranked' | 'daily' | 'multiplayer' }
-  QuizResults: { sessionId: string }
-  Review: { sessionId: string }
+  RoomWaiting: { roomId: string; isHost: boolean }
+  MultiplayerQuiz: { roomId: string }
+  MultiplayerResults: { roomId: string }
+  TournamentBracket: { tournamentId: string }
 }
 
-// === Group Stack ===
-export type GroupStackParamList = {
-  Groups: undefined
+export type GroupsStackParamList = {
+  GroupsList: undefined
   GroupDetail: { groupId: string }
-  Tournaments: undefined
-  TournamentDetail: { tournamentId: string }
+  GroupJoin: undefined
+  GroupCreate: undefined
 }
 
-// === Profile Stack ===
 export type ProfileStackParamList = {
   Profile: undefined
+  OtherProfile: { userId: string }
+  Achievements: undefined
   Settings: undefined
+  Cosmetics: undefined
+  Legal: { type: 'privacy' | 'terms' | 'about' }
 }
-
-// === Screen Props helpers ===
-export type RootStackScreenProps<T extends keyof RootStackParamList> =
-  NativeStackScreenProps<RootStackParamList, T>
-
-export type HomeStackScreenProps<T extends keyof HomeStackParamList> =
-  CompositeScreenProps<
-    NativeStackScreenProps<HomeStackParamList, T>,
-    BottomTabScreenProps<MainTabParamList>
-  >
-
-export type QuizStackScreenProps<T extends keyof QuizStackParamList> =
-  CompositeScreenProps<
-    NativeStackScreenProps<QuizStackParamList, T>,
-    BottomTabScreenProps<MainTabParamList>
-  >
-
-export type GroupStackScreenProps<T extends keyof GroupStackParamList> =
-  CompositeScreenProps<
-    NativeStackScreenProps<GroupStackParamList, T>,
-    BottomTabScreenProps<MainTabParamList>
-  >
-
-export type ProfileStackScreenProps<T extends keyof ProfileStackParamList> =
-  CompositeScreenProps<
-    NativeStackScreenProps<ProfileStackParamList, T>,
-    BottomTabScreenProps<MainTabParamList>
-  >

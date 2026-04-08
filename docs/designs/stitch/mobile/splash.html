@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BibleQuiz Splash Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;family=Crimson+Pro:wght@600;700&amp;family=Inter:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#0b0e18",
+                    "surface-bright": "#373845",
+                    "on-primary-fixed-variant": "#404562",
+                    "on-tertiary-container": "#a48431",
+                    "outline-variant": "#46464d",
+                    "on-secondary": "#412d00",
+                    "on-error": "#690005",
+                    "surface-dim": "#11131e",
+                    "inverse-surface": "#e1e1f1",
+                    "error-container": "#93000a",
+                    "surface": "#11131e",
+                    "tertiary-fixed-dim": "#e7c268",
+                    "surface-container-low": "#191b26",
+                    "surface-tint": "#c0c4e8",
+                    "surface-container": "#1d1f2a",
+                    "primary-container": "#1a1f3a",
+                    "on-primary-fixed": "#151a34",
+                    "surface-variant": "#323440",
+                    "primary-fixed": "#dee1ff",
+                    "primary-fixed-dim": "#c0c4e8",
+                    "tertiary-container": "#2b1f00",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#e7c268",
+                    "on-primary-container": "#8286a7",
+                    "on-tertiary-fixed": "#251a00",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "on-primary": "#2a2f4a",
+                    "surface-container-highest": "#323440",
+                    "surface-container-high": "#272935",
+                    "on-tertiary-fixed-variant": "#5a4400",
+                    "on-tertiary": "#3e2e00",
+                    "on-background": "#e1e1f1",
+                    "primary": "#c0c4e8",
+                    "error": "#ffb4ab",
+                    "on-surface-variant": "#c7c5ce",
+                    "on-secondary-container": "#392600",
+                    "background": "#11131e",
+                    "on-secondary-fixed": "#271900",
+                    "tertiary-fixed": "#ffdf96",
+                    "outline": "#919098",
+                    "inverse-on-surface": "#2e303c",
+                    "inverse-primary": "#585d7b",
+                    "secondary-fixed-dim": "#f8bd45",
+                    "secondary": "#f8bd45",
+                    "on-surface": "#e1e1f1",
+                    "secondary-fixed": "#ffdea7",
+                    "secondary-container": "#bc8709"
+            },
+            "fontFamily": {
+                    "headline": ["Be Vietnam Pro", "sans-serif"],
+                    "body": ["Be Vietnam Pro", "sans-serif"],
+                    "label": ["Be Vietnam Pro", "sans-serif"],
+                    "crimson": ["Crimson Pro", "serif"],
+                    "inter": ["Inter", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-radial-gradient {
+            background: radial-gradient(circle at center, #1a1d2e 0%, #11131e 100%);
+        }
+        .golden-glow {
+            text-shadow: 0 0 15px rgba(232, 168, 50, 0.4);
+        }
+        /* Particle Simulation using CSS */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            bottom: -10px;
+            background: #f8bd45;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased overflow-hidden">
+<!-- Splash Screen Container -->
+<main class="relative min-h-screen w-full flex flex-col items-center justify-between py-24 bg-radial-gradient overflow-hidden">
+<!-- Subtle Particle Layer -->
+<div class="particles">
+<div class="particle w-1 h-1 left-[15%] opacity-20" style="bottom: 20%; transform: translateY(-50px);"></div>
+<div class="particle w-0.5 h-0.5 left-[40%] opacity-10" style="bottom: 10%; transform: translateY(-80px);"></div>
+<div class="particle w-1.5 h-1.5 left-[75%] opacity-15" style="bottom: 30%; transform: translateY(-120px);"></div>
+<div class="particle w-0.5 h-0.5 left-[25%] opacity-25" style="bottom: 50%; transform: translateY(-40px);"></div>
+<div class="particle w-1 h-1 left-[85%] opacity-10" style="bottom: 60%; transform: translateY(-150px);"></div>
+<div class="particle w-0.5 h-0.5 left-[55%] opacity-20" style="bottom: 80%; transform: translateY(-20px);"></div>
+</div>
+<!-- Center Branding -->
+<div class="flex-1 flex flex-col items-center justify-center space-y-6 z-10">
+<div class="text-center">
+<h1 class="font-crimson text-5xl md:text-6xl text-[#e8a832] golden-glow font-bold tracking-tight">
+                    BibleQuiz
+                </h1>
+<p class="font-inter text-sm md:text-base text-on-surface-variant mt-4 font-light tracking-wide opacity-80">
+                    Lời Chúa trong từng câu hỏi
+                </p>
+</div>
+</div>
+<!-- Bottom Loading Section -->
+<div class="flex flex-col items-center space-y-4 z-10">
+<!-- Spinner -->
+<div class="relative w-8 h-8">
+<div class="absolute inset-0 border-2 border-[#e8a832]/20 rounded-full"></div>
+<div class="absolute inset-0 border-2 border-t-[#e8a832] rounded-full animate-spin"></div>
+</div>
+<p class="text-[12px] font-label text-on-surface-variant uppercase tracking-[0.2em] opacity-60">
+                Đang tải...
+            </p>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/5 blur-[120px]"></div>
+<div class="absolute bottom-[-5%] right-[-5%] w-[30%] h-[30%] rounded-full bg-primary/5 blur-[100px]"></div>
+</div>
+</main>
+<!-- Invisible Image description for generation as requested -->
+<div class="hidden">
+<img alt="Sacred atmosphere background" data-alt="Abstract ethereal background with deep navy tones and soft golden particles floating upwards in a sacred atmosphere" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>
+</div>
+</body></html>

@@ -1,69 +1,53 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
-import { getApiBaseUrl, isDebug } from './config'
-import { getAccessToken, setAccessToken, getRefreshToken, setRefreshToken } from './tokenStore'
+import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Platform } from 'react-native'
 
-export const api = axios.create({
-  baseURL: getApiBaseUrl(),
+const getBaseURL = () => {
+  if (__DEV__) {
+    return Platform.OS === 'android'
+      ? 'http://10.0.2.2:8080'
+      : 'http://localhost:8080'
+  }
+  return process.env.EXPO_PUBLIC_API_URL || 'https://api.biblequiz.app'
+}
+
+export const apiClient = axios.create({
+  baseURL: getBaseURL(),
   timeout: 10000,
+  headers: { 'Content-Type': 'application/json' },
 })
 
-// Request interceptor — attach JWT token
-api.interceptors.request.use(
-  (config: any) => {
-    const token = getAccessToken()
-    if (isDebug()) {
-      console.log('[API] Request:', config.url, 'Token:', !!token)
-    }
-    if (token && config.headers) {
-      config.headers.Authorization = `Bearer ${token}`
-    }
-    return config
-  },
-  (error) => Promise.reject(error)
-)
+// Attach token
+apiClient.interceptors.request.use(async (config) => {
+  const token = await AsyncStorage.getItem('accessToken')
+  if (token) config.headers.Authorization = `Bearer ${token}`
+  return config
+})
 
-// Response interceptor — handle 401 + token refresh
-api.interceptors.response.use(
-  (response: AxiosResponse) => response,
+// Refresh on 401
+apiClient.interceptors.response.use(
+  (response) => response,
   async (error) => {
-    const originalRequest = error.config as (AxiosRequestConfig & { _retry?: boolean })
-
-    if (
-      error.response?.status === 401 &&
-      !originalRequest._retry &&
-      !originalRequest.url?.includes('/api/auth/mobile/refresh')
-    ) {
-      originalRequest._retry = true
-
-      try {
-        const refreshToken = await getRefreshToken()
-        if (!refreshToken) throw new Error('No refresh token')
-
-        // Mobile endpoint: refresh token in body, returns both tokens in body
-        const response = await axios.post(
-          `${getApiBaseUrl()}/api/auth/mobile/refresh`,
-          { refreshToken }
-        )
-
-        const { accessToken, refreshToken: newRefreshToken } = response.data
-        setAccessToken(accessToken)
-        if (newRefreshToken) {
-          await setRefreshToken(newRefreshToken)
+    if (error.response?.status === 401 && error.config && !error.config._retry) {
+      error.config._retry = true
+      const refreshToken = await AsyncStorage.getItem('refreshToken')
+      if (refreshToken) {
+        try {
+          const { data } = await axios.post(
+            `${getBaseURL()}/api/auth/mobile/refresh`,
+            { refreshToken }
+          )
+          await AsyncStorage.setItem('accessToken', data.accessToken)
+          if (data.refreshToken) {
+            await AsyncStorage.setItem('refreshToken', data.refreshToken)
+          }
+          error.config.headers.Authorization = `Bearer ${data.accessToken}`
+          return apiClient.request(error.config)
+        } catch {
+          await AsyncStorage.multiRemove(['accessToken', 'refreshToken'])
         }
-
-        // Retry original request with new token
-        if (!originalRequest.headers) originalRequest.headers = {}
-        originalRequest.headers.Authorization = `Bearer ${accessToken}`
-        return api(originalRequest)
-      } catch {
-        // Refresh failed — clear tokens + force logout (skip API call to avoid loop)
-        setAccessToken(null)
-        await setRefreshToken(null)
-        const { useAuthStore } = require('../stores/authStore')
-        useAuthStore.setState({ user: null, isAuthenticated: false, isAdmin: false })
       }
     }
-
     return Promise.reject(error)
   }
 )

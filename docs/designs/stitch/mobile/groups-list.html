@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BibleQuiz - Nhóm của tôi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#373845",
+                        "secondary-container": "#bc8709",
+                        "on-tertiary-fixed-variant": "#5a4400",
+                        "on-secondary": "#412d00",
+                        "surface-container-low": "#191b26",
+                        "on-surface-variant": "#c7c5ce",
+                        "tertiary-container": "#2b1f00",
+                        "background": "#11131e",
+                        "outline": "#919098",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#e7c268",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-secondary-container": "#392600",
+                        "on-tertiary": "#3e2e00",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#a48431",
+                        "on-background": "#e1e1f1",
+                        "on-primary-fixed-variant": "#404562",
+                        "surface": "#11131e",
+                        "secondary": "#f8bd45",
+                        "outline-variant": "#46464d",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#323440",
+                        "on-primary-fixed": "#151a34",
+                        "tertiary-fixed": "#ffdf96",
+                        "inverse-primary": "#585d7b",
+                        "primary-container": "#1a1f3a",
+                        "inverse-on-surface": "#2e303c",
+                        "surface-container-highest": "#323440",
+                        "surface-tint": "#c0c4e8",
+                        "on-primary": "#2a2f4a",
+                        "inverse-surface": "#e1e1f1",
+                        "secondary-fixed-dim": "#f8bd45",
+                        "surface-container-lowest": "#0b0e18",
+                        "secondary-fixed": "#ffdea7",
+                        "on-surface": "#e1e1f1",
+                        "tertiary-fixed-dim": "#e7c268",
+                        "surface-container": "#1d1f2a",
+                        "primary": "#c0c4e8",
+                        "on-primary-container": "#8286a7",
+                        "primary-fixed": "#dee1ff",
+                        "on-secondary-fixed": "#271900",
+                        "primary-fixed-dim": "#c0c4e8",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-error": "#690005",
+                        "surface-container-high": "#272935",
+                        "surface-dim": "#11131e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sacred-gold-gradient {
+            background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%);
+        }
+        .glass-panel {
+            background: rgba(50, 52, 64, 0.6);
+            backdrop-filter: blur(16px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- Top AppBar Component -->
+<nav class="fixed top-0 w-full z-50 bg-[#11131e] shadow-[0_24px_24px_rgba(11,14,24,0.06)] flex items-center justify-between px-6 h-16 w-full font-['Be_Vietnam_Pro'] tracking-tight leading-relaxed">
+<div class="flex items-center gap-3">
+<button class="text-[#e1e1f1]/60 hover:bg-[#1d1f2a] transition-colors active:scale-95 duration-200 p-2 rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-lg font-bold text-[#e1e1f1] tracking-tighter">Groups</h1>
+</div>
+<div class="flex items-center gap-1">
+<button class="text-[#e1e1f1]/60 hover:bg-[#1d1f2a] transition-colors active:scale-95 duration-200 p-2 rounded-full">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="pt-20 px-6 max-w-lg mx-auto">
+<!-- Header Section -->
+<header class="mb-8">
+<h2 class="text-2xl font-extrabold tracking-tight text-on-surface">Nhóm của tôi</h2>
+<p class="text-on-surface-variant text-sm mt-1">Bạn đang ở 3 nhóm</p>
+</header>
+<!-- Search Bar -->
+<div class="mb-8 group">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline">search</span>
+<input class="w-full bg-surface-container-highest border-none rounded-xl py-3.5 pl-12 pr-4 text-on-surface placeholder-outline focus:ring-0 focus:bg-surface-bright transition-all" placeholder="Tìm nhóm..." type="text"/>
+<div class="absolute bottom-0 left-0 right-0 h-[2px] bg-secondary scale-x-0 group-focus-within:scale-x-100 transition-transform origin-center"></div>
+</div>
+</div>
+<!-- Action Cards Bento Grid -->
+<div class="grid grid-cols-2 gap-4 mb-10">
+<div class="sacred-gold-gradient rounded-xl p-5 flex flex-col justify-between aspect-square shadow-lg active:scale-[0.98] transition-transform">
+<div class="bg-white/20 w-10 h-10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary">group_add</span>
+</div>
+<div>
+<h3 class="text-on-secondary font-bold text-lg leading-tight">Tạo nhóm mới</h3>
+</div>
+</div>
+<div class="bg-surface-container-low border border-secondary/20 rounded-xl p-5 flex flex-col justify-between aspect-square active:scale-[0.98] transition-transform">
+<div class="bg-secondary/10 w-10 h-10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">tag</span>
+</div>
+<div>
+<h3 class="text-on-surface font-bold text-lg leading-tight">Tham gia bằng mã</h3>
+</div>
+</div>
+</div>
+<!-- My Groups List -->
+<section class="mb-10">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Danh sách nhóm</h3>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">more_horiz</span>
+</div>
+<div class="space-y-4">
+<!-- Group Item 1 -->
+<div class="bg-surface-container rounded-xl p-4 flex items-center gap-4 hover:bg-surface-container-high transition-colors">
+<div class="w-14 h-14 rounded-lg bg-primary-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Modern church interior with sunlight streaming through contemporary stained glass windows in a minimalist sacred space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPPsYcrRO0bDhlMI23m8rcwZQN5M2DCXTRRNz9FR6CN1cH34eEAjT8sXbS9yfInpHDNXwsp8bSlRQ3SZYgIsIvu0qPiHkaByKcQApj9fUUp0nC5Jf8U7Gh99GnWQClbZLDwNdr8ad4qeG4Npr2fTBdWJ32bVNub0xY7_RmQ87jh5cU2IPnlbuOE9JhL8jLOTUPcwl6diNGqLfR1dmi4pnx_g6q3eSCxreqbPgUMXhQtOhvXqnm4HnFgrhrVx4HkzZbWXOsRXWUzV0"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2">
+<h4 class="font-bold text-on-surface truncate">Hội Thánh FMC An Khê</h4>
+<span class="bg-secondary/10 text-secondary text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-tighter">Leader</span>
+</div>
+<p class="text-xs text-on-surface-variant flex items-center gap-3 mt-1">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">groups</span> 45</span>
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span> 12 online</span>
+</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- Group Item 2 -->
+<div class="bg-surface-container rounded-xl p-4 flex items-center gap-4 hover:bg-surface-container-high transition-colors relative">
+<div class="w-14 h-14 rounded-lg bg-primary-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Group of diverse people sitting in a warm library environment with wooden shelves and glowing lanterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHItLLnrn4n0g58ARPfLIBm5sfTnBgqSzA9tWTtDWPDH-Em8KpE8kxI6VcHuxSYZNjn95aD9v00S4OQggqvgLBK2VWpjK_c58Jfh-spJUsHEusiURJ4GP4jBvrK4dNgm_emYutdpnEMpESevIokqJXuV0G6n8Ku7lyoaBmpzPjfWXtsL4RosOQZUxprDlWGGfxhfpB9rlW2E0tjHGQyGtjol4RmBgINwll-xgiylcokeY4_mNMqaGyJo5p76rHe90pvBuuP7Zuj3g"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2">
+<h4 class="font-bold text-on-surface truncate">Nhóm nhỏ Phúc Âm</h4>
+<span class="bg-surface-variant text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-tighter">Admin</span>
+</div>
+<p class="text-xs text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">groups</span> 12 thành viên
+                        </p>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-5 h-5 bg-secondary text-on-secondary text-[10px] font-bold flex items-center justify-center rounded-full shadow-sm shadow-secondary/20">2</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+<!-- Group Item 3 -->
+<div class="bg-surface-container rounded-xl p-4 flex items-center gap-4 hover:bg-surface-container-high transition-colors">
+<div class="w-14 h-14 rounded-lg bg-primary-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Happy family laughing together in a warm sunlit living room with plants and soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4r1_kUrE65iOFtcKbn2QzeGa-0B1oF56mAjdmNndDPUBBeuzjz1yq3wnFl-eQtmx35GuBq-a1QgpFSS9bOPRjRX2GQbEe-UuOgN7t5ZGyHzCrwaK2LlxQHJERrdbqj_XCvOMEBmCcy8UIFWQAvaM1T__DD-Lyyx9nSj_JiJvBHSWJWOL2ALCvYHUinWfuR9qcq5x5IVm13A0gJs42d5TSUFQVax5FHgMJza4fi3qr8V4Whc1gh39ZnI6ns_YyOOlnu1_aKT9qYEo"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2">
+<h4 class="font-bold text-on-surface truncate">Gia đình Nguyễn</h4>
+</div>
+<p class="text-xs text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">groups</span> 6 thành viên
+                        </p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Suggested Groups -->
+<section class="mb-20 overflow-hidden">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-4">Gợi ý cho bạn</h3>
+<div class="flex gap-4 overflow-x-auto pb-4 -mx-6 px-6 no-scrollbar">
+<!-- Suggested Card 1 -->
+<div class="min-w-[140px] bg-surface-container-low border border-outline-variant/10 rounded-2xl p-4 flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full p-0.5 border-2 border-secondary/30 mb-3">
+<img class="w-full h-full rounded-full object-cover" data-alt="Close up of a weathered bible with a wooden cross and candle in low warm dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_Pjtp3FrioHtgxOSJ_8YSAk2Et6FAOFBVfBuP8jgb8cU9ROib55b51_wLUzK3eK8Po0P95MOqr4wEfFqH_khFgo3ao_aGrXzWHifUp6QyK6IfmF0P7nQXJuD8s_3G1QyL_6_57YnEWobS3JrpQXEtkHGshDbrR1Y7yCT1k0iCvPWPCKvNW16JNOJWGWom2aOOIOwr8_4u_7tfnYPF2nobgsZCTiC2IdKQ3NHAEm04NiNSUttDmwKVK88JTyKmRyjvMKodktT-nl4"/>
+</div>
+<h5 class="font-bold text-xs line-clamp-2 mb-2">Thánh Kinh Mỗi Ngày</h5>
+<button class="mt-auto py-1.5 px-4 bg-surface-variant text-on-surface text-[10px] font-bold rounded-full w-full uppercase tracking-widest hover:bg-secondary hover:text-on-secondary transition-colors">Tham gia</button>
+</div>
+<!-- Suggested Card 2 -->
+<div class="min-w-[140px] bg-surface-container-low border border-outline-variant/10 rounded-2xl p-4 flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full p-0.5 border-2 border-secondary/30 mb-3">
+<img class="w-full h-full rounded-full object-cover" data-alt="Young adults gathering around a fire at night talking and laughing in a friendship circle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXFEKlk1S5GhhhbU2nzerD5vKKHJsA34IuhnWhSj0atQ8rMDxPI6uneHVIP7hpDd2LQuvtmsF8ByyO12LODM2yAx4-Xpdt9Cdc69qqwY4aI-LFG59QfEzzV0HXgfCsctIweDrOIbjobp6MAoYtGbRqNhQbxgIiDp6SefHazHj-hFnpFNFwgDbjzO1X_lgCncAhRrRujpamfdInhnwXwdyCzd4YscjA6WqPJK_veEJCf8SQwkMAG4_mGCPEb3isys4e_ysiQypU_Wc"/>
+</div>
+<h5 class="font-bold text-xs line-clamp-2 mb-2">Sinh Viên Tin Lành</h5>
+<button class="mt-auto py-1.5 px-4 bg-surface-variant text-on-surface text-[10px] font-bold rounded-full w-full uppercase tracking-widest hover:bg-secondary hover:text-on-secondary transition-colors">Tham gia</button>
+</div>
+<!-- Suggested Card 3 -->
+<div class="min-w-[140px] bg-surface-container-low border border-outline-variant/10 rounded-2xl p-4 flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full p-0.5 border-2 border-secondary/30 mb-3">
+<img class="w-full h-full rounded-full object-cover" data-alt="Golden sunrise over a calm ocean beach representing peace and meditation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVQC4ZydryOOcnz8tI7Gn4jaW7pq_PpgAVme2JVajdmHzrScEaUq5i04fYM9LihHo-FthqafbljsA_bI7HHzdnlruARAZH93uVIgbkdsXRhGsUD2hwconCNTC3eCIPsBh5akPsNRWF1b5X-ONcvZqaL331cfOT1izF9kphCYD31-qJUlQPnXQCcraV4yoc71BO4mYsnSJTBNWG90KfB5e5UO_U8LPHTfyJfJMv_7W06zhAbCSgJpaMu-22jVcEqSuyLZqbpcy8V2E"/>
+</div>
+<h5 class="font-bold text-xs line-clamp-2 mb-2">Tĩnh Nguyện Sáng</h5>
+<button class="mt-auto py-1.5 px-4 bg-surface-variant text-on-surface text-[10px] font-bold rounded-full w-full uppercase tracking-widest hover:bg-secondary hover:text-on-secondary transition-colors">Tham gia</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Component -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-[#11131e]/60 backdrop-blur-xl z-50 rounded-t-xl border-t border-[#46464d]/15">
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/40 px-3 py-1.5 font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-medium transition-transform active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1">home</span>
+<span>Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/40 px-3 py-1.5 font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-medium transition-transform active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1">swords</span>
+<span>Multiplayer</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#f8bd45] bg-[#1d1f2a] rounded-xl px-3 py-1.5 font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-medium transition-transform active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1">group</span>
+<span>Groups</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/40 px-3 py-1.5 font-['Be_Vietnam_Pro'] text-[10px] uppercase tracking-[0.05em] font-medium transition-transform active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1">person</span>
+<span>Profile</span>
+</div>
+</nav>
+<!-- FAB Suppression Logic: Not rendering on list view based on standard UX rules or unless specifically mentioned as a Floating element, using Action Cards instead -->
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

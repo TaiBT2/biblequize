@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error": "#ffb4ab",
+            "on-surface": "#e1e1f1",
+            "primary-container": "#1a1f3a",
+            "on-primary-fixed-variant": "#404562",
+            "on-tertiary": "#3e2e00",
+            "on-secondary-container": "#392600",
+            "on-secondary-fixed": "#271900",
+            "surface-container-lowest": "#0b0e18",
+            "on-error": "#690005",
+            "on-secondary": "#412d00",
+            "on-primary-container": "#8286a7",
+            "inverse-primary": "#585d7b",
+            "secondary-fixed": "#ffdea7",
+            "primary": "#c0c4e8",
+            "surface-container-low": "#191b26",
+            "surface-bright": "#373845",
+            "surface-variant": "#323440",
+            "on-primary": "#2a2f4a",
+            "surface-dim": "#11131e",
+            "secondary": "#f8bd45",
+            "surface-container-high": "#272935",
+            "primary-fixed-dim": "#c0c4e8",
+            "on-secondary-fixed-variant": "#5e4200",
+            "error-container": "#93000a",
+            "tertiary-fixed-dim": "#e7c268",
+            "surface-container-highest": "#323440",
+            "on-tertiary-fixed-variant": "#5a4400",
+            "tertiary-fixed": "#ffdf96",
+            "on-surface-variant": "#c7c5ce",
+            "on-primary-fixed": "#151a34",
+            "tertiary": "#e7c268",
+            "on-tertiary-container": "#a48431",
+            "secondary-fixed-dim": "#f8bd45",
+            "outline-variant": "#46464d",
+            "outline": "#919098",
+            "surface-tint": "#c0c4e8",
+            "surface-container": "#1d1f2a",
+            "on-error-container": "#ffdad6",
+            "surface": "#11131e",
+            "tertiary-container": "#2b1f00",
+            "primary-fixed": "#dee1ff",
+            "inverse-on-surface": "#2e303c",
+            "on-background": "#e1e1f1",
+            "on-tertiary-fixed": "#251a00",
+            "background": "#11131e",
+            "inverse-surface": "#e1e1f1",
+            "secondary-container": "#bc8709"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Be Vietnam Pro"],
+            "body": ["Be Vietnam Pro"],
+            "label": ["Be Vietnam Pro"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .gold-gradient {
+      background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%);
+    }
+    .glass-card {
+      background: rgba(50, 52, 64, 0.6);
+      backdrop-filter: blur(16px);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col">
+<!-- Header Section -->
+<header class="h-[120px] bg-[#11131e] sticky top-0 z-50 flex items-center px-6 gap-4">
+<div class="flex items-center justify-between w-full">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-200 text-[#f8bd45]">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-headline font-bold text-xl tracking-[-0.02em] text-[#e1e1f1]">Phòng của Minh</h1>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-surface-container-high px-3 py-0.5 rounded-full text-xs font-bold tracking-widest text-secondary flex items-center gap-2">
+              #ABC123
+              <span class="material-symbols-outlined text-[14px] cursor-pointer">content_copy</span>
+<span class="material-symbols-outlined text-[14px] cursor-pointer">share</span>
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[#f8bd45] text-2xl">info</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-6 pb-32 space-y-6">
+<!-- Room Info Card -->
+<section class="h-[100px] bg-surface-container rounded-xl flex items-center p-4 gap-4 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 gold-gradient"></div>
+<div class="w-16 h-16 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold uppercase tracking-widest text-tertiary">⚡ Speed Race</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-xs text-on-surface-variant">~8 phút</span>
+</div>
+<h2 class="text-lg font-bold text-on-surface mt-0.5">15 câu hỏi • Sáng Thế Ký • Trung bình</h2>
+</div>
+</section>
+<!-- Players Section -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-headline font-bold text-lg text-on-surface">Người chơi (4/8) <span class="text-emerald-400 text-sm ml-2">🟢</span></h3>
+</div>
+<!-- Player Grid 2x4 -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Minh (HOST) -->
+<div class="bg-surface-container-high rounded-xl p-4 flex flex-col items-center text-center relative border border-secondary/20">
+<div class="absolute top-2 right-2 flex items-center justify-center w-6 h-6 bg-secondary rounded-full">
+<span class="material-symbols-outlined text-on-secondary text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<img class="w-16 h-16 rounded-full mb-3 ring-2 ring-secondary/40" data-alt="Portrait of a young man with a focused expression, wearing a minimalist modern collar shirt, soft warm studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBif6L-pNpdPaDcAv1Zs8kocj2LUrl2axqqVD-fWsKBhR42FuguhlKhNT5eJ1TRt2WzmuorYiI9lLK41Lxf7-RL8uGx9XLKqkDeHVrWjphcqPW28UMu8xglXbHEGuXuk6dpp7tgBVlZLfxQBdZIIPcNwX9NdDo_EQZF4PyL0Grq8FjIdNXZys3ubmveBSuj-j1tALBIRG0-VuWJthXV17dvQCIOybmAlfeJFiJqrjAzhEpL3NP4xJJ8QLQf8JaICVHzvBq6y-uDQhE"/>
+<p class="font-bold text-on-surface leading-tight">Minh</p>
+<p class="text-[10px] text-secondary font-bold uppercase tracking-tighter mt-1">HOST • TIÊN TRI</p>
+<span class="mt-2 text-[10px] px-2 py-0.5 bg-secondary/10 text-secondary rounded">Sẵn sàng</span>
+</div>
+<!-- An -->
+<div class="bg-surface-container-high rounded-xl p-4 flex flex-col items-center text-center relative">
+<div class="absolute top-2 right-2 flex items-center justify-center w-6 h-6 bg-secondary rounded-full">
+<span class="material-symbols-outlined text-on-secondary text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<img class="w-16 h-16 rounded-full mb-3" data-alt="Profile photo of a young woman with a kind smile, natural outdoor lighting with soft green bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxd36IHIGBQwIwNHnU0KYBq5DUV_ASldC4PpeROQQYyM4sCgqNCeUBbJh-EktFRqiUYfshEzbexdkHZ43nyJo4kcx7dR2y8C7xoK8p1rXjTNxnCkky6ho0Gg1LlSuw-y9hGygiX_992P5yxYH-OQVyPm_HZ9mTcOVWhJHGQ_6LwBE7hEjCvjIcAns-SEEv-hof0nGABd2kYwY3jYhmd0l4VwE1MK_zqgUL4En9oxoRIctr7OdUDMjDvy4_jb7h_o8nmQploz9ShJ4"/>
+<p class="font-bold text-on-surface leading-tight">An</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter mt-1">TÂN TÍN HỮU</p>
+<span class="mt-2 text-[10px] px-2 py-0.5 bg-secondary/10 text-secondary rounded">Sẵn sàng</span>
+</div>
+<!-- Hương -->
+<div class="bg-surface-container-high rounded-xl p-4 flex flex-col items-center text-center relative">
+<div class="absolute top-2 right-2 flex items-center justify-center w-6 h-6 bg-secondary rounded-full">
+<span class="material-symbols-outlined text-on-secondary text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<img class="w-16 h-16 rounded-full mb-3" data-alt="Young professional woman portrait, thoughtful expression, warm cinematic lighting in a modern library" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcMyie12DWvem0EC1QTs_X0lJ56bpteQxsixDeqtROFG29nxpb6nijikVXoZ46BbUBvt2S748IsU1z3_dY85LMYsg0I4ivenlAnxbvYb3WV4R1osmjnaKHwsDPoQemJTe5jF9d0fc4xoDApvhsrqR6UhGsREjoHMldd-eXCgs6pkSKy12_ICdTF-MCU9LoDt3Gl2MC20Kr-vuMwNlyhA6ZrjLV-razaLo5cQ0C1xUlAiTNX2VMSN5XKE-r3-6CP877_y_4MDPgEfc"/>
+<p class="font-bold text-on-surface leading-tight">Hương</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter mt-1">MÔN ĐỒ</p>
+<span class="mt-2 text-[10px] px-2 py-0.5 bg-secondary/10 text-secondary rounded">Sẵn sàng</span>
+</div>
+<!-- Current User (YOU) -->
+<div class="bg-surface-container-highest rounded-xl p-4 flex flex-col items-center text-center relative ring-1 ring-inset ring-outline-variant/30">
+<img class="w-16 h-16 rounded-full mb-3 grayscale opacity-80" data-alt="Close-up of a smiling young man in a cozy navy sweater, soft indoor lighting, high quality portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU4fBGCruLOvZTCFEuQTYVbD-frFPRsylZI6GVZIIRN2TRzB11Zig-Gzmrqgsk5Itt7V12WS_gaUgsdrzSPPwZHuwwI0rEGlBg22T5rsW8NVBkHb8WDbCKxK1r6PSfx372_bnH7fiJctyZgY0rfIrZY_5fWW3wAKGauGafx4BbialI76qg_2xVFxhFh7l_du8nU8pbQuy5erBmWrV6BqrAGUGAPVCKCq3NYRpVZLemcxbR967rghQolnsctjVudOkRACD4FedmZaU"/>
+<p class="font-bold text-secondary leading-tight">Đức (Bạn)</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter mt-1">NGƯỜI TÌM KIẾM</p>
+<span class="mt-2 text-[10px] px-2 py-0.5 bg-surface-container-low text-on-surface-variant rounded italic">Đang chờ...</span>
+</div>
+<!-- Empty Slots -->
+<div class="border-2 border-dashed border-outline-variant/20 rounded-xl p-4 flex flex-col items-center justify-center opacity-40">
+<span class="material-symbols-outlined text-outline-variant text-2xl">person_add</span>
+<p class="text-[10px] font-bold mt-2 uppercase tracking-widest text-outline-variant">Trống</p>
+</div>
+<div class="border-2 border-dashed border-outline-variant/20 rounded-xl p-4 flex flex-col items-center justify-center opacity-40">
+<span class="material-symbols-outlined text-outline-variant text-2xl">person_add</span>
+<p class="text-[10px] font-bold mt-2 uppercase tracking-widest text-outline-variant">Trống</p>
+</div>
+<div class="border-2 border-dashed border-outline-variant/20 rounded-xl p-4 flex flex-col items-center justify-center opacity-40">
+<span class="material-symbols-outlined text-outline-variant text-2xl">person_add</span>
+<p class="text-[10px] font-bold mt-2 uppercase tracking-widest text-outline-variant">Trống</p>
+</div>
+<div class="border-2 border-dashed border-outline-variant/20 rounded-xl p-4 flex flex-col items-center justify-center opacity-40">
+<span class="material-symbols-outlined text-outline-variant text-2xl">person_add</span>
+<p class="text-[10px] font-bold mt-2 uppercase tracking-widest text-outline-variant">Trống</p>
+</div>
+</div>
+</section>
+<!-- Chat Preview Section -->
+<section class="space-y-3">
+<div class="h-[80px] overflow-y-auto space-y-1.5 scrollbar-hide">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-secondary">Minh:</span>
+<span class="text-xs text-on-surface-variant">Chào mọi người!</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-on-surface">An:</span>
+<span class="text-xs text-on-surface-variant">Sẵn sàng rồi 💪</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-container-high rounded-full px-4 py-2 text-left text-xs text-on-surface-variant">Gõ tin nhắn...</button>
+<div class="flex gap-2 px-1">
+<span class="text-xl grayscale hover:grayscale-0 cursor-pointer transition-all">👍</span>
+<span class="text-xl grayscale hover:grayscale-0 cursor-pointer transition-all">❤️</span>
+<span class="text-xl grayscale hover:grayscale-0 cursor-pointer transition-all">😂</span>
+<span class="text-xl grayscale hover:grayscale-0 cursor-pointer transition-all">🙏</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Actions (PLAYER VIEW) -->
+<footer class="fixed bottom-0 left-0 right-0 p-6 glass-card border-t border-outline-variant/10">
+<div class="max-w-md mx-auto space-y-4">
+<button class="w-full h-14 rounded-xl border-2 border-secondary text-secondary font-bold text-lg uppercase tracking-widest hover:bg-secondary/10 transition-colors active:scale-[0.98] duration-200">
+        Sẵn sàng
+      </button>
+<button class="w-full text-center text-on-surface-variant text-sm font-medium opacity-60 hover:opacity-100 transition-opacity">
+        Rời phòng
+      </button>
+</div>
+</footer>
+</body></html>

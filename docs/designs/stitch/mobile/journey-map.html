@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hành trình Kinh Thánh - Bible Journey</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;family=Crimson+Pro:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#3e2e00",
+                        "secondary-fixed-dim": "#f8bd45",
+                        "surface-container-high": "#272935",
+                        "secondary": "#f8bd45",
+                        "primary": "#c0c4e8",
+                        "tertiary-fixed": "#ffdf96",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#2b1f00",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#392600",
+                        "tertiary-fixed-dim": "#e7c268",
+                        "background": "#11131e",
+                        "inverse-primary": "#585d7b",
+                        "on-primary-container": "#8286a7",
+                        "surface-container": "#1d1f2a",
+                        "outline": "#919098",
+                        "surface-container-highest": "#323440",
+                        "surface-bright": "#373845",
+                        "inverse-on-surface": "#2e303c",
+                        "secondary-fixed": "#ffdea7",
+                        "on-primary": "#2a2f4a",
+                        "surface-container-low": "#191b26",
+                        "on-surface": "#e1e1f1",
+                        "primary-fixed-dim": "#c0c4e8",
+                        "outline-variant": "#46464d",
+                        "secondary-container": "#bc8709",
+                        "surface-variant": "#323440",
+                        "primary-fixed": "#dee1ff",
+                        "on-secondary-fixed": "#271900",
+                        "on-primary-fixed": "#151a34",
+                        "on-background": "#e1e1f1",
+                        "surface": "#11131e",
+                        "error-container": "#93000a",
+                        "on-secondary": "#412d00",
+                        "primary-container": "#1a1f3a",
+                        "surface-dim": "#11131e",
+                        "tertiary": "#e7c268",
+                        "on-tertiary-container": "#a48431",
+                        "on-tertiary-fixed-variant": "#5a4400",
+                        "on-primary-fixed-variant": "#404562",
+                        "inverse-surface": "#e1e1f1",
+                        "on-surface-variant": "#c7c5ce",
+                        "surface-tint": "#c0c4e8",
+                        "surface-container-lowest": "#0b0e18",
+                        "on-secondary-fixed-variant": "#5e4200"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"],
+                        "serif": ["Crimson Pro"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #11131e; color: #e1e1f1; font-family: 'Be Vietnam Pro', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        .glow-gold { box-shadow: 0 0 15px rgba(248, 189, 69, 0.3); }
+        .pulsing { animation: pulse-gold 2s infinite; }
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(248, 189, 69, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(248, 189, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(248, 189, 69, 0); }
+        }
+        .map-path {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            top: 0;
+            left: 0;
+        }
+        .dotted-line {
+            stroke-dasharray: 4 6;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-[#11131e] px-6 h-16 flex justify-between items-center transition-all duration-300">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#f8bd45]">menu</span>
+<h1 class="text-[#f8bd45] font-bold tracking-tight text-lg font-['Be_Vietnam_Pro']">Hành trình Kinh Thánh</h1>
+</div>
+<span class="material-symbols-outlined text-[#f8bd45]">military_tech</span>
+</header>
+<!-- Sub-header: Progress & Filters -->
+<div class="fixed top-16 w-full z-40 bg-[#11131e]/90 backdrop-blur-md px-6 py-4 space-y-4">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Tiến độ tổng quát</span>
+<span class="text-sm font-bold text-secondary">12/66 sách đã chinh phục</span>
+</div>
+<div class="h-1.5 w-full bg-primary-container rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-tertiary w-[18%] rounded-full shadow-[0_0_8px_rgba(248,189,69,0.5)]"></div>
+</div>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+<button class="px-4 py-1.5 rounded-full bg-secondary text-on-secondary text-xs font-bold whitespace-nowrap">Tất cả</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold border border-outline-variant/15 whitespace-nowrap">Cựu Ước</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold border border-outline-variant/15 whitespace-nowrap">Tân Ước</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold border border-outline-variant/15 whitespace-nowrap">Đang học</button>
+</div>
+</div>
+<!-- Main Content: Map Canvas -->
+<main class="flex-grow pt-48 pb-40 px-6 relative overflow-hidden bg-background">
+<!-- Background Texture Particles -->
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 50% 50%, #f8bd4511 1px, transparent 1px); background-size: 40px 40px;"></div>
+<!-- Map Journey Path -->
+<div class="relative max-w-sm mx-auto min-h-[1200px]">
+<!-- SVG Paths -->
+<svg class="map-path" fill="none" viewbox="0 0 300 1200" xmlns="http://www.w3.org/2000/svg">
+<!-- Solide path (Mastered/Available) -->
+<path d="M150 50 C250 150, 50 250, 150 350 C250 450, 50 550, 150 650" stroke="#f8bd45" stroke-linecap="round" stroke-width="4"></path>
+<!-- Dotted path (Locked) -->
+<path class="dotted-line" d="M150 650 C250 750, 50 850, 150 950 C250 1050, 50 1150, 150 1250" stroke="#46464d" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<!-- Content Overlays -->
+<div class="relative z-10 flex flex-col items-center">
+<!-- Category 1: Ngũ Kinh -->
+<div class="w-full text-center mb-12">
+<h2 class="font-serif italic text-2xl text-secondary mb-2 tracking-wide">Ngũ Kinh</h2>
+<div class="h-px w-16 mx-auto bg-gradient-to-r from-transparent via-secondary/40 to-transparent"></div>
+</div>
+<!-- Node 1: Mastered -->
+<div class="relative mb-20 translate-x-0">
+<div class="w-16 h-16 rounded-full bg-gradient-to-br from-secondary to-tertiary flex items-center justify-center glow-gold">
+<span class="material-symbols-outlined text-on-secondary font-bold" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="absolute top-1/2 left-20 -translate-y-1/2 whitespace-nowrap">
+<p class="text-sm font-bold text-on-surface">Sáng Thế Ký</p>
+<div class="flex gap-0.5">
+<span class="material-symbols-outlined text-[10px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[10px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[10px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<!-- Node 2: Mastered -->
+<div class="relative mb-20 translate-x-12">
+<div class="w-16 h-16 rounded-full bg-gradient-to-br from-secondary to-tertiary flex items-center justify-center glow-gold">
+<span class="material-symbols-outlined text-on-secondary font-bold" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="absolute top-1/2 right-20 -translate-y-1/2 text-right whitespace-nowrap">
+<p class="text-sm font-bold text-on-surface">Xuất Hành</p>
+<div class="flex gap-0.5 justify-end">
+<span class="material-symbols-outlined text-[10px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[10px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<!-- Node 3: In Progress (Active) -->
+<div class="relative mb-20 -translate-x-12">
+<div class="w-20 h-20 rounded-full border-4 border-secondary/30 p-1 pulsing">
+<div class="w-full h-full rounded-full bg-surface-container-highest overflow-hidden relative">
+<!-- Progress fill -->
+<div class="absolute bottom-0 w-full bg-secondary/40" style="height: 78%;"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-xs font-black text-secondary">78%</span>
+</div>
+</div>
+</div>
+<div class="absolute top-1/2 left-24 -translate-y-1/2 whitespace-nowrap">
+<p class="text-base font-extrabold text-secondary tracking-tight">Lê-vi Ký</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Đang học</p>
+</div>
+</div>
+<!-- Node 4: Available -->
+<div class="relative mb-20 translate-x-0">
+<div class="w-14 h-14 rounded-full border-2 border-secondary/60 flex items-center justify-center bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary/60">menu_book</span>
+</div>
+<div class="absolute top-1/2 left-16 -translate-y-1/2 whitespace-nowrap">
+<p class="text-sm font-medium text-on-surface/80">Dân Số Ký</p>
+</div>
+</div>
+<!-- Category 2: Lịch Sử -->
+<div class="w-full text-center mt-8 mb-12">
+<h2 class="font-serif italic text-2xl text-secondary/60 mb-2 tracking-wide">Lịch Sử</h2>
+<div class="h-px w-16 mx-auto bg-gradient-to-r from-transparent via-outline-variant/40 to-transparent"></div>
+</div>
+<!-- Node 5: Locked -->
+<div class="relative mb-20 translate-x-12">
+<div class="w-14 h-14 rounded-full border-2 border-outline-variant/40 flex items-center justify-center bg-surface-container-lowest">
+<span class="material-symbols-outlined text-on-surface-variant/30">lock</span>
+</div>
+<div class="absolute top-1/2 right-16 -translate-y-1/2 text-right whitespace-nowrap">
+<p class="text-sm font-medium text-on-surface-variant/40">Phục Truyền</p>
+</div>
+</div>
+<!-- Node 6: Locked -->
+<div class="relative mb-20 -translate-x-12">
+<div class="w-14 h-14 rounded-full border-2 border-outline-variant/20 flex items-center justify-center bg-surface-container-lowest">
+<span class="material-symbols-outlined text-on-surface-variant/20">lock</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Sticky Navigation Card -->
+<div class="fixed bottom-24 left-4 right-4 z-40">
+<div class="bg-surface-container/80 backdrop-blur-xl rounded-2xl p-4 shadow-2xl border border-white/5 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/20 flex items-center justify-center overflow-hidden">
+<img alt="Sacred book icon" class="w-8 h-8 object-contain" data-alt="stylized golden book icon on a dark ethereal background with soft glowing particles and divine atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeni9opubPkAFIFD95bm0QCo4YGG1aSOFIBpZyFQ1GcD_sSjRC9gp5Bz_VJjBsRTpCaJjrSIkc2wxM6pK31SWVYc-W7NZjWNxEWtomBTKOR7B6ZSrKG8WPrwBFNyFsmrtyuz_ckBDTYCdUblCqu8KVvOBRJow71R5aYpF0IePEMVnI55hqCce5QBmnnKMJAa6Yv69NUMqf-GlinYrjXHvBtPsiNH1ii-s1pMztyOy8Z7laX212b5fgi7QzUUxd_rrupYdKQnO4UIA"/>
+</div>
+<div class="flex-grow">
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-0.5">Tiếp theo</p>
+<h3 class="text-sm font-bold text-on-surface mb-2">Phục Truyền Luật Lệ Ký</h3>
+<div class="h-1 w-24 bg-primary-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[5%]"></div>
+</div>
+</div>
+<button class="bg-gradient-to-r from-secondary to-tertiary px-5 py-2.5 rounded-xl text-on-secondary font-bold text-sm shadow-lg active:scale-95 transition-transform">
+                Tiếp tục
+            </button>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-2xl bg-[#11131e]/90 backdrop-blur-xl border-t border-[#46464d]/15 shadow-[0_-4px_24px_rgba(11,14,24,0.06)] flex justify-around items-center h-20 px-4 pb-safe">
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/50 px-4 py-1.5 transition-transform active:scale-90 hover:text-[#f8bd45]">
+<span class="material-symbols-outlined text-2xl mb-1">map</span>
+<span class="text-[11px] font-bold uppercase tracking-[0.05em]">Map</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/50 px-4 py-1.5 transition-transform active:scale-90 hover:text-[#f8bd45]">
+<span class="material-symbols-outlined text-2xl mb-1">menu_book</span>
+<span class="text-[11px] font-bold uppercase tracking-[0.05em]">Library</span>
+</div>
+<!-- Active Tab: Progress -->
+<div class="flex flex-col items-center justify-center bg-[#272935] text-[#f8bd45] rounded-xl px-4 py-1.5 shadow-[0_0_15px_rgba(248,189,69,0.1)] transition-transform active:scale-90">
+<span class="material-symbols-outlined text-2xl mb-1" style="font-variation-settings: 'FILL' 1;">auto_graph</span>
+<span class="text-[11px] font-bold uppercase tracking-[0.05em]">Progress</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e1e1f1]/50 px-4 py-1.5 transition-transform active:scale-90 hover:text-[#f8bd45]">
+<span class="material-symbols-outlined text-2xl mb-1">person</span>
+<span class="text-[11px] font-bold uppercase tracking-[0.05em]">Profile</span>
+</div>
+</nav>
+</body></html>

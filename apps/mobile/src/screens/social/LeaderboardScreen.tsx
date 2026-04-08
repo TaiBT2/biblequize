@@ -1,144 +1,76 @@
-import { useState } from 'react'
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, RefreshControl } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { useNavigation } from '@react-navigation/native'
+import React, { useState } from 'react'
+import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native'
 import { useQuery } from '@tanstack/react-query'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { api } from '../../api/client'
-import { colors } from '../../theme/colors'
-import { spacing, borderRadius } from '../../theme/spacing'
-import { Avatar } from '../../components/Avatar'
-import { GlassCard } from '../../components/GlassCard'
+import SafeScreen from '../../components/layout/SafeScreen'
+import Avatar from '../../components/ui/Avatar'
+import { apiClient } from '../../api/client'
+import { colors, typography, spacing, borderRadius } from '../../theme'
 
-type Period = 'daily' | 'weekly' | 'all-time'
-
-const PERIODS: { key: Period; label: string }[] = [
-  { key: 'daily', label: 'Hôm nay' },
+const TABS = [
+  { key: 'daily', label: 'Ngày' },
   { key: 'weekly', label: 'Tuần' },
-  { key: 'all-time', label: 'Mọi lúc' },
+  { key: 'all-time', label: 'Tất cả' },
 ]
 
-export const LeaderboardScreen = () => {
-  const navigation = useNavigation()
-  const [period, setPeriod] = useState<Period>('daily')
+export default function LeaderboardScreen() {
+  const [period, setPeriod] = useState('weekly')
 
-  const lbQuery = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['leaderboard', period],
-    queryFn: () => api.get(`/api/leaderboard/${period}?size=50`).then((r) => r.data),
-    staleTime: 30 * 1000,
+    queryFn: () => apiClient.get(`/api/leaderboard/${period}?size=20`).then(r => r.data),
+    staleTime: 30_000,
   })
 
-  const myRankQuery = useQuery({
-    queryKey: ['my-rank', period],
-    queryFn: () => api.get(`/api/leaderboard/${period}/my-rank`).then((r) => r.data),
-    staleTime: 30 * 1000,
-  })
-
-  const entries = lbQuery.data?.content ?? lbQuery.data ?? []
+  const entries: any[] = Array.isArray(data) ? data : []
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <MaterialCommunityIcons name="arrow-left" size={24} color={colors.text.primary} />
-        </TouchableOpacity>
-        <Text style={styles.title}>Bảng Xếp Hạng</Text>
-        <View style={{ width: 24 }} />
-      </View>
+    <SafeScreen>
+      <Text style={styles.title}>Bảng Xếp Hạng</Text>
 
-      {/* Period tabs */}
+      {/* Tabs */}
       <View style={styles.tabs}>
-        {PERIODS.map((p) => (
-          <TouchableOpacity
-            key={p.key}
-            style={[styles.tab, period === p.key && styles.tabActive]}
-            onPress={() => setPeriod(p.key)}
-          >
-            <Text style={[styles.tabText, period === p.key && styles.tabTextActive]}>
-              {p.label}
-            </Text>
-          </TouchableOpacity>
+        {TABS.map(t => (
+          <Pressable key={t.key} onPress={() => setPeriod(t.key)}
+            style={[styles.tab, period === t.key && styles.tabActive]}>
+            <Text style={[styles.tabText, period === t.key && styles.tabTextActive]}>{t.label}</Text>
+          </Pressable>
         ))}
       </View>
 
-      <FlatList
-        data={entries}
-        keyExtractor={(item: any, i) => item.userId ?? String(i)}
-        contentContainerStyle={styles.list}
-        refreshControl={
-          <RefreshControl
-            refreshing={lbQuery.isFetching}
-            onRefresh={() => { lbQuery.refetch(); myRankQuery.refetch() }}
-            tintColor={colors.gold}
-            colors={[colors.gold]}
-          />
-        }
-        renderItem={({ item, index }) => {
-          const rank = index + 1
-          const isTop3 = rank <= 3
-          return (
-            <GlassCard style={[styles.rankCard, isTop3 && styles.rankCardTop]}>
-              <Text style={[styles.rank, isTop3 && styles.rankTop]}>{rank}</Text>
-              <Avatar uri={item.avatarUrl} name={item.name ?? 'User'} size={36} />
-              <View style={styles.info}>
-                <Text style={styles.name} numberOfLines={1}>{item.name ?? 'User'}</Text>
-              </View>
-              <Text style={[styles.score, isTop3 && styles.scoreTop]}>
-                {(item.score ?? item.points ?? 0).toLocaleString()}
-              </Text>
-            </GlassCard>
-          )
-        }}
-        ListFooterComponent={
-          myRankQuery.data ? (
-            <GlassCard style={[styles.rankCard, styles.myRankCard]}>
-              <Text style={[styles.rank, styles.myRankText]}>{myRankQuery.data.rank ?? '—'}</Text>
-              <MaterialCommunityIcons name="account" size={20} color={colors.gold} />
-              <View style={styles.info}>
-                <Text style={[styles.name, styles.myRankText]}>Bạn</Text>
-              </View>
-              <Text style={[styles.score, styles.myRankText]}>
-                {(myRankQuery.data.score ?? myRankQuery.data.points ?? 0).toLocaleString()}
-              </Text>
-            </GlassCard>
-          ) : null
-        }
-      />
-    </SafeAreaView>
+      <ScrollView contentContainerStyle={styles.list}>
+        {entries.map((e, i) => (
+          <View key={e.userId ?? i} style={[styles.row, i < 3 && styles.rowTop]}>
+            <Text style={[styles.rank, i < 3 && { color: colors.gold }]}>#{i + 1}</Text>
+            <Avatar uri={e.avatarUrl} name={e.name} size={36} />
+            <View style={styles.info}>
+              <Text style={styles.name} numberOfLines={1}>{e.name}</Text>
+              <Text style={styles.questions}>{e.questions ?? 0} câu</Text>
+            </View>
+            <Text style={styles.points}>{e.points?.toLocaleString()}</Text>
+          </View>
+        ))}
+        {entries.length === 0 && !isLoading && (
+          <Text style={styles.empty}>Chưa có dữ liệu</Text>
+        )}
+      </ScrollView>
+    </SafeScreen>
   )
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.bg.primary },
-  header: {
-    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    paddingHorizontal: spacing.xl, paddingVertical: spacing.md,
-  },
-  title: { fontSize: 20, fontWeight: '700', color: colors.text.primary },
-
-  tabs: {
-    flexDirection: 'row', paddingHorizontal: spacing.xl, gap: spacing.sm, marginBottom: spacing.lg,
-  },
-  tab: {
-    flex: 1, alignItems: 'center', paddingVertical: spacing.sm, borderRadius: borderRadius.full,
-  },
-  tabActive: { backgroundColor: colors.goldLight },
-  tabText: { fontSize: 14, color: colors.text.muted, fontWeight: '500' },
-  tabTextActive: { color: colors.gold },
-
-  list: { paddingHorizontal: spacing.xl, gap: spacing.sm, paddingBottom: spacing['4xl'] },
-
-  rankCard: {
-    flexDirection: 'row', alignItems: 'center', gap: spacing.md, marginBottom: 0,
-  },
-  rankCardTop: { borderColor: `${colors.gold}30` },
-  rank: { width: 28, fontSize: 16, fontWeight: '700', color: colors.text.secondary, textAlign: 'center' },
-  rankTop: { color: colors.gold },
+  title: { fontSize: typography.size['2xl'], fontWeight: typography.weight.bold, color: colors.textPrimary, padding: spacing.lg, paddingBottom: spacing.sm },
+  tabs: { flexDirection: 'row', marginHorizontal: spacing.lg, backgroundColor: colors.surfaceContainer, borderRadius: borderRadius.lg, padding: 3 },
+  tab: { flex: 1, paddingVertical: spacing.sm, alignItems: 'center', borderRadius: borderRadius.md },
+  tabActive: { backgroundColor: colors.gold },
+  tabText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.textMuted },
+  tabTextActive: { color: colors.onSecondary },
+  list: { padding: spacing.lg, gap: spacing.sm },
+  row: { flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surfaceContainer, borderRadius: borderRadius.lg, padding: spacing.md, gap: spacing.md },
+  rowTop: { borderWidth: 1, borderColor: 'rgba(248,189,69,0.2)' },
+  rank: { width: 30, fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.textMuted },
   info: { flex: 1 },
-  name: { fontSize: 15, color: colors.text.primary, fontWeight: '500' },
-  score: { fontSize: 15, fontWeight: '700', color: colors.text.secondary },
-  scoreTop: { color: colors.gold },
-
-  myRankCard: { borderColor: colors.gold, borderWidth: 1, marginTop: spacing.md },
-  myRankText: { color: colors.gold },
+  name: { fontSize: typography.size.sm, fontWeight: typography.weight.semibold, color: colors.textPrimary },
+  questions: { fontSize: 10, color: colors.textMuted },
+  points: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold },
+  empty: { textAlign: 'center', color: colors.textMuted, marginTop: spacing['3xl'] },
 })

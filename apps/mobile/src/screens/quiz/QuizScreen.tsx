@@ -1,541 +1,231 @@
-import { useState, useEffect, useCallback } from 'react'
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  StyleSheet,
-  StatusBar,
-  Alert,
-  BackHandler,
-} from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { useNavigation, useRoute, type RouteProp } from '@react-navigation/native'
-import * as Haptics from 'expo-haptics'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { api } from '../../api/client'
-import { colors } from '../../theme/colors'
-import { spacing, borderRadius } from '../../theme/spacing'
-import { CircularTimer } from '../../components/CircularTimer'
-import { ProgressBar } from '../../components/ProgressBar'
-import { EnergyBar } from '../../components/EnergyBar'
-import type { QuizStackParamList } from '../../navigation/types'
-
-// === Types ===
-
-interface Question {
-  id: string
-  book?: string
-  bookName?: string
-  chapter?: number
-  difficulty: string
-  content?: string
-  questionText?: string
-  options: string[]
-  correctAnswer: number[]
-  explanation?: string
-}
-
-// === Scoring ===
-
-const BASE_SCORES: Record<string, number> = { easy: 10, medium: 20, hard: 30, EASY: 10, MEDIUM: 20, HARD: 30 }
-const DIFF_MULT: Record<string, number> = { easy: 1, medium: 1.2, hard: 1.5, EASY: 1, MEDIUM: 1.2, HARD: 1.5 }
-
-function calcScore(difficulty: string, timeLeft: number): number {
-  const base = BASE_SCORES[difficulty] ?? 10
-  const mult = DIFF_MULT[difficulty] ?? 1
-  const timeBonus = Math.floor(timeLeft / 2)
-  const perfectBonus = timeLeft >= 25 ? 5 : 0
-  return Math.floor((base + timeBonus + perfectBonus) * mult)
-}
-
-// === Answer letters ===
+import React, { useState, useEffect, useCallback } from 'react'
+import { View, Text, StyleSheet, Pressable, Animated } from 'react-native'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import SafeScreen from '../../components/layout/SafeScreen'
+import ProgressBar from '../../components/ui/ProgressBar'
+import { apiClient } from '../../api/client'
+import { calculateScore } from '../../logic/scoring'
+import { colors, typography, spacing, borderRadius } from '../../theme'
 
 const LETTERS = ['A', 'B', 'C', 'D']
 
-// === Component ===
-
-export const QuizScreen = () => {
+export default function QuizScreen() {
   const navigation = useNavigation<any>()
-  const route = useRoute<RouteProp<QuizStackParamList, 'Quiz'>>()
-  const { sessionId, mode } = route.params
-  const isRanked = mode === 'ranked'
-  const isDaily = mode === 'daily'
-  const isMultiplayer = mode === 'multiplayer'
+  const route = useRoute<any>()
+  const { questions = [], sessionId, mode = 'practice', timePerQuestion = 30, showExplanation = true } = route.params ?? {}
 
-  // Quiz state
-  const [questions, setQuestions] = useState<Question[]>([])
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
+  const [qIndex, setQIndex] = useState(0)
+  const [selected, setSelected] = useState<number | null>(null)
   const [showResult, setShowResult] = useState(false)
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
+  const [timeLeft, setTimeLeft] = useState(timePerQuestion)
   const [score, setScore] = useState(0)
   const [combo, setCombo] = useState(0)
-  const [lives, setLives] = useState(5)
   const [correctCount, setCorrectCount] = useState(0)
-  const [timeLeft, setTimeLeft] = useState(30)
-  const [lastScore, setLastScore] = useState(0)
-  const [isCompleted, setIsCompleted] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
+  const [userAnswers, setUserAnswers] = useState<(number | null)[]>(new Array(questions.length).fill(null))
+  const [questionScores, setQuestionScores] = useState<number[]>(new Array(questions.length).fill(0))
 
-  // Load questions
-  useEffect(() => {
-    const loadQuestions = async () => {
-      try {
-        let qs: Question[] = []
-        if (isRanked) {
-          // Ranked: try ranked endpoint first, fallback to standard
-          try {
-            const res = await api.get(`/api/ranked/sessions/${sessionId}/questions`)
-            qs = res.data?.questions ?? res.data ?? []
-          } catch { /* fallback below */ }
-        }
-        if (qs.length === 0) {
-          // Standard/daily/practice: session endpoint
-          const res = await api.get(`/api/sessions/${sessionId}`)
-          qs = res.data?.questions ?? res.data?.sessionQuestions ?? []
-        }
-        if (qs.length === 0) {
-          throw new Error('No questions')
-        }
-        setQuestions(qs)
-      } catch {
-        Alert.alert('Lỗi', 'Không tải được câu hỏi')
-        navigation.goBack()
-      } finally {
-        setIsLoading(false)
-      }
-    }
-    loadQuestions()
-  }, [sessionId, navigation])
+  const question = questions[qIndex]
+  const progress = questions.length > 0 ? ((qIndex + 1) / questions.length) * 100 : 0
 
-  // Timer countdown
+  // Timer
   useEffect(() => {
-    if (timeLeft > 0 && !showResult && !isCompleted && !isLoading) {
-      const timer = setTimeout(() => setTimeLeft((t) => t - 1), 1000)
+    if (timeLeft > 0 && !showResult) {
+      const timer = setTimeout(() => setTimeLeft((t: number) => t - 1), 1000)
       return () => clearTimeout(timer)
+    } else if (timeLeft === 0 && !showResult) {
+      handleSelect(-1)
     }
-    if (timeLeft === 0 && !showResult && !isCompleted && !isLoading) {
-      handleAnswerSelect(-1) // Auto-submit timeout
+  }, [timeLeft, showResult])
+
+  const handleSelect = useCallback(async (idx: number) => {
+    if (showResult) return
+    setSelected(idx)
+    setShowResult(true)
+
+    const correct = idx === (question?.correctAnswer?.[0] ?? -1)
+    setIsCorrect(correct)
+
+    let qScore = 0
+    if (correct) {
+      qScore = calculateScore({
+        difficulty: question.difficulty,
+        isCorrect: true,
+        elapsedMs: (timePerQuestion - timeLeft) * 1000,
+        timeLimitMs: timePerQuestion * 1000,
+        comboCount: combo,
+        tierMultiplier: 1.0,
+      })
+      setScore(s => s + qScore)
+      setCombo(c => c + 1)
+      setCorrectCount(c => c + 1)
+    } else {
+      setCombo(0)
     }
-  }, [timeLeft, showResult, isCompleted, isLoading])
 
-  // Block back gesture
-  useEffect(() => {
-    const handler = BackHandler.addEventListener('hardwareBackPress', () => {
-      handleExit()
-      return true
-    })
-    return () => handler.remove()
-  }, [])
+    // Record answer
+    const newAnswers = [...userAnswers]
+    newAnswers[qIndex] = idx
+    setUserAnswers(newAnswers)
+    const newScores = [...questionScores]
+    newScores[qIndex] = qScore
+    setQuestionScores(newScores)
 
-  const handleExit = () => {
-    Alert.alert(
-      'Thoát?',
-      'Tiến trình hiện tại sẽ không được lưu.',
-      [
-        { text: 'Tiếp tục', style: 'cancel' },
-        {
-          text: 'Thoát',
-          style: 'destructive',
-          onPress: () => navigation.goBack(),
-        },
-      ]
-    )
-  }
-
-  const handleAnswerSelect = useCallback(
-    async (answerIndex: number) => {
-      if (showResult || isCompleted) return
-
-      const question = questions[currentIndex]
-      if (!question) return
-
-      setSelectedAnswer(answerIndex)
-
-      let correct = false
-      let earnedScore = 0
-
+    // Submit to server
+    if (sessionId) {
       try {
-        if (isRanked) {
-          const res = await api.post(
-            `/api/ranked/sessions/${sessionId}/answer`,
-            {
-              questionId: question.id,
-              answer: answerIndex,
-              clientElapsedMs: (30 - timeLeft) * 1000,
-            }
-          )
-          correct = res.data?.correct ?? (question.correctAnswer?.[0] === answerIndex)
-          if (correct) earnedScore = calcScore(question.difficulty, timeLeft)
-        } else if (sessionId) {
-          const res = await api.post(`/api/sessions/${sessionId}/answer`, {
-            questionId: question.id,
-            answer: answerIndex,
-            clientElapsedMs: (30 - timeLeft) * 1000,
-          })
-          correct = res.data?.isCorrect ?? res.data?.correct ?? false
-          if (correct) earnedScore = calcScore(question.difficulty, timeLeft)
-        } else {
-          correct = question.correctAnswer?.[0] === answerIndex
-          if (correct) earnedScore = calcScore(question.difficulty, timeLeft)
-        }
-      } catch {
-        // Fallback to local check
-        correct = question.correctAnswer?.[0] === answerIndex
-        if (correct) earnedScore = calcScore(question.difficulty, timeLeft)
-      }
-
-      // Haptic feedback
-      if (correct) {
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
-      } else {
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
-      }
-
-      setIsCorrect(correct)
-      setLastScore(earnedScore)
-
-      if (correct) {
-        setScore((s) => s + earnedScore)
-        setCombo((c) => c + 1)
-        setCorrectCount((c) => c + 1)
-      } else {
-        setCombo(0)
-        setLives((l) => Math.max(0, l - 1))
-      }
-
-      setShowResult(true)
-    },
-    [showResult, isCompleted, questions, currentIndex, sessionId, isRanked, timeLeft]
-  )
-
-  const handleNext = () => {
-    if (currentIndex + 1 >= questions.length) {
-      setIsCompleted(true)
-      navigation.replace('QuizResults', { sessionId })
-      return
+        await apiClient.post(`/api/sessions/${sessionId}/answer`, {
+          questionId: question.id,
+          answer: idx,
+          clientElapsedMs: (timePerQuestion - timeLeft) * 1000,
+        })
+      } catch { /* non-critical */ }
     }
+  }, [showResult, question, combo, timeLeft, qIndex, userAnswers, questionScores, sessionId, timePerQuestion])
 
-    setCurrentIndex((i) => i + 1)
-    setSelectedAnswer(null)
-    setShowResult(false)
-    setIsCorrect(null)
-    setTimeLeft(30)
-    setLastScore(0)
+  const nextQuestion = () => {
+    if (qIndex + 1 >= questions.length) {
+      const stats = {
+        totalScore: score,
+        correctAnswers: correctCount,
+        totalQuestions: questions.length,
+        accuracy: questions.length > 0 ? (correctCount / questions.length) * 100 : 0,
+        questions,
+        userAnswers,
+        questionScores,
+      }
+      navigation.replace('QuizResults', { stats })
+    } else {
+      setQIndex(i => i + 1)
+      setSelected(null)
+      setShowResult(false)
+      setIsCorrect(null)
+      setTimeLeft(timePerQuestion)
+    }
   }
 
-  // Loading
-  if (isLoading || questions.length === 0) {
-    return (
-      <SafeAreaView style={styles.container}>
-        <StatusBar barStyle="light-content" />
-        <View style={styles.loadingCenter}>
-          <Text style={styles.loadingText}>Đang tải câu hỏi...</Text>
-        </View>
-      </SafeAreaView>
-    )
-  }
-
-  const question = questions[currentIndex]
-  const questionText = question?.content ?? question?.questionText ?? ''
-  const bookName = question?.book ?? question?.bookName ?? ''
-  const isLastQuestion = currentIndex + 1 >= questions.length
+  if (!question) return null
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" />
-
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity onPress={handleExit} style={styles.closeBtn}>
-          <MaterialCommunityIcons name="close" size={24} color={colors.text.primary} />
-        </TouchableOpacity>
-
-        <Text style={styles.questionCount}>
-          Câu hỏi {currentIndex + 1}/{questions.length}
-        </Text>
-
-        <View style={styles.scoreTag}>
-          <MaterialCommunityIcons name="lightning-bolt" size={16} color={colors.gold} />
-          <Text style={styles.scoreText}>{score}</Text>
-        </View>
-      </View>
-
-      {/* Progress */}
-      <ProgressBar
-        progress={(currentIndex + 1) / questions.length}
-        height={3}
-      />
-
-      <ScrollView
-        contentContainerStyle={styles.quizContent}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Stats Row */}
-        <View style={styles.statsRow}>
-          {/* Combo */}
-          <View style={styles.statItem}>
-            <MaterialCommunityIcons
-              name="star-four-points"
-              size={18}
-              color={combo > 0 ? colors.gold : colors.text.muted}
-            />
-            <Text style={[styles.statText, combo > 0 && styles.statGold]}>
-              x{combo}
-            </Text>
+    <SafeScreen>
+      <View style={styles.container}>
+        {/* Header */}
+        <View style={styles.header}>
+          <Pressable onPress={() => navigation.goBack()} style={styles.closeBtn}>
+            <Text style={styles.closeText}>✕</Text>
+          </Pressable>
+          <View style={styles.headerCenter}>
+            <Text style={styles.qCount}>{qIndex + 1}/{questions.length}</Text>
           </View>
+          <View style={styles.comboBadge}>
+            <Text style={styles.comboText}>🔥 {combo}</Text>
+          </View>
+        </View>
 
-          {/* Timer */}
-          <CircularTimer timeLeft={timeLeft} totalTime={30} size={64} />
+        <ProgressBar progress={progress} height={4} />
 
-          {/* Lives */}
-          <EnergyBar lives={lives} barHeight={18} />
+        {/* Timer */}
+        <View style={styles.timerRow}>
+          <Text style={[styles.timerText, timeLeft <= 5 && styles.timerWarning]}>
+            {timeLeft}s
+          </Text>
+          <Text style={styles.bookLabel}>{question.book} {question.chapter}</Text>
         </View>
 
         {/* Question */}
         <View style={styles.questionCard}>
-          {bookName ? (
-            <Text style={styles.bookRef}>
-              {bookName} {question?.chapter ?? ''}
-            </Text>
-          ) : null}
-          <Text style={styles.questionText}>{questionText}</Text>
+          <Text style={styles.questionText}>{question.content}</Text>
         </View>
 
         {/* Answers */}
-        <View style={styles.answersGrid}>
-          {question?.options?.map((option, i) => {
-            const isCorrectAnswer = question.correctAnswer?.[0] === i
-            const isSelected = selectedAnswer === i
-
-            const dynamicBtnStyle = showResult
-              ? isCorrectAnswer
-                ? { backgroundColor: 'rgba(34,197,94,0.1)', borderColor: '#22c55e' }
-                : isSelected
-                  ? { backgroundColor: 'rgba(239,68,68,0.1)', borderColor: '#ef4444' }
-                  : { opacity: 0.5 as const }
-              : isSelected
-                ? { backgroundColor: `${colors.gold}15`, borderColor: colors.gold }
-                : undefined
-
-            const dynamicLetterStyle = showResult
-              ? isCorrectAnswer
-                ? { backgroundColor: '#22c55e' }
-                : isSelected
-                  ? { backgroundColor: '#ef4444' }
-                  : undefined
-              : isSelected
-                ? { backgroundColor: colors.gold }
-                : undefined
-
-            const dynamicTextColor = showResult
-              ? isCorrectAnswer
-                ? '#22c55e'
-                : isSelected
-                  ? '#ef4444'
-                  : colors.text.primary
-              : colors.text.primary
+        <View style={styles.answers}>
+          {question.options?.map((opt: string, idx: number) => {
+            const isSel = selected === idx
+            const isRight = showResult && idx === question.correctAnswer?.[0]
+            const isWrong = showResult && isSel && idx !== question.correctAnswer?.[0]
 
             return (
-              <TouchableOpacity
-                key={i}
-                style={[styles.answerButton, styles.answerDefault, dynamicBtnStyle]}
-                onPress={() => handleAnswerSelect(i)}
+              <Pressable
+                key={idx}
+                onPress={() => handleSelect(idx)}
                 disabled={showResult}
-                activeOpacity={0.7}
+                style={[
+                  styles.answerBtn,
+                  isRight && styles.ansCorrect,
+                  isWrong && styles.ansWrong,
+                  isSel && !showResult && styles.ansSelected,
+                ]}
               >
-                <View style={[styles.letterBadge, styles.letterDefault, dynamicLetterStyle]}>
-                  <Text style={styles.letterText}>{LETTERS[i]}</Text>
+                <View style={[styles.letter, isRight && styles.letterCorrect, isWrong && styles.letterWrong]}>
+                  <Text style={styles.letterText}>{LETTERS[idx]}</Text>
                 </View>
-                <Text style={[styles.answerText, { color: dynamicTextColor }]} numberOfLines={3}>
-                  {option}
+                <Text style={[styles.ansText, isRight && { color: colors.success }, isWrong && { color: colors.error }]} numberOfLines={2}>
+                  {opt}
                 </Text>
-              </TouchableOpacity>
+              </Pressable>
             )
           })}
         </View>
-      </ScrollView>
 
-      {/* Result Modal */}
-      {showResult && (
-        <View style={styles.resultModal}>
-          <View style={styles.resultContent}>
-            <View
-              style={[
-                styles.resultIcon,
-                isCorrect ? styles.resultIconCorrect : styles.resultIconWrong,
-              ]}
-            >
-              <MaterialCommunityIcons
-                name={isCorrect ? 'check' : 'close'}
-                size={28}
-                color="#fff"
-              />
+        {/* Result footer */}
+        {showResult && (
+          <View style={[styles.resultBar, isCorrect ? styles.resultCorrect : styles.resultWrong]}>
+            <View>
+              <Text style={styles.resultTitle}>{isCorrect ? '✓ Chính xác!' : '✗ Sai rồi!'}</Text>
+              {!isCorrect && showExplanation && question.explanation && (
+                <Text style={styles.explanation} numberOfLines={2}>{question.explanation}</Text>
+              )}
             </View>
-            <View style={styles.resultTextBlock}>
-              <Text style={styles.resultTitle}>
-                {isCorrect ? 'Chính xác!' : 'Sai rồi!'}
-              </Text>
-              <Text style={styles.resultSubtitle}>
-                {isCorrect ? `+${lastScore} Điểm` : 'Không được điểm'}
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
-              <Text style={styles.nextButtonText}>
-                {isLastQuestion ? 'XEM KẾT QUẢ' : 'CÂU TIẾP THEO'}
-              </Text>
-              <MaterialCommunityIcons name="arrow-right" size={20} color={colors.bg.primary} />
-            </TouchableOpacity>
+            <Pressable onPress={nextQuestion} style={styles.nextBtn}>
+              <Text style={styles.nextText}>{qIndex + 1 >= questions.length ? 'Kết quả' : 'Tiếp →'}</Text>
+            </Pressable>
           </View>
-        </View>
-      )}
-    </SafeAreaView>
+        )}
+      </View>
+    </SafeScreen>
   )
 }
 
-// === Styles ===
-
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.bg.primary },
-  loadingCenter: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  loadingText: { color: colors.text.secondary, fontSize: 16 },
-
-  // Header
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.md,
-  },
-  closeBtn: { padding: spacing.xs },
-  questionCount: { fontSize: 14, fontWeight: '600', color: colors.text.secondary },
-  scoreTag: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    backgroundColor: colors.goldLight,
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs,
-    borderRadius: borderRadius.full,
-  },
-  scoreText: { fontSize: 14, fontWeight: '700', color: colors.gold },
-
-  // Quiz content
-  quizContent: {
-    padding: spacing.xl,
-    paddingBottom: 120,
-  },
-
-  // Stats
-  statsRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: spacing['2xl'],
-  },
-  statItem: { flexDirection: 'row', alignItems: 'center', gap: 4 },
-  statText: { fontSize: 16, fontWeight: '700', color: colors.text.muted },
-  statGold: { color: colors.gold },
-
-  // Question
+  container: { flex: 1, padding: spacing.lg },
+  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: spacing.md },
+  closeBtn: { width: 36, height: 36, borderRadius: 18, backgroundColor: colors.surfaceContainer, alignItems: 'center', justifyContent: 'center' },
+  closeText: { fontSize: 18, color: colors.textMuted },
+  headerCenter: { alignItems: 'center' },
+  qCount: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.textSecondary },
+  comboBadge: { backgroundColor: colors.surfaceContainer, borderRadius: borderRadius.full, paddingHorizontal: spacing.md, paddingVertical: spacing.xs },
+  comboText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold },
+  timerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: spacing.lg },
+  timerText: { fontSize: typography.size['2xl'], fontWeight: typography.weight.bold, color: colors.gold },
+  timerWarning: { color: colors.error },
+  bookLabel: { fontSize: typography.size.xs, color: colors.textMuted },
   questionCard: {
-    backgroundColor: colors.bg.card,
-    borderRadius: borderRadius.xl,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.06)',
-    padding: spacing['2xl'],
-    marginBottom: spacing['2xl'],
-    alignItems: 'center',
+    backgroundColor: colors.surfaceContainer, borderRadius: borderRadius['2xl'],
+    padding: spacing.xl, marginBottom: spacing.xl, minHeight: 100, justifyContent: 'center',
   },
-  bookRef: {
-    fontSize: 12,
-    color: colors.gold,
-    fontWeight: '600',
-    letterSpacing: 0.5,
-    textTransform: 'uppercase',
-    marginBottom: spacing.md,
+  questionText: { fontSize: typography.size.xl, fontWeight: typography.weight.bold, color: colors.textPrimary, textAlign: 'center', lineHeight: 30 },
+  answers: { gap: spacing.md, flex: 1 },
+  answerBtn: {
+    flexDirection: 'row', alignItems: 'center', padding: spacing.lg,
+    backgroundColor: colors.surfaceContainer, borderRadius: borderRadius.xl,
+    borderWidth: 2, borderColor: 'transparent',
   },
-  questionText: {
-    fontSize: 18,
-    fontWeight: '500',
-    color: colors.text.primary,
-    textAlign: 'center',
-    lineHeight: 28,
+  ansSelected: { borderColor: colors.gold, backgroundColor: 'rgba(248,189,69,0.08)' },
+  ansCorrect: { borderColor: colors.success, backgroundColor: 'rgba(34,197,94,0.1)' },
+  ansWrong: { borderColor: colors.error, backgroundColor: 'rgba(239,68,68,0.1)' },
+  letter: { width: 32, height: 32, borderRadius: 8, backgroundColor: colors.surfaceContainerHighest, alignItems: 'center', justifyContent: 'center', marginRight: spacing.md },
+  letterCorrect: { backgroundColor: colors.success },
+  letterWrong: { backgroundColor: colors.error },
+  letterText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold },
+  ansText: { flex: 1, fontSize: typography.size.base, color: colors.textPrimary },
+  resultBar: {
+    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
+    padding: spacing.lg, borderRadius: borderRadius.xl, marginTop: spacing.md,
   },
-
-  // Answers
-  answersGrid: { gap: spacing.md },
-  answerButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    minHeight: 56,
-    borderRadius: borderRadius.lg,
-    borderWidth: 1,
-    padding: spacing.lg,
-    gap: spacing.md,
-  },
-  answerDefault: {
-    backgroundColor: colors.bg.surfaceContainer,
-    borderColor: 'rgba(255,255,255,0.06)',
-  },
-  letterBadge: {
-    width: 32,
-    height: 32,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  letterDefault: { backgroundColor: colors.bg.surfaceContainerHighest },
-  letterText: { fontSize: 14, fontWeight: '700', color: colors.text.primary },
-
-  answerText: { flex: 1, fontSize: 15, lineHeight: 22 },
-
-  // Result Modal
-  resultModal: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: colors.bg.surfaceContainerHigh,
-    borderTopLeftRadius: borderRadius['2xl'],
-    borderTopRightRadius: borderRadius['2xl'],
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(255,255,255,0.08)',
-    paddingBottom: spacing['4xl'],
-  },
-  resultContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: spacing.xl,
-    gap: spacing.md,
-  },
-  resultIcon: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  resultIconCorrect: { backgroundColor: '#22c55e' },
-  resultIconWrong: { backgroundColor: '#ef4444' },
-  resultTextBlock: { flex: 1 },
-  resultTitle: { fontSize: 17, fontWeight: '700', color: colors.text.primary },
-  resultSubtitle: { fontSize: 13, color: colors.text.secondary, marginTop: 2 },
-
-  nextButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.gold,
-    borderRadius: borderRadius.lg,
-    paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.md,
-    gap: spacing.xs,
-  },
-  nextButtonText: {
-    fontSize: 13,
-    fontWeight: '700',
-    color: colors.bg.primary,
-  },
+  resultCorrect: { backgroundColor: 'rgba(34,197,94,0.15)' },
+  resultWrong: { backgroundColor: 'rgba(239,68,68,0.15)' },
+  resultTitle: { fontSize: typography.size.base, fontWeight: typography.weight.bold, color: colors.textPrimary },
+  explanation: { fontSize: typography.size.xs, color: colors.textSecondary, marginTop: 4, maxWidth: 220 },
+  nextBtn: { backgroundColor: colors.gold, borderRadius: borderRadius.lg, paddingHorizontal: spacing.xl, paddingVertical: spacing.md },
+  nextText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.onSecondary },
 })

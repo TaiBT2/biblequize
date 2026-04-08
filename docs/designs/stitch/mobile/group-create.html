@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#f8bd45",
+                        "primary-fixed-dim": "#c0c4e8",
+                        "surface-container-lowest": "#0b0e18",
+                        "secondary": "#f8bd45",
+                        "on-tertiary-container": "#a48431",
+                        "on-primary": "#2a2f4a",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-surface-variant": "#c7c5ce",
+                        "on-secondary-fixed": "#271900",
+                        "outline-variant": "#46464d",
+                        "surface-variant": "#323440",
+                        "on-tertiary": "#3e2e00",
+                        "tertiary-fixed-dim": "#e7c268",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#ffdea7",
+                        "on-background": "#e1e1f1",
+                        "surface-container-highest": "#323440",
+                        "secondary-container": "#bc8709",
+                        "on-surface": "#e1e1f1",
+                        "inverse-surface": "#e1e1f1",
+                        "surface-tint": "#c0c4e8",
+                        "on-primary-container": "#8286a7",
+                        "tertiary-container": "#2b1f00",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#ffdf96",
+                        "surface-dim": "#11131e",
+                        "surface-bright": "#373845",
+                        "outline": "#919098",
+                        "on-secondary-container": "#392600",
+                        "on-error": "#690005",
+                        "on-primary-fixed-variant": "#404562",
+                        "surface": "#11131e",
+                        "surface-container": "#1d1f2a",
+                        "on-secondary": "#412d00",
+                        "on-tertiary-fixed-variant": "#5a4400",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#dee1ff",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "inverse-primary": "#585d7b",
+                        "inverse-on-surface": "#2e303c",
+                        "tertiary": "#e7c268",
+                        "on-primary-fixed": "#151a34",
+                        "primary": "#c0c4e8",
+                        "surface-container-high": "#272935",
+                        "surface-container-low": "#191b26",
+                        "primary-container": "#1a1f3a",
+                        "background": "#11131e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Be Vietnam Pro"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #f8bd45 0%, #e7c268 100%);
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #f8bd45;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(248, 189, 69, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body min-h-screen">
+<!-- Top Navigation Anchor (Suppressed custom header for task specific back arrow) -->
+<header class="fixed top-0 w-full z-50 bg-[#1d1f2a] flex items-center px-6 h-16 w-full shadow-none">
+<button class="text-[#e1e1f1]/60 hover:bg-[#272935] p-2 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="ml-4 text-xl font-bold text-[#e1e1f1] font-headline tracking-[-0.02em]">Nhóm mới</h1>
+</header>
+<main class="pt-20 pb-32 px-6">
+<!-- Tab Selector -->
+<div class="flex border-b border-outline-variant/15 mb-8">
+<button class="flex-1 py-3 text-on-surface-variant font-medium text-center hover:text-on-surface transition-colors">
+                Tham gia
+            </button>
+<button class="flex-1 py-3 text-secondary font-bold text-center relative">
+                Tạo mới
+                <div class="absolute bottom-0 left-1/4 right-1/4 h-1 bg-secondary rounded-t-full"></div>
+</button>
+</div>
+<!-- Avatar Upload -->
+<div class="flex flex-col items-center mb-10">
+<div class="relative group">
+<div class="w-24 h-24 rounded-full bg-surface-container-high border-2 border-dashed border-outline-variant/30 flex items-center justify-center cursor-pointer overflow-hidden hover:border-secondary transition-colors">
+<span class="material-symbols-outlined text-outline-variant text-4xl" data-icon="add_a_photo">add_a_photo</span>
+</div>
+<div class="absolute bottom-0 right-0 bg-gold-gradient w-8 h-8 rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-on-secondary text-sm" data-icon="add" style="font-variation-settings: 'wght' 700;">add</span>
+</div>
+</div>
+<p class="mt-3 text-xs uppercase tracking-[0.05em] text-on-surface-variant font-label font-bold">Ảnh đại diện nhóm</p>
+</div>
+<!-- Form Fields -->
+<div class="space-y-8">
+<!-- Tên nhóm -->
+<div class="space-y-2">
+<label class="block text-sm font-bold text-on-surface-variant ml-1">Tên nhóm</label>
+<input class="w-full bg-surface-container-highest border-0 border-b-2 border-transparent focus:border-secondary focus:ring-0 rounded-t-xl px-4 py-3.5 text-on-surface transition-all placeholder:text-on-surface-variant/40" placeholder="Nhập tên nhóm của bạn..." type="text"/>
+</div>
+<!-- Mô tả -->
+<div class="space-y-2">
+<label class="block text-sm font-bold text-on-surface-variant ml-1">Mô tả</label>
+<textarea class="w-full bg-surface-container-highest border-0 border-b-2 border-transparent focus:border-secondary focus:ring-0 rounded-t-xl px-4 py-3.5 text-on-surface transition-all placeholder:text-on-surface-variant/40 resize-none" placeholder="Chia sẻ mục đích của nhóm..." rows="3"></textarea>
+</div>
+<!-- Loại nhóm -->
+<div class="space-y-3">
+<label class="block text-sm font-bold text-on-surface-variant ml-1">Loại nhóm</label>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-surface-container-high p-4 rounded-xl flex items-center space-x-3 border-2 border-secondary cursor-pointer ring-4 ring-secondary/5">
+<span class="text-2xl">🏛️</span>
+<span class="text-sm font-medium">Hội Thánh</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center space-x-3 border-2 border-transparent hover:border-outline-variant/30 cursor-pointer transition-all">
+<span class="text-2xl">👥</span>
+<span class="text-sm font-medium">Nhóm nhỏ</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center space-x-3 border-2 border-transparent hover:border-outline-variant/30 cursor-pointer transition-all">
+<span class="text-2xl">👨‍👩‍👧</span>
+<span class="text-sm font-medium">Gia đình</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center space-x-3 border-2 border-transparent hover:border-outline-variant/30 cursor-pointer transition-all">
+<span class="text-2xl">🎓</span>
+<span class="text-sm font-medium">Học tập</span>
+</div>
+</div>
+</div>
+<!-- Quyền riêng tư -->
+<div class="space-y-4">
+<label class="block text-sm font-bold text-on-surface-variant ml-1">Quyền riêng tư</label>
+<!-- Toggle: Công khai -->
+<div class="flex items-start justify-between bg-surface-container-low p-4 rounded-xl">
+<div class="flex-1 pr-4">
+<h4 class="font-bold text-on-surface">Công khai</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed mt-1">Mọi người đều có thể tìm thấy và xem nội dung nhóm.</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</div>
+</div>
+<!-- Toggle: Riêng tư -->
+<div class="flex items-start justify-between bg-surface-container-low p-4 rounded-xl">
+<div class="flex-1 pr-4">
+<h4 class="font-bold text-on-surface">Riêng tư</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed mt-1">Chỉ thành viên mới có thể thấy nội dung và danh sách nhóm.</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer mt-1">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</div>
+</div>
+</div>
+<!-- Giới hạn thành viên -->
+<div class="space-y-6 pt-2">
+<div class="flex justify-between items-center ml-1">
+<label class="text-sm font-bold text-on-surface-variant">Giới hạn thành viên</label>
+<span class="text-secondary font-bold text-lg">50</span>
+</div>
+<div class="px-1">
+<input class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-secondary" max="500" min="5" type="range" value="50"/>
+<div class="flex justify-between mt-3 text-[10px] font-bold text-on-surface-variant/50 uppercase tracking-widest">
+<span>5 thành viên</span>
+<span>500 thành viên</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom CTA Fixed Container -->
+<div class="fixed bottom-0 w-full p-6 bg-gradient-to-t from-background via-background/90 to-transparent">
+<button class="w-full bg-gold-gradient text-on-secondary font-bold py-4 rounded-xl shadow-[0_8px_30px_rgb(248,189,69,0.2)] active:scale-[0.98] transition-transform flex items-center justify-center space-x-2">
+<span class="material-symbols-outlined" data-icon="group_add" style="font-variation-settings: 'FILL' 1;">group_add</span>
+<span>Tạo nhóm</span>
+</button>
+</div>
+<!-- Background Decoration -->
+<div class="fixed top-1/4 -right-20 w-64 h-64 bg-secondary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="fixed bottom-1/4 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+</body></html>
