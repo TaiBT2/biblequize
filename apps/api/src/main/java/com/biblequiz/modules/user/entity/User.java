@@ -60,6 +60,30 @@ public class User {
     @Column(name = "streak_freeze_used_this_week", nullable = false)
     private Boolean streakFreezeUsedThisWeek = false;
 
+    // Milestone Burst: XP surge multiplier active until this time
+    @Column(name = "xp_surge_until")
+    private LocalDateTime xpSurgeUntil;
+
+    // Prestige System
+    @Column(name = "prestige_level", nullable = false)
+    private Integer prestigeLevel = 0;
+
+    @Column(name = "prestige_at", columnDefinition = "JSON")
+    private String prestigeAt; // JSON array of timestamps
+
+    @Column(name = "days_at_tier6", nullable = false)
+    private Integer daysAtTier6 = 0;
+
+    @Column(name = "tier6_reached_at")
+    private LocalDateTime tier6ReachedAt;
+
+    // Comeback Bridge
+    @Column(name = "last_active_date")
+    private java.time.LocalDate lastActiveDate;
+
+    @Column(name = "comeback_claimed_at")
+    private LocalDateTime comebackClaimedAt;
+
     @Column(name = "is_banned", nullable = false)
     private Boolean isBanned = false;
 
@@ -253,6 +277,27 @@ public class User {
 
     public Boolean getStreakFreezeUsedThisWeek() { return streakFreezeUsedThisWeek; }
     public void setStreakFreezeUsedThisWeek(Boolean used) { this.streakFreezeUsedThisWeek = used; }
+
+    public LocalDateTime getXpSurgeUntil() { return xpSurgeUntil; }
+    public void setXpSurgeUntil(LocalDateTime xpSurgeUntil) { this.xpSurgeUntil = xpSurgeUntil; }
+
+    public Integer getPrestigeLevel() { return prestigeLevel; }
+    public void setPrestigeLevel(Integer prestigeLevel) { this.prestigeLevel = prestigeLevel; }
+
+    public String getPrestigeAt() { return prestigeAt; }
+    public void setPrestigeAt(String prestigeAt) { this.prestigeAt = prestigeAt; }
+
+    public Integer getDaysAtTier6() { return daysAtTier6; }
+    public void setDaysAtTier6(Integer daysAtTier6) { this.daysAtTier6 = daysAtTier6; }
+
+    public LocalDateTime getTier6ReachedAt() { return tier6ReachedAt; }
+    public void setTier6ReachedAt(LocalDateTime tier6ReachedAt) { this.tier6ReachedAt = tier6ReachedAt; }
+
+    public java.time.LocalDate getLastActiveDate() { return lastActiveDate; }
+    public void setLastActiveDate(java.time.LocalDate lastActiveDate) { this.lastActiveDate = lastActiveDate; }
+
+    public LocalDateTime getComebackClaimedAt() { return comebackClaimedAt; }
+    public void setComebackClaimedAt(LocalDateTime comebackClaimedAt) { this.comebackClaimedAt = comebackClaimedAt; }
 
     public Boolean getIsBanned() { return isBanned; }
     public void setIsBanned(Boolean banned) { this.isBanned = banned; }

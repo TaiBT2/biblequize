@@ -16,6 +16,7 @@ import Login from './pages/Login'
 import Profile from './pages/Profile'
 import Practice from './pages/Practice'
 import Quiz from './pages/Quiz'
+import Cosmetics from './pages/Cosmetics'
 import Ranked from './pages/Ranked'
 import Rooms from './pages/Rooms'
 import AuthCallback from './pages/AuthCallback'
@@ -113,6 +114,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="/tournaments/:id/match/:matchId" element={<RequireAuth><TournamentMatch /></RequireAuth>} />
                   <Route path="/achievements" element={<Achievements />} />
                   <Route path="/journey" element={<Journey />} />
+                  <Route path="/cosmetics" element={<RequireAuth><Cosmetics /></RequireAuth>} />
                   <Route path="/ranked" element={<Ranked />} />
                   <Route path="/daily" element={<DailyChallenge />} />
                 </Route>

@@ -2,7 +2,11 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
+import ComebackModal from '../components/ComebackModal'
+import DailyMissionsCard from '../components/DailyMissionsCard'
 import GameModeGrid from '../components/GameModeGrid'
+import MilestoneBanner from '../components/MilestoneBanner'
+import TierProgressBar from '../components/TierProgressBar'
 import TutorialOverlay from '../components/TutorialOverlay'
 import { useAuthStore } from '../store/authStore'
 import { api } from '../api/client'
@@ -100,6 +104,7 @@ export default function Home() {
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto w-full">
+      <ComebackModal />
       <TutorialOverlay />
       {/* ── Hero: Greeting + Tier ── */}
       <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -142,6 +147,8 @@ export default function Home() {
                     {t('home.pointsToNext', { points: tier.pointsToNext.toLocaleString(), tier: t(tier.next.nameKey) })}
                   </p>
                 )}
+                <TierProgressBar />
+                <MilestoneBanner />
               </div>
             </div>
           </div>
@@ -184,6 +191,11 @@ export default function Home() {
           <span className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">{t('home.explore6Modes')}</span>
         </div>
         <GameModeGrid />
+      </section>
+
+      {/* ── Daily Missions ── */}
+      <section>
+        <DailyMissionsCard />
       </section>
 
       {/* ── Journey Widget ── */}

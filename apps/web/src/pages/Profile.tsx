@@ -387,9 +387,81 @@ const Profile: React.FC = () => {
         )}
       </section>
 
+      {/* Prestige + Cosmetics */}
+      <PrestigeSection />
+
       {/* Delete Account */}
       <DeleteAccountSection />
     </>
+  )
+}
+
+function PrestigeSection() {
+  const { data } = useQuery<{
+    canPrestige: boolean; prestigeLevel: number; daysAtTier6: number
+    daysRequired: number; nextPrestigeName: string | null
+  }>({
+    queryKey: ['prestige-status'],
+    queryFn: () => api.get('/api/me/prestige-status').then(r => r.data),
+    staleTime: 60_000,
+  })
+
+  if (!data) return null
+
+  const PRESTIGE_ICONS = ['', '🥈', '🥇', '🌈']
+  const { prestigeLevel, daysAtTier6, daysRequired, canPrestige, nextPrestigeName } = data
+
+  return (
+    <section className="mt-8 space-y-4">
+      <div className="flex items-center gap-3">
+        <span className="material-symbols-outlined text-secondary" style={FILL_STYLE}>
+          military_tech
+        </span>
+        <h2 className="text-lg font-black text-on-surface">Prestige</h2>
+        {prestigeLevel > 0 && (
+          <span className="text-sm font-bold text-secondary">
+            P{prestigeLevel} {PRESTIGE_ICONS[prestigeLevel]}
+          </span>
+        )}
+      </div>
+
+      <div className="bg-surface-container rounded-xl p-5 border border-outline-variant/10">
+        {prestigeLevel === 0 && daysAtTier6 === 0 ? (
+          <p className="text-sm text-on-surface-variant">
+            Đạt Tier 6 (Sứ Đồ) và ở đó 30 ngày để mở khóa Prestige.
+          </p>
+        ) : (
+          <div className="space-y-3">
+            <div className="flex justify-between text-sm">
+              <span className="text-on-surface-variant">Ngày ở Tier 6</span>
+              <span className="font-bold text-on-surface">{daysAtTier6}/{daysRequired}</span>
+            </div>
+            <div className="h-2 bg-surface-container-high rounded-full overflow-hidden">
+              <div
+                className="h-full bg-secondary rounded-full transition-all"
+                style={{ width: `${Math.min(100, (daysAtTier6 / daysRequired) * 100)}%` }}
+              />
+            </div>
+            {canPrestige && nextPrestigeName && (
+              <div className="mt-4 p-4 bg-secondary/10 border border-secondary/20 rounded-xl text-center">
+                <p className="text-sm font-bold text-secondary mb-2">
+                  🏆 Đủ điều kiện Prestige!
+                </p>
+                <p className="text-xs text-on-surface-variant mb-3">
+                  Bắt đầu hành trình mới với danh hiệu "{nextPrestigeName}"
+                </p>
+                <Link
+                  to="/cosmetics"
+                  className="inline-block px-4 py-2 text-xs font-bold gold-gradient text-on-secondary rounded-lg"
+                >
+                  Xem chi tiết
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </section>
   )
 }
 

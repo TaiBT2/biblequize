@@ -8,6 +8,12 @@ import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 import com.biblequiz.modules.user.service.AccountDeletionService;
 import com.biblequiz.modules.quiz.service.BookMasteryService;
+import com.biblequiz.modules.ranked.service.TierProgressService;
+import com.biblequiz.modules.ranked.service.UserTierService;
+import com.biblequiz.modules.quiz.service.DailyMissionService;
+import com.biblequiz.modules.user.service.ComebackService;
+import com.biblequiz.modules.user.service.CosmeticService;
+import com.biblequiz.modules.ranked.service.PrestigeService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -29,6 +35,7 @@ import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +68,24 @@ public class UserController {
 
     @Autowired
     private BookMasteryService bookMasteryService;
+
+    @Autowired
+    private TierProgressService tierProgressService;
+
+    @Autowired
+    private UserTierService userTierService;
+
+    @Autowired
+    private DailyMissionService dailyMissionService;
+
+    @Autowired
+    private ComebackService comebackService;
+
+    @Autowired
+    private CosmeticService cosmeticService;
+
+    @Autowired
+    private PrestigeService prestigeService;
 
     @GetMapping
     public ResponseEntity<UserResponse> getCurrentUser(Authentication authentication) {
@@ -405,5 +430,230 @@ public class UserController {
                 "needReview", needReview,
                 "masteredQuestions", masteredQuestions
         ));
+    }
+
+    @GetMapping("/tier-progress")
+    public ResponseEntity<?> getTierProgress(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String email = null;
+        if (authentication.getPrincipal() instanceof UserDetails ud) {
+            email = ud.getUsername();
+        } else if (authentication.getPrincipal() instanceof OAuth2User oauth2) {
+            email = oauth2.getAttribute("email");
+        }
+
+        Optional<User> userOpt = email != null ? userRepository.findByEmail(email) : Optional.empty();
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        long totalPoints = userTierService.getTotalPoints(userOpt.get().getId());
+        TierProgressService.StarInfo info = tierProgressService.getStarInfo(totalPoints);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("tierLevel", info.tierLevel());
+        response.put("tierName", info.tierName());
+        response.put("totalPoints", info.totalPoints());
+        response.put("nextTierPoints", info.nextTierPoints());
+        response.put("tierProgressPercent", info.tierProgressPercent());
+        response.put("starIndex", info.starIndex());
+        response.put("starXp", info.starXp());
+        response.put("nextStarXp", info.nextStarXp());
+        response.put("starProgressPercent", info.starProgressPercent());
+        response.put("milestone", info.milestone());
+
+        // XP surge info
+        User user = userOpt.get();
+        LocalDateTime surgeUntil = user.getXpSurgeUntil();
+        boolean surgeActive = surgeUntil != null && surgeUntil.isAfter(LocalDateTime.now());
+        response.put("surgeActive", surgeActive);
+        response.put("surgeUntil", surgeActive ? surgeUntil.toString() : null);
+        response.put("surgeMultiplier", surgeActive ? 1.5 : 1.0);
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/daily-missions")
+    public ResponseEntity<?> getDailyMissions(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String email = null;
+        if (authentication.getPrincipal() instanceof UserDetails ud) {
+            email = ud.getUsername();
+        } else if (authentication.getPrincipal() instanceof OAuth2User oauth2) {
+            email = oauth2.getAttribute("email");
+        }
+
+        Optional<User> userOpt = email != null ? userRepository.findByEmail(email) : Optional.empty();
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        return ResponseEntity.ok(dailyMissionService.getMissionsResponse(userOpt.get().getId()));
+    }
+
+    @GetMapping("/comeback-status")
+    public ResponseEntity<?> getComebackStatus(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String email = null;
+        if (authentication.getPrincipal() instanceof UserDetails ud) {
+            email = ud.getUsername();
+        } else if (authentication.getPrincipal() instanceof OAuth2User oauth2) {
+            email = oauth2.getAttribute("email");
+        }
+
+        Optional<User> userOpt = email != null ? userRepository.findByEmail(email) : Optional.empty();
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        ComebackService.ComebackStatus status = comebackService.getStatus(userOpt.get().getId());
+        Map<String, Object> response = new HashMap<>();
+        response.put("daysSinceLastPlay", status.daysSinceLastPlay());
+        response.put("rewardTier", status.rewardTier());
+        response.put("claimed", status.claimed());
+        response.put("reward", status.reward());
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/comeback-claim")
+    public ResponseEntity<?> claimComeback(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String email = null;
+        if (authentication.getPrincipal() instanceof UserDetails ud) {
+            email = ud.getUsername();
+        } else if (authentication.getPrincipal() instanceof OAuth2User oauth2) {
+            email = oauth2.getAttribute("email");
+        }
+
+        Optional<User> userOpt = email != null ? userRepository.findByEmail(email) : Optional.empty();
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        return ResponseEntity.ok(comebackService.claim(userOpt.get().getId()));
+    }
+
+    @GetMapping("/cosmetics")
+    public ResponseEntity<?> getCosmetics(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String email = null;
+        if (authentication.getPrincipal() instanceof UserDetails ud) {
+            email = ud.getUsername();
+        } else if (authentication.getPrincipal() instanceof OAuth2User oauth2) {
+            email = oauth2.getAttribute("email");
+        }
+
+        Optional<User> userOpt = email != null ? userRepository.findByEmail(email) : Optional.empty();
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        int tierLevel = userTierService.getTierLevel(userOpt.get().getId());
+        return ResponseEntity.ok(cosmeticService.getResponse(userOpt.get().getId(), tierLevel));
+    }
+
+    @PatchMapping("/cosmetics")
+    public ResponseEntity<?> updateCosmetics(Authentication authentication,
+                                              @RequestBody Map<String, String> body) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String email = null;
+        if (authentication.getPrincipal() instanceof UserDetails ud) {
+            email = ud.getUsername();
+        } else if (authentication.getPrincipal() instanceof OAuth2User oauth2) {
+            email = oauth2.getAttribute("email");
+        }
+
+        Optional<User> userOpt = email != null ? userRepository.findByEmail(email) : Optional.empty();
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        try {
+            cosmeticService.updateActive(
+                    userOpt.get().getId(),
+                    body.get("activeFrame"),
+                    body.get("activeTheme")
+            );
+            return ResponseEntity.ok(Map.of("success", true));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/prestige-status")
+    public ResponseEntity<?> getPrestigeStatus(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String email = null;
+        if (authentication.getPrincipal() instanceof UserDetails ud) {
+            email = ud.getUsername();
+        } else if (authentication.getPrincipal() instanceof OAuth2User oauth2) {
+            email = oauth2.getAttribute("email");
+        }
+
+        Optional<User> userOpt = email != null ? userRepository.findByEmail(email) : Optional.empty();
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        PrestigeService.PrestigeStatus status = prestigeService.getStatus(userOpt.get().getId());
+        Map<String, Object> response = new HashMap<>();
+        response.put("canPrestige", status.canPrestige());
+        response.put("prestigeLevel", status.prestigeLevel());
+        response.put("daysAtTier6", status.daysAtTier6());
+        response.put("daysRequired", status.daysRequired());
+        response.put("nextPrestigeName", status.nextPrestigeName());
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/prestige")
+    public ResponseEntity<?> executePrestige(Authentication authentication,
+                                              @RequestBody(required = false) Map<String, Object> body) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        // Require confirmation
+        if (body == null || !Boolean.TRUE.equals(body.get("confirm"))) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Phải xác nhận confirm: true"));
+        }
+
+        String email = null;
+        if (authentication.getPrincipal() instanceof UserDetails ud) {
+            email = ud.getUsername();
+        } else if (authentication.getPrincipal() instanceof OAuth2User oauth2) {
+            email = oauth2.getAttribute("email");
+        }
+
+        Optional<User> userOpt = email != null ? userRepository.findByEmail(email) : Optional.empty();
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        Map<String, Object> result = prestigeService.executePrestige(userOpt.get().getId());
+        if (result.containsKey("error")) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 }
