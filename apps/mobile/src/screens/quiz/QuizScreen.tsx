@@ -1,22 +1,231 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { colors, typography } from '../../theme'
+import React, { useState, useEffect, useCallback } from 'react'
+import { View, Text, StyleSheet, Pressable, Animated } from 'react-native'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import SafeScreen from '../../components/layout/SafeScreen'
+import ProgressBar from '../../components/ui/ProgressBar'
+import { apiClient } from '../../api/client'
+import { calculateScore } from '../../logic/scoring'
+import { colors, typography, spacing, borderRadius } from '../../theme'
+
+const LETTERS = ['A', 'B', 'C', 'D']
 
 export default function QuizScreen() {
+  const navigation = useNavigation<any>()
+  const route = useRoute<any>()
+  const { questions = [], sessionId, mode = 'practice', timePerQuestion = 30, showExplanation = true } = route.params ?? {}
+
+  const [qIndex, setQIndex] = useState(0)
+  const [selected, setSelected] = useState<number | null>(null)
+  const [showResult, setShowResult] = useState(false)
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
+  const [timeLeft, setTimeLeft] = useState(timePerQuestion)
+  const [score, setScore] = useState(0)
+  const [combo, setCombo] = useState(0)
+  const [correctCount, setCorrectCount] = useState(0)
+  const [userAnswers, setUserAnswers] = useState<(number | null)[]>(new Array(questions.length).fill(null))
+  const [questionScores, setQuestionScores] = useState<number[]>(new Array(questions.length).fill(0))
+
+  const question = questions[qIndex]
+  const progress = questions.length > 0 ? ((qIndex + 1) / questions.length) * 100 : 0
+
+  // Timer
+  useEffect(() => {
+    if (timeLeft > 0 && !showResult) {
+      const timer = setTimeout(() => setTimeLeft((t: number) => t - 1), 1000)
+      return () => clearTimeout(timer)
+    } else if (timeLeft === 0 && !showResult) {
+      handleSelect(-1)
+    }
+  }, [timeLeft, showResult])
+
+  const handleSelect = useCallback(async (idx: number) => {
+    if (showResult) return
+    setSelected(idx)
+    setShowResult(true)
+
+    const correct = idx === (question?.correctAnswer?.[0] ?? -1)
+    setIsCorrect(correct)
+
+    let qScore = 0
+    if (correct) {
+      qScore = calculateScore({
+        difficulty: question.difficulty,
+        isCorrect: true,
+        elapsedMs: (timePerQuestion - timeLeft) * 1000,
+        timeLimitMs: timePerQuestion * 1000,
+        comboCount: combo,
+        tierMultiplier: 1.0,
+      })
+      setScore(s => s + qScore)
+      setCombo(c => c + 1)
+      setCorrectCount(c => c + 1)
+    } else {
+      setCombo(0)
+    }
+
+    // Record answer
+    const newAnswers = [...userAnswers]
+    newAnswers[qIndex] = idx
+    setUserAnswers(newAnswers)
+    const newScores = [...questionScores]
+    newScores[qIndex] = qScore
+    setQuestionScores(newScores)
+
+    // Submit to server
+    if (sessionId) {
+      try {
+        await apiClient.post(`/api/sessions/${sessionId}/answer`, {
+          questionId: question.id,
+          answer: idx,
+          clientElapsedMs: (timePerQuestion - timeLeft) * 1000,
+        })
+      } catch { /* non-critical */ }
+    }
+  }, [showResult, question, combo, timeLeft, qIndex, userAnswers, questionScores, sessionId, timePerQuestion])
+
+  const nextQuestion = () => {
+    if (qIndex + 1 >= questions.length) {
+      const stats = {
+        totalScore: score,
+        correctAnswers: correctCount,
+        totalQuestions: questions.length,
+        accuracy: questions.length > 0 ? (correctCount / questions.length) * 100 : 0,
+        questions,
+        userAnswers,
+        questionScores,
+      }
+      navigation.replace('QuizResults', { stats })
+    } else {
+      setQIndex(i => i + 1)
+      setSelected(null)
+      setShowResult(false)
+      setIsCorrect(null)
+      setTimeLeft(timePerQuestion)
+    }
+  }
+
+  if (!question) return null
+
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.center}>
-        <Text style={styles.title}>Quiz</Text>
-        <Text style={styles.subtitle}>Coming soon</Text>
+    <SafeScreen>
+      <View style={styles.container}>
+        {/* Header */}
+        <View style={styles.header}>
+          <Pressable onPress={() => navigation.goBack()} style={styles.closeBtn}>
+            <Text style={styles.closeText}>✕</Text>
+          </Pressable>
+          <View style={styles.headerCenter}>
+            <Text style={styles.qCount}>{qIndex + 1}/{questions.length}</Text>
+          </View>
+          <View style={styles.comboBadge}>
+            <Text style={styles.comboText}>🔥 {combo}</Text>
+          </View>
+        </View>
+
+        <ProgressBar progress={progress} height={4} />
+
+        {/* Timer */}
+        <View style={styles.timerRow}>
+          <Text style={[styles.timerText, timeLeft <= 5 && styles.timerWarning]}>
+            {timeLeft}s
+          </Text>
+          <Text style={styles.bookLabel}>{question.book} {question.chapter}</Text>
+        </View>
+
+        {/* Question */}
+        <View style={styles.questionCard}>
+          <Text style={styles.questionText}>{question.content}</Text>
+        </View>
+
+        {/* Answers */}
+        <View style={styles.answers}>
+          {question.options?.map((opt: string, idx: number) => {
+            const isSel = selected === idx
+            const isRight = showResult && idx === question.correctAnswer?.[0]
+            const isWrong = showResult && isSel && idx !== question.correctAnswer?.[0]
+
+            return (
+              <Pressable
+                key={idx}
+                onPress={() => handleSelect(idx)}
+                disabled={showResult}
+                style={[
+                  styles.answerBtn,
+                  isRight && styles.ansCorrect,
+                  isWrong && styles.ansWrong,
+                  isSel && !showResult && styles.ansSelected,
+                ]}
+              >
+                <View style={[styles.letter, isRight && styles.letterCorrect, isWrong && styles.letterWrong]}>
+                  <Text style={styles.letterText}>{LETTERS[idx]}</Text>
+                </View>
+                <Text style={[styles.ansText, isRight && { color: colors.success }, isWrong && { color: colors.error }]} numberOfLines={2}>
+                  {opt}
+                </Text>
+              </Pressable>
+            )
+          })}
+        </View>
+
+        {/* Result footer */}
+        {showResult && (
+          <View style={[styles.resultBar, isCorrect ? styles.resultCorrect : styles.resultWrong]}>
+            <View>
+              <Text style={styles.resultTitle}>{isCorrect ? '✓ Chính xác!' : '✗ Sai rồi!'}</Text>
+              {!isCorrect && showExplanation && question.explanation && (
+                <Text style={styles.explanation} numberOfLines={2}>{question.explanation}</Text>
+              )}
+            </View>
+            <Pressable onPress={nextQuestion} style={styles.nextBtn}>
+              <Text style={styles.nextText}>{qIndex + 1 >= questions.length ? 'Kết quả' : 'Tiếp →'}</Text>
+            </Pressable>
+          </View>
+        )}
       </View>
-    </SafeAreaView>
+    </SafeScreen>
   )
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.bgPrimary },
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  title: { fontSize: typography.size['2xl'], fontWeight: typography.weight.bold, color: colors.textPrimary },
-  subtitle: { fontSize: typography.size.sm, color: colors.textMuted, marginTop: 8 },
+  container: { flex: 1, padding: spacing.lg },
+  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: spacing.md },
+  closeBtn: { width: 36, height: 36, borderRadius: 18, backgroundColor: colors.surfaceContainer, alignItems: 'center', justifyContent: 'center' },
+  closeText: { fontSize: 18, color: colors.textMuted },
+  headerCenter: { alignItems: 'center' },
+  qCount: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.textSecondary },
+  comboBadge: { backgroundColor: colors.surfaceContainer, borderRadius: borderRadius.full, paddingHorizontal: spacing.md, paddingVertical: spacing.xs },
+  comboText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold },
+  timerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: spacing.lg },
+  timerText: { fontSize: typography.size['2xl'], fontWeight: typography.weight.bold, color: colors.gold },
+  timerWarning: { color: colors.error },
+  bookLabel: { fontSize: typography.size.xs, color: colors.textMuted },
+  questionCard: {
+    backgroundColor: colors.surfaceContainer, borderRadius: borderRadius['2xl'],
+    padding: spacing.xl, marginBottom: spacing.xl, minHeight: 100, justifyContent: 'center',
+  },
+  questionText: { fontSize: typography.size.xl, fontWeight: typography.weight.bold, color: colors.textPrimary, textAlign: 'center', lineHeight: 30 },
+  answers: { gap: spacing.md, flex: 1 },
+  answerBtn: {
+    flexDirection: 'row', alignItems: 'center', padding: spacing.lg,
+    backgroundColor: colors.surfaceContainer, borderRadius: borderRadius.xl,
+    borderWidth: 2, borderColor: 'transparent',
+  },
+  ansSelected: { borderColor: colors.gold, backgroundColor: 'rgba(248,189,69,0.08)' },
+  ansCorrect: { borderColor: colors.success, backgroundColor: 'rgba(34,197,94,0.1)' },
+  ansWrong: { borderColor: colors.error, backgroundColor: 'rgba(239,68,68,0.1)' },
+  letter: { width: 32, height: 32, borderRadius: 8, backgroundColor: colors.surfaceContainerHighest, alignItems: 'center', justifyContent: 'center', marginRight: spacing.md },
+  letterCorrect: { backgroundColor: colors.success },
+  letterWrong: { backgroundColor: colors.error },
+  letterText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold },
+  ansText: { flex: 1, fontSize: typography.size.base, color: colors.textPrimary },
+  resultBar: {
+    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
+    padding: spacing.lg, borderRadius: borderRadius.xl, marginTop: spacing.md,
+  },
+  resultCorrect: { backgroundColor: 'rgba(34,197,94,0.15)' },
+  resultWrong: { backgroundColor: 'rgba(239,68,68,0.15)' },
+  resultTitle: { fontSize: typography.size.base, fontWeight: typography.weight.bold, color: colors.textPrimary },
+  explanation: { fontSize: typography.size.xs, color: colors.textSecondary, marginTop: 4, maxWidth: 220 },
+  nextBtn: { backgroundColor: colors.gold, borderRadius: borderRadius.lg, paddingHorizontal: spacing.xl, paddingVertical: spacing.md },
+  nextText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.onSecondary },
 })
