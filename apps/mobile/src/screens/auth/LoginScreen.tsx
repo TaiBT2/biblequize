@@ -4,23 +4,31 @@ import { View, Text, StyleSheet, Pressable, Alert } from 'react-native'
 import SafeScreen from '../../components/layout/SafeScreen'
 import Button from '../../components/ui/Button'
 import { useAuthStore } from '../../stores/authStore'
+import { useGoogleAuth } from '../../hooks/useGoogleAuth'
 import { apiClient } from '../../api/client'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
 export default function LoginScreen() {
   const { t } = useTranslation()
   const { setAuth } = useAuthStore()
+  const { signIn: googleSignIn, isReady: googleReady } = useGoogleAuth()
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleGoogleLogin = async () => {
-    // TODO: Implement Google Sign-In with expo-auth-session
-    // For now, show a placeholder
-    Alert.alert('Google Login', 'Google Sign-In sẽ được tích hợp với expo-auth-session')
+    try {
+      setLoading(true)
+      setError(null)
+      await googleSignIn()
+    } catch (err) {
+      setError(t('errors.somethingWrong'))
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleEmailLogin = async () => {
-    // TODO: Email login flow
-    Alert.alert('Email Login', 'Chức năng đăng nhập email sẽ có trong phiên bản tới')
+    Alert.alert('Email Login', t('errors.somethingWrong'))
   }
 
   // Dev: quick login for testing
@@ -29,10 +37,15 @@ export default function LoginScreen() {
     setLoading(true)
     try {
       const res = await apiClient.post('/api/auth/mobile/login', {
-        email: 'test@test.com',
+        email: 'mobile@test.com',
         password: 'password123',
       })
-      setAuth(res.data.user, res.data.accessToken, res.data.refreshToken)
+      const d = res.data
+      setAuth(
+        { id: d.id ?? '', name: d.name, email: d.email, avatarUrl: d.avatar, role: d.role },
+        d.accessToken,
+        d.refreshToken
+      )
     } catch (e: any) {
       Alert.alert('Error', e.response?.data?.error ?? 'Login failed')
     } finally {
@@ -54,20 +67,22 @@ export default function LoginScreen() {
         {/* Auth section */}
         <View style={styles.authSection}>
           {/* Google login */}
-          <Pressable onPress={handleGoogleLogin} style={styles.googleBtn}>
+          <Pressable onPress={handleGoogleLogin} disabled={!googleReady || loading} style={[styles.googleBtn, (!googleReady || loading) && { opacity: 0.6 }]}>
             <Text style={styles.googleIcon}>G</Text>
-            <Text style={styles.googleText}>Đăng nhập với Google</Text>
+            <Text style={styles.googleText}>{t('auth.loginWithGoogle')}</Text>
           </Pressable>
+
+          {error && <Text style={styles.errorText}>{error}</Text>}
 
           {/* Divider */}
           <View style={styles.divider}>
             <View style={styles.dividerLine} />
-            <Text style={styles.dividerText}>hoặc</Text>
+            <Text style={styles.dividerText}>{t('auth.or')}</Text>
             <View style={styles.dividerLine} />
           </View>
 
           {/* Email login */}
-          <Button title="Đăng nhập với Email" onPress={handleEmailLogin} variant="outline" fullWidth />
+          <Button title={t('auth.loginWithEmail')} onPress={handleEmailLogin} variant="outline" fullWidth />
 
           {/* Dev login */}
           {__DEV__ && (
@@ -110,6 +125,7 @@ const styles = StyleSheet.create({
   divider: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   dividerLine: { flex: 1, height: 1, backgroundColor: colors.outlineVariant },
   dividerText: { fontSize: typography.size.sm, color: colors.textMuted },
+  errorText: { fontSize: typography.size.sm, color: colors.error, textAlign: 'center' },
   footer: { paddingBottom: spacing.lg, alignItems: 'center' },
   legalText: { fontSize: 10, color: colors.textMuted, textAlign: 'center', lineHeight: 16 },
   legalLink: { color: colors.gold },
