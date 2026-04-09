@@ -6,8 +6,8 @@ import { useAuthStore } from '../stores/authStore'
 
 WebBrowser.maybeCompleteAuthSession()
 
-const WEB_CLIENT_ID = '599482670828-1og1pabg41r6a1c5aod5cihji03ergru.apps.googleusercontent.com'
-const ANDROID_CLIENT_ID = '599482670828-kqnuluqoqe429gmcnflioot1bc2utq4g.apps.googleusercontent.com'
+const WEB_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID ?? ''
+const ANDROID_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID ?? ''
 
 export function useGoogleAuth() {
   const setAuth = useAuthStore(s => s.setAuth)
