@@ -900,6 +900,8 @@ GET /api/admin/question-quality/duplicates → potential duplicates list
 | export.create | Tạo export job |
 | **test.set_tier** | Test panel: set tier (dev only) |
 | **test.full_reset** | Test panel: reset user (dev only) |
+| **test.set_state** | Test panel: partial scalar state override (dev only) |
+| **test.set_mission_state** | Test panel: override daily mission state (dev only) |
 
 ### 16.2 Log format
 
@@ -976,6 +978,34 @@ Section: 🛠️ Utilities
   [☢️ Full Reset User]
 ```
 
+### 17.5a Test Fixtures (State Override)
+
+Endpoints for E2E test setup/teardown. All are partial-update — null fields are no-ops.
+Unknown JSON fields rejected with HTTP 400: `{ "error": "Field 'xxx' is not allowed" }`.
+
+```
+Section: 🛠️ Set State (test fixtures)
+  POST /api/admin/test/users/{id}/set-state
+  Body (all fields optional):
+    livesRemaining      : int  0–100    — today's energy
+    questionsCounted    : int  0–200    — today's ranked cap counter
+    daysAtTier6         : int  0–30     — prestige eligibility counter
+    lastPlayedAt        : date YYYY-MM-DD — set User.lastPlayedAt to start-of-day
+    xpSurgeHoursFromNow : int  0–72     — 0 = clear surge, N = set N hours from now
+  
+  Audit: test.set_state | metadata = applied fields (non-null only)
+
+  POST /api/admin/test/users/{id}/set-mission-state
+  Body:
+    date     : YYYY-MM-DD  (optional, default = today UTC)
+    missions : [
+      { missionType: string, progress: int?, completed: bool?, bonusClaimed: bool? }
+    ]
+  
+  Returns 404 if missionType not found for given date.
+  Audit: test.set_mission_state | metadata = { date, missionCount }
+```
+
 ### 17.5 Test Scenarios (Documentation)
 
 ```
@@ -1028,6 +1058,8 @@ POST /api/admin/test/users/{userId}/set-streak?days={N}
 POST /api/admin/test/users/{userId}/trigger-tier-up
 GET  /api/admin/test/users/{userId}/preview-questions?count=10
 POST /api/admin/test/users/{userId}/full-reset
+POST /api/admin/test/users/{userId}/set-state          (body: SetStateRequest — partial scalar override)
+POST /api/admin/test/users/{userId}/set-mission-state  (body: SetMissionStateRequest — daily mission state)
 ```
 
 ---
