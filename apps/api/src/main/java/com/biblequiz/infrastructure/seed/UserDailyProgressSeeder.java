@@ -47,12 +47,20 @@ public class UserDailyProgressSeeder {
             Map.entry("mod@biblequiz.test", 25000),
             Map.entry("mucsu.minh@biblequiz.test", 35000),
             Map.entry("huong@biblequiz.test", 28000),
-            Map.entry("banned@biblequiz.test", 500)
+            Map.entry("banned@biblequiz.test", 500),
+            // Tier test users — points set to solidly land in each tier
+            // test1 = 0 pts → no records needed (Tân Tín Hữu, threshold 0)
+            Map.entry("test2@dev.local", 2500),    // Người Tìm Kiếm (threshold 1,000)
+            Map.entry("test3@dev.local", 8000),    // Môn Đồ          (threshold 5,000)
+            Map.entry("test4@dev.local", 20000),   // Hiền Triết       (threshold 15,000)
+            Map.entry("test5@dev.local", 65000),   // Tiên Tri         (threshold 40,000)
+            Map.entry("test6@dev.local", 110000)   // Sứ Đồ            (threshold 100,000)
     );
 
     public int seed() {
         List<User> testUsers = userRepository.findAll().stream()
-                .filter(u -> u.getEmail() != null && u.getEmail().endsWith("@biblequiz.test"))
+                .filter(u -> u.getEmail() != null
+                        && (u.getEmail().endsWith("@biblequiz.test") || u.getEmail().endsWith("@dev.local")))
                 .toList();
         if (testUsers.isEmpty()) return 0;
 
@@ -96,7 +104,8 @@ public class UserDailyProgressSeeder {
 
     public void clear() {
         List<User> testUsers = userRepository.findAll().stream()
-                .filter(u -> u.getEmail() != null && u.getEmail().endsWith("@biblequiz.test"))
+                .filter(u -> u.getEmail() != null
+                        && (u.getEmail().endsWith("@biblequiz.test") || u.getEmail().endsWith("@dev.local")))
                 .toList();
         for (User u : testUsers) {
             List<UserDailyProgress> records = udpRepository.findByUserIdOrderByDateDesc(u.getId());

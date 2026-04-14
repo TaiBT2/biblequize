@@ -22,9 +22,9 @@ loading, multiplayer
 
 ---
 
-### Quy ước đề xuất (chờ approve)
+### Quy ước (✅ đã approve 2026-04-15)
 
-> ⚠️ **CHƯA ÁP DỤNG** — cần bui approve trước khi thêm testid vào codebase.
+> Áp dụng khi thêm testid mới vào codebase. Không đổi các testid cũ đang có.
 
 **Format**: `{page}-{element}[-{variant}]`
 
@@ -87,7 +87,44 @@ admin-review-reject-btn
 
 ---
 
-## 2. Auth Strategy
+## 2. Test User Credentials
+
+> ⚠️ Chỉ dùng ở môi trường **dev/staging**. Backend guard: `@Profile("!prod")`. Không commit credentials thật.
+
+### Tier test users (test1-6@dev.local)
+
+| Email | Password | Tier | Points | Tên tier |
+|-------|----------|------|--------|----------|
+| `test1@dev.local` | `Test@123456` | 1 | 0 | Tân Tín Hữu |
+| `test2@dev.local` | `Test@123456` | 2 | ~2,500 | Người Tìm Kiếm |
+| `test3@dev.local` | `Test@123456` | 3 | ~8,000 | Môn Đồ |
+| `test4@dev.local` | `Test@123456` | 4 | ~20,000 | Hiền Triết |
+| `test5@dev.local` | `Test@123456` | 5 | ~65,000 | Tiên Tri |
+| `test6@dev.local` | `Test@123456` | 6 | ~110,000 | Sứ Đồ |
+
+### Admin / seeded users (@biblequiz.test)
+
+| Email | Password | Role | Notes |
+|-------|----------|------|-------|
+| `admin@biblequiz.test` | *(set by seeder — xem TestDataSeeder)* | ADMIN | Dùng gọi per-test endpoints |
+| `banned@biblequiz.test` | *(set by seeder)* | USER (BANNED) | Test banned state |
+
+> **Lưu ý**: `@biblequiz.test` users không có password hardcoded. Để login bằng Playwright, dùng `test1-6@dev.local` hoặc gọi API trực tiếp với admin session.
+
+### RankTier thresholds (để tham chiếu)
+
+| Tier | Tên | Required Points |
+|------|-----|----------------|
+| 1 | Tân Tín Hữu | 0 |
+| 2 | Người Tìm Kiếm | 1,000 |
+| 3 | Môn Đồ | 5,000 |
+| 4 | Hiền Triết | 15,000 |
+| 5 | Tiên Tri | 40,000 |
+| 6 | Sứ Đồ | 100,000 |
+
+---
+
+## 3. Auth Strategy
 
 ### Khi nào dùng storageState
 
@@ -145,7 +182,7 @@ Auth: fresh login as admin@biblequiz.test  ← admin test
 
 ---
 
-## 3. Test Data Strategy
+## 4. Test Data Strategy
 
 ### TestDataSeeder (global setup/teardown)
 
@@ -204,7 +241,7 @@ test6@dev.local → Tier 6 (100000 pts)
 
 ---
 
-## 4. Login Endpoint
+## 5. Login Endpoint
 
 ### Web (Playwright tests)
 
@@ -228,7 +265,7 @@ Response: { accessToken, refreshToken, id, name, email, avatar, role }
 
 ---
 
-## 5. Cleanup Policy
+## 6. Cleanup Policy
 
 | Loại test | Cleanup cần thiết |
 |-----------|------------------|
@@ -239,7 +276,7 @@ Response: { accessToken, refreshToken, id, name, email, avatar, role }
 
 ---
 
-## 6. Naming Conventions
+## 7. Naming Conventions
 
 ### Test Case IDs
 

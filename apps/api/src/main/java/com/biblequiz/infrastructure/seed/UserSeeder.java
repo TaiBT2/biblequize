@@ -6,12 +6,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Seeds test users for dev/staging environments.
+ *
+ * ⚠️ WARNING: This class is guarded by @Profile("!prod") and MUST NOT run in production.
+ * Tier test users (test1-6@dev.local) use a hardcoded password for E2E automation — never
+ * add these credentials to any environment other than dev/staging.
+ */
 @Component
 @Profile("!prod")
 public class UserSeeder {
@@ -19,7 +27,11 @@ public class UserSeeder {
     private static final Logger log = LoggerFactory.getLogger(UserSeeder.class);
     public static final String TAG = "test-seeder";
 
+    // ⚠️ Hardcoded only for dev/staging E2E test automation. Never use in production.
+    static final String TIER_TEST_PASSWORD = "Test@123456";
+
     @Autowired private UserRepository userRepository;
+    @Autowired private PasswordEncoder passwordEncoder;
 
     public int seed() {
         if (userRepository.findByEmail("admin@biblequiz.test").isPresent()) {
@@ -56,6 +68,14 @@ public class UserSeeder {
         banned.setBannedAt(LocalDateTime.now().minusDays(5));
         users.add(banned);
 
+        // Tier test users for E2E automation — password: Test@123456 (dev/staging only)
+        users.add(makeTierUser("Test Tier 1", "test1@dev.local", 0, 0));
+        users.add(makeTierUser("Test Tier 2", "test2@dev.local", 5, 7));
+        users.add(makeTierUser("Test Tier 3", "test3@dev.local", 12, 15));
+        users.add(makeTierUser("Test Tier 4", "test4@dev.local", 30, 35));
+        users.add(makeTierUser("Test Tier 5", "test5@dev.local", 60, 65));
+        users.add(makeTierUser("Test Tier 6", "test6@dev.local", 90, 100));
+
         userRepository.saveAll(users);
         log.info("UserSeeder: created {} users", users.size());
         return users.size();
@@ -63,12 +83,23 @@ public class UserSeeder {
 
     public void clear() {
         List<User> testUsers = userRepository.findAll().stream()
-                .filter(u -> u.getEmail() != null && u.getEmail().endsWith("@biblequiz.test"))
+                .filter(u -> u.getEmail() != null
+                        && (u.getEmail().endsWith("@biblequiz.test") || u.getEmail().endsWith("@dev.local")))
                 .toList();
         if (!testUsers.isEmpty()) {
             userRepository.deleteAll(testUsers);
             log.info("UserSeeder: cleared {} test users", testUsers.size());
         }
+    }
+
+    private User makeTierUser(String name, String email, int streak, int longestStreak) {
+        User u = new User(UUID.randomUUID().toString(), name, email, "local");
+        u.setRole("USER");
+        u.setPasswordHash(passwordEncoder.encode(TIER_TEST_PASSWORD));
+        u.setCurrentStreak(streak);
+        u.setLongestStreak(longestStreak);
+        u.setLastPlayedAt(randomRecent(7));
+        return u;
     }
 
     private User makeUser(String name, String email, String role, int streak, int longestStreak) {
