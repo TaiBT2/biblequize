@@ -8,16 +8,16 @@
 
 | Module | Route(s) | L1 Smoke | L2 Happy | L3 Edge | Notes |
 |--------|---------|----------|----------|---------|-------|
-| W-M01 Auth & Onboarding | `/login`, `/onboarding`, `/onboarding/try`, `/auth/callback` | ⬜ 0/? | — | — | |
-| W-M02 Home & Profile | `/`, `/profile` | ⬜ 0/? | — | — | |
-| W-M03 Practice Mode | `/practice`, `/quiz`, `/review` | ⬜ 0/? | — | — | |
-| W-M04 Ranked Mode | `/ranked` | ⬜ 0/? | — | — | |
+| W-M01 Auth & Onboarding | `/login`, `/onboarding`, `/onboarding/try`, `/auth/callback` | ✅ 9/9 | — | — | Phase 1 done |
+| W-M02 Home & Profile | `/`, `/profile` | ✅ 9/9 | — | — | Phase 1 done |
+| W-M03 Practice Mode | `/practice`, `/quiz`, `/review` | ✅ 8/8 | — | — | Phase 1 done |
+| W-M04 Ranked Mode | `/ranked` | ✅ 7/7 | — | — | Phase 1 done |
 | W-M05 Daily Challenge | `/daily` | ⬜ 0/? | — | — | |
 | W-M06 Multiplayer (Lobby only) | `/rooms`, `/multiplayer`, `/room/create`, `/room/join`, `/room/:id/lobby` | ⬜ 0/? | — | — | Gameplay ⏭️ WebSocket phase |
 | W-M07 Tournaments | `/tournaments`, `/tournaments/:id`, `/tournaments/:id/match/:matchId` | ⬜ 0/? | — | — | |
 | W-M08 Bible Journey Map | `/journey` | ⬜ 0/? | — | — | |
 | W-M09 Church Groups | `/groups`, `/groups/:id`, `/groups/:id/analytics` | ⬜ 0/? | — | — | |
-| W-M10 Tier Progression | `/` (modal), `/cosmetics` | ⬜ 0/? | — | — | |
+| W-M10 Tier Progression | `/` (tier display), `/profile`, `/cosmetics` | ✅ 8/8 | — | — | Phase 1 done |
 | W-M11 Variety Modes | `/weekly-quiz`, `/mystery-mode`, `/speed-round` | ⬜ 0/? | — | — | |
 | W-M12 Notifications | AppLayout notification bell | ⬜ 0/? | — | — | |
 | W-M13 i18n | Cross-cutting | ⬜ 0/? | — | — | |
@@ -70,8 +70,8 @@
 
 | Phase | Status | Commit |
 |-------|--------|--------|
-| Phase 0 — Framework Setup | 🔄 in progress | — |
-| Phase 1 — L1 Smoke Web User core (M01/02/03/04/10) | ⬜ | — |
+| Phase 0 — Framework Setup | ✅ done | f9b140e, 8e32255 |
+| Phase 1 — L1 Smoke Web User core (M01/02/03/04/10) | ✅ done | (commit pending) |
 | Phase 2 — L1 Smoke Web User rest + Admin | ⬜ | — |
 | Phase 3 — Mobile Maestro Smoke | ⬜ | — |
 | Phase 4+ — L2 Happy Path + WebSocket | ⬜ | — |
@@ -82,8 +82,8 @@
 
 | Metric | Value |
 |--------|-------|
-| Total spec files created | 0 |
-| Total test cases written | 0 |
-| Total [NEEDS TESTID] | 0 |
-| Total [NOT IMPLEMENTED] | 0 |
-| Total [DEFERRED - WEBSOCKET] | 0 |
+| Total spec files created | 4 (Phase 1) |
+| Total test cases written | 33 |
+| Total [NEEDS TESTID] | ~65 elements |
+| Total [NOT IMPLEMENTED] | 3 (Google OAuth full flow, Forgot password, Edit Profile) |
+| Total [DEFERRED - WEBSOCKET] | 0 (Phase 1) |
