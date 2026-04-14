@@ -1,16 +1,23 @@
 package com.biblequiz.api;
 
+import com.biblequiz.api.dto.SetMissionStateRequest;
+import com.biblequiz.api.dto.SetStateRequest;
+import com.biblequiz.modules.quiz.entity.DailyMission;
 import com.biblequiz.modules.quiz.entity.Question;
+import com.biblequiz.modules.quiz.entity.UserDailyProgress;
 import com.biblequiz.modules.quiz.entity.UserQuestionHistory;
+import com.biblequiz.modules.quiz.repository.DailyMissionRepository;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
+import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
 import com.biblequiz.modules.quiz.service.SmartQuestionSelector;
 import com.biblequiz.modules.quiz.service.SmartQuestionSelector.QuestionFilter;
-import com.biblequiz.modules.quiz.entity.UserDailyProgress;
-import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.ranked.model.RankTier;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
+import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
@@ -20,32 +27,49 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Test fixture controller — dev/staging only.
+ *
+ * <p>⚠️ This controller is NEVER active in production ({@code @Profile({"dev","staging"})}).
+ * It exposes state-manipulation endpoints for E2E test setup/teardown.
+ * All actions are logged with prefix {@code [TEST_PANEL]} at WARN level.
+ */
 @RestController
 @RequestMapping("/api/admin/test")
 @PreAuthorize("hasRole('ADMIN')")
-@Profile({"dev", "default"})
+@Profile({"dev", "staging"})
 public class AdminTestController {
+
+    private static final Logger log = LoggerFactory.getLogger(AdminTestController.class);
 
     private final UserRepository userRepository;
     private final UserQuestionHistoryRepository historyRepository;
     private final QuestionRepository questionRepository;
     private final UserDailyProgressRepository dailyProgressRepository;
+    private final DailyMissionRepository dailyMissionRepository;
     private final SmartQuestionSelector smartQuestionSelector;
 
     public AdminTestController(UserRepository userRepository,
                                 UserQuestionHistoryRepository historyRepository,
                                 QuestionRepository questionRepository,
                                 UserDailyProgressRepository dailyProgressRepository,
+                                DailyMissionRepository dailyMissionRepository,
                                 SmartQuestionSelector smartQuestionSelector) {
         this.userRepository = userRepository;
         this.historyRepository = historyRepository;
         this.questionRepository = questionRepository;
         this.dailyProgressRepository = dailyProgressRepository;
+        this.dailyMissionRepository = dailyMissionRepository;
         this.smartQuestionSelector = smartQuestionSelector;
     }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Existing endpoints
+    // ─────────────────────────────────────────────────────────────────────────
 
     @PostMapping("/users/{userId}/set-tier")
     @Transactional
@@ -230,5 +254,142 @@ public class AdminTestController {
         if (!progress.isEmpty()) dailyProgressRepository.saveAll(progress);
 
         return ResponseEntity.ok(Map.of("message", "User reset complete"));
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // New endpoints — generic state override (GAP-1 through GAP-4, GAP-6)
+    // ─────────────────────────────────────────────────────────────────────────
+
+    /**
+     * Partial-update scalar state fields on a user or their today's DailyProgress.
+     *
+     * <p>Only non-null fields in the request body are applied. Unknown fields are
+     * rejected with 400 by GlobalExceptionHandler (UnrecognizedPropertyException).
+     *
+     * <p>Audit: {@code [TEST_PANEL] test.set_state}
+     */
+    @PostMapping("/users/{userId}/set-state")
+    @Transactional
+    public ResponseEntity<?> setState(@PathVariable String userId,
+                                       @Valid @RequestBody SetStateRequest req) {
+        User user = userRepository.findById(userId).orElseThrow();
+
+        // ── Fields on UserDailyProgress (today) ──────────────────────────────
+        boolean needsProgress = req.getLivesRemaining() != null || req.getQuestionsCounted() != null;
+        if (needsProgress) {
+            UserDailyProgress progress = dailyProgressRepository
+                    .findByUserIdAndDate(userId, LocalDate.now(ZoneOffset.UTC))
+                    .orElseGet(() -> {
+                        UserDailyProgress p = new UserDailyProgress();
+                        p.setId(UUID.randomUUID().toString());
+                        p.setUser(user);
+                        p.setDate(LocalDate.now(ZoneOffset.UTC));
+                        p.setPointsCounted(0);
+                        p.setLivesRemaining(100);
+                        p.setQuestionsCounted(0);
+                        return p;
+                    });
+            if (req.getLivesRemaining() != null) progress.setLivesRemaining(req.getLivesRemaining());
+            if (req.getQuestionsCounted() != null) progress.setQuestionsCounted(req.getQuestionsCounted());
+            dailyProgressRepository.save(progress);
+        }
+
+        // ── Fields on User ────────────────────────────────────────────────────
+        boolean userDirty = false;
+        if (req.getDaysAtTier6() != null) {
+            user.setDaysAtTier6(req.getDaysAtTier6());
+            userDirty = true;
+        }
+        if (req.getLastPlayedAt() != null) {
+            user.setLastPlayedAt(req.getLastPlayedAt().atStartOfDay());
+            userDirty = true;
+        }
+        if (req.getXpSurgeHoursFromNow() != null) {
+            if (req.getXpSurgeHoursFromNow() == 0) {
+                user.setXpSurgeUntil(null);
+            } else {
+                user.setXpSurgeUntil(LocalDateTime.now().plusHours(req.getXpSurgeHoursFromNow()));
+            }
+            userDirty = true;
+        }
+        if (userDirty) userRepository.save(user);
+
+        // ── Audit ─────────────────────────────────────────────────────────────
+        Map<String, Object> applied = new LinkedHashMap<>();
+        if (req.getLivesRemaining() != null)      applied.put("livesRemaining", req.getLivesRemaining());
+        if (req.getQuestionsCounted() != null)     applied.put("questionsCounted", req.getQuestionsCounted());
+        if (req.getDaysAtTier6() != null)          applied.put("daysAtTier6", req.getDaysAtTier6());
+        if (req.getLastPlayedAt() != null)         applied.put("lastPlayedAt", req.getLastPlayedAt().toString());
+        if (req.getXpSurgeHoursFromNow() != null)  applied.put("xpSurgeHoursFromNow", req.getXpSurgeHoursFromNow());
+        log.warn("[TEST_PANEL] test.set_state user={} fields={}", userId, applied);
+
+        return ResponseEntity.ok(Map.of("userId", userId, "applied", applied));
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // New endpoints — mission state override (GAP-5)
+    // ─────────────────────────────────────────────────────────────────────────
+
+    /**
+     * Override DailyMission state for one or more missions on a given date.
+     *
+     * <p>Looks up missions by (userId, date, missionType). If a missionType is not
+     * found for that date, a 404 is returned. Null fields within each MissionUpdate
+     * are treated as no-ops.
+     *
+     * <p>Audit: {@code [TEST_PANEL] test.set_mission_state}
+     */
+    @PostMapping("/users/{userId}/set-mission-state")
+    @Transactional
+    public ResponseEntity<?> setMissionState(@PathVariable String userId,
+                                              @Valid @RequestBody SetMissionStateRequest req) {
+        LocalDate targetDate = req.getDate() != null
+                ? req.getDate()
+                : LocalDate.now(ZoneOffset.UTC);
+
+        List<DailyMission> existing = dailyMissionRepository
+                .findByUserIdAndDateOrderByMissionSlot(userId, targetDate);
+
+        if (existing.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of(
+                    "error", "No daily missions found for user " + userId + " on " + targetDate));
+        }
+
+        Map<String, List<DailyMission>> byType = new HashMap<>();
+        for (DailyMission m : existing) {
+            byType.computeIfAbsent(m.getMissionType(), k -> new ArrayList<>()).add(m);
+        }
+
+        List<String> notFound = new ArrayList<>();
+        int updatedCount = 0;
+
+        for (SetMissionStateRequest.MissionUpdate upd : req.getMissions()) {
+            List<DailyMission> targets = byType.get(upd.getMissionType());
+            if (targets == null || targets.isEmpty()) {
+                notFound.add(upd.getMissionType());
+                continue;
+            }
+            for (DailyMission m : targets) {
+                if (upd.getProgress() != null)      m.setProgress(upd.getProgress());
+                if (upd.getCompleted() != null)     m.setCompleted(upd.getCompleted());
+                if (upd.getBonusClaimed() != null)  m.setBonusClaimed(upd.getBonusClaimed());
+            }
+            dailyMissionRepository.saveAll(targets);
+            updatedCount += targets.size();
+        }
+
+        if (!notFound.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of(
+                    "error", "Mission types not found for date " + targetDate + ": " + notFound));
+        }
+
+        log.warn("[TEST_PANEL] test.set_mission_state user={} date={} missionCount={}",
+                userId, targetDate, updatedCount);
+
+        return ResponseEntity.ok(Map.of(
+                "userId", userId,
+                "date", targetDate.toString(),
+                "updatedMissions", updatedCount
+        ));
     }
 }

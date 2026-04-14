@@ -5,6 +5,13 @@ spring:
   application:
     name: biblequiz-api
 
+  jackson:
+    deserialization:
+      # Enforce whitelist on test fixture DTOs (SetStateRequest, etc.).
+      # Any unknown field sent to a DTO annotated @JsonIgnoreProperties(ignoreUnknown=false)
+      # will throw UnrecognizedPropertyException → GlobalExceptionHandler returns 400.
+      fail-on-unknown-properties: true
+
   datasource:
     url: jdbc:mysql://localhost:3307/biblequiz?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8&useUnicode=true&connectionCollation=utf8mb4_unicode_ci
     username: root

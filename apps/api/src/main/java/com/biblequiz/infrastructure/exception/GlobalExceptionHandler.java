@@ -2,10 +2,12 @@ package com.biblequiz.infrastructure.exception;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
@@ -72,6 +74,32 @@ public class GlobalExceptionHandler {
                 .build();
         
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, WebRequest request) {
+        Throwable cause = ex.getCause();
+        if (cause instanceof UnrecognizedPropertyException upe) {
+            String fieldName = upe.getPropertyName();
+            logger.warn("Unknown field in request body: '{}'", fieldName);
+            ErrorResponse error = ErrorResponse.builder()
+                    .timestamp(LocalDateTime.now())
+                    .status(HttpStatus.BAD_REQUEST.value())
+                    .error("Unknown Field")
+                    .message("Field '" + fieldName + "' is not allowed")
+                    .path(getPath(request))
+                    .build();
+            return ResponseEntity.badRequest().body(error);
+        }
+        logger.warn("Unreadable HTTP message: {}", ex.getMessage());
+        ErrorResponse error = ErrorResponse.builder()
+                .timestamp(LocalDateTime.now())
+                .status(HttpStatus.BAD_REQUEST.value())
+                .error("Bad Request")
+                .message("Invalid or malformed request body")
+                .path(getPath(request))
+                .build();
+        return ResponseEntity.badRequest().body(error);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
