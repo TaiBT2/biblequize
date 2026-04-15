@@ -51,16 +51,16 @@
 
 | Module | Screens | L1 Smoke | Notes |
 |--------|---------|----------|-------|
-| APP-M01 Auth & Onboarding | SplashScreen, LanguageSelection, WelcomeSlides, TryQuiz | ⬜ — | Phase 3 |
-| APP-M02 Home & Profile | HomeScreen, ProfileScreen | ⬜ — | Phase 3 |
-| APP-M03 Practice Mode | PracticeSelectScreen, QuizScreen, QuizResultsScreen | ⬜ — | Phase 3 |
-| APP-M04 Ranked Mode | RankedScreen | ⬜ — | Phase 3 |
-| APP-M05 Daily Challenge | DailyChallengeScreen | ⬜ — | Phase 3 |
-| APP-M06 Multiplayer (Lobby) | MultiplayerLobbyScreen, RoomWaitingScreen | ⬜ — | Phase 3 |
-| APP-M07 Social / Groups | GroupsListScreen, GroupDetailScreen | ⬜ — | Phase 3 |
-| APP-M08 Journey Map | JourneyMapScreen | ⬜ — | Phase 3 |
-| APP-M09 Achievements | AchievementsScreen | ⬜ — | Phase 3 |
-| APP-M10 Settings | SettingsScreen | ⬜ — | Phase 3 |
+| APP-M01 Auth & Onboarding | SplashScreen, LanguageSelection, WelcomeSlides, TryQuiz | ✅ 5/5 | Phase 3 done |
+| APP-M02 Home & Profile | HomeScreen, ProfileScreen | ✅ 4/4 | Phase 3 done |
+| APP-M03 Practice Mode | PracticeSelectScreen, QuizScreen, QuizResultsScreen | ✅ 4/4 | Phase 3 done |
+| APP-M04 Ranked Mode | RankedScreen | ✅ 3/3 | Phase 3 done |
+| APP-M05 Daily Challenge | DailyChallengeScreen | ✅ 4/4 | Phase 3 done · complete helper ⏭️ NOT IMPL |
+| APP-M06 Multiplayer (Lobby) | MultiplayerLobbyScreen, CreateRoomScreen, RoomWaitingScreen | ✅ 4/4 | Phase 3 done · gameplay ⏭️ WebSocket phase |
+| APP-M07 Social / Groups | GroupsListScreen, GroupJoinScreen, GroupDetailScreen | ✅ 4/4 | Phase 3 done · group seed ⏭️ NOT IMPL |
+| APP-M08 Journey Map | JourneyMapScreen | ✅ 4/4 | Phase 3 done |
+| APP-M09 Achievements | AchievementsScreen | ✅ 4/4 | Phase 3 done |
+| APP-M10 Settings | SettingsScreen | ✅ 5/5 | Phase 3 done |
 
 > **No admin screens on mobile** — confirmed by codebase scan.
 
@@ -73,7 +73,7 @@
 | Phase 0 — Framework Setup | ✅ done | f9b140e, 8e32255 |
 | Phase 1 — L1 Smoke Web User core (M01/02/03/04/10) | ✅ done | 7a3100e |
 | Phase 2 — L1 Smoke Web User rest + Admin | ✅ done | (commit pending) |
-| Phase 3 — Mobile Maestro Smoke | ⬜ | — |
+| Phase 3 — Mobile Maestro Smoke | ✅ done | (commit pending) |
 | Phase 4+ — L2 Happy Path + WebSocket | ⬜ | — |
 
 ---
@@ -82,8 +82,8 @@
 
 | Metric | Value |
 |--------|-------|
-| Total spec files created | 23 (Phase 1: 5 + Phase 2: 18) |
-| Total test cases written | ~130 (Phase 1: 33 + Phase 2: ~97) |
-| Total [NEEDS TESTID] | ~190 elements |
-| Total [NOT IMPLEMENTED] | ~12 (OAuth, Forgot password, Edit Profile, Notif panel, Config save, Export APIs, Events create, Quality score, Daily complete helper, Group seed) |
-| Total [DEFERRED - WEBSOCKET] | 3 (Multiplayer gameplay, ready state sync, player join/leave) |
+| Total spec files created | 33 (Phase 1: 5 + Phase 2: 18 + Phase 3: 10) |
+| Total test cases written | ~171 (Phase 1: 33 + Phase 2: ~97 + Phase 3: ~41) |
+| Total [NEEDS TESTID] | ~245 elements (~55 new mobile testIDs) |
+| Total [NOT IMPLEMENTED] | ~14 (OAuth, Forgot password, Edit Profile, Notif panel, Config save, Export APIs, Events create, Quality score, Daily complete helper, Group seed, Mobile: Settings nav, Journey nav, Achievements nav) |
+| Total [DEFERRED - WEBSOCKET] | 4 (Web: Multiplayer gameplay · Mobile: Multiplayer quiz, ready state sync, player join/leave) |
