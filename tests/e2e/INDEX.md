@@ -11,13 +11,13 @@
 | W-M01 Auth & Onboarding | `/login`, `/onboarding`, `/onboarding/try`, `/auth/callback` | ✅ 9/9 | ✅ 8/8 | — | Phase 4a done |
 | W-M02 Home & Profile | `/`, `/profile` | ✅ 9/9 | ✅ 8/8 | — | Phase 4a done |
 | W-M03 Practice Mode | `/practice`, `/quiz`, `/review` | ✅ 8/8 | ✅ 13/13 | — | Phase 4a done |
-| W-M04 Ranked Mode | `/ranked` | ✅ 7/7 | ✅ 14/14 | — | Phase 4a done · 1 BLOCKED (seed-points) |
-| W-M05 Daily Challenge | `/daily` | ✅ 5/5 | ✅ 12/12 | — | Phase 4a done · 3-4 BLOCKED (markCompleted gap) |
+| W-M04 Ranked Mode | `/ranked` | ✅ 7/7 | ✅ 14/14 | — | Phase 4a done · all unblocked |
+| W-M05 Daily Challenge | `/daily` | ✅ 5/5 | ✅ 12/12 | — | Phase 4a done · unblocked via /complete endpoint |
 | W-M06 Multiplayer (Lobby only) | `/rooms`, `/multiplayer`, `/room/create`, `/room/join`, `/room/:id/lobby` | ✅ 6/6 | ✅ 7/7 | — | Phase 4a done · Gameplay ⏭️ WebSocket phase |
 | W-M07 Tournaments | `/tournaments`, `/tournaments/:id`, `/tournaments/:id/match/:matchId` | ✅ 6/6 | ✅ 6/6 | — | Phase 4a done |
 | W-M08 Bible Journey Map | `/journey` | ✅ 4/4 | ✅ 6/6 | — | Phase 4a done |
 | W-M09 Church Groups | `/groups`, `/groups/:id`, `/groups/:id/analytics` | ✅ 5/5 | ✅ 12/12 | — | Phase 4a done |
-| W-M10 Tier Progression | `/` (tier display), `/profile`, `/cosmetics` | ✅ 8/8 | ✅ 17/17 | — | Phase 4a done · 4 BLOCKED (seed-points) |
+| W-M10 Tier Progression | `/` (tier display), `/profile`, `/cosmetics` | ✅ 8/8 | ✅ 17/17 | — | Phase 4a done · all unblocked |
 | W-M11 Variety Modes | `/weekly-quiz`, `/mystery-mode`, `/speed-round` | ✅ 6/6 | ✅ 12/12 | — | Phase 4a done · xpMultiplier gap |
 | W-M12 Notifications | AppLayout notification bell | ✅ 3/3 | ✅ 2/2 | — | Phase 4a done · panel ⏭️ NOT IMPL |
 | W-M13 i18n | Cross-cutting | ✅ 4/4 | ✅ 5/5 | — | Phase 4a done |
@@ -89,7 +89,7 @@
 | Total test cases written | ~299 (L1: 171 + L2 Web User: 128) |
 | L2 Web User breakdown | 8+8+13+14+12+7+6+6+12+17+12+2+5+6 = **128 cases** |
 | Total [NEEDS TESTID] | ~330 elements (~245 L1 + ~85 new L2) |
-| Total [NOT IMPLEMENTED/BLOCKED] | ~25 (carry-over + Phase 4a: seed-points, daily markCompleted, xpMultiplier, OAuth auto, DELETE test user, abandon session helper) |
+| Total [NOT IMPLEMENTED/BLOCKED] | ~16 (Phase 4a blockers FIXED: seed-points endpoint + daily /complete endpoint unblocked ~8 tests. Remaining: xpMultiplier, OAuth auto, DELETE test user, abandon session helper, plus L1 carry-over) |
 | Total [DEFERRED - WEBSOCKET] | 4 (Web + Mobile multiplayer gameplay, ready/join sync) |
 
 ---
@@ -121,8 +121,8 @@
 - **With 4 workers**: ~3-4 min estimated
 
 ### Critical findings (gaps found while writing Phase 4a)
-1. **`AdminTestController.SetStateRequest` missing `pointsCounted` field** — blocks 5 tier-up/star-boundary tests (W-M04-L2-013, W-M10-L2-002/003/004/005)
-2. **`DailyChallengeService.markCompleted()` not wired to production** — blocks 3-4 completion tracking tests (W-M05-L2-006/007/008/012)
-3. **`xpMultiplier` from variety endpoints NOT applied server-side** — W-M11-L2-012 designed to expose this gap
-4. **Practice mode scoring formula khác Ranked** — critical invariant: practice KHÔNG cộng `User.totalPoints`
-5. **`UserTierService.getTotalPoints()` là DERIVED** (SUM of UserDailyProgress.pointsCounted) — không thể set direct qua User column
+1. ~~**SetStateRequest missing `pointsCounted`**~~ → ✅ FIXED (commit 6f839ff): `POST /api/admin/test/users/{id}/seed-points` wipes UDP history + inserts fresh row with exact totalPoints. Unblocks W-M04-L2-013 + W-M10-L2-002/003/004/005.
+2. ~~**DailyChallengeService.markCompleted not wired**~~ → ✅ FIXED (commit 3ad2542): `POST /api/daily-challenge/complete { score, correctCount }` calls markCompleted, idempotent same-day. Unblocks W-M05-L2-006/007/008/012.
+3. **`xpMultiplier` from variety endpoints NOT applied server-side** — W-M11-L2-012 designed to expose this gap. Still open.
+4. **Practice mode scoring formula khác Ranked** — critical invariant: practice KHÔNG cộng `User.totalPoints`. Documented, not a bug.
+5. **`UserTierService.getTotalPoints()` là DERIVED** (SUM of UserDailyProgress.pointsCounted) — documented architecture, seed-points works around it.

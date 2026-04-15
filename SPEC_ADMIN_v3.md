@@ -902,6 +902,7 @@ GET /api/admin/question-quality/duplicates → potential duplicates list
 | **test.full_reset** | Test panel: reset user (dev only) |
 | **test.set_state** | Test panel: partial scalar state override (dev only) |
 | **test.set_mission_state** | Test panel: override daily mission state (dev only) |
+| **test.seed_points** | Test panel: wipe UserDailyProgress history + seed exact totalPoints (dev only) |
 
 ### 16.2 Log format
 
@@ -1004,6 +1005,26 @@ Section: 🛠️ Set State (test fixtures)
   
   Returns 404 if missionType not found for given date.
   Audit: test.set_mission_state | metadata = { date, missionCount }
+
+  POST /api/admin/test/users/{id}/seed-points
+  Body:
+    totalPoints : int  0–200000  — exact totalPoints to seed
+  
+  Behavior:
+    1. Wipes ALL existing UserDailyProgress rows for the user (destructive)
+    2. Inserts a single fresh row today with:
+       - pointsCounted = totalPoints
+       - livesRemaining = 100
+       - questionsCounted = 0
+    3. Response: { userId, totalPoints, tierLevel, tierName, wipedRows }
+  
+  Rationale:
+    UserTierService.getTotalPoints() = SUM(UserDailyProgress.pointsCounted).
+    There is no direct User.totalPoints column — the only way to set an exact
+    total is to replace the progress history. Used by tier-bump, star-boundary,
+    and milestone E2E tests that need a user sát ngưỡng (e.g. 4999 points).
+  
+  Audit: test.seed_points | metadata = { totalPoints, wipedRows, newTier }
 ```
 
 ### 17.5 Test Scenarios (Documentation)
@@ -1060,6 +1081,7 @@ GET  /api/admin/test/users/{userId}/preview-questions?count=10
 POST /api/admin/test/users/{userId}/full-reset
 POST /api/admin/test/users/{userId}/set-state          (body: SetStateRequest — partial scalar override)
 POST /api/admin/test/users/{userId}/set-mission-state  (body: SetMissionStateRequest — daily mission state)
+POST /api/admin/test/users/{userId}/seed-points        (body: SeedPointsRequest — exact totalPoints seed, wipes history)
 ```
 
 ---

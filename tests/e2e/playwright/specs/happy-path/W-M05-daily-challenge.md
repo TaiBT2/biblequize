@@ -14,17 +14,18 @@
 - **Completion tracking**: Redis cache key `daily:completed:{userId}:{date}`, TTL 48h
 - **Questions**: 5 fixed per day, shared by all users, hash-based selection from DB
 
-## ⚠️ IMPLEMENTATION GAP DETECTED
+## ✅ Unblocker: `POST /api/daily-challenge/complete` endpoint (commit 3ad2542)
 
-`DailyChallengeService.markCompleted()` chỉ được gọi từ **test code** trong codebase — chưa có production call site. Có nghĩa:
+Previously `DailyChallengeService.markCompleted()` chỉ gọi từ test code — production had no call site.
 
-1. Frontend có thể đang dùng local state để track completion
-2. Backend tracking chỉ hoạt động nếu frontend explicitly gọi mark-completed endpoint (nếu tồn tại)
-3. `alreadyCompleted` flag trong GET / response luôn = false trong thực tế
+Now added: `POST /api/daily-challenge/complete` with body `{ score, correctCount }`:
+1. Auth required (401 for guests)
+2. Idempotent: second call same-day returns existing state without overwrite
+3. Validates score (0-10000) and correctCount (0-5)
+4. Calls `markCompleted(userId, score, correctCount)` on first call
+5. Rejects unknown fields (@JsonIgnoreProperties(ignoreUnknown=false))
 
-**Impact lên L2 tests**: Cases verify completion persistence qua sessions (L2-007, L2-008) sẽ fail hoặc không realistic. Đánh dấu `[IMPLEMENTATION GAP]`.
-
-**Suggested fix**: Add `POST /api/daily-challenge/complete` endpoint chấp nhận score + correctCount, gọi `markCompleted()`.
+This unblocks completion tracking, streak increment, mission progress, và idempotent re-check.
 
 ---
 
@@ -156,13 +157,14 @@
 **Tags**: @happy-path @daily @scoring @write @serial
 
 **Setup**:
-- Reset daily completion: clear Redis key `daily:completed:{test3_id}:{today}` qua admin endpoint HOẶC ephemeral user
-- Preview 5 daily questions để biết correct answers
+- Ephemeral test user OR clear Redis key `daily_challenge:completed:{userId}:{today}` qua admin/Redis flush
+- Preview 5 daily questions để biết correct answers (GET `/api/daily-challenge`)
 
 **Actions**:
-1. Start daily quiz qua UI
-2. Answer 5 câu correct
-3. Wait for completion screen
+1. Start daily quiz qua UI (`POST /api/daily-challenge/start`)
+2. Answer 5 câu correct (local UI, no per-answer endpoint)
+3. UI fires `POST /api/daily-challenge/complete` với `{ score, correctCount: 5 }`
+4. Wait for completion screen
 
 **Assertions** (UI):
 - `expect(page.getByTestId('daily-result-score')).toBeVisible()`
@@ -170,14 +172,15 @@
 - `expect(page.getByTestId('daily-xp-bonus')).toContainText('+50')`
 
 **API Verification**:
-- `GET /api/daily-challenge/result` → `{ completed: true, date, score, correct: 5, total: 5 }`
+- POST `/api/daily-challenge/complete` → 200 with `{ completed: true, alreadyCompleted: false, score, correct: 5, total: 5 }`
+- `GET /api/daily-challenge/result` → `{ completed: true, date }`
 - `GET /api/daily-challenge` (re-fetch) → `alreadyCompleted: true`
-- `GET /api/me` → `totalPoints` tăng (nếu daily XP cộng vào user total — verify from code)
+- `GET /api/me` → `totalPoints` unchanged (daily XP bonus mechanism separate — confirm whether it modifies UDP.pointsCounted)
 
 **Notes**:
-- **[IMPLEMENTATION GAP]**: markCompleted() không được gọi từ production code. Test sẽ fail ở step "alreadyCompleted: true after complete" trừ khi frontend có call tới production mark endpoint
-- Đề xuất: skip cases L2-006/007/008 cho đến khi gap được fix, hoặc test only UI-side completion tracking
+- ✅ Unblocked by `POST /api/daily-challenge/complete` (commit 3ad2542)
 - [NEEDS TESTID: daily-result-score, daily-result-correct, daily-xp-bonus]
+- **Frontend wiring**: Confirm Daily page UI calls `/complete` endpoint after last answer — if not, [FRONTEND WORK NEEDED]
 
 ---
 
@@ -189,12 +192,11 @@
 **Tags**: @happy-path @daily @write @serial
 
 **Setup**:
-- **[IMPLEMENTATION GAP]**: Cần mark completion manually qua test admin endpoint nếu có
-- Hoặc: call `DailyChallengeService.markCompleted()` qua testing seam
+- Login fresh user
+- `POST /api/daily-challenge/complete` với `{ score: 100, correctCount: 5 }` to mark completed for today
 
 **Actions**:
-1. Manually mark completion (redis or admin API)
-2. `page.goto('/daily')`
+1. `page.goto('/daily')`
 
 **Assertions** (UI):
 - `expect(page.getByTestId('daily-start-btn')).toBeDisabled()` **hoặc**
@@ -203,9 +205,10 @@
 **API Verification**:
 - `GET /api/daily-challenge` → `alreadyCompleted: true`
 - `GET /api/daily-challenge/result` → `{ completed: true, ... }`
+- Second POST `/complete` → `{ alreadyCompleted: true }` (idempotent)
 
 **Notes**:
-- [BLOCKED: implementation gap]
+- ✅ Unblocked by `/complete` endpoint
 
 ---
 
@@ -324,7 +327,7 @@
 
 **Notes**:
 - Mission definition từ `DailyMissionService.java:40`: `new MissionDef("complete_daily_challenge", ...)`
-- [IMPLEMENTATION GAP dependency]: mission trigger có thể cùng gap với markCompleted — confirm
+- Mission trigger có thể cần wire thêm vào markCompleted flow — frontend or backend must increment "COMPLETE_DAILY_CHALLENGE" mission progress when `/complete` fires. Verify via integration test.
 
 ---
 
@@ -345,11 +348,12 @@
 
 ## NOT IMPLEMENTED / BLOCKERS
 
-| # | Issue | Impact |
-|---|-------|--------|
-| 1 | **`markCompleted()` chưa wired vào production flow** | L2-006, L2-007, L2-008, L2-012 blocked until `POST /api/daily-challenge/complete` endpoint added |
-| 2 | Admin endpoint clear daily completion | L2-006/007 cần reset giữa tests — dùng ephemeral user hoặc thêm `DELETE /api/admin/test/daily/complete?userId=X` |
-| 3 | Daily scoring formula source | L2-010 — confirm formula nào |
+| # | Issue | Impact | Status |
+|---|-------|--------|--------|
+| 1 | ~~`markCompleted()` chưa wired~~ | ~~L2-006/007/008/012 blocked~~ | ✅ FIXED: `POST /api/daily-challenge/complete` endpoint added (commit 3ad2542) |
+| 2 | Admin endpoint clear daily completion | L2-006/007 cần reset giữa tests — dùng ephemeral user hoặc thêm `DELETE /api/admin/test/daily/complete?userId=X` | Workaround: ephemeral user |
+| 3 | Daily scoring formula source | L2-010 — confirm formula nào | Code read needed |
+| 4 | Frontend wiring to POST /complete | L2-006 end-to-end | Frontend must call `/complete` after last answer — verify Daily.tsx |
 
 ---
 

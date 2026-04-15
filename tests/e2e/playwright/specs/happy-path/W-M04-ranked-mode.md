@@ -447,18 +447,16 @@ earned = round(16 × tier3Multiplier)
 
 **Priority**: P0
 **Est. runtime**: ~10s
-**Auth**: fresh login as test2@dev.local (tier 2 user)
+**Auth**: fresh login as test2@dev.local
 **Tags**: @happy-path @ranked @tier-bump @write @serial
 
 **Setup**:
-- `POST set-state`: `{ livesRemaining: 100, questionsCounted: 5 }` (not daily first)
-- Set `totalPoints` via set-state hoặc direct DB: **Cần endpoint `set-total-points` hoặc `set-state` field mới**
-  - **[NOT IMPLEMENTED]**: AdminTestController.SetStateRequest hiện KHÔNG có field `totalPoints`. Cần thêm field này hoặc dùng endpoint khác (set-tier?)
-  - Workaround: Dùng `POST /api/admin/test/users/{userId}/set-tier?tierLevel=2` nếu endpoint này có set totalPoints
-- Goal: user ở totalPoints = 4999 (ngưỡng tier 3 = 5000, chỉ cần 1 XP để bump)
+- `POST /api/admin/test/users/{userId}/seed-points` với body `{ "totalPoints": 4999 }` — wipes all existing UserDailyProgress rows + creates fresh row today with pointsCounted=4999, livesRemaining=100, questionsCounted=0
+- `POST /api/admin/test/users/{userId}/set-state` với `{ "questionsCounted": 5 }` — bump questionsCounted above 0 to disable daily-first ×2 bonus (avoid skewing delta calculation)
 
 **Preconditions**:
-- User totalPoints = 4999, currentTier = MON_DO precursor (NGUOI_TIM_KIEM = tier 2)
+- User totalPoints = 4999 (tier 2 NGUOI_TIM_KIEM, sát ngưỡng tier 3 = 5000)
+- livesRemaining = 100, questionsCounted = 5, not daily first
 
 **Actions**:
 1. `page.goto('/ranked')`
@@ -466,16 +464,13 @@ earned = round(16 × tier3Multiplier)
 3. Answer 1 easy correct → earned ≥ 1 XP → totalPoints ≥ 5000
 
 **API Verification**:
-- `GET /api/me` → `totalPoints >= 5000`
-- `GET /api/me/tier` → `{ key: "disciple" }` (tier 3 Môn Đồ)
-- `GET /api/me/tier-progress` → tier-up event (optional, nếu có audit log)
+- `GET /api/me/tier-progress` → `tierLevel: 3`, `tierName: "Môn Đồ"`, `totalPoints >= 5000`
+- `GET /api/me/tier` → `{ key: "disciple" }`
+- Star boundary event fired (via TierProgressService.checkStarBoundary(4999, newPoints) → oldTier != newTier → oldStarIndex=-1 → new StarEvent(0, 30))
+- Delta totalPoints ≈ baseScore × tier2Multiplier + 30 (star bonus) — verify 30 XP bonus added
 
 **Cleanup**:
-- `POST set-state` reset totalPoints về giá trị ban đầu
-
-**Notes**:
-- **[NOT IMPLEMENTED]**: Cần AdminTestController endpoint hoặc field để set `totalPoints` chính xác. Đề xuất: thêm `totalPoints` vào `SetStateRequest` (validation `@Min(0)`, apply vào `User.totalPoints`)
-- Nếu không implement được, test này bị BLOCKED → đề xuất Phase 4a bonus work
+- `POST seed-points { totalPoints: <original> }` to restore (or leave dirty — global teardown wipes)
 
 ---
 
@@ -532,9 +527,9 @@ earned = round(16 × tier3Multiplier)
 
 ## NOT IMPLEMENTED / BLOCKERS
 
-| Feature | Module | Impact | Suggested fix |
-|---------|--------|--------|---------------|
-| `SetStateRequest.totalPoints` field | AdminTestController | W-M04-L2-013 (tier bump) BLOCKED | Thêm field `totalPoints @Min(0)` vào DTO + apply vào `User.totalPoints` |
+| Feature | Module | Impact | Status |
+|---------|--------|--------|--------|
+| ~~`SetStateRequest.totalPoints` field~~ | AdminTestController | ~~W-M04-L2-013 BLOCKED~~ | ✅ FIXED: `POST /api/admin/test/users/{id}/seed-points` added (commit 6f839ff) |
 | Force difficulty filter trong preview-questions | AdminTestController | W-M04-L2-004/005 phụ thuộc | Confirm `preview-questions?difficulty=medium|hard` hoạt động |
 | Expose `currentStreak` qua `/api/me/ranked-status` | RankedController | Combo verification trong L2-007/008 dùng indirect | Optional — có thể dùng formula delta để verify gián tiếp |
 

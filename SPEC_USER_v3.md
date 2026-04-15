@@ -1363,10 +1363,18 @@ POST /api/sessions/practice/retry-last → { newSessionId }
 ### 17.6 Daily Challenge
 
 ```
-GET  /api/daily-challenge        → { date, questions, alreadyCompleted, globalStats }
-POST /api/daily-challenge/start  → { sessionId }
-GET  /api/daily-challenge/result → { score, rank, betterThanPercent, shareCardUrl }
+GET  /api/daily-challenge           → { date, questions, alreadyCompleted, globalStats }
+POST /api/daily-challenge/start     → { sessionId }
+POST /api/daily-challenge/complete  → { completed, alreadyCompleted, score, correct, total }
+                                      body: { score: 0-10000, correctCount: 0-5 }
+                                      auth required; idempotent same-day
+GET  /api/daily-challenge/result    → { score, rank, betterThanPercent, shareCardUrl }
 ```
+
+**Completion tracking**: Client calls `POST /complete` after finishing all 5 questions.
+Server records via Redis key `daily_challenge:completed:{userId}:{date}` (TTL 48h).
+Second call same-day returns `{ alreadyCompleted: true }` without overwrite.
+Unknown fields in body → HTTP 400 `Field 'xxx' is not allowed`.
 
 ### 17.7 Variety modes
 

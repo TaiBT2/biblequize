@@ -23,23 +23,15 @@ public int getTotalPoints(String userId) {
 
 ---
 
-## ⚠️ BLOCKER: Cần endpoint để pre-seed totalPoints
+## ✅ Unblocker: `seed-points` endpoint (commit 6f839ff)
 
-`AdminTestController.SetStateRequest` hiện có fields:
-- `livesRemaining`, `questionsCounted`, `daysAtTier6`, `lastPlayedAt`, `xpSurgeHoursFromNow`
+`POST /api/admin/test/users/{userId}/seed-points` với body `{ "totalPoints": N }`:
 
-**KHÔNG có `pointsCounted`** — không pre-seed được user ở ngưỡng tier-up / star-up.
+1. Wipes all existing `UserDailyProgress` rows for the user
+2. Inserts fresh row today với `pointsCounted=N`, `livesRemaining=100`, `questionsCounted=0`
+3. Response: `{ userId, totalPoints, tierLevel, tierName, wipedRows }`
 
-**Đề xuất**: Thêm field `pointsCountedToday` hoặc tạo endpoint mới:
-```java
-POST /api/admin/test/users/{userId}/seed-points
-Body: { "totalPoints": 4999 }
-
-Behavior: DELETE all existing UserDailyProgress for user,
-          INSERT 1 row with date=today, pointsCounted=4999.
-```
-
-**Tạm thời**: Tests phụ thuộc tier bump được đánh dấu `[BLOCKED: needs pointsCounted seed]`
+Makes tier-up / star-boundary / milestone tests deterministic.
 
 ---
 
@@ -104,7 +96,7 @@ Milestone bonuses: "50" và "90" percentage crossings (trigger animation, no XP)
 **Tags**: @happy-path @tier @stars @write @serial
 
 **Setup**:
-- **[BLOCKED]**: Pre-seed user3 với totalPoints = 6999 (sát ngưỡng star 1 của tier 3 tại 7000)
+- `POST /api/admin/test/users/{userId}/seed-points` wipes all UserDailyProgress rows + inserts fresh row today. Pre-seed user3 với totalPoints = 6999 (sát ngưỡng star 1 của tier 3 tại 7000)
 - Cần endpoint seed-points
 
 **Actions**:
@@ -120,7 +112,7 @@ Milestone bonuses: "50" và "90" percentage crossings (trigger animation, no XP)
 - Total delta XP = `answer earned` + `30 star bonus`
 
 **Notes**:
-- [BLOCKED: needs pointsCounted seed endpoint]
+- ✅ Unblocked by `seed-points` endpoint (commit 6f839ff)
 - Star bonus 30 XP — confirmed from TierProgressService.checkStarBoundary line 119
 
 ---
@@ -133,7 +125,7 @@ Milestone bonuses: "50" và "90" percentage crossings (trigger animation, no XP)
 **Tags**: @happy-path @tier @milestone @write @serial
 
 **Setup**:
-- **[BLOCKED]**: Pre-seed totalPoints = 9999 (just below 50% của tier 3 range: 5000 + 10000*0.5 = 10000)
+- `POST /api/admin/test/users/{userId}/seed-points` wipes all UserDailyProgress rows + inserts fresh row today. Pre-seed totalPoints = 9999 (just below 50% của tier 3 range: 5000 + 10000*0.5 = 10000)
 
 **Actions**:
 1. Earn 1 XP → cross 10000
@@ -144,7 +136,7 @@ Milestone bonuses: "50" và "90" percentage crossings (trigger animation, no XP)
 - Nếu milestone trigger qua WebSocket hoặc eager endpoint, verify broadcast/notification
 
 **Notes**:
-- [BLOCKED: needs pointsCounted seed]
+- ✅ Unblocked by `seed-points` endpoint
 - Milestone "50" và "90" trigger animation client-side — L2 verify server-side field chính xác
 
 ---
@@ -157,7 +149,7 @@ Milestone bonuses: "50" và "90" percentage crossings (trigger animation, no XP)
 **Tags**: @happy-path @tier @milestone @write @serial
 
 **Setup**:
-- **[BLOCKED]**: Pre-seed totalPoints = 13999 (just below 90% của tier 3: 5000 + 10000*0.9 = 14000)
+- `POST /api/admin/test/users/{userId}/seed-points` wipes all UserDailyProgress rows + inserts fresh row today. Pre-seed totalPoints = 13999 (just below 90% của tier 3: 5000 + 10000*0.9 = 14000)
 
 **Actions**:
 1. Earn 1 XP → cross 14000
@@ -166,7 +158,7 @@ Milestone bonuses: "50" và "90" percentage crossings (trigger animation, no XP)
 - `GET /api/me/tier-progress` → `milestone: "90"`
 
 **Notes**:
-- [BLOCKED]
+- ✅ Unblocked by `seed-points`
 - Test boundary: oldPercent=89.99, newPercent=90.01
 
 ---
@@ -179,7 +171,7 @@ Milestone bonuses: "50" và "90" percentage crossings (trigger animation, no XP)
 **Tags**: @happy-path @tier @tier-bump @write @serial
 
 **Setup**:
-- **[BLOCKED]**: Pre-seed totalPoints = 4999 (just below tier 3 threshold 5000)
+- `POST /api/admin/test/users/{userId}/seed-points` wipes all UserDailyProgress rows + inserts fresh row today. Pre-seed totalPoints = 4999 (just below tier 3 threshold 5000)
 
 **Actions**:
 1. Earn 1 XP → cross 5000 → tier 2 → tier 3
@@ -194,7 +186,7 @@ Milestone bonuses: "50" và "90" percentage crossings (trigger animation, no XP)
 - `checkStarBoundary` returns StarEvent(0, 30) vì `oldTier != newTier` → oldStarIndex = -1 → newStarIndex 0 > -1 → event fired
 
 **Notes**:
-- [BLOCKED]
+- ✅ Unblocked by `seed-points`
 - Cross-tier event là quan trọng: UI triggers tier-up animation/modal
 - `User.lastPlayedAt` phải update để prevent comeback trigger
 
@@ -536,9 +528,9 @@ Milestone bonuses: "50" và "90" percentage crossings (trigger animation, no XP)
 
 ## NOT IMPLEMENTED / BLOCKERS
 
-| # | Blocker | Impact | Suggested fix |
-|---|---------|--------|---------------|
-| 1 | **`pointsCounted` seed endpoint** | L2-002, L2-003, L2-004, L2-005 BLOCKED | Thêm `POST /api/admin/test/users/{id}/seed-points { totalPoints }` endpoint. Implementation: DELETE `UserDailyProgress` of user, INSERT 1 row today với `pointsCounted=N` |
+| # | Blocker | Impact | Status |
+|---|---------|--------|--------|
+| 1 | ~~`pointsCounted` seed endpoint~~ | ~~L2-002, L2-003, L2-004, L2-005 BLOCKED~~ | ✅ FIXED: `seed-points` endpoint added (commit 6f839ff) |
 | 2 | Mission claim-bonus endpoint confirm | L2-011 partial | Verify `/api/me/daily-missions/{id}/claim-bonus` exists hoặc tự auto-claim |
 | 3 | Prestige isolation | L2-017 | Dùng ephemeral `test6-prestige@dev.local` user hoặc reset qua seed teardown |
 | 4 | ComebackService reward thresholds | L2-012 | Read code để biết exact rewardTier logic |
@@ -560,10 +552,10 @@ Milestone bonuses: "50" và "90" percentage crossings (trigger animation, no XP)
 | Case | Runtime | Blocked? |
 |------|---------|----------|
 | L2-001 | 4s | |
-| L2-002 | 8s | 🚫 |
-| L2-003 | 8s | 🚫 |
-| L2-004 | 8s | 🚫 |
-| L2-005 | 8s | 🚫 |
+| L2-002 | 8s | ✅ |
+| L2-003 | 8s | ✅ |
+| L2-004 | 8s | ✅ |
+| L2-005 | 8s | ✅ |
 | L2-006 | 5s | |
 | L2-007 | 5s | |
 | L2-008 | 4s | |
@@ -586,7 +578,7 @@ Parallel-safe: 3 cases (L2-001, L2-008, L2-009, L2-014 — all GET). Remaining s
 
 - **17 cases** total (exceeds 14-16 estimate, due to cosmetics + prestige coverage)
 - **P0**: 5 | **P1**: 11 | **P2**: 0
-- **BLOCKED**: 4 cases phụ thuộc `seed-points` endpoint (L2-002, L2-003, L2-004, L2-005)
+- **UNBLOCKED**: 4 cases (L2-002/003/004/005) via `seed-points` endpoint (commit 6f839ff)
 - **NEEDS TESTID**: 12 elements
 - **NOT IMPLEMENTED**: 1 critical blocker (pointsCounted seed), 3 minor
 - **Runtime**: ~1.6 min serial (trong đó 4 cases blocked)
