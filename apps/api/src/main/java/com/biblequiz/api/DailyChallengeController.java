@@ -1,8 +1,12 @@
 package com.biblequiz.api;
 
+import com.biblequiz.api.dto.CompleteDailyChallengeRequest;
 import com.biblequiz.modules.daily.service.DailyChallengeService;
 import com.biblequiz.modules.quiz.entity.Question;
 
+import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -20,6 +24,8 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/daily-challenge")
 public class DailyChallengeController {
+
+    private static final Logger log = LoggerFactory.getLogger(DailyChallengeController.class);
 
     @Autowired
     private DailyChallengeService dailyChallengeService;
@@ -76,6 +82,51 @@ public class DailyChallengeController {
                 "date", LocalDate.now(ZoneOffset.UTC).toString(),
                 "totalQuestions", dailyChallengeService.getDailyQuestionCount());
 
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * POST /api/daily-challenge/complete — mark today's daily challenge as completed.
+     *
+     * <p>Called by the client after finishing all 5 questions. Records completion
+     * in the Redis cache so subsequent {@code GET /api/daily-challenge} calls return
+     * {@code alreadyCompleted: true}, and so {@code GET /result} returns the score.
+     *
+     * <p>Auth required — guests can play but cannot persist results.
+     * Idempotent: calling twice on the same day returns the existing completion
+     * without overwriting.
+     */
+    @PostMapping("/complete")
+    public ResponseEntity<Map<String, Object>> complete(
+            Authentication authentication,
+            @Valid @RequestBody CompleteDailyChallengeRequest req) {
+        if (authentication == null) {
+            return ResponseEntity.status(401).body(Map.of("error", "Login required to complete daily challenge"));
+        }
+
+        String userId = authentication.getName();
+
+        // Idempotency: if already completed today, return existing state without overwrite
+        if (dailyChallengeService.hasCompletedToday(userId)) {
+            log.info("Daily challenge already completed today for user {}, skipping markCompleted", userId);
+            return ResponseEntity.ok(Map.of(
+                    "completed", true,
+                    "alreadyCompleted", true,
+                    "date", LocalDate.now(ZoneOffset.UTC).toString()));
+        }
+
+        dailyChallengeService.markCompleted(userId, req.getScore(), req.getCorrectCount());
+
+        log.info("Daily challenge completed by user {} with score={} correct={}/5",
+                userId, req.getScore(), req.getCorrectCount());
+
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("completed", true);
+        response.put("alreadyCompleted", false);
+        response.put("date", LocalDate.now(ZoneOffset.UTC).toString());
+        response.put("score", req.getScore());
+        response.put("correct", req.getCorrectCount());
+        response.put("total", dailyChallengeService.getDailyQuestionCount());
         return ResponseEntity.ok(response);
     }
 

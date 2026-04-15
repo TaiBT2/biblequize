@@ -16,6 +16,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -169,5 +172,79 @@ class DailyChallengeControllerTest extends BaseControllerTest {
                 .andExpect(jsonPath("$.sessionId").isNotEmpty())
                 .andExpect(jsonPath("$.date").isNotEmpty())
                 .andExpect(jsonPath("$.totalQuestions").value(5));
+    }
+
+    // ── POST /api/daily-challenge/complete ───────────────────────────────────
+
+    @Test
+    @Order(10)
+    @WithMockUser(username = "test@example.com")
+    void complete_firstTime_shouldCallMarkCompleted() throws Exception {
+        when(dailyChallengeService.hasCompletedToday("test@example.com")).thenReturn(false);
+        when(dailyChallengeService.getDailyQuestionCount()).thenReturn(5);
+
+        mockMvc.perform(post("/api/daily-challenge/complete")
+                        .contentType("application/json")
+                        .content("{\"score\": 85, \"correctCount\": 4}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.completed").value(true))
+                .andExpect(jsonPath("$.alreadyCompleted").value(false))
+                .andExpect(jsonPath("$.score").value(85))
+                .andExpect(jsonPath("$.correct").value(4))
+                .andExpect(jsonPath("$.total").value(5));
+
+        verify(dailyChallengeService).markCompleted(eq("test@example.com"), eq(85), eq(4));
+    }
+
+    @Test
+    @Order(11)
+    @WithMockUser(username = "test@example.com")
+    void complete_idempotent_secondCallSkipsMarkCompleted() throws Exception {
+        when(dailyChallengeService.hasCompletedToday("test@example.com")).thenReturn(true);
+
+        mockMvc.perform(post("/api/daily-challenge/complete")
+                        .contentType("application/json")
+                        .content("{\"score\": 50, \"correctCount\": 3}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.completed").value(true))
+                .andExpect(jsonPath("$.alreadyCompleted").value(true));
+
+        verify(dailyChallengeService, never()).markCompleted(anyString(), anyInt(), anyInt());
+    }
+
+    @Test
+    @Order(12)
+    void complete_unauthenticated_shouldReturn401() throws Exception {
+        mockMvc.perform(post("/api/daily-challenge/complete")
+                        .contentType("application/json")
+                        .content("{\"score\": 50, \"correctCount\": 3}"))
+                .andExpect(status().isUnauthorized());
+
+        verify(dailyChallengeService, never()).markCompleted(anyString(), anyInt(), anyInt());
+    }
+
+    @Test
+    @Order(13)
+    @WithMockUser(username = "test@example.com")
+    void complete_correctCountAbove5_shouldReturn400() throws Exception {
+        // correctCount max = 5 (matches DAILY_QUESTION_COUNT)
+        mockMvc.perform(post("/api/daily-challenge/complete")
+                        .contentType("application/json")
+                        .content("{\"score\": 100, \"correctCount\": 10}"))
+                .andExpect(status().isBadRequest());
+
+        verify(dailyChallengeService, never()).markCompleted(anyString(), anyInt(), anyInt());
+    }
+
+    @Test
+    @Order(14)
+    @WithMockUser(username = "test@example.com")
+    void complete_missingScore_shouldReturn400() throws Exception {
+        mockMvc.perform(post("/api/daily-challenge/complete")
+                        .contentType("application/json")
+                        .content("{\"correctCount\": 5}"))
+                .andExpect(status().isBadRequest());
+
+        verify(dailyChallengeService, never()).markCompleted(anyString(), anyInt(), anyInt());
     }
 }
