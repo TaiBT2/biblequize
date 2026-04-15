@@ -8,21 +8,21 @@
 
 | Module | Route(s) | L1 Smoke | L2 Happy | L3 Edge | Notes |
 |--------|---------|----------|----------|---------|-------|
-| W-M01 Auth & Onboarding | `/login`, `/onboarding`, `/onboarding/try`, `/auth/callback` | ✅ 9/9 | — | — | Phase 1 done |
-| W-M02 Home & Profile | `/`, `/profile` | ✅ 9/9 | — | — | Phase 1 done |
-| W-M03 Practice Mode | `/practice`, `/quiz`, `/review` | ✅ 8/8 | — | — | Phase 1 done |
-| W-M04 Ranked Mode | `/ranked` | ✅ 7/7 | — | — | Phase 1 done |
-| W-M05 Daily Challenge | `/daily` | ✅ 5/5 | — | — | Phase 2 done |
-| W-M06 Multiplayer (Lobby only) | `/rooms`, `/multiplayer`, `/room/create`, `/room/join`, `/room/:id/lobby` | ✅ 6/6 | — | — | Phase 2 done · Gameplay ⏭️ WebSocket phase |
-| W-M07 Tournaments | `/tournaments`, `/tournaments/:id`, `/tournaments/:id/match/:matchId` | ✅ 6/6 | — | — | Phase 2 done |
-| W-M08 Bible Journey Map | `/journey` | ✅ 4/4 | — | — | Phase 2 done |
-| W-M09 Church Groups | `/groups`, `/groups/:id`, `/groups/:id/analytics` | ✅ 5/5 | — | — | Phase 2 done |
-| W-M10 Tier Progression | `/` (tier display), `/profile`, `/cosmetics` | ✅ 8/8 | — | — | Phase 1 done |
-| W-M11 Variety Modes | `/weekly-quiz`, `/mystery-mode`, `/speed-round` | ✅ 6/6 | — | — | Phase 2 done |
-| W-M12 Notifications | AppLayout notification bell | ✅ 3/3 | — | — | Phase 2 done · panel ⏭️ NOT IMPL |
-| W-M13 i18n | Cross-cutting | ✅ 4/4 | — | — | Phase 2 done |
-| W-M14 | — | ⏭️ skip | — | — | Mobile-specific |
-| W-M15 Cross-cutting | Error boundary, offline, loading | ✅ 5/5 | — | — | Phase 2 done |
+| W-M01 Auth & Onboarding | `/login`, `/onboarding`, `/onboarding/try`, `/auth/callback` | ✅ 9/9 | ✅ 8/8 | — | Phase 4a done |
+| W-M02 Home & Profile | `/`, `/profile` | ✅ 9/9 | ✅ 8/8 | — | Phase 4a done |
+| W-M03 Practice Mode | `/practice`, `/quiz`, `/review` | ✅ 8/8 | ✅ 13/13 | — | Phase 4a done |
+| W-M04 Ranked Mode | `/ranked` | ✅ 7/7 | ✅ 14/14 | — | Phase 4a done · 1 BLOCKED (seed-points) |
+| W-M05 Daily Challenge | `/daily` | ✅ 5/5 | ✅ 12/12 | — | Phase 4a done · 3-4 BLOCKED (markCompleted gap) |
+| W-M06 Multiplayer (Lobby only) | `/rooms`, `/multiplayer`, `/room/create`, `/room/join`, `/room/:id/lobby` | ✅ 6/6 | ✅ 7/7 | — | Phase 4a done · Gameplay ⏭️ WebSocket phase |
+| W-M07 Tournaments | `/tournaments`, `/tournaments/:id`, `/tournaments/:id/match/:matchId` | ✅ 6/6 | ✅ 6/6 | — | Phase 4a done |
+| W-M08 Bible Journey Map | `/journey` | ✅ 4/4 | ✅ 6/6 | — | Phase 4a done |
+| W-M09 Church Groups | `/groups`, `/groups/:id`, `/groups/:id/analytics` | ✅ 5/5 | ✅ 12/12 | — | Phase 4a done |
+| W-M10 Tier Progression | `/` (tier display), `/profile`, `/cosmetics` | ✅ 8/8 | ✅ 17/17 | — | Phase 4a done · 4 BLOCKED (seed-points) |
+| W-M11 Variety Modes | `/weekly-quiz`, `/mystery-mode`, `/speed-round` | ✅ 6/6 | ✅ 12/12 | — | Phase 4a done · xpMultiplier gap |
+| W-M12 Notifications | AppLayout notification bell | ✅ 3/3 | ✅ 2/2 | — | Phase 4a done · panel ⏭️ NOT IMPL |
+| W-M13 i18n | Cross-cutting | ✅ 4/4 | ✅ 5/5 | — | Phase 4a done |
+| W-M14 | — | ⏭️ skip | ⏭️ skip | — | Mobile-specific |
+| W-M15 Cross-cutting | Error boundary, offline, loading | ✅ 5/5 | ✅ 6/6 | — | Phase 4a done |
 
 ---
 
@@ -74,7 +74,10 @@
 | Phase 1 — L1 Smoke Web User core (M01/02/03/04/10) | ✅ done | 7a3100e |
 | Phase 2 — L1 Smoke Web User rest + Admin | ✅ done | (commit pending) |
 | Phase 3 — Mobile Maestro Smoke | ✅ done | (commit pending) |
-| Phase 4+ — L2 Happy Path + WebSocket | ⬜ | — |
+| Phase 4a — L2 Happy Path Web User | ✅ done | (commit pending) |
+| Phase 4b — L2 Happy Path Web Admin | ⬜ | — |
+| Phase 4c — L2 Happy Path Mobile | ⬜ | — |
+| Phase 5 — WebSocket Multiplayer gameplay | ⬜ | — |
 
 ---
 
@@ -82,8 +85,44 @@
 
 | Metric | Value |
 |--------|-------|
-| Total spec files created | 33 (Phase 1: 5 + Phase 2: 18 + Phase 3: 10) |
-| Total test cases written | ~171 (Phase 1: 33 + Phase 2: ~97 + Phase 3: ~41) |
-| Total [NEEDS TESTID] | ~245 elements (~55 new mobile testIDs) |
-| Total [NOT IMPLEMENTED] | ~14 (OAuth, Forgot password, Edit Profile, Notif panel, Config save, Export APIs, Events create, Quality score, Daily complete helper, Group seed, Mobile: Settings nav, Journey nav, Achievements nav) |
-| Total [DEFERRED - WEBSOCKET] | 4 (Web: Multiplayer gameplay · Mobile: Multiplayer quiz, ready state sync, player join/leave) |
+| Total spec files created | 47 (Phase 1: 5 + Phase 2: 18 + Phase 3: 10 + Phase 4a: 14) |
+| Total test cases written | ~299 (L1: 171 + L2 Web User: 128) |
+| L2 Web User breakdown | 8+8+13+14+12+7+6+6+12+17+12+2+5+6 = **128 cases** |
+| Total [NEEDS TESTID] | ~330 elements (~245 L1 + ~85 new L2) |
+| Total [NOT IMPLEMENTED/BLOCKED] | ~25 (carry-over + Phase 4a: seed-points, daily markCompleted, xpMultiplier, OAuth auto, DELETE test user, abandon session helper) |
+| Total [DEFERRED - WEBSOCKET] | 4 (Web + Mobile multiplayer gameplay, ready/join sync) |
+
+---
+
+## Phase 4a — L2 Happy Path Web User — Detailed Stats
+
+### Cases per module
+| Module | L1 | L2 | L2 P0 | L2 P1 | L2 P2 | Blocked |
+|--------|----|----|-------|-------|-------|---------|
+| W-M01 Auth | 9 | 8 | 6 | 2 | 0 | 1 (OAuth) |
+| W-M02 Home/Profile | 9 | 8 | 2 | 5 | 1 | 0 |
+| W-M03 Practice | 8 | 13 | 4 | 7 | 2 | 0 |
+| W-M04 Ranked | 7 | 14 | 8 | 6 | 0 | 1 (seed-points) |
+| W-M05 Daily | 5 | 12 | 5 | 7 | 0 | 3-4 (markCompleted) |
+| W-M06 Multiplayer | 6 | 7 | 3 | 4 | 0 | (gameplay deferred) |
+| W-M07 Tournaments | 6 | 6 | 2 | 3 | 1 | 0 |
+| W-M08 Journey | 4 | 6 | 2 | 4 | 0 | 0 |
+| W-M09 Groups | 5 | 12 | 4 | 8 | 0 | 0 |
+| W-M10 Tier Progression | 8 | 17 | 5 | 11 | 0 | 4 (seed-points) |
+| W-M11 Variety | 6 | 12 | 4 | 7 | 1 | 1 (date mock) |
+| W-M12 Notifications | 3 | 2 | 0 | 2 | 0 | 0 |
+| W-M13 i18n | 4 | 5 | 3 | 2 | 0 | 0 |
+| W-M15 Cross-cutting | 5 | 6 | 2 | 3 | 1 | 0 |
+| **Total** | **85** | **128** | **50** | **71** | **6** | **~10** |
+
+### Runtime estimates Phase 4a
+- **Serial total**: ~7.5 min (sum of per-module estimates)
+- **Parallel-safe cases**: ~35/128 (27% — read-only tests)
+- **With 4 workers**: ~3-4 min estimated
+
+### Critical findings (gaps found while writing Phase 4a)
+1. **`AdminTestController.SetStateRequest` missing `pointsCounted` field** — blocks 5 tier-up/star-boundary tests (W-M04-L2-013, W-M10-L2-002/003/004/005)
+2. **`DailyChallengeService.markCompleted()` not wired to production** — blocks 3-4 completion tracking tests (W-M05-L2-006/007/008/012)
+3. **`xpMultiplier` from variety endpoints NOT applied server-side** — W-M11-L2-012 designed to expose this gap
+4. **Practice mode scoring formula khác Ranked** — critical invariant: practice KHÔNG cộng `User.totalPoints`
+5. **`UserTierService.getTotalPoints()` là DERIVED** (SUM of UserDailyProgress.pointsCounted) — không thể set direct qua User column

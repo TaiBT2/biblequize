@@ -34,6 +34,14 @@
 - `expect(page.getByTestId('...')).toHaveText('...')`
 - `expect(page.getByRole('button', { name: '...' })).toBeEnabled()`
 
+**API Verification** *(bắt buộc cho L2 @write, optional cho L1)*:
+- `GET /api/me` → expect `totalPoints` tăng đúng N
+- `GET /api/me/tier-progress` → expect `currentTier` = X, `pointsToNextTier` = Y
+- `GET /api/me/missions/today` → expect mission "ANSWER_5_CORRECT" có `progress=5, completed=true`
+
+> **Rule**: L2 KHÔNG được verify chỉ UI. Bắt buộc check backend state qua API.
+> UI có thể hiển thị đúng do optimistic update / cache, nhưng BE có thể không persist.
+
 **Cleanup**: none | [API call để reset state]
 
 **Notes**:
@@ -131,6 +139,54 @@ Auth: fresh login as admin@biblequiz.test  ← admin login trong setup
 
 **Notes**:
 - [NEEDS TESTID: group-name-input, group-create-submit, group-name-heading, group-join-code, group-member-count]
+```
+
+---
+
+## Ví dụ 4 — L2 Happy Path với API Verification
+
+```markdown
+### W-M04-L2-001 — Complete ranked quiz 5/5 → XP tăng đúng công thức
+
+**Priority**: P0
+**Est. runtime**: ~12s
+**Auth**: fresh login as test3@dev.local
+**Tags**: @happy-path @ranked @write @critical
+
+**Setup**:
+- `POST /api/admin/test/users/{userId}/set-state` với:
+  ```json
+  { "livesRemaining": 10, "questionsCounted": 0 }
+  ```
+- `POST /api/admin/test/users/{userId}/set-tier?tierLevel=3` — ensure tier 3
+
+**Preconditions**:
+- User ở tier 3 (~8000 pts), livesRemaining=10, questionsCounted=0
+- Có ít nhất 5 questions active trong DB
+
+**Actions**:
+1. `page.goto('/ranked')`
+2. `page.getByTestId('ranked-start-btn').click()`
+3. `page.waitForURL(/\/quiz\?mode=ranked/)`
+4. Lặp 5 lần: chọn đáp án đúng (dùng API preview để biết answer) → click next
+5. `page.waitForURL('/ranked')` (back to ranked home after complete)
+
+**Assertions** (UI):
+- `expect(page.getByTestId('ranked-xp-gained')).toContainText(/\+\d+ XP/)`
+- `expect(page.getByTestId('ranked-correct-count')).toHaveText('5/5')`
+
+**API Verification** (bắt buộc):
+- `GET /api/me` → `totalPoints` tăng đúng `5 × basePoints × comboMultiplier` (check formula)
+- `GET /api/me/tier-progress` → `currentTier=3`, `pointsToNextTier` giảm đúng delta
+- `GET /api/me/daily-progress` → `questionsCounted=5`, `livesRemaining=10` (ranked không tốn lives)
+- `GET /api/me/streak` → `currentStreak` tăng nếu hôm nay chưa play
+
+**Cleanup**:
+- `POST /api/admin/test/users/{userId}/set-state` reset về state ban đầu
+
+**Notes**:
+- Scoring formula tham chiếu `ScoringService.calculate()` — base × combo × difficulty
+- [NEEDS TESTID: ranked-xp-gained, ranked-correct-count]
 ```
 
 ---

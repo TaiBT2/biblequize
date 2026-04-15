@@ -276,6 +276,104 @@ Response: { accessToken, refreshToken, id, name, email, avatar, role }
 
 ---
 
+## 8. Isolation Strategy (L2 Happy Path trở lên)
+
+### Nguyên tắc cốt lõi
+
+> **Mỗi test phải tự setup state mình cần trong `beforeEach`. KHÔNG BAO GIỜ đọc state từ test trước.**
+> Test order không determnistic (parallel, shuffle, `--grep`) — đừng assume thứ tự.
+
+### Per-tier user assignment
+
+Mặc định 1 tier dùng 1 test user cố định. Map:
+
+```
+tier 1 state  → test1@dev.local
+tier 2 state  → test2@dev.local
+tier 3 state  → test3@dev.local
+tier 4 state  → test4@dev.local
+tier 5 state  → test5@dev.local
+tier 6 state  → test6@dev.local
+ephemeral     → tạo user mới qua seed API (cho @parallel-safe write tests)
+```
+
+### beforeEach mandatory pattern (cho tests có state)
+
+```typescript
+test.beforeEach(async ({ request }) => {
+  // Reset user về trạng thái mong muốn
+  await request.post('/api/admin/test/users/{userId}/set-state', {
+    data: {
+      livesRemaining: 10,
+      questionsCounted: 0,
+      daysAtTier6: 0,
+      xpSurgeHoursFromNow: 0,
+    }
+  })
+  // Nếu cần missions state:
+  await request.post('/api/admin/test/users/{userId}/set-mission-state', {
+    data: {
+      missions: [{ missionType: 'ANSWER_5_CORRECT', progress: 0, completed: false }]
+    }
+  })
+})
+```
+
+### Pre-seed ngưỡng pattern (cho tier-up, milestone tests)
+
+Thay vì chạy nhiều modes để tích luỹ XP → set-state pre-seed user sát ngưỡng, rồi chỉ trigger 1 action để vượt ngưỡng:
+
+```
+Test "Tier 3 → Tier 4 bump":
+  beforeEach:
+    POST set-state: totalPoints=14999 (ngưỡng tier 4 = 15000)
+  Action:
+    Complete 1 practice question đúng → +1 XP (approx, giả định)
+  Assert:
+    GET /api/me → totalPoints=15000, currentTier=4
+    GET /api/me/tier-progress → tier-up event fired
+```
+
+**Rule**: Test "cumulative XP across multiple game modes" là **integration test backend**, KHÔNG phải E2E concern. E2E chỉ test từng flow riêng biệt với pre-seeded state.
+
+### Tags — 3 loại
+
+```
+@parallel-safe   — Test pure read-only HOẶC tự tạo ephemeral user qua seed API.
+                   Có thể chạy parallel với bất kỳ test nào khác.
+                   Ví dụ: GET /api/leaderboard; browse journey map.
+
+@serial          — DEFAULT cho mọi test không có tag khác.
+                   Test mutation trên fixed test user (test1-6@dev.local).
+                   Chạy trên worker 1 duy nhất, serial trong file.
+                   Buộc phải có beforeEach set-state reset.
+
+@write           — Subset của @serial, đánh dấu rõ test sẽ modify user state.
+                   BẮT BUỘC:
+                     1. beforeEach: set-state reset
+                     2. API Verification section trong spec
+                     3. Không giả định state trước đó
+                   Ví dụ: Complete quiz → verify XP tăng qua GET /api/me
+```
+
+> **Không có tag `@dirty`**. Lý do: `@write` + `beforeEach set-state` đã đủ để handle isolation.
+> Nếu có case cần "leave state dirty for cross-test assertion" → đó là integration test backend, không phải E2E.
+
+### Global setup / teardown (chạy 1 lần toàn suite)
+
+```
+Global setup:
+  POST /api/admin/seed/test-data         ← seed 20 users + groups + sessions
+  Login test1-6@dev.local → save storageState fixtures
+
+Global teardown:
+  DELETE /api/admin/seed/test-data       ← xoá toàn bộ seed data
+```
+
+**Không có per-file teardown dọn dẹp toàn cục.** Mỗi test self-contained qua `beforeEach`.
+
+---
+
 ## 7. Naming Conventions
 
 ### Test Case IDs
@@ -294,14 +392,25 @@ Levels: `L1` Smoke, `L2` Happy Path, `L3` Edge Cases
 ### Tags
 
 ```
+# Level tags
 @smoke          L1 smoke test
 @happy-path     L2 full flow
 @edge           L3 edge case
+
+# Priority
 @critical       P0 — release blocker nếu fail
+
+# Domain
 @auth           liên quan auth flow
 @admin          admin panel
-@write          test thay đổi data (cần cleanup)
 @websocket      cần WebSocket (deferred)
+
+# Isolation (exactly 1 of these per test)
+@parallel-safe  Pure read-only hoặc ephemeral user. Có thể parallel với bất kỳ test nào
+@serial         Default. Test mutation trên fixed user, chạy serial worker 1
+@write          Subset của @serial. Buộc có beforeEach set-state + API Verification
+
+# Environment
 @dev-only       chỉ chạy trên dev (dùng TestDataSeeder)
 ```
 
