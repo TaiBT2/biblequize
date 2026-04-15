@@ -47,20 +47,20 @@
 
 ---
 
-## Mobile App (Maestro) — prefix `APP-` — Phase 3
+## Mobile App (Maestro) — prefix `APP-`
 
-| Module | Screens | L1 Smoke | Notes |
-|--------|---------|----------|-------|
-| APP-M01 Auth & Onboarding | SplashScreen, LanguageSelection, WelcomeSlides, TryQuiz | ✅ 5/5 | Phase 3 done |
-| APP-M02 Home & Profile | HomeScreen, ProfileScreen | ✅ 4/4 | Phase 3 done |
-| APP-M03 Practice Mode | PracticeSelectScreen, QuizScreen, QuizResultsScreen | ✅ 4/4 | Phase 3 done |
-| APP-M04 Ranked Mode | RankedScreen | ✅ 3/3 | Phase 3 done |
-| APP-M05 Daily Challenge | DailyChallengeScreen | ✅ 4/4 | Phase 3 done · complete helper ⏭️ NOT IMPL |
-| APP-M06 Multiplayer (Lobby) | MultiplayerLobbyScreen, CreateRoomScreen, RoomWaitingScreen | ✅ 4/4 | Phase 3 done · gameplay ⏭️ WebSocket phase |
-| APP-M07 Social / Groups | GroupsListScreen, GroupJoinScreen, GroupDetailScreen | ✅ 4/4 | Phase 3 done · group seed ⏭️ NOT IMPL |
-| APP-M08 Journey Map | JourneyMapScreen | ✅ 4/4 | Phase 3 done |
-| APP-M09 Achievements | AchievementsScreen | ✅ 4/4 | Phase 3 done |
-| APP-M10 Settings | SettingsScreen | ✅ 5/5 | Phase 3 done |
+| Module | Screens | L1 Smoke | L2 Happy | Notes |
+|--------|---------|----------|----------|-------|
+| APP-M01 Auth & Onboarding | SplashScreen, LanguageSelection, WelcomeSlides, TryQuiz | ✅ 5/5 | ✅ 5/5 | Phase 4c done |
+| APP-M02 Home & Profile | HomeScreen, ProfileScreen | ✅ 4/4 | ✅ 6/6 | Phase 4c done |
+| APP-M03 Practice Mode | PracticeSelectScreen, QuizScreen, QuizResultsScreen, QuizReviewScreen | ✅ 4/4 | ✅ 8/8 | Phase 4c done |
+| APP-M04 Ranked Mode | RankedScreen, QuizScreen | ✅ 3/3 | ✅ 8/8 | Phase 4c done · seed-points used |
+| APP-M05 Daily Challenge | DailyChallengeScreen | ✅ 4/4 | ✅ 6/6 | Phase 4c done · /complete used |
+| APP-M06 Multiplayer (Lobby) | MultiplayerLobbyScreen, CreateRoomScreen, RoomWaitingScreen | ✅ 4/4 | ✅ 4/4 | Phase 4c done · gameplay ⏭️ Phase 5 |
+| APP-M07 Social / Groups | GroupsListScreen, GroupJoinScreen, GroupCreateScreen, GroupDetailScreen | ✅ 4/4 | ✅ 6/6 | Phase 4c done |
+| APP-M08 Journey Map | JourneyMapScreen | ✅ 4/4 | ✅ 4/4 | Phase 4c done |
+| APP-M09 Achievements | AchievementsScreen | ✅ 4/4 | ✅ 4/4 | Phase 4c done |
+| APP-M10 Settings | SettingsScreen | ✅ 5/5 | ✅ 5/5 | Phase 4c done · delete needs ephemeral user |
 
 > **No admin screens on mobile** — confirmed by codebase scan.
 
@@ -76,8 +76,8 @@
 | Phase 3 — Mobile Maestro Smoke | ✅ done | (commit pending) |
 | Phase 4a — L2 Happy Path Web User | ✅ done | 86329bb |
 | Phase 4a Blocker fixes | ✅ done | 6f839ff, 3ad2542, e3d8e5c |
-| Phase 4b — L2 Happy Path Web Admin | ✅ done | (commit pending) |
-| Phase 4c — L2 Happy Path Mobile | ⬜ | — |
+| Phase 4b — L2 Happy Path Web Admin | ✅ done | 129fd72 |
+| Phase 4c — L2 Happy Path Mobile | ✅ done | (commit pending) |
 | Phase 5 — WebSocket Multiplayer gameplay | ⬜ | — |
 
 ---
@@ -86,10 +86,12 @@
 
 | Metric | Value |
 |--------|-------|
-| Total spec files created | 57 (Phase 1: 5 + Phase 2: 18 + Phase 3: 10 + Phase 4a: 14 + Phase 4b: 10) |
-| Total test cases written | ~371 (L1: 171 + L2 Web User: 128 + L2 Web Admin: 72) |
+| Total spec files created | 67 (Phase 1: 5 + Phase 2: 18 + Phase 3: 10 + Phase 4a: 14 + Phase 4b: 10 + Phase 4c: 10) |
+| Total test cases written | **427** (L1: 171 + L2: 256) |
+| L1 breakdown | Web User 85 + Web Admin 45 + Mobile 41 = **171** |
 | L2 Web User breakdown | 8+8+13+14+12+7+6+6+12+17+12+2+5+6 = **128 cases** |
 | L2 Web Admin breakdown | 5+8+11+2+6+8+6+8+4+6+2+2+2+2 = **72 cases** |
+| L2 Mobile breakdown | 5+6+8+8+6+4+6+4+4+5 = **56 cases** |
 | Total [NEEDS TESTID] | ~330 elements (~245 L1 + ~85 new L2) |
 | Total [NOT IMPLEMENTED/BLOCKED] | ~16 (Phase 4a blockers FIXED: seed-points endpoint + daily /complete endpoint unblocked ~8 tests. Remaining: xpMultiplier, OAuth auto, DELETE test user, abandon session helper, plus L1 carry-over) |
 | Total [DEFERRED - WEBSOCKET] | 4 (Web + Mobile multiplayer gameplay, ready/join sync) |
