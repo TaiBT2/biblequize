@@ -30,20 +30,20 @@
 
 | Module | Route | L1 Smoke | L2 Happy | L3 Edge | Notes |
 |--------|-------|----------|----------|---------|-------|
-| A-M01 Dashboard | `/admin` | ✅ 4/4 | — | — | Phase 2 done |
-| A-M02 Users Management | `/admin/users` | ✅ 4/4 | — | — | Phase 2 done |
-| A-M03 Questions CRUD | `/admin/questions` | ✅ 4/4 | — | — | Phase 2 done (combined w/ A-M04) |
-| A-M04 Duplicate Detection | `/admin/questions` (inline) | ✅ 1/1 | — | — | Phase 2 done · in A-M03-M04 file |
-| A-M05 AI Question Generator | `/admin/ai-generator` | ✅ 4/4 | — | — | Phase 2 done |
-| A-M06 Review Queue | `/admin/review-queue` | ✅ 4/4 | — | — | Phase 2 done |
-| A-M07 Feedback & Moderation | `/admin/feedback` | ✅ 4/4 | — | — | Phase 2 done |
-| A-M08 Seasons & Rankings | `/admin/rankings` | ✅ 4/4 | — | — | Phase 2 done |
-| A-M09 Events & Tournaments | `/admin/events` | ✅ 4/4 | — | — | Phase 2 done · create ⏭️ NOT IMPL |
-| A-M10 Church Groups Admin | `/admin/groups` | ✅ 4/4 | — | — | Phase 2 done |
-| A-M11 Notifications Broadcast | `/admin/notifications` | ✅ 2/2 | — | — | Phase 2 done · send ⏭️ NOT IMPL |
-| A-M12 Configuration | `/admin/config` | ✅ 2/2 | — | — | Phase 2 done · save ⏭️ NOT IMPL |
-| A-M13 Export Center | `/admin/export` | ✅ 2/2 | — | — | Phase 2 done · all exports ⏭️ NOT IMPL |
-| A-M14 Question Quality | `/admin/question-quality` | ✅ 2/2 | — | — | Phase 2 done · quality score static |
+| A-M01 Dashboard | `/admin` | ✅ 4/4 | ✅ 5/5 | — | Phase 4b done |
+| A-M02 Users Management | `/admin/users` | ✅ 4/4 | ✅ 8/8 | — | Phase 4b done |
+| A-M03 Questions CRUD | `/admin/questions` | ✅ 4/4 | ✅ 11/11 | — | Phase 4b done (combined w/ A-M04) |
+| A-M04 Duplicate Detection | `/admin/questions` (inline) | ✅ 1/1 | ✅ 2/2 | — | Phase 4b done · in A-M03-M04 file |
+| A-M05 AI Question Generator | `/admin/ai-generator` | ✅ 4/4 | ✅ 6/6 | — | Phase 4b done |
+| A-M06 Review Queue | `/admin/review-queue` | ✅ 4/4 | ✅ 8/8 | — | Phase 4b done |
+| A-M07 Feedback & Moderation | `/admin/feedback` | ✅ 4/4 | ✅ 6/6 | — | Phase 4b done |
+| A-M08 Seasons & Rankings | `/admin/rankings` | ✅ 4/4 | ✅ 8/8 | — | Phase 4b done |
+| A-M09 Events & Tournaments | `/admin/events` | ✅ 4/4 | ✅ 4/4 | — | Phase 4b done · create ⏭️ NOT IMPL |
+| A-M10 Church Groups Admin | `/admin/groups` | ✅ 4/4 | ✅ 6/6 | — | Phase 4b done |
+| A-M11 Notifications Broadcast | `/admin/notifications` | ✅ 2/2 | ✅ 2/2 | — | Phase 4b done · send ⏭️ NOT IMPL |
+| A-M12 Configuration | `/admin/config` | ✅ 2/2 | ✅ 2/2 | — | Phase 4b done · save ⏭️ NOT IMPL |
+| A-M13 Export Center | `/admin/export` | ✅ 2/2 | ✅ 2/2 | — | Phase 4b done · all exports ⏭️ NOT IMPL |
+| A-M14 Question Quality | `/admin/question-quality` | ✅ 2/2 | ✅ 2/2 | — | Phase 4b done · quality score static |
 
 ---
 
@@ -74,8 +74,9 @@
 | Phase 1 — L1 Smoke Web User core (M01/02/03/04/10) | ✅ done | 7a3100e |
 | Phase 2 — L1 Smoke Web User rest + Admin | ✅ done | (commit pending) |
 | Phase 3 — Mobile Maestro Smoke | ✅ done | (commit pending) |
-| Phase 4a — L2 Happy Path Web User | ✅ done | (commit pending) |
-| Phase 4b — L2 Happy Path Web Admin | ⬜ | — |
+| Phase 4a — L2 Happy Path Web User | ✅ done | 86329bb |
+| Phase 4a Blocker fixes | ✅ done | 6f839ff, 3ad2542, e3d8e5c |
+| Phase 4b — L2 Happy Path Web Admin | ✅ done | (commit pending) |
 | Phase 4c — L2 Happy Path Mobile | ⬜ | — |
 | Phase 5 — WebSocket Multiplayer gameplay | ⬜ | — |
 
@@ -85,9 +86,10 @@
 
 | Metric | Value |
 |--------|-------|
-| Total spec files created | 47 (Phase 1: 5 + Phase 2: 18 + Phase 3: 10 + Phase 4a: 14) |
-| Total test cases written | ~299 (L1: 171 + L2 Web User: 128) |
+| Total spec files created | 57 (Phase 1: 5 + Phase 2: 18 + Phase 3: 10 + Phase 4a: 14 + Phase 4b: 10) |
+| Total test cases written | ~371 (L1: 171 + L2 Web User: 128 + L2 Web Admin: 72) |
 | L2 Web User breakdown | 8+8+13+14+12+7+6+6+12+17+12+2+5+6 = **128 cases** |
+| L2 Web Admin breakdown | 5+8+11+2+6+8+6+8+4+6+2+2+2+2 = **72 cases** |
 | Total [NEEDS TESTID] | ~330 elements (~245 L1 + ~85 new L2) |
 | Total [NOT IMPLEMENTED/BLOCKED] | ~16 (Phase 4a blockers FIXED: seed-points endpoint + daily /complete endpoint unblocked ~8 tests. Remaining: xpMultiplier, OAuth auto, DELETE test user, abandon session helper, plus L1 carry-over) |
 | Total [DEFERRED - WEBSOCKET] | 4 (Web + Mobile multiplayer gameplay, ready/join sync) |
