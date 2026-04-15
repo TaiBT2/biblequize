@@ -1,5 +1,6 @@
 package com.biblequiz.api;
 
+import com.biblequiz.api.dto.SeedPointsRequest;
 import com.biblequiz.api.dto.SetMissionStateRequest;
 import com.biblequiz.api.dto.SetStateRequest;
 import com.biblequiz.modules.quiz.entity.DailyMission;
@@ -242,5 +243,93 @@ class AdminTestControllerTest {
         ResponseEntity<?> res = controller.setMissionState("u1", req);
 
         assertEquals(404, res.getStatusCode().value());
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // seed-points: happy path — wipes existing + creates fresh row at target
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @Test
+    void seedPoints_happyPath_wipesExistingAndCreatesFreshRow() {
+        UserDailyProgress old1 = new UserDailyProgress();
+        old1.setId("old1");
+        old1.setPointsCounted(500);
+        UserDailyProgress old2 = new UserDailyProgress();
+        old2.setId("old2");
+        old2.setPointsCounted(200);
+        when(dailyProgressRepository.findByUserIdOrderByDateDesc("u1"))
+                .thenReturn(List.of(old1, old2));
+
+        SeedPointsRequest req = new SeedPointsRequest(4999);
+
+        ResponseEntity<?> res = controller.seedPoints("u1", req);
+
+        assertEquals(200, res.getStatusCode().value());
+        // Old rows deleted
+        verify(dailyProgressRepository).deleteAll(List.of(old1, old2));
+        // Fresh row saved with target points
+        ArgumentCaptor<UserDailyProgress> captor = ArgumentCaptor.forClass(UserDailyProgress.class);
+        verify(dailyProgressRepository).save(captor.capture());
+        UserDailyProgress saved = captor.getValue();
+        assertEquals(4999, saved.getPointsCounted());
+        assertEquals(100, saved.getLivesRemaining());
+        assertEquals(0, saved.getQuestionsCounted());
+        assertEquals(LocalDate.now(java.time.ZoneOffset.UTC), saved.getDate());
+
+        // Response body — 4999 is in tier 2 (1000 .. 4999)
+        @SuppressWarnings("unchecked")
+        Map<String, Object> body = (Map<String, Object>) res.getBody();
+        assertNotNull(body);
+        assertEquals(4999, body.get("totalPoints"));
+        assertEquals(2, body.get("tierLevel"));
+        assertEquals("Người Tìm Kiếm", body.get("tierName"));
+        assertEquals(2, body.get("wipedRows"));
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // seed-points: no existing rows → skips delete but still saves fresh row
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @Test
+    void seedPoints_noExistingRows_stillCreatesFreshRow() {
+        when(dailyProgressRepository.findByUserIdOrderByDateDesc("u1"))
+                .thenReturn(List.of());
+
+        SeedPointsRequest req = new SeedPointsRequest(0);
+
+        ResponseEntity<?> res = controller.seedPoints("u1", req);
+
+        assertEquals(200, res.getStatusCode().value());
+        // deleteAll should not be called when list is empty
+        verify(dailyProgressRepository, never()).deleteAll(anyList());
+        verify(dailyProgressRepository, never()).flush();
+        // Fresh row with 0 points (tier 1)
+        ArgumentCaptor<UserDailyProgress> captor = ArgumentCaptor.forClass(UserDailyProgress.class);
+        verify(dailyProgressRepository).save(captor.capture());
+        assertEquals(0, captor.getValue().getPointsCounted());
+
+        @SuppressWarnings("unchecked")
+        Map<String, Object> body = (Map<String, Object>) res.getBody();
+        assertEquals(1, body.get("tierLevel"));
+        assertEquals("Tân Tín Hữu", body.get("tierName"));
+        assertEquals(0, body.get("wipedRows"));
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // seed-points: seeding at tier 6 threshold (100000)
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @Test
+    void seedPoints_tier6Threshold_returnsTier6() {
+        when(dailyProgressRepository.findByUserIdOrderByDateDesc("u1"))
+                .thenReturn(List.of());
+
+        SeedPointsRequest req = new SeedPointsRequest(100_000);
+        ResponseEntity<?> res = controller.seedPoints("u1", req);
+
+        @SuppressWarnings("unchecked")
+        Map<String, Object> body = (Map<String, Object>) res.getBody();
+        assertEquals(6, body.get("tierLevel"));
+        assertEquals("Sứ Đồ", body.get("tierName"));
     }
 }

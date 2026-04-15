@@ -1,5 +1,6 @@
 package com.biblequiz.api;
 
+import com.biblequiz.api.dto.SeedPointsRequest;
 import com.biblequiz.api.dto.SetMissionStateRequest;
 import com.biblequiz.api.dto.SetStateRequest;
 import com.biblequiz.modules.quiz.entity.DailyMission;
@@ -324,6 +325,64 @@ public class AdminTestController {
         log.warn("[TEST_PANEL] test.set_state user={} fields={}", userId, applied);
 
         return ResponseEntity.ok(Map.of("userId", userId, "applied", applied));
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // New endpoint — seed exact totalPoints (Phase 4a blocker fix)
+    // ─────────────────────────────────────────────────────────────────────────
+
+    /**
+     * Seed a user to an exact {@code totalPoints} value by wiping all their
+     * {@link UserDailyProgress} rows and inserting a single fresh row today.
+     *
+     * <p>Needed because {@code UserTierService.getTotalPoints()} returns
+     * {@code SUM(UserDailyProgress.pointsCounted)} — there is no direct
+     * {@code User.totalPoints} column. Tests that need a user at e.g. 4999
+     * points (sát ngưỡng tier 4) must therefore replace progress history.
+     *
+     * <p>The new row also resets {@code livesRemaining=100} and
+     * {@code questionsCounted=0} to pair with a clean state (a typical test
+     * wants both "exact points" and "ready to play").
+     *
+     * <p>Audit: {@code [TEST_PANEL] test.seed_points}
+     */
+    @PostMapping("/users/{userId}/seed-points")
+    @Transactional
+    public ResponseEntity<?> seedPoints(@PathVariable String userId,
+                                         @Valid @RequestBody SeedPointsRequest req) {
+        User user = userRepository.findById(userId).orElseThrow();
+
+        // Wipe all existing daily progress rows for this user
+        List<UserDailyProgress> existing = dailyProgressRepository.findByUserIdOrderByDateDesc(userId);
+        int wipedCount = existing.size();
+        if (!existing.isEmpty()) {
+            dailyProgressRepository.deleteAll(existing);
+            // Flush so the INSERT below doesn't conflict with cached entities
+            dailyProgressRepository.flush();
+        }
+
+        // Create single fresh row today with the target points
+        UserDailyProgress fresh = new UserDailyProgress();
+        fresh.setId(UUID.randomUUID().toString());
+        fresh.setUser(user);
+        fresh.setDate(LocalDate.now(ZoneOffset.UTC));
+        fresh.setPointsCounted(req.getTotalPoints());
+        fresh.setLivesRemaining(100);
+        fresh.setQuestionsCounted(0);
+        dailyProgressRepository.save(fresh);
+
+        RankTier tier = RankTier.fromPoints(req.getTotalPoints());
+
+        log.warn("[TEST_PANEL] test.seed_points user={} totalPoints={} wipedRows={} newTier={}",
+                userId, req.getTotalPoints(), wipedCount, tier.name());
+
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("userId", userId);
+        response.put("totalPoints", req.getTotalPoints());
+        response.put("tierLevel", tier.ordinal() + 1);
+        response.put("tierName", tier.getDisplayName());
+        response.put("wipedRows", wipedCount);
+        return ResponseEntity.ok(response);
     }
 
     // ─────────────────────────────────────────────────────────────────────────
