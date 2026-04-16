@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { setAccessToken } from '../api/tokenStore'
+import { notifyRankedDataCleared } from '../utils/localStorageClearDetector'
 
 interface User {
   name: string
@@ -59,7 +60,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         if (import.meta.env.DEV) {
           console.log('[AUTH_STORE] Restoring ranked progress from database after login')
         }
-        window.dispatchEvent(new CustomEvent('localStorageCleared'))
+        notifyRankedDataCleared()
       }
     } catch (error) {
       console.warn('[AUTH_STORE] Failed to restore ranked progress after login:', error)

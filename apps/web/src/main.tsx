@@ -8,7 +8,7 @@ import RequireAuth from './contexts/RequireAuth'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import ErrorBoundary from './components/ErrorBoundary'
 import { HelmetProvider } from 'react-helmet-async'
-import './utils/localStorageClearDetector'
+import { initStorageSync } from './utils/localStorageClearDetector'
 import './i18n'
 import Home from './pages/Home'
 import LandingPage from './pages/LandingPage'
@@ -75,6 +75,9 @@ const queryClient = new QueryClient({
     },
   },
 })
+
+// Detect cross-tab localStorage changes for ranked data sync
+initStorageSync()
 
 // Initialize auth state on app startup (replaces AuthProvider useEffect)
 useAuthStore.getState().checkAuth()

@@ -1,75 +1,22 @@
-// Utility to detect localStorage clear
-export const detectLocalStorageClear = () => {
-  let lastKnownKeys: string[] = []
-  
-  // Initialize with current keys
-  const updateKnownKeys = () => {
-    lastKnownKeys = Object.keys(localStorage)
-  }
-  updateKnownKeys()
-  
-  // Override localStorage.clear to dispatch custom event
-  const originalClear = localStorage.clear.bind(localStorage)
-  localStorage.clear = function() {
-    console.log('localStorage.clear() was called programmatically')
-    originalClear()
-    lastKnownKeys = []
-    window.dispatchEvent(new CustomEvent('localStorageCleared', { 
-      detail: { method: 'programmatic' } 
-    }))
-  }
-  
-  // Override localStorage.removeItem to detect manual removal
-  const originalRemoveItem = localStorage.removeItem.bind(localStorage)
-  localStorage.removeItem = function(key: string) {
-    console.log('localStorage.removeItem() called for:', key)
-    originalRemoveItem(key)
-    updateKnownKeys()
-    
-    // Check if ranked data was removed
-    if (key === 'rankedSnapshot' || key === 'rankedProgress') {
-      console.log('Ranked data removed, triggering restore...')
-      window.dispatchEvent(new CustomEvent('localStorageCleared', { 
-        detail: { method: 'removeItem', key } 
-      }))
-    }
-  }
-  
-  // Detect manual clear via DevTools or other means
-  const checkForClear = () => {
-    const currentKeys = Object.keys(localStorage)
-    const rankedKeys = ['rankedSnapshot', 'rankedProgress', 'rankedStatus']
-    
-    // Check if ranked keys disappeared
-    const rankedKeysExist = rankedKeys.some(key => currentKeys.includes(key))
-    const lastRankedKeysExist = rankedKeys.some(key => lastKnownKeys.includes(key))
-    
-    if (lastRankedKeysExist && !rankedKeysExist) {
-      console.log('Ranked data was cleared manually, triggering restore...')
-      window.dispatchEvent(new CustomEvent('localStorageCleared', { 
-        detail: { method: 'manual', clearedKeys: rankedKeys } 
-      }))
-    }
-    
-    // Check if localStorage was completely cleared
-    if (lastKnownKeys.length > 0 && currentKeys.length === 0) {
-      console.log('localStorage was completely cleared, triggering restore...')
-      window.dispatchEvent(new CustomEvent('localStorageCleared', { 
-        detail: { method: 'complete' } 
-      }))
-    }
-    
-    updateKnownKeys()
-  }
-  
-  // Check periodically for DevTools manual clears (programmatic clears already handled above)
-  setInterval(checkForClear, 2000)
+// Detect cross-tab localStorage changes via the native 'storage' event.
+// No monkeypatching of native APIs — same-tab clears should use explicit
+// function calls instead.
 
-  // Also catch cross-tab storage events
-  window.addEventListener('storage', () => checkForClear())
+export function initStorageSync() {
+  // Cross-tab detection (fires when another tab modifies localStorage)
+  window.addEventListener('storage', (e) => {
+    const rankedKeys = ['rankedSnapshot', 'rankedProgress', 'rankedStatus']
+    if (e.key === null || rankedKeys.includes(e.key)) {
+      window.dispatchEvent(new CustomEvent('rankedDataCleared', {
+        detail: { method: 'cross-tab', key: e.key }
+      }))
+    }
+  })
 }
 
-// Auto-initialize
-if (typeof window !== 'undefined') {
-  detectLocalStorageClear()
+// Call this explicitly when clearing ranked data from the same tab
+export function notifyRankedDataCleared() {
+  window.dispatchEvent(new CustomEvent('rankedDataCleared', {
+    detail: { method: 'explicit' }
+  }))
 }
