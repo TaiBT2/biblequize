@@ -30,7 +30,7 @@ describe('RequireAdmin', () => {
     vi.clearAllMocks()
   })
 
-  it('renders spinner when isLoading=true', () => {
+  it('renders loading spinner via role="progressbar" when isLoading=true', () => {
     mockUseAuth.mockReturnValue({
       isLoading: true,
       isAuthenticated: false,
@@ -38,13 +38,14 @@ describe('RequireAdmin', () => {
       user: null,
     } as ReturnType<typeof useAuth>)
 
-    const { container } = renderWithProviders(
+    renderWithProviders(
       <RequireAdmin><div>Admin Panel</div></RequireAdmin>
     )
 
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument()
+    expect(screen.getByTestId('admin-loading')).toBeInTheDocument()
     expect(screen.queryByText('Admin Panel')).not.toBeInTheDocument()
-    const divs = container.querySelectorAll('div')
-    expect(divs.length).toBeGreaterThanOrEqual(2) // outer wrapper + spinner circle
     expect(mockNavigate).not.toHaveBeenCalled()
   })
 
@@ -82,7 +83,7 @@ describe('RequireAdmin', () => {
     expect(mockNavigate).not.toHaveBeenCalled()
   })
 
-  it('renders children when role=CONTENT_MOD (allowed)', () => {
+  it('renders children when role=CONTENT_MOD uppercase (allowed)', () => {
     mockUseAuth.mockReturnValue({
       isLoading: false,
       isAuthenticated: true,
@@ -96,6 +97,28 @@ describe('RequireAdmin', () => {
 
     expect(screen.getByText('Admin Panel')).toBeInTheDocument()
     expect(mockNavigate).not.toHaveBeenCalled()
+  })
+
+  it('rejects content_mod lowercase — role must be normalized upstream', () => {
+    // After code review fix CR-7, authStore normalizes role to uppercase.
+    // If somehow a lowercase role leaks through, RequireAdmin should reject it
+    // because the check is now strict: user?.role === 'CONTENT_MOD'.
+    mockUseAuth.mockReturnValue({
+      isLoading: false,
+      isAuthenticated: true,
+      isAdmin: false,
+      user: { name: 'Moderator', email: 'mod@test.com', role: 'content_mod' },
+    } as ReturnType<typeof useAuth>)
+
+    renderWithProviders(
+      <RequireAdmin><div>Admin Panel</div></RequireAdmin>
+    )
+
+    // Lowercase content_mod is NOT recognized — redirects to /
+    expect(screen.queryByText('Admin Panel')).not.toBeInTheDocument()
+    expect(mockNavigate).toHaveBeenCalledWith(
+      expect.objectContaining({ to: '/' })
+    )
   })
 
   it('navigates to / when authenticated but not admin or content_mod', () => {
@@ -148,7 +171,6 @@ describe('RequireAdmin', () => {
       <RequireAdmin><div>Admin Panel</div></RequireAdmin>
     )
 
-    // Should redirect to home, NOT to login
     expect(mockNavigate).toHaveBeenCalledWith(
       expect.objectContaining({ to: '/' })
     )
@@ -157,7 +179,7 @@ describe('RequireAdmin', () => {
     )
   })
 
-  it('loading spinner renders with correct structure', () => {
+  it('loading spinner has full-height centering container', () => {
     mockUseAuth.mockReturnValue({
       isLoading: true,
       isAuthenticated: false,
@@ -165,18 +187,17 @@ describe('RequireAdmin', () => {
       user: null,
     } as ReturnType<typeof useAuth>)
 
-    const { container } = renderWithProviders(
+    renderWithProviders(
       <RequireAdmin><div>Admin Panel</div></RequireAdmin>
     )
 
-    const html = container.innerHTML
-    expect(html).toContain('min-height')
-    expect(html).toContain('100vh')
-    expect(html).toContain('border-radius')
-    expect(html).toContain('32px')
-    expect(html).toContain('spin')
+    const container = screen.getByTestId('admin-loading')
+    expect(container.style.minHeight).toBe('100vh')
+    expect(container.style.display).toBe('flex')
 
-    // Should not redirect while loading
+    const spinner = screen.getByTestId('loading-spinner')
+    expect(spinner.style.width).toBe('32px')
+    expect(spinner.style.borderRadius).toBe('50%')
     expect(mockNavigate).not.toHaveBeenCalled()
   })
 })

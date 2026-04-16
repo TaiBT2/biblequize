@@ -30,7 +30,7 @@ describe('RequireAuth', () => {
     vi.clearAllMocks()
   })
 
-  it('renders spinner when isLoading=true', () => {
+  it('renders loading spinner via role="progressbar" when isLoading=true', () => {
     mockUseAuth.mockReturnValue({
       isLoading: true,
       isAuthenticated: false,
@@ -38,14 +38,14 @@ describe('RequireAuth', () => {
       user: null,
     } as ReturnType<typeof useAuth>)
 
-    const { container } = renderWithProviders(
+    renderWithProviders(
       <RequireAuth><div>Protected</div></RequireAuth>
     )
 
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument()
+    expect(screen.getByTestId('auth-loading')).toBeInTheDocument()
     expect(screen.queryByText('Protected')).not.toBeInTheDocument()
-    // Spinner container — check that a loading div is rendered (not children, not navigate)
-    const divs = container.querySelectorAll('div')
-    expect(divs.length).toBeGreaterThanOrEqual(2) // outer wrapper + spinner circle
     expect(mockNavigate).not.toHaveBeenCalled()
   })
 
@@ -80,6 +80,7 @@ describe('RequireAuth', () => {
     )
 
     expect(screen.getByText('Protected Content')).toBeInTheDocument()
+    expect(screen.queryByRole('progressbar')).not.toBeInTheDocument()
   })
 
   it('preserves location state when redirecting to /login', () => {
@@ -135,7 +136,7 @@ describe('RequireAuth', () => {
     expect(screen.getByText('My Dashboard')).toBeInTheDocument()
   })
 
-  it('loading spinner has correct styles (centered, full height)', () => {
+  it('loading spinner has full-height centering container', () => {
     mockUseAuth.mockReturnValue({
       isLoading: true,
       isAuthenticated: false,
@@ -143,18 +144,20 @@ describe('RequireAuth', () => {
       user: null,
     } as ReturnType<typeof useAuth>)
 
-    const { container } = renderWithProviders(
+    renderWithProviders(
       <RequireAuth><div>Protected</div></RequireAuth>
     )
 
-    // The component renders two nested divs: outer (centering) + inner (spinner circle)
-    const html = container.innerHTML
-    expect(html).toContain('min-height')
-    expect(html).toContain('100vh')
-    expect(html).toContain('border-radius')
-    expect(html).toContain('32px')
-    // Ensure spinner animation is present
-    expect(html).toContain('spin')
+    const container = screen.getByTestId('auth-loading')
+    expect(container.style.minHeight).toBe('100vh')
+    expect(container.style.display).toBe('flex')
+    expect(container.style.alignItems).toBe('center')
+    expect(container.style.justifyContent).toBe('center')
+
+    const spinner = screen.getByTestId('loading-spinner')
+    expect(spinner.style.width).toBe('32px')
+    expect(spinner.style.height).toBe('32px')
+    expect(spinner.style.borderRadius).toBe('50%')
   })
 
   it('Navigate has replace=true to avoid back-button loop', () => {
