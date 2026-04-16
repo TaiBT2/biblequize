@@ -32,9 +32,11 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="space-y-8">
+    <div data-testid="admin-dashboard-page" className="space-y-8">
       {/* Row 1: KPI Cards */}
-      <KpiCards data={data?.kpis ?? null} />
+      <div data-testid="admin-kpi-cards">
+        <KpiCards data={data?.kpis ?? null} />
+      </div>
 
       {/* Row 2: Coverage + Action Items / Activity */}
       <section className="grid grid-cols-1 lg:grid-cols-10 gap-8">
@@ -49,7 +51,9 @@ export default function AdminDashboard() {
             reportedGroups={data?.actionItems?.reportedGroups ?? 0}
             flaggedUsers={data?.actionItems?.flaggedUsers ?? 0}
           />
-          <ActivityLog activities={data?.recentActivity ?? []} />
+          <div data-testid="admin-activity-log">
+            <ActivityLog activities={data?.recentActivity ?? []} />
+          </div>
         </div>
       </section>
 

@@ -18,7 +18,7 @@ function QuizLanguageToggle() {
   const lang = (i18n.language === 'en' ? 'en' : 'vi') as QuizLanguage
   const toggle = (l: QuizLanguage) => { setQuizLanguage(l); i18n.changeLanguage(l) }
   return (
-    <div className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm">
+    <div data-testid="lang-toggle" className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm">
       <span className="material-symbols-outlined text-on-surface-variant text-xl">translate</span>
       <span className="flex-1 text-on-surface-variant">{t('profile.quizLang')}</span>
       <div className="flex gap-0.5 bg-surface-container rounded-lg p-0.5">
@@ -86,7 +86,7 @@ export default function AppLayout() {
         <div className="flex items-center gap-6">
           <span className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">favorite</span>
           <span className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">bolt</span>
-          <span className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">stars</span>
+          <span data-testid="header-notification-btn" className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">stars</span>
           {/* User avatar + dropdown */}
           <div className="relative">
             <button
@@ -129,6 +129,7 @@ export default function AppLayout() {
                     <QuizLanguageToggle />
                     <div className="mx-2 my-1 border-t border-outline-variant/10" />
                     <button
+                      data-testid="logout-btn"
                       onClick={handleLogout}
                       disabled={loggingOut}
                       className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-error/10 transition-colors text-sm w-full text-left text-error disabled:opacity-50"

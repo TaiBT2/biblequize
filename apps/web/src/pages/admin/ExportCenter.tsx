@@ -14,7 +14,7 @@ export default function ExportCenter() {
   }
 
   return (
-    <div className="space-y-6">
+    <div data-testid="admin-export-page" className="space-y-6">
       <div>
         <h1 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight">Export Center</h1>
         <p className="text-[#d5c4af] text-sm">Xuất dữ liệu hệ thống</p>
@@ -22,7 +22,7 @@ export default function ExportCenter() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {EXPORTS.map(e => (
-          <div key={e.type} className="bg-[#1d1f29] rounded-lg border border-[#504535]/10 p-5 space-y-3">
+          <div key={e.type} data-testid={`export-${e.type}-card`} className="bg-[#1d1f29] rounded-lg border border-[#504535]/10 p-5 space-y-3">
             <div className="flex items-center gap-3">
               <div className="p-2 bg-[#0c0e17] text-[#e8a832] rounded">
                 <span className="material-symbols-outlined">{e.icon}</span>

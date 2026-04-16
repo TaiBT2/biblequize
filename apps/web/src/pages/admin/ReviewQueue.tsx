@@ -110,7 +110,7 @@ export default function ReviewQueue() {
   }
 
   return (
-    <div className="space-y-6">
+    <div data-testid="review-queue-page" className="space-y-6">
       {/* Toast */}
       {toast && (
         <div className={`fixed top-4 right-4 z-50 px-4 py-3 rounded-xl shadow-lg text-sm font-bold ${
@@ -128,9 +128,9 @@ export default function ReviewQueue() {
 
       {/* Personalized Stats */}
       {stats && (
-        <div className="grid grid-cols-3 gap-4">
+        <div data-testid="review-queue-stats" className="grid grid-cols-3 gap-4">
           <div className="bg-[#1d1f29] rounded-lg p-4 border bg-yellow-500/10 border-yellow-500/20">
-            <div className="text-3xl font-black text-yellow-400">{stats.pendingForMe}</div>
+            <div data-testid="review-queue-pending-count" className="text-3xl font-black text-yellow-400">{stats.pendingForMe}</div>
             <div className="text-xs text-yellow-400/80 font-bold uppercase tracking-wider mt-1">Cần bạn duyệt</div>
           </div>
           <div className="bg-[#1d1f29] rounded-lg p-4 border bg-blue-500/10 border-blue-500/20">
@@ -250,11 +250,11 @@ export default function ReviewQueue() {
               {/* Action buttons */}
               {rejectingId !== q.id && (
                 <div className="flex gap-2">
-                  <button onClick={() => approve(q.id)} disabled={actioningId === q.id}
+                  <button data-testid="review-approve-btn" onClick={() => approve(q.id)} disabled={actioningId === q.id}
                     className="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl transition-colors disabled:opacity-50">
                     {actioningId === q.id ? '...' : '✓ Duyệt'}
                   </button>
-                  <button onClick={() => setRejectingId(q.id)} disabled={actioningId === q.id}
+                  <button data-testid="review-reject-btn" onClick={() => setRejectingId(q.id)} disabled={actioningId === q.id}
                     className="px-5 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 text-sm font-bold rounded-xl transition-colors disabled:opacity-50">
                     ✗ Từ chối
                   </button>

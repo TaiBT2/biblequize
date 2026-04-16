@@ -43,7 +43,7 @@ export default function ConfigurationAdmin() {
   }
 
   return (
-    <div className="space-y-6">
+    <div data-testid="admin-config-page" className="space-y-6">
       <div className="flex items-center justify-between">
         <div><h2 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight">Cấu hình hệ thống</h2><p className="text-[#d5c4af] text-sm mt-1">Protocol Environment Parameters</p></div>
         {dirty.size > 0 && (
@@ -60,7 +60,7 @@ export default function ConfigurationAdmin() {
       )}
 
       {Object.entries(CONFIG_CATEGORIES).map(([category, items]) => (
-        <div key={category} className="rounded-lg border border-[#504535]/10 bg-[#1d1f29] p-5">
+        <div key={category} data-testid={`config-${category.toLowerCase()}-panel`} className="rounded-lg border border-[#504535]/10 bg-[#1d1f29] p-5">
           <h3 className="font-bold text-[#e1e1ef] mb-4">{category}</h3>
           <div className="space-y-3">
             {items.map(item => (

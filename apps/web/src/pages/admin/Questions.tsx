@@ -256,7 +256,7 @@ export default function QuestionsAdmin() {
 
   return (
     <>
-    <div className="space-y-4">
+    <div data-testid="admin-questions-page" className="space-y-4">
 
       {/* Header */}
       <div className="flex items-start justify-between gap-3 flex-wrap">
@@ -267,7 +267,7 @@ export default function QuestionsAdmin() {
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <button onClick={openCreate}
+          <button data-testid="admin-questions-create-btn" onClick={openCreate}
             className="h-9 px-4 rounded-md bg-emerald-600 hover:bg-emerald-500 text-sm font-medium">
             + Tạo câu hỏi
           </button>
@@ -286,7 +286,7 @@ export default function QuestionsAdmin() {
       <div className="flex flex-wrap gap-2 items-end">
         <div>
           <label className="block text-xs text-white/50 mb-1">Tìm nội dung</label>
-          <input value={search} onChange={e => setSearch(e.target.value)}
+          <input data-testid="admin-questions-search-input" value={search} onChange={e => setSearch(e.target.value)}
             placeholder="Nhập từ khoá..."
             className="h-9 px-3 rounded-md bg-white/10 border border-white/10 text-sm w-52" />
         </div>
@@ -338,7 +338,7 @@ export default function QuestionsAdmin() {
       </div>
 
       {/* Table */}
-      <div className="rounded-lg border border-white/10 overflow-hidden">
+      <div data-testid="admin-questions-table" className="rounded-lg border border-white/10 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full text-sm">
             <thead className="bg-white/5 text-white/60">

@@ -16,19 +16,19 @@ export default function QuestionQuality() {
   const qualityScore = 72 // TODO: compute from actual data
 
   return (
-    <div className="space-y-6">
+    <div data-testid="admin-quality-page" className="space-y-6">
       <div><h2 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight">Chất lượng câu hỏi</h2><p className="text-[#d5c4af] text-sm mt-1">Analysis of database health and engagement metrics</p></div>
 
       {/* Overall Score */}
       <div className="rounded-lg border border-[#504535]/10 bg-[#1d1f29] p-6 text-center">
-        <div className={`text-6xl font-black mb-2 ${qualityScore >= 70 ? 'text-emerald-400' : qualityScore >= 40 ? 'text-amber-400' : 'text-red-400'}`}>
+        <div data-testid="quality-overall-score" className={`text-6xl font-black mb-2 ${qualityScore >= 70 ? 'text-emerald-400' : qualityScore >= 40 ? 'text-amber-400' : 'text-red-400'}`}>
           {qualityScore}
         </div>
         <p className="text-[#d5c4af]/40 text-sm">Điểm chất lượng tổng thể /100</p>
       </div>
 
       {/* Coverage Map */}
-      <div className="rounded-lg border border-[#504535]/10 bg-[#1d1f29] p-5">
+      <div data-testid="quality-coverage-map" className="rounded-lg border border-[#504535]/10 bg-[#1d1f29] p-5">
         <h3 className="font-medium text-[#e1e1ef] mb-4">Coverage Map — Câu hỏi theo sách</h3>
         {isLoading ? <p className="text-[#d5c4af]/40 text-sm">Đang tải...</p>
          : !coverage ? <p className="text-[#d5c4af]/40 text-sm">Không tải được dữ liệu</p>

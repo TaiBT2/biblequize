@@ -19,6 +19,7 @@ export default function StarPopup({ starIndex, bonusXp, onDismiss }: StarPopupPr
 
   return (
     <div
+      data-testid="star-popup"
       className={`fixed top-4 right-4 z-50 px-4 py-3 rounded-xl shadow-lg transition-all duration-300 ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
       } bg-gradient-to-r from-amber-500 to-yellow-400 text-black`}

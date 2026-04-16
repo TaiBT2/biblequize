@@ -34,7 +34,7 @@ export default function MilestoneBanner() {
     const nextTierName = getNextTierName(data.tierLevel)
     if (!nextTierName) return null
     return (
-      <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/10 border border-secondary/20 mt-2">
+      <div data-testid="tier-milestone-banner" className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/10 border border-secondary/20 mt-2">
         <span className="text-sm">🏃</span>
         <span className="text-xs font-bold text-secondary">
           Nửa đường đến {nextTierName}!
@@ -65,7 +65,7 @@ function SurgeCountdown({ surgeUntil }: { surgeUntil: string }) {
   }, [surgeUntil])
 
   return (
-    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-purple-500/20 to-secondary/20 border border-purple-500/30 mt-2">
+    <div data-testid="tier-milestone-banner" className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-purple-500/20 to-secondary/20 border border-purple-500/30 mt-2">
       <span className="text-sm">🚀</span>
       <span className="text-xs font-black text-purple-300">
         XP x1.5 còn {remaining}

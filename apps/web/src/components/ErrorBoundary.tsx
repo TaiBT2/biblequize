@@ -67,7 +67,7 @@ class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-900">
+        <div data-testid="error-boundary-fallback" className="min-h-screen flex items-center justify-center bg-gray-900">
           <div className="max-w-md w-full mx-4">
             <div className="bg-red-900/20 border border-red-500/30 rounded-2xl p-8 text-center">
               {/* Error Icon */}
@@ -114,6 +114,7 @@ class ErrorBoundary extends Component<Props, State> {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
+                  data-testid="error-boundary-retry-btn"
                   onClick={this.handleRetry}
                   className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
                 >

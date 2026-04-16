@@ -105,7 +105,7 @@ export default function FeedbackAdmin() {
 
   return (
     <>
-      <div className="space-y-4">
+      <div data-testid="admin-feedback-page" className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-semibold">Feedback</h2>
@@ -114,7 +114,7 @@ export default function FeedbackAdmin() {
         </div>
 
         {/* Stats cards */}
-        <div className="grid grid-cols-4 gap-3">
+        <div data-testid="feedback-stats-cards" className="grid grid-cols-4 gap-3">
           {statCards.map(({ key, label, color }) => (
             <button
               key={key}
@@ -132,6 +132,7 @@ export default function FeedbackAdmin() {
         {/* Filters */}
         <div className="flex items-center gap-3">
           <select
+            data-testid="feedback-status-filter"
             value={statusFilter}
             onChange={e => setStatusFilter(e.target.value)}
             className="px-3 py-2 rounded-md bg-white/10 border border-[#d5c4af]/10 text-sm"
@@ -161,7 +162,7 @@ export default function FeedbackAdmin() {
         </div>
 
         {/* Table */}
-        <div className="rounded-lg border border-[#d5c4af]/10 overflow-hidden">
+        <div data-testid="feedback-table" className="rounded-lg border border-[#d5c4af]/10 overflow-hidden">
           <table className="min-w-full text-sm">
             <thead className="bg-[#1d1f29] text-[#d5c4af]/70">
               <tr>

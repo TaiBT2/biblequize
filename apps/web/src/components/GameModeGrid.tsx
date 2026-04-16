@@ -280,6 +280,7 @@ export default function GameModeGrid() {
         return (
           <div
             key={card.id}
+            data-testid={`game-mode-${card.id}`}
             onClick={() => !isDisabled && navigate(card.route)}
             className={`group bg-surface-container rounded-2xl p-6 border transition-all flex flex-col justify-between h-48 relative overflow-hidden ${
               isDisabled ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'

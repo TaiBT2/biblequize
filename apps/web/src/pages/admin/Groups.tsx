@@ -32,13 +32,13 @@ export default function GroupsAdmin() {
   }
 
   return (
-    <div className="space-y-6">
+    <div data-testid="admin-groups-page" className="space-y-6">
       <div><h1 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight">Quản lý Nhóm Giáo Xứ</h1><p className="text-[#d5c4af]/60 text-sm">{groups.length} nhóm</p></div>
 
       {isLoading ? <div className="text-center text-[#d5c4af]/60 py-8">Đang tải...</div>
        : groups.length === 0 ? <div className="text-center text-[#d5c4af]/60 py-8">Chưa có nhóm nào</div>
-       : <div className="space-y-3">{groups.map(g => (
-          <div key={g.id} className={`rounded-lg border bg-[#1d1f29] p-4 flex items-center justify-between ${g.isLocked ? 'border-red-500/30 bg-red-500/5' : 'border-[#504535]/20'}`}>
+       : <div data-testid="admin-groups-list" className="space-y-3">{groups.map(g => (
+          <div data-testid="admin-group-row" key={g.id} className={`rounded-lg border bg-[#1d1f29] p-4 flex items-center justify-between ${g.isLocked ? 'border-red-500/30 bg-red-500/5' : 'border-[#504535]/20'}`}>
             <div>
               <div className="flex items-center gap-2">
                 <h4 className="font-medium text-[#e1e1ef]">{g.name}</h4>

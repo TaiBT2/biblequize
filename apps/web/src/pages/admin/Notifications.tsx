@@ -32,11 +32,11 @@ export default function NotificationsAdmin() {
   }
 
   return (
-    <div className="space-y-6">
+    <div data-testid="admin-notifications-page" className="space-y-6">
       <div><h2 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight">Quản lý Thông báo</h2><p className="text-[#d5c4af] text-sm mt-1">Broadcast & automated notification management</p></div>
 
       {/* Compose */}
-      <div className="rounded-lg border border-[#504535]/10 bg-[#1d1f29] p-5 space-y-3">
+      <div data-testid="notifications-broadcast-form" className="rounded-lg border border-[#504535]/10 bg-[#1d1f29] p-5 space-y-3">
         <h3 className="font-medium text-[#e1e1ef]">Gửi thông báo</h3>
         <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Tiêu đề thông báo"
           className="w-full bg-[#191b25] border-none rounded-lg px-4 py-2 text-sm text-[#e1e1ef] focus:ring-1 focus:ring-[#e8a832] outline-none" />

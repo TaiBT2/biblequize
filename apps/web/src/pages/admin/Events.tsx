@@ -26,7 +26,7 @@ export default function EventsAdmin() {
   }
 
   return (
-    <div className="space-y-6">
+    <div data-testid="admin-events-page" className="space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-[#e1e1ef]">Events & Tournaments</h2>
         <p className="text-[#d5c4af]/60 text-sm">{tournaments.length} tournaments</p>
@@ -39,7 +39,7 @@ export default function EventsAdmin() {
       ) : (
         <div className="space-y-3">
           {tournaments.map(t => (
-            <div key={t.tournamentId} className="rounded-lg border border-[#504535]/20 bg-[#1d1f29] p-4 flex items-center justify-between">
+            <div data-testid="admin-tournament-row" key={t.tournamentId} className="rounded-lg border border-[#504535]/20 bg-[#1d1f29] p-4 flex items-center justify-between">
               <div>
                 <h4 className="font-medium text-[#e1e1ef]">{t.name}</h4>
                 <p className="text-[#d5c4af]/60 text-xs">Bracket: {t.bracketSize} • Round: {t.currentRound}/{t.totalRounds}</p>

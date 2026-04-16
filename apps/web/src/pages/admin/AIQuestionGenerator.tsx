@@ -238,7 +238,7 @@ export default function AIQuestionGenerator() {
 
   // ─── Render ───────────────────────────────────────────────────────────────
   return (
-    <div className="space-y-6">
+    <div data-testid="ai-generator-page" className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
@@ -420,7 +420,7 @@ export default function AIQuestionGenerator() {
           {/* Provider selector */}
           <div>
             <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">AI Provider</label>
-            <div className="segmented-control">
+            <div data-testid="ai-provider-select" className="segmented-control">
               {(['gemini', 'claude'] as const).map(p => {
                 const info = aiInfo?.providers[p]
                 const configured = info?.configured ?? false
@@ -541,7 +541,7 @@ export default function AIQuestionGenerator() {
           )}
 
           {/* Generate button */}
-          <button onClick={handleGenerate}
+          <button data-testid="ai-generate-btn" onClick={handleGenerate}
             disabled={isGenerating}
             className="w-full py-4 gold-gradient text-[#281900] font-black uppercase tracking-[0.2em] rounded-lg flex items-center justify-center gap-3 transition-transform active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed">
             {isGenerating ? (

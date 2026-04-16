@@ -69,7 +69,7 @@ export default function UsersAdmin() {
   }
 
   return (
-    <div className="space-y-6">
+    <div data-testid="admin-users-page" className="space-y-6">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-1">
@@ -82,7 +82,7 @@ export default function UsersAdmin() {
       <div className="flex flex-wrap items-center gap-3">
         <div className="relative flex-1 min-w-[200px] max-w-[300px]">
           <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#d5c4af]/50 text-sm">search</span>
-          <input value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && fetchUsers(0)}
+          <input data-testid="admin-users-search-input" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && fetchUsers(0)}
             placeholder="Tìm theo tên hoặc email..." className="w-full h-10 bg-[#191b25] border-none rounded px-10 text-sm text-[#e1e1ef] placeholder:text-[#d5c4af]/40 focus:ring-1 focus:ring-[#e8a832] transition-all" />
         </div>
         <select value={roleFilter} onChange={e => { setRoleFilter(e.target.value); setPage(0) }}
@@ -106,7 +106,7 @@ export default function UsersAdmin() {
       </div>
 
       {/* Table */}
-      <div className="bg-[#1d1f29] rounded-lg overflow-hidden border border-[#504535]/10">
+      <div data-testid="admin-users-table" className="bg-[#1d1f29] rounded-lg overflow-hidden border border-[#504535]/10">
         {isLoading ? (
           <div className="p-8 text-center text-[#d5c4af]/40">Đang tải...</div>
         ) : users.length === 0 ? (
@@ -125,7 +125,7 @@ export default function UsersAdmin() {
             </thead>
             <tbody className="divide-y divide-[#504535]/5">
               {users.map(u => (
-                <tr key={u.id} className={`hover:bg-[#373943] transition-colors cursor-pointer ${u.isBanned ? 'opacity-60' : ''}`} onClick={() => { setSelected(u); setBanReason('') }}>
+                <tr data-testid="admin-user-row" key={u.id} className={`hover:bg-[#373943] transition-colors cursor-pointer ${u.isBanned ? 'opacity-60' : ''}`} onClick={() => { setSelected(u); setBanReason('') }}>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
                       <div className={`w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-xs font-bold border ${u.isBanned ? 'border-red-500/50' : 'border-[#504535]/20'}`}>
@@ -231,7 +231,7 @@ export default function UsersAdmin() {
               <div className="space-y-2">
                 <textarea value={banReason} onChange={e => setBanReason(e.target.value)} placeholder="Lý do khóa (tối thiểu 10 ký tự)..."
                   className="w-full bg-[#11131c] border border-[#504535]/20 rounded p-3 text-sm text-[#e1e1ef] placeholder:text-[#d5c4af]/30 resize-none focus:ring-1 focus:ring-[#e8a832]" rows={2} />
-                <button onClick={() => handleBan(selected, true)} disabled={isSaving || banReason.trim().length < 10}
+                <button data-testid="admin-user-ban-btn" onClick={() => handleBan(selected, true)} disabled={isSaving || banReason.trim().length < 10}
                   className="w-full py-2.5 bg-red-600 text-white rounded text-sm font-bold disabled:opacity-50 hover:bg-red-500 transition-colors">
                   Khóa tài khoản
                 </button>

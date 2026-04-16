@@ -21,7 +21,7 @@ export default function TierUpModal({
   }, [])
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+    <div data-testid="tier-up-modal" className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
       <div className="text-center space-y-6 max-w-md mx-4">
         {/* Tier icon */}
         <div className="grade-reveal-anim">

@@ -8,7 +8,7 @@ export default function OfflineBanner() {
   if (isOnline) return null
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-error text-on-error text-center py-2 text-sm font-medium">
+    <div data-testid="offline-banner" className="fixed top-0 left-0 right-0 z-50 bg-error text-on-error text-center py-2 text-sm font-medium">
       <span className="material-symbols-outlined text-sm align-middle mr-1">wifi_off</span>
       {t('common.offline')}
     </div>
