@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import i18n from 'i18next'
 import { getApiBaseUrl, isDebug } from './config'
 import { getAccessToken, setAccessToken } from './tokenStore'
 
@@ -69,28 +70,29 @@ api.interceptors.response.use(
       }
     }
 
-    // Attach user-friendly error message
+    // Attach user-friendly error message (i18n)
+    const t = i18n.t.bind(i18n)
     if (!error.response) {
-      error.userMessage = 'Không thể kết nối server. Kiểm tra kết nối mạng.'
+      error.userMessage = t('errors.networkError')
     } else {
       switch (error.response.status) {
         case 401:
-          error.userMessage = 'Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.'
+          error.userMessage = t('errors.sessionExpired')
           break
         case 403:
-          error.userMessage = 'Bạn không có quyền thực hiện thao tác này.'
+          error.userMessage = t('errors.forbidden')
           break
         case 404:
-          error.userMessage = 'Nội dung không tìm thấy.'
+          error.userMessage = t('errors.resourceNotFound')
           break
         case 429:
-          error.userMessage = 'Bạn thao tác quá nhanh. Vui lòng chờ một chút.'
+          error.userMessage = t('errors.tooManyRequests')
           break
         case 500:
-          error.userMessage = 'Lỗi hệ thống. Chúng tôi đang xử lý.'
+          error.userMessage = t('errors.serverError')
           break
         default:
-          error.userMessage = error.response.data?.message ?? 'Có lỗi xảy ra. Vui lòng thử lại.'
+          error.userMessage = error.response.data?.message ?? t('errors.generic')
       }
     }
 

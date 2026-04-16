@@ -279,7 +279,14 @@
     "notFoundDesc": "The page you're looking for doesn't exist or has been moved.",
     "goHome": "Go Home",
     "goBack": "Go Back",
-    "seekAndFind": "\"Seek and you will find\" — Matthew 7:7"
+    "seekAndFind": "\"Seek and you will find\" — Matthew 7:7",
+    "networkError": "Cannot connect to server. Please check your network.",
+    "sessionExpired": "Your session has expired. Please log in again.",
+    "forbidden": "You do not have permission to perform this action.",
+    "resourceNotFound": "Content not found.",
+    "tooManyRequests": "Too many requests. Please wait a moment.",
+    "serverError": "System error. We are working on it.",
+    "generic": "Something went wrong. Please try again."
   },
   "multiplayer": {
     "title": "Game Rooms",

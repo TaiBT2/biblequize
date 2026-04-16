@@ -279,7 +279,14 @@
     "notFoundDesc": "Trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển.",
     "goHome": "Về Trang Chủ",
     "goBack": "Quay Lại",
-    "seekAndFind": "\"Hãy tìm kiếm, các ngươi sẽ gặp\" — Ma-thi-ơ 7:7"
+    "seekAndFind": "\"Hãy tìm kiếm, các ngươi sẽ gặp\" — Ma-thi-ơ 7:7",
+    "networkError": "Không thể kết nối server. Kiểm tra kết nối mạng.",
+    "sessionExpired": "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.",
+    "forbidden": "Bạn không có quyền thực hiện thao tác này.",
+    "resourceNotFound": "Nội dung không tìm thấy.",
+    "tooManyRequests": "Bạn thao tác quá nhanh. Vui lòng chờ một chút.",
+    "serverError": "Lỗi hệ thống. Chúng tôi đang xử lý.",
+    "generic": "Có lỗi xảy ra. Vui lòng thử lại."
   },
   "multiplayer": {
     "title": "Phòng Chơi",
