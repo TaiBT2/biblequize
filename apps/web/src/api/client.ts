@@ -63,16 +63,9 @@ api.interceptors.response.use(
         originalRequest.headers.Authorization = `Bearer ${accessToken}`
         return api(originalRequest)
       } catch (refreshError) {
-        // Refresh failed — clear in-memory token
+        // Refresh failed — notify the app to handle session expiry via React Router
         setAccessToken(null)
-        localStorage.removeItem('userName')
-        localStorage.removeItem('userEmail')
-        localStorage.removeItem('userAvatar')
-        // Only redirect on protected pages — public pages handle unauthenticated state themselves
-        const PUBLIC_PATHS = ['/', '/login', '/auth/callback', '/practice', '/leaderboard']
-        if (!PUBLIC_PATHS.includes(window.location.pathname)) {
-          window.location.href = '/login'
-        }
+        window.dispatchEvent(new CustomEvent('auth:session-expired'))
       }
     }
 

@@ -79,6 +79,16 @@ const queryClient = new QueryClient({
 // Detect cross-tab localStorage changes for ranked data sync
 initStorageSync()
 
+// Handle session expiry from API client — use authStore.logout() then SPA redirect
+window.addEventListener('auth:session-expired', () => {
+  const PUBLIC_PATHS = ['/', '/login', '/auth/callback', '/practice', '/leaderboard']
+  useAuthStore.getState().logout().then(() => {
+    if (!PUBLIC_PATHS.includes(window.location.pathname)) {
+      window.location.href = '/login'
+    }
+  })
+})
+
 // Initialize auth state on app startup (replaces AuthProvider useEffect)
 useAuthStore.getState().checkAuth()
 
