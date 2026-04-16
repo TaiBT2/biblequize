@@ -114,12 +114,14 @@ function NoGroupView({
       <div className="flex justify-center gap-4">
         <button
           onClick={onCreateClick}
+          data-testid="groups-create-btn"
           className="px-8 py-4 gold-gradient text-on-secondary rounded-2xl font-black text-xs uppercase tracking-widest hover:shadow-[0_0_30px_rgba(232,168,50,0.4)] transition-all active:scale-95 shadow-lg"
         >
           {t('groups.createGroup')}
         </button>
         <button
           onClick={onJoinClick}
+          data-testid="groups-join-btn"
           className="px-8 py-4 bg-surface-container-highest/80 backdrop-blur text-on-surface rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-surface-bright transition-all active:scale-95 border border-white/5"
         >
           {t('groups.findGroup')}
@@ -470,7 +472,7 @@ const Groups: React.FC = () => {
   if (!isAuthenticated) return null;
 
   return (
-    <>
+    <div data-testid="groups-page">
       {myGroupId ? (
         <GroupOverview groupId={myGroupId} />
       ) : (
@@ -498,12 +500,13 @@ const Groups: React.FC = () => {
               <span className="material-symbols-outlined text-secondary">add_circle</span>
               {t('groups.createGroupModal')}
             </h3>
-            <form onSubmit={handleCreate} className="space-y-5">
+            <form onSubmit={handleCreate} className="space-y-5" data-testid="groups-create-form">
               <div>
                 <label className="block text-xs font-black uppercase tracking-widest text-on-surface-variant mb-2">
                   {t('groups.groupName')} *
                 </label>
                 <input
+                  data-testid="group-name-input"
                   className="w-full bg-surface-container-low border border-white/10 rounded-xl px-5 py-4 text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary/50 transition-colors"
                   value={createName}
                   onChange={(e) => setCreateName(e.target.value)}
@@ -527,6 +530,7 @@ const Groups: React.FC = () => {
               {createError && <p className="text-sm text-error font-bold">{createError}</p>}
               <button
                 type="submit"
+                data-testid="group-create-submit"
                 className="w-full py-4 gold-gradient text-on-secondary rounded-xl font-black text-sm uppercase tracking-widest shadow-lg hover:shadow-[0_4px_25px_rgba(232,168,50,0.4)] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={createLoading || !createName.trim()}
               >
@@ -581,7 +585,7 @@ const Groups: React.FC = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

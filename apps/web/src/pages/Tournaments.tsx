@@ -67,21 +67,21 @@ const Tournaments: React.FC = () => {
     switch (status) {
       case 'REGISTRATION':
         return (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-secondary/20 text-secondary">
+          <span data-testid="tournament-status-badge" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-secondary/20 text-secondary">
             <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
             {t('tournaments.statusRegistration')}
           </span>
         );
       case 'IN_PROGRESS':
         return (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-green-500/20 text-green-400">
+          <span data-testid="tournament-status-badge" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-green-500/20 text-green-400">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
             {t('tournaments.statusInProgress')}
           </span>
         );
       case 'COMPLETED':
         return (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-on-surface-variant/20 text-on-surface-variant">
+          <span data-testid="tournament-status-badge" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-on-surface-variant/20 text-on-surface-variant">
             {t('tournaments.statusCompleted')}
           </span>
         );
@@ -91,7 +91,7 @@ const Tournaments: React.FC = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto" data-testid="tournaments-page">
       {/* Header */}
       <section className="mb-10">
         <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-2 block">
@@ -154,6 +154,7 @@ const Tournaments: React.FC = () => {
             <Link
               key={tItem.id}
               to={`/tournaments/${tItem.id}`}
+              data-testid="tournament-card"
               className="block glass-card rounded-2xl p-6 hover:ring-1 hover:ring-secondary/30 transition-all group"
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">

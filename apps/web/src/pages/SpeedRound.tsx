@@ -29,7 +29,7 @@ export default function SpeedRound() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto space-y-8">
+    <div className="max-w-2xl mx-auto space-y-8" data-testid="speed-round-page">
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="w-20 h-20 mx-auto rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center">
@@ -64,6 +64,7 @@ export default function SpeedRound() {
         <button
           onClick={startQuiz}
           disabled={starting}
+          data-testid="speed-round-start-btn"
           className="px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-black rounded-xl transition-colors disabled:opacity-50"
         >
           {starting ? '...' : t('gameModes.speedBtn')}

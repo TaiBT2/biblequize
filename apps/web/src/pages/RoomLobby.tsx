@@ -261,7 +261,7 @@ const RoomLobby: React.FC = () => {
         <div className="flex flex-col md:flex-row gap-6 items-center justify-between mb-10">
           {/* Room Code + QR */}
           <div className="flex items-center gap-4">
-            <div className="border-2 border-secondary/40 bg-surface-container-low px-6 py-3 rounded-xl flex items-center gap-4">
+            <div className="border-2 border-secondary/40 bg-surface-container-low px-6 py-3 rounded-xl flex items-center gap-4" data-testid="lobby-room-code">
               <span className="text-3xl font-mono font-bold tracking-widest text-secondary">
                 {room.roomCode}
               </span>
@@ -306,7 +306,7 @@ const RoomLobby: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-8">
 
           {/* ── Players Grid (Left Side) ── */}
-          <section>
+          <section data-testid="lobby-player-grid">
             {/* Team vs Team layout */}
             {isTeamVsTeam ? (
               <div className="space-y-6">
@@ -474,6 +474,7 @@ const RoomLobby: React.FC = () => {
         <div className="bg-surface-container/60 backdrop-blur-xl w-full max-w-[900px] flex justify-between items-center px-8 py-4 rounded-2xl shadow-[0_-4px_24px_rgba(11,14,24,0.6)] border border-outline-variant/5">
           {/* Left: Leave Button */}
           <button
+            data-testid="lobby-leave-btn"
             onClick={handleLeave}
             className="flex items-center gap-2 text-on-surface/80 hover:bg-error-container/20 hover:text-error transition-all px-6 py-3 rounded-xl border border-outline-variant/15 font-medium uppercase tracking-widest text-[11px] active:scale-[0.98] active:duration-100"
           >
@@ -498,6 +499,7 @@ const RoomLobby: React.FC = () => {
           <div className="flex items-center gap-3">
             {/* Ready toggle */}
             <button
+              data-testid="lobby-ready-btn"
               onClick={handleToggleReady}
               className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-[11px] transition-all active:scale-[0.98] active:duration-100 ${
                 myPlayer?.isReady

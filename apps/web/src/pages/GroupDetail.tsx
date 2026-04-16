@@ -313,7 +313,7 @@ const GroupDetail: React.FC = () => {
   const restLeaderboard = leaderboard.slice(3);
 
   return (
-    <div className="relative pb-20">
+    <div className="relative pb-20" data-testid="group-detail-page">
 
       {/* ── Hero Header ── */}
       <header className="relative w-full h-[360px] overflow-hidden">
@@ -342,6 +342,7 @@ const GroupDetail: React.FC = () => {
                 )}
                 {/* Invite Code Chip */}
                 <button
+                  data-testid="group-join-code"
                   onClick={handleCopyCode}
                   className="flex items-center gap-1.5 text-xs text-on-surface-variant hover:text-secondary transition-colors"
                 >
@@ -349,7 +350,7 @@ const GroupDetail: React.FC = () => {
                   {copied ? t('groups.copied') : group.code}
                 </button>
               </div>
-              <h1 className="text-5xl font-black text-on-surface tracking-tighter mb-2 truncate">
+              <h1 data-testid="group-name-heading" className="text-5xl font-black text-on-surface tracking-tighter mb-2 truncate">
                 {group.name}
               </h1>
               {group.description && (
@@ -370,6 +371,7 @@ const GroupDetail: React.FC = () => {
                 </button>
               ) : (
                 <button
+                  data-testid="group-leave-btn"
                   onClick={handleLeave}
                   className="flex items-center gap-2 bg-surface-container-highest hover:bg-surface-variant text-on-surface px-6 py-3 rounded-xl font-bold transition-all border border-outline-variant/15"
                 >
@@ -398,7 +400,7 @@ const GroupDetail: React.FC = () => {
               <span className="material-symbols-outlined text-3xl">groups</span>
             </div>
             <div>
-              <p className="text-2xl font-black text-on-surface">{group.members?.length || 0}</p>
+              <p data-testid="group-member-count" className="text-2xl font-black text-on-surface">{group.members?.length || 0}</p>
               <p className="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">{t('groups.members')}</p>
             </div>
           </div>
@@ -480,7 +482,7 @@ const GroupDetail: React.FC = () => {
 
       {/* ===== LEADERBOARD TAB ===== */}
       {activeTab === 'leaderboard' && (
-        <section className="px-12 mt-10">
+        <section className="px-12 mt-10" data-testid="group-leaderboard">
           {/* Period Toggle */}
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-black tracking-tight flex items-center gap-3">

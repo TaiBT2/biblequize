@@ -466,7 +466,7 @@ const TournamentDetail: React.FC = () => {
     ).size;
 
   return (
-    <div className="max-w-[1200px] mx-auto px-6">
+    <div className="max-w-[1200px] mx-auto px-6" data-testid="tournament-detail-page">
       {/* Back nav */}
       <button
         onClick={() => navigate('/tournaments')}
@@ -620,7 +620,7 @@ const TournamentDetail: React.FC = () => {
 
       {/* ── Participants List (Lobby) ── */}
       {bracket.status === 'LOBBY' && bracket.participants && bracket.participants.length > 0 && (
-        <section className="mb-10">
+        <section className="mb-10" data-testid="tournament-participants">
           <h2 className="text-lg font-bold text-on-surface mb-4 flex items-center gap-2">
             <span className="material-symbols-outlined text-secondary">group</span>
             {t('tournaments.participantsJoined')}
@@ -643,7 +643,7 @@ const TournamentDetail: React.FC = () => {
 
       {/* ── Bracket ── */}
       {(bracket.status === 'IN_PROGRESS' || bracket.status === 'COMPLETED') && (
-        <section className="mb-10">
+        <section className="mb-10" data-testid="tournament-bracket">
           <h2 className="text-lg font-bold text-on-surface mb-4 flex items-center gap-2">
             <span className="material-symbols-outlined text-secondary">account_tree</span>
             Bracket

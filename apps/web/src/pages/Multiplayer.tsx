@@ -84,12 +84,13 @@ const Multiplayer = () => {
   const isFull = (room: PublicRoom) => room.currentPlayers >= room.maxPlayers;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8" data-testid="multiplayer-page">
 
       {/* -- Page Header -- */}
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-black text-on-surface tracking-tight">{t('multiplayer.title')}</h2>
         <button
+          data-testid="multiplayer-create-btn"
           onClick={() => navigate('/room/create')}
           className="flex items-center gap-2 py-2.5 px-6 rounded-lg gold-gradient text-on-secondary font-extrabold text-sm tracking-tight shadow-md hover:shadow-secondary/20 transition-all"
         >
@@ -117,6 +118,7 @@ const Multiplayer = () => {
               onKeyDown={e => { if (e.key === 'Enter' && joinCode.trim()) navigate(`/room/join?code=${joinCode.trim()}`); }}
             />
             <button
+              data-testid="multiplayer-join-btn"
               onClick={() => { if (joinCode.trim()) navigate(`/room/join?code=${joinCode.trim()}`); }}
               disabled={!joinCode.trim()}
               className="bg-surface-container-highest hover:bg-surface-variant text-secondary font-bold py-3 px-8 rounded-xl transition-all border border-secondary/20 disabled:opacity-40 disabled:cursor-not-allowed"

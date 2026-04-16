@@ -63,7 +63,7 @@ export default function CreateRoom() {
   if (!isAuthenticated) return null
 
   return (
-    <div className="min-h-screen bg-[#11131e] text-[#e1e1f1] flex items-start justify-center px-4 py-12">
+    <div className="min-h-screen bg-[#11131e] text-[#e1e1f1] flex items-start justify-center px-4 py-12" data-testid="create-room-page">
       <div className="w-full max-w-2xl space-y-6">
         {/* Back link */}
         <Link to="/multiplayer" className="inline-flex items-center gap-2 text-on-surface-variant hover:text-on-surface text-sm transition-colors">
@@ -97,7 +97,7 @@ export default function CreateRoom() {
           {/* Game mode cards */}
           <div className="space-y-2">
             <label className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">{t('createRoom.gameMode')}</label>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3" data-testid="create-room-mode-select">
               {MODES.map((m) => {
                 const active = formData.mode === m.id
                 return (
@@ -240,6 +240,7 @@ export default function CreateRoom() {
 
           {/* Submit */}
           <button
+            data-testid="create-room-submit-btn"
             type="submit"
             disabled={loading}
             className="w-full py-4 gold-gradient text-on-secondary font-black rounded-2xl shadow-xl shadow-secondary/20 hover:scale-[1.01] active:scale-95 transition-all text-sm uppercase tracking-widest disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"

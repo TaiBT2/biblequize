@@ -28,7 +28,7 @@ export default function MysteryMode() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto space-y-8">
+    <div className="max-w-2xl mx-auto space-y-8" data-testid="mystery-page">
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="w-20 h-20 mx-auto rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center">
@@ -56,7 +56,7 @@ export default function MysteryMode() {
         </div>
 
         <div className="flex justify-center gap-6">
-          <div className="bg-pink-500/10 border border-pink-500/20 rounded-xl px-4 py-2 text-center">
+          <div className="bg-pink-500/10 border border-pink-500/20 rounded-xl px-4 py-2 text-center" data-testid="mystery-multiplier-badge">
             <p className="text-xs text-on-surface-variant">Bonus</p>
             <p className="text-lg font-black text-pink-400">1.5x XP</p>
           </div>
@@ -73,6 +73,7 @@ export default function MysteryMode() {
         <button
           onClick={startQuiz}
           disabled={starting}
+          data-testid="mystery-start-btn"
           className="px-8 py-3 bg-pink-500 hover:bg-pink-600 text-white font-black rounded-xl transition-colors disabled:opacity-50"
         >
           {starting ? '...' : t('gameModes.mysteryBtn')}

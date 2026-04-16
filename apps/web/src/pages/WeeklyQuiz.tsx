@@ -42,7 +42,7 @@ export default function WeeklyQuiz() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto space-y-8">
+    <div className="max-w-2xl mx-auto space-y-8" data-testid="weekly-page">
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="w-20 h-20 mx-auto rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
@@ -56,7 +56,7 @@ export default function WeeklyQuiz() {
       {theme && (
         <div className="bg-surface-container rounded-2xl p-8 border border-purple-500/20 text-center space-y-4">
           <p className="text-xs font-bold text-purple-400 uppercase tracking-wider">Chủ đề tuần này</p>
-          <h2 className="text-2xl font-black text-on-surface">{theme.themeName}</h2>
+          <h2 className="text-2xl font-black text-on-surface" data-testid="weekly-theme-title">{theme.themeName}</h2>
           <p className="text-sm text-on-surface-variant">{theme.themeNameEn}</p>
 
           <div className="flex flex-wrap justify-center gap-2 mt-4">
@@ -79,6 +79,7 @@ export default function WeeklyQuiz() {
           <button
             onClick={startQuiz}
             disabled={starting}
+            data-testid="weekly-start-btn"
             className="mt-4 px-8 py-3 bg-purple-500 hover:bg-purple-600 text-white font-black rounded-xl transition-colors disabled:opacity-50"
           >
             {starting ? '...' : t('gameModes.weeklyBtn')}

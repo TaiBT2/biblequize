@@ -73,9 +73,9 @@ export default function Journey() {
   const newBooks = books.filter(b => b.testament === 'NEW')
 
   return (
-    <div className="space-y-6 max-w-4xl mx-auto w-full">
+    <div className="space-y-6 max-w-4xl mx-auto w-full" data-testid="journey-page">
       {/* Summary */}
-      <section className="glass-card p-6">
+      <section className="glass-card p-6" data-testid="journey-summary-card">
         <div className="flex items-center gap-3 mb-3">
           <span className="material-symbols-outlined text-secondary text-2xl" style={FILL_1}>map</span>
           <h1 className="text-xl font-bold text-on-surface">{t('journey.title')}</h1>
@@ -112,6 +112,7 @@ export default function Journey() {
         isVi={isVi}
         onBookClick={(book) => navigate(`/practice?book=${encodeURIComponent(book.book)}`)}
         t={t}
+        testId="journey-ot-tab"
       />
 
       {/* New Testament */}
@@ -121,22 +122,24 @@ export default function Journey() {
         isVi={isVi}
         onBookClick={(book) => navigate(`/practice?book=${encodeURIComponent(book.book)}`)}
         t={t}
+        testId="journey-nt-tab"
       />
     </div>
   )
 }
 
 function BookSection({
-  title, books, isVi, onBookClick, t
+  title, books, isVi, onBookClick, t, testId
 }: {
   title: string
   books: BookProgress[]
   isVi: boolean
   onBookClick: (b: BookProgress) => void
   t: (key: string, opts?: Record<string, any>) => string
+  testId?: string
 }) {
   return (
-    <section>
+    <section data-testid={testId}>
       <h2 className="text-sm font-bold text-on-surface-variant uppercase tracking-wider mb-3 px-1">{title}</h2>
       <div className="space-y-2">
         {books.map((book, idx) => (
@@ -162,6 +165,7 @@ function BookCard({
 
   return (
     <div
+      data-testid="journey-book-card"
       onClick={isLocked ? undefined : onClick}
       className={`flex items-center gap-4 p-4 rounded-xl border transition-all ${
         isCompleted
