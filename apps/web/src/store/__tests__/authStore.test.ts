@@ -22,6 +22,12 @@ vi.mock('../../api/client', () => ({
   },
 }))
 
+// Mock localStorage clear detector
+vi.mock('../../utils/localStorageClearDetector', () => ({
+  notifyRankedDataCleared: vi.fn(),
+  initStorageSync: vi.fn(),
+}))
+
 // Import after mocks
 import { useAuthStore } from '../authStore'
 

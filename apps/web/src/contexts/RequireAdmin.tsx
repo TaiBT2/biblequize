@@ -4,7 +4,7 @@ import { useAuth } from '../store/authStore'
 const RequireAdmin: React.FC<{ children: React.ReactElement }> = ({ children }) => {
   const { isAuthenticated, isLoading, isAdmin, user } = useAuth()
   const location = useLocation()
-  const isContentMod = user?.role === 'CONTENT_MOD' || user?.role === 'content_mod'
+  const isContentMod = user?.role === 'CONTENT_MOD'
 
   if (isLoading) return (
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--hp-bg)' }}>

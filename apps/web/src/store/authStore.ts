@@ -39,17 +39,18 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       localStorage.setItem('userAvatar', tokens.avatar)
     }
 
+    const normalizedRole = tokens.role?.toUpperCase()
     const user: User = {
       name: tokens.name,
       email: tokens.email,
       avatar: tokens.avatar,
-      role: tokens.role
+      role: normalizedRole
     }
 
     set({
       user,
       isAuthenticated: true,
-      isAdmin: user.role === 'ADMIN'
+      isAdmin: normalizedRole === 'ADMIN'
     })
 
     // Restore ranked progress from database after login
@@ -131,7 +132,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
       // Fetch fresh profile
       const meRes = await api.get('/api/me')
-      const role = meRes.data?.role as string | undefined
+      const normalizedRole = (meRes.data?.role as string | undefined)?.toUpperCase()
       const name = localStorage.getItem('userName')
       const email = localStorage.getItem('userEmail')
       const avatar = localStorage.getItem('userAvatar')
@@ -140,7 +141,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         name: meRes.data?.name ?? name ?? 'User',
         email: meRes.data?.email ?? email ?? '',
         avatar: meRes.data?.avatarUrl ?? avatar ?? undefined,
-        role
+        role: normalizedRole
       }
       // Update localStorage profile cache
       localStorage.setItem('userName', user.name)
@@ -150,7 +151,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       set({
         user,
         isAuthenticated: true,
-        isAdmin: role === 'ADMIN'
+        isAdmin: normalizedRole === 'ADMIN'
       })
 
       if (import.meta.env.DEV) {
