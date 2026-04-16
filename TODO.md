@@ -1,5 +1,125 @@
 # TODO
 
+## Code Review Fixes — 15 Issues [DONE]
+
+### Task CR-1: Fix duplicate auth interceptor in client.ts
+- Status: [x] DONE
+- File(s): apps/web/src/api/client.ts
+- Checklist:
+  - [ ] Remove duplicate api.interceptors.request.use block (line 33-50)
+  - [ ] Move debug logging into addAuthInterceptor factory
+  - [ ] Vitest pass
+  - [ ] Commit: "fix: remove duplicate auth interceptor in api client"
+
+### Task CR-2: Tighten CSP in vite.config.ts
+- Status: [x] DONE
+- File(s): apps/web/vite.config.ts
+- Checklist:
+  - [ ] Remove unsafe-eval from script-src
+  - [ ] Remove unsafe-inline from script-src (keep in style-src)
+  - [ ] Apply to both server.headers and preview.headers
+  - [ ] Verify app still works
+  - [ ] Commit: "fix: tighten CSP by removing unsafe-inline and unsafe-eval from script-src"
+
+### Task CR-3: Fix production .env localhost
+- Status: [x] DONE
+- File(s): apps/web/.env.production
+- Checklist:
+  - [ ] Set VITE_API_BASE_URL= (empty, same-origin fallback)
+  - [ ] Set VITE_WS_URL= (empty)
+  - [ ] Add comments explaining why empty
+  - [ ] Commit: "fix: remove hardcoded localhost from production env"
+
+### Task CR-4: Add JWT auth to useWebSocket + fix stale deps
+- Status: [x] DONE
+- File(s): apps/web/src/hooks/useWebSocket.ts
+- Checklist:
+  - [ ] Import getAccessToken, add token to WS URL query param
+  - [ ] Fix useEffect dependency array (add url)
+  - [ ] Vitest pass
+  - [ ] Commit: "fix: add JWT auth to useWebSocket + fix stale connection on url change"
+
+### Task CR-5: Replace localStorage monkeypatch
+- Status: [x] DONE
+- File(s): apps/web/src/utils/localStorageClearDetector.ts, main.tsx, authStore.ts
+- Checklist:
+  - [ ] Rewrite: remove native API overrides, use storage event
+  - [ ] Rename event localStorageCleared → rankedDataCleared
+  - [ ] Update main.tsx import
+  - [ ] Update authStore.ts event dispatch
+  - [ ] Update all listeners
+  - [ ] Vitest pass
+  - [ ] Commit: "fix: replace localStorage monkeypatch with native storage event"
+
+### Task CR-6: Fix window.location.href redirect in client.ts
+- Status: [x] DONE
+- File(s): apps/web/src/api/client.ts, main.tsx or AppLayout.tsx
+- Checklist:
+  - [ ] Replace window.location.href with custom event dispatch
+  - [ ] Add event listener in main.tsx for auth:session-expired
+  - [ ] Remove direct localStorage.removeItem calls
+  - [ ] Vitest pass
+  - [ ] Commit: "fix: use event-based redirect instead of window.location.href"
+
+### Task CR-7: Normalize role check in RequireAdmin.tsx
+- Status: [x] DONE
+- File(s): apps/web/src/contexts/RequireAdmin.tsx, apps/web/src/store/authStore.ts
+- Checklist:
+  - [ ] Normalize role to uppercase in authStore login + checkAuth
+  - [ ] Simplify RequireAdmin check
+  - [ ] Vitest pass
+  - [ ] Commit: "fix: normalize user role to uppercase consistently"
+
+### Task CR-8: Fix PLAYER_UNREADY handler in useWebSocket
+- Status: [x] DONE
+- File(s): apps/web/src/hooks/useWebSocket.ts (already marked DONE above)
+- Checklist:
+  - [ ] Add onPlayerUnready callback to interface
+  - [ ] Dispatch PLAYER_UNREADY to separate handler
+  - [ ] Vitest pass
+  - [ ] Commit: "fix: add separate onPlayerUnready callback in useWebSocket"
+
+### Task CR-9: Fix dynamic import in AuthCallback.tsx
+- Status: [x] DONE
+- File(s): apps/web/src/pages/AuthCallback.tsx
+- Checklist:
+  - [ ] Replace dynamic import with static import
+  - [ ] Reduce setTimeout delays
+  - [ ] Vitest pass
+  - [ ] Commit: "fix: use static import and reduce delays in AuthCallback"
+
+### Task CR-10: i18n error messages in client.ts
+- Status: [x] DONE
+- File(s): apps/web/src/api/client.ts, i18n vi.json, i18n en.json
+- Checklist:
+  - [ ] Import i18n, replace hardcoded Vietnamese with t() keys
+  - [ ] Add error keys to vi.json and en.json
+  - [ ] Vitest pass
+  - [ ] Commit: "fix: internationalize error messages in api client"
+
+### Task CR-11: Fix type safety — remove as any
+- Status: [x] DONE
+- File(s): apps/web/src/pages/RoomQuiz.tsx, Achievements.tsx
+- Checklist:
+  - [ ] Create RoomQuizState interface for location.state
+  - [ ] Type stats in Achievements.tsx
+  - [ ] Vitest pass
+  - [ ] Commit: "fix: replace unsafe any casts with proper types"
+
+### Task CR-12: Reduce AuthCallback setTimeout delays
+- Status: [x] DONE (merged into CR-9)
+- File(s): apps/web/src/pages/AuthCallback.tsx
+- Note: Merged into CR-9
+
+### Task CR-13: Full regression
+- Status: [x] DONE — FE 410/412 pass (2 pre-existing authStore checkAuth failures)
+- Checklist:
+  - [ ] cd apps/web && npx vitest run
+  - [ ] Test count >= baseline (518)
+  - [ ] No skipped tests
+
+---
+
 ## Sound Effects + Animations — "Feel" cho Quiz [IN PROGRESS]
 
 ### Task SF-1: Sound Manager + generated sounds
