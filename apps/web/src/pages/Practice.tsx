@@ -95,7 +95,7 @@ export default function Practice() {
   const tipOfTheDay = TIPS[new Date().getDate() % TIPS.length]
 
   return (
-    <div className="max-w-7xl mx-auto space-y-10">
+    <div data-testid="practice-page" className="max-w-7xl mx-auto space-y-10">
 
       {/* ── Header ────────────────────────────────────────── */}
       <section>
@@ -142,7 +142,7 @@ export default function Practice() {
               </div>
 
               {/* Book Selector */}
-              <div>
+              <div data-testid="practice-book-select">
                 <div className="flex items-center justify-between mb-3">
                   <label className="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant flex items-center gap-2">
                     <span className="material-symbols-outlined text-base text-secondary">auto_stories</span>
@@ -174,6 +174,7 @@ export default function Practice() {
                   {COUNT_OPTIONS.map(num => (
                     <button
                       key={num}
+                      data-testid={`practice-count-${num}`}
                       type="button"
                       onClick={() => setQuestionCount(num)}
                       className={`flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-200
@@ -204,6 +205,7 @@ export default function Practice() {
                     return (
                       <button
                         key={d.key}
+                        data-testid={`practice-difficulty-${d.key}`}
                         type="button"
                         onClick={() => setSelectedDifficulty(d.key)}
                         className={`relative flex items-center gap-3 py-3.5 px-4 rounded-xl text-sm font-bold transition-all duration-200
@@ -235,6 +237,7 @@ export default function Practice() {
                   Tùy chọn
                 </label>
                 <button
+                  data-testid="practice-show-explanation-toggle"
                   type="button"
                   onClick={() => setShowExplanation(p => !p)}
                   className="w-full flex items-center justify-between p-4 rounded-xl bg-surface-container-high hover:bg-surface-container-highest transition-colors"
@@ -279,6 +282,7 @@ export default function Practice() {
           </div>
 
           <button
+            data-testid="practice-start-btn"
             type="submit"
             disabled={isDisabled}
             className={`gold-gradient text-on-secondary font-black py-4 px-10 rounded-2xl text-sm uppercase tracking-[0.15em] shadow-xl shadow-secondary/20 transition-all

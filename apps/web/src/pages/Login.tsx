@@ -130,7 +130,7 @@ export default function Login() {
 
           {/* Error Message */}
           {error && (
-            <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-error-container/20 border border-error/30">
+            <div data-testid="login-error-msg" className="flex items-start gap-3 px-4 py-3 rounded-xl bg-error-container/20 border border-error/30">
               <span className="material-symbols-outlined text-error text-sm mt-0.5">error</span>
               <p className="text-sm text-error">{error}</p>
             </div>
@@ -139,6 +139,7 @@ export default function Login() {
           <div className="mt-8 space-y-6">
             {/* Google OAuth */}
             <button
+              data-testid="login-google-btn"
               onClick={handleGoogleLogin}
               disabled={isGoogleLoading || isLoading}
               className="w-full py-3.5 px-4 rounded-xl gold-gradient text-on-secondary font-bold flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.02] active:scale-95 gold-glow shadow-lg shadow-secondary/10 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
@@ -188,6 +189,7 @@ export default function Login() {
                     mail
                   </span>
                   <input
+                    data-testid="login-email-input"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -215,6 +217,7 @@ export default function Login() {
                     lock
                   </span>
                   <input
+                    data-testid="login-password-input"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -226,6 +229,7 @@ export default function Login() {
               </div>
 
               <button
+                data-testid="login-submit-btn"
                 type="submit"
                 disabled={isLoading || isGoogleLoading}
                 className="w-full py-4 mt-4 rounded-xl border border-secondary/20 text-secondary font-bold hover:bg-secondary/10 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -257,6 +261,7 @@ export default function Login() {
               </Link>
             </p>
             <Link
+              data-testid="login-guest-link"
               to="/"
               className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-on-surface-variant/60 hover:text-on-surface transition-colors py-2 px-4 rounded-full bg-surface-container-low"
             >

@@ -104,7 +104,7 @@ export default function Home() {
   const greeting = getGreeting(t)
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto w-full">
+    <div data-testid="home-page" className="space-y-8 max-w-7xl mx-auto w-full">
       <ComebackModal />
       <DailyBonusModal />
       <TutorialOverlay />
@@ -117,13 +117,13 @@ export default function Home() {
               <div className="w-32 h-32 rounded-full border-4 border-secondary/20 flex items-center justify-center bg-surface-container-high shadow-inner">
                 <span className={`material-symbols-outlined text-6xl ${tier.current.color}`} style={FILL_1}>{tier.current.icon}</span>
               </div>
-              <div className="absolute -bottom-2 -right-2 bg-secondary text-on-secondary text-[10px] font-black px-2 py-1 rounded-md shadow-lg uppercase tracking-tighter">
+              <div data-testid="home-tier-badge" className="absolute -bottom-2 -right-2 bg-secondary text-on-secondary text-[10px] font-black px-2 py-1 rounded-md shadow-lg uppercase tracking-tighter">
                 {t(tier.current.nameKey)}
               </div>
             </div>
             <div className="flex-1 space-y-4">
               <div>
-                <h1 className="text-3xl font-black tracking-tight text-on-surface mb-1">
+                <h1 data-testid="home-greeting" className="text-3xl font-black tracking-tight text-on-surface mb-1">
                   {greeting}, {userName}!
                 </h1>
                 <p className="text-on-surface-variant text-sm font-medium">
@@ -137,7 +137,7 @@ export default function Home() {
               <div className="space-y-2">
                 <div className="flex justify-between items-end">
                   <span className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">{t('home.tierProgress')}</span>
-                  <span className="text-xs font-bold text-on-surface">
+                  <span data-testid="home-total-points" className="text-xs font-bold text-on-surface">
                     {totalPoints.toLocaleString()} {tier.next ? `/ ${tier.next.minPoints.toLocaleString()} ${t('home.points')}` : t('home.points')}
                   </span>
                 </div>
@@ -149,7 +149,7 @@ export default function Home() {
                     {t('home.pointsToNext', { points: tier.pointsToNext.toLocaleString(), tier: t(tier.next.nameKey) })}
                   </p>
                 )}
-                <TierProgressBar />
+                <div data-testid="home-tier-progress-bar"><TierProgressBar /></div>
                 <MilestoneBanner />
               </div>
             </div>
@@ -197,28 +197,33 @@ export default function Home() {
 
       {/* ── Daily Missions ── */}
       <section>
-        <DailyMissionsCard />
+        <div data-testid="home-daily-missions"><DailyMissionsCard /></div>
       </section>
 
       {/* ── Journey Widget ── */}
       <JourneyWidget />
 
       {/* ── Leaderboard + Feed ── */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <section data-testid="home-leaderboard" className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div className="lg:col-span-8 bg-surface-container rounded-2xl p-6 border border-outline-variant/10">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
             <h3 className="text-lg font-black tracking-tight text-on-surface">{t('home.leaderboard')}</h3>
             {/* Period tabs */}
             <div className="flex p-1 bg-surface-container-high rounded-lg">
-              {([['daily', 'home.daily'], ['weekly', 'home.weekly']] as const).map(([key, labelKey]) => (
-                <button
-                  key={key}
-                  onClick={() => setLbPeriod(key)}
-                  className={`px-3 py-1.5 text-[10px] font-bold rounded-md transition-all ${lbPeriod === key ? 'bg-secondary text-on-secondary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
-                >
-                  {t(labelKey)}
-                </button>
-              ))}
+              <button
+                data-testid="leaderboard-tab-daily"
+                onClick={() => setLbPeriod('daily')}
+                className={`px-3 py-1.5 text-[10px] font-bold rounded-md transition-all ${lbPeriod === 'daily' ? 'bg-secondary text-on-secondary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
+              >
+                {t('home.daily')}
+              </button>
+              <button
+                data-testid="leaderboard-tab-weekly"
+                onClick={() => setLbPeriod('weekly')}
+                className={`px-3 py-1.5 text-[10px] font-bold rounded-md transition-all ${lbPeriod === 'weekly' ? 'bg-secondary text-on-secondary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}
+              >
+                {t('home.weekly')}
+              </button>
             </div>
           </div>
 

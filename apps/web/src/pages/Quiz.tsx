@@ -472,7 +472,7 @@ const Quiz: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-surface font-body text-on-surface overflow-hidden relative">
+    <div data-testid="quiz-page" className="min-h-screen bg-surface font-body text-on-surface overflow-hidden relative">
       {/* Background Decorative Elements */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/5 blur-[120px] rounded-full"></div>
@@ -513,7 +513,7 @@ const Quiz: React.FC = () => {
                 style={{ width: `${progressPercent}%` }}
               ></div>
             </div>
-            <span className="text-[10px] font-black text-secondary whitespace-nowrap">
+            <span data-testid="quiz-progress" className="text-[10px] font-black text-secondary whitespace-nowrap">
               {currentQuestionIndex + 1} / {questions.length}
             </span>
           </div>
@@ -582,7 +582,7 @@ const Quiz: React.FC = () => {
                   strokeDashoffset={100 - (timeLeft / timerLimit) * 100}
                 />
               </svg>
-              <span className={`absolute font-headline font-black text-xl ${
+              <span data-testid="quiz-timer" className={`absolute font-headline font-black text-xl ${
                 timeLeft <= 3 ? 'text-error' : timeLeft <= 5 ? 'text-yellow-500' : 'text-secondary'
               }`}>
                 {timeLeft}
@@ -610,7 +610,7 @@ const Quiz: React.FC = () => {
         <div className="w-full space-y-16">
           <div className="relative w-full aspect-[16/9] md:aspect-[21/7] flex flex-col items-center justify-center text-center p-10 bg-surface-container-low rounded-[2.5rem] border border-outline-variant/10 shadow-2xl overflow-hidden">
             <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-32 bg-secondary rounded-r-full"></div>
-            <h2 className="font-headline text-2xl md:text-4xl font-extrabold tracking-tight leading-snug max-w-3xl text-on-surface">
+            <h2 data-testid="quiz-question-text" className="font-headline text-2xl md:text-4xl font-extrabold tracking-tight leading-snug max-w-3xl text-on-surface">
               {currentQuestion.content}
             </h2>
             <div className="mt-8 flex items-center gap-2 text-on-surface-variant/60">
@@ -657,6 +657,7 @@ const Quiz: React.FC = () => {
 
               return (
                 <button
+                  data-testid={`quiz-answer-${index}`}
                   key={index}
                   onClick={() => handleAnswerSelect(index)}
                   disabled={showResult}
@@ -707,7 +708,7 @@ const Quiz: React.FC = () => {
       {/* Confirmation Modal */}
       {showResult && (
         <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-3rem)] max-w-lg">
-          <div className="bg-surface-container-highest p-5 rounded-3xl border border-secondary/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center justify-between gap-4 glass-panel">
+          <div data-testid="quiz-answer-feedback" className="bg-surface-container-highest p-5 rounded-3xl border border-secondary/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center justify-between gap-4 glass-panel">
             <div className="flex items-center gap-4">
               <div className={`w-12 h-12 rounded-full flex items-center justify-center ${isCorrect ? 'bg-secondary/20' : 'bg-error/20'}`}>
                 <span
@@ -719,12 +720,13 @@ const Quiz: React.FC = () => {
                 <p className="text-base font-bold text-on-surface">
                   {isCorrect ? t('quiz.correct') : t('quiz.incorrect')}
                 </p>
-                <p className={`text-xs font-medium ${isCorrect ? 'text-secondary/80' : 'text-error/80'}`}>
+                <p data-testid="quiz-score-delta" className={`text-xs font-medium ${isCorrect ? 'text-secondary/80' : 'text-error/80'}`}>
                   {isCorrect ? t('quiz.bonusPoints', { points: lastQuestionScore }) : t('quiz.noPoints')}
                 </p>
               </div>
             </div>
             <button
+              data-testid="quiz-next-btn"
               onClick={nextQuestion}
               className="bg-gradient-to-r from-secondary to-tertiary text-on-secondary px-8 py-3 rounded-2xl font-black text-sm shadow-xl active:scale-95 transition-all hover:brightness-110 whitespace-nowrap"
             >
@@ -736,7 +738,7 @@ const Quiz: React.FC = () => {
 
       {/* Explanation panel — always show for wrong answers */}
       {showResult && isCorrect === false && (currentQuestion.explanation || currentQuestion.verseStart) && (
-        <div className="fixed bottom-28 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg animate-slide-up">
+        <div data-testid="quiz-explanation" className="fixed bottom-28 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg animate-slide-up">
           <div className="glass-panel p-5 rounded-2xl border border-error/20 space-y-3">
             {/* Correct answer */}
             <div className="flex items-center gap-2">

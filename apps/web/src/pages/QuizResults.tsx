@@ -142,7 +142,7 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
   const weakest = bookEntries.length > 0 ? bookEntries.reduce((a, b) => (b.acc < a.acc ? b : a)) : null
 
   return (
-    <div className="min-h-screen bg-[#11131e] flex items-center justify-center p-4 py-12">
+    <div data-testid="quiz-results-page" className="min-h-screen bg-[#11131e] flex items-center justify-center p-4 py-12">
       <main className="max-w-md mx-auto w-full flex flex-col items-center gap-8">
 
         {/* Score Circle */}
@@ -160,7 +160,7 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
               </defs>
             </svg>
             <div className="absolute flex flex-col items-center">
-              <span className="text-4xl font-extrabold tracking-tighter text-on-surface">{correctDisplay}/{stats.totalQuestions}</span>
+              <span data-testid="quiz-results-score" className="text-4xl font-extrabold tracking-tighter text-on-surface">{correctDisplay}/{stats.totalQuestions}</span>
             </div>
           </div>
           <div className="text-center mt-4">
@@ -234,7 +234,7 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
         {/* Actions */}
         <div className="w-full flex flex-col gap-3">
           <div className="flex gap-3 w-full">
-            <button onClick={() => navigate('/review', { state: { stats } })}
+            <button data-testid="quiz-results-review-btn" onClick={() => navigate('/review', { state: { stats } })}
               className="flex-1 glass-card py-4 rounded-xl font-bold text-on-surface flex items-center justify-center gap-2 hover:bg-surface-container-highest transition-all border border-white/5">
               <span className="material-symbols-outlined text-sm">edit_note</span>
               {t('results.review')}
@@ -245,7 +245,7 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
               {t('results.playAgain')}
             </button>
           </div>
-          <button onClick={onBackToHome}
+          <button data-testid="quiz-results-home-btn" onClick={onBackToHome}
             className="w-full gold-gradient py-4 rounded-xl font-black text-on-secondary shadow-lg shadow-secondary/20 flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
             <span className="material-symbols-outlined" style={FILL_1}>home</span>
             {t('results.home')}

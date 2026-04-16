@@ -95,7 +95,7 @@ export default function Review() {
   }
 
   return (
-    <div className="min-h-screen bg-[#11131e] flex">
+    <div data-testid="review-page" className="min-h-screen bg-[#11131e] flex">
       <main className="flex-1 flex flex-col h-screen overflow-y-auto">
         {/* Sticky Header */}
         <header className="sticky top-0 z-50 glass-panel border-b border-outline-variant/10">
@@ -107,7 +107,7 @@ export default function Review() {
               <div>
                 <h2 className="text-lg md:text-xl font-bold tracking-tight text-on-surface">{t('review.title')}</h2>
                 <div className="flex items-center gap-3 mt-0.5">
-                  <span className="text-xs font-bold text-secondary uppercase tracking-wider">{totalCorrect}/{totalQuestions} {t('review.correctLabel')} ({accuracy}%)</span>
+                  <span data-testid="review-total-correct" className="text-xs font-bold text-secondary uppercase tracking-wider">{totalCorrect}/{totalQuestions} {t('review.correctLabel')} ({accuracy}%)</span>
                   <span className="text-[10px] text-on-surface-variant/40">•</span>
                   <span className="text-xs text-on-surface-variant/70 flex items-center gap-1">
                     <span className="material-symbols-outlined text-sm">schedule</span>
@@ -117,7 +117,7 @@ export default function Review() {
               </div>
             </div>
             {wrongCount > 0 && (
-              <button onClick={handleRetry} disabled={retrying}
+              <button data-testid="review-retry-btn" onClick={handleRetry} disabled={retrying}
                 className="gold-gradient px-4 py-2 md:px-6 rounded-xl text-on-secondary font-bold text-sm flex items-center gap-2 shadow-lg shadow-secondary/10 active:scale-95 transition-transform disabled:opacity-50">
                 <span className="material-symbols-outlined text-sm">refresh</span>
                 <span className="hidden sm:inline">{t('review.retryWrong')}</span>
@@ -145,7 +145,7 @@ export default function Review() {
           {filtered.map((q: any) => {
             const correctIdx = q.correctAnswer?.[0]
             return (
-              <article key={q.id} className="bg-surface-container rounded-2xl overflow-hidden border border-outline-variant/10 shadow-xl">
+              <article data-testid="review-question-item" key={q.id} className="bg-surface-container rounded-2xl overflow-hidden border border-outline-variant/10 shadow-xl">
                 <div className="p-5 md:p-7 space-y-6">
                   {/* Question header */}
                   <div className="flex items-center justify-between">
