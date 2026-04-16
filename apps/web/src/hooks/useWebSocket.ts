@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { resolveWsUrl } from '../api/config';
+import { getAccessToken } from '../api/tokenStore';
 
 export interface WebSocketMessage {
   type: string;
@@ -133,10 +134,13 @@ export const useWebSocket = ({
   const reconnectAttemptsRef = useRef(0);
   const maxReconnectAttempts = 5;
 
-  const connect = () => {
+  const connect = useCallback(() => {
     try {
       const wsUrl = resolveWsUrl(url);
-      const newSocket = new WebSocket(wsUrl);
+      // Add JWT token as query parameter (WebSocket API doesn't support custom headers)
+      const token = getAccessToken();
+      const wsUrlWithAuth = token ? `${wsUrl}${wsUrl.includes('?') ? '&' : '?'}token=${encodeURIComponent(token)}` : wsUrl;
+      const newSocket = new WebSocket(wsUrlWithAuth);
 
       newSocket.onopen = () => {
         if (process.env.NODE_ENV !== 'production') {
@@ -231,7 +235,7 @@ export const useWebSocket = ({
       console.error('[WebSocket] Failed to connect:', err);
       setError('Failed to connect to WebSocket');
     }
-  };
+  }, [url]);
 
   const disconnect = () => {
     if (reconnectTimeoutRef.current) {
@@ -266,7 +270,7 @@ export const useWebSocket = ({
     return () => {
       disconnect();
     };
-  }, []);
+  }, [url]);
 
   return {
     socket,
