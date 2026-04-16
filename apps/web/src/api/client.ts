@@ -20,6 +20,11 @@ function addAuthInterceptor(instance: typeof api) {
   instance.interceptors.request.use(
     (config: any) => {
       const token = getAccessToken()
+      if (isDebug()) {
+        console.log('=== API CLIENT: Request Interceptor ===')
+        console.log('URL:', config.url)
+        console.log('Token exists:', !!token)
+      }
       if (token && config.headers) config.headers.Authorization = `Bearer ${token}`
       return config
     },
@@ -28,26 +33,6 @@ function addAuthInterceptor(instance: typeof api) {
 }
 addAuthInterceptor(api)
 addAuthInterceptor(aiApi)
-
-// Request interceptor to add JWT token from in-memory store
-api.interceptors.request.use(
-  (config: any) => {
-    const token = getAccessToken()
-    if (isDebug()) {
-      console.log('=== API CLIENT: Request Interceptor ===')
-      console.log('URL:', config.url)
-      console.log('Token exists:', !!token)
-    }
-
-    if (token && config.headers) {
-      config.headers.Authorization = `Bearer ${token}`
-    }
-    return config
-  },
-  (error) => {
-    return Promise.reject(error)
-  }
-)
 
 // Response interceptor to handle token refresh
 api.interceptors.response.use(
