@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../store/authStore'
+import { api } from '../api/client'
 
 export default function AuthCallback() {
   const { t } = useTranslation()
@@ -25,26 +26,24 @@ export default function AuthCallback() {
         if (errorParam) {
           console.error('[AUTH_CALLBACK] OAuth error:', errorParam);
           setError(`OAuth error: ${errorParam}`);
-          setTimeout(() => navigate('/login?error=oauth_failed'), 2000);
+          setTimeout(() => navigate('/login?error=oauth_failed'), 1000);
           return;
         }
 
         if (!code) {
           console.error('[AUTH_CALLBACK] No code received in URL');
           setError('No authentication code received');
-          setTimeout(() => navigate('/login?error=no_tokens'), 2000);
+          setTimeout(() => navigate('/login?error=no_tokens'), 1000);
           return;
         }
 
-        // --- NEW FLOW: Exchange code for tokens via POST ---
+        // Exchange code for tokens via POST
         // The refresh token is set by the backend as an httpOnly cookie.
         // We only receive the accessToken and user profile in JSON.
-        const { api } = await import('../api/client');
         const response = await api.post('/api/auth/exchange', { code });
         const { accessToken, name, email, avatar, role } = response.data;
 
         if (accessToken) {
-          // Use AuthContext to store access token in memory and user profile
           login({
             accessToken,
             name: name || 'User',
@@ -54,21 +53,17 @@ export default function AuthCallback() {
           });
 
           console.log('[AUTH_CALLBACK] User logged in via exchange success');
-
-          // Show success message briefly then redirect
-          setTimeout(() => {
-            navigate('/');
-          }, 1500);
+          setTimeout(() => navigate('/'), 500);
         } else {
           console.error('[AUTH_CALLBACK] Exchange failed: No access token in response');
           setError('Failed to retrieve authentication tokens');
-          setTimeout(() => navigate('/login?error=no_tokens'), 2000);
+          setTimeout(() => navigate('/login?error=no_tokens'), 1000);
         }
       } catch (err: any) {
         console.error('[AUTH_CALLBACK] Error processing callback:', err);
         const backendError = err.response?.data?.message || err.message;
         setError(`${t('auth.errorAuth')}: ${backendError}`);
-        setTimeout(() => navigate('/login?error=processing_failed'), 3000);
+        setTimeout(() => navigate('/login?error=processing_failed'), 1500);
       } finally {
         setIsProcessing(false);
       }
