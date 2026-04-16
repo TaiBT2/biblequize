@@ -10,8 +10,11 @@
 import { test as base, type Page } from '@playwright/test'
 import { TestApi } from '../helpers/test-api'
 import path from 'path'
+import { fileURLToPath } from 'url'
 
 // Resolve storage-state directory relative to this file
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 const STORAGE_DIR = path.join(__dirname, 'storage-states')
 
 type AuthFixtures = {
