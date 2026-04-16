@@ -104,6 +104,7 @@ export interface UseWebSocketProps {
   onPlayerJoined?: (data: PlayerJoinedData) => void;
   onPlayerLeft?: (data: any) => void;
   onPlayerReady?: (data: PlayerReadyData) => void;
+  onPlayerUnready?: (data: PlayerReadyData) => void;
   onRoomStarting?: (data: any) => void;
   onQuestionStart?: (data: QuestionStartData) => void;
   onAnswerSubmitted?: (data: AnswerSubmittedData) => void;
@@ -119,6 +120,7 @@ export const useWebSocket = ({
   onPlayerJoined,
   onPlayerLeft,
   onPlayerReady,
+  onPlayerUnready,
   onRoomStarting,
   onQuestionStart,
   onAnswerSubmitted,
@@ -200,7 +202,7 @@ export const useWebSocket = ({
               onPlayerReady?.(message.data);
               break;
             case MESSAGE_TYPES.PLAYER_UNREADY:
-              onPlayerReady?.(message.data);
+              onPlayerUnready?.(message.data);
               break;
             case MESSAGE_TYPES.ROOM_STARTING:
               onRoomStarting?.(message.data);
