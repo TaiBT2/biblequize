@@ -207,13 +207,13 @@ export default function Ranked() {
     : rankedStatus.currentDifficulty === 'hard' ? t('practice.hard') : rankedStatus.currentDifficulty
 
   return (
-    <main className="max-w-5xl mx-auto space-y-6">
+    <main data-testid="ranked-page" className="max-w-5xl mx-auto space-y-6">
       {/* ── Header ── */}
       <header className="mb-4">
         <h1 className="text-4xl font-extrabold tracking-tight mb-2 flex items-center gap-3">
           <span>{t('ranked.title')}</span>
         </h1>
-        <div className="flex items-center gap-2">
+        <div data-testid="ranked-tier-badge" className="flex items-center gap-2">
           <div className="flex items-center justify-center w-8 h-8 rounded-full bg-secondary/10 text-secondary border border-secondary/20 shadow-[0_0_15px_rgba(248,189,69,0.15)]">
             <span className="material-symbols-outlined text-lg" style={{ ...FILL_1, color: currentTier.color }}>{currentTier.icon}</span>
           </div>
@@ -222,7 +222,7 @@ export default function Ranked() {
       </header>
 
       {/* ── Energy Card ── */}
-      <section className="glass-card rounded-xl p-6 border border-white/5 relative overflow-hidden">
+      <section data-testid="ranked-energy-display" className="glass-card rounded-xl p-6 border border-white/5 relative overflow-hidden">
         <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
           <span className="material-symbols-outlined text-8xl">bolt</span>
         </div>
@@ -237,7 +237,7 @@ export default function Ranked() {
             </div>
           </div>
           <div className="text-right">
-            <div className="flex items-center gap-1 text-on-surface-variant text-sm font-medium">
+            <div data-testid="ranked-reset-timer" className="flex items-center gap-1 text-on-surface-variant text-sm font-medium">
               <span className="material-symbols-outlined text-sm">schedule</span>
               {t('ranked.recovery')}: {timeLeft || '--:--:--'}
             </div>
@@ -259,18 +259,18 @@ export default function Ranked() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             <div>
               <div className="text-on-surface-variant text-xs mb-1">{t('ranked.questionsCounted')}</div>
-              <div className="font-bold text-on-surface mb-2">{rankedStatus.questionsCounted}<span className="text-on-surface-variant font-normal">/{rankedStatus.cap}</span></div>
+              <div data-testid="ranked-questions-counted" className="font-bold text-on-surface mb-2">{rankedStatus.questionsCounted}<span className="text-on-surface-variant font-normal">/{rankedStatus.cap}</span></div>
               <div className="h-1 w-full bg-primary-container rounded-full overflow-hidden">
                 <div className="h-full bg-secondary/60 rounded-full" style={{ width: `${rankedStatus.cap > 0 ? (rankedStatus.questionsCounted / rankedStatus.cap) * 100 : 0}%` }} />
               </div>
             </div>
             <div className="flex flex-col items-center justify-center border-l border-r border-outline-variant/10">
               <div className="text-on-surface-variant text-xs mb-1">{t('ranked.pointsToday')}</div>
-              <div className="text-4xl font-black text-secondary">{rankedStatus.pointsToday ?? 0}</div>
+              <div data-testid="ranked-points-today" className="text-4xl font-black text-secondary">{rankedStatus.pointsToday ?? 0}</div>
             </div>
             <div className="flex flex-col items-end justify-center">
               <div className="text-on-surface-variant text-xs mb-1">{t('ranked.ranking')}</div>
-              <div className="text-xl font-bold text-on-surface flex items-center gap-2">
+              <div data-testid="ranked-user-rank" className="text-xl font-bold text-on-surface flex items-center gap-2">
                 <span>#{userRank?.rank ?? '—'}</span>
               </div>
             </div>
@@ -286,7 +286,7 @@ export default function Ranked() {
           </h3>
           <div className="flex justify-between items-start mb-4">
             <div>
-              <h4 className="text-3xl font-black text-on-surface tracking-tight">{rankedStatus.currentBook}</h4>
+              <h4 data-testid="ranked-current-book" className="text-3xl font-black text-on-surface tracking-tight">{rankedStatus.currentBook}</h4>
               <p className="text-sm text-on-surface-variant">
                 {rankedStatus.bookProgress ? t('ranked.bookOf', { current: rankedStatus.bookProgress.currentIndex + 1, total: rankedStatus.bookProgress.totalBooks }) : ''}
               </p>
@@ -302,7 +302,7 @@ export default function Ranked() {
       </div>
 
       {/* ── Season Card ── */}
-      <section className="glass-card rounded-xl p-8 border border-white/5 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+      <section data-testid="ranked-season-card" className="glass-card rounded-xl p-8 border border-white/5 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
         <div className="absolute -right-20 -bottom-20 opacity-5 pointer-events-none">
           <span className="material-symbols-outlined text-[300px]">trophy</span>
         </div>
@@ -333,6 +333,7 @@ export default function Ranked() {
       <div className="mt-4 mb-10">
         {canPlay ? (
           <button
+            data-testid="ranked-start-btn"
             onClick={startRankedQuiz}
             className="w-full gold-gradient text-on-secondary font-black py-5 rounded-xl text-xl uppercase tracking-widest shadow-[0_8px_30px_rgb(248,189,69,0.3)] active:scale-[0.98] transition-transform flex items-center justify-center gap-4"
           >
@@ -340,7 +341,7 @@ export default function Ranked() {
             {t('gameModes.rankedBtn')}
           </button>
         ) : (
-          <div className="w-full bg-surface-container-high text-on-surface-variant font-black py-5 rounded-xl text-xl uppercase tracking-widest flex items-center justify-center gap-4 opacity-60 cursor-not-allowed">
+          <div data-testid="ranked-no-energy-msg" className="w-full bg-surface-container-high text-on-surface-variant font-black py-5 rounded-xl text-xl uppercase tracking-widest flex items-center justify-center gap-4 opacity-60 cursor-not-allowed">
             <span className="material-symbols-outlined">block</span>
             {t('ranked.outOfEnergy')}
           </div>

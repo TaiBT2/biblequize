@@ -329,7 +329,7 @@ const DailyChallenge: React.FC = () => {
         </section>
 
         {/* Result Card */}
-        <section className="relative group">
+        <section data-testid="daily-completed-badge" className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-secondary/20 via-tertiary/20 to-secondary/20 rounded-[2rem] blur-xl opacity-50 group-hover:opacity-100 transition duration-1000" />
           <div className="relative bg-surface-container border border-outline-variant/30 rounded-[2rem] overflow-hidden p-10 flex flex-col items-center text-center space-y-8">
             <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
@@ -537,7 +537,7 @@ const DailyChallenge: React.FC = () => {
   const timeLimit = challengeData.timeLimit ?? 5
 
   return (
-    <div className="max-w-5xl mx-auto space-y-12">
+    <div data-testid="daily-page" className="max-w-5xl mx-auto space-y-12">
       <PageMeta
         title="Thu thach hang ngay"
         description="5 cau hoi Kinh Thanh moi ngay — thu suc voi cong dong va chia se ket qua."
@@ -552,7 +552,7 @@ const DailyChallenge: React.FC = () => {
             <span className="text-sm font-medium">{getToday()}</span>
           </div>
         </div>
-        <div className="bg-surface-container-high px-6 py-3 rounded-2xl border border-secondary/20 gold-glow flex flex-col items-center">
+        <div data-testid="daily-countdown" className="bg-surface-container-high px-6 py-3 rounded-2xl border border-secondary/20 gold-glow flex flex-col items-center">
           <span className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">{t('daily.refreshIn')}</span>
           <div className="font-mono text-2xl font-black text-secondary tracking-widest">
             {countdown}
@@ -591,6 +591,7 @@ const DailyChallenge: React.FC = () => {
             </div>
           </div>
           <button
+            data-testid="daily-start-btn"
             onClick={handleStart}
             className="gold-gradient px-12 py-5 rounded-2xl text-on-secondary font-black text-lg shadow-lg hover:shadow-secondary/20 transition-all hover:scale-[1.02] active:scale-95"
           >
@@ -639,7 +640,7 @@ const DailyChallenge: React.FC = () => {
       {/* Bottom Layout: Leaderboard & History */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
         {/* Leaderboard Preview */}
-        <section className="lg:col-span-3 space-y-6">
+        <section data-testid="daily-leaderboard" className="lg:col-span-3 space-y-6">
           <div className="flex items-center justify-between">
             <h4 className="text-xl font-bold text-on-surface">{t('daily.todayLeaderboard')}</h4>
             <Link to="/leaderboard" className="text-secondary text-sm font-bold flex items-center gap-1 hover:underline">
@@ -701,7 +702,7 @@ const DailyChallenge: React.FC = () => {
           <h4 className="text-xl font-bold text-on-surface">{t('daily.historyAndStreak')}</h4>
           <div className="bg-surface-container rounded-2xl border border-outline-variant/10 p-6 space-y-8">
             {/* Streak info */}
-            <div className="flex items-center gap-4">
+            <div data-testid="daily-streak-display" className="flex items-center gap-4">
               <div className="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center text-secondary relative">
                 <span className="material-symbols-outlined text-4xl" style={FILL_1}>local_fire_department</span>
                 {currentStreak > 0 && (

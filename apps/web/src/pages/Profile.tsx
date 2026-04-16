@@ -169,9 +169,9 @@ const Profile: React.FC = () => {
   }
 
   const quickStats = [
-    { icon: 'quiz', iconFill: false, label: t('profile.totalPoints'), value: (profile.totalPoints ?? 0).toLocaleString(), bgColor: 'bg-secondary/10', textColor: 'text-secondary' },
-    { icon: 'bolt', iconFill: true, label: t('profile.bestStreak'), value: `${profile.longestStreak ?? 0} ${t('common.days')}`, bgColor: 'bg-[#e7c268]/10', textColor: 'text-[#e7c268]' },
-    { icon: 'local_fire_department', iconFill: true, label: t('profile.currentStreak'), value: `${profile.currentStreak ?? 0} ${t('common.days')}`, bgColor: 'bg-primary/10', textColor: 'text-primary', hiddenOnMobile: true },
+    { icon: 'quiz', iconFill: false, label: t('profile.totalPoints'), value: (profile.totalPoints ?? 0).toLocaleString(), bgColor: 'bg-secondary/10', textColor: 'text-secondary', testId: 'profile-stats-points' },
+    { icon: 'bolt', iconFill: true, label: t('profile.bestStreak'), value: `${profile.longestStreak ?? 0} ${t('common.days')}`, bgColor: 'bg-[#e7c268]/10', textColor: 'text-[#e7c268]', testId: 'profile-stats-streak' },
+    { icon: 'local_fire_department', iconFill: true, label: t('profile.currentStreak'), value: `${profile.currentStreak ?? 0} ${t('common.days')}`, bgColor: 'bg-primary/10', textColor: 'text-primary', hiddenOnMobile: true, testId: undefined },
   ]
 
   const history = historyData?.content ?? (Array.isArray(historyData) ? historyData as unknown as SessionHistory[] : [])
@@ -186,7 +186,7 @@ const Profile: React.FC = () => {
   }))
 
   return (
-    <>
+    <div data-testid="profile-page">
       {/* Hero Section */}
       <section className="relative rounded-3xl overflow-hidden mb-12">
         <div className="h-48 md:h-72 relative">
@@ -194,7 +194,7 @@ const Profile: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         </div>
         <div className="absolute bottom-6 left-6 md:left-10 flex flex-col md:flex-row items-end gap-6 w-full pr-12">
-          <div className="w-24 h-24 md:w-40 md:h-40 rounded-3xl border-4 border-background bg-surface-container-high overflow-hidden shadow-2xl relative z-10">
+          <div data-testid="profile-avatar" className="w-24 h-24 md:w-40 md:h-40 rounded-3xl border-4 border-background bg-surface-container-high overflow-hidden shadow-2xl relative z-10">
             {profile.avatarUrl ? (
               <img alt="User avatar" className="w-full h-full object-cover" src={profile.avatarUrl} />
             ) : (
@@ -204,10 +204,10 @@ const Profile: React.FC = () => {
             )}
           </div>
           <div className="flex-1 pb-4">
-            <h1 className="text-3xl md:text-5xl font-black text-on-surface tracking-tight mb-1">
+            <h1 data-testid="profile-name" className="text-3xl md:text-5xl font-black text-on-surface tracking-tight mb-1">
               {profile.name}
             </h1>
-            <p className="text-secondary font-bold flex items-center gap-2 text-lg">
+            <p data-testid="profile-tier-badge" className="text-secondary font-bold flex items-center gap-2 text-lg">
               <span className="material-symbols-outlined text-xl" style={FILL_STYLE}>verified</span>
               {tierProgress.currentTierName}
             </p>
@@ -273,6 +273,7 @@ const Profile: React.FC = () => {
           {quickStats.map((stat) => (
             <div
               key={stat.label}
+              data-testid={stat.testId}
               className={`bg-surface-container rounded-3xl p-8 flex items-center gap-5${
                 stat.hiddenOnMobile ? ' hidden md:flex' : ''
               }`}
@@ -297,7 +298,7 @@ const Profile: React.FC = () => {
       </div>
 
       {/* Heatmap Section */}
-      <section className="bg-surface-container rounded-3xl p-10 mb-12 overflow-hidden">
+      <section data-testid="profile-heatmap" className="bg-surface-container rounded-3xl p-10 mb-12 overflow-hidden">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <h2 className="text-xl font-bold text-on-surface tracking-tight uppercase">
             {t('profile.learningLog')}
@@ -391,7 +392,9 @@ const Profile: React.FC = () => {
       </section>
 
       {/* Weakness Analysis */}
-      <WeaknessWidget />
+      <div data-testid="profile-weakness-widget">
+        <WeaknessWidget />
+      </div>
 
       {/* Sound & Haptics Settings */}
       <SoundHapticsSettings />
@@ -401,7 +404,7 @@ const Profile: React.FC = () => {
 
       {/* Delete Account */}
       <DeleteAccountSection />
-    </>
+    </div>
   )
 }
 
@@ -582,6 +585,7 @@ function DeleteAccountSection() {
       <div className="border-t border-error/20 pt-6">
         <h3 className="text-error font-semibold mb-2">{t('profile.dangerZone')}</h3>
         <button
+          data-testid="profile-delete-account-btn"
           onClick={() => setShowModal(true)}
           className="text-error border border-error/30 px-4 py-2 rounded-lg text-sm hover:bg-error/10 transition-colors"
         >

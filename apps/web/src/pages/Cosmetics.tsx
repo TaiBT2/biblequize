@@ -58,7 +58,7 @@ export default function Cosmetics() {
   }
 
   return (
-    <div className="space-y-8 max-w-3xl mx-auto">
+    <div data-testid="cosmetics-page" className="space-y-8 max-w-3xl mx-auto">
       {/* Header */}
       <div className="flex items-center gap-3">
         <Link to="/profile" className="text-on-surface-variant hover:text-on-surface transition-colors">
@@ -71,7 +71,7 @@ export default function Cosmetics() {
       </div>
 
       {/* Avatar Frames */}
-      <section>
+      <section data-testid="cosmetics-frames-section">
         <h2 className="text-lg font-bold text-on-surface mb-4 flex items-center gap-2">
           <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
             frame_person
@@ -113,7 +113,7 @@ export default function Cosmetics() {
       </section>
 
       {/* Quiz Themes */}
-      <section>
+      <section data-testid="cosmetics-themes-section">
         <h2 className="text-lg font-bold text-on-surface mb-4 flex items-center gap-2">
           <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
             palette
