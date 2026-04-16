@@ -77,10 +77,16 @@ const FILL_STYLE = { fontVariationSettings: "'FILL' 1" }
 
 // --- Component ---
 
+interface AchievementStats {
+  totalPoints?: number
+  accuracy?: number
+  longestStreak?: number
+}
+
 const Achievements: React.FC = () => {
   const { t } = useTranslation()
   const [achievements, setAchievements] = useState<Achievement[]>([])
-  const [stats, setStats] = useState<any>({})
+  const [stats, setStats] = useState<AchievementStats>({})
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<string>('all')
   const { user } = useAuth()

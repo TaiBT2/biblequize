@@ -9,9 +9,14 @@ import {
   type PlayerScore,
 } from './room/RoomOverlays';
 
-type Question = { id: string; content: string; options: string[] };
+type Question = { id: string; content: string; options: string[]; explanation?: string };
 
 type EliminationToast = { id: number; username: string; rank: number };
+
+interface RoomQuizLocationState {
+  mode?: string;
+  myTeam?: string;
+}
 
 const ANSWER_LETTERS = ['A', 'B', 'C', 'D'];
 const FILL_STYLE = { fontVariationSettings: "'FILL' 1" } as const;
@@ -22,8 +27,9 @@ const RoomQuiz: React.FC = () => {
   const { roomId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const gameMode: string = (location.state as any)?.mode ?? 'SPEED_RACE';
-  const myTeamFromState: string | null = (location.state as any)?.myTeam ?? null;
+  const state = location.state as RoomQuizLocationState | null;
+  const gameMode: string = state?.mode ?? 'SPEED_RACE';
+  const myTeamFromState: string | null = state?.myTeam ?? null;
 
   const isBattleRoyale = gameMode === 'BATTLE_ROYALE';
   const isTeamVsTeam = gameMode === 'TEAM_VS_TEAM';
