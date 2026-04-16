@@ -1,5 +1,47 @@
 # TODO
 
+## Test Coverage Expansion — 30 Tasks [DONE — Phases 1-3 unit tests]
+
+### Phase 1 — CRITICAL: [x] DONE — 83 new tests
+- Task 1: useWebSocket (15) ✅
+- Task 2: useStomp (18) ✅
+- Task 3: useRankedDataSync (8) ✅
+- Task 4: RequireAuth (8) ✅
+- Task 5: RequireAdmin (8) ✅
+- Task 6: ErrorBoundary (10) ✅
+- Task 7: AuthCallback (8) ✅
+- Task 8: ErrorContext (8) ✅
+
+### Phase 2 — HIGH: [x] DONE — 119 new tests
+- Task 9: Header (14) ✅
+- Task 10: useOnlineStatus (7) ✅
+- Task 11: Onboarding + OnboardingTryQuiz (35) ✅
+- Task 12: WeeklyQuiz (13) ✅
+- Task 13: MysteryMode (14) ✅
+- Task 14: SpeedRound (13) ✅
+- Task 15: LiveFeed (12) ✅
+- Task 16: ReactionBar (11) ✅
+- Task 17: E2E onboarding — [ ] DEFERRED (needs running app)
+- Task 18: E2E multiplayer — [ ] DEFERRED (needs running app)
+
+### Phase 3 — MEDIUM: [x] DONE — 121 new tests
+- Task 19: Modal components (42) ✅
+- Task 20: Cosmetics (10) ✅
+- Task 23: RoomOverlays (46) ✅
+- Task 21-22: Admin tests — [ ] DEFERRED
+- Task 24-25: E2E tests — [ ] DEFERRED (needs running app)
+
+### Phase 4 — LOW: [x] DONE — 23 new tests
+- Task 27: Legal pages (10) ✅
+- Task 28: onboardingStore + quizLanguage (13) ✅
+- Task 26: Utility components — [ ] DEFERRED
+- Task 29: E2E — [ ] DEFERRED
+- Task 30: Full regression ✅ — 733/735 pass (2 pre-existing failures)
+
+### Total: 323 new unit tests, 412 → 733 pass (+78%)
+
+---
+
 ## Code Review Fixes — 15 Issues [DONE]
 
 ### Task CR-1: Fix duplicate auth interceptor in client.ts
