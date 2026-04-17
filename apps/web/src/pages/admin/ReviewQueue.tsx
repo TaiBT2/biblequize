@@ -160,7 +160,7 @@ export default function ReviewQueue() {
       ) : (
         <div className="space-y-4">
           {items.map(q => (
-            <div key={q.id} className="bg-[#1d1f29] rounded-lg p-5 border border-[#504535]/20">
+            <div data-testid="review-queue-item" key={q.id} className="bg-[#1d1f29] rounded-lg p-5 border border-[#504535]/20">
               {/* Header row */}
               <div className="flex items-center gap-2 mb-3 flex-wrap">
                 <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${DIFF_COLOR[q.difficulty] ?? 'bg-white/5'}`}>
@@ -228,6 +228,7 @@ export default function ReviewQueue() {
               {rejectingId === q.id && (
                 <div className="mb-3">
                   <textarea
+                    data-testid="review-reject-comment"
                     rows={2}
                     value={rejectComment}
                     onChange={e => setRejectComment(e.target.value)}
@@ -235,7 +236,7 @@ export default function ReviewQueue() {
                     className="w-full bg-[#191b25] border-none rounded text-sm text-[#e1e1ef] p-3 focus:ring-1 focus:ring-[#e8a832] resize-none mb-2"
                   />
                   <div className="flex gap-2">
-                    <button onClick={() => reject(q.id)} disabled={actioningId === q.id}
+                    <button data-testid="review-reject-confirm-btn" onClick={() => reject(q.id)} disabled={actioningId === q.id}
                       className="px-4 py-1.5 bg-red-500 text-white text-xs font-bold rounded-lg hover:bg-red-600 disabled:opacity-50">
                       Xác nhận từ chối
                     </button>
@@ -250,10 +251,12 @@ export default function ReviewQueue() {
               {/* Action buttons */}
               {rejectingId !== q.id && (
                 <div className="flex gap-2">
-                  <button data-testid="review-approve-btn" onClick={() => approve(q.id)} disabled={actioningId === q.id}
-                    className="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl transition-colors disabled:opacity-50">
-                    {actioningId === q.id ? '...' : '✓ Duyệt'}
-                  </button>
+                  <span data-testid="review-queue-approve-btn" className="inline-flex">
+                    <button data-testid="review-approve-btn" onClick={() => approve(q.id)} disabled={actioningId === q.id}
+                      className="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl transition-colors disabled:opacity-50">
+                      {actioningId === q.id ? '...' : '✓ Duyệt'}
+                    </button>
+                  </span>
                   <button data-testid="review-reject-btn" onClick={() => setRejectingId(q.id)} disabled={actioningId === q.id}
                     className="px-5 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 text-sm font-bold rounded-xl transition-colors disabled:opacity-50">
                     ✗ Từ chối

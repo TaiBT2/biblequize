@@ -82,7 +82,7 @@ export default function UsersAdmin() {
       <div className="flex flex-wrap items-center gap-3">
         <div className="relative flex-1 min-w-[200px] max-w-[300px]">
           <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#d5c4af]/50 text-sm">search</span>
-          <input data-testid="admin-users-search-input" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && fetchUsers(0)}
+          <input data-testid="admin-users-search" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && fetchUsers(0)}
             placeholder="Tìm theo tên hoặc email..." className="w-full h-10 bg-[#191b25] border-none rounded px-10 text-sm text-[#e1e1ef] placeholder:text-[#d5c4af]/40 focus:ring-1 focus:ring-[#e8a832] transition-all" />
         </div>
         <select value={roleFilter} onChange={e => { setRoleFilter(e.target.value); setPage(0) }}
@@ -179,7 +179,7 @@ export default function UsersAdmin() {
 
       {/* Detail Modal */}
       {selected && (
-        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={() => setSelected(null)}>
+        <div data-testid="admin-user-detail-modal" className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" onClick={() => setSelected(null)}>
           <div className="bg-[#1d1f29] rounded-lg border border-[#504535]/20 max-w-lg w-full p-6 space-y-5" onClick={e => e.stopPropagation()}>
             {selected.isBanned && (
               <div className="bg-red-500/10 border border-red-500/30 rounded p-3 text-red-400 text-sm flex items-center gap-2">
@@ -193,7 +193,7 @@ export default function UsersAdmin() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-[#e1e1ef]">{selected.name}</h3>
-                <p className="text-[#d5c4af]/60 text-sm font-mono">{selected.email}</p>
+                <p data-testid="admin-user-detail-email" className="text-[#d5c4af]/60 text-sm font-mono">{selected.email}</p>
                 <div className="flex gap-2 mt-1">{roleBadge(selected.role)}</div>
               </div>
             </div>
@@ -228,10 +228,10 @@ export default function UsersAdmin() {
                 Mở khóa tài khoản
               </button>
             ) : (
-              <div className="space-y-2">
-                <textarea value={banReason} onChange={e => setBanReason(e.target.value)} placeholder="Lý do khóa (tối thiểu 10 ký tự)..."
+              <div data-testid="admin-user-ban-btn" className="space-y-2">
+                <textarea data-testid="admin-ban-reason-input" value={banReason} onChange={e => setBanReason(e.target.value)} placeholder="Lý do khóa (tối thiểu 10 ký tự)..."
                   className="w-full bg-[#11131c] border border-[#504535]/20 rounded p-3 text-sm text-[#e1e1ef] placeholder:text-[#d5c4af]/30 resize-none focus:ring-1 focus:ring-[#e8a832]" rows={2} />
-                <button data-testid="admin-user-ban-btn" onClick={() => handleBan(selected, true)} disabled={isSaving || banReason.trim().length < 10}
+                <button data-testid="admin-ban-confirm-btn" onClick={() => handleBan(selected, true)} disabled={isSaving || banReason.trim().length < 10}
                   className="w-full py-2.5 bg-red-600 text-white rounded text-sm font-bold disabled:opacity-50 hover:bg-red-500 transition-colors">
                   Khóa tài khoản
                 </button>

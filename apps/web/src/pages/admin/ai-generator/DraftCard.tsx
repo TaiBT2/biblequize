@@ -28,7 +28,7 @@ export default function DraftCard({ draft, isEditing, isSaving, editData, onEdit
   const isCorrect = (i: number) => Array.isArray(cur.correctAnswer) ? cur.correctAnswer.includes(i) : cur.correctAnswer === i
 
   return (
-    <div className={`bg-[#1d1f29] rounded-lg p-5 border-2 transition-all duration-200 ${
+    <div data-testid="ai-draft-card" data-status={draft.status} className={`bg-[#1d1f29] rounded-lg p-5 border-2 transition-all duration-200 ${
       draft.status === 'approved' ? 'border-emerald-500/30 opacity-80' :
       draft.status === 'rejected' ? 'border-transparent opacity-50' :
       isEditing ? 'border-[#e8a832]/50 shadow-lg' : 'border-[#504535]/10 hover:border-[#504535]/30'
@@ -124,12 +124,12 @@ export default function DraftCard({ draft, isEditing, isSaving, editData, onEdit
       {/* Actions */}
       {draft.status === 'pending' && !isEditing && (
         <div className="flex gap-2 mt-4 pt-4 border-t border-[#eeeae0]">
-          <button onClick={onApprove} disabled={isSaving}
+          <button data-testid="ai-draft-approve-btn" onClick={onApprove} disabled={isSaving}
             className="flex-1 bg-[#e8a832] text-[#281900] text-sm font-bold py-2.5 rounded-xl hover:brightness-110 transition-colors disabled:opacity-60">
             {isSaving ? 'Đang lưu...' : 'Lưu câu hỏi'}
           </button>
           <button onClick={onEdit} className="px-4 text-sm font-bold text-[#d5c4af] bg-[#32343e] py-2.5 rounded-xl hover:bg-[#373943] transition-colors">Sửa</button>
-          <button onClick={onReject} className="w-10 flex items-center justify-center text-[#d5c4af]/60 bg-[#f0ece4] rounded-xl hover:bg-red-500/10 hover:text-red-500 transition-colors" title="Từ chối">✕</button>
+          <button data-testid="ai-draft-reject-btn" onClick={onReject} className="w-10 flex items-center justify-center text-[#d5c4af]/60 bg-[#f0ece4] rounded-xl hover:bg-red-500/10 hover:text-red-500 transition-colors" title="Từ chối">✕</button>
         </div>
       )}
 

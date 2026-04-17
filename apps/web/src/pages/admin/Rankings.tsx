@@ -53,25 +53,27 @@ export default function RankingsAdmin() {
 
       {active && (
         <div data-testid="active-season-banner" className="rounded-lg border-2 border-emerald-500/30 bg-emerald-500/5 p-5">
-          <div className="flex items-center justify-between">
+          <div data-testid="admin-season-active-banner" className="flex items-center justify-between">
             <div>
               <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">Đang diễn ra</span>
               <h3 className="text-xl font-bold text-[#e1e1ef] mt-1">{active.name}</h3>
               <p className="text-[#d5c4af]/60 text-sm">{active.startDate} → {active.endDate}</p>
             </div>
-            <button data-testid="end-season-btn" onClick={() => endSeason(active.id)} className="px-4 py-2 bg-red-600/20 text-red-400 rounded-lg text-sm font-medium hover:bg-red-600/30 border border-red-500/20">Kết thúc sớm</button>
+            <span data-testid="admin-season-end-btn" className="inline-flex">
+              <button data-testid="end-season-btn" onClick={() => endSeason(active.id)} className="px-4 py-2 bg-red-600/20 text-red-400 rounded-lg text-sm font-medium hover:bg-red-600/30 border border-red-500/20">Kết thúc sớm</button>
+            </span>
           </div>
         </div>
       )}
 
       {isLoading ? <div className="text-center text-[#d5c4af]/60 py-8">Đang tải...</div>
        : seasons.filter(s => !s.isActive).length === 0 ? <div className="text-center text-[#d5c4af]/60 py-8">Chưa có mùa giải nào</div>
-       : <div data-testid="inactive-seasons-list" className="space-y-3">{seasons.filter(s => !s.isActive).map(s => (
+       : <div data-testid="inactive-seasons-list" className="space-y-3"><div data-testid="admin-seasons-archived-list" className="contents">{seasons.filter(s => !s.isActive).map(s => (
           <div key={s.id} className="rounded-lg border border-[#504535]/20 bg-[#1d1f29] p-4 flex items-center justify-between">
             <div><h4 className="font-medium text-[#e1e1ef]">{s.name}</h4><p className="text-[#d5c4af]/60 text-xs">{s.startDate} → {s.endDate}</p></div>
             <span className="text-[#d5c4af]/30 text-xs">Đã kết thúc</span>
           </div>
-        ))}</div>
+        ))}</div></div>
       }
     </div>
   )

@@ -19,7 +19,7 @@ export default function KpiCards({ data }: { data: KpiData | null }) {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {/* Card 1: Users */}
-      <div className="bg-[#1d1f29] rounded-lg h-[100px] flex flex-col justify-center px-6 border-l-2 border-[#e8a832] shadow-sm">
+      <div data-testid="kpi-total-users" className="bg-[#1d1f29] rounded-lg h-[100px] flex flex-col justify-center px-6 border-l-2 border-[#e8a832] shadow-sm">
         <span className="text-[11px] uppercase tracking-[0.2em] text-[#d5c4af]/60 font-semibold">Người dùng</span>
         <div className="flex items-baseline justify-between mt-1">
           <span className="text-2xl font-bold text-white font-mono leading-tight">{kpiValue(data?.totalUsers)}</span>
@@ -39,13 +39,11 @@ export default function KpiCards({ data }: { data: KpiData | null }) {
       </div>
 
       {/* Card 3: Questions */}
-      <div className="bg-[#1d1f29] rounded-lg h-[100px] flex flex-col justify-center px-6 border-l-2 border-[#504535]/20">
+      <div data-testid="kpi-total-questions" className="bg-[#1d1f29] rounded-lg h-[100px] flex flex-col justify-center px-6 border-l-2 border-[#504535]/20">
         <span className="text-[11px] uppercase tracking-[0.2em] text-[#d5c4af]/60 font-semibold">Câu hỏi</span>
         <div className="flex items-baseline justify-between mt-1">
           <span className="text-2xl font-bold text-white font-mono">{kpiValue(data?.totalQuestions)} <span className="text-xs font-normal opacity-40 ml-1">active</span></span>
-          {(data?.pendingReview ?? 0) > 0 && (
-            <span className="px-2 py-0.5 bg-[#e8a832]/10 text-[#e8a832] text-[9px] uppercase tracking-wider font-bold rounded-sm border border-[#e8a832]/20">{data?.pendingReview} Pending</span>
-          )}
+          <span data-testid="kpi-pending-review" className={`px-2 py-0.5 bg-[#e8a832]/10 text-[#e8a832] text-[9px] uppercase tracking-wider font-bold rounded-sm border border-[#e8a832]/20 ${(data?.pendingReview ?? 0) > 0 ? '' : 'opacity-40'}`}>{data?.pendingReview ?? 0} Pending</span>
         </div>
       </div>
 

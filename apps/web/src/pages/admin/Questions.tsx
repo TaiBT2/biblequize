@@ -267,10 +267,12 @@ export default function QuestionsAdmin() {
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <button data-testid="admin-questions-create-btn" onClick={openCreate}
-            className="h-9 px-4 rounded-md bg-emerald-600 hover:bg-emerald-500 text-sm font-medium">
-            + Tạo câu hỏi
-          </button>
+          <span data-testid="admin-questions-add-btn" className="inline-flex">
+            <button data-testid="admin-questions-create-btn" onClick={openCreate}
+              className="h-9 px-4 rounded-md bg-emerald-600 hover:bg-emerald-500 text-sm font-medium">
+              + Tạo câu hỏi
+            </button>
+          </span>
           <button onClick={() => { setImportOpen(true); setImportDryResult(null); setImportResult(null) }}
             className="h-9 px-4 rounded-md bg-white/10 border border-white/10 hover:bg-white/20 text-sm">
             Import CSV/JSON
@@ -292,7 +294,7 @@ export default function QuestionsAdmin() {
         </div>
         <div>
           <label className="block text-xs text-white/50 mb-1">Sách</label>
-          <input value={book} onChange={e => setBook(e.target.value)} placeholder="vd: Genesis"
+          <input data-testid="admin-questions-book-filter" value={book} onChange={e => setBook(e.target.value)} placeholder="vd: Genesis"
             className="h-9 px-3 rounded-md bg-white/10 border border-white/10 text-sm w-32" />
         </div>
         <div>
@@ -362,7 +364,7 @@ export default function QuestionsAdmin() {
               ) : questions.length === 0 ? (
                 <tr><td colSpan={7} className="px-4 py-8 text-center text-white/40">Không có câu hỏi</td></tr>
               ) : questions.map(q => (
-                <tr key={q.id} className="odd:bg-white/[0.03] hover:bg-white/[0.06]">
+                <tr data-testid="admin-question-row" key={q.id} className="odd:bg-white/[0.03] hover:bg-white/[0.06]">
                   <td className="px-3 py-2 text-center">
                     <input type="checkbox"
                       checked={!!selectedIds[q.id]}
@@ -402,11 +404,11 @@ export default function QuestionsAdmin() {
                     )}
                   </td>
                   <td className="px-3 py-2 text-center whitespace-nowrap">
-                    <button onClick={() => openEdit(q)}
+                    <button data-testid="admin-question-edit-btn" onClick={() => openEdit(q)}
                       className="mx-0.5 px-2 py-1 rounded bg-white/10 hover:bg-white/20 text-xs" title="Sửa">✏️</button>
                     <button onClick={() => duplicate(q)}
                       className="mx-0.5 px-2 py-1 rounded bg-white/10 hover:bg-white/20 text-xs" title="Nhân bản">📄</button>
-                    <button onClick={() => deleteOne(q.id)}
+                    <button data-testid="admin-question-delete-btn" onClick={() => deleteOne(q.id)}
                       className="mx-0.5 px-2 py-1 rounded bg-rose-600/20 text-rose-300 hover:bg-rose-600/30 text-xs" title="Xóa">🗑️</button>
                   </td>
                 </tr>
@@ -443,7 +445,7 @@ export default function QuestionsAdmin() {
 
     {/* ── Edit / Create Modal ───────────────────────────────────────────────── */}
     {editing && (
-      <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 overflow-y-auto py-6">
+      <div data-testid="admin-questions-create-modal" className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 overflow-y-auto py-6">
         <div className="w-full max-w-2xl rounded-xl border border-white/10 bg-[#111018] p-6 shadow-2xl mx-4">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold">{editing.id ? 'Sửa câu hỏi' : 'Tạo câu hỏi'}</h3>
@@ -513,7 +515,7 @@ export default function QuestionsAdmin() {
                 Nội dung câu hỏi *
                 {editing.type === 'fill_in_blank' && <span className="ml-2 text-yellow-400">Dùng ___ để đánh dấu chỗ trống</span>}
               </label>
-              <textarea rows={3} className="w-full px-3 py-2 rounded bg-white/10 border border-white/10 text-sm resize-none"
+              <textarea data-testid="admin-question-content-input" rows={3} className="w-full px-3 py-2 rounded bg-white/10 border border-white/10 text-sm resize-none"
                 value={editing.content ?? ''} onChange={e => setField('content', e.target.value)} />
             </div>
 
@@ -611,7 +613,7 @@ export default function QuestionsAdmin() {
 
           <div className="flex items-center justify-end gap-2 mt-5">
             <button onClick={() => setEditing(null)} className="px-4 py-2 rounded bg-white/10 hover:bg-white/20 text-sm">Hủy</button>
-            <button disabled={isSaving} onClick={() => saveQuestion()}
+            <button data-testid="admin-question-save-btn" disabled={isSaving} onClick={() => saveQuestion()}
               className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-sm font-medium">
               {isSaving ? 'Đang lưu...' : (editing.id ? 'Cập nhật' : 'Tạo câu hỏi')}
             </button>

@@ -54,7 +54,7 @@ export default function GroupsAdmin() {
       }
 
       {selected && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setSelected(null)}>
+        <div data-testid="admin-group-detail-modal" className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setSelected(null)}>
           <div className="bg-[#1d1f29] rounded-2xl border border-[#504535]/20 max-w-lg w-full p-6 space-y-4" onClick={e => e.stopPropagation()}>
             <h3 className="text-lg font-bold text-[#e1e1ef]">{selected.name}</h3>
             <div className="grid grid-cols-2 gap-3 text-sm">

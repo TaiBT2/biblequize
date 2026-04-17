@@ -288,7 +288,7 @@ export default function AIQuestionGenerator() {
         <div className="bg-[#1d1f29] rounded-lg border border-[#504535]/10 p-6 space-y-5">
 
           {/* Scripture ref */}
-          <div>
+          <div data-testid="ai-scripture-selector">
             <h3 className="text-sm font-black text-[#e8a832] uppercase tracking-wider mb-3 flex items-center gap-2">
               <span className="text-base">📖</span> Tham chiếu Kinh Thánh
             </h3>
@@ -368,7 +368,7 @@ export default function AIQuestionGenerator() {
           </div>
 
           {/* Difficulty */}
-          <div>
+          <div data-testid="ai-settings-panel">
             <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">Độ khó</label>
             <div className="segmented-control">
               {(['easy','medium','hard'] as Difficulty[]).map(d => (
@@ -425,7 +425,7 @@ export default function AIQuestionGenerator() {
                 const info = aiInfo?.providers[p]
                 const configured = info?.configured ?? false
                 return (
-                  <button key={p} onClick={() => setProvider(p)}
+                  <button key={p} data-testid={`ai-provider-${p}`} onClick={() => setProvider(p)}
                     className={`segmented-control-item flex-1 cursor-pointer${provider === p ? ' active' : ''}${!configured ? ' opacity-50' : ''}`}>
                     {p === 'gemini' ? '✦ Gemini' : '◆ Claude'}
                     {!configured && <span className="ml-1 text-[10px]">⚠</span>}
