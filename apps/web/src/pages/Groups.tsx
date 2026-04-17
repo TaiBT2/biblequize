@@ -174,7 +174,7 @@ function GroupOverview({ groupId }: { groupId: string }) {
   const rest = (leaderboard || []).slice(3);
 
   return (
-    <div className="max-w-6xl mx-auto space-y-12">
+    <div className="max-w-6xl mx-auto space-y-12" data-testid="group-overview">
       {/* ── Group Hero Header ── */}
       <header className="relative rounded-[2.5rem] overflow-hidden bg-surface-container-lowest h-72 flex flex-col justify-end p-10 group shadow-2xl">
         <div className="absolute inset-0 z-0">
@@ -315,6 +315,7 @@ function GroupOverview({ groupId }: { groupId: string }) {
                     {rest.map((member) => (
                       <div
                         key={member.userId}
+                        data-testid="group-leaderboard-row"
                         className="flex items-center justify-between p-6 bg-surface-container-low rounded-2xl hover:bg-surface-container-high transition-all border border-transparent hover:border-white/5"
                       >
                         <div className="flex items-center gap-6">
@@ -506,7 +507,7 @@ const Groups: React.FC = () => {
                   {t('groups.groupName')} *
                 </label>
                 <input
-                  data-testid="group-name-input"
+                  data-testid="groups-create-name-input"
                   className="w-full bg-surface-container-low border border-white/10 rounded-xl px-5 py-4 text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary/50 transition-colors"
                   value={createName}
                   onChange={(e) => setCreateName(e.target.value)}
@@ -520,6 +521,7 @@ const Groups: React.FC = () => {
                   {t('groups.description')}
                 </label>
                 <textarea
+                  data-testid="group-description-input"
                   className="w-full bg-surface-container-low border border-white/10 rounded-xl px-5 py-4 text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary/50 transition-colors resize-none h-24"
                   value={createDesc}
                   onChange={(e) => setCreateDesc(e.target.value)}
@@ -530,7 +532,7 @@ const Groups: React.FC = () => {
               {createError && <p className="text-sm text-error font-bold">{createError}</p>}
               <button
                 type="submit"
-                data-testid="group-create-submit"
+                data-testid="groups-create-submit-btn"
                 className="w-full py-4 gold-gradient text-on-secondary rounded-xl font-black text-sm uppercase tracking-widest shadow-lg hover:shadow-[0_4px_25px_rgba(232,168,50,0.4)] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={createLoading || !createName.trim()}
               >

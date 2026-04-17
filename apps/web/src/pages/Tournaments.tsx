@@ -166,7 +166,7 @@ const Tournaments: React.FC = () => {
 
               <div className="flex flex-wrap items-center gap-6 text-sm text-on-surface-variant">
                 {/* Participants */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2" data-testid="tournament-participants-count">
                   <span className="material-symbols-outlined text-base text-secondary">groups</span>
                   <span>
                     {tItem.participantCount}/{tItem.maxParticipants} {t('tournaments.participants')}

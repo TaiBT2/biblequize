@@ -483,10 +483,10 @@ const TournamentDetail: React.FC = () => {
             <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-2 block">
               Tournament
             </span>
-            <h1 className="text-3xl md:text-4xl font-black text-on-surface tracking-tighter mb-4">
+            <h1 data-testid="tournament-detail-name" className="text-3xl md:text-4xl font-black text-on-surface tracking-tighter mb-4">
               {bracket.name}
             </h1>
-            <div className="flex items-center gap-3 flex-wrap">
+            <div className="flex items-center gap-3 flex-wrap" data-testid="tournament-detail-status">
               <StatusBadge status={bracket.status} />
               {bracket.status !== 'LOBBY' && (
                 <span className="text-on-surface-variant text-sm flex items-center gap-1">
@@ -533,7 +533,7 @@ const TournamentDetail: React.FC = () => {
           <p className="text-sm text-on-surface-variant">{t('tournaments.formatDesc', { rounds: bracket.totalRounds })}</p>
         </div>
         {/* Rules */}
-        <div className="glass-card rounded-2xl p-6">
+        <div className="glass-card rounded-2xl p-6" data-testid="tournament-rules">
           <div className="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center mb-3">
             <span className="material-symbols-outlined text-secondary">gavel</span>
           </div>

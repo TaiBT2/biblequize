@@ -80,7 +80,7 @@ export default function Journey() {
           <span className="material-symbols-outlined text-secondary text-2xl" style={FILL_1}>map</span>
           <h1 className="text-xl font-bold text-on-surface">{t('journey.title')}</h1>
         </div>
-        <p className="text-on-surface-variant text-sm mb-3">
+        <p data-testid="journey-mastery-pct" className="text-on-surface-variant text-sm mb-3">
           {t('journey.conquered', { count: summary.completedBooks, total: summary.totalBooks, percent: pct })}
         </p>
         <div className="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
@@ -90,11 +90,11 @@ export default function Journey() {
           />
         </div>
         <div className="flex gap-6 mt-3 text-xs text-on-surface-variant">
-          <span className="flex items-center gap-1">
+          <span data-testid="journey-books-completed" className="flex items-center gap-1">
             <span className="w-2 h-2 rounded-full bg-secondary" />
             {t('journey.completed')}: {summary.completedBooks}
           </span>
-          <span className="flex items-center gap-1">
+          <span data-testid="journey-books-inprogress" className="flex items-center gap-1">
             <span className="w-2 h-2 rounded-full bg-primary" />
             {t('journey.inProgress')}: {summary.inProgressBooks}
           </span>
@@ -106,24 +106,28 @@ export default function Journey() {
       </section>
 
       {/* Old Testament */}
-      <BookSection
-        title={t('journey.oldTestament')}
-        books={oldBooks}
-        isVi={isVi}
-        onBookClick={(book) => navigate(`/practice?book=${encodeURIComponent(book.book)}`)}
-        t={t}
-        testId="journey-ot-tab"
-      />
+      <div data-testid="journey-old-testament">
+        <BookSection
+          title={t('journey.oldTestament')}
+          books={oldBooks}
+          isVi={isVi}
+          onBookClick={(book) => navigate(`/practice?book=${encodeURIComponent(book.book)}`)}
+          t={t}
+          testId="journey-ot-tab"
+        />
+      </div>
 
       {/* New Testament */}
-      <BookSection
-        title={t('journey.newTestament')}
-        books={newBooks}
-        isVi={isVi}
-        onBookClick={(book) => navigate(`/practice?book=${encodeURIComponent(book.book)}`)}
-        t={t}
-        testId="journey-nt-tab"
-      />
+      <div data-testid="journey-new-testament">
+        <BookSection
+          title={t('journey.newTestament')}
+          books={newBooks}
+          isVi={isVi}
+          onBookClick={(book) => navigate(`/practice?book=${encodeURIComponent(book.book)}`)}
+          t={t}
+          testId="journey-nt-tab"
+        />
+      </div>
     </div>
   )
 }
@@ -164,8 +168,9 @@ function BookCard({
   const bookName = isVi && book.bookVi ? book.bookVi : book.book
 
   return (
+    <div data-testid="journey-book-card">
     <div
-      data-testid="journey-book-card"
+      data-testid={`journey-book-card-${book.book}`}
       onClick={isLocked ? undefined : onClick}
       className={`flex items-center gap-4 p-4 rounded-xl border transition-all ${
         isCompleted
@@ -189,21 +194,21 @@ function BookCard({
       {/* Book info */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
-          <span className={`font-semibold text-sm ${isLocked ? 'text-on-surface-variant/50' : 'text-on-surface'}`}>
+          <span data-testid="journey-book-name" className={`font-semibold text-sm ${isLocked ? 'text-on-surface-variant/50' : 'text-on-surface'}`}>
             {bookName}
           </span>
           <span className="text-[10px] text-on-surface-variant">#{book.order}</span>
         </div>
         {isLocked && prevBook ? (
-          <p className="text-xs text-on-surface-variant/50 truncate">
+          <p data-testid="journey-book-mastery" className="text-xs text-on-surface-variant/50 truncate">
             {t('journey.completeToUnlock', { book: isVi && prevBook.bookVi ? prevBook.bookVi : prevBook.book })}
           </p>
         ) : book.totalQuestions > 0 ? (
-          <p className="text-xs text-on-surface-variant">
+          <p data-testid="journey-book-mastery" className="text-xs text-on-surface-variant">
             {t('journey.questions', { count: book.totalQuestions })} · {book.masteredQuestions}/{book.totalQuestions}
           </p>
         ) : (
-          <p className="text-xs text-on-surface-variant/50">{t('journey.noQuestions')}</p>
+          <p data-testid="journey-book-mastery" className="text-xs text-on-surface-variant/50">{t('journey.noQuestions')}</p>
         )}
       </div>
 
@@ -221,6 +226,7 @@ function BookCard({
           </span>
         </div>
       )}
+    </div>
     </div>
   )
 }

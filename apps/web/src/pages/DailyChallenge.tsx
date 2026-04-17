@@ -336,7 +336,7 @@ const DailyChallenge: React.FC = () => {
               <span className="material-symbols-outlined text-5xl text-secondary" style={FILL_1}>emoji_events</span>
             </div>
             <div className="space-y-4">
-              <div className="text-6xl font-black text-on-surface">
+              <div data-testid="daily-score-display" className="text-6xl font-black text-on-surface">
                 {correctCount}<span className="text-2xl text-on-surface-variant font-medium">/{totalQuestions}</span>
               </div>
               <p className="text-on-surface-variant text-lg">{t('daily.completedMessage')}</p>
@@ -657,6 +657,7 @@ const DailyChallenge: React.FC = () => {
               leaderboard.map((entry, idx) => (
                 <div
                   key={entry.rank}
+                  data-testid="daily-leaderboard-row"
                   className={`flex items-center justify-between p-4 transition-colors ${
                     idx === 0
                       ? 'bg-secondary/5 hover:bg-secondary/10'

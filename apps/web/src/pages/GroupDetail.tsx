@@ -330,7 +330,7 @@ const GroupDetail: React.FC = () => {
               <img alt="Group Logo" className="w-full h-full object-cover" src={GROUP_LOGO} />
             </div>
             {/* Group Info */}
-            <div className="flex-grow min-w-0">
+            <div className="flex-grow min-w-0" data-testid="group-detail-name">
               <div className="flex items-center gap-4 mb-2">
                 <span className="bg-secondary/20 text-secondary text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">
                   {group.isPublic ? 'OPEN' : 'PRIVATE'}
@@ -663,7 +663,7 @@ const GroupDetail: React.FC = () => {
 
       {/* ===== MEMBERS TAB ===== */}
       {activeTab === 'members' && (
-        <section className="px-12 mt-10">
+        <section className="px-12 mt-10" data-testid="group-detail-members">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-black tracking-tight flex items-center gap-3">
               <span className="material-symbols-outlined text-secondary text-3xl">groups</span>
