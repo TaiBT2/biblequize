@@ -63,6 +63,7 @@ export default function Onboarding() {
             {/* Language cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <button
+                data-testid="onboarding-lang-vi"
                 onClick={() => selectLanguage('vi')}
                 className="glass-card p-10 rounded-xl group cursor-pointer border border-outline-variant/15 hover:border-secondary/50 transition-all duration-500 flex flex-col items-center space-y-6"
               >
@@ -175,6 +176,7 @@ export default function Onboarding() {
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
+                data-testid={step === 3 ? 'onboarding-start-btn' : 'onboarding-next-btn'}
                 onClick={step === 3 ? finish : nextSlide}
                 className="gold-gradient text-on-secondary px-10 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 hover:scale-[1.02] transition-all shadow-lg active:scale-95"
               >
