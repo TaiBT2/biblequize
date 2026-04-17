@@ -274,7 +274,7 @@ export default function GameModeGrid() {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div data-testid="game-mode-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {CARDS.map((card) => {
         const isDisabled = card.id === 'ranked' && noEnergy && !rankedLoading
         return (

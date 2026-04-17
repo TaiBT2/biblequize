@@ -157,7 +157,7 @@ export default function Home() {
         </div>
 
         {/* Next Rank Preview */}
-        <div className="rounded-2xl bg-surface-container-low border border-outline-variant/10 p-6 flex flex-col items-center justify-center text-center space-y-4">
+        <div data-testid="home-next-tier-card" className="rounded-2xl bg-surface-container-low border border-outline-variant/10 p-6 flex flex-col items-center justify-center text-center space-y-4">
           {tier.next ? (
             <>
               <div className="w-20 h-20 rounded-2xl glass-panel flex items-center justify-center border border-white/5">
