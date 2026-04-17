@@ -79,6 +79,13 @@ export default function Home() {
     staleTime: 5 * 60_000, // 5 min
   })
 
+  // TanStack Query: tier progress (includes totalPoints)
+  const { data: tierData } = useQuery({
+    queryKey: ['me-tier-progress'],
+    queryFn: () => api.get('/api/me/tier-progress').then(r => r.data),
+    staleTime: 60_000,
+  })
+
   // TanStack Query: leaderboard
   const { data: lbData, isLoading: lbLoading, isFetching: lbFetching } = useQuery({
     queryKey: ['home-leaderboard', lbPeriod],
@@ -96,7 +103,7 @@ export default function Home() {
 
   if (meLoading && lbLoading) return <HomeSkeleton />
 
-  const totalPoints = meData?.totalPoints ?? 0
+  const totalPoints = tierData?.totalPoints ?? meData?.totalPoints ?? 0
   const leaderboard: any[] = Array.isArray(lbData) ? lbData : []
   const myRank = rankData?.rank ?? null
   const userName = user?.name || t('home.defaultName')
@@ -231,7 +238,7 @@ export default function Home() {
             {leaderboard.length === 0 ? (
               <p className="text-center text-on-surface-variant py-8">{t('home.noLeaderboardData')}</p>
             ) : leaderboard.map((p: any, i: number) => (
-              <div key={p.userId || i} className={`flex items-center justify-between p-4 rounded-xl ${i === 0 ? 'bg-secondary/5 border border-secondary/10' : 'hover:bg-surface-container-high transition-colors'}`}>
+              <div key={p.userId || i} data-testid="leaderboard-row" className={`flex items-center justify-between p-4 rounded-xl ${i === 0 ? 'bg-secondary/5 border border-secondary/10' : 'hover:bg-surface-container-high transition-colors'}`}>
                 <div className="flex items-center gap-4">
                   <span className={`text-xl font-black w-6 text-center ${i === 0 ? 'text-secondary' : 'text-on-surface-variant'}`}>{i + 1}</span>
                   <div className="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 overflow-hidden">

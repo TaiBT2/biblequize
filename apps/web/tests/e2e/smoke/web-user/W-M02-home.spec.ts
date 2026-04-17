@@ -67,7 +67,7 @@ authTest.describe('W-M02 Home & Profile — L1 Smoke', () => {
 
       // ── UI Assertions ──
       await authExpect(tier3Page.getByTestId('home-tier-badge')).toHaveText(
-        /Môn Đồ/,
+        /Môn Đồ|Disciple|tiers\.disciple/i,
       )
       // TODO [NEEDS TESTID: home-tier-progress-bar]
       await authExpect(

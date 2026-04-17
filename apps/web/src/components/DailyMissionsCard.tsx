@@ -57,7 +57,7 @@ export default function DailyMissionsCard() {
       {/* Mission list */}
       <div className="space-y-3">
         {missions.map((m) => (
-          <div key={m.slot} className="flex items-center gap-3">
+          <div key={m.slot} data-testid="mission-item" className="flex items-center gap-3">
             {/* Check icon */}
             <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
               m.completed
