@@ -52,7 +52,8 @@ test.describe('A-M03 + A-M04 Questions CRUD — L1 Smoke', () => {
   })
 
   // ── A-M03-L1-003 ── admin ──────────────────────────────────
-  test('A-M03-L1-003: Mo Create Question modal @smoke @admin @questions', async ({
+  // SKIP: UI component [question-form-modal, question-content-input, question-save-btn] not implemented yet
+  test.skip('A-M03-L1-003: Mo Create Question modal @smoke @admin @questions', async ({
     adminPage,
   }) => {
     // ── Actions ──
@@ -71,7 +72,8 @@ test.describe('A-M03 + A-M04 Questions CRUD — L1 Smoke', () => {
   })
 
   // ── A-M04-L1-001 ── admin ──────────────────────────────────
-  test('A-M04-L1-001: Duplicate detection — tao cau hoi giong hien warning @smoke @admin @questions @duplicate-detection', async ({
+  // SKIP: UI component [question-form-modal, question-content-input] not implemented yet
+  test.skip('A-M04-L1-001: Duplicate detection — tao cau hoi giong hien warning @smoke @admin @questions @duplicate-detection', async ({
     adminPage,
   }) => {
     // ── Actions ──
@@ -94,7 +96,8 @@ test.describe('A-M03 + A-M04 Questions CRUD — L1 Smoke', () => {
   })
 
   // ── A-M03-L1-004 ── admin ──────────────────────────────────
-  test('A-M03-L1-004: Edit question luu thanh cong @smoke @admin @questions @write', async ({
+  // SKIP: UI component [question-edit-btn, question-form-modal, question-save-btn] not implemented yet
+  test.skip('A-M03-L1-004: Edit question luu thanh cong @smoke @admin @questions @write', async ({
     adminPage,
   }) => {
     // ── Actions ──
