@@ -79,6 +79,18 @@
 | Phase 4b — L2 Happy Path Web Admin | ✅ done | 129fd72 |
 | Phase 4c — L2 Happy Path Mobile | ✅ done | (commit pending) |
 | Phase 5 — WebSocket Multiplayer gameplay | ⬜ | — |
+| **Phase 6 — Playwright Code Conversion (Web)** | **✅ done** | **4f73e1d → 569ea0b** |
+
+### Phase 6 — Playwright Code Conversion Stats
+- Bootstrap: playwright.config.ts, 6 infrastructure files, 9 Page Object Models
+- Phase 1 (L1 Smoke User Core): 41 tests, 5 files (W-M01/02/03/04/10)
+- Phase 2 (L1 Smoke Rest + Admin): 89 tests, 19 files (W-M05-15 + A-M01-14)
+- Phase 3 (L2 Happy Path User): 129 tests, 14 files (W-M01-15)
+- Phase 4 (L2 Happy Path Admin): 72 tests, 10 files (A-M01-14)
+- **Total: 331 Playwright test cases in 48 .spec.ts files**
+- Skipped: ~40 tests (NOT IMPLEMENTED / BLOCKED / seed-data required)
+- Cleanup: 6 waitForTimeout violations replaced with expect.poll/waitForLoadState
+- Unit tests unaffected: 736/736 pass
 
 ---
 
