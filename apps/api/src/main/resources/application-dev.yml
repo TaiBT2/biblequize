@@ -95,3 +95,14 @@ app:
   test-data:
     enabled: true
     reset: false
+  # Relax rate limits for dev / e2e test runs (override production defaults)
+  rate-limit:
+    admin:
+      requests: 100000
+      window: 3600
+    general:
+      requests: 100000
+      window: 3600
+    ranked:
+      requests: 10000
+      window: 60
