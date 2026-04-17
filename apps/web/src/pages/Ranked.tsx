@@ -239,7 +239,7 @@ export default function Ranked() {
           <div className="text-right">
             <div data-testid="ranked-reset-timer" className="flex items-center gap-1 text-on-surface-variant text-sm font-medium">
               <span className="material-symbols-outlined text-sm">schedule</span>
-              {t('ranked.recovery')}: {timeLeft || '--:--:--'}
+              {t('ranked.recovery')}: <span data-testid="ranked-energy-timer">{timeLeft || '--:--:--'}</span>
             </div>
           </div>
         </div>
@@ -251,7 +251,7 @@ export default function Ranked() {
       {/* ── Today's Progress + Current Book ── */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Today's Progress */}
-        <section className="lg:col-span-7 glass-card rounded-xl p-6 border border-white/5 min-h-[180px]">
+        <section data-testid="ranked-today-progress" className="lg:col-span-7 glass-card rounded-xl p-6 border border-white/5 min-h-[180px]">
           <h3 className="text-sm font-bold text-on-surface-variant uppercase tracking-widest flex items-center gap-2 mb-6">
             <span className="material-symbols-outlined text-sm">leaderboard</span>
             {t('ranked.today')}
@@ -286,8 +286,10 @@ export default function Ranked() {
           </h3>
           <div className="flex justify-between items-start mb-4">
             <div>
-              <h4 data-testid="ranked-current-book" className="text-3xl font-black text-on-surface tracking-tight">{rankedStatus.currentBook}</h4>
-              <p className="text-sm text-on-surface-variant">
+              <h4 data-testid="ranked-current-book" className="text-3xl font-black text-on-surface tracking-tight">
+                <span data-testid="ranked-current-book-name">{rankedStatus.currentBook}</span>
+              </h4>
+              <p data-testid="ranked-current-book-progress" className="text-sm text-on-surface-variant">
                 {rankedStatus.bookProgress ? t('ranked.bookOf', { current: rankedStatus.bookProgress.currentIndex + 1, total: rankedStatus.bookProgress.totalBooks }) : ''}
               </p>
             </div>
@@ -311,8 +313,8 @@ export default function Ranked() {
             <span className="material-symbols-outlined text-sm">emoji_events</span>
             {t('ranked.season')}
           </h3>
-          <div className="text-6xl font-black text-secondary mb-2">#{userRank?.rank ?? '—'}</div>
-          <div className="text-on-surface font-medium">{totalPoints.toLocaleString()} {t('ranked.points')}</div>
+          <div data-testid="ranked-season-rank" className="text-6xl font-black text-secondary mb-2">#{userRank?.rank ?? '—'}</div>
+          <div data-testid="ranked-season-points" className="text-on-surface font-medium">{totalPoints.toLocaleString()} {t('ranked.points')}</div>
         </div>
         <div className="w-full md:w-2/3 space-y-4">
           <div className="flex justify-between items-center text-sm">
@@ -340,6 +342,11 @@ export default function Ranked() {
             <span className="material-symbols-outlined" style={FILL_1}>play_arrow</span>
             {t('gameModes.rankedBtn')}
           </button>
+        ) : rankedStatus.questionsCounted >= rankedStatus.cap ? (
+          <div data-testid="ranked-cap-reached-msg" className="w-full bg-surface-container-high text-on-surface-variant font-black py-5 rounded-xl text-xl uppercase tracking-widest flex items-center justify-center gap-4 opacity-60 cursor-not-allowed">
+            <span className="material-symbols-outlined">block</span>
+            {t('ranked.outOfEnergy')}
+          </div>
         ) : (
           <div data-testid="ranked-no-energy-msg" className="w-full bg-surface-container-high text-on-surface-variant font-black py-5 rounded-xl text-xl uppercase tracking-widest flex items-center justify-center gap-4 opacity-60 cursor-not-allowed">
             <span className="material-symbols-outlined">block</span>

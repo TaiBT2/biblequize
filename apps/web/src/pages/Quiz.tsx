@@ -615,7 +615,7 @@ const Quiz: React.FC = () => {
             </h2>
             <div className="mt-8 flex items-center gap-2 text-on-surface-variant/60">
               <span className="material-symbols-outlined text-sm">menu_book</span>
-              <span className="text-xs font-bold uppercase tracking-widest">
+              <span data-testid="quiz-question-book" className="text-xs font-bold uppercase tracking-widest">
                 {currentQuestion.book}{currentQuestion.chapter ? ` - ${t('quiz.chapter', { chapter: currentQuestion.chapter })}` : ''}
               </span>
             </div>

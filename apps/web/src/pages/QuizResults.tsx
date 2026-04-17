@@ -164,8 +164,8 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
             </div>
           </div>
           <div className="text-center mt-4">
-            <p className="text-secondary font-bold text-lg uppercase tracking-widest">{accuracy}% {t('results.accuracy')}</p>
-            <h1 className={`text-3xl font-black mt-1 ${grade.color}`}>{grade.text}</h1>
+            <p data-testid="quiz-results-accuracy" className="text-secondary font-bold text-lg uppercase tracking-widest">{accuracy}% {t('results.accuracy')}</p>
+            <h1 data-testid="quiz-results-grade" className={`text-3xl font-black mt-1 ${grade.color}`}>{grade.text}</h1>
           </div>
         </section>
 

@@ -132,7 +132,7 @@ export default function Review() {
               ['wrong', t('review.wrong', { count: wrongCount })] as [FilterType, string],
               ['correct', t('review.correct', { count: correctCount })] as [FilterType, string],
             ]).map(([key, label]) => (
-              <button key={key} onClick={() => setFilter(key)}
+              <button key={key} data-testid={`review-filter-${key}`} data-active={filter === key ? 'true' : 'false'} onClick={() => setFilter(key)}
                 className={`py-4 text-sm font-bold transition-colors ${filter === key ? 'text-on-surface border-b-2 border-secondary' : 'text-on-surface-variant/50 hover:text-on-surface'}`}>
                 {label}
               </button>
@@ -141,7 +141,7 @@ export default function Review() {
         </header>
 
         {/* Question Cards */}
-        <div className="p-6 space-y-6 max-w-4xl mx-auto w-full pb-32">
+        <div data-testid="review-question-list" className="p-6 space-y-6 max-w-4xl mx-auto w-full pb-32">
           {filtered.map((q: any) => {
             const correctIdx = q.correctAnswer?.[0]
             return (
