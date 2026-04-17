@@ -108,8 +108,11 @@ test.describe('W-M04 Ranked Mode', () => {
     const quizPage = new QuizPage(page)
     await expect(quizPage.questionText).toBeVisible()
 
-    // Wait ~20s to minimize speed bonus
-    await page.waitForTimeout(20_000)
+    // Wait for timer to count down ~20s (to minimize speed bonus)
+    await expect.poll(
+      async () => await quizPage.timer.textContent(),
+      { intervals: [500], timeout: 22_000 }
+    ).toMatch(/^(5|6|7|8|9|10)$/) // wait until timer shows 5-10 (was 30)
     await quizPage.answerOption(0)
     await expect(quizPage.answerFeedback).toBeVisible()
 
@@ -201,8 +204,11 @@ test.describe('W-M04 Ranked Mode', () => {
     // Answer 5 questions (hoping for correct answers to test combo)
     for (let i = 0; i < 5; i++) {
       await expect(quizPage.questionText).toBeVisible()
-      // Answer slowly to minimize speed bonus variance
-      await page.waitForTimeout(3_000)
+      // Wait for timer to count down ~3s (minimize speed bonus variance)
+      await expect.poll(
+        async () => await quizPage.timer.textContent(),
+        { intervals: [300], timeout: 4_000 }
+      ).toMatch(/^(2[0-8])$/)
       await quizPage.answerOption(0)
       await expect(quizPage.answerFeedback).toBeVisible()
 
@@ -278,8 +284,11 @@ test.describe('W-M04 Ranked Mode', () => {
     const quizPage = new QuizPage(page)
     await expect(quizPage.questionText).toBeVisible()
 
-    // Answer slowly to minimize speed bonus, focus on daily first x2
-    await page.waitForTimeout(5_000)
+    // Wait ~5s (minimize speed bonus — test focuses on daily first x2)
+    await expect.poll(
+      async () => await quizPage.timer.textContent(),
+      { intervals: [300], timeout: 6_000 }
+    ).toMatch(/^(2[0-5])$/)
     await quizPage.answerOption(0)
     await expect(quizPage.answerFeedback).toBeVisible()
 

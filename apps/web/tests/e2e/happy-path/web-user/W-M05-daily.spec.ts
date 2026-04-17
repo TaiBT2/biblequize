@@ -155,8 +155,8 @@ test.describe('W-M05 Daily Challenge', () => {
       }
     }
 
-    // Wait for completion/results
-    await page.waitForTimeout(2_000)
+    // Wait for results page to render (indicates quiz completion)
+    await page.waitForURL(/\/(daily|quiz)/, { timeout: 5_000 }).catch(() => {})
 
     // Section 4: API Verification — check completion
     // Re-fetch daily challenge to check alreadyCompleted
@@ -266,8 +266,8 @@ test.describe('W-M05 Daily Challenge', () => {
       }
     }
 
-    // Wait for results
-    await page.waitForTimeout(2_000)
+    // Wait for results UI to render after final answer
+    await page.waitForLoadState('networkidle', { timeout: 5_000 }).catch(() => {})
 
     // Result page should show score (any valid score)
     // We just verify the flow completes without error

@@ -148,8 +148,11 @@ test.describe('W-M03 Practice Mode', () => {
     const quizPage = new QuizPage(page)
     await expect(quizPage.questionText).toBeVisible()
 
-    // Wait ~10s then answer (no perfect bonus)
-    await page.waitForTimeout(10_000)
+    // Wait for timer to count down ~10s (to minimize speed bonus)
+    await expect.poll(
+      async () => await quizPage.timer.textContent(),
+      { intervals: [500], timeout: 12_000 }
+    ).toMatch(/^(1[0-9]|20)$/) // wait until timer shows 10-20 (was 30)
     await quizPage.answerOption(0)
     await expect(quizPage.answerFeedback).toBeVisible()
 
