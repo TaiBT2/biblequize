@@ -399,7 +399,7 @@ const Achievements: React.FC = () => {
               <div className="flex justify-between items-center">
                 <span className="text-sm text-on-surface-variant">{t('achievements.experiencePoints')}</span>
                 <span className="text-sm font-bold text-on-surface">
-                  {(stats.totalPoints || totalPoints).toLocaleString()} XP
+                  {((stats.totalPoints ?? totalPoints) ?? 0).toLocaleString()} XP
                 </span>
               </div>
               <div className="flex justify-between items-center">

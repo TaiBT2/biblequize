@@ -263,7 +263,7 @@ export default function QuestionsAdmin() {
         <div>
           <h1 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight">Questions</h1>
           <p className="text-white/60 text-sm">
-            {data ? `${data.total.toLocaleString()} câu hỏi` : 'Đang tải...'}
+            {data ? `${(data.total ?? 0).toLocaleString()} câu hỏi` : 'Đang tải...'}
           </p>
         </div>
         <div className="flex flex-wrap gap-2">

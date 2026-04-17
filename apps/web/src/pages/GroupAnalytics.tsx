@@ -281,7 +281,7 @@ const GroupAnalytics: React.FC = () => {
                   <div className="flex-1 min-w-0">
                     <p className="font-bold text-sm truncate">{contributor.name}</p>
                   </div>
-                  <span className="text-sm font-black text-secondary">{contributor.xp.toLocaleString()}</span>
+                  <span className="text-sm font-black text-secondary">{(contributor.xp ?? 0).toLocaleString()}</span>
                 </div>
               ))}
             </div>

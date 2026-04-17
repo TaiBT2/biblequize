@@ -410,7 +410,7 @@ const GroupDetail: React.FC = () => {
               <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>local_fire_department</span>
             </div>
             <div>
-              <p className="text-2xl font-black text-on-surface">{totalXp.toLocaleString()}</p>
+              <p className="text-2xl font-black text-on-surface">{(totalXp ?? 0).toLocaleString()}</p>
               <p className="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">{t('groups.totalXP')}</p>
             </div>
           </div>
@@ -544,7 +544,7 @@ const GroupDetail: React.FC = () => {
                       </div>
                       <p className="font-bold text-on-surface">{top3[1].name}</p>
                       <p className="text-xs text-on-surface-variant mb-3">{top3[1].role === 'LEADER' ? t('groups.leaderRole') : top3[1].role === 'MODERATOR' ? t('groups.moderatorRole') : t('groups.memberRole')}</p>
-                      <div className="px-4 py-1 rounded-full bg-surface-container-high text-on-surface text-xs font-black">{top3[1].score.toLocaleString()} XP</div>
+                      <div className="px-4 py-1 rounded-full bg-surface-container-high text-on-surface text-xs font-black">{(top3[1].score ?? 0).toLocaleString()} XP</div>
                     </div>
                   )}
                   {/* 1st Place */}
@@ -567,7 +567,7 @@ const GroupDetail: React.FC = () => {
                       </div>
                       <p className="font-black text-lg text-on-surface">{top3[0].name}</p>
                       <p className="text-xs text-secondary mb-3 font-bold">{top3[0].role === 'LEADER' ? t('groups.leaderRole') : top3[0].role === 'MODERATOR' ? t('groups.moderatorRole') : t('groups.memberRole')}</p>
-                      <div className="px-6 py-2 rounded-full gold-gradient text-on-secondary text-sm font-black shadow-xl shadow-secondary/20">{top3[0].score.toLocaleString()} XP</div>
+                      <div className="px-6 py-2 rounded-full gold-gradient text-on-secondary text-sm font-black shadow-xl shadow-secondary/20">{(top3[0].score ?? 0).toLocaleString()} XP</div>
                     </div>
                   )}
                   {/* 3rd Place */}
@@ -587,7 +587,7 @@ const GroupDetail: React.FC = () => {
                       </div>
                       <p className="font-bold text-on-surface">{top3[2].name}</p>
                       <p className="text-xs text-on-surface-variant mb-3">{top3[2].role === 'LEADER' ? t('groups.leaderRole') : top3[2].role === 'MODERATOR' ? t('groups.moderatorRole') : t('groups.memberRole')}</p>
-                      <div className="px-4 py-1 rounded-full bg-surface-container-high text-on-surface text-xs font-black">{top3[2].score.toLocaleString()} XP</div>
+                      <div className="px-4 py-1 rounded-full bg-surface-container-high text-on-surface text-xs font-black">{(top3[2].score ?? 0).toLocaleString()} XP</div>
                     </div>
                   )}
                 </div>
@@ -648,7 +648,7 @@ const GroupDetail: React.FC = () => {
                                 {entry.role === 'LEADER' ? t('groups.leaderRole') : entry.role === 'MODERATOR' ? t('groups.moderatorRole') : t('groups.memberRole')}
                               </span>
                             </td>
-                            <td className="py-5 px-8 text-right font-black text-on-surface">{entry.score.toLocaleString()}</td>
+                            <td className="py-5 px-8 text-right font-black text-on-surface">{(entry.score ?? 0).toLocaleString()}</td>
                           </tr>
                         );
                       })}

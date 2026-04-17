@@ -314,7 +314,7 @@ export default function Ranked() {
             {t('ranked.season')}
           </h3>
           <div data-testid="ranked-season-rank" className="text-6xl font-black text-secondary mb-2">#{userRank?.rank ?? '—'}</div>
-          <div data-testid="ranked-season-points" className="text-on-surface font-medium">{totalPoints.toLocaleString()} {t('ranked.points')}</div>
+          <div data-testid="ranked-season-points" className="text-on-surface font-medium">{(totalPoints ?? 0).toLocaleString()} {t('ranked.points')}</div>
         </div>
         <div className="w-full md:w-2/3 space-y-4">
           <div className="flex justify-between items-center text-sm">

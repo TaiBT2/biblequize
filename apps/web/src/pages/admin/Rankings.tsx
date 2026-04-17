@@ -12,8 +12,10 @@ export default function RankingsAdmin() {
 
   const fetchSeasons = async () => {
     setIsLoading(true)
-    try { setSeasons(Array.isArray((await api.get('/api/admin/seasons')).data) ? (await api.get('/api/admin/seasons')).data : []) }
-    catch { /* graceful */ }
+    try {
+      const res = await api.get('/api/admin/seasons')
+      setSeasons(Array.isArray(res.data) ? res.data : [])
+    } catch { /* graceful */ }
     finally { setIsLoading(false) }
   }
 

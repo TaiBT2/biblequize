@@ -138,7 +138,7 @@ export default function Home() {
                 <div className="flex justify-between items-end">
                   <span className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">{t('home.tierProgress')}</span>
                   <span data-testid="home-total-points" className="text-xs font-bold text-on-surface">
-                    {totalPoints.toLocaleString()} {tier.next ? `/ ${tier.next.minPoints.toLocaleString()} ${t('home.points')}` : t('home.points')}
+                    {(totalPoints ?? 0).toLocaleString()} {tier.next ? `/ ${(tier.next.minPoints ?? 0).toLocaleString()} ${t('home.points')}` : t('home.points')}
                   </span>
                 </div>
                 <div className="h-3 w-full bg-primary-container rounded-full overflow-hidden">
