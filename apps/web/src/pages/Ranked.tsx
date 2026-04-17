@@ -114,14 +114,17 @@ export default function Ranked() {
   // Countdown
   useEffect(() => {
     if (!rankedStatus?.resetAt) return
-    const timer = setInterval(() => {
+    const tick = () => {
       const diff = new Date(rankedStatus.resetAt).getTime() - Date.now()
-      if (diff <= 0) { setTimeLeft('00:00:00'); clearInterval(timer); return }
+      if (diff <= 0) { setTimeLeft('00:00:00'); return false }
       const h = Math.floor(diff / 3_600_000)
       const m = Math.floor((diff % 3_600_000) / 60_000)
       const s = Math.floor((diff % 60_000) / 1_000)
       setTimeLeft(`${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`)
-    }, 1000)
+      return true
+    }
+    tick() // Set initial value immediately (was only updating on interval)
+    const timer = setInterval(() => { if (!tick()) clearInterval(timer) }, 1000)
     return () => clearInterval(timer)
   }, [rankedStatus?.resetAt])
 

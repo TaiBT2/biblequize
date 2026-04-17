@@ -110,16 +110,16 @@ describe('Home Dashboard', () => {
       await waitFor(() => { expect(screen.getAllByText(/8,200/).length).toBeGreaterThan(0) })
     })
 
-    it('displays current tier (tiers.disciple fallback key)', async () => {
+    it('displays current tier (Môn Đồ)', async () => {
       renderHome()
-      await waitFor(() => { expect(screen.getAllByText('tiers.disciple').length).toBeGreaterThan(0) })
+      await waitFor(() => { expect(screen.getAllByText('Môn Đồ').length).toBeGreaterThan(0) })
     })
 
-    it('displays next rank preview (Bậc Thầy)', async () => {
+    it('displays next rank preview (Hiền Triết)', async () => {
       renderHome()
       await waitFor(() => {
         expect(screen.getByText('Hạng kế tiếp')).toBeInTheDocument()
-        expect(screen.getAllByText('Bậc Thầy').length).toBeGreaterThanOrEqual(1)
+        expect(screen.getAllByText('Hiền Triết').length).toBeGreaterThanOrEqual(1)
       })
     })
 

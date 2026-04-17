@@ -5,7 +5,13 @@
     "disciple": "Disciple",
     "sage": "Sage",
     "prophet": "Prophet",
-    "apostle": "Apostle"
+    "apostle": "Apostle",
+    "spark": "New Believer",
+    "dawn": "Seeker",
+    "lamp": "Disciple",
+    "flame": "Sage",
+    "star": "Prophet",
+    "glory": "Apostle"
   },
   "common": {
     "loading": "Loading...",
@@ -264,15 +270,6 @@
     "deleteAccountConfirmPhrase": "DELETE ACCOUNT",
     "deleteAccountBtn": "Delete permanently",
     "deleteAccountDeleting": "Deleting..."
-  },
-  "tiers": {
-    "spark": "New Believer",
-    "dawn": "Seeker",
-    "lamp": "Disciple",
-    "flame": "Sage",
-    "star": "Prophet",
-    "glory": "Apostle",
-    "sage": "Master"
   },
   "errors": {
     "notFound": "Page Not Found",

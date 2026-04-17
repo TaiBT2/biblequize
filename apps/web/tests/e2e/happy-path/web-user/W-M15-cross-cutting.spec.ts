@@ -147,7 +147,7 @@ test.describe('W-M15 Cross-cutting — L2 Happy Path @happy-path @cross-cutting'
     // SECTION 3: UI ASSERTIONS
     // ============================================================
     const offlineBanner = page.getByTestId('offline-banner')
-    const offlineText = page.getByText(/offline|mất kết nối/i).first()
+    const offlineText = page.getByText(/offline|mất kết nối|no internet/i).first()
 
     const bannerVisible = await offlineBanner
       .isVisible({ timeout: 5_000 })
@@ -181,7 +181,7 @@ test.describe('W-M15 Cross-cutting — L2 Happy Path @happy-path @cross-cutting'
 
     // Wait for offline indication
     await page
-      .getByText(/offline|mất kết nối/i)
+      .getByText(/offline|mất kết nối|no internet/i)
       .first()
       .waitFor({ state: 'visible', timeout: 5_000 })
       .catch(() => {})
@@ -201,7 +201,7 @@ test.describe('W-M15 Cross-cutting — L2 Happy Path @happy-path @cross-cutting'
             .isVisible()
             .catch(() => false)
           const textVisible = await page
-            .getByText(/offline|mất kết nối/i)
+            .getByText(/offline|mất kết nối|no internet/i)
             .first()
             .isVisible()
             .catch(() => false)

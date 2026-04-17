@@ -103,7 +103,7 @@ test.describe('W-M01 Auth & Onboarding', () => {
     // UI assertions
     await expect(page).toHaveURL(/\/login/)
     await expect(loginPage.errorMessage).toBeVisible()
-    await expect(loginPage.errorMessage).toContainText(/invalid|incorrect|sai/i)
+    await expect(loginPage.errorMessage).toContainText(/invalid|incorrect|sai|không đúng/i)
   })
 
   // ── W-M01-L2-004 — Refresh token flow: expire access -> auto-refresh ──

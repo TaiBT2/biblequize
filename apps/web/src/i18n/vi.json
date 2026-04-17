@@ -5,7 +5,13 @@
     "disciple": "Môn Đồ",
     "sage": "Hiền Triết",
     "prophet": "Tiên Tri",
-    "apostle": "Sứ Đồ"
+    "apostle": "Sứ Đồ",
+    "spark": "Tân Tín Hữu",
+    "dawn": "Người Tìm Kiếm",
+    "lamp": "Môn Đồ",
+    "flame": "Hiền Triết",
+    "star": "Tiên Tri",
+    "glory": "Sứ Đồ"
   },
   "common": {
     "loading": "Đang tải...",
@@ -264,15 +270,6 @@
     "deleteAccountConfirmPhrase": "XÓA TÀI KHOẢN",
     "deleteAccountBtn": "Xóa vĩnh viễn",
     "deleteAccountDeleting": "Đang xóa..."
-  },
-  "tiers": {
-    "spark": "Tân Tín Hữu",
-    "dawn": "Người Tìm Kiếm",
-    "lamp": "Môn Đồ",
-    "flame": "Hiền Triết",
-    "star": "Tiên Tri",
-    "glory": "Sứ Đồ",
-    "sage": "Bậc Thầy"
   },
   "errors": {
     "notFound": "Trang Không Tìm Thấy",

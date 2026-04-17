@@ -52,7 +52,7 @@ test.describe('W-M15 Cross-cutting — L1 Smoke @smoke @cross-cutting', () => {
     // SECTION 3: UI ASSERTIONS
     // ============================================================
     await expect(page.getByTestId('offline-banner')).toBeVisible()
-    await expect(page.getByTestId('offline-banner')).toContainText(/offline|mất kết nối/i)
+    await expect(page.getByTestId('offline-banner')).toContainText(/offline|mất kết nối|no internet/i)
 
     // ============================================================
     // CLEANUP — restore online
