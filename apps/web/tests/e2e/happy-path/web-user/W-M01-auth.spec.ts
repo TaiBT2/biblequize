@@ -15,8 +15,7 @@ const TEST_PASSWORD = 'Test@123456'
 // ── W-M01-L2-001 — Register new user -> success -> auto-login -> redirect ──
 
 test.describe('W-M01 Auth & Onboarding', () => {
-  // SKIP: UI components register-name-input, register-email-input, register-password-input, register-confirm-password-input not implemented yet
-  test.skip('W-M01-L2-001: register new user -> auto-login -> redirect to onboarding', async ({
+  test('W-M01-L2-001: register new user -> auto-login -> redirect to onboarding', async ({
     page,
     testApi,
   }) => {
@@ -197,8 +196,7 @@ test.describe('W-M01 Auth & Onboarding', () => {
 
   // ── W-M01-L2-008 — Register with existing email -> 409 ──
 
-  // SKIP: UI components register-name-input, register-email-input, register-password-input, register-confirm-password-input not implemented yet
-  test.skip('W-M01-L2-008: register with existing email -> 409 conflict', async ({ page }) => {
+  test('W-M01-L2-008: register with existing email -> 409 conflict', async ({ page }) => {
     await page.goto('/register')
 
     await page.getByTestId('register-name-input').fill('Duplicate User')

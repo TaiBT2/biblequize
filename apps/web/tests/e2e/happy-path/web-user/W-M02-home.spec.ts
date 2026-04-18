@@ -49,8 +49,7 @@ test.describe('W-M02 Home & Profile', () => {
 
   // ── W-M02-L2-003 — Streak badge accurate: pre-seed streak=15 ──
 
-  // SKIP: UI component home-streak-count not implemented yet
-  test.skip('W-M02-L2-003: streak badge accurate after pre-seed streak=15', async ({
+  test('W-M02-L2-003: streak badge accurate after pre-seed streak=15', async ({
     tier3Page: page,
     testApi,
   }) => {
@@ -103,8 +102,7 @@ test.describe('W-M02 Home & Profile', () => {
 
   // ── W-M02-L2-005 — Profile page: name, email, avatar, join date ──
 
-  // SKIP: UI components profile-email, profile-join-date not implemented yet
-  test.skip('W-M02-L2-005: profile page displays accurate user info', async ({
+  test('W-M02-L2-005: profile page displays accurate user info', async ({
     tier3Page: page,
   }) => {
     await page.goto('/profile')
@@ -118,8 +116,7 @@ test.describe('W-M02 Home & Profile', () => {
 
   // ── W-M02-L2-006 — Profile stats: total sessions, correct rate, favorite book ──
 
-  // SKIP: UI components profile-total-sessions, profile-correct-rate not implemented yet
-  test.skip('W-M02-L2-006: profile stats displayed from API', async ({
+  test('W-M02-L2-006: profile stats displayed from API', async ({
     tier3Page: page,
   }) => {
     await page.goto('/profile')
