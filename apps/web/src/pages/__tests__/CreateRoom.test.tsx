@@ -49,16 +49,16 @@ describe('CreateRoom', () => {
   // 2. All 4 game mode cards
   it('renders all 4 game mode cards', () => {
     renderCreateRoom()
-    expect(screen.getByText('room.modes.speed_race')).toBeInTheDocument()
-    expect(screen.getByText('room.modes.battle_royale')).toBeInTheDocument()
-    expect(screen.getByText('room.modes.team_vs_team')).toBeInTheDocument()
-    expect(screen.getByText('room.modes.sudden_death')).toBeInTheDocument()
+    expect(screen.getByText('Đua tốc độ')).toBeInTheDocument()
+    expect(screen.getByText('Sinh tồn')).toBeInTheDocument()
+    expect(screen.getByText('Đội đấu đội')).toBeInTheDocument()
+    expect(screen.getByText('Cái chết bất ngờ')).toBeInTheDocument()
   })
 
   // 3. Mode selection highlights active
   it('highlights selected game mode', () => {
     renderCreateRoom()
-    const brBtn = screen.getByText('room.modes.battle_royale').closest('button')!
+    const brBtn = screen.getByText('Sinh tồn').closest('button')!
     fireEvent.click(brBtn)
     expect(brBtn.className).toContain('border-secondary')
   })

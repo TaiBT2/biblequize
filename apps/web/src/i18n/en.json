@@ -346,7 +346,13 @@
     "readyLabel": "READY",
     "waitingLabel": "WAITING",
     "waitingSlot": "Waiting...",
-    "codeCopied": "Copied!"
+    "codeCopied": "Copied!",
+    "modes": {
+      "speed_race": "Speed Race",
+      "battle_royale": "Battle Royale",
+      "team_vs_team": "Team vs Team",
+      "sudden_death": "Sudden Death"
+    }
   },
   "groups": {
     "noGroupTitle": "You haven't joined any group",
@@ -599,7 +605,13 @@
     "publicDesc": "Anyone can find and join this room",
     "privateDesc": "Only people with the room code can join",
     "creating": "Creating...",
-    "create": "Create Room"
+    "create": "Create Room",
+    "modeDesc": {
+      "speed_race": "Fastest correct answer wins",
+      "battle_royale": "Wrong answer eliminates you — last one standing wins",
+      "team_vs_team": "Two teams compete, higher total score wins",
+      "sudden_death": "One wrong answer and you lose — for the brave"
+    }
   },
   "daily": {
     "title": "Daily Challenge",

@@ -346,7 +346,13 @@
     "readyLabel": "SẴN SÀNG",
     "waitingLabel": "ĐANG CHỜ",
     "waitingSlot": "Đang chờ...",
-    "codeCopied": "Đã sao chép!"
+    "codeCopied": "Đã sao chép!",
+    "modes": {
+      "speed_race": "Đua tốc độ",
+      "battle_royale": "Sinh tồn",
+      "team_vs_team": "Đội đấu đội",
+      "sudden_death": "Cái chết bất ngờ"
+    }
   },
   "groups": {
     "noGroupTitle": "Bạn chưa tham gia nhóm nào",
@@ -599,7 +605,13 @@
     "publicDesc": "Mọi người đều có thể tìm và tham gia phòng",
     "privateDesc": "Chỉ người có mã phòng mới vào được",
     "creating": "Đang tạo...",
-    "create": "Tạo Phòng"
+    "create": "Tạo Phòng",
+    "modeDesc": {
+      "speed_race": "Ai trả lời nhanh và đúng sẽ thắng",
+      "battle_royale": "Sai là bị loại, người còn lại cuối cùng thắng",
+      "team_vs_team": "Hai đội đấu nhau, đội có điểm cao hơn thắng",
+      "sudden_death": "Một câu sai là thua, dành cho người dũng cảm"
+    }
   },
   "daily": {
     "title": "Thử Thách Hàng Ngày",
