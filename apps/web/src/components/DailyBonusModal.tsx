@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 import { soundManager } from '../services/soundManager'
 
@@ -18,6 +19,7 @@ const BONUS_ICONS: Record<string, string> = {
 }
 
 export default function DailyBonusModal() {
+  const { t } = useTranslation()
   const [dismissed, setDismissed] = useState(false)
 
   const { data } = useQuery<DailyBonusData>({
@@ -33,7 +35,7 @@ export default function DailyBonusModal() {
       <div className="bg-surface-container rounded-2xl p-8 max-w-sm w-full mx-4 border border-secondary/20 shadow-2xl text-center space-y-5">
         <div className="text-5xl">{BONUS_ICONS[data.bonusType ?? ''] ?? '🎁'}</div>
         <div>
-          <h2 className="text-xl font-black text-on-surface">Quà tặng hôm nay!</h2>
+          <h2 className="text-xl font-black text-on-surface">{t('modals.dailyBonus.title')}</h2>
           <p className="text-secondary font-bold mt-2">{data.message}</p>
         </div>
         <button
@@ -43,7 +45,7 @@ export default function DailyBonusModal() {
           }}
           className="w-full px-6 py-3 gold-gradient text-on-secondary font-black rounded-xl"
         >
-          Tuyệt vời!
+          {t('modals.dailyBonus.confirmButton')}
         </button>
       </div>
     </div>

@@ -63,6 +63,37 @@
       "login": "Đăng nhập"
     }
   },
+  "modals": {
+    "dailyBonus": {
+      "title": "Quà tặng hôm nay!",
+      "confirmButton": "Tuyệt vời!"
+    },
+    "tierUp": {
+      "congratulations": "Chúc mừng!",
+      "reachedTier": "Bạn đã đạt {{tier}}!",
+      "xpMultiplier": "🎁 {{count}}x XP",
+      "energyRegen": "⚡ {{count}} energy/giờ",
+      "unlockedMode": "🔓 Mở khóa: {{mode}}!",
+      "continueButton": "Tiếp tục hành trình"
+    },
+    "comeback": {
+      "welcomeBackNamed": "Chào mừng trở lại, {{name}}!",
+      "welcomeBackAnon": "Chào mừng trở lại!",
+      "awayDays": "Bạn đã vắng {{count}} ngày. Nhận phần thưởng đặc biệt!",
+      "xpBonus": "+{{count}} XP",
+      "xpMultiplier": "XP x{{count}}",
+      "freezeToken": "🧊 {{count}} Freeze",
+      "energy": "⚡ +{{count}} Energy",
+      "streakHint": "Bắt đầu chuỗi mới! 3 ngày liên tiếp = badge Phục Hồi 🔄",
+      "laterButton": "Để sau",
+      "claimButton": "Nhận ngay! 🎁",
+      "claiming": "..."
+    },
+    "starPopup": {
+      "newStar": "Sao mới! +{{count}} XP",
+      "progress": "Sao {{current}}/{{total}}"
+    }
+  },
   "nav": {
     "home": "Trang chủ",
     "ranked": "Xếp hạng",

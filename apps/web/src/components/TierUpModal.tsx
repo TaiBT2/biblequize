@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { soundManager } from '../services/soundManager'
 import { haptic } from '../utils/haptics'
 
@@ -15,6 +16,8 @@ interface TierUpModalProps {
 export default function TierUpModal({
   tierName, tierIcon, tierColor, xpMultiplier, energyRegen, unlockedMode, onClose
 }: TierUpModalProps) {
+  const { t } = useTranslation()
+
   useEffect(() => {
     soundManager.play('tierUp')
     haptic.tierUp()
@@ -30,22 +33,22 @@ export default function TierUpModal({
 
         {/* Congratulations */}
         <div className="grade-reveal-anim" style={{ animationDelay: '0.3s' }}>
-          <h1 className="text-3xl font-black text-secondary">Chúc mừng!</h1>
+          <h1 className="text-3xl font-black text-secondary">{t('modals.tierUp.congratulations')}</h1>
           <h2 className={`text-2xl font-bold mt-2 ${tierColor}`}>
-            Bạn đã đạt {tierName}!
+            {t('modals.tierUp.reachedTier', { tier: tierName })}
           </h2>
         </div>
 
         {/* New rewards */}
         <div className="space-y-2 xp-float-anim" style={{ animationDelay: '0.6s', animationFillMode: 'backwards' }}>
           {xpMultiplier && (
-            <p className="text-emerald-400 font-bold">🎁 {xpMultiplier}x XP</p>
+            <p className="text-emerald-400 font-bold">{t('modals.tierUp.xpMultiplier', { count: xpMultiplier })}</p>
           )}
           {energyRegen && (
-            <p className="text-emerald-400 font-bold">⚡ {energyRegen} energy/giờ</p>
+            <p className="text-emerald-400 font-bold">{t('modals.tierUp.energyRegen', { count: energyRegen })}</p>
           )}
           {unlockedMode && (
-            <p className="text-yellow-400 font-bold">🔓 Mở khóa: {unlockedMode}!</p>
+            <p className="text-yellow-400 font-bold">{t('modals.tierUp.unlockedMode', { mode: unlockedMode })}</p>
           )}
         </div>
 
@@ -54,7 +57,7 @@ export default function TierUpModal({
           onClick={onClose}
           className="mt-8 px-8 py-3 gold-gradient text-on-secondary font-black rounded-xl shadow-xl active:scale-95 transition-transform"
         >
-          Tiếp tục hành trình
+          {t('modals.tierUp.continueButton')}
         </button>
       </div>
     </div>

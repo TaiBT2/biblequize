@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface StarPopupProps {
   starIndex: number
@@ -7,6 +8,7 @@ interface StarPopupProps {
 }
 
 export default function StarPopup({ starIndex, bonusXp, onDismiss }: StarPopupProps) {
+  const { t } = useTranslation()
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
@@ -27,8 +29,8 @@ export default function StarPopup({ starIndex, bonusXp, onDismiss }: StarPopupPr
       <div className="flex items-center gap-2">
         <span className="text-lg">⭐</span>
         <div>
-          <p className="font-black text-sm">Sao mới! +{bonusXp} XP</p>
-          <p className="text-xs opacity-80">Sao {starIndex + 1}/5</p>
+          <p className="font-black text-sm">{t('modals.starPopup.newStar', { count: bonusXp })}</p>
+          <p className="text-xs opacity-80">{t('modals.starPopup.progress', { current: starIndex + 1, total: 5 })}</p>
         </div>
       </div>
     </div>

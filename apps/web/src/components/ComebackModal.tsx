@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 import { useAuthStore } from '../store/authStore'
 
@@ -18,6 +19,7 @@ interface ComebackStatus {
 }
 
 export default function ComebackModal() {
+  const { t } = useTranslation()
   const { user } = useAuthStore()
   const queryClient = useQueryClient()
   const [dismissed, setDismissed] = useState(false)
@@ -50,10 +52,12 @@ export default function ComebackModal() {
 
         <div>
           <h2 className="text-2xl font-black text-on-surface mb-2">
-            Chào mừng trở lại{user?.name ? `, ${user.name}` : ''}!
+            {user?.name
+              ? t('modals.comeback.welcomeBackNamed', { name: user.name })
+              : t('modals.comeback.welcomeBackAnon')}
           </h2>
           <p className="text-sm text-on-surface-variant">
-            Bạn đã vắng {daysSinceLastPlay} ngày. Nhận phần thưởng đặc biệt!
+            {t('modals.comeback.awayDays', { count: daysSinceLastPlay })}
           </p>
         </div>
 
@@ -64,22 +68,22 @@ export default function ComebackModal() {
             <div className="flex flex-wrap gap-2 justify-center">
               {reward.xpBonus && (
                 <span className="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded-full font-bold">
-                  +{reward.xpBonus} XP
+                  {t('modals.comeback.xpBonus', { count: reward.xpBonus })}
                 </span>
               )}
               {reward.xpMultiplier && (
                 <span className="text-xs bg-purple-500/20 text-purple-400 px-2 py-1 rounded-full font-bold">
-                  XP x{reward.xpMultiplier}
+                  {t('modals.comeback.xpMultiplier', { count: reward.xpMultiplier })}
                 </span>
               )}
               {reward.freezeToken && (
                 <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded-full font-bold">
-                  🧊 {reward.freezeToken} Freeze
+                  {t('modals.comeback.freezeToken', { count: reward.freezeToken })}
                 </span>
               )}
               {reward.energy && (
                 <span className="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded-full font-bold">
-                  ⚡ +{reward.energy} Energy
+                  {t('modals.comeback.energy', { count: reward.energy })}
                 </span>
               )}
             </div>
@@ -88,7 +92,7 @@ export default function ComebackModal() {
 
         {/* Positive streak message */}
         <p className="text-xs text-on-surface-variant">
-          Bắt đầu chuỗi mới! 3 ngày liên tiếp = badge Phục Hồi 🔄
+          {t('modals.comeback.streakHint')}
         </p>
 
         {/* Actions */}
@@ -97,14 +101,14 @@ export default function ComebackModal() {
             onClick={() => setDismissed(true)}
             className="flex-1 px-4 py-2.5 text-sm font-bold text-on-surface-variant bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-colors"
           >
-            Để sau
+            {t('modals.comeback.laterButton')}
           </button>
           <button
             onClick={() => claimMutation.mutate()}
             disabled={claimMutation.isPending}
             className="flex-1 px-4 py-2.5 text-sm font-black text-on-secondary gold-gradient rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
           >
-            {claimMutation.isPending ? '...' : 'Nhận ngay! 🎁'}
+            {claimMutation.isPending ? t('modals.comeback.claiming') : t('modals.comeback.claimButton')}
           </button>
         </div>
       </div>

@@ -63,6 +63,37 @@
       "login": "Login"
     }
   },
+  "modals": {
+    "dailyBonus": {
+      "title": "Today's gift!",
+      "confirmButton": "Awesome!"
+    },
+    "tierUp": {
+      "congratulations": "Congratulations!",
+      "reachedTier": "You reached {{tier}}!",
+      "xpMultiplier": "🎁 {{count}}x XP",
+      "energyRegen": "⚡ {{count}} energy/hr",
+      "unlockedMode": "🔓 Unlocked: {{mode}}!",
+      "continueButton": "Continue journey"
+    },
+    "comeback": {
+      "welcomeBackNamed": "Welcome back, {{name}}!",
+      "welcomeBackAnon": "Welcome back!",
+      "awayDays": "You've been away {{count}} days. Claim your special reward!",
+      "xpBonus": "+{{count}} XP",
+      "xpMultiplier": "XP x{{count}}",
+      "freezeToken": "🧊 {{count}} Freeze",
+      "energy": "⚡ +{{count}} Energy",
+      "streakHint": "Start a new streak! 3 days in a row = Revive badge 🔄",
+      "laterButton": "Later",
+      "claimButton": "Claim now! 🎁",
+      "claiming": "..."
+    },
+    "starPopup": {
+      "newStar": "New star! +{{count}} XP",
+      "progress": "Star {{current}}/{{total}}"
+    }
+  },
   "nav": {
     "home": "Home",
     "ranked": "Ranked",
