@@ -1,23 +1,26 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import type { TFunction } from 'i18next'
 import { useAuth } from '../store/authStore'
 import { api } from '../api/client'
 import styles from './Header.module.css'
 
-function timeAgo(dateStr: string): string {
+function timeAgo(dateStr: string, t: TFunction): string {
   const now = new Date()
   const date = new Date(dateStr)
   const diffMs = now.getTime() - date.getTime()
   const diffMin = Math.floor(diffMs / 60000)
-  if (diffMin < 1) return 'Vừa xong'
-  if (diffMin < 60) return `${diffMin} phút trước`
+  if (diffMin < 1) return t('header.time.justNow')
+  if (diffMin < 60) return t('header.time.minutesAgo', { count: diffMin })
   const diffHours = Math.floor(diffMin / 60)
-  if (diffHours < 24) return `${diffHours} giờ trước`
+  if (diffHours < 24) return t('header.time.hoursAgo', { count: diffHours })
   const diffDays = Math.floor(diffHours / 24)
-  return `${diffDays} ngày trước`
+  return t('header.time.daysAgo', { count: diffDays })
 }
 
 const Header: React.FC = () => {
+  const { t } = useTranslation()
   const location = useLocation()
   const navigate = useNavigate()
   const { user, isAuthenticated, logout } = useAuth()
@@ -89,13 +92,13 @@ const Header: React.FC = () => {
   }
 
   const navLinks = [
-    { to: '/',            label: 'Trang chủ'    },
-    { to: '/daily',       label: 'Hằng ngày'    },
-    { to: '/practice',    label: 'Luyện tập'    },
-    { to: '/ranked',      label: 'Leo Rank'     },
-    { to: '/multiplayer', label: 'Multiplayer'  },
-    { to: '/groups',      label: 'Nhóm'         },
-    { to: '/leaderboard', label: 'Bảng xếp hạng'},
+    { to: '/',            label: t('header.nav.home')        },
+    { to: '/daily',       label: t('header.nav.daily')       },
+    { to: '/practice',    label: t('header.nav.practice')    },
+    { to: '/ranked',      label: t('header.nav.ranked')      },
+    { to: '/multiplayer', label: t('header.nav.multiplayer') },
+    { to: '/groups',      label: t('header.nav.groups')      },
+    { to: '/leaderboard', label: t('header.nav.leaderboard') },
   ]
 
   return (
@@ -133,18 +136,18 @@ const Header: React.FC = () => {
           {showNotifications && (
             <div className={styles.notifDropdown}>
               <div className={styles.notifHeader}>
-                <span>Thông báo</span>
-                {unreadCount > 0 && <button onClick={markAllAsRead}>Đọc tất cả</button>}
+                <span>{t('header.notifications.title')}</span>
+                {unreadCount > 0 && <button onClick={markAllAsRead}>{t('header.notifications.readAll')}</button>}
               </div>
               {notifications.length === 0 ? (
-                <div className={styles.notifEmpty}>Không có thông báo mới</div>
+                <div className={styles.notifEmpty}>{t('header.notifications.empty')}</div>
               ) : (
                 notifications.map(n => (
                   <div key={n.id} className={`${styles.notifItem} ${!n.isRead ? styles.notifUnread : ''}`}
                        onClick={() => handleNotifClick(n)}>
                     <div className={styles.notifTitle}>{n.title}</div>
                     <div className={styles.notifBody}>{n.body}</div>
-                    <div className={styles.notifTime}>{timeAgo(n.createdAt)}</div>
+                    <div className={styles.notifTime}>{timeAgo(n.createdAt, t)}</div>
                   </div>
                 ))
               )}
@@ -176,27 +179,27 @@ const Header: React.FC = () => {
                 className={styles.dropdownItem}
                 onClick={() => setDropdownOpen(false)}
               >
-                <span>👤</span> Hồ sơ
+                <span>👤</span> {t('header.menu.profile')}
               </Link>
               <Link
                 to="/achievements"
                 className={styles.dropdownItem}
                 onClick={() => setDropdownOpen(false)}
               >
-                <span>🏆</span> Thành tích
+                <span>🏆</span> {t('header.menu.achievements')}
               </Link>
               <div className={styles.dropdownDivider} />
               <button
                 className={`${styles.dropdownItem} ${styles.dropdownLogout}`}
                 onClick={() => { logout(); setDropdownOpen(false) }}
               >
-                <span>→</span> Đăng xuất
+                <span>→</span> {t('header.menu.logout')}
               </button>
             </div>
           )}
         </div>
       ) : (
-        <Link to="/login" className={styles.loginBtn}>Đăng nhập</Link>
+        <Link to="/login" className={styles.loginBtn}>{t('header.menu.login')}</Link>
       )}
     </header>
   )

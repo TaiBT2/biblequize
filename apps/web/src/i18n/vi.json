@@ -35,6 +35,34 @@
     "minutes": "phút",
     "offline": "Mất kết nối mạng — Một số tính năng có thể không hoạt động"
   },
+  "header": {
+    "nav": {
+      "home": "Trang chủ",
+      "daily": "Hằng ngày",
+      "practice": "Luyện tập",
+      "ranked": "Leo Rank",
+      "multiplayer": "Multiplayer",
+      "groups": "Nhóm",
+      "leaderboard": "Bảng xếp hạng"
+    },
+    "notifications": {
+      "title": "Thông báo",
+      "readAll": "Đọc tất cả",
+      "empty": "Không có thông báo mới"
+    },
+    "time": {
+      "justNow": "Vừa xong",
+      "minutesAgo": "{{count}} phút trước",
+      "hoursAgo": "{{count}} giờ trước",
+      "daysAgo": "{{count}} ngày trước"
+    },
+    "menu": {
+      "profile": "Hồ sơ",
+      "achievements": "Thành tích",
+      "logout": "Đăng xuất",
+      "login": "Đăng nhập"
+    }
+  },
   "nav": {
     "home": "Trang chủ",
     "ranked": "Xếp hạng",

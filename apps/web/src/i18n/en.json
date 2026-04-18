@@ -35,6 +35,34 @@
     "minutes": "minutes",
     "offline": "No internet connection — Some features may not work"
   },
+  "header": {
+    "nav": {
+      "home": "Home",
+      "daily": "Daily",
+      "practice": "Practice",
+      "ranked": "Ranked",
+      "multiplayer": "Multiplayer",
+      "groups": "Groups",
+      "leaderboard": "Leaderboard"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "readAll": "Mark all read",
+      "empty": "No new notifications"
+    },
+    "time": {
+      "justNow": "Just now",
+      "minutesAgo": "{{count}} min ago",
+      "hoursAgo": "{{count}} h ago",
+      "daysAgo": "{{count}} d ago"
+    },
+    "menu": {
+      "profile": "Profile",
+      "achievements": "Achievements",
+      "logout": "Logout",
+      "login": "Login"
+    }
+  },
   "nav": {
     "home": "Home",
     "ranked": "Ranked",
