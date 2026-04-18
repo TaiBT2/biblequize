@@ -82,6 +82,7 @@ export default function Cosmetics() {
           {data.frames.map((frame) => (
             <button
               key={frame.id}
+              data-testid="cosmetics-frame-item"
               onClick={() => frame.unlocked && mutation.mutate({ activeFrame: frame.id })}
               disabled={!frame.unlocked}
               className={`relative rounded-xl p-4 border-2 transition-all text-center ${
@@ -103,7 +104,7 @@ export default function Cosmetics() {
                 {frame.unlocked ? (frame.active ? '✓ Đang dùng' : 'Đã mở') : `Đạt T${frame.tier} để mở`}
               </p>
               {!frame.unlocked && (
-                <span className="material-symbols-outlined absolute top-2 right-2 text-sm text-on-surface-variant">
+                <span data-testid="cosmetics-lock-icon" className="material-symbols-outlined absolute top-2 right-2 text-sm text-on-surface-variant">
                   lock
                 </span>
               )}

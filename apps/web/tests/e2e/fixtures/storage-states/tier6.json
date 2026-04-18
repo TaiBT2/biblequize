@@ -1,0 +1,33 @@
+{
+  "cookies": [
+    {
+      "name": "refresh_token",
+      "value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJiNWRiMGZiMy0zNTQ1LTQ0ZTEtYTBmYy03ZDRiMWYxYzIwZDkiLCJzdWIiOiJ0ZXN0NkBkZXYubG9jYWwiLCJpYXQiOjE3NzY0NzE2NTYsImV4cCI6MTc3OTA2MzY1Nn0._rXuOtFfJwYq3zyt6_CXMSgdArs_5t82s0_Nrs5WQiU",
+      "domain": "localhost",
+      "path": "/api/auth",
+      "expires": 1779063656,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "http://localhost:5173",
+      "localStorage": [
+        {
+          "name": "userEmail",
+          "value": "test6@dev.local"
+        },
+        {
+          "name": "quizLanguage",
+          "value": "en-US"
+        },
+        {
+          "name": "userName",
+          "value": "Test Tier 6"
+        }
+      ]
+    }
+  ]
+}

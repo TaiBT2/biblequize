@@ -7,7 +7,6 @@ export class AdminDashboardPage extends BasePage {
   readonly kpiCards: Locator
   readonly activityLog: Locator
 
-  // TODO [NEEDS TESTID: admin-action-items] — ActionItems component
   readonly actionItems: Locator
 
   constructor(page: Page) {

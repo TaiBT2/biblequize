@@ -116,7 +116,6 @@ test.describe('W-M09 Church Groups — L2 Happy Path @happy-path @groups', () =>
     await deleteGroup(token, group.id)
   })
 
-  // SKIP: UI components group-name-input, group-create-submit not implemented yet
   test.skip('W-M09-L2-002: UI flow — create group form, redirect to detail @write @serial', async ({
     page,
     testApi,
@@ -143,9 +142,9 @@ test.describe('W-M09 Church Groups — L2 Happy Path @happy-path @groups', () =>
       await createBtn.click()
 
       // Fill form
-      await page.getByTestId('group-name-input').fill('E2E UI Group')
+      await page.getByTestId('groups-create-name-input').fill('E2E UI Group')
       await page.getByTestId('group-description-input').fill('Created via E2E')
-      await page.getByTestId('group-create-submit').click()
+      await page.getByTestId('groups-create-submit-btn').click()
 
       // ============================================================
       // SECTION 3: UI ASSERTIONS

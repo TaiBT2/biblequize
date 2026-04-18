@@ -289,12 +289,13 @@ const DailyChallenge: React.FC = () => {
   // ─── Error ──────────────────────────────────────────────────────────────
   if (error && !challengeData) {
     return (
-      <div className="max-w-5xl mx-auto flex flex-col items-center justify-center py-20 space-y-6">
+      <div data-testid="daily-error-state" className="max-w-5xl mx-auto flex flex-col items-center justify-center py-20 space-y-6">
         <div className="w-20 h-20 bg-error-container/20 rounded-full flex items-center justify-center">
           <span className="material-symbols-outlined text-5xl text-error">error</span>
         </div>
         <p className="text-on-surface-variant text-lg">{error}</p>
         <button
+          data-testid="daily-error-retry-btn"
           onClick={() => window.location.reload()}
           className="gold-gradient px-8 py-3 rounded-xl text-on-secondary font-bold transition-all hover:scale-[1.02] active:scale-95"
         >

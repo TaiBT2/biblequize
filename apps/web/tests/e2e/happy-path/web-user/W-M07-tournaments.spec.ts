@@ -75,8 +75,8 @@ test.describe('W-M07 Tournaments — L2 Happy Path @happy-path @tournaments', ()
     const page = tier3Page
     await page.goto('/tournaments')
 
-    // Click UPCOMING filter
-    const filterBtn = page.getByTestId('tournament-status-filter').getByText(/Sắp diễn ra|Upcoming/i)
+    // Click UPCOMING filter (tournament-status-filter testid not in source — use text selector)
+    const filterBtn = page.getByRole('button', { name: /Sắp diễn ra|Upcoming/i })
     if (await filterBtn.isVisible({ timeout: 3_000 }).catch(() => false)) {
       await filterBtn.click()
     }

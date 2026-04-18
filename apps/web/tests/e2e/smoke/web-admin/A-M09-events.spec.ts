@@ -18,7 +18,6 @@ test.describe('A-M09 Events & Tournaments — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/events')
-    // TODO [NEEDS TESTID: admin-events-page] — wrapper
     await adminPage.waitForSelector('[data-testid="admin-events-page"]')
 
     // ── UI Assertions ──
@@ -32,14 +31,12 @@ test.describe('A-M09 Events & Tournaments — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/events')
-    // TODO [NEEDS TESTID: admin-tournament-row] — moi hang tournament
     await adminPage.waitForSelector('[data-testid="admin-tournament-row"]')
 
     // ── UI Assertions ──
     await expect(adminPage.getByTestId('admin-tournament-row')).toHaveCount({
       min: 1,
     })
-    // TODO [NEEDS TESTID: tournament-status-badge] — badge status
     await expect(
       adminPage
         .getByTestId('admin-tournament-row')
@@ -60,7 +57,6 @@ test.describe('A-M09 Events & Tournaments — L1 Smoke', () => {
     await adminPage.waitForSelector('[data-testid="admin-events-page"]')
 
     // ── UI Assertions ──
-    // TODO [NEEDS TESTID: create-tournament-btn] — nut "Tao Tournament"
     await expect(adminPage.getByTestId('create-tournament-btn')).toBeVisible()
   })
 
@@ -73,14 +69,12 @@ test.describe('A-M09 Events & Tournaments — L1 Smoke', () => {
     await adminPage.waitForSelector('[data-testid="admin-tournament-row"]')
 
     // ── UI Assertions ──
-    // TODO [NEEDS TESTID: tournament-bracket-size] — hien thi bracket size
     await expect(
       adminPage
         .getByTestId('admin-tournament-row')
         .first()
         .getByTestId('tournament-bracket-size'),
     ).toBeVisible()
-    // TODO [NEEDS TESTID: tournament-round-info] — vong hien tai / tong vong
     await expect(
       adminPage
         .getByTestId('admin-tournament-row')

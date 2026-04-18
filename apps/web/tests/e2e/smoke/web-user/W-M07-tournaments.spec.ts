@@ -28,7 +28,6 @@ test.describe('W-M07 Tournaments — L1 Smoke @smoke @tournaments', () => {
     // ============================================================
     await expect(page).toHaveURL('/tournaments')
     await expect(page.getByTestId('tournaments-list')).toBeVisible()
-    // TODO [NEEDS TESTID: tournament-card] — moi tournament card
     await expect(
       page.getByTestId('tournaments-list').locator('[data-testid="tournament-card"]'),
     ).toHaveCount({ min: 1 })
@@ -81,9 +80,7 @@ test.describe('W-M07 Tournaments — L1 Smoke @smoke @tournaments', () => {
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // TODO [NEEDS TESTID: tournament-status-badge] — badge status
     await expect(page.getByTestId('tournament-status-badge').first()).toBeVisible()
-    // TODO [NEEDS TESTID: tournament-participants-count] — so nguoi tham gia
     await expect(
       page.getByTestId('tournament-card').first().getByTestId('tournament-participants-count'),
     ).toBeVisible()
@@ -109,7 +106,6 @@ test.describe('W-M07 Tournaments — L1 Smoke @smoke @tournaments', () => {
     // SECTION 3: UI ASSERTIONS
     // ============================================================
     await expect(page).toHaveURL(/\/tournaments\/.+/)
-    // TODO [NEEDS TESTID: tournament-detail-page] — wrapper trang TournamentDetail
     await expect(page.getByTestId('tournament-detail-page')).toBeVisible()
   })
 
@@ -132,13 +128,9 @@ test.describe('W-M07 Tournaments — L1 Smoke @smoke @tournaments', () => {
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // TODO [NEEDS TESTID: tournament-detail-page] — wrapper
     await expect(page.getByTestId('tournament-detail-page')).toBeVisible()
-    // TODO [NEEDS TESTID: tournament-detail-name] — ten tournament
     await expect(page.getByTestId('tournament-detail-name')).toBeVisible()
-    // TODO [NEEDS TESTID: tournament-detail-status] — status badge
     await expect(page.getByTestId('tournament-detail-status')).toBeVisible()
-    // TODO [NEEDS TESTID: tournament-bracket] — bracket hoac participants list
     await expect(page.getByTestId('tournament-bracket')).toBeVisible()
   })
 

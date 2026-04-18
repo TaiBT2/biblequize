@@ -42,12 +42,12 @@ export default function QuestionQuality() {
               const minPool = 60 // 30+20+10
               const pct = Math.min(100, Math.round((total / minPool) * 100))
               return (
-                <div key={i} className="flex items-center gap-3">
+                <div key={i} data-testid="coverage-book-bar" className="flex items-center gap-3">
                   <span className="text-[#d5c4af]/60 text-xs w-28 truncate">{item.book || `Book ${i + 1}`}</span>
                   <div className="flex-1 h-2 bg-[#282933] rounded-full overflow-hidden">
                     <div className={`h-full rounded-full ${pct >= 100 ? 'bg-emerald-500' : pct >= 50 ? 'bg-[#e8a832]' : 'bg-red-500'}`} style={{ width: `${pct}%` }} />
                   </div>
-                  <span className="text-[#d5c4af]/40 text-xs w-8 text-right">{total}</span>
+                  <span data-testid="coverage-pct" className="text-[#d5c4af]/40 text-xs w-8 text-right">{total}</span>
                 </div>
               )
             })}

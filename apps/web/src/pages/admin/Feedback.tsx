@@ -118,6 +118,7 @@ export default function FeedbackAdmin() {
           {statCards.map(({ key, label, color }) => (
             <button
               key={key}
+              data-testid={`feedback-stat-${key}`}
               onClick={() => setStatusFilter(statusFilter === key ? '' : key)}
               className={`p-3 rounded-lg border text-left transition-all cursor-pointer ${
                 statusFilter === key ? colorMap[color] : 'border-[#d5c4af]/10 bg-[#1d1f29] hover:bg-white/10'
@@ -181,6 +182,7 @@ export default function FeedbackAdmin() {
                 <tr><td colSpan={6} className="px-3 py-6 text-white/50 text-center">Không có phản hồi nào</td></tr>
               ) : items.map(item => (
                 <tr
+                  data-testid="feedback-row"
                   key={item.id}
                   className="odd:bg-white/[0.03] hover:bg-white/[0.07] cursor-pointer"
                   onClick={() => { setSelected(item); setNote('') }}
@@ -227,7 +229,7 @@ export default function FeedbackAdmin() {
 
       {/* Detail Modal */}
       {selected && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+        <div data-testid="feedback-detail-modal" className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
           <div className="w-full max-w-xl rounded-xl border border-[#d5c4af]/10 bg-[#111018] p-6 shadow-2xl">
             <div className="flex items-center justify-between mb-4">
               <div className="text-lg font-semibold">Chi tiết Feedback</div>
@@ -278,7 +280,7 @@ export default function FeedbackAdmin() {
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-2 mt-5 flex-wrap">
+            <div data-testid="feedback-status-select" className="flex items-center justify-end gap-2 mt-5 flex-wrap">
               <button onClick={() => setSelected(null)} className="px-3 py-2 rounded bg-white/10 hover:bg-white/20 text-sm">
                 Đóng
               </button>
@@ -297,6 +299,7 @@ export default function FeedbackAdmin() {
                 Từ chối
               </button>
               <button
+                data-testid="feedback-update-btn"
                 disabled={isSaving}
                 onClick={() => updateStatus('resolved')}
                 className="px-3 py-2 rounded bg-emerald-600/80 hover:bg-emerald-600 disabled:opacity-50 text-sm"

@@ -8,7 +8,6 @@ export class QuizResultsPage extends BasePage {
   readonly reviewBtn: Locator
   readonly homeBtn: Locator
 
-  // Accuracy & grade are rendered inline — use text selectors
   readonly accuracyText: Locator
   readonly gradeText: Locator
 
@@ -18,12 +17,8 @@ export class QuizResultsPage extends BasePage {
     this.scoreDisplay = page.getByTestId('quiz-results-score')
     this.reviewBtn = page.getByTestId('quiz-results-review-btn')
     this.homeBtn = page.getByTestId('quiz-results-home-btn')
-
-    // TODO [NEEDS TESTID: quiz-results-accuracy] — accuracy percentage text
-    this.accuracyText = this.container.locator('.text-secondary.font-bold.text-lg')
-
-    // TODO [NEEDS TESTID: quiz-results-grade] — grade heading (e.g. "Excellent")
-    this.gradeText = this.container.locator('h1')
+    this.accuracyText = page.getByTestId('quiz-results-accuracy')
+    this.gradeText = page.getByTestId('quiz-results-grade')
   }
 
   // ── Assertions ────────────────────────────────────────────

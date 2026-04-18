@@ -65,7 +65,7 @@ export default function WeaknessWidget() {
             </p>
             <div className="space-y-2">
               {data.weakBooks.map(b => (
-                <div key={b.book} className="flex items-center justify-between">
+                <div key={b.book} data-testid="profile-weakness-item" className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-bold text-on-surface">{b.book}</span>
                     <span className="text-[10px] text-on-surface-variant">

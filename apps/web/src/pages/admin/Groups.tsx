@@ -42,7 +42,7 @@ export default function GroupsAdmin() {
             <div>
               <div className="flex items-center gap-2">
                 <h4 className="font-medium text-[#e1e1ef]">{g.name}</h4>
-                {g.isLocked && <span className="text-red-400 text-xs font-bold">🔒 Khóa</span>}
+                {g.isLocked && <span data-testid="group-lock-badge" className="text-red-400 text-xs font-bold">🔒 Khóa</span>}
                 {g.isPublic && <span className="text-blue-400 text-xs">Public</span>}
               </div>
               <p className="text-[#d5c4af]/60 text-xs">Code: {g.code} • {g.memberCount}/{g.maxMembers} members • Leader: {g.leaderName || '—'}</p>
@@ -69,12 +69,12 @@ export default function GroupsAdmin() {
               </div>
             ) : (
               <div className="space-y-2">
-                <textarea value={lockReason} onChange={e => setLockReason(e.target.value)} placeholder="Lý do khóa (tối thiểu 10 ký tự)..." className="w-full bg-[#191b25] border border-[#504535]/20 rounded-lg p-3 text-sm text-[#e1e1ef] resize-none" rows={2} />
-                <button onClick={() => lockGroup(selected.id)} disabled={lockReason.trim().length < 10} className="w-full py-2 bg-red-600 text-white rounded-lg text-sm font-medium disabled:opacity-50">Khóa nhóm</button>
+                <textarea data-testid="group-lock-reason-input" value={lockReason} onChange={e => setLockReason(e.target.value)} placeholder="Lý do khóa (tối thiểu 10 ký tự)..." className="w-full bg-[#191b25] border border-[#504535]/20 rounded-lg p-3 text-sm text-[#e1e1ef] resize-none" rows={2} />
+                <button data-testid="group-lock-confirm-btn" onClick={() => lockGroup(selected.id)} disabled={lockReason.trim().length < 10} className="w-full py-2 bg-red-600 text-white rounded-lg text-sm font-medium disabled:opacity-50">Khóa nhóm</button>
               </div>
             )}
 
-            <button onClick={() => deleteGroup(selected.id)} className="w-full py-2 bg-[#1d1f29] text-red-400 rounded-lg text-sm border border-red-500/20">Xóa nhóm</button>
+            <button data-testid="group-delete-btn" onClick={() => deleteGroup(selected.id)} className="w-full py-2 bg-[#1d1f29] text-red-400 rounded-lg text-sm border border-red-500/20">Xóa nhóm</button>
             <button onClick={() => setSelected(null)} className="w-full py-2 bg-[#1d1f29] text-[#d5c4af]/60 rounded-lg text-sm">Đóng</button>
           </div>
         </div>

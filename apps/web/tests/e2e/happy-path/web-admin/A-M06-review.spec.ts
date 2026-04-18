@@ -180,10 +180,6 @@ test.describe('A-M06 Review Queue', () => {
   // ── A-M06-L2-008 — UI review flow: approve -> count decreases ──
 
   test('A-M06-L2-008: UI approve decrements pending count', async ({ adminPage }) => {
-    // TODO [NEEDS TESTID: review-queue-table]
-    // TODO [NEEDS TESTID: review-queue-pending-count]
-    // TODO [NEEDS TESTID: review-queue-approve-btn]
-
     // Setup: create 3 pending questions
     const questions = []
     for (let i = 0; i < 3; i++) {

@@ -133,11 +133,12 @@ export default function Home() {
                 <h1 data-testid="home-greeting" className="text-3xl font-black tracking-tight text-on-surface mb-1">
                   {greeting}, {userName}!
                 </h1>
+                <span data-testid="home-user-name" className="sr-only">{userName}</span>
                 <p className="text-on-surface-variant text-sm font-medium">
                   {tier.next ? (
                     <>{t('home.journeyTo')} <span className="text-secondary font-bold">{t(tier.next.nameKey)}</span>.</>
                   ) : (
-                    <span className="text-secondary font-bold">{t('home.maxTierReached')}</span>
+                    <span data-testid="home-max-tier-msg" className="text-secondary font-bold">{t('home.maxTierReached')}</span>
                   )}
                 </p>
               </div>

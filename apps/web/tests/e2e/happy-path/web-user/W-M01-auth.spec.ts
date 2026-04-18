@@ -52,12 +52,11 @@ test.describe('W-M01 Auth & Onboarding', () => {
     await expect(page).toHaveURL(/\/onboarding|\//)
 
     // Cleanup: we don't have DELETE user endpoint yet — ephemeral user remains
-    // TODO: cleanup when DELETE /api/admin/test/users/{id} is available
   })
 
   // ── W-M01-L2-002 — Login success -> access token stored -> GET /api/me ──
 
-  // SKIP: UI component home-user-name not implemented yet
+  // SKIP: /api/auth/login endpoint not available (app uses OAuth only)
   test.skip('W-M01-L2-002: login success -> /api/me returns user', async ({ page }) => {
     const loginPage = new LoginPage(page)
     await loginPage.goto()

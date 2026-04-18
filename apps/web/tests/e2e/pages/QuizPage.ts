@@ -38,18 +38,10 @@ export class QuizPage extends BasePage {
   }
 
   /**
-   * Try each option (0-3) until the feedback indicates a correct answer.
-   * This works because after selecting an answer the correct one is
-   * visually highlighted — we detect it via the green check_circle icon
-   * on the correct option.
-   *
-   * NOTE: In practice, only the first click registers (subsequent clicks
-   * are disabled). This method picks a random option; the test should
-   * not rely on always being correct unless the API is mocked.
+   * Click the first answer option (index 0). The result may be correct
+   * or incorrect — use this when the test doesn't care about correctness.
    */
-  async answerCorrectly(): Promise<void> {
-    // The correct answer index is revealed after any answer is submitted.
-    // Pick option 0, then read which one was correct for assertions.
+  async answerFirst(): Promise<void> {
     await this.option(0).click()
     await this.answerFeedback.waitFor({ state: 'visible' })
   }

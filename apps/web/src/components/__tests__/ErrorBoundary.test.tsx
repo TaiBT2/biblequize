@@ -42,7 +42,7 @@ describe('ErrorBoundary', () => {
         <ThrowError shouldThrow={true} />
       </ErrorBoundary>
     )
-    expect(screen.getByTestId('error-boundary-fallback')).toBeInTheDocument()
+    expect(screen.getByTestId('error-boundary')).toBeInTheDocument()
     expect(screen.queryByTestId('child-content')).not.toBeInTheDocument()
   })
 
@@ -83,7 +83,7 @@ describe('ErrorBoundary', () => {
     )
 
     // Should be in error state
-    expect(screen.getByTestId('error-boundary-fallback')).toBeInTheDocument()
+    expect(screen.getByTestId('error-boundary')).toBeInTheDocument()
 
     // Stop throwing before retry
     shouldThrow = false
@@ -94,7 +94,7 @@ describe('ErrorBoundary', () => {
     // Should re-render children successfully
     expect(screen.getByTestId('child-content')).toBeInTheDocument()
     expect(screen.getByText('Recovered')).toBeInTheDocument()
-    expect(screen.queryByTestId('error-boundary-fallback')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('error-boundary')).not.toBeInTheDocument()
   })
 
   it('renders custom fallback prop instead of default', () => {
@@ -108,7 +108,7 @@ describe('ErrorBoundary', () => {
 
     expect(screen.getByTestId('custom-fallback')).toBeInTheDocument()
     expect(screen.getByText('Custom Error UI')).toBeInTheDocument()
-    expect(screen.queryByTestId('error-boundary-fallback')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('error-boundary')).not.toBeInTheDocument()
   })
 
   it('logs error via fetch to /api/errors', () => {

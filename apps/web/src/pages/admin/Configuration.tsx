@@ -47,7 +47,7 @@ export default function ConfigurationAdmin() {
       <div className="flex items-center justify-between">
         <div><h2 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight">Cấu hình hệ thống</h2><p className="text-[#d5c4af] text-sm mt-1">Protocol Environment Parameters</p></div>
         {dirty.size > 0 && (
-          <button onClick={saveAll} className="px-4 py-2 bg-[#e8a832] text-[#281900] rounded-lg text-sm font-bold hover:brightness-110">
+          <button data-testid="config-save-btn" onClick={saveAll} className="px-4 py-2 bg-[#e8a832] text-[#281900] rounded-lg text-sm font-bold hover:brightness-110">
             Lưu {dirty.size} thay đổi
           </button>
         )}
@@ -69,7 +69,7 @@ export default function ConfigurationAdmin() {
                   <p className="text-sm text-[#d5c4af]">{item.label}</p>
                   <p className="text-[#d5c4af]/30 text-xs">{item.key} (default: {item.default})</p>
                 </div>
-                <input value={getValue(item.key, item.default)} onChange={e => setValue(item.key, e.target.value)}
+                <input {...(item.key === 'DAILY_ENERGY' ? { 'data-testid': 'config-daily-energy-input' } : {})} value={getValue(item.key, item.default)} onChange={e => setValue(item.key, e.target.value)}
                   className={`w-24 bg-[#0c0e17] border-none rounded px-3 py-1 text-sm text-[#e1e1ef] text-right focus:ring-1 focus:ring-[#e8a832] outline-none ${dirty.has(item.key) ? 'ring-1 ring-amber-500/50' : ''}`} />
               </div>
             ))}

@@ -27,9 +27,13 @@ export default function EventsAdmin() {
 
   return (
     <div data-testid="admin-events-page" className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold text-[#e1e1ef]">Events & Tournaments</h2>
-        <p className="text-[#d5c4af]/60 text-sm">{tournaments.length} tournaments</p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-[#e1e1ef]">Events & Tournaments</h2>
+          <p className="text-[#d5c4af]/60 text-sm">{tournaments.length} tournaments</p>
+        </div>
+        <button data-testid="create-tournament-btn" onClick={() => alert('Create tournament — API chưa implement')}
+          className="px-4 py-2 gold-gradient text-[#281900] rounded-lg text-sm font-bold hover:opacity-90">+ Tạo Tournament</button>
       </div>
 
       {isLoading ? (
@@ -42,7 +46,7 @@ export default function EventsAdmin() {
             <div data-testid="admin-tournament-row" key={t.tournamentId} className="rounded-lg border border-[#504535]/20 bg-[#1d1f29] p-4 flex items-center justify-between">
               <div>
                 <h4 className="font-medium text-[#e1e1ef]">{t.name}</h4>
-                <p className="text-[#d5c4af]/60 text-xs">Bracket: {t.bracketSize} • Round: {t.currentRound}/{t.totalRounds}</p>
+                <p className="text-[#d5c4af]/60 text-xs"><span data-testid="tournament-bracket-size">Bracket: {t.bracketSize}</span> • <span data-testid="tournament-round-info">Round: {t.currentRound}/{t.totalRounds}</span></p>
               </div>
               <div className="flex items-center gap-3">
                 {statusBadge(t.status)}

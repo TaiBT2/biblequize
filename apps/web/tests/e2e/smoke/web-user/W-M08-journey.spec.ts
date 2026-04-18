@@ -27,13 +27,9 @@ test.describe('W-M08 Journey Map — L1 Smoke @smoke @journey', () => {
     // SECTION 3: UI ASSERTIONS
     // ============================================================
     await expect(page).toHaveURL('/journey')
-    // TODO [NEEDS TESTID: journey-page] — wrapper trang Journey
     await expect(page.getByTestId('journey-page')).toBeVisible()
-    // TODO [NEEDS TESTID: journey-summary-card] — card tong quan
     await expect(page.getByTestId('journey-summary-card')).toBeVisible()
-    // TODO [NEEDS TESTID: journey-old-testament] — section Cuu Uoc
     await expect(page.getByTestId('journey-old-testament')).toBeVisible()
-    // TODO [NEEDS TESTID: journey-new-testament] — section Tan Uoc
     await expect(page.getByTestId('journey-new-testament')).toBeVisible()
   })
 
@@ -54,12 +50,9 @@ test.describe('W-M08 Journey Map — L1 Smoke @smoke @journey', () => {
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // TODO [NEEDS TESTID: journey-mastery-pct] — text "X%" overall mastery
     await expect(page.getByTestId('journey-mastery-pct')).toBeVisible()
     await expect(page.getByTestId('journey-mastery-pct')).toHaveText(/\d+%/)
-    // TODO [NEEDS TESTID: journey-books-completed] — so sach da hoan thanh
     await expect(page.getByTestId('journey-books-completed')).toBeVisible()
-    // TODO [NEEDS TESTID: journey-books-inprogress] — so sach dang hoc
     await expect(page.getByTestId('journey-books-inprogress')).toBeVisible()
   })
 
@@ -80,12 +73,9 @@ test.describe('W-M08 Journey Map — L1 Smoke @smoke @journey', () => {
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // TODO [NEEDS TESTID: journey-book-card] — moi book card
     const firstCard = page.getByTestId('journey-book-card').first()
     await expect(firstCard).toBeVisible()
-    // TODO [NEEDS TESTID: journey-book-name] — ten sach
     await expect(firstCard.getByTestId('journey-book-name')).toBeVisible()
-    // TODO [NEEDS TESTID: journey-book-mastery] — progress bar hoac % mastery
     await expect(firstCard.getByTestId('journey-book-mastery')).toBeVisible()
   })
 

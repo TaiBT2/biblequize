@@ -13,7 +13,7 @@ async function globalTeardown(): Promise<void> {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       email: 'admin@biblequiz.test',
-      password: 'Admin@123456',
+      password: 'Test@123456',
     }),
   })
 

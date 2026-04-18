@@ -21,14 +21,12 @@ test.describe('W-M12 Notifications — L1 Smoke @smoke @notifications', () => {
     // ============================================================
     const page = tier3Page
     await page.goto('/')
-    // TODO [NEEDS TESTID: app-header] — sticky header trong AppLayout
     await page.waitForSelector('[data-testid="app-header"]')
 
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
     await expect(page.getByTestId('app-header')).toBeVisible()
-    // TODO [NEEDS TESTID: header-notification-area] — vung chua icon favorite/bolt/stars
     await expect(page.getByTestId('header-notification-area')).toBeVisible()
   })
 
@@ -51,7 +49,6 @@ test.describe('W-M12 Notifications — L1 Smoke @smoke @notifications', () => {
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // TODO [NEEDS TESTID: notification-badge] — badge so unread
     // await expect(page.getByTestId('notification-badge')).toBeVisible()
     // await expect(page.getByTestId('notification-badge')).toHaveText(/\d+/)
   })
@@ -70,9 +67,7 @@ test.describe('W-M12 Notifications — L1 Smoke @smoke @notifications', () => {
     // ============================================================
     const page = tier3Page
     await page.goto('/')
-    // TODO [NEEDS TESTID: header-notification-btn] — icon button de mo panel
     // await page.getByTestId('header-notification-btn').click()
-    // TODO [NEEDS TESTID: notification-panel] — dropdown/panel danh sach notifications
     // await page.waitForSelector('[data-testid="notification-panel"]')
 
     // ============================================================

@@ -28,9 +28,7 @@ test.describe('W-M09 Church Groups — L1 Smoke @smoke @groups', () => {
     // ============================================================
     await expect(page).toHaveURL('/groups')
     await expect(page.getByTestId('no-group')).toBeVisible()
-    // TODO [NEEDS TESTID: groups-create-btn] — nut "Tao Nhom"
     await expect(page.getByTestId('groups-create-btn')).toBeVisible()
-    // TODO [NEEDS TESTID: groups-join-btn] — nut "Tham Gia Nhom"
     await expect(page.getByTestId('groups-join-btn')).toBeVisible()
   })
 
@@ -48,13 +46,9 @@ test.describe('W-M09 Church Groups — L1 Smoke @smoke @groups', () => {
     await page.goto('/groups')
     await page.waitForSelector('[data-testid="groups-create-btn"]')
     await page.getByTestId('groups-create-btn').click()
-    // TODO [NEEDS TESTID: groups-create-form] — form tao nhom
     await page.waitForSelector('[data-testid="groups-create-form"]')
-    // TODO [NEEDS TESTID: groups-create-name-input] — input ten nhom
     await page.getByTestId('groups-create-name-input').fill('Test Group E2E')
-    // TODO [NEEDS TESTID: groups-create-submit-btn] — nut submit tao nhom
     await page.getByTestId('groups-create-submit-btn').click()
-    // TODO [NEEDS TESTID: group-overview] — view sau khi create group
     await page.waitForSelector('[data-testid="group-overview"]')
 
     // ============================================================
@@ -82,11 +76,8 @@ test.describe('W-M09 Church Groups — L1 Smoke @smoke @groups', () => {
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // TODO [NEEDS TESTID: group-overview]
     await expect(page.getByTestId('group-overview')).toBeVisible()
-    // TODO [NEEDS TESTID: group-leaderboard] — leaderboard section
     await expect(page.getByTestId('group-leaderboard')).toBeVisible()
-    // TODO [NEEDS TESTID: group-leaderboard-row] — moi hang thanh vien
     await expect(
       page.getByTestId('group-leaderboard').locator('[data-testid="group-leaderboard-row"]'),
     ).toHaveCount({ min: 1 })
@@ -111,12 +102,9 @@ test.describe('W-M09 Church Groups — L1 Smoke @smoke @groups', () => {
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // TODO [NEEDS TESTID: group-detail-page] — wrapper GroupDetail page
     // await expect(page).toHaveURL(/\/groups\/.+/)
     // await expect(page.getByTestId('group-detail-page')).toBeVisible()
-    // TODO [NEEDS TESTID: group-detail-name] — ten nhom
     // await expect(page.getByTestId('group-detail-name')).toBeVisible()
-    // TODO [NEEDS TESTID: group-detail-members] — danh sach thanh vien
     // await expect(page.getByTestId('group-detail-members')).toBeVisible()
   })
 

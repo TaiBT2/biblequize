@@ -19,7 +19,6 @@ test.describe('A-M11 Notifications Broadcast — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/notifications')
-    // TODO [NEEDS TESTID: admin-notifications-page] — wrapper
     await adminPage.waitForSelector('[data-testid="admin-notifications-page"]')
 
     // ── UI Assertions ──
@@ -27,11 +26,9 @@ test.describe('A-M11 Notifications Broadcast — L1 Smoke', () => {
     await expect(
       adminPage.getByTestId('admin-notifications-page'),
     ).toBeVisible()
-    // TODO [NEEDS TESTID: notifications-broadcast-form] — form title + content
     await expect(
       adminPage.getByTestId('notifications-broadcast-form'),
     ).toBeVisible()
-    // TODO [NEEDS TESTID: notifications-history] — section lich su notifications
     await expect(adminPage.getByTestId('notifications-history')).toBeVisible()
   })
 
@@ -47,19 +44,15 @@ test.describe('A-M11 Notifications Broadcast — L1 Smoke', () => {
     await adminPage.waitForSelector(
       '[data-testid="notifications-broadcast-form"]',
     )
-    // TODO [NEEDS TESTID: notifications-title-input] — input tieu de
     await adminPage
       .getByTestId('notifications-title-input')
       .fill('Test Broadcast')
-    // TODO [NEEDS TESTID: notifications-content-input] — textarea noi dung
     await adminPage
       .getByTestId('notifications-content-input')
       .fill('Thong bao E2E test')
-    // TODO [NEEDS TESTID: notifications-send-btn] — nut "Gui Thong Bao"
     await adminPage.getByTestId('notifications-send-btn').click()
 
     // ── UI Assertions ──
-    // TODO [NEEDS TESTID: notifications-success-toast] — toast
     await expect(
       adminPage.getByTestId('notifications-success-toast'),
     ).toBeVisible()
@@ -77,15 +70,12 @@ test.describe('A-M12 Configuration — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/config')
-    // TODO [NEEDS TESTID: admin-config-page] — wrapper
     await adminPage.waitForSelector('[data-testid="admin-config-page"]')
 
     // ── UI Assertions ──
     await expect(adminPage).toHaveURL('/admin/config')
     await expect(adminPage.getByTestId('admin-config-page')).toBeVisible()
-    // TODO [NEEDS TESTID: config-game-panel] — panel Game config
     await expect(adminPage.getByTestId('config-game-panel')).toBeVisible()
-    // TODO [NEEDS TESTID: config-scoring-panel] — panel Scoring config
     await expect(adminPage.getByTestId('config-scoring-panel')).toBeVisible()
   })
 
@@ -99,9 +89,7 @@ test.describe('A-M12 Configuration — L1 Smoke', () => {
     // ── Actions ──
     await adminPage.goto('/admin/config')
     await adminPage.waitForSelector('[data-testid="config-game-panel"]')
-    // TODO [NEEDS TESTID: config-daily-energy-input] — input daily energy value
     await adminPage.getByTestId('config-daily-energy-input').fill('90')
-    // TODO [NEEDS TESTID: config-save-btn] — "Save N changes" button
     await adminPage.waitForSelector('[data-testid="config-save-btn"]')
 
     // ── UI Assertions ──
@@ -124,15 +112,12 @@ test.describe('A-M13 Export Center — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/export')
-    // TODO [NEEDS TESTID: admin-export-page] — wrapper ExportCenter
     await adminPage.waitForSelector('[data-testid="admin-export-page"]')
 
     // ── UI Assertions ──
     await expect(adminPage).toHaveURL('/admin/export')
     await expect(adminPage.getByTestId('admin-export-page')).toBeVisible()
-    // TODO [NEEDS TESTID: export-questions-card] — card export Questions
     await expect(adminPage.getByTestId('export-questions-card')).toBeVisible()
-    // TODO [NEEDS TESTID: export-users-card] — card export Users
     await expect(adminPage.getByTestId('export-users-card')).toBeVisible()
   })
 
@@ -146,13 +131,11 @@ test.describe('A-M13 Export Center — L1 Smoke', () => {
     await adminPage.waitForSelector('[data-testid="export-questions-card"]')
 
     // ── UI Assertions ──
-    // TODO [NEEDS TESTID: export-btn-csv] — nut CSV trong moi export card
     await expect(
       adminPage
         .getByTestId('export-questions-card')
         .getByTestId('export-btn-csv'),
     ).toBeVisible()
-    // TODO [NEEDS TESTID: export-btn-json] — nut JSON trong moi export card
     await expect(
       adminPage
         .getByTestId('export-questions-card')
@@ -172,15 +155,12 @@ test.describe('A-M14 Question Quality — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/question-quality')
-    // TODO [NEEDS TESTID: admin-quality-page] — wrapper
     await adminPage.waitForSelector('[data-testid="admin-quality-page"]')
 
     // ── UI Assertions ──
     await expect(adminPage).toHaveURL('/admin/question-quality')
     await expect(adminPage.getByTestId('admin-quality-page')).toBeVisible()
-    // TODO [NEEDS TESTID: quality-overall-score] — score tong (hien hardcoded 72/100)
     await expect(adminPage.getByTestId('quality-overall-score')).toBeVisible()
-    // TODO [NEEDS TESTID: quality-coverage-map] — coverage bars by book
     await expect(adminPage.getByTestId('quality-coverage-map')).toBeVisible()
   })
 
@@ -194,13 +174,11 @@ test.describe('A-M14 Question Quality — L1 Smoke', () => {
     await adminPage.waitForSelector('[data-testid="quality-coverage-map"]')
 
     // ── UI Assertions ──
-    // TODO [NEEDS TESTID: coverage-book-bar] — moi sach trong coverage map
     await expect(
       adminPage
         .getByTestId('quality-coverage-map')
         .getByTestId('coverage-book-bar'),
     ).toHaveCount({ min: 1 })
-    // TODO [NEEDS TESTID: coverage-pct] — % coverage cho moi sach
     await expect(
       adminPage.getByTestId('coverage-book-bar').first().getByTestId('coverage-pct'),
     ).toBeVisible()

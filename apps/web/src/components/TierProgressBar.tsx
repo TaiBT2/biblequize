@@ -53,11 +53,11 @@ export default function TierProgressBar() {
   if (tierLevel >= 6) return null
 
   return (
-    <div className="flex items-center gap-2 mt-2">
+    <div data-testid="tier-progress-stars" className="flex items-center gap-2 mt-2">
       {/* 5 star dots */}
       <div className="flex items-center gap-1.5">
         {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="relative">
+          <div key={i} data-testid="tier-star" className="relative">
             {i < starIndex ? (
               // Filled star
               <span className={`material-symbols-outlined text-base ${starColor}`} style={{ fontVariationSettings: "'FILL' 1" }}>
@@ -89,7 +89,7 @@ export default function TierProgressBar() {
       </div>
 
       {/* Star progress text */}
-      <span className="text-[10px] font-bold text-on-surface-variant ml-1">
+      <span data-testid="tier-star-count" className="text-[10px] font-bold text-on-surface-variant ml-1">
         {starIndex + 1}/5
       </span>
 

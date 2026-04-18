@@ -31,7 +31,6 @@ test.describe('W-M03 Practice Mode — L1 Smoke @smoke @practice', () => {
     // SECTION 3: UI ASSERTIONS
     // ============================================================
     await expect(page).toHaveURL('/practice')
-    // TODO [NEEDS TESTID: practice-page] — wrapper trang Practice
     await expect(practicePage.bookSelect).toBeVisible()
     await expect(practicePage.difficultyBtn('all')).toBeVisible()
     await expect(practicePage.countBtn(10)).toBeVisible()
@@ -96,7 +95,6 @@ test.describe('W-M03 Practice Mode — L1 Smoke @smoke @practice', () => {
     // ============================================================
     await expect(quizPage.answerFeedback).toBeVisible()
     await expect(quizPage.nextBtn).toBeVisible()
-    // TODO [NEEDS TESTID: quiz-option-0 data-state] — option highlight correct/wrong
     await expect(quizPage.option(0)).toBeVisible()
   })
 
@@ -179,15 +177,10 @@ test.describe('W-M03 Practice Mode — L1 Smoke @smoke @practice', () => {
     // SECTION 3: UI ASSERTIONS
     // ============================================================
     await expect(page).toHaveURL('/review')
-    // TODO [NEEDS TESTID: review-page] — wrapper trang Review
     await expect(page.getByTestId('review-page')).toBeVisible()
-    // TODO [NEEDS TESTID: review-filter-all] — filter tab All
     await expect(page.getByTestId('review-filter-all')).toBeVisible()
-    // TODO [NEEDS TESTID: review-filter-wrong] — filter tab Wrong
     await expect(page.getByTestId('review-filter-wrong')).toBeVisible()
-    // TODO [NEEDS TESTID: review-filter-correct] — filter tab Correct
     await expect(page.getByTestId('review-filter-correct')).toBeVisible()
-    // TODO [NEEDS TESTID: review-question-list, review-question-item]
     await expect(
       page.getByTestId('review-question-list').locator('[data-testid="review-question-item"]'),
     ).toHaveCount(5)
@@ -227,7 +220,6 @@ test.describe('W-M03 Practice Mode — L1 Smoke @smoke @practice', () => {
     await resultsPage.clickReview()
     await page.waitForURL('/review')
 
-    // TODO [NEEDS TESTID: review-filter-wrong]
     await page.getByTestId('review-filter-wrong').click()
 
     // ============================================================
@@ -281,7 +273,6 @@ test.describe('W-M03 Practice Mode — L1 Smoke @smoke @practice', () => {
     await resultsPage.clickReview()
     await page.waitForURL('/review')
 
-    // TODO [NEEDS TESTID: review-retry-btn] — nut "Lam lai" (gold gradient)
     await page.getByTestId('review-retry-btn').click()
     await page.waitForURL('/quiz')
 
@@ -314,7 +305,6 @@ test.describe('W-M03 Practice Mode — L1 Smoke @smoke @practice', () => {
     // SECTION 3: UI ASSERTIONS
     // ============================================================
     await expect(page).toHaveURL('/quiz')
-    // TODO [NEEDS TESTID: quiz-question-book] — label sach hien thi tren quiz header
     await expect(page.getByTestId('quiz-question-book')).toHaveText(/Genesis|Sáng Thế/)
   })
 

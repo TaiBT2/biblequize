@@ -31,11 +31,8 @@ test.describe('W-M05 Daily Challenge — L1 Smoke @smoke @daily', () => {
     // SECTION 3: UI ASSERTIONS
     // ============================================================
     await expect(page).toHaveURL('/daily')
-    // TODO [NEEDS TESTID: daily-page] — wrapper trang DailyChallenge
     await expect(dailyPage.container).toBeVisible()
-    // TODO [NEEDS TESTID: daily-streak-display] — streak hien tai
     await expect(dailyPage.streakDisplay).toBeVisible()
-    // TODO [NEEDS TESTID: daily-start-btn] — nut "Bat Dau Thu Thach"
     await expect(dailyPage.startBtn).toBeVisible()
     await expect(dailyPage.startBtn).toBeEnabled()
   })
@@ -57,7 +54,6 @@ test.describe('W-M05 Daily Challenge — L1 Smoke @smoke @daily', () => {
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // TODO [NEEDS TESTID: daily-countdown] — countdown toi midnight reset
     await expect(dailyPage.countdown).toBeVisible()
     await expect(dailyPage.countdown).toHaveText(/\d{2}:\d{2}:\d{2}/)
   })
@@ -105,9 +101,7 @@ test.describe('W-M05 Daily Challenge — L1 Smoke @smoke @daily', () => {
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // TODO [NEEDS TESTID: daily-leaderboard] — section bang xep hang daily
     await expect(dailyPage.leaderboard).toBeVisible()
-    // TODO [NEEDS TESTID: daily-leaderboard-row] — moi hang user
     await expect(
       dailyPage.leaderboard.locator('[data-testid="daily-leaderboard-row"]'),
     ).toHaveCount({ min: 1 })
@@ -133,9 +127,7 @@ test.describe('W-M05 Daily Challenge — L1 Smoke @smoke @daily', () => {
     // SECTION 3: UI ASSERTIONS
     // ============================================================
     await expect(dailyPage.startBtn).toBeDisabled()
-    // TODO [NEEDS TESTID: daily-completed-badge] — badge "Da Hoan Thanh"
     await expect(dailyPage.completedBadge).toBeVisible()
-    // TODO [NEEDS TESTID: daily-score-display] — score/stars da dat hom nay
     await expect(page.getByTestId('daily-score-display')).toBeVisible()
   })
 

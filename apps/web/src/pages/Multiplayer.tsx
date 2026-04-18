@@ -114,6 +114,7 @@ const Multiplayer = () => {
               onChange={e => setJoinCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ''))}
               placeholder={t('multiplayer.codePlaceholder')}
               maxLength={6}
+              data-testid="join-room-code-input"
               className="bg-surface-container-highest border-none rounded-xl px-4 py-3 text-center text-xl font-black tracking-[0.5em] text-secondary placeholder:text-outline/30 focus:ring-2 focus:ring-secondary/50 w-full md:w-48 outline-none"
               onKeyDown={e => { if (e.key === 'Enter' && joinCode.trim()) navigate(`/room/join?code=${joinCode.trim()}`); }}
             />

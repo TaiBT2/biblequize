@@ -45,7 +45,6 @@ test.describe('W-M15 Cross-cutting — L1 Smoke @smoke @cross-cutting', () => {
     await page.goto('/')
     await page.waitForSelector('[data-testid="home-page"]')
     await page.context().setOffline(true)
-    // TODO [NEEDS TESTID: offline-banner] — component OfflineBanner
     await page.waitForSelector('[data-testid="offline-banner"]')
 
     // ============================================================
@@ -99,14 +98,12 @@ test.describe('W-M15 Cross-cutting — L1 Smoke @smoke @cross-cutting', () => {
     const page = tier3Page
     await page.goto('/')
     // await page.evaluate(() => { window.__triggerErrorBoundary?.() })
-    // TODO [NEEDS TESTID: error-boundary-fallback] — fallback UI cua ErrorBoundary
-    // await page.waitForSelector('[data-testid="error-boundary-fallback"]')
+    // await page.waitForSelector('[data-testid="error-boundary"]')
 
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // await expect(page.getByTestId('error-boundary-fallback')).toBeVisible()
-    // TODO [NEEDS TESTID: error-boundary-retry-btn] — nut "Thu Lai"
+    // await expect(page.getByTestId('error-boundary')).toBeVisible()
     // await expect(page.getByTestId('error-boundary-retry-btn')).toBeVisible()
   })
 
@@ -125,14 +122,12 @@ test.describe('W-M15 Cross-cutting — L1 Smoke @smoke @cross-cutting', () => {
     // SECTION 2: ACTIONS
     // ============================================================
     await page.goto('/daily')
-    // TODO [NEEDS TESTID: daily-error-state] — error state trong DailyChallenge
     await page.waitForSelector('[data-testid="daily-error-state"]')
 
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
     await expect(page.getByTestId('daily-error-state')).toBeVisible()
-    // TODO [NEEDS TESTID: daily-error-retry-btn] — retry button
     await expect(page.getByTestId('daily-error-retry-btn')).toBeVisible()
 
     // ============================================================

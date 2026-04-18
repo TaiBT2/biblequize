@@ -90,6 +90,7 @@ export default function CreateRoom() {
               value={formData.roomName}
               onChange={(e) => setFormData(prev => ({ ...prev, roomName: e.target.value }))}
               placeholder={t('createRoom.roomNamePlaceholder')}
+              data-testid="create-room-name-input"
               className="w-full bg-surface-container-highest border border-outline-variant/15 rounded-xl px-4 py-3 text-on-surface placeholder:text-outline/40 focus:ring-2 focus:ring-secondary/50 focus:border-secondary/30 outline-none transition-all"
             />
           </div>

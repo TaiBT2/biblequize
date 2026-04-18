@@ -31,7 +31,7 @@ export default function ExportCenter() {
             </div>
             <div className="flex gap-2">
               {e.formats.map(f => (
-                <button key={f} onClick={() => handleExport(e.type, f)}
+                <button key={f} data-testid={`export-btn-${f.toLowerCase()}`} onClick={() => handleExport(e.type, f)}
                   className="px-4 py-1.5 bg-[#11131c] border border-[#504535]/20 rounded text-xs text-[#e1e1ef] hover:bg-[#32343e] transition-colors font-medium">{f}</button>
               ))}
             </div>

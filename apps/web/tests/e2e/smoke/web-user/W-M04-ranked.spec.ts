@@ -56,7 +56,6 @@ test.describe('W-M04 Ranked Mode — L1 Smoke @smoke @ranked', () => {
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // TODO [NEEDS TESTID: ranked-today-progress] — section "Hom Nay"
     await expect(page.getByTestId('ranked-today-progress')).toBeVisible()
     await expect(rankedPage.questionsCounted).toBeVisible()
     await expect(rankedPage.pointsToday).toBeVisible()
@@ -81,9 +80,7 @@ test.describe('W-M04 Ranked Mode — L1 Smoke @smoke @ranked', () => {
     // SECTION 3: UI ASSERTIONS
     // ============================================================
     await expect(rankedPage.currentBook).toBeVisible()
-    // TODO [NEEDS TESTID: ranked-current-book-name] — ten sach dang choi
     await expect(page.getByTestId('ranked-current-book-name')).toBeVisible()
-    // TODO [NEEDS TESTID: ranked-current-book-progress] — "{currentIndex+1}/{totalBooks}"
     await expect(page.getByTestId('ranked-current-book-progress')).toBeVisible()
   })
 
@@ -138,9 +135,7 @@ test.describe('W-M04 Ranked Mode — L1 Smoke @smoke @ranked', () => {
     // SECTION 3: UI ASSERTIONS
     // ============================================================
     await expect(rankedPage.seasonCard).toBeVisible()
-    // TODO [NEEDS TESTID: ranked-season-rank] — "#N" rank
     await expect(page.getByTestId('ranked-season-rank')).toHaveText(/#\d+/)
-    // TODO [NEEDS TESTID: ranked-season-points] — total points
     await expect(page.getByTestId('ranked-season-points')).toBeVisible()
     await expect(rankedPage.resetTimer).toBeVisible()
   })
@@ -195,7 +190,6 @@ test.describe('W-M04 Ranked Mode — L1 Smoke @smoke @ranked', () => {
     const rankedPage = new RankedPage(page)
     await rankedPage.goto()
 
-    // TODO [NEEDS TESTID: ranked-energy-timer] — countdown "HH:MM:SS"
     const timerLocator = page.getByTestId('ranked-energy-timer')
     await timerLocator.waitFor({ state: 'visible' })
     const timerValue1 = await timerLocator.textContent()

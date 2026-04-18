@@ -18,15 +18,12 @@ test.describe('A-M07 Feedback & Moderation — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/feedback')
-    // TODO [NEEDS TESTID: admin-feedback-page] — wrapper
     await adminPage.waitForSelector('[data-testid="admin-feedback-page"]')
 
     // ── UI Assertions ──
     await expect(adminPage).toHaveURL('/admin/feedback')
     await expect(adminPage.getByTestId('admin-feedback-page')).toBeVisible()
-    // TODO [NEEDS TESTID: feedback-stats-cards] — cards pending/in_progress/resolved/rejected
     await expect(adminPage.getByTestId('feedback-stats-cards')).toBeVisible()
-    // TODO [NEEDS TESTID: feedback-table] — bang feedback
     await expect(adminPage.getByTestId('feedback-table')).toBeVisible()
   })
 
@@ -40,11 +37,8 @@ test.describe('A-M07 Feedback & Moderation — L1 Smoke', () => {
     await adminPage.waitForSelector('[data-testid="feedback-stats-cards"]')
 
     // ── UI Assertions ──
-    // TODO [NEEDS TESTID: feedback-stat-pending] — card "Cho Xu Ly"
     await expect(adminPage.getByTestId('feedback-stat-pending')).toBeVisible()
-    // TODO [NEEDS TESTID: feedback-stat-resolved] — card "Da Giai Quyet"
     await expect(adminPage.getByTestId('feedback-stat-resolved')).toBeVisible()
-    // TODO [NEEDS TESTID: feedback-stat-rejected] — card "Da Tu Choi"
     await expect(adminPage.getByTestId('feedback-stat-rejected')).toBeVisible()
   })
 
@@ -54,7 +48,6 @@ test.describe('A-M07 Feedback & Moderation — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/feedback')
-    // TODO [NEEDS TESTID: feedback-status-filter] — dropdown filter status
     await adminPage.waitForSelector('[data-testid="feedback-status-filter"]')
     await adminPage.getByTestId('feedback-status-filter').selectOption('pending')
     await adminPage.waitForResponse((resp) =>
@@ -62,7 +55,6 @@ test.describe('A-M07 Feedback & Moderation — L1 Smoke', () => {
     )
 
     // ── UI Assertions ──
-    // TODO [NEEDS TESTID: feedback-row] — moi hang feedback
     // Filtered results may be 0 or more — just verify table is still visible
     await expect(adminPage.getByTestId('feedback-table')).toBeVisible()
   })
@@ -76,18 +68,15 @@ test.describe('A-M07 Feedback & Moderation — L1 Smoke', () => {
     await adminPage.goto('/admin/feedback')
     await adminPage.waitForSelector('[data-testid="feedback-row"]')
     await adminPage.getByTestId('feedback-row').first().click()
-    // TODO [NEEDS TESTID: feedback-detail-modal] — modal chi tiet
     await adminPage.waitForSelector('[data-testid="feedback-detail-modal"]')
 
     // ── UI Assertions ── (modal visible)
     await expect(adminPage.getByTestId('feedback-detail-modal')).toBeVisible()
 
     // ── Update status ──
-    // TODO [NEEDS TESTID: feedback-status-select] — selector thay doi status
     await adminPage
       .getByTestId('feedback-status-select')
       .selectOption('in_progress')
-    // TODO [NEEDS TESTID: feedback-update-btn] — nut cap nhat
     await adminPage.getByTestId('feedback-update-btn').click()
 
     // ── UI Assertions ── (status updated)

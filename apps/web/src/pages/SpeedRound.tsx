@@ -40,17 +40,17 @@ export default function SpeedRound() {
       </div>
 
       {/* Info card */}
-      <div className="bg-surface-container rounded-2xl p-8 border border-orange-500/20 text-center space-y-6">
+      <div className="bg-surface-container rounded-2xl p-8 border border-orange-500/20 text-center space-y-6" data-testid="speed-round-stats-card">
         <div className="flex justify-center gap-6">
           <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl px-5 py-3 text-center">
             <p className="text-3xl font-black text-orange-400">10</p>
             <p className="text-xs text-on-surface-variant mt-1">câu hỏi</p>
           </div>
-          <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl px-5 py-3 text-center">
+          <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl px-5 py-3 text-center" data-testid="speed-round-timer-stat">
             <p className="text-3xl font-black text-orange-400">10s</p>
             <p className="text-xs text-on-surface-variant mt-1">mỗi câu</p>
           </div>
-          <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl px-5 py-3 text-center">
+          <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl px-5 py-3 text-center" data-testid="speed-round-bonus-stat">
             <p className="text-3xl font-black text-orange-400">2x</p>
             <p className="text-xs text-on-surface-variant mt-1">XP bonus</p>
           </div>

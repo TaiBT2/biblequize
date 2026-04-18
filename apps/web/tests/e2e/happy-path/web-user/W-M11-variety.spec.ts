@@ -316,8 +316,7 @@ test.describe('W-M11 Variety Modes — L2 Happy Path @happy-path @variety', () =
     test.skip(true, 'BLOCKED: Needs admin date-mocking endpoint or run during Dec 1-25')
   })
 
-  // SKIP: UI component weekly-theme-description not implemented yet
-  test.skip('W-M11-L2-010: Weekly theme quiz UI — theme header + start button @parallel-safe @weekly', async ({
+  test('W-M11-L2-010: Weekly theme quiz UI — theme header + start button @parallel-safe @weekly', async ({
     tier3Page,
   }) => {
     // ============================================================

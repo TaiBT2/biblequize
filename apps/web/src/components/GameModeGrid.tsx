@@ -245,7 +245,7 @@ export default function GameModeGrid() {
         return <span className="text-[10px] font-bold text-secondary-container uppercase">{t('gameModes.practiceTag')}</span>
       case 'ranked':
         return (
-          <div className="flex flex-col">
+          <div data-testid="home-energy-bar" className="flex flex-col">
             <span className="text-[10px] font-black text-secondary uppercase">
               ⚡ {t('gameModes.rankedEnergy', { current: rankedStatus.livesRemaining, max: rankedStatus.dailyLives })}
             </span>

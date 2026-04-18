@@ -155,7 +155,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       })
 
       if (import.meta.env.DEV) {
-        console.log('[AUTH_STORE] Session restored, role:', role)
+        console.log('[AUTH_STORE] Session restored, role:', normalizedRole)
       }
     } catch {
       // No valid session (refresh token missing or expired)

@@ -9,8 +9,7 @@ import { test, expect } from '../../fixtures/auth'
 
 test.describe('W-M13 i18n Language Switching — L1 Smoke @smoke @i18n', () => {
 
-  // SKIP: UI component lang-toggle-en not implemented yet
-  test.skip('W-M13-L1-001: Language toggle visible trong AppLayout @smoke @i18n', async ({
+  test('W-M13-L1-001: Language toggle visible trong AppLayout @smoke @i18n', async ({
     tier3Page,
   }) => {
     // ============================================================
@@ -22,21 +21,17 @@ test.describe('W-M13 i18n Language Switching — L1 Smoke @smoke @i18n', () => {
     // ============================================================
     const page = tier3Page
     await page.goto('/')
-    // TODO [NEEDS TESTID: lang-toggle] — container QuizLanguageToggle
     await page.waitForSelector('[data-testid="lang-toggle"]')
 
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
     await expect(page.getByTestId('lang-toggle')).toBeVisible()
-    // TODO [NEEDS TESTID: lang-toggle-vi] — nut "VI"
     await expect(page.getByTestId('lang-toggle-vi')).toBeVisible()
-    // TODO [NEEDS TESTID: lang-toggle-en] — nut "EN"
     await expect(page.getByTestId('lang-toggle-en')).toBeVisible()
   })
 
-  // SKIP: UI component lang-toggle-en not implemented yet
-  test.skip('W-M13-L1-002: Switch language EN UI text thay doi @smoke @i18n', async ({
+  test('W-M13-L1-002: Switch language EN UI text thay doi @smoke @i18n', async ({
     tier3Page,
   }) => {
     // ============================================================
@@ -55,7 +50,6 @@ test.describe('W-M13 i18n Language Switching — L1 Smoke @smoke @i18n', () => {
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // TODO [NEEDS TESTID: lang-toggle-en] with data-active attribute
     await expect(page.getByTestId('lang-toggle-en')).toHaveAttribute('data-active', 'true')
     await expect(page.getByTestId('home-greeting')).toHaveText(/Good (morning|afternoon|evening)/i)
 
@@ -65,8 +59,7 @@ test.describe('W-M13 i18n Language Switching — L1 Smoke @smoke @i18n', () => {
     await page.evaluate(() => localStorage.setItem('quizLanguage', 'vi'))
   })
 
-  // SKIP: UI component lang-toggle-en not implemented yet
-  test.skip('W-M13-L1-003: Language preference persist qua reload @smoke @i18n', async ({
+  test('W-M13-L1-003: Language preference persist qua reload @smoke @i18n', async ({
     tier3Page,
   }) => {
     // ============================================================
@@ -96,8 +89,7 @@ test.describe('W-M13 i18n Language Switching — L1 Smoke @smoke @i18n', () => {
     await page.evaluate(() => localStorage.setItem('quizLanguage', 'vi'))
   })
 
-  // SKIP: UI component lang-toggle-en not implemented yet
-  test.skip('W-M13-L1-004: Switch language VI EN tren Practice page @smoke @i18n', async ({
+  test('W-M13-L1-004: Switch language VI EN tren Practice page @smoke @i18n', async ({
     tier3Page,
   }) => {
     // ============================================================

@@ -113,7 +113,6 @@ test.describe('A-M01 Admin Dashboard', () => {
     expect(kpiText).not.toContain('Loading')
 
     // Activity log section visible (if it exists)
-    // TODO [NEEDS TESTID: admin-activity-log] — may not have entries in dev
     const activityLog = dashboard.activityLog
     await expect(activityLog).toBeVisible({ timeout: 10_000 }).catch(() => {
       // Activity log may be empty in dev environment

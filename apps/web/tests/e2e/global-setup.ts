@@ -13,10 +13,12 @@
 import { chromium, type FullConfig } from '@playwright/test'
 import path from 'path'
 import fs from 'fs'
+import { fileURLToPath } from 'url'
 
 const API_BASE = 'http://localhost:8080'
 const APP_BASE = 'http://localhost:5173'
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const STORAGE_DIR = path.join(__dirname, 'fixtures', 'storage-states')
 
 const TEST_USERS = [
@@ -26,7 +28,7 @@ const TEST_USERS = [
   { email: 'test4@dev.local', password: 'Test@123456', file: 'tier4.json' },
   { email: 'test5@dev.local', password: 'Test@123456', file: 'tier5.json' },
   { email: 'test6@dev.local', password: 'Test@123456', file: 'tier6.json' },
-  { email: 'admin@biblequiz.test', password: 'Admin@123456', file: 'admin.json' },
+  { email: 'admin@biblequiz.test', password: 'Test@123456', file: 'admin.json' },
 ]
 
 async function globalSetup(_config: FullConfig): Promise<void> {
@@ -41,7 +43,7 @@ async function globalSetup(_config: FullConfig): Promise<void> {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       email: 'admin@biblequiz.test',
-      password: 'Admin@123456',
+      password: 'Test@123456',
     }),
   })
   if (!adminLogin.ok) {

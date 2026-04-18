@@ -38,18 +38,18 @@ export default function NotificationsAdmin() {
       {/* Compose */}
       <div data-testid="notifications-broadcast-form" className="rounded-lg border border-[#504535]/10 bg-[#1d1f29] p-5 space-y-3">
         <h3 className="font-medium text-[#e1e1ef]">Gửi thông báo</h3>
-        <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Tiêu đề thông báo"
+        <input data-testid="notifications-title-input" value={title} onChange={e => setTitle(e.target.value)} placeholder="Tiêu đề thông báo"
           className="w-full bg-[#191b25] border-none rounded-lg px-4 py-2 text-sm text-[#e1e1ef] focus:ring-1 focus:ring-[#e8a832] outline-none" />
-        <textarea value={content} onChange={e => setContent(e.target.value)} placeholder="Nội dung thông báo..." rows={3}
+        <textarea data-testid="notifications-content-input" value={content} onChange={e => setContent(e.target.value)} placeholder="Nội dung thông báo..." rows={3}
           className="w-full bg-[#191b25] border-none rounded-lg p-3 text-sm text-[#e1e1ef] resize-none focus:ring-1 focus:ring-[#e8a832] outline-none" />
         <div className="flex items-center justify-between">
           <span className="text-[#d5c4af]/40 text-xs">Gửi đến tất cả người dùng</span>
-          <button onClick={sendBroadcast} disabled={isSending || !title.trim() || !content.trim()}
+          <button data-testid="notifications-send-btn" onClick={sendBroadcast} disabled={isSending || !title.trim() || !content.trim()}
             className="px-6 py-2 bg-[#e8a832] text-[#281900] rounded-lg text-sm font-bold hover:brightness-110 disabled:opacity-50">
             {isSending ? 'Đang gửi...' : 'Gửi thông báo'}
           </button>
         </div>
-        {sent && <div className="text-emerald-400 text-sm font-medium">✓ Đã gửi thành công</div>}
+        {sent && <div data-testid="notifications-success-toast" className="text-emerald-400 text-sm font-medium">✓ Đã gửi thành công</div>}
       </div>
 
       {/* Automated notifications */}
@@ -77,7 +77,7 @@ export default function NotificationsAdmin() {
       </div>
 
       {/* History */}
-      <div className="rounded-lg border border-[#504535]/10 bg-[#1d1f29] p-5">
+      <div data-testid="notifications-history" className="rounded-lg border border-[#504535]/10 bg-[#1d1f29] p-5">
         <h3 className="font-medium text-[#e1e1ef] mb-3">Lịch sử thông báo</h3>
         {isLoading ? <p className="text-[#d5c4af]/40 text-sm">Đang tải...</p>
          : history.length === 0 ? <p className="text-[#d5c4af]/40 text-sm">Chưa có thông báo nào</p>

@@ -232,13 +232,6 @@ test.describe('A-M03 Questions CRUD', () => {
   // ── A-M03-L2-011 — UI CRUD flow ──
 
   test('A-M03-L2-011: UI create -> list refresh -> edit -> delete', async ({ adminPage }) => {
-    // TODO [NEEDS TESTID: admin-questions-table]
-    // TODO [NEEDS TESTID: admin-questions-create-btn]
-    // TODO [NEEDS TESTID: admin-question-content-input]
-    // TODO [NEEDS TESTID: admin-question-save-btn]
-    // TODO [NEEDS TESTID: admin-question-edit-btn]
-    // TODO [NEEDS TESTID: admin-question-delete-btn]
-
     await adminPage.goto('/admin/questions')
 
     // Wait for table to load

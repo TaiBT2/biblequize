@@ -93,6 +93,7 @@ export default function QuestionsAdmin() {
   const [editing, setEditing]   = useState<Partial<Question> | null>(null)
   const [isSaving, setIsSaving] = useState(false)
   const [saveError, setSaveError] = useState<string | null>(null)
+  const [saveSuccess, setSaveSuccess] = useState(false)
 
   // ── import modal
   const [importOpen,      setImportOpen]      = useState(false)
@@ -159,7 +160,7 @@ export default function QuestionsAdmin() {
         const url = forceCreate ? '/api/admin/questions?forceCreate=true' : '/api/admin/questions'
         await api.post(url, editing)
       }
-      setEditing(null); await refresh()
+      setEditing(null); setSaveSuccess(true); setTimeout(() => setSaveSuccess(false), 3000); await refresh()
     } catch (e: any) {
       const errData = e?.response?.data
       if (e?.response?.status === 409 && errData?.error === 'POSSIBLE_DUPLICATE') {
@@ -257,6 +258,8 @@ export default function QuestionsAdmin() {
   return (
     <>
     <div data-testid="admin-questions-page" className="space-y-4">
+
+      {saveSuccess && <div data-testid="admin-questions-success-toast" className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium">✓ Lưu câu hỏi thành công</div>}
 
       {/* Header */}
       <div className="flex items-start justify-between gap-3 flex-wrap">
@@ -446,7 +449,7 @@ export default function QuestionsAdmin() {
     {/* ── Edit / Create Modal ───────────────────────────────────────────────── */}
     {editing && (
       <div data-testid="admin-questions-create-modal" className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 overflow-y-auto py-6">
-        <div className="w-full max-w-2xl rounded-xl border border-white/10 bg-[#111018] p-6 shadow-2xl mx-4">
+        <div data-testid="question-form-modal" className="w-full max-w-2xl rounded-xl border border-white/10 bg-[#111018] p-6 shadow-2xl mx-4">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold">{editing.id ? 'Sửa câu hỏi' : 'Tạo câu hỏi'}</h3>
             <button onClick={() => setEditing(null)} className="px-2 py-1 rounded bg-white/10 hover:bg-white/20">✕</button>
@@ -591,7 +594,7 @@ export default function QuestionsAdmin() {
             )}
 
             {duplicateWarning && (
-              <div className="p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
+              <div data-testid="duplicate-warning" className="p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
                 <h4 className="text-yellow-400 font-semibold text-sm mb-2">⚠️ {duplicateWarning.message}</h4>
                 <div className="space-y-2 mb-3">
                   {duplicateWarning.similarQuestions?.map((q: any) => (

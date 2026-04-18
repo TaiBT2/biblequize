@@ -39,7 +39,7 @@ export default function MysteryMode() {
       </div>
 
       {/* Info card */}
-      <div className="bg-surface-container rounded-2xl p-8 border border-pink-500/20 text-center space-y-6">
+      <div className="bg-surface-container rounded-2xl p-8 border border-pink-500/20 text-center space-y-6" data-testid="mystery-info-card">
         <div className="space-y-3">
           <div className="flex items-center justify-center gap-4 text-lg">
             <span className="text-on-surface-variant">Sách:</span>
@@ -58,7 +58,7 @@ export default function MysteryMode() {
         <div className="flex justify-center gap-6">
           <div className="bg-pink-500/10 border border-pink-500/20 rounded-xl px-4 py-2 text-center" data-testid="mystery-multiplier-badge">
             <p className="text-xs text-on-surface-variant">Bonus</p>
-            <p className="text-lg font-black text-pink-400">1.5x XP</p>
+            <p className="text-lg font-black text-pink-400" data-testid="mystery-bonus-xp">1.5x XP</p>
           </div>
           <div className="bg-pink-500/10 border border-pink-500/20 rounded-xl px-4 py-2 text-center">
             <p className="text-xs text-on-surface-variant">Thời gian</p>

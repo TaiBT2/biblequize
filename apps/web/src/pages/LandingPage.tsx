@@ -510,7 +510,7 @@ export default function LandingPage() {
   if (isLoading) return null
 
   return (
-    <div className="bg-background font-body text-on-surface selection:bg-secondary selection:text-on-secondary min-h-screen">
+    <div data-testid="landing-page" className="bg-background font-body text-on-surface selection:bg-secondary selection:text-on-secondary min-h-screen">
       <PageMeta
         title="Hoc Kinh Thanh qua Quiz & Thi dau"
         description="Quiz Kinh Thanh tieng Viet — trac nghiem tuong tac, thi dau multiplayer, nhom hoi thanh. Hoan toan mien phi."

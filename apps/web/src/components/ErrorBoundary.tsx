@@ -67,7 +67,7 @@ class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div data-testid="error-boundary-fallback" className="min-h-screen flex items-center justify-center bg-gray-900">
+        <div data-testid="error-boundary" className="min-h-screen flex items-center justify-center bg-gray-900">
           <div className="max-w-md w-full mx-4">
             <div className="bg-red-900/20 border border-red-500/30 rounded-2xl p-8 text-center">
               {/* Error Icon */}

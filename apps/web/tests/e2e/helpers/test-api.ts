@@ -5,7 +5,7 @@
  * admin bearer token which is obtained once via init() and cached.
  *
  * Test users: test1@dev.local .. test6@dev.local (password: Test@123456)
- * Admin user: admin@biblequiz.test (password: Admin@123456)
+ * Admin user: admin@biblequiz.test (password: Test@123456)
  */
 
 // ---------------------------------------------------------------------------
@@ -77,7 +77,7 @@ export class TestApi {
 
   /** Login as admin and cache the token. Must be called before any admin endpoint. */
   async init(): Promise<void> {
-    const res = await this.loginAs('admin@biblequiz.test', 'Admin@123456')
+    const res = await this.loginAs('admin@biblequiz.test', 'Test@123456')
     this.adminToken = res.accessToken
   }
 
@@ -238,10 +238,7 @@ export class TestApi {
     const cached = this.tokenCache.get(email)
     if (cached) return cached
 
-    const password = email === 'admin@biblequiz.test'
-      ? 'Admin@123456'
-      : 'Test@123456'
-    const loginRes = await this.loginAs(email, password)
+    const loginRes = await this.loginAs(email, 'Test@123456')
     return loginRes.accessToken
   }
 

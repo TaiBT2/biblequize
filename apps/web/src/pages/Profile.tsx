@@ -226,7 +226,7 @@ const Profile: React.FC = () => {
       {/* Bento Grid Stats & Progress */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
         {/* Tier Progress */}
-        <div className="md:col-span-2 bg-surface-container rounded-3xl p-10 flex flex-col justify-between">
+        <div data-testid="profile-tier-progress" className="md:col-span-2 bg-surface-container rounded-3xl p-10 flex flex-col justify-between">
           <div>
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-xl font-bold text-on-surface tracking-tight uppercase">
@@ -243,11 +243,11 @@ const Profile: React.FC = () => {
               />
             </div>
             <div className="flex justify-between text-sm font-bold text-on-surface-variant uppercase tracking-tighter">
-              <span>{tierProgress.currentTierName}</span>
-              <span>
+              <span data-testid="profile-tier-current-name">{tierProgress.currentTierName}</span>
+              <span data-testid="profile-tier-exp">
                 {tierProgress.currentExp.toLocaleString()} / {tierProgress.nextTierExp.toLocaleString()} EXP
               </span>
-              <span>{tierProgress.nextTierName}</span>
+              <span data-testid="profile-tier-next-name">{tierProgress.nextTierName}</span>
             </div>
           </div>
           <div className="mt-10 flex gap-6 items-center">
@@ -334,7 +334,7 @@ const Profile: React.FC = () => {
       </section>
 
       {/* Badge Collection */}
-      <section>
+      <section data-testid="profile-badges-section">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-xl font-bold text-on-surface tracking-tight uppercase">
             {t('profile.badgeCollection')}
@@ -502,7 +502,7 @@ function PrestigeSection() {
   const { prestigeLevel, daysAtTier6, daysRequired, canPrestige, nextPrestigeName } = data
 
   return (
-    <section className="mt-8 space-y-4">
+    <section data-testid="profile-prestige-section" className="mt-8 space-y-4">
       <div className="flex items-center gap-3">
         <span className="material-symbols-outlined text-secondary" style={FILL_STYLE}>
           military_tech
@@ -524,7 +524,7 @@ function PrestigeSection() {
           <div className="space-y-3">
             <div className="flex justify-between text-sm">
               <span className="text-on-surface-variant">Ngày ở Tier 6</span>
-              <span className="font-bold text-on-surface">{daysAtTier6}/{daysRequired}</span>
+              <span data-testid="profile-days-at-tier6" className="font-bold text-on-surface">{daysAtTier6}/{daysRequired}</span>
             </div>
             <div className="h-2 bg-surface-container-high rounded-full overflow-hidden">
               <div
@@ -594,7 +594,7 @@ function DeleteAccountSection() {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+        <div data-testid="delete-account-modal" className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
           <div className="glass-card max-w-md w-full p-6 space-y-4">
             <h2 className="text-xl font-bold text-error">{t('profile.deleteAccountTitle')}</h2>
 
@@ -612,6 +612,7 @@ function DeleteAccountSection() {
               {t('profile.deleteAccountConfirmLabel', { phrase: expectedPhrase })}
             </p>
             <input
+              data-testid="profile-delete-confirm-input"
               type="text"
               value={confirmPhrase}
               onChange={(e) => setConfirmPhrase(e.target.value)}
@@ -623,6 +624,7 @@ function DeleteAccountSection() {
 
             <div className="flex gap-3">
               <button
+                data-testid="delete-account-cancel-btn"
                 onClick={() => { setShowModal(false); setConfirmPhrase(''); setError('') }}
                 className="flex-1 px-4 py-2 rounded-lg border border-outline-variant/20 text-on-surface-variant text-sm hover:bg-surface-container-high"
               >

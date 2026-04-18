@@ -56,15 +56,12 @@ test.describe('W-M13 i18n — L2 Happy Path @happy-path @i18n', () => {
     // ============================================================
     // SECTION 2: ACTIONS — click language toggle
     // ============================================================
-    const toggle = page.getByTestId('quiz-language-toggle')
+    const toggle = page.getByTestId('lang-toggle')
     await expect(toggle).toBeVisible()
-    await toggle.click()
 
-    // Select English option
-    const enOption = page.getByText(/English|EN/i)
-    if (await enOption.isVisible({ timeout: 2_000 }).catch(() => false)) {
-      await enOption.click()
-    }
+    // Click the EN button directly
+    const enBtn = page.getByTestId('lang-toggle-en')
+    await enBtn.click()
 
     // ============================================================
     // SECTION 3: UI ASSERTIONS

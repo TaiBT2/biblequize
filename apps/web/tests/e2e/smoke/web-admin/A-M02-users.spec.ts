@@ -18,15 +18,12 @@ test.describe('A-M02 Users Management — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/users')
-    // TODO [NEEDS TESTID: admin-users-page] — wrapper
     await adminPage.waitForSelector('[data-testid="admin-users-page"]')
 
     // ── UI Assertions ──
     await expect(adminPage).toHaveURL('/admin/users')
     await expect(adminPage.getByTestId('admin-users-page')).toBeVisible()
-    // TODO [NEEDS TESTID: admin-users-table] — bang danh sach users
     await expect(adminPage.getByTestId('admin-users-table')).toBeVisible()
-    // TODO [NEEDS TESTID: admin-users-search] — input search
     await expect(adminPage.getByTestId('admin-users-search')).toBeVisible()
   })
 
@@ -43,7 +40,6 @@ test.describe('A-M02 Users Management — L1 Smoke', () => {
     )
 
     // ── UI Assertions ──
-    // TODO [NEEDS TESTID: admin-user-row] — moi hang user trong bang
     await expect(
       adminPage.getByTestId('admin-users-table').getByTestId('admin-user-row'),
     ).toHaveCount(1)
@@ -60,14 +56,11 @@ test.describe('A-M02 Users Management — L1 Smoke', () => {
     await adminPage.goto('/admin/users')
     await adminPage.waitForSelector('[data-testid="admin-user-row"]')
     await adminPage.getByTestId('admin-user-row').first().click()
-    // TODO [NEEDS TESTID: admin-user-detail-modal] — modal chi tiet user
     await adminPage.waitForSelector('[data-testid="admin-user-detail-modal"]')
 
     // ── UI Assertions ──
     await expect(adminPage.getByTestId('admin-user-detail-modal')).toBeVisible()
-    // TODO [NEEDS TESTID: admin-user-detail-email] — email display
     await expect(adminPage.getByTestId('admin-user-detail-email')).toBeVisible()
-    // TODO [NEEDS TESTID: admin-user-ban-btn] — nut Ban
     await expect(adminPage.getByTestId('admin-user-ban-btn')).toBeVisible()
   })
 
@@ -85,10 +78,8 @@ test.describe('A-M02 Users Management — L1 Smoke', () => {
     await adminPage.getByTestId('admin-user-row').first().click()
     await adminPage.waitForSelector('[data-testid="admin-user-detail-modal"]')
     await adminPage.getByTestId('admin-user-ban-btn').click()
-    // TODO [NEEDS TESTID: admin-ban-reason-input] — input ly do ban (min 10 chars)
     await adminPage.waitForSelector('[data-testid="admin-ban-reason-input"]')
     await adminPage.getByTestId('admin-ban-reason-input').fill('E2E test ban')
-    // TODO [NEEDS TESTID: admin-ban-confirm-btn] — confirm ban button
     await adminPage.getByTestId('admin-ban-confirm-btn').click()
 
     // ── UI Assertions ──

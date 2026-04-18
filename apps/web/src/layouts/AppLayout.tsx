@@ -23,10 +23,14 @@ function QuizLanguageToggle() {
       <span className="flex-1 text-on-surface-variant">{t('profile.quizLang')}</span>
       <div className="flex gap-0.5 bg-surface-container rounded-lg p-0.5">
         <button
+          data-testid="lang-toggle-vi"
+          data-active={lang === 'vi' ? 'true' : 'false'}
           onClick={() => toggle('vi')}
           className={`px-2 py-1 rounded-md text-xs font-bold transition-colors ${lang === 'vi' ? 'bg-secondary text-on-secondary' : 'text-on-surface-variant hover:text-on-surface'}`}
         >VI</button>
         <button
+          data-testid="lang-toggle-en"
+          data-active={lang === 'en' ? 'true' : 'false'}
           onClick={() => toggle('en')}
           className={`px-2 py-1 rounded-md text-xs font-bold transition-colors ${lang === 'en' ? 'bg-secondary text-on-secondary' : 'text-on-surface-variant hover:text-on-surface'}`}
         >EN</button>
@@ -64,7 +68,7 @@ export default function AppLayout() {
     <div className="min-h-screen bg-[#11131e] text-[#e1e1f1]">
       <OfflineBanner />
       {/* Top Navigation Bar */}
-      <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#11131e]/90 backdrop-blur-md">
+      <header data-testid="app-header" className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#11131e]/90 backdrop-blur-md">
         <Link to="/" className="text-2xl font-black text-[#e8a832] tracking-tighter">
           Bible Quiz
         </Link>
@@ -83,10 +87,10 @@ export default function AppLayout() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-6">
+        <div data-testid="header-notification-area" className="flex items-center gap-6">
           <span className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">favorite</span>
           <span className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">bolt</span>
-          <span data-testid="header-notification-btn" className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">stars</span>
+          <span data-testid="nav-notification-bell" className="inline-flex"><span data-testid="header-notification-btn" className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">stars</span></span>
           {/* User avatar + dropdown */}
           <div className="relative">
             <button

@@ -18,15 +18,12 @@ test.describe('A-M03 + A-M04 Questions CRUD — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/questions')
-    // TODO [NEEDS TESTID: admin-questions-page] — wrapper
     await adminPage.waitForSelector('[data-testid="admin-questions-page"]')
 
     // ── UI Assertions ──
     await expect(adminPage).toHaveURL('/admin/questions')
     await expect(adminPage.getByTestId('admin-questions-page')).toBeVisible()
-    // TODO [NEEDS TESTID: admin-questions-table] — bang questions
     await expect(adminPage.getByTestId('admin-questions-table')).toBeVisible()
-    // TODO [NEEDS TESTID: admin-questions-add-btn] — nut "+ Them Cau Hoi"
     await expect(adminPage.getByTestId('admin-questions-add-btn')).toBeVisible()
   })
 
@@ -36,7 +33,6 @@ test.describe('A-M03 + A-M04 Questions CRUD — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/questions')
-    // TODO [NEEDS TESTID: admin-questions-book-filter] — dropdown filter theo sach
     await adminPage.waitForSelector('[data-testid="admin-questions-book-filter"]')
     await adminPage.getByTestId('admin-questions-book-filter').selectOption('Genesis')
     await adminPage.waitForResponse((resp) =>
@@ -44,7 +40,6 @@ test.describe('A-M03 + A-M04 Questions CRUD — L1 Smoke', () => {
     )
 
     // ── UI Assertions ──
-    // TODO [NEEDS TESTID: admin-question-row] — moi hang question
     const rows = adminPage
       .getByTestId('admin-questions-table')
       .getByTestId('admin-question-row')
@@ -60,15 +55,12 @@ test.describe('A-M03 + A-M04 Questions CRUD — L1 Smoke', () => {
     await adminPage.goto('/admin/questions')
     await adminPage.waitForSelector('[data-testid="admin-questions-add-btn"]')
     await adminPage.getByTestId('admin-questions-add-btn').click()
-    // TODO [NEEDS TESTID: question-form-modal] — modal Create/Edit
     await adminPage.waitForSelector('[data-testid="question-form-modal"]')
 
     // ── UI Assertions ──
     await expect(adminPage.getByTestId('question-form-modal')).toBeVisible()
-    // TODO [NEEDS TESTID: question-content-input] — textarea noi dung cau hoi
-    await expect(adminPage.getByTestId('question-content-input')).toBeVisible()
-    // TODO [NEEDS TESTID: question-save-btn] — nut "Luu"
-    await expect(adminPage.getByTestId('question-save-btn')).toBeVisible()
+    await expect(adminPage.getByTestId('admin-question-content-input')).toBeVisible()
+    await expect(adminPage.getByTestId('admin-question-save-btn')).toBeVisible()
   })
 
   // ── A-M04-L1-001 ── admin ──────────────────────────────────
@@ -81,11 +73,10 @@ test.describe('A-M03 + A-M04 Questions CRUD — L1 Smoke', () => {
     await adminPage.waitForSelector('[data-testid="admin-questions-add-btn"]')
     await adminPage.getByTestId('admin-questions-add-btn').click()
     await adminPage.waitForSelector('[data-testid="question-form-modal"]')
-    await adminPage.getByTestId('question-content-input').fill(
+    await adminPage.getByTestId('admin-question-content-input').fill(
       'Ai la nguoi dau tien duoc Chua tao dung?',
     )
-    await adminPage.getByTestId('question-content-input').blur()
-    // TODO [NEEDS TESTID: duplicate-warning] — modal/banner canh bao cau hoi giong
+    await adminPage.getByTestId('admin-question-content-input').blur()
     await adminPage.waitForSelector('[data-testid="duplicate-warning"]')
 
     // ── UI Assertions ──
@@ -103,19 +94,17 @@ test.describe('A-M03 + A-M04 Questions CRUD — L1 Smoke', () => {
     // ── Actions ──
     await adminPage.goto('/admin/questions')
     await adminPage.waitForSelector('[data-testid="admin-question-row"]')
-    // TODO [NEEDS TESTID: question-edit-btn] — nut Edit tren moi hang
     await adminPage
       .getByTestId('admin-question-row')
       .first()
-      .getByTestId('question-edit-btn')
+      .getByTestId('admin-question-edit-btn')
       .click()
     await adminPage.waitForSelector('[data-testid="question-form-modal"]')
     // Change difficulty (click difficulty selector)
-    await adminPage.getByTestId('question-save-btn').click()
+    await adminPage.getByTestId('admin-question-save-btn').click()
 
     // ── UI Assertions ──
     await expect(adminPage.getByTestId('question-form-modal')).not.toBeVisible()
-    // TODO [NEEDS TESTID: admin-questions-success-toast] — toast "Da luu thanh cong"
     await expect(
       adminPage.getByTestId('admin-questions-success-toast'),
     ).toBeVisible()

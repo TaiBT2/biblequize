@@ -28,7 +28,6 @@ export class HomePage extends BasePage {
     this.leaderboardTabDaily = page.getByTestId('leaderboard-tab-daily')
     this.leaderboardTabWeekly = page.getByTestId('leaderboard-tab-weekly')
 
-    // TODO [NEEDS TESTID: game-mode-grid] — GameModeGrid component
     this.gameModeGrid = page.locator('[data-testid="game-mode-grid"]')
   }
 

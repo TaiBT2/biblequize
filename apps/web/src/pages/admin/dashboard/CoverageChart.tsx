@@ -26,12 +26,12 @@ export default function CoverageChart({ books }: { books: BookCoverage[] }) {
           const color = b.meetsMinimum ? 'bg-green-500' : pct >= 50 ? 'bg-yellow-500' : 'bg-red-500'
           const textColor = b.meetsMinimum ? 'text-green-400' : pct >= 50 ? 'text-yellow-400' : 'text-red-400'
           return (
-            <div key={b.book} className="grid grid-cols-12 items-center gap-4 group">
+            <div key={b.book} data-testid="coverage-book-bar" className="grid grid-cols-12 items-center gap-4 group">
               <span className="col-span-2 text-[10px] font-mono text-[#d5c4af] group-hover:text-[#e8a832] transition-colors uppercase truncate">{b.book}</span>
               <div className="col-span-9 h-1 bg-[#11131c] overflow-hidden rounded-full">
                 <div className={`h-full ${color} rounded-full`} style={{ width: `${pct}%` }} />
               </div>
-              <span className={`col-span-1 text-[10px] font-mono text-right ${textColor}`}>{pct}%</span>
+              <span data-testid="coverage-pct" className={`col-span-1 text-[10px] font-mono text-right ${textColor}`}>{pct}%</span>
             </div>
           )
         })}

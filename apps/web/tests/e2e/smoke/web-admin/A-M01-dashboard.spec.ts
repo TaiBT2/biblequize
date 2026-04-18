@@ -40,11 +40,8 @@ test.describe('A-M01 Admin Dashboard — L1 Smoke', () => {
     await dashboard.goto()
 
     // ── UI Assertions ──
-    // TODO [NEEDS TESTID: kpi-total-questions] — card so luong questions
     await expect(adminPage.getByTestId('kpi-total-questions')).toBeVisible()
-    // TODO [NEEDS TESTID: kpi-total-users] — card so luong users
     await expect(adminPage.getByTestId('kpi-total-users')).toBeVisible()
-    // TODO [NEEDS TESTID: kpi-pending-review] — card pending review queue
     await expect(adminPage.getByTestId('kpi-pending-review')).toBeVisible()
   })
 

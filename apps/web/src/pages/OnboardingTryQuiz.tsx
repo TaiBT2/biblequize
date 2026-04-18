@@ -86,7 +86,7 @@ export default function OnboardingTryQuiz() {
     }
 
     return (
-      <div className="min-h-screen bg-[#11131e] flex flex-col">
+      <div data-testid="try-quiz-results" className="min-h-screen bg-[#11131e] flex flex-col">
         {/* Nav */}
         <nav className="flex justify-between items-center w-full px-8 py-4 sticky top-0 z-50 bg-[#11131e]">
           <span className="text-xl font-bold text-[#f8bd45] uppercase tracking-[0.05em]">BibleQuiz</span>
@@ -108,7 +108,7 @@ export default function OnboardingTryQuiz() {
               <div className="relative">
                 <div className="absolute inset-0 gold-gradient blur-3xl opacity-10 rounded-full" />
                 <div className="relative">
-                  <p className="text-[120px] md:text-[160px] font-extrabold leading-none tracking-tighter" style={{ background: 'linear-gradient(135deg, #f8bd45, #e7c268)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                  <p data-testid="try-quiz-score" className="text-[120px] md:text-[160px] font-extrabold leading-none tracking-tighter" style={{ background: 'linear-gradient(135deg, #f8bd45, #e7c268)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                     {correct}/{total}
                   </p>
                   <div className="h-1.5 w-32 gold-gradient rounded-full mt-2" />
@@ -168,6 +168,7 @@ export default function OnboardingTryQuiz() {
                   </div>
                   <div className="flex flex-col gap-3">
                     <button
+                      data-testid="try-quiz-register-btn"
                       onClick={goRegister}
                       className="gold-gradient text-on-secondary font-bold py-4 px-8 rounded-xl flex items-center justify-center gap-3 hover:scale-[1.02] transition-all active:scale-95"
                     >
@@ -251,7 +252,7 @@ export default function OnboardingTryQuiz() {
                 <span className="material-symbols-outlined">menu_book</span>
                 <span className="text-xs font-bold tracking-widest uppercase">{question.book || 'Kinh Thánh'}</span>
               </div>
-              <p className="text-2xl md:text-3xl font-semibold leading-snug text-on-surface">{question.content}</p>
+              <p data-testid="try-quiz-question" className="text-2xl md:text-3xl font-semibold leading-snug text-on-surface">{question.content}</p>
             </div>
             <div className="absolute bottom-0 left-0 h-1 w-24 bg-secondary" />
           </div>
@@ -270,6 +271,7 @@ export default function OnboardingTryQuiz() {
               return (
                 <button
                   key={idx}
+                  data-testid={`try-quiz-option-${idx}`}
                   onClick={() => handleSelect(idx)}
                   disabled={selected !== null}
                   className={`group flex items-center gap-4 p-5 rounded-xl border transition-all duration-300 text-left active:scale-95 ${cls}`}

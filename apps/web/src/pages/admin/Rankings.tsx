@@ -58,7 +58,7 @@ export default function RankingsAdmin() {
           <div data-testid="admin-season-active-banner" className="flex items-center justify-between">
             <div>
               <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">Đang diễn ra</span>
-              <h3 className="text-xl font-bold text-[#e1e1ef] mt-1">{active.name}</h3>
+              <h3 data-testid="active-season-name" className="text-xl font-bold text-[#e1e1ef] mt-1">{active.name}</h3>
               <p className="text-[#d5c4af]/60 text-sm">{active.startDate} → {active.endDate}</p>
             </div>
             <span data-testid="admin-season-end-btn" className="inline-flex">

@@ -175,10 +175,6 @@ test.describe('A-M08 Seasons & Rankings', () => {
   // ── A-M08-L2-008 — UI: end active season ──
 
   test('A-M08-L2-008: UI end active season shows archive banner', async ({ adminPage }) => {
-    // TODO [NEEDS TESTID: admin-season-active-banner]
-    // TODO [NEEDS TESTID: admin-season-end-btn]
-    // TODO [NEEDS TESTID: admin-seasons-archived-list]
-
     await adminPage.goto('/admin/rankings')
 
     // Check if active season banner exists

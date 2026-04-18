@@ -18,7 +18,6 @@ test.describe('A-M08 Seasons & Rankings — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/rankings')
-    // TODO [NEEDS TESTID: admin-rankings-page] — wrapper Rankings admin
     await adminPage.waitForSelector('[data-testid="admin-rankings-page"]')
 
     // ── UI Assertions ──
@@ -33,14 +32,11 @@ test.describe('A-M08 Seasons & Rankings — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/rankings')
-    // TODO [NEEDS TESTID: active-season-banner] — banner season dang active
     await adminPage.waitForSelector('[data-testid="active-season-banner"]')
 
     // ── UI Assertions ──
     await expect(adminPage.getByTestId('active-season-banner')).toBeVisible()
-    // TODO [NEEDS TESTID: active-season-name] — ten season
     await expect(adminPage.getByTestId('active-season-name')).toBeVisible()
-    // TODO [NEEDS TESTID: end-season-btn] — nut "Ket Thuc Mua" (destructive)
     await expect(adminPage.getByTestId('end-season-btn')).toBeVisible()
   })
 
@@ -50,16 +46,13 @@ test.describe('A-M08 Seasons & Rankings — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/rankings')
-    // TODO [NEEDS TESTID: create-season-form] — form tao season moi
     await adminPage.waitForSelector('[data-testid="create-season-form"]')
 
     // ── UI Assertions ──
     await expect(adminPage.getByTestId('create-season-form')).toBeVisible()
-    // TODO [NEEDS TESTID: create-season-name-input] — input ten season
     await expect(
       adminPage.getByTestId('create-season-name-input'),
     ).toBeVisible()
-    // TODO [NEEDS TESTID: create-season-submit-btn] — nut "Tao Mua Giai"
     await expect(
       adminPage.getByTestId('create-season-submit-btn'),
     ).toBeVisible()
@@ -71,7 +64,6 @@ test.describe('A-M08 Seasons & Rankings — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await adminPage.goto('/admin/rankings')
-    // TODO [NEEDS TESTID: inactive-seasons-list] — danh sach seasons da ket thuc
     await adminPage.waitForSelector('[data-testid="inactive-seasons-list"]')
 
     // ── UI Assertions ──

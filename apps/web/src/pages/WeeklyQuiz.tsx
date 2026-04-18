@@ -54,10 +54,10 @@ export default function WeeklyQuiz() {
 
       {/* Theme card */}
       {theme && (
-        <div className="bg-surface-container rounded-2xl p-8 border border-purple-500/20 text-center space-y-4">
+        <div className="bg-surface-container rounded-2xl p-8 border border-purple-500/20 text-center space-y-4" data-testid="weekly-quiz-theme-card">
           <p className="text-xs font-bold text-purple-400 uppercase tracking-wider">Chủ đề tuần này</p>
           <h2 className="text-2xl font-black text-on-surface" data-testid="weekly-theme-title">{theme.themeName}</h2>
-          <p className="text-sm text-on-surface-variant">{theme.themeNameEn}</p>
+          <p className="text-sm text-on-surface-variant" data-testid="weekly-theme-description">{theme.themeNameEn}</p>
 
           <div className="flex flex-wrap justify-center gap-2 mt-4">
             {theme.books?.slice(0, 5).map((book: string) => (
@@ -73,9 +73,10 @@ export default function WeeklyQuiz() {
           <div className="flex justify-center gap-6 pt-4 text-sm text-on-surface-variant">
             <span>10 câu hỏi</span>
             <span>•</span>
-            <span>Còn {theme.daysLeft} ngày</span>
+            <span data-testid="weekly-quiz-countdown">Còn {theme.daysLeft} ngày</span>
           </div>
 
+          <span data-testid="weekly-quiz-start-btn" className="inline-block">
           <button
             onClick={startQuiz}
             disabled={starting}
@@ -84,6 +85,7 @@ export default function WeeklyQuiz() {
           >
             {starting ? '...' : t('gameModes.weeklyBtn')}
           </button>
+          </span>
         </div>
       )}
     </div>

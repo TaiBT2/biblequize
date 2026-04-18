@@ -20,8 +20,7 @@ test.describe('W-M01 Auth & Onboarding — L1 Smoke', () => {
   }) => {
     // ── Actions ──
     await page.goto('/login')
-    // TODO [NEEDS TESTID: login-email-input] — fallback: input[type="email"]
-    await page.waitForSelector('[data-testid="login-email-input"], input[type="email"]')
+    await page.waitForSelector('[data-testid="login-email-input"]')
 
     // ── UI Assertions ──
     await expect(page).toHaveURL('/login')
@@ -63,7 +62,6 @@ test.describe('W-M01 Auth & Onboarding — L1 Smoke', () => {
     // ── Actions ──
     await loginPage.goto()
     await loginPage.loginWithCredentials('wrong@email.com', 'WrongPassword1')
-    // TODO [NEEDS TESTID: login-error-msg] — div loi hien khi credentials sai
     await page.waitForSelector('[data-testid="login-error-msg"]')
 
     // ── UI Assertions ──
@@ -103,15 +101,13 @@ authTest.describe('W-M01 Auth & Onboarding — L1 Smoke (authenticated)', () => 
   )
 
   // ── W-M01-L1-009 ── storageState=tier3 ───────────────────
-  // SKIP: UI component sidebar-logout-btn not implemented yet
-  authTest.skip(
+  authTest(
     'W-M01-L1-009: Dang xuat xoa session @smoke @auth',
     async ({ tier3Page }) => {
       // ── Actions ──
       await tier3Page.goto('/')
       await tier3Page.waitForSelector('[data-testid="home-page"]')
-      // TODO [NEEDS TESTID: sidebar-logout-btn] — nut Logout trong sidebar/menu
-      await tier3Page.getByTestId('sidebar-logout-btn').click()
+      await tier3Page.getByTestId('logout-btn').click()
       await tier3Page.waitForURL('/login')
 
       // ── UI Assertions ──
@@ -143,23 +139,18 @@ test.describe('W-M01 Auth & Onboarding — L1 Smoke (onboarding)', () => {
   })
 
   // ── W-M01-L1-007 ── guest ────────────────────────────────
-  // SKIP: UI component try-quiz-question not implemented yet
-  test.skip('W-M01-L1-007: Onboarding chon ngon ngu va xem slides @smoke @onboarding', async ({
+  test('W-M01-L1-007: Onboarding chon ngon ngu va xem slides @smoke @onboarding', async ({
     page,
   }) => {
     // ── Actions ──
     await page.goto('/onboarding')
-    // TODO [NEEDS TESTID: onboarding-lang-vi] — card chon "Tieng Viet"
     await page.getByTestId('onboarding-lang-vi').click()
-    // TODO [NEEDS TESTID: onboarding-next-btn] — nut "Next" tren slides 1-2
     await page.getByTestId('onboarding-next-btn').click()
     await page.getByTestId('onboarding-next-btn').click()
-    // TODO [NEEDS TESTID: onboarding-start-btn] — nut "Start" tren slide 3
     await page.getByTestId('onboarding-start-btn').click()
 
     // ── UI Assertions ──
     await expect(page).toHaveURL('/onboarding/try')
-    // TODO [NEEDS TESTID: try-quiz-question] — text cau hoi tren trang try quiz
     await expect(page.getByTestId('try-quiz-question')).toBeVisible()
   })
 
@@ -169,28 +160,24 @@ test.describe('W-M01 Auth & Onboarding — L1 Smoke (onboarding)', () => {
   }) => {
     // ── Actions ──
     await page.goto('/onboarding/try')
-    // TODO [NEEDS TESTID: try-quiz-question]
     await page.waitForSelector('[data-testid="try-quiz-question"]')
 
-    // TODO [NEEDS TESTID: quiz-option-a, quiz-option-b]
-    // Question 1
-    await page.getByTestId('quiz-option-a').click()
-    await page.getByTestId('onboarding-next-btn').click()
-    // Question 2
-    await page.getByTestId('quiz-option-b').click()
-    await page.getByTestId('onboarding-next-btn').click()
-    // Question 3
-    await page.getByTestId('quiz-option-a').click()
-    await page.getByTestId('onboarding-next-btn').click()
+    // OnboardingTryQuiz auto-advances after 800ms — no "next" button
+    for (let i = 0; i < 3; i++) {
+      await page.getByTestId(`try-quiz-option-${i}`).click()
+      // Wait for auto-advance: either next question or results screen
+      if (i < 2) {
+        await page.waitForTimeout(1000) // auto-advance 800ms + buffer
+        await page.waitForSelector('[data-testid="try-quiz-question"]')
+      }
+    }
 
-    // TODO [NEEDS TESTID: try-quiz-results]
+    // Wait for results screen
     await page.waitForSelector('[data-testid="try-quiz-results"]')
 
     // ── UI Assertions ──
     await expect(page.getByTestId('try-quiz-results')).toBeVisible()
-    // TODO [NEEDS TESTID: try-quiz-score]
     await expect(page.getByTestId('try-quiz-score')).toHaveText(/[0-3]\/3/)
-    // TODO [NEEDS TESTID: try-quiz-register-btn]
     await expect(page.getByTestId('try-quiz-register-btn')).toBeVisible()
   })
 })
