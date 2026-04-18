@@ -167,13 +167,13 @@ test.describe('W-M01 Auth & Onboarding — L1 Smoke (onboarding)', () => {
       await page.getByTestId(`try-quiz-option-${i}`).click()
       // Wait for auto-advance: either next question or results screen
       if (i < 2) {
-        await page.waitForTimeout(1000) // auto-advance 800ms + buffer
-        await page.waitForSelector('[data-testid="try-quiz-question"]')
+        // Wait for next question to render (auto-advance after 800ms)
+        await expect(page.getByTestId('try-quiz-question')).toBeVisible({ timeout: 2000 })
       }
     }
 
     // Wait for results screen
-    await page.waitForSelector('[data-testid="try-quiz-results"]')
+    await expect(page.getByTestId('try-quiz-results')).toBeVisible({ timeout: 2000 })
 
     // ── UI Assertions ──
     await expect(page.getByTestId('try-quiz-results')).toBeVisible()

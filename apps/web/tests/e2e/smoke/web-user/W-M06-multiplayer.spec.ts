@@ -117,16 +117,17 @@ test.describe('W-M06 Multiplayer Lobby — L1 Smoke @smoke @multiplayer', () => 
     // SECTION 2: ACTIONS
     // ============================================================
     const page = tier3Page
-    // await page.goto(`/room/${roomId}/lobby`)
-    // await page.waitForSelector('[data-testid="lobby-room-code"]')
+    const roomId = 'TODO-room-id-from-api-setup'
+    await page.goto(`/room/${roomId}/lobby`)
+    await page.waitForSelector('[data-testid="lobby-room-code"]')
 
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // await expect(page.getByTestId('lobby-room-code')).toBeVisible()
-    // await expect(page.getByTestId('lobby-room-code')).toHaveText(/[A-Z0-9]{6}/)
-    // await expect(page.getByTestId('lobby-leave-btn')).toBeVisible()
-    // await expect(page.getByTestId('lobby-player-grid')).toBeVisible()
+    await expect(page.getByTestId('lobby-room-code')).toBeVisible()
+    await expect(page.getByTestId('lobby-room-code')).toHaveText(/[A-Z0-9]{6}/)
+    await expect(page.getByTestId('lobby-leave-btn')).toBeVisible()
+    await expect(page.getByTestId('lobby-player-grid')).toBeVisible()
   })
 
   test('W-M06-L1-006: Room Lobby nut San Sang visible cho non-host @smoke @multiplayer', async ({
@@ -142,14 +143,15 @@ test.describe('W-M06 Multiplayer Lobby — L1 Smoke @smoke @multiplayer', () => 
     // SECTION 2: ACTIONS
     // ============================================================
     const page = tier1Page
-    // await page.goto(`/room/${roomId}/lobby`)
-    // await page.waitForSelector('[data-testid="lobby-ready-btn"]')
+    const roomId = 'TODO-room-id-from-api-setup'
+    await page.goto(`/room/${roomId}/lobby`)
+    await page.waitForSelector('[data-testid="lobby-ready-btn"]')
 
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // await expect(page.getByTestId('lobby-ready-btn')).toBeVisible()
-    // await expect(page.getByTestId('lobby-start-btn')).not.toBeVisible()
+    await expect(page.getByTestId('lobby-ready-btn')).toBeVisible()
+    await expect(page.getByTestId('lobby-start-btn')).not.toBeVisible()
   })
 
 })

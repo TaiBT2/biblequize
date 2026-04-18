@@ -96,16 +96,17 @@ test.describe('W-M09 Church Groups — L1 Smoke @smoke @groups', () => {
     // SECTION 2: ACTIONS
     // ============================================================
     const page = tier3Page
-    // await page.goto(`/groups/${groupId}`)
-    // await page.waitForSelector('[data-testid="group-detail-page"]')
+    const groupId = 'TODO-group-id-from-api-setup'
+    await page.goto(`/groups/${groupId}`)
+    await page.waitForSelector('[data-testid="group-detail-page"]')
 
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    // await expect(page).toHaveURL(/\/groups\/.+/)
-    // await expect(page.getByTestId('group-detail-page')).toBeVisible()
-    // await expect(page.getByTestId('group-detail-name')).toBeVisible()
-    // await expect(page.getByTestId('group-detail-members')).toBeVisible()
+    await expect(page).toHaveURL(/\/groups\/.+/)
+    await expect(page.getByTestId('group-detail-page')).toBeVisible()
+    await expect(page.getByTestId('group-detail-name')).toBeVisible()
+    await expect(page.getByTestId('group-detail-members')).toBeVisible()
   })
 
   test('W-M09-L1-005: Loading skeleton hien thi @smoke @groups', async ({
