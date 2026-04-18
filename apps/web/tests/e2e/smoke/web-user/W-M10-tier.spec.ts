@@ -29,7 +29,7 @@ test.describe('W-M10 Tier Progression — L1 Smoke @smoke @tier', () => {
       // ============================================================
       // SECTION 3: UI ASSERTIONS
       // ============================================================
-      await expect(homePage.tierBadge).toHaveText(/Tân Tín Hữu|New Believer|tiers\.newBeliever|tiers\.seeker|tiers\.spark/i)
+      await expect(homePage.tierBadge).toHaveText(/Tân Tín Hữu|New Believer|Người Tìm Kiếm|Seeker/i)
       // TODO [NEEDS TESTID: home-next-tier-card] — "Tang Bac Tiep Theo"
       await expect(page.getByTestId('home-next-tier-card')).toBeVisible()
       await expect(homePage.tierProgressBar).toBeVisible()

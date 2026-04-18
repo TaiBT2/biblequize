@@ -28,64 +28,81 @@ type AuthFixtures = {
   testApi: TestApi
 }
 
+// Login helper: returns Bearer token for API requests
+async function getBearerToken(email: string): Promise<string> {
+  const res = await fetch('http://localhost:8080/api/auth/mobile/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password: 'Test@123456' }),
+  })
+  const body = (await res.json()) as { accessToken: string }
+  return body.accessToken
+}
+
+async function makeTierContext(browser: any, tier: number) {
+  const token = await getBearerToken(`test${tier}@dev.local`)
+  return browser.newContext({
+    storageState: path.join(STORAGE_DIR, `tier${tier}.json`),
+    extraHTTPHeaders: { Authorization: `Bearer ${token}` },
+  })
+}
+
 export const test = base.extend<AuthFixtures>({
   tier1Page: async ({ browser }, use) => {
-    const ctx = await browser.newContext({
-      storageState: path.join(STORAGE_DIR, 'tier1.json'),
-    })
+    const ctx = await makeTierContext(browser, 1)
     const page = await ctx.newPage()
     await use(page)
     await ctx.close()
   },
 
   tier2Page: async ({ browser }, use) => {
-    const ctx = await browser.newContext({
-      storageState: path.join(STORAGE_DIR, 'tier2.json'),
-    })
+    const ctx = await makeTierContext(browser, 2)
     const page = await ctx.newPage()
     await use(page)
     await ctx.close()
   },
 
   tier3Page: async ({ browser }, use) => {
-    const ctx = await browser.newContext({
-      storageState: path.join(STORAGE_DIR, 'tier3.json'),
-    })
+    const ctx = await makeTierContext(browser, 3)
     const page = await ctx.newPage()
     await use(page)
     await ctx.close()
   },
 
   tier4Page: async ({ browser }, use) => {
-    const ctx = await browser.newContext({
-      storageState: path.join(STORAGE_DIR, 'tier4.json'),
-    })
+    const ctx = await makeTierContext(browser, 4)
     const page = await ctx.newPage()
     await use(page)
     await ctx.close()
   },
 
   tier5Page: async ({ browser }, use) => {
-    const ctx = await browser.newContext({
-      storageState: path.join(STORAGE_DIR, 'tier5.json'),
-    })
+    const ctx = await makeTierContext(browser, 5)
     const page = await ctx.newPage()
     await use(page)
     await ctx.close()
   },
 
   tier6Page: async ({ browser }, use) => {
-    const ctx = await browser.newContext({
-      storageState: path.join(STORAGE_DIR, 'tier6.json'),
-    })
+    const ctx = await makeTierContext(browser, 6)
     const page = await ctx.newPage()
     await use(page)
     await ctx.close()
   },
 
   adminPage: async ({ browser }, use) => {
+    // Get admin access token once so page.request.* calls authenticate correctly
+    // (storageState only has refresh_token cookie; Bearer header required for /api/admin/**)
+    const loginRes = await fetch('http://localhost:8080/api/auth/mobile/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: 'admin@biblequiz.test', password: 'Test@123456' }),
+    })
+    const { accessToken } = (await loginRes.json()) as { accessToken: string }
+
     const ctx = await browser.newContext({
       storageState: path.join(STORAGE_DIR, 'admin.json'),
+      extraHTTPHeaders: { Authorization: `Bearer ${accessToken}` },
     })
     const page = await ctx.newPage()
     await use(page)
