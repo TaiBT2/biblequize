@@ -61,17 +61,15 @@ test.describe('W-M09 Church Groups — L1 Smoke @smoke @groups', () => {
     tier3Page,
   }) => {
     // ============================================================
-    // SECTION 1: SETUP
+    // SECTION 1: SETUP — test3 is group owner via global-setup seed
     // ============================================================
-    // [NOT IMPLEMENTED: seed data chua include group membership cho test users]
-    test.skip()
 
     // ============================================================
     // SECTION 2: ACTIONS
     // ============================================================
     const page = tier3Page
     await page.goto('/groups')
-    await page.waitForSelector('[data-testid="group-leaderboard"]')
+    await page.waitForSelector('[data-testid="group-overview"]')
 
     // ============================================================
     // SECTION 3: UI ASSERTIONS
@@ -87,16 +85,19 @@ test.describe('W-M09 Church Groups — L1 Smoke @smoke @groups', () => {
     tier3Page,
   }) => {
     // ============================================================
-    // SECTION 1: SETUP
+    // SECTION 1: SETUP — fetch groupId from test3's groups (seeded in global-setup)
     // ============================================================
-    // [NOT IMPLEMENTED: need group ID with test3 as member]
-    test.skip()
+    const page = tier3Page
+    const groupsRes = await page.request.get('http://localhost:8080/api/groups/my-groups')
+    const groups = (await groupsRes.json()) as Array<{ id: string }>
+    if (!groups.length) {
+      test.skip(true, 'No groups for test3 — global-setup seed-group failed')
+    }
+    const groupId = groups[0].id
 
     // ============================================================
     // SECTION 2: ACTIONS
     // ============================================================
-    const page = tier3Page
-    const groupId = 'TODO-group-id-from-api-setup'
     await page.goto(`/groups/${groupId}`)
     await page.waitForSelector('[data-testid="group-detail-page"]')
 

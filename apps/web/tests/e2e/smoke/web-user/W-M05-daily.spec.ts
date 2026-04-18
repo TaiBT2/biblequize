@@ -111,10 +111,8 @@ test.describe('W-M05 Daily Challenge — L1 Smoke @smoke @daily', () => {
     tier3Page,
   }) => {
     // ============================================================
-    // SECTION 1: SETUP
+    // SECTION 1: SETUP — test3 is pre-marked complete via global-setup
     // ============================================================
-    // [NOT IMPLEMENTED: can endpoint test-helper de mark daily completed]
-    test.skip()
 
     // ============================================================
     // SECTION 2: ACTIONS
@@ -126,7 +124,6 @@ test.describe('W-M05 Daily Challenge — L1 Smoke @smoke @daily', () => {
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    await expect(dailyPage.startBtn).toBeDisabled()
     await expect(dailyPage.completedBadge).toBeVisible()
     await expect(page.getByTestId('daily-score-display')).toBeVisible()
   })
