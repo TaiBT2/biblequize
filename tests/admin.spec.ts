@@ -8,18 +8,21 @@ test.describe('Admin Panel', () => {
       expect(page.url()).not.toContain('/admin')
     })
 
-    test('should not allow non-admin access to admin', async ({ page }) => {
-      // Login as regular user
-      await page.goto('/login')
-      await page.getByText('Email & Mật khẩu').click()
-      await page.getByText('Đăng ký').click()
-
+    test('should not allow non-admin access to admin', async ({ page, request }) => {
+      // Register via API (no UI register page)
       const timestamp = Date.now()
-      await page.getByPlaceholder('Nguyễn Văn A').fill('Regular User')
-      await page.getByPlaceholder('email@example.com').fill(`e2eregular+${timestamp}@example.com`)
-      await page.getByPlaceholder('Tối thiểu 8 ký tự').fill('password123')
-      await page.getByPlaceholder('Nhập lại mật khẩu').fill('password123')
-      await page.getByText('Tạo tài khoản').click()
+      const email = `e2eregular+${timestamp}@example.com`
+      const password = 'Test@123456'
+
+      await request.post('http://localhost:8080/api/auth/register', {
+        data: { name: 'Regular User', email, password },
+      })
+
+      // Login via UI
+      await page.goto('/login')
+      await page.getByTestId('login-email-input').fill(email)
+      await page.getByTestId('login-password-input').fill(password)
+      await page.getByTestId('login-submit-btn').click()
 
       // Wait for redirect to home
       await expect(page).toHaveURL('/', { timeout: 10000 })

@@ -7,6 +7,90 @@
 - Ưu tiên đọc TODO.md trước khi làm bất cứ thứ gì
 - LUÔN chia nhỏ task vào TODO.md TRƯỚC khi code — không tự xử lý 1 lần
 
+## Think Before Code (BẮT BUỘC — đọc TRƯỚC KHI LÀM BẤT CỨ GÌ)
+
+> **KHÔNG BAO GIỜ viết code ngay sau khi nhận prompt.**
+> Phải qua đủ 5 bước phân tích bên dưới. Nếu skip bước nào → code sẽ sai.
+
+### Quy trình bắt buộc TRƯỚC KHI viết dòng code đầu tiên
+
+```
+BƯỚC 1 — ĐỌC HIỂU (5 phút)
+├── Đọc TODO.md → có task dở không?
+├── Đọc prompt kỹ → user thực sự muốn gì? (không phải mình nghĩ họ muốn gì)
+├── Đọc "Known Issues" trong CLAUDE.md → file sắp sửa có bug đã biết?
+└── Output: 1-2 câu tóm tắt "Task này là: ..."
+
+BƯỚC 2 — KHẢO SÁT CODE HIỆN TẠI (10 phút)
+├── Đọc source file(s) sẽ sửa → hiểu logic hiện tại
+├── Grep codebase tìm pattern tương tự → follow cách đã làm
+├── Đọc test file hiện có → hiểu behavior mong đợi
+├── Đọc component/hook mà file import → hiểu dependencies
+├── Check file "nhạy cảm" → có ảnh hưởng global không?
+├── **E2E Test Gate** → screen nào bị ảnh hưởng? TC spec đã có chưa? Playwright code đã có chưa?
+│   (Xem chi tiết ở section "E2E Test Gate" bên dưới)
+└── Output: Liệt kê "Files sẽ đọc/sửa: ..., Dependencies: ..., Impact: ..., E2E: TC có/chưa có"
+
+BƯỚC 3 — PLAN (5 phút)
+├── Chia thành tasks nhỏ (< 100 LOC mỗi task)
+├── Xác định thứ tự: task nào trước, task nào phụ thuộc
+├── Xác định test strategy: test gì, mock gì
+├── Kiểm tra: có cần Stitch design không? Có cần đọc API contract không?
+└── Output: Ghi tasks vào TODO.md
+
+BƯỚC 4 — VERIFY ASSUMPTIONS (3 phút)
+├── Mình có đang giả định response format API? → ĐỌC Controller/DTO thật
+├── Mình có đang giả định state shape? → ĐỌC store/context thật
+├── Mình có đang tạo function mới? → GREP xem đã có sẵn chưa
+├── Mình có đang dùng pattern khác codebase? → DỪNG, follow existing pattern
+└── Output: Confirm "Assumptions verified" hoặc "Cần check thêm: ..."
+
+BƯỚC 5 — BẮT ĐẦU CODE (chỉ sau khi 4 bước trên xong)
+└── Bắt đầu task đầu tiên trong TODO.md
+```
+
+### Ví dụ: ĐÚNG vs SAI
+
+**Prompt:** "Thêm nút share vào Leaderboard"
+
+❌ **SAI** (code ngay):
+```
+→ Nhận prompt → viết ShareButton component → thêm vào Leaderboard.tsx → commit
+→ Kết quả: ShareButton trùng với ShareCard.tsx đã có, style không match design system
+```
+
+✅ **ĐÚNG** (think before code):
+```
+BƯỚC 1: Task = thêm share functionality vào Leaderboard page
+BƯỚC 2: Đọc Leaderboard.tsx → Đọc ShareCard.tsx (đã có!) → Đọc ShareCard.test.tsx
+        → Grep "share" trong codebase → phát hiện đã có ShareCard component + API
+BƯỚC 3: Plan: 1 task = import ShareCard vào Leaderboard + thêm trigger button
+BƯỚC 4: Đọc ShareCard props → cần type="session"|"daily"|"tier_up"
+        → Leaderboard cần type mới "leaderboard"? → Check backend ShareCardController
+BƯỚC 5: Code với full context → 15 LOC thay đổi thay vì 100 LOC component mới
+```
+
+### Rules cứng (vi phạm = phải revert)
+
+1. **KHÔNG tạo function/component/hook mới** mà chưa grep codebase xem đã có chưa
+2. **KHÔNG đoán API response format** — phải đọc Controller + DTO hoặc test endpoint thật
+3. **KHÔNG viết code > 50 LOC** mà chưa đọc file đang sửa ít nhất 1 lần
+4. **KHÔNG bắt đầu code** mà chưa ghi task vào TODO.md
+5. **KHÔNG sửa file nào** mà chưa đọc "Known Issues" section ở trên
+6. **KHÔNG tạo CSS/style mới** mà chưa check global.css và design tokens
+7. **KHÔNG viết business logic trong component** — tách ra hooks/utils trước
+8. **Khi prompt mơ hồ** → DỪNG, hỏi clarify, KHÔNG tự suy diễn rồi code
+
+### Self-check sau mỗi 30 phút code
+
+```
+□ Mình đang code đúng task trong TODO.md? (hay bị đi lạc sang việc khác)
+□ Mình có đang sửa file ngoài scope task? → DỪNG, ghi TODO riêng
+□ Code mình vừa viết follow pattern existing? → Grep verify
+□ Đã chạy Tầng 1 test chưa? → Nếu chưa: DỪNG, test ngay
+□ LOC thay đổi hiện tại bao nhiêu? → Nếu > 100: DỪNG, commit partial, chia task
+```
+
 ## Quy trình quản lý Task (BẮT BUỘC)
 
 ### Nguyên tắc cốt lõi
@@ -115,7 +199,7 @@ LÀM ĐÚNG: chia thành TODO rồi làm từng task:
 - DB: MySQL 8.0 (Docker, port 3307)
 - Cache: Redis 7 (Docker, port 6379)
 - Unit Test: Vitest 4.1 (happy-dom) + @testing-library/react
-- E2E Test: Playwright (Chromium, baseURL localhost:5173)
+- E2E Test: Playwright (CHƯA SETUP — xem PLAYWRIGHT_CODE_CONVENTIONS.md section 0 để bootstrap)
 - Design: Stitch MCP (project ID `5341030797678838526`)
 
 ## Quản lý quyết định
@@ -184,8 +268,8 @@ cd apps/web && npx vitest run src/components/    # Tất cả component tests
 # Frontend: tất cả unit tests
 cd apps/web && npx vitest run
 
-# Frontend: tất cả e2e tests
-cd apps/web && npx playwright test
+# Frontend: e2e tests (CHỈ KHI ĐÃ SETUP PLAYWRIGHT — xem PLAYWRIGHT_CODE_CONVENTIONS.md)
+# cd apps/web && npx playwright test
 
 # Backend: tất cả tests
 cd apps/api && ./mvnw test -Dtest="com.biblequiz.api.**,com.biblequiz.service.**"
@@ -226,8 +310,8 @@ cd apps/api && ./mvnw test -Dtest="com.biblequiz.api.**,com.biblequiz.service.**
 ```
 □ Tầng 1 pass — test file vừa sửa
 □ Tầng 2 pass — test các module liên quan
-□ Tầng 3 pass — full regression (FE unit + FE e2e + BE)
-□ Số test KHÔNG giảm so với trước task (hiện tại baseline: 518)
+□ Tầng 3 pass — full regression (FE unit + BE) (+ FE e2e nếu đã setup Playwright)
+□ Số test KHÔNG giảm so với trước task (hiện tại baseline: 733)
 □ Không có test bị skip/disabled mà trước đó đang pass
 □ Nếu sửa file "nhạy cảm" → đã chạy full regression ngay sau khi sửa
 ```
@@ -292,7 +376,7 @@ apps/web/src/
 ├── styles/                 # global.css (Tailwind + Stitch tokens)
 └── test/                   # setup.ts (Vitest global setup)
 
-apps/web/tests/             # Playwright e2e tests (*.spec.ts)
+apps/web/tests/e2e/         # Playwright e2e tests (CHƯA SETUP — xem PLAYWRIGHT_CODE_CONVENTIONS.md)
 ```
 
 ### Quy ước đặt file mới
@@ -300,7 +384,7 @@ apps/web/tests/             # Playwright e2e tests (*.spec.ts)
 - **Component shared** → `components/XxxComponent.tsx` (hoặc `components/ui/` nếu primitive)
 - **Hook mới** → `hooks/useXxx.ts`
 - **Unit test** → cạnh source file: `pages/Xxx.test.tsx` hoặc `pages/__tests__/Xxx.test.tsx`
-- **E2E test** → `tests/xxx.spec.ts` (Playwright testDir = `./tests`)
+- **E2E test** → `tests/e2e/{smoke|happy-path}/xxx.spec.ts` (xem PLAYWRIGHT_CODE_CONVENTIONS.md)
 - **Admin page** → `pages/admin/XxxPage.tsx`
 
 ---
@@ -393,18 +477,21 @@ apps/web/tests/             # Playwright e2e tests (*.spec.ts)
   - WebSocket → mock useStomp/useWebSocket hooks
   - KHÔNG mock implementation details — test behavior, not internals
 
-### E2E Test (Playwright)
-- **Config**: `playwright.config.ts` (Chromium, serial, baseURL localhost:5173)
-- **testDir**: `./tests` (KHÔNG phải `./e2e`)
-- **Đặt file**: `tests/<screen-name>.spec.ts`
+### E2E Test (Playwright) — CHƯA SETUP
+> Playwright chưa cài trong project. Khi cần viết e2e test:
+> 1. Đọc `PLAYWRIGHT_CODE_CONVENTIONS.md` section 0 (Bootstrap) để setup
+> 2. Follow conventions trong file đó để viết test
+>
+> Sau khi setup xong:
+- **Config**: `apps/web/playwright.config.ts` (Chromium, serial, baseURL localhost:5173)
+- **testDir**: `./tests/e2e`
+- **Đặt file**: `tests/e2e/{smoke|happy-path}/web-user/<screen-name>.spec.ts`
+- **Conventions**: Đọc `PLAYWRIGHT_CODE_CONVENTIONS.md` (4-section anatomy, POM, selectors, auth patterns)
 - **Minimum per screen**: 5 test cases (happy path, navigation in/out, key interactions, error state, mobile viewport)
 - **Quy tắc**:
   - Cần app đang chạy (dev server + backend + DB)
   - Dùng `page.goto()` với relative path (baseURL đã set)
-  - Screenshot on failure (đã config)
-  - Trace on first retry (đã config)
-  - KHÔNG dùng `page.waitForTimeout()` cứng — dùng `page.waitForSelector()` hoặc `expect().toBeVisible()`
-  - Test mobile: dùng `test.use({ viewport: { width: 375, height: 667 } })`
+  - KHÔNG dùng `page.waitForTimeout()` — dùng `waitFor()` hoặc `expect().toBeVisible()`
 
 ### Backend Test
 - Unit test không dùng H2 — dùng Testcontainers MySQL
@@ -426,11 +513,12 @@ cd apps/web && npm test                     # Vitest watch mode
 cd apps/web && npx vitest run               # Vitest single run (CI)
 cd apps/web && npx vitest run src/pages/    # Vitest chỉ pages
 
-# E2E (cần app đang chạy trên localhost:5173 + backend 8080)
-cd apps/web && npx playwright test                        # All e2e
-cd apps/web && npx playwright test tests/home.spec.ts     # Single file
-cd apps/web && npx playwright test --headed               # Có browser UI
-cd apps/web && npx playwright show-report                 # Xem HTML report
+# E2E (CHƯA SETUP — cần bootstrap trước, xem PLAYWRIGHT_CODE_CONVENTIONS.md section 0)
+# Sau khi setup:
+# cd apps/web && npx playwright test                            # All e2e
+# cd apps/web && npx playwright test tests/e2e/smoke/           # Chỉ smoke
+# cd apps/web && npx playwright test --headed                   # Có browser UI
+# cd apps/web && npx playwright show-report                     # Xem HTML report
 ```
 
 ---
@@ -482,24 +570,104 @@ Ví dụ:
 
 ---
 
+## E2E Test Gate (BẮT BUỘC cho mọi feature/fix)
+
+> **Mọi thay đổi code PHẢI kiểm tra E2E coverage trước khi code.**
+> Không có TC spec + Playwright code = không được ship.
+
+### Quy trình kiểm tra E2E trước khi code
+
+```
+BƯỚC 1 — XÁC ĐỊNH SCREEN/FLOW bị ảnh hưởng
+├── Feature mới: screen nào sẽ thêm/thay đổi?
+├── Fix bug: bug ở screen nào? flow nào bị ảnh hưởng?
+└── Output: danh sách routes/screens bị ảnh hưởng
+
+BƯỚC 2 — KIỂM TRA TC SPEC ĐÃ CÓ CHƯA
+├── Đọc tests/e2e/INDEX.md → module nào cover screen đó?
+├── Đọc TC spec file tương ứng trong tests/e2e/playwright/specs/
+│   ├── Smoke: tests/e2e/playwright/specs/smoke/W-M{xx}-*.md
+│   └── Happy path: tests/e2e/playwright/specs/happy-path/W-M{xx}-*.md
+├── Tìm TC ID cover đúng scenario đang fix/thêm
+└── Output: "TC đã có: W-M04-L2-003" hoặc "CHƯA CÓ TC cho scenario này"
+
+BƯỚC 3 — KIỂM TRA PLAYWRIGHT CODE ĐÃ CÓ CHƯA
+├── Tìm file .spec.ts tương ứng:
+│   ├── tests/e2e/smoke/web-user/W-M{xx}-*.spec.ts
+│   └── tests/e2e/happy-path/web-user/W-M{xx}-*.spec.ts
+├── Grep TC ID trong file: "W-M04-L2-003"
+└── Output: "Code đã có" hoặc "CHƯA CÓ code Playwright"
+
+BƯỚC 4 — HÀNH ĐỘNG THEO KẾT QUẢ
+```
+
+| TC Spec | Playwright Code | Hành động |
+|---------|----------------|-----------|
+| ✅ Có | ✅ Có | Code feature/fix → chạy e2e test đó → phải pass |
+| ✅ Có | ❌ Chưa có | **Viết code Playwright TRƯỚC** (theo PLAYWRIGHT_CODE_CONVENTIONS.md) → rồi mới code feature |
+| ❌ Chưa có | ❌ Chưa có | **Viết TC spec TRƯỚC** (theo tests/e2e/TEMPLATE.md) → viết Playwright code → rồi mới code feature |
+| ✅ Có | ✅ Có nhưng outdated | Cập nhật TC spec + Playwright code cho match behavior mới |
+
+### Khi fix bug
+
+```
+1. Xác định: bug ở screen nào, flow nào?
+2. Tìm TC spec cover scenario đó
+3. Nếu TC đã có nhưng test PASS → TC chưa đủ chi tiết → BỔ SUNG test case mới vào TC spec
+4. Nếu TC đã có và test FAIL → đây là regression được detect → fix bug, test phải green lại
+5. Nếu TC CHƯA CÓ → viết TC spec cho bug scenario → viết Playwright code → fix bug → test pass
+6. Rule: mỗi bug fix PHẢI có ít nhất 1 e2e test case đảm bảo bug không quay lại
+```
+
+### Khi thêm feature mới
+
+```
+1. Feature ở screen mới → tạo TC spec file mới (smoke + happy path)
+2. Feature ở screen đã có → bổ sung TC vào spec file hiện tại
+3. Viết Playwright code cho TCs mới TRƯỚC khi code feature (TDD-style)
+4. Code feature → e2e tests phải chuyển từ fail → pass
+5. Nếu feature thêm UI elements mới → thêm data-testid vào source code
+6. Cập nhật tests/e2e/INDEX.md: số TC mới, status
+```
+
+### Ví dụ: Fix bug "quiz timer không reset giữa các câu"
+
+```
+BƯỚC 1: Screen bị ảnh hưởng = /quiz (QuizPage)
+BƯỚC 2: Đọc INDEX.md → W-M03 Practice Mode + W-M04 Ranked Mode cover /quiz
+         Đọc specs/smoke/W-M03-practice-mode.md → không có TC cho timer reset
+         Đọc specs/happy-path/W-M03-practice-mode.md → W-M03-L2-005 check timer nhưng không test reset
+         → CHƯA CÓ TC đủ chi tiết cho timer reset scenario
+BƯỚC 3: Chưa có code Playwright cho timer reset
+BƯỚC 4: Hành động:
+         1. Thêm TC mới: W-M03-L2-014 "Timer reset về 30s khi chuyển câu mới"
+         2. Viết Playwright code cho TC đó (test.fixme() vì bug đang tồn tại)
+         3. Fix bug trong QuizPage.tsx
+         4. Chạy lại e2e → W-M03-L2-014 pass
+         5. Commit: "fix: quiz timer not resetting + e2e test W-M03-L2-014"
+```
+
+---
+
 ## Workflow khi làm feature mới
 
 ```
 1. Đọc TODO.md → xác định task cần làm
 2. Nếu prompt mới → CHIA NHỎ thành tasks → GHI VÀO TODO.md trước
-3. Bắt đầu task đầu tiên trong TODO.md
-4. Nếu có Stitch design → MCP query Stitch lấy design → code match pixel-perfect
-5. Nếu không có Stitch design → follow design tokens + pattern từ screens đã sync
-6. Code từng phần nhỏ → Tầng 1 test (scope test) sau mỗi phần
-7. Hoàn thành screen → viết unit test đầy đủ (Vitest, min 8 cases)
-8. Unit test pass → viết e2e test (Playwright, min 5 cases) nếu là screen/flow mới
-9. Tầng 2 test (related modules) → fix nếu có regression
-10. Tầng 3 test (FULL REGRESSION) → BẮT BUỘC pass hết trước khi commit
-11. Kiểm tra: số test >= baseline, không có test bị skip
-12. Update TODO.md → đánh ✅ task vừa xong
-13. Commit theo convention (1 task = 1 commit)
-14. Nếu có quyết định kỹ thuật → ghi DECISIONS.md
-15. Chuyển sang task tiếp theo trong TODO.md → lặp lại từ bước 3
+3. **E2E Test Gate** → kiểm tra TC spec + Playwright code (xem section trên)
+4. Bắt đầu task đầu tiên trong TODO.md
+5. Nếu có Stitch design → MCP query Stitch lấy design → code match pixel-perfect
+6. Nếu không có Stitch design → follow design tokens + pattern từ screens đã sync
+7. Code từng phần nhỏ → Tầng 1 test (scope test) sau mỗi phần
+8. Hoàn thành screen → viết unit test đầy đủ (Vitest, min 8 cases)
+9. Unit test pass → chạy e2e test liên quan (Playwright) → phải pass
+10. Tầng 2 test (related modules) → fix nếu có regression
+11. Tầng 3 test (FULL REGRESSION) → BẮT BUỘC pass hết trước khi commit
+12. Kiểm tra: số test >= baseline, không có test bị skip
+13. Update TODO.md → đánh ✅ task vừa xong
+14. Commit theo convention (1 task = 1 commit)
+15. Nếu có quyết định kỹ thuật → ghi DECISIONS.md
+16. Chuyển sang task tiếp theo trong TODO.md → lặp lại từ bước 4
 ```
 
 ## Workflow khi sync Stitch design
@@ -619,3 +787,221 @@ Ví dụ:
    - Type errors = bugs tiềm ẩn
 
 ### Code structure bắt buộc:
+
+---
+
+## Known Issues & Tech Debt (cập nhật: 2026-04-17)
+
+> **Claude Code PHẢI đọc section này trước khi code.** Nếu chạm vào file có known issue → fix luôn, KHÔNG để lại.
+
+### Critical — fix ngay khi chạm vào file
+| # | File | Issue | How to fix |
+|---|------|-------|------------|
+| 1 | `api/client.ts` | Duplicate auth interceptor — `addAuthInterceptor(api)` + thêm 1 `api.interceptors.request.use` nữa → header set 2 lần | Xóa block interceptor thứ hai, merge debug logging vào factory |
+| 2 | `api/client.ts` | Error messages hardcoded tiếng Việt, bypass i18n | Dùng `i18n.t('errors.xxx')` thay cho string trực tiếp |
+| 3 | `api/client.ts` | `window.location.href = '/login'` bypass React Router + xóa localStorage trực tiếp | Dispatch event `auth:session-expired`, handle bằng React Router |
+| 4 | `vite.config.ts` | CSP có `unsafe-inline` + `unsafe-eval` trong script-src | Xóa cả hai khỏi script-src, giữ `unsafe-inline` chỉ cho style-src |
+| 5 | `.env.production` | API URL vẫn là `localhost:8080` | Đổi thành empty string (dùng same-origin proxy) |
+| 6 | `hooks/useWebSocket.ts` | Không gửi JWT token (useStomp có, useWebSocket không) | Thêm token vào URL query param `?token=xxx` |
+| 7 | `hooks/useWebSocket.ts` | useEffect dependency `[]` — không re-run khi url thay đổi | Thêm `[url]` vào dependency array |
+| 8 | `utils/localStorageClearDetector.ts` | Monkeypatch `localStorage.clear()` + `.removeItem()` + polling 2s không cleanup | Viết lại: dùng native `storage` event + explicit function calls |
+| 9 | `contexts/RequireAdmin.tsx` | Check role cả uppercase lẫn lowercase (`CONTENT_MOD` / `content_mod`) | Normalize role `.toUpperCase()` khi nhận từ backend |
+
+### Medium — fix khi có thời gian
+| # | File | Issue |
+|---|------|-------|
+| 10 | `pages/AuthCallback.tsx` | Dynamic `import()` trong useEffect — đổi thành static import |
+| 11 | `pages/RoomQuiz.tsx` | `location.state as any` — tạo typed interface |
+| 12 | `pages/Achievements.tsx` | `useState<any>({})` — type stats object |
+| 13 | `hooks/useWebSocket.ts` | PLAYER_UNREADY gọi onPlayerReady — cần handler riêng |
+| 14 | `store/authStore.ts` | Dispatch event tên `localStorageCleared` misleading — đổi thành `rankedDataCleared` |
+| 15 | `components/ui/SearchableSelect.tsx` | Inline styles thay vì Tailwind classes |
+
+> Khi nhận task mới mà chạm vào file có known issue → **tạo thêm 1 task fix issue đó** trong TODO.md, làm TRƯỚC task chính.
+
+---
+
+## API Endpoints Map (cho Claude Code hiểu data flow)
+
+### Auth
+| Method | Endpoint | Auth | Mô tả |
+|--------|----------|------|--------|
+| POST | `/api/auth/exchange` | No | OAuth code → tokens (set httpOnly cookie) |
+| POST | `/api/auth/refresh` | Cookie | Refresh access token |
+| POST | `/api/auth/logout` | Yes | Blacklist token + clear cookie |
+| GET | `/api/me` | Yes | Current user profile |
+
+### Quiz & Game Modes
+| Method | Endpoint | Auth | Mô tả |
+|--------|----------|------|--------|
+| GET | `/api/questions` | No | Lấy questions (query params: book, difficulty, count) |
+| GET | `/api/questions/qotd` | No | Question of the day |
+| POST | `/api/sessions` | Yes | Tạo quiz session |
+| POST | `/api/sessions/{id}/answers` | Yes | Submit answer |
+| GET | `/api/daily-challenge` | No | Daily challenge (5 questions) |
+| POST | `/api/ranked/sessions` | Yes | Tạo ranked session |
+| POST | `/api/ranked/sync-progress` | Yes | Sync ranked data |
+| GET | `/api/ranked/status` | Yes | Energy, question counts, current book |
+| GET | `/api/ranked/tier` | Yes | Current tier info |
+
+### Multiplayer
+| Method | Endpoint | Auth | Mô tả |
+|--------|----------|------|--------|
+| POST | `/api/rooms` | Yes | Create room |
+| GET | `/api/rooms` | No | List public rooms |
+| POST | `/api/rooms/{id}/join` | Yes | Join room by code |
+| WS | `/ws` (STOMP) | Bearer | Real-time room messaging |
+| WS | `/topic/room/{roomId}` | Sub | Room events (STOMP subscribe) |
+
+### Social
+| Method | Endpoint | Auth | Mô tả |
+|--------|----------|------|--------|
+| GET | `/api/leaderboard` | No | Rankings (query: period) |
+| GET/POST | `/api/groups` | Yes | Church groups CRUD |
+| GET/POST | `/api/tournaments` | Yes | Tournament CRUD |
+| GET | `/api/achievements` | Yes | User achievements |
+
+### Admin (tất cả yêu cầu ADMIN role)
+| Prefix | Mô tả |
+|--------|--------|
+| `/api/admin/users` | User management |
+| `/api/admin/questions` | Question CRUD + review |
+| `/api/admin/rankings` | Ranking config |
+| `/api/admin/events` | Event management |
+| `/api/admin/config` | System configuration |
+
+---
+
+## Error Handling Patterns (bắt buộc tuân theo)
+
+### Backend error response format (mọi endpoint)
+```json
+{
+  "code": "RESOURCE_NOT_FOUND",
+  "message": "Question not found",
+  "requestId": "abc-123",
+  "details": {}
+}
+```
+
+### Frontend error handling (3 layers)
+```
+Layer 1: TanStack Query onError → showError() from ErrorContext → toast
+Layer 2: Axios response interceptor → auto-refresh token on 401, attach userMessage
+Layer 3: ErrorBoundary → catch render crashes → fallback UI
+```
+
+### Quy tắc khi viết error handling mới:
+- LUÔN dùng `showError(error.userMessage || error.message)` — không tự viết message
+- LUÔN handle 3 states trong page: loading (Skeleton), error (message + retry button), success
+- API errors trong TanStack Query → dùng `onError` callback hoặc `isError` + `error` từ useQuery
+- KHÔNG dùng try/catch cho API calls khi đã dùng TanStack Query — Query tự handle
+- KHÔNG swallow errors silently (`catch {}` trống) — ít nhất phải `console.warn`
+
+---
+
+## State Management Map
+
+### Zustand Stores
+| Store | File | Scope | Persistence |
+|-------|------|-------|-------------|
+| `useAuthStore` | `store/authStore.ts` | User auth, role, token | In-memory token + localStorage profile cache |
+| `useOnboardingStore` | `store/onboardingStore.ts` | Onboarding completion | localStorage |
+
+### React Context (chỉ cho tree-scoped concerns)
+| Context | File | Scope |
+|---------|------|-------|
+| `ErrorContext` | `contexts/ErrorContext.tsx` | Toast notifications (render trong React tree) |
+
+### TanStack Query (server state)
+- Tất cả API data → TanStack Query (cache, refetch, stale)
+- KHÔNG dùng useState cho data từ API
+- Stale time mặc định: 5 phút
+- Retry: 3 lần với exponential backoff
+
+### localStorage keys đang dùng
+| Key | Mô tả | Đọc bởi |
+|-----|--------|---------|
+| `userName` | Cached user name | authStore (checkAuth) |
+| `userEmail` | Cached user email | authStore |
+| `userAvatar` | Cached avatar URL | authStore |
+| `rankedSnapshot` | Ranked progress snapshot | useRankedDataSync |
+| `rankedProgress` | Ranked progress data | useRankedDataSync |
+| `rankedStatus` | Ranked status cache | useRankedDataSync |
+| `quizLanguage` | vi / en preference | quizLanguage util |
+| `hasSeenOnboarding` | Boolean | onboardingStore |
+| `i18nextLng` | Language preference | i18n |
+
+> KHÔNG thêm localStorage key mới mà không ghi vào bảng trên.
+
+---
+
+## Khi Claude Code bị kẹt / không chắc
+
+### Nguyên tắc "Khi nghi ngờ"
+1. **Không chắc về behavior** → viết test trước, verify behavior hiện tại, rồi mới sửa
+2. **Không chắc file nào ảnh hưởng** → đọc bảng "file nhạy cảm" ở trên → chạy Full Regression
+3. **Không chắc design** → check Stitch MCP trước, KHÔNG tự design
+4. **Không chắc API contract** → đọc Controller + DTO trong backend, KHÔNG đoán response format
+5. **Không chắc về performance impact** → benchmark trước và sau, ghi kết quả vào commit message
+6. **Task quá lớn (> 100 LOC thay đổi)** → DỪNG, chia nhỏ thêm trong TODO.md
+7. **2 cách implement, không biết chọn cái nào** → ghi cả 2 vào DECISIONS.md với trade-offs, chọn cái đơn giản hơn
+
+### Khi gặp lỗi không fix được sau 3 lần thử
+```
+1. Ghi lại: file nào, error gì, 3 cách đã thử
+2. Đánh task [!] BLOCKED trong TODO.md
+3. Ghi lý do block
+4. Chuyển sang task khác không phụ thuộc
+5. Quay lại task blocked sau khi có thêm context
+```
+
+---
+
+## Vibe Coding Guardrails
+
+### Trước khi bắt đầu BẤT KỲ task nào
+```
+□ Đã đọc TODO.md
+□ Đã đọc section "Known Issues" ở trên — nếu chạm file có issue → thêm fix task
+□ Đã xác định files sẽ sửa — có file "nhạy cảm" không?
+□ Đã chia task đủ nhỏ (< 100 LOC mỗi task)
+□ **E2E Test Gate**: đã check TC spec + Playwright code cho screens bị ảnh hưởng
+```
+
+### Trong khi code
+```
+□ Mỗi function/component xong → Tầng 1 test ngay
+□ Không viết code > 30 phút mà chưa chạy test
+□ Nếu đang sửa file A mà phát hiện bug ở file B → GHI TODO riêng, KHÔNG fix luôn
+□ Console.log chỉ dùng với `if (import.meta.env.DEV)` — production sẽ bị strip
+```
+
+### Sau khi code xong 1 task
+```
+□ Tầng 1 + 2 + 3 test pass
+□ TODO.md đã cập nhật ✅
+□ Commit message theo convention
+□ Nếu có quyết định kỹ thuật → DECISIONS.md
+□ Nếu thêm localStorage key mới → cập nhật bảng trong CLAUDE.md
+□ Nếu thêm API endpoint mới → cập nhật API Endpoints Map trong CLAUDE.md
+```
+
+### Anti-patterns phổ biến khi vibe coding (Claude Code hay mắc)
+- ❌ Nhận prompt dài → code hết 1 lần → commit 1 cục lớn → có bug không biết do đâu
+- ❌ Sửa bug ở file A → tiện tay refactor file B → break file C → mất 2 giờ debug
+- ❌ Mock quá nhiều trong test → test pass nhưng code thật fail
+- ❌ Copy-paste code từ component khác → quên đổi tên/ID → duplicate logic
+- ❌ Thêm dependency mới mà không hỏi → conflict với existing libraries
+- ❌ Viết CSS inline vì "nhanh hơn" → không consistent với design system
+- ❌ Skip error handling vì "sẽ thêm sau" → quên, user thấy blank screen
+- ❌ Chạy chỉ 1 test file pass rồi commit → regression ở file khác
+- ❌ Tạo utility function mới mà đã có sẵn trong codebase → duplicate
+- ❌ Không đọc existing code trước khi viết → tạo pattern khác với codebase
+
+### Pattern đúng
+- ✅ Đọc code hiện tại TRƯỚC khi viết code mới → follow existing patterns
+- ✅ Grep codebase trước khi tạo utility mới → tránh duplicate
+- ✅ 1 task = 1 commit = < 100 LOC thay đổi
+- ✅ Test ngay sau mỗi thay đổi nhỏ, không đợi cuối
+- ✅ Khi sửa shared code → chạy full regression NGAY, không đợi cuối task
