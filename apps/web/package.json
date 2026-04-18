@@ -19,7 +19,8 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test --config playwright.config.ts",
     "test:e2e:headed": "playwright test --config playwright.config.ts --headed",
-    "test:e2e:report": "playwright show-report"
+    "test:e2e:report": "playwright show-report",
+    "validate:i18n": "node scripts/validate-i18n.mjs"
   },
   "dependencies": {
     "@stomp/stompjs": "^7.0.0",
