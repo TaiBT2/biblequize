@@ -19,6 +19,7 @@ interface UserProfile {
   currentStreak: number
   longestStreak: number
   role: string
+  createdAt?: string
 }
 
 interface Achievement {
@@ -33,6 +34,9 @@ interface SessionHistory {
   id: string
   completedAt: string
   score: number
+  totalQuestions?: number
+  correctAnswers?: number
+  status?: string
 }
 
 type HeatmapColor =
@@ -168,13 +172,19 @@ const Profile: React.FC = () => {
     expRemaining: nextTier ? nextTier.minPoints - points : 0,
   }
 
+  const history = historyData?.content ?? (Array.isArray(historyData) ? historyData as unknown as SessionHistory[] : [])
+  const totalSessions = history.length
+  const totalQuestions = history.reduce((sum, s) => sum + (s.totalQuestions ?? 0), 0)
+  const totalCorrect = history.reduce((sum, s) => sum + (s.correctAnswers ?? 0), 0)
+  const correctRate = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0
+
   const quickStats = [
     { icon: 'quiz', iconFill: false, label: t('profile.totalPoints'), value: (profile.totalPoints ?? 0).toLocaleString(), bgColor: 'bg-secondary/10', textColor: 'text-secondary', testId: 'profile-stats-points' },
     { icon: 'bolt', iconFill: true, label: t('profile.bestStreak'), value: `${profile.longestStreak ?? 0} ${t('common.days')}`, bgColor: 'bg-[#e7c268]/10', textColor: 'text-[#e7c268]', testId: 'profile-stats-streak' },
     { icon: 'local_fire_department', iconFill: true, label: t('profile.currentStreak'), value: `${profile.currentStreak ?? 0} ${t('common.days')}`, bgColor: 'bg-primary/10', textColor: 'text-primary', hiddenOnMobile: true, testId: undefined },
+    { icon: 'history', iconFill: false, label: t('profile.totalSessions', { defaultValue: 'Total sessions' }), value: `${totalSessions}`, bgColor: 'bg-tertiary/10', textColor: 'text-tertiary', testId: 'profile-total-sessions' },
+    { icon: 'check_circle', iconFill: true, label: t('profile.correctRate', { defaultValue: 'Correct rate' }), value: `${correctRate}%`, bgColor: 'bg-green-500/10', textColor: 'text-green-400', testId: 'profile-correct-rate' },
   ]
-
-  const history = historyData?.content ?? (Array.isArray(historyData) ? historyData as unknown as SessionHistory[] : [])
   const heatmapCells = buildHeatmapCells(history)
   const hasHeatmapData = heatmapCells.length > 0
 
@@ -211,6 +221,18 @@ const Profile: React.FC = () => {
               <span className="material-symbols-outlined text-xl" style={FILL_STYLE}>verified</span>
               {tierProgress.currentTierName}
             </p>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-xs text-on-surface-variant">
+              <span data-testid="profile-email" className="flex items-center gap-1">
+                <span className="material-symbols-outlined text-sm">mail</span>
+                {profile.email}
+              </span>
+              {profile.createdAt && (
+                <span data-testid="profile-join-date" className="flex items-center gap-1">
+                  <span className="material-symbols-outlined text-sm">calendar_today</span>
+                  {t('profile.joinedOn', { defaultValue: 'Joined' })} {new Date(profile.createdAt).toLocaleDateString()}
+                </span>
+              )}
+            </div>
           </div>
           <div className="hidden lg:flex gap-3 pb-4">
             <button className="px-6 py-3 bg-surface-container-highest border border-outline-variant/20 rounded-xl font-bold text-sm hover:bg-surface-bright transition-colors">

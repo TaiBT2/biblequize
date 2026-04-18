@@ -13,6 +13,7 @@ import './i18n'
 import Home from './pages/Home'
 import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import Profile from './pages/Profile'
 import Practice from './pages/Practice'
 import Quiz from './pages/Quiz'
@@ -147,6 +148,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 {/* Full-screen pages (no AppLayout) */}
                 <Route path="/landing" element={<LandingPage />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
                 <Route path="/auth/callback" element={<AuthCallback />} />
                 <Route path="/quiz" element={<Quiz />} />
                 <Route path="/practice" element={<Practice />} />

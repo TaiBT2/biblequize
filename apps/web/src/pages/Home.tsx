@@ -131,9 +131,13 @@ export default function Home() {
             <div className="flex-1 space-y-4">
               <div>
                 <h1 data-testid="home-greeting" className="text-3xl font-black tracking-tight text-on-surface mb-1">
-                  {greeting}, {userName}!
+                  {greeting}, <span data-testid="home-user-name">{userName}</span>!
                 </h1>
-                <span data-testid="home-user-name" className="sr-only">{userName}</span>
+                <div className="flex items-center gap-1.5 text-xs font-bold text-secondary mt-1">
+                  <span className="material-symbols-outlined text-sm" style={FILL_1}>local_fire_department</span>
+                  <span data-testid="home-streak-count">{meData?.currentStreak ?? 0}</span>
+                  <span className="text-on-surface-variant">{t('home.dayStreak', { defaultValue: 'day streak' })}</span>
+                </div>
                 <p className="text-on-surface-variant text-sm font-medium">
                   {tier.next ? (
                     <>{t('home.journeyTo')} <span className="text-secondary font-bold">{t(tier.next.nameKey)}</span>.</>

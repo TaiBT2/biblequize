@@ -12,9 +12,11 @@ public class UserResponse {
     private String role;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    
+    private Integer currentStreak;
+    private Integer longestStreak;
+
     public UserResponse() {}
-    
+
     public UserResponse(User user) {
         this.id = user.getId();
         this.name = user.getName();
@@ -23,6 +25,8 @@ public class UserResponse {
         this.role = user.getRole();
         this.createdAt = user.getCreatedAt();
         this.updatedAt = user.getUpdatedAt();
+        this.currentStreak = user.getCurrentStreak();
+        this.longestStreak = user.getLongestStreak();
     }
     
     // Getters and Setters
@@ -46,4 +50,10 @@ public class UserResponse {
     
     public LocalDateTime getUpdatedAt() { return updatedAt; }
     public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
+
+    public Integer getCurrentStreak() { return currentStreak; }
+    public void setCurrentStreak(Integer currentStreak) { this.currentStreak = currentStreak; }
+
+    public Integer getLongestStreak() { return longestStreak; }
+    public void setLongestStreak(Integer longestStreak) { this.longestStreak = longestStreak; }
 }

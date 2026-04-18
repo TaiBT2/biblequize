@@ -96,7 +96,8 @@ describe('Home Dashboard', () => {
       await waitFor(() => {
         const h = new Date().getHours()
         const expected = h < 12 ? 'Chào buổi sáng' : h < 18 ? 'Chào buổi chiều' : 'Chào buổi tối'
-        expect(screen.getByText(new RegExp(`${expected}, Nghĩa!`))).toBeInTheDocument()
+        const heading = screen.getByTestId('home-greeting')
+        expect(heading.textContent).toContain(`${expected}, Nghĩa!`)
       })
     })
 
