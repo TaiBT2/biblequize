@@ -1,5 +1,70 @@
 # TODO
 
+## 2026-04-18 — Move Pages into AppLayout [DONE — pending local test run]
+
+### Task L-1: Move routes into AppLayout in main.tsx [x] DONE
+- Moved: /practice, /review, /multiplayer, /rooms, /room/create, /room/join into AppLayout block
+- Kept full-screen: /quiz, /room/:id/lobby, /room/:id/quiz, /landing, /login, /register, /auth/callback
+- Commit: "fix: move lobby, practice, review pages into AppLayout for consistent nav"
+
+### Task L-2: Clean up page wrappers after AppLayout move [x] DONE
+- Multiplayer.tsx: bỏ `max-w-7xl mx-auto`, giữ `space-y-8` + data-testid
+- Practice.tsx: bỏ `max-w-7xl mx-auto`, giữ `space-y-10` + data-testid
+- CreateRoom.tsx: bỏ `min-h-screen bg-[#11131e] text-[#e1e1f1] flex items-start justify-center px-4 py-12`, thay bằng `flex justify-center`
+- Review.tsx:
+  - Root wrapper: bỏ `min-h-screen bg-[#11131e] flex` → `flex flex-col`
+  - Bỏ `<main className="flex-1 flex flex-col h-screen overflow-y-auto">` (AppLayout's main đã có overflow-y-auto)
+  - Sticky header: z-50 → z-40 (dưới AppLayout global header z-50), thêm `-mx-8 md:-mx-14 -mt-8 md:-mt-14 mb-6` để break out khỏi AppLayout padding và trải full-width
+  - Empty state: bỏ `min-h-screen bg-[#11131e]`, thay bằng `py-20 px-4`
+- Commit: "refactor: remove redundant layout wrappers in pages moved to AppLayout"
+
+### Task L-3: Add routing layout invariant test [x] DONE
+- File mới: apps/web/src/__tests__/routing-layout.test.tsx
+- Test 1: 22 cases — mỗi path INSIDE AppLayout phải declared trong AppLayout block
+- Test 2: 7 paths × 2 = 14 cases — mỗi full-screen path KHÔNG được ở trong AppLayout block nhưng phải tồn tại trong main.tsx
+- Test 3: 6 regression guards (Multiplayer/Practice/CreateRoom/Review inside; Quiz/RoomQuiz outside)
+- Test 4: 4 wrapper cleanup invariants (Multiplayer/Practice/CreateRoom/Review không có layout-duplicating classes)
+- Tổng: ~46 new test cases
+- Commit: "test: add routing layout invariant test"
+
+### Task L-4: Full regression
+- Status: [ ] PENDING — user chạy local (sandbox không chạy được vitest vì node_modules Windows)
+- Run: `cd apps/web && npx vitest run`
+- Expected: 733 baseline + ~46 new = ~779 tests pass
+
+### Task UM-1: Fix user menu không đóng khi click outside
+- Status: [ ] TODO
+- File(s): apps/web/src/layouts/AppLayout.tsx (FILE NHẠY CẢM per CLAUDE.md — full regression bắt buộc)
+- Root cause: overlay click-outside ở z-40, nhưng header z-50 che → click vào header area (top 80px) không đóng menu. Icons heart/bolt/stars, logo, nav links đều bị lỗi.
+- Fix: thay overlay div bằng `useEffect + useRef` pattern — listen `mousedown` trên document, đóng menu nếu click ngoài menuRef
+- Commit: "fix: user menu closes on click outside (use document listener instead of z-40 overlay)"
+
+### Task UM-2: Thêm test case cho click-outside behavior
+- Status: [ ] TODO
+- File(s): apps/web/src/layouts/__tests__/AppLayout.test.tsx
+- Test cases:
+  - open menu by clicking avatar
+  - click body outside → menu closes
+  - click header area (icons) → menu closes (regression guard cho bug này)
+  - click inside menu → menu stays open
+  - click avatar again → menu toggles (stays working)
+- Commit: "test: add user menu click-outside behavior tests"
+
+## 2026-04-18 — Multiplayer Width Fix [DONE — pending local test run]
+
+### Task M-1: Constrain Multiplayer page width
+- Status: [x] CODE DONE / [ ] test run (sandbox không chạy được — xem note)
+- File(s): apps/web/src/pages/Multiplayer.tsx (line 87)
+- Test: apps/web/src/pages/__tests__/Multiplayer.test.tsx (chỉ assert module export — không ảnh hưởng)
+- Root cause: Multiplayer route ở nhánh "Full-screen (no AppLayout)" trong main.tsx → không thừa hưởng max-w-7xl của AppLayout Outlet. Practice cùng nhánh nhưng có max-w-7xl riêng; Multiplayer thiếu.
+- Change: `<div className="space-y-8" data-testid="multiplayer-page">` → `<div data-testid="multiplayer-page" className="max-w-7xl mx-auto space-y-8">`
+- Checklist:
+  - [x] Thêm `max-w-7xl mx-auto` vào top-level div (match Practice pattern)
+  - [ ] USER CHẠY LOCAL: `cd apps/web && npx vitest run src/pages/__tests__/Multiplayer.test.tsx`
+  - [ ] USER CHẠY LOCAL: full regression `cd apps/web && npx vitest run`
+  - [ ] Commit: "fix: constrain Multiplayer page width to match other pages"
+- Note về test: node_modules được install trên Windows (D:), khi chạy qua Linux sandbox thì esbuild binary segfault → không chạy vitest được trong sandbox. User cần chạy test trên máy local Windows.
+
 ## E2E Playwright Code — Convert 427 TC Specs [DONE]
 
 ### Bootstrap
@@ -1776,19 +1841,19 @@
 > Convention: domain namespaces (`admin.*`, `header.*`, `modals.*`, `components.*`, `rooms.*`, `common.*`, `time.*`), snake_lower or camelCase matching existing vi.json style, `{{var}}` interpolation, both `vi.json` + `en.json` updated together per commit. 1 task = 1 commit.
 > Known Issue #2 (api/client.ts error messages hardcoded Vietnamese) — fold into Task 4.3.
 
-### Phase 0 — Test Infrastructure [ ] (run BEFORE Phase 1)
-- [ ] Task 0.1: `src/i18n/__tests__/i18n.test.ts` — key parity vi/en flatten+sort, no undefined/empty, interpolation var match | commit `test: add i18n key parity and integrity tests`
-- [ ] Task 0.2: `src/test/i18n-test-utils.tsx` — `renderWithI18n(ui, { language })`, `useKey(key)` helper | commit `test: add i18n test helpers`
-- [ ] Task 0.3: `scripts/validate-i18n.mjs` — (a) grep Vietnamese diacritics in src/**/*.{ts,tsx} outside `t()` and i18n/, (b) grep every `t('...')` and verify key exists in both vi.json + en.json; add `validate:i18n` npm script | commit `chore: add i18n validation script`
-- [ ] Task 0.4: `tests/e2e/smoke/web-user/W-M13-i18n-all-pages.spec.ts` — switch to en, visit /home /quiz /daily /practice /ranked /profile /groups /rooms /leaderboard /achievements, assert no Vietnamese diacritics in page content | commit `test: e2e i18n coverage across all user pages`
-- [ ] Task 0.5: run validate → write `REPORT_I18N_BASELINE.md` with current error count (ratchet: every Phase 1-4 task must reduce this number, never increase) | commit `docs: i18n baseline error report`
+### Phase 0 — Test Infrastructure [x] DONE
+- [x] Task 0.1: `src/i18n/__tests__/i18n.test.ts` — 5 tests (key parity, empty, interpolation sanity)
+- [x] Task 0.2: `src/test/i18n-test-utils.tsx` — `renderWithI18n`, `useKey` + 4 smoke tests
+- [x] Task 0.3: `scripts/validate-i18n.mjs` + `npm run validate:i18n`
+- [x] Task 0.4: `tests/e2e/smoke/web-user/W-M13-i18n-all-pages.spec.ts` — 9 ratchet tests
+- [x] Task 0.5: `REPORT_I18N_BASELINE.md` — baseline 578 hardcoded + 32 missing
 
-### Phase 1 — User-facing components [ ]
-- [ ] Task 1.1: Header.tsx — nav labels, notifications, time-ago interpolation | test update | commit `i18n: header navigation and notifications`
-- [ ] Task 1.2: DailyBonusModal + TierUpModal + ComebackModal + StarPopup | update their tests | commit `i18n: celebration modals (daily bonus, tier up, comeback, star popup)`
-- [ ] Task 1.3: BookProgress + MilestoneBanner + `utils/tierLabels.ts` helper | update tests | commit `i18n: book progress and milestone banner`
-- [ ] Task 1.4: ShareCard + ErrorToast + date format via `toLocaleDateString(i18n.language)` | tests | commit `i18n: share card and error toast`
-- [ ] PHASE 1 CHECKPOINT → full Tier 3 regression, pause for user review
+### Phase 1 — User-facing components [x] DONE
+- [x] Task 1.1: Header.tsx — `header.*` namespace (nav/notifications/time/menu)
+- [x] Task 1.2: DailyBonusModal + TierUpModal + ComebackModal + StarPopup — `modals.*`
+- [x] Task 1.3: BookProgress + MilestoneBanner + `utils/tierLabels.ts` — `components.bookProgress.*`, `components.milestone.*`
+- [x] Task 1.4: ShareCard + ErrorToast + locale-aware date — `components.shareCard.*`, `components.errorToast.*`
+- [x] PHASE 1 CHECKPOINT → 801/801 unit pass. Hardcoded 578 → 551 (-27). Paused for user review.
 
 ### Phase 2 — Room pages [ ]
 - [ ] Task 2.1: JoinRoom + Rooms + RoomQuiz (namespace `rooms.*`) | update 3 test files | commit `i18n: room pages (JoinRoom, Rooms, RoomQuiz)`
