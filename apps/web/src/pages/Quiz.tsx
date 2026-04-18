@@ -52,6 +52,21 @@ interface QuizPageSettings {
 const ANSWER_LETTERS = ['A', 'B', 'C', 'D']
 const FILL_STYLE = { fontVariationSettings: "'FILL' 1" } as const
 const DEFAULT_TIMER = 30
+const ENERGY_BARS = 5
+const ENERGY_MAX = 100
+const ENERGY_PER_BAR = ENERGY_MAX / ENERGY_BARS
+
+export function computeEnergyBarsFilled(
+  energy: number | null | undefined,
+  lives: number,
+  totalBars: number = ENERGY_BARS,
+  perBar: number = ENERGY_PER_BAR
+): number {
+  if (energy != null) {
+    return Math.max(0, Math.min(totalBars, Math.ceil(Math.max(0, energy) / perBar)))
+  }
+  return Math.max(0, Math.min(totalBars, lives))
+}
 
 const Quiz: React.FC = () => {
   const navigate = useNavigate()
@@ -68,6 +83,7 @@ const Quiz: React.FC = () => {
   const [combo, setCombo] = useState(0)
   const [score, setScore] = useState(0)
   const [lives, setLives] = useState(5)
+  const [serverEnergy, setServerEnergy] = useState<number | null>(null)
   const [correctAnswers, setCorrectAnswers] = useState(0)
   const [timeLeft, setTimeLeft] = useState(30)
   const [isQuizCompleted, setIsQuizCompleted] = useState(false)
@@ -164,6 +180,15 @@ const Quiz: React.FC = () => {
           }))
           setUserAnswers(new Array(initialQuestions.length).fill(null))
           setQuestionScores(new Array(initialQuestions.length).fill(0))
+          if (settings?.mode === 'ranked') {
+            try {
+              const snap = JSON.parse(localStorage.getItem('rankedStatus') || localStorage.getItem('rankedSnapshot') || 'null')
+              const v = snap?.livesRemaining
+              setServerEnergy(typeof v === 'number' ? Math.max(0, Math.min(ENERGY_MAX, v)) : ENERGY_MAX)
+            } catch {
+              setServerEnergy(ENERGY_MAX)
+            }
+          }
         } else {
           alert(t('quiz.noQuestions'))
           navigate('/practice')
@@ -207,6 +232,10 @@ const Quiz: React.FC = () => {
           }
         } catch (e) {
           console.warn('Failed to update askedQuestionIds:', e)
+        }
+
+        if (typeof data.livesRemaining === 'number') {
+          setServerEnergy(Math.max(0, Math.min(ENERGY_MAX, data.livesRemaining)))
         }
 
         if (typeof data.livesRemaining === 'number' && data.livesRemaining <= 0) {
@@ -423,6 +452,15 @@ const Quiz: React.FC = () => {
           setIsCorrect(null)
           setCombo(0)
           setLives(5)
+          if (location.state?.isRanked || settings?.mode === 'ranked') {
+            try {
+              const snap = JSON.parse(localStorage.getItem('rankedStatus') || localStorage.getItem('rankedSnapshot') || 'null')
+              const v = snap?.livesRemaining
+              setServerEnergy(typeof v === 'number' ? Math.max(0, Math.min(ENERGY_MAX, v)) : ENERGY_MAX)
+            } catch {
+              setServerEnergy(ENERGY_MAX)
+            }
+          }
           setScore(0)
           setCorrectAnswers(0)
           setTimeLeft(timerLimit)
@@ -592,16 +630,19 @@ const Quiz: React.FC = () => {
 
           <div className="flex flex-col items-end gap-1">
             <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">{t('quiz.energy')}</span>
-            <div className="flex gap-1">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <div
-                  key={i}
-                  className={`w-2 h-6 rounded-full ${i < lives
-                    ? 'bg-secondary shadow-[0_0_10px_rgba(232,168,50,0.3)]'
-                    : 'bg-surface-container-highest'
-                  }`}
-                ></div>
-              ))}
+            <div className="flex gap-1" data-testid="quiz-energy-bars" data-energy={serverEnergy ?? ''}>
+              {Array.from({ length: ENERGY_BARS }).map((_, i) => {
+                const filled = i < computeEnergyBarsFilled(serverEnergy, lives)
+                return (
+                  <div
+                    key={i}
+                    className={`w-2 h-6 rounded-full ${filled
+                      ? 'bg-secondary shadow-[0_0_10px_rgba(232,168,50,0.3)]'
+                      : 'bg-surface-container-highest'
+                    }`}
+                  ></div>
+                )
+              })}
             </div>
           </div>
         </div>

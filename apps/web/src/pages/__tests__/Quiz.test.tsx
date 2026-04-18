@@ -33,7 +33,7 @@ vi.mock('../../api/client', () => ({
   },
 }))
 
-import Quiz from '../Quiz'
+import Quiz, { computeEnergyBarsFilled } from '../Quiz'
 
 function renderQuiz() {
   return render(
@@ -107,5 +107,43 @@ describe('Quiz Gameplay', () => {
         expect(closeBtn !== null || true).toBe(true)
       })
     })
+  })
+})
+
+describe('computeEnergyBarsFilled', () => {
+  it('returns 5 when server energy is full (100)', () => {
+    expect(computeEnergyBarsFilled(100, 5)).toBe(5)
+  })
+  it('returns 0 when server energy is 0', () => {
+    expect(computeEnergyBarsFilled(0, 5)).toBe(0)
+  })
+  it('maps 1-20 energy to 1 bar (Math.ceil)', () => {
+    expect(computeEnergyBarsFilled(1, 5)).toBe(1)
+    expect(computeEnergyBarsFilled(20, 5)).toBe(1)
+  })
+  it('maps 21-40 energy to 2 bars', () => {
+    expect(computeEnergyBarsFilled(21, 5)).toBe(2)
+    expect(computeEnergyBarsFilled(40, 5)).toBe(2)
+  })
+  it('maps 41-60 energy to 3 bars', () => {
+    expect(computeEnergyBarsFilled(50, 5)).toBe(3)
+    expect(computeEnergyBarsFilled(60, 5)).toBe(3)
+  })
+  it('maps 61-80 energy to 4 bars', () => {
+    expect(computeEnergyBarsFilled(75, 5)).toBe(4)
+  })
+  it('clamps negative energy to 0 bars', () => {
+    expect(computeEnergyBarsFilled(-10, 5)).toBe(0)
+  })
+  it('clamps energy > 100 to 5 bars', () => {
+    expect(computeEnergyBarsFilled(150, 5)).toBe(5)
+  })
+  it('falls back to local lives when server energy is null (practice mode)', () => {
+    expect(computeEnergyBarsFilled(null, 3)).toBe(3)
+    expect(computeEnergyBarsFilled(undefined, 0)).toBe(0)
+  })
+  it('ignores lives when server energy is provided (ranked mode)', () => {
+    expect(computeEnergyBarsFilled(100, 0)).toBe(5)
+    expect(computeEnergyBarsFilled(0, 5)).toBe(0)
   })
 })
