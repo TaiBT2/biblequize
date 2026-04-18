@@ -144,6 +144,35 @@
     "adminPanel": "Admin Panel"
   },
   "admin": {
+    "notifications": {
+      "title": "Notifications",
+      "subtitle": "Broadcast & automated notification management",
+      "composeTitle": "Send notification",
+      "titlePlaceholder": "Notification title",
+      "contentPlaceholder": "Notification content...",
+      "audienceHint": "Sends to all users",
+      "sending": "Sending...",
+      "sendButton": "Send notification",
+      "sentConfirm": "✓ Sent successfully",
+      "automatedTitle": "Automated notifications",
+      "automated": {
+        "streakBreakName": "Streak-about-to-break reminder",
+        "streakBreakSchedule": "Hourly",
+        "dailyChallengeName": "Daily challenge reminder",
+        "dailyChallengeSchedule": "8:00 AM",
+        "weeklySummaryName": "Weekly summary",
+        "weeklySummarySchedule": "Monday 9:00",
+        "welcomeName": "Welcome new user",
+        "welcomeSchedule": "On registration",
+        "tierUpName": "Tier up celebration",
+        "tierUpSchedule": "On tier up"
+      },
+      "historyTitle": "Notification history",
+      "loading": "Loading...",
+      "empty": "No notifications yet",
+      "readLabel": "Read",
+      "unreadLabel": "New"
+    },
     "events": {
       "title": "Events & Tournaments",
       "subtitle": "{{count}} tournaments",

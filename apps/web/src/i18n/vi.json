@@ -144,6 +144,35 @@
     "adminPanel": "Quản trị"
   },
   "admin": {
+    "notifications": {
+      "title": "Quản lý Thông báo",
+      "subtitle": "Broadcast & automated notification management",
+      "composeTitle": "Gửi thông báo",
+      "titlePlaceholder": "Tiêu đề thông báo",
+      "contentPlaceholder": "Nội dung thông báo...",
+      "audienceHint": "Gửi đến tất cả người dùng",
+      "sending": "Đang gửi...",
+      "sendButton": "Gửi thông báo",
+      "sentConfirm": "✓ Đã gửi thành công",
+      "automatedTitle": "Thông báo tự động",
+      "automated": {
+        "streakBreakName": "Nhắc streak sắp gãy",
+        "streakBreakSchedule": "Mỗi giờ",
+        "dailyChallengeName": "Nhắc daily challenge",
+        "dailyChallengeSchedule": "8:00 sáng",
+        "weeklySummaryName": "Tóm tắt tuần",
+        "weeklySummarySchedule": "Thứ Hai 9:00",
+        "welcomeName": "Welcome new user",
+        "welcomeSchedule": "Khi đăng ký",
+        "tierUpName": "Tier up celebration",
+        "tierUpSchedule": "Khi lên tier"
+      },
+      "historyTitle": "Lịch sử thông báo",
+      "loading": "Đang tải...",
+      "empty": "Chưa có thông báo nào",
+      "readLabel": "Đã đọc",
+      "unreadLabel": "Mới"
+    },
     "events": {
       "title": "Events & Tournaments",
       "subtitle": "{{count}} tournaments",
