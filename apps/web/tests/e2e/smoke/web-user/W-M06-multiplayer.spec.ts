@@ -154,4 +154,37 @@ test.describe('W-M06 Multiplayer Lobby — L1 Smoke @smoke @multiplayer', () => 
     await expect(page.getByTestId('lobby-start-btn')).not.toBeVisible()
   })
 
+  test('W-M06-L1-007: CreateRoom mode cards hien thi tieng Viet, khong lo i18n raw key @smoke @multiplayer @i18n @regression', async ({
+    tier3Page,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP — none (default language = vi)
+    // ============================================================
+
+    // ============================================================
+    // SECTION 2: ACTIONS
+    // ============================================================
+    const page = tier3Page
+    // Force vi language to assert Vietnamese mode labels (storage-state defaults to en)
+    await page.goto('http://localhost:5173/')
+    await page.evaluate(() => {
+      localStorage.setItem('quizLanguage', 'vi')
+      localStorage.setItem('i18nextLng', 'vi')
+    })
+    await page.goto('http://localhost:5173/room/create')
+    await page.waitForSelector('[data-testid="create-room-page"]')
+
+    // ============================================================
+    // SECTION 3: UI ASSERTIONS — localized mode names visible (vi)
+    // ============================================================
+    await expect(page.getByText('Đua tốc độ')).toBeVisible()
+    await expect(page.getByText('Sinh tồn')).toBeVisible()
+    await expect(page.getByText('Đội đấu đội')).toBeVisible()
+    await expect(page.getByText('Cái chết bất ngờ')).toBeVisible()
+
+    // Regression guard: no raw i18n keys leaked to UI
+    await expect(page.getByText(/room\.modes\./)).toHaveCount(0)
+    await expect(page.getByText(/createRoom\.modeDesc\./)).toHaveCount(0)
+  })
+
 })

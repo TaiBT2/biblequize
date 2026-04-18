@@ -193,6 +193,41 @@
 
 ---
 
+### W-M06-L1-007 — CreateRoom: mode cards hiển thị tiếng Việt, không lộ i18n raw key
+
+**Priority**: P1
+**Est. runtime**: ~3s
+**Auth**: storageState=tier3
+**Tags**: @smoke @multiplayer @i18n @regression
+
+**Setup**: none
+
+**Preconditions**:
+- User đã đăng nhập
+- Ngôn ngữ mặc định `vi`
+
+**Actions**:
+1. `page.goto('/room/create')`
+2. `page.waitForSelector('[data-testid="create-room-page"]')`
+
+**Assertions**:
+- 4 tên mode tiếng Việt visible:
+  - `expect(page.getByText('Đua tốc độ')).toBeVisible()`
+  - `expect(page.getByText('Sinh tồn')).toBeVisible()`
+  - `expect(page.getByText('Đội đấu đội')).toBeVisible()`
+  - `expect(page.getByText('Cái chết bất ngờ')).toBeVisible()`
+- Không có i18n raw key lộ trên UI:
+  - `expect(page.getByText(/room\.modes\./)).toHaveCount(0)`
+  - `expect(page.getByText(/createRoom\.modeDesc\./)).toHaveCount(0)`
+
+**Cleanup**: none
+
+**Notes**:
+- Regression guard cho bug i18n keys `room.modes.*` + `createRoom.modeDesc.*` thiếu trong vi.json/en.json (fixed 2026-04-18)
+- Nếu thiếu key → react-i18next trả raw key ra UI → test fail ngay lập tức
+
+---
+
 ## NEEDS TESTID Summary
 
 | Element | Suggested testid | File |
