@@ -38,3 +38,7 @@ rule-rank.txt
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+**/playwright-report/
+**/test-results/
+**/tests/e2e/fixtures/storage-states/*.json
+apps/web/.env.production
