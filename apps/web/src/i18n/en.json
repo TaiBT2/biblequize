@@ -144,6 +144,50 @@
     "adminPanel": "Admin Panel"
   },
   "admin": {
+    "feedback": {
+      "title": "Feedback",
+      "subtitle": "{{count}} user submissions",
+      "stats": {
+        "pending": "Pending",
+        "in_progress": "In Progress",
+        "resolved": "Resolved",
+        "rejected": "Rejected"
+      },
+      "filter": {
+        "allStatus": "All Status",
+        "pending": "Pending",
+        "inProgress": "In Progress",
+        "resolved": "Resolved",
+        "rejected": "Rejected",
+        "allTypes": "All Types",
+        "report": "Report",
+        "question": "Question",
+        "general": "General",
+        "refresh": "Refresh"
+      },
+      "columnUser": "User",
+      "columnType": "Type",
+      "columnContent": "Content",
+      "columnQuestion": "Question",
+      "columnStatus": "Status",
+      "columnDate": "Date",
+      "loading": "Loading...",
+      "empty": "No feedback yet",
+      "paginationSummary": "Page {{page}} / {{totalPages}}",
+      "paginationPrev": "Prev",
+      "paginationNext": "Next",
+      "detailTitle": "Feedback Detail",
+      "handledBy": "Handled by: {{name}}",
+      "sender": "Sender",
+      "relatedQuestion": "Related question",
+      "contentLabel": "Content",
+      "adminNoteLabel": "Admin Note (optional)",
+      "adminNotePlaceholder": "Resolution note...",
+      "closeButton": "Close",
+      "moveInProgress": "→ In Progress",
+      "rejectButton": "Reject",
+      "resolveButton": "✓ Resolved"
+    },
     "rankings": {
       "title": "Seasons & Rankings",
       "subtitle": "{{count}} seasons",

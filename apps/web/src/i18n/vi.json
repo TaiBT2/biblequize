@@ -144,6 +144,50 @@
     "adminPanel": "Quản trị"
   },
   "admin": {
+    "feedback": {
+      "title": "Feedback",
+      "subtitle": "{{count}} phản hồi từ người dùng",
+      "stats": {
+        "pending": "Chờ xử lý",
+        "in_progress": "Đang xử lý",
+        "resolved": "Đã giải quyết",
+        "rejected": "Từ chối"
+      },
+      "filter": {
+        "allStatus": "All Status",
+        "pending": "Pending",
+        "inProgress": "In Progress",
+        "resolved": "Resolved",
+        "rejected": "Rejected",
+        "allTypes": "All Types",
+        "report": "Report",
+        "question": "Question",
+        "general": "General",
+        "refresh": "Refresh"
+      },
+      "columnUser": "Người dùng",
+      "columnType": "Loại",
+      "columnContent": "Nội dung",
+      "columnQuestion": "Câu hỏi",
+      "columnStatus": "Trạng thái",
+      "columnDate": "Ngày",
+      "loading": "Đang tải...",
+      "empty": "Không có phản hồi nào",
+      "paginationSummary": "Trang {{page}} / {{totalPages}}",
+      "paginationPrev": "Trước",
+      "paginationNext": "Sau",
+      "detailTitle": "Chi tiết Feedback",
+      "handledBy": "Handled by: {{name}}",
+      "sender": "Người gửi",
+      "relatedQuestion": "Câu hỏi liên quan",
+      "contentLabel": "Nội dung",
+      "adminNoteLabel": "Admin Note (tùy chọn)",
+      "adminNotePlaceholder": "Ghi chú xử lý...",
+      "closeButton": "Đóng",
+      "moveInProgress": "→ In Progress",
+      "rejectButton": "Từ chối",
+      "resolveButton": "✓ Resolved"
+    },
     "rankings": {
       "title": "Seasons & Rankings",
       "subtitle": "{{count}} seasons",

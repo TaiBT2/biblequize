@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { api } from '../../api/client'
 
 type FeedbackItem = {
@@ -18,6 +19,7 @@ type FeedbackItem = {
 type Stats = Record<string, number>
 
 export default function FeedbackAdmin() {
+  const { t } = useTranslation()
   const [items, setItems] = useState<FeedbackItem[]>([])
   const [stats, setStats] = useState<Stats>({})
   const [total, setTotal] = useState(0)
@@ -68,32 +70,32 @@ export default function FeedbackAdmin() {
     }
   }
 
-  const statusBadge = (s: string) => {
+  const statusBadge = (status: string) => {
     const base = 'inline-block px-2 py-0.5 rounded text-xs font-medium'
-    switch (s) {
-      case 'pending':     return <span className={`${base} bg-yellow-500/20 text-yellow-300 border border-yellow-500/30`}>Pending</span>
-      case 'in_progress': return <span className={`${base} bg-blue-500/20 text-blue-300 border border-blue-500/30`}>In Progress</span>
-      case 'resolved':    return <span className={`${base} bg-emerald-500/20 text-emerald-300 border border-emerald-500/30`}>Resolved</span>
-      case 'rejected':    return <span className={`${base} bg-rose-500/20 text-rose-300 border border-rose-500/30`}>Rejected</span>
-      default: return <span className={`${base} bg-white/10 text-[#d5c4af]/60`}>{s}</span>
+    switch (status) {
+      case 'pending':     return <span className={`${base} bg-yellow-500/20 text-yellow-300 border border-yellow-500/30`}>{t('admin.feedback.filter.pending')}</span>
+      case 'in_progress': return <span className={`${base} bg-blue-500/20 text-blue-300 border border-blue-500/30`}>{t('admin.feedback.filter.inProgress')}</span>
+      case 'resolved':    return <span className={`${base} bg-emerald-500/20 text-emerald-300 border border-emerald-500/30`}>{t('admin.feedback.filter.resolved')}</span>
+      case 'rejected':    return <span className={`${base} bg-rose-500/20 text-rose-300 border border-rose-500/30`}>{t('admin.feedback.filter.rejected')}</span>
+      default: return <span className={`${base} bg-white/10 text-[#d5c4af]/60`}>{status}</span>
     }
   }
 
-  const typeBadge = (t: string) => {
+  const typeBadge = (type: string) => {
     const base = 'inline-block px-2 py-0.5 rounded text-xs font-medium'
-    switch (t) {
-      case 'report':   return <span className={`${base} bg-rose-500/20 text-rose-300`}>Report</span>
-      case 'question': return <span className={`${base} bg-purple-500/20 text-purple-300`}>Question</span>
-      case 'general':  return <span className={`${base} bg-sky-500/20 text-sky-300`}>General</span>
-      default: return <span className={`${base} bg-white/10 text-[#d5c4af]/60`}>{t}</span>
+    switch (type) {
+      case 'report':   return <span className={`${base} bg-rose-500/20 text-rose-300`}>{t('admin.feedback.filter.report')}</span>
+      case 'question': return <span className={`${base} bg-purple-500/20 text-purple-300`}>{t('admin.feedback.filter.question')}</span>
+      case 'general':  return <span className={`${base} bg-sky-500/20 text-sky-300`}>{t('admin.feedback.filter.general')}</span>
+      default: return <span className={`${base} bg-white/10 text-[#d5c4af]/60`}>{type}</span>
     }
   }
 
   const statCards = [
-    { key: 'pending',     label: 'Chờ xử lý',     color: 'yellow' },
-    { key: 'in_progress', label: 'Đang xử lý',     color: 'blue'   },
-    { key: 'resolved',    label: 'Đã giải quyết',  color: 'emerald' },
-    { key: 'rejected',    label: 'Từ chối',         color: 'rose'   },
+    { key: 'pending',     color: 'yellow' },
+    { key: 'in_progress', color: 'blue'   },
+    { key: 'resolved',    color: 'emerald' },
+    { key: 'rejected',    color: 'rose'   },
   ] as const
 
   const colorMap = {
@@ -108,14 +110,14 @@ export default function FeedbackAdmin() {
       <div data-testid="admin-feedback-page" className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-semibold">Feedback</h2>
-            <p className="text-[#d5c4af]/60 text-sm mt-0.5">{total} phản hồi từ người dùng</p>
+            <h2 className="text-2xl font-semibold">{t('admin.feedback.title')}</h2>
+            <p className="text-[#d5c4af]/60 text-sm mt-0.5">{t('admin.feedback.subtitle', { count: total })}</p>
           </div>
         </div>
 
         {/* Stats cards */}
         <div data-testid="feedback-stats-cards" className="grid grid-cols-4 gap-3">
-          {statCards.map(({ key, label, color }) => (
+          {statCards.map(({ key, color }) => (
             <button
               key={key}
               data-testid={`feedback-stat-${key}`}
@@ -125,7 +127,7 @@ export default function FeedbackAdmin() {
               }`}
             >
               <div className="text-2xl font-bold">{stats[key] ?? 0}</div>
-              <div className="text-xs text-[#d5c4af]/60 mt-0.5">{label}</div>
+              <div className="text-xs text-[#d5c4af]/60 mt-0.5">{t(`admin.feedback.stats.${key}`)}</div>
             </button>
           ))}
         </div>
@@ -138,27 +140,27 @@ export default function FeedbackAdmin() {
             onChange={e => setStatusFilter(e.target.value)}
             className="px-3 py-2 rounded-md bg-white/10 border border-[#d5c4af]/10 text-sm"
           >
-            <option value="">All Status</option>
-            <option value="pending">Pending</option>
-            <option value="in_progress">In Progress</option>
-            <option value="resolved">Resolved</option>
-            <option value="rejected">Rejected</option>
+            <option value="">{t('admin.feedback.filter.allStatus')}</option>
+            <option value="pending">{t('admin.feedback.filter.pending')}</option>
+            <option value="in_progress">{t('admin.feedback.filter.inProgress')}</option>
+            <option value="resolved">{t('admin.feedback.filter.resolved')}</option>
+            <option value="rejected">{t('admin.feedback.filter.rejected')}</option>
           </select>
           <select
             value={typeFilter}
             onChange={e => setTypeFilter(e.target.value)}
             className="px-3 py-2 rounded-md bg-white/10 border border-[#d5c4af]/10 text-sm"
           >
-            <option value="">All Types</option>
-            <option value="report">Report</option>
-            <option value="question">Question</option>
-            <option value="general">General</option>
+            <option value="">{t('admin.feedback.filter.allTypes')}</option>
+            <option value="report">{t('admin.feedback.filter.report')}</option>
+            <option value="question">{t('admin.feedback.filter.question')}</option>
+            <option value="general">{t('admin.feedback.filter.general')}</option>
           </select>
           <button
             onClick={() => fetchData()}
             className="px-3 py-2 rounded-md bg-blue-600 hover:bg-blue-500 text-sm"
           >
-            Refresh
+            {t('admin.feedback.filter.refresh')}
           </button>
         </div>
 
@@ -167,19 +169,19 @@ export default function FeedbackAdmin() {
           <table className="min-w-full text-sm">
             <thead className="bg-[#1d1f29] text-[#d5c4af]/70">
               <tr>
-                <th className="px-3 py-2 text-left">Người dùng</th>
-                <th className="px-3 py-2 text-left">Loại</th>
-                <th className="px-3 py-2 text-left">Nội dung</th>
-                <th className="px-3 py-2 text-left">Câu hỏi</th>
-                <th className="px-3 py-2 text-center">Trạng thái</th>
-                <th className="px-3 py-2 text-left">Ngày</th>
+                <th className="px-3 py-2 text-left">{t('admin.feedback.columnUser')}</th>
+                <th className="px-3 py-2 text-left">{t('admin.feedback.columnType')}</th>
+                <th className="px-3 py-2 text-left">{t('admin.feedback.columnContent')}</th>
+                <th className="px-3 py-2 text-left">{t('admin.feedback.columnQuestion')}</th>
+                <th className="px-3 py-2 text-center">{t('admin.feedback.columnStatus')}</th>
+                <th className="px-3 py-2 text-left">{t('admin.feedback.columnDate')}</th>
               </tr>
             </thead>
             <tbody>
               {isLoading ? (
-                <tr><td colSpan={6} className="px-3 py-6 text-white/50 text-center">Đang tải...</td></tr>
+                <tr><td colSpan={6} className="px-3 py-6 text-white/50 text-center">{t('admin.feedback.loading')}</td></tr>
               ) : items.length === 0 ? (
-                <tr><td colSpan={6} className="px-3 py-6 text-white/50 text-center">Không có phản hồi nào</td></tr>
+                <tr><td colSpan={6} className="px-3 py-6 text-white/50 text-center">{t('admin.feedback.empty')}</td></tr>
               ) : items.map(item => (
                 <tr
                   data-testid="feedback-row"
@@ -203,7 +205,7 @@ export default function FeedbackAdmin() {
                   </td>
                   <td className="px-3 py-2 text-center">{statusBadge(item.status)}</td>
                   <td className="px-3 py-2 text-xs text-white/50 whitespace-nowrap">
-                    {item.createdAt ? new Date(item.createdAt).toLocaleDateString('vi-VN') : '—'}
+                    {item.createdAt ? new Date(item.createdAt).toLocaleDateString() : '—'}
                   </td>
                 </tr>
               ))}
@@ -213,17 +215,17 @@ export default function FeedbackAdmin() {
 
         {/* Pagination */}
         <div className="flex items-center justify-end gap-2">
-          <span className="text-sm text-white/50">Trang {page + 1} / {totalPages}</span>
+          <span className="text-sm text-white/50">{t('admin.feedback.paginationSummary', { page: page + 1, totalPages })}</span>
           <button
             disabled={page <= 0}
             onClick={() => { const p = page - 1; setPage(p); fetchData(p) }}
             className="px-2 py-1 rounded bg-white/10 disabled:opacity-40 text-sm"
-          >Trước</button>
+          >{t('admin.feedback.paginationPrev')}</button>
           <button
             disabled={page >= totalPages - 1}
             onClick={() => { const p = page + 1; setPage(p); fetchData(p) }}
             className="px-2 py-1 rounded bg-white/10 disabled:opacity-40 text-sm"
-          >Sau</button>
+          >{t('admin.feedback.paginationNext')}</button>
         </div>
       </div>
 
@@ -232,7 +234,7 @@ export default function FeedbackAdmin() {
         <div data-testid="feedback-detail-modal" className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
           <div className="w-full max-w-xl rounded-xl border border-[#d5c4af]/10 bg-[#111018] p-6 shadow-2xl">
             <div className="flex items-center justify-between mb-4">
-              <div className="text-lg font-semibold">Chi tiết Feedback</div>
+              <div className="text-lg font-semibold">{t('admin.feedback.detailTitle')}</div>
               <button onClick={() => setSelected(null)} className="px-2 py-1 rounded bg-white/10 hover:bg-white/20">✕</button>
             </div>
 
@@ -241,12 +243,12 @@ export default function FeedbackAdmin() {
                 {typeBadge(selected.type)}
                 {statusBadge(selected.status)}
                 {selected.handledBy && (
-                  <span className="text-xs text-[#d5c4af]/40">Handled by: {selected.handledBy}</span>
+                  <span className="text-xs text-[#d5c4af]/40">{t('admin.feedback.handledBy', { name: selected.handledBy })}</span>
                 )}
               </div>
 
               <div>
-                <div className="text-xs text-[#d5c4af]/40 mb-1">Người gửi</div>
+                <div className="text-xs text-[#d5c4af]/40 mb-1">{t('admin.feedback.sender')}</div>
                 <div className="font-medium">{selected.userName}
                   <span className="text-white/50 font-normal ml-2 text-xs">({selected.userEmail})</span>
                 </div>
@@ -254,7 +256,7 @@ export default function FeedbackAdmin() {
 
               {selected.question && (
                 <div>
-                  <div className="text-xs text-[#d5c4af]/40 mb-1">Câu hỏi liên quan</div>
+                  <div className="text-xs text-[#d5c4af]/40 mb-1">{t('admin.feedback.relatedQuestion')}</div>
                   <div className="px-3 py-2 rounded bg-[#1d1f29] border border-[#d5c4af]/10 text-xs text-white/80">
                     [{selected.question.book}] {selected.question.content}
                   </div>
@@ -262,19 +264,19 @@ export default function FeedbackAdmin() {
               )}
 
               <div>
-                <div className="text-xs text-[#d5c4af]/40 mb-1">Nội dung</div>
+                <div className="text-xs text-[#d5c4af]/40 mb-1">{t('admin.feedback.contentLabel')}</div>
                 <div className="px-3 py-2 rounded bg-[#1d1f29] border border-[#d5c4af]/10 whitespace-pre-wrap text-white/80 max-h-40 overflow-y-auto">
                   {selected.content}
                 </div>
               </div>
 
               <div>
-                <div className="text-xs text-[#d5c4af]/40 mb-1">Admin Note (tùy chọn)</div>
+                <div className="text-xs text-[#d5c4af]/40 mb-1">{t('admin.feedback.adminNoteLabel')}</div>
                 <textarea
                   rows={2}
                   value={note}
                   onChange={e => setNote(e.target.value)}
-                  placeholder="Ghi chú xử lý..."
+                  placeholder={t('admin.feedback.adminNotePlaceholder')}
                   className="w-full px-3 py-2 rounded bg-white/10 border border-[#d5c4af]/10 text-sm resize-none"
                 />
               </div>
@@ -282,21 +284,21 @@ export default function FeedbackAdmin() {
 
             <div data-testid="feedback-status-select" className="flex items-center justify-end gap-2 mt-5 flex-wrap">
               <button onClick={() => setSelected(null)} className="px-3 py-2 rounded bg-white/10 hover:bg-white/20 text-sm">
-                Đóng
+                {t('admin.feedback.closeButton')}
               </button>
               <button
                 disabled={isSaving}
                 onClick={() => updateStatus('in_progress')}
                 className="px-3 py-2 rounded bg-blue-600/80 hover:bg-blue-600 disabled:opacity-50 text-sm"
               >
-                → In Progress
+                {t('admin.feedback.moveInProgress')}
               </button>
               <button
                 disabled={isSaving}
                 onClick={() => updateStatus('rejected')}
                 className="px-3 py-2 rounded bg-rose-600/80 hover:bg-rose-600 disabled:opacity-50 text-sm"
               >
-                Từ chối
+                {t('admin.feedback.rejectButton')}
               </button>
               <button
                 data-testid="feedback-update-btn"
@@ -304,7 +306,7 @@ export default function FeedbackAdmin() {
                 onClick={() => updateStatus('resolved')}
                 className="px-3 py-2 rounded bg-emerald-600/80 hover:bg-emerald-600 disabled:opacity-50 text-sm"
               >
-                ✓ Resolved
+                {t('admin.feedback.resolveButton')}
               </button>
             </div>
           </div>
