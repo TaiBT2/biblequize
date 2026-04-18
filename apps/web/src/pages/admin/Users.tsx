@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { api } from '../../api/client'
 
 interface UserItem {
@@ -8,6 +9,7 @@ interface UserItem {
 }
 
 export default function UsersAdmin() {
+  const { t } = useTranslation()
   const [users, setUsers] = useState<UserItem[]>([])
   const [total, setTotal] = useState(0)
   const [page, setPage] = useState(0)
@@ -73,8 +75,8 @@ export default function UsersAdmin() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-1">
-          <h1 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight">Quản lý người dùng</h1>
-          <p className="text-[#d5c4af] text-sm">Quản trị viên có thể kiểm soát quyền hạn và trạng thái của toàn bộ hệ thống.</p>
+          <h1 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight">{t('admin.users.title')}</h1>
+          <p className="text-[#d5c4af] text-sm">{t('admin.users.subtitle')}</p>
         </div>
       </div>
 
@@ -83,11 +85,11 @@ export default function UsersAdmin() {
         <div className="relative flex-1 min-w-[200px] max-w-[300px]">
           <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#d5c4af]/50 text-sm">search</span>
           <input data-testid="admin-users-search" value={search} onChange={e => setSearch(e.target.value)} onKeyDown={e => e.key === 'Enter' && fetchUsers(0)}
-            placeholder="Tìm theo tên hoặc email..." className="w-full h-10 bg-[#191b25] border-none rounded px-10 text-sm text-[#e1e1ef] placeholder:text-[#d5c4af]/40 focus:ring-1 focus:ring-[#e8a832] transition-all" />
+            placeholder={t('admin.users.searchPlaceholder')} className="w-full h-10 bg-[#191b25] border-none rounded px-10 text-sm text-[#e1e1ef] placeholder:text-[#d5c4af]/40 focus:ring-1 focus:ring-[#e8a832] transition-all" />
         </div>
         <select value={roleFilter} onChange={e => { setRoleFilter(e.target.value); setPage(0) }}
           className="h-10 bg-[#191b25] border-none rounded text-sm text-[#d5c4af] px-4 focus:ring-1 focus:ring-[#e8a832]">
-          <option value="">Role (All)</option>
+          <option value="">{t('admin.users.filterRoleAll')}</option>
           <option value="ADMIN">Admin</option>
           <option value="USER">User</option>
           <option value="GROUP_LEADER">Group Leader</option>
@@ -95,32 +97,32 @@ export default function UsersAdmin() {
         </select>
         <select value={statusFilter} onChange={e => { setStatusFilter(e.target.value); setPage(0) }}
           className="h-10 bg-[#191b25] border-none rounded text-sm text-[#d5c4af] px-4 focus:ring-1 focus:ring-[#e8a832]">
-          <option value="">Status (All)</option>
-          <option value="active">Active</option>
-          <option value="banned">Banned</option>
+          <option value="">{t('admin.users.filterStatusAll')}</option>
+          <option value="active">{t('admin.users.statusActive')}</option>
+          <option value="banned">{t('admin.users.statusBanned')}</option>
         </select>
         <button className="h-10 px-4 border border-[#504535]/20 flex items-center gap-2 text-[#e8a832] font-medium text-sm hover:bg-[#32343e] transition-colors rounded">
           <span className="material-symbols-outlined text-sm">download</span>
-          Xuất CSV
+          {t('admin.users.exportCsv')}
         </button>
       </div>
 
       {/* Table */}
       <div data-testid="admin-users-table" className="bg-[#1d1f29] rounded-lg overflow-hidden border border-[#504535]/10">
         {isLoading ? (
-          <div className="p-8 text-center text-[#d5c4af]/40">Đang tải...</div>
+          <div className="p-8 text-center text-[#d5c4af]/40">{t('admin.users.loading')}</div>
         ) : users.length === 0 ? (
-          <div className="p-8 text-center text-[#d5c4af]/40">Không tìm thấy người dùng</div>
+          <div className="p-8 text-center text-[#d5c4af]/40">{t('admin.users.empty')}</div>
         ) : (
           <table className="w-full text-left border-collapse">
             <thead className="sticky top-0 bg-[#282933] z-10">
               <tr>
-                <th className="px-6 py-4 text-[0.65rem] font-bold uppercase tracking-widest text-[#d5c4af]/80">Người dùng</th>
-                <th className="px-6 py-4 text-[0.65rem] font-bold uppercase tracking-widest text-[#d5c4af]/80">Quyền hạn</th>
-                <th className="px-6 py-4 text-[0.65rem] font-bold uppercase tracking-widest text-[#d5c4af]/80">Streak</th>
-                <th className="px-6 py-4 text-[0.65rem] font-bold uppercase tracking-widest text-[#d5c4af]/80">Status</th>
-                <th className="px-6 py-4 text-[0.65rem] font-bold uppercase tracking-widest text-[#d5c4af]/80 text-right">Hoạt động cuối</th>
-                <th className="px-6 py-4 text-[0.65rem] font-bold uppercase tracking-widest text-[#d5c4af]/80 text-right">Thao tác</th>
+                <th className="px-6 py-4 text-[0.65rem] font-bold uppercase tracking-widest text-[#d5c4af]/80">{t('admin.users.columnUser')}</th>
+                <th className="px-6 py-4 text-[0.65rem] font-bold uppercase tracking-widest text-[#d5c4af]/80">{t('admin.users.columnRole')}</th>
+                <th className="px-6 py-4 text-[0.65rem] font-bold uppercase tracking-widest text-[#d5c4af]/80">{t('admin.users.columnStreak')}</th>
+                <th className="px-6 py-4 text-[0.65rem] font-bold uppercase tracking-widest text-[#d5c4af]/80">{t('admin.users.columnStatus')}</th>
+                <th className="px-6 py-4 text-[0.65rem] font-bold uppercase tracking-widest text-[#d5c4af]/80 text-right">{t('admin.users.columnLastActivity')}</th>
+                <th className="px-6 py-4 text-[0.65rem] font-bold uppercase tracking-widest text-[#d5c4af]/80 text-right">{t('admin.users.columnActions')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#504535]/5">
@@ -141,13 +143,13 @@ export default function UsersAdmin() {
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-1">
                       <span className="font-mono text-sm font-bold text-[#e1e1ef]">{u.currentStreak}</span>
-                      <span className="text-[#d5c4af]/40 text-xs">ngày</span>
+                      <span className="text-[#d5c4af]/40 text-xs">{t('admin.users.daysUnit')}</span>
                     </div>
                   </td>
                   <td className="px-6 py-4">
                     {u.isBanned
-                      ? <span className="text-red-400 text-xs font-bold">Banned</span>
-                      : <span className="text-green-400 text-xs font-medium">Active</span>}
+                      ? <span className="text-red-400 text-xs font-bold">{t('admin.users.statusBanned')}</span>
+                      : <span className="text-green-400 text-xs font-medium">{t('admin.users.statusActive')}</span>}
                   </td>
                   <td className="px-6 py-4 text-right">
                     <p className="text-xs font-mono text-[#d5c4af]/60">{u.lastPlayedAt || '—'}</p>
@@ -167,12 +169,12 @@ export default function UsersAdmin() {
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex items-center justify-between">
-          <span className="text-xs text-[#d5c4af]/40">{total} users total — Page {page + 1}/{totalPages}</span>
+          <span className="text-xs text-[#d5c4af]/40">{t('admin.users.paginationSummary', { total, page: page + 1, totalPages })}</span>
           <div className="flex gap-2">
             <button onClick={() => setPage(Math.max(0, page - 1))} disabled={page === 0}
-              className="px-3 py-1.5 bg-[#1d1f29] rounded text-sm text-[#e1e1ef] disabled:opacity-30 hover:bg-[#32343e] transition-colors">Prev</button>
+              className="px-3 py-1.5 bg-[#1d1f29] rounded text-sm text-[#e1e1ef] disabled:opacity-30 hover:bg-[#32343e] transition-colors">{t('admin.users.paginationPrev')}</button>
             <button onClick={() => setPage(Math.min(totalPages - 1, page + 1))} disabled={page >= totalPages - 1}
-              className="px-3 py-1.5 bg-[#1d1f29] rounded text-sm text-[#e1e1ef] disabled:opacity-30 hover:bg-[#32343e] transition-colors">Next</button>
+              className="px-3 py-1.5 bg-[#1d1f29] rounded text-sm text-[#e1e1ef] disabled:opacity-30 hover:bg-[#32343e] transition-colors">{t('admin.users.paginationNext')}</button>
           </div>
         </div>
       )}
@@ -184,7 +186,7 @@ export default function UsersAdmin() {
             {selected.isBanned && (
               <div className="bg-red-500/10 border border-red-500/30 rounded p-3 text-red-400 text-sm flex items-center gap-2">
                 <span className="material-symbols-outlined text-sm">lock</span>
-                Tài khoản đã bị khóa — {selected.banReason}
+                {t('admin.users.bannedBanner', { reason: selected.banReason ?? '' })}
               </div>
             )}
             <div className="flex items-center gap-4">
@@ -200,18 +202,18 @@ export default function UsersAdmin() {
 
             <div className="grid grid-cols-2 gap-3 text-sm">
               <div className="bg-[#11131c] rounded p-3">
-                <span className="text-[#d5c4af]/40 text-[10px] uppercase tracking-widest font-bold">Streak hiện tại</span>
-                <p className="font-bold text-[#e1e1ef] font-mono mt-1">{selected.currentStreak} ngày</p>
+                <span className="text-[#d5c4af]/40 text-[10px] uppercase tracking-widest font-bold">{t('admin.users.currentStreakLabel')}</span>
+                <p className="font-bold text-[#e1e1ef] font-mono mt-1">{t('admin.users.currentStreakValue', { count: selected.currentStreak })}</p>
               </div>
               <div className="bg-[#11131c] rounded p-3">
-                <span className="text-[#d5c4af]/40 text-[10px] uppercase tracking-widest font-bold">Best Streak</span>
-                <p className="font-bold text-[#e1e1ef] font-mono mt-1">{selected.longestStreak} ngày</p>
+                <span className="text-[#d5c4af]/40 text-[10px] uppercase tracking-widest font-bold">{t('admin.users.bestStreakLabel')}</span>
+                <p className="font-bold text-[#e1e1ef] font-mono mt-1">{t('admin.users.bestStreakValue', { count: selected.longestStreak })}</p>
               </div>
             </div>
 
             {/* Role change */}
             <div className="flex items-center gap-3">
-              <span className="text-[#d5c4af]/60 text-sm">Role:</span>
+              <span className="text-[#d5c4af]/60 text-sm">{t('admin.users.roleLabel')}</span>
               <select value={selected.role} onChange={e => handleRoleChange(selected, e.target.value)} disabled={isSaving}
                 className="bg-[#11131c] border border-[#504535]/20 rounded px-3 py-1.5 text-sm text-[#e1e1ef] focus:ring-1 focus:ring-[#e8a832]">
                 <option value="USER">USER</option>
@@ -225,20 +227,20 @@ export default function UsersAdmin() {
             {selected.isBanned ? (
               <button onClick={() => handleBan(selected, false)} disabled={isSaving}
                 className="w-full py-2.5 bg-green-600 text-white rounded text-sm font-bold disabled:opacity-50 hover:bg-green-500 transition-colors">
-                Mở khóa tài khoản
+                {t('admin.users.unbanButton')}
               </button>
             ) : (
               <div data-testid="admin-user-ban-btn" className="space-y-2">
-                <textarea data-testid="admin-ban-reason-input" value={banReason} onChange={e => setBanReason(e.target.value)} placeholder="Lý do khóa (tối thiểu 10 ký tự)..."
+                <textarea data-testid="admin-ban-reason-input" value={banReason} onChange={e => setBanReason(e.target.value)} placeholder={t('admin.users.banReasonPlaceholder')}
                   className="w-full bg-[#11131c] border border-[#504535]/20 rounded p-3 text-sm text-[#e1e1ef] placeholder:text-[#d5c4af]/30 resize-none focus:ring-1 focus:ring-[#e8a832]" rows={2} />
                 <button data-testid="admin-ban-confirm-btn" onClick={() => handleBan(selected, true)} disabled={isSaving || banReason.trim().length < 10}
                   className="w-full py-2.5 bg-red-600 text-white rounded text-sm font-bold disabled:opacity-50 hover:bg-red-500 transition-colors">
-                  Khóa tài khoản
+                  {t('admin.users.banButton')}
                 </button>
               </div>
             )}
 
-            <button onClick={() => setSelected(null)} className="w-full py-2 text-[#d5c4af]/60 text-sm hover:text-[#e1e1ef] transition-colors">Đóng</button>
+            <button onClick={() => setSelected(null)} className="w-full py-2 text-[#d5c4af]/60 text-sm hover:text-[#e1e1ef] transition-colors">{t('admin.users.closeButton')}</button>
           </div>
         </div>
       )}
