@@ -143,6 +143,33 @@
     "settings": "Cài đặt",
     "adminPanel": "Quản trị"
   },
+  "admin": {
+    "configuration": {
+      "title": "Cấu hình hệ thống",
+      "subtitle": "Protocol Environment Parameters",
+      "saveChanges": "Lưu {{count}} thay đổi",
+      "warningBanner": "⚠️ Thay đổi ảnh hưởng tất cả người dùng ngay lập tức",
+      "saveAlert": "Lưu {{count}} thay đổi (API chưa implement)",
+      "defaultHint": "{{key}} (default: {{default}})",
+      "labels": {
+        "DAILY_ENERGY": "Năng lượng mỗi ngày",
+        "ENERGY_REGEN_PER_HOUR": "Phục hồi năng lượng/giờ",
+        "DAILY_QUESTION_CAP": "Giới hạn câu ranked/ngày",
+        "STREAK_FREEZE_PER_WEEK": "Streak freeze/tuần",
+        "BASE_POINTS_EASY": "Điểm cơ bản Easy",
+        "BASE_POINTS_MEDIUM": "Điểm cơ bản Medium",
+        "BASE_POINTS_HARD": "Điểm cơ bản Hard",
+        "COMBO_THRESHOLD_1": "Combo level 1 (x1.2)",
+        "COMBO_THRESHOLD_2": "Combo level 2 (x1.5)",
+        "AI_DAILY_QUOTA": "Câu/ngày/admin",
+        "AI_COST_ALERT_USD": "Alert threshold ($)",
+        "AI_DEFAULT_MODEL": "Model mặc định",
+        "ROOM_MAX_PLAYERS": "Max players/phòng",
+        "ROOM_CODE_LENGTH": "Độ dài mã phòng",
+        "ROOM_IDLE_TIMEOUT_MIN": "Timeout phòng (phút)"
+      }
+    }
+  },
   "auth": {
     "login": "Đăng nhập",
     "register": "Đăng ký",

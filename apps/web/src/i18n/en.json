@@ -143,6 +143,33 @@
     "settings": "Settings",
     "adminPanel": "Admin Panel"
   },
+  "admin": {
+    "configuration": {
+      "title": "System Configuration",
+      "subtitle": "Protocol Environment Parameters",
+      "saveChanges": "Save {{count}} changes",
+      "warningBanner": "⚠️ Changes affect all users immediately",
+      "saveAlert": "Save {{count}} changes (API not yet implemented)",
+      "defaultHint": "{{key}} (default: {{default}})",
+      "labels": {
+        "DAILY_ENERGY": "Daily energy",
+        "ENERGY_REGEN_PER_HOUR": "Energy regen per hour",
+        "DAILY_QUESTION_CAP": "Ranked question cap per day",
+        "STREAK_FREEZE_PER_WEEK": "Streak freeze per week",
+        "BASE_POINTS_EASY": "Base points Easy",
+        "BASE_POINTS_MEDIUM": "Base points Medium",
+        "BASE_POINTS_HARD": "Base points Hard",
+        "COMBO_THRESHOLD_1": "Combo level 1 (x1.2)",
+        "COMBO_THRESHOLD_2": "Combo level 2 (x1.5)",
+        "AI_DAILY_QUOTA": "AI questions per day per admin",
+        "AI_COST_ALERT_USD": "Alert threshold ($)",
+        "AI_DEFAULT_MODEL": "Default model",
+        "ROOM_MAX_PLAYERS": "Max players per room",
+        "ROOM_CODE_LENGTH": "Room code length",
+        "ROOM_IDLE_TIMEOUT_MIN": "Room idle timeout (min)"
+      }
+    }
+  },
   "auth": {
     "login": "Log In",
     "register": "Register",
