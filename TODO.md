@@ -1767,3 +1767,57 @@
 
 ### Frontend Navigation
 - [x] Click notification → navigate to relevant page (ranked, daily, leaderboard, groups, multiplayer)
+
+---
+
+## i18n Full Coverage Migration [IN PROGRESS — 2026-04-18]
+
+> Baseline before start: **746 unit tests pass** (apps/web). Must stay >= 746 after every task.
+> Convention: domain namespaces (`admin.*`, `header.*`, `modals.*`, `components.*`, `rooms.*`, `common.*`, `time.*`), snake_lower or camelCase matching existing vi.json style, `{{var}}` interpolation, both `vi.json` + `en.json` updated together per commit. 1 task = 1 commit.
+> Known Issue #2 (api/client.ts error messages hardcoded Vietnamese) — fold into Task 4.3.
+
+### Phase 0 — Test Infrastructure [ ] (run BEFORE Phase 1)
+- [ ] Task 0.1: `src/i18n/__tests__/i18n.test.ts` — key parity vi/en flatten+sort, no undefined/empty, interpolation var match | commit `test: add i18n key parity and integrity tests`
+- [ ] Task 0.2: `src/test/i18n-test-utils.tsx` — `renderWithI18n(ui, { language })`, `useKey(key)` helper | commit `test: add i18n test helpers`
+- [ ] Task 0.3: `scripts/validate-i18n.mjs` — (a) grep Vietnamese diacritics in src/**/*.{ts,tsx} outside `t()` and i18n/, (b) grep every `t('...')` and verify key exists in both vi.json + en.json; add `validate:i18n` npm script | commit `chore: add i18n validation script`
+- [ ] Task 0.4: `tests/e2e/smoke/web-user/W-M13-i18n-all-pages.spec.ts` — switch to en, visit /home /quiz /daily /practice /ranked /profile /groups /rooms /leaderboard /achievements, assert no Vietnamese diacritics in page content | commit `test: e2e i18n coverage across all user pages`
+- [ ] Task 0.5: run validate → write `REPORT_I18N_BASELINE.md` with current error count (ratchet: every Phase 1-4 task must reduce this number, never increase) | commit `docs: i18n baseline error report`
+
+### Phase 1 — User-facing components [ ]
+- [ ] Task 1.1: Header.tsx — nav labels, notifications, time-ago interpolation | test update | commit `i18n: header navigation and notifications`
+- [ ] Task 1.2: DailyBonusModal + TierUpModal + ComebackModal + StarPopup | update their tests | commit `i18n: celebration modals (daily bonus, tier up, comeback, star popup)`
+- [ ] Task 1.3: BookProgress + MilestoneBanner + `utils/tierLabels.ts` helper | update tests | commit `i18n: book progress and milestone banner`
+- [ ] Task 1.4: ShareCard + ErrorToast + date format via `toLocaleDateString(i18n.language)` | tests | commit `i18n: share card and error toast`
+- [ ] PHASE 1 CHECKPOINT → full Tier 3 regression, pause for user review
+
+### Phase 2 — Room pages [ ]
+- [ ] Task 2.1: JoinRoom + Rooms + RoomQuiz (namespace `rooms.*`) | update 3 test files | commit `i18n: room pages (JoinRoom, Rooms, RoomQuiz)`
+- [ ] PHASE 2 CHECKPOINT → Tier 3 regression, pause
+
+### Phase 3 — Admin pages (13 tasks, 13 commits) [ ]
+- [ ] Task 3.1: admin/Configuration.tsx | `admin.configuration.*` | commit `i18n: admin configuration`
+- [ ] Task 3.2: admin/Users.tsx | `admin.users.*` | commit `i18n: admin users`
+- [ ] Task 3.3: admin/Rankings.tsx | `admin.rankings.*` | commit `i18n: admin rankings`
+- [ ] Task 3.4: admin/Feedback.tsx | `admin.feedback.*` | commit `i18n: admin feedback`
+- [ ] Task 3.5: admin/Events.tsx | `admin.events.*` | commit `i18n: admin events`
+- [ ] Task 3.6: admin/Notifications.tsx | `admin.notifications.*` | commit `i18n: admin notifications`
+- [ ] Task 3.7: admin/Groups.tsx | `admin.groups.*` | commit `i18n: admin groups`
+- [ ] Task 3.8: admin/Questions.tsx | `admin.questions.*` | commit `i18n: admin questions`
+- [ ] Task 3.9: admin/ExportCenter.tsx | `admin.exportCenter.*` | commit `i18n: admin export center`
+- [ ] Task 3.10: admin/ReviewQueue.tsx | `admin.reviewQueue.*` | commit `i18n: admin review queue`
+- [ ] Task 3.11: admin/QuestionQuality.tsx | `admin.questionQuality.*` | commit `i18n: admin question quality`
+- [ ] Task 3.12: admin/AIQuestionGenerator.tsx + `ai-generator/DraftCard.tsx` | `admin.aiGenerator.*` | commit `i18n: admin AI question generator`
+- [ ] Task 3.13: admin/Dashboard.tsx + `dashboard/*.tsx` (7 subcomponents) | `admin.dashboard.*` | commit `i18n: admin dashboard and subcomponents`
+- [ ] PHASE 3 CHECKPOINT → Tier 3 regression, pause
+
+### Phase 4 — Fine-grain sweep [ ]
+- [ ] Task 4.1: Grep hardcoded strings in 35 user pages already using `useTranslation` (patterns: "Đang tải", "Không có", "Lỗi", "Vui lòng", ...) | cluster commit | `i18n: miscellaneous hardcoded strings in user pages`
+- [ ] Task 4.2: Mixed VN/EN strings ("{n} energy/giờ", "exp/", "point/") → interpolation | commit `i18n: fix mixed language strings`
+- [ ] Task 4.3: Fix api/client.ts (Known Issue #2) + grep utils/*.ts for user-facing strings | commit `i18n: utility files cleanup`
+- [ ] PHASE 4 CHECKPOINT → Tier 3 regression, pause
+
+### Phase 5 — Validation [ ]
+- [ ] Task 5.1: Write `scripts/i18n-scan.ts` — regex Vietnamese diacritics in JSX text outside `t()` | report file list | commit `test: i18n validation script and coverage report`
+- [ ] Task 5.2: Full regression Tier 3 (vitest + mvn test + playwright smoke) | verify count >= 746 | commit `test: full regression pass after i18n migration`
+- [ ] Update CLAUDE.md Known Issues — remove #2, note i18n coverage complete
+- [ ] DONE: mark section ✅
