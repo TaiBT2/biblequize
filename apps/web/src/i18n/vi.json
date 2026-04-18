@@ -664,6 +664,18 @@
     "noAccount": "Chưa có tài khoản?",
     "orLoginWith": "hoặc đăng nhập với",
     "password": "Mật khẩu",
+    "passwordMismatch": "Mật khẩu không khớp",
+    "passwordTooShort": "Mật khẩu phải có ít nhất 8 ký tự",
+    "errorRegister": "Đăng ký thất bại",
+    "joinUs": "Gia nhập",
+    "journeyBegins": "hành trình đức tin",
+    "registerHero": "Tạo tài khoản để theo dõi tiến trình, thi đấu cùng người khác và lớn lên trong Kinh Thánh.",
+    "createAccount": "Tạo tài khoản",
+    "alreadyHaveAccount": "Đã có tài khoản?",
+    "name": "Họ và tên",
+    "namePlaceholder": "Nguyễn Văn A",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "registering": "Đang đăng ký...",
     "processing": "Đang xử lý...",
     "redirectingHome": "Đang chuyển về trang chủ...",
     "redirectingLogin": "Đang chuyển về trang đăng nhập...",
@@ -700,7 +712,10 @@
     "activityJoinedGroup": "<b>{{name}}</b> đã tham gia vào Nhóm Giáo Xứ của bạn.",
     "activityStreak": "<b>{{name}}</b> đã duy trì chuỗi {{count}} ngày!",
     "dailyVerse": "HỌC NGÀY",
-    "verseToday": "Câu gốc hôm nay"
+    "verseToday": "Câu gốc hôm nay",
+    "dailyMissions": "Nhiệm vụ hôm nay",
+    "received": "Đã nhận",
+    "dayStreak": "ngày liên tiếp"
   },
   "landing": {
     "tagline": "ỨNG DỤNG HỌC KINH THÁNH THẾ HỆ MỚI",
@@ -774,7 +789,9 @@
     "noPoints": "Không được điểm",
     "viewResults": "XEM KẾT QUẢ",
     "nextQuestion": "CÂU TIẾP THEO",
-    "explanation": "Giải thích"
+    "explanation": "Giải thích",
+    "correctAnswerIs": "Đáp án đúng là",
+    "bookmarkForReview": "Đánh dấu để xem lại"
   },
   "practice": {
     "title": "Luyện tập",
@@ -861,7 +878,19 @@
     "deleteAccountConfirmLabel": "Nhập {{phrase}} để xác nhận:",
     "deleteAccountConfirmPhrase": "XÓA TÀI KHOẢN",
     "deleteAccountBtn": "Xóa vĩnh viễn",
-    "deleteAccountDeleting": "Đang xóa..."
+    "deleteAccountDeleting": "Đang xóa...",
+    "totalSessions": "Tổng phiên",
+    "correctRate": "Tỉ lệ đúng",
+    "joinedOn": "Tham gia",
+    "soundAndHapticsTitle": "Âm thanh & Rung",
+    "soundEffectsLabel": "Âm thanh hiệu ứng",
+    "hapticsLabel": "Rung phản hồi",
+    "prestigeTitle": "Prestige",
+    "prestigeHint": "Đạt Tier 6 (Sứ Đồ) và ở đó 30 ngày để mở khóa Prestige.",
+    "prestigeDaysLabel": "Ngày ở Tier 6",
+    "prestigeEligibleTitle": "🏆 Đủ điều kiện Prestige!",
+    "prestigeEligibleDesc": "Bắt đầu hành trình mới với danh hiệu \"{{name}}\"",
+    "prestigeViewDetails": "Xem chi tiết"
   },
   "errors": {
     "notFound": "Trang Không Tìm Thấy",
@@ -1046,10 +1075,19 @@
     "hoursAgo": "{{count}} giờ trước",
     "daysAgo": "{{count}} ngày trước",
     "scriptureQuote": "\"Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi.\"",
-    "scriptureRef": "— Thi Thiên 119:105"
+    "scriptureRef": "— Thi Thiên 119:105",
+    "totalXP": "Tổng XP",
+    "rankColumn": "Hạng",
+    "memberColumn": "Thành viên",
+    "roleColumn": "Vai trò",
+    "joinedColumn": "Tham gia",
+    "actionsColumn": "Thao tác",
+    "you": "Bạn",
+    "levelUpSoon": "Sắp lên hạng!"
   },
   "groupAnalytics": {
     "backToGroup": "Quay lại nhóm",
+    "connectionError": "Lỗi kết nối",
     "title": "Thống Kê Nhóm",
     "subtitle": "Phân tích chi tiết hoạt động nhóm",
     "totalMembers": "Tổng Thành Viên",

@@ -431,6 +431,7 @@ const Profile: React.FC = () => {
 }
 
 function SoundHapticsSettings() {
+  const { t } = useTranslation()
   const [soundEnabled, setSoundEnabled] = useState(soundManager.enabled)
   const [volume, setVolume] = useState(Math.round(soundManager.volume * 100))
   const [hapticsOn, setHapticsOn] = useState(isHapticsEnabled())
@@ -441,13 +442,13 @@ function SoundHapticsSettings() {
         <span className="material-symbols-outlined text-secondary" style={FILL_STYLE}>
           volume_up
         </span>
-        <h2 className="text-lg font-black text-on-surface">Âm thanh & Rung</h2>
+        <h2 className="text-lg font-black text-on-surface">{t('profile.soundAndHapticsTitle')}</h2>
       </div>
 
       <div className="bg-surface-container rounded-xl p-5 border border-outline-variant/10 space-y-4">
         {/* Sound toggle */}
         <div className="flex items-center justify-between">
-          <span className="text-sm text-on-surface">Âm thanh hiệu ứng</span>
+          <span className="text-sm text-on-surface">{t('profile.soundEffectsLabel')}</span>
           <button
             onClick={() => {
               const next = !soundEnabled
@@ -487,7 +488,7 @@ function SoundHapticsSettings() {
 
         {/* Haptics toggle */}
         <div className="flex items-center justify-between">
-          <span className="text-sm text-on-surface">Rung phản hồi</span>
+          <span className="text-sm text-on-surface">{t('profile.hapticsLabel')}</span>
           <button
             onClick={() => {
               const next = !hapticsOn
@@ -509,6 +510,7 @@ function SoundHapticsSettings() {
 }
 
 function PrestigeSection() {
+  const { t } = useTranslation()
   const { data } = useQuery<{
     canPrestige: boolean; prestigeLevel: number; daysAtTier6: number
     daysRequired: number; nextPrestigeName: string | null
@@ -529,7 +531,7 @@ function PrestigeSection() {
         <span className="material-symbols-outlined text-secondary" style={FILL_STYLE}>
           military_tech
         </span>
-        <h2 className="text-lg font-black text-on-surface">Prestige</h2>
+        <h2 className="text-lg font-black text-on-surface">{t('profile.prestigeTitle')}</h2>
         {prestigeLevel > 0 && (
           <span className="text-sm font-bold text-secondary">
             P{prestigeLevel} {PRESTIGE_ICONS[prestigeLevel]}
@@ -540,12 +542,12 @@ function PrestigeSection() {
       <div className="bg-surface-container rounded-xl p-5 border border-outline-variant/10">
         {prestigeLevel === 0 && daysAtTier6 === 0 ? (
           <p className="text-sm text-on-surface-variant">
-            Đạt Tier 6 (Sứ Đồ) và ở đó 30 ngày để mở khóa Prestige.
+            {t('profile.prestigeHint')}
           </p>
         ) : (
           <div className="space-y-3">
             <div className="flex justify-between text-sm">
-              <span className="text-on-surface-variant">Ngày ở Tier 6</span>
+              <span className="text-on-surface-variant">{t('profile.prestigeDaysLabel')}</span>
               <span data-testid="profile-days-at-tier6" className="font-bold text-on-surface">{daysAtTier6}/{daysRequired}</span>
             </div>
             <div className="h-2 bg-surface-container-high rounded-full overflow-hidden">
@@ -557,16 +559,16 @@ function PrestigeSection() {
             {canPrestige && nextPrestigeName && (
               <div className="mt-4 p-4 bg-secondary/10 border border-secondary/20 rounded-xl text-center">
                 <p className="text-sm font-bold text-secondary mb-2">
-                  🏆 Đủ điều kiện Prestige!
+                  {t('profile.prestigeEligibleTitle')}
                 </p>
                 <p className="text-xs text-on-surface-variant mb-3">
-                  Bắt đầu hành trình mới với danh hiệu "{nextPrestigeName}"
+                  {t('profile.prestigeEligibleDesc', { name: nextPrestigeName })}
                 </p>
                 <Link
                   to="/cosmetics"
                   className="inline-block px-4 py-2 text-xs font-bold gold-gradient text-on-secondary rounded-lg"
                 >
-                  Xem chi tiết
+                  {t('profile.prestigeViewDetails')}
                 </Link>
               </div>
             )}

@@ -664,6 +664,18 @@
     "noAccount": "Don't have an account?",
     "orLoginWith": "or log in with",
     "password": "Password",
+    "passwordMismatch": "Passwords do not match",
+    "passwordTooShort": "Password must be at least 8 characters",
+    "errorRegister": "Registration failed",
+    "joinUs": "Join the",
+    "journeyBegins": "journey of faith",
+    "registerHero": "Create your account to track progress, compete with others, and grow in scripture.",
+    "createAccount": "Create your account",
+    "alreadyHaveAccount": "Already have an account?",
+    "name": "Full Name",
+    "namePlaceholder": "John Doe",
+    "confirmPassword": "Confirm password",
+    "registering": "Registering...",
     "processing": "Processing...",
     "redirectingHome": "Redirecting to home...",
     "redirectingLogin": "Redirecting to login...",
@@ -700,7 +712,10 @@
     "activityJoinedGroup": "<b>{{name}}</b> joined your Church Group.",
     "activityStreak": "<b>{{name}}</b> maintained a {{count}}-day streak!",
     "dailyVerse": "TODAY'S VERSE",
-    "verseToday": "Today's verse"
+    "verseToday": "Today's verse",
+    "dailyMissions": "Today's missions",
+    "received": "Received",
+    "dayStreak": "day streak"
   },
   "landing": {
     "tagline": "NEXT-GEN BIBLE LEARNING APP",
@@ -774,7 +789,9 @@
     "noPoints": "No points earned",
     "viewResults": "VIEW RESULTS",
     "nextQuestion": "NEXT QUESTION",
-    "explanation": "Explanation"
+    "explanation": "Explanation",
+    "correctAnswerIs": "The correct answer is",
+    "bookmarkForReview": "Bookmark for review"
   },
   "practice": {
     "title": "Practice",
@@ -861,7 +878,19 @@
     "deleteAccountConfirmLabel": "Type {{phrase}} to confirm:",
     "deleteAccountConfirmPhrase": "DELETE ACCOUNT",
     "deleteAccountBtn": "Delete permanently",
-    "deleteAccountDeleting": "Deleting..."
+    "deleteAccountDeleting": "Deleting...",
+    "totalSessions": "Total sessions",
+    "correctRate": "Correct rate",
+    "joinedOn": "Joined",
+    "soundAndHapticsTitle": "Sound & Haptics",
+    "soundEffectsLabel": "Sound effects",
+    "hapticsLabel": "Haptic feedback",
+    "prestigeTitle": "Prestige",
+    "prestigeHint": "Reach Tier 6 (Apostle) and stay for 30 days to unlock Prestige.",
+    "prestigeDaysLabel": "Days at Tier 6",
+    "prestigeEligibleTitle": "🏆 Prestige eligible!",
+    "prestigeEligibleDesc": "Start a new journey with the title \"{{name}}\"",
+    "prestigeViewDetails": "View details"
   },
   "errors": {
     "notFound": "Page Not Found",
@@ -1046,10 +1075,19 @@
     "hoursAgo": "{{count}} hours ago",
     "daysAgo": "{{count}} days ago",
     "scriptureQuote": "\"Your word is a lamp for my feet, a light on my path.\"",
-    "scriptureRef": "— Psalm 119:105"
+    "scriptureRef": "— Psalm 119:105",
+    "totalXP": "Total XP",
+    "rankColumn": "Rank",
+    "memberColumn": "Member",
+    "roleColumn": "Role",
+    "joinedColumn": "Joined",
+    "actionsColumn": "Actions",
+    "you": "You",
+    "levelUpSoon": "Level up soon!"
   },
   "groupAnalytics": {
     "backToGroup": "Back to group",
+    "connectionError": "Connection error",
     "title": "Group Analytics",
     "subtitle": "Detailed activity analysis",
     "totalMembers": "Total Members",
