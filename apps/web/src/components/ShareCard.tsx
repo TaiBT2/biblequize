@@ -1,6 +1,12 @@
+import { useTranslation } from 'react-i18next'
+import i18n from '../i18n'
 import { getApiBaseUrl } from '../api/config'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
+
+function localeTag(): string {
+  return i18n.language?.startsWith('en') ? 'en-US' : 'vi-VN'
+}
 
 interface ShareCardProps {
   sessionId?: string
@@ -29,6 +35,7 @@ export default function ShareCard({
   type = 'session',
   referenceId,
 }: ShareCardProps) {
+  const { t } = useTranslation()
   const apiBase = getApiBaseUrl()
   const shareUrl =
     type === 'tier_up' && referenceId
@@ -47,8 +54,8 @@ export default function ShareCard({
 
   const handleShare = async () => {
     const shareText = type === 'tier_up'
-      ? `BibleQuiz — Đạt cấp ${tierName}!`
-      : `BibleQuiz — ${correct}/${total} câu đúng!`
+      ? t('components.shareCard.shareTextTierUp', { tier: tierName ?? '' })
+      : t('components.shareCard.shareTextResult', { correct, total })
     if (navigator.share) {
       try {
         await navigator.share({ title: 'BibleQuiz', text: shareText, url: shareUrl })
@@ -86,7 +93,7 @@ export default function ShareCard({
             <div className="text-center space-y-4 py-4">
               <span className="material-symbols-outlined text-5xl text-secondary" style={FILL_1}>celebration</span>
               <div>
-                <p className="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">Thăng hạng!</p>
+                <p className="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1">{t('components.shareCard.tierUpLabel')}</p>
                 <p className="text-2xl font-black text-on-surface">{oldTierName}</p>
                 <span className="material-symbols-outlined text-secondary text-2xl my-2">arrow_downward</span>
                 <p className="text-3xl font-black text-secondary">{tierName}</p>
@@ -96,7 +103,7 @@ export default function ShareCard({
             /* ── Daily Challenge Variant ── */
             <div className="text-center space-y-4 py-2">
               <p className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">
-                Daily Challenge — {date || new Date().toLocaleDateString('vi-VN')}
+                {t('components.shareCard.dailyLabelPrefix', { date: date || new Date().toLocaleDateString(localeTag()) })}
               </p>
               {/* Stars */}
               <div className="flex justify-center gap-1.5">
@@ -110,11 +117,11 @@ export default function ShareCard({
                   </span>
                 ))}
               </div>
-              <p className="text-on-surface font-bold text-lg">{correct}/{total} câu đúng</p>
+              <p className="text-on-surface font-bold text-lg">{t('components.shareCard.correctCount', { correct, total })}</p>
               {percentile && (
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20">
                   <span className="material-symbols-outlined text-secondary text-sm" style={FILL_1}>emoji_events</span>
-                  <span className="text-sm font-bold text-secondary">Giỏi hơn {percentile}% người chơi</span>
+                  <span className="text-sm font-bold text-secondary">{t('components.shareCard.percentileBadge', { percentile })}</span>
                 </div>
               )}
             </div>
@@ -138,7 +145,11 @@ export default function ShareCard({
                 </div>
               </div>
               <p className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">
-                {pct >= 90 ? 'Xuất sắc!' : pct >= 70 ? 'Tốt lắm!' : 'Cố gắng thêm!'}
+                {pct >= 90
+                  ? t('components.shareCard.ratingExcellent')
+                  : pct >= 70
+                    ? t('components.shareCard.ratingGood')
+                    : t('components.shareCard.ratingTryHarder')}
               </p>
               {score > 0 && (
                 <p className="text-sm text-secondary font-bold">+{score} XP</p>
@@ -171,7 +182,7 @@ export default function ShareCard({
           className="flex-1 py-3 gold-gradient text-on-secondary font-bold rounded-xl shadow-lg shadow-secondary/10 active:scale-95 transition-all flex items-center justify-center gap-2 text-sm"
         >
           <span className="material-symbols-outlined text-lg">share</span>
-          Chia sẻ
+          {t('components.shareCard.shareButton')}
         </button>
         <button
           onClick={handleCopyUrl}

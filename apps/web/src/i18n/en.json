@@ -112,6 +112,21 @@
     "milestone": {
       "halfwayTo": "Halfway to {{tier}}!",
       "surgeCountdown": "XP x1.5 for {{remaining}}"
+    },
+    "shareCard": {
+      "tierUpLabel": "Tier up!",
+      "dailyLabelPrefix": "Daily Challenge — {{date}}",
+      "correctCount": "{{correct}}/{{total}} correct",
+      "percentileBadge": "Better than {{percentile}}% of players",
+      "ratingExcellent": "Excellent!",
+      "ratingGood": "Great job!",
+      "ratingTryHarder": "Keep trying!",
+      "shareButton": "Share",
+      "shareTextTierUp": "BibleQuiz — Reached {{tier}}!",
+      "shareTextResult": "BibleQuiz — {{correct}}/{{total}} correct!"
+    },
+    "errorToast": {
+      "closeLabel": "Close"
     }
   },
   "nav": {

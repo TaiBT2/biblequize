@@ -112,6 +112,21 @@
     "milestone": {
       "halfwayTo": "Nửa đường đến {{tier}}!",
       "surgeCountdown": "XP x1.5 còn {{remaining}}"
+    },
+    "shareCard": {
+      "tierUpLabel": "Thăng hạng!",
+      "dailyLabelPrefix": "Daily Challenge — {{date}}",
+      "correctCount": "{{correct}}/{{total}} câu đúng",
+      "percentileBadge": "Giỏi hơn {{percentile}}% người chơi",
+      "ratingExcellent": "Xuất sắc!",
+      "ratingGood": "Tốt lắm!",
+      "ratingTryHarder": "Cố gắng thêm!",
+      "shareButton": "Chia sẻ",
+      "shareTextTierUp": "BibleQuiz — Đạt cấp {{tier}}!",
+      "shareTextResult": "BibleQuiz — {{correct}}/{{total}} câu đúng!"
+    },
+    "errorToast": {
+      "closeLabel": "Đóng"
     }
   },
   "nav": {

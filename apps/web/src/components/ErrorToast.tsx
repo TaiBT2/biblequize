@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface ErrorToastProps {
   message: string
@@ -13,6 +14,7 @@ export default function ErrorToast({
   duration = 5000, 
   type = 'error' 
 }: ErrorToastProps) {
+  const { t } = useTranslation()
   const [isVisible, setIsVisible] = useState(true)
   const [isExiting, setIsExiting] = useState(false)
 
@@ -106,7 +108,7 @@ export default function ErrorToast({
               onClick={handleClose}
               className={`inline-flex ${styles.text} hover:opacity-75 transition-opacity`}
             >
-              <span className="sr-only">Đóng</span>
+              <span className="sr-only">{t('components.errorToast.closeLabel')}</span>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
