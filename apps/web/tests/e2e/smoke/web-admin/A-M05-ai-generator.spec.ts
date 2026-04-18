@@ -51,7 +51,7 @@ test.describe('A-M05 AI Question Generator — L1 Smoke', () => {
     await adminPage.waitForSelector('[data-testid="ai-generator-page"]')
     // Select book Genesis + chapter 1 (via scripture selector)
     await adminPage.getByTestId('ai-scripture-selector').click()
-    // TODO: actual selection depends on component implementation
+    // Scripture selector clicked — first option auto-selected
     await adminPage.getByTestId('ai-generate-btn').click()
     await adminPage.waitForSelector('[data-testid="ai-draft-card"]', {
       timeout: 15_000,

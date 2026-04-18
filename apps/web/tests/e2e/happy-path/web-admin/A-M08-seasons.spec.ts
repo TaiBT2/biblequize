@@ -178,7 +178,7 @@ test.describe('A-M08 Seasons & Rankings', () => {
     await adminPage.goto('/admin/rankings')
 
     // Check if active season banner exists
-    const activeBanner = adminPage.getByTestId('admin-season-active-banner')
+    const activeBanner = adminPage.getByTestId('active-season-banner')
     const hasBanner = await activeBanner.isVisible({ timeout: 10_000 }).catch(() => false)
 
     if (!hasBanner) {
@@ -187,7 +187,7 @@ test.describe('A-M08 Seasons & Rankings', () => {
     }
 
     // Click end season
-    const endBtn = adminPage.getByTestId('admin-season-end-btn')
+    const endBtn = adminPage.getByTestId('end-season-btn')
     await endBtn.click()
 
     // Confirm modal

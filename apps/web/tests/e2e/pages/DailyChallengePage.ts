@@ -9,6 +9,10 @@ export class DailyChallengePage extends BasePage {
   readonly leaderboard: Locator
   readonly completedBadge: Locator
   readonly streakDisplay: Locator
+  readonly scoreDisplay: Locator
+  readonly leaderboardRow: Locator
+  readonly errorState: Locator
+  readonly errorRetryBtn: Locator
 
   constructor(page: Page) {
     super(page)
@@ -18,6 +22,10 @@ export class DailyChallengePage extends BasePage {
     this.leaderboard = page.getByTestId('daily-leaderboard')
     this.completedBadge = page.getByTestId('daily-completed-badge')
     this.streakDisplay = page.getByTestId('daily-streak-display')
+    this.scoreDisplay = page.getByTestId('daily-score-display')
+    this.leaderboardRow = page.getByTestId('daily-leaderboard-row')
+    this.errorState = page.getByTestId('daily-error-state')
+    this.errorRetryBtn = page.getByTestId('daily-error-retry-btn')
   }
 
   // ── Actions ───────────────────────────────────────────────

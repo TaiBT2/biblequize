@@ -14,6 +14,10 @@ export class RankedPage extends BasePage {
   readonly userRank: Locator
   readonly currentBook: Locator
   readonly seasonCard: Locator
+  readonly capReachedMsg: Locator
+  readonly energyTimer: Locator
+  readonly seasonRank: Locator
+  readonly seasonPoints: Locator
 
   constructor(page: Page) {
     super(page)
@@ -28,6 +32,10 @@ export class RankedPage extends BasePage {
     this.userRank = page.getByTestId('ranked-user-rank')
     this.currentBook = page.getByTestId('ranked-current-book')
     this.seasonCard = page.getByTestId('ranked-season-card')
+    this.capReachedMsg = page.getByTestId('ranked-cap-reached-msg')
+    this.energyTimer = page.getByTestId('ranked-energy-timer')
+    this.seasonRank = page.getByTestId('ranked-season-rank')
+    this.seasonPoints = page.getByTestId('ranked-season-points')
   }
 
   // ── Actions ───────────────────────────────────────────────

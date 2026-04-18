@@ -10,6 +10,8 @@ export class QuizPage extends BasePage {
   readonly answerFeedback: Locator
   readonly nextBtn: Locator
   readonly scoreDelta: Locator
+  readonly questionBook: Locator
+  readonly explanation: Locator
 
   constructor(page: Page) {
     super(page)
@@ -20,6 +22,8 @@ export class QuizPage extends BasePage {
     this.answerFeedback = page.getByTestId('quiz-answer-feedback')
     this.nextBtn = page.getByTestId('quiz-next-btn')
     this.scoreDelta = page.getByTestId('quiz-score-delta')
+    this.questionBook = page.getByTestId('quiz-question-book')
+    this.explanation = page.getByTestId('quiz-explanation')
   }
 
   // ── Helpers ───────────────────────────────────────────────

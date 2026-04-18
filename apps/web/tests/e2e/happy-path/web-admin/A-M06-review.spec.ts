@@ -196,7 +196,7 @@ test.describe('A-M06 Review Queue', () => {
     const initialCount = parseInt(initialCountText?.replace(/\D/g, '') || '0', 10)
 
     // Approve first item
-    const approveBtn = adminPage.getByTestId('review-queue-approve-btn').first()
+    const approveBtn = adminPage.getByTestId('review-approve-btn').first()
     await approveBtn.click()
 
     // Verify count delta -1

@@ -7,14 +7,11 @@ export class AdminDashboardPage extends BasePage {
   readonly kpiCards: Locator
   readonly activityLog: Locator
 
-  readonly actionItems: Locator
-
   constructor(page: Page) {
     super(page)
     this.container = page.getByTestId('admin-dashboard-page')
     this.kpiCards = page.getByTestId('admin-kpi-cards')
     this.activityLog = page.getByTestId('admin-activity-log')
-    this.actionItems = page.locator('[data-testid="admin-action-items"]')
   }
 
   // ── Actions ───────────────────────────────────────────────

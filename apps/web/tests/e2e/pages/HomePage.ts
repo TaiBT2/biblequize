@@ -12,6 +12,7 @@ export class HomePage extends BasePage {
   readonly leaderboardSection: Locator
   readonly leaderboardTabDaily: Locator
   readonly leaderboardTabWeekly: Locator
+  readonly nextTierCard: Locator
 
   // GameModeGrid is a child component — locate via its known testid
   readonly gameModeGrid: Locator
@@ -27,6 +28,7 @@ export class HomePage extends BasePage {
     this.leaderboardSection = page.getByTestId('home-leaderboard')
     this.leaderboardTabDaily = page.getByTestId('leaderboard-tab-daily')
     this.leaderboardTabWeekly = page.getByTestId('leaderboard-tab-weekly')
+    this.nextTierCard = page.getByTestId('home-next-tier-card')
 
     this.gameModeGrid = page.locator('[data-testid="game-mode-grid"]')
   }
