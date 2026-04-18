@@ -147,8 +147,7 @@ test.describe('W-M08 Journey Map — L2 Happy Path @happy-path @journey', () => 
     expect(unlocked).toHaveLength(66)
   })
 
-  // SKIP: UI component journey-nt-tab not implemented yet
-  test.skip('W-M08-L2-005: Journey UI — OT/NT tabs + book cards rendered @parallel-safe', async ({
+  test('W-M08-L2-005: Journey UI — OT/NT sections + book cards rendered @parallel-safe', async ({
     tier3Page,
   }) => {
     // ============================================================
@@ -167,23 +166,20 @@ test.describe('W-M08 Journey Map — L2 Happy Path @happy-path @journey', () => 
     await expect(page.getByTestId('journey-page')).toBeVisible()
     await expect(page.getByTestId('journey-summary-card')).toBeVisible()
 
-    // Switch to OT tab — 39 books
-    const otTab = page.getByTestId('journey-ot-tab')
-    await expect(otTab).toBeVisible()
-    await otTab.click()
+    // OT section — journey-old-testament contains OT book cards
+    const otSection = page.getByTestId('journey-old-testament')
+    await expect(otSection).toBeVisible()
 
-    const otCards = page.locator('[data-testid^="journey-book-card-"]')
+    const otCards = otSection.locator('[data-testid^="journey-book-card-"]')
     await expect(otCards.first()).toBeVisible()
-    // OT should show 39 books
     const otCount = await otCards.count()
     expect(otCount).toBe(39)
 
-    // Switch to NT tab — 27 books
-    const ntTab = page.getByTestId('journey-nt-tab')
-    await expect(ntTab).toBeVisible()
-    await ntTab.click()
+    // NT section — journey-new-testament contains NT book cards
+    const ntSection = page.getByTestId('journey-new-testament')
+    await expect(ntSection).toBeVisible()
 
-    const ntCards = page.locator('[data-testid^="journey-book-card-"]')
+    const ntCards = ntSection.locator('[data-testid^="journey-book-card-"]')
     await expect(ntCards.first()).toBeVisible()
     const ntCount = await ntCards.count()
     expect(ntCount).toBe(27)
@@ -203,15 +199,12 @@ test.describe('W-M08 Journey Map — L2 Happy Path @happy-path @journey', () => 
     await page.goto('/journey')
     await page.waitForSelector('[data-testid="journey-page"]')
 
-    // Click on Genesis book card
+    // Click on Genesis book card (within OT section)
+    const otSection = page.getByTestId('journey-old-testament')
+    await expect(otSection).toBeVisible()
     const genesisCard = page.getByTestId('journey-book-card-Genesis')
-    if (await genesisCard.isVisible({ timeout: 3_000 }).catch(() => false)) {
-      await genesisCard.click()
-    } else {
-      // Try OT tab first
-      await page.getByTestId('journey-ot-tab').click()
-      await page.getByTestId('journey-book-card-Genesis').click()
-    }
+    await expect(genesisCard).toBeVisible()
+    await genesisCard.click()
 
     // ============================================================
     // SECTION 3: UI ASSERTIONS

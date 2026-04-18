@@ -72,11 +72,13 @@ test.describe('A-M07 Feedback & Moderation — L1 Smoke', () => {
     // ── UI Assertions ── (modal visible)
     await expect(adminPage.getByTestId('feedback-detail-modal')).toBeVisible()
 
-    // ── Update status ──
+    // ── Update status — feedback-status-select is a div with buttons, not <select> ──
     await adminPage
       .getByTestId('feedback-status-select')
-      .selectOption('in_progress')
-    await adminPage.getByTestId('feedback-update-btn').click()
+      .locator('button')
+      .filter({ hasText: /in progress|Đang xử lý/i })
+      .first()
+      .click()
 
     // ── UI Assertions ── (status updated)
     await expect(adminPage.getByTestId('feedback-detail-modal')).toContainText(

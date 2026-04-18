@@ -350,7 +350,7 @@ test.describe('W-M04 Ranked Mode', () => {
 
   // ── W-M04-L2-011 — Energy depletion: lives=0 -> start blocked ──
 
-  test('W-M04-L2-011: energy depletion -> start button disabled', async ({
+  test('W-M04-L2-011: energy depletion -> start button hidden, no-energy msg shown', async ({
     tier3Page: page,
     testApi,
   }) => {
@@ -385,12 +385,12 @@ test.describe('W-M04 Ranked Mode', () => {
     // UI: questions counted shows 100/100
     await expect(rankedPage.questionsCounted).toContainText('100/100')
 
-    // Start should be disabled or cap-reached message shown
-    const startVisible = await rankedPage.startBtn.isEnabled().catch(() => false)
-    if (startVisible) {
-      // If start is still visible, there may be a cap-reached message instead
-      await expect(page.getByTestId('ranked-cap-reached-msg')).toBeVisible()
-    }
+    // When cap is reached, start button is REMOVED from DOM (not disabled)
+    // and ranked-cap-reached-msg is shown
+    const startVisible = await rankedPage.startBtn.isVisible().catch(() => false)
+    const capMsgVisible = await rankedPage.capReachedMsg.isVisible().catch(() => false)
+    // At least one indicator of cap reached should be true
+    expect(!startVisible || capMsgVisible).toBeTruthy()
 
     // Section 4: API Verification
     const ranked = await testApi.getRankedStatus(TEST_EMAIL)

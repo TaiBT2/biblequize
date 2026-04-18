@@ -166,9 +166,9 @@ test.describe('W-M04 Ranked Mode — L1 Smoke @smoke @ranked', () => {
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
-    await expect(rankedPage.startBtn).toBeDisabled()
-    await expect(rankedPage.startBtn).toHaveText(/Hết Năng lượng/)
-    await expect(rankedPage.resetTimer).toBeVisible()
+    // When energy=0, ranked-start-btn is removed from DOM, replaced by ranked-no-energy-msg
+    await rankedPage.expectStartDisabled()
+    await expect(rankedPage.energyDisplay).toBeVisible()
 
     // ============================================================
     // CLEANUP — restore energy

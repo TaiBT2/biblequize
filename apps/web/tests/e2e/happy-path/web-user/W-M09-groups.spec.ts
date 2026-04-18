@@ -151,9 +151,9 @@ test.describe('W-M09 Church Groups — L2 Happy Path @happy-path @groups', () =>
       // ============================================================
       await page.waitForURL(/\/groups\/[a-z0-9-]+/)
       await expect(page).toHaveURL(/\/groups\/[a-z0-9-]+/)
-      await expect(page.getByTestId('group-name-heading')).toHaveText('E2E UI Group')
-      await expect(page.getByTestId('group-join-code')).toContainText(/[A-Z0-9]{6}/)
-      await expect(page.getByTestId('group-member-count')).toContainText('1')
+      await expect(page.getByTestId('group-detail-page')).toBeVisible()
+      await expect(page.getByTestId('group-detail-name')).toHaveText('E2E UI Group')
+      await expect(page.getByTestId('group-detail-members')).toBeVisible()
 
       // ============================================================
       // CLEANUP

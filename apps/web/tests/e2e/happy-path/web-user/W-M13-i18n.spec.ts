@@ -18,15 +18,18 @@ test.describe('W-M13 i18n — L2 Happy Path @happy-path @i18n', () => {
     tier3Page,
   }) => {
     // ============================================================
-    // SECTION 1: SETUP — clear localStorage
+    // SECTION 1: SETUP — clear localStorage (goto first, then evaluate, then reload
+    // to simulate a first-time visit with no stored language preference)
     // ============================================================
     const page = tier3Page
+    await page.goto('/')
     await page.evaluate(() => localStorage.removeItem('quizLanguage'))
+    await page.reload()
 
     // ============================================================
     // SECTION 2: ACTIONS
     // ============================================================
-    await page.goto('/')
+    // (Already on home after reload)
 
     // ============================================================
     // SECTION 3: UI ASSERTIONS
@@ -47,11 +50,13 @@ test.describe('W-M13 i18n — L2 Happy Path @happy-path @i18n', () => {
     tier3Page,
   }) => {
     // ============================================================
-    // SECTION 1: SETUP
+    // SECTION 1: SETUP (goto first, then clear localStorage, then reload
+    // so app re-initializes without a stored language)
     // ============================================================
     const page = tier3Page
-    await page.evaluate(() => localStorage.removeItem('quizLanguage'))
     await page.goto('/')
+    await page.evaluate(() => localStorage.removeItem('quizLanguage'))
+    await page.reload()
 
     // ============================================================
     // SECTION 2: ACTIONS — click language toggle
@@ -90,15 +95,15 @@ test.describe('W-M13 i18n — L2 Happy Path @happy-path @i18n', () => {
     tier3Page,
   }) => {
     // ============================================================
-    // SECTION 1: SETUP — set English
+    // SECTION 1: SETUP — set English (goto first, then evaluate)
     // ============================================================
     const page = tier3Page
+    await page.goto('/')
     await page.evaluate(() => localStorage.setItem('quizLanguage', 'en'))
 
     // ============================================================
     // SECTION 2: ACTIONS
     // ============================================================
-    await page.goto('/')
     await page.reload()
 
     // ============================================================
@@ -127,15 +132,16 @@ test.describe('W-M13 i18n — L2 Happy Path @happy-path @i18n', () => {
     tier3Page,
   }) => {
     // ============================================================
-    // SECTION 1: SETUP
+    // SECTION 1: SETUP (goto first, then set English, then reload)
     // ============================================================
     const page = tier3Page
+    await page.goto('/')
     await page.evaluate(() => localStorage.setItem('quizLanguage', 'en'))
+    await page.reload()
 
     // ============================================================
     // SECTION 2: ACTIONS — navigate Home -> Practice
     // ============================================================
-    await page.goto('/')
     await page.goto('/practice')
 
     // ============================================================

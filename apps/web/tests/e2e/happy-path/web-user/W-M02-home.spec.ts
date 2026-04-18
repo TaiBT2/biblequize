@@ -54,15 +54,7 @@ test.describe('W-M02 Home & Profile', () => {
     testApi,
   }) => {
     // Setup: pre-seed streak
-    await testApi.setState(TEST_EMAIL, { daysAtTier6: 0 }) // ensure user exists in daily progress
-
-    // Note: set-streak endpoint uses admin test controller
-    const userId = await testApi.getUserIdByEmail(TEST_EMAIL)
-    // Use direct admin fetch for set-streak (not exposed via TestApi helper)
-    const res = await fetch(`http://localhost:8080/api/admin/test/users/${userId}/set-streak?days=15`, {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${(testApi as any).adminToken}` },
-    })
+    await testApi.setStreak(TEST_EMAIL, 15)
 
     const homePage = new HomePage(page)
     await homePage.goto()
@@ -71,10 +63,7 @@ test.describe('W-M02 Home & Profile', () => {
     await expect(page.getByTestId('home-streak-count')).toContainText('15')
 
     // Cleanup: reset streak
-    await fetch(`http://localhost:8080/api/admin/test/users/${userId}/set-streak?days=0`, {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${(testApi as any).adminToken}` },
-    })
+    await testApi.setStreak(TEST_EMAIL, 0)
   })
 
   // ── W-M02-L2-004 — Energy bar: pre-seed livesRemaining=75 -> UI shows 75 ──
@@ -86,11 +75,12 @@ test.describe('W-M02 Home & Profile', () => {
     // Setup: set lives
     await testApi.setState(TEST_EMAIL, { livesRemaining: 75 })
 
-    const homePage = new HomePage(page)
-    await homePage.goto()
+    // Energy display is on /ranked page, not /home — navigate there
+    await page.goto('/ranked')
+    await page.waitForSelector('[data-testid="ranked-energy-display"]', { timeout: 10_000 })
 
-    // UI assertion
-    await expect(page.getByTestId('home-energy-bar')).toContainText('75')
+    // UI assertion — ranked-energy-display shows "75/100" format
+    await expect(page.getByTestId('ranked-energy-display')).toContainText('75')
 
     // Section 4: API Verification
     const ranked = await testApi.getRankedStatus(TEST_EMAIL)
@@ -143,18 +133,13 @@ test.describe('W-M02 Home & Profile', () => {
 
   // ── W-M02-L2-008 — Bookmarks ──
 
-  test('W-M02-L2-008: bookmarks section visible in profile', async ({
+  test('W-M02-L2-008: badges section visible in profile', async ({
     tier3Page: page,
   }) => {
     await page.goto('/profile')
     await page.waitForSelector('[data-testid="profile-name"]', { timeout: 10_000 })
 
-    // Bookmarks section should be present (may be empty)
-    // Navigate to bookmarks tab/section if needed
-    const bookmarksSection = page.getByTestId('profile-bookmarks')
-    // If bookmarks section exists, verify it
-    if (await bookmarksSection.isVisible().catch(() => false)) {
-      await expect(bookmarksSection).toBeVisible()
-    }
+    // Badges section should be present
+    await expect(page.getByTestId('profile-badges-section')).toBeVisible()
   })
 })

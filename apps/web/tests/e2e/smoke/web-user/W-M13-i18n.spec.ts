@@ -35,15 +35,16 @@ test.describe('W-M13 i18n Language Switching — L1 Smoke @smoke @i18n', () => {
     tier3Page,
   }) => {
     // ============================================================
-    // SECTION 1: SETUP — set language to VI
+    // SECTION 1: SETUP — set language to VI (goto first, then evaluate)
     // ============================================================
     const page = tier3Page
+    await page.goto('/')
     await page.evaluate(() => localStorage.setItem('quizLanguage', 'vi'))
+    await page.reload()
 
     // ============================================================
     // SECTION 2: ACTIONS
     // ============================================================
-    await page.goto('/')
     await page.waitForSelector('[data-testid="lang-toggle-en"]')
     await page.getByTestId('lang-toggle-en').click()
 
@@ -93,15 +94,16 @@ test.describe('W-M13 i18n Language Switching — L1 Smoke @smoke @i18n', () => {
     tier3Page,
   }) => {
     // ============================================================
-    // SECTION 1: SETUP — set language to VI
+    // SECTION 1: SETUP — set language to VI (goto first, then evaluate)
     // ============================================================
     const page = tier3Page
+    await page.goto('/practice')
     await page.evaluate(() => localStorage.setItem('quizLanguage', 'vi'))
+    await page.reload()
 
     // ============================================================
     // SECTION 2: ACTIONS
     // ============================================================
-    await page.goto('/practice')
     await page.waitForSelector('[data-testid="lang-toggle-en"]')
     await page.getByTestId('lang-toggle-en').click()
 

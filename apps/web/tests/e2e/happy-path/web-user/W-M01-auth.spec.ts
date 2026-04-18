@@ -15,10 +15,11 @@ const TEST_PASSWORD = 'Test@123456'
 // ── W-M01-L2-001 — Register new user -> success -> auto-login -> redirect ──
 
 test.describe('W-M01 Auth & Onboarding', () => {
-  test('W-M01-L2-001: register new user -> auto-login -> redirect to onboarding', async ({
+  test.skip('W-M01-L2-001: register new user -> auto-login -> redirect to onboarding', async ({
     page,
     testApi,
   }) => {
+    // SKIP: Register page does not exist — app uses OAuth + email/password login only
     const ephemeralEmail = `e2e-register-${Date.now()}@dev.local`
 
     await page.goto('/login')
@@ -196,7 +197,8 @@ test.describe('W-M01 Auth & Onboarding', () => {
 
   // ── W-M01-L2-008 — Register with existing email -> 409 ──
 
-  test('W-M01-L2-008: register with existing email -> 409 conflict', async ({ page }) => {
+  test.skip('W-M01-L2-008: register with existing email -> 409 conflict', async ({ page }) => {
+    // SKIP: Register page does not exist — app uses OAuth + email/password login only
     await page.goto('/register')
 
     await page.getByTestId('register-name-input').fill('Duplicate User')

@@ -91,9 +91,9 @@ test.describe('A-M03 Questions CRUD', () => {
     const body = await res.json()
     expect(body).toHaveProperty('content')
     expect(body).toHaveProperty('totalElements')
-    expect(body.content.length).toBeLessThanOrEqual(20)
+    expect(body.questions.length).toBeLessThanOrEqual(20)
 
-    for (const q of body.content) {
+    for (const q of body.questions) {
       expect(q.book).toBe('Genesis')
     }
   })
@@ -107,7 +107,7 @@ test.describe('A-M03 Questions CRUD', () => {
     expect(res.status()).toBe(200)
 
     const body = await res.json()
-    for (const q of body.content) {
+    for (const q of body.questions) {
       expect(q.difficulty).toMatch(/hard/i)
     }
   })

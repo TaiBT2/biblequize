@@ -187,6 +187,68 @@ export class TestApi {
     }
   }
 
+  /** Set user's current streak to exact number of days. */
+  async setStreak(email: string, days: number): Promise<void> {
+    const userId = await this.getUserIdByEmail(email)
+    const res = await this.adminFetch(
+      `/api/admin/test/users/${userId}/set-streak?days=${days}`,
+      { method: 'POST' },
+    )
+    if (!res.ok) {
+      throw new Error(
+        `setStreak(${email}, ${days}) failed: ${res.status} ${await res.text()}`,
+      )
+    }
+  }
+
+  /** Seed exact totalPoints for user. */
+  async seedPoints(email: string, points: number): Promise<void> {
+    const userId = await this.getUserIdByEmail(email)
+    const res = await this.adminFetch(
+      `/api/admin/test/users/${userId}/seed-points`,
+      { method: 'POST', body: JSON.stringify({ totalPoints: points }) },
+    )
+    if (!res.ok) {
+      throw new Error(
+        `seedPoints(${email}, ${points}) failed: ${res.status} ${await res.text()}`,
+      )
+    }
+  }
+
+  /** Set daily mission state for user. */
+  async setMissionState(
+    email: string,
+    missions: Array<{ missionType: string; progress: number; target: number }>,
+  ): Promise<void> {
+    const userId = await this.getUserIdByEmail(email)
+    const res = await this.adminFetch(
+      `/api/admin/test/users/${userId}/set-mission-state`,
+      { method: 'POST', body: JSON.stringify({ missions }) },
+    )
+    if (!res.ok) {
+      throw new Error(
+        `setMissionState(${email}) failed: ${res.status} ${await res.text()}`,
+      )
+    }
+  }
+
+  /** Mock question history for user (used for weakness widget, journey, etc.). */
+  async mockHistory(
+    email: string,
+    history: Array<{ book: string; correct: number; total: number }>,
+  ): Promise<void> {
+    const userId = await this.getUserIdByEmail(email)
+    const res = await this.adminFetch(
+      `/api/admin/test/users/${userId}/mock-history`,
+      { method: 'POST', body: JSON.stringify({ entries: history }) },
+    )
+    if (!res.ok) {
+      throw new Error(
+        `mockHistory(${email}) failed: ${res.status} ${await res.text()}`,
+      )
+    }
+  }
+
   // ── User-scoped API reads ──────────────────────────────────────────────
 
   /** Login as user (if needed) then GET /api/me. */

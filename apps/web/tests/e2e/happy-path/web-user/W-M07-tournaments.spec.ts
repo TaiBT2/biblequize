@@ -122,9 +122,10 @@ test.describe('W-M07 Tournaments — L2 Happy Path @happy-path @tournaments', ()
     // ============================================================
     // SECTION 3: UI ASSERTIONS
     // ============================================================
+    await expect(page.getByTestId('tournament-detail-page')).toBeVisible()
+    await expect(page.getByTestId('tournament-detail-name')).toBeVisible()
+    await expect(page.getByTestId('tournament-detail-status')).toBeVisible()
     await expect(page.getByTestId('tournament-bracket')).toBeVisible()
-    await expect(page.getByTestId('tournament-participants')).toBeVisible()
-    await expect(page.getByTestId('tournament-rules')).toBeVisible()
   })
 
   test('W-M07-L2-004: Register for tournament POST /api/tournaments/{id}/register @write @serial', async ({

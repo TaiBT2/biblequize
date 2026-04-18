@@ -34,7 +34,7 @@ test.describe('A-M03 + A-M04 Questions CRUD — L1 Smoke', () => {
     // ── Actions ──
     await adminPage.goto('/admin/questions')
     await adminPage.waitForSelector('[data-testid="admin-questions-book-filter"]')
-    await adminPage.getByTestId('admin-questions-book-filter').selectOption('Genesis')
+    await adminPage.getByTestId('admin-questions-book-filter').fill('Genesis')
     await adminPage.waitForResponse((resp) =>
       resp.url().includes('/api/admin/questions') && resp.status() === 200,
     )

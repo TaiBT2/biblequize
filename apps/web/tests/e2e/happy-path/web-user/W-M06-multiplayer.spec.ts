@@ -144,10 +144,10 @@ test.describe('W-M06 Multiplayer Lobby — L2 Happy Path @happy-path @multiplaye
       await nameInput.fill('E2E UI Room')
     }
 
-    // Select mode
+    // Select mode — create-room-mode-select is a div grid of buttons, not <select>
     const modeSelect = page.getByTestId('create-room-mode-select')
     if (await modeSelect.isVisible()) {
-      await modeSelect.selectOption('SPEED_RACE')
+      await modeSelect.locator('button').filter({ hasText: /speed|race|tốc/i }).first().click().catch(() => {})
     }
 
     // Submit

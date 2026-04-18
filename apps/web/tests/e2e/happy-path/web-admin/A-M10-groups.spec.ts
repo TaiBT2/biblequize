@@ -20,11 +20,12 @@ test.describe('A-M10 Church Groups Admin', () => {
     expect(res.status()).toBe(200)
 
     const body = await res.json()
-    expect(body).toHaveProperty('content')
-    expect(body.content.length).toBeLessThanOrEqual(20)
+    // /api/admin/groups returns a plain array, not paginated
+    expect(Array.isArray(body)).toBe(true)
+    expect(body.length).toBeLessThanOrEqual(20)
 
-    if (body.content.length > 0) {
-      const group = body.content[0]
+    if (body.length > 0) {
+      const group = body[0]
       expect(group).toHaveProperty('id')
       expect(group).toHaveProperty('name')
       expect(group).toHaveProperty('memberCount')
@@ -38,7 +39,8 @@ test.describe('A-M10 Church Groups Admin', () => {
     expect(res.status()).toBe(200)
 
     const body = await res.json()
-    for (const group of body.content) {
+    expect(Array.isArray(body)).toBe(true)
+    for (const group of body) {
       expect(group.isLocked).toBe(true)
     }
   })
