@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import type { TFunction } from 'i18next'
 import { api } from '../../api/client'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -31,11 +33,17 @@ interface ApiPage { questions: Question[]; total: number; page: number; size: nu
 
 // ── Constants ──────────────────────────────────────────────────────────────────
 
-const TYPE_LABELS: Record<string, string> = {
-  multiple_choice_single: 'Trắc nghiệm',
-  multiple_choice_multi:  'Đa đáp án',
-  true_false:             'Đúng/Sai',
-  fill_in_blank:          'Điền trống',
+const TYPE_LABEL_KEYS: Record<string, string> = {
+  multiple_choice_single: 'admin.questions.filter.mcSingle',
+  multiple_choice_multi:  'admin.questions.filter.mcMulti',
+  true_false:             'admin.questions.filter.trueFalse',
+  fill_in_blank:          'admin.questions.filter.fillBlank',
+}
+
+function typeLabel(type: string | undefined, t: TFunction): string {
+  if (!type) return '—'
+  const key = TYPE_LABEL_KEYS[type]
+  return key ? (t(key) as string) : type
 }
 
 const DIFF_COLOR: Record<string, string> = {
@@ -72,6 +80,7 @@ const Badge: React.FC<{ label: string; color: string }> = ({ label, color }) => 
 // ── Main Component ─────────────────────────────────────────────────────────────
 
 export default function QuestionsAdmin() {
+  const { t } = useTranslation()
   // ── list state
   const [data, setData]         = useState<ApiPage | null>(null)
   const [isLoading, setLoading] = useState(false)
@@ -123,7 +132,7 @@ export default function QuestionsAdmin() {
       const res = await api.get<ApiPage>(`/api/admin/questions?${fetchParams}`)
       setData(res.data)
     } catch (e: any) {
-      setError(e?.response?.data?.error ?? e?.message ?? 'Lỗi tải dữ liệu')
+      setError(e?.response?.data?.error ?? e?.message ?? t('admin.questions.error.loading'))
     } finally {
       setLoading(false)
     }
@@ -166,9 +175,9 @@ export default function QuestionsAdmin() {
       if (e?.response?.status === 409 && errData?.error === 'POSSIBLE_DUPLICATE') {
         setDuplicateWarning(errData)
       } else if (e?.response?.status === 409 && errData?.error === 'DUPLICATE') {
-        setSaveError(`Trùng hệt: ${errData.message}`)
+        setSaveError(t('admin.questions.error.exactDuplicate', { message: errData.message }))
       } else {
-        setSaveError(errData?.message ?? errData?.error ?? 'Lưu thất bại')
+        setSaveError(errData?.message ?? errData?.error ?? t('admin.questions.error.saveFailed'))
       }
     } finally {
       setIsSaving(false)
@@ -184,7 +193,7 @@ export default function QuestionsAdmin() {
   }
 
   const deleteOne = async (id: string) => {
-    if (!confirm('Xóa câu hỏi này?')) return
+    if (!confirm(t('admin.questions.confirm.deleteOne'))) return
     await api.delete(`/api/admin/questions/${id}`)
     await refresh()
   }
@@ -192,7 +201,7 @@ export default function QuestionsAdmin() {
   const bulkDelete = async () => {
     const ids = Object.keys(selectedIds).filter(id => selectedIds[id])
     if (!ids.length) return
-    if (!confirm(`Xóa ${ids.length} câu hỏi đã chọn?`)) return
+    if (!confirm(t('admin.questions.confirm.deleteBulk', { count: ids.length }))) return
     await api.delete('/api/admin/questions', { data: { ids } })
     setSelectedIds({})
     await refresh()
@@ -212,7 +221,7 @@ export default function QuestionsAdmin() {
       if (dryRun) setImportDryResult(res.data)
       else { setImportResult(res.data); await refresh() }
     } catch (e: any) {
-      alert('Import lỗi: ' + (e?.response?.data?.error || e?.message || 'Unknown error'))
+      alert(t('admin.questions.error.importAlert', { message: e?.response?.data?.error || e?.message || 'Unknown error' }))
     } finally { setImportLoading(false) }
   }
 
@@ -259,26 +268,26 @@ export default function QuestionsAdmin() {
     <>
     <div data-testid="admin-questions-page" className="space-y-4">
 
-      {saveSuccess && <div data-testid="admin-questions-success-toast" className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium">✓ Lưu câu hỏi thành công</div>}
+      {saveSuccess && <div data-testid="admin-questions-success-toast" className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium">{t('admin.questions.saveSuccess')}</div>}
 
       {/* Header */}
       <div className="flex items-start justify-between gap-3 flex-wrap">
         <div>
-          <h1 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight">Questions</h1>
+          <h1 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight">{t('admin.questions.title')}</h1>
           <p className="text-white/60 text-sm">
-            {data ? `${(data.total ?? 0).toLocaleString()} câu hỏi` : 'Đang tải...'}
+            {data ? t('admin.questions.countSuffix', { count: (data.total ?? 0).toLocaleString() }) : t('admin.questions.loading')}
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
           <span data-testid="admin-questions-add-btn" className="inline-flex">
             <button data-testid="admin-questions-create-btn" onClick={openCreate}
               className="h-9 px-4 rounded-md bg-emerald-600 hover:bg-emerald-500 text-sm font-medium">
-              + Tạo câu hỏi
+              {t('admin.questions.createButton')}
             </button>
           </span>
           <button onClick={() => { setImportOpen(true); setImportDryResult(null); setImportResult(null) }}
             className="h-9 px-4 rounded-md bg-white/10 border border-white/10 hover:bg-white/20 text-sm">
-            Import CSV/JSON
+            {t('admin.questions.importButton')}
           </button>
           <button onClick={refresh}
             className="h-9 px-3 rounded-md bg-white/10 border border-white/10 hover:bg-white/20 text-sm">
@@ -290,49 +299,49 @@ export default function QuestionsAdmin() {
       {/* Filters */}
       <div className="flex flex-wrap gap-2 items-end">
         <div>
-          <label className="block text-xs text-white/50 mb-1">Tìm nội dung</label>
+          <label className="block text-xs text-white/50 mb-1">{t('admin.questions.filter.contentLabel')}</label>
           <input data-testid="admin-questions-search-input" value={search} onChange={e => setSearch(e.target.value)}
-            placeholder="Nhập từ khoá..."
+            placeholder={t('admin.questions.filter.contentPlaceholder')}
             className="h-9 px-3 rounded-md bg-white/10 border border-white/10 text-sm w-52" />
         </div>
         <div>
-          <label className="block text-xs text-white/50 mb-1">Sách</label>
-          <input data-testid="admin-questions-book-filter" value={book} onChange={e => setBook(e.target.value)} placeholder="vd: Genesis"
+          <label className="block text-xs text-white/50 mb-1">{t('admin.questions.filter.bookLabel')}</label>
+          <input data-testid="admin-questions-book-filter" value={book} onChange={e => setBook(e.target.value)} placeholder={t('admin.questions.filter.bookPlaceholder')}
             className="h-9 px-3 rounded-md bg-white/10 border border-white/10 text-sm w-32" />
         </div>
         <div>
-          <label className="block text-xs text-white/50 mb-1">Độ khó</label>
+          <label className="block text-xs text-white/50 mb-1">{t('admin.questions.filter.difficultyLabel')}</label>
           <select value={difficulty} onChange={e => setDifficulty(e.target.value)}
             className="h-9 px-3 rounded-md bg-white/10 border border-white/10 text-sm">
-            <option value="">Tất cả</option>
-            <option value="easy">Dễ</option>
-            <option value="medium">Trung bình</option>
-            <option value="hard">Khó</option>
+            <option value="">{t('admin.questions.filter.difficultyAll')}</option>
+            <option value="easy">{t('admin.questions.filter.easy')}</option>
+            <option value="medium">{t('admin.questions.filter.medium')}</option>
+            <option value="hard">{t('admin.questions.filter.hard')}</option>
           </select>
         </div>
         <div>
-          <label className="block text-xs text-white/50 mb-1">Loại</label>
+          <label className="block text-xs text-white/50 mb-1">{t('admin.questions.filter.typeLabel')}</label>
           <select value={qType} onChange={e => setQType(e.target.value)}
             className="h-9 px-3 rounded-md bg-white/10 border border-white/10 text-sm">
-            <option value="">Tất cả</option>
-            <option value="multiple_choice_single">Trắc nghiệm</option>
-            <option value="multiple_choice_multi">Đa đáp án</option>
-            <option value="true_false">Đúng/Sai</option>
-            <option value="fill_in_blank">Điền trống</option>
+            <option value="">{t('admin.questions.filter.typeAll')}</option>
+            <option value="multiple_choice_single">{t('admin.questions.filter.mcSingle')}</option>
+            <option value="multiple_choice_multi">{t('admin.questions.filter.mcMulti')}</option>
+            <option value="true_false">{t('admin.questions.filter.trueFalse')}</option>
+            <option value="fill_in_blank">{t('admin.questions.filter.fillBlank')}</option>
           </select>
         </div>
         <div>
-          <label className="block text-xs text-white/50 mb-1">Trạng thái</label>
+          <label className="block text-xs text-white/50 mb-1">{t('admin.questions.filter.statusLabel')}</label>
           <select value={reviewStatus} onChange={e => setReviewStatus(e.target.value)}
             className="h-9 px-3 rounded-md bg-white/10 border border-white/10 text-sm">
-            <option value="">Tất cả</option>
+            <option value="">{t('admin.questions.filter.statusAll')}</option>
             <option value="ACTIVE">Active</option>
             <option value="PENDING">Pending</option>
             <option value="REJECTED">Rejected</option>
           </select>
         </div>
         <div>
-          <label className="block text-xs text-white/50 mb-1">Hiển thị</label>
+          <label className="block text-xs text-white/50 mb-1">{t('admin.questions.filter.pageSizeLabel')}</label>
           <select value={pageSize} onChange={e => setPageSize(Number(e.target.value))}
             className="h-9 px-3 rounded-md bg-white/10 border border-white/10 text-sm">
             <option value={25}>25</option>
@@ -351,21 +360,21 @@ export default function QuestionsAdmin() {
                 <th className="px-3 py-2 w-10">
                   <input type="checkbox" checked={allChecked} onChange={e => toggleAll(e.target.checked)} />
                 </th>
-                <th className="px-3 py-2 text-left whitespace-nowrap">Sách / Tham khảo</th>
-                <th className="px-3 py-2 text-center whitespace-nowrap">Loại</th>
-                <th className="px-3 py-2 text-center whitespace-nowrap">Khó</th>
-                <th className="px-3 py-2 text-center whitespace-nowrap">Trạng thái</th>
-                <th className="px-3 py-2 text-left">Nội dung</th>
-                <th className="px-3 py-2 text-center whitespace-nowrap">Hành động</th>
+                <th className="px-3 py-2 text-left whitespace-nowrap">{t('admin.questions.column.book')}</th>
+                <th className="px-3 py-2 text-center whitespace-nowrap">{t('admin.questions.column.type')}</th>
+                <th className="px-3 py-2 text-center whitespace-nowrap">{t('admin.questions.column.difficulty')}</th>
+                <th className="px-3 py-2 text-center whitespace-nowrap">{t('admin.questions.column.status')}</th>
+                <th className="px-3 py-2 text-left">{t('admin.questions.column.content')}</th>
+                <th className="px-3 py-2 text-center whitespace-nowrap">{t('admin.questions.column.actions')}</th>
               </tr>
             </thead>
             <tbody>
               {isLoading ? (
-                <tr><td colSpan={7} className="px-4 py-8 text-center text-white/40">Đang tải...</td></tr>
+                <tr><td colSpan={7} className="px-4 py-8 text-center text-white/40">{t('admin.questions.loading')}</td></tr>
               ) : error ? (
                 <tr><td colSpan={7} className="px-4 py-4 text-rose-400">{error}</td></tr>
               ) : questions.length === 0 ? (
-                <tr><td colSpan={7} className="px-4 py-8 text-center text-white/40">Không có câu hỏi</td></tr>
+                <tr><td colSpan={7} className="px-4 py-8 text-center text-white/40">{t('admin.questions.empty')}</td></tr>
               ) : questions.map(q => (
                 <tr data-testid="admin-question-row" key={q.id} className="odd:bg-white/[0.03] hover:bg-white/[0.06]">
                   <td className="px-3 py-2 text-center">
@@ -382,7 +391,7 @@ export default function QuestionsAdmin() {
                     )}
                   </td>
                   <td className="px-3 py-2 text-center">
-                    <Badge label={TYPE_LABELS[q.type ?? ''] ?? q.type ?? '—'} color="bg-white/10 text-white/70 border-white/10" />
+                    <Badge label={typeLabel(q.type, t)} color="bg-white/10 text-white/70 border-white/10" />
                   </td>
                   <td className="px-3 py-2 text-center">
                     {q.difficulty
@@ -408,11 +417,11 @@ export default function QuestionsAdmin() {
                   </td>
                   <td className="px-3 py-2 text-center whitespace-nowrap">
                     <button data-testid="admin-question-edit-btn" onClick={() => openEdit(q)}
-                      className="mx-0.5 px-2 py-1 rounded bg-white/10 hover:bg-white/20 text-xs" title="Sửa">✏️</button>
+                      className="mx-0.5 px-2 py-1 rounded bg-white/10 hover:bg-white/20 text-xs" title={t('admin.questions.row.editTitle')}>✏️</button>
                     <button onClick={() => duplicate(q)}
-                      className="mx-0.5 px-2 py-1 rounded bg-white/10 hover:bg-white/20 text-xs" title="Nhân bản">📄</button>
+                      className="mx-0.5 px-2 py-1 rounded bg-white/10 hover:bg-white/20 text-xs" title={t('admin.questions.row.duplicateTitle')}>📄</button>
                     <button data-testid="admin-question-delete-btn" onClick={() => deleteOne(q.id)}
-                      className="mx-0.5 px-2 py-1 rounded bg-rose-600/20 text-rose-300 hover:bg-rose-600/30 text-xs" title="Xóa">🗑️</button>
+                      className="mx-0.5 px-2 py-1 rounded bg-rose-600/20 text-rose-300 hover:bg-rose-600/30 text-xs" title={t('admin.questions.row.deleteTitle')}>🗑️</button>
                   </td>
                 </tr>
               ))}
@@ -427,7 +436,7 @@ export default function QuestionsAdmin() {
           {anyChecked && (
             <button onClick={bulkDelete}
               className="px-3 py-2 rounded-md bg-rose-600/80 hover:bg-rose-600 text-sm">
-              Xóa {Object.values(selectedIds).filter(Boolean).length} mục đã chọn
+              {t('admin.questions.bulkDelete', { count: Object.values(selectedIds).filter(Boolean).length })}
             </button>
           )}
         </div>
@@ -436,12 +445,12 @@ export default function QuestionsAdmin() {
             {data ? `${page * pageSize + 1}–${Math.min((page + 1) * pageSize, data.total)} / ${data.total}` : ''}
           </span>
           <button disabled={page <= 0} onClick={() => setPage(p => p - 1)}
-            className="px-3 py-1.5 rounded bg-white/10 hover:bg-white/20 disabled:opacity-30">← Trước</button>
+            className="px-3 py-1.5 rounded bg-white/10 hover:bg-white/20 disabled:opacity-30">{t('admin.questions.paginationPrev')}</button>
           <span className="text-white/60">
-            Trang {(data?.page ?? 0) + 1} / {data?.totalPages ?? 1}
+            {t('admin.questions.paginationPage', { current: (data?.page ?? 0) + 1, total: data?.totalPages ?? 1 })}
           </span>
           <button disabled={!data || page >= data.totalPages - 1} onClick={() => setPage(p => p + 1)}
-            className="px-3 py-1.5 rounded bg-white/10 hover:bg-white/20 disabled:opacity-30">Sau →</button>
+            className="px-3 py-1.5 rounded bg-white/10 hover:bg-white/20 disabled:opacity-30">{t('admin.questions.paginationNext')}</button>
         </div>
       </div>
     </div>
@@ -451,7 +460,7 @@ export default function QuestionsAdmin() {
       <div data-testid="admin-questions-create-modal" className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 overflow-y-auto py-6">
         <div data-testid="question-form-modal" className="w-full max-w-2xl rounded-xl border border-white/10 bg-[#111018] p-6 shadow-2xl mx-4">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold">{editing.id ? 'Sửa câu hỏi' : 'Tạo câu hỏi'}</h3>
+            <h3 className="text-lg font-semibold">{editing.id ? t('admin.questions.modal.editTitle') : t('admin.questions.modal.createTitle')}</h3>
             <button onClick={() => setEditing(null)} className="px-2 py-1 rounded bg-white/10 hover:bg-white/20">✕</button>
           </div>
 
@@ -459,17 +468,17 @@ export default function QuestionsAdmin() {
             {/* Row 1: Scripture ref */}
             <div className="grid grid-cols-4 gap-3">
               <div className="col-span-2">
-                <label className="block text-xs text-white/50 mb-1">Sách *</label>
+                <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.bookLabel')}</label>
                 <input className="w-full h-9 px-3 rounded bg-white/10 border border-white/10 text-sm"
-                  value={editing.book ?? ''} onChange={e => setField('book', e.target.value)} placeholder="vd: Genesis" />
+                  value={editing.book ?? ''} onChange={e => setField('book', e.target.value)} placeholder={t('admin.questions.modal.bookPlaceholder')} />
               </div>
               <div>
-                <label className="block text-xs text-white/50 mb-1">Chương</label>
+                <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.chapterLabel')}</label>
                 <input type="number" className="w-full h-9 px-3 rounded bg-white/10 border border-white/10 text-sm"
                   value={editing.chapter ?? ''} onChange={e => setField('chapter', e.target.value ? Number(e.target.value) : undefined)} />
               </div>
               <div>
-                <label className="block text-xs text-white/50 mb-1">Câu (start)</label>
+                <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.verseStartLabel')}</label>
                 <input type="number" className="w-full h-9 px-3 rounded bg-white/10 border border-white/10 text-sm"
                   value={editing.verseStart ?? ''} onChange={e => setField('verseStart', e.target.value ? Number(e.target.value) : undefined)} />
               </div>
@@ -478,36 +487,36 @@ export default function QuestionsAdmin() {
             {/* Row 2: Meta */}
             <div className="grid grid-cols-4 gap-3">
               <div>
-                <label className="block text-xs text-white/50 mb-1">Câu (end)</label>
+                <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.verseEndLabel')}</label>
                 <input type="number" className="w-full h-9 px-3 rounded bg-white/10 border border-white/10 text-sm"
                   value={editing.verseEnd ?? ''} onChange={e => setField('verseEnd', e.target.value ? Number(e.target.value) : undefined)} />
               </div>
               <div>
-                <label className="block text-xs text-white/50 mb-1">Độ khó</label>
+                <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.difficultyLabel')}</label>
                 <select className="w-full h-9 px-3 rounded bg-white/10 border border-white/10 text-sm"
                   value={editing.difficulty ?? 'easy'} onChange={e => setField('difficulty', e.target.value as Difficulty)}>
-                  <option value="easy">Dễ</option>
-                  <option value="medium">Trung bình</option>
-                  <option value="hard">Khó</option>
+                  <option value="easy">{t('admin.questions.filter.easy')}</option>
+                  <option value="medium">{t('admin.questions.filter.medium')}</option>
+                  <option value="hard">{t('admin.questions.filter.hard')}</option>
                 </select>
               </div>
               <div>
-                <label className="block text-xs text-white/50 mb-1">Loại</label>
+                <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.typeLabel')}</label>
                 <select className="w-full h-9 px-3 rounded bg-white/10 border border-white/10 text-sm"
                   value={editing.type ?? 'multiple_choice_single'}
                   onChange={e => handleTypeChange(e.target.value as QuestionType)}>
-                  <option value="multiple_choice_single">Trắc nghiệm (1)</option>
-                  <option value="multiple_choice_multi">Trắc nghiệm (nhiều)</option>
-                  <option value="true_false">Đúng / Sai</option>
-                  <option value="fill_in_blank">Điền trống</option>
+                  <option value="multiple_choice_single">{t('admin.questions.modal.mcSingleFull')}</option>
+                  <option value="multiple_choice_multi">{t('admin.questions.modal.mcMultiFull')}</option>
+                  <option value="true_false">{t('admin.questions.modal.trueFalseFull')}</option>
+                  <option value="fill_in_blank">{t('admin.questions.modal.fillBlank')}</option>
                 </select>
               </div>
               <div>
-                <label className="block text-xs text-white/50 mb-1">Ngôn ngữ</label>
+                <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.languageLabel')}</label>
                 <select className="w-full h-9 px-3 rounded bg-white/10 border border-white/10 text-sm"
                   value={editing.language ?? 'vi'} onChange={e => setField('language', e.target.value)}>
-                  <option value="vi">Tiếng Việt</option>
-                  <option value="en">English</option>
+                  <option value="vi">{t('admin.questions.modal.langVi')}</option>
+                  <option value="en">{t('admin.questions.modal.langEn')}</option>
                 </select>
               </div>
             </div>
@@ -515,8 +524,8 @@ export default function QuestionsAdmin() {
             {/* Content */}
             <div>
               <label className="block text-xs text-white/50 mb-1">
-                Nội dung câu hỏi *
-                {editing.type === 'fill_in_blank' && <span className="ml-2 text-yellow-400">Dùng ___ để đánh dấu chỗ trống</span>}
+                {t('admin.questions.modal.contentLabel')}
+                {editing.type === 'fill_in_blank' && <span className="ml-2 text-yellow-400">{t('admin.questions.modal.fillBlankHint')}</span>}
               </label>
               <textarea data-testid="admin-question-content-input" rows={3} className="w-full px-3 py-2 rounded bg-white/10 border border-white/10 text-sm resize-none"
                 value={editing.content ?? ''} onChange={e => setField('content', e.target.value)} />
@@ -526,8 +535,8 @@ export default function QuestionsAdmin() {
             {editing.type !== 'fill_in_blank' && (
               <div>
                 <label className="block text-xs text-white/50 mb-2">
-                  Lựa chọn &amp; Đáp án đúng
-                  {editing.type === 'multiple_choice_multi' && <span className="ml-2 text-blue-400">(chọn nhiều)</span>}
+                  {t('admin.questions.modal.optionsLabel')}
+                  {editing.type === 'multiple_choice_multi' && <span className="ml-2 text-blue-400">{t('admin.questions.modal.multiHint')}</span>}
                 </label>
                 <div className="space-y-2">
                   {(editing.options ?? []).map((opt, i) => {
@@ -546,7 +555,7 @@ export default function QuestionsAdmin() {
                         <button type="button"
                           onClick={() => toggleCorrect(i)}
                           className={`flex-shrink-0 w-8 h-8 rounded flex items-center justify-center text-sm font-bold transition-colors ${isCorrect ? 'bg-emerald-500 text-white' : 'bg-white/10 text-white/40 hover:bg-white/20'}`}
-                          title={isMulti ? 'Toggle đáp án' : 'Chọn đáp án đúng'}>
+                          title={isMulti ? t('admin.questions.modal.toggleCorrectTitle') : t('admin.questions.modal.pickCorrectTitle')}>
                           {isMulti ? (isCorrect ? '✓' : '○') : (isCorrect ? '●' : '○')}
                         </button>
                       </div>
@@ -559,32 +568,32 @@ export default function QuestionsAdmin() {
             {/* Fill-in-blank answer */}
             {editing.type === 'fill_in_blank' && (
               <div>
-                <label className="block text-xs text-white/50 mb-1">Đáp án mẫu (fill_in_blank)</label>
+                <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.fillAnswerLabel')}</label>
                 <input className="w-full h-9 px-3 rounded bg-white/10 border border-white/10 text-sm"
                   value={editing.correctAnswerText ?? ''}
                   onChange={e => setField('correctAnswerText', e.target.value)}
-                  placeholder="Nhập đáp án mẫu..." />
+                  placeholder={t('admin.questions.modal.fillAnswerPlaceholder')} />
               </div>
             )}
 
             {/* Explanation */}
             <div>
-              <label className="block text-xs text-white/50 mb-1">Giải thích</label>
+              <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.explanationLabel')}</label>
               <textarea rows={2} className="w-full px-3 py-2 rounded bg-white/10 border border-white/10 text-sm resize-none"
                 value={editing.explanation ?? ''} onChange={e => setField('explanation', e.target.value)}
-                placeholder="Giải thích tại sao đáp án đúng..." />
+                placeholder={t('admin.questions.modal.explanationPlaceholder')} />
             </div>
 
             {/* Review Status */}
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs text-white/50 mb-1">Trạng thái duyệt</label>
+                <label className="block text-xs text-white/50 mb-1">{t('admin.questions.modal.reviewStatusLabel')}</label>
                 <select className="w-full h-9 px-3 rounded bg-white/10 border border-white/10 text-sm"
                   value={editing.reviewStatus ?? 'ACTIVE'}
                   onChange={e => setField('reviewStatus', e.target.value as ReviewStatus)}>
-                  <option value="ACTIVE">✓ Active (đã duyệt)</option>
-                  <option value="PENDING">⏳ Pending (chờ duyệt)</option>
-                  <option value="REJECTED">✗ Rejected (từ chối)</option>
+                  <option value="ACTIVE">{t('admin.questions.modal.statusActive')}</option>
+                  <option value="PENDING">{t('admin.questions.modal.statusPending')}</option>
+                  <option value="REJECTED">{t('admin.questions.modal.statusRejected')}</option>
                 </select>
               </div>
             </div>
@@ -601,24 +610,24 @@ export default function QuestionsAdmin() {
                     <div key={q.questionId} className="bg-white/5 rounded p-2 text-xs">
                       <p className="text-on-surface">{q.content}</p>
                       <p className="text-on-surface-variant mt-1">
-                        {q.book} {q.chapter}:{q.verseStart} · Similarity: {q.similarityPercent}%
+                        {q.book} {q.chapter}:{q.verseStart} · {t('admin.questions.modal.similaritySuffix', { percent: q.similarityPercent })}
                       </p>
                     </div>
                   ))}
                 </div>
                 <div className="flex gap-2">
-                  <button onClick={() => setDuplicateWarning(null)} className="px-3 py-1.5 rounded bg-white/10 hover:bg-white/20 text-xs">Hủy</button>
-                  <button onClick={() => saveQuestion(true)} className="px-3 py-1.5 rounded bg-yellow-600 hover:bg-yellow-500 text-xs font-medium">Vẫn tạo</button>
+                  <button onClick={() => setDuplicateWarning(null)} className="px-3 py-1.5 rounded bg-white/10 hover:bg-white/20 text-xs">{t('admin.questions.modal.duplicateCancel')}</button>
+                  <button onClick={() => saveQuestion(true)} className="px-3 py-1.5 rounded bg-yellow-600 hover:bg-yellow-500 text-xs font-medium">{t('admin.questions.modal.duplicateProceed')}</button>
                 </div>
               </div>
             )}
           </div>
 
           <div className="flex items-center justify-end gap-2 mt-5">
-            <button onClick={() => setEditing(null)} className="px-4 py-2 rounded bg-white/10 hover:bg-white/20 text-sm">Hủy</button>
+            <button onClick={() => setEditing(null)} className="px-4 py-2 rounded bg-white/10 hover:bg-white/20 text-sm">{t('admin.questions.modal.cancelButton')}</button>
             <button data-testid="admin-question-save-btn" disabled={isSaving} onClick={() => saveQuestion()}
               className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-sm font-medium">
-              {isSaving ? 'Đang lưu...' : (editing.id ? 'Cập nhật' : 'Tạo câu hỏi')}
+              {isSaving ? t('admin.questions.modal.saving') : (editing.id ? t('admin.questions.modal.updateButton') : t('admin.questions.modal.createSubmit'))}
             </button>
           </div>
         </div>
@@ -630,18 +639,15 @@ export default function QuestionsAdmin() {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
         <div className="w-full max-w-lg rounded-xl border border-white/10 bg-[#111018] p-6 shadow-2xl mx-4">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold">Import Questions</h3>
+            <h3 className="text-lg font-semibold">{t('admin.questions.import.title')}</h3>
             <button onClick={closeImport} className="px-2 py-1 rounded bg-white/10 hover:bg-white/20">✕</button>
           </div>
 
           {!importResult ? (
             <>
-              <p className="text-sm text-white/60 mb-4">
-                Hỗ trợ <strong>.csv</strong> và <strong>.json</strong>.<br />
-                CSV header: <code className="text-xs bg-white/10 px-1 rounded">book, chapter, type, text, optionA–D, correctAnswer, difficulty, explanation</code>
-              </p>
+              <p className="text-sm text-white/60 mb-4" dangerouslySetInnerHTML={{ __html: t('admin.questions.import.formatsLine') + '<br />' + t('admin.questions.import.csvHeaderPrefix') + ' <code class="text-xs bg-white/10 px-1 rounded">book, chapter, type, text, optionA–D, correctAnswer, difficulty, explanation</code>' }} />
               <div className="mb-4">
-                <label className="block text-xs text-white/60 mb-1">Chọn file</label>
+                <label className="block text-xs text-white/60 mb-1">{t('admin.questions.import.chooseFile')}</label>
                 <input type="file" accept=".csv,.json"
                   onChange={e => { setImportFile(e.target.files?.[0] ?? null); setImportDryResult(null) }}
                   className="text-sm text-white/80 file:mr-3 file:px-3 file:py-1.5 file:rounded file:bg-white/10 file:border-0 file:text-sm file:text-white/80 file:cursor-pointer" />
@@ -649,18 +655,18 @@ export default function QuestionsAdmin() {
 
               {importDryResult && (
                 <div className="mb-4 p-3 rounded-lg border border-white/10 bg-white/5 text-sm space-y-2">
-                  <div className="font-medium text-white/80">Kết quả Dry-run:</div>
+                  <div className="font-medium text-white/80">{t('admin.questions.import.dryRunTitle')}</div>
                   <div className="flex gap-4">
-                    <span className="text-emerald-400">✓ Sẽ import: <strong>{importDryResult.willImport}</strong></span>
+                    <span className="text-emerald-400">{t('admin.questions.import.willImport')} <strong>{importDryResult.willImport}</strong></span>
                     {importDryResult.errors?.length > 0 && (
-                      <span className="text-rose-400">✗ Lỗi: <strong>{importDryResult.errors.length}</strong></span>
+                      <span className="text-rose-400">{t('admin.questions.import.errorCount')} <strong>{importDryResult.errors.length}</strong></span>
                     )}
                   </div>
                   {importDryResult.errors?.length > 0 && (
                     <div className="mt-2 max-h-28 overflow-y-auto space-y-1">
                       {importDryResult.errors.map((e: any, i: number) => (
                         <div key={i} className="text-xs text-rose-300">
-                          {e.line ? `Dòng ${e.line}` : e.index ? `#${e.index}` : ''}: {e.error}
+                          {e.line ? t('admin.questions.import.linePrefix', { line: e.line }) : e.index ? t('admin.questions.import.indexPrefix', { index: e.index }) : ''}: {e.error}
                         </div>
                       ))}
                     </div>
@@ -669,15 +675,15 @@ export default function QuestionsAdmin() {
               )}
 
               <div className="flex items-center justify-end gap-2">
-                <button onClick={closeImport} className="px-3 py-2 rounded bg-white/10 text-sm">Hủy</button>
+                <button onClick={closeImport} className="px-3 py-2 rounded bg-white/10 text-sm">{t('admin.questions.import.cancelButton')}</button>
                 <button disabled={!importFile || importLoading} onClick={() => runImport(true)}
                   className="px-3 py-2 rounded bg-blue-600/80 hover:bg-blue-600 disabled:opacity-50 text-sm">
-                  {importLoading ? 'Đang xử lý...' : 'Dry-run Preview'}
+                  {importLoading ? t('admin.questions.import.processing') : t('admin.questions.import.dryRunButton')}
                 </button>
                 {importDryResult && (importDryResult.willImport ?? 0) > 0 && (
                   <button disabled={importLoading} onClick={() => runImport(false)}
                     className="px-3 py-2 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-sm font-medium">
-                    {importLoading ? 'Đang import...' : `Import ${importDryResult.willImport} câu hỏi`}
+                    {importLoading ? t('admin.questions.import.importing') : t('admin.questions.import.importCount', { count: importDryResult.willImport })}
                   </button>
                 )}
               </div>
@@ -685,14 +691,14 @@ export default function QuestionsAdmin() {
           ) : (
             <div className="text-center py-4">
               <div className="text-4xl mb-3">✅</div>
-              <div className="text-lg font-semibold text-emerald-400 mb-1">Import thành công!</div>
+              <div className="text-lg font-semibold text-emerald-400 mb-1">{t('admin.questions.import.successTitle')}</div>
               <div className="text-sm text-white/70">
-                Đã thêm <strong>{importResult.imported}</strong> câu hỏi.
+                <span dangerouslySetInnerHTML={{ __html: t('admin.questions.import.addedCount', { count: importResult.imported }) }} />
                 {importResult.errors?.length > 0 && (
-                  <span className="text-rose-300 ml-2">{importResult.errors.length} dòng bị lỗi.</span>
+                  <span className="text-rose-300 ml-2">{t('admin.questions.import.errorsCount', { count: importResult.errors.length })}</span>
                 )}
               </div>
-              <button onClick={closeImport} className="mt-4 px-4 py-2 rounded bg-white/10 hover:bg-white/20 text-sm">Đóng</button>
+              <button onClick={closeImport} className="mt-4 px-4 py-2 rounded bg-white/10 hover:bg-white/20 text-sm">{t('admin.questions.import.closeButton')}</button>
             </div>
           )}
         </div>
