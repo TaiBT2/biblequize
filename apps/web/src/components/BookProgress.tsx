@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface BookProgressProps {
   currentBook?: string;
@@ -13,7 +14,7 @@ interface BookProgressProps {
 
 const BookProgress: React.FC<BookProgressProps> = ({
   currentBook = "Genesis",
-  nextBook = "Exodus", 
+  nextBook = "Exodus",
   currentIndex = 1,
   totalBooks = 66,
   progressPercentage = 0,
@@ -21,7 +22,8 @@ const BookProgress: React.FC<BookProgressProps> = ({
   questionsInCurrentBook = 0,
   correctAnswersInCurrentBook = 0
 }) => {
-  const accuracyRate = questionsInCurrentBook > 0 
+  const { t } = useTranslation();
+  const accuracyRate = questionsInCurrentBook > 0
     ? Math.round((correctAnswersInCurrentBook / questionsInCurrentBook) * 100)
     : 0;
 
@@ -32,11 +34,11 @@ const BookProgress: React.FC<BookProgressProps> = ({
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xl font-bold text-purple-300 neon-purple">
-          📚 Tiến Độ Kinh Thánh
+          {t('components.bookProgress.title')}
         </h3>
         {isCompleted && (
           <div className="bg-yellow-600 text-black px-3 py-1 rounded-full text-sm font-bold">
-            🏆 Hoàn Thành!
+            {t('components.bookProgress.completedBadge')}
           </div>
         )}
       </div>
@@ -44,7 +46,7 @@ const BookProgress: React.FC<BookProgressProps> = ({
       {/* Current Book */}
       <div className="mb-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm text-gray-300">Sách hiện tại</span>
+          <span className="text-sm text-gray-300">{t('components.bookProgress.currentBook')}</span>
           <span className="text-sm text-purple-300">
             {currentIndex}/{totalBooks}
           </span>
@@ -57,9 +59,9 @@ const BookProgress: React.FC<BookProgressProps> = ({
       {/* Progress Bar */}
       <div className="mb-4">
         <div className="w-full h-6 bg-gray-700 rounded-full overflow-hidden mb-2 relative">
-          <div 
+          <div
             className="h-full bg-gradient-to-r from-cyan-400 to-green-400 rounded-full transition-all duration-1000 relative"
-            style={{ 
+            style={{
               width: `${progressPercentage}%`,
               boxShadow: '0 0 15px rgba(0, 255, 255, 0.6)'
             }}
@@ -72,7 +74,7 @@ const BookProgress: React.FC<BookProgressProps> = ({
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30 animate-pulse"></div>
         </div>
         <div className="text-right text-sm text-gray-400">
-          {progressPercentage.toFixed(1)}% hoàn thành
+          {t('components.bookProgress.percentDone', { percent: progressPercentage.toFixed(1) })}
         </div>
       </div>
 
@@ -80,21 +82,21 @@ const BookProgress: React.FC<BookProgressProps> = ({
       {!isCompleted && (
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div className="bg-gray-700 rounded p-3">
-            <div className="text-xs text-gray-400 mb-1">Đã làm</div>
+            <div className="text-xs text-gray-400 mb-1">{t('components.bookProgress.questionsDone')}</div>
             <div className="text-lg font-bold text-blue-300">
-              {questionsInCurrentBook}/50 câu
+              {t('components.bookProgress.questionCount', { current: questionsInCurrentBook, total: 50 })}
             </div>
             <div className="text-xs text-gray-500">
-              Còn {neededForNext} câu → {nextBook}
+              {t('components.bookProgress.remainingUntilNext', { count: neededForNext, nextBook })}
             </div>
           </div>
           <div className="bg-gray-700 rounded p-3">
-            <div className="text-xs text-gray-400 mb-1">Tỷ lệ đúng</div>
+            <div className="text-xs text-gray-400 mb-1">{t('components.bookProgress.accuracyLabel')}</div>
             <div className="text-lg font-bold text-green-300">
               {accuracyRate}%
             </div>
             <div className="text-xs text-gray-500">
-              Đúng {correctAnswersInCurrentBook}/{questionsInCurrentBook}
+              {t('components.bookProgress.accuracyDetail', { correct: correctAnswersInCurrentBook, total: questionsInCurrentBook })}
             </div>
           </div>
         </div>
@@ -104,10 +106,10 @@ const BookProgress: React.FC<BookProgressProps> = ({
       {isCompleted && (
         <div className="bg-yellow-900 border border-yellow-400 rounded-lg p-4">
           <div className="flex items-center mb-2">
-            <span className="text-yellow-300 font-bold">🎯 Chế độ Sau Chu Kỳ</span>
+            <span className="text-yellow-300 font-bold">{t('components.bookProgress.postCycleLabel')}</span>
           </div>
           <div className="text-yellow-200 text-sm">
-            Bạn đã hoàn thành toàn bộ Kinh Thánh! Giờ sẽ là câu hỏi khó để thử thách kỹ năng.
+            {t('components.bookProgress.postCycleDesc')}
           </div>
         </div>
       )}
@@ -115,7 +117,7 @@ const BookProgress: React.FC<BookProgressProps> = ({
       {/* Next Book Preview */}
       {!isCompleted && nextBook && (
         <div className="border border-purple-400 rounded p-3 bg-purple-900/20">
-          <div className="text-sm text-purple-300 mb-1">📖 Sách tiếp theo</div>
+          <div className="text-sm text-purple-300 mb-1">{t('components.bookProgress.nextBookLabel')}</div>
           <div className="font-bold text-purple-200">{nextBook}</div>
         </div>
       )}

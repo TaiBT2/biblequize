@@ -94,6 +94,26 @@
       "progress": "Sao {{current}}/{{total}}"
     }
   },
+  "components": {
+    "bookProgress": {
+      "title": "📚 Tiến Độ Kinh Thánh",
+      "completedBadge": "🏆 Hoàn Thành!",
+      "currentBook": "Sách hiện tại",
+      "percentDone": "{{percent}}% hoàn thành",
+      "questionsDone": "Đã làm",
+      "questionCount": "{{current}}/{{total}} câu",
+      "remainingUntilNext": "Còn {{count}} câu → {{nextBook}}",
+      "accuracyLabel": "Tỷ lệ đúng",
+      "accuracyDetail": "Đúng {{correct}}/{{total}}",
+      "postCycleLabel": "🎯 Chế độ Sau Chu Kỳ",
+      "postCycleDesc": "Bạn đã hoàn thành toàn bộ Kinh Thánh! Giờ sẽ là câu hỏi khó để thử thách kỹ năng.",
+      "nextBookLabel": "📖 Sách tiếp theo"
+    },
+    "milestone": {
+      "halfwayTo": "Nửa đường đến {{tier}}!",
+      "surgeCountdown": "XP x1.5 còn {{remaining}}"
+    }
+  },
   "nav": {
     "home": "Trang chủ",
     "ranked": "Xếp hạng",

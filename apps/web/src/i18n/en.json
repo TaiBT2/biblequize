@@ -94,6 +94,26 @@
       "progress": "Star {{current}}/{{total}}"
     }
   },
+  "components": {
+    "bookProgress": {
+      "title": "📚 Bible Progress",
+      "completedBadge": "🏆 Completed!",
+      "currentBook": "Current book",
+      "percentDone": "{{percent}}% complete",
+      "questionsDone": "Answered",
+      "questionCount": "{{current}}/{{total}} questions",
+      "remainingUntilNext": "{{count}} more → {{nextBook}}",
+      "accuracyLabel": "Accuracy",
+      "accuracyDetail": "Correct {{correct}}/{{total}}",
+      "postCycleLabel": "🎯 Post-Cycle Mode",
+      "postCycleDesc": "You've finished the whole Bible! From here on questions are harder to test your skills.",
+      "nextBookLabel": "📖 Next book"
+    },
+    "milestone": {
+      "halfwayTo": "Halfway to {{tier}}!",
+      "surgeCountdown": "XP x1.5 for {{remaining}}"
+    }
+  },
   "nav": {
     "home": "Home",
     "ranked": "Ranked",
