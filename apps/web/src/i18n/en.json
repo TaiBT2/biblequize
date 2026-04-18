@@ -308,6 +308,46 @@
       "readLabel": "Read",
       "unreadLabel": "New"
     },
+    "reviewQueue": {
+      "title": "Review Queue",
+      "subtitle": "AI-generated questions need {{count}} admin approvals to go live",
+      "stats": {
+        "pendingForMe": "Awaiting your review",
+        "totalPending": "Total pending",
+        "processedHint": "{{count}} you've already handled",
+        "actionsToday": "Your reviews today"
+      },
+      "loading": "Loading...",
+      "emptyTitle": "Nicely done! Queue is clear",
+      "emptyLine1": "Nothing left to review. Take a breather!",
+      "emptyLine2": "New questions will appear here automatically.",
+      "difficulty": {
+        "easy": "Easy",
+        "medium": "Medium",
+        "hard": "Hard"
+      },
+      "approvalsCount": "{{current}}/{{total}} approvals",
+      "hideExplanation": "▾ Hide explanation",
+      "showExplanation": "▸ Show explanation",
+      "rejectPlaceholder": "Rejection reason (optional)...",
+      "rejectConfirmButton": "Confirm reject",
+      "rejectCancelButton": "Cancel",
+      "approveButton": "✓ Approve",
+      "rejectButton": "✗ Reject",
+      "approving": "...",
+      "historyTitle": "My review history",
+      "historyEmpty": "You haven't reviewed anything yet.",
+      "historyApproved": "✓ Approved",
+      "historyRejected": "✗ Rejected",
+      "toast": {
+        "loadError": "Failed to load",
+        "activated": "✅ Question activated (reached required approvals)!",
+        "approvedPartial": "👍 Approved ({{current}}/{{total}}) — need {{remaining}} more admin(s)",
+        "rejected": "🗑️ Question rejected",
+        "approveError": "Approval failed",
+        "rejectError": "Rejection failed"
+      }
+    },
     "exportCenter": {
       "title": "Export Center",
       "subtitle": "Export system data",

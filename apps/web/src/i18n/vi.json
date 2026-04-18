@@ -308,6 +308,46 @@
       "readLabel": "Đã đọc",
       "unreadLabel": "Mới"
     },
+    "reviewQueue": {
+      "title": "Hàng Chờ Duyệt",
+      "subtitle": "Câu hỏi AI tạo ra cần {{count}} admin duyệt mới trở thành chính thức",
+      "stats": {
+        "pendingForMe": "Cần bạn duyệt",
+        "totalPending": "Tổng đang chờ",
+        "processedHint": "{{count}} câu bạn đã xử lý",
+        "actionsToday": "Bạn đã duyệt hôm nay"
+      },
+      "loading": "Đang tải...",
+      "emptyTitle": "Tuyệt vời! Bạn đã duyệt hết queue",
+      "emptyLine1": "Không còn câu nào cần bạn xem xét. Nghỉ ngơi một chút nhé!",
+      "emptyLine2": "Câu hỏi mới sẽ tự động xuất hiện khi có.",
+      "difficulty": {
+        "easy": "Dễ",
+        "medium": "Trung bình",
+        "hard": "Khó"
+      },
+      "approvalsCount": "{{current}}/{{total}} duyệt",
+      "hideExplanation": "▾ Ẩn giải thích",
+      "showExplanation": "▸ Xem giải thích",
+      "rejectPlaceholder": "Lý do từ chối (tuỳ chọn)...",
+      "rejectConfirmButton": "Xác nhận từ chối",
+      "rejectCancelButton": "Huỷ",
+      "approveButton": "✓ Duyệt",
+      "rejectButton": "✗ Từ chối",
+      "approving": "...",
+      "historyTitle": "Lịch sử duyệt của tôi",
+      "historyEmpty": "Bạn chưa duyệt câu hỏi nào.",
+      "historyApproved": "✓ Đã duyệt",
+      "historyRejected": "✗ Đã từ chối",
+      "toast": {
+        "loadError": "Không thể tải dữ liệu",
+        "activated": "✅ Câu hỏi đã được kích hoạt (đủ 2 lượt duyệt)!",
+        "approvedPartial": "👍 Đã duyệt ({{current}}/{{total}}) — cần thêm {{remaining}} admin nữa",
+        "rejected": "🗑️ Đã từ chối câu hỏi",
+        "approveError": "Lỗi khi duyệt",
+        "rejectError": "Lỗi khi từ chối"
+      }
+    },
     "exportCenter": {
       "title": "Export Center",
       "subtitle": "Xuất dữ liệu hệ thống",
