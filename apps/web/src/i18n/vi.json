@@ -446,6 +446,31 @@
       "battle_royale": "Sinh tồn",
       "team_vs_team": "Đội đấu đội",
       "sudden_death": "Cái chết bất ngờ"
+    },
+    "quiz": {
+      "roomHeader": "Phòng #{{code}}",
+      "questionProgress": "Câu {{current}}/{{total}}",
+      "spectator": "Spectator",
+      "sdSpectating": "Đang xem",
+      "points": "{{count}} điểm",
+      "waitingQuestion": "Đang chờ câu hỏi...",
+      "waitingResult": "Đang chờ kết quả...",
+      "eliminatedSuffix": "bị loại — hạng #{{rank}}",
+      "correctFeedback": "CHÍNH XÁC!",
+      "wrongFeedback": "SAI RỒI!",
+      "timeoutFeedback": "HẾT GIỜ!",
+      "bonusPoints": "+50 Điểm Thưởng",
+      "correctAnswerLine": "Đáp án: {{letter}}. {{text}}",
+      "explanationLabel": "Kiến thức bổ sung",
+      "rankLabel": "Thứ hạng",
+      "rankSubtitle": "Vị trí hiện tại",
+      "spectatorNote": "Xem thôi — bạn đang ở chế độ spectator",
+      "leaderboardBattleRoyale": "Người còn lại",
+      "leaderboardTeam": "Bảng điểm cá nhân",
+      "leaderboardSuddenDeath": "Winning Streaks",
+      "leaderboardDefault": "Bảng điểm",
+      "noScoresYet": "Chưa có điểm nào",
+      "youSuffix": " (bạn)"
     }
   },
   "groups": {

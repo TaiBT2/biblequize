@@ -446,6 +446,31 @@
       "battle_royale": "Battle Royale",
       "team_vs_team": "Team vs Team",
       "sudden_death": "Sudden Death"
+    },
+    "quiz": {
+      "roomHeader": "Room #{{code}}",
+      "questionProgress": "Q {{current}}/{{total}}",
+      "spectator": "Spectator",
+      "sdSpectating": "Watching",
+      "points": "{{count}} pts",
+      "waitingQuestion": "Waiting for question...",
+      "waitingResult": "Waiting for result...",
+      "eliminatedSuffix": "eliminated — rank #{{rank}}",
+      "correctFeedback": "CORRECT!",
+      "wrongFeedback": "WRONG!",
+      "timeoutFeedback": "TIME'S UP!",
+      "bonusPoints": "+50 Bonus Points",
+      "correctAnswerLine": "Answer: {{letter}}. {{text}}",
+      "explanationLabel": "Extra knowledge",
+      "rankLabel": "Rank",
+      "rankSubtitle": "Current position",
+      "spectatorNote": "You're in spectator mode",
+      "leaderboardBattleRoyale": "Remaining players",
+      "leaderboardTeam": "Individual scores",
+      "leaderboardSuddenDeath": "Winning Streaks",
+      "leaderboardDefault": "Leaderboard",
+      "noScoresYet": "No scores yet",
+      "youSuffix": " (you)"
     }
   },
   "groups": {

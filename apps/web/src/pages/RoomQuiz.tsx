@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useStomp } from '../hooks/useStomp';
 import ReactionBar from '../components/ReactionBar';
 import LiveFeed from '../components/LiveFeed';
@@ -24,6 +25,7 @@ const FILL_STYLE = { fontVariationSettings: "'FILL' 1" } as const;
 // ────────────────────── MAIN COMPONENT ──────────────────────
 
 const RoomQuiz: React.FC = () => {
+  const { t } = useTranslation();
   const { roomId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -351,17 +353,17 @@ const RoomQuiz: React.FC = () => {
       {reconnecting && (
         <div className="fixed top-0 inset-x-0 z-50 px-4 py-2.5 bg-secondary-container/90 border-b border-secondary/30 text-on-surface text-sm text-center animate-pulse flex items-center justify-center gap-2">
           <span className="material-symbols-outlined text-secondary text-sm animate-spin">sync</span>
-          Mat ket noi, dang ket noi lai...
+          {t('room.reconnecting')}
         </div>
       )}
 
       {/* Elimination toasts (Battle Royale) */}
       {isBattleRoyale && (
         <div className="fixed top-20 left-1/2 -translate-x-1/2 z-30 space-y-2 w-72">
-          {toasts.map(t => (
-            <div key={t.id} className="glass-card border border-error/20 text-error text-sm px-4 py-2.5 rounded-xl shadow-lg animate-pulse text-center flex items-center justify-center gap-2">
+          {toasts.map(toast => (
+            <div key={toast.id} className="glass-card border border-error/20 text-error text-sm px-4 py-2.5 rounded-xl shadow-lg animate-pulse text-center flex items-center justify-center gap-2">
               <span className="material-symbols-outlined text-sm" style={FILL_STYLE}>person_remove</span>
-              <b>{t.username}</b> bi loai — hang #{t.rank}
+              <b>{toast.username}</b> {t('room.quiz.eliminatedSuffix', { rank: toast.rank })}
             </div>
           ))}
         </div>
@@ -390,7 +392,7 @@ const RoomQuiz: React.FC = () => {
                 {gameMode.replace(/_/g, ' ')}
               </span>
               <span className="font-headline font-bold text-sm tracking-tight text-on-surface">
-                Phong #{roomId?.slice(-4)}
+                {t('room.quiz.roomHeader', { code: roomId?.slice(-4) ?? '' })}
               </span>
             </div>
           </div>
@@ -400,7 +402,7 @@ const RoomQuiz: React.FC = () => {
             <div className="flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded-full border border-outline-variant/10">
               <span className="material-symbols-outlined text-secondary text-sm" style={FILL_STYLE}>quiz</span>
               <span className="text-[10px] font-black uppercase tracking-wider text-secondary">
-                Cau {questionIndex + 1}/{totalQuestions || '?'}
+                {t('room.quiz.questionProgress', { current: questionIndex + 1, total: totalQuestions || '?' })}
               </span>
             </div>
 
@@ -438,13 +440,13 @@ const RoomQuiz: React.FC = () => {
             {isSpectator && (
               <div className="flex items-center gap-1 bg-surface-container-high px-2.5 py-1 rounded-full border border-outline-variant/10">
                 <span className="material-symbols-outlined text-on-surface-variant text-sm">visibility</span>
-                <span className="text-on-surface-variant text-[10px] font-bold">Spectator</span>
+                <span className="text-on-surface-variant text-[10px] font-bold">{t('room.quiz.spectator')}</span>
               </div>
             )}
             {isSuddenDeath && sdSpectating && (
               <div className="flex items-center gap-1 bg-[#ff8c42]/10 px-2.5 py-1 rounded-full border border-[#ff8c42]/20">
                 <span className="material-symbols-outlined text-[#ff8c42] text-sm">visibility</span>
-                <span className="text-[#ff8c42] text-[10px] font-bold">Dang xem</span>
+                <span className="text-[#ff8c42] text-[10px] font-bold">{t('room.quiz.sdSpectating')}</span>
               </div>
             )}
             {isTeamVsTeam && myTeam && (
@@ -517,12 +519,12 @@ const RoomQuiz: React.FC = () => {
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-secondary text-sm" style={FILL_STYLE}>quiz</span>
                 <span className="text-[10px] font-black uppercase tracking-wider text-secondary">
-                  Cau {questionIndex + 1}/{totalQuestions || '?'}
+                  {t('room.quiz.questionProgress', { current: questionIndex + 1, total: totalQuestions || '?' })}
                 </span>
               </div>
               {scores.length > 0 && (
                 <div className="text-[10px] font-bold text-on-surface-variant">
-                  {scores.find(s => s.username === myUsername)?.score ?? 0} diem
+                  {t('room.quiz.points', { count: scores.find(s => s.username === myUsername)?.score ?? 0 })}
                 </div>
               )}
             </div>
@@ -533,7 +535,7 @@ const RoomQuiz: React.FC = () => {
               <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-24 bg-secondary rounded-r-full" />
 
               <h2 className="font-headline text-xl md:text-3xl font-extrabold tracking-tight leading-snug max-w-3xl text-on-surface">
-                {question?.content || 'Dang cho cau hoi...'}
+                {question?.content || t('room.quiz.waitingQuestion')}
               </h2>
             </div>
 
@@ -569,7 +571,7 @@ const RoomQuiz: React.FC = () => {
             {selected !== null && correctIndex === null && !isSpectator && !(isSuddenDeath && sdSpectating) && (
               <div className="text-center text-on-surface-variant text-sm animate-pulse flex items-center justify-center gap-2">
                 <span className="material-symbols-outlined text-sm animate-spin">hourglass_empty</span>
-                Dang cho ket qua...
+                {t('room.quiz.waitingResult')}
               </div>
             )}
             {/* Result Popup Overlay (Stitch design) */}
@@ -593,19 +595,28 @@ const RoomQuiz: React.FC = () => {
                     <h4 className={`text-2xl font-bold ${
                       selected === correctIndex ? 'text-on-secondary' : selected !== null ? 'text-on-error' : 'text-on-surface-variant'
                     }`}>
-                      {selected === correctIndex ? 'CHÍNH XÁC!' : selected !== null ? 'SAI RỒI!' : 'HẾT GIỜ!'}
+                      {selected === correctIndex
+                        ? t('room.quiz.correctFeedback')
+                        : selected !== null
+                          ? t('room.quiz.wrongFeedback')
+                          : t('room.quiz.timeoutFeedback')}
                     </h4>
                     <p className={`font-medium ${
                       selected === correctIndex ? 'text-on-secondary/80' : 'text-on-surface-variant'
                     }`}>
-                      {selected === correctIndex ? '+50 Điểm Thưởng' : `Đáp án: ${question ? String.fromCharCode(65 + correctIndex) + '. ' + question.options[correctIndex] : ''}`}
+                      {selected === correctIndex
+                        ? t('room.quiz.bonusPoints')
+                        : t('room.quiz.correctAnswerLine', {
+                            letter: String.fromCharCode(65 + correctIndex),
+                            text: question?.options[correctIndex] ?? ''
+                          })}
                     </p>
                   </div>
                   <div className="p-6 space-y-4">
                     {/* Explanation */}
                     {question?.explanation && (
                       <div className="p-4 bg-surface-container rounded-lg border-l-4 border-secondary">
-                        <p className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">Kiến thức bổ sung</p>
+                        <p className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">{t('room.quiz.explanationLabel')}</p>
                         <p className="text-sm text-on-surface italic">{question.explanation}</p>
                       </div>
                     )}
@@ -617,8 +628,8 @@ const RoomQuiz: React.FC = () => {
                             <span className="material-symbols-outlined">trending_up</span>
                           </div>
                           <div>
-                            <p className="text-sm font-bold text-on-surface">Thứ hạng</p>
-                            <p className="text-xs text-on-surface-variant">Vị trí hiện tại</p>
+                            <p className="text-sm font-bold text-on-surface">{t('room.quiz.rankLabel')}</p>
+                            <p className="text-xs text-on-surface-variant">{t('room.quiz.rankSubtitle')}</p>
                           </div>
                         </div>
                         <span className="text-2xl font-black text-secondary">
@@ -635,7 +646,7 @@ const RoomQuiz: React.FC = () => {
               <div className="text-center text-sm">
                 <span className="text-[#4a9eff] flex items-center justify-center gap-1.5">
                   <span className="material-symbols-outlined text-sm">visibility</span>
-                  Xem thôi — bạn đang ở chế độ spectator
+                  {t('room.quiz.spectatorNote')}
                 </span>
               </div>
             )}
@@ -667,14 +678,14 @@ const RoomQuiz: React.FC = () => {
                  isSuddenDeath ? 'local_fire_department' :
                  'leaderboard'}
               </span>
-              {isBattleRoyale ? 'Nguoi con lai' :
-               isTeamVsTeam ? 'Bang diem ca nhan' :
-               isSuddenDeath ? 'Winning Streaks' :
-               'Bang diem'}
+              {isBattleRoyale ? t('room.quiz.leaderboardBattleRoyale') :
+               isTeamVsTeam ? t('room.quiz.leaderboardTeam') :
+               isSuddenDeath ? t('room.quiz.leaderboardSuddenDeath') :
+               t('room.quiz.leaderboardDefault')}
             </div>
             <div className="space-y-1.5 max-h-[55vh] overflow-auto pr-1">
               {scores.length === 0 ? (
-                <p className="text-on-surface-variant/50 text-xs text-center py-6">Chua co diem nao</p>
+                <p className="text-on-surface-variant/50 text-xs text-center py-6">{t('room.quiz.noScoresYet')}</p>
               ) : (
                 scores.map((s, idx) => {
                   const isMe = s.username === myUsername;
@@ -704,7 +715,7 @@ const RoomQuiz: React.FC = () => {
                         <div className={`text-sm font-medium truncate max-w-[80px] ${
                           isMe ? 'text-secondary' : eliminated ? 'text-on-surface-variant' : 'text-on-surface'
                         }`}>
-                          {s.username}{isMe ? ' (ban)' : ''}
+                          {s.username}{isMe ? t('room.quiz.youSuffix') : ''}
                         </div>
                       </div>
                       <div className="text-right">
