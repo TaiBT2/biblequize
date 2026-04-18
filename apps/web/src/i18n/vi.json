@@ -144,6 +144,20 @@
     "adminPanel": "Quản trị"
   },
   "admin": {
+    "rankings": {
+      "title": "Seasons & Rankings",
+      "subtitle": "{{count}} seasons",
+      "createSeasonButton": "+ Tạo mùa mới",
+      "seasonNamePlaceholder": "Tên mùa giải",
+      "creating": "Đang tạo...",
+      "createSeasonSubmit": "Tạo mùa giải",
+      "activeBadge": "Đang diễn ra",
+      "endEarlyButton": "Kết thúc sớm",
+      "endConfirm": "Kết thúc mùa giải này?",
+      "loading": "Đang tải...",
+      "empty": "Chưa có mùa giải nào",
+      "endedLabel": "Đã kết thúc"
+    },
     "users": {
       "title": "Quản lý người dùng",
       "subtitle": "Quản trị viên có thể kiểm soát quyền hạn và trạng thái của toàn bộ hệ thống.",

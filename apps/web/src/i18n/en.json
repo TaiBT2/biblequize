@@ -144,6 +144,20 @@
     "adminPanel": "Admin Panel"
   },
   "admin": {
+    "rankings": {
+      "title": "Seasons & Rankings",
+      "subtitle": "{{count}} seasons",
+      "createSeasonButton": "+ New season",
+      "seasonNamePlaceholder": "Season name",
+      "creating": "Creating...",
+      "createSeasonSubmit": "Create season",
+      "activeBadge": "Active",
+      "endEarlyButton": "End early",
+      "endConfirm": "End this season?",
+      "loading": "Loading...",
+      "empty": "No seasons yet",
+      "endedLabel": "Ended"
+    },
     "users": {
       "title": "User Management",
       "subtitle": "Admins can control permissions and status across the entire system.",
