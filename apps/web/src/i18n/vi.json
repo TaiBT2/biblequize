@@ -144,6 +144,16 @@
     "adminPanel": "Quản trị"
   },
   "admin": {
+    "events": {
+      "title": "Events & Tournaments",
+      "subtitle": "{{count}} tournaments",
+      "createButton": "+ Tạo Tournament",
+      "createNotImplemented": "Create tournament — API chưa implement",
+      "loading": "Đang tải...",
+      "empty": "Chưa có tournament nào",
+      "bracket": "Bracket: {{size}}",
+      "round": "Round: {{current}}/{{total}}"
+    },
     "feedback": {
       "title": "Feedback",
       "subtitle": "{{count}} phản hồi từ người dùng",

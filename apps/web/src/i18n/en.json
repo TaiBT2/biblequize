@@ -144,6 +144,16 @@
     "adminPanel": "Admin Panel"
   },
   "admin": {
+    "events": {
+      "title": "Events & Tournaments",
+      "subtitle": "{{count}} tournaments",
+      "createButton": "+ New Tournament",
+      "createNotImplemented": "Create tournament — API not yet implemented",
+      "loading": "Loading...",
+      "empty": "No tournaments yet",
+      "bracket": "Bracket: {{size}}",
+      "round": "Round: {{current}}/{{total}}"
+    },
     "feedback": {
       "title": "Feedback",
       "subtitle": "{{count}} user submissions",
