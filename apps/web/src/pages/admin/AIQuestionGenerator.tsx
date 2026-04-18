@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { api, aiApi } from '../../api/client'
 import { getChapterCount, getVerseCount } from '../../data/bibleData'
 import DraftCard from './ai-generator/DraftCard'
@@ -34,6 +35,7 @@ Yêu cầu:
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function AIQuestionGenerator() {
+  const { t } = useTranslation()
   // Form
   const [book, setBook]               = useState('')
   const [chapter, setChapter]         = useState(1)
@@ -113,8 +115,8 @@ export default function AIQuestionGenerator() {
     : undefined
 
   const handleGenerate = async () => {
-    if (!book) { setError('Vui lòng chọn sách trước khi tạo câu hỏi'); return }
-    if (!chapter) { setError('Vui lòng chọn chương'); return }
+    if (!book) { setError(t('admin.aiGenerator.errorBookRequired')); return }
+    if (!chapter) { setError(t('admin.aiGenerator.errorChapterRequired')); return }
     setError(null)
     setIsGenerating(true)
     try {
@@ -160,7 +162,7 @@ export default function AIQuestionGenerator() {
       }))
       setDrafts(prev => [...newDrafts, ...prev])
     } catch (e: any) {
-      setError(e.response?.data?.message ?? 'Lỗi kết nối server')
+      setError(e.response?.data?.message ?? t('admin.aiGenerator.errorGenerate'))
     } finally {
       setIsGenerating(false)
     }
@@ -202,7 +204,7 @@ export default function AIQuestionGenerator() {
         ? { ...x, ...d, status: 'approved', approvedId: res.data?.id, saveError: undefined } : x))
       if (editingId === d.id) cancelEdit()
     } catch (e: any) {
-      const msg = e.response?.data?.message ?? 'Lỗi khi lưu câu hỏi'
+      const msg = e.response?.data?.message ?? t('admin.aiGenerator.errorSave')
       setDrafts(prev => prev.map(x => x.id === d.id ? { ...x, saveError: msg } : x))
     } finally {
       setSavingId(null)
@@ -221,7 +223,7 @@ export default function AIQuestionGenerator() {
         setDrafts(prev => prev.map(x => x.id === draft.id
           ? { ...x, status: 'approved', approvedId: res.data?.id, saveError: undefined } : x))
       } catch (e: any) {
-        const msg = e.response?.data?.message ?? 'Lỗi khi lưu câu hỏi'
+        const msg = e.response?.data?.message ?? t('admin.aiGenerator.errorSave')
         setDrafts(prev => prev.map(x => x.id === draft.id ? { ...x, saveError: msg } : x))
       }
     }
@@ -244,10 +246,10 @@ export default function AIQuestionGenerator() {
         <div>
           <h2 className="text-3xl font-black text-[#e1e1ef] tracking-tighter flex items-center gap-3">
             <span className="material-symbols-outlined text-[#e8a832] text-4xl">psychology</span>
-            Tạo câu hỏi AI
+            {t('admin.aiGenerator.title')}
           </h2>
           <p className="text-[#d5c4af]/60 text-sm mt-0.5 flex items-center gap-2">
-            Tạo câu hỏi Kinh Thánh tự động và duyệt trước khi lưu
+            {t('admin.aiGenerator.subtitle')}
             {aiInfo && (['gemini', 'claude'] as const).map(p => {
               const info = aiInfo.providers[p]
               return (
@@ -256,7 +258,7 @@ export default function AIQuestionGenerator() {
                     ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
                     : 'bg-red-500/15 text-red-400 border-red-500/30'
                 }`}>
-                  {info.configured ? '✓' : '✗'} {p === 'gemini' ? 'Gemini' : 'Claude'} {info.configured ? info.model : 'chưa cấu hình'}
+                  {info.configured ? '✓' : '✗'} {p === 'gemini' ? 'Gemini' : 'Claude'} {info.configured ? info.model : t('admin.aiGenerator.notConfigured')}
                 </span>
               )
             })}
@@ -265,17 +267,17 @@ export default function AIQuestionGenerator() {
         {drafts.length > 0 && (
           <div className="flex items-center gap-2 text-sm flex-wrap">
             <span className="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 font-bold border border-yellow-500/30">
-              {pendingCount} chờ duyệt
+              {t('admin.aiGenerator.pendingChip', { count: pendingCount })}
             </span>
             <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">
-              {approvedCount} đã lưu
+              {t('admin.aiGenerator.approvedChip', { count: approvedCount })}
             </span>
             {pendingCount > 1 && (
               <button
                 onClick={saveAllPending}
                 disabled={isSavingAll}
                 className="px-3 py-1 rounded-full bg-[#4bbf9f]/20 text-[#e8a832] font-bold border border-[#4bbf9f]/30 hover:bg-[#4bbf9f]/30 transition-colors disabled:opacity-50">
-                {isSavingAll ? 'Đang lưu...' : `Lưu tất cả (${pendingCount})`}
+                {isSavingAll ? t('admin.aiGenerator.saveAllSaving') : t('admin.aiGenerator.saveAllButton', { count: pendingCount })}
               </button>
             )}
           </div>
@@ -290,24 +292,24 @@ export default function AIQuestionGenerator() {
           {/* Scripture ref */}
           <div data-testid="ai-scripture-selector">
             <h3 className="text-sm font-black text-[#e8a832] uppercase tracking-wider mb-3 flex items-center gap-2">
-              <span className="text-base">📖</span> Tham chiếu Kinh Thánh
+              <span className="text-base">📖</span> {t('admin.aiGenerator.scriptureSectionTitle')}
             </h3>
             <div className="grid grid-cols-2 gap-3 mb-3">
               <div>
-                <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">Sách</label>
+                <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">{t('admin.aiGenerator.bookLabel')}</label>
                 <select value={book} onChange={e => onBookChange(e.target.value)} className="form-select">
-                  <option value="">-- Chọn sách --</option>
-                  <optgroup label="Cựu Ước">
+                  <option value="">{t('admin.aiGenerator.bookPlaceholder')}</option>
+                  <optgroup label={t('admin.aiGenerator.oldTestament')}>
                     {BOOKS.slice(0, 39).map(b => <option key={b} value={b}>{b}</option>)}
                   </optgroup>
-                  <optgroup label="Tân Ước">
+                  <optgroup label={t('admin.aiGenerator.newTestament')}>
                     {BOOKS.slice(39).map(b => <option key={b} value={b}>{b}</option>)}
                   </optgroup>
                 </select>
               </div>
               <div>
                 <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">
-                  Chương {totalChapters > 0 && <span className="text-[#d5c4af]/50 normal-case font-normal">({totalChapters} chương)</span>}
+                  {t('admin.aiGenerator.chapterLabel')} {totalChapters > 0 && <span className="text-[#d5c4af]/50 normal-case font-normal">{t('admin.aiGenerator.chaptersCount', { count: totalChapters })}</span>}
                 </label>
                 <div className="flex items-center gap-1.5">
                   <select value={chapter} onChange={e => onChapterChange(Number(e.target.value))}
@@ -315,7 +317,7 @@ export default function AIQuestionGenerator() {
                     {Array.from({length: totalChapters}, (_, i) => i + 1).map(c =>
                       <option key={c} value={c}>{c}</option>)}
                   </select>
-                  <span className="text-[#d5c4af] text-xs font-bold">đến</span>
+                  <span className="text-[#d5c4af] text-xs font-bold">{t('admin.aiGenerator.chapterTo')}</span>
                   <select value={chapterEnd} onChange={e => onChapterEndChange(Number(e.target.value))}
                     disabled={!book} className="form-select flex-1">
                     {Array.from({length: totalChapters}, (_, i) => i + 1)
@@ -329,7 +331,7 @@ export default function AIQuestionGenerator() {
             <div className="grid grid-cols-2 gap-3 mb-3">
               <div>
                 <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">
-                  Câu bắt đầu <span className="text-[#d5c4af]/50 normal-case font-normal">(/ {maxVerseStart})</span>
+                  {t('admin.aiGenerator.verseStartLabel')} <span className="text-[#d5c4af]/50 normal-case font-normal">{t('admin.aiGenerator.verseStartMax', { count: maxVerseStart })}</span>
                 </label>
                 <select value={verseStart} onChange={e => { const v = Number(e.target.value); setVerseStart(v); if (verseEnd < v) setVerseEnd(v) }}
                   disabled={!book} className="form-select">
@@ -339,7 +341,7 @@ export default function AIQuestionGenerator() {
               </div>
               <div>
                 <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">
-                  Câu kết thúc <span className="text-[#d5c4af]/50 normal-case font-normal">(/ {maxVerseEnd})</span>
+                  {t('admin.aiGenerator.verseEndLabel')} <span className="text-[#d5c4af]/50 normal-case font-normal">{t('admin.aiGenerator.verseStartMax', { count: maxVerseEnd })}</span>
                 </label>
                 <select value={verseEnd} onChange={e => setVerseEnd(Number(e.target.value))}
                   disabled={!book} className="form-select">
@@ -352,10 +354,10 @@ export default function AIQuestionGenerator() {
             )}
             <div>
               <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">
-                Nội dung đoạn <span className="text-[#d5c4af]/50 normal-case font-normal">(tuỳ chọn — giúp AI chính xác hơn)</span>
+                {t('admin.aiGenerator.scriptureTextLabel')} <span className="text-[#d5c4af]/50 normal-case font-normal">{t('admin.aiGenerator.scriptureTextHint')}</span>
               </label>
               <textarea rows={3} value={scriptureText} onChange={e => setText(e.target.value)}
-                placeholder="Dán nội dung đoạn Kinh Thánh vào đây..."
+                placeholder={t('admin.aiGenerator.scriptureTextPlaceholder')}
                 className="form-input resize-none text-sm" />
             </div>
           </div>
@@ -363,18 +365,18 @@ export default function AIQuestionGenerator() {
           {/* Divider */}
           <div className="flex items-center gap-3">
             <div className="flex-1 h-px bg-[#504535]/30" />
-            <span className="text-xs text-[#d5c4af]/50 font-bold tracking-wider">CÀI ĐẶT</span>
+            <span className="text-xs text-[#d5c4af]/50 font-bold tracking-wider">{t('admin.aiGenerator.settingsDivider')}</span>
             <div className="flex-1 h-px bg-[#504535]/30" />
           </div>
 
           {/* Difficulty */}
           <div data-testid="ai-settings-panel">
-            <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">Độ khó</label>
+            <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">{t('admin.aiGenerator.difficultyLabel')}</label>
             <div className="segmented-control">
               {(['easy','medium','hard'] as Difficulty[]).map(d => (
                 <button key={d} onClick={() => setDifficulty(d)}
                   className={`segmented-control-item flex-1 cursor-pointer${difficulty === d ? ' active' : ''}`}>
-                  {d === 'easy' ? 'Dễ' : d === 'medium' ? 'Trung bình' : 'Khó'}
+                  {d === 'easy' ? t('admin.aiGenerator.difficultyEasy') : d === 'medium' ? t('admin.aiGenerator.difficultyMedium') : t('admin.aiGenerator.difficultyHard')}
                 </button>
               ))}
             </div>
@@ -383,21 +385,21 @@ export default function AIQuestionGenerator() {
           {/* Type + Language */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">Loại câu hỏi</label>
+              <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">{t('admin.aiGenerator.typeLabel')}</label>
               <select value={qType} onChange={e => setQType(e.target.value as QuestionType)} className="form-select text-sm">
-                <option value="multiple_choice_single">Trắc nghiệm (1 đáp án)</option>
-                <option value="multiple_choice_multi">Trắc nghiệm (nhiều đáp án)</option>
-                <option value="true_false">Đúng / Sai</option>
-                <option value="fill_in_blank">Điền khuyết</option>
+                <option value="multiple_choice_single">{t('admin.aiGenerator.typeMcSingle')}</option>
+                <option value="multiple_choice_multi">{t('admin.aiGenerator.typeMcMulti')}</option>
+                <option value="true_false">{t('admin.aiGenerator.typeTrueFalse')}</option>
+                <option value="fill_in_blank">{t('admin.aiGenerator.typeFillBlank')}</option>
               </select>
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">Ngôn ngữ</label>
+              <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">{t('admin.aiGenerator.languageLabel')}</label>
               <div className="segmented-control">
                 {['vi','en'].map(l => (
                   <button key={l} onClick={() => setLanguage(l)}
                     className={`segmented-control-item flex-1 cursor-pointer${language === l ? ' active' : ''}`}>
-                    {l === 'vi' ? '🇻🇳 Việt' : '🇺🇸 EN'}
+                    {l === 'vi' ? t('admin.aiGenerator.languageVi') : t('admin.aiGenerator.languageEn')}
                   </button>
                 ))}
               </div>
@@ -407,7 +409,7 @@ export default function AIQuestionGenerator() {
           {/* Count slider */}
           <div>
             <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-2">
-              Số câu: <span className="text-[#e8a832] font-black text-sm">{count}</span>
+              {t('admin.aiGenerator.countLabel')} <span className="text-[#e8a832] font-black text-sm">{count}</span>
             </label>
             <div className="flex items-center gap-3">
               <span className="text-xs text-[#d5c4af]/50">1</span>
@@ -419,7 +421,7 @@ export default function AIQuestionGenerator() {
 
           {/* Provider selector */}
           <div>
-            <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">AI Provider</label>
+            <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">{t('admin.aiGenerator.providerLabel')}</label>
             <div data-testid="ai-provider-select" className="segmented-control">
               {(['gemini', 'claude'] as const).map(p => {
                 const info = aiInfo?.providers[p]
@@ -435,7 +437,7 @@ export default function AIQuestionGenerator() {
             </div>
             {aiInfo && !aiInfo.providers[provider].configured && (
               <p className="text-xs text-yellow-600 mt-1.5">
-                {provider === 'claude' ? 'Thêm ANTHROPIC_API_KEY vào application.yml' : 'Thêm GEMINI_API_KEY vào application.yml'}
+                {provider === 'claude' ? t('admin.aiGenerator.missingClaudeKey') : t('admin.aiGenerator.missingGeminiKey')}
               </p>
             )}
           </div>
@@ -444,23 +446,23 @@ export default function AIQuestionGenerator() {
           {provider === 'claude' && (
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label className="text-xs font-bold text-[#d5c4af] uppercase tracking-wider">Claude Models</label>
+                <label className="text-xs font-bold text-[#d5c4af] uppercase tracking-wider">{t('admin.aiGenerator.claudeModelsLabel')}</label>
                 <label className="flex items-center gap-1.5 cursor-pointer">
                   <input type="checkbox" checked={claudeAutoMode} onChange={e => setClaudeAutoMode(e.target.checked)}
                     className="accent-[#e8a832] w-3.5 h-3.5" />
-                  <span className="text-xs font-bold text-[#e8a832]">Auto theo độ khó</span>
+                  <span className="text-xs font-bold text-[#e8a832]">{t('admin.aiGenerator.claudeAutoLabel')}</span>
                 </label>
               </div>
 
               {claudeAutoMode ? (
                 <div className="grid grid-cols-3 gap-1.5">
                   {[
-                    { label: 'Dễ', model: 'Haiku 4.5', note: 'Nhanh · Rẻ' },
-                    { label: 'Trung bình', model: 'Sonnet 4.5', note: 'Cân bằng' },
-                    { label: 'Khó', model: 'Sonnet 4.6', note: 'Mới nhất' },
+                    { diffKey: 'easy', label: t('admin.aiGenerator.difficultyEasy'), model: 'Haiku 4.5', note: t('admin.aiGenerator.claudeAutoNoteFast') },
+                    { diffKey: 'medium', label: t('admin.aiGenerator.difficultyMedium'), model: 'Sonnet 4.5', note: t('admin.aiGenerator.claudeAutoNoteBalanced') },
+                    { diffKey: 'hard', label: t('admin.aiGenerator.difficultyHard'), model: 'Sonnet 4.6', note: t('admin.aiGenerator.claudeAutoNoteLatest') },
                   ].map(item => (
-                    <div key={item.label} className={`px-2.5 py-2 rounded-lg border text-center transition-all ${
-                      difficulty === (item.label === 'Dễ' ? 'easy' : item.label === 'Trung bình' ? 'medium' : 'hard')
+                    <div key={item.diffKey} className={`px-2.5 py-2 rounded-lg border text-center transition-all ${
+                      difficulty === item.diffKey
                         ? 'bg-[#e8a832]/10 border-[#e8a832]/30'
                         : 'bg-[#11131c] border-[#504535]/20 opacity-50'
                     }`}>
@@ -491,7 +493,7 @@ export default function AIQuestionGenerator() {
                           }} className="accent-[#e8a832] w-3.5 h-3.5 flex-shrink-0" />
                           <div className="min-w-0">
                             <div className="text-xs font-bold truncate">{m.label}</div>
-                            <div className="text-[10px] text-[#d5c4af]/50">{m.note}</div>
+                            <div className="text-[10px] text-[#d5c4af]/50">{t(m.noteKey)}</div>
                           </div>
                         </label>
                       )
@@ -499,7 +501,7 @@ export default function AIQuestionGenerator() {
                   </div>
                   {claudeModels.filter(id => id !== 'auto').length > 1 && (
                     <p className="text-xs text-[#e8a832] mt-1.5 font-medium">
-                      ✦ {claudeModels.length} models × {count} câu = tối đa {claudeModels.length * count} câu
+                      {t('admin.aiGenerator.claudeModelsMultiplier', { models: claudeModels.length, count, total: claudeModels.length * count })}
                     </p>
                   )}
                 </>
@@ -515,18 +517,18 @@ export default function AIQuestionGenerator() {
                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
               </svg>
-              {showPrompt ? 'Ẩn prompt' : 'Tuỳ chỉnh prompt AI'}
+              {showPrompt ? t('admin.aiGenerator.hidePrompt') : t('admin.aiGenerator.showPrompt')}
             </button>
             {showPrompt && (
               <div className="mt-2 space-y-1.5">
                 <p className="text-xs text-[#d5c4af]/60">
-                  Prompt này sẽ được gửi kèm như ghi chú bổ sung. Backend luôn tự tạo prompt chuẩn.
+                  {t('admin.aiGenerator.promptDesc')}
                 </p>
                 <textarea rows={7} value={prompt} onChange={e => setPrompt(e.target.value)}
                   className="form-input resize-none text-xs font-mono leading-relaxed" />
                 <button onClick={() => setPrompt(DEFAULT_PROMPT)}
                   className="text-xs text-[#d5c4af]/40 hover:text-[#e8a832] transition-colors">
-                  ↩ Khôi phục mặc định
+                  {t('admin.aiGenerator.resetPromptButton')}
                 </button>
               </div>
             )}
@@ -550,7 +552,7 @@ export default function AIQuestionGenerator() {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                 </svg>
-                Đang tạo câu hỏi...
+                {t('admin.aiGenerator.generating')}
               </>
             ) : (
               <>
@@ -558,7 +560,7 @@ export default function AIQuestionGenerator() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                     d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
-                Tạo {count} câu hỏi
+                {t('admin.aiGenerator.generateButton', { count })}
               </>
             )}
           </button>
@@ -574,20 +576,20 @@ export default function AIQuestionGenerator() {
                     d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               </div>
-              <p className="text-[#d5c4af]/60 font-bold text-base">Chưa có câu hỏi nào</p>
+              <p className="text-[#d5c4af]/60 font-bold text-base">{t('admin.aiGenerator.draftsEmptyTitle')}</p>
               <p className="text-[#d5c4af]/50 text-sm mt-1 max-w-xs">
-                Chọn sách, nhập chương và nhấn "Tạo câu hỏi" để bắt đầu
+                {t('admin.aiGenerator.draftsEmptyHint')}
               </p>
             </div>
           ) : (
             <>
               <div className="flex items-center justify-between">
                 <span className="text-xs font-black text-[#d5c4af]/60 uppercase tracking-widest">
-                  Drafts ({drafts.length})
+                  {t('admin.aiGenerator.draftsHeader', { count: drafts.length })}
                 </span>
                 <button onClick={() => setDrafts([])}
                   className="text-xs text-[#d5c4af]/60 hover:text-red-400 transition-colors font-medium">
-                  Xoá tất cả
+                  {t('admin.aiGenerator.clearAllButton')}
                 </button>
               </div>
 

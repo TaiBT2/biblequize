@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { DraftQuestion, DraftStatus, CLAUDE_MODELS } from './types'
 
 interface DraftCardProps {
@@ -18,11 +19,20 @@ interface DraftCardProps {
 
 const OPT_LABELS = ['A', 'B', 'C', 'D', 'E']
 const DIFF_STYLE: Record<string, string> = { easy: 'bg-emerald-500/10 text-emerald-400', medium: 'bg-yellow-500/10 text-yellow-400', hard: 'bg-red-500/10 text-red-400' }
-const DIFF_LABEL: Record<string, string> = { easy: 'Dễ', medium: 'TB', hard: 'Khó' }
+const DIFF_LABEL_KEY: Record<string, string> = {
+  easy: 'admin.aiGenerator.draftCard.difficultyEasy',
+  medium: 'admin.aiGenerator.draftCard.difficultyMedium',
+  hard: 'admin.aiGenerator.draftCard.difficultyHard',
+}
 const STATUS_STYLE: Record<DraftStatus, string> = { pending: 'bg-yellow-500/10 text-yellow-400', approved: 'bg-emerald-500/10 text-emerald-400', rejected: 'bg-white/5 text-[#d5c4af]/40' }
-const STATUS_LABEL: Record<DraftStatus, string> = { pending: 'Chờ duyệt', approved: '✓ Đã lưu', rejected: 'Từ chối' }
+const STATUS_LABEL_KEY: Record<DraftStatus, string> = {
+  pending: 'admin.aiGenerator.draftCard.statusPending',
+  approved: 'admin.aiGenerator.draftCard.statusApproved',
+  rejected: 'admin.aiGenerator.draftCard.statusRejected',
+}
 
 export default function DraftCard({ draft, isEditing, isSaving, editData, onEdit, onChange, onSaveEdit, onCancelEdit, onApprove, onReject, onRestore, onRemove }: DraftCardProps) {
+  const { t } = useTranslation()
   const cur = isEditing ? { ...draft, ...editData } as DraftQuestion : draft
   const opts = Array.isArray(cur.options) ? cur.options : []
   const isCorrect = (i: number) => Array.isArray(cur.correctAnswer) ? cur.correctAnswer.includes(i) : cur.correctAnswer === i
@@ -35,8 +45,8 @@ export default function DraftCard({ draft, isEditing, isSaving, editData, onEdit
     }`}>
       {/* Header */}
       <div className="flex items-center gap-2 mb-3 flex-wrap">
-        <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${STATUS_STYLE[draft.status]}`}>{STATUS_LABEL[draft.status]}</span>
-        <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${DIFF_STYLE[cur.difficulty] || 'bg-white/5 text-[#d5c4af]/60'}`}>{DIFF_LABEL[cur.difficulty] || cur.difficulty}</span>
+        <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${STATUS_STYLE[draft.status]}`}>{t(STATUS_LABEL_KEY[draft.status])}</span>
+        <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${DIFF_STYLE[cur.difficulty] || 'bg-white/5 text-[#d5c4af]/60'}`}>{DIFF_LABEL_KEY[cur.difficulty] ? t(DIFF_LABEL_KEY[cur.difficulty]) : cur.difficulty}</span>
         <span className="text-xs text-[#d5c4af]/60 font-medium">
           {cur.book} {cur.chapter}{(cur.verseStart || cur.verseEnd) ? `:${cur.verseStart || '?'}–${cur.verseEnd || '?'}` : ''}
         </span>
@@ -74,7 +84,7 @@ export default function DraftCard({ draft, isEditing, isSaving, editData, onEdit
           )}
           {cur.explanation && (
             <div className="px-3 py-2.5 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800 leading-relaxed">
-              <span className="font-bold">Giải thích: </span>{cur.explanation}
+              <span className="font-bold">{t('admin.aiGenerator.draftCard.explanationPrefix')}</span>{cur.explanation}
             </div>
           )}
         </div>
@@ -84,12 +94,12 @@ export default function DraftCard({ draft, isEditing, isSaving, editData, onEdit
       {isEditing && (
         <div className="space-y-3">
           <div>
-            <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">Câu hỏi</label>
+            <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">{t('admin.aiGenerator.draftCard.questionLabel')}</label>
             <textarea rows={2} value={cur.content} onChange={e => onChange('content', e.target.value)} className="form-input resize-none text-sm w-full" />
           </div>
           {opts.length > 0 && (
             <div>
-              <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">Lựa chọn</label>
+              <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">{t('admin.aiGenerator.draftCard.optionsLabel')}</label>
               {opts.map((opt, i) => (
                 <div key={i} className="flex items-center gap-2 mb-2">
                   <span className={`w-6 h-6 rounded-full text-xs font-black flex items-center justify-center flex-shrink-0 ${
@@ -104,12 +114,12 @@ export default function DraftCard({ draft, isEditing, isSaving, editData, onEdit
             </div>
           )}
           <div>
-            <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">Giải thích</label>
+            <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">{t('admin.aiGenerator.draftCard.explanationLabel')}</label>
             <textarea rows={2} value={cur.explanation || ''} onChange={e => onChange('explanation', e.target.value)} className="form-input resize-none text-sm w-full" />
           </div>
           <div className="flex gap-2">
-            <button onClick={onSaveEdit} className="flex-1 bg-[#e8a832] text-[#281900] text-sm font-bold py-2.5 rounded-xl hover:brightness-110 transition-colors">Lưu chỉnh sửa</button>
-            <button onClick={onCancelEdit} className="px-5 text-sm font-bold text-[#d5c4af] bg-[#32343e] py-2.5 rounded-xl hover:bg-[#373943] transition-colors">Huỷ</button>
+            <button onClick={onSaveEdit} className="flex-1 bg-[#e8a832] text-[#281900] text-sm font-bold py-2.5 rounded-xl hover:brightness-110 transition-colors">{t('admin.aiGenerator.draftCard.saveEditButton')}</button>
+            <button onClick={onCancelEdit} className="px-5 text-sm font-bold text-[#d5c4af] bg-[#32343e] py-2.5 rounded-xl hover:bg-[#373943] transition-colors">{t('admin.aiGenerator.draftCard.cancelEditButton')}</button>
           </div>
         </div>
       )}
@@ -126,22 +136,22 @@ export default function DraftCard({ draft, isEditing, isSaving, editData, onEdit
         <div className="flex gap-2 mt-4 pt-4 border-t border-[#eeeae0]">
           <button data-testid="ai-draft-approve-btn" onClick={onApprove} disabled={isSaving}
             className="flex-1 bg-[#e8a832] text-[#281900] text-sm font-bold py-2.5 rounded-xl hover:brightness-110 transition-colors disabled:opacity-60">
-            {isSaving ? 'Đang lưu...' : 'Lưu câu hỏi'}
+            {isSaving ? t('admin.aiGenerator.draftCard.approveSaving') : t('admin.aiGenerator.draftCard.approveButton')}
           </button>
-          <button onClick={onEdit} className="px-4 text-sm font-bold text-[#d5c4af] bg-[#32343e] py-2.5 rounded-xl hover:bg-[#373943] transition-colors">Sửa</button>
-          <button data-testid="ai-draft-reject-btn" onClick={onReject} className="w-10 flex items-center justify-center text-[#d5c4af]/60 bg-[#f0ece4] rounded-xl hover:bg-red-500/10 hover:text-red-500 transition-colors" title="Từ chối">✕</button>
+          <button onClick={onEdit} className="px-4 text-sm font-bold text-[#d5c4af] bg-[#32343e] py-2.5 rounded-xl hover:bg-[#373943] transition-colors">{t('admin.aiGenerator.draftCard.editButton')}</button>
+          <button data-testid="ai-draft-reject-btn" onClick={onReject} className="w-10 flex items-center justify-center text-[#d5c4af]/60 bg-[#f0ece4] rounded-xl hover:bg-red-500/10 hover:text-red-500 transition-colors" title={t('admin.aiGenerator.draftCard.rejectTitle')}>✕</button>
         </div>
       )}
 
       {draft.status === 'rejected' && (
         <div className="mt-3 pt-3 border-t border-[#504535]/20">
-          <button onClick={onRestore} className="text-xs text-[#d5c4af]/60 hover:text-[#e8a832] transition-colors font-semibold">↩ Khôi phục</button>
+          <button onClick={onRestore} className="text-xs text-[#d5c4af]/60 hover:text-[#e8a832] transition-colors font-semibold">{t('admin.aiGenerator.draftCard.restoreButton')}</button>
         </div>
       )}
 
       {draft.status === 'approved' && (
         <div className="mt-3 pt-3 border-t border-emerald-200 flex items-center gap-1.5 text-xs text-emerald-600 font-semibold">
-          ✓ Đã lưu vào cơ sở dữ liệu
+          {t('admin.aiGenerator.draftCard.approvedFooter')}
           {draft.approvedId && <span className="text-emerald-400 font-normal ml-1">#{draft.approvedId.slice(0, 8)}</span>}
         </div>
       )}

@@ -28,9 +28,9 @@ export const normalizeType = (t: string): QuestionType =>
   VALID_TYPES.includes(t as QuestionType) ? (t as QuestionType) : 'multiple_choice_single'
 
 export const CLAUDE_MODELS = [
-  { id: 'claude-haiku-4-5-20251001', label: 'Haiku 4.5', note: 'Nhanh · Rẻ' },
-  { id: 'claude-sonnet-4-6', label: 'Sonnet 4.6', note: 'Cân bằng · Mới nhất' },
-  { id: 'claude-opus-4-6', label: 'Opus 4.6', note: 'Chất lượng cao' },
+  { id: 'claude-haiku-4-5-20251001', label: 'Haiku 4.5', noteKey: 'admin.aiGenerator.models.haiku45Note' },
+  { id: 'claude-sonnet-4-6', label: 'Sonnet 4.6', noteKey: 'admin.aiGenerator.models.sonnet46Note' },
+  { id: 'claude-opus-4-6', label: 'Opus 4.6', noteKey: 'admin.aiGenerator.models.opus46Note' },
 ]
 
 export const DRAFTS_STORAGE_KEY = 'ai_question_drafts'
