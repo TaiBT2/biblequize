@@ -1,16 +1,18 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
 export default function SessionsChart({ totalSessions }: { totalSessions?: number }) {
+  const { t } = useTranslation()
   return (
     <div className="bg-[#1d1f29] p-8">
       <div className="flex justify-between items-start mb-8">
         <div>
-          <h3 className="text-lg font-bold text-white">Sessions 7 ngày qua</h3>
-          <p className="text-[10px] uppercase tracking-widest text-[#d5c4af]/50 mt-1">Lưu lượng truy cập hệ thống</p>
+          <h3 className="text-lg font-bold text-white">{t('admin.dashboard.sessionsChart.title')}</h3>
+          <p className="text-[10px] uppercase tracking-widest text-[#d5c4af]/50 mt-1">{t('admin.dashboard.sessionsChart.subtitle')}</p>
         </div>
-        <span className="text-2xl font-black text-[#e8a832] font-mono">{totalSessions?.toLocaleString() ?? '—'} <span className="text-[10px] font-normal opacity-50 uppercase tracking-widest text-white">total</span></span>
+        <span className="text-2xl font-black text-[#e8a832] font-mono">{totalSessions?.toLocaleString() ?? '—'} <span className="text-[10px] font-normal opacity-50 uppercase tracking-widest text-white">{t('admin.dashboard.sessionsChart.totalSuffix')}</span></span>
       </div>
       <div className="relative h-48 w-full flex items-end justify-between px-2 pt-4">
         <svg className="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 100 100">

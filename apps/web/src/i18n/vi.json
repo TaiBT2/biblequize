@@ -308,6 +308,57 @@
       "readLabel": "Đã đọc",
       "unreadLabel": "Mới"
     },
+    "dashboard": {
+      "kpi": {
+        "users": "Người dùng",
+        "active": "Active: {{count}}",
+        "newThisWeek": "+{{count}} tuần này",
+        "sessionsToday": "Sessions hôm nay",
+        "questions": "Câu hỏi",
+        "activeSuffix": "active",
+        "pendingChip": "{{count}} Pending",
+        "aiToday": "AI hôm nay"
+      },
+      "actionItems": {
+        "sectionTitle": "Cần xử lý",
+        "noneMessage": "Không có việc cần xử lý — hệ thống hoạt động tốt!",
+        "pendingFeedback": "{{count}} feedback đang mở",
+        "pendingReview": "{{count}} câu chờ duyệt",
+        "reportedGroups": "{{count}} groups bị report",
+        "flaggedUsers": "{{count}} user bị flag"
+      },
+      "activityLog": {
+        "title": "Hoạt động Admin",
+        "empty": "Các thao tác quản trị sẽ hiện ở đây"
+      },
+      "coverage": {
+        "title": "Question Coverage by Book",
+        "subtitle": "Lớp phủ dữ liệu (66 Books)",
+        "healthy": "Healthy",
+        "fair": "Fair",
+        "critical": "Critical",
+        "noData": "Không có dữ liệu coverage"
+      },
+      "questionQueue": {
+        "title": "Question Queue",
+        "pendingReview": "Pending Review",
+        "aiGenerated": "AI Generated",
+        "community": "Community",
+        "processNext": "Process Next 50"
+      },
+      "sessionsChart": {
+        "title": "Sessions 7 ngày qua",
+        "subtitle": "Lưu lượng truy cập hệ thống",
+        "totalSuffix": "total"
+      },
+      "userRegChart": {
+        "title": "User registrations 30 ngày",
+        "subtitle": "Gia tăng người dùng mới",
+        "usersSuffix": "users",
+        "axisStart": "30 Days Ago",
+        "axisEnd": "Today"
+      }
+    },
     "aiGenerator": {
       "title": "Tạo câu hỏi AI",
       "subtitle": "Tạo câu hỏi Kinh Thánh tự động và duyệt trước khi lưu",

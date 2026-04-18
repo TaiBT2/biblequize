@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface Activity {
   action: string
@@ -8,13 +9,14 @@ interface Activity {
 }
 
 export default function ActivityLog({ activities }: { activities: Activity[] }) {
+  const { t } = useTranslation()
   return (
     <div className="bg-[#1d1f29] p-6 flex-1">
-      <h3 className="text-xs uppercase tracking-[0.2em] text-[#d5c4af]/50 font-bold mb-6">Hoạt động Admin</h3>
+      <h3 className="text-xs uppercase tracking-[0.2em] text-[#d5c4af]/50 font-bold mb-6">{t('admin.dashboard.activityLog.title')}</h3>
       {activities.length === 0 ? (
         <div className="text-center py-4">
           <span className="material-symbols-outlined text-3xl text-[#e1e1ef]/20 block mb-2">history</span>
-          <p className="text-sm text-[#e1e1ef]/40">Các thao tác quản trị sẽ hiện ở đây</p>
+          <p className="text-sm text-[#e1e1ef]/40">{t('admin.dashboard.activityLog.empty')}</p>
         </div>
       ) : (
         <div className="space-y-5">

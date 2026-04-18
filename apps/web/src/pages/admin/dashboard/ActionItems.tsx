@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 interface ActionItemsProps {
   pendingFeedback?: number
@@ -9,23 +10,21 @@ interface ActionItemsProps {
 }
 
 export default function ActionItems({ pendingFeedback = 0, pendingReview = 0, reportedGroups = 0, flaggedUsers = 0 }: ActionItemsProps) {
+  const { t } = useTranslation()
   const items = [
-    { label: `${pendingFeedback} feedback đang mở`, color: 'bg-red-500', glow: 'rgba(239,68,68,0.4)', link: '/admin/feedback' },
-    { label: `${pendingReview} câu chờ duyệt`, color: 'bg-yellow-500', glow: 'rgba(234,179,8,0.4)', link: '/admin/review-queue' },
-    { label: `${reportedGroups} groups bị report`, color: 'bg-yellow-500', glow: 'rgba(234,179,8,0.4)', link: '/admin/groups' },
-    { label: `${flaggedUsers} user bị flag`, color: 'bg-red-500', glow: 'rgba(239,68,68,0.4)', link: '/admin/users' },
-  ].filter(item => {
-    const num = parseInt(item.label)
-    return num > 0
-  })
+    { count: pendingFeedback, label: t('admin.dashboard.actionItems.pendingFeedback', { count: pendingFeedback }), color: 'bg-red-500', glow: 'rgba(239,68,68,0.4)', link: '/admin/feedback' },
+    { count: pendingReview, label: t('admin.dashboard.actionItems.pendingReview', { count: pendingReview }), color: 'bg-yellow-500', glow: 'rgba(234,179,8,0.4)', link: '/admin/review-queue' },
+    { count: reportedGroups, label: t('admin.dashboard.actionItems.reportedGroups', { count: reportedGroups }), color: 'bg-yellow-500', glow: 'rgba(234,179,8,0.4)', link: '/admin/groups' },
+    { count: flaggedUsers, label: t('admin.dashboard.actionItems.flaggedUsers', { count: flaggedUsers }), color: 'bg-red-500', glow: 'rgba(239,68,68,0.4)', link: '/admin/users' },
+  ].filter(item => item.count > 0)
 
   return (
     <div className="bg-[#1d1f29] p-6 flex-1">
-      <h3 className="text-xs uppercase tracking-[0.2em] text-[#e8a832] font-bold mb-6">Cần xử lý</h3>
+      <h3 className="text-xs uppercase tracking-[0.2em] text-[#e8a832] font-bold mb-6">{t('admin.dashboard.actionItems.sectionTitle')}</h3>
       {items.length === 0 ? (
         <div className="flex items-center gap-2 text-green-400 text-sm">
           <span className="material-symbols-outlined text-lg">check_circle</span>
-          <span>Không có việc cần xử lý — hệ thống hoạt động tốt!</span>
+          <span>{t('admin.dashboard.actionItems.noneMessage')}</span>
         </div>
       ) : (
         <ul className="space-y-4">

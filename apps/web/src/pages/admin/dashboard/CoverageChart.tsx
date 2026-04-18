@@ -1,23 +1,25 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface BookCoverage {
   book: string; easy: number; medium: number; hard: number; total: number; meetsMinimum: boolean
 }
 
 export default function CoverageChart({ books }: { books: BookCoverage[] }) {
-  if (!books || books.length === 0) return <div className="text-[#d5c4af]/40 text-sm">Không có dữ liệu coverage</div>
+  const { t } = useTranslation()
+  if (!books || books.length === 0) return <div className="text-[#d5c4af]/40 text-sm">{t('admin.dashboard.coverage.noData')}</div>
 
   return (
     <div className="bg-[#1d1f29] p-8 rounded-lg">
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-white">Question Coverage by Book</h2>
-          <p className="text-xs text-[#d5c4af]/50 mt-1 uppercase tracking-widest font-medium">Lớp phủ dữ liệu (66 Books)</p>
+          <h2 className="text-xl font-bold tracking-tight text-white">{t('admin.dashboard.coverage.title')}</h2>
+          <p className="text-xs text-[#d5c4af]/50 mt-1 uppercase tracking-widest font-medium">{t('admin.dashboard.coverage.subtitle')}</p>
         </div>
         <div className="flex gap-3">
-          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-green-500" /><span className="text-[10px] uppercase text-[#d5c4af]">Healthy</span></div>
-          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-yellow-500" /><span className="text-[10px] uppercase text-[#d5c4af]">Fair</span></div>
-          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-red-500" /><span className="text-[10px] uppercase text-[#d5c4af]">Critical</span></div>
+          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-green-500" /><span className="text-[10px] uppercase text-[#d5c4af]">{t('admin.dashboard.coverage.healthy')}</span></div>
+          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-yellow-500" /><span className="text-[10px] uppercase text-[#d5c4af]">{t('admin.dashboard.coverage.fair')}</span></div>
+          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-red-500" /><span className="text-[10px] uppercase text-[#d5c4af]">{t('admin.dashboard.coverage.critical')}</span></div>
         </div>
       </div>
       <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2">

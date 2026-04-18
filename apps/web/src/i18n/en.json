@@ -308,6 +308,57 @@
       "readLabel": "Read",
       "unreadLabel": "New"
     },
+    "dashboard": {
+      "kpi": {
+        "users": "Users",
+        "active": "Active: {{count}}",
+        "newThisWeek": "+{{count}} this week",
+        "sessionsToday": "Sessions today",
+        "questions": "Questions",
+        "activeSuffix": "active",
+        "pendingChip": "{{count}} Pending",
+        "aiToday": "AI today"
+      },
+      "actionItems": {
+        "sectionTitle": "Action items",
+        "noneMessage": "Nothing to handle — system is healthy!",
+        "pendingFeedback": "{{count}} open feedback",
+        "pendingReview": "{{count}} questions pending",
+        "reportedGroups": "{{count}} groups reported",
+        "flaggedUsers": "{{count}} flagged users"
+      },
+      "activityLog": {
+        "title": "Admin activity",
+        "empty": "Admin actions will appear here"
+      },
+      "coverage": {
+        "title": "Question Coverage by Book",
+        "subtitle": "Data coverage (66 Books)",
+        "healthy": "Healthy",
+        "fair": "Fair",
+        "critical": "Critical",
+        "noData": "No coverage data"
+      },
+      "questionQueue": {
+        "title": "Question Queue",
+        "pendingReview": "Pending Review",
+        "aiGenerated": "AI Generated",
+        "community": "Community",
+        "processNext": "Process Next 50"
+      },
+      "sessionsChart": {
+        "title": "Sessions in the last 7 days",
+        "subtitle": "System traffic",
+        "totalSuffix": "total"
+      },
+      "userRegChart": {
+        "title": "User registrations (30 days)",
+        "subtitle": "New user growth",
+        "usersSuffix": "users",
+        "axisStart": "30 Days Ago",
+        "axisEnd": "Today"
+      }
+    },
     "aiGenerator": {
       "title": "AI Question Generator",
       "subtitle": "Generate Bible questions automatically and review before saving",
