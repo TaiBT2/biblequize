@@ -108,6 +108,10 @@ public class UserSeeder {
         u.setCurrentStreak(streak);
         u.setLongestStreak(longestStreak);
         u.setLastPlayedAt(randomRecent(30));
+        // Set password for ADMIN users so E2E TestApi can login (dev/staging only)
+        if ("ADMIN".equals(role)) {
+            u.setPasswordHash(passwordEncoder.encode(TIER_TEST_PASSWORD));
+        }
         return u;
     }
 
