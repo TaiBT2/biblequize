@@ -308,6 +308,19 @@
       "readLabel": "Đã đọc",
       "unreadLabel": "Mới"
     },
+    "questionQuality": {
+      "title": "Chất lượng câu hỏi",
+      "subtitle": "Analysis of database health and engagement metrics",
+      "overallScoreLabel": "Điểm chất lượng tổng thể /100",
+      "coverageTitle": "Coverage Map — Câu hỏi theo sách",
+      "loading": "Đang tải...",
+      "loadError": "Không tải được dữ liệu",
+      "bookFallback": "Book {{index}}",
+      "problemTooHardTitle": "Quá khó (<20% accuracy)",
+      "problemTooEasyTitle": "Quá dễ (>95% accuracy)",
+      "problemUnusedTitle": "Chưa sử dụng",
+      "problemNeedsApi": "Cần API {{endpoint}}"
+    },
     "reviewQueue": {
       "title": "Hàng Chờ Duyệt",
       "subtitle": "Câu hỏi AI tạo ra cần {{count}} admin duyệt mới trở thành chính thức",

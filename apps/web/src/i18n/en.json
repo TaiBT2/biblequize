@@ -308,6 +308,19 @@
       "readLabel": "Read",
       "unreadLabel": "New"
     },
+    "questionQuality": {
+      "title": "Question Quality",
+      "subtitle": "Analysis of database health and engagement metrics",
+      "overallScoreLabel": "Overall quality score /100",
+      "coverageTitle": "Coverage Map — Questions per book",
+      "loading": "Loading...",
+      "loadError": "Could not load data",
+      "bookFallback": "Book {{index}}",
+      "problemTooHardTitle": "Too hard (<20% accuracy)",
+      "problemTooEasyTitle": "Too easy (>95% accuracy)",
+      "problemUnusedTitle": "Never used",
+      "problemNeedsApi": "Needs API {{endpoint}}"
+    },
     "reviewQueue": {
       "title": "Review Queue",
       "subtitle": "AI-generated questions need {{count}} admin approvals to go live",
