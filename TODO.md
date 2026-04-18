@@ -32,22 +32,26 @@
 - Run: `cd apps/web && npx vitest run`
 - Expected: 733 baseline + ~46 new = ~779 tests pass
 
-### Task UM-1: Fix user menu không đóng khi click outside
-- Status: [ ] TODO
-- File(s): apps/web/src/layouts/AppLayout.tsx (FILE NHẠY CẢM per CLAUDE.md — full regression bắt buộc)
-- Root cause: overlay click-outside ở z-40, nhưng header z-50 che → click vào header area (top 80px) không đóng menu. Icons heart/bolt/stars, logo, nav links đều bị lỗi.
-- Fix: thay overlay div bằng `useEffect + useRef` pattern — listen `mousedown` trên document, đóng menu nếu click ngoài menuRef
-- Commit: "fix: user menu closes on click outside (use document listener instead of z-40 overlay)"
+### Task UM-1: Fix user menu không đóng khi click outside [x] DONE
+- File(s): apps/web/src/layouts/AppLayout.tsx (FILE NHẠY CẢM)
+- Root cause: overlay click-outside z-40 bị header z-50 che → click vào top 80px không đóng menu
+- Fix:
+  - Thêm `useRef<HTMLDivElement>` (userMenuRef) bọc container có avatar + dropdown
+  - Thêm `useEffect` listen mousedown + touchstart + keydown (Escape) trên document, đóng menu nếu click ngoài menuRef
+  - Bỏ overlay `<div className="fixed inset-0 z-40">` + bỏ fragment wrapper
+  - Thêm data-testid (`user-menu-toggle`, `user-menu-dropdown`, `user-menu-container`) và aria (`role="menu"`, `aria-haspopup`, `aria-expanded`)
+- Commit: "fix: user menu closes on click outside (document listener instead of z-40 overlay)"
 
-### Task UM-2: Thêm test case cho click-outside behavior
-- Status: [ ] TODO
+### Task UM-2: Thêm test case cho click-outside behavior [x] DONE
 - File(s): apps/web/src/layouts/__tests__/AppLayout.test.tsx
-- Test cases:
-  - open menu by clicking avatar
-  - click body outside → menu closes
-  - click header area (icons) → menu closes (regression guard cho bug này)
-  - click inside menu → menu stays open
-  - click avatar again → menu toggles (stays working)
+- Added describe block "AppLayout — User menu click-outside" với 7 test cases:
+  1. click body outside → menu closes
+  2. click header area → menu closes (regression guard cho bug gốc)
+  3. press Escape → menu closes
+  4. click inside menu → menu stays open
+  5. click avatar 2 lần → toggle đóng lại
+  6. aria-expanded phản ánh đúng state
+  7. cleanup listeners khi menu đóng (no leaks)
 - Commit: "test: add user menu click-outside behavior tests"
 
 ## 2026-04-18 — Multiplayer Width Fix [DONE — pending local test run]
@@ -1855,9 +1859,9 @@
 - [x] Task 1.4: ShareCard + ErrorToast + locale-aware date — `components.shareCard.*`, `components.errorToast.*`
 - [x] PHASE 1 CHECKPOINT → 801/801 unit pass. Hardcoded 578 → 551 (-27). Paused for user review.
 
-### Phase 2 — Room pages [ ]
-- [ ] Task 2.1: JoinRoom + Rooms + RoomQuiz (namespace `rooms.*`) | update 3 test files | commit `i18n: room pages (JoinRoom, Rooms, RoomQuiz)`
-- [ ] PHASE 2 CHECKPOINT → Tier 3 regression, pause
+### Phase 2 — Room pages [x] DONE
+- [x] Task 2.1: JoinRoom/Rooms are redirect stubs; RoomQuiz converted to `room.quiz.*` (23 keys) incl. ASCII-Vietnamese fallbacks restored with diacritics
+- [x] PHASE 2 CHECKPOINT → 808/808 unit pass. Hardcoded 551 → 545 (-6). Paused for user review.
 
 ### Phase 3 — Admin pages (13 tasks, 13 commits) [ ]
 - [ ] Task 3.1: admin/Configuration.tsx | `admin.configuration.*` | commit `i18n: admin configuration`
