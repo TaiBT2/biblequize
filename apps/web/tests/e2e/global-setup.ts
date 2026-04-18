@@ -68,6 +68,109 @@ async function globalSetup(_config: FullConfig): Promise<void> {
     )
   }
 
+  // ── Step 1b: Seed extra state-dependent test data ────────────────────
+  // After base seed, seed extra data for state-dependent e2e tests.
+  // Failures are logged but non-fatal — tests should still attempt.
+  const authHeaders = {
+    Authorization: `Bearer ${adminToken}`,
+    'Content-Type': 'application/json',
+  }
+
+  // 1. Seed ranked progress for tier3 (Ranked page needs this)
+  const rankedProgressRes = await fetch(
+    `${API_BASE}/api/admin/test/seed-ranked-progress`,
+    {
+      method: 'POST',
+      headers: authHeaders,
+      body: JSON.stringify({
+        email: 'test3@dev.local',
+        questionsAnswered: 20,
+        correctAnswers: 15,
+      }),
+    },
+  )
+  if (!rankedProgressRes.ok) {
+    console.warn(
+      '[global-setup] seed-ranked-progress failed:',
+      rankedProgressRes.status,
+    )
+  }
+
+  // 2. Seed a church group for W-M09 tests (test3 as owner, test4 as member)
+  const groupRes = await fetch(`${API_BASE}/api/admin/test/seed-group`, {
+    method: 'POST',
+    headers: authHeaders,
+    body: JSON.stringify({
+      ownerEmail: 'test3@dev.local',
+      memberEmails: ['test4@dev.local'],
+      groupName: 'E2E Test Group',
+    }),
+  })
+  if (!groupRes.ok) {
+    console.warn('[global-setup] seed-group failed:', groupRes.status)
+  }
+
+  // 3. Seed a tournament for W-M07 tests
+  const tournamentRes = await fetch(
+    `${API_BASE}/api/admin/test/seed-tournament`,
+    {
+      method: 'POST',
+      headers: authHeaders,
+      body: JSON.stringify({
+        tournamentName: 'E2E Test Tournament',
+        participantEmails: ['test3@dev.local', 'test4@dev.local'],
+      }),
+    },
+  )
+  if (!tournamentRes.ok) {
+    console.warn(
+      '[global-setup] seed-tournament failed:',
+      tournamentRes.status,
+    )
+  }
+
+  // 4. Seed review queue items for A-M06 admin tests
+  const reviewQueueRes = await fetch(
+    `${API_BASE}/api/admin/test/seed-review-queue`,
+    {
+      method: 'POST',
+      headers: authHeaders,
+      body: JSON.stringify({ count: 5 }),
+    },
+  )
+  if (!reviewQueueRes.ok) {
+    console.warn(
+      '[global-setup] seed-review-queue failed:',
+      reviewQueueRes.status,
+    )
+  }
+
+  // 5. Seed feedback for A-M07 admin tests
+  const feedbackRes = await fetch(`${API_BASE}/api/admin/test/seed-feedback`, {
+    method: 'POST',
+    headers: authHeaders,
+    body: JSON.stringify({ userEmail: 'test3@dev.local', count: 3 }),
+  })
+  if (!feedbackRes.ok) {
+    console.warn('[global-setup] seed-feedback failed:', feedbackRes.status)
+  }
+
+  // 6. Mark daily complete for test3 for W-M05 completed-state tests
+  const dailyCompleteRes = await fetch(
+    `${API_BASE}/api/admin/test/daily-complete`,
+    {
+      method: 'POST',
+      headers: authHeaders,
+      body: JSON.stringify({ email: 'test3@dev.local', score: 4 }),
+    },
+  )
+  if (!dailyCompleteRes.ok) {
+    console.warn(
+      '[global-setup] daily-complete failed:',
+      dailyCompleteRes.status,
+    )
+  }
+
   // ── Step 2: Create storageState files ────────────────────────────────
 
   const browser = await chromium.launch()
