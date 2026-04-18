@@ -13,8 +13,7 @@ import { test, expect } from '../../fixtures/auth'
 
 test.describe('A-M11 Notifications Broadcast — L1 Smoke', () => {
   // ── A-M11-L1-001 ── admin ──────────────────────────────────
-  // SKIP: UI component [notifications-history] not implemented yet
-  test.skip('A-M11-L1-001: Notifications admin page render dung @smoke @admin @notifications @critical', async ({
+  test('A-M11-L1-001: Notifications admin page render dung @smoke @admin @notifications @critical', async ({
     adminPage,
   }) => {
     // ── Actions ──
@@ -165,8 +164,7 @@ test.describe('A-M14 Question Quality — L1 Smoke', () => {
   })
 
   // ── A-M14-L1-002 ── admin ──────────────────────────────────
-  // SKIP: UI component [coverage-book-bar, coverage-pct] not implemented yet
-  test.skip('A-M14-L1-002: Coverage map hien thi books voi progress bars @smoke @admin @quality', async ({
+  test('A-M14-L1-002: Coverage map hien thi books voi progress bars @smoke @admin @quality', async ({
     adminPage,
   }) => {
     // ── Actions ──

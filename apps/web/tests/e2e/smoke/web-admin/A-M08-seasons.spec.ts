@@ -26,8 +26,7 @@ test.describe('A-M08 Seasons & Rankings — L1 Smoke', () => {
   })
 
   // ── A-M08-L1-002 ── admin ──────────────────────────────────
-  // SKIP: UI component [active-season-name] not implemented yet
-  test.skip('A-M08-L1-002: Active season hien thi (neu co) @smoke @admin @rankings', async ({
+  test('A-M08-L1-002: Active season hien thi (neu co) @smoke @admin @rankings', async ({
     adminPage,
   }) => {
     // ── Actions ──

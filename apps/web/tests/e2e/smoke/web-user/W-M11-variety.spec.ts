@@ -12,8 +12,7 @@ test.describe('W-M11 Variety Modes — L1 Smoke @smoke @variety', () => {
 
   // ── Weekly Quiz ─────────────────────────────────────────────────
 
-  // SKIP: UI component weekly-start-btn not implemented yet
-  test.skip('W-M11-L1-001: Weekly Quiz page render dung @smoke @variety @weekly-quiz', async ({
+  test('W-M11-L1-001: Weekly Quiz page render dung @smoke @variety @weekly-quiz', async ({
     tier3Page,
   }) => {
     // ============================================================
@@ -37,8 +36,7 @@ test.describe('W-M11 Variety Modes — L1 Smoke @smoke @variety', () => {
     await expect(page.getByTestId('weekly-start-btn')).toBeVisible()
   })
 
-  // SKIP: UI component weekly-start-btn not implemented yet
-  test.skip('W-M11-L1-002: Weekly Quiz click Start vao quiz mode weekly @smoke @variety @weekly-quiz', async ({
+  test('W-M11-L1-002: Weekly Quiz click Start vao quiz mode weekly @smoke @variety @weekly-quiz', async ({
     tier3Page,
   }) => {
     // ============================================================
@@ -64,8 +62,7 @@ test.describe('W-M11 Variety Modes — L1 Smoke @smoke @variety', () => {
 
   // ── Mystery Mode ────────────────────────────────────────────────
 
-  // SKIP: UI components mystery-info-card, mystery-bonus-xp not implemented yet
-  test.skip('W-M11-L1-003: Mystery Mode page render dung @smoke @variety @mystery', async ({
+  test('W-M11-L1-003: Mystery Mode page render dung @smoke @variety @mystery', async ({
     tier3Page,
   }) => {
     // ============================================================
@@ -115,8 +112,7 @@ test.describe('W-M11 Variety Modes — L1 Smoke @smoke @variety', () => {
 
   // ── Speed Round ─────────────────────────────────────────────────
 
-  // SKIP: UI components speed-round-stats-card, speed-round-timer-stat not implemented yet
-  test.skip('W-M11-L1-005: Speed Round page render dung @smoke @variety @speed-round', async ({
+  test('W-M11-L1-005: Speed Round page render dung @smoke @variety @speed-round', async ({
     tier3Page,
   }) => {
     // ============================================================

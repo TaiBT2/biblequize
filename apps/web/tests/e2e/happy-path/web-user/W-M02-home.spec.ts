@@ -80,8 +80,7 @@ test.describe('W-M02 Home & Profile', () => {
 
   // ── W-M02-L2-004 — Energy bar: pre-seed livesRemaining=75 -> UI shows 75 ──
 
-  // SKIP: UI component home-energy-bar not implemented yet
-  test.skip('W-M02-L2-004: energy bar displays pre-seeded livesRemaining=75', async ({
+  test('W-M02-L2-004: energy bar displays pre-seeded livesRemaining=75', async ({
     tier3Page: page,
     testApi,
   }) => {

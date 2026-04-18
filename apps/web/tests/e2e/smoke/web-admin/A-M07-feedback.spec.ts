@@ -60,8 +60,7 @@ test.describe('A-M07 Feedback & Moderation — L1 Smoke', () => {
   })
 
   // ── A-M07-L1-004 ── admin ──────────────────────────────────
-  // SKIP: UI component [feedback-row] not implemented yet
-  test.skip('A-M07-L1-004: Click feedback mo detail modal + update status @smoke @admin @feedback @write', async ({
+  test('A-M07-L1-004: Click feedback mo detail modal + update status @smoke @admin @feedback @write', async ({
     adminPage,
   }) => {
     // ── Actions ──
