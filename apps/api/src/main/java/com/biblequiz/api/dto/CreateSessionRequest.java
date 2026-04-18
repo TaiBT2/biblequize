@@ -33,4 +33,7 @@ public class CreateSessionRequest {
     private Boolean shuffleQuestions = true;
 
     private Boolean showExplanation = true;
+
+    @Pattern(regexp = "^(vi|en)$", message = "Language must be vi or en")
+    private String language = "vi";
 }

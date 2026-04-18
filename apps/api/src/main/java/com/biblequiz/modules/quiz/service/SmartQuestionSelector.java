@@ -156,7 +156,9 @@ public class SmartQuestionSelector {
     private List<Question> findByFilter(QuestionFilter filter) {
         String book = filter.book();
         String language = filter.language() != null ? filter.language() : "vi";
-        Question.Difficulty difficulty = filter.difficulty() != null
+        Question.Difficulty difficulty = (filter.difficulty() != null
+                && !filter.difficulty().isEmpty()
+                && !"all".equalsIgnoreCase(filter.difficulty()))
                 ? Question.Difficulty.valueOf(filter.difficulty().toLowerCase()) : null;
 
         if (book != null && difficulty != null) {

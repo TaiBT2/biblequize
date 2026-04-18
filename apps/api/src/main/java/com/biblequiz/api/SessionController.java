@@ -58,6 +58,7 @@ public class SessionController {
                 request.getExcludeQuestionIds() != null ? request.getExcludeQuestionIds() : java.util.List.of());
         config.put("shuffleQuestions", request.getShuffleQuestions() != null ? request.getShuffleQuestions() : true);
         config.put("showExplanation", request.getShowExplanation() != null ? request.getShowExplanation() : true);
+        config.put("language", request.getLanguage() != null ? request.getLanguage() : "vi");
 
         return ResponseEntity.ok(sessionService.createSession(userId, mode, config));
     }
