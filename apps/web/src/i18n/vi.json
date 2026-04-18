@@ -144,6 +144,26 @@
     "adminPanel": "Quản trị"
   },
   "admin": {
+    "groups": {
+      "title": "Quản lý Nhóm Giáo Xứ",
+      "subtitle": "{{count}} nhóm",
+      "loading": "Đang tải...",
+      "empty": "Chưa có nhóm nào",
+      "lockedBadge": "🔒 Khóa",
+      "publicBadge": "Public",
+      "rowSummary": "Code: {{code}} • {{members}}/{{max}} members • Leader: {{leader}}",
+      "lockReasonLabel": "Lý do: {{reason}}",
+      "detailsButton": "Chi tiết",
+      "membersLabel": "Members",
+      "codeLabel": "Code",
+      "lockedBanner": "🔒 Đã khóa: {{reason}}",
+      "unlockButton": "Mở khóa",
+      "lockReasonPlaceholder": "Lý do khóa (tối thiểu 10 ký tự)...",
+      "lockButton": "Khóa nhóm",
+      "deleteButton": "Xóa nhóm",
+      "deleteConfirm": "Xóa nhóm này?",
+      "closeButton": "Đóng"
+    },
     "notifications": {
       "title": "Quản lý Thông báo",
       "subtitle": "Broadcast & automated notification management",

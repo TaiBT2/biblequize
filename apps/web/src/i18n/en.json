@@ -144,6 +144,26 @@
     "adminPanel": "Admin Panel"
   },
   "admin": {
+    "groups": {
+      "title": "Church Groups Management",
+      "subtitle": "{{count}} groups",
+      "loading": "Loading...",
+      "empty": "No groups yet",
+      "lockedBadge": "🔒 Locked",
+      "publicBadge": "Public",
+      "rowSummary": "Code: {{code}} • {{members}}/{{max}} members • Leader: {{leader}}",
+      "lockReasonLabel": "Reason: {{reason}}",
+      "detailsButton": "Details",
+      "membersLabel": "Members",
+      "codeLabel": "Code",
+      "lockedBanner": "🔒 Locked: {{reason}}",
+      "unlockButton": "Unlock",
+      "lockReasonPlaceholder": "Lock reason (min 10 chars)...",
+      "lockButton": "Lock group",
+      "deleteButton": "Delete group",
+      "deleteConfirm": "Delete this group?",
+      "closeButton": "Close"
+    },
     "notifications": {
       "title": "Notifications",
       "subtitle": "Broadcast & automated notification management",
