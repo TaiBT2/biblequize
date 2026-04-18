@@ -308,6 +308,23 @@
       "readLabel": "Đã đọc",
       "unreadLabel": "Mới"
     },
+    "exportCenter": {
+      "title": "Export Center",
+      "subtitle": "Xuất dữ liệu hệ thống",
+      "notImplemented": "Export {{type}} as {{format}} — API chưa implement",
+      "exports": {
+        "questionsLabel": "Câu hỏi",
+        "questionsDesc": "Xuất toàn bộ câu hỏi với đáp án + giải thích",
+        "usersLabel": "Người dùng",
+        "usersDesc": "Danh sách users với role, tier, streak",
+        "leaderboardLabel": "Bảng xếp hạng",
+        "leaderboardDesc": "Top players theo season/period",
+        "groupsLabel": "Nhóm",
+        "groupsDesc": "Groups với members và analytics",
+        "analyticsLabel": "Analytics",
+        "analyticsDesc": "Sessions, user activity, retention"
+      }
+    },
     "events": {
       "title": "Events & Tournaments",
       "subtitle": "{{count}} tournaments",

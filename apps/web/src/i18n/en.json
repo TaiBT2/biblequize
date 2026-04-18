@@ -308,6 +308,23 @@
       "readLabel": "Read",
       "unreadLabel": "New"
     },
+    "exportCenter": {
+      "title": "Export Center",
+      "subtitle": "Export system data",
+      "notImplemented": "Export {{type}} as {{format}} — API not yet implemented",
+      "exports": {
+        "questionsLabel": "Questions",
+        "questionsDesc": "Export all questions with answers + explanations",
+        "usersLabel": "Users",
+        "usersDesc": "User list with role, tier, streak",
+        "leaderboardLabel": "Leaderboard",
+        "leaderboardDesc": "Top players by season/period",
+        "groupsLabel": "Groups",
+        "groupsDesc": "Groups with members and analytics",
+        "analyticsLabel": "Analytics",
+        "analyticsDesc": "Sessions, user activity, retention"
+      }
+    },
     "events": {
       "title": "Events & Tournaments",
       "subtitle": "{{count}} tournaments",
