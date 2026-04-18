@@ -3,6 +3,13 @@ package com.biblequiz.api;
 import com.biblequiz.api.dto.SeedPointsRequest;
 import com.biblequiz.api.dto.SetMissionStateRequest;
 import com.biblequiz.api.dto.SetStateRequest;
+import com.biblequiz.modules.daily.service.DailyChallengeService;
+import com.biblequiz.modules.feedback.entity.Feedback;
+import com.biblequiz.modules.feedback.repository.FeedbackRepository;
+import com.biblequiz.modules.group.entity.ChurchGroup;
+import com.biblequiz.modules.group.entity.GroupMember;
+import com.biblequiz.modules.group.repository.ChurchGroupRepository;
+import com.biblequiz.modules.group.repository.GroupMemberRepository;
 import com.biblequiz.modules.quiz.entity.DailyMission;
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.entity.UserDailyProgress;
@@ -14,6 +21,10 @@ import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
 import com.biblequiz.modules.quiz.service.SmartQuestionSelector;
 import com.biblequiz.modules.quiz.service.SmartQuestionSelector.QuestionFilter;
 import com.biblequiz.modules.ranked.model.RankTier;
+import com.biblequiz.modules.tournament.entity.Tournament;
+import com.biblequiz.modules.tournament.entity.TournamentParticipant;
+import com.biblequiz.modules.tournament.repository.TournamentParticipantRepository;
+import com.biblequiz.modules.tournament.repository.TournamentRepository;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 import jakarta.validation.Valid;
@@ -53,19 +64,37 @@ public class AdminTestController {
     private final UserDailyProgressRepository dailyProgressRepository;
     private final DailyMissionRepository dailyMissionRepository;
     private final SmartQuestionSelector smartQuestionSelector;
+    private final ChurchGroupRepository churchGroupRepository;
+    private final GroupMemberRepository groupMemberRepository;
+    private final TournamentRepository tournamentRepository;
+    private final TournamentParticipantRepository tournamentParticipantRepository;
+    private final FeedbackRepository feedbackRepository;
+    private final DailyChallengeService dailyChallengeService;
 
     public AdminTestController(UserRepository userRepository,
                                 UserQuestionHistoryRepository historyRepository,
                                 QuestionRepository questionRepository,
                                 UserDailyProgressRepository dailyProgressRepository,
                                 DailyMissionRepository dailyMissionRepository,
-                                SmartQuestionSelector smartQuestionSelector) {
+                                SmartQuestionSelector smartQuestionSelector,
+                                ChurchGroupRepository churchGroupRepository,
+                                GroupMemberRepository groupMemberRepository,
+                                TournamentRepository tournamentRepository,
+                                TournamentParticipantRepository tournamentParticipantRepository,
+                                FeedbackRepository feedbackRepository,
+                                DailyChallengeService dailyChallengeService) {
         this.userRepository = userRepository;
         this.historyRepository = historyRepository;
         this.questionRepository = questionRepository;
         this.dailyProgressRepository = dailyProgressRepository;
         this.dailyMissionRepository = dailyMissionRepository;
         this.smartQuestionSelector = smartQuestionSelector;
+        this.churchGroupRepository = churchGroupRepository;
+        this.groupMemberRepository = groupMemberRepository;
+        this.tournamentRepository = tournamentRepository;
+        this.tournamentParticipantRepository = tournamentParticipantRepository;
+        this.feedbackRepository = feedbackRepository;
+        this.dailyChallengeService = dailyChallengeService;
     }
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -450,5 +479,362 @@ public class AdminTestController {
                 "date", targetDate.toString(),
                 "updatedMissions", updatedCount
         ));
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // New endpoints — seed data for e2e tests
+    // ─────────────────────────────────────────────────────────────────────────
+
+    /**
+     * Mark today's daily challenge as completed for a user (by email).
+     *
+     * <p>Delegates to {@link DailyChallengeService#markCompleted} which records
+     * the completion in the Redis cache. Subsequent calls to
+     * {@code GET /api/daily-challenge} will return {@code alreadyCompleted: true}
+     * for this user.
+     *
+     * <p>Audit: {@code [TEST_PANEL] test.daily_complete}
+     */
+    @PostMapping("/daily-complete")
+    public ResponseEntity<?> dailyComplete(@RequestBody Map<String, Object> body) {
+        String email = (String) body.get("email");
+        Integer score = body.get("score") != null ? ((Number) body.get("score")).intValue() : 5;
+
+        if (email == null || email.isBlank()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "email required"));
+        }
+        if (score < 0 || score > 5) {
+            return ResponseEntity.badRequest().body(Map.of("error", "score must be 0-5"));
+        }
+
+        User user = userRepository.findByEmail(email)
+                .orElse(null);
+        if (user == null) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found: " + email));
+        }
+
+        dailyChallengeService.markCompleted(user.getId(), score, score);
+
+        log.warn("[TEST_PANEL] test.daily_complete user={} score={}", user.getId(), score);
+
+        return ResponseEntity.ok(Map.of(
+                "userId", user.getId(),
+                "email", email,
+                "score", score,
+                "completed", true,
+                "date", LocalDate.now(ZoneOffset.UTC).toString()
+        ));
+    }
+
+    /**
+     * Create a test group with the given owner as LEADER and add the specified users as MEMBERs.
+     *
+     * <p>Audit: {@code [TEST_PANEL] test.seed_group}
+     */
+    @PostMapping("/seed-group")
+    @Transactional
+    public ResponseEntity<?> seedGroup(@RequestBody Map<String, Object> body) {
+        String ownerEmail = (String) body.get("ownerEmail");
+        String groupName = (String) body.getOrDefault("groupName", "E2E Test Group");
+        @SuppressWarnings("unchecked")
+        List<String> memberEmails = (List<String>) body.getOrDefault("memberEmails", List.of());
+
+        if (ownerEmail == null || ownerEmail.isBlank()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "ownerEmail required"));
+        }
+
+        User owner = userRepository.findByEmail(ownerEmail).orElse(null);
+        if (owner == null) {
+            return ResponseEntity.status(404).body(Map.of("error", "Owner not found: " + ownerEmail));
+        }
+
+        // Create group
+        ChurchGroup group = new ChurchGroup();
+        group.setId(UUID.randomUUID().toString());
+        group.setName(groupName);
+        group.setGroupCode(generateTestGroupCode());
+        group.setDescription("Seeded by e2e test helper");
+        group.setLeader(owner);
+        group.setMemberCount(1);
+        churchGroupRepository.save(group);
+
+        // Add leader as member
+        GroupMember leaderMember = new GroupMember();
+        leaderMember.setId(UUID.randomUUID().toString());
+        leaderMember.setGroup(group);
+        leaderMember.setUser(owner);
+        leaderMember.setRole(GroupMember.GroupRole.LEADER);
+        groupMemberRepository.save(leaderMember);
+
+        // Add additional members
+        List<String> addedMembers = new ArrayList<>();
+        List<String> missingMembers = new ArrayList<>();
+        int memberCount = 1;
+        for (String memberEmail : memberEmails) {
+            User member = userRepository.findByEmail(memberEmail).orElse(null);
+            if (member == null) {
+                missingMembers.add(memberEmail);
+                continue;
+            }
+            if (member.getId().equals(owner.getId())) {
+                continue; // Skip owner (already added as leader)
+            }
+            GroupMember gm = new GroupMember();
+            gm.setId(UUID.randomUUID().toString());
+            gm.setGroup(group);
+            gm.setUser(member);
+            gm.setRole(GroupMember.GroupRole.MEMBER);
+            groupMemberRepository.save(gm);
+            addedMembers.add(memberEmail);
+            memberCount++;
+        }
+        group.setMemberCount(memberCount);
+        churchGroupRepository.save(group);
+
+        log.warn("[TEST_PANEL] test.seed_group groupId={} owner={} members={} missing={}",
+                group.getId(), ownerEmail, addedMembers, missingMembers);
+
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("groupId", group.getId());
+        response.put("groupName", groupName);
+        response.put("groupCode", group.getGroupCode());
+        response.put("ownerEmail", ownerEmail);
+        response.put("addedMembers", addedMembers);
+        response.put("missingMembers", missingMembers);
+        response.put("memberCount", memberCount);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Create a tournament in LOBBY state with specified users as participants.
+     * First participant email becomes the creator.
+     *
+     * <p>Audit: {@code [TEST_PANEL] test.seed_tournament}
+     */
+    @PostMapping("/seed-tournament")
+    @Transactional
+    public ResponseEntity<?> seedTournament(@RequestBody Map<String, Object> body) {
+        String tournamentName = (String) body.getOrDefault("tournamentName", "E2E Test Tournament");
+        @SuppressWarnings("unchecked")
+        List<String> participantEmails = (List<String>) body.getOrDefault("participantEmails", List.of());
+
+        if (participantEmails.isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "participantEmails required (>=1)"));
+        }
+
+        // First email is creator
+        User creator = userRepository.findByEmail(participantEmails.get(0)).orElse(null);
+        if (creator == null) {
+            return ResponseEntity.status(404).body(Map.of("error", "Creator not found: " + participantEmails.get(0)));
+        }
+
+        Tournament tournament = new Tournament();
+        tournament.setId(UUID.randomUUID().toString());
+        tournament.setName(tournamentName);
+        tournament.setCreator(creator);
+        tournament.setBracketSize(8);
+        tournament.setStatus(Tournament.Status.LOBBY);
+        tournament.setCurrentRound(0);
+        tournamentRepository.save(tournament);
+
+        List<String> addedParticipants = new ArrayList<>();
+        List<String> missingParticipants = new ArrayList<>();
+        for (String email : participantEmails) {
+            User u = userRepository.findByEmail(email).orElse(null);
+            if (u == null) {
+                missingParticipants.add(email);
+                continue;
+            }
+            TournamentParticipant tp = new TournamentParticipant();
+            tp.setId(UUID.randomUUID().toString());
+            tp.setTournament(tournament);
+            tp.setUser(u);
+            tp.setEliminated(false);
+            tournamentParticipantRepository.save(tp);
+            addedParticipants.add(email);
+        }
+
+        log.warn("[TEST_PANEL] test.seed_tournament tournamentId={} creator={} participants={} missing={}",
+                tournament.getId(), creator.getEmail(), addedParticipants, missingParticipants);
+
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("tournamentId", tournament.getId());
+        response.put("tournamentName", tournamentName);
+        response.put("status", tournament.getStatus().name());
+        response.put("creatorEmail", creator.getEmail());
+        response.put("addedParticipants", addedParticipants);
+        response.put("missingParticipants", missingParticipants);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Flip N existing questions to PENDING review status so the admin review
+     * queue has seed data.
+     *
+     * <p>Audit: {@code [TEST_PANEL] test.seed_review_queue}
+     */
+    @PostMapping("/seed-review-queue")
+    @Transactional
+    public ResponseEntity<?> seedReviewQueue(@RequestBody Map<String, Object> body) {
+        int count = body.get("count") != null ? ((Number) body.get("count")).intValue() : 5;
+        if (count < 1 || count > 100) {
+            return ResponseEntity.badRequest().body(Map.of("error", "count must be 1-100"));
+        }
+
+        // Grab N active questions to flip to PENDING
+        List<Question> pool = questionRepository.findByIsActiveTrue(PageRequest.of(0, count)).getContent();
+        if (pool.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "No active questions in database to seed"));
+        }
+
+        int flipped = 0;
+        List<String> ids = new ArrayList<>();
+        for (Question q : pool) {
+            q.setReviewStatus(Question.ReviewStatus.PENDING);
+            ids.add(q.getId());
+            flipped++;
+            if (flipped >= count) break;
+        }
+        questionRepository.saveAll(pool.subList(0, flipped));
+
+        log.warn("[TEST_PANEL] test.seed_review_queue count={} flipped={}", count, flipped);
+
+        return ResponseEntity.ok(Map.of(
+                "requested", count,
+                "flipped", flipped,
+                "questionIds", ids
+        ));
+    }
+
+    /**
+     * Create N feedback entries from a given user (all pending, type=general).
+     *
+     * <p>Audit: {@code [TEST_PANEL] test.seed_feedback}
+     */
+    @PostMapping("/seed-feedback")
+    @Transactional
+    public ResponseEntity<?> seedFeedback(@RequestBody Map<String, Object> body) {
+        String userEmail = (String) body.get("userEmail");
+        int count = body.get("count") != null ? ((Number) body.get("count")).intValue() : 3;
+
+        if (userEmail == null || userEmail.isBlank()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "userEmail required"));
+        }
+        if (count < 1 || count > 50) {
+            return ResponseEntity.badRequest().body(Map.of("error", "count must be 1-50"));
+        }
+
+        User user = userRepository.findByEmail(userEmail).orElse(null);
+        if (user == null) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found: " + userEmail));
+        }
+
+        List<String> createdIds = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            Feedback f = new Feedback(
+                    UUID.randomUUID().toString(),
+                    user,
+                    Feedback.Type.general,
+                    "E2E test feedback #" + (i + 1) + " from " + userEmail
+            );
+            f.setStatus(Feedback.Status.pending);
+            feedbackRepository.save(f);
+            createdIds.add(f.getId());
+        }
+
+        log.warn("[TEST_PANEL] test.seed_feedback user={} count={}", user.getId(), count);
+
+        return ResponseEntity.ok(Map.of(
+                "userId", user.getId(),
+                "email", userEmail,
+                "created", createdIds.size(),
+                "feedbackIds", createdIds
+        ));
+    }
+
+    /**
+     * Seed ranked progress for today — sets questionsCounted and pointsToday
+     * on the user's UserDailyProgress for today, so the Ranked page shows
+     * meaningful data.
+     *
+     * <p>Audit: {@code [TEST_PANEL] test.seed_ranked_progress}
+     */
+    @PostMapping("/seed-ranked-progress")
+    @Transactional
+    public ResponseEntity<?> seedRankedProgress(@RequestBody Map<String, Object> body) {
+        String email = (String) body.get("email");
+        Integer questionsAnswered = body.get("questionsAnswered") != null
+                ? ((Number) body.get("questionsAnswered")).intValue() : 20;
+        Integer correctAnswers = body.get("correctAnswers") != null
+                ? ((Number) body.get("correctAnswers")).intValue() : 15;
+
+        if (email == null || email.isBlank()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "email required"));
+        }
+        if (correctAnswers > questionsAnswered) {
+            return ResponseEntity.badRequest().body(Map.of(
+                    "error", "correctAnswers cannot exceed questionsAnswered"));
+        }
+
+        User user = userRepository.findByEmail(email).orElse(null);
+        if (user == null) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found: " + email));
+        }
+
+        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        final User userRef = user;
+        UserDailyProgress progress = dailyProgressRepository
+                .findByUserIdAndDate(user.getId(), today)
+                .orElseGet(() -> {
+                    UserDailyProgress p = new UserDailyProgress();
+                    p.setId(UUID.randomUUID().toString());
+                    p.setUser(userRef);
+                    p.setDate(today);
+                    p.setLivesRemaining(100);
+                    p.setPointsCounted(0);
+                    p.setQuestionsCounted(0);
+                    return p;
+                });
+
+        // Points: 10 per correct answer (simple formula for seed data)
+        int pointsToday = correctAnswers * 10;
+        progress.setQuestionsCounted(questionsAnswered);
+        progress.setPointsCounted(pointsToday);
+        dailyProgressRepository.save(progress);
+
+        log.warn("[TEST_PANEL] test.seed_ranked_progress user={} questions={} correct={} points={}",
+                user.getId(), questionsAnswered, correctAnswers, pointsToday);
+
+        return ResponseEntity.ok(Map.of(
+                "userId", user.getId(),
+                "email", email,
+                "date", today.toString(),
+                "questionsAnswered", questionsAnswered,
+                "correctAnswers", correctAnswers,
+                "pointsToday", pointsToday
+        ));
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Helpers
+    // ─────────────────────────────────────────────────────────────────────────
+
+    private static final String GROUP_CODE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private static final java.security.SecureRandom GROUP_CODE_RNG = new java.security.SecureRandom();
+
+    private String generateTestGroupCode() {
+        // 6-char alphanumeric, retry on collision (up to 10 attempts)
+        for (int attempt = 0; attempt < 10; attempt++) {
+            StringBuilder sb = new StringBuilder(6);
+            for (int i = 0; i < 6; i++) {
+                sb.append(GROUP_CODE_CHARS.charAt(GROUP_CODE_RNG.nextInt(GROUP_CODE_CHARS.length())));
+            }
+            String code = sb.toString();
+            if (churchGroupRepository.findByGroupCode(code).isEmpty()) {
+                return code;
+            }
+        }
+        // Fallback: use UUID-derived code (extremely unlikely to collide)
+        return UUID.randomUUID().toString().substring(0, 6).toUpperCase();
     }
 }
