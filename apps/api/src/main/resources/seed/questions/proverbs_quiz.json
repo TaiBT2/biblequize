@@ -1,0 +1,383 @@
+[
+  {
+    "book": "Proverbs",
+    "chapter": 3,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong Châm Ngôn 3:5-6, \"Hãy hết lòng tin cậy Đức Giê-hô-va, chớ nương cậy nơi sự thông sáng của con\". Từ \"tin cậy\" trong tiếng Hê-bơ-rơ có nghĩa gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Batah (בטח) có nghĩa là \"tin cậy, nương dựa\", không chỉ tin mà còn dựa vào hoàn toàn.",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "Batah - Tin cậy, nương dựa",
+      "Aman - Tin tưởng",
+      "Yachal - Hy vọng",
+      "Chasah - Ẩn náu"
+    ],
+    "tags": [
+      "Châm Ngôn",
+      "Sự khôn ngoan",
+      "Ngôn ngữ Hê-bơ-rơ",
+      "Cựu Ước",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Proverbs",
+    "chapter": 31,
+    "verseStart": 10,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong Châm Ngôn 31:10, \"Người đàn bà tài đức ai sẽ tìm được?\" Từ \"tài đức\" trong tiếng Hê-bơ-rơ có nghĩa gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Chayil (חיל) có nghĩa là \"sức mạnh, quyền năng\", không chỉ tài năng mà còn có sức mạnh nội tại.",
+    "language": "vi",
+    "options": [
+      "Chakam - Khôn ngoan",
+      "Tov - Tốt lành",
+      "Chayil - Sức mạnh, quyền năng",
+      "Yashar - Ngay thẳng"
+    ],
+    "tags": [
+      "Châm Ngôn",
+      "Người đàn bà tài đức",
+      "Ngôn ngữ Hê-bơ-rơ",
+      "Cựu Ước",
+      "Văn Thơ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Proverbs",
+    "chapter": 1,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Châm ngôn 1:7, sự khôn ngoan bắt đầu từ điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Châm 1:7 - Sự kính sợ Đức Giê-hô-va là khởi đầu sự tri thức. Mọi sự khôn ngoan thật đều bắt nguồn từ Chúa.",
+    "language": "vi",
+    "options": [
+      "Kinh nghiệm",
+      "Học thức",
+      "Sự kính sợ Đức Giê-hô-va",
+      "Tuân theo luật pháp"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Khôn ngoan",
+      "Kính sợ Chúa",
+      "Châm Ngôn",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Proverbs",
+    "chapter": 3,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Châm ngôn 3:5 dạy: \"Hãy hết lòng tin cậy Đức Giê-hô-va, chớ nương cậy nơi ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Châm 3:5-6 - Hãy tin cậy Chúa hết lòng, đừng dựa vào trí hiểu mình. Trong mọi đường lối hãy nhận biết Ngài.",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "Người khác",
+      "Sức mạnh của con",
+      "Sự giàu có",
+      "Sự thông sáng của con"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Khôn ngoan",
+      "Tin cậy",
+      "Châm Ngôn",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Proverbs",
+    "chapter": 22,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Châm ngôn 22:6 dạy về việc nuôi dạy con cái thế nào?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Châm 22:6 - Nguyên tắc giáo dục: dạy dỗ trẻ từ nhỏ theo đường lối của Chúa.",
+    "language": "vi",
+    "options": [
+      "Hãy để trẻ tự phát triển",
+      "Hãy nghiêm khắc",
+      "Hãy dạy trẻ thơ theo đường nó phải đi, đến khi nó già cũng không rời khỏi",
+      "Hãy cho trẻ tự do hoàn toàn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Khôn ngoan",
+      "Giáo dục",
+      "Châm Ngôn",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Proverbs",
+    "chapter": 27,
+    "verseStart": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Châm ngôn 27:17 nói: \"Sắt mài sắt cho bén. Cũng vậy ___ mài giữa bạn hữu\"",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Châm 27:17 - Sắt mài sắt cho bén, bạn bè tốt giúp nhau trưởng thành qua mối quan hệ chân thật.",
+    "language": "vi",
+    "options": [
+      "Tâm lòng đối tâm lòng",
+      "Người này làm cho người kia bén",
+      "Lời nói đối lời nói",
+      "Mặt đối mặt"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Khôn ngoan",
+      "Tình bạn",
+      "Châm Ngôn",
+      "Văn Thơ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Proverbs",
+    "chapter": 4,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Châm 4:23 dạy chúng ta phải gìn giữ gì hơn hết?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Châm 4:23 - Hãy gìn giữ lòng con hơn hết, vì các nguồn sự sống đó mà ra.",
+    "language": "vi",
+    "options": [
+      "Danh tiếng",
+      "Sức khỏe",
+      "Tâm lòng (lòng mình)",
+      "Tiền bạc"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Khôn ngoan",
+      "Tâm lòng",
+      "Châm Ngôn",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Proverbs",
+    "chapter": 6,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Châm ngôn khuyên kẻ lười biếng học tập từ con vật nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Châm 6:6 - Hãy đến xem con kiến, hỡi kẻ lười biếng ơi. Nó tích trữ lương thực dù không có chỉ huy.",
+    "language": "vi",
+    "verseEnd": 8,
+    "options": [
+      "Con chim",
+      "Con sóc",
+      "Con ong",
+      "Con kiến"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Khôn ngoan",
+      "Siêu năng",
+      "Châm Ngôn",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Proverbs",
+    "chapter": 11,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Châm 11:2: \"Khi sự kiêu ngạo đến, thì sự ___ cũng đến\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Châm 11:2 - Kiêu ngạo dẫn đến sỉ nhục. Khiêm nhường mới mang lại sự khôn ngoan.",
+    "language": "vi",
+    "options": [
+      "Thành công",
+      "Quyền lực",
+      "Sỉ nhục",
+      "Giàu có"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Khôn ngoan",
+      "Khiêm nhường",
+      "Châm Ngôn",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Proverbs",
+    "chapter": 12,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Châm 12:1 nói ai là người ngu dại?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Châm 12:1 - Ai yêu sự sửa phạt thì yêu tri thức, kẻ ghét sự trách phạt là ngu dại.",
+    "language": "vi",
+    "options": [
+      "Kẻ ghét sự sửa phạt",
+      "Kẻ không học",
+      "Kẻ trẻ",
+      "Kẻ nghèo"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Khôn ngoan",
+      "Sửa phạt",
+      "Châm Ngôn",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Proverbs",
+    "chapter": 15,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Châm 15:1 dạy: \"Lời đáp mềm làm ___\"",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Châm 15:1 - Lời đáp mềm làm người tan cơn giận, nhưng lời xốc xả trở sự nóng giận.",
+    "language": "vi",
+    "options": [
+      "Người khôn ngoan",
+      "Người tan cơn giận",
+      "Người hòa nhã",
+      "Người vui vẻ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Khôn ngoan",
+      "Lời nói",
+      "Châm Ngôn",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Proverbs",
+    "chapter": 16,
+    "verseStart": 18,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Châm 16:18: \"Sự kiêu ngạo đi trước sự ___\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Châm 16:18 - Sự kiêu ngạo đi trước sự bại hoại, tính tự phụ đi trước sự sa ngã.",
+    "language": "vi",
+    "options": [
+      "Khôn ngoan",
+      "Thành công",
+      "Bại hoại",
+      "Giàu có"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Khôn ngoan",
+      "Kiêu ngạo",
+      "Châm Ngôn",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Proverbs",
+    "chapter": 18,
+    "verseStart": 24,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Châm 18:24 nói về người bạn như thế nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Châm 18:24 - Chất lượng hơn số lượng. Một bạn thân thật còn gần gũi hơn anh em ruột.",
+    "language": "vi",
+    "options": [
+      "Bạn ít là đủ",
+      "Không cần bạn",
+      "Bạn nhiều là tốt",
+      "Có bạn thân hơn anh em ruột"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Khôn ngoan",
+      "Tình bạn",
+      "Châm Ngôn",
+      "Văn Thơ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Proverbs",
+    "chapter": 14,
+    "verseStart": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Châm 14:12: \"Có một con đường coi dường trước mặt người ta nhưng cuối cùng là đường ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Châm 14:12 - Không phải mọi con đường nhìn đúng đều đúng thật. Cần sự hướng dẫn của Chúa.",
+    "language": "vi",
+    "options": [
+      "Thành công",
+      "Bình an",
+      "Giàu có",
+      "Sự chết"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Khôn ngoan",
+      "Sự chọn lựa",
+      "Châm Ngôn",
+      "Văn Thơ",
+      "Trung cấp"
+    ]
+  }
+]

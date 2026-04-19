@@ -12,7 +12,11 @@ import java.util.List;
 @Data
 public class SubmitAnswerRequest {
 
-    @NotBlank(message = "Session ID is required")
+    // sessionId comes from the URL path (@PathVariable in SessionController.answer),
+    // not from the request body. Keep the field optional for clients that
+    // duplicate it, but drop @NotBlank — the FE (Quiz.tsx) does NOT send it
+    // in the body, so requiring it here produced 400 "Session ID is required"
+    // on every Practice answer submission.
     @Size(max = 36, message = "Session ID cannot exceed 36 characters")
     private String sessionId;
 

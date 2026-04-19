@@ -1,0 +1,329 @@
+[
+  {
+    "book": "1 John",
+    "chapter": 4,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Giăng 4:8 định nghĩa Đức Chúa Trời là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Giăng 4:8 - Đức Chúa Trời là sự yêu thương. Ai không yêu thương thì không biết Đức Chúa Trời.",
+    "language": "vi",
+    "options": [
+      "Đức Chúa Trời là lửa",
+      "Đức Chúa Trời là thần",
+      "Đức Chúa Trời là sự yêu thương",
+      "Đức Chúa Trời là sự sáng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Bản tính Chúa",
+      "Yêu thương",
+      "1 Giăng",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 1,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Nếu chúng ta xưng nhận tội mình, Chúa sẽ làm gì theo 1 Giăng 1:9?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Giăng 1:9 - Chúa thành tín và công bình sẽ tha tội và làm sạch mọi sự gian ác. Chỉ cần xưng nhận chân thật.",
+    "language": "vi",
+    "options": [
+      "Đòi chúng ta chứng minh",
+      "Hình phạt chúng ta",
+      "Quay mặt đi",
+      "Tha tội và làm sạch mọi sự gian ác"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tha thứ",
+      "Xưng tội",
+      "1 Giăng",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 1,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Giăng 1:7: Nếu chúng ta bước đi trong sự sáng thì huyết Chúa Giê-su làm gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Bước đi trong sự sáng + huyết Chúa = sự tẩy sạch liên tục khỏi tội lỗi.",
+    "language": "vi",
+    "options": [
+      "Chữa lành chúng ta",
+      "Tẩy sạch mọi tội lỗi chúng ta",
+      "Bảo vệ chúng ta",
+      "An ủi chúng ta"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tẩy sạch",
+      "Huyết",
+      "1 Giăng",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 2,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Giăng 2:1-2: Khi phạm tội, ai là Đấng bào chữa cho chúng ta?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Chúa Giê-su là luật sư bào chữa và cũng là của lễ chuộc tội cho chúng ta.",
+    "language": "vi",
+    "verseEnd": 2,
+    "options": [
+      "Phi-e-rô",
+      "Thiên sứ",
+      "Chúa Giê-su Christ, Đấng công bình",
+      "Môi-se"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Bào chữa",
+      "Chuộc tội",
+      "1 Giăng",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 2,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Giăng 2:15: \"Đừng yêu ___\" vì mọi sự ở trong đó không phải từ Cha",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Hệ thống giá trị thế gian (dục ham muốn, dục ham mắt, sự kiêu ngạo) chống lại Chúa.",
+    "language": "vi",
+    "verseEnd": 16,
+    "options": [
+      "Bạn bè",
+      "Gia đình",
+      "Công việc",
+      "Thế gian và những điều thuộc thế gian"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thế gian",
+      "Cảnh báo",
+      "1 Giăng",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 3,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Giăng 3:16: Bởi điều này chúng ta biết tình yêu thương: Ngài đã ___ vì chúng ta",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Định nghĩa tình yêu: hy sinh mạng sống. Và chúng ta cũng phải làm vậy cho anh em.",
+    "language": "vi",
+    "options": [
+      "Phó mạng sống Ngài",
+      "Chữa lành",
+      "Cầu nguyện",
+      "Dạy dỗ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tình yêu",
+      "Hy sinh",
+      "1 Giăng",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 3,
+    "verseStart": 18,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Giăng 3:18: \"Hãy yêu thương không chỉ bằng lời nói và lưỡi nhưng bằng ___\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Tình yêu thật biểu hiện qua hành động cụ thể, không chỉ lời nói.",
+    "language": "vi",
+    "options": [
+      "Việc làm và lẽ thật",
+      "Lời hứa",
+      "Cảm xúc",
+      "Tiền bạc"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tình yêu",
+      "Hành động",
+      "1 Giăng",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 4,
+    "verseStart": 18,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Giăng 4:18: Tình yêu trọn vẹn làm gì với sự sợ hãi?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Khi biết Chúa yêu chúng ta trọn vẹn, sự sợ hãi bị xua tan.",
+    "language": "vi",
+    "options": [
+      "Giấu sự sợ hãi",
+      "Không liên quan",
+      "Tăng sự sợ hãi",
+      "Cất bỏ sự sợ hãi"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tình yêu",
+      "Sợ hãi",
+      "1 Giăng",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 4,
+    "verseStart": 19,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Giăng 4:19: \"Chúng ta yêu vì ___ đã yêu chúng ta trước\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Tình yêu của chúng ta chỉ là phản hồi tình yêu Chúa đã ban trước.",
+    "language": "vi",
+    "options": [
+      "Tất nhiên",
+      "Chúng ta muốn",
+      "Ngài (Chúa)",
+      "Phải làm"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tình yêu",
+      "Nguồn",
+      "1 Giăng",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 5,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Giăng 5:3: Yêu Chúa là gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Yêu = vâng lời. Và điều răn Chúa không nặng nề khi có Thánh Linh giúp.",
+    "language": "vi",
+    "options": [
+      "Đi nhà thờ",
+      "Giữ các điều răn Ngài, và điều răn Ngài không nặng nề",
+      "Cầu nguyện nhiều",
+      "Dâng của lễ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Vâng lời",
+      "Tình yêu",
+      "1 Giăng",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 5,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Giăng 5:14: Nếu cầu xin điều gì theo ý muốn Chúa thì Ngài sẽ ___",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Cầu nguyện theo ý Chúa là chìa khóa được Ngài nghe và đáp lời.",
+    "language": "vi",
+    "verseEnd": 15,
+    "options": [
+      "Đợi",
+      "Nghe chúng ta",
+      "Suy nghĩ",
+      "Thử"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cầu nguyện",
+      "Ý Chúa",
+      "1 Giăng",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 4,
+    "verseStart": 10,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "1 Giăng 4:10: Tình yêu là thế này: không phải chúng ta yêu Chúa nhưng ___ đã yêu chúng ta và sai Con Ngài làm của lễ chuộc tội",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Tình yêu khởi xướng từ Chúa, không phải từ chúng ta. Chúa chủ động yêu trước.",
+    "language": "vi",
+    "options": [
+      "Tiên tri",
+      "Thiên sứ",
+      "Ngài",
+      "Chúng ta"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tình yêu",
+      "Chủ động",
+      "1 Giăng",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  }
+]

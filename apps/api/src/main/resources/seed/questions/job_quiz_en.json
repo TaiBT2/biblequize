@@ -1,0 +1,322 @@
+[
+  {
+    "book": "Job",
+    "chapter": 1,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How does the Bible describe Job?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Job 1:1 - Job was blameless and upright, one who feared God and shunned evil.",
+    "language": "en",
+    "options": [
+      "The richest",
+      "Blameless, upright, God-fearing, and shunning evil",
+      "The wisest",
+      "The strongest"
+    ],
+    "tags": [
+      "Old Testament",
+      "Job",
+      "Righteousness",
+      "Wisdom",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 1,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Why did Satan accuse Job of fearing God?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Job 1:9-11 - Satan accused Job of believing only for personal gain. God allowed testing to prove Job's genuine faith.",
+    "language": "en",
+    "verseEnd": 11,
+    "options": [
+      "Because Job wanted praise",
+      "Because Job feared punishment",
+      "Because Job was foolish",
+      "Because God protected and blessed him, not from a sincere heart"
+    ],
+    "tags": [
+      "Old Testament",
+      "Job",
+      "Testing",
+      "Wisdom",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 2,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What did Job's wife tell him to do, and how did Job respond?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Job 2:9-10 - Job refused to abandon his faith even when his closest companion urged him to give it up.",
+    "language": "en",
+    "verseEnd": 10,
+    "options": [
+      "They both wept",
+      "Wife said: curse God and die. Job: shall we receive good and not accept trouble?",
+      "They both prayed",
+      "They both gave up"
+    ],
+    "tags": [
+      "Old Testament",
+      "Job",
+      "Faith",
+      "Wisdom",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 13,
+    "verseStart": 15,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What did Job declare even while suffering?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Job 13:15 - Unconditional faith: trusting God even in the worst circumstances.",
+    "language": "en",
+    "options": [
+      "Though He slay me, yet will I trust Him",
+      "I will forsake God",
+      "God is unjust",
+      "I am innocent"
+    ],
+    "tags": [
+      "Old Testament",
+      "Job",
+      "Faith",
+      "Wisdom",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 19,
+    "verseStart": 25,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Job declared: \"I know that my ___ lives\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Job 19:25 - In the midst of suffering, Job declared his faith in the living Redeemer and the resurrection.",
+    "language": "en",
+    "verseEnd": 26,
+    "options": [
+      "Redeemer",
+      "Protector",
+      "Creator",
+      "Judge"
+    ],
+    "tags": [
+      "Old Testament",
+      "Job",
+      "Redemption",
+      "Wisdom",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 38,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "From where did God answer Job?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Job 38:1 - God spoke from the whirlwind, asking Job many questions about creation to reveal His infinite wisdom.",
+    "language": "en",
+    "verseEnd": 4,
+    "options": [
+      "From the burning bush",
+      "Out of the whirlwind",
+      "From a cloud",
+      "From heaven"
+    ],
+    "tags": [
+      "Old Testament",
+      "Job",
+      "Sovereignty",
+      "Wisdom",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 40,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "After God spoke, how did Job respond?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Job 40:4-5 - Job recognized his smallness before God's greatness and fell silent.",
+    "language": "en",
+    "verseEnd": 5,
+    "options": [
+      "With anger",
+      "Continued to argue",
+      "Laid his hand over his mouth and spoke no more",
+      "Ran away"
+    ],
+    "tags": [
+      "Old Testament",
+      "Job",
+      "Humility",
+      "Wisdom",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 42,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Job said: \"I have heard of You by the hearing of the ear, but now ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Job 42:5 - From hearsay to personal experience. Suffering led Job to a deeper knowledge of God.",
+    "language": "en",
+    "verseEnd": 6,
+    "options": [
+      "I know Him",
+      "I believe Him",
+      "I understand Him",
+      "My eye has seen You"
+    ],
+    "tags": [
+      "Old Testament",
+      "Job",
+      "Experience",
+      "Wisdom",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 42,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "In the end, how much did God give Job compared to before?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Job 42:10 - God restored double. The Lord is compassionate to those who patiently endure (James 5:11).",
+    "language": "en",
+    "verseEnd": 12,
+    "options": [
+      "Three times",
+      "The same as before",
+      "Twice as much of everything",
+      "Less than before"
+    ],
+    "tags": [
+      "Old Testament",
+      "Job",
+      "Restoration",
+      "Wisdom",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 28,
+    "verseStart": 28,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What does Job 28:28 conclude true wisdom is?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Job 28:28 - Similar to Proverbs 1:7 and Ecclesiastes 12:13. Wisdom begins and ends with the fear of the Lord.",
+    "language": "en",
+    "options": [
+      "Experience",
+      "The fear of the Lord and turning away from evil",
+      "Knowledge",
+      "Much learning"
+    ],
+    "tags": [
+      "Old Testament",
+      "Job",
+      "Wisdom",
+      "Wisdom",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 5,
+    "verseStart": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Eliphaz said: \"Blessed is the one whom God ___\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Job 5:17 - God's correction is a sign of love, not abandonment (Hebrews 12:6).",
+    "language": "en",
+    "options": [
+      "Corrects; do not despise the chastening of the Almighty",
+      "Blesses",
+      "Protects",
+      "Loves"
+    ],
+    "tags": [
+      "Old Testament",
+      "Job",
+      "Discipline",
+      "Wisdom",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 42,
+    "verseStart": 7,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Why did God rebuke Job's three friends?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Job 42:7 - Though Job lamented, he remained honest with God. The three friends had tidy doctrine but were wrong about God's character.",
+    "language": "en",
+    "verseEnd": 8,
+    "options": [
+      "They did not speak correctly about God as Job did",
+      "They worshiped idols",
+      "They did not pray",
+      "They abandoned Job"
+    ],
+    "tags": [
+      "Old Testament",
+      "Job",
+      "Theology",
+      "Wisdom",
+      "Advanced"
+    ]
+  }
+]

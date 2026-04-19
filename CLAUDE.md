@@ -202,6 +202,25 @@ LÀM ĐÚNG: chia thành TODO rồi làm từng task:
 - E2E Test: Playwright (CHƯA SETUP — xem PLAYWRIGHT_CODE_CONVENTIONS.md section 0 để bootstrap)
 - Design: Stitch MCP (project ID `5341030797678838526`)
 
+## Product context
+- **Target audience**: Tin Lành (Protestant) chủ yếu; naming tier religious phù hợp cả Công Giáo nhưng nội dung Kinh Thánh là Protestant canon.
+- **Bible canon**: 66 books (Protestant). KHÔNG thêm 7 Deuterocanonical của Công Giáo. Xem DECISIONS.md 2026-04-19 "Bible canon: Protestant only".
+- **Tier naming**: religious (Tân Tín Hữu → Sứ Đồ), KHÔNG light-themed (Tia Sáng → Vinh Quang). Xem DECISIONS.md 2026-04-19 "Keep OLD religious tier naming".
+
+## Question Seeding (source of truth)
+- **Canonical location**: `apps/api/src/main/resources/seed/questions/*_quiz*.json`
+- **Filename convention**:
+  - `{book}_quiz.json` — Vietnamese version (default)
+  - `{book}_quiz_en.json` — English version (generated via `scripts/translate_to_en.py`)
+- **Format**: array of SeedQuestion objects (see `infrastructure/seed/question/SeedQuestion.java` for schema — key fields: `book, chapter, verseStart, verseEnd?, difficulty, type, content, options, correctAnswer, explanation, language, tags?`).
+- **Seeder**: `QuestionSeeder` runs on `ApplicationReadyEvent`. Idempotent (deterministic UUIDs). Safe to restart app many times. VI + EN of same question coexist as 2 distinct DB rows (language is part of the ID hash).
+- **Enable/disable**: `app.seeding.questions.enabled=true|false` in `application.yml` (default true; set `QUESTION_SEEDING_ENABLED=false` env var in prod after initial seed if desired).
+- **Add new questions**: append to the relevant `{book}_quiz.json` file → restart app → only new entries insert.
+- **Edit existing question**: edits create a NEW row (new deterministic UUID). Prefer "add new version" over "in-place edit". Admin UI handles in-place edits for DB-level corrections.
+- **EN translation workflow**: `GEMINI_API_KEY=xxx python3 scripts/translate_to_en.py --all` — calls Gemini, writes `{book}_quiz_en.json` next to each VI file. Idempotent (skip existing unless `--force`).
+- **SQL → JSON import**: `python3 scripts/sql_to_json.py` — one-shot converter for legacy `R__*_questions.sql` files. Skips books already in JSON (no overwrite).
+- **Legacy Flyway seeds**: 26 `R__*_questions.sql` files still present. Converter has already extracted ~664 questions into JSON. Remaining step: verify + delete SQL files (tracked in TODO GA-7).
+
 ## Quản lý quyết định
 
 Mỗi khi đưa ra quyết định kỹ thuật thuộc các loại sau:

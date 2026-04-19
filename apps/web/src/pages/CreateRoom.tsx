@@ -63,7 +63,7 @@ export default function CreateRoom() {
   if (!isAuthenticated) return null
 
   return (
-    <div className="min-h-screen bg-[#11131e] text-[#e1e1f1] flex items-start justify-center px-4 py-12" data-testid="create-room-page">
+    <div data-testid="create-room-page" className="flex justify-center">
       <div className="w-full max-w-2xl space-y-6">
         {/* Back link */}
         <Link to="/multiplayer" className="inline-flex items-center gap-2 text-on-surface-variant hover:text-on-surface text-sm transition-colors">

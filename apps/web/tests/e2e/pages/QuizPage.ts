@@ -13,6 +13,9 @@ export class QuizPage extends BasePage {
   readonly questionBook: Locator
   readonly explanation: Locator
 
+  // ── Lifeline locators (v1 — hint only) ──
+  readonly hintBtn: Locator
+
   constructor(page: Page) {
     super(page)
     this.container = page.getByTestId('quiz-page')
@@ -24,6 +27,7 @@ export class QuizPage extends BasePage {
     this.scoreDelta = page.getByTestId('quiz-score-delta')
     this.questionBook = page.getByTestId('quiz-question-book')
     this.explanation = page.getByTestId('quiz-explanation')
+    this.hintBtn = page.getByTestId('quiz-hint-btn')
   }
 
   // ── Helpers ───────────────────────────────────────────────
@@ -57,6 +61,32 @@ export class QuizPage extends BasePage {
     await this.answerFeedback.waitFor({ state: 'detached', timeout: 5_000 }).catch(() => {
       // May transition to results page instead
     })
+  }
+
+  /** Click the Hint lifeline. Waits for the hint response to complete. */
+  async useHint(): Promise<void> {
+    const responsePromise = this.page.waitForResponse(
+      (res) =>
+        res.url().includes('/lifeline/hint') && res.request().method() === 'POST',
+    )
+    await this.hintBtn.click()
+    await responsePromise
+  }
+
+  /** Returns the hint count displayed on the button (parses "Gợi ý (N)"). */
+  async getHintsRemaining(): Promise<number | null> {
+    const attr = await this.hintBtn.getAttribute('data-hint-remaining')
+    return attr ? parseInt(attr, 10) : null
+  }
+
+  /** Returns indices of answer options currently eliminated by hint. */
+  async getEliminatedOptions(): Promise<number[]> {
+    const indices: number[] = []
+    for (let i = 0; i < 4; i++) {
+      const eliminated = await this.option(i).getAttribute('data-eliminated')
+      if (eliminated === 'true') indices.push(i)
+    }
+    return indices
   }
 
   // ── Assertions ────────────────────────────────────────────

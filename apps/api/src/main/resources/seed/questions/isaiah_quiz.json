@@ -1,0 +1,383 @@
+[
+  {
+    "book": "Isaiah",
+    "chapter": 9,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong Ê-sai 9:6, \"Vì có một con trẻ sanh cho chúng ta\". Từ \"con trẻ\" trong tiếng Hê-bơ-rơ có nghĩa gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Yeled (ילד) có nghĩa là \"con trẻ\", ám chỉ đến Chúa Giê-su được sinh ra như một em bé.",
+    "language": "vi",
+    "options": [
+      "Bachur - Thanh niên",
+      "Zaken - Người già",
+      "Yeled - Con trẻ",
+      "Naar - Thiếu niên"
+    ],
+    "tags": [
+      "Ê-sai",
+      "Tiên tri Mê-si-a",
+      "Ngôn ngữ Hê-bơ-rơ",
+      "Cựu Ước",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Isaiah",
+    "chapter": 53,
+    "verseStart": 5,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong Ê-sai 53:5, \"Người đã bị vì tội lỗi chúng ta mà bị thương\". Từ \"bị thương\" trong tiếng Hê-bơ-rơ có nghĩa gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Chalal (חלל) có nghĩa là \"bị đâm thủng, bị thương\", ám chỉ đến sự chết của Chúa Giê-su trên thập tự.",
+    "language": "vi",
+    "options": [
+      "Aven - Tội lỗi",
+      "Ra - Xấu",
+      "Naga - Chạm đến",
+      "Chalal - Bị đâm thủng, bị thương"
+    ],
+    "tags": [
+      "Ê-sai",
+      "Tiên tri Mê-si-a",
+      "Ngôn ngữ Hê-bơ-rơ",
+      "Cựu Ước",
+      "Đại Tiên Tri",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Isaiah",
+    "chapter": 1,
+    "verseStart": 18,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "E-sai 1:18: \"Dù tội lỗi các ngươi như màu đỏ, sẽ trở nên ___\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Chúa hứa tha thứ hoàn toàn, biến đổi tội lỗi đỏ như máu thành trắng như tuyết.",
+    "language": "vi",
+    "options": [
+      "Trắng như tuyết",
+      "Mới như ban đầu",
+      "Sạch như nước",
+      "Đẹp như hoa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-sai",
+      "Tha thứ",
+      "Ê-sai",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Isaiah",
+    "chapter": 6,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sê-ra-phim kêu với nhau điều gì trong khải tượng của E-sai?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "E-sai 6:3 - Thánh thay (Kadosh) được lặp lại 3 lần, nhấn mạnh sự thánh khiết tuyệt đối của Chúa.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Vinh hiển cho Chúa",
+      "Ha-lê-lu-gia",
+      "A-men",
+      "Thánh thay, thánh thay, thánh thay là Đức Giê-hô-va vạn quân"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-sai",
+      "Thánh khiết",
+      "Ê-sai",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Isaiah",
+    "chapter": 11,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "E-sai 11:6 mô tả vương quốc hòa bình: \"Chó sói sẽ ở với ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "E-sai 11:6 - Khải tượng về thời đại hòa bình khi Đấng Cứu Thế cai trị, mọi thù địch sẽ hòa giải.",
+    "language": "vi",
+    "verseEnd": 9,
+    "options": [
+      "Dê",
+      "Sư tử",
+      "Gấu",
+      "Chiên con"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Hòa bình",
+      "Ê-sai",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Isaiah",
+    "chapter": 40,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "E-sai 40:8: \"Cỏ khô, hoa rụi, nhưng ___ của Đức Chúa Trời chúng ta còn lại đời đời\"",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Mọi thứ trên đất đều tạm thời nhưng Lời Chúa thì vĩnh viễn. 1 Phi 1:24-25 trích câu này.",
+    "language": "vi",
+    "options": [
+      "Đền thờ",
+      "Lời",
+      "Tình yêu",
+      "Giao ước"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-sai",
+      "Lời Chúa",
+      "Ê-sai",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Isaiah",
+    "chapter": 55,
+    "verseStart": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "E-sai 55:8-9 nói ý tưởng và đường lối của Chúa so với con người thế nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ý tưởng Chúa cao hơn ý tưởng con người như trời cao hơn đất. Chúng ta không thể hiểu hết Chúa.",
+    "language": "vi",
+    "verseEnd": 9,
+    "options": [
+      "Giống nhau",
+      "Hơi khác",
+      "Không thể so sánh",
+      "Cao hơn bao nhiêu trời cao hơn đất"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-sai",
+      "Chủ quyền",
+      "Ê-sai",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Isaiah",
+    "chapter": 64,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "E-sai 64:8 so sánh Chúa và chúng ta như gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Chúa là thợ gốm, chúng ta là đất sét. Ngài có quyền năng nhào chúng ta thành bất cứ điều gì Ngài muốn.",
+    "language": "vi",
+    "options": [
+      "Thợ gốm và đất sét",
+      "Cha và con",
+      "Thầy và trò",
+      "Vua và dân"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-sai",
+      "Chủ quyền",
+      "Ê-sai",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Isaiah",
+    "chapter": 6,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Chúa hỏi \"Ta sẽ sai ai đi?\", E-sai đáp thế nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "E-sai 6:8 - Có tôi đây, xin hãy sai tôi! E-sai sẵn sàng vâng phục sau khi được thánh tẩy.",
+    "language": "vi",
+    "options": [
+      "Tôi không xứng đáng",
+      "Có tôi đây, xin sai tôi",
+      "Xin sai người khác",
+      "Để tôi suy nghĩ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-sai",
+      "Vâng phục",
+      "Ê-sai",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Isaiah",
+    "chapter": 7,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "E-sai 7:14 tiên tri: \"Nầy một gái đồng trinh sẽ mang thai, sinh một trai, đặt tên là ___\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "E-sai 7:14 - Em-ma-nu-en (Đức Chúa Trời ở cùng chúng ta). Lời tiên tri này ứng nghiệm nơi Chúa Giê-su (Ma 1:23).",
+    "language": "vi",
+    "options": [
+      "Giê-su",
+      "Mi-ca-en",
+      "Em-ma-nu-en",
+      "Đấng Cứu Thế"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Giáng sinh",
+      "Ê-sai",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Isaiah",
+    "chapter": 9,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "E-sai 9:6 gọi Đấng Cứu Thế sắp đến bằng những danh hiệu nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "E-sai 9:6 - Bốn danh hiệu chỉ ra Chúa Giê-su vừa là Đức Chúa Trời vừa là người, vừa là vua vừa là thầy tế lễ.",
+    "language": "vi",
+    "options": [
+      "Vua của Vua",
+      "Đấng Mưu Luận Kỳ Diệu, Đức Chúa Trời Quyền Năng, Cha Đời Đời, Chúa Bình An",
+      "Con Người",
+      "Chiên Con của Chúa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Danh xưng",
+      "Ê-sai",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Isaiah",
+    "chapter": 40,
+    "verseStart": 31,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "E-sai 40:31 nói những ai trông đợi Chúa sẽ được gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "E-sai 40:31 - Ai trông đợi Đức Giê-hô-va sẽ được đổi mới sức, cất cánh bay cao như chim ưng, chạy không mệt, đi không mỏi.",
+    "language": "vi",
+    "options": [
+      "Quyền lực",
+      "Giàu có",
+      "Đổi mới sức lực, bay như chim ưng",
+      "Tri thức"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Hy vọng",
+      "Sức mạnh",
+      "Ê-sai",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Isaiah",
+    "chapter": 53,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "E-sai 53:6 so sánh loài người với con vật nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "E-sai 53:6 - Chúng ta đều như chiên đi lạc, ai theo đường nấy. Nhưng Đức Giê-hô-va đã chất tội lỗi chúng ta trên Người (Chúa Giê-su).",
+    "language": "vi",
+    "options": [
+      "Chim bay mất",
+      "Cá lội dòng",
+      "Bò đi hoang",
+      "Chiên đi lạc"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Tội lỗi",
+      "Ê-sai",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Isaiah",
+    "chapter": 53,
+    "verseStart": 7,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "E-sai 53:7 mô tả Đấng chịu khổ \"như chiên con bị dẫn đến chỗ hạt\". Hình ảnh này liên kết với sự kiện nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "E-sai 53:7 - Chúa Giê-su im lặng trước Phi-lát (Ma 27:12-14), như chiên con bị dẫn đi. Phi-líp dùng đoạn này giảng Phúc Âm cho hoạn quan (Công vụ 8:32-35).",
+    "language": "vi",
+    "options": [
+      "Chúa Giê-su im lặng trước Phi-lát và bị đóng đinh",
+      "Dân Y-sơ-ra-ên bị bắt",
+      "Lễ Vượt Qua",
+      "Của lễ hằng ngày"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Thập tự",
+      "Ê-sai",
+      "Đại Tiên Tri",
+      "Nâng cao"
+    ]
+  }
+]

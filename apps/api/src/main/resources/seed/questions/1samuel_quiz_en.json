@@ -1,0 +1,333 @@
+[
+  {
+    "book": "1 Samuel",
+    "chapter": 3,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How did Samuel respond to the Lord's call at night?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Samuel 3:10 - Eli taught Samuel how to respond to the Lord's voice. This shows readiness to listen and obey.",
+    "language": "en",
+    "options": [
+      "Speak, Lord, for your servant is listening",
+      "I am listening",
+      "Here I am",
+      "Please wait, Lord"
+    ],
+    "tags": [
+      "Old Testament",
+      "Samuel",
+      "Listening",
+      "1 Samuel",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 16,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When choosing David as king, what lesson did the Lord teach Samuel?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Samuel 16:7 - Man looks at the outward appearance, but the Lord looks at the heart. David was chosen because his heart was turned toward the Lord.",
+    "language": "en",
+    "options": [
+      "Choose the strongest one",
+      "Choose the firstborn",
+      "The Lord looks at the heart, not the outward appearance",
+      "Choose the youngest one"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Heart",
+      "1 Samuel",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 17,
+    "verseStart": 45,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What weapon did David use to defeat Goliath?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Samuel 17:49-50 - David used a stone and a sling, trusting the Lord to fight the battle for him.",
+    "language": "en",
+    "verseEnd": 47,
+    "options": [
+      "Sword",
+      "A stone and a sling",
+      "Bow and arrow",
+      "Spear"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Faith",
+      "1 Samuel",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 1,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What did Hannah ask the Lord for at the tabernacle?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Samuel 1:11 - Hannah prayed with tears and vowed to dedicate her son to the Lord. The Lord answered her prayer.",
+    "language": "en",
+    "verseEnd": 11,
+    "options": [
+      "Wealth",
+      "Victory",
+      "Health",
+      "A son, vowing to dedicate him to the Lord"
+    ],
+    "tags": [
+      "Old Testament",
+      "Hannah",
+      "Prayer",
+      "1 Samuel",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 2,
+    "verseStart": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What wrong did Eli's two sons, Hophni and Phinehas, commit?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Samuel 2:12-17 - They did not know the Lord, stole the offerings, and lived immorally. The consequence: both died on the same day.",
+    "language": "en",
+    "verseEnd": 17,
+    "options": [
+      "Ran away",
+      "Worshiped idols",
+      "Rebelled against the king",
+      "Stole the offerings and lived immorally"
+    ],
+    "tags": [
+      "Old Testament",
+      "Punishment",
+      "Sacrifice",
+      "1 Samuel",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 8,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What did the people of Israel ask Samuel for that grieved the Lord?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Samuel 8:7 - The Lord said: They have not rejected you, but they have rejected me as their king. The people chose man over the Lord.",
+    "language": "en",
+    "verseEnd": 7,
+    "options": [
+      "A king like the other nations",
+      "Great wealth",
+      "A new prophet",
+      "Victory in battle"
+    ],
+    "tags": [
+      "Old Testament",
+      "Kingship",
+      "Rejection",
+      "1 Samuel",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 9,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How is Saul, the first king of Israel, described?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Samuel 9:2 - Saul had an impressive outward appearance, but his heart was not steadfast.",
+    "language": "en",
+    "options": [
+      "The richest",
+      "The strongest",
+      "The wisest",
+      "Taller than anyone else from the shoulders up, and handsome"
+    ],
+    "tags": [
+      "Old Testament",
+      "Saul",
+      "Appearance",
+      "1 Samuel",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 13,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What kind of person did Samuel say the Lord sought to replace Saul?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Samuel 13:14 - The Lord sought a man after his own heart. David was called a man after God's own heart (Acts 13:22).",
+    "language": "en",
+    "options": [
+      "The strongest man",
+      "A man of royal descent",
+      "A man after God's own heart",
+      "The wisest man"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Heart",
+      "1 Samuel",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 15,
+    "verseStart": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Samuel said: \"To obey is better than ___, and to listen is better than the fat of rams\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Samuel 15:22 - The Lord desires obedience from the heart rather than outward religious formality.",
+    "language": "en",
+    "options": [
+      "Victory",
+      "Gold and silver",
+      "Knowledge",
+      "Sacrifice"
+    ],
+    "tags": [
+      "Old Testament",
+      "Obedience",
+      "Sacrifice",
+      "1 Samuel",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 18,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "The most famous friendship in the Bible is between whom?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Samuel 18:1 - Jonathan loved David as himself. A faithful friendship that endured regardless of circumstances.",
+    "language": "en",
+    "verseEnd": 3,
+    "options": [
+      "David and Samuel",
+      "David and Jonathan",
+      "Abraham and Lot",
+      "Moses and Aaron"
+    ],
+    "tags": [
+      "Old Testament",
+      "Friendship",
+      "Faithfulness",
+      "1 Samuel",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 24,
+    "verseStart": 4,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "When he had the chance to kill Saul in the cave, what did David do?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Samuel 24:5-7 - David honored Saul as the Lord's anointed, even though Saul sought to kill him. A lesson about respecting authority.",
+    "language": "en",
+    "verseEnd": 7,
+    "options": [
+      "Captured Saul",
+      "Only cut the corner of Saul's robe and was stricken with remorse for doing so",
+      "Ran away",
+      "Killed Saul"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Respect",
+      "1 Samuel",
+      "History",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 26,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "The second time David had the chance to kill Saul, what did he take instead of killing him?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Samuel 26:11-12 - David continued to honor Saul's life, taking only the spear and water jug as proof.",
+    "language": "en",
+    "verseEnd": 11,
+    "options": [
+      "A sword",
+      "The crown",
+      "Saul's spear and water jug",
+      "The robe"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Patience",
+      "1 Samuel",
+      "History",
+      "Intermediate"
+    ]
+  }
+]

@@ -1,0 +1,937 @@
+[
+  {
+    "book": "John",
+    "chapter": 1,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Cụm từ \"Ban đầu có Ngôi Lời\" nói về ai?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Giăng 1:1: Ngôi Lời là Chúa Giê-su, ở cùng Đức Chúa Trời và là Đức Chúa Trời.",
+    "language": "vi",
+    "verseEnd": 5,
+    "options": [
+      "Chúa Giê-su",
+      "Môi-se",
+      "Giăng Báp-tít",
+      "Ê-li"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thần học",
+      "Khởi nguyên",
+      "Giăng",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 3,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Giăng 3:16, Đức Chúa Trời bày tỏ tình yêu như thế nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Giăng 3:16: Vì Đức Chúa Trời yêu thương thế gian, đến nỗi đã ban Con Một của Ngài.",
+    "language": "vi",
+    "options": [
+      "Ban của cải",
+      "Ban thiên sứ",
+      "Ban luật pháp",
+      "Ban Con Một"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tình yêu",
+      "Cứu rỗi",
+      "Giăng",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 4,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su phán với người đàn bà Sa-ma-ri về thứ nước nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Giăng 4:10,14: Nước sống ban sự sống đời đời.",
+    "language": "vi",
+    "verseEnd": 26,
+    "options": [
+      "Nước mưa",
+      "Nước phép",
+      "Nước ngọt",
+      "Nước sống"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Biểu tượng",
+      "Nước sống",
+      "Giăng",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 6,
+    "verseStart": 35,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su tự xưng là gì trong Giăng 6:35?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Giăng 6:35: Ta là bánh sự sống; ai đến với Ta chẳng hề đói.",
+    "language": "vi",
+    "options": [
+      "Bánh sự sống",
+      "Cửa chiên",
+      "Ánh sáng thế gian",
+      "Người chăn hiền lành"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ta là",
+      "Biểu tượng",
+      "Giăng",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 8,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong Giăng 8:12, Chúa Giê-su phán mình là gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giăng 8:12: Ta là sự sáng của thế gian; ai theo Ta chẳng đi trong tối tăm.",
+    "language": "vi",
+    "options": [
+      "Con đường",
+      "Sự sáng của thế gian",
+      "Sự sống lại",
+      "Cây nho thật"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ta là",
+      "Ánh sáng",
+      "Giăng",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 11,
+    "verseStart": 25,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trước mộ La-xa-rơ, Chúa Giê-su phán mình là gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Giăng 11:25: Ta là sự sống lại và sự sống; ai tin Ta sẽ sống.",
+    "language": "vi",
+    "verseEnd": 26,
+    "options": [
+      "Sự sống lại và sự sống",
+      "Người chăn tốt lành",
+      "Bánh sự sống",
+      "Cửa chiên"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ta là",
+      "Phục sinh",
+      "Giăng",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 2,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phép lạ đầu tiên của Chúa Giê-su trong sách Giăng là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Giăng 2:1-11: Tại tiệc cưới Ca-na, Ngài hóa nước thành rượu.",
+    "language": "vi",
+    "verseEnd": 11,
+    "options": [
+      "Chữa người bại 38 năm",
+      "Chữa con viên quan",
+      "Hóa nước thành rượu",
+      "Hóa bánh cho 5.000 người"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Dấu lạ",
+      "Giăng",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 5,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Người bại 38 năm được chữa lành ở hồ nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giăng 5:2-9: Ở hồ Bê-tê-xda, Chúa phán: Hãy đứng dậy, vác giường và đi.",
+    "language": "vi",
+    "verseEnd": 9,
+    "options": [
+      "Ên-đô",
+      "Bê-tê-xda",
+      "Si-lô-ê",
+      "Ghê-nê-sa-rét"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Chữa lành",
+      "Giăng",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 6,
+    "verseStart": 66,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi nhiều môn đồ lui đi, Phi-e-rơ xưng nhận Chúa là ai?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Giăng 6:68-69: Chúng tôi tin và biết Ngài là Đấng Thánh của Đức Chúa Trời.",
+    "language": "vi",
+    "verseEnd": 69,
+    "options": [
+      "Đấng Thánh của Đức Chúa Trời",
+      "Thầy dạy lỗi lạc",
+      "Tiên tri lớn",
+      "Con vua Đa-vít"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Xưng nhận",
+      "Đức tin",
+      "Giăng",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 7,
+    "verseStart": 37,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong ngày lễ lớn, Chúa Giê-su kêu gọi ai khát hãy đến Ngài để làm gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Giăng 7:37: Ai khát, hãy đến cùng Ta mà uống.",
+    "language": "vi",
+    "verseEnd": 39,
+    "options": [
+      "Mà được chữa lành",
+      "Mà học hỏi",
+      "Mà nghỉ ngơi",
+      "Mà uống"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Lời mời",
+      "Nước sống",
+      "Giăng",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 8,
+    "verseStart": 31,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su dạy về sự tự do thật đến từ đâu?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Giăng 8:31-32,36: Lẽ thật sẽ buông tha các ngươi; Con mà buông tha thì thật được tự do.",
+    "language": "vi",
+    "verseEnd": 36,
+    "options": [
+      "Từ luật pháp",
+      "Từ quyền lực",
+      "Từ lẽ thật",
+      "Từ của cải"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Lẽ thật",
+      "Tự do",
+      "Giăng",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 9,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su chữa người mù bẩm sinh bằng cách nào?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Giăng 9:6-7: Ngài nhổ nước miếng làm bùn, thoa mắt, bảo đi rửa.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "Đặt tay cầu nguyện",
+      "Phán một lời",
+      "Lấy bùn thoa mắt và bảo đi rửa ở Si-lô-ê",
+      "Bảo cha mẹ cầu nguyện"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Dấu lạ",
+      "Giăng",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 10,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Hình ảnh \"Người chăn hiền lành\" dạy điều gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Giăng 10:11: Người chăn hiền lành vì chiên phó sự sống mình.",
+    "language": "vi",
+    "verseEnd": 18,
+    "options": [
+      "Hy sinh mạng sống vì chiên",
+      "Đếm chiên mỗi đêm",
+      "Chăn chiên bằng gậy",
+      "Dẫn chiên đi đồng cỏ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ta là",
+      "Mục tử",
+      "Giăng",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 13,
+    "verseStart": 34,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Dấu hiệu nhận biết môn đồ của Chúa Giê-su là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Giăng 13:34-35: Bởi điều nầy thiên hạ đều nhận biết các ngươi là môn đồ Ta, nếu các ngươi yêu nhau.",
+    "language": "vi",
+    "verseEnd": 35,
+    "options": [
+      "Dâng hiến",
+      "Ăn chay",
+      "Yêu nhau",
+      "Giữ ngày Sa-bát"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Điều răn mới",
+      "Tình yêu",
+      "Giăng",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 14,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Câu xưng nhận nổi tiếng Giăng 14:6 nói Ngài là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Giăng 14:6: Không ai đến cùng Cha mà chẳng bởi Ta.",
+    "language": "vi",
+    "options": [
+      "Cửa và đường",
+      "Đầu và thân",
+      "Đường đi, lẽ thật và sự sống",
+      "Ánh sáng và muối"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ta là",
+      "Cứu rỗi",
+      "Giăng",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 15,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Hình ảnh cây nho thật dạy điều gì cho môn đồ?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giăng 15:5: Ta là gốc nho, các ngươi là nhành; ở trong Ta thì kết nhiều quả.",
+    "language": "vi",
+    "verseEnd": 8,
+    "options": [
+      "Tìm cành khác",
+      "Ở trong Ngài để kết nhiều quả",
+      "Nhờ luật pháp kết quả",
+      "Tự mình cố gắng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ta là",
+      "Kết quả",
+      "Giăng",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 16,
+    "verseStart": 7,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Vì sao Chúa Giê-su phải đi để Đấng Yên ủi đến?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Giăng 16:7-13: Khi Ngài đến, sẽ cáo trách thế gian... dẫn các ngươi vào cả lẽ thật.",
+    "language": "vi",
+    "verseEnd": 15,
+    "options": [
+      "Để các sứ đồ được tự do",
+      "Để lập vương quốc trần gian",
+      "Để Ngài đến cáo trách, dạy dỗ và dẫn vào lẽ thật",
+      "Để ứng nghiệm lời tiên tri"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thánh Linh",
+      "An ủi",
+      "Giăng",
+      "Phúc Âm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 17,
+    "verseStart": 20,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong lời cầu nguyện thầy tế lễ, Chúa cầu xin điều gì cho những người tin?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Giăng 17:21: Hầu cho ai nấy hiệp làm một, như Cha ở trong Con và Con ở trong Cha.",
+    "language": "vi",
+    "verseEnd": 23,
+    "options": [
+      "Khỏe mạnh",
+      "Khôn ngoan",
+      "Giàu có",
+      "Hiệp một"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cầu thay",
+      "Hiệp một",
+      "Giăng",
+      "Phúc Âm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 19,
+    "verseStart": 28,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Lời cuối cùng của Chúa Giê-su trên thập tự trong Giăng 19:30 là gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giăng 19:30: Ngài phán: \"Đã xong!\" rồi tắt thở.",
+    "language": "vi",
+    "verseEnd": 30,
+    "options": [
+      "Ta phó linh hồn Ta",
+      "Đã xong",
+      "Ta khát",
+      "Cha ơi, xin tha cho họ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thập tự",
+      "Hoàn tất",
+      "Giăng",
+      "Phúc Âm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 20,
+    "verseStart": 24,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Tô-ma đã nói gì sau khi thấy các dấu đinh của Chúa?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Giăng 20:28: Tô-ma xưng Chúa Giê-su là Chúa và Đức Chúa Trời.",
+    "language": "vi",
+    "verseEnd": 29,
+    "options": [
+      "Xin Thánh Linh đến",
+      "Xin thương xót con",
+      "Con tin Ngài sống lại",
+      "Lạy Chúa tôi và Đức Chúa Trời tôi!"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Xưng nhận",
+      "Đức tin",
+      "Giăng",
+      "Phúc Âm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 1,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong câu đầu tiên của sách Giăng, \"Ban đầu có Ngôi Lời\" (Giăng 1:1), từ \"Ngôi Lời\" trong tiếng Hy Lạp là gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Logos (λόγος) có nghĩa là \"Ngôi Lời, Lý trí\", ám chỉ đến Chúa Giê-su là Ngôi Lời của Đức Chúa Trời.",
+    "language": "vi",
+    "options": [
+      "Graphe - Kinh Thánh",
+      "Epistole - Thư tín",
+      "Rhema - Lời nói",
+      "Logos - Ngôi Lời, Lý trí"
+    ],
+    "tags": [
+      "Giăng",
+      "Ngôi Lời",
+      "Ngôn ngữ Hy Lạp",
+      "Tân Ước",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 3,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong câu nổi tiếng \"Vì Đức Chúa Trời yêu thương thế gian\" (Giăng 3:16), từ \"yêu thương\" trong tiếng Hy Lạp có nghĩa gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Agape (ἀγάπη) có nghĩa là \"tình yêu vô điều kiện\", tình yêu cao nhất và thuần khiết nhất.",
+    "language": "vi",
+    "options": [
+      "Phileo - Tình yêu bạn bè",
+      "Eros - Tình yêu lãng mạn",
+      "Agape - Tình yêu vô điều kiện",
+      "Storge - Tình yêu gia đình"
+    ],
+    "tags": [
+      "Giăng",
+      "Tình yêu",
+      "Ngôn ngữ Hy Lạp",
+      "Tân Ước",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 1,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Giăng 1:1 nói \"Ban đầu có Ngôi Lời.\" Ngôi Lời là ai?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Giăng 1:1,14 - Ngôi Lời là Chúa Giê-su, Đấng từ muôn đời ở cùng Đức Chúa Trời và chính là Đức Chúa Trời.",
+    "language": "vi",
+    "options": [
+      "Đức Thánh Linh",
+      "Thiên sứ",
+      "Đức Chúa Cha",
+      "Chúa Giê-su Christ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thần tính Giê-su",
+      "Giăng",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 1,
+    "verseStart": 14,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Giăng 1:14 \"Ngôi Lời đã trở nên xác thịt\" dạy về giáo lý nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giăng 1:14 - Ngôi Lời (Chúa Giê-su) trở nên xác thịt, ở giữa chúng ta - đây là giáo lý nhập thể, Chúa trọn vẹn là Đức Chúa Trời và trọn vẹn là con người.",
+    "language": "vi",
+    "options": [
+      "Sự sáng tạo",
+      "Sự nhập thể (Incarnation) - Chúa trở nên con người",
+      "Sự tái lâm",
+      "Sự phục sinh"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thần học",
+      "Nhập thể",
+      "Giăng",
+      "Phúc Âm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 3,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Giăng 3:16 được gọi là \"câu gốc của Phúc Âm\" vì sao?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giăng 3:16 - Vì Đức Chúa Trời yêu thương thế gian đến nỗi ban Con một Ngài, hầu cho hễ ai tin Con ấy không bị hư mất mà được sự sống đời đời.",
+    "language": "vi",
+    "options": [
+      "Vì là câu dài nhất",
+      "Tóm tắt toàn bộ sứ điệp cứu rỗi: tình yêu Chúa, Con Ngài, đức tin, sự sống đời đời",
+      "Vì là câu đầu tiên",
+      "Vì được viết bởi Chúa Giê-su"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phúc Âm",
+      "Cứu rỗi",
+      "Giăng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 3,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su nói với Ni-cô-đêm điều kiện để vào nước Chúa là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Giăng 3:3 - Phải được sinh lại từ nước và Thánh Linh. Không phải sinh thể xác lần nữa mà là sinh thuộc linh.",
+    "language": "vi",
+    "options": [
+      "Phải làm việc lành",
+      "Phải giữ luật pháp",
+      "Phải được sinh lại (tái sinh)",
+      "Phải dâng của lễ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tái sinh",
+      "Cứu rỗi",
+      "Giăng",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 11,
+    "verseStart": 25,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su tuyên bố: \"Ta là sự ___ và sự sống\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Giăng 11:25 - Chúa Giê-su là sự sống lại và sự sống. Ai tin Ngài, dù đã chết, cũng sẽ sống.",
+    "language": "vi",
+    "verseEnd": 26,
+    "options": [
+      "Sống lại",
+      "Yêu thương",
+      "Bình an",
+      "Công bình"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phục sinh",
+      "Đức tin",
+      "Giăng",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 13,
+    "verseStart": 34,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su nói người ta sẽ nhận biết môn đồ Ngài nhờ dấu hiệu gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Giăng 13:35 - Dấu hiệu của môn đồ thật là tình yêu thương lẫn nhau, không phải tài năng hay kiến thức.",
+    "language": "vi",
+    "verseEnd": 35,
+    "options": [
+      "Đi nhà thờ",
+      "Kiến thức Kinh Thánh",
+      "Yêu thương nhau",
+      "Làm phép lạ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Môn đồ",
+      "Yêu thương",
+      "Giăng",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 14,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su phán: \"Ta là đường đi, lẽ thật và sự sống. Không ai đến được với Cha mà không ___\"",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giăng 14:6 - Chúa Giê-su là con đường duy nhất đến với Đức Chúa Cha, không có con đường nào khác.",
+    "language": "vi",
+    "options": [
+      "Bởi tôn giáo",
+      "Bởi ta",
+      "Bởi luật pháp",
+      "Bởi việc lành"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Con đường",
+      "Độc nhất",
+      "Giăng",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 19,
+    "verseStart": 30,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lời cuối cùng của Chúa Giê-su trên thập tự theo sách Giăng là gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Giăng 19:30 - \"Tetelestai\" - Đã hoàn tất! Công trình cứu chuộc đã được thanh toán trọn vẹn.",
+    "language": "vi",
+    "options": [
+      "Mọi việc đã được trọn (It is finished)",
+      "Lạy Cha, con phó linh hồn con",
+      "Con khát",
+      "Lạy Cha, sao Cha bỏ con"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thập tự",
+      "Cứu chuộc",
+      "Giăng",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 20,
+    "verseStart": 29,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau khi Thô-ma sờ vào vết thương, Chúa Giê-su nói điều gì về đức tin?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Giăng 20:29 - Chúa Giê-su khen những ai tin mà không cần thấy bằng mắt, như chúng ta ngày nay.",
+    "language": "vi",
+    "options": [
+      "Phúc cho những kẻ không thấy mà tin",
+      "Người phải tin nhiều hơn",
+      "Đức tin cần chứng cớ",
+      "Hãy nói cho người khác"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phục sinh",
+      "Đức tin",
+      "Giăng",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 4,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su nói với người đàn bà Sa-ma-ri về nước gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Giăng 4:14 - Nước sống = Đức Thánh Linh và sự sống đời đời. Thỏa mãn nỗi khát sự thật.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Nước mưa",
+      "Nước giếng Gia-cốp",
+      "Nước biển",
+      "Nước sống, uống rồi sẽ không bao giờ khát nữa"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Nước sống",
+      "Thánh Linh",
+      "Giăng",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 6,
+    "verseStart": 35,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su tuyên bố: \"Ta là ___ sự sống\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Giăng 6:35 - Ai đến cùng ta sẽ không đói, ai tin ta sẽ không khát. Chúa là nguồn nuôi dưỡng thuộc linh.",
+    "language": "vi",
+    "options": [
+      "Ánh sáng",
+      "Cửa",
+      "Nước",
+      "Bánh"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ta là",
+      "Bánh sống",
+      "Giăng",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "John",
+    "chapter": 10,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su nói: \"Ta là Đấng chăn hiền lành; đấng chăn hiền lành vì chiên mà ___\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Giăng 10:11 - Đấng Chăn Tốt Lành hy sinh mạng sống vì bầy chiên. Hình ảnh đẹp về Chúa Giê-su.",
+    "language": "vi",
+    "options": [
+      "Xây chuồng",
+      "Tìm cỏ xanh",
+      "Phó mạng sống mình",
+      "Chiến đấu"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đấng Chăn",
+      "Hy sinh",
+      "Giăng",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  }
+]

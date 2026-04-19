@@ -1,0 +1,305 @@
+[
+  {
+    "book": "Malachi",
+    "chapter": 1,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ma-la-chi bắt đầu bằng lời Chúa nói gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ma-la-chi 1:2 - Ngay cả khi dân sự bất trung, Chúa vẫn tuyên bố tình yêu. Dân lại hỏi: Ngài yêu ở chỗ nào?",
+    "language": "vi",
+    "options": [
+      "Ta giận các ngươi",
+      "Hãy vâng lời",
+      "Ta yêu các ngươi",
+      "Hãy ăn năn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ma-la-chi",
+      "Tình yêu",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Malachi",
+    "chapter": 1,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa trách thầy tế lễ vì điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ma-la-chi 1:8 - Họ dâng thú vật mù, quẹo, đau cho Chúa. Thú dâng cho quan trấn thì sao?",
+    "language": "vi",
+    "options": [
+      "Không cầu nguyện",
+      "Không đọc sách",
+      "Dâng thú vật có tật cho Chúa (khinh danh Ngài)",
+      "Ăn cắp"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ma-la-chi",
+      "Của lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Malachi",
+    "chapter": 2,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ma-la-chi 2:16 bày tỏ thái độ của Chúa về ly dị như thế nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Chúa coi trọng hôn nhân và gìn giữ kết ước. Ly dị không phải ý muốn ban đầu của Ngài.",
+    "language": "vi",
+    "options": [
+      "Cho phép tự do",
+      "Ta ghét sự ly dị vì nó phủ sự oan ức lên vợ",
+      "Chỉ cấm người nghèo",
+      "Không quan tâm"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ma-la-chi",
+      "Hôn nhân",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Malachi",
+    "chapter": 3,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ma-la-chi 3:1 tiên tri ai sẽ đến trước Chúa?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Mác 1:2 áp dụng câu này cho Giăng Báp-tít, người dọn đường cho Chúa Giê-su.",
+    "language": "vi",
+    "options": [
+      "Sứ giả (Giăng Báp-tít) để dọn đường",
+      "Ê-li",
+      "Thiên sứ",
+      "Môi-se"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Giăng Báp-tít",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Malachi",
+    "chapter": 3,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa hỏi dân sự: \"Người ta có thể ___ Đức Chúa Trời sao? Mà các ngươi đã cướp ta\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ma-la-chi 3:8 - Dân sự ăn cắp của Chúa bằng cách không dâng phần mười và của lễ.",
+    "language": "vi",
+    "options": [
+      "Ăn cắp của",
+      "Làm buồn",
+      "Chống lại",
+      "Nói dối với"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ma-la-chi",
+      "Phần mười",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Malachi",
+    "chapter": 3,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ma-la-chi 3:16 nói Chúa có sách gì ghi lại những ai kính sợ Ngài?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Chúa ghi nhớ những ai kính sợ và tôn kính danh Ngài. Họ là báu vật riêng của Ngài.",
+    "language": "vi",
+    "verseEnd": 17,
+    "options": [
+      "Sách tiên tri",
+      "Sách sử",
+      "Sách luật",
+      "Sách kỷ niệm"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ma-la-chi",
+      "Ghi nhớ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Malachi",
+    "chapter": 4,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ma-la-chi 4:2 tiên tri \"Mặt Trời Công Bình\" sẽ mọc lên với gì trong cánh?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Mặt Trời Công Bình = Chúa Giê-su. Ngài mang sự chữa lành cho những ai kính sợ Chúa.",
+    "language": "vi",
+    "options": [
+      "Lửa",
+      "Ánh sáng",
+      "Sự chữa lành",
+      "Vinh quang"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Chữa lành",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Malachi",
+    "chapter": 4,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Câu cuối cùng của Cựu Ước tiên tri ai sẽ đến trước ngày lớn của Chúa?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ma-la-chi 4:5 - Chúa Giê-su xác nhận Giăng Báp-tít làm tròn vai trò Ê-li (Mat 11:14).",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "Đa-vít",
+      "Tiên tri Ê-li (Giăng Báp-tít)",
+      "Môi-se",
+      "Ê-li-sê"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Ê-li",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Malachi",
+    "chapter": 3,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa đến như thợ luyện bạc và luyện vàng để làm gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Sự thánh tẩy không phải hủy diệt mà là làm cho tinh sạch, như luyện kim.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Thử thách",
+      "Thánh tẩy con cái Lê-vi để họ dâng của lễ công bình",
+      "Hủy diệt",
+      "Phán xét"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ma-la-chi",
+      "Thánh tẩy",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Malachi",
+    "chapter": 2,
+    "verseStart": 10,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ma-la-chi 2:10 hỏi: \"Chúng ta chẳng có chung một ___ sao? Chẳng có một Chúa dựng nên chúng ta sao?\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mọi người có chung một Cha (Đấng Sáng Tạo). Nên phải đối xử tốt với nhau.",
+    "language": "vi",
+    "options": [
+      "Vua",
+      "Chúa",
+      "Nhà",
+      "Cha"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ma-la-chi",
+      "Hiệp nhất",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Malachi",
+    "chapter": 3,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi dâng phần mười đầy đủ, Chúa hứa sẽ làm gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ma-la-chi 3:11 - Chúa bảo vệ mùa màng khỏi bị phá hại khi dân sự vâng lời trong việc dâng hiến.",
+    "language": "vi",
+    "options": [
+      "Ban thêm vàng",
+      "Tăng quân đội",
+      "Vì các ngươi cấm những kẻ phá phá (bảo vệ mùa màng)",
+      "Cho thêm đất"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ma-la-chi",
+      "Bảo vệ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Malachi",
+    "chapter": 3,
+    "verseStart": 10,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ma-la-chi 3:10 là câu Kinh Thánh duy nhất Chúa thách thức con người làm gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ma-la-chi 3:10 - Hãy đem phần mười đầy đủ vào kho, hãy thử ta. Chúa hứa sẽ mở các cửa sổ trời ban phước dư đầy.",
+    "language": "vi",
+    "options": [
+      "Thử Chúa bằng sự dâng hiến phần mười",
+      "Cầu nguyện nhiều hơn",
+      "Ăn chay",
+      "Rao giảng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Dâng hiến",
+      "Phần mười",
+      "Trung cấp"
+    ]
+  }
+]

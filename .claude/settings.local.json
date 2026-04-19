@@ -9,7 +9,10 @@
       "Grep(*)",
       "WebFetch(*)",
       "WebSearch(*)",
-      "mcp__stitch__*"
+      "mcp__stitch__*",
+      "Bash(curl -s -o /dev/null http://localhost:8080/api/questions/qotd)",
+      "Bash(curl -s -o /dev/null http://localhost:5173)",
+      "Bash(curl -s -X POST http://localhost:8080/api/auth/mobile/login -H \"Content-Type: application/json\" -d '{\"email\":\"admin@biblequiz.test\",\"password\":\"Test@123456\"}')"
     ]
   }
 }

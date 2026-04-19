@@ -1,0 +1,357 @@
+[
+  {
+    "book": "Ruth",
+    "chapter": 1,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ru-tơ nói với Na-ô-mi: \"Đức Chúa Trời của mẹ tức là ___\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ru-tơ 1:16 - Ru-tơ chọn gắn bó với Na-ô-mi và Đức Chúa Trời của bà. Sự trung tín của Ru-tơ là tấm gương đức tin.",
+    "language": "vi",
+    "options": [
+      "Đức Chúa Trời của con",
+      "Đức Giê-hô-va",
+      "Chúa của mọi người",
+      "Đấng Toàn Năng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ru-tơ",
+      "Trung tín",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 4,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ru-tơ là bà cố của vị vua nổi tiếng nào trong Kinh Thánh?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ru-tơ 4:17 - Ru-tơ sinh Ô-bết, Ô-bết sinh Giê-sê, Giê-sê sinh Đa-vít. Ru-tơ cũng ở trong gia phả của Chúa Giê-su (Ma-thi-ơ 1:5).",
+    "language": "vi",
+    "verseEnd": 17,
+    "options": [
+      "Vua Sau-lơ",
+      "Vua Đa-vít",
+      "Vua Sa-lô-môn",
+      "Vua Giô-si-a"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ru-tơ",
+      "Gia phả",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 1,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Gia đình Na-ô-mi rời Bết-le-hem đi xứ Mô-áp vì lý do gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ru-tơ 1:1 - Nạn đói tại Bết-le-hem (nghĩa là \"nhà bánh\") khiến gia đình Ê-li-me-léc đi xứ Mô-áp.",
+    "language": "vi",
+    "verseEnd": 2,
+    "options": [
+      "Tìm việc",
+      "Chiến tranh",
+      "Được mời",
+      "Nạn đói"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ru-tơ",
+      "Nạn đói",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 1,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hai con dâu người Mô-áp của Na-ô-mi tên là gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ru-tơ 1:4 - Hai con trai Na-ô-mi cưới Ru-tơ và Óp-ba tại Mô-áp.",
+    "language": "vi",
+    "verseEnd": 5,
+    "options": [
+      "Óp-ba và Mi-ri-am",
+      "Ru-tơ và Ra-hab",
+      "Ru-tơ và Đê-bô-ra",
+      "Ru-tơ và Óp-ba"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ru-tơ",
+      "Nhân vật",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 1,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Óp-ba và Ru-tơ phản ứng khác nhau thế nào khi Na-ô-mi bảo về?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ru-tơ 1:14-16 - Óp-ba chọn an toàn, Ru-tơ chọn trung tín. Hai sự lựa chọn dẫn đến hai cuộc đời khác nhau.",
+    "language": "vi",
+    "verseEnd": 16,
+    "options": [
+      "Ru-tơ trở về, Óp-ba ở lại",
+      "Cả hai ở lại",
+      "Óp-ba trở về Mô-áp, Ru-tơ ở lại theo Na-ô-mi",
+      "Cả hai trở về"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ru-tơ",
+      "Trung tín",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 1,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Na-ô-mi đổi tên thành Ma-ra. Ma-ra có nghĩa là gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ru-tơ 1:20 - Na-ô-mi (dịu ngọt) đổi thành Ma-ra (cay đắng) vì mất chồng và hai con trai.",
+    "language": "vi",
+    "verseEnd": 21,
+    "options": [
+      "Vui vẻ",
+      "Cay đắng",
+      "Hy vọng",
+      "Bình an"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Na-ô-mi",
+      "Khổ nạn",
+      "Ru-tơ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 2,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ru-tơ làm gì để nuôi Na-ô-mi?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ru-tơ 2:2 - Ru-tơ mót lúa theo luật pháp cho phép người nghèo nhặt lúa sót trên đồng (Lê-vi 19:9).",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Chăn chiên",
+      "Mót lúa (nhặt lúa rớt) trên đồng ruộng",
+      "Làm bánh",
+      "Bán hàng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ru-tơ",
+      "Chăm chỉ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 2,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Bô-ô khen Ru-tơ vì điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ru-tơ 2:11-12 - Bô-ô nhận ra đức tin và lòng trung thành của Ru-tơ. Chúa thương những kẻ đến nương náu dưới cánh Ngài.",
+    "language": "vi",
+    "verseEnd": 12,
+    "options": [
+      "Sắc đẹp",
+      "Sự giàu có",
+      "Bỏ xứ sở đi theo mẹ chồng đến xứ lạ, nấu nấu dưới cánh Chúa",
+      "Sự khôn ngoan"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Bô-ô",
+      "Đức tin",
+      "Ru-tơ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 3,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ru-tơ xin Bô-ô làm gì tại sân lúa?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ru-tơ 3:9 - Hãy đặt vạt áo người trên tôi tớ, vì người là người có quyền chuộc lại (gô-el). Hình bóng về Chúa chuộc chúng ta.",
+    "language": "vi",
+    "options": [
+      "Cưới bà",
+      "Bảo vệ bà",
+      "Làm người chuộc sản nghiệp (gô-el) cho bà",
+      "Cho bà ăn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gô-el",
+      "Cứu chuộc",
+      "Ru-tơ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 3,
+    "verseStart": 12,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khái niệm \"gô-el\" (người chuộc) trong sách Ru-tơ là hình bóng của ai?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Bô-ô làm gô-el: chuộc đất, cưới Ru-tơ, bảo toàn dòng dõi. Chúa Giê-su làm gô-el: chuộc tội, cưới Hội Thánh, ban sự sống.",
+    "language": "vi",
+    "verseEnd": 13,
+    "options": [
+      "Chúa Giê-su - Đấng Chuộc Tội của chúng ta",
+      "Áp-ra-ham",
+      "Môi-se",
+      "Đa-vít"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Hình bóng",
+      "Cứu chuộc",
+      "Ru-tơ",
+      "Lịch sử",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 4,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tại sao người bà con gần hơn Bô-ô từ chối quyền chuộc?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ru-tơ 4:6 - Người gô-el gần hơn từ chối vì sợ thiệt hại cho sản nghiệp. Bô-ô sẵn lòng hy sinh.",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "Không có tiền",
+      "Đang bệnh",
+      "Không thích Ru-tơ",
+      "Sợ làm hư sản nghiệp của mình"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Bô-ô",
+      "Hy sinh",
+      "Ru-tơ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 4,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Bô-ô cưới Ru-tơ và mua lại sản nghiệp của ai?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ru-tơ 4:9-10 - Bô-ô chuộc toàn bộ sản nghiệp và cưới Ru-tơ để bảo toàn danh của người chết.",
+    "language": "vi",
+    "verseEnd": 10,
+    "options": [
+      "Ê-li-me-léc, chồng Na-ô-mi",
+      "Một người lạ",
+      "Óp-ba",
+      "Na-ô-mi"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Bô-ô",
+      "Cứu chuộc",
+      "Ru-tơ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 4,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Con trai của Bô-ô và Ru-tơ tên là gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ru-tơ 4:17 - Ô-bết là cha Giê-se, ông nội Đa-vít. Ru-tơ là bà cố của dòng dõi vua và của Chúa Giê-su.",
+    "language": "vi",
+    "options": [
+      "Ô-bết",
+      "Sa-lô-môn",
+      "Giê-se",
+      "Đa-vít"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gia phả",
+      "Ô-bết",
+      "Ru-tơ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  }
+]

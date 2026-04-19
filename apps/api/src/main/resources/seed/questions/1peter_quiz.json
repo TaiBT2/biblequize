@@ -1,0 +1,303 @@
+[
+  {
+    "book": "1 Peter",
+    "chapter": 1,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Phi 1:3-4: Sự tái sinh ban cho chúng ta sản nghiệp gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sản nghiệp đời đời được giữ trên trời, không bị mất hay hư hỏng.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Vàng bạc",
+      "Đất đai",
+      "Sản nghiệp không hư nát, không ô uế, không suy tàn, giữ ở trên trời",
+      "Quyền lực"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Hy vọng",
+      "Sản nghiệp",
+      "1 Phi-e-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Peter",
+    "chapter": 1,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "1 Phi 1:7: Thử thách đức tin được so sánh với gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Như vàng được luyện trong lửa, đức tin được làm tinh sạch qua thử thách.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "Kim cương",
+      "Đá quý",
+      "Sắt thép",
+      "Vàng được thử lửa (làm tinh sạch)"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thử thách",
+      "Đức tin",
+      "1 Phi-e-rơ",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Peter",
+    "chapter": 2,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Phi 2:9: Tín đồ được gọi là gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mọi tín đồ có địa vị cao quý trong Chúa: vua và thầy tế lễ.",
+    "language": "vi",
+    "options": [
+      "Khách lạ",
+      "Dân thường",
+      "Tôi tớ",
+      "Dòng giống được chọn, chức tế lễ nhà vua, dân thánh, dân thuộc riêng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Địa vị",
+      "Dân Chúa",
+      "1 Phi-e-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Peter",
+    "chapter": 3,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Phi 3:15: Hãy luôn sẵn sàng làm gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sẵn sàng giải thích đức tin cách hiền lành và tôn kính.",
+    "language": "vi",
+    "options": [
+      "Trả lời cho mọi người hỏi về sự trông đợi của anh em",
+      "Chiến đấu",
+      "Báo thù",
+      "Trốn chạy"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Làm chứng",
+      "Sẵn sàng",
+      "1 Phi-e-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Peter",
+    "chapter": 4,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Phi 4:8: \"Trước hết hãy có lòng ___ sống động vì tình yêu phủ lấp nhiều tội\"",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Tình yêu thương là điều ưu tiên hàng đầu trong mọi quan hệ.",
+    "language": "vi",
+    "options": [
+      "Kiêng ăn",
+      "Yêu thương nhau",
+      "Cầu nguyện",
+      "Vâng lời"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Yêu thương",
+      "Ưu tiên",
+      "1 Phi-e-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Peter",
+    "chapter": 4,
+    "verseStart": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "1 Phi 4:12: Khi gặp hoạn nạn vì Chúa, hãy làm gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Chịu khổ vì Chúa là đặc ân, không phải bất hạnh. Khi Ngài hiện ra sẽ được vui mừng.",
+    "language": "vi",
+    "verseEnd": 13,
+    "options": [
+      "Giận dữ",
+      "Buồn rầu",
+      "Bỏ cuộc",
+      "Hãy vui mừng vì được dự phần đau khổ của Chúa"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Hoạn nạn",
+      "Vui mừng",
+      "1 Phi-e-rơ",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Peter",
+    "chapter": 5,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Phi 5:8 mô tả ma quỷ như gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Hãy tỉnh giác và cảnh giác vì kẻ thù đang tìm cách phá hủy.",
+    "language": "vi",
+    "options": [
+      "Con rắn",
+      "Bóng tối",
+      "Gió bão",
+      "Sư tử rống, tìm tham nuốt người"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ma quỷ",
+      "Cảnh giác",
+      "1 Phi-e-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Peter",
+    "chapter": 2,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Phi 2:2: Như trẻ sơ sinh, hãy thèm ___ thuộc linh để lớn lên",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lời Chúa là thức ăn thiết yếu để lớn lên thuộc linh, như sữa cho trẻ sơ sinh.",
+    "language": "vi",
+    "options": [
+      "Nước",
+      "Bánh",
+      "Sữa tinh (Lời Chúa)",
+      "Thịt"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Lời Chúa",
+      "Trưởng thành",
+      "1 Phi-e-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Peter",
+    "chapter": 3,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Phi 3:3-4: Vẻ đẹp thật của phụ nữ nằm ở đâu?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Vẻ đẹp bên trong (tâm linh) quý giá trước mặt Chúa hơn vẻ bên ngoài.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Trang sức",
+      "Tóc",
+      "Y phục",
+      "Người bề trong của lòng: tâm linh dịu dàng và yên lặng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Vẻ đẹp",
+      "Tâm linh",
+      "1 Phi-e-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Peter",
+    "chapter": 2,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Phi 2:11 gọi tín đồ là gì trên đất?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Chúng ta là khách trú trên đất, quê hương thật ở trên trời.",
+    "language": "vi",
+    "options": [
+      "Chủ nhân",
+      "Công dân",
+      "Khách lạ và kiều cư (lướt qua)",
+      "Quan án"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Khách lạ",
+      "Thế gian",
+      "1 Phi-e-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Peter",
+    "chapter": 5,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Phi 5:10: Sau khi chịu khổ ít lâu, Chúa sẽ làm gì cho anh em?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Khó khăn là tạm thời. Chúa sẽ phục hồi, làm cho vững và tăng sức cho chúng ta.",
+    "language": "vi",
+    "options": [
+      "Để mặc",
+      "Đổi thay",
+      "Phạt thêm",
+      "Chỉnh đốn, làm cho vững, thêm sức, đứng trên nền vững"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phục hồi",
+      "Hy vọng",
+      "1 Phi-e-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  }
+]

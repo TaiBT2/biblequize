@@ -1,0 +1,331 @@
+[
+  {
+    "book": "James",
+    "chapter": 1,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "How does James 1:2 teach us to respond when we face trials?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "James 1:2-3 - Count it all joy, because the testing of faith produces perseverance, and perseverance produces completeness.",
+    "language": "en",
+    "verseEnd": 3,
+    "options": [
+      "Look for a way to escape",
+      "Count it all joy",
+      "Endure patiently",
+      "Pray continually"
+    ],
+    "tags": [
+      "New Testament",
+      "Trials",
+      "Joy",
+      "James",
+      "Epistle",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 2,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "James 2:17 says that faith without ___ is dead",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "James 2:17 - True faith is shown through action. Without works, faith is mere theory.",
+    "language": "en",
+    "options": [
+      "Works",
+      "Prayer",
+      "Emotion",
+      "Knowledge"
+    ],
+    "tags": [
+      "New Testament",
+      "Faith",
+      "Action",
+      "James",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 1,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "James 1:5: If anyone lacks wisdom, what should they do?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "God gives wisdom generously and without reproach. Just ask!",
+    "language": "en",
+    "options": [
+      "Study more",
+      "Ask other people",
+      "Ask God, for He gives generously to all",
+      "Read books"
+    ],
+    "tags": [
+      "New Testament",
+      "Wisdom",
+      "Prayer",
+      "James",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 1,
+    "verseStart": 19,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "James 1:19: How must everyone be?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Listen before speaking and restrain anger. Practical wisdom.",
+    "language": "en",
+    "verseEnd": 20,
+    "options": [
+      "Speak much",
+      "Quick to speak, slow to listen",
+      "Quick to listen, slow to speak, slow to anger",
+      "Remain silent"
+    ],
+    "tags": [
+      "New Testament",
+      "Wisdom",
+      "Speech",
+      "James",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 1,
+    "verseStart": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "James 1:22: What should we do with the Word of God?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Hearing God's Word without doing it is self-deception. Faith requires action.",
+    "language": "en",
+    "options": [
+      "Only listen",
+      "Only read",
+      "Only memorize",
+      "Do what it says, not merely listen"
+    ],
+    "tags": [
+      "New Testament",
+      "Word of God",
+      "Action",
+      "James",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 3,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What does James 3 compare the tongue to?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "The tongue is small but can cause great harm. We must control our speech.",
+    "language": "en",
+    "verseEnd": 6,
+    "options": [
+      "A key",
+      "A sword",
+      "A small spark that sets a great forest on fire",
+      "A serpent"
+    ],
+    "tags": [
+      "New Testament",
+      "Speech",
+      "Tongue",
+      "James",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 4,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "James 4:7: Resist the devil and he will ___",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "We must actively resist but also surrender. And draw near to God, and He will draw near to you.",
+    "language": "en",
+    "verseEnd": 8,
+    "options": [
+      "Flee from you",
+      "Turn back",
+      "Grow stronger",
+      "Hide"
+    ],
+    "tags": [
+      "New Testament",
+      "Spiritual Warfare",
+      "Resistance",
+      "James",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 4,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "James 4:10: Humble yourself before the Lord and He will ___",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Humility before God leads to being lifted up by Him.",
+    "language": "en",
+    "options": [
+      "Forgive",
+      "Lift you up",
+      "Punish",
+      "Change"
+    ],
+    "tags": [
+      "New Testament",
+      "Humility",
+      "Exaltation",
+      "James",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 5,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "James 5:13: When in trouble, what should you do? When happy, what should you do?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Every emotion can be brought before God: troubles through prayer, joy through praise.",
+    "language": "en",
+    "verseEnd": 14,
+    "options": [
+      "Trouble: pray. Happy: sing praises",
+      "Trouble: sleep. Happy: run",
+      "Trouble: stay silent. Happy: feast",
+      "Trouble: weep. Happy: laugh"
+    ],
+    "tags": [
+      "New Testament",
+      "Prayer",
+      "Emotions",
+      "James",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 5,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "James 5:16: \"The prayer of a ___ person has great power\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The power of prayer is not based on position but on a righteous life.",
+    "language": "en",
+    "options": [
+      "Righteous",
+      "Learned",
+      "Wealthy",
+      "Holding office"
+    ],
+    "tags": [
+      "New Testament",
+      "Prayer",
+      "Righteousness",
+      "James",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 3,
+    "verseStart": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What are the characteristics of the wisdom from above?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "James 3:17 - Wisdom from God differs from worldly wisdom. Its marks are peace and mercy.",
+    "language": "en",
+    "options": [
+      "Pure, peaceable, gentle, full of mercy",
+      "Rational",
+      "Sharp",
+      "Hard"
+    ],
+    "tags": [
+      "New Testament",
+      "Wisdom",
+      "Peace",
+      "James",
+      "Epistle",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 4,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What does James 4:14 compare life to?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Life is as brief as a mist. Live with purpose according to God's will.",
+    "language": "en",
+    "options": [
+      "A river",
+      "A mist that appears and then vanishes",
+      "A mountain",
+      "A great tree"
+    ],
+    "tags": [
+      "New Testament",
+      "Life",
+      "Brevity",
+      "James",
+      "Epistle",
+      "Basic"
+    ]
+  }
+]

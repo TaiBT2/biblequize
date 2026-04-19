@@ -71,7 +71,7 @@ export default function Review() {
   // ── Empty state ──
   if (!stats || questions.length === 0) {
     return (
-      <div className="min-h-screen bg-[#11131e] flex items-center justify-center p-4">
+      <div className="flex items-center justify-center py-20 px-4" data-testid="review-empty-state">
         <div className="glass-card p-8 rounded-2xl text-center max-w-md border border-outline-variant/10">
           <span className="material-symbols-outlined text-on-surface-variant text-5xl mb-4 block">quiz</span>
           <h2 className="text-xl font-bold text-on-surface mb-2">{t('review.noData')}</h2>
@@ -95,10 +95,9 @@ export default function Review() {
   }
 
   return (
-    <div data-testid="review-page" className="min-h-screen bg-[#11131e] flex">
-      <main className="flex-1 flex flex-col h-screen overflow-y-auto">
-        {/* Sticky Header */}
-        <header className="sticky top-0 z-50 glass-panel border-b border-outline-variant/10">
+    <div data-testid="review-page" className="flex flex-col">
+      {/* Sticky Header — z-40 so it stays below AppLayout's fixed global header (z-50) */}
+      <header className="sticky top-0 z-40 glass-panel border-b border-outline-variant/10 -mx-8 md:-mx-14 -mt-8 md:-mt-14 mb-6">
           <div className="flex items-center justify-between px-6 h-16 md:h-20">
             <div className="flex items-center gap-4">
               <button onClick={() => navigate(-1)} className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-variant transition-colors">
@@ -241,8 +240,7 @@ export default function Review() {
           {filtered.length === 0 && (
             <p className="text-center text-on-surface-variant py-16">{t('review.noQuestionsInFilter')}</p>
           )}
-        </div>
-      </main>
+      </div>
     </div>
   )
 }

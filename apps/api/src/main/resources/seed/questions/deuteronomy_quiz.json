@@ -1,0 +1,889 @@
+[
+  {
+    "book": "Deuteronomy",
+    "chapter": 6,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tuyên xưng đức tin trung tâm của Y-sơ-ra-ên trong Phục Truyền 6 gọi là gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 6:4-5: Hỡi Y-sơ-ra-ên, hãy nghe! Giê-hô-va, Đức Chúa Trời chúng ta là Chúa có một không hai.",
+    "language": "vi",
+    "verseEnd": 9,
+    "options": [
+      "Kaddish",
+      "Shema",
+      "Haggadah",
+      "Halakha"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Shema",
+      "Trung tín",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 8,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Mục đích của 40 năm trong đồng vắng theo PTr 8 là gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 8:2: Để khiêm hạ và thử, biết điều trong lòng ngươi.",
+    "language": "vi",
+    "verseEnd": 5,
+    "options": [
+      "Khiêm hạ, thử luyện, biết điều trong lòng",
+      "Trừng phạt",
+      "Tập chiến đấu",
+      "Tích lũy của cải"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đồng vắng",
+      "Thử luyện",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 10,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời đòi hỏi gì nơi Y-sơ-ra-ên theo PTr 10:12?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 10:12-13: Tóm tắt điều Đức Chúa Trời đòi hỏi.",
+    "language": "vi",
+    "verseEnd": 13,
+    "options": [
+      "Chọn vua",
+      "Xây đền thờ",
+      "Kính sợ, đi theo, yêu mến, hầu việc và giữ các điều răn",
+      "Dâng của cải"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Yêu mến",
+      "Vâng phục",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 30,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phục Truyền 30 kêu gọi chọn điều gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 30:19: Ta đặt trước mặt ngươi sự sống và sự chết, phước lành và rủa sả; hãy chọn sự sống.",
+    "language": "vi",
+    "verseEnd": 20,
+    "options": [
+      "Của cải",
+      "Sự sống và phước lành",
+      "Sức mạnh",
+      "Quyền lực"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giao ước",
+      "Chọn lựa",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 4,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "PTr 4 nhấn mạnh điều gì khiến các dân khác khen Israel khôn ngoan?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 4:7-8: Có dân nào có Đức Chúa Trời gần mình... và luật pháp công chính như vậy?",
+    "language": "vi",
+    "verseEnd": 8,
+    "options": [
+      "Đất phì nhiêu",
+      "Quân đội mạnh",
+      "Vua khôn ngoan",
+      "Luật pháp công chính và gần gũi của Đức Chúa Trời"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Luật pháp",
+      "Danh Chúa",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 12,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tại sao phải phá bỏ các nơi cao và chỉ thờ phượng ở nơi Đức Chúa Trời chọn?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 12:2-14: Phá các nơi cao; tìm nơi Chúa chọn để đặt Danh Ngài.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Để phòng ngừa thờ hình tượng và hiệp nhất thờ phượng",
+      "Để thu thuế",
+      "Để thuận tiện",
+      "Để kiểm soát dân"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thờ phượng",
+      "Nơi chọn",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 13,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vì sao ngay cả dấu lạ cũng không đủ để chấp nhận một tiên tri?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 13:1-3: Dù dấu lạ xảy ra, nếu xui thờ thần khác, chớ nghe.",
+    "language": "vi",
+    "verseEnd": 5,
+    "options": [
+      "Vì phải nghe vua",
+      "Vì dấu lạ là giả",
+      "Nếu dẫn đến thờ thần khác thì phải từ chối",
+      "Vì cần hội đồng xét"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri giả",
+      "Trung tín",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 15,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Năm tha nợ (Shemitah) dạy điều gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 15:1-11: Hết bảy năm thì tha nợ; đừng có lòng ác.",
+    "language": "vi",
+    "verseEnd": 11,
+    "options": [
+      "Chính trị công bằng",
+      "Lòng thương xót và trông cậy Chúa",
+      "Kinh tế hiệu quả",
+      "Cải cách ruộng đất"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Kinh tế giao ước",
+      "Thương xót",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 17,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Luật vua trong PTr 17 đặt những giới hạn nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 17:16-17: Giới hạn quyền lực để vua kính sợ Chúa.",
+    "language": "vi",
+    "verseEnd": 20,
+    "options": [
+      "Không đánh trận",
+      "Không nhiều ngựa, không nhiều vợ, không nhiều bạc vàng",
+      "Không xây đền",
+      "Không thu thuế"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Luật vua",
+      "Khiêm nhường",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 18,
+    "verseStart": 15,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "“Đấng tiên tri như Môi-se” ám chỉ điều gì trước nhất trong văn mạch?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 18:15: Đức Chúa Trời sẽ dấy lên cho ngươi một tiên tri như ta.",
+    "language": "vi",
+    "verseEnd": 19,
+    "options": [
+      "Ê-li",
+      "Giô-suê",
+      "Ê-sai",
+      "Chuỗi tiên tri sau này, tối hậu ứng nghiệm nơi Đấng Christ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Mê-si-a",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 21,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Người bị treo trên cây bị xem là gì theo PTr 21:23?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục Truyền 21:23: Kẻ bị treo trên cây là bị Đức Chúa Trời rủa sả (Phao-lô ứng dụng trong Gal 3:13).",
+    "language": "vi",
+    "verseEnd": 23,
+    "options": [
+      "Bị mất cơ nghiệp",
+      "Bị loại khỏi hội",
+      "Bị Đức Chúa Trời rủa sả",
+      "Bị ô uế tạm"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Rủa sả",
+      "Đóng đinh",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 24,
+    "verseStart": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Luật nhặt sót (gleaning) bày tỏ điều gì về tấm lòng Đức Chúa Trời?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 24:19-22: Hãy để phần cho kẻ nghèo và ngoại kiều.",
+    "language": "vi",
+    "verseEnd": 22,
+    "options": [
+      "Chỉ giữ luật",
+      "Cạnh tranh công bằng",
+      "Tăng năng suất",
+      "Quan tâm kẻ nghèo, ngoại kiều, mồ côi, góa bụa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Công chính xã hội",
+      "Lòng thương xót",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 29,
+    "verseStart": 29,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "“Sự kín nghiệm thuộc về Đức Giê-hô-va... sự tỏ ra thuộc về chúng ta” dạy gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 29:29: Chúng ta chịu trách nhiệm về điều đã tỏ ra.",
+    "language": "vi",
+    "options": [
+      "Bí mật giáo phái",
+      "Không cần học",
+      "Được phép đoán số",
+      "Giới hạn mạc khải và trách nhiệm vâng phục"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Mạc khải",
+      "Vâng phục",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 4,
+    "verseStart": 32,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "PTr 4:32-40 kêu gọi nền tảng nào cho sự độc nhất của Đức Chúa Trời?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 4: lịch sử và kinh nghiệm mạc khải xác quyết Đức Chúa Trời là một.",
+    "language": "vi",
+    "verseEnd": 40,
+    "options": [
+      "Lịch sử cứu rỗi và mạc khải trên Si-nai",
+      "Triết học Hy Lạp",
+      "Nhiều thần phục vụ",
+      "Thiên văn học"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Độc thần",
+      "Lịch sử",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 10,
+    "verseStart": 16,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "“Hãy cắt bì bì lòng” nghĩa là gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 10:16: Chớ cứng cổ nữa; hình ảnh cho sự thay đổi tận tâm.",
+    "language": "vi",
+    "options": [
+      "Biệt riêng tấm lòng cho Đức Chúa Trời, bỏ cứng cổ",
+      "Khấn nguyện",
+      "Ăn chay",
+      "Cắt bì theo xác thịt"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tấm lòng",
+      "Biệt riêng",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 18,
+    "verseStart": 20,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Thử nghiệm nào để phân định tiên tri thật/giả theo PTr 18?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 18:22 và 13:1-3: Hai tiêu chí: ứng nghiệm và trung thành với Chúa.",
+    "language": "vi",
+    "verseEnd": 22,
+    "options": [
+      "Lời có ứng nghiệm và không dẫn thờ thần khác",
+      "Được vua chuẩn",
+      "Có phép lạ",
+      "Được dân ưa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Phân định",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 23,
+    "verseStart": 1,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Các giới hạn gia nhập hội Đức Giê-hô-va ở PTr 23 phản ánh điều gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 23:1-8: Có rào chắn theo thần học về thánh khiết và lịch sử A-môn, Mô-áp.",
+    "language": "vi",
+    "verseEnd": 8,
+    "options": [
+      "Kinh tế",
+      "Tính thánh của hội và lịch sử địch thù",
+      "Phân biệt giai cấp",
+      "Phong tục"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thánh khiết",
+      "Hội thánh OT",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 27,
+    "verseStart": 11,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Nghi lễ rủa sả tại Ê-banh và Ghê-ri-xim nhấn mạnh điều gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục Truyền 27:11-26: Các rủa sả công bố cho kẻ không vâng phục.",
+    "language": "vi",
+    "verseEnd": 26,
+    "options": [
+      "Tính hệ trọng của vâng phục/không vâng phục giao ước",
+      "Truyền thống bộ tộc",
+      "Du lịch tôn giáo",
+      "Lịch mùa màng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Rủa sả",
+      "Giao ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 32,
+    "verseStart": 1,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Bài ca Môi-se (PTr 32) chủ yếu nhằm mục đích gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục Truyền 32: bài ca làm chứng cho Israel về đường tội và ân điển Chúa.",
+    "language": "vi",
+    "verseEnd": 43,
+    "options": [
+      "Kể gia phả",
+      "Chứng cáo giao ước, cảnh báo bội tín và hứa phục hồi",
+      "Ca tụng chiến thắng",
+      "Hướng dẫn nghi lễ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Bài ca",
+      "Giao ước",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 34,
+    "verseStart": 5,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "PTr 34 kết thúc thế nào về Môi-se?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục Truyền 34:10-12: Không còn tiên tri nào như Môi-se, người Chúa biết mặt đối mặt.",
+    "language": "vi",
+    "verseEnd": 12,
+    "options": [
+      "Môi-se xây đền",
+      "Môi-se về Ai Cập",
+      "Môi-se làm vua",
+      "Tiên tri không ai như Môi-se, Chúa biết mặt đối mặt"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Môi-se",
+      "Kết sử",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 6,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Shema - lời tuyên bố đức tin quan trọng nhất của Do-thái giáo bắt đầu như thế nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục truyền 6:4 - Shema là lời tuyên bố tín kinh trung tâm: Đức Giê-hô-va là Chúa duy nhất.",
+    "language": "vi",
+    "verseEnd": 5,
+    "options": [
+      "Hãy thanh khiết",
+      "Hỡi Y-sơ-ra-ên! Giê-hô-va Đức Chúa Trời chúng ta là Giê-hô-va có một",
+      "Ban đầu Đức Chúa Trời",
+      "Hãy tin Chúa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Luật pháp",
+      "Đức tin",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 6,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Phục truyền 6:5, chúng ta phải yêu Chúa bằng mấy điều?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục truyền 6:5 - Phải yêu Giê-hô-va Đức Chúa Trời ngươi hết lòng, hết linh hồn, hết sức lực mình. Chúa Giê-su gọi đây là điều răn lớn nhất.",
+    "language": "vi",
+    "options": [
+      "Chỉ cần hết lòng",
+      "Hết lòng, hết sức, hết trí",
+      "Hết lòng và hết linh hồn",
+      "Hết lòng, hết linh hồn, hết sức"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Điều răn",
+      "Yêu Chúa",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 18,
+    "verseStart": 15,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi Môi-se nói \"Giê-hô-va sẽ dựng lên một đấng tiên tri như ta giữa anh em ngươi\", ông tiên tri về ai?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Công vụ 3:22-23 - Phi-e-rơ xác nhận rằng lời này ứng nghiệm nơi Chúa Giê-su, Đấng Tiên Tri lớn nhất.",
+    "language": "vi",
+    "options": [
+      "Sa-mu-ên",
+      "Ê-li",
+      "Giô-suê",
+      "Chúa Giê-su Christ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Chúa Giê-su",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 8,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tại sao Chúa cho dân ăn ma-na trong đồng vắng?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục truyền 8:3 - Chúa Giê-su trích chính câu này khi bị Sa-tan cám dỗ (Mat 4:4).",
+    "language": "vi",
+    "options": [
+      "Vì dân xin",
+      "Vì không có thức ăn khác",
+      "Để thử đức tin",
+      "Để dạy rằng người ta sống không chỉ nhờ bánh mà bởi Lời Chúa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Lời Chúa",
+      "Bài học",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 7,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa chọn dân Y-so-ra-en vì lý do gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục truyền 7:7-8 - Chúa chọn Y-so-ra-en không vì họ đông hay giỏi, mà vì tình yêu và lời giao ước.",
+    "language": "vi",
+    "options": [
+      "Vì họ mạnh nhất",
+      "Vì họ tốt lành nhất",
+      "Vì họ đông nhất",
+      "Vì tình yêu của Ngài và lời hứa với tổ phụ, không phải vì họ đông"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Được chọn",
+      "Tình yêu",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 10,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phục truyền 10:12 nói Chúa đòi hỏi dân sự điều gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Phục truyền 10:12 - Tóm tắt toàn bộ luật pháp trong một câu: kính sợ, yêu mến và phục vụ Chúa.",
+    "language": "vi",
+    "verseEnd": 13,
+    "options": [
+      "Xây đền thờ",
+      "Kính sợ Chúa, đi theo đường Ngài, yêu mến và phục vụ Ngài hết lòng",
+      "Chinh phục các dân tộc",
+      "Dâng nhiều của lễ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Điều răn",
+      "Phục vụ",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 11,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Moi-se dạy dân sự phải làm gì với Lời Chúa?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục truyền 11:18-20 - Lời Chúa phải thấm nhập mọi khía cạnh cuộc sống: cá nhân, gia đình, xã hội.",
+    "language": "vi",
+    "verseEnd": 19,
+    "options": [
+      "Chỉ thầy tế lễ học",
+      "Chỉ đọc mỗi Sa-bat",
+      "Giữ kín trong Hòm Giao Ước",
+      "Buộc vào tay, đeo trên trán, dạy con cái, viết trên cửa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Lời Chúa",
+      "Giáo dục",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 28,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phục truyền 28 hứa phúc lành cho ai?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục truyền 28:1-2 - Nếu vâng giọng Chúa, mọi phúc lành sẽ đến trên người và theo kịp người.",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "Người vâng giọng Chúa",
+      "Thầy tế lễ",
+      "Vua",
+      "Người giàu có"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Phúc lành",
+      "Vâng lời",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 29,
+    "verseStart": 29,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Phục truyền 29:29 phân biệt điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục truyền 29:29 - Có những điều Chúa giữ kín và những điều Ngài bày tỏ. Chúng ta chịu trách nhiệm với những gì đã được bày tỏ.",
+    "language": "vi",
+    "options": [
+      "Cựu Ước và Tân Ước",
+      "Trời và đất",
+      "Những điều kín nhiệm thuộc Chúa, những điều bày tỏ thuộc chúng ta",
+      "Luật pháp và ân điển"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thần học",
+      "Sự hiểu biết",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 30,
+    "verseStart": 19,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Moi-se kêu gọi dân sự chọn điều gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phục truyền 30:19 - Moi-se đặt trước dân sự hai đường: sự sống và sự chết, phúc lành và rủa sả. Hãy chọn sự sống!",
+    "language": "vi",
+    "options": [
+      "Sự sống và phúc lành (thay vì sự chết và rủa sả)",
+      "Đất Hứa",
+      "Chiến tranh",
+      "Vua"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Sự chọn lựa",
+      "Sự sống",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 33,
+    "verseStart": 27,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phục truyền 33:27 mô tả Chúa như thế nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phục truyền 33:27 - Đức Chúa Trời đời đời là nơi ẩn náu người. Cánh tay đời đời ở dưới đỡ người.",
+    "language": "vi",
+    "options": [
+      "Chiến binh",
+      "Vua trên ngôi",
+      "Quan án",
+      "Nơi ẩn náu đời đời, cánh tay đời đời ở dưới đỡ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ẩn náu",
+      "Bảo vệ",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Deuteronomy",
+    "chapter": 34,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Moi-se qua đời ở tuổi bao nhiêu?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Phục truyền 34:7 - Moi-se hưởng thọ 120 tuổi. Mắt chưa lòa, sức chưa giảm.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "100 tuổi",
+      "150 tuổi",
+      "120 tuổi",
+      "80 tuổi"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Moi-se",
+      "Cuộc đời",
+      "Phục Truyền Luật Lệ Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  }
+]

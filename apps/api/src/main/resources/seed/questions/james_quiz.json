@@ -1,0 +1,331 @@
+[
+  {
+    "book": "James",
+    "chapter": 1,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Gia-cơ 1:2 dạy chúng ta phản ứng thế nào khi gặp thử thách?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Gia-cơ 1:2-3 - Hãy có sự vui mừng trọn vẹn vì thử thách sinh sự nhịn nhục, và nhịn nhục sinh sự trọn vẹn.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Hãy tìm cách thoát",
+      "Hãy có sự vui mừng trọn vẹn",
+      "Hãy kiên nhẫn chịu đựng",
+      "Hãy cầu nguyện liên tục"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thử thách",
+      "Vui mừng",
+      "Gia-cơ",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 2,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Gia-cơ 2:17 nói đức tin không có ___ thì là đức tin chết",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Gia-cơ 2:17 - Đức tin thật sẽ thể hiện qua hành động. Không có việc làm, đức tin chỉ là lý thuyết.",
+    "language": "vi",
+    "options": [
+      "Việc làm",
+      "Cầu nguyện",
+      "Cảm xúc",
+      "Kiến thức"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đức tin",
+      "Hành động",
+      "Gia-cơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 1,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Gia-cơ 1:5: Nếu ai thiếu khôn ngoan, hãy làm gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Chúa ban khôn ngoan rộng rãi và không trách móc. Chỉ cần xin!",
+    "language": "vi",
+    "options": [
+      "Học nhiều hơn",
+      "Hỏi người khác",
+      "Cầu xin Chúa vì Ngài ban rộng rãi cho mọi người",
+      "Đọc sách"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Khôn ngoan",
+      "Cầu nguyện",
+      "Gia-cơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 1,
+    "verseStart": 19,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Gia-cơ 1:19: Mọi người phải như thế nào?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lắng nghe trước khi nói và kiềm chế cơn giận. Khôn ngoan thực tế.",
+    "language": "vi",
+    "verseEnd": 20,
+    "options": [
+      "Nói nhiều",
+      "Mau nói, chậm nghe",
+      "Mau nghe, chậm nói, chậm giận",
+      "Im lặng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Khôn ngoan",
+      "Lời nói",
+      "Gia-cơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 1,
+    "verseStart": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Gia-cơ 1:22: Hãy làm gì với Lời Chúa?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Nghe Lời Chúa mà không làm là tự lừa mình. Đức tin cần hành động.",
+    "language": "vi",
+    "options": [
+      "Chỉ nghe",
+      "Chỉ đọc",
+      "Chỉ học thuộc",
+      "Làm theo, không chỉ nghe suông"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Lời Chúa",
+      "Hành động",
+      "Gia-cơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 3,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Gia-cơ 3 so sánh cái lưỡi với gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Cái lưỡi nhỏ nhưng có thể gây hại lớn. Cần kiểm soát lời nói.",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "Chìa khóa",
+      "Gươm",
+      "Ngọn lửa nhỏ đốt cháy rừng lớn",
+      "Con rắn"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Lời nói",
+      "Lưỡi",
+      "Gia-cơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 4,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Gia-cơ 4:7: Hãy chống trả ma quỷ thì nó sẽ ___",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phải chống cự chủ động nhưng buông. Và đến gần Chúa thì Ngài đến gần anh em.",
+    "language": "vi",
+    "verseEnd": 8,
+    "options": [
+      "Trốn xa anh em",
+      "Quay lại",
+      "Mạnh hơn",
+      "Ẩn náu"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Chiến trận",
+      "Chống trả",
+      "Gia-cơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 4,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Gia-cơ 4:10: Hãy tự hạ mình trước mặt Chúa thì Ngài sẽ ___",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Khiêm nhường trước Chúa dẫn đến sự nâng đỡ từ Ngài.",
+    "language": "vi",
+    "options": [
+      "Tha thứ",
+      "Nhắc anh em lên",
+      "Phạt",
+      "Đổi"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Khiêm nhường",
+      "Cất nhắc",
+      "Gia-cơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 5,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Gia-cơ 5:13: Khi gặp khó, hãy làm gì? Khi vui, hãy làm gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Mọi cảm xúc đều có thể trình lên Chúa: khó khăn bằng cầu nguyện, vui mừng bằng ngợi khen.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Khó: cầu nguyện. Vui: hát ngợi khen",
+      "Khó: ngủ. Vui: chạy",
+      "Khó: im lặng. Vui: ăn tiệc",
+      "Khó: khóc. Vui: cười"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cầu nguyện",
+      "Cảm xúc",
+      "Gia-cơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 5,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Gia-cơ 5:16: \"Lời cầu nguyện của người ___ có quyền năng lớn\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Quyền năng cầu nguyện không dựa trên chức vụ mà dựa trên đời sống công bình.",
+    "language": "vi",
+    "options": [
+      "Công bình",
+      "Học thức",
+      "Giàu có",
+      "Có chức vụ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cầu nguyện",
+      "Công bình",
+      "Gia-cơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 3,
+    "verseStart": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sự khôn ngoan từ trên có đặc điểm gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Gia-cơ 3:17 - Khôn ngoan từ Chúa khác với khôn ngoan thế gian. Đặc điểm là hòa bình và nhân từ.",
+    "language": "vi",
+    "options": [
+      "Thanh sạch, hòa thuận, mềm mại, đủ tình thương xót",
+      "Lý trí",
+      "Sắc bén",
+      "Cứng rắn"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Khôn ngoan",
+      "Hòa thuận",
+      "Gia-cơ",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "James",
+    "chapter": 4,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Gia-cơ 4:14 so sánh cuộc đời như gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Cuộc đời ngắn ngủi như hơi nước. Hãy sống có ý nghĩa và theo ý Chúa.",
+    "language": "vi",
+    "options": [
+      "Dòng sông",
+      "Hơi nước hiện ra rồi biến mất",
+      "Ngọn núi",
+      "Cây lớn"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cuộc đời",
+      "Ngắn ngủi",
+      "Gia-cơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  }
+]

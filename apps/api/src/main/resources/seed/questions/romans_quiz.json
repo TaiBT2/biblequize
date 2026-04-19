@@ -1,0 +1,943 @@
+[
+  {
+    "book": "Romans",
+    "chapter": 8,
+    "verseStart": 28,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong Rô-ma 8:28, \"mọi sự hiệp lại làm ích cho kẻ yêu mến Đức Chúa Trời\". Từ \"hiệp lại\" trong tiếng Hy Lạp có nghĩa gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Sunergeo (συνεργέω) có nghĩa là \"cùng làm việc\", mọi sự cùng nhau làm việc vì lợi ích của chúng ta.",
+    "language": "vi",
+    "options": [
+      "Sunergeo - Cùng làm việc",
+      "Ergon - Công việc",
+      "Sunergeo - Hợp tác",
+      "Sun - Cùng nhau"
+    ],
+    "tags": [
+      "Rô-ma",
+      "Sự hiệp lại",
+      "Ngôn ngữ Hy Lạp",
+      "Tân Ước",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 12,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong Rô-ma 12:2, \"đừng làm theo đời này, nhưng hãy biến hóa bởi sự đổi mới của tâm trí\". Từ \"biến hóa\" trong tiếng Hy Lạp có nghĩa gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Metamorphoo (μεταμορφόω) có nghĩa là \"biến hóa từ bên trong\", như con bướm biến hóa từ sâu.",
+    "language": "vi",
+    "options": [
+      "Metamorphoo - Biến hóa từ bên trong",
+      "Metatithemi - Chuyển đổi",
+      "Metastrepho - Đảo ngược",
+      "Allasso - Thay đổi bên ngoài"
+    ],
+    "tags": [
+      "Rô-ma",
+      "Sự biến hóa",
+      "Ngôn ngữ Hy Lạp",
+      "Tân Ước",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 3,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Rô-ma 3:23 nói rằng ai đã phạm tội?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Rô-ma 3:23 - Vì mọi người đều đã phạm tội, thiếu mất sự vinh hiển của Đức Chúa Trời. Không ai ngoại lệ.",
+    "language": "vi",
+    "options": [
+      "Mọi người đều đã phạm tội",
+      "Chỉ A-đam và Ê-va",
+      "Chỉ kẻ ác",
+      "Chỉ người ngoại đạo"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cứu rỗi",
+      "Tội lỗi",
+      "Rô-ma",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 5,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Rô-ma 5:8, Chúa bày tỏ tình yêu với chúng ta khi nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Rô-ma 5:8 - Đang khi chúng ta còn là kẻ có tội, Chúa Giê-su đã chết thay cho chúng ta. Tình yêu vô điều kiện.",
+    "language": "vi",
+    "options": [
+      "Khi chúng ta còn là người có tội",
+      "Khi chúng ta ăn năn",
+      "Khi chúng ta cầu nguyện",
+      "Khi chúng ta làm lành"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ân điển",
+      "Tình yêu",
+      "Rô-ma",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 6,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Rô-ma 6:23 nói: \"Tiền công của tội lỗi là sự chết, nhưng ân điển của Đức Chúa Trời là ___\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Rô-ma 6:23 - Tội lỗi dẫn đến sự chết, nhưng món quà miễn phí của Chúa là sự sống đời đời qua Chúa Giê-su.",
+    "language": "vi",
+    "options": [
+      "Sự sống đời đời trong Chúa Giê-su Christ",
+      "Sự khôn ngoan",
+      "Sự bình an",
+      "Sự tha thứ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cứu rỗi",
+      "Ân điển",
+      "Rô-ma",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 8,
+    "verseStart": 38,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Rô-ma 8:38-39, điều gì có thể phân cách chúng ta khỏi tình yêu của Chúa?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Rô-ma 8:38-39 - Không có gì có thể phân cách chúng ta khỏi tình yêu của Đức Chúa Trời trong Chúa Giê-su Christ.",
+    "language": "vi",
+    "verseEnd": 39,
+    "options": [
+      "Sự bội đạo",
+      "Không gì cả - không sự chết, sự sống, hay bất cứ điều gì",
+      "Sự phản bội",
+      "Tội lỗi nghiêm trọng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ân điển",
+      "Tình yêu",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 10,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Rô-ma 10:9 nói hai điều kiện để được cứu là gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Rô-ma 10:9 - Nếu miệng người tuyên xưng Giê-su là Chúa và lòng người tin Đức Chúa Trời đã kéo Ngài từ kẻ chết sống lại thì người sẽ được cứu.",
+    "language": "vi",
+    "verseEnd": 10,
+    "options": [
+      "Chịu báp-têm và giữ luật pháp",
+      "Cầu nguyện và ăn chay",
+      "Ăn năn và dâng của lễ",
+      "Miệng tuyên xưng Giê-su là Chúa và lòng tin Chúa đã sống lại"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cứu rỗi",
+      "Tuyên xưng",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 12,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Rô-ma 12:2 khuyên chúng ta đừng làm theo đời này nhưng hãy đổi mới thế nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Rô-ma 12:2 - Sự biến đổi bắt đầu từ tâm trí. Khi tâm trí được đổi mới bởi Lời Chúa, hành vi sẽ thay đổi.",
+    "language": "vi",
+    "options": [
+      "Đổi mới hình thức",
+      "Đổi mới môi trường",
+      "Đổi mới hành vi",
+      "Đổi mới tâm trí"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Biến đổi",
+      "Tâm trí",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 1,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô tuyên bố: \"Tôi không hổ thẹn về Phúc Âm vì nó là ___ của Đức Chúa Trời để cứu mọi kẻ tin\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Rô-ma 1:16 - Phúc Âm là quyền năng (dunamis) của Chúa để cứu rỗi.",
+    "language": "vi",
+    "options": [
+      "Lời nói",
+      "Tri thức",
+      "Quyền phép (sức mạnh)",
+      "Kế hoạch"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phúc Âm",
+      "Quyền năng",
+      "Rô-ma",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 5,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi được xưng công bình bởi đức tin, chúng ta có ___ với Đức Chúa Trời",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Rô-ma 5:1 - Công bình bởi đức tin mang lại hòa thuận với Chúa. Tội lỗi đã bị xóa.",
+    "language": "vi",
+    "options": [
+      "Hòa thuận (bình an)",
+      "Nợ nần",
+      "Chiến tranh",
+      "Khoảng cách"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Công bình",
+      "Hòa thuận",
+      "Rô-ma",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 5,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Rô-ma 5:3-4: Hoạn nạn sinh nhịn nhục, nhịn nhục sinh ___, trải nghiệm sinh hy vọng",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Khó khăn là quá trình tạo nên tính cách và hy vọng vững chắc.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Sự mạnh",
+      "Sự vui",
+      "Sự trải nghiệm (tính cách)",
+      "Sự giàu"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thử thách",
+      "Tính cách",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 6,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô hỏi: Có nên phạm tội để ân điển càng dư thêm không?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Rô-ma 6:2 - Ân điển không phải cớ để phạm tội. Người tin thật đã chết về tội lỗi.",
+    "language": "vi",
+    "verseEnd": 2,
+    "options": [
+      "Không rõ",
+      "Có, ân điển dư",
+      "Đoán nhiên không! Chúng ta đã chết về tội lỗi",
+      "Tùy trường hợp"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ân điển",
+      "Thánh khiết",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 8,
+    "verseStart": 31,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Rô-ma 8:31: \"Nếu Đức Chúa Trời vùng chúng ta thì ai ___ chúng ta?\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Nếu Chúa đứng về phía chúng ta, không ai có thể chống lại thành công.",
+    "language": "vi",
+    "options": [
+      "Biết",
+      "Giúp",
+      "Hiểu",
+      "Địch"
+    ],
+    "tags": [
+      "Tân Ước",
+      "An ninh",
+      "Chiến thắng",
+      "Rô-ma",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 12,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô khuyên dâng thân thể làm gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Rô-ma 12:1 - Thờ phượng thật là dâng cả cuộc đời cho Chúa, không chỉ trong nhà thờ.",
+    "language": "vi",
+    "options": [
+      "Vũ khí",
+      "Của lễ thiêu",
+      "Dụng cụ",
+      "Của lễ sống và thánh, đẹp lòng Chúa (sự thờ phượng phải lẽ)"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thờ phượng",
+      "Dâng hiến",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 1,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô nói mình không hổ thẹn về điều gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Rô-ma 1:16: Tin Lành là quyền phép của Đức Chúa Trời để cứu mọi kẻ tin.",
+    "language": "vi",
+    "verseEnd": 17,
+    "options": [
+      "Dân tộc",
+      "Tin Lành",
+      "Luật pháp",
+      "Triết học"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tin Lành",
+      "Cứu rỗi",
+      "Rô-ma",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 3,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Rô-ma 3:23, mọi người đều thế nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Rô-ma 3:23: Mọi người đều đã phạm tội và thiếu mất sự vinh hiển của Đức Chúa Trời.",
+    "language": "vi",
+    "verseEnd": 24,
+    "options": [
+      "Giữ được luật pháp",
+      "Đã phạm tội, thiếu mất vinh hiển Đức Chúa Trời",
+      "Tự xưng công bình",
+      "Trong vòng giao ước"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tội lỗi",
+      "Công chính hóa",
+      "Rô-ma",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 5,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúng ta được xưng công bình bởi điều gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Rô-ma 5:1: Được xưng công bình bởi đức tin, được hòa thuận với Đức Chúa Trời.",
+    "language": "vi",
+    "verseEnd": 2,
+    "options": [
+      "Bởi việc làm",
+      "Bởi lễ nghi",
+      "Bởi phép báp-têm",
+      "Bởi đức tin"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Công chính hóa",
+      "Đức tin",
+      "Rô-ma",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 6,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tiền công của tội lỗi là gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Rô-ma 6:23: Tiền công của tội lỗi là sự chết; nhưng sự ban cho của Đức Chúa Trời là sự sống đời đời.",
+    "language": "vi",
+    "options": [
+      "Sự chết",
+      "Bệnh tật",
+      "Lưu đày",
+      "Nghèo khó"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tội lỗi",
+      "Sự sống",
+      "Rô-ma",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 8,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Cho những ai ở trong Chúa Giê-su Christ thì thế nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Rô-ma 8:1: Hiện nay chẳng còn có sự đoán phạt nào cho những kẻ ở trong Chúa Giê-su Christ.",
+    "language": "vi",
+    "verseEnd": 2,
+    "options": [
+      "Không còn thử thách",
+      "Không còn bị đoán phạt",
+      "Không còn chết thân thể",
+      "Không còn đau khổ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cứu rỗi",
+      "Ân điển",
+      "Rô-ma",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 12,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô kêu gọi dâng thân thể làm gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Rô-ma 12:1: Dâng thân thể làm của lễ sống và thánh, đẹp lòng Đức Chúa Trời.",
+    "language": "vi",
+    "verseEnd": 2,
+    "options": [
+      "Của lễ sống và thánh",
+      "Của lễ thiêu",
+      "Của lễ chuộc tội",
+      "Của lễ cảm tạ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Dâng mình",
+      "Thờ phượng",
+      "Rô-ma",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 1,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vì sao cơn thạnh nộ Đức Chúa Trời tỏ ra từ trời trên mọi kẻ không tin kính?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Rô-ma 1:18: Vì họ lấy sự không công bình mà ghìm giữ lẽ thật.",
+    "language": "vi",
+    "verseEnd": 25,
+    "options": [
+      "Áp chế lẽ thật",
+      "Bất trung với đồng bào",
+      "Khinh dể người nghèo",
+      "Phá hủy đền thờ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cơn thạnh nộ",
+      "Lẽ thật",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 4,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Áp-ra-ham được xưng công bình bởi gì theo Rô-ma 4?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Rô-ma 4:3-5: Áp-ra-ham tin Đức Chúa Trời, điều đó kể là công bình cho ông.",
+    "language": "vi",
+    "verseEnd": 5,
+    "options": [
+      "Bởi đức tin trước khi chịu cắt bì",
+      "Bởi phép báp-têm",
+      "Bởi của dâng",
+      "Bởi việc làm luật pháp"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Gương đức tin",
+      "Công chính hóa",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 5,
+    "verseStart": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "A-đam và Đấng Christ được so sánh để cho thấy điều gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Rô-ma 5:18-19: Qua sự vâng phục của một người (Đấng Christ), nhiều người được xưng công bình.",
+    "language": "vi",
+    "verseEnd": 21,
+    "options": [
+      "Luật pháp tốt hơn ân điển",
+      "Tội lỗi vào bởi một người; sự công chính bởi một người",
+      "Dòng dõi Do Thái trổi hơn",
+      "Hy lễ quan trọng hơn"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đối chiếu",
+      "Ân điển",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 7,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Rô-ma 7 mô tả cuộc chiến nào bên trong con người?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Rô-ma 7:22-25: Tôi khoái luật pháp Đức Chúa Trời theo người bề trong, nhưng thấy luật khác trong chi thể.",
+    "language": "vi",
+    "verseEnd": 25,
+    "options": [
+      "Thần trí với trí tuệ",
+      "Người mới với người cũ",
+      "Xác thịt với luật của tâm trí",
+      "Tâm linh với ma quỷ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thần học",
+      "Xưng công bình",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 8,
+    "verseStart": 26,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Thánh Linh giúp đỡ sự yếu đuối của chúng ta trong cầu nguyện thế nào?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Rô-ma 8:26: Thánh Linh cầu thay cho chúng ta bằng những tiếng than thở không nói ra được.",
+    "language": "vi",
+    "verseEnd": 27,
+    "options": [
+      "Nhắc câu Kinh Thánh",
+      "Dạy lời đúng",
+      "Cầu thay bằng than thở không thể nói ra",
+      "Sai thiên sứ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cầu nguyện",
+      "Thánh Linh",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 9,
+    "verseStart": 10,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sự lựa chọn của Đức Chúa Trời (Gie-cốp/Ê-sau) nhấn mạnh điều gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Rô-ma 9:11-16: Không do việc làm, nhưng bởi Đấng gọi, hầu tỏ rõ ý muốn của Đức Chúa Trời.",
+    "language": "vi",
+    "verseEnd": 16,
+    "options": [
+      "Ân điển chủ quyền của Ngài",
+      "Công lao giáo dục",
+      "Dòng dõi theo xác thịt",
+      "Công đức con người"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ân điển",
+      "Chủ quyền",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 10,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Điều kiện cứu rỗi theo Rô-ma 10:9-10 là gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Rô-ma 10:9-10: Nếu miệng xưng, lòng tin, thì được cứu.",
+    "language": "vi",
+    "verseEnd": 13,
+    "options": [
+      "Hành hương",
+      "Dâng hiến nhiều",
+      "Giữ mọi lễ nghi",
+      "Xưng miệng tin lòng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cứu rỗi",
+      "Đức tin",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 11,
+    "verseStart": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Hình ảnh ghép cây ô-liu nhằm dạy về điều gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Rô-ma 11:17-24: Cành dại được tháp vào gốc tốt - dân ngoại được dự phần nhờ đức tin.",
+    "language": "vi",
+    "verseEnd": 24,
+    "options": [
+      "Dân ngoại được tháp vào",
+      "Cắt bỏ dân Do Thái",
+      "Cây mới thay cây cũ",
+      "Phải trồng thêm cây"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Hình ảnh",
+      "Dân ngoại",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 13,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Rô-ma 13 dạy về mối quan hệ với nhà cầm quyền như thế nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Rô-ma 13:1-7: Quyền bính đến từ Đức Chúa Trời; phải nộp thuế và tôn trọng.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "Vâng phục vì là chức việc của Đức Chúa Trời",
+      "Phớt lờ thuế",
+      "Chống đối khi bất công",
+      "Chỉ vâng phục khi thuận lợi"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Công dân",
+      "Quyền bính",
+      "Rô-ma",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 8,
+    "verseStart": 28,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Chuỗi vàng cứu rỗi (đã biết trước, đã định trước...) dạy điều gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Rô-ma 8:29-30: Những kẻ Ngài đã biết trước thì cũng đã định trước... gọi, xưng công bình và làm vinh hiển.",
+    "language": "vi",
+    "verseEnd": 30,
+    "options": [
+      "Luật pháp làm nên công bình",
+      "Ân điển dành cho một dân tộc",
+      "Con người tự quyết hoàn toàn",
+      "Mục đích đời đời của Đức Chúa Trời trong Đấng Christ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Định trước",
+      "Vinh hiển",
+      "Rô-ma",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 9,
+    "verseStart": 22,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Các \"đồ dùng của cơn thạnh nộ\" và \"đồ dùng của lòng thương xót\" nêu bật điều gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Rô-ma 9:22-24: Đức Chúa Trời tỏ bày vinh quang trên đồ dùng của lòng thương xót, bởi Ngài đã sắm sẵn cho vinh hiển.",
+    "language": "vi",
+    "verseEnd": 24,
+    "options": [
+      "Sự khôn ngoan của luật pháp",
+      "Công bình của loài người",
+      "Sự mạnh mẽ của dân Do Thái",
+      "Sự nhẫn nại và vinh quang của Đức Chúa Trời"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Chủ quyền",
+      "Vinh quang",
+      "Rô-ma",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 11,
+    "verseStart": 33,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Tụng ca cuối đoạn 11 nêu bật điều gì về Đức Chúa Trời?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Rô-ma 11:33-36: Muôn vật đều là từ Ngài, bởi Ngài và hướng về Ngài; vinh hiển cho Ngài đời đời.",
+    "language": "vi",
+    "verseEnd": 36,
+    "options": [
+      "Sự khôn ngoan, thẩm lý và vinh hiển vô cùng",
+      "Sự chu cấp vật chất",
+      "Sự phán xét nghiêm khắc",
+      "Sự hiện diện hữu hình"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tụng ca",
+      "Vinh hiển",
+      "Rô-ma",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 14,
+    "verseStart": 1,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Về kẻ yếu đức tin, Phao-lô dạy điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Rô-ma 14:1-4: Đừng phê phán kẻ yếu đức tin; mỗi người tự chủ trước Chúa.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Phải uốn nắn nghiêm",
+      "Hãy tránh giao tiếp",
+      "Chớ phê phán; Đức Chúa Trời có quyền làm cho đứng vững",
+      "Hãy gỡ khỏi hội thánh"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tình yêu",
+      "Tự do Cơ-đốc",
+      "Rô-ma",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Romans",
+    "chapter": 15,
+    "verseStart": 20,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Châm ngôn truyền giáo của Phao-lô trong Rô-ma 15 là gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Rô-ma 15:20-21: Không xây trên nền người khác, nhưng đến nơi chưa nghe danh Ngài.",
+    "language": "vi",
+    "verseEnd": 21,
+    "options": [
+      "Tập trung một nơi",
+      "Rao Tin Lành nơi chưa ai đã rao",
+      "Dạy môn đồ cũ",
+      "Giữ nền cũ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Truyền giáo",
+      "Sứ mạng",
+      "Rô-ma",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  }
+]

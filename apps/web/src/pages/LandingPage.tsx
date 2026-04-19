@@ -255,11 +255,12 @@ function TryNowSection() {
 
 /* ────────────────────────────── Leaderboard Preview ─────────────────────── */
 
+// Tier keys: OLD religious naming per DECISIONS.md 2026-04-19 (audience-driven)
 const leaderboardData = [
-  { rank: '01', initials: 'AN', name: 'Nguyễn Văn An', xp: '24,500', titleKey: 'tiers.glory', top: true },
-  { rank: '02', initials: 'LH', name: 'Lê Hồng Hạnh', xp: '21,200', titleKey: 'tiers.star', top: false },
-  { rank: '03', initials: 'TM', name: 'Trần Minh', xp: '19,850', titleKey: 'tiers.flame', top: false },
-  { rank: '10', initials: 'DP', name: 'Đặng Phương', xp: '12,400', titleKey: 'tiers.lamp', top: false },
+  { rank: '01', initials: 'AN', name: 'Nguyễn Văn An', xp: '24,500', titleKey: 'tiers.apostle', top: true },
+  { rank: '02', initials: 'LH', name: 'Lê Hồng Hạnh', xp: '21,200', titleKey: 'tiers.prophet', top: false },
+  { rank: '03', initials: 'TM', name: 'Trần Minh', xp: '19,850', titleKey: 'tiers.sage', top: false },
+  { rank: '10', initials: 'DP', name: 'Đặng Phương', xp: '12,400', titleKey: 'tiers.disciple', top: false },
 ]
 
 function LeaderboardPreview() {

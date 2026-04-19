@@ -1,0 +1,332 @@
+[
+  {
+    "book": "Esther",
+    "chapter": 4,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Mọt-đô-chê nói với Ê-xơ-tê: \"Biết đâu ngươi được làm hoàng hậu chính vì ___?\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ê-xơ-tê 4:14 - Mọt-đô-chê tin rằng Chúa đặt Ê-xơ-tê vào vị trí hoàng hậu đúng lúc dân Do-thái cần được giải cứu.",
+    "language": "vi",
+    "options": [
+      "Sự khôn ngoan của ngươi",
+      "Dòng dõi của ngươi",
+      "Sắc đẹp của ngươi",
+      "Thời điểm này đây"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-xơ-tê",
+      "Chủ quyền Chúa",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Esther",
+    "chapter": 1,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tại sao hoàng hậu Vát-ti bị phế truất?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "E-xơ-tê 1:12 - Hoàng hậu Vát-ti từ chối đến trước vua. Điều này mở đường cho E-xơ-tê trở thành hoàng hậu.",
+    "language": "vi",
+    "verseEnd": 12,
+    "options": [
+      "Bệnh tật",
+      "Muốn làm nữ hoàng khác",
+      "Phản bội vua",
+      "Từ chối đến khi vua gọi trong tiệc rượu"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xơ-tê",
+      "Chủ quyền",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Esther",
+    "chapter": 2,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "E-xơ-tê là người dân tộc nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "E-xơ-tê 2:5-7 - Tên Do-thái là Ha-đa-sa. E-xơ-tê (Esther) là tên Ba-tư. Mồ côi được Mạc-đô-chê nuôi.",
+    "language": "vi",
+    "options": [
+      "Ai-cập",
+      "Ba-by-lôn",
+      "Ba-tư",
+      "Do-thái (gốc phái Bên-gia-min)"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xơ-tê",
+      "Thân thế",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Esther",
+    "chapter": 2,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "E-xơ-tê được chọn làm hoàng hậu thay cho ai?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "E-xơ-tê 2:17 - Vua yêu E-xơ-tê hơn tất cả và đặt vương miện trên đầu bà.",
+    "language": "vi",
+    "options": [
+      "Không ai",
+      "Sê-re",
+      "Vát-ti",
+      "Mi-ri-am"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xơ-tê",
+      "Hoàng hậu",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Esther",
+    "chapter": 3,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ha-man muốn tiêu diệt dân Do-thái vì lý do gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "E-xơ-tê 3:5-6 - Mạc-đô-chê từ chối quỳ lạy Ha-man. Sự kiêu ngạo của Ha-man khiến hắn muốn giết cả dân tộc.",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "Vì Mạc-đô-chê từ chối quỳ lạy hắn",
+      "Vì họ thờ thần khác",
+      "Vì dân Do-thái không đóng thuế",
+      "Vì họ mạnh hơn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ha-man",
+      "Kiêu ngạo",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Esther",
+    "chapter": 3,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ha-man bốc thăm (Pu-rim) để chọn ngày nào tiêu diệt dân Do-thái?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "E-xơ-tê 3:7,13 - Từ \"Pu-rim\" (bốc thăm) trở thành tên lễ hội kỷ niệm sự giải cứu.",
+    "language": "vi",
+    "options": [
+      "Ngày 1 tháng 1",
+      "Ngày 14 tháng 1",
+      "Ngày 13 tháng 12 (A-đa)",
+      "Ngày 10 tháng 7"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Pu-rim",
+      "Lễ hội",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Esther",
+    "chapter": 4,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "E-xơ-tê xin dân sự làm gì trước khi bà vào gặp vua không được mời?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "E-xơ-tê 4:16 - E-xơ-tê sẵn sàng chết: \"Nếu phải chết thì tôi chết.\" Can đảm từ đức tin.",
+    "language": "vi",
+    "options": [
+      "Dâng của lễ",
+      "Cầu nguyện 7 ngày",
+      "Chạy trốn",
+      "Kiêng ăn 3 ngày 3 đêm"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xơ-tê",
+      "Can đảm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Esther",
+    "chapter": 5,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi E-xơ-tê vào gặp vua không được mời, vua làm gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "E-xơ-tê 5:2 - Vua đưa trượng vàng = chấp nhận và ban ân từ. Chúa bảo vệ E-xơ-tê.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Giận dữ",
+      "Đưa cây trượng vàng ra cho bà chạm vào (chấp nhận)",
+      "Đuổi bà ra",
+      "Phó mặc"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xơ-tê",
+      "Bảo vệ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Esther",
+    "chapter": 6,
+    "verseStart": 1,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Đêm trước khi Ha-man định treo cổ Mạc-đô-chê, điều \"ngẫu nhiên\" nào xảy ra?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "E-xơ-tê 6:1-2 - Chúa điều khiển sự kiện \"ngẫu nhiên\" để bảo vệ dân Ngài. Không có chữ \"Chúa\" trong sách nhưng sự quan phòng ở khắp nơi.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Vua mơ thấy",
+      "Tin từ xa đến",
+      "Vua mất ngủ và đọc sách sử ký, phát hiện Mạc-đô-chê chưa được thưởng",
+      "Thiên sứ báo"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Chủ quyền",
+      "E-xơ-tê",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Esther",
+    "chapter": 7,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tại tiệc rượu, E-xơ-tê xin vua điều gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "E-xơ-tê 7:3-4 - E-xơ-tê bày tỏ thân phận Do-thái và tố cáo Ha-man. Sự can đảm cứu cả dân tộc.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Cứu mạng bà và dân tộc bà",
+      "Vàng bạc",
+      "Quyền lực",
+      "Đất đai"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xơ-tê",
+      "Can đảm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Esther",
+    "chapter": 7,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ha-man bị treo cổ trên cái gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "E-xơ-tê 7:10 - Sự ảo ngay: Ha-man bị treo trên chính cái mộc hắn làm cho Mạc-đô-chê. Ai đào hố sẽ sa vào đó.",
+    "language": "vi",
+    "options": [
+      "Mộc treo chính hắn chuẩn bị cho Mạc-đô-chê",
+      "Cây lớn",
+      "Tường thành",
+      "Mộc treo trong ngục"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ha-man",
+      "Công bằng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Esther",
+    "chapter": 8,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vua không thể rút lại chiếu chỉ của Ha-man nhưng cho phép dân Do-thái làm gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "E-xơ-tê 8:11 - Luật Ba-tư không thể rút lại, nhưng vua ban chiếu chỉ mới cho phép dân Do-thái tự vệ.",
+    "language": "vi",
+    "options": [
+      "Náu trốn",
+      "Tự bảo vệ và chống lại kẻ tấn công họ",
+      "Xin ân tứ",
+      "Bỏ trốn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xơ-tê",
+      "Giải cứu",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Esther",
+    "chapter": 10,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Cuối sách, Mạc-đô-chê trở thành gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "E-xơ-tê 10:3 - Từ người bị đe dọa treo cổ thành tể tướng. Chúa đổi ngược tình thế cho dân Ngài.",
+    "language": "vi",
+    "options": [
+      "Vua",
+      "Thầy tế lễ",
+      "Tướng quân",
+      "Tể tướng (người thứ nhì sau vua)"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Mạc-đô-chê",
+      "Cất nhắc",
+      "Cơ bản"
+    ]
+  }
+]

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
 import { getTierByPoints } from '../data/tiers'
@@ -46,7 +46,32 @@ export default function AppLayout() {
   const { user, isAuthenticated, logout } = useAuthStore()
   const [showUserMenu, setShowUserMenu] = useState(false)
   const [loggingOut, setLoggingOut] = useState(false)
+  const userMenuRef = useRef<HTMLDivElement>(null)
   const isActive = (path: string) => location.pathname === path
+
+  // Close user menu when clicking outside (works regardless of z-index stacking).
+  // The previous overlay-based approach (z-40) was blocked by the header (z-50),
+  // so clicks on header icons / nav links failed to close the menu.
+  useEffect(() => {
+    if (!showUserMenu) return
+    const handlePointerDown = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Node | null
+      if (target && userMenuRef.current && !userMenuRef.current.contains(target)) {
+        setShowUserMenu(false)
+      }
+    }
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShowUserMenu(false)
+    }
+    document.addEventListener('mousedown', handlePointerDown)
+    document.addEventListener('touchstart', handlePointerDown)
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown)
+      document.removeEventListener('touchstart', handlePointerDown)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [showUserMenu])
 
   const handleLogout = async () => {
     setLoggingOut(true)
@@ -67,33 +92,26 @@ export default function AppLayout() {
   return (
     <div className="min-h-screen bg-[#11131e] text-[#e1e1f1]">
       <OfflineBanner />
-      {/* Top Navigation Bar */}
+      {/*
+        Top Navigation Bar — brand + user state only.
+        Page navigation lives in the sidebar (<aside> below) on desktop
+        and the bottom nav on mobile. Previously had duplicate nav items
+        here AND in sidebar → redundant UX, removed 2026-04-19.
+      */}
       <header data-testid="app-header" className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-[#11131e]/90 backdrop-blur-md">
         <Link to="/" className="text-2xl font-black text-[#e8a832] tracking-tighter">
           Bible Quiz
         </Link>
-        <nav className="hidden md:flex items-center gap-10">
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`font-bold tracking-tight text-lg transition-colors duration-200 ${
-                isActive(item.path)
-                  ? 'text-[#e8a832]'
-                  : 'text-[#e1e1f1]/60 hover:text-[#e1e1f1]'
-              }`}
-            >
-              {t(item.labelKey)}
-            </Link>
-          ))}
-        </nav>
         <div data-testid="header-notification-area" className="flex items-center gap-6">
           <span className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">favorite</span>
           <span className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">bolt</span>
           <span data-testid="nav-notification-bell" className="inline-flex"><span data-testid="header-notification-btn" className="material-symbols-outlined text-[#e8a832] cursor-pointer hover:scale-110 transition-transform">stars</span></span>
           {/* User avatar + dropdown */}
-          <div className="relative">
+          <div className="relative" ref={userMenuRef} data-testid="user-menu-container">
             <button
+              data-testid="user-menu-toggle"
+              aria-haspopup="menu"
+              aria-expanded={showUserMenu}
               onClick={() => setShowUserMenu(!showUserMenu)}
               className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#e8a832]/30 p-0.5 hover:border-[#e8a832] transition-colors"
             >
@@ -106,9 +124,7 @@ export default function AppLayout() {
               )}
             </button>
             {showUserMenu && (
-              <>
-                <div className="fixed inset-0 z-40" onClick={() => setShowUserMenu(false)} />
-                <div className="absolute right-0 top-14 z-50 w-56 bg-surface-container-high rounded-2xl border border-outline-variant/20 shadow-2xl overflow-hidden">
+              <div data-testid="user-menu-dropdown" role="menu" className="absolute right-0 top-14 z-50 w-56 bg-surface-container-high rounded-2xl border border-outline-variant/20 shadow-2xl overflow-hidden">
                   <div className="p-4 border-b border-outline-variant/10">
                     <p className="font-bold text-sm text-on-surface truncate">{displayName}</p>
                     <p className="text-xs text-on-surface-variant truncate">{user?.email}</p>
@@ -130,6 +146,15 @@ export default function AppLayout() {
                       <span className="material-symbols-outlined text-on-surface-variant text-xl">emoji_events</span>
                       {t('profile.achievements')}
                     </Link>
+                    <Link
+                      data-testid="user-menu-help-link"
+                      to="/help"
+                      onClick={() => setShowUserMenu(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container transition-colors text-sm"
+                    >
+                      <span className="material-symbols-outlined text-on-surface-variant text-xl">help</span>
+                      {t('nav.help', { defaultValue: 'Trợ giúp' })}
+                    </Link>
                     <QuizLanguageToggle />
                     <div className="mx-2 my-1 border-t border-outline-variant/10" />
                     <button
@@ -143,7 +168,6 @@ export default function AppLayout() {
                     </button>
                   </div>
                 </div>
-              </>
             )}
           </div>
         </div>
@@ -202,14 +226,12 @@ export default function AppLayout() {
               </Link>
             </div>
           )}
-          <div className="px-6 mt-auto pb-10">
-            <Link
-              to="/quiz"
-              className="block w-full gold-gradient text-[#412d00] font-black py-4 rounded-2xl shadow-xl shadow-secondary/20 hover:scale-[1.02] active:scale-95 transition-all text-sm uppercase tracking-widest text-center"
-            >
-              {t('common.startNow')}
-            </Link>
-          </div>
+          {/*
+            Removed sidebar "Bắt Đầu" CTA (2026-04-19): it linked to /quiz
+            without a session, and duplicated the Practice card's CTA on
+            the home page. Recommendation highlight on Home now directs
+            the user to the right mode contextually.
+          */}
         </aside>
 
         {/* Main Content */}

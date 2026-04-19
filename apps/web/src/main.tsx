@@ -39,6 +39,7 @@ import NotificationsAdmin from './pages/admin/Notifications'
 import ConfigurationAdmin from './pages/admin/Configuration'
 import ExportCenter from './pages/admin/ExportCenter'
 import QuestionQuality from './pages/admin/QuestionQuality'
+import EarlyUnlockMetrics from './pages/admin/EarlyUnlockMetrics'
 import TestPanel from './pages/admin/TestPanel'
 import RequireAdmin from './contexts/RequireAdmin'
 import Review from './pages/Review'
@@ -63,6 +64,7 @@ import Onboarding from './pages/Onboarding'
 import { useOnboardingStore } from './store/onboardingStore'
 import OnboardingTryQuiz from './pages/OnboardingTryQuiz'
 import Journey from './pages/Journey'
+import Help from './pages/Help'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -137,6 +139,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="/speed-round" element={<RequireAuth><SpeedRound /></RequireAuth>} />
                   <Route path="/ranked" element={<Ranked />} />
                   <Route path="/daily" element={<DailyChallenge />} />
+                  <Route path="/practice" element={<Practice />} />
+                  <Route path="/review" element={<Review />} />
+                  <Route path="/help" element={<Help />} />
+                  <Route path="/multiplayer" element={<RequireAuth><Multiplayer /></RequireAuth>} />
+                  <Route path="/rooms" element={<RequireAuth><Rooms /></RequireAuth>} />
+                  <Route path="/room/create" element={<RequireAuth><CreateRoom /></RequireAuth>} />
+                  <Route path="/room/join" element={<RequireAuth><JoinRoom /></RequireAuth>} />
                 </Route>
 
                 {/* Public pages (no auth) */}
@@ -145,18 +154,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Route path="/onboarding" element={<Onboarding />} />
                 <Route path="/onboarding/try" element={<OnboardingTryQuiz />} />
 
-                {/* Full-screen pages (no AppLayout) */}
+                {/* Full-screen pages (no AppLayout) — immersive gameplay / auth / marketing */}
                 <Route path="/landing" element={<LandingPage />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/auth/callback" element={<AuthCallback />} />
                 <Route path="/quiz" element={<Quiz />} />
-                <Route path="/practice" element={<Practice />} />
-                <Route path="/review" element={<Review />} />
-                <Route path="/rooms" element={<RequireAuth><Rooms /></RequireAuth>} />
-                <Route path="/multiplayer" element={<RequireAuth><Multiplayer /></RequireAuth>} />
-                <Route path="/room/create" element={<RequireAuth><CreateRoom /></RequireAuth>} />
-                <Route path="/room/join" element={<RequireAuth><JoinRoom /></RequireAuth>} />
                 <Route path="/room/:roomId/lobby" element={<RequireAuth><RoomLobby /></RequireAuth>} />
                 <Route path="/room/:roomId/quiz" element={<RequireAuth><RoomQuiz /></RequireAuth>} />
 
@@ -175,6 +178,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="config" element={<ConfigurationAdmin />} />
                   <Route path="export" element={<ExportCenter />} />
                   <Route path="question-quality" element={<QuestionQuality />} />
+                  <Route path="metrics/early-unlock" element={<EarlyUnlockMetrics />} />
                   <Route path="test" element={<TestPanel />} />
                 </Route>
 

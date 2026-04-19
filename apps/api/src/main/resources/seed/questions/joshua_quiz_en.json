@@ -1,0 +1,334 @@
+[
+  {
+    "book": "Joshua",
+    "chapter": 1,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "The Lord said to Joshua before entering the Promised Land: \"Be strong and ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Joshua 1:9 - Be strong and courageous. Do not be afraid, for the Lord your God is with you wherever you go.",
+    "language": "en",
+    "verseEnd": 9,
+    "options": [
+      "Patient",
+      "Humble",
+      "Wise",
+      "Courageous"
+    ],
+    "tags": [
+      "Old Testament",
+      "Joshua",
+      "Courage",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Joshua",
+    "chapter": 6,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "How many days did the Israelites march around Jericho before the walls fell?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Joshua 6:3-4 - They marched once a day for 6 days; on the 7th day they marched around 7 times, blew the trumpets, and shouted, and the walls fell.",
+    "language": "en",
+    "verseEnd": 5,
+    "options": [
+      "40 days",
+      "3 days",
+      "7 days",
+      "12 days"
+    ],
+    "tags": [
+      "Old Testament",
+      "Joshua",
+      "Miracle",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Joshua",
+    "chapter": 1,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "The Lord promised Joshua that every place the sole of his foot stepped on would belong to whom?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Joshua 1:3 - Every place where you set your foot I have given you. But they still had to walk in order to receive it.",
+    "language": "en",
+    "options": [
+      "Only the warriors",
+      "Joshua alone",
+      "The people of Israel",
+      "The tribe of Judah"
+    ],
+    "tags": [
+      "Old Testament",
+      "Promised Land",
+      "Promise",
+      "Joshua",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Joshua",
+    "chapter": 2,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Who helped hide the two Israelite spies in Jericho?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Joshua 2:4 - Rahab hid the 2 spies on her rooftop. She trusted God and was saved when the city fell (Hebrews 11:31).",
+    "language": "en",
+    "verseEnd": 6,
+    "options": [
+      "A merchant",
+      "A city official",
+      "A priest",
+      "Rahab, the prostitute"
+    ],
+    "tags": [
+      "Old Testament",
+      "Rahab",
+      "Faith",
+      "Joshua",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Joshua",
+    "chapter": 2,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What did Rahab have to hang in her window to be saved when Jericho was attacked?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Joshua 2:18 - A scarlet cord, like the blood of the Passover lamb. A foretype of salvation through the blood.",
+    "language": "en",
+    "verseEnd": 21,
+    "options": [
+      "A scarlet (red) cord",
+      "A pillar of smoke",
+      "An oil lamp",
+      "A white flag"
+    ],
+    "tags": [
+      "Old Testament",
+      "Rahab",
+      "Foretype",
+      "Joshua",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Joshua",
+    "chapter": 3,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When the priests carrying the Ark of the Covenant stepped down, which river parted?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Joshua 3:15-17 - The Jordan River parted when the priests' feet touched the water, just like the Red Sea.",
+    "language": "en",
+    "verseEnd": 17,
+    "options": [
+      "The Jordan River",
+      "The Red Sea",
+      "The Euphrates River",
+      "The Nile River"
+    ],
+    "tags": [
+      "Old Testament",
+      "Miracle",
+      "Jordan",
+      "Joshua",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Joshua",
+    "chapter": 4,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What were the 12 stones from the Jordan River set up for?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Joshua 4:7 - Whenever their children asked, parents would recount God's miracle of parting the Jordan River.",
+    "language": "en",
+    "verseEnd": 7,
+    "options": [
+      "To build city walls",
+      "To make an altar",
+      "To make weapons",
+      "As a memorial so children would remember God's miracle"
+    ],
+    "tags": [
+      "Old Testament",
+      "Memorial",
+      "Tradition",
+      "Joshua",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Joshua",
+    "chapter": 5,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Before the battle of Jericho, whom did Joshua meet holding a sword?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Joshua 5:14 - The commander of the Lord's army appeared, and Joshua fell down to worship. This may be a pre-incarnate appearance of Jesus.",
+    "language": "en",
+    "verseEnd": 15,
+    "options": [
+      "A warrior",
+      "The prophet Moses",
+      "The angel Gabriel",
+      "The commander of the Lord's army"
+    ],
+    "tags": [
+      "Old Testament",
+      "Angel",
+      "Battle",
+      "Joshua",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Joshua",
+    "chapter": 7,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Why did Israel lose the battle at Ai? Because of whose sin?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Joshua 7:20-21 - Achan hid a robe, silver, and gold. One person's sin affected the whole community.",
+    "language": "en",
+    "verseEnd": 21,
+    "options": [
+      "The people, because of fear",
+      "The priests, because they did not pray",
+      "Joshua, because of wrong tactics",
+      "Achan, because he took forbidden things from Jericho"
+    ],
+    "tags": [
+      "Old Testament",
+      "Sin",
+      "Consequence",
+      "Joshua",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Joshua",
+    "chapter": 10,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What miracle happened when Joshua fought the alliance of 5 kings?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Joshua 10:13 - The sun stood still in the middle of the sky all day so Israel could complete the victory.",
+    "language": "en",
+    "verseEnd": 13,
+    "options": [
+      "Fire from heaven",
+      "The sun and moon stood still",
+      "An earthquake",
+      "A storm"
+    ],
+    "tags": [
+      "Old Testament",
+      "Miracle",
+      "Battle",
+      "Joshua",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Joshua",
+    "chapter": 14,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Which portion of land did Caleb request as his inheritance even at 85 years old?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Joshua 14:12 - Caleb asked for the hardest place because he trusted God. At 85 he was still strong and ready to fight.",
+    "language": "en",
+    "verseEnd": 12,
+    "options": [
+      "The hill country where the Anakim giants lived",
+      "The fertile plains",
+      "The coastline",
+      "Jerusalem"
+    ],
+    "tags": [
+      "Old Testament",
+      "Caleb",
+      "Faith",
+      "Joshua",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Joshua",
+    "chapter": 23,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What did Joshua's final words emphasize?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Joshua 23:14 - Joshua testified that not one of the Lord's promises had failed. He urged the people to remain faithful.",
+    "language": "en",
+    "options": [
+      "Build many cities",
+      "God is faithful and keeps all His promises, so be faithful to Him",
+      "Increase the army",
+      "Keep fighting"
+    ],
+    "tags": [
+      "Old Testament",
+      "Joshua",
+      "Faithfulness",
+      "Joshua",
+      "History",
+      "Intermediate"
+    ]
+  }
+]

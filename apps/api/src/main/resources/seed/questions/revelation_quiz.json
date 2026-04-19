@@ -1,0 +1,357 @@
+[
+  {
+    "book": "Revelation",
+    "chapter": 1,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong Khải Huyền 1:8, Chúa phán \"Ta là An-pha và Ô-mê-ga\". Điều này có nghĩa gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "An-pha và Ô-mê-ga là chữ cái đầu và cuối của bảng chữ cái Hy Lạp, có nghĩa là \"đầu tiên và cuối cùng\", \"khởi nguyên và kết thúc\".",
+    "language": "vi",
+    "options": [
+      "Khởi nguyên và kết thúc",
+      "Đầu tiên và cuối cùng",
+      "Tất cả các ý trên",
+      "A và Z"
+    ],
+    "tags": [
+      "Khải Huyền",
+      "An-pha và Ô-mê-ga",
+      "Chúa Giê-su",
+      "Tân Ước",
+      "Khải thị",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Revelation",
+    "chapter": 21,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong Khải Huyền 21:4, \"Ngài sẽ lau ráo hết nước mắt khỏi mắt chúng\". Từ \"lau ráo\" trong tiếng Hy Lạp có nghĩa gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exaleipho (ἐξαλείφω) có nghĩa là \"xóa bỏ hoàn toàn\", không chỉ lau mà còn xóa bỏ vĩnh viễn.",
+    "language": "vi",
+    "options": [
+      "Exaleipho - Xóa bỏ hoàn toàn",
+      "Kathairo - Làm sạch",
+      "Agnizo - Thanh tẩy",
+      "Apomasso - Lau sạch"
+    ],
+    "tags": [
+      "Khải Huyền",
+      "Thiên đàng",
+      "Ngôn ngữ Hy Lạp",
+      "Tân Ước",
+      "Khải thị",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Revelation",
+    "chapter": 3,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khải huyền 3:20 nói: \"Nầy ta đứng trước cửa mà gõ. Nếu ai nghe tiếng ta mà ___, ta sẽ vào\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Khải 3:20 - Chúa Giê-su đứng trước cửa lòng mỗi người và gõ. Ngài không ép buộc mà cho chúng ta tự mở cửa.",
+    "language": "vi",
+    "options": [
+      "Mở cửa",
+      "Chạy đến",
+      "Gọi tên ta",
+      "Cầu nguyện"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Lời mời",
+      "Tự do ý chí",
+      "Khải Huyền",
+      "Khải thị",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Revelation",
+    "chapter": 21,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khải huyền 21:4 mô tả thiên đàng như thế nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Khải 21:4 - Chúa sẽ lau mọi nước mắt, không còn sự chết, tang chế, kêu la hay đau đớn nữa. Sự cũ đã qua rồi.",
+    "language": "vi",
+    "options": [
+      "Đường phố vàng",
+      "Không còn nước mắt, sự chết, tang chế, đau khổ",
+      "Thiên thần ca hát",
+      "Âm nhạc bất tận"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thiên đàng",
+      "Hy vọng",
+      "Khải Huyền",
+      "Khải thị",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Revelation",
+    "chapter": 1,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khải 1:8: Chúa tuyên bố Ngài là gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Chúa là đầu và cuối, có từ muôn đời và sẽ đến. Ngài kiểm soát lịch sử.",
+    "language": "vi",
+    "options": [
+      "An-pha và Ô-mê-ga, Đấng Hiện Có Đấng Đã Có và Đấng Sẽ Đến",
+      "Vua",
+      "Tiên tri",
+      "Quan án"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Khải huyền",
+      "Thần tính",
+      "Khải Huyền",
+      "Khải thị",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Revelation",
+    "chapter": 1,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su nói: \"Ta là Đấng Sống; ta đã chết nhưng nay ta ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Chúa Giê-su đã chiến thắng sự chết và có quyền trên sự chết và âm phủ.",
+    "language": "vi",
+    "verseEnd": 18,
+    "options": [
+      "Ở trên trời",
+      "Đang đợi",
+      "Nghỉ ngơi",
+      "Sống đời đời và cầm chìa khóa của sự chết và âm phủ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phục sinh",
+      "Quyền năng",
+      "Khải Huyền",
+      "Khải thị",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Revelation",
+    "chapter": 4,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Bốn sinh vật trước ngôi Chúa kêu ngày đêm: \"___! Thánh thay! Thánh thay là Chúa...\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Như Ê-sai 6:3, sự thánh khiết của Chúa là chủ đề ngợi khen ở thiên đàng.",
+    "language": "vi",
+    "options": [
+      "Thánh thay",
+      "Ha-lê-lu-gia",
+      "Vinh hiển",
+      "Quyền năng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ngợi khen",
+      "Thiên đàng",
+      "Khải Huyền",
+      "Khải thị",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Revelation",
+    "chapter": 5,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ai xứng đáng mở cuộn sách 7 ấn?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Chỉ Chúa Giê-su xứng đáng vì Ngài đã chiến thắng bởi sự chết và phục sinh.",
+    "language": "vi",
+    "options": [
+      "Sư Tử chi phái Giu-đa, Gốc Đa-vít (Chúa Giê-su)",
+      "Môi-se",
+      "Thiên sứ Mi-ca-en",
+      "Đa-vít"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Chiên Con",
+      "Xứng đáng",
+      "Khải Huyền",
+      "Khải thị",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Revelation",
+    "chapter": 7,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khải 7:9 mô tả đoàn đông không ai đếm được từ đâu?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Thiên đàng là nơi đa văn hóa, đa sắc tộc. Phúc Âm cho mọi người.",
+    "language": "vi",
+    "verseEnd": 10,
+    "options": [
+      "Chỉ Y-sơ-ra-ên",
+      "Chỉ tử đạo",
+      "Mọi dân tộc, mọi nữ phái, mọi dân, mọi tiếng",
+      "Chỉ thiên sứ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thiên đàng",
+      "Mọi dân tộc",
+      "Khải Huyền",
+      "Khải thị",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Revelation",
+    "chapter": 12,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khải 12:11: Các thánh đồ thắng ma quỷ nhờ gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Vũ khí chiến thắng: huyết Chúa + lời làm chứng + sẵn sàng chết vì Chúa.",
+    "language": "vi",
+    "options": [
+      "Quân đội",
+      "Huyết Chiên Con và lời làm chứng của họ",
+      "Gươm",
+      "Tri thức"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Chiến thắng",
+      "Làm chứng",
+      "Khải Huyền",
+      "Khải thị",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Revelation",
+    "chapter": 19,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su tái lâm cưỡi ngựa màu gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Khải 19:11 - Ngài là Đấng Thành Tín và Chân Thật, cưỡi ngựa trắng, mặc áo nhuốm huyết.",
+    "language": "vi",
+    "verseEnd": 16,
+    "options": [
+      "Vàng",
+      "Đen",
+      "Trắng",
+      "Đỏ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tái lâm",
+      "Chiến thắng",
+      "Khải Huyền",
+      "Khải thị",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Revelation",
+    "chapter": 21,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khải 21:1: Sau sự phán xét cuối cùng, Chúa tạo điều gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mọi sự được làm mới hoàn toàn. Trời và đất cũ đã qua đi.",
+    "language": "vi",
+    "verseEnd": 2,
+    "options": [
+      "Vườn Ê-đen mới",
+      "Thành phố mới",
+      "Đền thờ mới",
+      "Trời mới và đất mới"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Trời mới",
+      "Đời đời",
+      "Khải Huyền",
+      "Khải thị",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Revelation",
+    "chapter": 22,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khải 22:17: Thánh Linh và cô dâu (Hội thánh) nói gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lời mời cuối cùng của Kinh Thánh: Hãy đến nhận sự sống miễn phí từ Chúa.",
+    "language": "vi",
+    "options": [
+      "Hãy chiến đấu",
+      "Hãy đợi",
+      "Hãy đến! Ai khát hãy đến và nhận nước sự sống không",
+      "Hãy cầu nguyện"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Lời mời",
+      "Nước sống",
+      "Khải Huyền",
+      "Khải thị",
+      "Cơ bản"
+    ]
+  }
+]

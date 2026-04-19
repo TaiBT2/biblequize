@@ -1,0 +1,306 @@
+[
+  {
+    "book": "Jonah",
+    "chapter": 1,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "The Lord sent Jonah to Nineveh, but where did he flee?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Jonah 1:3 - Jonah fled from the presence of the Lord by ship to Tarshish, the exact opposite direction.",
+    "language": "en",
+    "verseEnd": 3,
+    "options": [
+      "Tarshish (the opposite direction)",
+      "Babylon",
+      "Egypt",
+      "Moab"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jonah",
+      "Disobedience",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 1,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When Jonah fled, what did the Lord do?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Jonah 1:4 - The Lord did not let Jonah escape successfully. He sent a great storm to bring him back.",
+    "language": "en",
+    "verseEnd": 5,
+    "options": [
+      "Called another prophet",
+      "Sent a great storm on the sea",
+      "Left him alone",
+      "Sent an angel"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jonah",
+      "Discipline",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 1,
+    "verseStart": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What did Jonah tell the sailors to do so the sea would calm?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Jonah 1:12 - Jonah took responsibility and was willing to bear the consequences of his sin.",
+    "language": "en",
+    "options": [
+      "Throw me into the sea",
+      "Pray",
+      "Turn back",
+      "Clean the ship"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jonah",
+      "Responsibility",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 2,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Jonah declared from inside the fish: \"___ comes from the Lord\"",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Jonah 2:9 - Even in the most hopeless circumstances, Jonah recognized that only the Lord saves.",
+    "language": "en",
+    "options": [
+      "Judgment",
+      "Salvation",
+      "Wisdom",
+      "Peace"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jonah",
+      "Salvation",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 3,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "The second time the Lord called, what did Jonah do?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Jonah 3:3 - This time Jonah obeyed. The Lord gives second chances.",
+    "language": "en",
+    "verseEnd": 4,
+    "options": [
+      "Fled again",
+      "Asked why",
+      "Rested",
+      "Obeyed and went to Nineveh to preach"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jonah",
+      "Obedience",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 3,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How did the people of Nineveh respond when they heard Jonah preach?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Jonah 3:5 - The whole city repented from king to commoner! The greatest repentance in the Old Testament.",
+    "language": "en",
+    "options": [
+      "Mocked him",
+      "Became angry",
+      "Believed God, fasted, and repented",
+      "Ignored him"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jonah",
+      "Repentance",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 3,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When Nineveh repented, what did God do?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Jonah 3:10 - God relented when the people repented. He is merciful and ready to forgive.",
+    "language": "en",
+    "options": [
+      "Still punished them",
+      "Delayed the punishment",
+      "Left them alone",
+      "Relented and did not destroy them"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jonah",
+      "Forgiveness",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 4,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Why was Jonah angry when Nineveh was forgiven?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Jonah 4:2 - Jonah admitted he knew from the start that God would forgive. His problem was a narrow heart and ethnic prejudice.",
+    "language": "en",
+    "verseEnd": 2,
+    "options": [
+      "Because he was tired",
+      "Because he was afraid",
+      "Because he lost credibility",
+      "Because he already knew God was merciful and would forgive; he did not want enemies to be saved"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jonah",
+      "Mercy",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 4,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "With what question does the Lord end the book of Jonah?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Jonah 4:11 - God loves all people, even enemies. God's love has no ethnic boundaries.",
+    "language": "en",
+    "options": [
+      "Where are you?",
+      "Should I not have compassion on Nineveh, with its 120,000 people who cannot tell their right hand from their left?",
+      "Are you happy?",
+      "Have you obeyed?"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jonah",
+      "Love",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 4,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How did Jonah describe God in a way that made him angry?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Jonah quotes Exodus 34:6 - God's character. God's goodness is what upset Jonah.",
+    "language": "en",
+    "options": [
+      "Strict",
+      "Gracious, compassionate, slow to anger, abounding in love, who relents from sending calamity",
+      "Righteous",
+      "Judgmental"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jonah",
+      "Character of God",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 1,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Jonah told the sailors: \"I fear the Lord, the God of ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Even while fleeing from the Lord, Jonah still confessed Him as the Creator.",
+    "language": "en",
+    "options": [
+      "The gods",
+      "The mountains",
+      "All things",
+      "Heaven, who made the sea and the dry land"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jonah",
+      "Confession",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 1,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How long was Jonah inside the great fish?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Jonah 1:17 - Three days and three nights. Jesus used this event as a type of His resurrection (Matthew 12:40).",
+    "language": "en",
+    "options": [
+      "40 days",
+      "1 day",
+      "3 days and 3 nights",
+      "7 days"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jonah",
+      "Typology",
+      "Basic"
+    ]
+  }
+]

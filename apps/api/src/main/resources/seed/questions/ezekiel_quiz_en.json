@@ -1,0 +1,333 @@
+[
+  {
+    "book": "Ezekiel",
+    "chapter": 36,
+    "verseStart": 26,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What did the Lord promise to give His people in place of a heart of stone?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ezekiel 36:26 - The Lord removes the heart of stone and gives a tender heart. Fulfilled through the Holy Spirit.",
+    "language": "en",
+    "options": [
+      "Wisdom",
+      "Riches",
+      "A heart of flesh (a new heart)",
+      "Strength"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ezekiel",
+      "New Heart",
+      "Ezekiel",
+      "Major Prophet",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 34,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What did the Lord say He would do when the shepherds failed to fulfill their duty?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ezekiel 34:11 - The Lord is the true Good Shepherd. Jesus called Himself the Good Shepherd (John 10:11).",
+    "language": "en",
+    "verseEnd": 12,
+    "options": [
+      "Find new shepherds",
+      "Punish the shepherds",
+      "Let the flock fend for itself",
+      "He Himself will search for and care for the flock"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ezekiel",
+      "Shepherd",
+      "Ezekiel",
+      "Major Prophet",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 18,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What principle does Ezekiel 18:4 teach about responsibility for sin?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Each person is responsible for his own sin. No one is punished for another's sin.",
+    "language": "en",
+    "options": [
+      "The father bears the son's sin",
+      "The son bears the father's sin",
+      "The whole family bears it",
+      "The soul that sins shall die (each person is responsible for his own sin)"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ezekiel",
+      "Responsibility",
+      "Ezekiel",
+      "Major Prophet",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 33,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Does the Lord take pleasure in the death of the wicked?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ezekiel 33:11 - I have no pleasure in the death of the wicked, but desire that the wicked repent and live.",
+    "language": "en",
+    "options": [
+      "The Lord does not care",
+      "No, the Lord wants the wicked to repent and live",
+      "Yes, because it is just",
+      "It depends on the case"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ezekiel",
+      "Repentance",
+      "Ezekiel",
+      "Major Prophet",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 1,
+    "verseStart": 4,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "What does Ezekiel's first vision describe?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ezekiel 1:4-10 - A complex vision of the Lord's throne with 4 living creatures having the faces of a man, lion, ox, and eagle.",
+    "language": "en",
+    "verseEnd": 10,
+    "options": [
+      "The temple",
+      "Four winged living creatures and wheels, the glory of the Lord",
+      "A battle",
+      "The Garden of Eden"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ezekiel",
+      "Vision",
+      "Ezekiel",
+      "Major Prophet",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 47,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What is the meaning of the vision of the river flowing from the temple?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ezekiel 47:9 - Wherever this water flows, there is life. Revelation 22:1 also describes a river of the water of life.",
+    "language": "en",
+    "verseEnd": 9,
+    "options": [
+      "Living water flowing from the Lord's presence brings healing everywhere",
+      "To water a garden",
+      "To provide drinking water",
+      "To create a new sea"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ezekiel",
+      "Living Water",
+      "Ezekiel",
+      "Major Prophet",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 36,
+    "verseStart": 27,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What did the Lord promise to put within His people so they would obey?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ezekiel 36:27 - The Lord will put His Spirit within them so they obey from within. Fulfilled at Pentecost.",
+    "language": "en",
+    "options": [
+      "A new prophet",
+      "A new king",
+      "A new law",
+      "My Spirit (the Holy Spirit) within you"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ezekiel",
+      "Holy Spirit",
+      "Ezekiel",
+      "Major Prophet",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 37,
+    "verseStart": 21,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "The vision of the dry bones also prophesied what for the people of Israel?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ezekiel 37:22 - The Lord promised to make them one nation under one king. Israel was restored as a nation in 1948.",
+    "language": "en",
+    "verseEnd": 22,
+    "options": [
+      "A new war",
+      "Migration",
+      "The restoration and unification of Israel",
+      "Destruction"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ezekiel",
+      "Restoration",
+      "Ezekiel",
+      "Major Prophet",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 22,
+    "verseStart": 30,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "The Lord said: \"I sought for a man among them who would stand in the gap before Me on behalf of the land, but ___\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ezekiel 22:30 - The Lord sought an intercessor but found none. The need for intercessors praying for the nation.",
+    "language": "en",
+    "options": [
+      "I found no one",
+      "It was not needed",
+      "I found one person",
+      "I found many people"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ezekiel",
+      "Intercession",
+      "Ezekiel",
+      "Major Prophet",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 2,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "The Lord said to Ezekiel: \"Do not ___ them and do not be afraid of their words\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ezekiel 2:6 - The Lord urges courage to speak the truth even when opposed.",
+    "language": "en",
+    "verseEnd": 7,
+    "options": [
+      "Believe",
+      "Love",
+      "Listen to",
+      "Fear"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ezekiel",
+      "Courage",
+      "Ezekiel",
+      "Major Prophet",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 34,
+    "verseStart": 23,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "The Lord promised to set \"My servant David\" as shepherd. Whom does this prophesy?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ezekiel 34:23-24 - The Shepherd David is Jesus Christ, descendant of David and eternal King (John 10:11).",
+    "language": "en",
+    "verseEnd": 24,
+    "options": [
+      "King David resurrected",
+      "Jesus Christ - the Good Shepherd from the lineage of David",
+      "A descendant of David",
+      "Solomon"
+    ],
+    "tags": [
+      "Old Testament",
+      "Prophecy",
+      "Shepherd",
+      "Ezekiel",
+      "Major Prophet",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 37,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ezekiel 37 describes a vision of what valley?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ezekiel 37:1-10 - The dry bones are restored into an army. A prophecy of the restoration of the people of Israel and the Lord's resurrection power.",
+    "language": "en",
+    "verseEnd": 10,
+    "options": [
+      "The valley of flowers",
+      "The valley of dry bones brought back to life",
+      "The valley of peace",
+      "The valley of shadows"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ezekiel",
+      "Restoration",
+      "Ezekiel",
+      "Major Prophet",
+      "Intermediate"
+    ]
+  }
+]

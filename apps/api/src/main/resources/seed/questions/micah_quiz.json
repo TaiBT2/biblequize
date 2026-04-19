@@ -1,0 +1,280 @@
+[
+  {
+    "book": "Micah",
+    "chapter": 7,
+    "verseStart": 18,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Mi-che 7:18: \"Ai là Đức Chúa Trời giống như Ngài, ___ sự gian ác?\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Chúa hay tha sự gian ác, không giữ giận đời đời vì Ngài lấy sự nhân từ làm vui.",
+    "language": "vi",
+    "options": [
+      "Ghi",
+      "Phạt",
+      "Nhớ",
+      "Hay tha"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Mi-che",
+      "Tha thứ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Micah",
+    "chapter": 4,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Mi-che 4:3 tiên tri thời đại hòa bình: \"Họ sẽ rèn gươm thành ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Vũ khí biến thành dụng cụ nông nghiệp. Không còn học chiến trận nữa.",
+    "language": "vi",
+    "options": [
+      "Khiên",
+      "Trang sức",
+      "Dụng cụ",
+      "Lưỡi cày"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Mi-che",
+      "Hòa bình",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Micah",
+    "chapter": 3,
+    "verseStart": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Mi-che tuyên bố ông đầy quyền năng nhờ điều gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Mi-che 3:8 - Quyền năng phục vụ đến từ Thánh Linh, không phải từ bản thân tiên tri.",
+    "language": "vi",
+    "options": [
+      "Thần của Đức Giê-hô-va, sự công bình và sức mạnh",
+      "Học thức",
+      "Chức vụ",
+      "Kinh nghiệm"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Mi-che",
+      "Quyền năng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Micah",
+    "chapter": 5,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đấng Cứu Thế từ Bết-lê-hem sẽ chăn dân sự bằng gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mi-che 5:4 - Đấng Chăn vĩ đại sẽ đứng trong sức Chúa và chăm sóc dân sự.",
+    "language": "vi",
+    "options": [
+      "Quân đội",
+      "Trí khôn",
+      "Gươm",
+      "Sức mạnh của Đức Giê-hô-va"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Mi-che",
+      "Đấng Chăn",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Micah",
+    "chapter": 6,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Mi-che 6:6-7 hỏi: Chúa có muốn hàng ngàn con chiên hay dầu ô-liu không?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Chúa không muốn hình thức tôn giáo mà muốn đời sống công bình và khiêm nhường.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "Tùy lúc",
+      "Không, Chúa muốn công bình, nhân từ và khiêm nhường",
+      "Chỉ cần một ít",
+      "Có, càng nhiều càng tốt"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Mi-che",
+      "Công bình",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Micah",
+    "chapter": 1,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Mi-che cảnh báo sự phán xét của Chúa sẽ đến trên thành nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Mi-che 1:5 - Cả hai kinh đô đều phạm tội và cả hai sẽ bị phán xét. Chúa công bình với mọi người.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Sa-ma-ri và Giê-ru-sa-lem",
+      "Chỉ Sa-ma-ri",
+      "Chỉ Giê-ru-sa-lem",
+      "Ni-ni-ve"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Mi-che",
+      "Phán xét",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Micah",
+    "chapter": 4,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Mi-che tiên tri: trong những ngày sau rốt, núi của nhà Chúa sẽ như thế nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mi-che 4:1-2 - Vương quốc Chúa sẽ được tôn cao và mọi dân tộc sẽ đến học đường lối Ngài.",
+    "language": "vi",
+    "verseEnd": 2,
+    "options": [
+      "Bị ẩn",
+      "Bị quên",
+      "Bị phá hủy",
+      "Được lập lên trên chóp các núi, dân tộc sẽ đổ đến"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Mi-che",
+      "Ngày sau",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Micah",
+    "chapter": 7,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Mi-che tuyên bố: \"Phần ta, ta sẽ trông đợi ai?\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Mi-che 7:7 - Dù hoàn cảnh nào, Mi-che chọn trông đợi và tin cậy Chúa.",
+    "language": "vi",
+    "options": [
+      "Vua",
+      "Quân đội",
+      "Đức Giê-hô-va",
+      "Bạn bè"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Mi-che",
+      "Trông đợi",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Micah",
+    "chapter": 7,
+    "verseStart": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Mi-che 7:8: \"Khi ta bị té thì ta sẽ ___; khi ta ngồi trong tối thì Đức Giê-hô-va là ánh sáng ta\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dù sa ngã, người tin Chúa sẽ đứng lên lại vì Chúa là ánh sáng trong bóng tối.",
+    "language": "vi",
+    "options": [
+      "Đứng lên lại",
+      "Kêu cầu",
+      "Nằm mãi",
+      "Bỏ cuộc"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Mi-che",
+      "Hy vọng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Micah",
+    "chapter": 5,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Mi-chê 5:2 tiên tri Đấng Cứu Thế sẽ sinh ra tại thành nào?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Mi-chê 5:2 - Bết-lê-hem Ép-ra-ta... từ nơi người sẽ ra một Đấng cai trị Y-sơ-ra-ên. Ứng nghiệm Ma 2:1.",
+    "language": "vi",
+    "options": [
+      "Hê-bron",
+      "Na-xa-rét",
+      "Bết-lê-hem",
+      "Giê-ru-sa-lem"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Giáng sinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Micah",
+    "chapter": 6,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Mi-chê 6:8 tóm tắt điều Chúa đòi hỏi con người là gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Mi-chê 6:8 - Ba điều Chúa đòi hỏi: công bình, nhân từ, khiêm nhượng. Đơn giản nhưng sâu sắc.",
+    "language": "vi",
+    "options": [
+      "Chinh phục các dân tộc",
+      "Làm sự công bình, yêu sự nhân từ, và khiêm nhượng đi cùng Chúa",
+      "Xây đền thờ",
+      "Dâng của lễ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đời sống",
+      "Công bình",
+      "Cơ bản"
+    ]
+  }
+]

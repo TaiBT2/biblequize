@@ -1,0 +1,920 @@
+[
+  {
+    "book": "Luke",
+    "chapter": 1,
+    "verseStart": 26,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thiên sứ truyền tin cho ai về việc sinh ra Chúa Giê-su?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lu-ca 1:26-38: Thiên sứ Gáp-ri-ên báo tin cho Ma-ri.",
+    "language": "vi",
+    "verseEnd": 38,
+    "options": [
+      "Ma-ri",
+      "Ê-li-sa-bét",
+      "Ma-tha",
+      "Sa-ra"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Giáng sinh",
+      "Thiên sứ",
+      "Lu-ca",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 2,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ai là những người đầu tiên nhận tin vui Giáng sinh từ thiên sứ?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lu-ca 2:8-14: Các gã chăn chiên nghe thiên sứ báo tin vui.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Các gã chăn chiên",
+      "Các đạo sĩ",
+      "Các thầy tế lễ",
+      "Những người La-mã"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Giáng sinh",
+      "Tin mừng",
+      "Lu-ca",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 3,
+    "verseStart": 21,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Chúa Giê-su chịu báp-têm, Thánh Linh ngự xuống như gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lu-ca 3:22: Thánh Linh ngự xuống như hình chim bồ câu.",
+    "language": "vi",
+    "verseEnd": 22,
+    "options": [
+      "Gió mạnh",
+      "Mây",
+      "Lưỡi như lửa",
+      "Chim bồ câu"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Báp-têm",
+      "Thánh Linh",
+      "Lu-ca",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 5,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phép lạ nào khiến Phi-e-rơ quỳ xuống thưa: \"Lạy Chúa, xin lìa khỏi con\"?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lu-ca 5:6-8: Mẻ cá lạ khiến Phi-e-rơ run sợ trước thánh khiết.",
+    "language": "vi",
+    "verseEnd": 11,
+    "options": [
+      "Chữa lành mẹ vợ",
+      "Làm yên bão",
+      "Đuổi quỷ",
+      "Mẻ cá lạ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Môn đồ",
+      "Lu-ca",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 6,
+    "verseStart": 27,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su dạy gì về kẻ thù?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lu-ca 6:27: Hãy yêu kẻ thù mình, làm ơn cho kẻ ghét mình.",
+    "language": "vi",
+    "verseEnd": 36,
+    "options": [
+      "Hãy tố cáo",
+      "Hãy tránh xa",
+      "Hãy trừng phạt",
+      "Hãy yêu kẻ thù mình"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đạo đức",
+      "Tình yêu",
+      "Lu-ca",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 11,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lời cầu nguyện mẫu Chúa dạy được gọi là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lu-ca 11:2-4: Lời cầu nguyện: \"Lạy Cha chúng tôi ở trên trời...\"",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Thi thiên của Đa-vít",
+      "Kinh xưng tội",
+      "Bài cầu nguyện chung (Lạy Cha)",
+      "Lời chúc phước"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cầu nguyện",
+      "Khuôn mẫu",
+      "Lu-ca",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 7,
+    "verseStart": 36,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Người nữ có tội đã làm gì với chân Chúa Giê-su trong nhà Si-môn?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lu-ca 7:38: Khóc, lau bằng tóc, hôn chân, xức dầu thơm.",
+    "language": "vi",
+    "verseEnd": 50,
+    "options": [
+      "Khóc ướt và lau bằng tóc, xức dầu",
+      "Cởi giày",
+      "Thay băng chân",
+      "Rửa bằng nước thơm"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ăn năn",
+      "Tha thứ",
+      "Lu-ca",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 8,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong dụ ngôn người gieo giống, hạt rơi nơi vệ đường bị điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lu-ca 8:5,12: Chim trời ăn mất; kẻ ác cướp đi lời khỏi lòng.",
+    "language": "vi",
+    "verseEnd": 15,
+    "options": [
+      "Nắng đốt cháy",
+      "Gai nghẹt",
+      "Chim ăn mất",
+      "Nước cuốn trôi"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Dụ ngôn",
+      "Tấm lòng",
+      "Lu-ca",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 9,
+    "verseStart": 28,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Những ai hiện ra trong sự kiện hóa hình theo Lu-ca?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lu-ca 9:30: Hai người là Môi-se và Ê-li.",
+    "language": "vi",
+    "verseEnd": 36,
+    "options": [
+      "Đa-vít và Sa-lô-môn",
+      "Môi-se và Ê-li",
+      "Ê-sai và Giê-rê-mi",
+      "Áp-ra-ham và Môi-se"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Vinh hiển",
+      "Tiên tri",
+      "Lu-ca",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 10,
+    "verseStart": 25,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong dụ ngôn Người Sa-ma-ri nhân lành, ai đã giúp người bị nạn?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lu-ca 10:33: Người Sa-ma-ri thấy thì động lòng thương xót.",
+    "language": "vi",
+    "verseEnd": 37,
+    "options": [
+      "Người Sa-ma-ri",
+      "Quan tòa",
+      "Thầy Lê-vi",
+      "Thầy tế lễ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Dụ ngôn",
+      "Láng giềng",
+      "Lu-ca",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 12,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su dạy về mối quan tâm đối với đồ ăn, áo mặc như thế nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lu-ca 12:29-31: Trước hết hãy tìm Nước Đức Chúa Trời.",
+    "language": "vi",
+    "verseEnd": 34,
+    "options": [
+      "Phải dự trữ cho đủ",
+      "Làm giàu trước",
+      "Lo xa là khôn ngoan",
+      "Đừng lo lắng, trước hết tìm Nước Đức Chúa Trời"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đức tin",
+      "Ưu tiên",
+      "Lu-ca",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 14,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong bài học về chỗ ngồi, Chúa dạy điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lu-ca 14:10: Hãy xuống chỗ rốt, để chủ nhà bảo: bạn ơi, lên trên.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Hãy chọn chỗ nhất",
+      "Hãy mời người quyền thế",
+      "Hãy khiêm nhường chọn chỗ dưới",
+      "Hãy đến sớm"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Khiêm nhường",
+      "Tiệc cưới",
+      "Lu-ca",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 15,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong dụ ngôn người con hoang đàng, người cha làm gì khi con trở về?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lu-ca 15:20-24: Cha động lòng thương, chạy ra ôm hôn, mở tiệc.",
+    "language": "vi",
+    "verseEnd": 32,
+    "options": [
+      "Chạy ra ôm hôn và tổ chức tiệc",
+      "Từ chối nhận",
+      "Khiển trách nặng",
+      "Bắt làm tôi tớ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Dụ ngôn",
+      "Ân điển",
+      "Lu-ca",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 16,
+    "verseStart": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong câu chuyện người giàu và La-xa-rơ, sau khi chết họ ở đâu?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lu-ca 16:22-23: Người giàu ở nơi khổ hình; La-xa-rơ ở lòng Áp-ra-ham.",
+    "language": "vi",
+    "verseEnd": 31,
+    "options": [
+      "Đổi chỗ cho nhau",
+      "Cả hai ở thiên đàng",
+      "Người giàu ở nơi khổ hình, La-xa-rơ trong lòng Áp-ra-ham",
+      "Cả hai ở âm phủ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Dụ ngôn",
+      "Hậu xét",
+      "Lu-ca",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 18,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Dụ ngôn quan tòa bất công dạy điều gì về cầu nguyện?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lu-ca 18:1: Ngài phán phải cầu nguyện luôn, chớ hề nản chí.",
+    "language": "vi",
+    "verseEnd": 8,
+    "options": [
+      "Phải bền lòng cầu nguyện",
+      "Cầu nguyện vào ban đêm",
+      "Cầu nguyện ngắn gọn",
+      "Cầu nguyện tại đền thờ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cầu nguyện",
+      "Kiên trì",
+      "Lu-ca",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 19,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Xa-chê là ai và đã làm gì sau khi gặp Chúa?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lu-ca 19:2,8: Xa-chê hứa trả gấp bốn và cho người nghèo.",
+    "language": "vi",
+    "verseEnd": 10,
+    "options": [
+      "Thầy tế lễ, dâng tế lễ",
+      "Thương gia, xây hội quán",
+      "Trưởng ty thu thuế, hoàn trả và bố thí",
+      "Ký lục, chép luật"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ăn năn",
+      "Cải hóa",
+      "Lu-ca",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 20,
+    "verseStart": 20,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su trả lời thế nào về việc nộp thuế cho Sê-sa?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lu-ca 20:25: Nguyên tắc kép về trách nhiệm đời và đạo.",
+    "language": "vi",
+    "verseEnd": 26,
+    "options": [
+      "Chỉ người Do Thái nộp",
+      "Hãy dâng tất cả cho Đền thờ",
+      "Của Sê-sa trả cho Sê-sa, của Đức Chúa Trời trả cho Đức Chúa Trời",
+      "Không cần nộp thuế"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Khôn ngoan",
+      "Quyền bính",
+      "Lu-ca",
+      "Phúc Âm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 22,
+    "verseStart": 39,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Tại Ghết-sê-ma-nê, Chúa dạy môn đồ điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lu-ca 22:40: Hãy cầu nguyện, kẻo sa vào sự cám dỗ.",
+    "language": "vi",
+    "verseEnd": 46,
+    "options": [
+      "Hãy cầm gươm",
+      "Hãy ngủ yên",
+      "Hãy cầu nguyện kẻo sa vào cám dỗ",
+      "Hãy chạy trốn"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cầu nguyện",
+      "Thử thách",
+      "Lu-ca",
+      "Phúc Âm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 23,
+    "verseStart": 39,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Chúa phán gì với tên trộm ăn năn trên thập tự?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lu-ca 23:43: Lời hứa thiên đàng cho kẻ ăn năn.",
+    "language": "vi",
+    "verseEnd": 43,
+    "options": [
+      "Tội con đã được tha",
+      "Hãy xuống khỏi thập tự",
+      "Hôm nay ngươi sẽ ở với Ta trong Pa-ra-đi",
+      "Hãy về nhà con"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ân điển",
+      "Thập tự",
+      "Lu-ca",
+      "Phúc Âm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 24,
+    "verseStart": 13,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Hai môn đồ trên đường Em-ma-út nhận ra Chúa khi nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lu-ca 24:30-31: Mắt họ mở ra khi Ngài bẻ bánh.",
+    "language": "vi",
+    "verseEnd": 35,
+    "options": [
+      "Khi Ngài giảng giải Thi Kinh",
+      "Khi Ngài đi vào nhà",
+      "Khi Ngài chào hỏi",
+      "Khi Ngài bẻ bánh"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phục sinh",
+      "Mắt mở",
+      "Lu-ca",
+      "Phúc Âm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 2,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong Lu-ca 2:14, \"Vinh quang cho Đức Chúa Trời trên các từng trời\". Từ \"vinh quang\" trong tiếng Hy Lạp có nghĩa gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Doxa (δόξα) có nghĩa là \"vinh quang, danh tiếng\", sự vinh hiển và uy nghi của Đức Chúa Trời.",
+    "language": "vi",
+    "options": [
+      "Doxa - Vinh quang, danh tiếng",
+      "Kleos - Tiếng tăm",
+      "Time - Danh dự",
+      "Ainos - Ca ngợi"
+    ],
+    "tags": [
+      "Lu-ca",
+      "Giáng sinh",
+      "Ngôn ngữ Hy Lạp",
+      "Tân Ước",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 15,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong Lu-ca 15:20, \"Cha chạy ra ôm lấy con\". Từ \"chạy ra\" trong tiếng Hy Lạp có nghĩa gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dramo (δραμών) có nghĩa là \"chạy nhanh\", thể hiện sự vội vàng và tình yêu của người cha.",
+    "language": "vi",
+    "options": [
+      "Peripateo - Đi dạo",
+      "Badizo - Đi bộ",
+      "Dramo - Chạy nhanh",
+      "Erechomai - Đến"
+    ],
+    "tags": [
+      "Lu-ca",
+      "Người con hoang đàng",
+      "Ngôn ngữ Hy Lạp",
+      "Tân Ước",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 2,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su được sinh ra ở đâu?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lu-ca 2:7 - Ma-ri sinh con trai đầu lòng, bọc trong khăn, đặt nằm trong máng cỏ vì không có chỗ trong nhà trọ.",
+    "language": "vi",
+    "options": [
+      "Trong cung điện",
+      "Trong nhà hội",
+      "Trong chuồng gia súc tại Bết-lê-hem",
+      "Trong nhà trọ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Giáng sinh",
+      "Khiêm nhường",
+      "Lu-ca",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 10,
+    "verseStart": 30,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong chuyện ngụ ngôn Người Sa-ma-ri Nhân Lành, ai đã giúp người bị cướp?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lu-ca 10:33-34 - Người Sa-ma-ri (bị người Do-thái khinh chê) lại là người duy nhất động lòng thương xót và giúp đỡ.",
+    "language": "vi",
+    "verseEnd": 37,
+    "options": [
+      "Thầy tế lễ",
+      "Quân lính La-mã",
+      "Người Lê-vi",
+      "Người Sa-ma-ri"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Dụ ngôn",
+      "Yêu thương",
+      "Lu-ca",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 15,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong dụ ngôn Chiên Con Lạc Mất, người chăn có bao nhiêu con chiên trước khi mất 1 con?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lu-ca 15:4 - Người chăn có 100 con, mất 1, bỏ 99 con lại để đi tìm con bị lạc. Minh hoạ tình yêu của Chúa đối với kẻ tội lỗi.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "200 con",
+      "50 con",
+      "99 con",
+      "100 con"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Dụ ngôn",
+      "Tình yêu Chúa",
+      "Lu-ca",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 15,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong dụ ngôn Đứa Con Hoang Đàng, khi con trở về, người cha làm gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lu-ca 15:20-24 - Cha chạy ra ôm và hôn con, mặc áo tốt nhất, đeo nhẫn, làm tiệc. Hình ảnh đẹp về Chúa chào đón kẻ tội lỗi ăn năn.",
+    "language": "vi",
+    "verseEnd": 32,
+    "options": [
+      "Trách mắng trước rồi tha thứ",
+      "Bắt làm tôi tớ",
+      "Chạy ra ôm hôn và làm tiệc mừng",
+      "Từ chối gặp mặt"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Dụ ngôn",
+      "Tha thứ",
+      "Lu-ca",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 23,
+    "verseStart": 43,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su hứa gì với tên cướp ăn năn trên thập tự?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lu-ca 23:43 - Sự cứu rỗi chỉ cần đức tin chân thật, không cần việc làm. Tên cướp chỉ cần tin và được Chúa hứa thiên đàng.",
+    "language": "vi",
+    "options": [
+      "Tội của người đã được tha",
+      "Người sẽ được phục sinh",
+      "Hôm nay người sẽ ở với ta trong Ba-ra-đi",
+      "Người sẽ được nhớ đến"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thập tự",
+      "Ân điển",
+      "Lu-ca",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 4,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su đọc Ê-sai 61 tại Na-xa-rét và tuyên bố Ngài đến để làm gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lu-ca 4:18-19 - Chúa tuyên bố sứ vụ của Ngài dùng lời Ê-sai: giải phóng và chữa lành toàn diện.",
+    "language": "vi",
+    "verseEnd": 19,
+    "options": [
+      "Xây đền thờ",
+      "Lập quân đội",
+      "Giảng Phúc Âm cho kẻ nghèo, chữa lành kẻ đau khổ, phóng thích kẻ bị giam",
+      "Làm vua"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Sứ vụ",
+      "Giải phóng",
+      "Lu-ca",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 6,
+    "verseStart": 38,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lu-ca 6:38: \"Hãy ___ thì sẽ được; đo đầy, dằn chặt, lắc tràn trao vào lòng các ngươi\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Nguyên tắc rộng rãi: cho đi sẽ nhận lại gấp bội. Chúa thương người rộng rãi.",
+    "language": "vi",
+    "options": [
+      "Tìm",
+      "Gõ",
+      "Cho",
+      "Xin"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Rộng rãi",
+      "Cho đi",
+      "Lu-ca",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 10,
+    "verseStart": 41,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Giữa Ma-thê bối rối phục vụ và Ma-ri ngồi nghe, Chúa khen ai?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lu-ca 10:42 - Ma-ri chọn phần tốt nhất: ngồi dưới chân Chúa nghe Lời Ngài. Mối quan hệ hơn phục vụ.",
+    "language": "vi",
+    "verseEnd": 42,
+    "options": [
+      "Ma-thê, vì chăm chỉ",
+      "Không ai",
+      "Cả hai",
+      "Ma-ri, vì chọn phần tốt nhất"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ma-ri",
+      "Ưu tiên",
+      "Lu-ca",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 12,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su cảnh báo: \"Hãy giữ mình về mọi thứ ___\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lu-ca 12:15 - Sự sống thật không phụ thuộc tài sản. Bài học trong dụ ngôn người giàu ngu dại.",
+    "language": "vi",
+    "options": [
+      "Tham lam, vì sự sống không ở tại sự dư dật",
+      "Kiêu ngạo",
+      "Ghen tị",
+      "Sợ hãi"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tham lam",
+      "Giá trị",
+      "Lu-ca",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 17,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong 10 người phung được chữa lành, bao nhiêu người quay lại cảm ơn?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lu-ca 17:15-16 - Chỉ 1/10 biết ơn. Chúa Giê-su hỏi: 9 người kia đâu? Bài học về lòng biết ơn.",
+    "language": "vi",
+    "verseEnd": 16,
+    "options": [
+      "Không ai",
+      "5 người",
+      "Chỉ 1 người (và là người Sa-ma-ri)",
+      "Tất cả 10"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Biết ơn",
+      "Phép lạ",
+      "Lu-ca",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Luke",
+    "chapter": 18,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong dụ ngôn người thu thuế và Pha-ri-si, ai được xưng công bình?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lu-ca 18:14 - Người thu thuế chỉ biết kêu: Chúa ơi, xin thương xót kẻ có tội. Và được xưng công bình.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Không ai",
+      "Cả hai",
+      "Người Pha-ri-si, vì làm nhiều việc tốt",
+      "Người thu thuế, vì khiêm nhường ăn năn"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Khiêm nhường",
+      "Công bình",
+      "Lu-ca",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  }
+]

@@ -1,0 +1,333 @@
+[
+  {
+    "book": "Ezekiel",
+    "chapter": 36,
+    "verseStart": 26,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa hứa ban cho dân sự điều gì thay cho tâm lòng bằng đá?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exe 36:26 - Chúa cắt bỏ tâm lòng bằng đá và ban tâm lòng mềm mại. Ứng nghiệm qua Đức Thánh Linh.",
+    "language": "vi",
+    "options": [
+      "Trí khôn ngoan",
+      "Sự giàu có",
+      "Tâm lòng bằng thịt (tâm lòng mới)",
+      "Sức mạnh"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xe-chi-en",
+      "Tâm lòng mới",
+      "Ê-xê-chi-ên",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 34,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa nói sẽ làm gì khi những kẻ chăn không làm tròn bổn phận?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exe 34:11 - Chúa là Đấng Chăn Hiền Lành thật sự. Chúa Giê-su tự xưng là Đấng Chăn Hiền Lành (Giăng 10:11).",
+    "language": "vi",
+    "verseEnd": 12,
+    "options": [
+      "Tìm kẻ chăn mới",
+      "Phạt kẻ chăn",
+      "Để bầy chiên tự lo",
+      "Chính Ngài sẽ tìm và chăm sóc bầy chiên"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xe-chi-en",
+      "Đấng Chăn",
+      "Ê-xê-chi-ên",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 18,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Exe 18:4 dạy nguyên tắc gì về trách nhiệm tội lỗi?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mỗi người chịu trách nhiệm về tội lỗi của chính mình. Không ai bị phạt vì tội người khác.",
+    "language": "vi",
+    "options": [
+      "Cha chịu tội con",
+      "Con chịu tội cha",
+      "Cả gia đình chịu",
+      "Linh hồn nào phạm tội thì linh hồn ấy sẽ chết (mỗi người chịu trách nhiệm tội mình)"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xe-chi-en",
+      "Trách nhiệm",
+      "Ê-xê-chi-ên",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 33,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa có vui vẻ khi kẻ ác chết không?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exe 33:11 - Ta không vui vẻ về sự chết của kẻ ác nhưng muốn kẻ ác ăn năn và sống.",
+    "language": "vi",
+    "options": [
+      "Chúa không quan tâm",
+      "Không, Chúa muốn kẻ ác ăn năn và sống",
+      "Có, vì là công bình",
+      "Tùy trường hợp"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xe-chi-en",
+      "Ăn năn",
+      "Ê-xê-chi-ên",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 1,
+    "verseStart": 4,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khải tượng đầu tiên của E-xe-chi-en mô tả gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exe 1:4-10 - Khải tượng phức tạp về ngai Chúa với 4 sinh vật có mặt người, sư tử, bò, và chim ưng.",
+    "language": "vi",
+    "verseEnd": 10,
+    "options": [
+      "Đền thờ",
+      "Bốn sinh vật có cánh và bánh xe, vinh quang Chúa",
+      "Chiến trận",
+      "Vườn Ê-đen"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xe-chi-en",
+      "Khải tượng",
+      "Ê-xê-chi-ên",
+      "Đại Tiên Tri",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 47,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khải tượng về dòng sông từ đền thờ chảy ra có ý nghĩa gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exe 47:9 - Nước này chảy đến đâu thì có sự sống ở đó. Khải 22:1 cũng mô tả sông nước sự sống.",
+    "language": "vi",
+    "verseEnd": 9,
+    "options": [
+      "Nước sự sống từ sự hiện diện Chúa chảy ra chữa lành mọi nơi",
+      "Tưới vườn",
+      "Cung cấp nước uống",
+      "Tạo biển mới"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xe-chi-en",
+      "Nước sống",
+      "Ê-xê-chi-ên",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 36,
+    "verseStart": 27,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa hứa sẽ đặt gì bên trong dân sự để họ vâng lời?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exe 36:27 - Chúa sẽ đặt Thần Ngài bên trong để dân sự vâng lời từ bên trong. Ứng nghiệm Lễ Ngũ Tuần.",
+    "language": "vi",
+    "options": [
+      "Tiên tri mới",
+      "Vua mới",
+      "Luật pháp mới",
+      "Thần ta (Đức Thánh Linh) bên trong các ngươi"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xe-chi-en",
+      "Thánh Linh",
+      "Ê-xê-chi-ên",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 37,
+    "verseStart": 21,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khải tượng xương khô cũng tiên tri về điều gì cho dân Y-sơ-ra-ên?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Exe 37:22 - Chúa hứa làm họ thành một dân tộc dưới một vua. Y-sơ-ra-ên phục quốc năm 1948.",
+    "language": "vi",
+    "verseEnd": 22,
+    "options": [
+      "Chiến tranh mới",
+      "Di cư",
+      "Sự phục hồi và thống nhất Y-sơ-ra-ên",
+      "Sự hủy diệt"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xe-chi-en",
+      "Phục hồi",
+      "Ê-xê-chi-ên",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 22,
+    "verseStart": 30,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa nói: \"Ta đã tìm một người đứng nơi trổ-rộng trước mặt ta vì xứ này nhưng ___\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Exe 22:30 - Chúa tìm người cầu thay nhưng không có ai. Sự cần đầu người cầu nguyện cho dân tộc.",
+    "language": "vi",
+    "options": [
+      "Không tìm được ai",
+      "Không cần",
+      "Tìm được một người",
+      "Tìm được nhiều người"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xe-chi-en",
+      "Cầu thay",
+      "Ê-xê-chi-ên",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 2,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa phán với E-xe-chi-en: \"Đừng ___ họ và đừng sợ lời nói họ\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Exe 2:6 - Chúa khuyên can đảm nói sự thật dù bị chống đối.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "Tin",
+      "Yêu",
+      "Nghe",
+      "Sợ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xe-chi-en",
+      "Can đảm",
+      "Ê-xê-chi-ên",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 34,
+    "verseStart": 23,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Chúa hứa sẽ đặt \"tôi tớ ta là Đa-vít\" làm đấng chăn. Đây tiên tri về ai?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exe 34:23-24 - Đấng Chăn Đa-vít là Chúa Giê-su, hậu duệ Đa-vít và là Vua đời đời (Giăng 10:11).",
+    "language": "vi",
+    "verseEnd": 24,
+    "options": [
+      "Vua Đa-vít phục sinh",
+      "Chúa Giê-su - Đấng Chăn Hiền Lành từ dòng dõi Đa-vít",
+      "Một hậu duệ của Đa-vít",
+      "Sa-lô-môn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Đấng Chăn",
+      "Ê-xê-chi-ên",
+      "Đại Tiên Tri",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Ezekiel",
+    "chapter": 37,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "E-xê-chi-ên 37 mô tả khải tượng về thung lũng nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Exe 37:1-10 - Xương khô được phục hồi thành quân đội. Tiên tri về sự phục hồi dân Y-sơ-ra-ên và quyền năng phục sinh của Chúa.",
+    "language": "vi",
+    "verseEnd": 10,
+    "options": [
+      "Thung lũng hoa",
+      "Thung lũng xương khô được sống lại",
+      "Thung lũng bình an",
+      "Thung lũng bóng tối"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xê-chi-ên",
+      "Phục hồi",
+      "Ê-xê-chi-ên",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  }
+]

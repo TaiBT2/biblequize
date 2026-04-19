@@ -1,0 +1,942 @@
+[
+  {
+    "book": "1 Corinthians",
+    "chapter": 1,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô khuyên hội thánh Cô-rinh-tô điều gì về sự chia rẽ?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Cô-rinh-tô 1:10: Khuyên hiệp một, không chia rẽ, đồng một lòng và một ý tưởng.",
+    "language": "vi",
+    "options": [
+      "Tránh gặp nhau",
+      "Hiệp một cùng một ý tưởng",
+      "Mỗi nhóm theo một thầy",
+      "Tự lập nhóm riêng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Hiệp một",
+      "Hội thánh",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 3,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ai cho lớn lên trong công việc Chúa?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Cô 3:6-7: Phao-lô trồng, A-bô-lô tưới, nhưng Đức Chúa Trời làm cho lớn lên.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "Đức Chúa Trời",
+      "Phi-e-rơ",
+      "Phao-lô",
+      "A-bô-lô"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Hội thánh",
+      "Khiêm nhường",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 6,
+    "verseStart": 19,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thân thể tín hữu được gọi là gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Cô 6:19: Thân thể các ngươi là đền thờ của Đức Thánh Linh.",
+    "language": "vi",
+    "verseEnd": 20,
+    "options": [
+      "Đền thờ Đức Thánh Linh",
+      "Vật dơ bẩn",
+      "Lều tạm",
+      "Đền thờ Sa-lô-môn"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thánh Linh",
+      "Thánh khiết",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 10,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời làm gì khi tín hữu bị cám dỗ?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Cô 10:13: Ngài trung tín, không để bị cám dỗ quá sức, nhưng mở lối thoát.",
+    "language": "vi",
+    "options": [
+      "Bỏ mặc",
+      "Trách phạt ngay",
+      "Tăng cám dỗ",
+      "Mở lối thoát"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cám dỗ",
+      "Trung tín",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 13,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo 1 Cô 13, tình yêu thương có đặc tính nào sau đây?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Cô 13:4-7 mô tả tình yêu thương.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "Hay nhịn nhục, hay nhân từ",
+      "Kiêu ngạo",
+      "Hay ghen tị",
+      "Tự cao"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tình yêu",
+      "Đức hạnh",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 15,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Cốt lõi Tin Lành theo 1 Cô 15 là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Cô 15:3-4 trình bày cốt lõi Tin Lành.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Xây đền thờ",
+      "Ăn chay cầu nguyện",
+      "Đấng Christ chịu chết, chôn và sống lại ngày thứ ba",
+      "Giữ luật pháp"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tin Lành",
+      "Phục sinh",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 1,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vì sao lời về thập tự bị xem là dại đối với kẻ hư mất?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Cô 1:18: Thập tự là quyền phép Đức Chúa Trời cho kẻ được cứu.",
+    "language": "vi",
+    "verseEnd": 25,
+    "options": [
+      "Vì họ không nhận ra quyền phép Đức Chúa Trời",
+      "Vì ít bằng chứng",
+      "Vì nghịch truyền thống",
+      "Vì thiếu triết lý"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thập tự",
+      "Khôn ngoan",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 2,
+    "verseStart": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Những sự thuộc linh được hiểu bởi ai?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Cô 2:14: Người thuộc xác thịt không nhận sự thuộc linh, phải nhờ Thánh Linh hiểu.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Người có Thánh Linh",
+      "Người trí thức",
+      "Người nhiều kinh nghiệm",
+      "Người đạo đức"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Mặc khải",
+      "Thánh Linh",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 5,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Men ít làm dậy cả bột dạy bài học gì cho hội thánh?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Cô 5:6-8: Hãy loại men cũ, để trở nên bột mới.",
+    "language": "vi",
+    "verseEnd": 8,
+    "options": [
+      "Giữ hình thức",
+      "Dung túng",
+      "Tự do tuyệt đối",
+      "Thanh sạch kỷ luật"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Kỷ luật",
+      "Thánh khiết",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 7,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô khuyên về hôn nhân và độc thân thế nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Cô 7:7: Mỗi người có ơn riêng của mình bởi Đức Chúa Trời.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "Tùy ân tứ mỗi người",
+      "Mọi người nên cưới",
+      "Mọi người nên độc thân",
+      "Do hoàn cảnh kinh tế"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Hôn nhân",
+      "Ân tứ",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 8,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Về đồ cúng thần tượng, nguyên tắc nào được nêu ra?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Cô 8:1-13: Kiến thức sinh kiêu ngạo, tình yêu gây dựng; đừng làm cớ vấp phạm.",
+    "language": "vi",
+    "verseEnd": 13,
+    "options": [
+      "Tình yêu xây dựng, chớ nên gây vấp phạm",
+      "Tự do là tối thượng",
+      "Chỉ cần cầu nguyện trước khi ăn",
+      "Kiến thức quan trọng hơn"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tự do",
+      "Tình yêu",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 9,
+    "verseStart": 19,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô trở nên mọi sự cho mọi người nhằm mục đích gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Cô 9:22-23: Hầu cho nhờ mọi cách cứu được một vài người.",
+    "language": "vi",
+    "verseEnd": 23,
+    "options": [
+      "Được phần mười",
+      "Được cứu một vài người",
+      "Được tôn vinh",
+      "Được khen ngợi"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Truyền giáo",
+      "Thích nghi",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 11,
+    "verseStart": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tiệc Thánh nhằm mục đích gì theo 1 Cô 11?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Cô 11:24-26: Hãy làm điều này để nhớ Ta... rao truyền sự chết Ngài cho tới lúc Ngài đến.",
+    "language": "vi",
+    "verseEnd": 26,
+    "options": [
+      "Thực hành Do Thái giáo",
+      "Tưởng niệm Chúa và rao truyền sự chết Ngài",
+      "Chia sẻ của ăn",
+      "Gắn kết xã hội"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Lễ nghi",
+      "Tiệc Thánh",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 12,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ai phân phát các ân tứ thuộc linh cho mỗi người?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Cô 12:11: Cùng một Thánh Linh làm mọi sự và phân phát cho mỗi người tùy ý Ngài.",
+    "language": "vi",
+    "verseEnd": 11,
+    "options": [
+      "Các sứ đồ",
+      "Mục sư",
+      "Thánh Linh theo ý Ngài",
+      "Tập thể tín hữu"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ân tứ",
+      "Thánh Linh",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 14,
+    "verseStart": 26,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Nguyên tắc điều hành thờ phượng tập thể là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Cô 14:26-33: Đức Chúa Trời chẳng phải là tác giả sự loạn lạc, nhưng là của sự bình an.",
+    "language": "vi",
+    "verseEnd": 33,
+    "options": [
+      "Không cần thông dịch",
+      "Càng nhiều tiếng lạ càng tốt",
+      "Mọi sự phải làm cho gây dựng, cách có trật tự",
+      "Ai muốn nói thì nói"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thờ phượng",
+      "Trật tự",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 9,
+    "verseStart": 24,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Hình ảnh chạy đua dạy điều gì cho môn đồ?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Cô 9:24-27: Ta đánh thân thể ta và bắt phục nó.",
+    "language": "vi",
+    "verseEnd": 27,
+    "options": [
+      "Khoe phần thưởng",
+      "Phải thắng người khác",
+      "Tiết chế và kỷ luật để đoạt giải không hay hư",
+      "Cần sức mạnh thể chất"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Kỷ luật",
+      "Phần thưởng",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 13,
+    "verseStart": 8,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Vì sao tình yêu lớn hơn đức tin và sự trông cậy?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Cô 13:13: Hiện nay còn có đức tin, sự trông cậy, tình yêu thương; nhưng lớn hơn hết là tình yêu thương.",
+    "language": "vi",
+    "verseEnd": 13,
+    "options": [
+      "Vì dễ thực hành",
+      "Vì được khen nhiều",
+      "Vì tình yêu còn lại đời đời",
+      "Vì ít khó hơn"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tình yêu",
+      "Ưu việt",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 15,
+    "verseStart": 12,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Nếu Đấng Christ không sống lại thì hệ quả gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Cô 15:14-19: Đức tin vô ích, các ngươi còn ở trong tội lỗi mình.",
+    "language": "vi",
+    "verseEnd": 19,
+    "options": [
+      "Luật pháp vô ích",
+      "Cầu nguyện vô ích",
+      "Truyền giáo vô ích",
+      "Đức tin vô ích và vẫn còn trong tội"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phục sinh",
+      "Trọng tâm",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 16,
+    "verseStart": 13,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Lời khuyên kết luận trọng tâm của 1 Cô-rinh-tô là gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Cô 16:13-14: Hãy giữ mình, đứng vững trong đức tin, mạnh mẽ, và làm mọi việc trong tình yêu thương.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Hãy tránh sự bắt bớ",
+      "Hãy tìm ân tứ lớn",
+      "Hãy nhóm họp thường xuyên",
+      "Hãy vững vàng, mạnh mẽ; mọi việc đều làm bằng tình yêu"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Khích lệ",
+      "Kết luận",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 13,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong 1 Cô-rinh-tô 13:4, \"Tình yêu thương hay nhịn nhục\". Từ \"nhịn nhục\" trong tiếng Hy Lạp có nghĩa gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Makrothumeo (μακροθυμέω) có nghĩa là \"nhịn nhục lâu dài\", không chỉ chịu đựng mà còn kiên nhẫn.",
+    "language": "vi",
+    "options": [
+      "Hupomeno - Chịu đựng",
+      "Makrothumeo - Nhịn nhục lâu dài",
+      "Anechomai - Chịu đựng",
+      "Kartereo - Kiên trì"
+    ],
+    "tags": [
+      "1 Cô-rinh-tô",
+      "Tình yêu",
+      "Ngôn ngữ Hy Lạp",
+      "Tân Ước",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 15,
+    "verseStart": 55,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong 1 Cô-rinh-tô 15:55, \"Hỡi sự chết, sự thắng của mầy ở đâu?\" Từ \"thắng\" trong tiếng Hy Lạp có nghĩa gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Nikos (νῖκος) có nghĩa là \"chiến thắng\", sự chết đã bị đánh bại bởi sự sống lại của Chúa Giê-su.",
+    "language": "vi",
+    "options": [
+      "Trophe - Thức ăn",
+      "Nikos - Chiến thắng",
+      "Broma - Thức ăn",
+      "Stinger - Cái nọc"
+    ],
+    "tags": [
+      "1 Cô-rinh-tô",
+      "Sự sống lại",
+      "Ngôn ngữ Hy Lạp",
+      "Tân Ước",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 13,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo 1 Cô-rinh-tô 13, tình yêu thương bắt đầu bằng điều gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Cô 13:4 - Tình yêu hay nhịn nhục, tình yêu hay nhân từ. Nhịn nhục và nhân từ là nền tảng của tình yêu thương thật.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "Hay cho đi",
+      "Hay tha thứ",
+      "Hay hy sinh",
+      "Hay nhịn nhục và nhân từ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tình yêu",
+      "Đời sống",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 13,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong ba điều còn lại mãi: đức tin, sự trông cậy và tình yêu thương, điều nào lớn hơn hết?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Cô 13:13 - Tình yêu thương lớn hơn hết vì nó là bản tính của Đức Chúa Trời (1 Giăng 4:8).",
+    "language": "vi",
+    "options": [
+      "Đức tin",
+      "Tình yêu thương",
+      "Sự trông cậy (hy vọng)",
+      "Cả ba bằng nhau"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tình yêu",
+      "Thần học",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 15,
+    "verseStart": 3,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo 1 Cô 15:3-4, Phúc Âm có thể tóm tắt trong mấy điều cốt lõi?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Cô 15:3-4 - Phúc Âm là: Christ chết vì tội lỗi (1), được chôn (2), và sống lại ngày thứ ba (3) đúng như Kinh Thánh.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "7 bí tích",
+      "5 điều ràng buộc",
+      "3 điều: Christ chết vì tội, được chôn và sống lại ngày thứ ba",
+      "1 điều: tin Chúa"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phúc Âm",
+      "Cốt lõi",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 1,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đạo thập tự giá đối với kẻ hư mất là điên dại nhưng đối với chúng ta là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Cô 1:18 - Thập tự giá là sự điên dại theo thế gian nhưng là quyền năng cứu rỗi cho người tin.",
+    "language": "vi",
+    "options": [
+      "Truyền thống",
+      "Bí ẩn",
+      "Quyền phép của Đức Chúa Trời",
+      "Tri thức"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thập tự",
+      "Quyền năng",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 2,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Cô 2:9: Mắt chưa thấy, tai chưa nghe, lòng chưa nghĩ đến điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Những điều Chúa chuẩn bị vượt qua trí tưởng tượng của con người.",
+    "language": "vi",
+    "options": [
+      "Phép lạ",
+      "Phúc Âm",
+      "Điều Chúa chuẩn bị cho những ai yêu Ngài",
+      "Thiên đàng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Hy vọng",
+      "Phúc lành",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 3,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Cô 3:16: Thân thể chúng ta là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Thân thể là đền thờ Thánh Linh ngự. Phải giữ gìn thánh khiết.",
+    "language": "vi",
+    "options": [
+      "Của lễ",
+      "Dụng cụ của Chúa",
+      "Đền thờ của Đức Thánh Linh",
+      "Bình đất"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đền thờ",
+      "Thánh Linh",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 9,
+    "verseStart": 24,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô so sánh đời sống tín đồ với gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Cô 9:24 - Đời sống đức tin giống cuộc đua: cần kỷ luật và nỗ lực để đạt đích.",
+    "language": "vi",
+    "options": [
+      "Cuộc chạy đua, hãy chạy để được giải",
+      "Buôn bán",
+      "Làm nông",
+      "Chiến trận"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Kỷ luật",
+      "Cuộc đua",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 10,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Cô 10:13 hứa gì về sự cám dỗ?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Chúa thành tín: không để cám dỗ quá sức và luôn cung cấp lối thoát.",
+    "language": "vi",
+    "options": [
+      "Cám dỗ sẽ hết",
+      "Chúa không để bị cám dỗ quá sức chịu và luôn cho lối thoát",
+      "Sẽ không có cám dỗ",
+      "Phải tự chịu"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cám dỗ",
+      "Thành tín",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 12,
+    "verseStart": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô so sánh Hội thánh như gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Cô 12:12-14 - Mỗi người có ân tứ khác nhau nhưng đều quan trọng như các bộ phận trong thân thể.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Tòa nhà",
+      "Thân thể có nhiều chi thể, mỗi chi thể đều cần thiết",
+      "Vườn nho",
+      "Quân đội"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Hội thánh",
+      "Ân tứ",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 13,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Nếu có tài ân tứ nhưng không có tình yêu thương, Phao-lô nói mình như gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Cô 13:1 - Mọi ân tứ đều vô giá trị nếu không có tình yêu thương.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Người mạnh mẽ",
+      "Học giả",
+      "Đồng vàng kêu hay chập chõe vang",
+      "Thiên sứ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tình yêu",
+      "Ân tứ",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 15,
+    "verseStart": 58,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Cô 15:58 kết luận: Hãy vững vàng, làm việc Chúa cách dư dẫy vì biết rằng công khó mình trong Chúa sẽ không ___",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Mọi công khó làm cho Chúa đều có giá trị đời đời, không bao giờ uổng phí.",
+    "language": "vi",
+    "options": [
+      "Vô ích",
+      "Trễ",
+      "Quên",
+      "Mất"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Làm việc",
+      "Hy vọng",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 10,
+    "verseStart": 31,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Cô 10:31: Dù ăn uống hay làm gì, hãy làm tất cả vì ___ của Đức Chúa Trời",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mọi hành động, dù nhỏ nhất, có thể là hành động tôn vinh Chúa.",
+    "language": "vi",
+    "options": [
+      "Lợi ích",
+      "Danh tiếng",
+      "Sự vui",
+      "Sự vinh hiển"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Vinh hiển",
+      "Đời sống",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Corinthians",
+    "chapter": 16,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 Cô 16:13-14 khuyên làm mọi điều trong tình gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Tỉnh giác, vững tin, can đảm, mạnh mẽ - nhưng làm mọi điều trong tình yêu thương.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Hy vọng",
+      "Sợ hãi",
+      "Yêu thương",
+      "Công bình"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Yêu thương",
+      "Đời sống",
+      "1 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  }
+]

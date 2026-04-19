@@ -5,6 +5,7 @@ import { api } from '../api/client'
 import { getQuizLanguage } from '../utils/quizLanguage'
 import { useAuth } from '../store/authStore'
 import { useRankedDataSync } from '../hooks/useRankedDataSync'
+import { getTierByPoints } from '../data/tiers'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 
@@ -34,23 +35,8 @@ interface RankedStatus {
   askedQuestionCountToday?: number
 }
 
-/* ── Tier System (SPEC-v2 section 2.1) ── */
-const TIERS = [
-  { nameKey: 'tiers.spark', icon: 'spa', color: '#919098', minPoints: 0 },
-  { nameKey: 'tiers.seeker', icon: 'eco', color: '#4ade80', minPoints: 1_000 },
-  { nameKey: 'tiers.disciple', icon: 'scrollable_header', color: '#4a9eff', minPoints: 5_000 },
-  { nameKey: 'tiers.sage', icon: 'lightbulb', color: '#9b59b6', minPoints: 15_000 },
-  { nameKey: 'tiers.prophet', icon: 'local_fire_department', color: '#f8bd45', minPoints: 40_000 },
-  { nameKey: 'tiers.apostle', icon: 'workspace_premium', color: '#ff6b6b', minPoints: 100_000 },
-]
-
-function getCurrentTier(points: number) {
-  let tier = TIERS[0]
-  for (const t of TIERS) {
-    if (points >= t.minPoints) tier = t
-  }
-  return tier
-}
+// Tier data centralised in `data/tiers.ts` (single source of truth).
+// Use `getTierByPoints(points)` for current tier lookup.
 
 /* ── Skeleton ── */
 function RankedSkeleton() {
@@ -202,7 +188,7 @@ export default function Ranked() {
   const energyPct = rankedStatus.dailyLives > 0 ? Math.round((rankedStatus.livesRemaining / rankedStatus.dailyLives) * 100) : 0
   const canPlay = rankedStatus.livesRemaining > 0 && rankedStatus.questionsCounted < rankedStatus.cap
   const totalPoints = userRank?.points ?? rankedStatus.pointsToday ?? 0
-  const currentTier = getCurrentTier(totalPoints)
+  const currentTier = getTierByPoints(totalPoints)
   const bookPct = rankedStatus.bookProgress?.progressPercentage ?? 0
   const difficultyLabel = rankedStatus.currentDifficulty === 'all' ? t('practice.mixed')
     : rankedStatus.currentDifficulty === 'easy' ? t('practice.easy')
@@ -218,9 +204,9 @@ export default function Ranked() {
         </h1>
         <div data-testid="ranked-tier-badge" className="flex items-center gap-2">
           <div className="flex items-center justify-center w-8 h-8 rounded-full bg-secondary/10 text-secondary border border-secondary/20 shadow-[0_0_15px_rgba(248,189,69,0.15)]">
-            <span className="material-symbols-outlined text-lg" style={{ ...FILL_1, color: currentTier.color }}>{currentTier.icon}</span>
+            <span className="material-symbols-outlined text-lg" style={{ ...FILL_1, color: currentTier.colorHex }}>{currentTier.iconMaterial}</span>
           </div>
-          <span className="font-bold text-lg tracking-wide uppercase" style={{ color: currentTier.color }}>{t(currentTier.nameKey)}</span>
+          <span className="font-bold text-lg tracking-wide uppercase" style={{ color: currentTier.colorHex }}>{t(currentTier.nameKey)}</span>
         </div>
       </header>
 

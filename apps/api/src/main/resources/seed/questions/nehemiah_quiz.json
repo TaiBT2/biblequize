@@ -1,0 +1,335 @@
+[
+  {
+    "book": "Nehemiah",
+    "chapter": 2,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Nê-hê-mi trở về Giê-ru-sa-lem để làm gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Nê-hê-mi 2:17 - Nê-hê-mi kêu gọi dân sự xây lại tường thành Giê-ru-sa-lem đã bị hư nát.",
+    "language": "vi",
+    "verseEnd": 18,
+    "options": [
+      "Xây lại tường thành",
+      "Xây lại đền thờ",
+      "Làm tổng trấn",
+      "Dạy luật pháp"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Nê-hê-mi",
+      "Phục hồi",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Nehemiah",
+    "chapter": 1,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi nghe tin tường thành Gie-ru-sa-lem đổ nát, Nê-hê-mi làm gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Nê-hê-mi 1:4 - Nê-hê-mi đau buồn và cầu nguyện trước khi hành động. Cầu nguyện trước rồi làm sau.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Bỏ mặc",
+      "Khóc, kiêng ăn và cầu nguyện nhiều ngày",
+      "Lập tức lên đường",
+      "Giận dữ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Nê-hê-mi",
+      "Cầu nguyện",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Nehemiah",
+    "chapter": 1,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Nê-hê-mi giữ chức vụ gì cho vua Ba-tư?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Nê-hê-mi 1:11 - Chức quan dâng rượu rất được tin cậy vì phải bảo đảm rượu không bị đầu độc.",
+    "language": "vi",
+    "options": [
+      "Thư ký",
+      "Tướng quân",
+      "Cố vấn",
+      "Quan dâng rượu (người rót rượu)"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Nê-hê-mi",
+      "Chức vụ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Nehemiah",
+    "chapter": 2,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trước khi xin phép vua Ác-ta-xéc-xe, Nê-hê-mi làm gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Nê-hê-mi 2:4 - Nê-hê-mi cầu nguyện \"thầm\" ngay lúc đang nói chuyện với vua. Cầu nguyện bất cứ lúc nào.",
+    "language": "vi",
+    "verseEnd": 5,
+    "options": [
+      "Thầm cầu nguyện với Chúa",
+      "Chuẩn bị bài diễn văn",
+      "Hỏi ý cố vấn",
+      "Viết thư"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Nê-hê-mi",
+      "Cầu nguyện",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Nehemiah",
+    "chapter": 4,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi bị kẻ thù đe dọa, Nê-hê-mi làm gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Nê-hê-mi 4:9 - Vừa cầu nguyện vừa hành động thực tế. Tin cậy Chúa nhưng vẫn làm phần mình.",
+    "language": "vi",
+    "options": [
+      "Chỉ cầu nguyện",
+      "Chỉ đặt lính canh",
+      "Ngừng xây",
+      "Cầu nguyện và đặt người canh gác"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Nê-hê-mi",
+      "Đức tin",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Nehemiah",
+    "chapter": 6,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi kẻ thù mời Nê-hê-mi xuống để ngừng xây, ông trả lời thế nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Nê-hê-mi 6:3 - Nê-hê-mi từ chối bị phân tâm bởi kẻ thù. Tập trung vào sứ mệnh Chúa giao.",
+    "language": "vi",
+    "options": [
+      "Tôi đang làm việc lớn, không thể xuống được",
+      "Gửi người thay",
+      "Tôi sẽ đến ngay",
+      "Để tôi suy nghĩ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Nê-hê-mi",
+      "Tập trung",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Nehemiah",
+    "chapter": 6,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tường thành Gie-ru-sa-lem được xây lại trong bao lâu?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Nê-hê-mi 6:15 - 52 ngày! Kẻ thù nhận ra đây là việc của Chúa vì không ai làm nhanh vậy từ sức mình.",
+    "language": "vi",
+    "verseEnd": 16,
+    "options": [
+      "6 tháng",
+      "1 năm",
+      "7 năm",
+      "52 ngày"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Nê-hê-mi",
+      "Phép lạ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Nehemiah",
+    "chapter": 8,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Nê-hê-mi nói: \"Sự vui vẻ của Đức Gie-hô-va là ___\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Nê-hê-mi 8:10 - Sự vui vẻ từ Chúa ban cho sức mạnh để đối diện mọi hoàn cảnh.",
+    "language": "vi",
+    "options": [
+      "Mục đích của các ngươi",
+      "Hy vọng của các ngươi",
+      "Sức lực của các ngươi",
+      "Phúc lành của các ngươi"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Nê-hê-mi",
+      "Vui vẻ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Nehemiah",
+    "chapter": 8,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ai đọc sách luật pháp cho dân sự nghe từ sáng đến trưa?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Nê-hê-mi 8:1-3 - E-xơ-ra đọc Torah và các người Lê-vi giải nghĩa. Dân sự đứng nghe từ sáng đến trưa.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Nê-hê-mi",
+      "E-xơ-ra, thầy thông giáo",
+      "Các thầy tế lễ",
+      "Dân sự tự đọc"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "E-xơ-ra",
+      "Lời Chúa",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Nehemiah",
+    "chapter": 5,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Nê-hê-mi trách các quan trưởng vì điều gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Nê-hê-mi 5:7 - Nê-hê-mi bảo vệ dân nghèo khỏi bị bóc lột bởi chính người cùng dân tộc.",
+    "language": "vi",
+    "verseEnd": 11,
+    "options": [
+      "Không xây tường",
+      "Thờ tượng",
+      "Không cầu nguyện",
+      "Cho vay lấy lời bất công với dân nghèo"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Nê-hê-mi",
+      "Công bằng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Nehemiah",
+    "chapter": 13,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Nê-hê-mi cấm điều gì vào ngày Sa-bát?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Nê-hê-mi 13:15-19 - Nê-hê-mi đóng cổng thành trước ngày Sa-bát để ngăn thương gia buôn bán.",
+    "language": "vi",
+    "verseEnd": 18,
+    "options": [
+      "Nấu ăn",
+      "Buôn bán và vận chuyển hàng hóa",
+      "Nói chuyện",
+      "Đi bộ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Nê-hê-mi",
+      "Sa-bát",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Nehemiah",
+    "chapter": 2,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Nê-hê-mi làm gì ban đêm trước khi tuyên bố kế hoạch xây tường?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Nê-hê-mi 2:13 - Nê-hê-mi bí mật khảo sát tường thành ban đêm để nắm rõ tình hình trước khi hành động.",
+    "language": "vi",
+    "verseEnd": 16,
+    "options": [
+      "Bí mật đi xem xét tình trạng tường thành",
+      "Họp với quan trưởng",
+      "Ngủ nghỉ",
+      "Cầu nguyện"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Nê-hê-mi",
+      "Chuẩn bị",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Nehemiah",
+    "chapter": 12,
+    "verseStart": 43,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi tường thành hoàn tất, dân sự làm gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Nê-hê-mi 12:43 - Ngày hôm đó họ dâng của tế lễ lớn và vui mừng vì Chúa cho họ vui. Tiếng nghe từ xa.",
+    "language": "vi",
+    "options": [
+      "Ăn chay",
+      "Khóc vì cảm động",
+      "Im lặng tạ ơn",
+      "Dâng tế lễ và vui mừng, tiếng vui nghe xa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Nê-hê-mi",
+      "Vui mừng",
+      "Cơ bản"
+    ]
+  }
+]

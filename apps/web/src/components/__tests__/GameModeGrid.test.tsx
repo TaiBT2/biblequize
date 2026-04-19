@@ -265,4 +265,377 @@ describe('GameModeGrid', () => {
       expect(() => renderGrid()).not.toThrow()
     })
   })
+
+  /**
+   * Smart recommendation highlight — the grid must show exactly one card
+   * with a "✨ Gợi ý cho bạn" badge when userStats is provided. Without
+   * userStats (parent still loading /api/me), the grid must stay uniform.
+   */
+  describe('Recommendation highlight', () => {
+    it('does NOT highlight any card when userStats is omitted', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: { livesRemaining: 100, dailyLives: 100 } })
+        if (url.includes('daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: false } })
+        return Promise.reject(new Error('Not found'))
+      })
+      renderGrid() // no userStats
+      // Give time for fetches to settle
+      await waitFor(() => {
+        expect(screen.getByText(/100\/100/)).toBeInTheDocument()
+      })
+      expect(screen.queryByText(/Gợi ý cho bạn/i)).not.toBeInTheDocument()
+    })
+
+    it('highlights Practice card for a brand-new user (onboarding rule)', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: { livesRemaining: 50, dailyLives: 100 } })
+        if (url.includes('daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: false } })
+        return Promise.reject(new Error('Not found'))
+      })
+      render(
+        <MemoryRouter>
+          <GameModeGrid userStats={{ currentStreak: 0, totalPoints: 0 }} />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        const practiceCard = screen.getByTestId('game-mode-practice')
+        expect(practiceCard.getAttribute('data-recommended')).toBe('true')
+      })
+      // Exactly one badge rendered
+      expect(screen.getAllByText(/Gợi ý cho bạn/i)).toHaveLength(1)
+      // Onboarding reason message appears under the Practice card
+      expect(screen.getByTestId('game-mode-practice-reason')).toBeInTheDocument()
+    })
+
+    it('highlights Ranked card when energy is full (fullEnergy rule)', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: { livesRemaining: 100, dailyLives: 100 } })
+        if (url.includes('daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: true } })
+        return Promise.reject(new Error('Not found'))
+      })
+      render(
+        <MemoryRouter>
+          <GameModeGrid userStats={{ currentStreak: 2, totalPoints: 5000 }} />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        const rankedCard = screen.getByTestId('game-mode-ranked')
+        expect(rankedCard.getAttribute('data-recommended')).toBe('true')
+      })
+    })
+
+    it('highlights Daily card when daily is still pending (dailyAvailable)', async () => {
+      // Practical scenario: plenty of time, daily undone, energy not full
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: { livesRemaining: 50, dailyLives: 100 } })
+        if (url.includes('daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: false } })
+        return Promise.reject(new Error('Not found'))
+      })
+      render(
+        <MemoryRouter>
+          <GameModeGrid userStats={{ currentStreak: 2, totalPoints: 5000 }} />
+        </MemoryRouter>
+      )
+      // The recommendation depends on hoursToMidnight which comes from a
+      // live client clock — so we accept either dailyAvailable (< 12h) or
+      // default (>= 12h). What we lock in: if daily undone, Ranked should
+      // NOT be the one highlighted (energy is only 50).
+      await waitFor(() => {
+        const rankedCard = screen.getByTestId('game-mode-ranked')
+        const dailyCard = screen.getByTestId('game-mode-daily')
+        const rankedHighlighted = rankedCard.getAttribute('data-recommended') === 'true'
+        const dailyHighlighted = dailyCard.getAttribute('data-recommended') === 'true'
+        // At most one card highlighted; if any, it must be daily or default→ranked
+        // (never Practice / Groups / etc.)
+        expect(rankedHighlighted || dailyHighlighted).toBe(true)
+      })
+    })
+
+    it('locks Ranked card for Tier-1 users + shows unlock hint', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: { livesRemaining: 100, dailyLives: 100 } })
+        if (url.includes('daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: false } })
+        return Promise.reject(new Error('Not found'))
+      })
+      render(
+        <MemoryRouter>
+          <GameModeGrid
+            userStats={{ currentStreak: 0, totalPoints: 0 }}
+            userTier={1}
+          />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        const rankedCard = screen.getByTestId('game-mode-ranked')
+        expect(rankedCard.getAttribute('data-locked')).toBe('true')
+      })
+      expect(screen.getByTestId('game-mode-ranked-lock')).toBeInTheDocument()
+      expect(screen.getByTestId('game-mode-ranked-unlock-hint')).toBeInTheDocument()
+      // Progress bar showing XP gap renders (tier 1 user → 0/1000 XP toward Seeker)
+      expect(screen.getByTestId('game-mode-ranked-unlock-progress')).toBeInTheDocument()
+    })
+
+    it('locked CTA navigates to /practice (onboarding path to earn XP)', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: { livesRemaining: 100, dailyLives: 100 } })
+        if (url.includes('daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: false } })
+        return Promise.reject(new Error('Not found'))
+      })
+      render(
+        <MemoryRouter>
+          <GameModeGrid
+            userStats={{ currentStreak: 0, totalPoints: 200 }}
+            userTier={1}
+          />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        expect(screen.getByTestId('game-mode-ranked')).toBeInTheDocument()
+      })
+      const user = userEvent.setup()
+      // Find the CTA button inside the locked Ranked card
+      const rankedCard = screen.getByTestId('game-mode-ranked')
+      const ctaBtn = rankedCard.querySelector('button')!
+      await user.click(ctaBtn)
+      expect(mockNavigate).toHaveBeenCalledWith('/practice')
+    })
+
+    it('shows accuracy path (Path 2) in locked Ranked card when practice counts provided', async () => {
+      render(
+        <MemoryRouter>
+          <GameModeGrid
+            userStats={{
+              currentStreak: 0,
+              totalPoints: 200,
+              practiceCorrectCount: 7,
+              practiceTotalCount: 10,
+            }}
+            userTier={1}
+          />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        // Both XP path and accuracy path render for locked Ranked card
+        expect(screen.getByTestId('game-mode-ranked-xp-path')).toBeInTheDocument()
+        expect(screen.getByTestId('game-mode-ranked-accuracy-path')).toBeInTheDocument()
+      })
+      // Status text shows current accuracy + how many more correct needed
+      const status = screen.getByTestId('game-mode-ranked-accuracy-status')
+      expect(status.textContent).toMatch(/7\/10/)
+      expect(status.textContent).toMatch(/70/) // accuracy 70%
+      // 7/10 = 70% → need 5 more correct (per policy formula 4t-5c = 5)
+      expect(status.textContent).toMatch(/5/)
+    })
+
+    it('does NOT show accuracy path for Tournament (only Ranked gets early unlock)', async () => {
+      render(
+        <MemoryRouter>
+          <GameModeGrid
+            userStats={{
+              currentStreak: 0,
+              totalPoints: 200,
+              practiceCorrectCount: 7,
+              practiceTotalCount: 10,
+            }}
+            userTier={1}
+          />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        // Tournament is locked (tier<4), XP path shown
+        expect(screen.getByTestId('game-mode-tournament-xp-path')).toBeInTheDocument()
+      })
+      // But NO accuracy path for Tournament
+      expect(screen.queryByTestId('game-mode-tournament-accuracy-path')).not.toBeInTheDocument()
+    })
+
+    it('does NOT show accuracy path when practice counts omitted (backward compat)', async () => {
+      render(
+        <MemoryRouter>
+          <GameModeGrid
+            userStats={{ currentStreak: 0, totalPoints: 200 }}
+            userTier={1}
+          />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        expect(screen.getByTestId('game-mode-ranked-xp-path')).toBeInTheDocument()
+      })
+      expect(screen.queryByTestId('game-mode-ranked-accuracy-path')).not.toBeInTheDocument()
+    })
+
+    it('shows "Ready" message when user qualifies for early unlock', async () => {
+      render(
+        <MemoryRouter>
+          <GameModeGrid
+            userStats={{
+              currentStreak: 0,
+              totalPoints: 200,
+              practiceCorrectCount: 8,
+              practiceTotalCount: 10,
+            }}
+            userTier={1}
+            // Simulate backend hasn't flipped flag yet but user already qualifies
+            earlyRankedUnlock={false}
+          />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        const status = screen.getByTestId('game-mode-ranked-accuracy-status')
+        // Should show ready/đủ điều kiện message (test in both languages loosely)
+        expect(status.textContent).toMatch(/Ready|Đủ điều kiện/i)
+      })
+    })
+
+    it('earlyRankedUnlock flag bypasses Ranked tier gate for Tier-1 users', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: { livesRemaining: 100, dailyLives: 100 } })
+        if (url.includes('daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: false } })
+        return Promise.reject(new Error('Not found'))
+      })
+      render(
+        <MemoryRouter>
+          <GameModeGrid
+            userStats={{ currentStreak: 0, totalPoints: 200 }}
+            userTier={1}
+            earlyRankedUnlock={true}
+          />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        const rankedCard = screen.getByTestId('game-mode-ranked')
+        // Despite tier=1 and XP<1000, Ranked is UNLOCKED because of the flag.
+        expect(rankedCard.getAttribute('data-locked')).toBe('false')
+      })
+      // Lock badge + hint should NOT be present
+      expect(screen.queryByTestId('game-mode-ranked-lock')).not.toBeInTheDocument()
+      expect(screen.queryByTestId('game-mode-ranked-unlock-hint')).not.toBeInTheDocument()
+    })
+
+    it('earlyRankedUnlock flag does NOT unlock Tournament (stays tier-4 gated)', async () => {
+      render(
+        <MemoryRouter>
+          <GameModeGrid
+            userStats={{ currentStreak: 0, totalPoints: 200 }}
+            userTier={1}
+            earlyRankedUnlock={true}
+          />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        const tournamentCard = screen.getByTestId('game-mode-tournament')
+        // Tournament remains locked (requires tier 4, flag only affects Ranked)
+        expect(tournamentCard.getAttribute('data-locked')).toBe('true')
+      })
+    })
+
+    it('shows explicit XP gap in unlock hint (not just tier name)', async () => {
+      render(
+        <MemoryRouter>
+          <GameModeGrid
+            userStats={{ currentStreak: 0, totalPoints: 250 }}
+            userTier={1}
+          />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        const hint = screen.getByTestId('game-mode-ranked-unlock-hint')
+        // Tier-1 user with 250 XP needs 1000 - 250 = 750 more to reach Seeker
+        expect(hint.textContent).toMatch(/750/)
+      })
+    })
+
+    it('locks Tournament card for users below Tier 4', async () => {
+      render(
+        <MemoryRouter>
+          <GameModeGrid
+            userStats={{ currentStreak: 0, totalPoints: 500 }}
+            userTier={2}
+          />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        const tournamentCard = screen.getByTestId('game-mode-tournament')
+        expect(tournamentCard.getAttribute('data-locked')).toBe('true')
+      })
+    })
+
+    it('unlocks Ranked for Tier-2 users', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: { livesRemaining: 50, dailyLives: 100 } })
+        if (url.includes('daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: false } })
+        return Promise.reject(new Error('Not found'))
+      })
+      render(
+        <MemoryRouter>
+          <GameModeGrid
+            userStats={{ currentStreak: 0, totalPoints: 2000 }}
+            userTier={2}
+          />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        const rankedCard = screen.getByTestId('game-mode-ranked')
+        expect(rankedCard.getAttribute('data-locked')).toBe('false')
+      })
+      expect(screen.queryByTestId('game-mode-ranked-lock')).not.toBeInTheDocument()
+    })
+
+    it('does not recommend Ranked for Tier-1 users even with full energy', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: { livesRemaining: 100, dailyLives: 100 } })
+        if (url.includes('daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: true } })
+        return Promise.reject(new Error('Not found'))
+      })
+      render(
+        <MemoryRouter>
+          <GameModeGrid
+            userStats={{ currentStreak: 0, totalPoints: 500 }}
+            userTier={1}
+          />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        const rankedCard = screen.getByTestId('game-mode-ranked')
+        expect(rankedCard.getAttribute('data-recommended')).toBe('false')
+      })
+    })
+
+    it('never renders more than one badge at a time', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('ranked-status'))
+          return Promise.resolve({ data: { livesRemaining: 100, dailyLives: 100 } })
+        if (url.includes('daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: false } })
+        return Promise.reject(new Error('Not found'))
+      })
+      render(
+        <MemoryRouter>
+          <GameModeGrid userStats={{ currentStreak: 15, totalPoints: 5000 }} />
+        </MemoryRouter>
+      )
+      await waitFor(() => {
+        const badges = screen.queryAllByText(/Gợi ý cho bạn/i)
+        expect(badges.length).toBeLessThanOrEqual(1)
+      })
+    })
+  })
 })

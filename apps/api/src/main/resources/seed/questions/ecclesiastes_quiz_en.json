@@ -1,0 +1,327 @@
+[
+  {
+    "book": "Ecclesiastes",
+    "chapter": 3,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What does Ecclesiastes 3:1 say about times?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ecclesiastes 3:1 - Everything has its time. A time to be born and a time to die; a time to plant and a time to uproot; a time to weep and a time to laugh...",
+    "language": "en",
+    "options": [
+      "No one knows tomorrow",
+      "Make the most of time",
+      "To everything there is a season, and a time for every matter under heaven",
+      "Time is money"
+    ],
+    "tags": [
+      "Old Testament",
+      "Wisdom",
+      "Seasons",
+      "Ecclesiastes",
+      "Poetry",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 12,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What is the conclusion of the book of Ecclesiastes?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ecclesiastes 12:13 - After exploring everything under the sun, the conclusion is: fear God and keep His commandments. This is the whole duty of man.",
+    "language": "en",
+    "options": [
+      "Seek wisdom",
+      "Enjoy life",
+      "Life is meaningless",
+      "Fear God and keep His commandments"
+    ],
+    "tags": [
+      "Old Testament",
+      "Wisdom",
+      "Duty",
+      "Ecclesiastes",
+      "Poetry",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 1,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What is the famous saying from the book of Ecclesiastes?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ecclesiastes 1:2 - Hebel (vanity/vapor) expresses the temporary and meaningless nature of life under the sun without God.",
+    "language": "en",
+    "options": [
+      "Vanity of vanities, all is vanity",
+      "Rejoice and be glad",
+      "Time is gold",
+      "Everything is good"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ecclesiastes",
+      "Vanity",
+      "Ecclesiastes",
+      "Poetry",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 3,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What does Ecclesiastes 3:11 say God has placed in the human heart?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ecclesiastes 3:11 - God has placed eternity in the human heart. We were created to long for the everlasting.",
+    "language": "en",
+    "options": [
+      "Eternity (the sense of the everlasting)",
+      "Wisdom",
+      "Fear",
+      "Joy"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ecclesiastes",
+      "Eternity",
+      "Ecclesiastes",
+      "Poetry",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 4,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What does Ecclesiastes 4:9 say about working together?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ecclesiastes 4:9-10 - Two are better than one. If one falls, the other will lift him up. The value of friendship and community.",
+    "language": "en",
+    "verseEnd": 10,
+    "options": [
+      "One person is better",
+      "Three are best",
+      "There is no difference",
+      "Two are better than one, because they have a good reward for their labor"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ecclesiastes",
+      "Community",
+      "Ecclesiastes",
+      "Poetry",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 5,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What does Ecclesiastes 5:10 say about money?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ecclesiastes 5:10 - Money is never enough for the one who loves it. Greed is never satisfied.",
+    "language": "en",
+    "options": [
+      "Money brings happiness",
+      "Money is the root of all evil",
+      "Store up much",
+      "Whoever loves silver will never be satisfied with silver"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ecclesiastes",
+      "Money",
+      "Ecclesiastes",
+      "Poetry",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 7,
+    "verseStart": 2,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Why did Solomon say it is better to go to the house of mourning than to the house of feasting?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ecclesiastes 7:2 - Facing death helps us think seriously about the meaning of life.",
+    "language": "en",
+    "options": [
+      "Because there people reflect on the end and live more wisely",
+      "Because it is more religious",
+      "Because it is cheaper",
+      "Because it is quieter"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ecclesiastes",
+      "Death",
+      "Ecclesiastes",
+      "Poetry",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 9,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How does Ecclesiastes 9:10 advise us to work?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ecclesiastes 9:10 - Work with all your heart, for in the grave there is no work or knowledge.",
+    "language": "en",
+    "options": [
+      "Let others do it",
+      "Whatever your hand finds to do, do it with all your might",
+      "Only work when you feel like it",
+      "Do just enough"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ecclesiastes",
+      "Diligence",
+      "Ecclesiastes",
+      "Poetry",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 11,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What does Ecclesiastes 11:4 warn about?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ecclesiastes 11:4 - Do not wait for perfect conditions; act now. Waiting forever means never beginning.",
+    "language": "en",
+    "options": [
+      "Do not hurry",
+      "Wait for good weather",
+      "Whoever watches the wind will not sow, and whoever looks at the clouds will not reap",
+      "Plan carefully"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ecclesiastes",
+      "Action",
+      "Ecclesiastes",
+      "Poetry",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 12,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When does Ecclesiastes 12:1 urge us to remember the Creator?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ecclesiastes 12:1 - Remember God while you are young; do not wait until old age to seek Him.",
+    "language": "en",
+    "options": [
+      "In the days of your youth",
+      "When old",
+      "When successful",
+      "When in trouble"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ecclesiastes",
+      "Youth",
+      "Ecclesiastes",
+      "Poetry",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 7,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ecclesiastes 7:8: \"The end of a matter is better than its ___\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ecclesiastes 7:8 - Patience is better than pride. Do not judge too quickly.",
+    "language": "en",
+    "options": [
+      "Beginning",
+      "Middle",
+      "Plan",
+      "Idea"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ecclesiastes",
+      "Patience",
+      "Ecclesiastes",
+      "Poetry",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 12,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "According to Ecclesiastes 12:7, where does the spirit return at death?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ecclesiastes 12:7 - Dust returns to dust, and the spirit returns to God. Humans have an eternal spiritual part.",
+    "language": "en",
+    "options": [
+      "It goes down to the grave",
+      "It returns to God who gave it",
+      "It remains on earth",
+      "It vanishes"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ecclesiastes",
+      "Death",
+      "Ecclesiastes",
+      "Poetry",
+      "Intermediate"
+    ]
+  }
+]

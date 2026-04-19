@@ -1,0 +1,322 @@
+[
+  {
+    "book": "Jeremiah",
+    "chapter": 1,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What excuse did Jeremiah give when the Lord called him?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Jeremiah 1:6-7 - Jeremiah was young, but the Lord said: Do not say 'I am only a youth.' Go everywhere I send you.",
+    "language": "en",
+    "verseEnd": 8,
+    "options": [
+      "I am busy",
+      "I am unworthy",
+      "I fear my enemies",
+      "I am too young and do not know how to speak"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jeremiah",
+      "Calling",
+      "Major Prophet",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 2,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What two sins did the Lord accuse His people of?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Jeremiah 2:13 - Two sins: forsaking the Lord (the fountain of living waters) and seeking satisfaction elsewhere (broken cisterns that cannot hold water).",
+    "language": "en",
+    "options": [
+      "Forsaking the fountain of living waters to dig broken cisterns that cannot hold water",
+      "Laziness",
+      "Murder",
+      "Idolatry"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jeremiah",
+      "Betrayal",
+      "Major Prophet",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 17,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What does Jeremiah 17:9 say about the human heart?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The human heart is deceitful above all things and desperately wicked. Who can know it? Only the Lord knows.",
+    "language": "en",
+    "options": [
+      "Deceitful above all things, who can know it?",
+      "The heart is neutral",
+      "The heart is always good",
+      "The heart is always right"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jeremiah",
+      "Heart",
+      "Major Prophet",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 18,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What lesson did Jeremiah learn at the potter's house?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Jeremiah 18:6 - Just as the potter has authority over the clay, the Lord has authority over every people and nation.",
+    "language": "en",
+    "verseEnd": 6,
+    "options": [
+      "Be patient",
+      "The Lord is the potter who has power to shape any form He wills",
+      "Clay is precious",
+      "One must work diligently"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jeremiah",
+      "Sovereignty",
+      "Major Prophet",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 31,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Jeremiah 31:3: With what kind of love did the Lord say He loves His people?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "I have loved you with an everlasting love; therefore with lovingkindness I have drawn you.",
+    "language": "en",
+    "options": [
+      "Temporary love",
+      "Everlasting love",
+      "New love",
+      "Conditional love"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jeremiah",
+      "Love",
+      "Major Prophet",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 38,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Where was Jeremiah thrown for preaching the truth?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Jeremiah 38:6 - They let Jeremiah down with ropes into a muddy cistern. The cost of speaking the truth.",
+    "language": "en",
+    "options": [
+      "Prison",
+      "A muddy cistern (miry pit)",
+      "A dark cave",
+      "A deep pit"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jeremiah",
+      "Persecution",
+      "Major Prophet",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 52,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Did Jeremiah's prophecy about the destruction of Jerusalem come to pass?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Jeremiah 52:12-13 - Every prophecy was fulfilled. Jerusalem was destroyed and the people were exiled for 70 years just as Jeremiah had said.",
+    "language": "en",
+    "verseEnd": 13,
+    "options": [
+      "Only partially",
+      "Not yet known",
+      "Yes, Babylon destroyed the city and the temple in 586 BC",
+      "No"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jeremiah",
+      "Fulfillment",
+      "Major Prophet",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 17,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Jeremiah 17:7-8 compares the person who trusts in the Lord to what?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Similar to Psalm 1:3 - The one who trusts in the Lord is like a tree with deep roots, not fearing drought.",
+    "language": "en",
+    "verseEnd": 8,
+    "options": [
+      "A warrior",
+      "A tree planted by the waters, with green leaves, bearing fruit continually",
+      "A star",
+      "A high mountain"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jeremiah",
+      "Trust",
+      "Major Prophet",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 10,
+    "verseStart": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Jeremiah 10:23: What does Jeremiah acknowledge about humanity?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Humans cannot direct their own lives. We need the Lord's guidance.",
+    "language": "en",
+    "options": [
+      "The way of man is not in himself; it is not in man who walks to direct his own steps",
+      "Man is strong",
+      "Man is wise",
+      "Man is self-sufficient"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jeremiah",
+      "Dependence",
+      "Major Prophet",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 1,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "The Lord said to Jeremiah: \"Before I formed you in the womb, I ___ you\"",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Jeremiah 1:5 - The Lord knew us before we were born. He has a plan for each person from eternity past.",
+    "language": "en",
+    "options": [
+      "Called you",
+      "Knew you",
+      "Loved you",
+      "Chose you"
+    ],
+    "tags": [
+      "Old Testament",
+      "Jeremiah",
+      "Calling",
+      "Jeremiah",
+      "Major Prophet",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 29,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What does Jeremiah 29:11 say the Lord's plans for us are?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Jeremiah 29:11 - I know the thoughts I think toward you, thoughts of peace and not of evil, to give you a future and a hope.",
+    "language": "en",
+    "options": [
+      "Plans for punishment",
+      "Plans for peace, to give a future and a hope",
+      "Plans for trials",
+      "Plans for wealth"
+    ],
+    "tags": [
+      "Old Testament",
+      "Hope",
+      "God's plan",
+      "Jeremiah",
+      "Major Prophet",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 31,
+    "verseStart": 31,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Jeremiah 31:31-33 prophesies about a \"new covenant.\" How does this covenant differ from the old one?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Jeremiah 31:33 - The new covenant: the Lord writes His law on the heart and mind. This covenant is fulfilled through Jesus Christ and the Holy Spirit.",
+    "language": "en",
+    "verseEnd": 33,
+    "options": [
+      "More commandments",
+      "Only for the Jews",
+      "The law is written on the heart, not on tablets of stone",
+      "Requires more sacrifices"
+    ],
+    "tags": [
+      "Old Testament",
+      "Prophecy",
+      "New Covenant",
+      "Jeremiah",
+      "Major Prophet",
+      "Advanced"
+    ]
+  }
+]

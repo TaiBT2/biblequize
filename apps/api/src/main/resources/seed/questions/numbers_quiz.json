@@ -1,0 +1,1900 @@
+[
+  {
+    "book": "Numbers",
+    "chapter": 1,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Giê-hô-va phán bảo Môi-se làm gì tại hoang mạc Si-na-i?",
+    "options": [
+      "Chia đất Ca-na-an",
+      "Xây đền thờ",
+      "Kiểm tra dân số Y-sơ-ra-ên",
+      "Lập bàn thờ"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 1:2-3 — 'Hãy kiểm tra dân số của toàn thể hội chúng Y-sơ-ra-ên theo từng thị tộc, từng gia tộc, cứ đếm từng tên, tất cả nam giới.' Đây là lý do sách được gọi là Dân Số Ký.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 1,
+    "verseStart": 46,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tổng số nam giới từ 20 tuổi trở lên có thể ra trận trong cuộc kiểm tra dân số lần thứ nhất là bao nhiêu?",
+    "options": [
+      "503.550",
+      "601.730",
+      "625.000",
+      "603.550"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 1:46 — 'Tổng số là sáu trăm lẻ ba ngàn năm trăm năm mươi người.' Đây là tổng nam giới từ 20 tuổi trở lên có khả năng ra trận.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 2,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chi phái nào đóng trại ở phía đông Đền Tạm, hướng mặt trời mọc?",
+    "options": [
+      "Ru-bên",
+      "Giu-đa",
+      "Ép-ra-im",
+      "Đan"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 2:3 — 'Phía đông, hướng mặt trời mọc, có trại Giu-đa đóng theo đội ngũ mình.' Giu-đa dẫn đầu ở phía đông.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Kiểm tra dân số",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 3,
+    "verseStart": 12,
+    "verseEnd": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Giê-hô-va chọn người Lê-vi thay thế cho ai trong dân Y-sơ-ra-ên?",
+    "options": [
+      "Các trưởng lão",
+      "Các thầy tế lễ",
+      "Những người lính",
+      "Tất cả con đầu lòng"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 3:12-13 — 'Ta đã chọn người Lê-vi từ giữa dân Y-sơ-ra-ên để thay thế tất cả con đầu lòng.' Người Lê-vi thuộc về Đức Chúa Trời thay cho con trưởng.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 4,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Người Lê-vi trong độ tuổi nào được phục vụ tại Lều Hội Kiến?",
+    "options": [
+      "20 đến 50 tuổi",
+      "25 đến 50 tuổi",
+      "30 đến 50 tuổi",
+      "25 đến 60 tuổi"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 4:3 — 'Từ ba mươi tuổi trở lên cho đến năm mươi tuổi, tức là tất cả những người vào phục vụ tại Lều Hội Kiến.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 5,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Những người bị bệnh phong hủi phải được đưa ra ngoài trại.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 5:2-3 — 'Hãy truyền cho dân Y-sơ-ra-ên đuổi ra ngoài trại mọi người bị phong hủi, mọi người bị bệnh lậu, và mọi người bị ô uế vì xác chết.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 6,
+    "verseStart": 1,
+    "verseEnd": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Người Na-xi-rê phải kiêng cữ điều gì?",
+    "options": [
+      "Mặc áo len",
+      "Đi ra ngoài trại",
+      "Uống rượu và các sản phẩm từ nho",
+      "Ăn thịt"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 6:3-4 — 'Người ấy phải kiêng rượu và thức uống có men... không ăn bất cứ sản phẩm nào từ cây nho, từ hạt đến vỏ.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 7,
+    "verseStart": 1,
+    "verseEnd": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Các nhà lãnh đạo Y-sơ-ra-ên dâng gì làm lễ vật khi Đền Tạm được dựng xong?",
+    "options": [
+      "Ba mươi giạ bột mì",
+      "Mười con chiên và năm con dê",
+      "Sáu xe có mui và mười hai con bò",
+      "Vàng và bạc"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 7:3 — 'Họ đem lễ vật đến trước mặt Đức Giê-hô-va: sáu xe có mui và mười hai con bò.' Mỗi hai nhà lãnh đạo dâng chung một xe.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Đền tạm và thờ phượng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 9,
+    "verseStart": 15,
+    "verseEnd": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Điều gì bao phủ Đền Tạm vào ban ngày và ban đêm?",
+    "options": [
+      "Đám mây suốt ngày đêm",
+      "Đám mây ban ngày, cột lửa ban đêm",
+      "Thiên sứ canh giữ",
+      "Ánh sáng suốt ngày đêm"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 9:15-16 — 'Đám mây bao phủ Đền Tạm... đến chiều tối, đám mây ở trên Đền Tạm trông giống như lửa cho đến sáng.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 9,
+    "verseStart": 10,
+    "verseEnd": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Người nào bị ô uế vì xác chết hoặc đi xa thì giữ Lễ Vượt Qua vào lúc nào?",
+    "options": [
+      "Không được giữ",
+      "Tháng ba, ngày mười bốn",
+      "Tháng hai, ngày mười bốn",
+      "Tháng giêng, ngày mười bốn"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 9:10-11 — 'Người ấy phải giữ Lễ Vượt Qua vào ngày mười bốn tháng hai, lúc chiều tối.' Đây là quy định đặc biệt cho trường hợp ngoại lệ.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 10,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Giê-hô-va bảo Môi-se làm hai cái kèn bằng chất liệu gì?",
+    "options": [
+      "Vàng",
+      "Sừng chiên đực",
+      "Đồng",
+      "Bạc"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 10:2 — 'Hãy làm hai cái kèn bằng bạc, làm bằng bạc dát, để dùng triệu tập hội chúng và ra lệnh nhổ trại.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 11,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Dân Y-sơ-ra-ên than nhớ loại thức ăn nào ở Ai Cập?",
+    "options": [
+      "Bánh mì và bơ",
+      "Thịt bò và cừu",
+      "Cá, dưa chuột, dưa hấu",
+      "Nho và vả"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 11:5 — 'Chúng ta nhớ cá ăn không tốn tiền tại Ai Cập, nhớ dưa chuột, dưa hấu, rau hẹ, hành và tỏi.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Giô-sép tại Ai Cập",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 11,
+    "verseStart": 31,
+    "verseEnd": 33,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Giê-hô-va sai loại chim gì đến cho dân sự ăn khi họ đòi thịt?",
+    "options": [
+      "Bồ câu",
+      "Chim cút",
+      "Chim ưng",
+      "Chim sẻ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 11:31 — 'Một ngọn gió từ Đức Giê-hô-va thổi đến, đùa chim cút từ biển vào.' Nhưng tai vạ giáng xuống khi dân sự ăn vì lòng tham.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 11,
+    "verseStart": 16,
+    "verseEnd": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đức Giê-hô-va bảo Môi-se chọn bao nhiêu trưởng lão để chia sẻ gánh nặng lãnh đạo?",
+    "options": [
+      "Bảy mươi hai",
+      "Một trăm",
+      "Bảy mươi",
+      "Mười hai"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 11:16 — 'Hãy tập họp cho Ta bảy mươi người trong các trưởng lão Y-sơ-ra-ên.' Thần của Môi-se được ban cho họ.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 12,
+    "verseStart": 1,
+    "verseEnd": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ai nói nghịch Môi-se vì vợ người Ê-thi-ô-bi của ông?",
+    "options": [
+      "Na-đáp và A-bi-hu",
+      "Cô-ra và Đa-than",
+      "Giô-suê và Ca-lép",
+      "Mi-ri-am và A-rôn"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 12:1 — 'Mi-ri-am và A-rôn nói nghịch Môi-se vì cớ người vợ Ê-thi-ô-bi mà ông đã cưới.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 12,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Mi-ri-am bị phạt bệnh phong hủi vì nói nghịch Môi-se.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 12:10 — 'Khi đám mây rời khỏi Lều, Mi-ri-am bị phong hủi, trắng như tuyết.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 13,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Môi-se sai bao nhiêu người đi do thám đất Ca-na-an?",
+    "options": [
+      "40 người",
+      "12 người",
+      "70 người",
+      "10 người"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 13:2 — 'Hãy sai người đi do thám đất Ca-na-an.' Mỗi chi phái cử một người, tổng cộng mười hai người.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Đất hứa Ca-na-an",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 13,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Những thám tử mang về loại trái cây gì từ thung lũng Ếch-côn?",
+    "options": [
+      "Một chùm nho lớn",
+      "Chùm nho, lựu và vả",
+      "Ô-liu và chà là",
+      "Trái vả và lựu"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 13:23 — 'Họ cắt tại đó một nhánh nho có một chùm nho... Họ cũng hái lựu và vả.' Chùm nho lớn đến mức phải hai người khiêng.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Đất hứa Ca-na-an",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 13,
+    "verseStart": 30,
+    "verseEnd": 33,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ngoài Giô-suê, ai là người thám tử còn lại tin rằng dân Y-sơ-ra-ên có thể chiếm đất Ca-na-an?",
+    "options": [
+      "Phi-nê-a",
+      "Ê-lê-a-sa",
+      "Ca-lép",
+      "A-rôn"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 13:30 — 'Ca-lép làm cho dân chúng yên lặng trước mặt Môi-se, và nói: Chúng ta hãy đi lên chiếm lấy đất đó, vì chúng ta có thể thắng được.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Đất hứa Ca-na-an",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 14,
+    "verseStart": 33,
+    "verseEnd": 34,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Dân Y-sơ-ra-ên phải lang thang trong hoang mạc bao nhiêu năm vì không tin Đức Chúa Trời?",
+    "options": [
+      "20 năm",
+      "10 năm",
+      "30 năm",
+      "40 năm"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 14:33-34 — 'Con cái các ngươi sẽ chăn bầy trong hoang mạc bốn mươi năm... mỗi ngày thay cho một năm, tức bốn mươi năm.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Hành trình đồng vắng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 14,
+    "verseStart": 6,
+    "verseEnd": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Giô-suê và Ca-lép lập luận gì để thuyết phục dân sự tiến vào Ca-na-an?",
+    "options": [
+      "Tường thành Ca-na-an đã cũ và yếu",
+      "Quân số Y-sơ-ra-ên đông hơn dân Ca-na-an",
+      "Nếu Đức Giê-hô-va đẹp lòng thì Ngài sẽ đem họ vào, vì sự che chở đã rời khỏi dân Ca-na-an",
+      "Vũ khí Y-sơ-ra-ên tốt hơn"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 14:8-9 — 'Nếu Đức Giê-hô-va đẹp lòng với chúng ta, thì Ngài sẽ đem chúng ta vào xứ đó... Đừng sợ dân xứ đó, vì họ sẽ là mồi cho chúng ta. Sự che chở của họ đã rời khỏi họ.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Đất hứa Ca-na-an",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 15,
+    "verseStart": 38,
+    "verseEnd": 39,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đức Giê-hô-va bảo dân Y-sơ-ra-ên làm tua ở vạt áo với sợi dây màu gì?",
+    "options": [
+      "Đỏ thắm",
+      "Xanh dương",
+      "Tím",
+      "Trắng"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 15:38 — 'Hãy bảo họ đời đời phải làm tua ở các vạt áo, và gắn một sợi dây màu xanh dương vào mỗi tua.' Để nhớ giữ các điều răn.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Giô-sép tại Ai Cập",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 16,
+    "verseStart": 1,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ai dẫn đầu cuộc nổi loạn chống lại Môi-se và A-rôn?",
+    "options": [
+      "Ôn",
+      "Cô-ra",
+      "Đa-than",
+      "A-bi-ram"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 16:1-3 — 'Cô-ra... cùng Đa-than và A-bi-ram... nổi lên chống lại Môi-se.' Cô-ra là nhân vật chính trong cuộc nổi loạn này.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 16,
+    "verseStart": 31,
+    "verseEnd": 33,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Đất nứt ra nuốt Cô-ra và những người theo hắn.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 16:32 — 'Đất hả miệng ra nuốt họ với gia đình, mọi người theo Cô-ra, cùng tất cả tài sản của họ.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 17,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Cây gậy của ai đã nảy mầm, trổ hoa và ra quả để xác nhận chức tế lễ?",
+    "options": [
+      "Giô-suê",
+      "Ca-lép",
+      "A-rôn",
+      "Môi-se"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 17:8 — 'Gậy của A-rôn, thuộc nhà Lê-vi, đã nảy chồi, trổ hoa, và ra quả hạnh nhân chín.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 17,
+    "verseStart": 8,
+    "difficulty": "medium",
+    "type": "fill_in_blank",
+    "content": "Gậy của A-rôn nảy mầm và ra quả ___.",
+    "options": [
+      "vả",
+      "hạnh nhân",
+      "nho",
+      "ô-liu"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 17:8 — 'Gậy của A-rôn, thuộc nhà Lê-vi, đã nảy chồi, trổ hoa, và ra quả hạnh nhân chín.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 18,
+    "verseStart": 26,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Người Lê-vi nhận phần mười từ dân sự, nhưng họ phải dâng lại bao nhiêu phần cho thầy tế lễ?",
+    "options": [
+      "Một nửa",
+      "Một phần năm",
+      "Một phần ba",
+      "Một phần mười của phần mười"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 18:26 — 'Khi các ngươi nhận phần mười từ dân Y-sơ-ra-ên... thì phải trích một phần mười của phần mười đó dâng lên Đức Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 19,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Bò cái dùng trong nghi thức tẩy uế phải có đặc điểm gì?",
+    "options": [
+      "Màu đỏ, không tì vết, chưa mang ách",
+      "Bất kỳ màu nào, dưới ba tuổi",
+      "Màu trắng, không tì vết",
+      "Màu đen, một tuổi"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 19:2 — 'Hãy bảo dân Y-sơ-ra-ên đem đến cho ngươi một con bò cái màu đỏ, không tì vết, không khuyết tật, chưa hề mang ách.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 20,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Mi-ri-am qua đời tại Ca-đe.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 20:1 — 'Toàn thể hội chúng Y-sơ-ra-ên đến hoang mạc Xin vào tháng giêng, và dân chúng ở tại Ca-đe. Mi-ri-am qua đời và được chôn tại đó.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 20,
+    "verseStart": 11,
+    "verseEnd": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Môi-se phạm tội gì khiến ông không được vào đất Ca-na-an?",
+    "options": [
+      "Đánh vào vầng đá thay vì nói với nó",
+      "Bỏ chạy khỏi trại",
+      "Thờ hình tượng",
+      "Từ chối lãnh đạo dân sự"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 20:11-12 — 'Môi-se giơ tay lên, đánh vào vầng đá hai lần... Đức Giê-hô-va phán: Vì các ngươi không tin Ta, không tôn Ta là thánh trước mắt dân Y-sơ-ra-ên, nên các ngươi sẽ không đưa hội chúng nầy vào xứ.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 20,
+    "verseStart": 25,
+    "verseEnd": 28,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "A-rôn qua đời trên núi nào?",
+    "options": [
+      "Núi Si-na-i",
+      "Núi Sê-i-rơ",
+      "Núi Nê-bô",
+      "Núi Hô-rơ"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 20:27-28 — 'Môi-se làm theo lệnh Đức Giê-hô-va; họ lên núi Hô-rơ... A-rôn chết trên đỉnh núi.' Ê-lê-a-sa kế vị chức tế lễ.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 21,
+    "verseStart": 8,
+    "verseEnd": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Giê-hô-va bảo Môi-se làm gì để cứu dân bị rắn cắn?",
+    "options": [
+      "Treo con rắn bằng đồng trên cây sào",
+      "Rảy huyết trên dân sự",
+      "Cầu nguyện suốt đêm",
+      "Dâng sinh tế chuộc tội"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 21:8-9 — 'Hãy làm một con rắn và treo nó lên cây sào. Ai bị rắn cắn mà nhìn nó thì sẽ sống.' Chúa Giê-xu ám chỉ sự kiện này trong Giăng 3:14.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 21,
+    "verseStart": 8,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Con rắn đồng trong Dân Số Ký 21 được Chúa Giê-xu liên hệ với sự kiện nào trong Giăng 3:14?",
+    "options": [
+      "Sự tái lâm của Ngài",
+      "Sự chịu báp-têm của Ngài",
+      "Con Người phải bị treo lên (thập tự giá)",
+      "Sự phục sinh của Ngài"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 21:8-9 và Giăng 3:14 — 'Như Môi-se treo con rắn lên trong hoang mạc thể nào, thì Con Người cũng phải bị treo lên thể ấy.' Đây là hình bóng về sự cứu rỗi qua thập tự giá.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 22,
+    "verseStart": 5,
+    "verseEnd": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Vua Ba-lác mời ai đến để rủa sả dân Y-sơ-ra-ên?",
+    "options": [
+      "Giê-trô",
+      "Ba-la-am",
+      "Cô-ra",
+      "Mên-chi-xê-đéc"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 22:5-6 — 'Ba-lác sai sứ giả đến Ba-la-am... Xin hãy đến rủa sả dân nầy cho tôi, vì họ quá đông đối với tôi.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 22,
+    "verseStart": 28,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Con lừa của Ba-la-am đã nói tiếng người.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 22:28 — 'Đức Giê-hô-va mở miệng con lừa và nó nói với Ba-la-am: Tôi đã làm gì cho ông mà ông đánh tôi ba lần?'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 22,
+    "verseStart": 22,
+    "verseEnd": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Con lừa của Ba-la-am thấy gì trên đường mà Ba-la-am không thấy?",
+    "options": [
+      "Đức Giê-hô-va trong đám mây",
+      "Một bức tường lửa",
+      "Một thiên sứ cầm gươm",
+      "Một con sư tử"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 22:23 — 'Con lừa thấy thiên sứ của Đức Giê-hô-va đứng trên đường, tay cầm gươm trần.' Con lừa tránh nhưng Ba-la-am không nhìn thấy.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 23,
+    "verseStart": 19,
+    "difficulty": "medium",
+    "type": "fill_in_blank",
+    "content": "'Đức Chúa Trời không phải là ___ để nói dối, cũng không phải là con người để hối tiếc.'",
+    "options": [
+      "thần tượng",
+      "loài người",
+      "kẻ ác",
+      "thiên sứ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 23:19 — 'Đức Chúa Trời không phải là loài người để nói dối, cũng không phải là con người để hối tiếc.' Lời Ba-la-am chúc phước thay vì rủa sả.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 23,
+    "verseStart": 7,
+    "verseEnd": 12,
+    "difficulty": "hard",
+    "type": "true_false",
+    "content": "Ba-la-am có thể rủa sả dân Y-sơ-ra-ên theo ý muốn của Ba-lác.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 23:8 — 'Làm sao tôi rủa sả kẻ mà Đức Chúa Trời không rủa sả? Làm sao tôi nguyền rủa kẻ mà Đức Giê-hô-va không nguyền rủa?' Ba-la-am chỉ có thể nói điều Đức Chúa Trời đặt trong miệng ông.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 24,
+    "verseStart": 17,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Lời tiên tri của Ba-la-am 'Một ngôi sao sẽ mọc lên từ Gia-cốp' được hiểu là nói về ai?",
+    "options": [
+      "Đấng Mê-si-a (Christ)",
+      "Sa-mu-ên",
+      "Vua Đa-vít",
+      "Giô-suê"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 24:17 — 'Một ngôi sao mọc lên từ Gia-cốp, một cây phủ việt trỗi dậy từ Y-sơ-ra-ên.' Đây là lời tiên tri về Đấng Mê-si-a, dù trước mắt có thể ám chỉ Đa-vít.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 25,
+    "verseStart": 1,
+    "verseEnd": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Dân Y-sơ-ra-ên phạm tội thờ thần tượng nào tại Si-tim?",
+    "options": [
+      "Ba-anh Phê-ô",
+      "Thần Đa-gôn",
+      "Thần Mô-lóc",
+      "Thần Kê-mốt"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 25:3 — 'Y-sơ-ra-ên thờ cúng Ba-anh Phê-ô. Cơn thịnh nộ của Đức Giê-hô-va nổi lên cùng Y-sơ-ra-ên.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 25,
+    "verseStart": 7,
+    "verseEnd": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ai đã hành động quyết liệt để chặn đứng dịch bệnh tại Si-tim, khiến 24.000 người chết?",
+    "options": [
+      "Giô-suê",
+      "Môi-se",
+      "Ê-lê-a-sa",
+      "Phi-nê-a"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 25:7-8 — 'Phi-nê-a... đứng dậy, rời khỏi hội chúng, cầm cây giáo trong tay, đi theo người Y-sơ-ra-ên vào lều.' Hành động của ông chặn đứng dịch bệnh.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 26,
+    "verseStart": 51,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Tổng số nam giới trong cuộc kiểm tra dân số lần thứ hai là bao nhiêu?",
+    "options": [
+      "625.000",
+      "603.550",
+      "601.730",
+      "600.000"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 26:51 — 'Tổng số nam giới Y-sơ-ra-ên: sáu trăm lẻ một ngàn bảy trăm ba mươi.' Giảm so với lần kiểm tra đầu tiên (603.550).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 26,
+    "verseStart": 64,
+    "verseEnd": 65,
+    "difficulty": "medium",
+    "type": "true_false",
+    "content": "Trong cuộc kiểm tra lần hai, không còn ai sống từ cuộc kiểm tra lần đầu ngoại trừ Ca-lép và Giô-suê.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 26:64-65 — 'Trong số những người nầy không có ai trong những người mà Môi-se và A-rôn đã kiểm tra... ngoại trừ Ca-lép con Giê-phu-nê, và Giô-suê con Nun.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 27,
+    "verseStart": 1,
+    "verseEnd": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Các con gái của Xê-lô-phát xin Môi-se điều gì?",
+    "options": [
+      "Được miễn thuế",
+      "Được lấy chồng ngoài chi phái",
+      "Được thừa kế phần đất của cha",
+      "Được phục vụ tại Đền Tạm"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 27:4 — 'Tại sao tên cha chúng tôi bị xóa giữa thị tộc, vì cha không có con trai? Xin cho chúng tôi một phần sản nghiệp giữa các anh em của cha.' Đức Giê-hô-va chấp thuận.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 27,
+    "verseStart": 18,
+    "verseEnd": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ai được chọn kế vị Môi-se để lãnh đạo dân Y-sơ-ra-ên?",
+    "options": [
+      "Ê-lê-a-sa",
+      "Phi-nê-a",
+      "Giô-suê",
+      "Ca-lép"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 27:18 — 'Đức Giê-hô-va phán với Môi-se: Hãy chọn Giô-suê, con trai Nun, người có Thần ở trong, và đặt tay trên người.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 28,
+    "verseStart": 3,
+    "verseEnd": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tế lễ thiêu hằng ngày gồm bao nhiêu chiên con một tuổi?",
+    "options": [
+      "Bốn con",
+      "Ba con",
+      "Một con",
+      "Hai con"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 28:3 — 'Đây là tế lễ dùng lửa mà các ngươi phải dâng cho Đức Giê-hô-va: mỗi ngày hai chiên con đực một tuổi, không tì vết, làm tế lễ thiêu thường xuyên.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 28,
+    "verseStart": 16,
+    "verseEnd": 17,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Lễ Vượt Qua được giữ vào ngày mười bốn tháng giêng.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 28:16 — 'Ngày mười bốn tháng giêng là Lễ Vượt Qua của Đức Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 29,
+    "verseStart": 1,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Ngày mùng một tháng bảy (Lễ Thổi Kèn) có ý nghĩa gì đặc biệt?",
+    "options": [
+      "Ngày phóng thích nô lệ",
+      "Ngày chia đất",
+      "Ngày kiêng ăn",
+      "Ngày nhóm họp thánh, không được làm việc nặng nhọc"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 29:1 — 'Ngày mùng một tháng bảy, các ngươi phải có một cuộc nhóm họp thánh. Các ngươi không được làm bất cứ công việc nặng nhọc nào. Đó là ngày thổi kèn cho các ngươi.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 30,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Khi một người nam hứa nguyện với Đức Giê-hô-va, người ấy không được thất hứa.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 30:2 — 'Khi một người hứa nguyện với Đức Giê-hô-va, hoặc thề buộc mình bằng một lời thề, người ấy không được thất hứa, phải làm theo mọi điều đã nói.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 30,
+    "verseStart": 3,
+    "verseEnd": 5,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo luật lời hứa nguyện, ai có quyền hủy bỏ lời hứa nguyện của người con gái trẻ?",
+    "options": [
+      "Chỉ chính cô ấy mới hủy được",
+      "Thầy tế lễ thượng phẩm",
+      "Trưởng lão trong thành",
+      "Cha cô ấy"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 30:5 — 'Nếu cha cô ấy ngăn cấm trong ngày ông nghe biết, thì không lời hứa nguyện hay lời thề nào cô ấy tự buộc mình sẽ có hiệu lực.' Cha có quyền hủy trong ngày biết.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Giao ước",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 31,
+    "verseStart": 1,
+    "verseEnd": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đức Giê-hô-va bảo Môi-se đánh trận với dân nào trước khi ông qua đời?",
+    "options": [
+      "Dân Ê-đôm",
+      "Dân Ma-đi-an",
+      "Dân A-mô-rít",
+      "Dân A-ma-léc"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 31:1-2 — 'Đức Giê-hô-va phán với Môi-se: Hãy trả thù dân Ma-đi-an cho dân Y-sơ-ra-ên. Sau đó ngươi sẽ được quy về cùng tổ phụ mình.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 31,
+    "verseStart": 8,
+    "difficulty": "hard",
+    "type": "true_false",
+    "content": "Ba-la-am bị giết trong trận chiến với dân Ma-đi-an.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 31:8 — 'Họ cũng giết Ba-la-am, con trai Bê-ô, bằng gươm.' Ba-la-am chết cùng với năm vua Ma-đi-an.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 32,
+    "verseStart": 1,
+    "verseEnd": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chi phái nào xin ở lại bên kia sông Giô-đanh vì có nhiều bầy súc vật?",
+    "options": [
+      "Ru-bên và Gát",
+      "Ép-ra-im và Ma-na-se",
+      "Giu-đa và Bên-gia-min",
+      "Si-mê-ôn và Lê-vi"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 32:1-5 — 'Con cháu Ru-bên và con cháu Gát có bầy súc vật rất đông... Xin cho các đầy tớ ngài nhận vùng đất nầy làm sản nghiệp, đừng đưa chúng tôi qua sông Giô-đanh.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Kiểm tra dân số",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 32,
+    "verseStart": 20,
+    "verseEnd": 22,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Điều kiện để Ru-bên và Gát được ở lại bên kia sông Giô-đanh là gì?",
+    "options": [
+      "Xây thành lũy cho cả Y-sơ-ra-ên",
+      "Phải cùng ra trận giúp các chi phái khác chiếm Ca-na-an trước",
+      "Cử người canh giữ Đền Tạm",
+      "Dâng phần mười gấp đôi"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 32:20-22 — 'Nếu các ngươi vũ trang đi trước mặt Đức Giê-hô-va để chiến đấu... cho đến khi Ngài đuổi kẻ thù khỏi trước mặt Ngài... thì các ngươi sẽ không mắc tội với Đức Giê-hô-va và Y-sơ-ra-ên.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 33,
+    "verseStart": 1,
+    "verseEnd": 2,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Dân Số Ký chương 33 ghi lại các chặng hành trình của dân Y-sơ-ra-ên từ Ai Cập.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 33:1-2 — 'Đây là các chặng hành trình của dân Y-sơ-ra-ên khi họ ra khỏi Ai Cập... Theo lệnh Đức Giê-hô-va, Môi-se ghi chép các điểm xuất phát theo từng chặng đường.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Giô-sép tại Ai Cập",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 33,
+    "verseStart": 52,
+    "verseEnd": 53,
+    "difficulty": "medium",
+    "type": "fill_in_blank",
+    "content": "Đức Giê-hô-va bảo dân Y-sơ-ra-ên phải ___ tất cả dân cư trong xứ Ca-na-an khi vào chiếm đất.",
+    "options": [
+      "kết giao ước với",
+      "thu thuế từ",
+      "bắt làm nô lệ",
+      "đuổi"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 33:52 — 'Hãy đuổi tất cả dân cư trong xứ khỏi trước mặt các ngươi, phá hủy tất cả hình tượng khắc, tượng đúc, và triệt hạ các nơi cao.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Đất hứa Ca-na-an",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 34,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ranh giới phía nam của đất Ca-na-an kéo dài đến đâu?",
+    "options": [
+      "Hoang mạc Xin dọc theo Ê-đôm",
+      "Biển Đỏ",
+      "Sông Giô-đanh",
+      "Sông Ai Cập"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 34:3 — 'Phía nam các ngươi sẽ bắt đầu từ hoang mạc Xin, dọc theo biên giới Ê-đôm.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Đất hứa Ca-na-an",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 34,
+    "verseStart": 17,
+    "verseEnd": 18,
+    "difficulty": "hard",
+    "type": "fill_in_blank",
+    "content": "Hai người được giao nhiệm vụ chia đất Ca-na-an cho các chi phái là thầy tế lễ Ê-lê-a-sa và ___.",
+    "options": [
+      "Môi-se con Am-ram",
+      "Phi-nê-a con Ê-lê-a-sa",
+      "Ca-lép con Giê-phu-nê",
+      "Giô-suê con Nun"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 34:17 — 'Đây là tên những người sẽ chia đất cho các ngươi: Thầy tế lễ Ê-lê-a-sa và Giô-suê, con trai Nun.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Tế lễ và nghi lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 35,
+    "verseStart": 6,
+    "verseEnd": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Có bao nhiêu thành ẩn náu được lập cho người vô tình giết người?",
+    "options": [
+      "6 thành",
+      "10 thành",
+      "3 thành",
+      "12 thành"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 35:6 — 'Trong các thành các ngươi nhường cho người Lê-vi, sẽ có sáu thành ẩn náu.' Ba bên này và ba bên kia sông Giô-đanh.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 35,
+    "verseStart": 30,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Theo luật trong Dân Số Ký 35, cần bao nhiêu nhân chứng để kết án tử hình một kẻ giết người?",
+    "options": [
+      "Ba nhân chứng",
+      "Một nhân chứng",
+      "Bốn nhân chứng",
+      "Ít nhất hai nhân chứng"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 35:30 — 'Kẻ nào giết người sẽ bị xử tử theo lời khai của các nhân chứng. Nhưng một nhân chứng duy nhất không đủ để kết án tử hình.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 35,
+    "verseStart": 33,
+    "difficulty": "hard",
+    "type": "fill_in_blank",
+    "content": "'Không có gì chuộc được tội ___ cho đất, ngoại trừ huyết của kẻ đã làm đổ máu.'",
+    "options": [
+      "gian ác",
+      "bất trung",
+      "phạm pháp",
+      "đổ máu"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 35:33 — 'Không có gì chuộc được tội đổ máu cho đất, ngoại trừ huyết của kẻ đã làm đổ máu.' Nguyên tắc quan trọng về công lý trong luật Môi-se.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Tế lễ và nghi lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 36,
+    "verseStart": 6,
+    "verseEnd": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Các con gái của Xê-lô-phát phải lấy chồng trong phạm vi nào?",
+    "options": [
+      "Chỉ trong dòng tế lễ",
+      "Chỉ trong chi phái cha mình",
+      "Chỉ người Lê-vi",
+      "Bất kỳ chi phái nào"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 36:6 — 'Các con gái Xê-lô-phát được phép lấy ai mà mình muốn, nhưng chỉ lấy chồng trong thị tộc của chi phái cha mình.' Để sản nghiệp không chuyển sang chi phái khác.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 36,
+    "verseStart": 10,
+    "verseEnd": 12,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Các con gái của Xê-lô-phát đã vâng lời và lấy chồng trong chi phái Ma-na-se.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 36:10-12 — 'Các con gái Xê-lô-phát đã làm theo điều Đức Giê-hô-va phán... Họ lấy chồng trong các thị tộc của con cháu Ma-na-se.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Xuất hành khỏi Ai Cập",
+      "Kiểm tra dân số",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 6,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "true_false",
+    "content": "Người Na-xi-rê được phép cắt tóc trong thời gian hứa nguyện.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 6:5 — 'Suốt thời gian hứa nguyện, không dao cạo nào được đụng đến đầu người ấy. Cho đến khi mãn kỳ biệt riêng cho Đức Giê-hô-va, người ấy là thánh và phải để tóc mọc dài.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 12,
+    "verseStart": 3,
+    "difficulty": "hard",
+    "type": "fill_in_blank",
+    "content": "Kinh Thánh mô tả Môi-se là người ___ hơn mọi người trên mặt đất.",
+    "options": [
+      "công chính",
+      "khiêm nhường",
+      "khôn ngoan",
+      "can đảm"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 12:3 — 'Vả, Môi-se là người rất khiêm nhường, hơn mọi người trên mặt đất.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 14,
+    "verseStart": 18,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi Môi-se cầu xin Đức Chúa Trời tha thứ cho dân sự, ông trích dẫn thuộc tính nào của Đức Giê-hô-va?",
+    "options": [
+      "Đấng tạo dựng muôn vật",
+      "Đấng phán xét công bình",
+      "Chậm giận, đầy lòng nhân từ, tha thứ tội ác",
+      "Đấng toàn năng và khôn ngoan"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 14:18 — 'Đức Giê-hô-va chậm giận, đầy lòng nhân từ, tha thứ tội ác và sự vi phạm.' Môi-se dùng chính lời Đức Chúa Trời đã tự mô tả trong Xuất 34:6-7.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 15,
+    "verseStart": 32,
+    "verseEnd": 36,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Người đàn ông lượm củi trong ngày Sa-bát bị phạt như thế nào?",
+    "options": [
+      "Bị đuổi ra khỏi trại bảy ngày",
+      "Bị ném đá đến chết",
+      "Bị bắt làm nô lệ",
+      "Bị phạt tiền"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 15:35-36 — 'Đức Giê-hô-va phán với Môi-se: Người ấy phải chết! Cả hội chúng phải ném đá người ấy ở ngoài trại.' Cho thấy sự nghiêm trọng của việc phạm ngày Sa-bát.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 16,
+    "verseStart": 46,
+    "verseEnd": 48,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "A-rôn dùng gì để chặn dịch bệnh giữa dân sự sau cuộc nổi loạn của Cô-ra?",
+    "options": [
+      "Huyết sinh tế",
+      "Nước thánh",
+      "Lư hương với lửa và hương",
+      "Gậy trượng"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 16:46-48 — 'Hãy lấy lư hương, bỏ lửa từ bàn thờ vào, rồi bỏ hương lên trên... A-rôn đứng giữa kẻ chết và kẻ sống, và dịch bệnh ngừng lại.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 20,
+    "verseStart": 14,
+    "verseEnd": 21,
+    "difficulty": "medium",
+    "type": "true_false",
+    "content": "Vua Ê-đôm cho phép dân Y-sơ-ra-ên đi qua lãnh thổ mình.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 20:21 — 'Ê-đôm từ chối cho Y-sơ-ra-ên đi qua lãnh thổ mình. Vì vậy, Y-sơ-ra-ên phải đi vòng.' Dù Ê-đôm là hậu duệ của Ê-sau, anh của Gia-cốp.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 21,
+    "verseStart": 21,
+    "verseEnd": 25,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Dân Y-sơ-ra-ên chiến thắng vua Si-hôn của dân nào?",
+    "options": [
+      "Dân Mô-áp",
+      "Dân Phi-li-tin",
+      "Dân A-mô-rít",
+      "Dân Ma-đi-an"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 21:21-25 — 'Y-sơ-ra-ên sai sứ giả đến Si-hôn, vua dân A-mô-rít... Y-sơ-ra-ên đánh bại ông bằng gươm và chiếm lấy đất.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 24,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "fill_in_blank",
+    "content": "Ba-la-am thốt lên: 'Hỡi Gia-cốp, ___ ngươi đẹp đẽ thay! Hỡi Y-sơ-ra-ên, nơi ở ngươi xinh tốt biết bao!'",
+    "options": [
+      "các thành",
+      "các đền thờ",
+      "đất đai",
+      "các trại"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dân Số Ký 24:5 — 'Hỡi Gia-cốp, các trại ngươi đẹp đẽ thay! Hỡi Y-sơ-ra-ên, nơi ở ngươi xinh tốt biết bao!' Ba-la-am chúc phước thay vì rủa sả.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 7,
+    "verseStart": 84,
+    "verseEnd": 86,
+    "difficulty": "hard",
+    "type": "true_false",
+    "content": "Lễ cung hiến bàn thờ kéo dài mười hai ngày, mỗi ngày một nhà lãnh đạo dâng lễ vật.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 7:84 — 'Đây là lễ vật cung hiến bàn thờ trong ngày nó được xức dầu, do các nhà lãnh đạo Y-sơ-ra-ên dâng.' Mười hai nhà lãnh đạo dâng trong mười hai ngày.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 8,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "A-rôn phải thắp bảy ngọn đèn trên vật dụng nào?",
+    "options": [
+      "Chân đèn",
+      "Bàn bánh trần thiết",
+      "Hòm Giao Ước",
+      "Bàn thờ xông hương"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Dân Số Ký 8:2 — 'Khi nào ngươi thắp các đèn, bảy ngọn đèn phải chiếu phía trước chân đèn.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 11,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi dân sự than phiền, Đức Giê-hô-va giáng điều gì xuống?",
+    "options": [
+      "Bệnh dịch",
+      "Lửa",
+      "Bão tố",
+      "Động đất"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Dân Số Ký 11:1 — 'Khi dân chúng than phiền về những nỗi khổ trước tai Đức Giê-hô-va, Ngài nghe và nổi giận. Lửa của Đức Giê-hô-va cháy lên giữa họ, thiêu đốt rìa trại.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Hành trình đồng vắng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Numbers",
+    "chapter": 22,
+    "verseStart": 32,
+    "verseEnd": 33,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Con lừa của Ba-la-am tránh đường bao nhiêu lần trước khi nói tiếng người?",
+    "options": [
+      "Hai lần",
+      "Một lần",
+      "Ba lần",
+      "Bốn lần"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Dân Số Ký 22:32-33 — 'Tại sao ngươi đánh con lừa ba lần?' Con lừa thấy thiên sứ ba lần và tránh đường ba lần trước khi Đức Giê-hô-va mở miệng nó.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Dân Số Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  }
+]

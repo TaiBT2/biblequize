@@ -2,6 +2,105 @@
 
 ---
 
+## 2026-04-19 — XP source of truth: Ranked only (Practice không grant XP)
+- Quyết định: **Chỉ Ranked mode tích XP** vào `user_daily_progress.points_counted`. Practice (và các mode khác như Daily / Weekly / Mystery / Speed) KHÔNG write pointsCounted. `totalPoints = SUM(points_counted)` qua tất cả ngày — do đó chỉ Ranked mới contribute tier progression.
+- Luồng XP: `/api/ranked/sessions/{id}/answer` → trả `pointsToday` → FE gọi `/api/ranked/sync-progress` → BE (`RankedController`) write `user_daily_progress.points_counted`. Đây là single source of truth.
+- Practice chỉ tích 2 thứ:
+  1. `users.practice_correct_count` + `practice_total_count` (early-unlock accuracy path — xem ADR "Early Ranked unlock" ở dưới)
+  2. `answers` + `quiz_session_questions` (history cho streak, smart question selection, weakness analysis)
+- Lý do:
+  - Tránh Practice (không tốn năng lượng, không timer) trở thành đường farm XP dễ hơn Ranked → leaderboard distort, Ranked mất ý nghĩa.
+  - Ranked giữ vai trò "competitive progression" — tier tăng qua performance thực trong điều kiện áp lực (energy cost + timer).
+  - Practice vẫn có giá trị rõ ràng: (a) onboarding path (unlock Ranked sớm qua accuracy), (b) learn without stakes, (c) tick streak + history.
+- Trade-off:
+  - User mới chưa unlock Ranked không có cách tích XP chuẩn — phải dựa early-unlock path.
+  - FAQ và UI phải nói rõ "Practice không cho XP" để tránh confusion (đã update keys `help.items.howToPlay.a`, `howUnlockRanked.a`, `howEarnXp.a` vi+en).
+- Thực thi: `SessionService.submitAnswer` KHÔNG gọi bất kỳ write UDP nào cho non-ranked modes. `SessionServiceTest.submitAnswer_practiceMode_doesNotWriteUserDailyProgress` là regression guard.
+- KHÔNG thay đổi khi refactor trừ khi product thay đổi economy model.
+
+---
+
+## 2026-04-19 — Early Ranked unlock via Practice accuracy (≥80% / 10 questions)
+- Quyết định: Tier-1 user có thể bypass ngưỡng 1,000 XP để chơi Ranked **nếu** đạt ≥80% accuracy qua ≥10 câu Practice (cumulative, không phải single-session). Flag permanent — không reset.
+- Lý do: Users experienced với Kinh Thánh cảm thấy gate XP 1,000 quá chậm. Cho phép "earn your way fast" qua performance, không skip miễn phí. Nếu user chơi tốt = đủ kỹ năng cho Ranked. Nếu không → tiếp tục Practice path bình thường.
+- Trade-off: Thêm column user (`earlyRankedUnlock` + 2 counters), thêm logic trong SessionService. Nhưng phức tạp chấp nhận được vì reward engaged users đúng mức + không phá economy tier (Tournament vẫn giữ tier 4 gate).
+- Orthogonal design: flag này KHÔNG đổi XP threshold tier 2. User unlock sớm vẫn có tier=1 visible, chỉ là Ranked gate bypass.
+- Policy thresholds: `EarlyRankedUnlockPolicy.MIN_QUESTIONS=10`, `MIN_ACCURACY_PCT=80`. Adjustable.
+- Scope: Chỉ Ranked. Tournament (tier 4), Battle Royale, etc. vẫn gate bình thường.
+- KHÔNG thay đổi khi refactor trừ khi có kết quả metrics cho thấy ngưỡng sai
+
+---
+
+## 2026-04-19 — Target audience expanded: Tin Lành toàn cầu (VN + English-speaking Protestants)
+- Quyết định: Mở rộng target audience từ "Tin Lành Việt Nam" sang **Tin Lành toàn cầu** — cả người nói tiếng Việt và tiếng Anh. i18n cho seed data KHÔNG defer nữa mà là priority.
+- Lý do: Product owner xác định scope. Bible Quiz là concept universal với Protestant audience toàn cầu; chỉ hỗ trợ VN giới hạn addressable market nghiêm trọng.
+- Implications:
+  - Seed data cần cả VI + EN versions cho mỗi câu hỏi
+  - Backend query filter theo `language` đã có sẵn — OK
+  - Frontend i18n (UI text) đã support EN — OK
+  - Question content: 300 câu VI hiện tại cần EN translation
+  - SQL legacy files (~915 câu VI) cần convert → JSON → translate → EN JSON
+- Scope v1:
+  - Convert existing SQL → VI JSON files (preserve curated content)
+  - Document EN translation workflow (AI-assisted)
+  - Ship VI first; roll out EN progressively per book
+- Trade-off: Work lớn hơn (~2-3x content effort). Chấp nhận để unlock 10x addressable audience.
+- Supersedes ADR v1 "target Tin Lành VN" (implicit — tier naming ADR remains valid, religious naming works for both).
+- KHÔNG thay đổi trừ khi product owner rollback scope
+
+---
+
+## 2026-04-19 — Bible canon: Protestant only (66 books), NO Catholic deuterocanonical
+- Quyết định: App support **Protestant canon** với 66 books. KHÔNG thêm 7 deuterocanonical books (Tobit, Judith, Wisdom of Solomon, Sirach/Ecclesiasticus, Baruch, 1-2 Maccabees) cũng như additions to Esther/Daniel.
+- Lý do: Product owner chốt audience chính là Tin Lành. Religious tier naming (Tân Tín Hữu → Sứ Đồ) có thể đọc được với cả Công Giáo nhưng nội dung Kinh Thánh stick với 66 books Protestant.
+- Scope: `data/bibleData.ts` giữ nguyên 66 entries. Backend question generation chỉ reference 66 books. Admin seed data không cần thêm Deuterocanonical questions.
+- Trade-off: User Công Giáo sẽ miss Tô-bia, Huấn Ca... — product chấp nhận không target demographic này cho v1. Nếu mở rộng sau, option: thêm canon config (Protestant/Catholic) ở onboarding + filter books.
+- KHÔNG thay đổi khi refactor trừ khi product owner thay đổi audience strategy.
+
+---
+
+## 2026-04-19 — Keep OLD religious tier naming (audience-driven), supersede SPEC_USER_v3 §3.1
+- Quyết định: Giữ **OLD religious tier naming** — Tân Tín Hữu / Người Tìm Kiếm / Môn Đồ / Hiền Triết / Tiên Tri / Sứ Đồ. **Supersede** bảng tên light-themed (Tia Sáng / Ánh Bình Minh / Ngọn Đèn / Ngọn Lửa / Ngôi Sao / Vinh Quang) trong SPEC_USER_v3.md section 3.1.
+- Lý do: Target audience là tín đồ Tin Lành + Công Giáo. Hệ tên religious mirror hành trình đức tin (tân tín hữu → người tìm kiếm → môn đồ → hiền triết → tiên tri → sứ đồ) — có semantic depth với user, tạo cảm giác "tiến bước trong đức tin". Hệ light-themed neutral hơn (phù hợp app đại chúng) nhưng mất nuance với audience chính.
+- Trade-off: Hệ religious specific hơn → hạn chế expand audience ra non-religious user. Chấp nhận vì tên app "BibleQuiz" đã tự filter audience.
+- Implementation state: Code đã ở trạng thái "half-migration" (i18n có duplicate keys `newBeliever` + `spark` cùng map về "Tân Tín Hữu"). Cleanup: bỏ NEW keys (`spark/dawn/lamp/flame/star/glory`), update `pages/Home.tsx`, `Ranked.tsx`, `LandingPage.tsx` dùng OLD keys consistently.
+- Backend: `RankTier` enum constants giữ nguyên (TAN_TIN_HUU, NGUOI_TIM_KIEM...) — code identifier, không ảnh hưởng user.
+- SPEC_USER_v3.md §3.1 sẽ được đánh dấu SUPERSEDED với tham chiếu ADR này.
+- KHÔNG thay đổi khi refactor trừ khi product owner đổi audience strategy
+
+---
+
+## 2026-04-19 — Home game-mode recommendation: priority cascade (not scoring/ML)
+- Quyết định: Highlight 1 card "most valuable" trên Home game-mode grid bằng priority-cascade rules (5 rule: streakAboutToBreak / onboarding / dailyAvailable / fullEnergy / default). Pure function client-side, không endpoint mới, không ML.
+- Lý do: Uniform grid 9 card → Hick's Law choice paralysis. Smart highlight giúp user hành động đúng chỗ đúng lúc. Priority cascade thay vì scoring tổng vì: explainable (1 rule = 1 reason message), testable (mỗi branch 1 test), tunable (threshold là constant plain).
+- Trade-off: Rules cứng sẽ miss edge case mà ML/scoring sẽ bắt được. Đổi lại: KHÔNG cần training data, KHÔNG cần analytics infra, KHÔNG cần model versioning. Khi có metrics → tune threshold (90 → 85) mà không relaunch.
+- Signal sources: tái dùng TanStack Query từ `/api/me` (streak, totalPoints) + GameModeGrid's existing fetches (`/api/me/ranked-status` energy, `/api/daily-challenge` completed). Zero endpoint mới.
+- Scope giới hạn 3 mode (practice/ranked/daily): các mode khác (groups/tournament/multiplayer/weekly/mystery/speed) KHÔNG vào recommendation v1 vì signal không local-only (cần friends / event data / WebSocket) — v2 cân nhắc.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+---
+
+## 2026-04-18 — Lifeline v1: Hint only, defer AskOpinion to v2
+- Quyết định: Ship Lifeline Hint đầy đủ trong v1 (với adaptive algorithm + random fallback). Bỏ hoàn toàn UI AskOpinion button. Entity + enum giữ `ASK_OPINION` để v2 không cần migration.
+- Lý do: AskOpinion phụ thuộc community answer data (≥10 samples/câu). Với DAU thấp giai đoạn đầu, tích lũy đủ data mất nhiều tuần/tháng → user click vô sẽ toàn "insufficient data" → UX bug. Hint degrades gracefully (fallback random), AskOpinion không.
+- Trade-off: v1 chỉ có 1 lifeline thay vì 2. Đổi lại ship nhanh hơn 1 ngày, tránh feature feel broken. Data từ `Answer.answer` vẫn thu thập tự động → v2 activate chỉ cần add CommunityPollService + API endpoint + FE button (không cần backfill).
+- Trigger activate v2: avg(samples per question, 90-day rolling) ≥ 30, hoặc DAU ≥ 1000 trong 7 ngày liên tiếp.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-04-18 — Lifeline Hint algorithm: Adaptive (eliminate lowest pick-rate) + random fallback
+- Quyết định: Khi community data ≥ threshold (default 10 samples, last 90 ngày), eliminate wrong option có **lowest pick rate** (least-commonly chosen). Dưới threshold → random pick từ wrong candidates.
+- Lý do: Eliminate obvious wrong TRƯỚC giữ tempting distractor → user vẫn phải suy nghĩ giữa correct và strong distractor. Giá trị giáo dục cao hơn 50-50 truyền thống (vốn loại cả obvious + distractor luôn → quá dễ). Random fallback đảm bảo feature work ngày 1 cho câu mới.
+- Trade-off: Thêm 1 query aggregation mỗi lần gọi hint (cần index `answers(question_id, created_at)` đã add trong V28). Chi phí nhẹ (<50ms với cache warm).
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-04-18 — Lifeline quota mỗi mode, qua ConfigurationService (runtime override)
+- Quyết định: Quota hint theo mode session: practice unlimited, ranked/single/weekly/mystery = 2, speed_round = 0 (disabled). Store dưới config keys `lifeline.hint.quota.<mode>` trong ConfigurationService (dynamic map, không DB).
+- Lý do: Cho phép admin tuning mà không cần redeploy. Quota thấp đảm bảo strategic gameplay, không làm ranked quá dễ. Speed round disabled vì timer quá gấp, hint break flow.
+- Trade-off: Config không persist qua restart (ConfigurationService là in-memory). Acceptable cho v1 vì default values làm tốt. Nếu cần persistence → migrate sang DB config table sau.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+---
+
 ## 2026-04-05 — Mobile Auth: 3 endpoints riêng, không sửa web
 - Quyết định: Tạo 3 endpoints mới `/api/auth/mobile/*` (login, refresh, google) trả refreshToken trong response body. Giữ nguyên 100% web endpoints (cookie-based refresh).
 - Lý do: Mobile không có httpOnly cookie. Web dùng cookie an toàn hơn → không đổi. Mobile cần refresh token trong body để lưu AsyncStorage.

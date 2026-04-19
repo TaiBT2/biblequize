@@ -205,6 +205,51 @@ describe('Home Dashboard', () => {
       })
     })
 
+    /**
+     * Regression (2026-04-19): when the current user's rank falls within
+     * the displayed top-N window, they already appear in the main list —
+     * rendering the sticky "Bạn" row is duplication. Only show sticky
+     * row for around-me use case (rank BEYOND the visible window).
+     */
+    it('does NOT render sticky "Bạn" row when user is already in the top list', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('/api/daily-missions/today'))
+          return Promise.resolve({ data: { missions: [], allCompleted: false } })
+        if (url.includes('/api/me/tier-progress'))
+          return Promise.resolve({ data: { totalPoints: 45200 } })
+        if (url.includes('/api/me/journey'))
+          return Promise.resolve({ data: { summary: {}, books: [] } })
+        if (url.includes('/api/me'))
+          return Promise.resolve({ data: { totalPoints: 45200 } })
+        if (url.includes('my-rank'))
+          return Promise.resolve({ data: { rank: 1, points: 45200 } })
+        if (url.includes('/api/leaderboard'))
+          return Promise.resolve({ data: [
+            { userId: '1', name: 'Nghĩa', points: 45200, questions: 120 },
+            { userId: '2', name: 'Lê Quốc Anh', points: 42850, questions: 95 },
+          ] })
+        return Promise.reject(new Error('Not found'))
+      })
+      renderHome()
+
+      await waitFor(() => {
+        // Main list row for the user IS present
+        expect(screen.getByText('45,200 XP')).toBeInTheDocument()
+      })
+      // Sticky "Bạn" row is NOT present (user is rank 1 in a list of 2)
+      expect(screen.queryByTestId('home-my-rank-sticky')).not.toBeInTheDocument()
+      expect(screen.queryByText(/Bạn \(Nghĩa\)/)).not.toBeInTheDocument()
+    })
+
+    it('renders sticky "Bạn" row when user is OUTSIDE the top list', async () => {
+      // Default mockApiGet (from beforeEach) has myRank=85 with 2 items in list
+      // → sticky must render (around-me pattern).
+      renderHome()
+      await waitFor(() => {
+        expect(screen.getByTestId('home-my-rank-sticky')).toBeInTheDocument()
+      })
+    })
+
     it('shows empty state', async () => {
       mockApiGet.mockImplementation((url: string) => {
         if (url.includes('/api/me')) return Promise.resolve({ data: { totalPoints: 0 } })

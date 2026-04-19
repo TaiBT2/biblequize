@@ -1,0 +1,329 @@
+[
+  {
+    "book": "Hebrews",
+    "chapter": 11,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "How does Hebrews 11:1 define faith?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Hebrews 11:1 - Faith is the assurance of things hoped for, the evidence of things not seen.",
+    "language": "en",
+    "options": [
+      "Believing without a reason",
+      "Optimism",
+      "The assurance of things hoped for, the evidence of things not seen",
+      "A good feeling"
+    ],
+    "tags": [
+      "New Testament",
+      "Faith",
+      "Definition",
+      "Hebrews",
+      "Epistle",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 11,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "According to Hebrews 11:6, without faith it is impossible to do what?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Hebrews 11:6 - Without faith it is impossible to please Him. Whoever comes to God must believe that He exists and rewards those who seek Him.",
+    "language": "en",
+    "options": [
+      "Pray",
+      "Attend church",
+      "Please God (please Him)",
+      "Read the Bible"
+    ],
+    "tags": [
+      "New Testament",
+      "Faith",
+      "Pleasing God",
+      "Hebrews",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 12,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Hebrews 12:2 urges us to run the race by looking unto whom?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Hebrews 12:2 - Fixing our eyes on Jesus, the author and finisher of our faith.",
+    "language": "en",
+    "verseEnd": 2,
+    "options": [
+      "Jesus, the author and finisher of faith",
+      "The heroes of faith",
+      "Angels",
+      "Ourselves"
+    ],
+    "tags": [
+      "New Testament",
+      "Faith",
+      "Perseverance",
+      "Hebrews",
+      "Epistle",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 4,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How does Hebrews 4:12 describe the Word of God?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "The Word of God is living and active, piercing the heart, discerning thoughts and intentions.",
+    "language": "en",
+    "options": [
+      "Tradition",
+      "A book",
+      "Law",
+      "Living and powerful, sharper than any two-edged sword"
+    ],
+    "tags": [
+      "New Testament",
+      "Word of God",
+      "Power",
+      "Hebrews",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 4,
+    "verseStart": 15,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Hebrews 4:15: In what way is Jesus our High Priest?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Jesus understands our weaknesses because He has gone through everything. Therefore, let us boldly approach the throne of grace.",
+    "language": "en",
+    "verseEnd": 16,
+    "options": [
+      "Tempted in every way as we are, yet without sin",
+      "Only God",
+      "Never tempted",
+      "Does not understand pain"
+    ],
+    "tags": [
+      "New Testament",
+      "Priesthood",
+      "Empathy",
+      "Hebrews",
+      "Epistle",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 11,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hebrews 11:8: What did Abraham do by faith when he was called?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Faith is obedience even when the destination is unseen. Abraham is a model of faith.",
+    "language": "en",
+    "verseEnd": 10,
+    "options": [
+      "Refused",
+      "Asked why",
+      "Prepared carefully",
+      "Obeyed and went without knowing where he was going"
+    ],
+    "tags": [
+      "New Testament",
+      "Faith",
+      "Obedience",
+      "Hebrews",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 12,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hebrews 12:6: Whom does the Lord discipline?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Discipline is a sign of the Father's love, not abandonment.",
+    "language": "en",
+    "options": [
+      "Enemies",
+      "The wicked",
+      "Strangers",
+      "The children whom He loves"
+    ],
+    "tags": [
+      "New Testament",
+      "Discipline",
+      "Love",
+      "Hebrews",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 13,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hebrews 13:5: What does the Lord promise about His presence?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The Lord is always with us. He will never forsake us. Therefore, be content with what you have.",
+    "language": "en",
+    "options": [
+      "I will never leave you nor forsake you",
+      "I will change",
+      "I will bless",
+      "I will take revenge"
+    ],
+    "tags": [
+      "New Testament",
+      "Presence",
+      "Security",
+      "Hebrews",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 13,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hebrews 13:8: What is Jesus Christ yesterday, today, and forever?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Jesus is unchanging. He is the same yesterday, today, and forever.",
+    "language": "en",
+    "options": [
+      "Unchanging",
+      "Stronger",
+      "Wiser",
+      "Changing with the times"
+    ],
+    "tags": [
+      "New Testament",
+      "Jesus",
+      "Unchanging",
+      "Hebrews",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 9,
+    "verseStart": 22,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Hebrews 9:22: According to the law, without ___ there is no forgiveness of sins",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Core principle: forgiveness of sins requires blood. The blood of Jesus is the final and most perfect sacrifice.",
+    "language": "en",
+    "options": [
+      "Sacrifice",
+      "The shedding of blood (blood)",
+      "Repentance",
+      "Prayer"
+    ],
+    "tags": [
+      "New Testament",
+      "Redemption",
+      "Blood",
+      "Hebrews",
+      "Epistle",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 11,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Hebrews 11:3: By faith we understand that the world was created by what?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Faith accepts that God created the universe by His Word out of nothing.",
+    "language": "en",
+    "options": [
+      "The Big Bang",
+      "The Word of God",
+      "Nature",
+      "The gods"
+    ],
+    "tags": [
+      "New Testament",
+      "Faith",
+      "Creation",
+      "Hebrews",
+      "Epistle",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 10,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hebrews 10:23: Hold fast the confession of hope, for He who promised is what?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "God is faithful to keep His promises, so we can steadfastly confess our faith.",
+    "language": "en",
+    "options": [
+      "Strong",
+      "Faithful",
+      "Wise",
+      "Rich"
+    ],
+    "tags": [
+      "New Testament",
+      "Faithfulness",
+      "Hope",
+      "Hebrews",
+      "Epistle",
+      "Basic"
+    ]
+  }
+]

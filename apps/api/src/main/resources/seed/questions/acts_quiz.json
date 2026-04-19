@@ -1,0 +1,915 @@
+[
+  {
+    "book": "Acts",
+    "chapter": 1,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Công Vụ 1:8, khi Đức Thánh Linh giáng trên các môn đồ, điều gì xảy ra?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Công Vụ 1:8: Nhận quyền phép và làm chứng tại Giê-ru-sa-lem, Giu-đê, Sa-ma-ri và đến cùng trái đất.",
+    "language": "vi",
+    "options": [
+      "Nhận quyền phép và làm chứng khắp nơi",
+      "Trở về nghề cũ",
+      "Nói tiếng thiên sứ",
+      "Xây đền thờ mới"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thánh Linh",
+      "Sứ mạng",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 2,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ngày Lễ Ngũ Tuần, các môn đồ được đầy dẫy Thánh Linh và nói điều gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Công Vụ 2:4: Họ bắt đầu nói các thứ tiếng khác, theo như Thánh Linh cho họ nói.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Các thứ tiếng khác",
+      "Thơ ca",
+      "Lời tiên tri dài",
+      "Tiếng thiên sứ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thánh Linh",
+      "Ngũ Tuần",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 3,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Người què ở Cửa Đẹp được chữa lành bởi danh nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Công Vụ 3:6: Nhân danh Chúa Giê-su Christ ở Na-xa-rét, hãy bước đi!",
+    "language": "vi",
+    "verseEnd": 10,
+    "options": [
+      "Danh Phi-e-rơ",
+      "Danh Giăng",
+      "Danh Phao-lô",
+      "Danh Chúa Giê-su Christ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Danh Chúa",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 4,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Công Vụ 4:12, sự cứu rỗi ở trong ai?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Công Vụ 4:12: Ở dưới trời chẳng có danh nào khác ban cho loài người, để chúng ta nhờ đó mà được cứu.",
+    "language": "vi",
+    "options": [
+      "Trong việc lành",
+      "Trong luật pháp",
+      "Trong của dâng",
+      "Chỉ trong Chúa Giê-su"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cứu rỗi",
+      "Danh Chúa",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 6,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Bảy người được chọn trong Công Vụ 6 có mục đích chính gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Công Vụ 6:2-4: Để các sứ đồ chuyên về cầu nguyện và chức vụ giảng đạo.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "Giảng đạo toàn thời gian",
+      "Phục vụ bàn (chăm lo nhu cầu thực tế)",
+      "Viết thư tín",
+      "Dạy luật pháp"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Chức vụ",
+      "Quản trị",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 9,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sa-lơ (Phao-lô) gặp Chúa trên đường nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Công Vụ 9:3-6: Trên đường Đa-mách, Chúa hiện ra và gọi Sa-lơ.",
+    "language": "vi",
+    "verseEnd": 19,
+    "options": [
+      "Phi-líp",
+      "Cô-rinh-tô",
+      "Ê-pha-sô",
+      "Đa-mách"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cải đạo",
+      "Kêu gọi",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 8,
+    "verseStart": 26,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phi-líp giải thích Kinh Thánh nào cho hoạn quan Ê-thi-ô-pi?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Công Vụ 8:32-35: Phi-líp mở miệng, bắt đầu từ đoạn Kinh Thánh ấy mà giảng về Chúa Giê-su.",
+    "language": "vi",
+    "verseEnd": 40,
+    "options": [
+      "Thi Thiên 23",
+      "Ê-sai 53",
+      "Giê-rê-mi 31",
+      "Sáng Thế Ký 12"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Truyền giảng",
+      "Tiên tri",
+      "Công Vụ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 10,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phi-e-rơ thấy chiếu từ trời xuống dạy điều gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Công Vụ 10:15: Điều Đức Chúa Trời đã làm sạch, chớ kể là ô uế.",
+    "language": "vi",
+    "verseEnd": 48,
+    "options": [
+      "Đừng gọi điều gì Đức Chúa Trời đã làm sạch là ô uế",
+      "Chỉ ăn đồ thanh sạch",
+      "Bỏ luật Môi-se",
+      "Không vào nhà dân ngoại"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Dân ngoại",
+      "Khải thị",
+      "Công Vụ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 12,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phi-e-rơ được giải cứu khỏi ngục bằng cách nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Công Vụ 12:7-10: Một thiên sứ của Chúa hiện đến, xiềng xích rơi khỏi tay ông.",
+    "language": "vi",
+    "verseEnd": 17,
+    "options": [
+      "Động đất",
+      "Thiên sứ giải cứu",
+      "Cửa tự mở",
+      "Lính ngủ quên"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Thiên sứ",
+      "Công Vụ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 13,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tại An-ti-ốt, ai được Thánh Linh biệt riêng ra cho công việc?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Công Vụ 13:2: Hãy biệt riêng Ba-na-ba và Sau-lơ cho Ta, để làm công việc Ta gọi họ.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Phi-e-rơ và Giăng",
+      "Ba-na-ba và Sau-lơ",
+      "Ti-mô-thê và Tít",
+      "Gia-cơ và Phi-líp"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Truyền giáo",
+      "Kêu gọi",
+      "Công Vụ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 15,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Công đồng Giê-ru-sa-lem quyết định gì cho dân ngoại tin Chúa?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Công Vụ 15:28-29: Quyết định đặt gánh nặng rất ít cho anh em dân ngoại.",
+    "language": "vi",
+    "verseEnd": 21,
+    "options": [
+      "Giữ mọi ngày lễ",
+      "Không bắt giữ trọn luật Môi-se; chỉ kiêng đồ cúng, huyết, thú chết ngạt và dâm loạn",
+      "Học tiếng Hê-bơ-rơ",
+      "Phải chịu cắt bì"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Giáo hội",
+      "Quyết nghị",
+      "Công Vụ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 16,
+    "verseStart": 25,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Cai ngục Phi-líp-phê tin Chúa sau sự kiện nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Công Vụ 16:26-34: Động đất mở cửa ngục; ông tin Chúa và cả nhà đều chịu báp-têm.",
+    "language": "vi",
+    "verseEnd": 34,
+    "options": [
+      "Động đất mở cửa ngục",
+      "Phi-e-rơ giảng",
+      "Mộng thấy thiên sứ",
+      "Bịnh được chữa"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cứu rỗi",
+      "Dấu lạ",
+      "Công Vụ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 17,
+    "verseStart": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tại A-rê-ô-ba-gô, Phao-lô rao giảng về điều gì cho người Hy Lạp?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Công Vụ 17:24-31: Đức Chúa Trời Tạo Hóa, hô gọi ăn năn, ngày phán xét và sự sống lại.",
+    "language": "vi",
+    "verseEnd": 34,
+    "options": [
+      "Luật Môi-se",
+      "Triết học Khắc Kỷ",
+      "Đức Chúa Trời không ở trong đền do tay người làm và sự sống lại",
+      "Các thần linh địa phương"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Truyền giảng",
+      "A-thên",
+      "Công Vụ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 18,
+    "verseStart": 24,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "A-bô-lô thiếu điều gì khiến Bê-rít-sin và A-qui-la giảng giải thêm?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Công Vụ 18:25-26: Ông chỉ biết phép báp-têm của Giăng, được giảng giải đạo Đức Chúa Trời cách chính xác hơn.",
+    "language": "vi",
+    "verseEnd": 28,
+    "options": [
+      "Không biết lịch sử Ít-ra-ên",
+      "Chỉ biết phép báp-têm của Giăng",
+      "Không biết tiếng Hy Lạp",
+      "Không biết Cựu Ước"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Môn đệ",
+      "Dạy dỗ",
+      "Công Vụ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 19,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tại Ê-phê-sô, chuyện gì xảy ra khiến nhiều người đem sách phù thủy đốt?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Công Vụ 19:11-19: Đức Chúa Trời làm các phép lạ phi thường qua tay Phao-lô.",
+    "language": "vi",
+    "verseEnd": 20,
+    "options": [
+      "Lời tiên tri",
+      "Phép lạ lớn qua tay Phao-lô",
+      "Động đất",
+      "Sấm sét"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ăn năn",
+      "Phù thủy",
+      "Công Vụ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 20,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ê-u-ty-khơ xảy ra điều gì khi Phao-lô giảng lâu?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Công Vụ 20:9-12: Ê-u-ty-khơ ngủ gục, rơi xuống, Phao-lô ôm và làm sống lại.",
+    "language": "vi",
+    "verseEnd": 12,
+    "options": [
+      "Nói tiếng khác",
+      "Được chữa lành tay",
+      "Ngủ gục, rơi từ tầng ba, được làm sống lại",
+      "Thấy khải tượng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Tai nạn",
+      "Công Vụ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 21,
+    "verseStart": 27,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Tại sao Phao-lô bị bắt ở Giê-ru-sa-lem theo Công Vụ 21?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Công Vụ 21:28-29: Người Giu-đa cáo rằng ông đem người Hy Lạp vào đền thờ và làm ô uế nơi thánh.",
+    "language": "vi",
+    "verseEnd": 36,
+    "options": [
+      "Bị tố cáo chống thuế",
+      "Bị tố cáo gây bạo loạn",
+      "Bị tố cáo báng bổ",
+      "Bị tố cáo đưa dân ngoại vào đền thờ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Bắt bớ",
+      "Đền thờ",
+      "Công Vụ",
+      "Lịch sử",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 23,
+    "verseStart": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô nói điều gì gây chia rẽ giữa Pha-ri-si và Sa-đu-sê?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Công Vụ 23:6-8: Vì Pha-ri-si tin có sự sống lại, thiên sứ và thần linh; Sa-đu-sê thì không.",
+    "language": "vi",
+    "verseEnd": 10,
+    "options": [
+      "Về sự sống lại",
+      "Về phép báp-têm",
+      "Về lề luật",
+      "Về đền thờ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Biện hộ",
+      "Sống lại",
+      "Công Vụ",
+      "Lịch sử",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 26,
+    "verseStart": 19,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trước vua A-gríp-pa, Phao-lô nói mình không chống lại điều gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Công Vụ 26:19: Tôi chẳng dám nghịch lại sự hiện thấy từ trời.",
+    "language": "vi",
+    "verseEnd": 23,
+    "options": [
+      "Quan quyền",
+      "Sự hiện thấy từ trời",
+      "Luật pháp",
+      "Dân tộc"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Lời chứng",
+      "Kêu gọi",
+      "Công Vụ",
+      "Lịch sử",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 28,
+    "verseStart": 1,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trên đảo Ma-lơ-ta, điều gì xảy ra với Phao-lô sau khi rắn độc cắn?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Công Vụ 28:3-6: Phao-lô không hề hấn gì, họ đổi ý cho là một vị thần.",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "Bị sưng tay",
+      "Ngất xỉu",
+      "Không hề hấn, dân đảo cho là thần",
+      "Chết trong vài giờ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Bảo vệ",
+      "Công Vụ",
+      "Lịch sử",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 2,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong Công Vụ 2:4, \"Hết thảy đều được đầy dẫy Đức Thánh Linh\". Từ \"đầy dẫy\" trong tiếng Hy Lạp có nghĩa gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Pimplemi (πίμπλημι) có nghĩa là \"đầy tràn\", không chỉ đầy mà còn tràn ra ngoài.",
+    "language": "vi",
+    "options": [
+      "Pimplemi - Đầy tràn",
+      "Chortazo - No đủ",
+      "Pleroo - Làm đầy",
+      "Gemizo - Chứa đầy"
+    ],
+    "tags": [
+      "Công Vụ",
+      "Đức Thánh Linh",
+      "Ngôn ngữ Hy Lạp",
+      "Tân Ước",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 9,
+    "verseStart": 15,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong Công Vụ 9:15, Chúa phán về Phao-lô \"Người này là đồ dùng ta đã chọn\". Từ \"đồ dùng\" trong tiếng Hy Lạp có nghĩa gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Skeuos (σκεῦος) có nghĩa là \"đồ dùng, khí cụ\", ám chỉ đến Phao-lô như một công cụ của Đức Chúa Trời.",
+    "language": "vi",
+    "options": [
+      "Organon - Công cụ",
+      "Ergon - Công việc",
+      "Skeuos - Đồ dùng, khí cụ",
+      "Douleia - Sự phục vụ"
+    ],
+    "tags": [
+      "Công Vụ",
+      "Phao-lô",
+      "Ngôn ngữ Hy Lạp",
+      "Tân Ước",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 1,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trước khi thăng thiên, Chúa Giê-su hứa các môn đồ sẽ nhận được gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Công vụ 1:8 - Khi Đức Thánh Linh giáng trên, các ngươi sẽ nhận lãnh quyền phép và làm chứng ta khắp đất.",
+    "language": "vi",
+    "options": [
+      "Quyền phép khi Đức Thánh Linh giáng trên",
+      "Sự khôn ngoan",
+      "Vàng bạc",
+      "Quyền lực chính trị"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thánh Linh",
+      "Làm chứng",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 2,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ngày Lễ Ngũ Tuần, dấu hiệu Đức Thánh Linh giáng xuống là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Công vụ 2:2-4 - Gió từ trời, lưỡi lửa đậu trên đầu mỗi người, và họ nói các thứ tiếng khác bởi quyền năng Thánh Linh.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Động đất",
+      "Chim bồ câu",
+      "Gió mạnh, lưỡi lửa, nói các thứ tiếng",
+      "Đám mây sáng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Lễ Ngũ Tuần",
+      "Thánh Linh",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 2,
+    "verseStart": 38,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phi-e-rơ rao giảng ngày Lễ Ngũ Tuần, kêu gọi mọi người làm gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Công vụ 2:38 - Phi-e-rơ kêu gọi ăn năn (đổi hướng), báp-têm nhân danh Chúa, và nhận lãnh Đức Thánh Linh.",
+    "language": "vi",
+    "options": [
+      "Dâng của lễ",
+      "Giữ luật Môi-se",
+      "Rời Giê-ru-sa-lem",
+      "Ăn năn và chịu báp-têm nhân danh Chúa Giê-su"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Giáo lý",
+      "Ăn năn",
+      "Công Vụ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 9,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sau-lơ (sau là sứ đồ Phao-lô) gặp Chúa Giê-su trên đường đi đâu?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Công vụ 9:3 - Trên đường Đa-mách, ánh sáng từ trời chiếu xuống và Chúa Giê-su phán với Sau-lơ.",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "La-mã",
+      "Giê-ru-sa-lem",
+      "An-ti-ốt",
+      "Đa-mách"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phao-lô",
+      "Biến đổi",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 2,
+    "verseStart": 42,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hội thánh đầu tiên bền đỗ trong 4 điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Công vụ 2:42 - Bốn cột trụ của Hội thánh: dạy dỗ, thông công, bẻ bánh, cầu nguyện.",
+    "language": "vi",
+    "options": [
+      "Chỉ ăn uống",
+      "Chỉ cầu nguyện",
+      "Sự dạy của sứ đồ, sự thông công, lễ bẻ bánh, sự cầu nguyện",
+      "Chỉ nghe giảng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Hội thánh",
+      "Nền tảng",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 3,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phi-e-rô nói với người quẹ trước đền thờ: \"Vàng bạc ta không có, nhưng ta cho ngươi điều ta có: nhân danh ___ hãy đứng dậy và bước đi\"",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Công vụ 3:6 - Quyền năng chữa lành đến từ danh Chúa Giê-su, không phải tiền bạc.",
+    "language": "vi",
+    "options": [
+      "Ê-li",
+      "Chúa Giê-su Christ",
+      "Môi-se",
+      "Đức Chúa Trời"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Danh Chúa",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 5,
+    "verseStart": 29,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi bị cấm giảng đạo, các sứ đồ đáp: \"Phải vâng lời ___ hơn là vâng lời người ta\"",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Công vụ 5:29 - Khi luật người chống lại luật Chúa, phải chọn vâng lời Chúa.",
+    "language": "vi",
+    "options": [
+      "Lương tâm",
+      "Đức Chúa Trời",
+      "Luật pháp",
+      "Truyền thống"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Can đảm",
+      "Vâng lời",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 7,
+    "verseStart": 59,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ê-tiên, vị tử đạo đầu tiên, cầu nguyện điều gì khi bị ném đá?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Công vụ 7:60 - Giống Chúa Giê-su, Ê-tiên tha thứ cho kẻ giết mình. Tiêu chuẩn tha thứ cao nhất.",
+    "language": "vi",
+    "verseEnd": 60,
+    "options": [
+      "Xin phạt họ",
+      "Xin cứu con",
+      "Xin báo thù",
+      "Lạy Chúa, xin đừng kể tội này cho họ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ê-tiên",
+      "Tha thứ",
+      "Công Vụ",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 8,
+    "verseStart": 30,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phi-líp hỏi hoạn quan Ê-thi-ô-pi: \"Ông có hiểu điều mình đọc không?\" Ông đáp thế nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Công vụ 8:31 - Cần người giải thích Kinh Thánh. Vai trò quan trọng của người dạy dỗ.",
+    "language": "vi",
+    "verseEnd": 31,
+    "options": [
+      "Không cần giúp",
+      "Làm sao hiểu được nếu không ai giải nghĩa?",
+      "Tôi đang học",
+      "Tôi hiểu rồi"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phúc Âm",
+      "Giải nghĩa",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 17,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Dân Bê-rê được khen vì làm gì khi nghe Phao-lô giảng?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Công vụ 17:11 - Mẫu mực: nghe giảng rồi kiểm tra lại với Kinh Thánh. Không tin mù quáng.",
+    "language": "vi",
+    "options": [
+      "Im lặng",
+      "Từ chối",
+      "Tin ngay",
+      "Hằng ngày xem xét Kinh Thánh để kiểm tra điều Phao-lô nói có đúng không"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Bê-rê",
+      "Kinh Thánh",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Acts",
+    "chapter": 20,
+    "verseStart": 35,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô trích lời Chúa Giê-su: \"Ban cho có phước hơn ___\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Công vụ 20:35 - Lời của Chúa Giê-su không có trong Phúc Âm nhưng được Phao-lô truyền lại.",
+    "language": "vi",
+    "options": [
+      "Đòi",
+      "Giữ",
+      "Nhận",
+      "Xin"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Rộng rãi",
+      "Phước",
+      "Công Vụ",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  }
+]

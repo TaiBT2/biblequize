@@ -1,0 +1,322 @@
+[
+  {
+    "book": "Jeremiah",
+    "chapter": 1,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Giê-rê-mi viện cớ gì khi Chúa gọi?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Giê 1:6-7 - Giê-rê-mi còn trẻ nhưng Chúa nói: Đừng nói tôi còn trẻ. Hãy đi khắp nơi ta sai người.",
+    "language": "vi",
+    "verseEnd": 8,
+    "options": [
+      "Tôi đang bận",
+      "Tôi không xứng đáng",
+      "Tôi sợ kẻ thù",
+      "Tôi còn trẻ quá, không biết nói"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giê-rê-mi",
+      "Sự kêu gọi",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 2,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa tố cáo dân sự phạm hai tội gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Giê 2:13 - Hai tội: bỏ Chúa (nguồn nước sống) và tìm sự thỏa mãn nơi khác (hồ nứt rò rỉ).",
+    "language": "vi",
+    "options": [
+      "Bỏ nguồn nước sống để đào hồ nứt không giữ được nước",
+      "Làm biếng",
+      "Giết người",
+      "Thờ tượng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giê-rê-mi",
+      "Phản bội",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 17,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Giê-rê-mi 17:9 nói gì về tâm lòng con người?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lòng người ta dối trá hơn mọi vật và rất là xấu xa. Ai biết được? Chỉ Chúa biết.",
+    "language": "vi",
+    "options": [
+      "Dối trá hơn mọi vật, ai biết được?",
+      "Tâm lòng là trung lập",
+      "Tâm lòng luôn tốt",
+      "Tâm lòng luôn đúng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giê-rê-mi",
+      "Tâm lòng",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 18,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Giê-rê-mi học bài học gì tại nhà thợ gốm?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giê 18:6 - Như thợ gốm có quyền trên đất sét, Chúa có quyền trên mọi dân mọi nước.",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "Hãy kiên nhẫn",
+      "Chúa là thợ gốm có quyền năng đặt thành bất cứ dạng nào",
+      "Đất sét là quý",
+      "Phải làm việc chăm chỉ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giê-rê-mi",
+      "Chủ quyền",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 31,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Giê 31:3: Chúa nói yêu dân sự bằng loại tình yêu nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ta đã yêu ngươi bằng một tình yêu đời đời, nên ta lấy sự nhân từ mà kéo ngươi.",
+    "language": "vi",
+    "options": [
+      "Tình yêu tạm thời",
+      "Tình yêu đời đời",
+      "Tình yêu mới",
+      "Tình yêu có điều kiện"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giê-rê-mi",
+      "Tình yêu",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 38,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Giê-rê-mi bị quăng xuống đâu vì rao giảng sự thật?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giê 38:6 - Họ thòng xuống Giê-rê-mi bằng dây vào giếng bùn. Giá của việc nói sự thật.",
+    "language": "vi",
+    "options": [
+      "Ngục",
+      "Giếng bùn (hố bùn)",
+      "Hang tối",
+      "Hố sâu"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giê-rê-mi",
+      "Bức hại",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 52,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lời tiên tri của Giê-rê-mi về việc Giê-ru-sa-lem bị phá có ứng nghiệm không?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Giê 52:12-13 - Mọi lời tiên tri đều ứng nghiệm. Giê-ru-sa-lem bị phá và dân bị lưu đày 70 năm đúng như Giê-rê-mi nói.",
+    "language": "vi",
+    "verseEnd": 13,
+    "options": [
+      "Chỉ một phần",
+      "Chưa biết",
+      "Có, Ba-by-lon phá thành và đền thờ năm 586 TCN",
+      "Không"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giê-rê-mi",
+      "Ứng nghiệm",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 17,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Giê 17:7-8 so sánh người tin cậy Chúa như gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giống Thi 1:3 - Người tin cậy Chúa như cây có rễ sâu, không sợ hạn hán.",
+    "language": "vi",
+    "verseEnd": 8,
+    "options": [
+      "Chiến binh",
+      "Cây trồng gần nước, lá xanh, ra trái không dứt",
+      "Ngôi sao",
+      "Núi cao"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giê-rê-mi",
+      "Tin cậy",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 10,
+    "verseStart": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Giê 10:23: Giê-rê-mi thừa nhận điều gì về con người?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Con người không thể tự hướng dẫn đời sống mình. Chúng ta cần sự dẫn dắt của Chúa.",
+    "language": "vi",
+    "options": [
+      "Đường của loài người không do nơi chính mình, không tự định bước mình",
+      "Con người mạnh mẽ",
+      "Con người khôn ngoan",
+      "Con người tự lập"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giê-rê-mi",
+      "Phụ thuộc",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 1,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa nói với Gie-rê-mi: \"Trước khi tạo thành ngươi trong bụng mẹ, ta đã ___ ngươi\"",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giê 1:5 - Chúa biết chúng ta trước khi được sinh ra. Ngài có kế hoạch cho mỗi người từ trước.",
+    "language": "vi",
+    "options": [
+      "Gọi ngươi",
+      "Biết ngươi",
+      "Yêu ngươi",
+      "Chọn ngươi"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gie-rê-mi",
+      "Sự kêu gọi",
+      "Giê-rê-mi",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 29,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Gie-rê-mi 29:11 nói kế hoạch của Chúa cho chúng ta là gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giê 29:11 - Ta biết ý tưởng ta nghĩ đối cùng các ngươi, ý tưởng bình an, không phải tai họa, để cho các ngươi được sự cuối cùng tốt đẹp.",
+    "language": "vi",
+    "options": [
+      "Kế hoạch hình phạt",
+      "Kế hoạch bình an, cho một tương lai và hy vọng",
+      "Kế hoạch thử thách",
+      "Kế hoạch giàu có"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Hy vọng",
+      "Kế hoạch Chúa",
+      "Giê-rê-mi",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jeremiah",
+    "chapter": 31,
+    "verseStart": 31,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Gie-rê-mi 31:31-33 tiên tri về \"giao ước mới\". Giao ước này khác giao ước cũ ở điểm nào?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Giê 31:33 - Giao ước mới: Chúa viết luật trong lòng và tâm trí. Đây là giao ước được ứng nghiệm qua Chúa Giê-su và Đức Thánh Linh.",
+    "language": "vi",
+    "verseEnd": 33,
+    "options": [
+      "Nhiều điều răn hơn",
+      "Chỉ dành cho người Do-thái",
+      "Luật pháp được viết trong lòng, không phải trên bảng đá",
+      "Cần nhiều tế lễ hơn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Giao ước mới",
+      "Giê-rê-mi",
+      "Đại Tiên Tri",
+      "Nâng cao"
+    ]
+  }
+]

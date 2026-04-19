@@ -17,6 +17,7 @@ const NAV_ITEMS = [
   { path: '/admin/config', icon: 'settings', label: 'Configuration' },
   { path: '/admin/export', icon: 'download', label: 'Export Center' },
   { path: '/admin/question-quality', icon: 'verified', label: 'Question Quality' },
+  { path: '/admin/metrics/early-unlock', icon: 'lock_open', label: 'Early Unlock' },
 ]
 
 const PAGE_TITLES: Record<string, string> = {
@@ -33,6 +34,7 @@ const PAGE_TITLES: Record<string, string> = {
   '/admin/config': 'Configuration',
   '/admin/export': 'Export Center',
   '/admin/question-quality': 'Question Quality',
+  '/admin/metrics/early-unlock': 'Early Unlock Metrics',
 }
 
 export default function AdminLayout() {

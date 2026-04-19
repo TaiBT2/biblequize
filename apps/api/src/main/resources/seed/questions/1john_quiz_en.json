@@ -1,0 +1,329 @@
+[
+  {
+    "book": "1 John",
+    "chapter": 4,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How does 1 John 4:8 define God?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 John 4:8 - God is love. Whoever does not love does not know God.",
+    "language": "en",
+    "options": [
+      "God is fire",
+      "God is a spirit",
+      "God is love",
+      "God is light"
+    ],
+    "tags": [
+      "New Testament",
+      "Nature of God",
+      "Love",
+      "1 John",
+      "Epistles",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 1,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "If we confess our sins, what will the Lord do according to 1 John 1:9?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 John 1:9 - The Lord is faithful and just to forgive our sins and cleanse us from all unrighteousness. We only need to confess truly.",
+    "language": "en",
+    "options": [
+      "Require us to prove it",
+      "Punish us",
+      "Turn His face away",
+      "Forgive our sins and cleanse us from all unrighteousness"
+    ],
+    "tags": [
+      "New Testament",
+      "Forgiveness",
+      "Confession",
+      "1 John",
+      "Epistles",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 1,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 John 1:7: If we walk in the light, what does the blood of Jesus do?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Walking in the light + the blood of the Lord = continual cleansing from sin.",
+    "language": "en",
+    "options": [
+      "Heals us",
+      "Cleanses us from all sin",
+      "Protects us",
+      "Comforts us"
+    ],
+    "tags": [
+      "New Testament",
+      "Cleansing",
+      "Blood",
+      "1 John",
+      "Epistles",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 2,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 John 2:1-2: When we sin, who is our Advocate?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Jesus is our Advocate and also the propitiation for our sins.",
+    "language": "en",
+    "verseEnd": 2,
+    "options": [
+      "Peter",
+      "An angel",
+      "Jesus Christ, the Righteous One",
+      "Moses"
+    ],
+    "tags": [
+      "New Testament",
+      "Advocate",
+      "Atonement",
+      "1 John",
+      "Epistles",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 2,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 John 2:15: \"Do not love ___\" for all that is in it is not from the Father",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "The world's value system (lust of the flesh, lust of the eyes, pride of life) opposes God.",
+    "language": "en",
+    "verseEnd": 16,
+    "options": [
+      "Friends",
+      "Family",
+      "Work",
+      "The world and the things in the world"
+    ],
+    "tags": [
+      "New Testament",
+      "The World",
+      "Warning",
+      "1 John",
+      "Epistles",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 3,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 John 3:16: By this we know love: He ___ for us",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The definition of love: laying down one's life. And we also ought to do the same for the brethren.",
+    "language": "en",
+    "options": [
+      "Laid down His life",
+      "Healed",
+      "Prayed",
+      "Taught"
+    ],
+    "tags": [
+      "New Testament",
+      "Love",
+      "Sacrifice",
+      "1 John",
+      "Epistles",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 3,
+    "verseStart": 18,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 John 3:18: \"Let us love not only in word and tongue but in ___\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "True love is expressed through concrete actions, not just words.",
+    "language": "en",
+    "options": [
+      "Deed and truth",
+      "Promises",
+      "Feelings",
+      "Money"
+    ],
+    "tags": [
+      "New Testament",
+      "Love",
+      "Action",
+      "1 John",
+      "Epistles",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 4,
+    "verseStart": 18,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 John 4:18: What does perfect love do with fear?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "When we know God loves us perfectly, fear is driven away.",
+    "language": "en",
+    "options": [
+      "Hides fear",
+      "Is unrelated",
+      "Increases fear",
+      "Casts out fear"
+    ],
+    "tags": [
+      "New Testament",
+      "Love",
+      "Fear",
+      "1 John",
+      "Epistles",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 4,
+    "verseStart": 19,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 John 4:19: \"We love because ___ first loved us\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Our love is only a response to the love God gave first.",
+    "language": "en",
+    "options": [
+      "Of course",
+      "We want to",
+      "He (God)",
+      "We must"
+    ],
+    "tags": [
+      "New Testament",
+      "Love",
+      "Source",
+      "1 John",
+      "Epistles",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 5,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 John 5:3: What does it mean to love God?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Love = obedience. And God's commandments are not burdensome when the Holy Spirit helps.",
+    "language": "en",
+    "options": [
+      "Going to church",
+      "Keeping His commandments, and His commandments are not burdensome",
+      "Praying a lot",
+      "Giving offerings"
+    ],
+    "tags": [
+      "New Testament",
+      "Obedience",
+      "Love",
+      "1 John",
+      "Epistles",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 5,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "1 John 5:14: If we ask anything according to God's will, He will ___",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Praying according to God's will is the key to being heard and answered by Him.",
+    "language": "en",
+    "verseEnd": 15,
+    "options": [
+      "Wait",
+      "Hear us",
+      "Consider",
+      "Test"
+    ],
+    "tags": [
+      "New Testament",
+      "Prayer",
+      "God's Will",
+      "1 John",
+      "Epistles",
+      "Basic"
+    ]
+  },
+  {
+    "book": "1 John",
+    "chapter": 4,
+    "verseStart": 10,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "1 John 4:10: This is love: not that we loved God but that ___ loved us and sent His Son as a propitiation for our sins",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Love is initiated by God, not by us. God actively loved first.",
+    "language": "en",
+    "options": [
+      "A prophet",
+      "An angel",
+      "He",
+      "We"
+    ],
+    "tags": [
+      "New Testament",
+      "Love",
+      "Initiative",
+      "1 John",
+      "Epistles",
+      "Intermediate"
+    ]
+  }
+]

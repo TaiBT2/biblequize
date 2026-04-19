@@ -116,4 +116,169 @@ describe('AppLayout — Logout', () => {
     const nameElements = screen.getAllByText('Nguyễn Văn A')
     expect(nameElements.length).toBeGreaterThanOrEqual(1)
   })
+
+  /**
+   * Regression guard (2026-04-19): the sidebar's big gold "BẮT ĐẦU" CTA
+   * linking to /quiz was removed because (a) /quiz crashes without a
+   * session-id in router state, and (b) it duplicated the Practice
+   * card's CTA on Home. Recommendation highlight now drives the user
+   * to the right mode contextually.
+   */
+  it('does NOT render the old sidebar "Bắt Đầu" CTA linking to /quiz', () => {
+    renderAppLayout()
+    // The /quiz link anchor should not exist anywhere in the layout.
+    const quizLinks = document.querySelectorAll('a[href="/quiz"]')
+    expect(quizLinks.length).toBe(0)
+  })
+
+  /**
+   * Regression guard (2026-04-19): the top header previously duplicated
+   * the sidebar nav items (Trang chủ / Xếp hạng / Nhóm / Cá nhân). They
+   * were moved to sidebar-only to reduce visual redundancy. Each nav
+   * route must appear AT MOST ONCE in the rendered DOM so we don't
+   * reintroduce the duplicate.
+   */
+  it('does NOT duplicate nav links between header and sidebar', () => {
+    renderAppLayout()
+    for (const path of ['/', '/leaderboard', '/groups', '/profile']) {
+      const links = document.querySelectorAll(`a[href="${path}"]`)
+      // Mobile bottom nav also renders these — but bottom nav is hidden
+      // by `md:hidden`. In the test (happy-dom, no viewport breakpoint
+      // simulation) every Link element is rendered. Expect: sidebar (1)
+      // + bottom nav (1) = 2. No more than 2 (would indicate header nav
+      // returned).
+      expect(links.length).toBeLessThanOrEqual(2)
+    }
+  })
+})
+
+/**
+ * Click-outside behavior for the user menu dropdown.
+ *
+ * Regression: previously used `<div className="fixed inset-0 z-40">` overlay
+ * behind the popup. That overlay was blocked by the fixed header (z-50), so
+ * clicking on header icons (favorite, bolt, stars) or logo did NOT close the
+ * menu. Now uses a document mousedown listener scoped by ref.
+ */
+describe('AppLayout — User menu click-outside', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+    mockLogout.mockResolvedValue(undefined)
+    authState = {
+      user: { name: 'Nguyễn Văn A', email: 'test@example.com', avatar: null },
+      isAuthenticated: true,
+      logout: mockLogout,
+    }
+  })
+
+  it('closes the dropdown when clicking outside the menu (body click)', async () => {
+    renderAppLayout()
+
+    const toggle = screen.getByTestId('user-menu-toggle')
+    fireEvent.click(toggle)
+    expect(await screen.findByTestId('user-menu-dropdown')).toBeInTheDocument()
+
+    // Simulate a real pointer event on the document body
+    fireEvent.mouseDown(document.body)
+
+    await waitFor(() => {
+      expect(screen.queryByTestId('user-menu-dropdown')).not.toBeInTheDocument()
+    })
+  })
+
+  it('closes the dropdown when clicking a header icon (regression guard)', async () => {
+    renderAppLayout()
+
+    const toggle = screen.getByTestId('user-menu-toggle')
+    fireEvent.click(toggle)
+    expect(await screen.findByTestId('user-menu-dropdown')).toBeInTheDocument()
+
+    // Click the header area (not the menu) — this is the exact case that
+    // failed with the old z-40 overlay approach.
+    const header = screen.getByTestId('app-header')
+    fireEvent.mouseDown(header)
+
+    await waitFor(() => {
+      expect(screen.queryByTestId('user-menu-dropdown')).not.toBeInTheDocument()
+    })
+  })
+
+  it('closes the dropdown when pressing Escape', async () => {
+    renderAppLayout()
+
+    const toggle = screen.getByTestId('user-menu-toggle')
+    fireEvent.click(toggle)
+    expect(await screen.findByTestId('user-menu-dropdown')).toBeInTheDocument()
+
+    fireEvent.keyDown(document, { key: 'Escape' })
+
+    await waitFor(() => {
+      expect(screen.queryByTestId('user-menu-dropdown')).not.toBeInTheDocument()
+    })
+  })
+
+  it('keeps the dropdown open when clicking inside the menu container', async () => {
+    renderAppLayout()
+
+    const toggle = screen.getByTestId('user-menu-toggle')
+    fireEvent.click(toggle)
+    const dropdown = await screen.findByTestId('user-menu-dropdown')
+    expect(dropdown).toBeInTheDocument()
+
+    // Click inside the dropdown — e.g. on the user's email text
+    fireEvent.mouseDown(screen.getByText('test@example.com'))
+
+    // Should still be open
+    expect(screen.getByTestId('user-menu-dropdown')).toBeInTheDocument()
+  })
+
+  it('toggles the dropdown when clicking the avatar button twice', async () => {
+    renderAppLayout()
+
+    const toggle = screen.getByTestId('user-menu-toggle')
+    fireEvent.click(toggle)
+    expect(await screen.findByTestId('user-menu-dropdown')).toBeInTheDocument()
+
+    fireEvent.click(toggle)
+    await waitFor(() => {
+      expect(screen.queryByTestId('user-menu-dropdown')).not.toBeInTheDocument()
+    })
+  })
+
+  it('sets aria-expanded on the toggle to reflect open state', async () => {
+    renderAppLayout()
+
+    const toggle = screen.getByTestId('user-menu-toggle')
+    expect(toggle.getAttribute('aria-expanded')).toBe('false')
+
+    fireEvent.click(toggle)
+    await waitFor(() => {
+      expect(toggle.getAttribute('aria-expanded')).toBe('true')
+    })
+  })
+
+  it('cleans up document listeners after menu closes', async () => {
+    const addSpy = vi.spyOn(document, 'addEventListener')
+    const removeSpy = vi.spyOn(document, 'removeEventListener')
+
+    renderAppLayout()
+    const toggle = screen.getByTestId('user-menu-toggle')
+
+    // Open → listeners added
+    fireEvent.click(toggle)
+    await screen.findByTestId('user-menu-dropdown')
+    const addedEvents = addSpy.mock.calls.map(c => c[0])
+    expect(addedEvents).toEqual(expect.arrayContaining(['mousedown', 'touchstart', 'keydown']))
+
+    // Close → listeners removed for same events
+    fireEvent.click(toggle)
+    await waitFor(() => {
+      expect(screen.queryByTestId('user-menu-dropdown')).not.toBeInTheDocument()
+    })
+    const removedEvents = removeSpy.mock.calls.map(c => c[0])
+    expect(removedEvents).toEqual(expect.arrayContaining(['mousedown', 'touchstart', 'keydown']))
+
+    addSpy.mockRestore()
+    removeSpy.mockRestore()
+  })
 })

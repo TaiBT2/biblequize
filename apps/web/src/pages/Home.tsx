@@ -5,39 +5,19 @@ import { useTranslation } from 'react-i18next'
 import ComebackModal from '../components/ComebackModal'
 import DailyBonusModal from '../components/DailyBonusModal'
 import DailyMissionsCard from '../components/DailyMissionsCard'
+import EarlyRankedUnlockModal from '../components/EarlyRankedUnlockModal'
 import GameModeGrid from '../components/GameModeGrid'
 import MilestoneBanner from '../components/MilestoneBanner'
 import TierProgressBar from '../components/TierProgressBar'
 import TutorialOverlay from '../components/TutorialOverlay'
+import { useEarlyUnlockCelebration } from '../hooks/useEarlyUnlockCelebration'
 import { useAuthStore } from '../store/authStore'
 import { api } from '../api/client'
 import { getDailyVerse } from '../data/verses'
+import { getTierInfo } from '../data/tiers'
+import { practiceAccuracyPct } from '../utils/earlyUnlock'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
-
-/* ── Tier System (from SPEC-v2 section 2.1) ── */
-const TIERS = [
-  { nameKey: 'tiers.spark', minPoints: 0, icon: 'spa', color: 'text-outline' },
-  { nameKey: 'tiers.seeker', minPoints: 1_000, icon: 'eco', color: 'text-green-400' },
-  { nameKey: 'tiers.disciple', minPoints: 5_000, icon: 'scrollable_header', color: 'text-[#4a9eff]' },
-  { nameKey: 'tiers.sage', minPoints: 15_000, icon: 'lightbulb', color: 'text-[#9b59b6]' },
-  { nameKey: 'tiers.prophet', minPoints: 40_000, icon: 'local_fire_department', color: 'text-secondary' },
-  { nameKey: 'tiers.apostle', minPoints: 100_000, icon: 'workspace_premium', color: 'text-[#ff6b6b]' },
-]
-
-function getTierInfo(points: number) {
-  let currentIdx = 0
-  for (let i = TIERS.length - 1; i >= 0; i--) {
-    if (points >= TIERS[i].minPoints) { currentIdx = i; break }
-  }
-  const current = TIERS[currentIdx]
-  const next = TIERS[currentIdx + 1] ?? null
-  const progressPct = next
-    ? Math.min(100, Math.round(((points - current.minPoints) / (next.minPoints - current.minPoints)) * 100))
-    : 100
-  const pointsToNext = next ? next.minPoints - points : 0
-  return { current, next, progressPct, pointsToNext }
-}
 
 function getGreeting(t: any): string {
   const h = new Date().getHours()
@@ -79,6 +59,14 @@ export default function Home() {
     staleTime: 5 * 60_000, // 5 min
   })
 
+  // Fires celebration modal exactly once per unlock. Scoped to the
+  // user's email so a different login on the same browser sees their
+  // own event (cheap edge-case safeguard, see hook docs).
+  const { shouldCelebrate, dismiss: dismissEarlyUnlock } = useEarlyUnlockCelebration({
+    earlyRankedUnlockedAt: meData?.earlyRankedUnlockedAt ?? null,
+    userKey: meData?.email ?? user?.email,
+  })
+
   // TanStack Query: tier progress (includes totalPoints)
   const { data: tierData } = useQuery({
     queryKey: ['me-tier-progress'],
@@ -107,13 +95,31 @@ export default function Home() {
   const leaderboard: any[] = Array.isArray(lbData) ? lbData : []
   const myRank = rankData?.rank ?? null
   const userName = user?.name || t('home.defaultName')
+
+  // The leaderboard API returns the top-N users in rank order (rank = index+1).
+  // If the current user's rank falls within that range, they are already
+  // visible in the list above — rendering the sticky "Bạn" row a second
+  // time is just duplication. Only show the sticky row when rank is
+  // BEYOND the displayed window (around-me pattern).
+  const isCurrentUserVisibleInList = myRank != null && myRank <= leaderboard.length
+  const showMyRankSticky = myRank != null && !isCurrentUserVisibleInList
   const tier = getTierInfo(totalPoints)
+  // Tier level 1..6 — used by GameModeGrid for locking tier-gated modes.
+  const userTierLevel = tier.current.id
   const greeting = getGreeting(t)
 
   return (
     <div data-testid="home-page" className="space-y-8 max-w-7xl mx-auto w-full">
       <ComebackModal />
       <DailyBonusModal />
+      <EarlyRankedUnlockModal
+        open={shouldCelebrate}
+        accuracyPct={practiceAccuracyPct(
+          meData?.practiceCorrectCount ?? 0,
+          meData?.practiceTotalCount ?? 0,
+        ) ?? undefined}
+        onDismiss={dismissEarlyUnlock}
+      />
       <TutorialOverlay />
       {/* ── Hero: Greeting + Tier ── */}
       <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -122,7 +128,7 @@ export default function Home() {
           <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-8">
             <div className="relative">
               <div className="w-32 h-32 rounded-full border-4 border-secondary/20 flex items-center justify-center bg-surface-container-high shadow-inner">
-                <span className={`material-symbols-outlined text-6xl ${tier.current.color}`} style={FILL_1}>{tier.current.icon}</span>
+                <span className={`material-symbols-outlined text-6xl ${tier.current.colorTailwind}`} style={FILL_1}>{tier.current.iconMaterial}</span>
               </div>
               <div data-testid="home-tier-badge" className="absolute -bottom-2 -right-2 bg-secondary text-on-secondary text-[10px] font-black px-2 py-1 rounded-md shadow-lg uppercase tracking-tighter">
                 {t(tier.current.nameKey)}
@@ -173,11 +179,11 @@ export default function Home() {
           {tier.next ? (
             <>
               <div className="w-20 h-20 rounded-2xl glass-panel flex items-center justify-center border border-white/5">
-                <span className={`material-symbols-outlined text-4xl ${tier.next.color}`} style={FILL_1}>{tier.next.icon}</span>
+                <span className={`material-symbols-outlined text-4xl ${tier.next.colorTailwind}`} style={FILL_1}>{tier.next.iconMaterial}</span>
               </div>
               <div>
                 <h3 className="text-lg font-bold text-on-surface uppercase tracking-tight">{t('home.nextTier')}</h3>
-                <p className={`text-2xl font-black ${tier.next.color}`}>{t(tier.next.nameKey)}</p>
+                <p className={`text-2xl font-black ${tier.next.colorTailwind}`}>{t(tier.next.nameKey)}</p>
               </div>
               <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary/10 border border-tertiary/20">
                 <span className="material-symbols-outlined text-xs text-tertiary">auto_awesome</span>
@@ -202,9 +208,20 @@ export default function Home() {
       <section className="space-y-4">
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-black tracking-tight text-on-surface">{t('home.gameModes')}</h2>
-          <span className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">{t('home.explore6Modes')}</span>
+          <span className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">
+            {t('home.exploreModes', { count: 9 })}
+          </span>
         </div>
-        <GameModeGrid />
+        <GameModeGrid
+          userStats={{
+            currentStreak: meData?.currentStreak,
+            totalPoints,
+            practiceCorrectCount: meData?.practiceCorrectCount,
+            practiceTotalCount: meData?.practiceTotalCount,
+          }}
+          userTier={userTierLevel}
+          earlyRankedUnlock={meData?.earlyRankedUnlock ?? false}
+        />
       </section>
 
       {/* ── Daily Missions ── */}
@@ -261,8 +278,8 @@ export default function Home() {
                 </div>
               </div>
             ))}
-            {myRank && (
-              <div className="flex items-center justify-between p-4 rounded-xl bg-surface-container-highest border-l-4 border-secondary">
+            {showMyRankSticky && (
+              <div data-testid="home-my-rank-sticky" className="flex items-center justify-between p-4 rounded-xl bg-surface-container-highest border-l-4 border-secondary">
                 <div className="flex items-center gap-4">
                   <span className="text-sm font-black text-on-surface w-6 text-center">#{myRank}</span>
                   <div className="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-secondary overflow-hidden">

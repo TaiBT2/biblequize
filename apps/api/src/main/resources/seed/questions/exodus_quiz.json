@@ -1,0 +1,1918 @@
+[
+  {
+    "book": "Exodus",
+    "chapter": 1,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Điều gì xảy ra với dân Y-sơ-ra-ên tại Ai Cập?",
+    "options": [
+      "Họ bị tuyệt diệt",
+      "Họ trở về Ca-na-an",
+      "Họ sinh sản và gia tăng rất nhiều",
+      "Họ trở thành vua Ai Cập"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 1:7 — 'Con cháu Y-sơ-ra-ên sinh sản và gia tăng rất nhiều, trở nên cường thịnh, lan tràn khắp xứ.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Giô-sép tại Ai Cập",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 1,
+    "verseStart": 15,
+    "verseEnd": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Pha-ra-ôn ra lệnh cho hai bà mụ người Hê-bơ-rơ tên gì?",
+    "options": [
+      "Ra-chên và Lê-a",
+      "Đê-bô-ra và Ra-háp",
+      "Mi-ri-am và Giốc-bết",
+      "Siếp-ra và Phu-a"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 1:15 — 'Vua Ai Cập cũng nói với các bà mụ người Hê-bơ-rơ, một người tên Siếp-ra, người kia tên Phu-a.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 2,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Mẹ Môi-se đặt ông vào đâu để thả trên sông Nin?",
+    "options": [
+      "Một chiếc thuyền gỗ",
+      "Một chiếc hòm bằng đồng",
+      "Một tấm ván lớn",
+      "Một chiếc giỏ mây trát chai và nhựa thông"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 2:3 — 'Bà lấy một chiếc giỏ mây, trát chai và nhựa thông, đặt đứa bé vào rồi thả trong đám sậy ở bờ sông.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 2,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Con gái Pha-ra-ôn đặt tên cho đứa bé là Môi-se vì bà đã vớt nó lên khỏi nước.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 2:10 — 'Công chúa đặt tên đứa trẻ là Môi-se, vì nói rằng: Ta đã vớt nó lên khỏi nước.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 2,
+    "verseStart": 21,
+    "verseEnd": 22,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vợ của Môi-se tên là gì?",
+    "options": [
+      "Mi-ri-am",
+      "Ha-ga",
+      "Sê-phô-ra",
+      "Ra-chên"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 2:21 — 'Môi-se bằng lòng ở với người ấy, và Rê-u-ên gả Sê-phô-ra, con gái mình, cho Môi-se.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 3,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời hiện ra với Môi-se trong hình dạng gì?",
+    "options": [
+      "Cột lửa",
+      "Ngọn lửa cháy trong bụi gai",
+      "Đám mây lớn",
+      "Cầu vồng trên trời"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất Hành 3:2 — 'Thiên sứ của Đức Giê-hô-va hiện ra cùng Môi-se trong ngọn lửa từ giữa bụi gai.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 3,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Bụi gai cháy nằm ở ngọn núi nào?",
+    "options": [
+      "Núi Hô-rếp",
+      "Núi Mô-ri-a",
+      "Núi Si-na-i",
+      "Núi Nê-bô"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 3:1 — 'Môi-se dẫn bầy chiên đi quá bên kia hoang mạc, đến Hô-rếp, là núi của Đức Chúa Trời.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 3,
+    "verseStart": 14,
+    "difficulty": "hard",
+    "type": "fill_in_blank",
+    "content": "Đức Chúa Trời phán cùng Môi-se: 'TA LÀ ___'",
+    "options": [
+      "ĐẤNG CHĂN CHIÊN",
+      "CHÚA CỦA CÁC CHÚA",
+      "ĐẤNG TOÀN NĂNG",
+      "ĐẤNG TỰ HỮU HẰNG HỮU"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 3:14 — 'Đức Chúa Trời phán với Môi-se: TA LÀ ĐẤNG TỰ HỮU HẰNG HỮU.' Danh xưng này bày tỏ bản chất vĩnh hằng, tự tồn tại của Đức Chúa Trời.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 4,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Đức Chúa Trời hỏi Môi-se đang cầm gì, Môi-se trả lời là gì?",
+    "options": [
+      "Một thanh kiếm",
+      "Một cây gậy",
+      "Một cuốn sách",
+      "Một chiếc kèn"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất Hành 4:2 — 'Đức Giê-hô-va phán: Tay con đang cầm gì? Ông thưa: Một cây gậy.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 4,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi Môi-se nói mình không giỏi ăn nói, Đức Chúa Trời sai ai đi cùng ông?",
+    "options": [
+      "Hô-sê",
+      "A-rôn",
+      "Ca-lép",
+      "Giô-suê"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất Hành 4:14 — 'Đức Giê-hô-va nổi giận với Môi-se và phán: Chẳng phải có A-rôn, người Lê-vi, là anh con sao? Ta biết nó nói giỏi.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 5,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Môi-se và A-rôn nói gì với Pha-ra-ôn?",
+    "options": [
+      "Hãy cho chúng tôi vàng",
+      "Hãy thả tù nhân",
+      "Hãy giao đất cho chúng tôi",
+      "Hãy để dân ta đi thờ phượng Đức Giê-hô-va"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 5:1 — 'Đức Giê-hô-va, Đức Chúa Trời của Y-sơ-ra-ên, phán: Hãy để cho dân Ta đi, để họ giữ lễ cho Ta trong hoang mạc.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 5,
+    "verseStart": 7,
+    "verseEnd": 8,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Sau khi Môi-se gặp Pha-ra-ôn, Pha-ra-ôn ra lệnh không cung cấp rơm cho dân Y-sơ-ra-ên làm gạch nữa.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 5:7 — 'Các ngươi đừng cung cấp rơm cho dân chúng làm gạch như trước nữa, hãy bắt chúng tự đi kiếm rơm lấy.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 6,
+    "verseStart": 3,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời phán rằng Ngài đã hiện ra với Áp-ra-ham, Y-sác và Gia-cốp bằng danh nào?",
+    "options": [
+      "Đấng Chí Cao",
+      "Đức Giê-hô-va",
+      "Đức Chúa Trời Toàn Năng",
+      "Đấng Tự Hữu Hằng Hữu"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 6:3 — 'Ta đã hiện ra cùng Áp-ra-ham, Y-sác, và Gia-cốp với danh Đức Chúa Trời Toàn Năng, nhưng Ta chưa cho họ biết danh Ta là Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Áp-ra-ham và Giao ước",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 6,
+    "verseStart": 16,
+    "verseEnd": 20,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Cha mẹ của Môi-se tên là gì?",
+    "options": [
+      "Kê-hát và Mi-ri-am",
+      "Mê-ra-ri và Lê-a",
+      "Am-ram và Giốc-bết",
+      "Ghẹt-sôn và Sê-phô-ra"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 6:20 — 'Am-ram cưới Giốc-bết, em gái của cha mình, và nàng sinh cho ông A-rôn và Môi-se.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 7,
+    "verseStart": 10,
+    "verseEnd": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi A-rôn ném gậy trước mặt Pha-ra-ôn, gậy biến thành gì?",
+    "options": [
+      "Một dòng nước",
+      "Một cây to lớn",
+      "Một ngọn lửa",
+      "Một con rắn"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 7:10 — 'A-rôn ném cây gậy xuống trước mặt Pha-ra-ôn và trước mặt các triều thần, gậy liền hóa ra rắn.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 7,
+    "verseStart": 20,
+    "verseEnd": 21,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tai vạ đầu tiên Đức Chúa Trời giáng xuống Ai Cập là gì?",
+    "options": [
+      "Ếch nhái",
+      "Bão cát",
+      "Bóng tối",
+      "Mưa đá",
+      "Nước biến thành máu"
+    ],
+    "correctAnswer": [
+      4
+    ],
+    "explanation": "Xuất Hành 7:20 — 'Ông giơ gậy lên và đập trên mặt nước trước mặt Pha-ra-ôn và triều thần, tất cả nước trong sông đều biến thành máu.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Giô-sép tại Ai Cập",
+      "Xuất hành khỏi Ai Cập",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 8,
+    "verseStart": 2,
+    "verseEnd": 6,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Tai vạ thứ hai là ếch nhái tràn ngập khắp xứ Ai Cập.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 8:6 — 'A-rôn giơ tay trên các sông ngòi ao hồ xứ Ai Cập, ếch nhái liền tràn lên phủ khắp đất Ai Cập.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Giô-sép tại Ai Cập",
+      "Xuất hành khỏi Ai Cập",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 8,
+    "verseStart": 16,
+    "verseEnd": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tai vạ thứ ba giáng xuống Ai Cập là gì?",
+    "options": [
+      "Ếch nhái",
+      "Ruồi mòng",
+      "Châu chấu",
+      "Muỗi"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 8:16-17 — 'Đức Giê-hô-va phán với Môi-se: Hãy bảo A-rôn giơ gậy ra đập bụi đất, bụi sẽ biến thành muỗi trong khắp xứ Ai Cập.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Giô-sép tại Ai Cập",
+      "Xuất hành khỏi Ai Cập",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 9,
+    "verseStart": 3,
+    "verseEnd": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tai vạ dịch lệ giáng trên loại sinh vật nào?",
+    "options": [
+      "Cá dưới sông",
+      "Súc vật",
+      "Chim trời",
+      "Côn trùng"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất Hành 9:3 — 'Tay Đức Giê-hô-va sẽ giáng dịch lệ rất nặng trên các súc vật của ngươi ngoài đồng: ngựa, lừa, lạc đà, bò và chiên.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Xuất hành khỏi Ai Cập",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 9,
+    "verseStart": 23,
+    "verseEnd": 24,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tai vạ mưa đá có kèm theo điều gì?",
+    "options": [
+      "Sóng thần",
+      "Động đất",
+      "Gió xoáy",
+      "Lửa chạy trên mặt đất"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 9:24 — 'Mưa đá và lửa lẫn trong mưa đá rất nặng nề, trong khắp xứ Ai Cập chưa hề có như thế từ khi lập quốc.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Xuất hành khỏi Ai Cập",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 10,
+    "verseStart": 4,
+    "verseEnd": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tai vạ thứ tám giáng xuống Ai Cập là gì?",
+    "options": [
+      "Châu chấu",
+      "Mưa đá",
+      "Bóng tối",
+      "Ghẻ chốc"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 10:4 — 'Vì nếu ngươi từ chối không cho dân Ta đi, thì ngày mai Ta sẽ sai châu chấu đến trong lãnh thổ ngươi.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Giô-sép tại Ai Cập",
+      "Xuất hành khỏi Ai Cập",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 10,
+    "verseStart": 22,
+    "verseEnd": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tai vạ bóng tối kéo dài bao lâu trên khắp xứ Ai Cập?",
+    "options": [
+      "Một ngày",
+      "Mười ngày",
+      "Bảy ngày",
+      "Ba ngày"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 10:22 — 'Bóng tối dày đặc bao phủ khắp xứ Ai Cập trong ba ngày.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Giô-sép tại Ai Cập",
+      "Xuất hành khỏi Ai Cập",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 11,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tai vạ cuối cùng giáng xuống Ai Cập là gì?",
+    "options": [
+      "Dịch lệ",
+      "Mưa đá",
+      "Bóng tối",
+      "Sự chết của các con đầu lòng"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 11:5 — 'Tất cả con đầu lòng trong xứ Ai Cập sẽ chết, từ con đầu lòng của Pha-ra-ôn đang ngồi trên ngai cho đến con đầu lòng của người nữ nô lệ.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Giô-sép tại Ai Cập",
+      "Xuất hành khỏi Ai Cập",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 12,
+    "verseStart": 3,
+    "verseEnd": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong lễ Vượt Qua, mỗi gia đình phải giết con vật gì?",
+    "options": [
+      "Một con lừa",
+      "Một con chim bồ câu",
+      "Một con bò",
+      "Một con chiên hoặc dê"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 12:3 — 'Mỗi gia đình phải bắt một con chiên con.' Chiên con Vượt Qua là hình bóng về Chúa Giê-xu, Chiên Con của Đức Chúa Trời.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 29,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong lễ phong chức thầy tế lễ, dầu xức được đổ lên đầu ai?",
+    "options": [
+      "Môi-se",
+      "Bết-sa-lê-ên",
+      "Giô-suê",
+      "A-rôn"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 29:7 — 'Rồi lấy dầu xức đổ trên đầu người mà xức cho người.' A-rôn được xức dầu để biệt riêng cho chức vụ thầy tế lễ thượng phẩm.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 12,
+    "verseStart": 37,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khoảng bao nhiêu đàn ông Y-sơ-ra-ên đi bộ ra khỏi Ai Cập?",
+    "options": [
+      "Khoảng 400.000",
+      "Khoảng 200.000",
+      "Khoảng 800.000",
+      "Khoảng 600.000"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 12:37 — 'Dân Y-sơ-ra-ên đi bộ từ Ram-se đến Su-cốt, có chừng sáu mươi vạn đàn ông, không kể trẻ con.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Giô-sép tại Ai Cập",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 12,
+    "verseStart": 40,
+    "verseEnd": 41,
+    "difficulty": "hard",
+    "type": "fill_in_blank",
+    "content": "Dân Y-sơ-ra-ên kiều ngụ tại Ai Cập ___ năm.",
+    "options": [
+      "430",
+      "400",
+      "350",
+      "470"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 12:40 — 'Thời gian dân Y-sơ-ra-ên kiều ngụ tại Ai Cập là bốn trăm ba mươi năm.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Giô-sép tại Ai Cập",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 13,
+    "verseStart": 21,
+    "verseEnd": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Giê-hô-va dẫn đường dân Y-sơ-ra-ên ban ngày bằng gì?",
+    "options": [
+      "Thiên sứ cầm đuốc",
+      "Cầu vồng",
+      "Trụ mây",
+      "Ngôi sao sáng"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 13:21 — 'Ban ngày Đức Giê-hô-va đi trước họ trong trụ mây để dẫn đường, ban đêm trong trụ lửa để soi sáng.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 14,
+    "verseStart": 21,
+    "verseEnd": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời rẽ biển nào để dân Y-sơ-ra-ên đi qua?",
+    "options": [
+      "Biển Chết",
+      "Biển Ga-li-lê",
+      "Biển Đỏ",
+      "Biển Địa Trung Hải"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 14:21-22 — 'Đức Giê-hô-va dùng gió đông mạnh thổi suốt đêm khiến biển rẽ ra, nước dồn lại thành hai bức vách, dân Y-sơ-ra-ên đi giữa lòng biển khô cạn.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 14,
+    "verseStart": 21,
+    "difficulty": "medium",
+    "type": "fill_in_blank",
+    "content": "Đức Giê-hô-va dùng ___ thổi suốt đêm để rẽ biển.",
+    "options": [
+      "gió bắc mạnh",
+      "gió đông mạnh",
+      "gió nam mạnh",
+      "gió tây mạnh"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất Hành 14:21 — 'Đức Giê-hô-va dùng gió đông mạnh thổi suốt đêm đó khiến biển rẽ ra.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 15,
+    "verseStart": 20,
+    "verseEnd": 21,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ai đã cầm trống lắc dẫn các phụ nữ hát mừng sau khi vượt Biển Đỏ?",
+    "options": [
+      "Sê-phô-ra",
+      "Mi-ri-am",
+      "Đê-bô-ra",
+      "Giốc-bết"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất Hành 15:20 — 'Nữ tiên tri Mi-ri-am, chị của A-rôn, tay cầm trống lắc, tất cả phụ nữ đều đi theo bà, cầm trống lắc mà nhảy múa.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Xuất hành khỏi Ai Cập",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 15,
+    "verseStart": 23,
+    "verseEnd": 25,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tại Ma-ra, nước đắng được biến thành ngọt khi Môi-se làm gì?",
+    "options": [
+      "Đập gậy vào nước",
+      "Cầu nguyện bên bờ suối",
+      "Ném một khúc cây vào nước",
+      "Ném muối vào nước"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 15:25 — 'Môi-se kêu cầu Đức Giê-hô-va, Ngài chỉ cho ông một khúc cây, ông ném xuống nước thì nước liền trở nên ngọt.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 16,
+    "verseStart": 14,
+    "verseEnd": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời ban thức ăn gì từ trời cho dân Y-sơ-ra-ên trong hoang mạc?",
+    "options": [
+      "Thịt nướng",
+      "Trái cây",
+      "Bánh mì và cá",
+      "Ma-na"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 16:15 — 'Môi-se nói với họ: Đây là bánh mà Đức Giê-hô-va ban cho các anh em ăn.' Thức ăn này được gọi là ma-na.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 16,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "true_false",
+    "content": "Ngoài ma-na, Đức Chúa Trời cũng ban chim cút cho dân Y-sơ-ra-ên ăn.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 16:13 — 'Buổi chiều có chim cút bay đến đậu khắp trại quân, buổi sáng có một lớp sương phủ chung quanh trại.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Xuất hành khỏi Ai Cập",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 16,
+    "verseStart": 35,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Dân Y-sơ-ra-ên ăn ma-na trong bao lâu?",
+    "options": [
+      "Ba mươi năm",
+      "Năm mươi năm",
+      "Bốn mươi năm",
+      "Hai mươi năm"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 16:35 — 'Dân Y-sơ-ra-ên ăn ma-na suốt bốn mươi năm, cho đến khi họ vào đến biên giới đất Ca-na-an.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Xuất hành khỏi Ai Cập",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 17,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tại Hô-rếp, Môi-se đập gậy vào đâu để có nước cho dân chúng uống?",
+    "options": [
+      "Mặt đất",
+      "Vách đá",
+      "Gốc cây",
+      "Bờ sông"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất Hành 17:6 — 'Ta sẽ đứng trước mặt con, ở trên vầng đá tại Hô-rếp. Con hãy đập vào vầng đá, nước sẽ chảy ra cho dân uống.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 17,
+    "verseStart": 11,
+    "verseEnd": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong trận chiến với A-ma-léc, ai đỡ hai tay Môi-se?",
+    "options": [
+      "Ca-lép và Hu-rơ",
+      "A-rôn và Hu-rơ",
+      "A-rôn và Giô-suê",
+      "Giô-suê và Ca-lép"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất Hành 17:12 — 'A-rôn và Hu-rơ đỡ hai tay ông, một người bên nầy, một người bên kia, hai tay ông vững vàng cho đến khi mặt trời lặn.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 18,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Giê-trô, bố vợ Môi-se, là thầy tế lễ xứ Ma-đi-an.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 18:1 — 'Giê-trô, thầy tế lễ xứ Ma-đi-an, bố vợ của Môi-se, nghe mọi điều Đức Chúa Trời đã làm cho Môi-se và Y-sơ-ra-ên.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Đền tạm và thờ phượng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 18,
+    "verseStart": 21,
+    "verseEnd": 22,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Giê-trô khuyên Môi-se lập những quan xét cai trị bao nhiêu người?",
+    "options": [
+      "Quan vạn, quan ngàn, quan trăm",
+      "Quan trăm, quan năm mươi, quan mười",
+      "Quan ngàn, quan trăm, quan năm mươi, quan mười",
+      "Quan ngàn, quan trăm, quan hai mươi"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 18:21 — 'Hãy chọn trong dân những người tài đức... cắt đặt họ làm trưởng quan ngàn, quan trăm, quan năm mươi, quan mười.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 19,
+    "verseStart": 1,
+    "verseEnd": 2,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Dân Y-sơ-ra-ên đến núi Si-na-i vào tháng thứ ba sau khi ra khỏi Ai Cập.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 19:1 — 'Tháng thứ ba sau khi dân Y-sơ-ra-ên ra khỏi Ai Cập, đúng ngày ấy, họ đến hoang mạc Si-na-i.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Giô-sép tại Ai Cập",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 19,
+    "verseStart": 5,
+    "verseEnd": 6,
+    "difficulty": "hard",
+    "type": "fill_in_blank",
+    "content": "Đức Chúa Trời phán: 'Các con sẽ thành một ___ và một dân tộc thánh cho Ta.'",
+    "options": [
+      "dân tuyển chọn",
+      "quân đội thánh",
+      "vương quốc thầy tế lễ",
+      "hội thánh lớn"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 19:6 — 'Các con sẽ thành một vương quốc thầy tế lễ và một dân tộc thánh cho Ta.' Khái niệm này được nhắc lại trong 1 Phi-e-rơ 2:9.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 20,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Điều răn thứ nhất trong Mười Điều Răn là gì?",
+    "options": [
+      "Không có thần nào khác ngoài Đức Chúa Trời",
+      "Không được giết người",
+      "Không được thờ hình tượng",
+      "Giữ ngày Sa-bát"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 20:3 — 'Trước mặt Ta, con không được có các thần nào khác.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Luật pháp",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 20,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Điều răn 'Hãy hiếu kính cha mẹ' kèm theo lời hứa gì?",
+    "options": [
+      "Được giàu có",
+      "Được vào thiên đàng",
+      "Được sống lâu trên đất",
+      "Được nhiều con cái"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 20:12 — 'Hãy hiếu kính cha mẹ, để con được sống lâu trên đất mà Giê-hô-va Đức Chúa Trời ban cho con.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Luật pháp",
+      "Giao ước",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 38,
+    "verseStart": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Cái chậu rửa trong sân Đền Tạm được làm từ vật liệu gì?",
+    "options": [
+      "Vàng ròng",
+      "Bạc",
+      "Gỗ si-tim bọc đồng",
+      "Đồng từ gương của phụ nữ"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 38:8 — 'Ông dùng đồng từ các gương của phụ nữ phục vụ tại cửa Lều Hội Kiến để làm cái chậu và chân chậu bằng đồng.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 21,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Một nô lệ người Hê-bơ-rơ phải phục vụ bao lâu trước khi được tự do?",
+    "options": [
+      "Sáu năm",
+      "Ba năm",
+      "Bảy năm",
+      "Năm năm"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 21:2 — 'Nếu con mua một người nô lệ Hê-bơ-rơ thì người ấy sẽ phục vụ sáu năm, qua năm thứ bảy sẽ được tự do.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 21,
+    "verseStart": 24,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Luật trong Xuất Hành có quy định 'mắt đền mắt, răng đền răng'.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 21:24 — 'Mắt đền mắt, răng đền răng, tay đền tay, chân đền chân.' Đây là nguyên tắc công bằng trong luật pháp Môi-se.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Xuất hành khỏi Ai Cập",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 22,
+    "verseStart": 21,
+    "difficulty": "medium",
+    "type": "true_false",
+    "content": "Luật pháp Môi-se cho phép ngược đãi người ngoại kiều.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất Hành 22:21 — 'Không được ngược đãi hay áp bức người ngoại kiều, vì các con đã từng là ngoại kiều trong xứ Ai Cập.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Luật pháp",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 23,
+    "verseStart": 14,
+    "verseEnd": 17,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Mỗi năm dân Y-sơ-ra-ên phải giữ mấy kỳ lễ trọng thể?",
+    "options": [
+      "Bốn kỳ lễ",
+      "Năm kỳ lễ",
+      "Ba kỳ lễ",
+      "Hai kỳ lễ"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 23:14 — 'Mỗi năm ba lần con phải giữ lễ cho Ta.' Đó là Lễ Bánh Không Men, Lễ Mùa Gặt và Lễ Thu Hoạch.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 24,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời ghi Mười Điều Răn trên chất liệu gì?",
+    "options": [
+      "Bảng đá",
+      "Bảng gỗ",
+      "Giấy da",
+      "Bảng đồng"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 24:12 — 'Đức Giê-hô-va phán với Môi-se: Hãy lên núi với Ta và ở lại đó. Ta sẽ ban cho con những bảng đá, luật pháp và điều răn mà Ta đã viết.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Luật pháp",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 24,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Môi-se ở trên núi Si-na-i bao lâu?",
+    "options": [
+      "Năm mươi ngày năm mươi đêm",
+      "Hai mươi ngày hai mươi đêm",
+      "Ba mươi ngày ba mươi đêm",
+      "Bốn mươi ngày bốn mươi đêm"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 24:18 — 'Môi-se ở trên núi bốn mươi ngày bốn mươi đêm.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 25,
+    "verseStart": 10,
+    "verseEnd": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Hòm Giao Ước được làm bằng chất liệu chính nào?",
+    "options": [
+      "Đồng nguyên chất",
+      "Gỗ si-tim bọc vàng ròng",
+      "Gỗ bá hương bọc vàng",
+      "Gỗ ô-liu bọc bạc"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất Hành 25:10-11 — 'Họ phải đóng một cái hòm bằng gỗ si-tim... Hãy bọc vàng ròng, cả trong lẫn ngoài.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Giao ước",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 25,
+    "verseStart": 18,
+    "verseEnd": 20,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Trên nắp thi ân có hai tượng chê-ru-bim bằng vàng.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 25:18 — 'Hãy làm hai tượng chê-ru-bim bằng vàng dát, đặt hai đầu nắp thi ân.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 26,
+    "verseStart": 1,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Đền Tạm được dệt bằng bao nhiêu tấm vải lanh mịn?",
+    "options": [
+      "Năm tấm",
+      "Mười hai tấm",
+      "Mười tấm",
+      "Hai mươi tấm"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 26:1 — 'Hãy dùng mười tấm vải lanh mịn xe chỉ, chỉ xanh, tím và đỏ có thêu hình chê-ru-bim mà làm Đền Tạm.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 27,
+    "verseStart": 1,
+    "verseEnd": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Bàn thờ thiêu trong Đền Tạm được làm bằng gì?",
+    "options": [
+      "Vàng ròng",
+      "Gỗ bá hương bọc bạc",
+      "Gỗ si-tim bọc đồng",
+      "Đá nguyên khối"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 27:1-2 — 'Hãy đóng bàn thờ bằng gỗ si-tim... Hãy lấy đồng bọc bàn thờ.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 28,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ai được chọn làm thầy tế lễ đầu tiên của dân Y-sơ-ra-ên?",
+    "options": [
+      "Ca-lép",
+      "Môi-se",
+      "Giô-suê",
+      "A-rôn"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 28:1 — 'Trong dân Y-sơ-ra-ên, hãy chọn A-rôn anh con và các con trai người, đem đến gần con để phục vụ Ta trong chức tế lễ.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Đền tạm và thờ phượng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 28,
+    "verseStart": 17,
+    "verseEnd": 21,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Bảng đeo ngực của thầy tế lễ thượng phẩm có bao nhiêu viên đá quý?",
+    "options": [
+      "Bảy viên",
+      "Hai mươi bốn viên",
+      "Mười hai viên",
+      "Mười viên"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 28:21 — 'Các viên đá sẽ có mười hai, theo tên các con trai Y-sơ-ra-ên.' Mười hai viên đá tượng trưng cho mười hai chi phái.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Tế lễ và nghi lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 30,
+    "verseStart": 13,
+    "difficulty": "hard",
+    "type": "fill_in_blank",
+    "content": "Mỗi người Y-sơ-ra-ên khi kiểm tra dân số phải nộp ___ siếc-lơ bạc.",
+    "options": [
+      "năm",
+      "một",
+      "hai",
+      "nửa"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 30:13 — 'Mỗi người phải nộp nửa siếc-lơ, theo siếc-lơ của nơi thánh.' Đây là tiền chuộc mạng.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 30,
+    "verseStart": 23,
+    "verseEnd": 25,
+    "difficulty": "hard",
+    "type": "true_false",
+    "content": "Dầu xức thánh được pha chế từ năm thành phần bao gồm một dược, quế, xương bồ, quế bì và dầu ô-liu.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 30:23-25 — Dầu xức thánh gồm: một dược, quế, xương bồ, quế bì và dầu ô-liu. Hỗn hợp này chỉ dành cho việc thánh.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 31,
+    "verseStart": 2,
+    "verseEnd": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ai được Đức Chúa Trời chọn và ban cho khả năng nghệ thuật để xây Đền Tạm?",
+    "options": [
+      "A-rôn",
+      "Hu-rơ",
+      "Giô-suê",
+      "Bết-sa-lê-ên"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 31:2-3 — 'Ta đã kêu gọi đích danh Bết-sa-lê-ên... Ta đã ban cho người đầy dẫy Thần Linh của Đức Chúa Trời, sự khôn ngoan, thông sáng.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 31,
+    "verseStart": 18,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Hai bảng chứng được viết bởi ngón tay Đức Chúa Trời.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 31:18 — 'Khi phán xong với Môi-se trên núi Si-na-i, Ngài ban cho ông hai bảng chứng, tức là hai bảng đá do ngón tay Đức Chúa Trời viết.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 32,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Môi-se ở lâu trên núi, dân Y-sơ-ra-ên đúc tượng gì để thờ?",
+    "options": [
+      "Bò con vàng",
+      "Tượng rắn bằng đồng",
+      "Tượng đại bàng",
+      "Tượng sư tử"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 32:4 — 'A-rôn nhận vàng từ tay họ, dùng dụng cụ đúc thành một bò con bằng vàng đúc.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 32,
+    "verseStart": 19,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi thấy dân thờ bò vàng, Môi-se đã làm gì với hai bảng đá?",
+    "options": [
+      "Đem trả cho Đức Chúa Trời",
+      "Giao cho A-rôn",
+      "Đập vỡ dưới chân núi",
+      "Giấu trong đá"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 32:19 — 'Khi đến gần trại quân, ông thấy bò con và sự nhảy múa. Môi-se nổi giận, ném hai bảng đá đập vỡ dưới chân núi.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 33,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "true_false",
+    "content": "Đức Giê-hô-va nói chuyện với Môi-se mặt đối mặt như người nói chuyện với bạn mình.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 33:11 — 'Đức Giê-hô-va phán với Môi-se mặt đối mặt, như người nói chuyện với bạn mình.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 33,
+    "verseStart": 20,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi Môi-se xin thấy vinh quang Đức Chúa Trời, Ngài phán điều gì?",
+    "options": [
+      "Không ai thấy mặt Ta mà còn sống",
+      "Chỉ các thiên sứ được thấy mặt Ta",
+      "Ngài sẽ hiện ra trong đám mây",
+      "Hãy đợi đến ngày cuối cùng"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 33:20 — 'Ngài phán: Con không thể thấy mặt Ta được, vì không ai thấy mặt Ta mà còn sống.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 34,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Sau khi Môi-se đập vỡ hai bảng đá, Đức Chúa Trời bảo ông đẽo hai bảng đá mới.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 34:1 — 'Đức Giê-hô-va phán với Môi-se: Hãy đẽo hai bảng đá giống như hai bảng trước, Ta sẽ viết lên những bảng ấy các lời đã có trên hai bảng trước.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 34,
+    "verseStart": 29,
+    "verseEnd": 30,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi Môi-se xuống núi Si-na-i, điều gì xảy ra với khuôn mặt ông?",
+    "options": [
+      "Mặt ông được che bởi khăn",
+      "Da mặt ông phát sáng",
+      "Mặt ông trở nên đen sạm",
+      "Mặt ông bị thương"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất Hành 34:29 — 'Khi Môi-se từ trên núi Si-na-i xuống... ông không biết rằng da mặt mình phát sáng vì đã nói chuyện với Đức Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 35,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Môi-se ra lệnh cấm làm việc vào ngày Sa-bát.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 35:2 — 'Trong sáu ngày sẽ làm việc, nhưng ngày thứ bảy sẽ là ngày thánh cho các anh em, là ngày Sa-bát nghỉ ngơi cho Đức Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 35,
+    "verseStart": 30,
+    "verseEnd": 35,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ngoài Bết-sa-lê-ên, ai là người phụ tá chính trong việc xây Đền Tạm?",
+    "options": [
+      "Ô-hô-li-áp",
+      "I-tha-ma",
+      "Hu-rơ",
+      "Giô-suê"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 35:34 — 'Ngài cũng ban cho ông và Ô-hô-li-áp... khả năng dạy dỗ người khác.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 36,
+    "verseStart": 5,
+    "verseEnd": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Dân Y-sơ-ra-ên dâng quá nhiều vật liệu cho Đền Tạm nên Môi-se phải làm gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 36:6-7 — 'Môi-se ra lệnh trong trại quân rằng: Không ai cần phải dâng thêm nữa cho việc xây nơi thánh. Dân chúng mới thôi không đem đến nữa.'",
+    "language": "vi",
+    "options": [
+      "Bảo họ ngừng dâng hiến",
+      "Phân phát cho dân nghèo",
+      "Trả lại vàng bạc",
+      "Xây thêm một đền tạm nữa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 37,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "fill_in_blank",
+    "content": "___ đóng Hòm Giao Ước bằng gỗ si-tim.",
+    "options": [
+      "Ô-hô-li-áp",
+      "Bết-sa-lê-ên",
+      "A-rôn",
+      "Môi-se"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Xuất Hành 37:1 — 'Bết-sa-lê-ên đóng hòm bằng gỗ si-tim.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Giao ước",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 39,
+    "verseStart": 30,
+    "verseEnd": 31,
+    "difficulty": "hard",
+    "type": "fill_in_blank",
+    "content": "Trên mũ tế lễ có tấm thẻ vàng khắc chữ: '___'",
+    "options": [
+      "THẦY TẾ LỄ CHÍ CAO",
+      "VINH HIỂN ĐỜI ĐỜI",
+      "ĐỨC CHÚA TRỜI TOÀN NĂNG",
+      "THÁNH CHO ĐỨC GIÊ-HÔ-VA"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Xuất Hành 39:30 — 'Họ làm tấm thẻ vàng ròng, tức là mão thánh, và khắc trên đó: THÁNH CHO ĐỨC GIÊ-HÔ-VA.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 39,
+    "verseStart": 32,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Dân Y-sơ-ra-ên đã làm mọi công việc cho Đền Tạm đúng như Đức Giê-hô-va đã phán dặn Môi-se.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Xuất Hành 39:32 — 'Mọi công việc của Đền Tạm, tức Lều Hội Kiến, đã hoàn thành. Dân Y-sơ-ra-ên đã làm đúng mọi điều Đức Giê-hô-va phán dặn Môi-se.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 40,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đền Tạm được dựng lên vào ngày mồng một tháng mấy?",
+    "options": [
+      "Tháng mười hai",
+      "Tháng bảy",
+      "Tháng giêng",
+      "Tháng ba"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 40:2 — 'Ngày mồng một tháng giêng, con hãy dựng Đền Tạm, tức Lều Hội Kiến lên.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 40,
+    "verseStart": 34,
+    "verseEnd": 35,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Đền Tạm dựng xong, điều gì xảy ra?",
+    "options": [
+      "Thiên sứ hiện ra",
+      "Lửa từ trời giáng xuống",
+      "Mây che phủ Lều Hội Kiến và vinh quang Đức Giê-hô-va đầy dẫy Đền Tạm",
+      "Sấm sét vang dội"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 40:34 — 'Đám mây bao phủ Lều Hội Kiến và vinh quang của Đức Giê-hô-va đầy dẫy Đền Tạm.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Exodus",
+    "chapter": 40,
+    "verseStart": 36,
+    "verseEnd": 38,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Dân Y-sơ-ra-ên biết khi nào phải di chuyển nhờ dấu hiệu gì?",
+    "options": [
+      "Khi thiên sứ hiện ra",
+      "Tiếng kèn thổi",
+      "Khi mây cất lên khỏi Đền Tạm",
+      "Khi Môi-se ra lệnh"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Xuất Hành 40:36-37 — 'Trong suốt cuộc hành trình, mỗi khi mây cất lên khỏi Đền Tạm thì dân Y-sơ-ra-ên nhổ trại ra đi. Nếu mây không cất lên thì họ không ra đi.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Xuất Ê-díp-tô Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Nâng cao"
+    ]
+  }
+]

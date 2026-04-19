@@ -1,0 +1,306 @@
+[
+  {
+    "book": "Jonah",
+    "chapter": 1,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa sai Giona đi Ni-ni-ve nhưng ông trốn đi đâu?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Giona 1:3 - Giona trốn chạy khỏi mặt Chúa bằng tàu đi Ta-rê-si, hướng ngược hoàn toàn.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Ta-rê-si (hướng ngược lại)",
+      "Ba-by-lon",
+      "Ai-cập",
+      "Mô-áp"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giona",
+      "Bất tuân",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 1,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Giona trốn, Chúa làm gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giona 1:4 - Chúa không để Giona trốn thành công. Bão lớn để đưa ông quay lại.",
+    "language": "vi",
+    "verseEnd": 5,
+    "options": [
+      "Gọi tiên tri khác",
+      "Sai bão lớn trên biển",
+      "Để mặc",
+      "Gửi thiên sứ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giona",
+      "Kỷ luật",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 1,
+    "verseStart": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Giona nói với thủy thủ làm gì để biển lặng?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Giona 1:12 - Giona nhận trách nhiệm và sẵn sàng chịu hậu quả tội lỗi mình.",
+    "language": "vi",
+    "options": [
+      "Ném tôi xuống biển",
+      "Cầu nguyện",
+      "Quay lại",
+      "Quét dọn tàu"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giona",
+      "Trách nhiệm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 2,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Giona tuyên bố từ trong bụng cá: \"Sự ___ đến từ Đức Giê-hô-va\"",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giona 2:9 - Dù trong hoàn cảnh tuyệt vọng nhất, Giona nhận ra chỉ Chúa cứu rỗi.",
+    "language": "vi",
+    "options": [
+      "Phán xét",
+      "Cứu rỗi",
+      "Khôn ngoan",
+      "Bình an"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giona",
+      "Cứu rỗi",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 3,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lần thứ hai Chúa gọi, Giona làm gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Giona 3:3 - Lần này Giona vâng lời. Chúa cho cơ hội thứ hai.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Trốn lần nữa",
+      "Hỏi tại sao",
+      "Nghỉ ngơi",
+      "Vâng lời đi Ni-ni-ve rao giảng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giona",
+      "Vâng lời",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 3,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Dân Ni-ni-ve phản ứng thế nào khi nghe Giona rao giảng?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Giona 3:5 - Cả thành ăn năn từ vua đến dân! Sự ăn năn lớn nhất trong Cựu Ước.",
+    "language": "vi",
+    "options": [
+      "Cười nhạo",
+      "Giận dữ",
+      "Tin Đức Chúa Trời, kiêng ăn và ăn năn",
+      "Bỏ mặc"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giona",
+      "Ăn năn",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 3,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Ni-ni-ve ăn năn, Chúa làm gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Giona 3:10 - Chúa đổi ý khi dân sự ăn năn. Ngài nhân từ và sẵn sàng tha thứ.",
+    "language": "vi",
+    "options": [
+      "Vẫn phạt họ",
+      "Trì hoãn hình phạt",
+      "Để mặc",
+      "Đổi ý và không hủy diệt họ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giona",
+      "Tha thứ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 4,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tại sao Giona giận khi Ni-ni-ve được tha?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Giona 4:2 - Giona thừa nhận biết từ đầu Chúa sẽ tha. Vấn đề của ông là lòng hẹp hòi và kỳ thị dân tộc.",
+    "language": "vi",
+    "verseEnd": 2,
+    "options": [
+      "Vì mệt mỏi",
+      "Vì sợ",
+      "Vì mất uy tín",
+      "Vì ông đã biết Chúa nhân từ và sẽ tha, ông không muốn kẻ thù được cứu"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giona",
+      "Nhân từ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 4,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa kết thúc sách Giona bằng câu hỏi gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giona 4:11 - Chúa thương mọi người, kể cả kẻ thù. Tình yêu Chúa không có ranh giới dân tộc.",
+    "language": "vi",
+    "options": [
+      "Ngươi ở đâu?",
+      "Ta lại không thương xót Ni-ni-ve với 120,000 người không phân biệt tay phải tay trái sao?",
+      "Ngươi có vui không?",
+      "Ngươi có vâng lời không?"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giona",
+      "Tình yêu",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 4,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Giona mô tả Chúa là gì khiến ông giận?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Giona trích Xuất 34:6 - bản tính của Chúa. Điều tốt lành của Chúa lại khiến Giona khó chịu.",
+    "language": "vi",
+    "options": [
+      "Nghiêm khắc",
+      "Hay làm ơn, thương xót, chậm giận, đầy ơn thương, đổi ý không phạt",
+      "Công bình",
+      "Phán xét"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giona",
+      "Tính Chúa",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 1,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Giona nói với thủy thủ: \"Tôi kính sợ Đức Giê-hô-va là Đức Chúa Trời trên ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Dù đang trốn Chúa, Giona vẫn tuyên xưng Ngài là Đấng Sáng Tạo.",
+    "language": "vi",
+    "options": [
+      "Các thần",
+      "Núi",
+      "Mọi vật",
+      "Trời, Đấng đã làm biển và đất khô"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giona",
+      "Tuyên xưng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Jonah",
+    "chapter": 1,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Giona ở trong bụng cá lớn bao lâu?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Giona 1:17 - 3 ngày 3 đêm. Chúa Giê-su dùng sự kiện này làm hình bóng về sự phục sinh của Ngài (Ma 12:40).",
+    "language": "vi",
+    "options": [
+      "40 ngày",
+      "1 ngày",
+      "3 ngày 3 đêm",
+      "7 ngày"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giona",
+      "Hình bóng",
+      "Cơ bản"
+    ]
+  }
+]

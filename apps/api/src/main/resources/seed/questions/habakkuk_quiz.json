@@ -1,0 +1,307 @@
+[
+  {
+    "book": "Habakkuk",
+    "chapter": 1,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ha-ba-cúc hỏi Chúa câu hỏi gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ha-ba-cúc 1:2 - Tiên tri thật thà hỏi Chúa về sự bất công. Chúa cho phép hỏi và than vãn.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Chúa ở đâu?",
+      "Tại sao tôi khổ?",
+      "Khi nào Chúa đến?",
+      "Tại sao Chúa im lặng trước bất công và bạo lực?"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ha-ba-cúc",
+      "Công bình",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 1,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa trả lời Ha-ba-cúc: \"Hãy nhìn các dân tộc và ___\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Chúa đang làm việc ngay cả khi chúng ta không nhìn thấy hay hiểu.",
+    "language": "vi",
+    "options": [
+      "Kinh ngạc, vì ta sẽ làm một việc mà người không tin",
+      "Vui mừng",
+      "Chạy trốn",
+      "Sợ hãi"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ha-ba-cúc",
+      "Tin cậy",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 2,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa bảo Ha-ba-cúc viết khải tượng xuống để làm gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ha-ba-cúc 2:2 - Khải tượng phải rõ ràng để mọi người đọc được. Lời Chúa cần được truyền đạt để hiểu.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Để đọc ở đền thờ",
+      "Để người đọc chạy được (rõ ràng)",
+      "Để dâng cho vua",
+      "Để giữ kín"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ha-ba-cúc",
+      "Khải tượng",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 2,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ha 2:20: \"Đức Giê-hô-va ngự trong đền thánh Ngài; cả đất hãy ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sự tôn kính và yên lặng trước sự hiện diện của Chúa.",
+    "language": "vi",
+    "options": [
+      "Vui mừng",
+      "Ngợi khen",
+      "Kêu gọi",
+      "Nên lặng trước mặt Ngài"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ha-ba-cúc",
+      "Tôn kính",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 3,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ha-ba-cúc cầu nguyện: \"Xin Ngài làm sự nghiệp Ngài sống lại giữa các năm và trong cơn ___ hãy nhớ sự thương xót\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ngay cả khi Chúa phán xét, Ha-ba-cúc xin Ngài nhớ sự thương xót.",
+    "language": "vi",
+    "options": [
+      "Chiến tranh",
+      "Vui vẻ",
+      "Bình an",
+      "Thiết giam (giận dữ)"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ha-ba-cúc",
+      "Cầu nguyện",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 3,
+    "verseStart": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ha-ba-cúc 3:17-18: Dù không có trái, không mùa, không bầy, ông vẫn làm gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Đức tin không điều kiện: vui mừng trong Chúa dù mất tất cả. Đỉnh cao của đức tin.",
+    "language": "vi",
+    "verseEnd": 18,
+    "options": [
+      "Than vãn",
+      "Vui mừng trong Đức Giê-hô-va",
+      "Tìm nơi khác",
+      "Bỏ cuộc"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ha-ba-cúc",
+      "Đức tin",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 2,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ha 2:3 dạy gì về lời hứa của Chúa?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lời hứa Chúa có thể trễ nhưng không bao giờ thất bại. Hãy kiên nhẫn đợi.",
+    "language": "vi",
+    "options": [
+      "Khải tượng còn đợi đến kỳ, nhưng chắc chắn sẽ đến, hãy đợi",
+      "Không chắc",
+      "Có thể không đến",
+      "Sẽ đến ngay"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ha-ba-cúc",
+      "Kiên nhẫn",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 1,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ha-ba-cúc gọi Chúa bằng danh hiệu nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ha-ba-cúc 1:12 - Vầng Đá (Tsur) = nơi vững chắc và ẩn náu. Chúa đời đời và không thay đổi.",
+    "language": "vi",
+    "options": [
+      "Đức Chúa Trời đời đời và Vầng Đá",
+      "Vua của vua",
+      "Quan án",
+      "Chiến binh"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ha-ba-cúc",
+      "Danh Chúa",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 2,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ha-ba-cúc chương 2 tuyên bố mấy lời khốn cho ai?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Năm lời khốn nhằm kẻ ác, cảnh báo rằng Chúa thấy và sẽ phán xét mọi bất công.",
+    "language": "vi",
+    "verseEnd": 8,
+    "options": [
+      "Tiên tri giả",
+      "Người nghèo",
+      "Kẻ tham lam, bóc lột, bạo lực, say sưa và thờ tượng",
+      "Người bệnh"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ha-ba-cúc",
+      "Phán xét",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 3,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ha-ba-cúc mô tả Chúa đến trong vinh quang như thế nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ha-ba-cúc 3:3-4 - Mô tả Chúa đến trong quyền năng và vinh quang bất tận.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Vinh quang che trời, ánh sáng từ tay Ngài",
+      "Yên lặng",
+      "Không thấy",
+      "Nhỏ nhẹ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ha-ba-cúc",
+      "Vinh quang",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 3,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi nghe Chúa phán, Ha-ba-cúc phản ứng thế nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ha-ba-cúc 3:16 - Kính sợ trước sự vĩ đại của Chúa nhưng vẫn yên lặng đợi ngày Ngài hành động.",
+    "language": "vi",
+    "options": [
+      "Giận dữ",
+      "Run rẩy nhưng vẫn đợi Chúa",
+      "Vui mừng",
+      "Bỏ chạy"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ha-ba-cúc",
+      "Kính sợ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 2,
+    "verseStart": 4,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Ha-ba-cúc 2:4 \"Người công bình sẽ sống bởi đức tin\" được trích dẫn ở đâu trong Tân Ước?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ha-ba-cúc 2:4 là câu Cựu Ước quan trọng nhất cho thần học Cải Cách: xưng công bình bởi đức tin, được trích 3 lần trong Tân Ước.",
+    "language": "vi",
+    "options": [
+      "Chỉ Ga-la-ti",
+      "Không được trích",
+      "Chỉ Rô-ma",
+      "Rô-ma 1:17, Ga-la-ti 3:11, Hê-bơ-rơ 10:38 (cả ba)"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đức tin",
+      "Thần học",
+      "Nâng cao"
+    ]
+  }
+]

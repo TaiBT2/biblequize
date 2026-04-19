@@ -77,6 +77,22 @@ public class User {
     @Column(name = "tier6_reached_at")
     private LocalDateTime tier6ReachedAt;
 
+    // Early Ranked unlock — Tier-1 users with ≥80% accuracy over 10+
+    // Practice answers bypass the XP gate. See DECISIONS.md 2026-04-19.
+    @Column(name = "early_ranked_unlock", nullable = false)
+    private Boolean earlyRankedUnlock = false;
+
+    @Column(name = "practice_correct_count", nullable = false)
+    private Integer practiceCorrectCount = 0;
+
+    @Column(name = "practice_total_count", nullable = false)
+    private Integer practiceTotalCount = 0;
+
+    // Timestamp of the first time earlyRankedUnlock flipped to true.
+    // Enables the FE to fire a celebration modal exactly once per user.
+    @Column(name = "early_ranked_unlocked_at")
+    private LocalDateTime earlyRankedUnlockedAt;
+
     // Comeback Bridge
     @Column(name = "last_active_date")
     private java.time.LocalDate lastActiveDate;
@@ -292,6 +308,18 @@ public class User {
 
     public LocalDateTime getTier6ReachedAt() { return tier6ReachedAt; }
     public void setTier6ReachedAt(LocalDateTime tier6ReachedAt) { this.tier6ReachedAt = tier6ReachedAt; }
+
+    public Boolean getEarlyRankedUnlock() { return earlyRankedUnlock; }
+    public void setEarlyRankedUnlock(Boolean earlyRankedUnlock) { this.earlyRankedUnlock = earlyRankedUnlock; }
+
+    public Integer getPracticeCorrectCount() { return practiceCorrectCount; }
+    public void setPracticeCorrectCount(Integer practiceCorrectCount) { this.practiceCorrectCount = practiceCorrectCount; }
+
+    public Integer getPracticeTotalCount() { return practiceTotalCount; }
+    public void setPracticeTotalCount(Integer practiceTotalCount) { this.practiceTotalCount = practiceTotalCount; }
+
+    public LocalDateTime getEarlyRankedUnlockedAt() { return earlyRankedUnlockedAt; }
+    public void setEarlyRankedUnlockedAt(LocalDateTime earlyRankedUnlockedAt) { this.earlyRankedUnlockedAt = earlyRankedUnlockedAt; }
 
     public java.time.LocalDate getLastActiveDate() { return lastActiveDate; }
     public void setLastActiveDate(java.time.LocalDate lastActiveDate) { this.lastActiveDate = lastActiveDate; }

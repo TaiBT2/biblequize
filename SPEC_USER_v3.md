@@ -128,7 +128,27 @@ quizLanguage: 'vi' | 'en'
 
 ## 3. Hệ thống Tier Progression
 
-### 3.1 Tier names (Light-based)
+> ⚠️ **SUPERSEDED 2026-04-19** — Bảng tên tier light-themed bên dưới
+> (Tia Sáng / Ánh Bình Minh / ...) đã bị supersede. Xem
+> **DECISIONS.md § "2026-04-19 — Keep OLD religious tier naming"**.
+>
+> **Hệ tên đang áp dụng** (religious, mirror hành trình đức tin):
+>
+> | Tier | Tên VN (đang dùng) | Tên EN | Điểm cần | Icon |
+> |---|---|---|---|---|
+> | 1 | **Tân Tín Hữu** | New Believer | 0–999 | 🌱 |
+> | 2 | **Người Tìm Kiếm** | Seeker | 1,000–4,999 | 🌿 |
+> | 3 | **Môn Đồ** | Disciple | 5,000–14,999 | 📜 |
+> | 4 | **Hiền Triết** | Sage | 15,000–39,999 | 🪔 |
+> | 5 | **Tiên Tri** | Prophet | 40,000–99,999 | 🔥 |
+> | 6 | **Sứ Đồ** | Apostle | 100,000+ | 👑 |
+>
+> Trong các bảng 3.2.x phía dưới, đọc "Tia Sáng" = "Tân Tín Hữu",
+> "Ánh Bình Minh" = "Người Tìm Kiếm", "Ngọn Đèn" = "Môn Đồ",
+> "Ngọn Lửa" = "Hiền Triết", "Ngôi Sao" = "Tiên Tri",
+> "Vinh Quang" = "Sứ Đồ". Số tier và điểm ngưỡng giữ nguyên.
+
+### 3.1 Tier names (Light-based) — SUPERSEDED, xem note trên
 
 | Tier | Tên VN | Tên EN | Điểm cần | Màu | Icon |
 |---|---|---|---|---|---|

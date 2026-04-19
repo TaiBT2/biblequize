@@ -1,0 +1,330 @@
+[
+  {
+    "book": "Galatians",
+    "chapter": 2,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Paul said: \"I have been crucified with Christ; it is no longer I who live, but ___\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Galatians 2:20 - The Christian life is about letting Christ live through us, not relying on our own strength.",
+    "language": "en",
+    "options": [
+      "I am free",
+      "I live for the Lord",
+      "Christ lives in me",
+      "I am a new creation"
+    ],
+    "tags": [
+      "New Testament",
+      "New Life",
+      "Christ",
+      "Galatians",
+      "Epistle",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Galatians",
+    "chapter": 5,
+    "verseStart": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What does the fruit of the Spirit begin with?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Galatians 5:22 - The fruit of the Spirit: love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, self-control.",
+    "language": "en",
+    "verseEnd": 23,
+    "options": [
+      "Patience",
+      "Joy",
+      "Love",
+      "Peace"
+    ],
+    "tags": [
+      "New Testament",
+      "Holy Spirit",
+      "Fruit of the Spirit",
+      "Galatians",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Galatians",
+    "chapter": 3,
+    "verseStart": 28,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Galatians 3:28: In Jesus there is no longer a distinction between what?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "In the Lord, everyone is equal and one in Jesus.",
+    "language": "en",
+    "options": [
+      "Educated or uneducated",
+      "Young or old",
+      "Jew or Greek, slave or free, male or female",
+      "Rich or poor"
+    ],
+    "tags": [
+      "New Testament",
+      "Equality",
+      "Unity",
+      "Galatians",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Galatians",
+    "chapter": 5,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Galatians 5:1: For what purpose did Jesus set us free?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Freedom in the Lord is not for loose living but for living for God and loving others.",
+    "language": "en",
+    "options": [
+      "To work harder",
+      "To keep more laws",
+      "To be free, and no longer bear a yoke of slavery",
+      "To become rich"
+    ],
+    "tags": [
+      "New Testament",
+      "Freedom",
+      "Grace",
+      "Galatians",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Galatians",
+    "chapter": 5,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Galatians 5:16-17 speaks of the conflict between what?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "The flesh and the Spirit are opposed to each other. Walk by the Spirit so you will not gratify the desires of the flesh.",
+    "language": "en",
+    "verseEnd": 17,
+    "options": [
+      "The flesh and the Spirit",
+      "Old and new",
+      "Reason and emotion",
+      "Good and evil"
+    ],
+    "tags": [
+      "New Testament",
+      "Flesh",
+      "Holy Spirit",
+      "Galatians",
+      "Epistle",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Galatians",
+    "chapter": 6,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Galatians 6:7: \"God is not mocked; for whatever a man sows, that he will also ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "The law of sowing and reaping: actions have consequences. Sowing to the flesh reaps corruption; sowing to the Spirit reaps life.",
+    "language": "en",
+    "options": [
+      "Lose",
+      "Gain",
+      "Win",
+      "Reap"
+    ],
+    "tags": [
+      "New Testament",
+      "Sowing and Reaping",
+      "Consequences",
+      "Galatians",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Galatians",
+    "chapter": 6,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Galatians 6:9: \"Let us not ___ in doing good, for we will reap if we do not lose heart\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Doing good requires patience. The harvest will come at the proper time.",
+    "language": "en",
+    "options": [
+      "Hurry",
+      "Rejoice",
+      "Grow weary",
+      "Delay"
+    ],
+    "tags": [
+      "New Testament",
+      "Patience",
+      "Doing Good",
+      "Galatians",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Galatians",
+    "chapter": 3,
+    "verseStart": 13,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Galatians 3:13: How did Jesus redeem us from the curse of the law?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Jesus bore the penalty of the law on our behalf.",
+    "language": "en",
+    "options": [
+      "By keeping the law for us",
+      "By abolishing the law",
+      "By becoming a curse for us (being hung on a tree)",
+      "By changing the law"
+    ],
+    "tags": [
+      "New Testament",
+      "Redemption",
+      "Law",
+      "Galatians",
+      "Epistle",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Galatians",
+    "chapter": 4,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Galatians 4:4: When the fullness of time had come, God sent His Son into the world to do what?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Jesus came at the right time to redeem us from sin and give us the status of God's children.",
+    "language": "en",
+    "verseEnd": 5,
+    "options": [
+      "To teach",
+      "To redeem those under the law so that we might receive adoption as sons",
+      "To be king",
+      "To judge"
+    ],
+    "tags": [
+      "New Testament",
+      "Incarnation",
+      "Adoption",
+      "Galatians",
+      "Epistle",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Galatians",
+    "chapter": 5,
+    "verseStart": 24,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Galatians 5:24: What have those who belong to Jesus done with the flesh?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Crucifying the flesh = a decisive choice to forsake a life lived according to the flesh.",
+    "language": "en",
+    "options": [
+      "Crucified the flesh with its passions and desires on the cross",
+      "Ignored it",
+      "Hidden it",
+      "Refused it"
+    ],
+    "tags": [
+      "New Testament",
+      "Flesh",
+      "Holiness",
+      "Galatians",
+      "Epistle",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Galatians",
+    "chapter": 1,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What astonished Paul about the church in Galatia?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "There is only one true gospel. Any alteration is a departure from it.",
+    "language": "en",
+    "verseEnd": 7,
+    "options": [
+      "Quickly deserting the true gospel to follow a different gospel",
+      "Not praying",
+      "Sinning",
+      "Leaving the church"
+    ],
+    "tags": [
+      "New Testament",
+      "Gospel",
+      "Warning",
+      "Galatians",
+      "Epistle",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Galatians",
+    "chapter": 3,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Galatians 3:11: \"No one is justified before God by ___, this is evident\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Righteousness comes by faith, not by keeping the law.",
+    "language": "en",
+    "options": [
+      "Works",
+      "Knowledge",
+      "The law",
+      "Religion"
+    ],
+    "tags": [
+      "New Testament",
+      "Righteousness",
+      "Faith",
+      "Galatians",
+      "Epistle",
+      "Basic"
+    ]
+  }
+]

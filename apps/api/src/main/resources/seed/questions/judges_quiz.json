@@ -1,0 +1,362 @@
+[
+  {
+    "book": "Judges",
+    "chapter": 16,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Bí mật sức mạnh của Sam-sôn nằm ở đâu?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Các Quan Xét 16:17 - Sức mạnh Sam-sôn đến từ lời hứa Na-xi-rê với Đức Chúa Trời, biểu tượng qua mái tóc.",
+    "language": "vi",
+    "options": [
+      "Áo giáp",
+      "Vũ khí đặc biệt",
+      "Mái tóc chưa hề bị cắt (lời hứa Na-xi-rê)",
+      "Cơ bắp"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Sam-sôn",
+      "Lời hứa",
+      "Các Quan Xét",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Judges",
+    "chapter": 2,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong sách Các Quan Xét, Chúa dùng lên những người gì để giải cứu dân?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Các Quan Xét 2:16 - Chúa dùng lên các quan xét để giải cứu dân khỏi kẻ áp bức. Chu kỳ: tội lỗi > áp bức > kêu cầu > giải cứu.",
+    "language": "vi",
+    "verseEnd": 18,
+    "options": [
+      "Các thầy tế lễ",
+      "Các tiên tri",
+      "Các quan xét (giải cứu)",
+      "Các vua"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Quan xét",
+      "Chu kỳ",
+      "Các Quan Xét",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Judges",
+    "chapter": 2,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chu kỳ lặp đi lặp lại trong sách Các Quan Xét là gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Các Quan Xét 2:11-19 - Chu kỳ này lặp lại nhiều lần, cho thấy bản chất con người và sự nhân nại của Chúa.",
+    "language": "vi",
+    "verseEnd": 15,
+    "options": [
+      "Chiến tranh > Hòa bình",
+      "Xây dựng > Hủy diệt",
+      "Giàu có > Nghèo khó",
+      "Tội lỗi > Hình phạt > Kêu cầu > Giải cứu > Bình an > Tội lỗi lại"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Chu kỳ",
+      "Bản chất người",
+      "Các Quan Xét",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Judges",
+    "chapter": 4,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Nữ quan xét duy nhất trong Kinh Thánh là ai?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Các Quan Xét 4:4 - Đê-bô-ra vừa là nữ tiên tri vừa là quan xét xét xử dân Y-so-ra-en.",
+    "language": "vi",
+    "verseEnd": 5,
+    "options": [
+      "Đê-bô-ra",
+      "Ra-hab",
+      "Ru-tơ",
+      "E-xơ-tê"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đê-bô-ra",
+      "Lãnh đạo",
+      "Các Quan Xét",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Judges",
+    "chapter": 4,
+    "verseStart": 21,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ai đã hạ tướng Si-sê-ra bằng cái cọc lều?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Các Quan Xét 4:21 - Gia-ên đóng cọc lều qua màng tang Si-sê-ra khi ông ngủ. Chiến thắng đến từ nơi bất ngờ.",
+    "language": "vi",
+    "options": [
+      "Mi-ri-am",
+      "Gia-ên",
+      "Đê-bô-ra",
+      "Ba-rác"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gia-ên",
+      "Chiến thắng",
+      "Các Quan Xét",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Judges",
+    "chapter": 6,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi thiên sứ gọi Ghê-đê-ôn là \"người dũng cảm\", ông đang làm gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Các Quan Xét 6:11-12 - Ghê-đê-ôn đang sợ hãi trốn tránh nhưng Chúa thấy tiềm năng trong ông.",
+    "language": "vi",
+    "verseEnd": 15,
+    "options": [
+      "Chiến đấu",
+      "Ngủ",
+      "Đập lúa mì trong bồn ép nho vì sợ quân Ma-đi-an",
+      "Cầu nguyện"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ghê-đê-ôn",
+      "Sự kêu gọi",
+      "Các Quan Xét",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Judges",
+    "chapter": 6,
+    "verseStart": 36,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ghê-đê-ôn dùng gì để thử Chúa?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Các Quan Xét 6:37-40 - Ghê-đê-ôn thử Chúa 2 lần bằng bông lông cừu. Chúa nhân nại với sự yếu đuối của ông.",
+    "language": "vi",
+    "verseEnd": 40,
+    "options": [
+      "Đá và gậy",
+      "Bông lông cừu (sương và khô)",
+      "Lửa và nước",
+      "Trái và rau"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ghê-đê-ôn",
+      "Đức tin",
+      "Các Quan Xét",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Judges",
+    "chapter": 7,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa giảm quân đội Ghê-đê-ôn từ 32,000 xuống còn bao nhiêu?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Các Quan Xét 7:7 - Chỉ 300 người để Chúa được vinh hiển. Chiến thắng không nhờ số đông mà nhờ quyền năng Chúa.",
+    "language": "vi",
+    "options": [
+      "300 người",
+      "1000 người",
+      "3000 người",
+      "100 người"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ghê-đê-ôn",
+      "Quyền năng Chúa",
+      "Các Quan Xét",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Judges",
+    "chapter": 11,
+    "verseStart": 30,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Giép-thê đã hứa điều gì với Chúa trước trận chiến?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Các Quan Xét 11:30-31 - Lời hứa hấp tấp của Giép-thê dẫn đến hậu quả đau lòng khi chính con gái ông bước ra.",
+    "language": "vi",
+    "verseEnd": 35,
+    "options": [
+      "Nhịn ăn 40 ngày",
+      "Xây đền thờ",
+      "Dâng làm của lễ thiêu vật đầu tiên bước ra cửa đón ông",
+      "Cho tất cả chiến lợi phẩm"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giép-thê",
+      "Lời hứa",
+      "Các Quan Xét",
+      "Lịch sử",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Judges",
+    "chapter": 13,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sam-sôn được biệt riêng làm gì từ khi còn trong bụng mẹ?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Các Quan Xét 13:5 - Sam-sôn là người Na-xi-rê từ trong bụng mẹ, được biệt riêng để giải cứu Y-so-ra-en.",
+    "language": "vi",
+    "options": [
+      "Người Na-xi-rê cho Đức Chúa Trời",
+      "Thầy tế lễ",
+      "Tiên tri",
+      "Vua"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Sam-sôn",
+      "Na-xi-rê",
+      "Các Quan Xét",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Judges",
+    "chapter": 14,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sam-sôn đã xé con gì bằng tay không bởi Thần Chúa cảm động?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Các Quan Xét 14:6 - Thần của Chúa cảm động Sam-sôn và ông xé con sư tử như xé đứa con.",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "Sư tử",
+      "Sói",
+      "Bò rừng",
+      "Gấu"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Sam-sôn",
+      "Sức mạnh",
+      "Các Quan Xét",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Judges",
+    "chapter": 15,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sam-sôn dùng vũ khí gì đánh hạ 1000 người Phi-li-tin?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Các Quan Xét 15:15 - Sam-sôn dùng xương hàm lừa tươi đánh chết 1000 người.",
+    "language": "vi",
+    "verseEnd": 16,
+    "options": [
+      "Giáo",
+      "Xương hàm lừa",
+      "Trành nỏm",
+      "Gươm"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Sam-sôn",
+      "Chiến đấu",
+      "Các Quan Xét",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Judges",
+    "chapter": 16,
+    "verseStart": 28,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sam-sôn chết như thế nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Các Quan Xét 16:30 - Sam-sôn cầu nguyện lần cuối, được sức và xô hai cột đền. Chết nhiều hơn khi sống.",
+    "language": "vi",
+    "verseEnd": 30,
+    "options": [
+      "Bệnh tật",
+      "Bị giết trong giấc ngủ",
+      "Bị ném từ cao",
+      "Xô sập đền của người Phi-li-tin, chết chung với kẻ thù"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Sam-sôn",
+      "Hy sinh",
+      "Các Quan Xét",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  }
+]

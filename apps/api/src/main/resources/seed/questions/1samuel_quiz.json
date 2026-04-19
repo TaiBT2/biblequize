@@ -1,0 +1,333 @@
+[
+  {
+    "book": "1 Samuel",
+    "chapter": 3,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sa-mu-ên đáp lại tiếng Chúa gọi vào ban đêm như thế nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Sa-mu-ên 3:10 - Hê-li dạy Sa-mu-ên cách đáp lại tiếng Chúa. Đây là sự sẵn sàng lắng nghe và vâng phục.",
+    "language": "vi",
+    "options": [
+      "Xin Chúa hãy phán, vì đây tôi tớ Chúa đang nghe",
+      "Con đang nghe",
+      "Đây con đây",
+      "Xin Chúa đợi"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Sa-mu-ên",
+      "Lắng nghe",
+      "1 Sa-mu-ên",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 16,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi chọn Đa-vít làm vua, Chúa dạy Sa-mu-ên bài học gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Sa-mu-ên 16:7 - Loài người nhìn bên ngoài nhưng Đức Giê-hô-va nhìn thấy trong lòng. Đa-vít được chọn vì tâm lòng hướng về Chúa.",
+    "language": "vi",
+    "options": [
+      "Hãy chọn người mạnh nhất",
+      "Hãy chọn con trưởng",
+      "Chúa nhìn tâm lòng, không phải bên ngoài",
+      "Hãy chọn người trẻ nhất"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Tâm lòng",
+      "1 Sa-mu-ên",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 17,
+    "verseStart": 45,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đa-vít dùng vũ khí gì để hạ Gô-li-át?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Sa-mu-ên 17:49-50 - Đa-vít dùng trái đá và trành ném, tin cậy Chúa chiến trận cho mình.",
+    "language": "vi",
+    "verseEnd": 47,
+    "options": [
+      "Gươm",
+      "Trái đá và cái trành ném",
+      "Cung tên",
+      "Giáo"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Đức tin",
+      "1 Sa-mu-ên",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 1,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "An-ne cầu xin Chúa điều gì tại đền tạm?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Sa 1:11 - An-ne cầu nguyện trong nước mắt và hứa dâng con cho Chúa. Chúa nhậm lời bà.",
+    "language": "vi",
+    "verseEnd": 11,
+    "options": [
+      "Sự giàu có",
+      "Chiến thắng",
+      "Sức khỏe",
+      "Một đứa con trai và hứa dâng nó cho Chúa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "An-ne",
+      "Cầu nguyện",
+      "1 Sa-mu-ên",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 2,
+    "verseStart": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Hai con trai Hê-li là Hốp-ni và Phi-nê-a làm điều gì sai?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Sa 2:12-17 - Họ không biết Chúa, cướp của lễ và sống vô đạo đức. Hậu quả: cả hai chết cùng ngày.",
+    "language": "vi",
+    "verseEnd": 17,
+    "options": [
+      "Bỏ trốn",
+      "Thờ tượng",
+      "Chống lại vua",
+      "Ăn trộm của lễ và sống vô đạo đức"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Hình phạt",
+      "Tế lễ",
+      "1 Sa-mu-ên",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 8,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Dân Y-so-ra-en xin Sa-mu-en điều gì khiến Chúa buồn?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Sa 8:7 - Chúa nói: Họ không từ chối con đâu, nhưng từ chối ta làm vua họ. Dân chọn người thay vì Chúa.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "Xin một vua như các dân tộc khác",
+      "Xin nhiều của cải",
+      "Xin một tiên tri mới",
+      "Xin chiến thắng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Vương quyền",
+      "Từ chối",
+      "1 Sa-mu-ên",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 9,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sau-lơ, vua đầu tiên của Y-so-ra-en, được mô tả như thế nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Sa 9:2 - Sau-lơ có hình thức bên ngoài ấn tượng nhưng tâm lòng không vững.",
+    "language": "vi",
+    "options": [
+      "Giàu nhất",
+      "Mạnh mẽ nhất",
+      "Khôn ngoan nhất",
+      "Cao hơn mọi người từ vai trở lên, đẹp trai"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Sau-lơ",
+      "Hình thức",
+      "1 Sa-mu-ên",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 13,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sa-mu-en nói Chúa tìm một người như thế nào để thay Sau-lơ?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Sa 13:14 - Chúa tìm người vừa lòng Ngài. Đa-vít được gọi là người vừa lòng Chúa (Công vụ 13:22).",
+    "language": "vi",
+    "options": [
+      "Người mạnh nhất",
+      "Người từ phú hoàng gia",
+      "Một người vừa lòng Chúa",
+      "Người khôn ngoan nhất"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Tâm lòng",
+      "1 Sa-mu-ên",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 15,
+    "verseStart": 22,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sa-mu-en nói: \"Sự vâng lời tốt hơn ___, sự nghe theo tốt hơn mỡ của chiên đực\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "1 Sa 15:22 - Chúa muốn sự vâng lời từ tâm lòng hơn là hình thức tôn giáo bên ngoài.",
+    "language": "vi",
+    "options": [
+      "Chiến thắng",
+      "Vàng bạc",
+      "Tri thức",
+      "Của tế lễ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Vâng lời",
+      "Tế lễ",
+      "1 Sa-mu-ên",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 18,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tình bạn nổi tiếng nhất Kinh Thánh là giữa ai?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Sa 18:1 - Giô-na-than yêu Đa-vít như chính mình. Tình bạn trung tín bất chấp hoàn cảnh.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Đa-vít và Sa-mu-en",
+      "Đa-vít và Giô-na-than",
+      "Áp-ra-ham và Lót",
+      "Môi-se và A-rôn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tình bạn",
+      "Trung tín",
+      "1 Sa-mu-ên",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 24,
+    "verseStart": 4,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi có cơ hội giết Sau-lơ trong hang, Đa-vít làm gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Sa 24:5-7 - Đa-vít tôn trọng Sau-lơ là người được Chúa xức dầu, dù Sau-lơ muốn giết ông. Bài học về tôn trọng quyền bính.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "Bắt Sau-lơ",
+      "Chỉ cắt vạt áo Sau-lơ và ray rứt ân hận vì đã làm điều đó",
+      "Bỏ trốn",
+      "Giết Sau-lơ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Tôn trọng",
+      "1 Sa-mu-ên",
+      "Lịch sử",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "1 Samuel",
+    "chapter": 26,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Lần thứ hai có cơ hội giết Sau-lơ, Đa-vít lấy gì thay vì giết?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Sa 26:11-12 - Đa-vít tiếp tục tôn trọng mạng sống của Sau-lơ, chỉ lấy giáo và bình nước làm bằng chứng.",
+    "language": "vi",
+    "verseEnd": 11,
+    "options": [
+      "Gươm",
+      "Vương miện",
+      "Giáo và bình nước của Sau-lơ",
+      "Áo choàng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Nhân nại",
+      "1 Sa-mu-ên",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  }
+]

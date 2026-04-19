@@ -1,0 +1,361 @@
+[
+  {
+    "book": "1 Kings",
+    "chapter": 3,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Chúa cho Sa-lô-môn xin bất cứ điều gì, ông xin gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Các Vua 3:9 - Sa-lô-môn xin tâm lòng khôn ngoan để phân biệt phải trái. Chúa rất vui và ban thêm sự giàu có và vinh hiển.",
+    "language": "vi",
+    "options": [
+      "Sự khôn ngoan để xét đoán dân sự",
+      "Sự giàu có",
+      "Đời sống dài lâu",
+      "Chiến thắng kẻ thù"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Sa-lô-môn",
+      "Khôn ngoan",
+      "1 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Kings",
+    "chapter": 18,
+    "verseStart": 38,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trên núi Cát-mên, khi Ê-li thách thức các tiên tri Ba-anh, điều gì đã xảy ra?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Các Vua 18:38 - Lửa của Đức Giê-hô-va từ trời giáng xuống thiêu sạch của lễ, củi, đá, bụi và nước. Dân sự sấp mặt xuống nói: Giê-hô-va là Đức Chúa Trời!",
+    "language": "vi",
+    "verseEnd": 39,
+    "options": [
+      "Lửa từ trời rơi xuống thiêu của lễ",
+      "Gió bão nổi lên",
+      "Đất rung",
+      "Mưa rơi xuống"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-li",
+      "Phép lạ",
+      "1 Các Vua",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Kings",
+    "chapter": 6,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sa-lô-môn xây đền thờ mất bao lâu?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Các Vua 6:38 - Đền thờ được xây trong 7 năm. Một công trình hùng vĩ.",
+    "language": "vi",
+    "verseEnd": 2,
+    "options": [
+      "40 năm",
+      "3 năm",
+      "7 năm",
+      "12 năm"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Sa-lô-môn",
+      "Đền thờ",
+      "1 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Kings",
+    "chapter": 8,
+    "verseStart": 27,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi khánh thành đền thờ, Sa-lô-môn tuyên bố điều gì về Chúa?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Các Vua 8:27 - Sa-lô-môn hiểu rằng Chúa không bị giới hạn trong đền thờ. Ngài lớn hơn mọi công trình.",
+    "language": "vi",
+    "options": [
+      "Chúa chỉ ở trong đền",
+      "Chúa vui vẻ nhận đền",
+      "Trời của các tầng trời không chứa nổi Ngài, huống chi đền này",
+      "Đền này là nhà của Chúa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đền thờ",
+      "Thần học",
+      "1 Các Vua",
+      "Lịch sử",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "1 Kings",
+    "chapter": 10,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Nữ hoàng xứ nào đến thăm và thử sự khôn ngoan của Sa-lô-môn?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Các Vua 10:1 - Nữ hoàng Sê-ba đến với câu hỏi khó. Bà kinh ngạc trước sự khôn ngoan và sự giàu có của Sa-lô-môn.",
+    "language": "vi",
+    "verseEnd": 9,
+    "options": [
+      "Nữ hoàng xứ Sê-ba",
+      "Nữ hoàng Ba-tư",
+      "Nữ hoàng Ba-by-lôn",
+      "Nữ hoàng Ai-cập"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Sa-lô-môn",
+      "Khôn ngoan",
+      "1 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Kings",
+    "chapter": 11,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tại sao Sa-lô-môn sa ngã cuối đời?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Các Vua 11:4 - Sa-lô-môn có 700 vợ và 300 hầu, họ làm lòng ông nghiêng theo thần ngoại bang.",
+    "language": "vi",
+    "options": [
+      "Các vợ ngoại bang xoay lòng ông theo các thần khác",
+      "Mất trí nhớ",
+      "Bị phản bội",
+      "Bị bệnh"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Sa-lô-môn",
+      "Sa ngã",
+      "1 Các Vua",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Kings",
+    "chapter": 12,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vương quốc bị chia cắt vì lỗi của ai?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Các Vua 12:16 - Rô-bô-am nghe lời bạn trẻ, tăng gánh nặng. 10 chi phái ly khai, chỉ còn Giu-đa và Bên-gia-min.",
+    "language": "vi",
+    "verseEnd": 19,
+    "options": [
+      "Rô-bô-am, vì từ chối giảm gánh nặng cho dân",
+      "A-hi-gia",
+      "Giê-rô-bô-am",
+      "Sa-lô-môn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Chia cắt",
+      "Rô-bô-am",
+      "1 Các Vua",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Kings",
+    "chapter": 17,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa dùng gì để nuôi Ê-li bên suối Kê-rít?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Các Vua 17:6 - Quạ đem bánh và thịt cho Ê-li sáng và chiều. Chúa lo liệu cách lạ lùng.",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "Ma-na từ trời",
+      "Người dân địa phương",
+      "Quạ và chim đem đem bánh và thịt đến",
+      "Trái cây rừng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-li",
+      "Chúa lo liệu",
+      "1 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Kings",
+    "chapter": 17,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phép lạ nào xảy ra với bà góa Sa-rép-ta?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Các Vua 17:16 - Hũ bột không vơi, vẻ dầu không cạn. Chúa lo liệu khi chúng ta vâng lời.",
+    "language": "vi",
+    "verseEnd": 16,
+    "options": [
+      "Nước biển thành rượu",
+      "Hũ bột và vẻ dầu không hết suốt mùa đói",
+      "Con trai sống lại",
+      "Nhà được xây mới"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-li",
+      "Phép lạ",
+      "1 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Kings",
+    "chapter": 19,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sau chiến thắng trên núi Cát-men, Ê-li phản ứng thế nào khi Giê-sa-bên đe dọa?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Các Vua 19:4 - Ngay cả tiên tri vĩ đại nhất cũng có lúc yếu đuối. Chúa nhân từ chăm sóc Ê-li.",
+    "language": "vi",
+    "options": [
+      "Sợ hãi bỏ chạy vào đồng vắng, muốn chết",
+      "Chiến đấu tiếp",
+      "Vui mừng",
+      "Cầu nguyện thêm"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-li",
+      "Yếu đuối",
+      "1 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Kings",
+    "chapter": 19,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa hiện ra với Ê-li tại núi Hô-rếp bằng gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "1 Các Vua 19:12 - Chúa không ở trong gió bão, động đất hay lửa, mà trong tiếng nhỏ nhẹ. Chúa nói trong sự yên tĩnh.",
+    "language": "vi",
+    "verseEnd": 12,
+    "options": [
+      "Gió bão",
+      "Tiếng nhỏ nhẹ (tiếng phảm phảm)",
+      "Lửa",
+      "Động đất"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-li",
+      "Tiếng Chúa",
+      "1 Các Vua",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "1 Kings",
+    "chapter": 19,
+    "verseStart": 18,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa nói còn lại bao nhiêu người chưa từng quỳ gối trước Ba-an?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "1 Các Vua 19:18 - 7000 người chưa quỳ gối Ba-an. Ê-li không cô đơn như ông tưởng.",
+    "language": "vi",
+    "options": [
+      "100 người",
+      "1000 người",
+      "7000 người",
+      "Chỉ Ê-li"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-li",
+      "Dân số còn lại",
+      "1 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "1 Kings",
+    "chapter": 19,
+    "verseStart": 19,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ê-li gọi Ê-li-sê làm môn đồ bằng cách nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "1 Các Vua 19:19 - Áo choàng tiên tri là biểu tượng truyền chức vụ và quyền năng.",
+    "language": "vi",
+    "verseEnd": 21,
+    "options": [
+      "Ném áo choàng mình lên Ê-li-sê",
+      "Sai người đến",
+      "Gọi tên ông",
+      "Gửi thư"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-li-sê",
+      "Môn đồ",
+      "1 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  }
+]

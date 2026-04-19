@@ -1,0 +1,357 @@
+[
+  {
+    "book": "Ruth",
+    "chapter": 1,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ruth said to Naomi: \"Your God shall be ___\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ruth 1:16 - Ruth chose to cling to Naomi and to her God. Ruth's faithfulness is a model of faith.",
+    "language": "en",
+    "options": [
+      "my God",
+      "the Almighty",
+      "the Lord",
+      "the God of all people"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ruth",
+      "Faithfulness",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 4,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ruth was the great-grandmother of which famous king in the Bible?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ruth 4:17 - Ruth gave birth to Obed, Obed fathered Jesse, and Jesse fathered David. Ruth is also in the genealogy of Jesus (Matthew 1:5).",
+    "language": "en",
+    "verseEnd": 17,
+    "options": [
+      "King David",
+      "King Solomon",
+      "King Saul",
+      "King Josiah"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ruth",
+      "Genealogy",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 1,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Why did Naomi's family leave Bethlehem for the land of Moab?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ruth 1:1 - A famine in Bethlehem (which means \"house of bread\") drove Elimelech's family to the land of Moab.",
+    "language": "en",
+    "verseEnd": 2,
+    "options": [
+      "Famine",
+      "War",
+      "Seeking work",
+      "They were invited"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ruth",
+      "Famine",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 1,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What were the names of Naomi's two Moabite daughters-in-law?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ruth 1:4 - Naomi's two sons married Ruth and Orpah in Moab.",
+    "language": "en",
+    "verseEnd": 5,
+    "options": [
+      "Ruth and Orpah",
+      "Ruth and Rahab",
+      "Orpah and Miriam",
+      "Ruth and Deborah"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ruth",
+      "Characters",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 1,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "How did Orpah and Ruth respond differently when Naomi told them to go back?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ruth 1:14-16 - Orpah chose safety; Ruth chose faithfulness. Two choices led to two very different lives.",
+    "language": "en",
+    "verseEnd": 16,
+    "options": [
+      "Orpah returned to Moab; Ruth stayed and followed Naomi",
+      "Both stayed",
+      "Both returned",
+      "Ruth returned; Orpah stayed"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ruth",
+      "Faithfulness",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 1,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Naomi changed her name to Mara. What does Mara mean?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ruth 1:20 - Naomi (meaning \"pleasant\") changed her name to Mara (meaning \"bitter\") after losing her husband and two sons.",
+    "language": "en",
+    "verseEnd": 21,
+    "options": [
+      "Bitter",
+      "Joyful",
+      "Peaceful",
+      "Hopeful"
+    ],
+    "tags": [
+      "Old Testament",
+      "Naomi",
+      "Suffering",
+      "Ruth",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 2,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What did Ruth do to provide for Naomi?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ruth 2:2 - Ruth gleaned grain under the law that allowed the poor to gather leftover grain in the fields (Leviticus 19:9).",
+    "language": "en",
+    "verseEnd": 3,
+    "options": [
+      "Gleaned (gathered leftover grain) in the fields",
+      "Sold goods in the market",
+      "Baked bread",
+      "Tended sheep"
+    ],
+    "tags": [
+      "Old Testament",
+      "Ruth",
+      "Diligence",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 2,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What did Boaz commend Ruth for?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ruth 2:11-12 - Boaz recognized Ruth's faith and loyalty. The Lord cares for those who come to take refuge under His wings.",
+    "language": "en",
+    "verseEnd": 12,
+    "options": [
+      "Leaving her homeland to follow her mother-in-law to a foreign land, taking refuge under the Lord's wings",
+      "Her beauty",
+      "Her wisdom",
+      "Her wealth"
+    ],
+    "tags": [
+      "Old Testament",
+      "Boaz",
+      "Faith",
+      "Ruth",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 3,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What did Ruth ask Boaz to do at the threshing floor?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ruth 3:9 - \"Spread the corner of your garment over your servant, for you are a kinsman-redeemer (go'el).\" This is a picture of the Lord redeeming us.",
+    "language": "en",
+    "options": [
+      "Act as her kinsman-redeemer (go'el)",
+      "Marry her",
+      "Feed her",
+      "Protect her"
+    ],
+    "tags": [
+      "Old Testament",
+      "Go'el",
+      "Redemption",
+      "Ruth",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 3,
+    "verseStart": 12,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "The concept of the \"go'el\" (kinsman-redeemer) in the book of Ruth is a picture of whom?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Boaz acts as go'el: he redeems the land, marries Ruth, and preserves the family line. Jesus acts as go'el: He redeems us from sin, marries the Church, and gives us life.",
+    "language": "en",
+    "verseEnd": 13,
+    "options": [
+      "Jesus - our Redeemer",
+      "Moses",
+      "David",
+      "Abraham"
+    ],
+    "tags": [
+      "Old Testament",
+      "Type and Shadow",
+      "Redemption",
+      "Ruth",
+      "History",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 4,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Why did the closer relative refuse the right of redemption?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ruth 4:6 - The closer kinsman-redeemer refused because he feared it would jeopardize his own inheritance. Boaz was willing to sacrifice.",
+    "language": "en",
+    "verseEnd": 6,
+    "options": [
+      "He feared it would endanger his own inheritance",
+      "He had no money",
+      "He did not like Ruth",
+      "He was ill"
+    ],
+    "tags": [
+      "Old Testament",
+      "Boaz",
+      "Sacrifice",
+      "Ruth",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 4,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Boaz married Ruth and redeemed whose estate?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ruth 4:9-10 - Boaz redeemed the entire estate and married Ruth to preserve the name of the deceased.",
+    "language": "en",
+    "verseEnd": 10,
+    "options": [
+      "Elimelech, Naomi's husband",
+      "Naomi",
+      "Orpah",
+      "A stranger"
+    ],
+    "tags": [
+      "Old Testament",
+      "Boaz",
+      "Redemption",
+      "Ruth",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Ruth",
+    "chapter": 4,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What was the name of Boaz and Ruth's son?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Ruth 4:17 - Obed was the father of Jesse, the grandfather of David. Ruth was the great-grandmother of the royal line and of Jesus.",
+    "language": "en",
+    "options": [
+      "Obed",
+      "Jesse",
+      "David",
+      "Solomon"
+    ],
+    "tags": [
+      "Old Testament",
+      "Genealogy",
+      "Obed",
+      "Ruth",
+      "History",
+      "Basic"
+    ]
+  }
+]

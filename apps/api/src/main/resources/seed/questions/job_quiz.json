@@ -1,0 +1,322 @@
+[
+  {
+    "book": "Job",
+    "chapter": 1,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Kinh Thánh mô tả Gióp là người như thế nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Gióp 1:1 - Gióp là người trọn vẹn và ngay thẳng, kính sợ Đức Chúa Trời và lánh xa điều ác.",
+    "language": "vi",
+    "options": [
+      "Giàu nhất",
+      "Trọn vẹn, chính trực, kính sợ Chúa, lánh xa điều ác",
+      "Khôn ngoan nhất",
+      "Mạnh nhất"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gióp",
+      "Công bình",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 1,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sa-tan tố cáo Gióp kính sợ Chúa vì lý do gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Gióp 1:9-11 - Sa-tan tố cáo rằng Gióp chỉ tin vì được lợi. Chúa cho phép thử thách để chứng minh đức tin thật.",
+    "language": "vi",
+    "verseEnd": 11,
+    "options": [
+      "Vì Gióp muốn được khen",
+      "Vì Gióp sợ hình phạt",
+      "Vì Gióp ngu dốt",
+      "Vì Chúa bảo vệ và ban phúc, không phải tự tâm lòng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gióp",
+      "Thử thách",
+      "Văn Thơ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 2,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Vợ Gióp nói ông nên làm gì? Gióp đáp thế nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Gióp 2:9-10 - Gióp từ chối bỏ đức tin dù người thân nhất khuyên ông từ bỏ.",
+    "language": "vi",
+    "verseEnd": 10,
+    "options": [
+      "Cả hai khóc",
+      "Vợ nói: rủa Chúa đi rồi chết. Gióp: chúng ta nhận phúc thì không nhận họa sao?",
+      "Cả hai cầu nguyện",
+      "Cả hai bỏ cuộc"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gióp",
+      "Đức tin",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 13,
+    "verseStart": 15,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Gióp tuyên bố điều gì dù đang chịu khổ?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Gióp 13:15 - Đức tin không điều kiện: tin cậy Chúa dù trong hoàn cảnh xấu nhất.",
+    "language": "vi",
+    "options": [
+      "Dù Ngài giết tôi, tôi vẫn tin cậy Ngài",
+      "Tôi sẽ bỏ Chúa",
+      "Chúa bất công",
+      "Tôi vô tội"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gióp",
+      "Đức tin",
+      "Văn Thơ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 19,
+    "verseStart": 25,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Gióp tuyên bố: \"Tôi biết rằng Đấng ___ tôi hằng sống\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Gióp 19:25 - Giữa khổ nạn, Gióp tuyên bố tin vào Đấng Cứu Chuộc hằng sống và sự phục sinh.",
+    "language": "vi",
+    "verseEnd": 26,
+    "options": [
+      "Cứu chuộc",
+      "Bảo vệ",
+      "Sáng tạo",
+      "Phán xét"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gióp",
+      "Cứu chuộc",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 38,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa trả lời Gióp từ đâu?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Gióp 38:1 - Chúa phán từ gió lốc, hỏi Gióp nhiều câu hỏi về sáng tạo để cho thấy sự khôn ngoan vô hạn của Ngài.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Từ bụi gai cháy",
+      "Từ trong cơn gió lốc",
+      "Từ đám mây",
+      "Từ trời"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gióp",
+      "Chủ quyền",
+      "Văn Thơ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 40,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sau khi Chúa phán, Gióp phản ứng thế nào?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Gióp 40:4-5 - Gióp nhận ra sự nhỏ bé của mình trước sự vĩ đại của Chúa và im lặng.",
+    "language": "vi",
+    "verseEnd": 5,
+    "options": [
+      "Giận dữ",
+      "Tranh luận tiếp",
+      "Lấy tay bịt miệng, không đáp nữa",
+      "Bỏ chạy"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gióp",
+      "Khiêm nhường",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 42,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Gióp nói: \"Trước tai tôi nghe đồn về Chúa, nhưng bây giờ ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Gióp 42:5 - Từ tin nghe nói đến trải nghiệm cá nhân. Khổ nạn dẫn Gióp đến sự hiểu biết sâu hơn về Chúa.",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "Tôi biết Ngài",
+      "Tôi tin Ngài",
+      "Tôi hiểu Ngài",
+      "Mắt tôi đã thấy Ngài"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gióp",
+      "Trải nghiệm",
+      "Văn Thơ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 42,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Cuối cùng Chúa ban cho Gióp bao nhiêu so với trước?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Gióp 42:10 - Chúa phục hồi gấp đôi. Chúa thương người kiên nhẫn chịu đựng (Gia-cơ 5:11).",
+    "language": "vi",
+    "verseEnd": 12,
+    "options": [
+      "Gấp ba",
+      "Bằng cũ",
+      "Gấp đôi mọi thứ",
+      "Ít hơn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gióp",
+      "Phục hồi",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 28,
+    "verseStart": 28,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Gióp 28:28 kết luận sự khôn ngoan thật là gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Gióp 28:28 - Giống như Châm 1:7 và Truyền đạo 12:13. Sự khôn ngoan bắt đầu và kết thúc ở sự kính sợ Chúa.",
+    "language": "vi",
+    "options": [
+      "Kinh nghiệm",
+      "Kính sợ Chúa và lánh xa điều ác",
+      "Tri thức",
+      "Học nhiều"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gióp",
+      "Khôn ngoan",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 5,
+    "verseStart": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ê-li-pha nói: \"Phước thay người nào Đức Chúa Trời ___\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Gióp 5:17 - Sự trách phạt của Chúa là dấu hiệu tình yêu, không phải sự bỏ rơi (Hê 12:6).",
+    "language": "vi",
+    "options": [
+      "Sửa phạt, chớ khinh dể sự trách phạt của Đấng Toàn Năng",
+      "Ban phúc",
+      "Bảo vệ",
+      "Yêu thương"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gióp",
+      "Sửa phạt",
+      "Văn Thơ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Job",
+    "chapter": 42,
+    "verseStart": 7,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Chúa trách 3 bạn của Gióp vì lý do gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Gióp 42:7 - Dù Gióp than van, ông vẫn trung thực với Chúa. 3 bạn có giáo lý gọn gàng nhưng sai về bản tính Chúa.",
+    "language": "vi",
+    "verseEnd": 8,
+    "options": [
+      "Họ không nói đúng về Chúa như Gióp",
+      "Họ thờ tượng",
+      "Họ không cầu nguyện",
+      "Họ bỏ Gióp"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Gióp",
+      "Thần học",
+      "Văn Thơ",
+      "Nâng cao"
+    ]
+  }
+]

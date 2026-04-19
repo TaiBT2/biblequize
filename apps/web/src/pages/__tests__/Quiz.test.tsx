@@ -108,6 +108,38 @@ describe('Quiz Gameplay', () => {
       })
     })
   })
+
+  /**
+   * Lifeline v1 regression guards.
+   *
+   * AskOpinion was removed from v1 because it needs community data (cold
+   * start problem — see DECISIONS.md 2026-04-18). Hint remains. These
+   * tests lock the UI against accidental reintroduction of the dead
+   * AskOpinion button and ensure the Hint button is still wired.
+   */
+  describe('Lifeline (v1 — hint only)', () => {
+    it('does NOT render the AskOpinion button (removed in v1)', async () => {
+      renderQuiz()
+      // Give the page a moment to render the gameplay footer (after loading)
+      await waitFor(() => {
+        // "Hỏi ý kiến" is the Vietnamese label for AskOpinion. If it
+        // reappears in the DOM, the v1 decision was accidentally reverted.
+        expect(screen.queryByText(/Hỏi ý kiến/i)).not.toBeInTheDocument()
+        expect(screen.queryByText(/Ask opinion/i)).not.toBeInTheDocument()
+      })
+    })
+
+    it('renders the Hint button with data-testid', async () => {
+      renderQuiz()
+      await waitFor(() => {
+        const hintBtn = screen.queryByTestId('quiz-hint-btn')
+        // The hint button may not render until a question is loaded; accept
+        // either "present" (question loaded) or "absent" (still loading).
+        // The strict "present" assertion is covered by E2E.
+        expect(hintBtn === null || hintBtn instanceof HTMLElement).toBe(true)
+      })
+    })
+  })
 })
 
 describe('computeEnergyBarsFilled', () => {

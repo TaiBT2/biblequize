@@ -84,7 +84,7 @@ const Multiplayer = () => {
   const isFull = (room: PublicRoom) => room.currentPlayers >= room.maxPlayers;
 
   return (
-    <div className="space-y-8" data-testid="multiplayer-page">
+    <div data-testid="multiplayer-page" className="space-y-8">
 
       {/* -- Page Header -- */}
       <div className="flex items-center justify-between">

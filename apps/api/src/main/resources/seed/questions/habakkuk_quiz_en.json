@@ -1,0 +1,307 @@
+[
+  {
+    "book": "Habakkuk",
+    "chapter": 1,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What question does Habakkuk ask the Lord?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Habakkuk 1:2 - The prophet honestly asks God about injustice. God allows questioning and lament.",
+    "language": "en",
+    "verseEnd": 3,
+    "options": [
+      "Where is God?",
+      "Why do I suffer?",
+      "When will God come?",
+      "Why is God silent in the face of injustice and violence?"
+    ],
+    "tags": [
+      "Old Testament",
+      "Habakkuk",
+      "Justice",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 1,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "The Lord answers Habakkuk: \"Look among the nations, and ___\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "God is at work even when we do not see or understand.",
+    "language": "en",
+    "options": [
+      "Be astonished, for I am doing a work you would not believe",
+      "Rejoice",
+      "Flee",
+      "Be afraid"
+    ],
+    "tags": [
+      "Old Testament",
+      "Habakkuk",
+      "Trust",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 2,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Why does the Lord tell Habakkuk to write down the vision?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Habakkuk 2:2 - The vision must be clear so that everyone can read it. God's word needs to be communicated clearly to be understood.",
+    "language": "en",
+    "verseEnd": 3,
+    "options": [
+      "To be read in the temple",
+      "So that the one who reads it may run (clearly)",
+      "To present it to the king",
+      "To keep it secret"
+    ],
+    "tags": [
+      "Old Testament",
+      "Habakkuk",
+      "Vision",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 2,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Habakkuk 2:20: \"The Lord is in His holy temple; let all the earth ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Reverence and silence before the presence of God.",
+    "language": "en",
+    "options": [
+      "Rejoice",
+      "Praise",
+      "Call out",
+      "Keep silence before Him"
+    ],
+    "tags": [
+      "Old Testament",
+      "Habakkuk",
+      "Reverence",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 3,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Habakkuk prays: \"Revive Your work in the midst of the years, and in ___ remember mercy\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Even when God judges, Habakkuk asks Him to remember mercy.",
+    "language": "en",
+    "options": [
+      "War",
+      "Joy",
+      "Peace",
+      "Wrath (anger)"
+    ],
+    "tags": [
+      "Old Testament",
+      "Habakkuk",
+      "Prayer",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 3,
+    "verseStart": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Habakkuk 3:17-18: Though there is no fruit, no harvest, no flock, what does he still do?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Unconditional faith: rejoicing in God even when everything is lost. The pinnacle of faith.",
+    "language": "en",
+    "verseEnd": 18,
+    "options": [
+      "Lament",
+      "Rejoice in the Lord",
+      "Seek another place",
+      "Give up"
+    ],
+    "tags": [
+      "Old Testament",
+      "Habakkuk",
+      "Faith",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 2,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What does Habakkuk 2:3 teach about God's promise?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "God's promise may be delayed but never fails. Be patient and wait.",
+    "language": "en",
+    "options": [
+      "The vision awaits its appointed time, but it will surely come; wait for it",
+      "Uncertain",
+      "It may not come",
+      "It will come immediately"
+    ],
+    "tags": [
+      "Old Testament",
+      "Habakkuk",
+      "Patience",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 1,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "By what title does Habakkuk address God?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Habakkuk 1:12 - The Rock (Tsur) = a firm place of refuge. God is eternal and unchanging.",
+    "language": "en",
+    "options": [
+      "The everlasting God and the Rock",
+      "King of kings",
+      "Judge",
+      "Warrior"
+    ],
+    "tags": [
+      "Old Testament",
+      "Habakkuk",
+      "Names of God",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 2,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "How many woes does Habakkuk chapter 2 pronounce, and against whom?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Five woes against the wicked, warning that God sees and will judge all injustice.",
+    "language": "en",
+    "verseEnd": 8,
+    "options": [
+      "False prophets",
+      "The poor",
+      "The greedy, oppressive, violent, drunken, and idolatrous",
+      "The sick"
+    ],
+    "tags": [
+      "Old Testament",
+      "Habakkuk",
+      "Judgment",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 3,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How does Habakkuk describe God coming in glory?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Habakkuk 3:3-4 - A description of God coming in boundless power and glory.",
+    "language": "en",
+    "verseEnd": 4,
+    "options": [
+      "His glory covers the heavens, rays of light flash from His hand",
+      "Silence",
+      "Invisible",
+      "Soft and gentle"
+    ],
+    "tags": [
+      "Old Testament",
+      "Habakkuk",
+      "Glory",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 3,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When Habakkuk hears the Lord speak, how does he respond?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Habakkuk 3:16 - Awed by God's greatness yet quietly waiting for the day He acts.",
+    "language": "en",
+    "options": [
+      "With anger",
+      "Trembling yet still waiting on the Lord",
+      "With joy",
+      "By fleeing"
+    ],
+    "tags": [
+      "Old Testament",
+      "Habakkuk",
+      "Reverence",
+      "Basic"
+    ]
+  },
+  {
+    "book": "Habakkuk",
+    "chapter": 2,
+    "verseStart": 4,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Where is Habakkuk 2:4 \"The righteous shall live by faith\" quoted in the New Testament?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Habakkuk 2:4 is the most important Old Testament verse for Reformation theology: justification by faith, quoted three times in the New Testament.",
+    "language": "en",
+    "options": [
+      "Only Galatians",
+      "Not quoted",
+      "Only Romans",
+      "Romans 1:17, Galatians 3:11, Hebrews 10:38 (all three)"
+    ],
+    "tags": [
+      "Old Testament",
+      "Faith",
+      "Theology",
+      "Advanced"
+    ]
+  }
+]

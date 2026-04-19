@@ -1,0 +1,334 @@
+[
+  {
+    "book": "2 Samuel",
+    "chapter": 12,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ai là người tiên tri đã đối diện Đa-vít về tội lỗi với Bát-sê-ba?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "2 Sa-mu-ên 12:7 - Tiên tri Na-than dùng dụ ngôn con chiên để Đa-vít tự kết án mình, rồi tuyên bố: \"Ngươi là người đó!\"",
+    "language": "vi",
+    "options": [
+      "Sa-mu-ên",
+      "Na-than",
+      "Ga-át",
+      "A-sáp"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Ăn năn",
+      "2 Sa-mu-ên",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 5,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đa-vít làm vua tổng cộng bao nhiêu năm?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "2 Sa 5:4-5 - Đa-vít lên ngôi lúc 30 tuổi và cai trị 40 năm.",
+    "language": "vi",
+    "verseEnd": 5,
+    "options": [
+      "50 năm",
+      "20 năm",
+      "30 năm",
+      "40 năm (7 năm tại Hếp-rôn, 33 năm tại Gie-ru-sa-lem)"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Trị vì",
+      "2 Sa-mu-ên",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 6,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đa-vít làm gì khi Hòm Giao Ước được rước về Gie-ru-sa-lem?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "2 Sa 6:14 - Đa-vít nhảy múa hết sức trước mặt Chúa, không quan tâm hình ảnh vua. Thờ phượng hết lòng.",
+    "language": "vi",
+    "verseEnd": 15,
+    "options": [
+      "Nhảy múa hết sức trước mặt Chúa",
+      "Đọc luật pháp",
+      "Dâng của lễ im lặng",
+      "Ngồi trên ngai"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Thờ phượng",
+      "2 Sa-mu-ên",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 7,
+    "verseStart": 12,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Giao ước Đa-vít (2 Sa 7) hứa điều quan trọng nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "2 Sa 7:12-13 - Ngôi vua đời đời của dòng dõi Đa-vít ứng nghiệm nơi Chúa Giê-su (Lu-ca 1:32-33).",
+    "language": "vi",
+    "verseEnd": 13,
+    "options": [
+      "Y-so-ra-en luôn thắng trận",
+      "Đa-vít sẽ sống mãi",
+      "Đền thờ không bao giờ bị phá",
+      "Ngôi vua của dòng dõi Đa-vít sẽ còn đời đời"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giao ước",
+      "Cứu Thế",
+      "2 Sa-mu-ên",
+      "Lịch sử",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 9,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đa-vít tỏ lòng nhân từ với ai vì lời của Giô-na-than?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Sa 9:7 - Mê-phi-bô-sết bị quẹo cả hai chân nhưng được Đa-vít mời ăn đồng bàn vua suốt đời.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "Áp-ne",
+      "Sau-lơ",
+      "Mê-phi-bô-sết, con Giô-na-than",
+      "Si-mê-i"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Ân điển",
+      "2 Sa-mu-ên",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 11,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tội lớn của Đa-vít với Bát-sê-ba bắt đầu khi nào?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Sa 11:1-2 - Vào mùa các vua ra trận, Đa-vít ở nhà. Sự nhàn rỗi dẫn đến cám dỗ và tội lỗi.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Khi ăn tiệc",
+      "Khi đi thăm đất",
+      "Khi Đa-vít ở lại Gie-ru-sa-lem thay vì ra trận",
+      "Khi ngủ trưa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Cám dỗ",
+      "2 Sa-mu-ên",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 11,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đa-vít làm gì để che giấu tội với Bát-sê-ba?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Sa 11:15 - Đa-vít viết thư cho Giô-áp bỏ U-ri vào chỗ nguy hiểm nhất. Tội phạm tội dẫn đến tội gián tiếp giết người.",
+    "language": "vi",
+    "verseEnd": 17,
+    "options": [
+      "Gửi U-ri đi xa",
+      "Trốn khỏi Gie-ru-sa-lem",
+      "Sắp đặt cho chồng bà là U-ri chết trận",
+      "Đổi lộ cho U-ri"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Tội lỗi",
+      "2 Sa-mu-ên",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 12,
+    "verseStart": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi con trai chết, Đa-vít nói điều gì về hy vọng?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "2 Sa 12:23 - Đa-vít tin rằng sẽ gặp con mình ở thế giới bên kia. Hy vọng về sự sống sau khi chết.",
+    "language": "vi",
+    "options": [
+      "Tôi sẽ đi đến nó, nhưng nó sẽ không trở lại với tôi",
+      "Chúa sẽ cho con khác",
+      "Tôi sẽ không buồn nữa",
+      "Tôi sẽ quên đi"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Hy vọng",
+      "2 Sa-mu-ên",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 15,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Con trai nào của Đa-vít nổi loạn và tự xưng làm vua?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Sa 15:13-14 - Áp-sa-lôm nổi loạn, Đa-vít phải trốn khỏi Gie-ru-sa-lem. Hậu quả của tội lỗi gia đình.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "A-đô-ni-gia",
+      "Am-nôn",
+      "Áp-sa-lôm",
+      "Sa-lô-môn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-sa-lôm",
+      "Nổi loạn",
+      "2 Sa-mu-ên",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 18,
+    "verseStart": 33,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi Áp-sa-lôm chết, Đa-vít phản ứng thế nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "2 Sa 18:33 - Dù Áp-sa-lôm nổi loạn, Đa-vít vẫn là người cha đau khổ. Ôi Áp-sa-lôm, con tôi ơi!",
+    "language": "vi",
+    "options": [
+      "Vui mừng vì hết nổi loạn",
+      "Im lặng",
+      "Giận dữ",
+      "Khóc và ước mình chết thay con"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Tình cha",
+      "2 Sa-mu-ên",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 23,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Lời cuối cùng của Đa-vít nhấn mạnh giao ước với Chúa là gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "2 Sa 23:5 - Đa-vít xác nhận giao ước đời đời mà Chúa lập với nhà ông.",
+    "language": "vi",
+    "verseEnd": 5,
+    "options": [
+      "Giao ước đời đời, không thay đổi",
+      "Có điều kiện",
+      "Tạm thời",
+      "Chỉ cho Sa-lô-môn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Giao ước",
+      "2 Sa-mu-ên",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 24,
+    "verseStart": 24,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đa-vít nói điều gì khi mua sân lúa để lập bàn thờ?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Sa 24:24 - Của lễ thật đòi hỏi sự hy sinh. Không dâng cho Chúa điều không tốn phí gì.",
+    "language": "vi",
+    "options": [
+      "Chúa đáng được tất cả",
+      "Tôi cho tất cả",
+      "Tôi không dâng cho Chúa của lễ mà không tốn phí gì",
+      "Tôi trả giá tốt nhất"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-vít",
+      "Của lễ",
+      "2 Sa-mu-ên",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  }
+]

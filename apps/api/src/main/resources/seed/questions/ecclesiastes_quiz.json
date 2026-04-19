@@ -1,0 +1,327 @@
+[
+  {
+    "book": "Ecclesiastes",
+    "chapter": 3,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Truyền đạo 3:1 nói điều gì về thời kỳ?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Truyền đạo 3:1 - Mọi sự có thời định. Có kỳ sinh ra, kỳ chết; kỳ trồng, kỳ nhổ; kỳ khóc, kỳ cười...",
+    "language": "vi",
+    "options": [
+      "Không ai biết ngày mai",
+      "Hãy tận dụng thời gian",
+      "Mọi sự đều có thời định, mọi việc dưới trời có kỳ hạn",
+      "Thời gian là vàng bạc"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Khôn ngoan",
+      "Thời định",
+      "Truyền Đạo",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 12,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Kết luận của sách Truyền Đạo là gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Truyền đạo 12:13 - Sau khi khám phá mọi thứ dưới mặt trời, kết luận là: kính sợ Chúa và giữ điều răn. Đây là toàn bộ bổn phận con người.",
+    "language": "vi",
+    "options": [
+      "Hãy tìm kiếm sự khôn ngoan",
+      "Hãy hưởng thụ cuộc sống",
+      "Đời sống là vô nghĩa",
+      "Hãy kính sợ Đức Chúa Trời và giữ các điều răn Ngài"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Khôn ngoan",
+      "Bổn phận",
+      "Truyền Đạo",
+      "Văn Thơ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 1,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Câu nói nổi tiếng của sách Truyền Đạo là gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Truyền đạo 1:2 - Hebel (hư không/hơi nước) nói lên tính tạm thời và vô nghĩa của đời sống dưới mặt trời khi không có Chúa.",
+    "language": "vi",
+    "options": [
+      "Hư không của hư không, thảy đều hư không",
+      "Hãy vui hưởng",
+      "Thời gian là vàng",
+      "Mọi sự đều tốt"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Truyền đạo",
+      "Hư không",
+      "Truyền Đạo",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 3,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Truyền đạo 3:11 nói Chúa đặt gì trong lòng người ta?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Truyền đạo 3:11 - Chúa đặt sự đời đời trong lòng người. Chúng ta được tạo dựng để hướng về vĩnh cửu.",
+    "language": "vi",
+    "options": [
+      "Sự đời đời (ý niệm về sự vĩnh cửu)",
+      "Sự khôn ngoan",
+      "Sự sợ hãi",
+      "Sự vui vẻ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Truyền đạo",
+      "Vĩnh cửu",
+      "Truyền Đạo",
+      "Văn Thơ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 4,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Truyền đạo 4:9 nói gì về việc làm chung?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Truyền đạo 4:9-10 - Hai người hơn một. Nếu người này té, người kia đỡ dậy. Giá trị của tình bạn và cộng đồng.",
+    "language": "vi",
+    "verseEnd": 10,
+    "options": [
+      "Một người tốt hơn",
+      "Ba người là tốt nhất",
+      "Không khác biệt",
+      "Hai người hơn một vì họ được công giá tốt"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Truyền đạo",
+      "Cộng đồng",
+      "Truyền Đạo",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 5,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Truyền đạo 5:10 nói gì về tiền bạc?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Truyền đạo 5:10 - Tiền bạc không bao giờ đủ cho người yêu nó. Sự tham lam không bao giờ thỏa mãn.",
+    "language": "vi",
+    "options": [
+      "Tiền mang lại hạnh phúc",
+      "Tiền là gốc của mọi ác",
+      "Hãy tích trữ nhiều",
+      "Ai yêu bạc không bao giờ đủ bạc"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Truyền đạo",
+      "Tiền bạc",
+      "Truyền Đạo",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 7,
+    "verseStart": 2,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Tại sao Sa-lo-mon nói đến nhà có tang tốt hơn đến nhà ăn tiệc?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Truyền đạo 7:2 - Đối diện với sự chết giúp chúng ta suy nghĩ nghiêm túc về ý nghĩa cuộc sống.",
+    "language": "vi",
+    "options": [
+      "Vì ở đó người ta suy nghĩ về lẽ cuối cùng và sống khôn ngoan hơn",
+      "Vì tôn giáo hơn",
+      "Vì rẻ hơn",
+      "Vì yên tĩnh hơn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Truyền đạo",
+      "Sự chết",
+      "Truyền Đạo",
+      "Văn Thơ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 9,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Truyền đạo 9:10 khuyên làm việc như thế nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Truyền đạo 9:10 - Hãy hết lòng làm việc vì trong Âm phủ không có việc làm hay tri thức nữa.",
+    "language": "vi",
+    "options": [
+      "Để người khác làm",
+      "Hết sức làm mọi việc tay mình làm",
+      "Chỉ làm khi thích",
+      "Làm vừa đủ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Truyền đạo",
+      "Cần cù",
+      "Truyền Đạo",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 11,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Truyền đạo 11:4 cảnh báo điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Truyền đạo 11:4 - Đừng chờ điều kiện hoàn hảo, hãy hành động ngay. Chờ đợi mãi sẽ không bao giờ bắt đầu.",
+    "language": "vi",
+    "options": [
+      "Đừng vội vàng",
+      "Hãy chờ thời tiết tốt",
+      "Kẻ ngóng gió sẽ không gieo, kẻ nhìn mây sẽ không gặt",
+      "Hãy kế hoạch kỹ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Truyền đạo",
+      "Hành động",
+      "Truyền Đạo",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 12,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Truyền đạo 12:1 khuyên hãy nhớ Đấng Sáng Tạo khi nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Truyền đạo 12:1 - Hãy nhớ Chúa khi còn trẻ, đừng chờ đến khi già mới tìm kiếm Ngài.",
+    "language": "vi",
+    "options": [
+      "Trong những ngày thanh xuân (trẻ tuổi)",
+      "Khi già",
+      "Khi thành công",
+      "Khi gặp khó khăn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Truyền đạo",
+      "Thanh xuân",
+      "Truyền Đạo",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 7,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Truyền đạo 7:8: \"Sự cuối cùng của một việc hơn sự ___ nó\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Truyền đạo 7:8 - Sự kiên nhẫn tốt hơn sự kiêu ngạo. Hãy đừng xét đoán quá sớm.",
+    "language": "vi",
+    "options": [
+      "Bắt đầu",
+      "Giữa",
+      "Kế hoạch",
+      "Ý tưởng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Truyền đạo",
+      "Kiên nhẫn",
+      "Truyền Đạo",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ecclesiastes",
+    "chapter": 12,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Truyền đạo 12:7 nói khi chết, thần linh trở về đâu?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Truyền đạo 12:7 - Bụi trở về bụi, thần linh trở về cùng Chúa. Con người có phần thuộc linh vĩnh cửu.",
+    "language": "vi",
+    "options": [
+      "Đi đến Âm phủ",
+      "Trở về cùng Đức Chúa Trời là Đấng đã ban cho",
+      "Ở lại đất",
+      "Tan biến"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Truyền đạo",
+      "Sự chết",
+      "Truyền Đạo",
+      "Văn Thơ",
+      "Trung cấp"
+    ]
+  }
+]

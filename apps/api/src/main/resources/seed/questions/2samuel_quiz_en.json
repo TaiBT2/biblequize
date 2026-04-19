@@ -1,0 +1,334 @@
+[
+  {
+    "book": "2 Samuel",
+    "chapter": 12,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Which prophet confronted David about his sin with Bathsheba?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "2 Samuel 12:7 - The prophet Nathan used the parable of the little lamb to lead David to condemn himself, then declared: \"You are the man!\"",
+    "language": "en",
+    "options": [
+      "Samuel",
+      "Nathan",
+      "Gad",
+      "Asaph"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Repentance",
+      "2 Samuel",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 5,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How many years in total did David reign as king?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "2 Samuel 5:4-5 - David became king at age 30 and reigned for 40 years.",
+    "language": "en",
+    "verseEnd": 5,
+    "options": [
+      "50 years",
+      "20 years",
+      "30 years",
+      "40 years (7 years in Hebron, 33 years in Jerusalem)"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Reign",
+      "2 Samuel",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 6,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "What did David do when the Ark of the Covenant was brought into Jerusalem?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "2 Samuel 6:14 - David danced before the Lord with all his might, without worrying about his kingly image. Wholehearted worship.",
+    "language": "en",
+    "verseEnd": 15,
+    "options": [
+      "Danced before the Lord with all his might",
+      "Read the Law",
+      "Offered silent sacrifices",
+      "Sat on the throne"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Worship",
+      "2 Samuel",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 7,
+    "verseStart": 12,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "What important promise did the Davidic Covenant (2 Samuel 7) contain?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "2 Samuel 7:12-13 - The everlasting throne of David's lineage is fulfilled in Jesus Christ (Luke 1:32-33).",
+    "language": "en",
+    "verseEnd": 13,
+    "options": [
+      "Israel would always win battles",
+      "David would live forever",
+      "The temple would never be destroyed",
+      "The throne of David's lineage would endure forever"
+    ],
+    "tags": [
+      "Old Testament",
+      "Covenant",
+      "Messiah",
+      "2 Samuel",
+      "History",
+      "Advanced"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 9,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "To whom did David show kindness because of his promise to Jonathan?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Samuel 9:7 - Mephibosheth was lame in both feet but was invited by David to eat at the king's table for the rest of his life.",
+    "language": "en",
+    "verseEnd": 7,
+    "options": [
+      "Abner",
+      "Saul",
+      "Mephibosheth, son of Jonathan",
+      "Shimei"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Grace",
+      "2 Samuel",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 11,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "When did David's great sin with Bathsheba begin?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Samuel 11:1-2 - In the season when kings went out to battle, David stayed home. Idleness led to temptation and sin.",
+    "language": "en",
+    "verseEnd": 4,
+    "options": [
+      "During a feast",
+      "While inspecting the land",
+      "When David remained in Jerusalem instead of going to battle",
+      "While taking an afternoon nap"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Temptation",
+      "2 Samuel",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 11,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What did David do to cover up his sin with Bathsheba?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Samuel 11:15 - David wrote a letter to Joab to place Uriah in the most dangerous position. One sin led to another - indirect murder.",
+    "language": "en",
+    "verseEnd": 17,
+    "options": [
+      "Sent Uriah far away",
+      "Fled from Jerusalem",
+      "Arranged for her husband Uriah to die in battle",
+      "Reassigned Uriah's route"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Sin",
+      "2 Samuel",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 12,
+    "verseStart": 23,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "When his son died, what did David say about his hope?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "2 Samuel 12:23 - David believed he would meet his son in the afterlife. Hope of life after death.",
+    "language": "en",
+    "options": [
+      "I shall go to him, but he shall not return to me",
+      "God will give another child",
+      "I will mourn no more",
+      "I will forget about it"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Hope",
+      "2 Samuel",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 15,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Which of David's sons rebelled and proclaimed himself king?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Samuel 15:13-14 - Absalom rebelled, and David had to flee from Jerusalem. A consequence of family sin.",
+    "language": "en",
+    "verseEnd": 14,
+    "options": [
+      "Adonijah",
+      "Amnon",
+      "Absalom",
+      "Solomon"
+    ],
+    "tags": [
+      "Old Testament",
+      "Absalom",
+      "Rebellion",
+      "2 Samuel",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 18,
+    "verseStart": 33,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "How did David react when Absalom died?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "2 Samuel 18:33 - Although Absalom had rebelled, David was still a grieving father. \"O Absalom, my son, my son!\"",
+    "language": "en",
+    "options": [
+      "Rejoiced that the rebellion was over",
+      "Remained silent",
+      "Became angry",
+      "Wept and wished he had died in his son's place"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Fatherly Love",
+      "2 Samuel",
+      "History",
+      "Basic"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 23,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "David's last words emphasized what about God's covenant?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "2 Samuel 23:5 - David affirmed the everlasting covenant that God had made with his house.",
+    "language": "en",
+    "verseEnd": 5,
+    "options": [
+      "An everlasting covenant, unchanging",
+      "Conditional",
+      "Temporary",
+      "Only for Solomon"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Covenant",
+      "2 Samuel",
+      "History",
+      "Intermediate"
+    ]
+  },
+  {
+    "book": "2 Samuel",
+    "chapter": 24,
+    "verseStart": 24,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "What did David say when buying the threshing floor to build an altar?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Samuel 24:24 - True sacrifice requires cost. He would not offer to God something that cost him nothing.",
+    "language": "en",
+    "options": [
+      "The Lord deserves everything",
+      "I give everything",
+      "I will not offer to the Lord sacrifices that cost me nothing",
+      "I will pay the best price"
+    ],
+    "tags": [
+      "Old Testament",
+      "David",
+      "Sacrifice",
+      "2 Samuel",
+      "History",
+      "Intermediate"
+    ]
+  }
+]

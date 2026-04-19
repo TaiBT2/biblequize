@@ -1,0 +1,915 @@
+[
+  {
+    "book": "Mark",
+    "chapter": 1,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sách Mác bắt đầu với lời khẳng định nào về Chúa Giê-su?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Mác 1:1 mở đầu: \"Tin Lành của Đức Chúa Giê-su Christ, Con Đức Chúa Trời\".",
+    "language": "vi",
+    "options": [
+      "Con Đức Chúa Trời",
+      "Tiên tri như Ê-sai",
+      "Vua của Do Thái",
+      "Con loài người"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Lời mở đầu",
+      "Thần học",
+      "Mác",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 1,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su kêu gọi Si-môn và Anh-rê trở nên gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Mác 1:17: \"Hãy theo Ta, Ta sẽ khiến các ngươi trở nên tay đánh lưới người.\"",
+    "language": "vi",
+    "verseEnd": 18,
+    "options": [
+      "Những thầy dạy luật",
+      "Những ngư phủ lưới người",
+      "Những nhà tiên tri",
+      "Những thầy tế lễ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Gọi môn đồ",
+      "Mệnh lệnh",
+      "Mác",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 2,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Người bại liệt được Chúa Giê-su chữa lành sau khi Ngài phán điều gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mác 2:5 trước khi chữa lành phần thân thể, Chúa phán: \"Hỡi con, tội lỗi con đã được tha.\"",
+    "language": "vi",
+    "verseEnd": 12,
+    "options": [
+      "Đức tin con đã cứu con",
+      "Hãy đi rửa ở hồ Si-lô-ê",
+      "Hãy đứng dậy đi",
+      "Tội lỗi con đã được tha"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Tha tội",
+      "Mác",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 4,
+    "verseStart": 35,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi bão tố nổi lên trên biển, Chúa Giê-su đã làm gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Mác 4:39: Ngài quở gió và phán với biển: \"Hãy lặng đi! Yên đi!\"",
+    "language": "vi",
+    "verseEnd": 41,
+    "options": [
+      "Kêu các môn đồ kéo lưới",
+      "Nhảy khỏi thuyền",
+      "Quở gió và phán: Hãy yên đi!",
+      "Cầu mưa"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Tự nhiên",
+      "Mác",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 5,
+    "verseStart": 25,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Người đàn bà bị băng huyết được chữa lành khi làm gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Mác 5:27-29: Chị chạm đến áo Chúa Giê-su và được lành.",
+    "language": "vi",
+    "verseEnd": 34,
+    "options": [
+      "Chạm đến áo Chúa",
+      "Dâng của lễ",
+      "Kêu lớn tiếng",
+      "Nhịn ăn cầu nguyện"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đức tin",
+      "Phép lạ",
+      "Mác",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 10,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su dạy gì về trẻ nhỏ khi người ta đem trẻ đến với Ngài?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Mác 10:14: \"Hãy để con trẻ đến cùng Ta... vì nước Đức Chúa Trời thuộc về những kẻ giống như con trẻ ấy.\"",
+    "language": "vi",
+    "verseEnd": 16,
+    "options": [
+      "Trẻ nhỏ chưa hiểu nên chờ lớn",
+      "Chỉ ban phước cho vài em",
+      "Nước Đức Chúa Trời thuộc về những người giống như trẻ nhỏ",
+      "Đuổi họ đi"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Giáo huấn",
+      "Nước Trời",
+      "Mác",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 1,
+    "verseStart": 21,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Dân chúng ngạc nhiên về điều gì khi Chúa Giê-su giảng dạy tại Ca-bê-na-um?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Mác 1:22: Ngài dạy như có quyền, chứ không như các thầy thông giáo.",
+    "language": "vi",
+    "verseEnd": 28,
+    "options": [
+      "Ngài dạy như có quyền",
+      "Ngài trích dẫn nhiều sách",
+      "Ngài nói thật nhỏ nhẹ",
+      "Ngài dùng dụ ngôn khó hiểu"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Giảng dạy",
+      "Thẩm quyền",
+      "Mác",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 2,
+    "verseStart": 27,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su dạy về ngày Sa-bát như thế nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mác 2:27: \"Ngày Sa-bát vì loài người, chứ không phải loài người vì ngày Sa-bát.\"",
+    "language": "vi",
+    "verseEnd": 28,
+    "options": [
+      "Mọi việc đều cấm",
+      "Loài người vì Sa-bát",
+      "Chỉ thầy tế lễ mới giữ",
+      "Sa-bát vì loài người"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Luật pháp",
+      "Ngày Sa-bát",
+      "Mác",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 3,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Mục đích chính Chúa Giê-su lập mười hai sứ đồ là gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Mác 3:14: để họ ở cùng Ngài và để sai họ đi giảng đạo, có quyền đuổi quỷ.",
+    "language": "vi",
+    "verseEnd": 19,
+    "options": [
+      "Ở với Ngài và sai đi giảng đạo",
+      "Thay Ngài cai trị",
+      "Chăm lo tài chính",
+      "Giữ luật Môi-se"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Môn đồ",
+      "Sứ mạng",
+      "Mác",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 4,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong dụ ngôn người gieo giống, đất tốt biểu trưng cho điều gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mác 4:20: Đất tốt là những người nghe lời, nhận lấy và kết quả.",
+    "language": "vi",
+    "verseEnd": 20,
+    "options": [
+      "Nghe rồi quên",
+      "Bị gai nghẹt",
+      "Bị chim ăn mất",
+      "Nghe và nhận lấy lời, kết quả"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Dụ ngôn",
+      "Tấm lòng",
+      "Mác",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 5,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Người bị quỷ ám ở Ghê-ra-sa xưng tên quỷ là gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Mác 5:9: \"Tên ta là Đạo binh, vì chúng ta là nhiều.\"",
+    "language": "vi",
+    "verseEnd": 20,
+    "options": [
+      "Đạo binh (Legion)",
+      "Bê-ên-xê-bun",
+      "A-sê-ra",
+      "A-ba-đôn"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Giải cứu",
+      "Mác",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 6,
+    "verseStart": 30,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi hóa bánh cho năm ngàn người, có bao nhiêu ổ bánh và bao nhiêu cá?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Mác 6:41: năm cái bánh và hai con cá.",
+    "language": "vi",
+    "verseEnd": 44,
+    "options": [
+      "5 bánh, 2 cá",
+      "7 bánh, 7 cá",
+      "5 bánh, 5 cá",
+      "7 bánh, 2 cá"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Bánh hóa nhiều",
+      "Mác",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 7,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Chúa Giê-su, điều gì làm ô uế con người?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mác 7:20-23: Những điều từ trong lòng ra mới làm ô uế con người.",
+    "language": "vi",
+    "verseEnd": 23,
+    "options": [
+      "Không rửa tay",
+      "Ăn đồ cấm",
+      "Món ăn chưa rửa sạch",
+      "Điều từ trong lòng ra"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đạo đức",
+      "Tấm lòng",
+      "Mác",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 8,
+    "verseStart": 34,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Điều kiện để theo Chúa Giê-su theo Mác 8:34 là gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Mác 8:34: Chối mình, vác thập tự mình hằng ngày mà theo.",
+    "language": "vi",
+    "verseEnd": 38,
+    "options": [
+      "Hiểu hết luật pháp",
+      "Chối mình, vác thập tự, theo Ngài",
+      "Dâng một phần mười",
+      "Giữ mọi ngày lễ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Môn đồ hóa",
+      "Môn đệ",
+      "Mác",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 9,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sự kiện nào xảy ra trên núi cùng với Phi-e-rơ, Gia-cơ và Giăng?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Mác 9:2-8: Chúa Giê-su biến hóa hình, Môi-se và Ê-li hiện ra.",
+    "language": "vi",
+    "verseEnd": 8,
+    "options": [
+      "Bữa Tiệc Ly",
+      "Đuổi quỷ",
+      "Hóa hình",
+      "Thăng thiên"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Vinh hiển",
+      "Khải tượng",
+      "Mác",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 10,
+    "verseStart": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su bảo người trai trẻ giàu có làm gì để có sự sống đời đời?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mác 10:21: Hãy bán hết của cải, bố thí cho người nghèo, rồi theo Ta.",
+    "language": "vi",
+    "verseEnd": 27,
+    "options": [
+      "Giữ thêm lễ nghi",
+      "Học thêm luật pháp",
+      "Tăng của dâng",
+      "Bán hết của cải cho người nghèo và theo Ngài"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Môn đồ",
+      "Tài sản",
+      "Mác",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 11,
+    "verseStart": 12,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su rủa cây vả vì sao?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Mác 11:13-14: Vì không thấy trái nơi nó, Ngài phán rủa.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Không có trái",
+      "Bị sâu",
+      "Ở gần đền thờ",
+      "Không được chăm sóc"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Biểu tượng",
+      "Xét đoán",
+      "Mác",
+      "Phúc Âm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 12,
+    "verseStart": 28,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Điều răn lớn nhất theo Chúa Giê-su trong Mác 12 là gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mác 12:29-31: Mến Chúa hết lòng... và yêu người lân cận như mình.",
+    "language": "vi",
+    "verseEnd": 34,
+    "options": [
+      "Kiêng ăn cầu nguyện",
+      "Dâng phần mười",
+      "Giữ ngày Sa-bát",
+      "Yêu Chúa và yêu người lân cận"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Điều răn lớn",
+      "Đạo đức",
+      "Mác",
+      "Phúc Âm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 13,
+    "verseStart": 32,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Về ngày và giờ Chúa tái lâm, Chúa Giê-su dạy điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Mác 13:32-37: Không ai biết, hãy tỉnh thức và cầu nguyện.",
+    "language": "vi",
+    "verseEnd": 37,
+    "options": [
+      "Người công bình sẽ biết",
+      "Sẽ biết qua dấu trên trời",
+      "Không ai biết, hãy tỉnh thức",
+      "Các thiên sứ sẽ báo trước"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cánh chung",
+      "Tỉnh thức",
+      "Mác",
+      "Phúc Âm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 15,
+    "verseStart": 33,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Viên đội trưởng La-mã nói gì khi thấy Chúa Giê-su tắt thở?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Mác 15:39: Viên đội trưởng tuyên xưng Ngài là Con Đức Chúa Trời.",
+    "language": "vi",
+    "verseEnd": 39,
+    "options": [
+      "Người này là vua Do Thái",
+      "Người này là tiên tri",
+      "Thật, người này là Con Đức Chúa Trời!",
+      "Hẳn người này là người vô tội"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Lời chứng",
+      "Thập tự",
+      "Mác",
+      "Phúc Âm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 2,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su nói: \"Người khỏe mạnh không cần thầy thuốc, nhưng người ___ mới cần\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mác 2:17 - Chúa Giê-su đến không phải để gọi người công bình, nhưng để gọi kẻ có tội ăn năn.",
+    "language": "vi",
+    "options": [
+      "Nghèo",
+      "Yếu đuối",
+      "Cô đơn",
+      "Đau"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Sứ vụ Giê-su",
+      "Ân điển",
+      "Mác",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 10,
+    "verseStart": 45,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su nói Con Người đến không phải để được ___, nhưng để ___",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Mác 10:45 - Đây là tóm tắt sứ vụ của Chúa Giê-su: phục vụ và hy sinh mạng sống chuộc tội cho nhiều người.",
+    "language": "vi",
+    "options": [
+      "Được tôn thờ / tôn thờ",
+      "Làm vua / làm vua",
+      "Phục vụ / phục vụ và phó mạng sống làm giá chuộc",
+      "Xét đoán / tha thứ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phục vụ",
+      "Cứu chuộc",
+      "Mác",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 12,
+    "verseStart": 41,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tại sao Chúa Giê-su khen bà goá bỏ 2 đồng xu nhỏ?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mác 12:44 - Người giàu cho từ sự dư, nhưng bà goá cho tất cả những gì bà có để sinh sống. Chúa nhìn tâm lòng và sự hy sinh.",
+    "language": "vi",
+    "verseEnd": 44,
+    "options": [
+      "Vì bà làm công khai",
+      "Vì bà nghèo",
+      "Vì bà có đức tin",
+      "Bà cho tất cả những gì bà có để sống"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Dâng hiến",
+      "Tâm lòng",
+      "Mác",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 1,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sứ điệp đầu tiên của Chúa Giê-su khi bắt đầu sứ vụ là gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mac 1:15 - Tóm tắt toàn bộ sứ điệp của Chúa Giê-su trong một câu.",
+    "language": "vi",
+    "options": [
+      "Hãy xây đền thờ",
+      "Hãy theo ta",
+      "Hãy giữ luật pháp",
+      "Kỳ đã trọn, nước Chúa đã đến gần, hãy ăn năn và tin Phúc Âm"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phúc Âm",
+      "Ăn năn",
+      "Mác",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 4,
+    "verseStart": 39,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su nói gì để biển lặng?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Mac 4:39 - Chúa có quyền trên thiên nhiên. Gió và biển đều vâng lời Ngài.",
+    "language": "vi",
+    "options": [
+      "Im đi, lặng đi!",
+      "Hãy bình an",
+      "Đừng sợ",
+      "Hãy yên tĩnh"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Quyền năng",
+      "Mác",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 6,
+    "verseStart": 41,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su cho 5000 người ăn với bao nhiêu bánh và cá?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mac 6:41 - Từ 5 bánh 2 cá, 5000 người ăn no và còn dư 12 giỏ đầy.",
+    "language": "vi",
+    "verseEnd": 44,
+    "options": [
+      "10 bánh",
+      "3 bánh và 5 cá",
+      "7 bánh và 3 cá",
+      "5 cái bánh và 2 con cá"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phép lạ",
+      "Cung ứng",
+      "Mác",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 8,
+    "verseStart": 34,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su nói điều kiện theo Ngài là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Mac 8:34 - Theo Chúa đòi hỏi từ bỏ ý riêng và sẵn sàng chịu khổ vì Ngài.",
+    "language": "vi",
+    "options": [
+      "Tài năng",
+      "Học thức",
+      "Từ bỏ mình, vác thập tự giá và theo ta",
+      "Giàu có"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Môn đồ",
+      "Thập tự",
+      "Mác",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 9,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Người cha xin Chúa chữa con bị quỷ ám nói: \"Tôi tin, xin Chúa giúp sự ___\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Mac 9:24 - Lời cầu nguyện thật thà nhất: thừa nhận đức tin yếu và xin Chúa giúp.",
+    "language": "vi",
+    "verseEnd": 24,
+    "options": [
+      "Sợ hãi của tôi",
+      "Yếu đuối của tôi",
+      "Ít đức tin của tôi",
+      "Ngu dốt của tôi"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đức tin",
+      "Thật thà",
+      "Mác",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 10,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su nói phải nhận nước Chúa như ai?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mac 10:15 - Con trẻ tin đơn giản, không nghi ngờ. Đức tin cần sự đơn sơ và tin cậy.",
+    "language": "vi",
+    "verseEnd": 15,
+    "options": [
+      "Như chiến binh",
+      "Như vua",
+      "Như học giả",
+      "Như con trẻ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Nước Chúa",
+      "Khiêm nhường",
+      "Mác",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 11,
+    "verseStart": 24,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Mac 11:24: Khi cầu nguyện, hãy tin rằng mình đã ___ thì sẽ được",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Cầu nguyện với đức tin là tin rằng Chúa đã nghe và đáp lời trước khi thấy kết quả.",
+    "language": "vi",
+    "options": [
+      "Thấy",
+      "Hiểu",
+      "Nhận được",
+      "Nghe"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cầu nguyện",
+      "Đức tin",
+      "Mác",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 14,
+    "verseStart": 36,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tại Ghết-sê-ma-nê, Chúa Giê-su cầu nguyện: \"Áp-ba, Cha ơi, xin cất chén này, nhưng không theo ___\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Mac 14:36 - Chúa Giê-su phục tùng ý Cha dù biết sự đau khổ phía trước. Khuôn mẫu cầu nguyện.",
+    "language": "vi",
+    "options": [
+      "Ý môn đồ",
+      "Ý thầy tế lễ",
+      "Ý con nhưng theo ý Cha",
+      "Ý thế gian"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ghết-sê-ma-nê",
+      "Vâng phục",
+      "Mác",
+      "Phúc Âm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 15,
+    "verseStart": 34,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su kêu trên thập tự: \"Ê-loi, Ê-loi, la-ma sa-bác-ta-ni?\" Đây là tiếng gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Mac 15:34 - Trích Thi 22:1. Chúa Giê-su gánh tội lỗi nhân loại và bị Cha quay mặt.",
+    "language": "vi",
+    "options": [
+      "Hê-bơ-rơ",
+      "Hy Lạp",
+      "La-tinh",
+      "A-ram, nghĩa là: Đức Chúa Trời tôi, sao Ngài bỏ tôi?"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thập tự",
+      "Cứu chuộc",
+      "Mác",
+      "Phúc Âm",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Mark",
+    "chapter": 16,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa Giê-su sai môn đồ: \"Hãy đi khắp ___ giảng Phúc Âm cho mọi loài người\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Mac 16:15 - Phúc Âm không chỉ cho người Do-thái mà cho mọi người, mọi nơi, mọi dân tộc.",
+    "language": "vi",
+    "options": [
+      "Giu-đê",
+      "Giê-ru-sa-lem",
+      "Thế gian",
+      "Y-sơ-ra-ên"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đại mạng lệnh",
+      "Truyền giáo",
+      "Mác",
+      "Phúc Âm",
+      "Cơ bản"
+    ]
+  }
+]

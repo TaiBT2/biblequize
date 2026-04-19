@@ -1,0 +1,351 @@
+[
+  {
+    "book": "Daniel",
+    "chapter": 1,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đa-ni-ên định ý trong lòng không làm gì tại Ba-by-lon?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Đa-ni-ên 1:8 - Đa-ni-ên giữ nguyên tắc dù ở xứ lạ. Chúa ban phước cho sự trung tín.",
+    "language": "vi",
+    "options": [
+      "Không học tiếng Ba-by-lon",
+      "Không tự ô mình bằng thức ăn và rượu của vua",
+      "Không làm việc",
+      "Không nói chuyện"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-ni-ên",
+      "Trung tín",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Daniel",
+    "chapter": 2,
+    "verseStart": 44,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Giấc mơ của vua Nê-bu-cát-nết-sa về pho tượng tiên tri về điều gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Đa-ni-ên 2:44 - Hòn đá không bị tay cắt ra = Vương quốc Chúa sẽ hạ mọi vương quốc và còn lại đời đời.",
+    "language": "vi",
+    "verseEnd": 45,
+    "options": [
+      "Các đế quốc thế giới và vương quốc đời đời của Chúa",
+      "Về tương lai gần",
+      "Chỉ về Ba-by-lon",
+      "Về chiến tranh"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-ni-ên",
+      "Tiên tri",
+      "Đại Tiên Tri",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Daniel",
+    "chapter": 3,
+    "verseStart": 25,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi nhìn vào lò lửa, vua thấy bao nhiêu người thay vì 3?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Đa-ni-ên 3:25 - Người thứ tư có thể là thiên sứ hoặc sự hiện ra của Chúa. Ngài ở cùng con cái Ngài trong lửa.",
+    "language": "vi",
+    "options": [
+      "5 người",
+      "3 người",
+      "2 người",
+      "4 người, người thứ tư giống như con của các thần"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-ni-ên",
+      "Bảo vệ",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Daniel",
+    "chapter": 4,
+    "verseStart": 30,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vua Nê-bu-cát-nết-sa bị phạt thế nào vì kiêu ngạo?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Đa-ni-ên 4:33 - 7 kỳ sống như thú. Khi hồi tâm, vua ngợi khen Chúa. Bài học về sự khiêm nhường.",
+    "language": "vi",
+    "verseEnd": 33,
+    "options": [
+      "Mất ngôi",
+      "Sống như thú vật, ăn cỏ 7 kỳ cho đến khi nhận ra Chúa cai trị",
+      "Bị lưu đày",
+      "Bị giết"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-ni-ên",
+      "Kiêu ngạo",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Daniel",
+    "chapter": 5,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong tiệc của vua Bên-sa-xa, điều gì xuất hiện trên tường?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Đa-ni-ên 5:5 - Bàn tay viết: Mê-nê, Mê-nê, Tê-ken, U-phác-sin. Vương quốc đã được cân và thiếu.",
+    "language": "vi",
+    "options": [
+      "Mặt người",
+      "Lửa",
+      "Bàn tay viết chữ trên tường",
+      "Ánh sáng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-ni-ên",
+      "Phán xét",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Daniel",
+    "chapter": 6,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi biết luật cấm cầu nguyện, Đa-ni-ên làm gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Đa-ni-ên 6:10 - Đa-ni-ên không thay đổi thói quen cầu nguyện dù bị đe dọa. Đức tin không bị đe dọa.",
+    "language": "vi",
+    "options": [
+      "Cầu nguyện ít hơn",
+      "Cầu nguyện kín",
+      "Vẫn cầu nguyện 3 lần mỗi ngày như trước",
+      "Ngưng cầu nguyện"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-ni-ên",
+      "Cầu nguyện",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Daniel",
+    "chapter": 7,
+    "verseStart": 13,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Đa-ni-ên 7:13 thấy \"một Đấng giống như Con Người\" đến trên mây trời. Đây là ai?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Chúa Giê-su tự xưng là Con Người (Mat 26:64) và trích Đa-ni-ên 7:13 về sự tái lâm của Ngài.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Thiên sứ Mi-ca-ên",
+      "Chúa Giê-su Christ",
+      "Môi-se",
+      "Ê-li"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Con Người",
+      "Đa-ni-ên",
+      "Đại Tiên Tri",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Daniel",
+    "chapter": 9,
+    "verseStart": 25,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Lời tiên tri 70 tuần lễ (490 năm) của Đa-ni-ên tiên tri về sự kiện gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Đa-ni-ên 9:25-26 - 69 tuần (483 năm) từ lúc ra lệnh xây lại đến khi Đấng Cứu Thế bị cắt off. Ứng nghiệm chính xác.",
+    "language": "vi",
+    "verseEnd": 26,
+    "options": [
+      "Sự phục hồi đền thờ",
+      "Thời điểm Đấng Cứu Thế đến và bị giết",
+      "Ngày tận thế",
+      "Lễ Ngũ Tuần"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Thời điểm",
+      "Đa-ni-ên",
+      "Đại Tiên Tri",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Daniel",
+    "chapter": 12,
+    "verseStart": 2,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đa-ni-ên 12:2 tiên tri về điều gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Đa-ni-ên 12:2 - Một trong những tiên tri rõ ràng nhất về sự phục sinh trong Cựu Ước.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Không có phục sinh",
+      "Sự phục sinh: người sống lại, kẻ được sống đời đời, kẻ bị xấu hổ đời đời",
+      "Chỉ phục sinh thuộc linh",
+      "Chỉ sự phục sinh người tốt"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-ni-ên",
+      "Phục sinh",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Daniel",
+    "chapter": 10,
+    "verseStart": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Tại sao thiên sứ đến với Đa-ni-ên bị trễ 21 ngày?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Đa-ni-ên 10:13 - Có chiến trận thuộc linh đằng sau mọi sự. Cầu nguyện ảnh hưởng thế giới vô hình.",
+    "language": "vi",
+    "verseEnd": 13,
+    "options": [
+      "Chúa giao việc khác",
+      "Bị lạc đường",
+      "Bị quan trưởng Ba-tư (thế lực thuộc linh) cản trở",
+      "Không biết"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-ni-ên",
+      "Chiến trận linh",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Daniel",
+    "chapter": 12,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lời cuối cùng Chúa nói với Đa-ni-ên là gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Đa-ni-ên 12:13 - Lời hứa phục sinh và phần thưởng cho người trung tín. Hy vọng cho mọi tín đồ.",
+    "language": "vi",
+    "options": [
+      "Hãy nói cho người khác",
+      "Hãy đi cho đến cuối cùng, người sẽ nghỉ ngơi và sẽ đứng lại trong phần mình",
+      "Hãy đợi",
+      "Hãy viết thêm"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-ni-ên",
+      "Hy vọng",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Daniel",
+    "chapter": 3,
+    "verseStart": 17,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ba bạn trẻ Do-thái từ chối thờ tượng vàng của vua. Họ nói gì khi bị đe dọa ném vào lò lửa?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Đa-ni-ên 3:17-18 - Đức tin không điều kiện: tin Chúa có thể giải cứu nhưng vẫn trung tín dù kết quả nào.",
+    "language": "vi",
+    "verseEnd": 18,
+    "options": [
+      "Hãy tha cho chúng tôi",
+      "Chúa chúng tôi có thể giải cứu, nhưng dù không, chúng tôi vẫn không thờ tượng",
+      "Chúng tôi sẽ cầu nguyện",
+      "Chúa sẽ giải cứu chúng tôi"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đức tin",
+      "Can đảm",
+      "Đa-ni-ên",
+      "Đại Tiên Tri",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Daniel",
+    "chapter": 6,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đa-ni-ên bị ném vào hang gì vì từ chối ngừng cầu nguyện?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Đa-ni-ên 6:16 - Đa-ni-ên bị ném vào hang sư tử nhưng Chúa sai thiên sứ bịt miệng sư tử. Trung tín với Chúa bất kể hậu quả.",
+    "language": "vi",
+    "verseEnd": 22,
+    "options": [
+      "Ngục tối",
+      "Lò lửa",
+      "Hố sâu",
+      "Hang sư tử"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Đa-ni-ên",
+      "Đức tin",
+      "Đại Tiên Tri",
+      "Cơ bản"
+    ]
+  }
+]

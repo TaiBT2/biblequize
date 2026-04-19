@@ -14,6 +14,10 @@ public class UserResponse {
     private LocalDateTime updatedAt;
     private Integer currentStreak;
     private Integer longestStreak;
+    private Boolean earlyRankedUnlock;
+    private Integer practiceCorrectCount;
+    private Integer practiceTotalCount;
+    private LocalDateTime earlyRankedUnlockedAt;
 
     public UserResponse() {}
 
@@ -27,6 +31,10 @@ public class UserResponse {
         this.updatedAt = user.getUpdatedAt();
         this.currentStreak = user.getCurrentStreak();
         this.longestStreak = user.getLongestStreak();
+        this.earlyRankedUnlock = user.getEarlyRankedUnlock();
+        this.practiceCorrectCount = user.getPracticeCorrectCount();
+        this.practiceTotalCount = user.getPracticeTotalCount();
+        this.earlyRankedUnlockedAt = user.getEarlyRankedUnlockedAt();
     }
     
     // Getters and Setters
@@ -56,4 +64,16 @@ public class UserResponse {
 
     public Integer getLongestStreak() { return longestStreak; }
     public void setLongestStreak(Integer longestStreak) { this.longestStreak = longestStreak; }
+
+    public Boolean getEarlyRankedUnlock() { return earlyRankedUnlock; }
+    public void setEarlyRankedUnlock(Boolean earlyRankedUnlock) { this.earlyRankedUnlock = earlyRankedUnlock; }
+
+    public Integer getPracticeCorrectCount() { return practiceCorrectCount; }
+    public void setPracticeCorrectCount(Integer practiceCorrectCount) { this.practiceCorrectCount = practiceCorrectCount; }
+
+    public Integer getPracticeTotalCount() { return practiceTotalCount; }
+    public void setPracticeTotalCount(Integer practiceTotalCount) { this.practiceTotalCount = practiceTotalCount; }
+
+    public LocalDateTime getEarlyRankedUnlockedAt() { return earlyRankedUnlockedAt; }
+    public void setEarlyRankedUnlockedAt(LocalDateTime earlyRankedUnlockedAt) { this.earlyRankedUnlockedAt = earlyRankedUnlockedAt; }
 }

@@ -1,0 +1,359 @@
+[
+  {
+    "book": "2 Kings",
+    "chapter": 2,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ê-li được cất lên trời bằng phương tiện gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "2 Các Vua 2:11 - Xe lửa và ngựa lửa phân cách hai người, rồi Ê-li được cất lên trời trong cơn gió lốc.",
+    "language": "vi",
+    "options": [
+      "Cột lửa",
+      "Xe lửa và ngựa lửa trong cơn gió lốc",
+      "Đám mây",
+      "Thiên sứ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-li",
+      "Phép lạ",
+      "2 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Kings",
+    "chapter": 2,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ê-li-sê xin điều gì trước khi Ê-li được cất đi?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "2 Các Vua 2:9 - Hai phần thần (phần trưởng tử) cho thấy Ê-li-sê muốn tiếp nối sứ vụ cách trọn vẹn.",
+    "language": "vi",
+    "options": [
+      "Sự giàu có",
+      "Hai phần thần của Ê-li",
+      "Sống lâu",
+      "Quyền lực"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-li-sê",
+      "Thánh Linh",
+      "2 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Kings",
+    "chapter": 4,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ê-li-sê giúp bà góa có nợ bằng phép lạ gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Các Vua 4:6 - Dầu chảy đầy mọi bình bà muốn được. Chúa nhân lên điều ít ỏi để đủ dùng.",
+    "language": "vi",
+    "verseEnd": 7,
+    "options": [
+      "Con giải nợ",
+      "Vàng từ trời",
+      "Dầu ô-liu từ bình chảy không hết vào các bình khác",
+      "Bàn thờ gửi tiền"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-li-sê",
+      "Phép lạ",
+      "2 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Kings",
+    "chapter": 4,
+    "verseStart": 32,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ê-li-sê làm gì để con trai người phụ nữ Su-nem sống lại?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "2 Các Vua 4:34 - Ê-li-sê nằm áp lên, miệng kề miệng, mắt kề mắt. Đứa trẻ hắt xì 7 lần và sống lại.",
+    "language": "vi",
+    "verseEnd": 35,
+    "options": [
+      "Gọi tiên tri khác",
+      "Rao luật pháp",
+      "Dâng của lễ",
+      "Nằm áp lên đứa trẻ và cầu nguyện"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-li-sê",
+      "Phục sinh",
+      "2 Các Vua",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Kings",
+    "chapter": 5,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tướng Na-a-man được chữa bệnh phong bằng cách nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "2 Các Vua 5:14 - Na-a-man tắm 7 lần theo lời Ê-li-sê. Dù ban đầu giận dữ vì nghĩ cách này quá đơn giản.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Tắm 7 lần dưới sông Gio-đan",
+      "Uống thuốc",
+      "Dâng của lễ",
+      "Cầu nguyện"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Na-a-man",
+      "Vâng lời",
+      "2 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Kings",
+    "chapter": 6,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ê-li-sê nói với đầy tớ: \"Đừng sợ, vì những kẻ ở với chúng ta đông hơn...\" Khi mắt mở ra thấy gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Các Vua 6:17 - Thế giới thuộc linh có quân đội Chúa bảo vệ. Điều mắt thường không thấy.",
+    "language": "vi",
+    "verseEnd": 17,
+    "options": [
+      "Đội quân lớn",
+      "Thiên sứ",
+      "Núi đầy xe lửa và ngựa lửa bao quanh",
+      "Đám mây sáng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-li-sê",
+      "Bảo vệ",
+      "2 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Kings",
+    "chapter": 17,
+    "verseStart": 6,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vương quốc phía Bắc (Y-so-ra-en) bị đế quốc nào tiêu diệt năm 722 TCN?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "2 Các Vua 17:6 - A-si-ri bắt Y-so-ra-en làm phu tù. 10 chi phái bị phân tán không bao giờ phục hồi.",
+    "language": "vi",
+    "options": [
+      "Ba-by-lôn",
+      "Ba-tư",
+      "Ai-cập",
+      "A-si-ri"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Lịch sử",
+      "Lưu đày",
+      "2 Các Vua",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Kings",
+    "chapter": 22,
+    "verseStart": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vua Giô-si-a tìm thấy gì trong đền thờ đã được quên lãng?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "2 Các Vua 22:8 - Tìm lại sách luật pháp dẫn đến cuộc cải cách lớn nhất trong lịch sử Giu-đa.",
+    "language": "vi",
+    "verseEnd": 11,
+    "options": [
+      "Sách luật pháp (Torah)",
+      "Vàng bạc",
+      "Hòm Giao Ước",
+      "Áo thầy tế lễ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giô-si-a",
+      "Cải cách",
+      "2 Các Vua",
+      "Lịch sử",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Kings",
+    "chapter": 23,
+    "verseStart": 25,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Vua nào được khen là yêu Chúa hết lòng, hết linh hồn, hết sức hơn bất kỳ vua nào?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Các Vua 23:25 - Trước và sau Giô-si-a, không có vua nào quay lại Chúa hết lòng như ông.",
+    "language": "vi",
+    "options": [
+      "Ê-xê-chia",
+      "Đa-vít",
+      "Giô-si-a",
+      "Sa-lô-môn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Giô-si-a",
+      "Hết lòng",
+      "2 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Kings",
+    "chapter": 20,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúa thêm bao nhiêu năm cho vua Ê-xê-chia sau khi ông cầu nguyện?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "2 Các Vua 20:6 - Chúa nghe lời cầu nguyện của Ê-xê-chia và thêm 15 năm cho đời ông.",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "15 năm",
+      "40 năm",
+      "10 năm",
+      "7 năm"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-xê-chia",
+      "Cầu nguyện",
+      "2 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Kings",
+    "chapter": 25,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Vương quốc Giu-đa bị đế quốc nào tiêu diệt và đền thờ bị phá năm 586 TCN?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Các Vua 25:8-9 - Nê-bu-cát-nết-sa đốt đền thờ, phá tường thành và bắt dân lưu đày Ba-by-lôn.",
+    "language": "vi",
+    "verseEnd": 11,
+    "options": [
+      "A-si-ri",
+      "Ai-cập",
+      "Ba-by-lôn (Nê-bu-cát-nết-sa)",
+      "Ba-tư"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Lịch sử",
+      "Lưu đày",
+      "2 Các Vua",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Kings",
+    "chapter": 4,
+    "verseStart": 42,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ê-li-sê cho bao nhiêu người ăn với 20 ổ bánh lúa mạch?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "2 Các Vua 4:44 - 100 người ăn và còn dư. Tiền báo phép lạ Chúa Giê-su cho 5000 người ăn.",
+    "language": "vi",
+    "verseEnd": 44,
+    "options": [
+      "100 người và còn dư",
+      "1000 người",
+      "50 người",
+      "200 người"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-li-sê",
+      "Phép lạ",
+      "2 Các Vua",
+      "Lịch sử",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Kings",
+    "chapter": 13,
+    "verseStart": 21,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Điều gì xảy ra khi một xác chết chạm xuống cốt của Ê-li-sê trong mồ?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Các Vua 13:21 - Ngay cả sau khi chết, xương Ê-li-sê vẫn có quyền năng phục sinh. Cho thấy quyền năng Chúa.",
+    "language": "vi",
+    "options": [
+      "Âm thanh lớn",
+      "Mồ sáng lên",
+      "Người chết sống lại",
+      "Đất rung"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Ê-li-sê",
+      "Phục sinh",
+      "2 Các Vua",
+      "Lịch sử",
+      "Nâng cao"
+    ]
+  }
+]

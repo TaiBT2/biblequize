@@ -5,13 +5,7 @@
     "disciple": "Disciple",
     "sage": "Sage",
     "prophet": "Prophet",
-    "apostle": "Apostle",
-    "spark": "New Believer",
-    "dawn": "Seeker",
-    "lamp": "Disciple",
-    "flame": "Sage",
-    "star": "Prophet",
-    "glory": "Apostle"
+    "apostle": "Apostle"
   },
   "common": {
     "loading": "Loading...",
@@ -89,6 +83,16 @@
       "claimButton": "Claim now! 🎁",
       "claiming": "..."
     },
+    "earlyUnlock": {
+      "title": "Congratulations!",
+      "subtitle": "You unlocked Ranked Mode early!",
+      "description": "Your Practice accuracy cleared the threshold — you can jump into Ranked right now, no need to grind XP.",
+      "descriptionWithPct": "Your Practice accuracy of {{pct}}% cleared the threshold — you can jump into Ranked right now, no need to grind XP.",
+      "badgeLabel": "Diligent Student Perk",
+      "badgeHint": "Permanent — even if your accuracy drops later.",
+      "playRankedBtn": "Play Ranked Now",
+      "continuePracticeBtn": "Keep Practicing"
+    },
     "starPopup": {
       "newStar": "New star! +{{count}} XP",
       "progress": "Star {{current}}/{{total}}"
@@ -163,10 +167,26 @@
     "profile": "Profile",
     "achievements": "Achievements",
     "settings": "Settings",
+    "help": "Help",
     "adminPanel": "Admin Panel"
   },
   "admin": {
     "backToApp": "Back to app",
+    "earlyUnlock": {
+      "navLabel": "Early Unlock",
+      "pageTitle": "Early Ranked Unlock Metrics",
+      "subtitle": "Track how many users cross the ≥80% Practice accuracy threshold and unlock Ranked early.",
+      "kpiTotal": "Total unlockers",
+      "kpiTotalHint": "All-time",
+      "kpiLast7Days": "Last 7 days",
+      "kpiLast30Days": "Last 30 days",
+      "kpiAvgAccuracy": "Avg accuracy",
+      "kpiAvgAccuracyHint": "At moment of unlock",
+      "timelineTitle": "Unlocks per day (30 days)",
+      "emptyState": "No one has unlocked early yet. Waiting for Practice data to accrue.",
+      "noAccuracy": "—",
+      "loading": "Loading..."
+    },
     "questions": {
       "title": "Questions",
       "countSuffix": "{{count}} questions",
@@ -725,6 +745,7 @@
     "conqueredAll": "You've conquered them all!",
     "gameModes": "Game Modes",
     "explore6Modes": "EXPLORE 6 MODES",
+    "exploreModes": "EXPLORE {{count}} MODES",
     "leaderboard": "Leaderboard",
     "daily": "Daily",
     "weekly": "Weekly",
@@ -733,14 +754,92 @@
     "you": "You ({{name}})",
     "viewAll": "View all",
     "recentActivity": "Recent Activity",
-    "activityReachedTier": "<b>{{name}}</b> just reached <b>{{tier}}</b>",
-    "activityJoinedGroup": "<b>{{name}}</b> joined your Church Group.",
-    "activityStreak": "<b>{{name}}</b> maintained a {{count}}-day streak!",
+    "activityReachedTier": "just reached {{tier}}",
+    "activityJoinedGroup": "joined your Church Group.",
+    "activityStreak": "maintained a {{days}}-day streak!",
     "dailyVerse": "TODAY'S VERSE",
     "verseToday": "Today's verse",
     "dailyMissions": "Today's missions",
     "received": "Received",
-    "dayStreak": "day streak"
+    "dayStreak": "day streak",
+    "recommend": {
+      "badge": "✨ Recommended for you",
+      "streakAboutToBreak": "{{streak}}-day streak ending soon — {{hours}}h left",
+      "onboarding": "Start your journey — practice without pressure",
+      "dailyAvailable": "Daily challenge pending — just 5 minutes",
+      "fullEnergy": "Energy full ({{energy}}/{{max}}) — climb the rank!",
+      "default": "Ready for a challenge?"
+    }
+  },
+  "help": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Understand Bible Quiz to play more effectively",
+    "searchPlaceholder": "Search questions...",
+    "emptyResult": "No matching questions found.",
+    "backToTop": "Back to top",
+    "contactHint": "Still have questions?",
+    "contactCta": "Send us feedback",
+    "categories": {
+      "gettingStarted": "🚀 Getting Started",
+      "tiers": "🎯 Tiers & Points",
+      "modes": "🎮 Game Modes",
+      "gameplay": "💡 Gameplay",
+      "account": "🛡️ Account & Privacy"
+    },
+    "items": {
+      "howToPlay": {
+        "q": "How do I start playing?",
+        "a": "Begin with Practice mode — no time limit, no energy cost. Pick a Bible book, difficulty, question count, and start. Practice is the onboarding path: it doesn't grant XP directly, but answering ≥80% correctly over 10+ questions unlocks Ranked mode early (without waiting to reach 1,000 XP). Ranked is where you earn XP toward your tier."
+      },
+      "bibleTranslation": {
+        "q": "Which Bible translation does the app use?",
+        "a": "English questions use the English Standard Version (ESV). Vietnamese uses the Revised Vietnamese Version 2011 (RVV11). Both are widely adopted Protestant translations — faithful to the original languages and accessible to modern readers."
+      },
+      "changeLanguage": {
+        "q": "How do I switch question language between Vietnamese and English?",
+        "a": "Click your avatar (top right) → toggle VI/EN under the 'Questions' item. The change takes effect immediately — the next question renders in your chosen language. Switch anytime."
+      },
+      "tierSystem": {
+        "q": "How does the tier system work?",
+        "a": "Six tiers: New Believer (0 XP) → Seeker (1,000) → Disciple (5,000) → Sage (15,000) → Prophet (40,000) → Apostle (100,000). Tiers only rise, never fall — based on lifetime XP total. Each tier unlocks new modes and boosts XP multiplier (Prophet 1.5×, Apostle 2×)."
+      },
+      "howUnlockRanked": {
+        "q": "When does Ranked mode unlock?",
+        "a": "Two paths unlock Ranked: (1) Reach Seeker tier (1,000 XP), or (2) Early-unlock — play Practice with ≥80% accuracy over at least 10 answered questions. Path 2 is usually the fastest for new users because Practice has no energy cost and no time pressure. Once you unlock Ranked, XP starts accumulating toward the next tier."
+      },
+      "howEarnXp": {
+        "q": "How do I earn XP and can I lose it?",
+        "a": "XP comes exclusively from Ranked mode. Each correct Ranked answer scores Easy +10, Medium +20, Hard +30 with bonuses for fast answers (<5s) +5 and a combo multiplier 1.2/1.5/2.0×. Practice, Daily Challenge, and other modes don't grant XP — they contribute to history, streaks, and the early-unlock path. Wrong answers don't cost XP (they cost energy in Ranked). Lifetime XP only goes up."
+      },
+      "practiceVsRanked": {
+        "q": "How is Practice different from Ranked?",
+        "a": "Practice: free, unlimited, pick any book/difficulty, shows explanations after each question, unlimited hints. Ranked: costs energy (5 per wrong answer), questions are random, no book selection, but only Ranked plays count toward the leaderboard. Practice to learn, Ranked to compete."
+      },
+      "dailyStreak": {
+        "q": "How do Daily Challenge and Streak work?",
+        "a": "Daily Challenge: 5 questions per day, once per day. Completing it increments your streak by 1. Miss a day → streak resets to 0. Milestones: 7 days (Persistence badge), 30 days (Endurance), 100 days (Steadfast) — each grants +200–1000 XP. From tier 3 you earn a Streak Freeze that forgives one missed day."
+      },
+      "groupsTournament": {
+        "q": "What are Church Groups and Tournaments?",
+        "a": "Church Groups: join or create a group around your congregation/cell, with a group-only leaderboard, play alongside fellow believers. Tournaments: 1v1 bracket elimination, requires Sage tier or above. Group leaders can organize private tournaments for their members."
+      },
+      "energySystem": {
+        "q": "How does the energy system (⚡) work?",
+        "a": "You get 100 energy per day. Ranked costs 5 energy per wrong answer (correct = free). When energy runs out you can't play Ranked — switch to Practice (free) or wait for midnight reset. Regen scales with tier: New Believer 20/hour, Sage 28/hour, Apostle 35/hour."
+      },
+      "lifelines": {
+        "q": "When and how can I use Hints (Lifelines)?",
+        "a": "During a quiz, press the 💡 Hint button to eliminate one wrong option. Practice: unlimited. Ranked: 2 per session. Multiplayer/Tournament: disabled (fair play). The algorithm is smart — it eliminates the least-chosen wrong answer first, keeping the strong distractor to train your judgment."
+      },
+      "dataPrivacy": {
+        "q": "Is my gameplay data private?",
+        "a": "Your detailed answers and session history are visible only to you. Publicly displayed: name, avatar, tier, total XP (on leaderboard). NOT displayed: email, per-question answers, wrong/right history. We don't share data with third parties. Full details in the Privacy Policy linked from the footer."
+      },
+      "deleteAccount": {
+        "q": "How do I delete my account and data?",
+        "a": "Go to Profile → scroll to the bottom → tap 'Delete account'. All progress, sessions, and answers will be permanently erased within 7 days. Your name disappears from the leaderboard immediately. This action is NOT reversible. If you just want a break, simply stop logging in — data stays."
+      }
+    }
   },
   "landing": {
     "tagline": "NEXT-GEN BIBLE LEARNING APP",
@@ -1253,6 +1352,15 @@
     "tournamentBtn": "Join Tournament",
     "noEnergy": "No Energy",
     "dailyCompleted": "Completed",
+    "lockedBadge": "Locked",
+    "unlockAt": "Reach {{tier}} to unlock",
+    "unlockAtWithPoints": "{{points}} more XP to reach {{tier}}",
+    "unlockCta": "Requires {{tier}}",
+    "unlockCtaEarnXp": "Practice to earn XP",
+    "learnMore": "Learn more →",
+    "orEarlyUnlock": "Or unlock early:",
+    "earlyUnlockReady": "Ready — just answer one more correctly!",
+    "earlyUnlockRemaining": "{{correct}}/{{total}} correct ({{acc}}%) — need {{need}} more correct",
     "weekly": "Weekly Theme",
     "weeklyDesc": "A new theme each week. 10 questions, rotating 10 themes.",
     "weeklyBtn": "Play Now",

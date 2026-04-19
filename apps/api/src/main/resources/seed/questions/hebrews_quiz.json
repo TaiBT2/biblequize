@@ -1,0 +1,329 @@
+[
+  {
+    "book": "Hebrews",
+    "chapter": 11,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Hê-bơ-rơ 11:1 định nghĩa đức tin là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Hê 11:1 - Đức tin là sự vững tin về những điều mình trông đợi, bằng chứng về những điều mình không thấy.",
+    "language": "vi",
+    "options": [
+      "Tin không cần lý do",
+      "Sự lạc quan",
+      "Sự vững tin điều mình đang trông đợi, bằng chứng điều mình không thấy",
+      "Cảm giác tốt đẹp"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đức tin",
+      "Định nghĩa",
+      "Hê-bơ-rơ",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 11,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Hê-bơ-rơ 11:6, không có đức tin thì không thể nào làm gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Hê 11:6 - Không có đức tin thì không thể nào đẹp lòng Ngài. Ai đến gần Chúa phải tin rằng Ngài hiện hữu và thưởng những kẻ tìm kiếm Ngài.",
+    "language": "vi",
+    "options": [
+      "Cầu nguyện",
+      "Vào nhà thờ",
+      "Đẹp lòng Đức Chúa Trời (đẹp lòng Ngài)",
+      "Đọc Kinh Thánh"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đức tin",
+      "Đẹp lòng Chúa",
+      "Hê-bơ-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 12,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Hê-bơ-rơ 12:2 khuyên chúng ta chạy đua bằng cách nhìn vào ai?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Hê 12:2 - Mắt hướng về Đức Chúa Giê-su, là cớ Đấng khởi đầu và hoàn tất đức tin chúng ta.",
+    "language": "vi",
+    "verseEnd": 2,
+    "options": [
+      "Chúa Giê-su, Đấng khởi đầu và hoàn tất đức tin",
+      "Các vị anh hùng đức tin",
+      "Thiên sứ",
+      "Chính mình"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đức tin",
+      "Kiên nhẫn",
+      "Hê-bơ-rơ",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 4,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hê 4:12 mô tả Lời Chúa như gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lời Chúa sống động, xuyên thấu tâm lòng, phân biệt tư tưởng và ý định.",
+    "language": "vi",
+    "options": [
+      "Truyền thống",
+      "Cuốn sách",
+      "Luật pháp",
+      "Sống và linh nghiệm, sắc hơn gươm hai lưỡi"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Lời Chúa",
+      "Quyền năng",
+      "Hê-bơ-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 4,
+    "verseStart": 15,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Hê 4:15: Chúa Giê-su là Thầy Tế Lễ Thượng Phẩm như thế nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Chúa Giê-su hiểu sự yếu đuối của chúng ta vì đã trải qua mọi thứ. Nên hãy mạnh dạn đến ngôi ân điển.",
+    "language": "vi",
+    "verseEnd": 16,
+    "options": [
+      "Bị cám dỗ mọi mặt như chúng ta nhưng không phạm tội",
+      "Chỉ là Chúa",
+      "Không bao giờ bị cám dỗ",
+      "Không hiểu nỗi đau"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tế Lễ",
+      "Cảm thông",
+      "Hê-bơ-rơ",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 11,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hê 11:8: Áp-ra-ham bởi đức tin làm gì khi được gọi?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Đức tin là vâng lời dù không thấy đích đến. Áp-ra-ham là gương mẫu đức tin.",
+    "language": "vi",
+    "verseEnd": 10,
+    "options": [
+      "Từ chối",
+      "Hỏi tại sao",
+      "Chuẩn bị kỹ",
+      "Vâng lời đi mà không biết mình đi đâu"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đức tin",
+      "Vâng lời",
+      "Hê-bơ-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 12,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hê 12:6: Chúa sửa phạt ai?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Sự sửa phạt là dấu hiệu tình yêu của Cha, không phải sự bỏ rơi.",
+    "language": "vi",
+    "options": [
+      "Kẻ thù",
+      "Kẻ ác",
+      "Người lạ",
+      "Con cái mà Ngài yêu thương"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Sửa phạt",
+      "Tình yêu",
+      "Hê-bơ-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 13,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hê 13:5: Chúa hứa gì về sự hiện diện của Ngài?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Chúa luôn ở với chúng ta. Không bao giờ bỏ rơi. Nên thỏa lòng với những gì có.",
+    "language": "vi",
+    "options": [
+      "Ta sẽ không bỏ con, không hề lìa con",
+      "Ta sẽ đổi",
+      "Ta sẽ ban phúc",
+      "Ta sẽ trả thù"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Sự hiện diện",
+      "An ninh",
+      "Hê-bơ-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 13,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hê 13:8: Chúa Giê-su Christ hôm qua ngày nay và cho đến đời đời đều như thế nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Chúa Giê-su bất biến. Ngài giống hôm qua, hôm nay và mãi mãi.",
+    "language": "vi",
+    "options": [
+      "Không thay đổi",
+      "Mạnh hơn",
+      "Khôn ngoan hơn",
+      "Thay đổi theo thời đại"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Giê-su",
+      "Bất biến",
+      "Hê-bơ-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 9,
+    "verseStart": 22,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Hê 9:22: Theo luật pháp, không có ___ thì không có sự tha tội",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Nguyên tắc cốt lõi: tha tội cần huyết. Huyết Chúa Giê-su là của lễ cuối cùng và trọn vẹn nhất.",
+    "language": "vi",
+    "options": [
+      "Của lễ",
+      "Sự đổ huyết (huyết)",
+      "Ăn năn",
+      "Cầu nguyện"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cứu chuộc",
+      "Huyết",
+      "Hê-bơ-rơ",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 11,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Hê 11:3: Bởi đức tin chúng ta hiểu rằng thế giới được dựng nên bởi gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Đức tin chấp nhận Chúa sáng tạo vũ trụ bằng Lời Ngài từ hư vô.",
+    "language": "vi",
+    "options": [
+      "Vụ nổ lớn",
+      "Lời phán của Đức Chúa Trời",
+      "Tự nhiên",
+      "Các thần"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đức tin",
+      "Sáng tạo",
+      "Hê-bơ-rơ",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Hebrews",
+    "chapter": 10,
+    "verseStart": 23,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hê 10:23: Hãy giữ vững sự tuyên xưng về sự trông đợi vì Đấng đã hứa là gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Chúa thành tín giữ lời hứa nên chúng ta có thể vững lòng tuyên xưng đức tin.",
+    "language": "vi",
+    "options": [
+      "Mạnh mẽ",
+      "Thành tín",
+      "Khôn ngoan",
+      "Giàu có"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thành tín",
+      "Trông đợi",
+      "Hê-bơ-rơ",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  }
+]

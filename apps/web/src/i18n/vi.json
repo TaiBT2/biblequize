@@ -5,13 +5,7 @@
     "disciple": "Môn Đồ",
     "sage": "Hiền Triết",
     "prophet": "Tiên Tri",
-    "apostle": "Sứ Đồ",
-    "spark": "Tân Tín Hữu",
-    "dawn": "Người Tìm Kiếm",
-    "lamp": "Môn Đồ",
-    "flame": "Hiền Triết",
-    "star": "Tiên Tri",
-    "glory": "Sứ Đồ"
+    "apostle": "Sứ Đồ"
   },
   "common": {
     "loading": "Đang tải...",
@@ -89,6 +83,16 @@
       "claimButton": "Nhận ngay! 🎁",
       "claiming": "..."
     },
+    "earlyUnlock": {
+      "title": "Chúc mừng!",
+      "subtitle": "Bạn đã mở khóa Thi Đấu Xếp Hạng sớm!",
+      "description": "Độ chính xác Luyện Tập của bạn đã vượt ngưỡng — giờ bạn có thể chơi Xếp Hạng ngay, không cần đợi XP.",
+      "descriptionWithPct": "Độ chính xác Luyện Tập {{pct}}% đã vượt ngưỡng — giờ bạn có thể chơi Xếp Hạng ngay, không cần đợi XP.",
+      "badgeLabel": "Ưu đãi Học Trò Chăm Chỉ",
+      "badgeHint": "Vĩnh viễn — kể cả khi độ chính xác giảm sau này.",
+      "playRankedBtn": "Vào Thi Đấu Ngay",
+      "continuePracticeBtn": "Tiếp Tục Luyện Tập"
+    },
     "starPopup": {
       "newStar": "Sao mới! +{{count}} XP",
       "progress": "Sao {{current}}/{{total}}"
@@ -163,10 +167,26 @@
     "profile": "Cá nhân",
     "achievements": "Thành tích",
     "settings": "Cài đặt",
+    "help": "Trợ giúp",
     "adminPanel": "Quản trị"
   },
   "admin": {
     "backToApp": "Về trang chính",
+    "earlyUnlock": {
+      "navLabel": "Early Unlock",
+      "pageTitle": "Chỉ số Mở khóa Xếp hạng sớm",
+      "subtitle": "Theo dõi số người dùng đạt mốc ≥80% độ chính xác trong Luyện tập để mở khóa Xếp hạng sớm.",
+      "kpiTotal": "Tổng số đã mở khóa",
+      "kpiTotalHint": "Toàn bộ thời gian",
+      "kpiLast7Days": "7 ngày qua",
+      "kpiLast30Days": "30 ngày qua",
+      "kpiAvgAccuracy": "Độ chính xác TB",
+      "kpiAvgAccuracyHint": "Tại thời điểm mở khóa",
+      "timelineTitle": "Mở khóa theo ngày (30 ngày)",
+      "emptyState": "Chưa có ai đạt ngưỡng mở khóa sớm. Chờ dữ liệu tích lũy từ Luyện tập.",
+      "noAccuracy": "—",
+      "loading": "Đang tải..."
+    },
     "questions": {
       "title": "Questions",
       "countSuffix": "{{count}} câu hỏi",
@@ -725,6 +745,7 @@
     "conqueredAll": "Bạn đã chinh phục tất cả!",
     "gameModes": "Chế độ chơi",
     "explore6Modes": "KHÁM PHÁ 6 CHẾ ĐỘ",
+    "exploreModes": "KHÁM PHÁ {{count}} CHẾ ĐỘ",
     "leaderboard": "Bảng Xếp Hạng",
     "daily": "Hàng ngày",
     "weekly": "Hàng tuần",
@@ -733,14 +754,92 @@
     "you": "Bạn ({{name}})",
     "viewAll": "Xem tất cả",
     "recentActivity": "Hoạt động gần đây",
-    "activityReachedTier": "<b>{{name}}</b> vừa đạt <b>{{tier}}</b>",
-    "activityJoinedGroup": "<b>{{name}}</b> đã tham gia vào Nhóm Giáo Xứ của bạn.",
-    "activityStreak": "<b>{{name}}</b> đã duy trì chuỗi {{count}} ngày!",
+    "activityReachedTier": "vừa đạt {{tier}}",
+    "activityJoinedGroup": "đã tham gia vào Nhóm Giáo Xứ của bạn.",
+    "activityStreak": "đã duy trì chuỗi {{days}} ngày!",
     "dailyVerse": "HỌC NGÀY",
     "verseToday": "Câu gốc hôm nay",
     "dailyMissions": "Nhiệm vụ hôm nay",
     "received": "Đã nhận",
-    "dayStreak": "ngày liên tiếp"
+    "dayStreak": "ngày liên tiếp",
+    "recommend": {
+      "badge": "✨ Gợi ý cho bạn",
+      "streakAboutToBreak": "Streak {{streak}} ngày sắp hết — còn {{hours}}h",
+      "onboarding": "Bắt đầu hành trình — luyện tập không áp lực",
+      "dailyAvailable": "Chưa làm Daily hôm nay — chỉ 5 phút",
+      "fullEnergy": "Năng lượng đầy ({{energy}}/{{max}}) — leo rank ngay!",
+      "default": "Sẵn sàng thách thức?"
+    }
+  },
+  "help": {
+    "title": "Câu hỏi thường gặp",
+    "subtitle": "Hiểu rõ Bible Quiz để chơi hiệu quả hơn",
+    "searchPlaceholder": "Tìm câu hỏi...",
+    "emptyResult": "Không tìm thấy câu nào khớp.",
+    "backToTop": "Lên đầu trang",
+    "contactHint": "Chưa thấy câu trả lời?",
+    "contactCta": "Gửi phản hồi cho chúng tôi",
+    "categories": {
+      "gettingStarted": "🚀 Bắt đầu",
+      "tiers": "🎯 Hạng & Điểm",
+      "modes": "🎮 Chế độ chơi",
+      "gameplay": "💡 Cách chơi",
+      "account": "🛡️ Tài khoản & Bảo mật"
+    },
+    "items": {
+      "howToPlay": {
+        "q": "Làm sao để bắt đầu chơi?",
+        "a": "Bắt đầu với chế độ Luyện Tập — không giới hạn thời gian, không tốn năng lượng. Chọn sách Kinh Thánh, độ khó, số câu rồi bấm Bắt Đầu. Luyện Tập là path onboarding: không trực tiếp cho XP, nhưng trả lời đúng ≥80% qua 10+ câu sẽ mở khóa Thi Đấu Xếp Hạng sớm (không cần đợi đủ 1,000 XP). Vào được Xếp Hạng, bạn mới bắt đầu tích XP để lên tier."
+      },
+      "bibleTranslation": {
+        "q": "Bible Quiz dùng bản dịch Kinh Thánh nào?",
+        "a": "Tiếng Việt sử dụng Bản Truyền Thống Hiệu Đính 2011 (RVV11). Tiếng Anh sử dụng English Standard Version (ESV). Đây là hai bản dịch phổ biến trong cộng đồng Tin Lành, bám sát nguyên văn và dễ hiểu."
+      },
+      "changeLanguage": {
+        "q": "Làm sao đổi ngôn ngữ câu hỏi giữa Tiếng Việt và Tiếng Anh?",
+        "a": "Bấm vào avatar ở góc trên bên phải → chọn toggle VI/EN ở mục 'Câu hỏi'. Thay đổi có hiệu lực ngay — câu hỏi tiếp theo sẽ hiển thị bằng ngôn ngữ đã chọn. Bạn có thể đổi bất cứ lúc nào."
+      },
+      "tierSystem": {
+        "q": "Hệ thống hạng (tier) hoạt động như thế nào?",
+        "a": "Có 6 hạng: Tân Tín Hữu (0 XP) → Người Tìm Kiếm (1,000) → Môn Đồ (5,000) → Hiền Triết (15,000) → Tiên Tri (40,000) → Sứ Đồ (100,000). Hạng chỉ tăng, không giảm — tính theo tổng XP tích lũy all-time. Mỗi hạng mở khóa chế độ chơi mới và tăng XP multiplier (Tiên Tri 1.5×, Sứ Đồ 2×)."
+      },
+      "howUnlockRanked": {
+        "q": "Thi Đấu Xếp Hạng mở khóa khi nào?",
+        "a": "Có 2 cách: (1) Đạt hạng Người Tìm Kiếm (1,000 XP), hoặc (2) Mở khóa sớm — chơi Luyện Tập với ≥80% độ chính xác qua ít nhất 10 câu. Cách 2 thường nhanh hơn cho người mới vì Luyện Tập không tốn năng lượng, không có timer. Sau khi mở khóa Xếp Hạng, XP mới bắt đầu tích lũy để lên tier tiếp theo."
+      },
+      "howEarnXp": {
+        "q": "XP kiếm từ đâu và có mất không?",
+        "a": "XP chỉ tích từ chế độ Thi Đấu Xếp Hạng. Mỗi câu Ranked đúng: Easy +10, Medium +20, Hard +30, cộng bonus trả lời nhanh (<5s) +5 và combo nhân 1.2/1.5/2.0×. Luyện Tập, Thử Thách Ngày và các mode khác không tích XP — chúng chỉ đóng góp vào lịch sử câu hỏi, streak, và path mở khóa sớm. Câu sai không mất XP (chỉ mất năng lượng ở Ranked). Lifetime XP chỉ tăng, không bao giờ reset."
+      },
+      "practiceVsRanked": {
+        "q": "Luyện Tập khác Thi Đấu Xếp Hạng thế nào?",
+        "a": "Luyện Tập: miễn phí, không giới hạn, chọn sách/độ khó tùy ý, hiển thị giải thích sau mỗi câu, có thể dùng Gợi Ý vô hạn. Thi Đấu Xếp Hạng: tốn năng lượng (5/câu sai), câu hỏi random, không chọn sách, nhưng leo leaderboard chỉ tính từ chế độ này. Practice để học, Ranked để đua."
+      },
+      "dailyStreak": {
+        "q": "Thử Thách Ngày và Streak hoạt động ra sao?",
+        "a": "Mỗi ngày có 5 câu Daily Challenge, chỉ làm được 1 lần/ngày. Hoàn thành = streak +1. Miss 1 ngày → streak reset về 0. Mốc thưởng: 7 ngày (badge Kiên Trì), 30 ngày (badge Dẻo Dai), 100 ngày (badge Bền Vững) — mỗi mốc +200-1000 XP bonus. Streak Freeze (từ hạng 3) cho phép miss 1 ngày mà không reset."
+      },
+      "groupsTournament": {
+        "q": "Nhóm Giáo Xứ và Giải Đấu là gì?",
+        "a": "Nhóm Giáo Xứ: tham gia hoặc tạo nhóm dựa theo hội thánh/tế bào, có leaderboard riêng cho nhóm, chơi cùng anh em trong đức tin. Giải Đấu: bracket elimination 1v1, cần hạng Hiền Triết trở lên để tham gia. Leader nhóm có thể tổ chức tournament riêng cho thành viên nhóm mình."
+      },
+      "energySystem": {
+        "q": "Năng lượng (⚡) hoạt động như thế nào?",
+        "a": "Mỗi ngày được 100 năng lượng. Thi Đấu Xếp Hạng: trả lời sai mất 5 năng lượng, trả lời đúng không mất. Hết năng lượng không chơi Ranked được nữa — chuyển sang Luyện Tập (miễn phí) hoặc chờ reset nửa đêm. Regen theo hạng: Tân Tín Hữu 20/giờ, Hiền Triết 28/giờ, Sứ Đồ 35/giờ."
+      },
+      "lifelines": {
+        "q": "Gợi Ý (Lifeline) dùng khi nào và như thế nào?",
+        "a": "Trong quiz, bấm nút 💡 Gợi Ý để loại bỏ 1 đáp án sai. Practice: không giới hạn. Ranked: 2 lần/session. Multiplayer/Tournament: không có Gợi Ý (fair play). Thuật toán thông minh — loại đáp án ít người chọn nhất trước (obvious wrong), giữ lại distractor khó để rèn luyện."
+      },
+      "dataPrivacy": {
+        "q": "Dữ liệu chơi của tôi có private không?",
+        "a": "Câu trả lời chi tiết + lịch sử session chỉ mình bạn xem được. Hiển thị công khai: tên, avatar, hạng, tổng XP (trên leaderboard). KHÔNG hiển thị: email, câu trả lời từng câu, lịch sử sai đúng. Không chia sẻ data với bên thứ 3. Chi tiết xem Privacy Policy ở footer."
+      },
+      "deleteAccount": {
+        "q": "Làm sao xóa tài khoản và dữ liệu?",
+        "a": "Vào Hồ sơ → cuộn xuống cuối → bấm 'Xóa tài khoản'. Toàn bộ progress, sessions, câu trả lời sẽ bị xóa vĩnh viễn trong 7 ngày. Tên của bạn biến mất khỏi leaderboard ngay lập tức. Quyết định này KHÔNG thể hoàn tác. Nếu chỉ muốn nghỉ tạm, bạn có thể ngừng đăng nhập — data sẽ được giữ."
+      }
+    }
   },
   "landing": {
     "tagline": "ỨNG DỤNG HỌC KINH THÁNH THẾ HỆ MỚI",
@@ -1253,6 +1352,15 @@
     "tournamentBtn": "Vào Giải Đấu",
     "noEnergy": "Hết Năng Lượng",
     "dailyCompleted": "Đã hoàn thành",
+    "lockedBadge": "Đã khóa",
+    "unlockAt": "Đạt {{tier}} để mở khóa",
+    "unlockAtWithPoints": "Cần thêm {{points}} điểm để đạt {{tier}}",
+    "unlockCta": "Cần {{tier}}",
+    "unlockCtaEarnXp": "Luyện tập để kiếm điểm",
+    "learnMore": "Tìm hiểu thêm →",
+    "orEarlyUnlock": "Hoặc mở khóa sớm:",
+    "earlyUnlockReady": "Đủ điều kiện rồi — trả lời đúng câu tiếp theo!",
+    "earlyUnlockRemaining": "{{correct}}/{{total}} đúng ({{acc}}%) — cần {{need}} câu đúng nữa",
     "weekly": "Chủ Đề Tuần",
     "weeklyDesc": "Mỗi tuần một chủ đề mới. 10 câu hỏi, xoay vòng 10 chủ đề.",
     "weeklyBtn": "Chơi Ngay",

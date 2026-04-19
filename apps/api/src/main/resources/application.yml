@@ -114,3 +114,12 @@ app:
     general:
       requests: ${RATE_LIMIT_GENERAL_REQUESTS:1000}
       window: ${RATE_LIMIT_GENERAL_WINDOW:3600}
+  seeding:
+    questions:
+      # Runtime JSON-based question seeder (infrastructure/seed/question/QuestionSeeder).
+      # Reads src/main/resources/seed/questions/*_quiz.json on startup.
+      # Idempotent: deterministic UUIDs per question → second startup no-ops.
+      # Disable after a one-shot production seed if further boot-time work is undesired.
+      enabled: ${QUESTION_SEEDING_ENABLED:true}
+      # Pattern matches VI (*_quiz.json) + EN (*_quiz_en.json) seed files.
+      pattern: ${QUESTION_SEEDING_PATTERN:classpath*:seed/questions/*_quiz*.json}

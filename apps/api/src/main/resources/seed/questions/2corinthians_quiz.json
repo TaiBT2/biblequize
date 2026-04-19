@@ -1,0 +1,829 @@
+[
+  {
+    "book": "2 Corinthians",
+    "chapter": 1,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời được gọi là Đức Chúa Trời của điều gì trong 2 Cô 1?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "2 Cô 1:3-4: Ngài an ủi chúng ta trong mọi hoạn nạn để chúng ta an ủi kẻ khác.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Mọi sự phán xét",
+      "Mọi sự yên ủi",
+      "Mọi của ban cho",
+      "Mọi phép lạ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "An ủi",
+      "Hoạn nạn",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 3,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Nơi nào có Thánh Linh của Chúa, nơi đó có điều gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "2 Cô 3:17: Chúa là Thánh Linh; nơi nào có Thánh Linh của Chúa, nơi đó có sự tự do.",
+    "language": "vi",
+    "verseEnd": 18,
+    "options": [
+      "Sự khôn ngoan",
+      "Sự tự do",
+      "Sự giàu có",
+      "Sự phán xét"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thánh Linh",
+      "Tự do",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 4,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Chúng ta chứa kho báu trong vật gì để quyền phép thuộc về Đức Chúa Trời?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "2 Cô 4:7: Chóe bằng đất để quyền phép dư dật là của Đức Chúa Trời, chứ không phải bởi chúng ta.",
+    "language": "vi",
+    "verseEnd": 10,
+    "options": [
+      "Chén bằng vàng",
+      "Bình bằng đá",
+      "Hòm bằng gỗ",
+      "Chóe bằng đất"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Yếu đuối",
+      "Quyền phép",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 5,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ai ở trong Đấng Christ thì trở nên điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Cô 5:17: Ai ở trong Đấng Christ là một tạo vật mới.",
+    "language": "vi",
+    "options": [
+      "Người khôn ngoan",
+      "Thầy tế lễ",
+      "Tạo vật mới",
+      "Công dân trời"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Đổi mới",
+      "Cứu rỗi",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 8,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hội thánh Ma-xê-đoan được khen ngợi vì điều gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "2 Cô 8:2: Trong thử thách lớn, lòng vui mừng dồi dào và sự nghèo khổ sâu xa của họ đã tràn ra sự rộng rãi.",
+    "language": "vi",
+    "verseEnd": 5,
+    "options": [
+      "Nhiều ân tứ",
+      "Giàu có dâng hiến",
+      "Khéo quản trị",
+      "Rộng rãi trong nghèo khó"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Dâng hiến",
+      "Rộng rãi",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 9,
+    "verseStart": 6,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Nguyên tắc gieo ít/gặt ít áp dụng cho điều gì trong 2 Cô 9?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "2 Cô 9:6: Ai gieo ít thì gặt ít; ai gieo nhiều thì gặt nhiều.",
+    "language": "vi",
+    "verseEnd": 8,
+    "options": [
+      "Cầu nguyện",
+      "Ăn chay",
+      "Giảng đạo",
+      "Dâng hiến"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Dâng hiến",
+      "Nguyên tắc",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 1,
+    "verseStart": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô thuật lại kinh nghiệm gì tại A-si?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "2 Cô 1:8-9: Chúng tôi chịu khổ quá sức, nhưng để không trông cậy chính mình, bèn trông cậy Đức Chúa Trời khiến kẻ chết sống lại.",
+    "language": "vi",
+    "verseEnd": 11,
+    "options": [
+      "Chiến thắng oanh liệt",
+      "Quá sức chịu đựng, nhờ đó trông cậy Chúa",
+      "Được dân khen ngợi",
+      "Thành công tài chính"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Hoạn nạn",
+      "Trông cậy",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 2,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chúng ta là mùi thơm gì cho Đức Chúa Trời trong Đấng Christ?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "2 Cô 2:15: Chúng ta là mùi thơm của Đấng Christ cho Đức Chúa Trời giữa kẻ được cứu và kẻ hư mất.",
+    "language": "vi",
+    "verseEnd": 17,
+    "options": [
+      "Mùi hương của của lễ",
+      "Mùi hương của luật pháp",
+      "Mùi hương của thế gian",
+      "Mùi thơm của Đấng Christ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Chứng đạo",
+      "Mùi thơm",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 4,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vì sao không chán nản trước hoạn nạn tạm thời?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "2 Cô 4:17-18: Hoạn nạn tạm thời nhẹ nhàng sanh ra cho chúng ta sự vinh hiển đời đời vô lượng vô biên.",
+    "language": "vi",
+    "verseEnd": 18,
+    "options": [
+      "Vì sẽ hết sớm",
+      "Vinh hiển đời đời quá lớn lao",
+      "Vì được khen ngợi",
+      "Vì được thưởng ngay"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Hy vọng",
+      "Vinh hiển",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 5,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Chức vụ mà các tín hữu nhận lãnh trong 2 Cô 5 là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Cô 5:18-20: Đức Chúa Trời giao cho chúng ta chức vụ giảng hòa.",
+    "language": "vi",
+    "verseEnd": 20,
+    "options": [
+      "Chức vụ giáo sư",
+      "Chức vụ cai trị",
+      "Chức vụ giảng hòa",
+      "Chức vụ phép lạ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Giảng hòa",
+      "Sứ mạng",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 6,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Lời khuyên \"chớ mang ách chung với kẻ chẳng tin\" nhằm bảo vệ điều gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "2 Cô 6:14-18: Sự công bình với gian ác, sáng với tối nào hiệp nhau được.",
+    "language": "vi",
+    "verseEnd": 18,
+    "options": [
+      "Lợi ích kinh doanh",
+      "Sự thánh khiết và mối thông công",
+      "Tự do cá nhân",
+      "An toàn tài chính"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thánh khiết",
+      "Liên hệ",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 7,
+    "verseStart": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sự buồn rầu theo ý Đức Chúa Trời sanh ra điều gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "2 Cô 7:10: Buồn rầu theo Đức Chúa Trời sanh ra sự ăn năn, không hối hận.",
+    "language": "vi",
+    "verseEnd": 11,
+    "options": [
+      "Sự cay đắng",
+      "Sự ăn năn dẫn đến sự cứu rỗi",
+      "Sự oán trách",
+      "Sự hối hận tạm thời"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ăn năn",
+      "Thánh hóa",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 8,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ân điển của Chúa Giê-su trong 2 Cô 8:9 được mô tả thế nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "2 Cô 8:9: Hầu cho bởi sự nghèo của Ngài mà anh em được trở nên giàu.",
+    "language": "vi",
+    "options": [
+      "Ngài vốn giàu, vì anh em trở nên nghèo",
+      "Ngài vốn khôn ngoan",
+      "Ngài vốn nghèo, trở nên giàu",
+      "Ngài vốn quyền năng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ân điển",
+      "Hy sinh",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 10,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Vũ khí của chúng ta không thuộc xác thịt nhưng có quyền năng gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "2 Cô 10:4-5: Phá đổ tư tưởng và mọi sự kiêu ngạo nổi lên.",
+    "language": "vi",
+    "verseEnd": 5,
+    "options": [
+      "Xây dựng danh tiếng",
+      "Phá đổ đồn lũy",
+      "Gây ảnh hưởng xã hội",
+      "Bảo vệ thân thể"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thuộc linh",
+      "Chiến trận",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 12,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Cái dằm trong xác thịt dạy Phao-lô điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Cô 12:9-10: Khi tôi yếu, ấy là lúc tôi mạnh.",
+    "language": "vi",
+    "verseEnd": 10,
+    "options": [
+      "Phải dựa vào con người",
+      "Phải mạnh mẽ hơn",
+      "Ân điển Chúa đủ cho con; quyền năng nên trọn trong yếu đuối",
+      "Phải cầu nguyện ít lại"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Yếu đuối",
+      "Ân điển",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 4,
+    "verseStart": 1,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Vì đã nhận chức vụ theo lòng thương xót, Phao-lô làm gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Cô 4:1-2: Chúng tôi không làm điều gian dối, nhưng trình bày lẽ thật.",
+    "language": "vi",
+    "verseEnd": 6,
+    "options": [
+      "Chứng minh bằng dấu lạ",
+      "Ẩn giấu Tin Lành",
+      "Chẳng ngã lòng; không xử theo mưu mẹo",
+      "Tìm lời lẽ khôn khéo"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Chức vụ",
+      "Chân thật",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 5,
+    "verseStart": 10,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Ghế xét đoán của Đấng Christ nhằm mục đích gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "2 Cô 5:10: Ai nấy sẽ khai trình để nhận điều lành hay dữ đã làm.",
+    "language": "vi",
+    "options": [
+      "Phân chia chức vụ",
+      "Phán xét để hư mất",
+      "Nhận lại điều đã làm qua thân thể",
+      "Xác định địa vị"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phán xét",
+      "Phần thưởng",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 11,
+    "verseStart": 23,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô khoe về điều gì trong 2 Cô 11?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "2 Cô 11:30: Nếu cần phải khoe, tôi sẽ khoe sự yếu đuối của tôi.",
+    "language": "vi",
+    "verseEnd": 30,
+    "options": [
+      "Những phép lạ",
+      "Những sự yếu đuối",
+      "Những triết lý",
+      "Những thành công"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Khoe khoang",
+      "Yếu đuối",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 13,
+    "verseStart": 11,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Lời chúc cuối thư 2 Cô-rinh-tô kêu gọi điều gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "2 Cô 13:11: Hãy vui mừng, nên trọn lành, khuyên bảo nhau, đồng một ý, sống hòa thuận.",
+    "language": "vi",
+    "options": [
+      "Hòa thuận, hiệp ý, bình an",
+      "Giữ luật pháp",
+      "Tránh bách hại",
+      "Sống ẩn dật"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Kết luận",
+      "Bình an",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 5,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "2 Cô 5:17 nói khi ai ở trong Chúa Giê-su thì người ấy là gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "2 Cô 5:17 - Nếu ai ở trong Đấng Christ thì người ấy là tạo vật mới. Những sự cũ đã qua đi, nay mọi sự đều trở nên mới.",
+    "language": "vi",
+    "options": [
+      "Thánh nhân",
+      "Thiên sứ",
+      "Người tốt hơn",
+      "Tạo vật mới"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tái sinh",
+      "Đổi mới",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 1,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "2 Cô 1:3 gọi Chúa là gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Chúa an ủi chúng ta để chúng ta có thể an ủi người khác bằng sự an ủi đã nhận.",
+    "language": "vi",
+    "verseEnd": 4,
+    "options": [
+      "Cha hay thương xót và Chúa của mọi sự an ủi",
+      "Quan án",
+      "Vua",
+      "Chiến binh"
+    ],
+    "tags": [
+      "Tân Ước",
+      "An ủi",
+      "Thương xót",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 3,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "2 Cô 3:17: \"Chúa là Thần; Thần của Chúa ở đâu thì ở đó có sự ___\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Sự tự do thật đến từ Đức Thánh Linh, không phải từ hoàn cảnh.",
+    "language": "vi",
+    "options": [
+      "Vui mừng",
+      "Bình an",
+      "Tự do",
+      "Quyền năng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thánh Linh",
+      "Tự do",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 4,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "2 Cô 4:7: Chúng ta có của quý này (Phúc Âm) trong gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Để quyền năng tối cao thuộc về Chúa, không phải chúng ta. Sự yếu đuối tôn vinh Chúa.",
+    "language": "vi",
+    "options": [
+      "Bình đất (chứa yếu đuối)",
+      "Hòm sắt",
+      "Túi da",
+      "Bình vàng"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Yếu đuối",
+      "Quyền năng",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 4,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "2 Cô 4:17: Hoạn nạn nhẹ và tạm thời sẽ đem lại gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Những khó khăn hiện tại không đáng so với vinh quang mãi sau.",
+    "language": "vi",
+    "verseEnd": 18,
+    "options": [
+      "Sự giàu có",
+      "Danh tiếng",
+      "Sự vinh hiển đời đời vượt qua mọi so sánh",
+      "Sự thoải mái"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Khó khăn",
+      "Vinh hiển",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 5,
+    "verseStart": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô nói chúng ta là gì cho Chúa?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Chúng ta là đại sứ của Chúa trên đất, đại diện Ngài kêu gọi người khác hòa thuận với Chúa.",
+    "language": "vi",
+    "options": [
+      "Sứ giả (đại sứ) thay mặt Chúa",
+      "Linh",
+      "Đầy tớ",
+      "Học trò"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Làm chứng",
+      "Đại sứ",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 8,
+    "verseStart": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "2 Cô 8:9: Chúa Giê-su vốn giàu nhưng đã trở nên ___ vì chúng ta",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Chúa từ bỏ sự giàu có thiên thượng để chúng ta được giàu có thuộc linh.",
+    "language": "vi",
+    "options": [
+      "Yếu",
+      "Thường",
+      "Nhỏ",
+      "Nghèo"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ân điển",
+      "Hy sinh",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 9,
+    "verseStart": 7,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "2 Cô 9:7: Chúa yêu người cho đi như thế nào?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Không cho vì bắt buộc hay tiếc nuối. Chúa yêu người cho với tâm lòng vui vẻ.",
+    "language": "vi",
+    "options": [
+      "Cách vui lòng",
+      "Nhiều nhất",
+      "Công khai",
+      "Bắt buộc"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Dâng hiến",
+      "Vui lòng",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 13,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "2 Cô 13:14 là lời chúc phước Ba Ngôi nổi tiếng. Ba điều là gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lời chúc phước Ba Ngôi được dùng rộng rãi trong lễ bái.",
+    "language": "vi",
+    "options": [
+      "Đức tin, hy vọng, yêu thương",
+      "Phúc lành, bình an, vui mừng",
+      "Ân điển Chúa Giê-su, tình yêu Đức Chúa Trời, sự thông công Đức Thánh Linh",
+      "Sức mạnh, khôn ngoan, vinh hiển"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Ba Ngôi",
+      "Chúc phước",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 6,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "2 Cô 6:14: \"Chớ mang ___ không cân xứng với kẻ chưa tin\"",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Không kết hợp mật thiết với người không cùng đức tin vì ánh sáng và bóng tối không tương hợp.",
+    "language": "vi",
+    "options": [
+      "Nón",
+      "Giày",
+      "Ách",
+      "Áo"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Biệt riêng",
+      "Mối quan hệ",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "2 Corinthians",
+    "chapter": 12,
+    "verseStart": 10,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Phao-lô nói: \"Khi tôi yếu đuối ấy là khi tôi ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Nghịch lý Cơ Đốc: yếu đuối là khi Chúa mạnh mẽ qua chúng ta nhất.",
+    "language": "vi",
+    "options": [
+      "Sợ",
+      "Buồn",
+      "Mệt",
+      "Mạnh mẽ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Yếu đuối",
+      "Sức mạnh",
+      "2 Cô-rinh-tô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  }
+]

@@ -1,0 +1,1886 @@
+[
+  {
+    "book": "Leviticus",
+    "chapter": 1,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tế lễ thiêu phải dùng con vật đực hay cái?",
+    "options": [
+      "Con cái",
+      "Con đầu lòng",
+      "Con đực không tì vết",
+      "Con nào cũng được"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 1:3 — 'Nếu lễ vật của người ấy là tế lễ thiêu bằng bò, thì phải dâng một con bò đực không tì vết.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 1,
+    "verseStart": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Nếu dâng tế lễ thiêu bằng chim, phải dùng loại chim nào?",
+    "options": [
+      "Chim ưng",
+      "Chim cu gáy hoặc bồ câu con",
+      "Chim sẻ",
+      "Chim cút"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 1:14 — 'Nếu lễ vật dâng cho Đức Giê-hô-va là tế lễ thiêu bằng chim, thì phải dâng chim cu gáy hoặc bồ câu con.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 2,
+    "verseStart": 1,
+    "verseEnd": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Tế lễ chay được làm từ nguyên liệu chính nào?",
+    "options": [
+      "Trái cây",
+      "Thịt chiên",
+      "Bột mịn",
+      "Rượu nho"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 2:1 — 'Khi ai dâng tế lễ chay cho Đức Giê-hô-va thì lễ vật phải bằng bột mịn; người ấy sẽ đổ dầu lên trên và bỏ nhũ hương vào.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 2,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "true_false",
+    "content": "Tế lễ chay dâng cho Đức Giê-hô-va được phép có men.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 2:11 — 'Tất cả tế lễ chay dâng cho Đức Giê-hô-va đều không được pha men, vì các ngươi không được xông men hay mật ong làm tế lễ dùng lửa dâng lên Đức Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 2,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "fill_in_blank",
+    "content": "Mọi lễ vật chay đều phải nêm ___ vào.",
+    "options": [
+      "đường",
+      "mật ong",
+      "muối",
+      "men"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 2:13 — 'Phải nêm muối vào mọi lễ vật chay. Không được bỏ muối giao ước của Đức Chúa Trời khỏi lễ vật chay.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 3,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Trong tế lễ bình an, con vật dâng có thể là đực hoặc cái.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 3:1 — 'Nếu lễ vật là tế lễ bình an... dù đực hay cái, phải dâng con vật không tì vết trước mặt Đức Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 3,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Dân Y-sơ-ra-ên bị cấm ăn hai thứ nào trong tế lễ bình an?",
+    "options": [
+      "Mỡ và huyết",
+      "Đầu và chân",
+      "Xương và da",
+      "Gan và tim"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 3:17 — 'Đây là luật lệ đời đời cho các ngươi, trải qua các thế hệ: Không được ăn mỡ và huyết.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 4,
+    "verseStart": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi thầy tế lễ được xức dầu phạm tội, phải dâng con vật gì làm tế lễ chuộc tội?",
+    "options": [
+      "Dê đực",
+      "Bồ câu",
+      "Chiên đực",
+      "Bò đực tơ không tì vết"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 4:3 — 'Nếu thầy tế lễ được xức dầu phạm tội, gây lỗi cho dân chúng, thì vì tội mình đã phạm, người phải dâng cho Đức Giê-hô-va một con bò đực tơ không tì vết làm tế lễ chuộc tội.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Đền tạm và thờ phượng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 4,
+    "verseStart": 22,
+    "verseEnd": 23,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Khi một nhà lãnh đạo phạm tội, phải dâng con vật gì làm tế lễ chuộc tội?",
+    "options": [
+      "Bồ câu con",
+      "Chiên cái",
+      "Bò đực tơ",
+      "Dê đực không tì vết"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 4:22-23 — 'Khi một nhà lãnh đạo phạm tội... người phải đem lễ vật là một con dê đực không tì vết.' Sinh tế khác nhau tùy theo địa vị người phạm tội.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Tế lễ và nghi lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 4,
+    "verseStart": 27,
+    "verseEnd": 28,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi một thường dân phạm tội, phải dâng con vật gì?",
+    "options": [
+      "Bồ câu đực",
+      "Dê cái không tì vết",
+      "Bò đực tơ",
+      "Chiên đực"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 4:28 — 'Người đó phải đem lễ vật là một con dê cái không tì vết, vì tội mình đã phạm.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 5,
+    "verseStart": 11,
+    "verseEnd": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Nếu người phạm tội quá nghèo, không có chim, thì dâng gì làm tế lễ chuộc tội?",
+    "options": [
+      "Nước và rượu",
+      "Hương liệu",
+      "Một phần mười ê-pha bột mịn",
+      "Trái cây đầu mùa"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 5:11 — 'Nếu người ấy không có đủ sức mua hai con chim cu gáy hoặc hai con bồ câu con, thì phải đem một phần mười ê-pha bột mịn làm tế lễ chuộc tội.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 5,
+    "verseStart": 16,
+    "difficulty": "medium",
+    "type": "true_false",
+    "content": "Khi phạm tội với vật thánh, phải bồi thường thêm một phần năm giá trị.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 5:16 — 'Người ấy phải bồi thường những gì đã thiếu sót đối với vật thánh, cộng thêm một phần năm giá trị của nó.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 6,
+    "verseStart": 1,
+    "verseEnd": 5,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Nếu ai gian lận tài sản người lân cận, ngoài tế lễ chuộc lỗi, phải bồi thường bao nhiêu?",
+    "options": [
+      "Trả lại cộng thêm một phần năm",
+      "Trả lại gấp bốn",
+      "Trả lại đúng số đã lấy",
+      "Trả lại gấp đôi"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 6:5 — 'Phải trả lại nguyên vẹn, cộng thêm một phần năm giá trị. Người ấy phải giao cho chủ của nó vào ngày dâng tế lễ chuộc lỗi.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 6,
+    "verseStart": 12,
+    "verseEnd": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lửa trên bàn thờ tế lễ thiêu phải được giữ như thế nào?",
+    "options": [
+      "Đốt lại mỗi sáng",
+      "Cháy liên tục, không bao giờ tắt",
+      "Chỉ đốt vào ngày Sa-bát",
+      "Đốt mỗi tháng một lần"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 6:13 — 'Lửa phải cháy liên tục trên bàn thờ, không bao giờ được tắt.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 6,
+    "verseStart": 26,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Ai được ăn thịt tế lễ chuộc tội?",
+    "options": [
+      "Thầy tế lễ dâng tế lễ",
+      "Toàn dân Y-sơ-ra-ên",
+      "Người Lê-vi và gia đình",
+      "Chỉ người dâng lễ"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 6:26 — 'Thầy tế lễ nào dâng tế lễ chuộc tội sẽ ăn thịt tế lễ ấy. Phải ăn tại một nơi thánh, trong hành lang Lều Hội Kiến.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Tế lễ và nghi lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 7,
+    "verseStart": 15,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Thịt tế lễ tạ ơn phải được ăn trong bao lâu?",
+    "options": [
+      "Trong hai ngày",
+      "Trong ba ngày",
+      "Trong một tuần",
+      "Trong ngày dâng, không để đến sáng hôm sau"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 7:15 — 'Thịt của tế lễ tạ ơn thuộc về tế lễ bình an phải ăn trong ngày dâng lễ vật, không được để lại đến sáng hôm sau.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 7,
+    "verseStart": 26,
+    "verseEnd": 27,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Dân Y-sơ-ra-ên bị cấm tuyệt đối không được ăn huyết.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 7:26-27 — 'Dù ở đâu, các ngươi cũng không được ăn huyết của bất cứ loài chim hay loài thú nào. Ai ăn bất cứ thứ huyết nào sẽ bị khai trừ khỏi dân mình.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 8,
+    "verseStart": 6,
+    "verseEnd": 9,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Trước khi được phong chức, A-rôn và các con trai phải tắm rửa bằng nước.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 8:6 — 'Môi-se đem A-rôn và các con trai người đến gần, rồi tắm rửa họ bằng nước.' Đây là bước đầu tiên trong lễ phong chức.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 8,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Môi-se đổ dầu xức trên đầu ai để biệt riêng người ra thánh?",
+    "options": [
+      "Ê-lê-a-sa",
+      "Giô-suê",
+      "Na-đáp",
+      "A-rôn"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 8:12 — 'Ông đổ dầu xức trên đầu A-rôn, xức dầu cho người để biệt riêng người ra thánh.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Môi-se",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 8,
+    "verseStart": 33,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Lễ phong chức cho A-rôn và các con trai kéo dài bao nhiêu ngày?",
+    "options": [
+      "Bảy ngày",
+      "Bốn mươi ngày",
+      "Mười ngày",
+      "Ba ngày"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 8:33 — 'Các ngươi không được ra khỏi cửa Lều Hội Kiến trong bảy ngày, cho đến khi trọn những ngày lễ phong chức.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 9,
+    "verseStart": 23,
+    "verseEnd": 24,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Điều gì xảy ra khi A-rôn dâng tế lễ đầu tiên sau lễ phong chức?",
+    "options": [
+      "Lửa từ Đức Giê-hô-va thiêu đốt tế lễ trên bàn thờ",
+      "Mây phủ Lều Hội Kiến",
+      "Nước chảy từ bàn thờ",
+      "Đất rung chuyển"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 9:24 — 'Lửa từ trước mặt Đức Giê-hô-va loè ra thiêu đốt tế lễ thiêu và mỡ trên bàn thờ.' Toàn dân thấy, reo hò và sấp mặt xuống đất.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 9,
+    "verseStart": 24,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Khi thấy lửa từ Đức Giê-hô-va loè ra, toàn dân reo hò và sấp mặt xuống đất.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 9:24 — 'Toàn dân thấy vậy thì reo hò và sấp mặt xuống đất.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 10,
+    "verseStart": 1,
+    "verseEnd": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Hai con trai của A-rôn dâng lửa lạ trước mặt Đức Giê-hô-va là ai?",
+    "options": [
+      "Ghẹt-sôn và Kê-hát",
+      "Ê-lê-a-sa và Y-tha-ma",
+      "Na-đáp và Ê-lê-a-sa",
+      "Na-đáp và A-bi-hu"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 10:1 — 'Na-đáp và A-bi-hu, hai con trai A-rôn, mỗi người lấy lư hương mình, để lửa vào, bỏ hương lên, dâng lửa lạ trước mặt Đức Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 10,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "fill_in_blank",
+    "content": "Na-đáp và A-bi-hu bị ___ từ Đức Giê-hô-va thiêu chết vì dâng lửa lạ.",
+    "options": [
+      "lửa",
+      "sấm sét",
+      "bệnh dịch",
+      "gió lốc"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 10:2 — 'Lửa từ trước mặt Đức Giê-hô-va loè ra thiêu đốt họ, và họ chết trước mặt Đức Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 11,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Loài thú nào được xem là tinh sạch để ăn?",
+    "options": [
+      "Thú có nanh nhọn",
+      "Thú có móng chẻ và nhai lại",
+      "Thú có lông dài",
+      "Thú sống trong nước"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 11:3 — 'Trong các loài thú, con vật nào có móng chẻ ra làm hai và nhai lại thì các ngươi được ăn.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 11,
+    "verseStart": 7,
+    "verseEnd": 8,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Con heo bị xem là ô uế vì nó không nhai lại dù có móng chẻ.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 11:7 — 'Con heo vì nó có móng chẻ ra làm hai nhưng không nhai lại, nên là vật ô uế đối với các ngươi.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 11,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sinh vật dưới nước phải có gì mới được xem là tinh sạch?",
+    "options": [
+      "Màu sáng",
+      "Chân và càng",
+      "Vỏ cứng",
+      "Vây và vảy"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 11:9 — 'Trong các loài sống dưới nước, con nào có vây và có vảy... thì các ngươi được ăn.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 12,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Con trai phải chịu cắt bì vào ngày thứ mấy sau khi sinh?",
+    "options": [
+      "Ngày thứ bảy",
+      "Ngày thứ mười bốn",
+      "Ngày thứ ba",
+      "Ngày thứ tám"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 12:3 — 'Đến ngày thứ tám, đứa trẻ phải chịu cắt bì.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 12,
+    "verseStart": 2,
+    "verseEnd": 5,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Thời gian thanh tẩy của người mẹ sinh con gái dài gấp mấy lần so với sinh con trai?",
+    "options": [
+      "Gấp ba",
+      "Bằng nhau",
+      "Gấp bốn",
+      "Gấp đôi"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 12:2,5 — Sinh con trai: ô uế 7 ngày + 33 ngày thanh tẩy = 40 ngày. Sinh con gái: ô uế 14 ngày + 66 ngày thanh tẩy = 80 ngày. Gấp đôi thời gian.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 13,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ai là người có thẩm quyền xem xét và tuyên bố một người bị bệnh phong cùi?",
+    "options": [
+      "Môi-se",
+      "Quan xét",
+      "Trưởng lão",
+      "Thầy tế lễ"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 13:2 — 'Người ấy phải được đưa đến thầy tế lễ A-rôn hoặc một trong các con trai người là thầy tế lễ.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 13,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Nếu thầy tế lễ chưa chắc chắn về bệnh phong, người bệnh phải bị cách ly bao lâu?",
+    "options": [
+      "Ba mươi ngày",
+      "Ba ngày",
+      "Mười bốn ngày",
+      "Bảy ngày"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 13:4 — 'Thầy tế lễ sẽ cách ly người có vết đó bảy ngày.' Sau đó sẽ tái khám để xác định.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 13,
+    "verseStart": 45,
+    "verseEnd": 46,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Người bị bệnh phong phải kêu lên điều gì khi gặp người khác?",
+    "options": [
+      "Tránh ra!",
+      "Ô uế! Ô uế!",
+      "Cứu tôi!",
+      "Xin ơn!"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 13:45 — 'Người phong phải mặc áo rách, xõa tóc, che râu và kêu lên: Ô uế! Ô uế!'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 14,
+    "verseStart": 4,
+    "verseEnd": 7,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Trong nghi lễ thanh tẩy người phong, cần dùng những vật liệu nào?",
+    "options": [
+      "Một con bò tơ, huyết, và lửa",
+      "Hai con chim, gỗ bá hương, chỉ đỏ, và cành bài hương",
+      "Nước sông, muối, và nhũ hương",
+      "Hai con chiên, dầu ô-liu, và bột mịn"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 14:4 — 'Thầy tế lễ sẽ truyền lấy hai con chim sống và tinh sạch, gỗ bá hương, chỉ đỏ tươi, và cành bài hương cho người được thanh tẩy.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 14,
+    "verseStart": 34,
+    "verseEnd": 35,
+    "difficulty": "medium",
+    "type": "true_false",
+    "content": "Lê-vi Ký quy định cách xử lý bệnh phong chỉ cho người, không cho nhà cửa.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 14:34-35 — 'Khi các ngươi vào xứ Ca-na-an... nếu Ta giáng bệnh phong cho một căn nhà... chủ nhà phải đến báo cho thầy tế lễ.' Bệnh phong cũng áp dụng cho nhà cửa.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 15,
+    "verseStart": 13,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Sau khi hết bệnh, người bị ra mủ phải đợi bao nhiêu ngày rồi mới được thanh tẩy?",
+    "options": [
+      "Bảy ngày",
+      "Mười bốn ngày",
+      "Ba mươi ngày",
+      "Ba ngày"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 15:13 — 'Khi người bị ra mủ được lành, thì phải đếm bảy ngày cho sự thanh tẩy mình.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 15,
+    "verseStart": 31,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Mục đích chính của các luật thanh tẩy trong Lê-vi Ký 15 là gì?",
+    "options": [
+      "Để phân biệt dân Y-sơ-ra-ên với dân ngoại",
+      "Để thầy tế lễ có quyền lực",
+      "Để giữ dân Y-sơ-ra-ên tách khỏi sự ô uế, kẻo họ chết",
+      "Để trừng phạt tội lỗi"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 15:31 — 'Các ngươi phải giữ dân Y-sơ-ra-ên tách khỏi sự ô uế, kẻo họ làm ô uế Đền Tạm Ta ở giữa họ mà phải chết.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 16,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Thầy tế lễ thượng phẩm được vào Nơi Chí Thánh bao nhiêu lần trong một năm?",
+    "options": [
+      "Mỗi tháng một lần",
+      "Chỉ một lần, vào Ngày Lễ Chuộc Tội",
+      "Bất cứ khi nào cần",
+      "Mỗi ngày Sa-bát"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 16:2 — 'Đừng vào nơi thánh phía trong bức màn bất cứ lúc nào, kẻo phải chết.' Hê-bơ-rơ 9:7 xác nhận chỉ mỗi năm một lần vào Ngày Lễ Chuộc Tội.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Tế lễ và nghi lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 16,
+    "verseStart": 4,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Vào Ngày Lễ Chuộc Tội, thầy tế lễ thượng phẩm mặc gì khi vào Nơi Chí Thánh?",
+    "options": [
+      "Áo choàng màu xanh",
+      "Áo vải gai thánh giản dị",
+      "Y phục đại lễ với ê-phót và bảng đeo ngực",
+      "Áo bào trắng và vàng"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 16:4 — 'Người phải mặc áo lót thánh bằng vải gai, quần bằng vải gai, thắt đai vải gai, và đội mũ vải gai.' Không mặc y phục đại lễ thường ngày.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Đền tạm và thờ phượng",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 16,
+    "verseStart": 8,
+    "verseEnd": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Vào Ngày Lễ Chuộc Tội, A-rôn bắt thăm hai con dê: một cho Đức Giê-hô-va và một cho ai?",
+    "options": [
+      "Dân Y-sơ-ra-ên",
+      "Thầy tế lễ",
+      "Dân ngoại",
+      "A-xa-xên"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 16:8 — 'A-rôn bắt thăm cho hai con dê: một thăm về phần Đức Giê-hô-va và một thăm về phần A-xa-xên.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 16,
+    "verseStart": 21,
+    "verseEnd": 22,
+    "difficulty": "easy",
+    "type": "fill_in_blank",
+    "content": "A-rôn đặt hai tay trên đầu con dê sống và xưng mọi ___ của dân Y-sơ-ra-ên lên đầu nó.",
+    "options": [
+      "lời cầu nguyện",
+      "ước muốn",
+      "tội lỗi",
+      "bệnh tật"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 16:21 — 'A-rôn sẽ đặt hai tay mình trên đầu con dê sống, xưng trên nó mọi tội ác và sự vi phạm, tức là mọi tội lỗi của dân Y-sơ-ra-ên.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Tế lễ và nghi lễ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 16,
+    "verseStart": 29,
+    "difficulty": "medium",
+    "type": "fill_in_blank",
+    "content": "Ngày Lễ Chuộc Tội được tổ chức vào ngày mười tháng ___.",
+    "options": [
+      "bảy",
+      "ba",
+      "một",
+      "mười hai"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 16:29 — 'Đây là luật lệ đời đời cho các ngươi: ngày mười tháng bảy, các ngươi phải kiêng ăn.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 17,
+    "verseStart": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sự sống của xác thịt ở trong gì?",
+    "options": [
+      "Nước",
+      "Huyết",
+      "Linh hồn",
+      "Hơi thở"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 17:11 — 'Vì sự sống của xác thịt ở trong huyết. Ta đã ban huyết cho các ngươi để dùng trên bàn thờ mà chuộc tội cho linh hồn mình.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 17,
+    "verseStart": 11,
+    "difficulty": "hard",
+    "type": "true_false",
+    "content": "Lê-vi Ký 17:11 dạy rằng huyết dùng để chuộc tội vì sự sống ở trong huyết — nguyên tắc này được Hê-bơ-rơ 9:22 nhắc lại.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 17:11 — 'Sự sống của xác thịt ở trong huyết... huyết chuộc tội cho linh hồn.' Hê-bơ-rơ 9:22 xác nhận: 'Không đổ huyết thì không có sự tha tội.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Tế lễ và nghi lễ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 18,
+    "verseStart": 3,
+    "verseEnd": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời cấm dân Y-sơ-ra-ên làm theo phong tục của hai xứ nào?",
+    "options": [
+      "Ba-by-lôn và A-si-ri",
+      "Phi-li-tin và Ê-đôm",
+      "Mô-áp và Am-môn",
+      "Ai-cập và Ca-na-an"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 18:3 — 'Các ngươi không được làm theo phong tục xứ Ai-cập, nơi các ngươi đã ở; cũng không được làm theo phong tục xứ Ca-na-an, nơi Ta đem các ngươi vào.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 18,
+    "verseStart": 21,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Dân Y-sơ-ra-ên bị cấm dâng con cái cho thần nào?",
+    "options": [
+      "A-sê-ra",
+      "Mô-lóc",
+      "Đa-gôn",
+      "Ba-anh"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 18:21 — 'Không được đem con cái mình dâng cho thần Mô-lóc mà thiêu trong lửa.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 19,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "fill_in_blank",
+    "content": "Hãy nên thánh, vì Ta, Giê-hô-va Đức Chúa Trời các ngươi, là ___.",
+    "options": [
+      "công bình",
+      "thánh",
+      "quyền năng",
+      "yêu thương"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 19:2 — 'Hãy nên thánh, vì Ta, Giê-hô-va Đức Chúa Trời các ngươi, là thánh.' Đây là mệnh lệnh trung tâm của sách Lê-vi Ký, được 1 Phi-e-rơ 1:16 nhắc lại.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 19,
+    "verseStart": 9,
+    "verseEnd": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi gặt lúa, người Y-sơ-ra-ên phải chừa lại góc ruộng và không mót lại để dành cho ai?",
+    "options": [
+      "Thầy tế lễ",
+      "Nhà vua",
+      "Người nghèo và ngoại kiều",
+      "Con trưởng nam"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 19:9-10 — 'Hãy để phần đó lại cho người nghèo và ngoại kiều. Ta là Giê-hô-va Đức Chúa Trời các ngươi.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 19,
+    "verseStart": 18,
+    "difficulty": "easy",
+    "type": "fill_in_blank",
+    "content": "Hãy yêu ___ như chính mình.",
+    "options": [
+      "cha mẹ",
+      "kẻ thù",
+      "Đức Chúa Trời",
+      "người lân cận"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 19:18 — 'Hãy yêu người lân cận như chính mình. Ta là Đức Giê-hô-va.' Chúa Giê-xu trích dẫn câu này là điều răn lớn thứ hai (Ma-thi-ơ 22:39).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 19,
+    "verseStart": 28,
+    "difficulty": "medium",
+    "type": "true_false",
+    "content": "Lê-vi Ký 19 cấm xăm hình trên thân thể.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 19:28 — 'Không được xăm vết gì trên mình. Ta là Đức Giê-hô-va.' Lệnh cấm này liên quan đến các nghi thức ngoại giáo.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 20,
+    "verseStart": 2,
+    "verseEnd": 3,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Hình phạt cho ai dâng con cái cho thần Mô-lóc là gì?",
+    "options": [
+      "Bị đuổi khỏi trại",
+      "Bị ném đá",
+      "Phải dâng tế lễ chuộc tội",
+      "Bị đánh roi"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 20:2 — 'Bất kỳ ai trong dân Y-sơ-ra-ên hoặc ngoại kiều sống trong Y-sơ-ra-ên mà dâng con cái cho Mô-lóc phải bị xử tử; dân trong xứ phải ném đá người đó.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 20,
+    "verseStart": 7,
+    "verseEnd": 8,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Đức Giê-hô-va phán: 'Hãy tự biệt riêng ra thánh, vì Ta là Giê-hô-va Đức Chúa Trời các ngươi.'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 20:7 — 'Vậy hãy tự biệt riêng ra thánh, vì Ta là Giê-hô-va Đức Chúa Trời các ngươi.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 20,
+    "verseStart": 26,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Lý do chính Đức Chúa Trời phân biệt thú tinh sạch và ô uế cho dân Y-sơ-ra-ên là gì?",
+    "options": [
+      "Vì truyền thống tổ phụ",
+      "Vì lý do vệ sinh sức khỏe",
+      "Vì một số thú có độc",
+      "Vì dân Y-sơ-ra-ên phải thánh biệt cho Đức Giê-hô-va"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 20:26 — 'Các ngươi phải thánh cho Ta, vì Ta, Đức Giê-hô-va, là thánh, và Ta đã biệt riêng các ngươi ra khỏi các dân để các ngươi thuộc về Ta.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 21,
+    "verseStart": 16,
+    "verseEnd": 21,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Con cháu A-rôn có tật nguyền thì được làm gì?",
+    "options": [
+      "Bị loại hoàn toàn khỏi dòng tế lễ",
+      "Chỉ được phục vụ bên ngoài Lều Hội Kiến",
+      "Được ăn thức ăn thánh nhưng không được dâng lễ",
+      "Vẫn được dâng lễ vật trên bàn thờ"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 21:22 — 'Người đó được ăn thức ăn của Đức Chúa Trời, cả phần rất thánh lẫn phần thánh, nhưng không được đến gần bức màn, cũng không được đến gần bàn thờ.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 22,
+    "verseStart": 27,
+    "verseEnd": 28,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Con vật dâng tế lễ phải được bao nhiêu ngày tuổi trở lên?",
+    "options": [
+      "Ba ngày",
+      "Ba mươi ngày",
+      "Mười bốn ngày",
+      "Bảy ngày"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 22:27 — 'Khi bò con, chiên con, hoặc dê con sinh ra, nó phải ở với mẹ bảy ngày. Từ ngày thứ tám trở đi, nó mới được chấp nhận làm tế lễ dùng lửa dâng lên Đức Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tế lễ và nghi lễ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 22,
+    "verseStart": 32,
+    "verseEnd": 33,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Đức Giê-hô-va phán: 'Đừng làm ô danh thánh Ta; Ta phải được tôn thánh giữa dân Y-sơ-ra-ên.'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 22:32 — 'Đừng làm ô danh thánh Ta; Ta phải được tôn thánh giữa dân Y-sơ-ra-ên. Ta là Đức Giê-hô-va, Đấng thánh hoá các ngươi.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 5,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lễ Vượt Qua được tổ chức vào ngày nào?",
+    "options": [
+      "Ngày mồng một tháng giêng",
+      "Ngày mười lăm tháng ba",
+      "Ngày mười bốn tháng giêng",
+      "Ngày mười tháng bảy"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 23:5 — 'Ngày mười bốn tháng giêng, vào lúc chạng vạng, là Lễ Vượt Qua của Đức Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 6,
+    "verseEnd": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong Lễ Bánh Không Men, dân Y-sơ-ra-ên phải ăn gì suốt bảy ngày?",
+    "options": [
+      "Bánh có men",
+      "Bánh không men",
+      "Chỉ trái cây",
+      "Thịt nướng"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 23:6 — 'Ngày mười lăm tháng ấy là Lễ Bánh Không Men cho Đức Giê-hô-va; trong bảy ngày, các ngươi phải ăn bánh không men.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 15,
+    "verseEnd": 16,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Lễ Ngũ Tuần (Lễ Các Tuần) được tổ chức sau Lễ Vượt Qua bao nhiêu ngày?",
+    "options": [
+      "Ba mươi ngày",
+      "Bảy ngày",
+      "Năm mươi ngày",
+      "Bảy mươi ngày"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 23:15-16 — 'Các ngươi đếm từ ngày sau ngày sa-bát... đủ bảy tuần lễ, tức năm mươi ngày.' Đây là nguồn gốc tên 'Ngũ Tuần' (Pentecost).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 24,
+    "difficulty": "medium",
+    "type": "fill_in_blank",
+    "content": "Ngày mồng một tháng bảy là ngày nghỉ, ngày kỷ niệm, được báo bằng tiếng ___.",
+    "options": [
+      "reo hò",
+      "trống đánh",
+      "kèn thổi",
+      "hát xướng"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 23:24 — 'Ngày mồng một tháng bảy, các ngươi phải có một ngày nghỉ, một ngày kỷ niệm, được báo bằng tiếng kèn thổi.' Đây là Lễ Thổi Kèn (Rosh Hashanah).",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Giô-sép tại Ai Cập",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 34,
+    "verseEnd": 36,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Lễ Lều Tạm kéo dài bao nhiêu ngày?",
+    "options": [
+      "Ba ngày",
+      "Bảy ngày",
+      "Mười ngày",
+      "Mười bốn ngày"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 23:34 — 'Ngày mười lăm tháng bảy nầy là Lễ Lều Tạm cho Đức Giê-hô-va, kéo dài bảy ngày.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 23,
+    "verseStart": 42,
+    "verseEnd": 43,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Lễ Lều Tạm nhắc nhở dân Y-sơ-ra-ên về điều gì?",
+    "options": [
+      "Sự sáng tạo trời đất",
+      "Giao ước tại Si-nai",
+      "Thời gian sống trong lều tạm khi ra khỏi Ai-cập",
+      "Cuộc chinh phục Ca-na-an"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 23:43 — 'Để dòng dõi các ngươi biết rằng Ta đã cho dân Y-sơ-ra-ên ở trong lều tạm khi Ta đem họ ra khỏi xứ Ai-cập.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 24,
+    "verseStart": 5,
+    "verseEnd": 9,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Bao nhiêu ổ bánh phải xếp trên bàn trước mặt Đức Giê-hô-va?",
+    "options": [
+      "Mười ổ",
+      "Mười hai ổ",
+      "Bảy ổ",
+      "Hai mươi bốn ổ"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 24:5-6 — 'Ngươi phải lấy bột mịn nướng mười hai ổ bánh... xếp thành hai hàng, mỗi hàng sáu ổ, trên bàn bằng vàng ròng trước mặt Đức Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 24,
+    "verseStart": 16,
+    "difficulty": "easy",
+    "type": "true_false",
+    "content": "Ai phạm thượng danh Đức Giê-hô-va phải bị xử tử.",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 24:16 — 'Kẻ nào phạm thượng danh Đức Giê-hô-va phải bị xử tử; cả hội chúng phải ném đá người ấy.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 24,
+    "verseStart": 17,
+    "verseEnd": 20,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Luật 'mắt đền mắt, răng đền răng' được ghi lại ở đâu trong Lê-vi Ký?",
+    "options": [
+      "Chương 24",
+      "Chương 19",
+      "Chương 20",
+      "Chương 26"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 24:20 — 'Gãy đền gãy, mắt đền mắt, răng đền răng. Người ấy gây thương tích cho ai thì phải bị gây thương tích như vậy.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Năm Sa-bát cho đất nghỉ là cứ bao nhiêu năm một lần?",
+    "options": [
+      "Năm năm",
+      "Mười năm",
+      "Ba năm",
+      "Bảy năm"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 25:4 — 'Nhưng năm thứ bảy sẽ là năm sa-bát, năm nghỉ cho đất, một năm sa-bát cho Đức Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 10,
+    "verseEnd": 11,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Năm Hân Hỉ (Jubilee) được tổ chức cứ bao nhiêu năm một lần?",
+    "options": [
+      "Một trăm năm",
+      "Mười năm",
+      "Hai mươi lăm năm",
+      "Năm mươi năm"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 25:10-11 — 'Các ngươi phải biệt riêng năm thứ năm mươi ra thánh... Năm thứ năm mươi sẽ là năm hân hỉ cho các ngươi.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 10,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Năm Hân Hỉ trong Lê-vi Ký 25 có ý nghĩa thần học nào liên hệ với Tân Ước?",
+    "options": [
+      "Hình bóng về sự phán xét cuối cùng",
+      "Hình bóng về sự phục sinh",
+      "Hình bóng về lễ báp-têm",
+      "Hình bóng về sự giải phóng và tự do trong Chúa Giê-xu (Lu-ca 4:18-19)"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 25:10 — 'Công bố sự tự do trong cả xứ cho mọi người.' Chúa Giê-xu trích Ê-sai 61:1-2 (dựa trên Năm Hân Hỉ) trong Lu-ca 4:18-19 để tuyên bố sứ mạng giải phóng của Ngài.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 25,
+    "verseStart": 35,
+    "verseEnd": 37,
+    "difficulty": "medium",
+    "type": "true_false",
+    "content": "Người Y-sơ-ra-ên được phép cho anh em mình vay tiền lấy lãi.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 25:36-37 — 'Không được lấy lời hay lãi từ người ấy... Không được cho người ấy vay tiền lấy lời, cũng không được bán thức ăn cho người ấy để lấy lãi.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 26,
+    "verseStart": 3,
+    "verseEnd": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Chúa Trời hứa phước lành gì nếu dân Y-sơ-ra-ên vâng giữ các mệnh lệnh Ngài?",
+    "options": [
+      "Chiến thắng mọi kẻ thù",
+      "Mưa đúng mùa và đất sinh hoa lợi",
+      "Vàng bạc dư dật",
+      "Sống đời đời"
+    ],
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 26:3-4 — 'Nếu các ngươi bước theo các luật lệ Ta... Ta sẽ ban mưa đúng mùa cho các ngươi; đất sẽ sinh hoa lợi, cây ngoài đồng sẽ kết quả.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Luật pháp",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 26,
+    "verseStart": 11,
+    "verseEnd": 12,
+    "difficulty": "hard",
+    "type": "fill_in_blank",
+    "content": "Ta sẽ đặt Đền Tạm giữa các ngươi... Ta sẽ đi giữa các ngươi, làm ___ các ngươi, và các ngươi sẽ làm dân Ta.",
+    "options": [
+      "vua",
+      "người chăn",
+      "quan xét",
+      "Đức Chúa Trời"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 26:12 — 'Ta sẽ đi giữa các ngươi, làm Đức Chúa Trời các ngươi, và các ngươi sẽ làm dân Ta.' Lời hứa giao ước này được nhắc lại trong 2 Cô-rinh-tô 6:16.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Đền tạm và thờ phượng",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 26,
+    "verseStart": 27,
+    "verseEnd": 33,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Hậu quả cuối cùng nếu dân Y-sơ-ra-ên không vâng lời Đức Chúa Trời là gì?",
+    "options": [
+      "Bị tản lạc giữa các dân tộc",
+      "Bị thú dữ tấn công",
+      "Bệnh dịch hoành hành",
+      "Mất mùa liên tục"
+    ],
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Lê-vi Ký 26:33 — 'Ta sẽ tản lạc các ngươi giữa các dân tộc và rút gươm đuổi theo các ngươi. Đất các ngươi sẽ hoang vu, thành các ngươi sẽ đổ nát.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 26,
+    "verseStart": 40,
+    "verseEnd": 42,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Dù trừng phạt, Đức Chúa Trời hứa gì nếu dân Y-sơ-ra-ên xưng nhận tội lỗi?",
+    "options": [
+      "Sẽ sai tiên tri đến",
+      "Sẽ ban cho họ xứ mới",
+      "Sẽ cho họ vua mới",
+      "Sẽ nhớ lại giao ước với Áp-ra-ham, Y-sác, Gia-cốp"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 26:42 — 'Ta sẽ nhớ lại giao ước Ta với Gia-cốp, giao ước Ta với Y-sác, giao ước Ta với Áp-ra-ham, và Ta sẽ nhớ lại đất nầy.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Tội lỗi và Sa ngã",
+      "Gia-cốp và Y-sơ-ra-ên",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 27,
+    "verseStart": 1,
+    "verseEnd": 8,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Khi ai hứa nguyện dâng giá trị một người cho Đức Giê-hô-va, giá trị cao nhất dành cho nhóm nào?",
+    "options": [
+      "Trẻ em từ 5-20 tuổi",
+      "Người già trên 60 tuổi",
+      "Người nam từ 20-60 tuổi",
+      "Người nữ từ 20-60 tuổi"
+    ],
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Lê-vi Ký 27:3 — 'Nếu người nam từ hai mươi đến sáu mươi tuổi, thì giá ấn định là năm mươi siếc-lơ bạc.' Đây là mức giá cao nhất trong bảng quy định.",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 27,
+    "verseStart": 28,
+    "verseEnd": 29,
+    "difficulty": "hard",
+    "type": "true_false",
+    "content": "Vật gì đã hiến dâng cho Đức Giê-hô-va (chê-rem) thì có thể chuộc lại bằng tiền.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Lê-vi Ký 27:28 — 'Tuy nhiên, bất cứ vật gì một người đã hiến dâng trọn cho Đức Giê-hô-va... thì không được bán cũng không được chuộc; mọi vật hiến dâng trọn đều rất thánh cho Đức Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Leviticus",
+    "chapter": 27,
+    "verseStart": 30,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Phần mười của thổ sản thuộc về ai?",
+    "options": [
+      "Nhà vua",
+      "Thầy tế lễ thượng phẩm",
+      "Người Lê-vi",
+      "Đức Giê-hô-va"
+    ],
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Lê-vi Ký 27:30 — 'Mọi phần mười của đất, bất luận là ngũ cốc từ ruộng hay trái từ cây, đều thuộc về Đức Giê-hô-va; đó là vật thánh cho Đức Giê-hô-va.'",
+    "language": "vi",
+    "tags": [
+      "Cựu Ước",
+      "Lê-vi Ký",
+      "Ngũ Kinh",
+      "Cơ bản"
+    ]
+  }
+]

@@ -1,0 +1,512 @@
+[
+  {
+    "book": "Psalms",
+    "chapter": 23,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi Thiên 23 bắt đầu bằng câu gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Kinh Thánh ghi: \"Đức Giê-hô-va là Đấng chăn giữ tôi\" (Thi 23:1).",
+    "language": "vi",
+    "options": [
+      "Đức Giê-hô-va là Đấng chăn giữ tôi",
+      "Đức Giê-hô-va là nơi nương náu của tôi",
+      "Đức Giê-hô-va là ánh sáng của tôi",
+      "Đức Giê-hô-va là sức mạnh của tôi"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi Thiên",
+      "Chăn chiên",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 23,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong Thi Thiên 23, khi đi qua trũng bóng chết, tác giả không sợ vì gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Kinh Thánh ghi: \"Dầu khi tôi đi trong trũng bóng chết, tôi sẽ chẳng sợ tai họa nào; vì Chúa ở cùng tôi\" (Thi 23:4).",
+    "language": "vi",
+    "options": [
+      "Vì có gậy và cây trượng",
+      "Vì có ánh sáng",
+      "Vì có bạn bè",
+      "Vì có Đức Chúa Trời ở cùng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi Thiên",
+      "Không sợ",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 1,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi Thiên đầu tiên nói về người nào được phước?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Kinh Thánh ghi: \"Phước cho người nào chẳng theo mưu kế của kẻ ác, chẳng đứng trong đường tội nhân, không ngồi trong chỗ của kẻ nhạo báng\" (Thi 1:1).",
+    "language": "vi",
+    "options": [
+      "Người không đi theo mưu kế của kẻ ác",
+      "Người không đứng trong đường tội nhân",
+      "Cả ba câu trên",
+      "Người không ngồi trong chỗ của kẻ nhạo báng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi Thiên",
+      "Phước",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 100,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi Thiên 100 kêu gọi làm gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Kinh Thánh ghi: \"Hãy cất tiếng reo mừng cho Đức Giê-hô-va, cả thế gian!\" (Thi 100:1).",
+    "language": "vi",
+    "options": [
+      "Hãy cầu nguyện",
+      "Hãy cất tiếng reo mừng cho Đức Giê-hô-va",
+      "Hãy thờ phượng",
+      "Hãy hát thánh ca"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi Thiên",
+      "Reo mừng",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 91,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi Thiên 91 nói về ai được bảo vệ?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Kinh Thánh ghi: \"Người nào ở nơi kín đáo của Đấng Tối Cao, sẽ được hằng ở dưới bóng của Đấng Toàn năng\" (Thi 91:1).",
+    "language": "vi",
+    "options": [
+      "Người yêu mến Chúa",
+      "Người tin cậy Đức Chúa Trời",
+      "Người vâng lời",
+      "Người ở dưới bóng của Đấng Tối Cao"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi Thiên",
+      "Bảo vệ",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 46,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi Thiên 46 nói Đức Chúa Trời là gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Kinh Thánh ghi: \"Đức Chúa Trời là nơi nương náu và sức mạnh của chúng tôi\" (Thi 46:1).",
+    "language": "vi",
+    "options": [
+      "Tình yêu và lòng thương xót",
+      "Ánh sáng và sự sống",
+      "Chân lý và công lý",
+      "Nơi nương náu và sức mạnh"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi Thiên",
+      "Nương náu",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 23,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi Thiên 23 bắt đầu bằng \"Đức Giê-hô-va là Đấng chăn giữ tôi\". Từ \"chăn giữ\" trong tiếng Hê-bơ-rơ có nghĩa gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Raah (רעה) có nghĩa là \"chăn giữ, dẫn dắt\", không chỉ bảo vệ mà còn hướng dẫn và chăm sóc.",
+    "language": "vi",
+    "options": [
+      "Raah - Chăn giữ, dẫn dắt",
+      "Nahal - Dẫn dắt",
+      "Shamar - Bảo vệ",
+      "Yada - Biết"
+    ],
+    "tags": [
+      "Thi Thiên",
+      "Chăn chiên",
+      "Ngôn ngữ Hê-bơ-rơ",
+      "Cựu Ước",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 46,
+    "verseStart": 10,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong Thi Thiên 46:10, \"Hãy yên lặng và biết rằng Ta là Đức Chúa Trời\". Từ \"yên lặng\" trong tiếng Hê-bơ-rơ có nghĩa gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Rapha (רפה) có nghĩa là \"buông tay, thả lỏng\", không chỉ im lặng mà còn buông bỏ sự lo lắng.",
+    "language": "vi",
+    "options": [
+      "Chashah - Dừng lại",
+      "Rapha - Buông tay, thả lỏng",
+      "Dumah - Im lặng",
+      "Shabbat - Nghỉ ngơi"
+    ],
+    "tags": [
+      "Thi Thiên",
+      "Sự yên lặng",
+      "Ngôn ngữ Hê-bơ-rơ",
+      "Cựu Ước",
+      "Văn Thơ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 23,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi thiên 23 bắt đầu bằng câu nào?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Thi 23:1 - Đức Giê-hô-va là Đấng chăn giữ tôi, tôi sẽ chẳng thiếu thốn gì. Một trong những thi thiên được yêu thích nhất.",
+    "language": "vi",
+    "options": [
+      "Đức Giê-hô-va là nơi ẩn náu tôi",
+      "Hãy ngợi khen Đức Giê-hô-va",
+      "Đức Giê-hô-va là Đấng chăn giữ tôi",
+      "Trời kể ra sự vinh hiển Chúa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi thiên",
+      "Chăn giữ",
+      "Thi Thiên",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 1,
+    "verseStart": 1,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Thi thiên 1 so sánh người công bình như gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Thi 1:3 - Người ấy giống như cây trồng gần suối nước, sinh trái đúng mùa, lá không hề tàn. Mọi việc đều thành tựu.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Ngôi sao sáng",
+      "Sức mạnh của sư tử",
+      "Cây trồng gần suối nước, sinh trái đúng mùa",
+      "Núi cao vững chắc"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi thiên",
+      "Công bình",
+      "Thi Thiên",
+      "Văn Thơ",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 46,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi 46:10 nói: \"Hãy yên lặng và biết rằng ta là ___\"",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Thi 46:10 - Lời mời gọi yên lặng trước sự hiện diện của Chúa, tin cậy Ngài đang nắm quyền kiểm soát.",
+    "language": "vi",
+    "options": [
+      "Đấng Toàn Năng",
+      "Chúa",
+      "Đấng Sáng Tạo",
+      "Đức Chúa Trời"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi thiên",
+      "Tin cậy",
+      "Thi Thiên",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 119,
+    "verseStart": 105,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi 119:105 so sánh Lời Chúa như gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Thi 119:105 - Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi. Soi sáng hướng đi cho đời sống.",
+    "language": "vi",
+    "options": [
+      "Lửa cháy",
+      "Lưỡi gươm hai lưỡi",
+      "Nước sông",
+      "Ngọn đèn cho chân và ánh sáng cho đường"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi thiên",
+      "Lời Chúa",
+      "Thi Thiên",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 139,
+    "verseStart": 13,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi 139:14 nói chúng ta được dựng nên cách nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Thi 139:14 - Tôi ca ngợi Chúa vì tôi được dựng nên cách đáng sợ lạ lùng. Công việc Chúa là kỳ diệu.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Ngẫu nhiên",
+      "Tự nhiên",
+      "Đơn giản",
+      "Cách đáng sợ và điều kỳ (lạ lùng)"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi thiên",
+      "Giá trị con người",
+      "Thi Thiên",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 22,
+    "verseStart": 1,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Thi thiên 22 bắt đầu: \"Đức Chúa Trời tôi ơi, sao Ngài bỏ tôi?\" Câu này được ai trích dẫn trên thập tự?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ma 27:46 - Chúa Giê-su trích Thi 22:1 khi bị đóng đinh. Thi 22 là thi thiên tiên tri chi tiết về sự đóng đinh.",
+    "language": "vi",
+    "options": [
+      "Phao-lô",
+      "Da-vít",
+      "Chúa Giê-su",
+      "Phi-e-rơ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Tiên tri",
+      "Thập tự",
+      "Thi Thiên",
+      "Văn Thơ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 103,
+    "verseStart": 12,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi 103:12 nói Chúa cắt tội lỗi xa bao nhiêu?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Phương đông và phương tây không bao giờ gặp nhau - tội lỗi đã bị xóa bỏ hoàn toàn.",
+    "language": "vi",
+    "options": [
+      "Xa như phương đông cách phương tây",
+      "Muôn đời",
+      "70 lần 7",
+      "Đến tận cùng đất"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi thiên",
+      "Tha thứ",
+      "Thi Thiên",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 19,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi 19:1 nói trời kể ra điều gì của Đức Chúa Trời?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Thi 19:1 - Các tầng trời rao truyền công việc tay Ngài. Thiên nhiên là bằng chứng về Đấng Sáng Tạo.",
+    "language": "vi",
+    "options": [
+      "Sự giàu có",
+      "Sự khôn ngoan",
+      "Sự phán xét",
+      "Sự vinh hiển"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi thiên",
+      "Sáng tạo",
+      "Thi Thiên",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 34,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi 34:8: \"Hãy ___ xem Đức Giê-hô-va tốt lành dường bao!\"",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Thi 34:8 - Hãy nếm thử (trải nghiệm) sự tốt lành của Chúa. Đức tin cần trải nghiệm cá nhân.",
+    "language": "vi",
+    "options": [
+      "Nếm thử",
+      "Nhìn",
+      "Suy nghĩ",
+      "Lắng nghe"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi thiên",
+      "Trải nghiệm",
+      "Thi Thiên",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 37,
+    "verseStart": 4,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi 37:4: \"Hãy lấy Đức Giê-hô-va làm điều ___\" thì Ngài sẽ ban cho điều lòng ao ước",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Thi 37:4 - Khi vui thích trong Chúa, Ngài đổi mới lòng ao ước của chúng ta cho phù hợp ý Ngài.",
+    "language": "vi",
+    "options": [
+      "Đầu tiên",
+      "Duy nhất",
+      "Vui thích",
+      "Quan trọng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi thiên",
+      "Vui thích",
+      "Thi Thiên",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Psalms",
+    "chapter": 91,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Thi 91 mô tả người nương náu nơi Chúa được bảo vệ khỏi điều gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Thi 91:3-10 - Bài thi thiên về sự bảo vệ toàn diện của Chúa cho người tin cậy Ngài.",
+    "language": "vi",
+    "verseEnd": 2,
+    "options": [
+      "Chỉ chiến tranh",
+      "Chỉ bệnh tật",
+      "Chỉ kẻ thù",
+      "Tất cả: ôn dịch, mũi tên, bóng tối, tai vạ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Thi thiên",
+      "Bảo vệ",
+      "Thi Thiên",
+      "Văn Thơ",
+      "Cơ bản"
+    ]
+  }
+]

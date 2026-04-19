@@ -1,0 +1,385 @@
+[
+  {
+    "book": "Ephesians",
+    "chapter": 2,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Trong Ê-phê-sô 2:8, \"Ấy là nhờ ân điển mà các con được cứu\". Từ \"ân điển\" trong tiếng Hy Lạp có nghĩa gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Charis (χάρις) có nghĩa là \"ân điển, ơn huệ\", sự ban cho không xứng đáng của Đức Chúa Trời.",
+    "language": "vi",
+    "options": [
+      "Eleos - Lòng thương xót",
+      "Charis - Ân điển, ơn huệ",
+      "Agape - Tình yêu",
+      "Dikaiosune - Sự công bình"
+    ],
+    "tags": [
+      "Ê-phê-sô",
+      "Ân điển",
+      "Ngôn ngữ Hy Lạp",
+      "Tân Ước",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ephesians",
+    "chapter": 6,
+    "verseStart": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Trong Ê-phê-sô 6:12, \"Vì chúng ta đánh trận không phải với thịt và huyết\". Từ \"đánh trận\" trong tiếng Hy Lạp có nghĩa gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Pale (πάλη) có nghĩa là \"vật lộn, đấu tranh\", cuộc chiến tâm linh cá nhân và nội tại.",
+    "language": "vi",
+    "options": [
+      "Polemos - Chiến tranh",
+      "Agon - Cuộc thi đấu",
+      "Machomai - Đánh nhau",
+      "Pale - Vật lộn, đấu tranh"
+    ],
+    "tags": [
+      "Ê-phê-sô",
+      "Cuộc chiến tâm linh",
+      "Ngôn ngữ Hy Lạp",
+      "Tân Ước",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ephesians",
+    "chapter": 2,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Ê-phê-sô 2:8-9, chúng ta được cứu bởi điều gì?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ê-phê 2:8-9 - Vì nhờ ân điển, bởi đức tin, mà anh em được cứu. Điều này không phải tự nơi anh em, ấy là sự ban cho của Đức Chúa Trời.",
+    "language": "vi",
+    "verseEnd": 9,
+    "options": [
+      "Bởi báp-têm",
+      "Bởi việc lành",
+      "Bởi ân điển, qua đức tin, không phải bởi việc làm",
+      "Bởi giữ luật pháp"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cứu rỗi",
+      "Ân điển",
+      "Ê-phê-sô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ephesians",
+    "chapter": 6,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ê-phê-sô 6 nói về khí giới toàn thân của Đức Chúa Trời. Tại sao chúng ta cần mặc khí giới này?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Ê-phê 6:11 - Chúng ta chiến trận không phải với loài người mà với các thế lực thuộc linh ở các miền trên trời.",
+    "language": "vi",
+    "verseEnd": 13,
+    "options": [
+      "Để bảo vệ gia đình",
+      "Để tấn công kẻ thù",
+      "Để được mạnh mẽ",
+      "Để đứng vững chống lại mưu kế của ma quỷ"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Chiến trận thuộc linh",
+      "Khí giới",
+      "Ê-phê-sô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ephesians",
+    "chapter": 1,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ê-phê 1:3: Chúa đã ban cho chúng ta mọi phúc lành gì?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Phúc lành Chúa ban là thuộc linh và đời đời, không chỉ vật chất.",
+    "language": "vi",
+    "options": [
+      "Phúc lành tài chính",
+      "Phúc lành sức khỏe",
+      "Phúc lành vật chất",
+      "Mọi phúc lành thuộc linh ở các nơi trên trời"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Phúc lành",
+      "Thuộc linh",
+      "Ê-phê-sô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ephesians",
+    "chapter": 2,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ê-phê 2:10: Chúng ta là tác phẩm của Chúa, được tạo dựng trong Chúa Giê-su để làm gì?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Được cứu không bởi việc làm nhưng ĐƯỢC CỨU ĐỂ làm việc lành.",
+    "language": "vi",
+    "options": [
+      "Việc lành mà Chúa đã chuẩn bị trước",
+      "Được cứu",
+      "Được nghỉ ngơi",
+      "Giữ luật pháp"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Mục đích",
+      "Việc lành",
+      "Ê-phê-sô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ephesians",
+    "chapter": 4,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ê-phê 4:2-3 khuyên sống với nhau thế nào?",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "Giữ gìn sự hiệp nhất của Thánh Linh bằng mối liên kết bình an.",
+    "language": "vi",
+    "verseEnd": 3,
+    "options": [
+      "Cạnh tranh",
+      "Lý trí",
+      "Độc lập",
+      "Khiêm nhường, mềm mại, nhịn nhục, lấy tình yêu nhường nhịn nhau"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Hiệp nhất",
+      "Khiêm nhường",
+      "Ê-phê-sô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ephesians",
+    "chapter": 4,
+    "verseStart": 26,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ê-phê 4:26: \"Nếu giận thì chớ ___, đừng để mặt trời lặn khi còn đang giận\"",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Có thể giận nhưng đừng để cơn giận dẫn đến tội lỗi. Giải quyết trước khi hết ngày.",
+    "language": "vi",
+    "options": [
+      "Nghĩ",
+      "Phạm tội",
+      "Nói",
+      "Làm"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cơn giận",
+      "Đời sống",
+      "Ê-phê-sô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ephesians",
+    "chapter": 4,
+    "verseStart": 32,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ê-phê 4:32: Hãy ở với nhau như thế nào?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Tha thứ cho người khác vì Chúa đã tha thứ cho chúng ta. Tha thứ là bản sao của ân điển.",
+    "language": "vi",
+    "options": [
+      "Lạnh đạm",
+      "Công bình",
+      "Nhân từ, đánh đải thương xót, tha thứ như Chúa đã tha thứ anh em",
+      "Nghiêm khắc"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Tha thứ",
+      "Nhân từ",
+      "Ê-phê-sô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ephesians",
+    "chapter": 5,
+    "verseStart": 25,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ê-phê 5:25: Người chồng phải yêu vợ như ai?",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Tình yêu hôn nhân theo khuôn mẫu Chúa hy sinh vì Hội thánh. Yêu là cho đi không phải nhận.",
+    "language": "vi",
+    "options": [
+      "Như Chúa Giê-su yêu Hội thánh và phối mình vì Hội thánh",
+      "Như yêu cha mẹ",
+      "Như yêu con cái",
+      "Như yêu bản thân"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Hôn nhân",
+      "Hy sinh",
+      "Ê-phê-sô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ephesians",
+    "chapter": 6,
+    "verseStart": 12,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Ê-phê 6:12: Chúng ta chiến đấu không phải với thịt và huyết nhưng với ai?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Chiến trận thật sự là thuộc linh, chống lại thế lực tối tăm, không phải con người.",
+    "language": "vi",
+    "options": [
+      "Chính phủ",
+      "Các thế lực, các quyền binh, các chúa tể bóng tối",
+      "Bạn bè",
+      "Con người"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Chiến trận",
+      "Thế lực tối",
+      "Ê-phê-sô",
+      "Thư tín",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Ephesians",
+    "chapter": 6,
+    "verseStart": 14,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Khi giới toàn thân của Chúa gồm những gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "6 món khí giới thuộc linh bảo vệ và tấn công. Lời Chúa là vũ khí tấn công duy nhất.",
+    "language": "vi",
+    "verseEnd": 17,
+    "options": [
+      "Chỉ có khiên",
+      "Đai lưng lẽ thật, áo giáp công bình, giày Phúc Âm, khiên đức tin, mũ cứu rỗi, gươm Thánh Linh",
+      "Chỉ có mũ",
+      "Chỉ có gươm"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Khí giới",
+      "Chiến trận",
+      "Ê-phê-sô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ephesians",
+    "chapter": 6,
+    "verseStart": 18,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ê-phê 6:18 khuyên cầu nguyện như thế nào?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Cầu nguyện là vũ khí thuộc linh cần sử dụng liên tục, không chỉ lúc gặp nạn.",
+    "language": "vi",
+    "options": [
+      "Chỉ ở nhà thờ",
+      "Mọi lúc với mọi thứ cầu nguyện và nài xin bởi Đức Thánh Linh",
+      "Chỉ buổi sáng",
+      "Chỉ khi gặp khó"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Cầu nguyện",
+      "Thánh Linh",
+      "Ê-phê-sô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Ephesians",
+    "chapter": 5,
+    "verseStart": 18,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Ê-phê 5:18: Đừng say rượu nhưng hãy đầy dẫy điều gì?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Đầy dẫy Thánh Linh thay vì say rượu. Thánh Linh mang lại sự vui mừng, hát xướng và tạ ơn.",
+    "language": "vi",
+    "verseEnd": 19,
+    "options": [
+      "Vui vẻ",
+      "Đức Thánh Linh",
+      "Tri thức",
+      "Lời Chúa"
+    ],
+    "tags": [
+      "Tân Ước",
+      "Thánh Linh",
+      "Đầy dẫy",
+      "Ê-phê-sô",
+      "Thư tín",
+      "Cơ bản"
+    ]
+  }
+]

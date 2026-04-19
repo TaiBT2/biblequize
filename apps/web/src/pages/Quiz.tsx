@@ -1,9 +1,11 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useQueryClient } from '@tanstack/react-query'
 import { api } from '../api/client'
 import { soundManager } from '../services/soundManager'
 import { haptic } from '../utils/haptics'
+import { useLifeline } from '../hooks/useLifeline'
 import QuizResults from './QuizResults'
 
 interface Question {
@@ -72,6 +74,7 @@ const Quiz: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { t } = useTranslation()
+  const queryClient = useQueryClient()
   const settings = location.state as QuizPageSettings | null
   const timerLimit = settings?.timePerQuestion ?? DEFAULT_TIMER
 
@@ -115,6 +118,16 @@ const Quiz: React.FC = () => {
 
   const currentQuestion = questions[currentQuestionIndex]
   const progressPercent = questions.length > 0 ? ((currentQuestionIndex + 1) / questions.length) * 100 : 0
+
+  // Lifeline (hint) integration. Disabled when there's no backend session
+  // (guest / practice-without-session mode) or when the user is on the
+  // results screen. Tied to the current questionId so eliminated-options
+  // reset automatically when the user advances.
+  const lifeline = useLifeline({
+    sessionId: settings?.sessionId,
+    questionId: currentQuestion?.id,
+    enabled: !!settings?.sessionId && !isQuizCompleted,
+  })
 
   useEffect(() => {
     const fetchBackendStats = async () => {
@@ -163,6 +176,18 @@ const Quiz: React.FC = () => {
       }
     }
   }, [timeLeft, showResult, isQuizCompleted])
+
+  // Invalidate the /api/me cache when a quiz finishes so Home.tsx picks
+  // up the updated practiceCorrectCount/practiceTotalCount/earlyRankedUnlock
+  // flag — otherwise the locked Ranked card keeps showing stale "0/0 đúng"
+  // until the 5-minute staleTime expires. Covers all modes (Practice
+  // updates early-unlock counters; Ranked/others can bump streaks/XP).
+  useEffect(() => {
+    if (isQuizCompleted) {
+      queryClient.invalidateQueries({ queryKey: ['me'] })
+      queryClient.invalidateQueries({ queryKey: ['me-tier-progress'] })
+    }
+  }, [isQuizCompleted, queryClient])
 
   useEffect(() => {
     const boot = () => {
@@ -669,12 +694,19 @@ const Quiz: React.FC = () => {
               const isSelected = selectedAnswer === index
               const isCorrectAnswer = showResult && index === correctIdx
               const isWrongSelected = showResult && isSelected && index !== correctIdx
+              const isEliminated = !showResult && lifeline.eliminatedOptions.has(index)
 
               let buttonClasses = 'group relative flex items-center p-8 rounded-[2rem] transition-all duration-300 text-left active:scale-[0.98]'
               let letterClasses = 'w-14 h-14 flex items-center justify-center rounded-2xl font-black text-xl transition-colors flex-shrink-0'
               let textClasses = 'ml-6 font-bold text-xl'
 
-              if (showResult && isCorrectAnswer) {
+              if (isEliminated) {
+                // Hint-eliminated wrong option: greyed out and non-interactive,
+                // styled to be visually crossed-out without reshuffling layout.
+                buttonClasses += ' bg-surface-container border-2 border-transparent opacity-30 pointer-events-none'
+                letterClasses += ' bg-surface-container-highest text-on-surface-variant line-through'
+                textClasses += ' text-on-surface-variant line-through'
+              } else if (showResult && isCorrectAnswer) {
                 buttonClasses += ' bg-green-500/10 border-2 border-green-500 answer-correct-anim'
                 letterClasses += ' bg-green-500 text-on-secondary shadow-lg'
                 textClasses += ' text-green-400'
@@ -699,13 +731,20 @@ const Quiz: React.FC = () => {
               return (
                 <button
                   data-testid={`quiz-answer-${index}`}
+                  data-eliminated={isEliminated ? 'true' : 'false'}
                   key={index}
                   onClick={() => handleAnswerSelect(index)}
-                  disabled={showResult}
+                  disabled={showResult || isEliminated}
+                  aria-disabled={showResult || isEliminated}
                   className={buttonClasses}
                 >
                   <div className={letterClasses}>{ANSWER_LETTERS[index]}</div>
                   <span className={textClasses}>{option}</span>
+                  {isEliminated && (
+                    <div className="absolute right-8 top-1/2 -translate-y-1/2">
+                      <span className="material-symbols-outlined text-on-surface-variant/60 text-3xl">close</span>
+                    </div>
+                  )}
                   {showResult && isCorrectAnswer && (
                     <div className="absolute right-8 top-1/2 -translate-y-1/2">
                       <span className="material-symbols-outlined text-green-400 text-3xl" style={FILL_STYLE}>check_circle</span>
@@ -723,14 +762,31 @@ const Quiz: React.FC = () => {
         </div>
 
         {/* Gameplay Footer */}
+        {/*
+          AskOpinion (community poll) lifeline was removed in v1 — it needs
+          a critical mass of community answers (cold-start problem). Will
+          be reintroduced in v2 once we reach ≥30 samples/question avg.
+          See DECISIONS.md 2026-04-18.
+        */}
         <div className="mt-16 w-full flex justify-between items-center opacity-80">
-          <button className="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors">
+          <button
+            data-testid="quiz-hint-btn"
+            data-hint-remaining={lifeline.hintsRemaining}
+            onClick={() => { if (lifeline.canUseHint && !showResult) lifeline.useHint() }}
+            disabled={!lifeline.canUseHint || showResult}
+            aria-disabled={!lifeline.canUseHint || showResult}
+            className={`flex items-center gap-2 transition-colors ${
+              lifeline.canUseHint && !showResult
+                ? 'text-on-surface-variant hover:text-on-surface'
+                : 'text-on-surface-variant/30 cursor-not-allowed'
+            }`}
+          >
             <span className="material-symbols-outlined">lightbulb</span>
-            <span className="text-xs font-bold uppercase tracking-widest">{t('quiz.hint')}</span>
-          </button>
-          <button className="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors">
-            <span className="material-symbols-outlined">groups</span>
-            <span className="text-xs font-bold uppercase tracking-widest">{t('quiz.askOpinion')}</span>
+            <span className="text-xs font-bold uppercase tracking-widest">
+              {lifeline.hintsRemaining === -1
+                ? t('quiz.hint')
+                : t('quiz.hintWithCount', { count: Math.max(0, lifeline.hintsRemaining) })}
+            </span>
           </button>
           <button
             onClick={() => {
