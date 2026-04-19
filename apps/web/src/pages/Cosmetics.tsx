@@ -65,8 +65,8 @@ export default function Cosmetics() {
           <span className="material-symbols-outlined">arrow_back</span>
         </Link>
         <div>
-          <h1 className="text-2xl font-black text-on-surface">Ngoại hình</h1>
-          <p className="text-sm text-on-surface-variant">Khung avatar & giao diện quiz</p>
+          <h1 className="text-2xl font-black text-on-surface">{t('gameModes.cosmeticsPage.title')}</h1>
+          <p className="text-sm text-on-surface-variant">{t('gameModes.cosmeticsPage.subtitle')}</p>
         </div>
       </div>
 
@@ -76,7 +76,7 @@ export default function Cosmetics() {
           <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
             frame_person
           </span>
-          Khung Avatar
+          {t('gameModes.cosmeticsPage.avatarFramesSection')}
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {data.frames.map((frame) => (
@@ -101,7 +101,9 @@ export default function Cosmetics() {
               </div>
               <p className="text-xs font-bold text-on-surface">{frame.name}</p>
               <p className="text-[10px] text-on-surface-variant mt-0.5">
-                {frame.unlocked ? (frame.active ? '✓ Đang dùng' : 'Đã mở') : `Đạt T${frame.tier} để mở`}
+                {frame.unlocked
+                  ? (frame.active ? t('gameModes.cosmeticsPage.statusActive') : t('gameModes.cosmeticsPage.statusUnlocked'))
+                  : t('gameModes.cosmeticsPage.statusLockedTier', { tier: frame.tier })}
               </p>
               {!frame.unlocked && (
                 <span data-testid="cosmetics-lock-icon" className="material-symbols-outlined absolute top-2 right-2 text-sm text-on-surface-variant">
@@ -119,7 +121,7 @@ export default function Cosmetics() {
           <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
             palette
           </span>
-          Giao diện Quiz
+          {t('gameModes.cosmeticsPage.quizThemesSection')}
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {data.themes.map((theme) => (
@@ -138,7 +140,9 @@ export default function Cosmetics() {
               <div className="text-2xl mb-2">{TIER_ICONS[theme.tier - 1]}</div>
               <p className="text-xs font-bold text-on-surface">{theme.name}</p>
               <p className="text-[10px] text-on-surface-variant mt-0.5">
-                {theme.unlocked ? (theme.active ? '✓ Đang dùng' : 'Đã mở') : `Đạt T${theme.tier} để mở`}
+                {theme.unlocked
+                  ? (theme.active ? t('gameModes.cosmeticsPage.statusActive') : t('gameModes.cosmeticsPage.statusUnlocked'))
+                  : t('gameModes.cosmeticsPage.statusLockedTier', { tier: theme.tier })}
               </p>
             </button>
           ))}

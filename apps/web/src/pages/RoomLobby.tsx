@@ -28,12 +28,6 @@ const MODE_LABELS: Record<string, string> = {
   SUDDEN_DEATH: 'Sudden Death',
 };
 
-const DIFFICULTY_LABELS: Record<string, string> = {
-  EASY: 'Dễ',
-  MEDIUM: 'Trung bình',
-  HARD: 'Khó',
-};
-
 const QUICK_EMOJIS = ['🙏', '🔥', '🙌', '💡', '✨'];
 
 const myUsername = () => localStorage.getItem('userName') ?? '';

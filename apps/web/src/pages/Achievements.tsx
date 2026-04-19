@@ -30,12 +30,12 @@ interface TierInfo {
 }
 
 const TIERS: TierInfo[] = [
-  { name: 'Tân Tín Hữu', icon: 'person', color: '#919098', bgColor: 'bg-[#919098]/10', textColor: 'text-[#919098]', borderColor: 'border-[#919098]/30', minPoints: 0 },
-  { name: 'Người Tìm Kiếm', icon: 'search', color: '#4ade80', bgColor: 'bg-[#4ade80]/10', textColor: 'text-[#4ade80]', borderColor: 'border-[#4ade80]/30', minPoints: 500 },
-  { name: 'Môn Đồ', icon: 'school', color: '#4a9eff', bgColor: 'bg-[#4a9eff]/10', textColor: 'text-[#4a9eff]', borderColor: 'border-[#4a9eff]/30', minPoints: 1500 },
-  { name: 'Hiền Triết', icon: 'psychology', color: '#9b59b6', bgColor: 'bg-[#9b59b6]/10', textColor: 'text-[#9b59b6]', borderColor: 'border-[#9b59b6]/30', minPoints: 4000 },
-  { name: 'Tiên Tri', icon: 'auto_awesome', color: '#e8a832', bgColor: 'bg-secondary/10', textColor: 'text-secondary', borderColor: 'border-secondary/30', minPoints: 8000 },
-  { name: 'Sứ Đồ', icon: 'local_fire_department', color: '#ff6b6b', bgColor: 'bg-[#ff6b6b]/10', textColor: 'text-[#ff6b6b]', borderColor: 'border-[#ff6b6b]/30', minPoints: 15000 },
+  { name: 'newBeliever', icon: 'person', color: '#919098', bgColor: 'bg-[#919098]/10', textColor: 'text-[#919098]', borderColor: 'border-[#919098]/30', minPoints: 0 },
+  { name: 'seeker', icon: 'search', color: '#4ade80', bgColor: 'bg-[#4ade80]/10', textColor: 'text-[#4ade80]', borderColor: 'border-[#4ade80]/30', minPoints: 500 },
+  { name: 'disciple', icon: 'school', color: '#4a9eff', bgColor: 'bg-[#4a9eff]/10', textColor: 'text-[#4a9eff]', borderColor: 'border-[#4a9eff]/30', minPoints: 1500 },
+  { name: 'sage', icon: 'psychology', color: '#9b59b6', bgColor: 'bg-[#9b59b6]/10', textColor: 'text-[#9b59b6]', borderColor: 'border-[#9b59b6]/30', minPoints: 4000 },
+  { name: 'prophet', icon: 'auto_awesome', color: '#e8a832', bgColor: 'bg-secondary/10', textColor: 'text-secondary', borderColor: 'border-secondary/30', minPoints: 8000 },
+  { name: 'apostle', icon: 'local_fire_department', color: '#ff6b6b', bgColor: 'bg-[#ff6b6b]/10', textColor: 'text-[#ff6b6b]', borderColor: 'border-[#ff6b6b]/30', minPoints: 15000 },
 ]
 
 function getCurrentTier(points: number): { current: TierInfo; next: TierInfo | null; progress: number } {
@@ -393,7 +393,7 @@ const Achievements: React.FC = () => {
               <div className="flex justify-between items-center">
                 <span className="text-sm text-on-surface-variant">{t('achievements.currentRank')}</span>
                 <span className="text-sm font-bold text-on-surface">
-                  {tierData.current.name}
+                  {t(`tiers.${tierData.current.name}`)}
                 </span>
               </div>
               <div className="flex justify-between items-center">
@@ -429,10 +429,10 @@ const Achievements: React.FC = () => {
                 </span>
               </div>
               <div>
-                <p className="text-sm font-black text-on-surface">{tierData.current.name}</p>
+                <p className="text-sm font-black text-on-surface">{t(`tiers.${tierData.current.name}`)}</p>
                 {tierData.next && (
                   <p className="text-[11px] text-on-surface-variant">
-                    {t('achievements.nextTier')}: {tierData.next.name}
+                    {t('achievements.nextTier')}: {t(`tiers.${tierData.next.name}`)}
                   </p>
                 )}
               </div>

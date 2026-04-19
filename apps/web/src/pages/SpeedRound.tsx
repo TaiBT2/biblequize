@@ -36,7 +36,7 @@ export default function SpeedRound() {
           <span className="material-symbols-outlined text-4xl text-orange-400" style={{ fontVariationSettings: "'FILL' 1" }}>speed</span>
         </div>
         <h1 className="text-3xl font-black text-on-surface">Speed Round</h1>
-        <p className="text-on-surface-variant text-sm">Nhanh như chớp!</p>
+        <p className="text-on-surface-variant text-sm">{t('gameModes.speedPage.subtitle')}</p>
       </div>
 
       {/* Info card */}
@@ -44,11 +44,11 @@ export default function SpeedRound() {
         <div className="flex justify-center gap-6">
           <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl px-5 py-3 text-center">
             <p className="text-3xl font-black text-orange-400">10</p>
-            <p className="text-xs text-on-surface-variant mt-1">câu hỏi</p>
+            <p className="text-xs text-on-surface-variant mt-1">{t('gameModes.speedPage.questionsSuffix')}</p>
           </div>
           <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl px-5 py-3 text-center" data-testid="speed-round-timer-stat">
             <p className="text-3xl font-black text-orange-400">10s</p>
-            <p className="text-xs text-on-surface-variant mt-1">mỗi câu</p>
+            <p className="text-xs text-on-surface-variant mt-1">{t('gameModes.speedPage.perQuestionSuffix')}</p>
           </div>
           <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl px-5 py-3 text-center" data-testid="speed-round-bonus-stat">
             <p className="text-3xl font-black text-orange-400">2x</p>
@@ -57,8 +57,8 @@ export default function SpeedRound() {
         </div>
 
         <div className="space-y-2 text-sm text-on-surface-variant">
-          <p>Chỉ câu hỏi <span className="text-emerald-400 font-bold">DỄ</span> — vì timer rất ngắn!</p>
-          <p>Sai hoặc hết giờ → tự động sang câu kế</p>
+          <p>{t('gameModes.speedPage.onlyEasyNote')} <span className="text-emerald-400 font-bold">{t('gameModes.speedPage.easyWord')}</span> {t('gameModes.speedPage.easyReason')}</p>
+          <p>{t('gameModes.speedPage.autoAdvanceNote')}</p>
         </div>
 
         <button

@@ -1236,7 +1236,34 @@
     "mysteryBtn": "I'm Brave Enough!",
     "speed": "Speed Round",
     "speedDesc": "10 questions × 10 seconds. Easy only. 2x XP!",
-    "speedBtn": "Start!"
+    "speedBtn": "Start!",
+    "cosmeticsPage": {
+      "title": "Appearance",
+      "subtitle": "Avatar frames & quiz themes",
+      "avatarFramesSection": "Avatar Frames",
+      "quizThemesSection": "Quiz Themes",
+      "statusActive": "✓ In use",
+      "statusUnlocked": "Unlocked",
+      "statusLockedTier": "Reach T{{tier}} to unlock"
+    },
+    "mysteryPage": {
+      "subtitle": "You know nothing about the upcoming quiz",
+      "bookLabel": "Book:",
+      "difficultyLabel": "Difficulty:",
+      "topicLabel": "Topic:",
+      "bonusLabel": "Bonus",
+      "timeLabel": "Time",
+      "questionsLabel": "Questions"
+    },
+    "speedPage": {
+      "subtitle": "Lightning fast!",
+      "questionsSuffix": "questions",
+      "perQuestionSuffix": "per question",
+      "onlyEasyNote": "Only",
+      "easyWord": "EASY",
+      "easyReason": "questions — timers are super short!",
+      "autoAdvanceNote": "Wrong or time-out → auto-advance to next"
+    }
   },
   "liveFeed": {
     "correct1": "✅ {{name}} answered correctly! ({{time}}s)",

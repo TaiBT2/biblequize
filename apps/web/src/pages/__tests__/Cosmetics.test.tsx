@@ -12,12 +12,6 @@ vi.mock('../../api/client', () => ({
   },
 }))
 
-vi.mock('react-i18next', () => ({
-  useTranslation: () => ({
-    t: (key: string) => key,
-  }),
-}))
-
 import Cosmetics from '../Cosmetics'
 
 const mockCosmeticsData = {

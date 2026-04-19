@@ -1236,7 +1236,34 @@
     "mysteryBtn": "Tôi Đủ Can Đảm!",
     "speed": "Speed Round",
     "speedDesc": "10 câu × 10 giây. Chỉ câu dễ. 2x XP!",
-    "speedBtn": "Bắt Đầu!"
+    "speedBtn": "Bắt Đầu!",
+    "cosmeticsPage": {
+      "title": "Ngoại hình",
+      "subtitle": "Khung avatar & giao diện quiz",
+      "avatarFramesSection": "Khung Avatar",
+      "quizThemesSection": "Giao diện Quiz",
+      "statusActive": "✓ Đang dùng",
+      "statusUnlocked": "Đã mở",
+      "statusLockedTier": "Đạt T{{tier}} để mở"
+    },
+    "mysteryPage": {
+      "subtitle": "Bạn không biết gì về quiz sắp tới",
+      "bookLabel": "Sách:",
+      "difficultyLabel": "Độ khó:",
+      "topicLabel": "Chủ đề:",
+      "bonusLabel": "Bonus",
+      "timeLabel": "Thời gian",
+      "questionsLabel": "Câu hỏi"
+    },
+    "speedPage": {
+      "subtitle": "Nhanh như chớp!",
+      "questionsSuffix": "câu hỏi",
+      "perQuestionSuffix": "mỗi câu",
+      "onlyEasyNote": "Chỉ câu hỏi",
+      "easyWord": "DỄ",
+      "easyReason": "— vì timer rất ngắn!",
+      "autoAdvanceNote": "Sai hoặc hết giờ → tự động sang câu kế"
+    }
   },
   "liveFeed": {
     "correct1": "✅ {{name}} trả lời đúng! ({{time}}s)",
