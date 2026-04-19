@@ -14,17 +14,22 @@ import com.biblequiz.modules.user.repository.UserRepository;
 
 import org.springframework.data.domain.PageRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.biblequiz.modules.quiz.entity.UserQuestionHistory;
 import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
+import com.biblequiz.modules.ranked.service.UserTierService;
 
 import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
 public class SessionService {
+
+    private static final Logger log = LoggerFactory.getLogger(SessionService.class);
 
     private final QuizSessionRepository quizSessionRepository;
     private final QuizSessionQuestionRepository quizSessionQuestionRepository;
@@ -36,6 +41,10 @@ public class SessionService {
     private final QuestionService questionService;
     private final UserQuestionHistoryRepository userQuestionHistoryRepository;
     private final SmartQuestionSelector smartQuestionSelector;
+    // totalPoints is derived (sum of UserDailyProgress.pointsCounted), not a
+    // field on User — we reuse UserTierService as the single source of truth
+    // for that computation to avoid drift between Ranked gating and tier UI.
+    private final UserTierService userTierService;
 
     public SessionService(QuizSessionRepository quizSessionRepository,
             QuizSessionQuestionRepository quizSessionQuestionRepository,
@@ -46,7 +55,8 @@ public class SessionService {
             ObjectMapper objectMapper,
             QuestionService questionService,
             UserQuestionHistoryRepository userQuestionHistoryRepository,
-            SmartQuestionSelector smartQuestionSelector) {
+            SmartQuestionSelector smartQuestionSelector,
+            UserTierService userTierService) {
         this.quizSessionRepository = quizSessionRepository;
         this.quizSessionQuestionRepository = quizSessionQuestionRepository;
         this.questionRepository = questionRepository;
@@ -57,6 +67,7 @@ public class SessionService {
         this.questionService = questionService;
         this.userQuestionHistoryRepository = userQuestionHistoryRepository;
         this.smartQuestionSelector = smartQuestionSelector;
+        this.userTierService = userTierService;
     }
 
     @Transactional
@@ -64,6 +75,19 @@ public class SessionService {
         User owner = userRepository.findById(ownerId)
                 .orElseGet(() -> userRepository.findByEmail(ownerId)
                         .orElseGet(() -> createUserFromPrincipal(ownerId)));
+
+        // Ranked gate: Tier-1 users can only create Ranked sessions if they
+        // have earned the early unlock (≥80% accuracy over 10+ Practice
+        // answers). See updateEarlyRankedUnlockProgress below.
+        if (mode == QuizSession.Mode.ranked) {
+            int totalPoints = userTierService.getTotalPoints(owner.getId());
+            boolean hasEarlyUnlock = Boolean.TRUE.equals(owner.getEarlyRankedUnlock());
+            if (totalPoints < 1_000 && !hasEarlyUnlock) {
+                throw new IllegalStateException(
+                        "Ranked mode requires Tier 2 (1,000 XP) or early-unlock. "
+                                + "Play Practice with ≥80% accuracy over 10+ questions to unlock early.");
+            }
+        }
 
         String sessionId = UUID.randomUUID().toString();
         String configJson;
@@ -153,7 +177,16 @@ public class SessionService {
             throw new IllegalStateException("Session has been abandoned");
         }
 
-        User user = userRepository.findById(userId).orElseThrow();
+        // Principal.getName() returns the JWT subject, which is the user's
+        // email for both OAuth (Google) and password (mobile) logins — not
+        // the UUID primary key. createSession already accounts for this;
+        // submitAnswer didn't, so every authenticated Practice submission
+        // 500'd with "No value present" once the DTO alias fix unblocked
+        // the body-parse step. Same two-step lookup keeps both entry points
+        // symmetric.
+        User user = userRepository.findById(userId)
+                .or(() -> userRepository.findByEmail(userId))
+                .orElseThrow();
 
         // FIX-002: Update last activity for abandonment detection
         session.setLastActivityAt(LocalDateTime.now());
@@ -205,8 +238,111 @@ public class SessionService {
         }
 
         recordQuestionHistory(user, question, isCorrect);
+        updateEarlyRankedUnlockProgress(user, session.getMode(), isCorrect);
+        creditNonRankedProgress(user, session.getMode(), isCorrect, scoreDelta);
 
         return toAnswerResult(answer, question);
+    }
+
+    /**
+     * Credit XP + question count toward {@link com.biblequiz.modules.quiz.entity.UserDailyProgress}
+     * for non-Ranked game modes (Practice, single, daily, weekly, mystery,
+     * speed). Ranked has its own sync path via
+     * {@code /api/ranked/sync-progress} in {@code RankedController}, so
+     * it's excluded here to avoid double-crediting.
+     *
+     * <p>Why this exists: {@code UserTierService.getTotalPoints(userId)}
+     * sums {@code UserDailyProgress.pointsCounted} across all rows. Without
+     * this write, every Practice correct answer produced {@code scoreDelta}
+     * that only landed on {@code QuizSession.score} (session-local) — never
+     * contributing to the all-time XP total that drives tier progression.
+     *
+     * <h3>Practice XP cap</h3>
+     * <p>Practice mode is the onboarding path. Once the user hits
+     * {@code totalPoints >= 1,000} (Tier-2), Practice stops granting XP —
+     * Ranked becomes the progression driver. This mirrors
+     * {@link #updateEarlyRankedUnlockProgress} which already short-circuits
+     * at the same threshold. Other non-Ranked modes (daily, weekly, mystery,
+     * speed) are bonus content and continue granting XP at every tier.
+     *
+     * <p>Even when XP is capped, {@code questionsCounted} still ticks so
+     * Practice keeps contributing to streak / daily missions / achievements.
+     * Wrong answers always add 0 XP but still increment the question count.
+     */
+    private void creditNonRankedProgress(User user, QuizSession.Mode mode, boolean isCorrect, int scoreDelta) {
+        if (mode == QuizSession.Mode.ranked) return;
+
+        boolean grantXp = true;
+        if (mode == QuizSession.Mode.practice) {
+            int totalPoints = userTierService.getTotalPoints(user.getId());
+            if (totalPoints >= 1_000) {
+                grantXp = false;
+            }
+        }
+
+        java.time.LocalDate today = java.time.LocalDate.now(java.time.ZoneOffset.UTC);
+        com.biblequiz.modules.quiz.entity.UserDailyProgress udp = userDailyProgressRepository
+                .findByUserIdAndDate(user.getId(), today)
+                .orElseGet(() -> {
+                    var fresh = new com.biblequiz.modules.quiz.entity.UserDailyProgress(
+                            UUID.randomUUID().toString(), user, today);
+                    fresh.setLivesRemaining(100);
+                    fresh.setQuestionsCounted(0);
+                    fresh.setPointsCounted(0);
+                    return fresh;
+                });
+        int addPoints = (isCorrect && grantXp) ? Math.max(0, scoreDelta) : 0;
+        int beforePoints = Optional.ofNullable(udp.getPointsCounted()).orElse(0);
+        int beforeQuestions = Optional.ofNullable(udp.getQuestionsCounted()).orElse(0);
+        udp.setPointsCounted(beforePoints + addPoints);
+        udp.setQuestionsCounted(beforeQuestions + 1);
+        userDailyProgressRepository.save(udp);
+
+        log.info("creditNonRankedProgress user={} mode={} isCorrect={} scoreDelta={} grantXp={} "
+                + "pointsCounted={}→{} questionsCounted={}→{}",
+                user.getId(), mode, isCorrect, scoreDelta, grantXp,
+                beforePoints, beforePoints + addPoints,
+                beforeQuestions, beforeQuestions + 1);
+    }
+
+    /**
+     * Track a user's Practice-mode accuracy so Tier-1 players who
+     * demonstrate ≥80% correctness over ≥10 questions can bypass the
+     * 1,000 XP Ranked gate. The flag is permanent once set.
+     *
+     * <p>Short-circuits for:
+     * <ul>
+     *   <li>Non-practice sessions (counters only reflect Practice).</li>
+     *   <li>Users already above Tier 1 (they already have Ranked access).</li>
+     *   <li>Users who already earned the unlock.</li>
+     * </ul>
+     */
+    private void updateEarlyRankedUnlockProgress(User user, QuizSession.Mode mode, boolean isCorrect) {
+        if (mode != QuizSession.Mode.practice) return;
+        if (Boolean.TRUE.equals(user.getEarlyRankedUnlock())) return;
+        int totalPoints = userTierService.getTotalPoints(user.getId());
+        if (totalPoints >= 1_000) return; // already Tier-2+ via XP path
+
+        int newTotal = Optional.ofNullable(user.getPracticeTotalCount()).orElse(0) + 1;
+        int newCorrect = Optional.ofNullable(user.getPracticeCorrectCount()).orElse(0)
+                + (isCorrect ? 1 : 0);
+        user.setPracticeTotalCount(newTotal);
+        user.setPracticeCorrectCount(newCorrect);
+
+        if (EarlyRankedUnlockPolicy.shouldUnlock(newCorrect, newTotal)) {
+            user.setEarlyRankedUnlock(true);
+            // Record the exact moment only on the FIRST flip so the FE
+            // celebration modal fires once. The outer guard already
+            // short-circuits when the flag was previously set, so this
+            // runs at most once per user.
+            if (user.getEarlyRankedUnlockedAt() == null) {
+                user.setEarlyRankedUnlockedAt(LocalDateTime.now());
+            }
+        }
+        userRepository.save(user);
+        log.info("updateEarlyRankedUnlockProgress user={} isCorrect={} counters={}/{} (correct/total) "
+                + "earlyRankedUnlock={}",
+                user.getId(), isCorrect, newCorrect, newTotal, user.getEarlyRankedUnlock());
     }
 
     @Transactional(readOnly = true)

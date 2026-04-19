@@ -31,6 +31,10 @@ import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
+// Profile list includes "docker" so e2e tests targeting the docker-compose
+// stack (PLAYWRIGHT_BASE_URL=http://localhost:3000) can seed fixtures via
+// this controller. Docker is still a dev environment — production runs
+// under SPRING_PROFILES_ACTIVE=prod which is explicitly excluded.
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -53,7 +57,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/admin/test")
 @PreAuthorize("hasRole('ADMIN')")
-@Profile({"dev", "staging"})
+@Profile({"dev", "staging", "docker"})
 public class AdminTestController {
 
     private static final Logger log = LoggerFactory.getLogger(AdminTestController.class);

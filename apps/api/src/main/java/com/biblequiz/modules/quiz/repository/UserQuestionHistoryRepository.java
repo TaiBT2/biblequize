@@ -45,7 +45,10 @@ public interface UserQuestionHistoryRepository extends JpaRepository<UserQuestio
            "GROUP BY h.question.book")
     List<Object[]> getAccuracyByBook(@Param("userId") String userId);
 
+    // Spring Data JPA @Modifying DML contract accepts only void / int /
+    // Integer return types. `long` threw InvalidDataAccessApiUsageException
+    // at call time (surfaced via admin reset-history during e2e setup).
     @org.springframework.data.jpa.repository.Modifying
     @Query("DELETE FROM UserQuestionHistory h WHERE h.user.id = :userId")
-    long deleteAllByUserId(@Param("userId") String userId);
+    int deleteAllByUserId(@Param("userId") String userId);
 }

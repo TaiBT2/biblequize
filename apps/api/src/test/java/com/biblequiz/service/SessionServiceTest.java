@@ -380,15 +380,13 @@ class SessionServiceTest {
         }
 
         @Test
-        void submitAnswer_practiceMode_doesNotWriteUserDailyProgress() {
-                // Design contract: Practice does NOT grant XP or write to
-                // UserDailyProgress (pointsCounted/questionsCounted). XP is
-                // exclusively credited via the Ranked sync-progress flow in
-                // RankedController. Practice only ticks:
-                //   - practice_correct_count / practice_total_count on users
-                //     (for early-unlock path; see updateEarlyRankedUnlockProgress)
-                //   - answers / quiz_session_questions tables (for history)
-                // See DECISIONS.md 2026-04-19 "XP source of truth: Ranked only".
+        void submitAnswer_practiceMode_tier1_creditsXpToUserDailyProgress() {
+                // Updated contract: Practice NOW grants XP up to the Tier-2 cap.
+                // Tier-1 users (totalPoints < 1000) receive scoreDelta into
+                // UserDailyProgress.pointsCounted so that Practice contributes
+                // to tier progression — this is the onboarding path. Once
+                // totalPoints >= 1000, the cap kicks in (see separate test).
+                // See creditNonRankedProgress javadoc + user request 2026-04-20.
                 when(quizSessionRepository.findById("session1")).thenReturn(Optional.of(sampleSession));
                 when(userRepository.findById("user1")).thenReturn(Optional.of(sampleUser));
                 when(questionRepository.findById("q1")).thenReturn(Optional.of(sampleQuestion));
@@ -397,12 +395,44 @@ class SessionServiceTest {
                 when(answerRepository.save(any(Answer.class))).thenReturn(sampleAnswer);
                 when(quizSessionQuestionRepository.findBySessionIdAndQuestionId("session1", "q1"))
                                 .thenReturn(new QuizSessionQuestion());
+                when(userDailyProgressRepository.findByUserIdAndDate(eq("user1"), any()))
+                                .thenReturn(Optional.empty());
+                // Tier-1 user: totalPoints < 1000 → grantXp = true
+                when(userTierService.getTotalPoints("user1")).thenReturn(0);
 
                 sessionService.submitAnswer("session1", "user1", "q1", 0, 5000);
 
-                // Practice must NOT touch UserDailyProgress — that's Ranked's job.
-                verify(userDailyProgressRepository, never()).findByUserIdAndDate(anyString(), any());
-                verify(userDailyProgressRepository, never()).save(any());
+                // Practice now writes UDP: questionsCounted ticks always,
+                // pointsCounted increases on correct answers under cap.
+                verify(userDailyProgressRepository).findByUserIdAndDate("user1", java.time.LocalDate.now(java.time.ZoneOffset.UTC));
+                verify(userDailyProgressRepository).save(argThat(udp ->
+                        udp.getQuestionsCounted() != null && udp.getQuestionsCounted() == 1));
+        }
+
+        @Test
+        void submitAnswer_practiceMode_tier2_capsXpButStillTicksQuestions() {
+                // Cap invariant: once totalPoints >= 1000 (Tier 2+), Practice
+                // stops granting XP but questionsCounted still ticks so daily
+                // missions / streak keep working.
+                when(quizSessionRepository.findById("session1")).thenReturn(Optional.of(sampleSession));
+                when(userRepository.findById("user1")).thenReturn(Optional.of(sampleUser));
+                when(questionRepository.findById("q1")).thenReturn(Optional.of(sampleQuestion));
+                when(answerRepository.findBySessionIdAndQuestionIdAndUserId("session1", "q1", "user1"))
+                                .thenReturn(Optional.empty());
+                when(answerRepository.save(any(Answer.class))).thenReturn(sampleAnswer);
+                when(quizSessionQuestionRepository.findBySessionIdAndQuestionId("session1", "q1"))
+                                .thenReturn(new QuizSessionQuestion());
+                when(userDailyProgressRepository.findByUserIdAndDate(eq("user1"), any()))
+                                .thenReturn(Optional.empty());
+                // Tier-2 user: totalPoints = 1500 → grantXp = false
+                when(userTierService.getTotalPoints("user1")).thenReturn(1500);
+
+                sessionService.submitAnswer("session1", "user1", "q1", 0, 5000);
+
+                // questionsCounted ticks, pointsCounted stays 0.
+                verify(userDailyProgressRepository).save(argThat(udp ->
+                        udp.getQuestionsCounted() != null && udp.getQuestionsCounted() == 1
+                                && udp.getPointsCounted() != null && udp.getPointsCounted() == 0));
         }
 
         @Test
