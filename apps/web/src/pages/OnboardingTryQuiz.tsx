@@ -79,10 +79,10 @@ export default function OnboardingTryQuiz() {
     const total = questions.length
     const wrong = total - correct
     const getMessage = () => {
-      if (correct === total) return 'Hoàn hảo! Bạn rất am hiểu Kinh Thánh!'
-      if (correct >= 2) return 'Tốt lắm! Bạn có tiềm năng học Kinh Thánh!'
-      if (correct === 1) return 'Khởi đầu tốt! Hãy luyện tập thêm!'
-      return 'Đừng nản lòng! Mọi hành trình đều bắt đầu từ bước đầu tiên.'
+      if (correct === total) return t('onboarding.tryMessagePerfect')
+      if (correct >= 2) return t('onboarding.tryMessageGood')
+      if (correct === 1) return t('onboarding.tryMessageStart')
+      return t('onboarding.tryMessageEncourage')
     }
 
     return (
@@ -91,7 +91,7 @@ export default function OnboardingTryQuiz() {
         <nav className="flex justify-between items-center w-full px-8 py-4 sticky top-0 z-50 bg-[#11131e]">
           <span className="text-xl font-bold text-[#f8bd45] uppercase tracking-[0.05em]">BibleQuiz</span>
           <div className="hidden md:flex gap-8">
-            {['Trang chủ', 'Thử thách', 'Cộng đồng'].map(l => (
+            {[t('onboarding.tryNavHome'), t('onboarding.tryNavChallenge'), t('onboarding.tryNavCommunity')].map(l => (
               <span key={l} className="text-[#e1e1f1] opacity-70 text-sm">{l}</span>
             ))}
           </div>
@@ -118,7 +118,7 @@ export default function OnboardingTryQuiz() {
               <div className="space-y-4 text-center md:text-left">
                 <h2 className="text-4xl md:text-5xl font-bold text-on-surface tracking-tight leading-tight">{getMessage()}</h2>
                 <p className="text-on-surface-variant text-lg max-w-md leading-relaxed">
-                  Đăng ký để lưu lại kết quả và bắt đầu hành trình học Kinh Thánh.
+                  {t('onboarding.trySignupHint')}
                 </p>
               </div>
 
@@ -134,9 +134,10 @@ export default function OnboardingTryQuiz() {
                     <span className="text-xs font-bold text-secondary">+2k</span>
                   </div>
                 </div>
-                <p className="text-sm text-on-surface-variant">
-                  Tham gia cùng <span className="text-secondary font-semibold">2,405</span> người khác hôm nay
-                </p>
+                <p
+                  className="text-sm text-on-surface-variant [&_b]:text-secondary [&_b]:font-semibold"
+                  dangerouslySetInnerHTML={{ __html: t('onboarding.tryCommunityJoin', { count: '2,405' }) }}
+                />
               </div>
             </div>
 
@@ -148,11 +149,11 @@ export default function OnboardingTryQuiz() {
                 <div className="grid grid-cols-3 gap-4">
                   <div className="bg-surface-container-high p-5 rounded-2xl flex flex-col items-center space-y-2">
                     <span className="material-symbols-outlined text-secondary" style={FILL_1}>check_circle</span>
-                    <span className="text-2xl font-bold text-on-surface">Đúng {correct}</span>
+                    <span className="text-2xl font-bold text-on-surface">{t('onboarding.tryStatCorrect', { count: correct })}</span>
                   </div>
                   <div className="bg-surface-container-high p-5 rounded-2xl flex flex-col items-center space-y-2">
                     <span className="material-symbols-outlined text-error">cancel</span>
-                    <span className="text-2xl font-bold text-on-surface">Sai {wrong}</span>
+                    <span className="text-2xl font-bold text-on-surface">{t('onboarding.tryStatWrong', { count: wrong })}</span>
                   </div>
                   <div className="bg-surface-container-high p-5 rounded-2xl flex flex-col items-center space-y-2">
                     <span className="material-symbols-outlined text-primary">timer</span>
@@ -163,8 +164,8 @@ export default function OnboardingTryQuiz() {
                 {/* CTA */}
                 <div className="space-y-6">
                   <div className="text-center">
-                    <p className="text-xl font-bold text-on-surface">Lưu lại tiến trình của bạn</p>
-                    <p className="text-on-surface-variant text-sm mt-1">Đăng ký để nhận lộ trình học tập cá nhân hóa miễn phí.</p>
+                    <p className="text-xl font-bold text-on-surface">{t('onboarding.trySaveProgressTitle')}</p>
+                    <p className="text-on-surface-variant text-sm mt-1">{t('onboarding.trySaveProgressDesc')}</p>
                   </div>
                   <div className="flex flex-col gap-3">
                     <button
@@ -186,7 +187,7 @@ export default function OnboardingTryQuiz() {
                 {/* Trust badge */}
                 <div className="flex items-center justify-center gap-2 text-xs text-on-surface-variant/50 uppercase tracking-widest font-bold">
                   <span className="material-symbols-outlined text-[14px]">verified_user</span>
-                  Bảo mật và an toàn 100%
+                  {t('onboarding.trySecurityNote')}
                 </div>
               </div>
             </div>
@@ -232,10 +233,10 @@ export default function OnboardingTryQuiz() {
           <div className="space-y-6">
             <div className="flex justify-between items-end">
               <div>
-                <span className="text-secondary font-bold text-sm tracking-[0.05em] uppercase block mb-1">Thử thách hôm nay</span>
-                <h2 className="text-3xl font-bold tracking-tight text-on-surface">Câu {currentQ + 1} / {questions.length}</h2>
+                <span className="text-secondary font-bold text-sm tracking-[0.05em] uppercase block mb-1">{t('onboarding.tryChallengeOfDay')}</span>
+                <h2 className="text-3xl font-bold tracking-tight text-on-surface">{t('onboarding.tryQuestionOfTotal', { current: currentQ + 1, total: questions.length })}</h2>
               </div>
-              <span className="text-on-surface-variant text-sm font-medium">{pctComplete}% Hoàn thành</span>
+              <span className="text-on-surface-variant text-sm font-medium">{t('onboarding.tryPercentComplete', { percent: pctComplete })}</span>
             </div>
             <div className="h-3 w-full bg-primary-container rounded-full overflow-hidden">
               <div className="h-full gold-gradient rounded-full relative transition-all duration-500" style={{ width: `${pctComplete}%` }}>
@@ -250,7 +251,7 @@ export default function OnboardingTryQuiz() {
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6 text-secondary/80">
                 <span className="material-symbols-outlined">menu_book</span>
-                <span className="text-xs font-bold tracking-widest uppercase">{question.book || 'Kinh Thánh'}</span>
+                <span className="text-xs font-bold tracking-widest uppercase">{question.book || t('onboarding.tryBookFallback')}</span>
               </div>
               <p data-testid="try-quiz-question" className="text-2xl md:text-3xl font-semibold leading-snug text-on-surface">{question.content}</p>
             </div>
@@ -297,12 +298,12 @@ export default function OnboardingTryQuiz() {
           <div className="flex justify-center items-center gap-6 pt-4">
             <span className="flex items-center gap-2 text-on-surface-variant text-sm font-medium">
               <span className="material-symbols-outlined text-[20px]">lightbulb</span>
-              Gợi ý (50/50)
+              {t('onboarding.tryHint5050')}
             </span>
             <div className="h-4 w-[1px] bg-outline-variant/30" />
             <span className="flex items-center gap-2 text-on-surface-variant text-sm font-medium">
               <span className="material-symbols-outlined text-[20px]">report</span>
-              Báo lỗi câu hỏi
+              {t('onboarding.tryReportQuestion')}
             </span>
           </div>
         </div>

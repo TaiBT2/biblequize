@@ -16,10 +16,10 @@ interface Book {
 }
 
 const DIFFICULTY_OPTIONS = [
-  { key: 'all',    label: 'Tất cả',     icon: 'category',       color: '#c0c4e8' },
-  { key: 'easy',   label: 'Dễ',         icon: 'sentiment_satisfied', color: '#58D68D' },
-  { key: 'medium', label: 'Trung bình',  icon: 'speed',          color: '#e8a832' },
-  { key: 'hard',   label: 'Khó',        icon: 'local_fire_department', color: '#ffb4ab' },
+  { key: 'all',    labelKey: 'practice.difficultyAll', icon: 'category',       color: '#c0c4e8' },
+  { key: 'easy',   labelKey: 'practice.easy',          icon: 'sentiment_satisfied', color: '#58D68D' },
+  { key: 'medium', labelKey: 'practice.medium',        icon: 'speed',          color: '#e8a832' },
+  { key: 'hard',   labelKey: 'practice.hard',          icon: 'local_fire_department', color: '#ffb4ab' },
 ]
 
 const COUNT_OPTIONS = [5, 10, 20, 50]
@@ -34,11 +34,7 @@ const MOCK_SESSIONS = [
   { id: 3, date: '26/03/2026', book: 'Tất cả', correct: 40, total: 50, accuracy: 80 },
 ]
 
-const TIPS = [
-  'Đọc ngữ cảnh xung quanh câu Kinh Thánh để hiểu sâu hơn.',
-  'Ôn tập đều đặn mỗi ngày giúp ghi nhớ lâu hơn.',
-  'Bắt đầu từ mức Dễ và tăng dần độ khó khi đã quen.',
-]
+const TIP_KEYS = ['practice.tips.tip1', 'practice.tips.tip2', 'practice.tips.tip3']
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 
@@ -92,10 +88,10 @@ export default function Practice() {
   const estimatedMins = Math.round((questionCount * SECS_PER_Q[selectedDifficulty]) / 60) || 1
   const bookCount = selectedBook ? 1 : books.length || 66
   const isDisabled = isLoading || isBooksLoading
-  const tipOfTheDay = TIPS[new Date().getDate() % TIPS.length]
+  const tipOfTheDay = t(TIP_KEYS[new Date().getDate() % TIP_KEYS.length])
 
   return (
-    <div data-testid="practice-page" className="max-w-7xl mx-auto space-y-10">
+    <div data-testid="practice-page" className="space-y-10">
 
       {/* ── Header ────────────────────────────────────────── */}
       <section>
@@ -103,13 +99,13 @@ export default function Practice() {
           <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center">
             <span className="material-symbols-outlined text-secondary text-2xl" style={FILL_1}>menu_book</span>
           </div>
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary">Chế độ luyện tập</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary">{t('practice.modeBadge')}</span>
         </div>
         <h1 className="text-5xl font-black tracking-tight text-on-surface mb-3">
-          Luyện <span className="text-secondary">Tập</span>
+          {t('practice.heroTitle')} <span className="text-secondary">{t('practice.heroAccent')}</span>
         </h1>
         <p className="text-on-surface-variant text-lg max-w-xl leading-relaxed">
-          Không áp lực. Không giới hạn. Học theo cách của bạn.
+          {t('practice.heroDesc')}
         </p>
       </section>
 
@@ -149,7 +145,7 @@ export default function Practice() {
                     {t('practice.selectBook')}
                   </label>
                   <span className="text-[10px] font-bold text-secondary/60 tracking-wider">
-                    {books.length || 66}/66 sách
+                    {t('practice.bookCount', { current: books.length || 66, total: 66 })}
                   </span>
                 </div>
                 <SearchableSelect
@@ -168,7 +164,7 @@ export default function Practice() {
               <div>
                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant flex items-center gap-2 mb-3">
                   <span className="material-symbols-outlined text-base text-secondary">quiz</span>
-                  Số câu hỏi
+                  {t('practice.questionCount')}
                 </label>
                 <div className="flex gap-3">
                   {COUNT_OPTIONS.map(num => (
@@ -197,7 +193,7 @@ export default function Practice() {
               <div>
                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant flex items-center gap-2 mb-3">
                   <span className="material-symbols-outlined text-base text-secondary">tune</span>
-                  Độ khó
+                  {t('practice.difficulty')}
                 </label>
                 <div className="grid grid-cols-2 gap-3">
                   {DIFFICULTY_OPTIONS.map(d => {
@@ -220,7 +216,7 @@ export default function Practice() {
                         >
                           {d.icon}
                         </span>
-                        <span>{d.label}</span>
+                        <span>{t(d.labelKey)}</span>
                         {active && (
                           <span className="material-symbols-outlined text-secondary text-lg ml-auto" style={FILL_1}>check_circle</span>
                         )}
@@ -234,7 +230,7 @@ export default function Practice() {
               <div>
                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant flex items-center gap-2 mb-3">
                   <span className="material-symbols-outlined text-base text-secondary">lightbulb</span>
-                  Tùy chọn
+                  {t('practice.options')}
                 </label>
                 <button
                   data-testid="practice-show-explanation-toggle"
@@ -243,8 +239,8 @@ export default function Practice() {
                   className="w-full flex items-center justify-between p-4 rounded-xl bg-surface-container-high hover:bg-surface-container-highest transition-colors"
                 >
                   <div className="text-left">
-                    <p className="text-sm font-bold text-on-surface">Hiển thị giải thích</p>
-                    <p className="text-xs text-on-surface-variant/60 mt-0.5">Xem lý do đúng/sai sau mỗi câu</p>
+                    <p className="text-sm font-bold text-on-surface">{t('practice.showExplanation')}</p>
+                    <p className="text-xs text-on-surface-variant/60 mt-0.5">{t('practice.showExplanationDesc')}</p>
                   </div>
                   <div
                     className={`w-12 h-7 rounded-full p-0.5 transition-colors duration-200 ${
@@ -267,9 +263,9 @@ export default function Practice() {
         <div className="bg-surface-container-low border-t border-outline-variant/10 px-8 md:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-8">
             {[
-              { icon: 'help_outline', label: 'Câu hỏi', value: questionCount },
-              { icon: 'schedule',     label: 'Phút',     value: `~${estimatedMins}` },
-              { icon: 'library_books', label: 'Sách',    value: bookCount },
+              { icon: 'help_outline', label: t('practice.stats.questions'), value: questionCount },
+              { icon: 'schedule',     label: t('practice.stats.minutes'),   value: `~${estimatedMins}` },
+              { icon: 'library_books', label: t('practice.stats.books'),    value: bookCount },
             ].map(s => (
               <div key={s.label} className="flex items-center gap-2.5">
                 <span className="material-symbols-outlined text-secondary/60 text-xl">{s.icon}</span>
@@ -294,12 +290,12 @@ export default function Practice() {
             {isDisabled ? (
               <span className="flex items-center gap-3">
                 <span className="material-symbols-outlined animate-spin text-lg">progress_activity</span>
-                Đang tạo...
+                {t('practice.starting')}
               </span>
             ) : (
               <span className="flex items-center gap-3">
                 <span className="material-symbols-outlined text-lg" style={FILL_1}>play_arrow</span>
-                Bắt Đầu Luyện Tập
+                {t('practice.start')}
               </span>
             )}
           </button>
@@ -314,8 +310,8 @@ export default function Practice() {
               <span className="material-symbols-outlined text-secondary text-2xl" style={FILL_1}>replay</span>
             </div>
             <div>
-              <p className="font-bold text-on-surface text-sm">Làm lại câu sai</p>
-              <p className="text-xs text-on-surface-variant">Ôn lại những câu trả lời sai ở phiên gần nhất</p>
+              <p className="font-bold text-on-surface text-sm">{t('practice.retryWrongTitle')}</p>
+              <p className="text-xs text-on-surface-variant">{t('practice.retryWrongDesc')}</p>
             </div>
           </div>
           <button
@@ -326,7 +322,7 @@ export default function Practice() {
             }}
             className="px-5 py-2.5 rounded-xl border border-secondary/30 text-secondary font-bold text-sm hover:bg-secondary/10 transition-all active:scale-95"
           >
-            Làm lại
+            {t('practice.retryButton')}
           </button>
         </div>
       )}
@@ -335,7 +331,7 @@ export default function Practice() {
       <section>
         <div className="flex items-center gap-3 mb-6">
           <span className="material-symbols-outlined text-secondary text-xl" style={FILL_1}>history</span>
-          <h2 className="text-xl font-black text-on-surface tracking-tight">Phiên gần đây</h2>
+          <h2 className="text-xl font-black text-on-surface tracking-tight">{t('practice.recentSessions')}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {MOCK_SESSIONS.map(session => (
@@ -378,7 +374,7 @@ export default function Practice() {
           <span className="material-symbols-outlined text-secondary text-2xl" style={FILL_1}>tips_and_updates</span>
         </div>
         <div>
-          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary mb-2">Mẹo học tập</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary mb-2">{t('practice.tipsBadge')}</p>
           <p className="text-on-surface-variant text-sm leading-relaxed">{tipOfTheDay}</p>
         </div>
       </section>
@@ -390,7 +386,7 @@ export default function Practice() {
           className="inline-flex items-center gap-2 text-sm font-bold text-on-surface-variant/50 hover:text-secondary transition-colors"
         >
           <span className="material-symbols-outlined text-base">arrow_back</span>
-          Quay lại trang chủ
+          {t('practice.backToHome')}
         </Link>
       </div>
     </div>

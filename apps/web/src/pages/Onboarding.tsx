@@ -53,10 +53,10 @@ export default function Onboarding() {
             {/* Header */}
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight" style={{ background: 'linear-gradient(to right, #f8bd45, #e7c268)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                Chào mừng / Welcome
+                {t('onboarding.welcomeBilingual')}
               </h1>
               <p className="text-on-surface-variant text-lg tracking-wide opacity-80">
-                Choose your language to begin / Chọn ngôn ngữ để bắt đầu
+                {t('onboarding.chooseLangBilingual')}
               </p>
             </div>
 
@@ -71,8 +71,8 @@ export default function Onboarding() {
                   <img alt="Flag of Vietnam" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDihXdQrvykTTGHwD-v83EmOX7ysb4sPtX03DQ0GEmYXstxBuN1PEvvQmshz36350XSESu4pN4GoHz8wwx4dHdaCs75JLnRauirsUXGlPyGCvvXV06Q4DNfwEFEf4y6qwBzKBV92HK0r-OLee6Gz0ouKdFRCMhKuUhvlKH6xQ8Fx9WHNmd_VbsRwiXJP38Co8QxRLguFU2gX29lFzh9Pc0_-zdKBTecRG6bludlvacDG7qlGsEHR3mm2Mv8pAj7judp4MpjC4N7n3c" />
                 </div>
                 <div className="space-y-2">
-                  <p className="text-2xl font-bold text-on-surface">Tiếng Việt</p>
-                  <p className="text-xs uppercase tracking-[0.2em] text-secondary/70 font-semibold">Vietnamese</p>
+                  <p className="text-2xl font-bold text-on-surface">{t('onboarding.langViName')}</p>
+                  <p className="text-xs uppercase tracking-[0.2em] text-secondary/70 font-semibold">{t('onboarding.langViLocal')}</p>
                 </div>
                 <div className="w-8 h-8 rounded-full border border-secondary/30 flex items-center justify-center group-hover:bg-secondary group-hover:text-on-secondary transition-all">
                   <span className="material-symbols-outlined text-sm" style={FILL_1}>chevron_right</span>
@@ -87,8 +87,8 @@ export default function Onboarding() {
                   <img alt="Flag of United Kingdom" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnGePCC9CJ6oD6XsSzm6QF7xjgnKJuwpJrN221Iz0Mwz7toi1A43JH85t06e9IzLaAUMsCoFCBs4eo9oG09SZ_dP7J3UzDlaRNx-qx6wMhA74juEvu05ZQWYgznz7T8OFIVoL_J2Yaqvuv5RbsetZWaJVLhg1JA1HpOUHiy-9TJreRxZN7TgTU5SGs0ic3YSYK04oCKkZYv572b1BYG11hd0WrMdXAOP0rz_blWLzL7w5v9Q3BUH7uRWd2S-lHcyB4LgF2j8zNI20" />
                 </div>
                 <div className="space-y-2">
-                  <p className="text-2xl font-bold text-on-surface">English</p>
-                  <p className="text-xs uppercase tracking-[0.2em] text-secondary/70 font-semibold">Tiếng Anh</p>
+                  <p className="text-2xl font-bold text-on-surface">{t('onboarding.langEnName')}</p>
+                  <p className="text-xs uppercase tracking-[0.2em] text-secondary/70 font-semibold">{t('onboarding.langEnLocal')}</p>
                 </div>
                 <div className="w-8 h-8 rounded-full border border-secondary/30 flex items-center justify-center group-hover:bg-secondary group-hover:text-on-secondary transition-all">
                   <span className="material-symbols-outlined text-sm" style={FILL_1}>chevron_right</span>
@@ -139,9 +139,9 @@ export default function Onboarding() {
           <div className="flex flex-col space-y-10 md:pl-8">
             {/* Step indicator */}
             <div className="flex flex-col space-y-2">
-              <span className="text-secondary font-bold tracking-[0.2em] text-sm uppercase">Step Indicator</span>
+              <span className="text-secondary font-bold tracking-[0.2em] text-sm uppercase">{t('onboarding.stepIndicator')}</span>
               <span className="text-on-surface-variant font-medium text-lg tracking-widest">
-                {String(step).padStart(2, '0')} / 03
+                {t('onboarding.stepCounter', { current: String(step).padStart(2, '0'), total: '03' })}
               </span>
             </div>
 
@@ -151,7 +151,7 @@ export default function Onboarding() {
                 {step === 1 && <>{t('onboarding.slide1Title').replace('BibleQuiz', '')}<span className="text-secondary">BibleQuiz</span></>}
                 {step === 2 && t('onboarding.slide2Title')}
                 {step === 3 && (
-                  <>Hành trình <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-tertiary">66 sách</span></>
+                  <>{t('onboarding.slide3TitlePrefix')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-tertiary">{t('onboarding.slide3TitleAccent')}</span></>
                 )}
               </h2>
               <p className="text-on-surface-variant text-lg leading-relaxed max-w-md">
@@ -211,9 +211,9 @@ export default function Onboarding() {
                 <span className="material-symbols-outlined text-secondary opacity-50">format_quote</span>
                 <div>
                   <p className="text-sm italic text-on-surface-variant">
-                    "Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi."
+                    {t('onboarding.scriptureQuote')}
                   </p>
-                  <span className="block mt-1 font-semibold not-italic text-secondary text-sm">— Thi Thiên 119:105</span>
+                  <span className="block mt-1 font-semibold not-italic text-secondary text-sm">{t('onboarding.scriptureRef')}</span>
                 </div>
               </div>
             )}
@@ -235,6 +235,7 @@ export default function Onboarding() {
 
 /* ── Slide Visuals ── */
 function SlideVisual({ step }: { step: number }) {
+  const { t } = useTranslation()
   const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 
   if (step === 1) {
@@ -315,8 +316,8 @@ function SlideVisual({ step }: { step: number }) {
               <span className="material-symbols-outlined text-secondary" style={FILL_1}>map</span>
             </div>
             <div>
-              <p className="text-on-surface font-semibold">Tiến trình hiện tại</p>
-              <p className="text-xs text-on-surface-variant">Sáng Thế Ký • 12/50 Chương</p>
+              <p className="text-on-surface font-semibold">{t('onboarding.journeyProgressTitle')}</p>
+              <p className="text-xs text-on-surface-variant">{t('onboarding.journeyProgressDetail')}</p>
             </div>
           </div>
           <div className="w-full h-2 bg-primary-container rounded-full overflow-hidden">
