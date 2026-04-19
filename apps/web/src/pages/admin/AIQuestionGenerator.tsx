@@ -109,7 +109,7 @@ export default function AIQuestionGenerator() {
     .replace('{chapter}', String(chapter))
     .replace('{verseStart}', String(verseStart))
     .replace('{verseEnd}', String(verseEnd))
-    .replace('{scriptureText}', scriptureText || '(không có)')
+    .replace('{scriptureText}', scriptureText || t('admin.aiGenerator.promptNoText'))
     .replace('{difficulty}', difficulty)
     .replace('{language}', language)
     : undefined
@@ -157,7 +157,7 @@ export default function AIQuestionGenerator() {
             : Array.isArray(q.options) ? q.options.indexOf(q.answer) : 0,
         explanation:   q.explanation ?? '',
         tags:          Array.isArray(q.tags) ? q.tags : [],
-        source:        q.source ?? 'Kinh Thánh',
+        source:        q.source ?? t('admin.aiGenerator.sourceFallback'),
         generatedBy:   q._generatedBy,
       }))
       setDrafts(prev => [...newDrafts, ...prev])

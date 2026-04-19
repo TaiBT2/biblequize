@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export interface SearchableOption {
   value: string
@@ -13,12 +14,15 @@ interface Props {
   allLabel?: string
 }
 
-const SearchableSelect: React.FC<Props> = ({ options, value, onChange, placeholder = 'Chọn...', allLabel = 'Tất cả' }) => {
+const SearchableSelect: React.FC<Props> = ({ options, value, onChange, placeholder, allLabel }) => {
+  const { t } = useTranslation()
+  const effectivePlaceholder = placeholder ?? t('components.searchableSelect.chooseDefault')
+  const effectiveAllLabel = allLabel ?? t('common.all')
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const containerRef = useRef<HTMLDivElement | null>(null)
 
-  const selected = useMemo(() => options.find(o => o.value === value)?.label ?? allLabel, [options, value, allLabel])
+  const selected = useMemo(() => options.find(o => o.value === value)?.label ?? effectiveAllLabel, [options, value, effectiveAllLabel])
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
     if (!q) return options
@@ -53,7 +57,7 @@ const SearchableSelect: React.FC<Props> = ({ options, value, onChange, placehold
         }}
       >
         <span style={{ textAlign: 'left', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-          {selected || placeholder}
+          {selected || effectivePlaceholder}
         </span>
         <svg
           style={{ width: '14px', height: '14px', color: 'var(--hp-muted)', flexShrink: 0, transition: 'transform .2s', transform: open ? 'rotate(180deg)' : 'none' }}
@@ -77,7 +81,7 @@ const SearchableSelect: React.FC<Props> = ({ options, value, onChange, placehold
               autoFocus
               value={query}
               onChange={e => setQuery(e.target.value)}
-              placeholder={placeholder || 'Tìm kiếm...'}
+              placeholder={effectivePlaceholder || t('common.search')}
               style={{
                 width: '100%', padding: '8px 10px',
                 background: 'rgba(255,255,255,.06)',
@@ -104,7 +108,7 @@ const SearchableSelect: React.FC<Props> = ({ options, value, onChange, placehold
                 }}
                 onMouseEnter={e => { if (value !== '') e.currentTarget.style.background = 'rgba(255,255,255,.04)' }}
                 onMouseLeave={e => { if (value !== '') e.currentTarget.style.background = 'transparent' }}
-              >{allLabel}</button>
+              >{effectiveAllLabel}</button>
             </li>
             {filtered.map(opt => (
               <li key={opt.value}>
@@ -126,7 +130,7 @@ const SearchableSelect: React.FC<Props> = ({ options, value, onChange, placehold
             ))}
             {filtered.length === 0 && (
               <li style={{ padding: '8px 14px', fontSize: '.85rem', color: 'var(--hp-muted)', fontFamily: "'Nunito', sans-serif" }}>
-                Không tìm thấy
+                {t('components.searchableSelect.noMatch')}
               </li>
             )}
           </ul>

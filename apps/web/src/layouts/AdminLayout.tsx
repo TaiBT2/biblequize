@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '../store/authStore'
 
 const NAV_ITEMS = [
@@ -35,6 +36,7 @@ const PAGE_TITLES: Record<string, string> = {
 }
 
 export default function AdminLayout() {
+  const { t } = useTranslation()
   const { user, logout } = useAuthStore()
   const location = useLocation()
   const pageTitle = PAGE_TITLES[location.pathname] || 'Admin'
@@ -72,7 +74,7 @@ export default function AdminLayout() {
         <div className="mt-auto px-4 space-y-4 pt-4">
           <Link to="/" className="flex items-center gap-3 px-3 py-2 text-[#d5c4af]/60 hover:text-[#e8a832] transition-colors text-sm">
             <span className="material-symbols-outlined text-xl">arrow_back</span>
-            Về trang chính
+            {t('admin.backToApp')}
           </Link>
           <div className="flex items-center gap-3 px-3 py-3 bg-[#1d1f29] rounded-lg">
             <div className="w-9 h-9 rounded-full bg-[#e8a832]/20 flex items-center justify-center text-[#e8a832] text-sm font-bold">

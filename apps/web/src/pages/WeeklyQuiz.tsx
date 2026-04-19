@@ -49,13 +49,13 @@ export default function WeeklyQuiz() {
           <span className="material-symbols-outlined text-4xl text-purple-400" style={{ fontVariationSettings: "'FILL' 1" }}>event</span>
         </div>
         <h1 className="text-3xl font-black text-on-surface">{t('gameModes.weekly')}</h1>
-        <p className="text-on-surface-variant text-sm">Mỗi tuần một chủ đề mới</p>
+        <p className="text-on-surface-variant text-sm">{t('gameModes.weeklyPage.subtitle')}</p>
       </div>
 
       {/* Theme card */}
       {theme && (
         <div className="bg-surface-container rounded-2xl p-8 border border-purple-500/20 text-center space-y-4" data-testid="weekly-quiz-theme-card">
-          <p className="text-xs font-bold text-purple-400 uppercase tracking-wider">Chủ đề tuần này</p>
+          <p className="text-xs font-bold text-purple-400 uppercase tracking-wider">{t('gameModes.weeklyPage.themeLabel')}</p>
           <h2 className="text-2xl font-black text-on-surface" data-testid="weekly-theme-title">{theme.themeName}</h2>
           <p className="text-sm text-on-surface-variant" data-testid="weekly-theme-description">{theme.themeNameEn}</p>
 
@@ -71,9 +71,9 @@ export default function WeeklyQuiz() {
           </div>
 
           <div className="flex justify-center gap-6 pt-4 text-sm text-on-surface-variant">
-            <span>10 câu hỏi</span>
+            <span>{t('gameModes.weeklyPage.questionCount')}</span>
             <span>•</span>
-            <span data-testid="weekly-quiz-countdown">Còn {theme.daysLeft} ngày</span>
+            <span data-testid="weekly-quiz-countdown">{t('gameModes.weeklyPage.daysLeft', { count: theme.daysLeft })}</span>
           </div>
 
           <span data-testid="weekly-quiz-start-btn" className="inline-block">

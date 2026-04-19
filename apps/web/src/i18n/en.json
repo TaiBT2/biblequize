@@ -128,6 +128,10 @@
     "errorToast": {
       "closeLabel": "Close"
     },
+    "searchableSelect": {
+      "chooseDefault": "Choose...",
+      "noMatch": "No match"
+    },
     "errorBoundary": {
       "title": "Oops! Something went wrong",
       "description": "The app hit an unexpected error. Please try again or reload the page.",
@@ -162,6 +166,7 @@
     "adminPanel": "Admin Panel"
   },
   "admin": {
+    "backToApp": "Back to app",
     "questions": {
       "title": "Questions",
       "countSuffix": "{{count}} questions",
@@ -378,6 +383,8 @@
       }
     },
     "aiGenerator": {
+      "promptNoText": "(none)",
+      "sourceFallback": "Bible",
       "title": "AI Question Generator",
       "subtitle": "Generate Bible questions automatically and review before saving",
       "notConfigured": "not configured",
@@ -1263,6 +1270,12 @@
       "statusActive": "✓ In use",
       "statusUnlocked": "Unlocked",
       "statusLockedTier": "Reach T{{tier}} to unlock"
+    },
+    "weeklyPage": {
+      "subtitle": "A new theme every week",
+      "themeLabel": "This week's theme",
+      "questionCount": "10 questions",
+      "daysLeft": "{{count}} days left"
     },
     "mysteryPage": {
       "subtitle": "You know nothing about the upcoming quiz",
