@@ -15,8 +15,18 @@ import path from 'path'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
 
-const API_BASE = 'http://localhost:8080'
-const APP_BASE = 'http://localhost:5173'
+// Target selection — matches playwright.config.ts baseURL.
+//   Dev local (default):     APP=:5173 (vite)   API=:8080 (spring boot direct)
+//   Docker compose deploy:   APP=:3000 (nginx)  API=:3000 (same-origin via nginx)
+//   Remote env:              APP=$PLAYWRIGHT_BASE_URL  API=same unless overridden
+// Cookies are scoped per origin — when APP ≠ API, the httpOnly refresh_token set
+// by API_BASE won't be sent when the browser visits APP_BASE. Dev works anyway
+// because the FE build uses VITE_API_BASE_URL=:8080 and sends credentials direct.
+// For docker/staging where everything is same-origin through a proxy, keep them equal.
+const APP_BASE = process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:5173'
+const API_BASE =
+  process.env.PLAYWRIGHT_API_URL ??
+  (APP_BASE === 'http://localhost:5173' ? 'http://localhost:8080' : APP_BASE)
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const STORAGE_DIR = path.join(__dirname, 'fixtures', 'storage-states')

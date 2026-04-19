@@ -1,5 +1,14 @@
 import { defineConfig, devices } from '@playwright/test'
 
+// PLAYWRIGHT_BASE_URL = URL để target tests:
+//   unset → http://localhost:5173 (dev local, Playwright tự bật `npm run dev`)
+//   http://localhost:3000 → docker compose deploy
+//   https://staging.example.com → remote env (CI, staging)
+// Khi URL không phải dev local :5173, tự tắt webServer để không clash với
+// server đang chạy ở nơi khác.
+const baseURL = process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:5173'
+const shouldStartDevServer = baseURL === 'http://localhost:5173'
+
 export default defineConfig({
   testDir: './tests/e2e',
   globalSetup: './tests/e2e/global-setup.ts',
@@ -14,7 +23,7 @@ export default defineConfig({
   expect: { timeout: 5_000 },
 
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL,
     actionTimeout: 10_000,
     navigationTimeout: 15_000,
     screenshot: 'only-on-failure',
@@ -37,12 +46,14 @@ export default defineConfig({
     },
   ],
 
-  webServer: [
-    {
-      command: 'npm run dev',
-      url: 'http://localhost:5173',
-      reuseExistingServer: true,
-      timeout: 30_000,
-    },
-  ],
+  webServer: shouldStartDevServer
+    ? [
+        {
+          command: 'npm run dev',
+          url: 'http://localhost:5173',
+          reuseExistingServer: true,
+          timeout: 30_000,
+        },
+      ]
+    : undefined,
 })
