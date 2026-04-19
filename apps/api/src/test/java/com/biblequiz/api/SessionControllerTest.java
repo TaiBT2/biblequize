@@ -86,6 +86,30 @@ class SessionControllerTest extends BaseControllerTest {
                 .andExpect(status().isUnauthorized());
     }
 
+    // Regression: FE (Quiz.tsx) + RankedController both send the field as
+    // "clientElapsedMs"; SubmitAnswerRequest declares it as "elapsedMs" with
+    // @JsonAlias("clientElapsedMs"). Before the alias, Jackson strict mode
+    // threw UnrecognizedPropertyException → 400 → SessionService.submitAnswer
+    // never ran → Practice XP silently never persisted. This test pins the
+    // alias so a future @JsonIgnoreProperties tweak or field rename can't
+    // regress that path.
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void submitAnswer_withClientElapsedMsAlias_shouldReturn200AndUnwrapElapsed() throws Exception {
+        Map<String, Object> answerResult = Map.of("isCorrect", true, "scoreDelta", 12);
+
+        when(sessionService.submitAnswer(eq("session-1"), eq("test@example.com"), eq("q-1"), any(), eq(7500)))
+                .thenReturn(answerResult);
+
+        mockMvc.perform(post("/api/sessions/session-1/answer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"sessionId\":\"session-1\",\"questionId\":\"q-1\",\"answer\":0,\"clientElapsedMs\":7500}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.isCorrect").value(true));
+
+        verify(sessionService).submitAnswer(eq("session-1"), eq("test@example.com"), eq("q-1"), any(), eq(7500));
+    }
+
     // ── GET /api/sessions/{id} ───────────────────────────────────────────────
 
     @Test

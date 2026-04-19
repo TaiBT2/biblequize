@@ -48,6 +48,12 @@ class SessionServiceTest {
         private ObjectMapper objectMapper;
         @Mock
         private com.biblequiz.modules.quiz.service.QuestionService questionService;
+        @Mock
+        private com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository userQuestionHistoryRepository;
+        @Mock
+        private com.biblequiz.modules.quiz.service.SmartQuestionSelector smartQuestionSelector;
+        @Mock
+        private com.biblequiz.modules.ranked.service.UserTierService userTierService;
 
         @InjectMocks
         private com.biblequiz.modules.quiz.service.SessionService sessionService;
@@ -107,7 +113,9 @@ class SessionServiceTest {
 
                 when(userRepository.findById(ownerId)).thenReturn(Optional.of(sampleUser));
                 when(objectMapper.writeValueAsString(config)).thenReturn("{}");
-                when(questionService.getRandomQuestions("Genesis", "easy", "vi", 1, null))
+                // Practice mode routes to SmartQuestionSelector (not QuestionService.getRandomQuestions),
+                // see SessionService.createSession useSmartSelection branch.
+                when(smartQuestionSelector.selectQuestions(eq(ownerId), eq(1), any()))
                                 .thenReturn(Arrays.asList(sampleQuestion));
                 when(quizSessionRepository.save(any(QuizSession.class))).thenReturn(sampleSession);
 
@@ -136,7 +144,7 @@ class SessionServiceTest {
                 when(userRepository.findByEmail(ownerId)).thenReturn(Optional.empty());
                 when(userRepository.save(any(User.class))).thenReturn(sampleUser);
                 lenient().when(objectMapper.writeValueAsString(config)).thenReturn("{}");
-                when(questionService.getRandomQuestions(null, null, "vi", 1, null))
+                when(smartQuestionSelector.selectQuestions(anyString(), eq(1), any()))
                                 .thenReturn(Arrays.asList(sampleQuestion));
                 when(quizSessionRepository.save(any(QuizSession.class))).thenReturn(sampleSession);
 
@@ -369,6 +377,89 @@ class SessionServiceTest {
                 assertEquals(1, count);
                 assertEquals(QuizSession.Status.abandoned, stale.getStatus());
                 verify(userDailyProgressRepository, never()).findByUserIdAndDate(anyString(), any());
+        }
+
+        @Test
+        void submitAnswer_practiceMode_doesNotWriteUserDailyProgress() {
+                // Design contract: Practice does NOT grant XP or write to
+                // UserDailyProgress (pointsCounted/questionsCounted). XP is
+                // exclusively credited via the Ranked sync-progress flow in
+                // RankedController. Practice only ticks:
+                //   - practice_correct_count / practice_total_count on users
+                //     (for early-unlock path; see updateEarlyRankedUnlockProgress)
+                //   - answers / quiz_session_questions tables (for history)
+                // See DECISIONS.md 2026-04-19 "XP source of truth: Ranked only".
+                when(quizSessionRepository.findById("session1")).thenReturn(Optional.of(sampleSession));
+                when(userRepository.findById("user1")).thenReturn(Optional.of(sampleUser));
+                when(questionRepository.findById("q1")).thenReturn(Optional.of(sampleQuestion));
+                when(answerRepository.findBySessionIdAndQuestionIdAndUserId("session1", "q1", "user1"))
+                                .thenReturn(Optional.empty());
+                when(answerRepository.save(any(Answer.class))).thenReturn(sampleAnswer);
+                when(quizSessionQuestionRepository.findBySessionIdAndQuestionId("session1", "q1"))
+                                .thenReturn(new QuizSessionQuestion());
+
+                sessionService.submitAnswer("session1", "user1", "q1", 0, 5000);
+
+                // Practice must NOT touch UserDailyProgress — that's Ranked's job.
+                verify(userDailyProgressRepository, never()).findByUserIdAndDate(anyString(), any());
+                verify(userDailyProgressRepository, never()).save(any());
+        }
+
+        @Test
+        void submitAnswer_rankedMode_doesNotWriteUserDailyProgressFromSubmitAnswer() {
+                // Ranked has its own sync-progress path (RankedController.syncProgress
+                // writes UserDailyProgress.pointsCounted). submitAnswer must NOT
+                // touch UDP for ranked either — avoids double-crediting.
+                QuizSession rankedSession = new QuizSession();
+                rankedSession.setId("rs1");
+                rankedSession.setMode(QuizSession.Mode.ranked);
+                rankedSession.setOwner(sampleUser);
+                rankedSession.setStatus(QuizSession.Status.in_progress);
+                rankedSession.setScore(0);
+                rankedSession.setTotalQuestions(1);
+                rankedSession.setCorrectAnswers(0);
+
+                when(quizSessionRepository.findById("rs1")).thenReturn(Optional.of(rankedSession));
+                when(userRepository.findById("user1")).thenReturn(Optional.of(sampleUser));
+                when(questionRepository.findById("q1")).thenReturn(Optional.of(sampleQuestion));
+                when(answerRepository.findBySessionIdAndQuestionIdAndUserId("rs1", "q1", "user1"))
+                                .thenReturn(Optional.empty());
+                when(answerRepository.save(any(Answer.class))).thenReturn(sampleAnswer);
+                when(quizSessionQuestionRepository.findBySessionIdAndQuestionId("rs1", "q1"))
+                                .thenReturn(new QuizSessionQuestion());
+
+                sessionService.submitAnswer("rs1", "user1", "q1", 0, 5000);
+
+                verify(userDailyProgressRepository, never()).findByUserIdAndDate(anyString(), any());
+                verify(userDailyProgressRepository, never()).save(any());
+        }
+
+        @Test
+        void submitAnswer_practiceMode_incrementsEarlyUnlockCounters() {
+                // Practice correct answer must increment practice_correct_count
+                // and practice_total_count on users (the early-unlock accuracy
+                // path: ≥80% over 10+ answers bypasses the 1,000 XP gate).
+                sampleUser.setPracticeCorrectCount(0);
+                sampleUser.setPracticeTotalCount(0);
+                sampleUser.setEarlyRankedUnlock(false);
+
+                when(quizSessionRepository.findById("session1")).thenReturn(Optional.of(sampleSession));
+                when(userRepository.findById("user1")).thenReturn(Optional.of(sampleUser));
+                when(questionRepository.findById("q1")).thenReturn(Optional.of(sampleQuestion));
+                when(answerRepository.findBySessionIdAndQuestionIdAndUserId("session1", "q1", "user1"))
+                                .thenReturn(Optional.empty());
+                when(answerRepository.save(any(Answer.class))).thenReturn(sampleAnswer);
+                when(quizSessionQuestionRepository.findBySessionIdAndQuestionId("session1", "q1"))
+                                .thenReturn(new QuizSessionQuestion());
+                // Still tier-1 (no XP from Ranked yet)
+                when(userTierService.getTotalPoints("user1")).thenReturn(0);
+                when(userRepository.save(any(User.class))).thenAnswer(inv -> inv.getArgument(0));
+
+                sessionService.submitAnswer("session1", "user1", "q1", 0, 5000);
+
+                assertEquals(1, sampleUser.getPracticeTotalCount());
+                assertEquals(1, sampleUser.getPracticeCorrectCount());
+                verify(userRepository).save(sampleUser);
         }
 
         @Test

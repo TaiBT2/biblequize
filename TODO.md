@@ -1,5 +1,398 @@
 # TODO
 
+## 2026-04-19 — Dual-path progress indicator on locked Ranked card [DONE]
+
+### Task UP-1: Helper `earlyUnlock.ts` — pure functions
+- Status: [x] DONE
+- `minCorrectNeededForEarlyUnlock(correct, total)` — derived formula max(0, 10-t, 4t-5c)
+- `practiceAccuracyPct(correct, total)` — null-safe percentage
+- `earlyUnlockProgressPct(correct, total)` — 0-100 for progress bar, caps at 99 until actually qualifying
+- Constants mirror backend `EarlyRankedUnlockPolicy` (10 / 80%)
+- Tests: 11 cases cover threshold boundary, defensive input, sample-size vs accuracy constraint which-dominates
+
+### Task UP-2: GameModeGrid — dual progress bar
+- Status: [x] DONE
+- Extended `userStats` prop: `practiceCorrectCount` + `practiceTotalCount` (optional, backward compat)
+- Locked Ranked card renders 2 paths:
+  - Path 1 (XP): gold progress bar, "Cần thêm X điểm..."
+  - Path 2 (Accuracy): green progress bar, "X/Y đúng (Z%) — cần N câu đúng nữa"
+- Accuracy path ONLY for Ranked (Tournament etc. still show XP-only)
+- "Đủ điều kiện rồi" message when user already qualifies (grace period before backend flips flag)
+- Data-testid attrs: `-xp-path`, `-accuracy-path`, `-accuracy-status`, `-accuracy-progress`
+
+### Task UP-3: Home.tsx pass practice counts
+- Status: [x] DONE
+- Pass `meData.practiceCorrectCount` + `practiceTotalCount` through userStats
+
+### Task UP-4: i18n + tests
+- Status: [x] DONE
+- Keys: `gameModes.orEarlyUnlock`, `earlyUnlockReady`, `earlyUnlockRemaining` (VI + EN)
+- GameModeGrid.test.tsx +4 cases: dual path rendered; Tournament not dual; backward-compat without counts; Ready state
+- Commit: "feat(home): dual-path progress indicator on locked Ranked card"
+
+## 2026-04-19 — Early Ranked unlock (80% accuracy Practice path) [DONE]
+
+### Spec
+- User tier 1 chơi Practice ≥ 10 câu, accuracy ≥ 80% → auto-unlock Ranked
+- Permanent unlock (không reset)
+- Không đổi XP threshold tier 2 (1000 XP) — unlock là flag riêng, orthogonal
+- Tournament vẫn giữ tier gate 4 (không bypass)
+
+### Task ER-1: Flyway migration + User entity [x] DONE
+- File: `V29__add_early_ranked_unlock.sql`
+- Columns: `early_ranked_unlock BOOLEAN`, `practice_correct_count INT`, `practice_total_count INT` (all default 0/false)
+- User entity thêm 3 fields + getters/setters
+
+### Task ER-2: SessionService tracking logic [x] DONE
+- File: `SessionService.updateEarlyRankedUnlockProgress()` — invoked from submitAnswer
+- Short-circuit cho: non-practice / user tier≥2 / đã unlock
+- Increment counters + check qua `EarlyRankedUnlockPolicy.shouldUnlock()`
+- Policy extracted thành utility class cho testability
+
+### Task ER-3: Ranked gate bypass [x] DONE
+- File: `SessionService.createSession()` — check khi mode=ranked
+- Reject với IllegalStateException nếu tier<2 + !earlyRankedUnlock
+
+### Task ER-4: Expose flag in /api/me [x] DONE
+- File: `UserResponse` DTO — thêm 3 fields matching entity
+
+### Task ER-5: Frontend GameModeGrid consume flag [x] DONE
+- File: `GameModeGrid.tsx` — prop `earlyRankedUnlock?: boolean`
+- isLocked check: `!bypassByEarlyUnlock` (chỉ Ranked card, không Tournament)
+- unlockedRecommendModes: include 'ranked' nếu flag set
+- Home.tsx pass `earlyRankedUnlock={meData?.earlyRankedUnlock}`
+
+### Task ER-6: Tests [x] DONE
+- BE: `EarlyRankedUnlockPolicyTest` — 6 cases (threshold, boundary, defensive, overflow)
+- FE: GameModeGrid.test.tsx +2 cases (flag bypasses Ranked gate; Tournament stays gated)
+- Commit: "feat(api): early Ranked unlock via Practice accuracy ≥80%/10Q"
+
+## 2026-04-19 — FAQ / Help page [DONE]
+
+### Task HELP-1: FAQ page với 13 topics
+- Status: [x] DONE
+- Files mới:
+  - `data/faqData.ts` — 13 items × 5 categories (gettingStarted, tiers, modes, gameplay, account)
+  - `pages/Help.tsx` — accordion + category pills + deep link support
+  - `pages/__tests__/Help.test.tsx` — 9 test cases (render, accordion, filter, deep link, content completeness)
+- Files sửa:
+  - `main.tsx` — thêm route `/help` vào AppLayout block
+  - `layouts/AppLayout.tsx` — thêm "Trợ giúp" link vào user menu dropdown
+  - `components/GameModeGrid.tsx` — thêm "Tìm hiểu thêm →" button trong locked card → navigate `/help#howUnlockRanked`
+  - `__tests__/routing-layout.test.tsx` — add `/help` vào INSIDE_APP_LAYOUT
+  - `i18n/vi.json` + `en.json`: `help.*` namespace (categories + 13 Q&A), `nav.help`, `gameModes.learnMore`
+- Features:
+  - Accordion: chỉ 1 Q&A mở tại 1 thời điểm
+  - Category filter: 5 pills + "All" button
+  - Deep link: `/help#<itemId>` tự expand + smooth scroll
+  - Footer: mailto contact link
+- Commit: "feat(web): add /help FAQ page with 13 topics + deep-link from locked cards"
+
+## 2026-04-19 — Actionable locked card UX [DONE]
+
+### Task LOCK-1: Show XP gap + CTA navigate to Practice (GameModeGrid)
+- Status: [x] DONE
+- Vấn đề: locked Ranked/Tournament cards chỉ show tier name ("Đạt Người Tìm Kiếm"), user không biết cần bao nhiêu điểm hay làm gì để earn
+- Fix:
+  - Hint text giờ show **XP gap cụ thể**: "Cần thêm 1,000 điểm để đạt Người Tìm Kiếm" (thay vì chỉ "Đạt Người Tìm Kiếm để mở khóa")
+  - Thêm **progress bar** dưới hint — visual feedback tiến độ
+  - CTA button giờ **navigate to /practice** (onboarding path kiếm XP) thay vì dead click
+  - CTA text đổi thành "Luyện tập để kiếm điểm" — actionable
+  - Button style: accent gold thay vì muted grey (rõ là có thể click)
+- i18n: thêm `unlockAtWithPoints` + `unlockCtaEarnXp` keys (vi + en)
+- Tests: +3 case (progress bar present, CTA navigates /practice, XP gap shown in text)
+- Commit: "feat(home): actionable locked card UX (XP gap + progress + CTA to Practice)"
+
+## 2026-04-19 — Remove duplicate top-nav + sidebar-nav [DONE]
+
+### Task NAV-1: Remove top nav items (AppLayout)
+- Status: [x] DONE
+- Vấn đề: header + sidebar cùng render 4 items (Trang chủ/Xếp hạng/Nhóm/Cá nhân)
+- Fix: Xóa `<nav>` block trong header. Header còn lại: logo (trái) + icons + user menu (phải). Sidebar làm primary nav (desktop). Bottom nav (mobile) không đổi.
+- Regression test: `does NOT duplicate nav links between header and sidebar` — check mỗi route render ≤ 2 Links trong DOM (sidebar + mobile bottom nav)
+- Commit: "refactor(layout): remove top-nav items, sidebar is sole desktop nav"
+
+## 2026-04-19 — Global audience migration: SQL → JSON + i18n prep [PARTIALLY DONE]
+
+### Task GA-1: Tags backfill (rule-based) [x] DONE
+- 300 Pentateuch questions tagged với testament/book-vi/category/theme/difficulty
+- Top themes: Gia-cốp, Môi-se, Tế lễ, Giô-sép, Đền tạm, Tội lỗi, Xuất hành, Đất hứa
+- Khuyến nghị: có thể enhance với AI later để tag chất lượng hơn
+
+### Task GA-2: QuestionSeeder tags support [x] DONE
+- `toEntity` serializeTags → DB `tags` column (JSON string)
+- +7 test cases (null, empty, escape quote+backslash, persist)
+
+### Task GA-3: SQL → JSON converter [x] DONE
+- File: `scripts/sql_to_json.py`
+- Parsed 935 SQL rows với 57 parse errors (6% loss — acceptable)
+- Output: 39 new JSON files, 664 questions
+- Skipped 261 rows cho Pentateuch (JSON đã có curated version — không ghi đè)
+- Total JSON state: **43 files / 974 questions / 43 books covered (65%)**
+
+### Task GA-4: Add audience ADR [x] DONE
+- DECISIONS.md: "Target audience expanded: Tin Lành toàn cầu"
+- Supersedes implicit "VN-only" scope
+
+### Task GA-5: EN translation workflow [ ] TODO
+- Document AI-assisted translation process
+- Template prompt for Gemini/Claude
+- Script to batch translate `{book}_quiz.json` → `{book}_quiz_en.json`
+- Priority books for EN v1: Genesis, Matthew, John, Psalms, Romans
+- User must run locally (sandbox không gọi AI được)
+
+### Task GA-8: Update PROMPT_GENERATE_QUESTIONS.md [x] DONE
+- Fix: `text` → `content` field name (schema updated)
+- Fix: filename convention `{slug}_quiz.json` matching seeder pattern
+- Fix: tên VI chuẩn hóa với BOOK_META (`Xuất Hành` → `Xuất Ê-díp-tô Ký`)
+- Add: `tags` field với rules (testament/book/category/theme, 3-5 tags/câu)
+- Add: `source` field optional (tracking origin — "ai:gemini-2.0")
+- Add: context section về audience (Protestant toàn cầu) + canon (66 books)
+- Add: workflow post-generation (drop vào classpath → restart → optional translate EN)
+- Add: `Category` column trong bảng 66 books
+- Update: bảng books có thêm `Slug` column để filename correct
+- Commit: "docs: update PROMPT_GENERATE_QUESTIONS to match current schema + workflow"
+
+### Task GA-6: Fill remaining 23 books [ ] TODO
+- Missing: 1-2 Chronicles, Ezra, Song of Solomon, Hosea, Joel, Amos, Obadiah, Nahum, Zephaniah, Haggai, Zechariah, Colossians, 1-2 Thessalonians, 1-2 Timothy, Titus, Philemon, 2 John, 2 Peter, 3 John, Jude
+- Source: admin AI generator endpoint (existing `/api/admin/questions/generate`)
+- Hoặc manual curation
+
+### Task GA-7: Delete legacy SQL [ ] PENDING user confirm
+- 26 R__*questions*.sql files
+- Pre-requisite: verify converter output, run app, check DB has expected count
+- Rủi ro: 57 parse errors = ~57 questions mất nếu không manual fix
+
+## 2026-04-19 — JSON Question Seeder (production source of truth) [DONE]
+
+### Task SE-1: Dedup check
+- Status: [x] DONE — 300 questions, 0 duplicates within-file hay cross-book (verified by Python script)
+
+### Task SE-2: Schema rename `text` → `content`
+- Status: [x] DONE — sed replace trên 4 JSON files. Verify: 0 remaining `"text":`, 300 `"content":` occurrences
+
+### Task SE-3: Move JSONs vào classpath
+- Status: [x] DONE — `data/*.json` → `apps/api/src/main/resources/seed/questions/`
+
+### Task SE-4: QuestionSeeder implementation
+- Status: [x] DONE
+- Files:
+  - `infrastructure/seed/question/SeedQuestion.java` — DTO với Jackson `@JsonIgnoreProperties(ignoreUnknown=true)` cho forward-compat
+  - `infrastructure/seed/question/QuestionSeeder.java` — `@EventListener(ApplicationReadyEvent)` chạy sau Flyway xong. Deterministic UUID từ `(book, chapter, verseStart, verseEnd, language, normalized-content)` → idempotent
+  - Validation: skip rows thiếu required field với log warn
+  - True/false backfill options `["Đúng","Sai"]` hoặc `["True","False"]` theo language
+  - Config: `app.seeding.questions.enabled` (default true) + `.pattern` override
+  - Source tag: `"seed:json"` để admin trace row origin sau này
+- Test: `service/seed/QuestionSeederTest.java` — 20 cases (ID stability, case/whitespace insensitivity, entity mapping, true_false backfill, source tagging, enum parsing)
+- Commit: "feat(api): runtime question seeder from classpath JSON files"
+
+### Task SE-5: DEPRECATED — Deprecate old R__*.sql files
+- Status: [ ] DEFERRED — riêng task, cần review cẩn thận từng file (30+ files), scope lớn
+- Recommendation: trước khi xóa R__*.sql, convert questions còn thiếu (Psalms, Matthew, John, v.v. — chưa có trong JSON) sang JSON format
+
+## 2026-04-19 — Consolidate tiers data single source of truth [DONE]
+
+### Task CT-1: Expand Tier interface + move getTierInfo to data/tiers.ts
+- Status: [x] DONE
+- File: apps/web/src/data/tiers.ts
+- Interface giờ có: id, nameKey, minPoints, maxPoints, iconMaterial, iconEmoji, colorHex, colorTailwind
+- Helpers: getTierByPoints, getNextTier, getTierInfo (moved from Home.tsx, với safe point coercion)
+- Commit: "refactor(web): expand Tier interface + move getTierInfo into data/tiers.ts"
+
+### Task CT-2: Remove inline TIERS + local getTierInfo from Home.tsx
+- Status: [x] DONE
+- Import TIERS/getTierInfo từ data/tiers
+- JSX: `.icon` → `.iconMaterial`, `.color` → `.colorTailwind`
+- `userTierLevel` compute bằng `tier.current.id` (giản hóa)
+- Commit: "refactor(web): Home.tsx uses consolidated tier data"
+
+### Task CT-3: Remove inline TIERS + local getCurrentTier from Ranked.tsx
+- Status: [x] DONE
+- Import getTierByPoints từ data/tiers
+- JSX: `currentTier.icon` → `.iconMaterial`, `.color` → `.colorHex` (inline style dùng hex)
+- Commit: "refactor(web): Ranked.tsx uses consolidated tier data"
+
+### Task CT-4: Add comprehensive tests
+- Status: [x] DONE
+- File mới: apps/web/src/data/__tests__/tiers.test.ts
+- Cases: ~25 (shape validation, monotonic minPoints, maxPoints boundary, OLD key guard, tier-by-points exhaustive, next-tier, tierInfo progressPct/pointsToNext, defensive NaN/Infinity/negative)
+- Commit: "test: comprehensive tests for consolidated tier helpers"
+
+## 2026-04-19 — Cleanup half-migration tier naming (keep OLD) [DONE]
+
+### Decision summary
+- User (product owner) quyết định giữ **OLD religious naming** (Tân Tín Hữu → Người Tìm Kiếm → Môn Đồ → Hiền Triết → Tiên Tri → Sứ Đồ) vì target audience là Tin Lành + Công Giáo.
+- SPEC_USER_v3.md section 3.1 (light-themed naming Tia Sáng → Vinh Quang) được **superseded**.
+- Half-migration debris cần clean up để codebase nhất quán.
+
+### Task CL-1: Fix inconsistent TIERS array in Home.tsx + Ranked.tsx
+- Status: [x] DONE — `'tiers.spark'` → `'tiers.newBeliever'`, update comment ref spec/ADR
+- Vấn đề: Tier 1 dùng NEW key `'tiers.spark'`, tier 2-6 dùng OLD keys → cùng array mixed
+- Fix: `'tiers.spark'` → `'tiers.newBeliever'` (2 files, 1 line mỗi file)
+- Update stale comment "SPEC-v2 section 2.1" sang tham chiếu SPEC_USER_v3 + ADR
+- Commit: "refactor(web): consistent OLD tier keys in Home + Ranked TIERS arrays"
+
+### Task CL-2: Fix LandingPage tier keys
+- Status: [x] DONE — 4 entries: glory→apostle, star→prophet, flame→sage, lamp→disciple
+- File: apps/web/src/pages/LandingPage.tsx (line 259-262)
+- 4 entries: `tiers.glory` → `apostle`, `tiers.star` → `prophet`, `tiers.flame` → `sage`, `tiers.lamp` → `disciple`
+- Commit: "refactor(web): use OLD tier keys in LandingPage leaderboard demo"
+
+### Task CL-3: Remove duplicate NEW keys from i18n
+- Status: [x] DONE — xóa 6 keys (spark/dawn/lamp/flame/star/glory) ở cả vi.json + en.json
+- File: vi.json + en.json
+- Xóa 6 keys: `spark`, `dawn`, `lamp`, `flame`, `star`, `glory` (unused sau CL-1, CL-2)
+- Keep: `newBeliever`, `seeker`, `disciple`, `sage`, `prophet`, `apostle`
+- Commit: "chore(web): remove unused NEW tier keys from i18n"
+
+### Task CL-4: Add ADR to DECISIONS.md
+- Status: [x] DONE — ADR "2026-04-19 — Keep OLD religious tier naming (audience-driven)"
+- ADR dated 2026-04-19: "Keep OLD religious tier naming — target audience Protestant + Catholic"
+- Note: SPEC_USER_v3.md section 3.1 superseded
+- Commit: "docs: ADR keep OLD tier naming (audience-driven)"
+
+### Task CL-5: Mark spec v3 section 3.1 as superseded
+- Status: [x] DONE — header note với mapping table NEW→OLD thêm vào đầu section 3
+- File: SPEC_USER_v3.md (lines ~133-186)
+- Thêm header note: "⚠️ SUPERSEDED 2026-04-19 — see DECISIONS.md. OLD religious naming is in use."
+- Giữ content cũ để trace history
+- Commit: "docs(spec): mark tier light-themed naming as superseded"
+
+## 2026-04-19 — Fix i18n interpolation bug in Activity Feed [DONE]
+
+### Task AF-1: Remove broken HTML tags + placeholder mismatch
+- Status: [x] DONE
+- File(s): apps/web/src/i18n/vi.json + en.json
+- Root cause: 3 lỗi chồng nhau trong `home.activity*`:
+  1. `<b>` HTML tags trong translation string — i18next render literal text (không parse HTML by default)
+  2. `{{name}}` placeholder tồn tại trong translation nhưng call site không pass `name` (vì name ĐÃ render bold separately trong JSX) → literal "{{name}}"
+  3. `{{count}}` trong JSON vs `{ days: 30 }` từ call site → mismatch
+- Fix:
+  - Bỏ `<b>{{name}}</b>` prefix khỏi 3 keys (activityReachedTier, activityJoinedGroup, activityStreak) — name đã bold trong JSX rồi
+  - Bỏ `<b>` xung quanh `{{tier}}` — plain text v1 (polish bold tier sau bằng `Trans` component nếu cần)
+  - Rename `{{count}}` → `{{days}}` trong activityStreak để match call site
+- Follow-up (không làm): dùng `Trans` component + custom `<bold>` tag để tier name lại được emphasize. Scope v2.
+- Commit: "fix(web): remove broken HTML tags and placeholder mismatches in activity feed i18n"
+
+## 2026-04-19 — Fix Leaderboard duplicate "Bạn" row [DONE]
+
+### Task LB-1: Hide sticky "Bạn" row khi user ĐÃ trong top-N visible
+- Status: [x] DONE
+- File(s): apps/web/src/pages/Home.tsx + Home.test.tsx
+- Root cause: sticky row hiện vô điều kiện khi `myRank` tồn tại → duplicate khi user đã hiển thị trong leaderboard list chính
+- Fix: thêm derived `showMyRankSticky = myRank != null && myRank > leaderboard.length` — chỉ show sticky khi user nằm NGOÀI window top-N đang hiển thị (around-me pattern đúng nghĩa)
+- data-testid mới: `home-my-rank-sticky` để test query dễ
+- Tests: +2 case (duplicate guard khi user rank 1 trong top-2; positive case khi user rank 85 ngoài top-2)
+- Commit: "fix(web): hide sticky 'Bạn' row when user already visible in leaderboard top"
+
+## 2026-04-19 — UX Fix: Tier Gating + Overload + Text Mismatch [DONE]
+
+### Task G-1: Tier gating cho Ranked + Tournament
+- Status: [x] DONE
+- Spec ref: 3.2.3 (Ranked tier 2, Tournament tier 4)
+- File(s): GameModeGrid.tsx, getRecommendedMode.ts + tests
+- Changes:
+  - Add `requiredTier?: number` vào CardConfig; Ranked=2, Tournament=4
+  - GameModeGrid nhận prop `userTier: number` (1-6)
+  - Compute `isLocked = userTier < card.requiredTier`; disabled nav + visual:
+    - Icon khóa (🔒 material-symbols lock) top-left
+    - Replace CTA button thành disabled "Mở khóa ở {tierName}"
+    - Opacity-80, cursor-not-allowed
+    - Subtitle text: reason unlock (replace description)
+  - Recommendation engine: accept `unlockedModes` set, skip rule pointing to locked mode (fallback next priority)
+- Commit: "feat(web): add tier gating for Ranked and Tournament game modes"
+
+### Task G-2: Discovery tier compact chip-style
+- Status: [x] DONE — h-32 (was h-40), icon-xl (was 2xl), title-sm, description line-clamp-1
+- File: GameModeGrid.tsx
+- Discovery tier: thay h-40 card thành chip-style h-28: horizontal layout icon+title+CTA inline, no description, smaller padding
+- Rationale: de-emphasize novelty modes so Tier 1 user tập trung vào core loop trước
+- Commit: "style(web): compact discovery tier game-mode cards"
+
+### Task G-3: Fix "Khám phá 6 chế độ" text mismatch
+- Status: [x] DONE — thêm key `home.exploreModes` với `{{count}}` interpolation, Home.tsx pass count=9
+- File: Home.tsx, i18n vi/en
+- Hiện: hardcoded "KHÁM PHÁ 6 CHẾ ĐỘ" nhưng show 9 cards
+- Fix: đổi thành "Khám phá {{count}} chế độ" interpolation, pass số unlocked count từ GameModeGrid
+- Alternative: bỏ số hẳn, chỉ "Tất cả chế độ chơi"
+- Commit: "fix(web): correct game mode count text to match actual cards"
+
+### Task G-4: Remove sidebar BẮT ĐẦU button
+- Status: [x] DONE — xóa block trong AppLayout + comment giải thích
+- File: AppLayout.tsx (line ~205-211)
+- Lý do: duplicate với "Bắt Đầu" trong Practice card + không có session state → click sẽ crash/redirect
+- Action: xóa block
+- Commit: "chore(web): remove redundant sidebar start button"
+
+### Task G-5: Update tests
+- Status: [x] DONE
+  - getRecommendedMode.test.ts: +5 cases cho unlockedModes gating (fallback Practice, skip fullEnergy, allow khi unlocked, omit = all unlocked, onboarding vẫn fire)
+  - GameModeGrid.test.tsx: +4 cases (lock Ranked tier-1, lock Tournament tier-2, unlock Ranked tier-2, không recommend locked)
+  - AppLayout.test.tsx: +1 regression guard cho sidebar button removed
+- File(s): GameModeGrid.test.tsx, getRecommendedMode.test.ts, AppLayout.test.tsx
+- Tests mới:
+  - Locked card renders lock icon + unlock message
+  - Locked card not clickable
+  - Recommendation engine skips locked mode
+  - Sidebar start button NOT present
+- Commit: "test: add tier gating tests + sidebar button removal guard"
+
+## 2026-04-19 — Game Mode Tier Layout + Stronger Highlight [DONE]
+
+### Task H-1: 3-tier size hierarchy + distinct highlight
+- Status: [x] DONE
+- File(s): apps/web/src/components/GameModeGrid.tsx
+- Changes:
+  - Add `tier: 'primary' | 'secondary' | 'discovery'` vào CARDS config (type + 9 cards tag)
+  - Split grid → 3 sections với testid `game-mode-tier-{tier}`:
+    - Primary (Practice + Ranked): grid-cols-2, h-60, icon-4xl, title-xl, description line-clamp-3
+    - Secondary (Daily/Groups/Rooms/Tournament): grid-cols-4 on lg, h-44
+    - Discovery (Weekly/Mystery/Speed): grid-cols-3, h-40
+  - Stronger highlight:
+    - `bg-secondary/[0.04]` (light gold tint)
+    - `border-secondary` (full gold, was /80)
+    - `shadow-[0_0_32px_rgba(232,168,50,0.35)]` (stronger glow, was 24px/0.25)
+    - `ring-2 ring-secondary/30` (was ring-1 /40)
+    - Badge: `animate-pulse` + bigger padding + bigger text
+  - Add `data-tier` attribute cho testing / future styling
+- Commit: "style(web): tier-based game-mode grid + distinct recommendation highlight"
+
+## 2026-04-19 — Game Mode Recommendation (smart highlight) [DONE — pending local test run]
+
+### Design summary
+- Priority-cascade algorithm, client-side, pure function
+- 5 rules v1: streakAboutToBreak / onboarding / dailyAvailable / fullEnergy / default
+- UI: 1 card được recommend có gold border + glow + badge "✨ Gợi ý cho bạn" + reason text
+- Các card khác giữ style hiện tại → tạo visual hierarchy không redesign
+- Không cần endpoint mới — tái dùng data Home đã fetch
+
+### Task R-1: Pure function getRecommendedMode + tests
+- Status: [x] DONE — 5 priority rules + THRESHOLDS exported; 17 test cases (null guard, each rule, cascade precedence, threshold boundary)
+- File(s): apps/web/src/utils/getRecommendedMode.ts + __tests__/
+- Tests cover: 5 priority branches + edge (null/undefined context) = ~12 cases
+- Commit: "feat(web): add smart game mode recommendation algorithm"
+
+### Task R-2: GameModeGrid integration
+- Status: [x] DONE — useMemo recommendation, gold border/glow, absolute badge top-right, reason text replacing description
+- File(s): apps/web/src/components/GameModeGrid.tsx
+- Add optional prop `userStats?: { currentStreak, totalPoints }`
+- Compute recommendation via useMemo from existing state + prop
+- Render matched card: gold-gradient border + glow shadow + badge + reason text
+- Commit: "feat(web): highlight recommended game mode card in GameModeGrid"
+
+### Task R-3: Home.tsx pass userStats prop
+- Status: [x] DONE — 1 dòng thay đổi, pass `{ currentStreak: meData?.currentStreak, totalPoints }`
+- File(s): apps/web/src/pages/Home.tsx
+- Pass `{ currentStreak, totalPoints }` từ meData/tierData vào GameModeGrid
+- Commit: "feat(web): wire userStats from Home into GameModeGrid"
+
+### Task R-4: i18n + tests update
+- Status: [x] DONE — vi/en thêm `home.recommend.*` (6 keys: badge + 5 reason); GameModeGrid.test.tsx thêm 5 recommendation test cases
+- File(s): apps/web/src/i18n/vi.json + en.json + GameModeGrid test
+- Add keys `home.recommend.*` (badge + 5 reason messages)
+- Update GameModeGrid.test.tsx: verify badge renders khi có recommendation
+- Commit: "i18n: add recommend namespace + update GameModeGrid tests"
+
 ## 2026-04-18 — Lifeline v1 (Hint only) [DONE — pending local full regression]
 
 ### Design summary
@@ -2077,3 +2470,26 @@
 - [x] CLAUDE.md Known Issues #1-3 marked FIXED + new "i18n Coverage" subsection added
 - [x] REPORT_I18N_FINAL.md captures 578→116 journey and accepted debt
 - [x] DONE: section ✅ — hardcoded count dropped 80% (578 → 116), missing keys eliminated (32 → 0)
+
+---
+
+## 2026-04-19 — Practice XP persistence bug fix [IN PROGRESS]
+
+### Task 1: Fix DTO field mismatch — @JsonAlias for clientElapsedMs
+- Status: [ ] TODO
+- File(s): apps/api/src/main/java/com/biblequiz/api/dto/SubmitAnswerRequest.java
+- Root cause: FE sends `clientElapsedMs` but DTO expects `elapsedMs` → Jackson strict FAIL_ON_UNKNOWN_PROPERTIES throws UnrecognizedPropertyException → GlobalExceptionHandler returns 400 → SessionService.submitAnswer never executes → no answer rows, no XP credit, no log lines.
+- Fix: Add `@JsonAlias("clientElapsedMs")` on `elapsedMs` field so DTO accepts both names (backward compat + matches RankedController's payload contract where "clientElapsedMs" is already the wire name).
+- Checklist:
+  - [ ] Add @JsonAlias to SubmitAnswerRequest
+  - [ ] Unit test: DTO deserializes both `elapsedMs` and `clientElapsedMs`
+  - [ ] Rebuild docker api image
+  - [ ] Manual verify: practice answer → BE log `creditNonRankedProgress` + DB `user_daily_progress.points_counted` increments
+  - [ ] Commit: "fix(api): accept clientElapsedMs alias in SubmitAnswerRequest"
+
+### Task 2: Verify regression
+- Status: [ ] TODO
+- Checklist:
+  - [ ] `./mvnw test -Dtest="SessionServiceTest"` pass
+  - [ ] `./mvnw test -Dtest="com.biblequiz.api.**,com.biblequiz.service.**"` pass
+  - [ ] Baseline: check # of tests, must not regress
