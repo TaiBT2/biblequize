@@ -1,4 +1,5 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react'
+import i18n from '../i18n'
 
 interface Props {
   children: ReactNode
@@ -65,6 +66,7 @@ class ErrorBoundary extends Component<Props, State> {
       if (this.props.fallback) {
         return this.props.fallback
       }
+      const t = i18n.t.bind(i18n)
 
       return (
         <div data-testid="error-boundary" className="min-h-screen flex items-center justify-center bg-gray-900">
@@ -79,31 +81,31 @@ class ErrorBoundary extends Component<Props, State> {
               
               {/* Error Title */}
               <h2 className="text-2xl font-bold text-red-400 mb-4">
-                Oops! Có lỗi xảy ra
+                {t('components.errorBoundary.title')}
               </h2>
-              
+
               {/* Error Message */}
               <p className="text-gray-300 mb-6">
-                Ứng dụng gặp phải lỗi không mong muốn. Vui lòng thử lại hoặc tải lại trang.
+                {t('components.errorBoundary.description')}
               </p>
               
               {/* Error Details (Development only) */}
               {process.env.NODE_ENV === 'development' && this.state.error && (
                 <details className="mb-6 text-left">
                   <summary className="cursor-pointer text-sm text-gray-400 hover:text-gray-300 mb-2">
-                    Chi tiết lỗi (Development)
+                    {t('components.errorBoundary.detailsSummary')}
                   </summary>
                   <div className="bg-gray-800 rounded-lg p-4 text-xs text-gray-300 overflow-auto max-h-40">
                     <div className="mb-2">
-                      <strong>Error:</strong> {this.state.error.message}
+                      <strong>{t('components.errorBoundary.errorLabel')}</strong> {this.state.error.message}
                     </div>
                     <div className="mb-2">
-                      <strong>Stack:</strong>
+                      <strong>{t('components.errorBoundary.stackLabel')}</strong>
                       <pre className="whitespace-pre-wrap mt-1">{this.state.error.stack}</pre>
                     </div>
                     {this.state.errorInfo && (
                       <div>
-                        <strong>Component Stack:</strong>
+                        <strong>{t('components.errorBoundary.componentStackLabel')}</strong>
                         <pre className="whitespace-pre-wrap mt-1">{this.state.errorInfo.componentStack}</pre>
                       </div>
                     )}
@@ -118,19 +120,19 @@ class ErrorBoundary extends Component<Props, State> {
                   onClick={this.handleRetry}
                   className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
                 >
-                  Thử lại
+                  {t('components.errorBoundary.retryButton')}
                 </button>
                 <button
                   onClick={this.handleReload}
                   className="flex-1 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors duration-200"
                 >
-                  Tải lại trang
+                  {t('components.errorBoundary.reloadButton')}
                 </button>
               </div>
-              
+
               {/* Help Text */}
               <p className="text-sm text-gray-400 mt-4">
-                Nếu lỗi vẫn tiếp tục, vui lòng liên hệ hỗ trợ.
+                {t('components.errorBoundary.helpHint')}
               </p>
             </div>
           </div>

@@ -1,7 +1,6 @@
 export interface Tier {
   id: number
   nameKey: string
-  name: string
   minPoints: number
   maxPoints: number
   icon: string
@@ -9,20 +8,16 @@ export interface Tier {
 }
 
 export const TIERS: Tier[] = [
-  { id: 1, nameKey: 'tiers.newBeliever', name: 'Tân Tín Hữu', minPoints: 0, maxPoints: 999, icon: '🌱', color: 'gray' },
-  { id: 2, nameKey: 'tiers.seeker', name: 'Người Tìm Kiếm', minPoints: 1000, maxPoints: 4999, icon: '🌿', color: 'green' },
-  { id: 3, nameKey: 'tiers.disciple', name: 'Môn Đồ', minPoints: 5000, maxPoints: 14999, icon: '📜', color: 'blue' },
-  { id: 4, nameKey: 'tiers.sage', name: 'Hiền Triết', minPoints: 15000, maxPoints: 39999, icon: '🪔', color: 'purple' },
-  { id: 5, nameKey: 'tiers.prophet', name: 'Tiên Tri', minPoints: 40000, maxPoints: 99999, icon: '🔥', color: 'gold' },
-  { id: 6, nameKey: 'tiers.apostle', name: 'Sứ Đồ', minPoints: 100000, maxPoints: Infinity, icon: '👑', color: 'red' },
+  { id: 1, nameKey: 'tiers.newBeliever', minPoints: 0, maxPoints: 999, icon: '🌱', color: 'gray' },
+  { id: 2, nameKey: 'tiers.seeker', minPoints: 1000, maxPoints: 4999, icon: '🌿', color: 'green' },
+  { id: 3, nameKey: 'tiers.disciple', minPoints: 5000, maxPoints: 14999, icon: '📜', color: 'blue' },
+  { id: 4, nameKey: 'tiers.sage', minPoints: 15000, maxPoints: 39999, icon: '🪔', color: 'purple' },
+  { id: 5, nameKey: 'tiers.prophet', minPoints: 40000, maxPoints: 99999, icon: '🔥', color: 'gold' },
+  { id: 6, nameKey: 'tiers.apostle', minPoints: 100000, maxPoints: Infinity, icon: '👑', color: 'red' },
 ]
 
 export function getTierByPoints(points: number): Tier {
   return TIERS.find(t => points >= t.minPoints && points <= t.maxPoints) ?? TIERS[0]
-}
-
-export function getTierName(points: number): string {
-  return getTierByPoints(points).name
 }
 
 export function getNextTier(points: number): Tier | null {

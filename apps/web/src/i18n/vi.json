@@ -127,6 +127,24 @@
     },
     "errorToast": {
       "closeLabel": "Đóng"
+    },
+    "errorBoundary": {
+      "title": "Oops! Có lỗi xảy ra",
+      "description": "Ứng dụng gặp phải lỗi không mong muốn. Vui lòng thử lại hoặc tải lại trang.",
+      "detailsSummary": "Chi tiết lỗi (Development)",
+      "errorLabel": "Error:",
+      "stackLabel": "Stack:",
+      "componentStackLabel": "Component Stack:",
+      "retryButton": "Thử lại",
+      "reloadButton": "Tải lại trang",
+      "helpHint": "Nếu lỗi vẫn tiếp tục, vui lòng liên hệ hỗ trợ."
+    },
+    "weakness": {
+      "title": "Phân tích của bạn",
+      "strongLabel": "Mạnh nhất",
+      "weakLabel": "Cần ôn thêm",
+      "correctFraction": "({{correct}}/{{total}} đúng)",
+      "practiceCta": "Ôn {{book}} ngay"
     }
   },
   "nav": {

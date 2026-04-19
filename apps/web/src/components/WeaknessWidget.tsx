@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 
 interface BookAccuracy {
@@ -17,6 +18,7 @@ interface WeaknessData {
 }
 
 export default function WeaknessWidget() {
+  const { t } = useTranslation()
   const navigate = useNavigate()
 
   const { data, isLoading } = useQuery<WeaknessData>({
@@ -34,7 +36,7 @@ export default function WeaknessWidget() {
         <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
           analytics
         </span>
-        <h2 className="text-lg font-black text-on-surface">Phân tích của bạn</h2>
+        <h2 className="text-lg font-black text-on-surface">{t('components.weakness.title')}</h2>
       </div>
 
       <div className="bg-surface-container rounded-xl p-5 border border-outline-variant/10 space-y-5">
@@ -43,7 +45,7 @@ export default function WeaknessWidget() {
           <div>
             <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2 flex items-center gap-1.5">
               <span className="material-symbols-outlined text-sm text-emerald-400">trending_up</span>
-              Mạnh nhất
+              {t('components.weakness.strongLabel')}
             </p>
             <div className="flex flex-wrap gap-2">
               {data.strongBooks.map(b => (
@@ -61,7 +63,7 @@ export default function WeaknessWidget() {
           <div>
             <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2 flex items-center gap-1.5">
               <span className="material-symbols-outlined text-sm text-secondary">menu_book</span>
-              Cần ôn thêm
+              {t('components.weakness.weakLabel')}
             </p>
             <div className="space-y-2">
               {data.weakBooks.map(b => (
@@ -69,7 +71,7 @@ export default function WeaknessWidget() {
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-bold text-on-surface">{b.book}</span>
                     <span className="text-[10px] text-on-surface-variant">
-                      ({b.correct}/{b.totalAnswered} đúng)
+                      {t('components.weakness.correctFraction', { correct: b.correct, total: b.totalAnswered })}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -96,7 +98,7 @@ export default function WeaknessWidget() {
             className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-secondary/10 border border-secondary/20 rounded-xl text-secondary text-sm font-bold hover:bg-secondary/20 transition-colors"
           >
             <span className="material-symbols-outlined text-sm">play_circle</span>
-            Ôn {data.suggestedPractice} ngay
+            {t('components.weakness.practiceCta', { book: data.suggestedPractice })}
           </button>
         )}
       </div>

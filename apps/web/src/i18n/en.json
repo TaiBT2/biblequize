@@ -127,6 +127,24 @@
     },
     "errorToast": {
       "closeLabel": "Close"
+    },
+    "errorBoundary": {
+      "title": "Oops! Something went wrong",
+      "description": "The app hit an unexpected error. Please try again or reload the page.",
+      "detailsSummary": "Error details (Development)",
+      "errorLabel": "Error:",
+      "stackLabel": "Stack:",
+      "componentStackLabel": "Component Stack:",
+      "retryButton": "Try again",
+      "reloadButton": "Reload page",
+      "helpHint": "If the issue persists, please contact support."
+    },
+    "weakness": {
+      "title": "Your performance",
+      "strongLabel": "Strongest",
+      "weakLabel": "Needs review",
+      "correctFraction": "({{correct}}/{{total}} correct)",
+      "practiceCta": "Practice {{book}} now"
     }
   },
   "nav": {
