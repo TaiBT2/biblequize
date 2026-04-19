@@ -2061,11 +2061,15 @@
 - [x] Task 3.13: Dashboard + 7 subcomponents — admin.dashboard.* (35 keys)
 - [x] PHASE 3 CHECKPOINT → 821/821 unit pass. Hardcoded 545 → 229 (-316). Paused for user review.
 
-### Phase 4 — Fine-grain sweep [ ]
-- [ ] Task 4.1: Grep hardcoded strings in 35 user pages already using `useTranslation` (patterns: "Đang tải", "Không có", "Lỗi", "Vui lòng", ...) | cluster commit | `i18n: miscellaneous hardcoded strings in user pages`
-- [ ] Task 4.2: Mixed VN/EN strings ("{n} energy/giờ", "exp/", "point/") → interpolation | commit `i18n: fix mixed language strings`
-- [ ] Task 4.3: Fix api/client.ts (Known Issue #2) + grep utils/*.ts for user-facing strings | commit `i18n: utility files cleanup`
-- [ ] PHASE 4 CHECKPOINT → Tier 3 regression, pause
+### Phase 4 — Fine-grain sweep [x] DONE
+- [x] Task 4.1a: Register/Profile/GroupDetail missing keys + hardcoded (32 missing keys → 0)
+- [x] Task 4.1b: Practice + Onboarding + OnboardingTryQuiz (~60 UI strings)
+- [x] Task 4.1c: MysteryMode + SpeedRound + Cosmetics + Achievements + RoomLobby (~25 strings)
+- [x] Task 4.1d: ErrorBoundary + WeaknessWidget + tiers.ts name-field cleanup
+- [x] Task 4.1e: SearchableSelect + AdminLayout + WeeklyQuiz + AI source fallback
+- [x] Task 4.3: api/client.ts already i18n'd via errors.*; utils/hooks/contexts clean (comments only)
+- [x] Task 4.2: Mixed VN/EN patterns absorbed into interpolation during Phase 1-3 (energy/giờ, XP x{{count}}, etc.)
+- [x] PHASE 4 CHECKPOINT → 821/821 unit pass. Hardcoded 229 → 116 (-113). Accepted debt: verses.ts (30 content), PrivacyPolicy/TermsOfService (57 legal bilingual), LandingPage (10 marketing), AI prompt template (intentional VN), mock sample data.
 
 ### Phase 5 — Validation [ ]
 - [ ] Task 5.1: Write `scripts/i18n-scan.ts` — regex Vietnamese diacritics in JSX text outside `t()` | report file list | commit `test: i18n validation script and coverage report`
