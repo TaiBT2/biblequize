@@ -81,6 +81,10 @@ async function submitOnePracticeAnswer(
   }
 
   const firstQ = session.questions[0]
+  // NOTE: sessionId intentionally omitted from the body — FE (Quiz.tsx)
+  // only puts it in the URL path, and an earlier @NotBlank DTO validation
+  // rejected every call with 400 "Session ID is required". Matching the
+  // real FE contract here keeps the test honest.
   const answerRes = await fetch(
     `${API_BASE}/api/sessions/${session.sessionId}/answer`,
     {
@@ -90,7 +94,6 @@ async function submitOnePracticeAnswer(
         Authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify({
-        sessionId: session.sessionId,
         questionId: firstQ.id,
         answer: answerIndex,
         clientElapsedMs: 5000,
