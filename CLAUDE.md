@@ -790,16 +790,16 @@ BƯỚC 4: Hành động:
 
 ---
 
-## Known Issues & Tech Debt (cập nhật: 2026-04-17)
+## Known Issues & Tech Debt (cập nhật: 2026-04-19)
 
 > **Claude Code PHẢI đọc section này trước khi code.** Nếu chạm vào file có known issue → fix luôn, KHÔNG để lại.
 
 ### Critical — fix ngay khi chạm vào file
 | # | File | Issue | How to fix |
 |---|------|-------|------------|
-| 1 | `api/client.ts` | Duplicate auth interceptor — `addAuthInterceptor(api)` + thêm 1 `api.interceptors.request.use` nữa → header set 2 lần | Xóa block interceptor thứ hai, merge debug logging vào factory |
-| 2 | `api/client.ts` | Error messages hardcoded tiếng Việt, bypass i18n | Dùng `i18n.t('errors.xxx')` thay cho string trực tiếp |
-| 3 | `api/client.ts` | `window.location.href = '/login'` bypass React Router + xóa localStorage trực tiếp | Dispatch event `auth:session-expired`, handle bằng React Router |
+| 1 | `api/client.ts` | ~~Duplicate auth interceptor~~ — FIXED: only `addAuthInterceptor(api)` + `addAuthInterceptor(aiApi)` now | — |
+| 2 | `api/client.ts` | ~~Error messages hardcoded tiếng Việt~~ — FIXED in i18n Phase 4: routes through `i18n.t('errors.*')` | — |
+| 3 | `api/client.ts` | ~~`window.location.href = '/login'`~~ — FIXED: dispatches `auth:session-expired` event | — |
 | 4 | `vite.config.ts` | CSP có `unsafe-inline` + `unsafe-eval` trong script-src | Xóa cả hai khỏi script-src, giữ `unsafe-inline` chỉ cho style-src |
 | 5 | `.env.production` | API URL vẫn là `localhost:8080` | Đổi thành empty string (dùng same-origin proxy) |
 | 6 | `hooks/useWebSocket.ts` | Không gửi JWT token (useStomp có, useWebSocket không) | Thêm token vào URL query param `?token=xxx` |
@@ -816,6 +816,18 @@ BƯỚC 4: Hành động:
 | 13 | `hooks/useWebSocket.ts` | PLAYER_UNREADY gọi onPlayerReady — cần handler riêng |
 | 14 | `store/authStore.ts` | Dispatch event tên `localStorageCleared` misleading — đổi thành `rankedDataCleared` |
 | 15 | `components/ui/SearchableSelect.tsx` | Inline styles thay vì Tailwind classes |
+
+### i18n Coverage (cập nhật: 2026-04-19)
+
+- **Validator**: `cd apps/web && npm run validate:i18n` — fails CI if hardcoded Vietnamese or missing key appears
+- **Current state**: 116 hardcoded lines, 0 missing keys (baseline 578/32)
+- **Accepted debt** (not UI strings, do NOT fail validator):
+  - `data/verses.ts` (30) — Bible verse content, separate localization workflow
+  - `pages/PrivacyPolicy.tsx` + `pages/TermsOfService.tsx` (57) — legal text, bilingual via `isVi` ternary
+  - `pages/LandingPage.tsx` (10) — marketing copy
+  - `pages/admin/AIQuestionGenerator.tsx` DEFAULT_PROMPT (8) — literal prompt sent to AI
+  - Mock sample data (11) — placeholder records until real APIs wire up
+- **Rule**: every new PR MUST run `npm run validate:i18n`; if count increases, block merge
 
 > Khi nhận task mới mà chạm vào file có known issue → **tạo thêm 1 task fix issue đó** trong TODO.md, làm TRƯỚC task chính.
 
@@ -843,6 +855,12 @@ BƯỚC 4: Hành động:
 | POST | `/api/ranked/sync-progress` | Yes | Sync ranked data |
 | GET | `/api/ranked/status` | Yes | Energy, question counts, current book |
 | GET | `/api/ranked/tier` | Yes | Current tier info |
+
+### Lifelines (v1 — hint only; askOpinion deferred to v2)
+| Method | Endpoint | Auth | Mô tả |
+|--------|----------|------|--------|
+| POST | `/api/sessions/{id}/lifeline/hint` | Yes | Eliminate 1 wrong option (body: `{questionId}`; returns `{eliminatedOptionIndex, hintsRemaining, method}`) |
+| GET | `/api/sessions/{id}/lifeline/status?questionId=X` | Yes | Remaining quota + eliminated options for current question |
 
 ### Multiplayer
 | Method | Endpoint | Auth | Mô tả |
