@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -29,7 +30,7 @@ public class RedisConfig {
      * not broaden this; wide polymorphism on Redis is a known RCE vector.
      */
     @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory, ObjectMapper objectMapper) {
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
 
@@ -37,17 +38,19 @@ public class RedisConfig {
         template.setKeySerializer(new StringRedisSerializer());
         template.setHashKeySerializer(new StringRedisSerializer());
 
-        // Redis-only ObjectMapper: clones the app mapper (keeps JavaTimeModule,
-        // custom deserializers) then enables default typing so collections
-        // round-trip with element types intact.
+        // Dedicated Redis ObjectMapper built from scratch — avoids ObjectMapper.copy()
+        // which in some Jackson/Spring combinations fails to carry over a later
+        // activateDefaultTyping call, producing JSON without @class and then
+        // breaking deserialize with "missing type id property '@class'".
         PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator.builder()
                 .allowIfSubType("com.biblequiz.")
                 .allowIfSubType("java.util.")
                 .allowIfSubType("java.lang.")
                 .allowIfSubType("java.time.")
                 .build();
-        ObjectMapper redisMapper = objectMapper.copy()
-                .activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
+        ObjectMapper redisMapper = new ObjectMapper();
+        redisMapper.registerModule(new JavaTimeModule());
+        redisMapper.activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
 
         GenericJackson2JsonRedisSerializer jsonSerializer = new GenericJackson2JsonRedisSerializer(redisMapper);
         template.setValueSerializer(jsonSerializer);

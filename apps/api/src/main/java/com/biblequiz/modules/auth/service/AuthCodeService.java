@@ -7,6 +7,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -36,7 +37,10 @@ public class AuthCodeService {
      */
     public String createCode(Map<String, Object> payload) {
         String code = UUID.randomUUID().toString();
-        redisTemplate.opsForValue().set(PREFIX + code, payload, TTL);
+        // Wrap in HashMap: Map.of(...) returns a FINAL ImmutableCollections$MapN,
+        // and Jackson's DefaultTyping.NON_FINAL skips final types → no @class →
+        // deserialize later blows up with "missing type id property '@class'".
+        redisTemplate.opsForValue().set(PREFIX + code, new HashMap<>(payload), TTL);
         return code;
     }
 
