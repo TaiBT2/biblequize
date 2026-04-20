@@ -805,11 +805,11 @@
       },
       "howUnlockRanked": {
         "q": "When does Ranked mode unlock?",
-        "a": "Two paths unlock Ranked: (1) Reach Seeker tier (1,000 XP), or (2) Early-unlock — play Practice with ≥80% accuracy over at least 10 answered questions. Path 2 is usually the fastest for new users because Practice has no energy cost and no time pressure. Once you unlock Ranked, XP starts accumulating toward the next tier."
+        "a": "Three paths unlock Ranked: (1) Reach Seeker tier (1,000 XP), (2) Early-unlock — play Practice with ≥80% accuracy over at least 10 answered questions, or (3) Daily streak — completing Daily Challenge grants +50 XP per day, so ~20 consecutive days reach 1,000 XP. Path 2 is fastest, path 3 is the most reliable for casual users. Once Ranked unlocks, XP continues accumulating toward the next tier."
       },
       "howEarnXp": {
         "q": "How do I earn XP and can I lose it?",
-        "a": "XP comes exclusively from Ranked mode. Each correct Ranked answer scores Easy +10, Medium +20, Hard +30 with bonuses for fast answers (<5s) +5 and a combo multiplier 1.2/1.5/2.0×. Practice, Daily Challenge, and other modes don't grant XP — they contribute to history, streaks, and the early-unlock path. Wrong answers don't cost XP (they cost energy in Ranked). Lifetime XP only goes up."
+        "a": "Two XP sources: (1) Ranked mode — Easy +8, Medium +12, Hard +18 per correct answer with speed + combo multipliers 1.2/1.5× (primary source, 100-500 XP/session). (2) Daily Challenge — +50 XP per completion, once per day (max 1,500 XP/month, gives casual users a reliable progression path). Practice and other modes don't grant XP — they contribute to history, streaks, and the early-unlock path. Wrong answers don't cost XP (they cost energy in Ranked). Lifetime XP only goes up."
       },
       "practiceVsRanked": {
         "q": "How is Practice different from Ranked?",
@@ -1478,6 +1478,7 @@
     "comeBackLater": "Come back later for a new challenge",
     "completeToStart": "Complete the challenge to start your streak",
     "completedMessage": "You've completed today's challenge!",
+    "xpEarned": "+50 XP added to your progress",
     "dayFri": "Fri",
     "dayMon": "Mon",
     "daySat": "Sat",

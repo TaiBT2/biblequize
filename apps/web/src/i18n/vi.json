@@ -805,11 +805,11 @@
       },
       "howUnlockRanked": {
         "q": "Thi Đấu Xếp Hạng mở khóa khi nào?",
-        "a": "Có 2 cách: (1) Đạt hạng Người Tìm Kiếm (1,000 XP), hoặc (2) Mở khóa sớm — chơi Luyện Tập với ≥80% độ chính xác qua ít nhất 10 câu. Cách 2 thường nhanh hơn cho người mới vì Luyện Tập không tốn năng lượng, không có timer. Sau khi mở khóa Xếp Hạng, XP mới bắt đầu tích lũy để lên tier tiếp theo."
+        "a": "Có 3 cách: (1) Đạt hạng Người Tìm Kiếm (1,000 XP), (2) Mở khóa sớm — chơi Luyện Tập với ≥80% độ chính xác qua ít nhất 10 câu, hoặc (3) Làm Thử Thách Ngày đều đặn — mỗi ngày hoàn thành cộng +50 XP, khoảng 20 ngày liên tiếp sẽ đủ 1,000 XP. Cách (2) nhanh nhất, cách (3) đều đặn nhất cho người casual. Sau khi mở khóa Xếp Hạng, XP tiếp tục tích lũy để lên tier tiếp theo."
       },
       "howEarnXp": {
         "q": "XP kiếm từ đâu và có mất không?",
-        "a": "XP chỉ tích từ chế độ Thi Đấu Xếp Hạng. Mỗi câu Ranked đúng: Easy +10, Medium +20, Hard +30, cộng bonus trả lời nhanh (<5s) +5 và combo nhân 1.2/1.5/2.0×. Luyện Tập, Thử Thách Ngày và các mode khác không tích XP — chúng chỉ đóng góp vào lịch sử câu hỏi, streak, và path mở khóa sớm. Câu sai không mất XP (chỉ mất năng lượng ở Ranked). Lifetime XP chỉ tăng, không bao giờ reset."
+        "a": "Hai nguồn XP: (1) Thi Đấu Xếp Hạng — mỗi câu đúng Easy +8, Medium +12, Hard +18, cộng bonus tốc độ và combo 1.2/1.5× (nguồn chính, 100-500 XP/session). (2) Thử Thách Ngày — hoàn thành 1 lần/ngày cộng +50 XP (max 1,500 XP/tháng, giúp user casual vẫn tiến triển). Luyện Tập và các mode khác không tích XP — chúng đóng góp vào lịch sử câu hỏi, streak, và path mở khóa sớm. Câu sai không mất XP (chỉ mất năng lượng ở Ranked). Lifetime XP chỉ tăng, không bao giờ reset."
       },
       "practiceVsRanked": {
         "q": "Luyện Tập khác Thi Đấu Xếp Hạng thế nào?",
@@ -1478,6 +1478,7 @@
     "comeBackLater": "Hãy quay lại sau để thử thách mới",
     "completeToStart": "Hoàn thành thử thách để bắt đầu chuỗi ngày",
     "completedMessage": "Bạn đã hoàn thành thử thách hôm nay!",
+    "xpEarned": "+50 XP đã cộng vào tiến trình",
     "dayFri": "T6",
     "dayMon": "T2",
     "daySat": "T7",

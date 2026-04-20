@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useQueryClient } from '@tanstack/react-query'
 import { api } from '../api/client'
 import ShareCard from '../components/ShareCard'
 import PageMeta from '../components/PageMeta'
@@ -131,6 +132,7 @@ function LoadingSkeleton() {
 const DailyChallenge: React.FC = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const queryClient = useQueryClient()
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -260,14 +262,31 @@ const DailyChallenge: React.FC = () => {
     if (!challengeData) return
 
     if (currentIndex + 1 >= challengeData.questions.length) {
+      const correctCount = results.filter(Boolean).length
+      const score = correctCount * 20
+
+      // Persist completion server-side. Backend credits +50 XP into
+      // UserDailyProgress the first time this fires per user per day
+      // (idempotent via hasCompletedToday guard) — see DECISIONS.md
+      // 2026-04-20 "Daily Challenge as secondary XP path".
+      try {
+        await api.post('/api/daily-challenge/complete', { score, correctCount })
+      } catch (err) {
+        console.error('Error marking daily completion:', err)
+      }
+
+      // Refresh server-derived views (Home tier progress, /api/me
+      // counters) so the new XP shows up immediately.
+      queryClient.invalidateQueries({ queryKey: ['me'] })
+      queryClient.invalidateQueries({ queryKey: ['me-tier-progress'] })
+
       try {
         const resultRes = await api.get('/api/daily-challenge/result')
         setDailyResult(resultRes.data)
       } catch {
-        const correctCount = results.filter(Boolean).length
         setDailyResult({
           completed: true,
-          score: correctCount * 20,
+          score,
           correctCount,
           totalQuestions: challengeData.questions.length,
           sessionId: sessionId || undefined,
@@ -279,7 +298,7 @@ const DailyChallenge: React.FC = () => {
       setSelectedAnswer(null)
       setAnswered(false)
     }
-  }, [challengeData, currentIndex, results, sessionId])
+  }, [challengeData, currentIndex, results, sessionId, queryClient])
 
   // ─── Loading ────────────────────────────────────────────────────────────
   if (loading) {
@@ -341,6 +360,15 @@ const DailyChallenge: React.FC = () => {
                 {correctCount}<span className="text-2xl text-on-surface-variant font-medium">/{totalQuestions}</span>
               </div>
               <p className="text-on-surface-variant text-lg">{t('daily.completedMessage')}</p>
+
+              {/* +50 XP earned badge — backend credited via /complete. */}
+              <div
+                data-testid="daily-xp-earned"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/30"
+              >
+                <span className="material-symbols-outlined text-secondary text-lg" style={FILL_1}>bolt</span>
+                <span className="text-sm font-bold text-secondary">{t('daily.xpEarned')}</span>
+              </div>
 
               {/* Stars */}
               <div className="flex items-center justify-center gap-2">
@@ -469,6 +497,7 @@ const DailyChallenge: React.FC = () => {
                 return (
                   <button
                     key={i}
+                    data-testid={`daily-option-${i}`}
                     className={`w-full text-left p-4 rounded-xl border transition-all duration-200 flex items-start gap-3 ${stateClasses} ${
                       !answered ? 'cursor-pointer active:scale-[0.99]' : 'cursor-default'
                     }`}
@@ -495,6 +524,7 @@ const DailyChallenge: React.FC = () => {
             {/* Next button */}
             {answered && (
               <button
+                data-testid="daily-next-btn"
                 onClick={handleNext}
                 className="w-full gold-gradient py-4 rounded-2xl text-on-secondary font-black text-base shadow-lg hover:shadow-secondary/20 transition-all hover:scale-[1.01] active:scale-95 flex items-center justify-center gap-2"
               >
