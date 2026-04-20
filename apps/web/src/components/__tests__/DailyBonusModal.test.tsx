@@ -26,6 +26,8 @@ function renderModal() {
 describe('DailyBonusModal', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    // Clear the per-day dismissal key so tests don't interfere with each other.
+    window.localStorage.removeItem('dailyBonusDismissed')
   })
 
   // 1. Renders nothing when no bonus
@@ -105,5 +107,37 @@ describe('DailyBonusModal', () => {
     await vi.waitFor(() => {
       expect(mockApiGet).toHaveBeenCalledWith('/api/quiz/daily-bonus')
     })
+  })
+
+  // 9. Dismiss persists across remounts (same day)
+  it('stays hidden after remount on the same day once dismissed', async () => {
+    mockApiGet.mockResolvedValue({
+      data: { hasBonus: true, bonusType: 'FREE_FREEZE', message: 'Freeze!' },
+    })
+
+    const { unmount } = renderModal()
+    const btn = await screen.findByText('Tuyệt vời!')
+    fireEvent.click(btn)
+    unmount()
+
+    // Remount (simulates Home → Profile → Home nav, or browser tab switch
+    // that triggers React Query focus refetch + component re-render).
+    renderModal()
+    // Give the query a tick to resolve; title must NOT reappear.
+    await vi.waitFor(() => {
+      expect(mockApiGet).toHaveBeenCalledTimes(2)
+    })
+    expect(screen.queryByText('Quà tặng hôm nay!')).not.toBeInTheDocument()
+  })
+
+  // 10. Yesterday's dismiss doesn't suppress today's modal
+  it('shows modal if the stored dismissal is from a previous day', async () => {
+    // Seed an old date key — must not suppress today's bonus.
+    window.localStorage.setItem('dailyBonusDismissed', '2000-01-01')
+    mockApiGet.mockResolvedValue({
+      data: { hasBonus: true, bonusType: 'DOUBLE_XP', message: '2x XP' },
+    })
+    renderModal()
+    expect(await screen.findByText('Quà tặng hôm nay!')).toBeInTheDocument()
   })
 })

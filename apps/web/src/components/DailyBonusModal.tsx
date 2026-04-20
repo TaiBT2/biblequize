@@ -18,9 +18,22 @@ const BONUS_ICONS: Record<string, string> = {
   BONUS_STREAK: '🔥',
 }
 
+// Persist per-day so navigating away from Home (or switching browser tabs,
+// which refetches on focus) doesn't re-show the modal the user already
+// dismissed. The backend roll is deterministic per user per day, so a date
+// key is exactly as granular as the server's answer.
+const DISMISS_KEY = 'dailyBonusDismissed'
+const today = () => new Date().toISOString().slice(0, 10) // YYYY-MM-DD
+
 export default function DailyBonusModal() {
   const { t } = useTranslation()
-  const [dismissed, setDismissed] = useState(false)
+  const [dismissed, setDismissed] = useState(() => {
+    try {
+      return window.localStorage.getItem(DISMISS_KEY) === today()
+    } catch {
+      return false
+    }
+  })
 
   const { data } = useQuery<DailyBonusData>({
     queryKey: ['daily-bonus'],
@@ -29,6 +42,17 @@ export default function DailyBonusModal() {
   })
 
   if (!data?.hasBonus || dismissed) return null
+
+  const handleConfirm = () => {
+    soundManager.play('badgeUnlock')
+    try {
+      window.localStorage.setItem(DISMISS_KEY, today())
+    } catch {
+      // Private mode / quota exceeded — modal will re-show on next mount,
+      // but that's strictly better than crashing.
+    }
+    setDismissed(true)
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
@@ -39,10 +63,7 @@ export default function DailyBonusModal() {
           <p className="text-secondary font-bold mt-2">{data.message}</p>
         </div>
         <button
-          onClick={() => {
-            soundManager.play('badgeUnlock')
-            setDismissed(true)
-          }}
+          onClick={handleConfirm}
           className="w-full px-6 py-3 gold-gradient text-on-secondary font-black rounded-xl"
         >
           {t('modals.dailyBonus.confirmButton')}

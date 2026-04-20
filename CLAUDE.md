@@ -968,6 +968,7 @@ Layer 3: ErrorBoundary → catch render crashes → fallback UI
 | `quizLanguage` | vi / en preference | quizLanguage util |
 | `hasSeenOnboarding` | Boolean | onboardingStore |
 | `i18nextLng` | Language preference | i18n |
+| `dailyBonusDismissed` | `YYYY-MM-DD` of last-dismissed daily bonus | DailyBonusModal |
 
 > KHÔNG thêm localStorage key mới mà không ghi vào bảng trên.
 
