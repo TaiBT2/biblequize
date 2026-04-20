@@ -3,7 +3,11 @@ package com.biblequiz.service;
 import com.biblequiz.infrastructure.service.CacheService;
 import com.biblequiz.modules.daily.service.DailyChallengeService;
 import com.biblequiz.modules.quiz.entity.Question;
+import com.biblequiz.modules.quiz.entity.UserDailyProgress;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
+import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
+import com.biblequiz.modules.user.entity.User;
+import com.biblequiz.modules.user.repository.UserRepository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
@@ -11,6 +15,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -34,6 +39,12 @@ class DailyChallengeServiceTest {
 
     @Mock
     private CacheService cacheService;
+
+    @Mock
+    private UserRepository userRepository;
+
+    @Mock
+    private UserDailyProgressRepository userDailyProgressRepository;
 
     @InjectMocks
     private DailyChallengeService dailyChallengeService;
@@ -78,10 +89,17 @@ class DailyChallengeServiceTest {
     @Test
     void TC_DAILY_004_hasCompletedToday_shouldReturnTrueAfterMarkCompleted() {
         String userId = "user-123";
+        User user = new User();
+        user.setId(userId);
 
         // Before marking: not completed
         when(cacheService.exists(anyString())).thenReturn(false);
         assertFalse(dailyChallengeService.hasCompletedToday(userId));
+
+        // markCompleted now also credits XP — stub the lookup path.
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+        when(userDailyProgressRepository.findByUserIdAndDate(eq(userId), any(LocalDate.class)))
+                .thenReturn(Optional.empty());
 
         // Mark completed
         dailyChallengeService.markCompleted(userId, 100, 4);
@@ -90,6 +108,71 @@ class DailyChallengeServiceTest {
         // After marking: simulate cache returning true
         when(cacheService.exists(argThat(key -> key.contains("completed:" + userId)))).thenReturn(true);
         assertTrue(dailyChallengeService.hasCompletedToday(userId));
+    }
+
+    // ── Daily XP: markCompleted credits exactly +50 XP on fresh UDP ──────────
+
+    @Order(5)
+    @Test
+    void markCompleted_shouldCreditPlus50XpToUserDailyProgress() {
+        String userId = "user-xp-1";
+        User user = new User();
+        user.setId(userId);
+
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+        when(userDailyProgressRepository.findByUserIdAndDate(eq(userId), any(LocalDate.class)))
+                .thenReturn(Optional.empty());
+
+        dailyChallengeService.markCompleted(userId, 80, 4);
+
+        ArgumentCaptor<UserDailyProgress> saved = ArgumentCaptor.forClass(UserDailyProgress.class);
+        verify(userDailyProgressRepository).save(saved.capture());
+        assertEquals(50, saved.getValue().getPointsCounted(),
+                "Fresh daily completion must credit exactly +50 XP");
+    }
+
+    // ── Daily XP: existing UDP gets +50 on top of prior points ───────────────
+
+    @Order(6)
+    @Test
+    void markCompleted_shouldAdd50XpToExistingDailyProgress() {
+        String userId = "user-xp-2";
+        User user = new User();
+        user.setId(userId);
+
+        UserDailyProgress existing = new UserDailyProgress();
+        existing.setId("udp-existing");
+        existing.setPointsCounted(120); // user already earned 120 XP today (e.g., Ranked)
+        existing.setQuestionsCounted(8);
+        existing.setLivesRemaining(95);
+
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+        when(userDailyProgressRepository.findByUserIdAndDate(eq(userId), any(LocalDate.class)))
+                .thenReturn(Optional.of(existing));
+
+        dailyChallengeService.markCompleted(userId, 100, 5);
+
+        assertEquals(170, existing.getPointsCounted(), "Daily +50 XP stacks on top of existing XP");
+        // questionsCounted / livesRemaining unchanged — Daily only touches XP.
+        assertEquals(8, existing.getQuestionsCounted());
+        assertEquals(95, existing.getLivesRemaining());
+        verify(userDailyProgressRepository).save(existing);
+    }
+
+    // ── Daily XP: unknown user falls through without throwing ────────────────
+
+    @Order(7)
+    @Test
+    void markCompleted_shouldNotCrashWhenUserMissing() {
+        String userId = "user-missing";
+        when(userRepository.findById(userId)).thenReturn(Optional.empty());
+        when(userRepository.findByEmail(userId)).thenReturn(Optional.empty());
+
+        // Cache write still happens; UDP write is skipped.
+        dailyChallengeService.markCompleted(userId, 0, 0);
+
+        verify(cacheService).put(anyString(), any(), any());
+        verify(userDailyProgressRepository, never()).save(any());
     }
 
     // ── TC-DAILY-005: Different dates produce different question selections ──

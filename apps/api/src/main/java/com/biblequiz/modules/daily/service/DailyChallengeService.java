@@ -1,12 +1,19 @@
 package com.biblequiz.modules.daily.service;
 
 import com.biblequiz.modules.quiz.entity.Question;
+import com.biblequiz.modules.quiz.entity.UserDailyProgress;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
+import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
+import com.biblequiz.modules.user.entity.User;
+import com.biblequiz.modules.user.repository.UserRepository;
 import com.biblequiz.infrastructure.service.CacheService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.ZoneOffset;
@@ -20,7 +27,12 @@ import java.util.*;
 @Service
 public class DailyChallengeService {
 
+    private static final Logger log = LoggerFactory.getLogger(DailyChallengeService.class);
+
     private static final int DAILY_QUESTION_COUNT = 5;
+    // See DECISIONS.md 2026-04-20 "Daily Challenge as secondary XP path".
+    // Kept local (not app.yml) because it's a design invariant, not a tunable.
+    private static final int DAILY_COMPLETION_XP = 50;
     private static final String CACHE_KEY_PREFIX = "daily_challenge:";
 
     @Autowired
@@ -28,6 +40,12 @@ public class DailyChallengeService {
 
     @Autowired
     private CacheService cacheService;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserDailyProgressRepository userDailyProgressRepository;
 
     /**
      * Get today's 5 challenge questions. Same questions for all users on the same day.
@@ -105,8 +123,20 @@ public class DailyChallengeService {
     }
 
     /**
-     * Mark user as having completed today's challenge.
+     * Mark user as having completed today's challenge and credit +50 XP into
+     * their {@link UserDailyProgress} row for the day.
+     *
+     * <p>Idempotency: the caller (DailyChallengeController.complete) already
+     * guards with {@link #hasCompletedToday} before invoking this method, so
+     * markCompleted runs at most once per user per day — the XP is credited
+     * exactly once in sync with that guarantee.
+     *
+     * <p>See DECISIONS.md 2026-04-20 "Daily Challenge as secondary XP path"
+     * for why +50 XP: 20 consecutive Dailies = 1,000 XP = Tier-2 unlock,
+     * giving users who can't hit the 80%/10-answer early-unlock a
+     * retention-driven progression loop.
      */
+    @Transactional
     public void markCompleted(String userId, int score, int correctCount) {
         String dateStr = LocalDate.now(ZoneOffset.UTC).toString();
         String key = CACHE_KEY_PREFIX + "completed:" + userId + ":" + dateStr;
@@ -117,11 +147,47 @@ public class DailyChallengeService {
                 "completedAt", System.currentTimeMillis());
         cacheService.put(key, result, java.time.Duration.ofHours(48));
 
-        // Increment total completions for percentile calculation
-        String countKey = CACHE_KEY_PREFIX + "count:" + dateStr;
-        // Simple approach: store each user's score
-        String scoresKey = CACHE_KEY_PREFIX + "scores:" + dateStr;
-        // We'll compute percentile on read
+        creditCompletionXp(userId);
+    }
+
+    /**
+     * Adds {@value #DAILY_COMPLETION_XP} XP to the user's
+     * {@link UserDailyProgress} row. Matches the shape of
+     * {@code SessionService#creditNonRankedProgress} — same UDP lookup,
+     * same "create fresh if absent with 100 energy" initializer — so the
+     * two XP paths (Ranked sync-progress, Daily completion) feed one
+     * canonical per-day points ledger.
+     *
+     * <p>userId may be either the UUID primary key or the user's email
+     * (Principal.getName() is email for both OAuth and mobile login).
+     * Fall through both so callers don't have to resolve first.
+     */
+    private void creditCompletionXp(String userId) {
+        User user = userRepository.findById(userId)
+                .or(() -> userRepository.findByEmail(userId))
+                .orElse(null);
+        if (user == null) {
+            log.warn("Daily completion XP: user not found for id/email={}, skipping credit", userId);
+            return;
+        }
+
+        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        UserDailyProgress udp = userDailyProgressRepository
+                .findByUserIdAndDate(user.getId(), today)
+                .orElseGet(() -> {
+                    UserDailyProgress fresh = new UserDailyProgress(
+                            UUID.randomUUID().toString(), user, today);
+                    fresh.setLivesRemaining(100);
+                    fresh.setPointsCounted(0);
+                    fresh.setQuestionsCounted(0);
+                    return fresh;
+                });
+        int before = Optional.ofNullable(udp.getPointsCounted()).orElse(0);
+        udp.setPointsCounted(before + DAILY_COMPLETION_XP);
+        userDailyProgressRepository.save(udp);
+
+        log.info("Daily completion XP: user={} +{} XP (pointsCounted {}→{})",
+                user.getId(), DAILY_COMPLETION_XP, before, before + DAILY_COMPLETION_XP);
     }
 
     public int getDailyQuestionCount() {

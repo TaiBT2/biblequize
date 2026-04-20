@@ -2493,3 +2493,61 @@
   - [ ] `./mvnw test -Dtest="SessionServiceTest"` pass
   - [ ] `./mvnw test -Dtest="com.biblequiz.api.**,com.biblequiz.service.**"` pass
   - [ ] Baseline: check # of tests, must not regress
+
+---
+
+## 2026-04-20 — Daily Challenge as secondary XP path (+50 XP) [IN PROGRESS]
+
+> Prompt assumed Daily goes through SessionService.submitAnswer. REALITY:
+> Daily uses a fake sessionId ("daily-YYYY-MM-DD-ts"), doesn't hit QuizSession,
+> already has idempotent POST /api/daily-challenge/complete endpoint — FE
+> just doesn't call it. Adapted plan: credit XP inside DailyChallengeService
+> .markCompleted (already guarded by hasCompletedToday in controller) and
+> make FE actually call /complete at end of quiz.
+
+### Task 1: BE — add +50 XP credit in markCompleted
+- Status: [ ] TODO
+- File: apps/api/src/main/java/com/biblequiz/modules/daily/service/DailyChallengeService.java
+- Inject: UserRepository, UserDailyProgressRepository, Logger
+- Private creditCompletionXp(userId) — find or create today's UDP, +50 pointsCounted
+- Idempotency lives in the controller (hasCompletedToday guard)
+- Commit: "feat(api): Daily Challenge completion grants +50 XP"
+
+### Task 2: BE tests — DailyChallengeControllerTest (+ service if needed)
+- Status: [ ] TODO
+- Cases: complete-fresh → +50 XP; complete-twice-same-day → no double-credit;
+  complete without auth → 401 (existing behavior)
+- Commit: "test(api): Daily +50 XP credit + idempotency"
+
+### Task 3: FE — DailyChallenge.tsx invalidate + toast
+- Status: [ ] TODO
+- File: apps/web/src/pages/DailyChallenge.tsx
+- In handleNext when currentIndex+1 >= total: call POST /api/daily-challenge/complete
+  with {score, correctCount}, then queryClient.invalidateQueries for ['me'] and
+  ['me-tier-progress']
+- Show "+50 XP" on result screen (i18n key daily.xpEarned)
+- Commit: "feat(web): Daily completion calls /complete + invalidate tier-progress"
+
+### Task 4: FE tests
+- Status: [ ] TODO
+- File: apps/web/src/pages/__tests__/DailyChallenge.test.tsx (or create if absent)
+- Case: finishing last question triggers POST /complete and invalidates cache
+- Commit: "test(web): Daily completion invalidation"
+
+### Task 5: i18n FAQ + daily.xpEarned strings
+- Status: [ ] TODO
+- Files: apps/web/src/i18n/vi.json + en.json
+- help.items.howEarnXp: add "Daily Challenge: 50 XP/lần hoàn thành"
+- help.items.howUnlockRanked: add Daily path
+- daily.xpEarned: "+50 XP!"
+- Commit: "i18n: Daily +50 XP FAQ copy"
+
+### Task 6: DECISIONS.md
+- Status: [ ] TODO
+- Add 2026-04-20 "Daily Challenge as secondary XP path (+50 XP)"
+- Commit: "docs: ADR — Daily +50 XP"
+
+### Task 7: Full regression
+- Status: [ ] TODO
+- `./mvnw test -Dtest="com.biblequiz.api.**,com.biblequiz.service.**"` — must pass
+- `npx vitest run` — must pass
