@@ -78,7 +78,12 @@ describe('useEarlyUnlockCelebration', () => {
   })
 
   it('fails closed when localStorage.getItem throws', () => {
-    const getSpy = vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+    // happy-dom's localStorage isn't Storage-prototype-backed, so
+    // vi.spyOn(Storage.prototype, 'getItem') silently no-ops and the test
+    // was reading a clean empty store instead of a throwing one — the
+    // hook then fell through the success path and set shouldCelebrate=true.
+    // Spy on the live instance instead.
+    const getSpy = vi.spyOn(window.localStorage, 'getItem').mockImplementation(() => {
       throw new Error('quota exceeded / private mode')
     })
 

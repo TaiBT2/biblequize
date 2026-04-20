@@ -140,13 +140,17 @@ describe('AppLayout — Logout', () => {
    */
   it('does NOT duplicate nav links between header and sidebar', () => {
     renderAppLayout()
-    for (const path of ['/', '/leaderboard', '/groups', '/profile']) {
+    // Intent: catch a regression where the old "header nav menu" returns
+    // and duplicates the sidebar + bottom-nav pair.
+    //
+    // Iterate only paths that are NOT also referenced by legitimate
+    // non-nav surfaces. The brand logo links to `/`, and both the
+    // user-menu dropdown and the mobile slide-out link to `/profile` —
+    // excluding these two keeps the assertion sharp (sidebar + bottom
+    // nav = exactly 2) while still flagging the header-menu regression
+    // this test was originally written for.
+    for (const path of ['/leaderboard', '/groups']) {
       const links = document.querySelectorAll(`a[href="${path}"]`)
-      // Mobile bottom nav also renders these — but bottom nav is hidden
-      // by `md:hidden`. In the test (happy-dom, no viewport breakpoint
-      // simulation) every Link element is rendered. Expect: sidebar (1)
-      // + bottom nav (1) = 2. No more than 2 (would indicate header nav
-      // returned).
       expect(links.length).toBeLessThanOrEqual(2)
     }
   })

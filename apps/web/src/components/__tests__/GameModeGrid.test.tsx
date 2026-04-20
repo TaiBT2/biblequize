@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 
@@ -48,7 +48,15 @@ describe('GameModeGrid', () => {
     })
 
     it('renders CTA buttons for all cards', () => {
-      renderGrid()
+      // Ranked and Tournament cards render locked CTAs ("Luyện tập để
+      // kiếm điểm") when userTier is below their requiredTier — which
+      // is the default since renderGrid passes no userTier. Unlock both
+      // by giving a Tier-4 user; the other four cards have no tier gate.
+      render(
+        <MemoryRouter>
+          <GameModeGrid userStats={{ currentStreak: 0, totalPoints: 6000 }} userTier={4} />
+        </MemoryRouter>
+      )
       expect(screen.getByText('Bắt Đầu')).toBeInTheDocument()
       expect(screen.getByText('Vào Thi Đấu')).toBeInTheDocument()
       expect(screen.getByText('Thử Thách Ngay')).toBeInTheDocument()
@@ -110,7 +118,13 @@ describe('GameModeGrid', () => {
         return Promise.reject(new Error('Not found'))
       })
 
-      renderGrid()
+      // No-energy CTA branch only fires when the Ranked card is NOT locked
+      // (see GameModeGrid: isNoEnergy = ... && !isLocked). Tier-2 unlocks.
+      render(
+        <MemoryRouter>
+          <GameModeGrid userStats={{ currentStreak: 0, totalPoints: 1500 }} userTier={2} />
+        </MemoryRouter>
+      )
 
       await waitFor(() => {
         expect(screen.getByText(/Hết Năng Lượng/i)).toBeInTheDocument()
@@ -234,7 +248,13 @@ describe('GameModeGrid', () => {
     })
 
     it('navigates to /tournaments when Tournament CTA clicked', async () => {
-      renderGrid()
+      // Tournament requires Tier 4; without that gate cleared the CTA is
+      // replaced with the locked "Luyện tập để kiếm điểm" hint.
+      render(
+        <MemoryRouter>
+          <GameModeGrid userStats={{ currentStreak: 0, totalPoints: 6000 }} userTier={4} />
+        </MemoryRouter>
+      )
       const user = userEvent.setup()
       await user.click(screen.getByText('Vào Giải Đấu'))
       expect(mockNavigate).toHaveBeenCalledWith('/tournaments')
@@ -247,7 +267,13 @@ describe('GameModeGrid', () => {
         return Promise.reject(new Error('Not found'))
       })
 
-      renderGrid()
+      // Ranked must be unlocked (Tier ≥ 2) so the no-energy CTA branch
+      // renders — locked users never see "Hết Năng Lượng".
+      render(
+        <MemoryRouter>
+          <GameModeGrid userStats={{ currentStreak: 0, totalPoints: 1500 }} userTier={2} />
+        </MemoryRouter>
+      )
 
       await waitFor(() => {
         expect(screen.getByText(/Hết Năng Lượng/i)).toBeInTheDocument()
@@ -321,7 +347,10 @@ describe('GameModeGrid', () => {
       })
       render(
         <MemoryRouter>
-          <GameModeGrid userStats={{ currentStreak: 2, totalPoints: 5000 }} />
+          {/* totalPoints=5000 implies Tier 3 in the live app, but userTier
+              defaults to 1 when omitted — keep the component from locking
+              Ranked and suppressing the recommendation by passing the tier. */}
+          <GameModeGrid userStats={{ currentStreak: 2, totalPoints: 5000 }} userTier={3} />
         </MemoryRouter>
       )
       await waitFor(() => {
@@ -341,7 +370,10 @@ describe('GameModeGrid', () => {
       })
       render(
         <MemoryRouter>
-          <GameModeGrid userStats={{ currentStreak: 2, totalPoints: 5000 }} />
+          {/* Tier-3 user so Ranked isn't locked out of the recommendation
+              ranking (dailyAvailable vs fullEnergy comparison needs both
+              to be eligible). */}
+          <GameModeGrid userStats={{ currentStreak: 2, totalPoints: 5000 }} userTier={3} />
         </MemoryRouter>
       )
       // The recommendation depends on hoursToMidnight which comes from a
@@ -405,10 +437,15 @@ describe('GameModeGrid', () => {
         expect(screen.getByTestId('game-mode-ranked')).toBeInTheDocument()
       })
       const user = userEvent.setup()
-      // Find the CTA button inside the locked Ranked card
+      // The locked Ranked card now renders two buttons: a "Tìm hiểu thêm →"
+      // FAQ deep link and the CTA. querySelector('button') picks the first
+      // — which is the FAQ link, not the CTA. Scope by the ranked card
+      // testid and match the CTA's accessible text inside it. (Tournament
+      // is also locked with the same copy, so a global getByText finds
+      // multiple.)
       const rankedCard = screen.getByTestId('game-mode-ranked')
-      const ctaBtn = rankedCard.querySelector('button')!
-      await user.click(ctaBtn)
+      const cta = within(rankedCard).getByText('Luyện tập để kiếm điểm')
+      await user.click(cta)
       expect(mockNavigate).toHaveBeenCalledWith('/practice')
     })
 

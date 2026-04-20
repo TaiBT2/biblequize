@@ -80,8 +80,12 @@ describe('Help / FAQ page', () => {
   it('clicking a category pill filters the list', async () => {
     renderHelp()
     const user = userEvent.setup()
-    // Find the "Tiers" category pill and click it
-    const pill = screen.getByRole('button', { name: /Hạng|Tiers/ })
+    // Match on the 🎯 emoji prefix — it's unique to the tiers category
+    // pill label (see i18n help.categories.tiers) and survives VI↔EN
+    // switching. Plain /Hạng|Tiers/ collides with other buttons whose
+    // accessible name embeds "Xếp Hạng" / "Tier" (FAQ answers, nav),
+    // which throws "Found multiple elements…".
+    const pill = screen.getByRole('button', { name: /🎯/ })
     await user.click(pill)
     // In single-category mode, category section headers are not rendered
     expect(screen.queryByTestId('faq-category-gettingStarted')).not.toBeInTheDocument()

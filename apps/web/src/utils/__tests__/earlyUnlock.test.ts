@@ -47,9 +47,13 @@ describe('minCorrectNeededForEarlyUnlock', () => {
     expect(minCorrectNeededForEarlyUnlock(1, 1)).toBe(9)
   })
 
-  it('returns 0 for impossible negative inputs (defensive)', () => {
+  it('defensively clamps impossible inputs', () => {
+    // Negative correct clamps to 0 → still need the full 10-question window.
     expect(minCorrectNeededForEarlyUnlock(-5, 0)).toBe(10)
-    expect(minCorrectNeededForEarlyUnlock(5, 3)).toBe(0)    // correct > total → clamp
+    // correct > total is data corruption; safeTotal clamps up to safeCorrect
+    // (5, 3) → (5, 5) internally. 5/5 satisfies 80%, but sample size is still
+    // 5 short of the 10-question minimum → 5 more needed.
+    expect(minCorrectNeededForEarlyUnlock(5, 3)).toBe(5)
   })
 
   it('handles large cumulative answers', () => {

@@ -170,7 +170,7 @@ describe('Home Dashboard', () => {
       renderHome()
       await waitFor(() => {
         expect(screen.getByText('Chế độ chơi')).toBeInTheDocument()
-        expect(screen.getByText('KHÁM PHÁ 6 CHẾ ĐỘ')).toBeInTheDocument()
+        expect(screen.getByText('KHÁM PHÁ 9 CHẾ ĐỘ')).toBeInTheDocument()
       })
     })
   })

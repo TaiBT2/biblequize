@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 /**
  * Unit tests for Quiz Gameplay (Stitch Timer Added v3).
@@ -36,10 +37,15 @@ vi.mock('../../api/client', () => ({
 import Quiz, { computeEnergyBarsFilled } from '../Quiz'
 
 function renderQuiz() {
+  // Quiz.tsx uses useQueryClient() for invalidateQueries(['me'])
+  // when isQuizCompleted flips true. Must wrap in a provider.
+  const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } })
   return render(
-    <MemoryRouter initialEntries={['/quiz?mode=practice']}>
-      <Quiz />
-    </MemoryRouter>
+    <QueryClientProvider client={qc}>
+      <MemoryRouter initialEntries={['/quiz?mode=practice']}>
+        <Quiz />
+      </MemoryRouter>
+    </QueryClientProvider>
   )
 }
 
