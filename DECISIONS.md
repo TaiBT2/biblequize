@@ -2,6 +2,18 @@
 
 ---
 
+## 2026-04-20 — Daily Challenge as secondary XP path (+50 XP per completion)
+
+- Quyết định: Hoàn thành Daily Challenge = **+50 XP** vào `user_daily_progress.points_counted`, bổ sung cho Ranked là primary XP source. Superseds **partially** ADR "XP source of truth: Ranked only" ngay dưới — Ranked vẫn primary, Daily trở thành secondary casual path.
+- Lý do: Early-unlock (≥80% / 10 câu Practice) chỉ phục vụ user có accuracy cao. User 70-79% mắc kẹt vô hạn — không đủ accuracy, không thể vào Ranked để tích XP. Daily +50 XP × 20 ngày = 1,000 XP → Tier 2 unlock theo retention loop, không phụ thuộc accuracy.
+- Trade-off: Ranked không còn là nguồn XP duy nhất. Nhưng Daily cap ở 50 XP/ngày (1,500/tháng) vs Ranked 100-500/session → Ranked vẫn là primary progression driver. Daily chỉ phá thế bế tắc cho user casual.
+- Idempotency: `DailyChallengeController.complete` đã guard bằng `hasCompletedToday` trước khi gọi `markCompleted`. XP credit nằm trong `markCompleted` → credit đúng 1 lần/ngày/user, không cần thêm guard mới.
+- Scope: **CHỈ Daily Challenge** (endpoint `/api/daily-challenge/complete`). Practice, Weekly, Mystery, Speed vẫn KHÔNG grant XP — giữ Ranked + Daily là 2 XP sources duy nhất.
+- Architecture note: Prompt ban đầu gợi ý detect completion trong `SessionService.submitAnswer` với `mode=daily`. Reality: Daily không đi qua `QuizSession` (dùng fake sessionId, FE-side scoring, dedicated `/api/daily-challenge/*` path). Chọn cho credit chạy ở `markCompleted` thay vì refactor cả Daily infrastructure qua QuizSession — tôn trọng boundary hiện có, giảm surface area.
+- KHÔNG thay đổi khi refactor trừ khi metrics cho thấy rate sai (nếu quá nhiều user unlock Tier 2 qua Daily mà không play Ranked, cân nhắc giảm còn 30 XP/ngày).
+
+---
+
 ## 2026-04-19 — XP source of truth: Ranked only (Practice không grant XP)
 - Quyết định: **Chỉ Ranked mode tích XP** vào `user_daily_progress.points_counted`. Practice (và các mode khác như Daily / Weekly / Mystery / Speed) KHÔNG write pointsCounted. `totalPoints = SUM(points_counted)` qua tất cả ngày — do đó chỉ Ranked mới contribute tier progression.
 - Luồng XP: `/api/ranked/sessions/{id}/answer` → trả `pointsToday` → FE gọi `/api/ranked/sync-progress` → BE (`RankedController`) write `user_daily_progress.points_counted`. Đây là single source of truth.
