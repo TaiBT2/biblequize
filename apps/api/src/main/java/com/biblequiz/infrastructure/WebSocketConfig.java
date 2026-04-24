@@ -1,6 +1,7 @@
 package com.biblequiz.infrastructure;
 
 
+import com.biblequiz.infrastructure.security.StompAuthChannelInterceptor;
 import com.biblequiz.infrastructure.security.WebSocketRateLimitInterceptor;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Autowired
     private WebSocketRateLimitInterceptor rateLimitInterceptor;
 
+    @Autowired
+    private StompAuthChannelInterceptor stompAuthChannelInterceptor;
+
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         // Enable a simple in-memory message broker for destinations prefixed with "/topic"
@@ -36,19 +40,28 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureClientInboundChannel(ChannelRegistration registration) {
-        registration.interceptors(rateLimitInterceptor);
+        // Order matters: stompAuthChannelInterceptor MUST run first so it
+        // can set the Principal on CONNECT before any downstream
+        // interceptor (or @MessageMapping) inspects authentication.
+        registration.interceptors(stompAuthChannelInterceptor, rateLimitInterceptor);
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        // Register the WebSocket endpoints that clients will connect to
-        String[] origins = java.util.Arrays.stream(allowedOrigins.split(",")).map(String::trim).filter(s -> !s.isEmpty()).toArray(String[]::new);
+        // Register WebSocket endpoints. Two registrations:
+        //   1. /ws — native WebSocket (no SockJS). Used by @stomp/stompjs
+        //      Client with `brokerURL`, which is what useStomp.ts wires up.
+        //   2. /ws-sockjs — SockJS fallback for environments where native WS
+        //      is blocked (corporate proxies, polyfilled clients).
+        // Originally only the SockJS variant existed at /ws, which silently
+        // refused native WS handshakes from the FE.
+        String[] origins = java.util.Arrays.stream(allowedOrigins.split(","))
+                .map(String::trim).filter(s -> !s.isEmpty()).toArray(String[]::new);
+
         registry.addEndpoint("/ws")
-                .setAllowedOrigins(origins)
-                .withSockJS(); // Enable SockJS fallback options
-        
-        // Add public room endpoint for room-based communication
-        registry.addEndpoint("/ws/rooms/{roomId}")
+                .setAllowedOrigins(origins);
+
+        registry.addEndpoint("/ws-sockjs")
                 .setAllowedOrigins(origins)
                 .withSockJS();
     }

@@ -50,6 +50,8 @@ public class WebSocketMessage {
         // Social events
         public static final String REACTION = "REACTION";
         public static final String CHALLENGE_RECEIVED = "CHALLENGE_RECEIVED";
+        // Free-form chat broadcast inside a room. Payload: {sender, text}.
+        public static final String CHAT_MESSAGE = "CHAT_MESSAGE";
 
         // Error events
         public static final String ERROR = "ERROR";

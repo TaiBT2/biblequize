@@ -2551,3 +2551,43 @@
 - Status: [ ] TODO
 - `./mvnw test -Dtest="com.biblequiz.api.**,com.biblequiz.service.**"` — must pass
 - `npx vitest run` — must pass
+
+---
+
+## 2026-04-25 — Room chat over STOMP/WebSocket [IN PROGRESS]
+
+Found 3-layer break: BE has no chat MessageMapping, /ws blocked by Security at handshake (401), backend only registers SockJS but FE uses native WS. Plus no STOMP CONNECT auth interceptor.
+
+### Task 1: BE — open /ws + register native WebSocket endpoint
+- Status: [ ] TODO
+- Files: SecurityConfig.java (add `/ws/**` permitAll), WebSocketConfig.java (register `/ws` native alongside SockJS variant)
+- Commit: "fix(api): allow native WebSocket connections at /ws"
+
+### Task 2: BE — STOMP CONNECT auth ChannelInterceptor
+- Status: [ ] TODO
+- File: new StompAuthChannelInterceptor.java (reads Authorization from CONNECT frame, validates JWT via JwtService, sets Principal)
+- Wire into WebSocketConfig.configureClientInboundChannel
+- Commit: "feat(api): authenticate STOMP CONNECT via Authorization header"
+
+### Task 3: BE — chat MessageMapping
+- Status: [ ] TODO
+- Files: WebSocketMessage.java (+CHAT_MESSAGE constant), RoomWebSocketController.java (@MessageMapping /room/{roomId}/chat → broadcast to /topic/room/{roomId})
+- Payload: {text} → message {type=CHAT_MESSAGE, data={sender, text}}
+- Commit: "feat(api): broadcast room chat messages over STOMP"
+
+### Task 4: BE tests
+- Status: [ ] TODO
+- StompAuthChannelInterceptorTest (valid JWT → Principal set, invalid → CONNECT rejected)
+- RoomWebSocketControllerChatTest (call handleChat → messagingTemplate.convertAndSend with right payload)
+- Commit: "test(api): chat handler + STOMP auth interceptor"
+
+### Task 5: FE tests for chat
+- Status: [ ] TODO
+- RoomLobby.test.tsx: typing in input + Enter → useStomp.send called with `/app/room/{id}/chat` + {text}
+- Receiving CHAT_MESSAGE via onMessage → message bubble renders
+- Commit: "test(web): RoomLobby chat send + receive"
+
+### Task 6: Rebuild + manual verify
+- Status: [ ] TODO
+- docker compose build api + web → up
+- Test 2-tab flow: open room in 2 browsers, message from one → appears in other

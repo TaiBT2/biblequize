@@ -102,7 +102,11 @@ public class SecurityConfig {
                                                                 "/api/public/**",
                                                                 "/swagger-ui/**",
                                                                 "/v3/api-docs/**",
-                                                                "/swagger-ui.html")
+                                                                "/swagger-ui.html",
+                                                                // STOMP/WebSocket — handshake is anonymous;
+                                                                // auth happens at the STOMP CONNECT frame
+                                                                // (see StompAuthChannelInterceptor).
+                                                                "/ws/**")
                                                 .permitAll()
                                                 .requestMatchers("/api/me", "/me").authenticated()
                                                 .anyRequest().authenticated())

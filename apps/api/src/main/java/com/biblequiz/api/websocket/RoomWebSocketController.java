@@ -453,6 +453,44 @@ public class RoomWebSocketController {
     }
 
     /**
+     * Free-form chat broadcast inside a room. The client sends
+     * {@code /app/room/{roomId}/chat} with payload {@code {text: "..."}};
+     * the server stamps the sender's display name and re-broadcasts to
+     * every subscriber on {@code /topic/room/{roomId}}.
+     *
+     * <p>Validation kept minimal: empty / whitespace-only text is dropped
+     * silently (no error frame back) and overlong text is trimmed to 500
+     * chars to bound payload size. Rate limiting is owned by
+     * {@link com.biblequiz.infrastructure.security.WebSocketRateLimitInterceptor}
+     * — chat shares the same per-user budget as other SEND frames.
+     */
+    @MessageMapping("/room/{roomId}/chat")
+    public void handleChat(@DestinationVariable String roomId,
+                           @Payload Map<String, Object> payload,
+                           Authentication authentication) {
+        if (payload == null) return;
+        Object rawText = payload.get("text");
+        if (!(rawText instanceof String s)) return;
+        String text = s.trim();
+        if (text.isEmpty()) return;
+        if (text.length() > 500) text = text.substring(0, 500);
+
+        try {
+            String email = authentication.getName();
+            User user = userRepository.findByEmail(email).orElseThrow();
+
+            Map<String, Object> data = Map.of(
+                    "sender", user.getName(),
+                    "senderId", user.getId(),
+                    "text", text);
+            sendToRoom(roomId, new WebSocketMessage.Message(
+                    WebSocketMessage.MessageTypes.CHAT_MESSAGE, data));
+        } catch (Exception e) {
+            // Chat is best-effort — don't error-frame on missing user etc.
+        }
+    }
+
+    /**
      * Send a generic message to a room topic
      */
     public void sendToRoom(String roomId, WebSocketMessage.Message message) {

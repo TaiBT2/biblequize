@@ -499,4 +499,61 @@ class RoomWebSocketControllerTest {
         verify(messagingTemplate, never()).convertAndSend(anyString(), any(WebSocketMessage.Message.class));
         verify(roomAnswerRepository, never()).save(any(RoomAnswer.class));
     }
+
+    // ── handleChat ───────────────────────────────────────────────────────────
+
+    @Test
+    void handleChat_shouldBroadcastChatMessageWithSenderName() {
+        when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.of(testUser));
+
+        controller.handleChat("room-1", Map.of("text", "  Xin chào  "), authentication);
+
+        ArgumentCaptor<WebSocketMessage.Message> captor =
+                ArgumentCaptor.forClass(WebSocketMessage.Message.class);
+        verify(messagingTemplate).convertAndSend(eq("/topic/room/room-1"), captor.capture());
+
+        WebSocketMessage.Message msg = captor.getValue();
+        assertEquals(WebSocketMessage.MessageTypes.CHAT_MESSAGE, msg.getType());
+
+        @SuppressWarnings("unchecked")
+        Map<String, Object> data = (Map<String, Object>) msg.getData();
+        assertEquals("Test Player", data.get("sender"));
+        assertEquals("user-1", data.get("senderId"));
+        assertEquals("Xin chào", data.get("text"), "Whitespace must be trimmed");
+    }
+
+    @Test
+    void handleChat_shouldDropEmptyAndWhitespaceOnly() {
+        controller.handleChat("room-1", Map.of("text", ""), authentication);
+        controller.handleChat("room-1", Map.of("text", "   "), authentication);
+
+        // Empty messages never reach the user lookup or the broker.
+        verify(userRepository, never()).findByEmail(anyString());
+        verify(messagingTemplate, never()).convertAndSend(anyString(), any(WebSocketMessage.Message.class));
+    }
+
+    @Test
+    void handleChat_shouldTruncateOverlongMessagesTo500Chars() {
+        when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.of(testUser));
+
+        String longText = "a".repeat(800);
+        controller.handleChat("room-1", Map.of("text", longText), authentication);
+
+        ArgumentCaptor<WebSocketMessage.Message> captor =
+                ArgumentCaptor.forClass(WebSocketMessage.Message.class);
+        verify(messagingTemplate).convertAndSend(eq("/topic/room/room-1"), captor.capture());
+
+        @SuppressWarnings("unchecked")
+        Map<String, Object> data = (Map<String, Object>) captor.getValue().getData();
+        assertEquals(500, ((String) data.get("text")).length());
+    }
+
+    @Test
+    void handleChat_shouldIgnoreNonStringTextField() {
+        controller.handleChat("room-1", Map.of("text", 42), authentication);
+        controller.handleChat("room-1", Map.of("notText", "hi"), authentication);
+
+        verify(userRepository, never()).findByEmail(anyString());
+        verify(messagingTemplate, never()).convertAndSend(anyString(), any(WebSocketMessage.Message.class));
+    }
 }
