@@ -1,0 +1,485 @@
+[
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 1,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Sách Áp-đia chép sự khải thị của Đức Giê-hô-va nghịch cùng dân tộc nào?",
+    "correctAnswer": [2],
+    "explanation": "Áp-đia 1:1 — 'Sự hiện thấy của Áp-đia. Chúa Giê-hô-va phán về Ê-đôm như vầy...' Toàn sách là lời tiên tri về sự đoán phạt dân Ê-đôm vì tội kiêu ngạo và bạo hành cùng anh em Gia-cốp.",
+    "language": "vi",
+    "options": [
+      "Mô-áp",
+      "A-si-ri",
+      "Ê-đôm",
+      "Ba-by-lôn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Đoán phạt Ê-đôm",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 2,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Đức Giê-hô-va phán Ngài sẽ khiến Ê-đôm trở nên thế nào giữa các nước?",
+    "correctAnswer": [0],
+    "explanation": "Áp-đia 1:2 — 'Nầy, Ta đã làm cho ngươi nên nhỏ giữa các nước; ngươi bị khinh dể lắm.' Đức Chúa Trời hạ Ê-đôm xuống vì lòng kiêu ngạo của họ.",
+    "language": "vi",
+    "options": [
+      "Nhỏ và bị khinh dể",
+      "Lớn và được tôn trọng",
+      "Giàu có và hùng mạnh",
+      "Trung lập và an toàn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Hạ kẻ kiêu ngạo",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 3,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Theo Áp-đia 1:3, điều gì đã lừa dối lòng dân Ê-đôm?",
+    "correctAnswer": [3],
+    "explanation": "Áp-đia 1:3 — 'Hỡi ngươi là kẻ ở trong khe vầng đá... lòng kiêu ngạo của ngươi đã lừa dối ngươi.' Sự kiêu ngạo do nương cậy địa thế hiểm trở khiến Ê-đôm tự lừa mình rằng không ai hạ được.",
+    "language": "vi",
+    "options": [
+      "Sự giàu có",
+      "Liên minh quân sự",
+      "Sự khôn ngoan của các thầy tế lễ",
+      "Sự kiêu ngạo của lòng họ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Kiêu ngạo",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 4,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:4: Dù Ê-đôm làm tổ ở đâu, Đức Giê-hô-va vẫn sẽ kéo họ xuống?",
+    "correctAnswer": [1],
+    "explanation": "Áp-đia 1:4 — 'Dầu ngươi lên cao như chim ưng, dầu ngươi lập ổ giữa các ngôi sao, ta cũng sẽ xô ngươi xuống khỏi đó, Đức Giê-hô-va phán vậy.' Hình ảnh phóng đại nhằm nhấn mạnh không nơi nào thoát khỏi tay Chúa.",
+    "language": "vi",
+    "options": [
+      "Trong các thành kiên cố",
+      "Giữa các ngôi sao, cao như chim ưng",
+      "Trong sa mạc xa xôi",
+      "Dưới các vực sâu"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Quyền tể trị của Chúa",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 5,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:5 dùng hình ảnh kẻ trộm và kẻ hái nho để minh họa điều gì về sự đoán phạt Ê-đôm?",
+    "correctAnswer": [2],
+    "explanation": "Áp-đia 1:5 — 'Nếu kẻ trộm... đến nhà ngươi, há chẳng lấy vừa đủ cho mình thôi sao? Nếu những kẻ hái nho... chẳng để sót lại một vài chùm sao? Ngươi bị cướp phá là dường nào!' Sự cướp phá Ê-đôm sẽ triệt để hơn cả kẻ trộm hay người mót nho — không chừa lại gì.",
+    "language": "vi",
+    "options": [
+      "Kẻ thù sẽ tha mạng vì lòng nhân từ",
+      "Ê-đôm sẽ chỉ bị mất một phần nhỏ",
+      "Sự cướp phá sẽ triệt để, không chừa lại gì",
+      "Họ sẽ giữ được kho báu giấu kín"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Cướp phá Ê-đôm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 6,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:6 cho biết điều gì sẽ xảy ra với những điều giấu kín của Ê-sau?",
+    "correctAnswer": [0],
+    "explanation": "Áp-đia 1:6 — 'Ê-sau đã bị lục soát là dường nào! Những đồ châu báu giấu kín của người đã bị tìm tòi là dường nào!' Cả những kho báu sâu kín nhất của Ê-đôm cũng bị lục lọi và lấy đi.",
+    "language": "vi",
+    "options": [
+      "Bị lục lọi và lấy đi hết",
+      "Được Đức Chúa Trời gìn giữ",
+      "Bị thiêu trong lửa",
+      "Được trao cho Gia-cốp"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Châu báu giấu kín",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 7,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Theo Áp-đia 1:7, ai sẽ phản bội Ê-đôm trong ngày tai họa của họ?",
+    "correctAnswer": [3],
+    "explanation": "Áp-đia 1:7 — 'Mọi kẻ đồng minh cùng ngươi đã đuổi ngươi cho đến nơi bờ cõi... những kẻ ăn bánh ngươi gài bẫy dưới ngươi.' Chính các đồng minh và người ăn cùng bàn của Ê-đôm trở mặt phản bội họ.",
+    "language": "vi",
+    "options": [
+      "Người Y-sơ-ra-ên",
+      "Các thầy tế lễ Ê-đôm",
+      "Quân Ba-by-lôn",
+      "Các đồng minh và người ăn bánh cùng họ"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Đồng minh phản bội",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 8,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:8: Trong ngày đoán phạt, Đức Giê-hô-va sẽ tiêu diệt điều gì khỏi Ê-đôm?",
+    "correctAnswer": [1],
+    "explanation": "Áp-đia 1:8 — 'Đức Giê-hô-va phán: Trong ngày đó, ta há chẳng diệt những kẻ khôn khỏi xứ Ê-đôm, và những người thông sáng khỏi núi Ê-sau sao?' Sự khôn ngoan từng là niềm tự hào của Ê-đôm cũng bị Chúa cất đi.",
+    "language": "vi",
+    "options": [
+      "Quân lính chiến trận",
+      "Kẻ khôn ngoan và người thông sáng",
+      "Đền thờ tà thần",
+      "Các vua chúa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Khôn ngoan bị diệt",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 9,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:9: Các dũng sĩ của Thê-man sẽ ra sao trong ngày đó?",
+    "correctAnswer": [2],
+    "explanation": "Áp-đia 1:9 — 'Hỡi Thê-man, những lính chiến của ngươi sẽ thất kinh, hầu cho ai nấy bị giết khỏi núi Ê-sau.' Ngay cả các dũng sĩ Ê-đôm — vốn nổi tiếng can trường — cũng kinh hoảng.",
+    "language": "vi",
+    "options": [
+      "Sẽ chiến thắng kẻ thù",
+      "Sẽ ẩn náu trong các vầng đá",
+      "Sẽ thất kinh và bị giết",
+      "Sẽ được Chúa giải cứu"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Dũng sĩ Thê-man",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 10,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:10: Lý do trực tiếp khiến Ê-đôm bị xấu hổ và bị tuyệt diệt là gì?",
+    "correctAnswer": [0],
+    "explanation": "Áp-đia 1:10 — 'Ấy là vì cớ sự hung bạo ngươi đối với anh em ngươi là Gia-cốp, mà ngươi sẽ mang hổ và bị diệt đời đời.' Tội Ê-đôm là bạo hành chính dòng dõi anh em mình.",
+    "language": "vi",
+    "options": [
+      "Sự hung bạo đối với anh em Gia-cốp",
+      "Thờ hình tượng",
+      "Phá rối các tiên tri",
+      "Không nộp thuế cho Chúa"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Hung bạo cùng anh em",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 11,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:11 lên án Ê-đôm vì thái độ nào khi quân thù bắt Y-sơ-ra-ên đi?",
+    "correctAnswer": [1],
+    "explanation": "Áp-đia 1:11 — 'Trong ngày người lạ cướp tài vật nó, dân ngoại quốc vào các cửa thành nó, và bắt thăm trên Giê-ru-sa-lem, thì ngươi đứng bên kia, ngươi cũng như một người trong chúng nó.' Ê-đôm đứng nhìn dửng dưng, đồng phạm bằng sự im lặng.",
+    "language": "vi",
+    "options": [
+      "Cùng đánh trận giúp Y-sơ-ra-ên",
+      "Đứng nhìn dửng dưng như đồng lõa với kẻ thù",
+      "Khóc lóc thay cho Giê-ru-sa-lem",
+      "Trú ẩn cho người tị nạn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Đứng nhìn dửng dưng",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 12,
+    "verseEnd": 14,
+    "difficulty": "medium",
+    "type": "multiple_choice_multi",
+    "content": "Trong Áp-đia 1:12-14, Chúa cấm Ê-đôm KHÔNG được làm những điều nào với anh em Gia-cốp trong ngày tai họa? (chọn tất cả đúng)",
+    "correctAnswer": [0, 1, 3],
+    "explanation": "Áp-đia 1:12-14 — 'Ngày của em ngươi, ngươi chớ vui mắt xem... Trong ngày dân ta bị họa, ngươi chớ vào cửa thành nó... ngươi chớ đứng nơi ngã ba đường đặng diệt những kẻ trốn của nó, và chớ nộp những kẻ sót...' Chúa kể ra một loạt tội ác Ê-đôm đã phạm: vui mừng trên hoạn nạn, vào cướp phá, đứng chặn người trốn để nộp họ.",
+    "language": "vi",
+    "verseEnd": 14,
+    "options": [
+      "Vui mắt xem ngày tai họa của em mình",
+      "Vào cổng thành dân Chúa cướp phá",
+      "Cầu nguyện cho dân Y-sơ-ra-ên",
+      "Đứng nơi ngã ba đường để cắt đường người trốn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Tội của Ê-đôm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 15,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:15: Ngày của Đức Giê-hô-va đã gần trên ai?",
+    "correctAnswer": [2],
+    "explanation": "Áp-đia 1:15 — 'Vì ngày của Đức Giê-hô-va đã gần trên hết thảy các nước: bấy giờ người ta sẽ làm cho ngươi như chính mình ngươi đã làm; những việc làm của ngươi sẽ đổ lại trên đầu ngươi.' Ngày Chúa không chỉ giáng trên Ê-đôm mà trên mọi dân tộc.",
+    "language": "vi",
+    "options": [
+      "Chỉ trên Y-sơ-ra-ên",
+      "Chỉ trên các kẻ thờ hình tượng",
+      "Trên hết thảy các nước",
+      "Chỉ trên Ê-đôm"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Ngày của Đức Giê-hô-va",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 15,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:15 nêu nguyên tắc đoán phạt nào đối với các nước trong ngày của Đức Giê-hô-va?",
+    "correctAnswer": [3],
+    "explanation": "Áp-đia 1:15 — '...người ta sẽ làm cho ngươi như chính mình ngươi đã làm; những việc làm của ngươi sẽ đổ lại trên đầu ngươi.' Sự công bình hồi báo: gặt đúng điều mình đã gieo.",
+    "language": "vi",
+    "options": [
+      "Đoán phạt theo lòng thương xót",
+      "Bỏ qua tội cũ",
+      "Phạt nặng hơn tội đã làm",
+      "Trả lại đúng những gì họ đã làm cho người khác"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Công bình hồi báo",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 16,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:16: Như Ê-đôm đã uống trên núi thánh, các dân ngoại sẽ uống điều gì?",
+    "correctAnswer": [1],
+    "explanation": "Áp-đia 1:16 — 'Phải, như các ngươi đã uống trên núi thánh ta thể nào, thì hết thảy các nước cũng sẽ cứ uống thể ấy; phải, chúng nó sẽ uống và nuốt đi, rồi chúng nó sẽ như vốn không hề có.' Hình ảnh 'uống' là chén thạnh nộ của Chúa — các nước sẽ uống đến tan biến.",
+    "language": "vi",
+    "options": [
+      "Nước sự sống",
+      "Chén thạnh nộ của Chúa, đến nỗi tan biến",
+      "Rượu lễ tiệc",
+      "Sữa và mật"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Chén thạnh nộ",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 17,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:17: Trên núi Si-ôn sẽ có điều gì cho dân Chúa?",
+    "correctAnswer": [2],
+    "explanation": "Áp-đia 1:17 — 'Nhưng sẽ còn lại những người trốn khỏi trên núi Si-ôn, núi ấy sẽ là thánh, và nhà Gia-cốp sẽ được sản nghiệp mình.' Giữa lời đoán phạt, Chúa hứa sự giải cứu và phục hồi sản nghiệp cho dân Ngài.",
+    "language": "vi",
+    "options": [
+      "Sự đoán phạt nặng nề",
+      "Vua mới của Ê-đôm",
+      "Sự giải cứu, núi sẽ là thánh, nhà Gia-cốp được sản nghiệp",
+      "Đền thờ thứ ba"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Núi Si-ôn",
+      "Hy vọng phục hồi",
+      "Cơ bản"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 18,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:18 dùng hình ảnh nào để mô tả nhà Gia-cốp đối với nhà Ê-sau?",
+    "correctAnswer": [0],
+    "explanation": "Áp-đia 1:18 — 'Nhà Gia-cốp sẽ là lửa, nhà Giô-sép sẽ là ngọn lửa, còn nhà Ê-sau sẽ là rơm; lửa sẽ đốt rơm và thiêu nó...' Gia-cốp như lửa thiêu sạch rơm Ê-sau.",
+    "language": "vi",
+    "options": [
+      "Nhà Gia-cốp là lửa, nhà Ê-sau là rơm",
+      "Nhà Gia-cốp là nước, nhà Ê-sau là cát",
+      "Nhà Gia-cốp là chim ưng, nhà Ê-sau là sâu bọ",
+      "Nhà Gia-cốp là bạc, nhà Ê-sau là vàng"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Lửa và rơm",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 19,
+    "difficulty": "hard",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:19: Dân ở phương nam sẽ chiếm được vùng đất nào?",
+    "correctAnswer": [3],
+    "explanation": "Áp-đia 1:19 — 'Những người ở phương nam sẽ được núi của Ê-sau, những kẻ ở đồng bằng sẽ được xứ của người Phi-li-tin...' Phương nam (Negev) sẽ chiếm chính lãnh thổ Ê-sau như sự đảo ngược lịch sử.",
+    "language": "vi",
+    "options": [
+      "Xứ Mô-áp",
+      "Đồng bằng Phi-li-tin",
+      "Đất Ga-la-át",
+      "Núi của Ê-sau"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Phục hồi đất đai",
+      "Nâng cao"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 20,
+    "difficulty": "medium",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:20: Những kẻ phu tù của con cái Y-sơ-ra-ên sẽ chiếm được vùng đất nào của người Ca-na-an, đến đâu?",
+    "correctAnswer": [1],
+    "explanation": "Áp-đia 1:20 — 'Những kẻ phu tù của cơ binh con cái Y-sơ-ra-ên ở giữa những người Ca-na-an, sẽ được đất nó cho đến Sa-rép-ta. Những phu tù của Giê-ru-sa-lem ở tại Sê-pha-rát sẽ được các thành phương nam.' Cuộc trở về sau lưu đày sẽ phục hồi đất đai từ đất Ca-na-an cho đến tận Sa-rép-ta.",
+    "language": "vi",
+    "options": [
+      "Đến Đa-mách",
+      "Đến Sa-rép-ta",
+      "Đến Tia",
+      "Đến Si-đôn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Phu tù trở về",
+      "Trung cấp"
+    ]
+  },
+  {
+    "book": "Obadiah",
+    "chapter": 1,
+    "verseStart": 21,
+    "difficulty": "easy",
+    "type": "multiple_choice_single",
+    "content": "Áp-đia 1:21: Câu kết sách tuyên bố nước thuộc về ai?",
+    "correctAnswer": [2],
+    "explanation": "Áp-đia 1:21 — 'Sẽ có các kẻ giải cứu lên trên núi Si-ôn đặng phán xét núi Ê-sau; còn nước thì sẽ thuộc về Đức Giê-hô-va.' Câu kết của sách công bố vương quyền tối hậu thuộc về Đức Giê-hô-va.",
+    "language": "vi",
+    "options": [
+      "Vua nhà Đa-vít",
+      "Các kẻ giải cứu",
+      "Đức Giê-hô-va",
+      "Núi Si-ôn"
+    ],
+    "tags": [
+      "Cựu Ước",
+      "Áp-đia",
+      "Tiên tri",
+      "Vương quyền của Chúa",
+      "Cơ bản"
+    ]
+  }
+]
