@@ -1,6 +1,8 @@
 package com.biblequiz.service;
 
 import com.biblequiz.infrastructure.service.CacheService;
+import com.biblequiz.modules.daily.entity.DailyCompletion;
+import com.biblequiz.modules.daily.repository.DailyCompletionRepository;
 import com.biblequiz.modules.daily.service.DailyChallengeService;
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.entity.UserDailyProgress;
@@ -24,7 +26,10 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -50,6 +55,9 @@ class DailyChallengeServiceTest {
     @Mock
     private StreakService streakService;
 
+    @Mock
+    private DailyCompletionRepository dailyCompletionRepository;
+
     @InjectMocks
     private DailyChallengeService dailyChallengeService;
 
@@ -65,6 +73,9 @@ class DailyChallengeServiceTest {
         // Default: no cache hit
         lenient().when(cacheService.get(anyString(), eq(List.class))).thenReturn(Optional.empty());
         lenient().when(cacheService.exists(anyString())).thenReturn(false);
+        // Default: no prior daily completion row — markCompleted will insert.
+        lenient().when(dailyCompletionRepository.findByUserIdAndCompletionDate(anyString(), any(LocalDate.class)))
+                .thenReturn(Optional.empty());
     }
 
     // ── TC-DAILY-001: getTodayQuestions returns 5 questions ──────────────────
@@ -277,5 +288,124 @@ class DailyChallengeServiceTest {
     @Test
     void getDailyQuestionCount_shouldReturn5() {
         assertEquals(5, dailyChallengeService.getDailyQuestionCount());
+    }
+
+    // ── DC-3: persist completion to daily_completions on markCompleted ───────
+
+    @Order(11)
+    @Test
+    void markCompleted_shouldPersistDailyCompletionRow() {
+        String userId = "user-persist-1";
+        User user = new User();
+        user.setId(userId);
+
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+        when(userDailyProgressRepository.findByUserIdAndDate(eq(userId), any(LocalDate.class)))
+                .thenReturn(Optional.empty());
+
+        dailyChallengeService.markCompleted(userId, 100, 5);
+
+        ArgumentCaptor<DailyCompletion> saved = ArgumentCaptor.forClass(DailyCompletion.class);
+        verify(dailyCompletionRepository).save(saved.capture());
+        assertEquals(userId, saved.getValue().getUser().getId());
+        assertEquals(5, saved.getValue().getCorrectCount());
+        assertEquals(100, saved.getValue().getScore());
+    }
+
+    // ── DC-3: idempotent — second call same day skips insert ────────────────
+
+    @Order(12)
+    @Test
+    void markCompleted_shouldSkipInsertWhenAlreadyPersistedToday() {
+        String userId = "user-persist-idempotent";
+        User user = new User();
+        user.setId(userId);
+
+        DailyCompletion existing = new DailyCompletion(
+                "dc-1", user, LocalDate.now(ZoneOffset.UTC),
+                80, 4, 5, null, LocalDateTime.now(ZoneOffset.UTC));
+
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+        when(userDailyProgressRepository.findByUserIdAndDate(eq(userId), any(LocalDate.class)))
+                .thenReturn(Optional.empty());
+        when(dailyCompletionRepository.findByUserIdAndCompletionDate(eq(userId), any(LocalDate.class)))
+                .thenReturn(Optional.of(existing));
+
+        dailyChallengeService.markCompleted(userId, 100, 5);
+
+        verify(dailyCompletionRepository, never()).save(any(DailyCompletion.class));
+    }
+
+    // ── DC-3: getHistory returns N entries — missing days as completed:false ─
+
+    @Order(13)
+    @Test
+    void getHistory_shouldReturn30EntriesIncludingMissingDays() {
+        String userId = "user-hist-1";
+        User user = new User();
+        user.setId(userId);
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+
+        // Only 2 of the last 30 days have completions.
+        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        DailyCompletion dc1 = new DailyCompletion("dc-1", user, today.minusDays(5),
+                80, 4, 5, null, LocalDateTime.now(ZoneOffset.UTC));
+        DailyCompletion dc2 = new DailyCompletion("dc-2", user, today.minusDays(2),
+                100, 5, 5, null, LocalDateTime.now(ZoneOffset.UTC));
+
+        when(dailyCompletionRepository.findByUserIdAndDateRange(eq(userId),
+                any(LocalDate.class), any(LocalDate.class)))
+                .thenReturn(List.of(dc1, dc2));
+
+        List<Map<String, Object>> history = dailyChallengeService.getHistory(userId, 30);
+
+        assertEquals(30, history.size());
+        long completedCount = history.stream().filter(e -> Boolean.TRUE.equals(e.get("completed"))).count();
+        assertEquals(2, completedCount);
+        // Last entry is today (which has no completion in this test) — completed=false.
+        assertEquals(false, history.get(29).get("completed"));
+        assertEquals(today.toString(), history.get(29).get("date"));
+    }
+
+    // ── DC-3: getYesterdaySummary returns completed:false when no row ────────
+
+    @Order(14)
+    @Test
+    void getYesterdaySummary_shouldReturnCompletedFalseWhenNoRow() {
+        String userId = "user-yesterday-empty";
+        User user = new User();
+        user.setId(userId);
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+        when(dailyCompletionRepository.findByUserIdAndCompletionDate(eq(userId), any(LocalDate.class)))
+                .thenReturn(Optional.empty());
+
+        Map<String, Object> result = dailyChallengeService.getYesterdaySummary(userId);
+
+        assertEquals(false, result.get("completed"));
+    }
+
+    // ── DC-3: getYesterdaySummary returns full summary when completed ───────
+
+    @Order(15)
+    @Test
+    void getYesterdaySummary_shouldReturnFullSummaryWhenCompleted() {
+        String userId = "user-yesterday-done";
+        User user = new User();
+        user.setId(userId);
+        LocalDate yesterday = LocalDate.now(ZoneOffset.UTC).minusDays(1);
+        DailyCompletion dc = new DailyCompletion(
+                "dc-y", user, yesterday, 88, 4, 5, 204, LocalDateTime.now(ZoneOffset.UTC));
+
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+        when(dailyCompletionRepository.findByUserIdAndCompletionDate(eq(userId), eq(yesterday)))
+                .thenReturn(Optional.of(dc));
+
+        Map<String, Object> result = dailyChallengeService.getYesterdaySummary(userId);
+
+        assertEquals(true, result.get("completed"));
+        assertEquals(4, result.get("correctCount"));
+        assertEquals(5, result.get("totalQuestions"));
+        assertEquals(88, result.get("score"));
+        assertEquals(204, result.get("timeSeconds"));
     }
 }
