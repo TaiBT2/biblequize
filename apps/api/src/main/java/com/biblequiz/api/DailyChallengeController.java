@@ -167,4 +167,32 @@ public class DailyChallengeController {
         String userId = authentication.getName();
         return ResponseEntity.ok(dailyChallengeService.getResultData(userId));
     }
+
+    /**
+     * GET /api/daily-challenge/history — per-day completion list for the
+     * 30-day heatmap. {@code days} clamped to [1, 90]. Includes missing
+     * days as {@code completed:false} so the FE renders a stable grid.
+     */
+    @GetMapping("/history")
+    public ResponseEntity<List<Map<String, Object>>> getHistory(
+            Authentication authentication,
+            @RequestParam(defaultValue = "30") int days) {
+        if (authentication == null) {
+            return ResponseEntity.status(401).body(List.of());
+        }
+        return ResponseEntity.ok(dailyChallengeService.getHistory(authentication.getName(), days));
+    }
+
+    /**
+     * GET /api/daily-challenge/yesterday-summary — recap for State A hero
+     * card. Returns {@code completed:false} when the user skipped yesterday
+     * (FE hides the recap block in that case).
+     */
+    @GetMapping("/yesterday-summary")
+    public ResponseEntity<Map<String, Object>> getYesterdaySummary(Authentication authentication) {
+        if (authentication == null) {
+            return ResponseEntity.status(401).body(Map.of("completed", false));
+        }
+        return ResponseEntity.ok(dailyChallengeService.getYesterdaySummary(authentication.getName()));
+    }
 }

@@ -1,5 +1,7 @@
 package com.biblequiz.modules.daily.service;
 
+import com.biblequiz.modules.daily.entity.DailyCompletion;
+import com.biblequiz.modules.daily.repository.DailyCompletionRepository;
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.entity.UserDailyProgress;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
 
@@ -56,6 +59,9 @@ public class DailyChallengeService {
 
     @Autowired
     private DailyMissionService dailyMissionService;
+
+    @Autowired
+    private DailyCompletionRepository dailyCompletionRepository;
 
     /**
      * Get today's 5 challenge questions. Same questions for all users on the same day.
@@ -205,6 +211,25 @@ public class DailyChallengeService {
             return;
         }
 
+        // Persist long-term completion record (Redis cache only keeps 48h —
+        // not enough for 30-day heatmap or yesterday recap). Idempotent via
+        // unique (user_id, date) constraint: re-completing the same day is a
+        // no-op at the DB level.
+        try {
+            LocalDate today = LocalDate.now(ZoneOffset.UTC);
+            if (dailyCompletionRepository.findByUserIdAndCompletionDate(user.getId(), today).isEmpty()) {
+                DailyCompletion completion = new DailyCompletion(
+                        UUID.randomUUID().toString(), user, today,
+                        score, correctCount, DAILY_QUESTION_COUNT,
+                        null, LocalDateTime.now(ZoneOffset.UTC));
+                dailyCompletionRepository.save(completion);
+            }
+        } catch (RuntimeException ex) {
+            log.warn("Daily completion: persist failed for user {} ({}). " +
+                    "Cache + XP path unaffected; history row missing for today.",
+                    user.getId(), ex.getMessage());
+        }
+
         if (xpEarned) {
             creditCompletionXp(user);
         } else {
@@ -260,6 +285,81 @@ public class DailyChallengeService {
 
     public int getDailyQuestionCount() {
         return DAILY_QUESTION_COUNT;
+    }
+
+    /**
+     * Resolve the user identifier (which may be email when authenticated via
+     * OAuth) into the canonical UUID used as user_id in DB rows.
+     */
+    private Optional<String> resolveUserId(String userIdOrEmail) {
+        return userRepository.findById(userIdOrEmail)
+                .or(() -> userRepository.findByEmail(userIdOrEmail))
+                .map(User::getId);
+    }
+
+    /**
+     * Per-day completion history for the heatmap (default 30 days). Includes
+     * "missing" days as {@code completed:false} so the frontend can render
+     * a stable 30-cell grid without gaps.
+     */
+    public List<Map<String, Object>> getHistory(String userIdOrEmail, int days) {
+        int safeDays = Math.max(1, Math.min(90, days));
+        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        LocalDate start = today.minusDays(safeDays - 1L);
+
+        Optional<String> uid = resolveUserId(userIdOrEmail);
+        Map<LocalDate, DailyCompletion> byDate = uid.map(id ->
+                dailyCompletionRepository.findByUserIdAndDateRange(id, start, today))
+                .orElseGet(List::of)
+                .stream()
+                .collect(java.util.stream.Collectors.toMap(
+                        DailyCompletion::getCompletionDate, dc -> dc, (a, b) -> a));
+
+        List<Map<String, Object>> result = new ArrayList<>(safeDays);
+        for (int i = 0; i < safeDays; i++) {
+            LocalDate d = start.plusDays(i);
+            Map<String, Object> entry = new LinkedHashMap<>();
+            entry.put("date", d.toString());
+            DailyCompletion dc = byDate.get(d);
+            if (dc != null) {
+                entry.put("completed", true);
+                entry.put("correctCount", dc.getCorrectCount());
+                entry.put("totalQuestions", dc.getTotalQuestions());
+            } else {
+                entry.put("completed", false);
+                entry.put("correctCount", 0);
+                entry.put("totalQuestions", DAILY_QUESTION_COUNT);
+            }
+            result.add(entry);
+        }
+        return result;
+    }
+
+    /**
+     * Yesterday recap shown in the State A hero card. Returns
+     * {@code completed:false} when the user did not finish yesterday — the
+     * frontend hides the recap block in that case (per design spec).
+     */
+    public Map<String, Object> getYesterdaySummary(String userIdOrEmail) {
+        LocalDate yesterday = LocalDate.now(ZoneOffset.UTC).minusDays(1);
+        Optional<String> uid = resolveUserId(userIdOrEmail);
+        if (uid.isEmpty()) {
+            return Map.of("completed", false);
+        }
+        Optional<DailyCompletion> opt = dailyCompletionRepository
+                .findByUserIdAndCompletionDate(uid.get(), yesterday);
+        if (opt.isEmpty()) {
+            return Map.of("completed", false);
+        }
+        DailyCompletion dc = opt.get();
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("completed", true);
+        response.put("date", yesterday.toString());
+        response.put("correctCount", dc.getCorrectCount());
+        response.put("totalQuestions", dc.getTotalQuestions());
+        response.put("score", dc.getScore());
+        response.put("timeSeconds", dc.getTimeSeconds());
+        return response;
     }
 
     /**
