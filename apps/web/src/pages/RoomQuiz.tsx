@@ -10,6 +10,7 @@ import {
   MatchResultOverlay, SdArenaHeader, RoundScoreboard,
   type PlayerScore,
 } from './room/RoomOverlays';
+import SequentialFinalView from './room/SequentialFinalView';
 
 type Question = { id: string; content: string; options: string[]; explanation?: string };
 
@@ -336,6 +337,19 @@ const RoomQuiz: React.FC = () => {
   // ── Overlays ──
   if (showPodium) {
     const exitTo = state?.fromGroupId ? `/groups/${state.fromGroupId}` : '/multiplayer';
+    if (isSequential) {
+      return (
+        <SequentialFinalView
+          roomName={`Quiz ${roomId?.slice(-4) ?? ''}`}
+          results={finalResults}
+          myUsername={myUsername}
+          isHost={isHost}
+          totalQuestions={totalQuestions}
+          onClose={() => navigate(exitTo, { replace: true })}
+          onCreateNew={() => navigate(exitTo, { replace: true })}
+        />
+      );
+    }
     return <PodiumScreen results={finalResults} onClose={() => navigate(exitTo, { replace: true })} />;
   }
   if (isTeamVsTeam && teamWinner !== null) {
