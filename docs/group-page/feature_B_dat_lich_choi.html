@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BibleQuiz · Feature B: Đặt lịch chơi (mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #0a0b13;
+    color: #f3f4f6;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    padding: 30px 20px 60px;
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-size: inherit;
+    vertical-align: middle;
+  }
+
+  /* Page header */
+  .review-header { text-align: center; margin-bottom: 24px; }
+  .review-header h1 {
+    font-size: 24px; font-weight: 800;
+    background: linear-gradient(135deg, #e8a832 0%, #fbbf24 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+  }
+  .review-header p { color: #9ca3af; font-size: 14px; }
+  .review-header .feature-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(96,165,250,0.1);
+    border: 1px solid rgba(96,165,250,0.3);
+    color: #60a5fa;
+    padding: 4px 12px; border-radius: 16px;
+    font-size: 11px; font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex; gap: 6px; justify-content: center;
+    margin-bottom: 28px; flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: rgba(50,52,64,0.6);
+    border: 1px solid rgba(232,168,50,0.15);
+    color: #9ca3af;
+    padding: 10px 20px; border-radius: 10px;
+    font-family: inherit; font-size: 13px; font-weight: 700;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .tab-btn.active {
+    background: linear-gradient(135deg, #e8a832 0%, #d97706 100%);
+    color: #11131e; border-color: transparent;
+  }
+  .tab-btn .step {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: grid; place-items: center;
+    font-size: 11px; font-weight: 800;
+  }
+  .tab-btn.active .step { background: rgba(17,19,30,0.25); color: #fbbf24; }
+
+  .frames {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 28px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  /* Desktop frame */
+  .desktop {
+    background: #11131e;
+    border-radius: 16px;
+    border: 8px solid #1f2030;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    overflow: hidden;
+    height: 720px;
+    display: flex;
+  }
+  .desktop-sidebar {
+    width: 200px;
+    background: #0d0f17;
+    border-right: 1px solid rgba(232,168,50,0.08);
+    padding: 18px 12px;
+    flex-shrink: 0;
+  }
+  .ds-brand {
+    font-size: 16px; font-weight: 800;
+    background: linear-gradient(135deg, #e8a832 0%, #fbbf24 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px; padding: 0 6px;
+  }
+  .ds-user {
+    background: rgba(50,52,64,0.4);
+    border: 1px solid rgba(232,168,50,0.1);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 14px;
+  }
+  .ds-user .avatar {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: linear-gradient(135deg, #e8a832 0%, #d97706 100%);
+    display: grid; place-items: center;
+    color: #11131e; font-weight: 800; font-size: 12px;
+  }
+  .ds-user .name { font-size: 11px; font-weight: 700; }
+  .ds-user .tier { font-size: 9px; color: #9ca3af; }
+  .ds-nav {
+    display: flex; align-items: center; gap: 9px;
+    padding: 9px 10px; border-radius: 8px;
+    color: #9ca3af; font-weight: 600; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 3px;
+  }
+  .ds-nav.active {
+    background: linear-gradient(135deg, #e8a832 0%, #d97706 100%);
+    color: #11131e;
+  }
+  .ds-nav .material-symbols-outlined { font-size: 16px; }
+  .desktop-main {
+    flex: 1; overflow-y: auto; overflow-x: hidden;
+    padding: 24px 28px;
+  }
+  .desktop-main::-webkit-scrollbar { width: 4px; }
+  .desktop-main::-webkit-scrollbar-thumb { background: rgba(232,168,50,0.2); }
+
+  /* Mobile frame */
+  .mobile {
+    width: 320px; height: 720px;
+    background: #11131e;
+    border-radius: 36px;
+    border: 6px solid #1f2030;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    overflow: hidden; position: relative;
+    display: flex; flex-direction: column;
+    flex-shrink: 0;
+  }
+  .mobile::before {
+    content: ''; position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100px; height: 22px;
+    background: #0a0b13;
+    border-radius: 0 0 14px 14px; z-index: 11;
+  }
+  .mobile-status {
+    height: 36px;
+    padding: 12px 22px 0;
+    display: flex; justify-content: space-between;
+    font-size: 12px; font-weight: 600;
+    flex-shrink: 0;
+  }
+  .mobile-content {
+    flex: 1; overflow-y: auto; overflow-x: hidden;
+    padding-bottom: 16px;
+  }
+  .mobile-content::-webkit-scrollbar { display: none; }
+
+  /* Page header */
+  .page-h { margin-bottom: 18px; }
+  .page-h h2 {
+    font-size: 22px; font-weight: 800; margin-bottom: 4px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .page-h-icon {
+    width: 32px; height: 32px; border-radius: 9px;
+    background: linear-gradient(135deg, rgba(96,165,250,0.2) 0%, rgba(59,130,246,0.1) 100%);
+    border: 1px solid rgba(96,165,250,0.3);
+    display: grid; place-items: center;
+    color: #60a5fa; font-size: 18px;
+  }
+  .page-h p { color: #9ca3af; font-size: 12px; }
+  .mobile .page-h { padding: 0 16px; margin-bottom: 12px; }
+  .mobile .page-h h2 { font-size: 18px; }
+  .mobile .page-h-icon { width: 28px; height: 28px; font-size: 16px; }
+
+  /* ===== TAB 1: TẠO LỊCH (form) ===== */
+  .form-card {
+    background: rgba(50,52,64,0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(232,168,50,0.15);
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 16px;
+  }
+  .mobile .form-card { margin: 0 12px 12px; padding: 16px; border-radius: 14px; }
+
+  .form-row { margin-bottom: 18px; }
+  .form-label {
+    font-size: 12px; font-weight: 700; color: #f3f4f6;
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .form-label .req { color: #f87171; }
+  .form-label .hint {
+    margin-left: auto;
+    color: #9ca3af; font-weight: 500; font-size: 11px;
+  }
+  .form-input {
+    width: 100%;
+    background: rgba(17,19,30,0.5);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 11px 14px;
+    color: #f3f4f6; font-family: inherit;
+    font-size: 13px;
+  }
+  .form-input:focus {
+    outline: none; border-color: #e8a832;
+    background: rgba(17,19,30,0.7);
+  }
+  .form-help {
+    font-size: 11px; color: #9ca3af;
+    margin-top: 4px; line-height: 1.4;
+  }
+
+  /* Quiz Set selector */
+  .qset-selector {
+    background: rgba(17,19,30,0.5);
+    border: 1px solid rgba(232,168,50,0.2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex; align-items: center; gap: 12px;
+    cursor: pointer;
+  }
+  .qset-icon {
+    width: 36px; height: 36px; border-radius: 9px;
+    background: linear-gradient(135deg, rgba(96,165,250,0.2) 0%, rgba(59,130,246,0.1) 100%);
+    border: 1px solid rgba(96,165,250,0.3);
+    display: grid; place-items: center;
+    color: #60a5fa; font-size: 18px;
+    flex-shrink: 0;
+  }
+  .qset-info { flex: 1; min-width: 0; }
+  .qset-name { font-size: 13px; font-weight: 700; }
+  .qset-meta { font-size: 11px; color: #9ca3af; margin-top: 2px; }
+  .qset-arrow { color: #9ca3af; font-size: 18px; }
+
+  /* Deadline preset chips */
+  .deadline-presets {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    margin-top: 6px; margin-bottom: 8px;
+  }
+  .preset-chip {
+    background: rgba(50,52,64,0.5);
+    border: 1px solid rgba(255,255,255,0.06);
+    color: #d1d5db;
+    padding: 6px 11px; border-radius: 8px;
+    font-size: 11px; font-weight: 700;
+    cursor: pointer;
+  }
+  .preset-chip.active {
+    background: rgba(232,168,50,0.15);
+    border-color: rgba(232,168,50,0.4);
+    color: #e8a832;
+  }
+
+  /* Settings rows */
+  .form-toggle-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .form-toggle-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .form-toggle-row:first-child { padding-top: 0; }
+  .ftr-info { flex: 1; }
+  .ftr-label { font-size: 13px; font-weight: 600; }
+  .ftr-desc {
+    font-size: 11px; color: #9ca3af;
+    margin-top: 2px; line-height: 1.4;
+  }
+  .toggle {
+    width: 40px; height: 22px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .toggle.on {
+    background: linear-gradient(135deg, #e8a832 0%, #d97706 100%);
+  }
+  .toggle::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 18px; height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    transition: left 0.2s;
+  }
+  .toggle.on::after { left: 20px; }
+
+  /* Action buttons */
+  .form-actions {
+    display: flex; gap: 10px;
+  }
+  .btn-primary {
+    flex: 1;
+    background: linear-gradient(135deg, #e8a832 0%, #d97706 100%);
+    color: #11131e; border: none;
+    padding: 14px; border-radius: 12px;
+    font-family: inherit; font-size: 14px; font-weight: 800;
+    cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    box-shadow: 0 6px 20px rgba(232,168,50,0.3);
+  }
+  .btn-secondary {
+    background: rgba(50,52,64,0.6);
+    color: #d1d5db;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 14px 20px; border-radius: 12px;
+    font-family: inherit; font-size: 13px; font-weight: 700;
+    cursor: pointer;
+  }
+
+  /* ===== TAB 2: ACTIVE STATE ===== */
+  .active-banner {
+    background: linear-gradient(135deg, rgba(96,165,250,0.1) 0%, rgba(50,52,64,0.4) 60%);
+    border: 1px solid rgba(96,165,250,0.25);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 14px; align-items: center;
+  }
+  .mobile .active-banner {
+    margin: 0 12px 12px;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .active-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: linear-gradient(135deg, rgba(96,165,250,0.25) 0%, rgba(59,130,246,0.15) 100%);
+    border: 1px solid rgba(96,165,250,0.4);
+    display: grid; place-items: center;
+    color: #60a5fa; font-size: 22px;
+  }
+  .mobile .active-icon { margin: 0 auto; }
+  .active-info-l { min-width: 0; }
+  .active-status {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 9px; border-radius: 8px;
+    background: rgba(74,222,128,0.12);
+    border: 1px solid rgba(74,222,128,0.25);
+    color: #4ade80;
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .active-status .pulse {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #4ade80;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .active-name {
+    font-size: 16px; font-weight: 800;
+    margin-bottom: 2px;
+  }
+  .active-meta { font-size: 11px; color: #9ca3af; }
+
+  /* Countdown */
+  .countdown-card {
+    background: rgba(17,19,30,0.5);
+    border: 1px solid rgba(232,168,50,0.25);
+    border-radius: 10px;
+    padding: 10px 14px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .countdown-l {
+    font-size: 9px; color: #9ca3af;
+    text-transform: uppercase; letter-spacing: 1px;
+    font-weight: 700;
+  }
+  .countdown-v {
+    font-size: 16px; font-weight: 800;
+    color: #e8a832;
+    margin-top: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* My status card */
+  .my-status {
+    background: rgba(50,52,64,0.4);
+    border: 1px solid rgba(232,168,50,0.15);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .mobile .my-status { margin: 0 12px 12px; padding: 14px 16px; }
+
+  .my-status-h {
+    font-size: 12px; color: #9ca3af; font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .my-attempts {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 14px;
+  }
+  .attempt-cell {
+    width: 38px; height: 38px; border-radius: 10px;
+    display: grid; place-items: center;
+    font-size: 14px; font-weight: 800;
+    border: 1.5px solid;
+    flex-shrink: 0;
+  }
+  .attempt-cell.done {
+    background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    color: #fff;
+    border-color: #4ade80;
+  }
+  .attempt-cell.available {
+    background: rgba(232,168,50,0.12);
+    color: #fbbf24;
+    border-color: #e8a832;
+    border-style: dashed;
+  }
+  .attempt-cell.disabled {
+    background: rgba(50,52,64,0.4);
+    color: #6b7280;
+    border-color: rgba(255,255,255,0.06);
+  }
+  .my-attempts-info { flex: 1; }
+  .my-attempts-info .l {
+    font-size: 12px; font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .my-attempts-info .d {
+    font-size: 11px; color: #9ca3af;
+    line-height: 1.4;
+  }
+  .my-best {
+    background: rgba(17,19,30,0.4);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  .my-best-l { color: #9ca3af; }
+  .my-best-v {
+    font-weight: 800; color: #e8a832;
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Live leaderboard preview */
+  .live-lb {
+    background: rgba(50,52,64,0.3);
+    border: 1px solid rgba(232,168,50,0.08);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .mobile .live-lb { margin: 0 12px 12px; padding: 14px; }
+  .live-lb-h {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .live-lb-title {
+    font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .live-lb-title .material-symbols-outlined { font-size: 16px; color: #4ade80; }
+  .live-lb-count {
+    font-size: 11px; color: #9ca3af;
+  }
+
+  .lb-row {
+    display: grid;
+    grid-template-columns: 24px 32px 1fr auto;
+    gap: 10px; align-items: center;
+    padding: 8px 8px;
+    border-radius: 8px;
+  }
+  .lb-row.me {
+    background: rgba(232,168,50,0.1);
+    border: 1px solid rgba(232,168,50,0.25);
+  }
+  .lb-rank {
+    font-size: 12px; font-weight: 800; color: #6b7280;
+    text-align: center;
+  }
+  .lb-rank.me-c { color: #fbbf24; }
+  .lb-rank.medal-1 { color: #fbbf24; font-size: 14px; }
+  .lb-rank.medal-2 { color: #d1d5db; font-size: 14px; }
+  .lb-rank.medal-3 { color: #d97706; font-size: 14px; }
+  .lb-avatar {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    display: grid; place-items: center;
+    color: #f3f4f6; font-weight: 700; font-size: 11px;
+  }
+  .lb-avatar.me-a {
+    background: linear-gradient(135deg, #e8a832 0%, #d97706 100%);
+    color: #11131e;
+  }
+  .lb-avatar.gold {
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    color: #11131e;
+  }
+  .lb-name {
+    font-size: 12px; font-weight: 600;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .you-badge {
+    background: rgba(232,168,50,0.2);
+    color: #fbbf24;
+    font-size: 8px; padding: 1px 5px; border-radius: 4px;
+    font-weight: 800;
+  }
+  .lb-meta { font-size: 10px; color: #9ca3af; margin-top: 1px; }
+  .lb-score-r {
+    font-size: 13px; font-weight: 800;
+    color: #e8a832;
+    font-variant-numeric: tabular-nums;
+  }
+  .live-lb-show-all {
+    text-align: center;
+    padding: 10px;
+    color: #9ca3af; font-size: 12px; font-weight: 600;
+    cursor: pointer;
+    margin-top: 4px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .live-lb-show-all:hover { color: #e8a832; }
+
+  /* ===== TAB 3: ENDED STATE ===== */
+  .ended-banner {
+    background: linear-gradient(135deg, rgba(232,168,50,0.15) 0%, rgba(50,52,64,0.4) 60%);
+    border: 1px solid rgba(232,168,50,0.3);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .mobile .ended-banner { margin: 0 12px 12px; padding: 16px; }
+  .ended-banner .emoji {
+    font-size: 40px;
+    margin-bottom: 6px;
+    filter: drop-shadow(0 4px 12px rgba(251,191,36,0.4));
+  }
+  .ended-banner h3 {
+    font-size: 18px; font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .ended-banner p {
+    font-size: 12px; color: #9ca3af;
+    line-height: 1.5;
+  }
+  .ended-banner p strong { color: #fbbf24; }
+
+  /* Winner card */
+  .winner-card {
+    background:
+      linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(50,52,64,0.4) 60%);
+    border: 1px solid rgba(251,191,36,0.3);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px; align-items: center;
+  }
+  .mobile .winner-card {
+    margin: 0 12px 12px;
+    padding: 14px 16px;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .winner-avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    display: grid; place-items: center;
+    color: #11131e; font-weight: 800; font-size: 22px;
+    border: 3px solid #fbbf24;
+    box-shadow: 0 6px 20px rgba(251,191,36,0.3);
+    position: relative;
+  }
+  .mobile .winner-avatar { margin: 0 auto; }
+  .winner-avatar::before {
+    content: '👑';
+    position: absolute;
+    top: -16px; left: 50%; transform: translateX(-50%);
+    font-size: 22px;
+  }
+  .winner-info { min-width: 0; }
+  .winner-l {
+    font-size: 10px; color: #fbbf24; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .winner-name {
+    font-size: 17px; font-weight: 800; margin-bottom: 2px;
+  }
+  .winner-meta {
+    font-size: 11px; color: #9ca3af;
+  }
+  .winner-score {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .mobile .winner-score { text-align: center; margin-top: 4px; }
+  .winner-score-v {
+    font-size: 24px; font-weight: 800;
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .winner-score-l {
+    font-size: 10px; color: #9ca3af;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  /* Final leaderboard list */
+  .final-lb {
+    background: rgba(50,52,64,0.3);
+    border-radius: 12px;
+    padding: 6px;
+    margin-bottom: 14px;
+  }
+  .mobile .final-lb { margin: 0 12px 12px; }
+
+  /* Action buttons */
+  .ended-actions {
+    display: flex; gap: 10px;
+    margin-bottom: 14px;
+  }
+  .mobile .ended-actions { margin: 0 12px 12px; }
+
+  /* Annotation */
+  .annotation {
+    margin-top: 32px;
+    padding: 18px 24px;
+    background: rgba(96,165,250,0.06);
+    border: 1px solid rgba(96,165,250,0.2);
+    border-radius: 12px;
+    color: #93c5fd;
+    font-size: 13px; line-height: 1.7;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .annotation strong { color: #60a5fa; }
+  .annotation code {
+    background: rgba(17,19,30,0.6); padding: 2px 6px;
+    border-radius: 4px; font-size: 12px;
+  }
+  .annotation ul { margin: 6px 0 0 20px; }
+  .annotation li { margin-bottom: 4px; }
+
+  /* Tab visibility */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  @media (max-width: 1180px) {
+    .frames { grid-template-columns: 1fr; justify-items: center; }
+    .desktop { width: 100%; max-width: 800px; }
+  }
+  @media (max-width: 600px) {
+    body { padding: 16px 8px 30px; }
+    .desktop { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="review-header">
+  <div class="feature-tag">
+    <span class="material-symbols-outlined" style="font-size:14px">schedule</span>
+    Feature B
+  </div>
+  <h1>Đặt lịch chơi</h1>
+  <p>Async quiz với deadline · Member chơi rải rác · Cuối deadline công bố winner</p>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="setTab('create', this)">
+    <span class="step">1</span>
+    Tạo lịch
+  </button>
+  <button class="tab-btn" onclick="setTab('active', this)">
+    <span class="step">2</span>
+    Đang diễn ra
+  </button>
+  <button class="tab-btn" onclick="setTab('ended', this)">
+    <span class="step">3</span>
+    Đã kết thúc
+  </button>
+</div>
+
+<!-- ============================================ -->
+<!-- TAB 1: TẠO LỊCH                              -->
+<!-- ============================================ -->
+<div id="tab-create" class="tab-content active">
+  <div class="frames">
+
+    <!-- DESKTOP -->
+    <div class="desktop">
+      <div class="desktop-sidebar">
+        <div class="ds-brand">Bible Quiz</div>
+        <div class="ds-user">
+          <div class="avatar">T</div>
+          <div>
+            <div class="name">TAI THANH</div>
+            <div class="tier">Tân Tín Hữu</div>
+          </div>
+        </div>
+        <div class="ds-nav"><span class="material-symbols-outlined">home</span> Trang chủ</div>
+        <div class="ds-nav"><span class="material-symbols-outlined">leaderboard</span> Xếp hạng</div>
+        <div class="ds-nav active"><span class="material-symbols-outlined">groups</span> Nhóm</div>
+        <div class="ds-nav"><span class="material-symbols-outlined">person</span> Cá nhân</div>
+      </div>
+
+      <div class="desktop-main">
+        <div class="page-h">
+          <h2>
+            <span class="page-h-icon"><span class="material-symbols-outlined">schedule</span></span>
+            Đặt lịch chơi quiz
+          </h2>
+          <p>FMC Đà Nẵng · Tạo quiz async cho thành viên chơi tự do trong khoảng thời gian</p>
+        </div>
+
+        <div class="form-card">
+
+          <div class="form-row">
+            <div class="form-label">
+              Tên quiz
+              <span class="req">*</span>
+              <span class="hint">Ngắn gọn, dễ nhớ</span>
+            </div>
+            <input class="form-input" type="text" value="Quiz tuần — Sáng Thế Ký 12-25" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-label">
+              Mô tả
+              <span class="hint">Tùy chọn</span>
+            </div>
+            <textarea class="form-input" rows="2" placeholder="Vd: Ôn lại bài Chúa Nhật về Áp-ra-ham...">Ôn bài Chúa Nhật về Áp-ra-ham, hành trình của Y-sác, và Gia-cốp.</textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-label">
+              Quiz Set
+              <span class="req">*</span>
+            </div>
+            <div class="qset-selector">
+              <div class="qset-icon">
+                <span class="material-symbols-outlined">collections_bookmark</span>
+              </div>
+              <div class="qset-info">
+                <div class="qset-name">Sáng Thế Ký · Tuần 12-25</div>
+                <div class="qset-meta">15 câu · Trung bình · Tạo bởi TAI THANH · 3 ngày trước</div>
+              </div>
+              <span class="material-symbols-outlined qset-arrow">expand_more</span>
+            </div>
+            <div class="form-help">
+              Chỉ chọn được Quiz Set của nhóm. <a href="#" style="color:#e8a832">Tạo Quiz Set mới →</a>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-label">
+              Hạn chót
+              <span class="req">*</span>
+            </div>
+            <div class="deadline-presets">
+              <div class="preset-chip">24 giờ</div>
+              <div class="preset-chip active">7 ngày</div>
+              <div class="preset-chip">14 ngày</div>
+              <div class="preset-chip">Tùy chỉnh</div>
+            </div>
+            <input class="form-input" type="text" value="Chủ Nhật, 11/05/2026 · 23:59" readonly style="background:rgba(17,19,30,0.3);cursor:pointer" />
+            <div class="form-help">
+              Sau hạn chót, leaderboard tự động đóng và công bố winner. Không cho chơi sau deadline.
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-label">Cài đặt</div>
+            <div style="background:rgba(17,19,30,0.3);border-radius:10px;padding:4px 14px">
+              <div class="form-toggle-row">
+                <div class="ftr-info">
+                  <div class="ftr-label">Cho phép 3 lần thử</div>
+                  <div class="ftr-desc">Mỗi member chơi tối đa 3 lần · lấy điểm cao nhất</div>
+                </div>
+                <div class="toggle on"></div>
+              </div>
+              <div class="form-toggle-row">
+                <div class="ftr-info">
+                  <div class="ftr-label">Gửi push notification</div>
+                  <div class="ftr-desc">Khi tạo · Còn 24h · Khi kết thúc</div>
+                </div>
+                <div class="toggle on"></div>
+              </div>
+              <div class="form-toggle-row">
+                <div class="ftr-info">
+                  <div class="ftr-label">Hiện leaderboard công khai</div>
+                  <div class="ftr-desc">Mọi member thấy điểm của nhau (off = chỉ hiện hạng của mình)</div>
+                </div>
+                <div class="toggle on"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn-secondary">Hủy</button>
+            <button class="btn-primary">
+              <span class="material-symbols-outlined">schedule</span>
+              Đặt lịch & Thông báo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE -->
+    <div class="mobile">
+      <div class="mobile-status">
+        <div>9:41</div>
+        <div style="display:flex;gap:6px;font-size:12px">
+          <span class="material-symbols-outlined" style="font-size:13px">network_cell</span>
+          <span class="material-symbols-outlined" style="font-size:13px">wifi</span>
+          <span class="material-symbols-outlined" style="font-size:13px">battery_full</span>
+        </div>
+      </div>
+
+      <div class="mobile-content">
+        <div class="page-h">
+          <h2>
+            <span class="page-h-icon"><span class="material-symbols-outlined">schedule</span></span>
+            Đặt lịch quiz
+          </h2>
+          <p>FMC Đà Nẵng</p>
+        </div>
+
+        <div class="form-card">
+          <div class="form-row">
+            <div class="form-label">Tên quiz <span class="req">*</span></div>
+            <input class="form-input" type="text" value="Quiz tuần — Sáng Thế Ký 12-25" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-label">Quiz Set <span class="req">*</span></div>
+            <div class="qset-selector" style="padding:10px">
+              <div class="qset-icon" style="width:32px;height:32px;font-size:16px">
+                <span class="material-symbols-outlined">collections_bookmark</span>
+              </div>
+              <div class="qset-info">
+                <div class="qset-name">Sáng Thế Ký 12-25</div>
+                <div class="qset-meta">15 câu · Trung bình</div>
+              </div>
+              <span class="material-symbols-outlined qset-arrow">expand_more</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-label">Hạn chót <span class="req">*</span></div>
+            <div class="deadline-presets">
+              <div class="preset-chip">24h</div>
+              <div class="preset-chip active">7 ngày</div>
+              <div class="preset-chip">14 ngày</div>
+              <div class="preset-chip">Tùy</div>
+            </div>
+            <input class="form-input" type="text" value="CN, 11/05 · 23:59" readonly style="background:rgba(17,19,30,0.3)" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-label">Cài đặt</div>
+            <div style="background:rgba(17,19,30,0.3);border-radius:10px;padding:4px 12px">
+              <div class="form-toggle-row">
+                <div class="ftr-info">
+                  <div class="ftr-label">3 lần thử</div>
+                  <div class="ftr-desc">Lấy điểm cao nhất</div>
+                </div>
+                <div class="toggle on"></div>
+              </div>
+              <div class="form-toggle-row">
+                <div class="ftr-info">
+                  <div class="ftr-label">Push notification</div>
+                </div>
+                <div class="toggle on"></div>
+              </div>
+              <div class="form-toggle-row">
+                <div class="ftr-info">
+                  <div class="ftr-label">Leaderboard công khai</div>
+                </div>
+                <div class="toggle on"></div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-primary" style="width:100%">
+            <span class="material-symbols-outlined">schedule</span>
+            Đặt lịch & Thông báo
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- TAB 2: ACTIVE                                -->
+<!-- ============================================ -->
+<div id="tab-active" class="tab-content">
+  <div class="frames">
+
+    <!-- DESKTOP -->
+    <div class="desktop">
+      <div class="desktop-sidebar">
+        <div class="ds-brand">Bible Quiz</div>
+        <div class="ds-user">
+          <div class="avatar">T</div>
+          <div>
+            <div class="name">TAI THANH</div>
+            <div class="tier">Tân Tín Hữu</div>
+          </div>
+        </div>
+        <div class="ds-nav"><span class="material-symbols-outlined">home</span> Trang chủ</div>
+        <div class="ds-nav"><span class="material-symbols-outlined">leaderboard</span> Xếp hạng</div>
+        <div class="ds-nav active"><span class="material-symbols-outlined">groups</span> Nhóm</div>
+        <div class="ds-nav"><span class="material-symbols-outlined">person</span> Cá nhân</div>
+      </div>
+
+      <div class="desktop-main">
+
+        <!-- Active banner -->
+        <div class="active-banner">
+          <div class="active-icon">
+            <span class="material-symbols-outlined">schedule</span>
+          </div>
+          <div class="active-info-l">
+            <div class="active-status">
+              <span class="pulse"></span>
+              Đang diễn ra
+            </div>
+            <div class="active-name">Quiz tuần — Sáng Thế Ký 12-25</div>
+            <div class="active-meta">15 câu · Trung bình · 18/24 thành viên đã chơi · Mở từ 04/05</div>
+          </div>
+          <div class="countdown-card">
+            <div class="countdown-l">Còn</div>
+            <div class="countdown-v">2 ngày 14h</div>
+          </div>
+        </div>
+
+        <!-- My status -->
+        <div class="my-status">
+          <div class="my-status-h">Vị trí của bạn</div>
+
+          <div class="my-attempts">
+            <div class="attempt-cell done">✓</div>
+            <div class="attempt-cell done">✓</div>
+            <div class="attempt-cell available">3</div>
+            <div class="my-attempts-info">
+              <div class="l">Đã chơi 2/3 lần — còn 1 lần nữa</div>
+              <div class="d">Lấy điểm cao nhất trong 3 lần. Lần thứ 3 có thể giúp bạn lên hạng!</div>
+            </div>
+          </div>
+
+          <div class="my-best">
+            <span class="my-best-l">Điểm cao nhất hiện tại</span>
+            <span class="my-best-v">847 điểm · 11/15 đúng · 8:32</span>
+          </div>
+
+          <button class="btn-primary" style="width:100%">
+            <span class="material-symbols-outlined">play_arrow</span>
+            Chơi lần cuối
+          </button>
+        </div>
+
+        <!-- Live leaderboard -->
+        <div class="live-lb">
+          <div class="live-lb-h">
+            <div class="live-lb-title">
+              <span class="material-symbols-outlined">leaderboard</span>
+              Bảng xếp hạng tạm thời
+            </div>
+            <span class="live-lb-count">18 người tham gia · Cập nhật trực tiếp</span>
+          </div>
+
+          <div class="lb-row">
+            <div class="lb-rank medal-1">🥇</div>
+            <div class="lb-avatar gold">B</div>
+            <div>
+              <div class="lb-name">Bình Lê</div>
+              <div class="lb-meta">15/15 đúng · 6:42 · 3/3 lần</div>
+            </div>
+            <div class="lb-score-r">1,420</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank medal-2">🥈</div>
+            <div class="lb-avatar">A</div>
+            <div>
+              <div class="lb-name">An Võ</div>
+              <div class="lb-meta">14/15 đúng · 7:15 · 2/3 lần</div>
+            </div>
+            <div class="lb-score-r">1,280</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank medal-3">🥉</div>
+            <div class="lb-avatar">N</div>
+            <div>
+              <div class="lb-name">Ngọc Hà</div>
+              <div class="lb-meta">13/15 đúng · 8:01 · 3/3 lần</div>
+            </div>
+            <div class="lb-score-r">1,150</div>
+          </div>
+          <div class="lb-row me">
+            <div class="lb-rank me-c">7</div>
+            <div class="lb-avatar me-a">T</div>
+            <div>
+              <div class="lb-name">TAI THANH <span class="you-badge">BẠN</span></div>
+              <div class="lb-meta">11/15 đúng · 8:32 · 2/3 lần · Trưởng nhóm</div>
+            </div>
+            <div class="lb-score-r">847</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank">8</div>
+            <div class="lb-avatar">D</div>
+            <div>
+              <div class="lb-name">Dũng Nguyễn</div>
+              <div class="lb-meta">11/15 đúng · 9:15 · 1/3 lần</div>
+            </div>
+            <div class="lb-score-r">820</div>
+          </div>
+          <div class="live-lb-show-all">Xem tất cả 18 người →</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MOBILE -->
+    <div class="mobile">
+      <div class="mobile-status">
+        <div>9:41</div>
+        <div style="display:flex;gap:6px;font-size:12px">
+          <span class="material-symbols-outlined" style="font-size:13px">network_cell</span>
+          <span class="material-symbols-outlined" style="font-size:13px">wifi</span>
+          <span class="material-symbols-outlined" style="font-size:13px">battery_full</span>
+        </div>
+      </div>
+
+      <div class="mobile-content">
+
+        <div class="active-banner">
+          <div class="active-icon">
+            <span class="material-symbols-outlined">schedule</span>
+          </div>
+          <div class="active-info-l">
+            <div class="active-status">
+              <span class="pulse"></span>
+              Đang diễn ra
+            </div>
+            <div class="active-name">Quiz tuần — Sáng Thế Ký</div>
+            <div class="active-meta">15 câu · 18/24 đã chơi</div>
+          </div>
+          <div class="countdown-card" style="margin: 8px auto 0;width:fit-content">
+            <div class="countdown-l">Còn</div>
+            <div class="countdown-v">2 ngày 14h</div>
+          </div>
+        </div>
+
+        <div class="my-status">
+          <div class="my-status-h">Vị trí của bạn</div>
+          <div class="my-attempts">
+            <div class="attempt-cell done" style="width:32px;height:32px;font-size:12px">✓</div>
+            <div class="attempt-cell done" style="width:32px;height:32px;font-size:12px">✓</div>
+            <div class="attempt-cell available" style="width:32px;height:32px;font-size:12px">3</div>
+            <div class="my-attempts-info">
+              <div class="l">2/3 lần</div>
+              <div class="d">Còn 1 lần</div>
+            </div>
+          </div>
+          <div class="my-best">
+            <span class="my-best-l">Cao nhất</span>
+            <span class="my-best-v">847</span>
+          </div>
+          <button class="btn-primary" style="width:100%">
+            <span class="material-symbols-outlined">play_arrow</span>
+            Chơi lần cuối
+          </button>
+        </div>
+
+        <div class="live-lb">
+          <div class="live-lb-h">
+            <div class="live-lb-title">
+              <span class="material-symbols-outlined">leaderboard</span>
+              Bảng xếp hạng
+            </div>
+          </div>
+
+          <div class="lb-row">
+            <div class="lb-rank medal-1">🥇</div>
+            <div class="lb-avatar gold">B</div>
+            <div>
+              <div class="lb-name">Bình Lê</div>
+              <div class="lb-meta">15/15 · 6:42</div>
+            </div>
+            <div class="lb-score-r">1,420</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank medal-2">🥈</div>
+            <div class="lb-avatar">A</div>
+            <div>
+              <div class="lb-name">An Võ</div>
+              <div class="lb-meta">14/15 · 7:15</div>
+            </div>
+            <div class="lb-score-r">1,280</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank medal-3">🥉</div>
+            <div class="lb-avatar">N</div>
+            <div>
+              <div class="lb-name">Ngọc Hà</div>
+              <div class="lb-meta">13/15 · 8:01</div>
+            </div>
+            <div class="lb-score-r">1,150</div>
+          </div>
+          <div class="lb-row me">
+            <div class="lb-rank me-c">7</div>
+            <div class="lb-avatar me-a">T</div>
+            <div>
+              <div class="lb-name">TAI <span class="you-badge">BẠN</span></div>
+              <div class="lb-meta">11/15 · 8:32</div>
+            </div>
+            <div class="lb-score-r">847</div>
+          </div>
+          <div class="live-lb-show-all">Xem tất cả →</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- TAB 3: ENDED                                 -->
+<!-- ============================================ -->
+<div id="tab-ended" class="tab-content">
+  <div class="frames">
+
+    <!-- DESKTOP -->
+    <div class="desktop">
+      <div class="desktop-sidebar">
+        <div class="ds-brand">Bible Quiz</div>
+        <div class="ds-user">
+          <div class="avatar">T</div>
+          <div>
+            <div class="name">TAI THANH</div>
+            <div class="tier">Tân Tín Hữu</div>
+          </div>
+        </div>
+        <div class="ds-nav"><span class="material-symbols-outlined">home</span> Trang chủ</div>
+        <div class="ds-nav"><span class="material-symbols-outlined">leaderboard</span> Xếp hạng</div>
+        <div class="ds-nav active"><span class="material-symbols-outlined">groups</span> Nhóm</div>
+        <div class="ds-nav"><span class="material-symbols-outlined">person</span> Cá nhân</div>
+      </div>
+
+      <div class="desktop-main">
+
+        <div class="ended-banner">
+          <div class="emoji">🎊</div>
+          <h3>Quiz tuần đã kết thúc!</h3>
+          <p>"Sáng Thế Ký 12-25" · 22/24 thành viên tham gia · Kéo dài 7 ngày · <strong>Đã đăng vào group announcement</strong></p>
+        </div>
+
+        <!-- Winner card -->
+        <div class="winner-card">
+          <div class="winner-avatar">B</div>
+          <div class="winner-info">
+            <div class="winner-l">🏆 Người chiến thắng</div>
+            <div class="winner-name">Bình Lê</div>
+            <div class="winner-meta">15/15 đúng · 6:42 phút · 3 lần thử · Người Tìm Kiếm</div>
+          </div>
+          <div class="winner-score">
+            <div class="winner-score-v">1,420</div>
+            <div class="winner-score-l">Điểm cao nhất</div>
+          </div>
+        </div>
+
+        <!-- Final leaderboard -->
+        <div class="live-lb">
+          <div class="live-lb-h">
+            <div class="live-lb-title">
+              <span class="material-symbols-outlined">leaderboard</span>
+              Kết quả cuối cùng
+            </div>
+            <span class="live-lb-count">22 người tham gia · Đóng băng lúc 23:59 11/05</span>
+          </div>
+
+          <div class="lb-row">
+            <div class="lb-rank medal-1">🥇</div>
+            <div class="lb-avatar gold">B</div>
+            <div>
+              <div class="lb-name">Bình Lê</div>
+              <div class="lb-meta">15/15 đúng · 6:42 · 3/3 lần</div>
+            </div>
+            <div class="lb-score-r">1,420</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank medal-2">🥈</div>
+            <div class="lb-avatar">A</div>
+            <div>
+              <div class="lb-name">An Võ</div>
+              <div class="lb-meta">14/15 đúng · 7:15 · 3/3 lần</div>
+            </div>
+            <div class="lb-score-r">1,310</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank medal-3">🥉</div>
+            <div class="lb-avatar">N</div>
+            <div>
+              <div class="lb-name">Ngọc Hà</div>
+              <div class="lb-meta">14/15 đúng · 7:48 · 3/3 lần</div>
+            </div>
+            <div class="lb-score-r">1,260</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank">4</div>
+            <div class="lb-avatar">D</div>
+            <div>
+              <div class="lb-name">Dũng Nguyễn</div>
+              <div class="lb-meta">13/15 đúng · 8:21 · 3/3 lần</div>
+            </div>
+            <div class="lb-score-r">1,180</div>
+          </div>
+          <div class="lb-row me">
+            <div class="lb-rank me-c">7</div>
+            <div class="lb-avatar me-a">T</div>
+            <div>
+              <div class="lb-name">TAI THANH <span class="you-badge">BẠN</span></div>
+              <div class="lb-meta">12/15 đúng · 8:01 · 3/3 lần</div>
+            </div>
+            <div class="lb-score-r">920</div>
+          </div>
+          <div class="live-lb-show-all">Xem tất cả 22 người →</div>
+        </div>
+
+        <div class="ended-actions">
+          <button class="btn-secondary">
+            <span class="material-symbols-outlined" style="font-size:16px">share</span>
+            Chia sẻ kết quả
+          </button>
+          <button class="btn-primary">
+            <span class="material-symbols-outlined">add</span>
+            Tạo quiz tuần mới
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MOBILE -->
+    <div class="mobile">
+      <div class="mobile-status">
+        <div>9:41</div>
+        <div style="display:flex;gap:6px;font-size:12px">
+          <span class="material-symbols-outlined" style="font-size:13px">network_cell</span>
+          <span class="material-symbols-outlined" style="font-size:13px">wifi</span>
+          <span class="material-symbols-outlined" style="font-size:13px">battery_full</span>
+        </div>
+      </div>
+
+      <div class="mobile-content">
+
+        <div class="ended-banner">
+          <div class="emoji">🎊</div>
+          <h3>Quiz tuần kết thúc!</h3>
+          <p>"Sáng Thế Ký 12-25" · 22/24 tham gia</p>
+        </div>
+
+        <div class="winner-card">
+          <div class="winner-avatar">B</div>
+          <div class="winner-info">
+            <div class="winner-l">🏆 Người chiến thắng</div>
+            <div class="winner-name">Bình Lê</div>
+            <div class="winner-meta">15/15 · 6:42 · 3 lần</div>
+          </div>
+          <div class="winner-score">
+            <div class="winner-score-v">1,420</div>
+            <div class="winner-score-l">Điểm cao nhất</div>
+          </div>
+        </div>
+
+        <div class="live-lb">
+          <div class="live-lb-h">
+            <div class="live-lb-title">
+              <span class="material-symbols-outlined">leaderboard</span>
+              Kết quả cuối
+            </div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank medal-1">🥇</div>
+            <div class="lb-avatar gold">B</div>
+            <div>
+              <div class="lb-name">Bình Lê</div>
+              <div class="lb-meta">15/15 · 6:42</div>
+            </div>
+            <div class="lb-score-r">1,420</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank medal-2">🥈</div>
+            <div class="lb-avatar">A</div>
+            <div>
+              <div class="lb-name">An Võ</div>
+              <div class="lb-meta">14/15 · 7:15</div>
+            </div>
+            <div class="lb-score-r">1,310</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank medal-3">🥉</div>
+            <div class="lb-avatar">N</div>
+            <div>
+              <div class="lb-name">Ngọc Hà</div>
+              <div class="lb-meta">14/15 · 7:48</div>
+            </div>
+            <div class="lb-score-r">1,260</div>
+          </div>
+          <div class="lb-row me">
+            <div class="lb-rank me-c">7</div>
+            <div class="lb-avatar me-a">T</div>
+            <div>
+              <div class="lb-name">TAI <span class="you-badge">BẠN</span></div>
+              <div class="lb-meta">12/15 · 8:01</div>
+            </div>
+            <div class="lb-score-r">920</div>
+          </div>
+          <div class="live-lb-show-all">Xem tất cả →</div>
+        </div>
+
+        <div class="ended-actions">
+          <button class="btn-secondary" style="flex:1;padding:11px">
+            <span class="material-symbols-outlined" style="font-size:14px">share</span>
+          </button>
+          <button class="btn-primary" style="padding:11px;font-size:13px">
+            <span class="material-symbols-outlined" style="font-size:16px">add</span>
+            Tạo quiz mới
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Annotation -->
+<div class="annotation">
+  <strong>📝 Feature B — Đặt lịch chơi · Notes</strong>
+
+  <p style="margin-top:10px"><strong>Locked decisions:</strong></p>
+  <ul>
+    <li><code>Q8</code> 3 lần/user, lấy điểm cao nhất · <code>Q9</code> Max 3 active concurrent</li>
+    <li><code>Q10</code> Sau deadline: leaderboard frozen + auto-announcement + tab "Đã kết thúc"</li>
+    <li><code>Q11</code> KHÔNG cho chơi sau deadline (chỉ xem) · <code>Q12</code> 3 push noti (publish + 24h + ended)</li>
+  </ul>
+
+  <p style="margin-top:12px"><strong>3 màn hình chính:</strong></p>
+  <ul>
+    <li><strong>Tạo lịch (form)</strong> — Tên + Quiz Set selector + Deadline (4 preset chips: 24h/7 ngày/14 ngày/Tùy chỉnh) + 3 toggles cài đặt. Nút "Đặt lịch & Thông báo" → tự động gửi noti cho cả group.</li>
+    <li><strong>Đang diễn ra</strong> — Top: banner status (pulse green) + countdown card. Giữa: <strong>My status</strong> với 3 attempt cells (✓✓3) + best score + button "Chơi lần cuối". Dưới: live leaderboard cập nhật real-time, highlight user.</li>
+    <li><strong>Đã kết thúc</strong> — Banner 🎊 + auto-posted to group announcement note + winner card prominent với crown 👑 + frozen leaderboard. Leader có CTA "Tạo quiz tuần mới".</li>
+  </ul>
+
+  <p style="margin-top:12px"><strong>Pattern thông minh:</strong></p>
+  <ul>
+    <li><strong>3 attempt cells visual</strong> — ✓✓3 ngay lập tức cho user biết còn bao nhiêu lần. Không cần đọc text "2/3".</li>
+    <li><strong>Countdown smart format</strong> — "2 ngày 14h" ở trên 1 ngày, switch sang "5 giờ 23 phút" khi <24h, "12 phút" khi <1h. Không show giây.</li>
+    <li><strong>Auto-announcement khi end</strong> — backend tự post vào group announcement với winner info. Member quay lại thấy noti rõ ràng, không phải tự dò leaderboard.</li>
+    <li><strong>"Trưởng nhóm"</strong> tag trong leaderboard ngay sau tier — give context cho tại sao TAI THANH đứng #7 (vì là leader, có thể bận quản lý hơn là đi chơi).</li>
+  </ul>
+
+  <p style="margin-top:12px"><strong>API gap (cần thêm):</strong></p>
+  <ul>
+    <li><code>POST /api/groups/{id}/scheduled-quiz</code> body: <code>{quizSetId, name, description, deadline, settings}</code></li>
+    <li><code>GET /api/groups/{id}/scheduled-quiz</code> — list active + upcoming + ended</li>
+    <li><code>GET /api/groups/{id}/scheduled-quiz/{quizId}/leaderboard</code> — live data, frozen sau deadline</li>
+    <li><code>POST /api/groups/{id}/scheduled-quiz/{quizId}/play</code> — bắt đầu lần thử mới</li>
+    <li>Cron job: chạy mỗi phút check deadline → freeze leaderboard + auto-create announcement + send push</li>
+    <li>Push noti scheduled-quiz: 3 events (created · 24h_remaining · ended)</li>
+  </ul>
+
+  <p style="margin-top:12px"><strong>Edge cases cần handle:</strong></p>
+  <ul>
+    <li>User join group SAU khi quiz đã publish — có cho chơi không? Đề xuất: <strong>YES</strong>, nhưng bị giới hạn bởi deadline còn lại.</li>
+    <li>User rời group khi đang chơi quiz — điểm có giữ trong leaderboard không? Đề xuất: <strong>YES</strong>, hiện tên + "(đã rời nhóm)" tag.</li>
+    <li>Leader xóa Quiz Set source — quiz đã publish tiếp tục dùng snapshot questions, không break.</li>
+    <li>Member chơi xong lần 1 với điểm cao, lần 2 thấp hơn — vẫn giữ điểm cao nhất.</li>
+  </ul>
+</div>
+
+<script>
+  function setTab(tab, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>

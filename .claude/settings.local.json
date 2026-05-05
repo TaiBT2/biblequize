@@ -24,7 +24,9 @@
       "PowerShell(Get-WmiObject Win32_Process -Filter \"ProcessId=20380\")",
       "PowerShell(Get-ChildItem -Path \"D:\\\\code\\\\biblequize\\\\docs\" -Recurse | Where-Object { $_.Name -match \"ultiplayer|tournament|room\" } | Select-Object FullName, Length)",
       "PowerShell(cmd /c \"dir D:\\\\code\\\\biblequize\\\\apps\\\\api\\\\src\\\\main\\\\resources\\\\db\\\\migration /b 2>&1\")",
-      "PowerShell(netstat -ano)"
+      "PowerShell(netstat -ano)",
+      "PowerShell(Get-Process -Id 44652 -ErrorAction SilentlyContinue)",
+      "PowerShell($conn = Get-NetTCPConnection -LocalPort 8080 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1; Write-Output \\(\"PID: \" + $conn.OwningProcess\\); $p = Get-WmiObject Win32_Process -Filter \\(\"ProcessId=\" + $conn.OwningProcess\\); Write-Output \\(\"Name: \" + $p.Name + \" | CmdLine: \" + $p.CommandLine\\))"
     ]
   },
   "enableAllProjectMcpServers": true,
