@@ -137,12 +137,16 @@ public class ChurchGroupController {
     }
 
     /**
-     * GET /api/groups/{id} - Lay thong tin nhom
+     * GET /api/groups/{id} - Lay thong tin nhom (with viewer's myRole when authenticated)
      */
     @GetMapping("/{id}")
-    public ResponseEntity<?> getGroupDetails(@PathVariable String id) {
+    public ResponseEntity<?> getGroupDetails(@PathVariable String id, Principal principal) {
         try {
-            Map<String, Object> result = churchGroupService.getGroupDetails(id);
+            String viewerId = null;
+            if (principal != null) {
+                try { viewerId = getUser(principal).getId(); } catch (Exception ignored) {}
+            }
+            Map<String, Object> result = churchGroupService.getGroupDetails(id, viewerId);
             return ResponseEntity.ok(Map.of("success", true, "group", result));
         } catch (Exception e) {
             return ResponseEntity.status(404).body(Map.of("success", false, "message", e.getMessage()));

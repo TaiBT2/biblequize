@@ -229,14 +229,33 @@ public class ChurchGroupService {
     }
 
     public Map<String, Object> getGroupDetails(String groupId) {
+        return getGroupDetails(groupId, null);
+    }
+
+    /**
+     * Detail with optional viewer context. When {@code viewerUserId} is passed,
+     * the response includes {@code myRole} so the FE doesn't have to guess
+     * leadership by matching names (which fails when display names differ from
+     * the user record).
+     */
+    public Map<String, Object> getGroupDetails(String groupId, String viewerUserId) {
         ChurchGroup group = churchGroupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Nhom khong ton tai"));
 
         List<GroupMember> members = groupMemberRepository.findByGroupId(groupId);
 
+        String myRole = null;
+        for (GroupMember m : members) {
+            if (viewerUserId != null && viewerUserId.equals(m.getUser().getId())) {
+                myRole = m.getRole().name();
+                break;
+            }
+        }
+
         List<Map<String, Object>> memberList = members.stream().map(m -> {
             Map<String, Object> memberMap = new LinkedHashMap<>();
             memberMap.put("id", m.getUser().getId());
+            memberMap.put("userId", m.getUser().getId()); // FE compatibility — Member interface expects userId
             memberMap.put("name", m.getUser().getName());
             memberMap.put("avatarUrl", m.getUser().getAvatarUrl());
             memberMap.put("role", m.getRole().name());
@@ -262,8 +281,10 @@ public class ChurchGroupService {
         result.put("maxMembers", group.getMaxMembers());
         result.put("memberCount", actualCount);
         result.put("leaderId", group.getLeader().getId());
+        result.put("leaderUserId", group.getLeader().getId()); // FE compatibility
         result.put("createdAt", group.getCreatedAt());
         result.put("members", memberList);
+        if (myRole != null) result.put("myRole", myRole);
         return result;
     }
 

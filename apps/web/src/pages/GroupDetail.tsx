@@ -23,6 +23,8 @@ interface Group {
   maxMembers: number;
   members: Member[];
   leaderUserId: string;
+  leaderId?: string;
+  myRole?: 'LEADER' | 'MOD' | 'MEMBER';
   avatarUrl?: string;
 }
 
@@ -292,15 +294,15 @@ const GroupDetail: React.FC = () => {
   // Copy state
   const [copied, setCopied] = useState(false);
 
-  // Match current user against the group member list. BE returns leaderId
-  // (UUID), role values are LEADER / MOD / MEMBER. We compare case-insensitively
-  // by name since the auth user object only carries name + email — no userId
-  // stored client-side.
-  const myMember = group?.members?.find(m =>
+  // BE now returns `myRole` (LEADER / MOD / MEMBER) when the request is
+  // authenticated, so we don't have to guess by name. Fall back to a
+  // case-insensitive name match for older responses.
+  const fallbackMember = group?.members?.find(m =>
     user?.name && m.name && m.name.toLowerCase() === user.name.toLowerCase()
   );
-  const isLeader = myMember?.role === 'LEADER';
-  const isLeaderOrMod = isLeader || myMember?.role === 'MOD';
+  const myRole = group?.myRole ?? fallbackMember?.role;
+  const isLeader = myRole === 'LEADER';
+  const isLeaderOrMod = myRole === 'LEADER' || myRole === 'MOD';
 
   const fetchGroup = useCallback(async () => {
     setLoading(true);

@@ -152,7 +152,7 @@ class ChurchGroupControllerTest extends BaseControllerTest {
         serviceResult.put("name", "My Group");
         serviceResult.put("memberCount", 5);
 
-        when(churchGroupService.getGroupDetails("group-1")).thenReturn(serviceResult);
+        when(churchGroupService.getGroupDetails(eq("group-1"), any())).thenReturn(serviceResult);
 
         mockMvc.perform(get("/api/groups/group-1"))
                 .andExpect(status().isOk())
