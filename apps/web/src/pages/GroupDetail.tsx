@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../store/authStore';
 import { api } from '../api/client';
 import { createGroupLiveQuiz } from '../api/groups';
+import { listScheduledQuizzes, ScheduledQuizSummary } from '../api/scheduledQuiz';
 
 interface Member {
   userId: string;
@@ -154,6 +155,7 @@ const GroupDetail: React.FC = () => {
   const [quizSetsLoading, setQuizSetsLoading] = useState(false);
   const [playingSetId, setPlayingSetId] = useState<string | null>(null);
   const [liveQuizSetId, setLiveQuizSetId] = useState<string | null>(null);
+  const [activeScheduled, setActiveScheduled] = useState<ScheduledQuizSummary[]>([]);
 
   // Analytics (leader-only) + Group streak
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null);
@@ -290,11 +292,15 @@ const GroupDetail: React.FC = () => {
   // Copy state
   const [copied, setCopied] = useState(false);
 
-  const isLeader = group?.leaderUserId === user?.email ||
-    group?.members?.some(m => m.role === 'LEADER' && m.name === user?.name);
-
-  const isLeaderOrMod = isLeader ||
-    group?.members?.some(m => (m.role === 'LEADER' || m.role === 'MODERATOR') && m.name === user?.name);
+  // Match current user against the group member list. BE returns leaderId
+  // (UUID), role values are LEADER / MOD / MEMBER. We compare case-insensitively
+  // by name since the auth user object only carries name + email — no userId
+  // stored client-side.
+  const myMember = group?.members?.find(m =>
+    user?.name && m.name && m.name.toLowerCase() === user.name.toLowerCase()
+  );
+  const isLeader = myMember?.role === 'LEADER';
+  const isLeaderOrMod = isLeader || myMember?.role === 'MOD';
 
   const fetchGroup = useCallback(async () => {
     setLoading(true);
@@ -418,6 +424,14 @@ const GroupDetail: React.FC = () => {
     }
   }, [id, navigate, liveQuizSetId]);
 
+  const fetchActiveScheduled = useCallback(async () => {
+    if (!id) return;
+    try {
+      const list = await listScheduledQuizzes(id, 'ACTIVE');
+      setActiveScheduled(list);
+    } catch { /* ignore */ }
+  }, [id]);
+
   useEffect(() => { fetchGroup(); }, [fetchGroup]);
 
   useEffect(() => {
@@ -435,10 +449,11 @@ const GroupDetail: React.FC = () => {
       fetchAnnouncements();
     } else if (activeTab === 'quizsets') {
       fetchQuizSets();
+      fetchActiveScheduled();
     } else if (activeTab === 'members') {
       fetchMembers(null, false);
     }
-  }, [activeTab, group, fetchLeaderboard, fetchAnnouncements, fetchQuizSets, fetchMembers, fetchAnalytics, fetchStreak]);
+  }, [activeTab, group, fetchLeaderboard, fetchAnnouncements, fetchQuizSets, fetchMembers, fetchAnalytics, fetchStreak, fetchActiveScheduled]);
 
   useEffect(() => {
     if (activeTab === 'leaderboard' && group) fetchLeaderboard();
@@ -1553,6 +1568,48 @@ const GroupDetail: React.FC = () => {
 
       {/* ===== QUIZ SETS TAB (mockup: groups_member_dashboard.html quiz sets section) ===== */}
       {activeTab === 'quizsets' && (
+        <>
+          {/* Active scheduled quizzes — visible to all members so they can join */}
+          {activeScheduled.length > 0 && (
+            <section className="bg-[rgba(50,52,64,0.4)] border-[0.5px] border-white/[0.06] rounded-xl p-5 mb-4">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="material-symbols-outlined text-[16px]" style={{ color: '#60a5fa' }}>schedule</span>
+                <div className="text-on-surface text-[13px] font-medium">Quiz đã đặt lịch · Đang diễn ra</div>
+                <span className="ml-auto text-[11px] font-bold rounded-md px-2 py-0.5"
+                  style={{ background: 'rgba(74,222,128,0.12)', color: '#4ade80' }}>
+                  {activeScheduled.length}
+                </span>
+              </div>
+              <div className="flex flex-col gap-2">
+                {activeScheduled.map(sq => {
+                  const ms = new Date(sq.deadline).getTime() - Date.now();
+                  const hours = Math.max(0, Math.floor(ms / 3600000));
+                  const days = Math.floor(hours / 24);
+                  const countdown = days >= 1 ? `${days} ngày ${hours % 24}h` : `${hours} giờ`;
+                  return (
+                    <button
+                      key={sq.id}
+                      onClick={() => navigate(`/groups/${id}/scheduled-quizzes/${sq.id}`)}
+                      className="rounded-lg px-3 py-2.5 flex items-center gap-2.5 cursor-pointer transition-all hover:brightness-110 text-left"
+                      style={{ background: 'rgba(96,165,250,0.06)', border: '1px solid rgba(96,165,250,0.2)' }}
+                    >
+                      <div className="w-8 h-8 rounded-md grid place-items-center text-[14px] flex-shrink-0"
+                        style={{ background: 'rgba(96,165,250,0.15)' }}>
+                        📅
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-on-surface text-[12px] font-medium truncate">{sq.name}</div>
+                        <div className="text-on-surface/50 text-[10px] mt-0.5">
+                          {sq.questionCount} câu · Còn {countdown}
+                        </div>
+                      </div>
+                      <span className="material-symbols-outlined text-on-surface/40 text-[18px]">chevron_right</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+          )}
         <section className="bg-[rgba(50,52,64,0.4)] border-[0.5px] border-white/[0.06] rounded-xl p-5">
           <div className="flex justify-between items-center mb-3">
             <div className="text-on-surface text-[13px] font-medium">📚 {t('groups.quizSetsSection')}</div>
@@ -1643,6 +1700,7 @@ const GroupDetail: React.FC = () => {
             </div>
           )}
         </section>
+        </>
       )}
 
       {/* ── Footer: leader-only delete ── */}
