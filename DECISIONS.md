@@ -519,3 +519,47 @@
   - Sub-components R1-R8 đã extract → page giờ là pure orchestrator, hook là natural place cho data logic.
 - Trade-off: Một file thêm để maintain. Nhưng: testable hook (sẽ viết unit test ở R12 v1.1), Ranked.tsx giờ readable trong 1 màn hình, các page tương lai có thể follow pattern này (ví dụ Home dashboard).
 - KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+
+## 2026-05-05 — Feature A: leader-controlled discussion advance (no countdown)
+- Quyết định: Sau reveal đáp án trong GROUP_LIVE_SEQUENTIAL, host bấm nút "Sang câu tiếp" thủ công thay vì countdown 5s tự động. BE chờ tối đa 10 phút (safety) mới auto-skip.
+- Lý do: Nhóm tế bào thảo luận dài/ngắn tự nhiên — countdown cứng làm cụt thảo luận hoặc kéo dài vô ích. Manual advance phù hợp UX nhóm hơn.
+- Trade-off: Cần thêm STOMP `/advance` handler + UI conditional cho host vs member. Bù lại UX linh hoạt + không cần config field discussionPauseSeconds.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-05-05 — Feature A: GROUP_LIVE_SEQUENTIAL reuse Room infra
+- Quyết định: Chế độ live multiplayer cho group thêm enum value mới vào `RoomMode` thay vì tạo entity mới `GroupLiveQuiz`.
+- Lý do: 99% logic giống Room (lobby, players, scoring, WS broadcasting). Chỉ khác ở pacing (chờ all answered + leader advance). Một switch case + 1 service = tận dụng tối đa infra hiện có.
+- Trade-off: RoomMode enum 5 values; phải nhớ rằng không phải mode nào cũng có timer (sequential bỏ qua time bonus). Bù lại không nhân đôi entity/repo/controller.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-05-05 — Feature B: snapshot questionIds tại create time
+- Quyết định: ScheduledQuiz lưu `snapshot_question_ids` JSON array khi create, không reference live GroupQuizSet IDs.
+- Lý do: Quiz tuần kéo dài 7 ngày — leader có thể edit hoặc xóa Quiz Set source trong khoảng đó. Snapshot bảo toàn nội dung quiz cho participants.
+- Trade-off: Duplicate data (~10-20 IDs × 100 bytes); không reflect nếu source được sửa. Bù lại quiz đã publish luôn ổn định, edge case "Quiz Set bị xóa giữa chừng" không break.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-05-05 — Feature B: 3 attempts max, lấy điểm cao nhất
+- Quyết định: Mỗi user được chơi tối đa 3 lần per scheduled quiz; leaderboard tính best score (tie-break = thời gian ngắn hơn).
+- Lý do: Encourage retry để học bài thay vì áp lực 1 lần. Tie-break time tránh draw + reward người làm nhanh trong số người đúng nhiều.
+- Trade-off: Cap cứng 3 không cho leader tăng. Bù lại đơn giản logic + UX dễ hiểu (3 attempt cells visual).
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-05-05 — Feature B: cron mỗi phút thay vì @Scheduled fixedRate
+- Quyết định: Freeze cron dùng `@Scheduled(cron = "0 * * * * *")` (mỗi phút khởi đầu giây 0) thay vì `fixedRate = 60_000`.
+- Lý do: Cron expression deterministic theo wall-clock — deadline 23:59 sẽ được process trong vòng phút 0:00:XX, không drift theo uptime. fixedRate có thể drift nếu app restart.
+- Trade-off: Cron syntax phức tạp hơn 1 chút. Bù lại deadline accuracy ổn định.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-05-05 — Feature B: atomic ENDED transition + status guard
+- Quyết định: Cron freeze chạy trong @Transactional method `freezeOne(quizId)` re-read row + check status==ACTIVE trong transaction trước khi update + post announcement.
+- Lý do: Idempotency. Nếu 2 cron instances overlap (deploy rolling, restart), hoặc 1 run bị retry, status check + transaction isolation đảm bảo announcement chỉ được post 1 lần.
+- Trade-off: 1 query thừa per quiz. Bù lại không có bug "post 2 announcement giống nhau" mà user phải báo cáo.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-05-05 — Feature B: in-app notification only cho v1
+- Quyết định: 3 notification events (publish / 24h-remaining / ended) gửi qua existing NotificationService (DB-backed, hiện trong icon bell). KHÔNG build FCM/Web Push cho v1.
+- Lý do: Existing infra đã có; FCM cần Firebase project + service worker + +3-4 ngày work. v1 đủ để ship + test concept với group thật.
+- Trade-off: User không nhận noti real-time khi app đóng; có thể miss deadline. Phase 2 cân nhắc thêm Web Push hoặc FCM nếu user feedback yêu cầu.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
