@@ -7,7 +7,7 @@
 -- DailyChallengeService#markCompleted upserts so re-completing the same
 -- day is a no-op at the DB level.
 
-CREATE TABLE daily_completions (
+CREATE TABLE IF NOT EXISTS daily_completions (
     id                 VARCHAR(36)  NOT NULL,
     user_id            VARCHAR(36)  NOT NULL,
     completion_date    DATE         NOT NULL,
