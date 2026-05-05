@@ -20,6 +20,7 @@ interface RoomQuizLocationState {
   myTeam?: string;
   isHost?: boolean;
   hostId?: string;
+  fromGroupId?: string;
 }
 
 interface PerPlayerAnswer {
@@ -334,7 +335,8 @@ const RoomQuiz: React.FC = () => {
 
   // ── Overlays ──
   if (showPodium) {
-    return <PodiumScreen results={finalResults} onClose={() => navigate('/multiplayer', { replace: true })} />;
+    const exitTo = state?.fromGroupId ? `/groups/${state.fromGroupId}` : '/multiplayer';
+    return <PodiumScreen results={finalResults} onClose={() => navigate(exitTo, { replace: true })} />;
   }
   if (isTeamVsTeam && teamWinner !== null) {
     return (
