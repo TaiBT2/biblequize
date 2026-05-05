@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useStomp } from '../hooks/useStomp';
 import { api } from '../api/client';
+import SequentialLobbyView from './room/SequentialLobbyView';
 
 type Player = {
   id: string; userId: string; username: string; avatarUrl?: string;
@@ -212,6 +213,7 @@ const RoomLobby: React.FC = () => {
 
   const isTeamVsTeam = room?.mode === 'TEAM_VS_TEAM';
   const isSuddenDeath = room?.mode === 'SUDDEN_DEATH';
+  const isSequential = room?.mode === 'GROUP_LIVE_SEQUENTIAL';
   const teamAPlayers = room?.players?.filter(p => p.team === 'A') ?? [];
   const teamBPlayers = room?.players?.filter(p => p.team === 'B') ?? [];
   const myPlayer = room?.players?.find(p => p.username === myUsername());
@@ -250,6 +252,24 @@ const RoomLobby: React.FC = () => {
       </div>
     </div>
   );
+
+  /* ── Sequential mode lobby (Feature A "Chơi cùng nhau") — pixel-synced from mockup ── */
+  if (isSequential && room && !error) {
+    return (
+      <SequentialLobbyView
+        roomCode={room.roomCode}
+        roomName={room.roomName}
+        questionCount={room.questionCount}
+        timePerQuestion={room.timePerQuestion}
+        maxPlayers={room.maxPlayers}
+        players={room.players ?? []}
+        hostId={room.hostId}
+        isHost={isHost}
+        onStart={handleStart}
+        onLeave={handleLeave}
+      />
+    );
+  }
 
   /* ── Error state ── */
   if (error) return (
