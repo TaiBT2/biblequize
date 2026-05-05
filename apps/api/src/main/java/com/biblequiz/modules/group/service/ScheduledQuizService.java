@@ -10,6 +10,7 @@ import com.biblequiz.modules.group.repository.GroupMemberRepository;
 import com.biblequiz.modules.group.repository.GroupQuizSetRepository;
 import com.biblequiz.modules.group.repository.ScheduledQuizAttemptRepository;
 import com.biblequiz.modules.group.repository.ScheduledQuizRepository;
+import com.biblequiz.modules.notification.service.NotificationService;
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.user.entity.User;
@@ -43,6 +44,7 @@ public class ScheduledQuizService {
     @Autowired private ChurchGroupRepository groupRepository;
     @Autowired private QuestionRepository questionRepository;
     @Autowired private UserRepository userRepository;
+    @Autowired private NotificationService notificationService;
 
     /** PN-3 enforcement code returned in error message. */
     public static final String ERR_MAX_ACTIVE = "MAX_ACTIVE_QUIZZES_REACHED";
@@ -98,6 +100,18 @@ public class ScheduledQuizService {
         quiz.setSendNotifications(sendNotifications == null || sendNotifications);
         quiz.setCreatedBy(creator);
         quiz = quizRepository.save(quiz);
+
+        // PN-1: in-app notification on publish for all group members
+        if (Boolean.TRUE.equals(quiz.getSendNotifications())) {
+            String metadata = "{\"scheduledQuizId\":\"" + quiz.getId() + "\",\"groupId\":\"" + groupId + "\"}";
+            String body = "Quiz mới: '" + quiz.getName() + "' - hạn chót " + deadline;
+            memberRepository.findByGroupId(groupId).forEach(m -> {
+                if (m.getUser() != null) {
+                    notificationService.createNotification(m.getUser(), "scheduled_quiz_published",
+                            "Quiz nhóm mới", body, metadata);
+                }
+            });
+        }
 
         log.info("[ScheduledQuiz] created id={} group={} deadline={}", quiz.getId(), groupId, deadline);
         return toSummary(quiz);
