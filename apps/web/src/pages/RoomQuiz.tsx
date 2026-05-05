@@ -541,30 +541,72 @@ const RoomQuiz: React.FC = () => {
         <div className="grid lg:grid-cols-[1fr_280px] gap-5">
           {/* ── Question + Answers area ── */}
           <div className="space-y-6">
-            {/* Mobile round counter */}
-            <div className="flex items-center justify-between md:hidden">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-secondary text-sm" style={FILL_STYLE}>quiz</span>
-                <span className="text-[10px] font-black uppercase tracking-wider text-secondary">
-                  {t('room.quiz.questionProgress', { current: questionIndex + 1, total: totalQuestions || '?' })}
-                </span>
-              </div>
-              {scores.length > 0 && (
-                <div className="text-[10px] font-bold text-on-surface-variant">
-                  {t('room.quiz.points', { count: scores.find(s => s.username === myUsername)?.score ?? 0 })}
+            {/* Sequential mode top-bar (mockup feature_A tab 2) */}
+            {isSequential ? (
+              <>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex-1">
+                    <div className="text-[10px] font-bold uppercase tracking-[1px]" style={{ color: '#a78bfa' }}>
+                      CÂU {questionIndex + 1} / {totalQuestions || '?'}
+                    </div>
+                    <div className="text-[12px] text-on-surface/85 font-semibold mt-0.5">
+                      {scores.length > 0
+                        ? `${scores.length}/${scores.length} đang chơi`
+                        : t('room.quiz.waitingQuestion')}
+                    </div>
+                  </div>
+                  <div className="relative w-[38px] h-[38px] flex-shrink-0">
+                    <svg viewBox="0 0 38 38" className="w-full h-full -rotate-90">
+                      <circle cx="19" cy="19" r="16" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="4" />
+                      <circle cx="19" cy="19" r="16" fill="none" stroke="#e8a832" strokeWidth="4" strokeLinecap="round"
+                        strokeDasharray="113" strokeDashoffset={113 * (1 - timerPercent / 100)} />
+                    </svg>
+                    <div className="absolute inset-0 grid place-items-center text-[12px] font-extrabold tabular-nums" style={{ color: '#e8a832' }}>
+                      {timeLeft}
+                    </div>
+                  </div>
                 </div>
-              )}
-            </div>
+                {/* Purple progress bar */}
+                <div className="h-1 rounded-full overflow-hidden mb-5" style={{ background: 'rgba(255,255,255,0.06)' }}>
+                  <div className="h-full rounded-full" style={{
+                    width: `${totalQuestions > 0 ? ((questionIndex + 1) / totalQuestions) * 100 : 0}%`,
+                    background: 'linear-gradient(90deg, #a78bfa 0%, #c084fc 100%)',
+                  }} />
+                </div>
+                {/* Question box centered (mockup style) */}
+                <div className="rounded-xl px-4 py-5 mb-4 text-center"
+                  style={{ background: 'rgba(17,19,30,0.5)', border: '1px solid rgba(232,168,50,0.1)' }}>
+                  <div className="text-[16px] md:text-[18px] font-semibold leading-snug">
+                    {question?.content || t('room.quiz.waitingQuestion')}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                {/* Mobile round counter (non-sequential modes) */}
+                <div className="flex items-center justify-between md:hidden">
+                  <div className="flex items-center gap-2">
+                    <span className="material-symbols-outlined text-secondary text-sm" style={FILL_STYLE}>quiz</span>
+                    <span className="text-[10px] font-black uppercase tracking-wider text-secondary">
+                      {t('room.quiz.questionProgress', { current: questionIndex + 1, total: totalQuestions || '?' })}
+                    </span>
+                  </div>
+                  {scores.length > 0 && (
+                    <div className="text-[10px] font-bold text-on-surface-variant">
+                      {t('room.quiz.points', { count: scores.find(s => s.username === myUsername)?.score ?? 0 })}
+                    </div>
+                  )}
+                </div>
 
-            {/* Question Card */}
-            <div className="relative w-full flex flex-col items-center justify-center text-center p-8 md:p-10 bg-surface-container-low rounded-[2rem] border border-outline-variant/10 shadow-2xl overflow-hidden min-h-[140px]">
-              {/* Gold left accent bar */}
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-24 bg-secondary rounded-r-full" />
-
-              <h2 className="font-headline text-xl md:text-3xl font-extrabold tracking-tight leading-snug max-w-3xl text-on-surface">
-                {question?.content || t('room.quiz.waitingQuestion')}
-              </h2>
-            </div>
+                {/* Question Card (Stitch design — non-sequential modes) */}
+                <div className="relative w-full flex flex-col items-center justify-center text-center p-8 md:p-10 bg-surface-container-low rounded-[2rem] border border-outline-variant/10 shadow-2xl overflow-hidden min-h-[140px]">
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-24 bg-secondary rounded-r-full" />
+                  <h2 className="font-headline text-xl md:text-3xl font-extrabold tracking-tight leading-snug max-w-3xl text-on-surface">
+                    {question?.content || t('room.quiz.waitingQuestion')}
+                  </h2>
+                </div>
+              </>
+            )}
 
             {/* Answer Grid — 2x2. AnswerButton handles per-position colour
                 (A=Coral, B=Sky, C=Gold, D=Sage) + state visuals + icons. */}
