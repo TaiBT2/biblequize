@@ -9,9 +9,11 @@ import com.biblequiz.modules.room.entity.RoomPlayer;
 import com.biblequiz.modules.room.entity.RoomRound;
 import com.biblequiz.modules.room.repository.RoomAnswerRepository;
 import com.biblequiz.modules.room.repository.RoomPlayerRepository;
+import com.biblequiz.modules.room.repository.RoomRepository;
 import com.biblequiz.modules.room.repository.RoomRoundRepository;
 import com.biblequiz.modules.room.service.RoomService;
 import com.biblequiz.modules.room.service.RoomStateService;
+import com.biblequiz.modules.room.service.SequentialScoringService;
 import com.biblequiz.modules.room.service.SpeedRaceScoringService;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
@@ -63,6 +65,12 @@ class RoomWebSocketControllerTest {
 
     @Mock
     private SpeedRaceScoringService speedRaceScoringService;
+
+    @Mock
+    private SequentialScoringService sequentialScoringService;
+
+    @Mock
+    private RoomRepository roomRepository;
 
     @InjectMocks
     private RoomWebSocketController controller;
