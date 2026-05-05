@@ -57,6 +57,12 @@ const MODE_INFO: Record<string, { label: string; emoji: string; ruleTitle: strin
     ruleText: 'Sai một câu là thua! Chỉ có một người có thể trở thành người chiến thắng cuối cùng.',
     badgeColor: '#c084fc', badgeBg: 'rgba(192,132,252,0.15)', badgeBorder: 'rgba(192,132,252,0.3)',
   },
+  GROUP_LIVE_SEQUENTIAL: {
+    label: 'Chơi cùng nhau', emoji: '👥',
+    ruleTitle: 'LUẬT CHƠI CÙNG NHAU',
+    ruleText: 'Mọi người trả lời tuần tự — chờ tất cả xong mới hiện đáp án. Trưởng phòng bấm "Sang câu tiếp" sau khi thảo luận. Người vào sau khi bắt đầu sẽ không tham gia được.',
+    badgeColor: '#a78bfa', badgeBg: 'rgba(167,139,250,0.15)', badgeBorder: 'rgba(167,139,250,0.3)',
+  },
 };
 
 const DIFFICULTY_INFO: Record<string, { label: string; color: string; bg: string }> = {
