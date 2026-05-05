@@ -592,6 +592,66 @@ public class ChurchGroupController {
         }
     }
 
+    /**
+     * POST /api/groups/{id}/live-quiz
+     * Feature A — Tạo phòng live multiplayer "Chơi cùng nhau" với mode
+     * GROUP_LIVE_SEQUENTIAL. Authorize LEADER/MOD. Body: {quizSetId, timePerQuestion?}.
+     * Returns roomId + roomCode để FE navigate sang RoomLobby.
+     */
+    @PostMapping("/{id}/live-quiz")
+    @Transactional
+    @SuppressWarnings("unchecked")
+    public ResponseEntity<?> createLiveQuiz(@PathVariable("id") String groupId,
+                                            @RequestBody Map<String, Object> body,
+                                            Principal principal) {
+        try {
+            User user = getUser(principal);
+            requireLeaderOrMod(groupId, user.getId());
+
+            String quizSetId = (String) body.get("quizSetId");
+            if (quizSetId == null || quizSetId.isBlank()) {
+                return ResponseEntity.badRequest()
+                        .body(Map.of("success", false, "message", "Thieu quizSetId"));
+            }
+            int timePerQuestion = body.get("timePerQuestion") instanceof Number n
+                    ? Math.min(Math.max(n.intValue(), 10), 120) : 30;
+
+            GroupQuizSet gqs = groupQuizSetRepository.findById(quizSetId)
+                    .orElseThrow(() -> new RuntimeException("Khong tim thay quiz set"));
+            if (!gqs.getGroup().getId().equals(groupId)) {
+                return ResponseEntity.status(403)
+                        .body(Map.of("success", false, "message", "Quiz set khong thuoc nhom nay"));
+            }
+
+            List<String> questionIds = (List<String>) gqs.getQuestionIds();
+            if (questionIds == null || questionIds.isEmpty()) {
+                return ResponseEntity.badRequest()
+                        .body(Map.of("success", false, "message", "Quiz set chua co cau hoi nao"));
+            }
+
+            Room room = roomService.createRoom(
+                    gqs.getName(), user,
+                    20, questionIds.size(), timePerQuestion,
+                    Room.RoomMode.GROUP_LIVE_SEQUENTIAL, false,
+                    Room.RoomDifficulty.MIXED, "ALL",
+                    Room.QuestionSource.CUSTOM, null);
+            room.setCustomQuestionIds(questionIds);
+            room.setGroupQuizSetId(quizSetId);
+            roomRepository.save(room);
+
+            Map<String, Object> roomInfo = new LinkedHashMap<>();
+            roomInfo.put("id", room.getId());
+            roomInfo.put("roomCode", room.getRoomCode());
+            roomInfo.put("roomName", room.getRoomName());
+            roomInfo.put("mode", room.getMode().name());
+            return ResponseEntity.ok(Map.of("success", true, "room", roomInfo));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
     private void requireLeaderOrMod(String groupId, String userId) {
         GroupMember member = groupMemberRepository.findByGroupIdAndUserId(groupId, userId)
                 .orElseThrow(() -> new IllegalArgumentException("Ban khong phai thanh vien cua nhom nay"));
