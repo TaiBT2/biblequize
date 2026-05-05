@@ -135,7 +135,7 @@ const RoomLobby: React.FC = () => {
           setCountdown(d.countdown);
           const myTeam = room?.players?.find(p => p.username === myUsername())?.team ?? null;
           setTimeout(() => navigate(`/room/${roomId}/quiz`, {
-            replace: true, state: { mode: room?.mode, myTeam }
+            replace: true, state: { mode: room?.mode, myTeam, isHost, hostId: room?.hostId }
           }), d.countdown * 1000);
           break;
         }
@@ -143,7 +143,7 @@ const RoomLobby: React.FC = () => {
         case 'QUESTION_START':
           navigate(`/room/${roomId}/quiz`, {
             replace: true,
-            state: { mode: room?.mode, myTeam: room?.players?.find(p => p.username === myUsername())?.team ?? null }
+            state: { mode: room?.mode, myTeam: room?.players?.find(p => p.username === myUsername())?.team ?? null, isHost, hostId: room?.hostId }
           });
           break;
         case 'QUIZ_END':
