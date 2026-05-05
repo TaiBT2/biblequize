@@ -1903,7 +1903,10 @@
     "heatmapMissed": "bỏ",
     "heatmapLegendLow": "Ít",
     "heatmapLegendHigh": "Hoàn hảo",
-    "heatmapLegendRange": "{{days}} ngày trước → hôm nay"
+    "heatmapLegendRange": "{{days}} ngày trước → hôm nay",
+    "review": {
+      "title": "Xem lại 5 câu hỏi"
+    }
   },
   "leaderboard": {
     "title": "Bảng Xếp Hạng",

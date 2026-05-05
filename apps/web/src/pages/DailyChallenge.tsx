@@ -157,6 +157,7 @@ const DailyChallenge: React.FC = () => {
   // Result state
   const [dailyResult, setDailyResult] = useState<DailyResult | null>(null)
   const [showShareCard, setShowShareCard] = useState(false)
+  const [showReviewModal, setShowReviewModal] = useState(false)
 
   // Countdown
   const [countdown, setCountdown] = useState('')
@@ -617,7 +618,7 @@ const DailyChallenge: React.FC = () => {
         verseRef={verse.ref}
         onStart={handleStart}
         done={heroDone}
-        onReview={() => navigate('/review')}
+        onReview={() => setShowReviewModal(true)}
         onShare={() => setShowShareCard(true)}
         onDownload={() => setShowShareCard(true)}
       />
@@ -652,6 +653,78 @@ const DailyChallenge: React.FC = () => {
       {historyDays.length > 0 && (
         <div className="mb-7">
           <HeatmapCard days={historyDays} />
+        </div>
+      )}
+
+      {/* Review modal — shows the 5 questions with correct answers + explanations.
+          Backend reveals correctAnswer/explanation in GET /api/daily-challenge
+          payload only when the user has already completed today. */}
+      {showReviewModal && challengeData?.questions && (
+        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-start justify-center p-4 overflow-y-auto" onClick={() => setShowReviewModal(false)}>
+          <div className="max-w-2xl w-full bg-[rgba(50,52,64,0.95)] backdrop-blur-md rounded-2xl border border-[rgba(232,168,50,0.2)] p-6 my-8" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-5">
+              <h3 className="text-xl font-extrabold text-on-surface flex items-center gap-2">
+                <span className="material-symbols-outlined text-secondary">visibility</span>
+                {t('daily.review.title')}
+              </h3>
+              <button
+                onClick={() => setShowReviewModal(false)}
+                className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 grid place-items-center text-on-surface-variant"
+              >
+                <span className="material-symbols-outlined">close</span>
+              </button>
+            </div>
+            <div className="space-y-5">
+              {challengeData.questions.map((q, idx) => {
+                const correctIdx = q.correctAnswer?.[0] ?? -1
+                const userGotIt = results[idx]
+                return (
+                  <div key={q.id} className="bg-[rgba(17,19,30,0.6)] border border-white/5 rounded-xl p-4">
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <div className="flex items-start gap-2 flex-1">
+                        <span className={`flex-shrink-0 w-6 h-6 rounded-full grid place-items-center text-xs font-bold ${
+                          userGotIt === undefined
+                            ? 'bg-white/10 text-on-surface-variant'
+                            : userGotIt ? 'bg-[#4ade80]/20 text-[#4ade80]' : 'bg-error/20 text-error'
+                        }`}>
+                          {idx + 1}
+                        </span>
+                        <span className="text-sm font-bold text-on-surface leading-relaxed">{q.content}</span>
+                      </div>
+                      <span className="text-[10px] text-on-surface-variant flex-shrink-0 px-2 py-0.5 rounded bg-white/5">
+                        {q.book} {q.chapter}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-1 gap-1.5 mb-3">
+                      {q.options.map((opt, i) => {
+                        const isCorrect = i === correctIdx
+                        return (
+                          <div
+                            key={i}
+                            className={`px-3 py-2 rounded-lg text-xs flex items-start gap-2 border ${
+                              isCorrect
+                                ? 'bg-[#4ade80]/10 border-[#4ade80]/30 text-[#4ade80]'
+                                : 'bg-white/5 border-white/5 text-on-surface-variant'
+                            }`}
+                          >
+                            <span className="font-bold">{LETTERS[i]}.</span>
+                            <span className="flex-1">{opt}</span>
+                            {isCorrect && <span className="material-symbols-outlined text-sm">check_circle</span>}
+                          </div>
+                        )
+                      })}
+                    </div>
+                    {q.explanation && (
+                      <div className="text-xs text-on-surface-variant leading-relaxed bg-secondary/5 border-l-2 border-secondary/40 px-3 py-2 rounded">
+                        <span className="material-symbols-outlined text-sm align-middle mr-1 text-secondary/70">lightbulb</span>
+                        {q.explanation}
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </div>
       )}
 

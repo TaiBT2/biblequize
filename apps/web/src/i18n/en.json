@@ -1903,7 +1903,10 @@
     "heatmapMissed": "missed",
     "heatmapLegendLow": "Less",
     "heatmapLegendHigh": "Perfect",
-    "heatmapLegendRange": "{{days}} days ago → today"
+    "heatmapLegendRange": "{{days}} days ago → today",
+    "review": {
+      "title": "Review your 5 questions"
+    }
   },
   "leaderboard": {
     "title": "Leaderboard",

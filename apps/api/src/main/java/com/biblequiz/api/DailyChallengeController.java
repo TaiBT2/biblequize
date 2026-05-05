@@ -48,6 +48,9 @@ public class DailyChallengeController {
         }
 
         // Strip correct answers from response (client shouldn't see them)
+        // unless the user has already completed today — in that case the
+        // "Xem lại 5 câu hỏi" review modal needs the full payload.
+        final boolean reveal = alreadyCompleted;
         List<Map<String, Object>> sanitized = questions.stream().map(q -> {
             Map<String, Object> m = new LinkedHashMap<>();
             m.put("id", q.getId());
@@ -57,6 +60,10 @@ public class DailyChallengeController {
             m.put("type", q.getType());
             m.put("content", q.getContent());
             m.put("options", q.getOptions());
+            if (reveal) {
+                m.put("correctAnswer", q.getCorrectAnswer());
+                m.put("explanation", q.getExplanation());
+            }
             return m;
         }).collect(Collectors.toList());
 
