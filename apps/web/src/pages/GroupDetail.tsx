@@ -1601,7 +1601,7 @@ const GroupDetail: React.FC = () => {
                         {isNew && ` · ${t('groups.newToday')}`}
                       </div>
                     </div>
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 flex-wrap justify-end">
                       {/* Feature A — Chơi cùng nhau (live multiplayer, LEADER/MOD only) */}
                       {isLeaderOrMod && (
                         <button
@@ -1612,6 +1612,17 @@ const GroupDetail: React.FC = () => {
                         >
                           <span className="material-symbols-outlined text-[14px]">groups</span>
                           {liveQuizSetId === qs.id ? '...' : t('groups.liveQuizCta')}
+                        </button>
+                      )}
+                      {/* Feature B — Đặt lịch chơi (scheduled async quiz, LEADER/MOD only) */}
+                      {isLeaderOrMod && (
+                        <button
+                          onClick={() => navigate(`/groups/${id}/scheduled-quizzes/new?quizSetId=${qs.id}`)}
+                          title={t('scheduledQuiz.scheduleTooltip')}
+                          className="rounded-md px-2.5 py-1.5 text-[11px] font-medium cursor-pointer transition-all bg-[rgba(96,165,250,0.15)] text-[#60a5fa] border-[0.5px] border-[rgba(96,165,250,0.4)] hover:bg-[rgba(96,165,250,0.25)] flex items-center gap-1"
+                        >
+                          <span className="material-symbols-outlined text-[14px]">schedule</span>
+                          {t('scheduledQuiz.scheduleCta')}
                         </button>
                       )}
                       <button
