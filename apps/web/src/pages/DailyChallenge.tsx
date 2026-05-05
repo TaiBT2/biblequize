@@ -640,7 +640,8 @@ const DailyChallenge: React.FC = () => {
               <span className="material-symbols-outlined text-lg text-secondary">menu_book</span>
               {t('daily.verseTitle')}
             </div>
-            <div className="text-[15px] leading-[1.7] text-on-surface italic mb-3 relative pl-4 before:content-['\\201C'] before:absolute before:left-0 before:-top-2.5 before:text-4xl before:text-secondary before:leading-none">
+            <div className="text-[15px] leading-[1.7] text-on-surface italic mb-3 relative pl-4">
+              <span className="absolute left-0 -top-2.5 text-4xl text-secondary leading-none font-serif">&ldquo;</span>
               {verse.text}
             </div>
             <div className="text-xs text-secondary font-bold text-right">— {verse.ref}</div>
