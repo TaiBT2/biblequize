@@ -23,6 +23,23 @@ const fmtTime = (s: number): string => {
   return `${m}:${sec.toString().padStart(2, '0')}`
 }
 
+const fmtAbsDate = (iso: string): string => {
+  try {
+    const d = new Date(iso)
+    const dd = d.getDate().toString().padStart(2, '0')
+    const mm = (d.getMonth() + 1).toString().padStart(2, '0')
+    const hh = d.getHours().toString().padStart(2, '0')
+    const min = d.getMinutes().toString().padStart(2, '0')
+    return `${hh}:${min} ${dd}/${mm}`
+  } catch { return iso }
+}
+
+const daysBetween = (from?: string, to?: string): number | null => {
+  if (!from || !to) return null
+  const ms = new Date(to).getTime() - new Date(from).getTime()
+  return Math.max(1, Math.round(ms / 86400000))
+}
+
 const ScheduledQuizDetailPage: React.FC = () => {
   const { t } = useTranslation()
   const { id: groupId, quizId } = useParams()
@@ -85,7 +102,10 @@ const ScheduledQuizDetailPage: React.FC = () => {
               {t('scheduledQuiz.statusActive')}
             </div>
             <div className="text-base font-bold mb-0.5">{detail.name}</div>
-            <div className="text-on-surface/60 text-xs">{detail.questionCount} câu · {lb.length} người tham gia</div>
+            <div className="text-on-surface/60 text-xs">
+              {detail.questionCount} câu · {lb.length}/{lb.length || '?'} thành viên đã chơi
+              {detail.createdAt ? ` · Mở từ ${fmtAbsDate(detail.createdAt)}` : ''}
+            </div>
           </div>
           <div className="text-center bg-[rgba(17,19,30,0.5)] border border-[rgba(232,168,50,0.25)] rounded-lg px-3.5 py-2.5">
             <div className="text-[9px] uppercase tracking-wider text-on-surface/60 font-bold">{t('scheduledQuiz.remaining')}</div>
@@ -97,7 +117,12 @@ const ScheduledQuizDetailPage: React.FC = () => {
           style={{ background: 'linear-gradient(135deg, rgba(232,168,50,0.15) 0%, rgba(50,52,64,0.4) 60%)', border: '1px solid rgba(232,168,50,0.3)' }}>
           <div className="text-4xl mb-1">🎊</div>
           <h3 className="text-lg font-bold">{t('scheduledQuiz.endedBanner')}</h3>
-          <p className="text-on-surface/60 text-xs mt-1">"{detail.name}" · {lb.length} người tham gia</p>
+          <p className="text-on-surface/60 text-xs mt-1 leading-relaxed">
+            "{detail.name}" · {lb.length} thành viên tham gia
+            {(() => { const d = daysBetween(detail.createdAt, detail.endedAt); return d ? ` · Kéo dài ${d} ngày` : '' })()}
+            <br />
+            <strong className="text-secondary">Đã đăng vào group announcement</strong>
+          </p>
         </div>
       )}
 
@@ -113,7 +138,9 @@ const ScheduledQuizDetailPage: React.FC = () => {
           <div>
             <div className="text-[10px] font-bold uppercase tracking-wider text-secondary mb-0.5">🏆 {t('scheduledQuiz.winner')}</div>
             <div className="text-base font-bold">{winner.name}</div>
-            <div className="text-on-surface/60 text-[11px]">{winner.correctCount}/{winner.totalQuestions} · {fmtTime(winner.timeSeconds)} · {winner.attemptsUsed} lần</div>
+            <div className="text-on-surface/60 text-[11px]">
+              {winner.correctCount}/{winner.totalQuestions} đúng · {fmtTime(winner.timeSeconds)} phút · {winner.attemptsUsed} lần thử
+            </div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold tabular-nums" style={{ background: 'linear-gradient(135deg, #fbbf24, #d97706)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
@@ -175,12 +202,16 @@ const ScheduledQuizDetailPage: React.FC = () => {
 
       {/* Leaderboard */}
       <div className="rounded-2xl p-4 bg-[rgba(50,52,64,0.3)] border border-[rgba(232,168,50,0.08)]" data-testid="leaderboard">
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between mb-3 gap-2 flex-wrap">
           <div className="text-sm font-bold flex items-center gap-1.5">
             <span className="material-symbols-outlined text-base text-green-400">leaderboard</span>
             {isEnded ? t('scheduledQuiz.finalResults') : t('scheduledQuiz.liveLeaderboard')}
           </div>
-          <span className="text-on-surface/60 text-xs">{lb.length} người</span>
+          <span className="text-on-surface/60 text-[11px]">
+            {lb.length} người tham gia · {isEnded
+              ? `Đóng băng lúc ${fmtAbsDate(detail.endedAt ?? detail.deadline)}`
+              : 'Cập nhật trực tiếp'}
+          </span>
         </div>
         {lb.length === 0 ? (
           <p className="text-center text-on-surface/50 py-6 text-xs">{t('scheduledQuiz.noPlayers')}</p>
@@ -207,7 +238,8 @@ const ScheduledQuizDetailPage: React.FC = () => {
                     {row.isMe && <span className="bg-secondary/20 text-secondary text-[8px] px-1 py-0.5 rounded font-bold">BẠN</span>}
                   </div>
                   <div className="text-[10px] text-on-surface/60 mt-0.5">
-                    {row.correctCount}/{row.totalQuestions} · {fmtTime(row.timeSeconds)} · {row.attemptsUsed} lần
+                    {row.correctCount}/{row.totalQuestions} đúng · {fmtTime(row.timeSeconds)} trung bình · {row.attemptsUsed}/{detail.maxAttempts} lần
+                    {row.userId === detail.createdBy ? ' · Trưởng nhóm' : ''}
                   </div>
                 </div>
                 <div className="text-sm font-bold text-secondary tabular-nums">{row.score}</div>
@@ -216,6 +248,25 @@ const ScheduledQuizDetailPage: React.FC = () => {
           </div>
         )}
       </div>
+
+      {/* Action row (ended state) */}
+      {isEnded && (
+        <div className="flex gap-2.5 mt-4">
+          <button
+            className="rounded-xl px-4 py-3.5 text-sm font-bold flex items-center gap-1.5"
+            style={{ background: 'rgba(50,52,64,0.6)', color: '#d1d5db', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <span className="material-symbols-outlined text-[16px]">share</span>
+            Chia sẻ kết quả
+          </button>
+          <button
+            onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${detail.quizSetId}`)}
+            className="flex-1 rounded-xl py-3.5 text-sm font-extrabold flex items-center justify-center gap-2"
+            style={{ background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)', color: '#11131e', boxShadow: '0 6px 20px rgba(232,168,50,0.3)' }}>
+            <span className="material-symbols-outlined text-[18px]">add</span>
+            Tạo quiz tuần mới
+          </button>
+        </div>
+      )}
     </div>
   )
 }
