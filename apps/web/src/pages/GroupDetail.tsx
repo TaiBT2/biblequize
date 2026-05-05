@@ -284,6 +284,10 @@ const GroupDetail: React.FC = () => {
 
   // Edit modal
   const [showEditModal, setShowEditModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteConfirmText, setDeleteConfirmText] = useState('');
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
   const [editName, setEditName] = useState('');
   const [editDesc, setEditDesc] = useState('');
   const [editPublic, setEditPublic] = useState(false);
@@ -542,6 +546,30 @@ const GroupDetail: React.FC = () => {
       removeSavedGroup(id!);
       navigate('/groups');
     } catch { /* ignore */ }
+  };
+
+  const handleDelete = async () => {
+    if (!id || !group) return;
+    if (deleteConfirmText.trim() !== group.name.trim()) {
+      setDeleteError(t('groups.deleteConfirmMismatch'));
+      return;
+    }
+    setDeleting(true);
+    setDeleteError(null);
+    try {
+      await api.delete(`/api/groups/${id}`);
+      navigate('/groups', { replace: true });
+    } catch (err: any) {
+      setDeleteError(err.response?.data?.message ?? t('groups.connectionError'));
+      setDeleting(false);
+    }
+  };
+
+  const openDeleteModal = () => {
+    setShowEditModal(false);
+    setDeleteConfirmText('');
+    setDeleteError(null);
+    setShowDeleteModal(true);
   };
 
   const handleEdit = async (e: React.FormEvent) => {
@@ -1629,9 +1657,21 @@ const GroupDetail: React.FC = () => {
               <div className="w-7 h-7 border-2 border-secondary/20 border-t-secondary rounded-full animate-spin" />
             </div>
           ) : quizSets.length === 0 ? (
-            <p className="text-center text-on-surface-variant py-6 text-[12px]">
-              {t('groups.noQuizSets')}
-            </p>
+            <div className="text-center py-10 px-4">
+              <div className="text-5xl mb-3">📚</div>
+              <div className="text-on-surface text-[14px] font-bold mb-1.5">{t('groups.emptyQuizSetsTitle')}</div>
+              <div className="text-on-surface/60 text-[12px] leading-relaxed mb-5 max-w-sm mx-auto">
+                {isLeaderOrMod ? t('groups.emptyQuizSetsDescLeader') : t('groups.emptyQuizSetsDescMember')}
+              </div>
+              {isLeaderOrMod && (
+                <button onClick={openCreateModal}
+                  className="rounded-lg px-4 py-2.5 text-[12px] font-bold inline-flex items-center gap-1.5 transition hover:brightness-110"
+                  style={{ background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)', color: '#11131e', boxShadow: '0 6px 20px rgba(232,168,50,0.3)' }}>
+                  <span className="material-symbols-outlined text-[16px]">add</span>
+                  {t('groups.emptyQuizSetsCta')}
+                </button>
+              )}
+            </div>
           ) : (
             <div className="flex flex-col gap-2">
               {quizSets.map((qs, idx) => {
@@ -1705,22 +1745,6 @@ const GroupDetail: React.FC = () => {
         </>
       )}
 
-      {/* ── Footer: leader-only delete ── */}
-      {isLeader && (
-        <div className="flex justify-center mt-6 mb-2">
-          <button
-            onClick={() => {
-              if (confirm(t('groups.confirmDelete'))) {
-                // Delete group logic would go here
-              }
-            }}
-            className="bg-error-container/20 text-error rounded-lg px-4 py-2 text-[11px] font-medium hover:bg-error-container/40 transition-all border border-error/10 flex items-center gap-1.5"
-          >
-            🗑️ {t('groups.deleteGroup')}
-          </button>
-        </div>
-      )}
-
       {/* ── Edit Modal ── */}
       {showEditModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -1789,6 +1813,79 @@ const GroupDetail: React.FC = () => {
                 {editLoading ? t('groups.saving') : t('groups.saveChanges')}
               </button>
             </form>
+
+            {/* ── Danger Zone (LEADER only) ── */}
+            {isLeader && (
+              <div className="mt-8 pt-6 border-t border-error/20">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="material-symbols-outlined text-error text-[18px]">warning</span>
+                  <h4 className="text-error font-bold text-sm uppercase tracking-wider">{t('groups.dangerZone')}</h4>
+                </div>
+                <p className="text-on-surface/60 text-[12px] mb-3 leading-relaxed">
+                  {t('groups.dangerZoneDesc')}
+                </p>
+                <button
+                  type="button"
+                  onClick={openDeleteModal}
+                  className="w-full py-3 rounded-xl border border-error/40 bg-error/10 text-error text-[13px] font-bold hover:bg-error/20 transition flex items-center justify-center gap-2"
+                >
+                  <span className="material-symbols-outlined text-[16px]">delete_forever</span>
+                  {t('groups.deleteGroup')}
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ── Delete Confirm Modal (typed-confirm) ── */}
+      {showDeleteModal && group && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={() => !deleting && setShowDeleteModal(false)} />
+          <div className="relative bg-surface-container rounded-2xl p-6 sm:p-8 w-full max-w-md border border-error/30 shadow-2xl">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="material-symbols-outlined text-error text-2xl">delete_forever</span>
+              <h3 className="text-lg font-extrabold text-error">{t('groups.deleteGroupTitle')}</h3>
+            </div>
+            <p className="text-on-surface/80 text-[13px] leading-relaxed mb-2">
+              {t('groups.deleteGroupWarning')}
+            </p>
+            <ul className="text-on-surface/60 text-[12px] list-disc list-inside space-y-1 mb-4">
+              <li>{t('groups.deleteWarnMembers')}</li>
+              <li>{t('groups.deleteWarnQuizSets')}</li>
+              <li>{t('groups.deleteWarnAnnouncements')}</li>
+              <li>{t('groups.deleteWarnIrreversible')}</li>
+            </ul>
+            <label className="block text-[12px] font-bold mb-1.5">
+              {t('groups.deleteConfirmPrompt', { name: group.name })}
+            </label>
+            <input
+              type="text"
+              value={deleteConfirmText}
+              onChange={e => { setDeleteConfirmText(e.target.value); setDeleteError(null); }}
+              placeholder={group.name}
+              className="w-full px-3.5 py-2.5 bg-[rgba(17,19,30,0.6)] border border-white/10 rounded-lg text-sm focus:border-error outline-none mb-2"
+              autoFocus
+            />
+            {deleteError && <div className="text-error text-[12px] mb-2">{deleteError}</div>}
+            <div className="flex gap-2.5 mt-5">
+              <button
+                type="button"
+                onClick={() => setShowDeleteModal(false)}
+                disabled={deleting}
+                className="flex-1 py-3 rounded-xl text-sm font-bold disabled:opacity-50"
+                style={{ background: 'rgba(50,52,64,0.6)', color: '#d1d5db', border: '1px solid rgba(255,255,255,0.08)' }}>
+                {t('common.cancel')}
+              </button>
+              <button
+                type="button"
+                onClick={handleDelete}
+                disabled={deleting || deleteConfirmText.trim() !== group.name.trim()}
+                className="flex-1 py-3 rounded-xl text-sm font-extrabold disabled:opacity-40 disabled:cursor-not-allowed bg-error text-on-error hover:brightness-110 transition"
+              >
+                {deleting ? '...' : t('groups.deleteConfirmCta')}
+              </button>
+            </div>
           </div>
         </div>
       )}
