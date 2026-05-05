@@ -8,6 +8,30 @@ interface QuizSetItem {
   id: string
   name: string
   questionCount: number
+  createdAt?: string
+}
+
+const fmtDateVi = (iso: string): string => {
+  try {
+    const d = new Date(iso)
+    const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy']
+    const dd = d.getDate().toString().padStart(2, '0')
+    const mm = (d.getMonth() + 1).toString().padStart(2, '0')
+    const yyyy = d.getFullYear()
+    const hh = d.getHours().toString().padStart(2, '0')
+    const min = d.getMinutes().toString().padStart(2, '0')
+    return `${days[d.getDay()]}, ${dd}/${mm}/${yyyy} · ${hh}:${min}`
+  } catch { return iso }
+}
+
+const relTime = (iso?: string): string => {
+  if (!iso) return ''
+  const ms = Date.now() - new Date(iso).getTime()
+  const days = Math.floor(ms / 86400000)
+  if (days < 1) return 'hôm nay'
+  if (days === 1) return 'hôm qua'
+  if (days < 7) return `${days} ngày trước`
+  return `${Math.floor(days / 7)} tuần trước`
 }
 
 type DeadlinePreset = '24h' | '7d' | '14d' | 'custom'
@@ -40,6 +64,8 @@ const ScheduledQuizCreate: React.FC = () => {
 
   const atMaxActive = activeCount >= 3
 
+  const [showQuizSetPicker, setShowQuizSetPicker] = useState(false)
+
   useEffect(() => {
     if (!groupId) return
     api.get(`/api/groups/${groupId}/quiz-sets`).then(res => {
@@ -47,6 +73,7 @@ const ScheduledQuizCreate: React.FC = () => {
         setQuizSets(res.data.quizSets.map((qs: any) => ({
           id: qs.id, name: qs.name,
           questionCount: Array.isArray(qs.questionIds) ? qs.questionIds.length : 0,
+          createdAt: qs.createdAt,
         })))
         if (res.data.quizSets.length > 0) setSelectedSetId(res.data.quizSets[0].id)
       }
@@ -105,7 +132,10 @@ const ScheduledQuizCreate: React.FC = () => {
 
       <form onSubmit={handleSubmit} className="bg-[rgba(50,52,64,0.4)] border border-[rgba(232,168,50,0.15)] rounded-2xl p-5 space-y-4">
         <div>
-          <label className="block text-xs font-bold mb-1.5">{t('scheduledQuiz.fieldName')} <span className="text-error">*</span></label>
+          <label className="flex items-center gap-1.5 text-xs font-bold mb-1.5">
+            {t('scheduledQuiz.fieldName')} <span className="text-error">*</span>
+            <span className="ml-auto font-normal text-on-surface/50 text-[11px]">Ngắn gọn, dễ nhớ</span>
+          </label>
           <input
             value={name} onChange={e => setName(e.target.value)} required
             className="w-full bg-[rgba(17,19,30,0.5)] border border-white/10 rounded-lg px-3.5 py-2.5 text-sm focus:border-secondary outline-none"
@@ -113,23 +143,60 @@ const ScheduledQuizCreate: React.FC = () => {
           />
         </div>
         <div>
-          <label className="block text-xs font-bold mb-1.5">{t('scheduledQuiz.fieldDescription')}</label>
+          <label className="flex items-center gap-1.5 text-xs font-bold mb-1.5">
+            {t('scheduledQuiz.fieldDescription')}
+            <span className="ml-auto font-normal text-on-surface/50 text-[11px]">Tùy chọn</span>
+          </label>
           <textarea
             value={description} onChange={e => setDescription(e.target.value)} rows={2}
             className="w-full bg-[rgba(17,19,30,0.5)] border border-white/10 rounded-lg px-3.5 py-2.5 text-sm focus:border-secondary outline-none resize-vertical"
+            placeholder="Vd: Ôn lại bài Chúa Nhật về Áp-ra-ham..."
           />
         </div>
         <div>
           <label className="block text-xs font-bold mb-1.5">{t('scheduledQuiz.fieldQuizSet')} <span className="text-error">*</span></label>
-          <select
-            value={selectedSetId} onChange={e => setSelectedSetId(e.target.value)}
-            className="w-full bg-[rgba(17,19,30,0.5)] border border-white/10 rounded-lg px-3.5 py-2.5 text-sm focus:border-secondary outline-none"
-          >
-            {quizSets.length === 0 && <option value="">{t('scheduledQuiz.noQuizSets')}</option>}
-            {quizSets.map(qs => (
-              <option key={qs.id} value={qs.id}>{qs.name} ({qs.questionCount} câu)</option>
-            ))}
-          </select>
+          {/* Custom card selector matching mockup */}
+          <button type="button" onClick={() => setShowQuizSetPicker(p => !p)}
+            className="w-full rounded-lg px-3.5 py-3 flex items-center gap-3 hover:brightness-110 transition"
+            style={{ background: 'rgba(17,19,30,0.5)', border: '1px solid rgba(232,168,50,0.2)' }}>
+            <div className="w-9 h-9 rounded-lg grid place-items-center flex-shrink-0"
+              style={{ background: 'linear-gradient(135deg, rgba(96,165,250,0.2) 0%, rgba(59,130,246,0.1) 100%)', border: '1px solid rgba(96,165,250,0.3)' }}>
+              <span className="material-symbols-outlined text-[18px]" style={{ color: '#60a5fa' }}>collections_bookmark</span>
+            </div>
+            <div className="flex-1 text-left min-w-0">
+              {(() => {
+                const sel = quizSets.find(q => q.id === selectedSetId)
+                if (!sel) return <div className="text-[13px] text-on-surface/60">{t('scheduledQuiz.noQuizSets')}</div>
+                return (
+                  <>
+                    <div className="text-[13px] font-bold truncate">{sel.name}</div>
+                    <div className="text-[11px] text-on-surface/60 mt-0.5">
+                      {sel.questionCount} câu · {relTime(sel.createdAt)}
+                    </div>
+                  </>
+                )
+              })()}
+            </div>
+            <span className="material-symbols-outlined text-on-surface/60 text-[18px]">{showQuizSetPicker ? 'expand_less' : 'expand_more'}</span>
+          </button>
+          {showQuizSetPicker && quizSets.length > 1 && (
+            <div className="mt-1.5 rounded-lg overflow-hidden" style={{ background: 'rgba(17,19,30,0.7)', border: '1px solid rgba(255,255,255,0.06)' }}>
+              {quizSets.map(qs => (
+                <button key={qs.id} type="button"
+                  onClick={() => { setSelectedSetId(qs.id); setShowQuizSetPicker(false) }}
+                  className={`w-full text-left px-3.5 py-2.5 hover:bg-white/5 transition ${qs.id === selectedSetId ? 'bg-secondary/10' : ''}`}>
+                  <div className="text-[12px] font-semibold truncate">{qs.name}</div>
+                  <div className="text-[10px] text-on-surface/60 mt-0.5">{qs.questionCount} câu · {relTime(qs.createdAt)}</div>
+                </button>
+              ))}
+            </div>
+          )}
+          <div className="text-[11px] text-on-surface/60 mt-1.5">
+            Chỉ chọn được Quiz Set của nhóm.{' '}
+            <button type="button" onClick={() => navigate(`/groups/${groupId}?tab=quizsets`)} className="text-secondary hover:underline">
+              Tạo Quiz Set mới →
+            </button>
+          </div>
         </div>
         <div>
           <label className="block text-xs font-bold mb-1.5">{t('scheduledQuiz.fieldDeadline')} <span className="text-error">*</span></label>
@@ -147,14 +214,21 @@ const ScheduledQuizCreate: React.FC = () => {
               </button>
             ))}
           </div>
-          {preset === 'custom' && (
+          {preset === 'custom' ? (
             <input
               type="datetime-local" value={customDeadline}
               onChange={e => setCustomDeadline(e.target.value)}
               className="w-full bg-[rgba(17,19,30,0.5)] border border-white/10 rounded-lg px-3.5 py-2.5 text-sm focus:border-secondary outline-none"
             />
+          ) : (
+            <input readOnly value={fmtDateVi(deadline)}
+              className="w-full rounded-lg px-3.5 py-2.5 text-sm cursor-default tabular-nums"
+              style={{ background: 'rgba(17,19,30,0.3)', border: '1px solid rgba(255,255,255,0.06)', color: '#d1d5db' }}
+            />
           )}
-          <p className="text-on-surface/50 text-[10px] mt-1">{t('scheduledQuiz.deadlineHelp', { iso: deadline.replace('T', ' ') })}</p>
+          <p className="text-on-surface/60 text-[11px] mt-1.5 leading-relaxed">
+            Sau hạn chót, leaderboard tự động đóng và công bố winner. Không cho chơi sau deadline.
+          </p>
         </div>
         <div className="bg-[rgba(17,19,30,0.3)] rounded-xl p-3 space-y-3">
           <ToggleRow label={t('scheduledQuiz.toggle3Attempts')} desc={t('scheduledQuiz.toggle3AttemptsDesc')}
@@ -167,19 +241,26 @@ const ScheduledQuizCreate: React.FC = () => {
 
         {error && <div className="text-error text-sm">{error}</div>}
 
-        <button
-          type="submit" disabled={submitting || atMaxActive || !selectedSetId}
-          data-testid="submit-create"
-          className="w-full py-3.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition disabled:opacity-50 disabled:cursor-not-allowed"
-          style={{
-            background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
-            color: '#11131e',
-            boxShadow: '0 6px 20px rgba(232,168,50,0.3)',
-          }}
-        >
-          <span className="material-symbols-outlined text-base">schedule</span>
-          {submitting ? '...' : t('scheduledQuiz.submitCta')}
-        </button>
+        <div className="flex gap-2.5">
+          <button type="button" onClick={() => navigate(`/groups/${groupId}`)}
+            className="rounded-xl px-5 py-3.5 text-sm font-bold"
+            style={{ background: 'rgba(50,52,64,0.6)', color: '#d1d5db', border: '1px solid rgba(255,255,255,0.08)' }}>
+            Hủy
+          </button>
+          <button
+            type="submit" disabled={submitting || atMaxActive || !selectedSetId}
+            data-testid="submit-create"
+            className="flex-1 py-3.5 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{
+              background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
+              color: '#11131e',
+              boxShadow: '0 6px 20px rgba(232,168,50,0.3)',
+            }}
+          >
+            <span className="material-symbols-outlined text-base">schedule</span>
+            {submitting ? '...' : t('scheduledQuiz.submitCta')}
+          </button>
+        </div>
       </form>
     </div>
   )
