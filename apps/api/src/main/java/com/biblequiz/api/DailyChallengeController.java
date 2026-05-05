@@ -48,6 +48,9 @@ public class DailyChallengeController {
         }
 
         // Strip correct answers from response (client shouldn't see them)
+        // unless the user has already completed today — in that case the
+        // "Xem lại 5 câu hỏi" review modal needs the full payload.
+        final boolean reveal = alreadyCompleted;
         List<Map<String, Object>> sanitized = questions.stream().map(q -> {
             Map<String, Object> m = new LinkedHashMap<>();
             m.put("id", q.getId());
@@ -57,6 +60,10 @@ public class DailyChallengeController {
             m.put("type", q.getType());
             m.put("content", q.getContent());
             m.put("options", q.getOptions());
+            if (reveal) {
+                m.put("correctAnswer", q.getCorrectAnswer());
+                m.put("explanation", q.getExplanation());
+            }
             return m;
         }).collect(Collectors.toList());
 
@@ -166,5 +173,33 @@ public class DailyChallengeController {
 
         String userId = authentication.getName();
         return ResponseEntity.ok(dailyChallengeService.getResultData(userId));
+    }
+
+    /**
+     * GET /api/daily-challenge/history — per-day completion list for the
+     * 30-day heatmap. {@code days} clamped to [1, 90]. Includes missing
+     * days as {@code completed:false} so the FE renders a stable grid.
+     */
+    @GetMapping("/history")
+    public ResponseEntity<List<Map<String, Object>>> getHistory(
+            Authentication authentication,
+            @RequestParam(defaultValue = "30") int days) {
+        if (authentication == null) {
+            return ResponseEntity.status(401).body(List.of());
+        }
+        return ResponseEntity.ok(dailyChallengeService.getHistory(authentication.getName(), days));
+    }
+
+    /**
+     * GET /api/daily-challenge/yesterday-summary — recap for State A hero
+     * card. Returns {@code completed:false} when the user skipped yesterday
+     * (FE hides the recap block in that case).
+     */
+    @GetMapping("/yesterday-summary")
+    public ResponseEntity<Map<String, Object>> getYesterdaySummary(Authentication authentication) {
+        if (authentication == null) {
+            return ResponseEntity.status(401).body(Map.of("completed", false));
+        }
+        return ResponseEntity.ok(dailyChallengeService.getYesterdaySummary(authentication.getName()));
     }
 }

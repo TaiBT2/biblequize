@@ -2726,3 +2726,21 @@ select {
   background: rgba(212, 175, 55, 0.12);
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
 }
+
+/* ─── Daily Challenge redesign animations ────────────────────────────── */
+
+@keyframes daily-pulse-ring-red {
+  0%   { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5); }
+  70%  { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+@keyframes daily-pulse-ring-green {
+  0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
+  70%  { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+@keyframes daily-spin-slow { to { transform: rotate(360deg); } }
+
+.animate-pulse-ring        { animation: daily-pulse-ring-red 1.5s infinite; }
+.animate-pulse-ring-green  { animation: daily-pulse-ring-green 1.5s infinite; }
+.animate-spin-slow         { animation: daily-spin-slow 30s linear infinite; }

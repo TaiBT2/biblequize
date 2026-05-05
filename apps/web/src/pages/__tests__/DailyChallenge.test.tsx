@@ -102,7 +102,10 @@ describe('Daily Challenge', () => {
 
       renderDaily()
       await waitFor(() => {
-        const completed = screen.queryByText(/hoàn thành/i) || screen.queryByText(/kết quả/i) || screen.queryByText(/4/i)
+        // Redesigned page renders the State B hero with the
+        // `daily-completed-badge` testId when the user has already
+        // finished today's challenge.
+        const completed = screen.queryByTestId('daily-completed-badge')
         expect(completed).toBeInTheDocument()
       }, { timeout: 3000 })
     })
