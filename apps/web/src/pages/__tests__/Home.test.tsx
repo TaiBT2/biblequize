@@ -14,6 +14,13 @@ vi.mock('../../components/GameModeGrid', () => ({
   default: () => <div data-testid="game-mode-grid">GameModeGrid</div>,
 }))
 
+// FeaturedDailyChallenge transitively pulls in useBookName which queries
+// `/api/books`. This Home test doesn't cover that component (it has its
+// own test file), so mock it out to keep these specs focused on Home.
+vi.mock('../../components/FeaturedDailyChallenge', () => ({
+  default: () => <div data-testid="featured-daily-challenge">FeaturedDailyChallenge</div>,
+}))
+
 const mockApiGet = vi.fn()
 vi.mock('../../api/client', () => ({
   api: { get: (...args: any[]) => mockApiGet(...args) },
@@ -149,6 +156,8 @@ describe('Home Dashboard', () => {
 
     it('shows max tier state', async () => {
       mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('/api/me/daily-missions'))
+          return Promise.resolve({ data: { date: '2026-05-05', missions: [], allCompleted: false, bonusClaimed: false, bonusXp: 50 } })
         if (url.includes('/api/me')) return Promise.resolve({ data: { totalPoints: 150000 } })
         if (url.includes('/api/leaderboard')) return Promise.resolve({ data: [] })
         return Promise.reject(new Error('Not found'))
@@ -216,6 +225,8 @@ describe('Home Dashboard', () => {
       mockApiGet.mockImplementation((url: string) => {
         if (url.includes('/api/daily-missions/today'))
           return Promise.resolve({ data: { missions: [], allCompleted: false } })
+        if (url.includes('/api/me/daily-missions'))
+          return Promise.resolve({ data: { date: '2026-05-05', missions: [], allCompleted: false, bonusClaimed: false, bonusXp: 50 } })
         if (url.includes('/api/me/tier-progress'))
           return Promise.resolve({ data: { totalPoints: 45200 } })
         if (url.includes('/api/me/journey'))
@@ -256,6 +267,8 @@ describe('Home Dashboard', () => {
       // pass a non-new user with an empty leaderboard array to exercise
       // the empty-state branch.
       mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('/api/me/daily-missions'))
+          return Promise.resolve({ data: { date: '2026-05-05', missions: [], allCompleted: false, bonusClaimed: false, bonusXp: 50 } })
         if (url.includes('/api/me')) return Promise.resolve({ data: { totalPoints: 8200 } })
         if (url.includes('/api/leaderboard')) return Promise.resolve({ data: [] })
         return Promise.reject(new Error('Not found'))
@@ -458,6 +471,85 @@ describe('Home Dashboard', () => {
         expect(screen.getByTestId('motivation-card')).toBeInTheDocument()
       })
       expect(screen.queryByTestId('home-daily-missions')).not.toBeInTheDocument()
+    })
+
+    it('hides MotivationCard for new user who completed Daily Challenge today', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('/api/me/tier-progress'))
+          return Promise.resolve({ data: { tierLevel: 1, totalPoints: 200, starIndex: 0, starXp: 0, nextStarXp: 200 } })
+        if (url.includes('/api/me/journey'))
+          return Promise.resolve({ data: { summary: { totalBooks: 66, completedBooks: 0, oldTestamentCompleted: 0, newTestamentCompleted: 0, currentBook: null }, books: [] } })
+        if (url.includes('/api/me/daily-missions'))
+          return Promise.resolve({ data: { date: '2026-05-05', missions: [], allCompleted: false, bonusClaimed: false, bonusXp: 50 } })
+        if (url.includes('/api/daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: true, totalQuestions: 5 } })
+        if (url.includes('/api/me')) return Promise.resolve({ data: { totalPoints: 200, currentStreak: 0 } })
+        if (url.includes('/api/leaderboard')) return Promise.resolve({ data: [] })
+        return Promise.resolve({ data: {} })
+      })
+      renderHome()
+      // Wait for data to resolve so motivationDataReady becomes true.
+      await waitFor(() => {
+        expect(screen.getByTestId('home-page')).toBeInTheDocument()
+      })
+      await waitFor(() => {
+        const calls = mockApiGet.mock.calls.map((c: any) => c[0])
+        expect(calls.some((u: string) => u.includes('/api/daily-challenge'))).toBe(true)
+      })
+      expect(screen.queryByTestId('motivation-card')).not.toBeInTheDocument()
+    })
+
+    it('hides MotivationCard for new user with currentStreak > 0', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('/api/me/tier-progress'))
+          return Promise.resolve({ data: { tierLevel: 1, totalPoints: 200, starIndex: 0, starXp: 0, nextStarXp: 200 } })
+        if (url.includes('/api/me/journey'))
+          return Promise.resolve({ data: { summary: { totalBooks: 66, completedBooks: 0, oldTestamentCompleted: 0, newTestamentCompleted: 0, currentBook: null }, books: [] } })
+        if (url.includes('/api/me/daily-missions'))
+          return Promise.resolve({ data: { date: '2026-05-05', missions: [], allCompleted: false, bonusClaimed: false, bonusXp: 50 } })
+        if (url.includes('/api/daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: false } })
+        if (url.includes('/api/me')) return Promise.resolve({ data: { totalPoints: 200, currentStreak: 2 } })
+        if (url.includes('/api/leaderboard')) return Promise.resolve({ data: [] })
+        return Promise.resolve({ data: {} })
+      })
+      renderHome()
+      await waitFor(() => {
+        expect(screen.getByTestId('home-page')).toBeInTheDocument()
+      })
+      await waitFor(() => {
+        const calls = mockApiGet.mock.calls.map((c: any) => c[0])
+        expect(calls.some((u: string) => u.includes('/api/me/daily-missions'))).toBe(true)
+      })
+      expect(screen.queryByTestId('motivation-card')).not.toBeInTheDocument()
+    })
+
+    it('hides MotivationCard for new user with at least one mission completed', async () => {
+      mockApiGet.mockImplementation((url: string) => {
+        if (url.includes('/api/me/tier-progress'))
+          return Promise.resolve({ data: { tierLevel: 1, totalPoints: 200, starIndex: 0, starXp: 0, nextStarXp: 200 } })
+        if (url.includes('/api/me/journey'))
+          return Promise.resolve({ data: { summary: { totalBooks: 66, completedBooks: 0, oldTestamentCompleted: 0, newTestamentCompleted: 0, currentBook: null }, books: [] } })
+        if (url.includes('/api/me/daily-missions'))
+          return Promise.resolve({ data: { date: '2026-05-05', missions: [
+            { slot: 1, type: 'answer_correct', description: 'x', progress: 3, target: 3, completed: true },
+            { slot: 2, type: 'complete_daily_challenge', description: 'y', progress: 0, target: 1, completed: false },
+          ], allCompleted: false, bonusClaimed: false, bonusXp: 50 } })
+        if (url.includes('/api/daily-challenge'))
+          return Promise.resolve({ data: { alreadyCompleted: false } })
+        if (url.includes('/api/me')) return Promise.resolve({ data: { totalPoints: 200, currentStreak: 0 } })
+        if (url.includes('/api/leaderboard')) return Promise.resolve({ data: [] })
+        return Promise.resolve({ data: {} })
+      })
+      renderHome()
+      await waitFor(() => {
+        expect(screen.getByTestId('home-page')).toBeInTheDocument()
+      })
+      await waitFor(() => {
+        const calls = mockApiGet.mock.calls.map((c: any) => c[0])
+        expect(calls.some((u: string) => u.includes('/api/me/daily-missions'))).toBe(true)
+      })
+      expect(screen.queryByTestId('motivation-card')).not.toBeInTheDocument()
     })
 
     it('boundary: totalPoints=1000 hides MotivationCard, shows Missions', async () => {

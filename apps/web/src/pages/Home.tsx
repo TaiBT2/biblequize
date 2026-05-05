@@ -41,15 +41,33 @@ function HomeSkeleton() {
 
 /* ── Main ── */
 export default function Home() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { user } = useAuthStore()
   const [lbPeriod, setLbPeriod] = useState<'daily' | 'weekly'>('daily')
+  const dcLang = (i18n.language === 'en' ? 'en' : 'vi') as 'vi' | 'en'
 
   // TanStack Query: user profile
   const { data: meData, isLoading: meLoading } = useQuery({
     queryKey: ['me'],
     queryFn: () => api.get('/api/me').then(r => r.data),
     staleTime: 5 * 60_000, // 5 min
+  })
+
+  // Shared cache with FeaturedDailyChallenge — gate MotivationCard on
+  // alreadyCompleted so users who have already played today don't see the
+  // "Bước 1" nudge.
+  const { data: dcData, isLoading: dcLoading } = useQuery<{ alreadyCompleted?: boolean }>({
+    queryKey: ['daily-challenge', dcLang],
+    queryFn: () => api.get(`/api/daily-challenge?language=${dcLang}`).then(r => r.data),
+    staleTime: 60_000,
+  })
+
+  // Shared cache with DailyMissionsCard — gate MotivationCard on whether
+  // the user has completed at least one mission today.
+  const { data: missionsData, isLoading: missionsLoading } = useQuery<{ missions?: Array<{ completed: boolean }> }>({
+    queryKey: ['daily-missions'],
+    queryFn: () => api.get('/api/me/daily-missions').then(r => r.data),
+    staleTime: 30_000,
   })
 
   // TanStack Query: tier progress (includes totalPoints)
@@ -96,6 +114,21 @@ export default function Home() {
   // instead — see DECISIONS.md "User mới = totalPoints<1000".
   const isNewUser = totalPoints < 1000
 
+  // MotivationCard ("Bước 1") is a first-time-user nudge. Hide it as soon
+  // as the user shows any engagement signal — DC completed today, an
+  // active streak, or any mission ticked. Default to hidden while data is
+  // loading so returning users don't see a flash of the card.
+  const dcCompletedToday = !!dcData?.alreadyCompleted
+  const hasStreak = (meData?.currentStreak ?? 0) > 0
+  const hasCompletedMission = !!missionsData?.missions?.some(m => m.completed)
+  const motivationDataReady = !meLoading && !dcLoading && !missionsLoading
+  const shouldShowMotivation =
+    isNewUser &&
+    motivationDataReady &&
+    !dcCompletedToday &&
+    !hasStreak &&
+    !hasCompletedMission
+
   return (
     <div data-testid="home-page" className="space-y-8 max-w-7xl mx-auto w-full">
       <ComebackModal />
@@ -107,8 +140,10 @@ export default function Home() {
       {/* ── Featured Daily Challenge (hero CTA for tier-1) ── */}
       <FeaturedDailyChallenge />
 
-      {/* ── Motivation onboarding nudge (HR-6: only for new users) ── */}
-      {isNewUser && <MotivationCard />}
+      {/* ── Motivation onboarding nudge (HR-6: only for new users with
+          zero engagement; hides as soon as the user plays today's DC,
+          starts a streak, or completes a mission) ── */}
+      {shouldShowMotivation && <MotivationCard />}
 
       {/* ── Game Modes (HR-4b: outer wrapper header removed; section
           headers live inside GameModeGrid per mockup). The Bible Basics
