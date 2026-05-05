@@ -1297,6 +1297,8 @@
     "quizSetsSection": "Bộ quiz nhóm",
     "play": "Chơi",
     "playAgain": "Chơi lại",
+    "liveQuizCta": "Chơi cùng nhau",
+    "liveQuizTooltip": "Tạo phòng live cho cả nhóm cùng chơi tuần tự, có pause thảo luận sau mỗi câu",
     "newToday": "Mới hôm nay",
     "playedTimes": "Đã chơi {{played}}/{{max}} lần",
     "groupStreak": "STREAK CỦA NHÓM",

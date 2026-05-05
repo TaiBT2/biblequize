@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../store/authStore';
 import { api } from '../api/client';
+import { createGroupLiveQuiz } from '../api/groups';
 
 interface Member {
   userId: string;
@@ -152,6 +153,7 @@ const GroupDetail: React.FC = () => {
   const [quizSets, setQuizSets] = useState<QuizSet[]>([]);
   const [quizSetsLoading, setQuizSetsLoading] = useState(false);
   const [playingSetId, setPlayingSetId] = useState<string | null>(null);
+  const [liveQuizSetId, setLiveQuizSetId] = useState<string | null>(null);
 
   // Analytics (leader-only) + Group streak
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null);
@@ -400,6 +402,21 @@ const GroupDetail: React.FC = () => {
       setPlayingSetId(null);
     }
   }, [id, navigate, playingSetId]);
+
+  // Feature A — Chơi cùng nhau (live multiplayer sequential)
+  const handleStartLiveQuiz = useCallback(async (setId: string) => {
+    if (!id || liveQuizSetId) return;
+    setLiveQuizSetId(setId);
+    try {
+      const room = await createGroupLiveQuiz(id, { quizSetId: setId, timePerQuestion: 30 });
+      navigate(`/room/${room.id}/lobby`, { state: { fromGroupId: id } });
+    } catch (err: any) {
+      const msg = err?.response?.data?.message || 'Không thể tạo phòng live';
+      alert(msg);
+    } finally {
+      setLiveQuizSetId(null);
+    }
+  }, [id, navigate, liveQuizSetId]);
 
   useEffect(() => { fetchGroup(); }, [fetchGroup]);
 
@@ -1584,17 +1601,31 @@ const GroupDetail: React.FC = () => {
                         {isNew && ` · ${t('groups.newToday')}`}
                       </div>
                     </div>
-                    <button
-                      onClick={() => handlePlayQuizSet(qs.id)}
-                      disabled={playingSetId === qs.id}
-                      className={`rounded-md px-3 py-1.5 text-[11px] font-medium cursor-pointer transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
-                        isNew
-                          ? 'bg-secondary text-on-secondary hover:brightness-110'
-                          : 'bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 hover:bg-white/10'
-                      }`}
-                    >
-                      {playingSetId === qs.id ? '...' : isNew ? t('groups.play') : t('groups.playAgain')}
-                    </button>
+                    <div className="flex items-center gap-1.5">
+                      {/* Feature A — Chơi cùng nhau (live multiplayer, LEADER/MOD only) */}
+                      {isLeaderOrMod && (
+                        <button
+                          onClick={() => handleStartLiveQuiz(qs.id)}
+                          disabled={liveQuizSetId === qs.id}
+                          title={t('groups.liveQuizTooltip')}
+                          className="rounded-md px-2.5 py-1.5 text-[11px] font-medium cursor-pointer transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-[rgba(167,139,250,0.15)] text-[#a78bfa] border-[0.5px] border-[rgba(167,139,250,0.4)] hover:bg-[rgba(167,139,250,0.25)] flex items-center gap-1"
+                        >
+                          <span className="material-symbols-outlined text-[14px]">groups</span>
+                          {liveQuizSetId === qs.id ? '...' : t('groups.liveQuizCta')}
+                        </button>
+                      )}
+                      <button
+                        onClick={() => handlePlayQuizSet(qs.id)}
+                        disabled={playingSetId === qs.id}
+                        className={`rounded-md px-3 py-1.5 text-[11px] font-medium cursor-pointer transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+                          isNew
+                            ? 'bg-secondary text-on-secondary hover:brightness-110'
+                            : 'bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 hover:bg-white/10'
+                        }`}
+                      >
+                        {playingSetId === qs.id ? '...' : isNew ? t('groups.play') : t('groups.playAgain')}
+                      </button>
+                    </div>
                   </div>
                 );
               })}

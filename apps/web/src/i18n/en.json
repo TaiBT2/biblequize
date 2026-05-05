@@ -1297,6 +1297,8 @@
     "quizSetsSection": "Group quiz sets",
     "play": "Play",
     "playAgain": "Play again",
+    "liveQuizCta": "Play together",
+    "liveQuizTooltip": "Create a live room where the group plays in turn with discussion pauses",
     "newToday": "New today",
     "playedTimes": "Played {{played}}/{{max}} times",
     "groupStreak": "GROUP STREAK",
