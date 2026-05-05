@@ -51,6 +51,7 @@ public class RoomQuizService {
     @Autowired private BattleRoyaleEngine battleRoyaleEngine;
     @Autowired private TeamScoringService teamScoringService;
     @Autowired private SuddenDeathMatchService suddenDeathMatchService;
+    @Autowired private SequentialScoringService sequentialScoringService;
 
     private static final int BETWEEN_QUESTION_DELAY_MS = 3000;
     private static final int GAME_STARTING_COUNTDOWN_S = 3;
@@ -66,6 +67,7 @@ public class RoomQuizService {
                 case BATTLE_ROYALE -> runBattleRoyale(roomId, questionCount, timePerQuestion);
                 case TEAM_VS_TEAM -> runTeamVsTeam(roomId, questionCount, timePerQuestion);
                 case SUDDEN_DEATH -> runSuddenDeath(roomId, questionCount, timePerQuestion);
+                case GROUP_LIVE_SEQUENTIAL -> runGroupLiveSequential(roomId, questionCount, timePerQuestion);
                 default -> runSpeedRace(roomId, questionCount, timePerQuestion);
             }
         } catch (InterruptedException e) {
@@ -290,6 +292,58 @@ public class RoomQuizService {
         roomService.endRoom(roomId);
         wsController.broadcastQuizEnd(roomId, finalResults);
         log.info("Sudden Death kết thúc cho phòng {}", roomId);
+    }
+
+    // ────────────────────────────── GROUP LIVE SEQUENTIAL ──────────────────────────────
+
+    /**
+     * Sequential mode: chờ all players trả lời (early-wake nếu xong sớm) → reveal
+     * đáp án + per-player answers → đợi host bấm "Sang câu tiếp" → next question.
+     * Khác Speed Race ở chỗ score đơn giản (đúng=100, sai=0) và pause cho thảo luận.
+     */
+    private void runGroupLiveSequential(String roomId, int questionCount, int timePerQuestion) throws InterruptedException {
+        List<Question> questions = loadQuestionsForRoom(roomId, questionCount);
+        if (questions.isEmpty()) {
+            roomService.endRoom(roomId);
+            wsController.broadcastQuizEnd(roomId, List.of());
+            return;
+        }
+
+        for (int i = 0; i < questions.size(); i++) {
+            Question q = questions.get(i);
+            RoomRound round = saveRound(roomId, new RoomRound(UUID.randomUUID().toString(), null, i, q, LocalDateTime.now()));
+            roomStateService.setCurrentRoundId(roomId, round.getId());
+
+            int activePlayers = (int) roomPlayerRepository.countByRoomIdAndPlayerStatus(roomId, RoomPlayer.PlayerStatus.ACTIVE);
+            sequentialScoringService.beginRound(roomId, activePlayers);
+
+            wsController.broadcastQuestionStart(roomId, i, questions.size(), buildQuestionDto(q), timePerQuestion);
+
+            // Wait until all answered OR timeout (timer câu hỏi)
+            boolean allAnswered = sequentialScoringService.awaitAllAnsweredOrTimeout(roomId, timePerQuestion);
+            log.info("[Sequential] room={} q={} allAnswered={} answered={}/{}",
+                    roomId, i, allAnswered,
+                    sequentialScoringService.answeredCount(roomId),
+                    sequentialScoringService.totalPlayers(roomId));
+
+            round.setEndedAt(LocalDateTime.now());
+            roomRoundRepository.save(round);
+
+            // Reveal — gather per-player answers + correct answer
+            wsController.broadcastQuestionRevealed(roomId, round.getId(), q.getCorrectAnswer().get(0), q.getExplanation());
+
+            // Wait host's manual advance (bounded by 10-min safety)
+            boolean leaderAdvanced = sequentialScoringService.awaitLeaderAdvance(roomId);
+            sequentialScoringService.clearRound(roomId);
+            if (!leaderAdvanced) {
+                log.warn("[Sequential] room={} leader advance timeout — auto-skip to next", roomId);
+            }
+        }
+
+        List<RoomService.LeaderboardEntryDTO> finalResults = roomService.getRoomLeaderboard(roomId);
+        roomService.endRoom(roomId);
+        wsController.broadcastQuizEnd(roomId, finalResults);
+        log.info("Group Live Sequential kết thúc cho phòng {}", roomId);
     }
 
     // ────────────────────────────── HELPERS ──────────────────────────────

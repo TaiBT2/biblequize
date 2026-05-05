@@ -2,13 +2,16 @@ package com.biblequiz.api.websocket;
 
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
+import com.biblequiz.modules.room.entity.Room;
 import com.biblequiz.modules.room.entity.RoomAnswer;
 import com.biblequiz.modules.room.entity.RoomRound;
 import com.biblequiz.modules.room.repository.RoomAnswerRepository;
 import com.biblequiz.modules.room.repository.RoomPlayerRepository;
+import com.biblequiz.modules.room.repository.RoomRepository;
 import com.biblequiz.modules.room.repository.RoomRoundRepository;
 import com.biblequiz.modules.room.service.RoomService;
 import com.biblequiz.modules.room.service.RoomStateService;
+import com.biblequiz.modules.room.service.SequentialScoringService;
 import com.biblequiz.modules.room.service.SpeedRaceScoringService;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
@@ -54,6 +57,12 @@ public class RoomWebSocketController {
 
     @Autowired
     private SpeedRaceScoringService speedRaceScoringService;
+
+    @Autowired
+    private SequentialScoringService sequentialScoringService;
+
+    @Autowired
+    private RoomRepository roomRepository;
 
     /**
      * Handle player joining room
@@ -198,6 +207,10 @@ public class RoomWebSocketController {
             int pointsEarned = 0;
             int timeLimit = 30;
 
+            // Determine mode for scoring dispatch
+            Room room = roomRepository.findById(roomId).orElse(null);
+            Room.RoomMode mode = room != null ? room.getMode() : Room.RoomMode.SPEED_RACE;
+
             java.util.Optional<WebSocketMessage.QuestionStartData> questionState =
                     roomStateService.getCurrentQuestion(roomId);
             if (questionState.isPresent()) {
@@ -209,8 +222,11 @@ public class RoomWebSocketController {
                     if (question != null && question.getCorrectAnswer() != null
                             && !question.getCorrectAnswer().isEmpty()) {
                         isCorrect = (answerIndex == question.getCorrectAnswer().get(0));
-                        // Speed Race scoring
-                        pointsEarned = speedRaceScoringService.calculateScore(isCorrect, timeLimit, reactionTimeMs);
+                        if (mode == Room.RoomMode.GROUP_LIVE_SEQUENTIAL) {
+                            pointsEarned = sequentialScoringService.calculateScore(isCorrect);
+                        } else {
+                            pointsEarned = speedRaceScoringService.calculateScore(isCorrect, timeLimit, reactionTimeMs);
+                        }
                     }
                 }
             }
@@ -248,20 +264,56 @@ public class RoomWebSocketController {
             });
 
             // Broadcast answer submitted với pointsEarned
+            // Sequential mode: hide isCorrect from broadcast — chỉ reveal sau khi all-answered
+            boolean broadcastIsCorrect = mode != Room.RoomMode.GROUP_LIVE_SEQUENTIAL && isCorrect;
             Map<String, Object> answerData = Map.of(
                     "playerId", user.getId(),
                     "username", user.getName(),
                     "questionIndex", questionIndex,
                     "answerIndex", answerIndex,
                     "reactionTimeMs", reactionTimeMs,
-                    "isCorrect", isCorrect,
-                    "pointsEarned", finalPoints);
+                    "isCorrect", broadcastIsCorrect,
+                    "pointsEarned", mode == Room.RoomMode.GROUP_LIVE_SEQUENTIAL ? 0 : finalPoints);
             WebSocketMessage.Message message = new WebSocketMessage.Message(
                     WebSocketMessage.MessageTypes.ANSWER_SUBMITTED, answerData);
             messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
 
+            // Sequential coordination + progress broadcast
+            if (mode == Room.RoomMode.GROUP_LIVE_SEQUENTIAL) {
+                sequentialScoringService.recordAnswer(roomId);
+                broadcastSequentialProgress(roomId,
+                        sequentialScoringService.answeredCount(roomId),
+                        sequentialScoringService.totalPlayers(roomId));
+            }
+
         } catch (Exception e) {
             sendError(roomId, "ANSWER_ERROR", "Lỗi khi nộp câu trả lời: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Host bấm "Sang câu tiếp" trong GROUP_LIVE_SEQUENTIAL mode.
+     * Chỉ host mới được advance — release latch trong SequentialScoringService.
+     */
+    @MessageMapping("/room/{roomId}/advance")
+    public void handleSequentialAdvance(@DestinationVariable String roomId, Authentication authentication) {
+        try {
+            String email = authentication.getName();
+            User user = userRepository.findByEmail(email).orElseThrow();
+
+            Room room = roomRepository.findById(roomId).orElse(null);
+            if (room == null) return;
+            if (room.getMode() != Room.RoomMode.GROUP_LIVE_SEQUENTIAL) {
+                sendError(roomId, "INVALID_MODE", "Chỉ chế độ Chơi cùng nhau mới hỗ trợ Sang câu tiếp");
+                return;
+            }
+            if (!user.getId().equals(room.getHost().getId())) {
+                sendError(roomId, "NOT_HOST", "Chỉ trưởng phòng mới được chuyển câu");
+                return;
+            }
+            sequentialScoringService.leaderAdvance(roomId);
+        } catch (Exception e) {
+            sendError(roomId, "ADVANCE_ERROR", "Lỗi khi chuyển câu: " + e.getMessage());
         }
     }
 
@@ -487,6 +539,48 @@ public class RoomWebSocketController {
                     WebSocketMessage.MessageTypes.CHAT_MESSAGE, data));
         } catch (Exception e) {
             // Chat is best-effort — don't error-frame on missing user etc.
+        }
+    }
+
+    /**
+     * Broadcast sequential progress (Group Live Sequential — mỗi answer)
+     */
+    public void broadcastSequentialProgress(String roomId, int answered, int total) {
+        WebSocketMessage.SequentialProgressData data =
+                new WebSocketMessage.SequentialProgressData(answered, total);
+        sendToRoom(roomId, new WebSocketMessage.Message(
+                WebSocketMessage.MessageTypes.SEQUENTIAL_PROGRESS, data));
+    }
+
+    /**
+     * Broadcast question revealed (Group Live Sequential — sau all-answered/timeout).
+     * Includes correct answer, explanation, per-player answers, and current leaderboard.
+     */
+    public void broadcastQuestionRevealed(String roomId, String roundId, int correctIndex, String explanation) {
+        try {
+            // Per-player answers cho round này
+            List<RoomAnswer> answers = roomAnswerRepository.findByRoundId(roundId);
+            Map<String, RoomAnswer> answerByUser = new java.util.HashMap<>();
+            for (RoomAnswer a : answers) answerByUser.put(a.getUserId(), a);
+
+            List<RoomService.PlayerInfoDTO> players = roomService.getRoomDetails(roomId).players;
+            List<WebSocketMessage.QuestionRevealedData.PerPlayerAnswer> perPlayer = players.stream()
+                    .map(p -> {
+                        RoomAnswer a = answerByUser.get(p.userId);
+                        return new WebSocketMessage.QuestionRevealedData.PerPlayerAnswer(
+                                p.userId, p.username,
+                                a != null ? (int) a.getAnswerIndex() : null,
+                                a != null && a.getIsCorrect());
+                    })
+                    .collect(java.util.stream.Collectors.toList());
+
+            List<RoomService.LeaderboardEntryDTO> leaderboard = roomService.getRoomLeaderboard(roomId);
+            WebSocketMessage.QuestionRevealedData data =
+                    new WebSocketMessage.QuestionRevealedData(correctIndex, explanation, perPlayer, leaderboard);
+            sendToRoom(roomId, new WebSocketMessage.Message(
+                    WebSocketMessage.MessageTypes.QUESTION_REVEALED, data));
+        } catch (Exception e) {
+            sendError(roomId, "REVEAL_ERROR", "Lỗi khi hiện đáp án: " + e.getMessage());
         }
     }
 
