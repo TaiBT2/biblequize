@@ -4130,30 +4130,31 @@ Found 3-layer break: BE has no chat MessageMapping, /ws blocked by Security at h
 - File(s):
   - `apps/api/src/main/java/com/biblequiz/modules/room/service/SequentialScoringService.java` (NEW)
   - `apps/api/src/main/java/com/biblequiz/modules/room/service/RoomQuizService.java` (wire mới)
-- Spec: Logic chờ tất cả player answer trước khi advance question. Sau khi all-answered → broadcast `question_revealed` event (đáp án + explanation) → sleep `discussionPauseSeconds` (default 5s) → broadcast `next_question`. Score = correct? 100 : 0 (no time bonus, vì không speed-based).
+- Spec: Logic chờ tất cả player answer trước khi advance question. Sau khi all-answered → broadcast `question_revealed` (đáp án + explanation + per-player answers). **Leader bấm nút "Sang câu tiếp" thủ công** (PN-2) → broadcast `next_question`. Score = correct? 100 : 0 (no time bonus, không speed-based).
 - Checklist:
   - [ ] Service method `recordAnswer(roomId, userId, questionId, answer)` returns `{allAnswered: bool, answeredCount, totalPlayers}`
-  - [ ] Method `advanceAfterDiscussion(roomId)` callable from scheduled task hoặc explicit timer
+  - [ ] Method `advanceToNextQuestion(roomId, leaderId)` — authorize caller phải là host, broadcast `next_question`
   - [ ] Wire trong RoomQuizService: nếu `room.mode == GROUP_LIVE_SEQUENTIAL` → dùng SequentialScoringService thay SpeedRaceScoringService
   - [ ] Compile pass
   - [ ] Commit: `feat(room): SequentialScoringService for group live mode`
 
-### Task A-3: BE — WebSocket events `question_revealed` + `discussion_pause` [ ] TODO
+### Task A-3: BE — WebSocket events `question_revealed` + leader-advance command [ ] TODO
 - File(s): `apps/api/src/main/java/com/biblequiz/api/websocket/RoomWebSocketController.java`
-- Spec: Broadcast 2 event types mới qua existing `/topic/room/{roomId}`:
-  - `QUESTION_REVEALED` payload `{questionId, correctAnswer, explanation, perPlayerAnswers: [{userId, answer, isCorrect}]}` — sau khi all-answered
-  - `DISCUSSION_PAUSE` payload `{seconds: 5, nextAt: timestamp}` — countdown UI
+- Spec:
+  - Broadcast `QUESTION_REVEALED` qua `/topic/room/{roomId}` payload `{questionId, correctAnswer, explanation, perPlayerAnswers: [{userId, answer, isCorrect}]}` — sau khi all-answered
+  - Inbound STOMP message `/app/room/{roomId}/advance` (leader-only) → trigger `advanceToNextQuestion` → broadcast `NEXT_QUESTION` payload `{questionIndex, question}`
 - Checklist:
-  - [ ] Add 2 message types vào RoomMessage.MessageType enum (hoặc DTO equivalent)
-  - [ ] Broadcast trong SequentialScoringService callback
+  - [ ] Add 2 message types vào RoomMessage.MessageType enum (`QUESTION_REVEALED`, `NEXT_QUESTION`)
+  - [ ] Broadcast `QUESTION_REVEALED` trong SequentialScoringService callback (when allAnswered=true)
+  - [ ] @MessageMapping handler cho `/advance` — authorize host, reject nếu chưa all-answered
   - [ ] Compile pass
-  - [ ] Commit: `feat(ws): question_revealed + discussion_pause events`
+  - [ ] Commit: `feat(ws): question_revealed + leader advance events`
 
 ### Task A-4: BE — Endpoint `POST /api/groups/{id}/live-quiz` [ ] TODO
 - File(s):
   - `apps/api/src/main/java/com/biblequiz/api/ChurchGroupController.java` (add endpoint)
   - `apps/api/src/main/java/com/biblequiz/modules/group/service/ChurchGroupService.java` (createLiveQuiz method)
-- Spec: Body `{quizSetId, questionsCount?, discussionPauseSeconds?}` → tạo Room với `mode=GROUP_LIVE_SEQUENTIAL`, `groupQuizSetId=...`, host = caller. Response `{roomId, roomCode}`. Authorize: caller phải là LEADER hoặc MOD của group.
+- Spec: Body `{quizSetId, questionsCount?}` → tạo Room với `mode=GROUP_LIVE_SEQUENTIAL`, `groupQuizSetId=...`, host = caller. Response `{roomId, roomCode}`. Authorize: caller phải là LEADER hoặc MOD của group. (Không cần `discussionPauseSeconds` — PN-2 leader-controlled).
 - Checklist:
   - [ ] Authorize check (LEADER/MOD)
   - [ ] Create Room reuse RoomService
@@ -4213,13 +4214,19 @@ Found 3-layer break: BE has no chat MessageMapping, /ws blocked by Security at h
 - Spec:
   - Sau khi user submit answer trong GROUP_LIVE_SEQUENTIAL → show **waiting strip tím** (mockup tab 2): icon hourglass + "Chờ N người trả lời..." + dots progress (done/pending)
   - Receive WS `QUESTION_REVEALED` → show correct answer overlay + explanation + per-player answers
-  - Receive WS `DISCUSSION_PAUSE` → countdown 5s "Sang câu tiếp theo trong 5..4..3..."
+  - **Leader-only nút "Sang câu tiếp →"** (PN-2) hiện sau reveal → click → send STOMP `/app/room/{id}/advance`
+  - Member thấy text "Đang chờ trưởng phòng tiếp tục..."
+  - Receive WS `NEXT_QUESTION` → render câu mới
 - Checklist:
   - [ ] Waiting strip component
-  - [ ] WS handlers cho 2 events mới
-  - [ ] Vitest cho từng state (waiting / revealed / discussing)
-  - [ ] **E2E**: TC "2 player live-quiz: cả 2 trả lời → see reveal → next question" (Playwright với 2 browser context)
-  - [ ] Commit: `feat(room): waiting strip + reveal + discussion pause UI`
+  - [ ] Reveal overlay component (correct answer + explanation + per-player answers list)
+  - [ ] Leader advance button (conditional render khi `isHost && state === 'revealed'`)
+  - [ ] Member waiting-for-leader hint
+  - [ ] WS handlers cho `QUESTION_REVEALED` + `NEXT_QUESTION`
+  - [ ] STOMP send `/advance` action
+  - [ ] Vitest cho từng state (answering / waiting / revealed / waiting-for-leader)
+  - [ ] **E2E**: TC "2 player live-quiz: cả 2 trả lời → reveal → leader advance → next question" (Playwright 2 browser context)
+  - [ ] Commit: `feat(room): waiting strip + reveal + leader advance UI`
 
 ### Task A-10: FE — Final screen với podium [ ] TODO
 - File(s): `apps/web/src/pages/RoomQuiz.tsx` hoặc tách `RoomFinal.tsx`
@@ -4265,6 +4272,7 @@ Found 3-layer break: BE has no chat MessageMapping, /ws blocked by Security at h
     max_attempts INT DEFAULT 3,
     is_leaderboard_public BOOLEAN DEFAULT TRUE,
     send_notifications BOOLEAN DEFAULT TRUE,
+    noti_24h_sent_at TIMESTAMP NULL,  -- PN-1: để cron 24h-remaining idempotent
     winner_user_id BINARY(16) NULL,
     winner_score INT NULL,
     created_by BINARY(16),
@@ -4310,7 +4318,7 @@ Found 3-layer break: BE has no chat MessageMapping, /ws blocked by Security at h
 ### Task B-3: BE — ScheduledQuizService (CRUD + play logic) [ ] TODO
 - File(s): `apps/api/src/main/java/com/biblequiz/modules/group/service/ScheduledQuizService.java` (NEW)
 - Methods:
-  - `create(groupId, creatorId, dto)` — authorize LEADER/MOD, snapshot questionIds, enforce max-3-active per group (PN-3)
+  - `create(groupId, creatorId, dto)` — authorize LEADER/MOD, snapshot questionIds, **enforce max-3-active per group (PN-3 BE safety net)**: count ACTIVE quizzes for group, reject với 400 + code `MAX_ACTIVE_QUIZZES_REACHED` nếu >=3
   - `list(groupId, statusFilter)`
   - `getDetail(quizId, viewerId)` — include myAttempts, myBest
   - `startAttempt(quizId, userId)` — validate deadline + attempts < max, return questions từ snapshot
@@ -4343,7 +4351,10 @@ Found 3-layer break: BE has no chat MessageMapping, /ws blocked by Security at h
   - Query `findByStatusAndDeadlineBefore(ACTIVE, now())`
   - Per quiz: compute winner (top score), set status=ENDED, ended_at=now, winner_user_id, winner_score
   - Auto-create GroupAnnouncement: "🎊 Quiz '{name}' đã kết thúc! Người chiến thắng: {winnerName} với {winnerScore} điểm"
-  - In-app notification cho all members tham gia
+  - **In-app notifications (PN-1) qua existing NotificationService**: 3 events
+    - On `create()` trong B-3: gửi notification cho all group members ("Quiz mới: '{name}' deadline {date}")
+    - **24h-remaining job** (riêng cron `0 0 * * * *` mỗi giờ): query quizzes ACTIVE deadline trong 24-25h tới + chưa gửi 24h-noti (cần thêm column `noti_24h_sent_at`?) → gửi noti
+    - On scheduler END: gửi noti "Quiz '{name}' đã kết thúc! Winner: {name}"
   - **Idempotency**: chỉ process status=ACTIVE → set ENDED atomic (không double-fire)
 - Checklist:
   - [ ] Scheduler class + cron
@@ -4384,8 +4395,10 @@ Found 3-layer break: BE has no chat MessageMapping, /ws blocked by Security at h
   - [ ] Form fields + validation
   - [ ] QuizSet picker (reuse existing)
   - [ ] Deadline preset → compute timestamp
-  - [ ] Vitest 8 cases
-  - [ ] **E2E**: TC "Leader tạo scheduled quiz → list shows ACTIVE"
+  - [ ] **PN-3 FE**: query active count, disable submit + show banner "Đã đạt tối đa 3 quiz đang diễn ra" khi >=3
+  - [ ] Handle BE error `MAX_ACTIVE_QUIZZES_REACHED` (toast)
+  - [ ] Vitest 8 cases (gồm test disabled state khi 3 active)
+  - [ ] **E2E**: TC "Leader tạo scheduled quiz → list shows ACTIVE" + TC "Leader thấy disabled button khi đã có 3 active"
   - [ ] Commit: `feat(group): scheduled-quiz create form`
 
 ### Task B-9: FE — Tab 2 "Đang diễn ra" — detail page [ ] TODO
