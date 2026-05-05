@@ -1,12 +1,16 @@
 package com.biblequiz.api;
 
 import com.biblequiz.modules.adminai.AIGenerationService;
+import com.biblequiz.modules.group.entity.ChurchGroup;
+import com.biblequiz.modules.group.entity.GroupMember;
+import com.biblequiz.modules.group.entity.GroupQuizSet;
 import com.biblequiz.modules.group.repository.ChurchGroupRepository;
 import com.biblequiz.modules.group.repository.GroupMemberRepository;
 import com.biblequiz.modules.group.repository.GroupQuizSetRepository;
 import com.biblequiz.modules.group.service.ChurchGroupService;
 import com.biblequiz.modules.group.service.GroupStreakService;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
+import com.biblequiz.modules.room.entity.Room;
 import com.biblequiz.modules.room.repository.RoomPlayerRepository;
 import com.biblequiz.modules.room.repository.RoomRepository;
 import com.biblequiz.modules.room.service.RoomService;
@@ -210,6 +214,101 @@ class ChurchGroupControllerTest extends BaseControllerTest {
     }
 
     // ── Auth ─────────────────────────────────────────────────────────────────
+
+    // ── POST /api/groups/{id}/live-quiz (Feature A) ──────────────────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void createLiveQuiz_asLeader_returnsRoomInfo() throws Exception {
+        // Membership: LEADER
+        GroupMember leaderMember = new GroupMember();
+        leaderMember.setRole(GroupMember.GroupRole.LEADER);
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.of(leaderMember));
+
+        // Quiz set belongs to group
+        ChurchGroup group = new ChurchGroup();
+        group.setId("group-1");
+        GroupQuizSet qs = new GroupQuizSet();
+        qs.setId("qs-1");
+        qs.setName("Sáng Thế Ký");
+        qs.setGroup(group);
+        qs.setQuestionIds(List.of("q1", "q2", "q3"));
+        when(groupQuizSetRepository.findById("qs-1")).thenReturn(Optional.of(qs));
+
+        // RoomService.createRoom returns a stub room
+        Room createdRoom = new Room();
+        createdRoom.setId("room-99");
+        createdRoom.setRoomCode("NVQ8X3");
+        createdRoom.setRoomName("Sáng Thế Ký");
+        createdRoom.setMode(Room.RoomMode.GROUP_LIVE_SEQUENTIAL);
+        createdRoom.setHost(testUser);
+        when(roomService.createRoom(anyString(), any(User.class), anyInt(), anyInt(), anyInt(),
+                eq(Room.RoomMode.GROUP_LIVE_SEQUENTIAL), anyBoolean(),
+                any(), anyString(), any(), any())).thenReturn(createdRoom);
+        when(roomRepository.save(any(Room.class))).thenReturn(createdRoom);
+
+        mockMvc.perform(post("/api/groups/group-1/live-quiz")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"quizSetId\":\"qs-1\",\"timePerQuestion\":30}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.room.id").value("room-99"))
+                .andExpect(jsonPath("$.room.roomCode").value("NVQ8X3"))
+                .andExpect(jsonPath("$.room.mode").value("GROUP_LIVE_SEQUENTIAL"));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void createLiveQuiz_asMember_returns403() throws Exception {
+        GroupMember memberMember = new GroupMember();
+        memberMember.setRole(GroupMember.GroupRole.MEMBER);
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.of(memberMember));
+
+        mockMvc.perform(post("/api/groups/group-1/live-quiz")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"quizSetId\":\"qs-1\"}"))
+                .andExpect(status().isForbidden())
+                .andExpect(jsonPath("$.success").value(false));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void createLiveQuiz_missingQuizSetId_returns400() throws Exception {
+        GroupMember leaderMember = new GroupMember();
+        leaderMember.setRole(GroupMember.GroupRole.LEADER);
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.of(leaderMember));
+
+        mockMvc.perform(post("/api/groups/group-1/live-quiz")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{}"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.success").value(false));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void createLiveQuiz_quizSetWrongGroup_returns403() throws Exception {
+        GroupMember leaderMember = new GroupMember();
+        leaderMember.setRole(GroupMember.GroupRole.LEADER);
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.of(leaderMember));
+
+        ChurchGroup otherGroup = new ChurchGroup();
+        otherGroup.setId("group-other");
+        GroupQuizSet qs = new GroupQuizSet();
+        qs.setId("qs-1");
+        qs.setGroup(otherGroup);
+        when(groupQuizSetRepository.findById("qs-1")).thenReturn(Optional.of(qs));
+
+        mockMvc.perform(post("/api/groups/group-1/live-quiz")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"quizSetId\":\"qs-1\"}"))
+                .andExpect(status().isForbidden())
+                .andExpect(jsonPath("$.success").value(false));
+    }
 
     @Test
     void createGroup_withoutAuth_shouldReturn401() throws Exception {
