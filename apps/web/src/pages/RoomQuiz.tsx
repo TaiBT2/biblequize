@@ -10,6 +10,7 @@ import {
   MatchResultOverlay, SdArenaHeader, RoundScoreboard,
   type PlayerScore,
 } from './room/RoomOverlays';
+import SequentialFinalView from './room/SequentialFinalView';
 
 type Question = { id: string; content: string; options: string[]; explanation?: string };
 
@@ -18,6 +19,16 @@ type EliminationToast = { id: number; username: string; rank: number };
 interface RoomQuizLocationState {
   mode?: string;
   myTeam?: string;
+  isHost?: boolean;
+  hostId?: string;
+  fromGroupId?: string;
+}
+
+interface PerPlayerAnswer {
+  userId: string;
+  username: string;
+  answerIndex: number | null;
+  isCorrect: boolean;
 }
 
 const ANSWER_LETTERS = ['A', 'B', 'C', 'D'];
@@ -37,6 +48,8 @@ const RoomQuiz: React.FC = () => {
   const isBattleRoyale = gameMode === 'BATTLE_ROYALE';
   const isTeamVsTeam = gameMode === 'TEAM_VS_TEAM';
   const isSuddenDeath = gameMode === 'SUDDEN_DEATH';
+  const isSequential = gameMode === 'GROUP_LIVE_SEQUENTIAL';
+  const isHost: boolean = state?.isHost ?? false;
 
   const myUsername = localStorage.getItem('userName') ?? '';
 
@@ -83,6 +96,11 @@ const RoomQuiz: React.FC = () => {
   const [sdSpectating, setSdSpectating] = useState(false);
   const [sdMyUserId, setSdMyUserId] = useState('');
 
+  // Group Live Sequential state (Feature A)
+  const [seqAnswered, setSeqAnswered] = useState(0);
+  const [seqTotal, setSeqTotal] = useState(0);
+  const [revealedData, setRevealedData] = useState<{ correctIndex: number; explanation?: string; answers: PerPlayerAnswer[] } | null>(null);
+
   // Social fun state
   const [reactions, setReactions] = useState<Array<{ senderId: string; senderName: string; reaction: string }>>([]);
   const [latestAnswer, setLatestAnswer] = useState<{ playerId: string; username: string; isCorrect: boolean; reactionTimeMs: number } | null>(null);
@@ -115,6 +133,30 @@ const RoomQuiz: React.FC = () => {
           setSubmitting(false);
           setPerfectA(false);
           setPerfectB(false);
+          // Sequential reset
+          setRevealedData(null);
+          setSeqAnswered(0);
+          break;
+        }
+        // ── Group Live Sequential (Feature A) ──
+        case 'SEQUENTIAL_PROGRESS': {
+          const d = msg.data as { answered: number; total: number };
+          setSeqAnswered(d.answered);
+          setSeqTotal(d.total);
+          break;
+        }
+        case 'QUESTION_REVEALED': {
+          const d = msg.data as {
+            correctIndex: number;
+            explanation?: string;
+            answers: PerPlayerAnswer[];
+            leaderboard: PlayerScore[];
+          };
+          setRevealedData({ correctIndex: d.correctIndex, explanation: d.explanation, answers: d.answers });
+          setCorrectIndex(d.correctIndex);
+          if (Array.isArray(d.leaderboard)) {
+            setScores(d.leaderboard.sort((a, b) => b.score - a.score));
+          }
           break;
         }
         case 'ROUND_END': {
@@ -257,9 +299,14 @@ const RoomQuiz: React.FC = () => {
   const inSdMatch = isSuddenDeath && (sdChampionName === myUsername || sdChallengerName === myUsername);
   const canAnswer = useMemo(
     () => connected && question && timeLeft > 0 && selected === null && !submitting
-      && !isEliminated && !(isSuddenDeath && sdSpectating),
-    [connected, question, timeLeft, selected, submitting, isEliminated, isSuddenDeath, sdSpectating]
+      && !isEliminated && !(isSuddenDeath && sdSpectating) && !revealedData,
+    [connected, question, timeLeft, selected, submitting, isEliminated, isSuddenDeath, sdSpectating, revealedData]
   );
+
+  const handleAdvance = () => {
+    if (!roomId || !isHost || !isSequential) return;
+    send(`/app/room/${roomId}/advance`, {});
+  };
 
   const submitAnswer = (idx: number) => {
     if (!roomId || !question || !canAnswer) return;
@@ -289,7 +336,21 @@ const RoomQuiz: React.FC = () => {
 
   // ── Overlays ──
   if (showPodium) {
-    return <PodiumScreen results={finalResults} onClose={() => navigate('/multiplayer', { replace: true })} />;
+    const exitTo = state?.fromGroupId ? `/groups/${state.fromGroupId}` : '/multiplayer';
+    if (isSequential) {
+      return (
+        <SequentialFinalView
+          roomName={`Quiz ${roomId?.slice(-4) ?? ''}`}
+          results={finalResults}
+          myUsername={myUsername}
+          isHost={isHost}
+          totalQuestions={totalQuestions}
+          onClose={() => navigate(exitTo, { replace: true })}
+          onCreateNew={() => navigate(exitTo, { replace: true })}
+        />
+      );
+    }
+    return <PodiumScreen results={finalResults} onClose={() => navigate(exitTo, { replace: true })} />;
   }
   if (isTeamVsTeam && teamWinner !== null) {
     return (
@@ -494,30 +555,72 @@ const RoomQuiz: React.FC = () => {
         <div className="grid lg:grid-cols-[1fr_280px] gap-5">
           {/* ── Question + Answers area ── */}
           <div className="space-y-6">
-            {/* Mobile round counter */}
-            <div className="flex items-center justify-between md:hidden">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-secondary text-sm" style={FILL_STYLE}>quiz</span>
-                <span className="text-[10px] font-black uppercase tracking-wider text-secondary">
-                  {t('room.quiz.questionProgress', { current: questionIndex + 1, total: totalQuestions || '?' })}
-                </span>
-              </div>
-              {scores.length > 0 && (
-                <div className="text-[10px] font-bold text-on-surface-variant">
-                  {t('room.quiz.points', { count: scores.find(s => s.username === myUsername)?.score ?? 0 })}
+            {/* Sequential mode top-bar (mockup feature_A tab 2) */}
+            {isSequential ? (
+              <>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex-1">
+                    <div className="text-[10px] font-bold uppercase tracking-[1px]" style={{ color: '#a78bfa' }}>
+                      CÂU {questionIndex + 1} / {totalQuestions || '?'}
+                    </div>
+                    <div className="text-[12px] text-on-surface/85 font-semibold mt-0.5">
+                      {scores.length > 0
+                        ? `${scores.length}/${scores.length} đang chơi`
+                        : t('room.quiz.waitingQuestion')}
+                    </div>
+                  </div>
+                  <div className="relative w-[38px] h-[38px] flex-shrink-0">
+                    <svg viewBox="0 0 38 38" className="w-full h-full -rotate-90">
+                      <circle cx="19" cy="19" r="16" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="4" />
+                      <circle cx="19" cy="19" r="16" fill="none" stroke="#e8a832" strokeWidth="4" strokeLinecap="round"
+                        strokeDasharray="113" strokeDashoffset={113 * (1 - timerPercent / 100)} />
+                    </svg>
+                    <div className="absolute inset-0 grid place-items-center text-[12px] font-extrabold tabular-nums" style={{ color: '#e8a832' }}>
+                      {timeLeft}
+                    </div>
+                  </div>
                 </div>
-              )}
-            </div>
+                {/* Purple progress bar */}
+                <div className="h-1 rounded-full overflow-hidden mb-5" style={{ background: 'rgba(255,255,255,0.06)' }}>
+                  <div className="h-full rounded-full" style={{
+                    width: `${totalQuestions > 0 ? ((questionIndex + 1) / totalQuestions) * 100 : 0}%`,
+                    background: 'linear-gradient(90deg, #a78bfa 0%, #c084fc 100%)',
+                  }} />
+                </div>
+                {/* Question box centered (mockup style) */}
+                <div className="rounded-xl px-4 py-5 mb-4 text-center"
+                  style={{ background: 'rgba(17,19,30,0.5)', border: '1px solid rgba(232,168,50,0.1)' }}>
+                  <div className="text-[16px] md:text-[18px] font-semibold leading-snug">
+                    {question?.content || t('room.quiz.waitingQuestion')}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                {/* Mobile round counter (non-sequential modes) */}
+                <div className="flex items-center justify-between md:hidden">
+                  <div className="flex items-center gap-2">
+                    <span className="material-symbols-outlined text-secondary text-sm" style={FILL_STYLE}>quiz</span>
+                    <span className="text-[10px] font-black uppercase tracking-wider text-secondary">
+                      {t('room.quiz.questionProgress', { current: questionIndex + 1, total: totalQuestions || '?' })}
+                    </span>
+                  </div>
+                  {scores.length > 0 && (
+                    <div className="text-[10px] font-bold text-on-surface-variant">
+                      {t('room.quiz.points', { count: scores.find(s => s.username === myUsername)?.score ?? 0 })}
+                    </div>
+                  )}
+                </div>
 
-            {/* Question Card */}
-            <div className="relative w-full flex flex-col items-center justify-center text-center p-8 md:p-10 bg-surface-container-low rounded-[2rem] border border-outline-variant/10 shadow-2xl overflow-hidden min-h-[140px]">
-              {/* Gold left accent bar */}
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-24 bg-secondary rounded-r-full" />
-
-              <h2 className="font-headline text-xl md:text-3xl font-extrabold tracking-tight leading-snug max-w-3xl text-on-surface">
-                {question?.content || t('room.quiz.waitingQuestion')}
-              </h2>
-            </div>
+                {/* Question Card (Stitch design — non-sequential modes) */}
+                <div className="relative w-full flex flex-col items-center justify-center text-center p-8 md:p-10 bg-surface-container-low rounded-[2rem] border border-outline-variant/10 shadow-2xl overflow-hidden min-h-[140px]">
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-24 bg-secondary rounded-r-full" />
+                  <h2 className="font-headline text-xl md:text-3xl font-extrabold tracking-tight leading-snug max-w-3xl text-on-surface">
+                    {question?.content || t('room.quiz.waitingQuestion')}
+                  </h2>
+                </div>
+              </>
+            )}
 
             {/* Answer Grid — 2x2. AnswerButton handles per-position colour
                 (A=Coral, B=Sky, C=Gold, D=Sage) + state visuals + icons. */}
@@ -536,14 +639,129 @@ const RoomQuiz: React.FC = () => {
             </div>
 
             {/* Feedback */}
-            {selected !== null && correctIndex === null && !isSpectator && !(isSuddenDeath && sdSpectating) && (
+            {selected !== null && correctIndex === null && !isSpectator && !(isSuddenDeath && sdSpectating) && !isSequential && (
               <div className="text-center text-on-surface-variant text-sm animate-pulse flex items-center justify-center gap-2">
                 <span className="material-symbols-outlined text-sm animate-spin">hourglass_empty</span>
                 {t('room.quiz.waitingResult')}
               </div>
             )}
-            {/* Result Popup Overlay (Stitch design) */}
-            {correctIndex !== null && !isSpectator && !(isSuddenDeath && sdSpectating) && (
+
+            {/* ─── Sequential Mode: Waiting Strip (after submit, before reveal) ─── */}
+            {isSequential && selected !== null && !revealedData && (
+              <div
+                data-testid="sequential-waiting-strip"
+                className="rounded-xl px-4 py-3.5 flex items-center gap-3"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(167,139,250,0.1) 0%, rgba(50,52,64,0.4) 60%)',
+                  border: '1px solid rgba(167,139,250,0.25)',
+                }}
+              >
+                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                  style={{ background: 'rgba(167,139,250,0.15)', border: '1px solid rgba(167,139,250,0.3)' }}
+                >
+                  <span className="material-symbols-outlined text-[18px] animate-pulse" style={{ color: '#a78bfa' }}>
+                    hourglass_empty
+                  </span>
+                </div>
+                <div className="flex-1 text-on-surface text-[12px] font-medium leading-snug">
+                  <strong style={{ color: '#c4b5fd' }}>
+                    {t('room.quiz.sequentialWaiting', { remaining: Math.max(0, seqTotal - seqAnswered) })}
+                  </strong>
+                  {' '}{t('room.quiz.sequentialWaitingDesc')}
+                  <div className="flex gap-1 mt-1.5">
+                    {Array.from({ length: seqTotal }).map((_, i) => (
+                      <div
+                        key={i}
+                        className="w-2 h-2 rounded-full"
+                        style={{
+                          background: i < seqAnswered
+                            ? 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)'
+                            : 'rgba(167,139,250,0.3)',
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* ─── Sequential Mode: Reveal Panel + Leader Advance ─── */}
+            {isSequential && revealedData && (
+              <div
+                data-testid="sequential-reveal-panel"
+                className="rounded-xl p-4 space-y-3"
+                style={{
+                  background: 'rgba(50,52,64,0.6)',
+                  border: '1px solid rgba(232,168,50,0.25)',
+                  backdropFilter: 'blur(12px)',
+                }}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-[20px] text-secondary" style={FILL_STYLE}>
+                    check_circle
+                  </span>
+                  <span className="text-on-surface font-bold text-[14px]">
+                    {t('room.quiz.sequentialAnswerIs', { letter: ANSWER_LETTERS[revealedData.correctIndex] })}
+                  </span>
+                </div>
+                {revealedData.explanation && (
+                  <p className="text-on-surface-variant text-[12px] leading-relaxed">
+                    {revealedData.explanation}
+                  </p>
+                )}
+                {/* Per-player answers */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2 border-t border-white/5">
+                  {revealedData.answers.map(a => (
+                    <div
+                      key={a.userId}
+                      className={`px-2 py-1.5 rounded-md text-[11px] flex items-center justify-between gap-1 ${
+                        a.isCorrect
+                          ? 'bg-green-500/10 border border-green-500/20'
+                          : a.answerIndex === null
+                            ? 'bg-white/5 border border-white/10'
+                            : 'bg-error/10 border border-error/20'
+                      }`}
+                    >
+                      <span className="truncate text-on-surface/90 font-medium">{a.username}</span>
+                      <span className={`flex-shrink-0 font-bold ${a.isCorrect ? 'text-green-400' : a.answerIndex === null ? 'text-on-surface/40' : 'text-error'}`}>
+                        {a.answerIndex === null ? '—' : ANSWER_LETTERS[a.answerIndex]}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                {/* Leader advance button or member waiting hint */}
+                <div className="pt-2 border-t border-white/5">
+                  {isHost ? (() => {
+                    const allAnswered = seqTotal > 0 && seqAnswered >= seqTotal;
+                    return (
+                      <button
+                        data-testid="sequential-advance-btn"
+                        onClick={handleAdvance}
+                        disabled={!allAnswered}
+                        title={!allAnswered ? t('room.quiz.sequentialWaiting', { remaining: Math.max(0, seqTotal - seqAnswered) }) : undefined}
+                        className="w-full py-3 rounded-xl text-[14px] font-bold flex items-center justify-center gap-2 transition-all enabled:hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed"
+                        style={{
+                          background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
+                          color: '#11131e',
+                          boxShadow: allAnswered ? '0 6px 20px rgba(232,168,50,0.3)' : undefined,
+                        }}
+                      >
+                        {t('room.quiz.sequentialAdvance')}
+                        <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                      </button>
+                    );
+                  })() : (
+                    <div className="text-center text-on-surface-variant text-[12px] py-2 flex items-center justify-center gap-2">
+                      <span className="material-symbols-outlined text-[14px] animate-pulse">hourglass_empty</span>
+                      {t('room.quiz.sequentialWaitingForLeader')}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Result Popup Overlay (Stitch design) — non-sequential modes only */}
+            {!isSequential && correctIndex !== null && !isSpectator && !(isSuddenDeath && sdSpectating) && (
               <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-surface-container-lowest/80 backdrop-blur-md">
                 <div className="w-full max-w-md bg-surface-container-high rounded-2xl overflow-hidden shadow-2xl border border-secondary/20" style={{ boxShadow: '0 0 20px rgba(248, 189, 69, 0.15)' }}>
                   {/* Header */}

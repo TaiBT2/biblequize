@@ -84,6 +84,16 @@ public class ChurchGroupController {
 
             Map<String, Object> result = churchGroupService.createGroup(name, description, isPublic, user);
             return ResponseEntity.ok(Map.of("success", true, "group", result));
+        } catch (RuntimeException e) {
+            // 422 + structured code so FE can show targeted "manage existing
+            // groups first" CTA per SPEC §4.2.
+            if ("MAX_GROUPS_OWNED".equals(e.getMessage())) {
+                return ResponseEntity.unprocessableEntity().body(Map.of(
+                        "success", false,
+                        "code", "MAX_GROUPS_OWNED",
+                        "message", "Bạn đã tạo tối đa 2 nhóm. Hãy giải tán hoặc chuyển quyền 1 nhóm trước khi tạo nhóm mới."));
+            }
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
@@ -137,12 +147,16 @@ public class ChurchGroupController {
     }
 
     /**
-     * GET /api/groups/{id} - Lay thong tin nhom
+     * GET /api/groups/{id} - Lay thong tin nhom (with viewer's myRole when authenticated)
      */
     @GetMapping("/{id}")
-    public ResponseEntity<?> getGroupDetails(@PathVariable String id) {
+    public ResponseEntity<?> getGroupDetails(@PathVariable String id, Principal principal) {
         try {
-            Map<String, Object> result = churchGroupService.getGroupDetails(id);
+            String viewerId = null;
+            if (principal != null) {
+                try { viewerId = getUser(principal).getId(); } catch (Exception ignored) {}
+            }
+            Map<String, Object> result = churchGroupService.getGroupDetails(id, viewerId);
             return ResponseEntity.ok(Map.of("success", true, "group", result));
         } catch (Exception e) {
             return ResponseEntity.status(404).body(Map.of("success", false, "message", e.getMessage()));
@@ -166,6 +180,20 @@ public class ChurchGroupController {
 
             Map<String, Object> result = churchGroupService.joinGroup(code.trim().toUpperCase(), user);
             return ResponseEntity.ok(Map.of("success", true, "data", result));
+        } catch (RuntimeException e) {
+            if ("MAX_GROUPS_JOINED".equals(e.getMessage())) {
+                return ResponseEntity.unprocessableEntity().body(Map.of(
+                        "success", false,
+                        "code", "MAX_GROUPS_JOINED",
+                        "message", "Bạn đã tham gia tối đa 5 nhóm. Hãy rời nhóm cũ trước khi tham gia nhóm mới."));
+            }
+            if ("KICK_COOLDOWN_ACTIVE".equals(e.getMessage())) {
+                return ResponseEntity.unprocessableEntity().body(Map.of(
+                        "success", false,
+                        "code", "KICK_COOLDOWN_ACTIVE",
+                        "message", "Bạn đã bị kick khỏi nhóm này gần đây. Hãy thử lại sau 7 ngày."));
+            }
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
@@ -362,15 +390,54 @@ public class ChurchGroupController {
 
     /**
      * DELETE /api/groups/{id}/members/{userId} - Kick thanh vien (chi leader/mod)
+     * Body (optional): {"reason": "..."} — recorded in group_kick_log so the
+     * 7-day re-join cooldown (SPEC v1.1 §12.2) can be enforced and reviewed.
      */
     @DeleteMapping("/{id}/members/{userId}")
     public ResponseEntity<?> kickMember(@PathVariable String id,
                                         @PathVariable String userId,
+                                        @RequestBody(required = false) Map<String, String> body,
                                         Principal principal) {
         try {
             User user = getUser(principal);
-            Map<String, Object> result = churchGroupService.kickMember(id, user.getId(), userId);
+            String reason = body == null ? null : body.get("reason");
+            Map<String, Object> result = churchGroupService.kickMember(id, user.getId(), userId, reason);
             return ResponseEntity.ok(result);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * POST /api/groups/{id}/report (SPEC v1.1 §13.9)
+     * Body: {"reason": "SPAM"|"INAPPROPRIATE"|"HARASSMENT"|"OTHER", "note": "..."}
+     * Auth required (any user, even non-members can report). One open
+     * report per user per group at a time.
+     */
+    @PostMapping("/{id}/report")
+    public ResponseEntity<?> reportGroup(@PathVariable String id,
+                                         @RequestBody Map<String, String> body,
+                                         Principal principal) {
+        try {
+            User user = getUser(principal);
+            String reason = body == null ? null : body.get("reason");
+            String note = body == null ? null : body.get("note");
+            Map<String, Object> result = churchGroupService.reportGroup(id, user, reason, note);
+            return ResponseEntity.status(201).body(Map.of("success", true, "report", result));
+        } catch (RuntimeException e) {
+            if ("INVALID_REASON".equals(e.getMessage())) {
+                return ResponseEntity.badRequest().body(Map.of(
+                        "success", false,
+                        "code", "INVALID_REASON",
+                        "message", "Lý do báo cáo không hợp lệ. Chọn: SPAM, INAPPROPRIATE, HARASSMENT, OTHER."));
+            }
+            if ("ALREADY_REPORTED".equals(e.getMessage())) {
+                return ResponseEntity.unprocessableEntity().body(Map.of(
+                        "success", false,
+                        "code", "ALREADY_REPORTED",
+                        "message", "Bạn đã có một báo cáo đang chờ duyệt cho nhóm này."));
+            }
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
@@ -486,18 +553,32 @@ public class ChurchGroupController {
 
                 q.setType(Question.Type.multiple_choice_single);
                 q.setLanguage((String) raw.getOrDefault("language", "vi"));
-                q.setOptions((List<String>) raw.getOrDefault("options", List.of()));
+                List<String> options = (List<String>) raw.getOrDefault("options", List.of());
+                q.setOptions(options);
 
+                // Validate correctAnswer is a valid index into options.
+                // Reject early so a malformed payload (e.g. {correctAnswer: 99} for
+                // a 4-option question) doesn't blow up at quiz-grading time.
+                int optionCount = options.size();
                 Object ca = raw.get("correctAnswer");
+                List<Integer> correctIndexes;
                 if (ca instanceof List<?> list) {
-                    q.setCorrectAnswer(list.stream()
-                            .map(v -> v instanceof Number n ? n.intValue() : 0)
-                            .collect(Collectors.toList()));
+                    correctIndexes = list.stream()
+                            .map(v -> v instanceof Number n ? n.intValue() : -1)
+                            .collect(Collectors.toList());
                 } else if (ca instanceof Number n) {
-                    q.setCorrectAnswer(List.of(n.intValue()));
+                    correctIndexes = List.of(n.intValue());
                 } else {
-                    q.setCorrectAnswer(List.of(0));
+                    correctIndexes = List.of(0);
                 }
+                for (int idx : correctIndexes) {
+                    if (idx < 0 || idx >= optionCount) {
+                        return ResponseEntity.badRequest().body(Map.of(
+                                "success", false,
+                                "message", "correctAnswer index " + idx + " is out of range (options count = " + optionCount + ")"));
+                    }
+                }
+                q.setCorrectAnswer(correctIndexes);
 
                 q.setExplanation((String) raw.get("explanation"));
                 q.setSource("group-custom");
@@ -559,32 +640,133 @@ public class ChurchGroupController {
                 return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Quiz set chua co cau hoi nao"));
             }
 
-            // Tìm phòng đang lobby cho quiz set này — nếu có thì join chung thay vì tạo mới
-            Optional<Room> existingRoom = roomRepository.findFirstByGroupQuizSetIdAndStatus(setId, Room.RoomStatus.LOBBY);
-            Room room;
-            if (existingRoom.isPresent()) {
-                room = existingRoom.get();
-                boolean alreadyIn = roomPlayerRepository.findByRoomIdAndUserId(room.getId(), user.getId()).isPresent();
-                if (!alreadyIn) {
-                    roomService.joinRoom(room.getRoomCode(), user);
-                }
-            } else {
-                room = roomService.createRoom(
-                        gqs.getName(), user,
-                        8, questionIds.size(), 15,
-                        Room.RoomMode.SPEED_RACE, false,
-                        Room.RoomDifficulty.MIXED, "ALL",
-                        Room.QuestionSource.CUSTOM, null);
-                room.setCustomQuestionIds(questionIds);
-                room.setGroupQuizSetId(setId);
-                roomRepository.save(room);
-            }
+            // Per spec v1.1 §7.5: each click creates a new room — no dedup.
+            // Two members clicking "Tự ôn" must NOT be merged into one lobby
+            // (solo intent ≠ multiplayer race). GFA-17 will refactor this to
+            // a Practice session entirely; for now keep SPEED_RACE per-click.
+            Room room = roomService.createRoom(
+                    gqs.getName(), user,
+                    8, questionIds.size(), 15,
+                    Room.RoomMode.SPEED_RACE, false,
+                    Room.RoomDifficulty.MIXED, "ALL",
+                    Room.QuestionSource.CUSTOM, null);
+            room.setCustomQuestionIds(questionIds);
+            room.setGroupQuizSetId(setId);
+            roomRepository.save(room);
 
             Map<String, Object> roomInfo = new LinkedHashMap<>();
             roomInfo.put("id", room.getId());
             roomInfo.put("roomCode", room.getRoomCode());
             roomInfo.put("roomName", room.getRoomName());
             return ResponseEntity.ok(Map.of("success", true, "room", roomInfo));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * POST /api/groups/{id}/live-rooms
+     * Feature A — Tạo phòng live multiplayer "Chơi cùng nhau" với mode
+     * GROUP_LIVE_SEQUENTIAL. Authorize LEADER/MOD. Body: {quizSetId, timePerQuestion?}.
+     * Returns roomId + roomCode để FE navigate sang RoomLobby.
+     *
+     * Per spec v1.1 §13.5 + Phụ lục B: renamed from /live-quiz.
+     */
+    @PostMapping("/{id}/live-rooms")
+    @Transactional
+    @SuppressWarnings("unchecked")
+    public ResponseEntity<?> createLiveQuiz(@PathVariable("id") String groupId,
+                                            @RequestBody Map<String, Object> body,
+                                            Principal principal) {
+        try {
+            User user = getUser(principal);
+            requireLeaderOrMod(groupId, user.getId());
+
+            String quizSetId = (String) body.get("quizSetId");
+            if (quizSetId == null || quizSetId.isBlank()) {
+                return ResponseEntity.badRequest()
+                        .body(Map.of("success", false, "message", "Thieu quizSetId"));
+            }
+            int timePerQuestion = body.get("timePerQuestion") instanceof Number n
+                    ? Math.min(Math.max(n.intValue(), 10), 120) : 30;
+
+            GroupQuizSet gqs = groupQuizSetRepository.findById(quizSetId)
+                    .orElseThrow(() -> new RuntimeException("Khong tim thay quiz set"));
+            if (!gqs.getGroup().getId().equals(groupId)) {
+                return ResponseEntity.status(403)
+                        .body(Map.of("success", false, "message", "Quiz set khong thuoc nhom nay"));
+            }
+
+            List<String> questionIds = (List<String>) gqs.getQuestionIds();
+            if (questionIds == null || questionIds.isEmpty()) {
+                return ResponseEntity.badRequest()
+                        .body(Map.of("success", false, "message", "Quiz set chua co cau hoi nao"));
+            }
+
+            // Per spec v1.1 §8.7: a group can have multiple live rooms in
+            // parallel (e.g., 2 cell groups practising at once). Each click
+            // by a leader/mod creates a new room — no dedup.
+            Room room = roomService.createRoom(
+                    gqs.getName(), user,
+                    20, questionIds.size(), timePerQuestion,
+                    Room.RoomMode.GROUP_LIVE_SEQUENTIAL, false,
+                    Room.RoomDifficulty.MIXED, "ALL",
+                    Room.QuestionSource.CUSTOM, null);
+            room.setCustomQuestionIds(questionIds);
+            room.setGroupQuizSetId(quizSetId);
+            roomRepository.save(room);
+
+            Map<String, Object> roomInfo = new LinkedHashMap<>();
+            roomInfo.put("id", room.getId());
+            roomInfo.put("roomCode", room.getRoomCode());
+            roomInfo.put("roomName", room.getRoomName());
+            roomInfo.put("mode", room.getMode().name());
+            return ResponseEntity.ok(Map.of("success", true, "room", roomInfo));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * GET /api/groups/{id}/live-rooms
+     * Trả về list phòng live đang LOBBY/IN_PROGRESS thuộc group — để mọi member
+     * thấy "Đang diễn ra" trong tab Bộ câu hỏi và join chung phòng.
+     *
+     * Per spec v1.1 §13.5: renamed from /active-rooms để align với POST endpoint.
+     */
+    @GetMapping("/{id}/live-rooms")
+    public ResponseEntity<?> listActiveRooms(@PathVariable("id") String groupId, Principal principal) {
+        try {
+            User user = getUser(principal);
+            // Chỉ thành viên nhóm mới xem được
+            groupMemberRepository.findByGroupIdAndUserId(groupId, user.getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Ban khong phai thanh vien cua nhom nay"));
+
+            List<Room> rooms = roomRepository.findActiveRoomsForGroup(groupId);
+            // Map quizSetId → name để FE hiển thị
+            Map<String, String> qsNames = new HashMap<>();
+            for (GroupQuizSet qs : groupQuizSetRepository.findByGroupId(groupId)) {
+                qsNames.put(qs.getId(), qs.getName());
+            }
+            List<Map<String, Object>> list = rooms.stream().map(r -> {
+                Map<String, Object> m = new LinkedHashMap<>();
+                m.put("id", r.getId());
+                m.put("roomCode", r.getRoomCode());
+                m.put("roomName", r.getRoomName());
+                m.put("mode", r.getMode().name());
+                m.put("status", r.getStatus().name());
+                m.put("currentPlayers", r.getCurrentPlayers());
+                m.put("maxPlayers", r.getMaxPlayers());
+                m.put("quizSetId", r.getGroupQuizSetId());
+                m.put("quizSetName", qsNames.get(r.getGroupQuizSetId()));
+                m.put("createdAt", r.getCreatedAt());
+                return m;
+            }).collect(Collectors.toList());
+            return ResponseEntity.ok(Map.of("success", true, "rooms", list));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
         } catch (Exception e) {

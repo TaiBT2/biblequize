@@ -1,5 +1,295 @@
 # TODO
 
+## 2026-05-06 — v1 implementation gaps (per SPEC v1.1 §15.2) [DONE]
+
+> **Source:** SPEC_GROUP_v1.1.md §15.2 lists 6 v1 gaps tracked separately. This batch picks 5 bounded gaps; skips Q-K (push notifications, needs FCM infra) and GFA-17 (solo refactor, large architectural change — defer until evidence of usage).
+
+### Tasks
+
+#### Task GAP-E: Max 2 groups owned per user [x] DONE
+- **Spec ref**: §4.2 line 218-235, Phụ lục A
+- **File**: `ChurchGroupService.createGroup` + `ChurchGroupRepository.countByLeaderIdAndDeletedAtIsNull`
+- **Scope**: ~15 LOC + 1 test
+
+#### Task GAP-F: Max 5 groups joined per user [x] DONE
+- **Spec ref**: §4.3 line 276, Phụ lục A
+- **File**: `ChurchGroupService.joinGroup` + `GroupMemberRepository.countByUserId`
+- **Scope**: ~10 LOC + 1 test
+
+#### Task GAP-J: 1 active room per user enforcement [x] DONE
+- **Spec ref**: §8.7 line 631-632
+- **File**: `RoomService.joinRoom` + `RoomPlayerRepository.findActiveRoomByUserId`
+- **Scope**: ~15 LOC + 1 test
+
+#### Task GAP-L: 7-day re-join cooldown after kick [x] DONE
+- **Spec ref**: §12.2 line 841-842, Phụ lục A
+- **Files**: V41 migration (new table `group_kick_log`), new entity + repo, hook into `kickMember` + `joinGroup`
+- **Scope**: ~50 LOC + DB migration
+
+#### Task GAP-M: Report group endpoint [x] DONE
+- **Spec ref**: §12.4 + §13.9 + §14.4
+- **Files**: V41 migration adds `group_report` table, new entity + repo + controller endpoint
+- **Scope**: ~80 LOC + DB migration
+
+### Skipped (out of scope this session)
+
+- **Q-K Push notifications** (11 events): needs FCM/APNs infra setup, much larger feature. Track as v1.5 work.
+- **GFA-17 solo→Practice refactor**: major architectural change, defer per spec v1.1 §7.5 implementation note.
+
+---
+
+## 2026-05-06 — Spec v1.1 alignment [DONE]
+
+> **Source:** SPEC_GROUP_v1.1.md §15.4 — implementation team adjustments after spec audit resolved 4 pending decisions.
+> **Branch:** `feature/group-live-and-scheduled` (current).
+> **Scope:** 3 small code changes (<1 day) + TODO update marking decisions resolved.
+
+### Resolved decisions (per spec v1.1)
+
+| Q | v1.1 resolution | Code action |
+|---|---|---|
+| Q-A | Solo NOT into group leaderboard (§7.5 + §10.2 aligned) | No code change — already correct |
+| Q-B | Manual advance (host clicks "Sang câu tiếp") — KEEP P1-3 fix | No code change — P1-3 commit `497c1d3` correct |
+| Q-C | Concurrent rooms allowed, no dedup | **Adj-1 below** |
+| Q-D | Keep MOD role in v1, remove v1.5 | No code change — current correct |
+| Q-N | Rename `/live-quiz` → `/live-rooms` | **Adj-3 below** |
+
+### Tasks
+
+#### Task SPEC11-1: Adj-1 — Bỏ dedup live mode in createLiveQuiz [x] DONE
+- **Spec ref**: §8.2 line 538-540, §8.7 line 629-630
+- **File**: `apps/api/src/main/java/com/biblequiz/api/ChurchGroupController.java` line 639-647
+- **Action**: delete dedup block; always `roomService.createRoom(...)`
+- **Estimated**: ~5 LOC
+- **Commit**: `fix(group): remove dedup in createLiveQuiz per spec v1.1 §8.7 (concurrent rooms)`
+
+#### Task SPEC11-2: Adj-2 — Bỏ dedup solo path in playQuizSet [x] DONE
+- **Spec ref**: §7.5 implementation note line 502-503
+- **File**: `apps/api/src/main/java/com/biblequiz/api/ChurchGroupController.java` line 580-602
+- **Action**: delete dedup block in solo path; always create new SPEED_RACE room. (GFA-17 long-term refactor solo→Practice session deferred.)
+- **Estimated**: ~5 LOC + drop unused repo method `findFirstByGroupQuizSetIdAndStatusAndMode`
+- **Commit**: `fix(group): remove dedup in playQuizSet so solo doesn't merge two members`
+
+#### Task SPEC11-3: Adj-3 — Rename endpoint /live-quiz → /live-rooms [x] DONE
+- **Spec ref**: §13.5, §15.3 Q-N row, Phụ lục B
+- **File(s)**:
+  - `apps/api/src/main/java/com/biblequiz/api/ChurchGroupController.java` — `@PostMapping("/{id}/live-quiz")` → `/live-rooms`
+  - `apps/api/src/main/java/com/biblequiz/api/ChurchGroupController.java` — `@GetMapping("/{id}/active-rooms")` → also rename to `/live-rooms` (GET) per spec §13.5 row 947
+  - `apps/web/src/api/groups.ts:23` — URL path
+  - `apps/api/src/test/java/com/biblequiz/api/ChurchGroupControllerTest.java` — mock paths
+- **Estimated**: 4 file edits, ~10 LOC
+- **Commit**: `fix(group): rename /live-quiz → /live-rooms per spec v1.1 §13.5`
+
+#### Task SPEC11-4: Update tracking section for v1.1 alignment [x] DONE
+- Mark v1.0 follow-ups as superseded by v1.1
+- Move v1.5/v2 deferred tasks to roadmap section
+- Commit: `docs(todo): align with SPEC_GROUP_v1.1 — mark resolved decisions`
+
+---
+
+## 2026-05-06 — Spec compliance follow-ups (sau review SPEC_GROUP_v1) [SUPERSEDED by v1.1]
+
+> **Source:** Cross-reference giữa SPEC_GROUP_v1.md (1192 dòng, last updated 2026-05-06) và codebase hiện tại sau khi ship audit fixes Batch 1+2+3.
+> **Scope:** Gaps + conflicts giữa spec và implementation. KHÔNG phải bugs runtime — code hiện tại chạy được, chỉ chưa khớp spec target state.
+> **Branch strategy:** Mỗi task = 1 PR riêng. Không bundle vì impact phân tán.
+> **Status legend:** `[ ] TODO` · `[?] DECISION PENDING` (cần Bui confirm trước khi code) · `[v1.5]` (defer ngoài beta).
+
+### Decisions còn pending (block một số tasks bên dưới)
+
+#### Q-A: "Tự ôn solo" có vào Group Leaderboard không? [?] DECISION PENDING
+- **Spec self-conflict**: Section 7.5 line 459 nói "không vào group leaderboard"; Section 10.2 line 677 nói "✅ đóng góp"
+- **Block**: GFA-17 (refactor flow) cần biết để wire scoring đúng
+- **Bui pick**: yes / no → cập nhật spec rồi unblock
+
+#### Q-B: Sequential mode advance — manual hay auto? [?] DECISION PENDING
+- **Spec 8.4 line 532-534**: auto next sau pause 5/10/15s
+- **Code hiện tại + audit fix P1-3**: leader manual click "Sang câu tiếp"
+- **Block**: nếu spec đúng → revert P1-3 commit `497c1d3` + làm GFA-31 (timer auto-advance)
+- **Bui pick**: keep manual (sửa spec) / change to auto (revert + new task)
+
+#### Q-C: Concurrent live rooms cho cùng quiz set? [?] DECISION PENDING
+- **Spec 8.7 line 571-573**: cho phép nhiều rooms parallel
+- **Code hiện tại** (`createLiveQuiz` line 639-647): dedup, leader thứ 2 click sẽ join phòng đã có
+- **Block**: nếu spec đúng → bỏ dedup trong `createLiveQuiz` (~5 LOC)
+- **Bui pick**: keep dedup (sửa spec) / remove dedup (immediate fix)
+
+#### Q-G: Multi-leader system v1 hay v1.5? [?] DECISION PENDING
+- **Spec section 6** (toàn bộ): multi-leader + creator special demote right + 7-day eligibility
+- **Code hiện tại**: 1 LEADER per group, không có `is_creator` flag, không có promotion endpoint
+- **Impact lớn**: ảnh hưởng Q-D (Mod role), Q-I (host disconnect promotion), permission flow chung
+- **Bui pick**: v1 (3-5 days work) / v1.5 (defer, keep current) → mặc định defer
+
+### Tasks (immediate khi unblock)
+
+#### Task GFA-17: Refactor "Tự ôn solo" sang Practice session [ ] TODO
+- **Source**: SPEC_GROUP_v1 section 7.5 (line 450-464): "Member vào Practice mode"
+- **Why**: hiện `playQuizSet` tạo SPEED_RACE Room (multiplayer mode) cho solo intent → 2 members click cùng lúc có thể vào chung phòng (P0-1 fix bandage dedup nhưng concept vẫn sai)
+- **Block by**: Q-A (scoring contribution decision)
+- **File(s)**:
+  - `apps/api/src/main/java/com/biblequiz/api/ChurchGroupController.java` — `playQuizSet` refactor
+  - `apps/api/src/main/java/com/biblequiz/modules/quiz/service/SessionService.java` (or equivalent)
+  - `apps/web/src/pages/GroupDetail.tsx` — `handlePlayQuizSet` → navigate to Practice page thay vì RoomLobby
+- **Estimated**: ~50 LOC + new endpoint signature
+- **After done**: drop `findFirstByGroupQuizSetIdAndStatusAndMode` repo method (no longer used)
+
+#### Task GFA-31: Sequential mode auto-advance after pause [ ] TODO (block by Q-B)
+- **Source**: SPEC_GROUP_v1 section 8.2 (config) + 8.4 (auto next)
+- **Scope**: BE add `pauseSec` field to Room entity + createLiveQuiz body; FE timer countdown after reveal then auto-fire QUESTION_START
+- **Revert needed first**: commit `497c1d3` (P1-3 manual gate) — manual button no longer applies
+- **Estimated**: ~80 LOC across BE entity + service + FE quiz screen
+
+#### Task GFA-33: Bỏ dedup trong createLiveQuiz [ ] TODO (block by Q-C)
+- **Source**: SPEC_GROUP_v1 section 8.7 line 571-573
+- **File**: `ChurchGroupController.java` line 639-647 (delete dedup block, always create new room)
+- **Estimated**: ~5 LOC
+
+#### Task GFA-N: Rename endpoint `/live-quiz` → `/live-rooms` [ ] TODO
+- **Source**: SPEC_GROUP_v1 section 13.5 endpoint naming
+- **Safe**: 0 mobile/external consumers, 1 FE call site (`apps/web/src/api/groups.ts:23`)
+- **File(s)**:
+  - `ChurchGroupController.java` — `@PostMapping`
+  - `apps/web/src/api/groups.ts:23`
+  - `ChurchGroupControllerTest.java`
+- **Estimated**: 4 file edits, ~10 LOC total
+
+### Tasks (gaps — chưa implement, defer post-beta)
+
+#### Task GFA-18: Constraint max 2 groups owned per user [ ] TODO
+- **Source**: SPEC 4.2 line 197-209
+- **File**: `ChurchGroupService.createGroup` — check `COUNT(groups WHERE creator_user_id = X AND status NOT IN ('soft_deleted')) >= 2` → reject 422 with structured error code
+
+#### Task GFA-19: Constraint max 5 groups joined per user [ ] TODO
+- **Source**: SPEC 4.3 line 251
+- **File**: `ChurchGroupService.joinGroup` — check membership count → reject 422
+
+#### Task GFA-20: Multi-leader system [v1.5] (block by Q-G)
+- **Source**: SPEC section 6 (toàn bộ)
+- **Scope**: DB migration `is_creator BOOLEAN`, allow multiple LEADER rows per group, promotion/demotion endpoints, max 5 leaders, 7-day eligibility, FE Settings → "Quản lý leaders" section
+- **Estimated**: 3-5 days
+- **Depends-on**: Q-G v1 vs v1.5 decision
+
+#### Task GFA-21: pause_sec config cho live room [ ] TODO
+- **Source**: SPEC 8.2 line 489-490 — Pause 5/10/15s configurable
+- **File(s)**: Room entity + createLiveQuiz body + RoomLobby config UI
+- **Bundled-with**: GFA-31 nếu Q-B chọn auto-advance (cùng cần pauseSec field)
+
+#### Task GFA-22: Host disconnect auto-promote co-leader [v1.5] (block by Q-G)
+- **Source**: SPEC 8.5 line 549-552
+- **Was**: P0-2 deferred (Bui chọn hoãn vì cần Q-G context)
+- **Strategy nếu v1.5 GFA-20 done**: auto-promote co-leader trong room
+- **Strategy nếu defer GFA-20**: cancel room broadcast `ROOM_CLOSED`, members redirect về `/groups/{id}` (option b cũ)
+
+#### Task GFA-23: Member can't join multiple rooms simultaneously [ ] TODO
+- **Source**: SPEC 8.7 line 573 "consecutive, không simultaneous"
+- **File**: `RoomService.joinRoom` — check user đã trong active room khác → reject
+
+#### Task GFA-24: Push notifications cho 11 group events [v1.5]
+- **Source**: SPEC 11 (toàn bộ table)
+- **Events**: member join/leave, leader promotion, room opened, room start, scheduled created, 24h remaining, ended winner, announcement, group locked, group will be deleted
+- **Estimated**: cần module notification chung trước (FCM/APNs setup) → defer v1.5
+
+#### Task GFA-25: 7-day re-join cooldown after kick [ ] TODO
+- **Source**: SPEC 12.2 line 771
+- **File**: `kickMember` ghi `kicked_at` + `joinGroup` check `last_kicked_at < NOW() - 7d` cho user-group pair
+
+#### Task GFA-26: Report group endpoint [v1.5]
+- **Source**: SPEC 12.4 + 13.9
+- **Scope**: `POST /api/groups/{id}/report` + `group_report` table + admin queue UI
+- **Defer**: cần admin moderation flow trước
+
+#### Task GFA-28: DB schema migration `group_quiz_set` → `quiz_set` + `quiz_set_question` [v1.5]
+- **Source**: SPEC 14.2 line 962-988
+- **Why**: hiện dùng JSON list `questionIds`; spec target dùng join table cho referential integrity + per-question order
+- **Impact**: Flyway migration + entity refactor + data backfill
+- **Defer**: refactor lớn, không block beta
+
+#### Task GFA-29: Browse Library quiz set source [v1.5]
+- **Source**: SPEC 7.3 line 431-435
+- **Scope**: Library = template quiz sets share giữa các groups, leader pick + clone
+- **Defer**: cần curate library content trước
+
+#### Task GFA-30: Document Q-A decision [ ] TODO (block by Q-A)
+- **Action**: sau khi Bui pick, sửa SPEC_GROUP_v1.md để remove conflict (1 trong 7.5 hoặc 10.2 phải đổi)
+- **Bonus**: ghi DECISIONS.md
+
+#### Task GFA-32: Mod role removal [v1.5] (block by Q-G)
+- **Source**: SPEC 2.1 + 15.1 + 15.2 migration
+- **Scope**: DB migration `UPDATE group_member SET role='leader' WHERE role='mod'`, BE `requireLeaderOrMod` → `requireLeader`, FE drop MOD badge
+- **Depends-on**: GFA-20 (multi-leader) — phải có multiple LEADER trước mới remove MOD
+- **Risk**: existing MODs lose privileges nếu không được promote thành LEADER trước
+
+---
+
+## 2026-05-06 — Group → Live Room flow audit fixes [DONE]
+
+> **Source:** Static code audit của user journey Groups → GroupDetail → Quiz → Live Room (xem báo cáo audit trong Claude conversation).
+> **Branch:** `feature/group-live-and-scheduled` (current).
+> **Scope:** 15 fixes chia 3 PR — Batch 1 (P0), Batch 2 (P1), Batch 3 (P2). P0-2 (leader-leaves auto-promote/cancel) tạm hoãn theo quyết định Bui 2026-05-06.
+
+### Batch 1 — P0 critical
+
+#### Task GFA-1: P0-3 — BE thêm `myUserId` vào RoomDetailsDTO [x] DONE
+- File(s):
+  - `apps/api/src/main/java/com/biblequiz/modules/room/service/RoomService.java` (DTO + getRoomDetails(id, userId) overload)
+  - `apps/api/src/main/java/com/biblequiz/api/RoomController.java` (3 endpoints pass Principal)
+- Why: hiện FE match player bằng `username` (localStorage userName) — 2 user trùng tên = wrong host detection.
+- Checklist:
+  - [ ] RoomDetailsDTO thêm field `myUserId`
+  - [ ] RoomService.getRoomDetails(roomId, viewerUserId) — overload mới
+  - [ ] Old getRoomDetails(roomId) giữ nguyên (backward-compat trong các call site khác)
+  - [ ] RoomController: getRoomDetails / createRoom / joinRoom / switchTeam pass Principal
+  - [ ] Compile pass: `./mvnw compile -q`
+  - [ ] Commit: `fix(room): expose myUserId in RoomDetails for reliable host/player identity`
+
+#### Task GFA-2: P0-3 — FE switch from myUsername to myUserId [x] DONE
+- File(s):
+  - `apps/web/src/pages/RoomLobby.tsx` (5 sites: line 137, 147, 219, 767, 990)
+  - `apps/web/src/pages/__tests__/RoomLobby.test.tsx` (mockRoom thêm myUserId)
+- Checklist:
+  - [ ] RoomDetails type thêm `myUserId?: string`
+  - [ ] Replace `p.username === myUsername()` với `p.userId === room?.myUserId` ở mọi player matching
+  - [ ] PlayerCard prop nhận `myUserId` thay vì check qua myUsername
+  - [ ] Test mockRoom thêm `myUserId: 'host-1'`
+  - [ ] Vitest scope: `npx vitest run src/pages/__tests__/RoomLobby.test.tsx`
+  - [ ] Commit: `fix(room): match player by userId instead of username (P0-3)`
+
+#### Task GFA-3: P0-1 — BE filter solo room reuse by mode [x] DONE
+- File(s):
+  - `apps/api/src/main/java/com/biblequiz/modules/room/repository/RoomRepository.java` (add findFirstByGroupQuizSetIdAndStatusAndMode)
+  - `apps/api/src/main/java/com/biblequiz/api/ChurchGroupController.java` (playQuizSet line 567)
+- Why: "Tự ôn solo" hiện reuse ANY LOBBY room sharing quizSetId → joins live multiplayer room instead.
+- Checklist:
+  - [ ] New repo method filter mode=SPEED_RACE
+  - [ ] playQuizSet dùng method mới
+  - [ ] Compile pass
+  - [ ] Commit: `fix(group): solo play must not join live multiplayer room (P0-1)`
+
+#### Task GFA-4: Batch 1 — full regression
+- Checklist:
+  - [ ] `cd apps/web && npx vitest run`
+  - [ ] `cd apps/api && ./mvnw test -Dtest="com.biblequiz.api.**,com.biblequiz.modules.room.**,com.biblequiz.modules.group.**"`
+  - [ ] PR Batch 1
+
+### Batch 2 — P1 cluster
+
+#### Task GFA-5: P1-1 — GroupDetail error state distinguishes 404/403 [x] DONE
+#### Task GFA-6: P1-7 — Member-facing copy on disabled Start button [-] SKIP (already correctly differentiated in both mobile/desktop layouts)
+#### Task GFA-7: P1-2 — SequentialLobbyView reconnect/error props [x] DONE
+#### Task GFA-8: P1-3 — RoomQuiz advance gated on all-answered [x] DONE
+#### Task GFA-9: P1-4 — RoomQuiz prevent double-submit [-] SKIP (already guarded by canAnswer check `selected===null && !submitting`)
+#### Task GFA-10: P1-5 — Drop group code from localStorage [x] DONE
+#### Task GFA-11: P1-6 — Validate correctAnswer index in createCustomQuizSet [x] DONE
+
+### Batch 3 — P2 polish
+
+#### Task GFA-12: P2-1 — "Đang diễn ra" empty state in GroupDetail [-] SKIP (member empty state already exists at line 1850; section hide-when-empty for leader is acceptable)
+#### Task GFA-13: P2-2 — Hide ready-status copy in SEQUENTIAL mode [-] SKIP (sequential never reaches that code path — early return to SequentialLobbyView at line 262)
+#### Task GFA-14: P2-3 — Optimistic UI on ready toggle [x] DONE (throttle approach instead — simpler)
+#### Task GFA-15: P2-4 — Differentiate "Chơi cùng nhau" / "Tự ôn" buttons [-] SKIP (already differentiated via icons + tooltips + colors)
+#### Task GFA-16: P2-5 — SecureRandom for room code [x] DONE
+
+---
+
 ## 2026-05-05 — Daily Challenge Redesign theo `daily_challenge_mockup.html` [DONE]
 
 > **Source:** Bui yêu cầu redesign trang Daily Challenge match mockup HTML.
@@ -4130,30 +4420,31 @@ Found 3-layer break: BE has no chat MessageMapping, /ws blocked by Security at h
 - File(s):
   - `apps/api/src/main/java/com/biblequiz/modules/room/service/SequentialScoringService.java` (NEW)
   - `apps/api/src/main/java/com/biblequiz/modules/room/service/RoomQuizService.java` (wire mới)
-- Spec: Logic chờ tất cả player answer trước khi advance question. Sau khi all-answered → broadcast `question_revealed` event (đáp án + explanation) → sleep `discussionPauseSeconds` (default 5s) → broadcast `next_question`. Score = correct? 100 : 0 (no time bonus, vì không speed-based).
+- Spec: Logic chờ tất cả player answer trước khi advance question. Sau khi all-answered → broadcast `question_revealed` (đáp án + explanation + per-player answers). **Leader bấm nút "Sang câu tiếp" thủ công** (PN-2) → broadcast `next_question`. Score = correct? 100 : 0 (no time bonus, không speed-based).
 - Checklist:
   - [ ] Service method `recordAnswer(roomId, userId, questionId, answer)` returns `{allAnswered: bool, answeredCount, totalPlayers}`
-  - [ ] Method `advanceAfterDiscussion(roomId)` callable from scheduled task hoặc explicit timer
+  - [ ] Method `advanceToNextQuestion(roomId, leaderId)` — authorize caller phải là host, broadcast `next_question`
   - [ ] Wire trong RoomQuizService: nếu `room.mode == GROUP_LIVE_SEQUENTIAL` → dùng SequentialScoringService thay SpeedRaceScoringService
   - [ ] Compile pass
   - [ ] Commit: `feat(room): SequentialScoringService for group live mode`
 
-### Task A-3: BE — WebSocket events `question_revealed` + `discussion_pause` [ ] TODO
+### Task A-3: BE — WebSocket events `question_revealed` + leader-advance command [ ] TODO
 - File(s): `apps/api/src/main/java/com/biblequiz/api/websocket/RoomWebSocketController.java`
-- Spec: Broadcast 2 event types mới qua existing `/topic/room/{roomId}`:
-  - `QUESTION_REVEALED` payload `{questionId, correctAnswer, explanation, perPlayerAnswers: [{userId, answer, isCorrect}]}` — sau khi all-answered
-  - `DISCUSSION_PAUSE` payload `{seconds: 5, nextAt: timestamp}` — countdown UI
+- Spec:
+  - Broadcast `QUESTION_REVEALED` qua `/topic/room/{roomId}` payload `{questionId, correctAnswer, explanation, perPlayerAnswers: [{userId, answer, isCorrect}]}` — sau khi all-answered
+  - Inbound STOMP message `/app/room/{roomId}/advance` (leader-only) → trigger `advanceToNextQuestion` → broadcast `NEXT_QUESTION` payload `{questionIndex, question}`
 - Checklist:
-  - [ ] Add 2 message types vào RoomMessage.MessageType enum (hoặc DTO equivalent)
-  - [ ] Broadcast trong SequentialScoringService callback
+  - [ ] Add 2 message types vào RoomMessage.MessageType enum (`QUESTION_REVEALED`, `NEXT_QUESTION`)
+  - [ ] Broadcast `QUESTION_REVEALED` trong SequentialScoringService callback (when allAnswered=true)
+  - [ ] @MessageMapping handler cho `/advance` — authorize host, reject nếu chưa all-answered
   - [ ] Compile pass
-  - [ ] Commit: `feat(ws): question_revealed + discussion_pause events`
+  - [ ] Commit: `feat(ws): question_revealed + leader advance events`
 
 ### Task A-4: BE — Endpoint `POST /api/groups/{id}/live-quiz` [ ] TODO
 - File(s):
   - `apps/api/src/main/java/com/biblequiz/api/ChurchGroupController.java` (add endpoint)
   - `apps/api/src/main/java/com/biblequiz/modules/group/service/ChurchGroupService.java` (createLiveQuiz method)
-- Spec: Body `{quizSetId, questionsCount?, discussionPauseSeconds?}` → tạo Room với `mode=GROUP_LIVE_SEQUENTIAL`, `groupQuizSetId=...`, host = caller. Response `{roomId, roomCode}`. Authorize: caller phải là LEADER hoặc MOD của group.
+- Spec: Body `{quizSetId, questionsCount?}` → tạo Room với `mode=GROUP_LIVE_SEQUENTIAL`, `groupQuizSetId=...`, host = caller. Response `{roomId, roomCode}`. Authorize: caller phải là LEADER hoặc MOD của group. (Không cần `discussionPauseSeconds` — PN-2 leader-controlled).
 - Checklist:
   - [ ] Authorize check (LEADER/MOD)
   - [ ] Create Room reuse RoomService
@@ -4213,13 +4504,19 @@ Found 3-layer break: BE has no chat MessageMapping, /ws blocked by Security at h
 - Spec:
   - Sau khi user submit answer trong GROUP_LIVE_SEQUENTIAL → show **waiting strip tím** (mockup tab 2): icon hourglass + "Chờ N người trả lời..." + dots progress (done/pending)
   - Receive WS `QUESTION_REVEALED` → show correct answer overlay + explanation + per-player answers
-  - Receive WS `DISCUSSION_PAUSE` → countdown 5s "Sang câu tiếp theo trong 5..4..3..."
+  - **Leader-only nút "Sang câu tiếp →"** (PN-2) hiện sau reveal → click → send STOMP `/app/room/{id}/advance`
+  - Member thấy text "Đang chờ trưởng phòng tiếp tục..."
+  - Receive WS `NEXT_QUESTION` → render câu mới
 - Checklist:
   - [ ] Waiting strip component
-  - [ ] WS handlers cho 2 events mới
-  - [ ] Vitest cho từng state (waiting / revealed / discussing)
-  - [ ] **E2E**: TC "2 player live-quiz: cả 2 trả lời → see reveal → next question" (Playwright với 2 browser context)
-  - [ ] Commit: `feat(room): waiting strip + reveal + discussion pause UI`
+  - [ ] Reveal overlay component (correct answer + explanation + per-player answers list)
+  - [ ] Leader advance button (conditional render khi `isHost && state === 'revealed'`)
+  - [ ] Member waiting-for-leader hint
+  - [ ] WS handlers cho `QUESTION_REVEALED` + `NEXT_QUESTION`
+  - [ ] STOMP send `/advance` action
+  - [ ] Vitest cho từng state (answering / waiting / revealed / waiting-for-leader)
+  - [ ] **E2E**: TC "2 player live-quiz: cả 2 trả lời → reveal → leader advance → next question" (Playwright 2 browser context)
+  - [ ] Commit: `feat(room): waiting strip + reveal + leader advance UI`
 
 ### Task A-10: FE — Final screen với podium [ ] TODO
 - File(s): `apps/web/src/pages/RoomQuiz.tsx` hoặc tách `RoomFinal.tsx`
@@ -4265,6 +4562,7 @@ Found 3-layer break: BE has no chat MessageMapping, /ws blocked by Security at h
     max_attempts INT DEFAULT 3,
     is_leaderboard_public BOOLEAN DEFAULT TRUE,
     send_notifications BOOLEAN DEFAULT TRUE,
+    noti_24h_sent_at TIMESTAMP NULL,  -- PN-1: để cron 24h-remaining idempotent
     winner_user_id BINARY(16) NULL,
     winner_score INT NULL,
     created_by BINARY(16),
@@ -4310,7 +4608,7 @@ Found 3-layer break: BE has no chat MessageMapping, /ws blocked by Security at h
 ### Task B-3: BE — ScheduledQuizService (CRUD + play logic) [ ] TODO
 - File(s): `apps/api/src/main/java/com/biblequiz/modules/group/service/ScheduledQuizService.java` (NEW)
 - Methods:
-  - `create(groupId, creatorId, dto)` — authorize LEADER/MOD, snapshot questionIds, enforce max-3-active per group (PN-3)
+  - `create(groupId, creatorId, dto)` — authorize LEADER/MOD, snapshot questionIds, **enforce max-3-active per group (PN-3 BE safety net)**: count ACTIVE quizzes for group, reject với 400 + code `MAX_ACTIVE_QUIZZES_REACHED` nếu >=3
   - `list(groupId, statusFilter)`
   - `getDetail(quizId, viewerId)` — include myAttempts, myBest
   - `startAttempt(quizId, userId)` — validate deadline + attempts < max, return questions từ snapshot
@@ -4343,7 +4641,10 @@ Found 3-layer break: BE has no chat MessageMapping, /ws blocked by Security at h
   - Query `findByStatusAndDeadlineBefore(ACTIVE, now())`
   - Per quiz: compute winner (top score), set status=ENDED, ended_at=now, winner_user_id, winner_score
   - Auto-create GroupAnnouncement: "🎊 Quiz '{name}' đã kết thúc! Người chiến thắng: {winnerName} với {winnerScore} điểm"
-  - In-app notification cho all members tham gia
+  - **In-app notifications (PN-1) qua existing NotificationService**: 3 events
+    - On `create()` trong B-3: gửi notification cho all group members ("Quiz mới: '{name}' deadline {date}")
+    - **24h-remaining job** (riêng cron `0 0 * * * *` mỗi giờ): query quizzes ACTIVE deadline trong 24-25h tới + chưa gửi 24h-noti (cần thêm column `noti_24h_sent_at`?) → gửi noti
+    - On scheduler END: gửi noti "Quiz '{name}' đã kết thúc! Winner: {name}"
   - **Idempotency**: chỉ process status=ACTIVE → set ENDED atomic (không double-fire)
 - Checklist:
   - [ ] Scheduler class + cron
@@ -4384,8 +4685,10 @@ Found 3-layer break: BE has no chat MessageMapping, /ws blocked by Security at h
   - [ ] Form fields + validation
   - [ ] QuizSet picker (reuse existing)
   - [ ] Deadline preset → compute timestamp
-  - [ ] Vitest 8 cases
-  - [ ] **E2E**: TC "Leader tạo scheduled quiz → list shows ACTIVE"
+  - [ ] **PN-3 FE**: query active count, disable submit + show banner "Đã đạt tối đa 3 quiz đang diễn ra" khi >=3
+  - [ ] Handle BE error `MAX_ACTIVE_QUIZZES_REACHED` (toast)
+  - [ ] Vitest 8 cases (gồm test disabled state khi 3 active)
+  - [ ] **E2E**: TC "Leader tạo scheduled quiz → list shows ACTIVE" + TC "Leader thấy disabled button khi đã có 3 active"
   - [ ] Commit: `feat(group): scheduled-quiz create form`
 
 ### Task B-9: FE — Tab 2 "Đang diễn ra" — detail page [ ] TODO

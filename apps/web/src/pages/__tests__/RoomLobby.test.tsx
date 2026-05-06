@@ -50,6 +50,7 @@ const mockRoom = {
   timePerQuestion: 15,
   hostId: 'host-1',
   hostName: 'WS Host',
+  myUserId: 'host-1',
   players: [
     { id: 'p1', userId: 'host-1', username: 'WS Host', isReady: false, score: 0 },
   ],
@@ -163,6 +164,7 @@ describe('Room Lobby — question set banner', () => {
     questionSource: 'CUSTOM',
     questionSetId: 'set-abc',
     hostId: 'host-1',
+    myUserId: 'host-1',
     players: [
       { id: 'p1', userId: 'host-1', username: 'WS Host', isReady: false, score: 0 },
     ],
@@ -173,6 +175,7 @@ describe('Room Lobby — question set banner', () => {
     questionSource: 'CUSTOM',
     questionSetId: null,
     hostId: 'host-1',
+    myUserId: 'host-1',
     players: [
       { id: 'p1', userId: 'host-1', username: 'WS Host', isReady: false, score: 0 },
     ],

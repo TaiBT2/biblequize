@@ -2,12 +2,16 @@ package com.biblequiz.modules.group.service;
 
 import com.biblequiz.modules.group.entity.ChurchGroup;
 import com.biblequiz.modules.group.entity.GroupAnnouncement;
+import com.biblequiz.modules.group.entity.GroupKickLog;
 import com.biblequiz.modules.group.entity.GroupMember;
 import com.biblequiz.modules.group.entity.GroupQuizSet;
+import com.biblequiz.modules.group.entity.GroupReport;
 import com.biblequiz.modules.group.repository.ChurchGroupRepository;
 import com.biblequiz.modules.group.repository.GroupAnnouncementRepository;
+import com.biblequiz.modules.group.repository.GroupKickLogRepository;
 import com.biblequiz.modules.group.repository.GroupMemberRepository;
 import com.biblequiz.modules.group.repository.GroupQuizSetRepository;
+import com.biblequiz.modules.group.repository.GroupReportRepository;
 import com.biblequiz.modules.quiz.entity.UserDailyProgress;
 import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.user.entity.User;
@@ -47,15 +51,34 @@ public class ChurchGroupService {
     @Autowired
     private UserDailyProgressRepository udpRepository;
 
+    @Autowired
+    private GroupKickLogRepository groupKickLogRepository;
+
+    @Autowired
+    private GroupReportRepository groupReportRepository;
+
     private static final String CODE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     private static final int CODE_LENGTH = 6;
     private final SecureRandom random = new SecureRandom();
+
+    // SPEC v1.1 §12.2 + Phụ lục A — kicked user can't rejoin within 7 days.
+    private static final int KICK_COOLDOWN_DAYS = 7;
 
     public Map<String, Object> createGroup(String name, String description, User leader) {
         return createGroup(name, description, true, leader);
     }
 
+    // SPEC v1.1 §4.2 + Phụ lục A: max groups owned per user.
+    private static final int MAX_GROUPS_OWNED = 2;
+    // SPEC v1.1 §4.3 + Phụ lục A: max groups joined per user (anti-spam).
+    private static final int MAX_GROUPS_JOINED = 5;
+
     public Map<String, Object> createGroup(String name, String description, boolean isPublic, User leader) {
+        long owned = churchGroupRepository.countActiveByLeaderId(leader.getId());
+        if (owned >= MAX_GROUPS_OWNED) {
+            throw new RuntimeException("MAX_GROUPS_OWNED");
+        }
+
         String code = generateGroupCode();
 
         ChurchGroup group = new ChurchGroup();
@@ -95,6 +118,19 @@ public class ChurchGroupService {
         Optional<GroupMember> existing = groupMemberRepository.findByGroupIdAndUserId(group.getId(), user.getId());
         if (existing.isPresent()) {
             throw new RuntimeException("Ban da la thanh vien cua nhom nay");
+        }
+
+        // SPEC v1.1 §4.3: max 5 groups joined per user.
+        long joined = groupMemberRepository.countByUserId(user.getId());
+        if (joined >= MAX_GROUPS_JOINED) {
+            throw new RuntimeException("MAX_GROUPS_JOINED");
+        }
+
+        // SPEC v1.1 §12.2: 7-day cooldown after a kick. Surface the structured
+        // code so the controller can respond 422 with i18n-friendly copy.
+        LocalDateTime cooldownCutoff = LocalDateTime.now().minusDays(KICK_COOLDOWN_DAYS);
+        if (groupKickLogRepository.existsRecentKick(group.getId(), user.getId(), cooldownCutoff)) {
+            throw new RuntimeException("KICK_COOLDOWN_ACTIVE");
         }
 
         GroupMember member = new GroupMember();
@@ -229,14 +265,33 @@ public class ChurchGroupService {
     }
 
     public Map<String, Object> getGroupDetails(String groupId) {
+        return getGroupDetails(groupId, null);
+    }
+
+    /**
+     * Detail with optional viewer context. When {@code viewerUserId} is passed,
+     * the response includes {@code myRole} so the FE doesn't have to guess
+     * leadership by matching names (which fails when display names differ from
+     * the user record).
+     */
+    public Map<String, Object> getGroupDetails(String groupId, String viewerUserId) {
         ChurchGroup group = churchGroupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Nhom khong ton tai"));
 
         List<GroupMember> members = groupMemberRepository.findByGroupId(groupId);
 
+        String myRole = null;
+        for (GroupMember m : members) {
+            if (viewerUserId != null && viewerUserId.equals(m.getUser().getId())) {
+                myRole = m.getRole().name();
+                break;
+            }
+        }
+
         List<Map<String, Object>> memberList = members.stream().map(m -> {
             Map<String, Object> memberMap = new LinkedHashMap<>();
             memberMap.put("id", m.getUser().getId());
+            memberMap.put("userId", m.getUser().getId()); // FE compatibility — Member interface expects userId
             memberMap.put("name", m.getUser().getName());
             memberMap.put("avatarUrl", m.getUser().getAvatarUrl());
             memberMap.put("role", m.getRole().name());
@@ -262,8 +317,10 @@ public class ChurchGroupService {
         result.put("maxMembers", group.getMaxMembers());
         result.put("memberCount", actualCount);
         result.put("leaderId", group.getLeader().getId());
+        result.put("leaderUserId", group.getLeader().getId()); // FE compatibility
         result.put("createdAt", group.getCreatedAt());
         result.put("members", memberList);
+        if (myRole != null) result.put("myRole", myRole);
         return result;
     }
 
@@ -681,6 +738,12 @@ public class ChurchGroupService {
     // ── DELETE /groups/{id}/members/{userId} ─────────────────────────────
 
     public Map<String, Object> kickMember(String groupId, String requesterId, String targetUserId) {
+        return kickMember(groupId, requesterId, targetUserId, null);
+    }
+
+    @Transactional
+    public Map<String, Object> kickMember(String groupId, String requesterId,
+                                          String targetUserId, String reason) {
         if (requesterId.equals(targetUserId)) {
             throw new RuntimeException("Khong the kick chinh minh");
         }
@@ -699,10 +762,24 @@ public class ChurchGroupService {
             throw new RuntimeException("Khong the kick leader");
         }
 
-        groupMemberRepository.delete(target);
-
         ChurchGroup group = churchGroupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Nhom khong ton tai"));
+
+        // SPEC v1.1 §12.2: write audit row before deleting the membership so
+        // joinGroup can enforce the 7-day cooldown. Bounded reason (500 chars
+        // matches column).
+        GroupKickLog log = new GroupKickLog();
+        log.setId(UUID.randomUUID().toString());
+        log.setGroup(group);
+        log.setKickedUser(target.getUser());
+        log.setKickedBy(requester.getUser());
+        if (reason != null && !reason.isBlank()) {
+            log.setReason(reason.length() > 500 ? reason.substring(0, 500) : reason);
+        }
+        groupKickLogRepository.save(log);
+
+        groupMemberRepository.delete(target);
+
         group.setMemberCount(Math.max(0, group.getMemberCount() - 1));
         churchGroupRepository.save(group);
 
@@ -710,6 +787,48 @@ public class ChurchGroupService {
         kickResult.put("success", true);
         kickResult.put("kickedUserId", targetUserId);
         return kickResult;
+    }
+
+    /**
+     * SPEC v1.1 §12.4 + §13.9: member submits a report against a group.
+     * Validation: must be authenticated; can't have an existing OPEN report
+     * for the same group (prevent spam-reporting). Reason is required and
+     * must match the enum; note is optional.
+     */
+    @Transactional
+    public Map<String, Object> reportGroup(String groupId, User reporter,
+                                           String reasonStr, String note) {
+        ChurchGroup group = churchGroupRepository.findById(groupId)
+                .orElseThrow(() -> new RuntimeException("Nhom khong ton tai"));
+
+        GroupReport.Reason reason;
+        try {
+            reason = GroupReport.Reason.valueOf(reasonStr == null ? "" : reasonStr.toUpperCase());
+        } catch (IllegalArgumentException ex) {
+            throw new RuntimeException("INVALID_REASON");
+        }
+
+        if (groupReportRepository.existsByGroupIdAndReporterIdAndStatus(
+                groupId, reporter.getId(), GroupReport.Status.OPEN)) {
+            throw new RuntimeException("ALREADY_REPORTED");
+        }
+
+        GroupReport report = new GroupReport();
+        report.setId(UUID.randomUUID().toString());
+        report.setGroup(group);
+        report.setReporter(reporter);
+        report.setReason(reason);
+        if (note != null && !note.isBlank()) {
+            // Hard cap at 1000 chars — the column is TEXT but we shouldn't
+            // accept arbitrary blobs through a public endpoint.
+            report.setNote(note.length() > 1000 ? note.substring(0, 1000) : note);
+        }
+        groupReportRepository.save(report);
+
+        Map<String, Object> result = new LinkedHashMap<>();
+        result.put("id", report.getId());
+        result.put("status", report.getStatus().name());
+        return result;
     }
 
     // ── POST /groups/{id}/announcements ──────────────────────────────────

@@ -103,7 +103,8 @@ public class Room {
         SPEED_RACE,
         BATTLE_ROYALE,
         TEAM_VS_TEAM,
-        SUDDEN_DEATH
+        SUDDEN_DEATH,
+        GROUP_LIVE_SEQUENTIAL
     }
 
     public enum RoomDifficulty {

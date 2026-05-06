@@ -22,6 +22,12 @@ public interface GroupMemberRepository extends JpaRepository<GroupMember, String
 
     int countByGroupId(String groupId);
 
+    /**
+     * Count groups a user has joined. Backs the "max 5 groups joined per user"
+     * constraint (SPEC §4.3).
+     */
+    long countByUserId(String userId);
+
     void deleteByGroupId(String groupId);
 
     /**

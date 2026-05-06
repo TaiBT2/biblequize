@@ -54,6 +54,9 @@ import Multiplayer from './pages/Multiplayer'
 import DailyChallenge from './pages/DailyChallenge'
 import Groups from './pages/Groups'
 import GroupDetail from './pages/GroupDetail'
+import ScheduledQuizCreate from './pages/ScheduledQuizCreate'
+import ScheduledQuizDetail from './pages/ScheduledQuizDetail'
+import ScheduledQuizPlay from './pages/ScheduledQuizPlay'
 import GroupAnalytics from './pages/GroupAnalytics'
 import Tournaments from './pages/Tournaments'
 import TournamentDetail from './pages/TournamentDetail'
@@ -131,6 +134,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="/groups" element={<RequireAuth><Groups /></RequireAuth>} />
                   <Route path="/groups/:id" element={<RequireAuth><GroupDetail /></RequireAuth>} />
                   <Route path="/groups/:id/analytics" element={<RequireAuth><GroupAnalytics /></RequireAuth>} />
+                  <Route path="/groups/:id/scheduled-quizzes/new" element={<RequireAuth><ScheduledQuizCreate /></RequireAuth>} />
+                  <Route path="/groups/:id/scheduled-quizzes/:quizId" element={<RequireAuth><ScheduledQuizDetail /></RequireAuth>} />
+                  <Route path="/groups/:id/scheduled-quizzes/:quizId/play" element={<RequireAuth><ScheduledQuizPlay /></RequireAuth>} />
                   <Route path="/tournaments" element={<RequireAuth><Tournaments /></RequireAuth>} />
                   <Route path="/tournaments/:id" element={<RequireAuth><TournamentDetail /></RequireAuth>} />
                   <Route path="/tournaments/:id/match/:matchId" element={<RequireAuth><TournamentMatch /></RequireAuth>} />

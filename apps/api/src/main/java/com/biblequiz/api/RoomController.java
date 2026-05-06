@@ -80,7 +80,7 @@ public class RoomController {
             }
 
             Room room = roomService.createRoom(roomName, user, maxPlayers, questionCount, timePerQuestion, mode, isPublic, difficulty, bookScope, questionSource, questionSetId);
-            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(room.getId());
+            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(room.getId(), user.getId());
 
             return ResponseEntity.ok(Map.of("success", true, "room", details));
         } catch (Exception e) {
@@ -101,7 +101,7 @@ public class RoomController {
             }
 
             Room room = roomService.joinRoom(roomCode.trim().toUpperCase(), user);
-            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(room.getId());
+            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(room.getId(), user.getId());
 
             // Broadcast PLAYER_JOINED so existing subscribers (e.g. the host) see the new player immediately
             WebSocketMessage.PlayerJoinedData playerData = new WebSocketMessage.PlayerJoinedData(
@@ -115,17 +115,30 @@ public class RoomController {
 
             return ResponseEntity.ok(Map.of("success", true, "room", details));
         } catch (Exception e) {
+            // SPEC v1.1 §8.7: structured 422 so FE can prompt user to leave
+            // their current room before joining another.
+            if ("ALREADY_IN_ANOTHER_ROOM".equals(e.getMessage())) {
+                return ResponseEntity.unprocessableEntity().body(Map.of(
+                        "success", false,
+                        "code", "ALREADY_IN_ANOTHER_ROOM",
+                        "message", "Bạn đang ở trong một phòng khác. Hãy rời phòng đó trước."));
+            }
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
     }
 
     /**
      * GET /api/rooms/{id} - Lấy thông tin phòng
+     * Trả về `myUserId` (nullable nếu chưa login) để FE identify "me" reliably.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<?> getRoomDetails(@PathVariable String id) {
+    public ResponseEntity<?> getRoomDetails(@PathVariable String id, Principal principal) {
         try {
-            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(id);
+            String viewerUserId = null;
+            if (principal != null) {
+                try { viewerUserId = getUser(principal).getId(); } catch (Exception ignored) {}
+            }
+            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(id, viewerUserId);
             return ResponseEntity.ok(Map.of("success", true, "room", details));
         } catch (Exception e) {
             return ResponseEntity.status(404).body(Map.of("success", false, "message", e.getMessage()));
@@ -175,7 +188,7 @@ public class RoomController {
         try {
             User user = getUser(principal);
             roomService.switchTeam(id, user.getId());
-            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(id);
+            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(id, user.getId());
             return ResponseEntity.ok(Map.of("success", true, "room", details));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));

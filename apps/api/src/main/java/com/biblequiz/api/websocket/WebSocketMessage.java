@@ -47,6 +47,11 @@ public class WebSocketMessage {
         public static final String MATCH_END = "MATCH_END";
         public static final String SD_QUEUE_UPDATE = "SD_QUEUE_UPDATE";
 
+        // Group Live Sequential events (Feature A)
+        public static final String SEQUENTIAL_PROGRESS = "SEQUENTIAL_PROGRESS"; // Mỗi answer → broadcast {answered, total}
+        public static final String QUESTION_REVEALED = "QUESTION_REVEALED";    // All-answered/timeout → reveal correct + per-player answers
+        public static final String NEXT_QUESTION = "NEXT_QUESTION";            // Host bấm advance → trigger next iteration
+
         // Social events
         public static final String REACTION = "REACTION";
         public static final String CHALLENGE_RECEIVED = "CHALLENGE_RECEIVED";
@@ -327,6 +332,52 @@ public class WebSocketMessage {
             this.winnerNewStreak = winnerNewStreak;
             this.loserId = loserId;
             this.loserName = loserName;
+        }
+    }
+
+    /**
+     * Sequential mode progress: count players who answered this round.
+     */
+    public static class SequentialProgressData {
+        public final int answered;
+        public final int total;
+
+        public SequentialProgressData(int answered, int total) {
+            this.answered = answered;
+            this.total = total;
+        }
+    }
+
+    /**
+     * Question revealed (Group Live Sequential) — sent after all-answered or timeout.
+     * Includes correct answer, explanation, and per-player answers for the round.
+     */
+    public static class QuestionRevealedData {
+        public final int correctIndex;
+        public final String explanation;
+        public final java.util.List<PerPlayerAnswer> answers;
+        public final Object leaderboard;
+
+        public QuestionRevealedData(int correctIndex, String explanation,
+                                    java.util.List<PerPlayerAnswer> answers, Object leaderboard) {
+            this.correctIndex = correctIndex;
+            this.explanation = explanation;
+            this.answers = answers;
+            this.leaderboard = leaderboard;
+        }
+
+        public static class PerPlayerAnswer {
+            public final String userId;
+            public final String username;
+            public final Integer answerIndex; // null nếu không trả lời
+            public final boolean isCorrect;
+
+            public PerPlayerAnswer(String userId, String username, Integer answerIndex, boolean isCorrect) {
+                this.userId = userId;
+                this.username = username;
+                this.answerIndex = answerIndex;
+                this.isCorrect = isCorrect;
+            }
         }
     }
 
