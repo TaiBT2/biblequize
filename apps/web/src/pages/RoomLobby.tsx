@@ -266,7 +266,7 @@ const RoomLobby: React.FC = () => {
   );
 
   /* ── Sequential mode lobby (Feature A "Chơi cùng nhau") — pixel-synced from mockup ── */
-  if (isSequential && room && !error) {
+  if (isSequential && room) {
     return (
       <SequentialLobbyView
         roomCode={room.roomCode}
@@ -279,6 +279,9 @@ const RoomLobby: React.FC = () => {
         isHost={isHost}
         onStart={handleStart}
         onLeave={handleLeave}
+        connected={connected}
+        reconnecting={reconnecting}
+        error={error}
       />
     );
   }

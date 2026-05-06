@@ -16,13 +16,20 @@ type Props = {
   isHost: boolean
   onStart: () => void
   onLeave: () => void
+  // Connection + error state surfaced from the parent so the sequential
+  // lobby can show the same reconnect banner / error fallback as the
+  // standard lobby. Without these, members lose all WS feedback when the
+  // socket drops or the room is closed by the host.
+  connected?: boolean
+  reconnecting?: boolean
+  error?: string | null
 }
 
 const FILL = { fontVariationSettings: "'FILL' 1" } as const
 
 const SequentialLobbyView: React.FC<Props> = ({
   roomCode, roomName, questionCount, timePerQuestion, maxPlayers, players,
-  hostId, isHost, onStart, onLeave,
+  hostId, isHost, onStart, onLeave, connected = true, reconnecting = false, error = null,
 }) => {
   const [copied, setCopied] = useState(false)
   const handleCopy = async () => {
@@ -31,8 +38,36 @@ const SequentialLobbyView: React.FC<Props> = ({
   // Pad with empty slots to show "+ slots remaining"
   const emptySlots = Math.max(0, Math.min(maxPlayers - players.length, 8 - players.length))
 
+  // Error state — host closed room, room expired, network failure on retry.
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-4" style={{ background: '#0a0b13' }}>
+        <div className="text-center space-y-4 max-w-sm">
+          <span className="material-symbols-outlined text-error text-5xl">error</span>
+          <p className="text-on-surface text-base">{error}</p>
+          <button onClick={onLeave} className="text-secondary underline text-sm">
+            Quay lại
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen text-on-surface px-4 py-5 max-w-3xl mx-auto" style={{ background: '#0a0b13' }}>
+      {/* Reconnecting banner — same UX as the standard lobby */}
+      {reconnecting && (
+        <div className="fixed top-0 left-0 right-0 z-[70] bg-error-container/90 text-on-error-container text-center py-2 text-sm font-medium">
+          <span className="material-symbols-outlined text-sm align-middle mr-1">wifi_off</span>
+          Đang kết nối lại...
+        </div>
+      )}
+      {!connected && !reconnecting && (
+        <div className="fixed top-0 left-0 right-0 z-[70] bg-orange-500/20 text-orange-300 text-center py-2 text-xs font-medium">
+          Mất kết nối
+        </div>
+      )}
+
       {/* Page header */}
       <div className="mb-5 flex items-center gap-2.5">
         <button onClick={onLeave} className="text-on-surface/60 hover:text-on-surface" aria-label="Back">
