@@ -731,21 +731,26 @@ const RoomQuiz: React.FC = () => {
                 </div>
                 {/* Leader advance button or member waiting hint */}
                 <div className="pt-2 border-t border-white/5">
-                  {isHost ? (
-                    <button
-                      data-testid="sequential-advance-btn"
-                      onClick={handleAdvance}
-                      className="w-full py-3 rounded-xl text-[14px] font-bold flex items-center justify-center gap-2 transition-all hover:brightness-110"
-                      style={{
-                        background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
-                        color: '#11131e',
-                        boxShadow: '0 6px 20px rgba(232,168,50,0.3)',
-                      }}
-                    >
-                      {t('room.quiz.sequentialAdvance')}
-                      <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-                    </button>
-                  ) : (
+                  {isHost ? (() => {
+                    const allAnswered = seqTotal > 0 && seqAnswered >= seqTotal;
+                    return (
+                      <button
+                        data-testid="sequential-advance-btn"
+                        onClick={handleAdvance}
+                        disabled={!allAnswered}
+                        title={!allAnswered ? t('room.quiz.sequentialWaiting', { remaining: Math.max(0, seqTotal - seqAnswered) }) : undefined}
+                        className="w-full py-3 rounded-xl text-[14px] font-bold flex items-center justify-center gap-2 transition-all enabled:hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed"
+                        style={{
+                          background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
+                          color: '#11131e',
+                          boxShadow: allAnswered ? '0 6px 20px rgba(232,168,50,0.3)' : undefined,
+                        }}
+                      >
+                        {t('room.quiz.sequentialAdvance')}
+                        <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                      </button>
+                    );
+                  })() : (
                     <div className="text-center text-on-surface-variant text-[12px] py-2 flex items-center justify-center gap-2">
                       <span className="material-symbols-outlined text-[14px] animate-pulse">hourglass_empty</span>
                       {t('room.quiz.sequentialWaitingForLeader')}
