@@ -136,6 +136,21 @@ describe('Multiplayer page', () => {
     expect(await screen.findByText('Team vs Team')).toBeTruthy()
   })
 
+  it('"Bộ câu hỏi" button is hidden on mobile (md:flex class present)', async () => {
+    renderPage()
+    await screen.findByTestId('multiplayer-page')
+    const setsBtn = screen.getByText('Bộ câu hỏi').closest('button')
+    expect(setsBtn?.className).toMatch(/hidden/)
+    expect(setsBtn?.className).toMatch(/md:flex/)
+  })
+
+  it('"Tạo phòng mới" button is full-width on mobile', async () => {
+    renderPage()
+    const btn = await screen.findByTestId('multiplayer-create-btn')
+    expect(btn.className).toMatch(/w-full/)
+    expect(btn.className).toMatch(/md:w-auto/)
+  })
+
   it('redirects unauthenticated users', async () => {
     const { useAuth } = await import('../../store/authStore')
     vi.mocked(useAuth).mockReturnValue({ isAuthenticated: false } as ReturnType<typeof useAuth>)

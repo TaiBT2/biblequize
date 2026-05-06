@@ -453,7 +453,7 @@ const Multiplayer = () => {
     <div data-testid="multiplayer-page" className="space-y-6">
 
       {/* ── Page Header ── */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div className="flex items-start gap-3">
           <div
             className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -475,7 +475,7 @@ const Multiplayer = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={() => navigate('/my-sets')}
-            className="flex items-center gap-2 py-2.5 px-4 rounded-xl text-sm font-semibold border border-secondary/30 text-secondary hover:bg-secondary/10 transition-colors"
+            className="hidden md:flex items-center gap-2 py-2.5 px-4 rounded-xl text-sm font-semibold border border-secondary/30 text-secondary hover:bg-secondary/10 transition-colors"
           >
             <span className="material-symbols-outlined text-sm" style={FILL_1}>menu_book</span>
             Bộ câu hỏi
@@ -483,7 +483,7 @@ const Multiplayer = () => {
           <button
             data-testid="multiplayer-create-btn"
             onClick={() => navigate('/room/create')}
-            className="flex items-center gap-2 py-2.5 px-5 rounded-xl text-sm font-bold shadow-md transition-all hover:opacity-90"
+            className="flex items-center justify-center gap-2 py-3 md:py-2.5 px-5 rounded-xl text-sm font-bold shadow-md transition-all hover:opacity-90 w-full md:w-auto"
             style={{ background: '#e8a832', color: '#412d00', boxShadow: '0 0 20px rgba(232,168,50,0.25)' }}
           >
             <span className="material-symbols-outlined text-sm" style={FILL_1}>add_circle</span>
@@ -493,7 +493,9 @@ const Multiplayer = () => {
       </div>
 
       {/* ── Join by code + Featured event ── */}
-      <div className="grid gap-4" style={{ gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 1fr)' }}>
+      <div
+        className="grid gap-3 md:gap-4 grid-cols-1 md:[grid-template-columns:minmax(0,1.4fr)_minmax(0,1fr)]"
+      >
         {/* Join by code */}
         <div
           className="p-5 rounded-2xl flex flex-col gap-3"
@@ -579,13 +581,13 @@ const Multiplayer = () => {
           </div>
 
           <div className="flex items-center gap-2 flex-wrap">
-            {/* Refresh */}
+            {/* Refresh — desktop only (mobile pull-to-refresh implied) */}
             <button
               onClick={() => refetch()}
               disabled={isFetching}
               title={t('multiplayer.refresh', 'Làm mới')}
               aria-label={t('multiplayer.refresh', 'Làm mới danh sách phòng')}
-              className="p-1.5 rounded-lg transition-colors"
+              className="hidden md:inline-flex p-1.5 rounded-lg transition-colors"
               style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.55)', border: '0.5px solid rgba(255,255,255,0.08)' }}
             >
               <span className={`material-symbols-outlined text-[18px] ${isFetching ? 'animate-spin' : ''}`}>refresh</span>
@@ -596,7 +598,7 @@ const Multiplayer = () => {
               className="inline-flex rounded-lg p-0.5"
               style={{ background: 'rgba(0,0,0,0.3)' }}
             >
-              {([['newest', 'Mới nhất'], ['filling', 'Sắp đầy'], ['difficulty', 'Theo khó']] as [SortOption, string][]).map(([val, label]) => (
+              {([['newest', 'Mới'], ['filling', 'Sắp đầy'], ['difficulty', 'Khó']] as [SortOption, string][]).map(([val, label]) => (
                 <button
                   key={val}
                   onClick={() => setSort(val)}
@@ -630,11 +632,11 @@ const Multiplayer = () => {
               )}
             </button>
 
-            {/* Search */}
+            {/* Search — desktop only */}
             <button
               title={t('multiplayer.search', 'Tìm kiếm')}
               aria-label={t('multiplayer.search', 'Tìm phòng theo tên')}
-              className="p-1.5 rounded-lg transition-colors"
+              className="hidden md:inline-flex p-1.5 rounded-lg transition-colors"
               style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.55)', border: '0.5px solid rgba(255,255,255,0.08)' }}
             >
               <span className="material-symbols-outlined text-[18px]">search</span>
@@ -644,7 +646,7 @@ const Multiplayer = () => {
 
         {/* Active filter chips */}
         {activeFilters.length > 0 && (
-          <div className="flex gap-2 flex-wrap items-center">
+          <div className="flex gap-2 items-center overflow-x-auto pb-1 md:flex-wrap md:overflow-x-visible md:pb-0">
             {activeFilters.map((f) => (
               <button
                 key={f.id}
