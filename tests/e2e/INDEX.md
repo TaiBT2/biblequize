@@ -13,7 +13,7 @@
 | W-M03 Practice Mode | `/practice`, `/quiz`, `/review` | ✅ 8/8 | ✅ 16/16 | — | Phase 4a done · +3 TC for redesign (time slider, chapter/verse, retry-wrong) |
 | W-M04 Ranked Mode | `/ranked` | ✅ 7/7 | ✅ 14/14 | — | Phase 4a done · all unblocked |
 | W-M05 Daily Challenge | `/daily` | ✅ 5/5 | ✅ 12/12 | — | Phase 4a done · unblocked via /complete endpoint |
-| W-M06 Multiplayer (Lobby only) | `/rooms`, `/multiplayer`, `/room/create`, `/room/join`, `/room/:id/lobby` | ✅ 6/6 | ✅ 7/7 | — | Phase 4a done · Gameplay ⏭️ WebSocket phase |
+| W-M06 Multiplayer (Lobby only) | `/rooms`, `/multiplayer`, `/room/create`, `/room/join`, `/room/:id/lobby` | ✅ 6/6 (+3 redesign skipped pending API setup: L1-008/009/010) | ✅ 7/7 | — | Phase 4a done · 2026-05-07 lobby redesign adds 3 smoke TCs · Gameplay ⏭️ WebSocket phase |
 | W-M07 Tournaments | `/tournaments`, `/tournaments/:id`, `/tournaments/:id/match/:matchId` | ✅ 6/6 | ✅ 6/6 | — | Phase 4a done |
 | W-M08 Bible Journey Map | `/journey` | ✅ 4/4 | ✅ 6/6 | — | Phase 4a done |
 | W-M09 Church Groups | `/groups`, `/groups/:id`, `/groups/:id/analytics` | ✅ 5/5 | ✅ 12/12 | — | Phase 4a done |

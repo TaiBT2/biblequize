@@ -187,4 +187,86 @@ test.describe('W-M06 Multiplayer Lobby — L1 Smoke @smoke @multiplayer', () => 
     await expect(page.getByText(/createRoom\.modeDesc\./)).toHaveCount(0)
   })
 
+  test('W-M06-L1-008: Lobby share button opens invite modal (Copy/Link/QR) @smoke @multiplayer @lobby-redesign', async ({
+    tier3Page,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP — create room via API
+    // ============================================================
+    // Requires logged-in API helper to create a fresh room and get roomId.
+    // Skipped until shared room-fixture is available; selectors documented below.
+    test.skip()
+
+    // ============================================================
+    // SECTION 2: ACTIONS
+    // ============================================================
+    const page = tier3Page
+    const roomId = 'TODO-room-id-from-api-setup'
+    await page.goto(`/room/${roomId}/lobby`)
+    await page.waitForSelector('[data-testid="lobby-share-btn"]')
+    await page.getByTestId('lobby-share-btn').click()
+
+    // ============================================================
+    // SECTION 3: UI ASSERTIONS
+    // ============================================================
+    await expect(page.getByRole('dialog', { name: /Mời bạn bè/i })).toBeVisible()
+    await expect(page.getByText(/Copy mã/i)).toBeVisible()
+    await expect(page.getByText(/Copy link/i)).toBeVisible()
+    // QR is rendered as an SVG inside the modal.
+    await expect(page.getByRole('dialog').locator('svg')).toBeVisible()
+  })
+
+  test('W-M06-L1-009: Invite slot click opens share modal @smoke @multiplayer @lobby-redesign', async ({
+    tier3Page,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP — create room via API
+    // ============================================================
+    test.skip()
+
+    // ============================================================
+    // SECTION 2: ACTIONS
+    // ============================================================
+    const page = tier3Page
+    const roomId = 'TODO-room-id-from-api-setup'
+    await page.goto(`/room/${roomId}/lobby`)
+    await page.waitForSelector('[data-testid="lobby-invite-slot"]')
+    await page.getByTestId('lobby-invite-slot').click()
+
+    // ============================================================
+    // SECTION 3: UI ASSERTIONS
+    // ============================================================
+    await expect(page.getByRole('dialog', { name: /Mời bạn bè/i })).toBeVisible()
+  })
+
+  test('W-M06-L1-010: Chat FAB toggles chat panel when alone in lobby @smoke @multiplayer @lobby-redesign', async ({
+    tier3Page,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP — create room via API
+    // ============================================================
+    test.skip()
+
+    // ============================================================
+    // SECTION 2: ACTIONS
+    // ============================================================
+    const page = tier3Page
+    const roomId = 'TODO-room-id-from-api-setup'
+    await page.goto(`/room/${roomId}/lobby`)
+    await page.waitForSelector('[data-testid="lobby-chat-fab"]')
+
+    // FAB visible when host alone, panel hidden by default.
+    await expect(page.getByTestId('lobby-chat-fab')).toBeVisible()
+    await expect(page.getByTestId('lobby-chat-panel')).toHaveCount(0)
+
+    // Click FAB → panel opens, FAB hides.
+    await page.getByTestId('lobby-chat-fab').click()
+
+    // ============================================================
+    // SECTION 3: UI ASSERTIONS
+    // ============================================================
+    await expect(page.getByTestId('lobby-chat-panel')).toBeVisible()
+    await expect(page.getByTestId('lobby-chat-fab')).toHaveCount(0)
+  })
+
 })
