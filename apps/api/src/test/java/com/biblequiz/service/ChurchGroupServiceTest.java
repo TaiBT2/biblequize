@@ -5,8 +5,10 @@ import com.biblequiz.modules.group.entity.GroupMember;
 import com.biblequiz.modules.group.entity.GroupQuizSet;
 import com.biblequiz.modules.group.repository.ChurchGroupRepository;
 import com.biblequiz.modules.group.repository.GroupAnnouncementRepository;
+import com.biblequiz.modules.group.repository.GroupKickLogRepository;
 import com.biblequiz.modules.group.repository.GroupMemberRepository;
 import com.biblequiz.modules.group.repository.GroupQuizSetRepository;
+import com.biblequiz.modules.group.repository.GroupReportRepository;
 import com.biblequiz.modules.group.entity.GroupAnnouncement;
 import com.biblequiz.modules.group.service.ChurchGroupService;
 import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
@@ -48,6 +50,12 @@ class ChurchGroupServiceTest {
 
     @Mock
     private UserDailyProgressRepository udpRepository;
+
+    @Mock
+    private GroupKickLogRepository groupKickLogRepository;
+
+    @Mock
+    private GroupReportRepository groupReportRepository;
 
     @InjectMocks
     private ChurchGroupService churchGroupService;
