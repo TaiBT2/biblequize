@@ -50,15 +50,6 @@ public interface RoomRepository extends JpaRepository<Room, String> {
     @Query("SELECT r FROM Room r WHERE r.isPublic = true AND r.status IN ('LOBBY', 'IN_PROGRESS') ORDER BY r.createdAt DESC")
     List<Room> findPublicLobbyRooms();
 
-    // Tìm phòng đang lobby cho 1 group quiz set cụ thể (để gom nhóm vào cùng phòng)
-    Optional<Room> findFirstByGroupQuizSetIdAndStatus(String groupQuizSetId, Room.RoomStatus status);
-
-    // Solo "Tự ôn" reuse: chỉ join phòng SPEED_RACE đang LOBBY của cùng quiz set,
-    // KHÔNG join nhầm GROUP_LIVE_SEQUENTIAL room mà leader đã tạo cho live multiplayer.
-    Optional<Room> findFirstByGroupQuizSetIdAndStatusAndMode(String groupQuizSetId,
-                                                             Room.RoomStatus status,
-                                                             Room.RoomMode mode);
-
     // Tìm các phòng "Chơi cùng nhau" (GROUP_LIVE_SEQUENTIAL) còn active của 1 group.
     // Loại bỏ phòng SPEED_RACE từ "Tự ôn solo" để member không click nhầm.
     @Query("SELECT r FROM Room r WHERE r.groupQuizSetId IN " +
@@ -67,10 +58,4 @@ public interface RoomRepository extends JpaRepository<Room, String> {
            "AND r.mode = 'GROUP_LIVE_SEQUENTIAL' " +
            "ORDER BY r.createdAt DESC")
     List<Room> findActiveRoomsForGroup(@Param("groupId") String groupId);
-
-    // Tìm phòng GROUP_LIVE_SEQUENTIAL đang LOBBY cho 1 quiz set (dedup khi leader click "Chơi cùng nhau" nhiều lần).
-    @Query("SELECT r FROM Room r WHERE r.groupQuizSetId = :quizSetId " +
-           "AND r.status = 'LOBBY' AND r.mode = 'GROUP_LIVE_SEQUENTIAL' " +
-           "ORDER BY r.createdAt DESC")
-    List<Room> findLobbyGroupLiveByQuizSet(@Param("quizSetId") String quizSetId);
 }

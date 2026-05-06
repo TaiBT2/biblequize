@@ -20,6 +20,7 @@ export async function createGroupLiveQuiz(
   groupId: string,
   body: CreateLiveQuizRequest
 ): Promise<CreateLiveQuizResponse> {
-  const res = await api.post(`/api/groups/${groupId}/live-quiz`, body)
+  // Endpoint renamed per SPEC_GROUP v1.1 §13.5 (was /live-quiz).
+  const res = await api.post(`/api/groups/${groupId}/live-rooms`, body)
   return res.data.room
 }

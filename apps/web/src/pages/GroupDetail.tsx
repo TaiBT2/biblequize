@@ -465,7 +465,8 @@ const GroupDetail: React.FC = () => {
   const fetchActiveRooms = useCallback(async () => {
     if (!id) return;
     try {
-      const res = await api.get(`/api/groups/${id}/active-rooms`);
+      // Endpoint renamed per SPEC_GROUP v1.1 §13.5 (was /active-rooms).
+      const res = await api.get(`/api/groups/${id}/live-rooms`);
       if (res.data.success) setActiveRooms(res.data.rooms || []);
     } catch { /* ignore */ }
   }, [id]);

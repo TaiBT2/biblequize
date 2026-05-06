@@ -215,7 +215,7 @@ class ChurchGroupControllerTest extends BaseControllerTest {
 
     // ── Auth ─────────────────────────────────────────────────────────────────
 
-    // ── POST /api/groups/{id}/live-quiz (Feature A) ──────────────────────────
+    // ── POST /api/groups/{id}/live-rooms (Feature A — renamed from /live-quiz per spec v1.1) ──────────────────────────
 
     @Test
     @WithMockUser(username = "test@example.com")
@@ -248,7 +248,7 @@ class ChurchGroupControllerTest extends BaseControllerTest {
                 any(), anyString(), any(), any())).thenReturn(createdRoom);
         when(roomRepository.save(any(Room.class))).thenReturn(createdRoom);
 
-        mockMvc.perform(post("/api/groups/group-1/live-quiz")
+        mockMvc.perform(post("/api/groups/group-1/live-rooms")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"quizSetId\":\"qs-1\",\"timePerQuestion\":30}"))
                 .andExpect(status().isOk())
@@ -266,7 +266,7 @@ class ChurchGroupControllerTest extends BaseControllerTest {
         when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
                 .thenReturn(Optional.of(memberMember));
 
-        mockMvc.perform(post("/api/groups/group-1/live-quiz")
+        mockMvc.perform(post("/api/groups/group-1/live-rooms")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"quizSetId\":\"qs-1\"}"))
                 .andExpect(status().isForbidden())
@@ -281,7 +281,7 @@ class ChurchGroupControllerTest extends BaseControllerTest {
         when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
                 .thenReturn(Optional.of(leaderMember));
 
-        mockMvc.perform(post("/api/groups/group-1/live-quiz")
+        mockMvc.perform(post("/api/groups/group-1/live-rooms")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{}"))
                 .andExpect(status().isBadRequest())
@@ -303,7 +303,7 @@ class ChurchGroupControllerTest extends BaseControllerTest {
         qs.setGroup(otherGroup);
         when(groupQuizSetRepository.findById("qs-1")).thenReturn(Optional.of(qs));
 
-        mockMvc.perform(post("/api/groups/group-1/live-quiz")
+        mockMvc.perform(post("/api/groups/group-1/live-rooms")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"quizSetId\":\"qs-1\"}"))
                 .andExpect(status().isForbidden())
