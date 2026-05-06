@@ -92,7 +92,7 @@ public class RoomQuizService {
 
         for (int i = 0; i < questions.size(); i++) {
             Question q = questions.get(i);
-            RoomRound round = saveRound(roomId, new RoomRound(UUID.randomUUID().toString(), null, i, q, LocalDateTime.now()));
+            RoomRound round = saveRound(roomId, new RoomRound(UUID.randomUUID().toString(), null, i, q.getId(), LocalDateTime.now()));
             roomStateService.setCurrentRoundId(roomId, round.getId());
 
             wsController.broadcastQuestionStart(roomId, i, questions.size(), buildQuestionDto(q), timePerQuestion);
@@ -130,7 +130,7 @@ public class RoomQuizService {
             if (activeCount <= 1) break; // Game ends when ≤ 1 active player
 
             Question q = questions.get(i);
-            RoomRound round = saveRound(roomId, new RoomRound(UUID.randomUUID().toString(), null, i, q, LocalDateTime.now()));
+            RoomRound round = saveRound(roomId, new RoomRound(UUID.randomUUID().toString(), null, i, q.getId(), LocalDateTime.now()));
             roomStateService.setCurrentRoundId(roomId, round.getId());
 
             wsController.broadcastQuestionStart(roomId, i, questions.size(), buildQuestionDto(q), timePerQuestion);
@@ -188,7 +188,7 @@ public class RoomQuizService {
 
         for (int i = 0; i < questions.size(); i++) {
             Question q = questions.get(i);
-            RoomRound round = saveRound(roomId, new RoomRound(UUID.randomUUID().toString(), null, i, q, LocalDateTime.now()));
+            RoomRound round = saveRound(roomId, new RoomRound(UUID.randomUUID().toString(), null, i, q.getId(), LocalDateTime.now()));
             roomStateService.setCurrentRoundId(roomId, round.getId());
 
             wsController.broadcastQuestionStart(roomId, i, questions.size(), buildQuestionDto(q), timePerQuestion);
@@ -251,7 +251,7 @@ public class RoomQuizService {
 
         for (int i = 0; i < questions.size(); i++) {
             Question q = questions.get(i);
-            RoomRound round = saveRound(roomId, new RoomRound(UUID.randomUUID().toString(), null, i, q, LocalDateTime.now()));
+            RoomRound round = saveRound(roomId, new RoomRound(UUID.randomUUID().toString(), null, i, q.getId(), LocalDateTime.now()));
             roomStateService.setCurrentRoundId(roomId, round.getId());
 
             wsController.broadcastQuestionStart(roomId, i, questions.size(), buildQuestionDto(q), timePerQuestion);
@@ -311,7 +311,7 @@ public class RoomQuizService {
 
         for (int i = 0; i < questions.size(); i++) {
             Question q = questions.get(i);
-            RoomRound round = saveRound(roomId, new RoomRound(UUID.randomUUID().toString(), null, i, q, LocalDateTime.now()));
+            RoomRound round = saveRound(roomId, new RoomRound(UUID.randomUUID().toString(), null, i, q.getId(), LocalDateTime.now()));
             roomStateService.setCurrentRoundId(roomId, round.getId());
 
             int activePlayers = (int) roomPlayerRepository.countByRoomIdAndPlayerStatus(roomId, RoomPlayer.PlayerStatus.ACTIVE);

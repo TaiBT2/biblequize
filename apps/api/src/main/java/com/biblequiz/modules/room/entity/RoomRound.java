@@ -1,7 +1,5 @@
 package com.biblequiz.modules.room.entity;
 
-import com.biblequiz.modules.quiz.entity.Question;
-
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -21,9 +19,16 @@ public class RoomRound {
     @Column(name = "round_no", nullable = false)
     private Integer roundNo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question_id", nullable = false)
-    private Question question;
+    /**
+     * Soft reference to either {@code questions(id)} (built-in question bank)
+     * or {@code user_questions(id)} (custom QuestionSet items used by
+     * multiplayer rooms with questionSource=CUSTOM). Stored as a plain
+     * column instead of a JPA @ManyToOne so Hibernate (with ddl-auto=update
+     * in dev) does not auto-create an FK constraint to {@code questions}
+     * that would block inserts of UserQuestion ids.
+     */
+    @Column(name = "question_id", nullable = false, length = 64)
+    private String questionId;
 
     @Column(name = "started_at")
     private LocalDateTime startedAt;
@@ -33,11 +38,11 @@ public class RoomRound {
 
     public RoomRound() {}
 
-    public RoomRound(String id, Room room, Integer roundNo, Question question, LocalDateTime startedAt) {
+    public RoomRound(String id, Room room, Integer roundNo, String questionId, LocalDateTime startedAt) {
         this.id = id;
         this.room = room;
         this.roundNo = roundNo;
-        this.question = question;
+        this.questionId = questionId;
         this.startedAt = startedAt;
     }
 
@@ -50,8 +55,8 @@ public class RoomRound {
     public Integer getRoundNo() { return roundNo; }
     public void setRoundNo(Integer roundNo) { this.roundNo = roundNo; }
 
-    public Question getQuestion() { return question; }
-    public void setQuestion(Question question) { this.question = question; }
+    public String getQuestionId() { return questionId; }
+    public void setQuestionId(String questionId) { this.questionId = questionId; }
 
     public LocalDateTime getStartedAt() { return startedAt; }
     public void setStartedAt(LocalDateTime startedAt) { this.startedAt = startedAt; }
