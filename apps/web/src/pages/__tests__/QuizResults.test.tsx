@@ -9,6 +9,8 @@ vi.mock('react-router-dom', async () => {
   return { ...actual, useNavigate: () => mockNavigate }
 })
 
+vi.mock('canvas-confetti', () => ({ default: vi.fn() }))
+
 import QuizResults from '../QuizResults'
 
 const baseStats = {
@@ -46,80 +48,117 @@ function renderResults(overrides: Partial<typeof baseStats> = {}) {
 describe('QuizResults', () => {
   beforeEach(() => { vi.clearAllMocks() })
 
-  it('renders score circle SVG', () => {
-    renderResults()
-    expect(document.querySelector('svg')).toBeInTheDocument()
-  })
-
-  it('displays accuracy percentage', () => {
-    renderResults()
-    expect(screen.getByText(/chính xác/)).toBeInTheDocument()
-  })
-
-  it('shows "Xuất sắc!" for ≥90%', () => {
+  it('renders hero block with emoji + tone message', () => {
     renderResults({ correctAnswers: 9, totalQuestions: 10 })
-    expect(screen.getByText('Xuất sắc!')).toBeInTheDocument()
+    expect(screen.getByTestId('quiz-results-hero')).toBeInTheDocument()
+    expect(screen.getByTestId('quiz-results-grade')).toHaveTextContent('Xuất sắc!')
   })
 
-  it('shows "Tốt lắm!" for ≥70%', () => {
+  it('shows "Tốt lắm!" tone for 70-89%', () => {
     renderResults({ correctAnswers: 7, totalQuestions: 10 })
     expect(screen.getByText('Tốt lắm!')).toBeInTheDocument()
   })
 
-  it('shows "Cố gắng thêm!" for <70%', () => {
+  it('shows "Khá hơn rồi!" tone for 50-69%', () => {
     renderResults({ correctAnswers: 5, totalQuestions: 10 })
-    expect(screen.getByText('Cố gắng thêm!')).toBeInTheDocument()
+    expect(screen.getByText('Khá hơn rồi!')).toBeInTheDocument()
   })
 
-  it('renders stat cards with glass-card class', () => {
-    renderResults()
-    const cards = document.querySelectorAll('.glass-card')
-    expect(cards.length).toBeGreaterThanOrEqual(3)
+  it('shows "Đang học hỏi nhé!" tone for 30-49%', () => {
+    renderResults({ correctAnswers: 3, totalQuestions: 10 })
+    expect(screen.getByText('Đang học hỏi nhé!')).toBeInTheDocument()
   })
 
-  it('renders score breakdown', () => {
+  it('renders correct/total in score stat', () => {
     renderResults()
-    expect(screen.getByText('Điểm cơ bản:')).toBeInTheDocument()
-    expect(screen.getByText('Tổng cộng:')).toBeInTheDocument()
+    const score = screen.getByTestId('quiz-results-score')
+    expect(score.textContent).toContain('8')
+    expect(score.textContent).toContain('/10')
   })
 
-  it('renders insights with strongest/weakest', () => {
+  it('renders accuracy percent', () => {
     renderResults()
+    expect(screen.getByTestId('quiz-results-accuracy')).toHaveTextContent('80%')
+  })
+
+  it('does NOT render score breakdown when there are no bonuses', () => {
+    renderResults()
+    expect(screen.queryByTestId('quiz-results-breakdown')).not.toBeInTheDocument()
+  })
+
+  it('renders score breakdown when speed/combo bonuses are present', () => {
+    renderResults({ baseScore: 100, speedBonus: 30, comboBonus: 20, comboMultiplier: 1.5, totalScore: 150 } as any)
+    expect(screen.getByTestId('quiz-results-breakdown')).toBeInTheDocument()
+    expect(screen.getByText(/Bonus tốc độ/)).toBeInTheDocument()
+  })
+
+  it('renders difficulty breakdown for single-book quiz', () => {
+    renderResults()
+    expect(screen.getByText('Phân tích theo độ khó')).toBeInTheDocument()
+    expect(screen.getAllByText('Dễ').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Trung bình').length).toBeGreaterThan(0)
+    expect(screen.getByText('TB')).toBeInTheDocument()
+    expect(screen.getAllByText('Khó').length).toBeGreaterThan(0)
+  })
+
+  it('renders strongest/weakest analysis for multi-book quiz', () => {
+    renderResults({
+      questions: [
+        { id: '1', book: 'Genesis', chapter: 1, difficulty: 'easy' as const, type: 'mcq', content: 'Q1', options: ['A','B','C','D'], correctAnswer: [0], explanation: 'E1' },
+        { id: '2', book: 'Exodus', chapter: 2, difficulty: 'easy' as const, type: 'mcq', content: 'Q2', options: ['A','B','C','D'], correctAnswer: [1], explanation: 'E2' },
+      ],
+    } as any)
     expect(screen.getByText(/Mạnh nhất/)).toBeInTheDocument()
   })
 
-  it('renders 3 action buttons', () => {
-    renderResults()
-    expect(screen.getByText('Xem lại')).toBeInTheDocument()
-    expect(screen.getByText('Chơi lại')).toBeInTheDocument()
-    expect(screen.getByText('Trang chủ')).toBeInTheDocument()
+  it('renders 3 action buttons with correct hierarchy', () => {
+    renderResults({ correctAnswers: 9, totalQuestions: 10 })
+    expect(screen.getByTestId('quiz-results-review-btn')).toBeInTheDocument()
+    expect(screen.getByTestId('quiz-results-play-btn')).toBeInTheDocument()
+    expect(screen.getByTestId('quiz-results-home-btn')).toBeInTheDocument()
   })
 
-  it('"Xem lại" navigates to /review', async () => {
+  it('primary CTA always shows "Chơi lại sách này" regardless of score', () => {
+    renderResults({ correctAnswers: 9, totalQuestions: 10 })
+    expect(screen.getByTestId('quiz-results-play-btn')).toHaveTextContent('Chơi lại sách này')
+    renderResults({ correctAnswers: 3, totalQuestions: 10 })
+    expect(screen.getAllByTestId('quiz-results-play-btn')[0]).toHaveTextContent('Chơi lại sách này')
+  })
+
+  it('triggers confetti when score ≥ 70%', async () => {
+    const confetti = (await import('canvas-confetti')).default as ReturnType<typeof vi.fn>
+    confetti.mockClear()
+    renderResults({ correctAnswers: 9, totalQuestions: 10 })
+    expect(confetti).toHaveBeenCalled()
+  })
+
+  it('does NOT trigger confetti when score < 70%', async () => {
+    const confetti = (await import('canvas-confetti')).default as ReturnType<typeof vi.fn>
+    confetti.mockClear()
+    renderResults({ correctAnswers: 3, totalQuestions: 10 })
+    expect(confetti).not.toHaveBeenCalled()
+  })
+
+  it('"Xem lại bài" navigates to /review', async () => {
     renderResults()
-    await userEvent.setup().click(screen.getByText('Xem lại'))
+    await userEvent.setup().click(screen.getByTestId('quiz-results-review-btn'))
     expect(mockNavigate).toHaveBeenCalledWith('/review', expect.anything())
   })
 
-  it('"Chơi lại" calls onPlayAgain', async () => {
+  it('primary CTA calls onPlayAgain', async () => {
     renderResults()
-    await userEvent.setup().click(screen.getByText('Chơi lại'))
+    await userEvent.setup().click(screen.getByTestId('quiz-results-play-btn'))
     expect(mockPlayAgain).toHaveBeenCalled()
   })
 
-  it('"Trang chủ" calls onBackToHome', async () => {
+  it('"Về trang chủ" calls onBackToHome', async () => {
     renderResults()
-    await userEvent.setup().click(screen.getByText('Trang chủ'))
+    await userEvent.setup().click(screen.getByTestId('quiz-results-home-btn'))
     expect(mockBackToHome).toHaveBeenCalled()
   })
 
   it('shows error state when stats is null', () => {
     render(<MemoryRouter><QuizResults stats={null as any} onPlayAgain={mockPlayAgain} onBackToHome={mockBackToHome} /></MemoryRouter>)
     expect(screen.getByText('Không có dữ liệu kết quả')).toBeInTheDocument()
-  })
-
-  it('does NOT contain neon-* or CSS module classes', () => {
-    renderResults()
-    expect(document.body.innerHTML).not.toContain('neon-')
   })
 })

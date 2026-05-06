@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BibleQuiz · Group Detail Mobile (mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #0a0b13;
+    color: #f3f4f6;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    padding: 40px 20px 60px;
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-size: inherit;
+    vertical-align: middle;
+  }
+
+  .review-header { text-align: center; margin-bottom: 28px; }
+  .review-header h1 {
+    font-size: 22px; font-weight: 800;
+    background: linear-gradient(135deg, #e8a832 0%, #fbbf24 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+  }
+  .review-header p { color: #9ca3af; font-size: 13px; }
+
+  .phones { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .phone-label {
+    background: rgba(50,52,64,0.6);
+    border: 1px solid rgba(232,168,50,0.25);
+    color: #e8a832;
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .phone {
+    width: 380px;
+    height: 820px;
+    background: #11131e;
+    border-radius: 40px;
+    border: 7px solid #1f2030;
+    box-shadow: 0 0 0 2px #0a0b13, 0 25px 60px rgba(0,0,0,0.55);
+    overflow: hidden;
+    position: relative;
+    display: flex; flex-direction: column;
+  }
+  .phone::before {
+    content: ''; position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 110px; height: 26px;
+    background: #0a0b13;
+    border-radius: 0 0 16px 16px;
+    z-index: 11;
+  }
+  .status-bar {
+    height: 40px;
+    padding: 12px 24px 0;
+    display: flex; justify-content: space-between;
+    font-size: 13px; font-weight: 600;
+    flex-shrink: 0; position: relative; z-index: 10;
+  }
+  .status-bar .icons {
+    display: flex; gap: 6px; align-items: center; color: #f3f4f6; font-size: 13px;
+  }
+
+  .app-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 80px;
+  }
+  .app-content::-webkit-scrollbar { display: none; }
+
+  /* ===== Top bar with back button ===== */
+  .topbar {
+    padding: 6px 16px 12px;
+    display: flex; align-items: center; gap: 10px;
+    flex-shrink: 0;
+  }
+  .back-btn {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: rgba(50,52,64,0.5);
+    border: 1px solid rgba(255,255,255,0.05);
+    display: grid; place-items: center;
+    color: #d1d5db; font-size: 20px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .topbar-title-block { flex: 1; min-width: 0; }
+  .topbar-breadcrumb {
+    font-size: 10px; color: #9ca3af;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+  .topbar-title {
+    font-size: 16px; font-weight: 800;
+    margin-top: 1px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .topbar-action {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: rgba(50,52,64,0.5);
+    border: 1px solid rgba(255,255,255,0.05);
+    display: grid; place-items: center;
+    color: #d1d5df; font-size: 18px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  /* ===== Group header card (compact mobile) ===== */
+  .group-header {
+    margin: 0 16px 14px;
+    background: rgba(50,52,64,0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(232,168,50,0.15);
+    border-radius: 16px;
+    padding: 16px;
+  }
+  .gh-top {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 14px;
+  }
+  .gh-avatar {
+    width: 52px; height: 52px; border-radius: 13px;
+    background: linear-gradient(135deg, rgba(232,168,50,0.2) 0%, rgba(217,119,6,0.1) 100%);
+    border: 1px solid rgba(232,168,50,0.3);
+    display: grid; place-items: center;
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+  .gh-info { flex: 1; min-width: 0; }
+  .gh-name-row {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 4px;
+  }
+  .gh-name {
+    font-size: 17px; font-weight: 800;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .role-badge-mini {
+    background: linear-gradient(135deg, #e8a832 0%, #d97706 100%);
+    color: #11131e;
+    padding: 2px 7px; border-radius: 6px;
+    font-size: 9px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.4px;
+    flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 3px;
+  }
+  .role-badge-mini .material-symbols-outlined { font-size: 11px; }
+  .gh-meta-row {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; color: #9ca3af;
+    flex-wrap: wrap;
+  }
+  .gh-meta-row .item {
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .gh-meta-row .item .material-symbols-outlined { font-size: 12px; }
+  .gh-meta-row .divider { color: #4b5563; }
+
+  /* Action buttons row */
+  .gh-actions {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 6px;
+  }
+  .gh-action-btn {
+    background: rgba(50,52,64,0.6);
+    border: 1px solid rgba(232,168,50,0.2);
+    color: #d1d5db;
+    padding: 9px 8px; border-radius: 9px;
+    font-family: inherit; font-size: 11px; font-weight: 700;
+    cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+  }
+  .gh-action-btn .material-symbols-outlined { font-size: 14px; }
+  .gh-action-btn.primary {
+    background: linear-gradient(135deg, #e8a832 0%, #d97706 100%);
+    color: #11131e;
+    border-color: transparent;
+  }
+
+  /* ===== Tabs (horizontal scroll) ===== */
+  .tabs-scroll {
+    padding: 0 16px 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-shrink: 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-scroll::-webkit-scrollbar { display: none; }
+  .tabs-row {
+    display: inline-flex;
+    gap: 4px;
+    background: rgba(50,52,64,0.3);
+    padding: 5px;
+    border-radius: 11px;
+    white-space: nowrap;
+  }
+  .tab-item {
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 12px; font-weight: 700;
+    color: #9ca3af;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 5px;
+    flex-shrink: 0;
+  }
+  .tab-item.active {
+    background: rgba(232,168,50,0.15);
+    color: #e8a832;
+    border: 1px solid rgba(232,168,50,0.3);
+  }
+  .tab-item .material-symbols-outlined { font-size: 14px; }
+  .tab-item .badge {
+    background: rgba(255,255,255,0.1);
+    color: inherit;
+    font-size: 9px; padding: 1px 5px; border-radius: 5px;
+    font-weight: 800;
+  }
+  .tab-item.active .badge { background: rgba(232,168,50,0.25); }
+
+  /* ===== Section heading ===== */
+  .sec-h {
+    padding: 0 16px 10px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .sec-h-title {
+    font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .sec-h-title .material-symbols-outlined { font-size: 17px; color: #e8a832; }
+  .sec-h-title .count {
+    color: #e8a832; font-size: 11px;
+    background: rgba(232,168,50,0.12);
+    padding: 1px 7px; border-radius: 7px;
+    font-weight: 700;
+  }
+  .sec-h-action {
+    color: #e8a832; font-size: 11px; font-weight: 700;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 4px;
+    background: rgba(232,168,50,0.1);
+    border: 1px solid rgba(232,168,50,0.25);
+    padding: 6px 10px;
+    border-radius: 7px;
+  }
+  .sec-h-action .material-symbols-outlined { font-size: 13px; }
+
+  /* ===== Active activities (horizontal scroll) ===== */
+  .activities-scroll {
+    display: flex; gap: 10px;
+    padding: 0 16px 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .activities-scroll::-webkit-scrollbar { display: none; }
+  .activity-card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    border-radius: 13px;
+    padding: 14px;
+    border: 1px solid;
+    cursor: pointer;
+  }
+  .activity-card.live {
+    border-color: rgba(167,139,250,0.3);
+    background:
+      linear-gradient(135deg, rgba(167,139,250,0.1) 0%, rgba(50,52,64,0.4) 60%);
+  }
+  .activity-card.scheduled {
+    border-color: rgba(96,165,250,0.3);
+    background:
+      linear-gradient(135deg, rgba(96,165,250,0.1) 0%, rgba(50,52,64,0.4) 60%);
+  }
+  .ac-top {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 10px;
+  }
+  .ac-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    display: grid; place-items: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .ac-icon.live {
+    background: rgba(167,139,250,0.15);
+    border: 1px solid rgba(167,139,250,0.3);
+    color: #a78bfa;
+  }
+  .ac-icon.scheduled {
+    background: rgba(96,165,250,0.15);
+    border: 1px solid rgba(96,165,250,0.3);
+    color: #60a5fa;
+  }
+  .ac-info { flex: 1; min-width: 0; }
+  .ac-status {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 9px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 1px;
+  }
+  .ac-status.live { color: #a78bfa; }
+  .ac-status.scheduled { color: #60a5fa; }
+  .ac-status .pulse {
+    width: 5px; height: 5px; border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+  .ac-status.live .pulse { background: #a78bfa; }
+  .ac-status.scheduled .pulse { background: #60a5fa; }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .ac-name {
+    font-size: 13px; font-weight: 700;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .ac-meta {
+    font-size: 10px; color: #9ca3af;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .ac-cta {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    font-family: inherit; font-size: 11px; font-weight: 700;
+    cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  }
+  .ac-cta .material-symbols-outlined { font-size: 13px; }
+  .ac-cta.live {
+    background: rgba(167,139,250,0.18);
+    color: #c4b5fd;
+    border: 1px solid rgba(167,139,250,0.3);
+  }
+  .ac-cta.scheduled {
+    background: rgba(96,165,250,0.18);
+    color: #93c5fd;
+    border: 1px solid rgba(96,165,250,0.3);
+  }
+
+  /* ===== Quiz Set Cards (mobile pattern: vertical stack with collapsed actions) ===== */
+  .qset-list {
+    padding: 0 16px;
+    display: flex; flex-direction: column; gap: 10px;
+    margin-bottom: 16px;
+  }
+  .qset-card {
+    background: rgba(50,52,64,0.4);
+    border: 1px solid rgba(232,168,50,0.1);
+    border-radius: 14px;
+    padding: 14px;
+  }
+  /* Top row: icon + info + menu */
+  .qs-top {
+    display: flex; align-items: flex-start; gap: 12px;
+    margin-bottom: 12px;
+  }
+  .qs-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: linear-gradient(135deg, rgba(232,168,50,0.18) 0%, rgba(217,119,6,0.1) 100%);
+    border: 1px solid rgba(232,168,50,0.25);
+    display: grid; place-items: center;
+    color: #e8a832; font-size: 18px;
+    flex-shrink: 0;
+  }
+  .qs-info { flex: 1; min-width: 0; }
+  .qs-name {
+    font-size: 14px; font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .qs-meta-row {
+    display: flex; align-items: center; gap: 6px;
+    flex-wrap: wrap;
+    font-size: 10px;
+  }
+  .qs-meta-item {
+    display: inline-flex; align-items: center; gap: 3px;
+    color: #9ca3af;
+  }
+  .qs-meta-item .material-symbols-outlined { font-size: 11px; }
+  .qs-meta-item.difficulty {
+    background: rgba(96,165,250,0.1);
+    color: #93c5fd;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-weight: 700;
+  }
+  .qs-meta-item.difficulty.hard {
+    background: rgba(248,113,113,0.1);
+    color: #fca5a5;
+  }
+  .qs-meta-item.difficulty.easy {
+    background: rgba(74,222,128,0.1);
+    color: #86efac;
+  }
+  .qs-tag {
+    color: #c4b5fd;
+    background: rgba(167,139,250,0.1);
+    padding: 2px 7px; border-radius: 5px;
+    display: inline-flex; align-items: center; gap: 3px;
+    font-weight: 700; font-size: 9px;
+    text-transform: uppercase; letter-spacing: 0.4px;
+  }
+  .qs-tag .material-symbols-outlined { font-size: 11px; }
+  .qs-menu {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.06);
+    color: #6b7280;
+    cursor: pointer;
+    display: grid; place-items: center;
+    flex-shrink: 0;
+  }
+
+  /* Action row — 2 primary + tự ôn nhỏ */
+  .qs-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .qs-btn {
+    padding: 9px 6px;
+    border-radius: 9px;
+    font-family: inherit; font-size: 11px; font-weight: 700;
+    cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+    border: 1px solid;
+  }
+  .qs-btn .material-symbols-outlined { font-size: 13px; }
+  .qs-btn.live {
+    background: rgba(167,139,250,0.12);
+    color: #c4b5fd;
+    border-color: rgba(167,139,250,0.3);
+  }
+  .qs-btn.scheduled {
+    background: rgba(96,165,250,0.12);
+    color: #93c5fd;
+    border-color: rgba(96,165,250,0.3);
+  }
+  .qs-solo {
+    width: 100%;
+    padding: 8px;
+    background: transparent;
+    color: #9ca3af;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 9px;
+    font-family: inherit; font-size: 11px; font-weight: 600;
+    cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  }
+  .qs-solo .material-symbols-outlined { font-size: 13px; }
+
+  /* ===== History collapse ===== */
+  .history-card {
+    margin: 0 16px 16px;
+    background: rgba(50,52,64,0.2);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .history-l {
+    display: flex; align-items: center; gap: 9px;
+    font-size: 12px; font-weight: 700;
+    color: #d1d5db;
+  }
+  .history-l .material-symbols-outlined { font-size: 16px; color: #9ca3af; }
+  .history-count {
+    color: #9ca3af; font-size: 11px;
+    background: rgba(255,255,255,0.05);
+    padding: 1px 7px; border-radius: 5px;
+  }
+
+  /* ===== Empty state ===== */
+  .empty-state {
+    margin: 0 16px;
+    background: rgba(50,52,64,0.2);
+    border: 1px dashed rgba(232,168,50,0.2);
+    border-radius: 16px;
+    padding: 36px 20px;
+    text-align: center;
+  }
+  .empty-icon {
+    width: 64px; height: 64px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: rgba(232,168,50,0.08);
+    display: grid; place-items: center;
+    font-size: 30px; color: #e8a832;
+  }
+  .empty-state h3 {
+    font-size: 16px; font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .empty-state p {
+    font-size: 12px; color: #9ca3af; line-height: 1.55;
+    margin-bottom: 20px;
+  }
+  .empty-cta {
+    width: 100%;
+    background: linear-gradient(135deg, #e8a832 0%, #d97706 100%);
+    color: #11131e; border: none;
+    padding: 12px; border-radius: 10px;
+    font-family: inherit; font-size: 13px; font-weight: 800;
+    cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    box-shadow: 0 4px 14px rgba(232,168,50,0.3);
+  }
+
+  /* ===== Bottom nav (Hướng 3) ===== */
+  .bottom-nav {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(13,15,23,0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(232,168,50,0.1);
+    padding: 10px 16px 22px;
+    display: flex; justify-content: space-around; align-items: center;
+    z-index: 20;
+  }
+  .nav-item {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    display: grid; place-items: center;
+    color: #6b7280; font-size: 21px;
+    cursor: pointer;
+  }
+  .nav-item.active {
+    width: auto; padding: 0 14px;
+    background: linear-gradient(135deg, #e8a832 0%, #d97706 100%);
+    color: #11131e;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 800;
+    box-shadow: 0 4px 12px rgba(232,168,50,0.3);
+  }
+  .nav-item.active .material-symbols-outlined { font-size: 19px; }
+
+  /* Annotation */
+  .annotation {
+    margin: 50px auto 0;
+    max-width: 880px;
+    padding: 24px 28px;
+    background: rgba(96,165,250,0.06);
+    border: 1px solid rgba(96,165,250,0.2);
+    border-radius: 16px;
+    color: #93c5fd;
+    font-size: 13px; line-height: 1.7;
+  }
+  .annotation strong { color: #60a5fa; }
+  .annotation code {
+    background: rgba(17,19,30,0.6); padding: 2px 6px;
+    border-radius: 4px; font-size: 12px;
+  }
+  .annotation ul { margin: 6px 0 0 20px; }
+  .annotation li { margin-bottom: 4px; }
+  .annotation .delta {
+    margin: 12px 0; padding: 12px 14px;
+    background: rgba(74,222,128,0.06);
+    border-left: 3px solid #4ade80;
+    border-radius: 6px;
+  }
+  .annotation .delta strong { color: #4ade80; }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .phones { flex-direction: column; align-items: center; }
+  }
+  @media (max-width: 420px) {
+    body { padding: 12px 0 30px; }
+    .review-header { padding: 0 16px; }
+    .phone-wrap { width: 100%; gap: 8px; }
+    .phone {
+      width: 100%; max-width: 420px;
+      height: auto; min-height: 100vh;
+      border-radius: 0; border: none;
+      box-shadow: none;
+    }
+    .phone::before { display: none; }
+    .status-bar { display: none; }
+    .annotation { margin: 30px 12px 0; padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="review-header">
+  <h1>Group Detail · Mobile Redesign</h1>
+  <p>Tab "Bộ câu hỏi" · 2 state side-by-side · 380×820 (iPhone 14 Pro Max)</p>
+</div>
+
+<div class="phones">
+
+  <!-- ============================================ -->
+  <!-- PHONE 1: HAS QUIZ SETS                       -->
+  <!-- ============================================ -->
+  <div class="phone-wrap">
+    <div class="phone-label">Có quiz sets</div>
+    <div class="phone">
+
+      <div class="status-bar">
+        <div>9:41</div>
+        <div class="icons">
+          <span class="material-symbols-outlined" style="font-size:13px">network_cell</span>
+          <span class="material-symbols-outlined" style="font-size:13px">wifi</span>
+          <span class="material-symbols-outlined" style="font-size:13px">battery_full</span>
+        </div>
+      </div>
+
+      <div class="app-content">
+
+        <!-- Top bar -->
+        <div class="topbar">
+          <div class="back-btn">
+            <span class="material-symbols-outlined">arrow_back</span>
+          </div>
+          <div class="topbar-title-block">
+            <div class="topbar-breadcrumb">Nhóm</div>
+            <div class="topbar-title">FMC Đà Nẵng</div>
+          </div>
+          <div class="topbar-action">
+            <span class="material-symbols-outlined">settings</span>
+          </div>
+        </div>
+
+        <!-- Group header card -->
+        <div class="group-header">
+          <div class="gh-top">
+            <div class="gh-avatar">⛪</div>
+            <div class="gh-info">
+              <div class="gh-name-row">
+                <div class="gh-name">FMC Đà Nẵng</div>
+                <span class="role-badge-mini">
+                  <span class="material-symbols-outlined">workspace_premium</span>
+                  Trưởng
+                </span>
+              </div>
+              <div class="gh-meta-row">
+                <span class="item">
+                  <span class="material-symbols-outlined">groups</span>
+                  2 thành viên
+                </span>
+                <span class="divider">·</span>
+                <span class="item" style="color:#4ade80">
+                  <span class="material-symbols-outlined" style="color:#4ade80">circle</span>
+                  Hoạt động hôm nay
+                </span>
+                <span class="divider">·</span>
+                <span class="item">
+                  <span class="material-symbols-outlined">local_fire_department</span>
+                  5 ngày streak
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gh-actions">
+            <button class="gh-action-btn primary">
+              <span class="material-symbols-outlined">person_add</span>
+              Mời
+            </button>
+            <button class="gh-action-btn">
+              <span class="material-symbols-outlined">analytics</span>
+              Thống kê
+            </button>
+            <button class="gh-action-btn">
+              <span class="material-symbols-outlined">campaign</span>
+              Đăng
+            </button>
+          </div>
+        </div>
+
+        <!-- Tabs (horizontal scroll) -->
+        <div class="tabs-scroll">
+          <div class="tabs-row">
+            <div class="tab-item">
+              <span class="material-symbols-outlined">leaderboard</span>
+              Xếp hạng
+            </div>
+            <div class="tab-item">
+              <span class="material-symbols-outlined">people</span>
+              Thành viên
+              <span class="badge">2</span>
+            </div>
+            <div class="tab-item">
+              <span class="material-symbols-outlined">campaign</span>
+              Thông báo
+            </div>
+            <div class="tab-item active">
+              <span class="material-symbols-outlined">collections_bookmark</span>
+              Bộ câu hỏi
+              <span class="badge">3</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Đang diễn ra -->
+        <div class="sec-h">
+          <div class="sec-h-title">
+            <span class="material-symbols-outlined">play_circle</span>
+            Đang diễn ra
+            <span class="count">2</span>
+          </div>
+        </div>
+
+        <div class="activities-scroll">
+          <!-- Live room -->
+          <div class="activity-card live">
+            <div class="ac-top">
+              <div class="ac-icon live">
+                <span class="material-symbols-outlined">groups</span>
+              </div>
+              <div class="ac-info">
+                <div class="ac-status live">
+                  <span class="pulse"></span>
+                  Phòng Live · 5 người
+                </div>
+                <div class="ac-name">Ôn bài tối thứ Sáu</div>
+              </div>
+            </div>
+            <div class="ac-meta">
+              Sáng Thế Ký 1-3 · Bắt đầu 5 phút trước
+            </div>
+            <button class="ac-cta live">
+              <span class="material-symbols-outlined">login</span>
+              Tham gia phòng
+            </button>
+          </div>
+
+          <!-- Scheduled quiz -->
+          <div class="activity-card scheduled">
+            <div class="ac-top">
+              <div class="ac-icon scheduled">
+                <span class="material-symbols-outlined">schedule</span>
+              </div>
+              <div class="ac-info">
+                <div class="ac-status scheduled">
+                  <span class="pulse"></span>
+                  Quiz tuần · 18/24 đã chơi
+                </div>
+                <div class="ac-name">Sáng Thế Ký 12-25</div>
+              </div>
+            </div>
+            <div class="ac-meta">
+              Còn 2 ngày 14h · Bạn đã chơi 2/3 lần
+            </div>
+            <button class="ac-cta scheduled">
+              <span class="material-symbols-outlined">play_arrow</span>
+              Chơi lần cuối
+            </button>
+          </div>
+        </div>
+
+        <!-- Section: Bộ câu hỏi -->
+        <div class="sec-h">
+          <div class="sec-h-title">
+            <span class="material-symbols-outlined">collections_bookmark</span>
+            Bộ câu hỏi
+            <span class="count">3</span>
+          </div>
+          <button class="sec-h-action">
+            <span class="material-symbols-outlined">add</span>
+            Tạo
+          </button>
+        </div>
+
+        <div class="qset-list">
+
+          <!-- Quiz set 1 -->
+          <div class="qset-card">
+            <div class="qs-top">
+              <div class="qs-icon">
+                <span class="material-symbols-outlined">menu_book</span>
+              </div>
+              <div class="qs-info">
+                <div class="qs-name">Sáng Thế Ký · Chương 1-3</div>
+                <div class="qs-meta-row">
+                  <span class="qs-meta-item">
+                    <span class="material-symbols-outlined">quiz</span>
+                    15 câu
+                  </span>
+                  <span class="qs-meta-item difficulty">Trung bình</span>
+                  <span class="qs-meta-item">2 ngày trước</span>
+                </div>
+              </div>
+              <button class="qs-menu">
+                <span class="material-symbols-outlined">more_vert</span>
+              </button>
+            </div>
+            <div class="qs-actions">
+              <button class="qs-btn live">
+                <span class="material-symbols-outlined">groups</span>
+                Chơi cùng nhau
+              </button>
+              <button class="qs-btn scheduled">
+                <span class="material-symbols-outlined">schedule</span>
+                Đặt lịch
+              </button>
+            </div>
+            <button class="qs-solo">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+
+          <!-- Quiz set 2 (with active tag) -->
+          <div class="qset-card">
+            <div class="qs-top">
+              <div class="qs-icon">
+                <span class="material-symbols-outlined">menu_book</span>
+              </div>
+              <div class="qs-info">
+                <div class="qs-name">Sáng Thế Ký · Chương 12-25 (Áp-ra-ham)</div>
+                <div class="qs-meta-row">
+                  <span class="qs-meta-item">
+                    <span class="material-symbols-outlined">quiz</span>
+                    20 câu
+                  </span>
+                  <span class="qs-meta-item difficulty hard">Khó</span>
+                  <span class="qs-tag">
+                    <span class="material-symbols-outlined">verified</span>
+                    Đang dùng
+                  </span>
+                </div>
+              </div>
+              <button class="qs-menu">
+                <span class="material-symbols-outlined">more_vert</span>
+              </button>
+            </div>
+            <div class="qs-actions">
+              <button class="qs-btn live">
+                <span class="material-symbols-outlined">groups</span>
+                Chơi cùng nhau
+              </button>
+              <button class="qs-btn scheduled">
+                <span class="material-symbols-outlined">schedule</span>
+                Đặt lịch
+              </button>
+            </div>
+            <button class="qs-solo">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+
+          <!-- Quiz set 3 -->
+          <div class="qset-card">
+            <div class="qs-top">
+              <div class="qs-icon">
+                <span class="material-symbols-outlined">menu_book</span>
+              </div>
+              <div class="qs-info">
+                <div class="qs-name">Phúc Âm Ma-thi-ơ · Bài giảng trên núi</div>
+                <div class="qs-meta-row">
+                  <span class="qs-meta-item">
+                    <span class="material-symbols-outlined">quiz</span>
+                    12 câu
+                  </span>
+                  <span class="qs-meta-item difficulty easy">Dễ</span>
+                  <span class="qs-meta-item">1 tuần trước</span>
+                </div>
+              </div>
+              <button class="qs-menu">
+                <span class="material-symbols-outlined">more_vert</span>
+              </button>
+            </div>
+            <div class="qs-actions">
+              <button class="qs-btn live">
+                <span class="material-symbols-outlined">groups</span>
+                Chơi cùng nhau
+              </button>
+              <button class="qs-btn scheduled">
+                <span class="material-symbols-outlined">schedule</span>
+                Đặt lịch
+              </button>
+            </div>
+            <button class="qs-solo">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+
+        </div>
+
+        <!-- History collapse -->
+        <div class="history-card">
+          <div class="history-l">
+            <span class="material-symbols-outlined">history</span>
+            Lịch sử các phòng đã chơi
+            <span class="history-count">8</span>
+          </div>
+          <span class="material-symbols-outlined" style="color:#9ca3af">expand_more</span>
+        </div>
+
+      </div>
+
+      <!-- Bottom nav -->
+      <div class="bottom-nav">
+        <div class="nav-item">
+          <span class="material-symbols-outlined">home</span>
+        </div>
+        <div class="nav-item">
+          <span class="material-symbols-outlined">leaderboard</span>
+        </div>
+        <div class="nav-item active">
+          <span class="material-symbols-outlined">groups</span>
+          <span>Nhóm</span>
+        </div>
+        <div class="nav-item">
+          <span class="material-symbols-outlined">person</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ============================================ -->
+  <!-- PHONE 2: EMPTY STATE                         -->
+  <!-- ============================================ -->
+  <div class="phone-wrap">
+    <div class="phone-label">Empty (chưa có quiz set)</div>
+    <div class="phone">
+
+      <div class="status-bar">
+        <div>9:41</div>
+        <div class="icons">
+          <span class="material-symbols-outlined" style="font-size:13px">network_cell</span>
+          <span class="material-symbols-outlined" style="font-size:13px">wifi</span>
+          <span class="material-symbols-outlined" style="font-size:13px">battery_full</span>
+        </div>
+      </div>
+
+      <div class="app-content">
+
+        <div class="topbar">
+          <div class="back-btn">
+            <span class="material-symbols-outlined">arrow_back</span>
+          </div>
+          <div class="topbar-title-block">
+            <div class="topbar-breadcrumb">Nhóm</div>
+            <div class="topbar-title">FMC Đà Nẵng</div>
+          </div>
+          <div class="topbar-action">
+            <span class="material-symbols-outlined">settings</span>
+          </div>
+        </div>
+
+        <div class="group-header">
+          <div class="gh-top">
+            <div class="gh-avatar">⛪</div>
+            <div class="gh-info">
+              <div class="gh-name-row">
+                <div class="gh-name">FMC Đà Nẵng</div>
+                <span class="role-badge-mini">
+                  <span class="material-symbols-outlined">workspace_premium</span>
+                  Trưởng
+                </span>
+              </div>
+              <div class="gh-meta-row">
+                <span class="item">
+                  <span class="material-symbols-outlined">groups</span>
+                  2 thành viên
+                </span>
+                <span class="divider">·</span>
+                <span class="item">
+                  <span class="material-symbols-outlined">local_fire_department</span>
+                  Chưa có streak
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gh-actions">
+            <button class="gh-action-btn primary">
+              <span class="material-symbols-outlined">person_add</span>
+              Mời
+            </button>
+            <button class="gh-action-btn">
+              <span class="material-symbols-outlined">analytics</span>
+              Thống kê
+            </button>
+            <button class="gh-action-btn">
+              <span class="material-symbols-outlined">campaign</span>
+              Đăng
+            </button>
+          </div>
+        </div>
+
+        <div class="tabs-scroll">
+          <div class="tabs-row">
+            <div class="tab-item">
+              <span class="material-symbols-outlined">leaderboard</span>
+              Xếp hạng
+            </div>
+            <div class="tab-item">
+              <span class="material-symbols-outlined">people</span>
+              Thành viên
+              <span class="badge">2</span>
+            </div>
+            <div class="tab-item">
+              <span class="material-symbols-outlined">campaign</span>
+              Thông báo
+            </div>
+            <div class="tab-item active">
+              <span class="material-symbols-outlined">collections_bookmark</span>
+              Bộ câu hỏi
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty state -->
+        <div class="empty-state">
+          <div class="empty-icon">
+            <span class="material-symbols-outlined" style="font-size:36px">collections_bookmark</span>
+          </div>
+          <h3>Chưa có bộ câu hỏi</h3>
+          <p>
+            Tạo bộ câu hỏi để cùng cả nhóm ôn bài. Chọn câu từ thư viện 4,000+ câu BTTHĐ 2011, hoặc dùng AI tạo từ chương cụ thể.
+          </p>
+          <button class="empty-cta">
+            <span class="material-symbols-outlined">add</span>
+            Tạo bộ câu hỏi đầu tiên
+          </button>
+        </div>
+
+      </div>
+
+      <div class="bottom-nav">
+        <div class="nav-item">
+          <span class="material-symbols-outlined">home</span>
+        </div>
+        <div class="nav-item">
+          <span class="material-symbols-outlined">leaderboard</span>
+        </div>
+        <div class="nav-item active">
+          <span class="material-symbols-outlined">groups</span>
+          <span>Nhóm</span>
+        </div>
+        <div class="nav-item">
+          <span class="material-symbols-outlined">person</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Annotation -->
+<div class="annotation">
+  <strong>📝 Group Detail Mobile · Notes</strong>
+
+  <p style="margin-top:10px"><strong>Khác biệt so với desktop:</strong></p>
+  <ul>
+    <li><strong>Top bar pattern</strong> — Back button + breadcrumb "Nhóm / FMC Đà Nẵng" + Settings icon (gear). Settings là entry point cho Danger Zone (Xóa nhóm).</li>
+    <li><strong>Group header compact</strong> — Avatar 52px (vs 72px desktop), name + role badge cùng row. Meta row inline thay vì grid. Actions thành 3 columns (2:1:1) với "Mời" primary, "Thống kê" và "Đăng" secondary.</li>
+    <li><strong>Tabs horizontal scroll</strong> — 4 tabs vẫn hiển thị nhưng có thể scroll nếu thêm tab. Active "Bộ câu hỏi" (rename xong).</li>
+    <li><strong>Activities horizontal scroll</strong> — Cards 280px width, scroll-snap. Hint card thứ 2 lú ra mép phải.</li>
+    <li><strong>Quiz set card 3-row layout</strong>:
+      <ul style="margin-top:4px">
+        <li>Row 1: Icon + Name + meta wrap + ⋮ menu</li>
+        <li>Row 2: 2 primary actions side-by-side (Chơi cùng nhau · Đặt lịch)</li>
+        <li>Row 3: "Tự ôn solo" full-width ghost button (less prominent, secondary action)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="delta">
+    <strong>✅ Tất cả 6 fixes đã apply:</strong>
+    <ul style="margin-top:6px">
+      <li>1. Test data "tett" → realistic names · Empty state có CTA prominent</li>
+      <li>2. Buttons hierarchy: 2 primary (purple/blue) row trên + 1 secondary "Tự ôn" row dưới + ⋮ menu</li>
+      <li>3. Xóa Nhóm → Settings page (gear icon top-right)</li>
+      <li>4. Header cleaned: bỏ duplicate name, invite code (vào button "Mời"), thay bằng activity status</li>
+      <li>5. Section "Đang diễn ra" với horizontal scroll cards</li>
+      <li>6. Tab "Quiz nhóm" → "Bộ câu hỏi"</li>
+    </ul>
+  </div>
+
+  <p style="margin-top:12px"><strong>Mobile-specific tweaks:</strong></p>
+  <ul>
+    <li><strong>Tự ôn xuống dưới</strong> — Trên desktop 4 buttons cùng row (Tự ôn ghost · Chơi cùng nhau · Đặt lịch · ⋮), trên mobile thiếu width nên tách: 2 primary lên grid 2-col + Tự ôn secondary full-width row riêng (less prominent visual). Ghost button + label "Tự ôn solo" để clarify đây không phải group action.</li>
+    <li><strong>Action buttons trong header rút gọn</strong> — "Mời thành viên" → "Mời", "Cài đặt" → icon only (gear). Tiết kiệm width.</li>
+    <li><strong>Tag "Đang dùng cho Quiz tuần"</strong> rút gọn thành "Đang dùng" — fit width 358px.</li>
+    <li><strong>Activities horizontal scroll</strong> — pattern quen thuộc trên mobile (giống groups public discovery).</li>
+  </ul>
+
+  <p style="margin-top:12px"><strong>Touch targets:</strong> Tất cả interactive elements ≥ 44×44px. Quiz set card có 3 distinct tap zones (card body navigate detail, 2 primary buttons, Tự ôn button, menu icon). ⋮ menu icon chỉ 32px nhưng có padding xung quanh đảm bảo hit target ≥ 40px.</p>
+
+  <p style="margin-top:12px"><strong>Total page length:</strong></p>
+  <ul>
+    <li>State có data: ~1,400px (Header + Tabs + 2 sections + 3 quiz cards + History)</li>
+    <li>State empty: ~620px (Header + Tabs + Empty state)</li>
+  </ul>
+</div>
+
+</body>
+</html>

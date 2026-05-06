@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BibleQuiz · Group Detail — Member View (mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #0a0b13;
+    color: #f3f4f6;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    padding: 30px 20px 60px;
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-size: inherit;
+    vertical-align: middle;
+  }
+
+  .review-header { text-align: center; margin-bottom: 24px; }
+  .review-header h1 {
+    font-size: 24px; font-weight: 800;
+    background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+  }
+  .review-header p { color: #9ca3af; font-size: 14px; }
+  .role-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(74,222,128,0.1);
+    border: 1px solid rgba(74,222,128,0.3);
+    color: #4ade80;
+    padding: 4px 12px; border-radius: 16px;
+    font-size: 11px; font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+
+  /* Tabs (state toggle) */
+  .tabs {
+    display: flex; gap: 6px; justify-content: center;
+    margin-bottom: 28px; flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: rgba(50,52,64,0.6);
+    border: 1px solid rgba(232,168,50,0.15);
+    color: #9ca3af;
+    padding: 10px 20px; border-radius: 10px;
+    font-family: inherit; font-size: 13px; font-weight: 700;
+    cursor: pointer;
+  }
+  .tab-btn.active {
+    background: linear-gradient(135deg, #e8a832 0%, #d97706 100%);
+    color: #11131e; border-color: transparent;
+  }
+
+  /* Side-by-side layout */
+  .frames {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 28px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  /* ===== DESKTOP FRAME ===== */
+  .desktop {
+    background: #11131e;
+    border-radius: 16px;
+    border: 8px solid #1f2030;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    overflow: hidden;
+    height: 780px;
+    display: flex;
+  }
+  .desktop-sidebar {
+    width: 200px;
+    background: #0d0f17;
+    border-right: 1px solid rgba(232,168,50,0.08);
+    padding: 18px 12px;
+    flex-shrink: 0;
+  }
+  .ds-brand {
+    font-size: 16px; font-weight: 800;
+    background: linear-gradient(135deg, #e8a832 0%, #fbbf24 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px; padding: 0 6px;
+  }
+  .ds-user {
+    background: rgba(50,52,64,0.4);
+    border: 1px solid rgba(232,168,50,0.1);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 14px;
+  }
+  .ds-user .avatar {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: linear-gradient(135deg, #93c5fd 0%, #3b82f6 100%);
+    display: grid; place-items: center;
+    color: #11131e; font-weight: 800; font-size: 12px;
+  }
+  .ds-user .name { font-size: 11px; font-weight: 700; }
+  .ds-user .tier { font-size: 9px; color: #9ca3af; }
+  .ds-nav {
+    display: flex; align-items: center; gap: 9px;
+    padding: 9px 10px; border-radius: 8px;
+    color: #9ca3af; font-weight: 600; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 3px;
+  }
+  .ds-nav.active {
+    background: linear-gradient(135deg, #e8a832 0%, #d97706 100%);
+    color: #11131e;
+  }
+  .ds-nav .material-symbols-outlined { font-size: 16px; }
+  .desktop-main {
+    flex: 1; overflow-y: auto; overflow-x: hidden;
+    padding: 22px 26px;
+  }
+  .desktop-main::-webkit-scrollbar { width: 4px; }
+  .desktop-main::-webkit-scrollbar-thumb { background: rgba(232,168,50,0.2); }
+
+  /* ===== MOBILE FRAME ===== */
+  .mobile {
+    width: 360px;
+    height: 780px;
+    background: #11131e;
+    border-radius: 36px;
+    border: 6px solid #1f2030;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    overflow: hidden; position: relative;
+    display: flex; flex-direction: column;
+    flex-shrink: 0;
+  }
+  .mobile::before {
+    content: ''; position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100px; height: 22px;
+    background: #0a0b13;
+    border-radius: 0 0 14px 14px; z-index: 11;
+  }
+  .mobile-status {
+    height: 36px;
+    padding: 12px 22px 0;
+    display: flex; justify-content: space-between;
+    font-size: 12px; font-weight: 600;
+    flex-shrink: 0;
+  }
+  .mobile-content {
+    flex: 1; overflow-y: auto; overflow-x: hidden;
+    padding-bottom: 80px;
+  }
+  .mobile-content::-webkit-scrollbar { display: none; }
+  .mobile-bottom-nav {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(13,15,23,0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(232,168,50,0.1);
+    padding: 8px 12px 18px;
+    display: flex; justify-content: space-around;
+    z-index: 20;
+  }
+  .nav-item {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: grid; place-items: center;
+    color: #6b7280; font-size: 19px;
+  }
+  .nav-item.active {
+    width: auto; padding: 0 12px;
+    background: linear-gradient(135deg, #e8a832 0%, #d97706 100%);
+    color: #11131e;
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; font-weight: 800;
+  }
+  .nav-item.active .material-symbols-outlined { font-size: 17px; }
+
+  /* ===== Topbar mobile ===== */
+  .topbar {
+    padding: 6px 16px 12px;
+    display: flex; align-items: center; gap: 10px;
+    flex-shrink: 0;
+  }
+  .back-btn {
+    width: 34px; height: 34px; border-radius: 9px;
+    background: rgba(50,52,64,0.5);
+    border: 1px solid rgba(255,255,255,0.05);
+    display: grid; place-items: center;
+    color: #d1d5db; font-size: 18px;
+  }
+  .topbar-title-block { flex: 1; min-width: 0; }
+  .topbar-breadcrumb {
+    font-size: 9px; color: #9ca3af;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+  .topbar-title {
+    font-size: 15px; font-weight: 800;
+    margin-top: 1px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .topbar-action {
+    width: 34px; height: 34px; border-radius: 9px;
+    background: rgba(50,52,64,0.5);
+    border: 1px solid rgba(255,255,255,0.05);
+    display: grid; place-items: center;
+    color: #d1d5db; font-size: 18px;
+  }
+
+  /* Breadcrumb desktop */
+  .breadcrumb {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11px; color: #9ca3af;
+    margin-bottom: 14px;
+  }
+  .breadcrumb a { color: #9ca3af; text-decoration: none; }
+  .breadcrumb .material-symbols-outlined { font-size: 13px; }
+
+  /* ===== Group header (member version) ===== */
+  .group-header {
+    background: rgba(50,52,64,0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(232,168,50,0.1);
+    border-radius: 16px;
+    padding: 16px 18px;
+    margin-bottom: 16px;
+  }
+  .mobile .group-header { margin: 0 16px 12px; padding: 14px; border-radius: 14px; }
+
+  .gh-top {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 12px;
+  }
+  .gh-avatar {
+    width: 52px; height: 52px; border-radius: 13px;
+    background: linear-gradient(135deg, rgba(232,168,50,0.18) 0%, rgba(217,119,6,0.1) 100%);
+    border: 1px solid rgba(232,168,50,0.25);
+    display: grid; place-items: center;
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+  .desktop .gh-avatar { width: 60px; height: 60px; font-size: 30px; }
+  .gh-info { flex: 1; min-width: 0; }
+  .gh-name-row {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 4px;
+  }
+  .gh-name {
+    font-size: 18px; font-weight: 800;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .desktop .gh-name { font-size: 22px; }
+  /* Member badge — sage green vs gold leader */
+  .role-badge-member {
+    background: rgba(74,222,128,0.12);
+    border: 1px solid rgba(74,222,128,0.3);
+    color: #4ade80;
+    padding: 3px 8px; border-radius: 6px;
+    font-size: 9px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.4px;
+    flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 3px;
+  }
+  .role-badge-member .material-symbols-outlined { font-size: 11px; }
+  .gh-meta-row {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 12px; color: #9ca3af;
+    flex-wrap: wrap;
+  }
+  .gh-meta-row .item {
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .gh-meta-row .item .material-symbols-outlined { font-size: 13px; }
+  .gh-meta-row .divider { color: #4b5563; }
+  /* Show leader name on member view */
+  .gh-leader-info {
+    color: #d1d5db;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .gh-leader-info .material-symbols-outlined {
+    font-size: 13px; color: #fbbf24;
+  }
+
+  /* Member-specific actions: minimal */
+  .gh-actions-member {
+    display: flex; gap: 6px;
+    flex-shrink: 0;
+  }
+  .gh-action-secondary {
+    background: rgba(50,52,64,0.5);
+    border: 1px solid rgba(255,255,255,0.06);
+    color: #d1d5db;
+    padding: 8px 12px; border-radius: 9px;
+    font-family: inherit; font-size: 11px; font-weight: 700;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .gh-action-secondary .material-symbols-outlined { font-size: 14px; }
+  .gh-action-secondary:hover {
+    color: #f3f4f6;
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  /* ===== Tabs ===== */
+  .tab-nav {
+    display: flex; gap: 4px;
+    background: rgba(50,52,64,0.3);
+    padding: 5px;
+    border-radius: 11px;
+    margin-bottom: 18px;
+    width: fit-content;
+  }
+  .desktop .tab-nav { margin-bottom: 22px; }
+  .mobile .tabs-scroll {
+    padding: 0 16px 14px;
+    overflow-x: auto;
+    flex-shrink: 0;
+  }
+  .mobile .tabs-scroll::-webkit-scrollbar { display: none; }
+  .mobile .tab-nav {
+    display: inline-flex;
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+  .tab-item {
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 12px; font-weight: 700;
+    color: #9ca3af;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .desktop .tab-item { padding: 9px 16px; font-size: 13px; }
+  .tab-item.active {
+    background: rgba(232,168,50,0.15);
+    color: #e8a832;
+    border: 1px solid rgba(232,168,50,0.3);
+  }
+  .tab-item .material-symbols-outlined { font-size: 14px; }
+  .tab-item .badge {
+    background: rgba(255,255,255,0.1);
+    color: inherit;
+    font-size: 9px; padding: 1px 5px; border-radius: 5px;
+    font-weight: 800;
+  }
+
+  /* ===== Activities (member sees join CTA) ===== */
+  .sec-h {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .desktop .sec-h { margin-bottom: 14px; padding: 0 4px; }
+  .mobile .sec-h { padding: 0 16px 8px; }
+  .sec-h-title {
+    font-size: 14px; font-weight: 700;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .desktop .sec-h-title { font-size: 16px; }
+  .sec-h-title .material-symbols-outlined { font-size: 17px; color: #e8a832; }
+  .sec-h-title .count {
+    color: #e8a832; font-size: 11px;
+    background: rgba(232,168,50,0.12);
+    padding: 1px 7px; border-radius: 7px;
+    font-weight: 700;
+  }
+
+  /* Live join banner — special prominence for member */
+  .live-call-banner {
+    background:
+      linear-gradient(135deg, rgba(167,139,250,0.15) 0%, rgba(50,52,64,0.4) 60%);
+    border: 1px solid rgba(167,139,250,0.4);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .mobile .live-call-banner {
+    margin: 0 16px 14px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .live-call-banner::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 100px; height: 100px;
+    background: radial-gradient(circle, rgba(167,139,250,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .lcb-icon {
+    width: 48px; height: 48px; border-radius: 13px;
+    background: linear-gradient(135deg, rgba(167,139,250,0.25) 0%, rgba(124,58,237,0.15) 100%);
+    border: 1px solid rgba(167,139,250,0.4);
+    display: grid; place-items: center;
+    color: #a78bfa; font-size: 24px;
+    flex-shrink: 0;
+    position: relative; z-index: 1;
+  }
+  .mobile .lcb-icon { margin: 0 auto; width: 44px; height: 44px; font-size: 22px; }
+  .lcb-info { min-width: 0; position: relative; z-index: 1; }
+  .mobile .lcb-info { text-align: center; }
+  .lcb-status {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 10px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    color: #c4b5fd;
+    margin-bottom: 4px;
+  }
+  .lcb-status .pulse {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #a78bfa;
+    box-shadow: 0 0 0 0 rgba(167,139,250,0.5);
+    animation: pulseGlow 1.2s infinite;
+  }
+  @keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(167,139,250,0.6); }
+    70% { box-shadow: 0 0 0 8px rgba(167,139,250,0); }
+    100% { box-shadow: 0 0 0 0 rgba(167,139,250,0); }
+  }
+  .lcb-name {
+    font-size: 17px; font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .lcb-meta {
+    font-size: 12px; color: #9ca3af;
+    line-height: 1.5;
+  }
+  .lcb-cta {
+    background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+    color: #fff;
+    border: none;
+    padding: 14px 24px; border-radius: 11px;
+    font-family: inherit; font-size: 14px; font-weight: 800;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 6px 20px rgba(167,139,250,0.35);
+    flex-shrink: 0;
+    position: relative; z-index: 1;
+  }
+  .mobile .lcb-cta { width: 100%; justify-content: center; }
+  .lcb-cta:hover { transform: translateY(-1px); }
+
+  /* Scheduled quiz card for member */
+  .scheduled-card {
+    background:
+      linear-gradient(135deg, rgba(96,165,250,0.08) 0%, rgba(50,52,64,0.4) 60%);
+    border: 1px solid rgba(96,165,250,0.3);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 18px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 14px; align-items: center;
+  }
+  .mobile .scheduled-card {
+    margin: 0 16px 14px;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+  }
+  .sc-icon {
+    width: 40px; height: 40px; border-radius: 11px;
+    background: rgba(96,165,250,0.15);
+    border: 1px solid rgba(96,165,250,0.3);
+    display: grid; place-items: center;
+    color: #60a5fa; font-size: 20px;
+    flex-shrink: 0;
+  }
+  .sc-info { min-width: 0; }
+  .sc-status {
+    font-size: 9px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    color: #93c5fd;
+    margin-bottom: 2px;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .sc-status .pulse {
+    width: 5px; height: 5px; border-radius: 50%; background: #60a5fa;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .sc-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .sc-meta { font-size: 11px; color: #9ca3af; }
+  .sc-cta {
+    background: rgba(96,165,250,0.15);
+    color: #93c5fd;
+    border: 1px solid rgba(96,165,250,0.35);
+    padding: 10px 18px; border-radius: 10px;
+    font-family: inherit; font-size: 12px; font-weight: 700;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+    flex-shrink: 0;
+  }
+  .sc-cta .material-symbols-outlined { font-size: 14px; }
+  .mobile .scheduled-card .sc-cta {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ===== Quiz Set Cards (member version: only "Tự ôn" + view) ===== */
+  .qset-list {
+    display: flex; flex-direction: column; gap: 10px;
+    margin-bottom: 16px;
+  }
+  .mobile .qset-list { padding: 0 16px; }
+  .qset-card {
+    background: rgba(50,52,64,0.35);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 14px;
+    padding: 14px 16px;
+  }
+  .desktop .qset-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 14px 18px;
+  }
+  .qs-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: linear-gradient(135deg, rgba(232,168,50,0.15) 0%, rgba(217,119,6,0.08) 100%);
+    border: 1px solid rgba(232,168,50,0.2);
+    display: grid; place-items: center;
+    color: #e8a832; font-size: 20px;
+    flex-shrink: 0;
+  }
+  .mobile .qs-top {
+    display: flex; gap: 12px; align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .qs-info { flex: 1; min-width: 0; }
+  .qs-name {
+    font-size: 14px; font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .desktop .qs-name { font-size: 15px; }
+  .qs-meta-row {
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap;
+    font-size: 11px;
+  }
+  .qs-meta-item {
+    display: inline-flex; align-items: center; gap: 3px;
+    color: #9ca3af;
+  }
+  .qs-meta-item .material-symbols-outlined { font-size: 12px; }
+  .qs-meta-item.difficulty {
+    background: rgba(96,165,250,0.1);
+    color: #93c5fd;
+    padding: 2px 7px; border-radius: 5px;
+    font-weight: 700;
+  }
+  .qs-meta-item.difficulty.hard { background: rgba(248,113,113,0.1); color: #fca5a5; }
+  .qs-meta-item.difficulty.easy { background: rgba(74,222,128,0.1); color: #86efac; }
+
+  /* Member action: only "Tự ôn" */
+  .qs-action-member {
+    background: rgba(50,52,64,0.5);
+    color: #d1d5db;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 9px 14px; border-radius: 9px;
+    font-family: inherit; font-size: 12px; font-weight: 700;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 5px;
+    flex-shrink: 0;
+  }
+  .qs-action-member:hover {
+    color: #e8a832;
+    border-color: rgba(232,168,50,0.3);
+    background: rgba(232,168,50,0.05);
+  }
+  .qs-action-member .material-symbols-outlined { font-size: 14px; }
+  .mobile .qs-action-member {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+  .qs-readonly-hint {
+    font-size: 10px; color: #6b7280;
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* Empty state for member */
+  .empty-state {
+    background: rgba(50,52,64,0.2);
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 36px 24px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .mobile .empty-state { margin: 0 16px 16px; padding: 30px 20px; }
+  .empty-icon {
+    width: 60px; height: 60px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    display: grid; place-items: center;
+    font-size: 28px; color: #9ca3af;
+  }
+  .empty-state h3 {
+    font-size: 16px; font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .empty-state p {
+    font-size: 12px; color: #9ca3af; line-height: 1.55;
+    max-width: 320px; margin: 0 auto;
+  }
+  .empty-state p strong { color: #d1d5db; }
+
+  /* Annotation */
+  .annotation {
+    margin-top: 32px;
+    padding: 20px 24px;
+    background: rgba(74,222,128,0.06);
+    border: 1px solid rgba(74,222,128,0.2);
+    border-radius: 14px;
+    color: #86efac;
+    font-size: 13px; line-height: 1.7;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .annotation strong { color: #4ade80; }
+  .annotation code {
+    background: rgba(17,19,30,0.6); padding: 2px 6px;
+    border-radius: 4px; font-size: 12px;
+  }
+  .annotation ul { margin: 6px 0 0 20px; }
+  .annotation li { margin-bottom: 4px; }
+  .annotation .compare {
+    margin: 12px 0; padding: 12px 14px;
+    background: rgba(96,165,250,0.06);
+    border-left: 3px solid #60a5fa;
+    border-radius: 6px;
+    color: #93c5fd;
+  }
+  .annotation .compare strong { color: #60a5fa; }
+  .annotation table {
+    width: 100%; border-collapse: collapse;
+    margin-top: 8px; font-size: 12px;
+  }
+  .annotation th, .annotation td {
+    padding: 6px 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .annotation th { color: #4ade80; font-weight: 700; }
+  .annotation td { color: #d1d5db; }
+  .annotation td.no { color: #f87171; }
+  .annotation td.yes { color: #4ade80; }
+
+  /* Tab visibility */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  @media (max-width: 1180px) {
+    .frames { grid-template-columns: 1fr; justify-items: center; }
+    .desktop { width: 100%; max-width: 800px; }
+  }
+  @media (max-width: 600px) {
+    body { padding: 16px 8px 30px; }
+    .desktop { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="review-header">
+  <div class="role-tag">
+    <span class="material-symbols-outlined" style="font-size:14px">person</span>
+    Member view (User thường)
+  </div>
+  <h1>Group Detail · Member</h1>
+  <p>Read-only quiz sets · Join-only activities · Member chỉ chơi, không tạo</p>
+</div>
+
+<!-- State tabs -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="setTab('with-activity', this)">
+    Có activity (live + scheduled)
+  </button>
+  <button class="tab-btn" onclick="setTab('no-activity', this)">
+    Không có activity (chỉ quiz sets)
+  </button>
+</div>
+
+<!-- ============================================ -->
+<!-- TAB 1: WITH ACTIVITY                         -->
+<!-- ============================================ -->
+<div id="tab-with-activity" class="tab-content active">
+  <div class="frames">
+
+    <!-- DESKTOP -->
+    <div class="desktop">
+      <div class="desktop-sidebar">
+        <div class="ds-brand">Bible Quiz</div>
+        <div class="ds-user">
+          <div class="avatar">B</div>
+          <div>
+            <div class="name">Bình Lê</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+        </div>
+        <div class="ds-nav"><span class="material-symbols-outlined">home</span> Trang chủ</div>
+        <div class="ds-nav"><span class="material-symbols-outlined">leaderboard</span> Xếp hạng</div>
+        <div class="ds-nav active"><span class="material-symbols-outlined">groups</span> Nhóm</div>
+        <div class="ds-nav"><span class="material-symbols-outlined">person</span> Cá nhân</div>
+      </div>
+
+      <div class="desktop-main">
+        <div class="breadcrumb">
+          <a><span class="material-symbols-outlined">arrow_back</span> Nhóm</a>
+          <span>·</span>
+          <span style="color:#d1d5db">FMC Đà Nẵng</span>
+        </div>
+
+        <!-- Group header (member version) -->
+        <div class="group-header">
+          <div class="gh-top">
+            <div class="gh-avatar">⛪</div>
+            <div class="gh-info">
+              <div class="gh-name-row">
+                <div class="gh-name">FMC Đà Nẵng</div>
+                <span class="role-badge-member">
+                  <span class="material-symbols-outlined">person</span>
+                  Thành viên
+                </span>
+              </div>
+              <div class="gh-meta-row">
+                <span class="item">
+                  <span class="material-symbols-outlined">groups</span>
+                  47 thành viên
+                </span>
+                <span class="divider">·</span>
+                <span class="gh-leader-info">
+                  <span class="material-symbols-outlined">workspace_premium</span>
+                  Trưởng: TAI THANH
+                </span>
+                <span class="divider">·</span>
+                <span class="item" style="color:#fbbf24">Hạng #12 / 47</span>
+              </div>
+            </div>
+            <div class="gh-actions-member">
+              <button class="gh-action-secondary">
+                <span class="material-symbols-outlined">analytics</span>
+                Thống kê
+              </button>
+              <button class="gh-action-secondary" style="color:#fca5a5;border-color:rgba(248,113,113,0.2)">
+                <span class="material-symbols-outlined">logout</span>
+                Rời nhóm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tab-nav">
+          <div class="tab-item">
+            <span class="material-symbols-outlined">leaderboard</span>
+            Xếp hạng
+          </div>
+          <div class="tab-item">
+            <span class="material-symbols-outlined">people</span>
+            Thành viên
+            <span class="badge">47</span>
+          </div>
+          <div class="tab-item">
+            <span class="material-symbols-outlined">campaign</span>
+            Thông báo
+          </div>
+          <div class="tab-item active">
+            <span class="material-symbols-outlined">collections_bookmark</span>
+            Bộ câu hỏi
+            <span class="badge">3</span>
+          </div>
+        </div>
+
+        <!-- Live call banner -->
+        <div class="live-call-banner">
+          <div class="lcb-icon">
+            <span class="material-symbols-outlined">groups</span>
+          </div>
+          <div class="lcb-info">
+            <div class="lcb-status">
+              <span class="pulse"></span>
+              Trưởng nhóm vừa mở phòng · 5 phút trước
+            </div>
+            <div class="lcb-name">"Ôn bài tối thứ Sáu" — đang chờ bạn</div>
+            <div class="lcb-meta">
+              5/20 người đang trong phòng · Sáng Thế Ký 1-3 · 15 câu
+            </div>
+          </div>
+          <button class="lcb-cta">
+            <span class="material-symbols-outlined">login</span>
+            Tham gia phòng
+          </button>
+        </div>
+
+        <!-- Scheduled quiz -->
+        <div class="scheduled-card">
+          <div class="sc-icon">
+            <span class="material-symbols-outlined">schedule</span>
+          </div>
+          <div class="sc-info">
+            <div class="sc-status">
+              <span class="pulse"></span>
+              Quiz tuần · còn 2 ngày 14h
+            </div>
+            <div class="sc-name">Sáng Thế Ký 12-25 (Áp-ra-ham)</div>
+            <div class="sc-meta">
+              Bạn đã chơi 2/3 lần · Cao nhất 847 điểm · Đang đứng hạng #7/18
+            </div>
+          </div>
+          <button class="sc-cta">
+            <span class="material-symbols-outlined">play_arrow</span>
+            Chơi lần cuối
+          </button>
+        </div>
+
+        <!-- Quiz sets (read-only) -->
+        <div class="sec-h">
+          <div class="sec-h-title">
+            <span class="material-symbols-outlined">collections_bookmark</span>
+            Bộ câu hỏi của nhóm
+            <span class="count">3</span>
+          </div>
+          <div style="font-size:11px;color:#6b7280;font-style:italic">
+            Trưởng nhóm tạo bộ câu hỏi
+          </div>
+        </div>
+
+        <div class="qset-list">
+          <div class="qset-card">
+            <div class="qs-icon">
+              <span class="material-symbols-outlined">menu_book</span>
+            </div>
+            <div class="qs-info">
+              <div class="qs-name">Sáng Thế Ký · Chương 1-3</div>
+              <div class="qs-meta-row">
+                <span class="qs-meta-item">
+                  <span class="material-symbols-outlined">quiz</span>
+                  15 câu
+                </span>
+                <span class="qs-meta-item difficulty">Trung bình</span>
+                <span class="qs-meta-item">2 ngày trước</span>
+              </div>
+            </div>
+            <button class="qs-action-member">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+
+          <div class="qset-card">
+            <div class="qs-icon">
+              <span class="material-symbols-outlined">menu_book</span>
+            </div>
+            <div class="qs-info">
+              <div class="qs-name">Sáng Thế Ký · Chương 12-25 (Áp-ra-ham)</div>
+              <div class="qs-meta-row">
+                <span class="qs-meta-item">
+                  <span class="material-symbols-outlined">quiz</span>
+                  20 câu
+                </span>
+                <span class="qs-meta-item difficulty hard">Khó</span>
+                <span class="qs-meta-item">5 ngày trước</span>
+              </div>
+            </div>
+            <button class="qs-action-member">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+
+          <div class="qset-card">
+            <div class="qs-icon">
+              <span class="material-symbols-outlined">menu_book</span>
+            </div>
+            <div class="qs-info">
+              <div class="qs-name">Phúc Âm Ma-thi-ơ · Bài giảng trên núi</div>
+              <div class="qs-meta-row">
+                <span class="qs-meta-item">
+                  <span class="material-symbols-outlined">quiz</span>
+                  12 câu
+                </span>
+                <span class="qs-meta-item difficulty easy">Dễ</span>
+                <span class="qs-meta-item">1 tuần trước</span>
+              </div>
+            </div>
+            <button class="qs-action-member">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MOBILE -->
+    <div class="mobile">
+      <div class="mobile-status">
+        <div>9:41</div>
+        <div style="display:flex;gap:6px;font-size:12px">
+          <span class="material-symbols-outlined" style="font-size:13px">network_cell</span>
+          <span class="material-symbols-outlined" style="font-size:13px">wifi</span>
+          <span class="material-symbols-outlined" style="font-size:13px">battery_full</span>
+        </div>
+      </div>
+
+      <div class="mobile-content">
+        <div class="topbar">
+          <div class="back-btn">
+            <span class="material-symbols-outlined">arrow_back</span>
+          </div>
+          <div class="topbar-title-block">
+            <div class="topbar-breadcrumb">Nhóm</div>
+            <div class="topbar-title">FMC Đà Nẵng</div>
+          </div>
+          <div class="topbar-action">
+            <span class="material-symbols-outlined">more_horiz</span>
+          </div>
+        </div>
+
+        <div class="group-header">
+          <div class="gh-top">
+            <div class="gh-avatar">⛪</div>
+            <div class="gh-info">
+              <div class="gh-name-row">
+                <div class="gh-name">FMC Đà Nẵng</div>
+                <span class="role-badge-member">
+                  <span class="material-symbols-outlined">person</span>
+                  Member
+                </span>
+              </div>
+              <div class="gh-meta-row" style="font-size:11px">
+                <span class="item">
+                  <span class="material-symbols-outlined">groups</span>
+                  47 tv
+                </span>
+                <span class="divider">·</span>
+                <span style="color:#fbbf24">Hạng #12/47</span>
+              </div>
+              <div class="gh-meta-row" style="font-size:10px;margin-top:3px">
+                <span class="gh-leader-info">
+                  <span class="material-symbols-outlined">workspace_premium</span>
+                  Trưởng: TAI THANH
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs-scroll">
+          <div class="tab-nav">
+            <div class="tab-item">
+              <span class="material-symbols-outlined">leaderboard</span>
+              Xếp hạng
+            </div>
+            <div class="tab-item">
+              <span class="material-symbols-outlined">people</span>
+              Thành viên
+              <span class="badge">47</span>
+            </div>
+            <div class="tab-item">
+              <span class="material-symbols-outlined">campaign</span>
+              Thông báo
+            </div>
+            <div class="tab-item active">
+              <span class="material-symbols-outlined">collections_bookmark</span>
+              Bộ câu hỏi
+            </div>
+          </div>
+        </div>
+
+        <!-- Live call banner -->
+        <div class="live-call-banner">
+          <div class="lcb-icon">
+            <span class="material-symbols-outlined">groups</span>
+          </div>
+          <div class="lcb-info">
+            <div class="lcb-status">
+              <span class="pulse"></span>
+              Trưởng vừa mở phòng
+            </div>
+            <div class="lcb-name">Ôn bài tối thứ Sáu</div>
+            <div class="lcb-meta">
+              5/20 người · Sáng Thế Ký 1-3 · 15 câu
+            </div>
+          </div>
+          <button class="lcb-cta">
+            <span class="material-symbols-outlined">login</span>
+            Tham gia phòng
+          </button>
+        </div>
+
+        <!-- Scheduled quiz -->
+        <div class="scheduled-card">
+          <div class="sc-icon">
+            <span class="material-symbols-outlined">schedule</span>
+          </div>
+          <div class="sc-info">
+            <div class="sc-status">
+              <span class="pulse"></span>
+              Quiz tuần · 2 ngày 14h
+            </div>
+            <div class="sc-name">Sáng Thế Ký 12-25</div>
+            <div class="sc-meta">
+              2/3 lần · Cao nhất 847 · Hạng #7/18
+            </div>
+          </div>
+          <button class="sc-cta">
+            <span class="material-symbols-outlined">play_arrow</span>
+            Chơi lần cuối
+          </button>
+        </div>
+
+        <!-- Quiz sets -->
+        <div class="sec-h">
+          <div class="sec-h-title">
+            <span class="material-symbols-outlined">collections_bookmark</span>
+            Bộ câu hỏi
+            <span class="count">3</span>
+          </div>
+        </div>
+
+        <div class="qset-list">
+          <div class="qset-card">
+            <div class="qs-top">
+              <div class="qs-icon">
+                <span class="material-symbols-outlined">menu_book</span>
+              </div>
+              <div class="qs-info">
+                <div class="qs-name">Sáng Thế Ký · Chương 1-3</div>
+                <div class="qs-meta-row">
+                  <span class="qs-meta-item">
+                    <span class="material-symbols-outlined">quiz</span>
+                    15 câu
+                  </span>
+                  <span class="qs-meta-item difficulty">Trung bình</span>
+                </div>
+              </div>
+            </div>
+            <button class="qs-action-member">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+
+          <div class="qset-card">
+            <div class="qs-top">
+              <div class="qs-icon">
+                <span class="material-symbols-outlined">menu_book</span>
+              </div>
+              <div class="qs-info">
+                <div class="qs-name">Sáng Thế Ký · Chương 12-25</div>
+                <div class="qs-meta-row">
+                  <span class="qs-meta-item">
+                    <span class="material-symbols-outlined">quiz</span>
+                    20 câu
+                  </span>
+                  <span class="qs-meta-item difficulty hard">Khó</span>
+                </div>
+              </div>
+            </div>
+            <button class="qs-action-member">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+
+          <div class="qset-card">
+            <div class="qs-top">
+              <div class="qs-icon">
+                <span class="material-symbols-outlined">menu_book</span>
+              </div>
+              <div class="qs-info">
+                <div class="qs-name">Phúc Âm Ma-thi-ơ · Bài giảng</div>
+                <div class="qs-meta-row">
+                  <span class="qs-meta-item">
+                    <span class="material-symbols-outlined">quiz</span>
+                    12 câu
+                  </span>
+                  <span class="qs-meta-item difficulty easy">Dễ</span>
+                </div>
+              </div>
+            </div>
+            <button class="qs-action-member">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mobile-bottom-nav">
+        <div class="nav-item">
+          <span class="material-symbols-outlined">home</span>
+        </div>
+        <div class="nav-item">
+          <span class="material-symbols-outlined">leaderboard</span>
+        </div>
+        <div class="nav-item active">
+          <span class="material-symbols-outlined">groups</span>
+          <span>Nhóm</span>
+        </div>
+        <div class="nav-item">
+          <span class="material-symbols-outlined">person</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- TAB 2: NO ACTIVITY                           -->
+<!-- ============================================ -->
+<div id="tab-no-activity" class="tab-content">
+  <div class="frames">
+
+    <!-- DESKTOP -->
+    <div class="desktop">
+      <div class="desktop-sidebar">
+        <div class="ds-brand">Bible Quiz</div>
+        <div class="ds-user">
+          <div class="avatar">B</div>
+          <div>
+            <div class="name">Bình Lê</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+        </div>
+        <div class="ds-nav"><span class="material-symbols-outlined">home</span> Trang chủ</div>
+        <div class="ds-nav"><span class="material-symbols-outlined">leaderboard</span> Xếp hạng</div>
+        <div class="ds-nav active"><span class="material-symbols-outlined">groups</span> Nhóm</div>
+        <div class="ds-nav"><span class="material-symbols-outlined">person</span> Cá nhân</div>
+      </div>
+
+      <div class="desktop-main">
+        <div class="breadcrumb">
+          <a><span class="material-symbols-outlined">arrow_back</span> Nhóm</a>
+          <span>·</span>
+          <span style="color:#d1d5db">FMC Đà Nẵng</span>
+        </div>
+
+        <div class="group-header">
+          <div class="gh-top">
+            <div class="gh-avatar">⛪</div>
+            <div class="gh-info">
+              <div class="gh-name-row">
+                <div class="gh-name">FMC Đà Nẵng</div>
+                <span class="role-badge-member">
+                  <span class="material-symbols-outlined">person</span>
+                  Thành viên
+                </span>
+              </div>
+              <div class="gh-meta-row">
+                <span class="item">
+                  <span class="material-symbols-outlined">groups</span>
+                  47 thành viên
+                </span>
+                <span class="divider">·</span>
+                <span class="gh-leader-info">
+                  <span class="material-symbols-outlined">workspace_premium</span>
+                  Trưởng: TAI THANH
+                </span>
+                <span class="divider">·</span>
+                <span class="item" style="color:#fbbf24">Hạng #12 / 47</span>
+              </div>
+            </div>
+            <div class="gh-actions-member">
+              <button class="gh-action-secondary">
+                <span class="material-symbols-outlined">analytics</span>
+                Thống kê
+              </button>
+              <button class="gh-action-secondary" style="color:#fca5a5;border-color:rgba(248,113,113,0.2)">
+                <span class="material-symbols-outlined">logout</span>
+                Rời nhóm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-nav">
+          <div class="tab-item">
+            <span class="material-symbols-outlined">leaderboard</span>
+            Xếp hạng
+          </div>
+          <div class="tab-item">
+            <span class="material-symbols-outlined">people</span>
+            Thành viên
+            <span class="badge">47</span>
+          </div>
+          <div class="tab-item">
+            <span class="material-symbols-outlined">campaign</span>
+            Thông báo
+          </div>
+          <div class="tab-item active">
+            <span class="material-symbols-outlined">collections_bookmark</span>
+            Bộ câu hỏi
+            <span class="badge">3</span>
+          </div>
+        </div>
+
+        <!-- Empty info banner -->
+        <div class="empty-state">
+          <div class="empty-icon">
+            <span class="material-symbols-outlined" style="font-size:32px">notifications_off</span>
+          </div>
+          <h3>Hiện chưa có quiz nhóm nào</h3>
+          <p>
+            Khi <strong>trưởng nhóm</strong> mở phòng "Chơi cùng nhau" hoặc đặt lịch Quiz tuần,
+            bạn sẽ thấy thông báo ở đây. Trong lúc chờ, bạn có thể tự ôn các bộ câu hỏi của nhóm.
+          </p>
+        </div>
+
+        <div class="sec-h">
+          <div class="sec-h-title">
+            <span class="material-symbols-outlined">collections_bookmark</span>
+            Bộ câu hỏi của nhóm
+            <span class="count">3</span>
+          </div>
+          <div style="font-size:11px;color:#6b7280;font-style:italic">
+            Trưởng nhóm tạo bộ câu hỏi
+          </div>
+        </div>
+
+        <div class="qset-list">
+          <div class="qset-card">
+            <div class="qs-icon">
+              <span class="material-symbols-outlined">menu_book</span>
+            </div>
+            <div class="qs-info">
+              <div class="qs-name">Sáng Thế Ký · Chương 1-3</div>
+              <div class="qs-meta-row">
+                <span class="qs-meta-item">
+                  <span class="material-symbols-outlined">quiz</span>
+                  15 câu
+                </span>
+                <span class="qs-meta-item difficulty">Trung bình</span>
+                <span class="qs-meta-item">2 ngày trước</span>
+              </div>
+            </div>
+            <button class="qs-action-member">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+
+          <div class="qset-card">
+            <div class="qs-icon">
+              <span class="material-symbols-outlined">menu_book</span>
+            </div>
+            <div class="qs-info">
+              <div class="qs-name">Sáng Thế Ký · Chương 12-25 (Áp-ra-ham)</div>
+              <div class="qs-meta-row">
+                <span class="qs-meta-item">
+                  <span class="material-symbols-outlined">quiz</span>
+                  20 câu
+                </span>
+                <span class="qs-meta-item difficulty hard">Khó</span>
+                <span class="qs-meta-item">5 ngày trước</span>
+              </div>
+            </div>
+            <button class="qs-action-member">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+
+          <div class="qset-card">
+            <div class="qs-icon">
+              <span class="material-symbols-outlined">menu_book</span>
+            </div>
+            <div class="qs-info">
+              <div class="qs-name">Phúc Âm Ma-thi-ơ · Bài giảng trên núi</div>
+              <div class="qs-meta-row">
+                <span class="qs-meta-item">
+                  <span class="material-symbols-outlined">quiz</span>
+                  12 câu
+                </span>
+                <span class="qs-meta-item difficulty easy">Dễ</span>
+                <span class="qs-meta-item">1 tuần trước</span>
+              </div>
+            </div>
+            <button class="qs-action-member">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE -->
+    <div class="mobile">
+      <div class="mobile-status">
+        <div>9:41</div>
+        <div style="display:flex;gap:6px;font-size:12px">
+          <span class="material-symbols-outlined" style="font-size:13px">network_cell</span>
+          <span class="material-symbols-outlined" style="font-size:13px">wifi</span>
+          <span class="material-symbols-outlined" style="font-size:13px">battery_full</span>
+        </div>
+      </div>
+
+      <div class="mobile-content">
+        <div class="topbar">
+          <div class="back-btn">
+            <span class="material-symbols-outlined">arrow_back</span>
+          </div>
+          <div class="topbar-title-block">
+            <div class="topbar-breadcrumb">Nhóm</div>
+            <div class="topbar-title">FMC Đà Nẵng</div>
+          </div>
+          <div class="topbar-action">
+            <span class="material-symbols-outlined">more_horiz</span>
+          </div>
+        </div>
+
+        <div class="group-header">
+          <div class="gh-top">
+            <div class="gh-avatar">⛪</div>
+            <div class="gh-info">
+              <div class="gh-name-row">
+                <div class="gh-name">FMC Đà Nẵng</div>
+                <span class="role-badge-member">
+                  <span class="material-symbols-outlined">person</span>
+                  Member
+                </span>
+              </div>
+              <div class="gh-meta-row" style="font-size:11px">
+                <span class="item">
+                  <span class="material-symbols-outlined">groups</span>
+                  47 tv
+                </span>
+                <span class="divider">·</span>
+                <span style="color:#fbbf24">Hạng #12/47</span>
+              </div>
+              <div class="gh-meta-row" style="font-size:10px;margin-top:3px">
+                <span class="gh-leader-info">
+                  <span class="material-symbols-outlined">workspace_premium</span>
+                  Trưởng: TAI THANH
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs-scroll">
+          <div class="tab-nav">
+            <div class="tab-item">
+              <span class="material-symbols-outlined">leaderboard</span>
+              Xếp hạng
+            </div>
+            <div class="tab-item">
+              <span class="material-symbols-outlined">people</span>
+              Thành viên
+              <span class="badge">47</span>
+            </div>
+            <div class="tab-item">
+              <span class="material-symbols-outlined">campaign</span>
+              Thông báo
+            </div>
+            <div class="tab-item active">
+              <span class="material-symbols-outlined">collections_bookmark</span>
+              Bộ câu hỏi
+            </div>
+          </div>
+        </div>
+
+        <div class="empty-state">
+          <div class="empty-icon">
+            <span class="material-symbols-outlined" style="font-size:28px">notifications_off</span>
+          </div>
+          <h3>Chưa có quiz nhóm</h3>
+          <p>
+            Khi trưởng nhóm mở phòng hoặc đặt lịch Quiz tuần, bạn sẽ thấy thông báo ở đây.
+          </p>
+        </div>
+
+        <div class="sec-h">
+          <div class="sec-h-title">
+            <span class="material-symbols-outlined">collections_bookmark</span>
+            Bộ câu hỏi
+            <span class="count">3</span>
+          </div>
+        </div>
+
+        <div class="qset-list">
+          <div class="qset-card">
+            <div class="qs-top">
+              <div class="qs-icon">
+                <span class="material-symbols-outlined">menu_book</span>
+              </div>
+              <div class="qs-info">
+                <div class="qs-name">Sáng Thế Ký · Chương 1-3</div>
+                <div class="qs-meta-row">
+                  <span class="qs-meta-item">
+                    <span class="material-symbols-outlined">quiz</span>
+                    15 câu
+                  </span>
+                  <span class="qs-meta-item difficulty">Trung bình</span>
+                </div>
+              </div>
+            </div>
+            <button class="qs-action-member">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+
+          <div class="qset-card">
+            <div class="qs-top">
+              <div class="qs-icon">
+                <span class="material-symbols-outlined">menu_book</span>
+              </div>
+              <div class="qs-info">
+                <div class="qs-name">Sáng Thế Ký · Chương 12-25</div>
+                <div class="qs-meta-row">
+                  <span class="qs-meta-item">
+                    <span class="material-symbols-outlined">quiz</span>
+                    20 câu
+                  </span>
+                  <span class="qs-meta-item difficulty hard">Khó</span>
+                </div>
+              </div>
+            </div>
+            <button class="qs-action-member">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+
+          <div class="qset-card">
+            <div class="qs-top">
+              <div class="qs-icon">
+                <span class="material-symbols-outlined">menu_book</span>
+              </div>
+              <div class="qs-info">
+                <div class="qs-name">Phúc Âm Ma-thi-ơ · Bài giảng</div>
+                <div class="qs-meta-row">
+                  <span class="qs-meta-item">
+                    <span class="material-symbols-outlined">quiz</span>
+                    12 câu
+                  </span>
+                  <span class="qs-meta-item difficulty easy">Dễ</span>
+                </div>
+              </div>
+            </div>
+            <button class="qs-action-member">
+              <span class="material-symbols-outlined">person</span>
+              Tự ôn solo
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-bottom-nav">
+        <div class="nav-item">
+          <span class="material-symbols-outlined">home</span>
+        </div>
+        <div class="nav-item">
+          <span class="material-symbols-outlined">leaderboard</span>
+        </div>
+        <div class="nav-item active">
+          <span class="material-symbols-outlined">groups</span>
+          <span>Nhóm</span>
+        </div>
+        <div class="nav-item">
+          <span class="material-symbols-outlined">person</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Annotation -->
+<div class="annotation">
+  <strong>📝 Member view — Permission diff với Leader</strong>
+
+  <div class="compare">
+    <strong>Permission matrix (per SPEC 9.1.3):</strong>
+    <table>
+      <tr>
+        <th>Action</th>
+        <th>Leader</th>
+        <th>Mod</th>
+        <th>Member</th>
+      </tr>
+      <tr>
+        <td>Tạo quiz set</td>
+        <td class="yes">✅</td>
+        <td class="yes">✅</td>
+        <td class="no">❌</td>
+      </tr>
+      <tr>
+        <td>Tạo phòng "Chơi cùng nhau"</td>
+        <td class="yes">✅</td>
+        <td class="yes">✅</td>
+        <td class="no">❌</td>
+      </tr>
+      <tr>
+        <td>Đặt lịch Quiz tuần</td>
+        <td class="yes">✅</td>
+        <td class="yes">✅</td>
+        <td class="no">❌</td>
+      </tr>
+      <tr>
+        <td>Tham gia phòng (đã mở)</td>
+        <td class="yes">✅</td>
+        <td class="yes">✅</td>
+        <td class="yes">✅</td>
+      </tr>
+      <tr>
+        <td>Chơi Quiz tuần</td>
+        <td class="yes">✅</td>
+        <td class="yes">✅</td>
+        <td class="yes">✅</td>
+      </tr>
+      <tr>
+        <td>Tự ôn solo</td>
+        <td class="yes">✅</td>
+        <td class="yes">✅</td>
+        <td class="yes">✅</td>
+      </tr>
+      <tr>
+        <td>Đăng announcement</td>
+        <td class="yes">✅</td>
+        <td class="yes">✅</td>
+        <td class="no">❌</td>
+      </tr>
+      <tr>
+        <td>Mời thành viên</td>
+        <td class="yes">✅</td>
+        <td class="yes">✅</td>
+        <td class="no">❌</td>
+      </tr>
+      <tr>
+        <td>Sửa group settings</td>
+        <td class="yes">✅</td>
+        <td class="no">❌</td>
+        <td class="no">❌</td>
+      </tr>
+      <tr>
+        <td>Xóa nhóm</td>
+        <td class="yes">✅</td>
+        <td class="no">❌</td>
+        <td class="no">❌</td>
+      </tr>
+    </table>
+  </div>
+
+  <p style="margin-top:14px"><strong>Khác biệt UI member vs leader:</strong></p>
+  <ul>
+    <li><strong>Role badge sage</strong> (vs gold) — visual cue ngay đây là member view, ít power hơn.</li>
+    <li><strong>Header actions chỉ 2 buttons</strong>: Thống kê (cá nhân + group view-only) + Rời nhóm (red, destructive). KHÔNG có Mời / Settings / Đăng announcement.</li>
+    <li><strong>Hiển thị "Trưởng: TAI THANH"</strong> trong meta row — member biết ai là leader để liên hệ. Crown icon vàng nhỏ.</li>
+    <li><strong>Hiển thị rank của user trong group</strong> "Hạng #12/47" — give context cho member họ đang ở đâu, motivation.</li>
+    <li><strong>Quiz set card — single action "Tự ôn solo"</strong> thay vì 4 buttons. Card layout đơn giản hơn nhiều.</li>
+    <li><strong>"Live call banner" prominent</strong> khi leader mở phòng — banner 1 lớn, animated pulse, gradient purple. Đây là main entry point cho member tham gia. Visual stronger hơn leader's view (vì leader đã trong context khi tạo phòng).</li>
+    <li><strong>Empty state khác</strong> — leader thấy "Tạo bộ câu hỏi đầu tiên" CTA, member thấy explanation "Khi trưởng nhóm mở phòng, bạn sẽ thấy ở đây" (educate, không có action).</li>
+  </ul>
+
+  <p style="margin-top:12px"><strong>Use case mà mockup này cover:</strong></p>
+  <ul>
+    <li><strong>Tab "Có activity"</strong>: Member nhận push notification "Trưởng vừa mở phòng" → mở app → thấy live call banner prominent → 1 click "Tham gia phòng". Đây là <strong>happy path</strong> chính cho member.</li>
+    <li><strong>Tab "Không có activity"</strong>: Member mở app khi không có quiz đang chạy → empty state educate + access tự ôn solo.</li>
+  </ul>
+
+  <p style="margin-top:12px"><strong>API cần check (per role):</strong></p>
+  <ul>
+    <li>Existing endpoint <code>GET /api/groups/{id}</code> trả về <code>userRole</code> (leader/mod/member)</li>
+    <li>Frontend conditional render dựa trên role: <code>{userRole === 'leader' || userRole === 'mod' && &lt;CreateButtons /&gt;}</code></li>
+    <li>Backend authorize check ở từng endpoint POST/PATCH/DELETE — không tin client (member có thể hack request)</li>
+  </ul>
+
+  <p style="margin-top:12px"><strong>Câu hỏi cho Bui:</strong></p>
+  <ul>
+    <li><strong>Mod role behavior</strong> — Mod có UI giống Leader không, hay restricted hơn? Per SPEC 9.1.3 mod có most permissions trừ Settings/Delete. Đề xuất: Mod UI = Leader UI - "Cài đặt nhóm" - "Xóa nhóm" - "Transfer leadership".</li>
+    <li><strong>"Rời nhóm" button position</strong> — Hiện đặt trong header actions với màu red. Có nên move vào dropdown ⋮ (less prominent) không? Tôi đặt visible vì đây là action quan trọng cho member, không nên hide.</li>
+    <li><strong>Member thấy quiz set của mod tạo</strong> — Có hiển thị "Tạo bởi: [Mod name]" trong meta không? Hiện chỉ show "X ngày trước". Tôi nghiêng <strong>add author</strong> để credit mod work.</li>
+    <li><strong>Notification deep-link</strong> — Khi member nhận push "Phòng đang mở", click → mở thẳng vào lobby room hay vào Group Detail tab "Bộ câu hỏi"? Tôi nghiêng <strong>thẳng vào lobby</strong> để giảm friction.</li>
+  </ul>
+</div>
+
+<script>
+  function setTab(tab, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
