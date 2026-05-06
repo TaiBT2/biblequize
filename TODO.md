@@ -1,5 +1,27 @@
 # TODO
 
+## 2026-05-07 — Multiplayer Lobby Redesign [IN PROGRESS]
+
+> **Source**: User prompt + mockup `docs/MULTIPLAYER/multiplayer_lobby_redesign_mockup.html`. Option A: áp dụng cho tất cả 5 modes. No auto-start. Implement QR code (qrcode.react). Kick player hover menu. Keep 5 reactions.
+
+### Tasks
+- Task ML-1: Install `qrcode.react` + reusable `InviteShareModal` (Copy/Link/QR) — `[x]` DONE (8/8 tests pass)
+- Task ML-2: Hero block (mode chip + room name + meta + room code prominent 32px gold) — `[ ]` TODO
+- Task ML-3: Players grid 4-col / 5 slot variants (host/ready/waiting/invite/empty) + kick hover menu — `[ ]` TODO
+- Task ML-4: Compact rules card + bottom bar redesign (3-col desktop / 2-col mobile) — `[ ]` TODO
+- Task ML-5: Chat panel collapsible + FAB (mobile drawer / desktop right 320px) + 5 reactions — `[ ]` TODO
+- Task ML-6: Adapt Team vs Team (split A/B) + Sudden Death (queue order) + Sequential — `[ ]` TODO
+- Task ML-7: Wire FE kick endpoint (BE đã có `POST /api/rooms/{id}/kick`) — `[ ]` TODO
+- Task ML-8: Update unit tests (`RoomLobby.test.tsx`) + E2E TC (W-M05 multiplayer module) — `[ ]` TODO
+- Task ML-9: Full regression Tầng 3 + commits per task — `[ ]` TODO
+
+### Decisions
+- Dep mới `qrcode.react` approved by user (~6KB gzip, SVG output).
+- Backend kick endpoint đã tồn tại — reuse, không tạo mới.
+- Không implement auto-start (host bấm Bắt đầu thủ công).
+
+---
+
 ## 2026-05-07 — BasicQuiz UX parity (sound + haptic + full review) [DONE]
 
 > **Source**: User prompt — "màn quiz giáo lý cơ bản rất simple, trả lời đúng/sai cũng không thông báo, không sound/giải thích như các màn quiz khác". Picked Option A (preserve exam-mode anti-cheat, only add UX feedback).
