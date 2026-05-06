@@ -316,6 +316,39 @@ const GroupDetail: React.FC = () => {
   // Copy state
   const [copied, setCopied] = useState(false);
 
+  // Report group modal (SPEC v1.1 §12.4 — member submits report to admin)
+  type ReportReason = 'SPAM' | 'INAPPROPRIATE' | 'HARASSMENT' | 'OTHER';
+  const [showReportModal, setShowReportModal] = useState(false);
+  const [reportReason, setReportReason] = useState<ReportReason>('SPAM');
+  const [reportNote, setReportNote] = useState('');
+  const [reportSubmitting, setReportSubmitting] = useState(false);
+  const [reportError, setReportError] = useState('');
+  const [reportSuccess, setReportSuccess] = useState(false);
+
+  const submitReport = async () => {
+    if (!id) return;
+    setReportSubmitting(true);
+    setReportError('');
+    try {
+      await api.post(`/api/groups/${id}/report`, {
+        reason: reportReason,
+        note: reportNote.trim() || undefined,
+      });
+      setReportSuccess(true);
+      setTimeout(() => {
+        setShowReportModal(false);
+        setReportSuccess(false);
+        setReportReason('SPAM');
+        setReportNote('');
+      }, 1500);
+    } catch (err: any) {
+      // BE returns structured code in body; surface its message as-is.
+      setReportError(err.response?.data?.message || t('groups.reportFailed'));
+    } finally {
+      setReportSubmitting(false);
+    }
+  };
+
   // BE now returns `myRole` (LEADER / MOD / MEMBER) when the request is
   // authenticated, so we don't have to guess by name. Fall back to a
   // case-insensitive name match for older responses.
@@ -783,13 +816,25 @@ const GroupDetail: React.FC = () => {
               ⚙️ {t('groups.settings')}
             </button>
           ) : (
-            <button
-              data-testid="group-leave-btn"
-              onClick={handleLeave}
-              className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3.5 py-2 text-[11px] font-medium hover:bg-white/10 transition-all flex items-center gap-1.5"
-            >
-              🚪 {t('groups.leaveGroup')}
-            </button>
+            <>
+              <button
+                data-testid="group-leave-btn"
+                onClick={handleLeave}
+                className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3.5 py-2 text-[11px] font-medium hover:bg-white/10 transition-all flex items-center gap-1.5"
+              >
+                🚪 {t('groups.leaveGroup')}
+              </button>
+              {/* SPEC v1.1 §2.2 — leaders can't report their own group; members + mods can */}
+              <button
+                data-testid="group-report-btn"
+                onClick={() => setShowReportModal(true)}
+                className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3.5 py-2 text-[11px] font-medium hover:bg-white/10 transition-all flex items-center gap-1.5"
+                title={t('groups.reportTooltip')}
+              >
+                <span className="material-symbols-outlined text-[13px]">flag</span>
+                {t('groups.reportCta')}
+              </button>
+            </>
           )}
           {isLeaderOrMod && (
             <button
@@ -2029,6 +2074,106 @@ const GroupDetail: React.FC = () => {
             </div>
           )}
         </>
+      )}
+
+      {/* ── Report Group Modal (SPEC v1.1 §12.4) ── */}
+      {showReportModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => !reportSubmitting && setShowReportModal(false)} />
+          <div className="relative bg-surface-container rounded-2xl p-6 sm:p-8 w-full max-w-md mx-4 border border-outline-variant/10 shadow-2xl">
+            <button
+              onClick={() => setShowReportModal(false)}
+              disabled={reportSubmitting}
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors disabled:opacity-40"
+            >
+              <span className="material-symbols-outlined text-[20px]">close</span>
+            </button>
+
+            <div className="flex items-center gap-2 mb-5">
+              <span className="material-symbols-outlined text-error text-[22px]">flag</span>
+              <h3 className="text-lg font-extrabold tracking-tight">{t('groups.reportTitle')}</h3>
+            </div>
+
+            {reportSuccess ? (
+              <div className="py-6 text-center space-y-2">
+                <span className="material-symbols-outlined text-emerald-400 text-4xl">check_circle</span>
+                <p className="text-on-surface text-sm font-medium">{t('groups.reportSuccess')}</p>
+              </div>
+            ) : (
+              <>
+                <p className="text-on-surface/70 text-[12px] mb-4 leading-relaxed">
+                  {t('groups.reportDescription')}
+                </p>
+
+                <div className="space-y-2 mb-4">
+                  <label className="block text-[11px] font-bold uppercase tracking-wide text-on-surface/60 mb-2">
+                    {t('groups.reportReasonLabel')}
+                  </label>
+                  {(['SPAM', 'INAPPROPRIATE', 'HARASSMENT', 'OTHER'] as ReportReason[]).map(r => (
+                    <label
+                      key={r}
+                      className={`flex items-center gap-3 px-3 py-2.5 rounded-lg border cursor-pointer transition-colors ${
+                        reportReason === r
+                          ? 'bg-error/10 border-error/40'
+                          : 'bg-white/3 border-white/10 hover:bg-white/5'
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="report-reason"
+                        value={r}
+                        checked={reportReason === r}
+                        onChange={() => setReportReason(r)}
+                        className="accent-error"
+                      />
+                      <span className="text-[13px] text-on-surface">{t(`groups.reportReason${r}`)}</span>
+                    </label>
+                  ))}
+                </div>
+
+                <div className="mb-5">
+                  <label className="block text-[11px] font-bold uppercase tracking-wide text-on-surface/60 mb-2">
+                    {t('groups.reportNoteLabel')} <span className="text-on-surface/40 font-normal normal-case">({t('common.optional')})</span>
+                  </label>
+                  <textarea
+                    value={reportNote}
+                    onChange={e => setReportNote(e.target.value.slice(0, 1000))}
+                    rows={3}
+                    placeholder={t('groups.reportNotePlaceholder')}
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-[13px] text-on-surface placeholder:text-on-surface/30 focus:outline-none focus:border-error/50"
+                  />
+                  <div className="text-right text-[10px] text-on-surface/40 mt-1">{reportNote.length}/1000</div>
+                </div>
+
+                {reportError && (
+                  <div className="bg-error/10 border border-error/30 rounded-lg px-3 py-2 mb-4">
+                    <p className="text-error text-[12px]">{reportError}</p>
+                  </div>
+                )}
+
+                <div className="flex gap-2 justify-end">
+                  <button
+                    onClick={() => setShowReportModal(false)}
+                    disabled={reportSubmitting}
+                    className="bg-white/5 text-on-surface/70 border border-white/10 rounded-lg px-4 py-2 text-[12px] font-medium hover:bg-white/10 transition-all disabled:opacity-40"
+                  >
+                    {t('common.cancel')}
+                  </button>
+                  <button
+                    onClick={submitReport}
+                    disabled={reportSubmitting}
+                    className="bg-error text-on-error rounded-lg px-4 py-2 text-[12px] font-bold hover:brightness-110 transition-all disabled:opacity-50 flex items-center gap-1.5"
+                  >
+                    {reportSubmitting && (
+                      <span className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    )}
+                    {t('groups.reportSubmit')}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
       )}
 
       {/* ── Edit Modal ── */}
