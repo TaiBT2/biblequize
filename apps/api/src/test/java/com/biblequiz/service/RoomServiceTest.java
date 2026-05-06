@@ -161,6 +161,39 @@ class RoomServiceTest {
         assertThrows(Exception.class, () -> roomService.joinRoom("ABC123", playerUser));
     }
 
+    // ── joinRoom: GAP-J 1-active-room-per-user (SPEC v1.1 §8.7) ──────────────
+
+    @Test
+    void joinRoom_userInAnotherActiveRoom_shouldThrowAlreadyInAnotherRoom() {
+        when(roomRepository.findByRoomCode("ABC123")).thenReturn(Optional.of(testRoom));
+        when(roomPlayerRepository.findByRoomIdAndUserId("room-1", "player-1")).thenReturn(Optional.empty());
+        when(roomPlayerRepository.findActiveRoomIdsByUserId("player-1"))
+                .thenReturn(List.of("other-room-id"));
+
+        Exception ex = assertThrows(Exception.class,
+                () -> roomService.joinRoom("ABC123", playerUser));
+        assertEquals("ALREADY_IN_ANOTHER_ROOM", ex.getMessage());
+        verify(roomPlayerRepository, never()).save(any(RoomPlayer.class));
+    }
+
+    @Test
+    void joinRoom_userInSameRoom_isNotBlockedByActiveCheck() throws Exception {
+        // Edge case: the active-rooms query returns the room they're trying
+        // to join (race between the membership check and the active query).
+        // Should fall through to addPlayer instead of throwing.
+        when(roomRepository.findByRoomCode("ABC123")).thenReturn(Optional.of(testRoom));
+        when(roomPlayerRepository.findByRoomIdAndUserId("room-1", "player-1")).thenReturn(Optional.empty());
+        when(roomPlayerRepository.findActiveRoomIdsByUserId("player-1"))
+                .thenReturn(List.of("room-1")); // same room as target
+        when(roomRepository.findById("room-1")).thenReturn(Optional.of(testRoom));
+        when(roomRepository.save(any(Room.class))).thenReturn(testRoom);
+
+        Room result = roomService.joinRoom("ABC123", playerUser);
+
+        assertEquals("room-1", result.getId());
+        verify(roomPlayerRepository).save(any(RoomPlayer.class));
+    }
+
     // ── getRoomDetails ───────────────────────────────────────────────────────
 
     @Test

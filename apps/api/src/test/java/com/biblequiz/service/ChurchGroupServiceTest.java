@@ -10,6 +10,8 @@ import com.biblequiz.modules.group.repository.GroupMemberRepository;
 import com.biblequiz.modules.group.repository.GroupQuizSetRepository;
 import com.biblequiz.modules.group.repository.GroupReportRepository;
 import com.biblequiz.modules.group.entity.GroupAnnouncement;
+import com.biblequiz.modules.group.entity.GroupKickLog;
+import com.biblequiz.modules.group.entity.GroupReport;
 import com.biblequiz.modules.group.service.ChurchGroupService;
 import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.user.entity.User;
@@ -22,6 +24,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -506,5 +509,206 @@ class ChurchGroupServiceTest {
         assertEquals(50, entry.get("myWeekPoints"));
         // leader has 100 > my 50 → 1 ahead → rank 2
         assertEquals(2, entry.get("myRank"));
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // SPEC v1.1 §15.2 implementation gaps — coverage for GAP-E/F/L/M
+    // ═══════════════════════════════════════════════════════════════════════
+
+    // ── GAP-E: createGroup max 2 owned (SPEC §4.2) ───────────────────────────
+
+    @Test
+    void createGroup_userAlreadyOwns2_shouldThrowMaxGroupsOwned() {
+        when(churchGroupRepository.countActiveByLeaderId("leader-1")).thenReturn(2L);
+
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> churchGroupService.createGroup("Third Group", "desc", leaderUser));
+
+        assertEquals("MAX_GROUPS_OWNED", ex.getMessage());
+        verify(churchGroupRepository, never()).save(any(ChurchGroup.class));
+    }
+
+    @Test
+    void createGroup_userOwns1_shouldSucceed() {
+        when(churchGroupRepository.countActiveByLeaderId("leader-1")).thenReturn(1L);
+        when(churchGroupRepository.findByGroupCode(anyString())).thenReturn(Optional.empty());
+        when(churchGroupRepository.save(any(ChurchGroup.class))).thenAnswer(inv -> inv.getArgument(0));
+        when(groupMemberRepository.save(any(GroupMember.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        Map<String, Object> result = churchGroupService.createGroup("Second Group", "desc", leaderUser);
+
+        assertEquals("Second Group", result.get("name"));
+        verify(churchGroupRepository).save(any(ChurchGroup.class));
+    }
+
+    // ── GAP-F: joinGroup max 5 joined (SPEC §4.3) ────────────────────────────
+
+    @Test
+    void joinGroup_userAlreadyIn5Groups_shouldThrowMaxGroupsJoined() {
+        when(churchGroupRepository.findByGroupCode("ABC123")).thenReturn(Optional.of(testGroup));
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "member-1")).thenReturn(Optional.empty());
+        when(groupMemberRepository.countByUserId("member-1")).thenReturn(5L);
+
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> churchGroupService.joinGroup("ABC123", memberUser));
+
+        assertEquals("MAX_GROUPS_JOINED", ex.getMessage());
+        verify(groupMemberRepository, never()).save(any());
+    }
+
+    @Test
+    void joinGroup_userIn4Groups_shouldSucceed() {
+        when(churchGroupRepository.findByGroupCode("ABC123")).thenReturn(Optional.of(testGroup));
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "member-1")).thenReturn(Optional.empty());
+        when(groupMemberRepository.countByUserId("member-1")).thenReturn(4L);
+        when(groupKickLogRepository.existsRecentKick(eq("group-1"), eq("member-1"), any(LocalDateTime.class)))
+                .thenReturn(false);
+        when(groupMemberRepository.save(any(GroupMember.class))).thenAnswer(inv -> inv.getArgument(0));
+        when(churchGroupRepository.save(any(ChurchGroup.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        Map<String, Object> result = churchGroupService.joinGroup("ABC123", memberUser);
+
+        assertEquals("group-1", result.get("groupId"));
+    }
+
+    // ── GAP-L: joinGroup kick cooldown (SPEC §12.2) ──────────────────────────
+
+    @Test
+    void joinGroup_recentlyKicked_shouldThrowCooldown() {
+        when(churchGroupRepository.findByGroupCode("ABC123")).thenReturn(Optional.of(testGroup));
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "member-1")).thenReturn(Optional.empty());
+        when(groupMemberRepository.countByUserId("member-1")).thenReturn(0L);
+        when(groupKickLogRepository.existsRecentKick(eq("group-1"), eq("member-1"), any(LocalDateTime.class)))
+                .thenReturn(true);
+
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> churchGroupService.joinGroup("ABC123", memberUser));
+
+        assertEquals("KICK_COOLDOWN_ACTIVE", ex.getMessage());
+        verify(groupMemberRepository, never()).save(any());
+    }
+
+    @Test
+    void joinGroup_kickedLongAgo_shouldSucceed() {
+        when(churchGroupRepository.findByGroupCode("ABC123")).thenReturn(Optional.of(testGroup));
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "member-1")).thenReturn(Optional.empty());
+        when(groupMemberRepository.countByUserId("member-1")).thenReturn(0L);
+        // Cooldown expired (no recent kick within last 7 days)
+        when(groupKickLogRepository.existsRecentKick(eq("group-1"), eq("member-1"), any(LocalDateTime.class)))
+                .thenReturn(false);
+        when(groupMemberRepository.save(any(GroupMember.class))).thenAnswer(inv -> inv.getArgument(0));
+        when(churchGroupRepository.save(any(ChurchGroup.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        Map<String, Object> result = churchGroupService.joinGroup("ABC123", memberUser);
+
+        assertEquals("group-1", result.get("groupId"));
+    }
+
+    // ── GAP-L: kickMember writes audit log (SPEC §12.2) ──────────────────────
+
+    @Test
+    void kickMember_writesKickLogBeforeDelete() {
+        GroupMember leaderM = new GroupMember();
+        leaderM.setRole(GroupMember.GroupRole.LEADER);
+        leaderM.setUser(leaderUser);
+        GroupMember targetM = new GroupMember();
+        targetM.setId("gm-target");
+        targetM.setRole(GroupMember.GroupRole.MEMBER);
+        targetM.setUser(memberUser);
+
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "leader-1"))
+                .thenReturn(Optional.of(leaderM));
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "member-1"))
+                .thenReturn(Optional.of(targetM));
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+
+        Map<String, Object> result = churchGroupService.kickMember(
+                "group-1", "leader-1", "member-1", "spam");
+
+        assertEquals(true, result.get("success"));
+        verify(groupKickLogRepository).save(argThat(log ->
+                log.getGroup() == testGroup
+                && log.getKickedUser() == memberUser
+                && log.getKickedBy() == leaderUser
+                && "spam".equals(log.getReason())));
+        verify(groupMemberRepository).delete(targetM);
+    }
+
+    @Test
+    void kickMember_longReason_isTruncated() {
+        GroupMember leaderM = new GroupMember();
+        leaderM.setRole(GroupMember.GroupRole.LEADER);
+        leaderM.setUser(leaderUser);
+        GroupMember targetM = new GroupMember();
+        targetM.setId("gm-target");
+        targetM.setRole(GroupMember.GroupRole.MEMBER);
+        targetM.setUser(memberUser);
+
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "leader-1"))
+                .thenReturn(Optional.of(leaderM));
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "member-1"))
+                .thenReturn(Optional.of(targetM));
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+
+        String longReason = "x".repeat(700);
+        churchGroupService.kickMember("group-1", "leader-1", "member-1", longReason);
+
+        verify(groupKickLogRepository).save(argThat(log -> log.getReason().length() == 500));
+    }
+
+    // ── GAP-M: reportGroup (SPEC §12.4 + §13.9) ──────────────────────────────
+
+    @Test
+    void reportGroup_validReason_createsReport() {
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+        when(groupReportRepository.existsByGroupIdAndReporterIdAndStatus(
+                "group-1", "member-1", GroupReport.Status.OPEN)).thenReturn(false);
+
+        Map<String, Object> result = churchGroupService.reportGroup(
+                "group-1", memberUser, "spam", "Posting irrelevant content");
+
+        assertNotNull(result.get("id"));
+        assertEquals("OPEN", result.get("status"));
+        verify(groupReportRepository).save(argThat(r ->
+                r.getReason() == GroupReport.Reason.SPAM
+                && r.getReporter() == memberUser
+                && r.getStatus() == GroupReport.Status.OPEN
+                && "Posting irrelevant content".equals(r.getNote())));
+    }
+
+    @Test
+    void reportGroup_invalidReason_throws() {
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> churchGroupService.reportGroup("group-1", memberUser, "FAKE_REASON", null));
+
+        assertEquals("INVALID_REASON", ex.getMessage());
+        verify(groupReportRepository, never()).save(any());
+    }
+
+    @Test
+    void reportGroup_existingOpenReport_throwsAlreadyReported() {
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+        when(groupReportRepository.existsByGroupIdAndReporterIdAndStatus(
+                "group-1", "member-1", GroupReport.Status.OPEN)).thenReturn(true);
+
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> churchGroupService.reportGroup("group-1", memberUser, "harassment", "abuse"));
+
+        assertEquals("ALREADY_REPORTED", ex.getMessage());
+        verify(groupReportRepository, never()).save(any());
+    }
+
+    @Test
+    void reportGroup_longNote_isTruncated() {
+        when(churchGroupRepository.findById("group-1")).thenReturn(Optional.of(testGroup));
+        when(groupReportRepository.existsByGroupIdAndReporterIdAndStatus(
+                "group-1", "member-1", GroupReport.Status.OPEN)).thenReturn(false);
+
+        String longNote = "x".repeat(1500);
+        churchGroupService.reportGroup("group-1", memberUser, "other", longNote);
+
+        verify(groupReportRepository).save(argThat(r -> r.getNote().length() == 1000));
     }
 }
