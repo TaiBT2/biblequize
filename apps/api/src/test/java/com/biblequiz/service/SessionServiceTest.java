@@ -102,6 +102,64 @@ class SessionServiceTest {
         }
 
         @Test
+        void getRecentPracticeSessions_returnsEmptyWhenNoUser() {
+                when(userRepository.findById("ghost")).thenReturn(Optional.empty());
+                when(userRepository.findByEmail("ghost")).thenReturn(Optional.empty());
+
+                List<Map<String, Object>> out = sessionService.getRecentPracticeSessions("ghost", 3);
+
+                assertNotNull(out);
+                assertTrue(out.isEmpty());
+        }
+
+        @Test
+        void countWrongQuestionsFromLastPractice_returnsZeroWhenNoCompletedSession() {
+                when(userRepository.findById("user1")).thenReturn(Optional.of(sampleUser));
+                when(quizSessionRepository.findByOwnerIdAndModeOrderByCreatedAtDesc(
+                                eq("user1"), eq(QuizSession.Mode.practice), any(PageRequest.class)))
+                                .thenReturn(new PageImpl<>(Collections.emptyList()));
+
+                int count = sessionService.countWrongQuestionsFromLastPractice("user1");
+
+                assertEquals(0, count);
+        }
+
+        @Test
+        void createRetryWrongSession_throwsWhenNoCompletedPractice() {
+                when(userRepository.findById("user1")).thenReturn(Optional.of(sampleUser));
+                when(quizSessionRepository.findByOwnerIdAndModeOrderByCreatedAtDesc(
+                                eq("user1"), eq(QuizSession.Mode.practice), any(PageRequest.class)))
+                                .thenReturn(new PageImpl<>(Collections.emptyList()));
+
+                assertThrows(IllegalArgumentException.class,
+                                () -> sessionService.createRetryWrongSession("user1"));
+        }
+
+        @Test
+        void createRetryWrongSession_throwsWhenNoWrongAnswers() throws Exception {
+                QuizSession completed = new QuizSession();
+                completed.setId("s-prev");
+                completed.setMode(QuizSession.Mode.practice);
+                completed.setOwner(sampleUser);
+                completed.setStatus(QuizSession.Status.completed);
+                completed.setConfig("{}");
+
+                when(userRepository.findById("user1")).thenReturn(Optional.of(sampleUser));
+                when(quizSessionRepository.findByOwnerIdAndModeOrderByCreatedAtDesc(
+                                eq("user1"), eq(QuizSession.Mode.practice), any(PageRequest.class)))
+                                .thenReturn(new PageImpl<>(List.of(completed)));
+                // Only correct answers — nothing to retry
+                Answer correctAnswer = new Answer();
+                correctAnswer.setIsCorrect(true);
+                correctAnswer.setQuestion(sampleQuestion);
+                when(answerRepository.findBySessionIdAndUserIdOrderByCreatedAt("s-prev", "user1"))
+                                .thenReturn(List.of(correctAnswer));
+
+                assertThrows(IllegalArgumentException.class,
+                                () -> sessionService.createRetryWrongSession("user1"));
+        }
+
+        @Test
         void createSession_WithValidData_ShouldCreateSession() throws Exception {
                 // Given
                 String ownerId = "user1";

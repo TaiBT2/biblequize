@@ -36,11 +36,13 @@ describe('Practice Mode', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mockApiGet.mockImplementation((url: string) => {
-      if (url.includes('/api/books'))
+      if (url === '/api/books' || url.endsWith('/books'))
         return Promise.resolve({ data: [
           { id: '1', name: 'Genesis', nameVi: 'Sáng Thế Ký', testament: 'OT', orderIndex: 1 },
           { id: '2', name: 'Matthew', nameVi: 'Ma-thi-ơ', testament: 'NT', orderIndex: 40 },
         ] })
+      if (url.includes('/practice/recent')) return Promise.resolve({ data: [] })
+      if (url.includes('/wrong-questions/count')) return Promise.resolve({ data: { count: 0 } })
       return Promise.reject(new Error('Not found'))
     })
     mockApiPost.mockResolvedValue({ data: { sessionId: 'sess-1', questions: [] } })
@@ -76,14 +78,49 @@ describe('Practice Mode', () => {
     })
   })
 
-  it('renders retry section', () => {
+  it('hides retry-wrong banner when no wrong questions', async () => {
     renderPractice()
-    expect(screen.getByText(/Làm lại câu sai/)).toBeInTheDocument()
+    // wrongCount is 0 in default mock → banner should not render
+    await waitFor(() => expect(screen.queryByTestId('practice-retry-wrong')).not.toBeInTheDocument())
   })
 
-  it('renders recent sessions section', () => {
+  it('shows retry-wrong banner with count when API returns >0', async () => {
+    mockApiGet.mockImplementation((url: string) => {
+      if (url === '/api/books' || url.endsWith('/books'))
+        return Promise.resolve({ data: [] })
+      if (url.includes('/practice/recent')) return Promise.resolve({ data: [] })
+      if (url.includes('/wrong-questions/count')) return Promise.resolve({ data: { count: 7 } })
+      return Promise.reject(new Error('Not found'))
+    })
     renderPractice()
-    expect(screen.getByText('Phiên gần đây')).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByTestId('practice-retry-wrong')).toBeInTheDocument()
+      expect(screen.getByText('7')).toBeInTheDocument()
+    })
+  })
+
+  it('hides recent sessions when API returns empty list', async () => {
+    renderPractice()
+    await waitFor(() => expect(screen.queryByText('Phiên gần đây')).not.toBeInTheDocument())
+  })
+
+  it('renders recent sessions when API returns sessions', async () => {
+    mockApiGet.mockImplementation((url: string) => {
+      if (url === '/api/books' || url.endsWith('/books'))
+        return Promise.resolve({ data: [] })
+      if (url.includes('/practice/recent')) return Promise.resolve({ data: [
+        { sessionId: 's1', createdAt: new Date().toISOString(), status: 'completed',
+          totalQuestions: 10, correctAnswers: 8, accuracy: 80, book: 'Genesis' },
+      ] })
+      if (url.includes('/wrong-questions/count')) return Promise.resolve({ data: { count: 0 } })
+      return Promise.reject(new Error('Not found'))
+    })
+    renderPractice()
+    await waitFor(() => {
+      expect(screen.getByText('Phiên gần đây')).toBeInTheDocument()
+      expect(screen.getByText('Genesis')).toBeInTheDocument()
+      expect(screen.getByText('80%')).toBeInTheDocument()
+    })
   })
 
   it('clicking difficulty option updates selection', async () => {

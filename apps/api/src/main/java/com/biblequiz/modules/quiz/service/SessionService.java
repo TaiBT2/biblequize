@@ -215,6 +215,146 @@ public class SessionService {
         return result;
     }
 
+    /**
+     * Recent practice sessions for the user, newest first. Used by the
+     * Practice screen "Phiên gần đây" cards.
+     */
+    public List<Map<String, Object>> getRecentPracticeSessions(String userId, int limit) {
+        String resolvedUserId = resolveUserId(userId);
+        if (resolvedUserId == null) return List.of();
+        var page = quizSessionRepository.findByOwnerIdAndModeOrderByCreatedAtDesc(
+                resolvedUserId, QuizSession.Mode.practice, PageRequest.of(0, Math.max(1, Math.min(limit, 20))));
+        List<Map<String, Object>> out = new ArrayList<>();
+        for (QuizSession s : page.getContent()) {
+            Map<String, Object> dto = new HashMap<>();
+            dto.put("sessionId", s.getId());
+            dto.put("createdAt", s.getCreatedAt() != null ? s.getCreatedAt().toString() : null);
+            dto.put("status", s.getStatus() != null ? s.getStatus().name() : null);
+            dto.put("totalQuestions", Optional.ofNullable(s.getTotalQuestions()).orElse(0));
+            dto.put("correctAnswers", Optional.ofNullable(s.getCorrectAnswers()).orElse(0));
+            int total = Optional.ofNullable(s.getTotalQuestions()).orElse(0);
+            int correct = Optional.ofNullable(s.getCorrectAnswers()).orElse(0);
+            dto.put("accuracy", total > 0 ? Math.round((correct * 100.0) / total) : 0);
+            // Pluck book from config JSON
+            String book = null;
+            if (s.getConfig() != null) {
+                try {
+                    Map<String, Object> cfg = objectMapper.readValue(s.getConfig(),
+                            new com.fasterxml.jackson.core.type.TypeReference<>() {});
+                    Object b = cfg.get("book");
+                    if (b instanceof String bs && !bs.isEmpty()) book = bs;
+                } catch (Exception ignored) {}
+            }
+            dto.put("book", book);
+            out.add(dto);
+        }
+        return out;
+    }
+
+    /**
+     * Number of wrong answers in the user's most recent completed practice
+     * session. Returns 0 if no completed practice session exists.
+     */
+    public int countWrongQuestionsFromLastPractice(String userId) {
+        Optional<QuizSession> last = findLastCompletedPracticeSession(userId);
+        if (last.isEmpty()) return 0;
+        var answers = answerRepository.findBySessionIdAndUserIdOrderByCreatedAt(
+                last.get().getId(), last.get().getOwner().getId());
+        int wrong = 0;
+        for (Answer a : answers) if (Boolean.FALSE.equals(a.getIsCorrect())) wrong++;
+        return wrong;
+    }
+
+    /**
+     * Create a new practice session containing exactly the questions the
+     * user got wrong in their most recent completed practice session.
+     */
+    @Transactional
+    public Map<String, Object> createRetryWrongSession(String userId) {
+        Optional<QuizSession> lastOpt = findLastCompletedPracticeSession(userId);
+        if (lastOpt.isEmpty()) {
+            throw new IllegalArgumentException("No completed practice session to retry");
+        }
+        QuizSession last = lastOpt.get();
+        var answers = answerRepository.findBySessionIdAndUserIdOrderByCreatedAt(
+                last.getId(), last.getOwner().getId());
+        List<Question> wrongQuestions = new ArrayList<>();
+        Set<String> seen = new HashSet<>();
+        for (Answer a : answers) {
+            if (Boolean.FALSE.equals(a.getIsCorrect()) && a.getQuestion() != null
+                    && seen.add(a.getQuestion().getId())) {
+                wrongQuestions.add(a.getQuestion());
+            }
+        }
+        if (wrongQuestions.isEmpty()) {
+            throw new IllegalArgumentException("No wrong questions in last practice session");
+        }
+
+        // Reuse last session's config so timer/showExplanation stay consistent
+        Map<String, Object> config;
+        try {
+            config = last.getConfig() != null
+                    ? objectMapper.readValue(last.getConfig(),
+                            new com.fasterxml.jackson.core.type.TypeReference<>() {})
+                    : new HashMap<>();
+        } catch (Exception e) {
+            config = new HashMap<>();
+        }
+        config.put("retryOf", last.getId());
+        config.put("questionCount", wrongQuestions.size());
+
+        String configJson;
+        try {
+            configJson = objectMapper.writeValueAsString(config);
+        } catch (Exception e) {
+            configJson = "{}";
+        }
+
+        String sessionId = UUID.randomUUID().toString();
+        QuizSession session = new QuizSession(sessionId, QuizSession.Mode.practice, last.getOwner(), configJson);
+        session.setStatus(QuizSession.Status.in_progress);
+        quizSessionRepository.save(session);
+
+        Integer explicitTimer = readNullableInt(config.get("timePerQuestion"));
+        int timerSec = (explicitTimer != null && explicitTimer > 0) ? explicitTimer : 30;
+
+        List<QuizSessionQuestion> qsqList = new ArrayList<>();
+        Collections.shuffle(wrongQuestions, new Random());
+        int order = 0;
+        for (Question q : wrongQuestions) {
+            qsqList.add(new QuizSessionQuestion(UUID.randomUUID().toString(), session, q, order++, timerSec));
+        }
+        quizSessionQuestionRepository.saveAll(qsqList);
+
+        session.setTotalQuestions(wrongQuestions.size());
+        quizSessionRepository.save(session);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("sessionId", session.getId());
+        result.put("questions", mapToQuestionDTOs(wrongQuestions));
+        result.put("retryOf", last.getId());
+        return result;
+    }
+
+    private Optional<QuizSession> findLastCompletedPracticeSession(String userId) {
+        String resolvedUserId = resolveUserId(userId);
+        if (resolvedUserId == null) return Optional.empty();
+        var page = quizSessionRepository.findByOwnerIdAndModeOrderByCreatedAtDesc(
+                resolvedUserId, QuizSession.Mode.practice, PageRequest.of(0, 10));
+        for (QuizSession s : page.getContent()) {
+            if (s.getStatus() == QuizSession.Status.completed) return Optional.of(s);
+        }
+        return Optional.empty();
+    }
+
+    private String resolveUserId(String userIdOrEmail) {
+        if (userIdOrEmail == null) return null;
+        return userRepository.findById(userIdOrEmail)
+                .or(() -> userRepository.findByEmail(userIdOrEmail))
+                .map(User::getId)
+                .orElse(null);
+    }
+
     @Transactional
     public Map<String, Object> submitAnswer(String sessionId, String userId, String questionId, Object answerPayload,
             int clientElapsedMs) {

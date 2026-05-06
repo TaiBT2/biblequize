@@ -107,6 +107,42 @@ public class SessionController {
         }
     }
 
+    @GetMapping("/practice/recent")
+    @Operation(summary = "Recent practice sessions for current user")
+    public ResponseEntity<?> recentPracticeSessions(
+            @RequestParam(value = "limit", defaultValue = "3") int limit,
+            Principal principal) {
+        String userId = principal != null ? principal.getName() : null;
+        if (userId == null || userId.isEmpty()) {
+            return ResponseEntity.status(401).body(Map.of("error", "Unauthorized"));
+        }
+        return ResponseEntity.ok(sessionService.getRecentPracticeSessions(userId, limit));
+    }
+
+    @GetMapping("/practice/wrong-questions/count")
+    @Operation(summary = "Count of wrong answers in last completed practice session")
+    public ResponseEntity<?> wrongQuestionCount(Principal principal) {
+        String userId = principal != null ? principal.getName() : null;
+        if (userId == null || userId.isEmpty()) {
+            return ResponseEntity.status(401).body(Map.of("error", "Unauthorized"));
+        }
+        return ResponseEntity.ok(Map.of("count", sessionService.countWrongQuestionsFromLastPractice(userId)));
+    }
+
+    @PostMapping("/practice/retry-wrong")
+    @Operation(summary = "Create a new practice session containing the wrong questions from the last completed practice")
+    public ResponseEntity<?> retryWrong(Principal principal) {
+        String userId = principal != null ? principal.getName() : null;
+        if (userId == null || userId.isEmpty()) {
+            return ResponseEntity.status(401).body(Map.of("error", "Unauthorized"));
+        }
+        try {
+            return ResponseEntity.status(201).body(sessionService.createRetryWrongSession(userId));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));
+        }
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> get(@PathVariable("id") String sessionId) {
         return ResponseEntity.ok(sessionService.getSession(sessionId));

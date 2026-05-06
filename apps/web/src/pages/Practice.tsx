@@ -28,11 +28,32 @@ const MIN_TIME = 5
 const MAX_TIME = 120
 const DEFAULT_TIME = 30
 
-const MOCK_SESSIONS = [
-  { id: 1, date: '28/03/2026', book: 'Ma-thi-ơ', correct: 8, total: 10, accuracy: 80 },
-  { id: 2, date: '27/03/2026', book: 'Sáng thế ký', correct: 15, total: 20, accuracy: 75 },
-  { id: 3, date: '26/03/2026', book: 'Tất cả', correct: 40, total: 50, accuracy: 80 },
-]
+interface RecentSession {
+  sessionId: string
+  createdAt: string | null
+  status: string | null
+  totalQuestions: number
+  correctAnswers: number
+  accuracy: number
+  book: string | null
+}
+
+function relativeDate(iso: string | null): string {
+  if (!iso) return ''
+  const d = new Date(iso)
+  if (Number.isNaN(d.getTime())) return ''
+  const now = Date.now()
+  const diffMs = now - d.getTime()
+  const mins = Math.floor(diffMs / 60000)
+  if (mins < 1) return 'vừa xong'
+  if (mins < 60) return `${mins} phút trước`
+  const hours = Math.floor(mins / 60)
+  if (hours < 24) return `${hours} giờ trước`
+  const days = Math.floor(hours / 24)
+  if (days === 1) return 'Hôm qua'
+  if (days < 7) return `${days} ngày trước`
+  return d.toLocaleDateString()
+}
 
 const TIP_KEYS = ['practice.tips.tip1', 'practice.tips.tip2', 'practice.tips.tip3']
 
@@ -65,6 +86,22 @@ export default function Practice() {
     queryFn: async () => {
       const res = await api.get('/api/books')
       return res.data as Book[]
+    },
+  })
+
+  const { data: recentSessions } = useQuery({
+    queryKey: ['practice-recent'],
+    queryFn: async () => {
+      const res = await api.get('/api/sessions/practice/recent', { params: { limit: 3 } })
+      return res.data as RecentSession[]
+    },
+  })
+
+  const { data: wrongCount } = useQuery({
+    queryKey: ['practice-wrong-count'],
+    queryFn: async () => {
+      const res = await api.get('/api/sessions/practice/wrong-questions/count')
+      return (res.data as { count: number }).count
     },
   })
 
@@ -474,21 +511,33 @@ export default function Practice() {
         </div>
       </form>
 
-      {/* ── Retry Last Session ─────────────────────────────── */}
-      {MOCK_SESSIONS.length > 0 && MOCK_SESSIONS[0].accuracy < 100 && (
-        <div className="bg-gradient-to-r from-[#ff8c42]/10 to-surface-container border border-[#ff8c42]/25 rounded-xl px-4 py-3 flex items-center gap-3">
+      {/* ── Retry Wrong Questions (real count) ──────────── */}
+      {wrongCount != null && wrongCount > 0 && (
+        <div data-testid="practice-retry-wrong" className="bg-gradient-to-r from-[#ff8c42]/10 to-surface-container border border-[#ff8c42]/25 rounded-xl px-4 py-3 flex items-center gap-3">
           <div className="w-9 h-9 rounded-lg bg-[#ff8c42]/15 flex items-center justify-center shrink-0">
             <span className="material-symbols-outlined text-[#ff8c42] text-lg" style={FILL_1}>replay</span>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-semibold text-on-surface text-sm">{t('practice.retryWrongTitle')}</p>
+            <div className="flex items-center gap-2">
+              <p className="font-semibold text-on-surface text-sm">{t('practice.retryWrongTitle')}</p>
+              <span className="px-2 py-0.5 rounded-full bg-[#ff8c42]/20 text-[#ff8c42] text-[10px] font-bold">
+                {wrongCount}
+              </span>
+            </div>
             <p className="text-xs text-on-surface-variant/70">{t('practice.retryWrongDesc')}</p>
           </div>
           <button
+            data-testid="practice-retry-wrong-btn"
             onClick={() => {
-              api.post('/api/sessions/practice/retry-last')
-                .then(res => navigate('/quiz', { state: { sessionId: res.data.sessionId, mode: 'practice' } }))
-                .catch(() => {})
+              api.post('/api/sessions/practice/retry-wrong')
+                .then(res => navigate('/quiz', {
+                  state: {
+                    sessionId: res.data.sessionId,
+                    questions: res.data.questions,
+                    mode: 'practice',
+                  },
+                }))
+                .catch(() => setErrorMsg(t('practice.errorCreate')))
             }}
             className="px-4 py-2 rounded-lg bg-[#ff8c42]/15 border border-[#ff8c42]/35 text-[#ff8c42] font-semibold text-xs hover:bg-[#ff8c42]/20 transition-all active:scale-95"
           >
@@ -497,41 +546,45 @@ export default function Practice() {
         </div>
       )}
 
-      {/* ── Recent Sessions ───────────────────────────────── */}
-      <section>
-        <div className="flex items-center gap-2 mb-3">
-          <span className="material-symbols-outlined text-secondary text-base" style={FILL_1}>history</span>
-          <h2 className="text-sm font-bold text-on-surface">{t('practice.recentSessions')}</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {MOCK_SESSIONS.map(session => (
-            <div
-              key={session.id}
-              className="bg-surface-container border border-outline-variant/10 rounded-xl p-4 hover:border-secondary/25 transition-colors"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] text-on-surface-variant/50">{session.date}</span>
-                <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
-                  session.accuracy >= 80
-                    ? 'bg-[#58D68D]/10 text-[#58D68D]'
-                    : session.accuracy >= 60
-                      ? 'bg-secondary/10 text-secondary'
-                      : 'bg-error/10 text-error'
-                }`}>
-                  {session.accuracy}%
+      {/* ── Recent Sessions (real) ─────────────────────────── */}
+      {recentSessions && recentSessions.length > 0 && (
+        <section>
+          <div className="flex items-center gap-2 mb-3">
+            <span className="material-symbols-outlined text-secondary text-base" style={FILL_1}>history</span>
+            <h2 className="text-sm font-bold text-on-surface">{t('practice.recentSessions')}</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {recentSessions.map(session => (
+              <div
+                key={session.sessionId}
+                className="bg-surface-container border border-outline-variant/10 rounded-xl p-4 hover:border-secondary/25 transition-colors"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[11px] text-on-surface-variant/50">{relativeDate(session.createdAt)}</span>
+                  <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
+                    session.accuracy >= 80
+                      ? 'bg-[#58D68D]/10 text-[#58D68D]'
+                      : session.accuracy >= 60
+                        ? 'bg-secondary/10 text-secondary'
+                        : 'bg-error/10 text-error'
+                  }`}>
+                    {session.accuracy}%
+                  </span>
+                </div>
+                <p className="text-sm font-semibold text-on-surface mb-2">
+                  {session.book || t('practice.allBooks')}
+                </p>
+                <div className="h-1 rounded-full bg-surface-container-highest overflow-hidden mb-1">
+                  <div className="h-full gold-gradient" style={{ width: `${session.accuracy}%` }} />
+                </div>
+                <span className="text-[11px] text-on-surface-variant/50">
+                  {session.correctAnswers}/{session.totalQuestions}
                 </span>
               </div>
-              <p className="text-sm font-semibold text-on-surface mb-2">{session.book}</p>
-              <div className="h-1 rounded-full bg-surface-container-highest overflow-hidden mb-1">
-                <div className="h-full gold-gradient" style={{ width: `${session.accuracy}%` }} />
-              </div>
-              <span className="text-[11px] text-on-surface-variant/50">
-                {session.correct}/{session.total}
-              </span>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ── Tips Section ──────────────────────────────────── */}
       <div className="bg-[#6AB8E8]/8 border border-[#6AB8E8]/20 rounded-xl p-3 flex items-center gap-3">
