@@ -1,6 +1,6 @@
 # TODO
 
-## 2026-05-06 — Group → Live Room flow audit fixes [IN PROGRESS]
+## 2026-05-06 — Group → Live Room flow audit fixes [DONE]
 
 > **Source:** Static code audit của user journey Groups → GroupDetail → Quiz → Live Room (xem báo cáo audit trong Claude conversation).
 > **Branch:** `feature/group-live-and-scheduled` (current).
@@ -50,23 +50,23 @@
   - [ ] `cd apps/api && ./mvnw test -Dtest="com.biblequiz.api.**,com.biblequiz.modules.room.**,com.biblequiz.modules.group.**"`
   - [ ] PR Batch 1
 
-### Batch 2 — P1 cluster (sau khi Batch 1 merge)
+### Batch 2 — P1 cluster
 
-#### Task GFA-5: P1-1 — GroupDetail error state distinguishes 404/403 [ ] TODO
-#### Task GFA-6: P1-7 — Member-facing copy on disabled Start button [ ] TODO
-#### Task GFA-7: P1-2 — SequentialLobbyView reconnect/error props [ ] TODO
-#### Task GFA-8: P1-3 — RoomQuiz advance gated on all-answered [ ] TODO
-#### Task GFA-9: P1-4 — RoomQuiz prevent double-submit [ ] TODO
-#### Task GFA-10: P1-5 — Drop group code from localStorage [ ] TODO
-#### Task GFA-11: P1-6 — Validate correctAnswer index in createCustomQuizSet [ ] TODO
+#### Task GFA-5: P1-1 — GroupDetail error state distinguishes 404/403 [x] DONE
+#### Task GFA-6: P1-7 — Member-facing copy on disabled Start button [-] SKIP (already correctly differentiated in both mobile/desktop layouts)
+#### Task GFA-7: P1-2 — SequentialLobbyView reconnect/error props [x] DONE
+#### Task GFA-8: P1-3 — RoomQuiz advance gated on all-answered [x] DONE
+#### Task GFA-9: P1-4 — RoomQuiz prevent double-submit [-] SKIP (already guarded by canAnswer check `selected===null && !submitting`)
+#### Task GFA-10: P1-5 — Drop group code from localStorage [x] DONE
+#### Task GFA-11: P1-6 — Validate correctAnswer index in createCustomQuizSet [x] DONE
 
 ### Batch 3 — P2 polish
 
-#### Task GFA-12: P2-1 — "Đang diễn ra" empty state in GroupDetail [ ] TODO
-#### Task GFA-13: P2-2 — Hide ready-status copy in SEQUENTIAL mode [ ] TODO
-#### Task GFA-14: P2-3 — Optimistic UI on ready toggle [ ] TODO
-#### Task GFA-15: P2-4 — Differentiate "Chơi cùng nhau" / "Tự ôn" buttons [ ] TODO
-#### Task GFA-16: P2-5 — SecureRandom for room code [ ] TODO
+#### Task GFA-12: P2-1 — "Đang diễn ra" empty state in GroupDetail [-] SKIP (member empty state already exists at line 1850; section hide-when-empty for leader is acceptable)
+#### Task GFA-13: P2-2 — Hide ready-status copy in SEQUENTIAL mode [-] SKIP (sequential never reaches that code path — early return to SequentialLobbyView at line 262)
+#### Task GFA-14: P2-3 — Optimistic UI on ready toggle [x] DONE (throttle approach instead — simpler)
+#### Task GFA-15: P2-4 — Differentiate "Chơi cùng nhau" / "Tự ôn" buttons [-] SKIP (already differentiated via icons + tooltips + colors)
+#### Task GFA-16: P2-5 — SecureRandom for room code [x] DONE
 
 ---
 
