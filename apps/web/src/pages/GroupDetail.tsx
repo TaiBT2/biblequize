@@ -85,14 +85,16 @@ const GROUP_LOGO =
 
 const STORAGE_KEY = 'biblequiz_my_groups';
 
-function updateSavedGroup(group: { id: string; name: string; code: string }) {
+function updateSavedGroup(group: { id: string; name: string }) {
+  // Only persist {id, name} — never join codes. Codes are sensitive on
+  // shared devices (anyone with DevTools could read them and join).
   try {
     const groups = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
     const existing = groups.findIndex((g: any) => g.id === group.id);
     if (existing >= 0) {
-      groups[existing] = { id: group.id, name: group.name, code: group.code };
+      groups[existing] = { id: group.id, name: group.name };
     } else {
-      groups.unshift({ id: group.id, name: group.name, code: group.code });
+      groups.unshift({ id: group.id, name: group.name });
     }
     localStorage.setItem(STORAGE_KEY, JSON.stringify(groups));
   } catch { /* ignore */ }
@@ -121,6 +123,9 @@ const GroupDetail: React.FC = () => {
   const [group, setGroup] = useState<Group | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  // 0 = unknown / network error, set to BE response status to differentiate
+  // 404 (group missing/deleted) vs 403 (member kicked/no access) vs other.
+  const [errorStatus, setErrorStatus] = useState<number>(0);
 
   // Deep-link support: ?tab=members opens that tab on mount.
   const [searchParams, setSearchParams] = useSearchParams();
@@ -158,6 +163,19 @@ const GroupDetail: React.FC = () => {
   const [playingSetId, setPlayingSetId] = useState<string | null>(null);
   const [liveQuizSetId, setLiveQuizSetId] = useState<string | null>(null);
   const [activeScheduled, setActiveScheduled] = useState<ScheduledQuizSummary[]>([]);
+  interface ActiveRoom {
+    id: string;
+    roomCode: string;
+    roomName: string;
+    mode: string;
+    status: 'LOBBY' | 'IN_PROGRESS';
+    currentPlayers: number;
+    maxPlayers: number;
+    quizSetId?: string;
+    quizSetName?: string;
+    createdAt: string;
+  }
+  const [activeRooms, setActiveRooms] = useState<ActiveRoom[]>([]);
 
   // Analytics (leader-only) + Group streak
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null);
@@ -311,6 +329,7 @@ const GroupDetail: React.FC = () => {
   const fetchGroup = useCallback(async () => {
     setLoading(true);
     setError('');
+    setErrorStatus(0);
     try {
       const res = await api.get(`/api/groups/${id}`);
       if (res.data.success) {
@@ -320,6 +339,11 @@ const GroupDetail: React.FC = () => {
         setError(res.data.message || t('groups.errorLoadGroupInfo'));
       }
     } catch (err: any) {
+      const status = err.response?.status ?? 0;
+      setErrorStatus(status);
+      // 403 likely means kicked/lost membership: clear stale local cache so
+      // the user doesn't see this group on the /groups index after redirect.
+      if (status === 403 && id) removeSavedGroup(id);
       setError(err.response?.data?.message || t('groups.connectionError'));
     } finally {
       setLoading(false);
@@ -438,6 +462,14 @@ const GroupDetail: React.FC = () => {
     } catch { /* ignore */ }
   }, [id]);
 
+  const fetchActiveRooms = useCallback(async () => {
+    if (!id) return;
+    try {
+      const res = await api.get(`/api/groups/${id}/active-rooms`);
+      if (res.data.success) setActiveRooms(res.data.rooms || []);
+    } catch { /* ignore */ }
+  }, [id]);
+
   useEffect(() => { fetchGroup(); }, [fetchGroup]);
 
   useEffect(() => {
@@ -456,10 +488,11 @@ const GroupDetail: React.FC = () => {
     } else if (activeTab === 'quizsets') {
       fetchQuizSets();
       fetchActiveScheduled();
+      fetchActiveRooms();
     } else if (activeTab === 'members') {
       fetchMembers(null, false);
     }
-  }, [activeTab, group, fetchLeaderboard, fetchAnnouncements, fetchQuizSets, fetchMembers, fetchAnalytics, fetchStreak, fetchActiveScheduled]);
+  }, [activeTab, group, fetchLeaderboard, fetchAnnouncements, fetchQuizSets, fetchMembers, fetchAnalytics, fetchStreak, fetchActiveScheduled, fetchActiveRooms]);
 
   useEffect(() => {
     if (activeTab === 'leaderboard' && group) fetchLeaderboard();
@@ -617,17 +650,36 @@ const GroupDetail: React.FC = () => {
   }
 
   if (error || !group) {
+    // Status-aware copy: 403 = no longer a member; 404 = group gone;
+    // anything else = generic load failure (network or 5xx).
+    const headline = errorStatus === 403
+      ? t('groups.errorNoLongerMember')
+      : errorStatus === 404
+        ? t('groups.errorGroupDeleted')
+        : (error || t('groups.groupNotFound'));
+    const showBackToGroups = errorStatus === 403 || errorStatus === 404;
     return (
       <div className="px-12 py-20">
         <div className="bg-surface-container rounded-2xl p-12 text-center border border-outline-variant/10">
           <span className="material-symbols-outlined text-5xl text-error mb-4 block">error</span>
-          <p className="text-error font-bold mb-6">{error || t('groups.groupNotFound')}</p>
-          <button
-            onClick={fetchGroup}
-            className="px-6 py-3 bg-surface-container-high text-on-surface rounded-xl font-bold text-sm hover:bg-surface-bright transition-all"
-          >
-            {t('common.retry')}
-          </button>
+          <p className="text-error font-bold mb-6">{headline}</p>
+          <div className="flex items-center justify-center gap-3">
+            {showBackToGroups ? (
+              <button
+                onClick={() => navigate('/groups')}
+                className="px-6 py-3 bg-secondary text-on-secondary rounded-xl font-bold text-sm hover:brightness-110 transition-all"
+              >
+                {t('groups.backToGroups')}
+              </button>
+            ) : (
+              <button
+                onClick={fetchGroup}
+                className="px-6 py-3 bg-surface-container-high text-on-surface rounded-xl font-bold text-sm hover:bg-surface-bright transition-all"
+              >
+                {t('common.retry')}
+              </button>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -679,13 +731,15 @@ const GroupDetail: React.FC = () => {
               <span className="bg-[rgba(232,168,50,0.2)] text-secondary px-2 py-0.5 rounded-full text-[9px] font-medium border-[0.5px] border-[rgba(232,168,50,0.4)]">
                 👑 {t('groups.leaderBadge')}
               </span>
-            ) : group.isPublic ? (
-              <span className="bg-[rgba(99,153,34,0.15)] text-[#97C459] px-2 py-0.5 rounded-full text-[9px] font-medium">
-                {t('groups.publicBadge')}
+            ) : myRole === 'MOD' ? (
+              <span className="bg-[rgba(167,139,250,0.15)] text-[#c4b5fd] px-2 py-0.5 rounded-full text-[9px] font-medium border-[0.5px] border-[rgba(167,139,250,0.4)] inline-flex items-center gap-1">
+                <span className="material-symbols-outlined text-[11px]">shield</span>
+                Mod
               </span>
             ) : (
-              <span className="bg-white/[0.06] text-on-surface-variant px-2 py-0.5 rounded-full text-[9px] font-medium">
-                {t('groups.privateBadge')}
+              <span className="bg-[rgba(74,222,128,0.12)] text-[#4ade80] px-2 py-0.5 rounded-full text-[9px] font-medium border-[0.5px] border-[rgba(74,222,128,0.3)] inline-flex items-center gap-1">
+                <span className="material-symbols-outlined text-[11px]">person</span>
+                Thành viên
               </span>
             )}
           </div>
@@ -736,12 +790,14 @@ const GroupDetail: React.FC = () => {
               🚪 {t('groups.leaveGroup')}
             </button>
           )}
-          <button
-            onClick={handleCopyCode}
-            className="bg-secondary text-on-secondary rounded-lg px-3.5 py-2 text-[11px] font-medium shadow-[0_0_18px_rgba(232,168,50,0.2)] hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5"
-          >
-            🔗 {t('groups.invite')}
-          </button>
+          {isLeaderOrMod && (
+            <button
+              onClick={handleCopyCode}
+              className="bg-secondary text-on-secondary rounded-lg px-3.5 py-2 text-[11px] font-medium shadow-[0_0_18px_rgba(232,168,50,0.2)] hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5"
+            >
+              🔗 {t('groups.invite')}
+            </button>
+          )}
         </div>
       </header>
 
@@ -1596,152 +1652,381 @@ const GroupDetail: React.FC = () => {
         </section>
       )}
 
-      {/* ===== QUIZ SETS TAB (mockup: groups_member_dashboard.html quiz sets section) ===== */}
+      {/* ===== QUIZ SETS TAB (redesign: docs/group-page/group_detail_redesign_mockup.html) ===== */}
       {activeTab === 'quizsets' && (
         <>
-          {/* Active scheduled quizzes — visible to all members so they can join */}
-          {activeScheduled.length > 0 && (
-            <section className="bg-[rgba(50,52,64,0.4)] border-[0.5px] border-white/[0.06] rounded-xl p-5 mb-4">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="material-symbols-outlined text-[16px]" style={{ color: '#60a5fa' }}>schedule</span>
-                <div className="text-on-surface text-[13px] font-medium">Quiz đã đặt lịch · Đang diễn ra</div>
-                <span className="ml-auto text-[11px] font-bold rounded-md px-2 py-0.5"
-                  style={{ background: 'rgba(74,222,128,0.12)', color: '#4ade80' }}>
-                  {activeScheduled.length}
+          {/* ── Member view: Live call banner — prominent single banner per member mockup ── */}
+          {!isLeaderOrMod && activeRooms.length > 0 && (
+            <div className="mb-5">
+              {activeRooms.slice(0, 1).map(rm => {
+                const isInProgress = rm.status === 'IN_PROGRESS';
+                const ms = Date.now() - new Date(rm.createdAt).getTime();
+                const mins = Math.max(0, Math.floor(ms / 60000));
+                const opened = mins < 1 ? 'vừa xong' : mins < 60 ? `${mins} phút trước` : `${Math.floor(mins / 60)} giờ trước`;
+                return (
+                  <button
+                    key={rm.id}
+                    onClick={async () => {
+                      try {
+                        const res = await api.post('/api/rooms/join', { roomCode: rm.roomCode });
+                        const joined = res.data.room;
+                        navigate(`/room/${joined.id}/lobby`, { state: { room: joined } });
+                      } catch {
+                        navigate(`/room/${rm.id}/lobby`);
+                      }
+                    }}
+                    className="relative w-full overflow-hidden rounded-2xl p-5 text-left cursor-pointer transition-all hover:brightness-110 grid items-center gap-4"
+                    style={{
+                      gridTemplateColumns: 'auto 1fr auto',
+                      background: 'linear-gradient(135deg, rgba(167,139,250,0.15) 0%, rgba(50,52,64,0.4) 60%)',
+                      border: '1px solid rgba(167,139,250,0.4)',
+                      backdropFilter: 'blur(12px)',
+                    }}
+                  >
+                    <div className="absolute top-[-30px] right-[-30px] w-[100px] h-[100px] pointer-events-none"
+                      style={{ background: 'radial-gradient(circle, rgba(167,139,250,0.2) 0%, transparent 70%)' }} />
+                    <div className="w-12 h-12 rounded-[13px] grid place-items-center text-[24px] flex-shrink-0 relative z-[1]"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(167,139,250,0.25) 0%, rgba(124,58,237,0.15) 100%)',
+                        border: '1px solid rgba(167,139,250,0.4)',
+                        color: '#a78bfa',
+                      }}>
+                      <span className="material-symbols-outlined text-[24px]">groups</span>
+                    </div>
+                    <div className="min-w-0 relative z-[1]">
+                      <div className="inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wider mb-1"
+                        style={{ color: '#c4b5fd' }}>
+                        <span className="w-[7px] h-[7px] rounded-full inline-block animate-pulse"
+                          style={{ background: '#a78bfa', boxShadow: '0 0 0 0 rgba(167,139,250,0.5)' }} />
+                        {isInProgress ? `Đang chơi · ${rm.currentPlayers} người` : `Trưởng nhóm vừa mở phòng · ${opened}`}
+                      </div>
+                      <div className="text-on-surface text-[17px] font-extrabold mb-1 truncate">
+                        "{rm.quizSetName || rm.roomName}" — đang chờ bạn
+                      </div>
+                      <div className="text-[12px] text-on-surface/60">
+                        {rm.currentPlayers}/{rm.maxPlayers} người · Mã phòng {rm.roomCode}
+                      </div>
+                    </div>
+                    <div className="flex-shrink-0 relative z-[1] py-3.5 px-6 rounded-[11px] inline-flex items-center gap-2 text-[14px] font-extrabold text-white"
+                      style={{
+                        background: 'linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%)',
+                        boxShadow: '0 6px 20px rgba(167,139,250,0.35)',
+                      }}>
+                      <span className="material-symbols-outlined text-[18px]">login</span>
+                      Tham gia phòng
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {/* ── Section: Đang diễn ra (compact 2-col grid for leader, or extra rooms/scheduled for member) ── */}
+          {((isLeaderOrMod && (activeRooms.length > 0 || activeScheduled.length > 0)) ||
+            (!isLeaderOrMod && (activeRooms.length > 1 || activeScheduled.length > 0))) && (
+            <>
+              <div className="flex items-center gap-2 mb-3.5 mx-1">
+                <span className="material-symbols-outlined text-[20px] text-secondary">play_circle</span>
+                <div className="text-on-surface text-[16px] font-bold">Đang diễn ra</div>
+                <span className="text-secondary text-[12px] font-bold rounded-lg px-2 py-0.5"
+                  style={{ background: 'rgba(232,168,50,0.12)' }}>
+                  {(isLeaderOrMod ? activeRooms.length : Math.max(0, activeRooms.length - 1)) + activeScheduled.length}
                 </span>
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 mb-6">
+                {/* Live rooms (purple) — render trước. Member đã thấy room đầu tiên ở banner trên → skip */}
+                {(isLeaderOrMod ? activeRooms : activeRooms.slice(1)).map(rm => {
+                  const isInProgress = rm.status === 'IN_PROGRESS';
+                  return (
+                    <button
+                      key={rm.id}
+                      onClick={async () => {
+                        try {
+                          const res = await api.post('/api/rooms/join', { roomCode: rm.roomCode });
+                          const joined = res.data.room;
+                          navigate(`/room/${joined.id}/lobby`, { state: { room: joined } });
+                        } catch (e: any) {
+                          // Nếu user đã ở trong phòng rồi → vào thẳng lobby
+                          navigate(`/room/${rm.id}/lobby`);
+                        }
+                      }}
+                      className="rounded-2xl p-4 text-left cursor-pointer transition-all hover:brightness-110"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(167,139,250,0.08) 0%, rgba(50,52,64,0.4) 60%)',
+                        border: '1px solid rgba(167,139,250,0.3)',
+                        backdropFilter: 'blur(12px)',
+                      }}
+                    >
+                      <div className="flex items-center gap-2.5 mb-3">
+                        <div className="w-9 h-9 rounded-[9px] grid place-items-center flex-shrink-0"
+                          style={{ background: 'rgba(167,139,250,0.15)', border: '1px solid rgba(167,139,250,0.3)', color: '#a78bfa' }}>
+                          <span className="material-symbols-outlined text-[18px]">groups</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider mb-0.5"
+                            style={{ color: '#a78bfa' }}>
+                            <span className="w-1.5 h-1.5 rounded-full inline-block animate-pulse"
+                              style={{ background: '#a78bfa' }} />
+                            {isInProgress ? `Đang chơi · ${rm.currentPlayers} người` : `Phòng Live · ${rm.currentPlayers}/${rm.maxPlayers} người`}
+                          </div>
+                          <div className="text-on-surface text-[14px] font-bold truncate">
+                            {rm.quizSetName || rm.roomName}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 text-[11px] text-on-surface/60 mb-3">
+                        <span className="inline-flex items-center gap-1">
+                          <span className="material-symbols-outlined text-[13px]">tag</span>
+                          {rm.roomCode}
+                        </span>
+                        {!isInProgress && (
+                          <>
+                            <span>·</span>
+                            <span>Đang chờ thành viên</span>
+                          </>
+                        )}
+                      </div>
+                      <div className="w-full py-2.5 rounded-[9px] text-[12px] font-bold inline-flex items-center justify-center gap-1.5"
+                        style={{ background: 'rgba(167,139,250,0.15)', color: '#c4b5fd', border: '1px solid rgba(167,139,250,0.3)' }}>
+                        <span className="material-symbols-outlined text-[14px]">login</span>
+                        Tham gia phòng
+                      </div>
+                    </button>
+                  );
+                })}
+                {/* Scheduled quizzes (blue) */}
                 {activeScheduled.map(sq => {
                   const ms = new Date(sq.deadline).getTime() - Date.now();
-                  const hours = Math.max(0, Math.floor(ms / 3600000));
-                  const days = Math.floor(hours / 24);
-                  const countdown = days >= 1 ? `${days} ngày ${hours % 24}h` : `${hours} giờ`;
+                  const totalHours = Math.max(0, Math.floor(ms / 3600000));
+                  const days = Math.floor(totalHours / 24);
+                  const countdown = days >= 1 ? `Còn ${days} ngày ${totalHours % 24}h` : `Còn ${totalHours} giờ`;
                   return (
                     <button
                       key={sq.id}
                       onClick={() => navigate(`/groups/${id}/scheduled-quizzes/${sq.id}`)}
-                      className="rounded-lg px-3 py-2.5 flex items-center gap-2.5 cursor-pointer transition-all hover:brightness-110 text-left"
-                      style={{ background: 'rgba(96,165,250,0.06)', border: '1px solid rgba(96,165,250,0.2)' }}
+                      className="rounded-2xl p-4 text-left cursor-pointer transition-all hover:brightness-110"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(96,165,250,0.08) 0%, rgba(50,52,64,0.4) 60%)',
+                        border: '1px solid rgba(96,165,250,0.3)',
+                        backdropFilter: 'blur(12px)',
+                      }}
                     >
-                      <div className="w-8 h-8 rounded-md grid place-items-center text-[14px] flex-shrink-0"
-                        style={{ background: 'rgba(96,165,250,0.15)' }}>
-                        📅
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="text-on-surface text-[12px] font-medium truncate">{sq.name}</div>
-                        <div className="text-on-surface/50 text-[10px] mt-0.5">
-                          {sq.questionCount} câu · Còn {countdown}
+                      <div className="flex items-center gap-2.5 mb-3">
+                        <div className="w-9 h-9 rounded-[9px] grid place-items-center text-[18px] flex-shrink-0"
+                          style={{ background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.3)', color: '#60a5fa' }}>
+                          <span className="material-symbols-outlined text-[18px]">schedule</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider mb-0.5"
+                            style={{ color: '#60a5fa' }}>
+                            <span className="w-1.5 h-1.5 rounded-full inline-block animate-pulse"
+                              style={{ background: '#60a5fa' }} />
+                            Quiz đã đặt lịch
+                          </div>
+                          <div className="text-on-surface text-[14px] font-bold truncate">{sq.name}</div>
                         </div>
                       </div>
-                      <span className="material-symbols-outlined text-on-surface/40 text-[18px]">chevron_right</span>
+                      <div className="flex items-center gap-2 text-[11px] text-on-surface/60 mb-3">
+                        <span className="inline-flex items-center gap-1">
+                          <span className="material-symbols-outlined text-[13px]">timer</span>
+                          {countdown}
+                        </span>
+                        <span>·</span>
+                        <span>{sq.questionCount} câu</span>
+                      </div>
+                      <div className="w-full py-2.5 rounded-[9px] text-[12px] font-bold inline-flex items-center justify-center gap-1.5"
+                        style={{ background: 'rgba(96,165,250,0.15)', color: '#93c5fd', border: '1px solid rgba(96,165,250,0.3)' }}>
+                        <span className="material-symbols-outlined text-[14px]">play_arrow</span>
+                        Tham gia ngay
+                      </div>
                     </button>
                   );
                 })}
               </div>
-            </section>
+            </>
           )}
-        <section className="bg-[rgba(50,52,64,0.4)] border-[0.5px] border-white/[0.06] rounded-xl p-5">
-          <div className="flex justify-between items-center mb-3">
-            <div className="text-on-surface text-[13px] font-medium">📚 {t('groups.quizSetsSection')}</div>
-            {isLeaderOrMod && (
+
+          {/* ── Member: educational empty info khi không có activity nhưng có quiz sets ── */}
+          {!isLeaderOrMod && activeRooms.length === 0 && activeScheduled.length === 0 && quizSets.length > 0 && (
+            <div className="text-center py-9 px-6 mb-4 rounded-2xl"
+              style={{
+                background: 'rgba(50,52,64,0.2)',
+                border: '1px dashed rgba(255,255,255,0.1)',
+              }}>
+              <div className="w-15 h-15 mx-auto mb-3.5 rounded-full grid place-items-center"
+                style={{ width: 60, height: 60, background: 'rgba(255,255,255,0.04)' }}>
+                <span className="material-symbols-outlined text-on-surface/60" style={{ fontSize: 28 }}>notifications_off</span>
+              </div>
+              <div className="text-on-surface text-[16px] font-bold mb-1.5">Hiện chưa có quiz nhóm nào</div>
+              <p className="text-on-surface/60 text-[12px] leading-relaxed max-w-sm mx-auto">
+                Khi <strong className="text-on-surface/80">trưởng nhóm</strong> mở phòng "Chơi cùng nhau" hoặc đặt lịch Quiz tuần,
+                bạn sẽ thấy thông báo ở đây. Trong lúc chờ, bạn có thể tự ôn các bộ câu hỏi của nhóm.
+              </p>
+            </div>
+          )}
+
+          {/* ── Section: Bộ câu hỏi ── */}
+          <div className="flex items-center justify-between mb-3.5 mx-1">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-[20px] text-secondary">collections_bookmark</span>
+              <div className="text-on-surface text-[16px] font-bold">{t('groups.quizSetsSection')}</div>
+              {quizSets.length > 0 && (
+                <span className="text-secondary text-[12px] font-bold rounded-lg px-2 py-0.5"
+                  style={{ background: 'rgba(232,168,50,0.12)' }}>
+                  {quizSets.length}
+                </span>
+              )}
+            </div>
+            {!isLeaderOrMod && quizSets.length > 0 && (
+              <span className="text-on-surface/40 text-[11px] italic">Trưởng nhóm tạo bộ câu hỏi</span>
+            )}
+            {isLeaderOrMod && quizSets.length > 0 && (
               <button
                 onClick={openCreateModal}
-                className="bg-[rgba(232,168,50,0.15)] text-secondary border-[0.5px] border-[rgba(232,168,50,0.4)] rounded-md px-3 py-1.5 text-[11px] font-medium hover:brightness-110 transition-all"
+                className="inline-flex items-center gap-1 text-secondary text-[12px] font-bold rounded-lg px-3 py-1.5 transition-all"
+                style={{ background: 'rgba(232,168,50,0.1)', border: '1px solid rgba(232,168,50,0.25)' }}
               >
-                + {t('groups.createQuizSetCta')}
+                <span className="material-symbols-outlined text-[14px]">add</span>
+                {t('groups.createQuizSetCta')}
               </button>
             )}
           </div>
+
           {quizSetsLoading ? (
-            <div className="flex justify-center py-8">
+            <div className="flex justify-center py-12">
               <div className="w-7 h-7 border-2 border-secondary/20 border-t-secondary rounded-full animate-spin" />
             </div>
           ) : quizSets.length === 0 ? (
-            <div className="text-center py-10 px-4">
-              <div className="text-5xl mb-3">📚</div>
-              <div className="text-on-surface text-[14px] font-bold mb-1.5">{t('groups.emptyQuizSetsTitle')}</div>
-              <div className="text-on-surface/60 text-[12px] leading-relaxed mb-5 max-w-sm mx-auto">
+            <div className="text-center py-12 px-8 rounded-2xl"
+              style={{
+                background: 'rgba(50,52,64,0.2)',
+                border: '1px dashed rgba(232,168,50,0.2)',
+              }}>
+              <div className="w-[72px] h-[72px] mx-auto mb-4 rounded-full grid place-items-center"
+                style={{ background: 'rgba(232,168,50,0.08)' }}>
+                <span className="material-symbols-outlined text-secondary" style={{ fontSize: 42 }}>collections_bookmark</span>
+              </div>
+              <div className="text-on-surface text-[18px] font-bold mb-2">{t('groups.emptyQuizSetsTitle')}</div>
+              <div className="text-on-surface/60 text-[13px] leading-relaxed mb-6 max-w-md mx-auto">
                 {isLeaderOrMod ? t('groups.emptyQuizSetsDescLeader') : t('groups.emptyQuizSetsDescMember')}
               </div>
               {isLeaderOrMod && (
                 <button onClick={openCreateModal}
-                  className="rounded-lg px-4 py-2.5 text-[12px] font-bold inline-flex items-center gap-1.5 transition hover:brightness-110"
-                  style={{ background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)', color: '#11131e', boxShadow: '0 6px 20px rgba(232,168,50,0.3)' }}>
-                  <span className="material-symbols-outlined text-[16px]">add</span>
+                  className="rounded-[10px] px-6 py-3 text-[14px] font-bold inline-flex items-center gap-2 transition hover:brightness-110"
+                  style={{ background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)', color: '#11131e', boxShadow: '0 4px 16px rgba(232,168,50,0.3)' }}>
+                  <span className="material-symbols-outlined text-[18px]">add</span>
                   {t('groups.emptyQuizSetsCta')}
                 </button>
               )}
             </div>
           ) : (
-            <div className="flex flex-col gap-2">
-              {quizSets.map((qs, idx) => {
-                // Highlight the most recent set (index 0 — backend orders by createdAt DESC implicitly)
-                const isNew = idx === 0;
+            <div className="flex flex-col gap-2.5">
+              {quizSets.map(qs => {
+                const inUseByScheduled = activeScheduled.some(sq => sq.quizSetId === qs.id);
+                const createdTs = qs.createdAt ? new Date(qs.createdAt).getTime() : NaN;
+                let createdLabel = '';
+                if (!Number.isNaN(createdTs)) {
+                  const createdDays = Math.floor((Date.now() - createdTs) / (24 * 3600000));
+                  createdLabel = createdDays === 0
+                    ? 'Tạo hôm nay'
+                    : createdDays === 1
+                      ? 'Tạo hôm qua'
+                      : createdDays < 7
+                        ? `Tạo ${createdDays} ngày trước`
+                        : createdDays < 30
+                          ? `Tạo ${Math.floor(createdDays / 7)} tuần trước`
+                          : `Tạo ${Math.floor(createdDays / 30)} tháng trước`;
+                }
                 return (
                   <div
                     key={qs.id}
-                    className={`rounded-lg px-3 py-2.5 flex items-center gap-2.5 cursor-pointer transition-all hover:brightness-110 ${
-                      isNew
-                        ? 'bg-[rgba(232,168,50,0.06)] border-[0.5px] border-[rgba(232,168,50,0.25)]'
-                        : 'bg-[rgba(50,52,64,0.5)] border-[0.5px] border-white/[0.06]'
-                    }`}
+                    className="rounded-2xl px-4 py-3.5 grid items-center gap-3"
+                    style={{
+                      background: 'rgba(50,52,64,0.4)',
+                      backdropFilter: 'blur(12px)',
+                      border: '1px solid rgba(232,168,50,0.1)',
+                      gridTemplateColumns: 'auto 1fr auto',
+                    }}
                   >
-                    <div
-                      className={`w-8 h-8 rounded-md flex items-center justify-center text-[14px] flex-shrink-0 ${
-                        isNew ? 'bg-[rgba(232,168,50,0.2)]' : 'bg-[rgba(74,158,255,0.15)]'
-                      }`}
-                    >
-                      {isNew ? '📖' : '📜'}
+                    <div className="w-11 h-11 rounded-[11px] grid place-items-center text-secondary flex-shrink-0"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(232,168,50,0.18) 0%, rgba(217,119,6,0.1) 100%)',
+                        border: '1px solid rgba(232,168,50,0.25)',
+                      }}>
+                      <span className="material-symbols-outlined text-[22px]">menu_book</span>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-on-surface text-[12px] font-medium truncate">{qs.name}</div>
-                      <div className="text-on-surface/50 text-[10px]">
-                        {t('groups.questionsCount', { count: qs.questionCount })}
-                        {isNew && ` · ${t('groups.newToday')}`}
+                    <div className="min-w-0">
+                      <div className="text-on-surface text-[15px] font-bold truncate mb-1">{qs.name}</div>
+                      <div className="flex items-center gap-3 text-[11px] text-on-surface/60 flex-wrap">
+                        <span className="inline-flex items-center gap-1">
+                          <span className="material-symbols-outlined text-[13px]">quiz</span>
+                          {t('groups.questionsCount', { count: qs.questionCount })}
+                        </span>
+                        {createdLabel && (
+                          <span className="inline-flex items-center gap-1">
+                            <span className="material-symbols-outlined text-[13px]">schedule</span>
+                            {createdLabel}
+                          </span>
+                        )}
+                        {inUseByScheduled && (
+                          <span className="inline-flex items-center gap-1" style={{ color: '#a78bfa' }}>
+                            <span className="material-symbols-outlined text-[13px]">verified</span>
+                            Đang dùng cho Quiz đặt lịch
+                          </span>
+                        )}
                       </div>
                     </div>
-                    <div className="flex items-center gap-1.5 flex-wrap justify-end">
-                      {/* Feature A — Chơi cùng nhau (live multiplayer, LEADER/MOD only) */}
+                    <div className="flex items-center gap-1.5 flex-shrink-0 flex-wrap justify-end">
+                      {/* Tự ôn (solo) — visible to all members */}
+                      <button
+                        onClick={() => handlePlayQuizSet(qs.id)}
+                        disabled={playingSetId === qs.id}
+                        title="Tự ôn solo"
+                        className="rounded-[9px] px-3 py-2 text-[12px] font-bold inline-flex items-center gap-1.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-transparent text-on-surface/60 hover:text-on-surface"
+                        style={{ border: '1px solid rgba(255,255,255,0.1)' }}
+                      >
+                        <span className="material-symbols-outlined text-[14px]">person</span>
+                        {playingSetId === qs.id ? '...' : 'Tự ôn'}
+                      </button>
+                      {/* Chơi cùng nhau — leader/mod */}
                       {isLeaderOrMod && (
                         <button
                           onClick={() => handleStartLiveQuiz(qs.id)}
                           disabled={liveQuizSetId === qs.id}
                           title={t('groups.liveQuizTooltip')}
-                          className="rounded-md px-2.5 py-1.5 text-[11px] font-medium cursor-pointer transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-[rgba(167,139,250,0.15)] text-[#a78bfa] border-[0.5px] border-[rgba(167,139,250,0.4)] hover:bg-[rgba(167,139,250,0.25)] flex items-center gap-1"
+                          className="rounded-[9px] px-3 py-2 text-[12px] font-bold inline-flex items-center gap-1.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                          style={{
+                            background: 'rgba(167,139,250,0.12)',
+                            color: '#c4b5fd',
+                            border: '1px solid rgba(167,139,250,0.3)',
+                          }}
                         >
                           <span className="material-symbols-outlined text-[14px]">groups</span>
                           {liveQuizSetId === qs.id ? '...' : t('groups.liveQuizCta')}
                         </button>
                       )}
-                      {/* Feature B — Đặt lịch chơi (scheduled async quiz, LEADER/MOD only) */}
+                      {/* Đặt lịch — leader/mod */}
                       {isLeaderOrMod && (
                         <button
                           onClick={() => navigate(`/groups/${id}/scheduled-quizzes/new?quizSetId=${qs.id}`)}
                           title={t('scheduledQuiz.scheduleTooltip')}
-                          className="rounded-md px-2.5 py-1.5 text-[11px] font-medium cursor-pointer transition-all bg-[rgba(96,165,250,0.15)] text-[#60a5fa] border-[0.5px] border-[rgba(96,165,250,0.4)] hover:bg-[rgba(96,165,250,0.25)] flex items-center gap-1"
+                          className="rounded-[9px] px-3 py-2 text-[12px] font-bold inline-flex items-center gap-1.5 transition-all"
+                          style={{
+                            background: 'rgba(96,165,250,0.12)',
+                            color: '#93c5fd',
+                            border: '1px solid rgba(96,165,250,0.3)',
+                          }}
                         >
                           <span className="material-symbols-outlined text-[14px]">schedule</span>
                           {t('scheduledQuiz.scheduleCta')}
                         </button>
                       )}
-                      <button
-                        onClick={() => handlePlayQuizSet(qs.id)}
-                        disabled={playingSetId === qs.id}
-                        className={`rounded-md px-3 py-1.5 text-[11px] font-medium cursor-pointer transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
-                          isNew
-                            ? 'bg-secondary text-on-secondary hover:brightness-110'
-                            : 'bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 hover:bg-white/10'
-                        }`}
-                      >
-                        {playingSetId === qs.id ? '...' : isNew ? t('groups.play') : t('groups.playAgain')}
-                      </button>
                     </div>
                   </div>
                 );
               })}
             </div>
           )}
-        </section>
         </>
       )}
 

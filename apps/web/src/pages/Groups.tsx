@@ -48,7 +48,7 @@ interface PublicGroupsResponse {
 
 /* ─── localStorage cache (one-name hint for Home mode-card) ─── */
 
-interface SavedGroup { id: string; name: string; code?: string }
+interface SavedGroup { id: string; name: string }
 const STORAGE_KEY = 'biblequiz_my_groups';
 
 function saveGroupCache(groups: SavedGroup[]) {
@@ -340,7 +340,8 @@ const Groups: React.FC = () => {
   useEffect(() => {
     if (!myGroupsRes) return;
     if (myGroups.length > 0) {
-      saveGroupCache(myGroups.map((g) => ({ id: g.id, name: g.name, code: g.code })));
+      // Persist {id, name} only — never join codes (sensitive on shared devices).
+      saveGroupCache(myGroups.map((g) => ({ id: g.id, name: g.name })));
     } else {
       clearGroupCache();
     }
