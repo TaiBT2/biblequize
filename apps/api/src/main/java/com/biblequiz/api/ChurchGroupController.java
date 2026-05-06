@@ -490,18 +490,32 @@ public class ChurchGroupController {
 
                 q.setType(Question.Type.multiple_choice_single);
                 q.setLanguage((String) raw.getOrDefault("language", "vi"));
-                q.setOptions((List<String>) raw.getOrDefault("options", List.of()));
+                List<String> options = (List<String>) raw.getOrDefault("options", List.of());
+                q.setOptions(options);
 
+                // Validate correctAnswer is a valid index into options.
+                // Reject early so a malformed payload (e.g. {correctAnswer: 99} for
+                // a 4-option question) doesn't blow up at quiz-grading time.
+                int optionCount = options.size();
                 Object ca = raw.get("correctAnswer");
+                List<Integer> correctIndexes;
                 if (ca instanceof List<?> list) {
-                    q.setCorrectAnswer(list.stream()
-                            .map(v -> v instanceof Number n ? n.intValue() : 0)
-                            .collect(Collectors.toList()));
+                    correctIndexes = list.stream()
+                            .map(v -> v instanceof Number n ? n.intValue() : -1)
+                            .collect(Collectors.toList());
                 } else if (ca instanceof Number n) {
-                    q.setCorrectAnswer(List.of(n.intValue()));
+                    correctIndexes = List.of(n.intValue());
                 } else {
-                    q.setCorrectAnswer(List.of(0));
+                    correctIndexes = List.of(0);
                 }
+                for (int idx : correctIndexes) {
+                    if (idx < 0 || idx >= optionCount) {
+                        return ResponseEntity.badRequest().body(Map.of(
+                                "success", false,
+                                "message", "correctAnswer index " + idx + " is out of range (options count = " + optionCount + ")"));
+                    }
+                }
+                q.setCorrectAnswer(correctIndexes);
 
                 q.setExplanation((String) raw.get("explanation"));
                 q.setSource("group-custom");
