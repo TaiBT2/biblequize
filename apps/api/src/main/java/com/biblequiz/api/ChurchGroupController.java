@@ -563,8 +563,11 @@ public class ChurchGroupController {
                 return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Quiz set chua co cau hoi nao"));
             }
 
-            // Tìm phòng đang lobby cho quiz set này — nếu có thì join chung thay vì tạo mới
-            Optional<Room> existingRoom = roomRepository.findFirstByGroupQuizSetIdAndStatus(setId, Room.RoomStatus.LOBBY);
+            // Tìm phòng SPEED_RACE đang lobby cho quiz set này — nếu có thì join chung thay vì tạo mới.
+            // CHỈ filter SPEED_RACE để không join nhầm vào GROUP_LIVE_SEQUENTIAL room
+            // mà leader đã tạo (member click "Tự ôn" mong đợi solo, không phải live multiplayer).
+            Optional<Room> existingRoom = roomRepository.findFirstByGroupQuizSetIdAndStatusAndMode(
+                    setId, Room.RoomStatus.LOBBY, Room.RoomMode.SPEED_RACE);
             Room room;
             if (existingRoom.isPresent()) {
                 room = existingRoom.get();
@@ -633,15 +636,29 @@ public class ChurchGroupController {
                         .body(Map.of("success", false, "message", "Quiz set chua co cau hoi nao"));
             }
 
-            Room room = roomService.createRoom(
-                    gqs.getName(), user,
-                    20, questionIds.size(), timePerQuestion,
-                    Room.RoomMode.GROUP_LIVE_SEQUENTIAL, false,
-                    Room.RoomDifficulty.MIXED, "ALL",
-                    Room.QuestionSource.CUSTOM, null);
-            room.setCustomQuestionIds(questionIds);
-            room.setGroupQuizSetId(quizSetId);
-            roomRepository.save(room);
+            // Dedup: nếu đã có phòng GROUP_LIVE_SEQUENTIAL đang LOBBY cho quiz set này
+            // → reuse, đảm bảo leader nhảy vào cùng phòng đã tạo trước đó.
+            // Bỏ qua SPEED_RACE rooms (do "Tự ôn solo" tạo) — chỉ xét GROUP_LIVE_SEQUENTIAL.
+            List<Room> existingLive = roomRepository.findLobbyGroupLiveByQuizSet(quizSetId);
+            Room room;
+            if (!existingLive.isEmpty()) {
+                room = existingLive.get(0);
+                boolean alreadyIn = roomPlayerRepository
+                        .findByRoomIdAndUserId(room.getId(), user.getId()).isPresent();
+                if (!alreadyIn) {
+                    roomService.joinRoom(room.getRoomCode(), user);
+                }
+            } else {
+                room = roomService.createRoom(
+                        gqs.getName(), user,
+                        20, questionIds.size(), timePerQuestion,
+                        Room.RoomMode.GROUP_LIVE_SEQUENTIAL, false,
+                        Room.RoomDifficulty.MIXED, "ALL",
+                        Room.QuestionSource.CUSTOM, null);
+                room.setCustomQuestionIds(questionIds);
+                room.setGroupQuizSetId(quizSetId);
+                roomRepository.save(room);
+            }
 
             Map<String, Object> roomInfo = new LinkedHashMap<>();
             roomInfo.put("id", room.getId());
@@ -649,6 +666,47 @@ public class ChurchGroupController {
             roomInfo.put("roomName", room.getRoomName());
             roomInfo.put("mode", room.getMode().name());
             return ResponseEntity.ok(Map.of("success", true, "room", roomInfo));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * GET /api/groups/{id}/active-rooms
+     * Trả về list phòng live đang LOBBY/IN_PROGRESS thuộc group — để mọi member
+     * thấy "Đang diễn ra" trong tab Bộ câu hỏi và join chung phòng.
+     */
+    @GetMapping("/{id}/active-rooms")
+    public ResponseEntity<?> listActiveRooms(@PathVariable("id") String groupId, Principal principal) {
+        try {
+            User user = getUser(principal);
+            // Chỉ thành viên nhóm mới xem được
+            groupMemberRepository.findByGroupIdAndUserId(groupId, user.getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Ban khong phai thanh vien cua nhom nay"));
+
+            List<Room> rooms = roomRepository.findActiveRoomsForGroup(groupId);
+            // Map quizSetId → name để FE hiển thị
+            Map<String, String> qsNames = new HashMap<>();
+            for (GroupQuizSet qs : groupQuizSetRepository.findByGroupId(groupId)) {
+                qsNames.put(qs.getId(), qs.getName());
+            }
+            List<Map<String, Object>> list = rooms.stream().map(r -> {
+                Map<String, Object> m = new LinkedHashMap<>();
+                m.put("id", r.getId());
+                m.put("roomCode", r.getRoomCode());
+                m.put("roomName", r.getRoomName());
+                m.put("mode", r.getMode().name());
+                m.put("status", r.getStatus().name());
+                m.put("currentPlayers", r.getCurrentPlayers());
+                m.put("maxPlayers", r.getMaxPlayers());
+                m.put("quizSetId", r.getGroupQuizSetId());
+                m.put("quizSetName", qsNames.get(r.getGroupQuizSetId()));
+                m.put("createdAt", r.getCreatedAt());
+                return m;
+            }).collect(Collectors.toList());
+            return ResponseEntity.ok(Map.of("success", true, "rooms", list));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
         } catch (Exception e) {
