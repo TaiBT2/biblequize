@@ -492,78 +492,30 @@ const Multiplayer = () => {
         </div>
       </div>
 
-      {/* ── Join by code + Featured event ── */}
+      {/* ── Join by code ── */}
       <div
-        className="grid gap-3 md:gap-4 grid-cols-1 md:[grid-template-columns:minmax(0,1.4fr)_minmax(0,1fr)]"
+        className="p-5 rounded-2xl flex flex-col gap-3"
+        style={{
+          background: 'rgba(50,52,64,0.4)',
+          border: '0.5px solid rgba(232,168,50,0.2)',
+          borderLeft: '3px solid #e8a832',
+        }}
       >
-        {/* Join by code */}
-        <div
-          className="p-5 rounded-2xl flex flex-col gap-3"
-          style={{
-            background: 'rgba(50,52,64,0.4)',
-            border: '0.5px solid rgba(232,168,50,0.2)',
-            borderLeft: '3px solid #e8a832',
-          }}
-        >
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span>🔑</span>
-              <span className="text-white text-sm font-semibold">{t('multiplayer.joinByCode', 'Tham gia bằng mã')}</span>
-            </div>
-            <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>
-              {t('multiplayer.joinByCodeDesc', 'Có mã 6 ký tự từ bạn bè? Vào ngay không cần tìm')}
-            </p>
+        <div>
+          <div className="flex items-center gap-2 mb-1">
+            <span>🔑</span>
+            <span className="text-white text-sm font-semibold">{t('multiplayer.joinByCode', 'Tham gia bằng mã')}</span>
           </div>
-          <CodeInput onJoin={handleJoinByCode} disabled={isCodeJoining} />
-          {codeJoinError && (
-            <div className="mt-2 text-[11px] px-2 py-1.5 rounded-lg" style={{ background: 'rgba(239,68,68,0.12)', color: '#f87171' }}>
-              ⚠ {codeJoinError}
-            </div>
-          )}
+          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>
+            {t('multiplayer.joinByCodeDesc', 'Có mã 6 ký tự từ bạn bè? Vào ngay không cần tìm')}
+          </p>
         </div>
-
-        {/* Featured event */}
-        <div
-          className="p-5 rounded-2xl flex flex-col justify-center relative overflow-hidden"
-          style={{
-            background: 'linear-gradient(135deg, rgba(168,85,247,0.12), rgba(50,52,64,0.4))',
-            border: '0.5px solid rgba(168,85,247,0.3)',
-          }}
-        >
-          <div className="absolute -top-3 -right-3 opacity-[0.15] text-7xl pointer-events-none select-none">✨</div>
-          <span
-            className="inline-block px-2 py-0.5 rounded-full text-[9px] font-semibold mb-2"
-            style={{
-              background: 'rgba(168,85,247,0.25)',
-              color: '#c084fc',
-              border: '0.5px solid rgba(168,85,247,0.4)',
-              letterSpacing: '0.04em',
-            }}
-          >
-            ⭐ {t('multiplayer.featuredToday', 'ĐẶC BIỆT HÔM NAY')}
-          </span>
-          <h4 className="text-sm font-semibold leading-tight mb-1 text-white">{t('multiplayer.featuredTitle', 'Giải đố Sáng Thế Ký')}</h4>
-          <p className="text-xs mb-3" style={{ color: 'rgba(255,255,255,0.6)' }}>{t('multiplayer.featuredHost', 'cùng Mục sư Hùng dẫn dắt')}</p>
-          <div className="flex items-center gap-3 mb-3 flex-wrap">
-            <span className="text-[11px] flex items-center gap-1" style={{ color: 'rgba(255,255,255,0.55)' }}>
-              ⏰ {t('multiplayer.featuredTime', '14:00 chiều nay')}
-            </span>
-            <span style={{ color: 'rgba(255,255,255,0.25)' }}>·</span>
-            <span className="text-[11px]" style={{ color: 'rgba(255,255,255,0.55)' }}>
-              👥 47 {t('multiplayer.registered', 'đăng ký')}
-            </span>
+        <CodeInput onJoin={handleJoinByCode} disabled={isCodeJoining} />
+        {codeJoinError && (
+          <div className="mt-2 text-[11px] px-2 py-1.5 rounded-lg" style={{ background: 'rgba(239,68,68,0.12)', color: '#f87171' }}>
+            ⚠ {codeJoinError}
           </div>
-          <button
-            className="text-xs font-semibold py-2 px-3 rounded-lg w-full transition-all"
-            style={{
-              background: 'rgba(168,85,247,0.2)',
-              color: '#c084fc',
-              border: '0.5px solid rgba(168,85,247,0.5)',
-            }}
-          >
-            {t('multiplayer.register', 'Đăng ký tham gia →')}
-          </button>
-        </div>
+        )}
       </div>
 
       {/* ── Room list header: title + live badge + toolbar ── */}
