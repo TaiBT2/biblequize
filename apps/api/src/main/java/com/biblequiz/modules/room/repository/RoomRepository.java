@@ -58,4 +58,10 @@ public interface RoomRepository extends JpaRepository<Room, String> {
            "AND r.mode = 'GROUP_LIVE_SEQUENTIAL' " +
            "ORDER BY r.createdAt DESC")
     List<Room> findActiveRoomsForGroup(@Param("groupId") String groupId);
+
+    /** Lobby rooms older than the cutoff that have never started — candidates
+     *  for auto-cleanup so disconnected hosts don't lock players (incl. self)
+     *  out of the "max 1 active room" rule. */
+    @Query("SELECT r FROM Room r WHERE r.status = 'LOBBY' AND r.createdAt < :cutoff")
+    List<Room> findStaleLobbyRooms(@Param("cutoff") LocalDateTime cutoff);
 }

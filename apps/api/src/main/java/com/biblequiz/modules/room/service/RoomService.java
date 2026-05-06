@@ -89,6 +89,11 @@ public class RoomService {
         }
 
         // SPEC v1.1 §8.7: a user can be in only one active room at a time.
+        // First, opportunistically clean up *this user's* stale lobby rooms
+        // (host abandoned, never started, > STALE_LOBBY_HOURS old) so an old
+        // test room doesn't permanently lock them out.
+        cleanupStaleLobbyForUser(user.getId());
+
         // Filter out the room they're trying to join (no-op for normal flow,
         // defensive in case the prior check missed a race).
         List<String> otherActive = roomPlayerRepository.findActiveRoomIdsByUserId(user.getId())
@@ -102,6 +107,55 @@ public class RoomService {
         addPlayerToRoom(room.getId(), user);
 
         return room;
+    }
+
+    /** Lobby rooms older than this are considered abandoned and may be auto-closed. */
+    static final long STALE_LOBBY_HOURS = 1L;
+
+    /**
+     * B-1: Lazy per-user cleanup. For each LOBBY room the user is still
+     * registered in: if the room is older than {@link #STALE_LOBBY_HOURS},
+     * either end it (when the user is host) or just remove the user
+     * (when host is someone else — let the host decide what to do with
+     * remaining players).
+     *
+     * <p>Called on every joinRoom so the cleanup cost is amortised against
+     * actual usage; combined with B-2 ({@link RoomCleanupScheduler}) this
+     * keeps the "max 1 active room" rule from latching on dead state.
+     */
+    void cleanupStaleLobbyForUser(String userId) {
+        LocalDateTime cutoff = LocalDateTime.now().minusHours(STALE_LOBBY_HOURS);
+        List<String> activeRoomIds = roomPlayerRepository.findActiveRoomIdsByUserId(userId);
+        for (String roomId : activeRoomIds) {
+            Room r = roomRepository.findById(roomId).orElse(null);
+            if (r == null || r.getStatus() != Room.RoomStatus.LOBBY) continue;
+            if (r.getCreatedAt() != null && r.getCreatedAt().isAfter(cutoff)) continue;
+            // Stale.
+            if (r.getHost() != null && userId.equals(r.getHost().getId())) {
+                r.setStatus(Room.RoomStatus.ENDED);
+                r.setEndedAt(LocalDateTime.now());
+                roomRepository.save(r);
+            } else {
+                roomPlayerRepository.findByRoomIdAndUserId(roomId, userId)
+                        .ifPresent(roomPlayerRepository::delete);
+            }
+        }
+    }
+
+    /**
+     * B-2 helper: end every LOBBY room older than {@code cutoff}. Used by the
+     * {@link RoomCleanupScheduler}; returns the number of rooms ended for
+     * logging.
+     */
+    public int endLobbyRoomsOlderThan(LocalDateTime cutoff) {
+        List<Room> stale = roomRepository.findStaleLobbyRooms(cutoff);
+        LocalDateTime now = LocalDateTime.now();
+        for (Room r : stale) {
+            r.setStatus(Room.RoomStatus.ENDED);
+            r.setEndedAt(now);
+        }
+        if (!stale.isEmpty()) roomRepository.saveAll(stale);
+        return stale.size();
     }
 
     /**
