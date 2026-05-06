@@ -34,14 +34,14 @@
     "content": "Nếu dâng tế lễ thiêu bằng chim, phải dùng loại chim nào?",
     "options": [
       "Chim ưng",
-      "Chim cu gáy hoặc bồ câu con",
+      "Chim cu đất hoặc bồ câu con",
       "Chim sẻ",
       "Chim cút"
     ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 1:14 — 'Nếu lễ vật dâng cho Đức Giê-hô-va là tế lễ thiêu bằng chim, thì phải dâng chim cu gáy hoặc bồ câu con.'",
+    "explanation": "Lê-vi Ký 1:14 — 'Nếu lễ vật dâng cho Đức Giê-hô-va là tế lễ thiêu bằng chim, thì phải dâng chim cu đất hoặc bồ câu con.'",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -177,8 +177,7 @@
       "Cựu Ước",
       "Lê-vi Ký",
       "Ngũ Kinh",
-      "Tội lỗi và Sa ngã",
-      "Gia-cốp và Y-sơ-ra-ên",
+      "Tế lễ và nghi lễ",
       "Cơ bản"
     ]
   },
@@ -226,7 +225,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 4:22-23 — 'Khi một nhà lãnh đạo phạm tội... người phải đem lễ vật là một con dê đực không tì vết.' Sinh tế khác nhau tùy theo địa vị người phạm tội.",
+    "explanation": "Lê-vi Ký 4:22-23 — 'Khi một quan trưởng phạm tội... người phải đem đến một con dê đực không tì vết làm lễ vật vì tội mình.'",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -797,7 +796,7 @@
     "verseStart": 4,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Nếu thầy tế lễ chưa chắc chắn về bệnh phong, người bệnh phải bị cách ly bao lâu?",
+    "content": "Theo Lê-vi Ký 13:4, người có vết nghi ngờ bệnh phong phải bị cách ly bao lâu?",
     "options": [
       "Ba mươi ngày",
       "Ba ngày",
@@ -807,7 +806,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 13:4 — 'Thầy tế lễ sẽ cách ly người có vết đó bảy ngày.' Sau đó sẽ tái khám để xác định.",
+    "explanation": "Lê-vi Ký 13:4 — \"thì thầy tế lễ sẽ cách ly người có vết đó trong bảy ngày.\" Sau đó sẽ tái khám để xác định.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -877,23 +876,23 @@
     "verseEnd": 35,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Lê-vi Ký quy định luật về bệnh phong áp dụng cho gì?",
+    "content": "Theo Lê-vi Ký chương 14, luật về bệnh phong (hoặc vết mốc tương tự) được áp dụng cho đối tượng nào?",
+    "options": [
+      "Chỉ con người",
+      "Chỉ thú vật",
+      "Cả con người lẫn nhà cửa",
+      "Chỉ y phục và đồ da"
+    ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 14:34-35 — 'Khi các ngươi vào xứ Ca-na-an... nếu Ta giáng bệnh phong cho một căn nhà... chủ nhà phải đến báo cho thầy tế lễ.' Bệnh phong cũng áp dụng cho nhà cửa.",
+    "explanation": "Lê-vi Ký 14:34-35 quy định về việc xử lý khi có 'bệnh phong' (dịch tễ, vết mốc) trên nhà cửa. Các chương 13-14 trước đó cũng quy định chi tiết về bệnh phong trên người và trên quần áo/đồ da. Do đó, luật này áp dụng cho cả người, y phục/đồ da (Lv 13) và nhà cửa (Lv 14).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
       "Lê-vi Ký",
       "Ngũ Kinh",
       "Trung cấp"
-    ],
-    "options": [
-      "Chỉ con người",
-      "Chỉ thú vật",
-      "Cả con người lẫn nhà cửa",
-      "Chỉ y phục"
     ]
   },
   {
@@ -1063,7 +1062,7 @@
     "verseStart": 29,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Ngày Lễ Chuộc Tội được tổ chức vào ngày mười tháng ___.",
+    "content": "Ngày Lễ Chuộc Tội (ngày kiêng ăn) được tổ chức vào ngày mười tháng mấy?",
     "options": [
       "bảy",
       "ba",
@@ -1323,11 +1322,11 @@
     "verseEnd": 8,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Lê-vi Ký 20:7 truyền lệnh nào cho dân Y-sơ-ra-ên?",
+    "content": "Lê-vi Ký 20:7-8 truyền lệnh nào cho dân Y-sơ-ra-ên?",
     "correctAnswer": [
       1
     ],
-    "explanation": "Lê-vi Ký 20:7 — 'Vậy hãy tự biệt riêng ra thánh, vì Ta là Giê-hô-va Đức Chúa Trời các ngươi.'",
+    "explanation": "Lê-vi Ký 20:7-8 — 'Các ngươi phải thánh hóa mình và phải thánh, vì Ta là Giê-hô-va Đức Chúa Trời của các ngươi. Các ngươi phải vâng giữ những luật lệ Ta và làm theo. Ta là Đức Giê-hô-va, Đấng thánh hóa các ngươi.'",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1337,7 +1336,7 @@
     ],
     "options": [
       "Hãy đến đền thờ mỗi tuần",
-      "Hãy tự biệt riêng ra thánh, vì Ta là Đức Chúa Trời các ngươi",
+      "Hãy thánh hóa mình, vâng giữ luật lệ Ta, vì Ta là Giê-hô-va Đức Chúa Trời các ngươi",
       "Hãy dâng nhiều của lễ",
       "Hãy đi truyền giáo cho dân ngoại"
     ]
@@ -1372,7 +1371,7 @@
     "book": "Leviticus",
     "chapter": 21,
     "verseStart": 16,
-    "verseEnd": 21,
+    "verseEnd": 22,
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Con cháu A-rôn có tật nguyền thì được làm gì?",
@@ -1385,7 +1384,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 21:22 — 'Người đó được ăn thức ăn của Đức Chúa Trời, cả phần rất thánh lẫn phần thánh, nhưng không được đến gần bức màn, cũng không được đến gần bàn thờ.'",
+    "explanation": "Lê-vi Ký 21:16-22 quy định người có tật nguyền trong dòng A-rôn không được đến gần dâng lễ (câu 17-21), nhưng được ăn thức ăn thánh (câu 22).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1402,7 +1401,7 @@
     "verseEnd": 28,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Con vật dâng tế lễ phải được bao nhiêu ngày tuổi trở lên?",
+    "content": "Theo Lê-vi Ký 22:27, con vật dâng làm tế lễ phải ở với mẹ ít nhất bao nhiêu ngày trước khi được dâng?",
     "options": [
       "Ba ngày",
       "Ba mươi ngày",
@@ -1412,7 +1411,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 22:27 — 'Khi bò con, chiên con, hoặc dê con sinh ra, nó phải ở với mẹ bảy ngày. Từ ngày thứ tám trở đi, nó mới được chấp nhận làm tế lễ dùng lửa dâng lên Đức Giê-hô-va.'",
+    "explanation": "Lê-vi Ký 22:27 chép: 'Khi bò con, chiên con, hoặc dê con sinh ra, nó phải ở với mẹ bảy ngày. Từ ngày thứ tám trở đi, nó mới được chấp nhận làm tế lễ dùng lửa dâng lên Đức Giê-hô-va.' Vậy, con vật phải ở với mẹ đủ bảy ngày trước khi được dâng (tức là từ ngày thứ tám trở đi).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1596,7 +1595,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Lê-vi Ký 23:43 — 'Để dòng dõi các ngươi biết rằng Ta đã cho dân Y-sơ-ra-ên ở trong lều tạm khi Ta đem họ ra khỏi xứ Ai-cập.'",
+    "explanation": "Lê-vi Ký 23:42-43 — \"Các ngươi phải ở trong lều tạm bảy ngày... để dòng dõi các ngươi biết rằng Ta đã cho dân Y-sơ-ra-ên ở trong lều tạm khi Ta đem họ ra khỏi xứ Ai-cập.\"",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1639,6 +1638,12 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Hình phạt cho ai phạm thượng danh Đức Giê-hô-va là gì?",
+    "options": [
+      "Đuổi khỏi trại bảy ngày",
+      "Phải dâng tế lễ chuộc tội",
+      "Bị xử tử — cả hội chúng phải ném đá",
+      "Phạt tiền"
+    ],
     "correctAnswer": [
       2
     ],
@@ -1649,12 +1654,6 @@
       "Lê-vi Ký",
       "Ngũ Kinh",
       "Cơ bản"
-    ],
-    "options": [
-      "Đuổi khỏi trại bảy ngày",
-      "Phải dâng tế lễ chuộc tội",
-      "Bị xử tử — cả hội chúng phải ném đá",
-      "Phạt tiền"
     ]
   },
   {
@@ -1767,6 +1766,12 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Lê-vi Ký 25:36-37, người Y-sơ-ra-ên có được cho anh em mình vay tiền lấy lãi không?",
+    "options": [
+      "Có, miễn là lãi nhỏ",
+      "Có, nếu bằng văn tự",
+      "Không được lấy lời hay lãi từ anh em mình",
+      "Chỉ được trong năm hạn hán"
+    ],
     "correctAnswer": [
       2
     ],
@@ -1778,12 +1783,6 @@
       "Ngũ Kinh",
       "Gia-cốp và Y-sơ-ra-ên",
       "Trung cấp"
-    ],
-    "options": [
-      "Có, miễn là lãi nhỏ",
-      "Có, nếu bằng văn tự",
-      "Không được lấy lời hay lãi từ anh em mình",
-      "Chỉ được trong năm hạn hán"
     ]
   },
   {
@@ -1964,7 +1963,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Lê-vi Ký 27:30 — 'Mọi phần mười của đất, bất luận là ngũ cốc từ ruộng hay trái từ cây, đều thuộc về Đức Giê-hô-va; đó là vật thánh cho Đức Giê-hô-va.'",
+    "explanation": "Lê-vi Ký 27:30 — 'Mọi phần mười của đất, bất luận là ngũ cốc từ ruộng hay trái từ cây, đều thuộc về Đức Giê-hô-va; đó là vật thánh cho Đức Giê-hô-va.' (Sau đó, Đức Giê-hô-va ban phần mười này cho người Lê-vi để duy trì chức vụ của họ, xem Dân Số Ký 18:21-24).",
     "language": "vi",
     "tags": [
       "Cựu Ước",

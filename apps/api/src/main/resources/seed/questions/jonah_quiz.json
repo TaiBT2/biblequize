@@ -55,6 +55,7 @@
     "book": "Jonah",
     "chapter": 1,
     "verseStart": 12,
+    "verseEnd": 12,
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Giona nói với thủy thủ làm gì để biển lặng?",
@@ -86,7 +87,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giona 2:9 - Dù trong hoàn cảnh tuyệt vọng nhất, Giona nhận ra chỉ Chúa cứu rỗi.",
+    "explanation": "Giona 2:9 (Bản Dịch 2011) - Dù trong hoàn cảnh tuyệt vọng nhất, Giona tuyên bố 'Ơn cứu rỗi đến từ Đức Giê-hô-va'.",
     "language": "vi",
     "options": [
       "Phán xét",
@@ -213,11 +214,11 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giona 4:11 - Chúa thương mọi người, kể cả kẻ thù. Tình yêu Chúa không có ranh giới dân tộc.",
+    "explanation": "Giona 4:11 - Chúa thương xót thành Ni-ni-ve lớn, cho thấy tình yêu và lòng thương xót của Ngài vượt trên ranh giới dân tộc.",
     "language": "vi",
     "options": [
       "Ngươi ở đâu?",
-      "Ta lại không thương xót Ni-ni-ve với 120,000 người không phân biệt tay phải tay trái sao?",
+      "Còn ta, ta lại không thương xót thành Ni-ni-ve lớn kia sao, là thành có hơn mười hai vạn người không phân biệt được tay hữu và tay tả, và lại có nhiều thú vật?",
       "Ngươi có vui không?",
       "Ngươi có vâng lời không?"
     ],
@@ -232,6 +233,7 @@
     "book": "Jonah",
     "chapter": 4,
     "verseStart": 2,
+    "verseEnd": 2,
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Giona mô tả Chúa là gì khiến ông giận?",
@@ -259,11 +261,11 @@
     "verseStart": 9,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Giona nói với thủy thủ: \"Tôi kính sợ Đức Giê-hô-va là Đức Chúa Trời trên ___\"",
+    "content": "Giona nói với thủy thủ: \"Tôi là người Hê-bơ-rơ, và tôi kính sợ Đức Giê-hô-va, Đức Chúa Trời trên ___\"",
     "correctAnswer": [
       3
     ],
-    "explanation": "Dù đang trốn Chúa, Giona vẫn tuyên xưng Ngài là Đấng Sáng Tạo.",
+    "explanation": "Dù đang trốn Chúa, Giona vẫn tuyên xưng Ngài là Đấng Sáng Tạo trên trời, đã làm nên biển và đất khô.",
     "language": "vi",
     "options": [
       "Các thần",
@@ -340,7 +342,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giô-na 1:5-6 — 'Các thủy thủ đều sợ hãi, ai nấy kêu cầu thần mình... Người trưởng phái nói với Giô-na: Hỡi người ngủ kia, làm sao vậy? Khá chỗi dậy, hãy kêu cầu Đức Chúa Trời ngươi!'",
+    "explanation": "Giô-na 1:5-6 — 'Các thủy thủ đều sợ hãi, ai nấy kêu cầu thần mình, và quăng các đồ đạc trong tàu xuống biển, để cho nhẹ bớt đi... Người trưởng phái nói với Giô-na: Hỡi người ngủ kia, làm sao vậy? Khá chỗi dậy, hãy kêu cầu Đức Chúa Trời ngươi!' Hành động chính được hỏi là 'kêu cầu thần mình' (c.5), xảy ra đồng thời với việc ném đồ đạc, trước khi thuyền trưởng đánh thức Giô-na (c.6).",
     "language": "vi",
     "options": [
       "Cầu nguyện cùng Đức Giê-hô-va",

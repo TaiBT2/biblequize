@@ -5,13 +5,13 @@
     "verseStart": 5,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Trong Châm Ngôn 3:5-6, \"Hãy hết lòng tin cậy Đức Giê-hô-va, chớ nương cậy nơi sự thông sáng của con\". Từ \"tin cậy\" trong tiếng Hê-bơ-rơ có nghĩa gì?",
+    "content": "Trong Châm Ngôn 3:5, \"Hãy hết lòng nương cậy Đức Giê-hô-va, chớ nương cậy nơi sự thông sáng của con\". Từ \"nương cậy\" trong tiếng Hê-bơ-rơ có nghĩa gì?",
     "correctAnswer": [
       0
     ],
     "explanation": "Batah (בטח) có nghĩa là \"tin cậy, nương dựa\", không chỉ tin mà còn dựa vào hoàn toàn.",
     "language": "vi",
-    "verseEnd": 6,
+    "verseEnd": 5,
     "options": [
       "Batah - Tin cậy, nương dựa",
       "Aman - Tin tưởng",
@@ -33,11 +33,11 @@
     "verseStart": 10,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Trong Châm Ngôn 31:10, \"Người đàn bà tài đức ai sẽ tìm được?\" Từ \"tài đức\" trong tiếng Hê-bơ-rơ có nghĩa gì?",
+    "content": "Trong Châm Ngôn 31:10, \"Người đàn bà tài đức ai sẽ tìm được?\" Từ \"tài đức\" trong tiếng Hê-bơ-rơ có nghĩa gốc là gì?",
     "correctAnswer": [
       2
     ],
-    "explanation": "Chayil (חיל) có nghĩa là \"sức mạnh, quyền năng\", không chỉ tài năng mà còn có sức mạnh nội tại.",
+    "explanation": "Chayil (חיל) thường được dịch là 'tài đức' hoặc 'đức hạnh' trong bản tiếng Việt, nhưng nghĩa gốc là 'sức mạnh, quyền năng, giá trị', mô tả phẩm chất mạnh mẽ và đáng quý.",
     "language": "vi",
     "options": [
       "Chakam - Khôn ngoan",
@@ -142,17 +142,17 @@
     "verseStart": 17,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Châm ngôn 27:17 nói: \"Sắt mài sắt cho bén. Cũng vậy ___ mài giữa bạn hữu\"",
+    "content": "Châm ngôn 27:17 nói: \"Sắt mài sắt cho bén. Cũng vậy, ___ mài diện mạo bạn hữu mình.\"",
     "correctAnswer": [
-      1
+      0
     ],
-    "explanation": "Châm 27:17 - Sắt mài sắt cho bén, bạn bè tốt giúp nhau trưởng thành qua mối quan hệ chân thật.",
+    "explanation": "Châm 27:17 - Sắt mài sắt cho bén, cũng vậy, người ta mài diện mạo bạn hữu mình. Câu này dạy về sự tương tác giữa những người bạn chân thành giúp nhau trưởng thành và sắc bén hơn.",
     "language": "vi",
     "options": [
-      "Tâm lòng đối tâm lòng",
-      "Người này làm cho người kia bén",
-      "Lời nói đối lời nói",
-      "Mặt đối mặt"
+      "người ta",
+      "tâm lòng",
+      "lời nói",
+      "mặt"
     ],
     "tags": [
       "Cựu Ước",
@@ -359,7 +359,7 @@
     "verseStart": 12,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Châm 14:12: \"Có một con đường coi dường trước mặt người ta nhưng cuối cùng là đường ___\"",
+    "content": "Châm 14:12: 'Có một con đường coi dường chánh đáng cho loài người; nhưng cuối cùng nó thành ra nẻo ___'",
     "correctAnswer": [
       3
     ],
@@ -369,7 +369,7 @@
       "Thành công",
       "Bình an",
       "Giàu có",
-      "Sự chết"
+      "Nẻo sự chết"
     ],
     "tags": [
       "Cựu Ước",
@@ -495,7 +495,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Châm Ngôn 25:21-22 — 'Nếu kẻ thù nghịch ngươi có đói, hãy cho nó ăn; nếu có khát, hãy cho nó uống... vì như vậy ngươi đã chất than lửa đỏ trên đầu nó.'",
+    "explanation": "Châm Ngôn 25:21-22 — 'Nếu kẻ thù nghịch ngươi có đói, hãy cho nó ăn; nếu có khát, hãy cho nó uống... vì như vậy ngươi đã chất than lửa đỏ trên đầu nó, và Đức Giê-hô-va sẽ báo lại cho ngươi.'",
     "language": "vi",
     "options": [
       "Đuổi nó đi",
@@ -546,20 +546,20 @@
     "correctAnswer": [
       2
     ],
-    "content": "Theo Châm Ngôn 1:8-9, con phải nghe lời ai? Lời cha + mẹ là gì cho con?",
-    "explanation": "Châm Ngôn 1:8-9 — 'Hỡi con, hãy nghe lời khuyên dạy của cha, chớ bỏ phép tắc của mẹ con; vì ấy sẽ như một dây hoa trên đầu con, giống một vòng đeo nơi cổ con.' Cha + mẹ DAY DỖ = vinh dự cho con (mão + chuỗi). Sách Châm Ngôn được viết phần lớn từ vai trò CHA dạy CON.",
+    "content": "Theo Châm Ngôn 1:8-9, con phải nghe lời ai? Lời cha và mẹ được ví như gì cho con?",
+    "explanation": "Châm Ngôn 1:8-9 — 'Hỡi con, hãy nghe lời khuyên dạy của cha, chớ bỏ phép tắc của mẹ con; vì ấy sẽ như một dây hoa trên đầu con, giống một vòng đeo nơi cổ con.' Lời cha mẹ dạy dỗ là vinh dự, như mão hoa và vòng cổ cho con.",
     "language": "vi",
     "options": [
       "Nghe lời thầy giáo — là kiến thức",
-      "Nghe lời vua — là quyền lực (theo cách trình bày của text)",
-      "Nghe lời CHA RĂN BẢO + KHÔNG bỏ phép tắc của MẸ — là MÃO HOA TRÊN ĐẦU + DÂY CHUYỀN trên cổ",
-      "Nghe lời bạn — là vui (xét trong văn cảnh)"
+      "Nghe lời vua — là quyền lực",
+      "Nghe lời cha và không bỏ phép tắc của mẹ — là mão hoa trên đầu và vòng cổ",
+      "Nghe lời bạn — là niềm vui"
     ],
     "tags": [
       "Cựu Ước",
       "Châm Ngôn",
       "Thi ca",
-      "Nghe lời cha + phép tắc mẹ",
+      "Nghe lời cha mẹ",
       "Cơ bản"
     ]
   },
@@ -603,7 +603,7 @@
     "language": "vi",
     "options": [
       "Tâm hồn — sẽ được Chúa thương (theo cách trình bày của text)",
-      "TÀI VẬT + CỦA ĐẦU MÙA của hoa lợi — vựa lẫm được ĐẦY DẪY tột bậc + bồn ép NỨT vì RƯỢU MỚI",
+      "Tài vật và của đầu mùa của hoa lợi — vựa lẫm đầy dư dật và bồn ép tràn rượu mới",
       "Lời cầu nguyện — sẽ được lắng nghe",
       "Việc làm — sẽ được thưởng (xét trong văn cảnh)"
     ],
@@ -624,14 +624,14 @@
     "correctAnswer": [
       0
     ],
-    "content": "Theo Châm Ngôn 6:16-19, có 6 (thực ra 7) điều Đức Giê-hô-va GHÉT — ý GỚM GHIẾC. Câu này dùng cấu trúc gì?",
-    "explanation": "Châm Ngôn 6:16 — 'Có sáu điều Đức Giê-hô-va ghét, và bảy điều Ngài lấy làm gớm ghiếc.' DẠNG 'X / X+1' = thường gặp tại Châm Ngôn (cf. 30:15, 18, 21, 29). Đáp án (6:17-19): mắt KIÊU NGẠO + lưỡi DỐI TRÁ + tay đổ HUYẾT VÔ TỘI + lòng MƯU ĐỘC + chân CHẠY về điều ác + người làm CHỨNG GIAN nói DỐI + kẻ GIEO sự TRANH CẠNH giữa anh em.",
+    "content": "Theo Châm Ngôn 6:16, câu mở đầu liệt kê những điều Đức Giê-hô-va ghét được giới thiệu bằng câu nói nào?",
+    "explanation": "Châm Ngôn 6:16 chép: 'Có sáu điều Đức Giê-hô-va ghét, Và bảy điều Ngài lấy làm gớm ghiếc.' Đây là cấu trúc thơ văn X/X+1 (6/7) thường thấy trong sách Châm Ngôn (xem thêm 30:15, 18, 21, 29), nhấn mạnh sự đầy đủ và nghiêm trọng của danh sách.",
     "language": "vi",
     "options": [
-      "'CÓ SÁU ĐIỀU Đức Chúa Trời GHÉT, có BẢY ĐIỀU Ngài LẤY LÀM GỚM GHÉT'",
-      "'10 điều Chúa ghét' (xét trong văn cảnh)",
-      "'Tất cả mọi điều Chúa thích'",
-      "'Không gì Chúa ghét' (theo cách trình bày của text)"
+      "'Có sáu điều Đức Giê-hô-va ghét, Và bảy điều Ngài lấy làm gớm ghiếc.'",
+      "'Mười điều Đức Chúa Trời ghét.'",
+      "'Tất cả mọi điều Chúa đều thích.'",
+      "'Không có điều gì Chúa thực sự ghét.'"
     ],
     "tags": [
       "Cựu Ước",
@@ -813,7 +813,7 @@
       "Ai giấu được phước — xưng bị phạt",
       "Cả hai đều như nhau (xét trong văn cảnh)",
       "Ai GIẤU tội KHÔNG được THỊNH VƯỢNG — ai XƯNG + LÌA tội sẽ được THƯƠNG XÓT",
-      "Ai giấu được khôn — xưng bị quê"
+      "Ai giấu tội sẽ được khen — ai xưng tội sẽ bị hổ thẹn"
     ],
     "tags": [
       "Cựu Ước",
@@ -1061,13 +1061,14 @@
     "book": "Proverbs",
     "chapter": 7,
     "verseStart": 1,
+    "verseEnd": 27,
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "correctAnswer": [
       3
     ],
-    "content": "Theo Châm Ngôn 7:1-5, lý do CON phải ghi điều răn của CHA + giữ luật pháp như con NGƯƠI MẮT là để gì?",
-    "explanation": "Châm Ngôn 7:1-5 — 'Hỡi con, hãy giữ các lời ta, và giấu nơi lòng các mạng lịnh ta. Khá tuân thủ các mạng lịnh ta, thì con sẽ được sống... đặng giải cứu con khỏi dâm phụ, khỏi đàn bà ngoại đứng trau chuốt lời nói.' Luật pháp = HÀNG RÀO bảo vệ. Câu chuyện 7:6-23 — chàng trai khờ dại bị quyến rũ vào nhà dâm phụ, kết cuộc 'chết'. Lời cảnh cáo NGÀY NAY còn áp dụng.",
+    "content": "Theo Châm Ngôn 7:1-27, lý do CON phải ghi điều răn của CHA + giữ luật pháp như con NGƯƠI MẮT là để gì?",
+    "explanation": "Châm Ngôn 7:1-5 kêu gọi ghi nhớ và tuân giữ các điều răn. Các câu 6-23 kể câu chuyện minh họa về chàng trai khờ dại bị quyến rũ bởi người đàn bà ngoại tình. Các câu 24-27 kết luận và nêu rõ lý do: 'Bây giờ, hỡi các con, hãy nghe ta... chớ để lòng con xây về con đường nó... vì nó làm nhiều người bị thương tích ngã chết... nhà nó là con đường dẫn đến âm phủ.' Do đó, lý do chính là để được bảo vệ, tránh xa sự cám dỗ dẫn đến sự hủy diệt.",
     "language": "vi",
     "options": [
       "Để được giàu có (như được mô tả trong sách)",
@@ -1118,14 +1119,14 @@
     "correctAnswer": [
       2
     ],
-    "content": "Theo Châm Ngôn 10:12, lòng GHEN GHÉT làm gì? Lòng YÊU THƯƠNG làm gì với tội?",
-    "explanation": "Châm Ngôn 10:12 — 'Sự ghen ghét xui điều cãi lộn; song lòng yêu thương lấp hết các tội phạm.' KHÔNG nói yêu thương thuần ngu dại lờ đi tội — nói KHÔNG bị THẤM SÂU bởi tội nhỏ ngày qua ngày. 1 Phi-e-rơ 4:8 trích cùng câu. 'CHE TỘI' KHÔNG nghĩa CỘ TÚC tội ác — nghĩa BỎ QUA những lỗi nhỏ trong quan hệ.",
+    "content": "Theo Châm Ngôn 10:12, lòng thù ghét (ghen ghét) gây ra điều gì? Còn tình yêu thương làm gì với tội lỗi?",
+    "explanation": "Châm Ngôn 10:12 chép: 'Lòng thù ghét gây ra điều tranh cãi, còn tình yêu thương che lấp mọi tội phạm.' (BD2011). Sứ đồ Phi-e-rơ cũng trích dẫn ý này trong 1 Phi-e-rơ 4:8: 'Sự yêu thương che đậy vô số tội lỗi.'",
     "language": "vi",
     "options": [
-      "Cả 2 đều phơi bày tội (như được mô tả trong sách)",
-      "Cả 2 đều giấu tội (xét trong văn cảnh)",
-      "GHEN GHÉT khêu chuyện CÃI LẪY — YÊU THƯƠNG che CÁC TỘI lỗi",
-      "Cả 2 đều khen tội (theo cách trình bày của text)"
+      "Cả hai đều phơi bày tội lỗi",
+      "Cả hai đều giấu kín tội lỗi",
+      "Thù ghét gây tranh cãi — Yêu thương che lấp tội lỗi",
+      "Cả hai đều bào chữa cho tội lỗi"
     ],
     "tags": [
       "Cựu Ước",
@@ -1171,11 +1172,11 @@
       1
     ],
     "content": "Theo Châm Ngôn 11:14, KHÔNG có sự GIÚP đỡ thì dân thế nào? Có nhiều CỐ VẤN thì sao?",
-    "explanation": "Châm Ngôn 11:14 — 'Dân sự sa ngã tại không chánh trị; song nếu có nhiều mưu sĩ, bèn được yên ổn.' Cùng dạy 15:22 ('không có lời cố vấn, chương trình thất bại'), 24:6 ('chiến tranh được ưa khôn nhờ nhiều mưu sĩ'). Lãnh đạo MỘT MÌNH = nguy cơ; nhiều TIẾNG NÓI = an toàn.",
+    "explanation": "Châm Ngôn 11:14 — 'Dân sự sa ngã tại không chánh trị; song nếu có nhiều mưu sĩ, bèn được yên ổn.' (hoặc 'Dân không có sự hướng dẫn sẽ suy vong, Còn có nhiều cố vấn thì được an toàn.' - BD2011). Nguyên tắc: lãnh đạo một mình dễ thất bại, có nhiều cố vấn khôn ngoan thì được an toàn, yên ổn.",
     "language": "vi",
     "options": [
       "Có dân vẫn thịnh — cố vấn nhiều thì rối",
-      "DÂN sa NGÃ — sự CHIẾN THẮNG nằm ở NHIỀU MƯU SĨ",
+      "Dân sa ngã (suy vong) — được yên ổn (an toàn) nhờ nhiều mưu sĩ (cố vấn)",
       "Cả 2 đều vô nghĩa (xét trong văn cảnh)",
       "Dân yếu — cố vấn nhiều thì xấu"
     ],
@@ -1326,8 +1327,8 @@
     "correctAnswer": [
       0
     ],
-    "content": "Theo Châm Ngôn 14:29, ai chậm GIẬN thì sao? Ai NÓNG TÍNH?",
-    "explanation": "Châm Ngôn 14:29 — 'Kẻ nào chậm giận có thông sáng lớn; nhưng ai có tánh nóng nảy tôn lên sự điên cuồng.' GIẬN không tự nó là tội — nhưng MAU giận = thiếu KIỂM SOÁT bản thân. Cùng dạy 16:32 (chậm giận hơn người mạnh), Gia-cơ 1:19 (chậm giận). 'TÔN LÊN' = phơi bày, làm thấy rõ.",
+    "content": "Theo Châm Ngôn 14:29, người chậm giận thì thế nào? Còn người nóng tính thì sao?",
+    "explanation": "Châm Ngôn 14:29 — 'Kẻ nào chậm giận có thông sáng lớn; nhưng ai có tánh nóng nảy tôn lên sự điên cuồng.' Sự giận dữ tự nó không phải là tội, nhưng nóng giận nhanh chóng thể hiện sự thiếu kiểm soát bản thân. Cùng dạy trong Châm Ngôn 16:32 (chậm giận hơn người mạnh), Gia-cơ 1:19 (chậm giận). 'Tôn lên' có nghĩa là phơi bày, làm lộ rõ sự điên cuồng.",
     "language": "vi",
     "options": [
       "CHẬM nóng giận có sự THÔNG SÁNG LỚN; mau nóng giận tỏ ra điên DẠI",
@@ -1353,7 +1354,7 @@
       1
     ],
     "content": "Theo Châm Ngôn 15:33, sự KÍNH SỢ Đức Giê-hô-va dạy gì? Sự KHIÊM NHƯỜNG dẫn đến gì?",
-    "explanation": "Châm Ngôn 15:33 — 'Sự kính sợ Đức Giê-hô-va dạy dỗ điều khôn ngoan; sự khiêm nhượng đi trước sự tôn trọng.' Cấu trúc đối: KÍNH SỢ → KHÔN NGOAN; KHIÊM NHƯỜNG → VINH HIỂN. Nguyên tắc CHIA: muốn được nâng lên, phải CÚI XUỐNG TRƯỚC. Cùng dạy 18:12, 22:4. Chúa Jêsus dạy Lu-ca 14:11 ('ai khiêm hạ sẽ được nâng lên').",
+    "explanation": "Châm Ngôn 15:33 — 'Sự kính sợ Đức Giê-hô-va dạy dỗ điều khôn ngoan; Và sự khiêm nhường đi trước sự tôn trọng.' Cấu trúc đối: KÍNH SỢ → KHÔN NGOAN; KHIÊM NHƯỜNG → VINH HIỂN (tôn trọng). Nguyên tắc CHIA: muốn được nâng lên, phải CÚI XUỐNG TRƯỚC. Cùng dạy 18:12, 22:4. Chúa Jêsus dạy Lu-ca 14:11 ('ai khiêm hạ sẽ được nâng lên').",
     "language": "vi",
     "options": [
       "Dạy thần học — dẫn đến sách",
@@ -1457,7 +1458,7 @@
       3
     ],
     "content": "Theo Châm Ngôn 20:7, người công bình bước đi thế nào? Con cái sau người ra sao?",
-    "explanation": "Châm Ngôn 20:7 — 'Người công bình ăn ở cách thanh liêm; những con cháu người lấy làm có phước thay!' Tác động ĐA THẾ HỆ. CHA + MẸ sống công bình = phước cho CON CHÁU. KHÔNG đảm bảo con không có vấn đề — đảm bảo HẠT GIỐNG TỐT đã được gieo. Cùng tư tưởng Phục Truyền 7:9, Thi Thiên 112:1-2.",
+    "explanation": "Châm Ngôn 20:7 — 'Người công bình ăn ở cách thanh liêm; Các con trai người sau người đều được phước thay!' Tác động ĐA THẾ HỆ. CHA + MẸ sống công bình = phước cho CON CHÁU. KHÔNG đảm bảo con không có vấn đề — đảm bảo HẠT GIỐNG TỐT đã được gieo. Cùng tư tưởng Phục Truyền 7:9, Thi Thiên 112:1-2.",
     "language": "vi",
     "options": [
       "Họ đi mau — con cái khôn (theo cách trình bày của text)",
@@ -1534,13 +1535,13 @@
     "correctAnswer": [
       2
     ],
-    "content": "Theo Châm Ngôn 23:4-5, ngươi CHỚ tốn sức để LÀM GIÀU; vì GIÀU CÓ giống gì?",
-    "explanation": "Châm Ngôn 23:4-5 — 'Con chớ chịu vất vả đặng làm giàu; khá thôi nhờ cậy khôn ngoan riêng của con. Con há liếc mắt vào sự giàu có sao? Nó đã chẳng còn nữa rồi; vì nó quả hẳn có mọc cánh, và bay lên trên trời như chim ưng vậy.' Của cải CÓ THỂ BAY ĐI — không bền. KHÔNG nói cấm làm việc chăm — nói cấm CỐ GẮNG ĐIÊN CUỒNG để giàu (workaholism, sự tham lam).",
+    "content": "Theo Châm Ngôn 23:4-5, ngươi chớ tốn sức để làm giàu; vì sự giàu có được ví như điều gì?",
+    "explanation": "Châm Ngôn 23:4-5 — 'Chớ chịu mệt nhọc vì muốn được giàu; hãy thôi đi, khôn ngoan con. Con há liếc mắt vào của cải sao? Nó đã chẳng còn nữa rồi; vì nó quả hẳn có mọc cánh, và bay lên trên trời như chim ưng.' (Kinh Thánh Tiếng Việt 1925). Sự giàu có có thể 'mọc cánh bay đi' — không bền vững. Lời khuyên không cấm làm việc chăm chỉ, mà cảnh báo chống lại sự theo đuổi điên cuồng để làm giàu (workaholism, tham lam).",
     "language": "vi",
     "options": [
-      "Giống đá — bền vững (xét trong văn cảnh)",
+      "Giống đá — bền vững",
       "Giống cây — phát triển chậm",
-      "Giống chim BAY MAU LÊN trời — của giàu sẽ MỌC CÁNH bay đi",
+      "Giống chim bay lên trời — của cải sẽ mọc cánh bay đi",
       "Giống nước chảy — ổn định"
     ],
     "tags": [
@@ -1587,7 +1588,7 @@
       0
     ],
     "content": "Theo Châm Ngôn 28:1, kẻ ÁC CHẠY trốn dù không ai đuổi — người CÔNG BÌNH thế nào?",
-    "explanation": "Châm Ngôn 28:1 — 'Kẻ ác chạy trốn dầu không ai đuổi theo; nhưng người công bình mãnh dõng như một sư tử.' Tâm lý cảm giác CỦA TỘI: TỘI tạo nỗi SỢ HÃI nội tâm — kẻ ác CHẠY khỏi cái không có. Người công bình KHÔNG có gì phải sợ → DẠN DĨ. Cùng dạy 1 Giăng 4:18 ('sự yêu thương trọn vẹn cất bỏ sự sợ').",
+    "explanation": "Châm Ngôn 28:1 — 'Kẻ ác chạy trốn dầu không ai đuổi theo; nhưng người công bình mạnh dạn như sư tử.' Tâm lý cảm giác CỦA TỘI: TỘI tạo nỗi SỢ HÃI nội tâm — kẻ ác CHẠY khỏi cái không có. Người công bình KHÔNG có gì phải sợ → DẠN DĨ. Cùng dạy 1 Giăng 4:18 ('sự yêu thương trọn vẹn cất bỏ sự sợ').",
     "language": "vi",
     "options": [
       "Người công bình DẠN DĨ NHƯ SƯ TỬ con",
@@ -1612,14 +1613,14 @@
     "correctAnswer": [
       3
     ],
-    "content": "Theo Châm Ngôn 2:16-19, sự khôn ngoan sẽ giải cứu con khỏi DÂM PHỤ — ai vào nhà nàng thì sao?",
+    "content": "Theo Châm Ngôn 2:16-19, sự khôn ngoan sẽ giải cứu con khỏi dâm phụ — ai vào nhà nàng thì sao?",
     "explanation": "Châm Ngôn 2:16-19 — 'Lại để giải cứu con khỏi dâm phụ, khỏi đàn bà ngoại đứng trau chuốt lời nói; nàng lìa bỏ bạn của buổi đang thì, và quên sự giao ước của Đức Chúa Trời mình; vì nhà nó xiêu qua sự chết, và con đường nó dẫn đến chốn kẻ thác; chẳng ai đi đến nàng mà trở về, hoặc được tới các lối sự sống.' Hậu quả ngoại tình KHÔNG hồi phục được. Cùng cảnh báo Châm 5:1-14, 6:32-35, 7.",
     "language": "vi",
     "options": [
-      "Sẽ giàu có (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phần đoạn liên quan)",
-      "Sẽ học khôn (theo cách trình bày của text) (như văn bản ghi rõ)",
-      "Sẽ được phép lạ (như được mô tả trong sách) (xét theo nội dung gốc)",
-      "KHÔNG MỘT KẺ NÀO trở lại — cũng KHÔNG HỀ ĐẾN ĐƯỢC nẻo SỰ SỐNG; nhà nàng dẫn xuống SỰ CHẾT — đường nàng dẫn đến CÁC ÂM HỒN"
+      "Sẽ giàu có",
+      "Sẽ học khôn",
+      "Sẽ được phép lạ",
+      "Không một kẻ nào trở lại, cũng không đến được nẻo sự sống"
     ],
     "tags": [
       "Cựu Ước",
@@ -1720,10 +1721,10 @@
     "explanation": "Châm Ngôn 8:22-31 — 'Trong buổi Đức Giê-hô-va khởi cuộc tạo hóa, về thời thái cổ, trước khi chưa dựng nên muôn vật thì Ngài đã có ta. Ta đã được lập từ trước vô cùng... Khi Ngài lập các từng trời, ta đã ở đó... Ta ở bên Ngài làm thợ cái, hằng ngày ta là sự khoái lạc Ngài, và thường thường vui vẻ trước mặt Ngài.' KHÔN NGOAN nhân hóa = bạn đồng hành Đức Chúa Trời tại sáng tạo. Cô-lô-se 1:15-17 áp dụng cho Christ. Tranh luận thần học: KHÔN NGOAN = Christ trước nhập thể? Hay nhân hóa thuộc tính?",
     "language": "vi",
     "options": [
-      "Khi Chúa lập đất (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phần đoạn liên quan)",
-      "Đức Chúa Trời CÓ MÌNH (chiếm hữu) tôi LÚC KHỞI ĐẦU công việc Ngài — TRƯỚC SÁNG THẾ — tôi vui vẻ NHƯ THỢ THỦ CÔNG, vui mừng trước mặt Ngài + đặc biệt nơi loài người",
-      "Khi Chúa gọi Áp-ra-ham (theo cách trình bày của text) (xét theo nội dung gốc) (xét trong văn cảnh)",
-      "Khi Chúa cứu Y-sơ-ra-ên (như được mô tả trong sách) (như văn bản ghi rõ) (theo bối cảnh đoạn này)"
+      "Khi Chúa lập đất",
+      "Từ buổi đầu công việc sáng tạo của Chúa, trước khi dựng nên muôn vật",
+      "Khi Chúa gọi Áp-ra-ham",
+      "Khi Chúa cứu Y-sơ-ra-ên ra khỏi Ai Cập"
     ],
     "tags": [
       "Cựu Ước",
@@ -1748,7 +1749,7 @@
     "options": [
       "Tìm tiền — bị nghèo (như được mô tả trong sách) (như văn bản ghi rõ) (theo bối cảnh đoạn này)",
       "Tìm sức — bị yếu (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phần đoạn liên quan)",
-      "TÌM KHÔN NGOAN = TÌM SỰ SỐNG + được ƠN của Đức Giê-hô-va; ai PHẠM tội với khôn ngoan = LÀM TỔN HẠI LINH HỒN mình; mọi kẻ GHÉT khôn ngoan = YÊU SỰ CHẾT",
+      "Tìm khôn ngoan là tìm sự sống; phạm tội với khôn ngoan là hại linh hồn mình",
       "Tìm danh — bị quê (theo cách trình bày của text) (xét theo nội dung gốc) (xét trong văn cảnh)"
     ],
     "tags": [
@@ -1847,13 +1848,13 @@
       2
     ],
     "content": "Theo Châm Ngôn 17:5, ai CHẾ NHẠO kẻ NGHÈO làm gì với Đấng TẠO HÓA? Ai VUI MỪNG về TAI HỌA của người khác?",
-    "explanation": "Châm Ngôn 17:5 — 'Ai nhạo báng người bần cùng sỉ nhục Đấng tạo hóa mình; kẻ vui mừng vì tai họa sẽ chẳng được thoát khỏi bị phạt.' Mở rộng 14:31. CƯỜI ai gặp tai họa = nguyên tắc gặt như gieo: tai họa ấy SẼ ĐẾN với người chế nhạo. Kết hợp tôn trọng PHẨM GIÁ tất cả mọi người (vì là HÌNH ẢNH ĐỨC CHÚA TRỜI).",
+    "explanation": "Châm Ngôn 17:5 — 'Ai nhạo báng người bần cùng sỉ nhục Đấng tạo hóa mình; kẻ vui mừng vì tai họa sẽ chẳng được thoát khỏi bị phạt.' Xem thêm Châm Ngôn 14:31. Cười nhạo người gặp tai họa thể hiện nguyên tắc gặt như gieo: tai họa ấy sẽ đến với người chế nhạo. Câu này kết hợp với việc tôn trọng phẩm giá tất cả mọi người vì họ là hình ảnh của Đức Chúa Trời.",
     "language": "vi",
     "options": [
-      "Chế nhạo nghèo = thực tế; vui tai họa = đáng (theo trình tự câu chuyện)",
-      "Cả 2 đều bình thường (theo cách trình bày của text)",
-      "CHẾ NHẠO kẻ NGHÈO = SỈ NHỤC ĐẤNG TẠO HÓA của họ; ai VUI VẺ về TAI HỌA — sẽ KHÔNG khỏi BỊ HÌNH PHẠT",
-      "Cả 2 đều khôn (xét trong văn cảnh) (như được mô tả trong sách)"
+      "Chế nhạo người nghèo là thực tế; vui về tai họa của người khác là đáng đời.",
+      "Cả hai hành động đều được Kinh Thánh trình bày là bình thường.",
+      "CHẾ NHẠO kẻ NGHÈO là SỈ NHỤC Đấng Tạo Hóa của họ; ai VUI MỪNG về TAI HỌA sẽ KHÔNG thoát khỏi hình phạt.",
+      "Cả hai hành động đều được xem là khôn ngoan trong văn cảnh sách Châm Ngôn."
     ],
     "tags": [
       "Cựu Ước",
@@ -1876,9 +1877,9 @@
     "explanation": "Châm Ngôn 19:21 — 'Trong lòng loài người có nhiều mưu kế; song ý chỉ của Đức Giê-hô-va sẽ thành được.' Hài hòa với 16:9 (người tính - Chúa định bước), 21:1 (lòng vua trong tay Chúa). LOÀI NGƯỜI tự do tính kế — Đức Chúa Trời TỂ TRỊ kết quả. Câu này AN ỦI: KẾ Chúa SẼ THÀNH dù dù người làm gì.",
     "language": "vi",
     "options": [
-      "Cảm xúc — tâm trạng đứng vững (theo cách trình bày của text)",
-      "Ý tưởng — tâm trí đứng vững (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Tham vọng — kế hoạch đứng vững (như được mô tả trong sách)",
+      "Cảm xúc — tâm trạng đứng vững",
+      "Ý tưởng — tâm trí đứng vững",
+      "Tham vọng — kế hoạch đứng vững",
       "Lòng người tính TOÁN nhiều mưu kế (kế hoạch); nhưng CHỈ duy MỤC ĐÍCH (CHƯƠNG TRÌNH) của ĐỨC GIÊ-HÔ-VA mới ĐỨNG VỮNG"
     ],
     "tags": [
@@ -1903,9 +1904,9 @@
     "language": "vi",
     "options": [
       "AI có thể nói: 'TA ĐÃ LÀM SẠCH LÒNG TA, TA SẠCH KHỎI TỘI LỖI TA' — ngụ ý KHÔNG ai có thể tự khẳng định",
-      "Tôi đã làm sạch (theo cách trình bày của text) (xét theo nội dung gốc)",
-      "Tôi đã chế ngự (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Tôi đã hoàn hảo (như được mô tả trong sách) (như văn bản ghi rõ)"
+      "Tôi đã làm sạch lòng mình khỏi tội lỗi.",
+      "Tôi đã chế ngự được tội lỗi trong lòng.",
+      "Tôi đã đạt đến sự hoàn hảo, không còn tội lỗi."
     ],
     "tags": [
       "Cựu Ước",
@@ -1924,14 +1925,14 @@
     "correctAnswer": [
       1
     ],
-    "content": "Theo Châm Ngôn 21:13, ai BỊT TAI trước tiếng kêu của KẺ NGHÈO thì sao?",
-    "explanation": "Châm Ngôn 21:13 — 'Ai bưng tai không khứng nghe tiếng kêu la của người nghèo khổ, người đó cũng sẽ kêu la mà chẳng có ai đáp lại.' GẶT NHƯ GIEO. Nguyên tắc PHỔ QUÁT: bạn KHÔNG nghe người khác — không ai nghe bạn. Mat 7:2 cùng tư tưởng. Áp dụng đặc biệt cho người NGHÈO — vì họ KHÔNG có quyền lực.",
+    "content": "Theo Châm Ngôn 21:13, ai bịt tai trước tiếng kêu của kẻ nghèo thì sẽ thế nào?",
+    "explanation": "Châm Ngôn 21:13 — 'Ai bưng tai không khứng nghe tiếng kêu la của người nghèo khổ, người đó cũng sẽ kêu la mà chẳng có ai đáp lại.' Nguyên tắc phổ quát: bạn không nghe người khác — không ai nghe bạn. Mat 7:2 cùng tư tưởng. Áp dụng đặc biệt cho người nghèo — vì họ không có quyền lực.",
     "language": "vi",
     "options": [
-      "Sẽ được khen (xét trong văn cảnh)",
-      "CŨNG sẽ KÊU LA — nhưng KHÔNG được NGHE",
-      "Sẽ được phước (như được mô tả trong sách)",
-      "Sẽ được giàu (theo cách trình bày của text)"
+      "Sẽ được người đời khen ngợi",
+      "Cũng sẽ kêu la nhưng không được nghe",
+      "Sẽ nhận được phước lành từ Đức Chúa Trời",
+      "Sẽ trở nên giàu có"
     ],
     "tags": [
       "Cựu Ước",
@@ -1954,10 +1955,10 @@
     "explanation": "Châm Ngôn 21:30-31 — 'Chẳng có sự khôn ngoan nào, sự thông minh nào, hay là mưu kế nào, mà chống địch Đức Giê-hô-va được. Ngựa sắm sẵn về ngày tranh chiến; nhưng sự thắng trận thuộc về Đức Giê-hô-va.' KHÔNG có chiến lược, vũ khí, hoặc tài năng nào ĐỦ ĐỂ chống lại Chúa. Cùng tư tưởng Thi 33:16-17, 1 Sa-mu-ên 17:47 (Đa-vít với Gô-li-át).",
     "language": "vi",
     "options": [
-      "Khôn ngoan loài người — ngựa quyết định (theo cách trình bày của text) (xét theo nội dung gốc)",
-      "Khôn ngoan tổ phụ — sức khỏe quyết định (như được mô tả trong sách) (như văn bản ghi rõ)",
+      "Khôn ngoan loài người — ngựa quyết định thắng bại.",
+      "Khôn ngoan tổ phụ — sức khỏe quyết định thắng bại.",
       "KHÔNG CÓ khôn ngoan nào, KHÔNG sự thông sáng, KHÔNG mưu kế nào CHỐNG LẠI Đức Giê-hô-va; ngựa được sắm sửa sẵn cho chiến tranh — NHƯNG SỰ ĐẮC THẮNG là từ ĐỨC GIÊ-HÔ-VA",
-      "Khôn ngoan vua — số phận quyết định (xét trong văn cảnh) (theo trình tự câu chuyện)"
+      "Khôn ngoan vua — số phận quyết định thắng bại."
     ],
     "tags": [
       "Cựu Ước",
@@ -1980,9 +1981,9 @@
     "explanation": "Châm Ngôn 22:28 — 'Chớ dời đi các mộc giới hạn cũ, mà tổ phụ con đã dựng.' MỘC GIỚI = bia ranh đất. Trong xã hội nông nghiệp Y-sơ-ra-ên, mộc giới = ranh quyền sở hữu thừa kế từ Chúa. DỜI = ăn cắp. Phục Truyền 19:14 cùng dạy. Còn nghĩa thực: CHỚ thay đổi giáo lý / nguyên tắc đạo đức tổ phụ ĐÃ THIẾT LẬP.",
     "language": "vi",
     "options": [
-      "Chớ dời cây (xét trong văn cảnh)",
-      "Chớ dời sông (như được mô tả trong sách)",
-      "Chớ dời nhà (theo cách trình bày của text)",
+      "Chớ dời cây cối trong đất",
+      "Chớ dời dòng sông chảy qua",
+      "Chớ dời ngôi nhà của người lân cận",
       "Chớ dời MỐC GIỚI HẠN (BIA RANH GIỚI) cũ mà TỔ PHỤ ngươi đã DỰNG"
     ],
     "tags": [
@@ -2002,14 +2003,14 @@
     "correctAnswer": [
       0
     ],
-    "content": "Theo Châm Ngôn 24:11-12, ai BỊ DẪN ĐẾN SỰ CHẾT mà ngươi CỨU được — ngươi PHẢI làm gì?",
-    "explanation": "Châm Ngôn 24:11-12 — 'Hãy giải cứu kẻ bị đùa đến sự chết, và chớ chối rỗi cho người đi xiêu tó tới chốn hình khổ. Nếu con nói: Chúng tôi chẳng biết gì đến; thì Đấng cân nhắc lòng người há chẳng xem xét điều ấy sao? Và Đấng giữ linh hồn con, há không biết đến ư? Chớ thì Ngài sẽ chẳng báo mỗi người tùy theo công việc họ làm sao?' KHÔNG có ngoại lệ 'không biết'. Im lặng = nghiêm trọng.",
+    "content": "Theo Châm Ngôn 24:11-12, nếu có người bị dẫn đến sự chết, bạn phải làm gì?",
+    "explanation": "Châm Ngôn 24:11-12 dạy: 'Hãy giải cứu kẻ bị đùa đến sự chết, và chớ chối rỗi cho kẻ đi xiêu tó tới chốn hình khổ. Nếu con nói: Chúng tôi chẳng biết gì đến; thì Đấng cân nhắc lòng người há chẳng xem xét điều ấy sao? Và Đấng giữ linh hồn con, há không biết đến ư? Chớ thì Ngài sẽ chẳng báo mỗi người tùy theo công việc họ làm sao?' Lời Chúa nhấn mạnh trách nhiệm hành động để giải cứu, không được viện cớ 'không biết'.",
     "language": "vi",
     "options": [
-      "Phải GIẢI THOÁT họ + người sắp BỊ GIẾT — đừng ngần ngại; nếu ngươi nói 'CHÚNG TÔI KHÔNG BIẾT' — Đấng cân QUẢN TÂM CON đã CHẲNG biết SAO?",
-      "Bỏ mặc — vì là số phận (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Cầu nguyện cho họ — không cần làm gì (như được mô tả trong sách) (xét theo nội dung gốc)",
-      "Giấu mình — kẻo bị liên lụy (theo cách trình bày của text) (như văn bản ghi rõ)"
+      "Giải cứu họ; không được thờ ơ hoặc nói 'chúng tôi không biết' vì Chúa thấu hiểu và sẽ báo ứng.",
+      "Bỏ mặc họ vì đó là số phận đã định.",
+      "Chỉ cần cầu nguyện cho họ mà không cần hành động cụ thể.",
+      "Tránh né để không bị liên lụy."
     ],
     "tags": [
       "Cựu Ước",
@@ -2032,10 +2033,10 @@
     "explanation": "Châm Ngôn 27:6 — 'Bạn hữu làm cho thương tích, ấy bởi lòng thành tín; còn sự hôn hít của kẻ ghen ghét lấy làm giả dối.' NGHỊCH LÝ: ĐAU từ BẠN > NGỌT từ KẺ THÙ. Bạn THẬT nói LẼ THẬT dù đau lòng. Cùng tư tưởng 27:5 ('quở trách công khai TỐT hơn YÊU thầm kín'). Liên kết với Giu-đa hôn Christ (Mat 26:48-49).",
     "language": "vi",
     "options": [
-      "Cả 2 đều khen (xét trong văn cảnh)",
+      "Cả bạn hữu và kẻ thù đều dùng lời khen ngợi.",
       "Bạn hữu LÀM thương tích THÀNH TÍN — nhưng kẻ THÙ HÔN nhiều mà DỐI",
-      "Cả 2 đều mắng (theo cách trình bày của text)",
-      "Cả 2 đều im lặng (như được mô tả trong sách)"
+      "Cả bạn hữu và kẻ thù đều dùng lời quở trách.",
+      "Cả bạn hữu và kẻ thù đều không nói gì."
     ],
     "tags": [
       "Cựu Ước",
@@ -2058,10 +2059,10 @@
     "explanation": "Châm Ngôn 30:7-9 — 'Tôi đã cầu Chúa hai điều; xin chớ từ chối tôi, trước khi tôi chết: Xin dang xa khỏi tôi sự lường gạt và lời dối trá; chớ cho tôi nghèo khổ, hoặc sự giàu sang; hãy nuôi tôi đủ vật thực cần dùng, e khi no đủ, tôi từ chối Chúa, mà rằng: Đức Giê-hô-va là ai? Và lại kẻo e tôi bị nghèo khổ, ăn trộm cắp, và làm ô danh của Đức Chúa Trời tôi chăng.' Lời cầu nguyện kỳ lạ: KHÔNG xin nhiều tiền — xin VỪA ĐỦ.",
     "language": "vi",
     "options": [
-      "Sống lâu + giàu có (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phần đoạn liên quan) (theo trình tự câu chuyện)",
-      "Khôn ngoan + sức mạnh (theo cách trình bày của text) (xét theo nội dung gốc) (xét trong văn cảnh) (theo cách trình bày của text)",
-      "(1) DỜI XA tôi sự GIAN DỐI + LỜI DỐI TRÁ; (2) ĐỪNG cho tôi SỰ NGHÈO khổ CŨNG ĐỪNG cho tôi SỰ GIÀU CÓ — chỉ NUÔI tôi với LƯƠNG THỰC cần dùng — kẻo NO QUÁ tôi PHỦ NHẬN Chúa, hoặc NGHÈO QUÁ tôi ĂN TRỘM + xúc phạm DANH Chúa",
-      "Vinh quang + danh tiếng (như được mô tả trong sách) (như văn bản ghi rõ) (theo bối cảnh đoạn này) (như được mô tả trong sách)"
+      "Sống lâu và giàu có",
+      "Khôn ngoan và sức mạnh",
+      "(1) Dời xa sự gian dối và lời dối trá; (2) Đừng cho tôi nghèo khổ cũng đừng cho tôi giàu có, chỉ nuôi tôi lương thực cần dùng",
+      "Vinh quang và danh tiếng"
     ],
     "tags": [
       "Cựu Ước",
@@ -2081,13 +2082,13 @@
       3
     ],
     "content": "Theo Châm Ngôn 31:30, sự DUYÊN DÁNG là gì? SẮC ĐẸP là gì? Còn NGƯỜI NỮ nào đáng được KHEN?",
-    "explanation": "Châm Ngôn 31:30 — 'Duyên là giả dối, sắc lại hư không; nhưng người nữ nào kính sợ Đức Giê-hô-va sẽ được khen ngợi.' KẾT của thi 'NGƯỜI VỢ TÀI ĐỨC' (31:10-31). KHÔNG nói DUYÊN + SẮC là xấu — nói chúng KHÔNG BỀN. Đặc tính BỀN là KÍNH SỢ Chúa. Cùng dạy 1 Phi-e-rơ 3:3-4 (vẻ đẹp KHÔNG hư mất là tâm hồn dịu).",
+    "explanation": "Châm Ngôn 31:30 — 'Duyên là giả dối, sắc lại hư không; nhưng người nữ nào kính sợ Đức Giê-hô-va sẽ được khen ngợi.' Đây là kết luận của bài thơ về 'NGƯỜI VỢ TÀI ĐỨC' (31:10-31). Câu này không nói duyên dáng và sắc đẹp là xấu, nhưng nhấn mạnh chúng KHÔNG BỀN VỮNG. Đặc tính đáng khen ngợi và bền vững là lòng kính sợ Chúa. Giáo lý tương đồng được tìm thấy trong 1 Phi-e-rơ 3:3-4.",
     "language": "vi",
     "options": [
-      "Cả 2 đều quan trọng (như được mô tả trong sách) (như văn bản ghi rõ)",
-      "Cả 2 đều bền vững (theo cách trình bày của text) (xét theo nội dung gốc)",
-      "Cả 2 đều giả tạo (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "DUYÊN DÁNG là DỐI TRÁ + SẮC ĐẸP là HƯ KHÔNG; nhưng người NỮ KÍNH SỢ ĐỨC GIÊ-HÔ-VA sẽ được KHEN NGỢI"
+      "Cả hai đều quan trọng như nhau đối với một người nữ.",
+      "Cả hai đều là phẩm chất bền vững và đáng tin cậy.",
+      "Cả hai đều là những điều tốt đẹp và chân thật.",
+      "DUYÊN DÁNG là DỐI TRÁ, SẮC ĐẸP là HƯ KHÔNG; nhưng người NỮ KÍNH SỢ ĐỨC GIÊ-HÔ-VA sẽ được KHEN NGỢI."
     ],
     "tags": [
       "Cựu Ước",

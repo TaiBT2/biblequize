@@ -5,11 +5,11 @@
     "verseStart": 20,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Phao-lô nói: \"Tôi đã bị đóng đinh vào thập tự giá với Đấng Christ, mà tôi sống, không phải là tôi sống nữa, nhưng ___\"",
+    "content": "Phao-lô nói: \"Tôi đã bị đóng đinh vào thập tự giá với Đấng Christ, mà tôi sống, không phải là tôi sống nữa, nhưng ___ sống trong tôi\"",
     "correctAnswer": [
       2
     ],
-    "explanation": "Ga-la-ti 2:20 - Đời sống Cơ Đốc là để Đấng Christ sống qua chúng ta, không phải tự lực mình.",
+    "explanation": "Ga-la-ti 2:20 - Đời sống Cơ Đốc là để Đấng Christ sống qua chúng ta, không phải tự lực mình. Câu Kinh Thánh đầy đủ xác nhận: '...nhưng Đấng Christ sống trong tôi'.",
     "language": "vi",
     "options": [
       "Tôi được tự do",
@@ -34,16 +34,16 @@
     "type": "multiple_choice_single",
     "content": "Trái của Thánh Linh bắt đầu bằng gì?",
     "correctAnswer": [
-      2
+      0
     ],
     "explanation": "Ga 5:22 - Trái Thánh Linh: yêu thương, vui mừng, bình an, nhịn nhục, nhân từ, hiền lành, trung tín, mềm mại, tiết độ.",
     "language": "vi",
     "verseEnd": 23,
     "options": [
-      "Nhịn nhục",
-      "Vui mừng",
       "Yêu thương",
-      "Bình an"
+      "Vui mừng",
+      "Bình an",
+      "Nhịn nhục"
     ],
     "tags": [
       "Tân Ước",
@@ -91,7 +91,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Tự do trong Chúa không phải để sống bừa bãi mà để sống cho Chúa và yêu thương.",
+    "explanation": "Ga 5:1 - Đấng Christ đã giải phóng chúng ta để chúng ta được tự do, không còn chịu ách nô lệ của luật pháp hay tội lỗi.",
     "language": "vi",
     "options": [
       "Làm việc nhiều hơn",
@@ -258,7 +258,7 @@
     "explanation": "Đóng đinh xác thịt = quyết định dứt khoát từ bỏ đời sống theo xác thịt.",
     "language": "vi",
     "options": [
-      "Đã đóng đinh xác thịt với dục dâm và mê tham trên thập tự giá",
+      "Đã đóng đinh xác thịt cùng với các dục vọng và ham muốn của nó trên thập tự giá.",
       "Bỏ qua",
       "Ẩn giấu",
       "Từ chối"
@@ -286,7 +286,7 @@
     "language": "vi",
     "verseEnd": 7,
     "options": [
-      "Nhanh chóng bỏ Phúc Âm thật để theo phúc âm khác",
+      "Vội bỏ Đấng gọi bởi ơn Đức Chúa Jêsus Christ để theo tin lành khác",
       "Không cầu nguyện",
       "Phạm tội",
       "Bỏ nhà thờ"
@@ -306,7 +306,7 @@
     "verseStart": 11,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Ga 3:11: \"Không ai được xưng công bình trước Chúa bởi ___ ấy là điều hiển nhiên\"",
+    "content": "Ga 3:11: \"Không ai được xưng công bình trước mặt Đức Chúa Trời bởi ___ ấy là điều hiển nhiên\"",
     "correctAnswer": [
       2
     ],
@@ -554,7 +554,7 @@
     "options": [
       "Làm vui lòng các sứ đồ khác (như được mô tả trong sách)",
       "Làm vui lòng người Do Thái (theo cách trình bày của text)",
-      "Nếu còn làm vui lòng LOÀI NGƯỜI thì ông không phải tôi tớ Christ — nay tìm vui lòng Đức Chúa Trời",
+      "Đức Chúa Trời (vì nếu còn làm vui lòng loài người thì ông không phải tôi tớ Đấng Christ)",
       "Làm vui lòng vợ con (xét trong văn cảnh)"
     ],
     "tags": [
@@ -581,7 +581,7 @@
       "Đừng dùng để cắt bì (xét trong văn cảnh)",
       "Đừng dùng để giữ luật (theo cách trình bày của text)",
       "Đừng dùng để tranh cãi (như được mô tả trong sách)",
-      "Đừng dùng làm dịp cho XÁC THỊT — hãy LẤY TÌNH YÊU THƯƠNG mà làm tôi mọi cho nhau"
+      "Làm dịp cho xác thịt"
     ],
     "tags": [
       "Tân Ước",
@@ -604,7 +604,7 @@
     "explanation": "Ga-la-ti 6:2 — 'Hãy mang lấy gánh nặng cho nhau, như vậy anh em sẽ làm trọn luật pháp của Đấng Christ.' 'LUẬT CHRIST' = luật yêu thương (5:14). Trớ trêu: Phao-lô vừa bài xích LUẬT (Môi-se), nay đặt 'luật Christ'. Khác biệt: luật cũ ngoại tại; luật Christ trong lòng (Hê-bơ-rơ 8:10).",
     "language": "vi",
     "options": [
-      "Hãy MANG LẤY GÁNH NẶNG CHO NHAU — như vậy làm trọn LUẬT của Đấng Christ",
+      "Mang lấy gánh nặng cho nhau",
       "Hãy bỏ mặc nhau (xét trong văn cảnh)",
       "Hãy cạnh tranh với nhau (như được mô tả trong sách)",
       "Hãy phán xét nhau (theo cách trình bày của text)"
@@ -631,7 +631,7 @@
     "language": "vi",
     "options": [
       "Chỉ người nhà — đặc biệt cha mẹ",
-      "Mọi người — đặc biệt anh em đồng đức tin (người nhà đức tin)",
+      "Mọi người, nhất là anh em trong đức tin",
       "Chỉ tín hữu — đặc biệt mục sư",
       "Chỉ người nghèo — đặc biệt mẹ góa"
     ],
@@ -658,7 +658,7 @@
     "options": [
       "Là môn sinh khiêm hạ của Ga-ma-li-ên — sống trong sạch (như được mô tả trong sách)",
       "Là người buôn vải tại Tạt-sơ — không tham gia tôn giáo (theo trình tự câu chuyện)",
-      "Là người BẮT BỚ Hội Thánh QUÁ HẾT MỨC, tìm cách hủy diệt — TIẾN BỘ HƠN nhiều bạn cùng tuổi trong dân — nhiệt thành cho TRUYỀN THỐNG TỔ PHỤ",
+      "Là người nhiệt thành bắt bớ và phá tán Hội Thánh, tiến bộ hơn nhiều người cùng tuổi trong Do Thái giáo.",
       "Là tù nhân chịu bị bắt vì tội (xét trong văn cảnh) (theo cách trình bày của text)"
     ],
     "tags": [
@@ -685,7 +685,7 @@
       "Đi gặp 12 sứ đồ tại Giê-ru-sa-lem ngay lập tức",
       "Đi đến Sa-ma-ri (theo cách trình bày của text)",
       "Đi đến Đa-mách (xét trong văn cảnh) (như được mô tả trong sách)",
-      "KHÔNG hỏi loài người, KHÔNG lên Giê-ru-sa-lem để gặp các sứ đồ trước — đi qua A-RA-BI rồi quay về Đa-mách"
+      "Không lên Giê-ru-sa-lem, mà đi qua xứ A-ra-bi rồi trở về Đa-mách"
     ],
     "tags": [
       "Tân Ước",
@@ -708,7 +708,7 @@
     "explanation": "Ga-la-ti 1:23 — 'Chỉn các hội thánh đó có nghe rằng: Người đã bắt bớ chúng ta ngày trước, nay đương truyền đạo mà lúc bấy giờ người cố sức phá.' Một câu rất CẢM ĐỘNG — kẻ thù trở thành người công bố. 1:24 — họ ngợi khen Đức Chúa Trời TRONG Phao-lô. Bằng chứng phép lạ thay đổi của ân điển.",
     "language": "vi",
     "options": [
-      "'Người trước kia BẮT BỚ chúng ta, nay rao truyền ĐỨC TIN mà người đã từng tìm cách phá hoại'",
+      "'Người trước kia bắt bớ chúng ta, nay đang rao truyền đức tin'",
       "'Người này luôn là kẻ thuộc về Christ'",
       "'Người này không thật sự thay đổi' (xét trong văn cảnh)",
       "'Người này được Hội Thánh chúng tôi nuôi dưỡng'"
@@ -735,7 +735,7 @@
     "language": "vi",
     "options": [
       "7 năm — đem theo Lu-ca (xét trong văn cảnh)",
-      "14 năm sau (lần đầu) — đem theo Ba-na-ba và Tít — bởi sự MẶC KHẢI, để trình bày Tin Lành mình rao",
+      "14 năm — đem theo Ba-na-ba và Tít",
       "20 năm — đem theo Phi-líp (theo cách trình bày của text)",
       "5 năm — đem theo Ti-mô-thê (như được mô tả trong sách)"
     ],
@@ -762,7 +762,7 @@
     "options": [
       "Đuổi họ về (xét trong văn cảnh) (theo trình tự câu chuyện)",
       "Ép họ chịu cắt bì (như được mô tả trong sách)",
-      "Bắt TAY HỮU GIAO TÌNH với Phao-lô + Ba-na-ba — công nhận Phao-lô đi đến dân NGOẠI, họ đến với người chịu cắt bì",
+      "Bắt tay hữu giao kết, công nhận sứ vụ của họ cho dân ngoại",
       "Đòi họ rửa lễ (theo cách trình bày của text) (như văn bản ghi rõ)"
     ],
     "tags": [
@@ -789,7 +789,7 @@
       "Bởi luật pháp — bởi giữ luật trọn vẹn (như được mô tả trong sách)",
       "Bởi việc lành — bởi lòng đạo đức (theo cách trình bày của text)",
       "Bởi gia phả — bởi truyền thống (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "KHÔNG bởi việc làm luật pháp — nhưng bởi đức tin Đức Chúa Jêsus Christ — vì bởi việc làm luật pháp KHÔNG xác thịt nào được xưng công bình"
+      "Bởi việc làm luật pháp, nhưng bởi đức tin nơi Đức Chúa Jêsus Christ"
     ],
     "tags": [
       "Tân Ước",
@@ -809,19 +809,19 @@
       0
     ],
     "content": "Theo Ga-la-ti 3:1, Phao-lô gọi tín hữu Ga-la-ti là gì?",
-    "explanation": "Ga-la-ti 3:1 — 'Hỡi người Ga-la-ti ngu muội kia, ai bùa ếm anh em là người mà trước mắt đã được rõ bày ra Đức Chúa Jêsus Christ bị đóng đinh trên cây thập tự?' 'NGU MUỘI' (anoetoi) = không suy nghĩ. 'BÙA ẾM' (ebaskanen) = mê hoặc bằng quỷ thuật. Phao-lô KHÔNG ngại quở trách thẳng. Mở đầu chương 3 = lập luận thần học.",
+    "explanation": "Ga-la-ti 3:1 — 'Hỡi người Ga-la-ti ngu muội kia, ai bùa ếm anh em là người mà trước mắt đã được rõ bày ra Đức Chúa Jêsus Christ bị đóng đinh trên cây thập tự?' (Bản Truyền Thống). 'Ngu muội' (anoetoi) nghĩa là không suy nghĩ, dại dột. 'Bùa ếm' (ebaskanen) có nghĩa là mê hoặc. Phao-lô quở trách thẳng thắn vì họ đã quên lẽ thật về sự chết của Đấng Christ.",
     "language": "vi",
     "options": [
-      "'Hỡi người Ga-la-ti DẠI DỘT, ai đã MÊ HOẶC anh em? Trước mắt anh em, Đức Chúa Jêsus Christ đã bị đóng đinh trên thập tự!'",
-      "'Hỡi anh em yêu dấu của tôi' (theo cách trình bày của text)",
-      "'Hỡi các thánh đồ ở Ga-la-ti' (như được mô tả trong sách)",
-      "'Hỡi con cái Áp-ra-ham' (xét trong văn cảnh) (theo trình tự câu chuyện)"
+      "'Hỡi người Ga-la-ti ngu muội kia, ai đã bùa ếm anh em?' (Trích dẫn chính xác ý chính)",
+      "'Hỡi anh em yêu dấu của tôi' (cách xưng hô khác, không có trong câu này)",
+      "'Hỡi các thánh đồ ở Ga-la-ti' (cách xưng hô khác, không có trong câu này)",
+      "'Hỡi con cái Áp-ra-ham' (cách xưng hô trong văn cảnh sau, không phải câu 1)"
     ],
     "tags": [
       "Tân Ước",
       "Ga-la-ti",
       "Thư tín",
-      "Ga-la-ti dại dột bị mê hoặc",
+      "Ga-la-ti ngu muội bị bùa ếm",
       "Trung cấp"
     ]
   },
@@ -994,10 +994,10 @@
     "explanation": "Ga-la-ti 4:1-3 — 'Vả, tôi nói rằng người kế tự dầu là chủ của cả gia tài, mà đương còn thơ ấu, thì chẳng khác chi kẻ tôi mọi; phải ở dưới quyền kẻ bảo hộ và kẻ coi giữ, cho đến kỳ người cha đã định. Chúng ta cũng như vậy, khi còn thơ ấu, phải phục dưới các lề thói của thế gian.' 'CÁC LỀ THÓI' (stoicheia) = các nguyên tắc cơ bản của thế gian (luật + tôn giáo dân ngoại).",
     "language": "vi",
     "options": [
-      "Giống vua nhỏ tuổi đã trị vì (như được mô tả trong sách)",
-      "Giống người tự do hoàn toàn (theo cách trình bày của text)",
-      "Giống thiên sứ trên trời (xét trong văn cảnh)",
-      "Không khác KẺ TÔI MỌI dầu là chủ cả mọi vật — phải dưới giám hộ + quản lý cho đến kỳ ngày cha định"
+      "Giống một vị vua nhỏ tuổi đang trị vì",
+      "Giống một người tự do hoàn toàn",
+      "Giống một thiên sứ trên trời",
+      "Giống một kẻ tôi mọi, phải ở dưới quyền giám hộ"
     ],
     "tags": [
       "Tân Ước",
@@ -1075,7 +1075,7 @@
       "Gặp Phi-lát + Hê-rốt (xét trong văn cảnh) (theo trình tự câu chuyện)",
       "Gặp 12 sứ đồ + 70 môn đồ (như được mô tả trong sách)",
       "Gặp Lu-ca + Ti-mô-thê (theo cách trình bày của text)",
-      "Gặp SÊ-PHA (Phi-e-rơ) 15 NGÀY — ngoài đó chỉ thấy GIA-CƠ, em Chúa, KHÔNG có sứ đồ nào khác"
+      "Gặp Sê-pha (Phi-e-rơ) 15 ngày — ngoài đó chỉ thấy Gia-cơ, em Chúa"
     ],
     "tags": [
       "Tân Ước",
@@ -1098,7 +1098,7 @@
     "explanation": "Ga-la-ti 2:3-5 — 'Dầu Tít, kẻ cùng đi với tôi, là người Gờ-réc, cũng không bị ép phải cắt bì. Chúng ta không nhường họ một giây phút nào, chối chẳng chịu thuận theo họ, hầu cho lẽ thật của Tin Lành được vững bền trong anh em.' Tít = bằng chứng trực tiếp: dân ngoại được tiếp nhận VÀO Hội Thánh KHÔNG cắt bì. So sánh: Phao-lô CẮT BÌ Ti-mô-thê (Công 16:3) — vì lý do truyền giáo, không vì cứu rỗi.",
     "language": "vi",
     "options": [
-      "Tít — người Hi Lạp đi cùng Phao-lô — không bị ép cắt bì; Phao-lô chống vì lẽ thật Tin Lành phải ở lại với dân ngoại",
+      "Tít — người Hy Lạp đi cùng Phao-lô, không bị ép cắt bì",
       "Ti-mô-thê — Phao-lô tự tay cắt bì sau (như được mô tả trong sách)",
       "Mác — chỉ vì là người Do Thái (theo cách trình bày của text)",
       "Lu-ca — đại diện ngoại bang (xét trong văn cảnh) (theo trình tự câu chuyện)"
@@ -1125,7 +1125,7 @@
     "language": "vi",
     "options": [
       "Y-sơ-ra-ên đã được cứu",
-      "Đấng Christ chết LÀ VÔ ÍCH",
+      "Đấng Christ chết là vô ích",
       "Áp-ra-ham không cần thiết",
       "Tin Lành không có lý do"
     ],
@@ -1150,10 +1150,10 @@
     "explanation": "Ga-la-ti 3:10 — 'Vả, hết thảy những kẻ cậy các việc luật pháp đều bị rủa sả, bởi có chép rằng: Đáng rủa thay là kẻ không bền đỗ trong mọi sự đã chép ở sách luật, đặng làm theo những sự ấy!' Trích Phục Truyền 27:26. 'MỌI SỰ' (pasin) = TOÀN BỘ, 100%. Vì không ai giữ TRỌN, ai cậy LUẬT đều BỊ RỦA. KHÔNG có sự giữ luật một phần.",
     "language": "vi",
     "options": [
-      "Dưới ơn phước (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phần đoạn liên quan)",
-      "Dưới sự bình an (theo cách trình bày của text) (xét theo nội dung gốc)",
-      "Dưới SỰ RỦA SẢ — vì có chép: 'Đáng rủa thay là kẻ KHÔNG bền đỗ trong MỌI SỰ chép trong sách luật pháp đặng làm theo những sự ấy'",
-      "Dưới sự công bình (như được mô tả trong sách) (như văn bản ghi rõ)"
+      "Dưới ơn phước",
+      "Dưới sự bình an",
+      "Dưới sự rủa sả — vì có chép: 'Đáng rủa thay là kẻ không bền đỗ trong mọi sự chép trong sách luật pháp đặng làm theo những sự ấy'",
+      "Dưới sự công bình"
     ],
     "tags": [
       "Tân Ước",
@@ -1176,9 +1176,9 @@
     "explanation": "Ga-la-ti 3:17 — 'Vậy thì tôi nói rằng: Lời giao ước mà Đức Chúa Trời trước kia đã kết lập thành rồi, thì không có thể bị hủy đi, và lời hứa cũng không có thể bị bỏ đi bởi luật pháp, là sự cách sau bốn trăm ba mươi năm mới có.' Lập luận: nếu giao ước A đến TRƯỚC, hợp đồng B không thể VÔ HIỆU HÓA. Luật KHÔNG hủy lời hứa cho Áp-ra-ham. Các con cháu Áp-ra-ham (= dân ngoại tin) thừa kế qua ĐỨC TIN.",
     "language": "vi",
     "options": [
-      "100 năm — bãi bỏ được (theo cách trình bày của text)",
-      "200 năm — chỉ thay thế (như được mô tả trong sách)",
-      "300 năm — bổ sung (xét trong văn cảnh) (theo trình tự câu chuyện)",
+      "100 năm — bãi bỏ được",
+      "200 năm — chỉ thay thế",
+      "300 năm — bổ sung",
       "430 năm trước luật — luật KHÔNG thể bãi bỏ giao ước đã được Đức Chúa Trời chuẩn nhận"
     ],
     "tags": [
@@ -1202,10 +1202,10 @@
     "explanation": "Ga-la-ti 3:19 — 'Vậy thì làm sao có luật pháp? Luật pháp đã đặt thêm, vì cớ những sự phạm phép, cho tới chừng nào người dòng dõi đến, là người mà lời hứa đã hứa cho; luật pháp được ban ra bởi mấy thiên sứ và truyền ra bởi một người trung bảo.' 3 ý nghĩa: (1) ĐƯỢC THÊM VÀO, không phải nguyên thủy; (2) vì TỘI PHẠM (làm tội ra rõ); (3) tạm thời — đến KHI dòng dõi (Christ) đến.",
     "language": "vi",
     "options": [
-      "Vì cớ TỘI PHẠM mà luật được THÊM VÀO — cho đến khi DÒNG DÕI (Christ) đến (Đấng được hứa) — luật do thiên sứ ban qua tay người trung bảo (Môi-se)",
-      "Để cứu người (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phần đoạn liên quan)",
-      "Để dạy dỗ thiên sứ (theo cách trình bày của text) (như văn bản ghi rõ) (theo bối cảnh đoạn này)",
-      "Để thử thách Áp-ra-ham (như được mô tả trong sách) (xét theo nội dung gốc)"
+      "Vì cớ tội phạm mà luật được thêm vào — cho đến khi dòng dõi (Christ) đến — luật do thiên sứ ban qua tay người trung bảo (Môi-se)",
+      "Để cứu người",
+      "Để dạy dỗ thiên sứ",
+      "Để thử thách Áp-ra-ham"
     ],
     "tags": [
       "Tân Ước",
@@ -1228,10 +1228,10 @@
     "explanation": "Ga-la-ti 4:24-26 — 'Cả điều đó có một nghĩa bóng: hai người nữ đó tức là hai lời giao ước, một là lời giao ước tại núi Si-na-i, sanh con ra để làm tôi mọi, ấy là nàng A-ga... còn Giê-ru-sa-lem ở trên cao là tự do, và ấy là mẹ chúng ta.' Phép alegoria. A-ga = LUẬT (Si-na-i + nô lệ); Sa-ra = LỜI HỨA (tự do + thiên thượng). Áp dụng SHỐC: Y-sơ-ra-ên LUẬT = giống A-ga (đầy tớ).",
     "language": "vi",
     "options": [
-      "Áp-ra-ham + Y-sác (theo cách trình bày của text) (xét theo nội dung gốc) (xét trong văn cảnh)",
-      "Đa-vít + Sa-lô-môn (như được mô tả trong sách) (như văn bản ghi rõ) (theo bối cảnh đoạn này)",
-      "A-GA + SA-RA — A-ga (đầy tớ, sinh con cách xác thịt) = giao ước Si-na-i, Giê-ru-sa-lem hiện tại; Sa-ra (tự do, sinh con bởi lời hứa) = Giê-ru-sa-lem trên trời, mẹ chúng ta",
-      "Ê-va + Ma-ri (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phần đoạn liên quan)"
+      "Áp-ra-ham và Y-sác",
+      "Đa-vít và Sa-lô-môn",
+      "A-ga và Sa-ra — A-ga (đầy tớ, sinh con cách xác thịt) = giao ước Si-na-i, Giê-ru-sa-lem hiện tại; Sa-ra (tự do, sinh con bởi lời hứa) = Giê-ru-sa-lem trên trời, mẹ chúng ta",
+      "Ê-va và Ma-ri"
     ],
     "tags": [
       "Tân Ước",
@@ -1254,10 +1254,10 @@
     "explanation": "Ga-la-ti 5:2-4 — 'Tôi là Phao-lô nói với anh em rằng, nếu anh em chịu làm phép cắt bì, thì Đấng Christ không bổ ích chi cho anh em hết. Tôi lại rao cho mọi người chịu cắt bì rằng, họ buộc phải vâng giữ trọn cả luật pháp. Anh em thảy đều muốn cậy luật pháp cho được xưng công bình, thì đã lìa khỏi Đấng Christ, mất ân điển rồi.' Cắt bì + Christ là LOẠI TRỪ NHAU. Chọn 1.",
     "language": "vi",
     "options": [
-      "Sẽ trở thành người Do Thái thật (như được mô tả trong sách)",
-      "ĐẤNG CHRIST CHẲNG ÍCH GÌ cho ngươi nữa — phải GIỮ TRỌN luật pháp — ngươi ĐÃ XA CÁCH Christ + ROI KHỎI ÂN ĐIỂN",
-      "Sẽ được phước Áp-ra-ham (theo cách trình bày của text) (như văn bản ghi rõ)",
-      "Sẽ được vào hội đường (xét trong văn cảnh) (theo trình tự câu chuyện)"
+      "Sẽ trở thành người Do Thái thật",
+      "Đấng Christ chẳng ích gì cho ngươi nữa — phải giữ trọn luật pháp — ngươi đã xa cách Christ và rời khỏi ân điển",
+      "Sẽ được phước Áp-ra-ham",
+      "Sẽ được vào hội thánh"
     ],
     "tags": [
       "Tân Ước",
@@ -1280,9 +1280,9 @@
     "explanation": "Ga-la-ti 6:15 — 'Vì điều yếu cần, chẳng phải sự chịu cắt bì, hay là sự chẳng chịu cắt bì, bèn là trở nên người mới.' 'TÂN TẠO' (kainē ktisis) = sáng tạo MỚI. 2 Cô-rinh-tô 5:17 cùng cụm: 'ai trong Christ là tân tạo'. KHÔNG phải nghi lễ — mà SINH RA THỪ. Câu kết tóm tắt sách: Christ + đức tin → tân tạo, KHÔNG phải Christ + luật.",
     "language": "vi",
     "options": [
-      "Lễ truyền giáo (như được mô tả trong sách)",
-      "Sự thờ phượng (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Việc làm lành (theo cách trình bày của text)",
+      "Lễ truyền giáo",
+      "Sự thờ phượng",
+      "Việc làm lành",
       "TÂN TẠO (a new creation) — không phải cắt bì, không phải không cắt bì"
     ],
     "tags": [
@@ -1307,9 +1307,9 @@
     "language": "vi",
     "options": [
       "Mang DẤU VẾT (ký hiệu, sẹo) của Đức Chúa Jêsus — như nô lệ mang dấu chủ",
-      "Mang vết thương từ chiến trận (như được mô tả trong sách)",
-      "Mang dấu cắt bì (xét trong văn cảnh)",
-      "Mang vết tích từ Pha-ri-si (theo cách trình bày của text)"
+      "Mang vết thương từ chiến trận",
+      "Mang dấu cắt bì",
+      "Mang vết tích từ Pha-ri-si"
     ],
     "tags": [
       "Tân Ước",

@@ -57,18 +57,19 @@
     "book": "Joshua",
     "chapter": 1,
     "verseStart": 3,
+    "verseEnd": 3,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Chúa hứa cho Gio-sue mọi nơi bàn chân ông đặt lên sẽ thuộc về ai?",
+    "content": "Chúa hứa cho Giô-suê mọi nơi bàn chân ông đặt lên sẽ thuộc về ai?",
     "correctAnswer": [
       2
     ],
-    "explanation": "Gio-sue 1:3 - Mọi nơi bàn chân các ngươi đặt lên, ta ban cho các ngươi. Nhưng vẫn phải bước đi để nhận lấy.",
+    "explanation": "Giô-suê 1:3 - Mọi nơi bàn chân các ngươi đặt lên, ta ban cho các ngươi. Nhưng vẫn phải bước đi để nhận lấy.",
     "language": "vi",
     "options": [
       "Chỉ các chiến binh",
-      "Riêng Gio-sue",
-      "Dân Y-so-ra-en",
+      "Riêng Giô-suê",
+      "Dân Y-sơ-ra-ên",
       "Chi phái Giu-đa"
     ],
     "tags": [
@@ -86,11 +87,11 @@
     "verseStart": 1,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Ai đã giúp giấu hai thám tử Y-so-ra-en tại Gie-ri-co?",
+    "content": "Ai đã giúp giấu hai thám tử Y-sơ-ra-ên tại Giê-ri-cô?",
     "correctAnswer": [
       3
     ],
-    "explanation": "Gio-sue 2:4 - Ra-hab giấu 2 thám tử trên mái nhà. Bà tin Chúa và được cứu khi thành bị hạ (He 11:31).",
+    "explanation": "Giô-suê 2:4 - Ra-hab giấu 2 thám tử trên mái nhà. Bà tin Chúa và được cứu khi thành bị hạ (He 11:31).",
     "language": "vi",
     "verseEnd": 6,
     "options": [
@@ -114,11 +115,11 @@
     "verseStart": 18,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Ra-hab phải treo gì nơi cửa sổ để được cứu khi Gie-ri-co bị tấn công?",
+    "content": "Ra-hab phải treo gì nơi cửa sổ để được cứu khi Giê-ri-cô bị tấn công?",
     "correctAnswer": [
       0
     ],
-    "explanation": "Gio-sue 2:18 - Dây chỉ điều như huyết chiên con Lễ Vượt Qua. Hình bóng về sự cứu rỗi bởi huyết.",
+    "explanation": "Giô-suê 2:18 - Dây chỉ điều là dấu hiệu để quân Y-sơ-ra-ên nhận biết và tha mạng cho nhà Ra-hab.",
     "language": "vi",
     "verseEnd": 21,
     "options": [
@@ -146,11 +147,11 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Gio-sue 3:15-17 - Sông Gio-đan rẽ ra khi chân thầy tế lễ chạm nước, giống như Biển Đỏ.",
+    "explanation": "Giô-suê 3:15-17 - Sông Giô-đan rẽ ra khi chân thầy tế lễ chạm nước, giống như Biển Đỏ.",
     "language": "vi",
     "verseEnd": 17,
     "options": [
-      "Sông Gio-đan",
+      "Sông Giô-đan",
       "Biển Đỏ",
       "Sông Ô-phát",
       "Sông Ni-lô"
@@ -158,7 +159,7 @@
     "tags": [
       "Cựu Ước",
       "Phép lạ",
-      "Gio-đan",
+      "Giô-đan",
       "Giô-suê",
       "Lịch sử",
       "Cơ bản"
@@ -174,7 +175,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Gio-sue 4:7 - Mỗi khi con cháu hỏi, cha mẹ sẽ kể lại phép lạ Chúa rẽ sông Gio-đan.",
+    "explanation": "Giô-suê 4:7 - Mỗi khi con cháu hỏi, cha mẹ sẽ kể lại phép lạ Chúa rẽ sông Gio-đan.",
     "language": "vi",
     "verseEnd": 7,
     "options": [
@@ -198,18 +199,18 @@
     "verseStart": 13,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Trước trận Gie-ri-co, Gio-sue gặp ai cầm gươm?",
+    "content": "Trước trận Giê-ri-cô, Giô-suê gặp ai cầm gươm?",
     "correctAnswer": [
       3
     ],
-    "explanation": "Gio-sue 5:14 - Tướng quân đội Chúa xuất hiện, Gio-sue sụp xuống thờ. Có thể là sự hiện ra của Chúa Giê-su trước nhập thể.",
+    "explanation": "Giô-suê 5:14 - Tướng quân đội Chúa xuất hiện, Giô-suê sụp xuống thờ. Có thể là sự hiện ra của Chúa Giê-su trước nhập thể.",
     "language": "vi",
     "verseEnd": 15,
     "options": [
       "Một chiến binh",
       "Tiên tri Môi-se",
       "Thiên sứ Gáp-ri-ên",
-      "Tướng của đội quân Đức Gie-hô-va"
+      "Tướng của đội quân Đức Giê-hô-va"
     ],
     "tags": [
       "Cựu Ước",
@@ -226,18 +227,18 @@
     "verseStart": 20,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Tại sao Y-so-ra-en thua trận tại A-hi? Vì tội của ai?",
+    "content": "Tại sao Y-sơ-ra-ên thua trận tại A-hi? Vì tội của ai?",
     "correctAnswer": [
       3
     ],
-    "explanation": "Gio-sue 7:20-21 - A-can giấu áo choàng, bạc và vàng. Tội lỗi một người ảnh hưởng cả cộng đồng.",
+    "explanation": "Giô-suê 7:20-21 - A-can giấu áo choàng, bạc và vàng. Tội lỗi một người ảnh hưởng cả cộng đồng.",
     "language": "vi",
     "verseEnd": 21,
     "options": [
       "Dân sự, vì sợ hãi",
       "Thầy tế lễ, vì không cầu nguyện",
-      "Gio-sue, vì sai chiến thuật",
-      "A-can, vì lấy vật bị cấm từ Gie-ri-co"
+      "Giô-suê, vì sai chiến thuật",
+      "A-can, vì lấy vật bị cấm từ Giê-ri-cô"
     ],
     "tags": [
       "Cựu Ước",
@@ -254,11 +255,11 @@
     "verseStart": 12,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Phép lạ nào xảy ra khi Gio-sue chiến đấu với liên minh 5 vua?",
+    "content": "Phép lạ nào xảy ra khi Giô-suê chiến đấu với liên minh 5 vua?",
     "correctAnswer": [
       1
     ],
-    "explanation": "Gio-sue 10:13 - Mặt trời đứng giữa trời cả ngày để Y-so-ra-en hoàn tất chiến thắng.",
+    "explanation": "Giô-suê 10:13 - Mặt trời đứng giữa trời cả ngày để Y-sơ-ra-ên hoàn tất chiến thắng.",
     "language": "vi",
     "verseEnd": 13,
     "options": [
@@ -286,7 +287,7 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Gio-sue 14:12 - Ca-lép xin nơi khó nhất vì tin Chúa. Dù 85 tuổi vẫn mạnh mẽ và sẵn sàng chiến đấu.",
+    "explanation": "Giô-suê 14:12 - Ca-lép xin nơi khó nhất vì tin Chúa. Dù 85 tuổi vẫn mạnh mẽ và sẵn sàng chiến đấu.",
     "language": "vi",
     "verseEnd": 12,
     "options": [
@@ -310,11 +311,11 @@
     "verseStart": 14,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Lời cuối của Gio-sue nhấn mạnh điều gì?",
+    "content": "Lời cuối của Giô-suê nhấn mạnh điều gì?",
     "correctAnswer": [
       1
     ],
-    "explanation": "Gio-sue 23:14 - Gio-sue làm chứng rằng không lời nào của Chúa thất bại. Khuyên dân trung tín.",
+    "explanation": "Giô-suê 23:14 - Giô-suê làm chứng rằng không lời nào của Chúa thất bại. Ông khuyên dân Chúa phải trung tín với Ngài.",
     "language": "vi",
     "options": [
       "Hãy xây nhiều thành",
@@ -324,9 +325,8 @@
     ],
     "tags": [
       "Cựu Ước",
-      "Gio-sue",
-      "Thành tín",
       "Giô-suê",
+      "Thành tín",
       "Lịch sử",
       "Trung cấp"
     ]
@@ -496,11 +496,11 @@
     "verseEnd": 12,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Hai chi phái Ru-bên, Gát và nửa Ma-na-se xây gì bên bờ sông Giô-đanh khiến các chi phái khác hiểu lầm?",
+    "content": "Hai chi phái Ru-bên, Gát và phân nửa chi phái Ma-na-se xây gì bên bờ sông Giô-đanh khiến các chi phái khác hiểu lầm?",
     "correctAnswer": [
       0
     ],
-    "explanation": "Giô-suê 22:10 — 'Họ xây tại đó một bàn thờ, ở gần sông Giô-đanh, một bàn thờ rất lớn, đáng để mắt mà xem.' Sau giải thích là bàn thờ chứng kiến.",
+    "explanation": "Giô-suê 22:10 — 'Họ xây tại đó một bàn thờ, ở gần sông Giô-đanh, một bàn thờ rất lớn, đáng để mắt mà xem.' Sau đó họ giải thích đây là bàn thờ chứng kiến, không phải để dâng tế lễ.",
     "language": "vi",
     "options": [
       "Một bàn thờ lớn",

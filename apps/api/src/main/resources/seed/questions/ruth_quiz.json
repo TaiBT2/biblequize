@@ -5,7 +5,7 @@
     "verseStart": 16,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Ru-tơ nói với Na-ô-mi: \"Đức Chúa Trời của mẹ tức là ___\"",
+    "content": "Ru-tơ nói với Na-ô-mi: \"Đức Chúa Trời của mẹ tức là Đức Chúa Trời của con\"",
     "correctAnswer": [
       0
     ],
@@ -198,13 +198,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ru-tơ 2:11-12 - Bô-ô nhận ra đức tin và lòng trung thành của Ru-tơ. Chúa thương những kẻ đến nương náu dưới cánh Ngài.",
+    "explanation": "Ru-tơ 2:11-12 - Bô-ô khen ngợi Ru-tơ vì sự hiếu thảo với mẹ chồng và đức tin khi lìa bỏ cha mẹ, quê hương để đến nương náu dưới cánh Đức Giê-hô-va, Đức Chúa Trời của Y-sơ-ra-ên.",
     "language": "vi",
     "verseEnd": 12,
     "options": [
       "Sắc đẹp",
       "Sự giàu có",
-      "Bỏ xứ sở đi theo mẹ chồng đến xứ lạ, nấu nấu dưới cánh Chúa",
+      "Sự hiếu thảo với mẹ chồng và đức tin khi lìa bỏ quê hương để đến nương náu dưới cánh Chúa",
       "Sự khôn ngoan"
     ],
     "tags": [
@@ -281,7 +281,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ru-tơ 4:6 - Người gô-el gần hơn từ chối vì sợ thiệt hại cho sản nghiệp. Bô-ô sẵn lòng hy sinh.",
+    "explanation": "Ru-tơ 4:6 - Người bà con gần hơn từ chối vì sợ làm hư sản nghiệp của mình. Bô-ô sẵn lòng chuộc.",
     "language": "vi",
     "verseEnd": 6,
     "options": [

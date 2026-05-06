@@ -6,7 +6,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Phao-lô tự xưng là gì khi mở đầu thư Tít?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Tít 1:1 — 'Ta, Phao-lô, tôi tớ của Đức Chúa Trời và sứ đồ của Đức Chúa Jêsus Christ, theo đức tin của những người được chọn của Đức Chúa Trời...'",
     "language": "vi",
     "options": [
@@ -30,7 +32,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Tít 1:2, Đức Chúa Trời đã hứa sự sống đời đời từ khi nào?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Tít 1:2 — '...trông cậy sự sống đời đời, là sự sống mà Đức Chúa Trời không thể nói dối đã hứa từ muôn đời về trước...' Lời hứa thuộc kế hoạch đời đời của Đức Chúa Trời.",
     "language": "vi",
     "options": [
@@ -54,7 +58,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Tít 1:4, Phao-lô gọi Tít là gì?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Tít 1:4 — 'Gởi cho Tít, là con thật ta trong đức tin chung...' Tít là người được Phao-lô dẫn dắt thuộc linh — như Ti-mô-thê.",
     "language": "vi",
     "options": [
@@ -78,7 +84,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Tít 1:5, vì sao Phao-lô để Tít ở lại Cre-tơ?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Tít 1:5 — 'Ta đã để con ở lại Cơ-rết, đặng sắp đặt mọi việc chưa thu xếp, và lập những trưởng lão trong mỗi thành...'",
     "language": "vi",
     "options": [
@@ -102,7 +110,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Tít 1:6, một trưởng lão phải có gia đình thế nào?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Tít 1:6 — '...mỗi người không chỗ trách được, là chồng chỉ một vợ, con cái phải tin Chúa, không bị cáo là buông tuồng hoặc ngỗ nghịch.'",
     "language": "vi",
     "options": [
@@ -126,7 +136,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Tít 1:7, người giám mục KHÔNG được có những đặc tính nào?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Tít 1:7 — '...không kiêu ngạo, không hung bạo, không nghiện rượu, không đánh đập người, không tham lợi đáng gớm ghê.'",
     "language": "vi",
     "options": [
@@ -150,7 +162,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Tít 1:9, người giám mục phải gắn bó với điều gì để có khả năng dạy dỗ?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Tít 1:9 — '...phải biết vâng giữ lời chân thật, đúng theo đạo đã được ban dạy, hầu cho có thể theo đạo lành mà khuyên dỗ người ta và bác lại những kẻ chống trả.'",
     "language": "vi",
     "options": [
@@ -174,7 +188,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Tít 2:1, Tít phải dạy điều gì?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Tít 2:1 — 'Nhưng con hãy dạy điều hiệp với đạo lành.' Đạo lành (sound doctrine) — giáo lý lành mạnh, đúng đắn.",
     "language": "vi",
     "options": [
@@ -198,7 +214,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Tít 2:11, ân điển của Đức Chúa Trời đã hiện ra để làm gì?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Tít 2:11 — 'Vả, ân điển Đức Chúa Trời hay cứu mọi người, đã được bày tỏ ra rồi.' Ân điển có sẵn cho mọi người không phân biệt.",
     "language": "vi",
     "options": [
@@ -222,7 +240,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Tít 2:13, tín hữu trông đợi điều gì?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Tít 2:13 — '...đương chờ đợi sự trông cậy hạnh phước của chúng ta, và sự hiện ra của sự vinh hiển Đức Chúa Trời lớn và Cứu Chúa chúng ta, là Đức Chúa Jêsus Christ.'",
     "language": "vi",
     "options": [
@@ -246,7 +266,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Tít 2:14, Đấng Christ đã phó mình vì chúng ta để làm gì?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Tít 2:14 — 'là Đấng đã phó chính mình Ngài vì chúng ta, để chuộc chúng ta khỏi mọi tội và làm cho sạch, đặng lấy chúng ta làm một dân thuộc riêng về Ngài, là dân có lòng sốt sắng về các việc lành.'",
     "language": "vi",
     "options": [
@@ -270,7 +292,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Tít 3:1, tín hữu phải nhớ những gì về thái độ với người cầm quyền?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Tít 3:1 — 'Hãy nhắc lại cho các tín đồ phải vâng phục những bậc cầm quyền chấp chánh, phải vâng lời các bậc ấy, sẵn sàng làm mọi việc lành.'",
     "language": "vi",
     "options": [
@@ -294,7 +318,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Tít 3:5, Đức Chúa Trời cứu chúng ta dựa trên điều gì?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Tít 3:5 — '...không phải cứu vì việc công bình chúng ta đã làm, nhưng cứ theo lòng thương xót Ngài, bởi sự rửa về sự lại sanh và sự đổi mới của Đức Thánh Linh.'",
     "language": "vi",
     "options": [
@@ -318,7 +344,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Tít 3:7, được xưng công bình bởi ân điển để chúng ta trở nên kẻ kế tự của điều gì?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Tít 3:7 — 'hầu cho chúng ta nhờ ơn Ngài được xưng công bình, trở nên con kế tự của Ngài theo sự trông cậy của sự sống đời đời.'",
     "language": "vi",
     "options": [
@@ -342,7 +370,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Tít 3:9, Tít phải tránh những điều gì?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Tít 3:9 — 'Nhưng hãy lánh những điều cãi lẽ dại dột, những gia phổ, những sự cạnh tranh nghị luận về luật pháp, vì mấy sự đó đều là vô ích và hư không.'",
     "language": "vi",
     "options": [
@@ -366,7 +396,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Tít 3:10, phải đối xử thế nào với người gây chia rẽ?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Tít 3:10 — 'Sau khi mình đã khuyên bảo kẻ theo tà giáo một hai lần rồi, thì hãy lánh họ.'",
     "language": "vi",
     "options": [
@@ -390,8 +422,10 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Tít 1:16, một số người xưng nhận biết Đức Chúa Trời nhưng chối bỏ Ngài bằng cách nào?",
-    "correctAnswer": [0],
-    "explanation": "Tít 1:16 — 'Họ xưng mình biết Đức Chúa Trời, nhưng theo những việc làm thì đều từ chối Ngài, thật là đáng ghét, trái nghịch và không thể làm một việc lành nào hết.'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "Tít 1:16 — 'Họ xưng mình biết Đức Chúa Trời, song theo các việc làm thì chối bỏ Ngài, thật là đáng ghét, trái nghịch và không thể làm một việc lành nào hết.'",
     "language": "vi",
     "options": [
       "Bằng việc làm",
@@ -415,7 +449,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo Tít 1:7-8, người giám mục phải có những đức tính tích cực nào? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Tít 1:7-8 — 'người giám mục phải không chỗ trách được... hay tiếp đãi khách, ưa sự lành, có tiết độ, công bình, thánh sạch, tự chủ.' Nhiều đức tính tích cực; 'tham lợi đáng gớm ghê' là điều bị cấm trong v.7.",
     "language": "vi",
     "options": [
@@ -440,7 +478,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo Tít 2:11-12, ân điển Đức Chúa Trời dạy dỗ chúng ta những điều gì? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Tít 2:11-12 — '...ân điển đó dạy chúng ta chừa bỏ sự không tin kính và tình dục thế gian, phải sống ở đời nầy theo tiết độ, công bình, nhân đức.' Ba điều dạy; 'tích lũy của cải' không phải là điều ân điển dạy.",
     "language": "vi",
     "options": [
@@ -465,7 +507,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo Tít 3:1-2, tín hữu phải nhớ những điều gì trong cách sống công cộng? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Tít 3:1-2 — '...phải vâng phục những bậc cầm quyền... sẵn sàng làm mọi việc lành, chớ nói xấu ai, chớ tranh cạnh, hãy dung thứ, đối với mọi người tỏ ra một cách mềm mại trọn vẹn.' Nhiều khía cạnh; 'báo thù kẻ thù' trái với tinh thần đoạn này.",
     "language": "vi",
     "options": [

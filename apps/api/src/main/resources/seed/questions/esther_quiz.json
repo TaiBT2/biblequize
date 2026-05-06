@@ -5,17 +5,17 @@
     "verseStart": 14,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Mọt-đô-chê nói với Ê-xơ-tê: \"Biết đâu ngươi được làm hoàng hậu chính vì ___?\"",
+    "content": "Mọt-đô-chê nói với Ê-xơ-tê: \"... song nào ai biết rằng chẳng phải vì cớ ___ mà ngươi được vị hoàng hậu sao?\" (Ê-xơ-tê 4:14)",
     "correctAnswer": [
       3
     ],
-    "explanation": "Ê-xơ-tê 4:14 - Mọt-đô-chê tin rằng Chúa đặt Ê-xơ-tê vào vị trí hoàng hậu đúng lúc dân Do-thái cần được giải cứu.",
+    "explanation": "Ê-xơ-tê 4:14 - Mọt-đô-chê tin rằng Đức Chúa Trời có thể đã đặt Ê-xơ-tê vào vị trí hoàng hậu vì cớ cơ hội (thời điểm) đặc biệt này để giải cứu dân Ngài.",
     "language": "vi",
     "options": [
       "Sự khôn ngoan của ngươi",
       "Dòng dõi của ngươi",
       "Sắc đẹp của ngươi",
-      "Thời điểm này đây"
+      "Cơ hội (thời điểm) như hiện nay"
     ],
     "tags": [
       "Cựu Ước",
@@ -34,7 +34,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "E-xơ-tê 1:12 - Hoàng hậu Vát-ti từ chối đến trước vua. Điều này mở đường cho E-xơ-tê trở thành hoàng hậu.",
+    "explanation": "Ê-xơ-tê 1:10-12, 19 - Hoàng hậu Vát-ti từ chối đến trước vua khi được triệu tập trong tiệc rượu. Sự bất tuân này dẫn đến việc bà bị phế truất theo lời khuyên của các quan, mở đường cho Ê-xơ-tê trở thành hoàng hậu.",
     "language": "vi",
     "verseEnd": 12,
     "options": [
@@ -136,12 +136,12 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "E-xơ-tê 3:7,13 - Từ \"Pu-rim\" (bốc thăm) trở thành tên lễ hội kỷ niệm sự giải cứu.",
+    "explanation": "E-xơ-tê 3:7,13 - Tháng A-đa (tháng 12) được bốc trúng, và ngày định sẵn là ngày 13 tháng đó. Từ \"Pu-rim\" (bốc thăm) trở thành tên lễ hội kỷ niệm sự giải cứu.",
     "language": "vi",
     "options": [
       "Ngày 1 tháng 1",
+      "Ngày 13 tháng A-đa (tháng 12)",
       "Ngày 14 tháng 1",
-      "Ngày 13 tháng 12 (A-đa)",
       "Ngày 10 tháng 7"
     ],
     "tags": [
@@ -161,13 +161,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "E-xơ-tê 4:16 - E-xơ-tê sẵn sàng chết: \"Nếu phải chết thì tôi chết.\" Can đảm từ đức tin.",
+    "explanation": "E-xơ-tê 4:16 - E-xơ-tê yêu cầu dân sự kiêng ăn cùng với bà trong ba ngày ba đêm, thể hiện sự kêu gọi hiệp một và đức tin của bà.",
     "language": "vi",
     "options": [
       "Dâng của lễ",
       "Cầu nguyện 7 ngày",
       "Chạy trốn",
-      "Kiêng ăn 3 ngày 3 đêm"
+      "Kiêng ăn (cùng với bà) 3 ngày 3 đêm"
     ],
     "tags": [
       "Cựu Ước",
@@ -264,10 +264,10 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "E-xơ-tê 7:10 - Sự ảo ngay: Ha-man bị treo trên chính cái mộc hắn làm cho Mạc-đô-chê. Ai đào hố sẽ sa vào đó.",
+    "explanation": "E-xơ-tê 7:10 - Ha-man bị treo trên chính cái mộc hình mà hắn đã làm cho Mạc-đô-chê. Ai đào hố sẽ sa vào đó.",
     "language": "vi",
     "options": [
-      "Mộc treo chính hắn chuẩn bị cho Mạc-đô-chê",
+      "Mộc hình chính hắn chuẩn bị cho Mạc-đô-chê",
       "Cây lớn",
       "Tường thành",
       "Mộc treo trong ngục"
@@ -339,7 +339,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ê-xơ-tê 1:1 — 'Trong đời A-suê-ru, tức A-suê-ru kia mà cai trị 127 tỉnh, từ Ấn Độ cho đến Ê-thi-ô-bi.'",
+    "explanation": "Ê-xơ-tê 1:1: \"Trong đời A-suê-ru, tức A-suê-ru kia mà cai trị 127 tỉnh, từ Ấn Độ cho đến Ê-thi-ô-bi.\"",
     "language": "vi",
     "options": [
       "12 tỉnh",
@@ -419,7 +419,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ê-xơ-tê 3:9 — 'Tôi sẽ cân vào tay những kẻ thừa hành chức vụ mười ngàn ta-lâng bạc.'",
+    "explanation": "Ê-xơ-tê 3:9 - Ha-man thưa với vua: 'Nếu vua thấy điều đó là tiện, xin hãy truyền chiếu chỉ tuyệt diệt chúng nó đi; rồi tôi sẽ cân vào tay những kẻ thừa hành chức vụ mười ngàn ta-lâng bạc.'",
     "language": "vi",
     "options": [
       "100 ta-lâng",
@@ -445,7 +445,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ê-xơ-tê 5:14 — 'Hãy biểu dựng một mộc hình, cao năm mươi thước.'",
+    "explanation": "Ê-xơ-tê 5:14 - Vợ và bạn của Ha-man khuyên ông dựng một mộc hình cao năm mươi thước để treo Mạc-đô-chê.",
     "language": "vi",
     "options": [
       "10 thước",
@@ -498,7 +498,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ê-xơ-tê 9:26 — 'Bởi cớ ấy, người ta gọi những ngày đó là Phu-rim, do chữ Phu-rơ.'",
+    "explanation": "Ê-xơ-tê 9:20-22 - Mạc-đô-chê viết thư truyền lập hai ngày 14 và 15 tháng A-đa làm ngày lễ hằng năm, để kỷ niệm sự giải cứu dân Giu-đa. Những ngày này sau đó được gọi là lễ Phu-rim (câu 26).",
     "language": "vi",
     "options": [
       "Lễ Bánh Không Men",

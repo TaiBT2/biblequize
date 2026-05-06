@@ -34,7 +34,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ma-la-chi 1:8 - Họ dâng thú vật mù, quẹo, đau cho Chúa. Thú dâng cho quan trấn thì sao?",
+    "explanation": "Ma-la-chi 1:6 - Chúa trách các thầy tế lễ vì đã khinh thường danh Ngài. Hành động cụ thể được minh họa trong câu 8: họ dâng những con vật mù, què, đau làm của lễ.",
     "language": "vi",
     "options": [
       "Không cầu nguyện",
@@ -59,7 +59,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Chúa coi trọng hôn nhân và gìn giữ kết ước. Ly dị không phải ý muốn ban đầu của Ngài.",
+    "explanation": "Ma-la-chi 2:16 chép: \"Vì Đức Giê-hô-va Đức Chúa Trời của Y-sơ-ra-ên có phán rằng Ta ghét sự ly dị, và ghét kẻ lấy áo che sự hung bạo, Đức Giê-hô-va vạn quân phán vậy...\" (Bản Truyền thống). Câu này khẳng định Chúa ghét sự ly dị.",
     "language": "vi",
     "options": [
       "Cho phép tự do",
@@ -84,7 +84,7 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Mác 1:2 áp dụng câu này cho Giăng Báp-tít, người dọn đường cho Chúa Giê-su.",
+    "explanation": "Ma-la-chi 3:1 tiên tri về một sứ giả sẽ dọn đường. Trong Tân Ước (Mác 1:2), sứ giả này được xác định là Giăng Báp-tít.",
     "language": "vi",
     "options": [
       "Sứ giả (Giăng Báp-tít) để dọn đường",
@@ -134,14 +134,14 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Chúa ghi nhớ những ai kính sợ và tôn kính danh Ngài. Họ là báu vật riêng của Ngài.",
+    "explanation": "Chúa ghi nhớ những ai kính sợ và tôn kính danh Ngài trong một sách ghi nhớ. Họ là báu vật riêng của Ngài.",
     "language": "vi",
     "verseEnd": 17,
     "options": [
       "Sách tiên tri",
       "Sách sử",
       "Sách luật",
-      "Sách kỷ niệm"
+      "Sách ghi nhớ"
     ],
     "tags": [
       "Cựu Ước",
@@ -160,7 +160,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Mặt Trời Công Bình = Chúa Giê-su. Ngài mang sự chữa lành cho những ai kính sợ Chúa.",
+    "explanation": "'Mặt Trời Công Bình' mang đến sự chữa lành cho người kính sợ Chúa, thường được Tân Ước giải thích là ứng nghiệm nơi Chúa Giê-su.",
     "language": "vi",
     "options": [
       "Lửa",
@@ -211,7 +211,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sự thánh tẩy không phải hủy diệt mà là làm cho tinh sạch, như luyện kim.",
+    "explanation": "Ma-la-chi 3:2-3 - Chúa đến như thợ luyện kim để thánh tẩy (câu 3 đặc biệt nói về việc thánh tẩy con cái Lê-vi để họ dâng của lễ công bình).",
     "language": "vi",
     "verseEnd": 3,
     "options": [
@@ -262,12 +262,12 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ma-la-chi 3:11 - Chúa bảo vệ mùa màng khỏi bị phá hại khi dân sự vâng lời trong việc dâng hiến.",
+    "explanation": "Ma-la-chi 3:11 - Chúa hứa sẽ ngăn cấm kẻ phá hại để bảo vệ mùa màng khi dân sự vâng lời trong việc dâng phần mười.",
     "language": "vi",
     "options": [
       "Ban thêm vàng",
       "Tăng quân đội",
-      "Vì các ngươi cấm những kẻ phá phá (bảo vệ mùa màng)",
+      "Ngăn cấm kẻ phá hại (bảo vệ mùa màng)",
       "Cho thêm đất"
     ],
     "tags": [
@@ -312,7 +312,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ma-la-chi 1:1 — 'Gánh nặng lời Đức Giê-hô-va cho Y-sơ-ra-ên bởi Ma-la-chi.'",
+    "explanation": "Ma-la-chi 1:1 — \"Gánh nặng lời Đức Giê-hô-va cho Y-sơ-ra-ên bởi Ma-la-chi.\"",
     "language": "vi",
     "options": [
       "Sấm ngôn của Đa-vít",

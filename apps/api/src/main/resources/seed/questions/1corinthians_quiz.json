@@ -36,7 +36,7 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Cô 3:6-7: Phao-lô trồng, A-bô-lô tưới, nhưng Đức Chúa Trời làm cho lớn lên.",
+    "explanation": "1 Cô-rinh-tô 3:6-7: Phao-lô trồng, A-bô-lô tưới, nhưng Đức Chúa Trời làm cho lớn lên.",
     "language": "vi",
     "verseEnd": 7,
     "options": [
@@ -287,11 +287,11 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "1 Cô 8:1-13: Kiến thức sinh kiêu ngạo, tình yêu gây dựng; đừng làm cớ vấp phạm.",
+    "explanation": "1 Cô 8:1-13: Kiến thức sinh kiêu ngạo, tình yêu gây dựng; đừng dùng sự tự do của mình làm cớ vấp phạm cho kẻ yếu đuối.",
     "language": "vi",
     "verseEnd": 13,
     "options": [
-      "Tình yêu xây dựng, chớ nên gây vấp phạm",
+      "Tình yêu gây dựng, đừng làm cớ vấp phạm cho kẻ yếu",
       "Tự do là tối thượng",
       "Chỉ cần cầu nguyện trước khi ăn",
       "Kiến thức quan trọng hơn"
@@ -320,7 +320,7 @@
     "verseEnd": 23,
     "options": [
       "Được phần mười",
-      "Được cứu một vài người",
+      "Để cứu được một vài người",
       "Được tôn vinh",
       "Được khen ngợi"
     ],
@@ -451,18 +451,18 @@
     "verseStart": 8,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Vì sao tình yêu lớn hơn đức tin và sự trông cậy?",
+    "content": "Theo 1 Cô-rinh-tô 13:8-13, điều nào sau đây được nói về tình yêu thương so với đức tin và sự trông cậy?",
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Cô 13:13: Hiện nay còn có đức tin, sự trông cậy, tình yêu thương; nhưng lớn hơn hết là tình yêu thương.",
+    "explanation": "1 Cô-rinh-tô 13:13 khẳng định: 'Hiện nay còn có đức tin, sự trông cậy, tình yêu thương; nhưng lớn hơn hết là tình yêu thương.' Ngữ cảnh các câu 8-12 cho thấy các ân tứ sẽ thôi, nhưng tình yêu thương không hề hư mất và tồn tại vĩnh viễn.",
     "language": "vi",
     "verseEnd": 13,
     "options": [
-      "Vì dễ thực hành",
-      "Vì được khen nhiều",
-      "Vì tình yêu còn lại đời đời",
-      "Vì ít khó hơn"
+      "Tình yêu thương dễ thực hành hơn",
+      "Tình yêu thương được Chúa khen ngợi nhiều hơn",
+      "Tình yêu thương còn lại đời đời và là điều lớn nhất",
+      "Tình yêu thương ít khó khăn hơn khi thực hiện"
     ],
     "tags": [
       "Tân Ước",
@@ -533,6 +533,7 @@
     "book": "1 Corinthians",
     "chapter": 13,
     "verseStart": 4,
+    "verseEnd": 4,
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Trong 1 Cô-rinh-tô 13:4, \"Tình yêu thương hay nhịn nhục\". Từ \"nhịn nhục\" trong tiếng Hy Lạp có nghĩa gì?",
@@ -562,7 +563,7 @@
     "verseStart": 55,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Trong 1 Cô-rinh-tô 15:55, \"Hỡi sự chết, sự thắng của mầy ở đâu?\" Từ \"thắng\" trong tiếng Hy Lạp có nghĩa gì?",
+    "content": "Trong 1 Cô-rinh-tô 15:55, \"Hỡi sự chết, sự thắng hắn của mầy ở đâu?\" Từ \"thắng hắn\" trong tiếng Hy Lạp có nghĩa gì?",
     "correctAnswer": [
       1
     ],
@@ -589,11 +590,11 @@
     "verseStart": 4,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Theo 1 Cô-rinh-tô 13, tình yêu thương bắt đầu bằng điều gì?",
+    "content": "Theo 1 Cô-rinh-tô 13:4, tình yêu thương được mô tả với những đặc tính nào sau đây?",
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Cô 13:4 - Tình yêu hay nhịn nhục, tình yêu hay nhân từ. Nhịn nhục và nhân từ là nền tảng của tình yêu thương thật.",
+    "explanation": "1 Cô 13:4 - 'Tình yêu thương hay nhịn nhục; tình yêu thương hay nhân từ...' (BD2011). Nhịn nhục và nhân từ là những đặc tính đầu tiên được liệt kê để mô tả tình yêu thương thật.",
     "language": "vi",
     "verseEnd": 7,
     "options": [
@@ -676,12 +677,12 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Cô 1:18 - Thập tự giá là sự điên dại theo thế gian nhưng là quyền năng cứu rỗi cho người tin.",
+    "explanation": "1 Cô 1:18 - Thập tự giá là sự điên dại theo thế gian nhưng là quyền phép của Đức Chúa Trời cho người được cứu.",
     "language": "vi",
     "options": [
       "Truyền thống",
       "Bí ẩn",
-      "Quyền phép của Đức Chúa Trời",
+      "quyền phép của Đức Chúa Trời",
       "Tri thức"
     ],
     "tags": [
@@ -703,12 +704,12 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Những điều Chúa chuẩn bị vượt qua trí tưởng tượng của con người.",
+    "explanation": "Những điều Đức Chúa Trời đã sắm sẵn vượt qua trí tưởng tượng của con người.",
     "language": "vi",
     "options": [
       "Phép lạ",
       "Phúc Âm",
-      "Điều Chúa chuẩn bị cho những ai yêu Ngài",
+      "Điều Đức Chúa Trời đã sắm sẵn cho những ai yêu mến Ngài",
       "Thiên đàng"
     ],
     "tags": [
@@ -722,15 +723,15 @@
   },
   {
     "book": "1 Corinthians",
-    "chapter": 3,
-    "verseStart": 16,
+    "chapter": 6,
+    "verseStart": 19,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "1 Cô 3:16: Thân thể chúng ta là gì?",
+    "content": "1 Cô-rinh-tô 6:19: Thân thể chúng ta là gì?",
     "correctAnswer": [
       2
     ],
-    "explanation": "Thân thể là đền thờ Thánh Linh ngự. Phải giữ gìn thánh khiết.",
+    "explanation": "Thân thể của tín hữu là đền thờ của Đức Thánh Linh ngự. Phải giữ gìn thánh khiết.",
     "language": "vi",
     "options": [
       "Của lễ",
@@ -839,13 +840,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Cô 13:1 - Mọi ân tứ đều vô giá trị nếu không có tình yêu thương.",
+    "explanation": "1 Cô 13:1 - Mọi ân tứ đều vô giá trị nếu không có tình yêu thương. Phao-lô ví mình như đồng kêu vang hay chập chõa vang tiếng.",
     "language": "vi",
     "verseEnd": 3,
     "options": [
       "Người mạnh mẽ",
       "Học giả",
-      "Đồng vàng kêu hay chập chõe vang",
+      "Đồng kêu vang hay chập chõa vang tiếng",
       "Thiên sứ"
     ],
     "tags": [
@@ -1158,14 +1159,14 @@
       1
     ],
     "verseEnd": 13,
-    "content": "Theo 1 Cô-rinh-tô 1:11-13, ai báo cho Phao-lô biết về sự chia rẽ tại Cô-rinh-tô, và 4 phe phái nhóm họ gọi mình là gì?",
-    "explanation": "1 Cô-rinh-tô 1:11-12 — 'Hỡi anh em, người nhà Cờ-lô-ê đã cho tôi hay rằng có sự cãi lẫy ở giữa anh em. Mỗi người trong anh em nói rằng: Ta thuộc về Phao-lô, ta thuộc về A-bô-lô, ta thuộc về Sê-pha, ta thuộc về Christ.' Phao-lô vạch trần lập nhóm tín ngưỡng quanh nhân vật. Câu 13 hỏi cay đắng: 'Đấng Christ bị chia ra sao?'",
+    "content": "Theo 1 Cô-rinh-tô 1:11-13, thông tin về sự chia rẽ tại Hội thánh Cô-rinh-tô đã đến với Phao-lô qua ai, và các tín hữu ở đó đã tự xưng mình thuộc về những phe phái nào?",
+    "explanation": "1 Cô-rinh-tô 1:11-12 chép: 'Hỡi anh em, vì người nhà Cờ-lô-ê đã cho tôi biết về anh em, rằng giữa vòng anh em có sự tranh cãi. Ý tôi là trong anh em có người nói: “Tôi thuộc về Phao-lô”; người thì: “Tôi thuộc về A-bô-lô”; người thì: “Tôi thuộc về Sê-pha”; người thì: “Tôi thuộc về Đấng Christ.”' (Bản Dịch 2011). Câu 13, Phao-lô chất vấn: 'Đấng Christ đã bị chia ra sao?'",
     "language": "vi",
     "options": [
-      "Stê-pha-na — phe Phao-lô / A-bô-lô / Ti-mô-thê / Christ",
-      "Người nhà Cờ-lô-ê — phe Phao-lô / A-bô-lô / Sê-pha (Phi-e-rơ) / Christ",
-      "Phê-bê — phe Phao-lô / Tít / Sê-pha / Ba-na-ba",
-      "Akilas — phe Phi-e-rơ / Gia-cơ / A-bô-lô / Phao-lô"
+      "Người nhà Cờ-lô-ê — Phao-lô, A-bô-lô, Sê-pha (Phi-e-rơ), và Christ",
+      "Stê-pha-na — Phao-lô, A-bô-lô, Ti-mô-thê, và Christ",
+      "Phê-bê — Phao-lô, Tít, Sê-pha, và Ba-na-ba",
+      "A-khị-la — Phi-e-rơ, Gia-cơ, A-bô-lô, và Phao-lô"
     ],
     "tags": [
       "Tân Ước",
@@ -1243,7 +1244,7 @@
     "language": "vi",
     "options": [
       "Không bằng tiền bạc — đức tin dựa trên tài sản",
-      "Không bằng quyền thế chính trị — đức tin dựa trên tổ chức",
+      "Không bằng uy tín cá nhân — đức tin dựa trên danh tiếng",
       "Không bằng dấu lạ phép kỳ — đức tin dựa trên cảm xúc",
       "Không bằng lời cao xa hay khôn ngoan loài người — đức tin dựa trên quyền năng Đức Chúa Trời"
     ],
@@ -1399,7 +1400,7 @@
       2
     ],
     "verseEnd": 5,
-    "content": "Theo 1 Cô-rinh-tô 5:1-5, Phao-lô bảo hội thánh Cô-rinh-tô làm gì với người tà dâm (đã lấy vợ của cha mình)?",
+    "content": "Theo 1 Cô-rinh-tô 5:1-5, Phao-lô bảo hội thánh Cô-rinh-tô làm gì với người phạm tội tà dâm (có người lấy vợ của cha mình)?",
     "explanation": "1 Cô-rinh-tô 5:5 — 'Phải phó người ấy cho quỷ Sa-tan, để hủy hoại phần xác thịt, hầu cho linh hồn được cứu trong ngày của Đức Chúa Jêsus.' Mục đích kỷ luật: KHÔNG phải báo thù — mà cứu rỗi linh hồn. Hội thánh kiêu ngạo (5:2) thay vì khóc lóc — đó là vấn đề Phao-lô vạch trần.",
     "language": "vi",
     "options": [
@@ -1432,7 +1433,7 @@
     "options": [
       "Không giao thiệp với người nghèo (xét trong văn cảnh)",
       "Không giao thiệp với người ngoại đạo (như được mô tả trong sách)",
-      "Không giao thiệp với người Do Thái (theo cách trình bày của text)",
+      "Không giao thiệp với người thu thuế hoặc người ngoại bang",
       "Không giao thiệp với người gọi là anh em mà tà dâm, tham lam, thờ thần tượng, chửi rủa, say sưa, hoặc lừa đảo"
     ],
     "tags": [
@@ -1501,6 +1502,7 @@
     "book": "1 Corinthians",
     "chapter": 6,
     "verseStart": 12,
+    "verseEnd": 12,
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "correctAnswer": [
@@ -1640,9 +1642,9 @@
     "correctAnswer": [
       0
     ],
-    "verseEnd": 22,
-    "content": "Theo 1 Cô-rinh-tô 10:14-22, vì sao tín hữu KHÔNG thể dự cả bàn của Chúa và bàn của ma quỷ?",
-    "explanation": "1 Cô-rinh-tô 10:21 — 'Anh em chẳng có thể uống chén của Chúa và cũng uống chén của các quỷ; chẳng có thể dự tiệc của Chúa, lại dự tiệc của các quỷ.' Tham dự thờ thần tượng — dù không tin thần tượng — vẫn tạo ra 'thông công' (koinōnia) với ma quỷ. Tiệc Thánh tạo thông công thực với máu và thân Christ (10:16) — không thể song song với thông công ma quỷ.",
+    "verseEnd": 21,
+    "content": "Theo 1 Cô-rinh-tô 10:14-21, vì sao tín hữu KHÔNG thể dự cả bàn của Chúa và bàn của ma quỷ?",
+    "explanation": "1 Cô-rinh-tô 10:21 — 'Anh em chẳng có thể uống chén của Chúa và cũng uống chén của các quỷ; chẳng có thể dự tiệc của Chúa, lại dự tiệc của các quỷ.' Tham dự thờ thần tượng — dù không tin thần tượng — vẫn tạo ra 'thông công' (koinōnia) với ma quỷ. Tiệc Thánh tạo thông công thực với máu và thân Christ (10:16) — không thể song song với thông công ma quỷ. Đoạn 10:14-20 lập luận về sự tương phản giữa thông công với Christ và thông công với ma quỷ.",
     "language": "vi",
     "options": [
       "Vì uống chén Chúa và chén của ma quỷ là sự thông công không tương hợp — anh em không thể vừa hầu việc Chúa vừa hầu việc ma quỷ",
@@ -1668,14 +1670,14 @@
       3
     ],
     "verseEnd": 32,
-    "content": "Theo 1 Cô-rinh-tô 11:27-32, dự Tiệc Thánh không xứng đáng dẫn đến hậu quả gì, và tín hữu nên làm gì trước?",
-    "explanation": "1 Cô-rinh-tô 11:28-30 — 'Mỗi người phải tự xét lấy mình, và như thế mới ăn bánh uống chén ấy; vì người nào không phân biệt thân Chúa mà ăn bánh uống chén đó, tức là ăn uống sự xét đoán cho mình. Vì cớ đó, trong anh em có nhiều kẻ tật nguyền, đau ốm, và có lắm kẻ ngủ.' 'Ngủ' = chết. Hội thánh Cô-rinh-tô đã coi thường Tiệc Thánh, ăn uống say sưa (11:21).",
+    "content": "Theo 1 Cô-rinh-tô 11:27-32, hậu quả của việc dự Tiệc Thánh một cách không xứng đáng là gì?",
+    "explanation": "1 Cô-rinh-tô 11:28-30 dạy rằng người dự Tiệc Thánh phải tự xét mình. Ai ăn uống mà không phân biệt thân Chúa thì ăn uống sự xét đoán cho mình. Hậu quả là nhiều người trong Hội thánh Cô-rinh-tô trở nên yếu đuối, đau ốm, và có người chết (ngủ).",
     "language": "vi",
     "options": [
-      "Mất sự cứu rỗi — phải xưng tội với linh mục",
-      "Bị Đức Chúa Trời quên — phải dâng của lễ",
-      "Không có hậu quả — không cần xét lòng",
-      "Mắc tội với thân và huyết Chúa; nhiều người yếu, đau, chết; phải xét lòng mình trước"
+      "Mất sự cứu rỗi đời đời.",
+      "Bị Đức Chúa Trời từ bỏ và phải dâng của lễ chuộc tội.",
+      "Không có hậu quả nghiêm trọng nào.",
+      "Mắc tội với thân và huyết Chúa, dẫn đến thể chất yếu đuối, đau ốm, và có thể chết."
     ],
     "tags": [
       "Tân Ước",
@@ -1782,7 +1784,7 @@
       "Chỉ cho 12 sứ đồ (xét trong văn cảnh) (như được mô tả trong sách)",
       "Chỉ cho Ma-ri Ma-đơ-len (theo cách trình bày của text)",
       "Cho Phi-e-rơ rồi cho 12 sứ đồ — chấm hết (theo trình tự câu chuyện)",
-      "Cho Sê-pha (Phi-e-rơ), 12 sứ đồ, hơn 500 anh em một lúc, Gia-cơ, các sứ đồ, sau cùng cho Phao-lô như đứa sanh non"
+      "Cho Sê-pha (Phi-e-rơ), rồi cho mười hai sứ đồ, sau đó cho hơn năm trăm anh em một lượt, kế đến cho Gia-cơ, rồi cho tất cả các sứ đồ, và cuối cùng cho Phao-lô như đứa sanh non"
     ],
     "tags": [
       "Tân Ước",
@@ -1906,14 +1908,14 @@
     "correctAnswer": [
       1
     ],
-    "content": "Theo 1 Cô-rinh-tô 4:7, ba câu hỏi tu từ Phao-lô đặt ra để đập tan sự kiêu ngạo Cô-rinh-tô là gì?",
-    "explanation": "1 Cô-rinh-tô 4:7 — 'Bởi vì, ai phân biệt ngươi với người khác? Ngươi há có điều chi mà chẳng đã nhận lãnh sao? Nếu ngươi đã nhận lãnh, thì sao còn khoe mình như chẳng từng nhận lãnh?' Ba câu hỏi đập vỡ niềm tự hào Cô-rinh-tô — TẤT CẢ những gì họ có (ân tứ, sự khôn ngoan, vị trí) đều LÀ ÂN TỨ. Khoe khoang phủ nhận ân tứ.",
+    "content": "Theo 1 Cô-rinh-tô 4:7, những câu hỏi tu từ Phao-lô đặt ra để đập tan sự kiêu ngạo của người Cô-rinh-tô là gì?",
+    "explanation": "1 Cô-rinh-tô 4:7 — 'Bởi vì, ai phân biệt ngươi với người khác? Ngươi há có điều chi mà chẳng đã nhận lãnh sao? Nếu ngươi đã nhận lãnh, thì sao còn khoe mình như chẳng từng nhận lãnh?' Phao-lô dùng những câu hỏi này để nhấn mạnh rằng mọi điều họ có (ân tứ, sự khôn ngoan, vị trí) đều là ân tứ từ Chúa. Việc khoe khoang là phủ nhận nguồn gốc của những ân tứ ấy.",
     "language": "vi",
     "options": [
-      "Anh em là ai? Đến từ đâu? Đi về đâu? (như được mô tả trong sách)",
+      "Anh em là ai? Đến từ đâu? Đi về đâu?",
       "Ai làm anh em hơn người khác? Anh có gì mà chẳng đã nhận lãnh? Nếu anh đã nhận lãnh, sao còn khoe như chẳng nhận?",
-      "Anh tin gì? Anh làm gì? Anh đi đâu? (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Ai gọi anh? Ai gửi anh? Ai chu cấp? (theo cách trình bày của text)"
+      "Anh tin gì? Anh làm gì? Anh đi đâu?",
+      "Ai gọi anh? Ai gửi anh? Ai chu cấp?"
     ],
     "tags": [
       "Tân Ước",
@@ -2039,7 +2041,7 @@
     ],
     "verseEnd": 10,
     "content": "Theo 1 Cô-rinh-tô 12:8-10, chín ân tứ thuộc linh cụ thể được liệt kê (theo thứ tự) là gì?",
-    "explanation": "1 Cô-rinh-tô 12:8-10 — '(1) Lời nói khôn ngoan, (2) lời nói tri thức, (3) đức tin, (4) ân tứ chữa bệnh, (5) làm phép lạ, (6) nói tiên tri, (7) phân biệt các thần, (8) nói các thứ tiếng lạ, (9) thông giải các thứ tiếng.' 9 ân tứ — chia 3 nhóm: khải thị (1-2), quyền năng (3-5), nói (6-9). Tất cả đến từ MỘT Đức Thánh Linh (12:11) — Linh phân phát tùy ý.",
+    "explanation": "1 Cô-rinh-tô 12:8-10 — '(1) Lời nói khôn ngoan, (2) lời nói tri thức, (3) đức tin, (4) ân tứ chữa bệnh, (5) làm phép lạ, (6) nói tiên tri, (7) phân biệt các thần, (8) nói các thứ tiếng lạ, (9) thông giải các thứ tiếng.' 9 ân tứ này đều đến từ MỘT Đức Thánh Linh (12:11) — Ngài phân phát cho mỗi người tùy ý Ngài.",
     "language": "vi",
     "options": [
       "Lời khôn ngoan, lời tri thức, đức tin, ân tứ chữa lành, làm phép lạ, nói tiên tri, phân biệt các thần, các thứ tiếng lạ, thông giải các thứ tiếng",

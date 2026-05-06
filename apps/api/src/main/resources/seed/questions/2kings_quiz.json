@@ -36,11 +36,11 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Các Vua 2:9 - Hai phần thần (phần trưởng tử) cho thấy Ê-li-sê muốn tiếp nối sứ vụ cách trọn vẹn.",
+    "explanation": "2 Các Vua 2:9 - Ê-li-sê xin \"hai phần thần\" (phần trưởng tử), thể hiện mong muốn kế thừa và tiếp nối sứ vụ tiên tri của Ê-li cách trọn vẹn.",
     "language": "vi",
     "options": [
       "Sự giàu có",
-      "Hai phần thần của Ê-li",
+      "Hai phần thần (phần trưởng tử)",
       "Sống lâu",
       "Quyền lực"
     ],
@@ -91,7 +91,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Các Vua 4:34 - Ê-li-sê nằm áp lên, miệng kề miệng, mắt kề mắt. Đứa trẻ hắt xì 7 lần và sống lại.",
+    "explanation": "2 Các Vua 4:34-35 - Ê-li-sê nằm áp lên đứa trẻ, cầu nguyện. Sau đó đứa trẻ hắt xì bảy lần và mở mắt.",
     "language": "vi",
     "verseEnd": 35,
     "options": [
@@ -225,11 +225,11 @@
     "verseStart": 25,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Vua nào được khen là yêu Chúa hết lòng, hết linh hồn, hết sức hơn bất kỳ vua nào?",
+    "content": "Vua nào của Giu-đa được Kinh Thánh khen là yêu Chúa hết lòng, hết linh hồn, hết sức, không có vua nào trước hay sau bằng người?",
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Các Vua 23:25 - Trước và sau Giô-si-a, không có vua nào quay lại Chúa hết lòng như ông.",
+    "explanation": "2 Các Vua 23:25 - Trong các vua Giu-đa, trước và sau Giô-si-a, không có vua nào quay lại cùng Đức Giê-hô-va hết lòng, hết ý, hết sức như ông.",
     "language": "vi",
     "options": [
       "Ê-xê-chia",
@@ -280,11 +280,11 @@
     "verseStart": 8,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Vương quốc Giu-đa bị đế quốc nào tiêu diệt và đền thờ bị phá năm 586 TCN?",
+    "content": "Vương quốc Giu-đa bị đế quốc nào tấn công và đền thờ Giê-ru-sa-lem bị phá hủy năm 586 TCN?",
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Các Vua 25:8-9 - Nê-bu-cát-nết-sa đốt đền thờ, phá tường thành và bắt dân lưu đày Ba-by-lôn.",
+    "explanation": "2 Các Vua 25:8-9 - Nê-bu-cát-nết-sa, vua Ba-by-lôn, sai người đốt đền thờ, phá tường thành và bắt dân Giu-đa lưu đày.",
     "language": "vi",
     "verseEnd": 11,
     "options": [
@@ -335,11 +335,11 @@
     "verseStart": 21,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Điều gì xảy ra khi một xác chết chạm xuống cốt của Ê-li-sê trong mồ?",
+    "content": "Điều gì xảy ra khi một xác chết đụng phải hài cốt của Ê-li-sê trong mồ?",
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Các Vua 13:21 - Ngay cả sau khi chết, xương Ê-li-sê vẫn có quyền năng phục sinh. Cho thấy quyền năng Chúa.",
+    "explanation": "2 Các Vua 13:21 - Ngay cả sau khi chết, hài cốt Ê-li-sê vẫn có quyền năng phục sinh. Cho thấy quyền năng Chúa.",
     "language": "vi",
     "options": [
       "Âm thanh lớn",
@@ -397,7 +397,7 @@
     "language": "vi",
     "options": [
       "Bị thuốc độc giết",
-      "Bị ném xuống từ cửa sổ và bị giẫm bởi ngựa",
+      "Bị ném xuống từ cửa sổ và huyết vọt lên tường và ngựa",
       "Bị thiêu",
       "Chết già"
     ],
@@ -523,16 +523,16 @@
     "verseEnd": 15,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Nê-bu-cát-nết-sa đem ai và bao nhiêu người Giê-ru-sa-lem đi lưu đày trong đợt đầu?",
+    "content": "Theo 2 Các Vua 24:14-15, Nê-bu-cát-nết-sa đã đem những ai từ Giê-ru-sa-lem sang Ba-by-lôn?",
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Các Vua 24:14-15 — 'Người (Nê-bu-cát-nết-sa) đem hết Giê-ru-sa-lem qua Ba-by-lôn... Người đem vua Giê-hô-gia-kin sang Ba-by-lôn.' Khoảng 10.000 người.",
+    "explanation": "2 Các Vua 24:14-15 — 'Người đem hết Giê-ru-sa-lem qua Ba-by-lôn, tức là các quan tướng, các chiến sĩ, các thợ thủ công và thợ rèn; không còn ai cả, chỉ trừ những người nghèo khổ nhất trong xứ. Người đem vua Giê-hô-gia-kin sang Ba-by-lôn.' Số người bị lưu đày khoảng 10.000 người.",
     "language": "vi",
     "options": [
-      "Vua Giê-hô-gia-kin và khoảng 10.000 người",
+      "Vua Giê-hô-gia-kin, các quan tướng, chiến sĩ, thợ thủ công và thợ rèn (khoảng 10.000 người)",
       "Chỉ các thầy tế lễ",
-      "Toàn bộ dân Giê-ru-sa-lem",
+      "Toàn bộ dân Giê-ru-sa-lem, không trừ một ai",
       "Chỉ các thiếu niên"
     ],
     "tags": [

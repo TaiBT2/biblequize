@@ -57,7 +57,8 @@
   {
     "book": "1 Kings",
     "chapter": 6,
-    "verseStart": 1,
+    "verseStart": 38,
+    "verseEnd": 38,
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Sa-lô-môn xây đền thờ mất bao lâu?",
@@ -66,7 +67,6 @@
     ],
     "explanation": "1 Các Vua 6:38 - Đền thờ được xây trong 7 năm. Một công trình hùng vĩ.",
     "language": "vi",
-    "verseEnd": 2,
     "options": [
       "40 năm",
       "3 năm",
@@ -281,11 +281,11 @@
     "verseStart": 11,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Chúa hiện ra với Ê-li tại núi Hô-rếp bằng gì?",
+    "content": "Sau gió bão, động đất và lửa, Chúa đã phán với Ê-li tại núi Hô-rếp qua điều gì?",
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Các Vua 19:12 - Chúa không ở trong gió bão, động đất hay lửa, mà trong tiếng nhỏ nhẹ. Chúa nói trong sự yên tĩnh.",
+    "explanation": "1 Các Vua 19:11-12 - Chúa không ở trong gió bão, động đất hay lửa, mà phán với Ê-li trong tiếng nhỏ nhẹ.",
     "language": "vi",
     "verseEnd": 12,
     "options": [
@@ -475,12 +475,12 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "1 Các Vua 13:2 — 'Hỡi bàn thờ, bàn thờ! Đức Giê-hô-va phán như vầy: Một con trai sẽ sinh ra cho nhà Đa-vít, tên là Giô-si-a.'",
+    "explanation": "1 Các Vua 13:2 — 'Hỡi bàn thờ, bàn thờ! Đức Giê-hô-va phán như vầy: Một con trai sẽ sinh ra cho nhà Đa-vít, tên là Giô-si-a; nó sẽ giết trên ngươi những thầy tế lễ của các nơi cao, và xương người ta sẽ đốt trên ngươi.'",
     "language": "vi",
     "options": [
       "Bàn thờ sẽ tồn tại đời đời",
       "Bàn thờ sẽ thành nơi thờ phượng đúng",
-      "Một con cháu Đa-vít tên Giô-si-a sẽ giết các thầy tế lễ trên bàn thờ này",
+      "Một con cháu Đa-vít tên Giô-si-a sẽ giết các thầy tế lễ của các nơi cao và đốt hài cốt trên bàn thờ này",
       "Bàn thờ sẽ bị bay đi"
     ],
     "tags": [
@@ -525,11 +525,11 @@
     "verseEnd": 15,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Vua A-háp giết ai để chiếm vườn nho của người ấy?",
+    "content": "Theo 1 Các Vua 21, ai là người bị giết trong âm mưu để Vua A-háp chiếm vườn nho?",
     "correctAnswer": [
       1
     ],
-    "explanation": "1 Các Vua 21:13-14 — 'Họ ném đá Na-bốt; người chết.' Giê-sa-bên dàn xếp âm mưu để A-háp chiếm vườn nho.",
+    "explanation": "1 Các Vua 21:13-14 — 'Họ ném đá Na-bốt; người chết.' Hoàng hậu Giê-sa-bên đã dàn xếp âm mưu này, và Vua A-háp đồng lõa bằng cách hưởng lợi từ tài sản của Na-bốt.",
     "language": "vi",
     "options": [
       "Mê-phi-bô-sết",

@@ -87,13 +87,13 @@
     "verseStart": 3,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Phi 2:3: Hãy coi người khác như thế nào?",
+    "content": "Phi-líp 2:3 dạy chúng ta hãy coi người khác như thế nào?",
     "correctAnswer": [
       0
     ],
-    "explanation": "Khiêm nhường: coi người khác hơn mình, không chỉ lo cho riêng mình.",
+    "explanation": "Khiêm nhường: coi người khác hơn mình (câu 3).",
     "language": "vi",
-    "verseEnd": 4,
+    "verseEnd": 3,
     "options": [
       "Tốt hơn mình",
       "Không quan tâm",
@@ -582,7 +582,7 @@
       "Đức Chúa Trời quyền năng",
       "Đức Chúa Trời thương xót",
       "Đức Chúa Trời công bình",
-      "Đức Chúa Trời bình an"
+      "Đức Chúa Trời của sự bình an"
     ],
     "tags": [
       "Tân Ước",
@@ -605,10 +605,10 @@
     "explanation": "Phi-líp 1:7 — 'Tôi cảm tưởng về anh em, mỗi người dường ấy là phải lắm; vì anh em ở trong lòng tôi, dầu trong vòng xiềng xích tôi, hoặc trong khi binh vực và làm chứng đạo Tin Lành, thì anh em cũng cùng tôi dự phần ân điển.' 'DỰ PHẦN ÂN ĐIỂN' (synkoinōnos) = đối tác trong ân điển. Khi Phao-lô tù, họ ủng hộ.",
     "language": "vi",
     "options": [
-      "Vì họ giàu có (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Vì họ là kẻ DỰ PHẦN ÂN ĐIỂN với ông — trong xiềng xích, lúc binh vực + làm chứng đạo Tin Lành",
-      "Vì họ thông minh (theo cách trình bày của text)",
-      "Vì họ có nhiều người (như được mô tả trong sách)"
+      "Vì họ giàu có",
+      "Vì họ là kẻ dự phần ân điển với ông — trong xiềng xích, lúc binh vực và làm chứng đạo Tin Lành",
+      "Vì họ thông minh",
+      "Vì họ có nhiều người"
     ],
     "tags": [
       "Tân Ước",
@@ -631,10 +631,10 @@
     "explanation": "Phi-líp 1:18 — 'Song có hề chi! Dẫu thế nào đi nữa, hoặc làm bộ, hoặc thật thà, Đấng Christ cũng được rao truyền; ấy vì đó tôi đương mừng rỡ, và sẽ còn mừng rỡ nữa.' Phao-lô KHÔNG quan tâm danh tiếng cá nhân — chỉ quan tâm Tin Lành lan rộng. Ý: dù động cơ ganh tỵ chăng nữa, NỘI DUNG Christ vẫn cứu được.",
     "language": "vi",
     "options": [
-      "Phao-lô phản đối kịch liệt (như được mô tả trong sách)",
-      "Phao-lô bỏ chức (xét trong văn cảnh)",
+      "Phao-lô phản đối kịch liệt",
+      "Phao-lô bỏ chức",
       "Phao-lô vui mừng — vì miễn là Christ được rao truyền, dù với động cơ nào, ông vẫn vui",
-      "Phao-lô đòi họ ngừng (theo cách trình bày của text)"
+      "Phao-lô đòi họ ngừng"
     ],
     "tags": [
       "Tân Ước",
@@ -658,9 +658,9 @@
     "language": "vi",
     "options": [
       "Là Đấng Christ được tôn cao trong thân thể ông — dầu sống hay chết — cách dạn dĩ",
-      "Là được phóng thích khỏi tù (như được mô tả trong sách)",
-      "Là viết được nhiều thư (theo cách trình bày của text)",
-      "Là gặp lại tín hữu (xét trong văn cảnh)"
+      "Là được phóng thích khỏi tù",
+      "Là viết được nhiều thư",
+      "Là gặp lại tín hữu"
     ],
     "tags": [
       "Tân Ước",
@@ -679,14 +679,14 @@
     "correctAnswer": [
       3
     ],
-    "content": "Theo Phi-líp 1:28-29, các tín hữu phải KHÔNG sợ ai? Và đã được BAN cho 2 điều gì vì cớ Christ?",
-    "explanation": "Phi-líp 1:29 — 'Ngài nhân Đấng Christ, ban ơn cho anh em, không những tin Đấng Christ mà thôi, lại phải chịu khổ vì Ngài nữa.' 'BAN ƠN' (echaristhē) — gốc 'ân điển' (charis). Ý kinh ngạc: SỰ CHỊU KHỔ là MÓN QUÀ ÂN ĐIỂN, ngang hàng với đức tin. Khác với 'thần học thịnh vượng'.",
+    "content": "Theo Phi-líp 1:28-29, tín hữu được dạy đừng sợ ai? Và họ đã được ban cho những điều gì vì cớ Đấng Christ?",
+    "explanation": "Phi-líp 1:28-29: '...đừng sợ kẻ chống nghịch... vì đã được ban cho anh em không những tin Đấng Christ mà thôi, lại cũng vì Ngài mà chịu khổ nữa.' Việc 'chịu khổ vì Đấng Christ' được mô tả là một đặc ân (charis) được ban cho, ngang hàng với đức tin, trái ngược với quan điểm thần học thịnh vượng.",
     "language": "vi",
     "options": [
-      "Không sợ Đức Chúa Trời — được sự sống và ân điển",
-      "Không sợ tổ phụ — được khôn ngoan và sức mạnh",
-      "Không sợ thiên sứ — được phép lạ và quyền năng",
-      "Không sợ kẻ chống nghịch — được BAN không chỉ TIN nhưng cả CHỊU KHỔ vì Ngài"
+      "Đừng sợ hoàn cảnh khó khăn — được bình an và sự che chở",
+      "Đừng sợ tổ phụ — được khôn ngoan và sức mạnh",
+      "Đừng sợ thiên sứ — được phép lạ và quyền năng",
+      "Đừng sợ kẻ chống nghịch — được ban cho không chỉ đức tin nơi Đấng Christ mà cả đặc ân chịu khổ vì Ngài"
     ],
     "tags": [
       "Tân Ước",
@@ -709,10 +709,10 @@
     "explanation": "Phi-líp 2:1-2 — 'Vậy nếu trong Đấng Christ có điều yên ủi nào, nếu vì lòng yêu thương có điều cứu giúp nào, nếu có sự thông công nơi Thánh Linh, nếu có lòng yêu mến và lòng thương xót, thì anh em hãy hiệp ý với nhau.' 4 NẾU = 4 đặc tính của đời sống TÂN ƯỚC. Tất cả phải nẩy ra HIỆP MỘT.",
     "language": "vi",
     "options": [
-      "Giàu có, danh tiếng, sức khỏe, gia đình (theo cách trình bày của text)",
+      "Giàu có, danh tiếng, sức khỏe, gia đình",
       "Phép lạ, ơn nói tiếng lạ, dấu kỳ, lời tiên tri",
       "An ủi trong Christ, sự khuyên giải của tình yêu, sự thông công Thánh Linh, lòng yêu mến + thương xót",
-      "Đức tin, hy vọng, ân điển, bình an (xét trong văn cảnh)"
+      "Đức tin, hy vọng, ân điển, bình an"
     ],
     "tags": [
       "Tân Ước",
@@ -761,7 +761,7 @@
     "explanation": "Phi-líp 2:13 — 'Vì ấy chính Đức Chúa Trời cảm động lòng anh em vừa muốn vừa làm theo ý tốt Ngài.' 2:12 + 2:13 = nghịch lý kì diệu: TÔI làm trọn — CHÚA cảm động. Cả 2 đều thật. Đức Chúa Trời ban cả 2: ý CHÍ (muốn) + KHẢ NĂNG (làm). Không phải tự lực, cũng không phải thụ động — CỘNG TÁC.",
     "language": "vi",
     "options": [
-      "Vì có Hội Thánh hỗ trợ (xét trong văn cảnh)",
+      "Vì có Hội Thánh hỗ trợ",
       "Vì có gương sáng từ tổ phụ",
       "Vì có Đức Thánh Linh khuyên răn",
       "Vì Đức Chúa Trời CẢM ĐỘNG anh em vừa MUỐN vừa LÀM theo ý tốt Ngài"
@@ -788,8 +788,8 @@
     "language": "vi",
     "options": [
       "Là sứ giả Hội Thánh Phi-líp đem quà cho Phao-lô — đã ốm gần chết vì việc Christ",
-      "Là môn đồ trẻ Phao-lô đào tạo (theo cách trình bày của text)",
-      "Là thầy tế lễ đền thờ (xét trong văn cảnh)",
+      "Là môn đồ trẻ Phao-lô đào tạo",
+      "Là thầy tế lễ đền thờ",
       "Là cộng đoàn người Do Thái lưu vong"
     ],
     "tags": [
@@ -815,7 +815,7 @@
     "options": [
       "Hãy ăn năn liên tục (theo cách trình bày của text)",
       "Hãy giữ luật cẩn thận (như được mô tả trong sách)",
-      "Hãy vui mừng trong Chúa — viết lại các điều ấy không là khó cho Phao-lô, là điều bảo đảm cho họ",
+      "Hãy vui mừng trong Chúa",
       "Hãy nhịn ăn nhiều (xét trong văn cảnh)"
     ],
     "tags": [
@@ -840,7 +840,7 @@
     "language": "vi",
     "options": [
       "Coi chừng người La Mã, Hi Lạp, Do Thái",
-      "Coi chừng những CHÓ, kẻ làm ác, kẻ chịu cắt bì giả mạo",
+      "Coi chừng loài chó, coi chừng kẻ làm công gian ác, coi chừng phép cắt bì giả",
       "Coi chừng tiên tri giả, vua ác, dân ngoại",
       "Coi chừng kẻ giàu, kẻ kiêu ngạo, kẻ ác"
     ],
@@ -894,7 +894,7 @@
       "Là điều cần giữ",
       "Là điều bị mất",
       "Là điều cần tự hào",
-      "Là điều LỖ — vì cớ Christ"
+      "Là sự lỗ (thiệt hại)"
     ],
     "tags": [
       "Tân Ước",
@@ -914,12 +914,12 @@
       2
     ],
     "content": "Theo Phi-líp 3:10, Phao-lô khao khát biết Christ trong 3 mặt nào?",
-    "explanation": "Phi-líp 3:10 — 'Cho đến nỗi tôi được biết Ngài, và quyền phép sự sống lại của Ngài, và sự thông công thương khó của Ngài, làm cho tôi nên giống như Ngài trong sự chết Ngài.' KHÔNG chỉ thông tin — KINH NGHIỆM. 3 chiều: BIẾT NGÀI + QUYỀN NĂNG (sống lại) + DỰ PHẦN (thống khổ). Trật tự ngược: 'sống lại' trước 'chết' — vì sống lại là điều Phao-lô đã có; thống khổ + 'nên giống chết' là điều CÒN ĐANG xảy ra.",
+    "explanation": "Phi-líp 3:10 — 'Cho đến nỗi tôi được biết Ngài, và quyền phép sự sống lại của Ngài, và sự thông công thương khó của Ngài, làm cho tôi nên giống như Ngài trong sự chết Ngài.' Câu này nói đến kinh nghiệm ba chiều: biết chính Chúa, quyền năng phục sinh của Ngài, và sự dự phần trong thương khó của Ngài.",
     "language": "vi",
     "options": [
       "Biết phép lạ + dấu kỳ + lời tiên tri (như được mô tả trong sách)",
       "Biết Hội Thánh + truyền thống + lễ (theo cách trình bày của text)",
-      "Biết Ngài + quyền năng phục sinh + dự phần thống khổ Ngài, làm cho thuận giống sự chết Ngài",
+      "Biết Ngài, quyền năng phục sinh của Ngài, và dự phần thương khó của Ngài",
       "Biết tổ phụ + luật + nước (xét trong văn cảnh)"
     ],
     "tags": [
@@ -944,7 +944,7 @@
     "language": "vi",
     "options": [
       "Có — vì đã chiến thắng nhiều (xét trong văn cảnh)",
-      "KHÔNG — chưa được trọn vẹn, nhưng cứ tiến tới hầu cho đoạt được điều mà Christ đã đoạt lấy ông",
+      "Không — ông chưa đạt đến sự trọn vẹn, nhưng đang cố gắng để đạt được",
       "Có — vì đã được khải tượng từ Chúa (như được mô tả trong sách)",
       "Không có ý nghĩ về vấn đề này (theo cách trình bày của text)"
     ],
@@ -992,13 +992,13 @@
       0
     ],
     "content": "Theo Phi-líp 4:10, Phao-lô vui mừng LỚN trong Chúa vì cớ gì?",
-    "explanation": "Phi-líp 4:10 — 'Tôi được vui mừng lớn trong Chúa, vì nay anh em lại lo tưởng về tôi lần nữa; anh em vẫn lo tưởng về điều đó lắm, nhưng không có dịp tiện.' 'ĐÂM CHỒI' (anethalete) = mọc lại sau mùa khô — như cây trổ bông xuân. Phao-lô khéo: KHÔNG trách họ thiếu sót — chỉ vui khi họ có cơ hội tỏ ra.",
+    "explanation": "Phi-líp 4:10 — 'Tôi được vui mừng lớn trong Chúa, vì nay anh em lại lo tưởng về tôi lần nữa; anh em vẫn lo tưởng về điều đó lắm, nhưng không có dịp tiện.' Phao-lô vui mừng vì tín hữu Phi-líp đã lại quan tâm và hỗ trợ ông, dù trước đó họ thiếu cơ hội để thể hiện.",
     "language": "vi",
     "options": [
-      "Vì lòng nghĩ đến Phao-lô của tín hữu nay đã lại ĐÂM CHỒI nẩy lộc — họ đã từng nghĩ nhưng thiếu cơ hội tỏ ra",
-      "Vì được phóng thích (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Vì có nhiều người tin (theo cách trình bày của text)",
-      "Vì viết được nhiều thư (như được mô tả trong sách)"
+      "Vì tín hữu Phi-líp lại quan tâm đến ông",
+      "Vì ông được phóng thích khỏi tù",
+      "Vì có nhiều người mới tin Chúa",
+      "Vì ông đã viết xong nhiều thư tín"
     ],
     "tags": [
       "Tân Ước",
@@ -1018,11 +1018,11 @@
       1
     ],
     "content": "Theo Phi-líp 2:19-22, Phao-lô gửi ai đến Phi-líp, và mô tả người ấy thế nào?",
-    "explanation": "Phi-líp 2:19-22 — 'Vả, tôi mong rằng nhờ Đức Chúa Jêsus, kíp sai Ti-mô-thê đến cùng anh em... Thật vậy, tôi không có ai như người đồng tình với tôi để thật lòng lo về việc anh em... Nhưng anh em đã biết sự trung tín từng trải của người; và biết người là trung thành với tôi về việc Tin Lành, như con ở với cha vậy.' Ti-mô-thê = đệ tử thân cận nhất Phao-lô. 'Cùng tâm trí' (isopsychos) = TƯƠNG ĐƯƠNG TÂM HỒN.",
+    "explanation": "Phi-líp 2:19-22 — 'Vả, tôi mong rằng nhờ Đức Chúa Jêsus, kíp sai Ti-mô-thê đến cùng anh em... Thật vậy, tôi không có ai như người đồng tình với tôi để thật lòng lo về việc anh em... Nhưng anh em đã biết sự trung tín từng trải của người; và biết người là trung thành với tôi về việc Tin Lành, như con ở với cha vậy.' Ti-mô-thê là đệ tử thân cận nhất của Phao-lô, được mô tả là người chân thật, cùng làm việc vì Tin Lành như con với cha.",
     "language": "vi",
     "options": [
       "Gửi Tít — người Hi Lạp dũng cảm (theo cách trình bày của text)",
-      "Gửi TI-MÔ-THÊ — không ai có CÙNG MỘT TÂM TRÍ với Phao-lô; người đã được THỬ ĐỨC + như con với cha cùng Phao-lô hầu việc Tin Lành",
+      "Gửi TI-MÔ-THÊ — không có ai khác thật lòng lo cho hội thánh Phi-líp như người; người đã được THỬ ĐỨC và cùng Phao-lô hầu việc Tin Lành như con với cha",
       "Gửi Ép-ba-phô-đích — chỉ chạy thư (như được mô tả trong sách)",
       "Gửi Cơ-lê-măn — học trò mới (xét trong văn cảnh) (theo trình tự câu chuyện)"
     ],
@@ -1044,13 +1044,13 @@
       3
     ],
     "content": "Theo Phi-líp 4:14-16, Hội Thánh Phi-líp đã làm gì cho Phao-lô khi ông ở Tê-sa-lô-ni-ca?",
-    "explanation": "Phi-líp 4:15-16 — 'Hỡi người Phi-líp, anh em cũng biết rằng lúc tôi khởi giảng Tin Lành, trong khi rời lìa xứ Ma-xê-đoan, thì ngoài Hội thánh Phi-líp, chẳng có hội nào khác hiệp với tôi để lập thành sự trao đổi trong chúng ta cả. Vì tại Tê-sa-lô-ni-ca, anh em đã một hai lần gởi đồ cung cấp về sự cần dùng cho tôi vậy.' Phi-líp DUY NHẤT chia sẻ tài chính.",
+    "explanation": "Phi-líp 4:15-16 — 'Hỡi người Phi-líp, anh em cũng biết rằng lúc tôi khởi giảng Tin Lành, trong khi rời lìa xứ Ma-xê-đoan, thì ngoài Hội thánh Phi-líp, chẳng có hội nào khác hiệp với tôi để lập thành sự trao đổi trong chúng ta cả. Vì tại Tê-sa-lô-ni-ca, anh em đã một hai lần gởi đồ cung cấp về sự cần dùng cho tôi vậy.' Hội Thánh Phi-líp là hội thánh duy nhất đã chia sẻ hỗ trợ tài chính cho Phao-lô trong thời gian này.",
     "language": "vi",
     "options": [
-      "Đến viếng thăm ông (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Cử người đại diện đến giúp (như được mô tả trong sách) (xét theo nội dung gốc)",
-      "Đem ông ra khỏi tù (theo cách trình bày của text) (như văn bản ghi rõ)",
-      "Đã GỬI ĐỒ CỨU TRỢ một lần và hai lần đến Tê-sa-lô-ni-ca — không một Hội Thánh nào DỰ phần với Phao-lô về tiêu xuất + thâu nhập trừ Phi-líp"
+      "Đến viếng thăm ông",
+      "Cử người đại diện đến giúp",
+      "Đem ông ra khỏi tù",
+      "Đã gửi đồ cứu trợ cho ông nhiều lần"
     ],
     "tags": [
       "Tân Ước",
@@ -1069,14 +1069,14 @@
     "correctAnswer": [
       2
     ],
-    "content": "Theo Phi-líp 1:23, Phao-lô bị giằng giữa 2 ý muốn — ông nói lựa chọn nào là 'TỐT HƠN BỘI PHẦN'?",
-    "explanation": "Phi-líp 1:23 — 'Tôi bị ép giữa hai bề muốn đi ở với Đấng Christ, là điều rất tốt hơn.' 'TỐT HƠN BỘI PHẦN' (pollō mallon kreisson) = double comparative — chữ Hi Lạp ĐÔI TỐT HƠN. Phao-lô KHÔNG sợ chết. Phi-líp 1:21 — 'sống là Christ, chết là LỜI'. Tử đạo = chiến thắng, không phải mất.",
+    "content": "Theo Phi-líp 1:23, Phao-lô bị giằng co giữa hai điều — ông nói lựa chọn nào là 'tốt hơn nhiều'?",
+    "explanation": "Phi-líp 1:23 chép: 'Tôi bị giằng co giữa hai điều: ao ước được ra đi để ở với Đấng Christ, điều nầy tốt hơn nhiều;' (Bản Dịch 2011). Việc 'ra đi để ở với Đấng Christ' được Phao-lô xem là tốt hơn nhiều so với việc tiếp tục sống trong thân xác để phục vụ các tín hữu. Điều này phù hợp với tâm tình của ông trong câu 21: 'Vì đối với tôi, sống là Đấng Christ và chết là điều ích lợi.'",
     "language": "vi",
     "options": [
-      "Sống lâu để giảng đạo (xét trong văn cảnh)",
-      "Phục vụ tín hữu Phi-líp (theo cách trình bày của text)",
-      "Đi qua đời (chết) để được Ở VỚI Christ — TỐT HƠN BỘI PHẦN",
-      "Trở thành thầy giáo nổi tiếng"
+      "Tiếp tục sống để giảng đạo và phục vụ (xét trong văn cảnh)",
+      "Ở lại để phục vụ và khích lệ tín hữu Phi-líp",
+      "Ra đi (qua đời) để được ở với Đấng Christ — điều tốt hơn nhiều",
+      "Trở thành một nhà lãnh đạo tôn giáo nổi tiếng"
     ],
     "tags": [
       "Tân Ước",
@@ -1122,7 +1122,7 @@
       1
     ],
     "content": "Theo Phi-líp 2:17, Phao-lô tự ví đời sống mình như gì nếu phải tử vì đạo?",
-    "explanation": "Phi-líp 2:17 — 'Ví dầu huyết tôi phải dùng để tưới trên của tế lễ và của dâng đức tin anh em tôi cũng vui lòng, lại đồng vui với anh em hết thảy.' Hình ảnh từ Cựu Ước (Dân 28:7, Lê 23:13): RƯỢU đổ ra trên tế lễ. Đức tin Phi-líp = TẾ LỄ chính; máu Phao-lô = RƯỢU dâng kèm. Chỉ là PHỤ THUỘC — nhưng vẫn vui.",
+    "explanation": "Phi-líp 2:17 — 'Ví dầu huyết tôi phải dùng để tưới trên của tế lễ và của dâng đức tin anh em tôi cũng vui lòng, lại đồng vui với anh em hết thảy.' Phao-lô sử dụng hình ảnh từ nghi lễ Cựu Ước: đức tin và chức vụ của các tín hữu Phi-líp là của lễ chính, còn sự tử đạo của ông (huyết ông) được ví như lễ quán (rượu) được đổ ra thêm trên của lễ ấy. Ông vui mừng được dâng phần phụ thuộc này.",
     "language": "vi",
     "options": [
       "Như tế lễ thiêu (xét trong văn cảnh) (theo trình tự câu chuyện)",
@@ -1199,14 +1199,14 @@
     "correctAnswer": [
       3
     ],
-    "content": "Theo Phi-líp 3:11, mục tiêu cuối cùng Phao-lô khao khát là gì?",
-    "explanation": "Phi-líp 3:11 — 'Mong cho tôi được đến sự sống lại từ trong kẻ chết.' Cách diễn đạt KHÔNG CHẮC ('mong / by some means') = không phải nghi ngờ về sự cứu rỗi — mà CHƯA BIẾT con đường đến: tử đạo? sống đến tái lâm? Mục tiêu KHÔNG đạt qua công lao — mà qua KIÊN ĐỊNH với Christ. 'Sống lại từ kẻ chết' = exanastasis (cụm độc đáo, chỉ ở đây trong NT).",
+    "content": "Theo Phi-líp 3:11, điều Phao-lô khao khát đạt đến là gì?",
+    "explanation": "Phi-líp 3:11 — 'Mong cho tôi được đến sự sống lại từ trong kẻ chết.' Cách diễn đạt 'mong / bằng cách nào' thể hiện sự khao khát và chưa biết trước con đường (tử đạo hay sống đến ngày Chúa đến), nhưng không phải nghi ngờ về kết quả. Mục tiêu này đạt được nhờ sự kết hiệp với Đấng Christ, không phải bởi công đức riêng. 'Sự sống lại từ trong kẻ chết' là mục đích cuối cùng.",
     "language": "vi",
     "options": [
-      "Trở thành sứ đồ vĩ đại",
-      "Có nhiều môn đồ (xét trong văn cảnh)",
-      "Có khải tượng tột đỉnh",
-      "Bằng cách nào ĐẠT đến SỰ SỐNG LẠI từ kẻ chết"
+      "Trở thành một sứ đồ vĩ đại",
+      "Có thật nhiều môn đồ",
+      "Nhận được một khải tượng đặc biệt",
+      "Được sự sống lại từ trong kẻ chết"
     ],
     "tags": [
       "Tân Ước",

@@ -286,7 +286,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 8:31-32,36: Lẽ thật sẽ buông tha các ngươi; Con mà buông tha thì thật được tự do.",
+    "explanation": "Giăng 8:31-32,36: Nếu các ngươi hằng ở trong đạo ta... các ngươi sẽ biết lẽ thật, và lẽ thật sẽ buông tha các ngươi... nếu Con buông tha các ngươi, các ngươi sẽ thật được tự do.",
     "language": "vi",
     "verseEnd": 36,
     "options": [
@@ -392,13 +392,14 @@
     "book": "John",
     "chapter": 14,
     "verseStart": 6,
+    "verseEnd": 6,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Câu xưng nhận nổi tiếng Giăng 14:6 nói Ngài là gì?",
+    "content": "Trong Giăng 14:6, Chúa Giê-xu tuyên bố: \"Ta là...\" gì?",
     "correctAnswer": [
       2
     ],
-    "explanation": "Giăng 14:6: Không ai đến cùng Cha mà chẳng bởi Ta.",
+    "explanation": "Giăng 14:6 (BD2011): \"Đức Chúa Jêsus đáp: \"Chính Ta là con đường, chân lý và sự sống. Chẳng bởi Ta thì không ai được đến với Cha.\"",
     "language": "vi",
     "options": [
       "Cửa và đường",
@@ -505,18 +506,18 @@
     "verseStart": 28,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Lời cuối cùng của Chúa Giê-su trên thập tự trong Giăng 19:30 là gì?",
+    "content": "Lời cuối cùng của Chúa Giê-su trên thập tự giá được ghi trong Giăng 19:30 là gì?",
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 19:30: Ngài phán: \"Đã xong!\" rồi tắt thở.",
+    "explanation": "Giăng 19:30: 'Khi Giê-su nếm giấm rồi, Ngài bèn phán: Thế là đã xong! Rồi Ngài gục đầu mà trút linh hồn.' (Bản Dịch 2011). Lời cuối cùng là 'Thế là đã xong!' (hoặc 'Đã xong').",
     "language": "vi",
     "verseEnd": 30,
     "options": [
-      "Ta phó linh hồn Ta",
-      "Đã xong",
-      "Ta khát",
-      "Cha ơi, xin tha cho họ"
+      "Ta khát (c.28)",
+      "Thế là đã xong! (c.30)",
+      "Hỡi đàn bà kia, đó là con của ngươi! (c.26-27)",
+      "Mọi sự đã được trọn (c.28, ý nghĩa)"
     ],
     "tags": [
       "Tân Ước",
@@ -524,7 +525,8 @@
       "Hoàn tất",
       "Giăng",
       "Phúc Âm",
-      "Nâng cao"
+      "Nâng cao",
+      "Lời cuối cùng"
     ]
   },
   {
@@ -619,7 +621,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 1:1,14 - Ngôi Lời là Chúa Giê-su, Đấng từ muôn đời ở cùng Đức Chúa Trời và chính là Đức Chúa Trời.",
+    "explanation": "Giăng 1:1 khẳng định Ngôi Lời (Logos) vốn ở cùng Đức Chúa Trời và chính là Đức Chúa Trời. Tân Ước mặc khải Ngôi Lời ấy chính là Chúa Giê-su Christ (xem thêm Giăng 1:14, 18).",
     "language": "vi",
     "options": [
       "Đức Thánh Linh",
@@ -781,11 +783,11 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giăng 14:6 - Chúa Giê-su là con đường duy nhất đến với Đức Chúa Cha, không có con đường nào khác.",
+    "explanation": "Giăng 14:6 - Chúa Giê-su tuyên bố Ngài là con đường duy nhất đến với Đức Chúa Cha. Câu nguyên văn hoàn chỉnh là: 'Không ai đến được với Cha mà không bởi Ta'.",
     "language": "vi",
     "options": [
       "Bởi tôn giáo",
-      "Bởi ta",
+      "Bởi Ta",
       "Bởi luật pháp",
       "Bởi việc lành"
     ],
@@ -855,7 +857,7 @@
   {
     "book": "John",
     "chapter": 4,
-    "verseStart": 13,
+    "verseStart": 14,
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Chúa Giê-su nói với người đàn bà Sa-ma-ri về nước gì?",
@@ -886,11 +888,11 @@
     "verseStart": 35,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Chúa Giê-su tuyên bố: \"Ta là ___ sự sống\"",
+    "content": "Chúa Giê-su tuyên bố: \"Ta là ___ của sự sống\"",
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 6:35 - Ai đến cùng ta sẽ không đói, ai tin ta sẽ không khát. Chúa là nguồn nuôi dưỡng thuộc linh.",
+    "explanation": "Giăng 6:35 - Đức Chúa Jêsus phán: 'Ta là bánh của sự sống; ai đến cùng ta chẳng hề đói, và ai tin ta chẳng hề khát.' Chúa là nguồn nuôi dưỡng thuộc linh.",
     "language": "vi",
     "options": [
       "Ánh sáng",
@@ -913,7 +915,7 @@
     "verseStart": 11,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Chúa Giê-su nói: \"Ta là Đấng chăn hiền lành; đấng chăn hiền lành vì chiên mà ___\"",
+    "content": "Chúa Giê-su nói: \"Ta là người chăn hiền lành; người chăn hiền lành vì chiên mình phó sự sống mình.\"",
     "correctAnswer": [
       2
     ],
@@ -922,7 +924,7 @@
     "options": [
       "Xây chuồng",
       "Tìm cỏ xanh",
-      "Phó mạng sống mình",
+      "Phó sự sống mình",
       "Chiến đấu"
     ],
     "tags": [
@@ -1104,7 +1106,7 @@
     "explanation": "Giăng 3:5 — 'Quả thật, Ta nói cùng ngươi, nếu một người chẳng nhờ nước và Thánh Linh mà sanh, thì không được vào nước Đức Chúa Trời.'",
     "language": "vi",
     "options": [
-      "Lửa và Thần Linh",
+      "Lửa và Thánh Linh",
       "Đức tin và việc làm",
       "Luật pháp và ân điển",
       "Nước và Thánh Linh"
@@ -1254,7 +1256,7 @@
     "verseEnd": 54,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Tại Ca-na, Chúa Jêsus chữa lành con trai của ai bằng cách phán một lời từ xa?",
+    "content": "Từ Ca-na, Chúa Jêsus chữa lành con trai của ai ở Ca-bê-na-um bằng cách phán một lời từ xa?",
     "correctAnswer": [
       3
     ],
@@ -1264,7 +1266,7 @@
       "Phi-e-rơ",
       "Một thầy tế lễ",
       "Phô-ti-pha",
-      "Một quan thị vệ (viên quan triều)"
+      "Một quan thị vệ"
     ],
     "tags": [
       "Tân Ước",
@@ -1358,7 +1360,7 @@
     "verseStart": 39,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Giăng 5:39 — Chúa Jêsus quở các thầy tế lễ vì tra cứu Kinh Thánh nhưng không nhận biết gì?",
+    "content": "Giăng 5:39 — Chúa Jêsus quở những người đối thoại với Ngài vì tra cứu Kinh Thánh nhưng không nhận biết gì?",
     "correctAnswer": [
       2
     ],
@@ -1467,13 +1469,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 6:68 — 'Lạy Chúa, chúng tôi đi theo ai? Chúa có những lời của sự sống đời đời.'",
+    "explanation": "Giăng 6:68-69 — Phi-e-rơ thưa rằng: 'Lạy Chúa, chúng tôi đi theo ai? Chúa có những lời của sự sống đời đời; chúng tôi đã tin và nhận biết rằng Chúa là Đấng Thánh của Đức Chúa Trời.'",
     "language": "vi",
     "options": [
       "Chúng tôi sẽ đi theo các tiên tri khác",
       "Chúng tôi cần thời gian suy nghĩ",
       "Chúng tôi sẽ về nhà",
-      "Chúa ơi, chúng tôi đi theo ai? Chúa có lời của sự sống đời đời"
+      "Lạy Chúa, chúng tôi đi theo ai? Chúa có những lời của sự sống đời đời; chúng tôi đã tin và nhận biết rằng Chúa là Đấng Thánh của Đức Chúa Trời."
     ],
     "tags": [
       "Tân Ước",
@@ -1571,7 +1573,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 8:32 — 'Các ngươi sẽ biết lẽ thật, và lẽ thật sẽ buông tha các ngươi.'",
+    "explanation": "Giăng 8:32 — 'và các ngươi sẽ biết lẽ thật, và lẽ thật sẽ buông tha các ngươi.'",
     "language": "vi",
     "options": [
       "Khiến các ngươi giàu có",
@@ -1623,7 +1625,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giăng 8:44 — 'Vì các ngươi ra bởi cha mình, là ma quỉ... Nó là kẻ nói dối, và là cha sự nói dối.'",
+    "explanation": "Giăng 8:44 — Chúa Jêsus phán với những người Do Thái không tin: \"Các ngươi bởi cha mình, là ma quỉ, mà sanh ra... nó vốn là kẻ nói dối và là cha sự nói dối.\"",
     "language": "vi",
     "options": [
       "Cha của các tiên tri",
@@ -1802,11 +1804,11 @@
     "verseStart": 35,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Câu ngắn nhất trong Kinh Thánh tiếng Anh — và cũng đầy ý nghĩa — là gì?",
+    "content": "Câu Kinh Thánh nào sau đây, được chép trong Giăng 11:35, là câu ngắn nhất trong Kinh Thánh bản tiếng Anh (KJV)?",
     "correctAnswer": [
       0
     ],
-    "explanation": "Giăng 11:35 — 'Đức Chúa Jêsus khóc.' (Jesus wept) — câu ngắn nhất trong Kinh Thánh, bày tỏ tình thương sâu sắc.",
+    "explanation": "Giăng 11:35 chép: 'Đức Chúa Jêsus khóc.' Trong bản Kinh Thánh tiếng Anh King James Version, câu 'Jesus wept.' được xem là câu ngắn nhất, bày tỏ tình thương sâu sắc của Chúa Jêsus.",
     "language": "vi",
     "options": [
       "Đức Chúa Jêsus khóc",
@@ -2721,13 +2723,13 @@
       1
     ],
     "verseEnd": 34,
-    "content": "Trong Giăng, cụm từ 'được treo lên' (lifted up) được Chúa Jêsus dùng ba lần để ám chỉ sự chết của Ngài. Theo 12:32-34, dân chúng hiểu cụm này KHÔNG khớp với điều gì?",
-    "explanation": "Giăng 3:14 (Môi-se treo rắn đồng), 8:28, 12:32-34 — ba lần Chúa nói 'được treo lên' chỉ thập tự. Trong 12:34, dân ngạc nhiên: 'chúng tôi nghe trong luật pháp rằng Đấng Christ còn LẠI đời đời'. Họ không hiểu vì sao Đấng Christ lại phải chết.",
+    "content": "Trong Giăng 12:32-34, phản ứng trực tiếp nào của dân chúng cho thấy họ hiểu sai cụm từ 'được treo lên' (lifted up) của Chúa Jêsus?",
+    "explanation": "Giăng 3:14 (Môi-se treo rắn đồng), 8:28, 12:32-34 — ba lần Chúa nói 'được treo lên' chỉ thập tự. Trong 12:34, dân chúng ngạc nhiên và nói: 'chúng tôi nghe trong luật pháp rằng Đấng Christ còn LẠI đời đời'. Phản ứng này cho thấy họ không hiểu vì sao Đấng Christ (Đấng Mê-si) lại phải chết, dù Chúa Jêsus đang ám chỉ sự chết của Ngài.",
     "language": "vi",
     "options": [
       "Họ chấp nhận đó là tiên báo về sự đóng đinh trên thập tự giá",
-      "Họ nghĩ Đấng Christ phải còn LẠI đời đời theo như luật pháp",
-      "Họ không hiểu vì sao Con Người phải bị treo lên cao như vậy",
+      "Họ nói rằng theo luật pháp, Đấng Christ phải còn lại đời đời",
+      "Họ thắc mắc không hiểu vì sao Con Người phải bị treo lên cao như vậy",
       "Họ liên hệ đến hình ảnh con rắn đồng được Môi-se treo lên"
     ],
     "tags": [
@@ -2941,8 +2943,8 @@
       3
     ],
     "verseEnd": 40,
-    "content": "Ni-cô-đem xuất hiện ba lần trong Giăng. Theo trình tự, lần xuất hiện CUỐI CÙNG của ông là gì?",
-    "explanation": "Ba lần Ni-cô-đem trong Giăng: (1) 3:1-21 ban đêm hỏi về tái sinh; (2) 7:50-52 bênh vực trong Tòa Công luận; (3) 19:39-40 đem 100 cân mộc dược + lư hội xức xác Chúa Jêsus cùng Giô-sép ở A-ri-ma-thê.",
+    "content": "Ni-cô-đem xuất hiện ba lần trong sách Giăng. Hành động nào dưới đây mô tả lần xuất hiện CUỐI CÙNG của ông?",
+    "explanation": "Ba lần Ni-cô-đem xuất hiện trong sách Giăng: (a) Giăng 3:1-21 – đến gặp Chúa Giê-su ban đêm và được dạy về sự tái sinh; (b) Giăng 7:50-52 – bênh vực Chúa Giê-su trong Tòa Công luận; (c) Giăng 19:39-40 – đem một trăm cân mộc dược và lư hội để xức xác Chúa Giê-su cùng với Giô-sép ở A-ri-ma-thê. Lần cuối cùng là (c).",
     "language": "vi",
     "options": [
       "Đến gặp Chúa Jêsus ban đêm và được dạy về sự tái sinh",
@@ -3057,7 +3059,7 @@
     "options": [
       "'Ngươi có phải là vua dân Giu-đa không?' (18:33)",
       "'Lẽ thật là gì?' (18:38) sau khi nghe Chúa nói về lẽ thật",
-      "'Ngươi đã ăn lễ Vượt Qua chưa?' (Phi-lát không hỏi câu này)",
+      "'Ngươi đã ăn lễ Vượt Qua chưa?'",
       "'Ngươi từ đâu đến?' (19:9) khi nghe Chúa Jêsus xưng mình là Con Đức Chúa Trời"
     ],
     "tags": [
@@ -3244,8 +3246,8 @@
     "explanation": "Giăng 13:34 — 'Ta ban cho các ngươi một điều răn mới, là các ngươi phải yêu nhau; như ta đã yêu các ngươi, thì các ngươi cũng hãy yêu nhau'. Lê-vi 19:18 đã có 'yêu người lân cận như mình'. Cái MỚI là tiêu chuẩn: 'như TA đã yêu' — Chúa Jêsus phó mạng sống vì bạn hữu (15:13).",
     "language": "vi",
     "options": [
-      "Đây là điều răn yêu lần đầu tiên xuất hiện, chưa từng có trong Cựu Ước nào trước",
       "Điều răn này yêu cầu yêu cả kẻ thù chứ không chỉ người lân cận như xưa",
+      "Điều răn này là điều răn yêu thương duy nhất, thay thế tất cả điều răn khác",
       "Tiêu chuẩn yêu thương được nâng lên: 'như TA đã yêu các ngươi' (yêu đến phó mạng sống)",
       "Điều răn này chỉ áp dụng cho thời Tân Ước và không bắt buộc người đời cũ phải giữ"
     ],
@@ -3273,7 +3275,7 @@
     "options": [
       "'Chẳng bởi ta thì không ai được đến cùng Cha' — sự cứu rỗi DUY NHẤT qua Đấng Christ",
       "'Bất cứ ai cũng có thể đến cùng Cha qua nhiều cách khác nhau tùy lòng tốt'",
-      "'Chỉ có người Y-sơ-ra-ên mới được đến cùng Cha qua ta mà thôi'",
+      "'Chỉ những người đã giữ luật Môi-se mới được đến cùng Cha qua ta'",
       "'Cha ngươi sẽ tự đến cùng các ngươi mà không cần qua ta'"
     ],
     "tags": [
@@ -3299,7 +3301,7 @@
     "language": "vi",
     "options": [
       "Mỗi tín hữu phải làm việc thật nhiều mới có thể sinh trái xứng đáng cho Chúa",
-      "Cha sẽ tỉa các nhánh sinh trái rồi cho người Y-sơ-ra-ên cai trị thế giới",
+      "Nhánh nào không kết quả sẽ bị Cha tỉa sửa để sinh nhiều trái hơn",
       "Một số tín hữu là cây nho thật, số khác là cây nho giả không thuộc về Đức Chúa Trời",
       "Tín hữu phải 'cứ ở' (abide) trong Đấng Christ, vì 'ngoài ta, các ngươi chẳng làm chi được'"
     ],
@@ -3381,7 +3383,7 @@
     "options": [
       "'Các ngươi tin sai về luật Môi-se nên không hiểu được lễ Sa-bát đúng nghĩa'",
       "'Các ngươi không siêng năng học Kinh Thánh đủ nhiều mỗi ngày trong tuần'",
-      "'Các ngươi không CHỊU ĐẾN cùng ta để được sự sống' (dù Kinh Thánh làm chứng về ta)",
+      "'Các ngươi không MUỐN đến cùng ta để được sự sống' (dù Kinh Thánh làm chứng về ta)",
       "'Các ngươi không hiểu được tiếng Hê-bơ-rơ trong các bản gốc cổ xưa'"
     ],
     "tags": [
@@ -3435,7 +3437,7 @@
     "options": [
       "Ngài đi để tìm tòi xem các môn đồ có thật sự yêu mến Ngài hay không trong tương lai",
       "Ngài đi 'sắm sẵn cho các ngươi một chỗ' và 'sẽ trở lại đem các ngươi đi với ta'",
-      "Ngài đi để rời khỏi thế gian này và sẽ không bao giờ trở lại với loài người nữa",
+      "Ngài đi để chuẩn bị một cuộc nổi dậy chống lại chính quyền La Mã",
       "Ngài đi đến Pha-ra-ôn Ai-cập trước rồi sau mới quay lại với dân Y-sơ-ra-ên"
     ],
     "tags": [
@@ -3484,10 +3486,10 @@
     ],
     "verseEnd": 31,
     "content": "Giăng 20:30-31 (RVV11) là tuyên bố mục đích của cả sách. Theo lời chính của Giăng, ông viết các dấu lạ này để người đọc làm gì?",
-    "explanation": "Giăng 20:31 — 'Nhưng các việc nầy đã chép, để cho các ngươi tin rằng Đức Chúa Jêsus là Đấng Christ, tức là Con Đức Chúa Trời, và để khi các ngươi tin, thì nhờ danh Ngài mà được sự sống'. Đây là 'mission statement' của sách Phúc âm Giăng.",
+    "explanation": "Giăng 20:31 — 'Nhưng các việc nầy đã chép, để cho các ngươi tin rằng Đức Chúa Jêsus là Đấng Christ, tức là Con Đức Chúa Trời, và để khi các ngươi tin, thì nhờ danh Ngài mà được sự sống.' Đây là 'mission statement' của sách Phúc âm Giăng.",
     "language": "vi",
     "options": [
-      "Để 'tin Đức Chúa Jêsus là Đấng Christ, Con Đức Chúa Trời' và 'nhân danh Ngài mà được sự sống'",
+      "Để 'tin Đức Chúa Jêsus là Đấng Christ, Con Đức Chúa Trời' và 'nhờ danh Ngài mà được sự sống'",
       "Để học thuộc lòng các phép lạ và truyền lại cho con cháu các đời sau",
       "Để biết được tiểu sử chính xác về thời thơ ấu của Đức Chúa Jêsus tại Na-xa-rét",
       "Để có bằng chứng pháp lý chống lại nhà cầm quyền La-mã trước tòa án"
@@ -3538,7 +3540,7 @@
     ],
     "verseEnd": 9,
     "content": "Theo Giăng 6:9, đứa trẻ trong câu chuyện cho 5,000 người ăn có bao nhiêu bánh và bao nhiêu cá?",
-    "explanation": "Giăng 6:9 — 'Đây có một đứa con trai, có năm cái bánh mạch nha và hai con cá; nhưng đông người dường nầy, thì ngần ấy có thấm vào đâu?' Phép lạ này là một trong bảy dấu lạ trong Giăng.",
+    "explanation": "Giăng 6:9 — 'Đây có một đứa con trai, có năm cái bánh mạch nha và hai con cá; nhưng đông người dường nầy, thì ngần ấy có thấm vào đâu?'",
     "language": "vi",
     "options": [
       "Bảy bánh và hai con cá",
@@ -3646,7 +3648,7 @@
     ],
     "verseEnd": 11,
     "content": "Theo Giăng 18:10, khi quân đến bắt Chúa Jêsus tại vườn Ghết-sê-ma-nê, Si-môn Phi-e-rơ làm gì?",
-    "explanation": "Giăng 18:10 — 'Bấy giờ, Si-môn Phi-e-rơ có một thanh gươm, bèn rút ra, đánh đầy tớ của thầy cả thượng phẩm, chém đứt tai bên hữu. Đầy tớ đó tên là Man-chu'. Chúa quở: 'hãy nạp gươm ngươi vào vỏ' (18:11).",
+    "explanation": "Giăng 18:10 — 'Bấy giờ, Si-môn Phi-e-rơ có một thanh gươm, bèn rút ra, đánh đầy tớ của thầy cả thượng phẩm, chém đứt tai bên hữu. Đầy tớ đó tên là Man-chu.' Đức Chúa Jêsus phán với Phi-e-rơ: 'Hãy nạp gươm ngươi vào vỏ' (18:11).",
     "language": "vi",
     "options": [
       "Chạy trốn khỏi vườn ngay lập tức cùng các môn đồ khác",
@@ -3753,7 +3755,7 @@
       0
     ],
     "verseEnd": 9,
-    "content": "Theo Giăng 5:1-9, người liệt tại ao Bê-tết-đa đã đau bao nhiêu năm khi Chúa Jêsus chữa lành?",
+    "content": "Theo Giăng 5:1-9, người bị bệnh tại ao Bê-tết-đa đã đau bao nhiêu năm khi Chúa Jêsus chữa lành?",
     "explanation": "Giăng 5:5 — 'Tại đó có một người bị bệnh đã ba mươi tám năm'. Chúa hỏi 'ngươi có muốn lành chăng?' và phán 'hãy đứng dậy, vác giường ngươi và đi'. Người đó liền lành.",
     "language": "vi",
     "options": [
@@ -3781,7 +3783,7 @@
     ],
     "verseEnd": 51,
     "content": "Theo Giăng 6:51 (RVV11), Chúa Jêsus tuyên bố Ngài là 'bánh hằng sống' và bánh ấy là gì?",
-    "explanation": "Giăng 6:51 — 'Ta là bánh hằng sống từ trên trời xuống; nếu ai ăn bánh ấy, thì sẽ sống vô cùng; và bánh mà ta sẽ ban cho vì sự sống của thế gian tức là thịt ta'. Lời này tiếp diễn từ 6:35 'Ta là bánh của sự sống' và dẫn đến tranh luận lớn (6:52-66).",
+    "explanation": "Giăng 6:51 (RVV11) — 'Ta là bánh hằng sống từ trên trời xuống; nếu ai ăn bánh ấy, thì sẽ sống vô cùng; và bánh mà ta sẽ ban cho vì sự sống của thế gian tức là thịt ta'. Lời này tiếp diễn từ 6:35 'Ta là bánh của sự sống' và dẫn đến tranh luận lớn (6:52-66).",
     "language": "vi",
     "options": [
       "Chiên con không tì vết được dâng tại đền thờ Giê-ru-sa-lem",
@@ -3808,7 +3810,7 @@
     ],
     "verseEnd": 39,
     "content": "Theo Giăng 7:37-39, vào ngày sau hết của Lễ Lều Tạm, Chúa Jêsus đứng kêu lớn rằng nếu ai khát, hãy đến với Ngài. Lời hứa cụ thể là gì?",
-    "explanation": "Giăng 7:38-39 — 'Như Kinh thánh đã chép rằng: Kẻ nào tin ta thì sông nước hằng sống sẽ chảy từ trong lòng mình, y như Kinh thánh đã chép vậy. Ngài phán điều đó chỉ về Đức Thánh Linh mà người nào tin Ngài sẽ nhận lấy'. Lời tiên báo Lễ Ngũ Tuần.",
+    "explanation": "Giăng 7:38-39 — 'Kẻ nào tin ta thì sông nước hằng sống sẽ chảy từ trong lòng mình, y như Kinh thánh đã chép vậy.' (Ngài phán điều đó chỉ về Đức Thánh Linh mà người nào tin Ngài sẽ nhận lấy). Lời tiên báo Lễ Ngũ Tuần.",
     "language": "vi",
     "options": [
       "'Người ấy sẽ được vào nhà Cha ta trên trời'",
@@ -3889,7 +3891,7 @@
     ],
     "verseEnd": 38,
     "content": "Theo Giăng 9:35-38, sau khi người mù được chữa lành bị Pha-ri-si đuổi ra khỏi nhà hội, Chúa Jêsus đi tìm và hỏi anh điều gì?",
-    "explanation": "Giăng 9:35-38 — 'Đức Chúa Jêsus nghe họ đã đuổi người ra... bèn phán rằng: Ngươi có tin đến Con Đức Chúa Trời chăng?... Người thưa rằng: Lạy Chúa, tôi tin; bèn sấp mình xuống trước mặt Ngài'. Đây là một trong những cảnh thờ lạy đầy ý nghĩa.",
+    "explanation": "Giăng 9:35-38 — 'Đức Chúa Jêsus nghe họ đã đuổi người ra, bèn tìm được người, mà phán rằng: Ngươi có tin đến Con Đức Chúa Trời chăng?... Người thưa rằng: Lạy Chúa, tôi tin; bèn sấp mình xuống trước mặt Ngài'. Đây là một trong những cảnh thờ lạy đầy ý nghĩa.",
     "language": "vi",
     "options": [
       "'Ngươi có TIN ĐẾN CON ĐỨC CHÚA TRỜI chăng?' — và anh thưa: 'Lạy Chúa, tôi tin' rồi sấp mình thờ lạy",

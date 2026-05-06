@@ -282,11 +282,11 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Chiến trận thật sự là thuộc linh, chống lại thế lực tối tăm, không phải con người.",
+    "explanation": "Chiến trận thật sự là thuộc linh, chống lại các thế lực tối tăm thuộc linh, không phải con người.",
     "language": "vi",
     "options": [
       "Chính phủ",
-      "Các thế lực, các quyền binh, các chúa tể bóng tối",
+      "Các quan trưởng, các quyền năng, các vua chúa của thế gian mờ tối, cùng các thần dữ trên trời",
       "Bạn bè",
       "Con người"
     ],
@@ -305,11 +305,11 @@
     "verseStart": 14,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Khi giới toàn thân của Chúa gồm những gì?",
+    "content": "Toàn bộ binh giáp của Đức Chúa Trời (Ê-phê-sô 6:14-17) gồm những gì?",
     "correctAnswer": [
       1
     ],
-    "explanation": "6 món khí giới thuộc linh bảo vệ và tấn công. Lời Chúa là vũ khí tấn công duy nhất.",
+    "explanation": "6 món khí giới thuộc linh bảo vệ và tấn công. Trong đó, gươm Thánh Linh (tức Lời Chúa) là vũ khí tấn công duy nhất.",
     "language": "vi",
     "verseEnd": 17,
     "options": [
@@ -522,17 +522,17 @@
     "verseStart": 12,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Theo Ê-phê-sô 6:12, các tín hữu chiến đấu chống lại ai?",
+    "content": "Theo Ê-phê-sô 6:12, đối tượng thực sự của cuộc chiến thuộc linh mà tín hữu phải đối diện là gì?",
     "correctAnswer": [
       3
     ],
-    "explanation": "Ê-phê-sô 6:12 — 'Chúng ta đánh trận, chẳng phải cùng thịt và huyết, bèn là cùng các quan trưởng, các quyền năng, các vua chúa của thế gian mờ tối nầy, cùng các thần dữ ở các miền trên trời.'",
+    "explanation": "Ê-phê-sô 6:12 — 'Vì chúng ta đánh trận, chẳng phải cùng thịt và huyết, bèn là cùng chủ quyền, cùng thế lực, cùng các vua chúa của thế gian mờ tối nầy, cùng các thần dữ ở các miền trên trời.' (Bản Dịch 2011). Câu Kinh Thánh xác định đối tượng là các thế lực thuộc linh tối tăm.",
     "language": "vi",
     "options": [
-      "Cùng thịt và huyết loài người",
-      "Cùng các vua dân ngoại",
-      "Cùng các tà giáo",
-      "Cùng các quan trưởng, quyền năng, vua chúa thế gian mờ tối, thần dữ trên trời"
+      "Chỉ là những xung đột với con người (thịt và huyết)",
+      "Các hệ tư tưởng và triết lý sai lầm",
+      "Các chính quyền và nhà cầm quyền trần thế",
+      "Các thế lực thuộc linh của sự tối tăm và ác"
     ],
     "tags": [
       "Tân Ước",
@@ -1077,7 +1077,7 @@
     "options": [
       "Để chiến thắng trong tranh luận",
       "Để tách ra khỏi kẻ sai (theo cách trình bày của text)",
-      "Để LỚN LÊN trong mọi sự để giống như Đấng làm Đầu là Christ",
+      "Để được thêm lên (lớn lên) trong mọi sự trong Đấng làm Đầu là Christ",
       "Để bảo vệ tổ chức (xét trong văn cảnh)"
     ],
     "tags": [
@@ -1101,7 +1101,7 @@
     "explanation": "Ê-phê-sô 4:22-24 — 'Rằng anh em phải bỏ cách ăn nết ở ngày trước, thoát lốt người cũ là người bị hư hỏng bởi tư dục dỗ dành, mà phải làm nên mới trong tâm chí mình, và mặc lấy người mới, tức là người đã được dựng nên giống như Đức Chúa Trời, trong sự công bình và sự thánh sạch của lẽ thật.' Hình ảnh THAY ÁO (apothesthai/endysasthai). Tái tạo (anakainosis) bắt đầu từ TÂM CHÍ.",
     "language": "vi",
     "options": [
-      "Lột áo cũ, mặc áo mới (xét trong văn cảnh) (theo trình tự câu chuyện)",
+      "Lột bỏ 'áo cũ' (ẩn dụ cho lối sống cũ) và mặc 'áo mới' (ẩn dụ cho lối sống mới)",
       "Lột thói nghèo, mặc thói giàu (theo cách trình bày của text)",
       "Lột truyền thống, mặc đổi mới (như được mô tả trong sách)",
       "Lột người cũ (theo lối sống xưa) — mặc người mới (đã được dựng nên giống Đức Chúa Trời trong sự công bình + thánh khiết)"
@@ -1128,7 +1128,7 @@
     "language": "vi",
     "options": [
       "Phải khoe khoang Ngài (theo cách trình bày của text)",
-      "Phải tránh LÀM BUỒN (đừng làm BUỒN) Đức Thánh Linh — vì bởi Ngài anh em được ấn chứng đến ngày cứu chuộc",
+      "Đừng làm buồn Đức Thánh Linh — vì bởi Ngài anh em được ấn chứng đến ngày cứu chuộc",
       "Phải tránh hỏi Ngài (xét trong văn cảnh) (theo trình tự câu chuyện)",
       "Phải tránh không nghe Ngài (như được mô tả trong sách)"
     ],
@@ -1300,19 +1300,20 @@
     "book": "Ephesians",
     "chapter": 2,
     "verseStart": 15,
+    "verseEnd": 16,
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "correctAnswer": [
       1
     ],
-    "content": "Theo Ê-phê-sô 2:15-16, Christ đã hủy bỏ điều gì để tạo ra điều gì mới?",
-    "explanation": "Ê-phê-sô 2:15-16 — 'Là sự thù nghịch đã phân rẽ ra, bởi vì Ngài đã đem thân mình mà trừ bỏ luật pháp của các điều răn chép thành điều lệ. Như vậy, khi làm cho hòa nhau, Ngài muốn lấy cả hai lập nên một người mới ở trong Ngài.' 'NGƯỜI MỚI' (kainos anthrōpos) = nhân loại MỚI — KHÔNG phải Do Thái + dân ngoại sống cạnh nhau, mà 1 thân thể MỚI hoàn toàn.",
+    "content": "Theo Ê-phê-sô 2:15-16, Đấng Christ đã hủy bỏ điều gì để tạo nên một thực tại mới nào?",
+    "explanation": "Ê-phê-sô 2:15-16 cho biết Đấng Christ 'đã hủy bỏ trong thân Ngài luật pháp của các điều răn và quy định, để từ hai dân tộc (Do Thái và Dân Ngoại) Ngài tạo nên trong chính Ngài một người mới, và qua thập tự giá khiến cả hai hòa thuận với Đức Chúa Trời trong một thân.' 'Một người mới' (kainos anthrōpos) chỉ về một nhân loại mới hợp nhất trong Đấng Christ, không phải là hai nhóm tồn tại riêng biệt.",
     "language": "vi",
     "options": [
-      "Hủy bỏ Tin Lành cũ — tạo ra Tin Lành mới (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Hủy bỏ luật pháp với điều răn và quy điều, để dựng nên trong chính Ngài MỘT NGƯỜI MỚI từ hai (Do Thái + dân ngoại) — đem hai bên hòa lại với Đức Chúa Trời trong một thân",
-      "Hủy bỏ đền thờ Cựu Ước — tạo ra hội đường mới (theo cách trình bày của text) (như văn bản ghi rõ)",
-      "Hủy bỏ giao ước Áp-ra-ham — tạo ra giao ước Sinai (như được mô tả trong sách) (xét theo nội dung gốc)"
+      "Hủy bỏ Tin Lành cũ để tạo ra một Tin Lành mới.",
+      "Hủy bỏ luật pháp với các điều răn và quy định, để từ hai (Do Thái và Dân Ngoại) dựng nên trong Ngài một người mới, đem cả hai hòa thuận với Đức Chúa Trời.",
+      "Hủy bỏ đền thờ Giê-ru-sa-lem để tạo ra Hội Thánh là đền thờ mới.",
+      "Hủy bỏ giao ước cũ để thiết lập giao ước mới tại núi Si-na-i."
     ],
     "tags": [
       "Tân Ước",

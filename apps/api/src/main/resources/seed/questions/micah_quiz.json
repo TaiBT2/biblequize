@@ -5,17 +5,17 @@
     "verseStart": 18,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Mi-che 7:18: \"Ai là Đức Chúa Trời giống như Ngài, ___ sự gian ác?\"",
+    "content": "Mi-chê 7:18: \"Ai là Đức Chúa Trời giống như Ngài, ___ sự gian ác...\"?",
     "correctAnswer": [
       3
     ],
-    "explanation": "Chúa hay tha sự gian ác, không giữ giận đời đời vì Ngài lấy sự nhân từ làm vui.",
+    "explanation": "Chúa tha sự gian ác, không giữ giận đời đời vì Ngài lấy sự nhân từ làm vui.",
     "language": "vi",
     "options": [
       "Ghi",
       "Phạt",
       "Nhớ",
-      "Hay tha"
+      "Tha"
     ],
     "tags": [
       "Cựu Ước",
@@ -59,10 +59,10 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Mi-che 3:8 - Quyền năng phục vụ đến từ Thánh Linh, không phải từ bản thân tiên tri.",
+    "explanation": "Mi-chê 3:8 - Tiên tri Mi-chê xác định quyền năng phục vụ của ông đến từ Thần của Đức Giê-hô-va, bởi sự công bình và quyền năng.",
     "language": "vi",
     "options": [
-      "Thần của Đức Giê-hô-va, sự công bình và sức mạnh",
+      "Thần của Đức Giê-hô-va, bởi sự công bình và quyền năng",
       "Học thức",
       "Chức vụ",
       "Kinh nghiệm"
@@ -131,13 +131,13 @@
     "verseStart": 3,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Mi-che cảnh báo sự phán xét của Chúa sẽ đến trên thành nào?",
+    "content": "Mi-che 1:3-5 cảnh báo sự phán xét của Chúa sẽ đến trên thành nào?",
     "correctAnswer": [
       0
     ],
     "explanation": "Mi-che 1:5 - Cả hai kinh đô đều phạm tội và cả hai sẽ bị phán xét. Chúa công bình với mọi người.",
     "language": "vi",
-    "verseEnd": 4,
+    "verseEnd": 5,
     "options": [
       "Sa-ma-ri và Giê-ru-sa-lem",
       "Chỉ Sa-ma-ri",

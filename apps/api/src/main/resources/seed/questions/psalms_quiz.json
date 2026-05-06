@@ -9,7 +9,7 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Kinh Thánh ghi: \"Đức Giê-hô-va là Đấng chăn giữ tôi\" (Thi 23:1).",
+    "explanation": "Kinh Thánh ghi: \"Đức Giê-hô-va là Đấng chăn giữ tôi: Tôi sẽ chẳng thiếu thốn gì\" (Thi 23:1).",
     "language": "vi",
     "options": [
       "Đức Giê-hô-va là Đấng chăn giữ tôi",
@@ -33,7 +33,7 @@
     "type": "multiple_choice_single",
     "content": "Trong Thi Thiên 23, khi đi qua trũng bóng chết, tác giả không sợ vì gì?",
     "correctAnswer": [
-      0
+      3
     ],
     "explanation": "Kinh Thánh ghi: \"Dầu khi tôi đi trong trũng bóng chết, tôi sẽ chẳng sợ tai họa nào; vì Chúa ở cùng tôi\" (Thi 23:4).",
     "language": "vi",
@@ -57,16 +57,16 @@
     "verseStart": 1,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Thi Thiên đầu tiên nói về người nào được phước?",
+    "content": "Thi Thiên đầu tiên mô tả người được phước là người như thế nào?",
     "correctAnswer": [
       2
     ],
-    "explanation": "Kinh Thánh ghi: \"Phước cho người nào chẳng theo mưu kế của kẻ ác, chẳng đứng trong đường tội nhân, không ngồi trong chỗ của kẻ nhạo báng\" (Thi 1:1).",
+    "explanation": "Kinh Thánh ghi: \"Phước cho người nào chẳng theo mưu kế của kẻ ác, chẳng đứng trong đường tội nhân, không ngồi trong chỗ của kẻ nhạo báng\" (Thi 1:1). Đây là mô tả đầy đủ về người được phước.",
     "language": "vi",
     "options": [
       "Người không đi theo mưu kế của kẻ ác",
       "Người không đứng trong đường tội nhân",
-      "Cả ba câu trên",
+      "Cả ba đặc điểm trên",
       "Người không ngồi trong chỗ của kẻ nhạo báng"
     ],
     "tags": [
@@ -91,7 +91,7 @@
     "language": "vi",
     "options": [
       "Hãy cầu nguyện",
-      "Hãy cất tiếng reo mừng cho Đức Giê-hô-va",
+      "Hãy cất tiếng reo mừng cho Đức Giê-hô-va, cả thế gian",
       "Hãy thờ phượng",
       "Hãy hát thánh ca"
     ],
@@ -224,7 +224,7 @@
     "options": [
       "Đức Giê-hô-va là nơi ẩn náu tôi",
       "Hãy ngợi khen Đức Giê-hô-va",
-      "Đức Giê-hô-va là Đấng chăn giữ tôi",
+      "Đức Giê-hô-va là Đấng chăn giữ tôi, tôi sẽ chẳng thiếu thốn gì",
       "Trời kể ra sự vinh hiển Chúa"
     ],
     "tags": [
@@ -274,7 +274,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Thi 46:10 - Lời mời gọi yên lặng trước sự hiện diện của Chúa, tin cậy Ngài đang nắm quyền kiểm soát.",
+    "explanation": "Thi 46:10 - Lời mời gọi yên lặng trước sự hiện diện của Chúa, tin cậy Ngài đang nắm quyền kiểm soát. Nguyên văn: 'Hãy yên lặng và biết rằng ta là Đức Chúa Trời'.",
     "language": "vi",
     "options": [
       "Đấng Toàn Năng",
@@ -321,7 +321,7 @@
   {
     "book": "Psalms",
     "chapter": 139,
-    "verseStart": 13,
+    "verseStart": 14,
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Thi 139:14 nói chúng ta được dựng nên cách nào?",
@@ -356,7 +356,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ma 27:46 - Chúa Giê-su trích Thi 22:1 khi bị đóng đinh. Thi 22 là thi thiên tiên tri chi tiết về sự đóng đinh.",
+    "explanation": "Mat 27:46 - Chúa Giê-su trích Thi 22:1 khi bị đóng đinh. Thi 22 là thi thiên tiên tri chi tiết về sự đóng đinh.",
     "language": "vi",
     "options": [
       "Phao-lô",
@@ -543,7 +543,7 @@
     "verseStart": 7,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Thi 2:7 — Đức Giê-hô-va phán cùng Đấng được xức dầu rằng: 'Ngươi là ___ Ta; ngày nay Ta đã sanh ngươi.'",
+    "content": "Thi Thiên 2:7 — Ta sẽ giảng ra mạng lệnh: Đức Giê-hô-va phán cùng Ta rằng: 'Ngươi là ___ Ta; ngày nay Ta đã sanh ngươi.'",
     "correctAnswer": [
       2
     ],
@@ -572,11 +572,11 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Thi Thiên 8:4 — 'Loài người là gì mà Chúa nhớ đến? Con loài người là chi mà Chúa thăm viếng nó?'",
+    "explanation": "Thi Thiên 8:4 — 'Loài người là gì mà Chúa nhớ đến? Con loài người là chi mà Chúa thăm viếng nó?' Câu hỏi này thể hiện sự kinh ngạc về sự quan tâm của Đức Chúa Trời dành cho con người.",
     "language": "vi",
     "options": [
       "Như cây cỏ",
-      "Loài người là gì mà Chúa nhớ đến",
+      "Một chút thấp hơn thiên sứ",
       "Như con sâu trong đất",
       "Như tro bụi"
     ],
@@ -1043,7 +1043,7 @@
     "verseStart": 5,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Thi 62:5 — Linh hồn tôi nương dựa nơi ai mà thôi?",
+    "content": "Thi 62:5 — Hỡi linh hồn ta, hãy nghỉ an nơi ai mà thôi?",
     "correctAnswer": [
       0
     ],
@@ -1068,7 +1068,7 @@
     "verseStart": 1,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Thi 63:1 — Đa-vít than 'Linh hồn tôi ___ Chúa, thân thể tôi mỏi mòn về Chúa, trong đất khô đáng và mệt mỏi.'",
+    "content": "Thi 63:1 — Đa-vít than 'Linh hồn tôi ___ Chúa, thân thể tôi mỏi mòn về Chúa, trong đất khô khan, cực nhọc, và chẳng có nước.'",
     "correctAnswer": [
       2
     ],
@@ -1093,7 +1093,7 @@
     "verseStart": 25,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Thi 73:25 — 'Ở trên trời tôi có ai trừ ra Chúa? Còn dưới đất tôi chẳng ___'",
+    "content": "Thi 73:25 — 'Ở trên trời tôi có ai trừ ra Chúa? Còn dưới đất tôi chẳng ___ người nào khác hơn Chúa.'",
     "correctAnswer": [
       3
     ],
@@ -1103,7 +1103,7 @@
       "Sợ hãi",
       "Mơ ước",
       "Tin nơi",
-      "Ước ao người nào khác hơn Chúa"
+      "Ước ao"
     ],
     "tags": [
       "Cựu Ước",
@@ -1118,7 +1118,7 @@
     "verseStart": 10,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Thi 84:10 — Một ngày trong hành lang Chúa quý hơn ngày nào ở đâu khác?",
+    "content": "Thi 84:10 — Một ngày trong hành lang Chúa đáng hơn bao nhiêu ngày khác?",
     "correctAnswer": [
       1
     ],
@@ -1293,7 +1293,7 @@
     "verseStart": 12,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Thi 103:12 — Đức Chúa Trời đã đem tội lỗi chúng ta xa khỏi mình bao xa?",
+    "content": "Thi 103:12 — Đức Giê-hô-va đã đem tội lỗi chúng ta xa khỏi chúng ta bao xa?",
     "correctAnswer": [
       3
     ],
@@ -1428,7 +1428,7 @@
       "Sự cầu nguyện",
       "Sự dâng tế lễ",
       "Sự sống",
-      "Sự chết — quí báu"
+      "Quí báu"
     ],
     "tags": [
       "Cựu Ước",
@@ -1440,7 +1440,8 @@
   {
     "book": "Psalms",
     "chapter": 117,
-    "verseStart": 1,
+    "verseStart": null,
+    "verseEnd": null,
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "content": "Thi Thiên ngắn nhất là chương nào?",
@@ -1693,7 +1694,7 @@
     "verseStart": 1,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Thi 133:1 — 'Kìa, anh em ăn ở hòa thuận nhau, thật tốt đẹp ___'",
+    "content": "Thi Thiên 133:1 — Điều gì được mô tả là \"thật tốt đẹp dường bao\"?",
     "correctAnswer": [
       2
     ],
@@ -1701,8 +1702,8 @@
     "language": "vi",
     "options": [
       "Khi vua công bình lên ngôi",
-      "Khi mưa thuận gió hòa",
       "Khi anh em ăn ở hòa thuận",
+      "Khi mưa thuận gió hòa",
       "Khi đền thờ được xây xong"
     ],
     "tags": [
@@ -2072,7 +2073,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Thi Thiên 56:8 — 'Chúa đếm các bước đi qua đi lại của tôi: Xin Chúa để nước mắt tôi trong ve của Chúa, nước mắt tôi há chẳng được ghi vào sổ Chúa sao?'",
+    "explanation": "Thi Thiên 56:8 — 'Chúa đếm các bước đi qua đi lại của tôi: Xin Chúa để nước mắt tôi trong ve của Chúa, há chẳng được ghi vào sổ Chúa sao?'",
     "language": "vi",
     "options": [
       "Trong sông",
@@ -2297,13 +2298,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Thi Thiên 104:24 — 'Hỡi Đức Giê-hô-va, công việc Ngài nhiều biết bao! Ngài đã làm hết thảy cách khôn ngoan; Trái đất đầy dẫy tài sản Ngài.'",
+    "explanation": "Thi Thiên 104:24 — 'Hỡi Đức Giê-hô-va, công việc Ngài nhiều biết bao! Ngài đã làm hết thảy cách khôn ngoan; Trái đất đầy dẫy các tạo vật Ngài.'",
     "language": "vi",
     "options": [
       "Sự phán xét",
       "Quyền năng",
       "Lòng yêu thương",
-      "Tài sản (creatures) Ngài"
+      "Các tạo vật Ngài"
     ],
     "tags": [
       "Cựu Ước",
@@ -2418,11 +2419,11 @@
     "verseStart": 130,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Thi 119:130 — Sự bày giải lời Chúa làm gì cho người ngu dại?",
+    "content": "Thi 119:130 — Sự bày giải lời Chúa làm gì cho kẻ đơn sơ (người thật thà)?",
     "correctAnswer": [
       0
     ],
-    "explanation": "Thi Thiên 119:130 — 'Sự bày giải lời Chúa, soi sáng cho, ban sự thông hiểu cho người thật thà.'",
+    "explanation": "Thi Thiên 119:130 — 'Sự bày giải lời Chúa, soi sáng cho, Ban sự hiểu biết cho kẻ đơn sơ.' (Bản Truyền Thống).",
     "language": "vi",
     "options": [
       "Soi sáng và ban sự thông hiểu",
@@ -2566,18 +2567,19 @@
     "book": "Psalms",
     "chapter": 148,
     "verseStart": 1,
+    "verseEnd": 4,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Thi 148:1-3 — Ai và những gì được kêu gọi ngợi khen Đức Giê-hô-va?",
+    "content": "Thi 148:1-4 — Ai và những gì được kêu gọi ngợi khen Đức Giê-hô-va?",
     "correctAnswer": [
       2
     ],
-    "explanation": "Thi Thiên 148:2-3 — 'Hỡi hết thảy các thiên sứ Ngài, hãy ngợi khen Ngài! Hỡi cả cơ binh Ngài, hãy ngợi khen Ngài! Hỡi mặt trời, mặt trăng, hãy ngợi khen Ngài! Hỡi hết thảy ngôi sao sáng, hãy ngợi khen Ngài!'",
+    "explanation": "Thi Thiên 148:1-4 — 'Hãy ngợi khen Đức Giê-hô-va từ các từng trời!... Hỡi hết thảy các thiên sứ Ngài, hãy ngợi khen Ngài! Hỡi cả cơ binh Ngài, hãy ngợi khen Ngài! Hỡi mặt trời, mặt trăng, hãy ngợi khen Ngài! Hỡi hết thảy ngôi sao sáng, hãy ngợi khen Ngài! Hỡi các từng trời của các từng trời, cùng nước trên các từng trời, hãy ngợi khen Ngài!'",
     "language": "vi",
     "options": [
       "Chỉ loài người",
       "Chỉ thiên sứ",
-      "Cả thiên sứ, cơ binh, mặt trời, mặt trăng, các ngôi sao",
+      "Các từng trời, thiên sứ, cơ binh, mặt trời, mặt trăng, các ngôi sao, nước trên các từng trời",
       "Chỉ các vua"
     ],
     "tags": [
@@ -2616,17 +2618,18 @@
     "book": "Psalms",
     "chapter": 150,
     "verseStart": 3,
+    "verseEnd": 5,
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Thi 150:3-5 — Hãy ngợi khen Đức Giê-hô-va bằng nhạc cụ nào?",
     "correctAnswer": [
       1
     ],
-    "explanation": "Thi Thiên 150:3-5 — 'Hãy thổi kèn ngợi khen Ngài, gảy đàn cầm và đàn lia mà ngợi khen Ngài! Hãy đánh trống cơm và nhảy múa... hãy đánh chập chỏa.'",
+    "explanation": "Thi Thiên 150:3-5 — 'Hãy thổi kèn ngợi khen Ngài, gảy đàn cầm và đàn lia mà ngợi khen Ngài! Hãy đánh trống cơm và nhảy múa mà ngợi khen Ngài! Hãy gảy đàn dây và thổi sáo mà ngợi khen Ngài! Hãy đánh chập chỏa dội tiếng, đánh chập chỏa reo lên mà ngợi khen Ngài!'",
     "language": "vi",
     "options": [
       "Chỉ giọng hát",
-      "Kèn, đàn cầm, đàn lia, trống cơm, nhảy múa, đàn dây, kèn, chập chỏa",
+      "Kèn, đàn cầm, đàn lia, trống cơm, nhảy múa, đàn dây, sáo, chập chỏa",
       "Chỉ kèn lễ",
       "Chỉ đàn cầm và đàn lia"
     ],
@@ -2706,7 +2709,7 @@
       "Thi 2 — 'Ngươi là Con ta, ngày nay ta đã sanh ngươi' (trích Hê-bơ-rơ 1:5)",
       "Thi 22 — Lời than thở Đấng Mê-si-a (trích Ma-thi-ơ 27 trên thập tự)",
       "Thi 110 — 'Hãy ngồi bên hữu ta' (trích Ma-thi-ơ 22, Hê-bơ-rơ 1)",
-      "Thi 200 — Lời tiên tri về sự tái lâm (Thi Thiên chỉ có 150 chương)"
+      "Thi 200 — (Không tồn tại, vì Thi Thiên chỉ có 150 chương)"
     ],
     "tags": [
       "Cựu Ước",
@@ -3084,13 +3087,13 @@
     ],
     "verseEnd": 1,
     "content": "Năm thi thiên cuối sách (146-150) đều bắt đầu và kết thúc với 'Halê-lu-gia' (Ngợi khen Đức Giê-hô-va). Thi Thiên nào nằm trong bộ này? (chọn tất cả đúng)",
-    "explanation": "Thi Thiên 146-150 là 'Cụm Hallelujah Cuối' (Final Hallel): mỗi bài bắt đầu và kết thúc với 'Halê-lu-gia'. Thi Thiên 137 là thi thiên lưu đày Ba-by-lôn (lament về sự khốn khổ), không thuộc cụm Hallelujah.",
+    "explanation": "Thi Thiên 146-150 là 'Cụm Hallelujah Cuối' (Final Hallel): mỗi bài bắt đầu và kết thúc với 'Halê-lu-gia'. Thi Thiên 111 cũng bắt đầu bằng 'Halê-lu-gia' nhưng không thuộc cụm cuối này.",
     "language": "vi",
     "options": [
       "Thi Thiên 146 — 'Linh hồn tôi ơi, hãy ngợi khen Đức Giê-hô-va!'",
       "Thi Thiên 148 — Toàn vũ trụ, từ trời đến đất, ngợi khen Đức Giê-hô-va",
       "Thi Thiên 150 — 'Hãy ngợi khen Đức Chúa Trời với mọi loại nhạc khí'",
-      "Thi Thiên 137 — 'Bên bờ sông Ba-by-lôn' (thi thiên lưu đày, không Halê-lu-gia)"
+      "Thi Thiên 111 — 'Tôi sẽ hết lòng cảm tạ Đức Giê-hô-va' (có Halê-lu-gia nhưng không thuộc nhóm 146-150)"
     ],
     "tags": [
       "Cựu Ước",
@@ -3364,7 +3367,7 @@
       "Hai hình ảnh hoàn toàn giống nhau, chỉ là cách lặp lại một ý duy nhất",
       "Đèn dùng cho người Pha-ri-si, ánh sáng dùng cho dân thường người Y-sơ-ra-ên",
       "Đèn chỉ ngày Sa-bát, ánh sáng chỉ các ngày khác trong tuần làm việc",
-      "ĐÈN chỉ bước đi NGAY (chân tôi); ÁNH SÁNG chỉ con đường XA hơn (đường lối)"
+      "Đèn chỉ bước đi ngay (chân tôi); ánh sáng chỉ con đường xa hơn (đường lối)"
     ],
     "tags": [
       "Cựu Ước",
@@ -3412,7 +3415,7 @@
     ],
     "verseEnd": 1,
     "content": "Theo Thi 1:1 (RVV11), 'Phước cho người nào' có ba mệnh đề tiêu cực theo cấu trúc đặc biệt. Cấu trúc đó là gì?",
-    "explanation": "Thi 1:1 — 'Phước cho người nào chẳng theo mưu kẻ dữ, chẳng đứng trong đường tội nhân, không ngồi chỗ của kẻ nhạo báng'. Ba động từ tăng dần: theo (đi nhẹ) → đứng (dừng) → ngồi (định cư), kèm ba đối tượng: kẻ dữ → tội nhân → kẻ nhạo báng.",
+    "explanation": "Thi 1:1 (RVV11) — 'Phước cho người nào chẳng theo mưu kẻ dữ, chẳng đứng trong đường tội nhân, không ngồi chỗ của kẻ nhạo báng'. Ba động từ tăng dần: theo (đi nhẹ) → đứng (dừng) → ngồi (định cư), kèm ba đối tượng: kẻ dữ → tội nhân → kẻ nhạo báng.",
     "language": "vi",
     "options": [
       "'Chẳng ăn, chẳng uống, chẳng ngủ' — kiêng nhịn tối đa",
@@ -3439,12 +3442,12 @@
     ],
     "verseEnd": 14,
     "content": "Theo Thi 19:14 (RVV11), lời cầu xin kết thúc thi thiên là gì? Hai chỗ trống điền chính xác: 'Nguyện ___ của miệng tôi và ___ của lòng tôi được đẹp ý Ngài'.",
-    "explanation": "Thi 19:14 (RVV11) — 'Hỡi Đức Giê-hô-va là hòn đá tôi, và là Đấng cứu chuộc tôi, nguyện LỜI nói của miệng tôi, SỰ SUY GẪM của lòng tôi được đẹp ý Ngài!' Hai chỗ trống là 'Lời' và 'Sự suy gẫm' — kết hợp lời nói bên ngoài và suy gẫm bên trong.",
+    "explanation": "Thi 19:14 (RVV11) — \"Hỡi Đức Giê-hô-va là hòn đá tôi, và là Đấng cứu chuộc tôi, nguyện lời nói của miệng tôi, sự suy gẫm của lòng tôi, được đẹp ý Ngài!\" Hai chỗ trống là \"lời nói\" và \"sự suy gẫm\" — kết hợp lời nói bên ngoài và suy gẫm bên trong.",
     "language": "vi",
     "options": [
       "Lời nói / suy tư",
       "Tiếng hát / ca khúc",
-      "Lời / sự suy gẫm",
+      "Lời nói / sự suy gẫm",
       "Tiếng nói / quyết định"
     ],
     "tags": [
@@ -3466,13 +3469,13 @@
     ],
     "verseEnd": 1,
     "content": "Theo Thi 23:1 (RVV11), câu mở đầu chính xác và đầy đủ là gì?",
-    "explanation": "Thi 23:1 (RVV11) — 'Đức Giê-hô-va là Đấng chăn giữ tôi; tôi sẽ chẳng thiếu thốn gì'. Câu nhấn mạnh sự cung cấp đầy đủ của Đức Chúa Trời, không nhất thiết là sự giàu có vật chất, mà là 'không thiếu thốn' điều cần thiết.",
+    "explanation": "Thi 23:1 (RVV11) — 'Đức Giê-hô-va là Đấng chăn giữ tôi: tôi sẽ chẳng thiếu thốn gì'. Câu nhấn mạnh sự cung cấp đầy đủ của Đức Chúa Trời, không nhất thiết là sự giàu có vật chất, mà là 'không thiếu thốn' điều cần thiết.",
     "language": "vi",
     "options": [
       "'Đức Giê-hô-va là Đấng chăn giữ tôi; lương thực tôi sẽ đầy đủ luôn'",
       "'Đức Giê-hô-va là Đấng chăn giữ tôi; tôi sẽ giàu có cả đời này'",
       "'Đức Giê-hô-va là Đấng chăn giữ tôi; tôi sẽ không bao giờ chết'",
-      "'Đức Giê-hô-va là Đấng chăn giữ tôi; tôi sẽ chẳng thiếu thốn gì'"
+      "'Đức Giê-hô-va là Đấng chăn giữ tôi: tôi sẽ chẳng thiếu thốn gì'"
     ],
     "tags": [
       "Cựu Ước",
@@ -3493,10 +3496,10 @@
     ],
     "verseEnd": 1,
     "content": "Theo Thi 27:1 (RVV11), Đa-vít tuyên bố ba danh hiệu của Đức Giê-hô-va. Ba danh hiệu đó là?",
-    "explanation": "Thi 27:1 — 'Đức Giê-hô-va là ánh sáng và là sự cứu rỗi tôi: Tôi sẽ sợ ai? Đức Giê-hô-va là sức lực của mạng sống tôi: Tôi sẽ hãi hùng ai?' Ba danh hiệu: ánh sáng (soi đường), cứu rỗi (giải cứu), sức lực (sức mạnh).",
+    "explanation": "Thi 27:1 — 'Đức Giê-hô-va là ánh sáng và là sự cứu rỗi tôi: tôi sẽ sợ ai? Đức Giê-hô-va là nơi bảo vệ của mạng sống tôi: tôi sẽ hãi hùng ai?' Ba danh hiệu: ánh sáng (soi đường), cứu rỗi (giải cứu), nơi bảo vệ (đồn lũy/bảo vệ).",
     "language": "vi",
     "options": [
-      "'Đức Giê-hô-va là ÁNH SÁNG / SỰ CỨU RỖI / SỨC LỰC của tôi'",
+      "'Đức Giê-hô-va là ÁNH SÁNG / SỰ CỨU RỖI / NƠI BẢO VỆ của tôi'",
       "'Đức Giê-hô-va là VUA / TIÊN TRI / THẦY TẾ LỄ của tôi'",
       "'Đức Giê-hô-va là CHA / CON / THÁNH LINH của tôi'",
       "'Đức Giê-hô-va là PHƯỚC / ƠN / VINH HIỂN của tôi'"
@@ -3547,7 +3550,7 @@
     ],
     "verseEnd": 12,
     "content": "Theo Thi 51:10-12 (RVV11), Đa-vít cầu xin Đức Chúa Trời điều gì sau khi ăn năn?",
-    "explanation": "Thi 51:10-12 — 'Đức Chúa Trời ôi! xin hãy dựng nên trong tôi một lòng trong sạch, và làm cho mới lại trong tôi một thần linh ngay thẳng. Xin chớ từ bỏ tôi khỏi trước mặt Chúa, cũng đừng cất khỏi tôi Thánh Linh Chúa. Xin hãy ban lại cho tôi sự vui vẻ về sự cứu rỗi của Chúa'. Lời cầu mang ý 'tạo dựng mới' (động từ bara — chỉ Chúa làm).",
+    "explanation": "Thi 51:10-12 — 'Đức Chúa Trời ôi! xin hãy dựng nên trong tôi một lòng trong sạch, và làm cho mới lại trong tôi một thần linh ngay thẳng. Xin chớ từ bỏ tôi khỏi trước mặt Chúa, cũng đừng cất khỏi tôi Thánh Linh Chúa. Xin hãy ban lại cho tôi sự vui vẻ về sự cứu rỗi của Chúa, và lấy thần linh sẵn lòng mà nâng đỡ tôi.' Lời cầu mang ý 'tạo dựng mới' (động từ bara — chỉ Chúa làm).",
     "language": "vi",
     "options": [
       "'Xin Chúa cho tôi nhiều của cải để bù đắp cho gia đình U-ri tôi đã hại'",
@@ -3574,7 +3577,7 @@
     ],
     "verseEnd": 4,
     "content": "Theo Thi 90:4 (RVV11), Mô-se nói về sự khác biệt giữa thời gian của Đức Chúa Trời và của con người. Câu chính xác là gì?",
-    "explanation": "Thi 90:4 — 'Vì một ngàn năm trước mắt Chúa khác nào ngày hôm qua đã qua, và như một canh của đêm'. Sứ đồ Phi-e-rơ trích biến câu này trong 2 Phi-e-rơ 3:8 ('một ngày như ngàn năm') để giải thích sự chậm trễ của Chúa trong sự phán xét.",
+    "explanation": "Thi 90:4 — 'Vì một ngàn năm trước mắt Chúa khác nào ngày hôm qua đã qua rồi, khác nào một canh của đêm.' Sứ đồ Phi-e-rơ trích biến câu này trong 2 Phi-e-rơ 3:8 ('một ngày như ngàn năm') để giải thích sự chậm trễ của Chúa trong sự phán xét.",
     "language": "vi",
     "options": [
       "'Một ngày của Chúa bằng một năm của loài người trên đất'",
@@ -3627,8 +3630,8 @@
       1
     ],
     "verseEnd": 2,
-    "content": "Theo Thi 121:1-2 (RVV11), câu mở đầu của 'bài ca đi lên' này là gì?",
-    "explanation": "Thi 121:1-2 — 'Tôi ngước mắt lên trên núi: Sự tiếp trợ tôi đến từ đâu? Sự tiếp trợ tôi đến từ Đức Giê-hô-va, là Đấng đã dựng nên trời và đất'. Đây là 'Bài Ca Đi Lên' của người hành hương lên Giê-ru-sa-lem, không tin cậy nơi núi (chỗ thờ giả) nhưng nơi Đấng tạo dựng núi.",
+    "content": "Theo Thi Thiên 121:1-2 (RVV11), câu mở đầu của 'bài ca đi lên' này là gì?",
+    "explanation": "Thi Thiên 121:1-2 — 'Tôi ngước mắt lên trên núi: Sự tiếp trợ tôi đến từ đâu? Sự tiếp trợ tôi đến từ Đức Giê-hô-va, là Đấng đã dựng nên trời và đất'. Đây là 'Bài Ca Đi Lên' của người hành hương lên Giê-ru-sa-lem, không tin cậy nơi núi (chỗ thờ giả) nhưng nơi Đấng tạo dựng núi.",
     "language": "vi",
     "options": [
       "'Tôi ngước mắt lên các đền thờ tại Si-ôn; sự cứu giúp tôi đến từ thầy tế lễ'",
@@ -3736,13 +3739,13 @@
     ],
     "verseEnd": 1,
     "content": "Thi 10:1 mở đầu với câu hỏi than thở nào về Đức Giê-hô-va?",
-    "explanation": "Thi 10:1 — 'Đức Giê-hô-va ôi! Vì sao Ngài đứng xa, lúc gian truân tại sao Ngài ẩn mình đi?' Đây là câu mở thi thiên lament về kẻ ác hưng thịnh.",
+    "explanation": "Thi 10:1 — 'Hỡi Đức Giê-hô-va, sao Ngài đứng xa? Sao Ngài ẩn mình trong lúc gian truân?' Đây là câu mở thi thiên lament về kẻ ác hưng thịnh.",
     "language": "vi",
     "options": [
       "'Vì sao Chúa lại ban phước cho kẻ ác trên đất?'",
       "'Lạy Chúa, sao Ngài chẳng ban cho con cái cho con?'",
       "'Lạy Chúa, vì sao Ngài chẳng cho mưa xuống đất?'",
-      "'Đức Giê-hô-va ôi! Vì sao Ngài đứng XA, lúc gian truân, vì sao Ngài ẨN MÌNH?'"
+      "'Hỡi Đức Giê-hô-va, sao Ngài đứng xa? Sao Ngài ẩn mình trong lúc gian truân?'"
     ],
     "tags": [
       "Cựu Ước",
@@ -3844,13 +3847,13 @@
     ],
     "verseEnd": 7,
     "content": "Theo Thi 20:7, sự đối lập về điều mà người công bình tin cậy là gì?",
-    "explanation": "Thi 20:7 — 'Kẻ nầy nhờ cậy xe cộ, kẻ khác nhờ cậy ngựa, nhưng chúng tôi nhờ cậy danh Giê-hô-va, là Đức Chúa Trời chúng tôi'. Đối lập nương cậy vật chất quân đội vs danh Chúa.",
+    "explanation": "Thi 20:7 — 'Kẻ nầy nhờ cậy xe cộ, kẻ khác nhờ cậy ngựa, nhưng chúng tôi nhờ cậy danh Giê-hô-va, là Đức Chúa Trời chúng tôi'. Đối lập nương cậy vật chất quân đội (xe, ngựa) vs nhờ cậy danh Chúa.",
     "language": "vi",
     "options": [
       "Vàng bạc / hay vũ khí — không phải Chúa",
       "Sức người / hay thần ngoại — không phải Chúa",
       "Tiên tri / hay luật pháp — không phải Chúa",
-      "'Có người tin cậy nơi XE và NGỰA, nhưng chúng tôi sẽ NHỚ ĐẾN DANH Đức Giê-hô-va'"
+      "Xe cộ / hay ngựa — không phải Chúa"
     ],
     "tags": [
       "Cựu Ước",
@@ -3863,7 +3866,8 @@
   {
     "book": "Psalms",
     "chapter": 38,
-    "verseStart": 1,
+    "verseStart": null,
+    "verseEnd": null,
     "difficulty": "medium",
     "type": "multiple_choice_multi",
     "correctAnswer": [
@@ -3871,13 +3875,12 @@
       1,
       2
     ],
-    "verseEnd": 22,
     "content": "Trong số bảy 'Thi Thiên Sám Hối' truyền thống, ngoài 51 và 130 đã biết, thi thiên nào sau đây CŨNG thuộc bộ này? (chọn tất cả đúng)",
     "explanation": "Bảy thi thiên Sám Hối: 6, 32, 38, 51, 102, 130, 143. Thi 47 là ngợi khen, không phải sám hối.",
     "language": "vi",
     "options": [
       "Thi 6 — 'Đức Giê-hô-va ôi! xin chớ nổi thạnh nộ mà quở trách tôi'",
-      "Thi 38 — 'Đức Giê-hô-va ôi! xin chớ nổi thạnh nộ mà quở trách tôi' (giống Thi 6 mở)",
+      "Thi 38 — 'Hỡi Đức Giê-hô-va, xin chớ quở trách tôi trong cơn nóng giận Ngài'",
       "Thi 102 — 'Đức Giê-hô-va ôi! xin nghe lời cầu nguyện tôi, nguyện tiếng tôi thấu đến Ngài'",
       "Thi 47 — 'Hỡi các dân, hãy vỗ tay! hãy lấy tiếng vui mừng mà reo' (thi thiên ngợi khen)"
     ],
@@ -4278,7 +4281,7 @@
     ],
     "verseEnd": 9,
     "content": "Thi 69:9 nói về 'sự sốt sắng' về điều gì? Câu này được Tân Ước trích dẫn ở đâu?",
-    "explanation": "Thi 69:9 — 'Vì sự sốt sắng về đền Chúa tiêu nuốt tôi'. Giăng 2:17 áp dụng câu này cho Chúa Jêsus khi Ngài dọn đền thờ.",
+    "explanation": "Thi 69:9 — 'Vì sự sốt sắng về nhà Chúa thiêu nuốt tôi'. Giăng 2:17 áp dụng phần này cho Chúa Jêsus khi Ngài dọn đền thờ.",
     "language": "vi",
     "options": [
       "'SỰ SỐT SẮNG về NHÀ Chúa đã NUỐT TÔI' — trích trong Giăng 2:17 khi Chúa Jêsus dọn đền thờ",
@@ -4388,13 +4391,13 @@
     ],
     "verseEnd": 18,
     "content": "Thi 88 nổi tiếng là 'thi thiên ĐEN TỐI nhất' trong Thi Thiên. Đặc điểm gì khiến nó độc đáo?",
-    "explanation": "Thi 88:18 (câu cuối): 'Chúa khiến các bậu bạn lìa xa tôi, cũng đã làm kẻ quen biết tôi ẩn nơi tối tăm'. Hầu hết thi thiên lament chuyển sang ngợi khen ở cuối — nhưng Thi 88 không. Đây là thi thiên duy nhất trong Thi Thiên kết thúc trong tối tăm.",
+    "explanation": "Thi 88:18 (câu cuối) trong bản dịch phổ biến ghi: 'Chúa khiến bầu bạn lìa xa tôi, làm cho tôi thành điều gớm ghiếc cho họ; tôi bị nhốt lại không ra được.' Hầu hết thi thiên than thở (lament) đều chuyển sang ngợi khen ở cuối — nhưng Thi 88 thì không. Đây là thi thiên duy nhất trong sách Thi Thiên kết thúc hoàn toàn trong sự tối tăm và tuyệt vọng, không có lời ngợi khen hay hy vọng.",
     "language": "vi",
     "options": [
       "Nó kết thúc với khải hoàn ngợi khen tuyệt vời nhất trong cả Thi Thiên",
       "Nó là thi thiên ngắn nhất chỉ có 3 câu trong toàn bộ sách Thi Thiên",
       "Nó được dâng cho dân ngoại bang xa xưa từ thời các tổ phụ",
-      "KẾT THÚC trong U TỐI KHÔNG có lời ngợi — câu cuối: 'quen biết tôi ở chỗ TỐI TĂM'"
+      "KẾT THÚC trong U TỐI KHÔNG có lời ngợi khen — câu cuối vẫn là lời than thở tuyệt vọng"
     ],
     "tags": [
       "Cựu Ước",
@@ -4441,13 +4444,13 @@
       2
     ],
     "verseEnd": 9,
-    "content": "Thi 99 ba lần lặp lại lời kêu gọi tôn vinh Đức Chúa Trời 'là THÁNH'. Câu nào đúng?",
-    "explanation": "Thi 99:5,9 lặp 'Hãy tôn cao Giê-hô-va Đức Chúa Trời chúng tôi, và thờ lạy trước bệ chân Ngài: Ngài là thánh'. Câu 99:3 cũng có 'thánh'. Ba lần khẳng định sự thánh khiết — phản ánh Ê-sai 6:3 'Thánh, thánh, thánh'.",
+    "content": "Thi Thiên 99 ba lần nhắc đến sự thánh khiết của Đức Chúa Trời (câu 3,5,9). Trong đó, câu 5 và 9 là lời kêu gọi tôn vinh Ngài. Câu nào dưới đây là lời kêu gọi đó?",
+    "explanation": "Thi Thiên 99:5 và 99:9 đều lặp lại lời kêu gọi: 'Hãy tôn cao Giê-hô-va Đức Chúa Trời chúng tôi, và thờ lạy trước bệ chân Ngài: Ngài là thánh!'. Câu 99:3 cũng có từ 'thánh' nhưng là một tuyên bố, không phải lời kêu gọi. Ba lần nhắc đến 'thánh' phản ánh chủ đề về sự thánh khiết tuyệt đối của Đức Chúa Trời.",
     "language": "vi",
     "options": [
-      "'Đức Giê-hô-va là Đấng chăn giữ tôi' (lặp lại từ thi thiên 23 trước đó)",
+      "'Đức Giê-hô-va là Đấng chăn giữ tôi' (lặp lại từ Thi Thiên 23 trước đó)",
       "'Đức Giê-hô-va là vua các nước' (chỉ phát biểu chung chung không lặp lại)",
-      "'TÔN VINH Đức Giê-hô-va, sấp mình tại bệ chân Ngài: NGÀI LÀ THÁNH!'",
+      "'Hãy tôn cao Giê-hô-va Đức Chúa Trời chúng tôi, và thờ lạy trước bệ chân Ngài: Ngài là thánh!'",
       "'Đức Giê-hô-va là Đức Chúa Trời nhân từ và thương xót' (chung chung)"
     ],
     "tags": [
@@ -4525,13 +4528,13 @@
     ],
     "verseEnd": 15,
     "content": "Theo Thi 105:7-15, A-sáp kêu gọi dân nhớ lại các công việc của Đức Chúa Trời với các tổ phụ. Sự kiện nào CÓ trong text? (chọn tất cả đúng)",
-    "explanation": "Thi 105:8-15 — 'Ngài nhớ giao ước Ngài luôn luôn, hồi tưởng lời phán dặn Ngài cho đến ngàn đời, tức giao ước Ngài đã lập với Áp-ra-ham, đã thề cùng Y-sác, định cho Gia-cốp làm luật lệ... Ta sẽ ban cho ngươi xứ Ca-na-an làm phần sản nghiệp các ngươi... Ngài quở trách các vua vì cớ họ rằng: Đừng đụng đến kẻ chịu xức dầu của ta'. Mô-se chỉ xuất hiện sau, không trong khúc 7-15.",
+    "explanation": "Thi 105:8-15 — 'Ngài nhớ giao ước Ngài luôn luôn, hồi tưởng lời phán dặn Ngài cho đến ngàn đời, tức giao ước Ngài đã lập với Áp-ra-ham, đã thề cùng Y-sác, định cho Gia-cốp làm luật lệ... Ta sẽ ban cho ngươi xứ Ca-na-an làm phần sản nghiệp các ngươi... Ngài quở trách các vua vì cớ họ rằng: Đừng đụng đến kẻ chịu xức dầu của ta'. Mô-se và việc ra khỏi Ai-cập được đề cập từ câu 16 trở đi, không nằm trong phạm vi câu hỏi (7-15).",
     "language": "vi",
     "options": [
       "Giao ước với Áp-ra-ham — lời thề với Y-sác — luật cho Gia-cốp",
       "Lời hứa: 'Ta sẽ ban cho ngươi xứ Ca-na-an làm phần ngươi'",
       "Đức Chúa Trời cảnh cáo các vua nói 'CHỚ ĐỤNG đến KẺ chịu xức dầu của ta'",
-      "Đức Chúa Trời sai Mô-se ra khỏi Ai-cập trong đám mây lửa"
+      "Đức Chúa Trời bảo vệ các tổ phụ khi họ đi lang thang giữa các dân (c.12-15)"
     ],
     "tags": [
       "Cựu Ước",

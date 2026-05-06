@@ -6,8 +6,10 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Tác giả tự xưng là gì khi mở đầu thư 2 Phi-e-rơ?",
-    "correctAnswer": [0],
-    "explanation": "2 Phi-e-rơ 1:1 — 'Si-môn Phi-e-rơ, làm tôi tớ và sứ đồ của Đức Chúa Jêsus Christ, gởi cho những kẻ cậy sự công bình của Đức Chúa Trời chúng ta và của Cứu Chúa là Đức Chúa Jêsus Christ...'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "2 Phi-e-rơ 1:1 — 'Si-môn Phi-e-rơ, làm tôi tớ và sứ đồ của Đức Chúa Jêsus Christ, gởi cho những kẻ...'",
     "language": "vi",
     "options": [
       "Si-môn Phi-e-rơ, tôi tớ và sứ đồ của Đức Chúa Jêsus Christ",
@@ -30,7 +32,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 1:4, tín hữu nhận được gì để trở nên người dự phần bản tính Đức Chúa Trời?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Phi-e-rơ 1:4 — 'Và bởi vinh hiển nhân đức ấy, Ngài lại ban lời hứa rất quý rất lớn cho chúng ta, hầu cho nhờ đó anh em được lánh khỏi sự hư nát của thế gian bởi tư dục đến, mà trở nên người dự phần bản tánh Đức Chúa Trời.'",
     "language": "vi",
     "options": [
@@ -55,7 +59,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 1:5-7, phẩm chất đầu tiên cần thêm vào đức tin là gì?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Phi-e-rơ 1:5-7 — 'Vậy nên, về phần anh em, phải gắng hết sức thêm cho đức tin mình sự nhân đức, thêm cho nhân đức sự học thức, thêm cho học thức sự tiết độ, thêm cho tiết độ sự nhịn nhục, thêm cho nhịn nhục sự tin kính, thêm cho tin kính tình yêu thương anh em, thêm cho tình yêu thương anh em lòng yêu mến.'",
     "language": "vi",
     "options": [
@@ -79,8 +85,10 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 1:10, tín hữu phải gắng sức làm gì?",
-    "correctAnswer": [3],
-    "explanation": "2 Phi-e-rơ 1:10 — 'Vậy, hỡi anh em, hãy chú ý cho chắc chắn về sự Chúa kêu gọi và chọn lựa mình. Làm điều đó anh em sẽ không hề vấp ngã.' Việc làm chứng minh thực tại sự kêu gọi.",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "2 Phi-e-rơ 1:10 — 'Vậy, hỡi anh em, hãy chú ý cho chắc chắn về sự Chúa kêu gọi và chọn lựa mình. Làm điều đó anh em sẽ không hề vấp ngã, vì như vậy anh em sẽ được cho vào cách rộng rãi trong nước đời đời của Đức Chúa Jêsus Christ là Chúa và Cứu Chúa chúng ta.'",
     "language": "vi",
     "options": [
       "Làm nhiều phép lạ",
@@ -103,7 +111,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 1:16, Phi-e-rơ và các sứ đồ rao giảng dựa trên điều gì?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Phi-e-rơ 1:16 — 'Vả, khi chúng tôi đã làm cho anh em biết quyền phép và sự đến của Đức Chúa Jêsus Christ chúng ta, thì chẳng phải là theo những chuyện khéo đặt để, bèn là chính mắt chúng tôi đã ngó thấy sự oai nghiêm Ngài.'",
     "language": "vi",
     "options": [
@@ -127,7 +137,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 1:19, lời tiên tri được ví như gì?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Phi-e-rơ 1:19 — '...lời nầy như cái đèn soi sáng trong nơi tối tăm, cho đến chừng nào ban ngày lộ ra, và sao mai mọc trong lòng anh em.'",
     "language": "vi",
     "options": [
@@ -151,7 +163,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 1:21, các thánh nhân nói tiên tri được dẫn dắt bởi ai?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Phi-e-rơ 1:21 — 'Vì chẳng hề có lời tiên tri nào là bởi ý một người nào mà ra, nhưng ấy là bởi Đức Thánh Linh cảm động mà người ta đã nói bởi Đức Chúa Trời.'",
     "language": "vi",
     "options": [
@@ -175,7 +189,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 2:1, các giáo sư giả sẽ làm gì trong vòng tín hữu?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "2 Phi-e-rơ 2:1 — '...sẽ có giáo sư giả ở giữa anh em; họ sẽ truyền những đạo dối làm hại, chối Chúa đã chuộc mình, tự mình chuốc lấy sự hủy phá thình lình.'",
     "language": "vi",
     "options": [
@@ -198,8 +214,10 @@
     "verseStart": 5,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Theo 2 Phi-e-rơ 2:5, Đức Chúa Trời đã giữ Nô-ê cùng bao nhiêu người?",
-    "correctAnswer": [0],
+    "content": "Theo 2 Phi-e-rơ 2:5, Đức Chúa Trời đã giữ Nô-ê cùng với bao nhiêu người khác?",
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Phi-e-rơ 2:5 — '...Ngài chẳng tiếc thế gian xưa, trong khi sai nước lụt phạt đời gian ác nầy, chỉ gìn giữ Nô-ê là thầy giảng đạo công bình, với bảy người khác mà thôi.'",
     "language": "vi",
     "options": [
@@ -223,7 +241,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 2:6, Đức Chúa Trời đã đoán phạt thành nào làm gương?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Phi-e-rơ 2:6 — '...nếu Ngài đã đoán phạt thành Sô-đôm và Gô-mô-rơ, hủy phá đi khiến hóa ra tro, để làm gương cho người ác về sau...'",
     "language": "vi",
     "options": [
@@ -247,7 +267,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 2:7, Lót được mô tả như thế nào?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Phi-e-rơ 2:7 — '...cứu kẻ công bình là Lót, người đã quá lo vì cách ăn ở luông tuồng của bọn gian tà kia.'",
     "language": "vi",
     "options": [
@@ -271,7 +293,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 2:9, Đức Chúa Trời biết cách làm hai điều nào?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "2 Phi-e-rơ 2:9 — 'Chúa biết cứu chữa những người tin kính khỏi cơn cám dỗ, và hành phạt kẻ không công bình, cầm chúng nó lại để chờ ngày phán xét.'",
     "language": "vi",
     "options": [
@@ -295,7 +319,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 2:15, các giáo sư giả đi theo đường lối của ai?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Phi-e-rơ 2:15 — '...chúng nó đã theo đường của Ba-la-am, con trai Bê-ô, là kẻ tham tiền công của tội ác.'",
     "language": "vi",
     "options": [
@@ -319,7 +345,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 2:22, hai tục ngữ nào áp dụng cho kẻ trở lại đường cũ?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Phi-e-rơ 2:22 — '...chó liếm lại đồ nó đã mửa, heo đã rửa sạch rồi, lại lăn lóc trong vũng bùn.' Hình ảnh thô nhưng mạnh mẽ về sự tái phạm.",
     "language": "vi",
     "options": [
@@ -343,7 +371,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 3:3, kẻ chế nhạo trong những ngày sau cùng nói gì?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Phi-e-rơ 3:3-4 — '...sẽ có mấy kẻ hay gièm chê... đến mà nói rằng: Chớ nào lời hứa về sự Chúa đến ở đâu? Vì từ khi tổ phụ chúng ta qua đời rồi, muôn vật vẫn còn nguyên như lúc bắt đầu sáng thế.'",
     "language": "vi",
     "options": [
@@ -367,7 +397,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 3:8, một ngày trước mặt Chúa như thế nào?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "2 Phi-e-rơ 3:8 — '...trước mặt Chúa một ngày như ngàn năm, ngàn năm như một ngày.' Quan điểm về thời gian của Chúa khác con người.",
     "language": "vi",
     "options": [
@@ -391,7 +423,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 3:9, tại sao Chúa chậm trễ thực hiện lời hứa?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Phi-e-rơ 3:9 — 'Chúa không chậm trễ về lời hứa của Ngài như mấy người kia tưởng đâu, nhưng Ngài lấy lòng nhịn nhục đối với anh em, không muốn cho một người nào chết mất, song muốn cho mọi người đều ăn năn.'",
     "language": "vi",
     "options": [
@@ -415,7 +449,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 3:10, ngày Chúa đến như thế nào?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Phi-e-rơ 3:10 — 'Song le, ngày của Chúa sẽ đến như kẻ trộm. Bấy giờ các từng trời sẽ có tiếng vang rầm mà qua đi, các thể chất bị đốt mà tiêu tán, đất cùng mọi công trình trên nó đều sẽ bị đốt cháy cả.'",
     "language": "vi",
     "options": [
@@ -439,7 +475,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 3:13, trời mới đất mới có đặc điểm gì?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Phi-e-rơ 3:13 — 'Vả, theo lời hứa của Chúa, chúng ta chờ đợi trời mới đất mới, là nơi sự công bình ăn ở.'",
     "language": "vi",
     "options": [
@@ -463,7 +501,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 3:18, lời khuyên cuối thư là gì?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "2 Phi-e-rơ 3:18 — 'Hãy tấn tới trong ân điển và trong sự thông biết Chúa và Cứu Chúa chúng ta là Đức Chúa Jêsus Christ. Nguyền xin vinh hiển về nơi Ngài, từ rày đến đời đời! A-men.'",
     "language": "vi",
     "options": [
@@ -488,7 +528,9 @@
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "content": "Theo 2 Phi-e-rơ 3:15-16, Phi-e-rơ nói gì về các thư của Phao-lô?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Phi-e-rơ 3:15-16 — '...Phao-lô, anh rất yêu dấu của chúng ta... có nói nhiều điều khó hiểu, mà những kẻ dốt nát và tin không quyết, đem giải sai ý nghĩa, cũng như họ giải sai về các phần Kinh Thánh khác, chuốc lấy sự hư mất riêng về mình.'",
     "language": "vi",
     "options": [
@@ -513,13 +555,25 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo 2 Phi-e-rơ 1:5-7, những phẩm chất nào được liệt kê thêm vào đức tin? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
-    "explanation": "2 Phi-e-rơ 1:5-7 — '...đức tin... nhân đức... học thức... tiết độ... nhịn nhục... tin kính... tình yêu thương anh em... lòng yêu mến.' Bảy phẩm chất; 'báo thù' không nằm trong danh sách.",
+    "correctAnswer": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "explanation": "2 Phi-e-rơ 1:5-7 — '...đức tin... nhân đức... học thức... tiết độ... nhịn nhục... tin kính... tình yêu thương anh em... lòng yêu mến.' Bảy phẩm chất; 'sự báo thù kẻ thù' không nằm trong danh sách.",
     "language": "vi",
     "options": [
       "Nhân đức",
-      "Học thức và tiết độ",
-      "Nhịn nhục, tin kính, tình yêu thương anh em, lòng yêu mến",
+      "Học thức",
+      "Tiết độ",
+      "Nhịn nhục",
+      "Tin kính",
+      "Tình yêu thương anh em",
+      "Lòng yêu mến",
       "Sự báo thù kẻ thù"
     ],
     "tags": [
@@ -538,7 +592,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo 2 Phi-e-rơ 2:4-9, mẫu hình phán xét và giải cứu của Đức Chúa Trời gồm những điều nào? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "2 Phi-e-rơ 2:4-9 — '...các thiên sứ phạm tội... thế gian xưa với nước lụt... Sô-đôm Gô-mô-rơ... gìn giữ Nô-ê... cứu kẻ công bình là Lót...' Ba ví dụ rõ ràng; 'cứu Pha-ra-ôn' trái nghịch — Pha-ra-ôn bị đoán phạt.",
     "language": "vi",
     "options": [
@@ -562,7 +620,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo 2 Phi-e-rơ 3:10, ngày Chúa đến sẽ kèm theo những điều gì? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "2 Phi-e-rơ 3:10 — '...các từng trời sẽ có tiếng vang rầm mà qua đi, các thể chất bị đốt mà tiêu tán, đất cùng mọi công trình trên nó đều sẽ bị đốt cháy cả.' Ba điều rõ ràng; 'thiên sứ tụ tập muôn dân tại Giê-ru-sa-lem' không có trong câu này.",
     "language": "vi",
     "options": [
@@ -586,7 +648,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo 2 Phi-e-rơ 2:1, các giáo sư giả có những đặc điểm nào? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "2 Phi-e-rơ 2:1 — '...sẽ có giáo sư giả ở giữa anh em; họ sẽ truyền những đạo dối làm hại, chối Chúa đã chuộc mình, tự mình chuốc lấy sự hủy phá thình lình.' Ba đặc điểm; 'tôn vinh các tiên tri Cựu Ước' trái với bản chất giả dối.",
     "language": "vi",
     "options": [

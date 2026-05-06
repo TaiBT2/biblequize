@@ -9,13 +9,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giữa đau khổ, tác giả khám phá rằng ân điển Chúa mới mới sinh mỗi buổi sáng.",
+    "explanation": "Giữa đau khổ, tác giả tuyên bố rằng ân điển và sự thương xót Chúa chưa hết, chúng mới mỗi buổi sáng và sự thành tín Ngài lớn lắm.",
     "language": "vi",
     "verseEnd": 23,
     "options": [
       "Chỉ cho người xứng đáng",
       "Có giới hạn",
-      "Mỗi buổi sáng đều mới, sự thành tín Ngài là lớn",
+      "Chưa hết, mỗi buổi sáng đều mới, sự thành tín Ngài là lớn",
       "Đã hết"
     ],
     "tags": [
@@ -60,11 +60,11 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Dù kỷ luật, Chúa không bỏ con cái Ngài mãi. Sự hình phạt là tạm thời, tình yêu là đời đời.",
+    "explanation": "Dù kỷ luật, Chúa không bỏ rơi con cái Ngài đời đời. Sự hình phạt là tạm thời, vì lòng nhân từ Ngài lớn và Ngài thương xót dư dật.",
     "language": "vi",
     "verseEnd": 33,
     "options": [
-      "Chúa không bỏ cho đến đời và không muốn làm khổ con người",
+      "Chúa không bỏ rơi đời đời và thương xót dư dật",
       "Không có hy vọng",
       "Chúa giận mãi",
       "Chúa đã bỏ rời"
@@ -111,10 +111,10 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ca thương 2:11 - Nỗi đau của tác giả rất sâu sắc, không che giấu cảm xúc trước Chúa.",
+    "explanation": "Ca thương 2:11 - Tác giả mô tả nỗi đau thể xác và tinh thần sâu sắc: mắt hao mòn vì khóc, ruột bối rối, gan đổ ra đất.",
     "language": "vi",
     "options": [
-      "Mắt tôi không còn nước mắt, ruột tôi sôi động",
+      "Mắt tôi hao mòn vì nước mắt, ruột tôi bối rối",
       "Tôi bỏ đi",
       "Tôi quên",
       "Tôi im lặng"
@@ -186,14 +186,14 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Cả điều lành và điều dữ đều ở dưới sự cho phép của Chúa. Ngài tối cao trên mọi sự.",
+    "explanation": "Cả điều lành và điều dữ đều ở dưới sự chủ quyền của Chúa. Mọi sự xảy ra đều từ Đấng Chí Cao.",
     "language": "vi",
     "verseEnd": 38,
     "options": [
       "Chúa không kiểm soát tất cả",
       "Con người tự quyết định",
       "Chỉ điều tốt đến từ Chúa",
-      "Không ai nói điều gì mà thành nếu Chúa không treo"
+      "Mọi sự (cả thiện và ác) đều từ Đấng Chí Cao, dưới sự chủ quyền của Ngài"
     ],
     "tags": [
       "Cựu Ước",
@@ -262,7 +262,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Hãy đổ lòng ra như nước trước mặt Chúa. Kinh Thánh khuyên bày tỏ cảm xúc thật với Chúa.",
+    "explanation": "Ca thương 2:19: \"Hãy đổ lòng ngươi ra như nước trước mặt Chúa\".",
     "language": "vi",
     "options": [
       "Trước kẻ thù",
@@ -313,10 +313,10 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ca Thương 2:1 — 'Trong cơn thạnh nộ, Chúa đã ném vẻ đẹp của Y-sơ-ra-ên từ trời xuống đất.'",
+    "explanation": "Ca Thương 2:1 — Chúa trong cơn thạnh nộ đã phủ mây đen trên Si-ôn, và từ sự vinh hiển/xinh đẹp của Y-sơ-ra-ên trên trời, Ngài đã ném xuống đất.",
     "language": "vi",
     "options": [
-      "Vẻ đẹp của Y-sơ-ra-ên",
+      "Vẻ đẹp (sự vinh hiển) của Y-sơ-ra-ên",
       "Quân đội",
       "Đền thờ Sa-lô-môn",
       "Hòm giao ước"
@@ -339,7 +339,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ca Thương 3:1 — 'Ta là người đã thấy hoạn nạn dưới cây gậy thạnh nộ của Ngài.'",
+    "explanation": "Ca Thương 3:1 — 'Ta là người đã thấy sự khốn khổ bởi cây gậy thạnh nộ của Ngài.'",
     "language": "vi",
     "options": [
       "Vinh quang",
@@ -366,13 +366,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ca Thương 3:55-57 — 'Hỡi Đức Giê-hô-va, từ nơi vực sâu, tôi đã kêu cầu danh Ngài. Ngài đã đến gần ngày tôi cầu khẩn Ngài.'",
+    "explanation": "Ca Thương 3:55 — 'Hỡi Đức Giê-hô-va, tôi từ nơi vực sâu kêu cầu danh Ngài.'",
     "language": "vi",
     "options": [
       "Từ trên núi",
       "Từ đền thờ",
       "Từ vùng đồng vắng",
-      "Từ vực sâu của hầm hố"
+      "Từ nơi vực sâu"
     ],
     "tags": [
       "Cựu Ước",
@@ -392,7 +392,7 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ca Thương 4:1 — 'Sao vàng đã trở nên lu mờ, vàng ròng tốt nhất đã thay đổi thế nào! Đá thánh đổ ra ở đầu mỗi đường phố.'",
+    "explanation": "Ca Thương 4:1 — 'Sao vàng đã trở nên tối tăm! Vàng ròng tốt thay đổi thế nào! Đá thánh bị ném ra ngoài nơi đầu các đường phố!'",
     "language": "vi",
     "options": [
       "Vàng",
@@ -418,7 +418,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ca Thương 4:6 — 'Hình phạt cho con gái dân ta lớn hơn hình phạt của Sô-đôm — thành đã bị đổ trong khoảnh khắc.'",
+    "explanation": "Ca Thương 4:6 — 'Sự hình phạt của con gái dân ta lớn hơn sự hình phạt của Sô-đôm, là thành đã bị lật đổ trong chốc lát.'",
     "language": "vi",
     "options": [
       "Ba-by-lôn",
@@ -496,7 +496,7 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ca Thương 5:7 — 'Tổ phụ chúng tôi đã phạm tội, nhưng không còn nữa; còn chúng tôi phải chịu tội ác của họ.'",
+    "explanation": "Ca Thương 5:7 — 'Tổ phụ chúng tôi đã phạm tội, nay không còn nữa; còn chúng tôi đã gánh lấy tội ác của họ.'",
     "language": "vi",
     "options": [
       "Tổ phụ phạm tội mà con cháu phải chịu",

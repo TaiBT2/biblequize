@@ -5,18 +5,18 @@
     "verseStart": 2,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Ha-ba-cúc hỏi Chúa câu hỏi gì?",
+    "content": "Ha-ba-cúc than vãn với Chúa về điều gì?",
     "correctAnswer": [
       3
     ],
-    "explanation": "Ha-ba-cúc 1:2 - Tiên tri thật thà hỏi Chúa về sự bất công. Chúa cho phép hỏi và than vãn.",
+    "explanation": "Ha-ba-cúc 1:2-3 - Tiên tri thật thà than vãn với Chúa vì Ngài dường như không nghe lời kêu van về sự bất công và bạo ngược. Chúa cho phép sự trò chuyện chân thật này.",
     "language": "vi",
     "verseEnd": 3,
     "options": [
       "Chúa ở đâu?",
       "Tại sao tôi khổ?",
       "Khi nào Chúa đến?",
-      "Tại sao Chúa im lặng trước bất công và bạo lực?"
+      "Sự bạo ngược và bất công, cùng việc Chúa dường như không nghe lời kêu van của ông."
     ],
     "tags": [
       "Cựu Ước",
@@ -38,7 +38,7 @@
     "explanation": "Chúa đang làm việc ngay cả khi chúng ta không nhìn thấy hay hiểu.",
     "language": "vi",
     "options": [
-      "Kinh ngạc, vì ta sẽ làm một việc mà người không tin",
+      "Kinh ngạc, vì Ta sẽ làm một việc trong thời các ngươi mà các ngươi không tin",
       "Vui mừng",
       "Chạy trốn",
       "Sợ hãi"
@@ -60,12 +60,12 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ha-ba-cúc 2:2 - Khải tượng phải rõ ràng để mọi người đọc được. Lời Chúa cần được truyền đạt để hiểu.",
+    "explanation": "Ha-ba-cúc 2:2 - Khải tượng phải được ghi lại rõ ràng để người đọc có thể đọc một cách nhanh chóng và dễ dàng.",
     "language": "vi",
     "verseEnd": 3,
     "options": [
       "Để đọc ở đền thờ",
-      "Để người đọc chạy được (rõ ràng)",
+      "Để người đọc có thể đọc một cách rõ ràng và nhanh chóng",
       "Để dâng cho vua",
       "Để giữ kín"
     ],
@@ -117,7 +117,7 @@
       "Chiến tranh",
       "Vui vẻ",
       "Bình an",
-      "Thiết giam (giận dữ)"
+      "Thạnh nộ (giận dữ)"
     ],
     "tags": [
       "Cựu Ước",
@@ -208,18 +208,18 @@
     "verseStart": 6,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Ha-ba-cúc chương 2 tuyên bố mấy lời khốn cho ai?",
+    "content": "Ha-ba-cúc chương 2 có bao nhiêu lời 'khốn cho'?",
     "correctAnswer": [
       2
     ],
-    "explanation": "Năm lời khốn nhằm kẻ ác, cảnh báo rằng Chúa thấy và sẽ phán xét mọi bất công.",
+    "explanation": "Có năm lời 'khốn cho' (câu 6, 9, 12, 15, 19) nhằm vào những kẻ ác, cảnh báo sự phán xét của Chúa.",
     "language": "vi",
-    "verseEnd": 8,
+    "verseEnd": 20,
     "options": [
-      "Tiên tri giả",
-      "Người nghèo",
-      "Kẻ tham lam, bóc lột, bạo lực, say sưa và thờ tượng",
-      "Người bệnh"
+      "Bốn lời",
+      "Năm lời",
+      "Sáu lời",
+      "Ba lời"
     ],
     "tags": [
       "Cựu Ước",
@@ -264,11 +264,11 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ha-ba-cúc 3:16 - Kính sợ trước sự vĩ đại của Chúa nhưng vẫn yên lặng đợi ngày Ngài hành động.",
+    "explanation": "Ha-ba-cúc 3:16 - Ông run rẩy toàn thân nhưng quyết định yên lặng chờ đợi ngày hoạn nạn, thể hiện sự kính sợ và trông cậy nơi Chúa.",
     "language": "vi",
     "options": [
       "Giận dữ",
-      "Run rẩy nhưng vẫn đợi Chúa",
+      "Run rẩy và quyết định yên lặng chờ đợi",
       "Vui mừng",
       "Bỏ chạy"
     ],
@@ -470,7 +470,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Ha-ba-cúc 3:8 — 'Có phải Đức Giê-hô-va nổi giận nghịch cùng các sông không?... Khi Ngài cưỡi ngựa và xe của sự cứu rỗi.'",
+    "explanation": "Ha-ba-cúc 3:8 — 'Có phải Đức Giê-hô-va nổi giận nghịch cùng các sông không?... Khi Ngài cỡi trên những ngựa và những xe đắc thắng của Ngài.'",
     "language": "vi",
     "options": [
       "Với núi non",

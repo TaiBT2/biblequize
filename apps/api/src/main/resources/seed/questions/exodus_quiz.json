@@ -554,7 +554,7 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Xuất Hành 10:4 — 'Vì nếu ngươi từ chối không cho dân Ta đi, thì ngày mai Ta sẽ sai châu chấu đến trong lãnh thổ ngươi.'",
+    "explanation": "Xuất Hành 10:4 — 'Vì nếu ngươi từ chối không cho dân Ta đi, thì ngày mai Ta sẽ sai châu chấu đến trong lãnh thổ ngươi.' Đây là tai vạ thứ tám (Xuất Hành 10:1-20).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -637,7 +637,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 12:3 — 'Mỗi gia đình phải bắt một con chiên con.' Chiên con Vượt Qua là hình bóng về Chúa Giê-xu, Chiên Con của Đức Chúa Trời.",
+    "explanation": "Xuất Hành 12:3-5 — Mỗi gia đình phải bắt một con chiên con hoặc dê con, không tì vết, một tuổi. Chiên con Vượt Qua là hình bóng về Chúa Giê-xu, Chiên Con của Đức Chúa Trời.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -892,6 +892,7 @@
     "book": "Exodus",
     "chapter": 16,
     "verseStart": 13,
+    "verseEnd": 13,
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Ngoài ma-na, Đức Chúa Trời còn ban thức ăn nào cho dân Y-sơ-ra-ên trong hoang mạc?",
@@ -1084,17 +1085,17 @@
     "verseEnd": 6,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Đức Chúa Trời phán: 'Các con sẽ thành một ___ và một dân tộc thánh cho Ta.'",
+    "content": "Đức Chúa Trời phán: 'Các ngươi sẽ thành một ___ và một dân tộc thánh cho ta.'",
     "options": [
       "dân tuyển chọn",
       "quân đội thánh",
-      "vương quốc thầy tế lễ",
+      "nước thầy tế lễ",
       "hội thánh lớn"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 19:6 — 'Các con sẽ thành một vương quốc thầy tế lễ và một dân tộc thánh cho Ta.' Khái niệm này được nhắc lại trong 1 Phi-e-rơ 2:9.",
+    "explanation": "Xuất Hành 19:6 (Bản Dịch 2011) — 'Các ngươi sẽ thành một nước thầy tế lễ, cùng một dân tộc thánh cho ta.' Khái niệm này được nhắc lại trong 1 Phi-e-rơ 2:9.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1277,7 +1278,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 23:14 — 'Mỗi năm ba lần con phải giữ lễ cho Ta.' Đó là Lễ Bánh Không Men, Lễ Mùa Gặt và Lễ Thu Hoạch.",
+    "explanation": "Xuất Hành 23:14 — 'Mỗi năm ba lần con phải giữ lễ cho Ta.' Đó là Lễ Bánh Không Men, Lễ Các Tuần (Mùa Gặt) và Lễ Lều Tạm (Thu Hoạch).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1375,6 +1376,12 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Trên nắp thi ân (mercy seat) của Hòm Giao Ước, có gì được làm bằng vàng?",
+    "options": [
+      "Hai tượng chê-ru-bim",
+      "Một tượng sư tử",
+      "Bảng chữ vàng",
+      "Một con dấu"
+    ],
     "correctAnswer": [
       0
     ],
@@ -1385,12 +1392,6 @@
       "Xuất Ê-díp-tô Ký",
       "Ngũ Kinh",
       "Cơ bản"
-    ],
-    "options": [
-      "Hai tượng chê-ru-bim",
-      "Một tượng sư tử",
-      "Bảng chữ vàng",
-      "Một con dấu"
     ]
   },
   {
@@ -1399,7 +1400,7 @@
     "verseStart": 1,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Đền Tạm được dệt bằng bao nhiêu tấm vải lanh mịn?",
+    "content": "Lớp trong cùng của Đền Tạm được dệt bằng bao nhiêu tấm vải lanh mịn?",
     "options": [
       "Năm tấm",
       "Mười hai tấm",
@@ -1409,7 +1410,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 26:1 — 'Hãy dùng mười tấm vải lanh mịn xe chỉ, chỉ xanh, tím và đỏ có thêu hình chê-ru-bim mà làm Đền Tạm.'",
+    "explanation": "Xuất Hành 26:1 — 'Hãy dùng mười tấm vải lanh mịn xe chỉ, chỉ xanh, tím và đỏ có thêu hình chê-ru-bim mà làm Đền Tạm.' (Đây là lớp trong cùng; Xuất Hành 26:7 mô tả thêm một lớp phủ bằng lông dê.)",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1538,7 +1539,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Xuất Hành 30:23-25 — Dầu xức thánh gồm: một dược, quế, xương bồ, quế bì và dầu ô-liu. Hỗn hợp này chỉ dành cho việc thánh.",
+    "explanation": "Xuất Hành 30:23-25 — Dầu xức thánh gồm: một dược, quế thơm, xương bồ, quế bì và dầu ô-liu. Hỗn hợp này chỉ dành cho việc thánh.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1587,6 +1588,12 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Hai bảng chứng (bảng đá Mười Điều Răn đầu tiên) được viết bởi ai?",
+    "options": [
+      "Môi-se",
+      "A-rôn",
+      "Bết-sa-lê-ên",
+      "Ngón tay Đức Chúa Trời"
+    ],
     "correctAnswer": [
       3
     ],
@@ -1597,12 +1604,6 @@
       "Xuất Ê-díp-tô Ký",
       "Ngũ Kinh",
       "Cơ bản"
-    ],
-    "options": [
-      "Môi-se",
-      "A-rôn",
-      "Bết-sa-lê-ên",
-      "Ngón tay Đức Chúa Trời"
     ]
   },
   {
@@ -1850,7 +1851,7 @@
     "verseStart": 1,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "___ đóng Hòm Giao Ước bằng gỗ si-tim.",
+    "content": "Ai đã đóng Hòm Giao Ước bằng gỗ si-tim?",
     "options": [
       "Ô-hô-li-áp",
       "Bết-sa-lê-ên",
@@ -1878,7 +1879,7 @@
     "verseEnd": 31,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Trên mũ tế lễ có tấm thẻ vàng khắc chữ: '___'",
+    "content": "Tấm thẻ vàng thánh gắn trên mũ tế lễ được khắc dòng chữ gì?",
     "options": [
       "THẦY TẾ LỄ CHÍ CAO",
       "VINH HIỂN ĐỜI ĐỜI",
@@ -1888,7 +1889,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Xuất Hành 39:30 — 'Họ làm tấm thẻ vàng ròng, tức là mão thánh, và khắc trên đó: THÁNH CHO ĐỨC GIÊ-HÔ-VA.'",
+    "explanation": "Xuất Hành 39:30-31 — Họ làm một tấm thẻ bằng vàng ròng, là mão thánh, và khắc trên đó như kiểu con dấu: THÁNH CHO ĐỨC GIÊ-HÔ-VA. Rồi họ buộc nó bằng một sợi dây màu xanh trên mũ, y như Đức Giê-hô-va đã phán dặn Môi-se.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1905,6 +1906,12 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Khi xây xong Đền Tạm, dân Y-sơ-ra-ên đã làm như thế nào so với mệnh lệnh của Đức Giê-hô-va?",
+    "options": [
+      "Bỏ sót vài chi tiết",
+      "Thêm thắt theo ý mình",
+      "Đúng mọi điều như Ngài đã phán dặn Môi-se",
+      "Trễ hạn vài năm"
+    ],
     "correctAnswer": [
       2
     ],
@@ -1917,12 +1924,6 @@
       "Gia-cốp và Y-sơ-ra-ên",
       "Môi-se",
       "Cơ bản"
-    ],
-    "options": [
-      "Bỏ sót vài chi tiết",
-      "Thêm thắt theo ý mình",
-      "Đúng mọi điều như Ngài đã phán dặn Môi-se",
-      "Trễ hạn vài năm"
     ]
   },
   {
@@ -2451,7 +2452,7 @@
     "explanation": "Xuất 7:20-21 — 'Môi-se và A-rôn... giơ gậy lên đập nước sông; cả nước sông bèn hóa ra huyết. Cá dưới sông chết, và nước sông trở nên hôi thối, người Ê-díp-tô không thể uống được'.",
     "language": "vi",
     "options": [
-      "Cá chết trong Biển Đỏ (xét trong văn cảnh)",
+      "Nước Biển Đỏ biến thành máu (xét trong văn cảnh)",
       "Sông Nin BIẾN THÀNH MÁU — cá chết, nước hôi, dân không uống được",
       "Mưa đá rơi xuống đập nát mùa màng",
       "Chấu lớn ăn hết cây cối (theo cách trình bày của text)"
@@ -2478,7 +2479,7 @@
     "explanation": "Xuất 8:6 — 'A-rôn giơ tay mình trên các sông rạch xứ Ê-díp-tô, ếch nhái bò lên lan khắp xứ Ê-díp-tô'. 8:3 — 'sông sẽ sanh đầy ếch nhái... vào trong cung điện, phòng ngủ, và trên giường ngươi'.",
     "language": "vi",
     "options": [
-      "Mưa đá lớn rơi khắp xứ",
+      "Muỗi mòng khắp người và súc vật (xét trong văn cảnh)",
       "Bóng tối dày 3 ngày (xét trong văn cảnh)",
       "ẾCH NHÁI ngập tràn — tràn vào nhà, lò bếp, giường ngủ",
       "Châu chấu ăn hết cây cỏ"
@@ -2507,7 +2508,7 @@
     "options": [
       "Châu chấu / Bóng tối / Giết con đầu lòng",
       "Ếch nhái / Muỗi / Ruồi",
-      "Sông máu / Ếch nhái / Muỗi",
+      "Sông máu / Ếch nhái / Muỗi (thứ tự sai)",
       "Súc vật chết (5) / Ung nhọt (6) / Mưa đá (7)"
     ],
     "tags": [
@@ -2532,7 +2533,7 @@
     "explanation": "Xuất 10:13-15 — châu chấu phủ khắp xứ ăn hết cây cỏ và trái cây mưa đá để lại. 10:21-23 — bóng tối dày đặc 3 ngày 'có thể sờ được' tại Ai-cập, dân Y-sơ-ra-ên ở Gô-sen vẫn có ánh sáng.",
     "language": "vi",
     "options": [
-      "Sông máu (8) / Ếch nhái (9) (như được mô tả trong sách)",
+      "Sông máu (8) / Ếch nhái (9) (thứ tự sai - đây là tai họa 1 và 2)",
       "Châu chấu (8) — ăn hết những gì mưa đá để lại / Bóng tối dày đặc (9) — 3 ngày sờ thấy được",
       "Ung nhọt (8) / Mưa đá (9) (theo cách trình bày của text)",
       "Muỗi (8) / Ruồi (9) (xét trong văn cảnh)"
@@ -2582,14 +2583,14 @@
       0
     ],
     "verseEnd": 14,
-    "content": "Theo Xuất 12:1-14, lễ Vượt Qua được tổ chức vào tháng và ngày nào?",
-    "explanation": "Xuất 12:2-6 — 'Tháng nầy đầu tiên, tức là tháng đầu trong năm... ngày mười, mỗi người trong các ngươi sẽ bắt một chiên con... Để dành chiên đó cho đến ngày mười bốn tháng nầy; rồi cả hội chúng Y-sơ-ra-ên sẽ giết nó vào lúc chiều tối'.",
+    "content": "Theo Xuất Ê-díp-tô Ký 12:1-14, lễ Vượt Qua được tổ chức vào tháng và ngày nào?",
+    "explanation": "Xuất Ê-díp-tô Ký 12:2-6 — 'Tháng nầy đầu tiên, tức là tháng đầu trong năm... ngày mười, mỗi người trong các ngươi sẽ bắt một chiên con... Để dành chiên đó cho đến ngày mười bốn tháng nầy; rồi cả hội chúng Y-sơ-ra-ên sẽ giết nó vào lúc chiều tối'.",
     "language": "vi",
     "options": [
-      "Tháng GIÊNG (tháng A-bíp/Ni-san), NGÀY 14 — chiên con bị giết lúc chiều tối",
-      "Tháng 7 ngày 1 (xét trong văn cảnh)",
-      "Tháng 12 ngày 25 (như được mô tả trong sách)",
-      "Tháng 5 ngày 15 (theo cách trình bày của text)"
+      "Tháng Giêng (tháng A-bíp/Ni-san), NGÀY 14 — chiên con bị giết lúc chiều tối",
+      "Tháng 3 ngày 10",
+      "Tháng 6 ngày 1",
+      "Tháng 9 ngày 30"
     ],
     "tags": [
       "Cựu Ước",
@@ -2667,10 +2668,10 @@
     "explanation": "Xuất 14:21-22 — 'Môi-se giơ tay ra trên biển, Đức Giê-hô-va dẫn trận gió đông thổi mạnh đến đùa biển lại trọn cả đêm; Ngài làm cho biển bày ra khô, nước phân rẽ. Dân Y-sơ-ra-ên xuống biển, đi như trên đất khô, còn nước làm thành một tấm vách ngăn bên hữu và bên tả'.",
     "language": "vi",
     "options": [
-      "Đi vòng quanh biển 7 ngày (như được mô tả trong sách)",
-      "Bay qua nhờ thiên sứ (xét trong văn cảnh) (theo trình tự câu chuyện)",
+      "Đi vòng quanh biển 7 ngày (đáp án sai)",
+      "Bay qua nhờ thiên sứ (đáp án sai)",
       "Đức Giê-hô-va dùng GIÓ ĐÔNG mạnh ban đêm để chia đôi biển; dân đi giữa biển trên ĐẤT KHÔ; tường nước hai bên",
-      "Lội bơi qua biển sâu (theo cách trình bày của text)"
+      "Lội bơi qua biển sâu (đáp án sai)"
     ],
     "tags": [
       "Cựu Ước",
@@ -2690,8 +2691,8 @@
       0
     ],
     "verseEnd": 21,
-    "content": "Theo Xuất 15, sau khi qua Biển Đỏ, ai dẫn dân nữ HÁT BÀI CA tạ ơn cùng trống cơm và múa?",
-    "explanation": "Xuất 15:20-21 — 'Bấy giờ, Mi-ri-am, là nữ tiên tri, chị của A-rôn, tay cầm trống cơm, các đàn bà đều đi ra theo người, cầm trống cơm và múa. Mi-ri-am đáp lại rằng: Hãy ca tụng Đức Giê-hô-va, vì Ngài rất vinh hiển oai nghiêm; Ngài đã liệng xuống biển ngựa và người cỡi ngựa'.",
+    "content": "Theo Xuất 15:20-21, sau khi qua Biển Đỏ, ai là người dẫn các phụ nữ cầm trống cơm và múa, đáp lại bài ca của Môi-se?",
+    "explanation": "Xuất 15:20-21 — 'Bấy giờ, Mi-ri-am, là nữ tiên tri, chị của A-rôn, tay cầm trống cơm, các đàn bà đều đi ra theo người, cầm trống cơm và múa. Mi-ri-am đáp lại rằng: Hãy ca tụng Đức Giê-hô-va, vì Ngài rất vinh hiển oai nghiêm; Ngài đã liệng xuống biển ngựa và người cỡi ngựa.' Mi-ri-am dẫn các phụ nữ hát đáp lại bài ca chiến thắng của Môi-se và dân Y-sơ-ra-ên (câu 1).",
     "language": "vi",
     "options": [
       "Mi-ri-am — chị của A-rôn — gọi là 'NỮ TIÊN TRI'",
@@ -2777,7 +2778,7 @@
     "options": [
       "Phi-nê-a / cha Mô-se A-rôn đỡ",
       "Giô-suê / chỉ một mình A-rôn đỡ",
-      "GIÔ-SUÊ chỉ huy quân / A-RÔN và HÔ-RƠ đỡ tay Môi-se hai bên",
+      "GIÔ-SUÊ chỉ huy quân / A-RÔN và HU-RƠ đỡ tay Môi-se hai bên",
       "Ca-lép / 12 trưởng lão đỡ"
     ],
     "tags": [
@@ -2964,7 +2965,7 @@
     "explanation": "Xuất 25:8-9 — 'Họ sẽ làm cho ta một đền thánh đặng ta ở giữa họ. Hãy làm điều đó y như kiểu đền tạm cùng kiểu các đồ dùng mà ta sẽ chỉ cho ngươi'. Đền Tạm (mishkan) là chỗ ở di động, không phải đền thờ cố định.",
     "language": "vi",
     "options": [
-      "Một đền thờ bằng đá lớn (theo cách trình bày của text)",
+      "Một đền thờ cố định bằng đá",
       "ĐỀN TẠM (Hội Mạc) — Môi-se phải làm theo KIỂU MẪU Đức Chúa Trời chỉ cho trên núi",
       "Một bệ vàng để dâng lễ (xét trong văn cảnh)",
       "Một Hòm Giao Ước duy nhất (như được mô tả trong sách)"
@@ -2994,7 +2995,7 @@
       "3x1x1 cubit / chứa Tora (xét trong văn cảnh) (theo trình tự câu chuyện)",
       "5x2x2 cubit / chứa các tế lễ (như được mô tả trong sách)",
       "1x1x1 cubit / chứa lễ vật (theo cách trình bày của text)",
-      "2.5x1.5x1.5 CUBIT / NẮP THI ÂN bằng vàng có 2 CHÊ-RU-BIM; chứa Hai BẢNG ĐÁ Mười Điều Răn (sau thêm bình ma-na + gậy A-rôn — Hê 9:4)"
+      "2.5x1.5x1.5 CUBIT / NẮP THI ÂN bằng vàng có 2 CHÊ-RU-BIM"
     ],
     "tags": [
       "Cựu Ước",
@@ -3123,13 +3124,13 @@
     ],
     "verseEnd": 35,
     "content": "Theo Xuất 32:19-35, khi xuống núi và thấy bò vàng, Môi-se làm gì?",
-    "explanation": "Xuất 32:19-20,26-28 — 'Khi đến gần trại quân, Môi-se thấy bò con và sự nhảy múa, bèn nổi giận, liệng hai bảng đá khỏi tay mình, bể ra nơi chân núi. Người bắt bò con của chúng đã đúc, đem đốt trong lửa, rồi nghiền cho đến thành ra bụi, rải trên mặt nước, và cho dân Y-sơ-ra-ên uống... Ai thuộc về Đức Giê-hô-va, hãy đến cùng ta đây! Hết thảy người Lê-vi đều nhóm lại gần bên người... Chừng có ba ngàn người bị chết'.",
+    "explanation": "Xuất 32:19-20,26-28 — Môi-se nổi giận, ném vỡ hai bảng đá, đốt và nghiền bò vàng thành bột rải trên nước cho dân uống. Sau đó, ông kêu gọi 'Ai thuộc về Đức Giê-hô-va, hãy đến cùng ta!', và con cháu Lê-vi đáp lời, giết khoảng ba ngàn người.",
     "language": "vi",
     "options": [
-      "NÉM HAI BẢNG ĐÁ vỡ; THIÊU bò vàng và NGHIỀN ra BỘT, RẢY trên nước, BẮT dân uống; gọi 'ai về phe Đức Giê-hô-va' — 3,000 người chết tay con cháu Lê-vi",
-      "Tha thứ ngay cho dân và A-rôn (như được mô tả trong sách) (như văn bản ghi rõ)",
-      "Tổ chức lễ ăn mừng cùng dân (theo cách trình bày của text) (xét theo nội dung gốc)",
-      "Trở lại núi không nói gì (xét trong văn cảnh) (theo trình tự câu chuyện)"
+      "Ném vỡ hai bảng đá, thiêu và nghiền bò vàng, kêu gọi người theo Đức Giê-hô-va — 3,000 người chết",
+      "Tha thứ ngay cho dân và A-rôn",
+      "Tổ chức lễ ăn mừng cùng dân",
+      "Trở lại núi mà không nói gì"
     ],
     "tags": [
       "Cựu Ước",
@@ -3231,7 +3232,7 @@
     ],
     "verseEnd": 29,
     "content": "Theo Xuất 35:4-29, Môi-se kêu gọi dân Y-sơ-ra-ên dâng vật liệu xây Đền Tạm. Phản ứng của dân thế nào?",
-    "explanation": "Xuất 36:5-7 — 'Vả, các người nam và nữ có lòng cảm động vẫn còn cứ đem đến lễ vật tình nguyện mỗi buổi sớm mai, đến nỗi các người thợ làm mọi công việc trong đền thánh, đều ngừng việc mình lại, đến trình cùng Môi-se mà rằng: Dân sự đem đến lễ vật dư bội phần đặng làm các công việc mà Đức Giê-hô-va đã truyền dặn... Vậy, Môi-se truyền lịnh đến các trại quân rằng: Bất kỳ người nam hay nữ chớ làm công việc dâng lễ thêm cho đền thánh nữa'. Lần duy nhất trong Kinh Thánh có ghi chép việc 'dâng quá nhiều'!",
+    "explanation": "Dân chúng đáp ứng nhiệt tình và tự nguyện đem đến nhiều loại vật liệu quý (Xuất 35:20-29). Sự dâng hiến này nhiều đến mức, như được ghi tiếp trong Xuất 36:5-7, các thợ phải báo với Môi-se rằng vật liệu đã dư bội, và Môi-se phải ra lệnh ngừng dâng thêm. Đây là lần duy nhất trong Kinh Thánh ghi chép việc 'dâng quá nhiều'.",
     "language": "vi",
     "options": [
       "DÂN Y-sơ-ra-ên DÂNG QUÁ NHIỀU đến mức Môi-se phải RA LỆNH NGỪNG dâng thêm",
@@ -3263,7 +3264,7 @@
     "options": [
       "Lông cừu trắng đơn giản (như được mô tả trong sách)",
       "Da bò đỏ dày (xét trong văn cảnh)",
-      "VẢI GAI MỊN với CHỈ MÀU XANH, TÍM, ĐỎ, dệt thêu CHÊ-RU-BIM khéo léo",
+      "VẢI GAI MỊN với CHỈ MÀU TÍM, ĐỎ TÍA, ĐỎ THẪM, dệt thêu CHÊ-RU-BIM khéo léo",
       "Lá cọ và sậy dày (theo cách trình bày của text)"
     ],
     "tags": [
@@ -3289,7 +3290,7 @@
     "language": "vi",
     "options": [
       "Vàng 10 ta-lâng / Bạc 50 ta-lâng / Đồng 100 ta-lâng",
-      "VÀNG 29 ta-lâng + 730 siếc-lơ / BẠC 100 ta-lâng + 1,775 siếc-lơ / ĐỒNG 70 ta-lâng + 2,400 siếc-lơ",
+      "VÀNG 29 ta-lâng + 730 siếc-lơ / BẠC 100 ta-lâng + 1775 siếc-lơ / ĐỒNG 70 ta-lâng + 2400 siếc-lơ",
       "Vàng 5 ta-lâng / Bạc 200 ta-lâng / Đồng 500 ta-lâng",
       "Vàng 1 ta-lâng / Bạc 1 ta-lâng / Đồng 1 ta-lâng"
     ],
@@ -3473,7 +3474,7 @@
       2
     ],
     "verseEnd": 7,
-    "content": "KIỂU 1 cross-ref Ex 7:7 + Ex 2:23 — Môi-se bao nhiêu tuổi khi đến Pha-ra-ôn? So sánh với tuổi khi trốn khỏi Ai-cập?",
+    "content": "Môi-se bao nhiêu tuổi khi đến Pha-ra-ôn? So sánh với tuổi khi trốn khỏi Ai-cập? (Tham chiếu Xuất 7:7 và Công vụ 7:23)",
     "explanation": "Xuất 7:7 — 'Vả, khi hai người tâu cùng Pha-ra-ôn, Môi-se tuổi đã được tám mươi, còn A-rôn tám mươi ba'. Công Vụ 7:23 — 'Khi tròn bốn mươi tuổi, người [Môi-se] toan đi thăm anh em mình'. Phục 34:7 — Môi-se chết tuổi 120. Vậy đời Môi-se chia 3 giai đoạn 40 năm: Ai-cập (40) + Ma-đi-an (40) + sa mạc (40).",
     "language": "vi",
     "options": [
@@ -3507,7 +3508,7 @@
       "Mác 1:1 — 'Khởi đầu Tin Lành Đức Chúa Jêsus Christ'",
       "Lu-ca 24:46 — 'Đấng Christ phải chịu thương khó'",
       "Giăng 1:14 — 'Ngôi Lời thành xác thịt'",
-      "1 Cô-rinh-tô 5:7 — 'CHIÊN VƯỢT QUA của chúng ta là Đấng CHRIST đã bị giết'"
+      "1 Cô-rinh-tô 5:7 — 'Đấng Christ là con sinh lễ Vượt Qua của chúng ta, đã bị giết rồi'"
     ],
     "tags": [
       "Cựu Ước",
@@ -3533,7 +3534,7 @@
     "explanation": "Tất cả 3 Phúc âm Synoptic tóm tắt 10 điều răn thành 'yêu Chúa + yêu người'. Phương án D là cảnh báo về thêm bớt Khải Huyền — không phải tóm tắt 10 điều răn.",
     "language": "vi",
     "options": [
-      "Ma-thi-ơ 22:37-40 — 'Yêu Chúa hết lòng' (4 điều răn đầu) + 'yêu kẻ lân cận' (6 điều răn sau)",
+      "Ma-thi-ơ 22:37-40 — 'Yêu Chúa hết lòng' (tóm tắt các điều răn về Chúa) + 'yêu kẻ lân cận' (tóm tắt các điều răn về người)",
       "Mác 12:29-31 — Shema 'Chúa, Đức Chúa Trời chúng ta, Chúa CÓ MỘT' + 'yêu Chúa hết lòng' + 'yêu kẻ lân cận'",
       "Lu-ca 10:27 — luật sư đáp giống Mác — Chúa khen 'làm theo điều đó thì SẼ SỐNG'",
       "Khải Huyền 22:18 — 'ai THÊM bớt vào lời sách' (không liên quan tóm tắt 10 điều răn)"
@@ -3641,10 +3642,10 @@
     "explanation": "Xuất 16:14-15,31,35 — Mô tả CHI TIẾT về manna: thớ tròn nhỏ trắng (16:14), tên 'man' (16:15), vị 'như BÁNH có pha mật ong' (16:31), dân ăn 40 năm cho đến biên giới Ca-na-an (16:35). Dân Số Ký 11:7-9 thêm chi tiết khác: 'như HỘT NGÒ' (coriander seed) màu 'như NGỌC bích/bdellium', vị 'như BÁNH dẫu dầu'. Vậy hai sách có những CHI TIẾT KHÁC NHAU bổ sung cho nhau.",
     "language": "vi",
     "options": [
-      "Manna có vị 'như ngon ngọt' (theo cách trình bày của text) (như văn bản ghi rõ)",
-      "Manna rơi 6 ngày trong tuần, không rơi Sa-bát (như được mô tả trong sách)",
-      "Manna trắng như bông tuyết (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "TẤT CẢ trên — Xuất 16:14 'như SƯƠNG' và 'thớ tròn nhỏ', vị 'NHƯ BÁNH bột pha mật ong' (16:31), TÊN 'man' nghĩa 'cái gì vậy' (16:15)"
+      "Manna có vị 'như bánh pha mật ong' (Xuất 16:31).",
+      "Manna rơi 6 ngày trong tuần, không rơi Sa-bát (được mô tả trong cả Xuất 16 và Dân Số Ký 11).",
+      "Manna có hình dạng 'thớ tròn nhỏ' và màu trắng (Xuất 16:14, 31).",
+      "Tên gọi 'man' (nghĩa là 'cái gì vậy?') và việc dân ăn manna suốt 40 năm cho đến biên giới Ca-na-an (Xuất 16:15, 35)."
     ],
     "tags": [
       "Cựu Ước",
@@ -3662,16 +3663,15 @@
     "type": "multiple_choice_multi",
     "correctAnswer": [
       0,
-      1,
       2
     ],
     "verseEnd": 21,
     "content": "KIỂU 2 distinguish Ex 28:17-21 vs Khải Huyền 21:19-20 — bảng đeo ngực 12 viên đá quý vs nền Giê-ru-sa-lem mới 12 nền đá quý — đặc điểm nào CHUNG? (chọn tất cả đúng)",
-    "explanation": "Xuất 28:17-21 (12 đá quý — bảng ngực, mỗi đá khắc tên 1 chi phái) và Khải Huyền 21:19-20 (12 nền đá quý — Giê-ru-sa-lem mới, nền có tên 12 sứ đồ) đều LIÊN KẾT 12 với dân Đức Chúa Trời. Tên các đá có overlap (sapphire, beryl, jasper, etc.) nhưng không hoàn toàn giống. Phương án D sai — Khải 21 là nền thành phố, không phải bảng đeo ngực.",
+    "explanation": "Xuất 28:17-21 (12 đá quý trên bảng ngực, mỗi đá khắc tên 1 chi phái) và Khải Huyền 21:19-20 (12 nền đá quý của thành Giê-ru-sa-lem mới) đều có 12 viên đá quý và một số tên đá trùng nhau. Tuy nhiên, trong Khải Huyền 21, tên 12 sứ đồ được viết trên 12 nền (c.14), còn tên 12 chi phái được viết trên 12 cổng (c.12), không trực tiếp khắc trên các viên đá nền. Phương án B gốc không chính xác. Phương án D sai vì Khải Huyền 21 không liên quan đến bảng đeo ngực của thầy tế lễ thượng phẩm.",
     "language": "vi",
     "options": [
       "Cả hai đều có 12 viên đá quý (xét trong văn cảnh)",
-      "Cả hai biểu trưng cho 12 chi phái Y-sơ-ra-ên (Ex 28) / 12 sứ đồ (Khải 21)",
+      "Cả hai đều liên kết với con số 12, biểu trưng cho dân sự Đức Chúa Trời (12 chi phái trong Xuất Ê-díp-tô Ký; 12 sứ đồ và 12 chi phái trong Khải Huyền 21:12-14).",
       "Cả hai có một số tên đá giống nhau (carbuncle, sapphire, beryl, etc.)",
       "Cả hai đều dùng cho thầy tế lễ thượng phẩm Y-sơ-ra-ên (Khải 21 không phải)"
     ],
@@ -3776,14 +3776,14 @@
       3
     ],
     "verseEnd": 14,
-    "content": "KIỂU 3 deep meaning Ex 12 Lễ Vượt Qua — Ý NGHĨA THẦN HỌC cốt yếu của 'huyết bôi cột cửa' là gì?",
-    "explanation": "Ex 12:13 — 'Huyết bôi trên nhà các ngươi sẽ là dấu hiệu cho Ta; khi Ta thấy huyết, Ta sẽ vượt qua các ngươi'. Nguyên tắc: (1) GIÁ MẠNG cho TỘI = sự chết (Sáng 2:17), (2) CHIÊN VÔ TỘI chết THAY (substitutionary atonement), (3) HUYẾT là DẤU TIÊU giao ước — KHÔNG ai trong nhà có huyết bị giết. Ngài 'pasakh' (vượt qua) trong sự thương xót. Tân Ước: Christ là 'Chiên Vượt Qua' (1 Cô 5:7), huyết Ngài che chở khỏi cơn thạnh nộ (Rô-ma 5:9).",
+    "content": "Theo Xuất Ê-díp-tô Ký chương 12, ý nghĩa thần học cốt yếu của việc bôi huyết chiên trên cửa nhà trong Lễ Vượt Qua là gì?",
+    "explanation": "Xuất Ê-díp-tô Ký 12:13 chép: 'Huyết bôi trên nhà các ngươi sẽ là dấu hiệu cho Ta; khi Ta thấy huyết, Ta sẽ vượt qua các ngươi.' Hành động này thiết lập các nguyên tắc: (1) Giá của tội lỗi là sự chết (Sáng 2:17), (2) Sự chuộc tội thay thế - một sinh vật vô tội (chiên) chết thay cho người có tội, (3) Huyết là dấu hiệu của giao ước và sự bảo vệ. Đức Chúa Trời 'vượt qua' (pasakh) trong sự thương xót. Trong Tân Ước, Chúa Giê-xu Christ được giới thiệu là 'Chiên Vượt Qua' của chúng ta (1 Cô-rinh-tô 5:7), và huyết Ngài che chở chúng ta khỏi cơn thạnh nộ của Đức Chúa Trời (Rô-ma 5:9).",
     "language": "vi",
     "options": [
-      "Chỉ là biện pháp đơn giản đánh dấu nhà người Y-sơ-ra-ên (theo cách trình bày của text)",
-      "Là phép thuật chống lại linh hồn ác (xét trong văn cảnh) (như được mô tả trong sách)",
-      "Truyền thống văn hóa du mục cổ đại không có ý nghĩa thần học (theo trình tự câu chuyện)",
-      "HUYẾT (sự sống) làm DẤU GIAO ƯỚC + sự THAY THẾ — kẻ vô tội (chiên) chết THAY người có tội; Đức Chúa Trời 'PASS OVER' (vượt qua) nhà có huyết — báo trước thập tự Christ"
+      "Là một nghi thức tượng trưng cho sự đoàn kết của các gia đình Y-sơ-ra-ên trước khi ra đi.",
+      "Là một hành động có tính chất bùa chú để xua đuổi tai ương, phổ biến trong các nền văn hóa cổ đại.",
+      "Chủ yếu là một dấu hiệu nhận dạng đơn thuần, giúp thiên sứ hủy diệt phân biệt được nhà người Y-sơ-ra-ên với người Ai Cập.",
+      "Thể hiện nguyên tắc thay thế đền tội: huyết (sự sống) của con sinh vô tội làm dấu hiệu giao ước, chịu chết thay cho người có tội, báo trước sự chuộc tội của Đấng Christ."
     ],
     "tags": [
       "Cựu Ước",
@@ -3803,14 +3803,14 @@
       0
     ],
     "verseEnd": 21,
-    "content": "KIỂU 3 deep meaning Ex 15 Bài Ca Môi-se — câu mở đầu 'TA SẼ HÁT cho Đức Giê-hô-va, vì Ngài đã được vinh hiển oai nghiêm' là BÀI CA ĐẦU TIÊN trong Kinh Thánh. Ý nghĩa thần học?",
-    "explanation": "Ex 15:1-21 'Bài Ca Môi-se' là bài ca THỜ PHƯỢNG ĐẦU TIÊN trong Kinh Thánh — đặt mẫu cho mọi thi thiên sau này. Khải Huyền 15:3 dẫn lại trong cảnh thiên đàng: 'họ hát BÀI CA MÔI-SE, kẻ tôi tớ Đức Chúa Trời, và bài ca CHIÊN CON' — gắn cứu rỗi Cựu Ước (Vượt Qua + Biển Đỏ) với cứu rỗi Tân Ước (Christ). 15:18 — 'Đức Giê-hô-va sẽ cai trị đời đời, kiếp kiếp' — bản tuyên xưng đầu tiên về vương quyền vĩnh hằng của Chúa.",
+    "content": "Bài ca trong Xuất Ê-díp-tô Ký 15:1-21 thường được gọi là 'Bài Ca Môi-se'. Ý nghĩa thần học chính của bài ca này là gì?",
+    "explanation": "Ex 15:1-21 'Bài Ca Môi-se' là bài ca thờ phượng đầu tiên trong Kinh Thánh, đặt nền mẫu mực cho sự thờ phượng tập thể của dân Y-sơ-ra-ên và các bài thi thiên sau này. Nó tôn vinh sự cứu rỗi và quyền tể trị đời đời của Đức Giê-hô-va (câu 18). Trong Khải Huyền 15:3, bài ca này được nhắc đến cùng với 'Bài Ca Chiên Con', cho thấy sự liên tục giữa sự cứu chuộc trong Cựu Ước và Tân Ước.",
     "language": "vi",
     "options": [
-      "DỊP đầu tiên Y-sơ-ra-ên SUNG CA TẠ ƠN sự cứu rỗi của Đức Chúa Trời như một DÂN — đặt mẫu cho mọi lễ thờ phượng tương lai (đền tạm/đền thờ/thi thiên/Khải Huyền 15:3 'Bài Ca Môi-se và Chiên Con')",
-      "Chỉ là bài hát giải trí, không có ý nghĩa (như được mô tả trong sách) (xét theo nội dung gốc) (xét trong văn cảnh)",
-      "Bài hát chính trị chống Pha-ra-ôn (theo cách trình bày của text) (như văn bản ghi rõ) (theo bối cảnh đoạn này)",
-      "Một bài thơ tình lãng mạn (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phân đoạn liên quan)"
+      "Là bài ca tạ ơn đầu tiên của dân Y-sơ-ra-ên về sự giải cứu của Đức Chúa Trời, đặt nền tảng cho sự thờ phượng tập thể và được nhắc đến như một mẫu mực trong Khải Huyền 15:3.",
+      "Chủ yếu là một tác phẩm văn chương nhằm ghi lại sự kiện lịch sử một cách sinh động, không mang ý nghĩa thần học đặc biệt.",
+      "Là một bài ca chiến thắng có tính chính trị, nhằm cổ vũ tinh thần và hạ uy tín của Pha-ra-ôn cùng quân đội Ai Cập.",
+      "Là một bài thơ trữ tình thể hiện cảm xúc cá nhân của Môi-se, tương tự các bài thơ tình trong văn chương Cận Đông cổ đại."
     ],
     "tags": [
       "Cựu Ước",
@@ -3834,10 +3834,10 @@
     "explanation": "Ex 20:2 mở đầu 10 điều răn không phải bằng MỆNH LỆNH mà bằng GỢI NHỚ về sự GIẢI PHÓNG. Trật tự: (1) ÂN ĐIỂN — Chúa đã cứu các ngươi rồi; (2) LUẬT PHÁP — vì các ngươi LÀ DÂN TÔI nên hãy sống thế này. Đây là nguyên tắc THẦN HỌC LỚN: dân Cựu Ước KHÔNG giữ luật để được cứu, mà GIỮ LUẬT vì ĐÃ ĐƯỢC CỨU. Tân Ước cũng vậy: Phao-lô (Ê-phê-sô 2:8-10) nhấn mạnh 'cứu bởi ân điển... được DỰNG NÊN trong Christ Jêsus để LÀM VIỆC LÀNH'.",
     "language": "vi",
     "options": [
-      "Chỉ là lời mở đầu nghi lễ (theo cách trình bày của text) (như văn bản ghi rõ) (theo bối cảnh đoạn này)",
-      "Nhằm cảnh báo các thầy thông giáo (như được mô tả trong sách) (xét theo nội dung gốc) (xét trong văn cảnh)",
+      "Chỉ là lời mở đầu mang tính nghi lễ thông thường trong các bản giao ước cổ.",
+      "Nhằm xác lập uy quyền của Môi-se với tư cách người dẫn dắt dân sự.",
       "'TA LÀ Giê-hô-va Đức Chúa Trời ngươi, đã RÚT ngươi RA KHỎI xứ Ê-DÍP-TÔ là NHÀ NÔ LỆ' — ÂN ĐIỂN ĐI TRƯỚC LUẬT PHÁP; dân đã được CỨU rồi mới được ban điều răn — KHÔNG phải giữ luật để ĐƯỢC cứu",
-      "Đó là chính trị thời cổ (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phân đoạn liên quan)"
+      "Đó là một công thức chính trị nhằm củng cố sự trung thành của một dân tộc mới được thành lập."
     ],
     "tags": [
       "Cựu Ước",
@@ -3857,14 +3857,14 @@
       3
     ],
     "verseEnd": 22,
-    "content": "KIỂU 3 deep meaning Ex 25:22 — 'TA SẼ GẶP NGƯƠI tại NẮP THI ÂN, GIỮA HAI CHÊ-RU-BIM trên Hòm Giao Ước'. Ý nghĩa thần học của 'ngôi thi ân' (mercy seat) là gì?",
-    "explanation": "Ex 25:22 — 'Ta sẽ ngự trên nắp thi ân, ở giữa hai chê-ru-bim'. Hê-bơ-rơ 'kapporeth' (כַּפֹּרֶת) = 'che' / 'thi ân'. Lê-vi 16 (Ngày Đại Tế Yom Kippur): thầy tế lễ thượng phẩm rảy MÁU TẾ LỄ trên nắp thi ân — biểu tượng SỰ THA THỨ. Tân Ước HÀM Ý: Rô-ma 3:25 — Đức Chúa Trời lập Christ làm HILASTĒRION (cùng từ Hi-lạp với 'nắp thi ân' trong LXX) — Christ là 'NẮP THI ÂN' SỐNG, nơi GIAO HÒA Chúa và tội nhân. Hê 9:11-12 phát triển thêm: Christ vào 'Nơi Chí Thánh' với chính HUYẾT MÌNH thay vì máu thú.",
+    "content": "Trong Xuất Ê-díp-tô Ký 25:22, Đức Chúa Trời phán: 'Ta sẽ gặp ngươi tại nắp thi ân, giữa hai chê-ru-bim ở trên hòm bảng chứng'. Ý nghĩa thần học chính của 'nắp thi ân' (mercy seat) là gì?",
+    "explanation": "Từ Hê-bơ-rơ 'kapporeth' (כַּפֹּרֶת) nghĩa là 'nơi chuộc tội'. Trong Lê-vi Ký 16 (Ngày Đại Lễ Chuộc Tội), thầy tế lễ thượng phẩm rảy huyết của con sinh tế trên nắp thi ân, biểu tượng cho sự tha tội và giao hòa. Trong Tân Ước, Rô-ma 3:25 dùng từ Hi-lạp 'hilastērion' (cùng từ dùng cho 'nắp thi ân' trong bản LXX) để mô tả Chúa Giê-xu Christ là của lễ chuộc tội, hoàn thành ý nghĩa của nắp thi ân. Hê-bơ-rơ 9:11-12 giải thích Chúa Christ vào Nơi Chí Thánh với chính huyết Ngài.",
     "language": "vi",
     "options": [
-      "Chỉ là vật trang trí (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phân đoạn liên quan) (theo trình tự câu chuyện)",
-      "Là chỗ ngồi của vua Y-sơ-ra-ên (như được mô tả trong sách) (như văn bản ghi rõ) (theo bối cảnh đoạn này) (theo cách trình bày của text)",
-      "Là nơi cất giấu các vật thánh (theo cách trình bày của text) (xét theo nội dung gốc) (xét trong văn cảnh) (như được mô tả trong sách)",
-      "Là nơi MÁU TẾ LỄ được RẢY (Lê-vi 16) trong NGÀY ĐẠI TẾ; điểm GIAO HÒA giữa Đức Chúa Trời (THÁNH) và dân (TỘI); Tân Ước Hê-bơ-rơ 9:5 + Rô-ma 3:25 — Christ là 'CỦA LỄ CHUỘC TỘI' (hilastērion = same word as 'mercy seat') — nắp thi ân THẬT"
+      "Một bệ đỡ trang trí cho các chê-ru-bim, thể hiện vẻ uy nghi của Đền Tạm.",
+      "Ngai bằng vàng cho các thầy tế lễ ngồi khi thi hành chức vụ trong Nơi Thánh.",
+      "Một nắp đậy đơn thuần của Hòm Giao Ước, dùng để bảo vệ các bảng đá bên trong.",
+      "Nơi huyết tế lễ được rảy trong Ngày Đại Lễ Chuộc Tội, biểu tượng cho sự giao hòa; Tân Ước tiết lộ Chúa Christ là sự ứng nghiệm trọn vẹn của nắp thi ân."
     ],
     "tags": [
       "Cựu Ước",
@@ -3888,10 +3888,10 @@
     "explanation": "Ex 33:15-16 — Môi-se đáp: 'NẾU CHÍNH MÌNH NGÀI CHẲNG ĐI, xin chớ đem CHÚNG TÔI lên KHỎI ĐÂY... NHỜ ĐÂU người ta SẼ BIẾT rằng tôi cùng dân sự Ngài được ơn trước MẶT Ngài? Có phải bởi NGÀI cùng đi với chúng tôi chăng?' Sự HIỆN DIỆN (Panim) của Chúa = 'GLORY' di động + dấu hiệu LỚN NHẤT phân biệt Y-sơ-ra-ên với mọi dân khác. Hê-bơ-rơ 4:3-11 phát triển 'YÊN NGHỈ' (33:14): không phải là yên nghỉ vào đất Ca-na-an thuộc thế gian — mà là 'YÊN NGHỈ THẬT' trong Christ (4:9 'một sự yên nghỉ Sa-bát còn dành cho dân Đức Chúa Trời').",
     "language": "vi",
     "options": [
-      "Chúa cho dân nghỉ ngơi giữa hành trình sa mạc (theo cách trình bày của text) (như văn bản ghi rõ)",
-      "'SỰ HIỆN DIỆN' (Panim — mặt) của Đức Chúa Trời = SỰ KHÁC BIỆT cốt lõi giữa dân Đức Chúa Trời và mọi dân khác trên đất; Hê-bơ-rơ 4:3-11 phát triển 'YÊN NGHỈ' là Christ thật",
-      "Chúa hứa cho dân giàu có vật chất (xét trong văn cảnh) (như được mô tả trong sách) (xét theo nội dung gốc)",
-      "Chúa hứa Môi-se sẽ thấy mặt Ngài trên núi Si-na-i lần hai (theo trình tự câu chuyện) (đối chiếu với các phân đoạn liên quan)"
+      "Chúa hứa cho dân chúng những khoảng nghỉ ngơi thể chất trong hành trình sa mạc.",
+      "Sự hiện diện của Đức Chúa Trời là đặc điểm căn cước của dân Ngài, và lời hứa 'yên nghỉ' được Tân Ước giải thích là sự yên nghỉ thiêng liêng trong Đấng Christ.",
+      "Chúa hứa ban cho dân Y-sơ-ra-ên sự giàu có về vật chất và của cải khi vào Đất Hứa.",
+      "Chúa hứa rằng Môi-se sẽ được thấy mặt Ngài một lần nữa trên núi Si-na-i."
     ],
     "tags": [
       "Cựu Ước",
@@ -3915,10 +3915,10 @@
     "explanation": "Cấu trúc cốt lõi Xuất Ê-díp-tô Ký: Chương 1 — Y-sơ-ra-ên LÀM NÔ LỆ làm BIA + GẠCH cho Pha-ra-ôn; Chương 40 — Y-sơ-ra-ên TỰ NGUYỆN dâng đem VÀNG-BẠC-VẢI-CÔNG SỨC làm ĐỀN TẠM cho Đức Chúa Trời thật. Vua sai khiến → Vua thật. Lao động ép buộc → thờ phượng tự nguyện. Vinh quang Pha-ra-ôn → Vinh quang Đức Giê-hô-va. Đây là 'cấu trúc kép' chuyển đổi (transformation arc) lớn nhất Cựu Ước. Sách Xuất Ê-díp-tô Ký KHÔNG kết thúc với Y-sơ-ra-ên định cư đất hứa (đó là Giô-suê) — mà kết thúc khi DÂN ĐÃ HỌC THỜ PHƯỢNG VUA THẬT.",
     "language": "vi",
     "options": [
-      "Chỉ là kết thúc tự nhiên không có cấu trúc (theo cách trình bày của text) (theo trình tự câu chuyện)",
-      "Mở đầu Y-sơ-ra-ên TRỐN khỏi Pha-ra-ôn / Kết thúc Y-sơ-ra-ên ĐỊNH CƯ trong Đất Hứa",
+      "Kết thúc tự nhiên theo trình tự câu chuyện, không có cấu trúc thần học đối xứng rõ ràng.",
+      "Mở đầu bằng việc Y-sơ-ra-ên trốn khỏi Ai Cập và kết thúc bằng việc họ định cư ổn định trong Đất Hứa.",
       "MỞ ĐẦU dân TRONG NHÀ NÔ LỆ Pha-ra-ôn (1:11) / KẾT THÚC dân TRONG SỰ HIỆN DIỆN của ĐỨC CHÚA TRỜI Vua thật (40:34-38) — xuất hành TỪ ách nô lệ ĐẾN sự thờ phượng",
-      "Mở đầu bằng 1 vua / kết thúc 12 vua (xét trong văn cảnh) (như được mô tả trong sách)"
+      "Mở đầu với một vị vua (Pha-ra-ôn) và kết thúc với mười hai vị vua (tượng trưng cho mười hai chi phái Y-sơ-ra-ên)."
     ],
     "tags": [
       "Cựu Ước",
@@ -3966,7 +3966,7 @@
     ],
     "verseEnd": 26,
     "content": "KIỂU 4 verse precision Ex 15:26 (RVV11) — Đức Chúa Trời ban danh hiệu nào cho mình tại Ma-ra (nước đắng được chữa lành)?",
-    "explanation": "Xuất 15:26 — 'Vì TA là Giê-hô-va, Đấng chữa bệnh cho ngươi'. Hê-bơ-rơ: 'YHWH-Rapha' (יהוה רפא). Đây là MỘT TRONG 7 TÊN GHÉP của Yahweh trong Cựu Ước (Yahweh-Jireh ban / Yahweh-Nissi cờ / Yahweh-Shalom bình an / Yahweh-Tsidkenu công bình / Yahweh-Shammah hiện diện / Yahweh-Sabaoth Vạn Quân). Mỗi tên tỏ MỘT KHÍA CẠNH của tính chất Đức Chúa Trời được tỏ ra trong tình huống cụ thể.",
+    "explanation": "Xuất 15:26 — 'Vì TA là Giê-hô-va, Đấng chữa bệnh cho ngươi'. Hê-bơ-rơ: 'YHWH-Rapha' (יהוה רפא). Đây là một trong những danh hiệu/tên ghép quan trọng của Đức Giê-hô-va được mặc khải trong những bối cảnh cụ thể (như Yahweh-Jireh, Yahweh-Nissi, Yahweh-Shalom, Yahweh-Tsidkenu, Yahweh-Shammah). Mỗi tên tỏ MỘT KHÍA CẠNH của tính chất Đức Chúa Trời.",
     "language": "vi",
     "options": [
       "'Ta là Đấng tạo dựng' (xét trong văn cảnh)",
@@ -4023,10 +4023,10 @@
     "explanation": "Ex 34:6-7 — 'Giê-hô-va! Giê-hô-va! là Đức Chúa Trời nhân từ, thương xót, chậm giận, đầy dẫy ân huệ và thành thực, ban ơn đến ngàn đời, xá điều gian ác, tội trọng, và tội lỗi; nhưng chẳng kể kẻ có tội là vô tội, và nhân tội tổ phụ phạt lại con cháu trải ba bốn đời'. ĐỐI XỨNG: NHÂN TỪ 'NGÀN đời' vs PHẠT 'BA BỐN đời' — chứng tỏ ân điển vượt trội, NHƯNG CÔNG BÌNH KHÔNG bị bỏ qua. Ezekiel 18 chỉnh: cá nhân chịu phạt riêng tội mình, không phải con cháu — phát triển hơn.",
     "language": "vi",
     "options": [
-      "'Chúa nhân từ vô hạn không bao giờ phán xét tội' (như được mô tả trong sách) (xét theo nội dung gốc)",
-      "'Chúa nhân từ chỉ với người Y-sơ-ra-ên thôi' (theo cách trình bày của text) (như văn bản ghi rõ)",
-      "'Đức Giê-hô-va... chậm giận, đầy ơn và lẽ thật, ban ơn đến NGÀN ĐỜI, xá điều gian ác... NHƯNG CHẲNG kể kẻ có tội là VÔ TỘI, và NHÂN TỘI cha THĂM con cùng cháu đến BA BỐN ĐỜI'",
-      "'Chúa chỉ phán xét người Ai-cập' (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phân đoạn liên quan)"
+      "'Giê-hô-va! Giê-hô-va! là Đức Chúa Trời nhân từ, thương xót, chậm giận, đầy dẫy ân huệ và thành thực, ban ơn đến ngàn đời, xá điều gian ác, tội trọng, và tội lỗi; nhưng chẳng kể kẻ có tội là vô tội, và nhân tội tổ phụ phạt lại con cháu trải ba bốn đời'",
+      "'Giê-hô-va! Giê-hô-va! là Đức Chúa Trời nhân từ, thương xót, chậm giận, đầy dẫy ân huệ và thành thực, ban ơn đến ngàn đời, xá điều gian ác, tội trọng, và tội lỗi; và cũng kể kẻ có tội là vô tội vì lòng thương xót của Ngài'",
+      "'Giê-hô-va! Giê-hô-va! là Đức Chúa Trời nhân từ, thương xót, chậm giận, đầy dẫy ân huệ và thành thực, ban ơn đến ngàn đời, xá điều gian ác, tội trọng, và tội lỗi; nhưng chẳng kể kẻ có tội là vô tội, và nhân tội tổ phụ phạt lại con cháu trải bảy đời'",
+      "'Giê-hô-va! Giê-hô-va! là Đức Chúa Trời nhân từ, thương xót, chậm giận, đầy dẫy ân huệ và thành thực, ban ơn đến trăm đời, xá điều gian ác, tội trọng, và tội lỗi; nhưng chẳng kể kẻ có tội là vô tội, và nhân tội tổ phụ phạt lại con cháu trải ba bốn đời'"
     ],
     "tags": [
       "Cựu Ước",

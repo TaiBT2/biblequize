@@ -5,14 +5,14 @@
     "verseStart": 8,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Theo Công Vụ 1:8, khi Đức Thánh Linh giáng trên các môn đồ, điều gì xảy ra?",
+    "content": "Theo Công Vụ 1:8, Chúa Giê-su phán các môn đồ sẽ nhận được điều gì và làm gì?",
     "correctAnswer": [
       0
     ],
-    "explanation": "Công Vụ 1:8: Nhận quyền phép và làm chứng tại Giê-ru-sa-lem, Giu-đê, Sa-ma-ri và đến cùng trái đất.",
+    "explanation": "Công Vụ 1:8: Các môn đồ sẽ nhận lấy quyền phép khi Đức Thánh Linh giáng trên mình, và sẽ làm chứng nhân cho Chúa tại Giê-ru-sa-lem, cả xứ Giu-đê, xứ Sa-ma-ri, cho đến cùng trái đất.",
     "language": "vi",
     "options": [
-      "Nhận quyền phép và làm chứng khắp nơi",
+      "Nhận quyền phép và làm chứng nhân khắp nơi",
       "Trở về nghề cũ",
       "Nói tiếng thiên sứ",
       "Xây đền thờ mới"
@@ -119,7 +119,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Công Vụ 6:2-4: Để các sứ đồ chuyên về cầu nguyện và chức vụ giảng đạo.",
+    "explanation": "Công Vụ 6:2-4: Để họ phục vụ bàn (chăm lo nhu cầu thực tế), hầu cho các sứ đồ có thể chuyên về cầu nguyện và chức vụ giảng đạo.",
     "language": "vi",
     "verseEnd": 7,
     "options": [
@@ -175,7 +175,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Công Vụ 8:32-35: Phi-líp mở miệng, bắt đầu từ đoạn Kinh Thánh ấy mà giảng về Chúa Giê-su.",
+    "explanation": "Công Vụ 8:32-35: Phi-líp giải thích đoạn Ê-sai 53 về người tôi tớ chịu khổ, và giảng về Chúa Giê-su từ đoạn Kinh Thánh ấy.",
     "language": "vi",
     "verseEnd": 40,
     "options": [
@@ -287,12 +287,12 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Công Vụ 15:28-29: Quyết định đặt gánh nặng rất ít cho anh em dân ngoại.",
+    "explanation": "Công Vụ 15:28-29: Quyết định đặt gánh nặng rất ít cho anh em dân ngoại, chỉ truyền kiêng đồ cúng thần tượng, huyết, thú chết ngạt và gian dâm.",
     "language": "vi",
     "verseEnd": 21,
     "options": [
       "Giữ mọi ngày lễ",
-      "Không bắt giữ trọn luật Môi-se; chỉ kiêng đồ cúng, huyết, thú chết ngạt và dâm loạn",
+      "Không bắt giữ trọn luật Môi-se; chỉ kiêng đồ cúng thần tượng, huyết, thú chết ngạt và gian dâm",
       "Học tiếng Hê-bơ-rơ",
       "Phải chịu cắt bì"
     ],
@@ -455,14 +455,14 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Công Vụ 21:28-29: Người Giu-đa cáo rằng ông đem người Hy Lạp vào đền thờ và làm ô uế nơi thánh.",
+    "explanation": "Công Vụ 21:28-29: Người Giu-đa cáo buộc Phao-lô đã đem người Hy Lạp vào trong đền thờ và làm ô uế nơi thánh.",
     "language": "vi",
     "verseEnd": 36,
     "options": [
       "Bị tố cáo chống thuế",
       "Bị tố cáo gây bạo loạn",
       "Bị tố cáo báng bổ",
-      "Bị tố cáo đưa dân ngoại vào đền thờ"
+      "Bị tố cáo đem người Hy Lạp vào đền thờ và làm ô uế nơi thánh"
     ],
     "tags": [
       "Tân Ước",
@@ -563,17 +563,17 @@
     "verseStart": 4,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Trong Công Vụ 2:4, \"Hết thảy đều được đầy dẫy Đức Thánh Linh\". Từ \"đầy dẫy\" trong tiếng Hy Lạp có nghĩa gì?",
+    "content": "Trong Công Vụ 2:4, \"Hết thảy đều được đầy dẫy Đức Thánh Linh\". Từ \"được đầy dẫy\" trong tiếng Hy Lạp (ἐπλήσθησαν) có nguồn gốc từ từ gốc nào dưới đây, thường được dùng trong Tân Ước cho sự đầy tràn bởi Đức Thánh Linh?",
     "correctAnswer": [
       0
     ],
-    "explanation": "Pimplemi (πίμπλημι) có nghĩa là \"đầy tràn\", không chỉ đầy mà còn tràn ra ngoài.",
+    "explanation": "Pimplēmi (πίμπλημι) là từ gốc, thường được dùng trong Tân Ước để chỉ sự đầy dẫy (đầy tràn) bởi Đức Thánh Linh, như trong Công vụ 2:4.",
     "language": "vi",
     "options": [
-      "Pimplemi - Đầy tràn",
-      "Chortazo - No đủ",
-      "Pleroo - Làm đầy",
-      "Gemizo - Chứa đầy"
+      "Pimplēmi - Đầy tràn",
+      "Chortazō - No đủ",
+      "Plēroō - Làm đầy (hoàn thành)",
+      "Gemizō - Chứa đầy"
     ],
     "tags": [
       "Công Vụ",
@@ -676,7 +676,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Công vụ 2:38 - Phi-e-rơ kêu gọi ăn năn (đổi hướng), báp-têm nhân danh Chúa, và nhận lãnh Đức Thánh Linh.",
+    "explanation": "Công vụ 2:38 - Phi-e-rơ kêu gọi: 'Hãy ăn năn, mỗi người phải nhân danh Chúa Giê-su chịu báp-têm để được tha tội, rồi sẽ nhận lãnh ân tứ là Đức Thánh Linh.'",
     "language": "vi",
     "options": [
       "Dâng của lễ",
@@ -840,7 +840,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Công vụ 8:31 - Cần người giải thích Kinh Thánh. Vai trò quan trọng của người dạy dỗ.",
+    "explanation": "Công vụ 8:30-31 - Hoạn quan thừa nhận cần có người giải thích Kinh Thánh. Vai trò quan trọng của người dạy dỗ.",
     "language": "vi",
     "verseEnd": 31,
     "options": [
@@ -891,16 +891,16 @@
     "verseStart": 35,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Phao-lô trích lời Chúa Giê-su: \"Ban cho có phước hơn ___\"",
+    "content": "Phao-lô trích lời Chúa Giê-su: \"Ban cho thì có phước hơn ___\"",
     "correctAnswer": [
       2
     ],
-    "explanation": "Công vụ 20:35 - Lời của Chúa Giê-su không có trong Phúc Âm nhưng được Phao-lô truyền lại.",
+    "explanation": "Công vụ 20:35 - Lời của Chúa Giê-su không có trong Phúc Âm nhưng được Phao-lô truyền lại: 'Ban cho thì có phước hơn nhận lấy.'",
     "language": "vi",
     "options": [
       "Đòi",
       "Giữ",
-      "Nhận",
+      "nhận lấy",
       "Xin"
     ],
     "tags": [
@@ -1082,12 +1082,12 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Công Vụ 4:32 — 'Vả, người tin theo đông lắm, cứ một lòng một ý cùng nhau. Chẳng ai kể của mình là của riêng; nhưng kể mọi vật là của chung.'",
+    "explanation": "Công Vụ 4:32 — 'Vả, người tin theo đông lắm, cứ một lòng một ý cùng nhau. Chẳng ai kể của mình là của riêng; nhưng kể mọi vật là của chung.' (Các câu 34-35 mô tả thêm việc bán đất đai, đem tiền đến chân các sứ đồ và phân phát theo nhu cầu).",
     "language": "vi",
     "options": [
       "Mỗi người giữ riêng của mình",
       "Bị bắt nộp toàn bộ tài sản",
-      "Coi mọi vật là của chung; ai có dư thì chia cho ai thiếu",
+      "Coi mọi vật là của chung",
       "Đem tất cả về Giê-ru-sa-lem"
     ],
     "tags": [
@@ -1189,7 +1189,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Công Vụ 7:55-56 — 'Ê-tiên... nhìn lên trời, thấy sự vinh hiển của Đức Chúa Trời, và Đức Chúa Jêsus đứng bên hữu Đức Chúa Trời.' Lưu ý: Chúa Jêsus đứng (chứ không ngồi).",
+    "explanation": "Công Vụ 7:55-56 — 'Ê-tiên... nhìn lên trời, thấy sự vinh hiển của Đức Chúa Trời, và Đức Chúa Jêsus đứng bên hữu Đức Chúa Trời.'",
     "language": "vi",
     "options": [
       "Một thiên sứ",
@@ -1355,7 +1355,7 @@
       "Bị Sau-lơ giết",
       "Trận chiến tử trận",
       "Bệnh thường tự nhiên",
-      "Bị thiên sứ đánh vì không nhường vinh hiển cho Đức Chúa Trời, bị trùng đục"
+      "Bị thiên sứ đánh vì không nhường vinh hiển cho Đức Chúa Trời"
     ],
     "tags": [
       "Tân Ước",
@@ -1408,7 +1408,7 @@
     "options": [
       "A-pô-lô và Ar-tê-mit",
       "Pô-sê-i-đôn và A-rê",
-      "Ba-na-ba = Giu-bi-tê (Zeus); Phao-lô = Mẹt-cu-ya (Hermes)",
+      "Giu-bi-tê và Mẹt-cu-ya",
       "Ô-rê-ôn và Cu-pi-đô"
     ],
     "tags": [
@@ -1678,11 +1678,11 @@
       "Cê-pha — 'vầng đá'"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch sử",
       "Ba-na-ba",
-      "Co ban"
+      "Cơ bản"
     ]
   },
   {
@@ -1704,11 +1704,11 @@
       "SAU-LƠ — về sau trở thành sứ đồ Phao-lô"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch sử",
       "Sau-lơ tại Ê-tiên",
-      "Co ban"
+      "Cơ bản"
     ]
   },
   {
@@ -1731,11 +1731,11 @@
       "Một đám mây tối (theo cach trinh bay cua text)"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch sử",
       "Sau-lơ trở lại đạo",
-      "Co ban"
+      "Cơ bản"
     ]
   },
   {
@@ -1757,11 +1757,11 @@
       "A-thên (theo cach trinh bay cua text)"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch sử",
       "Cơ-đốc-nhân tại An-ti-ốt",
-      "Co ban"
+      "Cơ bản"
     ]
   },
   {
@@ -1783,11 +1783,11 @@
       "Bô-a-nẹt (nhu duoc mo ta trong sach)"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch sử",
       "Sau-lơ = Phao-lô",
-      "Co ban"
+      "Cơ bản"
     ]
   },
   {
@@ -1809,11 +1809,11 @@
       "LY-ĐI ở Thy-a-ti-rơ — BUÔN HÀNG SẮC TÍA, kẻ kính sợ Đức Chúa Trời"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch sử",
       "Ly-đi tại Phi-líp",
-      "Co ban"
+      "Cơ bản"
     ]
   },
   {
@@ -1835,11 +1835,11 @@
       "Phi-lết (xet trong van canh)"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch sử",
       "Đê-mê-tri-ơ Ê-phê-sô",
-      "Co ban"
+      "Cơ bản"
     ]
   },
   {
@@ -1861,11 +1861,11 @@
       "'Hãy chờ Đức Thánh Linh chỉ dạy' (nhu duoc mo ta trong sach)"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch sử",
       "Sẵn sàng tử đạo",
-      "Co ban"
+      "Cơ bản"
     ]
   },
   {
@@ -1878,21 +1878,21 @@
       2
     ],
     "verseEnd": 31,
-    "content": "Theo Công Vụ 28:30-31 (kết Công Vụ), Phao-lô tại Rô-ma trong tình trạng nào và làm gì?",
+    "content": "Theo Công Vụ 28:30-31, Phao-lô đã sống và làm gì trong hai năm tại Rô-ma?",
     "explanation": "Công Vụ 28:30-31 (kết sách) — 'Phao-lô ở trọn hai năm tại một nhà trọ đã thuê. Người tiếp rước mọi người đến thăm mình, giảng về nước Đức Chúa Trời, và dạy dỗ về Đức Chúa Jêsus Christ cách tự do trọn vẹn, không ai ngăn cấm'. Câu kết mở — Tin Lành 'không ai ngăn cấm' lan tới tận thủ đô đế quốc.",
     "language": "vi",
     "options": [
-      "Bị xét xử rồi tử đạo ngay (nhu duoc mo ta trong sach)",
-      "Bị nhốt trong ngục tối (theo cach trinh bay cua text)",
-      "Trong nhà THUÊ TRỌN HAI NĂM, tiếp đón mọi người đến thăm, GIẢNG nước Đức Chúa Trời và dạy về Chúa Jêsus 'CÁCH TỰ DO TRỌN VẸN, KHÔNG AI NGĂN CẤM'",
-      "Trở về An-ti-ốt (xet trong van canh) (theo trinh tu cau chuyen)"
+      "Bị xét xử rồi tử đạo ngay (không được mô tả trong đoạn này)",
+      "Bị nhốt trong ngục tối (không đúng với mô tả trong đoạn)",
+      "Sống hai năm trong nhà thuê, tiếp đón mọi người, giảng dạy về nước Đức Chúa Trời và Chúa Jêsus cách tự do, không ai ngăn cấm",
+      "Trở về An-ti-ốt (không đúng với bối cảnh cuối sách)"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch sử",
       "Phao-lô tại Rô-ma",
-      "Co ban"
+      "Cơ bản"
     ]
   },
   {
@@ -2175,14 +2175,14 @@
       1
     ],
     "verseEnd": 53,
-    "content": "Theo Công Vụ 7:51-53, Ê-tiên kết bài giảng bằng lời CÁO BUỘC mạnh nào đối với Tòa Công Luận?",
-    "explanation": "Công Vụ 7:51-53 — 'Hỡi những người cứng cổ, lòng và tai chẳng cắt bì kia! Các ngươi cứ nghịch với Đức Thánh Linh hoài; tổ phụ các ngươi thế nào, thì các ngươi cũng thế ấy! Há có đấng tiên tri nào mà tổ phụ các ngươi chẳng bắt bớ ư? Họ cũng đã giết những người nói tiên tri sự đến của Đấng Công Bình; mà bây giờ chính các ngươi đã trở nên kẻ phản và giết Đấng đó'. Lời cáo trực diện = cớ ném đá Ê-tiên.",
+    "content": "Theo Công Vụ 7:51-53, Ê-tiên kết bài giảng bằng lời cáo buộc mạnh nào đối với Tòa Công Luận?",
+    "explanation": "Công Vụ 7:51-53 — 'Hỡi những người cứng cổ, lòng và tai chẳng cắt bì kia! Các ngươi cứ nghịch với Đức Thánh Linh hoài; tổ phụ các ngươi thế nào, thì các ngươi cũng thế ấy! Há có đấng tiên tri nào mà tổ phụ các ngươi chẳng bắt bớ ư? Họ cũng đã giết những người nói tiên tri sự đến của Đấng Công Bình; mà bây giờ chính các ngươi đã trở nên kẻ phản và giết Đấng đó'. Lời cáo trực diện này là nguyên nhân khiến họ ném đá Ê-tiên.",
     "language": "vi",
     "options": [
-      "'Hãy ăn năn' (xet trong van canh) (theo trinh tu cau chuyen) (doi chieu voi cac phan doan lien quan)",
-      "'Hỡi những người CỨNG CỔ, lòng và TAI CHẲNG CẮT BÌ kia! Các ngươi NGHỊCH với Đức Thánh Linh; tổ phụ các ngươi GIẾT các đấng tiên tri rao báo Đấng Công Bình; các ngươi đã NỘP và GIẾT Ngài'",
-      "'Đức Chúa Trời sẽ giải cứu' (nhu duoc mo ta trong sach) (xet theo noi dung goc)",
-      "'Hãy bỏ Luật Pháp' (theo cach trinh bay cua text) (nhu van ban ghi ro) (theo boi canh doan nay)"
+      "'Hãy ăn năn'",
+      "'Hỡi những người cứng cổ, lòng và tai chẳng cắt bì kia! Các ngươi nghịch với Đức Thánh Linh; tổ phụ các ngươi giết các đấng tiên tri rao báo Đấng Công Bình; các ngươi đã nộp và giết Ngài'",
+      "'Đức Chúa Trời sẽ giải cứu'",
+      "'Hãy bỏ Luật Pháp'"
     ],
     "tags": [
       "Tan Uoc",
@@ -2207,9 +2207,9 @@
     "language": "vi",
     "options": [
       "Hội thánh được bình an; Sau-lơ rao giảng tại Giê-ru-sa-lem",
-      "Mọi sứ đồ chạy trốn; Sau-lơ chối Chúa (theo cach trinh bay cua text)",
-      "BẮT BỚ LỚN nổ ra; tín hữu (trừ các sứ đồ) tản lạc khắp Giu-đê + Sa-ma-ri; SAU-LƠ TÀN HẠI hội thánh, vào nhà KÉO đàn ông + đàn bà tống ngục",
-      "Hội thánh chia thành 12 nhóm (xet trong van canh) (nhu duoc mo ta trong sach)"
+      "Mọi sứ đồ chạy trốn; Sau-lơ chối Chúa (theo cách trình bày của text)",
+      "Bắt bớ lớn nổ ra; tín hữu (trừ các sứ đồ) tản lạc khắp Giu-đê và Sa-ma-ri; Sau-lơ tàn hại hội thánh, vào nhà kéo đàn ông và đàn bà tống ngục",
+      "Hội thánh chia thành 12 nhóm (xét trong văn cảnh) (như được mô tả trong sách)"
     ],
     "tags": [
       "Tan Uoc",
@@ -2230,13 +2230,13 @@
     ],
     "verseEnd": 24,
     "content": "Theo Công Vụ 8:9-24, ai tại Sa-ma-ri đã DÙNG TIỀN xin mua quyền ban Đức Thánh Linh — bị Phi-e-rơ rủa: 'Tiền bạc ngươi hãy hư mất với ngươi'?",
-    "explanation": "Công Vụ 8:18-20 — 'Si-môn thấy bởi các sứ đồ đặt tay trên người ta thì có Đức Thánh Linh xuống, bèn lấy bạc dâng cho, mà nói rằng: Cũng hãy cho tôi quyền phép ấy, để tôi đặt tay trên ai thì nấy được nhận lấy Đức Thánh Linh. Phi-e-rơ trả lời rằng: Tiền bạc ngươi hãy hư mất với ngươi, vì ngươi tưởng lấy tiền bạc mua được sự ban cho của Đức Chúa Trời'. Tên Si-môn này là gốc của từ 'simony' = tội mua bán chức thánh.",
+    "explanation": "Công Vụ 8:18-20 — 'Si-môn thấy bởi các sứ đồ đặt tay trên người ta thì có Đức Thánh Linh xuống, bèn lấy bạc dâng cho, mà nói rằng: Cũng hãy cho tôi quyền phép ấy, để tôi đặt tay trên ai thì nấy được nhận lấy Đức Thánh Linh. Phi-e-rơ trả lời rằng: Tiền bạc ngươi hãy hư mất với ngươi, vì ngươi tưởng lấy tiền bạc mua được sự ban cho của Đức Chúa Trời'. Người đó là Si-môn, một phù thủy nổi tiếng tại Sa-ma-ri. Hành động của ông là nguồn gốc của từ 'simony' (tội mua bán chức thánh).",
     "language": "vi",
     "options": [
-      "A-na-nia (xet trong van canh) (theo trinh tu cau chuyen)",
-      "Hi-mê-nê (theo cach trinh bay cua text)",
-      "A-léc-xan-đơ (nhu duoc mo ta trong sach)",
-      "SI-MÔN — phù thủy nổi tiếng tại Sa-ma-ri (gốc từ 'simony' = mua bán chức thánh)"
+      "A-na-nia (xét trong văn cảnh)",
+      "Hi-mê-nê (theo cách trình bày của text)",
+      "A-léc-xan-đơ (như được mô tả trong sách)",
+      "Si-môn — phù thủy nổi tiếng tại Sa-ma-ri"
     ],
     "tags": [
       "Tan Uoc",
@@ -2260,17 +2260,17 @@
     "explanation": "Công Vụ 9:10-17 — 'Vả, tại Đa-mách có một môn đồ tên là A-na-nia. Chúa phán cùng người trong sự hiện thấy rằng: Hỡi A-na-nia. Người thưa rằng: Lạy Chúa, có tôi đây... Chúa phán rằng: Hãy chờ dậy, đi lên đường gọi là Ngay thẳng, tìm tên Sau-lơ, người Tạt-sơ, ở nhà Giu-đa... vì người là một đồ dùng ta đã chọn lựa, để đem danh ta đồn ra trước mặt các dân ngoại, các vua, và con cái Y-sơ-ra-ên'. Lệnh truyền giáo cho dân ngoại được ban từ ĐẦU.",
     "language": "vi",
     "options": [
-      "Phi-líp (xet trong van canh) (theo trinh tu cau chuyen) (doi chieu voi cac phan doan lien quan)",
-      "A-NA-NIA tại Đa-mách (KHÔNG phải A-na-nia chồng Sa-phi-ra) — Chúa giải thích Sau-lơ là 'đồ dùng ta đã chọn để đem danh ta đến trước mặt các dân ngoại'",
-      "Ba-na-ba (theo cach trinh bay cua text) (nhu van ban ghi ro)",
-      "Sau-lơ tự đến hội đường (nhu duoc mo ta trong sach) (xet theo noi dung goc)"
+      "Phi-líp (xét trong văn cảnh)",
+      "A-na-nia tại Đa-mách (không phải A-na-nia chồng Sa-phi-ra)",
+      "Ba-na-ba (theo cách trình bày của văn bản)",
+      "Sau-lơ tự đến hội đường (như được mô tả trong sách)"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch sử",
       "A-na-nia + Sau-lơ",
-      "Trung cap"
+      "Trung cấp"
     ]
   },
   {
@@ -2284,20 +2284,20 @@
     ],
     "verseEnd": 25,
     "content": "Theo Công Vụ 9:23-25, sau khi giảng dạn dĩ ở Đa-mách khiến người Do Thái mưu giết, Sau-lơ trốn khỏi thành bằng cách nào?",
-    "explanation": "Công Vụ 9:23-25 — 'Cách lâu ngày, người Giu-đa mưu với nhau để giết Sau-lơ; nhưng có người báo tin cho Sau-lơ về cơ mưu chúng nó. Người ta lại canh giữ các cửa cả ngày và đêm đặng giết người. Song lúc ban đêm, các môn đồ lấy thúng dòng người xuống ngoài vách thành'. Phao-lô về sau ghi 2 Cô 11:32-33 thêm chi tiết: dưới quyền vua A-rê-ta.",
+    "explanation": "Công Vụ 9:23-25 — 'Cách lâu ngày, người Giu-đa mưu với nhau để giết Sau-lơ; nhưng có người báo tin cho Sau-lơ về cơ mưu chúng nó. Người ta lại canh giữ các cửa cả ngày và đêm đặng giết người. Song lúc ban đêm, các môn đồ lấy thúng dòng người xuống ngoài vách thành'. Phao-lô về sau ghi trong 2 Cô-rinh-tô 11:32-33 có thêm chi tiết: dưới quyền vua A-rê-ta.",
     "language": "vi",
     "options": [
-      "Cải trang thành lữ khách (xet trong van canh)",
-      "Đi đêm cùng đoàn lái buôn (theo cach trinh bay cua text)",
-      "Môn đồ THẢ ông trong một CÁI THÚNG xuống dọc theo TƯỜNG THÀNH ban đêm",
-      "Ngựa của thầy tế lễ chở đi (nhu duoc mo ta trong sach)"
+      "Cải trang thành lữ khách (xét trong văn cảnh)",
+      "Đi đêm cùng đoàn lái buôn (theo cách trình bày của bản văn)",
+      "Môn đồ thả ông trong một cái thúng xuống dọc theo tường thành ban đêm",
+      "Ngựa của thầy tế lễ chở đi (như được mô tả trong sách)"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch sử",
       "Trốn trong thúng",
-      "Trung cap"
+      "Trung cấp"
     ]
   },
   {
@@ -2310,14 +2310,14 @@
       0
     ],
     "verseEnd": 30,
-    "content": "Theo Công Vụ 9:26-30, khi Sau-lơ về Giê-ru-sa-lem, ai đã DẪN ông đến với các sứ đồ + làm chứng cho sự trở lại đạo của ông (vì các sứ đồ còn sợ Sau-lơ)?",
+    "content": "Theo Công Vụ 9:26-30, khi Sau-lơ về Giê-ru-sa-lem, ai đã dẫn ông đến với các sứ đồ và làm chứng cho sự trở lại đạo của ông?",
     "explanation": "Công Vụ 9:26-27 — 'Sau-lơ tới thành Giê-ru-sa-lem rồi, muốn hiệp với các môn đồ; nhưng hết thảy đều nghi sợ người, không tin là môn đồ. Ba-na-ba bèn đem người đi, đưa đến các sứ đồ và thuật lại cho biết thể nào dọc đường Chúa đã hiện ra và phán cùng người'. Ba-na-ba 'cầu nối' Sau-lơ với hội thánh — bài học tiếp đón người mới.",
     "language": "vi",
     "options": [
-      "BA-NA-BA — đúng với tên 'con trai của sự yên ủi'; ông sẽ là bạn đồng hành Sau-lơ trong hành trình truyền giáo 1",
-      "Phi-líp (xet trong van canh) (theo trinh tu cau chuyen)",
-      "Cọt-nây (theo cach trinh bay cua text) (xet theo noi dung goc)",
-      "Cô-rin-tô (nhu duoc mo ta trong sach) (nhu van ban ghi ro)"
+      "Ba-na-ba — ông đã đem Sau-lơ đến với các sứ đồ và làm chứng cho người",
+      "Phi-líp",
+      "Cọt-nây",
+      "Cô-rin-tô"
     ],
     "tags": [
       "Tan Uoc",
@@ -2341,10 +2341,10 @@
     "explanation": "Công Vụ 10:9-16 — 'Người thấy trời mở ra, và có vật chi giống một bức khăn lớn níu bốn chéo lên, giáng xuống và sa đến đất; thấy trong đó có hết thảy các loài thú bốn chân, các loài côn trùng bò trên đất, và chim trên trời. Lại có tiếng phán cùng người rằng: Hỡi Phi-e-rơ, hãy dậy, làm thịt và ăn. Song Phi-e-rơ thưa rằng: Lạy Chúa, chẳng vậy; vì tôi chẳng ăn giống gì dơ dáy chẳng sạch bao giờ. Tiếng đó lại phán cùng người lần thứ hai rằng: Phàm vật chi Đức Chúa Trời đã làm cho sạch, thì chớ cầm bằng dơ dáy. Lời đó lặp lại ba lần'. Khải tượng ý nghĩa kép: thức ăn dân ngoại + chính dân ngoại đã được Chúa làm 'cho sạch'.",
     "language": "vi",
     "options": [
-      "Một thiên thần — 1 lần (theo cach trinh bay cua text) (xet theo noi dung goc) (xet trong van canh)",
-      "Một bồ câu — 7 lần (xet trong van canh) (theo trinh tu cau chuyen) (doi chieu voi cac phan doan lien quan)",
-      "Một thập tự giá — 12 lần (nhu duoc mo ta trong sach) (nhu van ban ghi ro) (theo boi canh doan nay)",
-      "MỘT TẤM KHĂN LỚN từ trời thòng xuống chứa MỌI LOÀI THÚ + bò sát + chim — Tiếng phán: 'Hãy GIẾT VÀ ĂN'; Phi-e-rơ từ chối, tiếng đáp: 'Đừng coi điều Đức Chúa Trời đã làm cho sạch là ô uế nữa'. Lặp BA LẦN"
+      "Một thiên thần — 1 lần",
+      "Một bồ câu — 7 lần",
+      "Một thập tự giá — 12 lần",
+      "Một tấm khăn lớn từ trời thòng xuống chứa mọi loài thú; tiếng phán 'Hãy giết và ăn' lặp lại ba lần"
     ],
     "tags": [
       "Tan Uoc",
@@ -2368,10 +2368,10 @@
     "explanation": "Công Vụ 10:44-46 — 'Khi Phi-e-rơ đang nói, thì Đức Thánh Linh giáng trên mọi người nghe đạo. Các tín đồ đã chịu phép cắt bì cùng đến với Phi-e-rơ đều lấy làm lạ, vì thấy sự ban cho Đức Thánh Linh cũng đổ ra trên người ngoại nữa. Vì các tín hữu nghe họ nói tiếng ngoại quốc và khen ngợi Đức Chúa Trời'. Sự kiện này = bằng chứng KHÁCH QUAN dân ngoại được nhận vào hội thánh BÌNH ĐẲNG (Phi-e-rơ kể lại 11:15-17).",
     "language": "vi",
     "options": [
-      "Cọt-nây xin chịu cắt bì (theo cach trinh bay cua text) (nhu van ban ghi ro)",
-      "Phi-e-rơ thấy một thiên sứ thứ hai (nhu duoc mo ta trong sach)",
-      "ĐỨC THÁNH LINH GIÁNG TRÊN MỌI NGƯỜI nghe đạo (DÂN NGOẠI) — họ NÓI TIẾNG MỚI và ngợi khen Chúa, GIỐNG y như Lễ Ngũ Tuần (gọi là 'Pentecost dân ngoại')",
-      "Phi-e-rơ ngất xỉu (xet trong van canh) (theo trinh tu cau chuyen)"
+      "Cọt-nây xin chịu cắt bì (theo cách trình bày của văn bản)",
+      "Phi-e-rơ thấy một thiên sứ thứ hai (như được mô tả trong sách)",
+      "Đức Thánh Linh giáng trên mọi người nghe đạo (dân ngoại) — họ nói tiếng mới và ngợi khen Chúa",
+      "Phi-e-rơ ngất xỉu (xét trong văn cảnh câu chuyện)"
     ],
     "tags": [
       "Tan Uoc",
@@ -2391,14 +2391,14 @@
       1
     ],
     "verseEnd": 26,
-    "content": "Theo Công Vụ 11:19-26, ai được hội thánh Giê-ru-sa-lem SAI đến An-ti-ốt sau khi nghe nhiều dân ngoại trở lại đạo, và ai được Ba-na-ba đi tìm về cộng tác?",
+    "content": "Theo Công Vụ 11:19-26, ai được hội thánh Giê-ru-sa-lem sai đến An-ti-ốt sau khi nghe nhiều dân ngoại trở lại đạo, và ai được Ba-na-ba đi tìm về cộng tác?",
     "explanation": "Công Vụ 11:22-26 — 'Tin đồn này đến tai Hội thánh ở thành Giê-ru-sa-lem, hội bèn sai Ba-na-ba sang đến thành An-ti-ốt... Đoạn, Ba-na-ba đi đến thành Tạt-sơ, để tìm Sau-lơ; tìm gặp rồi, bèn đưa đến thành An-ti-ốt. Trọn một năm, hai người cùng nhóm với hội thánh và dạy dỗ nhiều người. Ấy là tại thành An-ti-ốt, người ta bắt đầu xưng môn đồ là Cơ-đốc-nhân'. Ba-na-ba 'kéo' Sau-lơ ra ánh sáng — chuẩn bị cho hành trình truyền giáo 1 (13:1-3).",
     "language": "vi",
     "options": [
-      "Ti-mô-thê và Ti-tu (nhu duoc mo ta trong sach)",
-      "BA-NA-BA được sai đi; Ba-na-ba đến TẠT-SƠ tìm SAU-LƠ về dạy chung 1 năm tại An-ti-ốt",
-      "Phi-e-rơ và Giăng (theo cach trinh bay cua text)",
-      "Si-la và Mác (xet trong van canh) (theo trinh tu cau chuyen)"
+      "Ba-na-ba được sai đi; sau đó ông đi tìm Sau-lơ ở Tạt-sơ và đưa về An-ti-ốt",
+      "Ti-mô-thê và Ti-tu",
+      "Phi-e-rơ và Giăng",
+      "Si-la và Mác"
     ],
     "tags": [
       "Tan Uoc",
@@ -2449,10 +2449,10 @@
     "explanation": "Công Vụ 12:7-10 — 'Thình lình, một thiên sứ của Chúa đến, và có ánh sáng soi trong ngục. Thiên sứ đập vào sườn Phi-e-rơ, đánh thức người, mà rằng: Hãy mau chờ dậy. Xiềng bèn rớt ra khỏi tay người. Đoạn, thiên sứ nói rằng: Hãy nịt lưng và mang dép vào đi... Họ qua khỏi vọng canh thứ nhất, rồi vọng thứ hai, đến nơi cửa sắt là cửa thông vào thành; cửa đó tự mở ra trước mặt hai người'. Hội thánh đang cầu nguyện thâu đêm — Phi-e-rơ về gõ cửa, Rô-đơ vui mừng quên mở (12:12-16).",
     "language": "vi",
     "options": [
-      "Một trận động đất mở ngục (nhu duoc mo ta trong sach) (xet theo noi dung goc)",
-      "Lính canh ngủ thiếp (xet trong van canh) (theo trinh tu cau chuyen)",
+      "Phi-e-rơ tự mở khóa xiềng và trốn thoát một mình.",
+      "Lính canh ngủ thiếp đi và Phi-e-rơ lẻn ra ngoài.",
       "MỘT THIÊN SỨ vào ngục, vỗ Phi-e-rơ dậy, XÍCH XIỀNG RỚT khỏi tay; Phi-e-rơ theo thiên sứ qua các cửa, cửa SẮT thành tự MỞ; ban đầu Phi-e-rơ tưởng đó là khải tượng",
-      "Hội thánh phá cửa cứu (theo cach trinh bay cua text) (nhu van ban ghi ro)"
+      "Hội thánh tập hợp phá cửa ngục để giải cứu."
     ],
     "tags": [
       "Tan Uoc",
@@ -2583,13 +2583,13 @@
     ],
     "verseEnd": 29,
     "content": "Theo Công Vụ 15:22-29, BỨC THƯ của Hội nghị Giê-ru-sa-lem yêu cầu dân ngoại KIÊNG BỐN điều — đáp ứng lương tâm tín hữu Do Thái. Chọn BA điều xuất hiện trong danh sách.",
-    "explanation": "Công Vụ 15:28-29 — 'Vì Đức Thánh Linh và chúng ta đã ưng rằng chẳng gán gánh nặng nào khác cho anh em ngoài những điều cần dùng, tức là anh em phải kiêng ăn của cúng thần tượng, huyết, thú vật chết ngột, và chớ tà dâm; ấy là mọi điều mà anh em khá kiêng giữ lấy vậy'. BỐN điều: (1) của cúng thần tượng, (2) huyết, (3) thú thắt cổ, (4) tà dâm. CẮT BÌ KHÔNG được yêu cầu — đó là QUYẾT ĐỊNH chính của Hội nghị.",
+    "explanation": "Công Vụ 15:28-29 — 'Vì Đức Thánh Linh và chúng ta đã ưng rằng chẳng gán gánh nặng nào khác cho anh em ngoài những điều cần dùng, tức là anh em phải kiêng ăn của cúng thần tượng, huyết, thú vật chết ngột, và chớ tà dâm; ấy là mọi điều mà anh em khá kiêng giữ lấy vậy'. BỐN điều: (1) của cúng thần tượng, (2) huyết, (3) thú vật chết ngột (bị thắt cổ), (4) tà dâm. CẮT BÌ KHÔNG được yêu cầu — đó là QUYẾT ĐỊNH chính của Hội nghị.",
     "language": "vi",
     "options": [
       "Của CÚNG thần tượng",
-      "HUYẾT (máu) (theo cach trinh bay cua text)",
-      "Thú vật BỊ THẮT CỔ (chưa rút máu)",
-      "Cắt bì (xet trong van canh)"
+      "HUYẾT (máu)",
+      "Thú vật BỊ THẮT CỔ (chết ngột, chưa rút máu)",
+      "TÀ DÂM"
     ],
     "tags": [
       "Tan Uoc",
@@ -2721,17 +2721,17 @@
     "explanation": "Công Vụ 17:11 — 'Những người này có ý hẳn hoi hơn người Tê-sa-lô-ni-ca, đều sẵn lòng chịu lấy đạo, ngày nào cũng tra xem Kinh Thánh, để xét lời giảng có thật chăng. Trong bọn họ có nhiều người tin theo, với mấy người đờn bà Gờ-réc sang trọng, và đờn ông cũng khá đông'. 'Bê-rê' trở thành biểu tượng môn đồ ĐÚNG ĐẮN — vừa tiếp nhận lời, vừa kiểm tra bằng Kinh Thánh.",
     "language": "vi",
     "options": [
-      "Họ giàu có hơn (xet trong van canh) (theo trinh tu cau chuyen) (doi chieu voi cac phan doan lien quan)",
-      "Họ có nhiều thầy tế lễ (theo cach trinh bay cua text) (xet theo noi dung goc)",
-      "Họ TIẾP NHẬN đạo CÁCH SỐT SẮNG, HẰNG NGÀY TRA XEM KINH THÁNH để xét lời Phao-lô có thật chăng — KHÔNG TIN MÙ QUÁNG, cũng KHÔNG bác bỏ; kết quả: NHIỀU người TIN",
-      "Họ có nhiều người Hy-lạp (nhu duoc mo ta trong sach) (nhu van ban ghi ro)"
+      "Họ giàu có hơn (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phán đoán liên quan)",
+      "Họ có nhiều thầy tế lễ (theo cách trình bày của bản văn) (xét theo nội dung gốc)",
+      "Họ tiếp nhận đạo cách sốt sắng, hằng ngày tra xem Kinh Thánh để xét lời giảng.",
+      "Họ có nhiều người Hy Lạp (như được mô tả trong sách) (như văn bản ghi rõ)"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch sử",
       "Bê-rê tra Kinh Thánh",
-      "Trung cap"
+      "Trung cấp"
     ]
   },
   {
@@ -2792,6 +2792,7 @@
     "book": "Acts",
     "chapter": 23,
     "verseStart": 11,
+    "verseEnd": 11,
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "correctAnswer": [
@@ -2803,7 +2804,7 @@
     "options": [
       "'Trở về Giê-ru-sa-lem' (nhu duoc mo ta trong sach) (xet theo noi dung goc)",
       "'Đi đến Ai Cập' (xet trong van canh) (theo trinh tu cau chuyen)",
-      "'Hãy GIỮ LÒNG MẠNH MẼ; vì ngươi đã LÀM CHỨNG cho ta tại thành GIÊ-RU-SA-LEM thể nào, thì cũng phải LÀM CHỨNG cho ta tại thành RÔ-MA thể ấy'",
+      "'Hãy giục lòng mạnh mẽ; vì ngươi đã làm chứng cho ta tại thành Giê-ru-sa-lem thể nào, thì cũng phải làm chứng cho ta tại thành Rô-ma thể ấy'",
       "'Hãy về An-ti-ốt' (theo cach trinh bay cua text) (nhu van ban ghi ro)"
     ],
     "tags": [
@@ -2899,6 +2900,7 @@
     "book": "Acts",
     "chapter": 4,
     "verseStart": 11,
+    "verseEnd": 11,
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "correctAnswer": [
@@ -2925,12 +2927,12 @@
     "book": "Acts",
     "chapter": 7,
     "verseStart": 48,
+    "verseEnd": 50,
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "correctAnswer": [
       0
     ],
-    "verseEnd": 50,
     "content": "KIỂU 1 cross-ref Acts 7:48-50 — Ê-tiên kết bài giảng (về việc Đấng Tối Cao KHÔNG ở trong nhà tay người làm) bằng cách trích Ê-sai nào?",
     "explanation": "Công Vụ 7:48-50 — 'Nhưng Đấng Rất Cao chẳng ở trong nhà bởi tay người ta làm ra, như đấng tiên tri đã nói: Chúa phán: Trời là ngai ta, đất là bệ chân ta. Nào có nhà nào các ngươi cất cho ta, hoặc có nơi nào cho ta yên nghỉ chăng? Há chẳng phải tay ta đã dựng nên mọi vật nầy chăng?' (Trích Ê-sai 66:1-2). Lập luận Ê-tiên: Đền thờ KHÔNG phải nơi DUY NHẤT Chúa hiện diện — Chúa hành động ở MÊ-SÔ (Áp-ra-ham), AI-CẬP (Giô-sép), SI-NAI (Môi-se). Sự kiện đóng đinh + Pentecost xác nhận Chúa không bị giới hạn trong đền thờ Giê-ru-sa-lem.",
     "language": "vi",
@@ -2952,6 +2954,7 @@
     "book": "Acts",
     "chapter": 13,
     "verseStart": 33,
+    "verseEnd": 33,
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "correctAnswer": [
@@ -2983,13 +2986,13 @@
     "correctAnswer": [
       2
     ],
-    "content": "KIỂU 1 cross-ref Acts 13:47 — Phao-lô + Ba-na-ba 'xoay qua dân ngoại' (13:46) trích lời tiên tri nào BIỆN MINH cho sứ mạng truyền giáo dân ngoại?",
+    "content": "Trong Công vụ 13:47, Phao-lô và Ba-na-ba (sau khi 'xoay qua dân ngoại' ở câu 46) đã trích lời tiên tri nào để biện minh cho sứ mạng truyền giáo cho dân ngoại của mình?",
     "explanation": "Công Vụ 13:47 — 'Vì Chúa có phán dặn chúng ta như vầy: Ta lập ngươi lên đặng làm sự sáng cho các dân, hầu cho ngươi đem sự cứu đến cùng đất' (Trích Ê-sai 49:6). Ê-sai 49:6 nguyên thủy là CON ĐƯỜNG SỨ VỤ TÔI TỚ — sứ mạng đến TẬN CÙNG ĐẤT. Phao-lô áp dụng cho MÌNH (= sứ đồ dân ngoại). Lu-ca cũng đã trích cùng câu này qua miệng Si-mê-ôn (Lu-ca 2:32 'Sự sáng để soi sáng dân ngoại'). Cùng câu, hai cấp ứng nghiệm: Christ (Si-mê-ôn) + sứ đồ Christ (Phao-lô).",
     "language": "vi",
     "options": [
-      "Ê-xê-chi-ên 37 — xương khô sống lại (xet trong van canh)",
-      "Ô-sê 11:1 — 'Ta gọi Con ta ra khỏi Ai-cập' (theo cach trinh bay cua text)",
-      "Ê-SAI 49:6 — 'Ta đã LẬP NGƯƠI làm SỰ SÁNG cho DÂN NGOẠI, đặng đem sự cứu đến tận đầu cùng đất'",
+      "Ê-xê-chi-ên 37 — xương khô sống lại (xét trong văn cảnh)",
+      "Ô-sê 11:1 — 'Ta gọi Con ta ra khỏi Ai-cập' (theo cách trình bày của bản văn)",
+      "Ê-sai 49:6 — 'Ta đã LẬP NGƯƠI làm SỰ SÁNG cho DÂN NGOẠI, đặng đem sự cứu đến tận đầu cùng đất'",
       "Ma-la-chi 1:11 — 'Danh ta sẽ lớn giữa các dân ngoại'"
     ],
     "tags": [
@@ -3011,13 +3014,13 @@
     ],
     "verseEnd": 17,
     "content": "KIỂU 1 cross-ref Acts 15:16-17 — Tại Hội nghị Giê-ru-sa-lem, Gia-cơ trích sách tiên tri Cựu Ước nào để biện minh việc TIẾP NHẬN dân ngoại không cần cắt bì?",
-    "explanation": "Công Vụ 15:16-17 — 'Rồi đó, ta sẽ trở lại, dựng lại đền tạm của Đa-vít bị đổ nát; ta sẽ dựng lại nơi đổ nát, và lập nó lên, hầu cho những người còn sót lại của loài người và hết thảy người ngoại được kêu danh ta sẽ tìm kiếm Chúa, Chúa là Đấng làm nên những việc đó' (Trích A-mốt 9:11-12 LXX). Gia-cơ giải thích: việc dân ngoại trở lại đạo = ỨNG NGHIỆM kế hoạch Chúa LÂU ĐỜI (đã có trong A-mốt 8 thế kỷ trước). KHÔNG phải kế hoạch B do dân Y-sơ-ra-ên từ chối — mà là kế hoạch A nguyên thủy.",
+    "explanation": "Công Vụ 15:16-17 — 'Rồi đó, ta sẽ trở lại, dựng lại đền tạm của Đa-vít bị đổ nát; ta sẽ dựng lại nơi đổ nát, và lập nó lên, hầu cho những người còn sót lại của loài người và hết thảy người ngoại được kêu danh ta sẽ tìm kiếm Chúa, Chúa là Đấng làm nên những việc đó' (Trích A-mốt 9:11-12 LXX). Gia-cơ giải thích: việc dân ngoại trở lại đạo là ỨNG NGHIỆM kế hoạch LÂU ĐỜI của Chúa (đã có trong A-mốt từ 8 thế kỷ trước). Đây không phải kế hoạch B do dân Y-sơ-ra-ên từ chối, mà là kế hoạch A nguyên thủy.",
     "language": "vi",
     "options": [
-      "Mi-chê 4:1-2 — 'các dân tộc đến núi Chúa' (xet trong van canh) (theo trinh tu cau chuyen)",
-      "A-MỐT 9:11-12 — 'Ta sẽ DỰNG LẠI đền tạm Đa-vít đã đổ nát; HẦU CHO PHẦN còn LẠI của LOÀI NGƯỜI và HẾT THẢY DÂN NGOẠI được kêu DANH ta tìm kiếm Chúa'",
-      "Xa-cha-ri 8:23 — '10 dân ngoại nắm vạt áo Do Thái' (theo cach trinh bay cua text)",
-      "Sô-phô-ni 3:9 — 'Ta sẽ ban môi miệng tinh sạch cho các dân' (nhu duoc mo ta trong sach)"
+      "Mi-chê 4:1-2 — 'các dân tộc đến núi Chúa' (xét trong văn cảnh) (theo trình tự câu chuyện)",
+      "A-MỐT 9:11-12 — \"Ta sẽ DỰNG LẠI đền tạm Đa-vít đã đổ nát; HẦU CHO PHẦN còn LẠI của LOÀI NGƯỜI và HẾT THẢY DÂN NGOẠI được kêu DANH ta tìm kiếm Chúa\"",
+      "Xa-cha-ri 8:23 — '10 dân ngoại nắm vạt áo Do Thái' (theo cách trình bày của text)",
+      "Sô-phô-ni 3:9 — 'Ta sẽ ban môi miệng tinh sạch cho các dân' (như được mô tả trong sách)"
     ],
     "tags": [
       "Tan Uoc",
@@ -3065,14 +3068,14 @@
       1,
       2
     ],
-    "content": "KIỂU 2 distinguish Acts 23:8 — Phao-lô gây xáo trộn Tòa Công Luận bằng cách KÊU 'tôi bị xét vì SỰ TRÔNG CẬY về SỐNG LẠI'. Người Sa-đu-sê CHỐI BA điều — chọn TẤT CẢ.",
-    "explanation": "Công Vụ 23:8 — 'Vả, người Sa-đu-sê quyết rằng KHÔNG CÓ SỰ SỐNG LẠI, cũng KHÔNG CÓ THIÊN SỨ, THẦN CHI hết, nhưng người Pha-ri-si lại nhận cả hai điều tin ấy'. BA điều Sa-đu-sê chối: (1) sống lại của thân thể, (2) thiên sứ, (3) thần linh / linh hồn. Sa-đu-sê chỉ chấp nhận 5 sách Mô-se = Torah; Pha-ri-si nhận thêm Tiên tri + Văn phẩm + truyền khẩu. Phao-lô cố ý CHIA RẼ Tòa: tuyên xưng sống lại = câu Pha-ri-si (đa số) đứng về phía Phao-lô. Mưu hay → tránh được án tử.",
+    "content": "Trong Công vụ 23:8, Phao-lô gây xáo trộn Tòa Công Luận bằng cách tuyên bố mình bị xét vì 'sự trông cậy về sự sống lại'. Người Sa-đu-sê chối bỏ ba điều nào dưới đây? (Chọn TẤT CẢ đáp án đúng)",
+    "explanation": "Công vụ 23:8 chép: 'Vả, người Sa-đu-sê quyết rằng không có sự sống lại, cũng không có thiên sứ, thần chi hết; nhưng người Pha-ri-si lại nhận cả hai điều tin ấy.' Ba điều người Sa-đu-sê chối bỏ là: (1) sự sống lại, (2) sự tồn tại của thiên sứ, (3) sự tồn tại của thần linh/linh hồn. Phao-lô cố ý nêu lên niềm tin nơi sự sống lại để chia rẽ Tòa Công Luận, vì nhóm Pha-ri-si (chiếm đa số) tin những điều này và đã đứng về phía ông.",
     "language": "vi",
     "options": [
-      "Sự SỐNG LẠI (xet trong van canh)",
-      "Sự tồn tại của THIÊN SỨ",
-      "Sự tồn tại của THẦN LINH (linh hồn người chết)",
-      "Lễ Vượt Qua (theo cach trinh bay cua text)"
+      "Sự sống lại",
+      "Sự tồn tại của thiên sứ",
+      "Sự tồn tại của thần linh (linh hồn)",
+      "Lễ Vượt Qua"
     ],
     "tags": [
       "Tan Uoc",
@@ -3123,8 +3126,8 @@
     "options": [
       "Phi-líp = sứ đồ trong 12 môn đồ (gọi từ Bết-sai-đa, Giăng 1:43-46, hỏi Chúa Jêsus 'cho chúng tôi xem Cha' Giăng 14:8)",
       "PHI-LÍP = một trong BẢY chấp sự được chọn ở Acts 6:1-6 — 'người có lời chứng tốt và đầy dẫy Thánh Linh và sự khôn ngoan'; cũng gọi 'PHI-LÍP NHÀ TRUYỀN ĐẠO' Acts 21:8 (có 4 con gái nói tiên tri)",
-      "Cả hai là một người (xet trong van canh) (nhu duoc mo ta trong sach) (nhu van ban ghi ro) (doi chieu voi cac phan doan lien quan)",
-      "Phi-líp anh của Hê-rốt (theo cach trinh bay cua text) (theo trinh tu cau chuyen) (xet theo noi dung goc)"
+      "Cả hai là một người (xét trong văn cảnh, như được mô tả trong sách)",
+      "Phi-líp anh của Hê-rốt (theo cách trình bày của văn bản, xét theo nội dung gốc)"
     ],
     "tags": [
       "Tan Uoc",
@@ -3147,10 +3150,10 @@
     "explanation": "Phao-lô đứng trước BA chính khách: (1) PHÊ-LIX (Acts 24, tổng đốc Giu-đê 52-59 SC) — cưới Đơ-ru-si (chị Ạc-ríp-ba II); 'run sợ' nghe Phao-lô (24:25) nhưng chỉ giữ Phao-lô CHỜ HỐI LỘ (24:26); rời chức để Phê-tu kế. (2) PHÊ-TU (Acts 25, kế nhiệm Phê-lix 59-62 SC); không thông Cơ-đốc giáo; xét Phao-lô không có lỗi nhưng để vừa lòng Do Thái → bàn giải đến Giê-ru-sa-lem; → Phao-lô KÊU NÀI Sê-sa (25:11) → mở đường đến Rô-ma. (3) ẠC-RÍP-BA II (Acts 26, vua bù nhìn cuối dòng Hê-rốt) — sống chung loạn luân với Bê-rê-nít; nghe Phao-lô tự bào chữa; câu nổi tiếng 'còn ít nữa ngươi khuyên ta trở nên Cơ-đốc' (26:28).",
     "language": "vi",
     "options": [
-      "Tất cả 3 đều cùng án Phao-lô (theo cach trinh bay cua text) (nhu van ban ghi ro) (theo boi canh doan nay) (theo cach trinh bay cua text) (nhu van ban ghi ro) (theo boi canh doan nay) (theo cach trinh bay cua text)",
-      "Cả 3 cùng kết tội Phao-lô (xet trong van canh) (nhu duoc mo ta trong sach) (xet theo noi dung goc) (xet trong van canh) (theo trinh tu cau chuyen) (xet theo noi dung goc) (xet trong van canh)",
+      "Tất cả 3 đều cùng án Phao-lô.",
+      "Cả 3 cùng kết tội Phao-lô.",
       "PHÊ-LIX (24, quan tổng đốc Giu-đê 52-59 SC) — VỢ Đơ-ru-si (Do Thái) — Phê-lix run khi nghe về 'sự công bình, tiết độ, sự phán xét tương lai' nhưng GIỮ Phao-lô chờ HỐI LỘ; PHÊ-TU (25, người KẾ NHIỆM, 59-62) — không hiểu Cơ-đốc giáo; Phao-lô KÊU NÀI Sê-sa trước Phê-tu; ẠC-RÍP-BA II (26, vua bù nhìn dòng Hê-rốt) — 'còn ít nữa ngươi khuyên ta trở nên Cơ-đốc nhân được'",
-      "Phê-lix là vua, Phê-tu là tế lễ, Ạc-ríp-ba là tướng (theo trinh tu cau chuyen) (doi chieu voi cac phan doan lien quan) (nhu duoc mo ta trong sach) (doi chieu voi cac phan doan lien quan)"
+      "Phê-lix là vua, Phê-tu là tế lễ, Ạc-ríp-ba là tướng."
     ],
     "tags": [
       "Tan Uoc",
@@ -3169,14 +3172,14 @@
     "correctAnswer": [
       3
     ],
-    "content": "KIỂU 2 distinguish — Acts dùng vài CỤM TỪ KHÁC NHAU về Đức Thánh Linh: 'báp-têm bằng Thánh Linh', 'đầy dẫy Thánh Linh', 'nhận lãnh Thánh Linh', 'Thánh Linh giáng trên'. Sự khác biệt căn bản?",
-    "explanation": "Sự phân biệt thuật ngữ Thánh Linh trong Acts: (1) BÁP-TÊM bằng Thánh Linh (1:5, 11:16) — sự kiện 1 lần khi tin Chúa, biến cá nhân thành chi thể trong Thân Christ (= 1 Cô 12:13). (2) ĐẦY DẪY Thánh Linh (2:4, 4:8, 4:31, 9:17, 13:9) — trải nghiệm LẶP LẠI, được ban quyền cho công việc cụ thể; Phi-e-rơ đầy dẫy 2:4 → đầy dẫy LẠI 4:8 trước Tòa Công Luận → đầy dẫy LẠI 4:31. (3) Thánh Linh GIÁNG TRÊN (10:44, 11:15) — biểu tượng SỰ ĐÓN NHẬN dân ngoại vào hội thánh, đặc biệt cùng dấu hiệu Pentecost (nói tiếng mới). Cả 3 thuật ngữ đều ám chỉ HIỆN DIỆN Thánh Linh — nhưng các SẮC THÁI khác nhau.",
+    "content": "Sách Công vụ sử dụng vài cụm từ khác nhau về Đức Thánh Linh: 'báp-têm bằng Thánh Linh', 'đầy dẫy Thánh Linh', 'nhận lãnh Thánh Linh', 'Thánh Linh giáng trên'. Sự khác biệt căn bản giữa chúng là gì?",
+    "explanation": "Sự phân biệt thuật ngữ Thánh Linh trong Công vụ: (1) BÁP-TÊM bằng Thánh Linh (1:5, 11:16) — sự kiện một lần khi tin Chúa, biến cá nhân thành chi thể trong Thân Christ (tương ứng 1 Cô-rinh-tô 12:13). (2) ĐẦY DẪY Thánh Linh (2:4, 4:8, 4:31, 9:17, 13:9) — trải nghiệm có thể lặp lại, được ban quyền năng cho công việc cụ thể; Phi-e-rơ đầy dẫy 2:4 rồi lại đầy dẫy 4:8 trước Tòa Công Luận và 4:31. (3) Thánh Linh GIÁNG TRÊN (10:44, 11:15) — biểu tượng sự đón nhận dân ngoại vào Hội thánh, thường đi kèm dấu hiệu như tại Lễ Ngũ Tuần. Cả ba thuật ngữ đều ám chỉ sự hiện diện của Thánh Linh nhưng với các sắc thái và mục đích khác nhau.",
     "language": "vi",
     "options": [
-      "Tất cả là một thứ giống nhau (xet trong van canh) (theo trinh tu cau chuyen) (doi chieu voi cac phan doan lien quan) (theo cach trinh bay cua text)",
-      "Báp-têm bằng Thánh Linh chỉ dành cho 12 sứ đồ (nhu duoc mo ta trong sach) (xet theo noi dung goc) (xet trong van canh) (theo trinh tu cau chuyen)",
-      "Đầy dẫy = chỉ một LẦN duy nhất trong đời (theo cach trinh bay cua text) (nhu van ban ghi ro) (theo boi canh doan nay) (nhu duoc mo ta trong sach)",
-      "BÁP-TÊM bằng Thánh Linh = sự kiện ĐẦU TIÊN khi tin Chúa (gắn liền với cứu rỗi, 1 lần mãi mãi, Acts 1:5, 11:16); ĐẦY DẪY = trải nghiệm LẶP LẠI, ban quyền phục vụ cụ thể (Phi-e-rơ đầy dẫy 4:8 sau khi đã đầy dẫy 2:4); GIÁNG TRÊN dùng cho dân ngoại (10:44, 11:15) tương tự Pentecost"
+      "Tất cả đều chỉ một thực tại giống nhau, chỉ khác cách diễn đạt theo bối cảnh câu chuyện.",
+      "Báp-têm bằng Thánh Linh chỉ dành riêng cho mười hai sứ đồ, như được mô tả trong sách.",
+      "Đầy dẫy Thánh Linh là một kinh nghiệm chỉ xảy ra một lần duy nhất trong đời sống tín đồ.",
+      "Báp-têm bằng Thánh Linh là sự kiện ban đầu khi tin Chúa (một lần, gắn với sự cứu rỗi). Đầy dẫy Thánh Linh là trải nghiệm có thể lặp lại để ban quyền năng phục vụ. Thánh Linh giáng trên nhấn mạnh đến việc tiếp nhận dân ngoại."
     ],
     "tags": [
       "Tan Uoc",
@@ -3249,14 +3252,14 @@
       1
     ],
     "verseEnd": 29,
-    "content": "KIỂU 3 hiểu sâu Acts 15:28-29 — Bốn điều cấm trong thư Hội nghị Giê-ru-sa-lem (của cúng thần tượng, huyết, thú thắt cổ, tà dâm) phản ánh điều luật CỰU ƯỚC nào?",
-    "explanation": "Lê-vi-ký 17-18 — Đoạn duy nhất Cựu Ước áp dụng cho cả NGƯỜI Y-SƠ-RA-ÊN và người NGOẠI ('gēr' = người ngoại tạm trú giữa Y-sơ-ra-ên). Bốn điều: (1) ăn của cúng thần tượng (Lê 17:8-9), (2) huyết (Lê 17:10-14, 'mạng sống ở trong huyết'), (3) thú chết bị thắt cổ chưa rút máu (Lê 17:13-15), (4) tà dâm/loạn luân (Lê 18:6-23). Hội nghị Giê-ru-sa-lem KHÔNG yêu cầu tín hữu Do Thái + dân ngoại đeo Luật Mô-se TOÀN BỘ; nhưng yêu cầu DÂN NGOẠI giữ '4 điều ngoại cư' để có thể THÔNG CÔNG bàn ăn (qua đó được dạy chung). Áp dụng: tự do trong Christ + nhường nhịn nhau trong cộng đoàn.",
+    "content": "KIỂU 3 hiểu sâu Acts 15:28-29 — Bốn điều cấm trong thư Hội nghị Giê-ru-sa-lem (của cúng thần tượng, huyết, thú thắt cổ, tà dâm) thường được liên hệ với nhóm luật nào trong CỰU ƯỚC?",
+    "explanation": "Bốn điều cấm trong Công vụ 15:29 thường được các học giả liên hệ đến các luật trong Lê-vi-ký 17-18 dành cho người ngoại kiều (gēr) sống giữa Y-sơ-ra-ên, như cấm ăn huyết (Lê 17:10-14), ăn thú chết (Lê 17:15) và các tội tà dâm (Lê 18). Việc cấm của cúng thần tượng có liên quan đến bối cảnh thờ thần tượng được đề cập trong các phần khác. Hội nghị Giê-ru-sa-lem không áp đặt toàn bộ Luật Môi-se cho tín hữu gốc ngoại, nhưng chọn lọc những điều này để tạo điều kiện cho sự thông công giữa các tín hữu Do Thái và Dân Ngoại trong Hội Thánh.",
     "language": "vi",
     "options": [
-      "10 Điều răn (xet trong van canh) (theo trinh tu cau chuyen) (doi chieu voi cac phan doan lien quan) (nhu duoc mo ta trong sach) (nhu van ban ghi ro)",
-      "LUẬT về NGOẠI CƯ (gēr) trong LÊ-VI-KÝ 17-18 — luật cho người ngoại sống GIỮA Y-sơ-ra-ên: tránh huyết (Lê 17:10-14), thú chết tự nhiên (Lê 17:13-15), tà dâm + loạn luân (Lê 18). Hội nghị áp dụng: dân ngoại tin Chúa = 'ngoại cư' giữa hội thánh Do Thái → giữ luật ngoại cư để THÔNG CÔNG được",
-      "Luật Sa-bát Xuất 20 (theo cach trinh bay cua text) (nhu van ban ghi ro) (theo boi canh doan nay) (theo cach trinh bay cua text) (xet theo noi dung goc)",
-      "Luật khiết tịnh Dân-số-ký 19 (nhu duoc mo ta trong sach) (xet theo noi dung goc) (xet trong van canh) (theo trinh tu cau chuyen) (doi chieu voi cac phan doan lien quan)"
+      "10 Điều răn (Xuất Ê-díp-tô Ký 20)",
+      "Các luật liên quan đến NGƯỜI NGOẠI KIỀU (gēr) trong LÊ-VI-KÝ 17-18 — bao gồm các điều như cấm ăn huyết, ăn thú chết và các tội tà dâm.",
+      "Luật Sa-bát (Xuất Ê-díp-tô Ký 20:8-11)",
+      "Luật về sự khiết tịnh (Dân Số Ký 19)"
     ],
     "tags": [
       "Tan Uoc",
@@ -3354,21 +3357,21 @@
     "correctAnswer": [
       3
     ],
-    "content": "KIỂU 4 verse precision Acts 1:8 — Câu 'Thần học sứ mạng' của Acts. Nguyên văn 4 NƠI nhắc đến theo THỨ TỰ ĐÚNG?",
-    "explanation": "Acts 1:8 (RVV11) — 'Nhưng khi Đức Thánh Linh giáng trên các ngươi, thì các ngươi sẽ nhận lấy quyền phép, và làm chứng cho ta tại thành Giê-ru-sa-lem, cả xứ Giu-đê, xứ Sa-ma-ri, cho đến cùng trái đất'. THỨ TỰ chính xác: (1) Giê-ru-sa-lem (thành phố), (2) Giu-đê (vùng), (3) Sa-ma-ri (vùng kế kẻ thù truyền thống), (4) cùng trái đất (toàn thế giới). Đây = DÀN BÀI sách Acts (1-7, 8-12, 13-28). 'Mọi nơi' = áp dụng cho hội thánh mọi thời.",
+    "content": "Trong Công vụ 1:8, Chúa Giê-su phán các môn đồ sẽ làm chứng về Ngài theo thứ tự nào?",
+    "explanation": "Công vụ 1:8 (Bản Dịch 2011) ghi: 'Nhưng khi Đức Thánh Linh giáng trên các ngươi, thì các ngươi sẽ nhận lấy quyền phép, và làm chứng về ta tại thành Giê-ru-sa-lem, cả xứ Giu-đê, xứ Sa-ma-ri, cho đến cùng trái đất.' Thứ tự chính xác là: (1) Giê-ru-sa-lem, (2) Giu-đê, (3) Sa-ma-ri, (4) Cùng trái đất. Đây cũng là dàn ý truyền giáo của sách Công vụ.",
     "language": "vi",
     "options": [
-      "'Tại Giê-ru-sa-lem, Sa-ma-ri, A-si, và Rô-ma' (theo cach trinh bay cua text)",
-      "'Tại Giu-đê, Sa-ma-ri, Ai-cập, và đầu cùng đất' (nhu duoc mo ta trong sach)",
-      "'Tại Giê-ru-sa-lem, A-si, châu Âu, và Rô-ma' (xet trong van canh)",
-      "'Các ngươi sẽ làm chứng về ta tại thành GIÊ-RU-SA-LEM, cả xứ GIU-ĐÊ, xứ SA-MA-RI, cho đến CÙNG TRÁI ĐẤT'"
+      "Giê-ru-sa-lem, Giu-đê, Rô-ma, rồi cùng trái đất",
+      "Giu-đê, Sa-ma-ri, Giê-ru-sa-lem, rồi cùng trái đất",
+      "Sa-ma-ri, Giê-ru-sa-lem, Giu-đê, rồi cùng trái đất",
+      "Giê-ru-sa-lem, Giu-đê, Sa-ma-ri, cho đến cùng trái đất"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
-      "Acts 1:8 đầy đủ",
-      "Nang cao"
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch sử",
+      "Acts 1:8",
+      "Nâng cao"
     ]
   },
   {
@@ -3380,14 +3383,14 @@
     "correctAnswer": [
       2
     ],
-    "content": "KIỂU 4 verse precision Acts 16:31 — Đáp lời hộ tù Phi-líp 'tôi phải làm gì để được cứu?' Phao-lô + Si-la TRẢ LỜI chính xác là gì?",
-    "explanation": "Acts 16:30-31 — 'Đoạn, đem hai người ra ngoài, mà hỏi rằng: Các chúa ơi, tôi phải làm chi cho được cứu rỗi? Hai người trả lời rằng: Hãy tin Đức Chúa Jêsus, thì ngươi và cả nhà đều sẽ được cứu rỗi'. CÔNG THỨC TIN LÀNH ngắn gọn nhất: ĐỨC TIN nơi Đức Chúa Jêsus = ĐỦ. KHÔNG kèm điều kiện công đức. 'Cả nhà' = lời hứa MỞ RỘNG ra cả gia đình (cùng đêm: gia đình hộ tù tin → báp-têm 16:33). Câu này được trích nhiều nhất khi truyền giảng simple Gospel.",
+    "content": "Trong Công vụ 16:31, khi viên cai ngục hỏi: 'Tôi phải làm gì để được cứu?', Phao-lô và Si-la đã trả lời chính xác điều gì?",
+    "explanation": "Công vụ 16:30-31 ghi lại: '...Hai người trả lời rằng: Hãy tin Đức Chúa Jêsus, thì ngươi và cả nhà đều sẽ được cứu rỗi.' Đây là một công thức truyền giảng Tin Lành ngắn gọn, nhấn mạnh đức tin nơi Chúa Giê-xu là đủ cho sự cứu rỗi, không kèm điều kiện công đức nào. Lời hứa 'cả nhà' được ứng nghiệm ngay trong đêm đó khi cả gia đình viên cai ngục tin và chịu báp-têm (Công vụ 16:33).",
     "language": "vi",
     "options": [
-      "'Hãy giữ Mười Điều Răn' (xet trong van canh)",
-      "'Hãy chịu báp-têm và đi nhà thờ' (nhu duoc mo ta trong sach)",
-      "'HÃY TIN ĐỨC CHÚA JÊSUS, thì NGƯƠI và CẢ NHÀ ĐỀU sẽ được CỨU RỖI'",
-      "'Hãy bán tài sản và bố thí' (theo cach trinh bay cua text)"
+      "'Hãy giữ Mười Điều Răn'",
+      "'Hãy chịu báp-têm và đi nhà thờ'",
+      "'Hãy tin Đức Chúa Jêsus, thì ngươi và cả nhà đều sẽ được cứu rỗi'",
+      "'Hãy bán tài sản và bố thí'"
     ],
     "tags": [
       "Tan Uoc",
@@ -3401,27 +3404,27 @@
     "book": "Acts",
     "chapter": 17,
     "verseStart": 30,
+    "verseEnd": 31,
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "correctAnswer": [
       1
     ],
-    "verseEnd": 31,
-    "content": "KIỂU 4 verse precision Acts 17:30-31 — Tại A-rê-ô-ba, Phao-lô tuyên về SỰ PHÁN XÉT. Câu CHÍNH XÁC?",
-    "explanation": "Acts 17:30-31 — 'Vậy thì, Đức Chúa Trời đã bỏ qua các đời ngu muội đó, mà nay biểu hết thảy các người trong mọi nơi đều phải ăn năn, vì Ngài đã chỉ định một ngày, khi Ngài sẽ lấy sự công bình đoán xét thế gian, bởi Người Ngài đã lập, và Đức Chúa Trời đã ban chứng cớ rõ ràng cho thiên hạ, bởi việc làm cho Người ấy sống lại từ kẻ chết'. KẾT bài giảng A-rê-ô-ba với BA điểm: (1) ăn năn vì 'mọi nơi', (2) ngày phán xét đã CHỈ ĐỊNH (= chắc chắn), (3) bằng chứng = sự PHỤC SINH (lý do tin Christ = Quan Án + Đấng Cứu).",
+    "content": "Trong bài giảng tại A-rê-ô-ba (Công vụ 17:30-31), Phao-lô tuyên bố điều gì về sự phán xét của Đức Chúa Trời?",
+    "explanation": "Công vụ 17:30-31 ghi: 'Vậy thì, Đức Chúa Trời đã bỏ qua các đời ngu muội đó, mà nay biểu hết thảy các người trong mọi nơi đều phải ăn năn, vì Ngài đã chỉ định một ngày, khi Ngài sẽ lấy sự công bình đoán xét thế gian, bởi Người Ngài đã lập, và Đức Chúa Trời đã ban chứng cớ rõ ràng cho thiên hạ, bởi việc làm cho Người ấy sống lại từ kẻ chết.' Trọng tâm của phân đoạn này là: (1) lệnh ăn năn cho mọi người, (2) một ngày phán xét chắc chắn đã được định, (3) bằng chứng cho điều này là sự sống lại của Đấng Christ.",
     "language": "vi",
     "options": [
-      "'Đức Chúa Trời sẽ phán xét bằng lửa' (nhu duoc mo ta trong sach) (xet theo noi dung goc) (xet trong van canh) (nhu duoc mo ta trong sach) (nhu van ban ghi ro) (theo boi canh doan nay)",
-      "'Vậy thì, Đức Chúa Trời ĐÃ BỎ QUA các đời ngu muội đó, mà nay BIỂU HẾT THẢY các người trong MỌI NƠI đều phải ĂN NĂN, vì Ngài ĐÃ CHỈ ĐỊNH MỘT NGÀY, khi NGÀI sẽ lấy SỰ CÔNG BÌNH đoán xét THẾ GIAN, BỞI NGƯỜI Ngài đã LẬP, và Đức Chúa Trời ĐÃ BAN CHỨNG cớ rõ ràng cho thiên hạ, BỞI VIỆC LÀM CHO NGƯỜI ẤY SỐNG LẠI từ kẻ chết'",
-      "'Hãy tin và sẽ được cứu' (xet trong van canh) (theo trinh tu cau chuyen) (doi chieu voi cac phan doan lien quan) (theo trinh tu cau chuyen) (doi chieu voi cac phan doan lien quan)",
-      "'Đức Chúa Trời ở khắp mọi nơi' (theo cach trinh bay cua text) (nhu van ban ghi ro) (theo boi canh doan nay) (theo cach trinh bay cua text) (xet theo noi dung goc)"
+      "Đức Chúa Trời sẽ phán xét thế gian bằng lửa.",
+      "Đức Chúa Trời đã chỉ định một ngày, Ngài sẽ lấy sự công bình đoán xét thế gian bởi Người Ngài đã lập, và đã ban chứng cớ bởi sự sống lại của Người ấy.",
+      "Hãy tin nơi Chúa Giê-xu thì ngay lập tức sẽ được cứu.",
+      "Đức Chúa Trời hiện diện khắp mọi nơi để phán xét từng hành động."
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công vụ",
+      "Lịch sử",
       "Phán xét + phục sinh",
-      "Nang cao"
+      "Nâng cao"
     ]
   },
   {
@@ -3437,17 +3440,17 @@
     "explanation": "Acts 20:24 — 'Nhưng tôi chẳng kể sự sống mình là quí, miễn chăng cho xong việc dua tôi và chức vụ tôi đã lãnh nơi Đức Chúa Jêsus, để mà làm chứng về Tin Lành của ơn Đức Chúa Trời'. Câu nổi tiếng về 'tâm linh đời sống Phao-lô' — sự sống KHÔNG là mục đích; HOÀN THÀNH cuộc đua + chức vụ = mục đích. Phi-líp 1:21 'sống cho Christ chết là ích' tương đồng. Bài học môn đồ: ĐẶT MỤC TIÊU thần học cao hơn sự bảo tồn cá nhân.",
     "language": "vi",
     "options": [
-      "'Nhưng tôi CHẲNG KỂ SỰ SỐNG MÌNH là QUÝ, miễn là chạy XONG cuộc đua, và LÀM TRỌN chức vụ tôi đã NHẬN nơi Đức Chúa Jêsus, để LÀM CHỨNG về Tin Lành của ÂN ĐIỂN Đức Chúa Trời'",
-      "'Tôi yêu sự sống nhưng sẵn lòng chết' (nhu duoc mo ta trong sach) (xet theo noi dung goc)",
-      "'Sống cho Christ, chết là ích' (theo cach trinh bay cua text) (nhu van ban ghi ro) (theo boi canh doan nay)",
-      "'Tôi đã đua giỏi' (xet trong van canh) (theo trinh tu cau chuyen) (doi chieu voi cac phan doan lien quan)"
+      "'Nhưng tôi chẳng kể sự sống mình là quí, miễn chăng cho xong việc dua tôi và chức vụ tôi đã lãnh nơi Đức Chúa Jêsus, để mà làm chứng về Tin Lành của ơn Đức Chúa Trời'",
+      "'Nhưng tôi không coi mạng sống mình là quý giá cho bản thân, miễn là tôi chạy xong cuộc đua và hoàn thành chức vụ tôi đã nhận từ Chúa Giê-su, để làm chứng về Tin Lành của ân điển Đức Chúa Trời' (Bản Diễn Ý)",
+      "'Vì đối với tôi, sống là Đấng Christ và chết là được ích' (Phi-líp 1:21)",
+      "'Tôi đã đánh trận tốt lành, đã chạy xong cuộc đua, đã giữ vững đức tin' (2 Ti-mô-thê 4:7)"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch Sử",
       "Acts 20:24 cuộc đua",
-      "Nang cao"
+      "Nâng Cao"
     ]
   },
   {
@@ -3459,21 +3462,21 @@
     "correctAnswer": [
       2
     ],
-    "content": "KIỂU 4 verse precision Acts 26:18 — Trước Vua Ạc-ríp-ba, Phao-lô thuật chính lời CHÚA JÊSUS giao SỨ MẠNG cho ông. Câu chính xác?",
-    "explanation": "Acts 26:18 — 'Đặng mở mắt họ, hầu cho họ từ tối tăm mà qua sáng láng, từ quyền lực của quỉ Sa-tan mà đến Đức Chúa Trời, và cho họ bởi đức tin nơi ta được sự tha tội, cùng phần gia tài với các thánh đồ'. SÁU mục tiêu sứ mạng đến dân ngoại: (1) mở mắt, (2) tối → sáng, (3) Sa-tan → Chúa, (4) tha tội, (5) cơ nghiệp với thánh đồ, (6) bởi ĐỨC TIN. Mượn ngôn ngữ Ê-sai 42:7, 16 'Người Tôi Tớ' — Phao-lô áp dụng cho mình = SỨ ĐỒ tiếp tục mission của Christ.",
+    "content": "Trước Vua Ạc-ríp-ba, Phao-lô thuật lại sứ mạng Chúa Jêsus giao cho ông. Nội dung chính xác của sứ mạng đó trong Công vụ 26:18 là gì?",
+    "explanation": "Công vụ 26:18 — 'Đặng mở mắt họ, hầu cho họ từ tối tăm mà qua sáng láng, từ quyền lực của quỉ Sa-tan mà đến Đức Chúa Trời, và cho họ bởi đức tin nơi ta được sự tha tội, cùng phần gia tài với các thánh đồ'. Đây là sứ mạng Chúa phó thác cho Phao-lô để đem Phúc Âm đến dân ngoại.",
     "language": "vi",
     "options": [
-      "'Hãy đi báp-têm cho mọi dân' (nhu duoc mo ta trong sach) (xet theo noi dung goc) (xet trong van canh)",
-      "'Hãy yêu mọi người' (xet trong van canh) (theo trinh tu cau chuyen) (doi chieu voi cac phan doan lien quan)",
-      "'Đặng MỞ MẮT họ, đặng họ TỪ TỐI TĂM mà QUA SÁNG LÁNG, từ quyền lực của QUỈ SA-TAN mà đến Đức CHÚA TRỜI, hầu cho họ ĐƯỢC SỰ THA TỘI và CƠ NGHIỆP với các thánh đồ bởi ĐỨC TIN nơi ta'",
-      "'Hãy giữ Luật Pháp' (theo cach trinh bay cua text) (nhu van ban ghi ro) (theo boi canh doan nay)"
+      "'Hãy đi khắp thế gian, giảng Tin Lành cho mọi người' (Mác 16:15)",
+      "'Hãy yêu kẻ lân cận như mình' (Lê-vi Ký 19:18)",
+      "'Đặng mở mắt họ, hầu cho họ từ tối tăm mà qua sáng láng, từ quyền lực của quỉ Sa-tan mà đến Đức Chúa Trời, và cho họ bởi đức tin nơi ta được sự tha tội, cùng phần gia tài với các thánh đồ'",
+      "'Hãy giữ các điều răn' (Ma-thi-ơ 19:17)"
     ],
     "tags": [
-      "Tan Uoc",
-      "Cong Vu",
-      "Lich su",
+      "Tân Ước",
+      "Công Vụ",
+      "Lịch Sử",
       "Sứ mạng Phao-lô",
-      "Nang cao"
+      "Nâng cao"
     ]
   },
   {
@@ -3485,14 +3488,14 @@
     "correctAnswer": [
       3
     ],
-    "content": "KIỂU 4 verse precision Acts 28:28 — Tại Rô-ma sau khi nhiều người Do Thái khước từ, Phao-lô tuyên LỜI CUỐI quan trọng. Câu chính xác?",
-    "explanation": "Acts 28:28 — 'Vậy, hãy biết sự cứu rỗi của Đức Chúa Trời nầy đã sai đến cho người ngoại; những người đó sẽ nghe theo'. CÂU GẦN-CUỐI sách Acts. Trước đó Phao-lô trích Ê-sai 6:9-10 (28:26-27) — 'mắt họ thấy mà KHÔNG hiểu' — phán xét trên dân Do Thái KHÔNG TIN. Sau câu 28: 'Phao-lô ở trọn 2 năm tại nhà thuê... rao giảng nước Đức Chúa Trời CÁCH TỰ DO TRỌN VẸN, KHÔNG AI NGĂN CẤM' (28:30-31). KẾT MỞ: Tin Lành đã mở rộng đến mọi dân — sách kết thúc nhưng SỨ MẠNG TIẾP TỤC.",
+    "content": "Sau khi nhiều người Do Thái tại Rô-ma khước từ tin, Phao-lô đã tuyên bố một lời quan trọng trong Công vụ 28:28. Câu nào dưới đây là nguyên văn chính xác?",
+    "explanation": "Công vụ 28:28 ghi: 'Vậy, hãy biết rằng sự cứu rỗi của Đức Chúa Trời nầy đã sai đến cho người ngoại; họ sẽ nghe theo!' (Bản Dịch Truyền Thống). Đây là một tuyên bố then chốt, đánh dấu sự chuyển hướng sứ mạng đến với dân ngoại sau khi nhiều người Do Thái từ chối. Trước đó, Phao-lô trích Ê-sai 6:9-10 để giải thích tình trạng cứng lòng của họ (28:26-27). Sách Công vụ kết thúc với hình ảnh Phao-lô tiếp tục rao giảng tại Rô-ma 'một cách dạn dĩ, không bị ngăn trở' (28:31), cho thấy Tin Lành đã mở rộng đến mọi dân tộc.",
     "language": "vi",
     "options": [
-      "'Tôi sẽ trở về với dân Do Thái' (theo cach trinh bay cua text)",
-      "'Đức Chúa Trời sẽ tha thứ họ' (xet trong van canh) (theo trinh tu cau chuyen)",
-      "'Tin Lành chỉ dành cho dân ngoại' (nhu duoc mo ta trong sach)",
-      "'Vậy, hãy biết SỰ CỨU rỗi của ĐỨC CHÚA TRỜI nầy đã sai đến cho NGƯỜI NGOẠI; những người đó SẼ NGHE theo'"
+      "'Tôi sẽ quay lại với dân tôi là người Do Thái'",
+      "'Đức Chúa Trời vẫn sẽ tha thứ cho họ sau ba ngày'",
+      "'Từ nay, Tin Lành chỉ được rao giảng cho dân ngoại'",
+      "'Vậy, hãy biết rằng sự cứu rỗi của Đức Chúa Trời nầy đã sai đến cho người ngoại; họ sẽ nghe theo!'"
     ],
     "tags": [
       "Tan Uoc",

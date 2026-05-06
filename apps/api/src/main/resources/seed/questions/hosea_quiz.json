@@ -6,7 +6,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 1:1, Ô-sê là con trai của ai?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Ô-sê 1:1 — 'Có lời Đức Giê-hô-va phán cùng Ô-sê, con trai Bê-ê-ri, về đời các vua Ô-xia, Giô-tham, A-cha, Ê-xê-chia, là vua Giu-đa, và về đời Giê-rô-bô-am, con trai Giô-ách, vua Y-sơ-ra-ên.'",
     "language": "vi",
     "options": [
@@ -30,7 +32,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 1:2, Đức Giê-hô-va truyền cho Ô-sê làm gì?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Ô-sê 1:2 — '...Đức Giê-hô-va phán cùng Ô-sê: Hãy đi, lấy một người vợ gian dâm, và con cái ngoại tình; vì đất nầy chỉ phạm sự tà dâm, lìa bỏ Đức Giê-hô-va.' Hôn nhân của Ô-sê là biểu tượng sống về sự bất trung của Y-sơ-ra-ên.",
     "language": "vi",
     "options": [
@@ -54,7 +58,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 1:6, đứa con gái Ô-sê được đặt tên là gì?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Ô-sê 1:6 — '...Hãy đặt tên nó là Lô-Ru-ha-ma; vì ta sẽ không thương xót nhà Y-sơ-ra-ên nữa.' Lô-Ru-ha-ma có nghĩa 'Không được thương xót'.",
     "language": "vi",
     "options": [
@@ -78,7 +84,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 1:9, đứa con thứ ba của Ô-sê được đặt tên là gì?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Ô-sê 1:9 — 'Đức Giê-hô-va phán: Hãy đặt tên nó là Lô-Am-mi; vì các ngươi chẳng phải là dân ta nữa, và ta sẽ không làm Đức Chúa Trời các ngươi nữa.' Lô-Am-mi nghĩa là 'Không phải dân ta'.",
     "language": "vi",
     "options": [
@@ -102,7 +110,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 2:19, Đức Giê-hô-va hứa làm gì với Y-sơ-ra-ên?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Ô-sê 2:19 — 'Ta sẽ cưới ngươi cho ta đời đời; ta sẽ cưới ngươi cho ta trong sự công bình và xét đoán, trong sự nhân từ và thương xót.'",
     "language": "vi",
     "options": [
@@ -126,7 +136,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 4:6, dân Chúa bị diệt vì thiếu điều gì?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Ô-sê 4:6 — 'Dân ta bị diệt vì cớ thiếu sự thông biết. Bởi ngươi bỏ sự thông biết thì ta cũng bỏ ngươi, đặng ngươi không làm thầy tế lễ cho ta nữa...'",
     "language": "vi",
     "options": [
@@ -150,7 +162,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 6:1, lời kêu gọi nổi tiếng nào được cất lên?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Ô-sê 6:1 — 'Hãy đến, chúng ta hãy trở về cùng Đức Giê-hô-va; vì Ngài đã xé chúng ta, song Ngài sẽ chữa lành cho; Ngài đã đánh chúng ta, song sẽ buộc vết tích.'",
     "language": "vi",
     "options": [
@@ -174,7 +188,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 6:6, Đức Chúa Trời mong muốn điều gì hơn của lễ?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Ô-sê 6:6 — 'Vì ta ưa sự nhân từ mà không ưa của lễ, ưa sự nhận biết Đức Chúa Trời hơn là ưa của lễ thiêu.' Câu này được Chúa Jêsus trích ở Ma-thi-ơ 9:13 và 12:7.",
     "language": "vi",
     "options": [
@@ -198,7 +214,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 8:7, Y-sơ-ra-ên gieo gì sẽ gặt gì?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Ô-sê 8:7 — 'Vì chúng nó đã gieo gió và sẽ gặt bão lốc...' Hậu quả của bội đạo là sự hủy diệt mãnh liệt — gấp bội điều đã gieo.",
     "language": "vi",
     "options": [
@@ -222,7 +240,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 11:1, Đức Chúa Trời gọi ai ra khỏi Ai Cập?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Ô-sê 11:1 — 'Khi Y-sơ-ra-ên còn thơ ấu, ta yêu dấu nó; ta gọi con trai ta ra khỏi Ê-díp-tô.' Câu này được trích trong Ma-thi-ơ 2:15 ứng nghiệm trên Đấng Christ.",
     "language": "vi",
     "options": [
@@ -245,9 +265,11 @@
     "verseStart": 8,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Theo Ô-sê 11:8, Đức Chúa Trời nói lòng Ngài nóng bừng lên về điều gì đối với Y-sơ-ra-ên?",
-    "correctAnswer": [2],
-    "explanation": "Ô-sê 11:8 — 'Hỡi Ép-ra-im, thể nào ta lìa bỏ ngươi được? Hỡi Y-sơ-ra-ên, thể nào ta nộp ngươi được?... Lòng ta cảm động trong ta; lòng thương xót của ta đều nóng nảy.'",
+    "content": "Theo Ô-sê 11:8, Đức Chúa Trời mô tả cảm xúc của Ngài thế nào khi nghĩ về việc lìa bỏ Y-sơ-ra-ên?",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Ô-sê 11:8 — 'Hỡi Ép-ra-im, thể nào ta lìa bỏ ngươi được? Hỡi Y-sơ-ra-ên, thể nào ta nộp ngươi được?... Lòng ta cảm động trong ta; lòng thương xót của ta đều nóng nảy.' (Bản Truyền Thống). Câu Kinh Thánh cho thấy lòng thương xót và sự cảm động sâu xa của Đức Chúa Trời.",
     "language": "vi",
     "options": [
       "Cơn thạnh nộ thiêu nuốt",
@@ -270,7 +292,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Lời kêu gọi mở đầu Ô-sê 14:1 là gì?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Ô-sê 14:1 — 'Hỡi Y-sơ-ra-ên, hãy trở lại cùng Giê-hô-va Đức Chúa Trời ngươi, vì ấy là tại tội lỗi ngươi mà ngươi đã sa ngã.'",
     "language": "vi",
     "options": [
@@ -294,7 +318,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 14:4, Đức Chúa Trời hứa chữa lành điều gì?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Ô-sê 14:4 — 'Ta sẽ chữa lành sự bội nghịch của chúng nó. Ta sẽ lấy lòng tốt yêu chúng nó; vì cơn giận của ta đã xây khỏi nó rồi.'",
     "language": "vi",
     "options": [
@@ -318,8 +344,10 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 13:14, Đức Chúa Trời thách thức điều gì?",
-    "correctAnswer": [1],
-    "explanation": "Ô-sê 13:14 — 'Ta sẽ cứu chúng nó khỏi quyền lực của âm phủ, và chuộc chúng nó ra khỏi sự chết. Hỡi sự chết, nào tai vạ mầy ở đâu? Hỡi âm phủ, nào sự hủy hoại mầy ở đâu?' Phao-lô trích trong 1 Cô-rinh-tô 15:55.",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ô-sê 13:14 — 'Ta có nên chuộc chúng nó khỏi quyền lực của âm phủ chăng? Có nên cứu chúng nó khỏi sự chết chăng? Hỡi sự chết, tai vạ mầy ở đâu? Hỡi âm phủ, sự hủy diệt mầy ở đâu?' Phao-lô đã trích và áp dụng ý nghĩa chiến thắng trong 1 Cô-rinh-tô 15:55.",
     "language": "vi",
     "options": [
       "Hỡi đất, sao ngươi câm lặng?",
@@ -342,7 +370,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 12:6, dân sự phải làm gì?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Ô-sê 12:6 — 'Vậy ngươi khá trở lại cùng Đức Chúa Trời ngươi; giữ sự nhân từ và sự công bình, luôn luôn trông đợi Đức Chúa Trời ngươi.'",
     "language": "vi",
     "options": [
@@ -366,7 +396,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 10:12, dân sự phải gieo điều gì để gặt điều gì?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Ô-sê 10:12 — 'Hãy gieo cho mình trong sự công bình, hãy gặt theo sự nhân từ; hãy vỡ đất mới! Vì là kỳ tìm kiếm Đức Giê-hô-va, cho đến chừng nào Ngài đến và sa mưa công bình trên các ngươi.'",
     "language": "vi",
     "options": [
@@ -390,7 +422,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 4:1, ba điều gì không có trong xứ?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Ô-sê 4:1 — '...vì Đức Giê-hô-va có sự kiện cãi với dân đất nầy, bởi trong đất nầy chẳng có lẽ thật, chẳng có nhân từ, cũng chẳng có sự nhận biết Đức Chúa Trời.'",
     "language": "vi",
     "options": [
@@ -414,7 +448,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 3:2, Ô-sê đã chuộc lại Gô-me bằng những gì?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Ô-sê 3:2 — 'Vậy ta đã mua đàn bà ấy bằng mười lăm miếng bạc và một hô-me rưỡi mạch nha.'",
     "language": "vi",
     "options": [
@@ -438,7 +474,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 5:15, Đức Chúa Trời sẽ làm gì cho đến khi dân nhận biết tội mình?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Ô-sê 5:15 — 'Ta sẽ đi, sẽ vào nơi ta, cho đến chừng nào chúng nó nhìn biết mình phạm tội và tìm kiếm mặt ta. Trong sự hoạn nạn, chúng nó sẽ cố tìm ta.'",
     "language": "vi",
     "options": [
@@ -462,7 +500,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Ô-sê 13:4, từ thuở nào Đức Giê-hô-va là Đức Chúa Trời của dân Y-sơ-ra-ên?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Ô-sê 13:4 — 'Nhưng mà, ấy chính ta là Giê-hô-va Đức Chúa Trời ngươi từ khi ngươi ra khỏi đất Ê-díp-tô, và ngoài ta, ngươi chớ nên nhận biết thần nào khác, ngoài ta cũng không có Cứu Chúa nào khác.'",
     "language": "vi",
     "options": [
@@ -481,17 +521,19 @@
   },
   {
     "book": "Hosea",
-    "chapter": 2,
-    "verseStart": 23,
+    "chapter": 1,
+    "verseStart": 9,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Theo Ô-sê 2:23, Đức Chúa Trời sẽ phán với 'Lô-Am-mi' điều gì?",
-    "correctAnswer": [0],
-    "explanation": "Ô-sê 2:23 — '...Ta sẽ thương xót Lô-Ru-ha-ma, và sẽ nói cùng Lô-Am-mi: Ngươi là dân ta! Và nó sẽ nói rằng: Ngài là Đức Chúa Trời tôi!' Câu này được Phao-lô trích ở Rô-ma 9:25.",
+    "content": "Theo Ô-sê 1:9, Đức Chúa Trời đã truyền lệnh gì về tên của con trai Ô-sê là Lô-Am-mi?",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Ô-sê 1:9 — 'Đức Giê-hô-va phán: Hãy đặt tên nó là Lô-Am-mi; vì các ngươi không phải là dân ta, và ta không làm Đức Chúa Trời các ngươi.' Lời hứa đảo ngược ('Ngươi là dân Ta') được tìm thấy trong Ô-sê 2:23 và được Phao-lô trích dẫn ý trong Rô-ma 9:25-26.",
     "language": "vi",
     "options": [
       "'Ngươi là dân Ta'",
-      "'Ngươi vẫn không phải là dân Ta'",
+      "'Các ngươi không phải là dân Ta'",
       "'Ngươi sẽ bị tiêu diệt'",
       "'Ngươi sẽ trở về Ai Cập'"
     ],
@@ -499,7 +541,7 @@
       "Cựu Ước",
       "Ô-sê",
       "Tiên tri",
-      "Lô-Am-mi thành dân Ta",
+      "Lô-Am-mi",
       "Trung cấp"
     ]
   },
@@ -511,7 +553,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo Ô-sê 1:4-9, ba đứa con của Ô-sê được đặt tên gì? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Ô-sê 1:4-9 — 'Đặt tên nó là Gít-rê-ên... Đặt tên nó là Lô-Ru-ha-ma... Hãy đặt tên nó là Lô-Am-mi.' Ba tên biểu tượng. 'Im-ma-nu-ên' không phải là tên con của Ô-sê.",
     "language": "vi",
     "options": [
@@ -536,7 +582,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo Ô-sê 4:1-2, Đức Chúa Trời cáo dân Y-sơ-ra-ên về những điều gì? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Ô-sê 4:1-2 — '...trong đất nầy chẳng có lẽ thật, chẳng có nhân từ, cũng chẳng có sự nhận biết Đức Chúa Trời. Sự thề gian, thất tín, giết người, ăn trộm, và tà dâm hành hung; sự đổ máu thêm vào sự đổ máu.' Nhiều tội ác liệt kê; 'sự thờ phượng tinh khiết' trái nghịch.",
     "language": "vi",
     "options": [
@@ -559,14 +609,17 @@
     "verseStart": 6,
     "difficulty": "hard",
     "type": "multiple_choice_multi",
-    "content": "Theo Ô-sê 6:6, điều gì Chúa ưa và điều gì Chúa không ưa? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
-    "explanation": "Ô-sê 6:6 — 'Vì ta ưa sự nhân từ mà không ưa của lễ, ưa sự nhận biết Đức Chúa Trời hơn là ưa của lễ thiêu.' Bốn điểm; 'lễ thiêu lớn' chính là điều Chúa nói không ưa.",
+    "content": "Theo Ô-sê 6:6, những điều nào sau đây ĐỨC GIÊ-HÔ-VA phán? (chọn tất cả đúng)",
+    "correctAnswer": [
+      0,
+      1
+    ],
+    "explanation": "Ô-sê 6:6 — 'Vì ta ưa sự nhân từ mà không ưa của lễ, ưa sự nhận biết Đức Chúa Trời hơn là ưa của lễ thiêu.' Câu Kinh Thánh sử dụng phép so sánh: Chúa ưa sự nhân từ hơn là của lễ, và ưa sự nhận biết Đức Chúa Trời hơn là của lễ thiêu. Các phương án đúng phải phản ánh chính xác sự so sánh này.",
     "language": "vi",
     "options": [
-      "Ưa sự nhân từ",
-      "Không ưa của lễ",
-      "Ưa sự nhận biết Đức Chúa Trời",
+      "Ưa sự nhân từ hơn là của lễ",
+      "Ưa sự nhận biết Đức Chúa Trời hơn là của lễ thiêu",
+      "Không ưa của lễ (một cách tuyệt đối)",
       "Ưa lễ thiêu lớn"
     ],
     "tags": [
@@ -585,7 +638,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo Ô-sê 14:4-7, Đức Chúa Trời hứa những điều phục hồi nào cho Y-sơ-ra-ên? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Ô-sê 14:4-7 — '...Ta sẽ chữa lành sự bội nghịch của chúng nó... Ta sẽ như sương móc cho Y-sơ-ra-ên... Những nhánh nó giương ra... họ sẽ trở lại ngồi dưới bóng nó.' Nhiều phước hạnh; 'tan tác chúng vào các nước' trái nghịch.",
     "language": "vi",
     "options": [

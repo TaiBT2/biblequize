@@ -41,7 +41,7 @@
     "verseEnd": 18,
     "options": [
       "Những thầy dạy luật",
-      "Những ngư phủ lưới người",
+      "Những tay đánh lưới người",
       "Những nhà tiên tri",
       "Những thầy tế lễ"
     ],
@@ -60,11 +60,11 @@
     "verseStart": 5,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Người bại liệt được Chúa Giê-su chữa lành sau khi Ngài phán điều gì?",
+    "content": "Trước khi chữa lành người bại liệt, lời đầu tiên Chúa Giê-su phán với anh ta là gì?",
     "correctAnswer": [
       3
     ],
-    "explanation": "Mác 2:5 trước khi chữa lành phần thân thể, Chúa phán: \"Hỡi con, tội lỗi con đã được tha.\"",
+    "explanation": "Mác 2:5 ghi lại lời đầu tiên Chúa Giê-su phán với người bại liệt là: \"Hỡi con, tội lỗi con đã được tha.\" Sau đó Ngài mới truyền lệnh chữa lành thân thể (câu 11-12).",
     "language": "vi",
     "verseEnd": 12,
     "options": [
@@ -211,7 +211,7 @@
       "Mọi việc đều cấm",
       "Loài người vì Sa-bát",
       "Chỉ thầy tế lễ mới giữ",
-      "Sa-bát vì loài người"
+      "Ngày Sa-bát vì loài người"
     ],
     "tags": [
       "Tân Ước",
@@ -284,7 +284,7 @@
     "verseStart": 1,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Người bị quỷ ám ở Ghê-ra-sa xưng tên quỷ là gì?",
+    "content": "Người bị quỷ ám ở miền người Ghê-ra-sê (Gerasenes) xưng tên quỷ là gì?",
     "correctAnswer": [
       0
     ],
@@ -344,14 +344,14 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Mác 7:20-23: Những điều từ trong lòng ra mới làm ô uế con người.",
+    "explanation": "Mác 7:20-23: Chúa Giê-su phán, 'Ấy đó là những điều từ bên trong ra, và những điều đó làm ô uế người.' Ngài liệt kê các tư tưởng xấu như trộm cắp, giết người, tà dâm, tham lam, độc ác...",
     "language": "vi",
     "verseEnd": 23,
     "options": [
       "Không rửa tay",
       "Ăn đồ cấm",
       "Món ăn chưa rửa sạch",
-      "Điều từ trong lòng ra"
+      "Những điều xấu từ trong lòng ra"
     ],
     "tags": [
       "Tân Ước",
@@ -428,14 +428,14 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Mác 10:21: Hãy bán hết của cải, bố thí cho người nghèo, rồi theo Ta.",
+    "explanation": "Mác 10:21: Hãy bán hết của cải, phân phát cho người nghèo, rồi theo Ta.",
     "language": "vi",
     "verseEnd": 27,
     "options": [
       "Giữ thêm lễ nghi",
       "Học thêm luật pháp",
       "Tăng của dâng",
-      "Bán hết của cải cho người nghèo và theo Ngài"
+      "Bán hết của cải, phân phát cho người nghèo, rồi theo Ngài"
     ],
     "tags": [
       "Tân Ước",
@@ -564,7 +564,7 @@
     "verseStart": 17,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Chúa Giê-su nói: \"Người khỏe mạnh không cần thầy thuốc, nhưng người ___ mới cần\"",
+    "content": "Chúa Giê-su nói: \"Người khỏe mạnh không cần thầy thuốc, nhưng người đau ốm mới cần\"",
     "correctAnswer": [
       3
     ],
@@ -574,7 +574,7 @@
       "Nghèo",
       "Yếu đuối",
       "Cô đơn",
-      "Đau"
+      "Đau ốm"
     ],
     "tags": [
       "Tân Ước",
@@ -600,7 +600,7 @@
     "options": [
       "Được tôn thờ / tôn thờ",
       "Làm vua / làm vua",
-      "Phục vụ / phục vụ và phó mạng sống làm giá chuộc",
+      "được phục vụ / phục vụ và phó mạng sống làm giá chuộc",
       "Xét đoán / tha thứ"
     ],
     "tags": [
@@ -676,7 +676,7 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Mac 4:39 - Chúa có quyền trên thiên nhiên. Gió và biển đều vâng lời Ngài.",
+    "explanation": "Mác 4:39 - Chúa có quyền trên thiên nhiên. Gió và biển đều vâng lời Ngài.",
     "language": "vi",
     "options": [
       "Im đi, lặng đi!",
@@ -810,11 +810,11 @@
     "verseStart": 24,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Mac 11:24: Khi cầu nguyện, hãy tin rằng mình đã ___ thì sẽ được",
+    "content": "Khi cầu nguyện, hãy tin rằng mình đã ___ thì sẽ được",
     "correctAnswer": [
       2
     ],
-    "explanation": "Cầu nguyện với đức tin là tin rằng Chúa đã nghe và đáp lời trước khi thấy kết quả.",
+    "explanation": "Mác 11:24 - Cầu nguyện với đức tin là tin rằng Chúa đã nghe và đáp lời trước khi thấy kết quả.",
     "language": "vi",
     "options": [
       "Thấy",
@@ -864,17 +864,17 @@
     "verseStart": 34,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Chúa Giê-su kêu trên thập tự: \"Ê-loi, Ê-loi, la-ma sa-bác-ta-ni?\" Đây là tiếng gì?",
+    "content": "Chúa Giê-su kêu trên thập tự: \"Ê-lôi, Ê-lôi, la-ma sa-bách-ta-ni?\" Đây là tiếng gì?",
     "correctAnswer": [
       3
     ],
-    "explanation": "Mac 15:34 - Trích Thi 22:1. Chúa Giê-su gánh tội lỗi nhân loại và bị Cha quay mặt.",
+    "explanation": "Mac 15:34 - Trích Thi 22:1. Câu này được ghi bằng tiếng A-ram, nghĩa là: \"Đức Chúa Trời tôi, Đức Chúa Trời tôi, sao Ngài lìa bỏ tôi?\". Chúa Giê-su gánh tội lỗi nhân loại và bị Cha quay mặt.",
     "language": "vi",
     "options": [
       "Hê-bơ-rơ",
       "Hy Lạp",
       "La-tinh",
-      "A-ram, nghĩa là: Đức Chúa Trời tôi, sao Ngài bỏ tôi?"
+      "A-ram"
     ],
     "tags": [
       "Tân Ước",
@@ -1080,7 +1080,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Mác 3:29 — 'Nhưng ai nói phạm đến Đức Thánh Linh thì chẳng hề được tha, phải mắc tội đời đời.'",
+    "explanation": "Mác 3:28-29 — 'Mọi tội sẽ được tha cho con cái loài người, và mọi lời phạm thượng cũng sẽ được tha. Nhưng ai nói phạm đến Đức Thánh Linh thì chẳng hề được tha, phải mắc tội đời đời.'",
     "language": "vi",
     "options": [
       "Tội giết người",
@@ -1102,7 +1102,7 @@
     "verseStart": 39,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Khi cơn bão lớn nổi lên trên biển, Chúa Jêsus phán hai chữ gì để sóng yên gió lặng?",
+    "content": "Khi cơn bão lớn nổi lên trên biển, Chúa Jêsus đã phán gì để sóng yên gió lặng?",
     "correctAnswer": [
       2
     ],
@@ -1498,7 +1498,7 @@
     "verseStart": 32,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Mác 13:32 nói ai biết ngày và giờ Đấng Christ trở lại?",
+    "content": "Theo Mác 13:32, ai là Đấng duy nhất biết ngày và giờ Đấng Christ trở lại?",
     "correctAnswer": [
       2
     ],
@@ -1903,14 +1903,14 @@
       2
     ],
     "verseEnd": 17,
-    "content": "Theo Mác 2:13-17, Chúa Jêsus gọi Lê-vi (Ma-thi-ơ) khi ông đang làm gì? Người Pha-ri-si phản ứng thế nào?",
-    "explanation": "Mác 2:14-17 — 'Ngài đi ngang qua, thấy Lê-vi, con A-phê, đương ngồi tại sở thâu thuế. Ngài phán cùng người rằng: Hãy theo ta'. 2:16 — Pha-ri-si trách 'Người ăn cùng những kẻ thâu thuế và phường tội lỗi sao?' Chúa đáp 'không phải kẻ mạnh khoẻ cần thầy thuốc, mà là kẻ đau yếu' (2:17).",
+    "content": "Theo Mác 2:13-17, Chúa Jêsus đã gọi Lê-vi (Ma-thi-ơ) khi ông đang làm gì?",
+    "explanation": "Mác 2:14 chép: 'Ngài đi ngang qua, thấy Lê-vi, con A-phê, đương ngồi tại sở thâu thuế. Ngài phán cùng người rằng: Hãy theo ta.' Sau đó, người Pha-ri-si thấy Ngài ăn với người thâu thuế và kẻ tội lỗi thì trách móc (Mác 2:16).",
     "language": "vi",
     "options": [
-      "Đang đánh cá tại biển Ga-li-lê / Họ tha bổng vì là ngư phủ",
-      "Đang dạy luật pháp cho học trò / Họ chấp nhận vì là người uy tín",
-      "Đang ngồi tại 'sở thâu thuế' / Họ trách Ngài 'ăn với người thâu thuế và kẻ tội lỗi'",
-      "Đang đi đến đền thờ dâng tế lễ / Họ vui mừng vì người tốt được Chúa gọi"
+      "Đang đánh cá tại biển Ga-li-lê",
+      "Đang dạy luật pháp cho học trò",
+      "Đang ngồi tại sở thâu thuế",
+      "Đang đi đến đền thờ dâng tế lễ"
     ],
     "tags": [
       "Tân Ước",
@@ -1991,7 +1991,7 @@
       "Bánh, áo choàng, đôi giày",
       "Tiền vàng và bạc, sách luật",
       "Vũ khí và lương thực dự trữ",
-      "BÁNH, BAO BÌ, TIỀN trong túi (chỉ được mang gậy + dép)"
+      "Bánh, bao bì, tiền bạc trong dây lưng (chỉ được mang gậy và dép)"
     ],
     "tags": [
       "Tân Ước",
@@ -2193,21 +2193,21 @@
   {
     "book": "Mark",
     "chapter": 10,
-    "verseStart": 17,
+    "verseStart": 21,
+    "verseEnd": 22,
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "correctAnswer": [
       2
     ],
-    "verseEnd": 22,
-    "content": "Theo Mác 10:21-22, sau khi người trai trẻ giàu nói đã giữ các điều răn từ thuở nhỏ, Chúa Jêsus bảo ông làm gì? Phản ứng của ông là gì?",
+    "content": "Theo Mác 10:21-22, Chúa Jêsus đã bảo người trai trẻ giàu có làm điều gì sau khi người này nói đã giữ các điều răn từ thuở nhỏ?",
     "explanation": "Mác 10:21-22 — 'Đức Chúa Jêsus ngó người mà yêu, nên phán rằng: Ngươi còn thiếu một điều: hãy đi, bán hết gia tài mình, đem cho kẻ nghèo khổ, ngươi sẽ có của báu trên trời; rồi hãy đến mà theo ta. Song nét mặt người nầy rầu rĩ về lời đó, đi ra rất buồn bã; vì có nhiều của lắm'.",
     "language": "vi",
     "options": [
-      "Chúa: 'Hãy đến đền thờ dâng tế lễ' / Ông sấp mình thờ lạy",
-      "Chúa: 'Hãy đi rửa tội' / Ông vui mừng vâng lời (theo cách trình bày của text)",
-      "Chúa: '1 điều ngươi còn THIẾU: HÃY ĐI BÁN MỌI VẬT, đem cho người NGHÈO, rồi hãy theo ta' / Ông BUỒN BÃ đi mất vì có nhiều của",
-      "Chúa: 'Hãy lập gia đình' / Ông từ chối (xét trong văn cảnh)"
+      "Hãy đến đền thờ dâng tế lễ.",
+      "Hãy đi rửa tội.",
+      "Hãy đi, bán hết gia tài, đem cho người nghèo, rồi đến theo Ngài.",
+      "Hãy lập gia đình."
     ],
     "tags": [
       "Tân Ước",
@@ -2342,7 +2342,7 @@
       "'Đền thờ sẽ tồn tại đời đời cho đến khi Đấng Mê-si-a đến'",
       "'Đền thờ sẽ trở thành ngôi nhà cầu nguyện cho mọi dân tộc'",
       "'Các ngươi sẽ thấy Đức Chúa Trời ngự trong đền nầy mãi mãi'",
-      "'Sẽ chẳng còn MỘT HÒN ĐÁ nào CHỒNG TRÊN HÒN khác mà KHÔNG bị đổ xuống'"
+      "'Sẽ không còn một hòn đá nào chồng trên hòn khác; tất cả đều sẽ đổ xuống'"
     ],
     "tags": [
       "Tân Ước",
@@ -2444,13 +2444,13 @@
     ],
     "verseEnd": 72,
     "content": "Theo Mác 14:66-72, Phi-e-rơ chối Chúa ba lần. Khi nào ông nhớ lại lời Chúa và khóc?",
-    "explanation": "Mác 14:72 — 'Tức thì gà gáy lần thứ hai; Phi-e-rơ bèn nhớ lại lời Đức Chúa Jêsus đã phán rằng: Trước khi gà gáy hai lượt, ngươi sẽ chối ta ba lần. Người tưởng đến thì khóc'. Mác (vs các Phúc âm khác) ghi 'gà gáy 2 lần' chi tiết duy nhất.",
+    "explanation": "Mác 14:72 — 'Tức thì gà gáy lần thứ hai; Phi-e-rơ bèn nhớ lại lời Đức Chúa Jêsus đã phán rằng: Trước khi gà gáy hai lượt, ngươi sẽ chối ta ba lần. Người tưởng đến thì khóc'. Mác (so với các Phúc âm khác) ghi chi tiết duy nhất về 'gà gáy hai lần'.",
     "language": "vi",
     "options": [
       "Khi nghe đám đông kêu 'Đóng đinh nó đi!'",
       "Khi thấy Chúa Jêsus bị đánh (xét trong văn cảnh)",
       "Khi sao mai mọc lên trên trời (theo cách trình bày của text)",
-      "Khi GÀ GÁY LẦN THỨ HAI — đúng như lời Chúa: 'Trước khi gà gáy 2 lần, ngươi sẽ chối ta 3 lần'"
+      "Khi gà gáy lần thứ hai — đúng như lời Chúa đã báo trước"
     ],
     "tags": [
       "Tân Ước",
@@ -2714,7 +2714,7 @@
     ],
     "verseEnd": 12,
     "content": "Đặc trưng văn phong Phúc âm Mác là từ Hi-lạp 'euthys' (TỨC THÌ / NGAY LẬP TỨC), xuất hiện ~40 lần. Câu nào sau đây thể hiện rõ chủ đề 'TỨC THÌ' này?",
-    "explanation": "Mác 1:10,12 (RVV11 Hi-lạp 'euthys') — chủ đề 'tức thì' đậm nhất ở đầu Mác. Chỉ trong 1:10-12, hai câu liên tiếp dùng 'tức thì'/'liền'. Mác dùng từ này để truyền cảm giác KHẨN TRƯƠNG và năng động của chức vụ Chúa Jêsus.",
+    "explanation": "Mác 1:10,12 (RVV11 Hi-lạp 'euthys') — chủ đề 'tức thì' đậm nhất ở đầu Mác. Trong 1:10-12, hai câu này đều dùng từ 'euthys' (tức thì/liền). Mác dùng từ này để truyền cảm giác KHẨN TRƯƠNG và năng động của chức vụ Chúa Jêsus.",
     "language": "vi",
     "options": [
       "1:1 — 'Khởi đầu Tin Lành của Đức Chúa Jêsus Christ' (theo trình tự câu chuyện)",
@@ -2769,14 +2769,14 @@
       1
     ],
     "verseEnd": 21,
-    "content": "Cả hai phép lạ nuôi 5,000 (Mác 6:30-44) và 4,000 (Mác 8:1-9) đều có trong Phúc âm Mác. Theo Mác 8:19-20, sau hai phép lạ, BA con số được Chúa nhắc lại để TEST môn đồ là gì?",
-    "explanation": "Mác 8:19-20 — 'Khi ta bẻ năm cái bánh cho năm ngàn người, các ngươi thâu được mấy giỏ đầy bánh vụn? — Mười hai. Còn khi ta bẻ bảy cái bánh cho bốn ngàn người, các ngươi thâu được mấy giỏ đầy bánh vụn? — Bảy giỏ'. Mác dùng 2 từ Hi-lạp khác nhau cho 'giỏ': kophinos (12) và spuridas (7) — giỏ lớn hơn.",
+    "content": "Trong Mác 8:19-20, khi Chúa Giê-xu nhắc lại hai phép lạ hóa bánh, Ngài đã hỏi các môn đồ về những yếu tố cụ thể nào trong mỗi phép lạ?",
+    "explanation": "Mác 8:19-20 — 'Khi ta bẻ năm cái bánh cho năm ngàn người, các ngươi thâu được mấy giỏ đầy bánh vụn? — Mười hai. Còn khi ta bẻ bảy cái bánh cho bốn ngàn người, các ngươi thâu được mấy giỏ đầy bánh vụn? — Bảy giỏ'. Trong mỗi câu hỏi, Chúa Giê-xu nhắc đến ba yếu tố: (1) số bánh ban đầu, (2) số người được ăn, và (3) số giỏ bánh dư thừa.",
     "language": "vi",
     "options": [
-      "5/2/12 và 4/3/8 (theo cách trình bày của text)",
-      "5,000 với 12 GIỎ dư + 4,000 với 7 GIỎ dư",
-      "5/2/7 và 4/2/8 (xét trong văn cảnh)",
-      "Số bánh ban đầu / số cá / số người ăn no"
+      "Số bánh ban đầu / số cá / số người ăn no",
+      "Số bánh ban đầu, số người, và số giỏ bánh dư thừa (5 bánh - 5,000 người - 12 giỏ; 7 bánh - 4,000 người - 7 giỏ)",
+      "5,000 với 12 giỏ dư và 4,000 với 7 giỏ dư",
+      "5/2/12 và 4/3/8 (theo cách trình bày của text)"
     ],
     "tags": [
       "Tân Ước",
@@ -2878,13 +2878,13 @@
     ],
     "verseEnd": 52,
     "content": "Câu chuyện chữa lành người mù tại Giê-ri-cô được kể trong cả 3 Phúc âm Synoptic, nhưng Mác có CHI TIẾT độc đáo nào về danh tính người mù?",
-    "explanation": "Mác 10:46 — đặc trưng: chỉ Mác cho biết tên kép Ba-ti-mê = bar (con của) + Ti-mê. Ma-thi-ơ 20:30 nói 'hai người mù' không tên; Lu-ca 18:35 nói 'một người mù' không tên. Việc Mác đặt tên gợi ý người này được biết đến trong cộng đồng môn đồ tiên khởi — gần với người chứng kiến.",
+    "explanation": "Mác 10:46 — đặc trưng: chỉ Mác cho biết tên người mù là Ba-ti-mê (Bartimaeus), một tên gọi có nghĩa là 'con của Ti-mê'. Ma-thi-ơ 20:30 nói 'hai người mù' không tên; Lu-ca 18:35 nói 'một người mù' không tên. Việc Mác đặt tên gợi ý người này được biết đến trong cộng đồng môn đồ tiên khởi — gần với người chứng kiến.",
     "language": "vi",
     "options": [
       "Mác cho biết tên cha + nghề nghiệp (xét trong văn cảnh)",
       "Mác cho biết người mù theo Chúa 12 năm",
       "Mác cho biết người mù là môn đồ thân tín thuộc nhóm 70",
-      "Mác CHO BIẾT TÊN người mù — 'Ba-ti-mê' — và TÊN CHA — 'Ti-mê' (Mác 10:46)"
+      "Mác CHO BIẾT TÊN người mù — 'Ba-ti-mê' (nghĩa là 'con của Ti-mê') (Mác 10:46)"
     ],
     "tags": [
       "Tân Ước",
@@ -3021,7 +3021,7 @@
       "Hột giống bên đường — Sa-tan đến cướp (xét trong văn cảnh) (theo trình tự câu chuyện)",
       "Hột giống đất đá — không có rễ, héo dưới mặt trời (theo cách trình bày của text)",
       "Hột giống chỗ gai — nỗi đời lo lắng và sự mê tham (như được mô tả trong sách)",
-      "TẤT CẢ 4 ĐIỀU KIỆN — đặc biệt 'đất đá' = 'KHỔ NẠN hay BẮT BỚ vì đạo' khiến vấp phạm — phản ánh hội thánh sơ kỳ La-mã (Mác viết cho)"
+      "'Đất đá' — gặp 'khốn nạn hay bắt bớ vì cớ đạo' thì vấp phạm, phản ánh hoàn cảnh hội thánh sơ kỳ."
     ],
     "tags": [
       "Tân Ước",
@@ -3102,7 +3102,7 @@
       "Chỉ là chi tiết kiến trúc, không có ý nghĩa thần học (theo cách trình bày của text) (như văn bản ghi rõ) (theo bối cảnh đoạn này)",
       "Cho thấy động đất tự nhiên xảy ra ngẫu nhiên (xét trong văn cảnh) (theo trình tự câu chuyện) (xét theo nội dung gốc) (xét trong văn cảnh)",
       "Cho thấy quân La-mã đã phá hủy đền thờ trước thời điểm Chúa chết (như được mô tả trong sách) (đối chiếu với các phân đoạn liên quan)",
-      "(1) 'TỪ TRÊN XUỐNG' = HÀNH ĐỘNG của ĐỨC CHÚA TRỜI (không phải con người); (2) MÀN ngăn Nơi Chí Thánh — dấu hiệu MỞ ĐƯỜNG VÀO Cha qua sự chết Chúa Jêsus; (3) thầy đội ngoại Quốc xưng nhận 'thật người này là Con Đức Chúa Trời' (15:39) ngay sau"
+      "Là hành động của Đức Chúa Trời, mở đường vào sự hiện diện của Ngài qua sự chết của Chúa Jêsus, được minh họa bởi lời tuyên xưng của thầy đội."
     ],
     "tags": [
       "Tân Ước",

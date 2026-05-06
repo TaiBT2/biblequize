@@ -5,19 +5,26 @@
     "verseStart": 19,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Đức Chúa Trời tồn tại như thế nào?",
+    "content": "Theo Ma-thi-ơ 28:19, Chúa Giê-su truyền dạy phép báp-tem được thực hiện nhân danh ai?",
     "options": [
-      "Một Ngôi duy nhất",
-      "Ba Ngôi: Cha, Con, và Thánh Linh",
-      "Hai Ngôi: Cha và Con",
-      "Nhiều thần linh khác nhau"
+      "Nhân danh Đức Chúa Trời",
+      "Nhân danh Ba Ngôi: Cha, Con, và Thánh Linh",
+      "Nhân danh Chúa Giê-su Christ",
+      "Nhân danh Đức Thánh Linh"
     ],
-    "correctAnswer": [1],
-    "explanation": "Đức Chúa Trời là Ba Ngôi: Đức Cha, Đức Con, và Đức Thánh Linh — ba thân vị nhưng cùng một bản thể. Đây là nền tảng đức tin Cơ-đốc giáo (Ma-thi-ơ 28:19).",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Chúa Giê-su truyền cho các môn đồ làm phép báp-tem cho muôn dân nhân danh Đức Cha, Đức Con và Đức Thánh Linh. Đây là một trong những câu Kinh Thánh quan trọng nói về Ba Ngôi (Ma-thi-ơ 28:19).",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Giáo Lý", "Ba Ngôi", "Đức Chúa Trời"]
+    "tags": [
+      "Giáo Lý",
+      "Ba Ngôi",
+      "Đức Chúa Trời",
+      "Đại Mạng Lệnh"
+    ]
   },
   {
     "book": "Psalms",
@@ -26,19 +33,24 @@
     "verseEnd": 12,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Đức Chúa Trời có những đặc tính nào?",
+    "content": "Theo Thi Thiên 139:7-12, đặc tính nào của Đức Chúa Trời được mô tả rõ nhất?",
     "options": [
-      "Toàn năng nhưng có giới hạn",
-      "Yêu thương nhưng không công bằng",
-      "Toàn năng, toàn tri, toàn tại, yêu thương và thánh khiết",
+      "Sự toàn năng (làm được mọi sự)",
+      "Sự toàn tại (có mặt khắp nơi) và toàn tri (biết mọi sự)",
+      "Sự yêu thương và thánh khiết",
       "Chỉ là một khái niệm tinh thần"
     ],
-    "correctAnswer": [2],
-    "explanation": "Kinh Thánh dạy Đức Chúa Trời là toàn năng (làm được mọi sự), toàn tri (biết mọi sự), toàn tại (có mặt khắp nơi), yêu thương và thánh khiết (Thi Thiên 139:7-12).",
+    "correctAnswer": [
+      1
+    ],
+    "explanation": "Thi Thiên 139:7-12 mô tả rõ ràng rằng con người không thể trốn khỏi Thần của Đức Chúa Trời, dù lên trời, xuống âm phủ, hay ở nơi xa xăm tối tăm, vì Ngài hiện diện ở khắp nơi (toàn tại) và sự tối tăm cũng chẳng giấu được gì với Ngài (toàn tri).",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Giáo Lý", "Đặc tính Đức Chúa Trời"]
+    "tags": [
+      "Giáo Lý",
+      "Đặc tính Đức Chúa Trời"
+    ]
   },
   {
     "book": "Matthew",
@@ -53,12 +65,18 @@
       "Thi Thiên 23:1",
       "Giăng 1:1"
     ],
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Ma-thi-ơ 28:19 là Đại Mạng Lệnh, nơi Chúa Jesus dạy phép báp-tem nhân danh ba thân vị: Đức Cha, Đức Con, và Đức Thánh Linh.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Giáo Lý", "Ba Ngôi", "Đại Mạng Lệnh"]
+    "tags": [
+      "Giáo Lý",
+      "Ba Ngôi",
+      "Đại Mạng Lệnh"
+    ]
   },
   {
     "book": "Colossians",
@@ -73,12 +91,18 @@
       "Đức Chúa Trời nhập thể, Con Đức Chúa Trời, Đấng Cứu Thế",
       "Một thiên sứ đặc biệt"
     ],
-    "correctAnswer": [2],
-    "explanation": "Cô-lô-se 2:9 dạy: 'Vì sự đầy dẫy của thần tánh hiện diện trong thân thể Đấng Christ.' Chúa Jesus vừa là Đức Chúa Trời thật vừa là Người thật. Ngài là Con Đức Chúa Trời, đã nhập thể làm người để cứu chuộc nhân loại.",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "Cô-lô-se 2:9 dạy: \"Vì trong Ngài có tất cả sự đầy đủ của thần tính ngự trong thân thể.\" (Bản Dịch 1925). Chúa Jesus vừa là Đức Chúa Trời thật vừa là Người thật. Ngài là Con Đức Chúa Trời, đã nhập thể làm người để cứu chuộc nhân loại.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Giáo Lý", "Christology", "Chúa Jesus"]
+    "tags": [
+      "Giáo Lý",
+      "Christology",
+      "Chúa Jesus"
+    ]
   },
   {
     "book": "Mark",
@@ -93,12 +117,18 @@
       "Để thiết lập một vương quốc trần gian",
       "Để giải phóng dân Y-sơ-ra-ên khỏi La Mã"
     ],
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Mác 10:45: 'Con Người đã đến không phải để được người ta hầu việc, song để hầu việc người ta, và phó sự sống mình làm giá chuộc cho nhiều người.' Mục đích chính của Chúa Jesus là chết thay cho tội nhân.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Giáo Lý", "Cứu Chuộc", "Soteriology"]
+    "tags": [
+      "Giáo Lý",
+      "Cứu Chuộc",
+      "Soteriology"
+    ]
   },
   {
     "book": "1 Corinthians",
@@ -114,12 +144,18 @@
       "Linh hồn Ngài bay về trời, thân xác ở lại",
       "Ngài hóa thành thiên sứ"
     ],
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "1 Cô-rinh-tô 15:3-4 dạy rõ: Đấng Christ chịu chết vì tội chúng ta theo lời Kinh Thánh, đã chôn, đến ngày thứ ba được sống lại. Sự phục sinh là sự kiện trung tâm của đức tin Cơ-đốc.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Giáo Lý", "Phục Sinh", "Christology"]
+    "tags": [
+      "Giáo Lý",
+      "Phục Sinh",
+      "Christology"
+    ]
   },
   {
     "book": "Genesis",
@@ -134,12 +170,18 @@
       "Đức Chúa Trời tạo dựng theo hình ảnh của Ngài",
       "Do thiên sứ tạo ra"
     ],
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Sáng Thế Ký 1:27 dạy rằng Đức Chúa Trời đã trực tiếp tạo dựng con người theo hình ảnh của Ngài (imago Dei), khác biệt hoàn toàn với muôn loài khác.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Giáo Lý", "Tạo Dựng", "Imago Dei"]
+    "tags": [
+      "Giáo Lý",
+      "Tạo Dựng",
+      "Imago Dei"
+    ]
   },
   {
     "book": "Romans",
@@ -154,12 +196,18 @@
       "Vì con người không biết đủ Kinh Thánh",
       "Vì cuộc sống có quá nhiều khó khăn"
     ],
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Rô-ma 3:23 dạy rõ: 'Vì mọi người đều đã phạm tội, thiếu mất sự vinh hiển của Đức Chúa Trời.' Tội lỗi ngăn cách con người với Đức Chúa Trời, và mọi người đều cần được cứu rỗi.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Giáo Lý", "Tội Lỗi", "Hamartiology"]
+    "tags": [
+      "Giáo Lý",
+      "Tội Lỗi",
+      "Hamartiology"
+    ]
   },
   {
     "book": "Ephesians",
@@ -175,12 +223,19 @@
       "Bởi đức tin nơi Chúa Jesus, không phải bởi việc làm",
       "Phải hoàn hảo về đạo đức"
     ],
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Ê-phê-sô 2:8-9: 'Vì nhờ ân điển, bởi đức tin mà anh em được cứu, điều đó không phải đến từ anh em, bèn là sự ban cho của Đức Chúa Trời. Ấy chẳng phải bởi việc làm đâu, hầu cho không ai khoe mình.'",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Giáo Lý", "Cứu Rỗi", "Ân Điển", "Soteriology"]
+    "tags": [
+      "Giáo Lý",
+      "Cứu Rỗi",
+      "Ân Điển",
+      "Soteriology"
+    ]
   },
   {
     "book": "2 Timothy",
@@ -195,11 +250,17 @@
       "Lời được Đức Chúa Trời linh cảm, là chân lý và thẩm quyền tuyệt đối cho đời sống đức tin",
       "Sách lịch sử của dân Do Thái"
     ],
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Ti-mô-thê 3:16: 'Cả Kinh Thánh đều là bởi Đức Chúa Trời linh cảm, có ích cho sự dạy dỗ, bẻ trách, sửa trị, dạy người trong sự công bình.' Kinh Thánh là Lời Đức Chúa Trời, thẩm quyền tuyệt đối cho đức tin và đời sống.",
     "language": "vi",
     "category": "bible_basics",
     "source": "seed:bible_basics:v1",
-    "tags": ["Giáo Lý", "Kinh Thánh", "Bibliology"]
+    "tags": [
+      "Giáo Lý",
+      "Kinh Thánh",
+      "Bibliology"
+    ]
   }
 ]

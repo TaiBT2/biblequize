@@ -9,7 +9,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "2 Cô 1:3-4: Ngài an ủi chúng ta trong mọi hoạn nạn để chúng ta an ủi kẻ khác.",
+    "explanation": "2 Cô 1:3: Ngài là Đức Chúa Trời ban mọi sự an ủi.",
     "language": "vi",
     "verseEnd": 4,
     "options": [
@@ -65,14 +65,14 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Cô 4:7: Chóe bằng đất để quyền phép dư dật là của Đức Chúa Trời, chứ không phải bởi chúng ta.",
+    "explanation": "2 Cô 4:7: Chúng ta chứa kho báu trong bình bằng đất để quyền năng vượt trội (quyền phép) thuộc về Đức Chúa Trời, chứ không phải bởi chúng ta.",
     "language": "vi",
-    "verseEnd": 10,
+    "verseEnd": 7,
     "options": [
       "Chén bằng vàng",
       "Bình bằng đá",
       "Hòm bằng gỗ",
-      "Chóe bằng đất"
+      "Bình bằng đất"
     ],
     "tags": [
       "Tân Ước",
@@ -120,14 +120,14 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Cô 8:2: Trong thử thách lớn, lòng vui mừng dồi dào và sự nghèo khổ sâu xa của họ đã tràn ra sự rộng rãi.",
+    "explanation": "2 Cô 8:2,5: Họ có lòng rộng rãi dù đang gặp thử thách và nghèo khó, và trước hết đã dâng chính mình cho Chúa.",
     "language": "vi",
     "verseEnd": 5,
     "options": [
       "Nhiều ân tứ",
       "Giàu có dâng hiến",
       "Khéo quản trị",
-      "Rộng rãi trong nghèo khó"
+      "Lòng rộng rãi và dâng chính mình cho Chúa"
     ],
     "tags": [
       "Tân Ước",
@@ -148,7 +148,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Cô 9:6: Ai gieo ít thì gặt ít; ai gieo nhiều thì gặt nhiều.",
+    "explanation": "2 Cô 9:6-7: Nguyên tắc này được áp dụng cho việc dâng hiến (bố thí).",
     "language": "vi",
     "verseEnd": 8,
     "options": [
@@ -200,11 +200,11 @@
     "verseStart": 14,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Chúng ta là mùi thơm gì cho Đức Chúa Trời trong Đấng Christ?",
+    "content": "Theo 2 Cô-rinh-tô 2:15, Cơ Đốc nhân là mùi thơm gì dâng lên Đức Chúa Trời?",
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Cô 2:15: Chúng ta là mùi thơm của Đấng Christ cho Đức Chúa Trời giữa kẻ được cứu và kẻ hư mất.",
+    "explanation": "2 Cô-rinh-tô 2:15: 'Vì chúng ta là mùi thơm của Đấng Christ dâng lên Đức Chúa Trời, giữa vòng kẻ được cứu và kẻ hư mất.' (Bản Dịch 2011).",
     "language": "vi",
     "verseEnd": 17,
     "options": [
@@ -434,7 +434,7 @@
       "Chứng minh bằng dấu lạ",
       "Ẩn giấu Tin Lành",
       "Chẳng ngã lòng; không xử theo mưu mẹo",
-      "Tìm lời lẽ khôn khéo"
+      "Trình bày lẽ thật cách rõ ràng"
     ],
     "tags": [
       "Tân Ước",
@@ -564,7 +564,7 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Chúa an ủi chúng ta để chúng ta có thể an ủi người khác bằng sự an ủi đã nhận.",
+    "explanation": "2 Cô-rinh-tô 1:3 gọi Chúa là 'Cha hay thương xót và Chúa của mọi sự an ủi'. Câu 4 giải thích Ngài an ủi chúng ta trong mọi hoạn nạn, để chúng ta cũng có thể an ủi người khác.",
     "language": "vi",
     "verseEnd": 4,
     "options": [
@@ -588,7 +588,7 @@
     "verseStart": 17,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "2 Cô 3:17: \"Chúa là Thần; Thần của Chúa ở đâu thì ở đó có sự ___\"",
+    "content": "2 Cô 3:17: \"Vả, Chúa tức là Thánh Linh, Thánh Linh của Chúa ở đâu, thì ở đó có sự ___\"",
     "correctAnswer": [
       2
     ],
@@ -622,7 +622,7 @@
     "explanation": "Để quyền năng tối cao thuộc về Chúa, không phải chúng ta. Sự yếu đuối tôn vinh Chúa.",
     "language": "vi",
     "options": [
-      "Bình đất (chứa yếu đuối)",
+      "Bình đất (chậu bằng đất)",
       "Hòm sắt",
       "Túi da",
       "Bình vàng"
@@ -670,7 +670,7 @@
     "verseStart": 20,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Phao-lô nói chúng ta là gì cho Chúa?",
+    "content": "2 Cô-rinh-tô 5:20: Phao-lô nói chúng ta là gì cho Chúa?",
     "correctAnswer": [
       0
     ],
@@ -724,11 +724,11 @@
     "verseStart": 7,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "2 Cô 9:7: Chúa yêu người cho đi như thế nào?",
+    "content": "2 Cô 9:7: Kinh Thánh nói Đức Chúa Trời yêu người cho đi như thế nào?",
     "correctAnswer": [
       0
     ],
-    "explanation": "Không cho vì bắt buộc hay tiếc nuối. Chúa yêu người cho với tâm lòng vui vẻ.",
+    "explanation": "Không cho vì bắt buộc hay tiếc nuối. Đức Chúa Trời yêu người cho với tâm lòng vui vẻ.",
     "language": "vi",
     "options": [
       "Cách vui lòng",
@@ -805,7 +805,7 @@
     "verseStart": 10,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Phao-lô nói: \"Khi tôi yếu đuối ấy là khi tôi ___\"",
+    "content": "2 Cô-rinh-tô 12:10: Phao-lô nói: \"Khi tôi yếu đuối ấy là khi tôi ___\"",
     "correctAnswer": [
       3
     ],

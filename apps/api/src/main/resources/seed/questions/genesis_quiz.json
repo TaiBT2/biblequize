@@ -29,13 +29,20 @@
     "book": "Genesis",
     "chapter": 1,
     "verseStart": 27,
+    "verseEnd": 27,
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo Sáng Thế Ký 1:27, Đức Chúa Trời tạo dựng loài người theo gì?",
+    "options": [
+      "Hình ảnh các thiên sứ",
+      "Hình ảnh loài thú",
+      "Hình ảnh đất đai",
+      "Hình ảnh của Ngài"
+    ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Sáng thế ký 1:27 — 'Đức Chúa Trời sáng tạo loài người theo hình ảnh Ngài. Ngài sáng tạo loài người theo hình ảnh Đức Chúa Trời.'",
+    "explanation": "Sáng Thế Ký 1:27 — 'Đức Chúa Trời sáng tạo loài người theo hình ảnh Ngài. Ngài sáng tạo loài người theo hình ảnh Đức Chúa Trời.'",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -43,12 +50,6 @@
       "Ngũ Kinh",
       "Sáng tạo",
       "Cơ bản"
-    ],
-    "options": [
-      "Hình ảnh các thiên sứ",
-      "Hình ảnh loài thú",
-      "Hình ảnh đất đai",
-      "Hình ảnh của Ngài"
     ]
   },
   {
@@ -138,6 +139,12 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo Sáng Thế Ký 3:6, ai đã ăn trái cấm?",
+    "options": [
+      "Chỉ Ê-va",
+      "Chỉ A-đam",
+      "Cả A-đam và Ê-va",
+      "Không ai cả"
+    ],
     "correctAnswer": [
       2
     ],
@@ -148,12 +155,6 @@
       "Sáng Thế Ký",
       "Ngũ Kinh",
       "Trung cấp"
-    ],
-    "options": [
-      "Chỉ Ê-va",
-      "Chỉ A-đam",
-      "Cả A-đam và Ê-va",
-      "Không ai cả"
     ]
   },
   {
@@ -268,7 +269,7 @@
     "options": [
       "777 tuổi",
       "930 tuổi",
-      "895 tuổi",
+      "905 tuổi",
       "969 tuổi"
     ],
     "correctAnswer": [
@@ -327,7 +328,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 7:2 — 'Trong mỗi loài thú tinh sạch, hãy đem theo bảy cặp, đực và cái.' Thú không tinh sạch chỉ một cặp.",
+    "explanation": "Sáng thế ký 7:2 — \"Hãy đem theo bảy con, mỗi loài một đực một cái\" (hoặc \"bảy cặp\"). Thú không tinh sạch chỉ một cặp.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -814,7 +815,7 @@
     "verseStart": 32,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Áp-ra-ham cầu xin Đức Chúa Trời tha Sô-đôm nếu tìm được bao nhiêu người công chính?",
+    "content": "Con số cuối cùng Áp-ra-ham cầu xin Đức Chúa Trời tha Sô-đôm nếu tìm được bao nhiêu người công chính?",
     "options": [
       "Năm mươi người",
       "Năm người",
@@ -1062,7 +1063,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng thế ký 25:7 — 'Áp-ra-ham hưởng thọ một trăm bảy mươi lăm tuổi.'",
+    "explanation": "Sáng thế ký 25:7-8 — 'Áp-ra-ham hưởng thọ một trăm bảy mươi lăm tuổi. Vậy, Áp-ra-ham tắt hơi, qua đời sau một đời hưởng phước lâu dài, và được về cùng tổ tông.'",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1110,7 +1111,7 @@
     "options": [
       "Vàng bạc",
       "Áo choàng",
-      "Bát canh đậu đỏ",
+      "Bánh và canh đậu đỏ",
       "Đàn chiên"
     ],
     "correctAnswer": [
@@ -1263,6 +1264,7 @@
     "book": "Genesis",
     "chapter": 31,
     "verseStart": 19,
+    "verseEnd": 19,
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "content": "Ra-chên đã lấy trộm gì của La-ban khi Gia-cốp rời đi?",
@@ -1534,15 +1536,15 @@
     "type": "multiple_choice_single",
     "content": "Trong hai con trai sinh đôi của Giu-đa và Ta-ma, ai thò tay ra trước nhưng lại sinh sau?",
     "options": [
-      "Ô-nan",
       "Phê-rết",
       "Sê-rách",
-      "Ê-rơ"
+      "Xê-la",
+      "Hê-rơ"
     ],
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng thế ký 38:28-30 — Sê-rách thò tay ra trước, bà mụ buộc sợi chỉ đỏ, nhưng Phê-rết lại sinh ra trước. Phê-rết nằm trong dòng dõi Chúa Giê-xu (Ma-thi-ơ 1:3).",
+    "explanation": "Sáng thế ký 38:28-30 — Khi sinh, một đứa thò tay ra, bà mụ buộc sợi chỉ đỏ, nhưng rút tay lại; đứa kia sinh ra trước. Đứa sinh trước được đặt tên là Phê-rết, đứa sinh sau có sợi chỉ đỏ là Sê-rách.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -2643,12 +2645,12 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Sáng 17:17 — Sa-ra 90 tuổi khi nghe lời hứa, sinh Y-sác lúc 91. Sáng 23:1 — Sa-ra hưởng thọ 127 tuổi. Vậy bà sống thêm 36-37 năm sau khi sinh con.",
+    "explanation": "Sáng 17:17 cho thấy Sa-ra 90 tuổi khi nghe lời hứa. Bà sinh Y-sác lúc 91 tuổi (Sáng 17:21, 21:5). Sáng 23:1 ghi Sa-ra hưởng thọ 127 tuổi. Vậy bà sống thêm 36 năm sau khi sinh con (127 - 91 = 36).",
     "language": "vi",
     "options": [
       "20 năm",
       "27 năm",
-      "37 năm",
+      "36 năm",
       "47 năm"
     ],
     "tags": [
@@ -3207,7 +3209,7 @@
     ],
     "verseEnd": 16,
     "content": "Theo Sáng 14, sự kiện gì xảy ra khiến Áp-ram phải dẫn 318 người nhà tinh nhuệ ra trận?",
-    "explanation": "Sáng 14:11-14 — bốn vua phương Đông (do Kết-rô-Lao-me dẫn đầu) bắt Lót và lấy hết của cải. Áp-ram dẫn 318 người nhà tinh nhuệ rượt theo đến tận Đan và giải cứu.",
+    "explanation": "Sáng 14:11-16 — Bốn vua phương Đông (do Kết-rô-Lao-me dẫn đầu) cướp bóc Sô-đôm và Gô-mô-rơ, bắt Lót cùng tài sản đem đi (c.12). Khi Áp-ram nghe tin, ông dẫn 318 người nhà tinh nhuệ rượt theo đến tận Đan và giải cứu (c.14-16).",
     "language": "vi",
     "options": [
       "Pha-ra-ôn Ai-cập tấn công vùng đất Áp-ram đang sống cùng vợ con",
@@ -3350,7 +3352,7 @@
       "Ru-bên — sôi nổi như nước, mất đặc quyền trưởng nam",
       "Giu-đa — sư tử tơ, cây phủ việt sẽ chẳng rời khỏi",
       "Giô-sép — như cây sai trái gần suối nước, nhánh vượt trên tường",
-      "Bên-gia-min — như con bồ câu hiền hòa giữa các chim trên đồng"
+      "Bên-gia-min — chó sói hay cấu xé, ban mai ăn mồi, chiều chia của cướp"
     ],
     "tags": [
       "Cựu Ước",
@@ -3453,13 +3455,13 @@
     ],
     "verseEnd": 16,
     "content": "A-ga (mẹ Ích-ma-ên) bị đuổi khỏi nhà Áp-ra-ham hai lần khác nhau trong Sáng Thế Ký. Tình huống nào CÓ trong text? (chọn tất cả đúng)",
-    "explanation": "Sáng 16:6-9 — A-ga lần đầu chạy trốn vì Sa-rai hành hạ; thiên sứ bảo bà trở lại. Sáng 21:9-21 — sau khi Y-sác sinh, Sa-ra đòi đuổi A-ga và Ích-ma-ên; Đức Chúa Trời gặp họ trong sa mạc. Lần 3 và 4 không có trong text.",
+    "explanation": "Sáng 16:6-9 — A-ga lần đầu chạy trốn vì Sa-rai hành hạ; thiên sứ bảo bà trở lại. Sáng 21:9-21 — sau khi Y-sác sinh, Sa-ra đòi đuổi A-ga và Ích-ma-ên; Đức Chúa Trời gặp họ trong sa mạc. Các tình huống khác không có trong Kinh Thánh.",
     "language": "vi",
     "options": [
       "Lần 1 (Sáng 16) — Khi Sa-rai ghen tỵ vì A-ga có thai và khinh dể bà chủ",
       "Lần 2 (Sáng 21) — Sau khi Y-sác cai sữa, Sa-ra thấy Ích-ma-ên cười cợt",
-      "Lần 3 (Sáng 25) — A-ga bị Áp-ra-ham đuổi cùng các con thứ khác sau khi cưới Kê-tu-ra",
-      "Lần khác (Sáng 19) — A-ga chạy trốn cùng Lót khỏi thành Sô-đôm"
+      "Lần khác (Sáng 25) — Áp-ra-ham cho các con thứ của Kê-tu-ra của cải và sai đi, không nhắc đến A-ga",
+      "Lần khác (Sáng 19) — Chỉ có Lót và gia đình chạy khỏi Sô-đôm, không liên quan đến A-ga"
     ],
     "tags": [
       "Cựu Ước",
@@ -3480,11 +3482,11 @@
     ],
     "verseEnd": 35,
     "content": "Khi La-ban đuổi theo Gia-cốp và lục soát đồ đạc tìm thần tượng (Sáng 31:33-35), Ra-chên giấu thần tượng ở đâu?",
-    "explanation": "Sáng 31:34-35 — 'Vả, Ra-chên có lấy mấy pho tượng đó, để vào trong cái yên ngồi đặt trên lưng lạc đà, rồi ngồi lên trên... La-ban lục soát khắp lều mà tìm chẳng được'.",
+    "explanation": "Sáng 31:34-35 — 'Vả, Ra-chên có lấy các pho tượng đó, để trong bành lạc đà, rồi ngồi lên trên... La-ban lục soát khắp lều mà tìm chẳng được.'",
     "language": "vi",
     "options": [
       "Trong cái lều của các đầy tớ gái",
-      "Dưới yên lạc đà mà bà ngồi lên",
+      "Trong bành (bao) của lạc đà mà bà ngồi lên",
       "Dưới đáy rương đựng đồ đạc của Gia-cốp",
       "Trong giếng sâu cạnh trại Ma-ha-na-im"
     ],
@@ -3537,7 +3539,7 @@
     "explanation": "Sáng 34:2 — 'Si-chem, con trai Hê-mô, người Hê-vít, hoàng tử của xứ đó, thấy nàng [Đi-na], thì bắt đem đi, nằm với nàng và làm điếm nhục cho nàng'. Si-mê-ôn và Lê-vi sau đó tàn sát thành (34:25-26).",
     "language": "vi",
     "options": [
-      "Si-chem, con trai Hê-mô người Hê-vít, là vua xứ đó",
+      "Si-chem, con trai Hê-mô người Hê-vít, là hoàng tử (quan trưởng) của xứ đó",
       "A-bi-mê-léc, vua dân Phi-li-tin tại Ghê-ra",
       "Một thầy tế lễ ngoại bang tại đền thờ trên núi Ga-ri-xim",
       "Một quan trưởng quân đội Pha-ra-ôn từ Ai-cập đến"
@@ -3729,7 +3731,7 @@
       "Ép-ra-im ('khốn khó') và Ma-na-se ('thịnh vượng')",
       "Phi-nê-a ('lửa') và Ru-ben ('thấy con trai')",
       "Lê-vi ('liên kết') và Ép-ra-im ('khóc lóc')",
-      "Ma-na-se ('làm cho quên') và Ép-ra-im ('làm cho sai trái')"
+      "Ma-na-se (nghĩa: làm cho quên) và Ép-ra-im (nghĩa: làm cho hưng vượng)"
     ],
     "tags": [
       "Cựu Ước",
@@ -3757,7 +3759,7 @@
     "options": [
       "'Đức Chúa Trời sẽ đến viếng các anh em, đem lên khỏi xứ này đến xứ Ngài đã thề ban cho Áp-ra-ham, Y-sác và Gia-cốp'",
       "Yêu cầu các anh em thề: 'Đức Chúa Trời sẽ thật viếng đến anh em, anh em hãy dời hài cốt tôi khỏi xứ này'",
-      "Giô-sép qua đời lúc 110 tuổi và được ướp xác bỏ vào quan tài tại Ai-cập",
+      "Giô-sép qua đời lúc 110 tuổi và được đặt trong một quan tài tại Ai-cập",
       "Giô-sép yêu cầu chôn xác mình tại đền thờ Ai-cập như các Pha-ra-ôn"
     ],
     "tags": [
@@ -3804,9 +3806,9 @@
     "correctAnswer": [
       1
     ],
-    "verseEnd": 25,
+    "verseEnd": 24,
     "content": "Theo Sáng 26:24, lời Đức Giê-hô-va phán cùng Y-sác tại Bê-e-Sê-ba mở đầu bằng cụm từ nào?",
-    "explanation": "Sáng 26:24 — 'Đức Giê-hô-va hiện đến cùng người trong đêm đó, mà phán rằng: Ta là Đức Chúa Trời của Áp-ra-ham, cha ngươi; chớ sợ chi, ta ở cùng ngươi, sẽ ban phước cho và thêm dòng dõi ngươi'. Đây là lời tái xác nhận giao ước với thế hệ thứ hai.",
+    "explanation": "Sáng 26:24 — Lời mở đầu của Đức Giê-hô-va phán với Y-sác là: 'Ta là Đức Chúa Trời của Áp-ra-ham, cha ngươi; chớ sợ chi'.",
     "language": "vi",
     "options": [
       "'Hãy đi khỏi xứ này, đến xứ ta sẽ chỉ cho ngươi'",

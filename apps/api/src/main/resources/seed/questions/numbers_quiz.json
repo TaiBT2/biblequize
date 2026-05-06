@@ -199,7 +199,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 7:3 — 'Họ đem lễ vật đến trước mặt Đức Giê-hô-va: sáu xe có mui và mười hai con bò.' Mỗi hai nhà lãnh đạo dâng chung một xe.",
+    "explanation": "Dân Số Ký 7:3 — 'Họ đem lễ vật đến trước mặt Đức Giê-hô-va: sáu xe có mui và mười hai con bò.' Đây là lễ vật chung của các nhà lãnh đạo Y-sơ-ra-ên.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -279,7 +279,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 10:2 — 'Hãy làm hai cái kèn bằng bạc, làm bằng bạc dát, để dùng triệu tập hội chúng và ra lệnh nhổ trại.'",
+    "explanation": "Dân Số Ký 10:2 — 'Hãy làm hai cái kèn bằng bạc, làm bằng bạc dát, để dùng triệu tập hội chúng và ra lệnh nhổ trại.' (Chất liệu là bạc).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -305,7 +305,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 11:5 — 'Chúng ta nhớ cá ăn không tốn tiền tại Ai Cập, nhớ dưa chuột, dưa hấu, rau hẹ, hành và tỏi.'",
+    "explanation": "Dân Số Ký 11:5 — 'Chúng ta nhớ cá ăn không tốn tiền tại Ai Cập, nhớ dưa chuột, dưa hấu, rau hẹ, hành và tỏi.' Trong các lựa chọn, đáp án phù hợp nhất là 'Cá, dưa chuột, dưa hấu'.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -455,7 +455,7 @@
     "verseStart": 23,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Những thám tử mang về loại trái cây gì từ thung lũng Ếch-côn?",
+    "content": "Những thám tử mang về những loại trái cây gì từ thung lũng Ếch-côn?",
     "options": [
       "Một chùm nho lớn",
       "Chùm nho, lựu và vả",
@@ -465,7 +465,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 13:23 — 'Họ cắt tại đó một nhánh nho có một chùm nho... Họ cũng hái lựu và vả.' Chùm nho lớn đến mức phải hai người khiêng.",
+    "explanation": "Dân Số Ký 13:23 — 'Họ cắt tại đó một nhánh nho có một chùm nho... Họ cũng hái lựu và vả.' Vậy họ mang về nho (một chùm lớn), lựu và vả.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -582,8 +582,9 @@
       "Cựu Ước",
       "Dân Số Ký",
       "Ngũ Kinh",
-      "Gia-cốp và Y-sơ-ra-ên",
-      "Giô-sép tại Ai Cập",
+      "Luật lệ",
+      "Trang phục",
+      "Điều răn",
       "Trung cấp"
     ]
   },
@@ -623,6 +624,12 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Cô-ra và những người theo hắn bị Đức Chúa Trời phán xét như thế nào?",
+    "options": [
+      "Bị thiêu chết bằng lửa",
+      "Đất nứt ra nuốt họ với gia đình và tài sản",
+      "Bị bệnh phong",
+      "Bị đuổi khỏi trại"
+    ],
     "correctAnswer": [
       1
     ],
@@ -633,12 +640,6 @@
       "Dân Số Ký",
       "Ngũ Kinh",
       "Cơ bản"
-    ],
-    "options": [
-      "Bị thiêu chết bằng lửa",
-      "Đất nứt ra nuốt họ với gia đình và tài sản",
-      "Bị bệnh phong",
-      "Bị đuổi khỏi trại"
     ]
   },
   {
@@ -752,6 +753,12 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Mi-ri-am qua đời và được chôn tại đâu?",
+    "options": [
+      "Núi Si-na-i",
+      "Bê-tên",
+      "Ca-đe (trong hoang mạc Xin)",
+      "Hếp-rôn"
+    ],
     "correctAnswer": [
       2
     ],
@@ -762,12 +769,6 @@
       "Dân Số Ký",
       "Ngũ Kinh",
       "Cơ bản"
-    ],
-    "options": [
-      "Núi Si-na-i",
-      "Bê-tên",
-      "Ca-đe (trong hoang mạc Xin)",
-      "Hếp-rôn"
     ]
   },
   {
@@ -988,11 +989,11 @@
     "verseEnd": 12,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Ba-la-am có thể rủa sả dân Y-sơ-ra-ên theo ý muốn của vua Ba-lác không?",
+    "content": "Tiên tri Ba-la-am có thể rủa sả dân Y-sơ-ra-ên theo ý muốn của vua Ba-lác được không?",
     "correctAnswer": [
       2
     ],
-    "explanation": "Dân Số Ký 23:8 — 'Làm sao tôi rủa sả kẻ mà Đức Chúa Trời không rủa sả? Làm sao tôi nguyền rủa kẻ mà Đức Giê-hô-va không nguyền rủa?' Ba-la-am chỉ có thể nói điều Đức Chúa Trời đặt trong miệng ông.",
+    "explanation": "Dân Số Ký 23:8 ghi lời Ba-la-am: 'Làm sao tôi rủa sả kẻ mà Đức Chúa Trời không rủa sả? Làm sao tôi nguyền rủa kẻ mà Đức Giê-hô-va không nguyền rủa?' Ông chỉ có thể nói điều Đức Chúa Trời đặt trong miệng mình (câu 12).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1002,10 +1003,10 @@
       "Nâng cao"
     ],
     "options": [
-      "Có, dễ dàng",
-      "Có, sau khi dâng nhiều của lễ",
-      "Không — chỉ có thể nói điều Đức Chúa Trời đặt vào miệng ông",
-      "Có, nhưng chỉ một phần"
+      "Có, ông có thể làm điều đó dễ dàng.",
+      "Có, nhưng chỉ sau khi dâng thêm nhiều của lễ.",
+      "Không — ông chỉ có thể nói điều Đức Chúa Trời đặt vào miệng mình.",
+      "Có, nhưng ông chỉ có thể rủa sả một phần dân chúng."
     ]
   },
   {
@@ -1069,7 +1070,7 @@
     "verseEnd": 9,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Ai đã hành động quyết liệt để chặn đứng dịch bệnh tại Si-tim, khiến 24.000 người chết?",
+    "content": "Ai đã hành động quyết liệt (đâm một người Y-sơ-ra-ên và một người nữ Ma-đi-an) để chặn đứng cơn thịnh nộ của Đức Giê-hô-va và dịch bệnh đã khiến 24.000 người chết tại Si-tim?",
     "options": [
       "Giô-suê",
       "Môi-se",
@@ -1079,7 +1080,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 25:7-8 — 'Phi-nê-a... đứng dậy, rời khỏi hội chúng, cầm cây giáo trong tay, đi theo người Y-sơ-ra-ên vào lều.' Hành động của ông chặn đứng dịch bệnh.",
+    "explanation": "Dân Số Ký 25:7-9 — Phi-nê-a đã đâm một người Y-sơ-ra-ên và một người nữ Ma-đi-an, hành động đó khiến cơn thịnh nộ của Đức Giê-hô-va nguôi đi và dịch bệnh dừng lại. Dịch bệnh này đã khiến 24.000 người chết.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1358,6 +1359,12 @@
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "content": "Trong trận chiến với dân Ma-đi-an, Ba-la-am đã chịu kết cục gì?",
+    "options": [
+      "Trốn thoát an toàn",
+      "Trở về với vua Ba-lác",
+      "Bị giết bằng gươm cùng năm vua Ma-đi-an",
+      "Được Y-sơ-ra-ên tha cho"
+    ],
     "correctAnswer": [
       2
     ],
@@ -1368,12 +1375,6 @@
       "Dân Số Ký",
       "Ngũ Kinh",
       "Nâng cao"
-    ],
-    "options": [
-      "Trốn thoát an toàn",
-      "Trở về với vua Ba-lác",
-      "Bị giết bằng gươm cùng năm vua Ma-đi-an",
-      "Được Y-sơ-ra-ên tha cho"
     ]
   },
   {
@@ -1446,8 +1447,6 @@
       "Cựu Ước",
       "Dân Số Ký",
       "Ngũ Kinh",
-      "Gia-cốp và Y-sơ-ra-ên",
-      "Giô-sép tại Ai Cập",
       "Cơ bản"
     ],
     "options": [
@@ -1480,7 +1479,6 @@
       "Cựu Ước",
       "Dân Số Ký",
       "Ngũ Kinh",
-      "Gia-cốp và Y-sơ-ra-ên",
       "Đất hứa Ca-na-an",
       "Trung cấp"
     ]
@@ -1535,8 +1533,6 @@
       "Cựu Ước",
       "Dân Số Ký",
       "Ngũ Kinh",
-      "Đền tạm và thờ phượng",
-      "Tế lễ và nghi lễ",
       "Nâng cao"
     ]
   },
@@ -1597,17 +1593,17 @@
     "verseStart": 33,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "'Không có gì chuộc được tội ___ cho đất, ngoại trừ huyết của kẻ đã làm đổ máu.'",
+    "content": "'Không có gì chuộc được tội ___ cho đất, ngoại trừ huyết của kẻ đã làm đổ máu.' (Dân Số Ký 35:33)",
     "options": [
       "gian ác",
       "bất trung",
       "phạm pháp",
-      "đổ máu"
+      "giết người"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 35:33 — 'Không có gì chuộc được tội đổ máu cho đất, ngoại trừ huyết của kẻ đã làm đổ máu.' Nguyên tắc quan trọng về công lý trong luật Môi-se.",
+    "explanation": "Dân Số Ký 35:33 — 'Không có gì chuộc được tội giết người (đổ máu) cho đất, ngoại trừ huyết của kẻ đã làm đổ máu.' Nguyên tắc quan trọng về công lý trong luật Môi-se.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1766,7 +1762,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 15:35-36 — 'Đức Giê-hô-va phán với Môi-se: Người ấy phải chết! Cả hội chúng phải ném đá người ấy ở ngoài trại.' Cho thấy sự nghiêm trọng của việc phạm ngày Sa-bát.",
+    "explanation": "Dân Số Ký 15:35-36 — 'Đức Giê-hô-va phán với Môi-se: Người ấy phải chết! Cả hội chúng phải ném đá người ấy ở ngoài trại.' Đây là một án lệ nghiêm khắc cho thấy sự vi phạm có chủ đích vào ngày Sa-bát.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1862,17 +1858,17 @@
     "verseStart": 5,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Ba-la-am thốt lên: 'Hỡi Gia-cốp, ___ ngươi đẹp đẽ thay! Hỡi Y-sơ-ra-ên, nơi ở ngươi xinh tốt biết bao!'",
+    "content": "Ba-la-am thốt lên: 'Hỡi Gia-cốp, ___ đẹp đẽ thay! Hỡi Y-sơ-ra-ên, nơi ở ngươi xinh tốt biết bao!'",
     "options": [
       "các thành",
       "các đền thờ",
       "đất đai",
-      "các trại"
+      "trại ngươi"
     ],
     "correctAnswer": [
       3
     ],
-    "explanation": "Dân Số Ký 24:5 — 'Hỡi Gia-cốp, các trại ngươi đẹp đẽ thay! Hỡi Y-sơ-ra-ên, nơi ở ngươi xinh tốt biết bao!' Ba-la-am chúc phước thay vì rủa sả.",
+    "explanation": "Dân Số Ký 24:5 — 'Hỡi Gia-cốp, trại ngươi đẹp đẽ thay! Hỡi Y-sơ-ra-ên, nơi ở ngươi xinh tốt biết bao!' (Bản Dịch 2011). Ba-la-am chúc phước thay vì rủa sả.",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1885,15 +1881,21 @@
   {
     "book": "Numbers",
     "chapter": 7,
-    "verseStart": 84,
-    "verseEnd": 86,
+    "verseStart": 1,
+    "verseEnd": 88,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Lễ cung hiến bàn thờ trong Dân Số Ký 7 kéo dài bao nhiêu ngày?",
+    "content": "Lễ cung hiến bàn thờ được mô tả trong Dân Số Ký chương 7 kéo dài tổng cộng bao nhiêu ngày?",
+    "options": [
+      "Bảy ngày",
+      "Mười hai ngày — mỗi ngày một nhà lãnh đạo dâng lễ vật",
+      "Bốn mươi ngày",
+      "Một ngày"
+    ],
     "correctAnswer": [
       1
     ],
-    "explanation": "Dân Số Ký 7:84 — 'Đây là lễ vật cung hiến bàn thờ trong ngày nó được xức dầu, do các nhà lãnh đạo Y-sơ-ra-ên dâng.' Mười hai nhà lãnh đạo dâng trong mười hai ngày.",
+    "explanation": "Lễ cung hiến bàn thờ diễn ra trong mười hai ngày, mỗi ngày một nhà lãnh đạo của một chi phái dâng lễ vật (Dân Số Ký 7:10-11, 84-88).",
     "language": "vi",
     "tags": [
       "Cựu Ước",
@@ -1901,12 +1903,6 @@
       "Ngũ Kinh",
       "Đền tạm và thờ phượng",
       "Nâng cao"
-    ],
-    "options": [
-      "Bảy ngày",
-      "Mười hai ngày — mỗi ngày một nhà lãnh đạo dâng lễ vật",
-      "Bốn mươi ngày",
-      "Một ngày"
     ]
   },
   {

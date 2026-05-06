@@ -89,16 +89,16 @@
     "verseStart": 11,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Phục Truyền 30 kêu gọi chọn điều gì?",
+    "content": "Phục Truyền 30:19 kêu gọi dân sự chọn điều gì?",
     "correctAnswer": [
       1
     ],
-    "explanation": "Phục Truyền 30:19: Ta đặt trước mặt ngươi sự sống và sự chết, phước lành và rủa sả; hãy chọn sự sống.",
+    "explanation": "Phục Truyền 30:19: 'Ta đặt trước mặt ngươi sự sống và sự chết, phước lành và rủa sả; hãy chọn sự sống, hầu cho ngươi và dòng dõi ngươi được sống.' Lời kêu gọi rõ ràng là chọn 'sự sống' (và phước lành đi kèm) thay vì sự chết.",
     "language": "vi",
     "verseEnd": 20,
     "options": [
       "Của cải",
-      "Sự sống và phước lành",
+      "Sự sống (và phước lành) thay vì sự chết (và rủa sả)",
       "Sức mạnh",
       "Quyền lực"
     ],
@@ -339,6 +339,7 @@
     "book": "Deuteronomy",
     "chapter": 29,
     "verseStart": 29,
+    "verseEnd": 29,
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "“Sự kín nghiệm thuộc về Đức Giê-hô-va... sự tỏ ra thuộc về chúng ta” dạy gì?",
@@ -372,13 +373,13 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Phục Truyền 4: lịch sử và kinh nghiệm mạc khải xác quyết Đức Chúa Trời là một.",
+    "explanation": "Phục Truyền 4:32-40: Lịch sử cứu rỗi và kinh nghiệm mạc khải tại Si-nai xác quyết Đức Chúa Trời là duy nhất.",
     "language": "vi",
     "verseEnd": 40,
     "options": [
       "Lịch sử cứu rỗi và mạc khải trên Si-nai",
       "Triết học Hy Lạp",
-      "Nhiều thần phục vụ",
+      "Truyền thống đa thần",
       "Thiên văn học"
     ],
     "tags": [
@@ -423,11 +424,11 @@
     "verseStart": 20,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Thử nghiệm nào để phân định tiên tri thật/giả theo PTr 18?",
+    "content": "Thử nghiệm nào để phân định tiên tri thật/giả theo Phục Truyền 18?",
     "correctAnswer": [
       0
     ],
-    "explanation": "Phục Truyền 18:22 và 13:1-3: Hai tiêu chí: ứng nghiệm và trung thành với Chúa.",
+    "explanation": "Phục Truyền 18:22: Lời tiên tri phải ứng nghiệm. Kết hợp với tiêu chí quan trọng từ Phục Truyền 13:1-3: tiên tri đó không được dẫn dân chúng thờ các thần khác.",
     "language": "vi",
     "verseEnd": 22,
     "options": [
@@ -567,12 +568,12 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Phục truyền 6:4 - Shema là lời tuyên bố tín kinh trung tâm: Đức Giê-hô-va là Chúa duy nhất.",
+    "explanation": "Phục truyền 6:4 - Shema là lời tuyên bố tín kinh trung tâm: 'Hỡi Y-sơ-ra-ên! Hãy nghe: Giê-hô-va Đức Chúa Trời chúng ta là Giê-hô-va có một.'",
     "language": "vi",
     "verseEnd": 5,
     "options": [
       "Hãy thanh khiết",
-      "Hỡi Y-sơ-ra-ên! Giê-hô-va Đức Chúa Trời chúng ta là Giê-hô-va có một",
+      "Hỡi Y-sơ-ra-ên! Hãy nghe: Giê-hô-va Đức Chúa Trời chúng ta là Giê-hô-va có một.",
       "Ban đầu Đức Chúa Trời",
       "Hãy tin Chúa"
     ],
@@ -841,7 +842,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Phục truyền 33:27 - Đức Chúa Trời đời đời là nơi ẩn náu người. Cánh tay đời đời ở dưới đỡ người.",
+    "explanation": "Phục truyền 33:27 - Đức Chúa Trời đời đời là nơi ẩn náu của ngươi, Và cánh tay đời đời ở dưới ngươi.",
     "language": "vi",
     "options": [
       "Chiến binh",
@@ -861,7 +862,8 @@
   {
     "book": "Deuteronomy",
     "chapter": 34,
-    "verseStart": 5,
+    "verseStart": 7,
+    "verseEnd": 7,
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Moi-se qua đời ở tuổi bao nhiêu?",
@@ -870,7 +872,6 @@
     ],
     "explanation": "Phục truyền 34:7 - Moi-se hưởng thọ 120 tuổi. Mắt chưa lòa, sức chưa giảm.",
     "language": "vi",
-    "verseEnd": 7,
     "options": [
       "100 tuổi",
       "150 tuổi",
@@ -928,7 +929,7 @@
       "Hỡi các thầy tế lễ (theo cách trình bày của text)",
       "Hỡi các trưởng lão (như được mô tả trong sách)",
       "Hỡi các vua (xét trong văn cảnh)",
-      "Hỡi cả Y-SƠ-RA-ÊN, hãy NGHE các luật lệ + mạng lịnh — HỌC + GIỮ + LÀM theo"
+      "Hỡi cả Y-sơ-ra-ên, hãy nghe, học và làm theo các luật lệ"
     ],
     "tags": [
       "Cựu Ước",
@@ -1005,7 +1006,7 @@
     "options": [
       "3 dân — phải đồng minh (như được mô tả trong sách)",
       "5 dân — phải dạy đạo (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "7 DÂN (Hết-tít, Ghi-rê-ga-sít, A-mô-rít, Ca-na-an, Phê-rê-sít, Hê-vít, Giê-bu-sít) — phải DIỆT TUYỆT họ + KHÔNG GIAO ƯỚC + KHÔNG THƯƠNG XÓT",
+      "7 DÂN (Hê-tít, Ghi-rê-ga-sít, A-mô-rít, Ca-na-an, Phê-rê-sít, Hê-vít, Giê-bu-sít) — phải DIỆT TUYỆT họ + KHÔNG GIAO ƯỚC + KHÔNG THƯƠNG XÓT",
       "10 dân — phải kết hôn (theo cách trình bày của text)"
     ],
     "tags": [
@@ -1367,10 +1368,10 @@
     "explanation": "Phục Truyền 7:7-8 — 'Đức Giê-hô-va tríu mến và chọn lấy các ngươi, chẳng phải vì các ngươi đông hơn mọi dân khác đâu; thật số các ngươi là ít hơn mọi dân khác. Nhưng ấy vì Đức Giê-hô-va thương yêu các ngươi, và giữ lời thề mà Ngài đã lập cùng tổ phụ các ngươi, nên Đức Giê-hô-va nhờ tay mạnh đem các ngươi ra, chuộc các ngươi khỏi nhà nô lệ.' KHÔNG có CÔNG TRẠNG — chỉ ÂN ĐIỂN CHỌN. Sách Rô-ma 9 mở rộng.",
     "language": "vi",
     "options": [
-      "KHÔNG vì đông HƠN các dân — Y-sơ-ra-ên là NHỎ NHẤT — mà vì NGÀI YÊU + GIỮ LỜI THỀ với tổ phụ — đã ĐEM ngươi RA bằng tay quyền năng",
-      "Vì giàu hơn (theo cách trình bày của text) (xét theo nội dung gốc)",
-      "Vì khôn hơn (như được mô tả trong sách) (như văn bản ghi rõ)",
-      "Vì đẹp hơn (xét trong văn cảnh) (theo trình tự câu chuyện)"
+      "Vì Ngài yêu thương họ và giữ lời thề với tổ phụ họ",
+      "Vì họ là dân tộc đông đúc và hùng mạnh nhất",
+      "Vì họ công bình và khôn ngoan hơn các dân khác",
+      "Vì họ đã có công lao và đức tin nổi bật"
     ],
     "tags": [
       "Cựu Ước",
@@ -1393,10 +1394,10 @@
     "explanation": "Phục Truyền 8:17-18 — 'Vậy, ngươi chớ nói trong lòng: Ấy nhờ quyền năng ta và sức lực của tay ta mà đoạt được những sản nghiệp nầy. Hãy nhớ lại Giê-hô-va Đức Chúa Trời ngươi, vì ấy là Ngài ban cho ngươi sức lực để đoạt sản nghiệp, để làm trọn sự giao ước Ngài đã thề cùng tổ phụ ngươi, y như Ngài đã làm ngày nay.' KHÔNG có sự giàu CHO RIÊNG MÌNH — Chúa ban SỨC để đáp ứng GIAO ƯỚC. Cảnh báo về KIÊU NGẠO.",
     "language": "vi",
     "options": [
-      "Chớ nói 'tổ phụ tôi giàu' — nhớ ơn (theo cách trình bày của text) (xét theo nội dung gốc)",
-      "Chớ nói 'vua giúp tôi' — nhớ ơn (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Chớ nói 'NHỜ QUYỀN NĂNG VÀ TÀI HOA TÔI mà tôi được giàu' — nhớ ĐỨC GIÊ-HÔ-VA Đức Chúa Trời ngươi đã BAN cho ngươi SỨC để LÀM giàu — đặng LẬP GIAO ƯỚC mà NGÀI đã thề với tổ phụ",
-      "Chớ nói 'thiên sứ giúp tôi' — nhớ ơn (như được mô tả trong sách) (như văn bản ghi rõ)"
+      "Chớ nói 'tổ phụ tôi để lại của cải' — hãy nhớ ơn các bậc tiền nhân.",
+      "Chớ nói 'vua đã ban thưởng cho tôi' — hãy nhớ ơn nhà vua.",
+      "Chớ nói 'nhờ quyền năng và tài tay tôi' — hãy nhớ Đức Giê-hô-va là Đấng ban sức cho ngươi.",
+      "Chớ nói 'đất đai tự nhiên màu mỡ' — hãy nhớ ơn thiên nhiên."
     ],
     "tags": [
       "Cựu Ước",
@@ -1415,14 +1416,14 @@
     "correctAnswer": [
       1
     ],
-    "content": "Theo Phục Truyền 9:5, Y-sơ-ra-ên KHÔNG vào Ca-na-an vì cớ gì? Mà vì 2 lý do nào?",
-    "explanation": "Phục Truyền 9:5 — 'Ngươi vào nhận lấy xứ của các dân tộc nầy chẳng phải vì cớ sự công bình ngươi, hay là sự ngay thẳng lòng ngươi đâu, nhưng vì cớ sự gian ác của các dân tộc đó, nên Giê-hô-va Đức Chúa Trời ngươi sẽ đuổi chúng nó ra khỏi trước mặt ngươi, để làm cho ứng nghiệm lời hứa Ngài đã thề cùng các tổ phụ ngươi, là Áp-ra-ham, Y-sác, và Gia-cốp.' KHÔNG có công đức cá nhân — Chúa LÀM ĐIỀU NÀY vì DANH MÌNH. Khiêm tốn nguyên tắc.",
+    "content": "Theo Phục Truyền 9:5, dân Y-sơ-ra-ên được vào đất Ca-na-an chủ yếu vì những lý do nào sau đây?",
+    "explanation": "Phục Truyền 9:5 chép: 'Ngươi vào nhận lấy xứ của các dân tộc nầy chẳng phải vì cớ sự công bình ngươi, hay là sự ngay thẳng lòng ngươi đâu, nhưng vì cớ sự gian ác của các dân tộc đó, nên Giê-hô-va Đức Chúa Trời ngươi sẽ đuổi chúng nó ra khỏi trước mặt ngươi, để làm cho ứng nghiệm lời hứa Ngài đã thề cùng các tổ phụ ngươi, là Áp-ra-ham, Y-sác, và Gia-cốp.' Như vậy, nguyên nhân không phải do công đức của Y-sơ-ra-ên, mà do sự gian ác của các dân Ca-na-an và để Đức Chúa Trời giữ lời thề với các tổ phụ.",
     "language": "vi",
     "options": [
-      "Vì công đức tổ phụ + vua (theo cách trình bày của text) (xét theo nội dung gốc)",
-      "KHÔNG vì sự CÔNG BÌNH ngươi + KHÔNG vì sự NGAY THẲNG LÒNG ngươi — mà vì sự GIAN ÁC của các DÂN ấy + để Đức Chúa Trời LÀM TRỌN LỜI THỀ cùng tổ phụ",
-      "Vì sức mạnh quân đội (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Vì khôn ngoan của lãnh đạo (như được mô tả trong sách) (như văn bản ghi rõ)"
+      "Vì sự công bình và lòng ngay thẳng của dân Y-sơ-ra-ên.",
+      "Vì sự gian ác của các dân Ca-na-an và để Đức Chúa Trời làm trọn lời thề với các tổ phụ.",
+      "Vì sức mạnh quân sự vượt trội của dân Y-sơ-ra-ên.",
+      "Vì các tổ phụ đã chinh phục được vùng đất đó từ trước."
     ],
     "tags": [
       "Cựu Ước",
@@ -1439,16 +1440,16 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "correctAnswer": [
-      3
+      0
     ],
     "content": "Theo Phục Truyền 11:13-14, NẾU Y-sơ-ra-ên YÊU ĐỨC CHÚA TRỜI hết lòng + hết linh hồn — Chúa hứa BAN gì?",
     "explanation": "Phục Truyền 11:13-14 — 'Vậy, nếu các ngươi chăm chỉ nghe các điều răn ta truyền cho các ngươi ngày nay, hết lòng, hết ý kính mến Giê-hô-va Đức Chúa Trời ngươi, và phục sự Ngài, thì ta sẽ cho mưa mùa thu và mưa mùa xuân xuống thuận thì tại trong xứ các ngươi; ngươi sẽ thâu góp ngũ cốc, rượu, và dầu của ngươi.' MƯA = phước lớn nhất ở Ca-na-an (đất khô). 2 mưa: ĐẦU MÙA (autumn-rain, yoreh, tháng 10-11) + CUỐI MÙA (latter-rain, malqosh, tháng 3-4). Gia-cơ 5:7 trích.",
     "language": "vi",
     "options": [
-      "Vàng + bạc nhiều (như được mô tả trong sách)",
-      "Quân đội mạnh (xét trong văn cảnh)",
-      "Vua khôn ngoan (theo cách trình bày của text)",
-      "Mưa MÙA hạ + MƯA mùa cuối cho đất ngươi đúng kỳ — ngươi THÂU LÚA mì + RƯỢU mới + DẦU"
+      "Mưa mùa thu (đầu mùa) và mưa mùa xuân (cuối mùa) đúng kỳ — ngươi sẽ thu hoạch ngũ cốc, rượu mới và dầu",
+      "Sự bình an và thịnh vượng lâu dài trong xứ",
+      "Chiến thắng mọi kẻ thù chung quanh",
+      "Vàng bạc và của cải dư dật"
     ],
     "tags": [
       "Cựu Ước",
@@ -1467,14 +1468,14 @@
     "correctAnswer": [
       0
     ],
-    "content": "Theo Phục Truyền 14:21, Y-sơ-ra-ên CHỚ ăn gì? Vì cớ gì?",
-    "explanation": "Phục Truyền 14:21 — 'Các ngươi chớ ăn một con thú nào chết tự nhiên. Hãy đưa nó cho người khách ngụ trong thành ngươi, hay là bán cho người ngoài, vì ngươi là một dân thánh cho Giê-hô-va Đức Chúa Trời ngươi. Ngươi chớ nấu thịt dê con trong sữa mẹ nó.' Lệnh KOSHER. CON THÚ CHẾT TỰ NHIÊN = không có máu được đổ ra theo nghi lễ. Lệnh 'CHỚ NẤU DÊ CON TRONG SỮA MẸ' lặp 3 lần (Xuất 23:19, 34:26, Phục Truyền 14:21) = cơ sở cho luật KOSHER cấm trộn thịt + sữa.",
+    "content": "Theo Phục Truyền 14:21, dân Y-sơ-ra-ên được lệnh chớ ăn thứ gì?",
+    "explanation": "Phục Truyền 14:21 dạy: 'Các ngươi chớ ăn một con thú nào chết tự nhiên... vì ngươi là một dân thánh cho Giê-hô-va Đức Chúa Trời ngươi.' Câu này cũng nhắc lại luật 'chớ nấu thịt dê con trong sữa mẹ nó.' Lệnh cấm ăn thú chết tự nhiên liên quan đến việc máu chưa được rút ra theo nghi thức và địa vị thánh của dân sự.",
     "language": "vi",
     "options": [
-      "Chớ ăn vật nào CHẾT TỰ NHIÊN — vì ngươi LÀ DÂN THÁNH cho Đức Giê-hô-va; ngươi cũng CHỚ NẤU dê con TRONG SỮA mẹ nó",
-      "Chớ ăn rau biển (theo cách trình bày của text)",
-      "Chớ ăn cá to (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Chớ ăn chim trời (như được mô tả trong sách) (như văn bản ghi rõ)"
+      "Thú vật chết tự nhiên",
+      "Thịt heo (lợn)",
+      "Cá không có vây và vảy",
+      "Các loài côn trùng không có cẳng nhảy"
     ],
     "tags": [
       "Cựu Ước",
@@ -1493,20 +1494,20 @@
     "correctAnswer": [
       2
     ],
-    "content": "Theo Phục Truyền 16:18-20, Y-sơ-ra-ên phải LẬP gì trong các thành mình? Yêu cầu thế nào?",
-    "explanation": "Phục Truyền 16:18-20 — 'Trong các cửa thành mà Giê-hô-va Đức Chúa Trời ngươi sẽ ban cho, ngươi hãy tùy mỗi chi phái mình lập nên những quan án và những trưởng tộc... Ngươi chớ làm dịch sự xét đoán, chớ tư vị ai, cũng chẳng nhận của hối lộ; vì của hối lộ làm cho mù mắt kẻ khôn ngoan, và làm rối lời nói của người công bình. Ngươi phải theo sự công bình cách trọn vẹn, để ngươi được sống và nhận lấy xứ mà Giê-hô-va Đức Chúa Trời ngươi ban cho ngươi.' SỰ CÔNG BÌNH! lặp 2 lần = nhấn mạnh tột đỉnh.",
+    "content": "Theo Phục Truyền 16:18-20, Y-sơ-ra-ên phải lập gì trong các thành mình và phải xét đoán thế nào?",
+    "explanation": "Phục Truyền 16:18-20 dạy: 'Hãy lập quan án và quan trưởng trong các thành... Họ phải xét đoán dân sự cách công bình, không thiên vị, không nhận hối lộ, vì hối lộ làm mù mắt người khôn. Ngươi phải theo sự công bình cách trọn vẹn.'",
     "language": "vi",
     "options": [
-      "Chợ búa — công bằng giá (như được mô tả trong sách) (như văn bản ghi rõ) (theo bối cảnh đoạn này)",
-      "Học đường — dạy luật (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phần đoạn liên quan)",
-      "Quan TRƯỞNG (thẩm phán) + sĩ quan trong mỗi thành — XÉT ĐOÁN dân với SỰ CÔNG BÌNH; KHÔNG XÂY VỀ MỘT BÊN, KHÔNG NHẬN HỐI LỘ — vì hối lộ làm MÙ MẮT người KHÔN; SỰ CÔNG BÌNH! SỰ CÔNG BÌNH! ngươi phải đeo theo nó",
-      "Đền thờ — thờ phượng (theo cách trình bày của text) (xét theo nội dung gốc) (xét trong văn cảnh)"
+      "Chợ búa — để đảm bảo buôn bán công bằng",
+      "Học đường — để dạy luật pháp cho dân chúng",
+      "Quan án và quan trưởng — để xét đoán cách công bình, không thiên vị, không nhận hối lộ",
+      "Đền thờ — để dân chúng thờ phượng Chúa"
     ],
     "tags": [
       "Cựu Ước",
       "Phục Truyền Luật Lệ Ký",
       "Ngũ Kinh",
-      "Quan trưởng - công bình tột đỉnh",
+      "Quan trưởng - công bình",
       "Trung cấp"
     ]
   },
@@ -1519,14 +1520,14 @@
     "correctAnswer": [
       1
     ],
-    "content": "Theo Phục Truyền 19:15, để xét xử bất cứ TỘI nào — cần bao nhiêu NHÂN CHỨNG?",
-    "explanation": "Phục Truyền 19:15 — 'Chứng độc bất phục lập, để buộc tội ai vì sự gian ác phạm bởi ngươi; song trên miệng hai hay là ba người chứng, sự mới định được.' Nguyên tắc cơ bản pháp lý Cựu Ước. Cùng dạy 17:6, Dân số 35:30. Tân Ước cũng áp dụng cho Hội Thánh: Mat 18:16 (giải quyết tranh chấp), 2 Cô-rinh-tô 13:1, 1 Ti-mô-thê 5:19. Bảo vệ chống VU CÁO.",
+    "content": "Theo Phục Truyền 19:15, để xét xử bất cứ tội nào — cần bao nhiêu nhân chứng?",
+    "explanation": "Phục Truyền 19:15 dạy: 'Chứng độc bất phục lập, để buộc tội ai vì sự gian ác phạm bởi ngươi; song trên miệng hai hay là ba người chứng, sự mới định được.' Đây là nguyên tắc pháp lý căn bản trong Cựu Ước (xem Phục Truyền 17:6, Dân Số Ký 35:30) và được Tân Ước áp dụng trong Hội Thánh (Ma-thi-ơ 18:16, 2 Cô-rinh-tô 13:1, 1 Ti-mô-thê 5:19), nhằm bảo vệ khỏi sự vu cáo.",
     "language": "vi",
     "options": [
-      "1 nhân chứng đủ (xét trong văn cảnh)",
-      "MIỆNG 2 hoặc 3 NHÂN CHỨNG — vụ kiện sẽ được THIẾT LẬP",
-      "5 nhân chứng đủ (theo cách trình bày của text)",
-      "10 nhân chứng đủ (như được mô tả trong sách)"
+      "Chỉ cần 1 nhân chứng đáng tin cậy",
+      "Cần ít nhất 2 hoặc 3 nhân chứng",
+      "Cần ít nhất 3 nhân chứng",
+      "Cần ít nhất 2 nhân chứng"
     ],
     "tags": [
       "Cựu Ước",
@@ -1545,14 +1546,14 @@
     "correctAnswer": [
       3
     ],
-    "content": "Theo Phục Truyền 20:1, KHI Y-sơ-ra-ên ra trận chiến với kẻ thù NHIỀU XE NGỰA + DÂN ĐÔNG hơn — phải làm gì?",
-    "explanation": "Phục Truyền 20:1 — 'Khi nào ngươi ra giao chiến cùng quân thù nghịch mình, nếu thấy ngựa và xe cùng dân đông hơn ngươi, thì chớ sợ; vì Giê-hô-va Đức Chúa Trời ngươi, là Đấng đã đem ngươi ra khỏi xứ Ê-díp-tô, ở cùng ngươi.' Cùng nguyên tắc 31:6 (Chúa đi với). Nhớ XUẤT — chứng cứ Chúa CHIẾN ĐẤU cho dân. Sau đó (20:5-9): những ai có thể về nhà (mới xây nhà, mới hứa hôn, mới trồng vườn, kẻ sợ).",
+    "content": "Theo Phục Truyền 20:1, khi Y-sơ-ra-ên ra trận thấy kẻ thù có nhiều xe ngựa và dân đông hơn, họ phải làm gì?",
+    "explanation": "Phục Truyền 20:1 dạy: '...thì chớ sợ; vì Giê-hô-va Đức Chúa Trời ngươi, là Đấng đã đem ngươi ra khỏi xứ Ê-díp-tô, ở cùng ngươi.' Mệnh lệnh rõ ràng là không được sợ vì Chúa ở cùng họ.",
     "language": "vi",
     "options": [
-      "Phải sợ — vì kém quân số (theo cách trình bày của text)",
-      "Phải lui — vì yếu hơn (xét trong văn cảnh)",
-      "Phải gọi cứu — từ đồng minh (như được mô tả trong sách)",
-      "CHỚ SỢ — vì ĐỨC GIÊ-HÔ-VA Đức Chúa Trời ngươi (Đấng đã ĐEM ngươi RA khỏi xứ Ai-cập) ĐI VỚI ngươi"
+      "Phải sợ hãi và tránh giao chiến.",
+      "Phải rút lui để bảo toàn lực lượng.",
+      "Phải cầu viện thêm quân từ các đồng minh.",
+      "Chớ sợ, vì Giê-hô-va Đức Chúa Trời ngươi ở cùng ngươi."
     ],
     "tags": [
       "Cựu Ước",
@@ -1571,14 +1572,14 @@
     "correctAnswer": [
       0
     ],
-    "content": "Theo Phục Truyền 22:5, NGƯỜI NỮ chớ mặc QUẦN ÁO của ai? Người NAM chớ mặc gì?",
-    "explanation": "Phục Truyền 22:5 — 'Người nữ chớ mặc quần áo của người nam, và người nam cũng chớ mặc quần áo của người nữ; vì ai làm điều đó lấy làm gớm ghiếc cho Giê-hô-va Đức Chúa Trời ngươi.' SỰ KHÁC BIỆT THIẾT KẾ giữa nam + nữ (Sáng 1:27). 'Gớm ghiếc' (toebah) = từ mạnh nhất trong Cựu Ước cho điều Chúa CỰC GHÉT. Có liên quan dở chuyện thờ thần ngoại bang nào đó cũng đảo ngược nam-nữ. Áp dụng nguyên tắc bảo vệ trật tự sáng tạo.",
+    "content": "Theo Phục Truyền 22:5, người nữ chớ mặc quần áo của ai và người nam chớ mặc gì?",
+    "explanation": "Phục Truyền 22:5 — 'Người nữ chớ mặc quần áo của người nam, và người nam cũng chớ mặc quần áo của người nữ; vì ai làm điều đó lấy làm gớm ghiếc cho Giê-hô-va Đức Chúa Trời ngươi.' Sự khác biệt thiết kế giữa nam và nữ (Sáng 1:27). 'Gớm ghiếc' (toebah) là từ mạnh trong Cựu Ước chỉ điều Chúa ghét, liên quan đến việc bảo vệ trật tự sáng tạo.",
     "language": "vi",
     "options": [
-      "Người NỮ chớ mặc QUẦN ÁO ĐÀN ÔNG — người NAM chớ mặc ÁO ĐÀN BÀ — vì ai làm vậy là sự GỚM GHIẾC cho Đức Giê-hô-va",
-      "Người nữ chớ mặc đỏ (theo cách trình bày của text)",
-      "Người nam chớ mặc trắng (như được mô tả trong sách)",
-      "Cả 2 chớ mặc đen (xét trong văn cảnh) (theo trình tự câu chuyện)"
+      "Người nữ không mặc đồ nam, người nam không mặc đồ nữ",
+      "Người nữ không mặc đồ bằng len trộn vải gai, người nam không mặc đồ bằng da thú",
+      "Người nữ không mặc đồ có tua áo, người nam không mặc đồ thêu hình tượng",
+      "Người nữ không mặc đồ cũ rách, người nam không mặc đồ xa hoa"
     ],
     "tags": [
       "Cựu Ước",
@@ -1601,10 +1602,10 @@
     "explanation": "Phục Truyền 23:21-23 — 'Khi ngươi khấn nguyện cùng Giê-hô-va Đức Chúa Trời ngươi, thì chớ trì hoãn làm cho xong; vì Giê-hô-va Đức Chúa Trời ngươi hẳn sẽ đòi sự hoàn nguyện ấy nơi ngươi; nếu chẳng làm cho xong, ngươi sẽ mang lấy tội. Nhưng nếu ngươi không khấn nguyện, thì chẳng phải mắc tội. Khi miệng ngươi đã hứa cùng Giê-hô-va Đức Chúa Trời ngươi một sự khấn nguyện chí nguyện, thì khá cẩn thận làm hết theo lời ra khỏi miệng mình.' KHÔNG khấn = KHÔNG TỘI. Khấn rồi = phải LÀM TRỌN. Cùng dạy Ê-cơ-lê-si-át 5:4-5.",
     "language": "vi",
     "options": [
-      "Có thể quên đi (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Phải KHẤN thêm để chuộc (theo cách trình bày của text)",
-      "Phải LÀM TRỌN ngay — chớ chậm trễ; vì Đức Giê-hô-va Đức Chúa Trời ngươi sẽ ĐÒI xét; nếu KHÔNG khấn thì KHÔNG có TỘI",
-      "Phải khấn cho thầy tế xét (như được mô tả trong sách)"
+      "Có thể trì hoãn hoặc quên đi nếu có lý do chính đáng",
+      "Phải dâng thêm của lễ để chuộc lỗi nếu không làm trọn",
+      "Phải làm trọn lời khấn nguyện ngay, không được chậm trễ",
+      "Phải nhờ thầy tế lễ xét xem lời khấn có hợp lệ không"
     ],
     "tags": [
       "Cựu Ước",
@@ -1623,14 +1624,14 @@
     "correctAnswer": [
       1
     ],
-    "content": "Theo Phục Truyền 24:14-15, đối với người TÔI làm thuê NGÀY (nghèo), CHỦ phải LÀM gì?",
-    "explanation": "Phục Truyền 24:14-15 — 'Ngươi chớ hà hiếp kẻ làm thuê nghèo khổ và túng cùng, bất luận anh em mình hay là khách lạ kiều ngụ trong xứ và trong thành ngươi. Phải phát tiền công nó trong ngày đó, trước khi mặt trời lặn; vì nó vốn nghèo khổ, trông mong lãnh tiền công ấy: bằng chẳng, nó sẽ kêu cùng Đức Giê-hô-va về ngươi, và ngươi sẽ mắc tội.' BẢO VỆ KẺ NGHÈO. Họ KHÔNG có dự trữ — phải sống NGÀY QUA NGÀY. Gia-cơ 5:4 lặp lời đe dọa cho chủ ác.",
+    "content": "Theo Phục Truyền 24:14-15, đối với người làm thuê nghèo khổ, chủ phải làm gì?",
+    "explanation": "Phục Truyền 24:14-15 — 'Ngươi chớ hà hiếp kẻ làm thuê nghèo khổ và túng cùng, bất luận anh em mình hay là khách lạ kiều ngụ trong xứ và trong thành ngươi. Phải phát tiền công nó trong ngày đó, trước khi mặt trời lặn; vì nó vốn nghèo khổ, trông mong lãnh tiền công ấy: bằng chẳng, nó sẽ kêu cùng Đức Giê-hô-va về ngươi, và ngươi sẽ mắc tội.' Đây là luật bảo vệ người nghèo, vì họ sống phụ thuộc vào tiền công hằng ngày. Gia-cơ 5:4 cũng nhắc lại nguyên tắc công bằng này.",
     "language": "vi",
     "options": [
-      "Trả công cuối tháng (theo cách trình bày của text) (như văn bản ghi rõ)",
-      "TRẢ CÔNG cùng NGÀY — KHÔNG để mặt trời lặn trên LƯƠNG; vì người NGHÈO trông cậy LƯƠNG; nếu không, người KÊU LA Chúa, ngươi mắc tội",
-      "Trả công cuối năm (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Có thể không trả nếu công ít (như được mô tả trong sách)"
+      "Trả công cuối tháng",
+      "Trả công trong ngày, trước khi mặt trời lặn",
+      "Trả công cuối năm",
+      "Có thể không trả nếu công ít"
     ],
     "tags": [
       "Cựu Ước",
@@ -1650,7 +1651,7 @@
       3
     ],
     "content": "Theo Phục Truyền 26:1-11, khi vào đất hứa, mỗi người đem TRÁI ĐẦU MÙA — đem đến đâu? Đọc gì?",
-    "explanation": "Phục Truyền 26:5-9 — 'Bấy giờ, ngươi cất tiếng nói tại trước mặt Giê-hô-va Đức Chúa Trời ngươi rằng: Tổ phụ tôi là người A-ram phiêu lưu, đi xuống xứ Ê-díp-tô kiều ngụ tại đó... người Ê-díp-tô ngược đãi và khắc bạc chúng tôi... Đức Giê-hô-va đem chúng tôi ra khỏi xứ Ê-díp-tô bởi tay quyền năng và cánh tay giơ thẳng ra... Bây giờ, tôi đem những trái đầu mùa của đất mà Đức Giê-hô-va đã ban cho.' CHỨNG TỪ Y-SƠ-RA-ÊN khi dâng phần mười = nhắc lại sự cứu chuộc.",
+    "explanation": "Phục Truyền 26:5-9 — 'Bấy giờ, ngươi cất tiếng nói tại trước mặt Giê-hô-va Đức Chúa Trời ngươi rằng: Tổ phụ tôi là người A-ram phiêu lưu, đi xuống xứ Ê-díp-tô kiều ngụ tại đó... người Ê-díp-tô ngược đãi và khắc bạc chúng tôi... Đức Giê-hô-va đem chúng tôi ra khỏi xứ Ê-díp-tô bởi tay quyền năng và cánh tay giơ thẳng ra... Bây giờ, tôi đem những trái đầu mùa của đất mà Đức Giê-hô-va đã ban cho.' CHỨNG TỪ Y-SƠ-RA-ÊN khi dâng trái đầu mùa = nhắc lại sự cứu chuộc.",
     "language": "vi",
     "options": [
       "Trên núi Si-na-i — đọc luật (như được mô tả trong sách) (như văn bản ghi rõ)",
@@ -1809,7 +1810,7 @@
     "explanation": "Phục Truyền 22:6-7 — 'Khi ngươi gặp một ổ chim trên cây hay là dưới đất, hoặc có con hay là trứng, thì chớ bắt chim mẹ luôn với con: phải để chim mẹ bay đi, chỉ bắt lấy con mà thôi, hầu cho ngươi được phước và sống lâu.' LUẬT BẢO VỆ TỰ NHIÊN. Bảo tồn loài: thả chim mẹ → đẻ thêm. PHƯỚC cho người không tham. Cùng tinh thần Lê-vi 22:28 (KHÔNG mổ vật mẹ + con cùng ngày), Xuất 23:19 (KHÔNG nấu dê con trong sữa mẹ).",
     "language": "vi",
     "options": [
-      "Có thể bắt CHIM CON + trứng — nhưng CHỚ bắt CHIM MẸ + chim con — phải THẢ CHIM MẸ đi để được PHƯỚC + sống lâu",
+      "Có thể bắt chim con hoặc trứng — nhưng CHỚ bắt chim mẹ đang ở cùng con/trứng — phải thả chim mẹ đi để được phước và sống lâu",
       "Có thể bắt cả mẹ + con (theo cách trình bày của text) (xét theo nội dung gốc)",
       "Phải để hết — không bắt (như được mô tả trong sách) (như văn bản ghi rõ)",
       "Chỉ bắt chim mẹ (xét trong văn cảnh) (theo trình tự câu chuyện)"

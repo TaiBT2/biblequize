@@ -6,7 +6,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 1:1, Si-ru là vua của nước nào?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "E-xơ-ra 1:1 — 'Năm thứ nhứt đời Si-ru, vua Phe-rơ-sơ trị vì, Đức Giê-hô-va muốn làm cho ứng nghiệm lời Ngài đã cậy miệng Giê-rê-mi mà phán ra...'",
     "language": "vi",
     "options": [
@@ -30,7 +32,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 1:1, sắc lệnh của Si-ru ban ra trong năm nào của triều đại ông?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "E-xơ-ra 1:1 — 'Năm thứ nhứt đời Si-ru, vua Phe-rơ-sơ trị vì... Đức Giê-hô-va cảm động lòng Si-ru, vua Phe-rơ-sơ, khiến người ra chiếu chỉ thông cáo trong khắp nước mình...'",
     "language": "vi",
     "options": [
@@ -54,7 +58,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 1:2, Si-ru tuyên bố Đức Chúa Trời đã giao cho ông xây gì và tại đâu?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "E-xơ-ra 1:2 — '...Giê-hô-va Đức Chúa Trời đã ban các nước thế gian cho ta, và chính Ngài đã biểu ta xây cất cho Ngài một đền thờ tại Giê-ru-sa-lem trong xứ Giu-đa.'",
     "language": "vi",
     "options": [
@@ -78,14 +84,16 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 1:7, Si-ru hoàn lại điều gì cho dân Y-sơ-ra-ên?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "E-xơ-ra 1:7 — 'Vua Si-ru cũng trao lại những khí dụng của đền thờ Đức Giê-hô-va, mà Nê-bu-cát-nết-sa đã đem đi khỏi Giê-ru-sa-lem và để trong đền thờ thần của mình.'",
     "language": "vi",
     "options": [
       "Của cải bằng vàng và bạc",
       "Đất đai tổ phụ",
       "Quân lính bảo vệ",
-      "Khí dụng đền thờ Đức Giê-hô-va mà Nê-bu-cát-nết-sa đã đoạt"
+      "Các khí dụng của đền thờ Đức Giê-hô-va"
     ],
     "tags": [
       "Cựu Ước",
@@ -102,7 +110,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 1:8, Si-ru giao các khí dụng cho ai trao về Giu-đa?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "E-xơ-ra 1:8 — 'Si-ru, vua Phe-rơ-sơ, biểu Mít-rê-đát, người thủ quỹ, lấy các khí dụng ấy ra, đếm và giao cho Sết-ba-xa, quan trưởng của Giu-đa.'",
     "language": "vi",
     "options": [
@@ -126,7 +136,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 2:64, tổng số người trong đoàn hồi hương đầu tiên là bao nhiêu?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "E-xơ-ra 2:64 — 'Cả hội chúng cộng được bốn vạn hai ngàn ba trăm sáu mươi người (42.360), không kể những tôi trai, tớ gái...'",
     "language": "vi",
     "options": [
@@ -150,7 +162,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 3:2, ai là thầy tế lễ và ai là quan trưởng dẫn đầu việc lập bàn thờ?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "E-xơ-ra 3:2 — 'Bấy giờ, Giê-sua, con trai của Giô-xa-đác, với các anh em người, là thầy tế lễ, luôn với Xô-rô-ba-bên, con trai Sa-anh-thi-ên, và các anh em người, đều chỗi dậy xây cất bàn thờ Đức Chúa Trời của Y-sơ-ra-ên...'",
     "language": "vi",
     "options": [
@@ -175,8 +189,10 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 3:11-13, khi nền đền thờ được lập, dân chúng phản ứng thế nào?",
-    "correctAnswer": [3],
-    "explanation": "E-xơ-ra 3:12-13 — 'Nhiều thầy tế lễ, người Lê-vi, trưởng tộc, tức là những người già cả, đã thấy đền thờ trước, bèn khóc tiếng lớn... Nhiều người khác cất tiếng vui mừng la lên...' Người già khóc nhớ đền thờ Sa-lô-môn; người trẻ vui mừng vì sự khởi đầu mới.',",
+    "correctAnswer": [
+      3
+    ],
+    "explanation": "E-xơ-ra 3:12-13 — \"Nhiều thầy tế lễ, người Lê-vi, trưởng tộc, tức là những người già cả, đã thấy đền thờ trước, bèn khóc tiếng lớn... Nhiều người khác cất tiếng vui mừng la lên...\" Người già khóc nhớ đền thờ Sa-lô-môn; người trẻ vui mừng vì sự khởi đầu mới.",
     "language": "vi",
     "options": [
       "Tất cả đều im lặng",
@@ -199,7 +215,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 4:24, công việc xây đền thờ bị đình trệ cho đến năm thứ mấy của ai?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "E-xơ-ra 4:24 — 'Vậy, công việc xây cất nhà của Đức Chúa Trời tại Giê-ru-sa-lem đình cho đến năm thứ hai đời Đa-ri-út, vua Phe-rơ-sơ, trị vì.'",
     "language": "vi",
     "options": [
@@ -223,7 +241,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 5:1, hai tiên tri nào nói tiên tri để khích lệ dân tiếp tục xây đền?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "E-xơ-ra 5:1 — 'Vả, tiên tri A-ghê và tiên tri Xa-cha-ri, con của Y-đô, nhân danh Đức Chúa Trời của Y-sơ-ra-ên, nói tiên tri cho các người Giu-đa ở tại Giu-đa và Giê-ru-sa-lem...'",
     "language": "vi",
     "options": [
@@ -248,8 +268,10 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 6:15, đền thờ được hoàn tất vào năm thứ mấy của Đa-ri-út?",
-    "correctAnswer": [2],
-    "explanation": "E-xơ-ra 6:15 — 'Đến ngày thứ ba tháng A-đa, nhằm năm thứ sáu đời vua Đa-ri-út, cái đền nầy được xây cất xong.' Đền thờ thứ hai hoàn tất khoảng 516 TC, sau khoảng 70 năm bị tàn phá.",
+    "correctAnswer": [
+      2
+    ],
+    "explanation": "E-xơ-ra 6:15 — 'Đến ngày thứ ba tháng A-đa, nhằm năm thứ sáu đời vua Đa-ri-út, cái đền nầy được xây cất xong.' Đền thờ thứ hai hoàn tất khoảng 516 TCN, sau khoảng 70 năm bị tàn phá.",
     "language": "vi",
     "options": [
       "Năm thứ hai",
@@ -272,7 +294,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 6:19, sau khi đền thờ hoàn tất, dân hồi hương cử hành lễ nào?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "E-xơ-ra 6:19 — 'Đoạn, ngày mười bốn tháng giêng, các người đã từ phu tù trở về giữ lễ Vượt Qua.' Lễ đầu tiên trong đền thờ mới — kỷ niệm Chúa cứu khỏi Ai Cập, nay áp dụng cho việc cứu khỏi Ba-by-lôn.",
     "language": "vi",
     "options": [
@@ -296,7 +320,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 7:6, E-xơ-ra được mô tả là người thế nào?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "E-xơ-ra 7:6 — '...là một văn sĩ thạo luật pháp của Môi-se, mà Giê-hô-va Đức Chúa Trời của Y-sơ-ra-ên đã truyền cho. Vì tay của Đức Giê-hô-va phù trợ người, nên vua ban cho người mọi điều người xin.'",
     "language": "vi",
     "options": [
@@ -320,7 +346,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 7:9, lý do hành trình của E-xơ-ra thuận lợi là gì?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "E-xơ-ra 7:9 — '...vì nhờ tay nhân lành của Đức Chúa Trời phù trợ người.' Cụm từ 'tay nhân lành của Đức Chúa Trời' được lặp lại nhiều lần trong sách.",
     "language": "vi",
     "options": [
@@ -344,7 +372,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 7:10, E-xơ-ra dốc lòng làm ba việc nào?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "E-xơ-ra 7:10 — 'Vì E-xơ-ra đã định chí tra xét luật pháp của Đức Giê-hô-va, giữ làm theo, và dạy cho dân Y-sơ-ra-ên biết những luật pháp và giới mạng.' Học, thực hành, rồi mới dạy — thứ tự cốt yếu.",
     "language": "vi",
     "options": [
@@ -368,7 +398,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 8:21, E-xơ-ra rao truyền một lễ kiêng ăn tại đâu trước khi lên đường?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "E-xơ-ra 8:21 — 'Tại đó, gần sông A-ha-va, ta truyền kiêng cữ ăn, để chúng ta hạ mình xuống trước mặt Đức Chúa Trời chúng ta, và cầu xin Ngài ban thuận đường cho mình, cho con nhỏ, và cho hết thảy tài sản chúng ta.'",
     "language": "vi",
     "options": [
@@ -392,7 +424,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 8:22, vì sao E-xơ-ra mắc cỡ khi xin vua quân lính hộ tống?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "E-xơ-ra 8:22 — '...vì ta có nói với vua rằng: Tay của Đức Chúa Trời chúng tôi phù trợ mọi kẻ nào tìm kiếm Ngài; nhưng quyền năng và thạnh nộ Ngài kháng cự nhứt thiết kẻ nào lìa bỏ Ngài.'",
     "language": "vi",
     "options": [
@@ -416,7 +450,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 9:3, khi nghe về tội cưới vợ ngoại bang, E-xơ-ra phản ứng thế nào?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "E-xơ-ra 9:3 — 'Khi ta nghe các lời ấy, ta xé áo trong và áo tơi mình, nhổ tóc đầu và lông râu, rồi ngồi buồn bã.'",
     "language": "vi",
     "options": [
@@ -440,7 +476,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 9:6, E-xơ-ra mở đầu lời cầu nguyện thay cho dân thế nào?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "E-xơ-ra 9:6 — '...Ôi, Đức Chúa Trời tôi! tôi hổ thẹn mặt, chẳng dám ngước mặt lên Ngài, là Đức Chúa Trời tôi; vì gian ác chúng tôi đã thêm nhiều quá đầu chúng tôi, và tội chúng tôi cao lớn tận trời.'",
     "language": "vi",
     "options": [
@@ -464,7 +502,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 10:1, ai đã nhóm lại đông lắm khi E-xơ-ra cầu nguyện?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "E-xơ-ra 10:1 — 'Trong lúc E-xơ-ra cầu nguyện như vậy, vừa khóc vừa xưng tội và sấp mình xuống trước đền của Đức Chúa Trời, thì có một đám dân Y-sơ-ra-ên, người nam, người nữ, và con trẻ, nhóm hiệp tại đó đông lắm...'",
     "language": "vi",
     "options": [
@@ -488,8 +528,10 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo E-xơ-ra 10:11, dân được kêu gọi làm những gì để chỉnh sửa tội lỗi?",
-    "correctAnswer": [0],
-    "explanation": "E-xơ-ra 10:11 — '...Hãy xưng tội cùng Giê-hô-va Đức Chúa Trời của tổ phụ các ngươi, và làm theo ý chỉ Ngài. Hãy phân cách khỏi các dân tộc của xứ và khỏi những người vợ ngoại bang.'",
+    "correctAnswer": [
+      0
+    ],
+    "explanation": "E-xơ-ra 10:11 — 'Bây giờ, hãy xưng tội với Giê-hô-va Đức Chúa Trời của tổ phụ các ngươi, và làm theo ý muốn Ngài. Hãy phân rẽ khỏi các dân tộc trong xứ và khỏi các người vợ ngoại bang.'",
     "language": "vi",
     "options": [
       "Xưng tội, làm theo ý Chúa, phân cách khỏi các dân tộc và vợ ngoại bang",
@@ -513,7 +555,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo E-xơ-ra 1:2-3, sắc lệnh của Si-ru bao gồm những điều gì? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "E-xơ-ra 1:2-3 — '...Giê-hô-va Đức Chúa Trời đã ban các nước thế gian cho ta, và chính Ngài đã biểu ta xây cất cho Ngài một đền thờ tại Giê-ru-sa-lem... Trong các ngươi, phàm ai thuộc về dân sự Ngài, khá trở lên Giê-ru-sa-lem... đặng cất lại đền thờ Giê-hô-va...' Ba nội dung chính; 'truất bỏ luật Môi-se' không có trong sắc lệnh.",
     "language": "vi",
     "options": [
@@ -538,8 +584,12 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo E-xơ-ra 6:14-15, đền thờ thứ hai được hoàn tất nhờ những yếu tố nào? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
-    "explanation": "E-xơ-ra 6:14-15 — '...các trưởng lão người Giu-đa bắt tay cất lại đền thờ, công việc được may mắn, y lời tiên tri của tiên tri A-ghê, và của Xa-cha-ri, con của Y-đô. Vậy, chúng làm xong công việc cất đền thờ, tùy theo mạng lịnh của Đức Chúa Trời của Y-sơ-ra-ên, và theo chiếu chỉ của Si-ru, Đa-ri-út, và Át-tạc-xét-xe...' 'Sự phù hộ thần Bên' đối nghịch.",
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "E-xơ-ra 6:14-15 mô tả công việc được hoàn thành nhờ sự xây cất của các trưởng lão Giu-đa, được thúc đẩy và may mắn bởi lời tiên tri của A-ghê và Xa-cha-ri, theo mạng lịnh của Đức Chúa Trời Y-sơ-ra-ên và chiếu chỉ của các vua Si-ru, Đa-ri-út, và Át-tạc-xét-xe.",
     "language": "vi",
     "options": [
       "Lời tiên tri của A-ghê và Xa-cha-ri",
@@ -562,7 +612,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo E-xơ-ra 7:10, ba điều E-xơ-ra dốc lòng theo thứ tự là gì? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "E-xơ-ra 7:10 — 'E-xơ-ra đã định chí tra xét luật pháp của Đức Giê-hô-va, giữ làm theo, và dạy cho dân Y-sơ-ra-ên biết những luật pháp và giới mạng.' Ba bước theo thứ tự: học, thực hành, dạy. 'Trừng phạt tức khắc' không phải mục tiêu.",
     "language": "vi",
     "options": [
@@ -587,7 +641,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo E-xơ-ra 9:1-2, dân Y-sơ-ra-ên không phân cách với những dân tộc nào? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "E-xơ-ra 9:1-2 — '...dân Y-sơ-ra-ên, những thầy tế lễ, và người Lê-vi chẳng có phân rẽ với các dân tộc của xứ nầy; họ bắt chước theo sự gớm ghiếc của dân Ca-na-an, dân Hê-tít, dân Phê-rê-sít, dân Giê-bu-sít, dân Am-môn, dân Mô-áp, dân Ê-díp-tô, và dân A-mô-rít.' 'Dân Pha-ri-si' là phái Do Thái sau này, không thuộc danh sách các dân ngoại bang trong câu này.",
     "language": "vi",
     "options": [

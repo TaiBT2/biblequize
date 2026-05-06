@@ -9,7 +9,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Truyền đạo 3:1 - Mọi sự có thời định. Có kỳ sinh ra, kỳ chết; kỳ trồng, kỳ nhổ; kỳ khóc, kỳ cười...",
+    "explanation": "Truyền đạo 3:1 - Mọi sự đều có thời định, mọi việc dưới trời đều có kỳ hạn.",
     "language": "vi",
     "options": [
       "Không ai biết ngày mai",
@@ -117,14 +117,14 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Truyền đạo 4:9-10 - Hai người hơn một. Nếu người này té, người kia đỡ dậy. Giá trị của tình bạn và cộng đồng.",
+    "explanation": "Truyền đạo 4:9-10 - Hai người hơn một, vì nếu một người ngã, người kia sẽ đỡ bạn dậy. Giá trị của tình bạn và cộng đồng.",
     "language": "vi",
     "verseEnd": 10,
     "options": [
       "Một người tốt hơn",
       "Ba người là tốt nhất",
       "Không khác biệt",
-      "Hai người hơn một vì họ được công giá tốt"
+      "Hai người hơn một, vì nếu một người ngã, người kia sẽ đỡ bạn dậy"
     ],
     "tags": [
       "Cựu Ước",
@@ -226,7 +226,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Truyền đạo 11:4 - Đừng chờ điều kiện hoàn hảo, hãy hành động ngay. Chờ đợi mãi sẽ không bao giờ bắt đầu.",
+    "explanation": "Truyền đạo 11:4 - Kẻ nào trông ngóng gió sẽ không gieo; kẻ nào nhìn xem mây sẽ không gặt. Đừng chờ điều kiện hoàn hảo, hãy hành động.",
     "language": "vi",
     "options": [
       "Đừng vội vàng",
@@ -280,7 +280,7 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Truyền đạo 7:8 - Sự kiên nhẫn tốt hơn sự kiêu ngạo. Hãy đừng xét đoán quá sớm.",
+    "explanation": "Truyền đạo 7:8 dạy: 'Sự cuối cùng của một việc hơn sự mở đầu nó.' Vì vậy, từ còn thiếu là 'Bắt đầu' (hay 'mở đầu').",
     "language": "vi",
     "options": [
       "Bắt đầu",

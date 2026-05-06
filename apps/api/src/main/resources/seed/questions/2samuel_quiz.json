@@ -36,7 +36,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "2 Sa 5:4-5 - Đa-vít lên ngôi lúc 30 tuổi và cai trị 40 năm.",
+    "explanation": "2 Sa 5:4-5 - Đa-vít lên ngôi lúc 30 tuổi, cai trị 7 năm tại Hếp-rôn và 33 năm tại Gie-ru-sa-lem, tổng cộng 40 năm.",
     "language": "vi",
     "verseEnd": 5,
     "options": [
@@ -204,10 +204,10 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Sa 12:23 - Đa-vít tin rằng sẽ gặp con mình ở thế giới bên kia. Hy vọng về sự sống sau khi chết.",
+    "explanation": "2 Sa-mu-ên 12:23 - Đa-vít nói: 'Ta sẽ đi đến nó, nhưng nó không trở lại với ta.' Điều này bày tỏ niềm hy vọng về sự gặp lại sau cái chết.",
     "language": "vi",
     "options": [
-      "Tôi sẽ đi đến nó, nhưng nó sẽ không trở lại với tôi",
+      "Ta sẽ đi đến nó, nhưng nó không trở lại với ta",
       "Chúa sẽ cho con khác",
       "Tôi sẽ không buồn nữa",
       "Tôi sẽ quên đi"
@@ -282,18 +282,18 @@
     "verseStart": 1,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Lời cuối cùng của Đa-vít nhấn mạnh giao ước với Chúa là gì?",
+    "content": "Trong lời cuối cùng của mình (2 Sa-mu-ên 23), Đa-vít nhấn mạnh đặc điểm nào của giao ước Chúa lập với ông?",
     "correctAnswer": [
       0
     ],
-    "explanation": "2 Sa 23:5 - Đa-vít xác nhận giao ước đời đời mà Chúa lập với nhà ông.",
+    "explanation": "2 Sa-mu-ên 23:5 - Đa-vít tuyên bố về giao ước đời đời, vững chắc mà Chúa đã lập với ông và dòng dõi ông.",
     "language": "vi",
     "verseEnd": 5,
     "options": [
-      "Giao ước đời đời, không thay đổi",
-      "Có điều kiện",
-      "Tạm thời",
-      "Chỉ cho Sa-lô-môn"
+      "Một giao ước đời đời, vững chắc cho cả nhà ông",
+      "Một giao ước có điều kiện, tùy thuộc vào sự vâng lời",
+      "Một giao ước tạm thời, chỉ trong đời ông",
+      "Một giao ước đặc biệt chỉ dành cho Sa-lô-môn"
     ],
     "tags": [
       "Cựu Ước",
@@ -314,12 +314,12 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "2 Sa 24:24 - Của lễ thật đòi hỏi sự hy sinh. Không dâng cho Chúa điều không tốn phí gì.",
+    "explanation": "2 Sa 24:24 - Của lễ thật đòi hỏi sự hy sinh. Vua Đa-vít nói: 'Ta không muốn dâng lên Giê-hô-va Đức Chúa Trời ta những của lễ thiêu mà ta không phải trả giá.'",
     "language": "vi",
     "options": [
       "Chúa đáng được tất cả",
       "Tôi cho tất cả",
-      "Tôi không dâng cho Chúa của lễ mà không tốn phí gì",
+      "Ta không muốn dâng cho Chúa của lễ thiêu mà không phải trả giá.",
       "Tôi trả giá tốt nhất"
     ],
     "tags": [

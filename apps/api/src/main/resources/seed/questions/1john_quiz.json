@@ -277,7 +277,7 @@
     "verseStart": 14,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "1 Giăng 5:14: Nếu cầu xin điều gì theo ý muốn Chúa thì Ngài sẽ ___",
+    "content": "1 Giăng 5:14: Nếu cầu xin điều gì theo ý muốn Chúa thì Ngài sẽ ___ chúng ta",
     "correctAnswer": [
       1
     ],
@@ -493,7 +493,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "1 Giăng 3:9 — 'Ai sinh bởi Đức Chúa Trời thì chẳng cứ phạm tội, vì hột giống của Đức Chúa Trời ở trong người, và người không thể phạm tội được, vì đã sinh bởi Đức Chúa Trời.'",
+    "explanation": "1 Giăng 3:9 — 'Ai sinh bởi Đức Chúa Trời thì chẳng cứ phạm tội, vì hột giống của Đức Chúa Trời ở trong người, và người không thể phạm tội được, vì đã sinh bởi Đức Chúa Trời.' Ý câu Kinh Thánh nói người được sinh bởi Đức Chúa Trời không sống trong tội như một lối sống hay thói quen, vì có bản chất mới từ Ngài.",
     "language": "vi",
     "options": [
       "Vẫn phạm tội như trước",
@@ -1065,14 +1065,14 @@
     "correctAnswer": [
       3
     ],
-    "content": "Theo 1 Giăng 2:20, các tín hữu có gì từ Đấng Thánh? Vì có ấy nên họ BIẾT gì?",
-    "explanation": "1 Giăng 2:20 — 'Về phần các con, đã chịu xức dầu từ nơi Đấng thánh, thì đã biết mọi sự rồi.' 'XỨC DẦU' (chrisma) = sự xức dầu — đến từ Đấng THÁNH (Christ). 'ĐỀU BIẾT MỌI ĐIỀU' KHÔNG có nghĩa biết mọi sự kiện vũ trụ — biết LẼ THẬT cốt yếu (đặc biệt phân biệt CHRIST thật + giả). Đối lập với GNOSTIC (chỉ vài người đặc biệt).",
+    "content": "Theo 1 Giăng 2:20, các tín hữu đã chịu điều gì từ Đấng Thánh, và kết quả là gì?",
+    "explanation": "1 Giăng 2:20 — 'Về phần các con, đã chịu xức dầu từ nơi Đấng thánh, thì đã biết mọi sự rồi.' 'XỨC DẦU' (chrisma) chỉ sự xức dầu thuộc linh đến từ Đấng Thánh (Đấng Christ). 'Biết mọi sự' không có nghĩa biết mọi sự kiện, mà là biết lẽ thật cốt yếu, đặc biệt để phân biệt chân lý về Đấng Christ (đối lập với giáo sư giả thời đó).",
     "language": "vi",
     "options": [
-      "Có ân điển — biết bí ẩn (xét trong văn cảnh)",
-      "Có quyền năng — biết phép lạ (theo cách trình bày của text)",
-      "Có mặc khải — biết tương lai (như được mô tả trong sách)",
-      "Có XỨC DẦU (anointing) từ Đấng THÁNH — và họ ĐỀU BIẾT mọi điều"
+      "Có ân điển — và biết các bí ẩn",
+      "Có quyền năng — và biết làm phép lạ",
+      "Có mặc khải — và biết tương lai",
+      "Có sự xức dầu — và đều biết mọi điều"
     ],
     "tags": [
       "Tân Ước",
@@ -1097,7 +1097,7 @@
     "options": [
       "Cho họ phép lạ (xét trong văn cảnh) (theo trình tự câu chuyện)",
       "Khiến họ giàu có (theo cách trình bày của text)",
-      "DẠY DỖ họ MỌI ĐIỀU + sự XỨC DẦU đó là CHƠN THẬT, KHÔNG phải dối — vậy hãy ở trong Đấng Christ",
+      "DẠY DỖ họ MỌI ĐIỀU + sự XỨC DẦU đó là CHÂN THẬT, KHÔNG phải dối — vậy hãy ở trong Đấng Christ",
       "Khiến họ bay được (như được mô tả trong sách) (như văn bản ghi rõ)"
     ],
     "tags": [
@@ -1164,6 +1164,7 @@
     "book": "1 John",
     "chapter": 3,
     "verseStart": 23,
+    "verseEnd": 23,
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "correctAnswer": [
@@ -1176,7 +1177,7 @@
       "Giữ ngày Sa-bát + dâng phần mười (theo cách trình bày của text)",
       "Cầu nguyện 5 lần + nhịn ăn (xét trong văn cảnh)",
       "Tin các tiên tri + giữ luật Môi-se (như được mô tả trong sách)",
-      "TIN DANH Con Ngài là Đức Chúa Jêsus Christ + YÊU THƯƠNG LẪN NHAU như Ngài đã truyền"
+      "Tin đến danh Con Ngài là Đức Chúa Jêsus Christ, và yêu mến lẫn nhau như Ngài đã truyền"
     ],
     "tags": [
       "Tân Ước",
@@ -1242,19 +1243,20 @@
     "book": "1 John",
     "chapter": 5,
     "verseStart": 6,
+    "verseEnd": 8,
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "correctAnswer": [
       1
     ],
-    "content": "Theo 1 Giăng 5:6-8, có 3 nhân chứng nào TRÊN TRỜI (theo các bản Tân Ước Hi Lạp cổ là 3 nhân chứng DƯỚI ĐẤT)?",
-    "explanation": "1 Giăng 5:6-8 — 'Ấy chính Đức Chúa Jêsus Christ đã lấy nước và huyết mà đến, chẳng những lấy nước mà thôi, bèn là lấy nước và huyết... Vì có ba làm chứng: Đức Thánh Linh, nước và huyết; cả ba đều hiệp một.' 3 NHÂN CHỨNG: NƯỚC (báp-têm Christ ở Giô-đanh), HUYẾT (sự chết Christ trên thập tự), THÁNH LINH (chứng trong tín hữu). Đối lập GNOSTIC (Cerinthus tách Christ ra khỏi Jesus tại thập tự).",
+    "content": "Theo 1 Giăng 5:6-8, ba nhân chứng dưới đất là gì?",
+    "explanation": "1 Giăng 5:6-8 — 'Ấy chính Đức Chúa Jêsus Christ đã lấy nước và huyết mà đến, chẳng những lấy nước mà thôi, bèn là lấy nước và huyết... Vì có ba làm chứng: Đức Thánh Linh, nước và huyết; cả ba đều hiệp một.' Ba nhân chứng này là: NƯỚC (báp-têm của Chúa Giê-xu ở sông Giô-đanh), HUYẾT (sự chết của Ngài trên thập tự giá), và THÁNH LINH (Đấng làm chứng). Sự dạy dỗ này chống lại thuyết Ngộ đạo (Gnostic) thời đó, vốn tách biệt Đấng Christ khỏi Chúa Giê-xu.",
     "language": "vi",
     "options": [
-      "Cha + Lời + Thánh Linh (theo cách trình bày của text)",
-      "ĐỨC THÁNH LINH + nước + huyết — 3 nhân chứng đồng làm chứng (về Christ)",
-      "3 thiên sứ (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Phao-lô + Phi-e-rơ + Giăng (như được mô tả trong sách)"
+      "Cha, Con và Thánh Linh",
+      "Đức Thánh Linh, nước và huyết",
+      "Ba thiên sứ từ trời",
+      "Các sứ đồ Phao-lô, Phi-e-rơ và Giăng"
     ],
     "tags": [
       "Tân Ước",

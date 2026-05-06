@@ -9,9 +9,9 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Gia-cơ 1:2-3 - Hãy có sự vui mừng trọn vẹn vì thử thách sinh sự nhịn nhục, và nhịn nhục sinh sự trọn vẹn.",
+    "explanation": "Gia-cơ 1:2-4 - Hãy coi sự thử thách trăm bề như là điều vui mừng trọn vẹn, vì sự thử thách đức tin sinh ra sự nhịn nhục, và nhịn nhục cần phải làm trọn việc nó, hầu cho anh em được trọn vẹn.",
     "language": "vi",
-    "verseEnd": 3,
+    "verseEnd": 4,
     "options": [
       "Hãy tìm cách thoát",
       "Hãy có sự vui mừng trọn vẹn",
@@ -64,7 +64,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Chúa ban khôn ngoan rộng rãi và không trách móc. Chỉ cần xin!",
+    "explanation": "Gia-cơ 1:5 - Hãy cầu xin Đức Chúa Trời, là Đấng ban cho mọi người cách rộng rãi và không trách móc. Chỉ cần xin!",
     "language": "vi",
     "options": [
       "Học nhiều hơn",
@@ -142,11 +142,11 @@
     "verseStart": 5,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Gia-cơ 3 so sánh cái lưỡi với gì?",
+    "content": "Gia-cơ 3:5-6 so sánh cái lưỡi với gì?",
     "correctAnswer": [
       2
     ],
-    "explanation": "Cái lưỡi nhỏ nhưng có thể gây hại lớn. Cần kiểm soát lời nói.",
+    "explanation": "Cái lưỡi nhỏ nhưng có thể gây hại lớn, được so sánh với một ngọn lửa nhỏ có thể đốt cháy cả khu rừng lớn. Cần kiểm soát lời nói.",
     "language": "vi",
     "verseEnd": 6,
     "options": [
@@ -174,9 +174,9 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Phải chống cự chủ động nhưng buông. Và đến gần Chúa thì Ngài đến gần anh em.",
+    "explanation": "Gia-cơ 4:7 - Hãy chống trả ma quỷ thì nó sẽ lánh xa (trốn xa) anh em.",
     "language": "vi",
-    "verseEnd": 8,
+    "verseEnd": 7,
     "options": [
       "Trốn xa anh em",
       "Quay lại",
@@ -284,10 +284,10 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Gia-cơ 3:17 - Khôn ngoan từ Chúa khác với khôn ngoan thế gian. Đặc điểm là hòa bình và nhân từ.",
+    "explanation": "Gia-cơ 3:17 mô tả đầy đủ các đặc điểm của sự khôn ngoan từ trên: trước hết là thanh sạch, sau lại hòa thuận, tiết độ, nhu mì, đầy dẫy lòng thương xót và bông trái lành, không có sự hai lòng và giả hình.",
     "language": "vi",
     "options": [
-      "Thanh sạch, hòa thuận, mềm mại, đủ tình thương xót",
+      "Trước hết là thanh sạch, sau lại hòa thuận, tiết độ, nhu mì, đầy dẫy lòng thương xót và bông trái lành, không hai lòng, không giả hình",
       "Lý trí",
       "Sắc bén",
       "Cứng rắn"
@@ -552,10 +552,10 @@
     "explanation": "Gia-cơ 1:12 — 'Phước cho người bị cám dỗ; vì lúc đã chịu nổi sự thử thách rồi, thì sẽ lãnh mão triều thiên của sự sống mà Đức Chúa Trời đã hứa cho kẻ kính mến Ngài.' 'MÃO TRIỀU THIÊN' (stephanos) = vương miện chiến thắng. Khải 2:10 cùng cụm. Thử thách KHÔNG phải để hủy diệt — mà để chứng tỏ và ban thưởng đức tin chịu đựng.",
     "language": "vi",
     "options": [
-      "Sự giàu có (xét trong văn cảnh)",
-      "Sự sống lâu (theo cách trình bày của text)",
-      "Mão TRIỀU THIÊN sự sống — Chúa hứa cho kẻ kính mến Ngài",
-      "Sự khôn ngoan (như được mô tả trong sách)"
+      "Sự giàu có",
+      "Sự sống lâu",
+      "Mão triều thiên sự sống — Chúa hứa cho kẻ kính mến Ngài",
+      "Sự khôn ngoan"
     ],
     "tags": [
       "Tân Ước",
@@ -604,9 +604,9 @@
     "explanation": "Gia-cơ 1:6 — 'Nhưng phải lấy đức tin mà cầu xin, chớ nghi ngờ; vì kẻ hay nghi ngờ giống như sóng biển bị gió động và đưa đi đây đi đó.' 1:8 — 'kẻ hai lòng' (dipsychos) = chia rẽ tâm hồn. Đức tin = TIN SƯ TRỌN VẸN, không một chân trong + một chân ngoài. Khôn ngoan từ Chúa CHỈ ban cho lòng thành.",
     "language": "vi",
     "options": [
-      "Phải xin một lần — không cần lặp lại (như được mô tả trong sách)",
-      "Phải xin trong sự nghiêm trang (theo cách trình bày của text)",
-      "Phải xin với của lễ (xét trong văn cảnh)",
+      "Phải xin một lần",
+      "Phải xin trong sự nghiêm trang",
+      "Phải xin với của lễ",
       "Phải lấy đức tin mà xin, CHỚ NGHI NGỜ — kẻ nghi ngờ giống NHƯ SÓNG BIỂN bị gió động, đưa tới đưa lui"
     ],
     "tags": [
@@ -627,7 +627,7 @@
       0
     ],
     "content": "Theo Gia-cơ 1:9-10, anh em hèn (nghèo) hãy KHOE về điều gì? Anh em giàu hãy KHOE về điều gì?",
-    "explanation": "Gia-cơ 1:9-10 — 'Anh em nào ở địa vị thấp hèn hãy khoe sự cao trọng của mình, anh em nào giàu cũng hãy khoe về phần đê hèn — vì người sẽ qua đi như hoa cỏ.' Đảo ngược thế gian: NGHÈO = thật giàu trong Christ; GIÀU = thật nghèo nếu cậy vật chất. Hoa CỎ QUA = hình ảnh từ Ê-sai 40:6-8.",
+    "explanation": "Gia-cơ 1:9-10 — 'Anh em nào ở địa vị thấp hèn hãy khoe sự cao trọng của mình, anh em nào giàu cũng hãy khoe về sự hạ mình — vì người sẽ qua đi như hoa cỏ.' Đảo ngược thế gian: NGHÈO = thật giàu trong Christ; GIÀU = thật nghèo nếu cậy vật chất. Hoa CỎ QUA = hình ảnh từ Ê-sai 40:6-8.",
     "language": "vi",
     "options": [
       "Hèn khoe sự CAO TRỌNG mình — Giàu khoe sự HẠ MÌNH (như hoa cỏ qua đi)",
@@ -708,9 +708,9 @@
     "explanation": "Gia-cơ 1:23-25 — 'Vì, nếu có kẻ nghe lời mà không làm theo, thì khác nào người soi mặt mình trong gương, thấy rồi thì đi, liền quên ngay mặt ra thể nào. Nhưng kẻ nào xét kỹ luật pháp trọn vẹn, là luật pháp về sự tự do, lại bền lòng suy gẫm lấy, chẳng phải nghe rồi quên đi, nhưng hết lòng giữ theo phép tắc nó, thì kẻ đó sẽ tìm được phước trong sự mình vâng lời.' Hình ảnh: gương = Lời Chúa.",
     "language": "vi",
     "options": [
-      "Giống đứa trẻ — sẽ trưởng thành sau (theo cách trình bày của text)",
-      "Giống người chăm chỉ — sẽ được khen (như được mô tả trong sách)",
-      "Giống học sinh — chỉ cần thời gian (xét trong văn cảnh) (theo trình tự câu chuyện)",
+      "Giống đứa trẻ",
+      "Giống người chăm chỉ",
+      "Giống học sinh",
       "Giống NGƯỜI SOI MẶT trong gương rồi đi và QUÊN; ai TRA XEM LUẬT TRỌN VẸN của tự do — KHÔNG nghe rồi quên — sẽ được PHƯỚC trong việc mình làm"
     ],
     "tags": [
@@ -756,14 +756,14 @@
     "correctAnswer": [
       2
     ],
-    "content": "Theo Gia-cơ 2:13, sự xét đoán không có thương xót sẽ rơi trên ai? Và điều gì THẮNG sự xét đoán?",
+    "content": "Theo Gia-cơ 2:13, sự xét đoán không thương xót sẽ giáng trên ai? Và điều gì có thể thắng sự xét đoán?",
     "explanation": "Gia-cơ 2:13 — 'Sự xét đoán không thương xót sẽ giáng trên kẻ chẳng làm sự thương xót; nhưng sự thương xót thắng sự xét đoán.' Cùng nguyên tắc Mat 5:7 'Phước cho kẻ thương xót — sẽ được thương xót'. Tín hữu nhận sự thương xót lớn từ Christ — không thể không bày tỏ thương xót cho người khác.",
     "language": "vi",
     "options": [
-      "Trên kẻ ác — Thương xót thắng (theo cách trình bày của text)",
-      "Trên kẻ giàu — Đức tin thắng (xét trong văn cảnh)",
-      "Trên kẻ KHÔNG làm sự THƯƠNG XÓT — Sự THƯƠNG XÓT thắng (vinh quang) sự xét đoán",
-      "Trên kẻ ngoại — Hi vọng thắng (như được mô tả trong sách)"
+      "Trên kẻ ác — Thương xót thắng",
+      "Trên kẻ giàu — Đức tin thắng",
+      "Trên kẻ không làm sự thương xót — Sự thương xót thắng",
+      "Trên kẻ ngoại — Hi vọng thắng"
     ],
     "tags": [
       "Tân Ước",
@@ -964,14 +964,14 @@
     "correctAnswer": [
       1
     ],
-    "content": "Theo Gia-cơ 4:13-15, Phao-lô (Gia-cơ) khiển trách lối nói nào? Lối nói thay thế là gì?",
-    "explanation": "Gia-cơ 4:13-15 — 'Hỡi anh em, là kẻ nói rằng: Hôm nay hoặc ngày mai, ta sẽ đi đến thành kia, ở đó một năm, buôn bán và phát tài. Song ngày mai sẽ ra thế nào, anh em chẳng biết!... Anh em phải nói trái lại: Ví bằng Chúa muốn, và ta còn sống, thì ta sẽ làm việc nọ việc kia.' Cụm 'D.V.' (Deo Volente, Latin) hoặc 'NẾU CHÚA MUỐN' = lời nhắc khiêm tốn — đời người là HƠI NƯỚC.",
+    "content": "Theo Gia-cơ 4:13-15, tác giả Gia-cơ khiển trách lối nói nào và đề nghị lối nói thay thế nào?",
+    "explanation": "Gia-cơ 4:13-15 — 'Hỡi anh em, là kẻ nói rằng: Hôm nay hoặc ngày mai, ta sẽ đi đến thành kia, ở đó một năm, buôn bán và phát tài. Song ngày mai sẽ ra thế nào, anh em chẳng biết!... Anh em phải nói trái lại: Ví bằng Chúa muốn, và ta còn sống, thì ta sẽ làm việc nọ việc kia.' Tác giả khiển trách thái độ tự tin, tự lập trong kế hoạch tương lai mà bỏ qua ý muốn Chúa, và dạy phải thêm cụm 'Nếu Chúa muốn' (Deo Volente) để thể hiện sự phó thác và nhận biết đời người mong manh như hơi nước.",
     "language": "vi",
     "options": [
-      "Khiển trách 'Tôi là tội nhân lớn' — phải nói 'Tôi nên thánh' (như được mô tả trong sách)",
-      "Khiển trách 'Hôm nay hoặc ngày mai chúng ta sẽ đi tới thành A, mua bán + làm lợi' — phải nói 'NẾU CHÚA MUỐN, chúng ta sẽ sống và làm điều này hay điều kia'",
-      "Khiển trách lời thân thiện — phải nói trang nghiêm (theo cách trình bày của text)",
-      "Khiển trách lời cầu nguyện ngắn — phải nói dài (xét trong văn cảnh)"
+      "Khiển trách 'Tôi là tội nhân lớn' — phải nói 'Tôi nên thánh'",
+      "Khiển trách 'Hôm nay hoặc ngày mai chúng ta sẽ đi tới thành kia, buôn bán và phát tài' — phải nói 'Nếu Chúa muốn, chúng ta sẽ sống và làm điều này hay điều kia'",
+      "Khiển trách lời nói thân thiện — phải nói trang nghiêm",
+      "Khiển trách lời cầu nguyện ngắn — phải nói dài"
     ],
     "tags": [
       "Tân Ước",
@@ -1068,8 +1068,8 @@
     "correctAnswer": [
       1
     ],
-    "content": "Theo Gia-cơ 2:11, tại sao phạm 1 điều răn (như giết người) thì cũng đáng tội như đã phạm trọn luật?",
-    "explanation": "Gia-cơ 2:11 — 'Vả, Đấng đã phán rằng: Chớ phạm tội tà dâm, cũng có phán rằng: Chớ giết người. Vậy nếu người không phạm tội tà dâm, nhưng phạm tội giết người, thì ngươi là kẻ phạm luật pháp.' Lập luận: vi phạm luật = vi phạm quyền uy ĐẤNG BAN. Cùng Đấng ban tất cả → phá 1 = phá thẩm quyền chính.",
+    "content": "Theo Gia-cơ 2:11, tại sao phạm một điều răn (như tà dâm hoặc giết người) thì cũng đáng tội như đã phạm trọn luật?",
+    "explanation": "Gia-cơ 2:11 — 'Vả, Đấng đã phán rằng: Chớ phạm tội tà dâm, cũng có phán rằng: Chớ giết người. Vậy nếu người không phạm tội tà dâm, nhưng phạm tội giết người, thì ngươi là kẻ phạm luật pháp.' Lập luận: vi phạm luật = vi phạm quyền uy ĐẤNG BAN. Cùng Một Đấng ban tất cả → phá một điều răn = phá thẩm quyền của Đấng ban luật.",
     "language": "vi",
     "options": [
       "Vì luật là số nhiều (xét trong văn cảnh) (theo trình tự câu chuyện)",
@@ -1276,7 +1276,7 @@
     "correctAnswer": [
       1
     ],
-    "content": "Theo Gia-cơ 5:1-3, Phao-lô (Gia-cơ) lệnh kẻ giàu (không công bình) phải làm gì? Số phận tài sản họ là gì?",
+    "content": "Theo Gia-cơ 5:1-3, Gia-cơ lệnh kẻ giàu (không công bình) phải làm gì? Số phận tài sản họ là gì?",
     "explanation": "Gia-cơ 5:1-3 — 'Hỡi anh em là kẻ giàu có! Hãy khóc lóc, kêu la, vì cớ hoạn nạn sẽ đổ trên anh em. Của cải anh em bị mục nát, áo xống bị mối mọt ăn rồi. Vàng bạc anh em bị ten rét, ten rét đó sẽ làm chứng nghịch cùng anh em, nó cũng như lửa vậy, sẽ ăn thịt anh em.' VÀNG BẠC KHÔNG bị 'sét' theo vật lý — Gia-cơ dùng ngôn ngữ tượng trưng: tài sản tích lũy KHÔNG còn giá trị trong ngày phán xét.",
     "language": "vi",
     "options": [

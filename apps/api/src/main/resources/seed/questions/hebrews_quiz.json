@@ -9,12 +9,12 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Hê 11:1 - Đức tin là sự vững tin về những điều mình trông đợi, bằng chứng về những điều mình không thấy.",
+    "explanation": "Hê 11:1 - Đức tin là sự xác quyết về những điều mình đang trông đợi, là bằng chứng của những điều mình chẳng xem thấy.",
     "language": "vi",
     "options": [
       "Tin không cần lý do",
       "Sự lạc quan",
-      "Sự vững tin điều mình đang trông đợi, bằng chứng điều mình không thấy",
+      "Đức tin là sự xác quyết về những điều mình đang trông đợi, là bằng chứng của những điều mình chẳng xem thấy.",
       "Cảm giác tốt đẹp"
     ],
     "tags": [
@@ -91,7 +91,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Lời Chúa sống động, xuyên thấu tâm lòng, phân biệt tư tưởng và ý định.",
+    "explanation": "Hê 4:12 - Vì lời của Đức Chúa Trời là lời sống và linh nghiệm, sắc hơn gươm hai lưỡi, thấu vào đến nỗi chia hồn, linh, cốt, tủy, xem xét tư tưởng và ý định trong lòng.",
     "language": "vi",
     "options": [
       "Truyền thống",
@@ -118,7 +118,7 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Chúa Giê-su hiểu sự yếu đuối của chúng ta vì đã trải qua mọi thứ. Nên hãy mạnh dạn đến ngôi ân điển.",
+    "explanation": "Hê 4:15-16 - Vì chúng ta không có thầy tế lễ thượng phẩm không thể cảm thông sự yếu đuối chúng ta, nhưng có một thầy tế lễ bị cám dỗ trong mọi việc giống như chúng ta, nhưng không phạm tội. Vậy, chúng ta hãy vững lòng đến gần ngôi ân điển.",
     "language": "vi",
     "verseEnd": 16,
     "options": [
@@ -547,7 +547,7 @@
     "correctAnswer": [
       2
     ],
-    "content": "Theo Hê-bơ-rơ 1:3, Đức Chúa Con là gì so với Đức Chúa Trời?",
+    "content": "Theo Hê-bơ-rơ 1:3, Đức Chúa Con được mô tả là gì?",
     "explanation": "Hê-bơ-rơ 1:3 — 'Con là sự chói sáng của vinh quang Đức Chúa Trời và là hình bóng của bản thể Ngài, lấy lời quyền năng Ngài nâng đỡ muôn vật.' Đây là một trong những câu Christology cao nhất trong Tân Ước — Christ KHÔNG phải tạo vật, Ngài là chính bản thể Đức Chúa Trời.",
     "language": "vi",
     "options": [
@@ -605,7 +605,7 @@
     "options": [
       "Qua Môi-se rồi đến chúng ta",
       "Qua các tiên tri (xét trong văn cảnh)",
-      "Qua các thiên sứ (theo cách trình bày của text)",
+      "Qua các thiên sứ",
       "Qua chính Chúa và được những người nghe truyền lại cho chúng ta"
     ],
     "tags": [
@@ -891,7 +891,7 @@
     "options": [
       "Là tôi tớ trung thành",
       "Là tiên tri tối thượng",
-      "Là Con yêu dấu (xét trong văn cảnh)",
+      "Là Chúa của các chúa",
       "Là Đức Chúa Trời, ngôi Ngài còn mãi đời đời"
     ],
     "tags": [
@@ -915,7 +915,7 @@
     "explanation": "Hê-bơ-rơ 1:14 — 'Các thiên sứ há chẳng phải đều là thần hầu việc Đức Chúa Trời, đã được sai xuống để giúp việc những người sẽ hưởng cơ nghiệp cứu rỗi hay sao?' Vai trò THIÊN SỨ = đầy tớ, vai trò CHRIST = Con. Dù thiên sứ cao trọng nhưng vẫn là tôi tớ — Christ là chủ.",
     "language": "vi",
     "options": [
-      "Là tạo vật cao cả nhất (xét trong văn cảnh)",
+      "Là những đấng có quyền tha tội",
       "Là những đấng đáng được thờ phượng",
       "Là các thần hầu việc, được sai đi giúp đỡ những kẻ sẽ hưởng cơ nghiệp cứu rỗi",
       "Là những đấng cai trị các quốc gia"
@@ -941,10 +941,10 @@
     "explanation": "Hê-bơ-rơ 2:1 — 'Vậy nên chúng ta phải càng giữ vững lấy điều mình đã nghe, e kẻo bị trôi lạc chăng.' Đây là CẢNH BÁO THỨ NHẤT trong 5 cảnh báo của sách Hê-bơ-rơ. Hình ảnh 'trôi lạc' (pararuō) — như con thuyền không neo trôi xa bến. Phải BÁM CHẶT vào sự thật đã nghe.",
     "language": "vi",
     "options": [
-      "Phải càng giữ vững lấy điều mình đã nghe (chăm chú nghe Lời)",
-      "Phải tuân giữ luật Môi-se nghiêm ngặt",
-      "Phải dâng nhiều của lễ (theo cách trình bày của text)",
-      "Phải tách khỏi xã hội (xét trong văn cảnh)"
+      "Phải càng giữ vững lấy điều mình đã nghe",
+      "Phải tuân giữ luật Môi-se",
+      "Phải dâng nhiều của lễ",
+      "Phải tách khỏi xã hội"
     ],
     "tags": [
       "Tân Ước",
@@ -967,10 +967,10 @@
     "explanation": "Hê-bơ-rơ 2:17 — 'Nhân đó, Ngài phải chịu làm giống như anh em mình trong mọi sự, hầu cho đối với Đức Chúa Trời, trở nên thầy tế lễ thượng phẩm hay thương xót và trung tín, đặng đền tội cho chúng dân.' Christ THẬT SỰ trở nên người để làm thầy tế lễ THƯƠNG XÓT (cho dân) và TRUNG TÍN (cho Đức Chúa Trời) — khái niệm nền tảng cho phần còn lại của sách.",
     "language": "vi",
     "options": [
-      "Để chứng tỏ mình là loài người (theo cách trình bày của text)",
+      "Để chứng tỏ Ngài thật sự là con người",
       "Để Ngài có thể trở nên thầy tế lễ thượng phẩm thương xót và trung tín, đặng đền tội lỗi cho dân",
-      "Để học hỏi Cựu Ước (xét trong văn cảnh)",
-      "Để được Đức Chúa Trời chấp nhận (như được mô tả trong sách)"
+      "Để học hỏi Cựu Ước",
+      "Để được Đức Chúa Trời chấp nhận"
     ],
     "tags": [
       "Tân Ước",
@@ -995,7 +995,7 @@
     "options": [
       "Hơn các tiên tri — vì rao báo lời Chúa",
       "Hơn các thiên sứ — vì là Con",
-      "Hơn Môi-se — như Đấng dựng nhà tôn trọng hơn nhà",
+      "Hơn Môi-se — như Đấng dựng nên nhà được tôn trọng hơn chính cái nhà",
       "Hơn A-rôn — vì làm tế lễ tốt hơn"
     ],
     "tags": [
@@ -1019,9 +1019,9 @@
     "explanation": "Hê-bơ-rơ 3:12 — 'Hỡi anh em, hãy giữ lấy, kẻo ai trong anh em có lòng dữ và chẳng tin mà trái bỏ Đức Chúa Trời hằng sống chăng.' Cảnh báo này dùng dân Y-sơ-ra-ên không vào được Ca-na-an vì chẳng tin (Dân số 14) làm bài học — đừng bắt chước họ.",
     "language": "vi",
     "options": [
-      "Lòng kiêu căng (như được mô tả trong sách)",
-      "Lòng tham lam (theo cách trình bày của text)",
-      "Lòng dối trá (xét trong văn cảnh)",
+      "Lòng kiêu căng",
+      "Lòng tham lam",
+      "Lòng dối trá",
       "Lòng dữ và chẳng tin, để mình lìa bỏ Đức Chúa Trời hằng sống"
     ],
     "tags": [
@@ -1094,13 +1094,13 @@
       3
     ],
     "content": "Theo Hê-bơ-rơ 5:12, các tín hữu đáng lẽ đã làm thầy dạy nhưng lại cần ai dạy lại điều gì?",
-    "explanation": "Hê-bơ-rơ 5:12 — 'Đáng lẽ anh em đã làm thầy từ lâu rồi, nay còn cần người ta lấy những điều sơ học của lời Đức Chúa Trời mà dạy anh em; anh em cần ăn sữa thay vì đồ ăn đặc.' Lời quở trách — họ ĐÌNH TRỆ trong tăng trưởng thuộc linh; cần đi từ sữa (cơ bản) sang đồ ăn cứng (sâu nhiệm).",
+    "explanation": "Hê-bơ-rơ 5:12 — 'Đáng lẽ anh em đã làm thầy từ lâu rồi, nay còn cần người ta lấy những điều sơ học của lời Đức Chúa Trời mà dạy anh em; anh em cần ăn sữa thay vì đồ ăn đặc.' Lời quở trách — họ đình trệ trong tăng trưởng thuộc linh; cần đi từ sữa (cơ bản) sang đồ ăn cứng (sâu nhiệm).",
     "language": "vi",
     "options": [
       "Cần ai dạy luật Môi-se cho (xét trong văn cảnh)",
       "Cần ai dạy bí ẩn Khải Huyền (theo cách trình bày của text)",
       "Cần ai dạy thần học cao siêu (như được mô tả trong sách)",
-      "Cần ai dạy lại các sơ học của lời Đức Chúa Trời — chỉ cần sữa, chưa nhận được đồ ăn cứng"
+      "Cần ai dạy lại các sơ học của lời Đức Chúa Trời"
     ],
     "tags": [
       "Tân Ước",
@@ -1120,7 +1120,7 @@
       0
     ],
     "content": "Theo Hê-bơ-rơ 6:1, các tín hữu phải bỏ qua các điều sơ học và đi tới đâu?",
-    "explanation": "Hê-bơ-rơ 6:1 — 'Ấy vậy, chúng ta phải bỏ qua các điều sơ học về Tin Lành của Đấng Christ, mà tấn tới sự trọn lành.' 'Trọn lành' (teleios) = trưởng thành. Tiếp nối lời quở trách 5:12 — phải tăng trưởng từ sữa sang đồ ăn cứng. Liệt kê các 'sơ học' ở 6:1-2: ăn năn, đức tin, báp-têm, đặt tay, sống lại, phán xét.",
+    "explanation": "Hê-bơ-rơ 6:1 — 'Ấy vậy, chúng ta phải bỏ qua các điều sơ học về Tin Lành của Đấng Christ, mà tấn tới sự trọn lành.' 'Trọn lành' (teleios) = trưởng thành. Tiếp nối lời quở trách 5:12 — phải tăng trưởng từ sữa sang đồ ăn cứng. Liệt kê các 'sơ học' ở 6:1-2: ăn năn việc chết, đức tin nơi Đức Chúa Trời, giáo lý về báp-têm, phép đặt tay, sự sống lại của kẻ chết, sự phán xét đời đời.",
     "language": "vi",
     "options": [
       "Đi đến sự hoàn toàn (trưởng thành)",
@@ -1204,7 +1204,7 @@
       "Tất cả thầy tế lễ — mỗi tuần (như được mô tả trong sách)",
       "Thầy Lê-vi — mỗi tháng (theo cách trình bày của text)",
       "Thầy tế lễ — mỗi ngày (xét trong văn cảnh)",
-      "Chỉ thầy tế lễ thượng phẩm — mỗi năm một lần, không phải không có huyết"
+      "Chỉ thầy tế lễ thượng phẩm — mỗi năm một lần, và phải đem huyết dâng"
     ],
     "tags": [
       "Tân Ước",
@@ -1328,10 +1328,10 @@
       3
     ],
     "content": "Theo Hê-bơ-rơ 11:4, A-bên dâng tế lễ tốt hơn Ca-in vì điều gì?",
-    "explanation": "Hê-bơ-rơ 11:4 — 'Bởi đức tin, A-bên đã dâng cho Đức Chúa Trời một tế lễ tốt hơn của Ca-in, và được xưng công bình, vì Đức Chúa Trời làm chứng về người rằng Ngài nhậm lễ vật ấy; lại cũng nhờ đó dầu người chết rồi, hãy còn nói.' A-bên là người ĐẦU TIÊN trong danh sách anh hùng đức tin chương 11.",
+    "explanation": "Hê-bơ-rơ 11:4 — 'Bởi đức tin, A-bên đã dâng cho Đức Chúa Trời một tế lễ tốt hơn của Ca-in, và được xưng công bình, vì Đức Chúa Trời làm chứng về người rằng Ngài nhậm lễ vật ấy; lại cũng nhờ đó dầu người chết rồi, hãy còn nói.' Lý do chính được Kinh Thánh nêu rõ là bởi đức tin của A-bên.",
     "language": "vi",
     "options": [
-      "Vì lễ vật quý hơn (xét trong văn cảnh)",
+      "Vì lễ vật của A-bên là thú vật còn Ca-in là nông sản",
       "Vì A-bên là con thứ (theo cách trình bày của text)",
       "Vì A-bên cầu nguyện trước",
       "Bởi đức tin — và bởi đức tin đó người vẫn còn nói dầu đã chết"
@@ -1458,7 +1458,7 @@
       0
     ],
     "content": "Theo Hê-bơ-rơ 11:31, Ra-háp kỹ nữ không bị hư mất với những kẻ chẳng tin vì cớ gì?",
-    "explanation": "Hê-bơ-rơ 11:31 — 'Bởi đức tin, kỵ nữ Ra-háp không chết với kẻ chẳng tin, vì nàng đã lấy ý tốt tiếp rước các kẻ do thám.' Ra-háp (Giô-suê 2) — người ngoại bang, kỹ nữ — được liệt kê trong gia phả Đấng Christ (Mat 1:5). Đức tin ưu tiên hơn quá khứ. Cũng nhắc đến trong Gia-cơ 2:25.",
+    "explanation": "Hê-bơ-rơ 11:31 — 'Bởi đức tin, kỹ nữ Ra-háp không chết với kẻ chẳng tin, vì nàng đã lấy ý tốt tiếp rước các kẻ do thám.' Ra-háp (Giô-suê 2) — người ngoại bang, kỹ nữ — được liệt kê trong gia phả Đấng Christ (Mat 1:5). Đức tin ưu tiên hơn quá khứ. Cũng nhắc đến trong Gia-cơ 2:25.",
     "language": "vi",
     "options": [
       "Bởi đức tin — vì người tiếp đãi các thám tử cách hòa bình",
@@ -1640,12 +1640,12 @@
       2
     ],
     "content": "Theo Hê-bơ-rơ 4:13, không vật nào giấu được khỏi mắt Đấng nào, mà chúng ta phải làm gì với Ngài?",
-    "explanation": "Hê-bơ-rơ 4:13 — 'Chẳng có vật nào được giấu kín trước mặt Chúa, nhưng thảy đều trần trụi và lộ ra trước mắt Đấng mà chúng ta phải thưa lại.' 'Trần trụi' (gymnos) + 'lộ ra' (trachēlizō) = thuật ngữ vật tế lễ bị mở phơi cổ ra. Lời Đức Chúa Trời (4:12) đi cùng — Lời sống động VÀ Đấng phán Lời nhìn thấu lòng. KHÁC với Adam giấu mình trong vườn.",
+    "explanation": "Hê-bơ-rơ 4:13 — 'Chẳng có vật nào được giấu kín trước mặt Chúa, nhưng thảy đều trần trụi và lộ ra trước mắt Đấng mà chúng ta phải thưa lại.' 'Trần trụi' (gymnos) + 'lộ ra' (trachēlizō) = bị phơi bày hoàn toàn. Lời Đức Chúa Trời (4:12) đi cùng — Lời sống động VÀ Đấng phán Lời nhìn thấu lòng. KHÁC với Adam giấu mình trong vườn.",
     "language": "vi",
     "options": [
       "Khỏi mắt các thiên sứ — chúng ta thưa lại (như được mô tả trong sách)",
       "Khỏi mắt Môi-se — chúng ta nghe theo (xét trong văn cảnh)",
-      "Khỏi mắt Đấng mà chúng ta phải khai trình — không vật nào giấu được, thảy đều trần trụi và trần trụi trước Ngài",
+      "Khỏi mắt Đấng mà chúng ta phải khai trình — không vật nào giấu được, thảy đều trần trụi và lộ ra trước Ngài",
       "Khỏi mắt loài người — chúng ta xưng tội (theo cách trình bày của text)"
     ],
     "tags": [
@@ -1873,14 +1873,14 @@
     "correctAnswer": [
       3
     ],
-    "content": "Theo Hê-bơ-rơ 9:24, Christ KHÔNG vào nơi rất thánh do tay làm nên ở đây, nhưng vào đâu?",
-    "explanation": "Hê-bơ-rơ 9:24 — 'Vì Đấng Christ chẳng phải vào nơi thánh bởi tay người làm ra, theo kiểu mẫu nơi thánh thật, bèn là vào chính trong trời, để bây giờ vì chúng ta hiện ra trước mặt Đức Chúa Trời.' Đền thờ Giê-ru-sa-lem chỉ là 'kiểu mẫu' (antitypa) của ĐỀN THỰC TRÊN TRỜI. Christ vào THẬT — và HIỆN RA trước Cha cho ta. Mạnh hơn 'cầu thay' (7:25) — Christ THÂN SỰ trình diện.",
+    "content": "Theo Hê-bơ-rơ 9:24, Đấng Christ KHÔNG vào nơi chí thánh do tay người làm ra, nhưng Ngài đã vào đâu?",
+    "explanation": "Hê-bơ-rơ 9:24 — 'Vì Đấng Christ chẳng phải vào nơi thánh bởi tay người làm ra, theo kiểu mẫu nơi thánh thật, bèn là vào chính trong trời, để bây giờ vì chúng ta hiện ra trước mặt Đức Chúa Trời.' Đền thờ dưới đất chỉ là 'kiểu mẫu' (antitypa) của đền thật trên trời. Đấng Christ đã vào chính thiên đàng và hiện diện thực sự trước mặt Đức Chúa Trời vì chúng ta.",
     "language": "vi",
     "options": [
-      "Vào tu viện (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Vào đền thờ Sa-lô-môn (như được mô tả trong sách)",
-      "Vào hội đường (theo cách trình bày của text)",
-      "Vào CHÍNH TRỜI — bây giờ hiện ra trước mặt Đức Chúa Trời cho chúng ta"
+      "Vào nơi chí thánh trong đền tạm dưới đất",
+      "Vào một nơi thánh do thiên sứ tạo nên",
+      "Vào Giê-ru-sa-lem thuộc linh trên đất",
+      "Vào chính trên trời, để hiện ra trước mặt Đức Chúa Trời vì chúng ta"
     ],
     "tags": [
       "Tân Ước",
@@ -1931,7 +1931,7 @@
     "options": [
       "Là chính hình của các sự lành (theo cách trình bày của text)",
       "Là kế hoạch của Đức Chúa Trời (như được mô tả trong sách)",
-      "Chỉ là BÓNG (skia) của các sự lành sắp đến — KHÔNG phải hình thật, nên không thể làm cho kẻ đến gần được trọn vẹn",
+      "Chỉ là bóng (skia) của các sự lành sắp đến, không phải hình thật",
       "Là tiên tri trực tiếp (xét trong văn cảnh) (theo trình tự câu chuyện)"
     ],
     "tags": [
@@ -1952,7 +1952,7 @@
       1
     ],
     "content": "Theo Hê-bơ-rơ 10:26 (cảnh báo thứ 4), nếu cố ý phạm tội sau khi đã nhận biết lẽ thật, thì điều gì xảy ra?",
-    "explanation": "Hê-bơ-rơ 10:26-27 — 'Vì nếu chúng ta đã nhận biết lẽ thật rồi, mà lại cố ý phạm tội, thì không còn có tế lễ chuộc tội nữa, nhưng chỉ có sự đợi chờ kinh khiếp về sự phán xét, và lửa hừng sẽ đốt cháy kẻ bội nghịch.' 'Cố ý' (hekousiōs) — phạm có chủ ý, biết rõ. Đây là CẢNH BÁO 4. Hiểu đúng: KHÔNG dạy mất cứu rỗi mà cảnh báo về việc TỪ BỎ Christ — không có hi sinh nào khác.",
+    "explanation": "Hê-bơ-rơ 10:26-27 — 'Vì nếu chúng ta đã nhận biết lẽ thật rồi, mà lại cố ý phạm tội, thì không còn có tế lễ chuộc tội nữa, nhưng chỉ có sự đợi chờ kinh khiếp về sự phán xét, và lửa hừng sẽ đốt cháy kẻ bội nghịch.' 'Cố ý' (hekousiōs) — phạm có chủ ý, biết rõ. Đây là CẢNH BÁO 4. Đoạn Kinh Thánh cảnh báo hậu quả nghiêm trọng: không còn của lễ chuộc tội, chỉ còn sự chờ đợi phán xét và lửa hừng.",
     "language": "vi",
     "options": [
       "Sẽ được tha thứ qua việc dâng nhiều của lễ (như được mô tả trong sách)",
@@ -2024,19 +2024,20 @@
     "book": "Hebrews",
     "chapter": 12,
     "verseStart": 18,
+    "verseEnd": 21,
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "correctAnswer": [
       2
     ],
     "content": "Theo Hê-bơ-rơ 12:18-21, núi Si-na-i được mô tả thế nào để đối chiếu với núi Si-ôn trên trời?",
-    "explanation": "Hê-bơ-rơ 12:18-21 — 'Anh em chẳng tới gần một hòn núi mà người ta có thể đụng đến được, cũng chẳng đến gần lửa hừng, hoặc tối tăm, hoặc âm u, hoặc gió dữ... Lại quang cảnh đó hãi hùng, đến nỗi Môi-se nói rằng: Ta rất sợ sệt và run rẩy.' Si-na-i = nỗi sợ + sự xa cách. 12:22-24 = Si-ôn trên trời = vui vẻ + đến gần được. Tin Lành lớn hơn LUẬT.",
+    "explanation": "Hê-bơ-rơ 12:18-21 mô tả núi Si-na-i là nơi đáng sợ, không thể đến gần, với lửa hừng, tối tăm, gió dữ, và tiếng nói khiến Môi-se kinh khiếp run rẩy. Sự mô tả này được dùng để tương phản với núi Si-ôn trên trời (c.22-24) - nơi vui vẻ, gần gũi và thuộc về giao ước mới tốt hơn.",
     "language": "vi",
     "options": [
-      "Là núi đẹp đẽ và yên bình (theo cách trình bày của text)",
-      "Là núi của ơn phước (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Là núi RUN sờ được, lửa cháy, mây tối, sấm sét, tiếng kèn — Môi-se nói 'tôi rất kinh khiếp run rẩy'",
-      "Là núi cao nhất Y-sơ-ra-ên (như được mô tả trong sách)"
+      "Là núi nơi Môi-se nhận hai bảng luật pháp từ Đức Chúa Trời",
+      "Là núi nơi Đức Chúa Trời lập giao ước cũ với dân Y-sơ-ra-ên",
+      "Là núi run sờ được, lửa cháy, mây tối, sấm sét, tiếng kèn — Môi-se nói 'tôi rất kinh khiếp run rẩy'",
+      "Là núi nơi dân Y-sơ-ra-ên thờ con bò vàng trong thời Môi-se"
     ],
     "tags": [
       "Tân Ước",
@@ -2059,10 +2060,10 @@
     "explanation": "Hê-bơ-rơ 12:26-27 — 'Tiếng Đấng nói lúc đó làm rúng động đất; còn rày thì Ngài có lời hứa nầy: Lần nầy nữa, ta sẽ chẳng những làm rúng động đất, mà cả trời nữa... Hầu cho những điều có thể rúng động được mất đi, và những điều chẳng có thể rúng động được sẽ còn lại.' Trích Ag-gai 2:6. CẢNH BÁO 5: chớ khước từ Đấng phán từ trời. Vương quốc Đức Chúa Trời = không thể rúng động (12:28).",
     "language": "vi",
     "options": [
-      "Sẽ rúng động chỉ Y-sơ-ra-ên (như được mô tả trong sách)",
-      "Sẽ rúng động KHÔNG NHỮNG đất NHƯNG CẢ TRỜI — chỉ điều không bị rúng động (vương quốc) còn lại",
-      "Sẽ rúng động Sa-tan (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Sẽ rúng động hết loài thú (theo cách trình bày của text)"
+      "Sẽ rúng động chỉ Y-sơ-ra-ên",
+      "Sẽ rúng động không những đất mà cả trời",
+      "Sẽ rúng động Sa-tan",
+      "Sẽ rúng động hết loài thú"
     ],
     "tags": [
       "Tân Ước",

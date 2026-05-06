@@ -9,7 +9,7 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Giê 1:6-7 - Giê-rê-mi còn trẻ nhưng Chúa nói: Đừng nói tôi còn trẻ. Hãy đi khắp nơi ta sai người.",
+    "explanation": "Giê 1:6-7 - Giê-rê-mi nói: \"Tôi là con trẻ, chẳng biết nói chi.\" Chúa phán: \"Chớ nói: Tôi là con trẻ; vì ngươi sẽ đi khắp nơi nào ta sai ngươi đi, và sẽ nói mọi điều ta truyền cho ngươi.\"",
     "language": "vi",
     "verseEnd": 8,
     "options": [
@@ -62,7 +62,7 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Lòng người ta dối trá hơn mọi vật và rất là xấu xa. Ai biết được? Chỉ Chúa biết.",
+    "explanation": "Lòng người ta là dối trá hơn mọi vật, và rất là xấu xa: ai có thể biết được? (Giê-rê-mi 17:9)",
     "language": "vi",
     "options": [
       "Dối trá hơn mọi vật, ai biết được?",
@@ -167,13 +167,13 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giê 52:12-13 - Mọi lời tiên tri đều ứng nghiệm. Giê-ru-sa-lem bị phá và dân bị lưu đày 70 năm đúng như Giê-rê-mi nói.",
+    "explanation": "Giê 52:12-13 - Lời tiên tri về sự hủy phá Giê-ru-sa-lem và đền thờ đã ứng nghiệm khi Nê-bu-cát-nết-sa, vua Ba-by-lôn, phá thành vào năm 586 TCN.",
     "language": "vi",
     "verseEnd": 13,
     "options": [
       "Chỉ một phần",
       "Chưa biết",
-      "Có, Ba-by-lon phá thành và đền thờ năm 586 TCN",
+      "Có, Ba-by-lôn phá thành và đền thờ năm 586 TCN",
       "Không"
     ],
     "tags": [
@@ -243,7 +243,7 @@
     "verseStart": 5,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Chúa nói với Gie-rê-mi: \"Trước khi tạo thành ngươi trong bụng mẹ, ta đã ___ ngươi\"",
+    "content": "Chúa nói với Giê-rê-mi: \"Trước khi tạo thành ngươi trong bụng mẹ, ta đã ___ ngươi\"",
     "correctAnswer": [
       1
     ],
@@ -257,7 +257,7 @@
     ],
     "tags": [
       "Cựu Ước",
-      "Gie-rê-mi",
+      "Giê-rê-mi",
       "Sự kêu gọi",
       "Giê-rê-mi",
       "Đại Tiên Tri",
@@ -274,7 +274,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Giê 29:11 - Ta biết ý tưởng ta nghĩ đối cùng các ngươi, ý tưởng bình an, không phải tai họa, để cho các ngươi được sự cuối cùng tốt đẹp.",
+    "explanation": "Giê-rê-mi 29:11 - Ta biết ý tưởng ta nghĩ đối cùng các ngươi, là ý tưởng bình an, không phải tai họa, để cho các ngươi được sự trông cậy trong lúc cuối cùng.",
     "language": "vi",
     "options": [
       "Kế hoạch hình phạt",
@@ -382,7 +382,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Giê-rê-mi 9:24 — 'Người khoe phải khoe về trí khôn mình biết Ta là Đức Giê-hô-va, là Đấng làm ra sự thương xót, chánh trực, và công bình trên đất.'",
+    "explanation": "Giê-rê-mi 9:24 — 'Nhưng kẻ nào khoe, hãy khoe mình rằng mình hiểu biết Ta, và biết rằng Ta là Đức Giê-hô-va, hay làm sự thương xót, chánh trực, và công bình trên đất; vì Ta ưa những sự ấy, Đức Giê-hô-va phán vậy.'",
     "language": "vi",
     "options": [
       "Sự khôn ngoan",
@@ -537,20 +537,20 @@
     "correctAnswer": [
       1
     ],
-    "content": "Theo Giê-rê-mi 1:1, Giê-rê-mi là con của ai và thuộc loại người gì?",
-    "explanation": "Giê-rê-mi 1:1 — 'Lời của Giê-rê-mi, con trai Hin-kia, một trong các thầy tế lễ ở A-na-tốt, xứ Bên-gia-min.' Giê-rê-mi thuộc dòng tế lễ — nhưng được Chúa gọi làm TIÊN TRI. A-NA-TỐT cách Giê-ru-sa-lem ~5km, làng tế lễ (Giô-suê 21:18). Hin-kia này khác Hin-kia thầy tế lễ thượng phẩm thời Giô-si-a (2 Vua 22).",
+    "content": "Theo Giê-rê-mi 1:1, Giê-rê-mi là con của ai và thuộc gia đình làm nghề gì?",
+    "explanation": "Giê-rê-mi 1:1 chép: 'Lời của Giê-rê-mi, con trai Hinh-kia, một trong các thầy tế lễ ở A-na-tốt, xứ Bên-gia-min.' Câu này xác định ông là con một thầy tế lễ, thuộc dòng tế lễ. A-na-tốt là một thành của người Lê-vi (Giô-suê 21:18). Chức vụ tiên tri của ông được Đức Chúa Trời thiết lập trực tiếp trong các câu sau (Giê-rê-mi 1:5).",
     "language": "vi",
     "options": [
       "Con A-mốt — vua Y-sơ-ra-ên",
-      "Con HIN-KIA — một trong các THẦY TẾ LỄ ở A-na-tốt thuộc đất Bên-gia-min",
-      "Con Đa-vít — vua Giu-đa (theo cách trình bày của text)",
-      "Con Lê-vi — sĩ quan (xét trong văn cảnh)"
+      "Con Hinh-kia — một trong các thầy tế lễ ở A-na-tốt thuộc đất Bên-gia-min",
+      "Con Đa-vít — vua Giu-đa",
+      "Con Lê-vi — một sĩ quan"
     ],
     "tags": [
       "Cựu Ước",
       "Giê-rê-mi",
       "Tiên tri lớn",
-      "Giê-rê-mi con Hin-kia thầy tế lễ",
+      "Giê-rê-mi con Hinh-kia thầy tế lễ",
       "Cơ bản"
     ]
   },
@@ -613,15 +613,15 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "correctAnswer": [
-      3
+      2
     ],
     "content": "Theo Giê-rê-mi 39:1-2, năm thứ NÀO của Sê-đê-kia + tháng NÀO + ngày NÀO thì thành Giê-ru-sa-lem bị PHÁ?",
-    "explanation": "Giê-rê-mi 39:1-2 — 'Năm thứ chín đời Sê-đê-kia, vua Giu-đa, tháng mười, Nê-bu-cát-nết-sa, vua Ba-by-lôn, đem cả đạo binh mình đến vây thành Giê-ru-sa-lem. Năm thứ mười một đời Sê-đê-kia, tháng tư, ngày mồng chín, thành bị phá.' Vây thành 18 tháng. Lúc thành phá: ~ tháng 7 năm 586 TCN. Sự sụp đổ Giê-ru-sa-lem = sự kiện đau thương lớn nhất Cựu Ước; Ca Thương khóc về nó.",
+    "explanation": "Giê-rê-mi 39:1-2 — 'Năm thứ chín đời Sê-đê-kia, vua Giu-đa, tháng mười, Nê-bu-cát-nết-sa, vua Ba-by-lôn, đem cả đạo binh mình đến vây thành Giê-ru-sa-lem. Năm thứ mười một đời Sê-đê-kia, tháng tư, ngày mồng chín, thành bị phá.' Kinh Thánh chỉ ghi tháng bắt đầu vây (tháng 10), không ghi ngày cụ thể. Ngày thành bị phá là ngày mồng 9 tháng 4 năm thứ 11 đời Sê-đê-kia.",
     "language": "vi",
     "options": [
       "Năm 5, tháng 1, ngày 1 (xét trong văn cảnh)",
       "Năm 7, tháng 5, ngày 7 (theo cách trình bày của text)",
-      "Năm 9, tháng 10, ngày 10 — bắt đầu vây; năm 11, tháng 4, ngày 9 — thành PHÁ",
+      "Năm thứ 9 đời Sê-đê-kia, tháng 10, bắt đầu vây; năm thứ 11, tháng 4, ngày 9, thành bị phá",
       "Năm 15, tháng 8, ngày 15 (như được mô tả trong sách)"
     ],
     "tags": [
@@ -693,14 +693,14 @@
     "correctAnswer": [
       3
     ],
-    "content": "Theo Giê-rê-mi 7:4-7, dân Giê-ru-sa-lem cậy điều gì làm SAI LẦM lớn? Lời lặp 3 lần nào là DỐI?",
-    "explanation": "Giê-rê-mi 7:4 — 'Chớ nhờ cậy những lời dối trá rằng: Đền thờ của Đức Giê-hô-va, đền thờ của Đức Giê-hô-va, đền thờ của Đức Giê-hô-va là đây.' Dân nghĩ: ĐỀN bảo vệ thành KHỎI bị diệt — vì đền là CỦA Chúa. Sai: Chúa đã hủy SI-LÔ trước (7:12-14) khi đền ở đó. Cần CẢI ĐỔI sống — không phải dấu hiệu thuộc đền. Đây là 'BÀI GIẢNG ĐỀN THỜ' — câu chuyện chương 26 (suýt bị giết).",
+    "content": "Theo Giê-rê-mi 7:4-7, dân Giê-ru-sa-lem đã cậy vào điều gì một cách sai lầm? Lời nói dối trá nào được nhắc đến trong phân đoạn này?",
+    "explanation": "Giê-rê-mi 7:4 — 'Chớ nhờ cậy những lời dối trá rằng: Đền thờ của Đức Giê-hô-va, đền thờ của Đức Giê-hô-va, đền thờ của Đức Giê-hô-va là đây.' Dân chúng sai lầm khi tin rằng sự hiện diện vật lý của đền thờ (được nhắc đi nhắc lại trong câu nói) sẽ bảo vệ họ khỏi sự phán xét, trong khi Đức Chúa Trời đã từng hủy phá nơi thờ phượng tại Si-lô (7:12-14). Điều Chúa đòi hỏi là sự cải đổi đời sống, chứ không phải chỉ dựa vào biểu tượng tôn giáo. Sự kiện này dẫn đến 'Bài giảng tại đền thờ' và gần như khiến tiên tri Giê-rê-mi bị giết (chương 26).",
     "language": "vi",
     "options": [
       "Cậy luật pháp — 'luật! luật! luật!' (như được mô tả trong sách)",
       "Cậy vua — 'vua! vua! vua!' (xét trong văn cảnh)",
       "Cậy Áp-ra-ham — 'cha! cha! cha!' (theo cách trình bày của text)",
-      "Cậy đền thờ — Lời 3 lần 'ĐỀN THỜ Đức Giê-hô-va, ĐỀN THỜ Đức Giê-hô-va, ĐỀN THỜ Đức Giê-hô-va!' là DỐI TRÁ"
+      "Cậy đền thờ — tin tưởng sai lầm vào câu nói \"Đền thờ của Đức Giê-hô-va, đền thờ của Đức Giê-hô-va, đền thờ của Đức Giê-hô-va là đây\" như một lời bảo đảm an toàn giả dối."
     ],
     "tags": [
       "Cựu Ước",
@@ -801,10 +801,10 @@
     "explanation": "Giê-rê-mi 23:1-4 — 'Đức Giê-hô-va phán: Khốn thay cho những kẻ chăn hủy diệt và làm tan lạc bầy chiên của đồng cỏ ta!... Ta sẽ nhóm hiệp phần sót lại của bầy chiên ta, từ các nước mà ta đã đuổi chúng nó đến, đem chúng nó trở về trong chuồng, và chúng nó sẽ sanh sản đông nhiều. Ta sẽ lập lên những kẻ chăn nuôi chúng nó.' MỤC TỬ ác = lãnh đạo Y-sơ-ra-ên (vua, tế lễ, tiên tri giả). 23:5 sau đó nói về 'CHỒI CÔNG BÌNH' (Mê-si-a) làm Mục Tử thật. Cùng tư tưởng Ê-xê-chi-ên 34.",
     "language": "vi",
     "options": [
-      "Quở các tiên tri giả — chỉ tha (theo cách trình bày của text)",
-      "Quở các vua phương Bắc — chỉ phạt (như được mô tả trong sách)",
-      "Quở dân chung — chỉ kêu gọi (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "Khốn cho NHỮNG MỤC TỬ làm cho BẦY chiên TA bị TAN MẤT — ĐỨC CHÚA TRỜI sẽ NHÓM HỌP CHÚNG NÓ + lập NHỮNG MỤC TỬ KHÁC để chăn"
+      "Quở các tiên tri giả — chỉ tha tội",
+      "Quở các vua ngoại bang — chỉ phạt họ",
+      "Quở dân chúng — chỉ kêu gọi họ ăn năn",
+      "Quở các mục tử ác — hứa nhóm hiệp bầy chiên và lập mục tử mới"
     ],
     "tags": [
       "Cựu Ước",
@@ -823,14 +823,14 @@
     "correctAnswer": [
       0
     ],
-    "content": "Theo Giê-rê-mi 25:11-12, các nước SẼ HẦU VIỆC vua Ba-by-lôn bao nhiêu năm? Sau đó vua Ba-by-lôn ra sao?",
+    "content": "Theo Giê-rê-mi 25:11-12, các nước sẽ phục sự vua Ba-by-lôn bao nhiêu năm? Sau đó vua Ba-by-lôn ra sao?",
     "explanation": "Giê-rê-mi 25:11-12 — 'Cả đất nầy sẽ trở nên hoang vu kinh hoàng, các nước nầy sẽ phục sự vua Ba-by-lôn trong bảy mươi năm. Đức Giê-hô-va phán: Khi bảy mươi năm ấy đã mãn, ta sẽ phạt vua Ba-by-lôn và dân người, vì cớ tội ác chúng nó.' '70 NĂM' lưu đày = 605 (đầu lưu đày) → 538 (Si-ru cho phép trở về). Đa-ni-ên 9 căn cứ vào câu này. Cũng có thể đếm 586 (đền phá) → 516 (đền xây xong) = 70 năm.",
     "language": "vi",
     "options": [
-      "70 NĂM hầu việc vua Ba-by-lôn — sau 70 năm xong, ĐỨC CHÚA TRỜI VẠCH TRẦN VUA BA-BY-LÔN + nước Canh-đê + đất ấy sẽ trở nên HOANG VU đời đời",
-      "30 năm — vua được tha (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "100 năm — vua được tôn vinh (như được mô tả trong sách) (xét theo nội dung gốc)",
-      "10 năm — vua được tôn (theo cách trình bày của text) (như văn bản ghi rõ)"
+      "70 năm — sau đó Đức Chúa Trời sẽ phạt vua Ba-by-lôn và nước ấy",
+      "30 năm — vua được tha",
+      "100 năm — vua được tôn vinh",
+      "10 năm — vua được tôn"
     ],
     "tags": [
       "Cựu Ước",
@@ -855,7 +855,7 @@
     "options": [
       "Đập gậy (xét trong văn cảnh) (theo trình tự câu chuyện)",
       "Trồng cây (theo cách trình bày của text) (xét theo nội dung gốc)",
-      "Làm các DÂY và ÁCH + đeo trên cổ — gửi cho các vua Ê-đôm, Mô-áp, Am-môn, Ty-rơ, Si-đôn — sứ điệp: phục vụ Nê-bu-cát-nết-sa",
+      "Làm dây và ách đeo trên cổ — gửi cho các vua lân cận",
       "Vẽ bản đồ (như được mô tả trong sách) (như văn bản ghi rõ)"
     ],
     "tags": [
@@ -880,7 +880,7 @@
     "language": "vi",
     "options": [
       "Khen Ha-na-nia — chúc phước (như được mô tả trong sách)",
-      "Ha-na-nia khiến dân tin sự dối — Đức Chúa Trời chưa sai người ấy; ngươi sẽ CHẾT TRONG NĂM NÀY — Ha-na-nia chết tháng 7 cùng năm",
+      "Quở Ha-na-nia đã nói dối — tuyên bố Ha-na-nia sẽ chết trong năm đó",
       "Ha-na-nia ăn năn (xét trong văn cảnh) (theo trình tự câu chuyện)",
       "Hai người hòa giải (theo cách trình bày của text) (như văn bản ghi rõ)"
     ],
@@ -908,7 +908,7 @@
       "Phải nổi loạn ngay lập tức (như được mô tả trong sách) (như văn bản ghi rõ)",
       "Phải tuyệt thực (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phần đoạn liên quan)",
       "Phải xây căn cứ kín đáo (theo cách trình bày của text) (xét theo nội dung gốc)",
-      "Phải XÂY NHÀ + LẬP VƯỜN + CƯỚI VỢ + sinh CON CÁI + tăng số trong xứ; cầu sự BÌNH AN của THÀNH ấy + cầu cho thành — vì sự bình an thành = bình an của các ngươi"
+      "Xây nhà, lập vườn, lập gia đình, cầu bình an cho thành Ba-by-lôn"
     ],
     "tags": [
       "Cựu Ước",
@@ -931,7 +931,7 @@
     "explanation": "Giê-rê-mi 29:10-14 — 'Đức Giê-hô-va phán như vầy: Khi bảy mươi năm sẽ mãn cho Ba-by-lôn, ta sẽ thăm viếng các ngươi, sẽ làm trọn lời tốt lành cho các ngươi, khiến các ngươi trở về đất nầy... Các ngươi sẽ tìm ta, và gặp được, khi các ngươi tìm kiếm ta hết lòng.' Câu 11 nổi tiếng 'TA BIẾT Ý ĐỊNH TA NGHĨ về các ngươi, là ý ĐỊNH BÌNH AN'. Tổng thể: 70 năm + tìm hết lòng + tìm thấy.",
     "language": "vi",
     "options": [
-      "Sau 70 NĂM tại Ba-by-lôn — sẽ thăm + đem trở về; tìm kiếm với HẾT LÒNG sẽ TÌM ĐƯỢC Ngài",
+      "70 năm — Đức Chúa Trời sẽ thăm viếng và đem họ về; nếu tìm kiếm hết lòng sẽ gặp Ngài",
       "Sau 50 năm — chỉ một số sẽ về (theo cách trình bày của text)",
       "Sau 100 năm — toàn bộ hủy diệt (như được mô tả trong sách)",
       "Sau 30 năm — chỉ tổ phụ về (xét trong văn cảnh)"
@@ -958,7 +958,7 @@
     "language": "vi",
     "options": [
       "Ra-chên hát ru (xét trong văn cảnh)",
-      "Ra-chên KHÓC con cái mình + KHÔNG chịu được an ủi vì chúng nó KHÔNG còn",
+      "Ra-chên khóc con cái mình, không chịu an ủi",
       "Ra-chên cười vui (theo cách trình bày của text)",
       "Ra-chên cầu nguyện (như được mô tả trong sách)"
     ],
@@ -979,13 +979,13 @@
     "correctAnswer": [
       2
     ],
-    "content": "Theo Giê-rê-mi 32:6-15, trong khi bị giam (Babylon vây Giê-ru-sa-lem), Đức Chúa Trời truyền Giê-rê-mi làm gì như DẤU HI VỌNG?",
-    "explanation": "Giê-rê-mi 32:6-15 — 'Hỡi anh em ta, đầu vào ngày dày dặc nhất khi quân Babylon vây thành, Hê-na-nê-ên, con bác ta, đến cùng tôi, theo lời Đức Giê-hô-va, mà nói rằng: Ta xin ngươi mua ruộng của ta ở A-na-tốt... Vì Đức Giê-hô-va vạn quân, Đức Chúa Trời của Y-sơ-ra-ên, phán như vầy: Người ta sẽ còn mua nhà, ruộng, và vườn nho trong đất nầy.' SỰ MUA = ĐẦU TƯ của ĐỨC TIN — Giê-rê-mi tin Chúa sẽ phục hồi xứ.",
+    "content": "Theo Giê-rê-mi 32:6-15, trong khi bị giam (Ba-by-lôn vây Giê-ru-sa-lem), Đức Chúa Trời truyền Giê-rê-mi làm gì như DẤU HI VỌNG?",
+    "explanation": "Giê-rê-mi 32:6-15 — Trong lúc thành bị vây, Giê-rê-mi được Chúa truyền mua một thửa ruộng từ người thân tại A-na-tốt. Hành động này là một dấu hiệu tiên tri về sự phục hồi tương lai, vì Đức Giê-hô-va phán rằng người ta sẽ lại mua nhà, ruộng, và vườn nho trong xứ.",
     "language": "vi",
     "options": [
       "Bán toàn bộ tài sản (như được mô tả trong sách)",
       "Đốt cuộn sách (xét trong văn cảnh) (theo trình tự câu chuyện)",
-      "MUA RUỘNG ĐẤT từ con chú mình tại A-na-tốt — vì 'NHÀ + RUỘNG + VƯỜN nho lại sẽ được mua trong xứ nầy'",
+      "Mua ruộng đất từ người thân tại A-na-tốt — làm dấu hiệu hy vọng",
       "Trốn khỏi thành (theo cách trình bày của text)"
     ],
     "tags": [
@@ -1011,7 +1011,7 @@
     "options": [
       "Sẽ làm Ba-rúc giàu có (xét trong văn cảnh)",
       "Sẽ làm Ba-rúc tiên tri lớn (theo cách trình bày của text)",
-      "KHÔNG hứa vinh quang lớn — nhưng SẼ ban CHO Ba-rúc MẠNG SỐNG mình LÀM CỦA CƯỚP nơi nào người sẽ đi",
+      "Không hứa vinh quang lớn, nhưng sẽ bảo vệ mạng sống Ba-rúc",
       "Sẽ ban Ba-rúc nhà cao cửa rộng (như được mô tả trong sách)"
     ],
     "tags": [
@@ -1031,14 +1031,14 @@
     "correctAnswer": [
       3
     ],
-    "content": "Theo Giê-rê-mi 35:5-19, Giê-rê-mi mời nhóm RÊ-CÁP-BÍT vào đền thờ + đặt RƯỢU + nói 'hãy uống' — họ đáp gì? Giê-rê-mi rút bài học gì?",
-    "explanation": "Giê-rê-mi 35:6-7, 14, 18-19 — 'Họ thưa: Chúng tôi không uống rượu; vì Giô-na-đáp, con của tổ chúng tôi là Rê-cáp, đã răn chúng tôi rằng: Các ngươi cùng con cháu các ngươi đời đời chớ uống rượu... Đây là cớ tại sao Giô-na-đáp con trai Rê-cáp sẽ chẳng thiếu một người trước mặt ta để hầu việc ta luôn luôn.' Rê-cáp-bít vâng tổ phụ qua nhiều thế hệ — Y-sơ-ra-ên KHÔNG vâng Đức Chúa Trời. KHÔNG nói ai phải kiêng rượu — đây là VÂNG LỜI nguyên tắc.",
+    "content": "Theo Giê-rê-mi 35:5-19, Giê-rê-mi mời nhóm Rê-cáp-bít vào đền thờ, đặt rượu trước mặt và nói 'hãy uống đi'. Họ đã đáp lại thế nào và bài học rút ra là gì?",
+    "explanation": "Giê-rê-mi 35:6-7, 14, 18-19 — Họ thưa: 'Chúng tôi không uống rượu; vì Giô-na-đáp, con của tổ chúng tôi là Rê-cáp, đã truyền dạy chúng tôi... đời đời chớ uống rượu.' Đức Chúa Trời dùng họ làm gương về sự vâng lời tổ phụ để quở trách dân Giu-đa vì đã không vâng lời Ngài.",
     "language": "vi",
     "options": [
-      "Họ uống — bị quở trách (theo cách trình bày của text) (như văn bản ghi rõ) (theo bối cảnh đoạn này)",
-      "Họ uống — được phước (xét trong văn cảnh) (theo trình tự câu chuyện) (đối chiếu với các phần đoạn liên quan)",
-      "Họ uống nửa chừng — được tha (như được mô tả trong sách) (xét theo nội dung gốc)",
-      "Họ TỪ CHỐI — vì tổ phụ Giô-na-đáp đã ra LỆNH chúng tôi không bao giờ uống rượu; Đức Chúa Trời nêu họ làm GƯƠNG: bài học vâng lời tổ phụ TRONG KHI dân Y-sơ-ra-ên KHÔNG vâng lời ĐỨC CHÚA TRỜI"
+      "Họ uống — và bị quở trách.",
+      "Họ uống — và được phước.",
+      "Họ uống nửa chừng — rồi được tha.",
+      "Họ từ chối — vì vâng lời dạy của tổ phụ; Đức Chúa Trời dùng họ làm gương về sự vâng lời."
     ],
     "tags": [
       "Cựu Ước",

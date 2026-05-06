@@ -140,11 +140,11 @@
     "verseStart": 9,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Lời cầu nguyện \"Lạy Cha chúng tôi ở trên trời\" bắt đầu như thế nào?",
+    "content": "Lời cầu nguyện \"Lạy Cha chúng tôi ở trên trời\" (Ma-thi-ơ 6:9-10) bao gồm những lời nào sau đây?",
     "correctAnswer": [
       2
     ],
-    "explanation": "Kinh Thánh ghi: \"Lạy Cha chúng tôi ở trên trời! Danh Cha được tôn thánh; Nước Cha được đến; Ý Cha được nên\" (Ma-thi-ơ 6:9-10).",
+    "explanation": "Kinh Thánh ghi: \"Lạy Cha chúng tôi ở trên trời! Danh Cha được tôn thánh; Nước Cha được đến; Ý Cha được nên\" (Ma-thi-ơ 6:9-10). Cả ba ý 'Danh Cha được tôn thánh', 'Nước Cha được đến' và 'Ý Cha được nên' đều là một phần của lời cầu nguyện này.",
     "language": "vi",
     "options": [
       "Ý Cha được nên",
@@ -272,20 +272,20 @@
   {
     "book": "Matthew",
     "chapter": 5,
-    "verseStart": 14,
+    "verseStart": 13,
+    "verseEnd": 14,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Chúa Giê-su nói các môn đồ là gì của thế gian?",
+    "content": "Trong Ma-thi-ơ 5:13-14, Chúa Giê-su dùng những hình ảnh nào để mô tả các môn đồ?",
     "correctAnswer": [
-      3
+      2
     ],
     "explanation": "Kinh Thánh ghi: \"Các ngươi là muối của đất... Các ngươi là sự sáng của thế gian\" (Ma-thi-ơ 5:13-14).",
     "language": "vi",
     "options": [
       "Ánh sáng của thế gian",
-      "Men của bột",
       "Muối của đất",
-      "Cả ba câu trên"
+      "Cả hai hình ảnh trên"
     ],
     "tags": [
       "Tân Ước",
@@ -310,9 +310,9 @@
     "language": "vi",
     "options": [
       "Đức Chúa Trời",
-      "Cả ba câu trên",
       "Cha các ngươi ở trên trời",
-      "Thiên nhiên"
+      "Thiên nhiên",
+      "Cả ba câu trên"
     ],
     "tags": [
       "Tân Ước",
@@ -356,17 +356,17 @@
     "verseStart": 26,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Khi sóng biển nổi lên, Chúa Giê-su quở trách ai?",
+    "content": "Trong Ma-thi-ơ 8:26, Chúa Giê-su quở trách điều gì?",
     "correctAnswer": [
-      2
+      0
     ],
     "explanation": "Kinh Thánh ghi: \"Ngài bèn đứng dậy, quở gió và biển, thì liền yên lặng như tờ\" (Ma-thi-ơ 8:26).",
     "language": "vi",
     "options": [
+      "Gió và biển",
+      "Các môn đồ",
       "Sóng biển",
-      "Gió",
-      "Cả ba câu trên",
-      "Các môn đồ"
+      "Cả gió biển và các môn đồ"
     ],
     "tags": [
       "Tân Ước",
@@ -383,17 +383,17 @@
     "verseStart": 6,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Chúa Giê-su nói Con người có quyền gì trên đất?",
+    "content": "Trong Ma-thi-ơ 9:6, Chúa Giê-su nói Con người có quyền gì trên đất?",
     "correctAnswer": [
-      1
+      0
     ],
-    "explanation": "Kinh Thánh ghi: \"Vả, để các ngươi biết Con người ở dưới đất có quyền tha tội\" (Ma-thi-ơ 9:6).",
+    "explanation": "Kinh Thánh ghi: \"Vả, để các ngươi biết Con người ở dưới đất có quyền tha tội\" (Ma-thi-ơ 9:6). Chữa bệnh là dấu lạ Ngài làm để chứng minh quyền này.",
     "language": "vi",
     "options": [
       "Tha tội",
-      "Cả hai câu trên",
-      "Không có quyền gì",
-      "Chữa bệnh"
+      "Chữa bệnh",
+      "Cả quyền tha tội và chữa bệnh",
+      "Xét đoán"
     ],
     "tags": [
       "Tân Ước",
@@ -412,15 +412,15 @@
     "type": "multiple_choice_single",
     "content": "Chúa Giê-su nói đừng sợ ai có thể giết thân thể mà không giết được linh hồn?",
     "correctAnswer": [
-      3
+      0
     ],
     "explanation": "Kinh Thánh ghi: \"Đừng sợ kẻ giết thân thể mà không thể giết linh hồn\" (Ma-thi-ơ 10:28).",
     "language": "vi",
     "options": [
+      "Kẻ giết thân thể",
       "Kẻ bắt bớ",
       "Kẻ thù",
-      "Kẻ ác",
-      "Cả ba câu trên"
+      "Kẻ ác"
     ],
     "tags": [
       "Tân Ước",
@@ -491,17 +491,17 @@
     "verseStart": 18,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Chúa Giê-su nói sẽ xây Hội thánh trên gì?",
+    "content": "Chúa Giê-su nói sẽ xây Hội thánh Ngài trên điều gì?",
     "correctAnswer": [
-      3
+      0
     ],
-    "explanation": "Kinh Thánh ghi: \"Ta sẽ xây Hội thánh ta trên đá nầy\" - ám chỉ lời tuyên xưng của Phi-e-rơ (Ma-thi-ơ 16:18).",
+    "explanation": "Kinh Thánh ghi: \"Ta sẽ xây Hội thánh ta trên đá nầy\" (Ma-thi-ơ 16:18). 'Đá' ở đây thường được hiểu là nền tảng là lời tuyên xưng của Phi-e-rơ về Đấng Christ.",
     "language": "vi",
     "options": [
-      "Lời Chúa",
-      "Cả ba câu trên",
-      "Đức tin",
-      "Đá"
+      "Đá (nền tảng là lời tuyên xưng của Phi-e-rơ)",
+      "Chính Phi-e-rơ (con người)",
+      "Lời Chúa (Kinh Thánh)",
+      "Đức tin nói chung"
     ],
     "tags": [
       "Tân Ước",
@@ -658,13 +658,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ma 4:4 - Chúa Giê-su dùng Lời Chúa (Phục truyền 8:3) để chống lại mọi cám dỗ của Sa-tan.",
+    "explanation": "Ma-thi-ơ 4:4 - Chúa Giê-su dùng Lời Chúa (Phục truyền 8:3) để chống lại mọi cám dỗ của Sa-tan.",
     "language": "vi",
     "options": [
       "Ta không đói",
       "Hãy lui ra Sa-tan",
       "Ngươi không được cám dỗ Chúa",
-      "Người ta sống không chỉ nhờ bánh, nhưng bởi mọi lời Chúa"
+      "Có lời chép rằng: Người ta sống chẳng phải chỉ nhờ bánh mà thôi, nhưng nhờ mọi lời nói ra từ miệng Đức Chúa Trời."
     ],
     "tags": [
       "Tân Ước",
@@ -767,13 +767,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ma 7:14 - Cửa hẹp, đường chật dẫn đến sự sống, và ít người tìm được. Cửa rộng, đường khoan dẫn đến sự hủy diệt.",
+    "explanation": "Ma-thi-ơ 7:14 - Cửa hẹp, đường chật dẫn đến sự sống, và ít người tìm được. Cửa rộng, đường khoan dẫn đến sự hủy diệt.",
     "language": "vi",
     "verseEnd": 14,
     "options": [
       "Sự bình an",
       "Sự khôn ngoan",
-      "Thiên đàng",
+      "Sự hủy diệt",
       "Sự sống"
     ],
     "tags": [
@@ -872,6 +872,7 @@
     "book": "Matthew",
     "chapter": 11,
     "verseStart": 28,
+    "verseEnd": 28,
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Chúa Giê-su mời: \"Hỡi kẻ mệt mỏi và gánh nặng, hãy đến cùng ta, ta sẽ cho các ngươi được ___\"",
@@ -1097,7 +1098,7 @@
     "options": [
       "Áo dài và bánh không men",
       "Áo trắng và rau cải",
-      "Áo lông lạc đà, dây lưng da; ăn châu chấu và mật ong rừng",
+      "Áo bằng lông lạc đà, buộc dây lưng bằng da; ăn châu chấu và mật ong rừng",
       "Áo da và thịt cừu"
     ],
     "tags": [
@@ -1350,16 +1351,16 @@
     "verseEnd": 15,
     "difficulty": "medium",
     "type": "multiple_choice_single",
-    "content": "Theo Ma-thi-ơ 6:14-15, điều kiện để Cha trên trời tha tội cho mình là gì?",
+    "content": "Theo Ma-thi-ơ 6:14-15, mối liên hệ giữa việc chúng ta tha thứ cho người khác và sự tha thứ của Cha trên trời được mô tả như thế nào?",
     "correctAnswer": [
       2
     ],
-    "explanation": "Ma-thi-ơ 6:14-15 — 'Vả, nếu các ngươi tha lỗi cho người ta, thì Cha các ngươi ở trên trời cũng sẽ tha thứ các ngươi. Song nếu không tha lỗi cho người ta, thì Cha các ngươi cũng sẽ không tha lỗi cho các ngươi.'",
+    "explanation": "Ma-thi-ơ 6:14-15 — 'Vả, nếu các ngươi tha lỗi cho người ta, thì Cha các ngươi ở trên trời cũng sẽ tha thứ các ngươi. Song nếu không tha lỗi cho người ta, thì Cha các ngươi cũng sẽ không tha lỗi cho các ngươi.' Phân đoạn này, trong ngữ cảnh dạy về sự cầu nguyện, nhấn mạnh mối liên hệ thiết yếu giữa thái độ tha thứ của chúng ta với người khác và việc chúng ta nhận được sự tha thứ từ Cha.",
     "language": "vi",
     "options": [
       "Phải dâng tế lễ",
       "Phải đi đền thờ",
-      "Phải tha lỗi cho người khác",
+      "Chúng ta được tha thứ khi và chỉ khi chúng ta tha thứ cho người khác",
       "Phải ăn năn nhiều lần"
     ],
     "tags": [
@@ -1618,7 +1619,7 @@
     "correctAnswer": [
       0
     ],
-    "explanation": "Ma-thi-ơ 10:1-4 — Mười hai sứ đồ được liệt kê: Si-môn (Phi-e-rơ), Anh-rê, Gia-cơ, Giăng, Phi-líp, Ba-thê-lê-my, Thô-ma, Ma-thi-ơ, Gia-cơ con A-phê, Tha-đê, Si-môn người Ca-na-an, Giu-đa Ích-ca-ri-ốt.",
+    "explanation": "Ma-thi-ơ 10:2-4 — Mười hai sứ đồ được liệt kê: Si-môn (Phi-e-rơ), Anh-rê, Gia-cơ con Xê-bê-đê, Giăng, Phi-líp, Ba-thê-lê-my, Thô-ma, Ma-thi-ơ, Gia-cơ con A-phê, Giu-đa con Gia-cơ (còn gọi là Tha-đê), Si-môn người Ca-na-an, Giu-đa Ích-ca-ri-ốt.",
     "language": "vi",
     "options": [
       "12 sứ đồ",
@@ -1670,13 +1671,13 @@
     "correctAnswer": [
       3
     ],
-    "explanation": "Ma-thi-ơ 11:5 — 'Kẻ mù được thấy, kẻ què được đi, kẻ phung được sạch, kẻ điếc được nghe, kẻ chết được sống lại, và kẻ khó khăn được nghe rao giảng Tin Lành.'",
+    "explanation": "Ma-thi-ơ 11:5 — 'Kẻ mù được thấy, kẻ què được đi, kẻ phung được sạch, kẻ điếc được nghe, kẻ chết được sống lại, và kẻ nghèo được nghe rao giảng Tin Lành.'",
     "language": "vi",
     "options": [
       "Chỉ chữa lành các bệnh",
       "Đuổi quỷ và rao giảng",
       "Lập đền thờ và xét đoán",
-      "Mù thấy, què đi, phung sạch, điếc nghe, chết sống lại, khó khăn nghe Tin Lành"
+      "Mù thấy, què đi, phung sạch, điếc nghe, chết sống lại, nghèo nghe Tin Lành"
     ],
     "tags": [
       "Tân Ước",
@@ -1753,7 +1754,7 @@
     "language": "vi",
     "options": [
       "Tội giết người",
-      "Tội tà dâm",
+      "Tội trộm cắp",
       "Tội ngoại tình",
       "Lời phạm thượng đến Đức Thánh Linh"
     ],
@@ -2142,7 +2143,7 @@
     "verseStart": 20,
     "difficulty": "easy",
     "type": "multiple_choice_single",
-    "content": "Chúa Jêsus hứa Ngài hiện diện ở giữa khi có bao nhiêu người nhóm họp nhân danh Ngài?",
+    "content": "Theo Ma-thi-ơ 18:20, Chúa Jêsus hứa Ngài hiện diện ở giữa khi những ai nhóm họp nhân danh Ngài?",
     "correctAnswer": [
       3
     ],
@@ -2169,11 +2170,11 @@
     "verseEnd": 35,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Trong ngụ ngôn người đầy tớ chẳng tha thứ, vua tha cho người ấy bao nhiêu nợ?",
+    "content": "Trong ngụ ngôn người đầy tớ chẳng tha thứ, người đầy tớ đó mắc nợ vua bao nhiêu?",
     "correctAnswer": [
       1
     ],
-    "explanation": "Ma-thi-ơ 18:24 — 'Khi vua khởi soát sổ, thì có người đem nộp một tên kia mắc nợ vua một vạn ta-lâng (10.000 ta-lâng).' Đó là khoản nợ khổng lồ tương đương hàng tỷ.",
+    "explanation": "Ma-thi-ơ 18:24 — 'Khi vua khởi soát sổ, thì có người đem nộp một tên kia mắc nợ vua một vạn ta-lâng (10.000 ta-lâng).' Đó là khoản nợ khổng lồ tương đương hàng tỷ, sau đó đã được vua tha.",
     "language": "vi",
     "options": [
       "100 đơ-ni-ê",
@@ -2700,7 +2701,7 @@
     "correctAnswer": [
       2
     ],
-    "explanation": "Ma-thi-ơ 27:54 — 'Khi đội trưởng và những lính cùng giữ Đức Chúa Jêsus, thấy đất rúng động và những điều xảy đến, thì sợ hãi lắm, mà nói rằng: Thật người nầy là Con Đức Chúa Trời.'",
+    "explanation": "Ma-thi-ơ 27:54 — 'Khi đội trưởng và những lính cùng giữ Đức Chúa Jêsus, thấy đất rung động và mọi việc xảy ra, thì sợ hãi lắm, mà nói rằng: Thật người nầy là Con Đức Chúa Trời.'",
     "language": "vi",
     "options": [
       "Đây là tiên tri lớn",
@@ -2805,7 +2806,7 @@
     ],
     "verseEnd": 22,
     "content": "Trong Ma-thi-ơ 1-2, Giô-sép (chồng Ma-ri) nhận sự hướng dẫn của Đức Chúa Trời qua giấc mộng tổng cộng bao nhiêu lần?",
-    "explanation": "Ma-thi-ơ ghi 4 lần Giô-sép được hướng dẫn qua mộng: 1:20 (lấy Ma-ri), 2:13 (trốn sang Ai-cập), 2:19 (trở về Y-sơ-ra-ên), 2:22 (lui về Ga-li-lê).",
+    "explanation": "Ma-thi-ơ ghi 4 lần Giô-sép được hướng dẫn qua mộng: 1:20 (lấy Ma-ri), 2:13 (trốn sang Ai-cập), 2:19 (trở về Y-sơ-ra-ên), 2:22 (lui về Ga-li-lê). Các giấc mơ khác trong phân đoạn này (ví dụ cho các nhà thông thái) không được tính vào.",
     "language": "vi",
     "options": [
       "3 lần",
@@ -2940,7 +2941,7 @@
       1
     ],
     "verseEnd": 51,
-    "content": "Chúa Jêsus tiên báo về 'sự gớm ghiếc tàn nát' đứng trong nơi thánh (24:15). Sự kiện cụ thể nào xảy ra với đền thờ ngay thời điểm Ngài chết trên thập tự (Ma-thi-ơ 27:51)?",
+    "content": "Sự kiện cụ thể nào xảy ra với đền thờ ngay thời điểm Chúa Jêsus chết trên thập tự (Ma-thi-ơ 27:51)?",
     "explanation": "Ma-thi-ơ 27:51 — 'bức màn của đền thờ bị xé ra làm hai từ trên chí dưới'. Hành động 'từ trên xuống' khẳng định đây là việc của Đức Chúa Trời, mở lối vào nơi chí thánh.",
     "language": "vi",
     "options": [
@@ -2992,15 +2993,15 @@
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "correctAnswer": [
-      1
+      0
     ],
     "verseEnd": 38,
     "content": "Sau khi Chúa Jêsus nuôi 5,000 người (Ma-thi-ơ 14) rồi 4,000 người (Ma-thi-ơ 15), số giỏ thức ăn dư còn lại lần lượt là bao nhiêu?",
-    "explanation": "Ma-thi-ơ 14:20 — '12 giỏ' (kophinos) sau phép lạ 5,000. Ma-thi-ơ 15:37 — '7 giỏ' (spuridas, giỏ lớn hơn) sau phép lạ 4,000. Hai từ Hy-lạp khác nhau cho hai loại giỏ.",
+    "explanation": "Ma-thi-ơ 14:20 — '12 giỏ' (kophinos) sau phép lạ 5,000 người. Ma-thi-ơ 15:37 — '7 giỏ' (spuridas, giỏ lớn hơn) sau phép lạ 4,000 người. Hai từ Hy Lạp khác nhau cho hai loại giỏ. Thứ tự là 12 giỏ (cho 5,000) rồi 7 giỏ (cho 4,000).",
     "language": "vi",
     "options": [
-      "7 giỏ và 12 giỏ",
       "12 giỏ và 7 giỏ",
+      "7 giỏ và 12 giỏ",
       "5 giỏ và 4 giỏ",
       "12 giỏ và 5 giỏ"
     ],
@@ -3049,8 +3050,8 @@
       2
     ],
     "verseEnd": 33,
-    "content": "Ma-thi-ơ 22 ghi hai nhóm tôn giáo gài bẫy Chúa Jêsus với hai câu hỏi khác nhau. Người Sa-đu-sê hỏi điều gì?",
-    "explanation": "Ma-thi-ơ 22:23-28 — Sa-đu-sê (không tin sự sống lại) hỏi câu hỏi giả thiết về 'người đàn bà 7 lần chồng' để bài bác sự sống lại. Pha-ri-si hỏi về thuế Sê-sa (22:15-22) và điều răn lớn nhất (22:34-40).",
+    "content": "Ma-thi-ơ 22 ghi lại các cuộc đối thoại khi các nhóm tôn giáo gài bẫy Chúa Jêsus. Người Sa-đu-sê hỏi điều gì?",
+    "explanation": "Ma-thi-ơ 22:23-28 — Sa-đu-sê (không tin sự sống lại) hỏi câu hỏi giả thiết về 'người đàn bà 7 lần chồng' để bài bác sự sống lại. Pha-ri-si hỏi về thuế Sê-sa (22:15-22) và một thầy dạy luật hỏi về điều răn lớn nhất (22:34-40).",
     "language": "vi",
     "options": [
       "Có nên nộp thuế cho Sê-sa hay không nộp",
@@ -3078,13 +3079,13 @@
       3
     ],
     "verseEnd": 4,
-    "content": "Theo danh sách 12 sứ đồ trong Ma-thi-ơ 10:2-4, người nào được liệt kê tên bằng một danh thay thế (alias) cụ thể? (chọn tất cả đúng)",
-    "explanation": "Ma-thi-ơ 10:3-4 — 'Ma-thi-ơ là người thâu thuế', 'Tha-đê' (một số bản chép Lê-bê), 'Si-môn người Ca-na-an' (Hê-bơ-rơ qana — nhiệt thành). Phi-e-rơ chỉ có 'gọi là Phi-e-rơ' thay tên Si-môn (10:2) — không phải alias bổ sung.",
+    "content": "Theo danh sách 12 sứ đồ trong Ma-thi-ơ 10:2-4, những sứ đồ nào được liệt kê kèm theo một danh xưng, nghề nghiệp hoặc biệt danh bổ sung (alias) ngay trong câu Kinh Thánh đó? (chọn tất cả đúng)",
+    "explanation": "Ma-thi-ơ 10:2-4 — Ma-thi-ơ được mô tả là 'người thâu thuế' (c.3). Si-môn được gọi là 'người Ca-na-an' (nghĩa là người nhiệt thành, c.4). Giu-đa (con của Gia-cơ) còn được gọi là 'Tha-đê' (c.4), và một số bản chép ghi là 'Lê-bê'. Phi-e-rơ được giới thiệu là 'Si-môn, gọi là Phi-e-rơ' (c.2), đây là tên chính được Chúa đặt, không phải alias bổ sung trong ngữ cảnh danh sách này.",
     "language": "vi",
     "options": [
-      "Ma-thi-ơ — được mô tả rõ là 'người thâu thuế'",
-      "Phi-e-rơ — anh của Anh-rê (không có alias bổ sung)",
-      "Si-môn — người Ca-na-an (zēlōtēs nghĩa nhiệt thành)",
+      "Ma-thi-ơ — được mô tả là 'người thâu thuế'",
+      "Phi-e-rơ — được giới thiệu là 'Si-môn, gọi là Phi-e-rơ' (không có mô tả/alias bổ sung khác)",
+      "Si-môn — được gọi là 'người Ca-na-an' (nghĩa là người nhiệt thành)",
       "Tha-đê — cũng được gọi là Lê-bê trong một số bản chép"
     ],
     "tags": [
@@ -3108,13 +3109,13 @@
     ],
     "verseEnd": 18,
     "content": "Ma-thi-ơ 1-2 trích dẫn các lời tiên tri Cựu Ước được ứng nghiệm trong sự ra đời của Chúa Jêsus. Câu nào là một trong những trích dẫn ĐÓ? (chọn tất cả đúng)",
-    "explanation": "Ma-thi-ơ 1:23 trích Ê-sai 7:14, 2:6 trích Mi-chê 5:2, 2:15 trích Ô-sê 11:1, 2:18 trích Giê-rê-mi 31:15. Sa-mu-ên xức dầu Đa-vít không phải lời tiên tri sinh nhật Chúa Jêsus.",
+    "explanation": "Ma-thi-ơ 1:23 trích Ê-sai 7:14, 2:6 trích Mi-chê 5:2, 2:15 trích Ô-sê 11:1, 2:18 trích Giê-rê-mi 31:15. Sự kiện Ra-chên khóc con mình là lời tiên tri được ứng nghiệm.",
     "language": "vi",
     "options": [
       "Một nữ đồng trinh sẽ sinh con (Ê-sai 7:14)",
       "Đấng cai trị sẽ ra từ Bết-lê-hem (Mi-chê 5:2)",
       "Ta đã gọi Con ta ra khỏi Ai-cập (Ô-sê 11:1)",
-      "Sa-mu-ên xức dầu cho Đa-vít làm vua (1 Sa-mu-ên 16)"
+      "Có tiếng than khóc, khóc lóc trong Ra-ma (Giê-rê-mi 31:15)"
     ],
     "tags": [
       "Tân Ước",
@@ -3216,7 +3217,7 @@
     ],
     "verseEnd": 14,
     "content": "Trong Ma-thi-ơ 7:13-14, Chúa Jêsus dạy về 'cửa hẹp' và 'cửa rộng'. Lý do thần học cốt yếu để chọn cửa hẹp là gì theo chính lời text?",
-    "explanation": "Ma-thi-ơ 7:13-14 — 'Cửa rộng và đường khoảng khoát dẫn đến sự hư mất; nhiều người đi vào đó. Còn cửa hẹp và đường chật dẫn đến sự sống; kẻ kiếm được thì ít'. Chọn cửa hẹp vì vận mệnh đời đời, không vì lợi ích trước mắt.",
+    "explanation": "Ma-thi-ơ 7:13-14 — 'Cửa rộng và đường khoảng khoát dẫn đến sự hư mất; nhiều người đi vào đó. Còn cửa hẹp và đường chật dẫn đến sự sống; kẻ kiếm được thì ít'. Chọn cửa hẹp vì nó dẫn đến sự sống, còn cửa rộng dẫn đến sự hư mất.",
     "language": "vi",
     "options": [
       "Vì cửa hẹp dẫn đến sự sung túc về vật chất ngay trong đời này",
@@ -3243,7 +3244,7 @@
     ],
     "verseEnd": 13,
     "content": "Ma-thi-ơ 9:13 — Chúa Jêsus trích Ô-sê 6:6 'Ta muốn sự thương xót, không muốn của lễ' để biện minh cho việc nào của Ngài?",
-    "explanation": "Ma-thi-ơ 9:9-13 — Pha-ri-si trách Chúa ăn cùng người thâu thuế (Ma-thi-ơ và bạn ông). Chúa đáp bằng Ô-sê 6:6, dạy rằng tấm lòng thương xót cho tội nhân quan trọng hơn nghi lễ.",
+    "explanation": "Ma-thi-ơ 9:9-13 — Pha-ri-si trách Chúa ăn cùng người thâu thuế (Ma-thi-ơ và bạn ông). Chúa đáp: \"Người khỏe mạnh không cần thầy thuốc, song người đau ốm cần. Hãy đi, học cho biết câu nầy: Ta muốn sự thương xót, không muốn của lễ. Vì ta đến đây không phải để kêu người công bình, song kêu kẻ có tội.\" Ngài dùng Ô-sê 6:6 để biện minh cho mục đích và hành động của Ngài là đến với kẻ có tội.",
     "language": "vi",
     "options": [
       "Ngài chữa lành người mù vào ngày Sa-bát giữa đám đông",
@@ -3352,7 +3353,7 @@
     ],
     "verseEnd": 46,
     "content": "Ma-thi-ơ 27:46 — Chúa Jêsus kêu lớn trên thập tự: 'Ê-li, Ê-li, lam-ma-sa-bác-tha-ni?' Câu này có ý nghĩa thần học và văn học nào? (chọn tất cả đúng)",
-    "explanation": "Ma-thi-ơ 27:46 trích Thi 22:1 (A) — thi thiên bắt đầu trong khổ đau nhưng kết bằng đắc thắng (Thi 22:22-31). Theo lý thuyết chuộc tội (B), Chúa gánh hình phạt thay dân Ngài và bị Cha bỏ. Đám đông HIỂU SAI (C) tưởng Ngài gọi Ê-li (27:47), nhưng Chúa không thật sự xin các môn đồ giải cứu (D không đúng).",
+    "explanation": "Ma-thi-ơ 27:46 trích Thi 22:1 (A) — thi thiên bắt đầu trong khổ đau nhưng kết bằng đắc thắng (Thi 22:22-31). Theo lý thuyết chuộc tội (B), Chúa gánh hình phạt thay dân Ngài và bị Cha bỏ. Đám đông hiểu sai (xem option D) tưởng Ngài gọi Ê-li (27:47), nhưng đây không phải là ý nghĩa thần học hay văn học của lời Chúa kêu. Chúa cũng không thật sự xin các môn đồ giải cứu (C không đúng).",
     "language": "vi",
     "options": [
       "Là sự trích dẫn Thi Thiên 22:1, một thi thiên về sự khổ đau và đắc thắng cuối cùng",
@@ -3379,7 +3380,7 @@
     ],
     "verseEnd": 20,
     "content": "Ma-thi-ơ 18:20 — 'Vì nơi nào có hai ba người nhân danh ta nhóm họp, ta ở giữa'. Theo bối cảnh trực tiếp 18:15-19, lời hứa này áp dụng cụ thể cho hoàn cảnh nào?",
-    "explanation": "Ma-thi-ơ 18:15-20 nói về kỷ luật hội thánh: nếu anh em phạm tội → khuyên riêng → đem 1-2 chứng nhân → trình hội thánh. 'Hai ba người' (18:20) ban đầu chỉ các nhân chứng và quyết định hội thánh, sau mới mở rộng cho cầu nguyện hiệp ý (18:19).",
+    "explanation": "Ma-thi-ơ 18:15-20 nói về kỷ luật hội thánh: nếu anh em phạm tội → khuyên riêng → đem 1-2 chứng nhân → trình hội thánh. Câu 19 hứa về sự hiệp ý cầu nguyện, và câu 20 (\"Vì nơi nào có hai ba người nhân danh ta nhóm họp, ta ở giữa\") là cơ sở cho lời hứa đó, áp dụng trực tiếp cho tiến trình kỷ luật và sự hiệp nhất cầu nguyện của hội thánh.",
     "language": "vi",
     "options": [
       "Cho mọi cuộc thờ phượng tôn giáo của các tôn giáo lớn trên thế giới",
@@ -3479,7 +3480,7 @@
   {
     "book": "Matthew",
     "chapter": 22,
-    "verseStart": 17,
+    "verseStart": 21,
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "correctAnswer": [
@@ -3513,7 +3514,7 @@
       0
     ],
     "verseEnd": 28,
-    "content": "Theo Ma-thi-ơ 26:26-28, khi lập Tiệc Thánh Chúa Jêsus nói gì về CHÉN sau khi tạ ơn?",
+    "content": "Theo Ma-thi-ơ 26:26-28, khi lập Tiệc Thánh, sau khi tạ ơn và cầm lấy chén, Chúa Jêsus nói gì về nội dung của chén (huyết)?",
     "explanation": "Ma-thi-ơ 26:27-28 — 'Hết thảy hãy uống đi; vì nầy là huyết ta, huyết của sự giao ước đã đổ ra cho nhiều người được tha tội'. Câu nhấn mạnh GIAO ƯỚC MỚI và sự tha tội cho 'nhiều người'.",
     "language": "vi",
     "options": [
@@ -3624,12 +3625,12 @@
     ],
     "verseEnd": 11,
     "content": "Trong Ma-thi-ơ 4:1-11, Sa-tan cám dỗ Chúa Jêsus ba lần trong sa mạc. Cám dỗ nào CÓ trong text? (chọn tất cả đúng)",
-    "explanation": "Ma-thi-ơ 4:3-10 — ba cám dỗ: (1) hóa đá thành bánh, (2) nhảy từ đền thờ, (3) thờ Sa-tan để được các nước. Hóa nước thành rượu là dấu lạ của Chúa tại Cana (Giăng 2), không liên quan cám dỗ.",
+    "explanation": "Ma-thi-ơ 4:3-10 — ba cám dỗ: (1) hóa đá thành bánh, (2) nhảy từ nóc đền thờ, (3) thờ lạy Sa-tan để được các nước thế gian. Hóa nước thành rượu là dấu lạ của Chúa tại Cana (Giăng 2), không liên quan cám dỗ.",
     "language": "vi",
     "options": [
       "Hóa đá thành bánh để giải đói sau 40 ngày kiêng ăn",
       "Nhảy xuống từ nóc đền thờ để thiên sứ đến cứu",
-      "Sấp mình thờ lạy Sa-tan để được mọi nước thế gian",
+      "Sấp mình thờ lạy Sa-tan để được các nước thế gian",
       "Biến nước thành rượu để chứng minh quyền phép thần tánh"
     ],
     "tags": [
@@ -3846,7 +3847,7 @@
       "'Thầy là tiên tri vĩ đại nhất trong các tiên tri của Đức Chúa Trời'",
       "'Thầy là vua dân Giu-đa, đã đến để cứu Y-sơ-ra-ên khỏi La-mã'",
       "'Thầy là Đấng Mê-si-a được hứa từ thời Áp-ra-ham đến giờ'",
-      "'Chúa là ĐẤNG CHRIST, Con Đức Chúa Trời hằng sống'"
+      "Chúa là Đấng Christ, Con Đức Chúa Trời hằng sống"
     ],
     "tags": [
       "Tân Ước",
@@ -3871,7 +3872,7 @@
     "language": "vi",
     "options": [
       "'Phi-e-rơ ơi, ngươi nói đúng; ta sẽ tránh cuộc khổ nạn ấy'",
-      "'Hỡi quỉ Sa-tan, lui ra đằng sau ta! Ngươi làm gương xấu cho ta; vì ngươi chẳng nghĩ đến việc Đức Chúa Trời'",
+      "'Hỡi Sa-tan, hãy lui ra đằng sau ta! Ngươi làm gương xấu cho ta; vì ngươi chẳng nghĩ đến việc Đức Chúa Trời, song nghĩ đến việc người ta'",
       "'Ngươi sẽ được tha vì ngươi yêu ta; nhưng đừng nói nữa'",
       "'Hãy về với cha ngươi và quên lời ta đã phán'"
     ],
@@ -4029,7 +4030,7 @@
     ],
     "verseEnd": 14,
     "content": "Trong ngụ ngôn 'tiệc cưới của con vua' (Ma-thi-ơ 22:1-14), khi những người được mời ban đầu từ chối, vua làm gì?",
-    "explanation": "Ma-thi-ơ 22:9-10 — 'Hãy đi khắp các ngả tư, gặp ai thì mời hết thảy đến dự tiệc. Đầy tớ đi khắp các đường cái, nhóm lại hết thảy những người họ gặp, bất luận dữ lành, đến nỗi nhà tiệc đầy những người dự tiệc'. Câu này tiên báo Tin Lành mở rộng cho dân ngoại.",
+    "explanation": "Ma-thi-ơ 22:9-10 — Vua bảo đầy tớ: 'Hãy đi ra các đường cái, gặp ai thì mời hết đến dự tiệc.' Đầy tớ đi khắp các đường cái, nhóm lại hết thảy những người họ gặp, bất luận dữ lành, đến nỗi nhà tiệc đầy những người dự tiệc.",
     "language": "vi",
     "options": [
       "Sai đầy tớ ra ngã đường lớn mời mọi người, kẻ tốt và kẻ xấu, đến tiệc cưới",
@@ -4139,12 +4140,12 @@
     ],
     "verseEnd": 36,
     "content": "Trong 'bảy lời khốn' chống Pha-ri-si và thầy thông giáo (Ma-thi-ơ 23:13-36), lời quở nào CÓ trong text? (chọn tất cả đúng)",
-    "explanation": "Ma-thi-ơ 23 có 7 lời 'khốn cho': 23:13 (đóng cửa nước trời), 23:14 (nuốt nhà góa phụ), 23:15 (làm con dân giáo phái), 23:16 (dẫn đường mù về thệ ước), 23:23 (nộp 1/10 mà bỏ điều hệ trọng), 23:25 (sạch bên ngoài), 23:27 (mộ tô trắng), 23:29 (xây mộ tiên tri). Phương án D là 'phước', không phải 'khốn'.",
+    "explanation": "Ma-thi-ơ 23 có 7 lời 'khốn cho': 23:13 (đóng cửa nước trời), 23:15 (làm con dân giáo phái), 23:16 (dẫn đường mù về thệ ước), 23:23 (nộp 1/10 mà bỏ điều hệ trọng), 23:25 (sạch bên ngoài), 23:27 (mộ tô trắng), 23:29 (xây mộ tiên tri). Câu 23:14 ('nuốt nhà góa phụ') thường được chú thích là không có trong nhiều bản chép tay quan trọng. Phương án D là 'phước', không phải 'khốn'.",
     "language": "vi",
     "options": [
-      "'Khốn cho các ngươi, các thầy thông giáo và Pha-ri-si, GIẢ HÌNH! Vì các ngươi đóng cửa nước thiên đàng trước mặt người ta'",
-      "'Khốn cho các ngươi! Vì các ngươi nuốt nhà đàn bà góa, và làm bộ đọc lời cầu nguyện dài'",
-      "'Khốn cho các ngươi, kẻ DẪN ĐƯỜNG MÙ! Các ngươi nộp một phần mười về bạc hà, hồi hương, rau cần... mà bỏ điều hệ trọng hơn'",
+      "'Khốn cho các ngươi, các thầy thông giáo và Pha-ri-si, GIẢ HÌNH! Vì các ngươi đóng cửa nước thiên đàng trước mặt người ta' (c.13)",
+      "'Khốn cho các ngươi, thầy thông giáo và người Pha-ri-si, giả hình! Vì các ngươi rửa sạch bên ngoài chén đĩa, nhưng bên trong thì đầy sự tham lam...' (c.25)",
+      "'Khốn cho các ngươi, kẻ DẪN ĐƯỜNG MÙ! Các ngươi nộp một phần mười về bạc hà, hồi hương, rau cần... mà bỏ điều hệ trọng hơn' (c.23)",
       "'Phước cho các ngươi, các thầy thông giáo, vì sự khôn ngoan các ngươi truyền lại'"
     ],
     "tags": [

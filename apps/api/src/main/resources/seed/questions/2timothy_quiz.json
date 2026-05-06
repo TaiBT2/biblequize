@@ -6,7 +6,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Phao-lô gọi Ti-mô-thê là gì khi mở đầu thư 2 Ti-mô-thê?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Ti-mô-thê 1:2 — 'gởi cho Ti-mô-thê, là con rất yêu dấu của ta: Nguyền con được ân điển, sự thương xót, sự bình an ban cho bởi Đức Chúa Trời, là Cha, và bởi Đức Chúa Jêsus Christ, Chúa chúng ta!'",
     "language": "vi",
     "options": [
@@ -30,7 +32,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 1:5, đức tin chân thành đã ở trong những ai trước Ti-mô-thê?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Ti-mô-thê 1:5 — 'Ta cũng nhớ đến đức tin thành thật của con, là đức tin trước đã ở trong Lô-ít, bà ngoại con, và trong Ơ-nít, mẹ con, ta chắc rằng nay cũng ở trong con nữa.'",
     "language": "vi",
     "options": [
@@ -54,7 +58,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 1:6, Phao-lô khuyên Ti-mô-thê nhen lại điều gì?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Ti-mô-thê 1:6 — 'Vậy nên ta khuyên con hãy nhen lại ơn của Đức Chúa Trời ban cho, mà con đã nhận lãnh bởi sự đặt tay của ta.'",
     "language": "vi",
     "options": [
@@ -78,7 +84,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 1:7, Đức Chúa Trời ban cho chúng ta linh nào?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "2 Ti-mô-thê 1:7 — 'Vì Đức Chúa Trời chẳng ban cho chúng ta tâm thần nhút nhát, bèn là tâm thần mạnh mẽ, có tình thương yêu và dè giữ.'",
     "language": "vi",
     "options": [
@@ -102,7 +110,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 1:9, Đức Chúa Trời cứu chúng ta dựa trên cơ sở nào?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Ti-mô-thê 1:9 — '...cứu chúng ta, đã gọi chúng ta bởi sự kêu gọi thánh, chẳng phải theo việc làm chúng ta, bèn là theo ý riêng Ngài chỉ định, theo ân điển đã ban cho chúng ta trong Đức Chúa Jêsus Christ từ trước muôn đời...'",
     "language": "vi",
     "options": [
@@ -126,7 +136,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 1:10, Đấng Christ đã làm gì với sự chết và mang điều gì ra ánh sáng?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Ti-mô-thê 1:10 — '...Cứu Chúa chúng ta là Đức Chúa Jêsus Christ, Ngài đã hủy phá sự chết, dùng Tin Lành phô bày sự sống và sự không hề chết ra cho rõ ràng.'",
     "language": "vi",
     "options": [
@@ -150,7 +162,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 2:2, Ti-mô-thê phải truyền lại điều đã nghe cho ai?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Ti-mô-thê 2:2 — 'Những điều con đã nghe nơi ta ở trước mặt nhiều người chứng, hãy giao phó cho mấy người trung thành, cũng có tài dạy dỗ kẻ khác.' Nguyên tắc thừa kế bốn thế hệ thuộc linh.",
     "language": "vi",
     "options": [
@@ -174,7 +188,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 2:3, Ti-mô-thê phải chịu khổ như ai?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "2 Ti-mô-thê 2:3 — 'Hãy cùng ta chịu khổ như một người lính giỏi của Đức Chúa Jêsus Christ.'",
     "language": "vi",
     "options": [
@@ -198,7 +214,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 2:8, Phao-lô bảo Ti-mô-thê hãy nhớ điều gì về Đức Chúa Jêsus Christ?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Ti-mô-thê 2:8 — 'Hãy nhớ rằng Đức Chúa Jêsus Christ, sanh ra bởi dòng vua Đa-vít, đã từ kẻ chết sống lại, theo như Tin Lành của ta.'",
     "language": "vi",
     "options": [
@@ -222,7 +240,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 2:9, dù Phao-lô bị xiềng xích, đạo của Đức Chúa Trời thì sao?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Ti-mô-thê 2:9 — '...vì Tin Lành đó mà ta chịu khổ, rất đỗi bị trói như người phạm tội; nhưng đạo của Đức Chúa Trời không hề bị trói đâu.'",
     "language": "vi",
     "options": [
@@ -246,7 +266,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 2:15, người làm công không hổ thẹn phải xử lý lời chân lý như thế nào?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Ti-mô-thê 2:15 — 'Hãy chuyên tâm cho được đẹp lòng Đức Chúa Trời như người làm công không chỗ trách được, lấy lòng ngay thẳng giảng dạy lời của lẽ thật.'",
     "language": "vi",
     "options": [
@@ -270,7 +292,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 2:19, hai dấu ấn trên nền của Đức Chúa Trời là gì?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "2 Ti-mô-thê 2:19 — '...nền của Đức Chúa Trời đã đặt vẫn còn vững bền, có ấn chứng nầy: Chúa biết kẻ thuộc về Ngài; lại có chứng nầy: Phàm người kêu cầu danh Chúa thì phải tránh khỏi sự gian ác.'",
     "language": "vi",
     "options": [
@@ -294,7 +318,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 2:22, Ti-mô-thê phải tránh điều gì và đeo đuổi điều gì?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Ti-mô-thê 2:22 — 'Cũng hãy tránh khỏi tình dục trai trẻ, mà tìm những điều công bình, đức tin, yêu thương, hòa thuận với kẻ lấy lòng tinh sạch kêu cầu Chúa.'",
     "language": "vi",
     "options": [
@@ -318,7 +344,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 3:1, trong những ngày sau cùng sẽ có điều gì?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Ti-mô-thê 3:1 — 'Hãy biết rằng trong ngày sau rốt, sẽ có những thời kỳ khó khăn.'",
     "language": "vi",
     "options": [
@@ -342,7 +370,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 3:12, ai sẽ bị bắt bớ?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Ti-mô-thê 3:12 — 'Vả lại, hết thảy mọi người muốn sống cách nhân đức trong Đức Chúa Jêsus Christ, thì sẽ bị bắt bớ.'",
     "language": "vi",
     "options": [
@@ -366,7 +396,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 3:15, Kinh Thánh có thể làm gì cho Ti-mô-thê?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "2 Ti-mô-thê 3:15 — '...từ khi con còn thơ ấu đã biết Kinh Thánh vốn có thể khiến con khôn ngoan để được cứu bởi đức tin trong Đức Chúa Jêsus Christ.'",
     "language": "vi",
     "options": [
@@ -390,7 +422,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 3:16, cả Kinh Thánh có nguồn gốc từ đâu?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Ti-mô-thê 3:16 — 'Cả Kinh Thánh đều là bởi Đức Chúa Trời soi dẫn, có ích cho sự dạy dỗ, bẻ trách, sửa trị, dạy người trong sự công bình.'",
     "language": "vi",
     "options": [
@@ -414,7 +448,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 4:2, Phao-lô truyền cho Ti-mô-thê điều gì về việc giảng đạo?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Ti-mô-thê 4:2 — 'Hãy giảng đạo, cố khuyên, bất luận gặp thời hay không gặp thời, hãy đem lòng rất nhịn nhục mà bẻ trách, nài khuyên, sửa trị, cứ dạy dỗ chẳng thôi.'",
     "language": "vi",
     "options": [
@@ -438,7 +474,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Trong 2 Ti-mô-thê 4:7, Phao-lô tóm tắt đời sống mình bằng ba câu nào?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Ti-mô-thê 4:7 — 'Ta đã đánh trận tốt lành, đã xong sự chạy, đã giữ được đức tin.'",
     "language": "vi",
     "options": [
@@ -462,7 +500,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 4:8, đã sắm sẵn cho Phao-lô (và mọi tín hữu yêu mến sự hiện đến của Chúa) điều gì?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "2 Ti-mô-thê 4:8 — '...sau nầy mão triều thiên của sự công bình đã để dành cho ta, mà Chúa, là quan án công bình, sẽ ban cho ta trong ngày đó; không những cho ta mà thôi, nhưng cũng cho mọi kẻ yêu mến sự hiện đến của Ngài.'",
     "language": "vi",
     "options": [
@@ -486,7 +526,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Theo 2 Ti-mô-thê 4:10, Đê-ma đã lìa bỏ Phao-lô vì cớ gì?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Ti-mô-thê 4:10 — 'Vì Đê-ma đã lìa bỏ ta rồi, tại người ham hố đời nầy, và đã đi qua thành Tê-sa-lô-ni-ca...'",
     "language": "vi",
     "options": [
@@ -511,8 +553,12 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo 2 Ti-mô-thê 3:2-5, người ta trong những ngày sau rốt sẽ có những đặc điểm nào? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
-    "explanation": "2 Ti-mô-thê 3:2-4 — '...người ta đều tư kỷ, tham tiền, khoe khoang, xấc xược... ưa thích sự vui chơi hơn là yêu mến Đức Chúa Trời.' Nhiều đặc điểm tiêu cực; 'yêu mến công bình' đối lập với mô tả của đoạn này.",
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "2 Ti-mô-thê 3:2-5 — '...người ta đều tư kỷ, tham tiền, khoe khoang, xấc xược... ưa thích sự vui chơi hơn là yêu mến Đức Chúa Trời, và có hình thức của sự nhân đức nhưng chối bỏ quyền phép của nhân đức đó.' Đoạn này liệt kê nhiều đặc điểm tiêu cực; 'yêu mến công bình' là phẩm chất tốt, trái ngược với bản chất của những người được mô tả, nên không phải là đáp án đúng.",
     "language": "vi",
     "options": [
       "Tư kỷ, tham tiền",
@@ -536,8 +582,12 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo 2 Ti-mô-thê 2:11-13, lời chắc chắn ấy gồm những vế nào? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
-    "explanation": "2 Ti-mô-thê 2:11-13 — 'Nếu chúng ta chết với Ngài, thì cũng sẽ sống với Ngài; nếu chúng ta chịu thử thách nổi, thì sẽ cùng Ngài đồng trị; nếu chúng ta chối Ngài, thì Ngài cũng sẽ chối chúng ta; nếu chúng ta không thành tín, song Ngài vẫn thành tín, vì Ngài không thể tự chối mình được.' Ngài vẫn thành tín — không phải Ngài cũng không thành tín.",
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "2 Ti-mô-thê 2:11-13 — 'Nếu chúng ta chết với Ngài, thì cũng sẽ sống với Ngài; nếu chúng ta chịu thử thách nổi, thì sẽ cùng Ngài đồng trị; nếu chúng ta chối Ngài, thì Ngài cũng sẽ chối chúng ta; nếu chúng ta không thành tín, song Ngài vẫn thành tín, vì Ngài không thể tự chối mình được.' Ba vế đầu là các mệnh đề đúng của 'lời chắc chắn'. Vế cuối cùng trong Kinh Thánh khẳng định 'Ngài vẫn thành tín', không phải 'Ngài cũng không thành tín' như trong đáp án sai.",
     "language": "vi",
     "options": [
       "Chết với Ngài → sống với Ngài",
@@ -561,12 +611,18 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo 2 Ti-mô-thê 3:16-17, Kinh Thánh có ích cho những việc gì? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
-    "explanation": "2 Ti-mô-thê 3:16-17 — '...có ích cho sự dạy dỗ, bẻ trách, sửa trị, dạy người trong sự công bình, hầu cho người thuộc về Đức Chúa Trời được trọn vẹn và sắm sẵn để làm mọi việc lành.' Bốn ích lợi; 'giải trí' không phải mục đích Kinh Thánh.",
+    "correctAnswer": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "2 Ti-mô-thê 3:16-17 — '...có ích cho sự dạy dỗ, bẻ trách, sửa trị, dạy người trong sự công bình, hầu cho người thuộc về Đức Chúa Trời được trọn vẹn và sắm sẵn để làm mọi việc lành.' Bốn ích lợi được liệt kê riêng biệt; 'giải trí và tiêu khiển' không phải mục đích Kinh Thánh.",
     "language": "vi",
     "options": [
       "Dạy dỗ",
-      "Bẻ trách và sửa trị",
+      "Bẻ trách",
+      "Sửa trị",
       "Dạy người trong sự công bình",
       "Giải trí và tiêu khiển"
     ],
@@ -586,7 +642,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "Theo 2 Ti-mô-thê 4:6-8, Phao-lô đúc kết đời sống và niềm hy vọng cuối đời mình bằng những điều nào? (chọn tất cả đúng)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "2 Ti-mô-thê 4:6-8 — '...ta đã giâm dầu uống được, và giờ qua đời ta gần rồi. Ta đã đánh trận tốt lành... mão triều thiên của sự công bình đã để dành cho ta...' Ba điều; 'tích lũy của cải lớn' trái với cuộc đời tận hiến của Phao-lô.",
     "language": "vi",
     "options": [
