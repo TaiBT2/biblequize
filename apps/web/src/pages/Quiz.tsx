@@ -79,6 +79,9 @@ const Quiz: React.FC = () => {
   const queryClient = useQueryClient()
   const settings = location.state as QuizPageSettings | null
   const timerLimit = settings?.timePerQuestion ?? DEFAULT_TIMER
+  // Practice is for-fun: no energy / lives gauge. Energy only relevant for
+  // Ranked (server-driven) and any future modes that consume lives.
+  const isPracticeMode = !settings?.mode || settings.mode === 'practice'
 
   const [questions, setQuestions] = useState<Question[]>([])
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -623,8 +626,9 @@ const Quiz: React.FC = () => {
             Replaces desktop "Top Stats Row" on small screens. */}
         <div
           data-testid="quiz-hud-mobile"
-          className="md:hidden w-full grid grid-cols-3 gap-2 mb-4"
+          className={`md:hidden w-full grid gap-2 mb-4 ${isPracticeMode ? 'grid-cols-2' : 'grid-cols-3'}`}
         >
+          {!isPracticeMode && (
           <div className="flex items-center gap-2 px-2.5 py-2 rounded-xl bg-surface-container-low border border-outline-variant/10 min-w-0">
             <span className="material-symbols-outlined text-secondary text-base flex-shrink-0" style={FILL_STYLE}>bolt</span>
             <div className="min-w-0 flex-1">
@@ -646,6 +650,7 @@ const Quiz: React.FC = () => {
               </div>
             </div>
           </div>
+          )}
           <div className="flex items-center gap-2 px-2.5 py-2 rounded-xl bg-surface-container-low border border-outline-variant/10 min-w-0">
             <span className="material-symbols-outlined text-secondary text-base flex-shrink-0" style={FILL_STYLE}>stars</span>
             <div className="min-w-0">
@@ -689,24 +694,30 @@ const Quiz: React.FC = () => {
             />
           </div>
 
-          <div className="flex flex-col items-end gap-1 min-w-[180px]">
-            <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">{t('quiz.energy')}</span>
-            <div
-              className="flex items-center gap-2 w-full"
-              data-testid="quiz-energy-bar"
-              data-energy={serverEnergy ?? ''}
-            >
-              <div className="relative flex-1 h-3 rounded-full bg-surface-container-highest overflow-hidden">
-                <div
-                  className="absolute inset-y-0 left-0 rounded-full bg-secondary shadow-[0_0_10px_rgba(232,168,50,0.3)] transition-[width] duration-500 ease-out"
-                  style={{ width: `${computeEnergyPercent(serverEnergy, lives)}%` }}
-                />
+          {isPracticeMode ? (
+            // Practice: no energy gauge — keep the right column as a spacer
+            // so the centred timer stays centred under justify-between.
+            <div className="min-w-[180px]" aria-hidden="true" />
+          ) : (
+            <div className="flex flex-col items-end gap-1 min-w-[180px]">
+              <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">{t('quiz.energy')}</span>
+              <div
+                className="flex items-center gap-2 w-full"
+                data-testid="quiz-energy-bar"
+                data-energy={serverEnergy ?? ''}
+              >
+                <div className="relative flex-1 h-3 rounded-full bg-surface-container-highest overflow-hidden">
+                  <div
+                    className="absolute inset-y-0 left-0 rounded-full bg-secondary shadow-[0_0_10px_rgba(232,168,50,0.3)] transition-[width] duration-500 ease-out"
+                    style={{ width: `${computeEnergyPercent(serverEnergy, lives)}%` }}
+                  />
+                </div>
+                <span className="text-sm font-bold tabular-nums text-on-surface min-w-[44px] text-right">
+                  {Math.round(computeEnergyPercent(serverEnergy, lives))}%
+                </span>
               </div>
-              <span className="text-sm font-bold tabular-nums text-on-surface min-w-[44px] text-right">
-                {Math.round(computeEnergyPercent(serverEnergy, lives))}%
-              </span>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Question Section.

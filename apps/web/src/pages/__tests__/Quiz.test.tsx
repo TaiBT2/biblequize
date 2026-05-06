@@ -41,7 +41,7 @@ vi.mock('../../api/client', () => ({
   },
 }))
 
-import Quiz, { computeEnergyBarsFilled } from '../Quiz'
+import Quiz, { computeEnergyPercent } from '../Quiz'
 
 function renderQuiz() {
   // Quiz.tsx uses useQueryClient() for invalidateQueries(['me'])
@@ -132,6 +132,34 @@ describe('Quiz Gameplay', () => {
    * tests lock the UI against accidental reintroduction of the dead
    * AskOpinion button and ensure the Hint button is still wired.
    */
+  describe('Energy gauge gating (practice = for-fun)', () => {
+    const sampleQ = {
+      id: 'q1',
+      content: 'Test question',
+      options: ['A', 'B', 'C', 'D'],
+      book: 'Genesis',
+      chapter: 1,
+      difficulty: 'EASY',
+    }
+
+    it('does NOT render energy bars in practice mode', async () => {
+      mockLocation.state = { mode: 'practice', sessionId: 's-1', questions: [sampleQ] }
+      renderQuiz()
+      await waitFor(() => {
+        expect(screen.queryByTestId('quiz-energy-bar')).not.toBeInTheDocument()
+        expect(screen.queryByTestId('quiz-energy-bar-mobile')).not.toBeInTheDocument()
+      })
+    })
+
+    it('renders energy bars in ranked mode', async () => {
+      mockLocation.state = { mode: 'ranked', sessionId: 's-1', isRanked: true, questions: [sampleQ] }
+      renderQuiz()
+      await waitFor(() => {
+        expect(screen.queryByTestId('quiz-energy-bar')).toBeInTheDocument()
+      })
+    })
+  })
+
   describe('Lifeline (v1 — hint only)', () => {
     it('does NOT render the AskOpinion button (removed in v1)', async () => {
       renderQuiz()
@@ -220,40 +248,31 @@ describe('Quiz Gameplay', () => {
   })
 })
 
-describe('computeEnergyBarsFilled', () => {
-  it('returns 5 when server energy is full (100)', () => {
-    expect(computeEnergyBarsFilled(100, 5)).toBe(5)
+describe('computeEnergyPercent', () => {
+  it('returns 100 when server energy is full (100)', () => {
+    expect(computeEnergyPercent(100, 5)).toBe(100)
   })
   it('returns 0 when server energy is 0', () => {
-    expect(computeEnergyBarsFilled(0, 5)).toBe(0)
+    expect(computeEnergyPercent(0, 5)).toBe(0)
   })
-  it('maps 1-20 energy to 1 bar (Math.ceil)', () => {
-    expect(computeEnergyBarsFilled(1, 5)).toBe(1)
-    expect(computeEnergyBarsFilled(20, 5)).toBe(1)
+  it('reflects every 5-point deduction (95 → 95%)', () => {
+    expect(computeEnergyPercent(95, 5)).toBe(95)
+    expect(computeEnergyPercent(85, 5)).toBe(85)
+    expect(computeEnergyPercent(50, 5)).toBe(50)
   })
-  it('maps 21-40 energy to 2 bars', () => {
-    expect(computeEnergyBarsFilled(21, 5)).toBe(2)
-    expect(computeEnergyBarsFilled(40, 5)).toBe(2)
+  it('clamps negative energy to 0%', () => {
+    expect(computeEnergyPercent(-10, 5)).toBe(0)
   })
-  it('maps 41-60 energy to 3 bars', () => {
-    expect(computeEnergyBarsFilled(50, 5)).toBe(3)
-    expect(computeEnergyBarsFilled(60, 5)).toBe(3)
+  it('clamps energy > 100 to 100%', () => {
+    expect(computeEnergyPercent(150, 5)).toBe(100)
   })
-  it('maps 61-80 energy to 4 bars', () => {
-    expect(computeEnergyBarsFilled(75, 5)).toBe(4)
-  })
-  it('clamps negative energy to 0 bars', () => {
-    expect(computeEnergyBarsFilled(-10, 5)).toBe(0)
-  })
-  it('clamps energy > 100 to 5 bars', () => {
-    expect(computeEnergyBarsFilled(150, 5)).toBe(5)
-  })
-  it('falls back to local lives when server energy is null (practice mode)', () => {
-    expect(computeEnergyBarsFilled(null, 3)).toBe(3)
-    expect(computeEnergyBarsFilled(undefined, 0)).toBe(0)
+  it('falls back to local lives proportion when server energy is null (practice mode)', () => {
+    expect(computeEnergyPercent(null, 5)).toBe(100)
+    expect(computeEnergyPercent(null, 3)).toBe(60)
+    expect(computeEnergyPercent(undefined, 0)).toBe(0)
   })
   it('ignores lives when server energy is provided (ranked mode)', () => {
-    expect(computeEnergyBarsFilled(100, 0)).toBe(5)
-    expect(computeEnergyBarsFilled(0, 5)).toBe(0)
+    expect(computeEnergyPercent(100, 0)).toBe(100)
+    expect(computeEnergyPercent(0, 5)).toBe(0)
   })
 })
