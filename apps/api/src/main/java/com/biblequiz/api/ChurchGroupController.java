@@ -187,6 +187,12 @@ public class ChurchGroupController {
                         "code", "MAX_GROUPS_JOINED",
                         "message", "Bạn đã tham gia tối đa 5 nhóm. Hãy rời nhóm cũ trước khi tham gia nhóm mới."));
             }
+            if ("KICK_COOLDOWN_ACTIVE".equals(e.getMessage())) {
+                return ResponseEntity.unprocessableEntity().body(Map.of(
+                        "success", false,
+                        "code", "KICK_COOLDOWN_ACTIVE",
+                        "message", "Bạn đã bị kick khỏi nhóm này gần đây. Hãy thử lại sau 7 ngày."));
+            }
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
@@ -384,15 +390,54 @@ public class ChurchGroupController {
 
     /**
      * DELETE /api/groups/{id}/members/{userId} - Kick thanh vien (chi leader/mod)
+     * Body (optional): {"reason": "..."} — recorded in group_kick_log so the
+     * 7-day re-join cooldown (SPEC v1.1 §12.2) can be enforced and reviewed.
      */
     @DeleteMapping("/{id}/members/{userId}")
     public ResponseEntity<?> kickMember(@PathVariable String id,
                                         @PathVariable String userId,
+                                        @RequestBody(required = false) Map<String, String> body,
                                         Principal principal) {
         try {
             User user = getUser(principal);
-            Map<String, Object> result = churchGroupService.kickMember(id, user.getId(), userId);
+            String reason = body == null ? null : body.get("reason");
+            Map<String, Object> result = churchGroupService.kickMember(id, user.getId(), userId, reason);
             return ResponseEntity.ok(result);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * POST /api/groups/{id}/report (SPEC v1.1 §13.9)
+     * Body: {"reason": "SPAM"|"INAPPROPRIATE"|"HARASSMENT"|"OTHER", "note": "..."}
+     * Auth required (any user, even non-members can report). One open
+     * report per user per group at a time.
+     */
+    @PostMapping("/{id}/report")
+    public ResponseEntity<?> reportGroup(@PathVariable String id,
+                                         @RequestBody Map<String, String> body,
+                                         Principal principal) {
+        try {
+            User user = getUser(principal);
+            String reason = body == null ? null : body.get("reason");
+            String note = body == null ? null : body.get("note");
+            Map<String, Object> result = churchGroupService.reportGroup(id, user, reason, note);
+            return ResponseEntity.status(201).body(Map.of("success", true, "report", result));
+        } catch (RuntimeException e) {
+            if ("INVALID_REASON".equals(e.getMessage())) {
+                return ResponseEntity.badRequest().body(Map.of(
+                        "success", false,
+                        "code", "INVALID_REASON",
+                        "message", "Lý do báo cáo không hợp lệ. Chọn: SPAM, INAPPROPRIATE, HARASSMENT, OTHER."));
+            }
+            if ("ALREADY_REPORTED".equals(e.getMessage())) {
+                return ResponseEntity.unprocessableEntity().body(Map.of(
+                        "success", false,
+                        "code", "ALREADY_REPORTED",
+                        "message", "Bạn đã có một báo cáo đang chờ duyệt cho nhóm này."));
+            }
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
