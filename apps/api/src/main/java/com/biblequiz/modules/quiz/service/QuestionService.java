@@ -38,9 +38,25 @@ public class QuestionService {
     }
 
     public List<Question> getRandomQuestions(String book, String difficultyStr, String language, int limit, List<String> excludeIds) {
-        String lang = (language != null && !language.isBlank()) ? language : "vi";
+        return getRandomQuestions(book, difficultyStr, language, null, null, null, null, limit, excludeIds);
+    }
 
-        // Check cache first (keyed by book+difficulty+language)
+    /**
+     * Practice-screen overload: supports optional chapter/verse range.
+     * When any range param is non-null, uses unified filter query (cache disabled).
+     */
+    public List<Question> getRandomQuestions(String book, String difficultyStr, String language,
+                                             Integer chapterFrom, Integer chapterTo,
+                                             Integer verseFrom, Integer verseTo,
+                                             int limit, List<String> excludeIds) {
+        String lang = (language != null && !language.isBlank()) ? language : "vi";
+        boolean hasRangeFilter = chapterFrom != null || chapterTo != null || verseFrom != null || verseTo != null;
+
+        // Check cache first (keyed by book+difficulty+language) — skip when range filter present
+        if (hasRangeFilter) {
+            return getRandomQuestionsWithRange(book, difficultyStr, lang,
+                    chapterFrom, chapterTo, verseFrom, verseTo, limit, excludeIds);
+        }
         String cacheKey = book + ":" + difficultyStr + ":" + lang;
         if (excludeIds == null || excludeIds.isEmpty()) {
             Optional<List<Question>> cached = cacheService.getCachedQuestionList(book, difficultyStr);
@@ -132,6 +148,66 @@ public class QuestionService {
         }
 
         return result;
+    }
+
+    private List<Question> getRandomQuestionsWithRange(String book, String difficultyStr, String lang,
+                                                       Integer chapterFrom, Integer chapterTo,
+                                                       Integer verseFrom, Integer verseTo,
+                                                       int limit, List<String> excludeIds) {
+        if (limit <= 0) {
+            return Collections.emptyList();
+        }
+
+        Question.Difficulty difficulty = parseDifficulty(difficultyStr);
+        String bookFilter = (book != null && !book.isEmpty()) ? book : null;
+
+        long total = questionRepository.countForPracticeFiltered(lang, bookFilter, difficulty,
+                chapterFrom, chapterTo, verseFrom, verseTo);
+        if (total == 0) {
+            return Collections.emptyList();
+        }
+
+        int pageSize = Math.min(Math.max(limit, 10), 50);
+        int totalPages = (int) Math.max(1, Math.ceil(total / (double) pageSize));
+        int startPage = random.nextInt(totalPages);
+
+        List<Question> result = new ArrayList<>(limit);
+        Set<String> excludeSet = excludeIds != null ? new HashSet<>(excludeIds) : new HashSet<>();
+        int pageIndex = startPage;
+        int attempts = 0;
+        int maxAttempts = totalPages * 2;
+
+        while (result.size() < limit && attempts < maxAttempts) {
+            Page<Question> page = questionRepository.findForPracticeFiltered(lang, bookFilter, difficulty,
+                    chapterFrom, chapterTo, verseFrom, verseTo, PageRequest.of(pageIndex, pageSize));
+            for (Question q : page.getContent()) {
+                if (result.size() >= limit) break;
+                if (excludeSet.contains(q.getId())) continue;
+                result.add(q);
+                excludeSet.add(q.getId());
+            }
+            if (totalPages <= 1) break;
+            pageIndex = (pageIndex + 1) % totalPages;
+            attempts++;
+            if (pageIndex == startPage) break;
+        }
+
+        Collections.shuffle(result, random);
+        if (result.size() > limit) {
+            result = new ArrayList<>(result.subList(0, limit));
+        }
+        return result;
+    }
+
+    private Question.Difficulty parseDifficulty(String difficultyStr) {
+        if (difficultyStr == null || difficultyStr.isEmpty() || "all".equalsIgnoreCase(difficultyStr)) {
+            return null;
+        }
+        try {
+            return Question.Difficulty.valueOf(difficultyStr);
+        } catch (IllegalArgumentException ignored) {
+            return null;
+        }
     }
 
     public Question getQuestionOfTheDay(String language) {

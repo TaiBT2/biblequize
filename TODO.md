@@ -1,5 +1,65 @@
 # TODO
 
+## 2026-05-06 — Practice screen redesign + new settings [IN PROGRESS]
+
+> **Source**: User prompt + mockup `docs/practice/biblequiz_practice_redesign_desktop_v2.html`. User confirmed all clarifying answers (slider 5–120s, BE-validate min/max chapter/verse, mockup-only features cùng PR).
+
+### Tasks
+
+#### Task PR-1: BE chapter/verse range filter [ ] TODO
+- Files: `QuestionRepository.java` (new query), `QuestionService.getRandomQuestions` (overload), `QuestionController.getQuestions` (new params), `QuestionServiceTest`
+- Scope: ~80 LOC + tests
+- Commit: `feat(api): add chapter/verse range filter to /api/questions`
+
+#### Task PR-2: BE BibleStructure metadata + validation + endpoint [ ] TODO
+- Files: new `infrastructure/bible/BibleStructure.java` (mirror `bibleData.ts` BIBLE_VERSES for 66 books), new `GET /api/books/{name}/structure` in `BookController`, validation in `CreateSessionRequest` / `SessionService`
+- Scope: ~120 LOC + tests
+- Commit: `feat(api): bible book structure endpoint + chapter/verse validation`
+
+#### Task PR-3: BE extend session create with chapter/verse range [ ] TODO
+- Files: `CreateSessionRequest` (4 new fields), `SessionService.createSession` (pass through to QuestionService), `SessionControllerTest`
+- Scope: ~40 LOC + tests
+- Commit: `feat(api): chapter/verse range in practice session config`
+
+#### Task PR-4: FE Practice layout sync from mockup v2 [ ] TODO
+- File: `apps/web/src/pages/Practice.tsx` (compact 2-col card per mockup, no logic change yet)
+- Scope: ~150 LOC modified
+- Commit: `sync: Practice card layout compact from mockup v2`
+
+#### Task PR-5: FE time-per-question slider [ ] TODO
+- Files: `Practice.tsx` (slider 5–120s state + UI), pass to session create + Quiz state
+- Scope: ~50 LOC + i18n keys
+- Commit: `feat(web): practice time-per-question slider`
+
+#### Task PR-6: FE chapter/verse range inputs with bibleData validation [ ] TODO
+- Files: `Practice.tsx` (4 number inputs, enable only when book selected, validate via `getChapterCount`/`getVerseCount`), pass to session create
+- Scope: ~80 LOC + i18n keys
+- Commit: `feat(web): practice chapter/verse range filter`
+
+#### Task PR-7: Quiz.tsx honor session.timePerQuestion [ ] TODO
+- File: `Quiz.tsx` (read `timePerQuestion` from session state, override default per-difficulty timer)
+- Scope: ~10 LOC
+- Commit: `fix(web): quiz timer use session.timePerQuestion`
+
+#### Task PR-8: Mockup-only features (real recent sessions + real wrong-question count + retry) [ ] TODO
+- Files: BE — endpoints for recent practice sessions + wrong-question count + retry-wrong; FE — replace `MOCK_SESSIONS`, fix broken `/api/sessions/practice/retry-last` call
+- Scope: ~150 LOC + tests
+- Commit: `feat: practice real recent sessions + wrong-question retry`
+- **Skipped from mockup**: Smart Selection toggle (per user decision — drop)
+
+#### Task PR-9: E2E Test Gate + full regression [ ] TODO
+- Files: check `tests/e2e/INDEX.md` for W-M03 Practice TC coverage; add new TCs cho time slider + chapter/verse + smart selection nếu chưa có
+- Run: vitest + playwright + JUnit; số test ≥ baseline 733
+- Commit: `test: e2e + unit cover practice redesign`
+
+### Decisions
+- Chapter/verse validation: cả FE (block submit) + BE (return 400) — defense in depth.
+- `BibleStructure` Java mirrors `bibleData.ts` cùng data — accept duplication vì tránh DB query mỗi request validate.
+- Mockup "Làm lại câu sai" badge: cần BE endpoint mới `GET /api/sessions/practice/wrong-questions/count` để lấy count + `POST /api/sessions/practice/retry-wrong` để tạo session mới.
+- Smart Selection: **dropped per user** — không implement.
+
+---
+
 ## 2026-05-06 — v1 implementation gaps (per SPEC v1.1 §15.2) [DONE]
 
 > **Source:** SPEC_GROUP_v1.1.md §15.2 lists 6 v1 gaps tracked separately. This batch picks 5 bounded gaps; skips Q-K (push notifications, needs FCM infra) and GFA-17 (solo refactor, large architectural change — defer until evidence of usage).

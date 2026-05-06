@@ -176,4 +176,38 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
     List<Question> findByCategoryAndLanguageAndIsActiveTrue(String category, String language);
 
     long countByCategoryAndLanguageAndIsActiveTrue(String category, String language);
+
+    // Practice screen: unified filter with optional chapter/verse range
+    @Query("SELECT q FROM Question q WHERE q.isActive = true " +
+           "AND q.language = :language " +
+           "AND (:book IS NULL OR q.book = :book) " +
+           "AND (:difficulty IS NULL OR q.difficulty = :difficulty) " +
+           "AND (:chapterFrom IS NULL OR q.chapter >= :chapterFrom) " +
+           "AND (:chapterTo IS NULL OR q.chapter <= :chapterTo) " +
+           "AND (:verseFrom IS NULL OR q.verseStart >= :verseFrom) " +
+           "AND (:verseTo IS NULL OR q.verseStart <= :verseTo)")
+    Page<Question> findForPracticeFiltered(@Param("language") String language,
+                                           @Param("book") String book,
+                                           @Param("difficulty") Question.Difficulty difficulty,
+                                           @Param("chapterFrom") Integer chapterFrom,
+                                           @Param("chapterTo") Integer chapterTo,
+                                           @Param("verseFrom") Integer verseFrom,
+                                           @Param("verseTo") Integer verseTo,
+                                           Pageable pageable);
+
+    @Query("SELECT COUNT(q) FROM Question q WHERE q.isActive = true " +
+           "AND q.language = :language " +
+           "AND (:book IS NULL OR q.book = :book) " +
+           "AND (:difficulty IS NULL OR q.difficulty = :difficulty) " +
+           "AND (:chapterFrom IS NULL OR q.chapter >= :chapterFrom) " +
+           "AND (:chapterTo IS NULL OR q.chapter <= :chapterTo) " +
+           "AND (:verseFrom IS NULL OR q.verseStart >= :verseFrom) " +
+           "AND (:verseTo IS NULL OR q.verseStart <= :verseTo)")
+    long countForPracticeFiltered(@Param("language") String language,
+                                  @Param("book") String book,
+                                  @Param("difficulty") Question.Difficulty difficulty,
+                                  @Param("chapterFrom") Integer chapterFrom,
+                                  @Param("chapterTo") Integer chapterTo,
+                                  @Param("verseFrom") Integer verseFrom,
+                                  @Param("verseTo") Integer verseTo);
 }

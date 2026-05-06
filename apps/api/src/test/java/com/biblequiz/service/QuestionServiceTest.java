@@ -138,6 +138,51 @@ class QuestionServiceTest {
     }
 
     @Test
+    void getRandomQuestions_WithChapterRange_ShouldUseFilteredQuery() {
+        when(questionRepository.countForPracticeFiltered(eq("vi"), eq("Genesis"), isNull(),
+                eq(1), eq(10), isNull(), isNull())).thenReturn(1L);
+        when(questionRepository.findForPracticeFiltered(eq("vi"), eq("Genesis"), isNull(),
+                eq(1), eq(10), isNull(), isNull(), any(PageRequest.class)))
+                .thenReturn(new PageImpl<>(sampleQuestions));
+
+        List<Question> result = questionService.getRandomQuestions(
+                "Genesis", null, "vi", 1, 10, null, null, 1, null);
+
+        assertNotNull(result);
+        assertEquals(1, result.size());
+        verify(questionRepository).countForPracticeFiltered(
+                eq("vi"), eq("Genesis"), isNull(), eq(1), eq(10), isNull(), isNull());
+        verifyNoInteractions(cacheService);
+    }
+
+    @Test
+    void getRandomQuestions_WithVerseRange_ShouldUseFilteredQuery() {
+        when(questionRepository.countForPracticeFiltered(eq("vi"), eq("Mark"), eq(Question.Difficulty.easy),
+                eq(3), eq(3), eq(1), eq(15))).thenReturn(1L);
+        when(questionRepository.findForPracticeFiltered(eq("vi"), eq("Mark"), eq(Question.Difficulty.easy),
+                eq(3), eq(3), eq(1), eq(15), any(PageRequest.class)))
+                .thenReturn(new PageImpl<>(sampleQuestions));
+
+        List<Question> result = questionService.getRandomQuestions(
+                "Mark", "easy", "vi", 3, 3, 1, 15, 1, null);
+
+        assertNotNull(result);
+        assertEquals(1, result.size());
+    }
+
+    @Test
+    void getRandomQuestions_WithChapterRangeAndNoMatch_ShouldReturnEmpty() {
+        when(questionRepository.countForPracticeFiltered(any(), any(), any(),
+                any(), any(), any(), any())).thenReturn(0L);
+
+        List<Question> result = questionService.getRandomQuestions(
+                "Mark", null, "vi", 50, 60, null, null, 5, null);
+
+        assertNotNull(result);
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
     void getQuestionOfTheDay_WithValidData_ShouldReturnQuestion() {
         when(questionRepository.countByLanguageAndIsActiveTrue("vi")).thenReturn(1L);
         when(questionRepository.findByLanguageAndIsActiveTrue(eq("vi"), any(PageRequest.class)))

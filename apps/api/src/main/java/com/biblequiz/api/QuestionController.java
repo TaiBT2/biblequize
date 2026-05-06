@@ -36,9 +36,15 @@ public class QuestionController {
         public List<Question> getQuestions(
                         @Parameter(description = "Filter by book name (e.g., Genesis, Exodus)") @RequestParam(required = false) String book,
                         @Parameter(description = "Filter by difficulty level (easy, medium, hard)") @RequestParam(required = false) String difficulty,
+                        @Parameter(description = "Language code (vi or en)") @RequestParam(required = false, defaultValue = "vi") String language,
+                        @Parameter(description = "Chapter range start (inclusive)") @RequestParam(required = false) Integer chapterFrom,
+                        @Parameter(description = "Chapter range end (inclusive)") @RequestParam(required = false) Integer chapterTo,
+                        @Parameter(description = "Verse range start (inclusive); only meaningful when chapterFrom == chapterTo") @RequestParam(required = false) Integer verseFrom,
+                        @Parameter(description = "Verse range end (inclusive)") @RequestParam(required = false) Integer verseTo,
                         @Parameter(description = "Number of questions to return (default: 10, max: 50)") @RequestParam(required = false, defaultValue = "10") int limit,
                         @Parameter(description = "List of question IDs to exclude from results") @RequestParam(required = false, name = "excludeIds[]") List<String> excludeIds) {
-                return questionService.getRandomQuestions(book, difficulty, limit, excludeIds);
+                return questionService.getRandomQuestions(book, difficulty, language,
+                                chapterFrom, chapterTo, verseFrom, verseTo, limit, excludeIds);
         }
 
         @GetMapping("/questions/qotd")
