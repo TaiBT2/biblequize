@@ -317,4 +317,140 @@ class ChurchGroupControllerTest extends BaseControllerTest {
                         .content("{\"name\":\"My Group\"}"))
                 .andExpect(status().isUnauthorized());
     }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // SPEC v1.1 §15.2 implementation gaps — controller wiring tests
+    // Verify HTTP status codes + structured "code" field that FE branches on.
+    // ═══════════════════════════════════════════════════════════════════════
+
+    // ── GAP-E: createGroup MAX_GROUPS_OWNED → 422 + code ─────────────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void createGroup_maxOwned_returns422WithStructuredCode() throws Exception {
+        when(churchGroupService.createGroup(anyString(), any(), anyBoolean(), any(User.class)))
+                .thenThrow(new RuntimeException("MAX_GROUPS_OWNED"));
+
+        mockMvc.perform(post("/api/groups")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"name\":\"Third Group\"}"))
+                .andExpect(status().isUnprocessableEntity())
+                .andExpect(jsonPath("$.success").value(false))
+                .andExpect(jsonPath("$.code").value("MAX_GROUPS_OWNED"))
+                .andExpect(jsonPath("$.message").exists());
+    }
+
+    // ── GAP-F: joinGroup MAX_GROUPS_JOINED → 422 + code ──────────────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void joinGroup_maxJoined_returns422WithStructuredCode() throws Exception {
+        when(churchGroupService.joinGroup(eq("ABC123"), any(User.class)))
+                .thenThrow(new RuntimeException("MAX_GROUPS_JOINED"));
+
+        mockMvc.perform(post("/api/groups/join")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"code\":\"ABC123\"}"))
+                .andExpect(status().isUnprocessableEntity())
+                .andExpect(jsonPath("$.code").value("MAX_GROUPS_JOINED"));
+    }
+
+    // ── GAP-L: joinGroup KICK_COOLDOWN_ACTIVE → 422 + code ───────────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void joinGroup_recentlyKicked_returns422WithCooldownCode() throws Exception {
+        when(churchGroupService.joinGroup(eq("ABC123"), any(User.class)))
+                .thenThrow(new RuntimeException("KICK_COOLDOWN_ACTIVE"));
+
+        mockMvc.perform(post("/api/groups/join")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"code\":\"ABC123\"}"))
+                .andExpect(status().isUnprocessableEntity())
+                .andExpect(jsonPath("$.code").value("KICK_COOLDOWN_ACTIVE"));
+    }
+
+    // ── GAP-L: kickMember accepts optional reason body ───────────────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void kickMember_withReason_passesReasonToService() throws Exception {
+        Map<String, Object> ok = new LinkedHashMap<>();
+        ok.put("success", true);
+        when(churchGroupService.kickMember(eq("group-1"), anyString(), eq("member-1"), eq("spam")))
+                .thenReturn(ok);
+
+        mockMvc.perform(delete("/api/groups/group-1/members/member-1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"reason\":\"spam\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void kickMember_withoutBody_passesNullReason() throws Exception {
+        Map<String, Object> ok = new LinkedHashMap<>();
+        ok.put("success", true);
+        when(churchGroupService.kickMember(eq("group-1"), anyString(), eq("member-1"), isNull()))
+                .thenReturn(ok);
+
+        mockMvc.perform(delete("/api/groups/group-1/members/member-1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true));
+    }
+
+    // ── GAP-M: POST /api/groups/{id}/report ──────────────────────────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void reportGroup_validReason_returns201() throws Exception {
+        Map<String, Object> svc = new LinkedHashMap<>();
+        svc.put("id", "report-1");
+        svc.put("status", "OPEN");
+        when(churchGroupService.reportGroup(eq("group-1"), any(User.class), eq("SPAM"), anyString()))
+                .thenReturn(svc);
+
+        mockMvc.perform(post("/api/groups/group-1/report")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"reason\":\"SPAM\",\"note\":\"advertising stuff\"}"))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.report.id").value("report-1"))
+                .andExpect(jsonPath("$.report.status").value("OPEN"));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void reportGroup_invalidReason_returns400WithCode() throws Exception {
+        when(churchGroupService.reportGroup(anyString(), any(User.class), anyString(), any()))
+                .thenThrow(new RuntimeException("INVALID_REASON"));
+
+        mockMvc.perform(post("/api/groups/group-1/report")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"reason\":\"BOGUS\"}"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value("INVALID_REASON"));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void reportGroup_alreadyReported_returns422WithCode() throws Exception {
+        when(churchGroupService.reportGroup(anyString(), any(User.class), anyString(), any()))
+                .thenThrow(new RuntimeException("ALREADY_REPORTED"));
+
+        mockMvc.perform(post("/api/groups/group-1/report")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"reason\":\"HARASSMENT\",\"note\":\"x\"}"))
+                .andExpect(status().isUnprocessableEntity())
+                .andExpect(jsonPath("$.code").value("ALREADY_REPORTED"));
+    }
+
+    @Test
+    void reportGroup_withoutAuth_returns401() throws Exception {
+        mockMvc.perform(post("/api/groups/group-1/report")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"reason\":\"SPAM\"}"))
+                .andExpect(status().isUnauthorized());
+    }
 }
