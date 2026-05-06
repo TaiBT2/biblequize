@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>BibleQuiz — Profile Redesign</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: #0c0e16;
+    color: #e7e9ee;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+  /* ---------- Layout ---------- */
+  .app { display: flex; min-height: 100vh; }
+  .sidebar {
+    width: 260px;
+    background: #0a0c14;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    padding: 20px 16px;
+    flex-shrink: 0;
+  }
+  .main {
+    flex: 1;
+    padding: 28px 36px 60px;
+    max-width: 1200px;
+  }
+
+  /* ---------- Sidebar ---------- */
+  .logo { color: #e8a832; font-weight: 800; font-size: 18px; padding: 4px 8px 16px; }
+  .user-card {
+    background: rgba(50,52,64,0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .user-avatar-sm {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#9ba1b0,#6b7280);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; color: #fff; font-size: 14px;
+  }
+  .user-info-sm { flex: 1; min-width: 0; }
+  .user-info-sm .name { font-weight: 600; font-size: 13px; color: #fff; }
+  .user-info-sm .tier { font-size: 11px; color: #9ba1b0; }
+
+  .nav-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: #9ba1b0;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    transition: all 0.15s;
+  }
+  .nav-item:hover { background: rgba(255,255,255,0.04); color: #e7e9ee; }
+  .nav-item.active {
+    background: linear-gradient(135deg,#e8a832,#e7c268);
+    color: #11131e;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(232,168,50,0.25);
+  }
+  .nav-item .material-symbols-outlined { font-size: 20px; }
+
+  .sidebar-streak {
+    background: rgba(50,52,64,0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(251,146,60,0.2);
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 20px;
+  }
+  .sidebar-streak .label { font-size: 10px; color: #fb923c; font-weight: 700; letter-spacing: 0.05em; }
+  .sidebar-streak .value { font-size: 22px; font-weight: 800; color: #fff; margin-top: 2px; }
+  .sidebar-streak .sub { font-size: 11px; color: #9ba1b0; margin-top: 2px; }
+  .sidebar-streak .hint { font-size: 10px; color: #e8a832; margin-top: 6px; font-weight: 600; }
+
+  /* ---------- Page Title Header ---------- */
+  .page-title-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .page-title { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+  .page-sub { font-size: 13px; color: #9ba1b0; margin-top: 2px; }
+
+  /* ---------- Hero (compact) ---------- */
+  .hero {
+    background: linear-gradient(135deg, rgba(232,168,50,0.08), rgba(50,52,64,0.4));
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(232,168,50,0.12), transparent 70%);
+    pointer-events: none;
+  }
+  .avatar-wrap { position: relative; flex-shrink: 0; }
+  .avatar {
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#9ba1b0,#6b7280);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px; font-weight: 800; color: #fff;
+    border: 3px solid rgba(232,168,50,0.4);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .avatar-tier-badge {
+    position: absolute;
+    bottom: -4px; right: -4px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#e8a832,#e7c268);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    border: 3px solid #0c0e16;
+  }
+  .hero-info { flex: 1; min-width: 0; }
+  .hero-name { font-size: 26px; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+  .hero-tier {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px;
+    background: rgba(232,168,50,0.12);
+    border: 1px solid rgba(232,168,50,0.3);
+    border-radius: 20px;
+    font-size: 12px; font-weight: 600; color: #e8a832;
+    margin-top: 6px;
+  }
+  .hero-meta {
+    display: flex; gap: 16px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #9ba1b0;
+  }
+  .hero-meta-item { display: flex; align-items: center; gap: 5px; }
+  .hero-meta-item .material-symbols-outlined { font-size: 14px; }
+  .hero-actions { display: flex; gap: 8px; flex-shrink: 0; }
+  .btn {
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 10px;
+    border: none;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg,#e8a832,#e7c268);
+    color: #11131e;
+  }
+  .btn-primary:hover { box-shadow: 0 6px 18px rgba(232,168,50,0.3); }
+  .btn-ghost {
+    background: rgba(255,255,255,0.05);
+    color: #e7e9ee;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); }
+  .btn-icon {
+    width: 40px; height: 40px;
+    padding: 0;
+    justify-content: center;
+  }
+  .btn .material-symbols-outlined { font-size: 18px; }
+
+  /* ---------- Quick Stats Strip ---------- */
+  .stats-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: rgba(50,52,64,0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .stat-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .stat-icon .material-symbols-outlined { font-size: 22px; }
+  .stat-icon.gold { background: rgba(232,168,50,0.15); color: #e8a832; }
+  .stat-icon.orange { background: rgba(251,146,60,0.15); color: #fb923c; }
+  .stat-icon.purple { background: rgba(168,85,247,0.15); color: #a855f7; }
+  .stat-icon.green { background: rgba(34,197,94,0.15); color: #22c55e; }
+  .stat-content { flex: 1; min-width: 0; }
+  .stat-label { font-size: 11px; color: #9ba1b0; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  .stat-value { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.1; margin-top: 2px; letter-spacing: -0.02em; }
+  .stat-sub { font-size: 11px; color: #9ba1b0; margin-top: 2px; }
+  .stat-sub.up { color: #22c55e; }
+
+  /* ---------- Section Header ---------- */
+  .section-title {
+    display: flex; align-items: center; justify-content: space-between;
+    margin: 28px 0 12px;
+  }
+  .section-title h2 {
+    font-size: 14px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    color: #e7e9ee;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title h2 .material-symbols-outlined { font-size: 18px; color: #e8a832; }
+  .section-link {
+    font-size: 12px; font-weight: 600; color: #e8a832; text-decoration: none;
+    display: flex; align-items: center; gap: 2px;
+  }
+
+  .card {
+    background: rgba(50,52,64,0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  /* ---------- Tier Progress (packed) ---------- */
+  .tier-card { padding: 22px 24px; }
+  .tier-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  .tier-header-left { display: flex; align-items: center; gap: 14px; }
+  .tier-icon-current {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #9ba1b0, #6b7280);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .tier-current-name { font-size: 16px; font-weight: 700; color: #fff; }
+  .tier-current-sub { font-size: 12px; color: #9ba1b0; margin-top: 2px; }
+  .tier-arrow { font-size: 24px; color: rgba(255,255,255,0.2); }
+  .tier-header-right { display: flex; align-items: center; gap: 14px; }
+  .tier-icon-next {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: rgba(232,168,50,0.1);
+    border: 1px dashed rgba(232,168,50,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    opacity: 0.7;
+  }
+  .tier-next-name { font-size: 13px; font-weight: 600; color: #e8a832; text-align: right; }
+  .tier-next-sub { font-size: 11px; color: #9ba1b0; margin-top: 2px; text-align: right; }
+
+  /* Sub-tier stars */
+  .substars-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin: 14px 0 8px;
+    padding: 0 4px;
+  }
+  .substar {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    font-size: 13px;
+    color: rgba(255,255,255,0.2);
+  }
+  .substar.filled {
+    background: linear-gradient(135deg,#e8a832,#e7c268);
+    color: #11131e;
+    border-color: transparent;
+    box-shadow: 0 0 10px rgba(232,168,50,0.4);
+  }
+  .substar.current {
+    background: rgba(232,168,50,0.15);
+    border-color: #e8a832;
+    color: #e8a832;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(232,168,50,0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(232,168,50,0); }
+  }
+
+  /* Progress bar with milestones */
+  .progress-wrap { position: relative; margin: 14px 0 8px; }
+  .progress-bar-bg {
+    height: 10px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #e8a832, #e7c268);
+    border-radius: 100px;
+    width: 12%;
+    box-shadow: 0 0 10px rgba(232,168,50,0.5);
+    position: relative;
+  }
+  .progress-bar-fill::after {
+    content: '';
+    position: absolute;
+    right: -2px; top: -2px;
+    width: 14px; height: 14px;
+    background: #e8a832;
+    border-radius: 50%;
+    border: 2px solid #0c0e16;
+    box-shadow: 0 0 12px rgba(232,168,50,0.8);
+  }
+  .milestone {
+    position: absolute;
+    top: -2px;
+    width: 2px; height: 14px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 1px;
+  }
+  .milestone-label {
+    position: absolute;
+    top: 18px;
+    transform: translateX(-50%);
+    font-size: 9px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .tier-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 26px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .tier-exp-info { display: flex; align-items: baseline; gap: 6px; }
+  .tier-exp-info .num { font-size: 18px; font-weight: 800; color: #e8a832; letter-spacing: -0.02em; }
+  .tier-exp-info .label { font-size: 12px; color: #9ba1b0; }
+  .tier-eta {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    font-size: 11px; color: #9ba1b0;
+  }
+  .tier-eta .material-symbols-outlined { font-size: 14px; }
+  .tier-reward {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 12px;
+    background: rgba(232,168,50,0.08);
+    border: 1px solid rgba(232,168,50,0.2);
+    border-radius: 10px;
+    font-size: 12px;
+    color: #e8a832;
+    font-weight: 600;
+  }
+  .tier-reward .material-symbols-outlined { font-size: 16px; }
+
+  /* ---------- 2-column row ---------- */
+  .row-2col {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  /* ---------- Daily Missions ---------- */
+  .missions-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+  .mission-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+  }
+  .mission-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: rgba(232,168,50,0.12);
+    color: #e8a832;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .mission-icon .material-symbols-outlined { font-size: 18px; }
+  .mission-content { flex: 1; min-width: 0; }
+  .mission-title { font-size: 13px; font-weight: 600; color: #e7e9ee; }
+  .mission-progress-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px;
+    margin-top: 6px;
+    overflow: hidden;
+  }
+  .mission-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg,#e8a832,#e7c268);
+    border-radius: 100px;
+  }
+  .mission-stat { font-size: 11px; color: #9ba1b0; margin-top: 4px; }
+  .mission-reward { font-size: 11px; color: #e8a832; font-weight: 600; flex-shrink: 0; }
+
+  /* ---------- Bible Journey ---------- */
+  .journey-overall {
+    display: flex; align-items: baseline; gap: 6px;
+    margin-bottom: 14px;
+  }
+  .journey-overall .num { font-size: 28px; font-weight: 800; color: #e8a832; letter-spacing: -0.02em; }
+  .journey-overall .label { font-size: 12px; color: #9ba1b0; }
+  .testament-bar { margin-bottom: 14px; }
+  .testament-header { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .testament-name { font-size: 12px; font-weight: 600; color: #e7e9ee; }
+  .testament-stat { font-size: 11px; color: #9ba1b0; }
+  .testament-progress {
+    height: 6px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .testament-fill {
+    height: 100%;
+    background: linear-gradient(90deg,#22c55e,#10b981);
+    border-radius: 100px;
+  }
+  .testament-fill.nt { background: linear-gradient(90deg,#a855f7,#8b5cf6); }
+
+  .current-book {
+    margin-top: 14px;
+    padding: 12px;
+    background: rgba(232,168,50,0.06);
+    border: 1px solid rgba(232,168,50,0.18);
+    border-radius: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .current-book-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: rgba(232,168,50,0.15);
+    color: #e8a832;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .current-book-info { flex: 1; }
+  .current-book-label { font-size: 10px; color: #e8a832; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+  .current-book-name { font-size: 14px; font-weight: 700; color: #fff; margin-top: 2px; }
+  .current-book-progress {
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 100px;
+    margin-top: 6px;
+    overflow: hidden;
+  }
+  .current-book-fill {
+    height: 100%;
+    background: linear-gradient(90deg,#e8a832,#e7c268);
+    border-radius: 100px;
+  }
+
+  /* ---------- Activity Heatmap ---------- */
+  .heatmap-card { padding: 20px 22px; }
+  .heatmap-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .heatmap-stats { display: flex; gap: 16px; align-items: baseline; }
+  .heatmap-stats .total { font-size: 16px; font-weight: 700; color: #fff; }
+  .heatmap-stats .total-label { font-size: 12px; color: #9ba1b0; }
+  .heatmap-grid {
+    display: grid;
+    grid-template-rows: repeat(7, 12px);
+    grid-auto-flow: column;
+    grid-auto-columns: 12px;
+    gap: 3px;
+    margin: 12px 0;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .heatmap-cell {
+    background: rgba(255,255,255,0.04);
+    border-radius: 2px;
+  }
+  .heatmap-cell.l1 { background: rgba(232,168,50,0.25); }
+  .heatmap-cell.l2 { background: rgba(232,168,50,0.5); }
+  .heatmap-cell.l3 { background: rgba(232,168,50,0.75); }
+  .heatmap-cell.l4 { background: #e8a832; box-shadow: 0 0 4px rgba(232,168,50,0.5); }
+  .heatmap-cell.empty-cta { background: rgba(232,168,50,0.08); border: 1px dashed rgba(232,168,50,0.3); }
+
+  .heatmap-legend {
+    display: flex; align-items: center; gap: 14px;
+    margin-top: 8px;
+    font-size: 11px;
+    color: #9ba1b0;
+  }
+  .legend-scale { display: flex; align-items: center; gap: 4px; }
+  .legend-cell { width: 10px; height: 10px; border-radius: 2px; background: rgba(255,255,255,0.05); }
+
+  .heatmap-empty-overlay {
+    text-align: center;
+    padding: 16px;
+    background: rgba(232,168,50,0.05);
+    border: 1px dashed rgba(232,168,50,0.2);
+    border-radius: 12px;
+    margin-top: 12px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .heatmap-empty-text { font-size: 12px; color: #9ba1b0; }
+  .heatmap-empty-text strong { color: #e7e9ee; font-weight: 600; }
+
+  /* ---------- Badge Collection ---------- */
+  .badge-tabs {
+    display: flex; gap: 6px;
+    margin-bottom: 14px;
+  }
+  .badge-tab {
+    padding: 7px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #9ba1b0;
+    cursor: pointer;
+  }
+  .badge-tab.active {
+    background: rgba(232,168,50,0.15);
+    border-color: rgba(232,168,50,0.3);
+    color: #e8a832;
+  }
+  .badge-tab .count { opacity: 0.7; margin-left: 4px; }
+
+  .badges-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  .badge {
+    aspect-ratio: 1;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 12px 10px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    position: relative;
+    transition: transform 0.15s;
+  }
+  .badge:hover { transform: translateY(-2px); }
+  .badge.unlocked {
+    background: linear-gradient(180deg, rgba(232,168,50,0.12), rgba(232,168,50,0.02));
+    border-color: rgba(232,168,50,0.25);
+  }
+  .badge.unlocked.streak { background: linear-gradient(180deg, rgba(251,146,60,0.15), rgba(251,146,60,0.02)); border-color: rgba(251,146,60,0.3); }
+  .badge.unlocked.purple { background: linear-gradient(180deg, rgba(168,85,247,0.12), rgba(168,85,247,0.02)); border-color: rgba(168,85,247,0.25); }
+  .badge.unlocked.green { background: linear-gradient(180deg, rgba(34,197,94,0.12), rgba(34,197,94,0.02)); border-color: rgba(34,197,94,0.25); }
+  .badge-icon-circle {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 8px;
+  }
+  .badge.unlocked .badge-icon-circle { background: rgba(232,168,50,0.2); color: #e8a832; }
+  .badge.unlocked.streak .badge-icon-circle { background: rgba(251,146,60,0.2); color: #fb923c; }
+  .badge.unlocked.purple .badge-icon-circle { background: rgba(168,85,247,0.2); color: #a855f7; }
+  .badge.unlocked.green .badge-icon-circle { background: rgba(34,197,94,0.2); color: #22c55e; }
+  .badge.locked .badge-icon-circle { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.2); }
+  .badge-icon-circle .material-symbols-outlined { font-size: 24px; }
+  .badge-name { font-size: 11px; font-weight: 700; color: #e7e9ee; }
+  .badge.locked .badge-name { color: rgba(255,255,255,0.4); }
+  .badge-desc { font-size: 9px; color: #9ba1b0; margin-top: 2px; line-height: 1.3; }
+  .badge-progress {
+    width: 100%;
+    height: 3px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px;
+    margin-top: 6px;
+    overflow: hidden;
+  }
+  .badge-progress-fill {
+    height: 100%;
+    background: rgba(255,255,255,0.3);
+    border-radius: 100px;
+  }
+  .badge-lock-pill {
+    position: absolute;
+    top: 6px; right: 6px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .badge-lock-pill .material-symbols-outlined { font-size: 11px; color: rgba(255,255,255,0.5); }
+
+  /* ---------- Analytics ---------- */
+  .analytics-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .analytics-block-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .analytics-block-title.strong { color: #22c55e; }
+  .analytics-block-title.weak { color: #f87171; }
+  .analytics-block-title .material-symbols-outlined { font-size: 16px; }
+
+  .book-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .book-row:last-child { border-bottom: none; }
+  .book-name { font-size: 13px; font-weight: 600; color: #e7e9ee; flex: 1; }
+  .book-bar-wrap {
+    width: 100px;
+    height: 6px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .book-bar-fill { height: 100%; border-radius: 100px; }
+  .book-bar-fill.green { background: linear-gradient(90deg,#22c55e,#10b981); }
+  .book-bar-fill.red { background: linear-gradient(90deg,#fb7185,#f43f5e); }
+  .book-bar-fill.yellow { background: linear-gradient(90deg,#facc15,#eab308); }
+  .book-pct { font-size: 12px; font-weight: 700; color: #fff; min-width: 44px; text-align: right; }
+
+  .practice-cta {
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, rgba(232,168,50,0.15), rgba(232,168,50,0.05));
+    border: 1px solid rgba(232,168,50,0.25);
+    border-radius: 12px;
+    display: flex; align-items: center; gap: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .practice-cta:hover { background: rgba(232,168,50,0.2); }
+  .practice-cta-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: rgba(232,168,50,0.2);
+    color: #e8a832;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .practice-cta-content { flex: 1; }
+  .practice-cta-title { font-size: 13px; font-weight: 700; color: #fff; }
+  .practice-cta-sub { font-size: 11px; color: #9ba1b0; margin-top: 2px; }
+  .practice-cta .material-symbols-outlined.arrow { color: #e8a832; font-size: 18px; }
+
+  /* ---------- Recent Activity Feed ---------- */
+  .activity-list { display: flex; flex-direction: column; }
+  .activity-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .activity-row:last-child { border-bottom: none; }
+  .activity-icon-circle {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .activity-icon-circle.gold { background: rgba(232,168,50,0.12); color: #e8a832; }
+  .activity-icon-circle.blue { background: rgba(96,165,250,0.12); color: #60a5fa; }
+  .activity-icon-circle.green { background: rgba(34,197,94,0.12); color: #22c55e; }
+  .activity-icon-circle .material-symbols-outlined { font-size: 18px; }
+  .activity-text { flex: 1; }
+  .activity-text .title { font-size: 13px; font-weight: 600; color: #e7e9ee; }
+  .activity-text .sub { font-size: 11px; color: #9ba1b0; margin-top: 2px; }
+  .activity-time { font-size: 11px; color: #9ba1b0; }
+  .activity-empty {
+    text-align: center;
+    padding: 24px 16px;
+    color: #9ba1b0;
+    font-size: 13px;
+  }
+  .activity-empty .material-symbols-outlined { font-size: 32px; color: rgba(255,255,255,0.15); display: block; margin: 0 auto 8px; }
+
+  /* ---------- Prestige (visual) ---------- */
+  .prestige-card {
+    background: linear-gradient(135deg, rgba(232,168,50,0.08), rgba(168,85,247,0.05));
+    border: 1px solid rgba(232,168,50,0.18);
+    border-radius: 16px;
+    padding: 22px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .prestige-emblem {
+    width: 80px; height: 80px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(232,168,50,0.12), rgba(168,85,247,0.08));
+    border: 1px solid rgba(232,168,50,0.3);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .prestige-emblem .crown { font-size: 32px; }
+  .prestige-emblem .lock-overlay {
+    position: absolute;
+    bottom: -4px; right: -4px;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: #0c0e16;
+    border: 2px solid rgba(232,168,50,0.4);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .prestige-emblem .lock-overlay .material-symbols-outlined { font-size: 14px; color: #9ba1b0; }
+  .prestige-content { flex: 1; }
+  .prestige-title { font-size: 15px; font-weight: 700; color: #fff; }
+  .prestige-desc { font-size: 12px; color: #9ba1b0; margin-top: 4px; line-height: 1.5; }
+  .prestige-progress-row { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+  .prestige-tier-pill {
+    padding: 3px 8px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #9ba1b0;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .prestige-tier-pill.current { background: rgba(232,168,50,0.15); color: #e8a832; }
+  .prestige-progress-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .prestige-progress-fill {
+    width: 16%;
+    height: 100%;
+    background: linear-gradient(90deg, #e8a832, #a855f7);
+    border-radius: 100px;
+  }
+
+  /* ---------- Settings (Sound & Haptics) ---------- */
+  .settings-card { padding: 18px 20px; }
+  .settings-header {
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer;
+  }
+  .settings-header-title {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; font-weight: 700; color: #fff;
+  }
+  .settings-header-title .material-symbols-outlined { font-size: 18px; color: #e8a832; }
+  .settings-body { margin-top: 16px; }
+  .setting-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .setting-row:last-child { border-bottom: none; }
+  .setting-label { font-size: 13px; color: #e7e9ee; }
+  .setting-sub { font-size: 11px; color: #9ba1b0; margin-top: 2px; }
+  .setting-control { display: flex; align-items: center; gap: 12px; }
+  .toggle {
+    width: 38px; height: 22px;
+    background: linear-gradient(135deg,#e8a832,#e7c268);
+    border-radius: 100px;
+    position: relative;
+    cursor: pointer;
+  }
+  .toggle::after {
+    content: '';
+    position: absolute;
+    width: 16px; height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    top: 3px; right: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+  .toggle.off { background: rgba(255,255,255,0.1); }
+  .toggle.off::after { right: auto; left: 3px; }
+  .slider-control {
+    width: 140px; height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 100px;
+    position: relative;
+  }
+  .slider-control .slider-fill {
+    position: absolute; left: 0; top: 0;
+    width: 70%; height: 100%;
+    background: linear-gradient(90deg,#e8a832,#e7c268);
+    border-radius: 100px;
+  }
+  .slider-control .slider-thumb {
+    position: absolute;
+    left: 70%; top: 50%;
+    transform: translate(-50%,-50%);
+    width: 14px; height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  }
+  .slider-value { font-size: 11px; color: #e8a832; font-weight: 700; min-width: 30px; text-align: right; }
+
+  /* ---------- Danger Zone ---------- */
+  .danger-zone {
+    margin-top: 24px;
+    padding: 18px 20px;
+    background: rgba(239,68,68,0.04);
+    border: 1px solid rgba(239,68,68,0.18);
+    border-radius: 14px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .danger-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: rgba(239,68,68,0.12);
+    color: #f87171;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .danger-content { flex: 1; }
+  .danger-title { font-size: 13px; font-weight: 700; color: #f87171; }
+  .danger-desc { font-size: 11px; color: #9ba1b0; margin-top: 2px; }
+  .btn-danger {
+    background: rgba(239,68,68,0.1);
+    color: #f87171;
+    border: 1px solid rgba(239,68,68,0.3);
+  }
+  .btn-danger:hover { background: rgba(239,68,68,0.18); }
+
+  /* ---------- Annotation labels (for mockup review) ---------- */
+  .annotation {
+    background: #fbbf24;
+    color: #422006;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .annotation.new { background: #22c55e; color: #052e16; }
+  .annotation.fixed { background: #60a5fa; color: #0c1e3a; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ================== SIDEBAR ================== -->
+  <aside class="sidebar">
+    <div class="logo">Bible Quiz</div>
+    <div class="user-card">
+      <div class="user-avatar-sm">T</div>
+      <div class="user-info-sm">
+        <div class="name">TAI THANH</div>
+        <div class="tier">🌱 Tân Tín Hữu</div>
+      </div>
+      <span class="material-symbols-outlined" style="font-size:18px; color:#9ba1b0;">expand_more</span>
+    </div>
+
+    <div class="nav-item"><span class="material-symbols-outlined">home</span> Trang chủ</div>
+    <div class="nav-item"><span class="material-symbols-outlined">leaderboard</span> Xếp hạng</div>
+    <div class="nav-item"><span class="material-symbols-outlined">groups</span> Nhóm</div>
+    <div class="nav-item active"><span class="material-symbols-outlined">person</span> Cá nhân</div>
+
+    <div class="sidebar-streak">
+      <div class="label">🔥 STREAK</div>
+      <div class="value">2 ngày</div>
+      <div class="sub">liên tục</div>
+      <div class="hint">Đừng dừng — chơi tiếp!</div>
+    </div>
+  </aside>
+
+  <!-- ================== MAIN CONTENT ================== -->
+  <main class="main">
+
+    <div class="page-title-row">
+      <div>
+        <div class="page-title">Hồ sơ cá nhân</div>
+        <div class="page-sub">Theo dõi hành trình học Lời Chúa của bạn</div>
+      </div>
+    </div>
+
+    <!-- ===== HERO (compact, no empty space) ===== -->
+    <section class="hero">
+      <div class="avatar-wrap">
+        <div class="avatar">T</div>
+        <div class="avatar-tier-badge">🌱</div>
+      </div>
+      <div class="hero-info">
+        <div class="hero-name">TAI THANH</div>
+        <span class="hero-tier"><span style="font-size:14px;">🌱</span> Tân Tín Hữu · Cấp 1</span>
+        <div class="hero-meta">
+          <div class="hero-meta-item"><span class="material-symbols-outlined">mail</span> thanhtai18021994@gmail.com</div>
+          <div class="hero-meta-item"><span class="material-symbols-outlined">calendar_today</span> Tham gia 2 ngày trước <span class="annotation fixed">FIXED</span></div>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <button class="btn btn-ghost btn-icon" title="Chia sẻ"><span class="material-symbols-outlined">share</span></button>
+        <button class="btn btn-primary"><span class="material-symbols-outlined">edit</span> Chỉnh sửa</button>
+      </div>
+    </section>
+
+    <!-- ===== STATS STRIP (4 columns) ===== -->
+    <section class="stats-strip">
+      <div class="stat-card">
+        <div class="stat-icon gold"><span class="material-symbols-outlined">emoji_events</span></div>
+        <div class="stat-content">
+          <div class="stat-label">Tổng điểm</div>
+          <div class="stat-value">0</div>
+          <div class="stat-sub">Hạng #—</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon orange"><span class="material-symbols-outlined">local_fire_department</span></div>
+        <div class="stat-content">
+          <div class="stat-label">Streak hiện tại</div>
+          <div class="stat-value">2 <span style="font-size:13px; color:#9ba1b0; font-weight:500;">ngày</span></div>
+          <div class="stat-sub up">↑ Dài nhất: 2 ngày</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon purple"><span class="material-symbols-outlined">history</span></div>
+        <div class="stat-content">
+          <div class="stat-label">Tổng phiên</div>
+          <div class="stat-value">1</div>
+          <div class="stat-sub">11 câu đã trả lời</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><span class="material-symbols-outlined">check_circle</span></div>
+        <div class="stat-content">
+          <div class="stat-label">Tỉ lệ đúng</div>
+          <div class="stat-value">45.5%</div>
+          <div class="stat-sub">5/11 câu đúng</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TIER PROGRESS (full width, packed) ===== -->
+    <div class="section-title">
+      <h2><span class="material-symbols-outlined">military_tech</span> Tiến trình hạng <span class="annotation fixed">FIXED — bỏ 600px khoảng trống</span></h2>
+    </div>
+    <section class="card tier-card">
+      <div class="tier-header">
+        <div class="tier-header-left">
+          <div class="tier-icon-current">🌱</div>
+          <div>
+            <div class="tier-current-name">Tân Tín Hữu</div>
+            <div class="tier-current-sub">Cấp 1 · Bạn đang ở đây</div>
+          </div>
+        </div>
+        <span class="tier-arrow material-symbols-outlined">arrow_forward</span>
+        <div class="tier-header-right">
+          <div>
+            <div class="tier-next-name">Người Tìm Kiếm</div>
+            <div class="tier-next-sub">Cấp 2 · Còn 1,000 EXP</div>
+          </div>
+          <div class="tier-icon-next">🌅</div>
+        </div>
+      </div>
+
+      <!-- Sub-tier stars (5 dots for current tier sub-progress) -->
+      <div style="font-size:10px; color:#9ba1b0; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:6px;">Sao phụ trong hạng (0 / 5)</div>
+      <div class="substars-row">
+        <div class="substar current">★</div>
+        <div class="substar">★</div>
+        <div class="substar">★</div>
+        <div class="substar">★</div>
+        <div class="substar">★</div>
+      </div>
+
+      <!-- Progress bar with milestones -->
+      <div class="progress-wrap" style="margin-top:24px;">
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" style="width: 8%;"></div>
+        </div>
+        <!-- Milestones -->
+        <div class="milestone" style="left: 50%;"></div>
+        <div class="milestone-label" style="left: 50%;">50%</div>
+        <div class="milestone" style="left: 90%;"></div>
+        <div class="milestone-label" style="left: 90%;">90%</div>
+      </div>
+
+      <div class="tier-footer" style="margin-top:34px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div class="tier-exp-info">
+            <span class="num">80</span>
+            <span class="label">/ 1,000 EXP</span>
+          </div>
+          <div class="tier-eta">
+            <span class="material-symbols-outlined">schedule</span>
+            ~25 ngày nữa với streak hiện tại
+          </div>
+        </div>
+        <div class="tier-reward">
+          <span class="material-symbols-outlined">lock_open</span>
+          Mở khóa: Ranked Mode + Speed Race
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Daily Missions + Bible Journey ===== -->
+    <div class="row-2col">
+      <!-- Daily Missions -->
+      <div class="card">
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span class="material-symbols-outlined" style="color:#e8a832; font-size:18px;">target</span>
+            <div style="font-size:14px; font-weight:700; color:#fff;">Nhiệm vụ ngày</div>
+            <span style="font-size:11px; color:#9ba1b0; padding:2px 8px; background:rgba(255,255,255,0.04); border-radius:100px;">0/3 hoàn thành</span>
+          </div>
+          <span style="font-size:11px; color:#9ba1b0;"><span class="material-symbols-outlined" style="font-size:13px; vertical-align:-2px;">schedule</span> Reset trong 18:24:35</span>
+        </div>
+        <div class="missions-list">
+          <div class="mission-item">
+            <div class="mission-icon"><span class="material-symbols-outlined">quiz</span></div>
+            <div class="mission-content">
+              <div class="mission-title">Trả lời 10 câu hỏi</div>
+              <div class="mission-progress-bar"><div class="mission-progress-fill" style="width: 30%;"></div></div>
+              <div class="mission-stat">3 / 10 câu</div>
+            </div>
+            <div class="mission-reward">+50 EXP</div>
+          </div>
+          <div class="mission-item">
+            <div class="mission-icon"><span class="material-symbols-outlined">bolt</span></div>
+            <div class="mission-content">
+              <div class="mission-title">Hoàn thành 1 phiên Practice</div>
+              <div class="mission-progress-bar"><div class="mission-progress-fill" style="width: 100%; background: linear-gradient(90deg,#22c55e,#10b981);"></div></div>
+              <div class="mission-stat" style="color:#22c55e;">✓ Đã hoàn thành</div>
+            </div>
+            <div class="mission-reward">+30 EXP</div>
+          </div>
+          <div class="mission-item">
+            <div class="mission-icon"><span class="material-symbols-outlined">today</span></div>
+            <div class="mission-content">
+              <div class="mission-title">Chơi Daily Challenge</div>
+              <div class="mission-progress-bar"><div class="mission-progress-fill" style="width: 0%;"></div></div>
+              <div class="mission-stat">Chưa bắt đầu</div>
+            </div>
+            <div class="mission-reward">+50 EXP</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bible Journey Preview -->
+      <div class="card">
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span class="material-symbols-outlined" style="color:#e8a832; font-size:18px;">explore</span>
+            <div style="font-size:14px; font-weight:700; color:#fff;">Hành trình 66 sách <span class="annotation new">MỚI</span></div>
+          </div>
+          <a href="#" class="section-link">Xem đầy đủ →</a>
+        </div>
+
+        <div class="journey-overall" style="margin-top:14px;">
+          <span class="num">1</span>
+          <span class="label">/ 66 sách đang chinh phục · 1.5%</span>
+        </div>
+
+        <!-- Old Testament -->
+        <div class="testament-bar">
+          <div class="testament-header">
+            <div class="testament-name">📜 Cựu Ước</div>
+            <div class="testament-stat">0 / 39 sách hoàn thành</div>
+          </div>
+          <div class="testament-progress"><div class="testament-fill" style="width: 1.2%;"></div></div>
+        </div>
+
+        <!-- New Testament -->
+        <div class="testament-bar">
+          <div class="testament-header">
+            <div class="testament-name">✝️ Tân Ước</div>
+            <div class="testament-stat">0 / 27 sách hoàn thành</div>
+          </div>
+          <div class="testament-progress"><div class="testament-fill nt" style="width: 0%;"></div></div>
+        </div>
+
+        <!-- Currently exploring -->
+        <div class="current-book">
+          <div class="current-book-icon"><span class="material-symbols-outlined">menu_book</span></div>
+          <div class="current-book-info">
+            <div class="current-book-label">ĐANG CHINH PHỤC</div>
+            <div class="current-book-name">Sáng Thế Ký · 45.5%</div>
+            <div class="current-book-progress"><div class="current-book-fill" style="width: 45.5%;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Activity Heatmap ===== -->
+    <div class="section-title">
+      <h2><span class="material-symbols-outlined">grid_view</span> Nhật ký học tập</h2>
+      <span style="font-size:12px; color:#9ba1b0;">12 tháng qua</span>
+    </div>
+    <section class="card heatmap-card">
+      <div class="heatmap-header">
+        <div class="heatmap-stats">
+          <span class="total">2</span>
+          <span class="total-label">ngày hoạt động trong năm qua</span>
+        </div>
+        <div class="heatmap-legend">
+          <span>Ít</span>
+          <div class="legend-scale">
+            <div class="legend-cell"></div>
+            <div class="legend-cell" style="background: rgba(232,168,50,0.25);"></div>
+            <div class="legend-cell" style="background: rgba(232,168,50,0.5);"></div>
+            <div class="legend-cell" style="background: rgba(232,168,50,0.75);"></div>
+            <div class="legend-cell" style="background: #e8a832;"></div>
+          </div>
+          <span>Nhiều</span>
+        </div>
+      </div>
+
+      <!-- Heatmap grid (sample data showing 53 weeks) -->
+      <div class="heatmap-grid" id="heatmap"></div>
+
+      <!-- CTA for empty state -->
+      <div class="heatmap-empty-overlay">
+        <div class="heatmap-empty-text">
+          🌱 <strong>Hãy bắt đầu chuỗi học!</strong> Chơi 1 phiên mỗi ngày để xây dựng thói quen.
+        </div>
+        <button class="btn btn-primary" style="height:34px; font-size:12px;">
+          <span class="material-symbols-outlined" style="font-size:16px;">play_arrow</span> Chơi Daily Challenge
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== Badge Collection ===== -->
+    <div class="section-title">
+      <h2><span class="material-symbols-outlined">workspace_premium</span> Bộ sưu tập huy hiệu <span class="annotation fixed">FIXED — icons + tabs</span></h2>
+      <a href="#" class="section-link">Xem tất cả 24 huy hiệu →</a>
+    </div>
+    <section class="card">
+      <div class="badge-tabs">
+        <div class="badge-tab active">Tất cả <span class="count">10</span></div>
+        <div class="badge-tab">Đã mở <span class="count">2</span></div>
+        <div class="badge-tab">Đang khóa <span class="count">8</span></div>
+      </div>
+
+      <div class="badges-grid">
+        <!-- Unlocked badges -->
+        <div class="badge unlocked streak">
+          <div class="badge-icon-circle"><span class="material-symbols-outlined">local_fire_department</span></div>
+          <div class="badge-name">Khởi đầu</div>
+          <div class="badge-desc">Streak 2 ngày</div>
+        </div>
+        <div class="badge unlocked green">
+          <div class="badge-icon-circle"><span class="material-symbols-outlined">flag</span></div>
+          <div class="badge-name">Người mới</div>
+          <div class="badge-desc">Phiên đầu tiên</div>
+        </div>
+
+        <!-- Locked badges (with progress) -->
+        <div class="badge locked">
+          <div class="badge-lock-pill"><span class="material-symbols-outlined">lock</span></div>
+          <div class="badge-icon-circle"><span class="material-symbols-outlined">local_fire_department</span></div>
+          <div class="badge-name">Ngọn Lửa</div>
+          <div class="badge-desc">Streak 7 ngày</div>
+          <div class="badge-progress"><div class="badge-progress-fill" style="width: 28%;"></div></div>
+        </div>
+        <div class="badge locked">
+          <div class="badge-lock-pill"><span class="material-symbols-outlined">lock</span></div>
+          <div class="badge-icon-circle"><span class="material-symbols-outlined">menu_book</span></div>
+          <div class="badge-name">Học Giả</div>
+          <div class="badge-desc">10 sách hoàn thành</div>
+          <div class="badge-progress"><div class="badge-progress-fill" style="width: 0%;"></div></div>
+        </div>
+        <div class="badge locked">
+          <div class="badge-lock-pill"><span class="material-symbols-outlined">lock</span></div>
+          <div class="badge-icon-circle"><span class="material-symbols-outlined">workspace_premium</span></div>
+          <div class="badge-name">Vô Địch</div>
+          <div class="badge-desc">Top 1 Daily 3 lần</div>
+          <div class="badge-progress"><div class="badge-progress-fill" style="width: 0%;"></div></div>
+        </div>
+        <div class="badge locked">
+          <div class="badge-lock-pill"><span class="material-symbols-outlined">lock</span></div>
+          <div class="badge-icon-circle"><span class="material-symbols-outlined">my_location</span></div>
+          <div class="badge-name">Kiên Trì</div>
+          <div class="badge-desc">Trả lời 1,000 câu</div>
+          <div class="badge-progress"><div class="badge-progress-fill" style="width: 1.1%;"></div></div>
+        </div>
+        <div class="badge locked">
+          <div class="badge-lock-pill"><span class="material-symbols-outlined">lock</span></div>
+          <div class="badge-icon-circle"><span class="material-symbols-outlined">bolt</span></div>
+          <div class="badge-name">Hoàn Hảo</div>
+          <div class="badge-desc">Streak 20 đúng liên tiếp</div>
+          <div class="badge-progress"><div class="badge-progress-fill" style="width: 15%;"></div></div>
+        </div>
+        <div class="badge locked">
+          <div class="badge-lock-pill"><span class="material-symbols-outlined">lock</span></div>
+          <div class="badge-icon-circle"><span class="material-symbols-outlined">shield</span></div>
+          <div class="badge-name">Trưởng Lão</div>
+          <div class="badge-desc">Đạt tier Hiền Triết</div>
+          <div class="badge-progress"><div class="badge-progress-fill" style="width: 0%;"></div></div>
+        </div>
+        <div class="badge locked">
+          <div class="badge-lock-pill"><span class="material-symbols-outlined">lock</span></div>
+          <div class="badge-icon-circle"><span class="material-symbols-outlined">star</span></div>
+          <div class="badge-name">Sứ Đồ</div>
+          <div class="badge-desc">Đạt tier cao nhất</div>
+          <div class="badge-progress"><div class="badge-progress-fill" style="width: 0%;"></div></div>
+        </div>
+        <div class="badge locked">
+          <div class="badge-lock-pill"><span class="material-symbols-outlined">lock</span></div>
+          <div class="badge-icon-circle"><span class="material-symbols-outlined">groups</span></div>
+          <div class="badge-name">Cộng Đồng</div>
+          <div class="badge-desc">Tham gia nhóm hội thánh</div>
+          <div class="badge-progress"><div class="badge-progress-fill" style="width: 0%;"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Analytics + Recent Activity (2 cols) ===== -->
+    <div class="row-2col">
+      <!-- Analytics -->
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:14px;">
+          <span class="material-symbols-outlined" style="color:#e8a832; font-size:18px;">analytics</span>
+          <div style="font-size:14px; font-weight:700; color:#fff;">Phân tích chi tiết <span class="annotation fixed">FIXED — đầy đủ hơn</span></div>
+        </div>
+
+        <!-- Strong books -->
+        <div class="analytics-block-title strong">
+          <span class="material-symbols-outlined">trending_up</span> Sách mạnh nhất
+        </div>
+        <div style="margin-bottom: 18px;">
+          <div class="book-row">
+            <div class="book-name">Sáng Thế Ký</div>
+            <div class="book-bar-wrap"><div class="book-bar-fill green" style="width: 45.5%;"></div></div>
+            <div class="book-pct">45.5%</div>
+          </div>
+        </div>
+
+        <!-- Weak books -->
+        <div class="analytics-block-title weak">
+          <span class="material-symbols-outlined">trending_down</span> Cần ôn thêm
+        </div>
+        <div>
+          <div class="book-row">
+            <div class="book-name">Sáng Thế Ký</div>
+            <div class="book-bar-wrap"><div class="book-bar-fill red" style="width: 45.5%;"></div></div>
+            <div class="book-pct">45.5%</div>
+          </div>
+          <div class="book-row" style="opacity:0.5;">
+            <div class="book-name">Xuất Hành <span style="font-size:10px; color:#9ba1b0;">(chưa chơi)</span></div>
+            <div class="book-bar-wrap"><div class="book-bar-fill red" style="width: 0%;"></div></div>
+            <div class="book-pct">—</div>
+          </div>
+          <div class="book-row" style="opacity:0.5;">
+            <div class="book-name">Lê-vi Ký <span style="font-size:10px; color:#9ba1b0;">(chưa chơi)</span></div>
+            <div class="book-bar-wrap"><div class="book-bar-fill red" style="width: 0%;"></div></div>
+            <div class="book-pct">—</div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="practice-cta">
+          <div class="practice-cta-icon"><span class="material-symbols-outlined">psychology</span></div>
+          <div class="practice-cta-content">
+            <div class="practice-cta-title">Ôn Sáng Thế Ký ngay</div>
+            <div class="practice-cta-sub">Tỉ lệ đúng dưới 50% · 6 câu cần ôn</div>
+          </div>
+          <span class="material-symbols-outlined arrow">arrow_forward</span>
+        </div>
+      </div>
+
+      <!-- Recent Activity Feed -->
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:14px;">
+          <span class="material-symbols-outlined" style="color:#e8a832; font-size:18px;">timeline</span>
+          <div style="font-size:14px; font-weight:700; color:#fff;">Hoạt động gần đây <span class="annotation new">MỚI</span></div>
+        </div>
+        <div class="activity-list">
+          <div class="activity-row">
+            <div class="activity-icon-circle gold"><span class="material-symbols-outlined">military_tech</span></div>
+            <div class="activity-text">
+              <div class="title">Đạt tier Tân Tín Hữu</div>
+              <div class="sub">Cấp 1 · +50 EXP</div>
+            </div>
+            <div class="activity-time">Hôm nay</div>
+          </div>
+          <div class="activity-row">
+            <div class="activity-icon-circle green"><span class="material-symbols-outlined">workspace_premium</span></div>
+            <div class="activity-text">
+              <div class="title">Mở khóa huy hiệu "Người mới"</div>
+              <div class="sub">Hoàn thành phiên đầu tiên</div>
+            </div>
+            <div class="activity-time">Hôm nay</div>
+          </div>
+          <div class="activity-row">
+            <div class="activity-icon-circle blue"><span class="material-symbols-outlined">quiz</span></div>
+            <div class="activity-text">
+              <div class="title">Practice · Sáng Thế Ký</div>
+              <div class="sub">5/11 câu đúng · 45.5%</div>
+            </div>
+            <div class="activity-time">Hôm nay</div>
+          </div>
+          <div class="activity-row">
+            <div class="activity-icon-circle orange" style="background: rgba(251,146,60,0.12); color:#fb923c;"><span class="material-symbols-outlined">local_fire_department</span></div>
+            <div class="activity-text">
+              <div class="title">Bắt đầu streak</div>
+              <div class="sub">Ngày đầu tiên</div>
+            </div>
+            <div class="activity-time">Hôm qua</div>
+          </div>
+          <div class="activity-row">
+            <div class="activity-icon-circle blue"><span class="material-symbols-outlined">person_add</span></div>
+            <div class="activity-text">
+              <div class="title">Tham gia BibleQuiz</div>
+              <div class="sub">Chào mừng bạn! 🎉</div>
+            </div>
+            <div class="activity-time">Hôm qua</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Prestige (visual) ===== -->
+    <div class="section-title">
+      <h2><span class="material-symbols-outlined">verified</span> Prestige <span class="annotation fixed">FIXED — visual progress</span></h2>
+    </div>
+    <section class="prestige-card">
+      <div class="prestige-emblem">
+        <div class="crown">👑</div>
+        <div class="lock-overlay"><span class="material-symbols-outlined">lock</span></div>
+      </div>
+      <div class="prestige-content">
+        <div class="prestige-title">Hệ thống Prestige</div>
+        <div class="prestige-desc">
+          Đạt tier <strong style="color:#e8a832;">Sứ Đồ (Tier 6)</strong> và duy trì 30 ngày để mở khóa Prestige — reset tier với badge vĩnh viễn và XP multiplier 2.5×.
+        </div>
+        <div class="prestige-progress-row">
+          <span class="prestige-tier-pill current">🌱 1</span>
+          <div class="prestige-progress-bar"><div class="prestige-progress-fill"></div></div>
+          <span class="prestige-tier-pill">👑 6</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Settings (Sound & Haptics) ===== -->
+    <div class="section-title">
+      <h2><span class="material-symbols-outlined">tune</span> Cài đặt nhanh</h2>
+      <a href="#" class="section-link">Xem tất cả cài đặt →</a>
+    </div>
+    <section class="card settings-card">
+      <div class="settings-header">
+        <div class="settings-header-title">
+          <span class="material-symbols-outlined">volume_up</span> Âm thanh & Rung
+        </div>
+      </div>
+      <div class="settings-body">
+        <div class="setting-row">
+          <div>
+            <div class="setting-label">Âm thanh hiệu ứng</div>
+            <div class="setting-sub">Nhạc khi trả lời đúng/sai, combo, lên tier</div>
+          </div>
+          <div class="setting-control">
+            <div class="slider-control">
+              <div class="slider-fill"></div>
+              <div class="slider-thumb"></div>
+            </div>
+            <div class="slider-value">70%</div>
+            <div class="toggle"></div>
+          </div>
+        </div>
+        <div class="setting-row">
+          <div>
+            <div class="setting-label">Rung phản hồi</div>
+            <div class="setting-sub">Rung nhẹ khi đúng, rung mạnh khi sai</div>
+          </div>
+          <div class="setting-control">
+            <div class="toggle"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Danger Zone ===== -->
+    <section class="danger-zone">
+      <div class="danger-icon"><span class="material-symbols-outlined">warning</span></div>
+      <div class="danger-content">
+        <div class="danger-title">Vùng nguy hiểm</div>
+        <div class="danger-desc">Xóa tài khoản sẽ xóa vĩnh viễn dữ liệu, streak, huy hiệu và lịch sử quiz. Hành động này không thể hoàn tác.</div>
+      </div>
+      <button class="btn btn-danger">
+        <span class="material-symbols-outlined">delete_forever</span> Xóa tài khoản
+      </button>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // Generate sample heatmap (53 weeks × 7 days)
+  const heatmap = document.getElementById('heatmap');
+  const totalCells = 53 * 7;
+  // Sample sparse activity for new user (only last 2 cells lit up)
+  for (let i = 0; i < totalCells; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'heatmap-cell';
+    // Last 2 days have activity
+    if (i === totalCells - 1) cell.classList.add('l2');
+    else if (i === totalCells - 2) cell.classList.add('l1');
+    heatmap.appendChild(cell);
+  }
+</script>
+
+</body>
+</html>
