@@ -3,13 +3,13 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 
 /**
- * Tests for the Room Lobby chat path. The room itself is loaded via fetch;
- * STOMP is owned by the useStomp hook, which we capture via vi.mock so we
- * can both observe send() calls (chat-out) and synthesize onMessage()
- * frames (chat-in) without spinning a real WebSocket.
+ * Tests for the redesigned Room Lobby (post 2026-05-07 redesign).
+ * Covers: hero block + room code + share button (Task ML-2),
+ * player slots + invite slot + kick menu (Task ML-3),
+ * compact rules + bottom bar (Task ML-4),
+ * chat FAB + panel toggle (Task ML-5).
  */
 
-// Capture the latest useStomp args so the tests can drive onMessage.
 let lastStompArgs: any = null
 const sendSpy = vi.fn()
 
@@ -37,7 +37,7 @@ vi.mock('react-router-dom', async () => {
   return { ...actual, useNavigate: () => mockNavigate }
 })
 
-const mockRoom = {
+const baseRoom = {
   id: 'room-1',
   roomCode: 'XND1E1',
   roomName: 'Test Room',
@@ -51,41 +51,49 @@ const mockRoom = {
   hostId: 'host-1',
   hostName: 'WS Host',
   myUserId: 'host-1',
+  difficulty: 'MIXED',
   players: [
     { id: 'p1', userId: 'host-1', username: 'WS Host', isReady: false, score: 0 },
   ],
 }
 
+function withPlayers(extra: Array<Partial<typeof baseRoom.players[number]>>) {
+  const players = [
+    ...baseRoom.players,
+    ...extra.map((p, i) => ({
+      id: `p${i + 2}`, userId: `u${i + 2}`, username: `User${i + 2}`,
+      isReady: true, score: 0, ...p,
+    })),
+  ]
+  return { ...baseRoom, players, currentPlayers: players.length }
+}
+
 beforeEach(() => {
   vi.clearAllMocks()
   lastStompArgs = null
-  // Make myUsername() report "WS Host" so the lobby treats us as the host.
   window.localStorage.setItem('userName', 'WS Host')
   window.localStorage.setItem('accessToken', 'test-token')
-  // fetchRoom() in RoomLobby calls the API; respond with our fixture.
-  vi.stubGlobal(
-    'fetch',
-    vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve({ success: true, room: mockRoom }),
-      } as Response),
-    ),
-  )
-  // Default api mock: no questions assigned
-  mockApiGet.mockResolvedValue({ data: { success: true, questions: [] } })
-  mockApiPost.mockResolvedValue({ data: { success: true, questions: [], assigned: 0, generated: 0, question: null } })
+  // Default: api.get returns the room (RoomLobby reads res.data.room).
+  mockApiGet.mockResolvedValue({ data: { success: true, room: baseRoom } })
+  mockApiPost.mockResolvedValue({ data: { success: true } })
   mockApiDelete.mockResolvedValue({ data: { success: true } })
+  Object.defineProperty(navigator, 'clipboard', {
+    configurable: true,
+    value: { writeText: vi.fn().mockResolvedValue(undefined) },
+  })
+  // happy-dom defaults to 1024 width — keep "desktop" by ensuring innerWidth.
+  Object.defineProperty(window, 'innerWidth', { configurable: true, value: 1280 })
 })
 
 afterEach(() => {
-  // Restore window.fetch so later test files don't see this stub leaking
-  // (other tests rely on real or per-file mocked fetch behavior).
   vi.unstubAllGlobals()
   window.localStorage.clear()
 })
 
-async function renderLobby() {
+async function renderLobby(roomOverride?: object) {
+  if (roomOverride) {
+    mockApiGet.mockResolvedValue({ data: { success: true, room: roomOverride } })
+  }
   const RoomLobby = (await import('../RoomLobby')).default
   return render(
     <MemoryRouter initialEntries={['/room/room-1']}>
@@ -96,126 +104,184 @@ async function renderLobby() {
   )
 }
 
-describe('Room Lobby — module', () => {
-  it('module exports default component', async () => {
+describe('RoomLobby — module', () => {
+  it('exports default component', async () => {
     const mod = await import('../RoomLobby')
     expect(mod.default).toBeDefined()
     expect(typeof mod.default).toBe('function')
   })
+})
 
-  it('component name is defined', async () => {
-    const mod = await import('../RoomLobby')
-    expect(mod.default.name).toBeTruthy()
+describe('RoomLobby — hero block + room code', () => {
+  it('renders the room code prominently', async () => {
+    await renderLobby()
+    expect(await screen.findByTestId('lobby-room-code')).toHaveTextContent('XND1E1')
+  })
+
+  it('renders mode + visibility chips and meta', async () => {
+    await renderLobby()
+    await screen.findByTestId('lobby-room-code')
+    // Speed Race appears in chip + rule title — at least one match is enough.
+    expect(screen.getAllByText(/Speed Race/i).length).toBeGreaterThan(0)
+    expect(screen.getByText(/Công khai/i)).toBeInTheDocument()
+    expect(screen.getByText(/3 câu/i)).toBeInTheDocument()
+    expect(screen.getByText(/15s\/câu/i)).toBeInTheDocument()
+    expect(screen.getByText(/Tối đa 4 người/i)).toBeInTheDocument()
+  })
+
+  it('opens InviteShareModal when share button is clicked', async () => {
+    await renderLobby()
+    fireEvent.click(await screen.findByTestId('lobby-share-btn'))
+    expect(await screen.findByRole('dialog', { name: /Mời bạn bè/i })).toBeInTheDocument()
   })
 })
 
-describe('Room Lobby — chat', () => {
-  it('sends "/app/room/{id}/chat" with trimmed text on Enter', async () => {
+describe('RoomLobby — players grid', () => {
+  it('renders host slot with crown', async () => {
     await renderLobby()
-    const input = await screen.findByPlaceholderText(/Nhắn tin/i)
-
-    fireEvent.change(input, { target: { value: '  hello team  ' } })
-    fireEvent.keyDown(input, { key: 'Enter' })
-
-    expect(sendSpy).toHaveBeenCalledWith(
-      '/app/room/room-1/chat',
-      { text: 'hello team' },
-    )
+    expect(await screen.findByTestId('lobby-slot-host-1')).toBeInTheDocument()
+    expect(screen.getByText(/Chủ phòng/i)).toBeInTheDocument()
   })
 
-  it('does NOT send when the text is whitespace-only', async () => {
+  it('renders the invite slot when seats remain', async () => {
     await renderLobby()
-    const input = await screen.findByPlaceholderText(/Nhắn tin/i)
+    expect(await screen.findByTestId('lobby-invite-slot')).toBeInTheDocument()
+  })
 
+  it('clicking invite slot opens share modal', async () => {
+    await renderLobby()
+    fireEvent.click(await screen.findByTestId('lobby-invite-slot'))
+    expect(await screen.findByRole('dialog', { name: /Mời bạn bè/i })).toBeInTheDocument()
+  })
+
+  it('host sees kick menu on non-host slots', async () => {
+    const room = withPlayers([{ userId: 'guest-1', username: 'Guest' }])
+    await renderLobby(room)
+    expect(await screen.findByTestId('lobby-slot-menu-guest-1')).toBeInTheDocument()
+    // Host's own slot should NOT have kick menu.
+    expect(screen.queryByTestId('lobby-slot-menu-host-1')).not.toBeInTheDocument()
+  })
+
+  it('opening kick menu reveals Kick action', async () => {
+    const room = withPlayers([{ userId: 'guest-1', username: 'Guest' }])
+    await renderLobby(room)
+    fireEvent.click(await screen.findByTestId('lobby-slot-menu-guest-1'))
+    expect(await screen.findByTestId('lobby-kick-guest-1')).toBeInTheDocument()
+  })
+
+  it('clicking Kick calls /api/rooms/{id}/kick with userId', async () => {
+    const room = withPlayers([{ userId: 'guest-1', username: 'Guest' }])
+    await renderLobby(room)
+    fireEvent.click(await screen.findByTestId('lobby-slot-menu-guest-1'))
+    fireEvent.click(await screen.findByTestId('lobby-kick-guest-1'))
+    await waitFor(() => {
+      expect(mockApiPost).toHaveBeenCalledWith('/api/rooms/room-1/kick', { userId: 'guest-1' })
+    })
+  })
+})
+
+describe('RoomLobby — bottom bar', () => {
+  it('start button disabled when alone', async () => {
+    await renderLobby()
+    const btn = await screen.findByTestId('lobby-start-btn')
+    expect(btn).toBeDisabled()
+  })
+
+  it('start button enabled when ≥1 ready non-host player', async () => {
+    const room = withPlayers([{ userId: 'guest-1', username: 'Guest', isReady: true }])
+    await renderLobby(room)
+    const btn = await screen.findByTestId('lobby-start-btn')
+    expect(btn).not.toBeDisabled()
+  })
+
+  it('leave button calls /api/rooms/{id}/leave', async () => {
+    await renderLobby()
+    fireEvent.click(await screen.findByTestId('lobby-leave-btn'))
+    await waitFor(() => {
+      expect(mockApiPost).toHaveBeenCalledWith('/api/rooms/room-1/leave')
+    })
+  })
+})
+
+describe('RoomLobby — chat panel + FAB', () => {
+  it('chat FAB visible when alone (chat panel hidden)', async () => {
+    await renderLobby()
+    expect(await screen.findByTestId('lobby-chat-fab')).toBeInTheDocument()
+    expect(screen.queryByTestId('lobby-chat-panel')).not.toBeInTheDocument()
+  })
+
+  it('clicking FAB opens chat panel and hides FAB', async () => {
+    await renderLobby()
+    fireEvent.click(await screen.findByTestId('lobby-chat-fab'))
+    expect(await screen.findByTestId('lobby-chat-panel')).toBeInTheDocument()
+    expect(screen.queryByTestId('lobby-chat-fab')).not.toBeInTheDocument()
+  })
+
+  it('chat panel auto-opens when ≥2 players present (desktop)', async () => {
+    const room = withPlayers([{ userId: 'guest-1', username: 'Guest' }])
+    await renderLobby(room)
+    expect(await screen.findByTestId('lobby-chat-panel')).toBeInTheDocument()
+  })
+
+  it('sends "/app/room/{id}/chat" with trimmed text on Enter', async () => {
+    await renderLobby()
+    fireEvent.click(await screen.findByTestId('lobby-chat-fab'))
+    const input = await screen.findByPlaceholderText(/Nhắn tin/i)
+    fireEvent.change(input, { target: { value: '  hello team  ' } })
+    fireEvent.keyDown(input, { key: 'Enter' })
+    expect(sendSpy).toHaveBeenCalledWith('/app/room/room-1/chat', { text: 'hello team' })
+  })
+
+  it('does NOT send when text is whitespace-only', async () => {
+    await renderLobby()
+    fireEvent.click(await screen.findByTestId('lobby-chat-fab'))
+    const input = await screen.findByPlaceholderText(/Nhắn tin/i)
     fireEvent.change(input, { target: { value: '     ' } })
     fireEvent.keyDown(input, { key: 'Enter' })
-
     expect(sendSpy).not.toHaveBeenCalled()
   })
 
-  it('renders incoming CHAT_MESSAGE frames as chat bubbles', async () => {
+  it('renders incoming CHAT_MESSAGE frames', async () => {
     await renderLobby()
-    // Wait for the lobby to wire up useStomp.
+    fireEvent.click(await screen.findByTestId('lobby-chat-fab'))
     await waitFor(() => expect(lastStompArgs).not.toBeNull())
-
-    // Synthesize a chat frame as the broker would deliver it.
     lastStompArgs.onMessage({
       type: 'CHAT_MESSAGE',
       data: { sender: 'WS Host', text: 'Chào mọi người!' },
     })
-
     expect(await screen.findByText('Chào mọi người!')).toBeInTheDocument()
   })
 
-  it('flips chat input back to empty after sending', async () => {
+  it('clears chat input after sending', async () => {
     await renderLobby()
+    fireEvent.click(await screen.findByTestId('lobby-chat-fab'))
     const input = (await screen.findByPlaceholderText(/Nhắn tin/i)) as HTMLInputElement
-
     fireEvent.change(input, { target: { value: 'hi' } })
     fireEvent.keyDown(input, { key: 'Enter' })
-
     await waitFor(() => expect(input.value).toBe(''))
+  })
+
+  it('5 emoji reactions are rendered', async () => {
+    await renderLobby()
+    fireEvent.click(await screen.findByTestId('lobby-chat-fab'))
+    await screen.findByPlaceholderText(/Nhắn tin/i)
+    expect(screen.getByText('🙏')).toBeInTheDocument()
+    expect(screen.getByText('🔥')).toBeInTheDocument()
+    expect(screen.getByText('👏')).toBeInTheDocument()
+    expect(screen.getByText('💡')).toBeInTheDocument()
+    expect(screen.getByText('✨')).toBeInTheDocument()
   })
 })
 
-describe('Room Lobby — question set banner', () => {
-  const mockRoomCustomWithSet = {
-    ...mockRoom,
-    questionSource: 'CUSTOM',
-    questionSetId: 'set-abc',
-    hostId: 'host-1',
-    myUserId: 'host-1',
-    players: [
-      { id: 'p1', userId: 'host-1', username: 'WS Host', isReady: false, score: 0 },
-    ],
-  }
-
-  const mockRoomCustomNoSet = {
-    ...mockRoom,
-    questionSource: 'CUSTOM',
-    questionSetId: null,
-    hostId: 'host-1',
-    myUserId: 'host-1',
-    players: [
-      { id: 'p1', userId: 'host-1', username: 'WS Host', isReady: false, score: 0 },
-    ],
-  }
-
-  async function renderRoomLobby(room: object) {
-    const RoomLobby = (await import('../RoomLobby')).default
-    vi.stubGlobal('fetch', vi.fn(() => Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve({ success: true, room }),
-    } as Response)))
-    return render(
-      <MemoryRouter initialEntries={[{ pathname: '/room/room-1', state: { room } }]}>
-        <Routes>
-          <Route path="/room/:roomId" element={<RoomLobby />} />
-        </Routes>
-      </MemoryRouter>,
-    )
-  }
-
-  it('shows set banner when CUSTOM source with questionSetId (host)', async () => {
-    await renderRoomLobby(mockRoomCustomWithSet)
-    expect(await screen.findByText(/Soạn câu hỏi/i)).toBeInTheDocument()
-  })
-
-  it('does NOT show set banner when CUSTOM source without questionSetId', async () => {
-    await renderRoomLobby(mockRoomCustomNoSet)
-    await screen.findByPlaceholderText(/Nhắn tin/i)
-    expect(screen.queryByText(/Soạn câu hỏi/i)).not.toBeInTheDocument()
-  })
-
-  it('does NOT show set banner for DATABASE source', async () => {
+describe('RoomLobby — rules card', () => {
+  it('renders compact rule text', async () => {
     await renderLobby()
-    await screen.findByPlaceholderText(/Nhắn tin/i)
-    expect(screen.queryByText(/Soạn câu hỏi/i)).not.toBeInTheDocument()
+    expect(await screen.findByText(/Luật Speed Race/i)).toBeInTheDocument()
   })
 
-  it('set banner links to /my-sets/:questionSetId for host', async () => {
-    await renderRoomLobby(mockRoomCustomWithSet)
-    const link = (await screen.findByText(/Soạn câu hỏi/i)).closest('a')
-    expect(link).toHaveAttribute('href', '/my-sets/set-abc')
+  it('clicking "Chi tiết" opens rules detail modal', async () => {
+    await renderLobby()
+    fireEvent.click(await screen.findByTestId('lobby-rules-detail-btn'))
+    expect(await screen.findByRole('dialog', { name: /Chi tiết luật chơi/i })).toBeInTheDocument()
   })
 })
