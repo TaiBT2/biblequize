@@ -4,6 +4,7 @@ import com.biblequiz.modules.group.entity.ChurchGroup;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,6 +16,13 @@ public interface ChurchGroupRepository extends JpaRepository<ChurchGroup, String
     Optional<ChurchGroup> findByGroupCode(String code);
 
     List<ChurchGroup> findByLeaderId(String userId);
+
+    /**
+     * Count groups a user owns that are still alive (not soft-deleted).
+     * Backs the "max 2 groups owned per user" constraint (SPEC §4.2).
+     */
+    @Query("SELECT COUNT(g) FROM ChurchGroup g WHERE g.leader.id = :userId AND g.deletedAt IS NULL")
+    long countActiveByLeaderId(@Param("userId") String userId);
 
     /**
      * Public, non-deleted, non-locked groups for the discovery widget on the

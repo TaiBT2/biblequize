@@ -42,4 +42,14 @@ public interface RoomPlayerRepository extends JpaRepository<RoomPlayer, String> 
 
     // Find players by team (Team vs Team)
     List<RoomPlayer> findByRoomIdAndTeam(String roomId, RoomPlayer.Team team);
+
+    /**
+     * Returns room IDs (LOBBY or IN_PROGRESS) the user is already in. Backs
+     * the "1 active room per user" constraint (SPEC v1.1 §8.7) — joining
+     * another room while still in one would split WS subscriptions.
+     */
+    @Query("SELECT rp.room.id FROM RoomPlayer rp " +
+           "WHERE rp.user.id = :userId " +
+           "AND rp.room.status IN ('LOBBY', 'IN_PROGRESS')")
+    List<String> findActiveRoomIdsByUserId(@Param("userId") String userId);
 }

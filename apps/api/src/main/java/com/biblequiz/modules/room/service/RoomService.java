@@ -88,6 +88,17 @@ public class RoomService {
             throw new Exception("Bạn đã có mặt trong phòng này");
         }
 
+        // SPEC v1.1 §8.7: a user can be in only one active room at a time.
+        // Filter out the room they're trying to join (no-op for normal flow,
+        // defensive in case the prior check missed a race).
+        List<String> otherActive = roomPlayerRepository.findActiveRoomIdsByUserId(user.getId())
+                .stream()
+                .filter(id -> !id.equals(room.getId()))
+                .toList();
+        if (!otherActive.isEmpty()) {
+            throw new Exception("ALREADY_IN_ANOTHER_ROOM");
+        }
+
         addPlayerToRoom(room.getId(), user);
 
         return room;

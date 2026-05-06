@@ -115,6 +115,14 @@ public class RoomController {
 
             return ResponseEntity.ok(Map.of("success", true, "room", details));
         } catch (Exception e) {
+            // SPEC v1.1 §8.7: structured 422 so FE can prompt user to leave
+            // their current room before joining another.
+            if ("ALREADY_IN_ANOTHER_ROOM".equals(e.getMessage())) {
+                return ResponseEntity.unprocessableEntity().body(Map.of(
+                        "success", false,
+                        "code", "ALREADY_IN_ANOTHER_ROOM",
+                        "message", "Bạn đang ở trong một phòng khác. Hãy rời phòng đó trước."));
+            }
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
     }

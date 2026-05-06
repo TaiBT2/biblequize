@@ -55,7 +55,17 @@ public class ChurchGroupService {
         return createGroup(name, description, true, leader);
     }
 
+    // SPEC v1.1 §4.2 + Phụ lục A: max groups owned per user.
+    private static final int MAX_GROUPS_OWNED = 2;
+    // SPEC v1.1 §4.3 + Phụ lục A: max groups joined per user (anti-spam).
+    private static final int MAX_GROUPS_JOINED = 5;
+
     public Map<String, Object> createGroup(String name, String description, boolean isPublic, User leader) {
+        long owned = churchGroupRepository.countActiveByLeaderId(leader.getId());
+        if (owned >= MAX_GROUPS_OWNED) {
+            throw new RuntimeException("MAX_GROUPS_OWNED");
+        }
+
         String code = generateGroupCode();
 
         ChurchGroup group = new ChurchGroup();
@@ -95,6 +105,12 @@ public class ChurchGroupService {
         Optional<GroupMember> existing = groupMemberRepository.findByGroupIdAndUserId(group.getId(), user.getId());
         if (existing.isPresent()) {
             throw new RuntimeException("Ban da la thanh vien cua nhom nay");
+        }
+
+        // SPEC v1.1 §4.3: max 5 groups joined per user.
+        long joined = groupMemberRepository.countByUserId(user.getId());
+        if (joined >= MAX_GROUPS_JOINED) {
+            throw new RuntimeException("MAX_GROUPS_JOINED");
         }
 
         GroupMember member = new GroupMember();

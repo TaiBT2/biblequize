@@ -84,6 +84,16 @@ public class ChurchGroupController {
 
             Map<String, Object> result = churchGroupService.createGroup(name, description, isPublic, user);
             return ResponseEntity.ok(Map.of("success", true, "group", result));
+        } catch (RuntimeException e) {
+            // 422 + structured code so FE can show targeted "manage existing
+            // groups first" CTA per SPEC §4.2.
+            if ("MAX_GROUPS_OWNED".equals(e.getMessage())) {
+                return ResponseEntity.unprocessableEntity().body(Map.of(
+                        "success", false,
+                        "code", "MAX_GROUPS_OWNED",
+                        "message", "Bạn đã tạo tối đa 2 nhóm. Hãy giải tán hoặc chuyển quyền 1 nhóm trước khi tạo nhóm mới."));
+            }
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
@@ -170,6 +180,14 @@ public class ChurchGroupController {
 
             Map<String, Object> result = churchGroupService.joinGroup(code.trim().toUpperCase(), user);
             return ResponseEntity.ok(Map.of("success", true, "data", result));
+        } catch (RuntimeException e) {
+            if ("MAX_GROUPS_JOINED".equals(e.getMessage())) {
+                return ResponseEntity.unprocessableEntity().body(Map.of(
+                        "success", false,
+                        "code", "MAX_GROUPS_JOINED",
+                        "message", "Bạn đã tham gia tối đa 5 nhóm. Hãy rời nhóm cũ trước khi tham gia nhóm mới."));
+            }
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
