@@ -120,24 +120,46 @@ public class SessionService {
         String book = (String) config.getOrDefault("book", null);
         String difficultyStr = (String) config.getOrDefault("difficulty", null);
         String language = (String) config.getOrDefault("language", "vi");
+        Integer chapterFrom = readNullableInt(config.get("chapterFrom"));
+        Integer chapterTo   = readNullableInt(config.get("chapterTo"));
+        Integer verseFrom   = readNullableInt(config.get("verseFrom"));
+        Integer verseTo     = readNullableInt(config.get("verseTo"));
+
+        boolean hasRangeFilter = chapterFrom != null || chapterTo != null || verseFrom != null || verseTo != null;
+        if (hasRangeFilter) {
+            String validationError = com.biblequiz.infrastructure.bible.BibleStructure.validateRange(
+                    book, chapterFrom, chapterTo, verseFrom, verseTo);
+            if (validationError != null) {
+                throw new IllegalArgumentException(validationError);
+            }
+        }
 
         List<Question> questions;
-        boolean useSmartSelection = (mode == QuizSession.Mode.practice || mode == QuizSession.Mode.ranked);
+        boolean useSmartSelection = (mode == QuizSession.Mode.practice || mode == QuizSession.Mode.ranked)
+                && !hasRangeFilter;
         if (useSmartSelection) {
             // Smart selection: prioritize unseen + review questions for practice/ranked
             var filter = new SmartQuestionSelector.QuestionFilter(book, difficultyStr, language);
             questions = smartQuestionSelector.selectQuestions(owner.getId(), questionCount, filter);
         } else {
-            // Random selection: daily/multiplayer need same questions for all users
+            // Random selection: daily/multiplayer or any mode with chapter/verse range
+            // (range queries bypass smart selection — user explicitly chose narrow scope).
             @SuppressWarnings("unchecked")
             List<String> excludeIds = (List<String>) config.getOrDefault("excludeQuestionIds", null);
-            questions = questionService.getRandomQuestions(book, difficultyStr, language, questionCount, excludeIds);
+            questions = questionService.getRandomQuestions(book, difficultyStr, language,
+                    chapterFrom, chapterTo, verseFrom, verseTo, questionCount, excludeIds);
         }
 
-        // Tier-based timer: higher tier → shorter timer
-        int timerSec = useSmartSelection
-                ? smartQuestionSelector.getTimerSeconds(owner.getId())
-                : 30;
+        // Timer precedence: explicit config.timePerQuestion > tier-based (smart) > 30s default.
+        Integer explicitTimer = readNullableInt(config.get("timePerQuestion"));
+        int timerSec;
+        if (explicitTimer != null && explicitTimer > 0) {
+            timerSec = explicitTimer;
+        } else if (useSmartSelection) {
+            timerSec = smartQuestionSelector.getTimerSeconds(owner.getId());
+        } else {
+            timerSec = 30;
+        }
 
         List<QuizSessionQuestion> qsqList = new ArrayList<>();
         int order = 0;
@@ -153,6 +175,16 @@ public class SessionService {
         result.put("sessionId", session.getId());
         result.put("questions", mapToQuestionDTOs(questions));
         return result;
+    }
+
+    private static Integer readNullableInt(Object raw) {
+        if (raw == null) return null;
+        if (raw instanceof Number n) return n.intValue();
+        try {
+            return Integer.parseInt(raw.toString());
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
     @Transactional

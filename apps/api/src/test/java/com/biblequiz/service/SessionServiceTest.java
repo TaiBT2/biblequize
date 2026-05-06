@@ -133,6 +133,66 @@ class SessionServiceTest {
         }
 
         @Test
+        void createSession_WithChapterRange_ShouldBypassSmartSelection() throws Exception {
+                // Range filter present → uses QuestionService.getRandomQuestions (range-aware overload),
+                // not SmartQuestionSelector (user explicitly chose narrow scope).
+                String ownerId = "user1";
+                Map<String, Object> config = new HashMap<>();
+                config.put("questionCount", 1);
+                config.put("book", "Genesis");
+                config.put("chapterFrom", 1);
+                config.put("chapterTo", 10);
+                config.put("timePerQuestion", 45);
+
+                when(userRepository.findById(ownerId)).thenReturn(Optional.of(sampleUser));
+                when(objectMapper.writeValueAsString(config)).thenReturn("{}");
+                when(questionService.getRandomQuestions(eq("Genesis"), isNull(), eq("vi"),
+                                eq(1), eq(10), isNull(), isNull(), eq(1), any()))
+                                .thenReturn(Arrays.asList(sampleQuestion));
+                when(quizSessionRepository.save(any(QuizSession.class))).thenReturn(sampleSession);
+
+                Map<String, Object> result = sessionService.createSession(ownerId, QuizSession.Mode.practice, config);
+
+                assertNotNull(result);
+                assertNotNull(result.get("sessionId"));
+                verify(questionService).getRandomQuestions(eq("Genesis"), isNull(), eq("vi"),
+                                eq(1), eq(10), isNull(), isNull(), eq(1), any());
+                verifyNoInteractions(smartQuestionSelector);
+        }
+
+        @Test
+        void createSession_WithInvalidChapterRange_ShouldThrow() throws Exception {
+                // Mark only has 16 chapters; chapterTo=50 must be rejected by BibleStructure.
+                String ownerId = "user1";
+                Map<String, Object> config = new HashMap<>();
+                config.put("questionCount", 1);
+                config.put("book", "Mark");
+                config.put("chapterFrom", 1);
+                config.put("chapterTo", 50);
+
+                when(userRepository.findById(ownerId)).thenReturn(Optional.of(sampleUser));
+
+                IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () ->
+                                sessionService.createSession(ownerId, QuizSession.Mode.practice, config));
+                assertTrue(ex.getMessage().contains("Mark"), "error should mention book");
+                verifyNoInteractions(questionService, smartQuestionSelector);
+        }
+
+        @Test
+        void createSession_WithRangeButNoBook_ShouldThrow() throws Exception {
+                String ownerId = "user1";
+                Map<String, Object> config = new HashMap<>();
+                config.put("questionCount", 1);
+                config.put("chapterFrom", 1);
+                config.put("chapterTo", 5);
+
+                when(userRepository.findById(ownerId)).thenReturn(Optional.of(sampleUser));
+
+                assertThrows(IllegalArgumentException.class, () ->
+                                sessionService.createSession(ownerId, QuizSession.Mode.practice, config));
+        }
+
+        @Test
         void createSession_WithNonExistentUser_ShouldCreateNewUser() throws Exception {
                 // Given
                 String ownerId = "nonexistent@example.com";

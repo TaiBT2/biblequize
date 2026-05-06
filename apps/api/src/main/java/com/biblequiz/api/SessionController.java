@@ -59,6 +59,10 @@ public class SessionController {
         config.put("shuffleQuestions", request.getShuffleQuestions() != null ? request.getShuffleQuestions() : true);
         config.put("showExplanation", request.getShowExplanation() != null ? request.getShowExplanation() : true);
         config.put("language", request.getLanguage() != null ? request.getLanguage() : "vi");
+        if (request.getChapterFrom() != null) config.put("chapterFrom", request.getChapterFrom());
+        if (request.getChapterTo() != null)   config.put("chapterTo",   request.getChapterTo());
+        if (request.getVerseFrom() != null)   config.put("verseFrom",   request.getVerseFrom());
+        if (request.getVerseTo() != null)     config.put("verseTo",     request.getVerseTo());
 
         return ResponseEntity.ok(sessionService.createSession(userId, mode, config));
     }

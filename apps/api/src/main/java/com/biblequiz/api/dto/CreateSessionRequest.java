@@ -28,6 +28,18 @@ public class CreateSessionRequest {
     @Max(value = 300, message = "Time per question cannot exceed 300 seconds")
     private Integer timePerQuestion = 30;
 
+    @Min(value = 1, message = "chapterFrom must be >= 1")
+    private Integer chapterFrom;
+
+    @Min(value = 1, message = "chapterTo must be >= 1")
+    private Integer chapterTo;
+
+    @Min(value = 1, message = "verseFrom must be >= 1")
+    private Integer verseFrom;
+
+    @Min(value = 1, message = "verseTo must be >= 1")
+    private Integer verseTo;
+
     private List<String> excludeQuestionIds;
 
     private Boolean shuffleQuestions = true;
