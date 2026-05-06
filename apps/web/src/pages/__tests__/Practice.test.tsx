@@ -128,4 +128,41 @@ describe('Practice Mode', () => {
     const backLink = screen.getByText('Quay lại trang chủ')
     expect(backLink.closest('a')).toHaveAttribute('href', '/')
   })
+
+  it('renders time-per-question slider with default 30s', () => {
+    renderPractice()
+    const slider = screen.getByTestId('practice-time-slider') as HTMLInputElement
+    expect(slider).toBeInTheDocument()
+    expect(slider.value).toBe('30')
+    expect(slider.min).toBe('5')
+    expect(slider.max).toBe('120')
+  })
+
+  it('start payload includes timePerQuestion and skips chapter/verse when unset', async () => {
+    renderPractice()
+    const user = userEvent.setup()
+    await waitFor(() => expect(screen.getByText(/Bắt Đầu Luyện Tập/)).toBeInTheDocument())
+    await user.click(screen.getByText(/Bắt Đầu Luyện Tập/).closest('button')!)
+    await waitFor(() => {
+      expect(mockApiPost).toHaveBeenCalledWith('/api/sessions', expect.objectContaining({
+        mode: 'practice',
+        timePerQuestion: 30,
+      }))
+    })
+    const payload = mockApiPost.mock.calls[0][1]
+    expect(payload.chapterFrom).toBeUndefined()
+    expect(payload.verseFrom).toBeUndefined()
+  })
+
+  it('chapter inputs disabled until a book is selected', () => {
+    renderPractice()
+    const chFrom = screen.getByTestId('practice-chapter-from') as HTMLInputElement
+    expect(chFrom).toBeDisabled()
+  })
+
+  it('verse inputs disabled when no single chapter selected', () => {
+    renderPractice()
+    const vFrom = screen.getByTestId('practice-verse-from') as HTMLInputElement
+    expect(vFrom).toBeDisabled()
+  })
 })

@@ -1067,7 +1067,21 @@
       "tip2": "Ôn tập đều đặn mỗi ngày giúp ghi nhớ lâu hơn.",
       "tip3": "Bắt đầu từ mức Dễ và tăng dần độ khó khi đã quen."
     },
-    "backToHome": "Quay lại trang chủ"
+    "backToHome": "Quay lại trang chủ",
+    "timePerQuestion": "Thời gian mỗi câu",
+    "timePerQuestionValue": "{{seconds}}s",
+    "timePerQuestionHint": "Kéo để chỉnh từ 5s đến 120s",
+    "chapterRange": "Phạm vi chương",
+    "chapterRangeHint": "Chỉ áp dụng khi chọn 1 sách cụ thể",
+    "chapterFromLabel": "Từ chương",
+    "chapterToLabel": "Đến chương",
+    "chapterMaxHint": "Tối đa: {{max}}",
+    "verseRange": "Phạm vi câu (trong chương {{chapter}})",
+    "verseRangeHint": "Chỉ áp dụng khi chương từ = chương đến",
+    "verseFromLabel": "Từ câu",
+    "verseToLabel": "Đến câu",
+    "verseMaxHint": "Tối đa: {{max}}",
+    "rangeError": "Phạm vi không hợp lệ — vui lòng kiểm tra lại"
   },
   "results": {
     "excellent": "Xuất sắc!",
@@ -1086,7 +1100,46 @@
     "analysis": "Phân tích kết quả",
     "strongest": "🏆 Mạnh nhất",
     "needsImprovement": "✏️ Cần cải thiện",
-    "allExcellent": "Xuất sắc toàn bộ!"
+    "allExcellent": "Xuất sắc toàn bộ!",
+    "tones": {
+      "perfect": "Xuất sắc!",
+      "great": "Tốt lắm!",
+      "ok": "Khá hơn rồi!",
+      "learning": "Đang học hỏi nhé!",
+      "encourage": "Cố lên nhé!"
+    },
+    "tonesSub": {
+      "perfect": "Bạn đã thuộc rất tốt sách {{book}}. Hãy thử thách thêm với sách khác nhé.",
+      "great": "Tiếp tục giữ phong độ — bạn đang nắm rất chắc.",
+      "ok": "Đang đi đúng hướng — luyện thêm để vững hơn.",
+      "learning": "Sách này khá khó. Đừng nản — chơi lại để dần thuộc Lời Chúa hơn.",
+      "encourage": "Đừng bỏ cuộc — mỗi lần chơi là một lần học."
+    },
+    "stats": {
+      "correct": "Câu đúng",
+      "correctShort": "Đúng",
+      "accuracyShort": "Chính xác",
+      "time": "Thời gian"
+    },
+    "breakdown": {
+      "base": "Điểm cơ bản",
+      "speedBonus": "Bonus tốc độ",
+      "combo": "Combo ×{{multiplier}}",
+      "total": "Tổng điểm"
+    },
+    "difficulty": {
+      "title": "Phân tích theo độ khó",
+      "easy": "Dễ",
+      "medium": "Trung bình",
+      "mediumShort": "TB",
+      "hard": "Khó"
+    },
+    "actions": {
+      "reviewLong": "Xem lại bài",
+      "playAgainBook": "Chơi lại sách này",
+      "nextBook": "Sách tiếp theo",
+      "backHome": "Về trang chủ"
+    }
   },
   "review": {
     "noData": "Không có dữ liệu để xem lại",

@@ -57,20 +57,19 @@ interface QuizPageSettings {
 const ANSWER_LETTERS = ['A', 'B', 'C', 'D']
 const FILL_STYLE = { fontVariationSettings: "'FILL' 1" } as const
 const DEFAULT_TIMER = 30
-const ENERGY_BARS = 5
 const ENERGY_MAX = 100
-const ENERGY_PER_BAR = ENERGY_MAX / ENERGY_BARS
+const PRACTICE_LIVES_MAX = 5
 
-export function computeEnergyBarsFilled(
+export function computeEnergyPercent(
   energy: number | null | undefined,
   lives: number,
-  totalBars: number = ENERGY_BARS,
-  perBar: number = ENERGY_PER_BAR
+  livesMax: number = PRACTICE_LIVES_MAX
 ): number {
   if (energy != null) {
-    return Math.max(0, Math.min(totalBars, Math.ceil(Math.max(0, energy) / perBar)))
+    return Math.max(0, Math.min(100, (Math.max(0, energy) / ENERGY_MAX) * 100))
   }
-  return Math.max(0, Math.min(totalBars, lives))
+  if (livesMax <= 0) return 0
+  return Math.max(0, Math.min(100, (lives / livesMax) * 100))
 }
 
 const Quiz: React.FC = () => {
@@ -91,7 +90,7 @@ const Quiz: React.FC = () => {
   const [lives, setLives] = useState(5)
   const [serverEnergy, setServerEnergy] = useState<number | null>(null)
   const [correctAnswers, setCorrectAnswers] = useState(0)
-  const [timeLeft, setTimeLeft] = useState(30)
+  const [timeLeft, setTimeLeft] = useState(timerLimit)
   const [isQuizCompleted, setIsQuizCompleted] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [quizStats, setQuizStats] = useState<QuizStats>({
@@ -236,7 +235,8 @@ const Quiz: React.FC = () => {
     setShowResult(true)
 
     const timeTaken = timerLimit - timeLeft
-    let correct = false
+    let correct = answerIndex === (currentQuestion.correctAnswer?.[0] ?? -1)
+    setIsCorrect(correct)
     let rankedResponse: Record<string, unknown> | null = null
 
     try {
@@ -627,18 +627,22 @@ const Quiz: React.FC = () => {
         >
           <div className="flex items-center gap-2 px-2.5 py-2 rounded-xl bg-surface-container-low border border-outline-variant/10 min-w-0">
             <span className="material-symbols-outlined text-secondary text-base flex-shrink-0" style={FILL_STYLE}>bolt</span>
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <div className="text-[9px] font-bold uppercase tracking-wider text-on-surface-variant leading-none">{t('quiz.energy')}</div>
-              <div className="flex gap-0.5 mt-1.5" data-testid="quiz-energy-bars-mobile" data-energy={serverEnergy ?? ''}>
-                {Array.from({ length: ENERGY_BARS }).map((_, i) => {
-                  const filled = i < computeEnergyBarsFilled(serverEnergy, lives)
-                  return (
-                    <div
-                      key={i}
-                      className={`w-1 h-2 rounded-sm ${filled ? 'bg-secondary' : 'bg-surface-container-highest'}`}
-                    />
-                  )
-                })}
+              <div
+                className="flex items-center gap-1.5 mt-1.5"
+                data-testid="quiz-energy-bar-mobile"
+                data-energy={serverEnergy ?? ''}
+              >
+                <div className="relative flex-1 h-2 rounded-full bg-surface-container-highest overflow-hidden">
+                  <div
+                    className="absolute inset-y-0 left-0 rounded-full bg-secondary transition-[width] duration-500 ease-out"
+                    style={{ width: `${computeEnergyPercent(serverEnergy, lives)}%` }}
+                  />
+                </div>
+                <span className="text-[10px] font-bold tabular-nums text-on-surface leading-none">
+                  {Math.round(computeEnergyPercent(serverEnergy, lives))}%
+                </span>
               </div>
             </div>
           </div>
@@ -685,21 +689,22 @@ const Quiz: React.FC = () => {
             />
           </div>
 
-          <div className="flex flex-col items-end gap-1">
+          <div className="flex flex-col items-end gap-1 min-w-[180px]">
             <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">{t('quiz.energy')}</span>
-            <div className="flex gap-1" data-testid="quiz-energy-bars" data-energy={serverEnergy ?? ''}>
-              {Array.from({ length: ENERGY_BARS }).map((_, i) => {
-                const filled = i < computeEnergyBarsFilled(serverEnergy, lives)
-                return (
-                  <div
-                    key={i}
-                    className={`w-2 h-6 rounded-full ${filled
-                      ? 'bg-secondary shadow-[0_0_10px_rgba(232,168,50,0.3)]'
-                      : 'bg-surface-container-highest'
-                    }`}
-                  ></div>
-                )
-              })}
+            <div
+              className="flex items-center gap-2 w-full"
+              data-testid="quiz-energy-bar"
+              data-energy={serverEnergy ?? ''}
+            >
+              <div className="relative flex-1 h-3 rounded-full bg-surface-container-highest overflow-hidden">
+                <div
+                  className="absolute inset-y-0 left-0 rounded-full bg-secondary shadow-[0_0_10px_rgba(232,168,50,0.3)] transition-[width] duration-500 ease-out"
+                  style={{ width: `${computeEnergyPercent(serverEnergy, lives)}%` }}
+                />
+              </div>
+              <span className="text-sm font-bold tabular-nums text-on-surface min-w-[44px] text-right">
+                {Math.round(computeEnergyPercent(serverEnergy, lives))}%
+              </span>
             </div>
           </div>
         </div>

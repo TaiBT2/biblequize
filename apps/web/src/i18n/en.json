@@ -1067,7 +1067,21 @@
       "tip2": "Daily review makes memory stick longer.",
       "tip3": "Start at Easy and scale up as you get comfortable."
     },
-    "backToHome": "Back to home"
+    "backToHome": "Back to home",
+    "timePerQuestion": "Time per question",
+    "timePerQuestionValue": "{{seconds}}s",
+    "timePerQuestionHint": "Drag to adjust from 5s to 120s",
+    "chapterRange": "Chapter range",
+    "chapterRangeHint": "Only applies when a specific book is selected",
+    "chapterFromLabel": "From chapter",
+    "chapterToLabel": "To chapter",
+    "chapterMaxHint": "Max: {{max}}",
+    "verseRange": "Verse range (in chapter {{chapter}})",
+    "verseRangeHint": "Only applies when from-chapter equals to-chapter",
+    "verseFromLabel": "From verse",
+    "verseToLabel": "To verse",
+    "verseMaxHint": "Max: {{max}}",
+    "rangeError": "Invalid range — please check your inputs"
   },
   "results": {
     "excellent": "Excellent!",
@@ -1086,7 +1100,46 @@
     "analysis": "Results analysis",
     "strongest": "Strongest",
     "needsImprovement": "Needs improvement",
-    "allExcellent": "All excellent!"
+    "allExcellent": "All excellent!",
+    "tones": {
+      "perfect": "Outstanding!",
+      "great": "Great job!",
+      "ok": "Getting there!",
+      "learning": "Keep learning!",
+      "encourage": "Don't give up!"
+    },
+    "tonesSub": {
+      "perfect": "You know {{book}} really well. Time to challenge yourself with another book.",
+      "great": "Keep this up — you've got a strong grasp.",
+      "ok": "On the right track — a bit more practice and you've got it.",
+      "learning": "This book is tricky. Don't worry — replay to learn the Word better.",
+      "encourage": "Every attempt is a learning step."
+    },
+    "stats": {
+      "correct": "Correct",
+      "correctShort": "Correct",
+      "accuracyShort": "Accuracy",
+      "time": "Time"
+    },
+    "breakdown": {
+      "base": "Base score",
+      "speedBonus": "Speed bonus",
+      "combo": "Combo ×{{multiplier}}",
+      "total": "Total"
+    },
+    "difficulty": {
+      "title": "Breakdown by difficulty",
+      "easy": "Easy",
+      "medium": "Medium",
+      "mediumShort": "Med",
+      "hard": "Hard"
+    },
+    "actions": {
+      "reviewLong": "Review answers",
+      "playAgainBook": "Play this book again",
+      "nextBook": "Next book",
+      "backHome": "Back home"
+    }
   },
   "review": {
     "noData": "No data to review",
