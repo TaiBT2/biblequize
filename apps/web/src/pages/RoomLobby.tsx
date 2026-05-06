@@ -21,6 +21,9 @@ type RoomDetails = {
   bookScope?: string;
   difficulty?: string;
   createdAt?: string;
+  // Server-injected viewer id — use this (not username) to identify "me"
+  // since two players can share a display name.
+  myUserId?: string;
 };
 
 type UserQuestionDTO = {
@@ -134,7 +137,7 @@ const RoomLobby: React.FC = () => {
         case 'GAME_STARTING': {
           const d = msg.data as { countdown: number };
           setCountdown(d.countdown);
-          const myTeam = room?.players?.find(p => p.username === myUsername())?.team ?? null;
+          const myTeam = room?.players?.find(p => p.userId === room?.myUserId)?.team ?? null;
           setTimeout(() => navigate(`/room/${roomId}/quiz`, {
             replace: true, state: { mode: room?.mode, myTeam, isHost, hostId: room?.hostId, fromGroupId: (location.state as { fromGroupId?: string } | null)?.fromGroupId }
           }), d.countdown * 1000);
@@ -144,7 +147,7 @@ const RoomLobby: React.FC = () => {
         case 'QUESTION_START':
           navigate(`/room/${roomId}/quiz`, {
             replace: true,
-            state: { mode: room?.mode, myTeam: room?.players?.find(p => p.username === myUsername())?.team ?? null, isHost, hostId: room?.hostId, fromGroupId: (location.state as { fromGroupId?: string } | null)?.fromGroupId }
+            state: { mode: room?.mode, myTeam: room?.players?.find(p => p.userId === room?.myUserId)?.team ?? null, isHost, hostId: room?.hostId, fromGroupId: (location.state as { fromGroupId?: string } | null)?.fromGroupId }
           });
           break;
         case 'QUIZ_END':
@@ -216,22 +219,30 @@ const RoomLobby: React.FC = () => {
   const isSequential = room?.mode === 'GROUP_LIVE_SEQUENTIAL';
   const teamAPlayers = room?.players?.filter(p => p.team === 'A') ?? [];
   const teamBPlayers = room?.players?.filter(p => p.team === 'B') ?? [];
-  const myPlayer = room?.players?.find(p => p.username === myUsername());
+  // Match by userId (server-injected via room.myUserId) — falls back to
+  // username only if BE didn't populate myUserId yet (older response shape).
+  const myPlayer = room?.players?.find(p =>
+    room?.myUserId ? p.userId === room.myUserId : p.username === myUsername()
+  );
   const isHost = myPlayer?.userId === room?.hostId;
   const emptySlots = room ? Math.max(0, room.maxPlayers - room.currentPlayers) : 0;
   const modeInfo = MODE_INFO[room?.mode ?? ''] ?? { label: room?.mode ?? '', emoji: '🎮', ruleTitle: 'LUẬT CHƠI', ruleText: '', badgeColor: '#e8a832', badgeBg: 'rgba(232,168,50,0.15)', badgeBorder: 'rgba(232,168,50,0.3)' };
   const diffInfo = DIFFICULTY_INFO[room?.difficulty ?? ''] ?? DIFFICULTY_INFO.MIXED;
 
-  // Non-host players: must all be ready before host can start
+  // Non-host players: must all be ready before host can start (skip cho GROUP_LIVE_SEQUENTIAL — leader dẫn dắt)
   const nonHostPlayers = useMemo(() => room?.players?.filter(p => p.userId !== room?.hostId) ?? [], [room]);
   const readyNonHostCount = useMemo(() => nonHostPlayers.filter(p => p.isReady).length, [nonHostPlayers]);
   const readyCount = useMemo(() => room?.players?.filter(p => p.isReady).length ?? 0, [room]);
-  const canStart = room?.status === 'LOBBY' && nonHostPlayers.length >= 1 && readyNonHostCount === nonHostPlayers.length;
+  const isGroupLive = room?.mode === 'GROUP_LIVE_SEQUENTIAL';
+  const canStart = room?.status === 'LOBBY'
+    && nonHostPlayers.length >= 1
+    && (isGroupLive || readyNonHostCount === nonHostPlayers.length);
 
   // Status copy — single source of truth
   const statusPrimary = (() => {
     if (!room) return '';
     if (room.currentPlayers < 2) return 'Đang chờ thêm người chơi';
+    if (isGroupLive) return 'Sẵn sàng bắt đầu';
     if (readyNonHostCount < nonHostPlayers.length) return 'Đang chờ tất cả sẵn sàng';
     return 'Tất cả đã sẵn sàng!';
   })();
@@ -239,6 +250,7 @@ const RoomLobby: React.FC = () => {
     if (!room) return '';
     const need = Math.max(0, 2 - room.currentPlayers);
     if (room.currentPlayers < 2) return `Cần thêm ${need} người để bắt đầu`;
+    if (isGroupLive) return `${room.currentPlayers}/${room.maxPlayers} người · Trưởng nhóm có thể bắt đầu`;
     if (readyNonHostCount < nonHostPlayers.length) return `${readyNonHostCount}/${nonHostPlayers.length} người chơi đã sẵn sàng`;
     return `${room.currentPlayers}/${room.maxPlayers} người · Có thể bắt đầu`;
   })();
@@ -386,7 +398,7 @@ const RoomLobby: React.FC = () => {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
             {(room.players ?? []).map(p => (
-              <PlayerCard key={p.id} player={p} hostId={room.hostId} t={t} compact />
+              <PlayerCard key={p.id} player={p} hostId={room.hostId} myUserId={room.myUserId} t={t} compact />
             ))}
             {Array.from({ length: emptySlots }).map((_, i) => (
               <EmptySlot key={`empty-${i}`} index={i} t={t} gold={i === 0} />
@@ -724,7 +736,7 @@ const RoomLobby: React.FC = () => {
                     🔵 {t('room.teamA')} {myPlayer?.team === 'A' && <span className="text-on-surface-variant text-[10px]">({t('room.you')})</span>}
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
-                    {teamAPlayers.map(p => <PlayerCard key={p.id} player={p} hostId={room.hostId} t={t} />)}
+                    {teamAPlayers.map(p => <PlayerCard key={p.id} player={p} hostId={room.hostId} myUserId={room.myUserId} t={t} />)}
                     {teamAPlayers.length === 0 && <EmptySlot index={0} t={t} />}
                   </div>
                 </div>
@@ -733,7 +745,7 @@ const RoomLobby: React.FC = () => {
                     🔴 {t('room.teamB')} {myPlayer?.team === 'B' && <span className="text-on-surface-variant text-[10px]">({t('room.you')})</span>}
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
-                    {teamBPlayers.map(p => <PlayerCard key={p.id} player={p} hostId={room.hostId} t={t} />)}
+                    {teamBPlayers.map(p => <PlayerCard key={p.id} player={p} hostId={room.hostId} myUserId={room.myUserId} t={t} />)}
                     {teamBPlayers.length === 0 && <EmptySlot index={0} t={t} />}
                   </div>
                 </div>
@@ -759,7 +771,7 @@ const RoomLobby: React.FC = () => {
                       {idx === 0 ? '👑' : idx === 1 ? '⚔️' : `#${idx + 1}`}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-bold text-on-surface truncate">{p.username}{p.username === myUsername() ? ` (${t('room.you')})` : ''}</p>
+                      <p className="font-bold text-on-surface truncate">{p.username}{p.userId === room.myUserId ? ` (${t('room.you')})` : ''}</p>
                       <span className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">
                         {idx === 0 ? t('room.hotSeat') : idx === 1 ? t('room.challenger') : t('room.waiting')}
                       </span>
@@ -775,7 +787,7 @@ const RoomLobby: React.FC = () => {
               /* Default 4-column grid */
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
                 {(room.players ?? []).map(p => (
-                  <PlayerCard key={p.id} player={p} hostId={room.hostId} t={t} />
+                  <PlayerCard key={p.id} player={p} hostId={room.hostId} myUserId={room.myUserId} t={t} />
                 ))}
                 {Array.from({ length: emptySlots }).map((_, i) => (
                   <EmptySlot key={`empty-${i}`} index={i} t={t} />
@@ -978,11 +990,11 @@ const RoomLobby: React.FC = () => {
 // ─────────────────────────────────────────────────────────────────────────────
 
 /* ── Player Card — vertical layout ── */
-const PlayerCard: React.FC<{ player: Player; hostId: string; t: (key: string) => string; compact?: boolean }> = ({ player, hostId, t, compact }) => {
+const PlayerCard: React.FC<{ player: Player; hostId: string; myUserId?: string; t: (key: string) => string; compact?: boolean }> = ({ player, hostId, myUserId, t, compact }) => {
   const avatarSize = compact ? 40 : 48;
   const crownSize = compact ? 16 : 18;
   const isHost = player.userId === hostId;
-  const isMe = player.username === myUsername();
+  const isMe = myUserId ? player.userId === myUserId : player.username === myUsername();
 
   return (
     <div style={{

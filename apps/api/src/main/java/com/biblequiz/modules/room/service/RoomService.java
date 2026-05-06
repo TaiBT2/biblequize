@@ -198,11 +198,14 @@ public class RoomService {
             throw new Exception("Cần ít nhất 2 người chơi để bắt đầu");
         }
 
-        List<RoomPlayer> players = roomPlayerRepository.findByRoomId(roomId);
-        boolean allReady = players.stream().allMatch(RoomPlayer::getIsReady);
-
-        if (!allReady) {
-            throw new Exception("Tất cả người chơi phải sẵn sàng");
+        // GROUP_LIVE_SEQUENTIAL: leader dẫn dắt session, không cần ceremony "ready" như các mode khác.
+        // Các mode khác (SPEED_RACE, BATTLE_ROYALE, ...) vẫn yêu cầu mọi player ready trước khi bắt đầu.
+        if (room.getMode() != Room.RoomMode.GROUP_LIVE_SEQUENTIAL) {
+            List<RoomPlayer> players = roomPlayerRepository.findByRoomId(roomId);
+            boolean allReady = players.stream().allMatch(RoomPlayer::getIsReady);
+            if (!allReady) {
+                throw new Exception("Tất cả người chơi phải sẵn sàng");
+            }
         }
 
         room.setStatus(Room.RoomStatus.IN_PROGRESS);
@@ -224,10 +227,18 @@ public class RoomService {
      * Get room details with players
      */
     public RoomDetailsDTO getRoomDetails(String roomId) throws Exception {
+        return getRoomDetails(roomId, null);
+    }
+
+    /**
+     * Get room details with viewer's userId so FE can identify "me" reliably
+     * without falling back to username matching (which collides on duplicate names).
+     */
+    public RoomDetailsDTO getRoomDetails(String roomId, String viewerUserId) throws Exception {
         Room room = roomRepository.findById(roomId).orElseThrow(() -> new Exception("Phòng không tồn tại"));
         List<RoomPlayer> players = roomPlayerRepository.findByRoomId(roomId);
 
-        return new RoomDetailsDTO(room, players);
+        return new RoomDetailsDTO(room, players, viewerUserId);
     }
 
     /**
@@ -324,9 +335,14 @@ public class RoomService {
         public final String bookScope;
         public final String difficulty;
         public final String createdAt;
+        public final String myUserId;
         public final List<PlayerInfoDTO> players;
 
         public RoomDetailsDTO(Room room, List<RoomPlayer> roomPlayers) {
+            this(room, roomPlayers, null);
+        }
+
+        public RoomDetailsDTO(Room room, List<RoomPlayer> roomPlayers, String viewerUserId) {
             this.id = room.getId();
             this.roomCode = room.getRoomCode();
             this.roomName = room.getRoomName();
@@ -345,6 +361,7 @@ public class RoomService {
             this.bookScope = room.getBookScope();
             this.difficulty = room.getDifficulty() != null ? room.getDifficulty().name() : "MIXED";
             this.createdAt = room.getCreatedAt() != null ? room.getCreatedAt().toString() : null;
+            this.myUserId = viewerUserId;
 
             this.players = roomPlayers.stream()
                 .map(player -> new PlayerInfoDTO(
