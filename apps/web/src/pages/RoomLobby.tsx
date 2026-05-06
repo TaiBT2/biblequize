@@ -216,7 +216,9 @@ const RoomLobby: React.FC = () => {
     try {
       await api.post(`/api/rooms/${roomId}/start`);
       send(`/app/room/${roomId}/start`, {});
-    } catch { setError(t('room.errorStartRoom')); }
+    } catch (err: any) {
+      setError(err?.response?.data?.message || t('room.errorStartRoom'));
+    }
   };
   const handleSwitchTeam = async () => {
     if (!roomId) return;

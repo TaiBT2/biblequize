@@ -202,6 +202,48 @@ class RoomServiceTest {
         verify(roomPlayerRepository).save(any(RoomPlayer.class));
     }
 
+    // ── startRoom: host implicitly ready ─────────────────────────────────────
+
+    @Test
+    void startRoom_hostNotReadyButOthersReady_shouldStart() throws Exception {
+        // Bug fix 2026-05-07: host clicking "Start" implies they're ready —
+        // they don't need to also click "Ready" on themselves first. Only
+        // non-host players are checked.
+        testRoom.setCurrentPlayers(2); // canStart() requires >= 2
+
+        RoomPlayer hostPlayer = new RoomPlayer("hp-1", testRoom, hostUser, "Host");
+        hostPlayer.setIsReady(false); // host hasn't toggled ready
+        RoomPlayer otherPlayer = new RoomPlayer("op-1", testRoom, playerUser, "Player");
+        otherPlayer.setIsReady(true);
+
+        when(roomRepository.findById("room-1")).thenReturn(Optional.of(testRoom));
+        when(roomPlayerRepository.findByRoomId("room-1"))
+                .thenReturn(List.of(hostPlayer, otherPlayer));
+        when(roomRepository.save(any(Room.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        roomService.startRoom("room-1", "host-1");
+
+        assertEquals(Room.RoomStatus.IN_PROGRESS, testRoom.getStatus());
+    }
+
+    @Test
+    void startRoom_otherPlayerNotReady_shouldThrow() {
+        testRoom.setCurrentPlayers(2);
+
+        RoomPlayer hostPlayer = new RoomPlayer("hp-1", testRoom, hostUser, "Host");
+        hostPlayer.setIsReady(true);
+        RoomPlayer otherPlayer = new RoomPlayer("op-1", testRoom, playerUser, "Player");
+        otherPlayer.setIsReady(false); // not ready
+
+        when(roomRepository.findById("room-1")).thenReturn(Optional.of(testRoom));
+        when(roomPlayerRepository.findByRoomId("room-1"))
+                .thenReturn(List.of(hostPlayer, otherPlayer));
+
+        Exception ex = assertThrows(Exception.class,
+                () -> roomService.startRoom("room-1", "host-1"));
+        assertEquals("Tất cả người chơi phải sẵn sàng", ex.getMessage());
+    }
+
     // ── getRoomDetails ───────────────────────────────────────────────────────
 
     @Test

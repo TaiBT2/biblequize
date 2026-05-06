@@ -268,11 +268,16 @@ public class RoomService {
         }
 
         // GROUP_LIVE_SEQUENTIAL: leader dẫn dắt session, không cần ceremony "ready" như các mode khác.
-        // Các mode khác (SPEED_RACE, BATTLE_ROYALE, ...) vẫn yêu cầu mọi player ready trước khi bắt đầu.
+        // Các mode khác (SPEED_RACE, BATTLE_ROYALE, ...) yêu cầu non-host players ready
+        // trước khi bắt đầu. Host được coi là implicitly ready khi bấm "Bắt đầu" — không
+        // cần phải tự bấm "Sẵn sàng" cho chính mình (UI ở các mode hiện tại không hiển thị
+        // toggle ready cho host).
         if (room.getMode() != Room.RoomMode.GROUP_LIVE_SEQUENTIAL) {
             List<RoomPlayer> players = roomPlayerRepository.findByRoomId(roomId);
-            boolean allReady = players.stream().allMatch(RoomPlayer::getIsReady);
-            if (!allReady) {
+            boolean allOthersReady = players.stream()
+                    .filter(p -> !p.getUser().getId().equals(userId))
+                    .allMatch(RoomPlayer::getIsReady);
+            if (!allOthersReady) {
                 throw new Exception("Tất cả người chơi phải sẵn sàng");
             }
         }
