@@ -176,7 +176,15 @@ const RoomLobby: React.FC = () => {
     return () => window.removeEventListener('resize', handler);
   }, []);
 
-  const handleToggleReady = () => { if (roomId) send(`/app/room/${roomId}/ready`, {}); };
+  // Throttle 600ms — WS round-trip is ~200-500ms so a fast double-click
+  // would otherwise toggle ready twice and confuse the lobby state.
+  const togglingReadyRef = useRef(false);
+  const handleToggleReady = () => {
+    if (!roomId || togglingReadyRef.current) return;
+    togglingReadyRef.current = true;
+    send(`/app/room/${roomId}/ready`, {});
+    setTimeout(() => { togglingReadyRef.current = false; }, 600);
+  };
   const handleStart = async () => {
     if (!roomId) return;
     try {
