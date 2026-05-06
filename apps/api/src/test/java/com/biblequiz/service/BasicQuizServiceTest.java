@@ -198,7 +198,9 @@ class BasicQuizServiceTest {
         assertEquals(8, result.getThreshold());
         assertEquals(1, result.getAttemptCount());
         assertEquals(0, result.getCooldownSeconds());
-        assertTrue(result.getWrongAnswers() == null || result.getWrongAnswers().isEmpty());
+        // All 10 reviews returned (8 correct + 2 wrong) so the FE can render the full review.
+        assertEquals(10, result.getReviews().size());
+        assertEquals(8, result.getReviews().stream().filter(BasicQuizResultResponse.Review::isCorrect).count());
 
         ArgumentCaptor<User> userSaved = ArgumentCaptor.forClass(User.class);
         verify(userRepository).save(userSaved.capture());
@@ -236,13 +238,17 @@ class BasicQuizServiceTest {
         assertFalse(result.isPassed());
         assertEquals(7, result.getCorrectCount());
         assertEquals(60, result.getCooldownSeconds());
-        assertEquals(3, result.getWrongAnswers().size());
-        // Each wrong answer carries explanation + correctOptions for the FE review screen.
-        for (BasicQuizResultResponse.WrongAnswer w : result.getWrongAnswers()) {
-            assertNotNull(w.getQuestionId());
-            assertNotNull(w.getExplanation());
-            assertNotNull(w.getCorrectOptions());
-            assertNotEquals(w.getCorrectOptions(), w.getSelectedOptions());
+        // Reviews include ALL 10 questions (7 correct + 3 wrong) so the FE can show the full breakdown.
+        assertEquals(10, result.getReviews().size());
+        assertEquals(3, result.getReviews().stream().filter(r -> !r.isCorrect()).count());
+        // Each wrong review carries explanation + correctOptions for the FE review screen.
+        for (BasicQuizResultResponse.Review r : result.getReviews()) {
+            assertNotNull(r.getQuestionId());
+            assertNotNull(r.getExplanation());
+            assertNotNull(r.getCorrectOptions());
+            if (!r.isCorrect()) {
+                assertNotEquals(r.getCorrectOptions(), r.getSelectedOptions());
+            }
         }
 
         ArgumentCaptor<User> saved = ArgumentCaptor.forClass(User.class);

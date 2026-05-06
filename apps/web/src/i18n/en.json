@@ -1722,11 +1722,14 @@
       "passUnlock": "Unlocked: Ranked Match",
       "passCta": "Play Ranked now",
       "failTitle": "You scored {{correct}}/{{total}} — not enough",
-      "failSubtitle": "At least {{threshold}} correct is required to pass. Review the missed questions below and try again.",
+      "failSubtitle": "At least {{threshold}} correct is required to pass. Review the questions below and try again.",
+      "reviewAll": "Review every question",
       "failReview": "Review your wrong answers",
       "failYourAnswer": "You chose",
       "failCorrectAnswer": "Correct answer",
       "failSkipped": "(Skipped)",
+      "reviewCorrectBadge": "Correct",
+      "reviewWrongBadge": "Wrong",
       "cooldownMessage": "Try again in: {{time}}"
     },
     "card": {

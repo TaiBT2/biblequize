@@ -133,7 +133,15 @@ describe('BasicQuiz page — submit + result', () => {
         threshold: 8,
         attemptCount: 1,
         cooldownSeconds: 0,
-        wrongAnswers: [],
+        reviews: Array.from({ length: 10 }).map((_, i) => ({
+          questionId: `q-${i}`,
+          content: `Câu hỏi số ${i + 1}`,
+          options: [`A${i}`, `B${i}`, `C${i}`, `D${i}`],
+          selectedOptions: [0],
+          correctOptions: [0],
+          explanation: `Giải thích câu ${i + 1}`,
+          correct: true,
+        })),
       },
     })
     const user = userEvent.setup()
@@ -148,6 +156,19 @@ describe('BasicQuiz page — submit + result', () => {
   })
 
   it('renders fail screen with review entries + cooldown', async () => {
+    // Build 10 reviews — 5 correct, 5 wrong (matches correctCount=5).
+    const reviews = Array.from({ length: 10 }).map((_, i) => {
+      const isWrong = i === 3 || i === 7 || i === 0 || i === 1 || i === 2
+      return {
+        questionId: `q-${i}`,
+        content: `Câu hỏi số ${i + 1}`,
+        options: [`A${i}`, `B${i}`, `C${i}`, `D${i}`],
+        selectedOptions: [0],
+        correctOptions: isWrong ? [2] : [0],
+        explanation: `Giải thích chi tiết câu ${i + 1}`,
+        correct: !isWrong,
+      }
+    })
     mockApiPost.mockResolvedValue({
       data: {
         passed: false,
@@ -156,24 +177,7 @@ describe('BasicQuiz page — submit + result', () => {
         threshold: 8,
         attemptCount: 1,
         cooldownSeconds: 60,
-        wrongAnswers: [
-          {
-            questionId: 'q-3',
-            content: 'Câu hỏi số 4',
-            options: ['A3', 'B3', 'C3', 'D3'],
-            selectedOptions: [0],
-            correctOptions: [2],
-            explanation: 'Giải thích chi tiết câu 4',
-          },
-          {
-            questionId: 'q-7',
-            content: 'Câu hỏi số 8',
-            options: ['A7', 'B7', 'C7', 'D7'],
-            selectedOptions: [0],
-            correctOptions: [1],
-            explanation: 'Giải thích chi tiết câu 8',
-          },
-        ],
+        reviews,
       },
     })
 
@@ -185,7 +189,44 @@ describe('BasicQuiz page — submit + result', () => {
     expect(screen.getByText(/5\s*\/\s*10/)).toBeInTheDocument()
     expect(screen.getByText(/giải thích chi tiết câu 4/i)).toBeInTheDocument()
     expect(screen.getByText(/giải thích chi tiết câu 8/i)).toBeInTheDocument()
+    // All 10 reviews rendered (full breakdown, not just wrong ones).
+    for (let i = 0; i < 10; i++) {
+      expect(screen.getByTestId(`basic-quiz-review-${i}`)).toBeInTheDocument()
+    }
     expect(screen.getByTestId('basic-quiz-fail-cooldown')).toHaveTextContent(/01:00/)
+  })
+
+  it('pass screen also shows full review of all 10 questions', async () => {
+    mockApiPost.mockResolvedValue({
+      data: {
+        passed: true,
+        correctCount: 9,
+        totalQuestions: 10,
+        threshold: 8,
+        attemptCount: 1,
+        cooldownSeconds: 0,
+        reviews: Array.from({ length: 10 }).map((_, i) => ({
+          questionId: `q-${i}`,
+          content: `Câu hỏi số ${i + 1}`,
+          options: [`A${i}`, `B${i}`, `C${i}`, `D${i}`],
+          selectedOptions: [0],
+          correctOptions: i === 5 ? [2] : [0],
+          explanation: `Giải thích câu ${i + 1}`,
+          correct: i !== 5,
+        })),
+      },
+    })
+
+    const user = userEvent.setup()
+    renderPage()
+    await answerAllAndSubmit(user)
+
+    await waitFor(() => expect(screen.getByTestId('basic-quiz-result-pass')).toBeInTheDocument())
+    for (let i = 0; i < 10; i++) {
+      const item = screen.getByTestId(`basic-quiz-review-${i}`)
+      expect(item).toBeInTheDocument()
+      expect(item).toHaveAttribute('data-correct', i === 5 ? 'false' : 'true')
+    }
   })
 })
 

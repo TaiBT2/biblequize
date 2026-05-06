@@ -1722,11 +1722,14 @@
       "passUnlock": "Đã mở khóa: Thi Đấu Xếp Hạng",
       "passCta": "Bắt đầu Ranked ngay",
       "failTitle": "Bạn đúng {{correct}}/{{total}} câu — chưa đủ",
-      "failSubtitle": "Cần đúng tối thiểu {{threshold}} để pass. Hãy ôn lại các câu sai bên dưới rồi thử lại.",
+      "failSubtitle": "Cần đúng tối thiểu {{threshold}} để pass. Hãy ôn lại bài bên dưới rồi thử lại.",
+      "reviewAll": "Ôn lại toàn bộ bài",
       "failReview": "Ôn lại câu sai",
       "failYourAnswer": "Bạn chọn",
       "failCorrectAnswer": "Đáp án đúng",
       "failSkipped": "(Bỏ qua)",
+      "reviewCorrectBadge": "Đúng",
+      "reviewWrongBadge": "Sai",
       "cooldownMessage": "Có thể thử lại sau: {{time}}"
     },
     "card": {

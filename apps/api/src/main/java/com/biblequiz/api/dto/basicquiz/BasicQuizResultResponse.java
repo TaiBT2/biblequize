@@ -8,9 +8,8 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
- * Response from POST /api/basic-quiz/submit. On pass, {@code wrongAnswers}
- * is empty. On fail, {@code wrongAnswers} carries the data the FE needs to
- * render the review screen (selected vs correct + explanation).
+ * Response from POST /api/basic-quiz/submit. Carries the per-question review
+ * data the FE renders on both pass and fail screens.
  */
 @Data
 @Builder
@@ -32,19 +31,20 @@ public class BasicQuizResultResponse {
     /** Seconds until the user may retry, populated only when {@code passed=false}. */
     private int cooldownSeconds;
 
-    /** Per-question review entries. Empty when {@code passed=true}. */
-    private List<WrongAnswer> wrongAnswers;
+    /** Per-question review entries for ALL submitted questions, in submission order. */
+    private List<Review> reviews;
 
     @Data
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class WrongAnswer {
+    public static class Review {
         private String questionId;
         private String content;
         private List<String> options;
         private List<Integer> selectedOptions;
         private List<Integer> correctOptions;
         private String explanation;
+        private boolean correct;
     }
 }

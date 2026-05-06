@@ -166,7 +166,7 @@ public class BasicQuizService {
         }
 
         int correctCount = 0;
-        List<BasicQuizResultResponse.WrongAnswer> wrongs = new ArrayList<>();
+        List<BasicQuizResultResponse.Review> reviews = new ArrayList<>();
         Set<String> seen = new HashSet<>();
 
         for (BasicQuizSubmitRequest.Answer ans : request.getAnswers()) {
@@ -189,16 +189,16 @@ public class BasicQuizService {
             boolean correct = isAnswerCorrect(q, selected);
             if (correct) {
                 correctCount++;
-            } else {
-                wrongs.add(BasicQuizResultResponse.WrongAnswer.builder()
-                        .questionId(q.getId())
-                        .content(q.getContent())
-                        .options(q.getOptions())
-                        .selectedOptions(new ArrayList<>(selected))
-                        .correctOptions(new ArrayList<>(q.getCorrectAnswer()))
-                        .explanation(q.getExplanation())
-                        .build());
             }
+            reviews.add(BasicQuizResultResponse.Review.builder()
+                    .questionId(q.getId())
+                    .content(q.getContent())
+                    .options(q.getOptions())
+                    .selectedOptions(new ArrayList<>(selected))
+                    .correctOptions(new ArrayList<>(q.getCorrectAnswer()))
+                    .explanation(q.getExplanation())
+                    .correct(correct)
+                    .build());
         }
 
         boolean passed = correctCount >= PASS_THRESHOLD;
@@ -223,7 +223,7 @@ public class BasicQuizService {
                 .threshold(PASS_THRESHOLD)
                 .attemptCount(newAttempts)
                 .cooldownSeconds(passed ? 0 : COOLDOWN_SECONDS)
-                .wrongAnswers(passed ? Collections.emptyList() : wrongs)
+                .reviews(reviews)
                 .build();
     }
 

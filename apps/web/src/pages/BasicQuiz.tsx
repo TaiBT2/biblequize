@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { api } from '../api/client'
 import { getQuizLanguage } from '../utils/quizLanguage'
+import { soundManager } from '../services/soundManager'
+import { haptic } from '../utils/haptics'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 const LETTERS = ['A', 'B', 'C', 'D']
@@ -15,13 +17,14 @@ interface BasicQuizQuestion {
   options: string[]
 }
 
-interface WrongAnswer {
+interface Review {
   questionId: string
   content: string
   options: string[]
   selectedOptions: number[]
   correctOptions: number[]
   explanation: string
+  correct: boolean
 }
 
 interface BasicQuizResult {
@@ -31,7 +34,7 @@ interface BasicQuizResult {
   threshold: number
   attemptCount: number
   cooldownSeconds: number
-  wrongAnswers: WrongAnswer[]
+  reviews: Review[]
 }
 
 type Phase = 'playing' | 'submitting' | 'result'
@@ -103,20 +106,27 @@ export default function BasicQuiz() {
       next[currentIndex] = idx
       return next
     })
+    soundManager.play('buttonTap')
+    haptic.select()
   }
 
   function goNext() {
     setCurrentIndex(i => Math.min(i + 1, totalQuestions - 1))
+    soundManager.play('buttonTap')
+    haptic.tap()
   }
 
   function goPrev() {
     setCurrentIndex(i => Math.max(0, i - 1))
+    soundManager.play('buttonTap')
+    haptic.tap()
   }
 
   async function submit() {
     if (!questions || !allAnswered) return
     setPhase('submitting')
     setSubmitError(null)
+    soundManager.play('buttonTap')
     try {
       const payload = {
         language,
@@ -129,7 +139,17 @@ export default function BasicQuiz() {
       const r = res.data as BasicQuizResult
       setResult(r)
       setCooldownLeft(r.cooldownSeconds)
-      // Invalidate the Home card so its state-machine reflects the new attempt.
+      // Result feedback: perfect 10/10 → fanfare; pass → quiz-complete; fail → wrong-answer cue.
+      if (r.passed && r.correctCount === r.totalQuestions) {
+        soundManager.play('perfectScore')
+        haptic.tierUp()
+      } else if (r.passed) {
+        soundManager.play('quizComplete')
+        haptic.correct()
+      } else {
+        soundManager.play('wrongAnswer')
+        haptic.wrong()
+      }
       queryClient.invalidateQueries({ queryKey: ['basic-quiz-status'] })
       setPhase('result')
     } catch (err: any) {
@@ -288,6 +308,90 @@ export default function BasicQuiz() {
   )
 }
 
+/* ── Shared review list ── used by both Pass and Fail screens. */
+function ReviewList({ reviews }: { reviews: Review[] }) {
+  const { t } = useTranslation()
+  return (
+    <ul className="space-y-3">
+      {reviews.map((r, idx) => {
+        const correctIdx = r.correctOptions[0] ?? -1
+        const selectedIdx = r.selectedOptions[0]
+        return (
+          <li
+            key={r.questionId}
+            data-testid={`basic-quiz-review-${idx}`}
+            data-correct={r.correct ? 'true' : 'false'}
+            className={
+              'rounded-2xl border p-5 space-y-3 ' +
+              (r.correct
+                ? 'border-green-500/20 bg-green-500/5'
+                : 'border-error/20 bg-surface-container')
+            }
+          >
+            <div className="flex items-start justify-between gap-3">
+              <p className="font-semibold text-on-surface flex-1">{r.content}</p>
+              <span
+                className={
+                  'shrink-0 inline-flex items-center gap-1 text-[10px] uppercase tracking-widest font-bold px-2 py-1 rounded-full ' +
+                  (r.correct
+                    ? 'bg-green-500/15 text-green-400'
+                    : 'bg-error/15 text-error')
+                }
+              >
+                <span className="material-symbols-outlined text-sm" style={FILL_1}>
+                  {r.correct ? 'check_circle' : 'cancel'}
+                </span>
+                {r.correct ? t('basicQuiz.page.reviewCorrectBadge') : t('basicQuiz.page.reviewWrongBadge')}
+              </span>
+            </div>
+
+            {!r.correct && (
+              <div className="grid sm:grid-cols-2 gap-2 text-sm">
+                <div className="rounded-lg border border-error/30 bg-error/5 p-3">
+                  <div className="text-[10px] uppercase tracking-widest text-error font-bold mb-1">
+                    {t('basicQuiz.page.failYourAnswer')}
+                  </div>
+                  <div className="text-on-surface">
+                    {selectedIdx != null && r.options[selectedIdx]
+                      ? `${LETTERS[selectedIdx] ?? ''}. ${r.options[selectedIdx]}`
+                      : t('basicQuiz.page.failSkipped')}
+                  </div>
+                </div>
+                <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-3">
+                  <div className="text-[10px] uppercase tracking-widest text-green-400 font-bold mb-1">
+                    {t('basicQuiz.page.failCorrectAnswer')}
+                  </div>
+                  <div className="text-on-surface">
+                    {correctIdx >= 0 ? `${LETTERS[correctIdx] ?? ''}. ${r.options[correctIdx]}` : '—'}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {r.correct && correctIdx >= 0 && (
+              <div className="text-sm rounded-lg border border-green-500/30 bg-green-500/5 p-3">
+                <div className="text-[10px] uppercase tracking-widest text-green-400 font-bold mb-1">
+                  {t('basicQuiz.page.failCorrectAnswer')}
+                </div>
+                <div className="text-on-surface">
+                  {`${LETTERS[correctIdx] ?? ''}. ${r.options[correctIdx]}`}
+                </div>
+              </div>
+            )}
+
+            {r.explanation && (
+              <p className="text-sm text-on-surface-variant flex gap-2">
+                <span className="text-secondary shrink-0">💡</span>
+                <span>{r.explanation}</span>
+              </p>
+            )}
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
+
 /* ── Result screen — Pass ── */
 function PassScreen({
   result,
@@ -300,36 +404,46 @@ function PassScreen({
 }) {
   const { t } = useTranslation()
   return (
-    <div data-testid="basic-quiz-result-pass" className="max-w-2xl mx-auto py-12 text-center space-y-6">
-      <div className="text-7xl">🎉</div>
-      <div className="space-y-2">
-        <h2 className="text-2xl sm:text-3xl font-black text-on-surface">
-          {t('basicQuiz.page.passTitle')}
-        </h2>
-        <p className="text-on-surface-variant">
-          {t('basicQuiz.page.passSubtitle', { correct: result.correctCount, total: result.totalQuestions })}
-        </p>
-      </div>
-      <div className="glass-card rounded-2xl p-6 inline-flex items-center gap-3 mx-auto">
-        <span className="material-symbols-outlined text-secondary text-3xl" style={FILL_1}>verified</span>
-        <span className="text-base font-bold text-secondary">{t('basicQuiz.page.passUnlock')}</span>
-      </div>
-      <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-        <button
-          data-testid="basic-quiz-pass-cta"
-          onClick={onPlayRanked}
-          className="gold-gradient text-on-secondary px-6 py-3 rounded-xl font-bold"
-        >
-          <span className="material-symbols-outlined align-middle text-base mr-1" style={FILL_1}>play_arrow</span>
-          {t('basicQuiz.page.passCta')}
-        </button>
-        <button
-          onClick={onHome}
-          className="bg-surface-container-highest text-on-surface px-6 py-3 rounded-xl font-bold"
-        >
-          {t('basicQuiz.page.backHome')}
-        </button>
-      </div>
+    <div data-testid="basic-quiz-result-pass" className="max-w-3xl mx-auto py-10 space-y-6">
+      <header className="text-center space-y-4">
+        <div className="text-7xl">🎉</div>
+        <div className="space-y-2">
+          <h2 className="text-2xl sm:text-3xl font-black text-on-surface">
+            {t('basicQuiz.page.passTitle')}
+          </h2>
+          <p className="text-on-surface-variant">
+            {t('basicQuiz.page.passSubtitle', { correct: result.correctCount, total: result.totalQuestions })}
+          </p>
+        </div>
+        <div className="glass-card rounded-2xl p-4 inline-flex items-center gap-3 mx-auto">
+          <span className="material-symbols-outlined text-secondary text-3xl" style={FILL_1}>verified</span>
+          <span className="text-base font-bold text-secondary">{t('basicQuiz.page.passUnlock')}</span>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+          <button
+            data-testid="basic-quiz-pass-cta"
+            onClick={onPlayRanked}
+            className="gold-gradient text-on-secondary px-6 py-3 rounded-xl font-bold"
+          >
+            <span className="material-symbols-outlined align-middle text-base mr-1" style={FILL_1}>play_arrow</span>
+            {t('basicQuiz.page.passCta')}
+          </button>
+          <button
+            onClick={onHome}
+            className="bg-surface-container-highest text-on-surface px-6 py-3 rounded-xl font-bold"
+          >
+            {t('basicQuiz.page.backHome')}
+          </button>
+        </div>
+      </header>
+
+      <section className="space-y-3">
+        <h3 className="text-base font-bold text-on-surface flex items-center gap-2">
+          <span className="material-symbols-outlined text-secondary" style={FILL_1}>menu_book</span>
+          {t('basicQuiz.page.reviewAll')}
+        </h3>
+        <ReviewList reviews={result.reviews} />
+      </section>
     </div>
   )
 }
@@ -360,49 +474,9 @@ function FailScreen({
       <section className="space-y-3">
         <h3 className="text-base font-bold text-on-surface flex items-center gap-2">
           <span className="material-symbols-outlined text-secondary" style={FILL_1}>menu_book</span>
-          {t('basicQuiz.page.failReview')}
+          {t('basicQuiz.page.reviewAll')}
         </h3>
-        <ul className="space-y-3">
-          {result.wrongAnswers.map((w, idx) => {
-            const correctIdx = w.correctOptions[0] ?? -1
-            const selectedIdx = w.selectedOptions[0]
-            return (
-              <li
-                key={w.questionId}
-                data-testid={`basic-quiz-wrong-${idx}`}
-                className="rounded-2xl border border-error/20 bg-surface-container p-5 space-y-3"
-              >
-                <p className="font-semibold text-on-surface">{w.content}</p>
-                <div className="grid sm:grid-cols-2 gap-2 text-sm">
-                  <div className="rounded-lg border border-error/30 bg-error/5 p-3">
-                    <div className="text-[10px] uppercase tracking-widest text-error font-bold mb-1">
-                      {t('basicQuiz.page.failYourAnswer')}
-                    </div>
-                    <div className="text-on-surface">
-                      {selectedIdx != null && w.options[selectedIdx]
-                        ? `${LETTERS[selectedIdx] ?? ''}. ${w.options[selectedIdx]}`
-                        : t('basicQuiz.page.failSkipped')}
-                    </div>
-                  </div>
-                  <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-3">
-                    <div className="text-[10px] uppercase tracking-widest text-green-400 font-bold mb-1">
-                      {t('basicQuiz.page.failCorrectAnswer')}
-                    </div>
-                    <div className="text-on-surface">
-                      {correctIdx >= 0 ? `${LETTERS[correctIdx] ?? ''}. ${w.options[correctIdx]}` : '—'}
-                    </div>
-                  </div>
-                </div>
-                {w.explanation && (
-                  <p className="text-sm text-on-surface-variant flex gap-2">
-                    <span className="text-secondary shrink-0">💡</span>
-                    <span>{w.explanation}</span>
-                  </p>
-                )}
-              </li>
-            )
-          })}
-        </ul>
+        <ReviewList reviews={result.reviews} />
       </section>
 
       <footer className="rounded-2xl bg-surface-container p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
