@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -303,15 +304,17 @@ public class RoomService {
             .collect(Collectors.toList());
     }
 
+    // SecureRandom shared across calls — Random was predictable enough that
+    // a determined attacker could brute-force lobby codes. SecureRandom is
+    // thread-safe per Sun JDK contract, so a static instance is fine.
+    private static final SecureRandom CODE_RANDOM = new SecureRandom();
+    private static final String CODE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
     private String generateRoomCode() {
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        StringBuilder code = new StringBuilder();
-        Random random = new Random();
-
+        StringBuilder code = new StringBuilder(6);
         for (int i = 0; i < 6; i++) {
-            code.append(chars.charAt(random.nextInt(chars.length())));
+            code.append(CODE_CHARS.charAt(CODE_RANDOM.nextInt(CODE_CHARS.length())));
         }
-
         return code.toString();
     }
 
