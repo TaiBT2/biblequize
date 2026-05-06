@@ -378,9 +378,13 @@ public class RoomQuizService {
 
         if (room.getQuestionSource() == Room.QuestionSource.CUSTOM) {
             // Priority 1: QuestionSet (personal sets)
+            // Use the JOIN FETCH variant: this method runs inside @Async (no
+            // open Hibernate session by default), so accessing the LAZY
+            // userQuestion proxy via .findByQuestionSetIdOrderByOrderIndexAsc
+            // would throw LazyInitializationException at toTransientQuestion.
             if (room.getQuestionSetId() != null) {
                 List<Question> fromSet = questionSetItemRepo
-                        .findByQuestionSetIdOrderByOrderIndexAsc(room.getQuestionSetId())
+                        .findByQuestionSetIdWithUserQuestion(room.getQuestionSetId())
                         .stream()
                         .map(i -> toTransientQuestion(i.getUserQuestion()))
                         .toList();
@@ -389,9 +393,10 @@ public class RoomQuizService {
                     return fromSet;
                 }
             }
-            // Priority 2: legacy RoomQuestionSelection
+            // Priority 2: legacy RoomQuestionSelection — same JOIN FETCH
+            // requirement for the same async-out-of-session reason.
             List<Question> custom = roomQuestionSelectionRepo
-                    .findByRoomIdOrderByOrderIndex(roomId)
+                    .findByRoomIdWithUserQuestion(roomId)
                     .stream()
                     .map(s -> toTransientQuestion(s.getUserQuestion()))
                     .toList();
