@@ -153,12 +153,20 @@ class RoomServiceTest {
     }
 
     @Test
-    void joinRoom_alreadyJoined_shouldThrowException() {
+    void joinRoom_alreadyJoined_shouldReturnRoomIdempotently() throws Exception {
+        // Idempotent join: re-joining a room you're already a member of just
+        // returns the room (FE then navigates back into the lobby) instead of
+        // surfacing a confusing "already a member" error.
         when(roomRepository.findByRoomCode("ABC123")).thenReturn(Optional.of(testRoom));
         when(roomPlayerRepository.findByRoomIdAndUserId("room-1", "player-1"))
                 .thenReturn(Optional.of(new RoomPlayer()));
 
-        assertThrows(Exception.class, () -> roomService.joinRoom("ABC123", playerUser));
+        Room result = roomService.joinRoom("ABC123", playerUser);
+
+        assertEquals("room-1", result.getId());
+        // No new player added, no stale-lobby cleanup triggered.
+        verify(roomPlayerRepository, never()).save(any(RoomPlayer.class));
+        verify(roomPlayerRepository, never()).findActiveRoomIdsByUserId(anyString());
     }
 
     // ── joinRoom: GAP-J 1-active-room-per-user (SPEC v1.1 §8.7) ──────────────

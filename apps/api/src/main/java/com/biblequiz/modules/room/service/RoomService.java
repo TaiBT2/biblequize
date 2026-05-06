@@ -84,8 +84,11 @@ public class RoomService {
             throw new Exception("Phòng đã đầy người");
         }
 
+        // Idempotent join: if user is already a member of this room, just
+        // return it so the FE navigates them back into the lobby instead of
+        // surfacing a confusing "already a member" error banner.
         if (roomPlayerRepository.findByRoomIdAndUserId(room.getId(), user.getId()).isPresent()) {
-            throw new Exception("Bạn đã có mặt trong phòng này");
+            return room;
         }
 
         // SPEC v1.1 §8.7: a user can be in only one active room at a time.
