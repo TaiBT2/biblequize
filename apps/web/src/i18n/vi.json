@@ -1025,7 +1025,9 @@
     "nextQuestion": "CÂU TIẾP THEO",
     "explanation": "Giải thích",
     "correctAnswerIs": "Đáp án đúng là",
-    "bookmarkForReview": "Đánh dấu để xem lại"
+    "bookmarkForReview": "Đánh dấu để xem lại",
+    "showExplanationAgain": "Xem giải thích",
+    "minimizeExplanation": "Thu nhỏ"
   },
   "practice": {
     "title": "Luyện tập",

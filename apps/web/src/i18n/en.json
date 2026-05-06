@@ -1025,7 +1025,9 @@
     "nextQuestion": "NEXT QUESTION",
     "explanation": "Explanation",
     "correctAnswerIs": "The correct answer is",
-    "bookmarkForReview": "Bookmark for review"
+    "bookmarkForReview": "Bookmark for review",
+    "showExplanationAgain": "Show explanation",
+    "minimizeExplanation": "Minimize"
   },
   "practice": {
     "title": "Practice",

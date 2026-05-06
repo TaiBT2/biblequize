@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useQueryClient } from '@tanstack/react-query'
@@ -120,6 +120,10 @@ const Quiz: React.FC = () => {
   const [showCombo, setShowCombo] = useState(false)
   const [answerAnim, setAnswerAnim] = useState<'correct' | 'wrong' | null>(null)
   const [scorePopping, setScorePopping] = useState(false)
+  // Click-outside-to-minimise on the explanation popup so users can scan
+  // their answer grid behind it. Resets per question.
+  const [explanationCollapsed, setExplanationCollapsed] = useState(false)
+  const explanationRef = useRef<HTMLDivElement | null>(null)
 
   const currentQuestion = questions[currentQuestionIndex]
   const progressPercent = questions.length > 0 ? ((currentQuestionIndex + 1) / questions.length) * 100 : 0
@@ -194,6 +198,30 @@ const Quiz: React.FC = () => {
       queryClient.invalidateQueries({ queryKey: ['me-tier-progress'] })
     }
   }, [isQuizCompleted, queryClient])
+
+  // Reset the explanation popup to expanded whenever a new feedback shows
+  // (new question, or just-answered the current one).
+  useEffect(() => {
+    setExplanationCollapsed(false)
+  }, [currentQuestionIndex, showResult])
+
+  // Click-outside on the explanation panel collapses it so the answer grid
+  // behind is visible. Only attach the listener while a panel is open.
+  useEffect(() => {
+    if (!showResult || explanationCollapsed) return
+    const onPointerDown = (e: MouseEvent | TouchEvent) => {
+      const node = explanationRef.current
+      if (node && !node.contains(e.target as Node)) {
+        setExplanationCollapsed(true)
+      }
+    }
+    document.addEventListener('mousedown', onPointerDown)
+    document.addEventListener('touchstart', onPointerDown)
+    return () => {
+      document.removeEventListener('mousedown', onPointerDown)
+      document.removeEventListener('touchstart', onPointerDown)
+    }
+  }, [showResult, explanationCollapsed])
 
   useEffect(() => {
     const boot = () => {
@@ -892,14 +920,36 @@ const Quiz: React.FC = () => {
           the explanation text isn't truncated. max-h + overflow-y-auto keeps
           long explanations from spilling above the answer grid. */}
       {showResult && isCorrect === false && (currentQuestion.explanation || currentQuestion.verseStart) && (
-        <div data-testid="quiz-explanation" className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg animate-slide-up">
+        explanationCollapsed ? (
+          <button
+            data-testid="quiz-explanation-pill"
+            type="button"
+            onClick={(e) => { e.stopPropagation(); setExplanationCollapsed(false) }}
+            className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-full glass-panel border border-error/30 text-error text-xs font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-transform"
+          >
+            <span className="material-symbols-outlined text-sm" style={FILL_STYLE}>info</span>
+            {t('quiz.showExplanationAgain', 'Xem giải thích')}
+          </button>
+        ) : (
+        <div ref={explanationRef} data-testid="quiz-explanation" className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg animate-slide-up">
           <div className="glass-panel p-5 rounded-2xl border border-error/20 space-y-3 max-h-[50vh] overflow-y-auto">
-            {/* Correct answer */}
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-green-400 text-sm" style={FILL_STYLE}>check_circle</span>
-              <span className="text-sm font-bold text-green-400">
-                {t('quiz.correctAnswerIs', { answer: currentQuestion.options[currentQuestion.correctAnswer?.[0] ?? 0] ?? '' })}
-              </span>
+            {/* Header row with close button */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-green-400 text-sm" style={FILL_STYLE}>check_circle</span>
+                <span className="text-sm font-bold text-green-400">
+                  {t('quiz.correctAnswerIs', { answer: currentQuestion.options[currentQuestion.correctAnswer?.[0] ?? 0] ?? '' })}
+                </span>
+              </div>
+              <button
+                data-testid="quiz-explanation-close"
+                type="button"
+                onClick={(e) => { e.stopPropagation(); setExplanationCollapsed(true) }}
+                className="text-on-surface-variant/60 hover:text-on-surface transition-colors -mr-1"
+                aria-label={t('quiz.minimizeExplanation', 'Thu nhỏ')}
+              >
+                <span className="material-symbols-outlined text-base">close</span>
+              </button>
             </div>
 
             {/* Scripture reference */}
@@ -932,17 +982,43 @@ const Quiz: React.FC = () => {
             </button>
           </div>
         </div>
+        )
       )}
 
       {/* Explanation for correct — only when showExplanation setting is on.
           Same bottom offset + scroll cap as the wrong-answer panel (mobile
           responsive fix). */}
       {showResult && isCorrect === true && settings?.showExplanation && currentQuestion.explanation && (
-        <div className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg">
+        explanationCollapsed ? (
+          <button
+            data-testid="quiz-explanation-pill"
+            type="button"
+            onClick={(e) => { e.stopPropagation(); setExplanationCollapsed(false) }}
+            className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-full glass-panel border border-secondary/30 text-secondary text-xs font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-transform"
+          >
+            <span className="material-symbols-outlined text-sm" style={FILL_STYLE}>info</span>
+            {t('quiz.showExplanationAgain', 'Xem giải thích')}
+          </button>
+        ) : (
+        <div ref={explanationRef} className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg">
           <div className="glass-panel p-4 rounded-2xl border border-outline-variant/10 text-sm text-on-surface-variant max-h-[50vh] overflow-y-auto">
-            <strong className="text-on-surface">{t('quiz.explanation')}:</strong> {currentQuestion.explanation}
+            <div className="flex items-start justify-between gap-3">
+              <p>
+                <strong className="text-on-surface">{t('quiz.explanation')}:</strong> {currentQuestion.explanation}
+              </p>
+              <button
+                data-testid="quiz-explanation-close"
+                type="button"
+                onClick={(e) => { e.stopPropagation(); setExplanationCollapsed(true) }}
+                className="text-on-surface-variant/60 hover:text-on-surface transition-colors flex-shrink-0"
+                aria-label={t('quiz.minimizeExplanation', 'Thu nhỏ')}
+              >
+                <span className="material-symbols-outlined text-base">close</span>
+              </button>
+            </div>
           </div>
         </div>
+        )
       )}
     </div>
   )
