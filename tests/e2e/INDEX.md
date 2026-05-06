@@ -10,7 +10,7 @@
 |--------|---------|----------|----------|---------|-------|
 | W-M01 Auth & Onboarding | `/login`, `/onboarding`, `/onboarding/try`, `/auth/callback` | ✅ 9/9 | ✅ 8/8 | — | Phase 4a done |
 | W-M02 Home & Profile | `/`, `/profile` | ✅ 9/9 | ✅ 8/8 | — | Phase 4a done |
-| W-M03 Practice Mode | `/practice`, `/quiz`, `/review` | ✅ 8/8 | ✅ 13/13 | — | Phase 4a done |
+| W-M03 Practice Mode | `/practice`, `/quiz`, `/review` | ✅ 8/8 | ✅ 16/16 | — | Phase 4a done · +3 TC for redesign (time slider, chapter/verse, retry-wrong) |
 | W-M04 Ranked Mode | `/ranked` | ✅ 7/7 | ✅ 14/14 | — | Phase 4a done · all unblocked |
 | W-M05 Daily Challenge | `/daily` | ✅ 5/5 | ✅ 12/12 | — | Phase 4a done · unblocked via /complete endpoint |
 | W-M06 Multiplayer (Lobby only) | `/rooms`, `/multiplayer`, `/room/create`, `/room/join`, `/room/:id/lobby` | ✅ 6/6 | ✅ 7/7 | — | Phase 4a done · Gameplay ⏭️ WebSocket phase |

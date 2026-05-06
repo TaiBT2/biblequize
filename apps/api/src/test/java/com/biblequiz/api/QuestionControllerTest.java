@@ -41,9 +41,13 @@ class QuestionControllerTest extends BaseControllerTest {
 
     // ── GET /api/questions ───────────────────────────────────────────────────
 
+    // After PR-1, controller calls the 9-arg overload:
+    // getRandomQuestions(book, difficulty, language, chapterFrom, chapterTo, verseFrom, verseTo, limit, excludeIds)
+
     @Test
     void getQuestions_withDefaults_shouldReturn200() throws Exception {
-        when(questionService.getRandomQuestions(isNull(), isNull(), eq(10), isNull()))
+        when(questionService.getRandomQuestions(isNull(), isNull(), eq("vi"),
+                isNull(), isNull(), isNull(), isNull(), eq(10), isNull()))
                 .thenReturn(List.of(sampleQuestion));
 
         mockMvc.perform(get("/api/questions"))
@@ -55,19 +59,22 @@ class QuestionControllerTest extends BaseControllerTest {
 
     @Test
     void getQuestions_withBookFilter_shouldPassToService() throws Exception {
-        when(questionService.getRandomQuestions(eq("Exodus"), isNull(), eq(10), isNull()))
+        when(questionService.getRandomQuestions(eq("Exodus"), isNull(), eq("vi"),
+                isNull(), isNull(), isNull(), isNull(), eq(10), isNull()))
                 .thenReturn(List.of());
 
         mockMvc.perform(get("/api/questions").param("book", "Exodus"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(0)));
 
-        verify(questionService).getRandomQuestions("Exodus", null, 10, null);
+        verify(questionService).getRandomQuestions(eq("Exodus"), isNull(), eq("vi"),
+                isNull(), isNull(), isNull(), isNull(), eq(10), isNull());
     }
 
     @Test
     void getQuestions_withDifficultyFilter_shouldPassToService() throws Exception {
-        when(questionService.getRandomQuestions(isNull(), eq("hard"), eq(5), isNull()))
+        when(questionService.getRandomQuestions(isNull(), eq("hard"), eq("vi"),
+                isNull(), isNull(), isNull(), isNull(), eq(5), isNull()))
                 .thenReturn(List.of());
 
         mockMvc.perform(get("/api/questions")
@@ -75,24 +82,43 @@ class QuestionControllerTest extends BaseControllerTest {
                         .param("limit", "5"))
                 .andExpect(status().isOk());
 
-        verify(questionService).getRandomQuestions(null, "hard", 5, null);
+        verify(questionService).getRandomQuestions(isNull(), eq("hard"), eq("vi"),
+                isNull(), isNull(), isNull(), isNull(), eq(5), isNull());
     }
 
     @Test
     void getQuestions_withExcludeIds_shouldPassToService() throws Exception {
-        when(questionService.getRandomQuestions(isNull(), isNull(), eq(10), anyList()))
+        when(questionService.getRandomQuestions(isNull(), isNull(), eq("vi"),
+                isNull(), isNull(), isNull(), isNull(), eq(10), anyList()))
                 .thenReturn(List.of());
 
         mockMvc.perform(get("/api/questions")
                         .param("excludeIds[]", "q-1", "q-2"))
                 .andExpect(status().isOk());
 
-        verify(questionService).getRandomQuestions(isNull(), isNull(), eq(10), anyList());
+        verify(questionService).getRandomQuestions(isNull(), isNull(), eq("vi"),
+                isNull(), isNull(), isNull(), isNull(), eq(10), anyList());
+    }
+
+    @Test
+    void getQuestions_withChapterRange_shouldPassToService() throws Exception {
+        when(questionService.getRandomQuestions(eq("Genesis"), isNull(), eq("vi"),
+                eq(1), eq(10), isNull(), isNull(), eq(10), isNull()))
+                .thenReturn(List.of());
+
+        mockMvc.perform(get("/api/questions")
+                        .param("book", "Genesis")
+                        .param("chapterFrom", "1")
+                        .param("chapterTo", "10"))
+                .andExpect(status().isOk());
+
+        verify(questionService).getRandomQuestions(eq("Genesis"), isNull(), eq("vi"),
+                eq(1), eq(10), isNull(), isNull(), eq(10), isNull());
     }
 
     @Test
     void getQuestions_isPublicEndpoint_shouldNotRequireAuth() throws Exception {
-        when(questionService.getRandomQuestions(any(), any(), anyInt(), any()))
+        when(questionService.getRandomQuestions(any(), any(), any(), any(), any(), any(), any(), anyInt(), any()))
                 .thenReturn(List.of());
 
         // No authentication header - should still work (public endpoint)

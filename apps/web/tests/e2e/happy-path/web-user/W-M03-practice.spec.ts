@@ -296,4 +296,63 @@ test.describe('W-M03 Practice Mode', () => {
     // BLOCKED: requires knowing exact timer formula per tier
     // and ability to compare timeLimitSec across users of different tiers
   })
+
+  // ── W-M03-L2-016 — Time-per-question slider end-to-end ──
+
+  test('W-M03-L2-016: time-per-question slider drives quiz timer @practice', async ({
+    tier3Page,
+  }) => {
+    const page = tier3Page
+    const practicePage = new PracticePage(page)
+    await practicePage.goto()
+
+    await practicePage.setTimePerQuestion(60)
+    await practicePage.selectDifficulty('easy')
+    await practicePage.selectCount(5)
+    await practicePage.startQuiz()
+    await page.waitForURL('/quiz')
+
+    const quizPage = new QuizPage(page)
+    await quizPage.questionText.waitFor({ state: 'visible' })
+    // Initial timer should reflect the 60s setting (allow 1s tick tolerance)
+    const timerText = await page.getByTestId('quiz-timer').innerText().catch(() => '')
+    expect(timerText).toMatch(/\b(58|59|60)\b/)
+  })
+
+  // ── W-M03-L2-017 — Chapter range input clamps to canonical max ──
+
+  test('W-M03-L2-017: chapter range clamps to book max (Mark = 16) @practice', async ({
+    tier3Page,
+  }) => {
+    const page = tier3Page
+    const practicePage = new PracticePage(page)
+    await practicePage.goto()
+    await practicePage.selectBook('Mark')
+
+    await practicePage.chapterFromInput.fill('1')
+    await practicePage.chapterToInput.fill('50')
+
+    // Input clamps to 16 immediately on change
+    await expect(practicePage.chapterToInput).toHaveValue('16')
+  })
+
+  // ── W-M03-L2-018 — Retry-wrong banner reflects API count ──
+
+  test('W-M03-L2-018: retry-wrong banner reflects API count @practice', async ({
+    tier3Page,
+  }) => {
+    const page = tier3Page
+    const practicePage = new PracticePage(page)
+    await practicePage.goto()
+
+    const apiResp = await page.request.get('/api/sessions/practice/wrong-questions/count')
+    if (apiResp.ok()) {
+      const { count } = await apiResp.json()
+      if (count > 0) {
+        await expect(practicePage.retryWrongBanner).toBeVisible()
+      } else {
+        await expect(practicePage.retryWrongBanner).not.toBeVisible()
+      }
+    }
+  })
 })

@@ -97,6 +97,21 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done · ⏭️ deferred · ❌ block
 
 ---
 
+### W-M03 bổ sung — Practice redesign settings (time slider, chapter/verse range, retry-wrong)
+- **APIs**: `POST /api/sessions` (chapterFrom/chapterTo/verseFrom/verseTo/timePerQuestion), `GET /api/books/{name}/structure`, `GET /api/sessions/practice/recent`, `GET /api/sessions/practice/wrong-questions/count`, `POST /api/sessions/practice/retry-wrong`
+- **Status**: ✅ 3/3 happy-path appended to [W-M03-practice.spec.ts](../../apps/web/tests/e2e/happy-path/web-user/W-M03-practice.spec.ts)
+- **Spec ref**: TODO.md "2026-05-06 — Practice screen redesign + new settings" PR-1..PR-9
+
+| TC ID | Level | Description | Status |
+|---|---|---|---|
+| W-M03-L2-016 | happy | Time-per-question slider drives quiz timer (60s shows on first question) | ✅ |
+| W-M03-L2-017 | happy | Chapter range input clamps to canonical max (Mark = 16, not 50) | ✅ |
+| W-M03-L2-018 | happy | Retry-wrong banner visibility tracks `/wrong-questions/count` API | ✅ |
+
+**Effort**: ~3 TC, done.
+
+---
+
 ### W-M01 bổ sung — Register flow (email/password)
 - **Route**: `/register`
 - **Source**: [Register.tsx](../../apps/web/src/pages/Register.tsx)

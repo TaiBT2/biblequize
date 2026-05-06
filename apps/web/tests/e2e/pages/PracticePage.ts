@@ -7,6 +7,14 @@ export class PracticePage extends BasePage {
   readonly bookSelect: Locator
   readonly startBtn: Locator
   readonly showExplanationToggle: Locator
+  readonly timeSlider: Locator
+  readonly chapterFromInput: Locator
+  readonly chapterToInput: Locator
+  readonly verseFromInput: Locator
+  readonly verseToInput: Locator
+  readonly rangeError: Locator
+  readonly retryWrongBanner: Locator
+  readonly retryWrongBtn: Locator
 
   constructor(page: Page) {
     super(page)
@@ -14,6 +22,34 @@ export class PracticePage extends BasePage {
     this.bookSelect = page.getByTestId('practice-book-select')
     this.startBtn = page.getByTestId('practice-start-btn')
     this.showExplanationToggle = page.getByTestId('practice-show-explanation-toggle')
+    this.timeSlider = page.getByTestId('practice-time-slider')
+    this.chapterFromInput = page.getByTestId('practice-chapter-from')
+    this.chapterToInput = page.getByTestId('practice-chapter-to')
+    this.verseFromInput = page.getByTestId('practice-verse-from')
+    this.verseToInput = page.getByTestId('practice-verse-to')
+    this.rangeError = page.getByTestId('practice-range-error')
+    this.retryWrongBanner = page.getByTestId('practice-retry-wrong')
+    this.retryWrongBtn = page.getByTestId('practice-retry-wrong-btn')
+  }
+
+  async setTimePerQuestion(seconds: number): Promise<void> {
+    await this.timeSlider.evaluate((el, s) => {
+      const input = el as HTMLInputElement
+      const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!
+      setter.call(input, String(s))
+      input.dispatchEvent(new Event('input', { bubbles: true }))
+      input.dispatchEvent(new Event('change', { bubbles: true }))
+    }, seconds)
+  }
+
+  async setChapterRange(from: number, to: number): Promise<void> {
+    await this.chapterFromInput.fill(String(from))
+    await this.chapterToInput.fill(String(to))
+  }
+
+  async setVerseRange(from: number, to: number): Promise<void> {
+    await this.verseFromInput.fill(String(from))
+    await this.verseToInput.fill(String(to))
   }
 
   // ── Helpers ───────────────────────────────────────────────
