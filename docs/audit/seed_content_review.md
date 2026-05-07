@@ -12,7 +12,7 @@
 ## Old Testament — Pentateuch
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
-| Genesis | 150/150 | ⬜ | | |
+| Genesis | 150/150 | ⚠️ | #58 wrong correctAnswer (Zerah/Perez twins) | fixed; deep manual still pending |
 | Exodus | 151/151 | ⬜ | | |
 | Leviticus | 75/75 | ⬜ | | |
 | Numbers | 75/75 | ⬜ | | |
@@ -23,7 +23,7 @@
 |---|---|---|---|---|
 | Joshua | 20/20 | ⬜ | | |
 | Judges | 20/20 | ⬜ | | |
-| Ruth | 20/20 | ⬜ | | |
+| Ruth | 20/20 | ✅ | none | |
 | 1 Samuel | 20/19 | ⬜ | | EN was 20→19 (dup removed) |
 | 2 Samuel | 20/20 | ⬜ | | |
 | 1 Kings | 20/20 | ⬜ | | |
@@ -32,7 +32,7 @@
 | 2 Chronicles | 25/25 | ⬜ | | |
 | Ezra | 25/25 | ⬜ | | |
 | Nehemiah | 20/20 | ⬜ | | |
-| Esther | 20/20 | ⬜ | | |
+| Esther | 20/20 | ⚠️ | #5 wrong correctAnswer (Pur date) | fixed |
 
 ## Old Testament — Wisdom & Poetry
 | Book | Q (VI/EN) | Status | Findings | Notes |
@@ -50,32 +50,32 @@
 | Jeremiah | 50/50 | ⬜ | | |
 | Lamentations | 20/20 | ⬜ | | |
 | Ezekiel | 50/50 | ⬜ | | |
-| Daniel | 60/60 | ⬜ | | |
+| Daniel | 60/60 | ⚠️ | #42, #43 wrong correctAnswer | fixed; deep manual still pending |
 
 ## Old Testament — Minor Prophets
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
-| Hosea | 25/25 | ⬜ | | |
-| Joel | 20/20 | ⬜ | | |
-| Amos | 25/25 | ⬜ | | |
-| Obadiah | 20/20 | ✅ | none | manual review complete |
-| Jonah | 20/20 | ⬜ | | |
-| Micah | 20/20 | ⬜ | | |
-| Nahum | 20/20 | ⬜ | | |
-| Habakkuk | 20/20 | ⬜ | | |
-| Zephaniah | 20/20 | ⬜ | | |
-| Haggai | 20/20 | ⬜ | | |
-| Zechariah | 25/25 | ⬜ | | |
-| Malachi | 20/20 | ⬜ | | |
+| Hosea | 25/25 | ✅ | none | (drift on #20 is design choice) |
+| Joel | 20/20 | ✅ | none | |
+| Amos | 25/25 | ✅ | none | |
+| Obadiah | 20/20 | ✅ | none | |
+| Jonah | 20/20 | ✅ | none | |
+| Micah | 20/20 | ✅ | none | |
+| Nahum | 20/20 | ✅ | none | (distractors added in pass 5) |
+| Habakkuk | 20/20 | ⚠️ | #8 wrong correctAnswer | fixed |
+| Zephaniah | 20/20 | ✅ | none | |
+| Haggai | 20/20 | ⚠️ | #10 wrong correctAnswer | fixed |
+| Zechariah | 25/25 | ✅ | none | (drift on #9 is design choice) |
+| Malachi | 20/20 | ✅ | none | |
 
 ## New Testament — Gospels & Acts
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
-| Matthew | 160/160 | ⬜ | | |
-| Mark | 120/120 | ⬜ | | |
+| Matthew | 160/160 | ⚠️ | #11 wrong correctAnswer (heavenly Father) | fixed; deep manual still pending |
+| Mark | 120/120 | ⚠️ | #104 (VI+EN) wrong correctAnswer (Greek 'gar') | fixed; deep manual still pending |
 | Luke | 159/159 | ⬜ | | |
 | John | 160/159 | ⬜ | | EN was 160→159 (dup removed) |
-| Acts | 130/130 | ⬜ | | |
+| Acts | 130/130 | ⚠️ | #88 wrong correctAnswer (Barnabas/Saul) | fixed; deep manual still pending |
 
 ## New Testament — Pauline Epistles
 | Book | Q (VI/EN) | Status | Findings | Notes |
@@ -102,9 +102,9 @@
 | 1 Peter | 50/50 | ⬜ | | |
 | 2 Peter | 25/25 | ⬜ | | |
 | 1 John | 50/50 | ⬜ | | |
-| 2 John | 20/20 | ⬜ | | |
-| 3 John | 20/20 | ⬜ | | |
-| Jude | 20/20 | ⬜ | | |
+| 2 John | 20/20 | ✅ | none | (drift on #16 is intentional design) |
+| 3 John | 20/20 | ✅ | none | |
+| Jude | 20/20 | ✅ | none | |
 | Revelation | 100/100 | ⬜ | | |
 
 ## Special
@@ -173,3 +173,21 @@ Pair questions by `(chapter, verseStart)` and flag drift in option count, correc
 **Coverage**: All 67 books had automated checks for structural validity, duplicates, citation consistency, AI-filler, and VI↔EN drift. Deep theological review (verifying every "correct answer" matches scripture) only completed for Obadiah and Philemon. Other 65 books rely on automated signals — content errors that the scripts do not detect (e.g., wrong correct answer where the option text and explanation are internally consistent but factually wrong about scripture) would slip through.
 
 For exhaustive manual review, recommend: tackling 1–2 books per session in subsequent passes, focusing on questions tagged `hard` or `multiple_choice_multi` (highest error density historically).
+
+### Pass 6 — Manual review batch + heuristic answer-explanation check
+
+Books fully manually reviewed this batch: 2 John, 3 John, Jude, Haggai, Joel, Habakkuk, Zephaniah, Jonah, Ruth, Malachi, Nahum, Hosea, Amos, Micah, Zechariah, Esther.
+
+Bugs caught by manual reading (3): Haggai #10, Habakkuk #8, Esther #5 — all `correctAnswer` index pointing to wrong distractor while explanation correctly stated the answer.
+
+Then `scripts/check_answer_explanation.py` was added: for `multiple_choice_single` questions, score token-overlap between each option and the explanation; flag when a non-correct option scores significantly higher than the marked correct option.
+
+61 raw candidates → 52 after filtering "all of the above" type meta-options. Manual triage of all 52: 7 real bugs, 45 false positives (explanation paraphrases the answer, doesn't repeat option text):
+- `acts_quiz.json` #88 (Acts 11:22-26: Barnabas was sent, fetched Saul) — VI option order differed from EN; correctAnswer pointed to wrong index.
+- `daniel_quiz.json` #42 (Dan 8:3-7: goat struck ram, broke horns) — pointed to "peaceful" distractor.
+- `daniel_quiz.json` #43 (Dan 9:24: 6 goals = end transgression, atone, righteousness, etc.) — pointed to "rebuild temple" distractor.
+- `genesis_quiz.json` #58 (Gen 38:28-30: Zerah's hand emerged first, born second) — pointed to "Shelah" who isn't even one of the twins.
+- `mark_quiz.json` + `mark_quiz_en.json` #104 (Mark 16:8 ends with Greek conjunction 'gar') — both languages had wrong index.
+- `matthew_quiz.json` #11 (Matt 6:26: heavenly Father feeds the birds) — VI pointed to "Nature".
+
+Total this pass: 10 fixes across 9 files.
