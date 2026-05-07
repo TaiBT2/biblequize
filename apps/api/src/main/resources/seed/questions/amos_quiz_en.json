@@ -6,7 +6,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Amos 1:1, to what group did Amos of Tekoa belong?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Amos 1:1 — 'The words of Amos, who was among the shepherds of Tekoa, which he saw concerning Israel...' Amos was a shepherd, not a professional prophet.",
     "language": "en",
     "options": [
@@ -30,7 +32,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Amos 1:1, in whose reigns did Amos prophesy and how long before the earthquake?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Amos 1:1 — '...in the days of Uzziah king of Judah and in the days of Jeroboam the son of Joash, king of Israel, two years before the earthquake.'",
     "language": "en",
     "options": [
@@ -54,7 +58,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "How does Amos open the oracles against the nations?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Amos 1:3 — 'Thus says the LORD: For three transgressions of Damascus, and for four, I will not revoke the punishment...' The 'three and four' formula repeats with each nation.",
     "language": "en",
     "options": [
@@ -78,7 +84,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Amos 2:6, for what did Israel sell the righteous and the needy?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Amos 2:6 — '...for three transgressions of Israel, and for four... because they sell the righteous for silver, and the needy for a pair of sandals.' A grave image of social injustice.",
     "language": "en",
     "options": [
@@ -102,7 +110,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Amos 3:2, because God has known only Israel of all the families of the earth, what will He do?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Amos 3:2 — 'You only have I known of all the families of the earth; therefore I will punish you for all your iniquities.' Great privilege brings great responsibility.",
     "language": "en",
     "options": [
@@ -126,7 +136,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Amos 3:7, the Lord GOD does nothing without revealing His secret to whom?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Amos 3:7 — 'For the Lord GOD does nothing without revealing his secret to his servants the prophets.'",
     "language": "en",
     "options": [
@@ -150,7 +162,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Amos 4:1, to whom does 'cows of Bashan' refer?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Amos 4:1 — 'Hear this word, you cows of Bashan, who are on the mountain of Samaria, who oppress the poor, who crush the needy, who say to your husbands, \"Bring, that we may drink!\"' A metaphor for callous, wealthy women.",
     "language": "en",
     "options": [
@@ -174,7 +188,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "What famous command does Amos 4:12 give to Israel?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Amos 4:12 — '...prepare to meet your God, O Israel!'",
     "language": "en",
     "options": [
@@ -198,7 +214,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Amos 5:4, what does the LORD call the house of Israel to do that they may live?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Amos 5:4 — 'For thus says the LORD to the house of Israel: Seek me and live.'",
     "language": "en",
     "options": [
@@ -222,7 +240,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "What famous line in Amos 5:24 speaks of righteousness flowing?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Amos 5:24 — 'But let justice roll down like waters, and righteousness like an ever-flowing stream.'",
     "language": "en",
     "options": [
@@ -246,7 +266,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Amos 5:18, what is the day of the LORD for the wicked?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Amos 5:18 — 'Woe to you who desire the day of the LORD! Why would you have the day of the LORD? It is darkness, and not light.'",
     "language": "en",
     "options": [
@@ -270,7 +292,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Amos 5:21, how does God respond to Israel's feasts and solemn assemblies?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Amos 5:21 — 'I hate, I despise your feasts, and I take no delight in your solemn assemblies.' Worship without justice is rejected.",
     "language": "en",
     "options": [
@@ -294,7 +318,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Amos 6:1, woe is pronounced on whom?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Amos 6:1 — 'Woe to those who are at ease in Zion, and to those who feel secure on the mountain of Samaria...' A warning to both Judah and Israel.",
     "language": "en",
     "options": [
@@ -318,7 +344,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Amos 7:14, how does Amos describe his former occupation?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Amos 7:14 — 'Then Amos answered Amaziah, \"I was no prophet, nor a prophet's son, but I was a herdsman and a dresser of sycamore figs.\"'",
     "language": "en",
     "options": [
@@ -342,7 +370,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Amos 7:8, what tool in the vision measures Israel?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Amos 7:8 — 'And the LORD said to me, \"Amos, what do you see?\" And I said, \"A plumb line.\" Then the LORD said, \"Behold, I am setting a plumb line in the midst of my people Israel...\"' A plumb line measures whether walls are straight.",
     "language": "en",
     "options": [
@@ -366,7 +396,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Amos 8:11, what kind of famine is to come?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Amos 8:11 — '\"Behold, the days are coming,\" declares the Lord GOD, \"when I will send a famine on the land — not a famine of bread, nor a thirst for water, but of hearing the words of the LORD.\"'",
     "language": "en",
     "options": [
@@ -390,7 +422,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Amos 9:11, what does the LORD promise to raise up?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Amos 9:11 — 'In that day I will raise up the booth of David that is fallen and repair its breaches, and raise up its ruins and rebuild it as in the days of old.' Quoted by James in Acts 15.",
     "language": "en",
     "options": [
@@ -414,7 +448,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Amos 9:13, what will the mountains drip in the day of restoration?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Amos 9:13 — '...the mountains shall drip sweet wine, and all the hills shall flow with it. I will restore the fortunes of my people Israel...'",
     "language": "en",
     "options": [
@@ -438,7 +474,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Amos 4:13, God is described as the One who forms what?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Amos 4:13 — 'For behold, he who forms the mountains and creates the wind, and declares to man what is his thought, who makes the morning darkness, and treads on the heights of the earth — the LORD, the God of hosts, is his name!'",
     "language": "en",
     "options": [
@@ -462,7 +500,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Amos 5:14, the people must seek good and not evil, that they may have what?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Amos 5:14-15 — 'Seek good, and not evil, that you may live... Hate evil, and love good, and establish justice in the gate; it may be that the LORD, the God of hosts, will be gracious to the remnant of Joseph.'",
     "language": "en",
     "options": [
@@ -487,7 +527,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Amos 9:14-15, what does God promise concerning Israel?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Amos 9:14-15 — '...I will plant them on their land, and they shall never again be uprooted out of the land that I have given them, says the LORD your God.'",
     "language": "en",
     "options": [
@@ -512,13 +554,19 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Amos 1:3-13, the oracles against the nations target which cities/peoples? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2,
+      3
+    ],
     "explanation": "Amos 1:3-13 — Oracles against Damascus (Syria), Gaza (Philistia), Tyre, Edom, Ammon. The Cushites are not in the list of seven nations judged in Amos 1-2.",
     "language": "en",
     "options": [
       "Damascus (Syria)",
       "Gaza (Philistia)",
-      "Tyre and Edom",
+      "Tyre",
+      "Edom",
       "Cushites of Egypt"
     ],
     "tags": [
@@ -537,7 +585,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Amos 4:6-11, which chastisements did God send that did not bring repentance? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Amos 4:6-10 — '...I gave you cleanness of teeth in all your cities, and lack of bread... I also withheld the rain from you... I struck you with blight and mildew... I sent among you a pestilence after the manner of Egypt.' 'Blessing of prosperity' is not in the chastisement list.",
     "language": "en",
     "options": [
@@ -562,7 +614,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Amos 5:21-23, what does God reject in hypocritical worship? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Amos 5:21-23 — 'I hate, I despise your feasts... Even though you offer me your burnt offerings and grain offerings, I will not accept them... Take away from me the noise of your songs.' He refuses sacrifices and singing; (d) contradicts.",
     "language": "en",
     "options": [
@@ -587,7 +643,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Amos 8:4-6, the corrupt merchants are condemned for what practices? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Amos 8:4-6 — '...you who trample on the needy... When will the new moon be over, that we may sell grain... that we may make the ephah small and the shekel great, and deal deceitfully with false balances, that we may buy the poor for silver and the needy for a pair of sandals.' 'Generously giving alms' contradicts.",
     "language": "en",
     "options": [

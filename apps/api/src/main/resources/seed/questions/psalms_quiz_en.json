@@ -211,33 +211,6 @@
   },
   {
     "book": "Psalms",
-    "chapter": 23,
-    "verseStart": 1,
-    "difficulty": "easy",
-    "type": "multiple_choice_single",
-    "content": "How does Psalm 23 begin?",
-    "correctAnswer": [
-      2
-    ],
-    "explanation": "Psalm 23:1 — 'The LORD is my shepherd; I shall not want.' One of the most beloved psalms.",
-    "language": "en",
-    "options": [
-      "The LORD is my refuge",
-      "Praise the LORD",
-      "The LORD is my shepherd",
-      "The heavens declare the glory of God"
-    ],
-    "tags": [
-      "Old Testament",
-      "Psalms",
-      "Shepherd",
-      "Psalms",
-      "Wisdom",
-      "Basic"
-    ]
-  },
-  {
-    "book": "Psalms",
     "chapter": 1,
     "verseStart": 1,
     "difficulty": "medium",

@@ -1440,8 +1440,8 @@
   {
     "book": "Psalms",
     "chapter": 117,
-    "verseStart": null,
-    "verseEnd": null,
+    "verseStart": 1,
+    "verseEnd": 2,
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "content": "Thi Thiên ngắn nhất là chương nào?",
@@ -3866,7 +3866,7 @@
   {
     "book": "Psalms",
     "chapter": 38,
-    "verseStart": null,
+    "verseStart": 1,
     "verseEnd": null,
     "difficulty": "medium",
     "type": "multiple_choice_multi",

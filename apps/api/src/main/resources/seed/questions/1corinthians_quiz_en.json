@@ -953,7 +953,7 @@
     "explanation": "1 Corinthians 1:2 — 'To the church of God that is in Corinth, to those sanctified in Christ Jesus, called to be saints.' Paul wrote from Ephesus around AD 55 during his third missionary journey.",
     "language": "en",
     "options": [
-      "To the church in Rome (per the textual narrative)",
+      "To the church in Rome",
       "To the believers in Ephesus",
       "To the Church of God in Corinth — those sanctified in Christ Jesus",
       "To the church in Philippi"
@@ -1058,7 +1058,7 @@
     "language": "en",
     "options": [
       "Face to face clearly",
-      "Not at all (per the textual narrative)",
+      "Not at all",
       "Dimly, as in a mirror",
       "As clearly as in broad daylight"
     ],
@@ -1109,10 +1109,10 @@
     "explanation": "1 Corinthians 15:20 — 'But in fact Christ has been raised from the dead, the firstfruits of those who have fallen asleep.' 'Firstfruits' (aparche) — an OT metaphor (Lev 23:10) foreshadowing the full harvest. Christ rose first → guaranteeing believers' resurrection.",
     "language": "en",
     "options": [
-      "An angel (according to the text's framing)",
-      "A judge (per the textual narrative)",
+      "An angel",
+      "A judge",
       "The firstfruits of those who have fallen asleep",
-      "A prophet (as described in the passage)"
+      "A prophet"
     ],
     "tags": [
       "New Testament",
@@ -1188,10 +1188,10 @@
     "explanation": "1 Corinthians 1:23 — 'But we preach Christ crucified, a stumbling block to Jews and folly to Gentiles.' Jews expected a conquering Messiah, not a crucified one; Greeks revered philosophy and saw a crucified Christ as foolish. But to those called, He is 'the power of God and the wisdom of God' (1:24).",
     "language": "en",
     "options": [
-      "Wisdom to both (per the textual narrative)",
-      "Salvation to both (as described in the passage)",
+      "Wisdom to both",
+      "Salvation to both",
       "A stumbling block to Jews and folly to Greeks",
-      "Victory to both (according to the text's framing)"
+      "Victory to both"
     ],
     "tags": [
       "New Testament",
@@ -1217,8 +1217,8 @@
     "options": [
       "The foolish, weak, and lowly — so that no one may boast before him",
       "The wise and powerful of this world",
-      "The rich and educated (according to the text's framing)",
-      "Those of noble birth (per the textual narrative)"
+      "The rich and educated",
+      "Those of noble birth"
     ],
     "tags": [
       "New Testament",
@@ -1269,8 +1269,8 @@
     "explanation": "1 Corinthians 2:8 — 'None of the rulers of this age understood this, for if they had, they would not have crucified the Lord of glory.' 'The Lord of glory' — high Christology: Christ is God's glory (cf. Jas 2:1). God's wisdom was hidden from the world — revealed only by the Spirit (2:10).",
     "language": "en",
     "options": [
-      "Would not believe (according to the text's framing)",
-      "Would not teach (per the textual narrative)",
+      "Would not believe",
+      "Would not teach",
       "Would NOT have crucified the Lord of glory",
       "Would not have prospered"
     ],
@@ -1324,8 +1324,8 @@
     "options": [
       "Because they are still infants of the flesh — only milk, not solid food",
       "Because they are not yet saved",
-      "Because they are pagans (per the textual narrative)",
-      "Because they have no gifts (according to the text's framing)"
+      "Because they are pagans",
+      "Because they have no gifts"
     ],
     "tags": [
       "New Testament",
@@ -1376,10 +1376,10 @@
     "explanation": "1 Corinthians 4:1-2 — 'This is how one should regard us, as servants of Christ and stewards of the mysteries of God. Moreover, it is required of stewards that they be found faithful.' A steward (oikonomos) does not own — only manages on the master's behalf. Apostles do not own the Gospel — only transmit it faithfully.",
     "language": "en",
     "options": [
-      "As masters — must be wise (per the textual narrative)",
+      "As masters — must be wise",
       "As servants of Christ and stewards of God's mysteries — must be found faithful",
-      "As patrons — must be generous (according to the text's framing)",
-      "As lawgivers — must be strict (as described in the passage)"
+      "As patrons — must be generous",
+      "As lawgivers — must be strict"
     ],
     "tags": [
       "New Testament",
@@ -1403,10 +1403,10 @@
     "explanation": "1 Corinthians 5:5 — 'You are to deliver this man to Satan for the destruction of the flesh, so that his spirit may be saved in the day of the Lord.' Discipline's purpose: NOT vengeance — soul rescue. The church was arrogant (5:2) instead of mourning — Paul's rebuke.",
     "language": "en",
     "options": [
-      "Ignore, forgive, leave it to God (as described in the passage)",
-      "Take it to Roman court (according to the text's framing)",
+      "Ignore, forgive, leave it to God",
+      "Take it to Roman court",
       "Remove from the community — hand over to Satan, that the flesh be destroyed, that the spirit be saved on the Lord's day",
-      "Beat him then restore (per the textual narrative)"
+      "Beat him then restore"
     ],
     "tags": [
       "New Testament",
@@ -1430,9 +1430,9 @@
     "explanation": "1 Corinthians 5:11-12 — 'I am writing to you not to associate with anyone who bears the name of brother if he is guilty of sexual immorality or greed, or is an idolater, reviler, drunkard, or swindler... is it not those inside the church whom you are to judge?' Paul distinguishes: believers must LIVE IN the unbelieving world but NOT tolerate sin INSIDE the church.",
     "language": "en",
     "options": [
-      "Don't associate with the poor (as described in the passage)",
-      "Don't associate with pagans (according to the text's framing)",
-      "Don't associate with Jews (per the textual narrative)",
+      "Don't associate with the poor",
+      "Don't associate with pagans",
+      "Don't associate with Jews",
       "Don't associate with anyone called a brother who is sexually immoral, greedy, an idolater, a reviler, a drunkard, or a swindler"
     ],
     "tags": [
@@ -1458,9 +1458,9 @@
     "language": "en",
     "options": [
       "Lawsuits against each other before unbelieving courts — why not have saints judge? saints will judge angels",
-      "Not participating in Roman politics (as described in the passage)",
-      "Not honoring secular courts (according to the text's framing)",
-      "Tax evasion (per the textual narrative) (in the story's sequence)"
+      "Not participating in Roman politics",
+      "Not honoring secular courts",
+      "Tax evasion"
     ],
     "tags": [
       "New Testament",
@@ -1484,8 +1484,8 @@
     "explanation": "1 Corinthians 6:11 — 'And such were some of you. But you were washed, you were sanctified, you were justified in the name of the Lord Jesus Christ and by the Spirit of our God.' Three past tenses — apologomai (washed), hagiazō (sanctified), dikaioō (justified). Gospel transformation: 'such WERE some of you.'",
     "language": "en",
     "options": [
-      "None of you ever sinned (according to the text's framing)",
-      "You must keep OT law (per the textual narrative)",
+      "None of you ever sinned",
+      "You must keep OT law",
       "You were washed, sanctified, justified in Jesus Christ's name and by God's Spirit",
       "You must do good works to be saved"
     ],
@@ -1510,10 +1510,10 @@
     "explanation": "1 Corinthians 6:12 — 'All things are lawful for me, but not all things are helpful. All things are lawful for me, but I will not be dominated by anything.' Possibly a Corinthian slogan — Paul does not deny freedom but limits it: HELPFULNESS and NON-ENSLAVEMENT. Key verse for Christian freedom theology.",
     "language": "en",
     "options": [
-      "All things are forbidden (according to the text's framing)",
+      "All things are forbidden",
       "All things are lawful — but not all things are helpful, and I will not be enslaved by anything",
-      "Absolute freedom without limits (as described in the passage)",
-      "Must keep Mosaic law (per the textual narrative)"
+      "Absolute freedom without limits",
+      "Must keep Mosaic law"
     ],
     "tags": [
       "New Testament",
@@ -1538,9 +1538,9 @@
     "language": "en",
     "options": [
       "The wife must not separate from her husband — if she does, remain unmarried or be reconciled; husband must not divorce his wife",
-      "Each free to divorce at will (per the textual narrative)",
-      "Wife must absolutely submit even to abuse (as described in the passage)",
-      "Husband may have multiple wives (according to the text's framing)"
+      "Each free to divorce at will",
+      "Wife must absolutely submit even to abuse",
+      "Husband may have multiple wives"
     ],
     "tags": [
       "New Testament",
@@ -1564,9 +1564,9 @@
     "explanation": "1 Corinthians 7:29-31 — 'This is what I mean, brothers: the appointed time has grown very short. From now on, let those who have wives live as though they had none, and those who mourn as though they were not mourning... For the present form of this world is passing away.' Not abandoning duty, but holding eternal focus — all things are temporary in light of Christ's return.",
     "language": "en",
     "options": [
-      "Avoid the world entirely (as described in the passage) (as the text indicates)",
-      "Become celibate monks (according to the text's framing) (per the original content)",
-      "Sell all possessions (per the textual narrative) (in the story's sequence)",
+      "Avoid the world entirely",
+      "Become celibate monks",
+      "Sell all possessions",
       "Those with wives as not having; mourners as not mourning; rejoicers as not rejoicing; buyers as not possessing — for this world's form is passing away"
     ],
     "tags": [
@@ -1591,10 +1591,10 @@
     "explanation": "1 Corinthians 9:11-12 — 'If we have sown spiritual things among you, is it too much if we reap material things from you?... Nevertheless, we have not made use of this right, but we endure anything rather than put an obstacle in the way of the gospel of Christ.' Paul forfeits a legitimate right for the Gospel's advance.",
     "language": "en",
     "options": [
-      "Right to steal — but didn't (according to the text's framing)",
+      "Right to steal — but didn't",
       "Right to eat, take a believing wife, receive material support from churches — but did NOT use that right so the Gospel would not be hindered",
-      "Right to rule — but didn't take power (as described in the passage)",
-      "Right to heal — but didn't (per the textual narrative) (in the story's sequence)"
+      "Right to rule — but didn't take power",
+      "Right to heal — but didn't"
     ],
     "tags": [
       "New Testament",
@@ -1618,10 +1618,10 @@
     "explanation": "1 Corinthians 10:2-4 — 'All were baptized into Moses in the cloud and in the sea, and all ate the same spiritual food, and all drank the same spiritual drink. For they drank from the spiritual Rock that followed them, and the Rock was Christ.' A stunning pre-incarnate Christ — Christ was already present and provider for His people in the wilderness.",
     "language": "en",
     "options": [
-      "All escaped Egypt — the rock is Moses (according to the text's framing)",
-      "All ate manna — the rock is an angel (per the textual narrative)",
+      "All escaped Egypt — the rock is Moses",
+      "All ate manna — the rock is an angel",
       "All baptized into Moses (through cloud and sea), all ate the same spiritual food and drank the same spiritual drink — the rock that followed them was Christ",
-      "All saw Sinai — the rock is the nation (as described in the passage)"
+      "All saw Sinai — the rock is the nation"
     ],
     "tags": [
       "New Testament",
@@ -1646,9 +1646,9 @@
     "language": "en",
     "options": [
       "Because drinking the Lord's cup and the cup of demons is incompatible communion — you cannot serve both the Lord and demons",
-      "Because the law forbids (according to the text's framing)",
-      "Because it costs money (per the textual narrative)",
-      "Because the institution doesn't allow it (as described in the passage)"
+      "Because the law forbids",
+      "Because it costs money",
+      "Because the institution doesn't allow it"
     ],
     "tags": [
       "New Testament",
@@ -1700,9 +1700,9 @@
     "language": "en",
     "options": [
       "Not speaking tongues — only Spirit gives tongues",
-      "No gifts — only Spirit gives gifts (per the textual narrative)",
+      "No gifts — only Spirit gives gifts",
       "Saying 'Anathema (cursed) Jesus' is NOT from the Spirit; confessing 'Jesus is Lord' comes ONLY from the Holy Spirit",
-      "Not crying — only Spirit causes tears (according to the text's framing)"
+      "Not crying — only Spirit causes tears"
     ],
     "tags": [
       "New Testament",
@@ -1725,10 +1725,10 @@
     "explanation": "1 Corinthians 12:13 — 'For in one Spirit we were all baptized into one body — Jews or Greeks, slaves or free — and all were made to drink of one Spirit.' 'Baptism in the Spirit' = the Lord Jesus immersing the believer into the Spirit's life at conversion. The Church = One Body transcending every racial/class barrier.",
     "language": "en",
     "options": [
-      "By learning a common doctrine (as described in the passage)",
+      "By learning a common doctrine",
       "By ONE Spirit we were all baptized into ONE Body — Jew or Greek, slave or free — and all made to drink of ONE Spirit",
-      "By common nationality (per the textual narrative)",
-      "By common social class (according to the text's framing)"
+      "By common nationality",
+      "By common social class"
     ],
     "tags": [
       "New Testament",
@@ -1752,10 +1752,10 @@
     "explanation": "1 Corinthians 14:4-5 — 'The one who speaks in a tongue builds up himself, but the one who prophesies builds up the church. Now I want you all to speak in tongues, but even more to prophesy... the one who prophesies is greater than the one who speaks in tongues, unless someone interprets, so that the church may be built up.' Focus: BENEFIT to the Body — not private experience.",
     "language": "en",
     "options": [
-      "Tongues are not real (as described in the passage)",
-      "Prophecy is easier (according to the text's framing)",
+      "Tongues are not real",
+      "Prophecy is easier",
       "The prophet builds (oikodomeō) the CHURCH; the tongue-speaker builds himself only — unless interpreted",
-      "Tongues are noisy (per the textual narrative)"
+      "Tongues are noisy"
     ],
     "tags": [
       "New Testament",
@@ -1779,9 +1779,9 @@
     "explanation": "1 Corinthians 15:5-8 — 'He appeared to Cephas, then to the twelve. Then he appeared to more than five hundred brothers at one time... Then he appeared to James, then to all the apostles. Last of all, as to one untimely born, he appeared also to me.' This is the EARLIEST resurrection creed in the NT (~5 years post-Resurrection) — many eyewitnesses STILL LIVING when Paul wrote (~AD 55).",
     "language": "en",
     "options": [
-      "Only to the 12 (per the textual narrative) (in the story's sequence)",
-      "Only to Mary Magdalene (according to the text's framing)",
-      "Only to Peter then the 12 — that's all (as described in the passage)",
+      "Only to the 12",
+      "Only to Mary Magdalene",
+      "Only to Peter then the 12 — that's all",
       "To Cephas (Peter), the 12, more than 500 brothers at once, James, the apostles, last to Paul as one untimely born"
     ],
     "tags": [
@@ -1805,10 +1805,10 @@
     "explanation": "1 Corinthians 1:30 — 'God made Christ Jesus our wisdom and our righteousness and sanctification and redemption.' 4 ordered functions: SOPHIA (wisdom = umbrella) → DIKAIOSYNĒ (justification = past) → HAGIASMOS (sanctification = present) → APOLYTRŌSIS (redemption = future glorification). Christ is the 'A to Z' of salvation.",
     "language": "en",
     "options": [
-      "Love, faith, hope, joy (per the textual narrative)",
+      "Love, faith, hope, joy",
       "Wisdom from God, righteousness, sanctification, redemption",
-      "Peace, joy, faith, charity (as described in the passage)",
-      "Life, light, truth, way (according to the text's framing)"
+      "Peace, joy, faith, charity",
+      "Life, light, truth, way"
     ],
     "tags": [
       "New Testament",
@@ -1831,10 +1831,10 @@
     "explanation": "1 Corinthians 2:14 — 'The natural person does not accept the things of the Spirit of God, for they are folly to him, and he is not able to understand them because they are spiritually discerned.' Psychikos = 'soulish-natural' (lacking the indwelling Spirit). Spiritual understanding requires the Spirit — not natural ability.",
     "language": "en",
     "options": [
-      "Fully understands — but doesn't obey (according to the text's framing)",
-      "Partly understands — and tries to obey (as described in the passage)",
+      "Fully understands — but doesn't obey",
+      "Partly understands — and tries to obey",
       "Does NOT accept the things of the Spirit — sees them as folly; CANNOT understand because they are spiritually discerned",
-      "Believes naturally — without Spirit (per the textual narrative)"
+      "Believes naturally — without Spirit"
     ],
     "tags": [
       "New Testament",
@@ -1858,9 +1858,9 @@
     "language": "en",
     "options": [
       "No one can lay any foundation other than the one already laid — Jesus Christ",
-      "Paul is the foundation (per the textual narrative)",
-      "Apollos is the foundation (according to the text's framing)",
-      "Peter alone is the foundation (as described in the passage)"
+      "Paul is the foundation",
+      "Apollos is the foundation",
+      "Peter alone is the foundation"
     ],
     "tags": [
       "New Testament",
@@ -1884,9 +1884,9 @@
     "explanation": "1 Corinthians 3:16-17 — 'Do you not know that you are God's temple and that God's Spirit dwells in you? If anyone destroys God's temple, God will destroy him.' 'You' = plural (THE CHURCH), and the context is division destroying the church = destroying God's temple. But 6:19 'your body' (singular distributive) = individual believer, in sexual immorality context.",
     "language": "en",
     "options": [
-      "Individual believer — same as 6:19 (as described in the passage) (as the text indicates)",
-      "Temple in Jerusalem — unrelated (according to the text's framing) (per the original content)",
-      "Only the apostles — special (per the textual narrative) (in the story's sequence)",
+      "Individual believer — same as 6:19",
+      "Temple in Jerusalem — unrelated",
+      "Only the apostles — special",
       "The CHURCH (community) is God's temple (3:16-17, division context); 6:19 says the INDIVIDUAL'S body is the temple of the Holy Spirit (sexual immorality context)"
     ],
     "tags": [
@@ -1910,10 +1910,10 @@
     "explanation": "1 Corinthians 4:7 — 'For who sees anything different in you? What do you have that you did not receive? If then you received it, why do you boast as if you did not receive it?' Three questions shatter Corinthian pride — EVERYTHING they have (gifts, wisdom, position) IS A GIFT. Boasting denies the gift.",
     "language": "en",
     "options": [
-      "Who are you? Where from? Going where? (per the textual narrative)",
+      "Who are you? Where from? Going where?",
       "Who makes you different? What do you have that you did not receive? If you received it, why boast as if not received?",
-      "What do you believe? What do you do? Where do you go? (as described in the passage)",
-      "Who called you? Sent you? Provides for you? (according to the text's framing)"
+      "What do you believe? What do you do? Where do you go?",
+      "Who called you? Sent you? Provides for you?"
     ],
     "tags": [
       "New Testament",
@@ -1937,9 +1937,9 @@
     "language": "en",
     "options": [
       "Live AS THOUGH they had NO wives — because 'time is short' (ho kairos synestalmenos estin)",
-      "Must abandon wife — need celibacy (according to the text's framing)",
-      "Take many wives — for descendants (as described in the passage)",
-      "Live normally — no change (per the textual narrative)"
+      "Must abandon wife — need celibacy",
+      "Take many wives — for descendants",
+      "Live normally — no change"
     ],
     "tags": [
       "New Testament",
@@ -1962,10 +1962,10 @@
     "explanation": "1 Corinthians 10:11 — 'Now these things happened to them as an example, but they were written down for our instruction, on whom the end of the ages has come.' 'Typikōs' = type/example; 'telē tōn aiōnōn' = end of the ages. NT believers live in the last days — OT events function as WARNINGS for us.",
     "language": "en",
     "options": [
-      "To preserve culture (as described in the passage) (per the original content)",
-      "Only for Jews (according to the text's framing) (as the text indicates)",
+      "To preserve culture",
+      "Only for Jews",
       "As examples (typikōs) for us — written for our instruction, on whom 'the end of the ages' has come (telē tōn aiōnōn)",
-      "As mythology (per the textual narrative) (in the story's sequence)"
+      "As mythology"
     ],
     "tags": [
       "New Testament",
@@ -1989,9 +1989,9 @@
     "explanation": "1 Corinthians 10:16-17 — 'The cup of blessing that we bless, is it not a participation in the blood of Christ? The bread that we break, is it not a participation in the body of Christ? Because there is one bread, we who are many are one body, for we all partake of the one bread.' The Supper creates REAL communion with Christ — not mere symbol. 'One bread' (artos) = the singular source forming the body.",
     "language": "en",
     "options": [
-      "Fellowship with humanity — bread is just bread (according to the text's framing) (per the original content)",
-      "Fellowship with ancestors — no spiritual meaning (as described in the passage) (as the text indicates)",
-      "Fellowship with Paul — because he teaches (per the textual narrative) (in the story's sequence) (cross-referenced with related passages)",
+      "Fellowship with humanity — bread is just bread",
+      "Fellowship with ancestors — no spiritual meaning",
+      "Fellowship with Paul — because he teaches",
       "The cup of blessing = communion with Christ's blood; the broken bread = communion with Christ's body; because there is ONE BREAD, we who are many are ONE BODY — partaking of the same ONE BREAD"
     ],
     "tags": [
@@ -2043,7 +2043,7 @@
     "language": "en",
     "options": [
       "Word of wisdom, word of knowledge, faith, gifts of healing, working of miracles, prophecy, distinguishing spirits, kinds of tongues, interpretation of tongues",
-      "Love, faith, hope, grace, peace, patience, joy, gentleness, self-control (per the textual narrative)",
+      "Love, faith, hope, grace, peace, patience, joy, gentleness, self-control",
       "Apostle, prophet, evangelist, pastor, teacher, healer, helper, administrator, speaker",
       "Wisdom, understanding, counsel, might, fear of the Lord, reverence, obedience, righteousness, kindness"
     ],
@@ -2068,9 +2068,9 @@
     "explanation": "1 Corinthians 13:13 — 'So now faith, hope, and love abide, these three; but the greatest of these is love.' Faith ends at meeting its object (cf. Heb 11:1); hope ends at receiving (Rom 8:24); but love is the very NATURE of God — never ending (13:8 'love never ends').",
     "language": "en",
     "options": [
-      "Because love is easiest to practice (as described in the passage) (as the text indicates)",
-      "Because faith and hope have ceased (according to the text's framing)",
-      "Because Paul favors love (per the textual narrative) (in the story's sequence)",
+      "Because love is easiest to practice",
+      "Because faith and hope have ceased",
+      "Because Paul favors love",
       "Because at Christ's return, faith becomes sight and hope becomes possession — but love CONTINUES forever (since God IS love, 1 Jn 4:8)"
     ],
     "tags": [
@@ -2094,10 +2094,10 @@
     "explanation": "1 Corinthians 14:22 — 'Thus tongues are a sign not for believers but for unbelievers, while prophecy is a sign not for unbelievers but for believers.' Quoting Isa 28:11-12 (14:21) — God speaks via 'foreign tongues' to unfaithful people as a JUDGMENT. Tongues function as judgment; prophecy as edification.",
     "language": "en",
     "options": [
-      "Tongues for believers; prophecy for unbelievers (in the story's sequence)",
+      "Tongues for believers; prophecy for unbelievers",
       "Tongues are a sign NOT for believers but for UNBELIEVERS; prophecy is for BELIEVERS, not unbelievers",
-      "Both for believers (per the textual narrative) (as described in the passage)",
-      "Both for unbelievers (according to the text's framing)"
+      "Both for believers",
+      "Both for unbelievers"
     ],
     "tags": [
       "New Testament",
@@ -2121,10 +2121,10 @@
     "explanation": "1 Corinthians 15:24-26 — 'Then comes the end, when he delivers the kingdom to God the Father after destroying every rule and every authority and power. For he must reign until he has put all his enemies under his feet. The last enemy to be destroyed is death.' Mt 22:44/Ps 110:1 — enemies under feet; death is the LAST enemy — destroyed at the resurrection of all believers.",
     "language": "en",
     "options": [
-      "Satan — when Christ wins (per the textual narrative) (in the story's sequence)",
-      "Sin — when believers are sanctified (as described in the passage)",
+      "Satan — when Christ wins",
+      "Sin — when believers are sanctified",
       "Death — when all enemies are placed under Christ's feet, and then Christ delivers the kingdom to the Father",
-      "Darkness — when dawn breaks (according to the text's framing)"
+      "Darkness — when dawn breaks"
     ],
     "tags": [
       "New Testament",
@@ -2147,9 +2147,9 @@
     "explanation": "1 Corinthians 15:45 — 'The first man Adam became a living being; the last Adam became a life-giving spirit.' Quoting Gen 2:7. First Adam only RECEIVED life; Christ the second Adam GIVES life. Contrast: natural (psychikon) vs spiritual (pneumatikon) — the risen Christ is the pattern for the believer's resurrection body (15:49).",
     "language": "en",
     "options": [
-      "Both are ordinary humans (according to the text's framing) (as the text indicates)",
-      "First Adam is greater than the last (as described in the passage)",
-      "Last Adam is David (per the textual narrative) (in the story's sequence)",
+      "Both are ordinary humans",
+      "First Adam is greater than the last",
+      "Last Adam is David",
       "First Adam became 'a living soul' (psychēn zōsan); last Adam (Christ) became 'a life-giving spirit' (pneuma zōopoioun)"
     ],
     "tags": [

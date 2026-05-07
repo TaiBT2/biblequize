@@ -464,33 +464,6 @@
   },
   {
     "book": "1 Samuel",
-    "chapter": 17,
-    "verseStart": 49,
-    "verseEnd": 50,
-    "difficulty": "easy",
-    "type": "multiple_choice_single",
-    "content": "What weapon did David use to defeat Goliath?",
-    "correctAnswer": [
-      1
-    ],
-    "explanation": "1 Samuel 17:50 — 'So David prevailed over the Philistine with a sling and with a stone, and struck the Philistine and killed him. There was no sword in the hand of David.'",
-    "language": "en",
-    "options": [
-      "Bow and arrow",
-      "A sling and a stone",
-      "A spear",
-      "An axe"
-    ],
-    "tags": [
-      "Old Testament",
-      "1 Samuel",
-      "David and Goliath",
-      "History",
-      "Basic"
-    ]
-  },
-  {
-    "book": "1 Samuel",
     "chapter": 25,
     "verseStart": 32,
     "verseEnd": 33,

@@ -854,34 +854,6 @@
   },
   {
     "book": "John",
-    "chapter": 4,
-    "verseStart": 13,
-    "difficulty": "medium",
-    "type": "multiple_choice_single",
-    "content": "What kind of water did Jesus speak of to the Samaritan woman?",
-    "correctAnswer": [
-      3
-    ],
-    "explanation": "John 4:14 - Living water = the Holy Spirit and eternal life. It satisfies the thirst for truth.",
-    "language": "en",
-    "verseEnd": 14,
-    "options": [
-      "Rainwater",
-      "Water from Jacob's well",
-      "Seawater",
-      "Living water — whoever drinks will never thirst again"
-    ],
-    "tags": [
-      "New Testament",
-      "Living Water",
-      "Holy Spirit",
-      "John",
-      "Gospels",
-      "Intermediate"
-    ]
-  },
-  {
-    "book": "John",
     "chapter": 6,
     "verseStart": 35,
     "difficulty": "easy",

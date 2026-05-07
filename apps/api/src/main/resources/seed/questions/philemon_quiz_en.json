@@ -6,7 +6,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "How does Paul describe himself in the opening of his letter to Philemon?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Philemon 1:1 — 'Paul, a prisoner for Christ Jesus, and Timothy our brother, to Philemon our beloved fellow worker...' Paul emphasizes his identity as a prisoner for the gospel rather than his apostolic authority, setting the tone for his appeal.",
     "language": "en",
     "options": [
@@ -30,7 +32,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "How does Paul address Philemon in the opening greeting?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Philemon 1:1 — '...to Philemon our beloved fellow worker.' Paul affirms friendship and partnership in ministry before making his appeal.",
     "language": "en",
     "options": [
@@ -54,7 +58,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Philemon 1:2, where does the church meet?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Philemon 1:2 — '...and the church in your house.' In the early church, believers typically gathered in private homes — a mark of hospitality and simple organization.",
     "language": "en",
     "options": [
@@ -78,7 +84,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "For whom is Paul appealing to Philemon in this letter?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Philemon 1:10 — 'I appeal to you for my child, Onesimus, whose father I became in my imprisonment.' Onesimus was Philemon's runaway slave who came to faith through Paul's ministry.",
     "language": "en",
     "options": [
@@ -102,7 +110,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "How does Paul describe his spiritual relationship with Onesimus?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Philemon 1:10 — '...my child, Onesimus, whose father I became in my imprisonment.' Paul led Onesimus to Christ while Paul himself was imprisoned.",
     "language": "en",
     "options": [
@@ -126,7 +136,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "How does Paul describe what Onesimus was formerly to Philemon?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Philemon 1:11 — 'Formerly he was useless to you, but now he is indeed useful to you and to me.' Paul makes a wordplay: the name 'Onesimus' means 'useful,' but before Christ he was 'useless.'",
     "language": "en",
     "options": [
@@ -150,7 +162,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "How does Paul ask Philemon to receive Onesimus?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Philemon 1:16 — '...no longer as a bondservant but more than a bondservant, as a beloved brother...' The gospel transforms master-slave relationships into brotherhood in Christ.",
     "language": "en",
     "options": [
@@ -174,7 +188,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "What approach does Paul take in raising the matter of Onesimus with Philemon?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Philemon 1:9 — '...yet for love's sake I prefer to appeal to you — I, Paul, an old man and now a prisoner also for Christ Jesus...' Though Paul could command (1:8), he chooses to appeal for love's sake.",
     "language": "en",
     "options": [
@@ -199,7 +215,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "For what does Paul give thanks to God when he hears about Philemon?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Philemon 1:4-5 — 'I thank my God always when I remember you in my prayers, because I hear of your love and of the faith that you have toward the Lord Jesus and for all the saints.'",
     "language": "en",
     "options": [
@@ -223,7 +241,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Philemon 1:7, what has Philemon done for the hearts of the saints?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Philemon 1:7 — '...the hearts of the saints have been refreshed through you.' Philemon's love has renewed the brethren — the very ground on which Paul now asks him to extend the same love to Onesimus.",
     "language": "en",
     "options": [
@@ -247,7 +267,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "What does Paul propose if Onesimus has wronged Philemon or owes him anything?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Philemon 1:18 — 'If he has wronged you at all, or owes you anything, charge that to my account.' Paul assumes the debt — a living picture of Christ's atonement bearing the sinner's debt.",
     "language": "en",
     "options": [
@@ -271,7 +293,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "What spiritual debt does Paul remind Philemon of?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Philemon 1:19 — 'I, Paul, write this with my own hand: I will repay it — to say nothing of your owing me even your own self.' Philemon was saved through Paul's ministry — a debt of grace far greater than any material debt.",
     "language": "en",
     "options": [
@@ -295,7 +319,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "What reason does Paul suggest for Onesimus's temporary separation from Philemon?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Philemon 1:15 — 'For this perhaps is why he was parted from you for a while, that you might have him back forever.' God's providence turned a runaway flight into an eternal reunion in Christ.",
     "language": "en",
     "options": [
@@ -319,7 +345,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "In what manner does Paul NOT want Philemon to do good?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Philemon 1:14 — '...so that your goodness might not be by compulsion but of your own accord.' Paul honors voluntary love — true love cannot be coerced.",
     "language": "en",
     "options": [
@@ -343,7 +371,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "Near the close of the letter, what does Paul ask Philemon to prepare?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Philemon 1:22 — 'At the same time, prepare a guest room for me, for I am hoping that through your prayers I will be graciously given to you.' Paul expects release and trusts their prayers as God's means.",
     "language": "en",
     "options": [
@@ -368,13 +398,21 @@
     "difficulty": "medium",
     "type": "multiple_choice_multi",
     "content": "In Philemon 1:23-24, who joins Paul in sending greetings to Philemon? (select all that apply)",
-    "correctAnswer": [0, 2, 3],
+    "correctAnswer": [
+      0,
+      2,
+      3,
+      4,
+      5
+    ],
     "explanation": "Philemon 1:23-24 — 'Epaphras, my fellow prisoner in Christ Jesus, sends greetings to you, and so do Mark, Aristarchus, Demas, and Luke, my fellow workers.' Apollos is not mentioned in this list.",
     "language": "en",
     "options": [
       "Epaphras",
       "Apollos",
       "Mark",
+      "Aristarchus",
+      "Demas",
       "Luke"
     ],
     "tags": [
@@ -393,7 +431,11 @@
     "difficulty": "medium",
     "type": "multiple_choice_multi",
     "content": "Besides Philemon, to whom else is the letter addressed in Philemon 1:1-2? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Philemon 1:1-2 — '...to Philemon... and Apphia our sister and Archippus our fellow soldier, and the church in your house.' Timothy is the co-sender, not a recipient.",
     "language": "en",
     "options": [
@@ -418,7 +460,9 @@
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "content": "Why does Paul refuse to command Philemon even though he has boldness in Christ to do so?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Philemon 1:8-9 — 'Accordingly, though I am bold enough in Christ to command you to do what is required, yet for love's sake I prefer to appeal to you — I, Paul, an old man and now a prisoner also for Christ Jesus.' He appeals on grounds of love, his old age, and his chains — not authority.",
     "language": "en",
     "options": [
@@ -442,7 +486,9 @@
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "content": "What did Paul desire to do had it not been for respecting Philemon's consent?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Philemon 1:13 — 'I would have been glad to keep him with me, in order that he might serve me on your behalf during my imprisonment for the gospel.' Onesimus had become so useful that Paul wished to keep him — but not without the owner's lawful consent.",
     "language": "en",
     "options": [
@@ -466,7 +512,9 @@
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "content": "Which verse shows Paul writing part of the letter in his own hand rather than through a scribe?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Philemon 1:19 — 'I, Paul, write this with my own hand: I will repay it.' This detail adds legal weight to his pledge — Paul signs on as responsible.",
     "language": "en",
     "options": [
@@ -491,7 +539,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "What confidence does Paul express about Philemon in verses 20-21? (select all that apply)",
-    "correctAnswer": [0, 1, 3],
+    "correctAnswer": [
+      0,
+      1,
+      3
+    ],
     "explanation": "Philemon 1:20-21 — '...refresh my heart in Christ. Confident of your obedience, I write to you, knowing that you will do even more than I say.' Paul trusts that Philemon will obey, refresh his heart in Christ, and even exceed the request — but says nothing about a ransom payment.",
     "language": "en",
     "options": [

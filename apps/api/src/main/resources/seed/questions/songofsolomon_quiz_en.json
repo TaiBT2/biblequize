@@ -6,7 +6,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 1:1, to whom does the Song of Songs belong?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Song of Solomon 1:1 — 'The Song of Songs, which is Solomon's.' The traditional title 'Song of Songs' means the supreme song.",
     "language": "en",
     "options": [
@@ -30,7 +32,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 1:5, how does the woman describe herself?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Song of Solomon 1:5 — 'I am very dark, but lovely, O daughters of Jerusalem, like the tents of Kedar, like the curtains of Solomon.' Her darkness is from outdoor labor — not a defect.",
     "language": "en",
     "options": [
@@ -54,7 +58,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "In Song of Solomon 2:1, how does the woman describe herself?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Song of Solomon 2:1 — 'I am a rose of Sharon, a lily of the valleys.' Two simple yet purely beautiful flowers from Sharon, Israel's coastal plain.",
     "language": "en",
     "options": [
@@ -78,7 +84,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 2:2, the bridegroom likens his love among the maidens to a lily among what?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Song of Solomon 2:2 — 'As a lily among brambles, so is my love among the young women.' Her purity stands out among the ordinary.",
     "language": "en",
     "options": [
@@ -102,7 +110,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 2:4, what is the banner of the bridegroom over his bride?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Song of Solomon 2:4 — 'He brought me to the banqueting house, and his banner over me was love.'",
     "language": "en",
     "options": [
@@ -126,7 +136,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 2:7, what are the daughters of Jerusalem warned not to do with love?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Song of Solomon 2:7 — 'I adjure you, O daughters of Jerusalem, by the gazelles or the does of the field, that you not stir up or awaken love until it pleases.' A warning about awakening love before its time.",
     "language": "en",
     "options": [
@@ -150,7 +162,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 2:15, what do the 'little foxes' destroy?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Song of Solomon 2:15 — 'Catch the foxes for us, the little foxes that spoil the vineyards, for our vineyards are in blossom.' An image of small things destroying a relationship.",
     "language": "en",
     "options": [
@@ -174,7 +188,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "What famous statement of mutual belonging is in Song of Solomon 2:16?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Song of Solomon 2:16 — 'My beloved is mine, and I am his; he grazes among the lilies.'",
     "language": "en",
     "options": [
@@ -198,7 +214,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 3:1, where did the woman seek her beloved at night?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Song of Solomon 3:1 — 'On my bed by night I sought him whom my soul loves; I sought him, but found him not.'",
     "language": "en",
     "options": [
@@ -222,7 +240,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 4:7, what does the bridegroom say of his beloved's beauty?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Song of Solomon 4:7 — 'You are altogether beautiful, my love; there is no flaw in you.'",
     "language": "en",
     "options": [
@@ -246,7 +266,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 1:9, to what does the bridegroom compare his beloved?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Song of Solomon 1:9 — 'I compare you, my love, to a mare among Pharaoh's chariots.' A highly honored comparison — the prized mare of Pharaoh's chariots.",
     "language": "en",
     "options": [
@@ -270,7 +292,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "In Song of Solomon 4:9, how does the bridegroom address his beloved?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Song of Solomon 4:9 — 'You have captivated my heart, my sister, my bride; you have captivated my heart with one glance of your eyes, with one jewel of your necklace.'",
     "language": "en",
     "options": [
@@ -294,7 +318,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 4:12, to what does the bridegroom liken his bride?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Song of Solomon 4:12 — 'A garden locked is my sister, my bride, a spring locked, a fountain sealed.' An image of purity and exclusive devotion to her husband.",
     "language": "en",
     "options": [
@@ -318,7 +344,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 5:2, the woman says 'I slept' but what was 'awake'?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Song of Solomon 5:2 — 'I slept, but my heart was awake. A sound! My beloved is knocking...' An image of the heart always turned to the beloved.",
     "language": "en",
     "options": [
@@ -342,7 +370,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 5:16, what does the woman say about her beloved?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Song of Solomon 5:16 — 'His mouth is most sweet, and he is altogether desirable. This is my beloved and this is my friend, O daughters of Jerusalem.'",
     "language": "en",
     "options": [
@@ -366,7 +396,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "What statement of mutual belonging is repeated in Song of Solomon 6:3?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Song of Solomon 6:3 — 'I am my beloved's and my beloved is mine; he grazes among the lilies.'",
     "language": "en",
     "options": [
@@ -390,7 +422,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 7:10, what does the woman say about her belonging and her beloved's desire?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Song of Solomon 7:10 — 'I am my beloved's, and his desire is for me.'",
     "language": "en",
     "options": [
@@ -414,7 +448,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 8:6, where does the woman ask to be set as a seal?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "Song of Solomon 8:6 — 'Set me as a seal upon your heart, as a seal upon your arm, for love is strong as death...' The seal — symbol of permanent ownership.",
     "language": "en",
     "options": [
@@ -438,7 +474,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 8:6, love is strong as what?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "Song of Solomon 8:6 — '...for love is strong as death, jealousy is fierce as the grave. Its flashes are flashes of fire, the very flame of the LORD.'",
     "language": "en",
     "options": [
@@ -462,7 +500,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 8:7, what cannot quench love though abundant?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "Song of Solomon 8:7 — 'Many waters cannot quench love, neither can floods drown it. If a man offered for love all the wealth of his house, he would be utterly despised.'",
     "language": "en",
     "options": [
@@ -487,7 +527,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to Song of Solomon 3:7-8, by how many warriors is Solomon's litter escorted?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "Song of Solomon 3:7-8 — 'Behold, it is the litter of Solomon! Around it are sixty mighty men, some of the mighty men of Israel, all of them wearing swords and expert in war, each with his sword at his thigh, against terror by night.'",
     "language": "en",
     "options": [
@@ -511,8 +553,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Song of Solomon 1:5, the woman likens herself to which images? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
-    "explanation": "Song of Solomon 1:5-6 — 'I am very dark, but lovely... like the tents of Kedar, like the curtains of Solomon. Do not gaze at me because I am dark, because the sun has looked upon me.' Three images: tents of Kedar, curtains of Solomon, sun-darkened. 'Mount Lebanon' is not part of this verse's description.",
+    "correctAnswer": [
+      0,
+      1
+    ],
+    "explanation": "Song of Solomon 1:5-6 — 'I am very dark, but lovely... like the tents of Kedar, like the curtains of Solomon. Do not gaze at me because I am dark, because the sun has looked upon me.' Two explicit similes: tents of Kedar and curtains of Solomon. The sun-darkening is the CAUSE, not a third self-image. 'Mount Lebanon' is not part of this verse.",
     "language": "en",
     "options": [
       "Like the tents of Kedar",
@@ -536,7 +581,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Song of Solomon 2:10-13, what signs of spring does the bridegroom invoke calling his beloved away with him? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Song of Solomon 2:11-13 — 'For behold, the winter is past; the rain is over and gone. The flowers appear on the earth, the time of singing has come, and the voice of the turtledove is heard in our land. The fig tree ripens its figs, and the vines are in blossom; they give forth fragrance.' Many spring signs; 'snow on the mountain peaks' contradicts.",
     "language": "en",
     "options": [
@@ -560,7 +609,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Song of Solomon 4:1, what images does the bridegroom use to describe his bride's beauty? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Song of Solomon 4:1 — 'Behold, you are beautiful, my love, behold, you are beautiful! Your eyes are doves behind your veil. Your hair is like a flock of goats leaping down the slopes of Gilead.' Three images; 'a vast vine' is not in this verse.",
     "language": "en",
     "options": [
@@ -585,7 +638,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to Song of Solomon 8:6-7, what qualities mark true love? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Song of Solomon 8:6-7 — '...love is strong as death, jealousy is fierce as the grave. Its flashes are flashes of fire, the very flame of the LORD. Many waters cannot quench love, neither can floods drown it.' Three qualities; 'can be bought with money' is precisely what this passage denies.",
     "language": "en",
     "options": [

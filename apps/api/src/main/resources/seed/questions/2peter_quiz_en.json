@@ -6,7 +6,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "How does the author identify himself in the opening of 2 Peter?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Peter 1:1 — 'Simeon Peter, a servant and apostle of Jesus Christ, to those who have obtained a faith of equal standing with ours by the righteousness of our God and Savior Jesus Christ.'",
     "language": "en",
     "options": [
@@ -30,7 +32,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 1:4, what do believers receive that they may become partakers of the divine nature?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Peter 1:4 — '...he has granted to us his precious and very great promises, so that through them you may become partakers of the divine nature, having escaped from the corruption that is in the world because of sinful desire.'",
     "language": "en",
     "options": [
@@ -55,7 +59,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 1:5-7, what is the first quality to add to faith?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Peter 1:5-7 — 'Make every effort to supplement your faith with virtue, and virtue with knowledge, and knowledge with self-control, and self-control with steadfastness, and steadfastness with godliness, and godliness with brotherly affection, and brotherly affection with love.'",
     "language": "en",
     "options": [
@@ -79,7 +85,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 1:10, what must believers be diligent to do?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "2 Peter 1:10 — 'Therefore, brothers, be all the more diligent to confirm your calling and election, for if you practice these qualities you will never fall.' Practice proves the reality of one's calling.",
     "language": "en",
     "options": [
@@ -103,7 +111,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 1:16, on what does Peter base his preaching?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Peter 1:16 — 'For we did not follow cleverly devised myths when we made known to you the power and coming of our Lord Jesus Christ, but we were eyewitnesses of his majesty.'",
     "language": "en",
     "options": [
@@ -127,7 +137,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 1:19, the prophetic word is like what?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Peter 1:19 — '...you will do well to pay attention as to a lamp shining in a dark place, until the day dawns and the morning star rises in your hearts.'",
     "language": "en",
     "options": [
@@ -151,7 +163,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 1:21, by whom were the holy men carried along when they prophesied?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Peter 1:21 — 'For no prophecy was ever produced by the will of man, but men spoke from God as they were carried along by the Holy Spirit.'",
     "language": "en",
     "options": [
@@ -175,7 +189,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 2:1, what will false teachers do among the believers?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "2 Peter 2:1 — '...there will be false teachers among you, who will secretly bring in destructive heresies, even denying the Master who bought them, bringing upon themselves swift destruction.'",
     "language": "en",
     "options": [
@@ -199,7 +215,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 2:5, how many other people did God preserve along with Noah?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Peter 2:5 — '...if he did not spare the ancient world, but preserved Noah, a herald of righteousness, with seven others, when he brought a flood upon the world of the ungodly.'",
     "language": "en",
     "options": [
@@ -223,7 +241,9 @@
     "difficulty": "easy",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 2:6, what cities did God condemn as an example?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Peter 2:6 — '...if by turning the cities of Sodom and Gomorrah to ashes he condemned them to extinction, making them an example of what is going to happen to the ungodly.'",
     "language": "en",
     "options": [
@@ -247,7 +267,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 2:7, how is Lot described?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Peter 2:7 — '...rescued righteous Lot, greatly distressed by the sensual conduct of the wicked.'",
     "language": "en",
     "options": [
@@ -271,7 +293,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 2:9, what two things does the Lord know how to do?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "2 Peter 2:9 — '...the Lord knows how to rescue the godly from trials, and to keep the unrighteous under punishment until the day of judgment.'",
     "language": "en",
     "options": [
@@ -295,7 +319,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 2:15, whose way do the false teachers follow?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Peter 2:15 — '...they have followed the way of Balaam, the son of Beor, who loved gain from wrongdoing.'",
     "language": "en",
     "options": [
@@ -319,7 +345,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 2:22, what two proverbs apply to those who return to their old ways?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Peter 2:22 — '...The dog returns to its own vomit, and the sow, after washing herself, returns to wallow in the mire.' Vivid imagery of relapse.",
     "language": "en",
     "options": [
@@ -343,7 +371,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 3:3, what do scoffers say in the last days?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Peter 3:3-4 — '...scoffers will come in the last days... saying, \"Where is the promise of his coming? For ever since the fathers fell asleep, all things are continuing as they were from the beginning of creation.\"'",
     "language": "en",
     "options": [
@@ -367,7 +397,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 3:8, what is one day before the Lord like?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "2 Peter 3:8 — '...with the Lord one day is as a thousand years, and a thousand years as one day.' God's view of time differs from man's.",
     "language": "en",
     "options": [
@@ -391,7 +423,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 3:9, why does the Lord delay His promise?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Peter 3:9 — 'The Lord is not slow to fulfill his promise as some count slowness, but is patient toward you, not wishing that any should perish, but that all should reach repentance.'",
     "language": "en",
     "options": [
@@ -415,7 +449,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 3:10, how does the day of the Lord come?",
-    "correctAnswer": [1],
+    "correctAnswer": [
+      1
+    ],
     "explanation": "2 Peter 3:10 — 'But the day of the Lord will come like a thief, and then the heavens will pass away with a roar, and the heavenly bodies will be burned up and dissolved, and the earth and the works that are done on it will be exposed.'",
     "language": "en",
     "options": [
@@ -439,7 +475,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 3:13, what marks the new heavens and new earth?",
-    "correctAnswer": [2],
+    "correctAnswer": [
+      2
+    ],
     "explanation": "2 Peter 3:13 — 'But according to his promise we are waiting for new heavens and a new earth in which righteousness dwells.'",
     "language": "en",
     "options": [
@@ -463,7 +501,9 @@
     "difficulty": "medium",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 3:18, what is the closing exhortation of the letter?",
-    "correctAnswer": [3],
+    "correctAnswer": [
+      3
+    ],
     "explanation": "2 Peter 3:18 — 'But grow in the grace and knowledge of our Lord and Savior Jesus Christ. To him be the glory both now and to the day of eternity. Amen.'",
     "language": "en",
     "options": [
@@ -488,7 +528,9 @@
     "difficulty": "hard",
     "type": "multiple_choice_single",
     "content": "According to 2 Peter 3:15-16, what does Peter say about Paul's letters?",
-    "correctAnswer": [0],
+    "correctAnswer": [
+      0
+    ],
     "explanation": "2 Peter 3:15-16 — '...our beloved brother Paul also wrote... There are some things in them that are hard to understand, which the ignorant and unstable twist to their own destruction, as they do the other Scriptures.'",
     "language": "en",
     "options": [
@@ -513,13 +555,25 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to 2 Peter 1:5-7, which qualities are listed to add to faith? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
     "explanation": "2 Peter 1:5-7 — '...faith... virtue... knowledge... self-control... steadfastness... godliness... brotherly affection... love.' Seven qualities; 'revenge' is not in the list.",
     "language": "en",
     "options": [
       "Virtue",
-      "Knowledge and self-control",
-      "Steadfastness, godliness, brotherly affection, love",
+      "Knowledge",
+      "Self-control",
+      "Steadfastness",
+      "Godliness",
+      "Brotherly affection",
+      "Love",
       "Revenge against enemies"
     ],
     "tags": [
@@ -538,7 +592,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to 2 Peter 2:4-9, what pattern of judgment and rescue does God display? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "2 Peter 2:4-9 — '...angels who sinned... the ancient world with the flood... Sodom and Gomorrah... preserved Noah... rescued righteous Lot...' Three clear examples; 'rescuing Pharaoh' is contrary — Pharaoh was judged.",
     "language": "en",
     "options": [
@@ -562,7 +620,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to 2 Peter 3:10, what will accompany the day of the Lord's coming? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "2 Peter 3:10 — '...the heavens will pass away with a roar, and the heavenly bodies will be burned up and dissolved, and the earth and the works that are done on it will be exposed.' Three clear elements; 'angels gathering all peoples in Jerusalem' does not appear in this verse.",
     "language": "en",
     "options": [
@@ -586,7 +648,11 @@
     "difficulty": "hard",
     "type": "multiple_choice_multi",
     "content": "According to 2 Peter 2:1, what marks the false teachers? (select all that apply)",
-    "correctAnswer": [0, 1, 2],
+    "correctAnswer": [
+      0,
+      1,
+      2
+    ],
     "explanation": "2 Peter 2:1 — '...there will be false teachers among you, who will secretly bring in destructive heresies, even denying the Master who bought them, bringing upon themselves swift destruction.' Three marks; 'honoring the Old Testament prophets' contradicts their false nature.",
     "language": "en",
     "options": [
