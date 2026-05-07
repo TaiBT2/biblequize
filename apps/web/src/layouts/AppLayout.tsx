@@ -35,7 +35,10 @@ export default function AppLayout() {
   const { t } = useTranslation()
   const location = useLocation()
   const { user } = useAuthStore()
-  const isActive = (path: string) => location.pathname === path
+  const isActive = (path: string) =>
+    path === '/'
+      ? location.pathname === '/'
+      : location.pathname === path || location.pathname.startsWith(`${path}/`)
 
   return (
     <div className="min-h-screen bg-[#11131e] text-[#e1e1f1]">

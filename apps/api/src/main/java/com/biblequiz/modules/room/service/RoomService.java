@@ -263,7 +263,11 @@ public class RoomService {
             throw new Exception("Chỉ chủ phòng mới có thể bắt đầu");
         }
 
-        if (!room.canStart()) {
+        // Source of truth = RoomPlayer rows. Room.currentPlayers/Room.players is a
+        // denormalised counter that has been observed to drift out of sync with the
+        // RoomPlayer table (see lobby UI showing 2 players while currentPlayers=1).
+        long actualPlayers = roomPlayerRepository.findByRoomId(roomId).size();
+        if (room.getStatus() != Room.RoomStatus.LOBBY || actualPlayers <= 1) {
             throw new Exception("Cần ít nhất 2 người chơi để bắt đầu");
         }
 
