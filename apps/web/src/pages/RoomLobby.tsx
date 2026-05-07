@@ -24,6 +24,10 @@ type RoomDetails = {
   difficulty?: string;
   createdAt?: string;
   myUserId?: string;
+  /** Owning group when room was spawned from a group quiz set; null otherwise.
+   *  Server-side fallback so "back to group" works for users who joined via
+   *  room code (no fromGroupId in nav state) or after a page refresh. */
+  groupId?: string | null;
 };
 type ChatMessage = {
   sender: string; text: string;
@@ -144,18 +148,23 @@ const RoomLobby: React.FC = () => {
           const d = msg.data as { countdown: number };
           setCountdown(d.countdown);
           const myTeam = room?.players?.find(p => p.userId === room?.myUserId)?.team ?? null;
+          const navState = location.state as { fromGroupId?: string } | null;
+          const fromGroupId = navState?.fromGroupId ?? room?.groupId ?? undefined;
           setTimeout(() => navigate(`/room/${roomId}/quiz`, {
-            replace: true, state: { mode: room?.mode, myTeam, isHost, hostId: room?.hostId, fromGroupId: (location.state as { fromGroupId?: string } | null)?.fromGroupId }
+            replace: true, state: { mode: room?.mode, myTeam, isHost, hostId: room?.hostId, fromGroupId }
           }), d.countdown * 1000);
           break;
         }
         case 'ROOM_STARTING':
-        case 'QUESTION_START':
+        case 'QUESTION_START': {
+          const navState = location.state as { fromGroupId?: string } | null;
+          const fromGroupId = navState?.fromGroupId ?? room?.groupId ?? undefined;
           navigate(`/room/${roomId}/quiz`, {
             replace: true,
-            state: { mode: room?.mode, myTeam: room?.players?.find(p => p.userId === room?.myUserId)?.team ?? null, isHost, hostId: room?.hostId, fromGroupId: (location.state as { fromGroupId?: string } | null)?.fromGroupId }
+            state: { mode: room?.mode, myTeam: room?.players?.find(p => p.userId === room?.myUserId)?.team ?? null, isHost, hostId: room?.hostId, fromGroupId }
           });
           break;
+        }
         case 'QUIZ_END':
           fetchRoom();
           break;
@@ -236,7 +245,8 @@ const RoomLobby: React.FC = () => {
   };
   const handleLeave = async () => {
     if (roomId) { try { await api.post(`/api/rooms/${roomId}/leave`); } catch { /* ignore */ } }
-    const fromGroupId = (location.state as { fromGroupId?: string } | null)?.fromGroupId;
+    const navState = location.state as { fromGroupId?: string } | null;
+    const fromGroupId = navState?.fromGroupId ?? room?.groupId ?? undefined;
     navigate(fromGroupId ? `/groups/${fromGroupId}` : '/multiplayer');
   };
   const handleKick = async (userId: string) => {

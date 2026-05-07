@@ -1,5 +1,6 @@
 package com.biblequiz.modules.room.service;
 
+import com.biblequiz.modules.group.repository.GroupQuizSetRepository;
 import com.biblequiz.modules.room.entity.Room;
 import com.biblequiz.modules.room.entity.RoomPlayer;
 import com.biblequiz.modules.room.repository.RoomPlayerRepository;
@@ -28,6 +29,9 @@ public class RoomService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private GroupQuizSetRepository groupQuizSetRepository;
 
     /**
      * Create a new room
@@ -339,7 +343,17 @@ public class RoomService {
         Room room = roomRepository.findById(roomId).orElseThrow(() -> new Exception("Phòng không tồn tại"));
         List<RoomPlayer> players = roomPlayerRepository.findByRoomId(roomId);
 
-        return new RoomDetailsDTO(room, players, viewerUserId);
+        // Derive owning group when room was created from a group quiz set, so
+        // FE can reliably "back to group" even when react-router state was
+        // dropped (page refresh, deep link, fresh tab joining via room code).
+        String groupId = null;
+        if (room.getGroupQuizSetId() != null) {
+            groupId = groupQuizSetRepository.findById(room.getGroupQuizSetId())
+                    .map(s -> s.getGroup() != null ? s.getGroup().getId() : null)
+                    .orElse(null);
+        }
+
+        return new RoomDetailsDTO(room, players, viewerUserId, groupId);
     }
 
     /**
@@ -439,13 +453,19 @@ public class RoomService {
         public final String difficulty;
         public final String createdAt;
         public final String myUserId;
+        /** Owning group when room was spawned from a group quiz set; null otherwise. */
+        public final String groupId;
         public final List<PlayerInfoDTO> players;
 
         public RoomDetailsDTO(Room room, List<RoomPlayer> roomPlayers) {
-            this(room, roomPlayers, null);
+            this(room, roomPlayers, null, null);
         }
 
         public RoomDetailsDTO(Room room, List<RoomPlayer> roomPlayers, String viewerUserId) {
+            this(room, roomPlayers, viewerUserId, null);
+        }
+
+        public RoomDetailsDTO(Room room, List<RoomPlayer> roomPlayers, String viewerUserId, String groupId) {
             this.id = room.getId();
             this.roomCode = room.getRoomCode();
             this.roomName = room.getRoomName();
@@ -465,6 +485,7 @@ public class RoomService {
             this.difficulty = room.getDifficulty() != null ? room.getDifficulty().name() : "MIXED";
             this.createdAt = room.getCreatedAt() != null ? room.getCreatedAt().toString() : null;
             this.myUserId = viewerUserId;
+            this.groupId = groupId;
 
             this.players = roomPlayers.stream()
                 .map(player -> new PlayerInfoDTO(
