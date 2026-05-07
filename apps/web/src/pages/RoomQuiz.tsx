@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useStomp } from '../hooks/useStomp';
+import { useError } from '../contexts/ErrorContext';
 import ReactionBar from '../components/ReactionBar';
 import LiveFeed from '../components/LiveFeed';
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton';
@@ -108,6 +109,7 @@ const RoomQuiz: React.FC = () => {
 
   const questionStartedAt = useRef<number>(0);
   const toastCounter = useRef(0);
+  const { showError } = useError();
 
   const addToast = (username: string, rank: number) => {
     const id = ++toastCounter.current;
@@ -305,7 +307,8 @@ const RoomQuiz: React.FC = () => {
 
   const handleAdvance = () => {
     if (!roomId || !isHost || !isSequential) return;
-    send(`/app/room/${roomId}/advance`, {});
+    const ok = send(`/app/room/${roomId}/advance`, {});
+    if (!ok) showError(t('room.quiz.networkUnstable', 'Mất kết nối, đang kết nối lại — thử lại sau giây lát'), 'warning');
   };
 
   const submitAnswer = (idx: number) => {
@@ -313,7 +316,15 @@ const RoomQuiz: React.FC = () => {
     const reactionTimeMs = Date.now() - questionStartedAt.current;
     setSelected(idx);
     setSubmitting(true);
-    send(`/app/room/${roomId}/answer`, { questionIndex, answerIndex: idx, reactionTimeMs });
+    const ok = send(`/app/room/${roomId}/answer`, { questionIndex, answerIndex: idx, reactionTimeMs });
+    if (!ok) {
+      // WS disconnected — revert optimistic state so user can retry once
+      // reconnect succeeds (otherwise selected !== null blocks resubmit).
+      setSelected(null);
+      setSubmitting(false);
+      showError(t('room.quiz.networkUnstable', 'Mất kết nối, đang kết nối lại — chọn lại đáp án sau giây lát'), 'warning');
+      return;
+    }
     setTimeout(() => setSubmitting(false), 500);
   };
 
