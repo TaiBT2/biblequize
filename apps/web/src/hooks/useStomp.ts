@@ -82,6 +82,11 @@ export function useStomp({ url = '/ws', roomId, onMessage, onConnect, onReconnec
       onStompError: () => {},
       onWebSocketClose: () => {
         setConnected(false);
+        // Drop the stale subscription handle — its underlying WS is gone, so
+        // calling .unsubscribe() on it later would log "WebSocket is already
+        // in CLOSING or CLOSED state". On reconnect, onConnect creates a
+        // fresh subscription on the new WS.
+        subsRef.current = null;
         if (connectedOnceRef.current) setReconnecting(true);
         onDisconnectRef.current?.();
       },
@@ -98,13 +103,20 @@ export function useStomp({ url = '/ws', roomId, onMessage, onConnect, onReconnec
     };
   }, [url, roomId]);
 
-  const send = (destination: string, payload: any) => {
-    if (!clientRef.current || !connected) return;
+  /**
+   * Returns true if the frame was handed to the STOMP client (i.e. WS is
+   * connected). Returns false when the WS is reconnecting / closed so the
+   * caller can surface feedback (e.g. revert optimistic UI, show toast)
+   * instead of swallowing the click.
+   */
+  const send = (destination: string, payload: any): boolean => {
+    if (!clientRef.current || !connected) return false;
     clientRef.current.publish({
       destination,
       body: JSON.stringify(payload),
       headers: { Authorization: `Bearer ${getAccessToken() ?? ''}` },
     });
+    return true;
   };
 
   return { connected, reconnecting, send };

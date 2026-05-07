@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useStomp } from '../hooks/useStomp';
+import { useError } from '../contexts/ErrorContext';
 import ReactionBar from '../components/ReactionBar';
 import LiveFeed from '../components/LiveFeed';
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton';
@@ -108,6 +109,7 @@ const RoomQuiz: React.FC = () => {
 
   const questionStartedAt = useRef<number>(0);
   const toastCounter = useRef(0);
+  const { showError } = useError();
 
   const addToast = (username: string, rank: number) => {
     const id = ++toastCounter.current;
@@ -305,7 +307,8 @@ const RoomQuiz: React.FC = () => {
 
   const handleAdvance = () => {
     if (!roomId || !isHost || !isSequential) return;
-    send(`/app/room/${roomId}/advance`, {});
+    const ok = send(`/app/room/${roomId}/advance`, {});
+    if (!ok) showError(t('room.quiz.networkUnstable', 'Mất kết nối, đang kết nối lại — thử lại sau giây lát'), 'warning');
   };
 
   const submitAnswer = (idx: number) => {
@@ -313,7 +316,15 @@ const RoomQuiz: React.FC = () => {
     const reactionTimeMs = Date.now() - questionStartedAt.current;
     setSelected(idx);
     setSubmitting(true);
-    send(`/app/room/${roomId}/answer`, { questionIndex, answerIndex: idx, reactionTimeMs });
+    const ok = send(`/app/room/${roomId}/answer`, { questionIndex, answerIndex: idx, reactionTimeMs });
+    if (!ok) {
+      // WS disconnected — revert optimistic state so user can retry once
+      // reconnect succeeds (otherwise selected !== null blocks resubmit).
+      setSelected(null);
+      setSubmitting(false);
+      showError(t('room.quiz.networkUnstable', 'Mất kết nối, đang kết nối lại — chọn lại đáp án sau giây lát'), 'warning');
+      return;
+    }
     setTimeout(() => setSubmitting(false), 500);
   };
 
@@ -729,28 +740,26 @@ const RoomQuiz: React.FC = () => {
                     </div>
                   ))}
                 </div>
-                {/* Leader advance button or member waiting hint */}
+                {/* Leader advance button or member waiting hint.
+                    The reveal panel only renders after BE has decided the round
+                    is over (all-answered OR question timeout), so the host can
+                    always advance from here — no need to gate on seqAnswered. */}
                 <div className="pt-2 border-t border-white/5">
-                  {isHost ? (() => {
-                    const allAnswered = seqTotal > 0 && seqAnswered >= seqTotal;
-                    return (
-                      <button
-                        data-testid="sequential-advance-btn"
-                        onClick={handleAdvance}
-                        disabled={!allAnswered}
-                        title={!allAnswered ? t('room.quiz.sequentialWaiting', { remaining: Math.max(0, seqTotal - seqAnswered) }) : undefined}
-                        className="w-full py-3 rounded-xl text-[14px] font-bold flex items-center justify-center gap-2 transition-all enabled:hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed"
-                        style={{
-                          background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
-                          color: '#11131e',
-                          boxShadow: allAnswered ? '0 6px 20px rgba(232,168,50,0.3)' : undefined,
-                        }}
-                      >
-                        {t('room.quiz.sequentialAdvance')}
-                        <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-                      </button>
-                    );
-                  })() : (
+                  {isHost ? (
+                    <button
+                      data-testid="sequential-advance-btn"
+                      onClick={handleAdvance}
+                      className="w-full py-3 rounded-xl text-[14px] font-bold flex items-center justify-center gap-2 transition-all hover:brightness-110"
+                      style={{
+                        background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
+                        color: '#11131e',
+                        boxShadow: '0 6px 20px rgba(232,168,50,0.3)',
+                      }}
+                    >
+                      {t('room.quiz.sequentialAdvance')}
+                      <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </button>
+                  ) : (
                     <div className="text-center text-on-surface-variant text-[12px] py-2 flex items-center justify-center gap-2">
                       <span className="material-symbols-outlined text-[14px] animate-pulse">hourglass_empty</span>
                       {t('room.quiz.sequentialWaitingForLeader')}
