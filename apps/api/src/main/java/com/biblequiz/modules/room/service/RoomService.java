@@ -162,13 +162,28 @@ public class RoomService {
     }
 
     /**
-     * Add player to room (auto-assign team for Team vs Team)
+     * Add player to room (auto-assign team for Team vs Team).
+     *
+     * <p>Source of truth = RoomPlayer rows. We previously also maintained a
+     * parallel {@code @ElementCollection} on {@link Room#players} plus a
+     * cached {@link Room#currentPlayers} counter, both mutated via
+     * {@code Room.addPlayer()}. That denormalised state drifted out of sync
+     * with the RoomPlayer table (lobby UI showed 2 players while the counter
+     * stayed at 1, blocking start). The collection has been removed
+     * (V45 migration) and {@code currentPlayers} is now always recomputed
+     * from {@link RoomPlayerRepository#countByRoomId(String)} after each
+     * insert/delete.
      */
     private void addPlayerToRoom(String roomId, User user) {
         Room room = roomRepository.findById(roomId).orElseThrow();
 
-        room.addPlayer(user.getId());
-        roomRepository.save(room);
+        // Idempotent: if user is already a member, don't insert a duplicate.
+        if (roomPlayerRepository.findByRoomIdAndUserId(roomId, user.getId()).isPresent()) {
+            return;
+        }
+        if (room.isFull()) {
+            throw new RuntimeException("Phòng đã đầy người");
+        }
 
         String playerId = UUID.randomUUID().toString();
         RoomPlayer roomPlayer = new RoomPlayer(playerId, room, user, user.getName());
@@ -182,6 +197,18 @@ public class RoomService {
         }
 
         roomPlayerRepository.save(roomPlayer);
+        syncPlayerCount(room);
+    }
+
+    /**
+     * Recompute {@link Room#currentPlayers} from the RoomPlayer table (the
+     * authoritative source) and persist. Call after every insert/delete of a
+     * RoomPlayer row so the cached counter stays in sync.
+     */
+    private void syncPlayerCount(Room room) {
+        int actual = (int) roomPlayerRepository.countByRoomId(room.getId());
+        room.setCurrentPlayers(actual);
+        roomRepository.save(room);
     }
 
     /**
@@ -204,11 +231,9 @@ public class RoomService {
     public void leaveRoom(String roomId, String userId) {
         Room room = roomRepository.findById(roomId).orElseThrow();
 
-        room.removePlayer(userId);
-        roomRepository.save(room);
-
         roomPlayerRepository.findByRoomIdAndUserId(roomId, userId)
             .ifPresent(roomPlayerRepository::delete);
+        syncPlayerCount(room);
 
         if (room.getCurrentPlayers() == 0) {
             roomRepository.delete(room);
@@ -234,11 +259,9 @@ public class RoomService {
             throw new RuntimeException("Host không thể kick chính mình");
         }
 
-        room.removePlayer(targetUserId);
-        roomRepository.save(room);
-
         roomPlayerRepository.findByRoomIdAndUserId(roomId, targetUserId)
                 .ifPresent(roomPlayerRepository::delete);
+        syncPlayerCount(room);
     }
 
     /**

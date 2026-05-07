@@ -8,7 +8,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -79,11 +78,6 @@ public class Room {
     @JoinColumn(name = "host_id", nullable = false)
     private User host;
     
-    @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "room_players", joinColumns = @JoinColumn(name = "room_id"))
-    @Column(name = "player_id")
-    private List<String> players = new ArrayList<>();
-    
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -126,26 +120,12 @@ public class Room {
         this.host = host;
     }
     
-    // Add player to room
-    public void addPlayer(String playerId) {
-        if (!players.contains(playerId) && currentPlayers < maxPlayers) {
-            players.add(playerId);
-            currentPlayers++;
-        }
-    }
-    
-    // Remove player from room
-    public void removePlayer(String playerId) {
-        if (players.remove(playerId)) {
-            currentPlayers = Math.max(0, currentPlayers - 1);
-        }
-    }
-    
-    // Check if room is full
+    // Check if room is full. currentPlayers is kept in sync by RoomService
+    // after every RoomPlayer insert/delete (see RoomService.syncPlayerCount).
     public boolean isFull() {
         return currentPlayers >= maxPlayers;
     }
-    
+
     // Check if room can start
     public boolean canStart() {
         return status == RoomStatus.LOBBY && currentPlayers > 1;
@@ -179,10 +159,7 @@ public class Room {
     public User getHost() { return host; }
     public void setHost(User host) { this.host = host; }
     
-    public List<String> getPlayers() { return players; }
-    public void setPlayers(List<String> players) { this.players = players; }
-    
-    public LocalDateTime getCreatedAt() { return createdAt; }
+public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
     
     public LocalDateTime getUpdatedAt() { return updatedAt; }

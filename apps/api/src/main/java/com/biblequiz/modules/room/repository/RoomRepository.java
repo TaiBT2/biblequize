@@ -34,10 +34,6 @@ public interface RoomRepository extends JpaRepository<Room, String> {
     @Query("SELECT r FROM Room r WHERE r.status = 'LOBBY' AND r.currentPlayers > 1")
     List<Room> findStartableRooms();
     
-    // Find rooms by player
-    @Query("SELECT r FROM Room r WHERE :playerId MEMBER OF r.players")
-    List<Room> findByPlayerId(@Param("playerId") String playerId);
-    
     // Count rooms by status
     @Query("SELECT COUNT(r) FROM Room r WHERE r.status = :status")
     long countByStatus(@Param("status") Room.RoomStatus status);
