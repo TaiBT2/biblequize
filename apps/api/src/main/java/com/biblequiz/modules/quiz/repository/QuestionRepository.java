@@ -5,10 +5,12 @@ import com.biblequiz.modules.quiz.entity.Question;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -210,4 +212,28 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
                                   @Param("chapterTo") Integer chapterTo,
                                   @Param("verseFrom") Integer verseFrom,
                                   @Param("verseTo") Integer verseTo);
+
+    // Used by QuestionSeeder sync-mode: hard-delete seed rows that the JSON
+    // no longer contains for a given (book, language). Restricted to a single
+    // source so admin-curated rows ("admin", "ai-generated", etc.) survive.
+    @Modifying
+    @Query(value = "DELETE FROM questions " +
+                   "WHERE source = :source AND book = :book AND language = :lang " +
+                   "AND id NOT IN (:keepIds)",
+           nativeQuery = true)
+    int deleteStaleBySourceBookLanguage(@Param("source") String source,
+                                        @Param("book") String book,
+                                        @Param("lang") String language,
+                                        @Param("keepIds") Collection<String> keepIds);
+
+    // When the JSON file shrinks to zero questions for a (book, language)
+    // group we still need to clear out everything seeded under that group
+    // (the IN-clause variant fails with empty list on most DBs).
+    @Modifying
+    @Query(value = "DELETE FROM questions " +
+                   "WHERE source = :source AND book = :book AND language = :lang",
+           nativeQuery = true)
+    int deleteAllBySourceBookLanguage(@Param("source") String source,
+                                      @Param("book") String book,
+                                      @Param("lang") String language);
 }

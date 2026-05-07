@@ -21,8 +21,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -83,6 +87,9 @@ public class QuestionSeeder {
     /** Namespace prefix for deterministic UUID computation; bump to invalidate all seed IDs. */
     private static final String ID_NAMESPACE = "biblequiz-seed-v1";
 
+    /** Source tag set on rows produced by this seeder; used to scope sync-mode cleanup. */
+    static final String SEED_SOURCE = "seed:json";
+
     /**
      * Matches both VI ({@code xxx_quiz.json}) and EN ({@code xxx_quiz_en.json})
      * seed files. The deterministic ID already includes {@code language} in
@@ -97,6 +104,18 @@ public class QuestionSeeder {
 
     @Value("${app.seeding.questions.pattern:" + DEFAULT_PATTERN + "}")
     private String pattern;
+
+    /**
+     * When true (default), hard-deletes seed rows whose deterministic IDs no
+     * longer appear in the JSON files. Scoped to {@code source='seed:json'}
+     * so admin/AI-generated rows are preserved. CASCADE on FK references
+     * (V44) propagates the delete to user_question_history, answers, etc.
+     *
+     * <p>Set to {@code false} in tests or environments where the seed JSON
+     * is intentionally a subset of the DB.
+     */
+    @Value("${app.seeding.questions.sync-stale:true}")
+    private boolean syncStale;
 
     @Autowired
     public QuestionSeeder(QuestionRepository questionRepository,
@@ -136,13 +155,23 @@ public class QuestionSeeder {
             return stats;
         }
 
+        // Tracks the canonical set of seed-source IDs per (book|language) so
+        // sync-mode can compute the complement (== "stale rows") and delete
+        // them after all files are processed.
+        Map<String, Set<String>> seenIdsByGroup = new HashMap<>();
+
         for (Resource file : files) {
-            seedFile(file, stats);
+            seedFile(file, stats, seenIdsByGroup);
+        }
+
+        if (syncStale) {
+            deleteStaleSeedRows(seenIdsByGroup, stats);
         }
         return stats;
     }
 
-    private void seedFile(Resource file, SeedStats stats) {
+    private void seedFile(Resource file, SeedStats stats,
+                          Map<String, Set<String>> seenIdsByGroup) {
         String filename = file.getFilename() != null ? file.getFilename() : "<unknown>";
         List<SeedQuestion> questions = parseFile(file, filename);
         if (questions == null) return; // parse error — already logged
@@ -156,6 +185,13 @@ public class QuestionSeeder {
                 continue;
             }
             String id = computeDeterministicId(sq);
+            // Record the ID under its (book|language) group BEFORE deciding to
+            // insert or skip — otherwise an existing row that the JSON still
+            // covers would be flagged as stale and deleted.
+            String lang = sq.language != null ? sq.language : "vi";
+            seenIdsByGroup
+                    .computeIfAbsent(groupKey(sq.book, lang), k -> new HashSet<>())
+                    .add(id);
             if (questionRepository.existsById(id)) {
                 fileSkipped++;
                 stats.skipped++;
@@ -167,6 +203,45 @@ public class QuestionSeeder {
         }
         log.info("  {} → inserted={}, skipped={}, invalid={}",
                 filename, fileInserted, fileSkipped, fileInvalid);
+    }
+
+    /**
+     * Hard-deletes rows where {@code source='seed:json'} and {@code (book,
+     * language)} matches a seeded group but the row's ID is not in the new
+     * canonical set. CASCADE FKs propagate the delete to dependent tables
+     * (answers, bookmarks, user_question_history, etc.) — see V44.
+     *
+     * <p>If a (book, language) group has zero IDs in the JSON (file was
+     * deleted or emptied), this method does NOT delete that group, because
+     * we can't distinguish "intentionally empty" from "file missing on this
+     * classpath scan". Drop the file from the codebase and run a manual
+     * cleanup if a full purge is needed.
+     */
+    private void deleteStaleSeedRows(Map<String, Set<String>> seenIdsByGroup, SeedStats stats) {
+        for (Map.Entry<String, Set<String>> e : seenIdsByGroup.entrySet()) {
+            String[] parts = e.getKey().split("\\|", 2);
+            if (parts.length != 2) continue;
+            String book = parts[0];
+            String lang = parts[1];
+            Set<String> keep = e.getValue();
+            if (keep.isEmpty()) continue;
+            int deleted = questionRepository.deleteStaleBySourceBookLanguage(
+                    SEED_SOURCE, book, lang, keep);
+            if (deleted > 0) {
+                stats.staleDeleted += deleted;
+                log.info("  sync-mode: ({}, {}) — deleted {} stale seed row(s)",
+                        book, lang, deleted);
+            }
+        }
+        if (stats.staleDeleted > 0) {
+            log.info("QuestionSeeder sync-mode: total {} stale seed rows hard-deleted",
+                    stats.staleDeleted);
+        }
+    }
+
+    /** Group key used to bucket IDs for sync-mode cleanup. */
+    static String groupKey(String book, String language) {
+        return safe(book) + "|" + safe(language);
     }
 
     private List<SeedQuestion> parseFile(Resource file, String filename) {
@@ -232,7 +307,7 @@ public class QuestionSeeder {
         q.setTags(serializeTags(sq.tags));
         // Tag the row so an admin can later tell which rows came from the seed
         // vs manual admin import vs AI generation.
-        q.setSource(sq.source != null ? sq.source : "seed:json");
+        q.setSource(sq.source != null ? sq.source : SEED_SOURCE);
         q.setCategory(sq.category);
         return q;
     }
@@ -303,10 +378,11 @@ public class QuestionSeeder {
         public int inserted;
         public int skipped;
         public int invalid;
+        public int staleDeleted;
 
         @Override public String toString() {
-            return String.format("total=%d, inserted=%d, skipped=%d (already present), invalid=%d",
-                    total, inserted, skipped, invalid);
+            return String.format("total=%d, inserted=%d, skipped=%d (already present), invalid=%d, staleDeleted=%d",
+                    total, inserted, skipped, invalid, staleDeleted);
         }
     }
 }
