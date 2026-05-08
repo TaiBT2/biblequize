@@ -97,11 +97,11 @@
 ## New Testament — General Epistles & Revelation
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
-| Hebrews | 80/80 | ⬜ | | |
-| James | 51/51 | ⬜ | | |
-| 1 Peter | 50/50 | ⬜ | | |
-| 2 Peter | 25/25 | ⬜ | | |
-| 1 John | 50/50 | ⬜ | | |
+| Hebrews | 80/80 | ✅ | none | |
+| James | 51/51 | ✅ | none | |
+| 1 Peter | 50/50 | ✅ | none | |
+| 2 Peter | 25/25 | ✅ | none | (drift fix in pass 5) |
+| 1 John | 50/50 | ✅ | none | |
 | 2 John | 20/20 | ✅ | none | (drift on #16 is intentional design) |
 | 3 John | 20/20 | ✅ | none | |
 | Jude | 20/20 | ✅ | none | |
