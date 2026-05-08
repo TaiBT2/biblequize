@@ -9,7 +9,14 @@
 
 **Total**: 67 books, 3348 VI + 3348 EN = 6,696 questions (after dedup).
 
-**Status (final)**: 67/67 books reviewed. 60 books fully clean ✅, 7 books had fixes applied ⚠️ (also fully reviewed). All 134 files pass automated audit.
+**Status (final)**: 67/67 books FULLY end-to-end reviewed. All 134 files pass automated audit.
+
+**Pass 14 (deep dive) caught 3 more bugs in books previously elevated based on first-50 spot-checks**:
+- `genesis_quiz.json` #100 (Gen 17:17 + 23:1): Sarah lived 37 years after Isaac's birth (90 → 127), not 36 — aligned with EN.
+- `luke_quiz.json` #104 (Luke 4:1-13): Luke's temptation order is wilderness → mountain → temple; correctAnswer pointed to a reversed option.
+- `psalms_quiz.json` #65 (Ps 133:1): "How good when brothers dwell in unity" — correctAnswer pointed to "favorable weather" distractor.
+
+All three fit the same correctAnswer-index-wrong pattern that has dominated this audit.
 
 ## Old Testament — Pentateuch
 | Book | Q (VI/EN) | Status | Findings | Notes |
