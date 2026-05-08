@@ -16,6 +16,7 @@ public class WebSocketMessage {
         // Room events
         public static final String PLAYER_JOINED = "PLAYER_JOINED";
         public static final String PLAYER_LEFT = "PLAYER_LEFT";
+        public static final String PLAYER_KICKED = "PLAYER_KICKED";
         public static final String PLAYER_READY = "PLAYER_READY";
         public static final String PLAYER_UNREADY = "PLAYER_UNREADY";
         public static final String ROOM_STARTING = "ROOM_STARTING";

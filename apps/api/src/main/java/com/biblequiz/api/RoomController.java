@@ -174,6 +174,9 @@ public class RoomController {
         try {
             User user = getUser(principal);
             roomService.leaveRoom(id, user.getId());
+            roomWebSocketController.sendToRoom(id,
+                    new WebSocketMessage.Message(WebSocketMessage.MessageTypes.PLAYER_LEFT,
+                            Map.of("userId", user.getId())));
             return ResponseEntity.ok(Map.of("success", true));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
@@ -209,6 +212,9 @@ public class RoomController {
                 return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Thiếu userId"));
             }
             roomService.kickPlayer(id, user.getId(), targetUserId);
+            roomWebSocketController.sendToRoom(id,
+                    new WebSocketMessage.Message(WebSocketMessage.MessageTypes.PLAYER_KICKED,
+                            Map.of("userId", targetUserId, "kickedBy", user.getId())));
             return ResponseEntity.ok(Map.of("success", true));
         } catch (RuntimeException e) {
             if ("FORBIDDEN".equals(e.getMessage())) {

@@ -127,11 +127,19 @@ const RoomLobby: React.FC = () => {
     onReconnect: () => { fetchRoom(); },
     onMessage: (msg) => {
       switch (msg.type) {
+        case 'PLAYER_KICKED': {
+          const d = msg.data as { userId?: string } | undefined;
+          if (d?.userId && d.userId === room?.myUserId) {
+            navigate('/multiplayer', { replace: true, state: { kickedFromRoom: true } });
+            return;
+          }
+          fetchRoom();
+          break;
+        }
         case 'PLAYER_JOINED':
         case 'PLAYER_LEFT':
         case 'PLAYER_READY':
         case 'PLAYER_UNREADY':
-        case 'PLAYER_KICKED':
           fetchRoom();
           break;
         case 'CHAT_MESSAGE': {
