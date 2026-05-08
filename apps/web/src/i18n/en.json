@@ -43,7 +43,12 @@
     "notifications": {
       "title": "Notifications",
       "readAll": "Mark all read",
-      "empty": "No new notifications"
+      "empty": "No new notifications",
+      "unreadCount_one": "{{count}} unread",
+      "unreadCount_other": "{{count}} unread",
+      "allRead": "All read",
+      "emptyTitle": "No notifications yet",
+      "emptyDesc": "When there's new activity — streaks, tier-ups, or group invites — you'll see it here"
     },
     "time": {
       "justNow": "Just now",

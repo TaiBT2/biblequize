@@ -43,7 +43,12 @@
     "notifications": {
       "title": "Thông báo",
       "readAll": "Đọc tất cả",
-      "empty": "Không có thông báo mới"
+      "empty": "Không có thông báo mới",
+      "unreadCount_one": "{{count}} chưa đọc",
+      "unreadCount_other": "{{count}} chưa đọc",
+      "allRead": "Đã đọc hết",
+      "emptyTitle": "Chưa có thông báo",
+      "emptyDesc": "Khi có hoạt động mới — streak, lên hạng, hoặc lời mời nhóm — bạn sẽ thấy ở đây"
     },
     "time": {
       "justNow": "Vừa xong",
