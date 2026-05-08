@@ -856,34 +856,6 @@
   },
   {
     "book": "John",
-    "chapter": 4,
-    "verseStart": 14,
-    "difficulty": "medium",
-    "type": "multiple_choice_single",
-    "content": "Chúa Giê-su nói với người đàn bà Sa-ma-ri về nước gì?",
-    "correctAnswer": [
-      3
-    ],
-    "explanation": "Giăng 4:14 - Nước sống = Đức Thánh Linh và sự sống đời đời. Thỏa mãn nỗi khát sự thật.",
-    "language": "vi",
-    "verseEnd": 14,
-    "options": [
-      "Nước mưa",
-      "Nước giếng Gia-cốp",
-      "Nước biển",
-      "Nước sống, uống rồi sẽ không bao giờ khát nữa"
-    ],
-    "tags": [
-      "Tân Ước",
-      "Nước sống",
-      "Thánh Linh",
-      "Giăng",
-      "Phúc Âm",
-      "Trung cấp"
-    ]
-  },
-  {
-    "book": "John",
     "chapter": 6,
     "verseStart": 35,
     "difficulty": "easy",

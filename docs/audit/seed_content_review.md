@@ -13,7 +13,7 @@
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
 | Genesis | 150/150 | ⚠️ | #58 wrong correctAnswer (Zerah/Perez twins) | fixed; deep manual still pending |
-| Exodus | 151/151 | ⬜ | | |
+| Exodus | 151/151 | ✅ | none | (drift fix in pass 5) |
 | Leviticus | 75/75 | ✅ | none | |
 | Numbers | 75/75 | ✅ | none | |
 | Deuteronomy | 70/70 | ✅ | none | |
@@ -38,7 +38,7 @@
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
 | Job | 20/20 | ✅ | none | |
-| Psalms | 180/179 | ⬜ | | EN was 180→179 (dup removed); VI fixed verseStart on 2 |
+| Psalms | 179/179 | ⚠️ | VI #8 was duplicate of #0 (Ps 23 opening) | removed; now 179/179 |
 | Proverbs | 80/80 | ✅ | none | |
 | Ecclesiastes | 20/20 | ✅ | none | |
 | Song of Solomon | 25/25 | ✅ | none | |
@@ -73,8 +73,8 @@
 |---|---|---|---|---|
 | Matthew | 160/160 | ⚠️ | #11 wrong correctAnswer (heavenly Father) | fixed; deep manual still pending |
 | Mark | 120/120 | ⚠️ | #104 (VI+EN) wrong correctAnswer (Greek 'gar') | fixed; deep manual still pending |
-| Luke | 159/159 | ⬜ | | |
-| John | 160/159 | ⬜ | | EN was 160→159 (dup removed) |
+| Luke | 159/159 | ✅ | none | |
+| John | 159/159 | ⚠️ | VI #31 was duplicate of #2 (Samaritan water) | removed; now 159/159 |
 | Acts | 130/130 | ⚠️ | #88 wrong correctAnswer (Barnabas/Saul) | fixed; deep manual still pending |
 
 ## New Testament — Pauline Epistles

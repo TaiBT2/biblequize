@@ -211,33 +211,6 @@
   },
   {
     "book": "Psalms",
-    "chapter": 23,
-    "verseStart": 1,
-    "difficulty": "easy",
-    "type": "multiple_choice_single",
-    "content": "Thi thiên 23 bắt đầu bằng câu nào?",
-    "correctAnswer": [
-      2
-    ],
-    "explanation": "Thi 23:1 - Đức Giê-hô-va là Đấng chăn giữ tôi, tôi sẽ chẳng thiếu thốn gì. Một trong những thi thiên được yêu thích nhất.",
-    "language": "vi",
-    "options": [
-      "Đức Giê-hô-va là nơi ẩn náu tôi",
-      "Hãy ngợi khen Đức Giê-hô-va",
-      "Đức Giê-hô-va là Đấng chăn giữ tôi, tôi sẽ chẳng thiếu thốn gì",
-      "Trời kể ra sự vinh hiển Chúa"
-    ],
-    "tags": [
-      "Cựu Ước",
-      "Thi thiên",
-      "Chăn giữ",
-      "Thi Thiên",
-      "Văn Thơ",
-      "Cơ bản"
-    ]
-  },
-  {
-    "book": "Psalms",
     "chapter": 1,
     "verseStart": 1,
     "difficulty": "medium",
