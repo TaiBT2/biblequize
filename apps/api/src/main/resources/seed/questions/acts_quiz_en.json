@@ -2579,17 +2579,18 @@
     "correctAnswer": [
       0,
       1,
-      2
+      2,
+      3
     ],
     "verseEnd": 29,
-    "content": "According to Acts 15:22-29, the LETTER from the Jerusalem Council asked Gentiles to ABSTAIN from FOUR things — accommodating Jewish believers' conscience. Select THREE that appear on the list.",
+    "content": "According to Acts 15:22-29, the LETTER from the Jerusalem Council asked Gentiles to ABSTAIN from FOUR things — to satisfy the Jewish believers conscience. Select ALL that appear in the list.",
     "explanation": "Acts 15:28-29 — 'For it has seemed good to the Holy Spirit and to us to lay on you no greater burden than these requirements: that you abstain from what has been sacrificed to idols, and from blood, and from what has been strangled, and from sexual immorality. If you keep yourselves from these, you will do well'. FOUR items: (1) idol food, (2) blood, (3) strangled animals, (4) sexual immorality. CIRCUMCISION was NOT required — that was the Council's main decision.",
     "language": "en",
     "options": [
       "Food SACRIFICED to idols",
       "BLOOD",
       "Animals STRANGLED (blood not drained)",
-      "Circumcision"
+      "SEXUAL IMMORALITY (porneia)"
     ],
     "tags": [
       "New Testament",
