@@ -738,72 +738,74 @@ const GroupDetail: React.FC = () => {
 
       {/* ── Compact Header (mockup: groups_member_dashboard.html / groups_leader_dashboard.html) ── */}
       <header
-        className={`rounded-[14px] p-4 flex items-center gap-4 mb-3 ${
+        className={`rounded-[14px] p-3 sm:p-4 mb-3 lg:flex lg:items-center lg:gap-4 ${
           isLeader
             ? 'bg-gradient-to-br from-[rgba(232,168,50,0.1)] to-[rgba(50,52,64,0.4)] border-[0.5px] border-[rgba(232,168,50,0.3)]'
             : 'bg-[rgba(50,52,64,0.4)] border-[0.5px] border-[rgba(232,168,50,0.2)]'
         }`}
       >
-        <div
-          className={`w-[60px] h-[60px] rounded-[14px] bg-[rgba(232,168,50,0.15)] flex items-center justify-center flex-shrink-0 overflow-hidden ${
-            isLeader ? 'border-[1.5px] border-secondary' : 'border-[1.5px] border-[rgba(232,168,50,0.4)]'
-          }`}
-        >
-          {group.avatarUrl ? (
-            <img alt={group.name} src={group.avatarUrl} className="w-full h-full object-cover" />
-          ) : (
-            <span className="text-[28px]">⛪</span>
-          )}
-        </div>
-
-        <div className="flex-1 min-w-0" data-testid="group-detail-name">
-          <div className="flex items-center gap-2 flex-wrap">
-            <h2 data-testid="group-name-heading" className="text-on-surface text-[18px] font-medium m-0 truncate">
-              {group.name?.trim() || t('groups.untitledGroup')}
-            </h2>
-            {isLeader ? (
-              <span className="bg-[rgba(232,168,50,0.2)] text-secondary px-2 py-0.5 rounded-full text-[9px] font-medium border-[0.5px] border-[rgba(232,168,50,0.4)]">
-                👑 {t('groups.leaderBadge')}
-              </span>
-            ) : myRole === 'MOD' ? (
-              <span className="bg-[rgba(167,139,250,0.15)] text-[#c4b5fd] px-2 py-0.5 rounded-full text-[9px] font-medium border-[0.5px] border-[rgba(167,139,250,0.4)] inline-flex items-center gap-1">
-                <span className="material-symbols-outlined text-[11px]">shield</span>
-                Mod
-              </span>
+        <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+          <div
+            className={`w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-[13px] sm:rounded-[14px] bg-[rgba(232,168,50,0.15)] flex items-center justify-center flex-shrink-0 overflow-hidden ${
+              isLeader ? 'border-[1.5px] border-secondary' : 'border-[1.5px] border-[rgba(232,168,50,0.4)]'
+            }`}
+          >
+            {group.avatarUrl ? (
+              <img alt={group.name} src={group.avatarUrl} className="w-full h-full object-cover" />
             ) : (
-              <span className="bg-[rgba(74,222,128,0.12)] text-[#4ade80] px-2 py-0.5 rounded-full text-[9px] font-medium border-[0.5px] border-[rgba(74,222,128,0.3)] inline-flex items-center gap-1">
-                <span className="material-symbols-outlined text-[11px]">person</span>
-                Thành viên
-              </span>
+              <span className="text-[24px] sm:text-[28px]">⛪</span>
             )}
           </div>
-          <div className="text-on-surface/55 text-[12px] mt-1 flex items-center gap-3 flex-wrap">
-            <span data-testid="group-member-count">👥 {group.members?.length || 0} {t('groups.members')}</span>
-            {leader && (
-              <>
-                <span>·</span>
-                <span>👑 {leader.name}</span>
-              </>
-            )}
-            <span>·</span>
-            <button
-              data-testid="group-join-code"
-              onClick={handleCopyCode}
-              className="flex items-center gap-1 text-on-surface/55 hover:text-secondary transition-colors"
-            >
-              🔑 {t('groups.groupCodeLabel')}:{' '}
-              <code className="bg-white/[0.06] px-1.5 py-px rounded text-secondary font-mono">
-                {copied ? t('groups.copied') : group.code}
-              </code>
-            </button>
+
+          <div className="flex-1 min-w-0" data-testid="group-detail-name">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h2 data-testid="group-name-heading" className="text-on-surface text-[16px] sm:text-[18px] font-medium m-0 truncate">
+                {group.name?.trim() || t('groups.untitledGroup')}
+              </h2>
+              {isLeader ? (
+                <span className="bg-[rgba(232,168,50,0.2)] text-secondary px-2 py-0.5 rounded-full text-[9px] font-medium border-[0.5px] border-[rgba(232,168,50,0.4)] whitespace-nowrap">
+                  👑 {t('groups.leaderBadge')}
+                </span>
+              ) : myRole === 'MOD' ? (
+                <span className="bg-[rgba(167,139,250,0.15)] text-[#c4b5fd] px-2 py-0.5 rounded-full text-[9px] font-medium border-[0.5px] border-[rgba(167,139,250,0.4)] inline-flex items-center gap-1 whitespace-nowrap">
+                  <span className="material-symbols-outlined text-[11px]">shield</span>
+                  Mod
+                </span>
+              ) : (
+                <span className="bg-[rgba(74,222,128,0.12)] text-[#4ade80] px-2 py-0.5 rounded-full text-[9px] font-medium border-[0.5px] border-[rgba(74,222,128,0.3)] inline-flex items-center gap-1 whitespace-nowrap">
+                  <span className="material-symbols-outlined text-[11px]">person</span>
+                  Thành viên
+                </span>
+              )}
+            </div>
+            <div className="text-on-surface/55 text-[11px] sm:text-[12px] mt-1 flex items-center gap-2 sm:gap-3 flex-wrap">
+              <span data-testid="group-member-count" className="whitespace-nowrap">👥 {group.members?.length || 0} {t('groups.members')}</span>
+              {leader && (
+                <>
+                  <span>·</span>
+                  <span className="truncate max-w-[140px] sm:max-w-none">👑 {leader.name}</span>
+                </>
+              )}
+              <span className="hidden sm:inline">·</span>
+              <button
+                data-testid="group-join-code"
+                onClick={handleCopyCode}
+                className="flex items-center gap-1 text-on-surface/55 hover:text-secondary transition-colors whitespace-nowrap"
+              >
+                🔑 {t('groups.groupCodeLabel')}:{' '}
+                <code className="bg-white/[0.06] px-1.5 py-px rounded text-secondary font-mono">
+                  {copied ? t('groups.copied') : group.code}
+                </code>
+              </button>
+            </div>
           </div>
         </div>
 
-        <div className="flex gap-2 flex-shrink-0">
+        <div className="hidden lg:flex gap-2 flex-shrink-0 ml-auto justify-end mt-3 lg:mt-0">
           {isLeader && (
             <Link
               to={`/groups/${id}/analytics`}
-              className="bg-[rgba(232,168,50,0.15)] text-secondary border-[0.5px] border-[rgba(232,168,50,0.4)] rounded-lg px-3.5 py-2 text-[11px] font-medium hover:brightness-110 transition-all flex items-center gap-1.5"
+              className="bg-[rgba(232,168,50,0.15)] text-secondary border-[0.5px] border-[rgba(232,168,50,0.4)] rounded-lg px-3 sm:px-3.5 py-2 text-[11px] font-medium hover:brightness-110 transition-all flex items-center gap-1.5"
             >
               📊 {t('groupAnalytics.title')}
             </Link>
@@ -811,7 +813,7 @@ const GroupDetail: React.FC = () => {
           {isLeader ? (
             <button
               onClick={openEditModal}
-              className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3.5 py-2 text-[11px] font-medium hover:bg-white/10 transition-all flex items-center gap-1.5"
+              className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3 sm:px-3.5 py-2 text-[11px] font-medium hover:bg-white/10 transition-all flex items-center gap-1.5"
             >
               ⚙️ {t('groups.settings')}
             </button>
@@ -820,7 +822,7 @@ const GroupDetail: React.FC = () => {
               <button
                 data-testid="group-leave-btn"
                 onClick={handleLeave}
-                className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3.5 py-2 text-[11px] font-medium hover:bg-white/10 transition-all flex items-center gap-1.5"
+                className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3 sm:px-3.5 py-2 text-[11px] font-medium hover:bg-white/10 transition-all flex items-center gap-1.5"
               >
                 🚪 {t('groups.leaveGroup')}
               </button>
@@ -828,7 +830,7 @@ const GroupDetail: React.FC = () => {
               <button
                 data-testid="group-report-btn"
                 onClick={() => setShowReportModal(true)}
-                className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3.5 py-2 text-[11px] font-medium hover:bg-white/10 transition-all flex items-center gap-1.5"
+                className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3 sm:px-3.5 py-2 text-[11px] font-medium hover:bg-white/10 transition-all flex items-center gap-1.5"
                 title={t('groups.reportTooltip')}
               >
                 <span className="material-symbols-outlined text-[13px]">flag</span>
@@ -839,10 +841,59 @@ const GroupDetail: React.FC = () => {
           {isLeaderOrMod && (
             <button
               onClick={handleCopyCode}
-              className="bg-secondary text-on-secondary rounded-lg px-3.5 py-2 text-[11px] font-medium shadow-[0_0_18px_rgba(232,168,50,0.2)] hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5"
+              className="bg-secondary text-on-secondary rounded-lg px-3 sm:px-3.5 py-2 text-[11px] font-medium shadow-[0_0_18px_rgba(232,168,50,0.2)] hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5"
             >
               🔗 {t('groups.invite')}
             </button>
+          )}
+        </div>
+
+        {/* Mobile/tablet action row — compact grid (mockup: 2fr 1fr 1fr style) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 mt-3 lg:hidden">
+          {isLeaderOrMod && (
+            <button
+              onClick={handleCopyCode}
+              className="col-span-2 sm:col-span-1 bg-secondary text-on-secondary rounded-lg px-3 py-2 text-[11px] font-bold shadow-[0_0_18px_rgba(232,168,50,0.2)] hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5"
+            >
+              <span className="material-symbols-outlined text-[14px]">person_add</span>
+              {t('groups.invite')}
+            </button>
+          )}
+          {isLeader && (
+            <Link
+              to={`/groups/${id}/analytics`}
+              className="bg-[rgba(232,168,50,0.15)] text-secondary border-[0.5px] border-[rgba(232,168,50,0.4)] rounded-lg px-3 py-2 text-[11px] font-bold hover:brightness-110 transition-all flex items-center justify-center gap-1.5"
+            >
+              <span className="material-symbols-outlined text-[14px]">analytics</span>
+              {t('groupAnalytics.title')}
+            </Link>
+          )}
+          {isLeader ? (
+            <button
+              onClick={openEditModal}
+              className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3 py-2 text-[11px] font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-1.5"
+            >
+              <span className="material-symbols-outlined text-[14px]">settings</span>
+              {t('groups.settings')}
+            </button>
+          ) : (
+            <>
+              <button
+                onClick={handleLeave}
+                className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3 py-2 text-[11px] font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-1.5"
+              >
+                <span className="material-symbols-outlined text-[14px]">logout</span>
+                {t('groups.leaveGroup')}
+              </button>
+              <button
+                onClick={() => setShowReportModal(true)}
+                className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3 py-2 text-[11px] font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-1.5"
+                title={t('groups.reportTooltip')}
+              >
+                <span className="material-symbols-outlined text-[14px]">flag</span>
+                {t('groups.reportCta')}
+              </button>
+            </>
           )}
         </div>
       </header>
@@ -1986,88 +2037,90 @@ const GroupDetail: React.FC = () => {
                 return (
                   <div
                     key={qs.id}
-                    className="rounded-2xl px-4 py-3.5 grid items-center gap-3"
+                    className="rounded-2xl px-3.5 py-3.5 sm:px-4"
                     style={{
                       background: 'rgba(50,52,64,0.4)',
                       backdropFilter: 'blur(12px)',
                       border: '1px solid rgba(232,168,50,0.1)',
-                      gridTemplateColumns: 'auto 1fr auto',
                     }}
                   >
-                    <div className="w-11 h-11 rounded-[11px] grid place-items-center text-secondary flex-shrink-0"
-                      style={{
-                        background: 'linear-gradient(135deg, rgba(232,168,50,0.18) 0%, rgba(217,119,6,0.1) 100%)',
-                        border: '1px solid rgba(232,168,50,0.25)',
-                      }}>
-                      <span className="material-symbols-outlined text-[22px]">menu_book</span>
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-on-surface text-[15px] font-bold truncate mb-1">{qs.name}</div>
-                      <div className="flex items-center gap-3 text-[11px] text-on-surface/60 flex-wrap">
-                        <span className="inline-flex items-center gap-1">
-                          <span className="material-symbols-outlined text-[13px]">quiz</span>
-                          {t('groups.questionsCount', { count: qs.questionCount })}
-                        </span>
-                        {createdLabel && (
+                    {/* Row 1: icon + info */}
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-[10px] sm:rounded-[11px] grid place-items-center text-secondary flex-shrink-0"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(232,168,50,0.18) 0%, rgba(217,119,6,0.1) 100%)',
+                          border: '1px solid rgba(232,168,50,0.25)',
+                        }}>
+                        <span className="material-symbols-outlined text-[20px] sm:text-[22px]">menu_book</span>
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-on-surface text-[14px] sm:text-[15px] font-bold mb-1 leading-tight">{qs.name}</div>
+                        <div className="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] text-on-surface/60 flex-wrap">
                           <span className="inline-flex items-center gap-1">
-                            <span className="material-symbols-outlined text-[13px]">schedule</span>
-                            {createdLabel}
+                            <span className="material-symbols-outlined text-[12px] sm:text-[13px]">quiz</span>
+                            {t('groups.questionsCount', { count: qs.questionCount })}
                           </span>
-                        )}
-                        {inUseByScheduled && (
-                          <span className="inline-flex items-center gap-1" style={{ color: '#a78bfa' }}>
-                            <span className="material-symbols-outlined text-[13px]">verified</span>
-                            Đang dùng cho Quiz đặt lịch
-                          </span>
-                        )}
+                          {createdLabel && (
+                            <span className="inline-flex items-center gap-1">
+                              <span className="material-symbols-outlined text-[12px] sm:text-[13px]">schedule</span>
+                              {createdLabel}
+                            </span>
+                          )}
+                          {inUseByScheduled && (
+                            <span className="inline-flex items-center gap-1" style={{ color: '#a78bfa' }}>
+                              <span className="material-symbols-outlined text-[12px] sm:text-[13px]">verified</span>
+                              <span className="hidden sm:inline">Đang dùng cho Quiz đặt lịch</span>
+                              <span className="sm:hidden">Đang dùng</span>
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-1.5 flex-shrink-0 flex-wrap justify-end">
-                      {/* Tự ôn (solo) — visible to all members */}
-                      <button
-                        onClick={() => handlePlayQuizSet(qs.id)}
-                        disabled={playingSetId === qs.id}
-                        title="Tự ôn solo"
-                        className="rounded-[9px] px-3 py-2 text-[12px] font-bold inline-flex items-center gap-1.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-transparent text-on-surface/60 hover:text-on-surface"
-                        style={{ border: '1px solid rgba(255,255,255,0.1)' }}
-                      >
-                        <span className="material-symbols-outlined text-[14px]">person</span>
-                        {playingSetId === qs.id ? '...' : 'Tự ôn'}
-                      </button>
-                      {/* Chơi cùng nhau — leader/mod */}
-                      {isLeaderOrMod && (
+
+                    {/* Row 2 (sm+ only — leader/mod): primary actions side by side */}
+                    {isLeaderOrMod && (
+                      <div className="grid grid-cols-2 gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
                         <button
                           onClick={() => handleStartLiveQuiz(qs.id)}
                           disabled={liveQuizSetId === qs.id}
                           title={t('groups.liveQuizTooltip')}
-                          className="rounded-[9px] px-3 py-2 text-[12px] font-bold inline-flex items-center gap-1.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="rounded-[9px] px-2 sm:px-3 py-2 text-[11px] sm:text-[12px] font-bold inline-flex items-center justify-center gap-1.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                           style={{
                             background: 'rgba(167,139,250,0.12)',
                             color: '#c4b5fd',
                             border: '1px solid rgba(167,139,250,0.3)',
                           }}
                         >
-                          <span className="material-symbols-outlined text-[14px]">groups</span>
+                          <span className="material-symbols-outlined text-[13px] sm:text-[14px]">groups</span>
                           {liveQuizSetId === qs.id ? '...' : t('groups.liveQuizCta')}
                         </button>
-                      )}
-                      {/* Đặt lịch — leader/mod */}
-                      {isLeaderOrMod && (
                         <button
                           onClick={() => navigate(`/groups/${id}/scheduled-quizzes/new?quizSetId=${qs.id}`)}
                           title={t('scheduledQuiz.scheduleTooltip')}
-                          className="rounded-[9px] px-3 py-2 text-[12px] font-bold inline-flex items-center gap-1.5 transition-all"
+                          className="rounded-[9px] px-2 sm:px-3 py-2 text-[11px] sm:text-[12px] font-bold inline-flex items-center justify-center gap-1.5 transition-all"
                           style={{
                             background: 'rgba(96,165,250,0.12)',
                             color: '#93c5fd',
                             border: '1px solid rgba(96,165,250,0.3)',
                           }}
                         >
-                          <span className="material-symbols-outlined text-[14px]">schedule</span>
+                          <span className="material-symbols-outlined text-[13px] sm:text-[14px]">schedule</span>
                           {t('scheduledQuiz.scheduleCta')}
                         </button>
-                      )}
-                    </div>
+                      </div>
+                    )}
+
+                    {/* Row 3: Tự ôn — full width ghost (less prominent on mobile per mockup) */}
+                    <button
+                      onClick={() => handlePlayQuizSet(qs.id)}
+                      disabled={playingSetId === qs.id}
+                      title="Tự ôn solo"
+                      className="w-full rounded-[9px] px-3 py-2 text-[11px] sm:text-[12px] font-semibold sm:font-bold inline-flex items-center justify-center gap-1.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-transparent text-on-surface/60 hover:text-on-surface"
+                      style={{ border: '1px solid rgba(255,255,255,0.08)' }}
+                    >
+                      <span className="material-symbols-outlined text-[13px] sm:text-[14px]">person</span>
+                      {playingSetId === qs.id ? '...' : (isLeaderOrMod ? 'Tự ôn solo' : 'Tự ôn')}
+                    </button>
                   </div>
                 );
               })}
