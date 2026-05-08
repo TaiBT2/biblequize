@@ -82,17 +82,17 @@
 |---|---|---|---|---|
 | Romans | 130/130 | ⬜ | | |
 | 1 Corinthians | 80/80 | ⬜ | | |
-| 2 Corinthians | 30/30 | ⬜ | | |
-| Galatians | 50/50 | ⬜ | | |
-| Ephesians | 60/60 | ⬜ | | |
-| Philippians | 50/50 | ⬜ | | |
-| Colossians | 25/25 | ⬜ | | |
-| 1 Thessalonians | 25/25 | ⬜ | | |
-| 2 Thessalonians | 20/20 | ⬜ | | |
-| 1 Timothy | 25/25 | ⬜ | | |
-| 2 Timothy | 25/25 | ⬜ | | |
-| Titus | 20/20 | ⬜ | | |
-| Philemon | 21/21 | ⚠️ | EN #15 missing 2 names | manual review complete; fixed |
+| 2 Corinthians | 30/30 | ✅ | none | |
+| Galatians | 50/50 | ✅ | none | |
+| Ephesians | 60/60 | ✅ | none | |
+| Philippians | 50/50 | ✅ | none | |
+| Colossians | 25/25 | ✅ | none | (drift fix in pass 5) |
+| 1 Thessalonians | 25/25 | ✅ | none | |
+| 2 Thessalonians | 20/20 | ✅ | none | |
+| 1 Timothy | 25/25 | ✅ | none | |
+| 2 Timothy | 25/25 | ✅ | none | (drift fix in pass 5) |
+| Titus | 20/20 | ✅ | none | |
+| Philemon | 21/21 | ✅ | EN #15 missing 2 names | fixed in pass 5 |
 
 ## New Testament — General Epistles & Revelation
 | Book | Q (VI/EN) | Status | Findings | Notes |
