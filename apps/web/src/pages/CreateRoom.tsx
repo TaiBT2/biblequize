@@ -16,11 +16,12 @@ const MODES = [
 ] as const
 
 const QUESTION_COUNTS = [10, 15, 20, 30]
-const MODE_QUESTION_DEFAULTS: Record<string, number> = {
-  SPEED_RACE:   15,
-  BATTLE_ROYALE: 20,
-  TEAM_VS_TEAM:  15,
-  SUDDEN_DEATH:  20,
+// SPEC §5.4: each mode has its own default cadence and player cap.
+const MODE_DEFAULTS: Record<string, { questionCount: number; timePerQuestion: number; maxPlayers: number }> = {
+  SPEED_RACE:    { questionCount: 15, timePerQuestion: 30, maxPlayers: 4 },
+  BATTLE_ROYALE: { questionCount: 20, timePerQuestion: 20, maxPlayers: 8 },
+  TEAM_VS_TEAM:  { questionCount: 15, timePerQuestion: 30, maxPlayers: 8 },
+  SUDDEN_DEATH:  { questionCount: 20, timePerQuestion: 15, maxPlayers: 8 },
 }
 const TIME_OPTIONS = [10, 15, 20, 30]
 const DIFFICULTY_OPTIONS = [
@@ -47,10 +48,10 @@ export default function CreateRoom() {
   const [formData, setFormData] = useState({
     roomName: '',
     mode: 'SPEED_RACE',
-    questionCount: MODE_QUESTION_DEFAULTS['SPEED_RACE'],
-    timePerQuestion: 15,
+    questionCount: MODE_DEFAULTS['SPEED_RACE'].questionCount,
+    timePerQuestion: MODE_DEFAULTS['SPEED_RACE'].timePerQuestion,
     difficulty: 'MIXED',
-    maxPlayers: 8,
+    maxPlayers: MODE_DEFAULTS['SPEED_RACE'].maxPlayers,
     isPublic: true,
     bookScope: 'ALL',
     questionSource: 'DATABASE',
@@ -154,7 +155,16 @@ export default function CreateRoom() {
                   <button
                     key={m.id}
                     type="button"
-                    onClick={() => setFormData(prev => ({ ...prev, mode: m.id, questionCount: MODE_QUESTION_DEFAULTS[m.id] ?? 15 }))}
+                    onClick={() => {
+                      const d = MODE_DEFAULTS[m.id] ?? MODE_DEFAULTS['SPEED_RACE']
+                      setFormData(prev => ({
+                        ...prev,
+                        mode: m.id,
+                        questionCount: d.questionCount,
+                        timePerQuestion: d.timePerQuestion,
+                        maxPlayers: d.maxPlayers,
+                      }))
+                    }}
                     aria-pressed={active}
                     className="relative flex flex-col items-center justify-center text-center p-3 h-[140px] rounded-xl glass-card border transition-all active:scale-95"
                     style={{
