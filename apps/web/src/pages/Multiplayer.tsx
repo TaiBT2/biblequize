@@ -397,7 +397,6 @@ const Multiplayer = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
   const [sort, setSort] = useState<SortOption>('newest');
-  const [activeFilters, setActiveFilters] = useState<{ id: string; label: string }[]>([]);
   const [codeJoinError, setCodeJoinError] = useState<string | null>(null);
   const [isCodeJoining, setIsCodeJoining] = useState(false);
 
@@ -446,8 +445,6 @@ const Multiplayer = () => {
   const waitingCount = allRooms.filter((r) => r.status === 'LOBBY').length;
   const playingCount = allRooms.filter((r) => r.status === 'IN_PROGRESS').length;
   const liveCount = waitingCount + playingCount;
-
-  const removeFilter = (id: string) => setActiveFilters((prev) => prev.filter((f) => f.id !== id));
 
   return (
     <div data-testid="multiplayer-page" className="space-y-6">
@@ -565,25 +562,6 @@ const Multiplayer = () => {
               ))}
             </div>
 
-            {/* Filter */}
-            <button
-              title={t('multiplayer.filter', 'Lọc phòng')}
-              aria-label={t('multiplayer.filter', 'Lọc phòng theo điều kiện')}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] transition-colors"
-              style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.55)', border: '0.5px solid rgba(255,255,255,0.08)' }}
-            >
-              <span className="material-symbols-outlined text-[16px]">filter_list</span>
-              {t('multiplayer.filterBtn', 'Lọc')}
-              {activeFilters.length > 0 && (
-                <span
-                  className="px-1.5 py-0.5 rounded-full text-[9px] font-bold"
-                  style={{ background: '#e8a832', color: '#412d00' }}
-                >
-                  {activeFilters.length}
-                </span>
-              )}
-            </button>
-
             {/* Search — desktop only */}
             <button
               title={t('multiplayer.search', 'Tìm kiếm')}
@@ -596,28 +574,6 @@ const Multiplayer = () => {
           </div>
         </div>
 
-        {/* Active filter chips */}
-        {activeFilters.length > 0 && (
-          <div className="flex gap-2 items-center overflow-x-auto pb-1 md:flex-wrap md:overflow-x-visible md:pb-0">
-            {activeFilters.map((f) => (
-              <button
-                key={f.id}
-                onClick={() => removeFilter(f.id)}
-                className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold transition-all"
-                style={{ background: 'rgba(232,168,50,0.12)', color: '#e8a832', border: '0.5px solid rgba(232,168,50,0.35)' }}
-              >
-                {f.label} <span className="text-[10px]">×</span>
-              </button>
-            ))}
-            <button
-              onClick={() => setActiveFilters([])}
-              className="text-[11px] px-2 py-1 transition-colors"
-              style={{ color: 'rgba(255,255,255,0.4)', background: 'transparent', border: 'none' }}
-            >
-              Xoá tất cả
-            </button>
-          </div>
-        )}
       </div>
 
       {/* ── Room list ── */}

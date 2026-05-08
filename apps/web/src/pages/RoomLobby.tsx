@@ -392,13 +392,7 @@ const RoomLobby: React.FC = () => {
           />
           {connected ? 'Đã kết nối' : 'Mất kết nối'}
         </div>
-        <button
-          aria-label="Cài đặt"
-          className="w-8 h-8 grid place-items-center rounded-lg hover:bg-white/5"
-          style={{ background: 'rgba(50,52,64,0.5)', color: '#9ca3af' }}
-        >
-          <span className="material-symbols-outlined text-base">settings</span>
-        </button>
+        <span className="w-8 h-8" aria-hidden="true" />
       </header>
 
       {/* ─── Main: content + (optional) chat panel ─── */}
