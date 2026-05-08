@@ -14,9 +14,9 @@
 |---|---|---|---|---|
 | Genesis | 150/150 | ⚠️ | #58 wrong correctAnswer (Zerah/Perez twins) | fixed; deep manual still pending |
 | Exodus | 151/151 | ⬜ | | |
-| Leviticus | 75/75 | ⬜ | | |
-| Numbers | 75/75 | ⬜ | | |
-| Deuteronomy | 70/70 | ⬜ | | |
+| Leviticus | 75/75 | ✅ | none | |
+| Numbers | 75/75 | ✅ | none | |
+| Deuteronomy | 70/70 | ✅ | none | |
 
 ## Old Testament — History
 | Book | Q (VI/EN) | Status | Findings | Notes |
@@ -39,14 +39,14 @@
 |---|---|---|---|---|
 | Job | 20/20 | ✅ | none | |
 | Psalms | 180/179 | ⬜ | | EN was 180→179 (dup removed); VI fixed verseStart on 2 |
-| Proverbs | 80/80 | ⬜ | | |
+| Proverbs | 80/80 | ✅ | none | |
 | Ecclesiastes | 20/20 | ✅ | none | |
 | Song of Solomon | 25/25 | ✅ | none | |
 
 ## Old Testament — Major Prophets
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
-| Isaiah | 99/99 | ⬜ | | |
+| Isaiah | 99/99 | ✅ | none | |
 | Jeremiah | 50/50 | ✅ | none | |
 | Lamentations | 20/20 | ✅ | none | |
 | Ezekiel | 50/50 | ✅ | none | |
