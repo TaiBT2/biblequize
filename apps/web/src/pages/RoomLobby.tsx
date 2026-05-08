@@ -155,7 +155,6 @@ const RoomLobby: React.FC = () => {
           }), d.countdown * 1000);
           break;
         }
-        case 'ROOM_STARTING':
         case 'QUESTION_START': {
           const navState = location.state as { fromGroupId?: string } | null;
           const fromGroupId = navState?.fromGroupId ?? room?.groupId ?? undefined;
@@ -224,7 +223,6 @@ const RoomLobby: React.FC = () => {
     if (!roomId) return;
     try {
       await api.post(`/api/rooms/${roomId}/start`);
-      send(`/app/room/${roomId}/start`, {});
     } catch (err: any) {
       setError(err?.response?.data?.message || t('room.errorStartRoom'));
     }
