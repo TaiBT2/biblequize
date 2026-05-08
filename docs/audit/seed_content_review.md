@@ -47,9 +47,9 @@
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
 | Isaiah | 99/99 | ⬜ | | |
-| Jeremiah | 50/50 | ⬜ | | |
+| Jeremiah | 50/50 | ✅ | none | |
 | Lamentations | 20/20 | ✅ | none | |
-| Ezekiel | 50/50 | ⬜ | | |
+| Ezekiel | 50/50 | ✅ | none | |
 | Daniel | 60/60 | ⚠️ | #42, #43 wrong correctAnswer | fixed; deep manual still pending |
 
 ## Old Testament — Minor Prophets
@@ -80,8 +80,8 @@
 ## New Testament — Pauline Epistles
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
-| Romans | 130/130 | ⬜ | | |
-| 1 Corinthians | 80/80 | ⬜ | | |
+| Romans | 130/130 | ✅ | none | |
+| 1 Corinthians | 80/80 | ✅ | none | |
 | 2 Corinthians | 30/30 | ✅ | none | |
 | Galatians | 50/50 | ✅ | none | |
 | Ephesians | 60/60 | ✅ | none | |
@@ -105,7 +105,7 @@
 | 2 John | 20/20 | ✅ | none | (drift on #16 is intentional design) |
 | 3 John | 20/20 | ✅ | none | |
 | Jude | 20/20 | ✅ | none | |
-| Revelation | 100/100 | ⬜ | | |
+| Revelation | 100/100 | ⚠️ | #47 wrong correctAnswer (Rev 5:6 horns/eyes) | fixed |
 
 ## Special
 | Book | Q (VI/EN) | Status | Findings | Notes |
