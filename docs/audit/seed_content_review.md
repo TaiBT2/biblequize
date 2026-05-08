@@ -18,6 +18,45 @@
 
 All three fit the same correctAnswer-index-wrong pattern that has dominated this audit.
 
+### Pass 15-17 — Stronger heuristics + multi-choice + VI/EN cross-check
+
+After elevating all 67 books to ✅, three additional automated detectors were
+added to push beyond first-pass coverage:
+
+- **Pass 15** (`scripts/check_answer_v2.py`): Trigram + bigram phrase overlap
+  with explanations. 12 candidates → 3 real bugs:
+  - `daniel_quiz.json` #47 (Dan 6:26-27): Darius's decree was to fear God of
+    Daniel, not "worship Babylonian/Median gods higher".
+  - `exodus_quiz.json` #149 (Ex 34:7): punishment "to third and fourth
+    generation", not "seventh generation".
+  - `isaiah_quiz.json` #59 (Isa 55:8-9): God's ways higher than ours, not
+    "ways can be similar".
+- **Pass 16** (`scripts/check_pair_answer_text.py`): VI/EN paired by
+  (chapter, verseStart); flag when marked correct option's NUMBERS differ
+  between languages. 24 candidates → 1 real bug:
+  - `jeremiah_quiz_en.json` #23 (Jer 39:1-2): siege began year 9 month 10,
+    city breached year 11 month 4 day 9 — not "year 15 month 8 day 15".
+- **Pass 17** (`scripts/check_multi_answers.py`): For multiple_choice_multi,
+  flag when correct-count doesn't match counts mentioned in explanation.
+  10 candidates → 1 real bug:
+  - `acts_quiz.json`/`_en.json` #95 (Acts 15:28-29): Council prohibits FOUR
+    things (idols, blood, strangled, sexual immorality). VI question said
+    "choose THREE"; EN had "Circumcision" as a wrong distractor instead of
+    "Sexual immorality". Both fixed to all four prohibitions.
+
+**Final running total of correctAnswer-index-wrong pattern**: 18 bugs (Haggai
+#10, Habakkuk #8, Esther #5, Acts #88, Daniel #42, #43, #47, Genesis #58, #100,
+Mark #104 VI+EN, Matthew #11, Genesis #100, Luke #104, Psalms #65, Revelation
+#47, Exodus #149, Isaiah #59, Jeremiah_en #23, Acts #95 VI+EN).
+
+**Total fixes across the entire audit**: 40 individual question fixes + 4
+duplicates removed + 3,506 AI-filler strips.
+
+After pass 17 the v3 heuristic (`scripts/check_answer_v3.py`) was run with
+tighter thresholds and produced 3 candidates — all confirmed false positives
+(Acts #114 Damascus Ananias is correct; Isaiah_en #86 Christ is correct per
+question's "TYPE 2 distinguish" framing).
+
 ## Old Testament — Pentateuch
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
