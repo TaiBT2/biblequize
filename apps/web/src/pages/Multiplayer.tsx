@@ -75,8 +75,9 @@ function formatBookScope(bookScope: string): string {
 
 function formatRelativeTime(createdAt: string): string {
   if (!createdAt) return 'Vừa tạo';
-  const diff = Date.now() - new Date(createdAt).getTime();
-  const mins = Math.floor(diff / 60000);
+  const ts = new Date(createdAt).getTime();
+  if (!Number.isFinite(ts)) return 'Vừa tạo';
+  const mins = Math.floor((Date.now() - ts) / 60000);
   if (mins < 1) return 'Vừa tạo';
   if (mins < 60) return `${mins} phút trước`;
   return `${Math.floor(mins / 60)} giờ trước`;
