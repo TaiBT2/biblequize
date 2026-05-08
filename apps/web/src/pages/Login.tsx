@@ -106,8 +106,8 @@ export default function Login() {
       </section>
 
       {/* Right Side: Login Form (40%) */}
-      <section className="w-full lg:w-[40%] flex flex-col justify-center items-center px-8 sm:px-12 md:px-24 bg-surface relative">
-        <div className="w-full max-w-md space-y-8">
+      <section className="w-full lg:w-[40%] flex flex-col justify-center items-center px-5 sm:px-12 md:px-24 py-12 lg:py-0 bg-surface relative">
+        <div className="w-full max-w-md space-y-6 sm:space-y-8">
           {/* Brand Anchor */}
           <div className="flex flex-col items-center mb-10">
             <div className="w-16 h-16 rounded-xl gold-gradient flex items-center justify-center mb-4 shadow-lg shadow-secondary/20">
@@ -271,40 +271,25 @@ export default function Login() {
           </div>
         </div>
 
-        {/* Absolute Footer */}
-        <footer className="fixed bottom-4 right-4 flex gap-6 items-center">
+        {/* Absolute Footer — desktop fixed, mobile static below content */}
+        <footer className="lg:fixed lg:bottom-4 lg:right-4 mt-10 lg:mt-0 flex flex-wrap gap-x-4 gap-y-2 items-center justify-center">
           <a
             href="/privacy"
-            className="text-xs tracking-widest uppercase text-on-surface/50 hover:text-secondary transition-opacity opacity-100 hover:opacity-80"
+            className="text-[10px] sm:text-xs tracking-widest uppercase text-on-surface/50 hover:text-secondary transition-opacity opacity-100 hover:opacity-80 whitespace-nowrap"
           >
             {t('landing.privacy')}
           </a>
           <a
             href="/terms"
-            className="text-xs tracking-widest uppercase text-on-surface/50 hover:text-secondary transition-opacity opacity-100 hover:opacity-80"
+            className="text-[10px] sm:text-xs tracking-widest uppercase text-on-surface/50 hover:text-secondary transition-opacity opacity-100 hover:opacity-80 whitespace-nowrap"
           >
             {t('landing.terms')}
           </a>
-          <span className="text-xs tracking-widest uppercase text-tertiary opacity-60">
+          <span className="text-[10px] sm:text-xs tracking-widest uppercase text-tertiary opacity-60 whitespace-nowrap">
             &copy; 2024 Bible Quiz
           </span>
         </footer>
       </section>
-
-      {/* Top Left Floating Identity (mobile only) */}
-      <div className="fixed top-8 left-8 z-50 lg:hidden">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg gold-gradient flex items-center justify-center shadow-lg">
-            <span
-              className="material-symbols-outlined text-on-secondary text-xl"
-              style={{ fontVariationSettings: "'FILL' 1" }}
-            >
-              menu_book
-            </span>
-          </div>
-          <span className="text-lg font-bold text-secondary uppercase tracking-widest">Bible Quiz</span>
-        </div>
-      </div>
     </main>
   )
 }
