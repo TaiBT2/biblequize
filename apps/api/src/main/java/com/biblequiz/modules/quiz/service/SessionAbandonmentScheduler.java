@@ -6,9 +6,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- * FIX-002: Periodically detect and mark abandoned ranked sessions.
- * Runs every 60 seconds. Sessions with no activity for 2+ minutes are abandoned,
- * and unanswered questions deduct 5 energy each.
+ * Periodically detect and mark abandoned sessions.
+ * Ranked sessions: every 60s, 2 min inactivity → abandoned + energy penalty (FIX-002).
+ * Practice/single sessions: every 5 min, 30 min inactivity → abandoned (no penalty).
  */
 @Component
 public class SessionAbandonmentScheduler {
@@ -22,10 +22,30 @@ public class SessionAbandonmentScheduler {
     }
 
     @Scheduled(fixedRate = 60_000)
-    public void detectAbandonedSessions() {
+    public void detectAbandonedRankedSessions() {
         int count = sessionService.processAbandonedSessions();
         if (count > 0) {
             log.info("[ABANDONMENT] Marked {} ranked sessions as abandoned", count);
+        }
+    }
+
+    @Scheduled(fixedRate = 300_000)
+    public void detectAbandonedPracticeSessions() {
+        int count = sessionService.processAbandonedPracticeSessions();
+        if (count > 0) {
+            log.info("[ABANDONMENT] Marked {} practice/single sessions as abandoned", count);
+        }
+    }
+
+    /**
+     * Daily 3 AM (server TZ): hard-delete practice/single sessions whose endedAt
+     * is older than 30 days. Ranked sessions are kept indefinitely.
+     */
+    @Scheduled(cron = "0 0 3 * * *")
+    public void cleanupOldPracticeSessions() {
+        int count = sessionService.cleanupOldPracticeSessions();
+        if (count > 0) {
+            log.info("[CLEANUP] Deleted {} practice/single sessions older than 30 days", count);
         }
     }
 }

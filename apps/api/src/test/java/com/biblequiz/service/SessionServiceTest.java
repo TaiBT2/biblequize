@@ -729,4 +729,97 @@ class SessionServiceTest {
                 // 0 unanswered → no energy deduction call
                 verify(userDailyProgressRepository, never()).findByUserIdAndDate(anyString(), any());
         }
+
+        @Test
+        void completeSession_marksInProgressAsCompleted() {
+                sampleSession.setStatus(QuizSession.Status.in_progress);
+                sampleSession.setStartedAt(null);
+                sampleSession.setCreatedAt(LocalDateTime.now().minusMinutes(5));
+                when(quizSessionRepository.findById("session1")).thenReturn(Optional.of(sampleSession));
+                when(userRepository.findById("user1")).thenReturn(Optional.of(sampleUser));
+                when(quizSessionRepository.save(any())).thenAnswer(inv -> inv.getArgument(0));
+
+                Map<String, Object> dto = sessionService.completeSession("session1", "user1");
+
+                assertEquals(QuizSession.Status.completed, sampleSession.getStatus());
+                assertNotNull(sampleSession.getEndedAt());
+                assertNotNull(sampleSession.getStartedAt(), "startedAt back-filled from createdAt");
+                assertEquals("completed", dto.get("status"));
+                assertEquals("session1", dto.get("sessionId"));
+        }
+
+        @Test
+        void completeSession_idempotentOnAlreadyCompleted() {
+                sampleSession.setStatus(QuizSession.Status.completed);
+                LocalDateTime originalEndedAt = LocalDateTime.now().minusHours(1);
+                sampleSession.setEndedAt(originalEndedAt);
+                when(quizSessionRepository.findById("session1")).thenReturn(Optional.of(sampleSession));
+                when(userRepository.findById("user1")).thenReturn(Optional.of(sampleUser));
+
+                sessionService.completeSession("session1", "user1");
+
+                // Should NOT overwrite endedAt
+                assertEquals(originalEndedAt, sampleSession.getEndedAt());
+                verify(quizSessionRepository, never()).save(any());
+        }
+
+        @Test
+        void completeSession_throwsWhenNotOwner() {
+                User otherUser = new User();
+                otherUser.setId("user2");
+                when(quizSessionRepository.findById("session1")).thenReturn(Optional.of(sampleSession));
+                when(userRepository.findById("user2")).thenReturn(Optional.of(otherUser));
+
+                assertThrows(IllegalArgumentException.class,
+                                () -> sessionService.completeSession("session1", "user2"));
+        }
+
+        @Test
+        void processAbandonedPracticeSessions_marksStaleAsAbandoned_noEnergyDeduction() {
+                QuizSession stale = new QuizSession("s5", QuizSession.Mode.practice, sampleUser, "{}");
+                stale.setStatus(QuizSession.Status.in_progress);
+                stale.setTotalQuestions(5);
+                when(quizSessionRepository.findAbandonedPracticeSessions(any(LocalDateTime.class)))
+                        .thenReturn(List.of(stale));
+                when(quizSessionRepository.save(any())).thenAnswer(inv -> inv.getArgument(0));
+
+                int count = sessionService.processAbandonedPracticeSessions();
+
+                assertEquals(1, count);
+                assertEquals(QuizSession.Status.abandoned, stale.getStatus());
+                assertNotNull(stale.getAbandonedAt());
+                assertNotNull(stale.getEndedAt());
+                // Practice MUST NOT touch energy
+                verify(userDailyProgressRepository, never()).findByUserIdAndDate(anyString(), any());
+        }
+
+        @Test
+        void cleanupOldPracticeSessions_delegatesToRepoWith30DayCutoff() {
+                when(quizSessionRepository.deleteOldPracticeSessions(any(LocalDateTime.class))).thenReturn(7);
+
+                int n = sessionService.cleanupOldPracticeSessions();
+
+                assertEquals(7, n);
+                org.mockito.ArgumentCaptor<LocalDateTime> cap = org.mockito.ArgumentCaptor.forClass(LocalDateTime.class);
+                verify(quizSessionRepository).deleteOldPracticeSessions(cap.capture());
+                LocalDateTime expected = LocalDateTime.now().minusDays(30);
+                long deltaSeconds = Math.abs(java.time.Duration.between(expected, cap.getValue()).getSeconds());
+                assertTrue(deltaSeconds < 5, "cutoff should be ~30 days ago");
+        }
+
+        @Test
+        void processAbandonedPracticeSessions_noStale_returnsZero() {
+                when(quizSessionRepository.findAbandonedPracticeSessions(any(LocalDateTime.class)))
+                        .thenReturn(List.of());
+
+                assertEquals(0, sessionService.processAbandonedPracticeSessions());
+        }
+
+        @Test
+        void completeSession_throwsWhenSessionNotFound() {
+                when(quizSessionRepository.findById("ghost")).thenReturn(Optional.empty());
+
+                assertThrows(java.util.NoSuchElementException.class,
+                                () -> sessionService.completeSession("ghost", "user1"));
+        }
 }

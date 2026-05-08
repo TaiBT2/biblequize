@@ -831,6 +831,39 @@ public class SessionService {
         return count;
     }
 
+    /**
+     * 30-day retention for practice/single sessions. Deletes rows where status
+     * is terminal (completed/abandoned) and endedAt < 30 days ago. Cascades to
+     * answers + quiz_session_questions + lifeline_usage via FK. Ranked sessions
+     * are kept indefinitely (leaderboard audit trail).
+     */
+    @Transactional
+    public int cleanupOldPracticeSessions() {
+        LocalDateTime cutoff = LocalDateTime.now().minusDays(30);
+        return quizSessionRepository.deleteOldPracticeSessions(cutoff);
+    }
+
+    /**
+     * Mark stale practice/single sessions as abandoned. Inactivity threshold
+     * is longer than ranked (30 min vs 2 min) because practice has no energy
+     * cost and users may pause mid-quiz. No energy deduction — just status
+     * update so the row stops counting as "in progress" for stats.
+     */
+    @Transactional
+    public int processAbandonedPracticeSessions() {
+        LocalDateTime cutoff = LocalDateTime.now().minusMinutes(30);
+        List<QuizSession> staleSessions = quizSessionRepository.findAbandonedPracticeSessions(cutoff);
+        int count = 0;
+        for (QuizSession session : staleSessions) {
+            session.setStatus(QuizSession.Status.abandoned);
+            session.setAbandonedAt(LocalDateTime.now());
+            session.setEndedAt(LocalDateTime.now());
+            quizSessionRepository.save(session);
+            count++;
+        }
+        return count;
+    }
+
     private void deductEnergy(String userId, int amount) {
         var today = java.time.LocalDate.now(java.time.ZoneOffset.UTC);
         userDailyProgressRepository.findByUserIdAndDate(userId, today).ifPresent(udp -> {
@@ -838,6 +871,56 @@ public class SessionService {
             udp.setLivesRemaining(Math.max(0, current - amount));
             userDailyProgressRepository.save(udp);
         });
+    }
+
+    /**
+     * Mark a quiz session as completed. Idempotent — calling on an already
+     * completed/abandoned session is a no-op.
+     *
+     * <p>Why this exists: practice sessions previously had no completion
+     * endpoint, so all 100% of practice play stayed {@code in_progress}
+     * forever (orphan rows in DB). Frontend now calls this when the user
+     * answers the final question.
+     *
+     * <p>Ranked sessions are also accepted — useful for explicit "early
+     * finish" flows that want to mark completion before the abandonment
+     * scheduler kicks in.
+     */
+    @Transactional
+    public Map<String, Object> completeSession(String sessionId, String userId) {
+        QuizSession session = quizSessionRepository.findById(sessionId)
+                .orElseThrow(() -> new java.util.NoSuchElementException("Session not found: " + sessionId));
+
+        String resolvedUserId = resolveUserId(userId);
+        if (resolvedUserId == null || !session.getOwner().getId().equals(resolvedUserId)) {
+            throw new IllegalArgumentException("Cannot complete a session you don't own");
+        }
+
+        // Idempotent: return current state if already terminal
+        if (session.getStatus() == QuizSession.Status.completed
+                || session.getStatus() == QuizSession.Status.abandoned) {
+            return toCompleteSessionDto(session);
+        }
+
+        LocalDateTime now = LocalDateTime.now();
+        session.setStatus(QuizSession.Status.completed);
+        session.setEndedAt(now);
+        if (session.getStartedAt() == null) {
+            session.setStartedAt(session.getCreatedAt() != null ? session.getCreatedAt() : now);
+        }
+        quizSessionRepository.save(session);
+        return toCompleteSessionDto(session);
+    }
+
+    private Map<String, Object> toCompleteSessionDto(QuizSession s) {
+        Map<String, Object> dto = new HashMap<>();
+        dto.put("sessionId", s.getId());
+        dto.put("status", s.getStatus() != null ? s.getStatus().name() : null);
+        dto.put("score", Optional.ofNullable(s.getScore()).orElse(0));
+        dto.put("totalQuestions", Optional.ofNullable(s.getTotalQuestions()).orElse(0));
+        dto.put("correctAnswers", Optional.ofNullable(s.getCorrectAnswers()).orElse(0));
+        dto.put("endedAt", s.getEndedAt() != null ? s.getEndedAt().toString() : null);
+        return dto;
     }
 
     /**

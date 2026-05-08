@@ -143,6 +143,29 @@ public class SessionController {
         }
     }
 
+    @PostMapping("/{id}/complete")
+    @Operation(summary = "Mark session as completed",
+            description = "Mark a quiz session as completed. Idempotent — calling on an already completed/abandoned session returns current state.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Session marked completed"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
+            @ApiResponse(responseCode = "403", description = "Not the session owner"),
+            @ApiResponse(responseCode = "404", description = "Session not found")
+    })
+    public ResponseEntity<?> complete(@PathVariable("id") String sessionId, Principal principal) {
+        String userId = principal != null ? principal.getName() : null;
+        if (userId == null || userId.isEmpty()) {
+            return ResponseEntity.status(401).body(Map.of("error", "Unauthorized"));
+        }
+        try {
+            return ResponseEntity.ok(sessionService.completeSession(sessionId, userId));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("error", e.getMessage()));
+        } catch (java.util.NoSuchElementException e) {
+            return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));
+        }
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> get(@PathVariable("id") String sessionId) {
         return ResponseEntity.ok(sessionService.getSession(sessionId));

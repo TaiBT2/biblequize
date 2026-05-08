@@ -462,6 +462,13 @@ const Quiz: React.FC = () => {
         questions: questions
       }))
       setIsQuizCompleted(true)
+      // Mark non-ranked sessions completed so they don't stay orphaned in_progress.
+      // Ranked has its own completion path via /api/ranked/sync-progress.
+      if (settings?.sessionId && settings?.mode !== 'ranked') {
+        api.post(`/api/sessions/${settings.sessionId}/complete`).catch(() => {
+          // Non-critical — backend abandonment scheduler picks up stragglers.
+        })
+      }
     } else {
       setCurrentQuestionIndex(currentQuestionIndex + 1)
       setSelectedAnswer(null)
