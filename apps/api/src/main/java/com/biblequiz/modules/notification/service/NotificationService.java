@@ -11,6 +11,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -41,15 +43,35 @@ public class NotificationService {
     }
 
     public void createStreakWarning(User user, int currentStreak) {
+        if (hasRecentNotification(user.getId(), "streak_warning", Duration.ofHours(24))) {
+            log.debug("Skipping duplicate streak_warning for user={}", user.getId());
+            return;
+        }
         String title = "Streak sắp gãy!";
         String body = "Streak " + currentStreak + " ngày của bạn sắp gãy — hãy chơi hôm nay để giữ streak! 🔥";
         createNotification(user, "streak_warning", title, body, null);
     }
 
     public void createDailyReminder(User user) {
+        if (hasRecentNotification(user.getId(), "daily_reminder", Duration.ofHours(24))) {
+            log.debug("Skipping duplicate daily_reminder for user={}", user.getId());
+            return;
+        }
         String title = "Câu hỏi mới mỗi ngày";
         String body = "Daily Challenge hôm nay đã sẵn sàng — 5 câu hỏi đang chờ bạn! 📝";
         createNotification(user, "daily_reminder", title, body, null);
+    }
+
+    /**
+     * Returns true if the user already has a notification of the given
+     * type within the lookback window. Used to gate scheduled
+     * notifications (streak warning, daily reminder) so the hourly cron
+     * does not spam the panel. Event-triggered notifications (tier_up,
+     * group_invite, tournament_start) intentionally bypass this.
+     */
+    public boolean hasRecentNotification(String userId, String type, Duration window) {
+        LocalDateTime since = LocalDateTime.now().minus(window);
+        return notificationRepository.existsRecentByUserAndType(userId, type, since);
     }
 
     public List<Map<String, Object>> getNotifications(String userId, boolean unreadOnly, int limit) {

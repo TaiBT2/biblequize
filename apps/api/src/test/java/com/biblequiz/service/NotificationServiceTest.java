@@ -152,4 +152,89 @@ class NotificationServiceTest {
         assertEquals(3, count);
         verify(notificationRepository).markAllAsRead("user-1");
     }
+
+    @Test
+    void createStreakWarning_skipsWhenRecentExists() {
+        when(notificationRepository.existsRecentByUserAndType(
+                eq("user-1"), eq("streak_warning"), any(LocalDateTime.class)))
+                .thenReturn(true);
+
+        notificationService.createStreakWarning(testUser, 5);
+
+        verify(notificationRepository, never()).save(any());
+    }
+
+    @Test
+    void createStreakWarning_createsWhenNoRecentExists() {
+        when(notificationRepository.existsRecentByUserAndType(
+                eq("user-1"), eq("streak_warning"), any(LocalDateTime.class)))
+                .thenReturn(false);
+        when(notificationRepository.save(any(Notification.class)))
+                .thenAnswer(inv -> inv.getArgument(0));
+
+        notificationService.createStreakWarning(testUser, 5);
+
+        ArgumentCaptor<Notification> captor = ArgumentCaptor.forClass(Notification.class);
+        verify(notificationRepository).save(captor.capture());
+        assertEquals("streak_warning", captor.getValue().getType());
+    }
+
+    @Test
+    void createDailyReminder_skipsWhenRecentExists() {
+        when(notificationRepository.existsRecentByUserAndType(
+                eq("user-1"), eq("daily_reminder"), any(LocalDateTime.class)))
+                .thenReturn(true);
+
+        notificationService.createDailyReminder(testUser);
+
+        verify(notificationRepository, never()).save(any());
+    }
+
+    @Test
+    void createDailyReminder_createsWhenNoRecentExists() {
+        when(notificationRepository.existsRecentByUserAndType(
+                eq("user-1"), eq("daily_reminder"), any(LocalDateTime.class)))
+                .thenReturn(false);
+        when(notificationRepository.save(any(Notification.class)))
+                .thenAnswer(inv -> inv.getArgument(0));
+
+        notificationService.createDailyReminder(testUser);
+
+        ArgumentCaptor<Notification> captor = ArgumentCaptor.forClass(Notification.class);
+        verify(notificationRepository).save(captor.capture());
+        assertEquals("daily_reminder", captor.getValue().getType());
+    }
+
+    @Test
+    void createTierUpNotification_doesNotDedup() {
+        // Event-triggered notifications must always create — even on
+        // back-to-back tier-ups in the same day (rare but legal).
+        when(notificationRepository.save(any(Notification.class)))
+                .thenAnswer(inv -> inv.getArgument(0));
+
+        notificationService.createTierUpNotification(testUser, "Gold", "gold");
+        notificationService.createTierUpNotification(testUser, "Platinum", "platinum");
+
+        verify(notificationRepository, times(2)).save(any(Notification.class));
+        verify(notificationRepository, never()).existsRecentByUserAndType(any(), any(), any());
+    }
+
+    @Test
+    void hasRecentNotification_passesCorrectWindow() {
+        when(notificationRepository.existsRecentByUserAndType(
+                eq("user-1"), eq("streak_warning"), any(LocalDateTime.class)))
+                .thenReturn(false);
+
+        boolean result = notificationService.hasRecentNotification(
+                "user-1", "streak_warning", java.time.Duration.ofHours(24));
+
+        assertFalse(result);
+        ArgumentCaptor<LocalDateTime> sinceCaptor = ArgumentCaptor.forClass(LocalDateTime.class);
+        verify(notificationRepository).existsRecentByUserAndType(
+                eq("user-1"), eq("streak_warning"), sinceCaptor.capture());
+        // since = now - 24h, allow 1-minute tolerance
+        LocalDateTime expected = LocalDateTime.now().minusHours(24);
+        assertTrue(sinceCaptor.getValue().isBefore(expected.plusMinutes(1)));
+        assertTrue(sinceCaptor.getValue().isAfter(expected.minusMinutes(1)));
+    }
 }

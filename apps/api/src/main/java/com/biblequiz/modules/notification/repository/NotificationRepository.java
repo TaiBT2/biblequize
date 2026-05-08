@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -20,6 +21,13 @@ public interface NotificationRepository extends JpaRepository<Notification, Stri
     List<Notification> findByUserIdPaginated(@Param("userId") String userId, Pageable pageable);
 
     long countByUserIdAndIsReadFalse(String userId);
+
+    @Query("SELECT (count(n) > 0) FROM Notification n " +
+            "WHERE n.user.id = :userId AND n.type = :type AND n.createdAt > :since")
+    boolean existsRecentByUserAndType(
+            @Param("userId") String userId,
+            @Param("type") String type,
+            @Param("since") LocalDateTime since);
 
     @Modifying
     @Transactional
