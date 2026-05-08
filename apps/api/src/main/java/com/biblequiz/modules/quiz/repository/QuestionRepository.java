@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
@@ -217,6 +218,7 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
     // no longer contains for a given (book, language). Restricted to a single
     // source so admin-curated rows ("admin", "ai-generated", etc.) survive.
     @Modifying
+    @Transactional
     @Query(value = "DELETE FROM questions " +
                    "WHERE source = :source AND book = :book AND language = :lang " +
                    "AND id NOT IN (:keepIds)",
@@ -230,6 +232,7 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
     // group we still need to clear out everything seeded under that group
     // (the IN-clause variant fails with empty list on most DBs).
     @Modifying
+    @Transactional
     @Query(value = "DELETE FROM questions " +
                    "WHERE source = :source AND book = :book AND language = :lang",
            nativeQuery = true)

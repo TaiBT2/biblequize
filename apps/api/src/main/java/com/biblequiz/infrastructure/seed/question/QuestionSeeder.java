@@ -176,7 +176,7 @@ public class QuestionSeeder {
         List<SeedQuestion> questions = parseFile(file, filename);
         if (questions == null) return; // parse error — already logged
 
-        int fileInserted = 0, fileSkipped = 0, fileInvalid = 0;
+        int fileInserted = 0, fileUpdated = 0, fileSkipped = 0, fileInvalid = 0;
         for (SeedQuestion sq : questions) {
             stats.total++;
             if (!isValid(sq, filename)) {
@@ -192,17 +192,59 @@ public class QuestionSeeder {
             seenIdsByGroup
                     .computeIfAbsent(groupKey(sq.book, lang), k -> new HashSet<>())
                     .add(id);
-            if (questionRepository.existsById(id)) {
+
+            Question fresh = toEntity(sq, id);
+            Question existing = questionRepository.findById(id).orElse(null);
+            if (existing == null) {
+                questionRepository.save(fresh);
+                fileInserted++;
+                stats.inserted++;
+            } else if (needsUpdate(existing, fresh)) {
+                // Mutate existing entity in place so JPA dirty-tracks the change
+                // and Hibernate can issue an UPDATE rather than a merge that
+                // detaches/reattaches CASCADE-linked rows.
+                existing.setBook(fresh.getBook());
+                existing.setChapter(fresh.getChapter());
+                existing.setVerseStart(fresh.getVerseStart());
+                existing.setVerseEnd(fresh.getVerseEnd());
+                existing.setDifficulty(fresh.getDifficulty());
+                existing.setType(fresh.getType());
+                existing.setContent(fresh.getContent());
+                existing.setOptions(fresh.getOptions());
+                existing.setCorrectAnswer(fresh.getCorrectAnswer());
+                existing.setExplanation(fresh.getExplanation());
+                existing.setCorrectAnswerText(fresh.getCorrectAnswerText());
+                existing.setLanguage(fresh.getLanguage());
+                existing.setTags(fresh.getTags());
+                existing.setCategory(fresh.getCategory());
+                questionRepository.save(existing);
+                fileUpdated++;
+                stats.updated++;
+            } else {
                 fileSkipped++;
                 stats.skipped++;
-                continue;
             }
-            questionRepository.save(toEntity(sq, id));
-            fileInserted++;
-            stats.inserted++;
         }
-        log.info("  {} → inserted={}, skipped={}, invalid={}",
-                filename, fileInserted, fileSkipped, fileInvalid);
+        log.info("  {} → inserted={}, updated={}, skipped={}, invalid={}",
+                filename, fileInserted, fileUpdated, fileSkipped, fileInvalid);
+    }
+
+    /**
+     * Returns true if any seedable field differs between {@code existing}
+     * (DB row) and {@code fresh} (parsed from JSON). Only fields the seeder
+     * owns are compared — admin-managed fields (review status, approvals,
+     * isActive, source) are left untouched.
+     */
+    private static boolean needsUpdate(Question existing, Question fresh) {
+        return !java.util.Objects.equals(existing.getOptions(), fresh.getOptions())
+                || !java.util.Objects.equals(existing.getCorrectAnswer(), fresh.getCorrectAnswer())
+                || !java.util.Objects.equals(existing.getExplanation(), fresh.getExplanation())
+                || !java.util.Objects.equals(existing.getCorrectAnswerText(), fresh.getCorrectAnswerText())
+                || !java.util.Objects.equals(existing.getDifficulty(), fresh.getDifficulty())
+                || !java.util.Objects.equals(existing.getType(), fresh.getType())
+                || !java.util.Objects.equals(existing.getVerseEnd(), fresh.getVerseEnd())
+                || !java.util.Objects.equals(existing.getTags(), fresh.getTags())
+                || !java.util.Objects.equals(existing.getCategory(), fresh.getCategory());
     }
 
     /**
@@ -376,13 +418,14 @@ public class QuestionSeeder {
     public static class SeedStats {
         public int total;
         public int inserted;
+        public int updated;
         public int skipped;
         public int invalid;
         public int staleDeleted;
 
         @Override public String toString() {
-            return String.format("total=%d, inserted=%d, skipped=%d (already present), invalid=%d, staleDeleted=%d",
-                    total, inserted, skipped, invalid, staleDeleted);
+            return String.format("total=%d, inserted=%d, updated=%d, skipped=%d (already present), invalid=%d, staleDeleted=%d",
+                    total, inserted, updated, skipped, invalid, staleDeleted);
         }
     }
 }
