@@ -21,34 +21,34 @@
 ## Old Testament — History
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
-| Joshua | 20/20 | ⬜ | | |
-| Judges | 20/20 | ⬜ | | |
+| Joshua | 20/20 | ✅ | none | |
+| Judges | 20/20 | ✅ | none | |
 | Ruth | 20/20 | ✅ | none | |
-| 1 Samuel | 20/19 | ⬜ | | EN was 20→19 (dup removed) |
-| 2 Samuel | 20/20 | ⬜ | | |
-| 1 Kings | 20/20 | ⬜ | | |
-| 2 Kings | 20/20 | ⬜ | | |
-| 1 Chronicles | 25/25 | ⬜ | | |
-| 2 Chronicles | 25/25 | ⬜ | | |
-| Ezra | 25/25 | ⬜ | | |
-| Nehemiah | 20/20 | ⬜ | | |
+| 1 Samuel | 19/19 | ⚠️ | VI #17 was duplicate of #2 (David vs Goliath) | removed; now 19/19 |
+| 2 Samuel | 20/20 | ✅ | none | |
+| 1 Kings | 20/20 | ✅ | none | |
+| 2 Kings | 20/20 | ✅ | none | |
+| 1 Chronicles | 25/25 | ✅ | none | |
+| 2 Chronicles | 25/25 | ✅ | none | |
+| Ezra | 25/25 | ✅ | none | |
+| Nehemiah | 20/20 | ✅ | none | |
 | Esther | 20/20 | ⚠️ | #5 wrong correctAnswer (Pur date) | fixed |
 
 ## Old Testament — Wisdom & Poetry
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
-| Job | 20/20 | ⬜ | | |
+| Job | 20/20 | ✅ | none | |
 | Psalms | 180/179 | ⬜ | | EN was 180→179 (dup removed); VI fixed verseStart on 2 |
 | Proverbs | 80/80 | ⬜ | | |
-| Ecclesiastes | 20/20 | ⬜ | | |
-| Song of Solomon | 25/25 | ⬜ | | |
+| Ecclesiastes | 20/20 | ✅ | none | |
+| Song of Solomon | 25/25 | ✅ | none | |
 
 ## Old Testament — Major Prophets
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
 | Isaiah | 99/99 | ⬜ | | |
 | Jeremiah | 50/50 | ⬜ | | |
-| Lamentations | 20/20 | ⬜ | | |
+| Lamentations | 20/20 | ✅ | none | |
 | Ezekiel | 50/50 | ⬜ | | |
 | Daniel | 60/60 | ⚠️ | #42, #43 wrong correctAnswer | fixed; deep manual still pending |
 
@@ -110,7 +110,7 @@
 ## Special
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
-| Bible Basics | 10/10 | ⬜ | | Doctrinal catechism gating Ranked |
+| Bible Basics | 10/10 | ✅ | none | Doctrinal catechism gating Ranked |
 
 ---
 

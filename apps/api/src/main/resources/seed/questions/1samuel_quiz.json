@@ -464,33 +464,6 @@
   },
   {
     "book": "1 Samuel",
-    "chapter": 17,
-    "verseStart": 49,
-    "verseEnd": 50,
-    "difficulty": "easy",
-    "type": "multiple_choice_single",
-    "content": "Đa-vít dùng vũ khí nào để đánh bại Gô-li-át?",
-    "correctAnswer": [
-      1
-    ],
-    "explanation": "1 Sa-mu-ên 17:50 — 'Như vậy, Đa-vít thắng người Phi-li-tin bằng cái trành ném đá và một cục đá; đánh chết người Phi-li-tin, dẫu rằng nơi tay Đa-vít chẳng có gươm.'",
-    "language": "vi",
-    "options": [
-      "Cung tên",
-      "Trành ném đá và cục đá",
-      "Cây giáo",
-      "Lưỡi rìu"
-    ],
-    "tags": [
-      "Cựu Ước",
-      "1 Sa-mu-ên",
-      "Đa-vít và Gô-li-át",
-      "Lịch sử",
-      "Cơ bản"
-    ]
-  },
-  {
-    "book": "1 Samuel",
     "chapter": 25,
     "verseStart": 32,
     "verseEnd": 33,
