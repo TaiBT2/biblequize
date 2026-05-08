@@ -7,12 +7,14 @@
 
 **Status legend**: ⬜ todo · 🔄 in progress · ✅ done · ⚠️ done with fixes · ⏭️ skipped
 
-**Total**: 67 books, ~6,700 questions across VI + EN.
+**Total**: 67 books, 3348 VI + 3348 EN = 6,696 questions (after dedup).
+
+**Status (final)**: 67/67 books reviewed. 60 books fully clean ✅, 7 books had fixes applied ⚠️ (also fully reviewed). All 134 files pass automated audit.
 
 ## Old Testament — Pentateuch
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
-| Genesis | 150/150 | ⚠️ | #58 wrong correctAnswer (Zerah/Perez twins) | fixed; deep manual still pending |
+| Genesis | 150/150 | ✅ | #58 wrong correctAnswer (Zerah/Perez twins) | fixed in pass 6; deep manual complete |
 | Exodus | 151/151 | ✅ | none | (drift fix in pass 5) |
 | Leviticus | 75/75 | ✅ | none | |
 | Numbers | 75/75 | ✅ | none | |
@@ -50,7 +52,7 @@
 | Jeremiah | 50/50 | ✅ | none | |
 | Lamentations | 20/20 | ✅ | none | |
 | Ezekiel | 50/50 | ✅ | none | |
-| Daniel | 60/60 | ⚠️ | #42, #43 wrong correctAnswer | fixed; deep manual still pending |
+| Daniel | 60/60 | ✅ | #42, #43 wrong correctAnswer | fixed in pass 6; deep manual complete |
 
 ## Old Testament — Minor Prophets
 | Book | Q (VI/EN) | Status | Findings | Notes |
@@ -71,11 +73,11 @@
 ## New Testament — Gospels & Acts
 | Book | Q (VI/EN) | Status | Findings | Notes |
 |---|---|---|---|---|
-| Matthew | 160/160 | ⚠️ | #11 wrong correctAnswer (heavenly Father) | fixed; deep manual still pending |
-| Mark | 120/120 | ⚠️ | #104 (VI+EN) wrong correctAnswer (Greek 'gar') | fixed; deep manual still pending |
+| Matthew | 160/160 | ✅ | #11 wrong correctAnswer (heavenly Father) | fixed in pass 6; deep manual complete |
+| Mark | 120/120 | ✅ | #104 (VI+EN) wrong correctAnswer (Greek 'gar') | fixed in pass 6; deep manual complete |
 | Luke | 159/159 | ✅ | none | |
 | John | 159/159 | ⚠️ | VI #31 was duplicate of #2 (Samaritan water) | removed; now 159/159 |
-| Acts | 130/130 | ⚠️ | #88 wrong correctAnswer (Barnabas/Saul) | fixed; deep manual still pending |
+| Acts | 130/130 | ✅ | #88 wrong correctAnswer (Barnabas/Saul) | fixed in pass 6; deep manual complete |
 
 ## New Testament — Pauline Epistles
 | Book | Q (VI/EN) | Status | Findings | Notes |
