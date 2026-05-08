@@ -417,7 +417,7 @@ const Multiplayer = () => {
     if (!isAuthenticated) navigate('/login');
   }, [isAuthenticated, navigate]);
 
-  const { data, isLoading, refetch, isFetching } = useQuery<{ success: boolean; rooms: PublicRoom[] }>({
+  const { data, isLoading, isError, refetch, isFetching } = useQuery<{ success: boolean; rooms: PublicRoom[] }>({
     queryKey: ['public-rooms'],
     queryFn: () => api.get('/api/rooms/public').then((r) => r.data),
     enabled: isAuthenticated,
@@ -586,6 +586,31 @@ const Multiplayer = () => {
               style={{ background: 'rgba(50,52,64,0.3)' }}
             />
           ))}
+        </div>
+      ) : isError ? (
+        <div
+          data-testid="multiplayer-error-state"
+          className="flex flex-col items-center justify-center py-20 rounded-3xl"
+          style={{ background: 'rgba(248,113,113,0.06)', border: '1px solid rgba(248,113,113,0.2)' }}
+        >
+          <div
+            className="w-20 h-20 rounded-full flex items-center justify-center mb-5"
+            style={{ background: 'rgba(248,113,113,0.12)' }}
+          >
+            <span className="material-symbols-outlined text-4xl" style={{ color: '#f87171' }}>error</span>
+          </div>
+          <h5 className="text-lg font-bold text-white mb-2">{t('multiplayer.errorTitle', 'Không thể tải danh sách phòng')}</h5>
+          <p className="text-sm text-center max-w-xs mb-7" style={{ color: 'rgba(255,255,255,0.55)' }}>
+            {t('multiplayer.errorDesc', 'Hệ thống đang gặp sự cố. Vui lòng thử lại.')}
+          </p>
+          <button
+            onClick={() => refetch()}
+            disabled={isFetching}
+            className="py-3 px-8 rounded-xl font-bold text-sm shadow-lg transition-all hover:opacity-90 disabled:opacity-60"
+            style={{ background: '#e8a832', color: '#412d00' }}
+          >
+            {isFetching ? t('common.loading', 'Đang tải...') : t('common.retry', 'Thử lại')}
+          </button>
         </div>
       ) : sorted.length === 0 ? (
         <div
