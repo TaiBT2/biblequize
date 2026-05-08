@@ -263,7 +263,6 @@ function RoomCard({ room }: { room: PublicRoom }) {
       }}
       onClick={() => {
         if (isWaiting && !isFull) handleJoin();
-        else if (isPlaying && room.id) navigate(`/room/${room.id}/spectate`);
       }}
     >
       {/* Top row: mode badge + status */}
@@ -378,11 +377,12 @@ function RoomCard({ room }: { room: PublicRoom }) {
         )}
         {isPlaying && (
           <button
-            onClick={(e) => { e.stopPropagation(); navigate(`/room/${room.id}/spectate`); }}
-            className="px-4 py-2 rounded-lg text-xs font-semibold transition-all"
-            style={{ background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.6)', border: '0.5px solid rgba(255,255,255,0.1)' }}
+            disabled
+            title="Tính năng xem trận đấu sắp ra mắt"
+            className="px-4 py-2 rounded-lg text-xs font-semibold cursor-not-allowed opacity-50"
+            style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.4)', border: '0.5px solid rgba(255,255,255,0.06)' }}
           >
-            Xem →
+            Sắp có
           </button>
         )}
       </div>
