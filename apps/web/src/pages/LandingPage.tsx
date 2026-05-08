@@ -10,9 +10,9 @@ import QuizLanguageSelect from '../components/QuizLanguageSelect'
 function GuestHeader() {
   const { t } = useTranslation()
   return (
-    <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#11131e] shadow-sm shadow-[#0b0e18]/20">
-      <div className="flex items-center gap-8 max-w-7xl mx-auto w-full">
-        <div className="text-2xl font-bold tracking-tighter text-[#f8bd45] font-headline">BibleQuiz</div>
+    <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 bg-[#11131e] shadow-sm shadow-[#0b0e18]/20">
+      <div className="flex items-center gap-4 sm:gap-8 max-w-7xl mx-auto w-full">
+        <div className="text-xl sm:text-2xl font-bold tracking-tighter text-[#f8bd45] font-headline">BibleQuiz</div>
         <div className="hidden md:flex gap-6 items-center flex-1">
           <a className="font-be-vietnam-pro tracking-tight text-[#f8bd45] border-b-2 border-[#f8bd45] pb-1" href="#">
             {t('nav.home')}
@@ -27,17 +27,17 @@ function GuestHeader() {
             About
           </a>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4 ml-auto">
           <QuizLanguageSelect className="hidden sm:flex" />
           <Link
             to="/login"
-            className="px-4 py-2 text-sm font-semibold text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-colors active:scale-95"
+            className="px-2 sm:px-4 py-2 text-sm font-semibold text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-colors active:scale-95 whitespace-nowrap"
           >
             {t('auth.login')}
           </Link>
           <Link
             to="/login"
-            className="gold-gradient px-6 py-2 rounded-xl text-on-secondary font-bold active:scale-95 transition-transform shadow-lg shadow-secondary/10 inline-block"
+            className="gold-gradient px-4 sm:px-6 py-2 rounded-xl text-on-secondary font-bold text-sm sm:text-base active:scale-95 transition-transform shadow-lg shadow-secondary/10 inline-block whitespace-nowrap"
           >
             {t('auth.register')}
           </Link>
@@ -52,7 +52,7 @@ function GuestHeader() {
 function HeroSection() {
   const { t } = useTranslation()
   return (
-    <header className="relative pt-32 pb-20 px-6 overflow-hidden">
+    <header className="relative pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 overflow-hidden">
       {/* Background blurs */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl -z-10 opacity-20 pointer-events-none">
         <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-secondary rounded-full blur-[120px]" />
@@ -72,11 +72,11 @@ function HeroSection() {
             {t('landing.tagline')}
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] text-on-surface">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] text-on-surface">
             {t('landing.heroTitle1')}<span className="text-secondary">{t('landing.heroHighlight')}</span>{t('landing.heroTitle2')}
           </h1>
 
-          <p className="text-xl text-on-surface-variant leading-relaxed max-w-lg">
+          <p className="text-base sm:text-xl text-on-surface-variant leading-relaxed max-w-lg">
             {t('landing.heroDesc')}
           </p>
 
@@ -143,7 +143,7 @@ const featureKeys = [
 function FeaturesGrid() {
   const { t } = useTranslation()
   return (
-    <section className="py-24 px-6 bg-surface-container-low" aria-label={t('landing.features')}>
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-surface-container-low" aria-label={t('landing.features')}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-4">{t('landing.features')}</h2>
@@ -174,7 +174,7 @@ function FeaturesGrid() {
 function TryNowSection() {
   const { t } = useTranslation()
   return (
-    <section className="py-24 px-6" aria-label="Trải nghiệm thử thách">
+    <section className="py-16 sm:py-24 px-4 sm:px-6" aria-label="Trải nghiệm thử thách">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* Left info */}
         <div>
@@ -209,25 +209,24 @@ function TryNowSection() {
         {/* Right cards */}
         <div className="grid gap-6">
           {/* Daily Challenge Card */}
-          <div className="bg-surface-container-high p-8 rounded-3xl relative overflow-hidden group border border-outline-variant/10">
-            <div className="absolute top-0 right-0 p-4">
-              <span className="px-3 py-1 bg-secondary/20 text-secondary text-xs font-bold rounded-full">
+          <div className="bg-surface-container-high p-6 sm:p-8 rounded-3xl relative overflow-hidden group border border-outline-variant/10">
+            <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
+              <span className="px-3 py-1 bg-secondary/20 text-secondary text-xs font-bold rounded-full whitespace-nowrap">
                 {t('landing.popular')}
               </span>
             </div>
-            <h3 className="text-2xl font-bold mb-2">{t('landing.dailyChallenge')}</h3>
-            <p className="text-on-surface-variant mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold mb-2 pr-20">{t('landing.dailyChallenge')}</h3>
+            <p className="text-on-surface-variant mb-6 text-sm sm:text-base">
               {t('landing.dailyChallengeDesc')}
             </p>
-            <div className="flex items-center justify-between">
-              <div className="flex -space-x-2">
-                <div className="w-8 h-8 rounded-full border-2 border-surface bg-primary-container flex items-center justify-center text-[10px] font-bold">
-                  +1.2k players
-                </div>
+            <div className="flex items-center justify-between gap-3 flex-wrap">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-container/60 text-[11px] sm:text-xs font-bold whitespace-nowrap">
+                <span className="material-symbols-outlined text-[14px]">group</span>
+                +1.2k players
               </div>
               <Link
                 to="/daily"
-                className="gold-gradient px-6 py-3 rounded-xl text-on-secondary font-bold active:scale-95 transition-transform inline-block"
+                className="gold-gradient px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl text-on-secondary font-bold text-sm sm:text-base active:scale-95 transition-transform inline-block whitespace-nowrap"
               >
                 {t('gameModes.dailyBtn')}
               </Link>
@@ -235,14 +234,14 @@ function TryNowSection() {
           </div>
 
           {/* Quick Practice Card */}
-          <div className="bg-surface-container p-8 rounded-3xl border border-outline-variant/10 hover:bg-surface-container-high transition-colors">
-            <h3 className="text-2xl font-bold mb-2">{t('landing.quickPractice')}</h3>
-            <p className="text-on-surface-variant mb-6">
+          <div className="bg-surface-container p-6 sm:p-8 rounded-3xl border border-outline-variant/10 hover:bg-surface-container-high transition-colors">
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">{t('landing.quickPractice')}</h3>
+            <p className="text-on-surface-variant mb-6 text-sm sm:text-base">
               {t('landing.quickPracticeDesc')}
             </p>
             <Link
               to="/practice"
-              className="block w-full py-4 rounded-xl border border-secondary text-secondary font-bold hover:bg-secondary/10 transition-all active:scale-95 text-center"
+              className="block w-full py-3 sm:py-4 rounded-xl border border-secondary text-secondary font-bold hover:bg-secondary/10 transition-all active:scale-95 text-center"
             >
               {t('common.startNow')}
             </Link>
@@ -266,7 +265,7 @@ const leaderboardData = [
 function LeaderboardPreview() {
   const { t } = useTranslation()
   return (
-    <section className="py-24 px-6 bg-surface-container-lowest" aria-label="Bảng xếp hạng">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-surface-container-lowest" aria-label="Bảng xếp hạng">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-block px-6 py-2 rounded-full gold-gradient text-on-secondary font-extrabold text-lg mb-6 shadow-xl shadow-secondary/10">
@@ -275,9 +274,9 @@ function LeaderboardPreview() {
           <h2 className="text-4xl font-extrabold tracking-tight">{t('landing.nationalLeaderboard')}</h2>
         </div>
 
-        <div className="bg-surface-container rounded-[2rem] overflow-hidden border border-outline-variant/15 shadow-2xl">
+        <div className="bg-surface-container rounded-2xl sm:rounded-[2rem] overflow-hidden border border-outline-variant/15 shadow-2xl">
           {/* Header row */}
-          <div className="grid grid-cols-12 px-8 py-4 bg-surface-container-high text-xs font-bold text-on-surface-variant uppercase tracking-widest">
+          <div className="grid grid-cols-12 px-4 sm:px-8 py-3 sm:py-4 bg-surface-container-high text-[10px] sm:text-xs font-bold text-on-surface-variant uppercase tracking-widest">
             <div className="col-span-2">{t('landing.rank')}</div>
             <div className="col-span-6">{t('landing.warrior')}</div>
             <div className="col-span-2">XP</div>
@@ -288,16 +287,16 @@ function LeaderboardPreview() {
             {leaderboardData.map((entry, idx) => (
               <div key={entry.rank}>
                 <div
-                  className={`grid grid-cols-12 px-8 py-5 items-center ${
+                  className={`grid grid-cols-12 px-4 sm:px-8 py-3 sm:py-5 items-center gap-2 ${
                     entry.top ? 'bg-secondary/5' : 'hover:bg-surface-container-high transition-colors'
                   }`}
                 >
-                  <div className={`col-span-2 ${entry.top ? 'font-black text-2xl text-secondary' : 'font-bold text-on-surface-variant'}`}>
+                  <div className={`col-span-2 ${entry.top ? 'font-black text-xl sm:text-2xl text-secondary' : 'font-bold text-on-surface-variant'}`}>
                     {entry.rank}
                   </div>
-                  <div className="col-span-6 flex items-center gap-4">
+                  <div className="col-span-6 flex items-center gap-2 sm:gap-4 min-w-0">
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
+                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs sm:text-base flex-shrink-0 ${
                         entry.top
                           ? 'bg-secondary text-on-secondary'
                           : 'bg-primary-container text-primary'
@@ -305,13 +304,13 @@ function LeaderboardPreview() {
                     >
                       {entry.initials}
                     </div>
-                    <span className={`font-bold ${entry.top ? 'text-lg' : ''}`}>{entry.name}</span>
+                    <span className={`font-bold truncate text-sm sm:text-base ${entry.top ? 'sm:text-lg' : ''}`}>{entry.name}</span>
                   </div>
-                  <div className={`col-span-2 font-mono ${entry.top ? 'text-secondary' : 'text-on-surface-variant'}`}>
+                  <div className={`col-span-2 font-mono text-xs sm:text-base ${entry.top ? 'text-secondary' : 'text-on-surface-variant'}`}>
                     {entry.xp}
                   </div>
                   <div
-                    className={`col-span-2 text-right text-xs font-bold uppercase ${
+                    className={`col-span-2 text-right text-[9px] sm:text-xs font-bold uppercase truncate ${
                       entry.top ? 'text-secondary' : idx < 3 ? 'text-primary' : 'text-on-surface-variant'
                     }`}
                   >
@@ -337,7 +336,7 @@ function LeaderboardPreview() {
 function ChurchGroupShowcase() {
   const { t } = useTranslation()
   return (
-    <section className="py-24 px-6 relative" aria-label="Nhóm hội thánh">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 relative" aria-label="Nhóm hội thánh">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* Image */}
         <div className="order-2 lg:order-1 relative">
@@ -404,7 +403,7 @@ function ChurchGroupShowcase() {
 function DailyVerse() {
   const { t } = useTranslation()
   return (
-    <section className="py-24 px-6 bg-surface-container-low" aria-label="Câu Kinh Thánh mỗi ngày">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-surface-container-low" aria-label="Câu Kinh Thánh mỗi ngày">
       <div className="max-w-4xl mx-auto text-center">
         <div className="w-16 h-1 bg-secondary mx-auto mb-10 rounded-full" />
         <div className="relative px-12">
