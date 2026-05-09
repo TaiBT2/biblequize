@@ -1259,73 +1259,17 @@ const RoomQuiz: React.FC = () => {
               </div>
             )}
 
-            {/* Result Popup Overlay (Stitch design) — non-sequential modes only */}
-            {!isSequential && correctIndex !== null && !isSpectator && !(isSuddenDeath && sdSpectating) && (
-              <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-surface-container-lowest/80 backdrop-blur-md">
-                <div className="w-full max-w-md bg-surface-container-high rounded-2xl overflow-hidden shadow-2xl border border-secondary/20" style={{ boxShadow: '0 0 20px rgba(248, 189, 69, 0.15)' }}>
-                  {/* Header */}
-                  <div className={`p-6 text-center ${
-                    selected === correctIndex
-                      ? 'bg-gradient-to-r from-secondary to-tertiary'
-                      : selected !== null
-                        ? 'bg-gradient-to-r from-error to-error/80'
-                        : 'bg-surface-container-highest'
-                  }`}>
-                    <span className="material-symbols-outlined text-5xl mb-2" style={{
-                      ...FILL_STYLE,
-                      color: selected === correctIndex ? '#412d00' : selected !== null ? '#690005' : '#c7c5ce'
-                    }}>
-                      {selected === correctIndex ? 'workspace_premium' : selected !== null ? 'cancel' : 'timer_off'}
-                    </span>
-                    <h4 className={`text-2xl font-bold ${
-                      selected === correctIndex ? 'text-on-secondary' : selected !== null ? 'text-on-error' : 'text-on-surface-variant'
-                    }`}>
-                      {selected === correctIndex
-                        ? t('room.quiz.correctFeedback')
-                        : selected !== null
-                          ? t('room.quiz.wrongFeedback')
-                          : t('room.quiz.timeoutFeedback')}
-                    </h4>
-                    <p className={`font-medium ${
-                      selected === correctIndex ? 'text-on-secondary/80' : 'text-on-surface-variant'
-                    }`}>
-                      {selected === correctIndex
-                        ? t('room.quiz.bonusPoints')
-                        : t('room.quiz.correctAnswerLine', {
-                            letter: String.fromCharCode(65 + correctIndex),
-                            text: question?.options[correctIndex] ?? ''
-                          })}
-                    </p>
-                  </div>
-                  <div className="p-6 space-y-4">
-                    {/* Explanation */}
-                    {question?.explanation && (
-                      <div className="p-4 bg-surface-container rounded-lg border-l-4 border-secondary">
-                        <p className="text-xs font-bold text-secondary uppercase tracking-widest mb-1">{t('room.quiz.explanationLabel')}</p>
-                        <p className="text-sm text-on-surface italic">{question.explanation}</p>
-                      </div>
-                    )}
-                    {/* Rank */}
-                    {scores.length > 0 && (
-                      <div className="flex items-center justify-between p-4 bg-secondary/10 rounded-xl">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-on-secondary">
-                            <span className="material-symbols-outlined">trending_up</span>
-                          </div>
-                          <div>
-                            <p className="text-sm font-bold text-on-surface">{t('room.quiz.rankLabel')}</p>
-                            <p className="text-xs text-on-surface-variant">{t('room.quiz.rankSubtitle')}</p>
-                          </div>
-                        </div>
-                        <span className="text-2xl font-black text-secondary">
-                          #{(scores.findIndex(s => s.username === myUsername) + 1) || '—'}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            )}
+            {/* Inline reveal does this work now (mockup state ②/③/④):
+                - AnswerButton renders the correct/wrong state with the
+                  badge text ("✓ ĐÚNG · BẠN CHỌN" / "✗ BẠN CHỌN" /
+                  "✓ ĐÁP ÁN") right on the option.
+                - RevealStatsCard (Q3) covers reaction time, speed,
+                  points, rank delta.
+                - ExplanationPanel (S2-6) covers the wrong-answer
+                  explanation.
+                The earlier full-screen popup overlay was redundant with
+                the inline reveal and was the "old design" the user
+                wanted retired. */}
             {/* Spectator feedback */}
             {correctIndex !== null && (isSpectator || (isSuddenDeath && sdSpectating)) && (
               <div className="text-center text-sm">
