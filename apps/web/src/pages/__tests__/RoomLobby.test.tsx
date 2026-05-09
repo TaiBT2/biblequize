@@ -275,3 +275,52 @@ describe('RoomLobby — rules card', () => {
     expect(await screen.findByRole('dialog', { name: /Chi tiết luật chơi/i })).toBeInTheDocument()
   })
 })
+
+describe('RoomLobby — Sprint 4 host-organizer mode', () => {
+  it('shows "Bạn là Quản trò" badge when host views a Quan Tro room', async () => {
+    // hostPlaysGame=false → host is NOT in players list; isHost still resolves
+    // via myUserId == hostId fallback so the organizer badge renders.
+    const quanTroRoom = {
+      ...baseRoom,
+      hostPlaysGame: false,
+      players: [], // host not in RoomPlayer table
+      currentPlayers: 0,
+      myUserId: 'host-1',
+    }
+    await renderLobby(quanTroRoom)
+    const badge = await screen.findByTestId('lobby-organizer-badge')
+    expect(badge).toBeInTheDocument()
+    expect(badge).toHaveTextContent(/Bạn là Quản trò/i)
+    expect(badge).toHaveTextContent(/không trả lời câu hỏi/i)
+    // No player-side host info card.
+    expect(screen.queryByTestId('lobby-host-info-card')).toBeNull()
+  })
+
+  it('shows separate Quản trò card when a non-host player views a Quan Tro room', async () => {
+    window.localStorage.setItem('userName', 'An')
+    const quanTroRoom = {
+      ...baseRoom,
+      hostPlaysGame: false,
+      myUserId: 'u-an',
+      players: [
+        { id: 'pa', userId: 'u-an', username: 'An', isReady: false, score: 0 },
+      ],
+      currentPlayers: 1,
+    }
+    await renderLobby(quanTroRoom)
+    const card = await screen.findByTestId('lobby-host-info-card')
+    expect(card).toBeInTheDocument()
+    expect(card).toHaveTextContent(/Quản trò/i)
+    expect(card).toHaveTextContent(/WS Host/i)
+    expect(card).toHaveTextContent(/Không chơi/i)
+    // No organizer badge (that's the host's view).
+    expect(screen.queryByTestId('lobby-organizer-badge')).toBeNull()
+  })
+
+  it('legacy room (hostPlaysGame undefined) renders neither Quan Tro affordance', async () => {
+    await renderLobby() // baseRoom has no hostPlaysGame field
+    await screen.findByTestId('lobby-room-code')
+    expect(screen.queryByTestId('lobby-organizer-badge')).toBeNull()
+    expect(screen.queryByTestId('lobby-host-info-card')).toBeNull()
+  })
+})

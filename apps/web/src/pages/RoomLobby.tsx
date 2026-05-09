@@ -31,6 +31,9 @@ type RoomDetails = {
    *  Server-side fallback so "back to group" works for users who joined via
    *  room code (no fromGroupId in nav state) or after a page refresh. */
   groupId?: string | null;
+  /** Sprint 4: false = Quản trò mode (host orchestrates only). Defaults
+   *  true on the FE for legacy rooms whose payload omits the field. */
+  hostPlaysGame?: boolean;
 };
 type ChatMessage = {
   sender: string; text: string;
@@ -367,7 +370,13 @@ const RoomLobby: React.FC = () => {
   const myPlayer = room?.players?.find(p =>
     room?.myUserId ? p.userId === room.myUserId : p.username === myUsername()
   );
-  const isHost = myPlayer?.userId === room?.hostId;
+  // Sprint 4: in Quản trò mode the host is NOT a RoomPlayer, so myPlayer
+  // would be undefined for them. Fall back to comparing against room.myUserId
+  // so the host still resolves as host in the lobby UI.
+  const hostPlaysGame = room?.hostPlaysGame !== false; // defaults true (legacy)
+  const isHost = (myPlayer?.userId === room?.hostId)
+      || (!hostPlaysGame && room?.myUserId != null && room.myUserId === room.hostId);
+  const isOrganizerMode = isHost && !hostPlaysGame;
   const emptySlots = room ? Math.max(0, room.maxPlayers - room.currentPlayers) : 0;
   const modeInfo = MODE_INFO[room?.mode ?? ''] ?? {
     label: room?.mode ?? '', icon: 'sports_esports',
@@ -378,8 +387,11 @@ const RoomLobby: React.FC = () => {
   const nonHostPlayers = useMemo(() => room?.players?.filter(p => p.userId !== room?.hostId) ?? [], [room]);
   const readyNonHostCount = useMemo(() => nonHostPlayers.filter(p => p.isReady).length, [nonHostPlayers]);
   const isGroupLive = room?.mode === 'GROUP_LIVE_SEQUENTIAL';
+  // Sprint 4: Quan Tro mode requires ≥2 non-host players (host doesn't play);
+  // legacy mode keeps ≥1 non-host (host + 1 = 2 total).
+  const minNonHost = !hostPlaysGame ? 2 : 1;
   const canStart = room?.status === 'LOBBY'
-    && nonHostPlayers.length >= 1
+    && nonHostPlayers.length >= minNonHost
     && (isGroupLive || readyNonHostCount === nonHostPlayers.length);
 
   const statusPrimary = (() => {
@@ -667,6 +679,51 @@ const RoomLobby: React.FC = () => {
       <div className="flex-1 grid lg:grid-cols-[280px_1fr_320px] overflow-hidden" style={{ minHeight: 0 }}>
         <ActivityLogPanel entries={activity} statusHint={statusSecondary} />
         <div className="overflow-y-auto px-4 lg:px-7 py-4 lg:py-5 pb-24 lg:pb-5" data-testid="lobby-scroll-content">
+
+          {/* ─── Sprint 4: Quản trò badge / host info card ─── */}
+          {isOrganizerMode && (
+            <div
+              className="rounded-xl px-4 py-3 mb-4 flex items-start gap-3"
+              style={{
+                background: 'rgba(232,168,50,0.08)',
+                border: '1px solid rgba(232,168,50,0.3)',
+              }}
+              data-testid="lobby-organizer-badge"
+            >
+              <span className="text-xl flex-shrink-0">👑</span>
+              <div className="text-xs leading-relaxed" style={{ color: '#d1d5db' }}>
+                <span className="font-bold" style={{ color: '#e8a832' }}>Bạn là Quản trò.</span>{' '}
+                Bạn điều phối trận đấu, không trả lời câu hỏi để đảm bảo công bằng cho người chơi.
+              </div>
+            </div>
+          )}
+          {!isOrganizerMode && !hostPlaysGame && room.hostName && (
+            <div
+              className="rounded-xl px-4 py-3 mb-4 flex items-center gap-3"
+              style={{
+                background: 'rgba(232,168,50,0.05)',
+                border: '1px solid rgba(232,168,50,0.2)',
+              }}
+              data-testid="lobby-host-info-card"
+            >
+              <div
+                className="w-10 h-10 rounded-full grid place-items-center font-bold text-base flex-shrink-0"
+                style={{
+                  background: 'linear-gradient(135deg, #e8a832, #d4941f)',
+                  color: '#11131e',
+                }}
+              >
+                {room.hostName[0]?.toUpperCase() ?? '?'}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[10px] uppercase tracking-wider font-bold" style={{ color: '#9ca3af' }}>
+                  👑 Quản trò
+                </div>
+                <div className="text-sm font-bold text-white truncate">{room.hostName}</div>
+              </div>
+              <span className="text-[10px] flex-shrink-0" style={{ color: '#9ca3af' }}>Không chơi</span>
+            </div>
+          )}
 
           {/* ─── HERO BLOCK ─── */}
           <section
