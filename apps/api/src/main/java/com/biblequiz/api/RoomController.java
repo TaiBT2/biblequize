@@ -4,6 +4,7 @@ import com.biblequiz.api.websocket.RoomWebSocketController;
 import com.biblequiz.api.websocket.WebSocketMessage;
 import com.biblequiz.modules.room.entity.Room;
 import com.biblequiz.modules.room.service.RoomQuizService;
+import com.biblequiz.modules.room.service.RoomAnalyticsService;
 import com.biblequiz.modules.room.service.RoomService;
 import com.biblequiz.modules.room.service.RoomStateService;
 import com.biblequiz.modules.user.entity.User;
@@ -36,6 +37,9 @@ public class RoomController {
 
     @Autowired
     private RoomStateService roomStateService;
+
+    @Autowired
+    private RoomAnalyticsService roomAnalyticsService;
 
     /**
      * POST /api/rooms - Tạo phòng mới
@@ -259,6 +263,26 @@ public class RoomController {
     @GetMapping("/{id}/leaderboard")
     public ResponseEntity<?> getLeaderboard(@PathVariable String id) {
         return ResponseEntity.ok(Map.of("success", true, "leaderboard", roomService.getRoomLeaderboard(id)));
+    }
+
+    /**
+     * GET /api/rooms/{id}/analytics — per-question breakdown of a room
+     * (post-game). Joins room_rounds + room_answers + questions to give
+     * the FE analytics page question text, correct index, answer
+     * distribution, and avg reaction time per round.
+     */
+    @GetMapping("/{id}/analytics")
+    public ResponseEntity<?> getRoomAnalytics(@PathVariable String id) {
+        try {
+            return ResponseEntity.ok(Map.of(
+                    "success", true,
+                    "rounds", roomAnalyticsService.getRoomAnalytics(id)));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of(
+                    "success", false,
+                    "rounds", java.util.List.of(),
+                    "message", e.getMessage()));
+        }
     }
 
     private User getUser(Principal principal) {

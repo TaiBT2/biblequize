@@ -29,6 +29,18 @@ type LeaderboardEntry = {
   playerStatus?: string;
 };
 
+type RoundAnalytics = {
+  roundNo: number;
+  questionId: string;
+  questionContent: string;
+  options: string[];
+  correctIndex: number;
+  totalAnswers: number;
+  correctCount: number;
+  avgResponseMs: number;
+  distribution: number[];
+};
+
 const FILL_STYLE = { fontVariationSettings: "'FILL' 1" } as const;
 
 /**
@@ -42,6 +54,7 @@ export default function RoomAnalytics() {
   const navigate = useNavigate();
   const [room, setRoom] = useState<RoomDetails | null>(null);
   const [board, setBoard] = useState<LeaderboardEntry[]>([]);
+  const [rounds, setRounds] = useState<RoundAnalytics[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -50,9 +63,10 @@ export default function RoomAnalytics() {
     let cancelled = false;
     (async () => {
       try {
-        const [roomRes, lbRes] = await Promise.all([
+        const [roomRes, lbRes, anRes] = await Promise.all([
           api.get(`/api/rooms/${roomId}`),
           api.get(`/api/rooms/${roomId}/leaderboard`),
+          api.get(`/api/rooms/${roomId}/analytics`),
         ]);
         if (cancelled) return;
         setRoom(roomRes.data?.room ?? null);
@@ -60,6 +74,8 @@ export default function RoomAnalytics() {
         setBoard(lb.slice().sort((a, b) =>
           (a.finalRank ?? 99) - (b.finalRank ?? 99) || b.score - a.score
         ));
+        const rs = (anRes.data?.rounds ?? []) as RoundAnalytics[];
+        setRounds(rs);
       } catch (e: any) {
         if (!cancelled) setError(e?.response?.data?.message ?? 'Không tải được phân tích');
       } finally {
@@ -214,7 +230,11 @@ export default function RoomAnalytics() {
                 <tbody>
                   {board.map((p, i) => {
                     const rank = p.finalRank ?? i + 1;
-                    const accPct = p.totalAnswered > 0 ? Math.round((p.accuracy ?? p.correctAnswers / p.totalAnswered) * 100) : 0;
+                    // BE returns accuracy as a percentage 0-100 (RoomPlayer.getAccuracy
+                    // multiplies by 100 internally). Fall back to manual ratio if missing.
+                    const accPct = p.totalAnswered > 0
+                      ? Math.round(p.accuracy ?? (p.correctAnswers / p.totalAnswered) * 100)
+                      : 0;
                     return (
                       <tr
                         key={p.playerId}
@@ -269,27 +289,126 @@ export default function RoomAnalytics() {
           )}
         </section>
 
-        {/* Note about per-question detail (BE not yet exposing it) */}
+        {/* Per-question breakdown */}
         <section
-          className="rounded-xl p-4"
+          className="rounded-2xl overflow-hidden"
           style={{
-            background: 'rgba(74,158,255,0.06)',
-            border: '1px solid rgba(74,158,255,0.2)',
+            background: 'rgba(50,52,64,0.55)',
+            backdropFilter: 'blur(12px)',
+            border: '1px solid rgba(255,255,255,0.06)',
           }}
         >
-          <div className="flex items-start gap-3">
-            <span className="material-symbols-outlined" style={{ color: '#60a5fa' }}>info</span>
-            <p className="text-sm" style={{ color: '#d1d5db' }}>
-              Chi tiết từng câu hỏi (đáp án đúng, ai chọn gì, thời gian phản xạ trung bình)
-              sẽ được mở khóa khi backend hỗ trợ tổng hợp <code>room_rounds</code>. Hiện tại đang theo dõi
-              cho sprint sau.
-            </p>
+          <div className="px-5 py-3 border-b" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+            <h2 className="text-sm font-bold uppercase tracking-wider" style={{ color: '#e8a832' }}>
+              Chi tiết từng câu hỏi
+            </h2>
           </div>
+          {rounds.length === 0 ? (
+            <p className="px-5 py-6 text-sm text-center" style={{ color: '#9ca3af' }}>
+              Phòng chưa có vòng nào được lưu.
+            </p>
+          ) : (
+            <div className="divide-y" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
+              {rounds.map(r => (
+                <RoundRow key={r.roundNo} round={r} />
+              ))}
+            </div>
+          )}
         </section>
       </div>
     </div>
   );
 }
+
+const RoundRow: React.FC<{ round: RoundAnalytics }> = ({ round: r }) => {
+  const correctPct = r.totalAnswers > 0 ? Math.round((r.correctCount / r.totalAnswers) * 100) : 0;
+  const avgSec = (r.avgResponseMs / 1000).toFixed(1);
+  const maxOptCount = r.distribution.reduce((m, n) => Math.max(m, n), 0);
+  const optionLetters = ['A', 'B', 'C', 'D', 'E', 'F'];
+  const optionPalette = ['#ff7a59', '#4ea8de', '#e8a832', '#86b8a0', '#c084fc', '#9ca3af'];
+
+  return (
+    <div className="px-5 py-4 border-b" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
+      <div className="flex items-start justify-between gap-4 flex-wrap">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-1.5">
+            <span
+              className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded"
+              style={{ background: 'rgba(232,168,50,0.15)', color: '#e8a832' }}
+            >
+              Câu {r.roundNo + 1}
+            </span>
+            <span className="text-xs font-semibold" style={{ color: '#9ca3af' }}>
+              {r.totalAnswers} người trả lời · TB {avgSec}s
+            </span>
+          </div>
+          <p className="text-sm text-white leading-relaxed">{r.questionContent}</p>
+        </div>
+        <div className="text-right flex-shrink-0">
+          <div className="text-xs uppercase tracking-wider mb-0.5" style={{ color: '#9ca3af' }}>
+            Đúng
+          </div>
+          <div
+            className="font-bold text-lg tabular-nums"
+            style={{ color: correctPct >= 70 ? '#4ade80' : correctPct >= 40 ? '#e8a832' : '#f87171' }}
+          >
+            {r.correctCount}/{r.totalAnswers} · {correctPct}%
+          </div>
+        </div>
+      </div>
+
+      {r.options.length > 0 && (
+        <div className="mt-3 space-y-2">
+          {r.options.map((opt, i) => {
+            const count = r.distribution[i] ?? 0;
+            const pct = r.totalAnswers > 0 ? (count / r.totalAnswers) * 100 : 0;
+            const isCorrect = i === r.correctIndex;
+            const barColor = isCorrect ? '#4ade80' : optionPalette[i] ?? '#9ca3af';
+            const barAlpha = maxOptCount > 0 ? count / maxOptCount : 0;
+            return (
+              <div key={i} className="flex items-center gap-3">
+                <div
+                  className="w-7 h-7 rounded-lg grid place-items-center font-bold text-xs flex-shrink-0"
+                  style={{
+                    background: isCorrect ? 'rgba(74,222,128,0.18)' : `${barColor}26`,
+                    color: isCorrect ? '#4ade80' : barColor,
+                    border: isCorrect ? '1px solid rgba(74,222,128,0.5)' : 'none',
+                  }}
+                >
+                  {optionLetters[i] ?? i + 1}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className={`text-sm truncate ${isCorrect ? 'font-semibold text-white' : 'text-on-surface-variant'}`}>
+                      {opt}
+                    </span>
+                    {isCorrect && <span className="text-[10px] font-bold flex-shrink-0" style={{ color: '#4ade80' }}>✓ ĐÁP ÁN</span>}
+                  </div>
+                  <div
+                    className="h-1.5 rounded-full overflow-hidden"
+                    style={{ background: 'rgba(255,255,255,0.05)' }}
+                  >
+                    <div
+                      className="h-full rounded-full transition-all"
+                      style={{
+                        width: `${pct}%`,
+                        background: barColor,
+                        opacity: 0.4 + 0.6 * barAlpha,
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="text-xs font-bold tabular-nums w-10 text-right" style={{ color: '#d1d5db' }}>
+                  {count}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+};
 
 function formatDuration(ms: number | null | undefined): string {
   if (!ms || ms <= 0) return '—';

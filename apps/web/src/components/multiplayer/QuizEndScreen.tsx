@@ -194,7 +194,9 @@ export function QuizEndScreen({
                     </div>
                     <div className="grid grid-cols-3 gap-3 mt-3 pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
                       <Stat label="Đúng" value={`${me.correctAnswers ?? 0}/${me.totalAnswered ?? totalQuestions}`} color="#4ade80" />
-                      <Stat label="Chính xác" value={`${Math.round((me.accuracy ?? 0) * 100)}%`} color="#e8a832" />
+                      {/* BE returns accuracy as 0-100 already (RoomPlayer.getAccuracy
+                          multiplies by 100). Don't double-scale. */}
+                      <Stat label="Chính xác" value={`${Math.round(me.accuracy ?? 0)}%`} color="#e8a832" />
                       <Stat label="Tổng câu" value={`${totalQuestions}`} color="#d1d5db" />
                     </div>
                   </div>
