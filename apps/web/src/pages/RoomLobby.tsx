@@ -406,25 +406,54 @@ const RoomLobby: React.FC = () => {
 
       {/* ─── Topbar ─── */}
       <header
-        className="flex items-center justify-between px-4 lg:px-6 py-3 border-b"
+        className="flex items-center justify-between gap-3 px-4 lg:px-6 py-3 border-b"
         style={{ background: '#0d0f17', borderColor: 'rgba(255,255,255,0.04)' }}
       >
-        <button
-          onClick={() => navigate('/multiplayer')}
-          className="text-xs font-semibold inline-flex items-center gap-1.5 hover:text-on-surface"
-          style={{ color: '#9ca3af' }}
-        >
-          <span className="material-symbols-outlined text-base">arrow_back</span>
-          Đa người chơi
-        </button>
-        <div className="inline-flex items-center gap-2 text-xs" style={{ color: '#9ca3af' }}>
+        <div className="flex items-center gap-3 min-w-0">
+          <button
+            onClick={() => navigate('/multiplayer')}
+            className="text-xs font-semibold inline-flex items-center gap-1.5 hover:text-on-surface flex-shrink-0"
+            style={{ color: '#9ca3af' }}
+            data-testid="lobby-back-btn"
+          >
+            <span className="material-symbols-outlined text-base">arrow_back</span>
+            <span className="hidden sm:inline">Đa người chơi</span>
+          </button>
+          <div className="hidden sm:block h-5 w-px" style={{ background: 'rgba(255,255,255,0.1)' }} />
           <span
-            className="inline-block w-1.5 h-1.5 rounded-full animate-pulse"
-            style={{ background: connected ? '#4ade80' : '#f87171' }}
-          />
-          {connected ? 'Đã kết nối' : 'Mất kết nối'}
+            className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider flex-shrink-0"
+            style={{ color: modeInfo.chipColor, background: modeInfo.chipBg, border: `1px solid ${modeInfo.chipBorder}` }}
+            data-testid="lobby-topbar-mode"
+          >
+            <span className="material-symbols-outlined text-[12px]">{modeInfo.icon}</span>
+            {modeInfo.label}
+          </span>
+          <span className="text-xs font-mono truncate" style={{ color: '#9ca3af', fontVariantNumeric: 'tabular-nums' }} data-testid="lobby-topbar-code">
+            Phòng {room.roomCode}
+          </span>
         </div>
-        <span className="w-8 h-8" aria-hidden="true" />
+        <div className="flex items-center gap-2 lg:gap-3 flex-shrink-0">
+          <div className="hidden sm:inline-flex items-center gap-1.5 text-xs" style={{ color: '#9ca3af' }}>
+            <span
+              className="inline-block w-1.5 h-1.5 rounded-full animate-pulse"
+              style={{ background: connected ? '#4ade80' : '#f87171' }}
+            />
+            {connected ? 'Đã kết nối' : 'Mất kết nối'}
+          </div>
+          <button
+            onClick={handleLeave}
+            data-testid="lobby-leave-btn"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold"
+            style={{
+              background: 'rgba(248,113,113,0.08)',
+              color: '#f87171',
+              border: '1px solid rgba(248,113,113,0.25)',
+            }}
+          >
+            <span className="material-symbols-outlined text-[14px]">logout</span>
+            <span className="hidden sm:inline">Rời phòng</span>
+          </button>
+        </div>
       </header>
 
       {/* ─── Main: activity log + content + (optional) chat panel ─── */}
@@ -648,23 +677,13 @@ const RoomLobby: React.FC = () => {
 
       {/* ─── BOTTOM BAR ─── */}
       <footer
-        className="grid grid-cols-[auto_1fr] lg:grid-cols-[auto_1fr_auto] gap-3 lg:gap-4 items-center px-4 lg:px-6 py-3 lg:py-3.5 border-t"
+        className="grid grid-cols-[1fr_auto] gap-3 lg:gap-4 items-center px-4 lg:px-6 py-3 lg:py-3.5 border-t"
         style={{
           background: 'rgba(13,15,23,0.95)',
           backdropFilter: 'blur(20px)',
           borderColor: 'rgba(232,168,50,0.1)',
         }}
       >
-        <button
-          data-testid="lobby-leave-btn"
-          onClick={handleLeave}
-          className="inline-flex items-center gap-1.5 px-3 lg:px-4 py-2.5 lg:py-3 rounded-lg text-xs lg:text-[13px] font-bold"
-          style={{ background: 'transparent', color: '#f87171', border: '1px solid rgba(248,113,113,0.3)' }}
-        >
-          <span className="material-symbols-outlined text-base">logout</span>
-          {isMobile ? 'Rời' : 'Rời phòng'}
-        </button>
-
         <div className="hidden lg:block text-center">
           <div className="inline-flex items-center gap-2 text-xs font-semibold" style={{ color: canStart ? '#4ade80' : '#fbbf24' }}>
             <span
