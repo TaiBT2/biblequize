@@ -219,9 +219,11 @@ const RoomLobby: React.FC = () => {
         case 'QUESTION_START': {
           const navState = location.state as { fromGroupId?: string } | null;
           const fromGroupId = navState?.fromGroupId ?? room?.groupId ?? undefined;
-          navigate(`/room/${roomId}/quiz`, {
+          // Sprint 4: Quản trò goes to the host spectator route; players go to /quiz.
+          const dest = isOrganizerMode ? `/room/${roomId}/host` : `/room/${roomId}/quiz`;
+          navigate(dest, {
             replace: true,
-            state: { mode: room?.mode, myTeam: room?.players?.find(p => p.userId === room?.myUserId)?.team ?? null, isHost, hostId: room?.hostId, fromGroupId }
+            state: { mode: room?.mode, myTeam: room?.players?.find(p => p.userId === room?.myUserId)?.team ?? null, isHost, hostId: room?.hostId, hostName: room?.hostName, hostPlaysGame, fromGroupId }
           });
           break;
         }
@@ -295,9 +297,10 @@ const RoomLobby: React.FC = () => {
     const navState = location.state as { fromGroupId?: string } | null;
     const fromGroupId = navState?.fromGroupId ?? room?.groupId ?? undefined;
     const t = setTimeout(() => {
-      navigate(`/room/${roomId}/quiz`, {
+      const dest = isOrganizerMode ? `/room/${roomId}/host` : `/room/${roomId}/quiz`;
+      navigate(dest, {
         replace: true,
-        state: { mode: room?.mode, myTeam, isHost, hostId: room?.hostId, fromGroupId },
+        state: { mode: room?.mode, myTeam, isHost, hostId: room?.hostId, hostName: room?.hostName, hostPlaysGame, fromGroupId },
       });
     }, 800);
     return () => clearTimeout(t);

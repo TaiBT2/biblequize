@@ -48,6 +48,7 @@ import Achievements from './pages/Achievements'
 import Leaderboard from './pages/Leaderboard'
 import RoomLobby from './pages/RoomLobby'
 import RoomQuiz from './pages/RoomQuiz'
+import RoomQuizHost from './pages/room/RoomQuizHost'
 import RoomAnalytics from './pages/RoomAnalytics'
 import CreateRoom from './pages/CreateRoom'
 import JoinRoom from './pages/JoinRoom'
@@ -175,6 +176,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Route path="/quiz" element={<Quiz />} />
                 <Route path="/room/:roomId/lobby" element={<RequireAuth><RoomLobby /></RequireAuth>} />
                 <Route path="/room/:roomId/quiz" element={<RequireAuth><RoomQuiz /></RequireAuth>} />
+                {/* Sprint 4 (S4-8): Quan Tro spectator + control view. */}
+                <Route path="/room/:roomId/host" element={<RequireAuth><RoomQuizHost /></RequireAuth>} />
                 <Route path="/room/:roomId/analytics" element={<RequireAuth><RoomAnalytics /></RequireAuth>} />
 
                 {/* Admin */}

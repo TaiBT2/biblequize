@@ -13,7 +13,7 @@
 - Task S4-5: Host control endpoints (pause/resume/skip/broadcast/end-early) — `[x]` DONE
 - Task S4-6: RoomLobby differentiation by role — `[x]` DONE
 - Task S4-7: CreateRoom hint banner Quản trò — `[x]` DONE
-- Task S4-8: RoomQuizHost component (spectator + 4 controls) — `[ ]` TODO
+- Task S4-8: RoomQuizHost component (spectator + 4 controls) — `[x]` DONE
 - Task S4-9: RoomQuizPlayer hides host from scoreboard — `[ ]` TODO
 - Task S4-10: QuizEndHost wrap-up screen — `[ ]` TODO
 - Task S4-DOCS: Update SPEC_USER_v3 §5.4 — `[ ]` TODO
