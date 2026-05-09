@@ -101,6 +101,31 @@ body {
   100% { transform: translateY(0);   opacity: 1; }
 }
 
+/* Sprint 2 S2-11: podium step rises from below on mount */
+@keyframes podium-rise {
+  0%   { transform: translateY(60%); opacity: 0; }
+  60%  { transform: translateY(-8%); opacity: 1; }
+  100% { transform: translateY(0);   opacity: 1; }
+}
+.podium-rise {
+  animation: podium-rise 0.7s cubic-bezier(0.34,1.56,0.64,1) backwards;
+}
+
+/* Sprint 2 S2-11: shared end-screen fade-in for stats + rankings */
+@keyframes fadeIn {
+  0%   { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Sprint 2 S2-11: 1st-place avatar gold-glow pulse */
+@keyframes podium-pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232,168,50,0); }
+  50%      { box-shadow: 0 0 32px 6px rgba(232,168,50,0.55); }
+}
+.pulse-glow {
+  animation: podium-pulse-glow 2s ease-in-out infinite;
+}
+
 /* Score pop */
 @keyframes score-pop {
   0% { transform: scale(1); }

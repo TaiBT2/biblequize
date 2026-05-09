@@ -8,11 +8,12 @@ import { soundManager } from '../services/soundManager';
 import { haptic } from '../utils/haptics';
 import ExplanationPanel from '../components/multiplayer/ExplanationPanel';
 import ComboBanner from '../components/multiplayer/ComboBanner';
+import QuizEndScreen from '../components/multiplayer/QuizEndScreen';
 import ReactionBar from '../components/ReactionBar';
 import LiveFeed from '../components/LiveFeed';
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton';
 import {
-  PodiumScreen, EliminationScreen, TeamScoreBar, TeamWinScreen,
+  EliminationScreen, TeamScoreBar, TeamWinScreen,
   MatchResultOverlay, SdArenaHeader, RoundScoreboard,
   type PlayerScore,
 } from './room/RoomOverlays';
@@ -122,6 +123,9 @@ const RoomQuiz: React.FC = () => {
   // can't drive this from inside PodiumScreen because that component is
   // shared with multiple modes and wouldn't know `myUsername`.
   const endSoundFiredRef = useRef(false);
+  // Sprint 2 S2-11: capture match start (first QUESTION_START with
+  // questionIndex===0) so the end screen can show "Thời gian" stat.
+  const matchStartedAtRef = useRef<number | null>(null);
 
   const questionStartedAt = useRef<number>(0);
   const toastCounter = useRef(0);
@@ -144,6 +148,9 @@ const RoomQuiz: React.FC = () => {
           // Falls back to local clock if BE didn't include startedAtMs (older
           // server / dev fixture).
           questionStartedAt.current = data.startedAtMs ?? Date.now();
+          if (data.questionIndex === 0 && matchStartedAtRef.current === null) {
+            matchStartedAtRef.current = questionStartedAt.current;
+          }
           setQuestionIndex(data.questionIndex);
           setTotalQuestions(data.totalQuestions);
           setQuestion(data.question);
@@ -486,7 +493,20 @@ const RoomQuiz: React.FC = () => {
         />
       );
     }
-    return <PodiumScreen results={finalResults} onClose={() => navigate(exitTo, { replace: true })} />;
+    return (
+      <QuizEndScreen
+        results={finalResults}
+        myUsername={myUsername}
+        isHost={isHost}
+        totalQuestions={totalQuestions}
+        startedAtMs={matchStartedAtRef.current}
+        onReplay={() => navigate(exitTo, { replace: true })}
+        onClose={() => navigate(exitTo, { replace: true })}
+        onShare={() => navigate(exitTo, { replace: true })}
+        onNewRoom={() => navigate('/room/create', { replace: true })}
+        onHome={() => navigate('/', { replace: true })}
+      />
+    );
   }
   if (isTeamVsTeam && teamWinner !== null) {
     return (
