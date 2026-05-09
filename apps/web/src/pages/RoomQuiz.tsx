@@ -476,14 +476,39 @@ const RoomQuiz: React.FC = () => {
     }
   }, [timeLeft, selected]);
 
-  // Rejoin rehydrate: when the page mounts mid-game, the next QUESTION_START
-  // broadcast is what populates state — but that may not arrive for several
-  // seconds (between-question gap or remaining timePerQuestion). Pull the
-  // cached current question from REST so the user sees content immediately.
+  // Mount-time rehydrate. Two cases:
+  //   1) Room is IN_PROGRESS — pull the cached current question so the
+  //      view doesn't sit on "Đang chờ câu hỏi..." until the next
+  //      QUESTION_START broadcast.
+  //   2) Room is ENDED — pull the leaderboard and seed showPodium so a
+  //      reload on the end screen still shows results (without this the
+  //      user falls back to "Đang chờ câu hỏi..." waiting on a QUIZ_END
+  //      that already fired before mount).
   useEffect(() => {
     if (!roomId) return;
     let cancelled = false;
     (async () => {
+      try {
+        const roomRes = await api.get(`/api/rooms/${roomId}`);
+        if (cancelled) return;
+        const status = roomRes.data?.room?.status;
+        if (status === 'ENDED') {
+          const lbRes = await api.get(`/api/rooms/${roomId}/leaderboard`);
+          if (cancelled) return;
+          const board = lbRes.data?.leaderboard as PlayerScore[] | undefined;
+          if (Array.isArray(board) && board.length > 0) {
+            const sorted = board.slice().sort((a, b) =>
+              (a.finalRank ?? 99) - (b.finalRank ?? 99) || b.score - a.score
+            );
+            setFinalResults(sorted);
+            setScores(sorted);
+            setTotalQuestions(roomRes.data.room.questionCount ?? totalQuestions);
+            setShowPodium(true);
+          }
+          return; // no point hitting current-question for an ENDED room
+        }
+      } catch { /* fall through to current-question fetch */ }
+
       try {
         const res = await api.get(`/api/rooms/${roomId}/current-question`);
         if (cancelled || res.status !== 200 || !res.data?.question) return;
