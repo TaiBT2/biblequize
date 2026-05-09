@@ -339,8 +339,63 @@ Hiện trên Home page: "📊 Bạn cần ôn: Rô-ma (40%) — [Ôn ngay →]"
 - 2–20 người/phòng (tùy mode)
 - Host config: mode, số câu, time/câu, difficulty, sách, visibility
 - Realtime via WebSocket (STOMP)
-- Lifecycle: `LOBBY → IN_PROGRESS → ENDED` hoặc `CANCELLED`
-- State: DB entities + Redis (TTL 2 giờ)
+- Lifecycle: `LOBBY → IN_PROGRESS → ENDED` hoặc auto-cleanup
+- Redis cache: TTL 2 giờ cho question/round state (không phải toàn bộ room metadata)
+
+##### Lifecycle Rules (canonical)
+
+Mỗi rule định nghĩa rõ trigger, action, và side-effects:
+
+| ID | Trigger | Action | Notification | Implementation |
+|----|---------|--------|--------------|----------------|
+| **R1** | Player cuối rời LOBBY (currentPlayers=0) | **Hard-delete ngay** | Broadcast `ROOM_ENDED { reason: EMPTY_LOBBY }` cho any straggler | `RoomService.leaveRoom` |
+| **R2** | LOBBY không activity > `ROOM_IDLE_TIMEOUT_MIN` (default 30 phút) | Set status=ENDED → DELETE qua R3 | Broadcast `ROOM_ENDED { reason: IDLE_TIMEOUT }` | `RoomCleanupScheduler.sweepAbandonedLobbies` (10 phút/lần) + `RoomService.cleanupStaleLobbyForUser` (lazy on-join) |
+| **R3** | Room ENDED > **24 giờ** (`updated_at`) | Hard-delete | — | `RoomCleanupScheduler.purgeExpiredEndedRooms` (10 phút/lần) |
+| **R4** | Host disconnect (STOMP session close) | Sau **60s grace**: nếu chưa reconnect → promote longest-tenured ACTIVE non-host | Broadcast `HOST_CHANGED { newHostId, newHostName }`. Nếu không còn member → `ROOM_ENDED { reason: HOST_GONE }`. | `RoomPresenceListener.handleGraceEnd` |
+| **R5** | TẤT CẢ active player disconnect > 60s, hoặc IN_PROGRESS row stuck > 90 phút | Auto-end → ENDED | Broadcast `ROOM_ENDED { reason: ALL_DISCONNECTED \| STUCK_GAME }` | `RoomPresenceListener` (live disconnect) + `RoomAbandonmentScheduler` (5 phút/lần, JVM-crash recovery) |
+
+##### Battle Royale absence-elimination (R5 specific)
+
+Theo §5.4.5: Player disconnect > 60s trong Battle Royale → status `ELIMINATED` (không chỉ `LEFT`). Engine tiếp tục round mà không đợi response. (Hiện tại flow markPlayerLeft set status=LEFT chung; BR-specific elimination tracked Sprint 3.)
+
+##### Config nguồn
+
+| Key | Default | Override |
+|-----|---------|----------|
+| `ROOM_IDLE_TIMEOUT_MIN` (R2) | 30 | `application.yml` `biblequiz.room.idle-timeout-minutes` / env `ROOM_IDLE_TIMEOUT_MINUTES` |
+| `ROOM_ENDED_RETENTION_HOURS` (R3) | 24 | `biblequiz.room.ended-retention-hours` / `ROOM_ENDED_RETENTION_HOURS` |
+| `RECONNECT_GRACE_SECONDS` (R4, R5) | 60 | `biblequiz.room.reconnect-grace-seconds` / `ROOM_RECONNECT_GRACE_SECONDS` |
+
+(Wiring qua DB-backed admin `app_config` table tracked Sprint 3 — hiện tại operator override qua env / yml.)
+
+##### State diagram
+
+```
+   [createRoom]
+       │
+       ▼
+   ┌───────┐                    ┌─────────────┐
+   │ LOBBY │──── startRoom ────▶│ IN_PROGRESS │
+   └───┬───┘  (host, ≥2 ready)  └──────┬──────┘
+       │                                │
+       │ R1: empty lobby                │ runQuiz finishes (normal)
+       │ R2: idle 30 min                │ R5: all DC > 60s
+       │ R4: host gone, no successor    │     OR stuck > 90 min
+       ▼                                ▼
+   [DELETE]                         ┌───────┐
+                                    │ ENDED │
+                                    └───┬───┘
+                                        │ R3: > 24h
+                                        ▼
+                                    [DELETE]
+```
+
+CANCELLED enum value bị deprecated (audit G6) — KHÔNG dùng cho lifecycle mới. Mọi terminal path đi qua ENDED → DELETE để đơn giản hóa state machine.
+
+##### WebSocket events (xem §16.3)
+
+- `ROOM_ENDED { reason: EMPTY_LOBBY | IDLE_TIMEOUT | HOST_GONE | ALL_DISCONNECTED | STUCK_GAME | GAME_COMPLETE }` — server-side cleanup hoặc finish.
+- `HOST_CHANGED { newHostId, newHostName }` — R4 promote.
 
 #### 5.4.1 Speed Race ⚡
 
