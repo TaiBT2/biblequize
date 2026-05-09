@@ -9,6 +9,7 @@ import { haptic } from '../utils/haptics';
 import ExplanationPanel from '../components/multiplayer/ExplanationPanel';
 import ComboBanner from '../components/multiplayer/ComboBanner';
 import QuizEndScreen from '../components/multiplayer/QuizEndScreen';
+import RevealStatsCard from '../components/multiplayer/RevealStatsCard';
 import ReactionBar from '../components/ReactionBar';
 import LiveFeed from '../components/LiveFeed';
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton';
@@ -119,6 +120,16 @@ const RoomQuiz: React.FC = () => {
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [comboBanner, setComboBanner] = useState<{ count: number; multiplier: number } | null>(null);
 
+  // Sprint 2 Q3 — reveal-stats card. Captures the player's reaction
+  // time when they submit, then on ROUND_END computes the score delta
+  // and rank shift to populate the 4-cell card.
+  const [revealStats, setRevealStats] = useState<{
+    reactionMs: number; pointsEarned: number; newRank: number; rankDelta: number;
+  } | null>(null);
+  const lastSubmitMs = useRef<number | null>(null);
+  const prevScoreRef = useRef<number>(0);
+  const prevRankRef = useRef<number | null>(null);
+
   // Sprint 2 Q1 — persistent live-feed sidebar. Each entry is one row
   // rendered in the RIGHT column; we keep the last 30 events so the
   // history scrolls without unbounded growth.
@@ -181,6 +192,9 @@ const RoomQuiz: React.FC = () => {
           setSubmitting(false);
           setPerfectA(false);
           setPerfectB(false);
+          // Q3: reset reveal stats for the new question.
+          setRevealStats(null);
+          lastSubmitMs.current = null;
           // Sequential reset
           setRevealedData(null);
           setSeqAnswered(0);
@@ -210,10 +224,25 @@ const RoomQuiz: React.FC = () => {
         case 'ROUND_END': {
           const d = msg.data as { correctIndex: number; leaderboard: PlayerScore[] };
           setCorrectIndex(d.correctIndex);
-          setScores(d.leaderboard.sort((a, b) => b.score - a.score));
+          const sortedNew = d.leaderboard.slice().sort((a, b) => b.score - a.score);
+          setScores(sortedNew);
           // Q1: feed marker so the sidebar shows "Câu 5 kết thúc · đáp án C"
           const letter = String.fromCharCode(65 + d.correctIndex);
           appendFeed('round_end', `Câu ${questionIndex + 1} kết thúc · đáp án ${letter}`, 'neutral');
+          // Q3: reveal-stats card (only when the player submitted).
+          if (lastSubmitMs.current !== null) {
+            const myNew = sortedNew.find(s => s.username === myUsername);
+            const newRank = myNew ? sortedNew.findIndex(s => s.username === myUsername) + 1 : 0;
+            const newScore = myNew?.score ?? prevScoreRef.current;
+            const pointsEarned = Math.max(0, newScore - prevScoreRef.current);
+            const rankDelta = prevRankRef.current ? prevRankRef.current - newRank : 0;
+            setRevealStats({
+              reactionMs: lastSubmitMs.current,
+              pointsEarned,
+              newRank,
+              rankDelta,
+            });
+          }
           // Sprint 2 S2-6: reveal feedback. Compare against the player's
           // submitted answer (selected) to play the right sound + haptic.
           // We deliberately key off `selected` rather than backend
@@ -477,6 +506,12 @@ const RoomQuiz: React.FC = () => {
   const submitAnswer = (idx: number) => {
     if (!roomId || !question || !canAnswer) return;
     const reactionTimeMs = Date.now() - questionStartedAt.current;
+    lastSubmitMs.current = reactionTimeMs;
+    // Snapshot pre-round score + rank so ROUND_END can compute deltas.
+    const sortedNow = [...scores].sort((a, b) => b.score - a.score);
+    const myEntry = sortedNow.find(s => s.username === myUsername);
+    prevScoreRef.current = myEntry?.score ?? 0;
+    prevRankRef.current = myEntry ? sortedNow.findIndex(s => s.username === myUsername) + 1 : null;
     setSelected(idx);
     setSubmitting(true);
     const ok = send(`/app/room/${roomId}/answer`, { questionIndex, answerIndex: idx, reactionTimeMs });
@@ -917,6 +952,20 @@ const RoomQuiz: React.FC = () => {
                 <span className="material-symbols-outlined text-sm animate-spin">hourglass_empty</span>
                 {t('room.quiz.waitingResult')}
               </div>
+            )}
+
+            {/* Q3: reveal stats card — shown after the round resolves
+                if the player submitted (no card for skipped rounds or
+                spectators). Sequential mode has its own reveal flow,
+                so we suppress there. */}
+            {revealStats && correctIndex !== null && !isSequential && (
+              <RevealStatsCard
+                reactionMs={revealStats.reactionMs}
+                pointsEarned={revealStats.pointsEarned}
+                newRank={revealStats.newRank}
+                rankDelta={revealStats.rankDelta}
+                timeLimitSec={timeLimit}
+              />
             )}
 
             {/* Sprint 2 S2-6: explanation panel after a wrong answer. Only
