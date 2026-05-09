@@ -119,6 +119,25 @@ const RoomQuiz: React.FC = () => {
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [comboBanner, setComboBanner] = useState<{ count: number; multiplier: number } | null>(null);
 
+  // Sprint 2 Q1 — persistent live-feed sidebar. Each entry is one row
+  // rendered in the RIGHT column; we keep the last 30 events so the
+  // history scrolls without unbounded growth.
+  type FeedEntry = {
+    id: number;
+    kind: 'answer' | 'round_end';
+    text: string;
+    tone: 'ok' | 'fail' | 'neutral';
+  };
+  const [feedHistory, setFeedHistory] = useState<FeedEntry[]>([]);
+  const feedIdRef = useRef(0);
+  const appendFeed = (kind: FeedEntry['kind'], text: string, tone: FeedEntry['tone']) => {
+    feedIdRef.current += 1;
+    setFeedHistory(prev => [
+      ...prev.slice(-29),
+      { id: feedIdRef.current, kind, text, tone },
+    ]);
+  };
+
   // Sprint 2 S2-11: end-screen sound. Fire once on showPodium=true. We
   // can't drive this from inside PodiumScreen because that component is
   // shared with multiple modes and wouldn't know `myUsername`.
@@ -192,6 +211,9 @@ const RoomQuiz: React.FC = () => {
           const d = msg.data as { correctIndex: number; leaderboard: PlayerScore[] };
           setCorrectIndex(d.correctIndex);
           setScores(d.leaderboard.sort((a, b) => b.score - a.score));
+          // Q1: feed marker so the sidebar shows "Câu 5 kết thúc · đáp án C"
+          const letter = String.fromCharCode(65 + d.correctIndex);
+          appendFeed('round_end', `Câu ${questionIndex + 1} kết thúc · đáp án ${letter}`, 'neutral');
           // Sprint 2 S2-6: reveal feedback. Compare against the player's
           // submitted answer (selected) to play the right sound + haptic.
           // We deliberately key off `selected` rather than backend
@@ -311,6 +333,15 @@ const RoomQuiz: React.FC = () => {
         case 'ANSWER_SUBMITTED': {
           const d = msg.data as { playerId: string; username: string; isCorrect: boolean; reactionTimeMs: number };
           setLatestAnswer(d);
+          // Q1: persistent feed history for the new RIGHT column
+          const t = (d.reactionTimeMs / 1000).toFixed(1);
+          appendFeed(
+            'answer',
+            d.isCorrect
+              ? `${d.username} trả lời đúng (${t}s)`
+              : `${d.username} trả lời sai 😅`,
+            d.isCorrect ? 'ok' : 'fail'
+          );
           break;
         }
 
@@ -702,7 +733,12 @@ const RoomQuiz: React.FC = () => {
       </header>
 
       {/* ═══════════ MAIN CONTENT ═══════════ */}
-      <main className="relative min-h-screen pt-20 pb-8 px-4 md:px-6 max-w-6xl mx-auto">
+      {/* Q1: 3-col gameplay layout per MOCKUP_DESKTOP_MULTIPLAYER state ③/④:
+           LEFT 280px scoreboard · CENTER 1fr question+stats · RIGHT 320px live feed.
+           Drops max-w-6xl so all three columns can fit on lg+ viewports;
+           mobile (< lg) collapses to a single column with the side panels
+           hidden (player list still rendered above question via mode bars). */}
+      <main className="relative min-h-screen pt-20 pb-8 px-4 lg:px-6">
         {/* Mode-specific headers */}
         {isTeamVsTeam && (
           <TeamScoreBar scoreA={teamScoreA} scoreB={teamScoreB} perfectA={perfectA} perfectB={perfectB} />
@@ -717,7 +753,71 @@ const RoomQuiz: React.FC = () => {
           />
         )}
 
-        <div className="grid lg:grid-cols-[1fr_280px] gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr_320px] gap-5">
+          {/* ── LEFT: Scoreboard (lg only — same content as the trailing
+                mobile block; on lg+ it's a sticky sidebar) ── */}
+          <aside
+            className="hidden lg:block self-start lg:sticky lg:top-20 bg-surface-container rounded-2xl border border-outline-variant/10 p-4"
+            data-testid="quiz-scoreboard-left"
+          >
+            <div className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant mb-4 flex items-center gap-1.5">
+              <span className="material-symbols-outlined text-[#9b59b6] text-sm" style={FILL_STYLE}>
+                {isBattleRoyale ? 'swords' :
+                 isTeamVsTeam ? 'groups' :
+                 isSuddenDeath ? 'local_fire_department' :
+                 'leaderboard'}
+              </span>
+              {isBattleRoyale ? t('room.quiz.leaderboardBattleRoyale') :
+               isTeamVsTeam ? t('room.quiz.leaderboardTeam') :
+               isSuddenDeath ? t('room.quiz.leaderboardSuddenDeath') :
+               t('room.quiz.leaderboardDefault')}
+            </div>
+            <div className="space-y-1.5 max-h-[60vh] overflow-auto pr-1">
+              {scores.length === 0 ? (
+                <p className="text-on-surface-variant/50 text-xs text-center py-6">{t('room.quiz.noScoresYet')}</p>
+              ) : (
+                scores.map((s, idx) => {
+                  const isMe = s.username === myUsername;
+                  const eliminated = s.playerStatus === 'ELIMINATED';
+                  return (
+                    <div
+                      key={s.playerId}
+                      className={`flex items-center justify-between p-2.5 rounded-xl border transition-colors ${
+                        isMe ? 'border-secondary/30 bg-secondary/5' :
+                        eliminated ? 'border-transparent bg-surface-container-low opacity-40' :
+                        idx === 0 ? 'border-secondary/15 bg-surface-container-low' :
+                        'border-outline-variant/5 bg-surface-container-low'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2 min-w-0">
+                        <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-[10px] font-black flex-shrink-0 ${
+                          eliminated ? 'bg-surface-container-highest text-on-surface-variant' :
+                          idx === 0 ? 'bg-secondary/15 text-secondary border border-secondary/20' :
+                          'bg-surface-container-highest text-on-surface-variant'
+                        }`}>
+                          {eliminated ? (
+                            <span className="material-symbols-outlined text-xs" style={FILL_STYLE}>skull</span>
+                          ) : isSuddenDeath ? (
+                            <span className="material-symbols-outlined text-xs text-[#ff8c42]" style={FILL_STYLE}>local_fire_department</span>
+                          ) : idx + 1}
+                        </div>
+                        <div className={`text-sm font-medium truncate ${
+                          isMe ? 'text-secondary' : eliminated ? 'text-on-surface-variant' : 'text-on-surface'
+                        }`}>
+                          {s.username}{isMe ? t('room.quiz.youSuffix') : ''}
+                        </div>
+                      </div>
+                      <div className="text-right flex-shrink-0">
+                        <div className={`text-sm font-black ${eliminated ? 'text-on-surface-variant' : 'text-on-surface'}`}>{s.score}</div>
+                        <div className="text-on-surface-variant/50 text-[10px] font-bold">{s.correctAnswers}/{s.totalAnswered}</div>
+                      </div>
+                    </div>
+                  );
+                })
+              )}
+            </div>
+          </aside>
+
           {/* ── Question + Answers area ── */}
           <div className="space-y-6">
             {/* Sequential mode top-bar (mockup feature_A tab 2) */}
@@ -1032,8 +1132,45 @@ const RoomQuiz: React.FC = () => {
             )}
           </div>
 
-          {/* ── Leaderboard / Side Panel ── */}
-          <div className="bg-surface-container rounded-2xl border border-outline-variant/10 p-4 self-start lg:sticky lg:top-20">
+          {/* ── RIGHT (lg+): Live feed sidebar matching mockup state ③/④ ── */}
+          <aside
+            className="hidden lg:flex flex-col self-start lg:sticky lg:top-20 bg-surface-container rounded-2xl border border-outline-variant/10 overflow-hidden"
+            data-testid="quiz-live-feed"
+            style={{ maxHeight: 'calc(100vh - 6rem)' }}
+          >
+            <div className="px-4 py-3 border-b border-outline-variant/10 flex items-center gap-2">
+              <span className="text-sm" aria-hidden="true">📢</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">
+                Live feed
+              </span>
+            </div>
+            <div className="flex-1 px-4 py-3 space-y-2 overflow-y-auto">
+              {feedHistory.length === 0 ? (
+                <p className="text-on-surface-variant/50 text-xs italic text-center py-4">
+                  Đang chờ hoạt động đầu tiên...
+                </p>
+              ) : (
+                feedHistory.map(e => (
+                  <div
+                    key={e.id}
+                    className="text-xs"
+                    style={{
+                      color:
+                        e.tone === 'ok' ? 'rgba(74,222,128,0.85)' :
+                        e.tone === 'fail' ? 'rgba(248,113,113,0.85)' :
+                        'rgba(156,163,175,0.7)',
+                      fontStyle: e.kind === 'round_end' ? 'italic' : 'normal',
+                    }}
+                  >
+                    {e.text}
+                  </div>
+                ))
+              )}
+            </div>
+          </aside>
+
+          {/* ── Leaderboard / Side Panel (mobile only — desktop uses LEFT) ── */}
+          <div className="lg:hidden bg-surface-container rounded-2xl border border-outline-variant/10 p-4 self-start">
             <div className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant mb-4 flex items-center gap-1.5">
               <span className="material-symbols-outlined text-[#9b59b6] text-sm" style={FILL_STYLE}>
                 {isBattleRoyale ? 'swords' :
