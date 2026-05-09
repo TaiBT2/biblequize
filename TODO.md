@@ -1,6 +1,6 @@
 # TODO
 
-## 2026-05-09 — Multiplayer Sprint 4: Host-Organizer separation [IN PROGRESS]
+## 2026-05-09 — Multiplayer Sprint 4: Host-Organizer separation [DONE]
 
 > **Source**: `docs/MULTIPLAYER/PROMPT_FIX_HOST_ORGANIZER_SPRINT4.md` + mockup `MOCKUP_HOST_ORGANIZER_FLOW.html`. Architectural change: Quản trò không chơi, chỉ điều phối. 11 tasks total.
 
@@ -16,7 +16,7 @@
 - Task S4-8: RoomQuizHost component (spectator + 4 controls) — `[x]` DONE
 - Task S4-9: RoomQuizPlayer hides host from scoreboard — `[x]` DONE
 - Task S4-10: QuizEndHost wrap-up screen — `[x]` DONE
-- Task S4-DOCS: Update SPEC_USER_v3 §5.4 — `[ ]` TODO
+- Task S4-DOCS: Update SPEC_USER_v3.1 §5.5 + reference SPEC_MULTIPLAYER.md — `[x]` DONE
 
 ---
 

@@ -343,7 +343,8 @@ Endpoints:
 - Mã phòng 6 ký tự, 2–20 người (tùy mode).
 - Realtime via STOMP `/topic/room/{roomId}` (xem §26).
 - Lifecycle R1–R5 (canonical, xem SPEC_MULTIPLAYER §4).
-- Routes FE: `/multiplayer`, `/rooms`, `/room/create`, `/room/join`, `/room/:roomId/lobby`, `/room/:roomId/quiz`.
+- Routes FE: `/multiplayer`, `/rooms`, `/room/create`, `/room/join`, `/room/:roomId/lobby`, `/room/:roomId/quiz`, `/room/:roomId/host` (Sprint 4 — Quản trò spectator).
+- **Sprint 4 — Host-Organizer separation (default cho rooms mới):** host KHÔNG trả lời câu hỏi, chỉ điều phối (pause/skip/broadcast/end-early qua `POST /api/rooms/{id}/host/*`). Min 2 players không tính host. Field `Room.hostPlaysGame` (default `false` cho rooms mới, `true` cho rooms tạo trước Sprint 4 + ChurchGroup "Tự ôn"/"Chơi cùng nhau"). WS events mới: `GAME_PAUSED`, `GAME_RESUMED`, `QUESTION_SKIPPED`, `HOST_BROADCAST`. `ROOM_ENDED.reason` thêm `HOST_ENDED_EARLY`.
 
 ### 5.6 Liturgical Seasons (4 mùa canonical)
 
