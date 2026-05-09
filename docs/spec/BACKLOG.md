@@ -238,6 +238,53 @@
 
 ---
 
+## Added 2026-05-09 (First spec-audit run — `tools/spec-audit/`)
+
+> Source: `tools/spec-audit/REPORT.md` (first run). Top-priority items only;
+> full broken/orphan/undocumented lists in REPORT.md.
+>
+> First-run baseline: 38 broken refs · 304 orphan sections · 200 undocumented
+> business-logic files. Coverage: BE Controller 5%, BE Service 6%, FE User Page 4%,
+> FE Admin Page 11%.
+
+### BL-AUDIT-1 — Spec refs use partial paths (e.g. `pages/Multiplayer.tsx`)
+- **Issue:** SPEC_MULTIPLAYER §7.x references `pages/Multiplayer.tsx`, `pages/CreateRoom.tsx`, `pages/JoinRoom.tsx`, `pages/RoomLobby.tsx`, `pages/RoomQuiz.tsx`, etc. — partial paths that fail audit's filesystem check (must be `apps/web/src/pages/...`).
+- **Cần làm:** Bulk replace partial paths → full repo-rooted paths in SPEC_MULTIPLAYER (and any other spec hit by this).
+- **Status:** ⬜ TODO
+- **Ref:** REPORT.md §Broken Refs (≈10 of 38 broken)
+
+### BL-AUDIT-2 — `RoomQuizHost.tsx` / `RoomQuizPlayer.tsx` referenced but not implemented
+- **Issue:** SPEC_MULTIPLAYER §7.5 documents Sprint 4 split routes (`pages/RoomQuizHost.tsx`, `pages/RoomQuizPlayer.tsx`), code still has single `pages/RoomQuiz.tsx`. Sprint 4 in-progress (S4-1...S4-4 merged, split route not yet).
+- **Cần làm:** Either (a) add deferral note in SPEC_MULTIPLAYER §7.5 ("Split deferred to Sprint 4 closeout") or (b) defer entire split to ROADMAP until ship.
+- **Status:** ⬜ TODO
+
+### BL-AUDIT-3 — Migration filename refs in SPEC_USER use bare names
+- **Issue:** SPEC_USER §3.5/§4.7/§5.3 reference `add_basic_quiz_unlock.sql`, `add_xp_surge_to_users.sql`, `add_daily_completions.sql` (bare). Actual Flyway files use `V{n}__` prefix and don't match basename search.
+- **Cần làm:** Update spec to reference actual `apps/api/src/main/resources/db/migration/V{n}__...sql` filenames.
+- **Status:** ⬜ TODO
+
+### BL-AUDIT-4 — Variety mode pages referenced but don't exist (`MysteryMode.tsx`, `SpeedRound.tsx`, `WeeklyQuiz.tsx`)
+- **Issue:** SPEC_USER §5.4 Variety Modes references `pages/MysteryMode.tsx`, `pages/SpeedRound.tsx`, `pages/WeeklyQuiz.tsx`. None exist in `apps/web/src/pages/`. Either vaporware or planned.
+- **Cần làm:** Verify with user — ship status? If not shipped → move to ROADMAP. If shipped under different name → fix refs.
+- **Status:** ⬜ TODO
+
+### BL-AUDIT-5 — `Groups.tsx` ambiguous (admin vs user page)
+- **Issue:** SPEC_ADMIN_v3.1 §2 references `Groups.tsx`. Two files match: `apps/web/src/pages/admin/Groups.tsx` AND `apps/web/src/pages/Groups.tsx`. Audit flags as ambiguous.
+- **Cần làm:** Use full path in spec ref (`apps/web/src/pages/admin/Groups.tsx`).
+- **Status:** ⬜ TODO
+
+### BL-AUDIT-6 — Coverage critically low across all concerns
+- **Issue:** First-run coverage stats: BE Controller 5% (2/37), BE Service 6% (3/51), FE User Page 4% (4/90), FE Admin Page 11% (4/35). 200 business-logic files have zero spec ref.
+- **Cần làm:** Plan systematic spec coverage push — minimum target: every Controller + Service mentioned in at least one spec section. Track via REPORT.md coverage table over sprints.
+- **Status:** ⬜ TODO
+
+### BL-AUDIT-7 — 304 orphan spec sections (no code refs)
+- **Issue:** 304 of 426 spec sections (71%) have zero file:line refs. Could be section overhead (intro/headers) or genuine vaporware.
+- **Cần làm:** Filter via `node tools/spec-audit/parse-spec-refs.js --orphans`. Triage: prose-only sections OK, "behavior X happens at Y" sections need refs.
+- **Status:** ⬜ TODO
+
+---
+
 ## Cross-references
 - Canonical specs: [SPEC_USER_v3.1.md](SPEC_USER_v3.1.md), [SPEC_MULTIPLAYER.md](SPEC_MULTIPLAYER.md), [SPEC_ADMIN_v3.1.md](SPEC_ADMIN_v3.1.md), [SPEC_GROUP_v1.2.md](SPEC_GROUP_v1.2.md)
 - Roadmap (defer features): [SPEC_ROADMAP.md](SPEC_ROADMAP.md)
