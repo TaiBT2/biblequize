@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useStomp } from '../hooks/useStomp';
 import { useError } from '../contexts/ErrorContext';
+import { api } from '../api/client';
 import ReactionBar from '../components/ReactionBar';
 import LiveFeed from '../components/LiveFeed';
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton';
@@ -297,6 +298,31 @@ const RoomQuiz: React.FC = () => {
     const t = setInterval(() => setTimeLeft(s => Math.max(0, s - 1)), 1000);
     return () => clearInterval(t);
   }, [timeLeft]);
+
+  // Rejoin rehydrate: when the page mounts mid-game, the next QUESTION_START
+  // broadcast is what populates state — but that may not arrive for several
+  // seconds (between-question gap or remaining timePerQuestion). Pull the
+  // cached current question from REST so the user sees content immediately.
+  useEffect(() => {
+    if (!roomId) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await api.get(`/api/rooms/${roomId}/current-question`);
+        if (cancelled || res.status !== 200 || !res.data?.question) return;
+        const data = res.data.question as { questionIndex: number; totalQuestions: number; question: Question; timeLimit: number };
+        questionStartedAt.current = Date.now();
+        setQuestionIndex(data.questionIndex);
+        setTotalQuestions(data.totalQuestions);
+        setQuestion(data.question);
+        setTimeLimit(data.timeLimit);
+        // We don't know how many seconds elapsed since the broadcast, so cap
+        // at timeLimit; the next QUESTION_START or ROUND_END will resync.
+        setTimeLeft(data.timeLimit);
+      } catch { /* 204/error: keep waiting for QUESTION_START */ }
+    })();
+    return () => { cancelled = true; };
+  }, [roomId]);
 
   const inSdMatch = isSuddenDeath && (sdChampionName === myUsername || sdChallengerName === myUsername);
   const canAnswer = useMemo(

@@ -5,6 +5,7 @@ import com.biblequiz.api.websocket.WebSocketMessage;
 import com.biblequiz.modules.room.entity.Room;
 import com.biblequiz.modules.room.service.RoomQuizService;
 import com.biblequiz.modules.room.service.RoomService;
+import com.biblequiz.modules.room.service.RoomStateService;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 
@@ -32,6 +33,9 @@ public class RoomController {
 
     @Autowired
     private RoomWebSocketController roomWebSocketController;
+
+    @Autowired
+    private RoomStateService roomStateService;
 
     /**
      * POST /api/rooms - Tạo phòng mới
@@ -216,6 +220,18 @@ public class RoomController {
             }
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
+    }
+
+    /**
+     * GET /api/rooms/{id}/current-question - Trả câu hỏi hiện tại được cache
+     * trong Redis để client (re-joiner mid-game) có thể rehydrate state mà
+     * không cần đợi QUESTION_START tiếp theo. Trả 204 nếu chưa có hoặc đã clear.
+     */
+    @GetMapping("/{id}/current-question")
+    public ResponseEntity<?> getCurrentQuestion(@PathVariable String id) {
+        return roomStateService.getCurrentQuestion(id)
+                .<ResponseEntity<?>>map(q -> ResponseEntity.ok(Map.of("success", true, "question", q)))
+                .orElseGet(() -> ResponseEntity.noContent().build());
     }
 
     /**
