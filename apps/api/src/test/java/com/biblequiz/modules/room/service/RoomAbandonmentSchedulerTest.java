@@ -1,5 +1,7 @@
 package com.biblequiz.modules.room.service;
 
+import com.biblequiz.api.websocket.RoomWebSocketController;
+import com.biblequiz.api.websocket.WebSocketMessage;
 import com.biblequiz.modules.room.entity.Room;
 import com.biblequiz.modules.room.repository.RoomRepository;
 
@@ -23,12 +25,13 @@ class RoomAbandonmentSchedulerTest {
 
     @Mock private RoomRepository roomRepository;
     @Mock private RoomService roomService;
+    @Mock private RoomWebSocketController webSocketController;
 
     private RoomAbandonmentScheduler scheduler;
 
     @BeforeEach
     void setUp() {
-        scheduler = new RoomAbandonmentScheduler(roomRepository, roomService);
+        scheduler = new RoomAbandonmentScheduler(roomRepository, roomService, webSocketController);
     }
 
     private Room stuck(String id, LocalDateTime startedAt) {
@@ -41,7 +44,7 @@ class RoomAbandonmentSchedulerTest {
     }
 
     @Test
-    void sweepStuckGames_callsEndRoomForEachStuckRow() {
+    void sweepStuckGames_callsEndRoomForEachStuckRow_andBroadcastsStuckGame() {
         Room a = stuck("a", LocalDateTime.now().minusHours(2));
         Room b = stuck("b", LocalDateTime.now().minusHours(3));
         when(roomRepository.findStuckInProgressRooms(any())).thenReturn(List.of(a, b));
@@ -50,7 +53,8 @@ class RoomAbandonmentSchedulerTest {
 
         verify(roomService).endRoom("a");
         verify(roomService).endRoom("b");
-        verifyNoMoreInteractions(roomService);
+        verify(webSocketController).broadcastRoomEnded("a", WebSocketMessage.RoomEndedReason.STUCK_GAME);
+        verify(webSocketController).broadcastRoomEnded("b", WebSocketMessage.RoomEndedReason.STUCK_GAME);
     }
 
     @Test

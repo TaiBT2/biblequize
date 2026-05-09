@@ -1,5 +1,6 @@
 package com.biblequiz.modules.room.service;
 
+import com.biblequiz.api.websocket.RoomWebSocketController;
 import com.biblequiz.modules.room.entity.Room;
 import com.biblequiz.modules.room.entity.RoomPlayer;
 import com.biblequiz.modules.room.repository.RoomPlayerRepository;
@@ -34,6 +35,7 @@ class RoomServiceCleanupTest {
     @Mock private RoomRepository roomRepository;
     @Mock private RoomPlayerRepository roomPlayerRepository;
     @Mock private UserRepository userRepository;
+    @Mock private RoomWebSocketController webSocketController;
 
     @InjectMocks private RoomService roomService;
 

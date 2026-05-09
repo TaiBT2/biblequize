@@ -26,7 +26,19 @@
       "PowerShell(cmd /c \"dir D:\\\\code\\\\biblequize\\\\apps\\\\api\\\\src\\\\main\\\\resources\\\\db\\\\migration /b 2>&1\")",
       "PowerShell(netstat -ano)",
       "PowerShell(Get-Process -Id 44652 -ErrorAction SilentlyContinue)",
-      "PowerShell($conn = Get-NetTCPConnection -LocalPort 8080 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1; Write-Output \\(\"PID: \" + $conn.OwningProcess\\); $p = Get-WmiObject Win32_Process -Filter \\(\"ProcessId=\" + $conn.OwningProcess\\); Write-Output \\(\"Name: \" + $p.Name + \" | CmdLine: \" + $p.CommandLine\\))"
+      "PowerShell($conn = Get-NetTCPConnection -LocalPort 8080 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1; Write-Output \\(\"PID: \" + $conn.OwningProcess\\); $p = Get-WmiObject Win32_Process -Filter \\(\"ProcessId=\" + $conn.OwningProcess\\); Write-Output \\(\"Name: \" + $p.Name + \" | CmdLine: \" + $p.CommandLine\\))",
+      "PowerShell(Stop-Process -Id 27936 -Force; Start-Sleep -Seconds 2; \\(Test-NetConnection -ComputerName localhost -Port 8080 -InformationLevel Quiet -WarningAction SilentlyContinue\\) | ForEach-Object { if \\($_\\) { \"still up\" } else { \"port 8080 free\" } })",
+      "PowerShell($pid8080 = \\(Get-NetTCPConnection -LocalPort 8080 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1\\).OwningProcess; if \\($pid8080\\) { Stop-Process -Id $pid8080 -Force; \"killed $pid8080\" } else { \"free\" })",
+      "PowerShell(Get-NetTCPConnection -LocalPort 8080,5173 -State Listen -ErrorAction SilentlyContinue)",
+      "PowerShell($pids = \\(Get-NetTCPConnection -LocalPort 8080 -State Listen -ErrorAction SilentlyContinue\\).OwningProcess; $pids | ForEach-Object { Get-Process -Id $_ -ErrorAction SilentlyContinue | Select-Object Id, ProcessName })",
+      "PowerShell(Stop-Process -Id 41232 -Force -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 8080 -State Listen -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Id 26340 -Force)",
+      "PowerShell(Stop-Process -Id 52636 -Force)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 8080 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty OwningProcess | ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue }; Start-Sleep -Seconds 3; Get-NetTCPConnection -LocalPort 8080 -State Listen -ErrorAction SilentlyContinue | Measure-Object | Select-Object -ExpandProperty Count)",
+      "PowerShell(Get-Process -Name java -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"ProcessId=55260\")",
+      "PowerShell($pid8080 = \\(Get-NetTCPConnection -LocalPort 8080 -State Listen -ErrorAction SilentlyContinue\\).OwningProcess; if \\($pid8080\\) { Stop-Process -Id $pid8080 -Force; \"killed $pid8080\" } else { \"no listener\" })"
     ]
   },
   "enableAllProjectMcpServers": true,

@@ -1321,6 +1321,15 @@
     "waitingLabel": "ĐANG CHỜ",
     "waitingSlot": "Đang chờ...",
     "codeCopied": "Đã sao chép!",
+    "ended": {
+      "generic": "Phòng đã đóng",
+      "empty_lobby": "Phòng đã đóng vì hết người chơi",
+      "idle_timeout": "Phòng đã đóng do không hoạt động",
+      "host_gone": "Phòng đã đóng vì host rời đi",
+      "all_disconnected": "Phòng đã đóng vì tất cả mất kết nối",
+      "stuck_game": "Phòng đã đóng do lỗi hệ thống",
+      "game_complete": "Trận đấu đã kết thúc"
+    },
     "modes": {
       "speed_race": "Đua tốc độ",
       "battle_royale": "Sinh tồn",

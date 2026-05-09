@@ -1321,6 +1321,15 @@
     "waitingLabel": "WAITING",
     "waitingSlot": "Waiting...",
     "codeCopied": "Copied!",
+    "ended": {
+      "generic": "Room closed",
+      "empty_lobby": "Room closed because no players remained",
+      "idle_timeout": "Room closed due to inactivity",
+      "host_gone": "Room closed because the host left",
+      "all_disconnected": "Room closed because everyone disconnected",
+      "stuck_game": "Room closed due to a system error",
+      "game_complete": "Match ended"
+    },
     "modes": {
       "speed_race": "Speed Race",
       "battle_royale": "Battle Royale",

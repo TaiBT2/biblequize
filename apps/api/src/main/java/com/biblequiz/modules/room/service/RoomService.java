@@ -1,5 +1,7 @@
 package com.biblequiz.modules.room.service;
 
+import com.biblequiz.api.websocket.RoomWebSocketController;
+import com.biblequiz.api.websocket.WebSocketMessage;
 import com.biblequiz.modules.group.repository.GroupQuizSetRepository;
 import com.biblequiz.modules.room.entity.Room;
 import com.biblequiz.modules.room.entity.RoomPlayer;
@@ -9,6 +11,7 @@ import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +35,13 @@ public class RoomService {
 
     @Autowired
     private GroupQuizSetRepository groupQuizSetRepository;
+
+    /** @Lazy breaks the dep cycle (RoomWebSocketController already injects
+     *  RoomService). Used only for cleanup-path broadcasts; the normal
+     *  per-event broadcasts already live in the controller. */
+    @Autowired
+    @Lazy
+    private RoomWebSocketController webSocketController;
 
     /** SPEC §5.4.0 R2 — single source of truth for "lobby idle ⇒ kill"
      *  threshold. Both the per-user lazy cleanup and the global scheduler
@@ -175,6 +185,8 @@ public class RoomService {
                 r.setStatus(Room.RoomStatus.ENDED);
                 r.setEndedAt(LocalDateTime.now());
                 roomRepository.save(r);
+                webSocketController.broadcastRoomEnded(r.getId(),
+                        WebSocketMessage.RoomEndedReason.IDLE_TIMEOUT);
             } else {
                 roomPlayerRepository.findByRoomIdAndUserId(roomId, userId)
                         .ifPresent(roomPlayerRepository::delete);
@@ -194,7 +206,15 @@ public class RoomService {
             r.setStatus(Room.RoomStatus.ENDED);
             r.setEndedAt(now);
         }
-        if (!stale.isEmpty()) roomRepository.saveAll(stale);
+        if (!stale.isEmpty()) {
+            roomRepository.saveAll(stale);
+            // Broadcast AFTER save so a transactional rollback on the save
+            // doesn't leave clients with a phantom "ended" toast.
+            for (Room r : stale) {
+                webSocketController.broadcastRoomEnded(r.getId(),
+                        WebSocketMessage.RoomEndedReason.IDLE_TIMEOUT);
+            }
+        }
         return stale.size();
     }
 
@@ -290,6 +310,11 @@ public class RoomService {
         syncPlayerCount(room);
 
         if (room.getCurrentPlayers() == 0 && !keepForRejoin) {
+            // SPEC §5.4.0 R1: announce before delete so any straggler still
+            // subscribed (race condition with the FE leave navigate) gets a
+            // proper redirect instead of silent topic loss.
+            webSocketController.broadcastRoomEnded(room.getId(),
+                    WebSocketMessage.RoomEndedReason.EMPTY_LOBBY);
             roomRepository.delete(room);
         }
     }

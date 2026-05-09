@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, type CSSProperties } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api/client';
@@ -400,10 +400,26 @@ function RoomCard({ room }: { room: PublicRoom }) {
 const Multiplayer = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
   const { isAuthenticated } = useAuth();
   const [sort, setSort] = useState<SortOption>('newest');
   const [codeJoinError, setCodeJoinError] = useState<string | null>(null);
   const [isCodeJoining, setIsCodeJoining] = useState(false);
+  const [roomEndedBanner, setRoomEndedBanner] = useState<string | null>(null);
+
+  // SPEC §5.4.0 — RoomLobby/RoomQuiz redirect here with a reason in nav
+  // state when the backend cleanup paths force the room to end. Show a
+  // banner once and clear the nav state so a refresh doesn't re-show it.
+  useEffect(() => {
+    const navState = location.state as { roomEndedReason?: string; kickedFromRoom?: boolean } | null;
+    if (navState?.roomEndedReason) {
+      setRoomEndedBanner(navState.roomEndedReason);
+      window.history.replaceState({}, '');
+      const timer = setTimeout(() => setRoomEndedBanner(null), 6000);
+      return () => clearTimeout(timer);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleJoinByCode = async (code: string) => {
     setIsCodeJoining(true);
@@ -454,6 +470,23 @@ const Multiplayer = () => {
 
   return (
     <div data-testid="multiplayer-page" className="space-y-6">
+
+      {roomEndedBanner && (
+        <div
+          data-testid="multiplayer-room-ended-banner"
+          className="rounded-xl px-4 py-3 flex items-center gap-3"
+          style={{
+            background: 'rgba(232,168,50,0.08)',
+            border: '1px solid rgba(232,168,50,0.25)',
+            color: '#fbbf24',
+          }}
+        >
+          <span className="material-symbols-outlined text-lg">info</span>
+          <span className="text-sm font-medium">
+            {t(`room.ended.${roomEndedBanner.toLowerCase()}`, t('room.ended.generic', 'Phòng đã đóng'))}
+          </span>
+        </div>
+      )}
 
       {/* ── Page Header ── */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">

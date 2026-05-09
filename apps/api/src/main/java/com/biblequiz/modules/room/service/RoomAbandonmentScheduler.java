@@ -1,5 +1,7 @@
 package com.biblequiz.modules.room.service;
 
+import com.biblequiz.api.websocket.RoomWebSocketController;
+import com.biblequiz.api.websocket.WebSocketMessage;
 import com.biblequiz.modules.room.entity.Room;
 import com.biblequiz.modules.room.repository.RoomRepository;
 
@@ -35,10 +37,14 @@ public class RoomAbandonmentScheduler {
 
     private final RoomRepository roomRepository;
     private final RoomService roomService;
+    private final RoomWebSocketController webSocketController;
 
-    public RoomAbandonmentScheduler(RoomRepository roomRepository, RoomService roomService) {
+    public RoomAbandonmentScheduler(RoomRepository roomRepository,
+                                    RoomService roomService,
+                                    RoomWebSocketController webSocketController) {
         this.roomRepository = roomRepository;
         this.roomService = roomService;
+        this.webSocketController = webSocketController;
     }
 
     @Scheduled(fixedRate = 5 * 60 * 1000L) // every 5 minutes
@@ -56,6 +62,8 @@ public class RoomAbandonmentScheduler {
         for (Room room : stuck) {
             try {
                 roomService.endRoom(room.getId());
+                webSocketController.broadcastRoomEnded(room.getId(),
+                        WebSocketMessage.RoomEndedReason.STUCK_GAME);
                 log.warn("[ROOM-ABANDON] Recovered stuck room {} (started at {})",
                         room.getRoomCode(), room.getStartedAt());
             } catch (Exception e) {

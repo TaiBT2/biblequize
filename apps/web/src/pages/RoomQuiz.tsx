@@ -289,6 +289,14 @@ const RoomQuiz: React.FC = () => {
           }
           break;
         }
+        case 'ROOM_ENDED': {
+          // SPEC §5.4.0 R5 — backend recovered a stuck game or otherwise
+          // ended the room out from under us. Bail to /multiplayer with the
+          // reason so it can be toasted there.
+          const d = msg.data as { reason?: string } | undefined;
+          navigate('/multiplayer', { replace: true, state: { roomEndedReason: d?.reason ?? 'GENERIC' } });
+          break;
+        }
       }
     },
   });

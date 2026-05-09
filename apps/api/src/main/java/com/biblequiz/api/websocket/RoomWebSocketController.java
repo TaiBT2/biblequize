@@ -418,6 +418,18 @@ public class RoomWebSocketController {
     }
 
     /**
+     * SPEC §5.4.0 R1/R2/R5 — tell subscribers a room is going away
+     * (cleanup, not a normal game finish). Emit BEFORE the room row is
+     * deleted so the topic still has subscribers when the frame is sent.
+     */
+    public void broadcastRoomEnded(String roomId, String reason) {
+        WebSocketMessage.RoomEndedData data = new WebSocketMessage.RoomEndedData(roomId, reason);
+        WebSocketMessage.Message msg = new WebSocketMessage.Message(
+                WebSocketMessage.MessageTypes.ROOM_ENDED, data);
+        messagingTemplate.convertAndSend("/topic/room/" + roomId, msg);
+    }
+
+    /**
      * Broadcast player eliminated (Battle Royale)
      */
     public void broadcastPlayerEliminated(String roomId, String userId, String username, int rank, int activeRemaining) {

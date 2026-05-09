@@ -216,6 +216,13 @@ const RoomLobby: React.FC = () => {
         case 'QUIZ_END':
           fetchRoom();
           break;
+        case 'ROOM_ENDED': {
+          // SPEC §5.4.0 R1/R2/R5 — backend cleanup forced the room to end.
+          // Stash the reason in nav state so /multiplayer can toast it.
+          const d = msg.data as { reason?: string } | undefined;
+          navigate('/multiplayer', { replace: true, state: { roomEndedReason: d?.reason ?? 'GENERIC' } });
+          break;
+        }
       }
     },
   });

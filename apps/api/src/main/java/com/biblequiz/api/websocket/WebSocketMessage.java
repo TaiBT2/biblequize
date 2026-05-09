@@ -406,6 +406,38 @@ public class WebSocketMessage {
     }
 
     /**
+     * SPEC §5.4.0 R1/R2/R5 — broadcast when a room is auto-ended by the
+     * lifecycle rules so subscribed clients can toast + redirect instead
+     * of silently losing their topic.
+     */
+    public static class RoomEndedData {
+        public final String roomId;
+        /** One of: EMPTY_LOBBY | IDLE_TIMEOUT | HOST_GONE | ALL_DISCONNECTED | STUCK_GAME | GAME_COMPLETE */
+        public final String reason;
+
+        public RoomEndedData(String roomId, String reason) {
+            this.roomId = roomId;
+            this.reason = reason;
+        }
+    }
+
+    /**
+     * Reason codes for {@link RoomEndedData#reason}. Centralised so the FE
+     * handler i18n keys (room.ended.*) stay in lock-step with the BE
+     * emitters.
+     */
+    public static class RoomEndedReason {
+        public static final String EMPTY_LOBBY = "EMPTY_LOBBY";
+        public static final String IDLE_TIMEOUT = "IDLE_TIMEOUT";
+        public static final String HOST_GONE = "HOST_GONE";
+        public static final String ALL_DISCONNECTED = "ALL_DISCONNECTED";
+        public static final String STUCK_GAME = "STUCK_GAME";
+        public static final String GAME_COMPLETE = "GAME_COMPLETE";
+
+        private RoomEndedReason() {}
+    }
+
+    /**
      * Error message data
      */
     public static class ErrorData {
