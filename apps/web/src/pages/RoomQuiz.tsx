@@ -7,6 +7,7 @@ import { api } from '../api/client';
 import { soundManager } from '../services/soundManager';
 import { haptic } from '../utils/haptics';
 import ExplanationPanel from '../components/multiplayer/ExplanationPanel';
+import ComboBanner from '../components/multiplayer/ComboBanner';
 import ReactionBar from '../components/ReactionBar';
 import LiveFeed from '../components/LiveFeed';
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton';
@@ -111,6 +112,12 @@ const RoomQuiz: React.FC = () => {
   const [latestAnswer, setLatestAnswer] = useState<{ playerId: string; username: string; isCorrect: boolean; reactionTimeMs: number } | null>(null);
   const myUserId = localStorage.getItem('userId') ?? '';
 
+  // Sprint 2 S2-7: streak detection. consecutiveCorrect resets to 0 on
+  // any wrong answer; we surface a banner at 5 and 10 with the matching
+  // multiplier (FE-only — server scoring stays authoritative for points).
+  const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
+  const [comboBanner, setComboBanner] = useState<{ count: number; multiplier: number } | null>(null);
+
   const questionStartedAt = useRef<number>(0);
   const toastCounter = useRef(0);
   const { showError } = useError();
@@ -182,6 +189,27 @@ const RoomQuiz: React.FC = () => {
             const wasCorrect = selected === d.correctIndex;
             soundManager.play(wasCorrect ? 'correctAnswer' : 'wrongAnswer');
             wasCorrect ? haptic.correct() : haptic.wrong();
+            // Sprint 2 S2-7: streak detection. Bumps fire the combo
+            // banner at 5 and 10 with their respective multipliers.
+            // Order: compute next then act so the banner sees the
+            // post-increment count.
+            if (wasCorrect) {
+              setConsecutiveCorrect(prev => {
+                const next = prev + 1;
+                if (next === 5) {
+                  setComboBanner({ count: 5, multiplier: 1.2 });
+                  soundManager.play('combo5');
+                  haptic.combo();
+                } else if (next === 10) {
+                  setComboBanner({ count: 10, multiplier: 1.5 });
+                  soundManager.play('combo10');
+                  haptic.combo();
+                }
+                return next;
+              });
+            } else {
+              setConsecutiveCorrect(0);
+            }
           }
           break;
         }
@@ -488,6 +516,15 @@ const RoomQuiz: React.FC = () => {
           <span className="material-symbols-outlined text-secondary text-sm animate-spin">sync</span>
           {t('room.reconnecting')}
         </div>
+      )}
+
+      {/* Sprint 2 S2-7: combo streak banner */}
+      {comboBanner && (
+        <ComboBanner
+          count={comboBanner.count}
+          multiplier={comboBanner.multiplier}
+          onDismiss={() => setComboBanner(null)}
+        />
       )}
 
       {/* Elimination toasts (Battle Royale) */}
