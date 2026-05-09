@@ -41,6 +41,10 @@ describe('SoundManager', () => {
     expect(() => soundManager.play('timerWarning')).not.toThrow()
     expect(() => soundManager.play('badgeUnlock')).not.toThrow()
     expect(() => soundManager.play('newRecord')).not.toThrow()
+    // Sprint 2 multiplayer ceremony sounds
+    expect(() => soundManager.play('gameStart')).not.toThrow()
+    expect(() => soundManager.play('victory')).not.toThrow()
+    expect(() => soundManager.play('playerJoin')).not.toThrow()
   })
 
   it('play does not throw when disabled', () => {

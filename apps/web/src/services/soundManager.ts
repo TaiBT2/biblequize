@@ -10,6 +10,8 @@ type SoundName =
   | 'quizComplete' | 'perfectScore' | 'newRecord'
   | 'tierUp' | 'badgeUnlock'
   | 'buttonTap'
+  // Multiplayer ceremony (Sprint 2)
+  | 'gameStart' | 'victory' | 'playerJoin'
 
 const STORAGE_KEY = 'bq_sound_settings'
 
@@ -198,6 +200,40 @@ class SoundManager {
 
       case 'buttonTap':
         this.playTone(1200, 0.03, 'sine', 0.2)
+        break
+
+      case 'gameStart':
+        // Multiplayer countdown payoff — whoosh + bright chord (~1s).
+        // Mirrors the cinematic "BẮT ĐẦU!" moment.
+        this.playSequence([
+          { freq: 220, delay: 0,    dur: 0.18, type: 'sawtooth' },
+          { freq: 440, delay: 0.05, dur: 0.18, type: 'sawtooth' },
+          { freq: 880, delay: 0.18, dur: 0.35 },
+          { freq: 1175, delay: 0.18, dur: 0.35 },
+          { freq: 1568, delay: 0.18, dur: 0.55 },
+        ], 0.85)
+        break
+
+      case 'victory':
+        // Winner of the match (rank #1). Three-stage rising fanfare,
+        // longer than quizComplete to feel earned.
+        this.playSequence([
+          { freq: 523, delay: 0,    dur: 0.18 },
+          { freq: 659, delay: 0.16, dur: 0.18 },
+          { freq: 784, delay: 0.32, dur: 0.18 },
+          { freq: 1047, delay: 0.5, dur: 0.5 },
+          { freq: 1319, delay: 0.7, dur: 0.5 },
+          { freq: 1568, delay: 0.9, dur: 0.7 },
+        ])
+        setTimeout(() => this.playChord([523, 659, 784, 1047], 0.9, 'sine', 0.45), 1200)
+        break
+
+      case 'playerJoin':
+        // Subtle "someone is here" ding — short and unobtrusive.
+        this.playSequence([
+          { freq: 880, delay: 0,   dur: 0.06 },
+          { freq: 1320, delay: 0.05, dur: 0.12 },
+        ], 0.55)
         break
     }
   }
