@@ -1,5 +1,6 @@
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import Podium from './Podium';
+import ConfettiBurst from './ConfettiBurst';
 import type { PlayerScore } from '../../pages/room/RoomOverlays';
 
 interface Props {
@@ -42,6 +43,10 @@ export function QuizEndScreen({
   );
   const matchDuration = startedAtMs ? Date.now() - startedAtMs : null;
 
+  // Mockup spec: 40 confetti pieces for host, 25 for player.
+  // Render once per mount (key off the ref so a remount re-spawns).
+  const confettiKeyRef = useRef(Date.now());
+
   return (
     <div
       data-testid="quiz-end-screen"
@@ -51,6 +56,16 @@ export function QuizEndScreen({
         fontFamily: "'Be Vietnam Pro', sans-serif",
       }}
     >
+      {/* Confetti — fixed full-bleed overlay above the radial gradient
+          but below interactive content. position:fixed lets pieces fall
+          past the page even after the user scrolls. */}
+      <div
+        className="pointer-events-none fixed inset-0 z-[51] overflow-hidden"
+        aria-hidden="true"
+      >
+        <ConfettiBurst key={confettiKeyRef.current} count={isHost ? 40 : 25} />
+      </div>
+
       {/* Top bar: role badge + room context + close */}
       <header
         className="flex items-center justify-between px-4 lg:px-6 h-14 border-b"
