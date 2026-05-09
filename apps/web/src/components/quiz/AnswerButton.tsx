@@ -84,58 +84,61 @@ export const AnswerButton: React.FC<AnswerButtonProps> = ({
   let letterClasses: string
   let textClasses: string
   let trailingIcon: React.ReactNode = null
+  let inlineStyle: React.CSSProperties | undefined
 
   switch (state) {
     case 'default':
-      btnClasses = color.btnDefault
+      btnClasses = clsx('border-2', color.btnDefault)
       letterClasses = color.letterDefault
       textClasses = 'text-on-surface'
       break
     case 'selected':
-      btnClasses = clsx(color.btnSelected, 'gold-glow')
+      btnClasses = clsx('border-2', color.btnSelected, 'gold-glow')
       letterClasses = color.letterSelected
       textClasses = 'text-on-surface'
       break
     case 'correct':
-      btnClasses = 'border-green-500 bg-green-500/15 ring-2 ring-green-500/40 answer-correct-anim'
-      letterClasses = 'bg-green-500 text-on-secondary shadow-lg'
-      textClasses = 'text-green-400'
+      // Mockup state ②/④: rgba(74,222,128,0.18) bg, border-2 #4ade80,
+      // green-gradient letter chip, plain emerald-400 10px badge text
+      // (NOT a pill, NOT a material icon — just "✓ ĐÚNG · BẠN CHỌN").
+      btnClasses = 'answer-correct-anim border-2'
+      letterClasses = 'text-white shadow-lg answer-letter-green-grad'
+      textClasses = 'text-white font-semibold'
+      inlineStyle = {
+        background: 'rgba(74,222,128,0.18)',
+        borderColor: '#4ade80',
+        boxShadow: '0 0 24px rgba(74,222,128,0.25)',
+      }
       trailingIcon = (
         <span
-          className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
-          style={{
-            background: 'rgba(74,222,128,0.18)',
-            color: '#4ade80',
-            border: '1px solid rgba(74,222,128,0.35)',
-            whiteSpace: 'nowrap',
-          }}
+          className="text-[10px] font-bold whitespace-nowrap"
+          style={{ color: '#4ade80' }}
         >
-          <span className="material-symbols-outlined text-[14px]" style={FILL_STYLE} aria-hidden="true">check_circle</span>
-          {pickedByUser ? 'ĐÚNG · BẠN CHỌN' : 'ĐÁP ÁN'}
+          ✓ {pickedByUser ? 'ĐÚNG · BẠN CHỌN' : 'ĐÁP ÁN'}
         </span>
       )
       break
     case 'wrong':
-      btnClasses = 'border-error bg-error/15 answer-wrong-anim'
-      letterClasses = 'bg-error text-on-secondary shadow-lg'
-      textClasses = 'text-error'
+      // Mockup state ④: rgba(239,68,68,0.15) bg, border-2 #ef4444,
+      // red-gradient letter chip, plain red-400 10px badge.
+      btnClasses = 'answer-wrong-anim border-2'
+      letterClasses = 'text-white shadow-lg answer-letter-red-grad'
+      textClasses = 'text-white font-semibold'
+      inlineStyle = {
+        background: 'rgba(239,68,68,0.15)',
+        borderColor: '#ef4444',
+      }
       trailingIcon = (
         <span
-          className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
-          style={{
-            background: 'rgba(239,68,68,0.15)',
-            color: '#f87171',
-            border: '1px solid rgba(239,68,68,0.35)',
-            whiteSpace: 'nowrap',
-          }}
+          className="text-[10px] font-bold whitespace-nowrap"
+          style={{ color: '#f87171' }}
         >
-          <span className="material-symbols-outlined text-[14px]" style={FILL_STYLE} aria-hidden="true">cancel</span>
-          BẠN CHỌN
+          ✗ BẠN CHỌN
         </span>
       )
       break
     case 'eliminated':
-      btnClasses = clsx(color.btnFaded, 'opacity-40 pointer-events-none')
+      btnClasses = clsx('border-2', color.btnFaded, 'opacity-40 pointer-events-none')
       letterClasses = clsx(color.letterDefault, 'line-through opacity-60')
       textClasses = 'text-on-surface-variant line-through'
       trailingIcon = (
@@ -149,9 +152,12 @@ export const AnswerButton: React.FC<AnswerButtonProps> = ({
       break
     case 'disabled':
     default:
-      btnClasses = clsx(color.btnFaded, 'opacity-60')
-      letterClasses = clsx(color.letterDefault, 'opacity-70')
-      textClasses = 'text-on-surface-variant'
+      // Mockup spec: border-transparent + opacity-25 (was 0.6, too loud).
+      // Per-letter color is preserved on the letter chip so the user
+      // still gets the position-color cue while the row is dimmed.
+      btnClasses = 'border border-transparent opacity-25 bg-transparent'
+      letterClasses = color.letterDefault
+      textClasses = 'text-white'
       break
   }
 
@@ -166,13 +172,14 @@ export const AnswerButton: React.FC<AnswerButtonProps> = ({
       aria-disabled={!isInteractive}
       data-compact={compact || undefined}
       className={clsx(
-        'group relative flex items-center rounded-2xl border-2',
+        'group relative flex items-center rounded-2xl',
         'transition-all duration-200 text-left active:scale-[0.98]',
         compact
           ? 'gap-2.5 md:gap-4 p-2.5 md:p-5 min-h-[44px] md:min-h-[64px]'
           : 'gap-4 p-4 md:p-5 min-h-[64px]',
         btnClasses,
       )}
+      style={inlineStyle}
     >
       <div
         className={clsx(
