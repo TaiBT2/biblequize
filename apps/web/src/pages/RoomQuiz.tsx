@@ -149,6 +149,11 @@ const RoomQuiz: React.FC = () => {
     ]);
   };
 
+  // C3: which usernames have submitted their answer for the current round.
+  // Drives the mobile chip strip's ✓ vs pulse indicator and the bottom
+  // waiting overlay. Cleared on QUESTION_START.
+  const [roundAnswered, setRoundAnswered] = useState<Set<string>>(new Set());
+
   // Sprint 2 S2-11: end-screen sound. Fire once on showPodium=true. We
   // can't drive this from inside PodiumScreen because that component is
   // shared with multiple modes and wouldn't know `myUsername`.
@@ -195,6 +200,8 @@ const RoomQuiz: React.FC = () => {
           // Q3: reset reveal stats for the new question.
           setRevealStats(null);
           lastSubmitMs.current = null;
+          // C3: reset answered tracker for the new round.
+          setRoundAnswered(new Set());
           // Sequential reset
           setRevealedData(null);
           setSeqAnswered(0);
@@ -362,6 +369,12 @@ const RoomQuiz: React.FC = () => {
         case 'ANSWER_SUBMITTED': {
           const d = msg.data as { playerId: string; username: string; isCorrect: boolean; reactionTimeMs: number };
           setLatestAnswer(d);
+          // C3: mark this player as having answered this round.
+          setRoundAnswered(prev => {
+            const next = new Set(prev);
+            next.add(d.username);
+            return next;
+          });
           // Q1: persistent feed history for the new RIGHT column
           const t = (d.reactionTimeMs / 1000).toFixed(1);
           appendFeed(
@@ -514,6 +527,13 @@ const RoomQuiz: React.FC = () => {
     prevRankRef.current = myEntry ? sortedNow.findIndex(s => s.username === myUsername) + 1 : null;
     setSelected(idx);
     setSubmitting(true);
+    // C3: mark myself as answered locally — server's broadcast back to me
+    // would re-set this but we can't rely on the round-trip.
+    setRoundAnswered(prev => {
+      const next = new Set(prev);
+      next.add(myUsername);
+      return next;
+    });
     const ok = send(`/app/room/${roomId}/answer`, { questionIndex, answerIndex: idx, reactionTimeMs });
     if (!ok) {
       // WS disconnected — revert optimistic state so user can retry once
@@ -611,6 +631,72 @@ const RoomQuiz: React.FC = () => {
         onSend={(emoji) => send(`/app/room/${roomId}/reaction`, { reaction: emoji })}
         incoming={reactions.length > 0 ? reactions : null}
       />
+
+      {/* C3: Mobile waiting overlay — fixed-bottom card when the player
+          has submitted but the round hasn't resolved yet. Lists who's
+          still choosing. Hidden on lg+ (desktop has the live-feed
+          sidebar). */}
+      {!isSequential && selected !== null && correctIndex === null && scores.length > 1 && (() => {
+        const pending = scores
+          .filter(s => s.username !== myUsername && !roundAnswered.has(s.username))
+          .slice(0, 5);
+        if (pending.length === 0) return null;
+        return (
+          <div
+            data-testid="quiz-mobile-waiting"
+            className="lg:hidden fixed left-0 right-0 bottom-0 px-4 pb-4 z-40"
+            style={{ paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 16px)' }}
+          >
+            <div
+              className="rounded-xl p-3 flex items-center gap-3"
+              style={{
+                background: 'rgba(50,52,64,0.85)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                boxShadow: '0 -8px 30px rgba(0,0,0,0.4)',
+              }}
+            >
+              <div
+                className="w-8 h-8 rounded-full flex-shrink-0"
+                style={{
+                  border: '2px solid #e8a832',
+                  borderTopColor: 'transparent',
+                  animation: 'spin 0.9s linear infinite',
+                }}
+                aria-hidden="true"
+              />
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-semibold text-white truncate">
+                  Đang chờ {pending.length} người nữa...
+                </div>
+                <div className="text-xs truncate" style={{ color: '#9ca3af' }}>
+                  {pending.map(p => p.username).join(', ')} đang chọn
+                </div>
+              </div>
+              <div className="flex items-center flex-shrink-0">
+                {pending.map((p, i) => (
+                  <div
+                    key={p.playerId}
+                    className="grid place-items-center rounded-full text-[10px] font-bold flex-shrink-0"
+                    style={{
+                      width: 24, height: 24,
+                      marginLeft: i === 0 ? 0 : -4,
+                      background: i % 2 === 0
+                        ? 'linear-gradient(135deg, #4ade80 0%, #047857 100%)'
+                        : 'linear-gradient(135deg, #38bdf8 0%, #0369a1 100%)',
+                      color: '#fff',
+                      border: '2px solid #11131e',
+                      zIndex: pending.length - i,
+                    }}
+                  >
+                    {(p.username?.[0] ?? '?').toUpperCase()}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Reconnecting banner */}
       {reconnecting && (
@@ -863,6 +949,58 @@ const RoomQuiz: React.FC = () => {
 
           {/* ── Question + Answers area ── */}
           <div className="space-y-6">
+            {/* C3: Mobile-only scoreboard chip strip — horizontal scroll
+                bar of player score pills with ✓ (answered) or pulse
+                (still choosing) indicator. Hidden on lg+ where the
+                LEFT scoreboard sidebar covers the same info. */}
+            {!isSequential && scores.length > 0 && (
+              <div className="lg:hidden -mx-4 px-4 pb-1 overflow-x-auto" data-testid="quiz-mobile-chip-strip">
+                <div className="flex items-center gap-2 w-max">
+                  {scores.map((s, idx) => {
+                    const isMe = s.username === myUsername;
+                    const answered = roundAnswered.has(s.username);
+                    const initial = (s.username?.[0] ?? '?').toUpperCase();
+                    return (
+                      <div
+                        key={s.playerId}
+                        className="rounded-full px-2.5 py-1.5 flex items-center gap-1.5 flex-shrink-0"
+                        style={{
+                          background: 'rgba(50,52,64,0.55)',
+                          backdropFilter: 'blur(12px)',
+                          border: isMe ? '1.5px solid rgba(232,168,50,0.5)' : '1px solid rgba(255,255,255,0.06)',
+                          opacity: !answered && !isMe ? 0.7 : 1,
+                        }}
+                      >
+                        <div
+                          className="w-5 h-5 rounded-full grid place-items-center text-[10px] font-bold"
+                          style={{
+                            background: isMe
+                              ? 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)'
+                              : idx === 0
+                              ? 'linear-gradient(135deg, #4ade80 0%, #047857 100%)'
+                              : 'linear-gradient(135deg, #38bdf8 0%, #0369a1 100%)',
+                            color: isMe ? '#11131e' : '#fff',
+                          }}
+                        >
+                          {initial}
+                        </div>
+                        <span className="text-xs font-semibold text-white tabular-nums">{s.score}</span>
+                        {answered ? (
+                          <span className="text-[10px]" style={{ color: '#4ade80' }}>✓</span>
+                        ) : (
+                          <span
+                            className="w-2 h-2 rounded-full animate-pulse"
+                            style={{ background: '#fbbf24' }}
+                            aria-label="Đang chọn"
+                          />
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
             {/* Sequential mode top-bar (mockup feature_A tab 2) */}
             {isSequential ? (
               <>
