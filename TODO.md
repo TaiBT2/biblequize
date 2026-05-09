@@ -1,5 +1,27 @@
 # TODO
 
+## 2026-05-09 — Multiplayer Sprint 4: Host-Organizer separation [IN PROGRESS]
+
+> **Source**: `docs/MULTIPLAYER/PROMPT_FIX_HOST_ORGANIZER_SPRINT4.md` + mockup `MOCKUP_HOST_ORGANIZER_FLOW.html`. Architectural change: Quản trò không chơi, chỉ điều phối. 11 tasks total.
+
+### Tasks
+
+- Task S4-1: DB migration V49 + Room.hostPlaysGame field — `[ ]` IN PROGRESS
+  - File: `db/migration/V49__add_host_plays_game.sql`, `Room.java`, `RoomEntityTest.java`
+  - Default `TRUE` (legacy compat); Sprint 4 createRoom sẽ set `FALSE`
+- Task S4-2: RoomService.createRoom default Quản trò mode — `[ ]` TODO
+- Task S4-3: RoomService.startRoom validation ≥2 players excluding host — `[ ]` TODO
+- Task S4-4: RoomQuizService skip host in scoring/ranking — `[ ]` TODO
+- Task S4-5: Host control endpoints (pause/resume/skip/broadcast/end-early) — `[ ]` TODO
+- Task S4-6: RoomLobby differentiation by role — `[ ]` TODO
+- Task S4-7: CreateRoom hint banner Quản trò — `[ ]` TODO
+- Task S4-8: RoomQuizHost component (spectator + 4 controls) — `[ ]` TODO
+- Task S4-9: RoomQuizPlayer hides host from scoreboard — `[ ]` TODO
+- Task S4-10: QuizEndHost wrap-up screen — `[ ]` TODO
+- Task S4-DOCS: Update SPEC_USER_v3 §5.4 — `[ ]` TODO
+
+---
+
 ## 2026-05-07 — Profile Redesign Phase 1 [DONE]
 
 > **Source**: User prompt + mockup `docs/designs/MOCKUP_PROFILE_REDESIGN.html`. Phase 1 = UI-only with existing data (skip Daily Missions, Bible Journey 66 books, Activity Feed — Phase 2 needs new BE APIs).

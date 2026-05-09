@@ -68,6 +68,11 @@ public class Room {
     @Column(name = "is_public", nullable = false)
     private Boolean isPublic = false;
 
+    // Sprint 4: TRUE = legacy mode (host plays); FALSE = Quan tro mode (host only organizes)
+    // Default true keeps existing rooms unchanged; RoomService.createRoom sets false for new rooms.
+    @Column(name = "host_plays_game", nullable = false)
+    private boolean hostPlaysGame = true;
+
     @Column(name = "started_at")
     private LocalDateTime startedAt;
 
@@ -194,4 +199,7 @@ public LocalDateTime getCreatedAt() { return createdAt; }
 
     public LocalDateTime getEndedAt() { return endedAt; }
     public void setEndedAt(LocalDateTime endedAt) { this.endedAt = endedAt; }
+
+    public boolean isHostPlaysGame() { return hostPlaysGame; }
+    public void setHostPlaysGame(boolean hostPlaysGame) { this.hostPlaysGame = hostPlaysGame; }
 }
