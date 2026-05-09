@@ -206,21 +206,14 @@ describe('RoomLobby — bottom bar', () => {
   })
 })
 
-describe('RoomLobby — chat panel + FAB', () => {
-  it('chat FAB visible when alone (chat panel hidden)', async () => {
+describe('RoomLobby — chat panel (desktop always visible)', () => {
+  it('chat panel is always visible on desktop and FAB is not rendered', async () => {
     await renderLobby()
-    expect(await screen.findByTestId('lobby-chat-fab')).toBeInTheDocument()
-    expect(screen.queryByTestId('lobby-chat-panel')).not.toBeInTheDocument()
-  })
-
-  it('clicking FAB opens chat panel and hides FAB', async () => {
-    await renderLobby()
-    fireEvent.click(await screen.findByTestId('lobby-chat-fab'))
     expect(await screen.findByTestId('lobby-chat-panel')).toBeInTheDocument()
     expect(screen.queryByTestId('lobby-chat-fab')).not.toBeInTheDocument()
   })
 
-  it('chat panel auto-opens when ≥2 players present (desktop)', async () => {
+  it('chat panel stays visible regardless of player count', async () => {
     const room = withPlayers([{ userId: 'guest-1', username: 'Guest' }])
     await renderLobby(room)
     expect(await screen.findByTestId('lobby-chat-panel')).toBeInTheDocument()
@@ -228,7 +221,6 @@ describe('RoomLobby — chat panel + FAB', () => {
 
   it('sends "/app/room/{id}/chat" with trimmed text on Enter', async () => {
     await renderLobby()
-    fireEvent.click(await screen.findByTestId('lobby-chat-fab'))
     const input = await screen.findByPlaceholderText(/Nhắn tin/i)
     fireEvent.change(input, { target: { value: '  hello team  ' } })
     fireEvent.keyDown(input, { key: 'Enter' })
@@ -237,7 +229,6 @@ describe('RoomLobby — chat panel + FAB', () => {
 
   it('does NOT send when text is whitespace-only', async () => {
     await renderLobby()
-    fireEvent.click(await screen.findByTestId('lobby-chat-fab'))
     const input = await screen.findByPlaceholderText(/Nhắn tin/i)
     fireEvent.change(input, { target: { value: '     ' } })
     fireEvent.keyDown(input, { key: 'Enter' })
@@ -246,7 +237,7 @@ describe('RoomLobby — chat panel + FAB', () => {
 
   it('renders incoming CHAT_MESSAGE frames', async () => {
     await renderLobby()
-    fireEvent.click(await screen.findByTestId('lobby-chat-fab'))
+    await screen.findByPlaceholderText(/Nhắn tin/i)
     await waitFor(() => expect(lastStompArgs).not.toBeNull())
     lastStompArgs.onMessage({
       type: 'CHAT_MESSAGE',
@@ -257,7 +248,6 @@ describe('RoomLobby — chat panel + FAB', () => {
 
   it('clears chat input after sending', async () => {
     await renderLobby()
-    fireEvent.click(await screen.findByTestId('lobby-chat-fab'))
     const input = (await screen.findByPlaceholderText(/Nhắn tin/i)) as HTMLInputElement
     fireEvent.change(input, { target: { value: 'hi' } })
     fireEvent.keyDown(input, { key: 'Enter' })
@@ -266,7 +256,6 @@ describe('RoomLobby — chat panel + FAB', () => {
 
   it('5 emoji reactions are rendered', async () => {
     await renderLobby()
-    fireEvent.click(await screen.findByTestId('lobby-chat-fab'))
     await screen.findByPlaceholderText(/Nhắn tin/i)
     expect(screen.getByText('🙏')).toBeInTheDocument()
     expect(screen.getByText('🔥')).toBeInTheDocument()

@@ -190,7 +190,7 @@ const RoomLobby: React.FC = () => {
             isHost: d.sender === room?.hostName,
             time: nowTime(),
           }]);
-          if (!chatOpen) setUnreadChat(c => c + 1);
+          if (isMobile && !chatOpen) setUnreadChat(c => c + 1);
           break;
         }
         case 'GAME_STARTING': {
@@ -239,17 +239,11 @@ const RoomLobby: React.FC = () => {
     return () => window.removeEventListener('resize', handler);
   }, []);
 
-  // Auto-open chat panel on desktop when ≥2 players join (one-time per session)
-  const autoOpenedRef = useRef(false);
+  // Reset desktop unread when chat is visible (always on desktop); mobile resets when drawer opens.
   useEffect(() => {
-    if (!autoOpenedRef.current && !isMobile && (room?.currentPlayers ?? 0) >= 2) {
-      setChatOpen(true);
-      autoOpenedRef.current = true;
-    }
-  }, [room?.currentPlayers, isMobile]);
-
-  // Reset unread when chat opens
-  useEffect(() => { if (chatOpen) setUnreadChat(0); }, [chatOpen]);
+    if (!isMobile) setUnreadChat(0);
+    else if (chatOpen) setUnreadChat(0);
+  }, [chatOpen, isMobile]);
 
   // Close kick menu on outside click
   useEffect(() => {
@@ -399,7 +393,8 @@ const RoomLobby: React.FC = () => {
     ...(room.players?.filter(p => p.userId !== room.hostId) ?? []),
   ];
 
-  const showChatPanel = !isMobile && chatOpen;
+  // Desktop: chat panel is always visible per mockup. Mobile: drawer toggle (chatOpen).
+  const showChatPanel = !isMobile;
 
   return (
     <div
@@ -701,8 +696,8 @@ const RoomLobby: React.FC = () => {
             input={chatInput}
             setInput={setChatInput}
             onSend={handleSendChat}
-            onClose={() => setChatOpen(false)}
             chatEndRef={chatEndRef}
+            onlineCount={room?.currentPlayers}
           />
         )}
       </div>
@@ -1222,7 +1217,9 @@ const ChatInputRow: React.FC<{ value: string; onChange: (v: string) => void; onS
   </div>
 );
 
-const ChatPanel: React.FC<ChatViewProps> = ({ messages, input, setInput, onSend, onClose, chatEndRef }) => (
+type ChatPanelProps = Omit<ChatViewProps, 'onClose'> & { onlineCount?: number };
+
+const ChatPanel: React.FC<ChatPanelProps> = ({ messages, input, setInput, onSend, chatEndRef, onlineCount }) => (
   <aside
     className="flex flex-col border-l"
     style={{ background: '#0d0f17', borderColor: 'rgba(255,255,255,0.04)' }}
@@ -1230,18 +1227,12 @@ const ChatPanel: React.FC<ChatViewProps> = ({ messages, input, setInput, onSend,
   >
     <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
       <div className="inline-flex items-center gap-1.5 text-[13px] font-bold">
-        <span className="material-symbols-outlined text-base" style={{ color: '#9ca3af' }}>chat</span>
-        Trò chuyện
+        <span className="text-sm">💬</span>
+        <span className="uppercase tracking-wider text-xs" style={{ color: '#d1d5db' }}>Trò chuyện</span>
       </div>
-      <button
-        type="button"
-        onClick={onClose}
-        aria-label="Đóng chat"
-        className="w-7 h-7 grid place-items-center rounded-lg hover:bg-white/5"
-        style={{ background: 'rgba(50,52,64,0.5)', color: '#9ca3af' }}
-      >
-        <span className="material-symbols-outlined text-[14px]">close</span>
-      </button>
+      {typeof onlineCount === 'number' && (
+        <span className="text-[10px]" style={{ color: '#6b7280' }}>{onlineCount} online</span>
+      )}
     </div>
     <ChatBody messages={messages} chatEndRef={chatEndRef} />
     <ChatReactionsRow onSend={onSend} />
