@@ -65,6 +65,23 @@ BƯỚC 5 — BẮT ĐẦU CODE (chỉ sau khi 1-4 xong)
 | C8 | SPEC_GROUP locked decisions Q-A...Q-O preserved verbatim |
 | C9 | Defer features chỉ trong ROADMAP, không trong current specs |
 
+## Spec Update Rule (BẮT BUỘC)
+
+> Specs PHẢI sync với code. Mỗi feature commit có 1 trong 3:
+
+| Strategy | Khi dùng | Action |
+|---|---|---|
+| **(a) Spec update cùng PR** | Behavior change đã clear | Edit spec → commit `docs: update SPEC_X §Y` |
+| **(b) BACKLOG BL-N entry** | Cần user review trước | Append BL-N vào `docs/spec/BACKLOG.md` |
+| **(c) `[no-spec-impact]`** | Refactor nội bộ, no behavior change | Tag commit message |
+
+### Quick check
+"Behavior user-facing thay đổi?" → YES: grep specs cho file → spec đúng intent? OK : strategy (a)/(b). NO: (c).
+Tool: `bash tools/spec-audit/audit.sh` (exit 0/1/2). Chi tiết: `docs/dev/workflows.md` §Spec Update Workflow.
+
+### Anti-patterns
+- ❌ "Spec sẽ update sau" — sẽ quên, drift; ❌ update spec để match code (ngược lại); ❌ bare filenames trong spec ref
+
 ## Product context
 
 - **Target audience**: Tin Lành (Protestant) Việt Nam.
@@ -72,9 +89,7 @@ BƯỚC 5 — BẮT ĐẦU CODE (chỉ sau khi 1-4 xong)
 - **Bible version**: BTTHĐ 2011 canonical (C4). Code seed hiện vẫn BTT 1926 (public domain) — BL-1 track migration. Câu mới: BTT 1926 + comment `// TODO BL-1: BTTHĐ 2011`.
 - **Tier naming**: religious (C1), KHÔNG light-themed (Tia Sáng/Vinh Quang).
 - **Mode naming**: "Luyện Tập" + "Đấu Hạng" (C2 lock 2026-05-09).
-- **Question seeding**: workflow + filename convention → `docs/dev/seeding.md`.
-
-> Reference: `DECISIONS.md` cho lịch sử quyết định.
+- **Question seeding** workflow → `docs/dev/seeding.md`. Decision history → `DECISIONS.md`.
 
 ## Quy trình quản lý Task
 
@@ -100,8 +115,7 @@ BƯỚC 5 — BẮT ĐẦU CODE (chỉ sau khi 1-4 xong)
 
 ## Quy trình test bắt buộc (Regression Guard)
 
-> Test đơn lẻ chứng minh code mới hoạt động.
-> Full regression chứng minh code mới KHÔNG phá code cũ.
+> Test đơn lẻ → code mới hoạt động. Full regression → KHÔNG phá code cũ.
 
 ### 3 tầng — KHÔNG bỏ tầng
 
@@ -117,10 +131,7 @@ Commands chi tiết: `docs/dev/testing.md`.
 `store/authStore.ts`, `api/client.ts`, `layouts/AppLayout.tsx`, `contexts/RequireAuth*.tsx`, `styles/global.css`, `hooks/useStomp.ts`, `main.tsx`; BE: `SecurityConfig`, `GlobalExceptionHandler`.
 
 ### Khi phát hiện regression
-DỪNG ngay, KHÔNG code thêm feature mới. Xác định fail test → fix root cause → Tầng 3 lại → ALL PASS mới tiếp tục.
-
-### Baseline
-Số test KHÔNG giảm so với trước task. Baseline trong `apps/web/.test-baseline` + `apps/api/.test-baseline`. KHÔNG hardcode số trong CLAUDE.md.
+DỪNG, fix root cause → Tầng 3 lại → ALL PASS mới tiếp tục. Baseline: `apps/web/.test-baseline` + `apps/api/.test-baseline` — KHÔNG giảm.
 
 ### E2E Test Gate
 Mọi feature/fix → check TC spec + Playwright code TRƯỚC khi code. Chi tiết: `docs/dev/testing.md` §E2E Test Gate.
@@ -149,47 +160,35 @@ Mọi feature/fix → check TC spec + Playwright code TRƯỚC khi code. Chi ti�
 
 ## Definition of Done
 
-- Tầng 3 pass: Vitest + Playwright + JUnit — tất cả green
-- Số test ≥ baseline (`.test-baseline` files)
-- Không TypeScript/Java compile error
-- Không `@SuppressWarnings` mới
-- Flyway migration clean trên DB trống
-- Chạy được local end-to-end
-- UI match design tokens (Stitch → pixel-perfect)
-- Loading/error/success states đều handled
+- Tầng 3 pass (Vitest + Playwright + JUnit) — số test ≥ baseline (`.test-baseline` files)
+- Không TypeScript/Java compile error; không `@SuppressWarnings` mới
+- Flyway migration clean trên DB trống; chạy được local end-to-end
+- UI match design tokens (Stitch → pixel-perfect); loading/error/success states đều handled
 
 ## Commit Convention
 
 ```
-feat: ...       fix: ...        refactor: ...
-test: ...       style: ...      sync: ...
-docs: ...       chore: ...      fix(BL-N): ...   # BACKLOG item
+feat | fix | refactor | test | style | sync | docs | chore
+fix(BL-N): ...   # khi fix BACKLOG item
+[no-spec-impact] # tag refactor không đổi behavior
 ```
-
-Ví dụ:
-- `feat: add TournamentMatch page with 1v1 gameplay`
-- `fix(BL-3): wire XP surge in ScoringService`
-- `sync: Home dashboard from Stitch v5`
+Ví dụ: `feat: add TournamentMatch page`, `fix(BL-3): wire XP surge`, `sync: Home dashboard from Stitch v5`.
 
 ## KHÔNG được làm
 
 ### Code
-- KHÔNG dùng H2 in-memory cho test — Testcontainers MySQL
+- KHÔNG H2 in-memory cho test — Testcontainers MySQL
 - KHÔNG map Entity → DTO thủ công — MapStruct
-- KHÔNG để business logic trong Controller — chỉ Service
+- KHÔNG business logic trong Controller — chỉ Service
 - KHÔNG `System.out.println` — `@Slf4j` log
 - KHÔNG xóa Flyway migration đã chạy — tạo migration mới
-- KHÔNG hardcode màu/font ngoài design tokens
-- KHÔNG `page.waitForTimeout()` Playwright — proper waits
+- KHÔNG hardcode màu/font ngoài design tokens; KHÔNG `page.waitForTimeout()` Playwright
 
 ### Workflow
-- KHÔNG commit khi test fail
-- KHÔNG file > 300 LOC
-- KHÔNG skip Tầng 3 trước commit (kể cả 1 dòng CSS)
-- KHÔNG disable test cũ để test mới pass
-- KHÔNG tiếp tục feature khi đang regression
+- KHÔNG commit khi test fail; KHÔNG skip Tầng 3 trước commit (kể cả 1 dòng CSS)
+- KHÔNG file > 300 LOC; KHÔNG gộp nhiều thay đổi vào 1 commit
+- KHÔNG disable test cũ để test mới pass; KHÔNG tiếp tục feature khi đang regression
 - KHÔNG nhận prompt rồi code 1 lần — chia TODO.md trước
-- KHÔNG gộp nhiều thay đổi vào 1 commit
 - KHÔNG bỏ section Stitch HTML khi sync
 
 ### Specs
@@ -210,13 +209,8 @@ Ví dụ:
 | 1 | `hooks/useWebSocket.ts` | DEPRECATED — use `useStomp.ts` (STOMP CONNECT header). Migrate caller hoặc native WS. BL-15. |
 
 ### Medium — fix khi có thời gian
-
-| # | File | Issue |
-|---|------|-------|
-| 1 | `pages/AuthCallback.tsx` | Dynamic `import()` trong useEffect — đổi static import |
-| 2 | `pages/RoomQuiz.tsx` | `location.state as any` — typed interface |
-| 3 | `pages/Achievements.tsx` | `useState<any>({})` — type stats object |
-| 4 | `components/ui/SearchableSelect.tsx` | Inline styles → Tailwind |
+- `pages/AuthCallback.tsx` dynamic `import()` → static; `pages/RoomQuiz.tsx` `location.state as any` → typed
+- `pages/Achievements.tsx` `useState<any>({})` → typed; `components/ui/SearchableSelect.tsx` inline styles → Tailwind
 
 ### i18n Coverage (cập nhật 2026-05-09)
 
