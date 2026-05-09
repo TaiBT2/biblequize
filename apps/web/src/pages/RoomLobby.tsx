@@ -223,6 +223,17 @@ const RoomLobby: React.FC = () => {
           navigate('/multiplayer', { replace: true, state: { roomEndedReason: d?.reason ?? 'GENERIC' } });
           break;
         }
+        case 'HOST_CHANGED': {
+          // SPEC §5.4.0 R4 — old host's grace expired; backend promoted
+          // a successor. Refetch room details so the crown + start
+          // button move to the new host.
+          const d = msg.data as { newHostId?: string; newHostName?: string } | undefined;
+          if (d?.newHostName) {
+            appendActivity(`${d.newHostName} đã trở thành chủ phòng mới`, 'ok');
+          }
+          fetchRoom();
+          break;
+        }
       }
     },
   });

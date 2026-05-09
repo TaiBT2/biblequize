@@ -418,6 +418,18 @@ public class RoomWebSocketController {
     }
 
     /**
+     * SPEC §5.4.0 R4 — promote-on-host-disconnect notification. FE updates
+     * its local hostId / hostName so the start button + crown move.
+     */
+    public void broadcastHostChanged(String roomId, String newHostId, String newHostName) {
+        WebSocketMessage.HostChangedData data =
+                new WebSocketMessage.HostChangedData(roomId, newHostId, newHostName);
+        WebSocketMessage.Message msg = new WebSocketMessage.Message(
+                WebSocketMessage.MessageTypes.HOST_CHANGED, data);
+        messagingTemplate.convertAndSend("/topic/room/" + roomId, msg);
+    }
+
+    /**
      * SPEC §5.4.0 R1/R2/R5 — tell subscribers a room is going away
      * (cleanup, not a normal game finish). Emit BEFORE the room row is
      * deleted so the topic still has subscribers when the frame is sent.

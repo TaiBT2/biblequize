@@ -21,6 +21,7 @@ public class WebSocketMessage {
         public static final String PLAYER_UNREADY = "PLAYER_UNREADY";
         public static final String ROOM_STARTING = "ROOM_STARTING";
         public static final String ROOM_ENDED = "ROOM_ENDED";
+        public static final String HOST_CHANGED = "HOST_CHANGED";
 
         // Quiz events
         public static final String GAME_STARTING = "GAME_STARTING";
@@ -418,6 +419,22 @@ public class WebSocketMessage {
         public RoomEndedData(String roomId, String reason) {
             this.roomId = roomId;
             this.reason = reason;
+        }
+    }
+
+    /**
+     * SPEC §5.4.0 R4 — broadcast when the original host disconnected past
+     * the grace window and a remaining player took over.
+     */
+    public static class HostChangedData {
+        public final String roomId;
+        public final String newHostId;
+        public final String newHostName;
+
+        public HostChangedData(String roomId, String newHostId, String newHostName) {
+            this.roomId = roomId;
+            this.newHostId = newHostId;
+            this.newHostName = newHostName;
         }
     }
 

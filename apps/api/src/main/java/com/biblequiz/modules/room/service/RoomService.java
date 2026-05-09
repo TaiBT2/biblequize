@@ -410,6 +410,52 @@ public class RoomService {
     }
 
     /**
+     * SPEC §5.4.0 R4 — when the host's STOMP grace expires, hand the
+     * room over to the longest-tenured ACTIVE non-host. Returns the new
+     * host or empty if no eligible successor remains (caller should
+     * end the room with reason HOST_GONE).
+     */
+    public Optional<User> promoteNextHost(String roomId) {
+        Room room = roomRepository.findById(roomId).orElse(null);
+        if (room == null) return Optional.empty();
+        String oldHostId = room.getHost() != null ? room.getHost().getId() : "";
+        List<RoomPlayer> candidates = roomPlayerRepository
+                .findActiveNonHostsByJoinedAtAsc(roomId, oldHostId);
+        if (candidates.isEmpty()) return Optional.empty();
+        User newHost = candidates.get(0).getUser();
+        room.setHost(newHost);
+        roomRepository.save(room);
+        return Optional.of(newHost);
+    }
+
+    /**
+     * Mark a player's row as LEFT (used by the disconnect-grace handler
+     * when the user did not reconnect in time). Mirrors the leaveRoom
+     * "keep row for rejoin" behaviour: row stays for IN_PROGRESS, hard
+     * delete for LOBBY.
+     */
+    public void markPlayerLeft(String roomId, String userId) {
+        Room room = roomRepository.findById(roomId).orElse(null);
+        if (room == null) return;
+        boolean keepForRejoin = room.getStatus() == Room.RoomStatus.IN_PROGRESS;
+        roomPlayerRepository.findByRoomIdAndUserId(roomId, userId).ifPresent(player -> {
+            if (keepForRejoin) {
+                player.setPlayerStatus(RoomPlayer.PlayerStatus.LEFT);
+                player.setIsReady(false);
+                roomPlayerRepository.save(player);
+            } else {
+                roomPlayerRepository.delete(player);
+            }
+        });
+        syncPlayerCount(room);
+    }
+
+    /** Count of slot-occupying players (excludes LEFT) for a room. */
+    public long countOccupiedPlayers(String roomId) {
+        return roomPlayerRepository.countOccupiedByRoomId(roomId);
+    }
+
+    /**
      * Get room details with players
      */
     public RoomDetailsDTO getRoomDetails(String roomId) throws Exception {

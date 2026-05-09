@@ -297,6 +297,12 @@ const RoomQuiz: React.FC = () => {
           navigate('/multiplayer', { replace: true, state: { roomEndedReason: d?.reason ?? 'GENERIC' } });
           break;
         }
+        case 'HOST_CHANGED': {
+          // SPEC §5.4.0 R4 — host promoted mid-game. We don't store
+          // host details locally on this page; just log so dev tools can
+          // verify the broadcast made it.
+          break;
+        }
       }
     },
   });

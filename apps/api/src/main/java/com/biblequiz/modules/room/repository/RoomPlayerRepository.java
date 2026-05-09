@@ -42,6 +42,15 @@ public interface RoomPlayerRepository extends JpaRepository<RoomPlayer, String> 
     // Find players by status (Battle Royale)
     List<RoomPlayer> findByRoomIdAndPlayerStatus(String roomId, RoomPlayer.PlayerStatus playerStatus);
 
+    /** SPEC §5.4.0 R4: pick the longest-tenured ACTIVE non-host player so
+     *  a host disconnect promotes the most committed remaining member. */
+    @Query("SELECT rp FROM RoomPlayer rp WHERE rp.room.id = :roomId " +
+           "AND rp.user.id <> :excludeUserId " +
+           "AND rp.playerStatus = com.biblequiz.modules.room.entity.RoomPlayer$PlayerStatus.ACTIVE " +
+           "ORDER BY rp.joinedAt ASC")
+    List<RoomPlayer> findActiveNonHostsByJoinedAtAsc(@Param("roomId") String roomId,
+                                                     @Param("excludeUserId") String excludeUserId);
+
     // Count players by status (Battle Royale)
     long countByRoomIdAndPlayerStatus(String roomId, RoomPlayer.PlayerStatus playerStatus);
 
