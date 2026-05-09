@@ -618,76 +618,80 @@ const RoomQuiz: React.FC = () => {
         />
       )}
 
-      {/* ═══════════ HEADER BAR ═══════════ */}
+      {/* ═══════════ HEADER BAR (Q2: mockup state ③/④) ═══════════ */}
       <header className="fixed top-0 left-0 w-full z-50 bg-surface-container-low/90 backdrop-blur-xl border-b border-outline-variant/10">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 md:px-6 h-14">
-          {/* Left: Room info */}
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between px-4 lg:px-6 h-14">
+          {/* Left: mode chip + "Câu N/M" + progress bar */}
+          <div className="flex items-center gap-3 min-w-0">
             <div className={`w-2 h-2 rounded-full flex-shrink-0 ${connected ? 'bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.4)]' : 'bg-error shadow-[0_0_6px_rgba(255,180,171,0.4)]'}`} />
-            <div className="flex flex-col">
-              <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#9b59b6]">
-                {gameMode.replace(/_/g, ' ')}
-              </span>
-              <span className="font-headline font-bold text-sm tracking-tight text-on-surface">
-                {t('room.quiz.roomHeader', { code: roomId?.slice(-4) ?? '' })}
-              </span>
-            </div>
-          </div>
-
-          {/* Center: Round counter + mini scores */}
-          <div className="hidden md:flex items-center gap-4">
-            <div className="flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded-full border border-outline-variant/10">
-              <span className="material-symbols-outlined text-secondary text-sm" style={FILL_STYLE}>quiz</span>
-              <span className="text-[10px] font-black uppercase tracking-wider text-secondary">
-                {t('room.quiz.questionProgress', { current: questionIndex + 1, total: totalQuestions || '?' })}
-              </span>
-            </div>
-
-            {/* Mini player scores */}
-            <div className="flex items-center gap-1">
-              {scores.slice(0, 4).map((s, idx) => (
+            <span
+              className="text-[10px] font-bold uppercase tracking-[0.1em] flex-shrink-0"
+              style={{ color: '#9b59b6' }}
+            >
+              {gameMode.replace(/_/g, ' ')}
+            </span>
+            <div className="hidden sm:block h-4 w-px" style={{ background: 'rgba(255,255,255,0.1)' }} />
+            <span className="text-sm font-bold text-on-surface flex-shrink-0">
+              {t('room.quiz.questionProgress', { current: questionIndex + 1, total: totalQuestions || '?' })}
+            </span>
+            {totalQuestions > 0 && (
+              <div
+                className="hidden sm:block w-32 lg:w-48 h-1.5 rounded-full overflow-hidden flex-shrink-0"
+                style={{ background: 'rgba(255,255,255,0.05)' }}
+                aria-label="Tiến độ câu hỏi"
+              >
                 <div
-                  key={s.playerId}
-                  className={`px-2 py-1 rounded-lg text-[10px] font-bold border ${
-                    s.username === myUsername
-                      ? 'border-secondary/30 bg-secondary/10 text-secondary'
-                      : idx === 0
-                      ? 'border-secondary/20 bg-surface-container text-on-surface'
-                      : 'border-outline-variant/5 bg-surface-container text-on-surface-variant'
-                  }`}
-                  title={s.username}
-                >
-                  {s.username.slice(0, 3)}: {s.score}
-                </div>
-              ))}
-              {scores.length > 4 && (
-                <span className="text-on-surface-variant text-[10px] font-bold ml-1">+{scores.length - 4}</span>
-              )}
-            </div>
+                  className="h-full rounded-full transition-all"
+                  style={{
+                    width: `${((questionIndex + 1) / totalQuestions) * 100}%`,
+                    background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
+                  }}
+                />
+              </div>
+            )}
           </div>
 
-          {/* Right: Timer + status badges */}
+          {/* Right: status pill (after reveal) + per-mode badges + timer ring */}
           <div className="flex items-center gap-3">
+            {/* Reveal pill — green ✓ ĐÚNG! / red ✗ SAI */}
+            {correctIndex !== null && selected !== null && (
+              <div
+                data-testid="quiz-reveal-pill"
+                className="px-3 lg:px-4 py-1.5 rounded-full font-extrabold text-white text-xs lg:text-sm"
+                style={{
+                  background: selected === correctIndex
+                    ? 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)'
+                    : 'linear-gradient(135deg, #ef4444 0%, #b91c1c 100%)',
+                  fontFamily: "'Be Vietnam Pro', sans-serif",
+                  boxShadow: selected === correctIndex
+                    ? '0 0 24px rgba(74,222,128,0.4)'
+                    : '0 0 24px rgba(239,68,68,0.4)',
+                }}
+              >
+                {selected === correctIndex ? '✓ ĐÚNG!' : '✗ SAI'}
+              </div>
+            )}
+
             {isBattleRoyale && activeCount > 0 && (
-              <div className="flex items-center gap-1.5 bg-error/10 px-2.5 py-1 rounded-full border border-error/20">
+              <div className="hidden sm:flex items-center gap-1.5 bg-error/10 px-2.5 py-1 rounded-full border border-error/20">
                 <span className="material-symbols-outlined text-error text-sm" style={FILL_STYLE}>group</span>
                 <span className="text-error text-[10px] font-black">{activeCount}/{totalCount}</span>
               </div>
             )}
             {isSpectator && (
-              <div className="flex items-center gap-1 bg-surface-container-high px-2.5 py-1 rounded-full border border-outline-variant/10">
+              <div className="hidden sm:flex items-center gap-1 bg-surface-container-high px-2.5 py-1 rounded-full border border-outline-variant/10">
                 <span className="material-symbols-outlined text-on-surface-variant text-sm">visibility</span>
                 <span className="text-on-surface-variant text-[10px] font-bold">{t('room.quiz.spectator')}</span>
               </div>
             )}
             {isSuddenDeath && sdSpectating && (
-              <div className="flex items-center gap-1 bg-[#ff8c42]/10 px-2.5 py-1 rounded-full border border-[#ff8c42]/20">
+              <div className="hidden sm:flex items-center gap-1 bg-[#ff8c42]/10 px-2.5 py-1 rounded-full border border-[#ff8c42]/20">
                 <span className="material-symbols-outlined text-[#ff8c42] text-sm">visibility</span>
                 <span className="text-[#ff8c42] text-[10px] font-bold">{t('room.quiz.sdSpectating')}</span>
               </div>
             )}
             {isTeamVsTeam && myTeam && (
-              <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full border ${
+              <div className={`hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full border ${
                 myTeam === 'A'
                   ? 'bg-[#4a9eff]/10 border-[#4a9eff]/20'
                   : 'bg-error/10 border-error/20'
@@ -699,31 +703,35 @@ const RoomQuiz: React.FC = () => {
               </div>
             )}
 
-            {/* Timer circle */}
-            <div className="relative w-10 h-10 flex items-center justify-center">
-              <svg className="timer-svg w-full h-full" viewBox="0 0 36 36">
+            {/* Timer ring — bigger to match mockup w-12 h-12 */}
+            <div className="relative w-12 h-12 flex items-center justify-center flex-shrink-0">
+              <svg className="timer-svg w-full h-full -rotate-90" viewBox="0 0 48 48">
                 <circle
-                  className="stroke-surface-container-highest"
-                  cx="18" cy="18" r="15"
-                  fill="none" strokeWidth="2.5"
+                  cx="24" cy="24" r="20"
+                  fill="none" strokeWidth="4"
+                  stroke="rgba(255,255,255,0.08)"
                 />
                 <circle
-                  className={`timer-arc ${timeLeft <= 5 ? 'stroke-error' : 'stroke-secondary'}`}
-                  cx="18" cy="18" r="15"
-                  fill="none" strokeWidth="2.5"
+                  cx="24" cy="24" r="20"
+                  fill="none" strokeWidth="4"
                   strokeLinecap="round"
-                  strokeDasharray="94.25"
-                  strokeDashoffset={94.25 - (timerPercent / 100) * 94.25}
+                  stroke={timeLeft <= 5 ? '#ef4444' : '#e8a832'}
+                  strokeDasharray="125.6"
+                  strokeDashoffset={125.6 - (timerPercent / 100) * 125.6}
+                  style={{ transition: 'stroke-dashoffset 250ms linear' }}
                 />
               </svg>
-              <span className={`absolute font-headline font-black text-sm ${timeLeft <= 5 ? 'text-error animate-pulse' : 'text-secondary'}`}>
-                {timeLeft}
+              <span
+                className={`absolute font-bold text-base ${timeLeft <= 5 ? 'animate-pulse' : ''}`}
+                style={{ color: timeLeft <= 5 ? '#ef4444' : '#fff' }}
+              >
+                {Math.ceil(timeLeft)}
               </span>
             </div>
           </div>
         </div>
 
-        {/* Timer progress bar (mobile) */}
+        {/* Timer progress bar (mobile only) */}
         <div className="h-1 bg-surface-container-highest md:hidden">
           <div
             className={`h-full transition-all duration-1000 ${timeLeft <= 5 ? 'bg-error' : 'bg-gradient-to-r from-secondary to-tertiary'}`}
