@@ -121,6 +121,26 @@ export default function CreateRoom() {
             <div className="h-0.5 w-[60px] gold-gradient mx-auto rounded-full" />
           </div>
 
+          {/* Sprint 4: Quản trò role hint */}
+          <div
+            data-testid="create-room-organizer-hint"
+            className="rounded-xl p-3 flex items-start gap-3"
+            style={{
+              background: 'rgba(232,168,50,0.05)',
+              border: '1px solid rgba(232,168,50,0.3)',
+            }}
+          >
+            <span className="text-xl flex-shrink-0">👑</span>
+            <div>
+              <div className="text-sm font-bold mb-1" style={{ color: '#e8a832' }}>
+                Bạn sẽ là Quản trò
+              </div>
+              <div className="text-xs text-on-surface-variant leading-relaxed">
+                Quản trò điều phối trận đấu (bắt đầu, tạm dừng, bỏ câu, nhắn). Bạn không trả lời câu hỏi để đảm bảo công bằng cho người chơi.
+              </div>
+            </div>
+          </div>
+
           {/* Room name */}
           <section className="space-y-2">
             <div className="flex items-center justify-between">
@@ -452,7 +472,8 @@ export default function CreateRoom() {
                 </>
               ) : (
                 <>
-                  <span>{t('createRoom.create')}</span>
+                  <span>👑</span>
+                  <span>Tạo phòng &amp; bắt đầu điều phối</span>
                   <span className="material-symbols-outlined text-xl" style={FILL_1}>play_circle</span>
                 </>
               )}
