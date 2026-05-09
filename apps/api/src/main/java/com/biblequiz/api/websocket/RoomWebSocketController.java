@@ -192,6 +192,17 @@ public class RoomWebSocketController {
                 return;
             }
 
+            // Sprint 4: in Quản trò mode the host orchestrates only — rejecting
+            // their answer here keeps stray RoomAnswer rows from being written
+            // under the host's userId (which would skew analytics + leak into
+            // the early-end watcher's "expected answers" math).
+            Room currentRoom = roomRepository.findById(roomId).orElse(null);
+            if (currentRoom != null && !currentRoom.isHostPlaysGame()
+                    && currentRoom.getHost() != null
+                    && currentRoom.getHost().getId().equals(user.getId())) {
+                return;
+            }
+
             // Battle Royale: chỉ ACTIVE players mới được answer
             var playerOpt = roomPlayerRepository.findByRoomIdAndUserId(roomId, user.getId());
             if (playerOpt.isPresent()) {
@@ -207,9 +218,9 @@ public class RoomWebSocketController {
             int pointsEarned = 0;
             int timeLimit = 30;
 
-            // Determine mode for scoring dispatch
-            Room room = roomRepository.findById(roomId).orElse(null);
-            Room.RoomMode mode = room != null ? room.getMode() : Room.RoomMode.SPEED_RACE;
+            // Determine mode for scoring dispatch (reuse the lookup from the
+            // Quản trò check above — single fetch).
+            Room.RoomMode mode = currentRoom != null ? currentRoom.getMode() : Room.RoomMode.SPEED_RACE;
 
             java.util.Optional<WebSocketMessage.QuestionStartData> questionState =
                     roomStateService.getCurrentQuestion(roomId);
