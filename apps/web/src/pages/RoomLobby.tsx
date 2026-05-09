@@ -195,13 +195,14 @@ const RoomLobby: React.FC = () => {
           break;
         }
         case 'CHAT_MESSAGE': {
-          const d = msg.data as { sender: string; text: string };
+          const d = msg.data as { sender: string; text: string; isSystem?: boolean };
           setChatMessages(prev => [...prev, {
             sender: d.sender, text: d.text,
             isHost: d.sender === room?.hostName,
+            isSystem: d.isSystem === true,
             time: nowTime(),
           }]);
-          if (isMobile && !chatOpen) setUnreadChat(c => c + 1);
+          if (isMobile && !chatOpen && !d.isSystem) setUnreadChat(c => c + 1);
           break;
         }
         case 'GAME_STARTING': {

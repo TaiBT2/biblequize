@@ -256,6 +256,12 @@ public class RoomService {
         roomPlayerRepository.save(roomPlayer);
         syncPlayerCount(room);
         webSocketController.broadcastRoomState(roomId);
+        // Sprint 2 S2-9: chat system message announcing the join. Skip
+        // when the player is the room host themselves (the create flow
+        // already adds the host, no need to chat about it).
+        if (room.getHost() == null || !user.getId().equals(room.getHost().getId())) {
+            webSocketController.broadcastSystemChat(roomId, user.getName() + " đã tham gia 👋");
+        }
     }
 
     /**
@@ -322,6 +328,12 @@ public class RoomService {
             // Sprint 2 S2-3: snapshot push so other lobby members can update
             // the player list without a fetchRoom round-trip.
             webSocketController.broadcastRoomState(roomId);
+            // Sprint 2 S2-9: announce the leave in chat (best-effort
+            // username lookup; falls back to a generic line).
+            String name = roomPlayerRepository.findByRoomIdAndUserId(roomId, userId)
+                    .map(p -> p.getUsername())
+                    .orElseGet(() -> userRepository.findById(userId).map(u -> u.getName()).orElse("Người chơi"));
+            webSocketController.broadcastSystemChat(roomId, name + " đã rời phòng");
         }
     }
 
@@ -344,10 +356,16 @@ public class RoomService {
             throw new RuntimeException("Host không thể kick chính mình");
         }
 
+        // Capture username before delete so the system chat line still
+        // identifies who got removed.
+        String targetName = roomPlayerRepository.findByRoomIdAndUserId(roomId, targetUserId)
+                .map(p -> p.getUsername())
+                .orElseGet(() -> userRepository.findById(targetUserId).map(u -> u.getName()).orElse("Người chơi"));
         roomPlayerRepository.findByRoomIdAndUserId(roomId, targetUserId)
                 .ifPresent(roomPlayerRepository::delete);
         syncPlayerCount(room);
         webSocketController.broadcastRoomState(roomId);
+        webSocketController.broadcastSystemChat(roomId, targetName + " đã bị mời ra khỏi phòng");
     }
 
     /**

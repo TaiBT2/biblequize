@@ -418,6 +418,21 @@ public class RoomWebSocketController {
     }
 
     /**
+     * Sprint 2 S2-9 — server-emitted "system" chat lines for membership
+     * events (join / leave / kick). FE renders messages with isSystem=true
+     * in a different style; the unread badge ignores them so they don't
+     * spam the chat indicator.
+     */
+    public void broadcastSystemChat(String roomId, String text) {
+        Map<String, Object> data = Map.of(
+                "sender", "SYSTEM",
+                "text", text,
+                "isSystem", true);
+        messagingTemplate.convertAndSend("/topic/room/" + roomId,
+                new WebSocketMessage.Message(WebSocketMessage.MessageTypes.CHAT_MESSAGE, data));
+    }
+
+    /**
      * Sprint 2 S2-3 — atomic snapshot push so the FE can replace its
      * "fetchRoom on every PLAYER_* event" REST round-trips. The payload is
      * the same RoomDetailsDTO the REST GET endpoint serves; subscribers
