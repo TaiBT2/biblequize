@@ -70,6 +70,10 @@ biblequiz:
   auth:
     google:
       android-client-id: ${GOOGLE_ANDROID_CLIENT_ID:}
+  room:
+    # SPEC §5.4.0 R3 — ENDED rooms are kept this long so users can review
+    # final stats, then hard-deleted by RoomCleanupScheduler.
+    ended-retention-hours: ${ROOM_ENDED_RETENTION_HOURS:24}
 
 cors:
   allowed-origins: ${CORS_ORIGINS:http://localhost:3000,http://localhost:5173,http://localhost:5174}

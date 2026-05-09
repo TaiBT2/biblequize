@@ -1,21 +1,31 @@
 package com.biblequiz.modules.room.service;
 
+import com.biblequiz.modules.room.repository.RoomRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
 /**
- * B-2: Periodically end LOBBY rooms that have never started and are older
- * than the cutoff. Pairs with the per-user lazy cleanup in
- * {@link RoomService#cleanupStaleLobbyForUser(String)} (B-1) so a host that
- * disconnects without ending their room doesn't permanently lock the
- * "max 1 active room per user" rule (SPEC v1.1 §8.7).
+ * Periodic room maintenance.
  *
- * <p>Runs every 10 minutes; marks rooms in LOBBY with createdAt &lt; now − 2h
- * as ENDED.
+ * <p>(B-2) {@link #sweepAbandonedLobbies()}: end LOBBY rooms that have never
+ * started and are older than {@link #ABANDONED_LOBBY_HOURS}. Pairs with the
+ * per-user lazy cleanup in {@link RoomService#cleanupStaleLobbyForUser(String)}
+ * (B-1) so a host that disconnects without ending their room doesn't
+ * permanently lock the "max 1 active room per user" rule (SPEC v1.1 §8.7).
+ *
+ * <p>(L-1, SPEC §5.4.0 R3) {@link #purgeExpiredEndedRooms()}: hard-delete
+ * ENDED rooms whose {@code updated_at} is older than
+ * {@code biblequiz.room.ended-retention-hours} (default 24h). Without this,
+ * the audit observed 95+ ENDED rows accumulating in dev. Cascades wired up
+ * by V48 ensure room_room_players follow.
+ *
+ * <p>Both jobs share the 10-minute scheduler tick.
  */
 @Component
 public class RoomCleanupScheduler {
@@ -26,9 +36,14 @@ public class RoomCleanupScheduler {
     static final long ABANDONED_LOBBY_HOURS = 2L;
 
     private final RoomService roomService;
+    private final RoomRepository roomRepository;
 
-    public RoomCleanupScheduler(RoomService roomService) {
+    @Value("${biblequiz.room.ended-retention-hours:24}")
+    private long endedRetentionHours;
+
+    public RoomCleanupScheduler(RoomService roomService, RoomRepository roomRepository) {
         this.roomService = roomService;
+        this.roomRepository = roomRepository;
     }
 
     @Scheduled(fixedRate = 10 * 60 * 1000L) // every 10 minutes
@@ -39,5 +54,17 @@ public class RoomCleanupScheduler {
             log.info("[ROOM-CLEANUP] Ended {} abandoned LOBBY rooms (older than {}h)",
                     closed, ABANDONED_LOBBY_HOURS);
         }
+    }
+
+    /**
+     * SPEC §5.4.0 R3: hard-delete ENDED rooms past the retention window.
+     * Logs unconditionally (even on 0) so operators can verify the scheduler
+     * is alive — silent success was an audit gap (G10).
+     */
+    @Scheduled(fixedRate = 10 * 60 * 1000L) // every 10 minutes
+    public void purgeExpiredEndedRooms() {
+        LocalDateTime cutoff = LocalDateTime.now().minusHours(endedRetentionHours);
+        int deleted = roomRepository.deleteExpiredRooms(cutoff);
+        log.info("[ROOM-CLEANUP] Purged {} ENDED rooms older than {}h", deleted, endedRetentionHours);
     }
 }
