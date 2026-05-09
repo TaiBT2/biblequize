@@ -66,6 +66,12 @@ public class WebSocketMessage {
 
         // Error events
         public static final String ERROR = "ERROR";
+
+        // Host control events (Sprint 4 — Quản trò controls)
+        public static final String GAME_PAUSED = "GAME_PAUSED";
+        public static final String GAME_RESUMED = "GAME_RESUMED";
+        public static final String QUESTION_SKIPPED = "QUESTION_SKIPPED";
+        public static final String HOST_BROADCAST = "HOST_BROADCAST";
     }
 
     /**
@@ -465,6 +471,8 @@ public class WebSocketMessage {
         public static final String ALL_DISCONNECTED = "ALL_DISCONNECTED";
         public static final String STUCK_GAME = "STUCK_GAME";
         public static final String GAME_COMPLETE = "GAME_COMPLETE";
+        /** Sprint 4: Quản trò bấm "Kết thúc sớm". */
+        public static final String HOST_ENDED_EARLY = "HOST_ENDED_EARLY";
 
         private RoomEndedReason() {}
     }

@@ -559,6 +559,36 @@ public class RoomWebSocketController {
         sendToRoom(roomId, new WebSocketMessage.Message(WebSocketMessage.MessageTypes.MATCH_END, data));
     }
 
+    // ── Sprint 4: Quản trò control broadcasts ────────────────────────────────
+
+    public void broadcastGamePaused(String roomId) {
+        sendToRoom(roomId, new WebSocketMessage.Message(
+                WebSocketMessage.MessageTypes.GAME_PAUSED,
+                java.util.Map.of("roomId", roomId)));
+    }
+
+    public void broadcastGameResumed(String roomId) {
+        sendToRoom(roomId, new WebSocketMessage.Message(
+                WebSocketMessage.MessageTypes.GAME_RESUMED,
+                java.util.Map.of("roomId", roomId)));
+    }
+
+    public void broadcastQuestionSkipped(String roomId) {
+        sendToRoom(roomId, new WebSocketMessage.Message(
+                WebSocketMessage.MessageTypes.QUESTION_SKIPPED,
+                java.util.Map.of("roomId", roomId)));
+    }
+
+    public void broadcastHostMessage(String roomId, String hostId, String hostName, String message) {
+        sendToRoom(roomId, new WebSocketMessage.Message(
+                WebSocketMessage.MessageTypes.HOST_BROADCAST,
+                java.util.Map.of(
+                        "hostId", hostId,
+                        "hostName", hostName != null ? hostName : "",
+                        "message", message,
+                        "timestamp", System.currentTimeMillis())));
+    }
+
     /**
      * Handle real-time reaction (social fun).
      * Rate limited: max 3 reactions per 10 seconds per user (handled by WebSocket rate limiter).

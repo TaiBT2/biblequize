@@ -10,7 +10,7 @@
 - Task S4-2: RoomService.createRoom default Quản trò mode — `[x]` DONE
 - Task S4-3: RoomService.startRoom validation ≥2 players excluding host — `[x]` DONE
 - Task S4-4: RoomQuizService skip host in scoring/ranking — `[x]` DONE
-- Task S4-5: Host control endpoints (pause/resume/skip/broadcast/end-early) — `[ ]` TODO
+- Task S4-5: Host control endpoints (pause/resume/skip/broadcast/end-early) — `[x]` DONE
 - Task S4-6: RoomLobby differentiation by role — `[ ]` TODO
 - Task S4-7: CreateRoom hint banner Quản trò — `[ ]` TODO
 - Task S4-8: RoomQuizHost component (spectator + 4 controls) — `[ ]` TODO

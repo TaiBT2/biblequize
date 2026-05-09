@@ -54,6 +54,7 @@ public class RoomQuizService {
     @Autowired private TeamScoringService teamScoringService;
     @Autowired private SuddenDeathMatchService suddenDeathMatchService;
     @Autowired private SequentialScoringService sequentialScoringService;
+    @Autowired private HostControlService hostControlService;
 
     private static final int BETWEEN_QUESTION_DELAY_MS = 3000;
     /** Poll cadence for the early-end watcher. 250ms = up to 0.25s slack
@@ -75,20 +76,55 @@ public class RoomQuizService {
     // package-private for unit test — see RoomQuizServiceWaitTest
     void waitForRoundEnd(String roundId, long timeLimitMs, int expectedAnswers)
             throws InterruptedException {
+        waitForRoundEnd(null, roundId, timeLimitMs, expectedAnswers);
+    }
+
+    /**
+     * Sprint 4 overload: when {@code roomId != null} the loop also exits
+     * early if the host has pushed a skip request (consumes the flag).
+     */
+    void waitForRoundEnd(String roomId, String roundId, long timeLimitMs, int expectedAnswers)
+            throws InterruptedException {
         if (expectedAnswers <= 0) {
             // Nothing to wait for — no active players. Still respect the
             // full timer so observers see the round play out normally.
-            Thread.sleep(timeLimitMs);
+            // Even here, honor a host skip so the room never feels stuck.
+            long deadline = System.currentTimeMillis() + timeLimitMs;
+            while (System.currentTimeMillis() < deadline) {
+                if (roomId != null && hostControlService != null
+                        && hostControlService.consumeSkipFlag(roomId)) return;
+                long remaining = deadline - System.currentTimeMillis();
+                Thread.sleep(Math.min(ROUND_POLL_INTERVAL_MS, Math.max(1, remaining)));
+            }
             return;
         }
         long deadline = System.currentTimeMillis() + timeLimitMs;
         while (System.currentTimeMillis() < deadline) {
+            if (roomId != null && hostControlService != null
+                    && hostControlService.consumeSkipFlag(roomId)) return;
             long submitted = roomAnswerRepository.countByRoundId(roundId);
             if (submitted >= expectedAnswers) return;
             // Sleep up to the poll interval, but never past the deadline.
             long remaining = deadline - System.currentTimeMillis();
             Thread.sleep(Math.min(ROUND_POLL_INTERVAL_MS, Math.max(1, remaining)));
         }
+    }
+
+    /** Block at the top of each round if the host has paused. Wrapped so a
+     *  null hostControlService (legacy unit tests) is a no-op. */
+    private void awaitIfPaused(String roomId) throws InterruptedException {
+        if (hostControlService != null) {
+            hostControlService.awaitIfPaused(roomId, 5);
+        }
+    }
+
+    /** True once the room is ENDED — set by host end-early or normal finish.
+     *  Lets the per-mode loops stop emitting more rounds + skip the final
+     *  wrap-up broadcast (the controller already sent ROOM_ENDED). */
+    private boolean isRoomEnded(String roomId) {
+        return roomRepository.findById(roomId)
+                .map(r -> r.getStatus() == Room.RoomStatus.ENDED)
+                .orElse(true);
     }
     /** Sprint 2: bumped 3 → 5 to give the cinematic countdown overlay
      *  enough room for "5-4-3-2-1-BẮT ĐẦU!" + the gameStart sound. The
@@ -132,6 +168,8 @@ public class RoomQuizService {
         }
 
         for (int i = 0; i < questions.size(); i++) {
+            awaitIfPaused(roomId);
+            if (isRoomEnded(roomId)) break;
             Question q = questions.get(i);
             RoomRound round = saveRound(roomId, new RoomRound(UUID.randomUUID().toString(), null, i, q.getId(), LocalDateTime.now()));
             roomStateService.setCurrentRoundId(roomId, round.getId());
@@ -140,7 +178,7 @@ public class RoomQuizService {
             // End the round as soon as every active player has answered;
             // otherwise wait the full timer.
             int expected = (int) roomPlayerRepository.countByRoomIdAndPlayerStatus(roomId, RoomPlayer.PlayerStatus.ACTIVE);
-            waitForRoundEnd(round.getId(), timePerQuestion * 1000L, expected);
+            waitForRoundEnd(roomId, round.getId(), timePerQuestion * 1000L, expected);
 
             round.setEndedAt(LocalDateTime.now());
             roomRoundRepository.save(round);
@@ -149,6 +187,10 @@ public class RoomQuizService {
             if (i < questions.size() - 1) Thread.sleep(BETWEEN_QUESTION_DELAY_MS);
         }
 
+        if (isRoomEnded(roomId)) {
+            log.info("Speed Race ngắt sớm cho phòng {} (host end-early)", roomId);
+            return;
+        }
         List<RoomService.LeaderboardEntryDTO> finalResults = roomService.getRoomLeaderboard(roomId);
         roomService.endRoom(roomId);
         wsController.broadcastQuizEnd(roomId, finalResults);
@@ -170,6 +212,8 @@ public class RoomQuizService {
         wsController.broadcastBattleRoyaleUpdate(roomId, totalPlayers, totalPlayers);
 
         for (int i = 0; i < questions.size(); i++) {
+            awaitIfPaused(roomId);
+            if (isRoomEnded(roomId)) break;
             long activeCount = roomPlayerRepository.countByRoomIdAndPlayerStatus(roomId, RoomPlayer.PlayerStatus.ACTIVE);
             if (activeCount <= 1) break; // Game ends when ≤ 1 active player
 
@@ -180,7 +224,7 @@ public class RoomQuizService {
             wsController.broadcastQuestionStart(roomId, i, questions.size(), buildQuestionDto(q), timePerQuestion);
             // Battle Royale: only ACTIVE players answer (eliminated are
             // out of rotation). End early when all of them submit.
-            waitForRoundEnd(round.getId(), timePerQuestion * 1000L, (int) activeCount);
+            waitForRoundEnd(roomId, round.getId(), timePerQuestion * 1000L, (int) activeCount);
 
             round.setEndedAt(LocalDateTime.now());
             roomRoundRepository.save(round);
@@ -204,6 +248,10 @@ public class RoomQuizService {
             if (i < questions.size() - 1) Thread.sleep(BETWEEN_QUESTION_DELAY_MS);
         }
 
+        if (isRoomEnded(roomId)) {
+            log.info("Battle Royale ngắt sớm cho phòng {} (host end-early)", roomId);
+            return;
+        }
         // Gán rank cuối cho những người còn lại
         battleRoyaleEngine.assignFinalRanks(roomId);
 
@@ -233,6 +281,8 @@ public class RoomQuizService {
         wsController.broadcastTeamAssignment(roomId, teamInfo);
 
         for (int i = 0; i < questions.size(); i++) {
+            awaitIfPaused(roomId);
+            if (isRoomEnded(roomId)) break;
             Question q = questions.get(i);
             RoomRound round = saveRound(roomId, new RoomRound(UUID.randomUUID().toString(), null, i, q.getId(), LocalDateTime.now()));
             roomStateService.setCurrentRoundId(roomId, round.getId());
@@ -240,7 +290,7 @@ public class RoomQuizService {
             wsController.broadcastQuestionStart(roomId, i, questions.size(), buildQuestionDto(q), timePerQuestion);
             // Team vs Team: every player on either side gets to answer.
             int expectedTvT = (int) roomPlayerRepository.countByRoomIdAndPlayerStatus(roomId, RoomPlayer.PlayerStatus.ACTIVE);
-            waitForRoundEnd(round.getId(), timePerQuestion * 1000L, expectedTvT);
+            waitForRoundEnd(roomId, round.getId(), timePerQuestion * 1000L, expectedTvT);
 
             round.setEndedAt(LocalDateTime.now());
             roomRoundRepository.save(round);
@@ -259,6 +309,10 @@ public class RoomQuizService {
             if (i < questions.size() - 1) Thread.sleep(BETWEEN_QUESTION_DELAY_MS);
         }
 
+        if (isRoomEnded(roomId)) {
+            log.info("Team vs Team ngắt sớm cho phòng {} (host end-early)", roomId);
+            return;
+        }
         TeamScoringService.TeamScores finalScores = teamScoringService.calculateTeamScores(roomId);
         String winner = teamScoringService.determineWinner(finalScores);
 
@@ -298,6 +352,8 @@ public class RoomQuizService {
                 match.challengerId, match.challengerName, suddenDeathMatchService.getQueueSize(roomId));
 
         for (int i = 0; i < questions.size(); i++) {
+            awaitIfPaused(roomId);
+            if (isRoomEnded(roomId)) break;
             Question q = questions.get(i);
             RoomRound round = saveRound(roomId, new RoomRound(UUID.randomUUID().toString(), null, i, q.getId(), LocalDateTime.now()));
             roomStateService.setCurrentRoundId(roomId, round.getId());
@@ -305,7 +361,7 @@ public class RoomQuizService {
             wsController.broadcastQuestionStart(roomId, i, questions.size(), buildQuestionDto(q), timePerQuestion);
             // Sudden Death: only champion + challenger play this round (1v1).
             // End as soon as both have submitted.
-            waitForRoundEnd(round.getId(), timePerQuestion * 1000L, 2);
+            waitForRoundEnd(roomId, round.getId(), timePerQuestion * 1000L, 2);
 
             round.setEndedAt(LocalDateTime.now());
             roomRoundRepository.save(round);
@@ -337,6 +393,10 @@ public class RoomQuizService {
             if (i < questions.size() - 1) Thread.sleep(BETWEEN_QUESTION_DELAY_MS);
         }
 
+        if (isRoomEnded(roomId)) {
+            log.info("Sudden Death ngắt sớm cho phòng {} (host end-early)", roomId);
+            return;
+        }
         suddenDeathMatchService.assignFinalRanks(roomId);
         List<RoomService.LeaderboardEntryDTO> finalResults = roomService.getRoomLeaderboardWithRanks(roomId);
         roomService.endRoom(roomId);

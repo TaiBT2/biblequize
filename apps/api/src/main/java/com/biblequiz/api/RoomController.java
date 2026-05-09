@@ -3,6 +3,7 @@ package com.biblequiz.api;
 import com.biblequiz.api.websocket.RoomWebSocketController;
 import com.biblequiz.api.websocket.WebSocketMessage;
 import com.biblequiz.modules.room.entity.Room;
+import com.biblequiz.modules.room.service.HostControlService;
 import com.biblequiz.modules.room.service.RoomQuizService;
 import com.biblequiz.modules.room.service.RoomAnalyticsService;
 import com.biblequiz.modules.room.service.RoomService;
@@ -40,6 +41,9 @@ public class RoomController {
 
     @Autowired
     private RoomAnalyticsService roomAnalyticsService;
+
+    @Autowired
+    private HostControlService hostControlService;
 
     /**
      * POST /api/rooms - Tạo phòng mới
@@ -286,6 +290,61 @@ public class RoomController {
                     "success", false,
                     "rounds", java.util.List.of(),
                     "message", e.getMessage()));
+        }
+    }
+
+    // ── Sprint 4: Quản trò controls ──────────────────────────────────────────
+
+    @PostMapping("/{id}/host/pause")
+    public ResponseEntity<?> pauseGame(@PathVariable String id, Principal principal) {
+        try {
+            hostControlService.pauseGame(id, getUser(principal).getId());
+            return ResponseEntity.ok(Map.of("success", true));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    @PostMapping("/{id}/host/resume")
+    public ResponseEntity<?> resumeGame(@PathVariable String id, Principal principal) {
+        try {
+            hostControlService.resumeGame(id, getUser(principal).getId());
+            return ResponseEntity.ok(Map.of("success", true));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    @PostMapping("/{id}/host/skip-question")
+    public ResponseEntity<?> skipQuestion(@PathVariable String id, Principal principal) {
+        try {
+            hostControlService.skipQuestion(id, getUser(principal).getId());
+            return ResponseEntity.ok(Map.of("success", true));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    @PostMapping("/{id}/host/broadcast")
+    public ResponseEntity<?> broadcastHostMessage(@PathVariable String id,
+                                                  @RequestBody Map<String, String> body,
+                                                  Principal principal) {
+        try {
+            String message = body != null ? body.get("message") : null;
+            hostControlService.broadcastHostMessage(id, getUser(principal).getId(), message);
+            return ResponseEntity.ok(Map.of("success", true));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    @PostMapping("/{id}/host/end-early")
+    public ResponseEntity<?> endGameEarly(@PathVariable String id, Principal principal) {
+        try {
+            hostControlService.endGameEarly(id, getUser(principal).getId());
+            return ResponseEntity.ok(Map.of("success", true));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
     }
 
