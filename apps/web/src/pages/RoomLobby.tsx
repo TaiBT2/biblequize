@@ -33,6 +33,8 @@ type ChatMessage = {
   sender: string; text: string;
   isHost?: boolean; isSystem?: boolean; time?: string;
 };
+type ActivityTone = 'info' | 'ok' | 'warn';
+type ActivityEntry = { text: string; time: string; tone: ActivityTone };
 
 type ModeInfo = {
   label: string; icon: string;
@@ -113,6 +115,11 @@ const RoomLobby: React.FC = () => {
     isSystem: true,
     time: nowTime(),
   }]);
+  const [activity, setActivity] = useState<ActivityEntry[]>([
+    { text: 'Phòng được tạo', time: nowTime(), tone: 'info' },
+  ]);
+  const appendActivity = (text: string, tone: ActivityTone = 'info') =>
+    setActivity(prev => [...prev, { text, time: nowTime(), tone }]);
   const [chatInput, setChatInput] = useState('');
   const chatEndRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024);
@@ -133,15 +140,40 @@ const RoomLobby: React.FC = () => {
             navigate('/multiplayer', { replace: true, state: { kickedFromRoom: true } });
             return;
           }
+          if (d?.userId) {
+            const name = room?.players?.find(p => p.userId === d.userId)?.username ?? 'Người chơi';
+            appendActivity(`${name} đã bị kick`, 'warn');
+          }
           fetchRoom();
           break;
         }
-        case 'PLAYER_JOINED':
-        case 'PLAYER_LEFT':
-        case 'PLAYER_READY':
-        case 'PLAYER_UNREADY':
+        case 'PLAYER_JOINED': {
+          const d = msg.data as { username?: string } | undefined;
+          if (d?.username) appendActivity(`${d.username} đã tham gia 👋`);
           fetchRoom();
           break;
+        }
+        case 'PLAYER_LEFT': {
+          const d = msg.data as { userId?: string } | undefined;
+          if (d?.userId) {
+            const name = room?.players?.find(p => p.userId === d.userId)?.username ?? 'Người chơi';
+            appendActivity(`${name} đã rời phòng`);
+          }
+          fetchRoom();
+          break;
+        }
+        case 'PLAYER_READY': {
+          const d = msg.data as { username?: string; isReady?: boolean } | undefined;
+          if (d?.username) appendActivity(`${d.username} sẵn sàng ✓`, 'ok');
+          fetchRoom();
+          break;
+        }
+        case 'PLAYER_UNREADY': {
+          const d = msg.data as { username?: string } | undefined;
+          if (d?.username) appendActivity(`${d.username} hủy sẵn sàng`);
+          fetchRoom();
+          break;
+        }
         case 'CHAT_MESSAGE': {
           const d = msg.data as { sender: string; text: string };
           setChatMessages(prev => [...prev, {
@@ -395,8 +427,9 @@ const RoomLobby: React.FC = () => {
         <span className="w-8 h-8" aria-hidden="true" />
       </header>
 
-      {/* ─── Main: content + (optional) chat panel ─── */}
-      <div className="flex-1 grid lg:grid-cols-[1fr_320px] overflow-hidden" style={{ minHeight: 0 }}>
+      {/* ─── Main: activity log + content + (optional) chat panel ─── */}
+      <div className="flex-1 grid lg:grid-cols-[280px_1fr_320px] overflow-hidden" style={{ minHeight: 0 }}>
+        <ActivityLogPanel entries={activity} statusHint={statusSecondary} />
         <div className="overflow-y-auto px-4 lg:px-7 py-4 lg:py-5 pb-24 lg:pb-28" data-testid="lobby-scroll-content">
 
           {/* ─── HERO BLOCK ─── */}
@@ -763,6 +796,41 @@ const RoomLobby: React.FC = () => {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Player slot
+
+const ActivityLogPanel: React.FC<{ entries: ActivityEntry[]; statusHint: string }> = ({ entries, statusHint }) => (
+  <aside
+    className="hidden lg:flex flex-col border-r p-4 overflow-hidden"
+    style={{ background: '#0d0f17', borderColor: 'rgba(255,255,255,0.04)' }}
+    data-testid="lobby-activity-log"
+  >
+    <div className="flex items-center gap-2 mb-3">
+      <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: '#9ca3af' }}>
+        📜 Hoạt động phòng
+      </span>
+      <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.05)' }} />
+    </div>
+    <div className="space-y-2 flex-1 overflow-y-auto">
+      {entries.map((e, i) => (
+        <div
+          key={i}
+          className="text-xs italic"
+          style={{
+            color: e.tone === 'ok' ? 'rgba(74,222,128,0.85)'
+              : e.tone === 'warn' ? 'rgba(248,113,113,0.85)'
+              : '#6b7280',
+          }}
+        >
+          {e.time} · {e.text}
+        </div>
+      ))}
+      {statusHint && (
+        <div className="text-xs font-semibold mt-2" style={{ color: '#fbbf24' }}>
+          {statusHint}
+        </div>
+      )}
+    </div>
+  </aside>
+);
 
 const PlayerSlot: React.FC<{
   player: Player;
