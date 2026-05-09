@@ -255,6 +255,7 @@ public class RoomService {
 
         roomPlayerRepository.save(roomPlayer);
         syncPlayerCount(room);
+        webSocketController.broadcastRoomState(roomId);
     }
 
     /**
@@ -283,6 +284,7 @@ public class RoomService {
                 .orElseThrow(() -> new Exception("Người chơi không tìm thấy"));
         player.setTeam(player.getTeam() == RoomPlayer.Team.A ? RoomPlayer.Team.B : RoomPlayer.Team.A);
         roomPlayerRepository.save(player);
+        webSocketController.broadcastRoomState(roomId);
     }
 
     /**
@@ -316,6 +318,10 @@ public class RoomService {
             webSocketController.broadcastRoomEnded(room.getId(),
                     WebSocketMessage.RoomEndedReason.EMPTY_LOBBY);
             roomRepository.delete(room);
+        } else {
+            // Sprint 2 S2-3: snapshot push so other lobby members can update
+            // the player list without a fetchRoom round-trip.
+            webSocketController.broadcastRoomState(roomId);
         }
     }
 
@@ -341,6 +347,7 @@ public class RoomService {
         roomPlayerRepository.findByRoomIdAndUserId(roomId, targetUserId)
                 .ifPresent(roomPlayerRepository::delete);
         syncPlayerCount(room);
+        webSocketController.broadcastRoomState(roomId);
     }
 
     /**
@@ -353,6 +360,7 @@ public class RoomService {
 
         roomPlayer.setIsReady(!roomPlayer.getIsReady());
         roomPlayerRepository.save(roomPlayer);
+        webSocketController.broadcastRoomState(roomId);
     }
 
     /**

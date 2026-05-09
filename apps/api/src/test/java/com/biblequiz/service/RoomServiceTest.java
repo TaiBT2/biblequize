@@ -34,6 +34,9 @@ class RoomServiceTest {
     @Mock
     private UserRepository userRepository;
 
+    @Mock
+    private com.biblequiz.api.websocket.RoomWebSocketController webSocketController;
+
     @InjectMocks
     private RoomService roomService;
 

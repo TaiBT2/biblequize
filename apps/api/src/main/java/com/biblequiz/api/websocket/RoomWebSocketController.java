@@ -418,6 +418,32 @@ public class RoomWebSocketController {
     }
 
     /**
+     * Sprint 2 S2-3 — atomic snapshot push so the FE can replace its
+     * "fetchRoom on every PLAYER_* event" REST round-trips. The payload is
+     * the same RoomDetailsDTO the REST GET endpoint serves; subscribers
+     * just call setRoom(data) on receipt.
+     *
+     * <p>Best-effort: any exception from the snapshot read is swallowed so
+     * a transient DB hiccup doesn't poison the original mutation flow
+     * (the WS subscriber will catch up on the next mutation or via the
+     * existing fetchRoom fallback).
+     */
+    public void broadcastRoomState(String roomId) {
+        try {
+            RoomService.RoomDetailsDTO snapshot = roomService.getRoomDetails(roomId, null);
+            WebSocketMessage.Message msg = new WebSocketMessage.Message(
+                    WebSocketMessage.MessageTypes.ROOM_STATE, snapshot);
+            messagingTemplate.convertAndSend("/topic/room/" + roomId, msg);
+        } catch (Exception e) {
+            // Don't fail the calling mutation just because the snapshot
+            // broadcast misfired — log and move on.
+            org.slf4j.LoggerFactory.getLogger(RoomWebSocketController.class)
+                    .warn("[ROOM-STATE] Failed to broadcast snapshot for room {}: {}",
+                            roomId, e.getMessage());
+        }
+    }
+
+    /**
      * SPEC §5.4.0 R4 — promote-on-host-disconnect notification. FE updates
      * its local hostId / hostName so the start button + crown move.
      */

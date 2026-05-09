@@ -22,6 +22,10 @@ public class WebSocketMessage {
         public static final String ROOM_STARTING = "ROOM_STARTING";
         public static final String ROOM_ENDED = "ROOM_ENDED";
         public static final String HOST_CHANGED = "HOST_CHANGED";
+        /** Atomic snapshot of the room (status + players + config). Replaces
+         *  per-event fetchRoom REST round-trips on the FE — see
+         *  RoomWebSocketController.broadcastRoomState. */
+        public static final String ROOM_STATE = "ROOM_STATE";
 
         // Quiz events
         public static final String GAME_STARTING = "GAME_STARTING";
