@@ -80,10 +80,32 @@ public class RoomService {
         Room room = roomRepository.findByRoomCode(roomCode)
             .orElseThrow(() -> new Exception("Phòng không tồn tại"));
 
-        if (room.getStatus() != Room.RoomStatus.LOBBY) {
-            throw new Exception("Phòng đã bắt đầu hoặc kết thúc");
+        // Look up an existing membership first so we can support rejoin while
+        // the room is IN_PROGRESS (Phase 6 case #3 — user left mid-game and
+        // wants to come back to the same match).
+        var existing = roomPlayerRepository.findByRoomIdAndUserId(room.getId(), user.getId());
+
+        if (room.getStatus() == Room.RoomStatus.ENDED || room.getStatus() == Room.RoomStatus.CANCELLED) {
+            throw new Exception("Phòng đã kết thúc");
         }
 
+        if (room.getStatus() == Room.RoomStatus.IN_PROGRESS) {
+            // Only previously-registered players can re-enter an in-progress
+            // game. Brand-new joiners are blocked because there is no
+            // late-join flow into an active quiz.
+            if (existing.isEmpty()) {
+                throw new Exception("Phòng đã bắt đầu");
+            }
+            RoomPlayer player = existing.get();
+            if (player.getPlayerStatus() == RoomPlayer.PlayerStatus.LEFT) {
+                player.setPlayerStatus(RoomPlayer.PlayerStatus.ACTIVE);
+                roomPlayerRepository.save(player);
+                syncPlayerCount(room);
+            }
+            return room;
+        }
+
+        // From here: status == LOBBY.
         if (room.isFull()) {
             throw new Exception("Phòng đã đầy người");
         }
@@ -91,7 +113,7 @@ public class RoomService {
         // Idempotent join: if user is already a member of this room, just
         // return it so the FE navigates them back into the lobby instead of
         // surfacing a confusing "already a member" error banner.
-        if (roomPlayerRepository.findByRoomIdAndUserId(room.getId(), user.getId()).isPresent()) {
+        if (existing.isPresent()) {
             return room;
         }
 
@@ -210,7 +232,10 @@ public class RoomService {
      * RoomPlayer row so the cached counter stays in sync.
      */
     private void syncPlayerCount(Room room) {
-        int actual = (int) roomPlayerRepository.countByRoomId(room.getId());
+        // currentPlayers reflects slots in use. Mid-game LEFT rows are
+        // preserved for rejoin but should NOT block new joiners or inflate
+        // the lobby roster count.
+        int actual = (int) roomPlayerRepository.countOccupiedByRoomId(room.getId());
         room.setCurrentPlayers(actual);
         roomRepository.save(room);
     }
@@ -235,11 +260,25 @@ public class RoomService {
     public void leaveRoom(String roomId, String userId) {
         Room room = roomRepository.findById(roomId).orElseThrow();
 
-        roomPlayerRepository.findByRoomIdAndUserId(roomId, userId)
-            .ifPresent(roomPlayerRepository::delete);
+        // SPEC §5.4 / Phase 6 case #3: while a quiz is in progress we keep
+        // the RoomPlayer row (status=LEFT) so the user can rejoin via
+        // joinRoom. Hard-delete only happens in LOBBY (or after the game has
+        // ended), so an interrupted-mid-game leave does not lock the user
+        // out of their own match.
+        boolean keepForRejoin = room.getStatus() == Room.RoomStatus.IN_PROGRESS;
+
+        roomPlayerRepository.findByRoomIdAndUserId(roomId, userId).ifPresent(player -> {
+            if (keepForRejoin) {
+                player.setPlayerStatus(RoomPlayer.PlayerStatus.LEFT);
+                player.setIsReady(false);
+                roomPlayerRepository.save(player);
+            } else {
+                roomPlayerRepository.delete(player);
+            }
+        });
         syncPlayerCount(room);
 
-        if (room.getCurrentPlayers() == 0) {
+        if (room.getCurrentPlayers() == 0 && !keepForRejoin) {
             roomRepository.delete(room);
         }
     }

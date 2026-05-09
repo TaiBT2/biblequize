@@ -29,6 +29,11 @@ public interface RoomPlayerRepository extends JpaRepository<RoomPlayer, String> 
     // Count players in room
     @Query("SELECT COUNT(rp) FROM RoomPlayer rp WHERE rp.room.id = :roomId")
     long countByRoomId(@Param("roomId") String roomId);
+
+    // Count players still occupying a slot — excludes LEFT (mid-game leavers
+    // whose row is preserved so they can rejoin while IN_PROGRESS).
+    @Query("SELECT COUNT(rp) FROM RoomPlayer rp WHERE rp.room.id = :roomId AND rp.playerStatus <> com.biblequiz.modules.room.entity.RoomPlayer$PlayerStatus.LEFT")
+    long countOccupiedByRoomId(@Param("roomId") String roomId);
     
     // Find top players by score
     @Query("SELECT rp FROM RoomPlayer rp WHERE rp.room.id = :roomId ORDER BY rp.score DESC LIMIT :limit")

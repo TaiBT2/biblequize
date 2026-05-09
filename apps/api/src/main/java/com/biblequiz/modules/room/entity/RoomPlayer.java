@@ -75,7 +75,10 @@ public class RoomPlayer {
     public enum PlayerStatus {
         ACTIVE,
         ELIMINATED,
-        SPECTATOR
+        SPECTATOR,
+        /** Player left after the game started; row is kept so they can rejoin
+         *  via {@code joinRoom} while the room is still IN_PROGRESS. */
+        LEFT
     }
 
     // Constructors

@@ -238,7 +238,10 @@ function RoomCard({ room }: { room: PublicRoom }) {
     try {
       const res = await api.post('/api/rooms/join', { roomCode: room.roomCode });
       const joinedRoom = res.data.room;
-      navigate(`/room/${joinedRoom.id}/lobby`, { state: { room: joinedRoom } });
+      // If the room is mid-game (rejoin path), drop straight into /quiz —
+      // /lobby would just spin until the next QUESTION_START arrives.
+      const target = joinedRoom.status === 'IN_PROGRESS' ? 'quiz' : 'lobby';
+      navigate(`/room/${joinedRoom.id}/${target}`, { state: { room: joinedRoom, mode: joinedRoom.mode } });
     } catch (err: any) {
       setJoinError(err?.response?.data?.message || 'Không thể vào phòng');
       setJoining(false);
@@ -378,12 +381,13 @@ function RoomCard({ room }: { room: PublicRoom }) {
         )}
         {isPlaying && (
           <button
-            disabled
-            title="Tính năng xem trận đấu sắp ra mắt"
-            className="px-4 py-2 rounded-lg text-xs font-semibold cursor-not-allowed opacity-50"
-            style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.4)', border: '0.5px solid rgba(255,255,255,0.06)' }}
+            onClick={handleJoin}
+            disabled={joining}
+            title="Quay lại trận đấu nếu bạn đang ở trong phòng này"
+            className="px-4 py-2 rounded-lg text-xs font-semibold disabled:opacity-50"
+            style={{ background: 'rgba(232,168,50,0.12)', color: '#e8a832', border: '0.5px solid rgba(232,168,50,0.3)' }}
           >
-            Sắp có
+            {joining ? 'Đang vào...' : 'Tiếp tục →'}
           </button>
         )}
       </div>
@@ -407,7 +411,8 @@ const Multiplayer = () => {
     try {
       const res = await api.post('/api/rooms/join', { roomCode: code });
       const room = res.data.room;
-      navigate(`/room/${room.id}/lobby`, { state: { room } });
+      const target = room.status === 'IN_PROGRESS' ? 'quiz' : 'lobby';
+      navigate(`/room/${room.id}/${target}`, { state: { room, mode: room.mode } });
     } catch (err: any) {
       setCodeJoinError(err?.response?.data?.message || 'Mã phòng không hợp lệ hoặc phòng đã đầy');
       setIsCodeJoining(false);
