@@ -44,3 +44,6 @@ rule-rank.txt
 **/test-results/
 **/tests/e2e/fixtures/storage-states/*.json
 apps/web/.env.production
+
+# Spec audit transient files
+tools/spec-audit/.audit-tmp/
