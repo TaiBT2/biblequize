@@ -118,6 +118,11 @@ const RoomQuiz: React.FC = () => {
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [comboBanner, setComboBanner] = useState<{ count: number; multiplier: number } | null>(null);
 
+  // Sprint 2 S2-11: end-screen sound. Fire once on showPodium=true. We
+  // can't drive this from inside PodiumScreen because that component is
+  // shared with multiple modes and wouldn't know `myUsername`.
+  const endSoundFiredRef = useRef(false);
+
   const questionStartedAt = useRef<number>(0);
   const toastCounter = useRef(0);
   const { showError } = useError();
@@ -367,6 +372,17 @@ const RoomQuiz: React.FC = () => {
     return () => clearInterval(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeLimit, questionIndex]);
+
+  // Sprint 2 S2-11: end-of-match sound — victory if I won, complete
+  // otherwise. Once-only; the ref guards against re-fires from
+  // showPodium toggling.
+  useEffect(() => {
+    if (!showPodium || endSoundFiredRef.current) return;
+    endSoundFiredRef.current = true;
+    const me = finalResults.find(r => r.username === myUsername);
+    const won = !!me && me.finalRank === 1;
+    soundManager.play(won ? 'victory' : 'quizComplete');
+  }, [showPodium, finalResults, myUsername]);
 
   // Sprint 2 S2-5: per-second beep in the last 5 seconds, sharper at ≤3.
   // Tracks the last whole-second-played so a 4Hz tick doesn't spam.
