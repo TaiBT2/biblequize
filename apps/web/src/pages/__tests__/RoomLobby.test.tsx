@@ -254,14 +254,12 @@ describe('RoomLobby — chat panel (desktop always visible)', () => {
     await waitFor(() => expect(input.value).toBe(''))
   })
 
-  it('5 emoji reactions are rendered', async () => {
+  it('6 emoji reactions are rendered (mockup order)', async () => {
     await renderLobby()
     await screen.findByPlaceholderText(/Nhắn tin/i)
-    expect(screen.getByText('🙏')).toBeInTheDocument()
-    expect(screen.getByText('🔥')).toBeInTheDocument()
-    expect(screen.getByText('👏')).toBeInTheDocument()
-    expect(screen.getByText('💡')).toBeInTheDocument()
-    expect(screen.getByText('✨')).toBeInTheDocument()
+    for (const e of ['👏', '😂', '😱', '🔥', '💪', '🙏']) {
+      expect(screen.getByText(e)).toBeInTheDocument()
+    }
   })
 })
 

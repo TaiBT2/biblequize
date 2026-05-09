@@ -84,7 +84,7 @@ const DIFFICULTY_LABEL: Record<string, string> = {
   EASY: 'Dễ', MEDIUM: 'Trung bình', HARD: 'Khó', MIXED: 'Hỗn hợp',
 };
 
-const QUICK_EMOJIS = ['🙏', '🔥', '👏', '💡', '✨'];
+const QUICK_EMOJIS = ['👏', '😂', '😱', '🔥', '💪', '🙏'];
 
 const myUsername = () => localStorage.getItem('userName') ?? '';
 
