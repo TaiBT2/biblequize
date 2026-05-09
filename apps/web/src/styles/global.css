@@ -95,6 +95,12 @@ body {
   animation: combo-slide-in 0.3s ease-out, combo-pulse 0.5s ease-in-out 0.3s;
 }
 
+/* Sprint 2 S2-6: explanation panel rises from below after a wrong answer */
+@keyframes slideUp {
+  0%   { transform: translateY(40%); opacity: 0; }
+  100% { transform: translateY(0);   opacity: 1; }
+}
+
 /* Score pop */
 @keyframes score-pop {
   0% { transform: scale(1); }

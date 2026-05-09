@@ -5,6 +5,8 @@ import { useStomp } from '../hooks/useStomp';
 import { useError } from '../contexts/ErrorContext';
 import { api } from '../api/client';
 import { soundManager } from '../services/soundManager';
+import { haptic } from '../utils/haptics';
+import ExplanationPanel from '../components/multiplayer/ExplanationPanel';
 import ReactionBar from '../components/ReactionBar';
 import LiveFeed from '../components/LiveFeed';
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton';
@@ -171,6 +173,16 @@ const RoomQuiz: React.FC = () => {
           const d = msg.data as { correctIndex: number; leaderboard: PlayerScore[] };
           setCorrectIndex(d.correctIndex);
           setScores(d.leaderboard.sort((a, b) => b.score - a.score));
+          // Sprint 2 S2-6: reveal feedback. Compare against the player's
+          // submitted answer (selected) to play the right sound + haptic.
+          // We deliberately key off `selected` rather than backend
+          // per-player data since the lightweight ROUND_END payload
+          // doesn't carry it for Speed Race.
+          if (selected !== null) {
+            const wasCorrect = selected === d.correctIndex;
+            soundManager.play(wasCorrect ? 'correctAnswer' : 'wrongAnswer');
+            wasCorrect ? haptic.correct() : haptic.wrong();
+          }
           break;
         }
         case 'SCORE_UPDATE': {
@@ -724,6 +736,20 @@ const RoomQuiz: React.FC = () => {
                 <span className="material-symbols-outlined text-sm animate-spin">hourglass_empty</span>
                 {t('room.quiz.waitingResult')}
               </div>
+            )}
+
+            {/* Sprint 2 S2-6: explanation panel after a wrong answer. Only
+                renders when (a) the round is revealed (correctIndex set),
+                (b) the player picked an answer different from the correct
+                one, and (c) the question carries an explanation. The panel
+                doesn't gate the next question — server timing does. */}
+            {correctIndex !== null && selected !== null && selected !== correctIndex
+              && question?.explanation && question?.id && !isSequential && (
+              <ExplanationPanel
+                questionId={question.id}
+                explanation={question.explanation}
+                onContinue={() => { /* next QUESTION_START will replace */ }}
+              />
             )}
 
             {/* ─── Sequential Mode: Waiting Strip (after submit, before reveal) ─── */}
