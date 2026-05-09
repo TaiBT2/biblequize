@@ -65,6 +65,10 @@ public class RoomController {
             String bookScope = body.get("bookScope") instanceof String s ? s : "ALL";
             String questionSourceStr = body.get("questionSource") instanceof String s ? s : "DATABASE";
             String questionSetId = body.get("questionSetId") instanceof String s ? s : null;
+            // Sprint 4 (host-organizer): default false → user-created multiplayer
+            // rooms put the creator in Quản trò mode (no answers, only orchestration).
+            // FE may pass true explicitly for legacy/practice flows.
+            Boolean hostPlaysGame = body.get("hostPlaysGame") instanceof Boolean b ? b : Boolean.FALSE;
 
             Room.RoomMode mode;
             try {
@@ -87,7 +91,7 @@ public class RoomController {
                 questionSource = Room.QuestionSource.DATABASE;
             }
 
-            Room room = roomService.createRoom(roomName, user, maxPlayers, questionCount, timePerQuestion, mode, isPublic, difficulty, bookScope, questionSource, questionSetId);
+            Room room = roomService.createRoom(roomName, user, maxPlayers, questionCount, timePerQuestion, mode, isPublic, difficulty, bookScope, questionSource, questionSetId, hostPlaysGame);
             RoomService.RoomDetailsDTO details = roomService.getRoomDetails(room.getId(), user.getId());
 
             return ResponseEntity.ok(Map.of("success", true, "room", details));

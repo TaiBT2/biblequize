@@ -6,10 +6,8 @@
 
 ### Tasks
 
-- Task S4-1: DB migration V49 + Room.hostPlaysGame field — `[ ]` IN PROGRESS
-  - File: `db/migration/V49__add_host_plays_game.sql`, `Room.java`, `RoomEntityTest.java`
-  - Default `TRUE` (legacy compat); Sprint 4 createRoom sẽ set `FALSE`
-- Task S4-2: RoomService.createRoom default Quản trò mode — `[ ]` TODO
+- Task S4-1: DB migration V49 + Room.hostPlaysGame field — `[x]` DONE (d43e7bc)
+- Task S4-2: RoomService.createRoom default Quản trò mode — `[x]` DONE
 - Task S4-3: RoomService.startRoom validation ≥2 players excluding host — `[ ]` TODO
 - Task S4-4: RoomQuizService skip host in scoring/ranking — `[ ]` TODO
 - Task S4-5: Host control endpoints (pause/resume/skip/broadcast/end-early) — `[ ]` TODO

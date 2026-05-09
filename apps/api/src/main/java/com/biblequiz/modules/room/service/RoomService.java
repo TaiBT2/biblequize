@@ -60,6 +60,23 @@ public class RoomService {
                            Integer timePerQuestion, Room.RoomMode mode, Boolean isPublic,
                            Room.RoomDifficulty difficulty, String bookScope,
                            Room.QuestionSource questionSource, String questionSetId) {
+        // Backward-compat overload: defaults hostPlaysGame=true (legacy mode where host plays).
+        // ChurchGroup flows ("Tự ôn" + "Chơi cùng nhau") rely on this default; new user-created
+        // multiplayer rooms come through the explicit overload below with hostPlaysGame=false.
+        return createRoom(roomName, host, maxPlayers, questionCount, timePerQuestion, mode, isPublic,
+                difficulty, bookScope, questionSource, questionSetId, Boolean.TRUE);
+    }
+
+    /**
+     * Sprint 4 (host-organizer): explicit-mode overload. {@code hostPlaysGame=false} →
+     * Quản trò mode, host is NOT added as a RoomPlayer (no answers, no scoring).
+     * {@code hostPlaysGame=true/null} → legacy behavior, host IS a player.
+     */
+    public Room createRoom(String roomName, User host, Integer maxPlayers, Integer questionCount,
+                           Integer timePerQuestion, Room.RoomMode mode, Boolean isPublic,
+                           Room.RoomDifficulty difficulty, String bookScope,
+                           Room.QuestionSource questionSource, String questionSetId,
+                           Boolean hostPlaysGame) {
         String roomId = UUID.randomUUID().toString();
         String roomCode = generateRoomCode();
 
@@ -84,11 +101,15 @@ public class RoomService {
         if (questionSetId != null && !questionSetId.isBlank()) {
             room.setQuestionSetId(questionSetId);
         }
+        room.setHostPlaysGame(hostPlaysGame != null ? hostPlaysGame : Boolean.FALSE);
 
         roomRepository.save(room);
 
-        // Host tự động vào phòng
-        addPlayerToRoom(roomId, host);
+        // Sprint 4: only add the host as a RoomPlayer in legacy mode. In Quản trò
+        // mode the host stays only on Room.host FK (no answers, no scoring, no ranking).
+        if (room.isHostPlaysGame()) {
+            addPlayerToRoom(roomId, host);
+        }
 
         return room;
     }
@@ -126,6 +147,15 @@ public class RoomService {
         }
 
         // From here: status == LOBBY.
+        // Sprint 4: in Quản trò mode the host is intentionally NOT a RoomPlayer.
+        // If they hit /join (e.g. via a stale link), short-circuit instead of
+        // blowing up the "Phòng đã đầy người" check or accidentally adding them
+        // as a player and breaking the no-host-in-scoring invariant.
+        if (!room.isHostPlaysGame() && room.getHost() != null
+                && room.getHost().getId().equals(user.getId())) {
+            return room;
+        }
+
         if (room.isFull()) {
             throw new Exception("Phòng đã đầy người");
         }
@@ -636,6 +666,8 @@ public class RoomService {
         public final String myUserId;
         /** Owning group when room was spawned from a group quiz set; null otherwise. */
         public final String groupId;
+        /** Sprint 4: true = host plays (legacy); false = Quản trò mode (host orchestrates only). */
+        public final boolean hostPlaysGame;
         public final List<PlayerInfoDTO> players;
 
         public RoomDetailsDTO(Room room, List<RoomPlayer> roomPlayers) {
@@ -667,6 +699,7 @@ public class RoomService {
             this.createdAt = room.getCreatedAt() != null ? room.getCreatedAt().toString() : null;
             this.myUserId = viewerUserId;
             this.groupId = groupId;
+            this.hostPlaysGame = room.isHostPlaysGame();
 
             this.players = roomPlayers.stream()
                 .map(player -> new PlayerInfoDTO(

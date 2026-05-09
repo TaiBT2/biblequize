@@ -116,6 +116,80 @@ class RoomServiceTest {
         assertFalse(result.getIsPublic());
     }
 
+    // ── createRoom: Sprint 4 host-organizer mode ────────────────────────────
+
+    @Test
+    void createRoom_quanTroMode_shouldNotAddHostAsPlayer() {
+        // hostPlaysGame=false → host stays only on Room.host FK; no RoomPlayer row.
+        when(roomRepository.findByRoomCode(anyString())).thenReturn(Optional.empty());
+        when(roomRepository.save(any(Room.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        Room result = roomService.createRoom("Quan Tro Room", hostUser, 4, 10, 30,
+                Room.RoomMode.SPEED_RACE, false, Room.RoomDifficulty.MIXED, "ALL",
+                Room.QuestionSource.DATABASE, null, Boolean.FALSE);
+
+        assertFalse(result.isHostPlaysGame());
+        // Host must NOT have been inserted as a RoomPlayer.
+        verify(roomPlayerRepository, never()).save(any(RoomPlayer.class));
+    }
+
+    @Test
+    void createRoom_legacyMode_shouldAddHostAsPlayer() {
+        when(roomRepository.findByRoomCode(anyString())).thenReturn(Optional.empty());
+        when(roomRepository.save(any(Room.class))).thenAnswer(inv -> inv.getArgument(0));
+        when(roomRepository.findById(anyString())).thenAnswer(inv -> {
+            Room r = new Room();
+            r.setId(inv.getArgument(0));
+            r.setMode(Room.RoomMode.SPEED_RACE);
+            r.setCurrentPlayers(0);
+            return Optional.of(r);
+        });
+
+        Room result = roomService.createRoom("Legacy Room", hostUser, 4, 10, 30,
+                Room.RoomMode.SPEED_RACE, false, Room.RoomDifficulty.MIXED, "ALL",
+                Room.QuestionSource.DATABASE, null, Boolean.TRUE);
+
+        assertTrue(result.isHostPlaysGame());
+        verify(roomPlayerRepository).save(any(RoomPlayer.class));
+    }
+
+    @Test
+    void createRoom_legacyOverload_defaultsToHostPlaysTrue() {
+        // Backward-compat overload (no hostPlaysGame param) keeps old behavior:
+        // ChurchGroup "Tự ôn" + "Chơi cùng nhau" rely on this.
+        when(roomRepository.findByRoomCode(anyString())).thenReturn(Optional.empty());
+        when(roomRepository.save(any(Room.class))).thenAnswer(inv -> inv.getArgument(0));
+        when(roomRepository.findById(anyString())).thenAnswer(inv -> {
+            Room r = new Room();
+            r.setId(inv.getArgument(0));
+            r.setMode(Room.RoomMode.SPEED_RACE);
+            r.setCurrentPlayers(0);
+            return Optional.of(r);
+        });
+
+        Room result = roomService.createRoom("Compat Room", hostUser, 4, 10, 30,
+                Room.RoomMode.SPEED_RACE, false, Room.RoomDifficulty.MIXED, "ALL",
+                Room.QuestionSource.DATABASE, null);
+
+        assertTrue(result.isHostPlaysGame());
+        verify(roomPlayerRepository).save(any(RoomPlayer.class));
+    }
+
+    @Test
+    void joinRoom_byHostInQuanTroMode_isNoOpReturnsRoom() throws Exception {
+        // Host hitting /join in Quan Tro mode (e.g. stale link) must NOT be
+        // added as RoomPlayer — would break the no-host-in-scoring invariant.
+        testRoom.setHostPlaysGame(false);
+        when(roomRepository.findByRoomCode("ABC123")).thenReturn(Optional.of(testRoom));
+        when(roomPlayerRepository.findByRoomIdAndUserId("room-1", "host-1"))
+                .thenReturn(Optional.empty());
+
+        Room result = roomService.joinRoom("ABC123", hostUser);
+
+        assertEquals("room-1", result.getId());
+        verify(roomPlayerRepository, never()).save(any(RoomPlayer.class));
+    }
+
     // ── joinRoom ─────────────────────────────────────────────────────────────
 
     @Test
