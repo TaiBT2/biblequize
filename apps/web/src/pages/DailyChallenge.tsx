@@ -138,6 +138,7 @@ const DailyChallenge: React.FC = () => {
   const queryClient = useQueryClient()
   const userName = useAuthStore((s) => s.user?.name)
   const userAvatar = useAuthStore((s) => s.user?.avatar)
+  const userStreak = useAuthStore((s) => s.user?.currentStreak ?? 0)
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
 
   // Page-level state
@@ -266,21 +267,13 @@ const DailyChallenge: React.FC = () => {
     [t, completedDates]
   )
 
-  const currentStreak = useMemo(() => {
-    if (historyDays.length === 0) return 0
-    const byDate = new Map(historyDays.map((d) => [d.date, d]))
-    let streak = 0
-    const today = new Date()
-    for (let i = 0; i < 60; i++) {
-      const d = new Date(today)
-      d.setDate(d.getDate() - i)
-      const iso = d.toISOString().split('T')[0]
-      const entry = byDate.get(iso)
-      if (entry?.completed) streak++
-      else if (i > 0) break
-    }
-    return streak
-  }, [historyDays])
+  // Source of truth for the user's consecutive-day streak is the
+  // backend (User.currentStreak via /api/me) — same value the sidebar
+  // StreakWidget shows. Previously this was recomputed from Daily
+  // Challenge history alone, which broke when the user kept a streak
+  // through other quiz modes without completing today's Daily, leaving
+  // the page showing 0 while the sidebar showed 2.
+  const currentStreak = userStreak
 
   const leaderboardEntries = useMemo<DailyLbEntry[]>(() => {
     const data = leaderboardQuery.data
