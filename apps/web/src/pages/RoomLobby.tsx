@@ -338,15 +338,71 @@ const RoomLobby: React.FC = () => {
     return `${room.currentPlayers}/${room.maxPlayers} người · Có thể bắt đầu`;
   })();
 
-  /* ── Countdown overlay ── */
-  if (countdown !== null) return (
-    <div className="min-h-screen bg-surface-dim flex items-center justify-center">
-      <div className="text-center">
-        <div className="text-8xl font-bold text-secondary animate-bounce-in">{countdown}</div>
-        <p className="text-xl text-on-surface-variant mt-4">{t('room.gameStarting')}</p>
+  /* ── BẮT ĐẦU! countdown overlay (per mockup state-start) ── */
+  if (countdown !== null) {
+    const orderedForOverlay = room
+      ? [
+          ...(room.players?.filter(p => p.userId === room.hostId) ?? []),
+          ...(room.players?.filter(p => p.userId !== room.hostId) ?? []),
+        ].slice(0, 6)
+      : [];
+    const modeLabel = MODE_INFO[room?.mode ?? '']?.label ?? room?.mode ?? '';
+    return (
+      <div
+        className="fixed inset-0 z-[80] flex flex-col items-center justify-center px-6"
+        style={{
+          background: 'radial-gradient(circle at center, rgba(212,148,31,0.45) 0%, #11131e 70%)',
+          fontFamily: "'Be Vietnam Pro', sans-serif",
+        }}
+        data-testid="lobby-countdown"
+      >
+        <div
+          className="text-xs lg:text-sm font-bold uppercase mb-6 lg:mb-8"
+          style={{ color: '#e8a832', letterSpacing: '0.5em' }}
+        >
+          {modeLabel}{room?.questionCount ? ` · ${room.questionCount} câu` : ''}
+        </div>
+        <div
+          className="font-black text-white text-center leading-none"
+          style={{
+            fontSize: 'clamp(64px, 18vw, 192px)',
+            textShadow: '0 8px 60px rgba(0,0,0,0.6)',
+            letterSpacing: '-0.02em',
+          }}
+        >
+          {countdown > 0 ? countdown : 'BẮT ĐẦU!'}
+        </div>
+        <div className="mt-8 lg:mt-10 text-base lg:text-xl font-semibold" style={{ color: 'rgba(255,255,255,0.9)' }}>
+          Câu hỏi đầu tiên đang đến...
+        </div>
+        {orderedForOverlay.length > 0 && (
+          <div className="mt-10 lg:mt-12 flex items-center gap-3 lg:gap-4 flex-wrap justify-center">
+            {orderedForOverlay.map((p, i) => (
+              <div
+                key={p.id}
+                className="grid place-items-center rounded-full text-base lg:text-lg font-bold"
+                style={{
+                  width: 56, height: 56,
+                  background: i === 0
+                    ? 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)'
+                    : 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)',
+                  color: i === 0 ? '#11131e' : '#fff',
+                  border: '3px solid #11131e',
+                  boxShadow: i === 0 ? '0 0 40px rgba(232,168,50,0.5)' : 'none',
+                }}
+                aria-hidden="true"
+              >
+                {p.username?.[0]?.toUpperCase() ?? '?'}
+              </div>
+            ))}
+            <span className="ml-2 text-sm lg:text-base font-semibold" style={{ color: 'rgba(255,255,255,0.85)' }}>
+              {room?.currentPlayers ?? 0} người chơi · sẵn sàng!
+            </span>
+          </div>
+        )}
       </div>
-    </div>
-  );
+    );
+  }
 
   /* ── Sequential mode lobby (Feature A "Chơi cùng nhau") ── */
   if (isSequential && room) {
