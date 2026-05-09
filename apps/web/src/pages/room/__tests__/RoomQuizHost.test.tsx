@@ -97,6 +97,25 @@ describe('RoomQuizHost', () => {
     expect(mockApiPost).toHaveBeenCalledWith('/api/rooms/r1/host/end-early', {})
   })
 
+  it('renders QuizEndHost wrap-up on QUIZ_END with rankings', async () => {
+    await renderHost()
+    lastOnMessage!({
+      type: 'QUIZ_END',
+      data: [
+        { playerId: 'u1', username: 'An', score: 252, correctAnswers: 11, totalAnswered: 15 },
+        { playerId: 'u2', username: 'Chi', score: 156, correctAnswers: 8, totalAnswered: 15 },
+        { playerId: 'u3', username: 'Dũng', score: 124, correctAnswers: 7, totalAnswered: 15 },
+      ],
+    })
+    expect(await screen.findByTestId('quiz-end-host-page')).toBeInTheDocument()
+    expect(screen.getByText(/Cảm ơn Quản trò/i)).toBeInTheDocument()
+    const winner = screen.getByTestId('end-host-winner')
+    expect(winner).toHaveTextContent(/An/)
+    expect(winner).toHaveTextContent(/252 điểm/)
+    expect(screen.getByTestId('end-host-rankings').children).toHaveLength(3)
+    expect(screen.getByTestId('end-host-replay')).toBeInTheDocument()
+  })
+
   it('live-answer list updates on ANSWER_SUBMITTED', async () => {
     await renderHost()
     lastOnMessage!({

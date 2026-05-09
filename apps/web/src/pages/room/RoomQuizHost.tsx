@@ -31,6 +31,16 @@ type ScoreRow = { userId: string; username: string; score: number };
 interface NavState {
   hostId?: string;
   hostName?: string;
+  mode?: string;
+  fromGroupId?: string;
+}
+
+interface FinalRanking {
+  playerId?: string;
+  username?: string;
+  score?: number;
+  correctAnswers?: number;
+  totalAnswered?: number;
 }
 
 const RoomQuizHost: React.FC = () => {
@@ -55,6 +65,8 @@ const RoomQuizHost: React.FC = () => {
   const [broadcastMsg, setBroadcastMsg] = useState('');
   const [actionError, setActionError] = useState<string | null>(null);
   const [skippedToast, setSkippedToast] = useState(false);
+  const [finalRanks, setFinalRanks] = useState<FinalRanking[] | null>(null);
+  const [matchStartedAt] = useState(() => Date.now());
 
   const { connected, reconnecting } = useStomp({
     roomId,
@@ -115,13 +127,22 @@ const RoomQuizHost: React.FC = () => {
           setTimeout(() => setSkippedToast(false), 2500);
           break;
         case 'ROOM_ENDED':
-          navigate('/multiplayer', { replace: true });
+          // End-early or stuck-game cleanup — show wrap-up if we have ranks
+          // so far, otherwise bounce back to /multiplayer.
+          if (finalRanks == null) {
+            navigate('/multiplayer', { replace: true });
+          }
           break;
-        case 'QUIZ_END':
-          // TODO S4-10: render QuizEndHost. For Sprint 4 v1 just route
-          // back to the multiplayer landing page.
-          navigate('/multiplayer', { replace: true });
+        case 'QUIZ_END': {
+          const d = msg.data as FinalRanking[] | { finalResults?: FinalRanking[]; leaderboard?: FinalRanking[] } | undefined;
+          let rows: FinalRanking[] = [];
+          if (Array.isArray(d)) rows = d;
+          else if (Array.isArray(d?.finalResults)) rows = d!.finalResults!;
+          else if (Array.isArray(d?.leaderboard)) rows = d!.leaderboard!;
+          rows = [...rows].sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
+          setFinalRanks(rows);
           break;
+        }
       }
     },
   });
@@ -158,6 +179,35 @@ const RoomQuizHost: React.FC = () => {
     callHost('end-early');
   };
 
+  const handleReplayWithSameGroup = () => {
+    // Sprint 4: pre-fill CreateRoom with mode + invite list. CreateRoom can
+    // ignore unknown nav-state fields safely.
+    navigate('/multiplayer/create', {
+      state: {
+        prefill: {
+          mode: navState.mode ?? 'SPEED_RACE',
+          invitePlayerIds: (finalRanks ?? []).map(r => r.playerId).filter(Boolean) as string[],
+        },
+      },
+    });
+  };
+
+  const matchStats = useMemo(() => {
+    const ranks = finalRanks ?? [];
+    const totalCorrect = ranks.reduce((s, r) => s + (r.correctAnswers ?? 0), 0);
+    const totalAnswered = ranks.reduce((s, r) => s + (r.totalAnswered ?? 0), 0);
+    const avgAccuracy = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
+    const durationS = Math.max(1, Math.round((Date.now() - matchStartedAt) / 1000));
+    const m = Math.floor(durationS / 60);
+    const s = durationS % 60;
+    return {
+      duration: `${m}m ${s}s`,
+      avgAccuracy,
+      players: ranks.length,
+      totalQuestions,
+    };
+  }, [finalRanks, matchStartedAt, totalQuestions]);
+
   const liveAnswerList = useMemo(
     () => Object.values(liveAnswers).sort((a, b) => a.username.localeCompare(b.username)),
     [liveAnswers]
@@ -166,6 +216,176 @@ const RoomQuizHost: React.FC = () => {
   // playerCount derived from scoreboard (best signal we have here without
   // a separate roomDetails fetch). Falls back to answered count.
   const playerCount = Math.max(scores.length, answeredCount);
+
+  // ── Sprint 4 (S4-10): Quan Tro wrap-up screen ──
+  if (finalRanks) {
+    const winner = finalRanks[0];
+    return (
+      <div
+        data-testid="quiz-end-host-page"
+        className="min-h-screen text-white relative"
+        style={{
+          background: 'radial-gradient(ellipse at top, rgba(232,168,50,0.18) 0%, #11131e 60%)',
+          fontFamily: "'Be Vietnam Pro', sans-serif",
+        }}
+      >
+        <header className="px-4 pt-4 flex items-center justify-between">
+          <span
+            className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider"
+            style={{ background: 'rgba(232,168,50,0.2)', color: '#e8a832' }}
+          >
+            👑 Quản trò
+          </span>
+          <button
+            onClick={() => navigate('/multiplayer', { replace: true })}
+            className="w-8 h-8 rounded-full grid place-items-center text-gray-400"
+            style={{ background: 'rgba(255,255,255,0.04)' }}
+            aria-label="Đóng"
+          >
+            ✕
+          </button>
+        </header>
+
+        <div className="text-center pt-6 pb-4">
+          <div className="text-[10px] font-bold uppercase tracking-[0.3em] mb-1" style={{ color: '#e8a832' }}>
+            Trận đấu kết thúc
+          </div>
+          <div className="flex items-center justify-center gap-2">
+            <span className="text-2xl">🎉</span>
+            <h1
+              className="font-black text-3xl tracking-tight"
+              style={{
+                background: 'linear-gradient(135deg, #f4c560 0%, #e8a832 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent',
+              }}
+            >
+              Cảm ơn Quản trò!
+            </h1>
+          </div>
+        </div>
+
+        {winner && (
+          <div className="px-5 mb-4">
+            <div
+              className="rounded-2xl p-3 flex items-center gap-3"
+              style={{
+                background: 'rgba(50,52,64,0.78)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(232,168,50,0.3)',
+              }}
+              data-testid="end-host-winner"
+            >
+              <div className="text-2xl">👑</div>
+              <div
+                className="w-10 h-10 rounded-full grid place-items-center font-bold text-white"
+                style={{ background: 'linear-gradient(135deg, #34d399, #059669)' }}
+              >
+                {winner.username?.[0]?.toUpperCase() ?? '?'}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[10px] uppercase tracking-wider font-bold" style={{ color: '#9ca3af' }}>
+                  Người chiến thắng
+                </div>
+                <div className="font-bold text-lg truncate">{winner.username}</div>
+                <div className="text-xs font-bold" style={{ color: '#e8a832' }}>
+                  {winner.score ?? 0} điểm
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="px-5 mb-4">
+          <div className="text-[10px] uppercase tracking-wider font-bold mb-2" style={{ color: '#9ca3af' }}>
+            📊 Thống kê trận đấu
+          </div>
+          <div className="grid grid-cols-2 gap-2" data-testid="end-host-stats">
+            <StatCard label="Tổng câu hỏi" value={`${matchStats.totalQuestions || finalRanks[0]?.totalAnswered || 0}`} />
+            <StatCard label="Thời lượng" value={matchStats.duration} />
+            <StatCard label="Người chơi" value={`${matchStats.players}`} />
+            <StatCard label="Tỷ lệ đúng TB" value={`${matchStats.avgAccuracy}%`} accent="#34d399" />
+          </div>
+        </div>
+
+        <div className="px-5 mb-4">
+          <div className="text-[10px] uppercase tracking-wider font-bold mb-2" style={{ color: '#9ca3af' }}>
+            🏆 Xếp hạng cuối cùng
+          </div>
+          <ul className="space-y-1.5" data-testid="end-host-rankings">
+            {finalRanks.map((r, i) => (
+              <li
+                key={r.playerId ?? `r${i}`}
+                className="rounded-lg p-2 flex items-center gap-2"
+                style={{
+                  background: 'rgba(50,52,64,0.55)',
+                  border: i === 0 ? '1px solid rgba(232,168,50,0.3)' : '1px solid rgba(255,255,255,0.04)',
+                }}
+              >
+                <span
+                  className="text-[10px] font-bold w-3"
+                  style={{ color: i === 0 ? '#e8a832' : i === 1 ? '#d1d5db' : i === 2 ? '#cd7f32' : '#9ca3af' }}
+                >
+                  {i + 1}
+                </span>
+                <div
+                  className="w-6 h-6 rounded-full grid place-items-center text-[10px] font-bold text-white"
+                  style={{ background: 'linear-gradient(135deg, #6366f1, #4338ca)' }}
+                >
+                  {r.username?.[0]?.toUpperCase() ?? '?'}
+                </div>
+                <span className="flex-1 text-xs font-semibold truncate">{r.username}</span>
+                {typeof r.correctAnswers === 'number' && typeof r.totalAnswered === 'number' && r.totalAnswered > 0 && (
+                  <span className="text-[10px]" style={{ color: '#34d399' }}>
+                    {r.correctAnswers}/{r.totalAnswered} đúng
+                  </span>
+                )}
+                <span
+                  className="text-xs font-bold tabular-nums"
+                  style={{ color: i === 0 ? '#e8a832' : '#fff' }}
+                >
+                  {r.score ?? 0}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="p-4">
+          <button
+            data-testid="end-host-replay"
+            onClick={handleReplayWithSameGroup}
+            className="w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2"
+            style={{
+              background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
+              color: '#11131e',
+            }}
+          >
+            🔄 <span>Tổ chức trận mới với cùng nhóm</span>
+          </button>
+          <div className="grid grid-cols-2 gap-2 mt-2">
+            <button
+              data-testid="end-host-analytics"
+              onClick={() => navigate(`/room/${roomId}/analytics`)}
+              className="py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1"
+              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+            >
+              📊 Phân tích
+            </button>
+            <button
+              data-testid="end-host-close"
+              onClick={() => navigate('/multiplayer', { replace: true })}
+              className="py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1"
+              style={{ background: 'rgba(239,68,68,0.06)', border: '1px solid rgba(239,68,68,0.2)', color: '#f87171' }}
+            >
+              🚪 Đóng
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -465,5 +685,15 @@ const RoomQuizHost: React.FC = () => {
     </div>
   );
 };
+
+const StatCard: React.FC<{ label: string; value: string; accent?: string }> = ({ label, value, accent }) => (
+  <div
+    className="rounded-xl p-2.5"
+    style={{ background: 'rgba(50,52,64,0.55)', border: '1px solid rgba(255,255,255,0.04)' }}
+  >
+    <div className="text-[10px] uppercase" style={{ color: '#9ca3af' }}>{label}</div>
+    <div className="font-bold text-base" style={{ color: accent ?? '#fff' }}>{value}</div>
+  </div>
+);
 
 export default RoomQuizHost;
