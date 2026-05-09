@@ -60,6 +60,14 @@ const RoomQuiz: React.FC = () => {
 
   const myUsername = localStorage.getItem('userName') ?? '';
 
+  // Sprint 4 (S4-9): host control state — pause overlay, skip toast, host broadcast banner.
+  const hostNameFromState = (state as { hostName?: string } | null)?.hostName;
+  const hostPlaysGameFromState = (state as { hostPlaysGame?: boolean } | null)?.hostPlaysGame;
+  const showHostHint = hostPlaysGameFromState === false; // Quan Tro mode → show "đang theo dõi" hint
+  const [isPaused, setIsPaused] = useState(false);
+  const [skipToast, setSkipToast] = useState(false);
+  const [hostBroadcast, setHostBroadcast] = useState<{ hostName: string; message: string } | null>(null);
+
   // Core question state
   const [questionIndex, setQuestionIndex] = useState(0);
   const [totalQuestions, setTotalQuestions] = useState(0);
@@ -431,6 +439,28 @@ const RoomQuiz: React.FC = () => {
           // verify the broadcast made it.
           break;
         }
+        // ── Sprint 4 (S4-9) host control echoes ──
+        case 'GAME_PAUSED': {
+          setIsPaused(true);
+          break;
+        }
+        case 'GAME_RESUMED': {
+          setIsPaused(false);
+          break;
+        }
+        case 'QUESTION_SKIPPED': {
+          setSkipToast(true);
+          setTimeout(() => setSkipToast(false), 2500);
+          break;
+        }
+        case 'HOST_BROADCAST': {
+          const d = msg.data as { hostName?: string; message?: string } | undefined;
+          if (d?.message) {
+            setHostBroadcast({ hostName: d.hostName ?? 'Quản trò', message: d.message });
+            setTimeout(() => setHostBroadcast(null), 5000);
+          }
+          break;
+        }
       }
     },
   });
@@ -643,6 +673,65 @@ const RoomQuiz: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-surface font-body text-on-surface overflow-hidden relative">
+      {/* Sprint 4 (S4-9): Quan Tro pause overlay */}
+      {isPaused && (
+        <div
+          data-testid="player-pause-overlay"
+          className="fixed inset-0 z-50 grid place-items-center backdrop-blur-sm"
+          style={{ background: 'rgba(0,0,0,0.7)' }}
+        >
+          <div className="text-center px-6">
+            <div className="text-5xl mb-3">⏸️</div>
+            <div className="font-bold text-2xl text-white mb-1">Trận đấu đã tạm dừng</div>
+            <div className="text-sm text-gray-400">Quản trò sẽ tiếp tục trong giây lát</div>
+          </div>
+        </div>
+      )}
+      {/* Sprint 4 (S4-9): host broadcast banner */}
+      {hostBroadcast && (
+        <div
+          data-testid="player-host-broadcast"
+          className="fixed top-16 left-4 right-4 z-40"
+        >
+          <div
+            className="rounded-xl p-3 flex items-start gap-2 max-w-md mx-auto"
+            style={{ background: 'rgba(232,168,50,0.15)', border: '1px solid rgba(232,168,50,0.4)', backdropFilter: 'blur(8px)' }}
+          >
+            <span className="text-base flex-shrink-0">👑</span>
+            <div className="min-w-0">
+              <div className="text-[10px] font-bold uppercase" style={{ color: '#e8a832' }}>
+                {hostBroadcast.hostName}
+              </div>
+              <div className="text-sm text-white">{hostBroadcast.message}</div>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Sprint 4 (S4-9): question-skipped toast */}
+      {skipToast && (
+        <div
+          data-testid="player-skip-toast"
+          className="fixed top-16 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-lg text-sm"
+          style={{ background: 'rgba(232,168,50,0.95)', color: '#11131e' }}
+        >
+          ⏭️ Câu này đã được Quản trò bỏ qua
+        </div>
+      )}
+      {/* Sprint 4 (S4-9): "Quản trò đang theo dõi" pinned hint */}
+      {showHostHint && hostNameFromState && (
+        <div
+          data-testid="player-host-hint"
+          className="fixed bottom-2 left-1/2 -translate-x-1/2 z-30 pointer-events-none"
+        >
+          <div
+            className="rounded-full px-3 py-1 flex items-center gap-1.5 text-[10px]"
+            style={{ background: 'rgba(50,52,64,0.6)', backdropFilter: 'blur(8px)', color: '#9ca3af' }}
+          >
+            <span>👑</span>
+            <span>Quản trò {hostNameFromState} đang theo dõi</span>
+          </div>
+        </div>
+      )}
       {/* Background Decorative Elements */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#9b59b6]/5 blur-[120px] rounded-full" />
