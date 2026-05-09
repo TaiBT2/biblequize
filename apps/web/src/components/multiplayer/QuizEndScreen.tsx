@@ -101,107 +101,108 @@ export function QuizEndScreen({
         </button>
       </header>
 
-      {/* Title */}
-      <div className="text-center pt-6 pb-2" style={{ animation: 'fadeIn 0.5s ease-out' }}>
-        <div
-          className="text-xs font-bold uppercase mb-2"
-          style={{ color: '#e8a832', letterSpacing: '0.4em' }}
-        >
-          {isHost ? 'Trận đấu kết thúc' : 'Cảm ơn bạn đã chơi!'}
-        </div>
-        <div className="flex items-center justify-center gap-3">
-          <span className="text-3xl" aria-hidden="true">🏆</span>
-          <h1
-            className="font-black text-3xl lg:text-4xl tracking-tight"
-            style={{
-              background: 'linear-gradient(135deg, #e8a832 0%, #fbbf24 50%, #e7c268 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              lineHeight: 1.1,
-            }}
-          >
-            Vinh quang!
-          </h1>
-        </div>
-      </div>
+      {/* Main grid wraps title + content + actions so title centers with the
+          podium column instead of viewport (had been off-center on lg+). */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 px-4 lg:px-8 pt-6 pb-8">
+        <div className="flex flex-col items-stretch min-w-0">
+          {/* Title */}
+          <div className="text-center pb-2" style={{ animation: 'fadeIn 0.5s ease-out' }}>
+            <div
+              className="text-xs font-bold uppercase mb-2"
+              style={{ color: '#e8a832', letterSpacing: '0.4em' }}
+            >
+              {isHost ? 'Trận đấu kết thúc' : 'Cảm ơn bạn đã chơi!'}
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <span className="text-3xl" aria-hidden="true">🏆</span>
+              <h1
+                className="font-black text-3xl lg:text-4xl tracking-tight"
+                style={{
+                  background: 'linear-gradient(135deg, #e8a832 0%, #fbbf24 50%, #e7c268 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  lineHeight: 1.1,
+                }}
+              >
+                Vinh quang!
+              </h1>
+            </div>
+          </div>
 
-      {/* Player view: personal hero card sits between title and podium */}
-      {!isHost && me && (
-        <div className="px-4 lg:px-8 pt-4">
-          <div
-            data-testid="end-hero-card"
-            className="mx-auto rounded-2xl p-5 relative overflow-hidden"
-            style={{
-              maxWidth: 720,
-              background: 'rgba(50,52,64,0.78)',
-              backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(232,168,50,0.3)',
-            }}
-          >
-            <div className="grid grid-cols-[auto_1fr] gap-4 lg:gap-5 items-center">
-              <div className="relative shrink-0">
-                <div
-                  className="rounded-full grid place-items-center font-bold text-white"
-                  style={{
-                    width: 80, height: 80,
-                    background: 'linear-gradient(135deg, #4ade80 0%, #047857 100%)',
-                    fontSize: 28,
-                  }}
-                >
-                  {(myUsername?.[0] ?? '?').toUpperCase()}
-                </div>
-                {myRank && (
-                  <div
-                    className="absolute -bottom-1 -right-1 grid place-items-center font-black"
-                    style={{
-                      width: 36, height: 36,
-                      borderRadius: '50%',
-                      background: myRank === 1
-                        ? 'linear-gradient(135deg, #f4c560 0%, #e8a832 100%)'
-                        : myRank === 2
-                        ? 'linear-gradient(135deg, #f3f4f6 0%, #9ca3af 100%)'
-                        : myRank === 3
-                        ? 'linear-gradient(135deg, #cd7f32 0%, #8b5a2b 100%)'
-                        : 'rgba(50,52,64,0.9)',
-                      color: '#11131e',
-                      border: '2px solid #11131e',
-                    }}
-                  >
-                    {myRank}
+          {/* Player view: personal hero card sits between title and podium */}
+          {!isHost && me && (
+            <div className="pt-4 pb-2">
+              <div
+                data-testid="end-hero-card"
+                className="mx-auto rounded-2xl p-5 relative overflow-hidden"
+                style={{
+                  maxWidth: 720,
+                  background: 'rgba(50,52,64,0.78)',
+                  backdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(232,168,50,0.3)',
+                }}
+              >
+                <div className="grid grid-cols-[auto_1fr] gap-4 lg:gap-5 items-center">
+                  <div className="relative shrink-0">
+                    <div
+                      className="rounded-full grid place-items-center font-bold text-white"
+                      style={{
+                        width: 80, height: 80,
+                        background: 'linear-gradient(135deg, #4ade80 0%, #047857 100%)',
+                        fontSize: 28,
+                      }}
+                    >
+                      {(myUsername?.[0] ?? '?').toUpperCase()}
+                    </div>
+                    {myRank && (
+                      <div
+                        className="absolute -bottom-1 -right-1 grid place-items-center font-black"
+                        style={{
+                          width: 36, height: 36,
+                          borderRadius: '50%',
+                          background: myRank === 1
+                            ? 'linear-gradient(135deg, #f4c560 0%, #e8a832 100%)'
+                            : myRank === 2
+                            ? 'linear-gradient(135deg, #f3f4f6 0%, #9ca3af 100%)'
+                            : myRank === 3
+                            ? 'linear-gradient(135deg, #cd7f32 0%, #8b5a2b 100%)'
+                            : 'rgba(50,52,64,0.9)',
+                          color: '#11131e',
+                          border: '2px solid #11131e',
+                        }}
+                      >
+                        {myRank}
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-              <div className="min-w-0">
-                <div
-                  className="text-xs font-bold uppercase tracking-wider mb-1"
-                  style={{ color: '#9ca3af' }}
-                >
-                  Bạn về thứ
-                </div>
-                <div
-                  className="font-black text-2xl lg:text-4xl text-white tracking-tight"
-                  style={{ lineHeight: 1.1 }}
-                >
-                  {myRank ? `Hạng ${myRank}` : 'Chưa xếp hạng'}
-                </div>
-                <div className="text-sm" style={{ color: '#d1d5db' }}>
-                  {myUsername}{me.score ? ` · ${me.score} điểm` : ''}
-                </div>
-                <div className="grid grid-cols-3 gap-3 mt-3 pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-                  <Stat label="Đúng" value={`${me.correctAnswers ?? 0}/${me.totalAnswered ?? totalQuestions}`} color="#4ade80" />
-                  <Stat label="Chính xác" value={`${Math.round((me.accuracy ?? 0) * 100)}%`} color="#e8a832" />
-                  <Stat label="Tổng câu" value={`${totalQuestions}`} color="#d1d5db" />
+                  <div className="min-w-0">
+                    <div
+                      className="text-xs font-bold uppercase tracking-wider mb-1"
+                      style={{ color: '#9ca3af' }}
+                    >
+                      Bạn về thứ
+                    </div>
+                    <div
+                      className="font-black text-2xl lg:text-4xl text-white tracking-tight"
+                      style={{ lineHeight: 1.1 }}
+                    >
+                      {myRank ? `Hạng ${myRank}` : 'Chưa xếp hạng'}
+                    </div>
+                    <div className="text-sm" style={{ color: '#d1d5db' }}>
+                      {myUsername}{me.score ? ` · ${me.score} điểm` : ''}
+                    </div>
+                    <div className="grid grid-cols-3 gap-3 mt-3 pt-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+                      <Stat label="Đúng" value={`${me.correctAnswers ?? 0}/${me.totalAnswered ?? totalQuestions}`} color="#4ade80" />
+                      <Stat label="Chính xác" value={`${Math.round((me.accuracy ?? 0) * 100)}%`} color="#e8a832" />
+                      <Stat label="Tổng câu" value={`${totalQuestions}`} color="#d1d5db" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          )}
 
-      {/* Main grid: podium/stats + actions */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 px-4 lg:px-8 pt-5 pb-8">
-        <div className="flex flex-col items-stretch">
           <Podium results={results} compact={!isHost} />
 
           {/* Match stats — 4 cells */}
