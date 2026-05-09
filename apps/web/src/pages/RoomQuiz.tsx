@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useStomp } from '../hooks/useStomp';
 import { useError } from '../contexts/ErrorContext';
 import { api } from '../api/client';
+import { soundManager } from '../services/soundManager';
 import ReactionBar from '../components/ReactionBar';
 import LiveFeed from '../components/LiveFeed';
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton';
@@ -124,13 +125,17 @@ const RoomQuiz: React.FC = () => {
     onMessage: (msg) => {
       switch (msg.type) {
         case 'QUESTION_START': {
-          const data = msg.data as { questionIndex: number; totalQuestions: number; question: Question; timeLimit: number };
-          questionStartedAt.current = Date.now();
+          const data = msg.data as { questionIndex: number; totalQuestions: number; question: Question; timeLimit: number; startedAtMs?: number };
+          // Sprint 2 S2-5: anchor the timer to the server's broadcast moment.
+          // Falls back to local clock if BE didn't include startedAtMs (older
+          // server / dev fixture).
+          questionStartedAt.current = data.startedAtMs ?? Date.now();
           setQuestionIndex(data.questionIndex);
           setTotalQuestions(data.totalQuestions);
           setQuestion(data.question);
           setTimeLimit(data.timeLimit);
-          setTimeLeft(data.timeLimit);
+          const elapsedSec = (Date.now() - questionStartedAt.current) / 1000;
+          setTimeLeft(Math.max(0, data.timeLimit - elapsedSec));
           setSelected(null);
           setCorrectIndex(null);
           setSubmitting(false);
@@ -307,11 +312,33 @@ const RoomQuiz: React.FC = () => {
     },
   });
 
+  // Sprint 2 S2-5: server-anchored countdown. Recompute remaining from
+  // questionStartedAt every tick instead of decrementing locally — drift,
+  // tab-throttled timers, and late-join all stay in sync.
   useEffect(() => {
-    if (!timeLeft) return;
-    const t = setInterval(() => setTimeLeft(s => Math.max(0, s - 1)), 1000);
+    if (!timeLimit) return;
+    if (timeLeft <= 0) return;
+    const tick = () => {
+      const elapsedSec = (Date.now() - questionStartedAt.current) / 1000;
+      const remaining = Math.max(0, timeLimit - elapsedSec);
+      setTimeLeft(remaining);
+    };
+    const t = setInterval(tick, 250); // 4Hz: smooth seconds digit + low cost
     return () => clearInterval(t);
-  }, [timeLeft]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [timeLimit, questionIndex]);
+
+  // Sprint 2 S2-5: per-second beep in the last 5 seconds, sharper at ≤3.
+  // Tracks the last whole-second-played so a 4Hz tick doesn't spam.
+  const lastTickSecond = useRef<number>(-1);
+  useEffect(() => {
+    const sec = Math.ceil(timeLeft);
+    if (sec === lastTickSecond.current) return;
+    lastTickSecond.current = sec;
+    if (sec > 0 && sec <= 5 && selected === null) {
+      soundManager.play(sec <= 3 ? 'timerWarning' : 'timerTick');
+    }
+  }, [timeLeft, selected]);
 
   // Rejoin rehydrate: when the page mounts mid-game, the next QUESTION_START
   // broadcast is what populates state — but that may not arrive for several
@@ -324,15 +351,17 @@ const RoomQuiz: React.FC = () => {
       try {
         const res = await api.get(`/api/rooms/${roomId}/current-question`);
         if (cancelled || res.status !== 200 || !res.data?.question) return;
-        const data = res.data.question as { questionIndex: number; totalQuestions: number; question: Question; timeLimit: number };
-        questionStartedAt.current = Date.now();
+        const data = res.data.question as { questionIndex: number; totalQuestions: number; question: Question; timeLimit: number; startedAtMs?: number };
+        // Sprint 2 S2-5: prefer the cached server timestamp so the
+        // remaining-seconds figure reflects how much of this question is
+        // actually left, not a fresh full window.
+        questionStartedAt.current = data.startedAtMs ?? Date.now();
         setQuestionIndex(data.questionIndex);
         setTotalQuestions(data.totalQuestions);
         setQuestion(data.question);
         setTimeLimit(data.timeLimit);
-        // We don't know how many seconds elapsed since the broadcast, so cap
-        // at timeLimit; the next QUESTION_START or ROUND_END will resync.
-        setTimeLeft(data.timeLimit);
+        const elapsedSec = (Date.now() - questionStartedAt.current) / 1000;
+        setTimeLeft(Math.max(0, data.timeLimit - elapsedSec));
       } catch { /* 204/error: keep waiting for QUESTION_START */ }
     })();
     return () => { cancelled = true; };
