@@ -7,6 +7,7 @@ import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.room.entity.Room;
 import com.biblequiz.modules.room.entity.RoomPlayer;
 import com.biblequiz.modules.room.entity.RoomRound;
+import com.biblequiz.modules.room.repository.RoomAnswerRepository;
 import com.biblequiz.modules.room.repository.RoomPlayerRepository;
 import com.biblequiz.modules.room.repository.RoomRepository;
 import com.biblequiz.modules.room.repository.RoomRoundRepository;
@@ -46,6 +47,7 @@ public class RoomQuizService {
     @Autowired private RoomService roomService;
     @Autowired private RoomStateService roomStateService;
     @Autowired private RoomRoundRepository roomRoundRepository;
+    @Autowired private RoomAnswerRepository roomAnswerRepository;
     @Autowired private RoomPlayerRepository roomPlayerRepository;
     @Autowired private SpeedRaceScoringService speedRaceScoringService;
     @Autowired private BattleRoyaleEngine battleRoyaleEngine;
@@ -54,6 +56,40 @@ public class RoomQuizService {
     @Autowired private SequentialScoringService sequentialScoringService;
 
     private static final int BETWEEN_QUESTION_DELAY_MS = 3000;
+    /** Poll cadence for the early-end watcher. 250ms = up to 0.25s slack
+     *  before the round ends after the last answer arrives — feels
+     *  instant to players without hammering the DB. */
+    private static final int ROUND_POLL_INTERVAL_MS = 250;
+
+    /**
+     * Wait until either the timeLimit elapses or every expected player
+     * has answered the round, whichever comes first. Returns early so
+     * the next QUESTION_START doesn't sit idle when the room is fast.
+     *
+     * @param roundId          DB id of the active round
+     * @param timeLimitMs      hard timeout (timePerQuestion × 1000)
+     * @param expectedAnswers  number of submissions that signals "done"
+     *                         (active player count for Speed Race / BR /
+     *                         Team modes; 2 for Sudden Death 1v1)
+     */
+    // package-private for unit test — see RoomQuizServiceWaitTest
+    void waitForRoundEnd(String roundId, long timeLimitMs, int expectedAnswers)
+            throws InterruptedException {
+        if (expectedAnswers <= 0) {
+            // Nothing to wait for — no active players. Still respect the
+            // full timer so observers see the round play out normally.
+            Thread.sleep(timeLimitMs);
+            return;
+        }
+        long deadline = System.currentTimeMillis() + timeLimitMs;
+        while (System.currentTimeMillis() < deadline) {
+            long submitted = roomAnswerRepository.countByRoundId(roundId);
+            if (submitted >= expectedAnswers) return;
+            // Sleep up to the poll interval, but never past the deadline.
+            long remaining = deadline - System.currentTimeMillis();
+            Thread.sleep(Math.min(ROUND_POLL_INTERVAL_MS, Math.max(1, remaining)));
+        }
+    }
     /** Sprint 2: bumped 3 → 5 to give the cinematic countdown overlay
      *  enough room for "5-4-3-2-1-BẮT ĐẦU!" + the gameStart sound. The
      *  Sprint 1 fix that removed the redundant ROOM_STARTING send means
@@ -101,7 +137,10 @@ public class RoomQuizService {
             roomStateService.setCurrentRoundId(roomId, round.getId());
 
             wsController.broadcastQuestionStart(roomId, i, questions.size(), buildQuestionDto(q), timePerQuestion);
-            Thread.sleep(timePerQuestion * 1000L);
+            // End the round as soon as every active player has answered;
+            // otherwise wait the full timer.
+            int expected = (int) roomPlayerRepository.countByRoomIdAndPlayerStatus(roomId, RoomPlayer.PlayerStatus.ACTIVE);
+            waitForRoundEnd(round.getId(), timePerQuestion * 1000L, expected);
 
             round.setEndedAt(LocalDateTime.now());
             roomRoundRepository.save(round);
@@ -139,7 +178,9 @@ public class RoomQuizService {
             roomStateService.setCurrentRoundId(roomId, round.getId());
 
             wsController.broadcastQuestionStart(roomId, i, questions.size(), buildQuestionDto(q), timePerQuestion);
-            Thread.sleep(timePerQuestion * 1000L);
+            // Battle Royale: only ACTIVE players answer (eliminated are
+            // out of rotation). End early when all of them submit.
+            waitForRoundEnd(round.getId(), timePerQuestion * 1000L, (int) activeCount);
 
             round.setEndedAt(LocalDateTime.now());
             roomRoundRepository.save(round);
@@ -197,7 +238,9 @@ public class RoomQuizService {
             roomStateService.setCurrentRoundId(roomId, round.getId());
 
             wsController.broadcastQuestionStart(roomId, i, questions.size(), buildQuestionDto(q), timePerQuestion);
-            Thread.sleep(timePerQuestion * 1000L);
+            // Team vs Team: every player on either side gets to answer.
+            int expectedTvT = (int) roomPlayerRepository.countByRoomIdAndPlayerStatus(roomId, RoomPlayer.PlayerStatus.ACTIVE);
+            waitForRoundEnd(round.getId(), timePerQuestion * 1000L, expectedTvT);
 
             round.setEndedAt(LocalDateTime.now());
             roomRoundRepository.save(round);
@@ -260,7 +303,9 @@ public class RoomQuizService {
             roomStateService.setCurrentRoundId(roomId, round.getId());
 
             wsController.broadcastQuestionStart(roomId, i, questions.size(), buildQuestionDto(q), timePerQuestion);
-            Thread.sleep(timePerQuestion * 1000L);
+            // Sudden Death: only champion + challenger play this round (1v1).
+            // End as soon as both have submitted.
+            waitForRoundEnd(round.getId(), timePerQuestion * 1000L, 2);
 
             round.setEndedAt(LocalDateTime.now());
             roomRoundRepository.save(round);
