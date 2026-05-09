@@ -143,4 +143,32 @@ class RoomServiceCleanupTest {
         assertEquals(0, closed);
         verify(roomRepository, never()).saveAll(anyList());
     }
+
+    /** L-2: endRoom is idempotent — abandonment scheduler may race the
+     *  normal runQuiz finish; second call should be a no-op (no save,
+     *  no updated_at bump). */
+    @Test
+    void endRoom_whenAlreadyEnded_isNoop() {
+        Room ended = lobby("r1", host, LocalDateTime.now().minusHours(1));
+        ended.setStatus(Room.RoomStatus.ENDED);
+        ended.setEndedAt(LocalDateTime.now().minusMinutes(30));
+        when(roomRepository.findById("r1")).thenReturn(Optional.of(ended));
+
+        roomService.endRoom("r1");
+
+        verify(roomRepository, never()).save(any());
+    }
+
+    @Test
+    void endRoom_whenInProgress_flipsToEnded() {
+        Room playing = lobby("r1", host, LocalDateTime.now().minusMinutes(10));
+        playing.setStatus(Room.RoomStatus.IN_PROGRESS);
+        when(roomRepository.findById("r1")).thenReturn(Optional.of(playing));
+
+        roomService.endRoom("r1");
+
+        assertEquals(Room.RoomStatus.ENDED, playing.getStatus());
+        assertNotNull(playing.getEndedAt());
+        verify(roomRepository).save(playing);
+    }
 }

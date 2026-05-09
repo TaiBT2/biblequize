@@ -362,6 +362,12 @@ public class RoomService {
      */
     public void endRoom(String roomId) {
         Room room = roomRepository.findById(roomId).orElseThrow();
+        // Idempotent: a second end (e.g. abandonment scheduler racing the
+        // normal runQuiz finish) is a no-op. Avoids bumping updated_at and
+        // re-triggering downstream side-effects.
+        if (room.getStatus() == Room.RoomStatus.ENDED) {
+            return;
+        }
         room.setStatus(Room.RoomStatus.ENDED);
         room.setEndedAt(LocalDateTime.now());
         roomRepository.save(room);

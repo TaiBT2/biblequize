@@ -64,4 +64,12 @@ public interface RoomRepository extends JpaRepository<Room, String> {
      *  out of the "max 1 active room" rule. */
     @Query("SELECT r FROM Room r WHERE r.status = 'LOBBY' AND r.createdAt < :cutoff")
     List<Room> findStaleLobbyRooms(@Param("cutoff") LocalDateTime cutoff);
+
+    /** SPEC §5.4.0 R5: IN_PROGRESS rooms whose host quiz loop never finished
+     *  (JVM crash mid-game, network split). Scheduler recovers them so the
+     *  "1 active room per user" lock-out doesn't survive a restart. Cutoff
+     *  is "started long enough ago that even a maxed-out quiz should be
+     *  done by now". */
+    @Query("SELECT r FROM Room r WHERE r.status = 'IN_PROGRESS' AND r.startedAt < :cutoff")
+    List<Room> findStuckInProgressRooms(@Param("cutoff") LocalDateTime cutoff);
 }
