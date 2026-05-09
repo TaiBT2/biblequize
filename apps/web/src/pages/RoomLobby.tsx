@@ -145,6 +145,13 @@ const RoomLobby: React.FC = () => {
     onReconnect: () => { fetchRoom(); },
     onMessage: (msg) => {
       switch (msg.type) {
+        case 'ROOM_STATE': {
+          // Sprint 2 S2-8: atomic snapshot from BE. Use it instead of the
+          // per-event fetchRoom REST round-trips that used to flicker the
+          // player list with multi-join races.
+          setRoom(msg.data as RoomDetails);
+          break;
+        }
         case 'PLAYER_KICKED': {
           const d = msg.data as { userId?: string } | undefined;
           if (d?.userId && d.userId === room?.myUserId) {
@@ -155,13 +162,15 @@ const RoomLobby: React.FC = () => {
             const name = room?.players?.find(p => p.userId === d.userId)?.username ?? 'Người chơi';
             appendActivity(`${name} đã bị kick`, 'warn');
           }
-          fetchRoom();
+          // ROOM_STATE will follow with the post-kick snapshot.
           break;
         }
         case 'PLAYER_JOINED': {
           const d = msg.data as { username?: string } | undefined;
           if (d?.username) appendActivity(`${d.username} đã tham gia 👋`);
-          fetchRoom();
+          // S2-9 hook: subtle audio cue when someone enters the lobby.
+          soundManager.play('playerJoin');
+          // ROOM_STATE will follow with the new player list.
           break;
         }
         case 'PLAYER_LEFT': {
@@ -170,19 +179,19 @@ const RoomLobby: React.FC = () => {
             const name = room?.players?.find(p => p.userId === d.userId)?.username ?? 'Người chơi';
             appendActivity(`${name} đã rời phòng`);
           }
-          fetchRoom();
+          // ROOM_STATE will follow.
           break;
         }
         case 'PLAYER_READY': {
           const d = msg.data as { username?: string; isReady?: boolean } | undefined;
           if (d?.username) appendActivity(`${d.username} sẵn sàng ✓`, 'ok');
-          fetchRoom();
+          // ROOM_STATE will follow.
           break;
         }
         case 'PLAYER_UNREADY': {
           const d = msg.data as { username?: string } | undefined;
           if (d?.username) appendActivity(`${d.username} hủy sẵn sàng`);
-          fetchRoom();
+          // ROOM_STATE will follow.
           break;
         }
         case 'CHAT_MESSAGE': {
