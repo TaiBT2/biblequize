@@ -99,10 +99,11 @@ Tool: `bash tools/spec-audit/audit.sh` (exit 0/1/2). Chi tiết: `docs/dev/workf
 1. Đọc TODO.md hiện tại — task dở chưa xong?
 2. Phân tích prompt mới → chia tasks (mỗi task = 1 commit, < 100 LOC)
 3. Ghi tasks vào TODO.md theo format:
-   ## [Phase] — [Tên nhóm] [IN PROGRESS/DONE]
    ### Task N: [Tên]
-   - Status: [ ] TODO / [x] DONE / [!] BLOCKED
-   - File(s) + Test + Checklist + Commit message
+   - Status: [ ] TODO / [x] DONE / [!] BLOCKED · File(s) · Test
+   - **Spec impact**: [ ] None [ ] SPEC_USER §X [ ] SPEC_ADMIN §X [ ] SPEC_GROUP §X [ ] SPEC_MULTIPLAYER §X [ ] BL-N
+   - **Spec strategy**: [ ] (a) update inline [ ] (b) new BL-N [ ] (c) [no-spec-impact]
+   - Checklist: impl · Tầng 1+2+3 pass · spec/BACKLOG updated · `audit.sh` no NEW broken · commit
 4. Làm task đầu → test pass → ✅ → commit → task kế
 5. Hết tasks → full regression → cập nhật TODO.md
 ```
