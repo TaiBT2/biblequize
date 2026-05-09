@@ -150,15 +150,26 @@ public class WebSocketMessage {
         public int totalQuestions;
         public Object question; // Question from database
         public int timeLimit;
+        /** SPEC §5.4 / Sprint 2 — server-authoritative reference for the
+         *  question timer. FE computes remaining = timeLimit - (now - startedAtMs).
+         *  Without this, slow-network clients drift and Speed Race scoring is
+         *  unfair (audit Phase 5). Long because the field is JSON-serialised
+         *  as a JS number; epoch millis fits safely in a 53-bit double. */
+        public Long startedAtMs;
 
         public QuestionStartData() {
         }
 
         public QuestionStartData(int questionIndex, int totalQuestions, Object question, int timeLimit) {
+            this(questionIndex, totalQuestions, question, timeLimit, System.currentTimeMillis());
+        }
+
+        public QuestionStartData(int questionIndex, int totalQuestions, Object question, int timeLimit, Long startedAtMs) {
             this.questionIndex = questionIndex;
             this.totalQuestions = totalQuestions;
             this.question = question;
             this.timeLimit = timeLimit;
+            this.startedAtMs = startedAtMs;
         }
     }
 

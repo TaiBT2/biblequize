@@ -123,6 +123,27 @@ class RoomWebSocketControllerTest {
     }
 
     @Test
+    void questionStartData_4argCtor_populatesStartedAtMsWithSystemTime() {
+        long before = System.currentTimeMillis();
+        WebSocketMessage.QuestionStartData data = new WebSocketMessage.QuestionStartData(
+                3, 15, Map.of("id", "q-3"), 30);
+        long after = System.currentTimeMillis();
+
+        assertNotNull(data.startedAtMs);
+        assertTrue(data.startedAtMs >= before && data.startedAtMs <= after,
+                "startedAtMs should be between " + before + " and " + after + ", got " + data.startedAtMs);
+        assertEquals(3, data.questionIndex);
+        assertEquals(30, data.timeLimit);
+    }
+
+    @Test
+    void questionStartData_5argCtor_acceptsExplicitStartedAtMs() {
+        WebSocketMessage.QuestionStartData data = new WebSocketMessage.QuestionStartData(
+                0, 10, Map.of(), 30, 1_700_000_000_000L);
+        assertEquals(1_700_000_000_000L, data.startedAtMs);
+    }
+
+    @Test
     void handlePlayerJoin_withActiveQuestion_shouldResyncQuestion() throws Exception {
         when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.of(testUser));
 

@@ -54,7 +54,12 @@ public class RoomQuizService {
     @Autowired private SequentialScoringService sequentialScoringService;
 
     private static final int BETWEEN_QUESTION_DELAY_MS = 3000;
-    private static final int GAME_STARTING_COUNTDOWN_S = 3;
+    /** Sprint 2: bumped 3 → 5 to give the cinematic countdown overlay
+     *  enough room for "5-4-3-2-1-BẮT ĐẦU!" + the gameStart sound. The
+     *  Sprint 1 fix that removed the redundant ROOM_STARTING send means
+     *  this is now the single source of truth — every client times off
+     *  the same broadcast moment. */
+    private static final int GAME_STARTING_COUNTDOWN_S = 5;
 
     @Async
     public void runQuiz(String roomId, int questionCount, int timePerQuestion, Room.RoomMode mode) {
