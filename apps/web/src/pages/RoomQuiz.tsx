@@ -1106,6 +1106,7 @@ const RoomQuiz: React.FC = () => {
                   state={buildAnswerState(i)}
                   onClick={() => submitAnswer(i)}
                   testId={`room-quiz-answer-${i}`}
+                  pickedByUser={selected === i}
                 />
               ))}
             </div>

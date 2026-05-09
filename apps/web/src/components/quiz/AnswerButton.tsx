@@ -20,6 +20,11 @@ interface AnswerButtonProps {
    *  padding/letter/text) — used when the question is very long so answers
    *  don't push content off-screen. Desktop layout is unchanged either way. */
   compact?: boolean
+  /** Multiplayer reveal context (mockup state ②/④). When true on a
+   *  `correct` state, renders the "✓ ĐÚNG · BẠN CHỌN" badge instead of
+   *  the bare "✓ ĐÁP ÁN" badge. Defaults to true so single-player flows
+   *  (where the user is always the picker) keep their existing label. */
+  pickedByUser?: boolean
 }
 
 // Per-position color classes. Tailwind JIT needs literal class strings, so we
@@ -70,6 +75,7 @@ export const AnswerButton: React.FC<AnswerButtonProps> = ({
   onClick,
   testId,
   compact = false,
+  pickedByUser = true,
 }) => {
   const color = COLORS[index]
   const isInteractive = state === 'default' || state === 'selected'
@@ -96,11 +102,16 @@ export const AnswerButton: React.FC<AnswerButtonProps> = ({
       textClasses = 'text-green-400'
       trailingIcon = (
         <span
-          className="material-symbols-outlined text-green-400 text-2xl"
-          style={FILL_STYLE}
-          aria-hidden="true"
+          className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
+          style={{
+            background: 'rgba(74,222,128,0.18)',
+            color: '#4ade80',
+            border: '1px solid rgba(74,222,128,0.35)',
+            whiteSpace: 'nowrap',
+          }}
         >
-          check_circle
+          <span className="material-symbols-outlined text-[14px]" style={FILL_STYLE} aria-hidden="true">check_circle</span>
+          {pickedByUser ? 'ĐÚNG · BẠN CHỌN' : 'ĐÁP ÁN'}
         </span>
       )
       break
@@ -110,11 +121,16 @@ export const AnswerButton: React.FC<AnswerButtonProps> = ({
       textClasses = 'text-error'
       trailingIcon = (
         <span
-          className="material-symbols-outlined text-error text-2xl"
-          style={FILL_STYLE}
-          aria-hidden="true"
+          className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
+          style={{
+            background: 'rgba(239,68,68,0.15)',
+            color: '#f87171',
+            border: '1px solid rgba(239,68,68,0.35)',
+            whiteSpace: 'nowrap',
+          }}
         >
-          cancel
+          <span className="material-symbols-outlined text-[14px]" style={FILL_STYLE} aria-hidden="true">cancel</span>
+          BẠN CHỌN
         </span>
       )
       break

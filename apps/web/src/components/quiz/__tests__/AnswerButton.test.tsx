@@ -101,6 +101,22 @@ describe('AnswerButton', () => {
       expect(screen.getByText('cancel')).toBeInTheDocument()
     })
 
+    it('correct + pickedByUser=true renders "ĐÚNG · BẠN CHỌN" badge', () => {
+      render(<AnswerButton {...baseProps} state="correct" pickedByUser={true} />)
+      expect(screen.getByText(/ĐÚNG · BẠN CHỌN/)).toBeInTheDocument()
+    })
+
+    it('correct + pickedByUser=false renders bare "ĐÁP ÁN" badge', () => {
+      render(<AnswerButton {...baseProps} state="correct" pickedByUser={false} />)
+      expect(screen.getByText('ĐÁP ÁN')).toBeInTheDocument()
+      expect(screen.queryByText(/BẠN CHỌN/)).not.toBeInTheDocument()
+    })
+
+    it('wrong state renders "BẠN CHỌN" red badge', () => {
+      render(<AnswerButton {...baseProps} state="wrong" />)
+      expect(screen.getByText('BẠN CHỌN')).toBeInTheDocument()
+    })
+
     it('eliminated state is non-interactive + line-through + close icon', () => {
       render(<AnswerButton {...baseProps} state="eliminated" />)
       const btn = screen.getByRole('button')
