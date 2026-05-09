@@ -321,6 +321,63 @@ class RoomServiceTest {
         assertEquals("Tất cả người chơi phải sẵn sàng", ex.getMessage());
     }
 
+    // ── startRoom: Sprint 4 Quản trò mode ────────────────────────────────────
+
+    @Test
+    void startRoom_quanTroModeTwoNonHostPlayersReady_shouldStart() throws Exception {
+        // Quan Tro mode: host is NOT a RoomPlayer; need ≥2 non-host RoomPlayers.
+        testRoom.setHostPlaysGame(false);
+
+        User other = new User();
+        other.setId("player-2");
+        other.setName("Other Player");
+        RoomPlayer p1 = new RoomPlayer("rp-1", testRoom, playerUser, "Player");
+        p1.setIsReady(true);
+        RoomPlayer p2 = new RoomPlayer("rp-2", testRoom, other, "Other");
+        p2.setIsReady(true);
+
+        when(roomRepository.findById("room-1")).thenReturn(Optional.of(testRoom));
+        when(roomPlayerRepository.findByRoomId("room-1")).thenReturn(List.of(p1, p2));
+        when(roomRepository.save(any(Room.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        roomService.startRoom("room-1", "host-1");
+
+        assertEquals(Room.RoomStatus.IN_PROGRESS, testRoom.getStatus());
+    }
+
+    @Test
+    void startRoom_quanTroModeOnlyOneNonHostPlayer_shouldThrowQuanTroMessage() {
+        testRoom.setHostPlaysGame(false);
+        RoomPlayer p1 = new RoomPlayer("rp-1", testRoom, playerUser, "Player");
+        p1.setIsReady(true);
+
+        when(roomRepository.findById("room-1")).thenReturn(Optional.of(testRoom));
+        when(roomPlayerRepository.findByRoomId("room-1")).thenReturn(List.of(p1));
+
+        Exception ex = assertThrows(Exception.class,
+                () -> roomService.startRoom("room-1", "host-1"));
+        assertEquals("Cần ít nhất 2 người chơi (không tính Quản trò)", ex.getMessage());
+    }
+
+    @Test
+    void startRoom_quanTroModePlayerNotReady_shouldThrow() {
+        testRoom.setHostPlaysGame(false);
+        User other = new User();
+        other.setId("player-2");
+        other.setName("Other");
+        RoomPlayer p1 = new RoomPlayer("rp-1", testRoom, playerUser, "Player");
+        p1.setIsReady(true);
+        RoomPlayer p2 = new RoomPlayer("rp-2", testRoom, other, "Other");
+        p2.setIsReady(false); // not ready
+
+        when(roomRepository.findById("room-1")).thenReturn(Optional.of(testRoom));
+        when(roomPlayerRepository.findByRoomId("room-1")).thenReturn(List.of(p1, p2));
+
+        Exception ex = assertThrows(Exception.class,
+                () -> roomService.startRoom("room-1", "host-1"));
+        assertEquals("Tất cả người chơi phải sẵn sàng", ex.getMessage());
+    }
+
     // ── getRoomDetails ───────────────────────────────────────────────────────
 
     @Test

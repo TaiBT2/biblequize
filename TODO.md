@@ -8,7 +8,7 @@
 
 - Task S4-1: DB migration V49 + Room.hostPlaysGame field — `[x]` DONE (d43e7bc)
 - Task S4-2: RoomService.createRoom default Quản trò mode — `[x]` DONE
-- Task S4-3: RoomService.startRoom validation ≥2 players excluding host — `[ ]` TODO
+- Task S4-3: RoomService.startRoom validation ≥2 players excluding host — `[x]` DONE
 - Task S4-4: RoomQuizService skip host in scoring/ranking — `[ ]` TODO
 - Task S4-5: Host control endpoints (pause/resume/skip/broadcast/end-early) — `[ ]` TODO
 - Task S4-6: RoomLobby differentiation by role — `[ ]` TODO

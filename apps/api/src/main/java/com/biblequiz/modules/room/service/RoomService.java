@@ -424,9 +424,17 @@ public class RoomService {
         // Source of truth = RoomPlayer rows. Room.currentPlayers/Room.players is a
         // denormalised counter that has been observed to drift out of sync with the
         // RoomPlayer table (see lobby UI showing 2 players while currentPlayers=1).
+        // Sprint 4: in Quản trò mode the host is NOT a RoomPlayer, so this count
+        // already excludes them — same threshold (≥2) means "≥2 non-host players"
+        // automatically. Legacy mode counts host + others (so ≥2 total).
         long actualPlayers = roomPlayerRepository.findByRoomId(roomId).size();
-        if (room.getStatus() != Room.RoomStatus.LOBBY || actualPlayers <= 1) {
+        if (room.getStatus() != Room.RoomStatus.LOBBY) {
             throw new Exception("Cần ít nhất 2 người chơi để bắt đầu");
+        }
+        if (actualPlayers <= 1) {
+            throw new Exception(room.isHostPlaysGame()
+                    ? "Cần ít nhất 2 người chơi để bắt đầu"
+                    : "Cần ít nhất 2 người chơi (không tính Quản trò)");
         }
 
         // GROUP_LIVE_SEQUENTIAL: leader dẫn dắt session, không cần ceremony "ready" như các mode khác.
