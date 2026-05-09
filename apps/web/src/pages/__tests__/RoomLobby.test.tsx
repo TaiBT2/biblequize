@@ -121,12 +121,15 @@ describe('RoomLobby — hero block + room code', () => {
   it('renders mode + visibility chips and meta', async () => {
     await renderLobby()
     await screen.findByTestId('lobby-room-code')
-    // Speed Race appears in chip + rule title — at least one match is enough.
+    // Mode label appears in topbar chip + rule title — at least one match suffices.
     expect(screen.getAllByText(/Speed Race/i).length).toBeGreaterThan(0)
     expect(screen.getByText(/Công khai/i)).toBeInTheDocument()
-    expect(screen.getByText(/3 câu/i)).toBeInTheDocument()
-    expect(screen.getByText(/15s\/câu/i)).toBeInTheDocument()
-    expect(screen.getByText(/Tối đa 4 người/i)).toBeInTheDocument()
+    // Hero stats grid (post-redesign): values rendered without inline units;
+    // labels carry the unit context.
+    expect(screen.getByText(/Câu hỏi/i)).toBeInTheDocument()
+    expect(screen.getByText(/Thời gian\/câu/i)).toBeInTheDocument()
+    expect(screen.getByText(/15s/i)).toBeInTheDocument()
+    expect(screen.getByText(/1 \/ 4/)).toBeInTheDocument()
   })
 
   it('opens InviteShareModal when share button is clicked', async () => {

@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useStomp } from '../hooks/useStomp';
 import { api } from '../api/client';
+import { QRCodeSVG } from 'qrcode.react';
 import SequentialLobbyView from './room/SequentialLobbyView';
 import InviteShareModal from '../components/room/InviteShareModal';
 
@@ -128,6 +129,14 @@ const RoomLobby: React.FC = () => {
   const [showInvite, setShowInvite] = useState(false);
   const [showRulesDetail, setShowRulesDetail] = useState(false);
   const [kickMenuFor, setKickMenuFor] = useState<string | null>(null);
+  const [heroCopied, setHeroCopied] = useState<'code' | 'link' | null>(null);
+  const copyToClipboard = async (kind: 'code' | 'link', value: string) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setHeroCopied(kind);
+      setTimeout(() => setHeroCopied(null), 1500);
+    } catch { /* ignore */ }
+  };
 
   const { connected, reconnecting, send } = useStomp({
     roomId,
@@ -463,100 +472,123 @@ const RoomLobby: React.FC = () => {
 
           {/* ─── HERO BLOCK ─── */}
           <section
-            className="rounded-2xl p-4 lg:p-6 mb-4 grid lg:grid-cols-[1fr_auto] gap-4 lg:gap-6 items-center"
+            className="relative rounded-2xl p-4 lg:p-6 mb-4 overflow-hidden"
             style={{
-              background: 'rgba(50,52,64,0.4)',
-              backdropFilter: 'blur(12px)',
-              border: '1px solid rgba(232,168,50,0.2)',
+              background: 'rgba(50,52,64,0.78)',
+              backdropFilter: 'blur(20px)',
+              border: '1px solid rgba(232,168,50,0.15)',
             }}
             data-testid="lobby-hero"
           >
-            <div className="min-w-0">
-              <div className="flex items-center gap-2 mb-2 flex-wrap">
-                <span
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider border"
-                  style={{ color: modeInfo.chipColor, background: modeInfo.chipBg, borderColor: modeInfo.chipBorder }}
-                >
-                  <span className="material-symbols-outlined text-[13px]">{modeInfo.icon}</span>
-                  {modeInfo.label}
-                </span>
-                <span
-                  className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-bold border"
+            {/* Decorative gold gradient */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 pointer-events-none"
+              style={{ background: 'linear-gradient(135deg, rgba(232,168,50,0.15) 0%, transparent 60%)' }}
+            />
+            <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-4 lg:gap-6 items-center">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 mb-1 flex-wrap">
+                  {room.roomName && (
+                    <span className="text-xs font-semibold truncate" style={{ color: '#d1d5db' }}>
+                      {room.roomName}
+                    </span>
+                  )}
+                  <span
+                    className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider"
+                    style={{
+                      color: room.isPublic ? '#4ade80' : '#ff8c42',
+                      background: room.isPublic ? 'rgba(74,222,128,0.1)' : 'rgba(255,140,66,0.1)',
+                      border: `1px solid ${room.isPublic ? 'rgba(74,222,128,0.25)' : 'rgba(255,140,66,0.25)'}`,
+                    }}
+                  >
+                    <span className="material-symbols-outlined text-[10px]">{room.isPublic ? 'public' : 'lock'}</span>
+                    {room.isPublic ? 'Công khai' : 'Riêng tư'}
+                  </span>
+                </div>
+                <div className="text-[10px] uppercase tracking-wider mb-1" style={{ color: '#9ca3af' }}>Mã phòng</div>
+                <div
+                  className="font-black leading-none mb-3"
                   style={{
-                    color: room.isPublic ? '#4ade80' : '#ff8c42',
-                    background: room.isPublic ? 'rgba(74,222,128,0.1)' : 'rgba(255,140,66,0.1)',
-                    borderColor: room.isPublic ? 'rgba(74,222,128,0.25)' : 'rgba(255,140,66,0.25)',
+                    color: '#e8a832',
+                    fontSize: 'clamp(32px, 5vw, 48px)',
+                    letterSpacing: '0.25em',
+                    fontFamily: "'Be Vietnam Pro', sans-serif",
+                    fontVariantNumeric: 'tabular-nums',
+                    background: 'linear-gradient(135deg, #e8a832 0%, #fbbf24 50%, #e7c268 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
                   }}
+                  data-testid="lobby-room-code"
                 >
-                  <span className="material-symbols-outlined text-[12px]">{room.isPublic ? 'public' : 'lock'}</span>
-                  {room.isPublic ? 'Công khai' : 'Riêng tư'}
-                </span>
+                  {room.roomCode}
+                </div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <button
+                    type="button"
+                    onClick={() => copyToClipboard('code', room.roomCode)}
+                    data-testid="lobby-hero-copy-code"
+                    className="px-3 py-1.5 rounded-lg text-xs font-semibold inline-flex items-center gap-1.5"
+                    style={{
+                      background: 'rgba(50,52,64,0.55)',
+                      color: '#fbbf24',
+                      border: '1px solid rgba(232,168,50,0.3)',
+                    }}
+                  >
+                    <span className="material-symbols-outlined text-[14px]">content_copy</span>
+                    {heroCopied === 'code' ? 'Đã copy' : 'Sao chép'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => copyToClipboard('link', `${window.location.origin}/join?code=${room.roomCode}`)}
+                    data-testid="lobby-hero-copy-link"
+                    className="px-3 py-1.5 rounded-lg text-xs font-semibold inline-flex items-center gap-1.5"
+                    style={{
+                      background: 'rgba(50,52,64,0.55)',
+                      color: '#fbbf24',
+                      border: '1px solid rgba(232,168,50,0.3)',
+                    }}
+                  >
+                    <span className="material-symbols-outlined text-[14px]">link</span>
+                    {heroCopied === 'link' ? 'Đã copy' : 'Sao chép link'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowInvite(true)}
+                    data-testid="lobby-share-btn"
+                    className="px-3 py-1.5 rounded-lg text-xs font-semibold inline-flex items-center gap-1.5"
+                    style={{
+                      background: 'rgba(50,52,64,0.55)',
+                      color: '#fbbf24',
+                      border: '1px solid rgba(232,168,50,0.3)',
+                    }}
+                  >
+                    <span className="material-symbols-outlined text-[14px]">qr_code_2</span>
+                    Mã QR
+                  </button>
+                </div>
               </div>
-              <h1 className="text-[18px] lg:text-[22px] font-extrabold leading-tight mb-2 truncate">
-                {room.roomName}
-              </h1>
-              <div className="flex items-center gap-2 lg:gap-4 text-[11px] lg:text-xs flex-wrap" style={{ color: '#9ca3af' }}>
-                <span className="inline-flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[14px]" style={{ color: '#fbbf24' }}>quiz</span>
-                  {room.questionCount} câu
-                </span>
-                <span style={{ color: '#4b5563' }}>·</span>
-                <span className="inline-flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[14px]" style={{ color: '#fbbf24' }}>timer</span>
-                  {room.timePerQuestion}s/câu
-                </span>
-                <span style={{ color: '#4b5563' }}>·</span>
-                <span className="inline-flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[14px]" style={{ color: '#fbbf24' }}>tune</span>
-                  {DIFFICULTY_LABEL[room.difficulty ?? ''] ?? 'Hỗn hợp'}
-                </span>
-                <span style={{ color: '#4b5563' }}>·</span>
-                <span className="inline-flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[14px]" style={{ color: '#fbbf24' }}>groups</span>
-                  Tối đa {room.maxPlayers} người
-                </span>
+              {/* Inline QR (desktop) */}
+              <div
+                className="hidden lg:flex w-32 h-32 rounded-lg bg-white p-2 items-center justify-center flex-shrink-0"
+                aria-hidden="true"
+                data-testid="lobby-hero-qr"
+              >
+                <QRCodeSVG
+                  value={`${typeof window !== 'undefined' ? window.location.origin : ''}/join?code=${room.roomCode}`}
+                  size={112}
+                  level="M"
+                  includeMargin={false}
+                />
               </div>
             </div>
-
-            {/* Code block */}
-            <div
-              className="rounded-2xl px-4 py-3 lg:py-4 text-center w-full lg:min-w-[220px]"
-              style={{
-                background: 'rgba(17,19,30,0.6)',
-                border: '2px solid rgba(232,168,50,0.3)',
-              }}
-            >
-              <div className="text-[10px] uppercase tracking-widest font-bold mb-1" style={{ color: '#9ca3af' }}>
-                Mã phòng · Chia sẻ với bạn bè
-              </div>
-              <div
-                className="font-extrabold mb-3"
-                style={{
-                  color: '#e8a832',
-                  fontSize: 'clamp(24px, 4vw, 32px)',
-                  letterSpacing: 6,
-                  fontFamily: "'Courier New', monospace",
-                  lineHeight: 1,
-                  fontVariantNumeric: 'tabular-nums',
-                }}
-                data-testid="lobby-room-code"
-              >
-                {room.roomCode}
-              </div>
-              <button
-                type="button"
-                onClick={() => setShowInvite(true)}
-                className="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-bold"
-                style={{
-                  background: 'rgba(232,168,50,0.15)',
-                  color: '#fbbf24',
-                  border: '1px solid rgba(232,168,50,0.3)',
-                }}
-                data-testid="lobby-share-btn"
-              >
-                <span className="material-symbols-outlined text-[15px]">share</span>
-                Mời bạn bè · Copy / Link / QR
-              </button>
+            {/* Stats grid bottom */}
+            <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 mt-5 pt-5 border-t" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+              <HeroStat label="Câu hỏi" value={`${room.questionCount}`} />
+              <HeroStat label="Thời gian/câu" value={`${room.timePerQuestion}s`} />
+              <HeroStat label="Độ khó" value={DIFFICULTY_LABEL[room.difficulty ?? ''] ?? 'Hỗn hợp'} />
+              <HeroStat label="Người chơi" value={`${room.currentPlayers} / ${room.maxPlayers}`} />
             </div>
           </section>
 
@@ -815,6 +847,13 @@ const RoomLobby: React.FC = () => {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Player slot
+
+const HeroStat: React.FC<{ label: string; value: string }> = ({ label, value }) => (
+  <div>
+    <div className="text-[10px] uppercase tracking-wider" style={{ color: '#6b7280' }}>{label}</div>
+    <div className="font-extrabold text-white text-base lg:text-lg leading-tight mt-0.5">{value}</div>
+  </div>
+);
 
 const ActivityLogPanel: React.FC<{ entries: ActivityEntry[]; statusHint: string }> = ({ entries, statusHint }) => (
   <aside
