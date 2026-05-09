@@ -36,6 +36,34 @@ class RoomCleanupSchedulerTest {
     void setUp() {
         scheduler = new RoomCleanupScheduler(roomService, roomRepository);
         ReflectionTestUtils.setField(scheduler, "endedRetentionHours", 24L);
+        ReflectionTestUtils.setField(scheduler, "idleTimeoutMinutes", 30L);
+    }
+
+    @Test
+    void sweepAbandonedLobbies_passesCutoff30MinBeforeNow() {
+        when(roomService.endLobbyRoomsOlderThan(any())).thenReturn(0);
+
+        scheduler.sweepAbandonedLobbies();
+
+        ArgumentCaptor<LocalDateTime> captor = ArgumentCaptor.forClass(LocalDateTime.class);
+        verify(roomService).endLobbyRoomsOlderThan(captor.capture());
+        long minutesAgo = ChronoUnit.MINUTES.between(captor.getValue(), LocalDateTime.now());
+        assertTrue(minutesAgo >= 29 && minutesAgo <= 31,
+                "expected cutoff ~30 min ago for idleTimeoutMinutes=30, got " + minutesAgo);
+    }
+
+    @Test
+    void sweepAbandonedLobbies_honorsConfiguredIdleTimeoutMinutes() {
+        ReflectionTestUtils.setField(scheduler, "idleTimeoutMinutes", 5L);
+        when(roomService.endLobbyRoomsOlderThan(any())).thenReturn(0);
+
+        scheduler.sweepAbandonedLobbies();
+
+        ArgumentCaptor<LocalDateTime> captor = ArgumentCaptor.forClass(LocalDateTime.class);
+        verify(roomService).endLobbyRoomsOlderThan(captor.capture());
+        long minutesAgo = ChronoUnit.MINUTES.between(captor.getValue(), LocalDateTime.now());
+        assertTrue(minutesAgo >= 4 && minutesAgo <= 6,
+                "expected cutoff ~5 min ago for idleTimeoutMinutes=5, got " + minutesAgo);
     }
 
     @Test

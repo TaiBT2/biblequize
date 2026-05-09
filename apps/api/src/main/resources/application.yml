@@ -71,6 +71,13 @@ biblequiz:
     google:
       android-client-id: ${GOOGLE_ANDROID_CLIENT_ID:}
   room:
+    # SPEC §5.4.0 R2 — LOBBY rooms with no activity past this window are
+    # auto-ended (and deleted via R3). Mirrors the FE admin config
+    # ROOM_IDLE_TIMEOUT_MIN. Used by both the per-user lazy cleanup
+    # (RoomService.cleanupStaleLobbyForUser) and the global scheduler
+    # sweep (RoomCleanupScheduler.sweepAbandonedLobbies) so the two
+    # never disagree (audit G8).
+    idle-timeout-minutes: ${ROOM_IDLE_TIMEOUT_MINUTES:30}
     # SPEC §5.4.0 R3 — ENDED rooms are kept this long so users can review
     # final stats, then hard-deleted by RoomCleanupScheduler.
     ended-retention-hours: ${ROOM_ENDED_RETENTION_HOURS:24}

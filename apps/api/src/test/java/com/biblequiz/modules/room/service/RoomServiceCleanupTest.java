@@ -13,6 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -41,6 +42,11 @@ class RoomServiceCleanupTest {
 
     @BeforeEach
     void setUp() {
+        // L-3: idleTimeoutMinutes is normally injected via @Value;
+        // in unit tests we set it manually so cutoff math behaves
+        // (default 30 min, mirrors application.yml default).
+        ReflectionTestUtils.setField(roomService, "idleTimeoutMinutes", 30L);
+
         host = new User();
         host.setId("user-host");
         host.setName("Host");

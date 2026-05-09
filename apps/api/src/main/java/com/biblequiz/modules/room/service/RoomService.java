@@ -33,6 +33,16 @@ public class RoomService {
     @Autowired
     private GroupQuizSetRepository groupQuizSetRepository;
 
+    /** SPEC §5.4.0 R2 — single source of truth for "lobby idle ⇒ kill"
+     *  threshold. Both the per-user lazy cleanup and the global scheduler
+     *  sweep read this; previously the two disagreed (1h vs 2h), which the
+     *  audit flagged as G8. Default 30 min mirrors the FE admin config
+     *  default and SPEC §5.4.0. */
+    @org.springframework.beans.factory.annotation.Value("${biblequiz.room.idle-timeout-minutes:30}")
+    private long idleTimeoutMinutes;
+
+    long getIdleTimeoutMinutes() { return idleTimeoutMinutes; }
+
     /**
      * Create a new room
      */
@@ -119,7 +129,7 @@ public class RoomService {
 
         // SPEC v1.1 §8.7: a user can be in only one active room at a time.
         // First, opportunistically clean up *this user's* stale lobby rooms
-        // (host abandoned, never started, > STALE_LOBBY_HOURS old) so an old
+        // (host abandoned, never started, > idleTimeoutMinutes old) so an old
         // test room doesn't permanently lock them out.
         cleanupStaleLobbyForUser(user.getId());
 
@@ -138,12 +148,13 @@ public class RoomService {
         return room;
     }
 
-    /** Lobby rooms older than this are considered abandoned and may be auto-closed. */
-    static final long STALE_LOBBY_HOURS = 1L;
+    // Note: pre-2026-05 a constant STALE_LOBBY_HOURS=1 lived here. It now
+    // shares the configured idleTimeoutMinutes value (audit G8). The
+    // accessor above is the single source.
 
     /**
      * B-1: Lazy per-user cleanup. For each LOBBY room the user is still
-     * registered in: if the room is older than {@link #STALE_LOBBY_HOURS},
+     * registered in: if the room is older than the configured idle timeout,
      * either end it (when the user is host) or just remove the user
      * (when host is someone else — let the host decide what to do with
      * remaining players).
@@ -153,7 +164,7 @@ public class RoomService {
      * keeps the "max 1 active room" rule from latching on dead state.
      */
     void cleanupStaleLobbyForUser(String userId) {
-        LocalDateTime cutoff = LocalDateTime.now().minusHours(STALE_LOBBY_HOURS);
+        LocalDateTime cutoff = LocalDateTime.now().minusMinutes(idleTimeoutMinutes);
         List<String> activeRoomIds = roomPlayerRepository.findActiveRoomIdsByUserId(userId);
         for (String roomId : activeRoomIds) {
             Room r = roomRepository.findById(roomId).orElse(null);

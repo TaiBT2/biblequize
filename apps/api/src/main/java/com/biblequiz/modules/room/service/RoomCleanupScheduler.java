@@ -13,11 +13,14 @@ import java.time.LocalDateTime;
 /**
  * Periodic room maintenance.
  *
- * <p>(B-2) {@link #sweepAbandonedLobbies()}: end LOBBY rooms that have never
- * started and are older than {@link #ABANDONED_LOBBY_HOURS}. Pairs with the
- * per-user lazy cleanup in {@link RoomService#cleanupStaleLobbyForUser(String)}
- * (B-1) so a host that disconnects without ending their room doesn't
- * permanently lock the "max 1 active room per user" rule (SPEC v1.1 §8.7).
+ * <p>(B-2, SPEC §5.4.0 R2) {@link #sweepAbandonedLobbies()}: end LOBBY rooms
+ * that have never started and are older than
+ * {@code biblequiz.room.idle-timeout-minutes} (default 30, mirrors the FE
+ * admin config ROOM_IDLE_TIMEOUT_MIN). Pairs with the per-user lazy cleanup
+ * in {@link RoomService#cleanupStaleLobbyForUser(String)} (B-1) so a host
+ * that disconnects without ending their room doesn't permanently lock the
+ * "max 1 active room per user" rule (SPEC v1.1 §8.7). Both sweeps now read
+ * the same property — audit G8 found the constants disagreed (1h vs 2h).
  *
  * <p>(L-1, SPEC §5.4.0 R3) {@link #purgeExpiredEndedRooms()}: hard-delete
  * ENDED rooms whose {@code updated_at} is older than
@@ -32,11 +35,11 @@ public class RoomCleanupScheduler {
 
     private static final Logger log = LoggerFactory.getLogger(RoomCleanupScheduler.class);
 
-    /** Lobby rooms older than this are swept by the scheduler. */
-    static final long ABANDONED_LOBBY_HOURS = 2L;
-
     private final RoomService roomService;
     private final RoomRepository roomRepository;
+
+    @Value("${biblequiz.room.idle-timeout-minutes:30}")
+    private long idleTimeoutMinutes;
 
     @Value("${biblequiz.room.ended-retention-hours:24}")
     private long endedRetentionHours;
@@ -48,12 +51,10 @@ public class RoomCleanupScheduler {
 
     @Scheduled(fixedRate = 10 * 60 * 1000L) // every 10 minutes
     public void sweepAbandonedLobbies() {
-        LocalDateTime cutoff = LocalDateTime.now().minusHours(ABANDONED_LOBBY_HOURS);
+        LocalDateTime cutoff = LocalDateTime.now().minusMinutes(idleTimeoutMinutes);
         int closed = roomService.endLobbyRoomsOlderThan(cutoff);
-        if (closed > 0) {
-            log.info("[ROOM-CLEANUP] Ended {} abandoned LOBBY rooms (older than {}h)",
-                    closed, ABANDONED_LOBBY_HOURS);
-        }
+        log.info("[ROOM-CLEANUP] Ended {} abandoned LOBBY rooms (idle > {} min)",
+                closed, idleTimeoutMinutes);
     }
 
     /**
