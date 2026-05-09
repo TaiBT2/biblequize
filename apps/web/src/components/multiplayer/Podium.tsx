@@ -57,7 +57,14 @@ export function Podium({ results, compact = false }: Props) {
     <div
       data-testid="podium"
       className="flex items-end justify-center gap-3 lg:gap-4"
-      style={{ height: compact ? 200 : 300 }}
+      style={{
+        height: compact ? 200 : 300,
+        // Reserve room for the absolute-positioned 1st-place crown
+        // (compact text-xl ≈ 20px, full text-3xl ≈ 36px) plus its 4px gap
+        // so it can't intrude into whatever sits above the podium.
+        paddingTop: compact ? 28 : 44,
+        overflow: 'visible',
+      }}
     >
       {blocks.map((p, i) => {
         if (!p) return null;
@@ -74,24 +81,49 @@ export function Podium({ results, compact = false }: Props) {
               animationDelay: rank === 1 ? '0s' : rank === 2 ? '0.2s' : '0.4s',
             }}
           >
-            {isFirst && (
-              <div className={compact ? 'text-xl mb-0.5' : 'text-3xl mb-2'} aria-hidden="true">
-                👑
-              </div>
-            )}
             <div
-              className={`grid place-items-center font-bold mb-2 ${isFirst ? 'pulse-glow' : ''}`}
+              className="relative"
               style={{
                 width: isFirst ? avatar1Size : avatarSize,
                 height: isFirst ? avatar1Size : avatarSize,
-                borderRadius: '50%',
-                background: avatarGrads[i % avatarGrads.length],
-                color: rank === 1 ? '#11131e' : '#fff',
-                fontSize: isFirst ? (compact ? 18 : 28) : (compact ? 14 : 22),
-                border: isFirst ? `3px solid #e8a832` : `2px solid #11131e`,
+                marginBottom: 8,
               }}
             >
-              {initial}
+              {/* 1st-place crown — positioned ABOVE the avatar without
+                  pushing the flex-column up; memory rule "crown absolute,
+                  no avatar shift". Pointer-events-none so it can't grab
+                  hovers. */}
+              {isFirst && (
+                <div
+                  aria-hidden="true"
+                  className={compact ? 'text-xl' : 'text-3xl'}
+                  style={{
+                    position: 'absolute',
+                    left: '50%',
+                    bottom: 'calc(100% + 4px)',
+                    transform: 'translateX(-50%)',
+                    pointerEvents: 'none',
+                    lineHeight: 1,
+                    filter: 'drop-shadow(0 4px 12px rgba(232,168,50,0.5))',
+                  }}
+                >
+                  👑
+                </div>
+              )}
+              <div
+                className={`grid place-items-center font-bold ${isFirst ? 'pulse-glow' : ''}`}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '50%',
+                  background: avatarGrads[i % avatarGrads.length],
+                  color: rank === 1 ? '#11131e' : '#fff',
+                  fontSize: isFirst ? (compact ? 18 : 28) : (compact ? 14 : 22),
+                  border: isFirst ? `3px solid #e8a832` : `2px solid #11131e`,
+                }}
+              >
+                {initial}
+              </div>
             </div>
             <div
               className={`${compact ? 'text-xs' : 'text-base lg:text-lg'} font-bold text-white truncate w-full text-center`}
