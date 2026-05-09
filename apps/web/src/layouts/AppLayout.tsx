@@ -51,7 +51,7 @@ export default function AppLayout() {
         {/* Desktop sidebar — hidden on mobile. */}
         <aside
           data-testid="app-sidebar"
-          className="hidden md:flex flex-col h-screen sticky top-0 bg-[#11131e] w-72 border-r border-surface-container-high/50"
+          className="hidden md:flex flex-col h-screen sticky top-0 z-30 bg-[#11131e] w-72 border-r border-surface-container-high/50"
         >
           <SidebarHeader />
           <SidebarUserCard />
