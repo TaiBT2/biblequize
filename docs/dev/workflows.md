@@ -124,3 +124,88 @@
 4. Chuyển sang task khác không phụ thuộc
 5. Quay lại task blocked sau khi có thêm context
 ```
+
+---
+
+## Spec Update Workflow
+
+> **Quy tắc:** Mỗi feature commit MUST có 1 trong 3:
+> (a) Spec update commit cùng PR — preferred
+> (b) `BACKLOG.md` entry BL-N mới — acceptable nếu spec change cần user review
+> (c) Commit message tag `[no-spec-impact]` — chỉ refactor nội bộ, KHÔNG behavior change
+
+### Khi nào cần update spec
+
+| Loại change | Spec impact? |
+|---|---|
+| Thêm endpoint mới | ✅ YES — update API table trong spec tương ứng |
+| Đổi response shape | ✅ YES — update DTO doc |
+| Thêm business rule (vd new scoring formula) | ✅ YES — update rule section |
+| Thêm UI element user-facing | ✅ YES — update relevant section |
+| DB migration với behavior change | ✅ YES — update schema/rule section |
+| Refactor internal (không đổi behavior) | ❌ NO — `[no-spec-impact]` |
+| Bug fix matching existing spec | ❌ NO — spec đã đúng |
+| Bug fix REVEALING spec wrong | ✅ YES — update spec hoặc note BL-N |
+| Test addition | ❌ NO |
+| Dependency upgrade | ❌ NO unless behavior change |
+
+### Step-by-step
+
+```
+BƯỚC 1 — IDENTIFY spec sections affected
+├── Grep specs cho file đang sửa:
+│   grep -l "MyService.java" docs/spec/*.md
+├── Đọc các sections matched
+└── Output: list spec section IDs (vd "SPEC_USER §5.2")
+
+BƯỚC 2 — DECIDE update strategy
+├── Spec đúng intent → KHÔNG update content (chỉ verify line numbers)
+├── Spec wrong intent + user đã confirm decision → update spec
+├── Spec wrong intent + chưa confirm → tạo BL-N trong BACKLOG.md, defer spec update
+└── Output: chọn (a) update / (b) BL-N / (c) no impact
+
+BƯỚC 3 — EXECUTE
+├── (a) Update spec:
+│   ├── Edit spec section với content mới
+│   ├── Update file:line refs với grep verify
+│   ├── Cross-check canonical constraints C1-C9 (CLAUDE.md §3)
+│   └── Commit: "docs: update SPEC_X §Y — [summary]"
+├── (b) BACKLOG entry:
+│   ├── Append vào docs/spec/BACKLOG.md với format BL-N
+│   ├── Severity, file refs, suggested fix
+│   └── Commit: "docs(BL-N): track spec gap [summary]"
+└── (c) No impact:
+    └── Commit message có `[no-spec-impact]` tag
+
+BƯỚC 4 — VERIFY
+├── Run spec-audit: bash tools/spec-audit/audit.sh
+├── Check REPORT.md: no NEW broken refs (compare với last sprint)
+└── Nếu có new broken refs → fix trước khi commit feature
+```
+
+### Anti-patterns
+
+- ❌ Ship feature, defer spec "sẽ update sau" (sẽ quên)
+- ❌ Update spec làm drift theo code (spec phải canonical, code phải catch up)
+- ❌ Spec patch không có file:line ref mới
+- ❌ Skip BƯỚC 4 verify
+- ❌ Update spec mà không cross-check C1-C9 → tier names drift, mode names drift
+- ❌ Bare filenames trong spec ref (vd `Dashboard.tsx`) — dùng full path để rename không break ref
+
+### Pattern đúng
+
+- ✅ Spec update commit liền sau feature commit (cùng PR)
+- ✅ File:line refs chính xác với code commit hash hiện tại — full path từ repo root
+- ✅ Stats trong spec (vd "5 modes", "21 BL items") update consistent
+- ✅ Cross-spec links vẫn valid sau update
+- ✅ Audit tool exit code 0 trước khi push (hoặc baseline-equivalent)
+
+### Quick reference — audit tool
+
+```bash
+bash tools/spec-audit/audit.sh
+# Exit 0 = OK, Exit 1 = broken refs, Exit 2 = undocumented files
+# Output: tools/spec-audit/REPORT.md
+```
+
+Chi tiết tool: `tools/spec-audit/README.md`.
