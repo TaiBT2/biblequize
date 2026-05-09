@@ -11,7 +11,6 @@ import ComboBanner from '../components/multiplayer/ComboBanner';
 import QuizEndScreen from '../components/multiplayer/QuizEndScreen';
 import RevealStatsCard from '../components/multiplayer/RevealStatsCard';
 import ReactionBar from '../components/ReactionBar';
-import LiveFeed from '../components/LiveFeed';
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton';
 import {
   EliminationScreen, TeamScoreBar, TeamWinScreen,
@@ -111,7 +110,7 @@ const RoomQuiz: React.FC = () => {
 
   // Social fun state
   const [reactions, setReactions] = useState<Array<{ senderId: string; senderName: string; reaction: string }>>([]);
-  const [latestAnswer, setLatestAnswer] = useState<{ playerId: string; username: string; isCorrect: boolean; reactionTimeMs: number } | null>(null);
+  // latestAnswer / LiveFeed retired — see comment near ReactionBar.
   const myUserId = localStorage.getItem('userId') ?? '';
 
   // Sprint 2 S2-7: streak detection. consecutiveCorrect resets to 0 on
@@ -368,7 +367,6 @@ const RoomQuiz: React.FC = () => {
         }
         case 'ANSWER_SUBMITTED': {
           const d = msg.data as { playerId: string; username: string; isCorrect: boolean; reactionTimeMs: number };
-          setLatestAnswer(d);
           // C3: mark this player as having answered this round.
           setRoundAnswered(prev => {
             const next = new Set(prev);
@@ -651,8 +649,9 @@ const RoomQuiz: React.FC = () => {
         <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-secondary/5 blur-[120px] rounded-full" />
       </div>
 
-      {/* Social Fun: Live Feed + Reactions */}
-      <LiveFeed incoming={latestAnswer} myId={myUserId} />
+      {/* Social Fun: Reactions only — the floating LiveFeed toaster is
+          retired now that the RIGHT-column "LIVE FEED" sidebar (Q1) shows
+          the same events persistently with no 3s auto-dismiss. */}
       <ReactionBar
         onSend={(emoji) => send(`/app/room/${roomId}/reaction`, { reaction: emoji })}
         incoming={reactions.length > 0 ? reactions : null}
