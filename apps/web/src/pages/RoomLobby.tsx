@@ -318,6 +318,7 @@ const RoomLobby: React.FC = () => {
   const handleToggleReady = () => {
     if (!roomId || togglingReadyRef.current) return;
     togglingReadyRef.current = true;
+    haptic.tap(); // Sprint 2 S2-10 — subtle tap on ready toggle.
     send(`/app/room/${roomId}/ready`, {});
     setTimeout(() => { togglingReadyRef.current = false; }, 600);
   };
@@ -983,7 +984,10 @@ const LobbyCTA: React.FC<{
       <span className="material-symbols-outlined text-lg">
         {myReady ? 'check_circle' : 'radio_button_unchecked'}
       </span>
-      Sẵn sàng
+      {/* Sprint 2 S2-10: distinct label per state so the user reads
+          their current status off the button instead of inferring it
+          from the icon alone. */}
+      {myReady ? 'Hủy sẵn sàng' : 'Sẵn sàng'}
     </button>
   );
 };
