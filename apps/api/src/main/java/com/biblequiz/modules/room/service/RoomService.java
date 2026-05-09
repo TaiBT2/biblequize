@@ -533,16 +533,44 @@ public class RoomService {
     }
 
     /**
-     * Get public lobby rooms (all modes), filtered of test rooms
+     * Get public lobby rooms (all modes), filtered of test rooms.
+     *
+     * @param viewerUserId — the requesting user; lets each DTO carry a
+     *                       viewer-aware {@code joinable} bit (audit G7).
+     *                       Pass null for anonymous callers (everything is
+     *                       not joinable for them anyway).
      */
-    public List<PublicRoomDTO> getPublicRooms() {
+    public List<PublicRoomDTO> getPublicRooms(String viewerUserId) {
         return roomRepository.findPublicLobbyRooms().stream()
             .filter(r -> !isTestRoom(r))
             .map(r -> {
                 List<RoomPlayer> players = roomPlayerRepository.findByRoomId(r.getId());
-                return new PublicRoomDTO(r, players);
+                boolean joinable = computeJoinable(r, viewerUserId, players);
+                return new PublicRoomDTO(r, players, joinable);
             })
             .collect(Collectors.toList());
+    }
+
+    /** Backwards-compatible overload — no viewer context, joinable=false
+     *  for IN_PROGRESS rooms (no rejoin info), capacity-only for LOBBY. */
+    public List<PublicRoomDTO> getPublicRooms() {
+        return getPublicRooms(null);
+    }
+
+    private boolean computeJoinable(Room room, String viewerUserId, List<RoomPlayer> players) {
+        if (room.getStatus() == Room.RoomStatus.LOBBY) {
+            return room.getCurrentPlayers() < room.getMaxPlayers();
+        }
+        if (room.getStatus() == Room.RoomStatus.IN_PROGRESS) {
+            // SPEC §5.4 / Phase 6 case #3 — only previously-registered
+            // players may rejoin a live game; brand-new joiners are
+            // rejected by joinRoom anyway, so don't dangle a useless
+            // "Tiếp tục" button in front of them.
+            if (viewerUserId == null) return false;
+            return players.stream().anyMatch(p ->
+                    p.getUser() != null && viewerUserId.equals(p.getUser().getId()));
+        }
+        return false;
     }
 
     // SecureRandom shared across calls — Random was predictable enough that
@@ -695,8 +723,12 @@ public class RoomService {
         public final String hostName;
         public final String createdAt;
         public final List<String> playerInitials;
+        /** SPEC §5.4 / audit G7 — viewer-aware: true if the requester can
+         *  click "Tham gia" (LOBBY with capacity) or "Tiếp tục" (already a
+         *  member of an IN_PROGRESS room). FE gates the button on this. */
+        public final boolean joinable;
 
-        public PublicRoomDTO(Room room, List<RoomPlayer> players) {
+        public PublicRoomDTO(Room room, List<RoomPlayer> players, boolean joinable) {
             this.id = room.getId();
             this.roomCode = room.getRoomCode();
             this.roomName = room.getRoomName();
@@ -716,6 +748,7 @@ public class RoomService {
                     ? p.getUsername().substring(0, 1).toUpperCase()
                     : "?")
                 .collect(Collectors.toList());
+            this.joinable = joinable;
         }
     }
 }

@@ -181,7 +181,8 @@ class RoomControllerTest extends BaseControllerTest {
     @Order(9)
     @WithMockUser(username = "test@example.com")
     void getPublicRooms_shouldReturn200() throws Exception {
-        when(roomService.getPublicRooms()).thenReturn(List.of());
+        // L-6: controller now calls the viewer-aware overload
+        when(roomService.getPublicRooms(any())).thenReturn(List.of());
 
         mockMvc.perform(get("/api/rooms/public"))
                 .andExpect(status().isOk())

@@ -235,12 +235,19 @@ public class RoomController {
     }
 
     /**
-     * GET /api/rooms/public - Danh sách phòng công khai đang lobby
+     * GET /api/rooms/public - Danh sách phòng công khai đang lobby.
+     * Viewer-aware: PublicRoomDTO.joinable computes true only when the
+     * caller can actually take the click action (capacity for LOBBY,
+     * existing member for IN_PROGRESS rejoin).
      */
     @GetMapping("/public")
-    public ResponseEntity<?> getPublicRooms() {
+    public ResponseEntity<?> getPublicRooms(Principal principal) {
         try {
-            return ResponseEntity.ok(Map.of("success", true, "rooms", roomService.getPublicRooms()));
+            String viewerUserId = null;
+            if (principal != null) {
+                try { viewerUserId = getUser(principal).getId(); } catch (Exception ignored) {}
+            }
+            return ResponseEntity.ok(Map.of("success", true, "rooms", roomService.getPublicRooms(viewerUserId)));
         } catch (Exception e) {
             return ResponseEntity.status(500).body(Map.of("success", false, "rooms", java.util.List.of(), "message", e.getMessage()));
         }

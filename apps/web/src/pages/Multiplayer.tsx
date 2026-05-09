@@ -28,6 +28,8 @@ interface PublicRoom {
   hostName: string;
   createdAt: string;
   playerInitials: string[];
+  /** Backend-computed: true if THIS viewer can click join/continue. */
+  joinable?: boolean;
 }
 
 // ─── Constants ───────────────────────────────────────────────────────────────
@@ -380,15 +382,25 @@ function RoomCard({ room }: { room: PublicRoom }) {
           </button>
         )}
         {isPlaying && (
-          <button
-            onClick={handleJoin}
-            disabled={joining}
-            title="Quay lại trận đấu nếu bạn đang ở trong phòng này"
-            className="px-4 py-2 rounded-lg text-xs font-semibold disabled:opacity-50"
-            style={{ background: 'rgba(232,168,50,0.12)', color: '#e8a832', border: '0.5px solid rgba(232,168,50,0.3)' }}
-          >
-            {joining ? 'Đang vào...' : 'Tiếp tục →'}
-          </button>
+          room.joinable ? (
+            <button
+              onClick={handleJoin}
+              disabled={joining}
+              title="Quay lại trận đấu"
+              className="px-4 py-2 rounded-lg text-xs font-semibold disabled:opacity-50"
+              style={{ background: 'rgba(232,168,50,0.12)', color: '#e8a832', border: '0.5px solid rgba(232,168,50,0.3)' }}
+            >
+              {joining ? 'Đang vào...' : 'Tiếp tục →'}
+            </button>
+          ) : (
+            <span
+              className="px-4 py-2 rounded-lg text-xs font-semibold cursor-not-allowed"
+              style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.4)', border: '0.5px solid rgba(255,255,255,0.06)' }}
+              title="Trận đấu đang diễn ra · không thể tham gia"
+            >
+              Đang chơi
+            </span>
+          )
         )}
       </div>
     </article>
