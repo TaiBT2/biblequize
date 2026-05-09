@@ -463,7 +463,7 @@ const RoomLobby: React.FC = () => {
       {/* ─── Main: activity log + content + (optional) chat panel ─── */}
       <div className="flex-1 grid lg:grid-cols-[280px_1fr_320px] overflow-hidden" style={{ minHeight: 0 }}>
         <ActivityLogPanel entries={activity} statusHint={statusSecondary} />
-        <div className="overflow-y-auto px-4 lg:px-7 py-4 lg:py-5 pb-24 lg:pb-28" data-testid="lobby-scroll-content">
+        <div className="overflow-y-auto px-4 lg:px-7 py-4 lg:py-5 pb-24 lg:pb-5" data-testid="lobby-scroll-content">
 
           {/* ─── HERO BLOCK ─── */}
           <section
@@ -698,68 +698,43 @@ const RoomLobby: React.FC = () => {
             onSend={handleSendChat}
             chatEndRef={chatEndRef}
             onlineCount={room?.currentPlayers}
+            cta={
+              <LobbyCTA
+                isHost={isHost}
+                canStart={canStart}
+                statusSecondary={statusSecondary}
+                myReady={!!myPlayer?.isReady}
+                onStart={handleStart}
+                onToggleReady={handleToggleReady}
+              />
+            }
           />
         )}
       </div>
 
-      {/* ─── BOTTOM BAR ─── */}
-      <footer
-        className="grid grid-cols-[1fr_auto] gap-3 lg:gap-4 items-center px-4 lg:px-6 py-3 lg:py-3.5 border-t"
-        style={{
-          background: 'rgba(13,15,23,0.95)',
-          backdropFilter: 'blur(20px)',
-          borderColor: 'rgba(232,168,50,0.1)',
-        }}
-      >
-        <div className="hidden lg:block text-center">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold" style={{ color: canStart ? '#4ade80' : '#fbbf24' }}>
-            <span
-              className="inline-block w-1.5 h-1.5 rounded-full animate-pulse"
-              style={{ background: canStart ? '#4ade80' : '#fbbf24' }}
-            />
+      {/* ─── MOBILE BOTTOM CTA ─── (desktop CTA lives inside ChatPanel) */}
+      {isMobile && (
+        <footer
+          className="lg:hidden px-4 py-3 border-t"
+          style={{
+            background: 'rgba(13,15,23,0.95)',
+            backdropFilter: 'blur(20px)',
+            borderColor: 'rgba(232,168,50,0.1)',
+          }}
+        >
+          <div className="text-[10px] mb-2 text-center" style={{ color: canStart ? '#4ade80' : '#fbbf24' }}>
             {statusPrimary}
           </div>
-          <div className="text-[10px] mt-0.5" style={{ color: '#6b7280' }}>{statusSecondary}</div>
-        </div>
-
-        {isHost ? (
-          <button
-            onClick={handleStart}
-            disabled={!canStart}
-            title={!canStart ? statusSecondary : undefined}
-            data-testid="lobby-start-btn"
-            className="inline-flex items-center justify-center gap-2 px-4 lg:px-7 py-3 lg:py-3.5 rounded-xl text-xs lg:text-sm font-extrabold disabled:cursor-not-allowed"
-            style={{
-              background: canStart
-                ? 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)'
-                : 'rgba(50,52,64,0.5)',
-              color: canStart ? '#11131e' : '#6b7280',
-              boxShadow: canStart ? '0 6px 20px rgba(232,168,50,0.3)' : 'none',
-            }}
-          >
-            <span className="material-symbols-outlined text-lg">play_arrow</span>
-            {canStart ? 'Bắt đầu' : (isMobile ? 'Chờ thêm' : 'Đang chờ...')}
-          </button>
-        ) : (
-          <button
-            data-testid="lobby-ready-btn"
-            onClick={handleToggleReady}
-            className="inline-flex items-center justify-center gap-1.5 px-4 lg:px-7 py-3 lg:py-3.5 rounded-xl text-xs lg:text-sm font-extrabold"
-            style={{
-              background: myPlayer?.isReady
-                ? 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)'
-                : 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
-              color: '#11131e',
-              boxShadow: '0 6px 20px rgba(0,0,0,0.3)',
-            }}
-          >
-            <span className="material-symbols-outlined text-lg">
-              {myPlayer?.isReady ? 'check_circle' : 'radio_button_unchecked'}
-            </span>
-            {myPlayer?.isReady ? 'Sẵn sàng' : 'Sẵn sàng'}
-          </button>
-        )}
-      </footer>
+          <LobbyCTA
+            isHost={isHost}
+            canStart={canStart}
+            statusSecondary={statusSecondary}
+            myReady={!!myPlayer?.isReady}
+            onStart={handleStart}
+            onToggleReady={handleToggleReady}
+          />
+        </footer>
+      )}
 
       {/* ─── CHAT FAB (when chat panel hidden) ─── */}
       {!showChatPanel && (
@@ -842,6 +817,61 @@ const RoomLobby: React.FC = () => {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Player slot
+
+const LobbyCTA: React.FC<{
+  isHost: boolean;
+  canStart: boolean;
+  statusSecondary: string;
+  myReady: boolean;
+  onStart: () => void;
+  onToggleReady: () => void;
+}> = ({ isHost, canStart, statusSecondary, myReady, onStart, onToggleReady }) => {
+  if (isHost) {
+    return (
+      <button
+        onClick={onStart}
+        disabled={!canStart}
+        title={!canStart ? statusSecondary : undefined}
+        data-testid="lobby-start-btn"
+        className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-extrabold disabled:cursor-not-allowed"
+        style={{
+          background: canStart
+            ? 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)'
+            : 'rgba(50,52,64,0.5)',
+          color: canStart ? '#11131e' : '#6b7280',
+          boxShadow: canStart ? '0 6px 20px rgba(232,168,50,0.3)' : 'none',
+        }}
+      >
+        <span>👑</span>
+        <span>{canStart ? 'BẮT ĐẦU TRẬN ĐẤU' : 'ĐANG CHỜ...'}</span>
+        {canStart && (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        )}
+      </button>
+    );
+  }
+  return (
+    <button
+      data-testid="lobby-ready-btn"
+      onClick={onToggleReady}
+      className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-extrabold"
+      style={{
+        background: myReady
+          ? 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)'
+          : 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
+        color: '#11131e',
+        boxShadow: '0 6px 20px rgba(0,0,0,0.3)',
+      }}
+    >
+      <span className="material-symbols-outlined text-lg">
+        {myReady ? 'check_circle' : 'radio_button_unchecked'}
+      </span>
+      Sẵn sàng
+    </button>
+  );
+};
 
 const HeroStat: React.FC<{ label: string; value: string }> = ({ label, value }) => (
   <div>
@@ -1217,9 +1247,12 @@ const ChatInputRow: React.FC<{ value: string; onChange: (v: string) => void; onS
   </div>
 );
 
-type ChatPanelProps = Omit<ChatViewProps, 'onClose'> & { onlineCount?: number };
+type ChatPanelProps = Omit<ChatViewProps, 'onClose'> & {
+  onlineCount?: number;
+  cta?: React.ReactNode;
+};
 
-const ChatPanel: React.FC<ChatPanelProps> = ({ messages, input, setInput, onSend, chatEndRef, onlineCount }) => (
+const ChatPanel: React.FC<ChatPanelProps> = ({ messages, input, setInput, onSend, chatEndRef, onlineCount, cta }) => (
   <aside
     className="flex flex-col border-l"
     style={{ background: '#0d0f17', borderColor: 'rgba(255,255,255,0.04)' }}
@@ -1237,6 +1270,11 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ messages, input, setInput, onSend
     <ChatBody messages={messages} chatEndRef={chatEndRef} />
     <ChatReactionsRow onSend={onSend} />
     <ChatInputRow value={input} onChange={setInput} onSend={() => onSend(input)} />
+    {cta && (
+      <div className="p-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
+        {cta}
+      </div>
+    )}
   </aside>
 );
 
