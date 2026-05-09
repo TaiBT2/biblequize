@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useStomp } from '../hooks/useStomp';
 import { api } from '../api/client';
 import { QRCodeSVG } from 'qrcode.react';
+import { soundManager } from '../services/soundManager';
+import { haptic } from '../utils/haptics';
 import SequentialLobbyView from './room/SequentialLobbyView';
 import InviteShareModal from '../components/room/InviteShareModal';
 
@@ -194,14 +196,11 @@ const RoomLobby: React.FC = () => {
           break;
         }
         case 'GAME_STARTING': {
+          // Sprint 2 S2-4: cinematic countdown. Just seed the state — the
+          // overlay's own useEffect ticks it down per second with sound +
+          // haptic, then navigates after the "BẮT ĐẦU!" beat.
           const d = msg.data as { countdown: number };
           setCountdown(d.countdown);
-          const myTeam = room?.players?.find(p => p.userId === room?.myUserId)?.team ?? null;
-          const navState = location.state as { fromGroupId?: string } | null;
-          const fromGroupId = navState?.fromGroupId ?? room?.groupId ?? undefined;
-          setTimeout(() => navigate(`/room/${roomId}/quiz`, {
-            replace: true, state: { mode: room?.mode, myTeam, isHost, hostId: room?.hostId, fromGroupId }
-          }), d.countdown * 1000);
           break;
         }
         case 'QUESTION_START': {
@@ -262,6 +261,38 @@ const RoomLobby: React.FC = () => {
     if (!isMobile) setUnreadChat(0);
     else if (chatOpen) setUnreadChat(0);
   }, [chatOpen, isMobile]);
+
+  // Sprint 2 S2-4: Cinematic countdown effect. Once GAME_STARTING seeds
+  // `countdown` we tick down per second with sound + haptic, render
+  // "BẮT ĐẦU!" at zero with the gameStart flourish, and navigate ~800ms
+  // later so the moment lands before the quiz UI appears.
+  useEffect(() => {
+    if (countdown === null) return;
+    if (countdown > 0) {
+      // Per-tick beats: louder warning beep on the last second.
+      soundManager.play(countdown === 1 ? 'timerWarning' : 'timerTick');
+      haptic.tap();
+      const t = setTimeout(() => setCountdown(c => (c === null ? null : c - 1)), 1000);
+      return () => clearTimeout(t);
+    }
+    // countdown === 0 → the "BẮT ĐẦU!" beat
+    soundManager.play('gameStart');
+    haptic.combo();
+    const myTeam = room?.players?.find(p => p.userId === room?.myUserId)?.team ?? null;
+    const navState = location.state as { fromGroupId?: string } | null;
+    const fromGroupId = navState?.fromGroupId ?? room?.groupId ?? undefined;
+    const t = setTimeout(() => {
+      navigate(`/room/${roomId}/quiz`, {
+        replace: true,
+        state: { mode: room?.mode, myTeam, isHost, hostId: room?.hostId, fromGroupId },
+      });
+    }, 800);
+    return () => clearTimeout(t);
+    // isHost / room can change underneath but the countdown is short
+    // enough that capturing them on first mount is fine; ESLint
+    // dependency exhaustive disabled intentionally.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [countdown]);
 
   // Close kick menu on outside click
   useEffect(() => {
