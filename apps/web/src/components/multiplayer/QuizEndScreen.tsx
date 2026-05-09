@@ -16,6 +16,7 @@ interface Props {
   onShare: () => void;
   onNewRoom: () => void;
   onHome: () => void;
+  onAnalytics?: () => void;
 }
 
 const FILL_STYLE = { fontVariationSettings: "'FILL' 1" } as const;
@@ -30,7 +31,7 @@ function formatDuration(ms: number | null | undefined): string {
 
 export function QuizEndScreen({
   results, myUsername, isHost, totalQuestions, startedAtMs,
-  onReplay, onClose, onShare, onNewRoom, onHome,
+  onReplay, onClose, onShare, onNewRoom, onHome, onAnalytics,
 }: Props) {
   const me = useMemo(
     () => results.find(r => r.username === myUsername),
@@ -242,6 +243,9 @@ export function QuizEndScreen({
               </div>
               <div className="space-y-3">
                 <ActionButton primary onClick={onReplay} icon="refresh" label="Chơi lại với phòng này" testId="end-host-replay" />
+                {onAnalytics && (
+                  <ActionButton onClick={onAnalytics} icon="analytics" label="Xem phân tích chi tiết" testId="end-host-analytics" />
+                )}
                 <ActionButton onClick={onClose} icon="logout" label="Đóng phòng" testId="end-host-close" danger />
               </div>
             </div>

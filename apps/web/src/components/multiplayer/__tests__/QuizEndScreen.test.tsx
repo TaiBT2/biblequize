@@ -59,6 +59,18 @@ describe('QuizEndScreen', () => {
     expect(onClose).toHaveBeenCalledOnce()
   })
 
+  it('analytics button only renders when onAnalytics is provided + wires the callback', () => {
+    const { rerender } = render(<QuizEndScreen {...baseProps} myUsername="Bui" isHost />)
+    expect(screen.queryByTestId('end-host-analytics')).not.toBeInTheDocument()
+
+    const onAnalytics = vi.fn()
+    rerender(<QuizEndScreen {...baseProps} myUsername="Bui" isHost onAnalytics={onAnalytics} />)
+    const btn = screen.getByTestId('end-host-analytics')
+    expect(btn).toHaveTextContent('Xem phân tích chi tiết')
+    fireEvent.click(btn)
+    expect(onAnalytics).toHaveBeenCalledOnce()
+  })
+
   it('player actions wire to onShare/onNewRoom/onHome', () => {
     const onShare = vi.fn()
     const onNewRoom = vi.fn()

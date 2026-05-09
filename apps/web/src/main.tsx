@@ -48,6 +48,7 @@ import Achievements from './pages/Achievements'
 import Leaderboard from './pages/Leaderboard'
 import RoomLobby from './pages/RoomLobby'
 import RoomQuiz from './pages/RoomQuiz'
+import RoomAnalytics from './pages/RoomAnalytics'
 import CreateRoom from './pages/CreateRoom'
 import JoinRoom from './pages/JoinRoom'
 import Multiplayer from './pages/Multiplayer'
@@ -174,6 +175,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Route path="/quiz" element={<Quiz />} />
                 <Route path="/room/:roomId/lobby" element={<RequireAuth><RoomLobby /></RequireAuth>} />
                 <Route path="/room/:roomId/quiz" element={<RequireAuth><RoomQuiz /></RequireAuth>} />
+                <Route path="/room/:roomId/analytics" element={<RequireAuth><RoomAnalytics /></RequireAuth>} />
 
                 {/* Admin */}
                 <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>

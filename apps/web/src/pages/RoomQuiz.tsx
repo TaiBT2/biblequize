@@ -616,6 +616,7 @@ const RoomQuiz: React.FC = () => {
         onShare={() => navigate(exitTo, { replace: true })}
         onNewRoom={() => navigate('/room/create', { replace: true })}
         onHome={() => navigate('/', { replace: true })}
+        onAnalytics={() => navigate(`/room/${roomId}/analytics`)}
       />
     );
   }
