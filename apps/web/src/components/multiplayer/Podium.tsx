@@ -58,11 +58,12 @@ export function Podium({ results, compact = false }: Props) {
       data-testid="podium"
       className="flex items-end justify-center gap-3 lg:gap-4"
       style={{
-        height: compact ? 200 : 300,
-        // Reserve room for the absolute-positioned 1st-place crown
-        // (compact text-xl ≈ 20px, full text-3xl ≈ 36px) plus its 4px gap
-        // so it can't intrude into whatever sits above the podium.
-        paddingTop: compact ? 28 : 44,
+        // min-height = block height + avatar + score/name copy + crown
+        // halo. Was 300px which overflowed (block 200 + avatar 80 + name
+        // 22 + score 22 = 324, plus crown). Use min-height so the box
+        // grows with content instead of overflowing UP into the title.
+        minHeight: compact ? 280 : 380,
+        paddingTop: compact ? 28 : 44, // reserve room for the floating crown
         overflow: 'visible',
       }}
     >
