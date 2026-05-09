@@ -398,7 +398,7 @@ const RoomLobby: React.FC = () => {
     return `${room.currentPlayers}/${room.maxPlayers} người · Có thể bắt đầu`;
   })();
 
-  /* ── BẮT ĐẦU! countdown overlay (per mockup state-start) ── */
+  /* ── BẮT ĐẦU! countdown overlay (per MOCKUP_GAME_START_CEREMONY states c5/c3/c1/go) ── */
   if (countdown !== null) {
     const orderedForOverlay = room
       ? [
@@ -407,56 +407,143 @@ const RoomLobby: React.FC = () => {
         ].slice(0, 6)
       : [];
     const modeLabel = MODE_INFO[room?.mode ?? '']?.label ?? room?.mode ?? '';
+    const isGo = countdown === 0;
     return (
       <div
-        className="fixed inset-0 z-[80] flex flex-col items-center justify-center px-6"
+        className="fixed inset-0 z-[80] flex flex-col items-center justify-center px-6 overflow-hidden"
         style={{
-          background: 'radial-gradient(circle at center, rgba(212,148,31,0.45) 0%, #11131e 70%)',
+          // GO! state: brighter gold radiating; ticking states: dimmer.
+          background: isGo
+            ? 'radial-gradient(circle at center, rgba(232,168,50,0.55) 0%, rgba(212,148,31,0.30) 35%, #11131e 75%)'
+            : 'radial-gradient(circle at center, rgba(212,148,31,0.30) 0%, #11131e 70%)',
           fontFamily: "'Be Vietnam Pro', sans-serif",
+          transition: 'background 200ms ease-out',
         }}
         data-testid="lobby-countdown"
       >
-        <div
-          className="text-xs lg:text-sm font-bold uppercase mb-6 lg:mb-8"
-          style={{ color: '#e8a832', letterSpacing: '0.5em' }}
-        >
-          {modeLabel}{room?.questionCount ? ` · ${room.questionCount} câu` : ''}
-        </div>
-        <div
-          className="font-black text-white text-center leading-none"
-          style={{
-            fontSize: 'clamp(64px, 18vw, 192px)',
-            textShadow: '0 8px 60px rgba(0,0,0,0.6)',
-            letterSpacing: '-0.02em',
-          }}
-        >
-          {countdown > 0 ? countdown : 'BẮT ĐẦU!'}
-        </div>
-        <div className="mt-8 lg:mt-10 text-base lg:text-xl font-semibold" style={{ color: 'rgba(255,255,255,0.9)' }}>
-          Câu hỏi đầu tiên đang đến...
-        </div>
-        {orderedForOverlay.length > 0 && (
-          <div className="mt-10 lg:mt-12 flex items-center gap-3 lg:gap-4 flex-wrap justify-center">
-            {orderedForOverlay.map((p, i) => (
+        {/* Header label flips between "BẮT ĐẦU TRONG" while ticking and
+            an empty placeholder during the GO! beat (the slammed text
+            owns the screen). */}
+        {!isGo && (
+          <div
+            className="text-xs lg:text-sm font-bold uppercase mb-6 lg:mb-8 fade-in"
+            style={{ color: '#e8a832', letterSpacing: '0.4em' }}
+          >
+            BẮT ĐẦU TRONG
+          </div>
+        )}
+
+        {/* Number circle (ticking) OR slammed text (GO) */}
+        {isGo ? (
+          <div
+            data-testid="lobby-countdown-go"
+            className="text-center go-slam"
+            style={{
+              fontSize: 'clamp(72px, 18vw, 192px)',
+              fontWeight: 900,
+              color: '#fff',
+              letterSpacing: '-0.02em',
+              lineHeight: 1.05,
+              textShadow: '0 8px 60px rgba(0,0,0,0.6), 0 0 80px rgba(232,168,50,0.4)',
+            }}
+          >
+            BẮT ĐẦU!
+          </div>
+        ) : (
+          <div className="relative" data-testid={`lobby-countdown-${countdown}`}>
+            {/* Pulsing gold ring sized 8px outside the circle */}
+            <div
+              className="absolute -inset-2 rounded-full pointer-events-none"
+              style={{
+                border: '2px solid #e8a832',
+                animation: 'countdownRingPulse 1s ease-in-out infinite',
+              }}
+              aria-hidden="true"
+            />
+            {/* Glass-strong circle wrapper */}
+            <div
+              className="grid place-items-center rounded-full"
+              style={{
+                width: 'clamp(180px, 32vw, 240px)',
+                height: 'clamp(180px, 32vw, 240px)',
+                background: 'rgba(50,52,64,0.78)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(232,168,50,0.3)',
+                boxShadow: '0 0 60px rgba(232,168,50,0.25), inset 0 2px 20px rgba(255,255,255,0.05)',
+              }}
+            >
               <div
-                key={p.id}
-                className="grid place-items-center rounded-full text-base lg:text-lg font-bold"
+                key={countdown}
                 style={{
-                  width: 56, height: 56,
-                  background: i === 0
-                    ? 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)'
-                    : 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)',
-                  color: i === 0 ? '#11131e' : '#fff',
-                  border: '3px solid #11131e',
-                  boxShadow: i === 0 ? '0 0 40px rgba(232,168,50,0.5)' : 'none',
+                  fontSize: 'clamp(96px, 14vw, 160px)',
+                  fontWeight: 900,
+                  letterSpacing: '-0.04em',
+                  lineHeight: 1,
+                  background: 'linear-gradient(135deg, #fbbf24 0%, #e8a832 50%, #d4941f 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  animation: 'countdownNumberPop 0.4s cubic-bezier(0.34,1.56,0.64,1)',
                 }}
-                aria-hidden="true"
               >
-                {p.username?.[0]?.toUpperCase() ?? '?'}
+                {countdown}
               </div>
-            ))}
-            <span className="ml-2 text-sm lg:text-base font-semibold" style={{ color: 'rgba(255,255,255,0.85)' }}>
-              {room?.currentPlayers ?? 0} người chơi · sẵn sàng!
+            </div>
+          </div>
+        )}
+
+        {/* Mode chip (under the circle) — only on ticking states */}
+        {!isGo && modeLabel && (
+          <div
+            className="mt-8 lg:mt-10 inline-flex items-center gap-2 px-4 py-2 rounded-full fade-in"
+            style={{
+              background: 'rgba(50,52,64,0.55)',
+              backdropFilter: 'blur(12px)',
+              border: '1px solid rgba(255,255,255,0.06)',
+            }}
+          >
+            <span className="text-base">{modeInfo.icon === 'bolt' ? '⚡' : modeInfo.icon === 'favorite' ? '❤️' : modeInfo.icon === 'groups_2' ? '👥' : '👑'}</span>
+            <span className="text-sm font-semibold text-white">
+              {modeLabel}{room?.questionCount ? ` · ${room.questionCount} câu` : ''}
+            </span>
+          </div>
+        )}
+        {isGo && (
+          <div className="mt-6 lg:mt-8 text-base lg:text-xl font-semibold fade-in" style={{ color: 'rgba(255,255,255,0.9)', animationDelay: '0.4s' }}>
+            Câu hỏi đầu tiên đang đến...
+          </div>
+        )}
+        {orderedForOverlay.length > 0 && (
+          <div
+            className="mt-6 lg:mt-8 flex items-center justify-center fade-in"
+            style={{ animationDelay: isGo ? '0.6s' : '0.2s' }}
+          >
+            <div className="flex items-center">
+              {orderedForOverlay.map((p, i) => (
+                <div
+                  key={p.id}
+                  className="grid place-items-center rounded-full font-bold flex-shrink-0"
+                  style={{
+                    width: 36, height: 36,
+                    fontSize: 13,
+                    marginLeft: i === 0 ? 0 : -8,
+                    background: i === 0
+                      ? 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)'
+                      : i === 1
+                      ? 'linear-gradient(135deg, #4ade80 0%, #047857 100%)'
+                      : 'linear-gradient(135deg, #38bdf8 0%, #0369a1 100%)',
+                    color: i === 0 ? '#11131e' : '#fff',
+                    border: '2px solid #11131e',
+                    zIndex: orderedForOverlay.length - i,
+                  }}
+                  aria-hidden="true"
+                >
+                  {p.username?.[0]?.toUpperCase() ?? '?'}
+                </div>
+              ))}
+            </div>
+            <span className="ml-3 text-xs lg:text-sm font-semibold" style={{ color: 'rgba(255,255,255,0.7)' }}>
+              {room?.currentPlayers ?? 0} người chơi
             </span>
           </div>
         )}

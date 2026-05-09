@@ -116,6 +116,32 @@ body {
   0%   { opacity: 0; transform: translateY(8px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+.fade-in {
+  animation: fadeIn 0.5s ease-out backwards;
+}
+
+/* Game-start ceremony — pulsing gold ring around the countdown circle */
+@keyframes countdownRingPulse {
+  0%, 100% { transform: scale(1);   opacity: 0.55; }
+  50%      { transform: scale(1.08); opacity: 0.9; }
+}
+
+/* Game-start ceremony — number pop-in on each tick */
+@keyframes countdownNumberPop {
+  0%   { transform: scale(0.5); opacity: 0;   filter: blur(4px); }
+  60%  { transform: scale(1.15); opacity: 1; filter: blur(0); }
+  100% { transform: scale(1);   opacity: 1; filter: blur(0); }
+}
+
+/* Game-start ceremony — "BẮT ĐẦU!" slam landing */
+@keyframes goSlam {
+  0%   { transform: scale(0.4) rotate(-5deg); opacity: 0; letter-spacing: 0.5em; }
+  25%  { transform: scale(1.2) rotate(1deg);   opacity: 1; letter-spacing: 0.05em; }
+  100% { transform: scale(1)   rotate(0);      opacity: 1; letter-spacing: -0.02em; }
+}
+.go-slam {
+  animation: goSlam 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
 
 /* Sprint 2 S2-11: 1st-place avatar gold-glow pulse */
 @keyframes podium-pulse-glow {
