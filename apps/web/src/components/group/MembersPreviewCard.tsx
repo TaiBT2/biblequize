@@ -100,11 +100,15 @@ export default function MembersPreviewCard({ members, total, onViewAll }: Props)
 
           {offlineMembers.length > 0 && (
             <div className={onlineMembers.length > 0 ? 'pt-3 border-t border-white/5' : ''}>
-              <div className="text-[9px] font-bold text-on-surface/55 uppercase tracking-wider mb-2">
-                {onlineMembers.length > 0
-                  ? t('groups.membersPreview.othersHeader', { count: offlineMembers.length })
-                  : t('groups.membersPreview.allHeader', { count: offlineMembers.length })}
-              </div>
+              {/* GD-FIX-R2-1: only render the "Khác (N)" sub-header when an
+                  online section above it exists — otherwise the main h2
+                  ("Thành viên (total)") already labels the row, and a second
+                  "Thành viên (N)" sub-header duplicates the count. */}
+              {onlineMembers.length > 0 && (
+                <div className="text-[9px] font-bold text-on-surface/55 uppercase tracking-wider mb-2">
+                  {t('groups.membersPreview.othersHeader', { count: offlineMembers.length })}
+                </div>
+              )}
               <div className="flex flex-wrap gap-2">
                 {offlineMembers.slice(0, 8).map((m) => (
                   <Avatar key={m.userId} member={m} />
