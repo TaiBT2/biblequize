@@ -285,7 +285,45 @@
 
 ---
 
+## Sprint 5 (Quiz Set Professional) — Deferred items
+
+### BL-S5-1 — Mastery hook into QuizSession.completeSession
+- **Issue:** Q-4 shipped `GroupQuizSetMasteryService.recordPracticeSession()` but caller wiring chưa có. Mastery KHÔNG tự động cập nhật khi user complete solo practice từ group quiz set.
+- **Cần làm:**
+  1. V53 migration: `ALTER TABLE quiz_sessions ADD COLUMN group_quiz_set_id VARCHAR(36) NULL` + index
+  2. Update QuizSession entity + add field setter
+  3. Update 2-3 session-creation paths (Practice page, group quiz set "Tự ôn solo" flow) để set `groupQuizSetId`
+  4. Hook trong `SessionService.completeSession`: nếu `session.groupQuizSetId != null` → call `masteryService.recordPracticeSession(...)`
+  5. Compute `correctQuestionIds` từ session answers (Answer entity)
+- **Q-A guard:** đảm bảo KHÔNG insert vào UserDailyProgress cho group leaderboard purposes
+- **Status:** ⬜ TODO (deferred Sprint 6)
+
+### BL-S5-2 — i18n keys cho 3 FE pages Sprint 5
+- **Issue:** QuizSetCreate/Detail/List ship với hardcoded VN strings (~50-80 lines). Tăng debt từ 648 → ~700 hardcoded.
+- **Cần làm:**
+  1. Tạo `quizSet:` block trong vi.json + en.json
+  2. Refactor 3 pages dùng `useTranslation()`
+  3. Run `npm run validate:i18n` — verify count giảm ≤ 648 baseline
+- **Status:** ⬜ TODO (deferred i18n sprint)
+
+### BL-S5-3 — Auto-derive Difficulty cho quiz set
+- **Issue:** Q-5 publishQuizSet hiện fallback `Difficulty.MEDIUM`. Logic auto-derive từ Question.difficulty được defer vì enum mismatch (Question lowercase `easy/medium/hard`, GroupQuizSet uppercase `EASY/MEDIUM/HARD/MIXED`).
+- **Cần làm:** Implement `computeDifficulty()` per Q-0 P-D patch sample (map lowercase → uppercase với MIXED rule).
+- **Status:** ⬜ TODO (Sprint 6)
+
+### BL-S5-4 — Folder UI trong QuizSetList + QuizSetCreate
+- **Issue:** Folder CRUD endpoints đã ship nhưng FE list page chưa render group-by-folder header + folder selector trong create form.
+- **Cần làm:** QuizSetList: load folders + render section headers; QuizSetCreate: thêm `<FolderSelector>` (existing folders + "Tạo mới" inline).
+- **Status:** ⬜ TODO (Sprint 6)
+
+### BL-S5-5 — Pixel-perfect mockup match
+- **Issue:** 3 FE pages ship functional baseline với inline Tailwind. Mockup `docs/mockups/MOCKUP_QUIZ_SET_V2_PROFESSIONAL.html` có chi tiết design tokens (Be Vietnam Pro 800/900, gradient cards, exact spacing) chưa được apply.
+- **Cần làm:** Stitch sync workflow — verify mockup, refine spacing/typography/animations.
+- **Status:** ⬜ TODO (Sprint 6)
+
+---
+
 ## Cross-references
-- Canonical specs: [SPEC_USER_v3.1.md](SPEC_USER_v3.1.md), [SPEC_MULTIPLAYER.md](SPEC_MULTIPLAYER.md), [SPEC_ADMIN_v3.1.md](SPEC_ADMIN_v3.1.md), [SPEC_GROUP_v1.2.md](SPEC_GROUP_v1.2.md)
+- Canonical specs: [SPEC_USER_v3.1.md](SPEC_USER_v3.1.md), [SPEC_MULTIPLAYER.md](SPEC_MULTIPLAYER.md), [SPEC_ADMIN_v3.1.md](SPEC_ADMIN_v3.1.md), [SPEC_GROUP_v1.3.md](SPEC_GROUP_v1.3.md) (Sprint 5)
 - Roadmap (defer features): [SPEC_ROADMAP.md](SPEC_ROADMAP.md)
 - Audit findings: [../audit/](../audit/)
