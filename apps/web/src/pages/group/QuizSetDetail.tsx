@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
 import {
   archiveQuizSet, cloneQuizSet, createLiveRoomFromQuizSet, deleteQuizSet,
@@ -22,6 +23,7 @@ const DIFFICULTY: Record<string, { vi: string; short: string; cls: string; emoji
 }
 
 export default function QuizSetDetail() {
+  const { t } = useTranslation()
   const { id: groupId, setId } = useParams<{ id: string; setId: string }>()
   const navigate = useNavigate()
 
@@ -45,11 +47,11 @@ export default function QuizSetDetail() {
   }, [groupId, setId])
 
   if (loading) return (
-    <div className="qs-bg min-h-screen flex items-center justify-center text-gray-400">Đang tải...</div>
+    <div className="qs-bg min-h-screen flex items-center justify-center text-gray-400">{t('quizSet.detail.loading')}</div>
   )
   if (error || !quizSet) return (
     <div className="qs-bg min-h-screen flex items-center justify-center text-red-300 p-6 text-center">
-      {error || 'Không tìm thấy bộ câu hỏi'}
+      {error || t('quizSet.detail.notFound')}
     </div>
   )
 
@@ -122,7 +124,7 @@ export default function QuizSetDetail() {
           <button
             onClick={() => navigate(`/groups/${groupId}/quiz-sets`)}
             className="absolute top-3 left-3 w-9 h-9 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white"
-            aria-label="Quay lại"
+            aria-label={t('quizSet.detail.back')}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
               <path d="M19 12H5M12 19l-7-7 7-7" />
@@ -134,7 +136,7 @@ export default function QuizSetDetail() {
               <span className={`qs-badge-status ${badge.cls}`}>{badge.vi}</span>
               {quizSet.averageRating != null && (
                 <span className="px-2 py-0.5 rounded-full bg-black/40 backdrop-blur text-[9px] font-bold text-[#e8a832]">
-                  ⭐ {Number(quizSet.averageRating).toFixed(1)} ({quizSet.totalRatings} đánh giá)
+                  {t('quizSet.detail.rating', { rating: Number(quizSet.averageRating).toFixed(1), count: quizSet.totalRatings })}
                 </span>
               )}
             </div>
@@ -163,14 +165,14 @@ export default function QuizSetDetail() {
         {/* Quick stats grid */}
         <div className="px-4 pt-3">
           <div className="grid grid-cols-4 gap-1.5">
-            <Stat label="Câu hỏi" value={String(quizSet.totalQuestions)} />
-            <StatDifficulty diff={diff} />
+            <Stat label={t('quizSet.detail.statQuestions')} value={String(quizSet.totalQuestions)} />
+            <StatDifficulty label={t('quizSet.detail.statDifficulty')} diff={diff} />
             <Stat
-              label="Thời gian"
+              label={t('quizSet.detail.statTime')}
               value={quizSet.estimatedDurationMin ? String(quizSet.estimatedDurationMin) : '—'}
               suffix={quizSet.estimatedDurationMin ? 'm' : undefined}
             />
-            <Stat label="Đã chơi" value={String(quizSet.playCount)} valueClass="text-[#e8a832]" />
+            <Stat label={t('quizSet.detail.statPlays')} value={String(quizSet.playCount)} valueClass="text-[#e8a832]" />
           </div>
         </div>
 
@@ -178,33 +180,33 @@ export default function QuizSetDetail() {
         {hasMastery && (
           <div className="px-4 pt-4">
             <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-2">
-              <span>🎯 Tiến độ học của bạn</span>
+              <span>{t('quizSet.detail.masteryHeader')}</span>
               <div className="h-px flex-1 bg-white/5" />
             </div>
             <div className="rounded-xl p-3 border border-emerald-400/30" style={{ background: 'rgba(74, 222, 128, 0.06)' }}>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs text-white">Đã thuộc</span>
+                <span className="text-xs text-white">{t('quizSet.detail.masteryLearned')}</span>
                 <span className="text-xs font-bold text-emerald-400">
-                  {mastery!.questionsLearned}/{quizSet.totalQuestions} câu ({masteryPct}%)
+                  {t('quizSet.detail.masteryProgress', { learned: mastery!.questionsLearned, total: quizSet.totalQuestions, pct: masteryPct })}
                 </span>
               </div>
               <div className="qs-progress-bar h-2 mb-3">
                 <div className="qs-progress-fill h-2" style={{ width: `${masteryPct}%` }} />
               </div>
               <div className="grid grid-cols-3 gap-2 text-center">
-                <MiniStat label="Đã ôn" value={`${mastery!.totalAttempts} lần`} />
+                <MiniStat label={t('quizSet.detail.masteryAttempts')} value={t('quizSet.detail.masteryAttemptsValue', { count: mastery!.totalAttempts })} />
                 <MiniStat
-                  label="Best"
+                  label={t('quizSet.detail.masteryBest')}
                   value={mastery!.bestAccuracy != null ? `${Number(mastery!.bestAccuracy).toFixed(0)}%` : `${mastery!.bestScore}đ`}
                   valueClass="text-[#e8a832]"
                 />
                 <MiniStat
-                  label="Lần cuối"
+                  label={t('quizSet.detail.masteryLast')}
                   value={mastery!.lastPracticedAt ? relativeShort(mastery!.lastPracticedAt) : '—'}
                 />
               </div>
               {mastery!.completedMastery && (
-                <div className="mt-2 text-center text-[10px] text-emerald-400 font-bold">🏆 Đã thuộc toàn bộ</div>
+                <div className="mt-2 text-center text-[10px] text-emerald-400 font-bold">{t('quizSet.detail.masteryCompleted')}</div>
               )}
             </div>
           </div>
@@ -214,7 +216,7 @@ export default function QuizSetDetail() {
         {quizSet.authorNote && (
           <div className="px-4 pt-4">
             <div className="rounded-xl p-3 qs-glass">
-              <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">📝 Hướng dẫn của tác giả</div>
+              <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">{t('quizSet.detail.authorNote')}</div>
               <div className="text-xs text-gray-200 whitespace-pre-wrap">{quizSet.authorNote}</div>
             </div>
           </div>
@@ -224,7 +226,7 @@ export default function QuizSetDetail() {
         <div className="px-4 pt-4">
           {quizSet.suggestedMode && (
             <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">
-              💡 Đề xuất của tác giả: <span className="text-[#e8a832]">{MODE_LABELS[quizSet.suggestedMode].vi}</span>
+              {t('quizSet.detail.suggestedMode', { mode: MODE_LABELS[quizSet.suggestedMode].vi })}
             </div>
           )}
 
@@ -235,7 +237,7 @@ export default function QuizSetDetail() {
               disabled={busy}
               className="w-full py-3 rounded-xl qs-gold-grad qs-font-vn-display font-extrabold text-[#11131e] text-sm flex items-center justify-center gap-2 mb-2 disabled:opacity-50"
             >
-              <span>▶</span><span>CHƠI NGAY · CHỌN MODE</span>
+              <span>▶</span><span>{t('quizSet.detail.ctaPlayNow')}</span>
             </button>
           )}
           {quizSet.publishStatus === 'DRAFT' && (
@@ -244,7 +246,7 @@ export default function QuizSetDetail() {
               disabled={busy || quizSet.totalQuestions < 5}
               className="w-full py-3 rounded-xl qs-gold-grad qs-font-vn-display font-extrabold text-[#11131e] text-sm flex items-center justify-center gap-2 mb-2 disabled:opacity-50"
             >
-              <span>✓</span><span>{quizSet.totalQuestions < 5 ? `CẦN ≥5 CÂU (HIỆN ${quizSet.totalQuestions})` : 'XUẤT BẢN BỘ NÀY'}</span>
+              <span>✓</span><span>{quizSet.totalQuestions < 5 ? t('quizSet.detail.ctaNeedQuestions', { count: quizSet.totalQuestions }) : t('quizSet.detail.ctaPublish')}</span>
             </button>
           )}
           {quizSet.publishStatus === 'ARCHIVED' && (
@@ -252,7 +254,7 @@ export default function QuizSetDetail() {
               onClick={() => action(() => unarchiveQuizSet(groupId!, setId!))}
               disabled={busy}
               className="w-full py-3 rounded-xl qs-glass border border-[#e8a832]/30 text-[#e8a832] font-bold text-sm mb-2"
-            >📦 KHÔI PHỤC</button>
+            >{t('quizSet.detail.ctaUnarchive')}</button>
           )}
 
           {/* Secondary actions */}
@@ -262,20 +264,20 @@ export default function QuizSetDetail() {
                 onClick={startSolo}
                 disabled={busy}
                 className="py-2.5 rounded-xl qs-glass border border-[#e8a832]/30 text-[#e8a832] font-semibold text-xs flex items-center justify-center gap-1.5 disabled:opacity-50"
-              ><span>📚</span><span>Tự ôn solo</span></button>
+              ><span>📚</span><span>{t('quizSet.detail.soloPractice')}</span></button>
               <button
                 onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${quizSet.id}`)}
                 className="py-2.5 rounded-xl qs-glass border border-white/10 text-white font-semibold text-xs flex items-center justify-center gap-1.5"
-              ><span>📅</span><span>Lên lịch</span></button>
+              ><span>📅</span><span>{t('quizSet.detail.schedule')}</span></button>
             </div>
           )}
 
           {/* Leader actions row */}
           <div className="rounded-xl p-2 border border-white/5 flex items-center justify-between" style={{ background: 'rgba(50, 52, 64, 0.3)' }}>
-            <span className="text-[10px] text-gray-400">👑 Hành động Trưởng nhóm</span>
+            <span className="text-[10px] text-gray-400">{t('quizSet.detail.leaderActions')}</span>
             <div className="flex gap-1">
               <IconButton
-                title="Sửa"
+                title={t('quizSet.detail.edit')}
                 onClick={() => navigate(`/groups/${groupId}/quiz-sets/${quizSet.id}/edit`)}
               >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
@@ -284,7 +286,7 @@ export default function QuizSetDetail() {
                 </svg>
               </IconButton>
               <IconButton
-                title="Sao chép"
+                title={t('quizSet.detail.clone')}
                 onClick={() => action(() => cloneQuizSet(groupId!, setId!), `/groups/${groupId}/quiz-sets`)}
                 disabled={busy}
               >
@@ -295,7 +297,7 @@ export default function QuizSetDetail() {
               </IconButton>
               {quizSet.publishStatus === 'PUBLISHED' && (
                 <IconButton
-                  title="Lưu trữ"
+                  title={t('quizSet.detail.archive')}
                   onClick={() => action(() => archiveQuizSet(groupId!, setId!))}
                   disabled={busy}
                 >
@@ -306,9 +308,9 @@ export default function QuizSetDetail() {
                 </IconButton>
               )}
               <IconButton
-                title="Xóa"
+                title={t('quizSet.detail.delete')}
                 onClick={() => {
-                  if (confirm('Xóa bộ câu hỏi này? Có thể khôi phục trong 30 ngày.'))
+                  if (confirm(t('quizSet.detail.deleteConfirm')))
                     action(() => deleteQuizSet(groupId!, setId!), `/groups/${groupId}/quiz-sets`)
                 }}
                 disabled={busy}
@@ -345,6 +347,7 @@ function ModePickerModal({
   quizSet: QuizSet; busy: boolean;
   onPick: (mode: RoomMode) => void; onSolo: () => void; onClose: () => void;
 }) {
+  const { t } = useTranslation()
   const cover = quizSet.coverImageUrl?.startsWith('emoji:') ? quizSet.coverImageUrl.slice(6) : '📖'
   const diff = quizSet.difficulty ? DIFFICULTY[quizSet.difficulty] : null
 
@@ -360,8 +363,8 @@ function ModePickerModal({
       >
         {/* Header */}
         <div className="px-5 py-3 flex items-center justify-between sticky top-0 backdrop-blur z-10" style={{ background: 'rgba(17,19,30,0.95)' }}>
-          <button onClick={onClose} className="text-gray-400 text-sm">‹ Hủy</button>
-          <div className="text-sm font-bold text-white">Chọn cách chơi</div>
+          <button onClick={onClose} className="text-gray-400 text-sm">{t('quizSet.detail.modePickerCancel')}</button>
+          <div className="text-sm font-bold text-white">{t('quizSet.detail.modePickerTitle')}</div>
           <div className="w-12" />
         </div>
 
@@ -382,7 +385,7 @@ function ModePickerModal({
 
         {/* Solo */}
         <div className="px-4 mb-3">
-          <SectionHeader emoji="📚" label="Cá nhân" colorCls="text-emerald-400" />
+          <SectionHeader emoji="📚" label={t('quizSet.detail.sectionSolo')} colorCls="text-emerald-400" />
           <button
             onClick={() => { if (!busy) onSolo() }}
             disabled={busy}
@@ -391,10 +394,10 @@ function ModePickerModal({
             <div className="qs-mode-icon qs-mode-seq shrink-0">📚</div>
             <div className="flex-1 text-left min-w-0">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-bold text-white">Tự ôn solo</span>
-                <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-semibold">+ Mastery</span>
+                <span className="text-sm font-bold text-white">{t('quizSet.detail.soloPractice')}</span>
+                <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-semibold">{t('quizSet.detail.soloMastery')}</span>
               </div>
-              <div className="text-[10px] text-gray-400 mt-0.5">Học cá nhân · Ghi nhận tiến độ học</div>
+              <div className="text-[10px] text-gray-400 mt-0.5">{t('quizSet.detail.soloDescription')}</div>
             </div>
             <Chevron />
           </button>
@@ -402,7 +405,7 @@ function ModePickerModal({
 
         {/* Multiplayer */}
         <div className="px-4 mb-4">
-          <SectionHeader emoji="👥" label="Nhiều người chơi" colorCls="text-[#e8a832]" />
+          <SectionHeader emoji="👥" label={t('quizSet.detail.sectionMultiplayer')} colorCls="text-[#e8a832]" />
           <div className="space-y-2">
             {multiplayerModes.map(mode => {
               const cfg = MODE_LABELS[mode]
@@ -424,7 +427,7 @@ function ModePickerModal({
                     <div className="flex items-center gap-2">
                       <span className="text-sm font-bold text-white">{cfg.vi}</span>
                       {isSuggested && (
-                        <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/30 text-emerald-300 font-semibold">⭐ Đề xuất</span>
+                        <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/30 text-emerald-300 font-semibold">{t('quizSet.detail.modeSuggested')}</span>
                       )}
                     </div>
                     <div className={`text-[10px] mt-0.5 ${isSuggested ? 'text-emerald-300' : 'text-gray-400'}`}>
@@ -453,10 +456,10 @@ function Stat({ label, value, suffix, valueClass }: { label: string; value: stri
   )
 }
 
-function StatDifficulty({ diff }: { diff: { vi: string; short: string; cls: string; emoji: string } | null }) {
+function StatDifficulty({ label, diff }: { label: string; diff: { vi: string; short: string; cls: string; emoji: string } | null }) {
   return (
     <div className="qs-glass rounded-xl p-2 text-center">
-      <div className="text-[9px] text-gray-400 uppercase font-semibold">Độ khó</div>
+      <div className="text-[9px] text-gray-400 uppercase font-semibold">{label}</div>
       <div className={`text-xs font-bold mt-0.5 ${diff?.cls ?? 'text-gray-500'}`}>
         {diff ? `${diff.emoji} ${diff.short}` : '—'}
       </div>

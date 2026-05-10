@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
 import {
   createQuizSet, listFolders, createFolder,
@@ -18,6 +19,7 @@ const PREDEFINED_TAGS: { label: string; chipCls: string }[] = [
 ]
 
 export default function QuizSetCreate() {
+  const { t } = useTranslation()
   const { id: groupId } = useParams<{ id: string }>()
   const navigate = useNavigate()
 
@@ -55,7 +57,7 @@ export default function QuizSetCreate() {
     e.preventDefault()
     if (!groupId) return
     if (name.trim().length < 5) {
-      setError('Tên cần ít nhất 5 ký tự')
+      setError(t('quizSet.create.nameMinLength'))
       return
     }
     setSubmitting(true); setError(null)
@@ -72,7 +74,7 @@ export default function QuizSetCreate() {
       })
       navigate(`/groups/${groupId}/quiz-sets/${created.id}`)
     } catch (err: any) {
-      setError(err?.response?.data?.message || err.message || 'Lỗi tạo bộ câu hỏi')
+      setError(err?.response?.data?.message || err.message || t('quizSet.create.errorCreate'))
     } finally {
       setSubmitting(false)
     }
@@ -87,26 +89,26 @@ export default function QuizSetCreate() {
           style={{ background: 'rgba(17,19,30,0.95)' }}
         >
           <button type="button" onClick={() => navigate(`/groups/${groupId}/quiz-sets`)} className="text-gray-400 text-sm">
-            Hủy
+            {t('quizSet.create.cancel')}
           </button>
-          <div className="text-sm font-bold text-white qs-font-vn-display">Tạo bộ câu hỏi</div>
+          <div className="text-sm font-bold text-white qs-font-vn-display">{t('quizSet.create.title')}</div>
           <button
             type="submit"
             disabled={submitting || name.trim().length < 5}
             className="text-[#e8a832] text-sm font-bold disabled:opacity-50"
-          >{submitting ? 'Đang lưu...' : 'Lưu'}</button>
+          >{submitting ? t('quizSet.create.saving') : t('quizSet.create.save')}</button>
         </div>
 
         {/* Cover */}
-        <Section label="Ảnh bìa">
+        <Section label={t('quizSet.create.labelCover')}>
           <button
             type="button"
             onClick={() => setShowIconPicker(v => !v)}
             className="w-full h-32 rounded-xl border-2 border-dashed border-white/10 flex flex-col items-center justify-center gap-1 text-gray-500 hover:border-[#e8a832]/30 hover:text-[#e8a832]"
           >
             <div className="text-4xl">{coverIcon}</div>
-            <div className="text-xs">{showIconPicker ? 'Đang chọn icon...' : 'Bấm để đổi icon'}</div>
-            <div className="text-[10px] text-gray-600">Sprint 5: chỉ icon, upload ảnh defer Sprint 6</div>
+            <div className="text-xs">{showIconPicker ? t('quizSet.create.coverHintExpanded') : t('quizSet.create.coverHintCollapsed')}</div>
+            <div className="text-[10px] text-gray-600">{t('quizSet.create.coverDeferNote')}</div>
           </button>
           {showIconPicker && (
             <div className="mt-2 grid grid-cols-5 gap-2">
@@ -125,7 +127,7 @@ export default function QuizSetCreate() {
         </Section>
 
         {/* Name */}
-        <Section label="Tên bộ câu hỏi" required hint={`${name.length}/100 ký tự`}>
+        <Section label={t('quizSet.create.labelName')} required hint={t('quizSet.create.charCount', { current: name.length, max: 100 })}>
           <input
             type="text"
             value={name}
@@ -133,24 +135,24 @@ export default function QuizSetCreate() {
             maxLength={100}
             required
             className="w-full qs-glass rounded-xl px-3 py-2.5 text-sm text-white placeholder-gray-500 outline-none"
-            placeholder="VD: Bài giảng tuần 18 — Phục Sinh"
+            placeholder={t('quizSet.create.namePlaceholder')}
           />
         </Section>
 
         {/* Description */}
-        <Section label="Mô tả ngắn" hint={`${description.length}/500 ký tự`}>
+        <Section label={t('quizSet.create.labelDescription')} hint={t('quizSet.create.charCount', { current: description.length, max: 500 })}>
           <textarea
             value={description}
             onChange={e => setDescription(e.target.value)}
             maxLength={500}
             rows={3}
             className="w-full qs-glass rounded-xl px-3 py-2.5 text-sm text-white placeholder-gray-500 outline-none resize-none"
-            placeholder="Mô tả bộ câu hỏi này về điều gì..."
+            placeholder={t('quizSet.create.descriptionPlaceholder')}
           />
         </Section>
 
         {/* Scripture */}
-        <Section label="Câu Kinh Thánh chính">
+        <Section label={t('quizSet.create.labelScripture')}>
           <div className="qs-glass rounded-xl px-3 py-2.5 flex items-center gap-2">
             <span>📍</span>
             <input
@@ -159,13 +161,13 @@ export default function QuizSetCreate() {
               onChange={e => setCoverScripture(e.target.value)}
               maxLength={100}
               className="bg-transparent outline-none text-sm text-white placeholder-gray-500 flex-1"
-              placeholder="VD: Mathiơ 28"
+              placeholder={t('quizSet.create.scripturePlaceholder')}
             />
           </div>
         </Section>
 
         {/* Tags */}
-        <Section label={`Thẻ chủ đề (tối đa 5) · ${tags.length}/5`}>
+        <Section label={t('quizSet.create.labelTags', { count: tags.length })}>
           <div className="flex flex-wrap gap-1.5">
             {tags.map(tag => (
               <span key={tag} className={`px-2 py-1 rounded-full text-[10px] font-semibold flex items-center gap-1 ${tagChipClass(tag)}`}>
@@ -189,7 +191,7 @@ export default function QuizSetCreate() {
         </Section>
 
         {/* Suggested mode */}
-        <Section label="Chế độ chơi đề xuất">
+        <Section label={t('quizSet.create.labelMode')}>
           <div className="grid grid-cols-2 gap-1.5">
             {(Object.keys(MODE_LABELS) as RoomMode[]).map(mode => {
               const cfg = MODE_LABELS[mode]
@@ -212,11 +214,11 @@ export default function QuizSetCreate() {
               )
             })}
           </div>
-          <div className="text-[10px] text-gray-500 mt-2">Người chơi vẫn có thể chọn mode khác khi tạo phòng</div>
+          <div className="text-[10px] text-gray-500 mt-2">{t('quizSet.create.modeHint')}</div>
         </Section>
 
         {/* Folder */}
-        <Section label="Thư mục">
+        <Section label={t('quizSet.create.labelFolder')}>
           <div className="space-y-1.5">
             <button
               type="button"
@@ -225,7 +227,7 @@ export default function QuizSetCreate() {
                 folderId === null ? 'qs-glass border border-[#e8a832]/40 text-[#e8a832]' : 'qs-glass text-gray-300'
               }`}
             >
-              <span>📂 Không phân loại</span>
+              <span>{t('quizSet.create.folderUncategorized')}</span>
               {folderId === null && <span className="text-[10px]">✓</span>}
             </button>
             {folders.map(f => (
@@ -244,7 +246,7 @@ export default function QuizSetCreate() {
             <button
               type="button"
               onClick={async () => {
-                const newName = window.prompt('Tên thư mục mới?')
+                const newName = window.prompt(t('quizSet.create.folderPrompt'))
                 if (!newName?.trim() || !groupId) return
                 try {
                   const created = await createFolder(groupId, newName.trim())
@@ -253,28 +255,28 @@ export default function QuizSetCreate() {
                 } catch (err: any) { setError(err?.response?.data?.message || err.message) }
               }}
               className="w-full px-3 py-2 rounded-xl qs-glass border border-dashed border-white/20 text-xs text-gray-400 hover:text-[#e8a832] hover:border-[#e8a832]/40"
-            >+ Tạo thư mục mới</button>
+            >{t('quizSet.create.createFolder')}</button>
           </div>
         </Section>
 
         {/* Author note */}
-        <Section label={<>Ghi chú cho người chơi <span className="text-gray-600">(tùy chọn)</span></>}>
+        <Section label={<>{t('quizSet.create.labelAuthorNote')} <span className="text-gray-600">{t('quizSet.create.labelOptional')}</span></>}>
           <textarea
             value={authorNote}
             onChange={e => setAuthorNote(e.target.value)}
             maxLength={1000}
             rows={2}
             className="w-full qs-glass rounded-xl px-3 py-2.5 text-sm text-white placeholder-gray-500 outline-none resize-none"
-            placeholder="VD: Đọc trước Mathiơ 28 sẽ giúp tham gia hiệu quả hơn..."
+            placeholder={t('quizSet.create.authorNotePlaceholder')}
           />
         </Section>
 
         {/* Footer info */}
         <div className="px-4 pt-4 pb-6">
-          <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">Câu hỏi (0/50)</div>
+          <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">{t('quizSet.create.questionsCount')}</div>
           <div className="rounded-xl p-3 qs-glass border border-[#e8a832]/20 text-center">
             <div className="text-[10px] text-gray-300">
-              Sau khi lưu bản nháp, bạn có thể thêm câu hỏi và xuất bản (cần ≥5 câu).
+              {t('quizSet.create.footerNote')}
             </div>
           </div>
         </div>

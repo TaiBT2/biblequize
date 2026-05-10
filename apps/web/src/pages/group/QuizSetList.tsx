@@ -1,22 +1,23 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import {
   listQuizSets, listFolders, createFolder, deleteFolder,
   type ListQuizSetsParams, type PublishStatus, type QuizSet, type QuizSetFolder,
 } from '../../api/quizSets'
 
-const STATUS_FILTERS: { key: PublishStatus | 'ALL'; label: string }[] = [
-  { key: 'ALL', label: 'Tất cả' },
-  { key: 'DRAFT', label: 'Bản nháp' },
-  { key: 'PUBLISHED', label: 'Đã xuất bản' },
-  { key: 'ARCHIVED', label: 'Đã lưu trữ' },
+const STATUS_FILTERS: { key: PublishStatus | 'ALL'; tKey: string }[] = [
+  { key: 'ALL',       tKey: 'quizSet.list.filterAll' },
+  { key: 'DRAFT',     tKey: 'quizSet.list.filterDraft' },
+  { key: 'PUBLISHED', tKey: 'quizSet.list.filterPublished' },
+  { key: 'ARCHIVED',  tKey: 'quizSet.list.filterArchived' },
 ]
 
-const SORT_OPTIONS: { key: NonNullable<ListQuizSetsParams['sort']>; label: string }[] = [
-  { key: 'popular', label: 'Phổ biến nhất' },
-  { key: 'recent', label: 'Mới nhất' },
-  { key: 'name', label: 'A-Z' },
-  { key: 'rating', label: 'Đánh giá cao' },
+const SORT_OPTIONS: { key: NonNullable<ListQuizSetsParams['sort']>; tKey: string }[] = [
+  { key: 'popular', tKey: 'quizSet.list.sortPopular' },
+  { key: 'recent',  tKey: 'quizSet.list.sortRecent' },
+  { key: 'name',    tKey: 'quizSet.list.sortName' },
+  { key: 'rating',  tKey: 'quizSet.list.sortRating' },
 ]
 
 const DIFFICULTY_LABEL: Record<string, { vi: string; cssClass: string; emoji: string }> = {
@@ -27,6 +28,7 @@ const DIFFICULTY_LABEL: Record<string, { vi: string; cssClass: string; emoji: st
 }
 
 export default function QuizSetList() {
+  const { t } = useTranslation()
   const { id: groupId } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const [items, setItems] = useState<QuizSet[]>([])
@@ -56,7 +58,7 @@ export default function QuizSetList() {
   const refreshFolders = () => groupId && listFolders(groupId).then(setFolders).catch(() => {})
 
   const handleCreateFolder = async () => {
-    const name = window.prompt('Tên thư mục mới?')
+    const name = window.prompt(t('quizSet.list.createFolderPrompt'))
     if (!name || !name.trim() || !groupId) return
     try {
       await createFolder(groupId, name.trim())
@@ -65,7 +67,7 @@ export default function QuizSetList() {
   }
 
   const handleDeleteFolder = async (folder: QuizSetFolder) => {
-    if (!confirm(`Xóa thư mục "${folder.name}"? Quiz sets bên trong sẽ trở thành "không phân loại".`)) return
+    if (!confirm(t('quizSet.list.deleteFolderConfirm', { name: folder.name }))) return
     if (!groupId) return
     try {
       await deleteFolder(groupId, folder.id)
@@ -107,20 +109,20 @@ export default function QuizSetList() {
           <button
             onClick={() => navigate(`/groups/${groupId}`)}
             className="w-9 h-9 rounded-full qs-glass flex items-center justify-center text-gray-400"
-            aria-label="Quay lại"
+            aria-label={t('quizSet.list.back')}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
           </button>
           <div className="text-center">
-            <div className="text-xs text-gray-400">Bộ câu hỏi của nhóm</div>
-            <div className="text-sm font-bold text-white qs-font-vn-display">Tổng {items.length} bộ</div>
+            <div className="text-xs text-gray-400">{t('quizSet.list.title')}</div>
+            <div className="text-sm font-bold text-white qs-font-vn-display">{t('quizSet.list.totalCount', { count: items.length })}</div>
           </div>
           <Link
             to={`/groups/${groupId}/quiz-sets/new`}
             className="w-9 h-9 rounded-full qs-gold-grad flex items-center justify-center text-[#11131e] font-bold"
-            aria-label="Tạo mới"
+            aria-label={t('quizSet.list.createNew')}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}>
               <path d="M12 5v14M5 12h14" />
@@ -139,7 +141,7 @@ export default function QuizSetList() {
               value={search}
               onChange={e => setSearch(e.target.value)}
               className="bg-transparent outline-none text-sm text-white placeholder-gray-500 flex-1"
-              placeholder="Tìm bộ câu hỏi..."
+              placeholder={t('quizSet.list.search')}
             />
           </div>
 
@@ -156,21 +158,21 @@ export default function QuizSetList() {
                       : 'qs-glass text-gray-300'
                   }`}
                 >
-                  {f.label} · {counts[f.key] || 0}
+                  {t(f.tKey)} · {counts[f.key] || 0}
                 </button>
               )
             })}
           </div>
 
           <div className="flex justify-between items-center mt-2">
-            <span className="text-[10px] text-gray-500">Sắp xếp theo:</span>
+            <span className="text-[10px] text-gray-500">{t('quizSet.list.sortLabel')}</span>
             <select
               value={sort}
               onChange={e => setSort(e.target.value as any)}
               className="text-[10px] text-[#e8a832] font-semibold bg-transparent outline-none cursor-pointer"
             >
               {SORT_OPTIONS.map(o => (
-                <option key={o.key} value={o.key} className="bg-[#11131e] text-white">{o.label}</option>
+                <option key={o.key} value={o.key} className="bg-[#11131e] text-white">{t(o.tKey)}</option>
               ))}
             </select>
           </div>
@@ -181,7 +183,7 @@ export default function QuizSetList() {
         )}
 
         {loading ? (
-          <div className="px-5 py-8 text-center text-gray-500">Đang tải...</div>
+          <div className="px-5 py-8 text-center text-gray-500">{t('quizSet.list.loading')}</div>
         ) : items.length === 0 ? (
           <EmptyState groupId={groupId!} hasSearch={search.length > 0} />
         ) : (
@@ -215,8 +217,8 @@ export default function QuizSetList() {
               <div className="mb-3">
                 {folders.length > 0 && (
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs font-semibold text-gray-300">📂 Khác</span>
-                    <span className="text-[10px] text-gray-500">{grouped.uncategorized.length} bộ</span>
+                    <span className="text-xs font-semibold text-gray-300">{t('quizSet.list.uncategorized')}</span>
+                    <span className="text-[10px] text-gray-500">{t('quizSet.list.folderItemCount', { count: grouped.uncategorized.length })}</span>
                   </div>
                 )}
                 {grouped.uncategorized.map((qs, idx) => (
@@ -229,7 +231,7 @@ export default function QuizSetList() {
             {drafts.length > 0 && (
               <div className="mb-3">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xs font-semibold text-gray-400">Bản nháp của bạn</span>
+                  <span className="text-xs font-semibold text-gray-400">{t('quizSet.list.draftsHeader')}</span>
                 </div>
                 {drafts.map(qs => <DraftCard key={qs.id} groupId={groupId!} qs={qs} />)}
               </div>
@@ -239,7 +241,7 @@ export default function QuizSetList() {
             <button
               onClick={handleCreateFolder}
               className="w-full mt-3 py-2 rounded-xl qs-glass border border-dashed border-white/20 text-xs text-gray-400 hover:text-[#e8a832] hover:border-[#e8a832]/40"
-            >+ Tạo thư mục mới</button>
+            >{t('quizSet.list.createFolder')}</button>
           </div>
         )}
       </div>
