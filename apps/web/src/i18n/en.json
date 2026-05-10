@@ -1605,6 +1605,13 @@
       "accuracy": "% correct answers — computed across {{sample}} active members",
       "inactive": "{{count}}/{{total}} members inactive for ≥{{days}} days"
     },
+    "pulse": {
+      "title": "Group Activity Pulse",
+      "comingSoon": "Coming soon",
+      "leaderOnly": "Leader only",
+      "placeholder": "Cell Group Pulse — composite signal of group activity based on active rate, live rooms, and new content. Ships next sprint with daily updates."
+    },
+    "viewFullPage": "View full page",
     "leaderboardTitle": "Leaderboard",
     "weekly": "This week",
     "allTime": "All time",

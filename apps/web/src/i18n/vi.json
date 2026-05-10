@@ -1605,6 +1605,13 @@
       "accuracy": "% câu trả lời đúng — tính trên {{sample}} thành viên có hoạt động",
       "inactive": "{{count}}/{{total}} thành viên không hoạt động ≥{{days}} ngày qua"
     },
+    "pulse": {
+      "title": "Nhịp sinh hoạt nhóm",
+      "comingSoon": "Sắp ra mắt",
+      "leaderOnly": "Chỉ Leader",
+      "placeholder": "Cell Group Pulse — chỉ số tổng hợp về nhịp sinh hoạt nhóm dựa trên active rate, live rooms, và content mới. Sẽ ra mắt Sprint tới với cập nhật hàng ngày."
+    },
+    "viewFullPage": "Xem trang đầy đủ",
     "leaderboardTitle": "Bảng Xếp Hạng",
     "weekly": "Tuần này",
     "allTime": "Tất cả",

@@ -6,6 +6,7 @@ import { api } from '../api/client';
 import { createGroupLiveQuiz } from '../api/groups';
 import { listScheduledQuizzes, ScheduledQuizSummary } from '../api/scheduledQuiz';
 import GroupActivityTab from '../components/group/GroupActivityTab';
+import GroupAnalyticsTab from '../components/group/GroupAnalyticsTab';
 
 interface Member {
   userId: string;
@@ -67,7 +68,7 @@ interface GroupStreak {
 
 type AnalyticsPeriod = '7d' | '30d' | '90d';
 
-type TabKey = 'activity' | 'members' | 'announcements' | 'quizsets';
+type TabKey = 'activity' | 'members' | 'announcements' | 'quizsets' | 'analytics';
 
 const GROUP_BANNER =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDFnTx3fGDw7x7TL7ge8vDEEkbSjq2ai-wsyEd__vq0byTyOGvi3d1WQJV-Z692ksccl6DDoOTaPZ-RL6J3WDmSBY0g8tNHqXPey9lmDhtJm5uWerKyh-E_CoWIffIBMnkKidiZmdYyryDzyan-U5KggGWHq86m0LjMDFuhdre8DhsrG1bfRTGgMv0gcxaS723-h-Ktb7hs3pnVXl86T0Bxzczh42s-_TVCqF9GGN9tV6Evi0FZeIe1ilRaSLf4vwUHB7Q31bszVCE';
@@ -117,7 +118,7 @@ const GroupDetail: React.FC = () => {
   const initialTabRaw = searchParams.get('tab');
   // Backward-compat: legacy `?tab=leaderboard` URLs (pre-GD-1) redirect to activity.
   const initialTab = (initialTabRaw === 'leaderboard' ? 'activity' : initialTabRaw) as TabKey | null;
-  const validInitial: TabKey = initialTab && ['activity', 'members', 'announcements', 'quizsets'].includes(initialTab)
+  const validInitial: TabKey = initialTab && ['activity', 'members', 'announcements', 'quizsets', 'analytics'].includes(initialTab)
     ? initialTab
     : 'activity';
   const [activeTab, setActiveTab] = useState<TabKey>(validInitial);
@@ -870,16 +871,17 @@ const GroupDetail: React.FC = () => {
         </div>
       </header>
 
-      {/* ── Tab Navigation (compact, GD-6 count badges) ── */}
+      {/* ── Tab Navigation (compact, GD-6 count badges, GD-9 analytics leader-only) ── */}
       {(() => {
         const membersCount = memberTotal || group.members?.length || 0;
         const announcementsCount = announcements.length;
         const quizSetsCount = quizSets.length;
-        const TABS: { key: TabKey; label: string; count?: number; hasNotification?: boolean }[] = [
+        const TABS: { key: TabKey; label: string; count?: number; hasNotification?: boolean; leaderOnly?: boolean }[] = [
           { key: 'activity', label: t('groups.tabs.activity') },
           { key: 'members', label: t('groups.membersTab'), count: membersCount },
           { key: 'announcements', label: t('groups.announcementsTab'), count: announcementsCount, hasNotification: true },
           { key: 'quizsets', label: t('groups.quizSetsTab'), count: quizSetsCount },
+          ...(isLeaderOrMod ? [{ key: 'analytics' as TabKey, label: t('groups.tabs.analytics'), leaderOnly: true }] : []),
         ];
         return (
           <nav className="flex items-center gap-6 border-b border-white/10 overflow-x-auto whitespace-nowrap mb-4">
@@ -907,6 +909,14 @@ const GroupDetail: React.FC = () => {
                       }`}
                     >
                       {tab.count}
+                    </span>
+                  )}
+                  {tab.leaderOnly && (
+                    <span
+                      title={t('groups.leaderOnly')}
+                      className="text-[9px] text-secondary bg-secondary/15 px-1.5 py-0.5 rounded font-bold leading-none"
+                    >
+                      👑
                     </span>
                   )}
                   {tab.hasNotification && announcements.length > 0 && (
@@ -946,6 +956,15 @@ const GroupDetail: React.FC = () => {
           onPostAnnouncement={() => handleTabChange('announcements')}
           onSwitchToTab={(key) => handleTabChange(key)}
           onPlayQuizSet={handlePlayQuizSet}
+        />
+      )}
+
+      {/* ===== ANALYTICS TAB (GD-9: leader-only, embeds Pulse placeholder + KPI + chart) ===== */}
+      {activeTab === 'analytics' && isLeaderOrMod && (
+        <GroupAnalyticsTab
+          groupId={id!}
+          groupCreatedAt={(group as any).createdAt}
+          groupMemberCount={(group as any).memberCount ?? group.members?.length}
         />
       )}
 
