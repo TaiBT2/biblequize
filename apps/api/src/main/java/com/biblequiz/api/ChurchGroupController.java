@@ -53,6 +53,9 @@ public class ChurchGroupController {
     private com.biblequiz.modules.quiz.service.SessionService sessionService;
 
     @Autowired
+    private com.biblequiz.modules.quiz.repository.QuizSessionRepository quizSessionRepository;
+
+    @Autowired
     private GroupMemberRepository groupMemberRepository;
 
     @Autowired
@@ -554,6 +557,65 @@ public class ChurchGroupController {
                     .orElseThrow(() -> new IllegalArgumentException("Ban khong phai thanh vien cua nhom nay"));
             return ResponseEntity.ok(Map.of("success", true,
                     "mastery", masteryService.getMastery(setId, user.getId())));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * GET /api/groups/{groupId}/quiz-sets/{setId}/my-attempts
+     * Solo replay history (last 10 completed) + mastery summary cho FE my-attempts panel.
+     * Q-A SAFE — đọc từ quiz_sessions (V53 group_quiz_set_id link) + group_quiz_set_mastery.
+     * Allow cho mọi status (kể cả ARCHIVED) vì user có thể đã chơi trước khi bị archive.
+     */
+    @GetMapping("/{groupId}/quiz-sets/{setId}/my-attempts")
+    public ResponseEntity<?> getMyAttempts(@PathVariable("groupId") String groupId,
+                                            @PathVariable("setId") String setId,
+                                            Principal principal) {
+        try {
+            User user = getUser(principal);
+            groupMemberRepository.findByGroupIdAndUserId(groupId, user.getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Ban khong phai thanh vien cua nhom nay"));
+
+            GroupQuizSet gqs = groupQuizSetRepository.findById(setId)
+                    .orElseThrow(() -> new RuntimeException("Quiz set khong ton tai"));
+            if (!gqs.getGroup().getId().equals(groupId)) {
+                return ResponseEntity.status(403).body(Map.of("success", false,
+                        "message", "Quiz set khong thuoc nhom nay"));
+            }
+
+            var page = org.springframework.data.domain.PageRequest.of(0, 10);
+            var sessions = quizSessionRepository.findCompletedByGroupQuizSetIdAndOwnerId(
+                    setId, user.getId(), page);
+
+            List<Map<String, Object>> attempts = sessions.stream().map(qs -> {
+                Map<String, Object> m = new LinkedHashMap<>();
+                int total = qs.getTotalQuestions() == null ? 0 : qs.getTotalQuestions();
+                int correct = qs.getCorrectAnswers() == null ? 0 : qs.getCorrectAnswers();
+                double accuracy = total > 0 ? Math.round((correct * 10000.0 / total)) / 100.0 : 0.0;
+                m.put("sessionId", qs.getId());
+                m.put("score", qs.getScore() == null ? 0 : qs.getScore());
+                m.put("correctAnswers", correct);
+                m.put("totalQuestions", total);
+                m.put("accuracy", accuracy);
+                m.put("completedAt", qs.getEndedAt());
+                return m;
+            }).collect(Collectors.toList());
+
+            Map<String, Object> mastery = masteryService.getMastery(setId, user.getId());
+            Map<String, Object> summary = new LinkedHashMap<>();
+            summary.put("totalAttempts", mastery.get("totalAttempts"));
+            summary.put("bestScore", mastery.get("bestScore"));
+            summary.put("bestAccuracy", mastery.get("bestAccuracy"));
+            summary.put("learnedQuestionsCount", mastery.get("questionsLearned"));
+
+            Map<String, Object> body = new LinkedHashMap<>();
+            body.put("success", true);
+            body.put("attempts", attempts);
+            body.put("masterySummary", summary);
+            return ResponseEntity.ok(body);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
         } catch (Exception e) {

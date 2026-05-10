@@ -50,6 +50,17 @@ public interface QuizSessionRepository extends JpaRepository<QuizSession, String
     long countByCreatedAtAfter(LocalDateTime since);
 
     /**
+     * Solo replay history for a (user, group quiz set) — completed sessions only,
+     * newest first. Pageable used as a LIMIT.
+     */
+    @Query("SELECT qs FROM QuizSession qs WHERE qs.groupQuizSetId = :setId AND qs.owner.id = :userId " +
+           "AND qs.status = com.biblequiz.modules.quiz.entity.QuizSession.Status.completed " +
+           "ORDER BY qs.endedAt DESC")
+    List<QuizSession> findCompletedByGroupQuizSetIdAndOwnerId(@Param("setId") String setId,
+                                                              @Param("userId") String userId,
+                                                              Pageable pageable);
+
+    /**
      * Delete practice/single sessions in terminal status whose endedAt is older than cutoff.
      * Children (answers, lifeline_usage, quiz_session_questions) cascade via FK.
      * Ranked sessions intentionally excluded — they are part of leaderboard audit trail.

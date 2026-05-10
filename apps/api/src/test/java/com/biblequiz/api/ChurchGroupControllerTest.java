@@ -75,6 +75,9 @@ class ChurchGroupControllerTest extends BaseControllerTest {
     @MockBean
     private com.biblequiz.modules.quiz.service.SessionService sessionService;
 
+    @MockBean
+    private com.biblequiz.modules.quiz.repository.QuizSessionRepository quizSessionRepository;
+
     private User testUser;
 
     @BeforeEach
@@ -457,5 +460,118 @@ class ChurchGroupControllerTest extends BaseControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"reason\":\"SPAM\"}"))
                 .andExpect(status().isUnauthorized());
+    }
+
+    // ── GET /api/groups/{groupId}/quiz-sets/{setId}/my-attempts ──────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void getMyAttempts_member_zeroAttempts_returnsEmptyListWithEmptySummary() throws Exception {
+        GroupMember member = new GroupMember();
+        member.setRole(GroupMember.GroupRole.MEMBER);
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.of(member));
+
+        ChurchGroup group = new ChurchGroup();
+        group.setId("group-1");
+        GroupQuizSet qs = new GroupQuizSet();
+        qs.setId("qs-1");
+        qs.setGroup(group);
+        when(groupQuizSetRepository.findById("qs-1")).thenReturn(Optional.of(qs));
+
+        when(quizSessionRepository.findCompletedByGroupQuizSetIdAndOwnerId(
+                eq("qs-1"), eq("user-1"), any())).thenReturn(List.of());
+
+        Map<String, Object> emptyMastery = new LinkedHashMap<>();
+        emptyMastery.put("totalAttempts", 0);
+        emptyMastery.put("bestScore", 0);
+        emptyMastery.put("bestAccuracy", null);
+        emptyMastery.put("questionsLearned", 0);
+        when(masteryService.getMastery("qs-1", "user-1")).thenReturn(emptyMastery);
+
+        mockMvc.perform(get("/api/groups/group-1/quiz-sets/qs-1/my-attempts"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.attempts").isArray())
+                .andExpect(jsonPath("$.attempts.length()").value(0))
+                .andExpect(jsonPath("$.masterySummary.totalAttempts").value(0))
+                .andExpect(jsonPath("$.masterySummary.bestScore").value(0));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void getMyAttempts_member_withAttempts_returnsListAndSummary() throws Exception {
+        GroupMember member = new GroupMember();
+        member.setRole(GroupMember.GroupRole.MEMBER);
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.of(member));
+
+        ChurchGroup group = new ChurchGroup();
+        group.setId("group-1");
+        GroupQuizSet qs = new GroupQuizSet();
+        qs.setId("qs-1");
+        qs.setGroup(group);
+        when(groupQuizSetRepository.findById("qs-1")).thenReturn(Optional.of(qs));
+
+        com.biblequiz.modules.quiz.entity.QuizSession s1 =
+                new com.biblequiz.modules.quiz.entity.QuizSession();
+        s1.setId("sess-1");
+        s1.setScore(80);
+        s1.setCorrectAnswers(8);
+        s1.setTotalQuestions(10);
+        s1.setEndedAt(java.time.LocalDateTime.now());
+        when(quizSessionRepository.findCompletedByGroupQuizSetIdAndOwnerId(
+                eq("qs-1"), eq("user-1"), any())).thenReturn(List.of(s1));
+
+        Map<String, Object> mastery = new LinkedHashMap<>();
+        mastery.put("totalAttempts", 3);
+        mastery.put("bestScore", 90);
+        mastery.put("bestAccuracy", new java.math.BigDecimal("90.00"));
+        mastery.put("questionsLearned", 7);
+        when(masteryService.getMastery("qs-1", "user-1")).thenReturn(mastery);
+
+        mockMvc.perform(get("/api/groups/group-1/quiz-sets/qs-1/my-attempts"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.attempts.length()").value(1))
+                .andExpect(jsonPath("$.attempts[0].sessionId").value("sess-1"))
+                .andExpect(jsonPath("$.attempts[0].score").value(80))
+                .andExpect(jsonPath("$.attempts[0].correctAnswers").value(8))
+                .andExpect(jsonPath("$.attempts[0].totalQuestions").value(10))
+                .andExpect(jsonPath("$.attempts[0].accuracy").value(80.0))
+                .andExpect(jsonPath("$.masterySummary.totalAttempts").value(3))
+                .andExpect(jsonPath("$.masterySummary.bestScore").value(90))
+                .andExpect(jsonPath("$.masterySummary.learnedQuestionsCount").value(7));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void getMyAttempts_nonMember_returns403() throws Exception {
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.empty());
+
+        mockMvc.perform(get("/api/groups/group-1/quiz-sets/qs-1/my-attempts"))
+                .andExpect(status().isForbidden())
+                .andExpect(jsonPath("$.success").value(false));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void getMyAttempts_quizSetFromDifferentGroup_returns403() throws Exception {
+        GroupMember member = new GroupMember();
+        member.setRole(GroupMember.GroupRole.MEMBER);
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.of(member));
+
+        ChurchGroup other = new ChurchGroup();
+        other.setId("group-OTHER");
+        GroupQuizSet qs = new GroupQuizSet();
+        qs.setId("qs-1");
+        qs.setGroup(other);
+        when(groupQuizSetRepository.findById("qs-1")).thenReturn(Optional.of(qs));
+
+        mockMvc.perform(get("/api/groups/group-1/quiz-sets/qs-1/my-attempts"))
+                .andExpect(status().isForbidden())
+                .andExpect(jsonPath("$.success").value(false));
     }
 }
