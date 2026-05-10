@@ -17,21 +17,28 @@ interface Props {
   playingId?: string | null;
 }
 
-// Deterministic gradient palette so each quiz-set card stays visually
-// stable across renders. Mirrors mockup `pickGradient` (gold/dark, green,
-// dark green, orange, sky).
+// GD-FIX-R2-2: deterministic gradient palette tuned for hue diversity so
+// 3 adjacent cards never share the same warm-tone family. Order matters —
+// hash → index, but the entries are spread across hue wheel (gold,
+// emerald, sky, purple, orange, teal) so any 3 indices look distinct.
 const GRADIENTS = [
-  'linear-gradient(135deg, #1a1d2e 0%, #4a3d2e 100%)',
-  'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)',
-  'linear-gradient(135deg, #1a3d2e 0%, #2a4d3e 100%)',
-  'linear-gradient(135deg, #ff7a59 0%, #cf5a39 100%)',
-  'linear-gradient(135deg, #4ea8de 0%, #2d88be 100%)',
+  'linear-gradient(135deg, #e8a832 0%, #d4941f 100%)', // 0 — gold
+  'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)', // 1 — emerald
+  'linear-gradient(135deg, #4ea8de 0%, #2d88be 100%)', // 2 — sky
+  'linear-gradient(135deg, #a855f7 0%, #7c3aed 100%)', // 3 — purple
+  'linear-gradient(135deg, #ff7a59 0%, #cf5a39 100%)', // 4 — orange
+  'linear-gradient(135deg, #14b8a6 0%, #0d9488 100%)', // 5 — teal
 ];
 
+// 32-bit FNV-1a hash for better distribution than the prior shift-add
+// fold (which collapsed similar UUID-style ids onto adjacent indices).
 function hashId(id: string): number {
-  let h = 0;
-  for (let i = 0; i < id.length; i++) h = ((h << 5) - h + id.charCodeAt(i)) | 0;
-  return Math.abs(h);
+  let h = 2166136261;
+  for (let i = 0; i < id.length; i++) {
+    h ^= id.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
 }
 
 function pickGradient(id: string): string {
