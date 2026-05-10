@@ -45,6 +45,9 @@ interface QuizSet {
   questionIds?: string[];
   questionCount: number;
   createdAt: string;
+  coverImageUrl?: string | null;
+  playCount?: number;
+  averageRating?: number | null;
 }
 
 interface AnalyticsData {
@@ -966,6 +969,9 @@ const GroupDetail: React.FC = () => {
             name: qs.name,
             questionCount: qs.questionCount,
             createdAt: qs.createdAt,
+            coverImageUrl: qs.coverImageUrl ?? null,
+            playCount: qs.playCount ?? 0,
+            averageRating: qs.averageRating ?? null,
           }))}
           hasActiveScheduledQuiz={activeScheduled.length > 0}
           scheduledCount={activeScheduled.length}
