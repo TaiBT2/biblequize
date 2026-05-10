@@ -413,6 +413,27 @@ public class ChurchGroupController {
         }
     }
 
+    /** Sprint 5: per-mode question count validation. Returns error message or null if OK. */
+    private String validateModeForQuestions(Room.RoomMode mode, int total) {
+        switch (mode) {
+            case BATTLE_ROYALE:
+                if (total < 4) return "Battle Royale can toi thieu 4 cau hoi (hien co " + total + ")";
+                break;
+            case SUDDEN_DEATH:
+                if (total < 10) return "Sudden Death can toi thieu 10 cau hoi (hien co " + total + ")";
+                break;
+            case TEAM_VS_TEAM:
+                if (total < 6 || total % 2 != 0)
+                    return "Team vs Team can so cau chan >= 6 (hien co " + total + ")";
+                break;
+            case SPEED_RACE:
+            case GROUP_LIVE_SEQUENTIAL:
+            default:
+                break;
+        }
+        return null;
+    }
+
     private boolean isLeaderOrMod(String groupId, String userId) {
         return groupMemberRepository.findByGroupIdAndUserId(groupId, userId)
                 .map(m -> m.getRole() == com.biblequiz.modules.group.entity.GroupMember.GroupRole.LEADER
@@ -772,13 +793,43 @@ public class ChurchGroupController {
                         .body(Map.of("success", false, "message", "Quiz set chua co cau hoi nao"));
             }
 
+            // Sprint 5: chỉ cho phép tạo room từ quiz set PUBLISHED.
+            if (gqs.getPublishStatus() == GroupQuizSet.PublishStatus.DRAFT
+                    || gqs.getPublishStatus() == GroupQuizSet.PublishStatus.ARCHIVED
+                    || gqs.getPublishStatus() == GroupQuizSet.PublishStatus.SOFT_DELETED) {
+                return ResponseEntity.badRequest()
+                        .body(Map.of("success", false, "message",
+                                "Bo cau hoi chua duoc xuat ban (status=" + gqs.getPublishStatus() + ")"));
+            }
+
+            // Sprint 5: resolve mode — req.mode > quizSet.suggestedMode > GROUP_LIVE_SEQUENTIAL
+            Room.RoomMode mode = Room.RoomMode.GROUP_LIVE_SEQUENTIAL;
+            String reqMode = body.get("mode") instanceof String s ? s : null;
+            if (reqMode != null && !reqMode.isBlank()) {
+                try { mode = Room.RoomMode.valueOf(reqMode); }
+                catch (IllegalArgumentException e) {
+                    return ResponseEntity.badRequest().body(Map.of("success", false,
+                            "message", "Mode khong hop le: " + reqMode));
+                }
+            } else if (gqs.getSuggestedMode() != null && !gqs.getSuggestedMode().isBlank()) {
+                try { mode = Room.RoomMode.valueOf(gqs.getSuggestedMode()); }
+                catch (IllegalArgumentException ignore) {}
+            }
+
+            // Sprint 5: per-mode constraint validation
+            int total = questionIds.size();
+            String modeError = validateModeForQuestions(mode, total);
+            if (modeError != null) {
+                return ResponseEntity.badRequest().body(Map.of("success", false, "message", modeError));
+            }
+
             // Per spec v1.1 §8.7: a group can have multiple live rooms in
             // parallel (e.g., 2 cell groups practising at once). Each click
             // by a leader/mod creates a new room — no dedup.
             Room room = roomService.createRoom(
                     gqs.getName(), user,
-                    20, questionIds.size(), timePerQuestion,
-                    Room.RoomMode.GROUP_LIVE_SEQUENTIAL, false,
+                    20, total, timePerQuestion,
+                    mode, false,
                     Room.RoomDifficulty.MIXED, "ALL",
                     Room.QuestionSource.CUSTOM, null);
             room.setCustomQuestionIds(questionIds);
