@@ -252,6 +252,47 @@ class RoomServiceTest {
         verify(roomPlayerRepository, never()).findActiveRoomIdsByUserId(anyString());
     }
 
+    // ── RoomDetailsDTO quiz set context exposure ────────────────────────────
+
+    @Test
+    void getRoomDetails_withQuizSet_populatesQuizSetContextFields() throws Exception {
+        testRoom.setGroupQuizSetId("qs-1");
+        var group = new com.biblequiz.modules.group.entity.ChurchGroup();
+        group.setId("group-1");
+        var qs = new com.biblequiz.modules.group.entity.GroupQuizSet();
+        qs.setId("qs-1");
+        qs.setName("Sáng Thế Ký · Chương 1");
+        qs.setGroup(group);
+        qs.setQuestionIds(List.of("q1", "q2", "q3", "q4"));
+
+        when(roomRepository.findById("room-1")).thenReturn(Optional.of(testRoom));
+        when(roomPlayerRepository.findByRoomId("room-1")).thenReturn(List.of());
+        when(groupQuizSetRepository.findById("qs-1")).thenReturn(Optional.of(qs));
+
+        var details = roomService.getRoomDetails("room-1");
+
+        assertEquals("qs-1", details.groupQuizSetId);
+        assertEquals("Sáng Thế Ký · Chương 1", details.groupQuizSetName);
+        assertEquals(Integer.valueOf(4), details.quizSetTotalQuestions);
+        assertEquals("group-1", details.groupId);
+    }
+
+    @Test
+    void getRoomDetails_withoutQuizSet_quizSetFieldsNull() throws Exception {
+        testRoom.setGroupQuizSetId(null);
+
+        when(roomRepository.findById("room-1")).thenReturn(Optional.of(testRoom));
+        when(roomPlayerRepository.findByRoomId("room-1")).thenReturn(List.of());
+
+        var details = roomService.getRoomDetails("room-1");
+
+        assertNull(details.groupQuizSetId);
+        assertNull(details.groupQuizSetName);
+        assertNull(details.quizSetTotalQuestions);
+        assertNull(details.groupId);
+        verify(groupQuizSetRepository, never()).findById(anyString());
+    }
+
     // ── joinRoom: SECURITY (Audit Gap 1 — group quiz set membership gate) ────
 
     @Test

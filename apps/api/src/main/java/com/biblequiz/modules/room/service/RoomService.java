@@ -553,17 +553,27 @@ public class RoomService {
         Room room = roomRepository.findById(roomId).orElseThrow(() -> new Exception("Phòng không tồn tại"));
         List<RoomPlayer> players = roomPlayerRepository.findByRoomId(roomId);
 
-        // Derive owning group when room was created from a group quiz set, so
-        // FE can reliably "back to group" even when react-router state was
-        // dropped (page refresh, deep link, fresh tab joining via room code).
+        // Derive owning group + quiz set context when room was created from a
+        // group quiz set, so FE can reliably "back to group" + display "Đang
+        // chơi: [Tên]" even after page refresh / deep link / fresh tab joining
+        // via room code. Single fetch (no N+1) — getRoomDetails is per-room.
         String groupId = null;
+        String quizSetName = null;
+        Integer quizSetTotalQuestions = null;
         if (room.getGroupQuizSetId() != null) {
-            groupId = groupQuizSetRepository.findById(room.getGroupQuizSetId())
-                    .map(s -> s.getGroup() != null ? s.getGroup().getId() : null)
-                    .orElse(null);
+            var qsOpt = groupQuizSetRepository.findById(room.getGroupQuizSetId());
+            if (qsOpt.isPresent()) {
+                var qs = qsOpt.get();
+                groupId = qs.getGroup() != null ? qs.getGroup().getId() : null;
+                quizSetName = qs.getName();
+                Object qids = qs.getQuestionIds();
+                if (qids instanceof java.util.List<?> list) {
+                    quizSetTotalQuestions = list.size();
+                }
+            }
         }
 
-        return new RoomDetailsDTO(room, players, groupId);
+        return new RoomDetailsDTO(room, players, groupId, quizSetName, quizSetTotalQuestions);
     }
 
     /**
@@ -692,15 +702,24 @@ public class RoomService {
         public final String createdAt;
         /** Owning group when room was spawned from a group quiz set; null otherwise. */
         public final String groupId;
+        /** Group quiz set this room is playing (for FE banner "Đang chơi: [Tên]"). */
+        public final String groupQuizSetId;
+        public final String groupQuizSetName;
+        public final Integer quizSetTotalQuestions;
         /** Sprint 4: true = host plays (legacy); false = Quản trò mode (host orchestrates only). */
         public final boolean hostPlaysGame;
         public final List<PlayerInfoDTO> players;
 
         public RoomDetailsDTO(Room room, List<RoomPlayer> roomPlayers) {
-            this(room, roomPlayers, null);
+            this(room, roomPlayers, null, null, null);
         }
 
         public RoomDetailsDTO(Room room, List<RoomPlayer> roomPlayers, String groupId) {
+            this(room, roomPlayers, groupId, null, null);
+        }
+
+        public RoomDetailsDTO(Room room, List<RoomPlayer> roomPlayers, String groupId,
+                              String groupQuizSetName, Integer quizSetTotalQuestions) {
             this.id = room.getId();
             this.roomCode = room.getRoomCode();
             this.roomName = room.getRoomName();
@@ -720,6 +739,9 @@ public class RoomService {
             this.difficulty = room.getDifficulty() != null ? room.getDifficulty().name() : "MIXED";
             this.createdAt = room.getCreatedAt() != null ? room.getCreatedAt().toString() : null;
             this.groupId = groupId;
+            this.groupQuizSetId = room.getGroupQuizSetId();
+            this.groupQuizSetName = groupQuizSetName;
+            this.quizSetTotalQuestions = quizSetTotalQuestions;
             this.hostPlaysGame = room.isHostPlaysGame();
 
             this.players = roomPlayers.stream()
