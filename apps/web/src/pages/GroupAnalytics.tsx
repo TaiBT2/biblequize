@@ -33,10 +33,23 @@ interface Analytics {
 
 type Period = '7d' | '30d' | '90d';
 
+interface GroupMeta {
+  createdAt?: string;
+  memberCount?: number;
+}
+
 function getInitial(name?: string): string {
   if (!name) return '?';
   const trimmed = name.trim();
   return trimmed.length > 0 ? trimmed[0].toUpperCase() : '?';
+}
+
+// GD-2 — group < 7 days old hides charts to avoid misleading thin data.
+function getGroupAge(createdAt?: string): { days: number; isNew: boolean } {
+  if (!createdAt) return { days: 0, isNew: true };
+  const ms = Date.now() - new Date(createdAt).getTime();
+  const days = Math.max(0, Math.floor(ms / (1000 * 60 * 60 * 24)));
+  return { days, isNew: days < 7 };
 }
 
 /* ─── Single bar in the activity chart ─── */
@@ -106,6 +119,7 @@ const GroupAnalytics: React.FC = () => {
   const { t } = useTranslation();
 
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
+  const [groupMeta, setGroupMeta] = useState<GroupMeta>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [period, setPeriod] = useState<Period>('7d');
@@ -114,11 +128,21 @@ const GroupAnalytics: React.FC = () => {
     setLoading(true);
     setError('');
     try {
-      const res = await api.get(`/api/groups/${id}/analytics`);
-      if (res.data.success) {
-        setAnalytics(res.data.analytics ?? res.data);
+      // Parallel: analytics (gated leader-only) + group meta (createdAt/memberCount for empty-state gating GD-2).
+      const [aRes, gRes] = await Promise.all([
+        api.get(`/api/groups/${id}/analytics`),
+        api.get(`/api/groups/${id}`).catch(() => null),
+      ]);
+      if (aRes.data.success) {
+        setAnalytics(aRes.data.analytics ?? aRes.data);
       } else {
-        setError(res.data.message || t('groupAnalytics.errorLoadData'));
+        setError(aRes.data.message || t('groupAnalytics.errorLoadData'));
+      }
+      if (gRes && gRes.data.success && gRes.data.group) {
+        setGroupMeta({
+          createdAt: gRes.data.group.createdAt,
+          memberCount: gRes.data.group.memberCount ?? gRes.data.group.members?.length,
+        });
       }
     } catch (err: any) {
       if (err.response?.status === 403) {
@@ -193,6 +217,16 @@ const GroupAnalytics: React.FC = () => {
 
   const dayLabels = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', t('groups.today')];
 
+  // GD-2 empty-state gates.
+  const groupAge = getGroupAge(groupMeta.createdAt);
+  const memberCountSafe = groupMeta.memberCount ?? totalMembers;
+  const chartHidden = groupAge.isNew || memberCountSafe < 3;
+  const inactiveAlertHidden =
+    groupAge.isNew ||
+    memberCountSafe < 5 ||
+    inactiveCount === 0 ||
+    inactiveCount / Math.max(1, memberCountSafe) < 0.3;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 space-y-3">
       {/* ── Back link ── */}
@@ -262,32 +296,49 @@ const GroupAnalytics: React.FC = () => {
           />
         </div>
 
-        {/* Weekly activity chart */}
-        <div className="bg-[rgba(50,52,64,0.5)] border-[0.5px] border-white/[0.06] rounded-lg p-3 mb-3">
-          <div className="flex justify-between items-center mb-2.5">
-            <div className="text-on-surface/85 text-[11px] font-medium">📈 {t('groups.weeklyActivity')}</div>
-            <div className="text-on-surface/40 text-[10px]">{t('groups.weeklyActivitySubtitle')}</div>
+        {/* Weekly activity chart — hidden for new/small groups (GD-2) */}
+        {chartHidden ? (
+          <div
+            data-testid="analytics-chart-empty"
+            className="bg-[rgba(50,52,64,0.5)] border-[0.5px] border-white/[0.06] rounded-lg p-6 mb-3 text-center"
+          >
+            <div className="text-3xl mb-2 opacity-50">📊</div>
+            <div className="text-on-surface text-[12px] font-medium mb-1">
+              {t('groups.analyticsEmpty.chartTitle')}
+            </div>
+            <div className="text-on-surface/55 text-[11px]">
+              {groupAge.isNew
+                ? t('groups.analyticsEmpty.tooNew', { days: Math.max(0, 7 - groupAge.days) })
+                : t('groups.analyticsEmpty.tooSmall', { min: 3 })}
+            </div>
           </div>
-          <div className="grid grid-cols-7 gap-1.5 items-end h-20">
-            {weeklyBars.length === 7 ? (
-              weeklyBars.map((bar, idx) => (
-                <ChartBar
-                  key={bar.date}
-                  height={bar.height}
-                  label={idx === 6 ? dayLabels[6] : dayLabels[idx]}
-                  isToday={idx === 6}
-                />
-              ))
-            ) : (
-              dayLabels.map((label, idx) => (
-                <ChartBar key={label} height={4} label={label} isToday={idx === 6} />
-              ))
-            )}
+        ) : (
+          <div className="bg-[rgba(50,52,64,0.5)] border-[0.5px] border-white/[0.06] rounded-lg p-3 mb-3">
+            <div className="flex justify-between items-center mb-2.5">
+              <div className="text-on-surface/85 text-[11px] font-medium">📈 {t('groups.weeklyActivity')}</div>
+              <div className="text-on-surface/40 text-[10px]">{t('groups.weeklyActivitySubtitle')}</div>
+            </div>
+            <div className="grid grid-cols-7 gap-1.5 items-end h-20">
+              {weeklyBars.length === 7 ? (
+                weeklyBars.map((bar, idx) => (
+                  <ChartBar
+                    key={bar.date}
+                    height={bar.height}
+                    label={idx === 6 ? dayLabels[6] : dayLabels[idx]}
+                    isToday={idx === 6}
+                  />
+                ))
+              ) : (
+                dayLabels.map((label, idx) => (
+                  <ChartBar key={label} height={4} label={label} isToday={idx === 6} />
+                ))
+              )}
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Inactive members alert */}
-        {inactiveCount > 0 && (
+        {/* Inactive members alert — hidden for new groups, small samples, or low ratio (GD-2) */}
+        {!inactiveAlertHidden && (
           <div className="bg-[rgba(255,140,66,0.06)] border-[0.5px] border-[rgba(255,140,66,0.3)] rounded-lg px-3 py-2.5 flex justify-between items-start gap-3">
             <div className="flex-1">
               <div className="flex items-center gap-1.5 mb-1">

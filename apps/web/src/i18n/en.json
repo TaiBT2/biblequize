@@ -1593,6 +1593,11 @@
       "meta": "Mode: {{mode}} · {{players}}/{{max}} players",
       "more": "+{{count}} more rooms"
     },
+    "analyticsEmpty": {
+      "chartTitle": "Not enough data",
+      "tooNew": "New group · {{days}} more days needed for stats",
+      "tooSmall": "Need at least {{min}} members to show the chart"
+    },
     "leaderboardTitle": "Leaderboard",
     "weekly": "This week",
     "allTime": "All time",

@@ -1593,6 +1593,11 @@
       "meta": "Mode: {{mode}} · {{players}}/{{max}} người",
       "more": "Còn +{{count}} phòng khác"
     },
+    "analyticsEmpty": {
+      "chartTitle": "Chưa đủ dữ liệu",
+      "tooNew": "Nhóm mới · còn {{days}} ngày để có thống kê",
+      "tooSmall": "Cần ít nhất {{min}} thành viên để hiển thị biểu đồ"
+    },
     "leaderboardTitle": "Bảng Xếp Hạng",
     "weekly": "Tuần này",
     "allTime": "Tất cả",
