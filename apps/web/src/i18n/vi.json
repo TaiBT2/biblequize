@@ -1612,6 +1612,13 @@
       "placeholder": "Cell Group Pulse — chỉ số tổng hợp về nhịp sinh hoạt nhóm dựa trên active rate, live rooms, và content mới. Sẽ ra mắt Sprint tới với cập nhật hàng ngày."
     },
     "viewFullPage": "Xem trang đầy đủ",
+    "onboarding": {
+      "title": "Bắt đầu với nhóm mới",
+      "subtitle": "Đã hoàn thành {{completed}}/{{total}} bước · Hoàn tất để khởi động sinh hoạt nhóm",
+      "task1": "Mời thêm thành viên (≥5 người để bắt đầu)",
+      "task2": "Tạo bộ câu hỏi đầu tiên (bài giảng / sinh hoạt)",
+      "task3": "Đăng thông báo chào mừng cho cả nhóm"
+    },
     "leaderboardTitle": "Bảng Xếp Hạng",
     "weekly": "Tuần này",
     "allTime": "Tất cả",

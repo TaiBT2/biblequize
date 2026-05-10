@@ -1612,6 +1612,13 @@
       "placeholder": "Cell Group Pulse — composite signal of group activity based on active rate, live rooms, and new content. Ships next sprint with daily updates."
     },
     "viewFullPage": "View full page",
+    "onboarding": {
+      "title": "Get your new group going",
+      "subtitle": "{{completed}}/{{total}} done · finish these to kick off group activity",
+      "task1": "Invite more members (need ≥5 to start)",
+      "task2": "Create your first quiz set (sermon / session)",
+      "task3": "Post a welcome announcement for the group"
+    },
     "leaderboardTitle": "Leaderboard",
     "weekly": "This week",
     "allTime": "All time",

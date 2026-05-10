@@ -3,11 +3,14 @@ import QuickActionsPanel from './QuickActionsPanel';
 import MembersPreviewCard, { MemberPreview } from './MembersPreviewCard';
 import QuizSetsPreviewCard, { QuizSetPreview } from './QuizSetsPreviewCard';
 import ActivityFeedPlaceholder from './ActivityFeedPlaceholder';
+import NewGroupOnboarding from './NewGroupOnboarding';
 
 interface Props {
   groupId: string;
+  groupCreatedAt?: string;
   isLeader: boolean;
   memberCount: number;
+  announcementsCount: number;
   members: MemberPreview[];
   quizSets: QuizSetPreview[];
   hasActiveScheduledQuiz: boolean;
@@ -15,6 +18,7 @@ interface Props {
   playingSetId?: string | null;
   onCreateQuizSet: () => void;
   onPostAnnouncement: () => void;
+  onInvite: () => void;
   onSwitchToTab: (key: 'members' | 'quizsets' | 'announcements') => void;
   onPlayQuizSet: (id: string) => void;
 }
@@ -22,6 +26,18 @@ interface Props {
 export default function GroupActivityTab(props: Props) {
   return (
     <div className="space-y-5" data-testid="group-activity-tab">
+      <NewGroupOnboarding
+        groupId={props.groupId}
+        groupCreatedAt={props.groupCreatedAt}
+        memberCount={props.memberCount}
+        quizSetsCount={props.quizSets.length}
+        announcementsCount={props.announcementsCount}
+        isLeader={props.isLeader}
+        onInvite={props.onInvite}
+        onCreateQuizSet={props.onCreateQuizSet}
+        onPostAnnouncement={props.onPostAnnouncement}
+      />
+
       <LiveNowBanner groupId={props.groupId} />
 
       <QuickActionsPanel

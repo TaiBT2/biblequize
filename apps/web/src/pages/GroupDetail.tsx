@@ -935,8 +935,10 @@ const GroupDetail: React.FC = () => {
       {activeTab === 'activity' && (
         <GroupActivityTab
           groupId={id!}
+          groupCreatedAt={(group as any).createdAt}
           isLeader={isLeader}
           memberCount={memberTotalForOverview}
+          announcementsCount={announcements.length}
           members={(group.members ?? []).map((m) => ({
             userId: m.userId,
             name: m.name,
@@ -954,6 +956,7 @@ const GroupDetail: React.FC = () => {
           playingSetId={playingSetId}
           onCreateQuizSet={openCreateModal}
           onPostAnnouncement={() => handleTabChange('announcements')}
+          onInvite={handleCopyCode}
           onSwitchToTab={(key) => handleTabChange(key)}
           onPlayQuizSet={handlePlayQuizSet}
         />
