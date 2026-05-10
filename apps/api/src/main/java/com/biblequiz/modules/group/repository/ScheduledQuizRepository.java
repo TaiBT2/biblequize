@@ -22,4 +22,7 @@ public interface ScheduledQuizRepository extends JpaRepository<ScheduledQuiz, St
             ScheduledQuiz.Status status, LocalDateTime from, LocalDateTime to);
 
     long countByGroupIdAndStatus(String groupId, ScheduledQuiz.Status status);
+
+    /** Sprint 5: check if quiz set has any ACTIVE scheduled quiz blocking archive/delete. */
+    boolean existsByQuizSetIdAndStatus(String quizSetId, ScheduledQuiz.Status status);
 }

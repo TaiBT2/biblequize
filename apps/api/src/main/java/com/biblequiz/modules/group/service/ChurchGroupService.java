@@ -12,6 +12,8 @@ import com.biblequiz.modules.group.repository.GroupKickLogRepository;
 import com.biblequiz.modules.group.repository.GroupMemberRepository;
 import com.biblequiz.modules.group.repository.GroupQuizSetRepository;
 import com.biblequiz.modules.group.repository.GroupReportRepository;
+import com.biblequiz.modules.group.entity.ScheduledQuiz;
+import com.biblequiz.modules.group.repository.ScheduledQuizRepository;
 import com.biblequiz.modules.quiz.entity.UserDailyProgress;
 import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.user.entity.User;
@@ -56,6 +58,9 @@ public class ChurchGroupService {
 
     @Autowired
     private GroupReportRepository groupReportRepository;
+
+    @Autowired(required = false)
+    private ScheduledQuizRepository scheduledQuizRepository;
 
     private static final String CODE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     private static final int CODE_LENGTH = 6;
@@ -752,6 +757,122 @@ public class ChurchGroupService {
         map.put("archivedAt", qs.getArchivedAt());
         map.put("folderId", qs.getFolderId());
         return map;
+    }
+
+    // ── Sprint 5 Q-5: Quiz set workflow (publish/archive/unarchive/clone/soft-delete) ──
+
+    @Transactional
+    public Map<String, Object> publishQuizSet(String groupId, String setId, String userId) {
+        GroupQuizSet set = ownerOrLeaderOnly(groupId, setId, userId);
+        if (set.getPublishStatus() != GroupQuizSet.PublishStatus.DRAFT) {
+            throw new RuntimeException("Chi quiz set DRAFT moi co the xuat ban (hien: " + set.getPublishStatus() + ")");
+        }
+        if (set.getTotalQuestions() == null || set.getTotalQuestions() < 5) {
+            throw new RuntimeException("Can toi thieu 5 cau hoi de xuat ban");
+        }
+        set.setPublishStatus(GroupQuizSet.PublishStatus.PUBLISHED);
+        set.setPublishedAt(LocalDateTime.now());
+        // Auto-derive: defer Sprint 6 (Question.Difficulty enum mismatch) — fallback MEDIUM.
+        if (set.getDifficulty() == null) set.setDifficulty(GroupQuizSet.Difficulty.MEDIUM);
+        if (set.getEstimatedDurationMin() == null) {
+            set.setEstimatedDurationMin(Math.max(1, set.getTotalQuestions() * 30 / 60));
+        }
+        groupQuizSetRepository.save(set);
+        return quizSetToMap(set);
+    }
+
+    @Transactional
+    public Map<String, Object> archiveQuizSet(String groupId, String setId, String userId) {
+        GroupQuizSet set = ownerOrLeaderOnly(groupId, setId, userId);
+        if (set.getPublishStatus() != GroupQuizSet.PublishStatus.PUBLISHED) {
+            throw new RuntimeException("Chi quiz set PUBLISHED moi co the luu tru");
+        }
+        if (scheduledQuizRepository != null
+                && scheduledQuizRepository.existsByQuizSetIdAndStatus(setId, ScheduledQuiz.Status.ACTIVE)) {
+            throw new RuntimeException("Khong the luu tru — co bai quiz len lich dang dung bo nay");
+        }
+        set.setPublishStatus(GroupQuizSet.PublishStatus.ARCHIVED);
+        set.setArchivedAt(LocalDateTime.now());
+        groupQuizSetRepository.save(set);
+        return quizSetToMap(set);
+    }
+
+    @Transactional
+    public Map<String, Object> unarchiveQuizSet(String groupId, String setId, String userId) {
+        GroupQuizSet set = ownerOrLeaderOnly(groupId, setId, userId);
+        if (set.getPublishStatus() != GroupQuizSet.PublishStatus.ARCHIVED) {
+            throw new RuntimeException("Chi quiz set ARCHIVED moi co the khoi phuc");
+        }
+        set.setPublishStatus(GroupQuizSet.PublishStatus.PUBLISHED);
+        set.setArchivedAt(null);
+        // Giữ playCount + averageRating; reset publishedAt = now (treated as re-publish moment).
+        set.setPublishedAt(LocalDateTime.now());
+        groupQuizSetRepository.save(set);
+        return quizSetToMap(set);
+    }
+
+    @Transactional
+    public Map<String, Object> softDeleteQuizSet(String groupId, String setId, String userId) {
+        GroupQuizSet set = ownerOrLeaderOnly(groupId, setId, userId);
+        if (scheduledQuizRepository != null
+                && scheduledQuizRepository.existsByQuizSetIdAndStatus(setId, ScheduledQuiz.Status.ACTIVE)) {
+            throw new RuntimeException("Khong the xoa — co bai quiz len lich dang dung bo nay");
+        }
+        set.setPublishStatus(GroupQuizSet.PublishStatus.SOFT_DELETED);
+        set.setDeletedAt(LocalDateTime.now());
+        groupQuizSetRepository.save(set);
+        return quizSetToMap(set);
+    }
+
+    @Transactional
+    public Map<String, Object> cloneQuizSet(String groupId, String setId, String userId) {
+        GroupQuizSet origin = groupQuizSetRepository.findById(setId)
+                .orElseThrow(() -> new RuntimeException("Quiz set khong ton tai"));
+        if (!origin.getGroup().getId().equals(groupId)) {
+            throw new RuntimeException("Quiz set khong thuoc nhom nay");
+        }
+        GroupMember member = groupMemberRepository.findByGroupIdAndUserId(groupId, userId)
+                .orElseThrow(() -> new RuntimeException("Ban khong phai thanh vien cua nhom"));
+        if (member.getRole() != GroupMember.GroupRole.LEADER && member.getRole() != GroupMember.GroupRole.MOD) {
+            throw new RuntimeException("Khong co quyen clone");
+        }
+        GroupQuizSet copy = new GroupQuizSet();
+        copy.setId(UUID.randomUUID().toString());
+        copy.setGroup(origin.getGroup());
+        copy.setCreatedBy(member.getUser());
+        copy.setName(origin.getName() + " (Bản sao)");
+        copy.setQuestionIds(origin.getQuestionIds());
+        copy.setTotalQuestions(origin.getTotalQuestions());
+        copy.setLanguage(origin.getLanguage());
+        copy.setDescription(origin.getDescription());
+        copy.setCoverImageUrl(origin.getCoverImageUrl());
+        copy.setTags(origin.getTags());
+        copy.setCoverScripture(origin.getCoverScripture());
+        copy.setAuthorNote(origin.getAuthorNote());
+        copy.setSuggestedMode(origin.getSuggestedMode());
+        copy.setFolderId(origin.getFolderId());
+        copy.setPublishStatus(GroupQuizSet.PublishStatus.DRAFT);
+        // KHÔNG copy: playCount, averageRating, totalRatings, lastPlayedAt — bắt đầu lại từ 0.
+        groupQuizSetRepository.save(copy);
+        return quizSetToMap(copy);
+    }
+
+    private GroupQuizSet ownerOrLeaderOnly(String groupId, String setId, String userId) {
+        GroupQuizSet set = groupQuizSetRepository.findById(setId)
+                .orElseThrow(() -> new RuntimeException("Quiz set khong ton tai"));
+        if (!set.getGroup().getId().equals(groupId)) {
+            throw new RuntimeException("Quiz set khong thuoc nhom nay");
+        }
+        GroupMember member = groupMemberRepository.findByGroupIdAndUserId(groupId, userId)
+                .orElseThrow(() -> new RuntimeException("Ban khong phai thanh vien cua nhom"));
+        boolean isOwner = set.getCreatedBy().getId().equals(userId);
+        boolean isLeader = member.getRole() == GroupMember.GroupRole.LEADER;
+        boolean isMod = member.getRole() == GroupMember.GroupRole.MOD;
+        // LEADER có quyền với mọi quiz set; MOD chỉ với quiz set của chính mình.
+        if (!isLeader && !(isMod && isOwner) && !isOwner) {
+            throw new RuntimeException("Khong co quyen thuc hien hanh dong nay");
+        }
+        return set;
     }
 
     // ── PATCH /groups/{id} ─────────────────────────────────────────────────

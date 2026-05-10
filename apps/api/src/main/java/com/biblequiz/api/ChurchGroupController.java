@@ -417,6 +417,73 @@ public class ChurchGroupController {
         }
     }
 
+    // ── Sprint 5 Q-5: Quiz set workflow endpoints ──
+
+    @PatchMapping("/{id}/quiz-sets/{setId}/publish")
+    public ResponseEntity<?> publishQuizSet(@PathVariable("id") String id,
+                                             @PathVariable("setId") String setId,
+                                             Principal principal) {
+        try {
+            User user = getUser(principal);
+            return ResponseEntity.ok(Map.of("success", true,
+                    "quizSet", churchGroupService.publishQuizSet(id, setId, user.getId())));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    @PatchMapping("/{id}/quiz-sets/{setId}/archive")
+    public ResponseEntity<?> archiveQuizSet(@PathVariable("id") String id,
+                                             @PathVariable("setId") String setId,
+                                             Principal principal) {
+        try {
+            User user = getUser(principal);
+            return ResponseEntity.ok(Map.of("success", true,
+                    "quizSet", churchGroupService.archiveQuizSet(id, setId, user.getId())));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    @PatchMapping("/{id}/quiz-sets/{setId}/unarchive")
+    public ResponseEntity<?> unarchiveQuizSet(@PathVariable("id") String id,
+                                               @PathVariable("setId") String setId,
+                                               Principal principal) {
+        try {
+            User user = getUser(principal);
+            return ResponseEntity.ok(Map.of("success", true,
+                    "quizSet", churchGroupService.unarchiveQuizSet(id, setId, user.getId())));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    @PostMapping("/{id}/quiz-sets/{setId}/clone")
+    public ResponseEntity<?> cloneQuizSet(@PathVariable("id") String id,
+                                           @PathVariable("setId") String setId,
+                                           Principal principal) {
+        try {
+            User user = getUser(principal);
+            return ResponseEntity.ok(Map.of("success", true,
+                    "quizSet", churchGroupService.cloneQuizSet(id, setId, user.getId())));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    @DeleteMapping("/{id}/quiz-sets/{setId}")
+    public ResponseEntity<?> deleteQuizSet(@PathVariable("id") String id,
+                                            @PathVariable("setId") String setId,
+                                            Principal principal) {
+        try {
+            User user = getUser(principal);
+            return ResponseEntity.ok(Map.of("success", true,
+                    "quizSet", churchGroupService.softDeleteQuizSet(id, setId, user.getId())));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
     /**
      * GET /api/groups/{id}/quiz-sets/{setId}/my-mastery — Sprint 5 (Q-A SAFE).
      * Personal mastery progress của requester với quiz set này.
