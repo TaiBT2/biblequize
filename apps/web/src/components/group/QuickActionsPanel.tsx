@@ -13,10 +13,13 @@ interface ActionCardProps {
 }
 
 function ActionCard({ icon, label, hint, onClick, highlight, disabled, disabledReason, testId }: ActionCardProps) {
-  const base = 'rounded-xl p-3 border text-left transition-all flex flex-col gap-1 min-h-[88px]';
+  const base = 'rounded-xl p-3 border text-left transition-all flex flex-col gap-1 min-h-[88px] backdrop-blur-md';
+  // GD-FIX-9: primary "Bắt đầu Live" action wears the emerald accent;
+  // neutral cards stay charcoal with subtle borders. Emerald hint text
+  // when highlight reinforces the primary affordance.
   const enabled = highlight
-    ? 'bg-[rgba(232,168,50,0.12)] border-[rgba(232,168,50,0.45)] hover:brightness-110 hover:bg-[rgba(232,168,50,0.18)]'
-    : 'bg-[rgba(50,52,64,0.4)] border-white/10 hover:bg-[rgba(50,52,64,0.6)] hover:border-white/20';
+    ? 'bg-[rgba(74,222,128,0.06)] border-[rgba(74,222,128,0.35)] hover:bg-[rgba(74,222,128,0.1)] hover:border-[rgba(74,222,128,0.55)] hover:-translate-y-0.5 shadow-[0_0_16px_rgba(74,222,128,0.08)]'
+    : 'bg-[rgba(50,52,64,0.55)] border-white/10 hover:bg-[rgba(50,52,64,0.7)] hover:border-white/20';
   const off = 'bg-white/[0.02] border-white/5 cursor-not-allowed opacity-50';
   return (
     <button
@@ -29,7 +32,11 @@ function ActionCard({ icon, label, hint, onClick, highlight, disabled, disabledR
     >
       <span className="text-lg">{icon}</span>
       <span className="text-[12px] font-bold text-on-surface leading-tight">{label}</span>
-      <span className="text-[10px] text-on-surface/55 leading-snug">
+      <span
+        className={`text-[10px] leading-snug ${
+          highlight && !disabled ? 'text-emerald-400 font-semibold' : 'text-on-surface/55'
+        }`}
+      >
         {disabled && disabledReason ? disabledReason : hint}
       </span>
     </button>
