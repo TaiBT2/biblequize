@@ -8,6 +8,7 @@ import com.biblequiz.modules.group.repository.ChurchGroupRepository;
 import com.biblequiz.modules.group.repository.GroupMemberRepository;
 import com.biblequiz.modules.group.repository.GroupQuizSetRepository;
 import com.biblequiz.modules.group.service.ChurchGroupService;
+import com.biblequiz.modules.group.service.GroupQuizSetMasteryService;
 import com.biblequiz.modules.group.service.GroupStreakService;
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
@@ -44,6 +45,9 @@ public class ChurchGroupController {
 
     @Autowired
     private GroupQuizSetRepository groupQuizSetRepository;
+
+    @Autowired
+    private GroupQuizSetMasteryService masteryService;
 
     @Autowired
     private GroupMemberRepository groupMemberRepository;
@@ -408,6 +412,47 @@ public class ChurchGroupController {
                     "page", page,
                     "totalElements", result.getTotalElements(),
                     "totalPages", result.getTotalPages()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * GET /api/groups/{id}/quiz-sets/{setId}/my-mastery — Sprint 5 (Q-A SAFE).
+     * Personal mastery progress của requester với quiz set này.
+     */
+    @GetMapping("/{id}/quiz-sets/{setId}/my-mastery")
+    public ResponseEntity<?> getMyMastery(@PathVariable("id") String groupId,
+                                           @PathVariable("setId") String setId,
+                                           Principal principal) {
+        try {
+            User user = getUser(principal);
+            // Verify membership
+            groupMemberRepository.findByGroupIdAndUserId(groupId, user.getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Ban khong phai thanh vien cua nhom nay"));
+            return ResponseEntity.ok(Map.of("success", true,
+                    "mastery", masteryService.getMastery(setId, user.getId())));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * GET /api/groups/{id}/my-masteries — Sprint 5.
+     * Tất cả mastery của requester trong group này (cho personal achievements page).
+     */
+    @GetMapping("/{id}/my-masteries")
+    public ResponseEntity<?> getMyMasteries(@PathVariable("id") String groupId, Principal principal) {
+        try {
+            User user = getUser(principal);
+            groupMemberRepository.findByGroupIdAndUserId(groupId, user.getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Ban khong phai thanh vien cua nhom nay"));
+            return ResponseEntity.ok(Map.of("success", true,
+                    "masteries", masteryService.getUserMasteriesInGroup(user.getId(), groupId)));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
