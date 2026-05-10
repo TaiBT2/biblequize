@@ -32,9 +32,27 @@ export default function NewGroupOnboarding(props: Props) {
   if (!showBanner) return null;
 
   const tasks = [
-    { icon: '👥', label: t('groups.onboarding.task1'), done: props.memberCount >= 5, action: props.onInvite },
-    { icon: '📚', label: t('groups.onboarding.task2'), done: props.quizSetsCount > 0, action: props.onCreateQuizSet },
-    { icon: '📢', label: t('groups.onboarding.task3'), done: props.announcementsCount > 0, action: props.onPostAnnouncement },
+    {
+      icon: '👥',
+      iconBg: 'rgba(168,85,247,0.18)',
+      label: t('groups.onboarding.task1'),
+      done: props.memberCount >= 5,
+      action: props.onInvite,
+    },
+    {
+      icon: '📚',
+      iconBg: 'rgba(74,222,128,0.18)',
+      label: t('groups.onboarding.task2'),
+      done: props.quizSetsCount > 0,
+      action: props.onCreateQuizSet,
+    },
+    {
+      icon: '📢',
+      iconBg: 'rgba(232,168,50,0.18)',
+      label: t('groups.onboarding.task3'),
+      done: props.announcementsCount > 0,
+      action: props.onPostAnnouncement,
+    },
   ];
   const completed = tasks.filter((task) => task.done).length;
 
@@ -75,17 +93,23 @@ export default function NewGroupOnboarding(props: Props) {
               onClick={task.done ? undefined : task.action}
               disabled={task.done}
               data-testid={`onboarding-task-${idx}`}
-              className={`w-full flex items-center gap-3 p-2.5 rounded-lg border transition-colors text-left ${
+              className={`w-full flex items-center gap-3 p-3 rounded-lg border transition-colors text-left ${
                 task.done
-                  ? 'border-emerald-400/30 bg-emerald-500/5 cursor-default'
+                  ? 'border-emerald-400/30 cursor-default'
                   : 'border-white/10 hover:border-[rgba(232,168,50,0.4)] hover:bg-white/[0.04]'
               }`}
+              style={task.done ? { background: 'rgba(74,222,128,0.06)' } : undefined}
             >
-              <span className="text-[18px]">{task.done ? '✅' : task.icon}</span>
+              <span
+                className="w-8 h-8 rounded-lg flex items-center justify-center text-[16px] shrink-0"
+                style={{ background: task.done ? 'rgba(74,222,128,0.2)' : task.iconBg }}
+              >
+                {task.done ? '✅' : task.icon}
+              </span>
               <span className={`flex-1 text-[12px] ${task.done ? 'text-emerald-400 line-through' : 'text-on-surface'}`}>
                 {task.label}
               </span>
-              {!task.done && <span className="text-secondary text-[12px] font-semibold">→</span>}
+              {!task.done && <span className="text-secondary text-[14px] font-semibold">→</span>}
             </button>
           </li>
         ))}
