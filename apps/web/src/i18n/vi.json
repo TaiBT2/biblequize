@@ -1639,6 +1639,15 @@
       "copyLink": "Sao chép link",
       "openTooltip": "Hiện QR code để chia sẻ"
     },
+    "quizCard": {
+      "statusPublished": "Xuất bản",
+      "statusDraft": "Nháp",
+      "difficultyEasy": "Dễ",
+      "difficultyMedium": "TB",
+      "difficultyHard": "Khó",
+      "duration": "~{{min}}p",
+      "inUseScheduled": "Đặt lịch"
+    },
     "membersPreview": {
       "onlineHeader": "🟢 Đang online ({{count}})",
       "othersHeader": "Khác ({{count}})",

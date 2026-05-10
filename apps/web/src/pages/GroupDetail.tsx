@@ -3,11 +3,11 @@ import { useParams, useNavigate, Link, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../store/authStore';
 import { api } from '../api/client';
-import { createGroupLiveQuiz } from '../api/groups';
 import { listScheduledQuizzes, ScheduledQuizSummary } from '../api/scheduledQuiz';
 import GroupActivityTab from '../components/group/GroupActivityTab';
 import GroupAnalyticsTab from '../components/group/GroupAnalyticsTab';
 import GroupCodeModal from '../components/group/GroupCodeModal';
+import QuizSetCard from '../components/group/QuizSetCard';
 
 interface Member {
   userId: string;
@@ -46,8 +46,14 @@ interface QuizSet {
   questionCount: number;
   createdAt: string;
   coverImageUrl?: string | null;
+  coverScripture?: string | null;
+  difficulty?: string | null;
+  estimatedDurationMin?: number | null;
+  suggestedMode?: string | null;
   playCount?: number;
   averageRating?: number | null;
+  totalRatings?: number | null;
+  publishStatus?: string | null;
 }
 
 interface AnalyticsData {
@@ -149,7 +155,6 @@ const GroupDetail: React.FC = () => {
   const [quizSets, setQuizSets] = useState<QuizSet[]>([]);
   const [quizSetsLoading, setQuizSetsLoading] = useState(false);
   const [playingSetId, setPlayingSetId] = useState<string | null>(null);
-  const [liveQuizSetId, setLiveQuizSetId] = useState<string | null>(null);
   const [activeScheduled, setActiveScheduled] = useState<ScheduledQuizSummary[]>([]);
   interface ActiveRoom {
     id: string;
@@ -449,21 +454,6 @@ const GroupDetail: React.FC = () => {
       setPlayingSetId(null);
     }
   }, [id, navigate, playingSetId]);
-
-  // Feature A — Chơi cùng nhau (live multiplayer sequential)
-  const handleStartLiveQuiz = useCallback(async (setId: string) => {
-    if (!id || liveQuizSetId) return;
-    setLiveQuizSetId(setId);
-    try {
-      const room = await createGroupLiveQuiz(id, { quizSetId: setId, timePerQuestion: 30 });
-      navigate(`/room/${room.id}/lobby`, { state: { fromGroupId: id } });
-    } catch (err: any) {
-      const msg = err?.response?.data?.message || 'Không thể tạo phòng live';
-      alert(msg);
-    } finally {
-      setLiveQuizSetId(null);
-    }
-  }, [id, navigate, liveQuizSetId]);
 
   const fetchActiveScheduled = useCallback(async () => {
     if (!id) return;
@@ -1570,113 +1560,33 @@ const GroupDetail: React.FC = () => {
               )}
             </div>
           ) : (
-            <div className="flex flex-col gap-2.5">
-              {quizSets.map(qs => {
-                const inUseByScheduled = activeScheduled.some(sq => sq.quizSetId === qs.id);
-                const createdTs = qs.createdAt ? new Date(qs.createdAt).getTime() : NaN;
-                let createdLabel = '';
-                if (!Number.isNaN(createdTs)) {
-                  const createdDays = Math.floor((Date.now() - createdTs) / (24 * 3600000));
-                  createdLabel = createdDays === 0
-                    ? 'Tạo hôm nay'
-                    : createdDays === 1
-                      ? 'Tạo hôm qua'
-                      : createdDays < 7
-                        ? `Tạo ${createdDays} ngày trước`
-                        : createdDays < 30
-                          ? `Tạo ${Math.floor(createdDays / 7)} tuần trước`
-                          : `Tạo ${Math.floor(createdDays / 30)} tháng trước`;
-                }
-                return (
-                  <div
-                    key={qs.id}
-                    className="rounded-2xl px-3.5 py-3.5 sm:px-4"
-                    style={{
-                      background: 'rgba(50,52,64,0.4)',
-                      backdropFilter: 'blur(12px)',
-                      border: '1px solid rgba(232,168,50,0.1)',
-                    }}
-                  >
-                    {/* Row 1: icon + info */}
-                    <div className="flex items-start gap-3 mb-3">
-                      <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-[10px] sm:rounded-[11px] grid place-items-center text-secondary flex-shrink-0"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(232,168,50,0.18) 0%, rgba(217,119,6,0.1) 100%)',
-                          border: '1px solid rgba(232,168,50,0.25)',
-                        }}>
-                        <span className="material-symbols-outlined text-[20px] sm:text-[22px]">menu_book</span>
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <div className="text-on-surface text-[14px] sm:text-[15px] font-bold mb-1 leading-tight">{qs.name}</div>
-                        <div className="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] text-on-surface/60 flex-wrap">
-                          <span className="inline-flex items-center gap-1">
-                            <span className="material-symbols-outlined text-[12px] sm:text-[13px]">quiz</span>
-                            {t('groups.questionsCount', { count: qs.questionCount })}
-                          </span>
-                          {createdLabel && (
-                            <span className="inline-flex items-center gap-1">
-                              <span className="material-symbols-outlined text-[12px] sm:text-[13px]">schedule</span>
-                              {createdLabel}
-                            </span>
-                          )}
-                          {inUseByScheduled && (
-                            <span className="inline-flex items-center gap-1" style={{ color: '#a78bfa' }}>
-                              <span className="material-symbols-outlined text-[12px] sm:text-[13px]">verified</span>
-                              <span className="hidden sm:inline">Đang dùng cho Quiz đặt lịch</span>
-                              <span className="sm:hidden">Đang dùng</span>
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Row 2 (sm+ only — leader/mod): primary actions side by side */}
-                    {isLeaderOrMod && (
-                      <div className="grid grid-cols-2 gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
-                        <button
-                          onClick={() => handleStartLiveQuiz(qs.id)}
-                          disabled={liveQuizSetId === qs.id}
-                          title={t('groups.liveQuizTooltip')}
-                          className="rounded-[9px] px-2 sm:px-3 py-2 text-[11px] sm:text-[12px] font-bold inline-flex items-center justify-center gap-1.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                          style={{
-                            background: 'rgba(167,139,250,0.12)',
-                            color: '#c4b5fd',
-                            border: '1px solid rgba(167,139,250,0.3)',
-                          }}
-                        >
-                          <span className="material-symbols-outlined text-[13px] sm:text-[14px]">groups</span>
-                          {liveQuizSetId === qs.id ? '...' : t('groups.liveQuizCta')}
-                        </button>
-                        <button
-                          onClick={() => navigate(`/groups/${id}/scheduled-quizzes/new?quizSetId=${qs.id}`)}
-                          title={t('scheduledQuiz.scheduleTooltip')}
-                          className="rounded-[9px] px-2 sm:px-3 py-2 text-[11px] sm:text-[12px] font-bold inline-flex items-center justify-center gap-1.5 transition-all"
-                          style={{
-                            background: 'rgba(96,165,250,0.12)',
-                            color: '#93c5fd',
-                            border: '1px solid rgba(96,165,250,0.3)',
-                          }}
-                        >
-                          <span className="material-symbols-outlined text-[13px] sm:text-[14px]">schedule</span>
-                          {t('scheduledQuiz.scheduleCta')}
-                        </button>
-                      </div>
-                    )}
-
-                    {/* Row 3: Tự ôn — full width ghost (less prominent on mobile per mockup) */}
-                    <button
-                      onClick={() => handlePlayQuizSet(qs.id)}
-                      disabled={playingSetId === qs.id}
-                      title="Tự ôn solo"
-                      className="w-full rounded-[9px] px-3 py-2 text-[11px] sm:text-[12px] font-semibold sm:font-bold inline-flex items-center justify-center gap-1.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-transparent text-on-surface/60 hover:text-on-surface"
-                      style={{ border: '1px solid rgba(255,255,255,0.08)' }}
-                    >
-                      <span className="material-symbols-outlined text-[13px] sm:text-[14px]">person</span>
-                      {playingSetId === qs.id ? '...' : (isLeaderOrMod ? 'Tự ôn solo' : 'Tự ôn')}
-                    </button>
-                  </div>
-                );
-              })}
+            // Grid of mockup-aligned cards (MOCKUP_QUIZ_SET_V2_PROFESSIONAL_DESKTOP.html
+            // .quiz-card section). Each card is a clickable surface that
+            // navigates to QuizSetDetail where the play / schedule / solo
+            // actions live; this de-clutters the list view per mockup intent.
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {quizSets.map((qs) => (
+                <QuizSetCard
+                  key={qs.id}
+                  quizSet={{
+                    id: qs.id,
+                    name: qs.name,
+                    questionCount: qs.questionCount,
+                    createdAt: qs.createdAt,
+                    coverImageUrl: qs.coverImageUrl,
+                    coverScripture: qs.coverScripture,
+                    difficulty: qs.difficulty,
+                    estimatedDurationMin: qs.estimatedDurationMin,
+                    suggestedMode: qs.suggestedMode,
+                    playCount: qs.playCount,
+                    averageRating: qs.averageRating,
+                    totalRatings: qs.totalRatings,
+                    publishStatus: qs.publishStatus,
+                    inUseByScheduled: activeScheduled.some((sq) => sq.quizSetId === qs.id),
+                  }}
+                  onClick={() => navigate(`/groups/${id}/quiz-sets/${qs.id}`)}
+                />
+              ))}
             </div>
           )}
         </>

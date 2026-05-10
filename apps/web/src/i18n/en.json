@@ -1639,6 +1639,15 @@
       "copyLink": "Copy link",
       "openTooltip": "Show QR code to share"
     },
+    "quizCard": {
+      "statusPublished": "Published",
+      "statusDraft": "Draft",
+      "difficultyEasy": "Easy",
+      "difficultyMedium": "Medium",
+      "difficultyHard": "Hard",
+      "duration": "~{{min}}m",
+      "inUseScheduled": "Scheduled"
+    },
     "membersPreview": {
       "onlineHeader": "🟢 Online ({{count}})",
       "othersHeader": "Others ({{count}})",
