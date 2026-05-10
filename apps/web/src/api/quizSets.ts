@@ -165,6 +165,54 @@ export async function startSoloPractice(groupId: string, setId: string) {
   return res.data as { sessionId: string; questions: unknown[] }
 }
 
+export interface QuizSetAttempt {
+  sessionId: string
+  score: number
+  correctAnswers: number
+  totalQuestions: number
+  accuracy: number
+  completedAt: string
+}
+
+export interface QuizSetMasterySummary {
+  totalAttempts: number
+  bestScore: number
+  bestAccuracy: number | null
+  learnedQuestionsCount: number
+}
+
+export async function getMyAttempts(groupId: string, setId: string): Promise<{
+  attempts: QuizSetAttempt[]
+  masterySummary: QuizSetMasterySummary
+}> {
+  const res = await api.get(`/api/groups/${groupId}/quiz-sets/${setId}/my-attempts`)
+  return { attempts: res.data.attempts, masterySummary: res.data.masterySummary }
+}
+
+export interface QuizSetLeaderboardEntry {
+  rank: number
+  userId: string
+  displayName: string | null
+  avatarUrl: string | null
+  bestScore: number
+  bestAccuracy: number | null
+  totalAttempts: number
+  lastPlayedAt: string | null
+}
+
+export async function getQuizSetLeaderboard(groupId: string, setId: string, limit = 20): Promise<{
+  entries: QuizSetLeaderboardEntry[]
+  myRank: number | null
+  totalParticipants: number
+}> {
+  const res = await api.get(`/api/groups/${groupId}/quiz-sets/${setId}/leaderboard`, { params: { limit } })
+  return {
+    entries: res.data.entries,
+    myRank: res.data.myRank ?? null,
+    totalParticipants: res.data.totalParticipants,
+  }
+}
+
 export async function createLiveRoomFromQuizSet(
   groupId: string,
   body: { quizSetId: string; mode?: RoomMode; timePerQuestion?: number }

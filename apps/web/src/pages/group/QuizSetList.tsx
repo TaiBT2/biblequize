@@ -3,9 +3,15 @@ import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { api } from '../../api/client'
 import {
+  createLiveRoomFromQuizSet,
   listQuizSets, listFolders, createFolder, deleteFolder,
   type ListQuizSetsParams, type PublishStatus, type QuizSet, type QuizSetFolder,
+  type RoomMode,
 } from '../../api/quizSets'
+import ModePickerModal from '../../components/group/ModePickerModal'
+import QuizSetListCard from '../../components/group/QuizSetListCard'
+
+type GroupRole = 'LEADER' | 'MOD' | 'MEMBER' | null
 
 /** Card cover gradients — cycle theo tag dominant hoặc fallback by index. */
 const COVER_GRADIENTS = [
@@ -74,15 +80,48 @@ export default function QuizSetList() {
   const [search, setSearch] = useState('')
   const [activeFolder, setActiveFolder] = useState<string | 'ALL' | 'UNCAT'>('ALL')
   const [groupName, setGroupName] = useState<string>('')
+  const [myRole, setMyRole] = useState<GroupRole>(null)
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [sortOpen, setSortOpen] = useState(false)
+  const [pickerQuizSet, setPickerQuizSet] = useState<QuizSet | null>(null)
+  const [pickerBusy, setPickerBusy] = useState(false)
+  const [pickerError, setPickerError] = useState<string | null>(null)
 
   useEffect(() => {
     if (!groupId) return
     api.get(`/api/groups/${groupId}`)
-      .then(res => setGroupName(res.data?.group?.name || ''))
+      .then(res => {
+        setGroupName(res.data?.group?.name || '')
+        setMyRole((res.data?.group?.myRole as GroupRole) ?? null)
+      })
       .catch(() => {})
   }, [groupId])
+
+  const handlePlayMultiplayer = (qs: QuizSet) => {
+    setPickerError(null)
+    setPickerQuizSet(qs)
+  }
+
+  const handleSchedule = (qs: QuizSet) => {
+    if (!groupId) return
+    navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${qs.id}`)
+  }
+
+  const handlePickMode = async (mode: RoomMode) => {
+    if (!groupId || !pickerQuizSet) return
+    setPickerBusy(true); setPickerError(null)
+    try {
+      const room = await createLiveRoomFromQuizSet(groupId, { quizSetId: pickerQuizSet.id, mode })
+      navigate(`/room/${room.roomCode}`)
+    } catch (err: any) {
+      setPickerError(err?.response?.data?.message || err.message)
+    } finally {
+      setPickerBusy(false)
+      setPickerQuizSet(null)
+    }
+  }
+
+  const canSchedule = myRole === 'LEADER' || myRole === 'MOD'
 
   useEffect(() => {
     if (!groupId) return
@@ -401,29 +440,32 @@ export default function QuizSetList() {
                 if (folderItems.length === 0) return null
                 return (
                   <SectionGroup key={folder.id} title={`📁 ${folder.name}`} count={folderItems.length}>
-                    <CardGrid groupId={groupId!} items={folderItems} viewMode={viewMode} />
+                    <CardGrid groupId={groupId!} items={folderItems} viewMode={viewMode} myRole={myRole}
+                      onPlayMultiplayer={handlePlayMultiplayer} onSchedule={handleSchedule} canSchedule={canSchedule} />
                   </SectionGroup>
                 )
               })}
 
               {grouped.uncategorized.length > 0 && (
                 <SectionGroup title="📂 Chưa phân loại" count={grouped.uncategorized.length}>
-                  <CardGrid groupId={groupId!} items={grouped.uncategorized} viewMode={viewMode} />
+                  <CardGrid groupId={groupId!} items={grouped.uncategorized} viewMode={viewMode} myRole={myRole}
+                    onPlayMultiplayer={handlePlayMultiplayer} onSchedule={handleSchedule} canSchedule={canSchedule} />
                 </SectionGroup>
               )}
 
               {drafts.length > 0 && (
                 <SectionGroup title={`📝 ${t('quizSet.list.draftsHeader')}`} count={drafts.length} dimmed>
-                  <CardGrid groupId={groupId!} items={drafts} draftStyle viewMode={viewMode} />
+                  <CardGrid groupId={groupId!} items={drafts} viewMode={viewMode} myRole={myRole} />
                 </SectionGroup>
               )}
             </>
           ) : (
             <>
-              {nonDrafts.length > 0 && <CardGrid groupId={groupId!} items={nonDrafts} viewMode={viewMode} />}
+              {nonDrafts.length > 0 && <CardGrid groupId={groupId!} items={nonDrafts} viewMode={viewMode} myRole={myRole}
+                onPlayMultiplayer={handlePlayMultiplayer} onSchedule={handleSchedule} canSchedule={canSchedule} />}
               {drafts.length > 0 && (
                 <SectionGroup title={`📝 ${t('quizSet.list.draftsHeader')}`} count={drafts.length} dimmed>
-                  <CardGrid groupId={groupId!} items={drafts} draftStyle viewMode={viewMode} />
+                  <CardGrid groupId={groupId!} items={drafts} viewMode={viewMode} myRole={myRole} />
                 </SectionGroup>
               )}
             </>
@@ -436,6 +478,24 @@ export default function QuizSetList() {
           >{t('quizSet.list.createFolder')}</button>
         </div>
       </div>
+
+      {pickerError && (
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-lg bg-red-500/90 text-white text-xs shadow-lg">
+          {pickerError}
+        </div>
+      )}
+
+      {pickerQuizSet && groupId && (
+        <ModePickerModal
+          quizSet={pickerQuizSet}
+          busy={pickerBusy}
+          groupId={groupId}
+          onPick={handlePickMode}
+          onSolo={null}
+          canSchedule={canSchedule}
+          onClose={() => setPickerQuizSet(null)}
+        />
+      )}
     </div>
   )
 }
@@ -532,19 +592,31 @@ function SectionGroup({
 }
 
 function CardGrid({
-  groupId, items, draftStyle, viewMode = 'grid',
+  groupId, items, viewMode = 'grid', onPlayMultiplayer, onSchedule, canSchedule, myRole,
 }: {
   groupId: string; items: QuizSet[]; draftStyle?: boolean; viewMode?: 'grid' | 'list';
+  onPlayMultiplayer?: (qs: QuizSet) => void;
+  onSchedule?: (qs: QuizSet) => void;
+  canSchedule?: boolean;
+  myRole: GroupRole;
 }) {
   const cls = viewMode === 'list'
-    ? 'grid grid-cols-1 gap-2'
-    : 'grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4'
+    ? 'grid grid-cols-1 gap-3'
+    : 'grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-5'
+  const isMember = myRole != null
   return (
     <div className={cls}>
-      {items.map((qs, idx) => draftStyle
-        ? <DraftCard key={qs.id} groupId={groupId} qs={qs} />
-        : <QuizSetCard key={qs.id} groupId={groupId} qs={qs} idx={idx} forceCompact={viewMode === 'list'} />
-      )}
+      {items.map(qs => (
+        <QuizSetListCard
+          key={qs.id}
+          groupId={groupId}
+          qs={qs}
+          myRole={myRole}
+          isMember={isMember}
+          onPlayCoPlay={onPlayMultiplayer}
+          onSchedule={canSchedule ? onSchedule : undefined}
+        />
+      ))}
     </div>
   )
 }
@@ -564,17 +636,30 @@ function statusBadge(status: PublishStatus) {
 
 /** Responsive card: mobile = compact horizontal · desktop = cover-on-top */
 function QuizSetCard({
-  groupId, qs, idx = 0, forceCompact,
+  groupId, qs, idx = 0, forceCompact, onPlayMultiplayer, onSchedule, canSchedule,
 }: {
   groupId: string; qs: QuizSet; idx?: number; forceCompact?: boolean;
+  onPlayMultiplayer?: (qs: QuizSet) => void;
+  onSchedule?: (qs: QuizSet) => void;
+  canSchedule?: boolean;
 }) {
+  const navigate = useNavigate()
   const cover = coverEmoji(qs)
   const badge = statusBadge(qs.publishStatus)
   const diff = qs.difficulty ? DIFFICULTY_LABEL[qs.difficulty] : null
   const gradient = pickCoverGradient(qs, idx)
+  const showActions = qs.publishStatus === 'PUBLISHED' && !!onPlayMultiplayer
+  const goDetail = () => navigate(`/groups/${groupId}/quiz-sets/${qs.id}`)
+  const stop = (e: React.MouseEvent) => { e.stopPropagation(); e.preventDefault() }
 
   return (
-    <Link to={`/groups/${groupId}/quiz-sets/${qs.id}`} className="qs-fade-in">
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={goDetail}
+      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goDetail() } }}
+      className="qs-fade-in cursor-pointer block"
+    >
       {/* Desktop: cover on top (hidden when list view forced) */}
       <div className={`${forceCompact ? 'hidden' : 'hidden lg:block'} qs-quiz-card rounded-xl overflow-hidden ${
         idx === 0 ? 'qs-glass-strong border border-[#e8a832]/30' : 'qs-glass border border-white/10'
@@ -611,6 +696,15 @@ function QuizSetCard({
             )}
           </div>
           <ModeBadgeRow suggestedMode={qs.suggestedMode} />
+          {showActions && (
+            <CardActionRow
+              qs={qs}
+              onPlayMultiplayer={onPlayMultiplayer!}
+              onSchedule={onSchedule}
+              canSchedule={canSchedule}
+              stop={stop}
+            />
+          )}
         </div>
       </div>
 
@@ -649,10 +743,57 @@ function QuizSetCard({
                 <span className="text-[10px] text-[#e8a832] ml-auto">⭐ {Number(qs.averageRating).toFixed(1)}</span>
               )}
             </div>
+            {showActions && (
+              <CardActionRow
+                qs={qs}
+                onPlayMultiplayer={onPlayMultiplayer!}
+                onSchedule={onSchedule}
+                canSchedule={canSchedule}
+                stop={stop}
+                compact
+              />
+            )}
           </div>
         </div>
       </div>
-    </Link>
+    </div>
+  )
+}
+
+function CardActionRow({
+  qs, onPlayMultiplayer, onSchedule, canSchedule, stop, compact,
+}: {
+  qs: QuizSet;
+  onPlayMultiplayer: (qs: QuizSet) => void;
+  onSchedule?: (qs: QuizSet) => void;
+  canSchedule?: boolean;
+  stop: (e: React.MouseEvent) => void;
+  compact?: boolean;
+}) {
+  const sizeCls = compact ? 'h-7 px-2 text-[10px]' : 'h-8 px-2.5 text-xs'
+  return (
+    <div className={`flex items-center gap-1.5 ${compact ? 'mt-1.5' : 'mt-2.5 pt-2.5 border-t border-white/5'}`}>
+      <button
+        type="button"
+        onClick={e => { stop(e); onPlayMultiplayer(qs) }}
+        title="Chơi cùng nhau"
+        aria-label="Chơi cùng nhau với nhóm"
+        className={`${sizeCls} rounded-lg bg-[#e8a832]/15 hover:bg-[#e8a832]/25 border border-[#e8a832]/30 text-[#e8a832] font-semibold flex items-center gap-1`}
+      >
+        <span>👥</span><span>Chơi cùng</span>
+      </button>
+      {canSchedule && onSchedule && (
+        <button
+          type="button"
+          onClick={e => { stop(e); onSchedule(qs) }}
+          title="Đặt lịch quiz cho nhóm"
+          aria-label="Đặt lịch quiz cho nhóm"
+          className={`${sizeCls} rounded-lg bg-purple-500/15 hover:bg-purple-500/25 border border-purple-400/30 text-purple-300 font-semibold flex items-center gap-1`}
+        >
+          <span>📅</span><span>Đặt lịch</span>
+        </button>
+      )}
+    </div>
   )
 }
 
