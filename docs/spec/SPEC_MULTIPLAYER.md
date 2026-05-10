@@ -536,7 +536,7 @@ Topic: `/topic/room/{roomId}`. Mọi message wrap bởi `WebSocketMessage.Messag
 | `ROOM_STARTING` | `{ roomId, timestamp }` | Host bấm start (countdown UI cue). |
 | `ROOM_ENDED` | `RoomEndedData { roomId, reason }` | R1/R2/R4/R5 + GAME_COMPLETE (bình thường) + Host end-early (Sprint 4). `reason` ∈ `EMPTY_LOBBY \| IDLE_TIMEOUT \| HOST_GONE \| ALL_DISCONNECTED \| STUCK_GAME \| GAME_COMPLETE \| HOST_ENDED_EARLY`. |
 | `HOST_CHANGED` | `HostChangedData { roomId, newHostId, newHostName }` | R4 promote. FE update crown badge + start button. |
-| `ROOM_STATE` | Full `RoomDetailsDTO` snapshot | Sau mọi mutation (join/leave/ready/team-switch/kick). FE replace state thay vì fetchRoom (Sprint 2 S2-3). |
+| `ROOM_STATE` | Full `RoomDetailsDTO` snapshot — **pure shared room state, no per-viewer fields** (the caller's `viewerUserId` is only returned by the REST GET, never by the broadcast). FE keep viewer identity in a separate state slot so a ROOM_STATE event cannot clear it. | Sau mọi mutation (join/leave/ready/team-switch/kick). FE replace state thay vì fetchRoom (Sprint 2 S2-3). |
 
 #### Quiz events
 
@@ -777,10 +777,10 @@ QUIZ_END → navigate `/room/:id/results-host` (different end screen — xem 7.6
 
 | Method | Endpoint | Auth | Mô tả |
 |---|---|---|---|
-| POST | `/api/rooms` | Bearer | Create room. Body: `{ roomName, mode, maxPlayers, questionCount, timePerQuestion, difficulty, bookScope, isPublic, questionSource, questionSetId }`. Returns `{ success, room: RoomDetailsDTO }`. |
+| POST | `/api/rooms` | Bearer | Create room. Body: `{ roomName, mode, maxPlayers, questionCount, timePerQuestion, difficulty, bookScope, isPublic, questionSource, questionSetId }`. Returns `{ success, room: RoomDetailsDTO, viewerUserId }`. |
 | GET | `/api/rooms/public` | Optional | List public LOBBY+IN_PROGRESS rooms. Viewer-aware `joinable` field. Returns `{ success, rooms: PublicRoomDTO[] }`. |
-| GET | `/api/rooms/{id}` | Optional | Room details. Includes `myUserId`, `groupId` (nullable). |
-| POST | `/api/rooms/join` | Bearer | Join by code. Body: `{ roomCode }`. 422 với code `ALREADY_IN_ANOTHER_ROOM` nếu user đang trong room khác. |
+| GET | `/api/rooms/{id}` | Optional | Room details. Returns `{ success, room: RoomDetailsDTO, viewerUserId }`. `viewerUserId` is the caller's id (null if unauthenticated) and lives **outside** the room DTO so the same DTO can be safely multicast as a `ROOM_STATE` WS event. The DTO itself carries `groupId` (nullable) but no per-viewer field. |
+| POST | `/api/rooms/join` | Bearer | Join by code. Body: `{ roomCode }`. Returns `{ success, room, viewerUserId }`. 422 với code `ALREADY_IN_ANOTHER_ROOM` nếu user đang trong room khác. |
 | POST | `/api/rooms/{id}/start` | Bearer (host) | Flip → IN_PROGRESS. Validate ≥2 players + (non-Sequential) all non-host ready. |
 | POST | `/api/rooms/{id}/leave` | Bearer | Rời room. Mid-game → mark LEFT. LOBBY → delete row. |
 | POST | `/api/rooms/{id}/switch-team` | Bearer | TEAM_VS_TEAM, LOBBY only. Toggle A↔B. |

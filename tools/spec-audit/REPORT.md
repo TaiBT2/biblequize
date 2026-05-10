@@ -1,6 +1,6 @@
 # Spec Audit Report
 
-**Generated:** 2026-05-09T14:47:50Z
+**Generated:** 2026-05-10T01:28:26Z
 **Specs scanned:** 6 files in `docs/spec/`
 
 ## Summary
@@ -62,29 +62,29 @@
 | SPEC_USER_v3.1.md | 5.4 Variety Modes | `pages/MysteryMode.tsx` | (no line) | 313 | file_not_found |
 | SPEC_USER_v3.1.md | 5.4 Variety Modes | `pages/SpeedRound.tsx` | (no line) | 323 | file_not_found |
 | SPEC_USER_v3.1.md | 5.4 Variety Modes | `pages/WeeklyQuiz.tsx` | (no line) | 332 | file_not_found |
-| SPEC_USER_v3.1.md | 5.6 Liturgical Seasons (4 mùa canonical) | `DailyThemeService.java` | (no line) | 350 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 6.3 UI | `pages/Journey.tsx` | (no line) | 385 | file_not_found |
-| SPEC_USER_v3.1.md | 6.3 UI | `components/BibleJourneyCard.tsx` | (no line) | 385 | file_not_found |
-| SPEC_USER_v3.1.md | 8.1 Sound effects | `apps/web/src/lib/soundManager.ts` | (no line) | 456 | file_not_found |
-| SPEC_USER_v3.1.md | 9. Lifeline System | `add_lifeline_system.sql` | (no line) | 506 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 10. Cosmetics — Frames + Themes | `add_user_cosmetics_table.sql` | (no line) | 553 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 10. Cosmetics — Frames + Themes | `pages/Cosmetics.tsx` | (no line) | 553 | file_not_found |
-| SPEC_USER_v3.1.md | 11. Prestige System | `add_prestige_fields_to_users.sql` | (no line) | 582 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 12. Comeback Bridge | `add_comeback_fields_to_users.sql` | (no line) | 611 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 13. Daily Mission | `add_daily_mission_table.sql` | (no line) | 640 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 13. Daily Mission | `DailyMissionsWidget.tsx` | (no line) | 640 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 17.1 Activity Feed | `components/ActivityFeed.tsx` | (no line) | 761 | file_not_found |
-| SPEC_USER_v3.1.md | 17.2 Daily Verse banner | `components/DailyVerseBanner.tsx` | (no line) | 769 | file_not_found |
-| SPEC_USER_v3.1.md | 17.2 Daily Verse banner | `DailyThemeService.java` | (no line) | 769 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 18. Tutorial Overlay | `components/TutorialOverlay.tsx` | (no line) | 779 | file_not_found |
-| SPEC_USER_v3.1.md | 19. Question Sets (user-created) | `question_sets.sql` | (no line) | 804 | bare_filename_not_found |
-| SPEC_USER_v3.1.md | 19. Question Sets (user-created) | `pages/MySets.tsx` | (no line) | 804 | file_not_found |
-| SPEC_USER_v3.1.md | 19. Question Sets (user-created) | `pages/SetEditor.tsx` | (no line) | 804 | file_not_found |
-| SPEC_USER_v3.1.md | 20. Achievements | `pages/Achievements.tsx` | (no line) | 830 | file_not_found |
-| SPEC_USER_v3.1.md | 21. Profile & Stats | `pages/Profile.tsx` | (no line) | 853 | file_not_found |
-| SPEC_USER_v3.1.md | 22. Leaderboard | `pages/Leaderboard.tsx` | (no line) | 884 | file_not_found |
-| SPEC_USER_v3.1.md | 25.4 Bible book names | `apps/web/src/data/bookNames.ts` | (no line) | 1035 | file_not_found |
-| SPEC_USER_v3.1.md | 25.5 Validator | `apps/web/scripts/validate-i18n.ts` | (no line) | 1042 | file_not_found |
+| SPEC_USER_v3.1.md | 5.6 Liturgical Seasons (4 mùa canonical) | `DailyThemeService.java` | (no line) | 351 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 6.3 UI | `pages/Journey.tsx` | (no line) | 386 | file_not_found |
+| SPEC_USER_v3.1.md | 6.3 UI | `components/BibleJourneyCard.tsx` | (no line) | 386 | file_not_found |
+| SPEC_USER_v3.1.md | 8.1 Sound effects | `apps/web/src/lib/soundManager.ts` | (no line) | 457 | file_not_found |
+| SPEC_USER_v3.1.md | 9. Lifeline System | `add_lifeline_system.sql` | (no line) | 507 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 10. Cosmetics — Frames + Themes | `add_user_cosmetics_table.sql` | (no line) | 554 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 10. Cosmetics — Frames + Themes | `pages/Cosmetics.tsx` | (no line) | 554 | file_not_found |
+| SPEC_USER_v3.1.md | 11. Prestige System | `add_prestige_fields_to_users.sql` | (no line) | 583 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 12. Comeback Bridge | `add_comeback_fields_to_users.sql` | (no line) | 612 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 13. Daily Mission | `add_daily_mission_table.sql` | (no line) | 641 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 13. Daily Mission | `DailyMissionsWidget.tsx` | (no line) | 641 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 17.1 Activity Feed | `components/ActivityFeed.tsx` | (no line) | 762 | file_not_found |
+| SPEC_USER_v3.1.md | 17.2 Daily Verse banner | `components/DailyVerseBanner.tsx` | (no line) | 770 | file_not_found |
+| SPEC_USER_v3.1.md | 17.2 Daily Verse banner | `DailyThemeService.java` | (no line) | 770 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 18. Tutorial Overlay | `components/TutorialOverlay.tsx` | (no line) | 780 | file_not_found |
+| SPEC_USER_v3.1.md | 19. Question Sets (user-created) | `question_sets.sql` | (no line) | 805 | bare_filename_not_found |
+| SPEC_USER_v3.1.md | 19. Question Sets (user-created) | `pages/MySets.tsx` | (no line) | 805 | file_not_found |
+| SPEC_USER_v3.1.md | 19. Question Sets (user-created) | `pages/SetEditor.tsx` | (no line) | 805 | file_not_found |
+| SPEC_USER_v3.1.md | 20. Achievements | `pages/Achievements.tsx` | (no line) | 831 | file_not_found |
+| SPEC_USER_v3.1.md | 21. Profile & Stats | `pages/Profile.tsx` | (no line) | 854 | file_not_found |
+| SPEC_USER_v3.1.md | 22. Leaderboard | `pages/Leaderboard.tsx` | (no line) | 885 | file_not_found |
+| SPEC_USER_v3.1.md | 25.4 Bible book names | `apps/web/src/data/bookNames.ts` | (no line) | 1036 | file_not_found |
+| SPEC_USER_v3.1.md | 25.5 Validator | `apps/web/scripts/validate-i18n.ts` | (no line) | 1043 | file_not_found |
 
 ## Orphan Sections (MEDIUM)
 
