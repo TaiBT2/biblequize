@@ -1581,6 +1581,14 @@
       "scheduledQuiz.hint": "{{count}} đang mở"
     },
     "activity": {
+      "feedTitle": "Hoạt động nhóm",
+      "filterDisabled": "Filter sẽ bật khi feed ra mắt (Sprint 6)",
+      "filter": {
+        "all": "Tất cả",
+        "quiz": "Quiz",
+        "live": "Live",
+        "news": "Tin"
+      },
       "placeholder": {
         "title": "Hoạt động nhóm",
         "desc": "Sắp ra mắt — feed sẽ hiển thị thi đấu, bộ câu hỏi mới, thông báo và streak của các thành viên.",

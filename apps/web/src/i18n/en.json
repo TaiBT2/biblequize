@@ -1581,6 +1581,14 @@
       "scheduledQuiz.hint": "{{count}} open now"
     },
     "activity": {
+      "feedTitle": "Group activity",
+      "filterDisabled": "Filter activates when the feed ships (Sprint 6)",
+      "filter": {
+        "all": "All",
+        "quiz": "Quiz",
+        "live": "Live",
+        "news": "News"
+      },
       "placeholder": {
         "title": "Group activity",
         "desc": "Coming soon — feed will show competitions, new quiz sets, announcements, and member streaks.",
