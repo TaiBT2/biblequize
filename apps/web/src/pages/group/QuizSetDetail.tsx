@@ -6,11 +6,18 @@ import {
   publishQuizSet, type QuizSet, type QuizSetMastery, type RoomMode, unarchiveQuizSet,
 } from '../../api/quizSets'
 
-const STATUS_LABELS: Record<string, { vi: string; color: string }> = {
-  DRAFT: { vi: 'Bản nháp', color: '#94a3b8' },
-  PUBLISHED: { vi: 'Đã xuất bản', color: '#4ade80' },
-  ARCHIVED: { vi: 'Đã lưu trữ', color: '#f59e0b' },
-  SOFT_DELETED: { vi: 'Đã xóa', color: '#ef4444' },
+const STATUS_BADGE: Record<string, { vi: string; cls: string }> = {
+  DRAFT:        { vi: 'Bản nháp',     cls: 'qs-badge-draft' },
+  PUBLISHED:    { vi: '✓ Đã xuất bản', cls: 'qs-badge-published' },
+  ARCHIVED:     { vi: 'Đã lưu trữ',   cls: 'qs-badge-archived' },
+  SOFT_DELETED: { vi: 'Đã xóa',       cls: 'qs-badge-deleted' },
+}
+
+const DIFFICULTY: Record<string, { vi: string; short: string; cls: string; emoji: string }> = {
+  EASY:   { vi: 'Dễ',         short: 'Dễ',  cls: 'qs-difficulty-easy',   emoji: '🟢' },
+  MEDIUM: { vi: 'Trung bình', short: 'TB',  cls: 'qs-difficulty-medium', emoji: '⚡' },
+  HARD:   { vi: 'Khó',        short: 'Khó', cls: 'qs-difficulty-hard',   emoji: '🔥' },
+  MIXED:  { vi: 'Tổng hợp',   short: 'Mix', cls: 'qs-difficulty-mixed',  emoji: '🎲' },
 }
 
 export default function QuizSetDetail() {
@@ -27,29 +34,38 @@ export default function QuizSetDetail() {
   useEffect(() => {
     if (!groupId || !setId) return
     setLoading(true)
-    Promise.all([getQuizSet(groupId, setId), getMyMastery(groupId, setId).catch(() => null)])
+    Promise.all([
+      getQuizSet(groupId, setId),
+      getMyMastery(groupId, setId).catch(() => null),
+    ])
       .then(([qs, m]) => { setQuizSet(qs); setMastery(m) })
       .catch(err => setError(err?.response?.data?.message || err.message))
       .finally(() => setLoading(false))
   }, [groupId, setId])
 
-  if (loading) return <div className="min-h-screen p-8 text-white" style={{ background: '#11131e' }}>Đang tải...</div>
-  if (error || !quizSet) return <div className="min-h-screen p-8 text-white" style={{ background: '#11131e' }}>{error || 'Không tìm thấy'}</div>
+  if (loading) return (
+    <div className="qs-bg min-h-screen flex items-center justify-center text-gray-400">Đang tải...</div>
+  )
+  if (error || !quizSet) return (
+    <div className="qs-bg min-h-screen flex items-center justify-center text-red-300 p-6 text-center">
+      {error || 'Không tìm thấy bộ câu hỏi'}
+    </div>
+  )
 
-  const cover = quizSet.coverImageUrl?.startsWith('emoji:')
-    ? quizSet.coverImageUrl.slice(6)
-    : '📖'
-  const status = STATUS_LABELS[quizSet.publishStatus] || { vi: quizSet.publishStatus, color: '#94a3b8' }
+  const cover = quizSet.coverImageUrl?.startsWith('emoji:') ? quizSet.coverImageUrl.slice(6) : '📖'
+  const badge = STATUS_BADGE[quizSet.publishStatus]
+  const diff = quizSet.difficulty ? DIFFICULTY[quizSet.difficulty] : null
   const masteryPct = quizSet.totalQuestions > 0 && mastery
     ? Math.round((mastery.questionsLearned / quizSet.totalQuestions) * 100)
     : 0
+  const hasMastery = mastery && mastery.id != null && mastery.totalAttempts > 0
 
-  const action = async (fn: () => Promise<QuizSet>, successPath?: string) => {
-    setBusy(true)
+  const action = async (fn: () => Promise<QuizSet>, navigateTo?: string) => {
+    setBusy(true); setError(null)
     try {
       const updated = await fn()
       setQuizSet(updated)
-      if (successPath) navigate(successPath)
+      if (navigateTo) navigate(navigateTo)
     } catch (err: any) {
       setError(err?.response?.data?.message || err.message)
     } finally {
@@ -71,163 +87,408 @@ export default function QuizSetDetail() {
   }
 
   return (
-    <div className="min-h-screen p-4 md:p-8 text-white" style={{ background: '#11131e' }}>
-      <div className="max-w-3xl mx-auto">
+    <div className="qs-bg min-h-screen">
+      <div className="max-w-md mx-auto pb-6 qs-fade-in">
         {/* Hero cover */}
-        <div className="rounded-2xl p-8 mb-6 relative" style={{ background: 'linear-gradient(135deg, #2a2d3e, #1a1d2e)' }}>
-          <div className="text-7xl text-center mb-4">{cover}</div>
-          <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold"
-               style={{ background: status.color + '33', color: status.color }}>
-            {status.vi}
+        <div className="relative h-44">
+          <div className="absolute inset-0 qs-cover-easter" />
+          <div className="absolute inset-0 flex items-center justify-center text-7xl opacity-30">{cover}</div>
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(to bottom, transparent, transparent, #11131e)' }}
+          />
+
+          <button
+            onClick={() => navigate(`/groups/${groupId}/quiz-sets`)}
+            className="absolute top-3 left-3 w-9 h-9 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white"
+            aria-label="Quay lại"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <div className="absolute bottom-3 left-4 right-4">
+            <div className="flex gap-1.5 mb-1.5">
+              <span className={`qs-badge-status ${badge.cls}`}>{badge.vi}</span>
+              {quizSet.averageRating != null && (
+                <span className="px-2 py-0.5 rounded-full bg-black/40 backdrop-blur text-[9px] font-bold text-[#e8a832]">
+                  ⭐ {Number(quizSet.averageRating).toFixed(1)} ({quizSet.totalRatings} đánh giá)
+                </span>
+              )}
+            </div>
+            <h1 className="qs-font-vn-display font-extrabold text-white text-xl leading-tight">{quizSet.name}</h1>
           </div>
-          <div className="absolute top-4 right-4 flex gap-2 text-xs">
-            {quizSet.averageRating != null && (
-              <span className="px-2 py-1 rounded-full bg-black/30">⭐ {quizSet.averageRating}</span>
-            )}
-            <span className="px-2 py-1 rounded-full bg-black/30">▶ {quizSet.playCount}</span>
-          </div>
-          <h1 className="text-2xl md:text-3xl font-extrabold text-center">{quizSet.name}</h1>
-          {quizSet.coverScripture && (
-            <p className="text-center text-sm mt-2" style={{ color: '#e8a832' }}>📖 {quizSet.coverScripture}</p>
-          )}
         </div>
 
         {/* Tags */}
         {quizSet.tags && quizSet.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="px-4 pt-3 flex gap-1.5 overflow-x-auto qs-scroll-thin">
             {quizSet.tags.map(tag => (
-              <span key={tag} className="px-3 py-1 rounded-full text-xs bg-white/10">{tag}</span>
+              <span key={tag} className="shrink-0 px-2 py-0.5 rounded-full bg-[#e8a832]/15 text-[#e8a832] text-[10px] font-semibold">
+                {tag}
+              </span>
             ))}
           </div>
         )}
 
+        {/* Description */}
         {quizSet.description && (
-          <p className="text-white/80 mb-6">{quizSet.description}</p>
+          <div className="px-4 pt-3">
+            <p className="text-xs text-gray-300 leading-relaxed">{quizSet.description}</p>
+          </div>
         )}
 
-        {/* 4-stat grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-          <Stat label="Câu hỏi" value={String(quizSet.totalQuestions)} />
-          <Stat label="Độ khó" value={quizSet.difficulty || '—'} />
-          <Stat label="Thời gian" value={quizSet.estimatedDurationMin ? `${quizSet.estimatedDurationMin} phút` : '—'} />
-          <Stat label="Đã chơi" value={`${quizSet.playCount} lần`} />
+        {/* Quick stats grid */}
+        <div className="px-4 pt-3">
+          <div className="grid grid-cols-4 gap-1.5">
+            <Stat label="Câu hỏi" value={String(quizSet.totalQuestions)} />
+            <StatDifficulty diff={diff} />
+            <Stat
+              label="Thời gian"
+              value={quizSet.estimatedDurationMin ? String(quizSet.estimatedDurationMin) : '—'}
+              suffix={quizSet.estimatedDurationMin ? 'm' : undefined}
+            />
+            <Stat label="Đã chơi" value={String(quizSet.playCount)} valueClass="text-[#e8a832]" />
+          </div>
         </div>
 
-        {/* Mastery progress */}
-        {mastery && mastery.id != null && (
-          <div className="rounded-xl p-4 mb-6 border border-white/10" style={{ background: 'rgba(232, 168, 50, 0.08)' }}>
-            <div className="flex items-center justify-between mb-2">
-              <span className="font-semibold">🎯 Tiến độ học của bạn</span>
-              <span className="text-sm" style={{ color: '#e8a832' }}>{masteryPct}%</span>
+        {/* Personal Mastery */}
+        {hasMastery && (
+          <div className="px-4 pt-4">
+            <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+              <span>🎯 Tiến độ học của bạn</span>
+              <div className="h-px flex-1 bg-white/5" />
             </div>
-            <div className="h-2 rounded-full bg-white/10 overflow-hidden mb-2">
-              <div className="h-full" style={{ width: `${masteryPct}%`, background: '#e8a832' }} />
-            </div>
-            <div className="text-xs text-white/60">
-              Đã thuộc {mastery.questionsLearned}/{quizSet.totalQuestions} câu · {mastery.totalAttempts} lần ôn
-              {mastery.bestScore > 0 && ` · Best ${mastery.bestScore}`}
-              {mastery.completedMastery && ' · 🏆 Đã hoàn thành'}
+            <div className="rounded-xl p-3 border border-emerald-400/30" style={{ background: 'rgba(74, 222, 128, 0.06)' }}>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs text-white">Đã thuộc</span>
+                <span className="text-xs font-bold text-emerald-400">
+                  {mastery!.questionsLearned}/{quizSet.totalQuestions} câu ({masteryPct}%)
+                </span>
+              </div>
+              <div className="qs-progress-bar h-2 mb-3">
+                <div className="qs-progress-fill h-2" style={{ width: `${masteryPct}%` }} />
+              </div>
+              <div className="grid grid-cols-3 gap-2 text-center">
+                <MiniStat label="Đã ôn" value={`${mastery!.totalAttempts} lần`} />
+                <MiniStat
+                  label="Best"
+                  value={mastery!.bestAccuracy != null ? `${Number(mastery!.bestAccuracy).toFixed(0)}%` : `${mastery!.bestScore}đ`}
+                  valueClass="text-[#e8a832]"
+                />
+                <MiniStat
+                  label="Lần cuối"
+                  value={mastery!.lastPracticedAt ? relativeShort(mastery!.lastPracticedAt) : '—'}
+                />
+              </div>
+              {mastery!.completedMastery && (
+                <div className="mt-2 text-center text-[10px] text-emerald-400 font-bold">🏆 Đã thuộc toàn bộ</div>
+              )}
             </div>
           </div>
         )}
 
+        {/* Author note */}
         {quizSet.authorNote && (
-          <div className="rounded-xl p-4 mb-6 border border-white/10 bg-white/5">
-            <div className="text-xs font-semibold mb-1 text-white/60">📝 Hướng dẫn</div>
-            <div className="text-sm whitespace-pre-wrap">{quizSet.authorNote}</div>
+          <div className="px-4 pt-4">
+            <div className="rounded-xl p-3 qs-glass">
+              <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">📝 Hướng dẫn của tác giả</div>
+              <div className="text-xs text-gray-200 whitespace-pre-wrap">{quizSet.authorNote}</div>
+            </div>
           </div>
         )}
 
-        {/* Action buttons */}
-        <div className="space-y-2 mb-6">
+        {/* Suggested mode + actions */}
+        <div className="px-4 pt-4">
+          {quizSet.suggestedMode && (
+            <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">
+              💡 Đề xuất của tác giả: <span className="text-[#e8a832]">{MODE_LABELS[quizSet.suggestedMode].vi}</span>
+            </div>
+          )}
+
+          {/* Primary CTA */}
           {quizSet.publishStatus === 'PUBLISHED' && (
-            <button onClick={() => setShowModePicker(true)} disabled={busy}
-                    className="w-full py-3 rounded-xl font-bold text-black"
-                    style={{ background: '#e8a832' }}>
-              ▶ CHƠI NGAY · CHỌN MODE
+            <button
+              onClick={() => setShowModePicker(true)}
+              disabled={busy}
+              className="w-full py-3 rounded-xl qs-gold-grad qs-font-vn-display font-extrabold text-[#11131e] text-sm flex items-center justify-center gap-2 mb-2 disabled:opacity-50"
+            >
+              <span>▶</span><span>CHƠI NGAY · CHỌN MODE</span>
             </button>
           )}
           {quizSet.publishStatus === 'DRAFT' && (
-            <button onClick={() => action(() => publishQuizSet(groupId!, setId!))} disabled={busy}
-                    className="w-full py-3 rounded-xl font-bold text-black"
-                    style={{ background: '#e8a832' }}>
-              ✅ XUẤT BẢN
+            <button
+              onClick={() => action(() => publishQuizSet(groupId!, setId!))}
+              disabled={busy || quizSet.totalQuestions < 5}
+              className="w-full py-3 rounded-xl qs-gold-grad qs-font-vn-display font-extrabold text-[#11131e] text-sm flex items-center justify-center gap-2 mb-2 disabled:opacity-50"
+            >
+              <span>✓</span><span>{quizSet.totalQuestions < 5 ? `CẦN ≥5 CÂU (HIỆN ${quizSet.totalQuestions})` : 'XUẤT BẢN BỘ NÀY'}</span>
             </button>
           )}
           {quizSet.publishStatus === 'ARCHIVED' && (
-            <button onClick={() => action(() => unarchiveQuizSet(groupId!, setId!))} disabled={busy}
-                    className="w-full py-3 rounded-xl border border-white/20">
-              📦 KHÔI PHỤC
-            </button>
+            <button
+              onClick={() => action(() => unarchiveQuizSet(groupId!, setId!))}
+              disabled={busy}
+              className="w-full py-3 rounded-xl qs-glass border border-[#e8a832]/30 text-[#e8a832] font-bold text-sm mb-2"
+            >📦 KHÔI PHỤC</button>
           )}
-        </div>
 
-        {/* Owner actions */}
-        <div className="grid grid-cols-3 gap-2 text-sm">
-          <button onClick={() => action(() => cloneQuizSet(groupId!, setId!), `/groups/${groupId}/quiz-sets`)}
-                  disabled={busy}
-                  className="py-2 rounded-lg border border-white/10 bg-white/5">
-            📋 Sao chép
-          </button>
+          {/* Secondary actions */}
           {quizSet.publishStatus === 'PUBLISHED' && (
-            <button onClick={() => action(() => archiveQuizSet(groupId!, setId!))} disabled={busy}
-                    className="py-2 rounded-lg border border-white/10 bg-white/5">
-              📦 Lưu trữ
-            </button>
+            <div className="grid grid-cols-2 gap-2 mb-2">
+              <button
+                onClick={() => navigate(`/practice?source=quiz-set&id=${quizSet.id}`)}
+                className="py-2.5 rounded-xl qs-glass border border-[#e8a832]/30 text-[#e8a832] font-semibold text-xs flex items-center justify-center gap-1.5"
+              ><span>📚</span><span>Tự ôn solo</span></button>
+              <button
+                onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${quizSet.id}`)}
+                className="py-2.5 rounded-xl qs-glass border border-white/10 text-white font-semibold text-xs flex items-center justify-center gap-1.5"
+              ><span>📅</span><span>Lên lịch</span></button>
+            </div>
           )}
-          <button onClick={() => {
-                    if (confirm('Xóa bộ câu hỏi này? (Có thể khôi phục trong 30 ngày)'))
-                      action(() => deleteQuizSet(groupId!, setId!), `/groups/${groupId}/quiz-sets`)
-                  }}
+
+          {/* Leader actions row */}
+          <div className="rounded-xl p-2 border border-white/5 flex items-center justify-between" style={{ background: 'rgba(50, 52, 64, 0.3)' }}>
+            <span className="text-[10px] text-gray-400">👑 Hành động Trưởng nhóm</span>
+            <div className="flex gap-1">
+              <IconButton
+                title="Sửa"
+                onClick={() => navigate(`/groups/${groupId}/quiz-sets/${quizSet.id}/edit`)}
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                </svg>
+              </IconButton>
+              <IconButton
+                title="Sao chép"
+                onClick={() => action(() => cloneQuizSet(groupId!, setId!), `/groups/${groupId}/quiz-sets`)}
+                disabled={busy}
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                  <rect x="9" y="9" width="13" height="13" rx="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+              </IconButton>
+              {quizSet.publishStatus === 'PUBLISHED' && (
+                <IconButton
+                  title="Lưu trữ"
+                  onClick={() => action(() => archiveQuizSet(groupId!, setId!))}
                   disabled={busy}
-                  className="py-2 rounded-lg border border-red-500/30 text-red-300">
-            🗑 Xóa
-          </button>
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                    <rect x="3" y="3" width="18" height="4" rx="1" />
+                    <path d="M5 7v13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7M10 12h4" />
+                  </svg>
+                </IconButton>
+              )}
+              <IconButton
+                title="Xóa"
+                onClick={() => {
+                  if (confirm('Xóa bộ câu hỏi này? Có thể khôi phục trong 30 ngày.'))
+                    action(() => deleteQuizSet(groupId!, setId!), `/groups/${groupId}/quiz-sets`)
+                }}
+                disabled={busy}
+                className="text-red-400"
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                  <polyline points="3 6 5 6 21 6" />
+                  <path d="M19 6l-2 14H7L5 6" />
+                  <path d="M10 11v6M14 11v6" />
+                </svg>
+              </IconButton>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Mode picker modal */}
+      {/* Mode picker modal (mockup state ④) */}
       {showModePicker && (
-        <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black/70"
-             onClick={() => setShowModePicker(false)}>
-          <div className="w-full md:max-w-lg rounded-t-2xl md:rounded-2xl p-6 text-white"
-               style={{ background: '#1a1d2e' }}
-               onClick={e => e.stopPropagation()}>
-            <h2 className="text-xl font-bold mb-4">Chọn cách chơi</h2>
-            <div className="space-y-2">
-              {(Object.keys(MODE_LABELS) as RoomMode[]).map(mode => {
-                const cfg = MODE_LABELS[mode]
-                const av = getModeAvailability(mode, quizSet.totalQuestions)
-                const isSuggested = quizSet.suggestedMode === mode
-                return (
-                  <button key={mode} onClick={() => av.available && startMode(mode)}
-                          disabled={!av.available || busy}
-                          className={`w-full p-3 rounded-xl border text-left ${
-                            av.available ? 'border-white/10 hover:bg-white/5' : 'border-white/5 opacity-50'
-                          }`}
-                          style={isSuggested ? { borderColor: '#e8a832' } : undefined}>
-                    <div className="flex items-center justify-between">
-                      <span className="font-semibold">{cfg.emoji} {cfg.vi}{isSuggested && ' ⭐'}</span>
-                      {!av.available && <span className="text-xs text-red-300">{av.reason}</span>}
-                    </div>
-                  </button>
-                )
-              })}
-            </div>
-            <button onClick={() => setShowModePicker(false)}
-                    className="w-full mt-4 py-2 rounded-lg border border-white/10">Hủy</button>
-          </div>
-        </div>
+        <ModePickerModal
+          quizSet={quizSet}
+          busy={busy}
+          onPick={startMode}
+          onClose={() => setShowModePicker(false)}
+        />
       )}
     </div>
   )
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
+function ModePickerModal({
+  quizSet, busy, onPick, onClose,
+}: {
+  quizSet: QuizSet; busy: boolean;
+  onPick: (mode: RoomMode) => void; onClose: () => void;
+}) {
+  const cover = quizSet.coverImageUrl?.startsWith('emoji:') ? quizSet.coverImageUrl.slice(6) : '📖'
+  const diff = quizSet.difficulty ? DIFFICULTY[quizSet.difficulty] : null
+
+  const multiplayerModes: RoomMode[] = [
+    'GROUP_LIVE_SEQUENTIAL', 'SPEED_RACE', 'TEAM_VS_TEAM', 'BATTLE_ROYALE', 'SUDDEN_DEATH'
+  ]
+
   return (
-    <div className="rounded-lg p-3 bg-white/5 border border-white/10 text-center">
-      <div className="text-xs text-white/50 mb-1">{label}</div>
-      <div className="font-bold">{value}</div>
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 qs-fade-in" onClick={onClose}>
+      <div
+        className="w-full md:max-w-md max-h-[85vh] overflow-y-auto qs-scroll-thin qs-bg rounded-t-2xl"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="px-5 py-3 flex items-center justify-between sticky top-0 backdrop-blur z-10" style={{ background: 'rgba(17,19,30,0.95)' }}>
+          <button onClick={onClose} className="text-gray-400 text-sm">‹ Hủy</button>
+          <div className="text-sm font-bold text-white">Chọn cách chơi</div>
+          <div className="w-12" />
+        </div>
+
+        {/* Quiz set summary */}
+        <div className="px-4 mb-3">
+          <div className="qs-glass rounded-xl p-3 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center text-xl shrink-0 qs-cover-easter">{cover}</div>
+            <div className="flex-1 min-w-0">
+              <div className="text-xs font-bold text-white truncate">{quizSet.name}</div>
+              <div className="text-[10px] text-gray-400">
+                {quizSet.totalQuestions} câu
+                {diff && ` · ${diff.emoji} ${diff.vi}`}
+                {quizSet.estimatedDurationMin && ` · ~${quizSet.estimatedDurationMin} phút`}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Solo */}
+        <div className="px-4 mb-3">
+          <SectionHeader emoji="📚" label="Cá nhân" colorCls="text-emerald-400" />
+          <button
+            onClick={() => { onClose(); window.location.href = `/practice?source=quiz-set&id=${quizSet.id}` }}
+            className="w-full qs-glass rounded-xl p-3 flex items-center gap-3 border border-emerald-400/20"
+          >
+            <div className="qs-mode-icon qs-mode-seq shrink-0">📚</div>
+            <div className="flex-1 text-left min-w-0">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-bold text-white">Tự ôn solo</span>
+                <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-semibold">+ Mastery</span>
+              </div>
+              <div className="text-[10px] text-gray-400 mt-0.5">Học cá nhân · Ghi nhận tiến độ học</div>
+            </div>
+            <Chevron />
+          </button>
+        </div>
+
+        {/* Multiplayer */}
+        <div className="px-4 mb-4">
+          <SectionHeader emoji="👥" label="Nhiều người chơi" colorCls="text-[#e8a832]" />
+          <div className="space-y-2">
+            {multiplayerModes.map(mode => {
+              const cfg = MODE_LABELS[mode]
+              const av = getModeAvailability(mode, quizSet.totalQuestions)
+              const isSuggested = quizSet.suggestedMode === mode
+              return (
+                <button
+                  key={mode}
+                  onClick={() => av.available && !busy && onPick(mode)}
+                  disabled={!av.available || busy}
+                  className={`w-full rounded-xl p-3 flex items-center gap-3 ${
+                    av.available
+                      ? (isSuggested ? `border-2 border-emerald-400/40 ${cfg.cssClass}` : `border border-[#e8a832]/20 ${cfg.cssClass}`)
+                      : 'qs-glass border border-white/10 opacity-50 cursor-not-allowed'
+                  }`}
+                >
+                  <div className={`qs-mode-icon ${cfg.cssClass} shrink-0`}>{cfg.emoji}</div>
+                  <div className="flex-1 text-left min-w-0">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-bold text-white">{cfg.vi}</span>
+                      {isSuggested && (
+                        <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/30 text-emerald-300 font-semibold">⭐ Đề xuất</span>
+                      )}
+                    </div>
+                    <div className={`text-[10px] mt-0.5 ${isSuggested ? 'text-emerald-300' : 'text-gray-400'}`}>
+                      {av.available ? cfg.tagline : av.reason}
+                    </div>
+                  </div>
+                  <Chevron />
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      </div>
     </div>
   )
+}
+
+function Stat({ label, value, suffix, valueClass }: { label: string; value: string; suffix?: string; valueClass?: string }) {
+  return (
+    <div className="qs-glass rounded-xl p-2 text-center">
+      <div className="text-[9px] text-gray-400 uppercase font-semibold">{label}</div>
+      <div className={`qs-font-vn-display font-bold text-base ${valueClass || 'text-white'}`}>
+        {value}{suffix && <span className="text-[10px] text-gray-500">{suffix}</span>}
+      </div>
+    </div>
+  )
+}
+
+function StatDifficulty({ diff }: { diff: { vi: string; short: string; cls: string; emoji: string } | null }) {
+  return (
+    <div className="qs-glass rounded-xl p-2 text-center">
+      <div className="text-[9px] text-gray-400 uppercase font-semibold">Độ khó</div>
+      <div className={`text-xs font-bold mt-0.5 ${diff?.cls ?? 'text-gray-500'}`}>
+        {diff ? `${diff.emoji} ${diff.short}` : '—'}
+      </div>
+    </div>
+  )
+}
+
+function MiniStat({ label, value, valueClass }: { label: string; value: string; valueClass?: string }) {
+  return (
+    <div>
+      <div className="text-[9px] text-gray-400 uppercase">{label}</div>
+      <div className={`text-sm font-bold ${valueClass ?? 'text-white'}`}>{value}</div>
+    </div>
+  )
+}
+
+function SectionHeader({ emoji, label, colorCls }: { emoji: string; label: string; colorCls: string }) {
+  return (
+    <div className={`text-[10px] font-semibold uppercase tracking-wider mb-2 flex items-center gap-2 ${colorCls}`}>
+      <span>{emoji} {label}</span>
+      <div className="h-px flex-1 bg-current opacity-20" />
+    </div>
+  )
+}
+
+function IconButton({
+  children, onClick, title, disabled, className,
+}: {
+  children: React.ReactNode; onClick: () => void; title: string;
+  disabled?: boolean; className?: string;
+}) {
+  return (
+    <button
+      title={title}
+      aria-label={title}
+      onClick={onClick}
+      disabled={disabled}
+      className={`w-7 h-7 rounded-lg qs-glass flex items-center justify-center text-gray-400 disabled:opacity-50 ${className ?? ''}`}
+    >{children}</button>
+  )
+}
+
+function Chevron() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-gray-500">
+      <path d="M9 18l6-6-6-6v12z" />
+    </svg>
+  )
+}
+
+function relativeShort(iso: string): string {
+  const ms = Date.now() - new Date(iso).getTime()
+  const day = Math.floor(ms / 86400000)
+  if (day === 0) return 'hôm nay'
+  if (day === 1) return 'hôm qua'
+  if (day < 7) return `${day} ngày`
+  if (day < 30) return `${Math.floor(day / 7)} tuần`
+  return new Date(iso).toLocaleDateString('vi-VN')
 }

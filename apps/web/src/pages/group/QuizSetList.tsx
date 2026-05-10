@@ -1,28 +1,39 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { listQuizSets, type ListQuizSetsParams, type PublishStatus, type QuizSet } from '../../api/quizSets'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import {
+  listQuizSets, type ListQuizSetsParams,
+  type PublishStatus, type QuizSet,
+} from '../../api/quizSets'
 
 const STATUS_FILTERS: { key: PublishStatus | 'ALL'; label: string }[] = [
   { key: 'ALL', label: 'Tất cả' },
-  { key: 'PUBLISHED', label: 'Đã xuất bản' },
   { key: 'DRAFT', label: 'Bản nháp' },
+  { key: 'PUBLISHED', label: 'Đã xuất bản' },
   { key: 'ARCHIVED', label: 'Đã lưu trữ' },
 ]
 
 const SORT_OPTIONS: { key: NonNullable<ListQuizSetsParams['sort']>; label: string }[] = [
+  { key: 'popular', label: 'Phổ biến nhất' },
   { key: 'recent', label: 'Mới nhất' },
-  { key: 'popular', label: 'Phổ biến' },
   { key: 'name', label: 'A-Z' },
-  { key: 'rating', label: 'Đánh giá' },
+  { key: 'rating', label: 'Đánh giá cao' },
 ]
+
+const DIFFICULTY_LABEL: Record<string, { vi: string; cssClass: string; emoji: string }> = {
+  EASY:   { vi: 'Dễ',         cssClass: 'qs-difficulty-easy',   emoji: '🟢' },
+  MEDIUM: { vi: 'Trung bình', cssClass: 'qs-difficulty-medium', emoji: '⚡' },
+  HARD:   { vi: 'Khó',        cssClass: 'qs-difficulty-hard',   emoji: '🔥' },
+  MIXED:  { vi: 'Tổng hợp',   cssClass: 'qs-difficulty-mixed',  emoji: '🎲' },
+}
 
 export default function QuizSetList() {
   const { id: groupId } = useParams<{ id: string }>()
+  const navigate = useNavigate()
   const [items, setItems] = useState<QuizSet[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [statusFilter, setStatusFilter] = useState<PublishStatus | 'ALL'>('ALL')
-  const [sort, setSort] = useState<ListQuizSetsParams['sort']>('recent')
+  const [sort, setSort] = useState<ListQuizSetsParams['sort']>('popular')
   const [search, setSearch] = useState('')
 
   useEffect(() => {
@@ -43,68 +54,114 @@ export default function QuizSetList() {
     return c
   }, [items])
 
+  const drafts = useMemo(() => items.filter(qs => qs.publishStatus === 'DRAFT'), [items])
+  const nonDrafts = useMemo(() => items.filter(qs => qs.publishStatus !== 'DRAFT'), [items])
+
   return (
-    <div className="min-h-screen p-4 md:p-8 text-white" style={{ background: '#11131e' }}>
-      <div className="max-w-3xl mx-auto">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <Link to={`/groups/${groupId}`} className="text-sm text-white/60 hover:text-white">← Quay lại nhóm</Link>
-            <h1 className="text-2xl md:text-3xl font-extrabold mt-1">Bộ câu hỏi của nhóm</h1>
-            <p className="text-sm text-white/50">{items.length} bộ</p>
+    <div className="qs-bg min-h-screen">
+      <div className="max-w-md mx-auto pb-10">
+        {/* Header */}
+        <div className="px-5 py-3 flex items-center justify-between">
+          <button
+            onClick={() => navigate(`/groups/${groupId}`)}
+            className="w-9 h-9 rounded-full qs-glass flex items-center justify-center text-gray-400"
+            aria-label="Quay lại"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <div className="text-center">
+            <div className="text-xs text-gray-400">Bộ câu hỏi của nhóm</div>
+            <div className="text-sm font-bold text-white qs-font-vn-display">Tổng {items.length} bộ</div>
           </div>
-          <Link to={`/groups/${groupId}/quiz-sets/new`}
-                className="px-4 py-2 rounded-lg font-bold text-black"
-                style={{ background: '#e8a832' }}>+ Tạo mới</Link>
+          <Link
+            to={`/groups/${groupId}/quiz-sets/new`}
+            className="w-9 h-9 rounded-full qs-gold-grad flex items-center justify-center text-[#11131e] font-bold"
+            aria-label="Tạo mới"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}>
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+          </Link>
         </div>
 
-        {/* Search */}
-        <input
-          type="text" value={search} onChange={e => setSearch(e.target.value)}
-          placeholder="🔍 Tìm bộ câu hỏi..."
-          className="w-full px-4 py-2.5 mb-4 rounded-lg border border-white/10 bg-white/5 text-white"
-        />
+        {/* Search + filters */}
+        <div className="px-5 mb-3">
+          <div className="qs-glass rounded-xl px-3 py-2.5 flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="text-gray-400">
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35" />
+            </svg>
+            <input
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              className="bg-transparent outline-none text-sm text-white placeholder-gray-500 flex-1"
+              placeholder="Tìm bộ câu hỏi..."
+            />
+          </div>
 
-        {/* Status filter chips */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {STATUS_FILTERS.map(f => {
-            const selected = statusFilter === f.key
-            return (
-              <button key={f.key} onClick={() => setStatusFilter(f.key)}
-                className={`px-3 py-1.5 rounded-full text-sm border ${selected ? 'border-2' : 'border-white/10'}`}
-                style={selected ? { borderColor: '#e8a832', color: '#e8a832' } : undefined}
-              >
-                {f.label} · {counts[f.key] || 0}
-              </button>
-            )
-          })}
+          <div className="flex gap-1.5 mt-2 overflow-x-auto qs-scroll-thin pb-1">
+            {STATUS_FILTERS.map(f => {
+              const selected = statusFilter === f.key
+              return (
+                <button
+                  key={f.key}
+                  onClick={() => setStatusFilter(f.key)}
+                  className={`shrink-0 px-3 py-1 rounded-full text-[10px] font-semibold ${
+                    selected
+                      ? 'bg-[#e8a832]/15 text-[#e8a832] border border-[#e8a832]/30'
+                      : 'qs-glass text-gray-300'
+                  }`}
+                >
+                  {f.label} · {counts[f.key] || 0}
+                </button>
+              )
+            })}
+          </div>
+
+          <div className="flex justify-between items-center mt-2">
+            <span className="text-[10px] text-gray-500">Sắp xếp theo:</span>
+            <select
+              value={sort}
+              onChange={e => setSort(e.target.value as any)}
+              className="text-[10px] text-[#e8a832] font-semibold bg-transparent outline-none cursor-pointer"
+            >
+              {SORT_OPTIONS.map(o => (
+                <option key={o.key} value={o.key} className="bg-[#11131e] text-white">{o.label}</option>
+              ))}
+            </select>
+          </div>
         </div>
 
-        {/* Sort */}
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-xs text-white/50">Sắp xếp:</span>
-          <select value={sort} onChange={e => setSort(e.target.value as any)}
-                  className="px-2 py-1 text-sm rounded border border-white/10 bg-white/5 text-white">
-            {SORT_OPTIONS.map(o => <option key={o.key} value={o.key}>{o.label}</option>)}
-          </select>
-        </div>
-
-        {error && <div className="px-4 py-3 mb-4 rounded-lg bg-red-500/20 text-red-200">{error}</div>}
+        {error && (
+          <div className="mx-5 mb-3 px-4 py-3 rounded-lg bg-red-500/20 text-red-200 text-sm">{error}</div>
+        )}
 
         {loading ? (
-          <div className="text-center py-8 text-white/50">Đang tải...</div>
+          <div className="px-5 py-8 text-center text-gray-500">Đang tải...</div>
         ) : items.length === 0 ? (
-          <div className="rounded-xl p-8 text-center border border-white/10 bg-white/5">
-            <div className="text-5xl mb-3">📚</div>
-            <p className="text-white/70 mb-4">{search ? 'Không tìm thấy bộ câu hỏi' : 'Chưa có bộ câu hỏi nào'}</p>
-            {!search && (
-              <Link to={`/groups/${groupId}/quiz-sets/new`}
-                    className="inline-block px-4 py-2 rounded-lg font-bold text-black"
-                    style={{ background: '#e8a832' }}>+ Tạo bộ câu hỏi đầu tiên</Link>
-            )}
-          </div>
+          <EmptyState groupId={groupId!} hasSearch={search.length > 0} />
         ) : (
-          <div className="space-y-2">
-            {items.map(qs => <QuizSetCard key={qs.id} groupId={groupId!} qs={qs} />)}
+          <div className="px-5">
+            {/* Main items (non-draft) */}
+            {nonDrafts.length > 0 && (
+              <div className="mb-3">
+                {nonDrafts.map((qs, idx) => (
+                  <QuizSetCard key={qs.id} groupId={groupId!} qs={qs} featured={idx === 0 && qs.publishStatus === 'PUBLISHED'} />
+                ))}
+              </div>
+            )}
+
+            {/* Drafts section */}
+            {drafts.length > 0 && (
+              <div className="mb-3">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-semibold text-gray-400">Bản nháp của bạn</span>
+                </div>
+                {drafts.map(qs => <DraftCard key={qs.id} groupId={groupId!} qs={qs} />)}
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -112,36 +169,169 @@ export default function QuizSetList() {
   )
 }
 
-function QuizSetCard({ groupId, qs }: { groupId: string; qs: QuizSet }) {
-  const cover = qs.coverImageUrl?.startsWith('emoji:') ? qs.coverImageUrl.slice(6) : '📖'
-  const statusBadge = {
-    DRAFT: { vi: 'Nháp', color: '#94a3b8' },
-    PUBLISHED: null,
-    ARCHIVED: { vi: 'Lưu trữ', color: '#f59e0b' },
-    SOFT_DELETED: { vi: 'Đã xóa', color: '#ef4444' },
-  }[qs.publishStatus]
-  return (
-    <Link to={`/groups/${groupId}/quiz-sets/${qs.id}`}
-          className="flex items-center gap-3 p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10">
-      <div className="w-14 h-14 rounded-lg flex items-center justify-center text-3xl shrink-0"
-           style={{ background: 'linear-gradient(135deg, #2a2d3e, #1a1d2e)' }}>{cover}</div>
-      <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2">
-          <h3 className="font-semibold truncate">{qs.name}</h3>
-          {statusBadge && (
-            <span className="px-2 py-0.5 rounded-full text-xs shrink-0"
-                  style={{ background: statusBadge.color + '33', color: statusBadge.color }}>
-              {statusBadge.vi}
-            </span>
-          )}
+function coverEmoji(qs: QuizSet): string {
+  return qs.coverImageUrl?.startsWith('emoji:') ? qs.coverImageUrl.slice(6) : '📖'
+}
+
+function statusBadge(status: PublishStatus) {
+  switch (status) {
+    case 'PUBLISHED': return { vi: '✓ Đã xuất bản', cls: 'qs-badge-published' }
+    case 'DRAFT':     return { vi: 'Nháp',          cls: 'qs-badge-draft' }
+    case 'ARCHIVED':  return { vi: 'Lưu trữ',       cls: 'qs-badge-archived' }
+    case 'SOFT_DELETED': return { vi: 'Đã xóa',     cls: 'qs-badge-deleted' }
+  }
+}
+
+function QuizSetCard({ groupId, qs, featured }: { groupId: string; qs: QuizSet; featured: boolean }) {
+  const cover = coverEmoji(qs)
+  const badge = statusBadge(qs.publishStatus)
+  const diff = qs.difficulty ? DIFFICULTY_LABEL[qs.difficulty] : null
+
+  if (featured) {
+    return (
+      <Link
+        to={`/groups/${groupId}/quiz-sets/${qs.id}`}
+        className="block rounded-xl mb-2 overflow-hidden qs-glass-strong border border-[#e8a832]/30 qs-fade-in"
+      >
+        <div className="h-20 relative qs-cover-fallback">
+          <div className="absolute inset-0 flex items-center justify-center text-4xl opacity-40">{cover}</div>
+          <div className="absolute top-2 left-2">
+            <span className={`qs-badge-status ${badge.cls}`}>{badge.vi}</span>
+          </div>
+          <div className="absolute top-2 right-2 flex gap-1">
+            {qs.averageRating != null && (
+              <span className="px-1.5 py-0.5 rounded bg-[#e8a832]/30 text-[#e8a832] text-[9px] font-bold">⭐ {Number(qs.averageRating).toFixed(1)}</span>
+            )}
+            <span className="px-1.5 py-0.5 rounded bg-black/40 text-white text-[9px] font-bold backdrop-blur">▶ {qs.playCount}x</span>
+          </div>
         </div>
-        {qs.description && <p className="text-xs text-white/50 truncate">{qs.description}</p>}
-        <div className="flex gap-3 text-xs text-white/40 mt-1">
-          <span>{qs.totalQuestions} câu</span>
-          {qs.playCount > 0 && <span>▶ {qs.playCount}</span>}
-          {qs.averageRating != null && <span>⭐ {qs.averageRating}</span>}
+        <div className="p-3">
+          <h3 className="qs-font-vn-display font-bold text-white text-sm leading-tight mb-1">{qs.name}</h3>
+          {qs.coverScripture && (
+            <div className="text-[10px] text-gray-400 mb-2 line-clamp-1">📍 {qs.coverScripture}{qs.description ? ` · "${qs.description.slice(0, 40)}"` : ''}</div>
+          )}
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-[10px] text-gray-500">{qs.totalQuestions} câu</span>
+            {diff && (
+              <>
+                <span className="text-[10px] text-gray-600">·</span>
+                <span className={`text-[10px] font-semibold ${diff.cssClass}`}>{diff.emoji} {diff.vi}</span>
+              </>
+            )}
+            {qs.estimatedDurationMin != null && (
+              <>
+                <span className="text-[10px] text-gray-600">·</span>
+                <span className="text-[10px] text-gray-500">~{qs.estimatedDurationMin} phút</span>
+              </>
+            )}
+          </div>
+        </div>
+      </Link>
+    )
+  }
+
+  return (
+    <Link
+      to={`/groups/${groupId}/quiz-sets/${qs.id}`}
+      className="block rounded-xl mb-2 qs-glass overflow-hidden qs-fade-in"
+    >
+      <div className="flex p-3 gap-3">
+        <div className="w-14 h-14 rounded-lg flex items-center justify-center text-2xl shrink-0 qs-cover-fallback">{cover}</div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-start justify-between">
+            <h3 className="qs-font-vn-display font-bold text-white text-xs leading-tight truncate">{qs.name}</h3>
+            {qs.publishStatus !== 'PUBLISHED' && (
+              <span className={`qs-badge-status ${badge.cls} shrink-0 ml-1`}>{badge.vi}</span>
+            )}
+            {qs.publishStatus === 'PUBLISHED' && (
+              <span className="qs-badge-status qs-badge-published shrink-0 ml-1">Pub</span>
+            )}
+          </div>
+          {qs.coverScripture && (
+            <div className="text-[10px] text-gray-400 mt-0.5 line-clamp-1">📍 {qs.coverScripture}</div>
+          )}
+          <div className="flex items-center gap-1.5 mt-1.5">
+            <span className="text-[10px] text-gray-500">{qs.totalQuestions} câu</span>
+            {diff && (
+              <>
+                <span className="text-[10px] text-gray-600">·</span>
+                <span className={`text-[10px] font-semibold ${diff.cssClass}`}>{diff.vi}</span>
+              </>
+            )}
+            {qs.playCount > 0 && (
+              <>
+                <span className="text-[10px] text-gray-600">·</span>
+                <span className="text-[10px] text-[#e8a832] font-bold">▶ {qs.playCount}x</span>
+              </>
+            )}
+            {qs.averageRating != null && (
+              <span className="text-[10px] text-[#e8a832] ml-auto">⭐ {Number(qs.averageRating).toFixed(1)}</span>
+            )}
+          </div>
         </div>
       </div>
     </Link>
   )
+}
+
+function DraftCard({ groupId, qs }: { groupId: string; qs: QuizSet }) {
+  const pct = Math.min(100, Math.round((qs.totalQuestions / 15) * 100))
+  return (
+    <Link
+      to={`/groups/${groupId}/quiz-sets/${qs.id}`}
+      className="block rounded-xl mb-2 overflow-hidden border border-gray-500/20"
+      style={{ background: 'rgba(50, 52, 64, 0.3)' }}
+    >
+      <div className="flex p-3 gap-3">
+        <div
+          className="w-14 h-14 rounded-lg flex items-center justify-center text-2xl shrink-0"
+          style={{ background: 'rgba(156, 163, 175, 0.15)' }}
+        >📝</div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-start justify-between">
+            <h3 className="qs-font-vn-display font-bold text-gray-300 text-xs leading-tight truncate">{qs.name}</h3>
+            <span className="qs-badge-status qs-badge-draft shrink-0 ml-1">Nháp</span>
+          </div>
+          <div className="text-[10px] text-gray-500 mt-0.5">
+            {qs.totalQuestions > 0 ? `Mới có ${qs.totalQuestions} câu` : 'Chưa có câu hỏi'} · Sửa cuối: {qs.updatedAt ? formatRelative(qs.updatedAt) : '—'}
+          </div>
+          <div className="mt-1.5">
+            <div className="qs-progress-bar h-1">
+              <div className="qs-progress-fill qs-progress-fill-gold h-1" style={{ width: `${pct}%` }} />
+            </div>
+            <div className="text-[10px] text-gray-500 mt-1">{pct}% hoàn thành</div>
+          </div>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
+function EmptyState({ groupId, hasSearch }: { groupId: string; hasSearch: boolean }) {
+  return (
+    <div className="mx-5 rounded-xl p-8 text-center qs-glass">
+      <div className="text-5xl mb-3">📚</div>
+      <p className="text-gray-300 mb-4 text-sm">
+        {hasSearch ? 'Không tìm thấy bộ câu hỏi nào.' : 'Chưa có bộ câu hỏi nào.'}
+      </p>
+      {!hasSearch && (
+        <Link
+          to={`/groups/${groupId}/quiz-sets/new`}
+          className="inline-block px-4 py-2 rounded-lg qs-gold-grad text-[#11131e] font-bold text-sm"
+        >+ Tạo bộ câu hỏi đầu tiên</Link>
+      )}
+    </div>
+  )
+}
+
+function formatRelative(iso: string): string {
+  const ms = Date.now() - new Date(iso).getTime()
+  const min = Math.floor(ms / 60000)
+  if (min < 60) return `${min} phút trước`
+  const hr = Math.floor(min / 60)
+  if (hr < 24) return `${hr} giờ trước`
+  const day = Math.floor(hr / 24)
+  if (day === 1) return 'hôm qua'
+  if (day < 7) return `${day} ngày trước`
+  return new Date(iso).toLocaleDateString('vi-VN')
 }
