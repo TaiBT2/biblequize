@@ -649,6 +649,13 @@ public class ChurchGroupService {
     }
 
     public Map<String, Object> createQuizSet(String groupId, String userId, String name, List<String> questionIds) {
+        return createQuizSet(groupId, userId, name, questionIds, null);
+    }
+
+    /** Sprint 5: create với optional metadata. metadata keys: description, coverImageUrl,
+     *  tags (List), coverScripture, authorNote, suggestedMode, folderId, language. */
+    public Map<String, Object> createQuizSet(String groupId, String userId, String name,
+                                              List<String> questionIds, Map<String, Object> metadata) {
         GroupMember member = groupMemberRepository.findByGroupIdAndUserId(groupId, userId)
                 .orElseThrow(() -> new RuntimeException("Ban khong phai thanh vien cua nhom"));
 
@@ -665,14 +672,86 @@ public class ChurchGroupService {
         quizSet.setCreatedBy(member.getUser());
         quizSet.setName(name);
         quizSet.setQuestionIds(questionIds);
+        quizSet.setTotalQuestions(questionIds == null ? 0 : questionIds.size());
+        // Sprint 5: default DRAFT cho quiz set mới (cần publish thủ công).
+        quizSet.setPublishStatus(GroupQuizSet.PublishStatus.DRAFT);
+        applyMetadata(quizSet, metadata);
         groupQuizSetRepository.save(quizSet);
 
-        Map<String, Object> result = new LinkedHashMap<>();
-        result.put("id", quizSet.getId());
-        result.put("name", quizSet.getName());
-        result.put("questionIds", questionIds);
-        result.put("createdAt", quizSet.getCreatedAt());
-        return result;
+        return quizSetToMap(quizSet);
+    }
+
+    /** Sprint 5: PATCH metadata. Owner (creator) hoặc LEADER được sửa. */
+    public Map<String, Object> updateQuizSet(String groupId, String setId, String userId,
+                                              String name, List<String> questionIds, Map<String, Object> metadata) {
+        GroupQuizSet set = groupQuizSetRepository.findById(setId)
+                .orElseThrow(() -> new RuntimeException("Quiz set khong ton tai"));
+        if (!set.getGroup().getId().equals(groupId)) {
+            throw new RuntimeException("Quiz set khong thuoc nhom nay");
+        }
+        GroupMember member = groupMemberRepository.findByGroupIdAndUserId(groupId, userId)
+                .orElseThrow(() -> new RuntimeException("Ban khong phai thanh vien cua nhom"));
+        boolean isOwner = set.getCreatedBy().getId().equals(userId);
+        boolean isLeader = member.getRole() == GroupMember.GroupRole.LEADER;
+        if (!isOwner && !isLeader) {
+            throw new RuntimeException("Khong co quyen sua quiz set nay");
+        }
+        if (name != null && !name.isBlank()) set.setName(name);
+        if (questionIds != null) {
+            set.setQuestionIds(questionIds);
+            set.setTotalQuestions(questionIds.size());
+        }
+        applyMetadata(set, metadata);
+        groupQuizSetRepository.save(set);
+        return quizSetToMap(set);
+    }
+
+    @SuppressWarnings("unchecked")
+    private void applyMetadata(GroupQuizSet set, Map<String, Object> m) {
+        if (m == null) return;
+        if (m.containsKey("description")) set.setDescription((String) m.get("description"));
+        if (m.containsKey("coverImageUrl")) set.setCoverImageUrl((String) m.get("coverImageUrl"));
+        if (m.containsKey("tags") && m.get("tags") instanceof List<?> tagList) {
+            // Cap tối đa 5 tags theo SPEC v1.3.
+            set.setTags(tagList.size() > 5 ? tagList.subList(0, 5) : tagList);
+        }
+        if (m.containsKey("coverScripture")) set.setCoverScripture((String) m.get("coverScripture"));
+        if (m.containsKey("authorNote")) set.setAuthorNote((String) m.get("authorNote"));
+        if (m.containsKey("suggestedMode")) set.setSuggestedMode((String) m.get("suggestedMode"));
+        if (m.containsKey("folderId")) set.setFolderId((String) m.get("folderId"));
+        if (m.containsKey("language")) set.setLanguage((String) m.get("language"));
+    }
+
+    /** Map GroupQuizSet → response. Reuse cho create/update/list/detail. */
+    public static Map<String, Object> quizSetToMap(GroupQuizSet qs) {
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("id", qs.getId());
+        map.put("groupId", qs.getGroup() != null ? qs.getGroup().getId() : null);
+        map.put("name", qs.getName());
+        map.put("questionIds", qs.getQuestionIds());
+        map.put("totalQuestions", qs.getTotalQuestions());
+        map.put("createdBy", qs.getCreatedBy() != null ? qs.getCreatedBy().getId() : null);
+        map.put("createdAt", qs.getCreatedAt());
+        map.put("updatedAt", qs.getUpdatedAt());
+        map.put("language", qs.getLanguage());
+        // Sprint 5 metadata
+        map.put("description", qs.getDescription());
+        map.put("coverImageUrl", qs.getCoverImageUrl());
+        map.put("tags", qs.getTags());
+        map.put("coverScripture", qs.getCoverScripture());
+        map.put("authorNote", qs.getAuthorNote());
+        map.put("difficulty", qs.getDifficulty() != null ? qs.getDifficulty().name() : null);
+        map.put("estimatedDurationMin", qs.getEstimatedDurationMin());
+        map.put("suggestedMode", qs.getSuggestedMode());
+        map.put("playCount", qs.getPlayCount());
+        map.put("averageRating", qs.getAverageRating());
+        map.put("totalRatings", qs.getTotalRatings());
+        map.put("lastPlayedAt", qs.getLastPlayedAt());
+        map.put("publishStatus", qs.getPublishStatus() != null ? qs.getPublishStatus().name() : null);
+        map.put("publishedAt", qs.getPublishedAt());
+        map.put("archivedAt", qs.getArchivedAt());
+        map.put("folderId", qs.getFolderId());
+        return map;
     }
 
     // ── PATCH /groups/{id} ─────────────────────────────────────────────────

@@ -320,11 +320,9 @@ public class ChurchGroupController {
             if (name == null || name.isBlank()) {
                 return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Ten quiz set khong duoc de trong"));
             }
-            if (questionIds == null || questionIds.isEmpty()) {
-                return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Danh sach cau hoi khong duoc de trong"));
-            }
+            if (questionIds == null) questionIds = new ArrayList<>();
 
-            Map<String, Object> result = churchGroupService.createQuizSet(id, user.getId(), name, questionIds);
+            Map<String, Object> result = churchGroupService.createQuizSet(id, user.getId(), name, questionIds, body);
             return ResponseEntity.ok(Map.of("success", true, "quizSet", result));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
@@ -332,25 +330,94 @@ public class ChurchGroupController {
     }
 
     /**
-     * GET /api/groups/{id}/quiz-sets - Danh sach quiz set cua nhom
+     * PATCH /api/groups/{id}/quiz-sets/{setId} - Sprint 5: cap nhat metadata + name + questions.
      */
-    @GetMapping("/{id}/quiz-sets")
-    public ResponseEntity<?> listQuizSets(@PathVariable String id) {
+    @PatchMapping("/{id}/quiz-sets/{setId}")
+    @SuppressWarnings("unchecked")
+    public ResponseEntity<?> updateQuizSet(@PathVariable("id") String id,
+                                           @PathVariable("setId") String setId,
+                                           @RequestBody Map<String, Object> body,
+                                           Principal principal) {
         try {
-            List<GroupQuizSet> quizSets = groupQuizSetRepository.findByGroupId(id);
-            List<Map<String, Object>> list = quizSets.stream().map(qs -> {
-                Map<String, Object> map = new LinkedHashMap<>();
-                map.put("id", qs.getId());
-                map.put("name", qs.getName());
-                map.put("questionIds", qs.getQuestionIds());
-                map.put("createdBy", qs.getCreatedBy().getId());
-                map.put("createdAt", qs.getCreatedAt());
-                return map;
-            }).collect(Collectors.toList());
-            return ResponseEntity.ok(Map.of("success", true, "quizSets", list));
+            User user = getUser(principal);
+            String name = (String) body.get("name");
+            List<String> questionIds = body.get("questionIds") instanceof List<?> l ? (List<String>) l : null;
+            Map<String, Object> result = churchGroupService.updateQuizSet(id, setId, user.getId(), name, questionIds, body);
+            return ResponseEntity.ok(Map.of("success", true, "quizSet", result));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
+    }
+
+    /**
+     * GET /api/groups/{id}/quiz-sets - Danh sach quiz set cua nhom.
+     * Sprint 5: hỗ trợ filter status/folder/search + sort + paging.
+     * Visibility (Q-5 trigger): MEMBER chỉ thấy PUBLISHED + ARCHIVED;
+     * LEADER/MOD và creator thêm thấy DRAFT của họ.
+     */
+    @GetMapping("/{id}/quiz-sets")
+    public ResponseEntity<?> listQuizSets(@PathVariable String id,
+                                          @RequestParam(required = false) String status,
+                                          @RequestParam(required = false) String folder,
+                                          @RequestParam(required = false) String search,
+                                          @RequestParam(required = false, defaultValue = "recent") String sort,
+                                          @RequestParam(required = false, defaultValue = "0") int page,
+                                          @RequestParam(required = false, defaultValue = "50") int size,
+                                          Principal principal) {
+        try {
+            User user = getUser(principal);
+            org.springframework.data.domain.Sort sortOrder;
+            switch (sort) {
+                case "popular" -> sortOrder = org.springframework.data.domain.Sort.by(
+                        org.springframework.data.domain.Sort.Direction.DESC, "playCount");
+                case "name" -> sortOrder = org.springframework.data.domain.Sort.by("name");
+                case "rating" -> sortOrder = org.springframework.data.domain.Sort.by(
+                        org.springframework.data.domain.Sort.Direction.DESC, "averageRating");
+                default -> sortOrder = org.springframework.data.domain.Sort.by(
+                        org.springframework.data.domain.Sort.Direction.DESC, "publishedAt");
+            }
+            org.springframework.data.domain.Pageable pageable =
+                    org.springframework.data.domain.PageRequest.of(page, Math.min(size, 100), sortOrder);
+
+            GroupQuizSet.PublishStatus filterStatus = null;
+            if (status != null && !status.isBlank()) {
+                try { filterStatus = GroupQuizSet.PublishStatus.valueOf(status.toUpperCase()); }
+                catch (IllegalArgumentException ignore) {}
+            }
+            String folderId = (folder == null || folder.isBlank() || "null".equals(folder)) ? null : folder;
+            String searchQ = (search == null || search.isBlank()) ? null : search.trim();
+
+            org.springframework.data.domain.Page<GroupQuizSet> result =
+                    groupQuizSetRepository.findFiltered(id, filterStatus, folderId, searchQ, pageable);
+
+            // Visibility filter: ẩn DRAFT của user khác trừ khi requester là LEADER/MOD.
+            boolean isLeaderOrMod = isLeaderOrMod(id, user.getId());
+            List<Map<String, Object>> items = result.getContent().stream()
+                    .filter(qs -> {
+                        if (qs.getPublishStatus() == GroupQuizSet.PublishStatus.SOFT_DELETED) return false;
+                        if (qs.getPublishStatus() != GroupQuizSet.PublishStatus.DRAFT) return true;
+                        // DRAFT: chỉ creator hoặc leader/mod
+                        return isLeaderOrMod || qs.getCreatedBy().getId().equals(user.getId());
+                    })
+                    .map(com.biblequiz.modules.group.service.ChurchGroupService::quizSetToMap)
+                    .collect(Collectors.toList());
+
+            return ResponseEntity.ok(Map.of(
+                    "success", true,
+                    "quizSets", items,
+                    "page", page,
+                    "totalElements", result.getTotalElements(),
+                    "totalPages", result.getTotalPages()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    private boolean isLeaderOrMod(String groupId, String userId) {
+        return groupMemberRepository.findByGroupIdAndUserId(groupId, userId)
+                .map(m -> m.getRole() == com.biblequiz.modules.group.entity.GroupMember.GroupRole.LEADER
+                       || m.getRole() == com.biblequiz.modules.group.entity.GroupMember.GroupRole.MOD)
+                .orElse(false);
     }
 
     /**
