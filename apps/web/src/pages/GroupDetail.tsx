@@ -15,6 +15,7 @@ interface Member {
   avatarUrl?: string;
   role: string;
   joinedAt: string;
+  lastActiveAt?: string | null;
 }
 
 interface Group {
@@ -958,6 +959,7 @@ const GroupDetail: React.FC = () => {
             name: m.name,
             avatarUrl: m.avatarUrl,
             role: m.role,
+            lastActiveAt: m.lastActiveAt ?? null,
           }))}
           quizSets={latestQuizSetsForOverview.map((qs) => ({
             id: qs.id,

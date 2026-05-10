@@ -307,6 +307,10 @@ public class ChurchGroupService {
             memberMap.put("avatarUrl", m.getUser().getAvatarUrl());
             memberMap.put("role", m.getRole().name());
             memberMap.put("joinedAt", m.getJoinedAt());
+            // GD-FIX-3: surface lastActiveAt so FE can derive an online/offline
+            // split for the Members preview card. Real presence (Redis-backed)
+            // lands in BL-17 alongside Activity Feed.
+            memberMap.put("lastActiveAt", m.getLastActiveAt());
             return memberMap;
         }).collect(Collectors.toList());
 

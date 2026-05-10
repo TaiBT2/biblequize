@@ -1631,6 +1631,11 @@
       "copyLink": "Copy link",
       "openTooltip": "Show QR code to share"
     },
+    "membersPreview": {
+      "onlineHeader": "🟢 Online ({{count}})",
+      "othersHeader": "Others ({{count}})",
+      "allHeader": "Members ({{count}})"
+    },
     "sidebarInfo": {
       "activeNow": "Active now",
       "fallbackName": "Your group",

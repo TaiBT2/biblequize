@@ -1631,6 +1631,11 @@
       "copyLink": "Sao chép link",
       "openTooltip": "Hiện QR code để chia sẻ"
     },
+    "membersPreview": {
+      "onlineHeader": "🟢 Đang online ({{count}})",
+      "othersHeader": "Khác ({{count}})",
+      "allHeader": "Thành viên ({{count}})"
+    },
     "sidebarInfo": {
       "activeNow": "Đang tham gia",
       "fallbackName": "Nhóm của bạn",
