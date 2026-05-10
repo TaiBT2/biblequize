@@ -1,0 +1,13 @@
+SPRINT5 BASELINE — captured 2026-05-10 (Q-0 verify, before any code change)
+
+Backend (apps/api/.test-baseline):  829 tests
+Frontend (apps/web/.test-baseline): 1227 tests
+
+i18n hardcoded baseline (per CLAUDE.md 2026-05-09): 648 lines / 14 missing keys
+i18n validator command:  cd apps/web && npm run validate:i18n
+
+Acceptance after Sprint 5:
+- BE >= 829 + 35 (allow ±5)
+- FE >= 1227 + 22 (allow ±5)
+- i18n hardcoded count: KHÔNG tăng so với 648
+- Pre-existing failures: KHÔNG được tăng
