@@ -27,6 +27,20 @@
 - spec-audit: broken=55 (no new) — neutral
 - Manual smoke: PENDING (Bui to verify in dev server)
 
+### Visual gap follow-up (PROMPT_FIX_GROUP_DETAIL_VISUAL_GAPS.md, 2026-05-10) — DONE
+- GD-5b sidebar Group Quick Info card (4391528) — fills hidden personal-widget slot
+- GD-FIX-1 Pulse banner on Activity tab leader-only (1c9cdde)
+- GD-FIX-2 Live Now banner — host name, multi-room pill, room-label prefix (7c3a086)
+- GD-FIX-3 Members preview online/offline split via lastActiveAt (250924b) — BE map exposes lastActiveAt
+- GD-FIX-4 Quiz set cards rich metadata (icon gradient, play count, rating) (7cac8cc)
+- GD-FIX-5 Sidebar wording "🟢 Đang online · X/N" (80993d1)
+- GD-FIX-6 Activity Feed filter chips preview (fb7e108)
+- GD-FIX-7 Onboarding icons in colored bg circles (1fbc2d0)
+- GD-FIX-8 Header code section cohesive pill (ca7e2c1)
+- GD-FIX-9 Quick Actions emerald accent on Bắt đầu Live (b893b5c)
+
+Verification: vitest 1237 pass / baseline 1227 (+10, no new module regressions; 32 failing are pre-existing flakes in Ranked/DailyChallenge — not group code).
+
 ### Deferrals (BACKLOG)
 - BL-16 — leaderboard endpoint `410 Gone` Sprint 7+ (after mobile catches up)
 - BL-17 — Group Activity Feed entity + service Sprint 6
