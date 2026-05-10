@@ -48,6 +48,10 @@ public class SessionService {
     private final UserTierService userTierService;
     private final com.biblequiz.modules.group.repository.GroupMemberRepository groupMemberRepository;
 
+    /** BL-S5-1: optional dependency để tránh sửa rộng constructor + nhiều test mock. */
+    @org.springframework.beans.factory.annotation.Autowired(required = false)
+    private com.biblequiz.modules.group.service.GroupQuizSetMasteryService groupQuizSetMasteryService;
+
     public SessionService(QuizSessionRepository quizSessionRepository,
             QuizSessionQuestionRepository quizSessionQuestionRepository,
             QuestionRepository questionRepository,
@@ -114,6 +118,11 @@ public class SessionService {
         }
         QuizSession session = new QuizSession(sessionId, mode, owner, configJson);
         session.setStatus(QuizSession.Status.in_progress);
+        // BL-S5-1: link session to group quiz set nếu source là "Tự ôn solo".
+        Object groupQuizSetIdObj = config.get("groupQuizSetId");
+        if (groupQuizSetIdObj instanceof String s && !s.isBlank()) {
+            session.setGroupQuizSetId(s);
+        }
         quizSessionRepository.save(session);
 
         int questionCount = ((Number) config.getOrDefault("questionCount", 10)).intValue();
@@ -135,9 +144,19 @@ public class SessionService {
         }
 
         List<Question> questions;
+        // BL-S5-1: nếu config có customQuestionIds (vd. từ group quiz set "Tự ôn solo"),
+        // load chính xác các câu đó theo thứ tự — bỏ qua smart selection.
+        @SuppressWarnings("unchecked")
+        List<String> customQids = config.get("customQuestionIds") instanceof List<?>
+                ? (List<String>) config.get("customQuestionIds") : null;
         boolean useSmartSelection = (mode == QuizSession.Mode.practice || mode == QuizSession.Mode.ranked)
-                && !hasRangeFilter;
-        if (useSmartSelection) {
+                && !hasRangeFilter && (customQids == null || customQids.isEmpty());
+        if (customQids != null && !customQids.isEmpty()) {
+            // Preserve order from quiz set's question_ids JSON.
+            var byId = questionRepository.findAllById(customQids).stream()
+                    .collect(java.util.stream.Collectors.toMap(Question::getId, q -> q));
+            questions = customQids.stream().map(byId::get).filter(java.util.Objects::nonNull).toList();
+        } else if (useSmartSelection) {
             // Smart selection: prioritize unseen + review questions for practice/ranked
             var filter = new SmartQuestionSelector.QuestionFilter(book, difficultyStr, language);
             questions = smartQuestionSelector.selectQuestions(owner.getId(), questionCount, filter);
@@ -909,6 +928,31 @@ public class SessionService {
             session.setStartedAt(session.getCreatedAt() != null ? session.getCreatedAt() : now);
         }
         quizSessionRepository.save(session);
+
+        // BL-S5-1: hook Mastery — Q-A SAFE (KHÔNG vào group leaderboard).
+        // Chỉ invoke khi session bắt nguồn từ "Tự ôn solo" 1 group quiz set.
+        if (session.getGroupQuizSetId() != null && groupQuizSetMasteryService != null) {
+            try {
+                java.util.Set<String> correctIds = session.getAnswers().stream()
+                        .filter(a -> Boolean.TRUE.equals(a.getIsCorrect()))
+                        .map(a -> a.getQuestion() != null ? a.getQuestion().getId() : null)
+                        .filter(java.util.Objects::nonNull)
+                        .collect(java.util.stream.Collectors.toSet());
+                int totalAnswered = session.getAnswers().size();
+                double accuracyPct = totalAnswered > 0
+                        ? (correctIds.size() * 100.0 / totalAnswered)
+                        : 0.0;
+                int score = session.getScore() != null ? session.getScore() : 0;
+                groupQuizSetMasteryService.recordPracticeSession(
+                        session.getGroupQuizSetId(),
+                        session.getOwner().getId(),
+                        correctIds, score, accuracyPct);
+            } catch (Exception e) {
+                // Mastery tracking là best-effort. Không block completion.
+                log.warn("Mastery tracking failed for session {}: {}", session.getId(), e.getMessage());
+            }
+        }
+
         return toCompleteSessionDto(session);
     }
 

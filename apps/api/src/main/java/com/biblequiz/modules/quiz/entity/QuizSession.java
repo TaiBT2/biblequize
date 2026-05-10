@@ -56,6 +56,10 @@ public class QuizSession {
     @Column(name = "last_activity_at")
     private LocalDateTime lastActivityAt;
 
+    /** BL-S5-1: link sang group_quiz_sets nếu session bắt nguồn từ "Tự ôn solo" 1 quiz set. */
+    @Column(name = "group_quiz_set_id", length = 36)
+    private String groupQuizSetId;
+
     @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<QuizSessionQuestion> sessionQuestions = new ArrayList<>();
     
@@ -199,5 +203,13 @@ public class QuizSession {
     
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
+    }
+
+    public String getGroupQuizSetId() {
+        return groupQuizSetId;
+    }
+
+    public void setGroupQuizSetId(String groupQuizSetId) {
+        this.groupQuizSetId = groupQuizSetId;
     }
 }

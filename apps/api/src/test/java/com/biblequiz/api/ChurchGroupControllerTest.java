@@ -73,6 +73,9 @@ class ChurchGroupControllerTest extends BaseControllerTest {
     @MockBean
     private com.biblequiz.modules.group.service.GroupQuizSetMasteryService masteryService;
 
+    @MockBean
+    private com.biblequiz.modules.quiz.service.SessionService sessionService;
+
     private User testUser;
 
     @BeforeEach

@@ -159,6 +159,12 @@ export async function deleteFolder(groupId: string, folderId: string): Promise<v
   await api.delete(`/api/groups/${groupId}/quiz-set-folders/${folderId}`)
 }
 
+/** BL-S5-1: start solo practice session từ group quiz set. Returns sessionId + questions để navigate sang /quiz. */
+export async function startSoloPractice(groupId: string, setId: string) {
+  const res = await api.post(`/api/groups/${groupId}/quiz-sets/${setId}/solo-practice`)
+  return res.data as { sessionId: string; questions: unknown[] }
+}
+
 export async function createLiveRoomFromQuizSet(
   groupId: string,
   body: { quizSetId: string; mode?: RoomMode; timePerQuestion?: number }

@@ -3,7 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import {
   archiveQuizSet, cloneQuizSet, createLiveRoomFromQuizSet, deleteQuizSet,
   getMyMastery, getQuizSet, getModeAvailability, MODE_LABELS,
-  publishQuizSet, type QuizSet, type QuizSetMastery, type RoomMode, unarchiveQuizSet,
+  publishQuizSet, startSoloPractice, type QuizSet, type QuizSetMastery,
+  type RoomMode, unarchiveQuizSet,
 } from '../../api/quizSets'
 
 const STATUS_BADGE: Record<string, { vi: string; cls: string }> = {
@@ -79,6 +80,26 @@ export default function QuizSetDetail() {
     try {
       const room = await createLiveRoomFromQuizSet(groupId, { quizSetId: quizSet.id, mode })
       navigate(`/room/${room.roomCode}`)
+    } catch (err: any) {
+      setError(err?.response?.data?.message || err.message)
+    } finally {
+      setBusy(false); setShowModePicker(false)
+    }
+  }
+
+  const startSolo = async () => {
+    if (!groupId) return
+    setBusy(true)
+    try {
+      const sess = await startSoloPractice(groupId, quizSet.id)
+      navigate('/quiz', {
+        state: {
+          sessionId: sess.sessionId,
+          questions: sess.questions,
+          showExplanation: true,
+          timePerQuestion: 30,
+        },
+      })
     } catch (err: any) {
       setError(err?.response?.data?.message || err.message)
     } finally {
@@ -238,8 +259,9 @@ export default function QuizSetDetail() {
           {quizSet.publishStatus === 'PUBLISHED' && (
             <div className="grid grid-cols-2 gap-2 mb-2">
               <button
-                onClick={() => navigate(`/practice?source=quiz-set&id=${quizSet.id}`)}
-                className="py-2.5 rounded-xl qs-glass border border-[#e8a832]/30 text-[#e8a832] font-semibold text-xs flex items-center justify-center gap-1.5"
+                onClick={startSolo}
+                disabled={busy}
+                className="py-2.5 rounded-xl qs-glass border border-[#e8a832]/30 text-[#e8a832] font-semibold text-xs flex items-center justify-center gap-1.5 disabled:opacity-50"
               ><span>📚</span><span>Tự ôn solo</span></button>
               <button
                 onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${quizSet.id}`)}
@@ -309,6 +331,7 @@ export default function QuizSetDetail() {
           quizSet={quizSet}
           busy={busy}
           onPick={startMode}
+          onSolo={startSolo}
           onClose={() => setShowModePicker(false)}
         />
       )}
@@ -317,10 +340,10 @@ export default function QuizSetDetail() {
 }
 
 function ModePickerModal({
-  quizSet, busy, onPick, onClose,
+  quizSet, busy, onPick, onSolo, onClose,
 }: {
   quizSet: QuizSet; busy: boolean;
-  onPick: (mode: RoomMode) => void; onClose: () => void;
+  onPick: (mode: RoomMode) => void; onSolo: () => void; onClose: () => void;
 }) {
   const cover = quizSet.coverImageUrl?.startsWith('emoji:') ? quizSet.coverImageUrl.slice(6) : '📖'
   const diff = quizSet.difficulty ? DIFFICULTY[quizSet.difficulty] : null
@@ -361,8 +384,9 @@ function ModePickerModal({
         <div className="px-4 mb-3">
           <SectionHeader emoji="📚" label="Cá nhân" colorCls="text-emerald-400" />
           <button
-            onClick={() => { onClose(); window.location.href = `/practice?source=quiz-set&id=${quizSet.id}` }}
-            className="w-full qs-glass rounded-xl p-3 flex items-center gap-3 border border-emerald-400/20"
+            onClick={() => { if (!busy) onSolo() }}
+            disabled={busy}
+            className="w-full qs-glass rounded-xl p-3 flex items-center gap-3 border border-emerald-400/20 disabled:opacity-50"
           >
             <div className="qs-mode-icon qs-mode-seq shrink-0">📚</div>
             <div className="flex-1 text-left min-w-0">

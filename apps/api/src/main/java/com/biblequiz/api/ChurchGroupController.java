@@ -50,6 +50,9 @@ public class ChurchGroupController {
     private GroupQuizSetMasteryService masteryService;
 
     @Autowired
+    private com.biblequiz.modules.quiz.service.SessionService sessionService;
+
+    @Autowired
     private GroupMemberRepository groupMemberRepository;
 
     @Autowired
@@ -479,6 +482,58 @@ public class ChurchGroupController {
             User user = getUser(principal);
             return ResponseEntity.ok(Map.of("success", true,
                     "quizSet", churchGroupService.softDeleteQuizSet(id, setId, user.getId())));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * POST /api/groups/{id}/quiz-sets/{setId}/solo-practice — BL-S5-1.
+     * Tạo QuizSession (mode=practice) từ group quiz set, set groupQuizSetId
+     * để completeSession invoke MasteryService. Returns sessionId + questions.
+     * Q-A SAFE — KHÔNG vào group leaderboard.
+     */
+    @PostMapping("/{id}/quiz-sets/{setId}/solo-practice")
+    @SuppressWarnings("unchecked")
+    public ResponseEntity<?> startSoloPractice(@PathVariable("id") String groupId,
+                                                @PathVariable("setId") String setId,
+                                                Principal principal) {
+        try {
+            User user = getUser(principal);
+            // Membership check (member trở lên có quyền tự ôn)
+            groupMemberRepository.findByGroupIdAndUserId(groupId, user.getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Ban khong phai thanh vien cua nhom nay"));
+
+            GroupQuizSet gqs = groupQuizSetRepository.findById(setId)
+                    .orElseThrow(() -> new RuntimeException("Quiz set khong ton tai"));
+            if (!gqs.getGroup().getId().equals(groupId)) {
+                return ResponseEntity.status(403).body(Map.of("success", false,
+                        "message", "Quiz set khong thuoc nhom nay"));
+            }
+            // Cho phép cả PUBLISHED và ARCHIVED tự ôn (DRAFT chỉ creator).
+            if (gqs.getPublishStatus() == GroupQuizSet.PublishStatus.SOFT_DELETED
+                    || (gqs.getPublishStatus() == GroupQuizSet.PublishStatus.DRAFT
+                        && !gqs.getCreatedBy().getId().equals(user.getId()))) {
+                return ResponseEntity.badRequest().body(Map.of("success", false,
+                        "message", "Khong the on tap bo cau hoi nay"));
+            }
+            List<String> qids = (List<String>) gqs.getQuestionIds();
+            if (qids == null || qids.isEmpty()) {
+                return ResponseEntity.badRequest().body(Map.of("success", false,
+                        "message", "Bo cau hoi rong"));
+            }
+
+            // Delegate sang SessionService để tạo session với mode=practice + groupQuizSetId.
+            Map<String, Object> config = new java.util.HashMap<>();
+            config.put("groupQuizSetId", setId);
+            config.put("customQuestionIds", qids);
+            config.put("questionCount", qids.size());
+            config.put("language", gqs.getLanguage() != null ? gqs.getLanguage().toLowerCase() : "vi");
+            Map<String, Object> result = sessionService.createSession(user.getId(),
+                    com.biblequiz.modules.quiz.entity.QuizSession.Mode.practice, config);
+            return ResponseEntity.ok(result);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
