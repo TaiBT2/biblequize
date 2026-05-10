@@ -13,6 +13,7 @@ import MembersPreviewCard, { MemberPreview } from './MembersPreviewCard';
 import QuizSetsPreviewCard, { QuizSetPreview } from './QuizSetsPreviewCard';
 import ActivityFeedPlaceholder from './ActivityFeedPlaceholder';
 import NewGroupOnboarding from './NewGroupOnboarding';
+import CellGroupPulseCard from './CellGroupPulseCard';
 
 interface Props {
   groupId: string;
@@ -35,6 +36,11 @@ interface Props {
 export default function GroupActivityTab(props: Props) {
   return (
     <div className="space-y-5" data-testid="group-activity-tab">
+      {/* GD-FIX-1: Pulse placeholder pinned top of Activity tab for leader/mod
+          (member view never sees it). Surfaces the Sprint 6 heuristic per
+          mockup MOCKUP_GROUP_DETAIL_REDESIGN.html. */}
+      {props.isLeader && <CellGroupPulseCard />}
+
       <NewGroupOnboarding
         groupId={props.groupId}
         groupCreatedAt={props.groupCreatedAt}
