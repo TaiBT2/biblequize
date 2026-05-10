@@ -100,6 +100,13 @@ export default function AppLayout() {
                     <LeaderboardRankWidget />
                     <LeaderboardSeasonWidget />
                   </>
+                ) : location.pathname.startsWith('/groups/') ? (
+                  // GD-5: in group context, hide personal cards (streak, daily
+                  // mission). Group-relevant info lives inside the page content
+                  // (Live Now banner, Members preview, Quick Actions). Sidebar
+                  // stays clean to avoid context drift between personal and
+                  // group focus.
+                  null
                 ) : (
                   <>
                     <StreakWidget />
