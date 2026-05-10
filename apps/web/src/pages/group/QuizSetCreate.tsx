@@ -1,6 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { createQuizSet, MODE_LABELS, type RoomMode } from '../../api/quizSets'
+import {
+  createQuizSet, listFolders, createFolder,
+  MODE_LABELS, type QuizSetFolder, type RoomMode,
+} from '../../api/quizSets'
 
 const ICON_OPTIONS = ['📖', '📜', '✝️', '🕊️', '⛪', '🎈', '🌸', '🎄', '👑', '⚔️']
 const PREDEFINED_TAGS: { label: string; chipCls: string }[] = [
@@ -25,6 +28,13 @@ export default function QuizSetCreate() {
   const [tags, setTags] = useState<string[]>([])
   const [suggestedMode, setSuggestedMode] = useState<RoomMode | ''>('')
   const [authorNote, setAuthorNote] = useState('')
+  const [folderId, setFolderId] = useState<string | null>(null)
+  const [folders, setFolders] = useState<QuizSetFolder[]>([])
+
+  useEffect(() => {
+    if (!groupId) return
+    listFolders(groupId).then(setFolders).catch(() => {})
+  }, [groupId])
 
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -58,6 +68,7 @@ export default function QuizSetCreate() {
         coverScripture: coverScripture.trim() || undefined,
         authorNote: authorNote.trim() || undefined,
         suggestedMode: suggestedMode || undefined,
+        folderId: folderId,
       })
       navigate(`/groups/${groupId}/quiz-sets/${created.id}`)
     } catch (err: any) {
@@ -202,6 +213,48 @@ export default function QuizSetCreate() {
             })}
           </div>
           <div className="text-[10px] text-gray-500 mt-2">Người chơi vẫn có thể chọn mode khác khi tạo phòng</div>
+        </Section>
+
+        {/* Folder */}
+        <Section label="Thư mục">
+          <div className="space-y-1.5">
+            <button
+              type="button"
+              onClick={() => setFolderId(null)}
+              className={`w-full px-3 py-2 rounded-xl flex items-center justify-between text-sm ${
+                folderId === null ? 'qs-glass border border-[#e8a832]/40 text-[#e8a832]' : 'qs-glass text-gray-300'
+              }`}
+            >
+              <span>📂 Không phân loại</span>
+              {folderId === null && <span className="text-[10px]">✓</span>}
+            </button>
+            {folders.map(f => (
+              <button
+                key={f.id}
+                type="button"
+                onClick={() => setFolderId(f.id)}
+                className={`w-full px-3 py-2 rounded-xl flex items-center justify-between text-sm ${
+                  folderId === f.id ? 'qs-glass border border-[#e8a832]/40 text-[#e8a832]' : 'qs-glass text-gray-300'
+                }`}
+              >
+                <span>📁 {f.name}</span>
+                {folderId === f.id && <span className="text-[10px]">✓</span>}
+              </button>
+            ))}
+            <button
+              type="button"
+              onClick={async () => {
+                const newName = window.prompt('Tên thư mục mới?')
+                if (!newName?.trim() || !groupId) return
+                try {
+                  const created = await createFolder(groupId, newName.trim())
+                  setFolders(prev => [...prev, created])
+                  setFolderId(created.id)
+                } catch (err: any) { setError(err?.response?.data?.message || err.message) }
+              }}
+              className="w-full px-3 py-2 rounded-xl qs-glass border border-dashed border-white/20 text-xs text-gray-400 hover:text-[#e8a832] hover:border-[#e8a832]/40"
+            >+ Tạo thư mục mới</button>
+          </div>
         </Section>
 
         {/* Author note */}

@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import {
-  listQuizSets, type ListQuizSetsParams,
-  type PublishStatus, type QuizSet,
+  listQuizSets, listFolders, createFolder, deleteFolder,
+  type ListQuizSetsParams, type PublishStatus, type QuizSet, type QuizSetFolder,
 } from '../../api/quizSets'
 
 const STATUS_FILTERS: { key: PublishStatus | 'ALL'; label: string }[] = [
@@ -30,23 +30,50 @@ export default function QuizSetList() {
   const { id: groupId } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const [items, setItems] = useState<QuizSet[]>([])
+  const [folders, setFolders] = useState<QuizSetFolder[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [statusFilter, setStatusFilter] = useState<PublishStatus | 'ALL'>('ALL')
   const [sort, setSort] = useState<ListQuizSetsParams['sort']>('popular')
   const [search, setSearch] = useState('')
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({})
 
   useEffect(() => {
     if (!groupId) return
     setLoading(true); setError(null)
-    listQuizSets(groupId, {
-      status: statusFilter === 'ALL' ? undefined : statusFilter,
-      sort, search: search.trim() || undefined, size: 100,
-    })
-      .then(res => setItems(res.quizSets))
+    Promise.all([
+      listQuizSets(groupId, {
+        status: statusFilter === 'ALL' ? undefined : statusFilter,
+        sort, search: search.trim() || undefined, size: 100,
+      }),
+      listFolders(groupId).catch(() => []),
+    ])
+      .then(([qsRes, folderList]) => { setItems(qsRes.quizSets); setFolders(folderList) })
       .catch(err => setError(err?.response?.data?.message || err.message))
       .finally(() => setLoading(false))
   }, [groupId, statusFilter, sort, search])
+
+  const refreshFolders = () => groupId && listFolders(groupId).then(setFolders).catch(() => {})
+
+  const handleCreateFolder = async () => {
+    const name = window.prompt('Tên thư mục mới?')
+    if (!name || !name.trim() || !groupId) return
+    try {
+      await createFolder(groupId, name.trim())
+      refreshFolders()
+    } catch (err: any) { setError(err?.response?.data?.message || err.message) }
+  }
+
+  const handleDeleteFolder = async (folder: QuizSetFolder) => {
+    if (!confirm(`Xóa thư mục "${folder.name}"? Quiz sets bên trong sẽ trở thành "không phân loại".`)) return
+    if (!groupId) return
+    try {
+      await deleteFolder(groupId, folder.id)
+      refreshFolders()
+    } catch (err: any) { setError(err?.response?.data?.message || err.message) }
+  }
+
+  const toggle = (key: string) => setCollapsed(c => ({ ...c, [key]: !c[key] }))
 
   const counts = useMemo(() => {
     const c: Record<string, number> = { ALL: items.length }
@@ -56,6 +83,21 @@ export default function QuizSetList() {
 
   const drafts = useMemo(() => items.filter(qs => qs.publishStatus === 'DRAFT'), [items])
   const nonDrafts = useMemo(() => items.filter(qs => qs.publishStatus !== 'DRAFT'), [items])
+
+  const grouped = useMemo(() => {
+    const byFolder = new Map<string, QuizSet[]>()
+    const uncategorized: QuizSet[] = []
+    nonDrafts.forEach(qs => {
+      if (qs.folderId) {
+        const arr = byFolder.get(qs.folderId) || []
+        arr.push(qs)
+        byFolder.set(qs.folderId, arr)
+      } else {
+        uncategorized.push(qs)
+      }
+    })
+    return { byFolder, uncategorized }
+  }, [nonDrafts])
 
   return (
     <div className="qs-bg min-h-screen">
@@ -144,11 +186,41 @@ export default function QuizSetList() {
           <EmptyState groupId={groupId!} hasSearch={search.length > 0} />
         ) : (
           <div className="px-5">
-            {/* Main items (non-draft) */}
-            {nonDrafts.length > 0 && (
+            {/* Folders với quiz sets bên trong */}
+            {folders.map(folder => {
+              const folderItems = grouped.byFolder.get(folder.id) || []
+              if (folderItems.length === 0) return (
+                <FolderHeader
+                  key={folder.id} folder={folder} count={0}
+                  collapsed={collapsed[folder.id]} onToggle={() => toggle(folder.id)}
+                  onDelete={() => handleDeleteFolder(folder)}
+                />
+              )
+              return (
+                <div key={folder.id} className="mb-3">
+                  <FolderHeader
+                    folder={folder} count={folderItems.length}
+                    collapsed={collapsed[folder.id]} onToggle={() => toggle(folder.id)}
+                    onDelete={() => handleDeleteFolder(folder)}
+                  />
+                  {!collapsed[folder.id] && folderItems.map((qs, idx) => (
+                    <QuizSetCard key={qs.id} groupId={groupId!} qs={qs} featured={idx === 0} />
+                  ))}
+                </div>
+              )
+            })}
+
+            {/* Uncategorized */}
+            {grouped.uncategorized.length > 0 && (
               <div className="mb-3">
-                {nonDrafts.map((qs, idx) => (
-                  <QuizSetCard key={qs.id} groupId={groupId!} qs={qs} featured={idx === 0 && qs.publishStatus === 'PUBLISHED'} />
+                {folders.length > 0 && (
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xs font-semibold text-gray-300">📂 Khác</span>
+                    <span className="text-[10px] text-gray-500">{grouped.uncategorized.length} bộ</span>
+                  </div>
+                )}
+                {grouped.uncategorized.map((qs, idx) => (
+                  <QuizSetCard key={qs.id} groupId={groupId!} qs={qs} featured={idx === 0 && folders.length === 0} />
                 ))}
               </div>
             )}
@@ -162,8 +234,42 @@ export default function QuizSetList() {
                 {drafts.map(qs => <DraftCard key={qs.id} groupId={groupId!} qs={qs} />)}
               </div>
             )}
+
+            {/* Create folder CTA (only LEADER/MOD; BE enforces, FE just always shows) */}
+            <button
+              onClick={handleCreateFolder}
+              className="w-full mt-3 py-2 rounded-xl qs-glass border border-dashed border-white/20 text-xs text-gray-400 hover:text-[#e8a832] hover:border-[#e8a832]/40"
+            >+ Tạo thư mục mới</button>
           </div>
         )}
+      </div>
+    </div>
+  )
+}
+
+function FolderHeader({
+  folder, count, collapsed, onToggle, onDelete,
+}: {
+  folder: QuizSetFolder; count: number;
+  collapsed?: boolean; onToggle: () => void; onDelete: () => void;
+}) {
+  return (
+    <div className="flex items-center justify-between mb-2">
+      <button onClick={onToggle} className="flex items-center gap-2 text-xs font-semibold text-gray-300">
+        <span>📁</span>
+        <span style={folder.color ? { color: folder.color } : undefined}>{folder.name}</span>
+        <span className="text-[10px] text-gray-500">{count} bộ</span>
+      </button>
+      <div className="flex items-center gap-1.5">
+        <button
+          onClick={onDelete}
+          className="text-[10px] text-gray-500 hover:text-red-400 px-1.5 py-0.5"
+          title="Xóa thư mục"
+        >×</button>
+        <svg
+          width="12" height="12" viewBox="0 0 24 24" fill="currentColor"
+          className={`text-gray-500 transition-transform ${collapsed ? 'rotate-180' : ''}`}
+        ><path d="M7 14l5-5 5 5z" /></svg>
       </div>
     </div>
   )

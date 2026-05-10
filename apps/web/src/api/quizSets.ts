@@ -135,6 +135,30 @@ export async function getMyMasteries(groupId: string): Promise<QuizSetMastery[]>
   return res.data.masteries
 }
 
+export interface QuizSetFolder {
+  id: string
+  groupId: string
+  name: string
+  color?: string | null
+  displayOrder: number
+  createdBy: string
+  createdAt: string
+}
+
+export async function listFolders(groupId: string): Promise<QuizSetFolder[]> {
+  const res = await api.get(`/api/groups/${groupId}/quiz-set-folders`)
+  return res.data.folders
+}
+
+export async function createFolder(groupId: string, name: string, color?: string): Promise<QuizSetFolder> {
+  const res = await api.post(`/api/groups/${groupId}/quiz-set-folders`, { name, color })
+  return res.data.folder
+}
+
+export async function deleteFolder(groupId: string, folderId: string): Promise<void> {
+  await api.delete(`/api/groups/${groupId}/quiz-set-folders/${folderId}`)
+}
+
 export async function createLiveRoomFromQuizSet(
   groupId: string,
   body: { quizSetId: string; mode?: RoomMode; timePerQuestion?: number }
