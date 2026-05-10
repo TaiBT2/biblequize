@@ -64,6 +64,29 @@ public abstract class BaseControllerTest {
     protected UserService userService;
 
     /**
+     * Mock RoomWebSocketController for all @WebMvcTest slices — RoomController and
+     * a few service beans depend on it via @Autowired, but @WebMvcTest doesn't load
+     * the websocket configuration so the bean is otherwise missing. Bridge mock here
+     * so every controller test inherits it instead of duplicating @MockBean per test.
+     */
+    @MockBean
+    protected com.biblequiz.api.websocket.RoomWebSocketController roomWebSocketController;
+
+    @MockBean
+    protected com.biblequiz.modules.room.service.RoomStateService roomStateService;
+
+    @MockBean
+    protected com.biblequiz.modules.room.service.RoomAnalyticsService roomAnalyticsService;
+
+    @MockBean
+    protected com.biblequiz.modules.room.service.HostControlService hostControlService;
+
+    @MockBean
+    protected com.biblequiz.modules.group.repository.GroupMemberRepository groupMemberRepository;
+    // GameModeUnlockConfig: leave per-test (RankedControllerTest already has its own,
+    // bridging here causes duplicate mock definition).
+
+    /**
      * Configure mocked filters to pass through requests instead of swallowing them.
      */
     @BeforeEach

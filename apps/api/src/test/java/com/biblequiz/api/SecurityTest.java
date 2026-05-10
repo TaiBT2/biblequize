@@ -43,6 +43,16 @@ class SecurityTest extends BaseControllerTest {
     @MockBean
     private RankedSessionService rankedSessionService;
 
+    // RankedController dep (pre-existing missing — same as RankedControllerTest fix).
+    @MockBean
+    private com.biblequiz.modules.ranked.service.GameModeUnlockConfig gameModeUnlockConfig;
+
+    @MockBean
+    private com.biblequiz.modules.quiz.repository.AnswerRepository answerRepository;
+
+    @MockBean
+    private com.biblequiz.modules.season.repository.SeasonRankingRepository seasonRankingRepository;
+
     @MockBean
     private UserDailyProgressRepository udpRepository;
 

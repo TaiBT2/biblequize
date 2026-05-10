@@ -49,8 +49,7 @@ class ChurchGroupControllerTest extends BaseControllerTest {
     @MockBean
     private ChurchGroupRepository churchGroupRepository;
 
-    @MockBean
-    private GroupMemberRepository groupMemberRepository;
+    // GroupMemberRepository moved to BaseControllerTest (shared cross-test).
 
     @MockBean
     private QuestionRepository questionRepository;
