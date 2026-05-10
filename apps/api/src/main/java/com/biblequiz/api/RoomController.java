@@ -96,9 +96,9 @@ public class RoomController {
             }
 
             Room room = roomService.createRoom(roomName, user, maxPlayers, questionCount, timePerQuestion, mode, isPublic, difficulty, bookScope, questionSource, questionSetId, hostPlaysGame);
-            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(room.getId(), user.getId());
+            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(room.getId());
 
-            return ResponseEntity.ok(Map.of("success", true, "room", details));
+            return ResponseEntity.ok(Map.of("success", true, "room", details, "viewerUserId", user.getId()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
@@ -117,7 +117,7 @@ public class RoomController {
             }
 
             Room room = roomService.joinRoom(roomCode.trim().toUpperCase(), user);
-            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(room.getId(), user.getId());
+            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(room.getId());
 
             // Broadcast PLAYER_JOINED so existing subscribers (e.g. the host) see the new player immediately
             WebSocketMessage.PlayerJoinedData playerData = new WebSocketMessage.PlayerJoinedData(
@@ -129,7 +129,7 @@ public class RoomController {
             roomWebSocketController.sendToRoom(room.getId(),
                     new WebSocketMessage.Message(WebSocketMessage.MessageTypes.PLAYER_JOINED, playerData));
 
-            return ResponseEntity.ok(Map.of("success", true, "room", details));
+            return ResponseEntity.ok(Map.of("success", true, "room", details, "viewerUserId", user.getId()));
         } catch (Exception e) {
             // SPEC v1.1 §8.7: structured 422 so FE can prompt user to leave
             // their current room before joining another.
@@ -144,8 +144,11 @@ public class RoomController {
     }
 
     /**
-     * GET /api/rooms/{id} - Lấy thông tin phòng
-     * Trả về `myUserId` (nullable nếu chưa login) để FE identify "me" reliably.
+     * GET /api/rooms/{id} - Lấy thông tin phòng.
+     * Response shape: { success, room, viewerUserId? }. `viewerUserId` is the
+     * caller's userId (null if unauthenticated) and is intentionally returned
+     * outside the room DTO so the same DTO can be safely broadcast over WS
+     * (per-viewer fields don't belong in multicast snapshots).
      */
     @GetMapping("/{id}")
     public ResponseEntity<?> getRoomDetails(@PathVariable String id, Principal principal) {
@@ -154,8 +157,12 @@ public class RoomController {
             if (principal != null) {
                 try { viewerUserId = getUser(principal).getId(); } catch (Exception ignored) {}
             }
-            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(id, viewerUserId);
-            return ResponseEntity.ok(Map.of("success", true, "room", details));
+            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(id);
+            Map<String, Object> body = new java.util.HashMap<>();
+            body.put("success", true);
+            body.put("room", details);
+            body.put("viewerUserId", viewerUserId);
+            return ResponseEntity.ok(body);
         } catch (Exception e) {
             return ResponseEntity.status(404).body(Map.of("success", false, "message", e.getMessage()));
         }
@@ -204,8 +211,8 @@ public class RoomController {
         try {
             User user = getUser(principal);
             roomService.switchTeam(id, user.getId());
-            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(id, user.getId());
-            return ResponseEntity.ok(Map.of("success", true, "room", details));
+            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(id);
+            return ResponseEntity.ok(Map.of("success", true, "room", details, "viewerUserId", user.getId()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }

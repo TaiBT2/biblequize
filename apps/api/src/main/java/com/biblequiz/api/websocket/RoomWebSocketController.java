@@ -456,7 +456,7 @@ public class RoomWebSocketController {
      */
     public void broadcastRoomState(String roomId) {
         try {
-            RoomService.RoomDetailsDTO snapshot = roomService.getRoomDetails(roomId, null);
+            RoomService.RoomDetailsDTO snapshot = roomService.getRoomDetails(roomId);
             WebSocketMessage.Message msg = new WebSocketMessage.Message(
                     WebSocketMessage.MessageTypes.ROOM_STATE, snapshot);
             messagingTemplate.convertAndSend("/topic/room/" + roomId, msg);

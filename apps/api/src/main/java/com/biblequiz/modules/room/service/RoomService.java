@@ -520,17 +520,12 @@ public class RoomService {
     }
 
     /**
-     * Get room details with players
+     * Get room details with players. Pure shared room state — viewer identity
+     * (the "me" pointer) is intentionally NOT in the DTO so the same snapshot
+     * can be safely multicast over WebSocket. Per-viewer context belongs in
+     * the REST response wrapper or the FE auth store.
      */
     public RoomDetailsDTO getRoomDetails(String roomId) throws Exception {
-        return getRoomDetails(roomId, null);
-    }
-
-    /**
-     * Get room details with viewer's userId so FE can identify "me" reliably
-     * without falling back to username matching (which collides on duplicate names).
-     */
-    public RoomDetailsDTO getRoomDetails(String roomId, String viewerUserId) throws Exception {
         Room room = roomRepository.findById(roomId).orElseThrow(() -> new Exception("Phòng không tồn tại"));
         List<RoomPlayer> players = roomPlayerRepository.findByRoomId(roomId);
 
@@ -544,7 +539,7 @@ public class RoomService {
                     .orElse(null);
         }
 
-        return new RoomDetailsDTO(room, players, viewerUserId, groupId);
+        return new RoomDetailsDTO(room, players, groupId);
     }
 
     /**
@@ -671,7 +666,6 @@ public class RoomService {
         public final String bookScope;
         public final String difficulty;
         public final String createdAt;
-        public final String myUserId;
         /** Owning group when room was spawned from a group quiz set; null otherwise. */
         public final String groupId;
         /** Sprint 4: true = host plays (legacy); false = Quản trò mode (host orchestrates only). */
@@ -679,14 +673,10 @@ public class RoomService {
         public final List<PlayerInfoDTO> players;
 
         public RoomDetailsDTO(Room room, List<RoomPlayer> roomPlayers) {
-            this(room, roomPlayers, null, null);
+            this(room, roomPlayers, null);
         }
 
-        public RoomDetailsDTO(Room room, List<RoomPlayer> roomPlayers, String viewerUserId) {
-            this(room, roomPlayers, viewerUserId, null);
-        }
-
-        public RoomDetailsDTO(Room room, List<RoomPlayer> roomPlayers, String viewerUserId, String groupId) {
+        public RoomDetailsDTO(Room room, List<RoomPlayer> roomPlayers, String groupId) {
             this.id = room.getId();
             this.roomCode = room.getRoomCode();
             this.roomName = room.getRoomName();
@@ -705,7 +695,6 @@ public class RoomService {
             this.bookScope = room.getBookScope();
             this.difficulty = room.getDifficulty() != null ? room.getDifficulty().name() : "MIXED";
             this.createdAt = room.getCreatedAt() != null ? room.getCreatedAt().toString() : null;
-            this.myUserId = viewerUserId;
             this.groupId = groupId;
             this.hostPlaysGame = room.isHostPlaysGame();
 
