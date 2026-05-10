@@ -1,3 +1,12 @@
+// GD-12 — Group page color palette (consolidated 2026-05-10):
+//   #e8a832 / rgba(232,168,50,*)  — Gold: primary CTAs, links, leader accents
+//   #ff8c42 / rgba(255,140,66,*)  — Orange: inactive/soft warnings only
+//   #97C459 / rgba(99,153,34,*)   — Emerald: active/success/streak progress
+//   #6AB8E8 / rgba(74,158,255,*)  — Sky: analytics-context info
+//   #4ade80 / rgba(74,222,128,*)  — Pulse-strong / member badge
+// No new orange shades may be introduced inside components/group/*.
+// Earlier code had 3 overlapping orange tones (#ff7a59, #ff8c42, #ffa040);
+// GD-12 collapsed them all to #ff8c42.
 import LiveNowBanner from './LiveNowBanner';
 import QuickActionsPanel from './QuickActionsPanel';
 import MembersPreviewCard, { MemberPreview } from './MembersPreviewCard';
