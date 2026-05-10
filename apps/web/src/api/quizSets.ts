@@ -213,6 +213,21 @@ export async function getQuizSetLeaderboard(groupId: string, setId: string, limi
   }
 }
 
+/**
+ * Co-play "Chơi cùng nhau" — Speed Race mode only (locked decision).
+ * Calls existing /play endpoint that creates a Room with customQuestionIds
+ * pre-loaded from the quiz set + groupQuizSetId set.
+ * Member-only (BE enforces); returns room id + roomCode for FE to navigate.
+ */
+export async function playQuizSetCoPlay(groupId: string, setId: string): Promise<{
+  id: string
+  roomCode: string
+  roomName: string
+}> {
+  const res = await api.post(`/api/groups/${groupId}/quiz-sets/${setId}/play`)
+  return res.data.room
+}
+
 export async function createLiveRoomFromQuizSet(
   groupId: string,
   body: { quizSetId: string; mode?: RoomMode; timePerQuestion?: number }

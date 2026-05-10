@@ -30,6 +30,11 @@ type RoomDetails = {
    *  Server-side fallback so "back to group" works for users who joined via
    *  room code (no fromGroupId in nav state) or after a page refresh. */
   groupId?: string | null;
+  /** Group quiz set context — populated when room.groupQuizSetId is set.
+   *  Lobby + quiz screens render "📚 Đang chơi: {name}" pill. */
+  groupQuizSetId?: string | null;
+  groupQuizSetName?: string | null;
+  quizSetTotalQuestions?: number | null;
   /** Sprint 4: false = Quản trò mode (host orchestrates only). Defaults
    *  true on the FE for legacy rooms whose payload omits the field. */
   hostPlaysGame?: boolean;
@@ -660,6 +665,21 @@ const RoomLobby: React.FC = () => {
             <span className="material-symbols-outlined text-[12px]">{modeInfo.icon}</span>
             {modeInfo.label}
           </span>
+          {room.groupQuizSetName && (
+            <span
+              className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold flex-shrink-0 max-w-[180px] truncate"
+              style={{
+                color: '#e8a832',
+                background: 'rgba(232, 168, 50, 0.1)',
+                border: '1px solid rgba(232, 168, 50, 0.3)',
+              }}
+              data-testid="lobby-topbar-quizset"
+              title={room.groupQuizSetName}
+            >
+              <span className="material-symbols-outlined text-[12px]">menu_book</span>
+              <span className="truncate">{room.groupQuizSetName}</span>
+            </span>
+          )}
           <span className="text-xs font-mono truncate" style={{ color: '#9ca3af', fontVariantNumeric: 'tabular-nums' }} data-testid="lobby-topbar-code">
             Phòng {room.roomCode}
           </span>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
-  getMyAttempts, startSoloPractice,
+  getMyAttempts, startSoloPractice, playQuizSetCoPlay,
   type QuizSet, type QuizSetMasterySummary, type QuizSetAttempt,
 } from '../../api/quizSets'
 
@@ -105,6 +105,8 @@ export default function QuizSetListCard({
   const [soloModal, setSoloModal] = useState(false)
   const [soloBusy, setSoloBusy] = useState(false)
   const [soloError, setSoloError] = useState<string | null>(null)
+  const [coPlayBusy, setCoPlayBusy] = useState(false)
+  const [coPlayError, setCoPlayError] = useState<string | null>(null)
 
   const badge = statusBadge(qs.publishStatus)
   const book = bookFromTagsOrScripture(qs)
@@ -155,6 +157,20 @@ export default function QuizSetListCard({
     } catch (err: any) {
       setSoloError(err?.response?.data?.message || err?.message || 'Không thể bắt đầu lượt chơi')
       setSoloBusy(false)
+    }
+  }
+
+  const handleCoPlay = async (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (coPlayBusy) return
+    setCoPlayBusy(true); setCoPlayError(null)
+    try {
+      const room = await playQuizSetCoPlay(groupId, qs.id)
+      navigate(`/room/${room.id}/lobby`)
+    } catch (err: any) {
+      const msg = err?.response?.data?.message || err?.message || 'Không thể tạo phòng'
+      setCoPlayError(msg)
+      setCoPlayBusy(false)
     }
   }
 
@@ -363,22 +379,23 @@ export default function QuizSetListCard({
             <>
               <button
                 type="button"
-                disabled
-                onClick={stop}
-                title="Đang chuẩn bị — sẽ ra mắt trong vài ngày tới"
-                aria-label="Chơi cùng nhau (sắp ra mắt)"
+                disabled={!isMember || coPlayBusy}
+                onClick={handleCoPlay}
+                title={isMember ? 'Tạo phòng chơi cùng nhóm (Speed Race)' : 'Chỉ thành viên nhóm mới chơi được'}
+                aria-label="Chơi cùng nhau"
                 data-testid="btn-coplay"
                 style={{
                   flex: 1, background: HEX.gold, color: HEX.navy, border: 'none',
                   padding: '11px 14px', borderRadius: 10,
                   fontWeight: 700, fontSize: 14,
-                  cursor: 'not-allowed', opacity: 0.6,
+                  cursor: (!isMember || coPlayBusy) ? 'not-allowed' : 'pointer',
+                  opacity: (!isMember || coPlayBusy) ? 0.6 : 1,
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
                   fontFamily: 'inherit',
                 }}
               >
                 <span className="material-symbols-outlined" style={{ fontSize: 18 }}>groups</span>
-                Chơi cùng nhau
+                {coPlayBusy ? 'Đang tạo phòng...' : 'Chơi cùng nhau'}
               </button>
               <IconButton
                 disabled
@@ -460,6 +477,21 @@ export default function QuizSetListCard({
           )}
         </div>
       </div>
+
+      {/* CO-PLAY ERROR TOAST */}
+      {coPlayError && (
+        <div
+          role="alert"
+          data-testid="coplay-error"
+          style={{
+            position: 'fixed', bottom: 16, left: '50%', transform: 'translateX(-50%)',
+            zIndex: 60, padding: '8px 14px', borderRadius: 8,
+            background: 'rgba(239, 68, 68, 0.9)', color: '#fff',
+            fontSize: 12, fontFamily: 'inherit', cursor: 'pointer',
+          }}
+          onClick={() => setCoPlayError(null)}
+        >{coPlayError}</div>
+      )}
 
       {/* SOLO MODAL */}
       {soloModal && (

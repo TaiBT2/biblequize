@@ -12,12 +12,14 @@ vi.mock('react-router-dom', async (orig) => {
 
 const getMyAttemptsMock = vi.fn()
 const startSoloPracticeMock = vi.fn()
+const playQuizSetCoPlayMock = vi.fn()
 vi.mock('../../../api/quizSets', async (orig) => {
   const actual = await (orig() as Promise<typeof import('../../../api/quizSets')>)
   return {
     ...actual,
     getMyAttempts: (...args: any[]) => getMyAttemptsMock(...args),
     startSoloPractice: (...args: any[]) => startSoloPracticeMock(...args),
+    playQuizSetCoPlay: (...args: any[]) => playQuizSetCoPlayMock(...args),
   }
 })
 
@@ -50,6 +52,7 @@ describe('QuizSetListCard', () => {
     navigateMock.mockReset()
     getMyAttemptsMock.mockReset()
     startSoloPracticeMock.mockReset()
+    playQuizSetCoPlayMock.mockReset()
     getMyAttemptsMock.mockResolvedValue(emptyMastery)
   })
 
@@ -64,11 +67,35 @@ describe('QuizSetListCard', () => {
     expect(screen.getByText(/12 lượt chơi/)).toBeInTheDocument()
   })
 
-  it('co-play button is disabled with the placeholder tooltip', () => {
+  it('co-play button is enabled for member on PUBLISHED set', () => {
     render(<MemoryRouter><QuizSetListCard groupId="g-1" qs={buildQuizSet()} myRole="MEMBER" isMember /></MemoryRouter>)
     const btn = screen.getByTestId('btn-coplay')
-    expect(btn).toBeDisabled()
-    expect(btn).toHaveAttribute('title', 'Đang chuẩn bị — sẽ ra mắt trong vài ngày tới')
+    expect(btn).not.toBeDisabled()
+  })
+
+  it('co-play button is disabled for non-members (defense in depth)', () => {
+    render(
+      <MemoryRouter>
+        <QuizSetListCard groupId="g-1" qs={buildQuizSet()} myRole={null} isMember={false} />
+      </MemoryRouter>
+    )
+    expect(screen.getByTestId('btn-coplay')).toBeDisabled()
+  })
+
+  it('clicking co-play calls /play endpoint and navigates to /room/{id}/lobby', async () => {
+    playQuizSetCoPlayMock.mockResolvedValue({ id: 'room-99', roomCode: 'ABC123', roomName: 'Genesis' })
+    render(<MemoryRouter><QuizSetListCard groupId="g-1" qs={buildQuizSet()} myRole="MEMBER" isMember /></MemoryRouter>)
+    await act(async () => { fireEvent.click(screen.getByTestId('btn-coplay')) })
+    await waitFor(() => expect(playQuizSetCoPlayMock).toHaveBeenCalledWith('g-1', 'qs-1'))
+    expect(navigateMock).toHaveBeenCalledWith('/room/room-99/lobby')
+  })
+
+  it('shows error toast when /play returns 403 forbidden', async () => {
+    playQuizSetCoPlayMock.mockRejectedValue({ response: { data: { message: 'Bạn không phải thành viên của nhóm' } } })
+    render(<MemoryRouter><QuizSetListCard groupId="g-1" qs={buildQuizSet()} myRole="MEMBER" isMember /></MemoryRouter>)
+    await act(async () => { fireEvent.click(screen.getByTestId('btn-coplay')) })
+    await waitFor(() => expect(screen.getByTestId('coplay-error')).toBeInTheDocument())
+    expect(screen.getByTestId('coplay-error')).toHaveTextContent('Bạn không phải thành viên của nhóm')
   })
 
   it('schedule icon button is disabled with the schedule-coming-soon tooltip', () => {
