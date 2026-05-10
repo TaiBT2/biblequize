@@ -62,6 +62,9 @@ public class ChurchGroupService {
     @Autowired(required = false)
     private ScheduledQuizRepository scheduledQuizRepository;
 
+    @Autowired
+    private com.biblequiz.modules.group.repository.GroupQuizSetFolderRepository folderRepository;
+
     private static final String CODE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     private static final int CODE_LENGTH = 6;
     private final SecureRandom random = new SecureRandom();
@@ -855,6 +858,73 @@ public class ChurchGroupService {
         // KHÔNG copy: playCount, averageRating, totalRatings, lastPlayedAt — bắt đầu lại từ 0.
         groupQuizSetRepository.save(copy);
         return quizSetToMap(copy);
+    }
+
+    // ── Sprint 5 Q-2b: Folder CRUD ─────────────────────────────────────────
+
+    public List<Map<String, Object>> listFolders(String groupId, String userId) {
+        // Verify membership
+        groupMemberRepository.findByGroupIdAndUserId(groupId, userId)
+                .orElseThrow(() -> new RuntimeException("Ban khong phai thanh vien cua nhom"));
+        return folderRepository.findByGroupIdOrderByDisplayOrder(groupId).stream()
+                .map(ChurchGroupService::folderToMap).toList();
+    }
+
+    @Transactional
+    public Map<String, Object> createFolder(String groupId, String userId, String name, String color, Integer order) {
+        requireLeaderOrModForGroup(groupId, userId);
+        if (name == null || name.isBlank()) throw new RuntimeException("Ten thu muc khong duoc trong");
+        com.biblequiz.modules.group.entity.GroupQuizSetFolder f = new com.biblequiz.modules.group.entity.GroupQuizSetFolder();
+        f.setGroupId(groupId);
+        f.setName(name.trim());
+        f.setColor(color);
+        f.setDisplayOrder(order == null ? 0 : order);
+        f.setCreatedBy(userId);
+        folderRepository.save(f);
+        return folderToMap(f);
+    }
+
+    @Transactional
+    public Map<String, Object> updateFolder(String groupId, String folderId, String userId, String name, String color, Integer order) {
+        requireLeaderOrModForGroup(groupId, userId);
+        com.biblequiz.modules.group.entity.GroupQuizSetFolder f = folderRepository.findById(folderId)
+                .orElseThrow(() -> new RuntimeException("Thu muc khong ton tai"));
+        if (!f.getGroupId().equals(groupId)) throw new RuntimeException("Thu muc khong thuoc nhom nay");
+        if (name != null && !name.isBlank()) f.setName(name.trim());
+        if (color != null) f.setColor(color);
+        if (order != null) f.setDisplayOrder(order);
+        folderRepository.save(f);
+        return folderToMap(f);
+    }
+
+    @Transactional
+    public void deleteFolder(String groupId, String folderId, String userId) {
+        requireLeaderOrModForGroup(groupId, userId);
+        com.biblequiz.modules.group.entity.GroupQuizSetFolder f = folderRepository.findById(folderId)
+                .orElseThrow(() -> new RuntimeException("Thu muc khong ton tai"));
+        if (!f.getGroupId().equals(groupId)) throw new RuntimeException("Thu muc khong thuoc nhom nay");
+        // FK ON DELETE SET NULL — quiz sets sẽ tự động folder_id = null.
+        folderRepository.delete(f);
+    }
+
+    private void requireLeaderOrModForGroup(String groupId, String userId) {
+        GroupMember member = groupMemberRepository.findByGroupIdAndUserId(groupId, userId)
+                .orElseThrow(() -> new RuntimeException("Ban khong phai thanh vien cua nhom"));
+        if (member.getRole() != GroupMember.GroupRole.LEADER && member.getRole() != GroupMember.GroupRole.MOD) {
+            throw new RuntimeException("Khong co quyen thuc hien hanh dong nay");
+        }
+    }
+
+    public static Map<String, Object> folderToMap(com.biblequiz.modules.group.entity.GroupQuizSetFolder f) {
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("id", f.getId());
+        map.put("groupId", f.getGroupId());
+        map.put("name", f.getName());
+        map.put("color", f.getColor());
+        map.put("displayOrder", f.getDisplayOrder());
+        map.put("createdBy", f.getCreatedBy());
+        map.put("createdAt", f.getCreatedAt());
+        return map;
     }
 
     private GroupQuizSet ownerOrLeaderOnly(String groupId, String setId, String userId) {

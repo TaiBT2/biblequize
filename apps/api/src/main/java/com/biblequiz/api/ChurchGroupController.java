@@ -525,6 +525,65 @@ public class ChurchGroupController {
         }
     }
 
+    // ── Sprint 5: Folder CRUD endpoints ──
+
+    @GetMapping("/{id}/quiz-set-folders")
+    public ResponseEntity<?> listFolders(@PathVariable("id") String id, Principal principal) {
+        try {
+            User user = getUser(principal);
+            return ResponseEntity.ok(Map.of("success", true,
+                    "folders", churchGroupService.listFolders(id, user.getId())));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    @PostMapping("/{id}/quiz-set-folders")
+    public ResponseEntity<?> createFolder(@PathVariable("id") String id,
+                                           @RequestBody Map<String, Object> body,
+                                           Principal principal) {
+        try {
+            User user = getUser(principal);
+            String name = (String) body.get("name");
+            String color = (String) body.get("color");
+            Integer order = body.get("displayOrder") instanceof Number n ? n.intValue() : null;
+            return ResponseEntity.ok(Map.of("success", true,
+                    "folder", churchGroupService.createFolder(id, user.getId(), name, color, order)));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    @PatchMapping("/{id}/quiz-set-folders/{folderId}")
+    public ResponseEntity<?> updateFolder(@PathVariable("id") String id,
+                                           @PathVariable("folderId") String folderId,
+                                           @RequestBody Map<String, Object> body,
+                                           Principal principal) {
+        try {
+            User user = getUser(principal);
+            String name = (String) body.get("name");
+            String color = (String) body.get("color");
+            Integer order = body.get("displayOrder") instanceof Number n ? n.intValue() : null;
+            return ResponseEntity.ok(Map.of("success", true,
+                    "folder", churchGroupService.updateFolder(id, folderId, user.getId(), name, color, order)));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    @DeleteMapping("/{id}/quiz-set-folders/{folderId}")
+    public ResponseEntity<?> deleteFolder(@PathVariable("id") String id,
+                                           @PathVariable("folderId") String folderId,
+                                           Principal principal) {
+        try {
+            User user = getUser(principal);
+            churchGroupService.deleteFolder(id, folderId, user.getId());
+            return ResponseEntity.ok(Map.of("success", true));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
     /** Sprint 5: per-mode question count validation. Returns error message or null if OK. */
     private String validateModeForQuestions(Room.RoomMode mode, int total) {
         switch (mode) {
