@@ -719,16 +719,28 @@ const GroupDetail: React.FC = () => {
                 {group.name?.trim() || t('groups.untitledGroup')}
               </h2>
               {isLeader ? (
-                <span className="bg-gradient-to-r from-[rgba(232,168,50,0.3)] to-[rgba(232,168,50,0.18)] text-[#11131e] bg-secondary px-2.5 py-0.5 rounded-full text-[10px] font-bold border border-[rgba(232,168,50,0.6)] whitespace-nowrap shadow-[0_0_8px_rgba(232,168,50,0.25)]">
-                  👑 {t('groups.leaderBadge')}
+                // GD-8: solid gold pill with dark text for WCAG AA contrast
+                // (previously text-secondary on gold-tinted bg failed contrast).
+                <span
+                  data-testid="role-badge-leader"
+                  className="bg-gradient-to-r from-secondary to-[#d4941f] text-[#11131e] px-2.5 py-1 rounded-full text-[10px] font-extrabold border border-[rgba(232,168,50,0.7)] whitespace-nowrap shadow-[0_0_10px_rgba(232,168,50,0.35)] inline-flex items-center gap-1"
+                >
+                  <span>👑</span>
+                  <span>{t('groups.leaderBadge')}</span>
                 </span>
               ) : myRole === 'MOD' ? (
-                <span className="bg-[rgba(167,139,250,0.25)] text-[#c4b5fd] px-2 py-0.5 rounded-full text-[10px] font-bold border border-[rgba(167,139,250,0.5)] inline-flex items-center gap-1 whitespace-nowrap">
+                <span
+                  data-testid="role-badge-mod"
+                  className="bg-gradient-to-r from-sky-500/30 to-sky-600/20 text-[#bae6fd] px-2.5 py-1 rounded-full text-[10px] font-extrabold border border-sky-400/60 inline-flex items-center gap-1 whitespace-nowrap"
+                >
                   <span className="material-symbols-outlined text-[11px]">shield</span>
                   Mod
                 </span>
               ) : (
-                <span className="bg-[rgba(74,222,128,0.18)] text-[#4ade80] px-2 py-0.5 rounded-full text-[10px] font-bold border border-[rgba(74,222,128,0.4)] inline-flex items-center gap-1 whitespace-nowrap">
+                <span
+                  data-testid="role-badge-member"
+                  className="bg-[rgba(74,222,128,0.2)] text-[#86efac] px-2 py-0.5 rounded-full text-[10px] font-bold border border-[rgba(74,222,128,0.5)] inline-flex items-center gap-1 whitespace-nowrap"
+                >
                   <span className="material-symbols-outlined text-[11px]">person</span>
                   Thành viên
                 </span>
