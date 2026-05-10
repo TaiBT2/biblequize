@@ -715,42 +715,46 @@ const GroupDetail: React.FC = () => {
 
           <div className="flex-1 min-w-0" data-testid="group-detail-name">
             <div className="flex items-center gap-2 flex-wrap">
-              <h2 data-testid="group-name-heading" className="text-on-surface text-[16px] sm:text-[18px] font-medium m-0 truncate">
+              <h2 data-testid="group-name-heading" className="text-on-surface text-[18px] sm:text-[22px] font-bold m-0 truncate">
                 {group.name?.trim() || t('groups.untitledGroup')}
               </h2>
               {isLeader ? (
-                <span className="bg-[rgba(232,168,50,0.2)] text-secondary px-2 py-0.5 rounded-full text-[9px] font-medium border-[0.5px] border-[rgba(232,168,50,0.4)] whitespace-nowrap">
+                <span className="bg-gradient-to-r from-[rgba(232,168,50,0.3)] to-[rgba(232,168,50,0.18)] text-[#11131e] bg-secondary px-2.5 py-0.5 rounded-full text-[10px] font-bold border border-[rgba(232,168,50,0.6)] whitespace-nowrap shadow-[0_0_8px_rgba(232,168,50,0.25)]">
                   👑 {t('groups.leaderBadge')}
                 </span>
               ) : myRole === 'MOD' ? (
-                <span className="bg-[rgba(167,139,250,0.15)] text-[#c4b5fd] px-2 py-0.5 rounded-full text-[9px] font-medium border-[0.5px] border-[rgba(167,139,250,0.4)] inline-flex items-center gap-1 whitespace-nowrap">
+                <span className="bg-[rgba(167,139,250,0.25)] text-[#c4b5fd] px-2 py-0.5 rounded-full text-[10px] font-bold border border-[rgba(167,139,250,0.5)] inline-flex items-center gap-1 whitespace-nowrap">
                   <span className="material-symbols-outlined text-[11px]">shield</span>
                   Mod
                 </span>
               ) : (
-                <span className="bg-[rgba(74,222,128,0.12)] text-[#4ade80] px-2 py-0.5 rounded-full text-[9px] font-medium border-[0.5px] border-[rgba(74,222,128,0.3)] inline-flex items-center gap-1 whitespace-nowrap">
+                <span className="bg-[rgba(74,222,128,0.18)] text-[#4ade80] px-2 py-0.5 rounded-full text-[10px] font-bold border border-[rgba(74,222,128,0.4)] inline-flex items-center gap-1 whitespace-nowrap">
                   <span className="material-symbols-outlined text-[11px]">person</span>
                   Thành viên
                 </span>
               )}
             </div>
-            <div className="text-on-surface/55 text-[11px] sm:text-[12px] mt-1 flex items-center gap-2 sm:gap-3 flex-wrap">
-              <span data-testid="group-member-count" className="whitespace-nowrap">👥 {group.members?.length || 0} {t('groups.members')}</span>
-              {leader && (
-                <>
-                  <span>·</span>
-                  <span className="truncate max-w-[140px] sm:max-w-none">👑 {leader.name}</span>
-                </>
-              )}
-              <span className="hidden sm:inline">·</span>
+            {/* GD-7 — meta row split into stats group (left) + code copy (right) for less cramping */}
+            <div className="text-on-surface/55 text-[11px] sm:text-[12px] mt-1.5 flex items-center justify-between gap-3 flex-wrap">
+              <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+                <span data-testid="group-member-count" className="whitespace-nowrap">👥 {group.members?.length || 0} {t('groups.members')}</span>
+                {leader && (
+                  <>
+                    <span className="text-on-surface/30">·</span>
+                    <span className="truncate max-w-[140px] sm:max-w-none">👑 {leader.name}</span>
+                  </>
+                )}
+              </div>
               <button
                 data-testid="group-join-code"
                 onClick={handleCopyCode}
-                className="flex items-center gap-1 text-on-surface/55 hover:text-secondary transition-colors whitespace-nowrap"
+                title={t('groups.copyCodeTooltip', { defaultValue: 'Click to copy invite code' })}
+                className="flex items-center gap-1.5 text-on-surface/55 hover:text-secondary transition-colors whitespace-nowrap"
               >
-                🔑 {t('groups.groupCodeLabel')}:{' '}
-                <code className="bg-white/[0.06] px-1.5 py-px rounded text-secondary font-mono">
-                  {copied ? t('groups.copied') : group.code}
+                <span className="text-[10px] uppercase tracking-wider text-on-surface/40">{t('groups.groupCodeLabel')}</span>
+                <code className="bg-white/[0.08] hover:bg-white/[0.12] px-2 py-0.5 rounded text-secondary font-mono text-[12px] inline-flex items-center gap-1.5">
+                  <span>{copied ? t('groups.copied') : group.code}</span>
+                  <span className="material-symbols-outlined text-[12px]">{copied ? 'check' : 'content_copy'}</span>
                 </code>
               </button>
             </div>
