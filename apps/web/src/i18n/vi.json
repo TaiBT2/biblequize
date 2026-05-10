@@ -1619,6 +1619,15 @@
       "task2": "Tạo bộ câu hỏi đầu tiên (bài giảng / sinh hoạt)",
       "task3": "Đăng thông báo chào mừng cho cả nhóm"
     },
+    "qrModal": {
+      "title": "Chia sẻ nhóm",
+      "subtitle": "Mời người khác tham gia \"{{name}}\"",
+      "codeLabel": "Mã tham gia",
+      "linkLabel": "Link mời",
+      "copyCode": "Sao chép mã",
+      "copyLink": "Sao chép link",
+      "openTooltip": "Hiện QR code để chia sẻ"
+    },
     "leaderboardTitle": "Bảng Xếp Hạng",
     "weekly": "Tuần này",
     "allTime": "Tất cả",

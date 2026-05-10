@@ -7,6 +7,7 @@ import { createGroupLiveQuiz } from '../api/groups';
 import { listScheduledQuizzes, ScheduledQuizSummary } from '../api/scheduledQuiz';
 import GroupActivityTab from '../components/group/GroupActivityTab';
 import GroupAnalyticsTab from '../components/group/GroupAnalyticsTab';
+import GroupCodeModal from '../components/group/GroupCodeModal';
 
 interface Member {
   userId: string;
@@ -298,6 +299,7 @@ const GroupDetail: React.FC = () => {
 
   // Copy state
   const [copied, setCopied] = useState(false);
+  const [showQrModal, setShowQrModal] = useState(false);
 
   // Report group modal (SPEC v1.1 §12.4 — member submits report to admin)
   type ReportReason = 'SPAM' | 'INAPPROPRIATE' | 'HARASSMENT' | 'OTHER';
@@ -758,18 +760,30 @@ const GroupDetail: React.FC = () => {
                   </>
                 )}
               </div>
-              <button
-                data-testid="group-join-code"
-                onClick={handleCopyCode}
-                title={t('groups.copyCodeTooltip', { defaultValue: 'Click to copy invite code' })}
-                className="flex items-center gap-1.5 text-on-surface/55 hover:text-secondary transition-colors whitespace-nowrap"
-              >
-                <span className="text-[10px] uppercase tracking-wider text-on-surface/40">{t('groups.groupCodeLabel')}</span>
-                <code className="bg-white/[0.08] hover:bg-white/[0.12] px-2 py-0.5 rounded text-secondary font-mono text-[12px] inline-flex items-center gap-1.5">
-                  <span>{copied ? t('groups.copied') : group.code}</span>
-                  <span className="material-symbols-outlined text-[12px]">{copied ? 'check' : 'content_copy'}</span>
-                </code>
-              </button>
+              <div className="flex items-center gap-1.5">
+                <button
+                  data-testid="group-join-code"
+                  onClick={handleCopyCode}
+                  title={t('groups.copyCodeTooltip', { defaultValue: 'Click to copy invite code' })}
+                  className="flex items-center gap-1.5 text-on-surface/55 hover:text-secondary transition-colors whitespace-nowrap"
+                >
+                  <span className="text-[10px] uppercase tracking-wider text-on-surface/40">{t('groups.groupCodeLabel')}</span>
+                  <code className="bg-white/[0.08] hover:bg-white/[0.12] px-2 py-0.5 rounded text-secondary font-mono text-[12px] inline-flex items-center gap-1.5">
+                    <span>{copied ? t('groups.copied') : group.code}</span>
+                    <span className="material-symbols-outlined text-[12px]">{copied ? 'check' : 'content_copy'}</span>
+                  </code>
+                </button>
+                <button
+                  type="button"
+                  data-testid="group-show-qr"
+                  onClick={() => setShowQrModal(true)}
+                  title={t('groups.qrModal.openTooltip')}
+                  aria-label={t('groups.qrModal.openTooltip')}
+                  className="text-on-surface/40 hover:text-secondary hover:bg-white/5 w-7 h-7 rounded-md flex items-center justify-center transition-colors"
+                >
+                  <span className="material-symbols-outlined text-[16px]">qr_code_2</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -2181,6 +2195,14 @@ const GroupDetail: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* GD-11: Group code QR modal */}
+      <GroupCodeModal
+        groupName={group.name?.trim() || t('groups.untitledGroup')}
+        groupCode={group.code}
+        open={showQrModal}
+        onClose={() => setShowQrModal(false)}
+      />
     </div>
   );
 };

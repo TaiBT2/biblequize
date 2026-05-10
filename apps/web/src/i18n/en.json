@@ -1619,6 +1619,15 @@
       "task2": "Create your first quiz set (sermon / session)",
       "task3": "Post a welcome announcement for the group"
     },
+    "qrModal": {
+      "title": "Share group",
+      "subtitle": "Invite others to join \"{{name}}\"",
+      "codeLabel": "Join code",
+      "linkLabel": "Invite link",
+      "copyCode": "Copy code",
+      "copyLink": "Copy link",
+      "openTooltip": "Show QR code to share"
+    },
     "leaderboardTitle": "Leaderboard",
     "weekly": "This week",
     "allTime": "All time",
