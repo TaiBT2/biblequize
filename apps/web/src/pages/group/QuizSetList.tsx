@@ -6,11 +6,11 @@ import {
   type ListQuizSetsParams, type PublishStatus, type QuizSet, type QuizSetFolder,
 } from '../../api/quizSets'
 
-const STATUS_FILTERS: { key: PublishStatus | 'ALL'; tKey: string }[] = [
-  { key: 'ALL',       tKey: 'quizSet.list.filterAll' },
-  { key: 'DRAFT',     tKey: 'quizSet.list.filterDraft' },
-  { key: 'PUBLISHED', tKey: 'quizSet.list.filterPublished' },
-  { key: 'ARCHIVED',  tKey: 'quizSet.list.filterArchived' },
+const STATUS_FILTERS: { key: PublishStatus | 'ALL'; tKey: string; dot: string }[] = [
+  { key: 'ALL',       tKey: 'quizSet.list.filterAll',       dot: '#e8a832' },
+  { key: 'PUBLISHED', tKey: 'quizSet.list.filterPublished', dot: '#4ade80' },
+  { key: 'DRAFT',     tKey: 'quizSet.list.filterDraft',     dot: '#9ca3af' },
+  { key: 'ARCHIVED',  tKey: 'quizSet.list.filterArchived',  dot: '#e8a832' },
 ]
 
 const SORT_OPTIONS: { key: NonNullable<ListQuizSetsParams['sort']>; tKey: string }[] = [
@@ -27,6 +27,14 @@ const DIFFICULTY_LABEL: Record<string, { vi: string; cssClass: string; emoji: st
   MIXED:  { vi: 'Tổng hợp',   cssClass: 'qs-difficulty-mixed',  emoji: '🎲' },
 }
 
+const MODE_BADGES: { key: string; emoji: string; cssClass: string }[] = [
+  { key: 'SPEED_RACE',           emoji: '⚡',  cssClass: 'qs-mode-speed' },
+  { key: 'GROUP_LIVE_SEQUENTIAL', emoji: '📚', cssClass: 'qs-mode-seq' },
+  { key: 'TEAM_VS_TEAM',         emoji: '⚔️', cssClass: 'qs-mode-team' },
+  { key: 'BATTLE_ROYALE',        emoji: '💀', cssClass: 'qs-mode-br' },
+  { key: 'SUDDEN_DEATH',         emoji: '🥊', cssClass: 'qs-mode-sd' },
+]
+
 export default function QuizSetList() {
   const { t } = useTranslation()
   const { id: groupId } = useParams<{ id: string }>()
@@ -38,7 +46,7 @@ export default function QuizSetList() {
   const [statusFilter, setStatusFilter] = useState<PublishStatus | 'ALL'>('ALL')
   const [sort, setSort] = useState<ListQuizSetsParams['sort']>('popular')
   const [search, setSearch] = useState('')
-  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({})
+  const [activeFolder, setActiveFolder] = useState<string | 'ALL' | 'UNCAT'>('ALL')
 
   useEffect(() => {
     if (!groupId) return
@@ -59,83 +67,186 @@ export default function QuizSetList() {
 
   const handleCreateFolder = async () => {
     const name = window.prompt(t('quizSet.list.createFolderPrompt'))
-    if (!name || !name.trim() || !groupId) return
-    try {
-      await createFolder(groupId, name.trim())
-      refreshFolders()
-    } catch (err: any) { setError(err?.response?.data?.message || err.message) }
+    if (!name?.trim() || !groupId) return
+    try { await createFolder(groupId, name.trim()); refreshFolders() }
+    catch (err: any) { setError(err?.response?.data?.message || err.message) }
   }
 
   const handleDeleteFolder = async (folder: QuizSetFolder) => {
     if (!confirm(t('quizSet.list.deleteFolderConfirm', { name: folder.name }))) return
     if (!groupId) return
     try {
-      await deleteFolder(groupId, folder.id)
-      refreshFolders()
+      await deleteFolder(groupId, folder.id); refreshFolders()
+      if (activeFolder === folder.id) setActiveFolder('ALL')
     } catch (err: any) { setError(err?.response?.data?.message || err.message) }
   }
 
-  const toggle = (key: string) => setCollapsed(c => ({ ...c, [key]: !c[key] }))
-
   const counts = useMemo(() => {
-    const c: Record<string, number> = { ALL: items.length }
-    items.forEach(qs => { c[qs.publishStatus] = (c[qs.publishStatus] || 0) + 1 })
+    const c: Record<string, number> = { ALL: items.length, UNCAT: 0 }
+    items.forEach(qs => {
+      c[qs.publishStatus] = (c[qs.publishStatus] || 0) + 1
+      if (!qs.folderId) c.UNCAT++
+      else c[qs.folderId] = (c[qs.folderId] || 0) + 1
+    })
     return c
   }, [items])
 
-  const drafts = useMemo(() => items.filter(qs => qs.publishStatus === 'DRAFT'), [items])
-  const nonDrafts = useMemo(() => items.filter(qs => qs.publishStatus !== 'DRAFT'), [items])
+  const filteredByFolder = useMemo(() => {
+    if (activeFolder === 'ALL') return items
+    if (activeFolder === 'UNCAT') return items.filter(qs => !qs.folderId)
+    return items.filter(qs => qs.folderId === activeFolder)
+  }, [items, activeFolder])
+
+  const drafts = useMemo(() => filteredByFolder.filter(qs => qs.publishStatus === 'DRAFT'), [filteredByFolder])
+  const nonDrafts = useMemo(() => filteredByFolder.filter(qs => qs.publishStatus !== 'DRAFT'), [filteredByFolder])
 
   const grouped = useMemo(() => {
+    if (activeFolder !== 'ALL') return null
     const byFolder = new Map<string, QuizSet[]>()
     const uncategorized: QuizSet[] = []
     nonDrafts.forEach(qs => {
       if (qs.folderId) {
         const arr = byFolder.get(qs.folderId) || []
-        arr.push(qs)
-        byFolder.set(qs.folderId, arr)
-      } else {
-        uncategorized.push(qs)
-      }
+        arr.push(qs); byFolder.set(qs.folderId, arr)
+      } else uncategorized.push(qs)
     })
     return { byFolder, uncategorized }
-  }, [nonDrafts])
+  }, [nonDrafts, activeFolder])
 
   return (
-    <div className="qs-bg min-h-screen">
-      <div className="max-w-md mx-auto pb-10">
-        {/* Header */}
-        <div className="px-5 py-3 flex items-center justify-between">
+    <div className="qs-bg-deep min-h-screen lg:flex">
+      {/* Mobile header (lg:hidden) */}
+      <div className="lg:hidden">
+        <MobileHeader
+          groupId={groupId!} t={t} totalCount={items.length}
+        />
+      </div>
+
+      {/* Desktop folder sidebar (hidden:lg:flex) */}
+      <aside className="hidden lg:flex w-[240px] shrink-0 border-r border-white/5 flex-col qs-bg" style={{ background: '#0e1019' }}>
+        <div className="px-4 py-3 border-b border-white/5">
+          <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2">Danh mục</div>
           <button
-            onClick={() => navigate(`/groups/${groupId}`)}
-            className="w-9 h-9 rounded-full qs-glass flex items-center justify-center text-gray-400"
-            aria-label={t('quizSet.list.back')}
+            onClick={handleCreateFolder}
+            className="w-full qs-glass-subtle rounded-lg px-3 py-2 flex items-center gap-2 text-xs hover:bg-white/5"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
+            <span className="text-[#e8a832]">+</span>
+            <span className="text-gray-300">{t('quizSet.list.createFolder').replace('+ ', '')}</span>
           </button>
-          <div className="text-center">
-            <div className="text-xs text-gray-400">{t('quizSet.list.title')}</div>
-            <div className="text-sm font-bold text-white qs-font-vn-display">{t('quizSet.list.totalCount', { count: items.length })}</div>
-          </div>
-          <Link
-            to={`/groups/${groupId}/quiz-sets/new`}
-            className="w-9 h-9 rounded-full qs-gold-grad flex items-center justify-center text-[#11131e] font-bold"
-            aria-label={t('quizSet.list.createNew')}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}>
-              <path d="M12 5v14M5 12h14" />
-            </svg>
-          </Link>
         </div>
 
-        {/* Search + filters */}
-        <div className="px-5 mb-3">
+        <div className="flex-1 overflow-y-auto qs-scroll-thin py-2">
+          <FolderItem
+            label="Tất cả"
+            emoji="📚"
+            count={counts.ALL}
+            active={activeFolder === 'ALL'}
+            onClick={() => setActiveFolder('ALL')}
+            highlight
+          />
+
+          <SidebarSection label="Theo trạng thái">
+            {STATUS_FILTERS.filter(f => f.key !== 'ALL').map(f => {
+              const selected = statusFilter === f.key
+              return (
+                <button
+                  key={f.key}
+                  onClick={() => setStatusFilter(selected ? 'ALL' : (f.key as PublishStatus))}
+                  className="w-full flex items-center justify-between px-4 py-1.5 text-xs hover:bg-white/3"
+                >
+                  <span className={`flex items-center gap-2 ${selected ? 'text-[#e8a832] font-bold' : 'text-gray-300'}`}>
+                    <span className="w-2 h-2 rounded-full" style={{ background: f.dot }} />
+                    <span>{t(f.tKey)}</span>
+                  </span>
+                  <span className="text-[10px] text-gray-500">{counts[f.key] || 0}</span>
+                </button>
+              )
+            })}
+          </SidebarSection>
+
+          <SidebarSection label="Thư mục">
+            {folders.map(f => (
+              <FolderItem
+                key={f.id}
+                label={f.name}
+                emoji="📁"
+                count={counts[f.id] || 0}
+                active={activeFolder === f.id}
+                onClick={() => setActiveFolder(f.id)}
+                onDelete={() => handleDeleteFolder(f)}
+              />
+            ))}
+            <FolderItem
+              label="Chưa phân loại"
+              emoji="📁"
+              count={counts.UNCAT}
+              active={activeFolder === 'UNCAT'}
+              onClick={() => setActiveFolder('UNCAT')}
+              dimmed
+            />
+          </SidebarSection>
+        </div>
+      </aside>
+
+      {/* MAIN content */}
+      <div className="flex-1 flex flex-col qs-bg-deep min-h-screen">
+        {/* Desktop toolbar */}
+        <div className="hidden lg:block px-6 py-4 border-b border-white/5" style={{ background: '#0e1019' }}>
+          <div className="flex items-center justify-between mb-3">
+            <div>
+              <div className="text-[10px] text-gray-500 uppercase font-semibold tracking-wider">
+                <Link to={`/groups/${groupId}`} className="hover:text-white">Nhóm</Link>
+                {' / '}{t('quizSet.list.title')}
+              </div>
+              <h1 className="text-xl font-extrabold text-white mt-0.5 qs-font-vn-display">
+                {activeFolder === 'ALL' ? 'Tất cả bộ câu hỏi' :
+                 activeFolder === 'UNCAT' ? 'Chưa phân loại' :
+                 folders.find(f => f.id === activeFolder)?.name || 'Bộ câu hỏi'}
+                <span className="text-gray-500 font-normal"> ({filteredByFolder.length})</span>
+              </h1>
+            </div>
+            <div className="flex gap-2">
+              <Link
+                to={`/groups/${groupId}/quiz-sets/new`}
+                className="px-4 py-2 rounded-lg qs-gold-grad text-[#11131e] text-xs font-extrabold flex items-center gap-1.5"
+              >
+                <span className="text-base leading-none">+</span><span>TẠO BỘ MỚI</span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <div className="flex-1 qs-glass-subtle rounded-lg px-3 py-2 flex items-center gap-2 max-w-md">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="text-gray-400">
+                <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
+              </svg>
+              <input
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                className="bg-transparent outline-none text-xs text-white placeholder-gray-500 flex-1"
+                placeholder="Tìm theo tên, mô tả, tag..."
+              />
+            </div>
+            <div className="flex items-center gap-1.5 ml-auto text-xs">
+              <span className="text-gray-500">{t('quizSet.list.sortLabel')}</span>
+              <select
+                value={sort}
+                onChange={e => setSort(e.target.value as any)}
+                className="qs-glass-subtle rounded-lg px-2.5 py-1.5 text-gray-300 outline-none border border-white/10 cursor-pointer"
+              >
+                {SORT_OPTIONS.map(o => (
+                  <option key={o.key} value={o.key} className="qs-bg">{t(o.tKey)}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile filter chips + search */}
+        <div className="lg:hidden px-5 mb-3">
           <div className="qs-glass rounded-xl px-3 py-2.5 flex items-center gap-2">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="text-gray-400">
-              <circle cx="11" cy="11" r="8" />
-              <path d="M21 21l-4.35-4.35" />
+              <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
             </svg>
             <input
               value={search}
@@ -172,107 +283,169 @@ export default function QuizSetList() {
               className="text-[10px] text-[#e8a832] font-semibold bg-transparent outline-none cursor-pointer"
             >
               {SORT_OPTIONS.map(o => (
-                <option key={o.key} value={o.key} className="bg-[#11131e] text-white">{t(o.tKey)}</option>
+                <option key={o.key} value={o.key} className="qs-bg">{t(o.tKey)}</option>
               ))}
             </select>
           </div>
         </div>
 
         {error && (
-          <div className="mx-5 mb-3 px-4 py-3 rounded-lg bg-red-500/20 text-red-200 text-sm">{error}</div>
+          <div className="mx-5 lg:mx-6 mb-3 px-4 py-3 rounded-lg bg-red-500/20 text-red-200 text-sm">{error}</div>
         )}
 
-        {loading ? (
-          <div className="px-5 py-8 text-center text-gray-500">{t('quizSet.list.loading')}</div>
-        ) : items.length === 0 ? (
-          <EmptyState groupId={groupId!} hasSearch={search.length > 0} />
-        ) : (
-          <div className="px-5">
-            {/* Folders với quiz sets bên trong */}
-            {folders.map(folder => {
-              const folderItems = grouped.byFolder.get(folder.id) || []
-              if (folderItems.length === 0) return (
-                <FolderHeader
-                  key={folder.id} folder={folder} count={0}
-                  collapsed={collapsed[folder.id]} onToggle={() => toggle(folder.id)}
-                  onDelete={() => handleDeleteFolder(folder)}
-                />
-              )
-              return (
-                <div key={folder.id} className="mb-3">
-                  <FolderHeader
-                    folder={folder} count={folderItems.length}
-                    collapsed={collapsed[folder.id]} onToggle={() => toggle(folder.id)}
-                    onDelete={() => handleDeleteFolder(folder)}
-                  />
-                  {!collapsed[folder.id] && folderItems.map((qs, idx) => (
-                    <QuizSetCard key={qs.id} groupId={groupId!} qs={qs} featured={idx === 0} />
-                  ))}
-                </div>
-              )
-            })}
+        <div className="flex-1 overflow-y-auto qs-scroll-thin px-5 lg:px-6 lg:py-6">
+          {loading ? (
+            <div className="px-5 py-8 text-center text-gray-500">{t('quizSet.list.loading')}</div>
+          ) : items.length === 0 ? (
+            <EmptyState groupId={groupId!} hasSearch={search.length > 0} t={t} />
+          ) : grouped ? (
+            <>
+              {folders.map(folder => {
+                const folderItems = grouped.byFolder.get(folder.id) || []
+                if (folderItems.length === 0) return null
+                return (
+                  <SectionGroup key={folder.id} title={`📁 ${folder.name}`} count={folderItems.length}>
+                    <CardGrid groupId={groupId!} items={folderItems} />
+                  </SectionGroup>
+                )
+              })}
 
-            {/* Uncategorized */}
-            {grouped.uncategorized.length > 0 && (
-              <div className="mb-3">
-                {folders.length > 0 && (
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs font-semibold text-gray-300">{t('quizSet.list.uncategorized')}</span>
-                    <span className="text-[10px] text-gray-500">{t('quizSet.list.folderItemCount', { count: grouped.uncategorized.length })}</span>
-                  </div>
-                )}
-                {grouped.uncategorized.map((qs, idx) => (
-                  <QuizSetCard key={qs.id} groupId={groupId!} qs={qs} featured={idx === 0 && folders.length === 0} />
-                ))}
-              </div>
-            )}
+              {grouped.uncategorized.length > 0 && (
+                <SectionGroup title="📂 Chưa phân loại" count={grouped.uncategorized.length}>
+                  <CardGrid groupId={groupId!} items={grouped.uncategorized} />
+                </SectionGroup>
+              )}
 
-            {/* Drafts section */}
-            {drafts.length > 0 && (
-              <div className="mb-3">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xs font-semibold text-gray-400">{t('quizSet.list.draftsHeader')}</span>
-                </div>
-                {drafts.map(qs => <DraftCard key={qs.id} groupId={groupId!} qs={qs} />)}
-              </div>
-            )}
+              {drafts.length > 0 && (
+                <SectionGroup title={`📝 ${t('quizSet.list.draftsHeader')}`} count={drafts.length} dimmed>
+                  <CardGrid groupId={groupId!} items={drafts} draftStyle />
+                </SectionGroup>
+              )}
+            </>
+          ) : (
+            <>
+              {nonDrafts.length > 0 && <CardGrid groupId={groupId!} items={nonDrafts} />}
+              {drafts.length > 0 && (
+                <SectionGroup title={`📝 ${t('quizSet.list.draftsHeader')}`} count={drafts.length} dimmed>
+                  <CardGrid groupId={groupId!} items={drafts} draftStyle />
+                </SectionGroup>
+              )}
+            </>
+          )}
 
-            {/* Create folder CTA (only LEADER/MOD; BE enforces, FE just always shows) */}
-            <button
-              onClick={handleCreateFolder}
-              className="w-full mt-3 py-2 rounded-xl qs-glass border border-dashed border-white/20 text-xs text-gray-400 hover:text-[#e8a832] hover:border-[#e8a832]/40"
-            >{t('quizSet.list.createFolder')}</button>
-          </div>
-        )}
+          {/* Mobile-only "Tạo thư mục" footer (desktop has it in sidebar) */}
+          <button
+            onClick={handleCreateFolder}
+            className="lg:hidden w-full mt-3 py-2 rounded-xl qs-glass border border-dashed border-white/20 text-xs text-gray-400 hover:text-[#e8a832] hover:border-[#e8a832]/40"
+          >{t('quizSet.list.createFolder')}</button>
+        </div>
       </div>
     </div>
   )
 }
 
-function FolderHeader({
-  folder, count, collapsed, onToggle, onDelete,
+function MobileHeader({ groupId, t, totalCount }: { groupId: string; t: any; totalCount: number }) {
+  const navigate = useNavigate()
+  return (
+    <div className="px-5 py-3 flex items-center justify-between">
+      <button
+        onClick={() => navigate(`/groups/${groupId}`)}
+        className="w-9 h-9 rounded-full qs-glass flex items-center justify-center text-gray-400"
+        aria-label={t('quizSet.list.back')}
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <div className="text-center">
+        <div className="text-xs text-gray-400">{t('quizSet.list.title')}</div>
+        <div className="text-sm font-bold text-white qs-font-vn-display">{t('quizSet.list.totalCount', { count: totalCount })}</div>
+      </div>
+      <Link
+        to={`/groups/${groupId}/quiz-sets/new`}
+        className="w-9 h-9 rounded-full qs-gold-grad flex items-center justify-center text-[#11131e] font-bold"
+        aria-label={t('quizSet.list.createNew')}
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}>
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+      </Link>
+    </div>
+  )
+}
+
+function SidebarSection({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <>
+      <div className="px-4 py-1 mt-3">
+        <div className="text-[9px] font-semibold text-gray-600 uppercase tracking-wider">{label}</div>
+      </div>
+      {children}
+    </>
+  )
+}
+
+function FolderItem({
+  label, emoji, count, active, onClick, onDelete, highlight, dimmed,
 }: {
-  folder: QuizSetFolder; count: number;
-  collapsed?: boolean; onToggle: () => void; onDelete: () => void;
+  label: string; emoji: string; count: number;
+  active: boolean; onClick: () => void; onDelete?: () => void;
+  highlight?: boolean; dimmed?: boolean;
 }) {
   return (
-    <div className="flex items-center justify-between mb-2">
-      <button onClick={onToggle} className="flex items-center gap-2 text-xs font-semibold text-gray-300">
-        <span>📁</span>
-        <span style={folder.color ? { color: folder.color } : undefined}>{folder.name}</span>
-        <span className="text-[10px] text-gray-500">{count} bộ</span>
+    <div className="group flex items-center hover:bg-white/3">
+      <button
+        onClick={onClick}
+        className="flex-1 flex items-center justify-between px-4 py-1.5 text-xs"
+      >
+        <span className={`flex items-center gap-2 ${
+          active ? 'text-[#e8a832] font-bold' :
+          highlight ? 'text-[#e8a832] font-bold' :
+          dimmed ? 'text-gray-500' : 'text-gray-300'
+        }`}>
+          <span>{emoji}</span><span>{label}</span>
+        </span>
+        <span className={`text-[10px] ${active || highlight ? 'text-[#e8a832]' : 'text-gray-500'}`}>{count}</span>
       </button>
-      <div className="flex items-center gap-1.5">
+      {onDelete && (
         <button
           onClick={onDelete}
-          className="text-[10px] text-gray-500 hover:text-red-400 px-1.5 py-0.5"
+          className="opacity-0 group-hover:opacity-100 px-2 text-gray-500 hover:text-red-400 text-xs"
           title="Xóa thư mục"
         >×</button>
-        <svg
-          width="12" height="12" viewBox="0 0 24 24" fill="currentColor"
-          className={`text-gray-500 transition-transform ${collapsed ? 'rotate-180' : ''}`}
-        ><path d="M7 14l5-5 5 5z" /></svg>
+      )}
+    </div>
+  )
+}
+
+function SectionGroup({
+  title, count, dimmed, children,
+}: {
+  title: string; count: number; dimmed?: boolean; children: React.ReactNode;
+}) {
+  return (
+    <div className="mb-6">
+      <div className="flex items-center gap-2 mb-3">
+        <span className={`text-sm font-bold ${dimmed ? 'text-gray-400' : 'text-white'}`}>{title}</span>
+        <span className="text-xs text-gray-500">{count} bộ</span>
+        <div className="h-px flex-1 bg-white/5 ml-2" />
       </div>
+      {children}
+    </div>
+  )
+}
+
+function CardGrid({
+  groupId, items, draftStyle,
+}: {
+  groupId: string; items: QuizSet[]; draftStyle?: boolean;
+}) {
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4">
+      {items.map(qs => draftStyle
+        ? <DraftCard key={qs.id} groupId={groupId} qs={qs} />
+        : <QuizSetCard key={qs.id} groupId={groupId} qs={qs} />
+      )}
     </div>
   )
 }
@@ -283,42 +456,40 @@ function coverEmoji(qs: QuizSet): string {
 
 function statusBadge(status: PublishStatus) {
   switch (status) {
-    case 'PUBLISHED': return { vi: '✓ Đã xuất bản', cls: 'qs-badge-published' }
-    case 'DRAFT':     return { vi: 'Nháp',          cls: 'qs-badge-draft' }
-    case 'ARCHIVED':  return { vi: 'Lưu trữ',       cls: 'qs-badge-archived' }
-    case 'SOFT_DELETED': return { vi: 'Đã xóa',     cls: 'qs-badge-deleted' }
+    case 'PUBLISHED':    return { vi: '✓ Đã xuất bản', cls: 'qs-badge-published' }
+    case 'DRAFT':        return { vi: 'Nháp',          cls: 'qs-badge-draft' }
+    case 'ARCHIVED':     return { vi: 'Lưu trữ',       cls: 'qs-badge-archived' }
+    case 'SOFT_DELETED': return { vi: 'Đã xóa',        cls: 'qs-badge-deleted' }
   }
 }
 
-function QuizSetCard({ groupId, qs, featured }: { groupId: string; qs: QuizSet; featured: boolean }) {
+/** Responsive card: mobile = compact horizontal · desktop = cover-on-top */
+function QuizSetCard({ groupId, qs }: { groupId: string; qs: QuizSet }) {
   const cover = coverEmoji(qs)
   const badge = statusBadge(qs.publishStatus)
   const diff = qs.difficulty ? DIFFICULTY_LABEL[qs.difficulty] : null
 
-  if (featured) {
-    return (
-      <Link
-        to={`/groups/${groupId}/quiz-sets/${qs.id}`}
-        className="block rounded-xl mb-2 overflow-hidden qs-glass-strong border border-[#e8a832]/30 qs-fade-in"
-      >
-        <div className="h-20 relative qs-cover-fallback">
-          <div className="absolute inset-0 flex items-center justify-center text-4xl opacity-40">{cover}</div>
-          <div className="absolute top-2 left-2">
-            <span className={`qs-badge-status ${badge.cls}`}>{badge.vi}</span>
-          </div>
+  return (
+    <Link to={`/groups/${groupId}/quiz-sets/${qs.id}`} className="qs-fade-in">
+      {/* Desktop: cover on top */}
+      <div className="hidden lg:block qs-quiz-card qs-glass rounded-xl overflow-hidden border border-white/10">
+        <div className="h-28 relative qs-cover-fallback">
+          <div className="absolute inset-0 flex items-center justify-center text-5xl opacity-40">{cover}</div>
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent, transparent)' }} />
+          <div className="absolute top-2 left-2"><span className={`qs-badge-status ${badge.cls}`}>{badge.vi}</span></div>
           <div className="absolute top-2 right-2 flex gap-1">
             {qs.averageRating != null && (
-              <span className="px-1.5 py-0.5 rounded bg-[#e8a832]/30 text-[#e8a832] text-[9px] font-bold">⭐ {Number(qs.averageRating).toFixed(1)}</span>
+              <span className="px-1.5 py-0.5 rounded bg-black/40 backdrop-blur text-[#e8a832] text-[10px] font-bold">⭐ {Number(qs.averageRating).toFixed(1)}</span>
             )}
-            <span className="px-1.5 py-0.5 rounded bg-black/40 text-white text-[9px] font-bold backdrop-blur">▶ {qs.playCount}x</span>
+            <span className="px-1.5 py-0.5 rounded bg-black/40 backdrop-blur text-white text-[10px] font-bold">▶ {qs.playCount}x</span>
           </div>
         </div>
         <div className="p-3">
-          <h3 className="qs-font-vn-display font-bold text-white text-sm leading-tight mb-1">{qs.name}</h3>
+          <h3 className="font-extrabold text-white text-sm leading-tight qs-font-vn-display">{qs.name}</h3>
           {qs.coverScripture && (
-            <div className="text-[10px] text-gray-400 mb-2 line-clamp-1">📍 {qs.coverScripture}{qs.description ? ` · "${qs.description.slice(0, 40)}"` : ''}</div>
+            <div className="text-[10px] text-gray-400 mt-1 line-clamp-1">📍 {qs.coverScripture}{qs.description ? ` · "${qs.description.slice(0, 40)}"` : ''}</div>
           )}
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex items-center gap-1.5 mt-2">
             <span className="text-[10px] text-gray-500">{qs.totalQuestions} câu</span>
             {diff && (
               <>
@@ -329,56 +500,69 @@ function QuizSetCard({ groupId, qs, featured }: { groupId: string; qs: QuizSet; 
             {qs.estimatedDurationMin != null && (
               <>
                 <span className="text-[10px] text-gray-600">·</span>
-                <span className="text-[10px] text-gray-500">~{qs.estimatedDurationMin} phút</span>
+                <span className="text-[10px] text-gray-500">~{qs.estimatedDurationMin}p</span>
               </>
             )}
           </div>
+          <ModeBadgeRow suggestedMode={qs.suggestedMode} />
         </div>
-      </Link>
-    )
-  }
+      </div>
 
-  return (
-    <Link
-      to={`/groups/${groupId}/quiz-sets/${qs.id}`}
-      className="block rounded-xl mb-2 qs-glass overflow-hidden qs-fade-in"
-    >
-      <div className="flex p-3 gap-3">
-        <div className="w-14 h-14 rounded-lg flex items-center justify-center text-2xl shrink-0 qs-cover-fallback">{cover}</div>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between">
-            <h3 className="qs-font-vn-display font-bold text-white text-xs leading-tight truncate">{qs.name}</h3>
-            {qs.publishStatus !== 'PUBLISHED' && (
-              <span className={`qs-badge-status ${badge.cls} shrink-0 ml-1`}>{badge.vi}</span>
+      {/* Mobile: compact horizontal */}
+      <div className="lg:hidden qs-glass rounded-xl mb-2 overflow-hidden">
+        <div className="flex p-3 gap-3">
+          <div className="w-14 h-14 rounded-lg flex items-center justify-center text-2xl shrink-0 qs-cover-fallback">{cover}</div>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-start justify-between">
+              <h3 className="qs-font-vn-display font-bold text-white text-xs leading-tight truncate">{qs.name}</h3>
+              {qs.publishStatus === 'PUBLISHED' && (
+                <span className="qs-badge-status qs-badge-published shrink-0 ml-1">Pub</span>
+              )}
+              {qs.publishStatus !== 'PUBLISHED' && (
+                <span className={`qs-badge-status ${badge.cls} shrink-0 ml-1`}>{badge.vi}</span>
+              )}
+            </div>
+            {qs.coverScripture && (
+              <div className="text-[10px] text-gray-400 mt-0.5 line-clamp-1">📍 {qs.coverScripture}</div>
             )}
-            {qs.publishStatus === 'PUBLISHED' && (
-              <span className="qs-badge-status qs-badge-published shrink-0 ml-1">Pub</span>
-            )}
-          </div>
-          {qs.coverScripture && (
-            <div className="text-[10px] text-gray-400 mt-0.5 line-clamp-1">📍 {qs.coverScripture}</div>
-          )}
-          <div className="flex items-center gap-1.5 mt-1.5">
-            <span className="text-[10px] text-gray-500">{qs.totalQuestions} câu</span>
-            {diff && (
-              <>
-                <span className="text-[10px] text-gray-600">·</span>
-                <span className={`text-[10px] font-semibold ${diff.cssClass}`}>{diff.vi}</span>
-              </>
-            )}
-            {qs.playCount > 0 && (
-              <>
-                <span className="text-[10px] text-gray-600">·</span>
-                <span className="text-[10px] text-[#e8a832] font-bold">▶ {qs.playCount}x</span>
-              </>
-            )}
-            {qs.averageRating != null && (
-              <span className="text-[10px] text-[#e8a832] ml-auto">⭐ {Number(qs.averageRating).toFixed(1)}</span>
-            )}
+            <div className="flex items-center gap-1.5 mt-1.5">
+              <span className="text-[10px] text-gray-500">{qs.totalQuestions} câu</span>
+              {diff && (
+                <>
+                  <span className="text-[10px] text-gray-600">·</span>
+                  <span className={`text-[10px] font-semibold ${diff.cssClass}`}>{diff.vi}</span>
+                </>
+              )}
+              {qs.playCount > 0 && (
+                <>
+                  <span className="text-[10px] text-gray-600">·</span>
+                  <span className="text-[10px] text-[#e8a832] font-bold">▶ {qs.playCount}x</span>
+                </>
+              )}
+              {qs.averageRating != null && (
+                <span className="text-[10px] text-[#e8a832] ml-auto">⭐ {Number(qs.averageRating).toFixed(1)}</span>
+              )}
+            </div>
           </div>
         </div>
       </div>
     </Link>
+  )
+}
+
+function ModeBadgeRow({ suggestedMode }: { suggestedMode?: string | null }) {
+  // Show all 5 mode badges; suggested one slightly emphasized.
+  return (
+    <div className="flex gap-1 mt-2">
+      {MODE_BADGES.map(m => (
+        <span
+          key={m.key}
+          className={`text-[9px] px-1.5 py-0.5 rounded ${m.cssClass} font-semibold ${
+            suggestedMode === m.key ? 'ring-1 ring-emerald-400/40' : ''
+          }`}
+        >{m.emoji}</span>
+      ))}
+    </div>
   )
 }
 
@@ -387,10 +571,35 @@ function DraftCard({ groupId, qs }: { groupId: string; qs: QuizSet }) {
   return (
     <Link
       to={`/groups/${groupId}/quiz-sets/${qs.id}`}
-      className="block rounded-xl mb-2 overflow-hidden border border-gray-500/20"
+      className="block rounded-xl mb-2 overflow-hidden border border-gray-500/20 qs-fade-in"
       style={{ background: 'rgba(50, 52, 64, 0.3)' }}
     >
-      <div className="flex p-3 gap-3">
+      {/* Desktop: cover on top */}
+      <div className="hidden lg:block">
+        <div className="h-28 relative bg-gray-700/30 flex items-center justify-center">
+          <div className="text-5xl opacity-30">📝</div>
+          <div className="absolute top-2 left-2"><span className="qs-badge-status qs-badge-draft">Nháp</span></div>
+        </div>
+        <div className="p-3">
+          <h3 className="font-extrabold text-gray-300 text-sm leading-tight qs-font-vn-display">{qs.name}</h3>
+          <div className="text-[10px] text-gray-500 mt-1">
+            {qs.totalQuestions > 0 ? `Mới có ${qs.totalQuestions}/15 câu` : 'Chưa có câu hỏi'}
+            {qs.updatedAt && ` · Sửa cuối: ${formatRelative(qs.updatedAt)}`}
+          </div>
+          <div className="mt-2">
+            <div className="qs-progress-bar h-1">
+              <div className="qs-progress-fill qs-progress-fill-gold h-1" style={{ width: `${pct}%` }} />
+            </div>
+            <div className="text-[10px] text-gray-500 mt-1">
+              {pct}% hoàn thành
+              {qs.totalQuestions < 5 && ` · Cần thêm ${5 - qs.totalQuestions} câu để xuất bản`}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile: compact horizontal */}
+      <div className="lg:hidden flex p-3 gap-3">
         <div
           className="w-14 h-14 rounded-lg flex items-center justify-center text-2xl shrink-0"
           style={{ background: 'rgba(156, 163, 175, 0.15)' }}
@@ -415,18 +624,18 @@ function DraftCard({ groupId, qs }: { groupId: string; qs: QuizSet }) {
   )
 }
 
-function EmptyState({ groupId, hasSearch }: { groupId: string; hasSearch: boolean }) {
+function EmptyState({ groupId, hasSearch, t }: { groupId: string; hasSearch: boolean; t: any }) {
   return (
-    <div className="mx-5 rounded-xl p-8 text-center qs-glass">
+    <div className="rounded-xl p-8 text-center qs-glass">
       <div className="text-5xl mb-3">📚</div>
       <p className="text-gray-300 mb-4 text-sm">
-        {hasSearch ? 'Không tìm thấy bộ câu hỏi nào.' : 'Chưa có bộ câu hỏi nào.'}
+        {hasSearch ? t('quizSet.list.emptySearch') : t('quizSet.list.emptyAll')}
       </p>
       {!hasSearch && (
         <Link
           to={`/groups/${groupId}/quiz-sets/new`}
           className="inline-block px-4 py-2 rounded-lg qs-gold-grad text-[#11131e] font-bold text-sm"
-        >+ Tạo bộ câu hỏi đầu tiên</Link>
+        >{t('quizSet.list.createFirst')}</Link>
       )}
     </div>
   )

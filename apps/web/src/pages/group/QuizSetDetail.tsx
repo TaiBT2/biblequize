@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import {
   archiveQuizSet, cloneQuizSet, createLiveRoomFromQuizSet, deleteQuizSet,
   getMyMastery, getQuizSet, getModeAvailability, MODE_LABELS,
@@ -47,10 +47,10 @@ export default function QuizSetDetail() {
   }, [groupId, setId])
 
   if (loading) return (
-    <div className="qs-bg min-h-screen flex items-center justify-center text-gray-400">{t('quizSet.detail.loading')}</div>
+    <div className="qs-bg-deep min-h-screen flex items-center justify-center text-gray-400">{t('quizSet.detail.loading')}</div>
   )
   if (error || !quizSet) return (
-    <div className="qs-bg min-h-screen flex items-center justify-center text-red-300 p-6 text-center">
+    <div className="qs-bg-deep min-h-screen flex items-center justify-center text-red-300 p-6 text-center">
       {error || t('quizSet.detail.notFound')}
     </div>
   )
@@ -71,9 +71,7 @@ export default function QuizSetDetail() {
       if (navigateTo) navigate(navigateTo)
     } catch (err: any) {
       setError(err?.response?.data?.message || err.message)
-    } finally {
-      setBusy(false)
-    }
+    } finally { setBusy(false) }
   }
 
   const startMode = async (mode: RoomMode) => {
@@ -84,9 +82,7 @@ export default function QuizSetDetail() {
       navigate(`/room/${room.roomCode}`)
     } catch (err: any) {
       setError(err?.response?.data?.message || err.message)
-    } finally {
-      setBusy(false); setShowModePicker(false)
-    }
+    } finally { setBusy(false); setShowModePicker(false) }
   }
 
   const startSolo = async () => {
@@ -104,26 +100,35 @@ export default function QuizSetDetail() {
       })
     } catch (err: any) {
       setError(err?.response?.data?.message || err.message)
-    } finally {
-      setBusy(false); setShowModePicker(false)
-    }
+    } finally { setBusy(false); setShowModePicker(false) }
   }
 
   return (
-    <div className="qs-bg min-h-screen">
-      <div className="max-w-md mx-auto pb-6 qs-fade-in">
-        {/* Hero cover */}
-        <div className="relative h-44">
+    <div className="qs-bg-deep min-h-screen lg:flex">
+      {/* Main column (mobile + desktop LEFT) */}
+      <div className="flex-1 lg:overflow-y-auto qs-scroll-thin qs-fade-in">
+        {/* Desktop breadcrumb */}
+        <div className="hidden lg:flex px-8 py-4 border-b border-white/5 items-center gap-2 text-xs">
+          <Link to={`/groups/${groupId}`} className="text-gray-500 hover:text-white">← Nhóm</Link>
+          <span className="text-gray-600">/</span>
+          <Link to={`/groups/${groupId}/quiz-sets`} className="text-gray-500 hover:text-white">Bộ câu hỏi</Link>
+          <span className="text-gray-600">/</span>
+          <span className="text-gray-300 truncate">{quizSet.name}</span>
+        </div>
+
+        {/* Hero — h-44 mobile, h-64 desktop */}
+        <div className="relative h-44 lg:h-64">
           <div className="absolute inset-0 qs-cover-easter" />
-          <div className="absolute inset-0 flex items-center justify-center text-7xl opacity-30">{cover}</div>
+          <div className="absolute inset-0 flex items-center justify-center text-7xl lg:text-9xl opacity-30 lg:opacity-20">{cover}</div>
           <div
             className="absolute inset-0"
-            style={{ background: 'linear-gradient(to bottom, transparent, transparent, #11131e)' }}
+            style={{ background: 'linear-gradient(to bottom, transparent, transparent, #0a0c14)' }}
           />
 
+          {/* Mobile back button */}
           <button
             onClick={() => navigate(`/groups/${groupId}/quiz-sets`)}
-            className="absolute top-3 left-3 w-9 h-9 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white"
+            className="lg:hidden absolute top-3 left-3 w-9 h-9 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white"
             aria-label={t('quizSet.detail.back')}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
@@ -131,207 +136,228 @@ export default function QuizSetDetail() {
             </svg>
           </button>
 
-          <div className="absolute bottom-3 left-4 right-4">
-            <div className="flex gap-1.5 mb-1.5">
+          <div className="absolute bottom-3 lg:bottom-6 left-4 lg:left-8 right-4 lg:right-8">
+            <div className="flex flex-wrap gap-1.5 lg:gap-2 mb-1.5 lg:mb-3">
               <span className={`qs-badge-status ${badge.cls}`}>{badge.vi}</span>
               {quizSet.averageRating != null && (
-                <span className="px-2 py-0.5 rounded-full bg-black/40 backdrop-blur text-[9px] font-bold text-[#e8a832]">
+                <span className="px-2 lg:px-2.5 py-0.5 lg:py-1 rounded-full bg-black/40 backdrop-blur text-[9px] lg:text-[10px] font-bold text-[#e8a832]">
                   {t('quizSet.detail.rating', { rating: Number(quizSet.averageRating).toFixed(1), count: quizSet.totalRatings })}
                 </span>
               )}
+              <span className="hidden lg:inline-block px-2.5 py-1 rounded-full bg-black/40 backdrop-blur text-[10px] font-bold text-white">
+                ▶ Đã chơi {quizSet.playCount} lần
+              </span>
             </div>
-            <h1 className="qs-font-vn-display font-extrabold text-white text-xl leading-tight">{quizSet.name}</h1>
+            <h1 className="qs-font-vn-display font-extrabold text-white text-xl lg:text-3xl leading-tight">{quizSet.name}</h1>
+            {quizSet.coverScripture && (
+              <div className="hidden lg:flex items-center gap-2 mt-2 text-sm text-gray-300">
+                <span>📍</span>
+                <span>{quizSet.coverScripture}</span>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Tags */}
-        {quizSet.tags && quizSet.tags.length > 0 && (
-          <div className="px-4 pt-3 flex gap-1.5 overflow-x-auto qs-scroll-thin">
-            {quizSet.tags.map(tag => (
-              <span key={tag} className="shrink-0 px-2 py-0.5 rounded-full bg-[#e8a832]/15 text-[#e8a832] text-[10px] font-semibold">
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
+        {/* Content */}
+        <div className="px-4 lg:px-8 py-3 lg:py-6 space-y-4 lg:space-y-6">
+          {/* Tags */}
+          {quizSet.tags && quizSet.tags.length > 0 && (
+            <div className="flex gap-1.5 lg:gap-2 overflow-x-auto qs-scroll-thin">
+              {quizSet.tags.map(tag => (
+                <span key={tag} className="shrink-0 px-2 lg:px-3 py-0.5 lg:py-1 rounded-full bg-[#e8a832]/15 text-[#e8a832] text-[10px] lg:text-xs font-semibold">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
 
-        {/* Description */}
-        {quizSet.description && (
-          <div className="px-4 pt-3">
-            <p className="text-xs text-gray-300 leading-relaxed">{quizSet.description}</p>
-          </div>
-        )}
+          {/* Description */}
+          {quizSet.description && (
+            <div>
+              <div className="hidden lg:block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Mô tả</div>
+              <p className="text-xs lg:text-sm text-gray-300 leading-relaxed">{quizSet.description}</p>
+            </div>
+          )}
 
-        {/* Quick stats grid */}
-        <div className="px-4 pt-3">
-          <div className="grid grid-cols-4 gap-1.5">
-            <Stat label={t('quizSet.detail.statQuestions')} value={String(quizSet.totalQuestions)} />
-            <StatDifficulty label={t('quizSet.detail.statDifficulty')} diff={diff} />
-            <Stat
+          {/* Author note */}
+          {quizSet.authorNote && (
+            <div className="qs-glass-subtle rounded-xl p-3 lg:p-4 border-l-4 border-[#e8a832]">
+              <div className="text-[10px] font-semibold text-[#e8a832] uppercase tracking-wider mb-1 lg:mb-1.5">{t('quizSet.detail.authorNote')}</div>
+              <div className="text-xs lg:text-sm text-gray-300 whitespace-pre-wrap">{quizSet.authorNote}</div>
+            </div>
+          )}
+
+          {/* Mobile: 4-stat grid + mastery + suggested mode + actions */}
+          <div className="lg:hidden space-y-4">
+            <div className="grid grid-cols-4 gap-1.5">
+              <Stat label={t('quizSet.detail.statQuestions')} value={String(quizSet.totalQuestions)} />
+              <StatDifficulty label={t('quizSet.detail.statDifficulty')} diff={diff} />
+              <Stat
+                label={t('quizSet.detail.statTime')}
+                value={quizSet.estimatedDurationMin ? String(quizSet.estimatedDurationMin) : '—'}
+                suffix={quizSet.estimatedDurationMin ? 'm' : undefined}
+              />
+              <Stat label={t('quizSet.detail.statPlays')} value={String(quizSet.playCount)} valueClass="text-[#e8a832]" />
+            </div>
+
+            {hasMastery && <MasteryCard t={t} mastery={mastery!} totalQuestions={quizSet.totalQuestions} masteryPct={masteryPct} />}
+
+            {quizSet.suggestedMode && (
+              <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
+                {t('quizSet.detail.suggestedMode', { mode: MODE_LABELS[quizSet.suggestedMode].vi })}
+              </div>
+            )}
+
+            <PrimaryActions
+              quizSet={quizSet} busy={busy} t={t}
+              onPlayNow={() => setShowModePicker(true)}
+              onPublish={() => action(() => publishQuizSet(groupId!, setId!))}
+              onUnarchive={() => action(() => unarchiveQuizSet(groupId!, setId!))}
+            />
+
+            {quizSet.publishStatus === 'PUBLISHED' && (
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  onClick={startSolo} disabled={busy}
+                  className="py-2.5 rounded-xl qs-glass border border-[#e8a832]/30 text-[#e8a832] font-semibold text-xs flex items-center justify-center gap-1.5 disabled:opacity-50"
+                ><span>📚</span><span>{t('quizSet.detail.soloPractice')}</span></button>
+                <button
+                  onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${quizSet.id}`)}
+                  className="py-2.5 rounded-xl qs-glass border border-white/10 text-white font-semibold text-xs flex items-center justify-center gap-1.5"
+                ><span>📅</span><span>{t('quizSet.detail.schedule')}</span></button>
+              </div>
+            )}
+
+            <LeaderActionsRow
+              t={t} groupId={groupId!} quizSet={quizSet} busy={busy}
+              onClone={() => action(() => cloneQuizSet(groupId!, setId!), `/groups/${groupId}/quiz-sets`)}
+              onArchive={() => action(() => archiveQuizSet(groupId!, setId!))}
+              onDelete={() => {
+                if (confirm(t('quizSet.detail.deleteConfirm')))
+                  action(() => deleteQuizSet(groupId!, setId!), `/groups/${groupId}/quiz-sets`)
+              }}
+              navigate={navigate}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* DESKTOP: Right stats sidebar 340px */}
+      <aside className="hidden lg:block w-[340px] shrink-0 border-l border-white/5 overflow-y-auto qs-scroll-thin" style={{ background: '#0e1019' }}>
+        <div className="p-5 space-y-5">
+          <div>
+            <PrimaryActions
+              quizSet={quizSet} busy={busy} t={t}
+              onPlayNow={() => setShowModePicker(true)}
+              onPublish={() => action(() => publishQuizSet(groupId!, setId!))}
+              onUnarchive={() => action(() => unarchiveQuizSet(groupId!, setId!))}
+            />
+            {quizSet.publishStatus === 'PUBLISHED' && (
+              <div className="grid grid-cols-2 gap-2 mt-2">
+                <button
+                  onClick={startSolo} disabled={busy}
+                  className="py-2.5 rounded-xl qs-glass-subtle border border-[#e8a832]/30 text-[#e8a832] font-semibold text-xs flex items-center justify-center gap-1.5 disabled:opacity-50"
+                ><span>📚</span><span>{t('quizSet.detail.soloPractice')}</span></button>
+                <button
+                  onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${quizSet.id}`)}
+                  className="py-2.5 rounded-xl qs-glass-subtle border border-white/10 text-white font-semibold text-xs flex items-center justify-center gap-1.5"
+                ><span>📅</span><span>{t('quizSet.detail.schedule')}</span></button>
+              </div>
+            )}
+          </div>
+
+          {/* 2x2 stats grid */}
+          <div className="grid grid-cols-2 gap-2">
+            <DesktopStat label={t('quizSet.detail.statQuestions')} value={String(quizSet.totalQuestions)} />
+            <DesktopStat
+              label={t('quizSet.detail.statDifficulty')}
+              value={diff ? `${diff.emoji} ${diff.vi}` : '—'}
+              valueClass={diff?.cls ?? 'text-gray-500'}
+              small
+            />
+            <DesktopStat
               label={t('quizSet.detail.statTime')}
               value={quizSet.estimatedDurationMin ? String(quizSet.estimatedDurationMin) : '—'}
-              suffix={quizSet.estimatedDurationMin ? 'm' : undefined}
+              suffix={quizSet.estimatedDurationMin ? 'phút' : undefined}
             />
-            <Stat label={t('quizSet.detail.statPlays')} value={String(quizSet.playCount)} valueClass="text-[#e8a832]" />
+            <DesktopStat label={t('quizSet.detail.statPlays')} value={`${quizSet.playCount}x`} valueClass="text-[#e8a832]" />
           </div>
-        </div>
 
-        {/* Personal Mastery */}
-        {hasMastery && (
-          <div className="px-4 pt-4">
-            <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-2">
-              <span>{t('quizSet.detail.masteryHeader')}</span>
-              <div className="h-px flex-1 bg-white/5" />
-            </div>
-            <div className="rounded-xl p-3 border border-emerald-400/30" style={{ background: 'rgba(74, 222, 128, 0.06)' }}>
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs text-white">{t('quizSet.detail.masteryLearned')}</span>
-                <span className="text-xs font-bold text-emerald-400">
-                  {t('quizSet.detail.masteryProgress', { learned: mastery!.questionsLearned, total: quizSet.totalQuestions, pct: masteryPct })}
-                </span>
-              </div>
-              <div className="qs-progress-bar h-2 mb-3">
-                <div className="qs-progress-fill h-2" style={{ width: `${masteryPct}%` }} />
-              </div>
-              <div className="grid grid-cols-3 gap-2 text-center">
-                <MiniStat label={t('quizSet.detail.masteryAttempts')} value={t('quizSet.detail.masteryAttemptsValue', { count: mastery!.totalAttempts })} />
-                <MiniStat
-                  label={t('quizSet.detail.masteryBest')}
-                  value={mastery!.bestAccuracy != null ? `${Number(mastery!.bestAccuracy).toFixed(0)}%` : `${mastery!.bestScore}đ`}
-                  valueClass="text-[#e8a832]"
-                />
-                <MiniStat
-                  label={t('quizSet.detail.masteryLast')}
-                  value={mastery!.lastPracticedAt ? relativeShort(mastery!.lastPracticedAt) : '—'}
-                />
-              </div>
-              {mastery!.completedMastery && (
-                <div className="mt-2 text-center text-[10px] text-emerald-400 font-bold">{t('quizSet.detail.masteryCompleted')}</div>
-              )}
-            </div>
-          </div>
-        )}
+          {hasMastery && <MasteryCard t={t} mastery={mastery!} totalQuestions={quizSet.totalQuestions} masteryPct={masteryPct} />}
 
-        {/* Author note */}
-        {quizSet.authorNote && (
-          <div className="px-4 pt-4">
-            <div className="rounded-xl p-3 qs-glass">
-              <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">{t('quizSet.detail.authorNote')}</div>
-              <div className="text-xs text-gray-200 whitespace-pre-wrap">{quizSet.authorNote}</div>
-            </div>
-          </div>
-        )}
-
-        {/* Suggested mode + actions */}
-        <div className="px-4 pt-4">
           {quizSet.suggestedMode && (
-            <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">
-              {t('quizSet.detail.suggestedMode', { mode: MODE_LABELS[quizSet.suggestedMode].vi })}
+            <div>
+              <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">💡 Mode đề xuất</div>
+              <div className="qs-glass-subtle rounded-xl p-3 border border-emerald-400/30">
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-lg ${MODE_LABELS[quizSet.suggestedMode].cssClass} flex items-center justify-center text-xl shrink-0`}>
+                    {MODE_LABELS[quizSet.suggestedMode].emoji}
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-sm font-bold text-white">{MODE_LABELS[quizSet.suggestedMode].vi}</div>
+                    <div className="text-[10px] text-gray-400">{MODE_LABELS[quizSet.suggestedMode].tagline}</div>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 
-          {/* Primary CTA */}
-          {quizSet.publishStatus === 'PUBLISHED' && (
-            <button
-              onClick={() => setShowModePicker(true)}
-              disabled={busy}
-              className="w-full py-3 rounded-xl qs-gold-grad qs-font-vn-display font-extrabold text-[#11131e] text-sm flex items-center justify-center gap-2 mb-2 disabled:opacity-50"
-            >
-              <span>▶</span><span>{t('quizSet.detail.ctaPlayNow')}</span>
-            </button>
-          )}
-          {quizSet.publishStatus === 'DRAFT' && (
-            <button
-              onClick={() => action(() => publishQuizSet(groupId!, setId!))}
-              disabled={busy || quizSet.totalQuestions < 5}
-              className="w-full py-3 rounded-xl qs-gold-grad qs-font-vn-display font-extrabold text-[#11131e] text-sm flex items-center justify-center gap-2 mb-2 disabled:opacity-50"
-            >
-              <span>✓</span><span>{quizSet.totalQuestions < 5 ? t('quizSet.detail.ctaNeedQuestions', { count: quizSet.totalQuestions }) : t('quizSet.detail.ctaPublish')}</span>
-            </button>
-          )}
-          {quizSet.publishStatus === 'ARCHIVED' && (
-            <button
-              onClick={() => action(() => unarchiveQuizSet(groupId!, setId!))}
-              disabled={busy}
-              className="w-full py-3 rounded-xl qs-glass border border-[#e8a832]/30 text-[#e8a832] font-bold text-sm mb-2"
-            >{t('quizSet.detail.ctaUnarchive')}</button>
-          )}
-
-          {/* Secondary actions */}
-          {quizSet.publishStatus === 'PUBLISHED' && (
-            <div className="grid grid-cols-2 gap-2 mb-2">
-              <button
-                onClick={startSolo}
-                disabled={busy}
-                className="py-2.5 rounded-xl qs-glass border border-[#e8a832]/30 text-[#e8a832] font-semibold text-xs flex items-center justify-center gap-1.5 disabled:opacity-50"
-              ><span>📚</span><span>{t('quizSet.detail.soloPractice')}</span></button>
-              <button
-                onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${quizSet.id}`)}
-                className="py-2.5 rounded-xl qs-glass border border-white/10 text-white font-semibold text-xs flex items-center justify-center gap-1.5"
-              ><span>📅</span><span>{t('quizSet.detail.schedule')}</span></button>
+          {/* Leader actions stacked */}
+          <div className="rounded-xl p-3 border border-white/5" style={{ background: 'rgba(50, 52, 64, 0.3)' }}>
+            <div className="text-[10px] font-semibold text-[#e8a832] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <span>👑</span><span>{t('quizSet.detail.leaderActions')}</span>
             </div>
-          )}
-
-          {/* Leader actions row */}
-          <div className="rounded-xl p-2 border border-white/5 flex items-center justify-between" style={{ background: 'rgba(50, 52, 64, 0.3)' }}>
-            <span className="text-[10px] text-gray-400">{t('quizSet.detail.leaderActions')}</span>
-            <div className="flex gap-1">
-              <IconButton
-                title={t('quizSet.detail.edit')}
-                onClick={() => navigate(`/groups/${groupId}/quiz-sets/${quizSet.id}/edit`)}
-              >
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+            <div className="space-y-1.5">
+              <DesktopLeaderButton
+                icon={<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                   <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
                   <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                </svg>
-              </IconButton>
-              <IconButton
-                title={t('quizSet.detail.clone')}
-                onClick={() => action(() => cloneQuizSet(groupId!, setId!), `/groups/${groupId}/quiz-sets`)}
-                disabled={busy}
-              >
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                </svg>}
+                label={`${t('quizSet.detail.edit')} bộ câu hỏi`}
+                onClick={() => navigate(`/groups/${groupId}/quiz-sets/${quizSet.id}/edit`)}
+              />
+              <DesktopLeaderButton
+                icon={<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                   <rect x="9" y="9" width="13" height="13" rx="2" />
                   <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                </svg>
-              </IconButton>
+                </svg>}
+                label={`${t('quizSet.detail.clone')} bộ này`}
+                onClick={() => action(() => cloneQuizSet(groupId!, setId!), `/groups/${groupId}/quiz-sets`)}
+                disabled={busy}
+              />
               {quizSet.publishStatus === 'PUBLISHED' && (
-                <IconButton
-                  title={t('quizSet.detail.archive')}
-                  onClick={() => action(() => archiveQuizSet(groupId!, setId!))}
-                  disabled={busy}
-                >
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                <DesktopLeaderButton
+                  icon={<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                     <rect x="3" y="3" width="18" height="4" rx="1" />
                     <path d="M5 7v13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7M10 12h4" />
-                  </svg>
-                </IconButton>
+                  </svg>}
+                  label={t('quizSet.detail.archive')}
+                  onClick={() => action(() => archiveQuizSet(groupId!, setId!))}
+                  disabled={busy}
+                />
               )}
-              <IconButton
-                title={t('quizSet.detail.delete')}
+              <DesktopLeaderButton
+                icon={<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                  <polyline points="3 6 5 6 21 6" />
+                  <path d="M19 6l-2 14H7L5 6" />
+                </svg>}
+                label={t('quizSet.detail.delete')}
+                danger
                 onClick={() => {
                   if (confirm(t('quizSet.detail.deleteConfirm')))
                     action(() => deleteQuizSet(groupId!, setId!), `/groups/${groupId}/quiz-sets`)
                 }}
                 disabled={busy}
-                className="text-red-400"
-              >
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                  <polyline points="3 6 5 6 21 6" />
-                  <path d="M19 6l-2 14H7L5 6" />
-                  <path d="M10 11v6M14 11v6" />
-                </svg>
-              </IconButton>
+              />
             </div>
           </div>
         </div>
-      </div>
+      </aside>
 
-      {/* Mode picker modal (mockup state ④) */}
+      {/* Mode picker — bottom sheet mobile / centered modal desktop */}
       {showModePicker && (
         <ModePickerModal
-          quizSet={quizSet}
-          busy={busy}
+          quizSet={quizSet} busy={busy} t={t}
           onPick={startMode}
           onSolo={startSolo}
           onClose={() => setShowModePicker(false)}
@@ -341,35 +367,131 @@ export default function QuizSetDetail() {
   )
 }
 
-function ModePickerModal({
-  quizSet, busy, onPick, onSolo, onClose,
+function PrimaryActions({
+  quizSet, busy, t, onPlayNow, onPublish, onUnarchive,
 }: {
-  quizSet: QuizSet; busy: boolean;
+  quizSet: QuizSet; busy: boolean; t: any;
+  onPlayNow: () => void; onPublish: () => void; onUnarchive: () => void;
+}) {
+  if (quizSet.publishStatus === 'PUBLISHED') {
+    return (
+      <button
+        onClick={onPlayNow} disabled={busy}
+        className="w-full py-3 rounded-xl qs-gold-grad qs-font-vn-display font-extrabold text-[#11131e] text-sm flex items-center justify-center gap-2 disabled:opacity-50"
+      >
+        <span>▶</span><span>{t('quizSet.detail.ctaPlayNow')}</span>
+      </button>
+    )
+  }
+  if (quizSet.publishStatus === 'DRAFT') {
+    return (
+      <button
+        onClick={onPublish} disabled={busy || quizSet.totalQuestions < 5}
+        className="w-full py-3 rounded-xl qs-gold-grad qs-font-vn-display font-extrabold text-[#11131e] text-sm flex items-center justify-center gap-2 disabled:opacity-50"
+      >
+        <span>✓</span><span>{quizSet.totalQuestions < 5 ? t('quizSet.detail.ctaNeedQuestions', { count: quizSet.totalQuestions }) : t('quizSet.detail.ctaPublish')}</span>
+      </button>
+    )
+  }
+  if (quizSet.publishStatus === 'ARCHIVED') {
+    return (
+      <button
+        onClick={onUnarchive} disabled={busy}
+        className="w-full py-3 rounded-xl qs-glass border border-[#e8a832]/30 text-[#e8a832] font-bold text-sm"
+      >{t('quizSet.detail.ctaUnarchive')}</button>
+    )
+  }
+  return null
+}
+
+function MasteryCard({
+  t, mastery, totalQuestions, masteryPct,
+}: {
+  t: any; mastery: QuizSetMastery; totalQuestions: number; masteryPct: number;
+}) {
+  return (
+    <div className="rounded-xl p-3 lg:p-4 border border-emerald-400/30" style={{ background: 'rgba(74, 222, 128, 0.06)' }}>
+      <div className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+        <span>🎯</span><span>{t('quizSet.detail.masteryHeader').replace('🎯 ', '')}</span>
+      </div>
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-xs lg:text-sm text-white font-semibold">{t('quizSet.detail.masteryLearned')}</span>
+        <span className="text-xs lg:text-sm font-extrabold text-emerald-400">
+          {mastery.questionsLearned}/{totalQuestions} câu
+        </span>
+      </div>
+      <div className="qs-progress-bar h-2 mb-3">
+        <div className="qs-progress-fill h-2" style={{ width: `${masteryPct}%` }} />
+      </div>
+      <div className="flex items-center justify-between text-xs text-gray-400 mb-3">
+        <span>{masteryPct}% hoàn thành</span>
+        {totalQuestions - mastery.questionsLearned > 0 && (
+          <span className="text-emerald-400">Còn {totalQuestions - mastery.questionsLearned} câu</span>
+        )}
+      </div>
+      <div className="grid grid-cols-3 gap-2 pt-3 border-t border-emerald-400/15 text-center">
+        <MiniStat label={t('quizSet.detail.masteryAttempts')} value={t('quizSet.detail.masteryAttemptsValue', { count: mastery.totalAttempts })} />
+        <MiniStat
+          label={t('quizSet.detail.masteryBest')}
+          value={mastery.bestAccuracy != null ? `${Number(mastery.bestAccuracy).toFixed(0)}%` : `${mastery.bestScore}đ`}
+          valueClass="text-[#e8a832]"
+        />
+        <MiniStat
+          label={t('quizSet.detail.masteryLast')}
+          value={mastery.lastPracticedAt ? relativeShort(mastery.lastPracticedAt) : '—'}
+        />
+      </div>
+      {mastery.completedMastery && (
+        <div className="mt-2 text-center text-[10px] text-emerald-400 font-bold">{t('quizSet.detail.masteryCompleted')}</div>
+      )}
+    </div>
+  )
+}
+
+function ModePickerModal({
+  quizSet, busy, t, onPick, onSolo, onClose,
+}: {
+  quizSet: QuizSet; busy: boolean; t: any;
   onPick: (mode: RoomMode) => void; onSolo: () => void; onClose: () => void;
 }) {
-  const { t } = useTranslation()
   const cover = quizSet.coverImageUrl?.startsWith('emoji:') ? quizSet.coverImageUrl.slice(6) : '📖'
   const diff = quizSet.difficulty ? DIFFICULTY[quizSet.difficulty] : null
+  const navigate = useNavigate()
 
   const multiplayerModes: RoomMode[] = [
     'GROUP_LIVE_SEQUENTIAL', 'SPEED_RACE', 'TEAM_VS_TEAM', 'BATTLE_ROYALE', 'SUDDEN_DEATH'
   ]
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 qs-fade-in" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex items-end lg:items-center justify-center bg-black/60 lg:bg-black/70 backdrop-blur-sm qs-fade-in"
+      onClick={onClose}
+    >
       <div
-        className="w-full md:max-w-md max-h-[85vh] overflow-y-auto qs-scroll-thin qs-bg rounded-t-2xl"
+        className="w-full lg:max-w-4xl max-h-[85vh] overflow-y-auto qs-scroll-thin rounded-t-3xl lg:rounded-3xl flex flex-col"
+        style={{ background: 'rgba(20, 22, 32, 0.95)' }}
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-5 py-3 flex items-center justify-between sticky top-0 backdrop-blur z-10" style={{ background: 'rgba(17,19,30,0.95)' }}>
-          <button onClick={onClose} className="text-gray-400 text-sm">{t('quizSet.detail.modePickerCancel')}</button>
-          <div className="text-sm font-bold text-white">{t('quizSet.detail.modePickerTitle')}</div>
-          <div className="w-12" />
+        <div className="px-5 lg:px-8 py-4 lg:py-5 border-b border-white/10 flex items-center justify-between sticky top-0 backdrop-blur z-10" style={{ background: 'rgba(20, 22, 32, 0.95)' }}>
+          <div>
+            <h2 className="text-base lg:text-xl font-extrabold text-white">{t('quizSet.detail.modePickerTitle')}</h2>
+            <div className="hidden lg:block text-xs text-gray-400 mt-0.5">
+              Bộ: <span className="text-white">{quizSet.name}</span> · {quizSet.totalQuestions} câu{diff && ` · ${diff.emoji} ${diff.vi}`}
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-9 h-9 rounded-full hover:bg-white/5 flex items-center justify-center text-gray-400"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
         </div>
 
-        {/* Quiz set summary */}
-        <div className="px-4 mb-3">
+        {/* Mobile quiz set summary */}
+        <div className="lg:hidden px-4 mb-3 mt-3">
           <div className="qs-glass rounded-xl p-3 flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg flex items-center justify-center text-xl shrink-0 qs-cover-easter">{cover}</div>
             <div className="flex-1 min-w-0">
@@ -383,30 +505,30 @@ function ModePickerModal({
           </div>
         </div>
 
-        {/* Solo */}
-        <div className="px-4 mb-3">
+        {/* Content */}
+        <div className="px-4 lg:px-8 py-3 lg:py-6">
+          {/* Solo */}
           <SectionHeader emoji="📚" label={t('quizSet.detail.sectionSolo')} colorCls="text-emerald-400" />
           <button
             onClick={() => { if (!busy) onSolo() }}
             disabled={busy}
-            className="w-full qs-glass rounded-xl p-3 flex items-center gap-3 border border-emerald-400/20 disabled:opacity-50"
+            className="qs-mode-card w-full qs-glass rounded-xl p-3 lg:p-4 flex items-center gap-3 lg:gap-4 border border-emerald-400/20 disabled:opacity-50 mb-4 lg:mb-6"
           >
-            <div className="qs-mode-icon qs-mode-seq shrink-0">📚</div>
+            <div className={`qs-mode-icon qs-mode-seq shrink-0 lg:w-14 lg:h-14 lg:text-3xl`}>📚</div>
             <div className="flex-1 text-left min-w-0">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-bold text-white">{t('quizSet.detail.soloPractice')}</span>
-                <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-semibold">{t('quizSet.detail.soloMastery')}</span>
+              <div className="flex items-center gap-2 mb-0.5 lg:mb-1">
+                <span className="text-sm lg:text-base font-bold text-white">{t('quizSet.detail.soloPractice')}</span>
+                <span className="text-[9px] lg:text-[10px] px-1.5 lg:px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-semibold">{t('quizSet.detail.soloMastery')}</span>
               </div>
-              <div className="text-[10px] text-gray-400 mt-0.5">{t('quizSet.detail.soloDescription')}</div>
+              <div className="text-[10px] lg:text-xs text-gray-400">{t('quizSet.detail.soloDescription')}</div>
+              <div className="hidden lg:block text-[10px] text-gray-500 mt-1">⚠️ KHÔNG đóng góp Group Leaderboard (Q-A locked)</div>
             </div>
             <Chevron />
           </button>
-        </div>
 
-        {/* Multiplayer */}
-        <div className="px-4 mb-4">
+          {/* Multiplayer */}
           <SectionHeader emoji="👥" label={t('quizSet.detail.sectionMultiplayer')} colorCls="text-[#e8a832]" />
-          <div className="space-y-2">
+          <div className="space-y-2 lg:grid lg:grid-cols-2 lg:gap-3 lg:space-y-0 mb-4 lg:mb-6">
             {multiplayerModes.map(mode => {
               const cfg = MODE_LABELS[mode]
               const av = getModeAvailability(mode, quizSet.totalQuestions)
@@ -416,29 +538,60 @@ function ModePickerModal({
                   key={mode}
                   onClick={() => av.available && !busy && onPick(mode)}
                   disabled={!av.available || busy}
-                  className={`w-full rounded-xl p-3 flex items-center gap-3 ${
+                  className={`qs-mode-card w-full rounded-xl p-3 lg:p-4 flex items-center gap-3 ${
                     av.available
-                      ? (isSuggested ? `border-2 border-emerald-400/40 ${cfg.cssClass}` : `border border-[#e8a832]/20 ${cfg.cssClass}`)
+                      ? (isSuggested
+                          ? `border-2 border-emerald-400/40 ${cfg.cssClass}`
+                          : `border ${cfg.cssClass}`)
                       : 'qs-glass border border-white/10 opacity-50 cursor-not-allowed'
                   }`}
                 >
-                  <div className={`qs-mode-icon ${cfg.cssClass} shrink-0`}>{cfg.emoji}</div>
+                  <div className={`qs-mode-icon ${cfg.cssClass} shrink-0 lg:w-12 lg:h-12 lg:text-2xl`}>{cfg.emoji}</div>
                   <div className="flex-1 text-left min-w-0">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5 mb-0.5">
                       <span className="text-sm font-bold text-white">{cfg.vi}</span>
                       {isSuggested && (
-                        <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/30 text-emerald-300 font-semibold">{t('quizSet.detail.modeSuggested')}</span>
+                        <span className="text-[9px] lg:text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/30 text-emerald-300 font-semibold">{t('quizSet.detail.modeSuggested')}</span>
                       )}
                     </div>
                     <div className={`text-[10px] mt-0.5 ${isSuggested ? 'text-emerald-300' : 'text-gray-400'}`}>
                       {av.available ? cfg.tagline : av.reason}
                     </div>
                   </div>
-                  <Chevron />
                 </button>
               )
             })}
           </div>
+
+          {/* Async event */}
+          <SectionHeader emoji="📅" label="Sự kiện nhóm" colorCls="text-purple-400" />
+          <button
+            onClick={() => {
+              const groupId = window.location.pathname.split('/')[2]
+              navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${quizSet.id}`)
+              onClose()
+            }}
+            className="qs-mode-card qs-glass-subtle w-full rounded-xl p-3 lg:p-4 flex items-center gap-3 lg:gap-4 border border-purple-400/20"
+          >
+            <div
+              className="qs-mode-icon shrink-0 lg:w-14 lg:h-14 lg:text-3xl"
+              style={{ background: 'rgba(168, 85, 247, 0.15)', border: '1px solid rgba(168, 85, 247, 0.3)' }}
+            >📅</div>
+            <div className="flex-1 text-left min-w-0">
+              <div className="text-sm lg:text-base font-bold text-white mb-0.5">Lên lịch quiz cho nhóm</div>
+              <div className="text-[10px] lg:text-xs text-gray-400">Cho cả nhóm chơi async trong khoảng thời gian. Có hạn chót, có attempts limit.</div>
+            </div>
+            <Chevron />
+          </button>
+        </div>
+
+        {/* Desktop footer tip */}
+        <div className="hidden lg:flex px-8 py-4 border-t border-white/10 items-center justify-between bg-black/20">
+          <div className="text-[10px] text-gray-500">💡 Tip: Sequential phù hợp khi nội dung cần thảo luận. Speed Race phù hợp thiếu nhi.</div>
+          <button
+            onClick={onClose}
+            className="px-4 py-2 rounded-lg qs-glass-subtle border border-white/10 text-gray-300 text-xs font-semibold"
+          >Hủy</button>
         </div>
       </div>
     </div>
@@ -467,10 +620,25 @@ function StatDifficulty({ label, diff }: { label: string; diff: { vi: string; sh
   )
 }
 
+function DesktopStat({
+  label, value, suffix, valueClass, small,
+}: {
+  label: string; value: string; suffix?: string; valueClass?: string; small?: boolean;
+}) {
+  return (
+    <div className="qs-glass-subtle rounded-xl p-3 border border-white/5">
+      <div className="text-[10px] text-gray-400 uppercase font-semibold">{label}</div>
+      <div className={`font-extrabold mt-0.5 ${small ? 'text-sm' : 'text-xl'} ${valueClass || 'text-white'}`}>
+        {value}{suffix && <span className="text-xs text-gray-500 ml-1">{suffix}</span>}
+      </div>
+    </div>
+  )
+}
+
 function MiniStat({ label, value, valueClass }: { label: string; value: string; valueClass?: string }) {
   return (
     <div>
-      <div className="text-[9px] text-gray-400 uppercase">{label}</div>
+      <div className="text-[9px] lg:text-[10px] text-gray-400 uppercase">{label}</div>
       <div className={`text-sm font-bold ${valueClass ?? 'text-white'}`}>{value}</div>
     </div>
   )
@@ -478,10 +646,74 @@ function MiniStat({ label, value, valueClass }: { label: string; value: string; 
 
 function SectionHeader({ emoji, label, colorCls }: { emoji: string; label: string; colorCls: string }) {
   return (
-    <div className={`text-[10px] font-semibold uppercase tracking-wider mb-2 flex items-center gap-2 ${colorCls}`}>
+    <div className={`text-[10px] lg:text-xs font-bold uppercase tracking-wider mb-2 lg:mb-3 flex items-center gap-2 ${colorCls}`}>
       <span>{emoji} {label}</span>
       <div className="h-px flex-1 bg-current opacity-20" />
     </div>
+  )
+}
+
+function LeaderActionsRow({
+  t, groupId, quizSet, busy, onClone, onArchive, onDelete, navigate,
+}: {
+  t: any; groupId: string; quizSet: QuizSet; busy: boolean;
+  onClone: () => void; onArchive: () => void; onDelete: () => void;
+  navigate: (p: string) => void;
+}) {
+  return (
+    <div className="rounded-xl p-2 border border-white/5 flex items-center justify-between" style={{ background: 'rgba(50, 52, 64, 0.3)' }}>
+      <span className="text-[10px] text-gray-400">{t('quizSet.detail.leaderActions')}</span>
+      <div className="flex gap-1">
+        <IconButton
+          title={t('quizSet.detail.edit')}
+          onClick={() => navigate(`/groups/${groupId}/quiz-sets/${quizSet.id}/edit`)}
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+          </svg>
+        </IconButton>
+        <IconButton title={t('quizSet.detail.clone')} onClick={onClone} disabled={busy}>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+            <rect x="9" y="9" width="13" height="13" rx="2" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </svg>
+        </IconButton>
+        {quizSet.publishStatus === 'PUBLISHED' && (
+          <IconButton title={t('quizSet.detail.archive')} onClick={onArchive} disabled={busy}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <rect x="3" y="3" width="18" height="4" rx="1" />
+              <path d="M5 7v13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7M10 12h4" />
+            </svg>
+          </IconButton>
+        )}
+        <IconButton title={t('quizSet.detail.delete')} onClick={onDelete} disabled={busy} className="text-red-400">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+            <polyline points="3 6 5 6 21 6" />
+            <path d="M19 6l-2 14H7L5 6" />
+          </svg>
+        </IconButton>
+      </div>
+    </div>
+  )
+}
+
+function DesktopLeaderButton({
+  icon, label, onClick, disabled, danger,
+}: {
+  icon: React.ReactNode; label: string; onClick: () => void;
+  disabled?: boolean; danger?: boolean;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`w-full px-3 py-2 rounded-lg flex items-center gap-2 text-xs disabled:opacity-50 ${
+        danger ? 'text-red-400 hover:bg-red-500/10' : 'text-gray-300 hover:bg-white/5'
+      }`}
+    >
+      {icon}<span>{label}</span>
+    </button>
   )
 }
 

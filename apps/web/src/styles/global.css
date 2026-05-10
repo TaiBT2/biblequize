@@ -2898,3 +2898,28 @@ select {
   to   { opacity: 1; transform: translateY(0); }
 }
 .qs-fade-in { animation: qs-fade-in 0.4s ease-out backwards; }
+
+/* Desktop additions (per MOCKUP_QUIZ_SET_V2_PROFESSIONAL_DESKTOP.html) */
+.qs-bg-deep { background: #0a0c14; color: #e5e7eb; }
+
+.qs-glass-subtle {
+  background: rgba(50, 52, 64, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.qs-quiz-card { transition: all 0.2s; cursor: pointer; }
+.qs-quiz-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(232, 168, 50, 0.4) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.qs-mode-card { transition: all 0.2s; cursor: pointer; }
+.qs-mode-card:hover { transform: translateY(-2px); }
+
+.qs-nav-item { transition: all 0.15s; }
+.qs-nav-item:hover { background: rgba(255, 255, 255, 0.03); }
+.qs-nav-item-active {
+  background: rgba(232, 168, 50, 0.1);
+  border-left: 2px solid #e8a832;
+}
