@@ -1,9 +1,38 @@
-# SPEC_GROUP v1.3 — Church Group Features
+# SPEC_GROUP v1.4 — Church Group Features
 
-**Last updated**: 2026-05-09 (Sprint 5 — Quiz Set Professional)
-**Updates**: [SPEC_GROUP_v1.2.md](../../archive/SPEC_GROUP_v1.2.md) (archived 2026-05-09)
-**Locked decisions**: Q-A through Q-O preserved + Sprint 5 quiz set decisions
-**Mockup reference**: `docs/GROUP/MOCKUP_QUIZ_SET_V2_PROFESSIONAL.html`
+**Last updated**: 2026-05-10 (Group Detail UX polish + architectural cleanup, GD-0..GD-12)
+**Previous version**: v1.3 (Sprint 5 Quiz Set Professional, 2026-05-09)
+**Locked decisions**: Q-A through Q-O preserved
+**Mockup reference**: `docs/mockups/MOCKUP_GROUP_DETAIL_REDESIGN.html`, `docs/group-page/group_detail_redesign_*.html`
+
+---
+
+## Changelog v1.3 → v1.4 (2026-05-10)
+
+> Driven by [PROMPT_FIX_GROUP_DETAIL.md](../group-page/PROMPT_FIX_GROUP_DETAIL.md) — 13 commits (GD-1..GD-12 + GD-DOCS), audit `GROUP_DETAIL_AUDIT_REPORT.md`.
+
+| # | Section | Change |
+|---|---|---|
+| 1 | §10 Group Leaderboard | **DEPRECATED** — Q-A leaderboard sunset. UI tab removed (replaced by "Hoạt động" Activity tab); backend `GET /api/groups/{id}/leaderboard` retained 2-3 sprints for mobile compat, then `410 Gone` Sprint 8+. Personal Mastery (Sprint 5) + Activity Feed (Sprint 6 in BL-17) replace the social signal. |
+| 2 | §6.x Group Detail tabs | **Tab structure** rewritten. Member view: Hoạt động · Thành viên · Thông báo · Bộ câu hỏi (4 tabs). Leader/Mod view: + Phân tích 👑 (5 tabs). Default = `activity`. Legacy `?tab=leaderboard` redirects to `activity`. Tab labels carry count badges for Members/Announcements/Quiz Sets. |
+| 3 | §6.x Activity tab content | **Sprint 5 placeholder**: Quick Actions (4 cards leader / 2 cards member) + Members preview + Quiz Sets top-3 + Live Now banner (polls `/api/groups/{id}/live-rooms` every 30s) + ActivityFeedPlaceholder. **Sprint 6** will replace placeholder with full Activity Feed (BL-17). |
+| 4 | §6.x Analytics tab | **Leader-only embedded tab** (was standalone page `/groups/:id/analytics`; that route is preserved as a "View full page" deep link). Surface: Cell Group Pulse placeholder (BL-18) + 4 KPI cards w/ scope tooltips + 7-day chart + inactive-members alert. |
+| 5 | §6.x Empty states | KPI chart **hidden** when group <7 days OR <5 members; inactive-members alert **hidden** when <7 days, sample <5, or inactive ratio <30% (statistical noise). |
+| 6 | §6.x Onboarding | **NewGroupOnboarding banner** — leader-only, shows when group <7 days OR <5 members. 3 setup tasks (invite ≥5, create first quiz set, post welcome). Dismissable per group via `localStorage.bq_onboarding_dismissed_<groupId>`. |
+| 7 | §11 Group Tournament | **DEFERRED Sprint 7+** — most groups have <4 members. UI: Tournament card disabled when memberCount<4 with reason "Cần ≥4 thành viên (hiện X)". Backend bracket logic untouched. Revisit when ≥30% groups have ≥8 active members. |
+| 8 | §6.x Sidebar context | When user is in `/groups/:id*` route, AppLayout sidebar **hides** personal widgets (StreakWidget + DailyMissionWidget) to avoid context drift between personal and group focus. `/groups` (list) keeps personal widgets. |
+| 9 | §6.x Header / Role badge | Group name promoted to text-22px/bold. Meta row split: stats left, code-copy right with explicit content_copy icon. Role badges WCAG-AA: leader = solid gold gradient on dark text, mod = sky gradient, member = emerald. |
+| 10 | §6.x Code sharing | **Group Code QR modal** (qrcode.react ^4.2.0, already a dep) launched from qr_code_2 icon button in header. Encodes `${origin}/groups?code=<CODE>` for one-tap join. |
+| 11 | §12 (NEW, deferred) | **Group Activity Feed** — entity GroupActivity (V53), API `GET /api/groups/{id}/activity?type=&limit=&before=`, recorded by QuizSetMasteryService / GroupQuizSetService / RoomService / GroupAnnouncementService / ChurchGroupService / ScheduledQuizService. 90-day retention. Sprint 6 (BL-17). |
+| 12 | §13 (NEW, deferred) | **Cell Group Pulse** — entity GroupPulseSnapshot (V54), heuristic `pulse = activeRatio×0.5 + (liveRoomsPerWeek/2)×0.3 + (newContentPerWeek/1)×0.2`. Status STRONG ≥0.7, MEDIUM 0.4–0.7, WEAK <0.4. Cron `0 0 1 * * *` daily. API `GET /api/groups/{id}/pulse` leader/mod-only. Sprint 6 (BL-18). |
+| 13 | §17 Known Issues | Add: BL-16 Q-A backend code drift (ChurchGroupService leaderboard query sums `UserDailyProgressRepository` regardless of source — endpoint deprecated, drift becomes irrelevant when endpoint hits 410). |
+| 14 | §6.x Color palette | Locked policy in `apps/web/src/components/group/GroupActivityTab.tsx`: gold #e8a832, orange #ff8c42, emerald #97C459, sky #6AB8E8, pulse-strong #4ade80. No new orange shades inside `components/group/*`. |
+
+**Architectural decisions (Bui authorized 2026-05-10):**
+1. Bỏ Leaderboard — không phù hợp văn hóa Tin Lành (ranking sinh hoạt nhóm). Activity Feed thay social signal.
+2. Tournament defer — UI gate, backend kept; revisit at adoption threshold.
+3. Activity Feed deferred to Sprint 6 (entity + service + cron).
+4. Pulse heuristic approved with `0.5/0.3/0.2` weights and `0.7/0.4` thresholds, cron daily 1am.
 
 ---
 

@@ -223,6 +223,40 @@
 - **Cần làm:** `AdminLayout.tsx` — đọc `useAuthStore` user.role, render header text "Moderation Dashboard" vs "Admin Panel". Hide sidebar items: Configuration / Test Panel / Notifications campaign nếu role = CONTENT_MOD. Unit test cả 2 roles.
 - **Status:** ⬜ TODO
 
+### BL-16 — Group leaderboard endpoint `410 Gone` (Q-A sunset)
+- **Spec:** [SPEC_GROUP_v1.3.md §10 (DEPRECATED in v1.4 changelog)](SPEC_GROUP_v1.3.md)
+- **Code:** `ChurchGroupController.java:272 getLeaderboard(...)` + `ChurchGroupService.getLeaderboard(...)` — backend query still sums `UserDailyProgressRepository` (Q-A drift: counts solo/ranked/daily activity, not group-play-only).
+- **Cần làm:**
+  - Sprint 6 or later: keep endpoint `200 OK` for ~2 sprints (mobile compat). Then return `410 Gone` with `{ code: "LEADERBOARD_DEPRECATED", message: "... use /activity instead" }`.
+  - When endpoint is gone, drop `ChurchGroupService.getLeaderboard` + `UserDailyProgressRepository` group-scoped queries — drift becomes irrelevant.
+  - Remove FE callers (already done in GD-1; verify after mobile catches up).
+- **Status:** ⬜ DEFER Sprint 7+ (waiting on mobile FE)
+- **Cause:** GD-1 / 2026-05-10 leaderboard sunset
+
+### BL-17 — Group Activity Feed (Sprint 6)
+- **Spec:** [SPEC_GROUP_v1.3.md §12 (NEW in v1.4 changelog)](SPEC_GROUP_v1.3.md)
+- **Code:** `apps/web/src/components/group/ActivityFeedPlaceholder.tsx` is the placeholder shipped GD-1; replace with real feed.
+- **Cần làm:**
+  - Migration V53: `group_activity (id UUID PK, group_id FK, actor_id FK, type ENUM, metadata JSONB, created_at TIMESTAMP, INDEX (group_id, created_at DESC))`
+  - Recorder: `GroupActivityService.record(group, actor, type, metadata)` called from QuizSetMasteryService (MASTERY_COMPLETED), GroupQuizSetService (QUIZ_SET_CREATED), RoomService (LIVE_ROOM_STARTED/ENDED), GroupAnnouncementService (ANNOUNCEMENT_POSTED), ChurchGroupService (MEMBER_JOINED/LEFT), ScheduledQuizService (SCHEDULED_QUIZ_CREATED).
+  - API: `GET /api/groups/{id}/activity?type=&limit=20&before=<ISO>` (paginated by created_at).
+  - FE: replace ActivityFeedPlaceholder with paginated list + 30s refetchInterval (future: STOMP push).
+  - Retention: delete > 90 days nightly cron.
+- **Status:** ⬜ DEFER Sprint 6
+- **Cause:** GD-1 / 2026-05-10 (placeholder shipped, real feed deferred)
+
+### BL-18 — Cell Group Pulse heuristic (Sprint 6, leader-only)
+- **Spec:** [SPEC_GROUP_v1.3.md §13 (NEW in v1.4 changelog)](SPEC_GROUP_v1.3.md)
+- **Code:** `apps/web/src/components/group/CellGroupPulseCard.tsx` is the placeholder shipped GD-9; wire backend.
+- **Cần làm:**
+  - Migration V54: `group_pulse_snapshot (id UUID PK, group_id FK, snapshot_date DATE, score DECIMAL(3,2), status ENUM(STRONG,MEDIUM,WEAK), active_ratio DECIMAL, live_rooms_per_week INT, new_content_per_week INT, UNIQUE (group_id, snapshot_date))`
+  - Heuristic: `score = activeRatio×0.5 + min(1, liveRoomsPerWeek/2)×0.3 + min(1, newContentPerWeek/1)×0.2`. Status STRONG ≥0.7, MEDIUM 0.4–0.7, WEAK <0.4. Expectations configurable per group (`expectedLiveRooms`, `expectedContent`).
+  - Cron: `@Scheduled(cron = "0 0 1 * * *")` daily 1am — compute snapshots for all groups.
+  - API: `GET /api/groups/{id}/pulse` — leader/mod-only (`@PreAuthorize`); returns latest snapshot + 7-day trend for sparkline.
+  - FE: replace CellGroupPulseCard placeholder with real strong/medium/weak banner + sparkline mini-chart.
+- **Status:** ⬜ DEFER Sprint 6
+- **Cause:** GD-9 / 2026-05-10 (placeholder shipped, heuristic deferred)
+
 ---
 
 ## Done (recent — keep until next sprint review)
