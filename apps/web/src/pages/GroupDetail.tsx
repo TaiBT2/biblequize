@@ -105,13 +105,6 @@ const GroupDetail: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  const TABS: { key: TabKey; label: string; icon?: string; hasNotification?: boolean }[] = [
-    { key: 'activity', label: t('groups.tabs.activity') },
-    { key: 'members', label: t('groups.membersTab') },
-    { key: 'announcements', label: t('groups.announcementsTab'), hasNotification: true },
-    { key: 'quizsets', label: t('groups.quizSetsTab') },
-  ];
-
   const [group, setGroup] = useState<Group | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -488,8 +481,10 @@ const GroupDetail: React.FC = () => {
     if (!group) return;
     if (activeTab === 'activity') {
       // Activity tab needs quiz sets (preview top 3) + scheduled quizzes.
+      // Also fetch announcements early so the GD-6 tab count badge is accurate.
       fetchQuizSets();
       fetchActiveScheduled();
+      fetchAnnouncements();
     } else if (activeTab === 'announcements') {
       fetchAnnouncements();
     } else if (activeTab === 'quizsets') {
@@ -859,25 +854,54 @@ const GroupDetail: React.FC = () => {
         </div>
       </header>
 
-      {/* ── Tab Navigation (compact) ── */}
-      <nav className="flex items-center gap-6 border-b border-white/10 overflow-x-auto whitespace-nowrap mb-4">
-        {TABS.map(tab => (
-          <button
-            key={tab.key}
-            onClick={() => handleTabChange(tab.key)}
-            className={`pb-2.5 px-1 text-[12px] font-medium tracking-wide transition-colors flex items-center gap-1.5 ${
-              activeTab === tab.key
-                ? 'text-secondary border-b-2 border-secondary'
-                : 'text-on-surface/55 hover:text-on-surface'
-            }`}
-          >
-            {tab.label}
-            {tab.hasNotification && announcements.length > 0 && (
-              <span className="w-1.5 h-1.5 rounded-full bg-error" />
-            )}
-          </button>
-        ))}
-      </nav>
+      {/* ── Tab Navigation (compact, GD-6 count badges) ── */}
+      {(() => {
+        const membersCount = memberTotal || group.members?.length || 0;
+        const announcementsCount = announcements.length;
+        const quizSetsCount = quizSets.length;
+        const TABS: { key: TabKey; label: string; count?: number; hasNotification?: boolean }[] = [
+          { key: 'activity', label: t('groups.tabs.activity') },
+          { key: 'members', label: t('groups.membersTab'), count: membersCount },
+          { key: 'announcements', label: t('groups.announcementsTab'), count: announcementsCount, hasNotification: true },
+          { key: 'quizsets', label: t('groups.quizSetsTab'), count: quizSetsCount },
+        ];
+        return (
+          <nav className="flex items-center gap-6 border-b border-white/10 overflow-x-auto whitespace-nowrap mb-4">
+            {TABS.map(tab => {
+              const active = activeTab === tab.key;
+              return (
+                <button
+                  key={tab.key}
+                  onClick={() => handleTabChange(tab.key)}
+                  data-testid={`group-tab-${tab.key}`}
+                  className={`pb-2.5 px-1 text-[12px] font-medium tracking-wide transition-colors flex items-center gap-1.5 ${
+                    active
+                      ? 'text-secondary border-b-2 border-secondary'
+                      : 'text-on-surface/55 hover:text-on-surface'
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                  {tab.count !== undefined && tab.count > 0 && (
+                    <span
+                      data-testid={`group-tab-${tab.key}-count`}
+                      className={`text-[10px] px-1.5 py-0.5 rounded-full leading-none ${
+                        active
+                          ? 'bg-[rgba(232,168,50,0.2)] text-secondary'
+                          : 'bg-white/10 text-on-surface/70'
+                      }`}
+                    >
+                      {tab.count}
+                    </span>
+                  )}
+                  {tab.hasNotification && announcements.length > 0 && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-error" />
+                  )}
+                </button>
+              );
+            })}
+          </nav>
+        );
+      })()}
 
       {/* ── Tab Content ── */}
 
