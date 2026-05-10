@@ -457,14 +457,31 @@ const GroupAnalytics: React.FC = () => {
               {t('groups.quickActionSendTo', { count: totalMembers })}
             </span>
           </Link>
-          <Link
-            to="/tournaments"
-            className="bg-[rgba(168,85,247,0.08)] border-[0.5px] border-[rgba(168,85,247,0.25)] rounded-lg px-2 py-3 cursor-pointer flex flex-col items-center gap-1 hover:brightness-125 transition-all"
-          >
-            <span className="text-[18px]">🏆</span>
-            <span className="text-on-surface text-[11px]">{t('groups.quickActionTournament')}</span>
-            <span className="text-on-surface/40 text-[9px]">{t('groups.quickActionBracket')}</span>
-          </Link>
+          {memberCountSafe < 4 ? (
+            <button
+              type="button"
+              disabled
+              data-testid="qa-tournament-disabled"
+              title={t('groups.action.tournament.needMembers', { current: memberCountSafe, min: 4 })}
+              aria-disabled="true"
+              className="bg-white/[0.02] border-[0.5px] border-white/5 rounded-lg px-2 py-3 cursor-not-allowed opacity-50 flex flex-col items-center gap-1"
+            >
+              <span className="text-[18px]">🏆</span>
+              <span className="text-on-surface text-[11px]">{t('groups.quickActionTournament')}</span>
+              <span className="text-on-surface/40 text-[9px]">
+                {t('groups.action.tournament.needMembers', { current: memberCountSafe, min: 4 })}
+              </span>
+            </button>
+          ) : (
+            <Link
+              to="/tournaments"
+              className="bg-[rgba(168,85,247,0.08)] border-[0.5px] border-[rgba(168,85,247,0.25)] rounded-lg px-2 py-3 cursor-pointer flex flex-col items-center gap-1 hover:brightness-125 transition-all"
+            >
+              <span className="text-[18px]">🏆</span>
+              <span className="text-on-surface text-[11px]">{t('groups.quickActionTournament')}</span>
+              <span className="text-on-surface/40 text-[9px]">{t('groups.quickActionBracket')}</span>
+            </Link>
+          )}
           <Link
             to={`/groups/${id}?tab=members`}
             className="bg-[rgba(99,153,34,0.08)] border-[0.5px] border-[rgba(99,153,34,0.25)] rounded-lg px-2 py-3 cursor-pointer flex flex-col items-center gap-1 hover:brightness-125 transition-all"

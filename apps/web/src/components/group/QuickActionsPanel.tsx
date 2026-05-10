@@ -8,10 +8,11 @@ interface ActionCardProps {
   onClick?: () => void;
   highlight?: boolean;
   disabled?: boolean;
+  disabledReason?: string;
   testId?: string;
 }
 
-function ActionCard({ icon, label, hint, onClick, highlight, disabled, testId }: ActionCardProps) {
+function ActionCard({ icon, label, hint, onClick, highlight, disabled, disabledReason, testId }: ActionCardProps) {
   const base = 'rounded-xl p-3 border text-left transition-all flex flex-col gap-1 min-h-[88px]';
   const enabled = highlight
     ? 'bg-[rgba(232,168,50,0.12)] border-[rgba(232,168,50,0.45)] hover:brightness-110 hover:bg-[rgba(232,168,50,0.18)]'
@@ -22,11 +23,15 @@ function ActionCard({ icon, label, hint, onClick, highlight, disabled, testId }:
       data-testid={testId}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
+      title={disabled && disabledReason ? disabledReason : undefined}
+      aria-disabled={disabled || undefined}
       className={`${base} ${disabled ? off : enabled}`}
     >
       <span className="text-lg">{icon}</span>
       <span className="text-[12px] font-bold text-on-surface leading-tight">{label}</span>
-      <span className="text-[10px] text-on-surface/55 leading-snug">{hint}</span>
+      <span className="text-[10px] text-on-surface/55 leading-snug">
+        {disabled && disabledReason ? disabledReason : hint}
+      </span>
     </button>
   );
 }
@@ -77,10 +82,9 @@ export default function QuickActionsPanel(props: QuickActionsPanelProps) {
           <ActionCard
             icon="🏆"
             label={t('groups.action.tournament')}
-            hint={tournamentNeedsMembers
-              ? t('groups.action.tournament.needMembers', { current: props.memberCount, min: 4 })
-              : t('groups.action.tournament.hint')}
+            hint={t('groups.action.tournament.hint')}
             disabled={tournamentNeedsMembers}
+            disabledReason={t('groups.action.tournament.needMembers', { current: props.memberCount, min: 4 })}
             onClick={() => navigate(`/tournaments?groupId=${props.groupId}`)}
             testId="qa-tournament"
           />
