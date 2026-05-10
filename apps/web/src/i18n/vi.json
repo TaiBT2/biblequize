@@ -1628,6 +1628,13 @@
       "copyLink": "Sao chép link",
       "openTooltip": "Hiện QR code để chia sẻ"
     },
+    "sidebarInfo": {
+      "activeNow": "Đang tham gia",
+      "fallbackName": "Nhóm của bạn",
+      "openRooms": "Phòng đang mở",
+      "moreRooms": "+{{count}} phòng khác",
+      "noLiveRooms": "Chưa có phòng live nào"
+    },
     "leaderboardTitle": "Bảng Xếp Hạng",
     "weekly": "Tuần này",
     "allTime": "Tất cả",

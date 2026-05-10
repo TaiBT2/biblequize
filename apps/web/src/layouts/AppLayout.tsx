@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import OfflineBanner from '../components/OfflineBanner'
 import StreakWidget from '../components/StreakWidget'
 import DailyMissionWidget from '../components/DailyMissionWidget'
+import GroupQuickInfoSidebar from '../components/group/GroupQuickInfoSidebar'
 import SeasonGoalWidget from '../components/SeasonGoalWidget'
 import WinRateWidget from '../components/WinRateWidget'
 import WeekComboWidget from '../components/WeekComboWidget'
@@ -101,12 +102,16 @@ export default function AppLayout() {
                     <LeaderboardSeasonWidget />
                   </>
                 ) : location.pathname.startsWith('/groups/') ? (
-                  // GD-5: in group context, hide personal cards (streak, daily
-                  // mission). Group-relevant info lives inside the page content
-                  // (Live Now banner, Members preview, Quick Actions). Sidebar
-                  // stays clean to avoid context drift between personal and
-                  // group focus.
-                  null
+                  // GD-5: in group context, replace personal Streak + Daily
+                  // Mission with a Group Quick Info card per
+                  // MOCKUP_GROUP_DETAIL_REDESIGN.html — surfaces active rooms
+                  // and total members. Route param parsed from pathname:
+                  // /groups/<id> or /groups/<id>/<sub-route>.
+                  (() => {
+                    const match = location.pathname.match(/^\/groups\/([^/]+)/);
+                    const groupId = match ? match[1] : null;
+                    return groupId ? <GroupQuickInfoSidebar groupId={groupId} /> : null;
+                  })()
                 ) : (
                   <>
                     <StreakWidget />

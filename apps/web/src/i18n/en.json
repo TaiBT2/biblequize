@@ -1628,6 +1628,13 @@
       "copyLink": "Copy link",
       "openTooltip": "Show QR code to share"
     },
+    "sidebarInfo": {
+      "activeNow": "Active now",
+      "fallbackName": "Your group",
+      "openRooms": "Open rooms",
+      "moreRooms": "+{{count}} more rooms",
+      "noLiveRooms": "No live rooms yet"
+    },
     "leaderboardTitle": "Leaderboard",
     "weekly": "This week",
     "allTime": "All time",
