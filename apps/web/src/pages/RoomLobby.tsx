@@ -26,7 +26,6 @@ type RoomDetails = {
   bookScope?: string;
   difficulty?: string;
   createdAt?: string;
-  myUserId?: string;
   /** Owning group when room was spawned from a group quiz set; null otherwise.
    *  Server-side fallback so "back to group" works for users who joined via
    *  room code (no fromGroupId in nav state) or after a page refresh. */
@@ -111,7 +110,12 @@ const RoomLobby: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const initialRoom: RoomDetails | undefined = location.state?.room;
+  const initialViewerUserId: string | null = location.state?.viewerUserId ?? null;
   const [room, setRoom] = useState<RoomDetails | null>(initialRoom ?? null);
+  // viewerUserId is per-viewer context, NOT part of the room snapshot — kept
+  // separate so WS ROOM_STATE broadcasts (which carry no viewer identity)
+  // can't overwrite it. Sourced from the REST wrapper.
+  const [viewerUserId, setViewerUserId] = useState<string | null>(initialViewerUserId);
   const [error, setError] = useState<string | null>(null);
   const [countdown, setCountdown] = useState<number | null>(null);
   const [switchingTeam, setSwitchingTeam] = useState(false);
@@ -157,7 +161,7 @@ const RoomLobby: React.FC = () => {
         }
         case 'PLAYER_KICKED': {
           const d = msg.data as { userId?: string } | undefined;
-          if (d?.userId && d.userId === room?.myUserId) {
+          if (d?.userId && d.userId === viewerUserId) {
             navigate('/multiplayer', { replace: true, state: { kickedFromRoom: true } });
             return;
           }
@@ -223,7 +227,7 @@ const RoomLobby: React.FC = () => {
           const dest = isOrganizerMode ? `/room/${roomId}/host` : `/room/${roomId}/quiz`;
           navigate(dest, {
             replace: true,
-            state: { mode: room?.mode, myTeam: room?.players?.find(p => p.userId === room?.myUserId)?.team ?? null, isHost, hostId: room?.hostId, hostName: room?.hostName, hostPlaysGame, fromGroupId }
+            state: { mode: room?.mode, myTeam: room?.players?.find(p => p.userId === viewerUserId)?.team ?? null, isHost, hostId: room?.hostId, hostName: room?.hostName, hostPlaysGame, fromGroupId }
           });
           break;
         }
@@ -256,7 +260,10 @@ const RoomLobby: React.FC = () => {
     if (!roomId) return;
     try {
       const res = await api.get(`/api/rooms/${roomId}`);
-      if (res.data.success) setRoom(res.data.room);
+      if (res.data.success) {
+        setRoom(res.data.room);
+        if (res.data.viewerUserId) setViewerUserId(res.data.viewerUserId);
+      }
       else setError(res.data.message || t('room.errorFetchRoom'));
     } catch {
       setError(t('room.errorNetwork'));
@@ -293,7 +300,7 @@ const RoomLobby: React.FC = () => {
     // countdown === 0 → the "BẮT ĐẦU!" beat
     soundManager.play('gameStart');
     haptic.combo();
-    const myTeam = room?.players?.find(p => p.userId === room?.myUserId)?.team ?? null;
+    const myTeam = room?.players?.find(p => p.userId === viewerUserId)?.team ?? null;
     const navState = location.state as { fromGroupId?: string } | null;
     const fromGroupId = navState?.fromGroupId ?? room?.groupId ?? undefined;
     const t = setTimeout(() => {
@@ -341,7 +348,10 @@ const RoomLobby: React.FC = () => {
     setSwitchingTeam(true);
     try {
       const res = await api.post(`/api/rooms/${roomId}/switch-team`);
-      if (res.data.success) setRoom(res.data.room);
+      if (res.data.success) {
+        setRoom(res.data.room);
+        if (res.data.viewerUserId) setViewerUserId(res.data.viewerUserId);
+      }
     } catch { setError(t('room.errorSwitchTeam')); }
     finally { setSwitchingTeam(false); }
   };
@@ -371,14 +381,14 @@ const RoomLobby: React.FC = () => {
   const teamAPlayers = room?.players?.filter(p => p.team === 'A') ?? [];
   const teamBPlayers = room?.players?.filter(p => p.team === 'B') ?? [];
   const myPlayer = room?.players?.find(p =>
-    room?.myUserId ? p.userId === room.myUserId : p.username === myUsername()
+    viewerUserId ? p.userId === viewerUserId : p.username === myUsername()
   );
   // Sprint 4: in Quản trò mode the host is NOT a RoomPlayer, so myPlayer
-  // would be undefined for them. Fall back to comparing against room.myUserId
+  // would be undefined for them. Fall back to comparing against viewerUserId
   // so the host still resolves as host in the lobby UI.
   const hostPlaysGame = room?.hostPlaysGame !== false; // defaults true (legacy)
   const isHost = (myPlayer?.userId === room?.hostId)
-      || (!hostPlaysGame && room?.myUserId != null && room.myUserId === room.hostId);
+      || (!hostPlaysGame && viewerUserId != null && viewerUserId === room?.hostId);
   const isOrganizerMode = isHost && !hostPlaysGame;
   const emptySlots = room ? Math.max(0, room.maxPlayers - room.currentPlayers) : 0;
   const modeInfo = MODE_INFO[room?.mode ?? ''] ?? {
@@ -880,7 +890,7 @@ const RoomLobby: React.FC = () => {
                 teamAPlayers={teamAPlayers}
                 teamBPlayers={teamBPlayers}
                 hostId={room.hostId}
-                myUserId={room.myUserId}
+                myUserId={viewerUserId ?? undefined}
                 isHost={isHost}
                 myTeam={myPlayer?.team}
                 kickMenuFor={kickMenuFor}
@@ -897,7 +907,7 @@ const RoomLobby: React.FC = () => {
                     key={p.id}
                     player={p}
                     hostId={room.hostId}
-                    myUserId={room.myUserId}
+                    myUserId={viewerUserId ?? undefined}
                     suddenDeathOrder={isSuddenDeath ? idx : undefined}
                     canKick={isHost && p.userId !== room.hostId}
                     kickOpen={kickMenuFor === p.userId}

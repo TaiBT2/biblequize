@@ -90,7 +90,7 @@ export default function CreateRoom() {
       }
       const res = await api.post('/api/rooms', payload)
       const room = res.data.room
-      navigate(`/room/${room.id}/lobby`, { state: { room, mode: formData.mode } })
+      navigate(`/room/${room.id}/lobby`, { state: { room, mode: formData.mode, viewerUserId: res.data.viewerUserId } })
     } catch (err: any) {
       setError(err?.response?.data?.message || t('createRoom.error'))
     } finally {

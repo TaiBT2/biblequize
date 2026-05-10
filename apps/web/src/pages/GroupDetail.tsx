@@ -1767,7 +1767,7 @@ const GroupDetail: React.FC = () => {
                       try {
                         const res = await api.post('/api/rooms/join', { roomCode: rm.roomCode });
                         const joined = res.data.room;
-                        navigate(`/room/${joined.id}/lobby`, { state: { room: joined } });
+                        navigate(`/room/${joined.id}/lobby`, { state: { room: joined, viewerUserId: res.data.viewerUserId } });
                       } catch {
                         navigate(`/room/${rm.id}/lobby`);
                       }
@@ -1841,7 +1841,7 @@ const GroupDetail: React.FC = () => {
                         try {
                           const res = await api.post('/api/rooms/join', { roomCode: rm.roomCode });
                           const joined = res.data.room;
-                          navigate(`/room/${joined.id}/lobby`, { state: { room: joined } });
+                          navigate(`/room/${joined.id}/lobby`, { state: { room: joined, viewerUserId: res.data.viewerUserId } });
                         } catch (e: any) {
                           // Nếu user đã ở trong phòng rồi → vào thẳng lobby
                           navigate(`/room/${rm.id}/lobby`);

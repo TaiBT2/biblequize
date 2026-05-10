@@ -243,7 +243,7 @@ function RoomCard({ room }: { room: PublicRoom }) {
       // If the room is mid-game (rejoin path), drop straight into /quiz —
       // /lobby would just spin until the next QUESTION_START arrives.
       const target = joinedRoom.status === 'IN_PROGRESS' ? 'quiz' : 'lobby';
-      navigate(`/room/${joinedRoom.id}/${target}`, { state: { room: joinedRoom, mode: joinedRoom.mode } });
+      navigate(`/room/${joinedRoom.id}/${target}`, { state: { room: joinedRoom, mode: joinedRoom.mode, viewerUserId: res.data.viewerUserId } });
     } catch (err: any) {
       setJoinError(err?.response?.data?.message || 'Không thể vào phòng');
       setJoining(false);
@@ -440,7 +440,7 @@ const Multiplayer = () => {
       const res = await api.post('/api/rooms/join', { roomCode: code });
       const room = res.data.room;
       const target = room.status === 'IN_PROGRESS' ? 'quiz' : 'lobby';
-      navigate(`/room/${room.id}/${target}`, { state: { room, mode: room.mode } });
+      navigate(`/room/${room.id}/${target}`, { state: { room, mode: room.mode, viewerUserId: res.data.viewerUserId } });
     } catch (err: any) {
       setCodeJoinError(err?.response?.data?.message || 'Mã phòng không hợp lệ hoặc phòng đã đầy');
       setIsCodeJoining(false);

@@ -50,7 +50,6 @@ const baseRoom = {
   timePerQuestion: 15,
   hostId: 'host-1',
   hostName: 'WS Host',
-  myUserId: 'host-1',
   difficulty: 'MIXED',
   players: [
     { id: 'p1', userId: 'host-1', username: 'WS Host', isReady: false, score: 0 },
@@ -73,8 +72,10 @@ beforeEach(() => {
   lastStompArgs = null
   window.localStorage.setItem('userName', 'WS Host')
   window.localStorage.setItem('accessToken', 'test-token')
-  // Default: api.get returns the room (RoomLobby reads res.data.room).
-  mockApiGet.mockResolvedValue({ data: { success: true, room: baseRoom } })
+  // Default: api.get returns the room + viewerUserId. RoomLobby reads
+  // res.data.room and res.data.viewerUserId separately (per-viewer field
+  // is intentionally outside the room snapshot — see QT-1/QT-2).
+  mockApiGet.mockResolvedValue({ data: { success: true, room: baseRoom, viewerUserId: 'host-1' } })
   mockApiPost.mockResolvedValue({ data: { success: true } })
   mockApiDelete.mockResolvedValue({ data: { success: true } })
   Object.defineProperty(navigator, 'clipboard', {
@@ -90,9 +91,9 @@ afterEach(() => {
   window.localStorage.clear()
 })
 
-async function renderLobby(roomOverride?: object) {
+async function renderLobby(roomOverride?: object, viewerUserId: string = 'host-1') {
   if (roomOverride) {
-    mockApiGet.mockResolvedValue({ data: { success: true, room: roomOverride } })
+    mockApiGet.mockResolvedValue({ data: { success: true, room: roomOverride, viewerUserId } })
   }
   const RoomLobby = (await import('../RoomLobby')).default
   return render(
@@ -279,15 +280,14 @@ describe('RoomLobby — rules card', () => {
 describe('RoomLobby — Sprint 4 host-organizer mode', () => {
   it('shows "Bạn là Quản trò" badge when host views a Quan Tro room', async () => {
     // hostPlaysGame=false → host is NOT in players list; isHost still resolves
-    // via myUserId == hostId fallback so the organizer badge renders.
+    // via viewerUserId == hostId fallback so the organizer badge renders.
     const quanTroRoom = {
       ...baseRoom,
       hostPlaysGame: false,
       players: [], // host not in RoomPlayer table
       currentPlayers: 0,
-      myUserId: 'host-1',
     }
-    await renderLobby(quanTroRoom)
+    await renderLobby(quanTroRoom, 'host-1')
     const badge = await screen.findByTestId('lobby-organizer-badge')
     expect(badge).toBeInTheDocument()
     expect(badge).toHaveTextContent(/Bạn là Quản trò/i)
@@ -301,13 +301,12 @@ describe('RoomLobby — Sprint 4 host-organizer mode', () => {
     const quanTroRoom = {
       ...baseRoom,
       hostPlaysGame: false,
-      myUserId: 'u-an',
       players: [
         { id: 'pa', userId: 'u-an', username: 'An', isReady: false, score: 0 },
       ],
       currentPlayers: 1,
     }
-    await renderLobby(quanTroRoom)
+    await renderLobby(quanTroRoom, 'u-an')
     const card = await screen.findByTestId('lobby-host-info-card')
     expect(card).toBeInTheDocument()
     expect(card).toHaveTextContent(/Quản trò/i)
