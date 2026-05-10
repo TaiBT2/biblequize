@@ -1590,8 +1590,11 @@
     "liveNow": {
       "label": "Live now",
       "join": "Join",
+      "roomLabel": "Live Room",
       "meta": "Mode: {{mode}} · {{players}}/{{max}} players",
-      "more": "+{{count}} more rooms"
+      "metaWithHost": "Mode: {{mode}} · Host: {{host}} · {{players}}/{{max}} players",
+      "more": "+{{count}} more rooms",
+      "morePill": "more"
     },
     "analyticsEmpty": {
       "chartTitle": "Not enough data",

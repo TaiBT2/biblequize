@@ -12,7 +12,17 @@ interface ActiveRoom {
   currentPlayers: number;
   maxPlayers: number;
   createdAt: string;
+  hostName?: string;
 }
+
+const MODE_LABELS: Record<string, string> = {
+  GROUP_LIVE_SEQUENTIAL: '📚 Sequential',
+  SPEED_RACE: '⚡ Speed Race',
+  TEAM_VS_TEAM: '⚔️ Team vs Team',
+  BATTLE_ROYALE: '💀 Battle Royale',
+  SUDDEN_DEATH: '🥊 Sudden Death',
+  SEQUENTIAL: '📚 Sequential',
+};
 
 function formatRelative(iso: string, t: (k: string, v?: any) => string): string {
   const ts = Date.parse(iso);
@@ -43,11 +53,24 @@ export default function LiveNowBanner({ groupId }: { groupId: string }) {
 
   if (rooms.length === 0) return null;
   const room = rooms[0];
+  const modeLabel = MODE_LABELS[room.mode] ?? room.mode;
+  const meta = room.hostName
+    ? t('groups.liveNow.metaWithHost', {
+        mode: modeLabel,
+        host: room.hostName,
+        players: room.currentPlayers,
+        max: room.maxPlayers,
+      })
+    : t('groups.liveNow.meta', {
+        mode: modeLabel,
+        players: room.currentPlayers,
+        max: room.maxPlayers,
+      });
 
   return (
     <div
       data-testid="group-live-now-banner"
-      className="rounded-xl p-3 border border-emerald-400/40 bg-emerald-500/10"
+      className="rounded-xl p-3 border-2 border-emerald-400/40 bg-emerald-500/10"
     >
       <div className="flex items-center gap-3">
         <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-base shrink-0">🎮</div>
@@ -55,24 +78,27 @@ export default function LiveNowBanner({ groupId }: { groupId: string }) {
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-[9px] font-bold text-emerald-400 uppercase animate-pulse">● {t('groups.liveNow.label')}</span>
             <span className="text-[10px] text-on-surface/55">{formatRelative(room.createdAt, t)}</span>
+            {rooms.length > 1 && (
+              <span className="text-[10px] text-emerald-400 font-semibold ml-auto whitespace-nowrap">
+                +{rooms.length - 1} {t('groups.liveNow.morePill')}
+              </span>
+            )}
           </div>
-          <div className="text-sm font-bold text-on-surface mt-0.5 truncate">{room.roomName}</div>
+          <div className="text-sm font-bold text-on-surface mt-0.5 truncate">
+            <span className="text-on-surface/55 font-normal">{t('groups.liveNow.roomLabel')}: </span>
+            "{room.roomName}"
+          </div>
           <div className="text-[10px] text-on-surface/70 mt-0.5 truncate">
-            {t('groups.liveNow.meta', { mode: room.mode, players: room.currentPlayers, max: room.maxPlayers })}
+            {meta}
           </div>
         </div>
         <button
           onClick={() => navigate(`/room/${room.roomCode}`)}
-          className="px-3 py-1.5 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 text-[#11131e] text-xs font-bold whitespace-nowrap"
+          className="px-3 py-1.5 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 text-[#11131e] text-xs font-bold whitespace-nowrap shadow-[0_0_12px_rgba(74,222,128,0.3)]"
         >
           {t('groups.liveNow.join')} →
         </button>
       </div>
-      {rooms.length > 1 && (
-        <div className="text-[10px] text-on-surface/55 mt-1.5 pl-12">
-          {t('groups.liveNow.more', { count: rooms.length - 1 })}
-        </div>
-      )}
     </div>
   );
 }

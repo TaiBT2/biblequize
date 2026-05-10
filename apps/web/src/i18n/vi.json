@@ -1590,8 +1590,11 @@
     "liveNow": {
       "label": "Đang diễn ra",
       "join": "Tham gia",
-      "meta": "Mode: {{mode}} · {{players}}/{{max}} người",
-      "more": "Còn +{{count}} phòng khác"
+      "roomLabel": "Live Room",
+      "meta": "Mode: {{mode}} · {{players}}/{{max}} người tham gia",
+      "metaWithHost": "Mode: {{mode}} · Host: {{host}} · {{players}}/{{max}} người tham gia",
+      "more": "Còn +{{count}} phòng khác",
+      "morePill": "phòng khác"
     },
     "analyticsEmpty": {
       "chartTitle": "Chưa đủ dữ liệu",
