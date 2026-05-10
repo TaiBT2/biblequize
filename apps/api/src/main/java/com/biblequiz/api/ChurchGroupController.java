@@ -50,6 +50,9 @@ public class ChurchGroupController {
     private GroupQuizSetMasteryService masteryService;
 
     @Autowired
+    private com.biblequiz.modules.group.repository.GroupQuizSetMasteryRepository masteryRepository;
+
+    @Autowired
     private com.biblequiz.modules.quiz.service.SessionService sessionService;
 
     @Autowired
@@ -615,6 +618,73 @@ public class ChurchGroupController {
             body.put("success", true);
             body.put("attempts", attempts);
             body.put("masterySummary", summary);
+            return ResponseEntity.ok(body);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * GET /api/groups/{groupId}/quiz-sets/{setId}/leaderboard
+     * Per-set leaderboard aggregated từ group_quiz_set_mastery.
+     * Q-A SAFE — KHÔNG ảnh hưởng group leaderboard chính.
+     * Sort: bestScore DESC, bestAccuracy DESC, lastPracticedAt ASC (earlier wins ties).
+     */
+    @GetMapping("/{groupId}/quiz-sets/{setId}/leaderboard")
+    public ResponseEntity<?> getQuizSetLeaderboard(@PathVariable("groupId") String groupId,
+                                                    @PathVariable("setId") String setId,
+                                                    @RequestParam(value = "limit", defaultValue = "20") int limit,
+                                                    Principal principal) {
+        try {
+            User user = getUser(principal);
+            groupMemberRepository.findByGroupIdAndUserId(groupId, user.getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Ban khong phai thanh vien cua nhom nay"));
+
+            GroupQuizSet gqs = groupQuizSetRepository.findById(setId)
+                    .orElseThrow(() -> new RuntimeException("Quiz set khong ton tai"));
+            if (!gqs.getGroup().getId().equals(groupId)) {
+                return ResponseEntity.status(403).body(Map.of("success", false,
+                        "message", "Quiz set khong thuoc nhom nay"));
+            }
+
+            int safeLimit = Math.min(Math.max(limit, 1), 100);
+            var page = org.springframework.data.domain.PageRequest.of(0, safeLimit);
+            var rows = masteryRepository.findLeaderboardByQuizSetId(setId, page);
+
+            List<String> userIds = rows.stream().map(r -> r.getUserId()).distinct().collect(Collectors.toList());
+            Map<String, User> userMap = userRepository.findAllById(userIds).stream()
+                    .collect(Collectors.toMap(User::getId, u -> u, (a, b) -> a));
+
+            List<Map<String, Object>> entries = new java.util.ArrayList<>();
+            int rank = 0;
+            Integer myRank = null;
+            for (var m : rows) {
+                rank++;
+                User u = userMap.get(m.getUserId());
+                Map<String, Object> entry = new LinkedHashMap<>();
+                entry.put("rank", rank);
+                entry.put("userId", m.getUserId());
+                entry.put("displayName", u != null ? u.getName() : null);
+                entry.put("avatarUrl", u != null ? u.getAvatarUrl() : null);
+                entry.put("bestScore", m.getBestScore());
+                entry.put("bestAccuracy", m.getBestAccuracy());
+                entry.put("totalAttempts", m.getTotalAttempts());
+                entry.put("lastPlayedAt", m.getLastPracticedAt());
+                entries.add(entry);
+                if (m.getUserId().equals(user.getId())) {
+                    myRank = rank;
+                }
+            }
+
+            long totalParticipants = masteryRepository.countByQuizSetId(setId);
+
+            Map<String, Object> body = new LinkedHashMap<>();
+            body.put("success", true);
+            body.put("entries", entries);
+            body.put("myRank", myRank);
+            body.put("totalParticipants", totalParticipants);
             return ResponseEntity.ok(body);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));

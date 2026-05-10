@@ -18,4 +18,15 @@ public interface GroupQuizSetMasteryRepository extends JpaRepository<GroupQuizSe
            "WHERE m.quizSetId = s.id AND m.userId = :userId AND s.group.id = :groupId")
     List<GroupQuizSetMastery> findByUserIdAndGroupId(@Param("userId") String userId,
                                                       @Param("groupId") String groupId);
+
+    /**
+     * Per-set leaderboard ordered by best score DESC, ties broken by best accuracy DESC.
+     * Pageable used as LIMIT.
+     */
+    @Query("SELECT m FROM GroupQuizSetMastery m WHERE m.quizSetId = :quizSetId " +
+           "ORDER BY m.bestScore DESC, m.bestAccuracy DESC, m.lastPracticedAt ASC")
+    List<GroupQuizSetMastery> findLeaderboardByQuizSetId(@Param("quizSetId") String quizSetId,
+                                                          org.springframework.data.domain.Pageable pageable);
+
+    long countByQuizSetId(String quizSetId);
 }

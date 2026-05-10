@@ -78,6 +78,9 @@ class ChurchGroupControllerTest extends BaseControllerTest {
     @MockBean
     private com.biblequiz.modules.quiz.repository.QuizSessionRepository quizSessionRepository;
 
+    @MockBean
+    private com.biblequiz.modules.group.repository.GroupQuizSetMasteryRepository masteryRepository;
+
     private User testUser;
 
     @BeforeEach
@@ -553,6 +556,94 @@ class ChurchGroupControllerTest extends BaseControllerTest {
         mockMvc.perform(get("/api/groups/group-1/quiz-sets/qs-1/my-attempts"))
                 .andExpect(status().isForbidden())
                 .andExpect(jsonPath("$.success").value(false));
+    }
+
+    // ── GET /api/groups/{groupId}/quiz-sets/{setId}/leaderboard ─────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void getQuizSetLeaderboard_empty_returnsEmptyEntriesAndNullMyRank() throws Exception {
+        GroupMember member = new GroupMember();
+        member.setRole(GroupMember.GroupRole.MEMBER);
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.of(member));
+
+        ChurchGroup group = new ChurchGroup();
+        group.setId("group-1");
+        GroupQuizSet qs = new GroupQuizSet();
+        qs.setId("qs-1");
+        qs.setGroup(group);
+        when(groupQuizSetRepository.findById("qs-1")).thenReturn(Optional.of(qs));
+
+        when(masteryRepository.findLeaderboardByQuizSetId(eq("qs-1"), any())).thenReturn(List.of());
+        when(masteryRepository.countByQuizSetId("qs-1")).thenReturn(0L);
+
+        mockMvc.perform(get("/api/groups/group-1/quiz-sets/qs-1/leaderboard"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.entries.length()").value(0))
+                .andExpect(jsonPath("$.myRank").doesNotExist())
+                .andExpect(jsonPath("$.totalParticipants").value(0));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void getQuizSetLeaderboard_multiplePlayers_sortedAndComputesMyRank() throws Exception {
+        GroupMember member = new GroupMember();
+        member.setRole(GroupMember.GroupRole.MEMBER);
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.of(member));
+
+        ChurchGroup group = new ChurchGroup();
+        group.setId("group-1");
+        GroupQuizSet qs = new GroupQuizSet();
+        qs.setId("qs-1");
+        qs.setGroup(group);
+        when(groupQuizSetRepository.findById("qs-1")).thenReturn(Optional.of(qs));
+
+        com.biblequiz.modules.group.entity.GroupQuizSetMastery m1 =
+                new com.biblequiz.modules.group.entity.GroupQuizSetMastery();
+        m1.setUserId("user-A");
+        m1.setBestScore(95);
+        m1.setBestAccuracy(new java.math.BigDecimal("95.00"));
+        m1.setTotalAttempts(2);
+
+        com.biblequiz.modules.group.entity.GroupQuizSetMastery m2 =
+                new com.biblequiz.modules.group.entity.GroupQuizSetMastery();
+        m2.setUserId("user-1");
+        m2.setBestScore(80);
+        m2.setBestAccuracy(new java.math.BigDecimal("80.00"));
+        m2.setTotalAttempts(1);
+
+        when(masteryRepository.findLeaderboardByQuizSetId(eq("qs-1"), any()))
+                .thenReturn(List.of(m1, m2));
+        when(masteryRepository.countByQuizSetId("qs-1")).thenReturn(2L);
+
+        User userA = new User();
+        userA.setId("user-A");
+        userA.setName("Alpha");
+        when(userRepository.findAllById(anyList()))
+                .thenReturn(List.of(userA, testUser));
+
+        mockMvc.perform(get("/api/groups/group-1/quiz-sets/qs-1/leaderboard"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.entries.length()").value(2))
+                .andExpect(jsonPath("$.entries[0].rank").value(1))
+                .andExpect(jsonPath("$.entries[0].userId").value("user-A"))
+                .andExpect(jsonPath("$.entries[0].bestScore").value(95))
+                .andExpect(jsonPath("$.entries[1].rank").value(2))
+                .andExpect(jsonPath("$.entries[1].userId").value("user-1"))
+                .andExpect(jsonPath("$.myRank").value(2))
+                .andExpect(jsonPath("$.totalParticipants").value(2));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void getQuizSetLeaderboard_nonMember_returns403() throws Exception {
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.empty());
+
+        mockMvc.perform(get("/api/groups/group-1/quiz-sets/qs-1/leaderboard"))
+                .andExpect(status().isForbidden());
     }
 
     @Test
