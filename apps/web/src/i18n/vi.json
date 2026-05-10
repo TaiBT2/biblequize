@@ -1558,6 +1558,41 @@
     "membersTab": "Thành viên",
     "announcementsTab": "Thông báo",
     "quizSetsTab": "Bộ câu hỏi",
+    "tabs": {
+      "activity": "Hoạt động",
+      "analytics": "Phân tích"
+    },
+    "quickActions": {
+      "title": "Hành động nhanh"
+    },
+    "action": {
+      "createQuizSet": "Tạo bộ câu hỏi",
+      "createQuizSet.hint": "Bài giảng / Sinh hoạt",
+      "startLive": "Bắt đầu Live",
+      "startLive.hint": "Realtime · 5 modes",
+      "tournament": "Tổ chức giải đấu",
+      "tournament.hint": "Bracket 4-32 người",
+      "tournament.needMembers": "Cần ≥{{min}} thành viên (hiện {{current}})",
+      "announce": "Đăng thông báo",
+      "announce.hint": "Cho {{count}} thành viên",
+      "practice": "Tự ôn quiz",
+      "practice.hint": "{{count}} bộ câu hỏi sẵn sàng",
+      "scheduledQuiz": "Quiz đang lên lịch",
+      "scheduledQuiz.hint": "{{count}} đang mở"
+    },
+    "activity": {
+      "placeholder": {
+        "title": "Hoạt động nhóm",
+        "desc": "Sắp ra mắt — feed sẽ hiển thị thi đấu, bộ câu hỏi mới, thông báo và streak của các thành viên.",
+        "sprint": "Sprint 6"
+      }
+    },
+    "liveNow": {
+      "label": "Đang diễn ra",
+      "join": "Tham gia",
+      "meta": "Mode: {{mode}} · {{players}}/{{max}} người",
+      "more": "Còn +{{count}} phòng khác"
+    },
     "leaderboardTitle": "Bảng Xếp Hạng",
     "weekly": "Tuần này",
     "allTime": "Tất cả",

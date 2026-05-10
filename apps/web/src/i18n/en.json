@@ -1558,6 +1558,41 @@
     "membersTab": "Members",
     "announcementsTab": "Announcements",
     "quizSetsTab": "Question Sets",
+    "tabs": {
+      "activity": "Activity",
+      "analytics": "Analytics"
+    },
+    "quickActions": {
+      "title": "Quick actions"
+    },
+    "action": {
+      "createQuizSet": "Create quiz set",
+      "createQuizSet.hint": "Sermons / Sessions",
+      "startLive": "Start live",
+      "startLive.hint": "Realtime · 5 modes",
+      "tournament": "Host tournament",
+      "tournament.hint": "Bracket 4-32 people",
+      "tournament.needMembers": "Need ≥{{min}} members ({{current}} now)",
+      "announce": "Post announcement",
+      "announce.hint": "To {{count}} members",
+      "practice": "Practice quizzes",
+      "practice.hint": "{{count}} quiz sets ready",
+      "scheduledQuiz": "Scheduled quizzes",
+      "scheduledQuiz.hint": "{{count}} open now"
+    },
+    "activity": {
+      "placeholder": {
+        "title": "Group activity",
+        "desc": "Coming soon — feed will show competitions, new quiz sets, announcements, and member streaks.",
+        "sprint": "Sprint 6"
+      }
+    },
+    "liveNow": {
+      "label": "Live now",
+      "join": "Join",
+      "meta": "Mode: {{mode}} · {{players}}/{{max}} players",
+      "more": "+{{count}} more rooms"
+    },
     "leaderboardTitle": "Leaderboard",
     "weekly": "This week",
     "allTime": "All time",
