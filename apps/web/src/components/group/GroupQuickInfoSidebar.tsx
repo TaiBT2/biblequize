@@ -3,12 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { api } from '../../api/client';
 
+interface GroupMember {
+  userId: string;
+  lastActiveAt?: string | null;
+}
+
 interface GroupSummary {
   id: string;
   name?: string;
   memberCount?: number;
-  members?: Array<{ userId: string }>;
+  members?: GroupMember[];
 }
+
+const ONLINE_WINDOW_MS = 5 * 60 * 1000;
+const isOnline = (m: GroupMember): boolean => {
+  if (!m.lastActiveAt) return false;
+  const ts = Date.parse(m.lastActiveAt);
+  return Number.isFinite(ts) && Date.now() - ts < ONLINE_WINDOW_MS;
+};
 
 interface ActiveRoom {
   id: string;
@@ -55,7 +67,7 @@ export default function GroupQuickInfoSidebar({ groupId }: { groupId: string }) 
   }, [groupId]);
 
   const totalMembers = group?.memberCount ?? group?.members?.length ?? 0;
-  const playersInRooms = rooms.reduce((sum, r) => sum + (r.currentPlayers || 0), 0);
+  const onlineCount = (group?.members ?? []).filter(isOnline).length;
 
   return (
     <div
@@ -64,16 +76,16 @@ export default function GroupQuickInfoSidebar({ groupId }: { groupId: string }) 
       style={{ background: 'rgba(74,222,128,0.05)' }}
     >
       <div className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-        <span className="text-base">🟢</span>
+        <span className="text-base animate-pulse">🟢</span>
         <span>{t('groups.sidebarInfo.activeNow')}</span>
       </div>
       <div className="text-2xl font-extrabold text-on-surface leading-none">
-        {playersInRooms}
+        {onlineCount}
         <span className="text-xs text-on-surface/55 font-normal ml-1">/ {totalMembers}</span>
       </div>
-      <div className="text-[10px] text-on-surface/55 mt-1">
-        {group?.name ? group.name : t('groups.sidebarInfo.fallbackName')}
-      </div>
+      {group?.name && (
+        <div className="text-[10px] text-on-surface/55 mt-1 truncate">{group.name}</div>
+      )}
 
       {rooms.length > 0 && (
         <div className="mt-3 pt-3 border-t border-emerald-400/15">
@@ -98,12 +110,6 @@ export default function GroupQuickInfoSidebar({ groupId }: { groupId: string }) 
               </div>
             )}
           </div>
-        </div>
-      )}
-
-      {rooms.length === 0 && (
-        <div className="mt-2 text-[10px] text-on-surface/40">
-          {t('groups.sidebarInfo.noLiveRooms')}
         </div>
       )}
     </div>

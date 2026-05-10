@@ -1637,11 +1637,9 @@
       "allHeader": "Members ({{count}})"
     },
     "sidebarInfo": {
-      "activeNow": "Active now",
-      "fallbackName": "Your group",
+      "activeNow": "Online",
       "openRooms": "Open rooms",
-      "moreRooms": "+{{count}} more rooms",
-      "noLiveRooms": "No live rooms yet"
+      "moreRooms": "+{{count}} more rooms"
     },
     "leaderboardTitle": "Leaderboard",
     "weekly": "This week",

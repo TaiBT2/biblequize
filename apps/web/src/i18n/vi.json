@@ -1637,11 +1637,9 @@
       "allHeader": "Thành viên ({{count}})"
     },
     "sidebarInfo": {
-      "activeNow": "Đang tham gia",
-      "fallbackName": "Nhóm của bạn",
+      "activeNow": "Đang online",
       "openRooms": "Phòng đang mở",
-      "moreRooms": "+{{count}} phòng khác",
-      "noLiveRooms": "Chưa có phòng live nào"
+      "moreRooms": "+{{count}} phòng khác"
     },
     "leaderboardTitle": "Bảng Xếp Hạng",
     "weekly": "Tuần này",
