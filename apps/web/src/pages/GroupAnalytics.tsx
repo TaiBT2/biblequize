@@ -83,6 +83,8 @@ function KpiCard({
   delta,
   borderColor,
   textColor,
+  tooltip,
+  testId,
 }: {
   label: string;
   value: string | number;
@@ -90,14 +92,28 @@ function KpiCard({
   delta?: { sign: '▲' | '▼' | '—'; text: string };
   borderColor: string;
   textColor: string;
+  tooltip?: string;
+  testId?: string;
 }) {
   return (
     <div
-      className="bg-[rgba(50,52,64,0.5)] border-[0.5px] rounded-lg p-2.5"
+      data-testid={testId}
+      className="bg-[rgba(50,52,64,0.5)] border-[0.5px] rounded-lg p-2.5 relative"
       style={{ borderColor }}
     >
-      <div className="text-[9px] tracking-wider mb-1" style={{ color: borderColor }}>
-        {label}
+      <div className="flex items-start justify-between gap-1.5 mb-1">
+        <div className="text-[9px] tracking-wider" style={{ color: borderColor }}>
+          {label}
+        </div>
+        {tooltip && (
+          <span
+            title={tooltip}
+            aria-label={tooltip}
+            className="text-on-surface/40 hover:text-on-surface/70 cursor-help text-[10px] leading-none mt-0.5"
+          >
+            ⓘ
+          </span>
+        )}
       </div>
       <div className="flex items-baseline gap-1">
         <span className="text-[22px] font-medium" style={{ color: textColor }}>{value}</span>
@@ -265,34 +281,45 @@ const GroupAnalytics: React.FC = () => {
         {/* KPI grid (4 cards) */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 mb-4">
           <KpiCard
+            testId="kpi-active-week"
             label={t('groups.kpiActiveWeek')}
             value={activeWeek}
             unit={`/ ${totalMembers}`}
             delta={{ sign: '▲', text: t('groups.kpiVsLastWeek') }}
             borderColor="rgba(99,153,34,0.3)"
             textColor="#97C459"
+            tooltip={t('groups.kpiTooltip.activeWeek', { active: activeWeek, total: totalMembers })}
           />
           <KpiCard
+            testId="kpi-avg-score"
             label={t('groups.kpiAvgScore')}
             value={avgScore || '—'}
             unit={t('groups.kpiPerPerson')}
             borderColor="rgba(232,168,50,0.3)"
             textColor="#e8a832"
+            tooltip={t('groups.kpiTooltip.avgScore', {
+              sample: activeWeek,
+              note: activeWeek > 0 && activeWeek < 3 ? ' ' + t('groups.kpiTooltip.smallSampleWarn') : '',
+            })}
           />
           <KpiCard
+            testId="kpi-accuracy"
             label={t('groups.kpiAccuracy')}
             value={`${accuracy}%`}
             delta={{ sign: '—', text: t('groups.kpiStable') }}
             borderColor="rgba(106,184,232,0.3)"
             textColor="#6AB8E8"
+            tooltip={t('groups.kpiTooltip.accuracy', { sample: activeWeek })}
           />
           <KpiCard
+            testId="kpi-inactive"
             label={t('groups.kpiInactive')}
             value={inactiveCount}
             unit={t('groups.kpiPeople')}
             delta={{ sign: '▼', text: t('groups.kpiNeedAttention') }}
             borderColor="rgba(255,140,66,0.3)"
             textColor="#ff8c42"
+            tooltip={t('groups.kpiTooltip.inactive', { count: inactiveCount, total: totalMembers, days: 7 })}
           />
         </div>
 

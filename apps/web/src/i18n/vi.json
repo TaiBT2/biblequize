@@ -1598,6 +1598,13 @@
       "tooNew": "Nhóm mới · còn {{days}} ngày để có thống kê",
       "tooSmall": "Cần ít nhất {{min}} thành viên để hiển thị biểu đồ"
     },
+    "kpiTooltip": {
+      "activeWeek": "{{active}}/{{total}} thành viên có hoạt động ≥1 quiz trong 7 ngày qua",
+      "avgScore": "Trung bình điểm trên {{sample}} thành viên có hoạt động.{{note}}",
+      "smallSampleWarn": "⚠️ Sample nhỏ — độ tin cậy thấp",
+      "accuracy": "% câu trả lời đúng — tính trên {{sample}} thành viên có hoạt động",
+      "inactive": "{{count}}/{{total}} thành viên không hoạt động ≥{{days}} ngày qua"
+    },
     "leaderboardTitle": "Bảng Xếp Hạng",
     "weekly": "Tuần này",
     "allTime": "Tất cả",

@@ -1598,6 +1598,13 @@
       "tooNew": "New group · {{days}} more days needed for stats",
       "tooSmall": "Need at least {{min}} members to show the chart"
     },
+    "kpiTooltip": {
+      "activeWeek": "{{active}}/{{total}} members played ≥1 quiz in the last 7 days",
+      "avgScore": "Average score across {{sample}} active members.{{note}}",
+      "smallSampleWarn": "⚠️ Small sample — low confidence",
+      "accuracy": "% correct answers — computed across {{sample}} active members",
+      "inactive": "{{count}}/{{total}} members inactive for ≥{{days}} days"
+    },
     "leaderboardTitle": "Leaderboard",
     "weekly": "This week",
     "allTime": "All time",
