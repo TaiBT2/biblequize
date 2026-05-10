@@ -727,8 +727,12 @@ public class ChurchGroupService {
         if (m.containsKey("description")) set.setDescription((String) m.get("description"));
         if (m.containsKey("coverImageUrl")) set.setCoverImageUrl((String) m.get("coverImageUrl"));
         if (m.containsKey("tags") && m.get("tags") instanceof List<?> tagList) {
-            // Cap tối đa 5 tags theo SPEC v1.3.
-            set.setTags(tagList.size() > 5 ? tagList.subList(0, 5) : tagList);
+            // Cap tối đa 5 tags theo SPEC v1.3. Coerce raw items to String for type-safe converter.
+            List<String> stringTags = tagList.stream()
+                    .filter(java.util.Objects::nonNull)
+                    .map(Object::toString)
+                    .toList();
+            set.setTags(stringTags.size() > 5 ? new ArrayList<>(stringTags.subList(0, 5)) : new ArrayList<>(stringTags));
         }
         if (m.containsKey("coverScripture")) set.setCoverScripture((String) m.get("coverScripture"));
         if (m.containsKey("authorNote")) set.setAuthorNote((String) m.get("authorNote"));

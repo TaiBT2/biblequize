@@ -45,8 +45,8 @@ public class GroupQuizSetMasteryService {
         // Union learned IDs (dedupe).
         Set<String> learned = new LinkedHashSet<>();
         if (m.getLearnedQuestionIds() != null) {
-            for (Object o : m.getLearnedQuestionIds()) {
-                if (o != null) learned.add(o.toString());
+            for (String s : m.getLearnedQuestionIds()) {
+                if (s != null) learned.add(s);
             }
         }
         if (correctQuestionIds != null) learned.addAll(correctQuestionIds);

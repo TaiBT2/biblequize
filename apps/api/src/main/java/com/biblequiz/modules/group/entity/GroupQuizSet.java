@@ -2,6 +2,7 @@ package com.biblequiz.modules.group.entity;
 
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.shared.converter.JsonListConverter;
+import com.biblequiz.shared.converter.JsonStringListConverter;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -67,9 +68,9 @@ public class GroupQuizSet {
     @Column(name = "cover_image_url", length = 500)
     private String coverImageUrl;
 
-    @Convert(converter = JsonListConverter.class)
+    @Convert(converter = JsonStringListConverter.class)
     @Column(columnDefinition = "JSON")
-    private List<?> tags = new ArrayList<>();
+    private List<String> tags = new ArrayList<>();
 
     @Column(name = "cover_scripture", length = 100)
     private String coverScripture;
@@ -150,8 +151,8 @@ public class GroupQuizSet {
     public String getCoverImageUrl() { return coverImageUrl; }
     public void setCoverImageUrl(String coverImageUrl) { this.coverImageUrl = coverImageUrl; }
 
-    public List<?> getTags() { return tags; }
-    public void setTags(List<?> tags) { this.tags = tags; }
+    public List<String> getTags() { return tags; }
+    public void setTags(List<String> tags) { this.tags = tags; }
 
     public String getCoverScripture() { return coverScripture; }
     public void setCoverScripture(String coverScripture) { this.coverScripture = coverScripture; }

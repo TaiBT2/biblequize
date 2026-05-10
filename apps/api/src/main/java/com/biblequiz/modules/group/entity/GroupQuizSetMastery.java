@@ -1,6 +1,6 @@
 package com.biblequiz.modules.group.entity;
 
-import com.biblequiz.shared.converter.JsonListConverter;
+import com.biblequiz.shared.converter.JsonStringListConverter;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -30,9 +30,9 @@ public class GroupQuizSetMastery {
     @Column(name = "user_id", length = 36, nullable = false)
     private String userId;
 
-    @Convert(converter = JsonListConverter.class)
+    @Convert(converter = JsonStringListConverter.class)
     @Column(name = "learned_question_ids", columnDefinition = "JSON", nullable = false)
-    private List<?> learnedQuestionIds = new ArrayList<>();
+    private List<String> learnedQuestionIds = new ArrayList<>();
 
     @Column(name = "questions_learned", nullable = false)
     private Integer questionsLearned = 0;
@@ -74,8 +74,8 @@ public class GroupQuizSetMastery {
     public void setQuizSetId(String quizSetId) { this.quizSetId = quizSetId; }
     public String getUserId() { return userId; }
     public void setUserId(String userId) { this.userId = userId; }
-    public List<?> getLearnedQuestionIds() { return learnedQuestionIds; }
-    public void setLearnedQuestionIds(List<?> v) { this.learnedQuestionIds = v; }
+    public List<String> getLearnedQuestionIds() { return learnedQuestionIds; }
+    public void setLearnedQuestionIds(List<String> v) { this.learnedQuestionIds = v; }
     public Integer getQuestionsLearned() { return questionsLearned; }
     public void setQuestionsLearned(Integer v) { this.questionsLearned = v; }
     public Integer getTotalAttempts() { return totalAttempts; }
