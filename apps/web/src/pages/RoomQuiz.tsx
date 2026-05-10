@@ -29,6 +29,8 @@ interface RoomQuizLocationState {
   isHost?: boolean;
   hostId?: string;
   fromGroupId?: string;
+  groupQuizSetName?: string | null;
+  quizSetTotalQuestions?: number | null;
 }
 
 interface PerPlayerAnswer {
@@ -865,6 +867,21 @@ const RoomQuiz: React.FC = () => {
             >
               {gameMode.replace(/_/g, ' ')}
             </span>
+            {state?.groupQuizSetName && (
+              <span
+                className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold flex-shrink-0 max-w-[160px] truncate"
+                style={{
+                  color: '#e8a832',
+                  background: 'rgba(232, 168, 50, 0.1)',
+                  border: '1px solid rgba(232, 168, 50, 0.3)',
+                }}
+                data-testid="quiz-header-quizset"
+                title={state.groupQuizSetName}
+              >
+                <span className="material-symbols-outlined text-[12px]">menu_book</span>
+                <span className="truncate">{state.groupQuizSetName}</span>
+              </span>
+            )}
             <div className="hidden sm:block h-4 w-px" style={{ background: 'rgba(255,255,255,0.1)' }} />
             <span className="text-sm font-bold text-on-surface flex-shrink-0">
               {t('room.quiz.questionProgress', { current: questionIndex + 1, total: totalQuestions || '?' })}
