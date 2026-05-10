@@ -2,6 +2,7 @@ package com.biblequiz.modules.room.service;
 
 import com.biblequiz.api.websocket.RoomWebSocketController;
 import com.biblequiz.api.websocket.WebSocketMessage;
+import com.biblequiz.modules.group.repository.GroupMemberRepository;
 import com.biblequiz.modules.group.repository.GroupQuizSetRepository;
 import com.biblequiz.modules.room.entity.Room;
 import com.biblequiz.modules.room.entity.RoomPlayer;
@@ -35,6 +36,9 @@ public class RoomService {
 
     @Autowired
     private GroupQuizSetRepository groupQuizSetRepository;
+
+    @Autowired
+    private GroupMemberRepository groupMemberRepository;
 
     /** @Lazy breaks the dep cycle (RoomWebSocketController already injects
      *  RoomService). Used only for cleanup-path broadcasts; the normal
@@ -120,6 +124,26 @@ public class RoomService {
     public Room joinRoom(String roomCode, User user) throws Exception {
         Room room = roomRepository.findByRoomCode(roomCode)
             .orElseThrow(() -> new Exception("Phòng không tồn tại"));
+
+        // 🚨 SECURITY (Audit Gap 1): co-play rooms tied to a group quiz set are
+        // private to that group's members. Without this gate, anyone with the
+        // 6-char room code could walk into a group's private quiz session.
+        // Existing players (rejoin via existing RoomPlayer row) are exempt so a
+        // member who got removed from the group mid-game can still finish the
+        // round they're already in (kicking mid-game is out of scope here).
+        if (room.getGroupQuizSetId() != null) {
+            var existingPlayer = roomPlayerRepository.findByRoomIdAndUserId(room.getId(), user.getId());
+            boolean isHost = room.getHost() != null && room.getHost().getId().equals(user.getId());
+            if (existingPlayer.isEmpty() && !isHost) {
+                var quizSet = groupQuizSetRepository.findById(room.getGroupQuizSetId())
+                        .orElseThrow(() -> new Exception("Bo cau hoi khong ton tai"));
+                String groupId = quizSet.getGroup() != null ? quizSet.getGroup().getId() : null;
+                if (groupId == null
+                        || groupMemberRepository.findByGroupIdAndUserId(groupId, user.getId()).isEmpty()) {
+                    throw new Exception("Ban khong phai thanh vien cua nhom nay");
+                }
+            }
+        }
 
         // Look up an existing membership first so we can support rejoin while
         // the room is IN_PROGRESS (Phase 6 case #3 — user left mid-game and

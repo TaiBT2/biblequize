@@ -37,6 +37,12 @@ class RoomServiceTest {
     @Mock
     private com.biblequiz.api.websocket.RoomWebSocketController webSocketController;
 
+    @Mock
+    private com.biblequiz.modules.group.repository.GroupQuizSetRepository groupQuizSetRepository;
+
+    @Mock
+    private com.biblequiz.modules.group.repository.GroupMemberRepository groupMemberRepository;
+
     @InjectMocks
     private RoomService roomService;
 
@@ -244,6 +250,95 @@ class RoomServiceTest {
         // No new player added, no stale-lobby cleanup triggered.
         verify(roomPlayerRepository, never()).save(any(RoomPlayer.class));
         verify(roomPlayerRepository, never()).findActiveRoomIdsByUserId(anyString());
+    }
+
+    // ── joinRoom: SECURITY (Audit Gap 1 — group quiz set membership gate) ────
+
+    @Test
+    void joinRoom_coPlayRoom_member_succeeds() throws Exception {
+        // Member of the group owning the quiz set must be able to join.
+        testRoom.setGroupQuizSetId("qs-1");
+        var group = new com.biblequiz.modules.group.entity.ChurchGroup();
+        group.setId("group-1");
+        var qs = new com.biblequiz.modules.group.entity.GroupQuizSet();
+        qs.setId("qs-1");
+        qs.setGroup(group);
+        var member = new com.biblequiz.modules.group.entity.GroupMember();
+        member.setRole(com.biblequiz.modules.group.entity.GroupMember.GroupRole.MEMBER);
+
+        when(roomRepository.findByRoomCode("ABC123")).thenReturn(Optional.of(testRoom));
+        when(roomPlayerRepository.findByRoomIdAndUserId("room-1", "player-1"))
+                .thenReturn(Optional.empty());
+        when(groupQuizSetRepository.findById("qs-1")).thenReturn(Optional.of(qs));
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "player-1"))
+                .thenReturn(Optional.of(member));
+        when(roomPlayerRepository.findActiveRoomIdsByUserId("player-1")).thenReturn(List.of());
+        when(roomRepository.findById("room-1")).thenReturn(Optional.of(testRoom));
+        when(roomRepository.save(any(Room.class))).thenReturn(testRoom);
+
+        Room result = roomService.joinRoom("ABC123", playerUser);
+
+        assertEquals("room-1", result.getId());
+        verify(roomPlayerRepository).save(any(RoomPlayer.class));
+    }
+
+    @Test
+    void joinRoom_coPlayRoom_nonMember_throwsForbidden() {
+        testRoom.setGroupQuizSetId("qs-1");
+        var group = new com.biblequiz.modules.group.entity.ChurchGroup();
+        group.setId("group-1");
+        var qs = new com.biblequiz.modules.group.entity.GroupQuizSet();
+        qs.setId("qs-1");
+        qs.setGroup(group);
+
+        when(roomRepository.findByRoomCode("ABC123")).thenReturn(Optional.of(testRoom));
+        when(roomPlayerRepository.findByRoomIdAndUserId("room-1", "player-1"))
+                .thenReturn(Optional.empty());
+        when(groupQuizSetRepository.findById("qs-1")).thenReturn(Optional.of(qs));
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "player-1"))
+                .thenReturn(Optional.empty()); // NOT a member
+
+        Exception ex = assertThrows(Exception.class,
+                () -> roomService.joinRoom("ABC123", playerUser));
+        assertTrue(ex.getMessage().contains("thanh vien"),
+                "Expected forbidden message, got: " + ex.getMessage());
+        verify(roomPlayerRepository, never()).save(any(RoomPlayer.class));
+    }
+
+    @Test
+    void joinRoom_regularRoom_noMembershipCheck() throws Exception {
+        // Regression: rooms WITHOUT groupQuizSetId must skip the membership
+        // gate entirely (existing public/private multiplayer behavior).
+        testRoom.setGroupQuizSetId(null);
+
+        when(roomRepository.findByRoomCode("ABC123")).thenReturn(Optional.of(testRoom));
+        when(roomPlayerRepository.findByRoomIdAndUserId("room-1", "player-1"))
+                .thenReturn(Optional.empty());
+        when(roomPlayerRepository.findActiveRoomIdsByUserId("player-1")).thenReturn(List.of());
+        when(roomRepository.findById("room-1")).thenReturn(Optional.of(testRoom));
+        when(roomRepository.save(any(Room.class))).thenReturn(testRoom);
+
+        Room result = roomService.joinRoom("ABC123", playerUser);
+
+        assertEquals("room-1", result.getId());
+        verify(groupQuizSetRepository, never()).findById(anyString());
+        verify(groupMemberRepository, never()).findByGroupIdAndUserId(anyString(), anyString());
+    }
+
+    @Test
+    void joinRoom_coPlayRoom_existingPlayer_skipsMembershipCheck() throws Exception {
+        // Mid-game rejoin: even if the user got removed from the group,
+        // the existing RoomPlayer row keeps them in the round they're already in.
+        testRoom.setGroupQuizSetId("qs-1");
+
+        when(roomRepository.findByRoomCode("ABC123")).thenReturn(Optional.of(testRoom));
+        when(roomPlayerRepository.findByRoomIdAndUserId("room-1", "player-1"))
+                .thenReturn(Optional.of(new RoomPlayer()));
+
+        Room result = roomService.joinRoom("ABC123", playerUser);
+
+        assertEquals("room-1", result.getId());
+        verify(groupQuizSetRepository, never()).findById(anyString());
     }
 
     // ── joinRoom: GAP-J 1-active-room-per-user (SPEC v1.1 §8.7) ──────────────
