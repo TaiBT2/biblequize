@@ -41,7 +41,7 @@ BƯỚC 5 — BẮT ĐẦU CODE (chỉ sau khi 1-4 xong)
 |---|---|
 | Tier system, scoring, energy, lifeline, prestige, cosmetic, comeback, missions, journey, achievements, leaderboard, tournaments, mobile parity, i18n, sound/haptics, onboarding | `docs/spec/SPEC_USER_v3.1.md` |
 | 5 multiplayer modes, R1–R5 room lifecycle, STOMP events, Quản trò mode | `docs/spec/SPEC_MULTIPLAYER.md` |
-| Church Group (Q-A...Q-O locked), quiz sets, scheduled quizzes, group leaderboard | `docs/spec/SPEC_GROUP_v1.2.md` |
+| Church Group (Q-A...Q-O locked), Quiz Set Professional Sprint 5 (multi-mode + mastery + workflow + folders), scheduled quizzes, group leaderboard | `docs/spec/SPEC_GROUP_v1.3.md` |
 | Admin panel, AI generator, duplicate detection, audit log, configuration | `docs/spec/SPEC_ADMIN_v3.1.md` |
 | Future / non-shipped (Friend, Premium, TV Host, Multi-leader, Sentry, Offline) | `docs/spec/SPEC_ROADMAP.md` |
 | Code gaps vs canonical (BL-1...BL-N) | `docs/spec/BACKLOG.md` |
