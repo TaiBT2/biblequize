@@ -322,4 +322,33 @@ describe('RoomLobby — Sprint 4 host-organizer mode', () => {
     expect(screen.queryByTestId('lobby-organizer-badge')).toBeNull()
     expect(screen.queryByTestId('lobby-host-info-card')).toBeNull()
   })
+
+  // Regression for QT-fix (2026-05-10): a Quản trò who saw the lobby
+  // correctly used to lose isHost the moment the first ROOM_STATE event
+  // arrived, because the WS snapshot carried no viewer identity and FE
+  // overwrote room with msg.data — flipping the start button to a stale
+  // "Sẵn sàng" that did nothing. viewerUserId now lives outside `room`,
+  // so a ROOM_STATE update must NOT clear the organizer badge.
+  it('Quản trò keeps isHost across a ROOM_STATE WS event (no viewer field in snapshot)', async () => {
+    const quanTroRoom = {
+      ...baseRoom,
+      hostPlaysGame: false,
+      players: [],
+      currentPlayers: 0,
+    }
+    await renderLobby(quanTroRoom, 'host-1')
+    expect(await screen.findByTestId('lobby-organizer-badge')).toBeInTheDocument()
+    await waitFor(() => expect(lastStompArgs).not.toBeNull())
+    // Simulate a player joining: backend re-broadcasts the room WITHOUT
+    // any per-viewer field (the bug we fixed).
+    lastStompArgs.onMessage({
+      type: 'ROOM_STATE',
+      data: {
+        ...quanTroRoom,
+        players: [{ id: 'pa', userId: 'u-a', username: 'A', isReady: true, score: 0 }],
+        currentPlayers: 1,
+      },
+    })
+    expect(await screen.findByTestId('lobby-organizer-badge')).toBeInTheDocument()
+  })
 })
