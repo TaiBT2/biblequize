@@ -65,6 +65,9 @@ public class ChurchGroupService {
     @Autowired
     private com.biblequiz.modules.group.repository.GroupQuizSetFolderRepository folderRepository;
 
+    @Autowired
+    private com.biblequiz.modules.quiz.repository.QuestionRepository questionRepository;
+
     private static final String CODE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     private static final int CODE_LENGTH = 6;
     private final SecureRandom random = new SecureRandom();
@@ -775,8 +778,10 @@ public class ChurchGroupService {
         }
         set.setPublishStatus(GroupQuizSet.PublishStatus.PUBLISHED);
         set.setPublishedAt(LocalDateTime.now());
-        // Auto-derive: defer Sprint 6 (Question.Difficulty enum mismatch) — fallback MEDIUM.
-        if (set.getDifficulty() == null) set.setDifficulty(GroupQuizSet.Difficulty.MEDIUM);
+        // BL-S5-3: auto-derive difficulty từ Question.difficulty (lowercase enum) → GroupQuizSet.Difficulty
+        if (set.getDifficulty() == null) {
+            set.setDifficulty(computeDifficulty(set));
+        }
         if (set.getEstimatedDurationMin() == null) {
             set.setEstimatedDurationMin(Math.max(1, set.getTotalQuestions() * 30 / 60));
         }
@@ -925,6 +930,29 @@ public class ChurchGroupService {
         map.put("createdBy", f.getCreatedBy());
         map.put("createdAt", f.getCreatedAt());
         return map;
+    }
+
+    /** BL-S5-3 — Map Question.Difficulty (lowercase) → GroupQuizSet.Difficulty (uppercase + MIXED). */
+    @SuppressWarnings("unchecked")
+    private GroupQuizSet.Difficulty computeDifficulty(GroupQuizSet set) {
+        Object qidsObj = set.getQuestionIds();
+        if (!(qidsObj instanceof List<?> rawList) || rawList.isEmpty()) {
+            return GroupQuizSet.Difficulty.MEDIUM;
+        }
+        List<String> ids = rawList.stream().filter(Objects::nonNull).map(Object::toString).toList();
+        if (ids.isEmpty()) return GroupQuizSet.Difficulty.MEDIUM;
+        var questions = questionRepository.findAllById(ids);
+        if (questions.isEmpty()) return GroupQuizSet.Difficulty.MEDIUM;
+        long total = questions.size();
+        long easy = questions.stream().filter(q ->
+                q.getDifficulty() == com.biblequiz.modules.quiz.entity.Question.Difficulty.easy).count();
+        long hard = questions.stream().filter(q ->
+                q.getDifficulty() == com.biblequiz.modules.quiz.entity.Question.Difficulty.hard).count();
+        long medium = total - easy - hard;
+        if (easy * 100 / total >= 80) return GroupQuizSet.Difficulty.EASY;
+        if (hard * 100 / total >= 80) return GroupQuizSet.Difficulty.HARD;
+        if (medium * 100 / total >= 80) return GroupQuizSet.Difficulty.MEDIUM;
+        return GroupQuizSet.Difficulty.MIXED;
     }
 
     private GroupQuizSet ownerOrLeaderOnly(String groupId, String setId, String userId) {
