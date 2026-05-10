@@ -1,10 +1,36 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { api } from '../../api/client'
 import {
   listQuizSets, listFolders, createFolder, deleteFolder,
   type ListQuizSetsParams, type PublishStatus, type QuizSet, type QuizSetFolder,
 } from '../../api/quizSets'
+
+/** Card cover gradients — cycle theo tag dominant hoặc fallback by index. */
+const COVER_GRADIENTS = [
+  'linear-gradient(135deg, #1a1d2e 0%, #4a3d2e 100%)',  // easter — gold/brown
+  'linear-gradient(135deg, #1a1d2e 0%, #2a3d4e 100%)',  // gospel — blue/dark
+  'linear-gradient(135deg, #1a3d2e 0%, #2a4d3e 100%)',  // creation — green
+  'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)',  // children — bright green
+  'linear-gradient(135deg, #ff7a59 0%, #d4541a 100%)',  // OT — orange
+  'linear-gradient(135deg, #1a1d3e 0%, #2a3d6e 100%)',  // sea — deep blue
+  'linear-gradient(135deg, #2e1a3d 0%, #4d2a5e 100%)',  // psalms — purple
+  'linear-gradient(135deg, #1a2d3e 0%, #2e3d5e 100%)',  // letters — slate
+]
+
+function pickCoverGradient(qs: QuizSet, idx: number): string {
+  const tagsArr = (qs.tags || []) as string[]
+  const tagStr = tagsArr.join(' ').toLowerCase()
+  if (tagStr.includes('phục sinh') || tagStr.includes('easter'))    return COVER_GRADIENTS[0]
+  if (tagStr.includes('phúc âm') || tagStr.includes('gospel'))      return COVER_GRADIENTS[1]
+  if (tagStr.includes('sáng tạo') || tagStr.includes('creation'))   return COVER_GRADIENTS[2]
+  if (tagStr.includes('thiếu nhi') || tagStr.includes('children'))  return COVER_GRADIENTS[3]
+  if (tagStr.includes('giáng sinh') || tagStr.includes('christmas')) return COVER_GRADIENTS[4]
+  if (tagStr.includes('thư tín') || tagStr.includes('epistle'))     return COVER_GRADIENTS[7]
+  if (tagStr.includes('bài giảng') || tagStr.includes('sermon'))    return COVER_GRADIENTS[6]
+  return COVER_GRADIENTS[idx % COVER_GRADIENTS.length]
+}
 
 const STATUS_FILTERS: { key: PublishStatus | 'ALL'; tKey: string; dot: string }[] = [
   { key: 'ALL',       tKey: 'quizSet.list.filterAll',       dot: '#e8a832' },
@@ -47,6 +73,16 @@ export default function QuizSetList() {
   const [sort, setSort] = useState<ListQuizSetsParams['sort']>('popular')
   const [search, setSearch] = useState('')
   const [activeFolder, setActiveFolder] = useState<string | 'ALL' | 'UNCAT'>('ALL')
+  const [groupName, setGroupName] = useState<string>('')
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const [sortOpen, setSortOpen] = useState(false)
+
+  useEffect(() => {
+    if (!groupId) return
+    api.get(`/api/groups/${groupId}`)
+      .then(res => setGroupName(res.data?.group?.name || ''))
+      .catch(() => {})
+  }, [groupId])
 
   useEffect(() => {
     if (!groupId) return
@@ -195,20 +231,34 @@ export default function QuizSetList() {
           <div className="flex items-center justify-between mb-3">
             <div>
               <div className="text-[10px] text-gray-500 uppercase font-semibold tracking-wider">
-                <Link to={`/groups/${groupId}`} className="hover:text-white">Nhóm</Link>
-                {' / '}{t('quizSet.list.title')}
+                <Link to={`/groups/${groupId}`} className="hover:text-white">{(groupName || 'Nhóm').toUpperCase()}</Link>
+                {' / '}<span>BỘ CÂU HỎI</span>
               </div>
-              <h1 className="text-xl font-extrabold text-white mt-0.5 qs-font-vn-display">
+              <h1 className="text-2xl font-extrabold text-white mt-0.5 qs-font-vn-display">
                 {activeFolder === 'ALL' ? 'Tất cả bộ câu hỏi' :
                  activeFolder === 'UNCAT' ? 'Chưa phân loại' :
                  folders.find(f => f.id === activeFolder)?.name || 'Bộ câu hỏi'}
-                <span className="text-gray-500 font-normal"> ({filteredByFolder.length})</span>
+                <span className="text-gray-500 font-normal text-xl ml-1">({filteredByFolder.length})</span>
               </h1>
             </div>
             <div className="flex gap-2">
+              <button
+                type="button"
+                title="Tính năng đang phát triển"
+                className="px-3 py-2 rounded-lg qs-glass-subtle border border-white/10 text-gray-300 text-xs font-semibold flex items-center gap-1.5 hover:border-white/20 opacity-60 cursor-not-allowed"
+              >
+                <span>📋</span><span>Clone từ template</span>
+              </button>
+              <button
+                type="button"
+                title="Tính năng đang phát triển"
+                className="px-3 py-2 rounded-lg qs-glass-subtle border border-white/10 text-gray-300 text-xs font-semibold flex items-center gap-1.5 hover:border-white/20 opacity-60 cursor-not-allowed"
+              >
+                <span>📥</span><span>Import</span>
+              </button>
               <Link
                 to={`/groups/${groupId}/quiz-sets/new`}
-                className="px-4 py-2 rounded-lg qs-gold-grad text-[#11131e] text-xs font-extrabold flex items-center gap-1.5"
+                className="px-4 py-2 rounded-lg qs-gold-grad text-[#11131e] text-xs font-extrabold flex items-center gap-1.5 hover:opacity-90"
               >
                 <span className="text-base leading-none">+</span><span>TẠO BỘ MỚI</span>
               </Link>
@@ -216,7 +266,7 @@ export default function QuizSetList() {
           </div>
 
           <div className="flex items-center gap-2">
-            <div className="flex-1 qs-glass-subtle rounded-lg px-3 py-2 flex items-center gap-2 max-w-md">
+            <div className="flex-1 qs-glass-subtle rounded-lg px-3 py-2 flex items-center gap-2 max-w-md border border-white/10">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="text-gray-400">
                 <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
               </svg>
@@ -226,18 +276,64 @@ export default function QuizSetList() {
                 className="bg-transparent outline-none text-xs text-white placeholder-gray-500 flex-1"
                 placeholder="Tìm theo tên, mô tả, tag..."
               />
+              <span className="text-[10px] text-gray-600 px-1.5 py-0.5 rounded border border-white/10">⌘K</span>
             </div>
+
             <div className="flex items-center gap-1.5 ml-auto text-xs">
               <span className="text-gray-500">{t('quizSet.list.sortLabel')}</span>
-              <select
-                value={sort}
-                onChange={e => setSort(e.target.value as any)}
-                className="qs-glass-subtle rounded-lg px-2.5 py-1.5 text-gray-300 outline-none border border-white/10 cursor-pointer"
-              >
-                {SORT_OPTIONS.map(o => (
-                  <option key={o.key} value={o.key} className="qs-bg">{t(o.tKey)}</option>
-                ))}
-              </select>
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setSortOpen(v => !v)}
+                  className="qs-glass-subtle rounded-lg px-2.5 py-1.5 text-gray-300 outline-none border border-white/10 cursor-pointer flex items-center gap-1"
+                >
+                  <span>{t(SORT_OPTIONS.find(o => o.key === sort)?.tKey || 'quizSet.list.sortPopular')}</span>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z" /></svg>
+                </button>
+                {sortOpen && (
+                  <div
+                    className="absolute right-0 top-full mt-1 w-44 qs-glass-strong rounded-lg overflow-hidden z-20"
+                    onMouseLeave={() => setSortOpen(false)}
+                  >
+                    {SORT_OPTIONS.map(o => (
+                      <button
+                        key={o.key}
+                        type="button"
+                        onClick={() => { setSort(o.key); setSortOpen(false) }}
+                        className={`w-full px-3 py-1.5 text-left text-xs hover:bg-white/5 ${sort === o.key ? 'text-[#e8a832] font-bold' : 'text-gray-300'}`}
+                      >{t(o.tKey)}</button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="flex qs-glass-subtle rounded-lg overflow-hidden border border-white/10 ml-1">
+                <button
+                  type="button"
+                  onClick={() => setViewMode('grid')}
+                  className={`px-2 py-1.5 ${viewMode === 'grid' ? 'text-[#e8a832] bg-[#e8a832]/10' : 'text-gray-500 hover:text-gray-300'}`}
+                  title="Lưới"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setViewMode('list')}
+                  className={`px-2 py-1.5 ${viewMode === 'list' ? 'text-[#e8a832] bg-[#e8a832]/10' : 'text-gray-500 hover:text-gray-300'}`}
+                  title="Danh sách"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                    <line x1="8" y1="6" x2="21" y2="6" />
+                    <line x1="8" y1="12" x2="21" y2="12" />
+                    <line x1="8" y1="18" x2="21" y2="18" />
+                    <line x1="3" y1="6" x2="3.01" y2="6" />
+                    <line x1="3" y1="12" x2="3.01" y2="12" />
+                    <line x1="3" y1="18" x2="3.01" y2="18" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -305,29 +401,29 @@ export default function QuizSetList() {
                 if (folderItems.length === 0) return null
                 return (
                   <SectionGroup key={folder.id} title={`📁 ${folder.name}`} count={folderItems.length}>
-                    <CardGrid groupId={groupId!} items={folderItems} />
+                    <CardGrid groupId={groupId!} items={folderItems} viewMode={viewMode} />
                   </SectionGroup>
                 )
               })}
 
               {grouped.uncategorized.length > 0 && (
                 <SectionGroup title="📂 Chưa phân loại" count={grouped.uncategorized.length}>
-                  <CardGrid groupId={groupId!} items={grouped.uncategorized} />
+                  <CardGrid groupId={groupId!} items={grouped.uncategorized} viewMode={viewMode} />
                 </SectionGroup>
               )}
 
               {drafts.length > 0 && (
                 <SectionGroup title={`📝 ${t('quizSet.list.draftsHeader')}`} count={drafts.length} dimmed>
-                  <CardGrid groupId={groupId!} items={drafts} draftStyle />
+                  <CardGrid groupId={groupId!} items={drafts} draftStyle viewMode={viewMode} />
                 </SectionGroup>
               )}
             </>
           ) : (
             <>
-              {nonDrafts.length > 0 && <CardGrid groupId={groupId!} items={nonDrafts} />}
+              {nonDrafts.length > 0 && <CardGrid groupId={groupId!} items={nonDrafts} viewMode={viewMode} />}
               {drafts.length > 0 && (
                 <SectionGroup title={`📝 ${t('quizSet.list.draftsHeader')}`} count={drafts.length} dimmed>
-                  <CardGrid groupId={groupId!} items={drafts} draftStyle />
+                  <CardGrid groupId={groupId!} items={drafts} draftStyle viewMode={viewMode} />
                 </SectionGroup>
               )}
             </>
@@ -436,15 +532,18 @@ function SectionGroup({
 }
 
 function CardGrid({
-  groupId, items, draftStyle,
+  groupId, items, draftStyle, viewMode = 'grid',
 }: {
-  groupId: string; items: QuizSet[]; draftStyle?: boolean;
+  groupId: string; items: QuizSet[]; draftStyle?: boolean; viewMode?: 'grid' | 'list';
 }) {
+  const cls = viewMode === 'list'
+    ? 'grid grid-cols-1 gap-2'
+    : 'grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4'
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4">
-      {items.map(qs => draftStyle
+    <div className={cls}>
+      {items.map((qs, idx) => draftStyle
         ? <DraftCard key={qs.id} groupId={groupId} qs={qs} />
-        : <QuizSetCard key={qs.id} groupId={groupId} qs={qs} />
+        : <QuizSetCard key={qs.id} groupId={groupId} qs={qs} idx={idx} forceCompact={viewMode === 'list'} />
       )}
     </div>
   )
@@ -464,18 +563,25 @@ function statusBadge(status: PublishStatus) {
 }
 
 /** Responsive card: mobile = compact horizontal · desktop = cover-on-top */
-function QuizSetCard({ groupId, qs }: { groupId: string; qs: QuizSet }) {
+function QuizSetCard({
+  groupId, qs, idx = 0, forceCompact,
+}: {
+  groupId: string; qs: QuizSet; idx?: number; forceCompact?: boolean;
+}) {
   const cover = coverEmoji(qs)
   const badge = statusBadge(qs.publishStatus)
   const diff = qs.difficulty ? DIFFICULTY_LABEL[qs.difficulty] : null
+  const gradient = pickCoverGradient(qs, idx)
 
   return (
     <Link to={`/groups/${groupId}/quiz-sets/${qs.id}`} className="qs-fade-in">
-      {/* Desktop: cover on top */}
-      <div className="hidden lg:block qs-quiz-card qs-glass rounded-xl overflow-hidden border border-white/10">
-        <div className="h-28 relative qs-cover-fallback">
+      {/* Desktop: cover on top (hidden when list view forced) */}
+      <div className={`${forceCompact ? 'hidden' : 'hidden lg:block'} qs-quiz-card rounded-xl overflow-hidden ${
+        idx === 0 ? 'qs-glass-strong border border-[#e8a832]/30' : 'qs-glass border border-white/10'
+      }`}>
+        <div className="h-28 relative overflow-hidden" style={{ background: gradient }}>
           <div className="absolute inset-0 flex items-center justify-center text-5xl opacity-40">{cover}</div>
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent, transparent)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%, transparent 100%)' }} />
           <div className="absolute top-2 left-2"><span className={`qs-badge-status ${badge.cls}`}>{badge.vi}</span></div>
           <div className="absolute top-2 right-2 flex gap-1">
             {qs.averageRating != null && (
@@ -508,8 +614,8 @@ function QuizSetCard({ groupId, qs }: { groupId: string; qs: QuizSet }) {
         </div>
       </div>
 
-      {/* Mobile: compact horizontal */}
-      <div className="lg:hidden qs-glass rounded-xl mb-2 overflow-hidden">
+      {/* Mobile / list view: compact horizontal */}
+      <div className={`${forceCompact ? 'block' : 'lg:hidden'} qs-glass rounded-xl mb-2 overflow-hidden`}>
         <div className="flex p-3 gap-3">
           <div className="w-14 h-14 rounded-lg flex items-center justify-center text-2xl shrink-0 qs-cover-fallback">{cover}</div>
           <div className="flex-1 min-w-0">
