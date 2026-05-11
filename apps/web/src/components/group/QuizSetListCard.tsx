@@ -174,20 +174,14 @@ export default function QuizSetListCard({
     }
   }
 
-  const handleCardClick = () => {
-    if (onClick) onClick()
-    else navigate(`/groups/${groupId}/quiz-sets/${qs.id}`)
-  }
-
+  // Card body intentionally NOT clickable — only the action buttons fire
+  // actions. Reserved future: click body = open quiz set editor (Bui).
   const stop = (e: React.MouseEvent) => e.stopPropagation()
+  void onClick // kept in props for future editor wiring
 
   return (
     <>
       <div
-        role="button"
-        tabIndex={0}
-        onClick={handleCardClick}
-        onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleCardClick() } }}
         data-testid="quiz-set-list-card"
         data-status={qs.publishStatus}
         style={{
@@ -199,7 +193,6 @@ export default function QuizSetListCard({
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
-          cursor: 'pointer',
           transition: 'all 0.2s',
         }}
       >
