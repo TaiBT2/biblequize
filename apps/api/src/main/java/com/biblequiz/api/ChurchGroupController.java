@@ -1098,6 +1098,9 @@ public class ChurchGroupController {
                     Room.QuestionSource.CUSTOM, null);
             room.setCustomQuestionIds(questionIds);
             room.setGroupQuizSetId(setId);
+            // V55: mark as co-play so the group's "Đang diễn ra" surface picks it up.
+            // Members can join via the group page without needing the room code.
+            room.setCoPlay(true);
             roomRepository.save(room);
 
             Map<String, Object> roomInfo = new LinkedHashMap<>();
@@ -1239,6 +1242,7 @@ public class ChurchGroupController {
                 m.put("maxPlayers", r.getMaxPlayers());
                 m.put("quizSetId", r.getGroupQuizSetId());
                 m.put("quizSetName", qsNames.get(r.getGroupQuizSetId()));
+                m.put("isCoPlay", r.isCoPlay());
                 m.put("createdAt", r.getCreatedAt());
                 return m;
             }).collect(Collectors.toList());

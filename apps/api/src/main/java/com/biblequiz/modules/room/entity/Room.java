@@ -73,6 +73,13 @@ public class Room {
     @Column(name = "host_plays_game", nullable = false)
     private boolean hostPlaysGame = true;
 
+    // "Chơi cùng nhau" co-play flag (V55). TRUE = phòng do leader tạo qua
+    // POST /api/groups/{id}/quiz-sets/{setId}/play, surface trong group
+    // "Đang diễn ra" để mọi member thấy. FALSE = phòng SPEED_RACE thông
+    // thường hoặc historical /play rooms (legacy "Tự ôn solo").
+    @Column(name = "is_co_play", nullable = false)
+    private boolean isCoPlay = false;
+
     @Column(name = "started_at")
     private LocalDateTime startedAt;
 
@@ -202,4 +209,7 @@ public LocalDateTime getCreatedAt() { return createdAt; }
 
     public boolean isHostPlaysGame() { return hostPlaysGame; }
     public void setHostPlaysGame(boolean hostPlaysGame) { this.hostPlaysGame = hostPlaysGame; }
+
+    public boolean isCoPlay() { return isCoPlay; }
+    public void setCoPlay(boolean coPlay) { this.isCoPlay = coPlay; }
 }

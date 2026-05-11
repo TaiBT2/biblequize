@@ -50,12 +50,15 @@ public interface RoomRepository extends JpaRepository<Room, String> {
     @Query("SELECT r FROM Room r WHERE r.isPublic = true AND r.status IN ('LOBBY', 'IN_PROGRESS') ORDER BY r.createdAt DESC")
     List<Room> findPublicLobbyRooms();
 
-    // Tìm các phòng "Chơi cùng nhau" (GROUP_LIVE_SEQUENTIAL) còn active của 1 group.
-    // Loại bỏ phòng SPEED_RACE từ "Tự ôn solo" để member không click nhầm.
+    // Tìm các phòng co-play còn active của 1 group:
+    //   - mode GROUP_LIVE_SEQUENTIAL (legacy "Chơi cùng nhau" Quản trò) — VÀ
+    //   - mode SPEED_RACE có is_co_play=true (V55, "Chơi cùng nhau" từ QuizSetListCard).
+    // KHÔNG bao gồm SPEED_RACE rooms cũ (is_co_play=false) — đó là historical
+    // "Tự ôn solo" rooms, không nên surface cho cả group.
     @Query("SELECT r FROM Room r WHERE r.groupQuizSetId IN " +
            "(SELECT gqs.id FROM GroupQuizSet gqs WHERE gqs.group.id = :groupId) " +
            "AND r.status IN ('LOBBY', 'IN_PROGRESS') " +
-           "AND r.mode = 'GROUP_LIVE_SEQUENTIAL' " +
+           "AND (r.mode = 'GROUP_LIVE_SEQUENTIAL' OR r.isCoPlay = true) " +
            "ORDER BY r.createdAt DESC")
     List<Room> findActiveRoomsForGroup(@Param("groupId") String groupId);
 
