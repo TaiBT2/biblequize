@@ -28,8 +28,12 @@ interface Props {
   qs: QuizSet
   myRole: Role
   isMember: boolean
-  onPlayCoPlay?: (qs: QuizSet) => void  // wired in P2.4; here disabled placeholder
-  onSchedule?: (qs: QuizSet) => void    // wired in scheduled-mode prompt; here disabled placeholder
+  /** Live co-play room cho quiz set này — nếu có, member thấy CTA "Tham gia". */
+  activeCoPlayRoom?: { id: string; roomCode: string; currentPlayers?: number; maxPlayers?: number } | null
+  /** Active scheduled session cho quiz set này — fallback nếu không có live room. */
+  activeSchedule?: { id: string; deadline?: string } | null
+  onPlayCoPlay?: (qs: QuizSet) => void
+  onSchedule?: (qs: QuizSet) => void
   onEditDraft?: (qs: QuizSet) => void
   onDeleteDraft?: (qs: QuizSet) => void
   onUnarchive?: (qs: QuizSet) => void
@@ -93,6 +97,7 @@ function formatRelative(iso?: string | null): string {
 
 export default function QuizSetListCard({
   groupId, qs, myRole, isMember,
+  activeCoPlayRoom, activeSchedule,
   onPlayCoPlay: _onPlayCoPlay, onSchedule: _onSchedule,
   onEditDraft, onDeleteDraft, onUnarchive,
   onClick,
@@ -368,21 +373,22 @@ export default function QuizSetListCard({
             background: isDraft ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.15)',
           }}
         >
-          {isPublished && (
+          {isPublished && isLeader && (
+            // Leader/Mod: full action set — Chơi cùng nhau + Đặt lịch + Chơi solo.
             <>
               <button
                 type="button"
-                disabled={!isMember || coPlayBusy}
+                disabled={coPlayBusy}
                 onClick={handleCoPlay}
-                title={isMember ? 'Tạo phòng chơi cùng nhóm (Speed Race)' : 'Chỉ thành viên nhóm mới chơi được'}
+                title="Tạo phòng chơi cùng nhóm (Speed Race)"
                 aria-label="Chơi cùng nhau"
                 data-testid="btn-coplay"
                 style={{
                   flex: 1, background: HEX.gold, color: HEX.navy, border: 'none',
                   padding: '11px 14px', borderRadius: 10,
                   fontWeight: 700, fontSize: 14,
-                  cursor: (!isMember || coPlayBusy) ? 'not-allowed' : 'pointer',
-                  opacity: (!isMember || coPlayBusy) ? 0.6 : 1,
+                  cursor: coPlayBusy ? 'not-allowed' : 'pointer',
+                  opacity: coPlayBusy ? 0.6 : 1,
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
                   fontFamily: 'inherit',
                 }}
@@ -408,6 +414,101 @@ export default function QuizSetListCard({
               />
             </>
           )}
+
+          {isPublished && !isLeader && (() => {
+            // Member view: chỉ "Tự ôn solo" là default; nếu có live co-play
+            // room hoặc scheduled session thì primary CTA đổi thành "Tham gia".
+            if (activeCoPlayRoom) {
+              return (
+                <>
+                  <button
+                    type="button"
+                    onClick={e => { stop(e); navigate(`/room/${activeCoPlayRoom.id}/lobby`) }}
+                    title="Tham gia trận đấu đang diễn ra"
+                    aria-label="Tham gia trận đấu"
+                    data-testid="btn-join-live"
+                    style={{
+                      flex: 1, background: HEX.green, color: HEX.navy, border: 'none',
+                      padding: '11px 14px', borderRadius: 10,
+                      fontWeight: 700, fontSize: 14, cursor: 'pointer',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                      fontFamily: 'inherit',
+                    }}
+                  >
+                    <span className="material-symbols-outlined" style={{ fontSize: 18 }}>play_arrow</span>
+                    Tham gia
+                    {activeCoPlayRoom.currentPlayers != null && activeCoPlayRoom.maxPlayers != null && (
+                      <span style={{ fontSize: 12, fontWeight: 600, opacity: 0.85 }}>
+                        ({activeCoPlayRoom.currentPlayers}/{activeCoPlayRoom.maxPlayers})
+                      </span>
+                    )}
+                  </button>
+                  <IconButton
+                    title={hasPlayed ? 'Chơi lại solo' : 'Tự ôn solo'}
+                    aria-label={hasPlayed ? 'Chơi lại solo' : 'Tự ôn solo'}
+                    icon={hasPlayed ? 'refresh' : 'person'}
+                    onClick={handleSoloClick}
+                    disabled={!isMember}
+                    data-testid="btn-solo"
+                  />
+                </>
+              )
+            }
+            if (activeSchedule) {
+              return (
+                <>
+                  <button
+                    type="button"
+                    onClick={e => { stop(e); navigate(`/groups/${groupId}/scheduled-quizzes/${activeSchedule.id}`) }}
+                    title="Tham gia lịch quiz này"
+                    aria-label="Tham gia lịch quiz"
+                    data-testid="btn-join-schedule"
+                    style={{
+                      flex: 1, background: HEX.blue, color: '#fff', border: 'none',
+                      padding: '11px 14px', borderRadius: 10,
+                      fontWeight: 700, fontSize: 14, cursor: 'pointer',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                      fontFamily: 'inherit',
+                    }}
+                  >
+                    <span className="material-symbols-outlined" style={{ fontSize: 18 }}>how_to_reg</span>
+                    Tham gia lịch
+                  </button>
+                  <IconButton
+                    title={hasPlayed ? 'Chơi lại solo' : 'Tự ôn solo'}
+                    aria-label={hasPlayed ? 'Chơi lại solo' : 'Tự ôn solo'}
+                    icon={hasPlayed ? 'refresh' : 'person'}
+                    onClick={handleSoloClick}
+                    disabled={!isMember}
+                    data-testid="btn-solo"
+                  />
+                </>
+              )
+            }
+            // Default member view: full-width solo replay CTA.
+            return (
+              <button
+                type="button"
+                onClick={handleSoloClick}
+                disabled={!isMember}
+                title={hasPlayed ? 'Chơi lại solo' : 'Tự ôn solo'}
+                aria-label={hasPlayed ? 'Chơi lại solo' : 'Tự ôn solo'}
+                data-testid="btn-solo"
+                style={{
+                  flex: 1, background: HEX.gold, color: HEX.navy, border: 'none',
+                  padding: '11px 14px', borderRadius: 10,
+                  fontWeight: 700, fontSize: 14,
+                  cursor: !isMember ? 'not-allowed' : 'pointer',
+                  opacity: !isMember ? 0.6 : 1,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                  fontFamily: 'inherit',
+                }}
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: 18 }}>{hasPlayed ? 'refresh' : 'person'}</span>
+                {hasPlayed ? 'Chơi lại solo' : 'Tự ôn solo'}
+              </button>
+            )
+          })()}
           {isDraft && isLeader && (
             <>
               <button

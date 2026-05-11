@@ -56,50 +56,100 @@ describe('QuizSetListCard', () => {
     getMyAttemptsMock.mockResolvedValue(emptyMastery)
   })
 
-  it('renders PUBLISHED card with title, status badge, stats, and 3 action buttons', async () => {
+  it('leader view: PUBLISHED card shows co-play + schedule + solo buttons', async () => {
     const qs = buildQuizSet()
-    render(<MemoryRouter><QuizSetListCard groupId="g-1" qs={qs} myRole="MEMBER" isMember /></MemoryRouter>)
+    render(<MemoryRouter><QuizSetListCard groupId="g-1" qs={qs} myRole="LEADER" isMember /></MemoryRouter>)
     expect(screen.getByText('Sáng Thế Ký · Chương 1')).toBeInTheDocument()
     expect(screen.getByText('Đã xuất bản')).toBeInTheDocument()
     expect(screen.getByTestId('btn-coplay')).toBeInTheDocument()
     expect(screen.getByTestId('btn-schedule')).toBeInTheDocument()
     expect(screen.getByTestId('btn-solo')).toBeInTheDocument()
-    expect(screen.getByText(/12 lượt chơi/)).toBeInTheDocument()
   })
 
-  it('co-play button is enabled for member on PUBLISHED set', () => {
+  it('member view (default): shows only solo CTA, no co-play/schedule buttons', () => {
     render(<MemoryRouter><QuizSetListCard groupId="g-1" qs={buildQuizSet()} myRole="MEMBER" isMember /></MemoryRouter>)
-    const btn = screen.getByTestId('btn-coplay')
-    expect(btn).not.toBeDisabled()
+    expect(screen.getByTestId('btn-solo')).toBeInTheDocument()
+    expect(screen.queryByTestId('btn-coplay')).toBeNull()
+    expect(screen.queryByTestId('btn-schedule')).toBeNull()
+    expect(screen.queryByTestId('btn-join-live')).toBeNull()
+    expect(screen.queryByTestId('btn-join-schedule')).toBeNull()
   })
 
-  it('co-play button is disabled for non-members (defense in depth)', () => {
+  it('member view with live co-play room: shows "Tham gia" CTA → navigate to lobby', async () => {
     render(
       <MemoryRouter>
-        <QuizSetListCard groupId="g-1" qs={buildQuizSet()} myRole={null} isMember={false} />
+        <QuizSetListCard
+          groupId="g-1"
+          qs={buildQuizSet()}
+          myRole="MEMBER"
+          isMember
+          activeCoPlayRoom={{ id: 'room-77', roomCode: 'XYZ789', currentPlayers: 2, maxPlayers: 8 }}
+        />
       </MemoryRouter>
     )
-    expect(screen.getByTestId('btn-coplay')).toBeDisabled()
+    const btn = screen.getByTestId('btn-join-live')
+    expect(btn).toBeInTheDocument()
+    expect(btn).toHaveTextContent(/Tham gia/)
+    expect(btn).toHaveTextContent(/2\/8/)
+    expect(screen.queryByTestId('btn-coplay')).toBeNull()
+    fireEvent.click(btn)
+    expect(navigateMock).toHaveBeenCalledWith('/room/room-77/lobby')
   })
 
-  it('clicking co-play calls /play endpoint and navigates to /room/{id}/lobby', async () => {
+  it('member view with active schedule (no live room): shows "Tham gia lịch" CTA', () => {
+    render(
+      <MemoryRouter>
+        <QuizSetListCard
+          groupId="g-1"
+          qs={buildQuizSet()}
+          myRole="MEMBER"
+          isMember
+          activeSchedule={{ id: 'sch-1', deadline: '2026-05-15T19:00:00Z' }}
+        />
+      </MemoryRouter>
+    )
+    const btn = screen.getByTestId('btn-join-schedule')
+    expect(btn).toBeInTheDocument()
+    expect(btn).toHaveTextContent(/Tham gia lịch/)
+    fireEvent.click(btn)
+    expect(navigateMock).toHaveBeenCalledWith('/groups/g-1/scheduled-quizzes/sch-1')
+  })
+
+  it('member view: live room overrides scheduled when both present', () => {
+    render(
+      <MemoryRouter>
+        <QuizSetListCard
+          groupId="g-1"
+          qs={buildQuizSet()}
+          myRole="MEMBER"
+          isMember
+          activeCoPlayRoom={{ id: 'room-99', roomCode: 'AAA' }}
+          activeSchedule={{ id: 'sch-1' }}
+        />
+      </MemoryRouter>
+    )
+    expect(screen.getByTestId('btn-join-live')).toBeInTheDocument()
+    expect(screen.queryByTestId('btn-join-schedule')).toBeNull()
+  })
+
+  it('leader: clicking co-play calls /play endpoint and navigates to /room/{id}/lobby', async () => {
     playQuizSetCoPlayMock.mockResolvedValue({ id: 'room-99', roomCode: 'ABC123', roomName: 'Genesis' })
-    render(<MemoryRouter><QuizSetListCard groupId="g-1" qs={buildQuizSet()} myRole="MEMBER" isMember /></MemoryRouter>)
+    render(<MemoryRouter><QuizSetListCard groupId="g-1" qs={buildQuizSet()} myRole="LEADER" isMember /></MemoryRouter>)
     await act(async () => { fireEvent.click(screen.getByTestId('btn-coplay')) })
     await waitFor(() => expect(playQuizSetCoPlayMock).toHaveBeenCalledWith('g-1', 'qs-1'))
     expect(navigateMock).toHaveBeenCalledWith('/room/room-99/lobby')
   })
 
-  it('shows error toast when /play returns 403 forbidden', async () => {
+  it('leader: shows error toast when /play returns 403 forbidden', async () => {
     playQuizSetCoPlayMock.mockRejectedValue({ response: { data: { message: 'Bạn không phải thành viên của nhóm' } } })
-    render(<MemoryRouter><QuizSetListCard groupId="g-1" qs={buildQuizSet()} myRole="MEMBER" isMember /></MemoryRouter>)
+    render(<MemoryRouter><QuizSetListCard groupId="g-1" qs={buildQuizSet()} myRole="LEADER" isMember /></MemoryRouter>)
     await act(async () => { fireEvent.click(screen.getByTestId('btn-coplay')) })
     await waitFor(() => expect(screen.getByTestId('coplay-error')).toBeInTheDocument())
     expect(screen.getByTestId('coplay-error')).toHaveTextContent('Bạn không phải thành viên của nhóm')
   })
 
-  it('schedule icon button is disabled with the schedule-coming-soon tooltip', () => {
-    render(<MemoryRouter><QuizSetListCard groupId="g-1" qs={buildQuizSet()} myRole="MEMBER" isMember /></MemoryRouter>)
+  it('leader: schedule icon button is disabled with the schedule-coming-soon tooltip', () => {
+    render(<MemoryRouter><QuizSetListCard groupId="g-1" qs={buildQuizSet()} myRole="LEADER" isMember /></MemoryRouter>)
     const btn = screen.getByTestId('btn-schedule')
     expect(btn).toBeDisabled()
     expect(btn).toHaveAttribute('title', 'Tính năng đặt lịch sắp ra mắt')

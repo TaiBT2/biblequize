@@ -8,6 +8,8 @@ import GroupActivityTab from '../components/group/GroupActivityTab';
 import GroupAnalyticsTab from '../components/group/GroupAnalyticsTab';
 import GroupCodeModal from '../components/group/GroupCodeModal';
 import QuizSetCard from '../components/group/QuizSetCard';
+import QuizSetListCard from '../components/group/QuizSetListCard';
+import type { QuizSet as ApiQuizSet, PublishStatus, QuizSetDifficulty } from '../api/quizSets';
 
 interface Member {
   userId: string;
@@ -1560,33 +1562,48 @@ const GroupDetail: React.FC = () => {
               )}
             </div>
           ) : (
-            // Grid of mockup-aligned cards (MOCKUP_QUIZ_SET_V2_PROFESSIONAL_DESKTOP.html
-            // .quiz-card section). Each card is a clickable surface that
-            // navigates to QuizSetDetail where the play / schedule / solo
-            // actions live; this de-clutters the list view per mockup intent.
+            // Grid of redesigned cards per MOCKUP_QUIZSET_CARDS.html — 3-section
+            // glass card (header strip / body / actions footer), state-aware
+            // CTA row, solo replay live + co-play wired (P1.3/P2.4).
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {quizSets.map((qs) => (
-                <QuizSetCard
-                  key={qs.id}
-                  quizSet={{
-                    id: qs.id,
-                    name: qs.name,
-                    questionCount: qs.questionCount,
-                    createdAt: qs.createdAt,
-                    coverImageUrl: qs.coverImageUrl,
-                    coverScripture: qs.coverScripture,
-                    difficulty: qs.difficulty,
-                    estimatedDurationMin: qs.estimatedDurationMin,
-                    suggestedMode: qs.suggestedMode,
-                    playCount: qs.playCount,
-                    averageRating: qs.averageRating,
-                    totalRatings: qs.totalRatings,
-                    publishStatus: qs.publishStatus,
-                    inUseByScheduled: activeScheduled.some((sq) => sq.quizSetId === qs.id),
-                  }}
-                  onClick={() => navigate(`/groups/${id}/quiz-sets/${qs.id}`)}
-                />
-              ))}
+              {quizSets.map((qs) => {
+                const liveRoom = activeRooms.find(r => r.quizSetId === qs.id);
+                const liveSchedule = activeScheduled.find(s => s.quizSetId === qs.id);
+                return (
+                  <QuizSetListCard
+                    key={qs.id}
+                    groupId={id!}
+                    qs={{
+                      id: qs.id,
+                      groupId: id!,
+                      name: qs.name,
+                      questionIds: qs.questionIds ?? [],
+                      totalQuestions: qs.questionCount,
+                      createdBy: '',
+                      createdAt: qs.createdAt,
+                      language: 'vi',
+                      coverImageUrl: qs.coverImageUrl ?? null,
+                      coverScripture: qs.coverScripture ?? null,
+                      difficulty: (qs.difficulty as QuizSetDifficulty | null) ?? null,
+                      estimatedDurationMin: qs.estimatedDurationMin ?? null,
+                      suggestedMode: (qs.suggestedMode as ApiQuizSet['suggestedMode']) ?? null,
+                      playCount: qs.playCount ?? 0,
+                      averageRating: qs.averageRating ?? null,
+                      totalRatings: qs.totalRatings ?? 0,
+                      publishStatus: (qs.publishStatus as PublishStatus) ?? 'PUBLISHED',
+                    }}
+                    myRole={(myRole as 'LEADER' | 'MOD' | 'MEMBER' | undefined) ?? null}
+                    isMember={!!myRole}
+                    activeCoPlayRoom={liveRoom ? {
+                      id: liveRoom.id,
+                      roomCode: liveRoom.roomCode,
+                      currentPlayers: liveRoom.currentPlayers,
+                      maxPlayers: liveRoom.maxPlayers,
+                    } : null}
+                    activeSchedule={liveSchedule ? { id: liveSchedule.id, deadline: liveSchedule.deadline } : null}
+                  />
+                );
+              })}
             </div>
           )}
         </>
