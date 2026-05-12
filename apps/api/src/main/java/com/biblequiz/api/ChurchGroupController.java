@@ -1087,15 +1087,17 @@ public class ChurchGroupController {
             }
 
             // Per spec v1.1 §7.5: each click creates a new room — no dedup.
-            // Two members clicking "Tự ôn" must NOT be merged into one lobby
-            // (solo intent ≠ multiplayer race). GFA-17 will refactor this to
-            // a Practice session entirely; for now keep SPEED_RACE per-click.
+            // Co-play group rooms always run in Quản trò (host-organizer) mode
+            // per Bui decision 2026-05-12: nhất quán với UX multiplayer, leader
+            // điều phối thay vì vừa host vừa thi đấu. Lobby min = 2 non-host
+            // players, đẩy "host solo" về flow Tự ôn riêng.
             Room room = roomService.createRoom(
                     gqs.getName(), user,
                     8, questionIds.size(), 15,
                     Room.RoomMode.SPEED_RACE, false,
                     Room.RoomDifficulty.MIXED, "ALL",
-                    Room.QuestionSource.CUSTOM, null);
+                    Room.QuestionSource.CUSTOM, null,
+                    Boolean.FALSE);  // hostPlaysGame = false → Quản trò
             room.setCustomQuestionIds(questionIds);
             room.setGroupQuizSetId(setId);
             // V55: mark as co-play so the group's "Đang diễn ra" surface picks it up.
