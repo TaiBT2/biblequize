@@ -277,17 +277,18 @@ Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/ve
 | GET | `/api/admin/ai/info` | Provider config + quota usage | `AIAdminController.java:52` |
 | POST | `/api/admin/ai/generate` | Generate questions | `AIAdminController.java:76` |
 
-### 7.3 Provider support (verified)
-- **Gemini** (default): config `gemini.api-key` + `gemini.model` (default `gemini-2.5-flash` per `application.yml:115-117`; service code default fallback `gemini-2.0-flash` `AIGenerationService.java:32`). Single request asks for all `count` questions to avoid rate limit.
-- **Claude (Anthropic)**: config `anthropic.api-key` + `anthropic.model` (default `claude-haiku-4-5-20251001`). Multi-model parallel: caller có thể pass `claudeModels=[modelId1, modelId2, "auto"]`. `auto` resolves to model-by-difficulty (Sonnet 4.6 cho hard/medium, Haiku cho easy — `AIGenerationService.java:122-129`).
-- **Mock fallback**: nếu cả 2 providers đều chưa configured → trả mock data với cảnh báo prefix `⚠️ Đây là dữ liệu mô phỏng` để debug FE.
+### 7.3 Provider support (BL-AD-7, verified 2026-05-12)
+- **DeepSeek V3.2** (default): via AWS Bedrock region `ap-northeast-1` (Tokyo). Config block `biblequiz.ai.bedrock.{enabled,region,model-id,max-tokens,temperature}`. Credentials via `DefaultCredentialsProvider` chain — IAM role in prod, env vars / AWS profile for dev. Conditional bean (`BedrockDeepSeekProvider`); disable with `biblequiz.ai.bedrock.enabled=false`.
+- **Gemini** (fallback): config `gemini.api-key` + `gemini.model` (default `gemini-2.5-flash`). Single request asks for all `count` questions to avoid rate limit.
+- **Claude (Anthropic)** (fallback): config `anthropic.api-key` + `anthropic.model` (default `claude-haiku-4-5-20251001`). Multi-model parallel: caller có thể pass `claudeModels=[modelId1, modelId2, "auto"]`. `auto` resolves to model-by-difficulty (Sonnet 4.6 cho hard/medium, Haiku cho easy).
+- **Routing:** `AIProviderRouter` injects all three; in `auto` mode tries default → fallback chain; explicit provider name (`deepseek`/`gemini`/`claude`) does NOT fallback (admin must retry on failure).
+- **Mock fallback**: nếu cả 3 providers đều chưa configured → trả mock data với cảnh báo prefix `⚠️ Đây là dữ liệu mô phỏng` để debug FE.
 
-### 7.4 Quota
-- **Daily quota:** `200 questions / admin / day` (UTC reset). Tracking in-memory `ConcurrentHashMap<adminId, AtomicInteger>`, reset khi `LocalDate.now(UTC)` thay đổi (`AIAdminController.java:38-45`).
-- **Cost alert:** `$10.00 / day` (constant; chưa wire actual cost tracking).
-- Vượt quota → HTTP 429 `{ error: "QUOTA_EXCEEDED", message, used, limit }`.
-
-> ⚠️ Quota state in-memory — restart server reset counter; không có DB persistence. Backlog: persist quota table hoặc Redis counter.
+### 7.4 Quota (BL-AD-7)
+- **Daily quota:** `200 questions / day` — **SHARED GLOBALLY** across admin + group leaders (D5). Counter: Redis `ai:quota:{yyyy-MM-dd}` (UTC), TTL 25h. Reset is implicit: a new UTC date uses a new key.
+- **Fail-open:** if Redis is unreachable, `AIQuotaService.tryAcquire` returns `true` so dev/CI flows still work (logs WARN).
+- **Cost alert:** `$10.00 / day` (constant; cost tracking deferred to follow-up).
+- Vượt quota → HTTP 429 `{ error: "QUOTA_EXCEEDED", message, used, limit, remaining }`.
 
 ### 7.5 Request shape (`AIGenerationRequest`)
 ```
@@ -298,7 +299,7 @@ Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/ve
   language:     "vi" | "en",
   count:        1..20,
   customPrompt: string?,             // ghi chú bổ sung gửi vào prompt
-  provider:     "gemini" | "claude",
+  provider:     "auto" | "deepseek" | "gemini" | "claude",  // omit / "auto" → router default+fallback
   claudeModels: ["auto"] | string[]  // chỉ dùng khi provider=claude
 }
 ```
@@ -308,7 +309,7 @@ Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/ve
 {
   jobId:      "<provider>-job-<timestamp>",
   status:     "completed",
-  provider:   "gemini" | "claude",
+  provider:   "deepseek" | "gemini" | "claude",
   count:      <actual returned>,
   questions:  [ { content, type, difficulty, language, options, correctAnswer, explanation, book, chapter, verseStart, verseEnd, tags, source, _generatedBy? } ],
   quotaUsed:  <int>,

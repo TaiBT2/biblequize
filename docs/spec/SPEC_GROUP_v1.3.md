@@ -621,6 +621,29 @@ UI hiển thị mastery progress trên detail page:
 
 **Import/Export** (defer Sprint 6): JSON/CSV để backup hoặc share offline.
 
+### 6.A Group AI Question Generation (BL-AD-7, 2026-05-12)
+
+LEADER/MOD có thể dùng AI để tạo draft câu hỏi cho quiz set của nhóm.
+
+**Endpoint:** `POST /api/groups/{id}/ai-generate` (`ChurchGroupController.java:932+`).
+
+**Workflow:**
+1. LEADER/MOD mở modal "Tạo bộ câu hỏi mới" → tab "AI Tạo".
+2. Nhập: tên bộ, sách Kinh Thánh, chương, câu, chủ đề, số câu (1-15), độ khó.
+3. Submit → BE calls `AIProviderRouter` với default provider (DeepSeek V3.2 via Bedrock).
+4. Drafts trả về inline trong modal → leader review/edit.
+5. Leader bấm "Lưu bộ câu hỏi" → `POST /api/groups/{id}/quiz-sets/custom` với `source='group-custom', isActive=false`.
+
+**Không có:**
+- Model selector — group leader luôn dùng default provider (D3); selector chỉ admin thấy ở `/admin/ai-generator`.
+- Admin review queue — drafts đi thẳng vào quiz set của nhóm (D4). Leader chịu trách nhiệm verify chất lượng.
+
+**Quota:** Cùng pool 200/day shared globally với admin (D5; xem SPEC_ADMIN §7.4). Vượt → HTTP 429 với toast "Đã đạt giới hạn AI hôm nay. Vui lòng thử lại ngày mai."
+
+**Permission:** Chỉ LEADER hoặc MOD của nhóm đó (`requireLeaderOrMod`). MEMBER → 403.
+
+**Response:** `{ success: true, questions: [...], provider: "deepseek" }` (provider field surfaced cho debug/audit; FE không hiển thị).
+
 ### 6.5 Edge cases
 
 - **Quiz set bị archive khi live room đang dùng** → tiếp tục bình thường (đã load vào memory)

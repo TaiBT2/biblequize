@@ -1,6 +1,6 @@
 # BACKLOG — Code Gaps vs Canonical Spec
 
-**Last updated:** 2026-05-09
+**Last updated:** 2026-05-12
 **Purpose:** Mọi điểm code chưa khớp canonical spec (SPEC_USER_v3.1 / SPEC_ADMIN_v3.1 / SPEC_GROUP_v1.2 / SPEC_MULTIPLAYER) hoặc tech debt cần fix.
 
 > **Quy tắc:** Mỗi item có ID `BL-N`, status, owner placeholder, references. Khi fix xong → đánh ✅ DONE + ghi commit hash + xoá item sau 1 sprint.
@@ -354,6 +354,20 @@
 - **Issue:** 3 FE pages ship functional baseline với inline Tailwind. Mockup `docs/mockups/MOCKUP_QUIZ_SET_V2_PROFESSIONAL.html` có chi tiết design tokens (Be Vietnam Pro 800/900, gradient cards, exact spacing) chưa được apply.
 - **Cần làm:** Stitch sync workflow — verify mockup, refine spacing/typography/animations.
 - **Status:** ✅ DONE 2026-05-10
+
+### BL-AD-7 — DeepSeek V3.2 Bedrock integration
+- **Issue:** Add DeepSeek V3.2 (AWS Bedrock, ap-northeast-1 Tokyo) as default AI provider, with Gemini + Claude as fallbacks. Refactor in-memory per-admin quota → Redis shared-global quota (admin + group leaders).
+- **Spec impact:** SPEC_ADMIN §7.3, §7.4, §7.5, §7.6 (updated inline); SPEC_GROUP §6.A new (Group AI Question Generation).
+- **Decisions locked (D1-D6):** see `docs/prompts/PROMPT_DEEPSEEK_BEDROCK_INTEGRATION.md`.
+- **Delivered:**
+  - `AIProvider` interface + 3 implementations (BedrockDeepSeek, Gemini, Claude wrappers).
+  - `AIProviderRouter` with auto + explicit modes (auto = default→fallback chain; explicit = no fallback).
+  - `AIQuotaService` Redis-backed shared global 200/day, fail-open on Redis errors.
+  - Admin AI Generator FE: 3-tab selector with DeepSeek "DEFAULT" badge.
+  - Group leader `/ai-generate` endpoint wired through router + shared quota guard.
+  - 30 new unit/integration tests; pre-existing FE baseline failures (Ranked, DailyChallenge) untouched.
+- **Deferred follow-up:** `AuditLogService` integration (`ai.generate.deepseek`, `ai.fallback.triggered`, `group.ai_generate`); cost tracking; CloudWatch monthly-spend alarm; manual verify Bedrock pricing constants before prod.
+- **Status:** ✅ DONE 2026-05-12 — commits `d4f2f42` (Phase B BE), `c88d465` (Phase C FE), `1a2980a` (Phase D tests).
 
 ---
 
