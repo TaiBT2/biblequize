@@ -1,6 +1,11 @@
 package com.biblequiz.api;
 
 import com.biblequiz.modules.adminai.AIGenerationService;
+import com.biblequiz.modules.adminai.provider.AIGenerationContext;
+import com.biblequiz.modules.adminai.provider.AIGenerationResult;
+import com.biblequiz.modules.adminai.provider.AIProviderException;
+import com.biblequiz.modules.adminai.provider.AIProviderRouter;
+import com.biblequiz.modules.adminai.quota.AIQuotaService;
 import com.biblequiz.modules.group.entity.ChurchGroup;
 import com.biblequiz.modules.group.entity.GroupMember;
 import com.biblequiz.modules.group.entity.GroupQuizSet;
@@ -66,6 +71,12 @@ public class ChurchGroupController {
 
     @Autowired
     private AIGenerationService aiGenerationService;
+
+    @Autowired
+    private AIProviderRouter aiProviderRouter;
+
+    @Autowired
+    private AIQuotaService aiQuotaService;
 
     @Autowired
     private UserRepository userRepository;
@@ -937,7 +948,6 @@ public class ChurchGroupController {
 
             String book = (String) body.getOrDefault("book", "John");
             int chapter = body.get("chapter") instanceof Number n ? n.intValue() : 1;
-            int chapterEnd = body.get("chapterEnd") instanceof Number n ? n.intValue() : chapter;
             int verseStart = body.get("verseStart") instanceof Number n ? n.intValue() : 1;
             int verseEnd = body.get("verseEnd") instanceof Number n ? n.intValue() : 50;
             String topic = (String) body.getOrDefault("topic", "");
@@ -945,14 +955,34 @@ public class ChurchGroupController {
             String difficulty = (String) body.getOrDefault("difficulty", "MEDIUM");
             String language = (String) body.getOrDefault("language", "vi");
 
-            List<Map<String, Object>> drafts = aiGenerationService.generate(
+            // Shared global quota (D5): admin + group leaders combined.
+            if (!aiQuotaService.tryAcquire(count)) {
+                AIQuotaService.Usage usage = aiQuotaService.snapshot();
+                return ResponseEntity.status(429).body(Map.of(
+                        "success", false,
+                        "error", "QUOTA_EXCEEDED",
+                        "message", "Đã đạt giới hạn AI hôm nay. Vui lòng thử lại ngày mai.",
+                        "used", usage.used(),
+                        "limit", usage.limit(),
+                        "remaining", usage.remaining()
+                ));
+            }
+
+            // Group leader always uses default provider (D3) — no model selector visible.
+            AIGenerationContext ctx = AIGenerationContext.of(
                     book, chapter, verseStart, verseEnd,
                     difficulty, "MULTIPLE_CHOICE", language,
                     count, null, topic.isBlank() ? null : topic);
+            AIGenerationResult result = aiProviderRouter.generate(ctx, null /* auto */);
 
-            return ResponseEntity.ok(Map.of("success", true, "questions", drafts));
+            return ResponseEntity.ok(Map.of(
+                    "success", true,
+                    "questions", result.questions(),
+                    "provider", result.providerUsed()));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (AIProviderException e) {
+            return ResponseEntity.internalServerError().body(Map.of("success", false, "message", e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }

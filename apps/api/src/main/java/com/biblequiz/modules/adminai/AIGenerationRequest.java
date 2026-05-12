@@ -24,10 +24,11 @@ public record AIGenerationRequest(
     private static final Set<String> VALID_TYPES = Set.of(
             "multiple_choice_single", "multiple_choice_multi", "true_false", "fill_in_blank");
     private static final Set<String> VALID_LANGUAGES = Set.of("vi", "en");
-    private static final Set<String> VALID_PROVIDERS = Set.of("gemini", "claude");
+    private static final Set<String> VALID_PROVIDERS = Set.of("deepseek", "gemini", "claude", "auto");
 
     public String validProvider() {
-        return VALID_PROVIDERS.contains(provider) ? provider : "gemini";
+        if (provider == null || provider.isBlank()) return "auto";
+        return VALID_PROVIDERS.contains(provider) ? provider : "auto";
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)

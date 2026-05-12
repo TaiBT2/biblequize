@@ -1,5 +1,10 @@
 package com.biblequiz.modules.adminai;
 
+import com.biblequiz.modules.adminai.provider.AIGenerationContext;
+import com.biblequiz.modules.adminai.provider.AIGenerationResult;
+import com.biblequiz.modules.adminai.provider.AIProviderException;
+import com.biblequiz.modules.adminai.provider.AIProviderRouter;
+import com.biblequiz.modules.adminai.quota.AIQuotaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -7,13 +12,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.ZoneOffset;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
 @RequestMapping(path = "/api/admin/ai", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -22,26 +24,18 @@ public class AIAdminController {
 
     private static final Logger log = LoggerFactory.getLogger(AIAdminController.class);
 
-    private static final int DAILY_QUOTA = 200;
     private static final double COST_ALERT_USD = 10.0;
 
     private final AIGenerationService aiGenerationService;
+    private final AIProviderRouter providerRouter;
+    private final AIQuotaService quotaService;
 
-    // In-memory daily quota tracking (reset on new UTC day)
-    private final ConcurrentHashMap<String, AtomicInteger> dailyQuota = new ConcurrentHashMap<>();
-    private volatile LocalDate quotaDate = LocalDate.now(ZoneOffset.UTC);
-
-    public AIAdminController(AIGenerationService aiGenerationService) {
+    public AIAdminController(AIGenerationService aiGenerationService,
+                             AIProviderRouter providerRouter,
+                             AIQuotaService quotaService) {
         this.aiGenerationService = aiGenerationService;
-    }
-
-    private AtomicInteger getQuotaCounter(String adminId) {
-        LocalDate today = LocalDate.now(ZoneOffset.UTC);
-        if (!today.equals(quotaDate)) {
-            dailyQuota.clear();
-            quotaDate = today;
-        }
-        return dailyQuota.computeIfAbsent(adminId, k -> new AtomicInteger(0));
+        this.providerRouter = providerRouter;
+        this.quotaService = quotaService;
     }
 
     @GetMapping("/models")
@@ -50,11 +44,16 @@ public class AIAdminController {
     }
 
     @GetMapping("/info")
-    public ResponseEntity<?> info(org.springframework.security.core.Authentication auth) {
-        String adminId = auth != null ? auth.getName() : "unknown";
-        int used = getQuotaCounter(adminId).get();
+    public ResponseEntity<?> info() {
+        AIQuotaService.Usage usage = quotaService.snapshot();
+        boolean deepseekConfigured = providerRouter.findProvider("deepseek")
+                .map(p -> p.isAvailable()).orElse(false);
         return ResponseEntity.ok(Map.of(
                 "providers", Map.of(
+                        "deepseek", Map.of(
+                                "configured", deepseekConfigured,
+                                "model",      "deepseek.v3.2"
+                        ),
                         "gemini", Map.of(
                                 "configured", aiGenerationService.isConfigured(),
                                 "model",      aiGenerationService.getModel()
@@ -64,10 +63,11 @@ public class AIAdminController {
                                 "model",      aiGenerationService.getClaudeModel()
                         )
                 ),
+                "defaultProvider", providerRouter.getDefaultProviderName(),
                 "quotaToday", Map.of(
-                        "used", used,
-                        "limit", DAILY_QUOTA,
-                        "remaining", Math.max(0, DAILY_QUOTA - used)
+                        "used", usage.used(),
+                        "limit", usage.limit(),
+                        "remaining", usage.remaining()
                 ),
                 "costAlert", COST_ALERT_USD
         ));
@@ -76,18 +76,18 @@ public class AIAdminController {
     @PostMapping("/generate")
     public ResponseEntity<?> generate(@RequestBody AIGenerationRequest req,
             org.springframework.security.core.Authentication auth) {
-        // Quota check
-        String adminId = auth != null ? auth.getName() : "unknown";
         int requestCount = req.validCount();
-        AtomicInteger counter = getQuotaCounter(adminId);
-        if (counter.get() + requestCount > DAILY_QUOTA) {
+        if (!quotaService.tryAcquire(requestCount)) {
+            AIQuotaService.Usage usage = quotaService.snapshot();
             return ResponseEntity.status(429).body(Map.of(
                     "error", "QUOTA_EXCEEDED",
-                    "message", "Đã vượt quota " + DAILY_QUOTA + " câu/ngày. Đã dùng: " + counter.get(),
-                    "used", counter.get(),
-                    "limit", DAILY_QUOTA
+                    "message", "Đã vượt quota " + usage.limit() + " câu/ngày. Đã dùng: " + usage.used(),
+                    "used", usage.used(),
+                    "limit", usage.limit(),
+                    "remaining", usage.remaining()
             ));
         }
+
         AIGenerationRequest.ScriptureRef scripture =
                 req.scripture() != null ? req.scripture() : new AIGenerationRequest.ScriptureRef(
                         "Genesis", 1, 1, 1, 1, null);
@@ -99,56 +99,61 @@ public class AIAdminController {
         String t = scripture.text();
         String scriptureText = t != null && !t.isBlank() ? t.trim() : null;
 
-        String difficulty    = req.validDifficulty();
-        String type          = req.validType();
-        String language      = req.validLanguage();
-        int    count         = req.validCount();
-        String customPrompt  = req.sanitizedPrompt();
-        String provider      = req.validProvider();
+        String difficulty   = req.validDifficulty();
+        String type         = req.validType();
+        String language     = req.validLanguage();
+        int    count        = req.validCount();
+        String customPrompt = req.sanitizedPrompt();
+        String provider     = req.validProvider();
+        List<String> claudeModels = req.claudeModels();
 
-        boolean useGemini = "gemini".equals(provider) && aiGenerationService.isConfigured();
-        boolean useClaude = "claude".equals(provider) && aiGenerationService.isClaudeConfigured();
-        java.util.List<String> claudeModels = req.claudeModels();
+        AIGenerationContext ctx = new AIGenerationContext(
+                book, chapter, verseStart, verseEnd,
+                difficulty, type, language, count,
+                scriptureText, customPrompt, claudeModels);
 
-        if (useGemini || useClaude) {
-            try {
-                List<Map<String, Object>> questions = useClaude
-                        ? aiGenerationService.generateWithClaude(book, chapter, verseStart, verseEnd,
-                                difficulty, type, language, count, scriptureText, customPrompt, claudeModels)
-                        : aiGenerationService.generate(book, chapter, verseStart, verseEnd,
-                                difficulty, type, language, count, scriptureText, customPrompt);
-                counter.addAndGet(questions.size());
-                log.info("[AI] Admin {} generated {} questions. Quota: {}/{}", adminId, questions.size(), counter.get(), DAILY_QUOTA);
+        try {
+            AIGenerationResult result = providerRouter.generate(ctx, provider);
+            String adminId = auth != null ? auth.getName() : "unknown";
+            AIQuotaService.Usage usage = quotaService.snapshot();
+            log.info("[AI] Admin {} generated {} questions via {}. Quota: {}/{}",
+                    adminId, result.questions().size(), result.providerUsed(),
+                    usage.used(), usage.limit());
+            return ResponseEntity.ok(Map.of(
+                    "jobId",       result.providerUsed() + "-job-" + System.currentTimeMillis(),
+                    "status",      "completed",
+                    "provider",    result.providerUsed(),
+                    "count",       result.questions().size(),
+                    "questions",   result.questions(),
+                    "quotaUsed",   usage.used(),
+                    "quotaLimit",  usage.limit()
+            ));
+        } catch (AIProviderException e) {
+            log.error("[AI] Generation failed via router: {}", e.getMessage(), e);
+            // Fallback: mock data when no provider is configured (preserves legacy dev UX)
+            if (e.getMessage() != null && e.getMessage().contains("no providers available")) {
+                log.warn("[AI] No providers available — returning mock data");
+                List<Map<String, Object>> questions = new ArrayList<>();
+                for (int i = 0; i < count; i++) {
+                    questions.add(buildMockQuestion(book, chapter, verseStart, verseEnd, difficulty, type, language, i));
+                }
                 return ResponseEntity.ok(Map.of(
-                        "jobId",     provider + "-job-" + System.currentTimeMillis(),
+                        "jobId",     "mock-job-" + System.currentTimeMillis(),
                         "status",    "completed",
-                        "provider",  provider,
                         "count",     questions.size(),
-                        "questions", questions,
-                        "quotaUsed", counter.get(),
-                        "quotaLimit", DAILY_QUOTA
-                ));
-            } catch (Exception e) {
-                log.error("[AI][{}] Generation failed: {}", provider, e.getMessage(), e);
-                return ResponseEntity.internalServerError().body(Map.of(
-                        "error",   "AI_GENERATION_FAILED",
-                        "message", e.getMessage()
+                        "questions", questions
                 ));
             }
+            return ResponseEntity.internalServerError().body(Map.of(
+                    "error",   "AI_GENERATION_FAILED",
+                    "message", e.getMessage()
+            ));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(Map.of(
+                    "error",   "INVALID_PROVIDER",
+                    "message", e.getMessage()
+            ));
         }
-
-        // Fallback: mock data when no provider is configured
-        log.warn("[AI] Provider '{}' not configured — returning mock data", provider);
-        List<Map<String, Object>> questions = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            questions.add(buildMockQuestion(book, chapter, verseStart, verseEnd, difficulty, type, language, i));
-        }
-        return ResponseEntity.ok(Map.of(
-                "jobId",     "mock-job-" + System.currentTimeMillis(),
-                "status",    "completed",
-                "count",     questions.size(),
-                "questions", questions
-        ));
     }
 
     private Map<String, Object> buildMockQuestion(
@@ -194,11 +199,11 @@ public class AIAdminController {
                     : List.of("Option A (mock)", "Option B (mock)", "Option C (mock)", "Option D (mock)");
             correctAnswer = idx % 4;
             explanation = isVi
-                    ? "⚠️ Đây là dữ liệu mô phỏng. Cấu hình gemini.api-key để dùng AI thực."
-                    : "⚠️ This is mock data. Set gemini.api-key to use real AI generation.";
+                    ? "⚠️ Đây là dữ liệu mô phỏng. Cấu hình AI provider để dùng AI thực."
+                    : "⚠️ This is mock data. Configure an AI provider for real generation.";
         }
 
-        var result = new java.util.LinkedHashMap<String, Object>();
+        var result = new LinkedHashMap<String, Object>();
         result.put("content",       content);
         result.put("type",          type);
         result.put("difficulty",    difficulty);

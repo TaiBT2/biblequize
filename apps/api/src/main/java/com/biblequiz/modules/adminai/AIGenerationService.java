@@ -291,6 +291,19 @@ public class AIGenerationService {
         throw new RuntimeException("AI response did not contain a valid JSON array");
     }
 
+    /** Public so other providers (e.g. Bedrock DeepSeek) can reuse the prompt. */
+    public String buildQuestionPrompt(String book, int chapter, int verseStart, int verseEnd,
+                                      String difficulty, String type, String language, int count,
+                                      String scriptureText, String customPrompt) {
+        return buildPrompt(book, chapter, verseStart, verseEnd,
+                difficulty, type, language, count, scriptureText, customPrompt);
+    }
+
+    /** Public so other providers can reuse the JSON-array extraction. */
+    public String extractJsonArrayPublic(String text) {
+        return extractJsonArray(text);
+    }
+
     private String buildPrompt(String book, int chapter, int verseStart, int verseEnd,
                                 String difficulty, String type, String language, int count,
                                 String scriptureText, String customPrompt) {

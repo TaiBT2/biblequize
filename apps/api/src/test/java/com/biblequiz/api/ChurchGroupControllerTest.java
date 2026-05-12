@@ -58,6 +58,12 @@ class ChurchGroupControllerTest extends BaseControllerTest {
     private AIGenerationService aiGenerationService;
 
     @MockBean
+    private com.biblequiz.modules.adminai.provider.AIProviderRouter aiProviderRouter;
+
+    @MockBean
+    private com.biblequiz.modules.adminai.quota.AIQuotaService aiQuotaService;
+
+    @MockBean
     private RoomService roomService;
 
     @MockBean
