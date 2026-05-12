@@ -671,4 +671,66 @@ class ChurchGroupControllerTest extends BaseControllerTest {
                 .andExpect(status().isForbidden())
                 .andExpect(jsonPath("$.success").value(false));
     }
+
+    // ── POST /api/groups/{id}/ai-generate (Phase D approval split) ─────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void groupAiGenerate_leader_quotaOk_returnsDraftsWithProvider() throws Exception {
+        GroupMember leader = new GroupMember();
+        leader.setRole(GroupMember.GroupRole.LEADER);
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.of(leader));
+
+        when(aiQuotaService.tryAcquire(anyInt())).thenReturn(true);
+        when(aiProviderRouter.generate(any(), any())).thenReturn(
+                new com.biblequiz.modules.adminai.provider.AIGenerationResult(
+                        List.of(Map.of("content", "Q1", "options", List.of("A", "B", "C", "D"), "correctAnswer", 0)),
+                        100, 50, "deepseek"));
+
+        String body = "{\"book\":\"John\",\"chapter\":3,\"count\":1,\"difficulty\":\"MEDIUM\"}";
+        mockMvc.perform(post("/api/groups/group-1/ai-generate")
+                        .contentType(MediaType.APPLICATION_JSON).content(body))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.provider").value("deepseek"))
+                .andExpect(jsonPath("$.questions.length()").value(1));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void groupAiGenerate_quotaExhausted_returns429() throws Exception {
+        GroupMember leader = new GroupMember();
+        leader.setRole(GroupMember.GroupRole.LEADER);
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.of(leader));
+
+        when(aiQuotaService.tryAcquire(anyInt())).thenReturn(false);
+        when(aiQuotaService.snapshot()).thenReturn(
+                new com.biblequiz.modules.adminai.quota.AIQuotaService.Usage(200, 200, 0));
+
+        String body = "{\"book\":\"John\",\"chapter\":3,\"count\":5,\"difficulty\":\"MEDIUM\"}";
+        mockMvc.perform(post("/api/groups/group-1/ai-generate")
+                        .contentType(MediaType.APPLICATION_JSON).content(body))
+                .andExpect(status().isTooManyRequests())
+                .andExpect(jsonPath("$.error").value("QUOTA_EXCEEDED"))
+                .andExpect(jsonPath("$.remaining").value(0));
+        // Router must NOT be called when quota is exhausted.
+        verify(aiProviderRouter, never()).generate(any(), any());
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void groupAiGenerate_nonLeader_returns403() throws Exception {
+        // Not a member at all → requireLeaderOrMod throws IllegalArgumentException → 403.
+        when(groupMemberRepository.findByGroupIdAndUserId("group-1", "user-1"))
+                .thenReturn(Optional.empty());
+
+        String body = "{\"book\":\"John\",\"chapter\":3,\"count\":1}";
+        mockMvc.perform(post("/api/groups/group-1/ai-generate")
+                        .contentType(MediaType.APPLICATION_JSON).content(body))
+                .andExpect(status().isForbidden())
+                .andExpect(jsonPath("$.success").value(false));
+        verify(aiQuotaService, never()).tryAcquire(anyInt());
+    }
 }
