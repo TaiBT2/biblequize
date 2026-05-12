@@ -47,7 +47,7 @@ export default function AIQuestionGenerator() {
   const [qType, setQType]             = useState<QuestionType>('multiple_choice_single')
   const [language, setLanguage]       = useState('vi')
   const [count, setCount]             = useState(3)
-  const [provider, setProvider]       = useState<'gemini' | 'claude'>('gemini')
+  const [provider, setProvider]       = useState<'deepseek' | 'gemini' | 'claude'>('deepseek')
   const [claudeModels, setClaudeModels] = useState<string[]>(['auto'])
   const [claudeAutoMode, setClaudeAutoMode] = useState(true)
   const [prompt, setPrompt]           = useState(DEFAULT_PROMPT)
@@ -56,9 +56,11 @@ export default function AIQuestionGenerator() {
   // AI info
   const [aiInfo, setAiInfo] = useState<{
     providers: {
+      deepseek: { configured: boolean; model: string }
       gemini: { configured: boolean; model: string }
       claude: { configured: boolean; model: string }
     }
+    defaultProvider?: string
   } | null>(null)
   useEffect(() => {
     api.get('/api/admin/ai/info').then(r => setAiInfo(r.data)).catch(() => {})
@@ -250,15 +252,17 @@ export default function AIQuestionGenerator() {
           </h2>
           <p className="text-[#d5c4af]/60 text-sm mt-0.5 flex items-center gap-2">
             {t('admin.aiGenerator.subtitle')}
-            {aiInfo && (['gemini', 'claude'] as const).map(p => {
+            {aiInfo && (['deepseek', 'gemini', 'claude'] as const).map(p => {
               const info = aiInfo.providers[p]
+              if (!info) return null
+              const label = p === 'deepseek' ? 'DeepSeek' : p === 'gemini' ? 'Gemini' : 'Claude'
               return (
                 <span key={p} className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold border ${
                   info.configured
                     ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
                     : 'bg-red-500/15 text-red-400 border-red-500/30'
                 }`}>
-                  {info.configured ? '✓' : '✗'} {p === 'gemini' ? 'Gemini' : 'Claude'} {info.configured ? info.model : t('admin.aiGenerator.notConfigured')}
+                  {info.configured ? '✓' : '✗'} {label} {info.configured ? info.model : t('admin.aiGenerator.notConfigured')}
                 </span>
               )
             })}
@@ -423,21 +427,31 @@ export default function AIQuestionGenerator() {
           <div>
             <label className="block text-xs font-bold text-[#d5c4af] uppercase tracking-wider mb-1.5">{t('admin.aiGenerator.providerLabel')}</label>
             <div data-testid="ai-provider-select" className="segmented-control">
-              {(['gemini', 'claude'] as const).map(p => {
+              {(['deepseek', 'gemini', 'claude'] as const).map(p => {
                 const info = aiInfo?.providers[p]
                 const configured = info?.configured ?? false
+                const labelText = p === 'deepseek' ? '★ DeepSeek' : p === 'gemini' ? '✦ Gemini' : '◆ Claude'
+                const isDefault = p === 'deepseek'
                 return (
                   <button key={p} data-testid={`ai-provider-${p}`} onClick={() => setProvider(p)}
                     className={`segmented-control-item flex-1 cursor-pointer${provider === p ? ' active' : ''}${!configured ? ' opacity-50' : ''}`}>
-                    {p === 'gemini' ? '✦ Gemini' : '◆ Claude'}
+                    {labelText}
+                    {isDefault && (
+                      <span data-testid="ai-provider-default-badge"
+                        className="ml-1 text-[9px] font-black tracking-wider bg-[#e8a832] text-[#281900] px-1 py-0.5 rounded">
+                        DEFAULT
+                      </span>
+                    )}
                     {!configured && <span className="ml-1 text-[10px]">⚠</span>}
                   </button>
                 )
               })}
             </div>
-            {aiInfo && !aiInfo.providers[provider].configured && (
+            {aiInfo && !aiInfo.providers[provider]?.configured && (
               <p className="text-xs text-yellow-600 mt-1.5">
-                {provider === 'claude' ? t('admin.aiGenerator.missingClaudeKey') : t('admin.aiGenerator.missingGeminiKey')}
+                {provider === 'claude' ? t('admin.aiGenerator.missingClaudeKey')
+                  : provider === 'gemini' ? t('admin.aiGenerator.missingGeminiKey')
+                  : t('admin.aiGenerator.missingDeepseekKey')}
               </p>
             )}
           </div>

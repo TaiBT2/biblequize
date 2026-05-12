@@ -442,6 +442,7 @@
       "providerLabel": "AI Provider",
       "missingClaudeKey": "Add ANTHROPIC_API_KEY to application.yml",
       "missingGeminiKey": "Add GEMINI_API_KEY to application.yml",
+      "missingDeepseekKey": "Configure AWS credentials (IAM role or env) to enable DeepSeek Bedrock",
       "claudeModelsLabel": "Claude Models",
       "claudeAutoLabel": "Auto by difficulty",
       "claudeAutoNoteFast": "Fast · Cheap",
