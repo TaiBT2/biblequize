@@ -9,6 +9,7 @@ import GroupAnalyticsTab from '../components/group/GroupAnalyticsTab';
 import GroupCodeModal from '../components/group/GroupCodeModal';
 import QuizSetCard from '../components/group/QuizSetCard';
 import QuizSetListCard from '../components/group/QuizSetListCard';
+import CreateQuizSetModal from '../components/group/CreateQuizSetModal';
 import type { QuizSet as ApiQuizSet, PublishStatus, QuizSetDifficulty } from '../api/quizSets';
 
 interface Member {
@@ -1854,8 +1855,16 @@ const GroupDetail: React.FC = () => {
         </div>
       )}
 
-      {/* ── Create Quiz Set Modal — 2 tabs: AI Generate + Manual ── */}
-      {showCreateQsModal && (
+      {/* ── Create Quiz Set Modal (redesigned per docs/mockups/create_quizset_modal_with_difficulty_mix.html) ── */}
+      <CreateQuizSetModal
+        open={showCreateQsModal}
+        groupId={id!}
+        onClose={() => setShowCreateQsModal(false)}
+        onSaved={() => fetchQuizSets()}
+      />
+
+      {/* (legacy inline modal removed — see CreateQuizSetModal component) */}
+      {false && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setShowCreateQsModal(false)} />
           <div className="relative bg-[#1d1f2a] rounded-t-2xl sm:rounded-2xl w-full sm:max-w-xl mx-auto border border-white/10 shadow-2xl flex flex-col" style={{ maxHeight: '92vh' }}>

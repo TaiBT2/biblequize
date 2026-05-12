@@ -933,6 +933,31 @@ public class ChurchGroupController {
     }
 
     /**
+     * GET /api/groups/{id}/ai-quota
+     * Snapshot of shared global AI quota (D5) — used + limit + remaining.
+     * Powers the "Hôm nay: X/Y" badge in the create-quiz-set modal.
+     * Leader/mod only (mirrors /ai-generate authorization).
+     */
+    @GetMapping("/{id}/ai-quota")
+    public ResponseEntity<?> getAiQuota(@PathVariable String id, Principal principal) {
+        try {
+            User user = getUser(principal);
+            requireLeaderOrMod(id, user.getId());
+            AIQuotaService.Usage usage = aiQuotaService.snapshot();
+            return ResponseEntity.ok(Map.of(
+                    "success", true,
+                    "used", usage.used(),
+                    "limit", usage.limit(),
+                    "remaining", usage.remaining()
+            ));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
      * POST /api/groups/{id}/ai-generate
      * Generate draft questions via AI for a group quiz set.
      * Requires LEADER or MOD membership. Questions are NOT saved to DB.
