@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280, initial-scale=1">
+<title>BibleQuiz · Modern Spiritual Direction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Tokens kept as comments for reference — values hardcoded below */
+    /* navy-deep: #0a0c14 · navy-card: #181a24 */
+    /* ivory: #f5f0e6 · ivory-dim: #b8b1a3 · ivory-faint: #6e6a60 */
+    /* gold: #e8a832 · gold-light: #e7c268 · gold-deep: #c98a1c · gold-shadow: #7a5818 */
+    /* maroon: #7c2d3a · sage: #4a6b52 · ember: #fb923c */
+  }
+
+  html, body {
+    background: #0a0c14;
+    color: #f5f0e6;
+    font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse 1000px 700px at 18% -5%, rgba(232,168,50,0.10), transparent 55%),
+      radial-gradient(ellipse 700px 500px at 92% 20%, rgba(124,45,58,0.04), transparent 60%),
+      radial-gradient(ellipse 900px 600px at 50% 110%, rgba(232,168,50,0.04), transparent 60%),
+      #0a0c14;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+  /* Noise overlay for parchment depth */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.91 0 0 0 0 0.66 0 0 0 0 0.20 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+  }
+  /* Vignette */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(ellipse 1400px 900px at 50% 50%, transparent 40%, rgba(0,0,0,0.55) 100%);
+  }
+
+  /* ──────────────── Intro bar (annotation for Bui review) ──────────────── */
+  .intro-bar {
+    position: relative;
+    z-index: 10;
+    padding: 22px 40px;
+    border-bottom: 1px solid rgba(232,168,50,0.12);
+    background: rgba(10,12,20,0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .intro-row { display: flex; align-items: baseline; gap: 18px; max-width: 1400px; margin: 0 auto; }
+  .intro-pill {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(232,168,50,0.18), rgba(232,168,50,0.04));
+    color: #e8a832;
+    border: 1px solid rgba(232,168,50,0.35);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .intro-title {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #f5f0e6;
+    letter-spacing: -0.025em;
+  }
+  .intro-title .gold { color: #e8a832; }
+  .intro-meta {
+    margin-left: auto;
+    font-size: 11px;
+    color: #6e6a60;
+    letter-spacing: 0.04em;
+  }
+  .intro-notes {
+    max-width: 1400px;
+    margin: 8px auto 0;
+    font-size: 12px;
+    color: #b8b1a3;
+    line-height: 1.6;
+  }
+  .intro-notes .tag {
+    display: inline-block;
+    background: rgba(232,168,50,0.08);
+    color: #e7c268;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-right: 4px;
+  }
+
+  /* ──────────────── App Shell ──────────────── */
+  .app-shell {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: calc(100vh - 90px);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ──────────────── Sidebar ──────────────── */
+  .sidebar {
+    padding: 28px 16px 20px;
+    border-right: 1px solid rgba(232,168,50,0.06);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .sidebar::before {
+    content: '';
+    position: absolute;
+    top: 80px;
+    bottom: 100px;
+    left: -1px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(232,168,50,0.15) 30%, rgba(232,168,50,0.15) 70%, transparent);
+  }
+
+  .logo-wrap { display: flex; align-items: center; gap: 10px; padding: 4px 12px 32px; }
+  .logo-mark {
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, #e8a832, #c98a1c);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    box-shadow: 0 0 16px rgba(232,168,50,0.35);
+    flex-shrink: 0;
+  }
+  .logo-mark svg { width: 16px; height: 16px; color: #1a1208; }
+  .logo-text {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 19px;
+    font-weight: 800;
+    color: #f5f0e6;
+    letter-spacing: -0.02em;
+  }
+  .logo-text .gold { color: #e8a832; }
+
+  .nav-section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: #6e6a60;
+    text-transform: uppercase;
+    padding: 0 14px 10px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    border-radius: 10px;
+    color: #b8b1a3;
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+    margin-bottom: 3px;
+    transition: all 0.18s;
+    position: relative;
+  }
+  .nav-item:hover { background: rgba(245,240,230,0.04); color: #f5f0e6; }
+  .nav-item.active {
+    background: linear-gradient(90deg, rgba(232,168,50,0.16), rgba(232,168,50,0.02));
+    color: #e8a832;
+    font-weight: 600;
+  }
+  .nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 20px;
+    background: linear-gradient(180deg, #e8a832, #c98a1c);
+    border-radius: 0 3px 3px 0;
+    box-shadow: 0 0 8px rgba(232,168,50,0.5);
+  }
+  .nav-item svg { width: 18px; height: 18px; flex-shrink: 0; stroke-width: 1.6; }
+
+  .user-card {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: rgba(40,32,28,0.4);
+    border: 1px solid rgba(232,168,50,0.08);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .user-card:hover {
+    background: rgba(40,32,28,0.6);
+    border-color: rgba(232,168,50,0.18);
+  }
+  .user-card .avatar-sm {
+    width: 34px; height: 34px;
+    background: linear-gradient(135deg, #e8a832, #c98a1c);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: #1a1208;
+    flex-shrink: 0;
+  }
+  .user-card .name { font-size: 13px; font-weight: 600; line-height: 1.2; color: #f5f0e6; }
+  .user-card .tier-mini { font-size: 11px; color: #b8b1a3; margin-top: 2px; }
+  .user-card .chev { margin-left: auto; color: #6e6a60; }
+
+  /* ──────────────── Main ──────────────── */
+  .main {
+    padding: 36px 44px 56px;
+    max-width: 1100px;
+  }
+
+  /* Staggered fade-in on load */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .stagger { opacity: 0; animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .stagger-1 { animation-delay: 0s; }
+  .stagger-2 { animation-delay: 0.06s; }
+  .stagger-3 { animation-delay: 0.12s; }
+  .stagger-4 { animation-delay: 0.18s; }
+  .stagger-5 { animation-delay: 0.24s; }
+  .stagger-6 { animation-delay: 0.30s; }
+  .stagger-7 { animation-delay: 0.36s; }
+  .stagger-8 { animation-delay: 0.42s; }
+  .stagger-9 { animation-delay: 0.48s; }
+
+  /* ──────────────── Banner ──────────────── */
+  .banner {
+    background:
+      linear-gradient(135deg, rgba(40,32,28,0.6), rgba(24,26,36,0.4)),
+      rgba(24,26,36,0.55);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(232,168,50,0.14);
+    border-radius: 22px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 28px;
+    align-items: center;
+    margin-bottom: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .banner::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: -10%;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(232,168,50,0.14), transparent 65%);
+    pointer-events: none;
+  }
+  .banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 30%;
+    width: 100px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232,168,50,0.4), transparent);
+  }
+
+  .banner-avatar {
+    width: 72px; height: 72px;
+    background:
+      linear-gradient(135deg, #e8a832 0%, #c98a1c 70%, #7a5818 100%);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a1208;
+    box-shadow:
+      0 0 30px rgba(232,168,50,0.30),
+      inset 0 -8px 16px rgba(122,88,24,0.4),
+      inset 0 4px 8px rgba(255,220,140,0.5);
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+  .banner-avatar::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px solid rgba(232,168,50,0.25);
+    pointer-events: none;
+  }
+
+  .banner-info { position: relative; z-index: 1; min-width: 0; }
+  .banner-greet {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #e8a832;
+    margin-bottom: 6px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+  }
+  .banner-name {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #f5f0e6;
+    letter-spacing: -0.025em;
+    margin-bottom: 14px;
+  }
+  .banner-tier-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+  }
+  .tier-now {
+    color: #e8a832;
+    font-weight: 700;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+  }
+  .tier-arrow { color: #6e6a60; }
+  .tier-next {
+    color: #b8b1a3;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .progress-track {
+    flex: 1;
+    max-width: 240px;
+    height: 5px;
+    background: rgba(245,240,230,0.06);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 19%;
+    background: linear-gradient(90deg, #c98a1c, #e8a832 50%, #e7c268);
+    border-radius: 999px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(232,168,50,0.5);
+  }
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -3px;
+    width: 11px; height: 11px;
+    background: #f5e3a8;
+    border-radius: 50%;
+    box-shadow: 0 0 14px rgba(232,168,50,0.8);
+  }
+  .banner-xp {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #f5f0e6;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .banner-xp .num { color: #e8a832; }
+  .banner-xp .small { font-size: 12px; color: #6e6a60; font-family: 'Be Vietnam Pro', sans-serif; font-weight: 500; }
+
+  .banner-stats {
+    display: flex;
+    gap: 4px;
+    position: relative;
+    z-index: 1;
+  }
+  .stat {
+    text-align: center;
+    padding: 8px 14px;
+    min-width: 70px;
+    border-right: 1px solid rgba(232,168,50,0.10);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-icon {
+    width: 18px; height: 18px;
+    margin: 0 auto 4px;
+    color: #b8b1a3;
+    stroke-width: 1.6;
+  }
+  .stat-icon.flame {
+    color: #fb923c;
+    animation: breathe 2.6s ease-in-out infinite;
+    filter: drop-shadow(0 0 4px rgba(251,146,60,0.4));
+  }
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(251,146,60,0.4)); }
+    50% { transform: scale(1.12); filter: drop-shadow(0 0 10px rgba(251,146,60,0.7)); }
+  }
+  .stat-icon.bolt { color: #e7c268; }
+  .stat-icon.coin { color: #e8a832; }
+  .stat-num {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #f5f0e6;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .stat-lbl {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: #6e6a60;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ──────────────── Section header (small caps, gold accent) ──────────────── */
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 30px 0 14px;
+  }
+  .sec-head::before {
+    content: '';
+    width: 3px;
+    height: 14px;
+    background: linear-gradient(180deg, #e8a832, #c98a1c);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .sec-head h2 {
+    font-size: 11px;
+    font-weight: 700;
+    color: #f5f0e6;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .sec-head .meta {
+    margin-left: auto;
+    font-size: 11px;
+    color: #6e6a60;
+    font-weight: 500;
+  }
+
+  /* ──────────────── Featured Daily Challenge (state: chưa làm) ──────────────── */
+  .daily-featured {
+    background:
+      radial-gradient(ellipse 350px 200px at 90% 0%, rgba(124,45,58,0.15), transparent 60%),
+      radial-gradient(ellipse 300px 150px at 20% 100%, rgba(232,168,50,0.08), transparent 60%),
+      rgba(28,22,18,0.7);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(232,168,50,0.18);
+    border-left: 3px solid #e8a832;
+    border-radius: 16px;
+    padding: 22px 28px;
+    margin-bottom: 22px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .daily-featured:hover {
+    border-color: rgba(232,168,50,0.35);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 30px -8px rgba(232,168,50,0.18);
+  }
+  .daily-featured-deco {
+    position: absolute;
+    top: 14px;
+    right: 24px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .daily-featured-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 28px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .daily-featured-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #e8a832;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .daily-featured-label::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #e8a832;
+    box-shadow: 0 0 8px rgba(232,168,50,0.7);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  .daily-featured-title {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: #f5f0e6;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    margin-bottom: 4px;
+  }
+  .daily-featured-tagline {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13px;
+    color: #b8b1a3;
+    margin-bottom: 14px;
+  }
+  .daily-featured-meta {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    font-size: 12px;
+    color: #b8b1a3;
+  }
+  .daily-featured-meta .item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .daily-featured-meta svg { width: 14px; height: 14px; color: #e7c268; stroke-width: 1.7; }
+  .daily-featured-meta .dots {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .daily-featured-meta .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(232,168,50,0.5);
+    background: transparent;
+  }
+  .daily-featured-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .daily-countdown {
+    text-align: right;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6e6a60;
+  }
+  .daily-countdown strong {
+    display: block;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #e7c268;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    margin-top: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+  .daily-featured-cta {
+    background: linear-gradient(135deg, #e8a832, #c98a1c);
+    color: #1a1208;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 11px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(232,168,50,0.30), inset 0 1px 0 rgba(255,220,140,0.4);
+  }
+  .daily-featured-cta:hover {
+    transform: translateX(3px);
+    box-shadow: 0 6px 20px rgba(232,168,50,0.40), inset 0 1px 0 rgba(255,220,140,0.4);
+  }
+  .daily-featured-cta svg { width: 16px; height: 16px; stroke-width: 2; }
+
+
+  /* State toggle UI */
+  .state-toggle {
+    display: flex;
+    gap: 4px;
+    margin-left: 12px;
+    padding: 3px;
+    background: rgba(245,240,230,0.04);
+    border: 1px solid rgba(245,240,230,0.06);
+    border-radius: 8px;
+  }
+  .state-toggle button {
+    background: transparent;
+    border: none;
+    color: #b8b1a3;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .state-toggle button:hover { color: #f5f0e6; }
+  .state-toggle button.active {
+    background: linear-gradient(135deg, #e8a832, #c98a1c);
+    color: #1a1208;
+  }
+
+  /* ──────────────── Daily completed strip ──────────────── */
+  .daily-strip {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    background: rgba(74,107,82,0.10);
+    border: 1px solid rgba(74,107,82,0.25);
+    border-radius: 14px;
+    margin-bottom: 22px;
+  }
+  .daily-check {
+    width: 32px; height: 32px;
+    background: rgba(74,107,82,0.3);
+    border: 1px solid rgba(132,180,140,0.5);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    flex-shrink: 0;
+  }
+  .daily-check svg { width: 16px; height: 16px; color: #84b48c; stroke-width: 2.2; }
+  .daily-text { flex: 1; font-size: 13px; color: #c5c8a3; }
+  .daily-text .score {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #b4d4ba;
+  }
+  .daily-text .sub { color: #6e6a60; font-size: 11px; margin-top: 2px; }
+  .daily-btn {
+    background: rgba(245,240,230,0.06);
+    border: 1px solid rgba(245,240,230,0.10);
+    color: #f5f0e6;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+    transition: all 0.15s;
+  }
+  .daily-btn:hover { background: rgba(245,240,230,0.10); border-color: rgba(232,168,50,0.3); }
+  .daily-btn svg { width: 14px; height: 14px; stroke-width: 1.6; }
+
+  /* ──────────────── Daily Missions card (illustrated empty) ──────────────── */
+  .missions {
+    background: rgba(24,26,36,0.55);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(245,240,230,0.06);
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 22px;
+  }
+  .missions-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  .missions-title {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #f5f0e6;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: -0.01em;
+  }
+  .missions-title svg { width: 18px; height: 18px; color: #e8a832; stroke-width: 1.6; }
+  .missions-count {
+    font-size: 12px;
+    color: #b8b1a3;
+    font-weight: 500;
+  }
+  .missions-count .num { color: #e8a832; font-weight: 700; }
+  .mission {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-top: 1px solid rgba(245,240,230,0.04);
+  }
+  .mission:first-of-type { border-top: 1px solid rgba(232,168,50,0.10); }
+  .mission-medallion {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(232,168,50,0.06);
+    border: 1px solid rgba(232,168,50,0.25);
+    display: grid; place-items: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .mission-medallion::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px dashed rgba(232,168,50,0.20);
+  }
+  .mission-medallion svg { width: 18px; height: 18px; color: #e8a832; stroke-width: 1.5; }
+  .mission-body { flex: 1; }
+  .mission-title-text { font-size: 13px; color: #f5f0e6; font-weight: 500; margin-bottom: 6px; }
+  .mission-bar {
+    height: 3px;
+    background: rgba(245,240,230,0.05);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+  }
+  .mission-bar.empty {
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(232,168,50,0.10) 0px,
+      rgba(232,168,50,0.10) 4px,
+      transparent 4px,
+      transparent 8px
+    );
+  }
+  .mission-meta {
+    font-size: 11px;
+    font-weight: 600;
+    color: #b8b1a3;
+    white-space: nowrap;
+    text-align: right;
+  }
+  .mission-meta .xp { color: #e8a832; display: block; font-size: 13px; }
+  .mission-meta .progress { font-size: 11px; font-family: 'Be Vietnam Pro', sans-serif; font-weight: 500; color: #6e6a60; }
+
+  /* ──────────────── HERO RANKED CARD (focal point of entire page) ──────────────── */
+  .hero-ranked {
+    background:
+      radial-gradient(ellipse 400px 200px at 30% 0%, rgba(255,220,140,0.20), transparent 60%),
+      linear-gradient(135deg, #e8a832 0%, #c98a1c 55%, #7a5818 100%);
+    border-radius: 20px;
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 14px;
+    box-shadow:
+      0 18px 50px -10px rgba(232,168,50,0.30),
+      0 0 0 1px rgba(232,168,50,0.4),
+      inset 0 1px 0 rgba(255,220,140,0.4);
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero-ranked:hover { transform: translateY(-2px); }
+  .hero-ranked::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 0 0 0 0 0 0.3 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.25;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+  .hero-ornament {
+    position: absolute;
+    top: 22px;
+    right: 32px;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 28px;
+    align-items: center;
+  }
+  .hero-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(26,18,8,0.7);
+    margin-bottom: 8px;
+  }
+  .hero-title {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 34px;
+    font-weight: 800;
+    color: #1a1208;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    margin-bottom: 10px;
+    text-shadow: 0 1px 0 rgba(255,220,140,0.4);
+  }
+  .hero-tagline {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(26,18,8,0.75);
+    margin-bottom: 18px;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 18px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(26,18,8,0.8);
+  }
+  .hero-stat { display: flex; align-items: center; gap: 6px; }
+  .hero-stat svg { width: 14px; height: 14px; stroke-width: 2; }
+  .hero-cta {
+    background: #1a1208;
+    color: #e8a832;
+    border: 1px solid #1a1208;
+    padding: 14px 26px;
+    border-radius: 12px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    box-shadow: 0 6px 18px rgba(26,18,8,0.4), inset 0 1px 0 rgba(232,168,50,0.15);
+  }
+  .hero-cta:hover {
+    background: #2a1f12;
+    transform: translateX(3px);
+  }
+  .hero-cta svg { width: 18px; height: 18px; stroke-width: 2; transition: transform 0.2s; }
+  .hero-ranked:hover .hero-cta svg { transform: translateX(4px); }
+
+  /* ──────────────── Dynamic hierarchy: state-aware blocks ──────────────── */
+  .state-todo, .state-done { display: contents; }
+  body[data-daily="todo"] .state-done { display: none !important; }
+  body[data-daily="done"] .state-todo { display: none !important; }
+  body[data-daily="todo"] .state-done.is-block,
+  body[data-daily="todo"] .state-done.is-grid { display: none !important; }
+  body[data-daily="done"] .state-todo.is-block,
+  body[data-daily="done"] .state-todo.is-grid { display: none !important; }
+  /* For block-level state wrappers */
+  .state-todo.is-block, .state-done.is-block { display: block; }
+  .state-todo.is-grid, .state-done.is-grid { display: grid; }
+  body[data-daily="todo"] .state-done.is-block,
+  body[data-daily="todo"] .state-done.is-grid { display: none !important; }
+  body[data-daily="done"] .state-todo.is-block,
+  body[data-daily="done"] .state-todo.is-grid { display: none !important; }
+
+  /* Ranked as standard mode card (State A — when Daily not done) */
+  .mode-card.ranked-standard {
+    border: 1px solid rgba(232,168,50,0.28);
+    background:
+      linear-gradient(135deg, rgba(232,168,50,0.06), rgba(232,168,50,0.01) 60%),
+      rgba(24,26,36,0.55);
+  }
+  .mode-card.ranked-standard .mode-icon {
+    background: linear-gradient(135deg, rgba(232,168,50,0.20), rgba(232,168,50,0.06));
+    color: #e8a832;
+  }
+  .mode-card.ranked-standard:hover {
+    border-color: rgba(232,168,50,0.5);
+    background:
+      linear-gradient(135deg, rgba(232,168,50,0.10), rgba(232,168,50,0.02) 60%),
+      rgba(40,32,28,0.5);
+  }
+
+  /* 4-col variant for State B "Khám phá thêm" */
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+  /* ──────────────── Standard mode cards ──────────────── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+
+  .mode-card {
+    background: rgba(24,26,36,0.55);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(245,240,230,0.06);
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+  }
+  .mode-card:hover {
+    border-color: rgba(232,168,50,0.25);
+    transform: translateY(-2px);
+    background: rgba(40,32,28,0.5);
+  }
+  .mode-card .head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .mode-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: grid; place-items: center;
+    background: rgba(96,165,250,0.10);
+    color: #93b8ee;
+  }
+  .mode-icon svg { width: 22px; height: 22px; stroke-width: 1.5; }
+  .mode-icon.weekly { background: rgba(167,139,250,0.12); color: #c4b5fd; }
+  .mode-icon.mystery { background: rgba(124,45,58,0.18); color: #d97586; }
+  .mode-icon.speed { background: rgba(251,146,60,0.15); color: #ffb88a; }
+  .mode-icon.group { background: rgba(74,107,82,0.18); color: #84b48c; }
+  .mode-icon.room { background: rgba(167,139,250,0.12); color: #c4b5fd; }
+  .mode-icon.tournament { background: rgba(232,168,50,0.10); color: #e7c268; }
+
+  .mode-pill {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(245,240,230,0.04);
+    color: #b8b1a3;
+    font-family: 'Be Vietnam Pro', sans-serif;
+  }
+  .mode-pill.unforced { background: rgba(96,165,250,0.10); color: #93b8ee; }
+  .mode-pill.locked {
+    background: rgba(245,240,230,0.03);
+    color: #6e6a60;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .mode-pill svg { width: 11px; height: 11px; stroke-width: 2; }
+
+  .mode-title {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #f5f0e6;
+    line-height: 1.15;
+    margin-bottom: 4px;
+    letter-spacing: -0.015em;
+  }
+  .mode-title.sm { font-size: 16px; font-weight: 700; }
+  .mode-desc {
+    font-size: 12px;
+    color: #b8b1a3;
+    margin-bottom: 14px;
+  }
+  .mode-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid rgba(245,240,230,0.04);
+  }
+  .mode-cta {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #e8a832;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .mode-cta svg { width: 14px; height: 14px; transition: transform 0.2s; stroke-width: 2; }
+  .mode-card:hover .mode-cta svg { transform: translateX(4px); }
+  .mode-hint { font-size: 11px; color: #6e6a60; }
+  .mode-card.locked { opacity: 0.55; cursor: not-allowed; }
+  .mode-card.locked:hover { transform: none; border-color: rgba(245,240,230,0.06); background: rgba(24,26,36,0.55); }
+  .mode-card.locked .mode-cta { color: #6e6a60; }
+
+  /* ──────────────── Journey hero (full-width) ──────────────── */
+  .journey {
+    background: rgba(24,26,36,0.55);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(245,240,230,0.06);
+    border-radius: 18px;
+    padding: 26px 28px;
+    margin-top: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .journey::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(232,168,50,0.07), transparent 65%);
+    pointer-events: none;
+  }
+  .journey-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    position: relative;
+  }
+  .journey-title {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #f5f0e6;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: -0.015em;
+  }
+  .journey-title svg { width: 22px; height: 22px; color: #e8a832; stroke-width: 1.5; }
+  .journey-meta {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13px;
+    color: #b8b1a3;
+    font-weight: 500;
+  }
+  .journey-meta .num { color: #e8a832; font-weight: 800; font-size: 16px; font-variant-numeric: tabular-nums; }
+  .journey-sub {
+    font-size: 12px;
+    color: #b8b1a3;
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .books-row {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+    position: relative;
+  }
+  .books-row::-webkit-scrollbar { height: 5px; }
+  .books-row::-webkit-scrollbar-thumb { background: rgba(232,168,50,0.15); border-radius: 999px; }
+  .book-chip {
+    flex-shrink: 0;
+    min-width: 138px;
+    background: rgba(245,240,230,0.025);
+    border: 1px solid rgba(245,240,230,0.06);
+    border-radius: 12px;
+    padding: 14px 14px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .book-chip:hover { background: rgba(245,240,230,0.05); }
+  .book-chip.current {
+    background:
+      radial-gradient(ellipse 200px 80px at 50% 0%, rgba(232,168,50,0.18), transparent 70%),
+      rgba(232,168,50,0.05);
+    border-color: rgba(232,168,50,0.45);
+    box-shadow: 0 0 24px rgba(232,168,50,0.18), inset 0 1px 0 rgba(232,168,50,0.2);
+  }
+  .book-chip.locked { opacity: 0.45; cursor: not-allowed; }
+  .book-num {
+    font-size: 9px;
+    color: #6e6a60;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .book-chip.current .book-num { color: #c98a1c; }
+  .book-name {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #f5f0e6;
+    margin-top: 4px;
+    line-height: 1.2;
+    display: flex; align-items: center; gap: 6px;
+    letter-spacing: -0.01em;
+  }
+  .book-name svg { width: 12px; height: 12px; stroke-width: 2; flex-shrink: 0; }
+  .book-chip.current .book-name { color: #f5e3a8; }
+  .book-status {
+    font-size: 11px;
+    color: #6e6a60;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+  .book-chip.current .book-status { color: #e7c268; }
+  .book-bar {
+    margin-top: 8px;
+    height: 3px;
+    background: rgba(245,240,230,0.05);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .book-chip.current .book-bar .fill {
+    height: 100%;
+    width: 5%;
+    background: linear-gradient(90deg, #c98a1c, #e8a832, #e7c268);
+    border-radius: 999px;
+    box-shadow: 0 0 6px rgba(232,168,50,0.6);
+  }
+
+  /* ──────────────── Verse footer strip (drop cap, serif italic, ornament) ──────────────── */
+  .verse-section {
+    margin-top: 32px;
+    padding-top: 28px;
+    position: relative;
+  }
+  .verse-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .verse-ornament .line {
+    flex: 1;
+    max-width: 160px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232,168,50,0.4), transparent);
+  }
+  .verse-ornament svg { width: 16px; height: 16px; color: #e8a832; opacity: 0.7; }
+
+  .verse-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.55;
+    color: #f5f0e6;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 32px;
+    font-weight: 500;
+  }
+  .verse-text::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.4em;
+    font-weight: 700;
+    float: left;
+    line-height: 0.85;
+    padding: 4px 8px 0 0;
+    color: #e8a832;
+    text-shadow: 0 2px 12px rgba(232,168,50,0.25);
+  }
+  .verse-cite {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: #b8b1a3;
+    text-transform: uppercase;
+  }
+  .verse-cite::before, .verse-cite::after {
+    content: '—';
+    color: #6e6a60;
+    margin: 0 8px;
+  }
+
+  /* ──────────────── Annotations on right side ──────────────── */
+  .design-notes {
+    position: fixed;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    background: rgba(10,12,20,0.92);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(232,168,50,0.25);
+    border-radius: 12px;
+    padding: 18px;
+    z-index: 50;
+    font-size: 11px;
+    line-height: 1.55;
+    color: #b8b1a3;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+  }
+  .design-notes h4 {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #e8a832;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .design-notes ul { list-style: none; }
+  .design-notes li {
+    padding: 6px 0;
+    border-top: 1px solid rgba(232,168,50,0.08);
+    display: flex; gap: 8px;
+  }
+  .design-notes li:first-child { border-top: none; }
+  .design-notes li::before {
+    content: '✦';
+    color: #e8a832;
+    flex-shrink: 0;
+    font-size: 10px;
+    margin-top: 2px;
+  }
+  .design-notes .hide-btn {
+    position: absolute;
+    top: 8px; right: 8px;
+    background: none;
+    border: none;
+    color: #6e6a60;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .design-notes.hidden { display: none; }
+  .show-notes-btn {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    background: linear-gradient(135deg, #e8a832, #c98a1c);
+    color: #1a1208;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    z-index: 50;
+    box-shadow: 0 6px 20px rgba(232,168,50,0.3);
+    display: none;
+  }
+  .show-notes-btn.visible { display: block; }
+
+</style>
+</head>
+<body data-daily="todo">
+
+<!-- ═════════════════ Intro bar (review annotation) ═════════════════ -->
+<div class="intro-bar">
+  <div class="intro-row">
+    <span class="intro-pill">Direction Concept</span>
+    <h1 class="intro-title"><span class="gold">Modern</span> Spiritual &mdash; <span style="color:#b8b1a3">app gamified cho giới trẻ</span></h1>
+    <div class="state-toggle" style="margin-left:auto">
+      <button data-state="todo" class="active">Chưa làm Daily</button>
+      <button data-state="done">Đã làm Daily</button>
+    </div>
+  </div>
+  <div class="intro-notes">
+    <span class="tag">TYPOGRAPHY</span> Be Vietnam Pro 700/800 thuần &middot; Cormorant chỉ ở verse
+    &nbsp;·&nbsp;
+    <span class="tag">SPORT-APP NUMS</span> tabular numerals + weight 800 cho impact
+    &nbsp;·&nbsp;
+    <span class="tag">DYNAMIC HIERARCHY</span> 1 hero/state · Daily todo→Featured Daily · Daily done→Hero Ranked promoted
+    &nbsp;·&nbsp;
+    <span class="tag">ATMOSPHERE</span> radial gradients + noise + vignette
+    &nbsp;·&nbsp;
+    <span class="tag">MOTION</span> staggered fade-in + breathing flame
+  </div>
+</div>
+
+<div class="app-shell">
+
+  <!-- ═════════════════ Sidebar ═════════════════ -->
+  <aside class="sidebar">
+    <div class="logo-wrap">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v16c0-1.1.9-2 2-2h14V2H6c-1.1 0-2 .9-2 2z"/><path d="M9 8h6M9 12h4"/></svg>
+      </div>
+      <div class="logo-text">Bible<span class="gold">Quiz</span></div>
+    </div>
+
+    <div class="nav-section-label">Khám phá</div>
+    <div class="nav-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12L12 3l9 9"/><path d="M5 10v10h14V10"/></svg>
+      Trang chủ
+    </div>
+    <div class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M7 20V8"/><path d="M12 20V4"/><path d="M17 20v-8"/></svg>
+      Xếp hạng
+    </div>
+    <div class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 21v-1a6 6 0 0112 0v1"/><path d="M16 11a3 3 0 100-6"/><path d="M21 21v-1a6 6 0 00-3-5.2"/></svg>
+      Nhóm
+    </div>
+    <div class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg>
+      Cá nhân
+    </div>
+
+    <div class="user-card">
+      <div class="avatar-sm">T</div>
+      <div style="min-width:0">
+        <div class="name">TAI THANH</div>
+        <div class="tier-mini">Tân Tín Hữu</div>
+      </div>
+      <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+  </aside>
+
+  <!-- ═════════════════ Main ═════════════════ -->
+  <main class="main">
+
+    <!-- BANNER -->
+    <div class="banner stagger stagger-1">
+      <div class="banner-avatar">T</div>
+      <div class="banner-info">
+        <div class="banner-greet">Chào buổi sáng</div>
+        <div class="banner-name">TAI THANH</div>
+        <div class="banner-tier-row">
+          <span class="tier-now">Tân Tín Hữu</span>
+          <span class="tier-arrow">→</span>
+          <span class="tier-next">Người Tìm Kiếm</span>
+          <div class="progress-track"><div class="progress-fill"></div></div>
+          <span class="banner-xp"><span class="num">191</span> <span class="small">/ 1,000 XP</span></span>
+        </div>
+      </div>
+      <div class="banner-stats">
+        <div class="stat">
+          <svg class="stat-icon flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 3 4 5 4 9a4 4 0 11-8 0c0-2 1-3 2-4-1-2 0-4 2-5z"/></svg>
+          <div class="stat-num">1</div>
+          <div class="stat-lbl">Streak</div>
+        </div>
+        <div class="stat">
+          <svg class="stat-icon bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <div class="stat-num">100</div>
+          <div class="stat-lbl">Năng lượng</div>
+        </div>
+        <div class="stat">
+          <svg class="stat-icon coin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 10h6M9 14h6"/></svg>
+          <div class="stat-num">59</div>
+          <div class="stat-lbl">Mùa này</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Daily Challenge (state: chưa làm) -->
+    <div class="daily-featured state-todo is-block stagger stagger-2">
+      <svg class="daily-featured-deco" width="70" height="50" viewBox="0 0 70 50" fill="none">
+        <path d="M5 25 Q20 8 35 25 Q50 42 65 25" stroke="#e8a832" stroke-width="1" opacity="0.5"/>
+        <circle cx="35" cy="25" r="2.5" fill="#e8a832" opacity="0.6"/>
+        <circle cx="35" cy="12" r="1.2" fill="#e8a832" opacity="0.5"/>
+        <circle cx="35" cy="38" r="1.2" fill="#e8a832" opacity="0.5"/>
+        <path d="M2 25 L10 25 M60 25 L68 25" stroke="#e8a832" stroke-width="0.8" opacity="0.4"/>
+      </svg>
+      <div class="daily-featured-content">
+        <div>
+          <div class="daily-featured-label">Thử thách hôm nay · Mới sẵn sàng</div>
+          <h2 class="daily-featured-title">Bắt đầu ngày mới với Lời Chúa</h2>
+          <p class="daily-featured-tagline">5 câu · 3 phút · Reset mỗi 24 giờ · Cùng cộng đồng</p>
+          <div class="daily-featured-meta">
+            <span class="item">
+              <span class="dots">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              </span>
+              5 câu hỏi
+            </span>
+            <span class="item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
+              ~ 3 phút
+            </span>
+            <span class="item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 21v-1a6 6 0 0112 0v1"/><path d="M16 11a3 3 0 100-6"/><path d="M21 21v-1a6 6 0 00-3-5.2"/></svg>
+              1,247 đã chơi hôm nay
+            </span>
+          </div>
+        </div>
+        <div class="daily-featured-right">
+          <div class="daily-countdown">
+            Còn lại trong ngày
+            <strong>20:35:43</strong>
+          </div>
+          <button class="daily-featured-cta">
+            Vào chơi ngay
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Daily completed strip -->
+    <div class="daily-strip state-done is-block stagger stagger-2">
+      <div class="daily-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <div class="daily-text">
+        <span class="score">3/5 đúng — Giỏi lắm!</span>
+        <div class="sub">Hôm nay · Hành trình qua 5 sách · Thử thách mới sau 20:35:43</div>
+      </div>
+      <button class="daily-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 012-2h11l3 3v13a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M8 7h6M8 11h8M8 15h5"/></svg>
+        Xem lại bài làm
+      </button>
+    </div>
+
+    <!-- ═════ State B: HERO RANKED promoted to top (right after Daily strip) ═════ -->
+    <div class="state-done is-block">
+      <div class="hero-ranked stagger stagger-3" style="margin-bottom:18px">
+        <svg class="hero-ornament" width="80" height="60" viewBox="0 0 80 60" fill="none">
+          <path d="M10 30 Q30 10 40 30 Q50 50 70 30" stroke="#1a1208" stroke-width="1" opacity="0.4"/>
+          <circle cx="40" cy="30" r="3" fill="#1a1208" opacity="0.3"/>
+          <path d="M5 30 L15 30 M65 30 L75 30" stroke="#1a1208" stroke-width="0.8" opacity="0.3"/>
+          <circle cx="40" cy="15" r="1.5" fill="#1a1208" opacity="0.4"/>
+          <circle cx="40" cy="45" r="1.5" fill="#1a1208" opacity="0.4"/>
+        </svg>
+        <div class="hero-content">
+          <div>
+            <div class="hero-label">Tiếp theo · Bước vào đấu trường</div>
+            <h2 class="hero-title">Thi đấu Ranked</h2>
+            <p class="hero-tagline">Daily xong rồi — giờ cạnh tranh ranking thôi</p>
+            <div class="hero-stats">
+              <span class="hero-stat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                100 năng lượng
+              </span>
+              <span class="hero-stat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
+                0 / 100 câu hôm nay
+              </span>
+            </div>
+          </div>
+          <button class="hero-cta">
+            Vào trận
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Daily Missions -->
+    <div class="missions stagger stagger-3">
+      <div class="missions-head">
+        <div class="missions-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          Nhiệm vụ ngày
+        </div>
+        <div class="missions-count"><span class="num">0</span> / 3 hoàn thành · Reset sau 20 giờ</div>
+      </div>
+
+      <div class="mission">
+        <div class="mission-medallion">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 012-2h12a2 2 0 012 2v14"/><path d="M2 19h20"/><path d="M8 7h8M8 11h6"/></svg>
+        </div>
+        <div class="mission-body">
+          <div class="mission-title-text">Trả lời 10 câu trong Luyện tập</div>
+          <div class="mission-bar empty"></div>
+        </div>
+        <div class="mission-meta">
+          <span class="xp">+50 XP</span>
+          <span class="progress">0 / 10 câu</span>
+        </div>
+      </div>
+
+      <div class="mission">
+        <div class="mission-medallion">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>
+        </div>
+        <div class="mission-body">
+          <div class="mission-title-text">Đạt độ chính xác 80% trong 1 phiên</div>
+          <div class="mission-bar empty"></div>
+        </div>
+        <div class="mission-meta">
+          <span class="xp">+30 XP</span>
+          <span class="progress">0 / 80%</span>
+        </div>
+      </div>
+
+      <div class="mission">
+        <div class="mission-medallion">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4"/><path d="M7 4h10v5a5 5 0 01-10 0V4z"/><path d="M7 7H3v2a3 3 0 003 3M17 7h4v2a3 3 0 01-3 3"/></svg>
+        </div>
+        <div class="mission-body">
+          <div class="mission-title-text">Chơi 1 trận Ranked</div>
+          <div class="mission-bar empty"></div>
+        </div>
+        <div class="mission-meta">
+          <span class="xp">+70 XP</span>
+          <span class="progress">0 / 1 trận</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═════ State B (Daily DONE): Hero Ranked promoted to top — already rendered above Daily Missions below ═════ -->
+    <!-- ═════ State A (Daily TODO): "Chế độ chơi chính" with Practice + Ranked-standard ═════ -->
+    <div class="state-todo is-block">
+      <div class="sec-head stagger stagger-4">
+        <h2>Chế độ chơi chính</h2>
+      </div>
+      <div class="grid-2 stagger stagger-5">
+        <div class="mode-card practice-card">
+          <div class="head">
+            <div class="mode-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v15a2 2 0 002 2h16a2 2 0 002-2V4M2 4h20M2 4l2 4h16l2-4M8 13h8"/></svg>
+            </div>
+            <div class="mode-pill unforced">Không áp lực</div>
+          </div>
+          <h3 class="mode-title">Luyện tập</h3>
+          <p class="mode-desc">Học theo nhịp riêng · Không tính XP</p>
+          <div class="mode-foot">
+            <span class="mode-cta">Bắt đầu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+            <span class="mode-hint">Tuỳ chọn sách & độ khó</span>
+          </div>
+        </div>
+        <div class="mode-card ranked-standard">
+          <div class="head">
+            <div class="mode-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4"/><path d="M7 4h10v5a5 5 0 01-10 0V4z"/><path d="M7 7H3v2a3 3 0 003 3M17 7h4v2a3 3 0 01-3 3"/></svg>
+            </div>
+            <div class="mode-pill" style="background:rgba(232,168,50,0.14);color:#e8a832">Đã mở khóa</div>
+          </div>
+          <h3 class="mode-title">Thi đấu Ranked</h3>
+          <p class="mode-desc">Cạnh tranh ranking · 100 năng lượng sẵn sàng</p>
+          <div class="mode-foot">
+            <span class="mode-cta">Vào trận <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+            <span class="mode-hint">0 / 100 câu hôm nay</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═════ State A: "Chế độ đa dạng" 3-col ═════ -->
+    <div class="state-todo is-block">
+      <div class="sec-head">
+        <h2>Chế độ đa dạng</h2>
+        <span class="meta">Không ảnh hưởng XP / xếp hạng</span>
+      </div>
+      <div class="grid-3" style="margin-top:14px">
+        <div class="mode-card">
+          <div class="head"><div class="mode-icon weekly">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+          </div></div>
+          <h3 class="mode-title sm">Chủ đề Tuần</h3>
+          <p class="mode-desc">Các phép lạ &middot; Tuần này</p>
+          <div class="mode-foot"><span class="mode-cta">Vào chơi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+        </div>
+        <div class="mode-card">
+          <div class="head"><div class="mode-icon mystery">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 016 0c0 1.5-1 2-2 2.5-1 .5-1 1.5-1 2"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg>
+          </div></div>
+          <h3 class="mode-title sm">Bí Ẩn</h3>
+          <p class="mode-desc">Random hoàn toàn &middot; ×1.5 XP</p>
+          <div class="mode-foot"><span class="mode-cta">Thử ngay <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+        </div>
+        <div class="mode-card">
+          <div class="head"><div class="mode-icon speed">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div></div>
+          <h3 class="mode-title sm">Vòng Tốc Độ</h3>
+          <p class="mode-desc">10 câu × 10s &middot; ×2 XP</p>
+          <div class="mode-foot"><span class="mode-cta">Bắt đầu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═════ State B (Daily DONE): "Khám phá thêm" 4-col ═════ -->
+    <div class="state-done is-block">
+      <div class="sec-head stagger stagger-6">
+        <h2>Khám phá thêm</h2>
+        <span class="meta">Luyện tập tự do — không tính XP</span>
+      </div>
+      <div class="grid-4 stagger stagger-7" style="margin-top:14px">
+        <div class="mode-card">
+          <div class="head"><div class="mode-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v15a2 2 0 002 2h16a2 2 0 002-2V4M2 4h20M2 4l2 4h16l2-4M8 13h8"/></svg>
+          </div></div>
+          <h3 class="mode-title sm">Luyện tập</h3>
+          <p class="mode-desc">Tự do, không áp lực</p>
+          <div class="mode-foot"><span class="mode-cta">Bắt đầu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+        </div>
+        <div class="mode-card">
+          <div class="head"><div class="mode-icon weekly">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+          </div></div>
+          <h3 class="mode-title sm">Chủ đề Tuần</h3>
+          <p class="mode-desc">Các phép lạ</p>
+          <div class="mode-foot"><span class="mode-cta">Vào chơi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+        </div>
+        <div class="mode-card">
+          <div class="head"><div class="mode-icon mystery">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 016 0c0 1.5-1 2-2 2.5-1 .5-1 1.5-1 2"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg>
+          </div></div>
+          <h3 class="mode-title sm">Bí Ẩn</h3>
+          <p class="mode-desc">×1.5 XP</p>
+          <div class="mode-foot"><span class="mode-cta">Thử <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+        </div>
+        <div class="mode-card">
+          <div class="head"><div class="mode-icon speed">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div></div>
+          <h3 class="mode-title sm">Tốc Độ</h3>
+          <p class="mode-desc">10 câu × 10s</p>
+          <div class="mode-foot"><span class="mode-cta">Bắt đầu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group competition -->
+    <div class="sec-head stagger stagger-7">
+      <h2>Thi đấu cộng đồng</h2>
+      <span class="meta">trong FMC Danang</span>
+    </div>
+    <div class="grid-3 stagger stagger-8">
+      <div class="mode-card">
+        <div class="head">
+          <div class="mode-icon group">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/><path d="M9 8h6"/></svg>
+          </div>
+        </div>
+        <h3 class="mode-title sm">Nhóm Giáo Xứ</h3>
+        <p class="mode-desc">Hội thánh &middot; FMC Danang</p>
+        <div class="mode-foot">
+          <span class="mode-cta">Mở nhóm <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+
+      <div class="mode-card">
+        <div class="head">
+          <div class="mode-icon room">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11a2 2 0 012-2h8a2 2 0 012 2v3a2 2 0 01-2 2H8a2 2 0 01-2-2v-3z"/><path d="M9 11V8a3 3 0 016 0v3M8 16v3M16 16v3"/></svg>
+          </div>
+        </div>
+        <h3 class="mode-title sm">Phòng Chơi</h3>
+        <p class="mode-desc">2–20 người &middot; Realtime</p>
+        <div class="mode-foot">
+          <span class="mode-cta">Tạo phòng <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+
+      <div class="mode-card locked">
+        <div class="head">
+          <div class="mode-icon tournament">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4"/><path d="M7 4h10v5a5 5 0 01-10 0V4z"/><path d="M7 7H3v2a3 3 0 003 3M17 7h4v2a3 3 0 01-3 3"/></svg>
+          </div>
+          <div class="mode-pill locked">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+            Khóa
+          </div>
+        </div>
+        <h3 class="mode-title sm">Giải Đấu</h3>
+        <p class="mode-desc">Bracket 1v1 &middot; Đạt Hiền Triết</p>
+        <div class="mode-foot">
+          <span class="mode-cta">Tier 4+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═════ Journey 66 books (full-width) ═════ -->
+    <div class="journey stagger stagger-9">
+      <div class="journey-head">
+        <h3 class="journey-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l-6 2v14l6-2 6 2 6-2V5l-6 2-6-2z"/><path d="M9 5v14M15 7v14"/></svg>
+          Hành trình 66 sách
+        </h3>
+        <div class="journey-meta"><span class="num">0</span> / 66 sách &middot; <em>Đang ở Sáng Thế Ký</em></div>
+      </div>
+      <div class="journey-sub">Bắt đầu từ Sáng Thế Ký · Hoàn thành 80% mỗi sách để mở khóa sách tiếp theo</div>
+      <div class="books-row">
+        <div class="book-chip current">
+          <div class="book-num">Cựu Ước · 01</div>
+          <div class="book-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M4 5v15a2 2 0 002 2h14V3H6a2 2 0 00-2 2z"/></svg>
+            Sáng Thế Ký
+          </div>
+          <div class="book-status">Đang chinh phục · 0%</div>
+          <div class="book-bar"><div class="fill"></div></div>
+        </div>
+        <div class="book-chip locked">
+          <div class="book-num">02</div>
+          <div class="book-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+            Xuất Hành
+          </div>
+          <div class="book-status">Khóa</div>
+          <div class="book-bar"></div>
+        </div>
+        <div class="book-chip locked">
+          <div class="book-num">03</div>
+          <div class="book-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+            Lê-vi Ký
+          </div>
+          <div class="book-status">Khóa</div>
+          <div class="book-bar"></div>
+        </div>
+        <div class="book-chip locked">
+          <div class="book-num">04</div>
+          <div class="book-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+            Dân Số Ký
+          </div>
+          <div class="book-status">Khóa</div>
+          <div class="book-bar"></div>
+        </div>
+        <div class="book-chip locked">
+          <div class="book-num">05</div>
+          <div class="book-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+            Phục Truyền
+          </div>
+          <div class="book-status">Khóa</div>
+          <div class="book-bar"></div>
+        </div>
+        <div class="book-chip locked">
+          <div class="book-num">06</div>
+          <div class="book-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+            Giô-suê
+          </div>
+          <div class="book-status">Khóa</div>
+          <div class="book-bar"></div>
+        </div>
+        <div class="book-chip locked">
+          <div class="book-num">…</div>
+          <div class="book-name">+ 60 sách</div>
+          <div class="book-status">Còn lại trong hành trình</div>
+          <div class="book-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═════ Verse footer (drop cap, serif, ornament) ═════ -->
+    <div class="verse-section stagger stagger-9">
+      <div class="verse-ornament">
+        <span class="line"></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z"/></svg>
+        <span class="line"></span>
+      </div>
+      <p class="verse-text">"Ta sẽ không bao giờ lìa ngươi, không bao giờ bỏ ngươi đâu."</p>
+      <div class="verse-cite">Hê-bơ-rơ 13:5 · BTTHĐ 2011</div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Design notes panel -->
+<div class="design-notes" id="notes">
+  <button class="hide-btn" onclick="document.getElementById('notes').classList.add('hidden'); document.getElementById('show').classList.add('visible');">✕</button>
+  <h4>Dynamic Hierarchy</h4>
+  <ul>
+    <li><strong style="color:#f5f0e6">1 hero/state:</strong> luôn 1 focal point — Daily todo → Featured Daily là hero · Daily done → Hero Ranked promoted lên top.</li>
+    <li><strong style="color:#f5f0e6">Next-best-action pattern:</strong> giống Duolingo/Spotify — "thứ cần làm tiếp" luôn ở top.</li>
+    <li><strong style="color:#f5f0e6">Ranked card thay đổi:</strong> State A = standard mode card · State B = full Hero treatment với gold gradient.</li>
+    <li><strong style="color:#f5f0e6">Sans dominant:</strong> Be Vietnam Pro 700/800 cho UI · Cormorant chỉ ở verse.</li>
+    <li><strong style="color:#f5f0e6">Sport-app nums:</strong> tabular-nums + weight 800 cho impact.</li>
+    <li><strong style="color:#f5f0e6">Atmosphere giữ:</strong> radial gradients + noise + vignette.</li>
+    <li><strong style="color:#f5f0e6">Motion giữ:</strong> stagger fade + breathing flame.</li>
+  </ul>
+</div>
+<button class="show-notes-btn" id="show" onclick="document.getElementById('notes').classList.remove('hidden'); this.classList.remove('visible');">✦ Design notes</button>
+
+<script>
+  document.querySelectorAll('.state-toggle button[data-state]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const s = btn.dataset.state;
+      document.body.dataset.daily = s;
+      document.querySelectorAll('.state-toggle button').forEach(b => b.classList.toggle('active', b === btn));
+    });
+  });
+</script>
+
+</body>
+</html>
