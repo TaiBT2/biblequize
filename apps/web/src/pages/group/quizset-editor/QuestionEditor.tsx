@@ -132,13 +132,21 @@ export default function QuestionEditor({
         <textarea
           rows={2}
           value={question.content || ''}
-          onChange={e => onChange({ content: e.target.value })}
+          onChange={e => {
+            onChange({ content: e.target.value })
+            e.target.style.height = 'auto'
+            e.target.style.height = Math.max(e.target.scrollHeight, 60) + 'px'
+          }}
+          ref={el => {
+            if (el) { el.style.height = 'auto'; el.style.height = Math.max(el.scrollHeight, 60) + 'px' }
+          }}
           placeholder="Nhập nội dung câu hỏi..."
           style={{
             ...DARK_TEXTAREA_STYLE,
             borderColor: issueByKind.has('short_content') ? COLOR.warning : COLOR.goldFocus,
             padding: '11px 13px',
             fontSize: 14,
+            wordBreak: 'break-word',
           }}
         />
         {issueByKind.has('short_content') && (
@@ -182,16 +190,25 @@ export default function QuestionEditor({
                 >
                   {isCorrect && <span className="material-symbols-outlined" style={{ fontSize: 10, color: COLOR.bgDeep }} aria-hidden>check</span>}
                 </button>
-                <input
-                  type="text"
+                <textarea
+                  rows={1}
                   value={question.options?.[i] ?? ''}
-                  onChange={e => setOption(i, e.target.value)}
+                  onChange={e => {
+                    setOption(i, e.target.value)
+                    e.target.style.height = 'auto'
+                    e.target.style.height = e.target.scrollHeight + 'px'
+                  }}
+                  ref={el => {
+                    if (el) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px' }
+                  }}
                   placeholder={`Đáp án ${meta.letter}...`}
                   style={{
                     flex: 1, background: 'transparent', border: 'none',
                     color: isCorrect ? COLOR.textPrimary : COLOR.textSecondary,
                     fontSize: 13, fontFamily: 'inherit', padding: '4px 0',
                     fontWeight: isCorrect ? 500 : 400, outline: 'none', minWidth: 0,
+                    resize: 'none', lineHeight: 1.5, overflow: 'hidden',
+                    wordBreak: 'break-word',
                   }}
                 />
               </div>
@@ -212,13 +229,21 @@ export default function QuestionEditor({
           <textarea
             rows={3}
             value={question.explanation || ''}
-            onChange={e => onChange({ explanation: e.target.value })}
+            onChange={e => {
+              onChange({ explanation: e.target.value })
+              e.target.style.height = 'auto'
+              e.target.style.height = Math.max(e.target.scrollHeight, 80) + 'px'
+            }}
+            ref={el => {
+              if (el) { el.style.height = 'auto'; el.style.height = Math.max(el.scrollHeight, 80) + 'px' }
+            }}
             placeholder="Tại sao đáp án này đúng..."
             style={{
               ...DARK_TEXTAREA_STYLE,
               borderColor: issueByKind.has('short_explanation') ? COLOR.warning : COLOR.borderSubtle,
               padding: '10px 12px',
               fontSize: 12,
+              wordBreak: 'break-word',
             }}
           />
           {issueByKind.has('short_explanation') && (

@@ -347,7 +347,7 @@ export default function QuizSetEditor({ mode: forcedMode }: Props) {
         onScopeChange={setScope}
       />
 
-      <div className="qse-body" style={{ display: 'grid', gridTemplateColumns: '260px 1fr', flex: 1, minHeight: 0 }}>
+      <div className="qse-body" style={{ display: 'grid', gridTemplateColumns: '260px minmax(0, 1fr)', flex: 1, minHeight: 0 }}>
         <QuestionSidebar
           questions={questions}
           activeId={activeId}
