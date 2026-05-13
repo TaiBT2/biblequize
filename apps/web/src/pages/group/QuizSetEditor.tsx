@@ -2,7 +2,7 @@
 // Replaces the 2-tab CreateQuizSetModal (deleted in Phase I) and the
 // metadata-only QuizSetCreate flow.
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useNavigate, useParams, useBlocker } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import {
   addQuestion, aiGenerateForSet, aiRewriteQuestion, createQuizSet, deleteQuestion,
   getAIQuota, getQuizSetFull, publishQuizSet, updateQuestion, updateQuizSet,
@@ -138,19 +138,9 @@ export default function QuizSetEditor({ mode: forcedMode }: Props) {
 
   const { schedule: scheduleMetaSave, flush: flushMetaSave } = useAutoSave(persistMetadata)
 
-  // ── Navigation guard
-  const blocker = useBlocker(({ currentLocation, nextLocation }) =>
-    (hasPending() || dirtyMetaRef.current || saving) && currentLocation.pathname !== nextLocation.pathname
-  )
-  useEffect(() => {
-    if (blocker.state === 'blocked') {
-      ;(async () => {
-        if (hasPending()) await flushQuestionSave()
-        if (dirtyMetaRef.current) await flushMetaSave()
-        blocker.proceed()
-      })()
-    }
-  }, [blocker, flushMetaSave, flushQuestionSave, hasPending])
+  // ── Navigation guard: legacy BrowserRouter doesn't support useBlocker.
+  // We rely on beforeunload (in useAutoSave) for tab-close and force-flush
+  // at every explicit touchpoint (question switch, publish, save-draft).
 
   // ── Handlers
   const handleQuestionChange = (qid: string, patch: Partial<EditorQuestion>) => {
