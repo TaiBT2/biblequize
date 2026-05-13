@@ -11,7 +11,7 @@ import EmptyLeaderboardCTA from '../components/EmptyLeaderboardCTA'
 import FeaturedDailyChallenge from '../components/FeaturedDailyChallenge'
 import DailyVerseBanner from '../components/DailyVerseBanner'
 import GameModeGrid from '../components/GameModeGrid'
-import GreetingCard from '../components/GreetingCard'
+import HomeBanner from '../components/HomeBanner'
 import MotivationCard from '../components/MotivationCard'
 import TierPerksTeaser from '../components/TierPerksTeaser'
 import TutorialOverlay from '../components/TutorialOverlay'
@@ -134,8 +134,8 @@ export default function Home() {
       <ComebackModal />
       <DailyBonusModal />
       <TutorialOverlay />
-      {/* ── Greeting card (HR-1: replaces HeroStatSheet) ── */}
-      <GreetingCard />
+      {/* ── Banner (HR-2: replaces GreetingCard with sport-app typography) ── */}
+      <HomeBanner />
 
       {/* ── Featured Daily Challenge (hero CTA for tier-1) ── */}
       <FeaturedDailyChallenge />

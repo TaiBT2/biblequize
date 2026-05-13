@@ -24,10 +24,15 @@
     - `index.html`: load Cormorant Garamond italic-only `1,500;1,600;1,700` (non-blocking preload+swap). Remove `bg-[#11131e]` từ body class (let CSS atmosphere show through).
 
 - HR-2 Banner update (sport-app numbers, tabular-nums, weight 800, breathing streak)
-  - Status: `[ ]` TODO · Files: `apps/web/src/components/HomeBanner.tsx` (hoặc inline trong Home.tsx) + test · Test: Vitest 4 tests
+  - Status: `[x]` DONE · Files: `apps/web/src/components/HomeBanner.tsx` (NEW) + test, delete `GreetingCard.tsx` + test, update `Home.tsx` · Test: HomeBanner 6/6 + Home 37/37
   - **Spec impact**: `[x]` None
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Checklist: impl · Tầng 1 pass · commit `feat: HR-2 banner sport-app typography` · STOP
+  - Checklist: [x] impl HomeBanner.tsx · [x] tests 6 pass · [x] Home.tsx swap import · [x] delete GreetingCard · [x] Home.test 1 fix (45,200 split into own span) · [x] build pass · [ ] commit
+  - **Done**:
+    - `HomeBanner.tsx` mới với sport-app typography: avatar 72px gold gradient + inset highlight + dashed ring · greeting sans uppercase tracked 0.18em GOLD · name sans extrabold 22/30px ivory tracked -0.025em · tier row inline (current GOLD → next ivory-dim + 5px progress + tabular-nums XP với gold value/ivory-faint slash) · 3 stats line SVG icons (flame/bolt/coin stroke 1.6) + sans extrabold 22px tabular-nums + uppercase 9px tracked labels. Flame có `animate-breathe`.
+    - Mobile responsive: `grid-cols-[auto_1fr]` → `md:grid-cols-[auto_1fr_auto]`. Stats stack dưới name trên mobile, inline desktop.
+    - Backward-compat: giữ nguyên testids `home-greeting-*` để Home.test.tsx không churn.
+    - Home.test.tsx fix 1 test: HR-2 split `45,200` thành span riêng → `getByText('45,200')` match 2 chỗ (banner XP + leaderboard row). Đổi sang `getAllByText().length >= 1`.
 
 - HR-3 FeaturedDailyCard component (State A hero — daily chưa làm)
   - Status: `[ ]` TODO · Files: `apps/web/src/components/FeaturedDailyCard.tsx` + test · Test: Vitest 5 tests
