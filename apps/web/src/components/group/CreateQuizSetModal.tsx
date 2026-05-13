@@ -433,6 +433,16 @@ export default function CreateQuizSetModal({ open, groupId, onClose, onSaved }: 
                             )
                           })}
                         </div>
+                        {d.explanation && (
+                          <div style={{
+                            marginTop: 6, paddingTop: 6,
+                            borderTop: `1px solid ${HEX.borderSubtle}`,
+                            display: 'flex', gap: 6, alignItems: 'flex-start',
+                          }}>
+                            <span className="material-symbols-outlined" style={{ fontSize: 12, color: HEX.gold, flexShrink: 0, marginTop: 1 }}>lightbulb</span>
+                            <span style={{ fontSize: 10, color: HEX.muted, lineHeight: 1.45, fontStyle: 'italic' }}>{d.explanation}</span>
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
