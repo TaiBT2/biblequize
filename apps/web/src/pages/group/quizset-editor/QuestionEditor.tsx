@@ -65,7 +65,7 @@ export default function QuestionEditor({
   }
 
   return (
-    <div style={{ padding: '20px 24px', background: COLOR.bgSection, overflowY: 'auto' }}>
+    <div className="qse-editor-pane" style={{ padding: '20px 24px', background: COLOR.bgSection, overflowY: 'auto', minWidth: 0 }}>
 
       {/* Header: number + difficulty + actions */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16, flexWrap: 'wrap' }}>
@@ -282,6 +282,7 @@ export default function QuestionEditor({
       <style>{`
         @media (max-width: 768px) {
           .qse-grid { grid-template-columns: 1fr !important; }
+          .qse-editor-pane { padding: 14px 12px !important; }
         }
       `}</style>
     </div>

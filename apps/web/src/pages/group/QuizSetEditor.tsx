@@ -412,7 +412,10 @@ export default function QuizSetEditor({ mode: forcedMode }: Props) {
 
       <style>{`
         @media (max-width: 768px) {
-          .qse-body { grid-template-columns: 1fr !important; grid-template-rows: auto 1fr !important; }
+          .qse-body {
+            grid-template-columns: minmax(0, 1fr) !important;
+            grid-template-rows: auto 1fr !important;
+          }
         }
       `}</style>
     </div>

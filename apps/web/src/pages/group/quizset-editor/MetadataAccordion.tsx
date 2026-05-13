@@ -64,7 +64,7 @@ export default function MetadataAccordion({
       </div>
 
       {open && (
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1.5fr 1.5fr', gap: 12 }}>
+        <div className="qse-meta-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 1.5fr)', gap: 12 }}>
           <input
             type="text"
             placeholder="Tên bộ câu hỏi *"
@@ -106,6 +106,11 @@ export default function MetadataAccordion({
           </div>
         </div>
       )}
+      <style>{`
+        @media (max-width: 768px) {
+          .qse-meta-grid { grid-template-columns: minmax(0, 1fr) !important; }
+        }
+      `}</style>
     </div>
   )
 }
