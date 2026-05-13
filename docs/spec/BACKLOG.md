@@ -31,19 +31,29 @@
 - **Status:** ⬜ TODO
 - **Ref:** AUDIT_SUMMARY Q2, AUDIT_CONSTRAINTS C8 Q-A, SPEC_GROUP_v1.2 §10.4
 
-### BL-3 — Wire XP Surge bonus (Milestone Burst)
-- **Spec canonical (Q5):** Khi user đạt 90% tier progress → trigger XP surge `xp_surge_until = now + 2h`, trong 2h đó mọi điểm Ranked × 1.5.
-- **Code reality:**
-  - `User.xp_surge_until` (V24) field tồn tại
-  - `MilestoneBanner.tsx` UI tồn tại
-  - **NHƯNG** `ScoringService.java` không consume `xp_surge_until` — bonus là dead code
-- **Cần làm:**
-  - Trong `ScoringService.calculateScore()`: nếu `user.xp_surge_until > now` → multiply final score × 1.5
-  - Trigger logic: trong `TierProgressService` (hoặc nơi update XP), khi cross 90% threshold lần đầu trong tier → set `xp_surge_until = now + 2h`, fire notification, reset on tier-up
-  - Edge case: nếu user đã có xp_surge_until active → KHÔNG re-trigger (1 lần/tier)
-  - Unit test
-- **Status:** ⬜ TODO
+### BL-3 — Wire XP Surge bonus (Milestone Burst) — Consume
+- **Spec canonical (Q5):** Khi `user.xp_surge_until > now`, mọi điểm Ranked × 1.5.
+- **Wired 2026-05-13** (commit on `chore/code-quality-improvements`):
+  - `RankedController.submitRankedAnswer` calls `scoringService.calculateWithTier(..., tierLevel, xpSurgeActive)` per [SPEC_USER §4.6](SPEC_USER_v3.1.md) formula. Both tier multiplier AND surge multiplier now applied.
+  - `GET /api/me/tier-progress` returns honest `surgeActive` / `surgeUntil` / `surgeMultiplier` (Bui 2026-05-02 honesty contract relaxed). FE `MilestoneBanner.SurgeCountdown` shows real countdown.
+  - Unit tests: `RankedControllerTest` 43/43 pass with new stub signature; `UserControllerTest` 16/16 pass with two surge-state cases.
+  - **Side effect:** Tier 2-6 user điểm tăng theo `TierRewardsConfig` (1.1× → 2.0×) lần đầu kể từ V24. Leaderboard mid-season sẽ shift cho high-tier users.
+- **Status:** ✅ DONE
 - **Ref:** AUDIT_SUMMARY Q5, AUDIT_UNDOCUMENTED feature 2
+
+### BL-3-trigger — XP Surge auto-trigger (Milestone Burst)
+- **Spec canonical (Q5):** Khi user cross 90% tier progress lần đầu trong tier → backend set `xp_surge_until = now + 2h`, fire notification.
+- **Code reality (sau BL-3 consume wired):**
+  - Consume path đã hoạt động — admin có thể test bằng `xpSurgeHoursFromNow` ([SPEC_ADMIN §622](SPEC_ADMIN_v3.1.md))
+  - Auto-trigger từ user gameplay vẫn dead — `TierProgressService` không có 90% threshold detection
+- **Cần làm:**
+  - `TierProgressService` thêm helper detect cross 90% threshold lần đầu trong tier
+  - Khi cross → `userRepository.save(user.setXpSurgeUntil(now + 2h))`, fire `NotificationService` event
+  - Edge case: nếu user đã có `xpSurgeUntil > now` (active) → KHÔNG re-trigger (1 lần/tier)
+  - Reset on tier-up: khi user lên tier mới, reset surge flag eligibility
+  - Unit test cho threshold detection + edge cases
+- **Status:** ⬜ TODO
+- **Ref:** Spinoff từ BL-3 consume wire 2026-05-13
 
 ### BL-4 — i18n wording normalize: "Đấu Hạng"
 - **Spec canonical (Q4):** Mode names = "Luyện Tập" + "Đấu Hạng" (Vietnamese-only).

@@ -237,7 +237,12 @@ Auto-regen theo bảng 3.3.
 
 **Canonical rule:** Khi user đạt **≥ 90% progress** đến tier kế (tính qua `getTierInfo().progressPct ≥ 90`), backend set `User.xp_surge_until = now() + 2h`. Trong 2h đó mọi điểm Ranked được nhân ×1.5.
 
-**Hiện tại:** field tồn tại nhưng `RankedController.submitRankedAnswer` đang gọi `calculate(...)` (4-arg), KHÔNG gọi `calculateWithTier(..., xpSurgeActive)`. Audit 2026-05-01 xác nhận dead code. **Xem [BACKLOG.md](BACKLOG.md) — wire xpSurge.**
+**Consume status (BL-3, wired 2026-05-13):**
+- `RankedController.submitRankedAnswer` calls `scoringService.calculateWithTier(..., tierLevel, xpSurgeActive)` per §4.6 canonical formula. While `User.xpSurgeUntil > now`, awarded Ranked points are multiplied ×1.5. ✓ DONE.
+- `GET /api/me/tier-progress` returns honest `surgeActive` / `surgeUntil` / `surgeMultiplier` (Bui 2026-05-02 honesty contract relaxed). FE `MilestoneBanner.SurgeCountdown` shows the badge for real. ✓ DONE.
+
+**Auto-trigger status (BL-3-trigger, PENDING):**
+- Detecting 90% threshold cross in `TierProgressService` and writing `xpSurgeUntil = now + 2h` is NOT YET wired. Admin can set it manually via [SPEC_ADMIN §622](SPEC_ADMIN_v3.1.md) `xpSurgeHoursFromNow`, but no user-facing auto-trigger fires. Track via BACKLOG `BL-3-trigger`.
 
 ### 4.8 Wrong-answer explanation
 
@@ -1286,7 +1291,8 @@ Verified `QuestionSetController.java:22-33`:
 |---|---|---|---|---|
 | 1 | Bible version | BTTHĐ 2011 | Code uses BTT 1926 (public domain) | BACKLOG: "Migrate seed to BTTHĐ 2011" |
 | 2 | Liturgical seasons | 4 mùa + ×1.5 | Chỉ 2/4 ship (Christmas, Easter); ×1.5 dead code | BACKLOG: "Ship Pentecost + Thanksgiving + wire ×1.5" |
-| 3 | Milestone Burst (XP surge) | ×1.5 trong 2h khi đạt 90% tier | `User.xp_surge_until` field tồn tại; `RankedController` không gọi `calculateWithTier(..., xpSurgeActive)` → dead code | BACKLOG: "Wire XP surge in ScoringService" |
+| 3 | Milestone Burst (XP surge) — consume | ×1.5 trong 2h khi `xp_surge_until > now` | Wired 2026-05-13 (BL-3) — `RankedController.submitRankedAnswer` calls `calculateWithTier(..., xpSurgeActive)`; `/api/me/tier-progress` returns real surge state | ✓ DONE |
+| 3b | Milestone Burst (XP surge) — auto-trigger | Backend tự set `xp_surge_until = now + 2h` khi cross 90% threshold | Chưa wire — admin set manual qua `xpSurgeHoursFromNow` test panel | BACKLOG: BL-3-trigger |
 | 4 | Mode wording | "Luyện Tập" / "Đấu Hạng" (Q4) | Web uses "Leo Rank"; mobile uses "Thi Đấu" | BACKLOG: "Normalize i18n vi.json mode keys" |
 | 5 | Group leaderboard scope (Q-A) | Chỉ tính group-play | `ChurchGroupService.getLeaderboard()` sums tất cả `UserDailyProgress` của member | BACKLOG: "Filter group leaderboard to group-play only" |
 | 6 | Variety mode XP bonus (Mystery ×1.5, Speed ×2.0) | Wire vào ScoringService | Hiện chỉ là field DTO không consume | BACKLOG: cùng item với #3 |

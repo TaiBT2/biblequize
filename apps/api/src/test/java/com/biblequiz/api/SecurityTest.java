@@ -47,6 +47,10 @@ class SecurityTest extends BaseControllerTest {
     @MockBean
     private com.biblequiz.modules.ranked.service.GameModeUnlockConfig gameModeUnlockConfig;
 
+    // RankedController dep (added BL-3 wire 2026-05-13 — required for context load).
+    @MockBean
+    private com.biblequiz.modules.ranked.service.UserTierService userTierService;
+
     @MockBean
     private com.biblequiz.modules.quiz.repository.AnswerRepository answerRepository;
 

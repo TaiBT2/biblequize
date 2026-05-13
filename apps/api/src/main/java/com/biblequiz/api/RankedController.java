@@ -77,6 +77,9 @@ public class RankedController {
     private com.biblequiz.modules.ranked.service.ScoringService scoringService;
 
     @Autowired
+    private com.biblequiz.modules.ranked.service.UserTierService userTierService;
+
+    @Autowired
     private com.biblequiz.modules.notification.service.NotificationService notificationService;
 
     private String resolveEmail(Authentication authentication) {
@@ -248,10 +251,29 @@ public class RankedController {
                 p.correctAnswersInCurrentBook += 1;
                 p.currentStreak += 1;
 
+                // BL-3 (wired 2026-05-13): per SPEC_USER §4.6 the canonical formula is
+                //   final = base × tier.xpMultiplier × (surge ? 1.5 : 1)
+                // Tier 1 → 1.0×, tier 2 → 1.1×, …, tier 6 → 2.0× (TierRewardsConfig).
+                // Surge activates when admin sets User.xpSurgeUntil > now (V24 migration,
+                // SPEC_ADMIN §622 xpSurgeHoursFromNow). Unauthenticated callers fall back
+                // to tier 1 without surge — same effective scoring as before.
+                int tierLevel = 1;
+                boolean xpSurgeActive = false;
+                try {
+                    String email = resolveEmail(authentication);
+                    User user = email != null ? userRepository.findByEmail(email).orElse(null) : null;
+                    if (user != null) {
+                        tierLevel = userTierService.getTierLevel(user.getId());
+                        xpSurgeActive = user.getXpSurgeUntil() != null
+                                && user.getXpSurgeUntil().isAfter(LocalDateTime.now());
+                    }
+                } catch (Exception ignore) {
+                }
+
                 com.biblequiz.modules.ranked.service.ScoringService.ScoreResult score =
-                        scoringService.calculate(
+                        scoringService.calculateWithTier(
                                 currentQ != null ? currentQ.getDifficulty() : null,
-                                clientElapsedMs, p.currentStreak);
+                                clientElapsedMs, p.currentStreak, false, tierLevel, xpSurgeActive);
                 earned = score.earned;
                 p.pointsToday += earned;
 

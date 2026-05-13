@@ -13,12 +13,19 @@
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
   - Outcome: grep `System.out.println` apps/api/src → 0 hit (was 4). Also fixed `exception.printStackTrace()` in OAuth2FailureHandler (same anti-pattern, same method). 3 println → 1 idiomatic `log.warn(..., exception)` with structured fields.
 
-- CQ-2 BE — Wire XP surge multiplier hoặc xóa dead code (BL-3)
-  - Status: `[ ]` TODO · Files: [ScoringService.java](apps/api/src/main/java/com/biblequiz/modules/ranked/service/ScoringService.java#L86-L113), [RankedController.java](apps/api/src/main/java/com/biblequiz/api/RankedController.java), [User.java](apps/api/src/main/java/com/biblequiz/modules/user/entity/User.java) (xpSurgeUntil field) · Test: `ScoringServiceTest` + `RankedControllerTest` (xpSurgeActive=true case)
-  - **Spec impact**: `[x]` SPEC_USER §Tier bonuses · BL-3 trong BACKLOG
-  - **Spec strategy**: `[x]` (a) update inline — cập nhật BACKLOG.md BL-3 status DONE/REMOVED + SPEC_USER nếu wire
-  - **Decision điểm**: User chọn `wire` (kéo xpSurgeActive vào `calculate()`) hoặc `delete` (xóa overload + field). Khi tới task này, cần hỏi user.
-  - Checklist: decision · impl · test mới cho xpSurgeActive path · Tầng 3 pass · spec/BACKLOG updated · commit `fix(BL-3): wire XP surge multiplier`
+- CQ-2a BE — Wire XP surge consume + tier multiplier (BL-3)
+  - Status: `[x]` DONE · Files: [RankedController.java](apps/api/src/main/java/com/biblequiz/api/RankedController.java) (swap call site + inject UserTierService), [UserController.java](apps/api/src/main/java/com/biblequiz/api/UserController.java) (relax honesty contract), [User.java](apps/api/src/main/java/com/biblequiz/modules/user/entity/User.java) (refresh TODO comment), [ScoringService.java](apps/api/src/main/java/com/biblequiz/modules/ranked/service/ScoringService.java) (refresh javadoc), tests [RankedControllerTest](apps/api/src/test/java/com/biblequiz/api/RankedControllerTest.java) + [UserControllerTest](apps/api/src/test/java/com/biblequiz/api/UserControllerTest.java)
+  - **Spec impact**: `[x]` SPEC_USER §4.7 + §29 Known Issues row · BL-3 DONE, BL-3-trigger split out
+  - **Spec strategy**: `[x]` (a) update inline — SPEC_USER §4.7 changed status, BACKLOG.md BL-3 DONE + BL-3-trigger added
+  - **Decision**: Option B (wire cả surge + tier) per user 2026-05-13. Justified vì tier mult dead code = same anti-pattern, cùng method signature. Tier 1 users không impacted; tier 2-6 nhận điểm đúng spec §4.6 lần đầu kể từ V24.
+  - Outcome: 112/112 tests pass scope (RankedController + UserController + ScoringService + TierConfig). Compile clean. FE `MilestoneBanner.SurgeCountdown` giờ sẽ honestly show real surge countdown.
+
+- CQ-2b BE — XP surge auto-trigger detection (BL-3-trigger) [SPINOFF]
+  - Status: `[ ]` TODO · Files: `TierProgressService.java`, possibly `RankedController.submitRankedAnswer` (sau scoring), tests
+  - **Spec impact**: `[x]` SPEC_USER §4.7 + BL-3-trigger entry
+  - **Spec strategy**: `[x]` (a) update inline
+  - Scope: detect cross 90% threshold lần đầu trong tier → set `xpSurgeUntil = now + 2h` + fire notification + edge case (1 lần/tier). Currently admin set manual qua `xpSurgeHoursFromNow`.
+  - Checklist: helper trong TierProgressService · hook vào post-scoring update XP path · unit test threshold detection + idempotency · spec sync · commit `feat(BL-3-trigger): auto-trigger Milestone Burst XP surge`
 
 - CQ-3 FE — Xóa `hooks/useWebSocket.ts` deprecated (BL-15)
   - Status: `[ ]` TODO · Files: [hooks/useWebSocket.ts](apps/web/src/hooks/useWebSocket.ts) (delete), BACKLOG.md · Test: `grep "useWebSocket"` apps/web → 0 caller (verify trước khi xóa)

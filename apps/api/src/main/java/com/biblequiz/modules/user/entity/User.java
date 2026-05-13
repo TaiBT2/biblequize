@@ -60,15 +60,11 @@ public class User {
     @Column(name = "streak_freeze_used_this_week", nullable = false)
     private Boolean streakFreezeUsedThisWeek = false;
 
-    // Milestone Burst (Task TP-5): XP surge multiplier active until this time.
-    // TODO: Wire this into the actual scoring path. The field is set by
-    // AdminTestController for QA, and ScoringService.calculateWithTier accepts
-    // xpSurgeActive — but RankedController.submitRankedAnswer calls
-    // scoringService.calculate(...), not calculateWithTier(...), so this
-    // value never reaches awarded points. Wire by passing
-    //   xpSurgeActive = user.getXpSurgeUntil() != null && user.getXpSurgeUntil().isAfter(LocalDateTime.now())
-    // into a calculateWithTier(...) call from RankedController.
-    // Audit 2026-05-01 confirmed no production caller applies this multiplier.
+    // Milestone Burst (SPEC_USER §4.7): XP surge ×1.5 multiplier active until this time.
+    // Wired into RankedController.submitRankedAnswer 2026-05-13 (BL-3 DONE) via
+    // ScoringService.calculateWithTier(..., xpSurgeActive). Admin sets via
+    // AdminTestController xpSurgeHoursFromNow (SPEC_ADMIN §622). Auto-trigger
+    // on 90% tier threshold cross is still pending — see BL-3-trigger.
     @Column(name = "xp_surge_until")
     private LocalDateTime xpSurgeUntil;
 

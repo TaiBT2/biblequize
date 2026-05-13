@@ -482,17 +482,16 @@ public class UserController {
         response.put("starProgressPercent", info.starProgressPercent());
         response.put("milestone", info.milestone());
 
-        // XP surge info — Milestone Burst (Task TP-5).
-        // TODO: Re-enable when Milestone Burst is wired into RankedController. The
-        // multiplier path lives in ScoringService.calculateWithTier(xpSurgeActive),
-        // but RankedController.submitRankedAnswer currently calls scoringService.calculate(...)
-        // (no tier/surge variant), so xpSurgeUntil never affects awarded points. Until
-        // that wiring lands, advertise surgeActive=false / surgeMultiplier=1.0 to avoid
-        // misleading users with a non-functional 1.5x badge in the FE.
-        // See User.xpSurgeUntil + AUDIT_VARIETY_MODES_LEADERBOARD.md ambiguous #3.
-        response.put("surgeActive", false);
-        response.put("surgeUntil", null);
-        response.put("surgeMultiplier", 1.0);
+        // XP surge info — Milestone Burst (SPEC_USER §4.7, BL-3 wired 2026-05-13).
+        // surgeActive=true when User.xpSurgeUntil > now. While active, all Ranked
+        // points are multiplied ×1.5 in RankedController.submitRankedAnswer via
+        // ScoringService.calculateWithTier(..., xpSurgeActive). FE consumes via
+        // MilestoneBanner.SurgeCountdown.
+        LocalDateTime surgeUntil = userOpt.get().getXpSurgeUntil();
+        boolean surgeActive = surgeUntil != null && surgeUntil.isAfter(LocalDateTime.now());
+        response.put("surgeActive", surgeActive);
+        response.put("surgeUntil", surgeActive ? surgeUntil.toString() : null);
+        response.put("surgeMultiplier", surgeActive ? 1.5 : 1.0);
 
         return ResponseEntity.ok(response);
     }

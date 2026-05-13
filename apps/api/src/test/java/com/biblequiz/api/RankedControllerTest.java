@@ -65,6 +65,9 @@ class RankedControllerTest extends BaseControllerTest {
     private ScoringService scoringService;
 
     @MockBean
+    private com.biblequiz.modules.ranked.service.UserTierService userTierService;
+
+    @MockBean
     private NotificationService notificationService;
 
     // A1: required for context load (controller @Autowires it). Without
@@ -151,7 +154,7 @@ class RankedControllerTest extends BaseControllerTest {
         when(scoringService.validateMultipleChoiceSingle(any(), any())).thenReturn(true);
 
         ScoringService.ScoreResult scoreResult = new ScoringService.ScoreResult(10, 8, 2, 100, false);
-        when(scoringService.calculate(any(), anyInt(), anyInt())).thenReturn(scoreResult);
+        when(scoringService.calculateWithTier(any(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean())).thenReturn(scoreResult);
 
         when(bookProgressionService.shouldAdvanceToNextBook(anyString(), anyInt(), anyInt())).thenReturn(false);
 
@@ -725,7 +728,7 @@ class RankedControllerTest extends BaseControllerTest {
         when(scoringService.validateMultipleChoiceSingle(any(), any())).thenReturn(true);
 
         ScoringService.ScoreResult scoreResult = new ScoringService.ScoreResult(24, 12, 0, 100, false);
-        when(scoringService.calculate(any(), anyInt(), anyInt())).thenReturn(scoreResult);
+        when(scoringService.calculateWithTier(any(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean())).thenReturn(scoreResult);
         when(bookProgressionService.shouldAdvanceToNextBook(anyString(), anyInt(), anyInt())).thenReturn(false);
 
         // Mock DB persistence: user with existing points
@@ -773,7 +776,7 @@ class RankedControllerTest extends BaseControllerTest {
         when(scoringService.validateMultipleChoiceSingle(any(), any())).thenReturn(true);
 
         ScoringService.ScoreResult scoreResult = new ScoringService.ScoreResult(10, 8, 2, 100, false);
-        when(scoringService.calculate(any(), anyInt(), anyInt())).thenReturn(scoreResult);
+        when(scoringService.calculateWithTier(any(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean())).thenReturn(scoreResult);
         when(bookProgressionService.shouldAdvanceToNextBook(anyString(), anyInt(), anyInt())).thenReturn(false);
 
         // Set up UDP with q-dup already in askedQuestionIds
@@ -874,7 +877,7 @@ class RankedControllerTest extends BaseControllerTest {
         question.setCorrectAnswer(List.of(0));
         when(questionRepository.findById("q-adv")).thenReturn(Optional.of(question));
         when(scoringService.validateMultipleChoiceSingle(any(), any())).thenReturn(true);
-        when(scoringService.calculate(any(), anyInt(), anyInt()))
+        when(scoringService.calculateWithTier(any(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean()))
                 .thenReturn(new ScoringService.ScoreResult(10, 8, 2, 100, false));
 
         // After this answer: 50 questions, 31 correct → should advance
@@ -912,7 +915,7 @@ class RankedControllerTest extends BaseControllerTest {
         question.setCorrectAnswer(List.of(0));
         when(questionRepository.findById("q-rev")).thenReturn(Optional.of(question));
         when(scoringService.validateMultipleChoiceSingle(any(), any())).thenReturn(true);
-        when(scoringService.calculate(any(), anyInt(), anyInt()))
+        when(scoringService.calculateWithTier(any(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean()))
                 .thenReturn(new ScoringService.ScoreResult(10, 8, 2, 100, false));
 
         // At Revelation, shouldAdvance returns true but getNextBook returns null

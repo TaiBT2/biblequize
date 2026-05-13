@@ -114,16 +114,11 @@ class UserControllerTest extends BaseControllerTest {
 
     @Test
     @WithMockUser(username = "test@example.com")
-    void getTierProgress_surgeFieldsHonestly_returnFalseAndOneXMultiplier() throws Exception {
-        // Honesty contract (Bui decision 2026-05-02): Milestone Burst (xpSurgeUntil)
-        // is dead code server-side — RankedController never invokes the surge-aware
-        // scoring path. Until that's wired, this endpoint must NOT advertise an
-        // active surge to the FE, even if the user has a future xpSurgeUntil set.
-        // Otherwise the FE shows a "1.5× XP" badge for points that never get
-        // multiplied. See AUDIT_VARIETY_MODES_LEADERBOARD.md ambiguous #3.
-
-        // User WITH a future xpSurgeUntil — under the old contract, this would
-        // have returned surgeActive=true / surgeMultiplier=1.5.
+    void getTierProgress_surgeActive_returnsTrueAndOnePointFiveMultiplier() throws Exception {
+        // BL-3 wired 2026-05-13: Milestone Burst (xpSurgeUntil) now affects awarded
+        // points via ScoringService.calculateWithTier(..., xpSurgeActive). The honesty
+        // contract (Bui 2026-05-02) is relaxed — FE MilestoneBanner.SurgeCountdown can
+        // honestly show the 1.5× badge because the multiplier really applies server-side.
         testUser.setXpSurgeUntil(java.time.LocalDateTime.now().plusHours(1));
         when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.of(testUser));
         when(userTierService.getTotalPoints("user-1")).thenReturn(0);
@@ -133,8 +128,27 @@ class UserControllerTest extends BaseControllerTest {
 
         mockMvc.perform(get("/api/me/tier-progress"))
                 .andExpect(status().isOk())
+                .andExpect(jsonPath("$.surgeActive").value(true))
+                .andExpect(jsonPath("$.surgeMultiplier").value(1.5))
+                .andExpect(jsonPath("$.surgeUntil").isNotEmpty());
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void getTierProgress_surgeInactive_returnsFalseAndOneMultiplier() throws Exception {
+        // Without xpSurgeUntil set, surge fields return inactive defaults.
+        testUser.setXpSurgeUntil(null);
+        when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.of(testUser));
+        when(userTierService.getTotalPoints("user-1")).thenReturn(0);
+        when(tierProgressService.getStarInfo(0L)).thenReturn(
+                new com.biblequiz.modules.ranked.service.TierProgressService.StarInfo(
+                        1, "Tân Tín Hữu", 0L, 1000L, 0.0, 0, 0L, 200L, 0.0, null));
+
+        mockMvc.perform(get("/api/me/tier-progress"))
+                .andExpect(status().isOk())
                 .andExpect(jsonPath("$.surgeActive").value(false))
-                .andExpect(jsonPath("$.surgeMultiplier").value(1.0));
+                .andExpect(jsonPath("$.surgeMultiplier").value(1.0))
+                .andExpect(jsonPath("$.surgeUntil").doesNotExist());
     }
 
     // ── PATCH /api/me ────────────────────────────────────────────────────────
