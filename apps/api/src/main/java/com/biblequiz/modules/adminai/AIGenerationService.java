@@ -295,7 +295,16 @@ public class AIGenerationService {
     public String buildQuestionPrompt(String book, int chapter, int verseStart, int verseEnd,
                                       String difficulty, String type, String language, int count,
                                       String scriptureText, String customPrompt) {
-        return buildPrompt(book, chapter, verseStart, verseEnd,
+        return buildPrompt(book, chapter, chapter, verseStart, verseEnd,
+                difficulty, type, language, count, scriptureText, customPrompt);
+    }
+
+    /** Range-aware overload: chapterEnd > chapter signals a multi-chapter span. */
+    public String buildQuestionPrompt(String book, int chapter, int chapterEnd,
+                                      int verseStart, int verseEnd,
+                                      String difficulty, String type, String language, int count,
+                                      String scriptureText, String customPrompt) {
+        return buildPrompt(book, chapter, Math.max(chapter, chapterEnd), verseStart, verseEnd,
                 difficulty, type, language, count, scriptureText, customPrompt);
     }
 
@@ -307,9 +316,20 @@ public class AIGenerationService {
     private String buildPrompt(String book, int chapter, int verseStart, int verseEnd,
                                 String difficulty, String type, String language, int count,
                                 String scriptureText, String customPrompt) {
+        return buildPrompt(book, chapter, chapter, verseStart, verseEnd,
+                difficulty, type, language, count, scriptureText, customPrompt);
+    }
+
+    private String buildPrompt(String book, int chapter, int chapterEnd,
+                                int verseStart, int verseEnd,
+                                String difficulty, String type, String language, int count,
+                                String scriptureText, String customPrompt) {
         boolean isVi = "vi".equals(language);
-        String ref = book + " " + chapter + ":" + verseStart
-                + (verseEnd != verseStart ? "-" + verseEnd : "");
+        boolean isRange = chapterEnd > chapter;
+        String ref = isRange
+                ? book + " " + chapter + "-" + chapterEnd
+                : book + " " + chapter + ":" + verseStart
+                    + (verseEnd != verseStart ? "-" + verseEnd : "");
         String langName = isVi ? "Vietnamese (Tiếng Việt)" : "English";
 
         String typeInstruction = switch (type) {
@@ -339,7 +359,13 @@ public class AIGenerationService {
         StringBuilder sb = new StringBuilder();
 
         sb.append("Bạn là chuyên gia tạo câu hỏi trắc nghiệm Kinh Thánh. ");
-        sb.append("Hãy tạo đúng ").append(count).append(" câu hỏi dựa trên ").append(ref).append(".\n\n");
+        sb.append("Hãy tạo đúng ").append(count).append(" câu hỏi dựa trên ").append(ref).append(".\n");
+        if (isRange) {
+            sb.append("Phạm vi là MỘT KHOẢNG CHƯƠNG (").append(chapter).append("-").append(chapterEnd)
+              .append("). Phân bố câu hỏi đều giữa các chương, không dồn vào một chương duy nhất. ")
+              .append("Mỗi câu hỏi có thể trích từ bất kỳ chương nào trong khoảng này — ưu tiên đa dạng.\n");
+        }
+        sb.append("\n");
 
         if (customPrompt != null && !customPrompt.isBlank()) {
             // Place the user-provided directive AS PART OF the task description (not as a

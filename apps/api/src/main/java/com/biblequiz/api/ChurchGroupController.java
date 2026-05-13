@@ -973,6 +973,7 @@ public class ChurchGroupController {
 
             String book = (String) body.getOrDefault("book", "John");
             int chapter = body.get("chapter") instanceof Number n ? n.intValue() : 1;
+            int chapterEnd = body.get("chapterEnd") instanceof Number n ? Math.max(chapter, n.intValue()) : chapter;
             int verseStart = body.get("verseStart") instanceof Number n ? n.intValue() : 1;
             int verseEnd = body.get("verseEnd") instanceof Number n ? n.intValue() : 50;
             String topic = (String) body.getOrDefault("topic", "");
@@ -1000,8 +1001,8 @@ public class ChurchGroupController {
                     "Tất cả " + count + " câu hỏi PHẢI tập trung vào chủ đề bài học: \"" + topic.trim() + "\". " +
                     "Chỉ chọn các sự kiện / nhân vật / lời dạy trong phạm vi Kinh Thánh đã cho mà liên quan trực tiếp đến chủ đề này. " +
                     "KHÔNG tạo câu hỏi lạc đề (ngay cả khi đoạn Kinh Thánh có nội dung khác).";
-            AIGenerationContext ctx = AIGenerationContext.of(
-                    book, chapter, verseStart, verseEnd,
+            AIGenerationContext ctx = AIGenerationContext.range(
+                    book, chapter, chapterEnd, verseStart, verseEnd,
                     difficulty, "MULTIPLE_CHOICE", language,
                     count, null, customPrompt);
             AIGenerationResult result = aiProviderRouter.generate(ctx, null /* auto */);

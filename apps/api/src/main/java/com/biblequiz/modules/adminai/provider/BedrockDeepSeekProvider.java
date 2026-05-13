@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
@@ -45,6 +46,7 @@ public class BedrockDeepSeekProvider implements AIProvider {
     private final AIGenerationService promptHelper;
     private volatile boolean clientHealthy;
 
+    @Autowired
     public BedrockDeepSeekProvider(
             @Value("${biblequiz.ai.bedrock.region:ap-northeast-1}") String region,
             @Value("${biblequiz.ai.bedrock.model-id:deepseek.v3.2}") String modelId,
@@ -101,7 +103,7 @@ public class BedrockDeepSeekProvider implements AIProvider {
         }
 
         String prompt = promptHelper.buildQuestionPrompt(
-                ctx.book(), ctx.chapter(), ctx.verseStart(), ctx.verseEnd(),
+                ctx.book(), ctx.chapter(), ctx.chapterEnd(), ctx.verseStart(), ctx.verseEnd(),
                 ctx.difficulty(), ctx.type(), ctx.language(), ctx.count(),
                 ctx.scriptureText(), ctx.customPrompt());
 

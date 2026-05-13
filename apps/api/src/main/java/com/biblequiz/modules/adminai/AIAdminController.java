@@ -94,6 +94,7 @@ public class AIAdminController {
 
         String book       = scripture.book() != null && !scripture.book().isBlank() ? scripture.book().trim() : "Genesis";
         int    chapter    = scripture.chapter()    != null ? scripture.chapter()    : 1;
+        int    chapterEnd = scripture.chapterEnd() != null ? Math.max(chapter, scripture.chapterEnd()) : chapter;
         int    verseStart = scripture.verseStart() != null ? scripture.verseStart() : 1;
         int    verseEnd   = scripture.verseEnd()   != null ? scripture.verseEnd()   : verseStart;
         String t = scripture.text();
@@ -108,7 +109,7 @@ public class AIAdminController {
         List<String> claudeModels = req.claudeModels();
 
         AIGenerationContext ctx = new AIGenerationContext(
-                book, chapter, chapter, verseStart, verseEnd,
+                book, chapter, chapterEnd, verseStart, verseEnd,
                 difficulty, type, language, count,
                 scriptureText, customPrompt, claudeModels);
 

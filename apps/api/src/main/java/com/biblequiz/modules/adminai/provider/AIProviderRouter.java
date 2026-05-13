@@ -3,6 +3,7 @@ package com.biblequiz.modules.adminai.provider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class AIProviderRouter {
      * BedrockDeepSeekProvider (default) → GeminiProvider → ClaudeProvider.
      * Note we use {@link ObjectProvider} for DeepSeek because it's conditional.
      */
+    @Autowired
     public AIProviderRouter(ObjectProvider<BedrockDeepSeekProvider> deepseek,
                             GeminiProvider gemini,
                             ClaudeProvider claude) {
