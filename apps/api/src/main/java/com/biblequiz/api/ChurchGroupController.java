@@ -994,10 +994,16 @@ public class ChurchGroupController {
             }
 
             // Group leader always uses default provider (D3) — no model selector visible.
+            // Topic is a hard constraint here (not free-form admin notes): wrap it so the
+            // prompt builder renders it as a mandatory directive.
+            String customPrompt = topic.isBlank() ? null :
+                    "Tất cả " + count + " câu hỏi PHẢI tập trung vào chủ đề bài học: \"" + topic.trim() + "\". " +
+                    "Chỉ chọn các sự kiện / nhân vật / lời dạy trong phạm vi Kinh Thánh đã cho mà liên quan trực tiếp đến chủ đề này. " +
+                    "KHÔNG tạo câu hỏi lạc đề (ngay cả khi đoạn Kinh Thánh có nội dung khác).";
             AIGenerationContext ctx = AIGenerationContext.of(
                     book, chapter, verseStart, verseEnd,
                     difficulty, "MULTIPLE_CHOICE", language,
-                    count, null, topic.isBlank() ? null : topic);
+                    count, null, customPrompt);
             AIGenerationResult result = aiProviderRouter.generate(ctx, null /* auto */);
 
             return ResponseEntity.ok(Map.of(

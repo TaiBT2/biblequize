@@ -338,14 +338,16 @@ public class AIGenerationService {
 
         StringBuilder sb = new StringBuilder();
 
-        if (customPrompt != null && !customPrompt.isBlank()) {
-            sb.append("--- Ghi chú bổ sung từ admin ---\n");
-            sb.append(customPrompt).append("\n");
-            sb.append("--- Kết thúc ghi chú ---\n\n");
-        }
-
         sb.append("Bạn là chuyên gia tạo câu hỏi trắc nghiệm Kinh Thánh. ");
         sb.append("Hãy tạo đúng ").append(count).append(" câu hỏi dựa trên ").append(ref).append(".\n\n");
+
+        if (customPrompt != null && !customPrompt.isBlank()) {
+            // Place the user-provided directive AS PART OF the task description (not as a
+            // background note), with strong wording, so the model treats it as a hard
+            // constraint rather than optional context.
+            sb.append("⚠️ YÊU CẦU BẮT BUỘC (mọi câu hỏi đều phải tuân thủ):\n");
+            sb.append(customPrompt).append("\n\n");
+        }
 
         sb.append("Ngôn ngữ: ").append(langName).append("\n");
         sb.append("Độ khó: ").append(difficulty).append(" — ").append(difficultyNote).append("\n");
