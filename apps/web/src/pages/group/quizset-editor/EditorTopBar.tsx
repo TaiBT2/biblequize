@@ -57,11 +57,11 @@ export default function EditorTopBar({
           display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 13, padding: '6px 10px', borderRadius: 6,
         }}
       >
-        <i className="ti ti-arrow-left" style={{ fontSize: 16 }} aria-hidden /> Quay lại
+        <span className="material-symbols-outlined" style={{ fontSize: 16 }} aria-hidden>arrow_back</span> Quay lại
       </button>
 
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 10, minWidth: 200 }}>
-        <i className="ti ti-books" style={{ fontSize: 18, color: COLOR.gold }} aria-hidden />
+        <span className="material-symbols-outlined" style={{ fontSize: 18, color: COLOR.gold }} aria-hidden>menu_book</span>
         <div style={{ fontSize: 14, color: COLOR.textPrimary, fontWeight: 500 }}>
           {quizSetName || 'Bộ câu hỏi mới'}
         </div>
@@ -83,7 +83,7 @@ export default function EditorTopBar({
         background: COLOR.goldBg, border: `1px solid rgba(232,168,50,0.22)`,
         padding: '4px 9px', borderRadius: 999, fontSize: 11, color: COLOR.gold,
       }}>
-        <i className="ti ti-sparkles" style={{ fontSize: 12 }} aria-hidden />
+        <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>auto_awesome</span>
         <span>AI: {aiUsed}/{aiLimit}</span>
       </div>
 
@@ -101,7 +101,7 @@ export default function EditorTopBar({
         display: 'inline-flex', alignItems: 'center', gap: 5,
         opacity: canPublish ? 1 : 0.6,
       }}>
-        <i className="ti ti-rocket" style={{ fontSize: 14 }} aria-hidden />
+        <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>rocket_launch</span>
         {status === 'PUBLISHED' ? `Lưu thay đổi` : `Xuất bản (${questionCount} câu)`}
       </button>
     </div>

@@ -53,7 +53,7 @@ export default function MetadataAccordion({
         onClick={() => setOpen(o => !o)}
         style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: open ? 10 : 0, cursor: 'pointer' }}
       >
-        <i className={`ti ti-chevron-${open ? 'down' : 'right'}`} style={{ fontSize: 14, color: COLOR.textMuted }} aria-hidden />
+        <span className="material-symbols-outlined" style={{ fontSize: 14, color: COLOR.textMuted }} aria-hidden>{open ? 'expand_more' : 'chevron_right'}</span>
         <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6 }}>
           THÔNG TIN BỘ CÂU HỎI
         </span>
@@ -86,10 +86,10 @@ export default function MetadataAccordion({
             >
               {BIBLE_BOOKS.map(b => <option key={b} value={b} style={{ background: COLOR.inputBg }}>{b}</option>)}
             </select>
-            <i className="ti ti-chevron-down" style={{
+            <span className="material-symbols-outlined" style={{
               position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)',
               fontSize: 13, color: COLOR.textDisabled, pointerEvents: 'none',
-            }} aria-hidden />
+            }} aria-hidden>expand_more</span>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 5, alignItems: 'center' }}>
             <input

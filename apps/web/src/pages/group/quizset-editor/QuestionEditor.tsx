@@ -101,7 +101,7 @@ export default function QuestionEditor({
             display: 'inline-flex', alignItems: 'center', gap: 4,
             opacity: rewriting ? 0.6 : 1,
           }}>
-            <i className="ti ti-refresh" style={{ fontSize: 12 }} aria-hidden />
+            <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>refresh</span>
             {rewriting ? 'Đang viết lại...' : 'AI viết lại'}
           </button>
           {onDuplicate && (
@@ -111,7 +111,7 @@ export default function QuestionEditor({
               padding: '5px 8px', borderRadius: 6, fontSize: 11, cursor: 'pointer',
               display: 'inline-flex', alignItems: 'center', gap: 4,
             }}>
-              <i className="ti ti-copy" style={{ fontSize: 13 }} aria-hidden />
+              <span className="material-symbols-outlined" style={{ fontSize: 13 }} aria-hidden>content_copy</span>
             </button>
           )}
           <button onClick={onDelete} title="Xoá câu" style={{
@@ -119,7 +119,7 @@ export default function QuestionEditor({
             border: `1px solid rgba(239,68,68,0.25)`,
             padding: '5px 8px', borderRadius: 6, fontSize: 11, cursor: 'pointer',
           }}>
-            <i className="ti ti-trash" style={{ fontSize: 13 }} aria-hidden />
+            <span className="material-symbols-outlined" style={{ fontSize: 13 }} aria-hidden>delete</span>
           </button>
         </div>
       </div>
@@ -180,7 +180,7 @@ export default function QuestionEditor({
                     display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0,
                   }}
                 >
-                  {isCorrect && <i className="ti ti-check" style={{ fontSize: 10, color: COLOR.bgDeep }} aria-hidden />}
+                  {isCorrect && <span className="material-symbols-outlined" style={{ fontSize: 10, color: COLOR.bgDeep }} aria-hidden>check</span>}
                 </button>
                 <input
                   type="text"

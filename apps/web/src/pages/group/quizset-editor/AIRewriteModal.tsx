@@ -53,13 +53,13 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
         borderRadius: 12, maxWidth: 720, width: '100%', maxHeight: '90vh', overflowY: 'auto',
       }}>
         <div style={{ padding: '18px 22px', borderBottom: `1px solid ${COLOR.borderXSubtle}`, display: 'flex', alignItems: 'center', gap: 10 }}>
-          <i className="ti ti-refresh" style={{ fontSize: 20, color: COLOR.gold }} aria-hidden />
+          <span className="material-symbols-outlined" style={{ fontSize: 20, color: COLOR.gold }} aria-hidden>refresh</span>
           <div style={{ flex: 1, fontSize: 15, fontWeight: 500, color: COLOR.textPrimary }}>AI viết lại câu hỏi</div>
           <span style={{ fontSize: 11, color: COLOR.textMuted }}>Quota: {remaining}/{limit}</span>
           <button onClick={onClose} style={{
             background: 'transparent', border: 'none', color: COLOR.textMuted, cursor: 'pointer', padding: 4,
           }}>
-            <i className="ti ti-x" style={{ fontSize: 18 }} aria-hidden />
+            <span className="material-symbols-outlined" style={{ fontSize: 18 }} aria-hidden>close</span>
           </button>
         </div>
 
@@ -83,9 +83,9 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
             display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 16,
             opacity: busy || remaining < 1 ? 0.6 : 1,
           }}>
-            <i className={`ti ${busy ? 'ti-loader-2' : 'ti-refresh'}`} style={{
+            <span className="material-symbols-outlined" style={{
               fontSize: 14, animation: busy ? 'spin 1s linear infinite' : undefined,
-            }} aria-hidden />
+            }} aria-hidden>{busy ? 'progress_activity' : 'refresh'}</span>
             {busy ? 'Đang tạo lại...' : draft ? 'Tạo phiên bản khác' : 'Tạo lại câu này'}
             <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
           </button>

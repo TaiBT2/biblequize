@@ -42,7 +42,7 @@ export default function PublishConfirmModal({
         borderRadius: 12, maxWidth: 560, width: '100%', maxHeight: '90vh', overflowY: 'auto',
       }}>
         <div style={{ padding: '18px 22px', borderBottom: `1px solid ${COLOR.borderXSubtle}`, display: 'flex', alignItems: 'center', gap: 10 }}>
-          <i className={`ti ti-${blocked ? 'alert-triangle' : 'rocket'}`} style={{ fontSize: 20, color: blocked ? COLOR.warning : COLOR.gold }} aria-hidden />
+          <span className="material-symbols-outlined" style={{ fontSize: 20, color: blocked ? COLOR.warning : COLOR.gold }} aria-hidden>{blocked ? 'warning' : 'rocket_launch'}</span>
           <div style={{ fontSize: 15, fontWeight: 500, color: COLOR.textPrimary }}>
             {blocked ? `Còn ${blockers.length + invalid.length} vấn đề cần sửa` : 'Xuất bản bộ câu hỏi?'}
           </div>
@@ -125,7 +125,7 @@ export default function PublishConfirmModal({
                   cursor: busy ? 'wait' : 'pointer', opacity: busy ? 0.6 : 1,
                   display: 'inline-flex', alignItems: 'center', gap: 6,
                 }}>
-                  <i className="ti ti-rocket" style={{ fontSize: 14 }} aria-hidden />
+                  <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>rocket_launch</span>
                   {busy ? 'Đang xuất bản...' : 'Xuất bản'}
                 </button>
               </div>

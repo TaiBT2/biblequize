@@ -94,10 +94,10 @@ export default function QuestionSidebar({
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 3 }}>
                 <span style={{ fontSize: 11, color: isActive ? COLOR.gold : COLOR.textDisabled, fontWeight: 500 }}>#{idx + 1}</span>
-                <i className={`ti ti-${valid ? 'circle-check' : 'alert-triangle'}`}
-                   style={{ fontSize: 13, color: valid ? COLOR.success : COLOR.warning }} aria-hidden />
-                <i className={`ti ti-${isAI ? 'sparkles' : 'pencil'}`}
-                   style={{ fontSize: 11, color: COLOR.textDisabled }} aria-hidden />
+                <span className="material-symbols-outlined"
+                   style={{ fontSize: 13, color: valid ? COLOR.success : COLOR.warning }} aria-hidden>{valid ? 'check_circle' : 'warning'}</span>
+                <span className="material-symbols-outlined"
+                   style={{ fontSize: 11, color: COLOR.textDisabled }} aria-hidden>{isAI ? 'auto_awesome' : 'edit'}</span>
                 {isActive && (
                   <span style={{ marginLeft: 'auto', fontSize: 9, color: COLOR.gold, fontWeight: 500, letterSpacing: 0.5 }}>
                     ĐANG SỬA
@@ -130,7 +130,7 @@ export default function QuestionSidebar({
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 5,
           opacity: aiBusy ? 0.6 : 1,
         }}>
-          <i className="ti ti-sparkles" style={{ fontSize: 14 }} aria-hidden />
+          <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>auto_awesome</span>
           {aiBusy ? 'Đang tạo...' : 'AI tạo nháp'}
         </button>
         <button onClick={onAddManual} disabled={addBusy} style={{
@@ -141,7 +141,7 @@ export default function QuestionSidebar({
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 5,
           opacity: addBusy ? 0.6 : 1,
         }}>
-          <i className="ti ti-plus" style={{ fontSize: 14 }} aria-hidden />
+          <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>add</span>
           Thêm thủ công
         </button>
       </div>

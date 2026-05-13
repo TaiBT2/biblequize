@@ -99,7 +99,7 @@ export default function AIGeneratePanel({
       }}>
         <div style={{ padding: '20px 24px 0', display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1 }}>
-            <i className="ti ti-sparkles" style={{ fontSize: 20, color: COLOR.gold }} aria-hidden />
+            <span className="material-symbols-outlined" style={{ fontSize: 20, color: COLOR.gold }} aria-hidden>auto_awesome</span>
             <div style={{ fontSize: 16, fontWeight: 500, color: COLOR.textPrimary }}>AI tạo nháp câu hỏi</div>
           </div>
           <div style={{
@@ -107,13 +107,13 @@ export default function AIGeneratePanel({
             background: COLOR.goldBg, border: `1px solid rgba(232,168,50,0.22)`,
             padding: '4px 9px', borderRadius: 999, fontSize: 11, color: COLOR.gold,
           }}>
-            <i className="ti ti-sparkles" style={{ fontSize: 12 }} aria-hidden />
+            <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>auto_awesome</span>
             <span>{limit - remaining}/{limit}</span>
           </div>
           <button onClick={onClose} style={{
             background: 'transparent', border: 'none', color: COLOR.textDisabled, cursor: 'pointer', padding: 4,
           }} aria-label="Đóng">
-            <i className="ti ti-x" style={{ fontSize: 18 }} aria-hidden />
+            <span className="material-symbols-outlined" style={{ fontSize: 18 }} aria-hidden>close</span>
           </button>
         </div>
 
@@ -125,7 +125,7 @@ export default function AIGeneratePanel({
             background: COLOR.inputBg, border: `1px solid rgba(232,168,50,0.30)`,
             borderRadius: 8, padding: '11px 13px', fontSize: 13, color: COLOR.textPrimary, marginBottom: 14,
           }}>
-            <i className="ti ti-book" style={{ fontSize: 14, color: COLOR.gold, marginRight: 8, verticalAlign: -2 }} aria-hidden />
+            <span className="material-symbols-outlined" style={{ fontSize: 14, color: COLOR.gold, marginRight: 8, verticalAlign: -2 }} aria-hidden>menu_book</span>
             {scope.book}
             <span style={{ marginLeft: 8, color: COLOR.textDisabled, fontSize: 11 }}>(chỉnh ở mục Thông tin bộ)</span>
           </div>
@@ -136,7 +136,7 @@ export default function AIGeneratePanel({
             borderRadius: 10, padding: '12px 14px', marginBottom: 16,
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
-              <i className="ti ti-bookmarks" style={{ fontSize: 13, color: COLOR.textMuted }} aria-hidden />
+              <span className="material-symbols-outlined" style={{ fontSize: 13, color: COLOR.textMuted }} aria-hidden>bookmarks</span>
               <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6 }}>PHẠM VI</span>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }} className="ai-scope-grid">
@@ -203,7 +203,7 @@ export default function AIGeneratePanel({
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <i className="ti ti-chart-bar" style={{ fontSize: 13, color: COLOR.textMuted }} aria-hidden />
+                <span className="material-symbols-outlined" style={{ fontSize: 13, color: COLOR.textMuted }} aria-hidden>bar_chart</span>
                 <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6 }}>PHÂN BỔ ĐỘ KHÓ</span>
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 12 }}>
@@ -232,10 +232,10 @@ export default function AIGeneratePanel({
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingTop: 10, borderTop: `1px solid rgba(255,255,255,0.04)` }}>
               <span style={{ fontSize: 11, color: COLOR.textDisabled }}>Gợi ý:</span>
               <button onClick={() => { setEasy(2); setMedium(2); setHard(2) }} style={pillBtn()}>
-                <i className="ti ti-scale" style={{ fontSize: 12 }} aria-hidden /> Đều nhau
+                <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>balance</span> Đều nhau
               </button>
               <button onClick={() => { setEasy(4); setMedium(4); setHard(2) }} style={pillBtn(true)}>
-                <i className="ti ti-chart-pie" style={{ fontSize: 12 }} aria-hidden /> Đề xuất 40/40/20
+                <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>pie_chart</span> Đề xuất 40/40/20
               </button>
             </div>
           </div>
@@ -245,7 +245,7 @@ export default function AIGeneratePanel({
               background: 'rgba(239,68,68,0.10)', border: `1px solid rgba(239,68,68,0.30)`,
               color: COLOR.danger, padding: '8px 12px', borderRadius: 7, fontSize: 12, marginBottom: 12,
             }}>
-              <i className="ti ti-alert-circle" style={{ fontSize: 14, marginRight: 6, verticalAlign: -2 }} aria-hidden />
+              <span className="material-symbols-outlined" style={{ fontSize: 14, marginRight: 6, verticalAlign: -2 }} aria-hidden>error</span>
               {error}
             </div>
           )}
@@ -277,8 +277,8 @@ export default function AIGeneratePanel({
               opacity: disabled ? 0.6 : 1,
             }}
           >
-            <i className={`ti ti-${busy ? 'loader-2' : 'sparkles'}`}
-               style={{ fontSize: 16, animation: busy ? 'spin 1s linear infinite' : undefined }} aria-hidden />
+            <span className="material-symbols-outlined"
+               style={{ fontSize: 16, animation: busy ? 'spin 1s linear infinite' : undefined }} aria-hidden>{busy ? 'progress_activity' : 'auto_awesome'}</span>
             {busy
               ? `Đang tạo ${total} câu...`
               : tooLarge
@@ -288,7 +288,7 @@ export default function AIGeneratePanel({
                   : <>Tạo {total} câu hỏi với AI <span style={{ opacity: 0.7, fontWeight: 400, marginLeft: 4 }}>· {easy} dễ + {medium} TB + {hard} khó</span></>}
           </button>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 10, fontSize: 11, color: COLOR.textDisabled }}>
-            <i className="ti ti-clock" style={{ fontSize: 12 }} aria-hidden />
+            <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>schedule</span>
             <span>AI tạo nháp ~20-30s · Bạn xem lại + chỉnh sửa trước khi lưu</span>
           </div>
         </div>
