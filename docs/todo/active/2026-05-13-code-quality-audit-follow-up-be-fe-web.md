@@ -61,20 +61,19 @@
   - Outcome: 5 domain factories (tournaments, rankings, adminGroups, adminNotifications, reviewQueue) với pattern `all/list/detail` per tkdodo. Sẵn sàng để CQ-8..10 consume.
 
 - CQ-8 FE — Migrate [admin/Events.tsx](apps/web/src/pages/admin/Events.tsx) → useQuery
-  - Status: `[ ]` TODO · Files: `admin/Events.tsx` · Test: vitest existing + 1 query test mới
-  - **Spec impact**: `[x]` None
-  - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Checklist: thay `useEffect+fetch` → `useQuery({ queryKey: queryKeys.tournaments.list(...) })` · loading/error state via query · invalidate sau mutation · Tầng 3 pass · commit `refactor: migrate admin/Events to TanStack Query`
+  - Status: `[x]` DONE · Files: `admin/Events.tsx`
+  - **Spec impact**: `[x]` None · **Spec strategy**: `[x]` (c) `[no-spec-impact]`
+  - Outcome: bỏ `useState + useEffect + api.get`, dùng `useQuery({ queryKey: queryKeys.tournaments.list() })`. Loading/error tự động. Type-check clean.
 
 - CQ-9 FE — Migrate `admin/Rankings.tsx` + `admin/Groups.tsx`
-  - Status: `[ ]` TODO · Files: [admin/Rankings.tsx](apps/web/src/pages/admin/Rankings.tsx), [admin/Groups.tsx](apps/web/src/pages/admin/Groups.tsx) · Test: vitest
+  - Status: `[x]` DONE · Files: [admin/Rankings.tsx](apps/web/src/pages/admin/Rankings.tsx), [admin/Groups.tsx](apps/web/src/pages/admin/Groups.tsx)
   - **Spec impact**: `[x]` None · **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Checklist: 2 commit (mỗi file 1 commit để <100 LOC) hoặc 1 commit nếu cùng pattern
+  - Outcome: Rankings dùng useQuery + 2 useMutation (create/end season) với invalidate. Groups dùng useQuery + 3 useMutation (lock/unlock/delete) với invalidate. Cả 2 type-check clean.
 
 - CQ-10 FE — Migrate `admin/Notifications.tsx` + `admin/ReviewQueue.tsx`
-  - Status: `[ ]` TODO · Files: [admin/Notifications.tsx](apps/web/src/pages/admin/Notifications.tsx), [admin/ReviewQueue.tsx](apps/web/src/pages/admin/ReviewQueue.tsx) · Test: vitest
+  - Status: `[x]` DONE · Files: [admin/Notifications.tsx](apps/web/src/pages/admin/Notifications.tsx), [admin/ReviewQueue.tsx](apps/web/src/pages/admin/ReviewQueue.tsx)
   - **Spec impact**: `[x]` None · **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Checklist: 2 commit · grep `useEffect.*fetch` apps/web/src/pages/admin → 0 hit sau cùng
+  - Outcome: Notifications dùng useQuery cho history. ReviewQueue dùng 3 useQuery (pending/stats/history) + 2 useMutation (approve/reject). Drop ad-hoc state `setItems(prev => filter...)` — invalidate queries thay vì optimistic local diff. Cập nhật queryKeys.reviewQueue API: `pending() / stats() / history()` thay cho `list/counts`.
 
 ### Phase 4 — FE Web tách RoomQuiz.tsx mega-page (Major, ~1 sprint)
 

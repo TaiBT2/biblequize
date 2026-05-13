@@ -1,23 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useQuery } from '@tanstack/react-query'
 import { api } from '../../api/client'
+import { queryKeys } from '../../api/queryKeys'
+
+interface NotificationItem {
+  id?: string
+  title?: string
+  content?: string
+  createdAt?: string
+  isRead?: boolean
+}
+
+async function fetchHistory(): Promise<NotificationItem[]> {
+  const res = await api.get<NotificationItem[]>('/api/notifications?limit=20')
+  return Array.isArray(res.data) ? res.data : []
+}
 
 export default function NotificationsAdmin() {
   const { t } = useTranslation()
-  const [history, setHistory] = useState<any[]>([])
-  const [isLoading, setIsLoading] = useState(false)
+  const { data: history = [], isLoading } = useQuery({
+    queryKey: queryKeys.adminNotifications.list(),
+    queryFn: fetchHistory,
+  })
+
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [isSending, setIsSending] = useState(false)
   const [sent, setSent] = useState(false)
-
-  const fetchHistory = async () => {
-    setIsLoading(true)
-    try { const res = await api.get('/api/notifications?limit=20'); setHistory(Array.isArray(res.data) ? res.data : []) }
-    catch { /* */ } finally { setIsLoading(false) }
-  }
-
-  useEffect(() => { fetchHistory() }, [])
 
   const sendBroadcast = async () => {
     if (!title.trim() || !content.trim()) return
@@ -83,8 +93,8 @@ export default function NotificationsAdmin() {
         <h3 className="font-medium text-[#e1e1ef] mb-3">{t('admin.notifications.historyTitle')}</h3>
         {isLoading ? <p className="text-[#d5c4af]/40 text-sm">{t('admin.notifications.loading')}</p>
          : history.length === 0 ? <p className="text-[#d5c4af]/40 text-sm">{t('admin.notifications.empty')}</p>
-         : <div className="space-y-2">{history.slice(0, 10).map((n: any, i: number) => (
-            <div key={i} className="p-3 rounded-lg bg-[#1d1f29] flex items-center justify-between">
+         : <div className="space-y-2">{history.slice(0, 10).map((n, i) => (
+            <div key={n.id ?? i} className="p-3 rounded-lg bg-[#1d1f29] flex items-center justify-between">
               <div><p className="text-sm text-[#d5c4af]">{n.title || n.content?.slice(0, 50)}</p><p className="text-[#d5c4af]/40 text-xs">{n.createdAt}</p></div>
               <span className={`text-xs ${n.isRead ? 'text-[#d5c4af]/30' : 'text-[#e8a832]'}`}>{n.isRead ? t('admin.notifications.readLabel') : t('admin.notifications.unreadLabel')}</span>
             </div>

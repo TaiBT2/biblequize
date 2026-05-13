@@ -34,10 +34,8 @@ export const queryKeys = {
 
   reviewQueue: {
     all: ['reviewQueue'] as const,
-    list: (status?: string) =>
-      status === undefined
-        ? ([...queryKeys.reviewQueue.all, 'list'] as const)
-        : ([...queryKeys.reviewQueue.all, 'list', status] as const),
-    counts: () => [...queryKeys.reviewQueue.all, 'counts'] as const,
+    pending: () => [...queryKeys.reviewQueue.all, 'pending'] as const,
+    stats: () => [...queryKeys.reviewQueue.all, 'stats'] as const,
+    history: () => [...queryKeys.reviewQueue.all, 'history'] as const,
   },
 } as const
