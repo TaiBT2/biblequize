@@ -80,9 +80,10 @@
 > RoomQuiz hiện 1508 LOC, gộp 5 game mode (Battle Royale / Team vs Team / Classic / Survival / Quick Match) với state machine song song. Target: <800 LOC orchestrator + 5 hook mode-specific.
 
 - CQ-11 FE — Investigation: vẽ proposal `useGameMode` strategy
-  - Status: `[ ]` TODO · Files: `IMPL_NOTES.md` (append) — **read-only task, không sửa code**
-  - Output: design doc với state shape, event handlers, props contract cho từng mode
-  - Checklist: đọc RoomQuiz.tsx full · phân loại branching theo `gameMode` · viết proposal · user review trước CQ-12
+  - Status: `[x]` DONE · Files: [docs/dev/REFACTOR_ROOMQUIZ.md](docs/dev/REFACTOR_ROOMQUIZ.md) (new, read-only investigation)
+  - **Spec impact**: `[x]` None · **Spec strategy**: `[x]` (c) `[no-spec-impact]`
+  - Outcome: Identified 5 modes (Battle Royale / Team vs Team / Sudden Death / Sequential / Speed Race), proposed `GameModeStrategy` interface với 7 method, ước tính 920 LOC extract → RoomQuiz orchestrator ~580 LOC. CQ-13..17 renamed để match actual gameMode names trong code.
+  - **GATE**: User cần review design doc trước khi CQ-12 scaffolding bắt đầu.
 
 - CQ-12 FE — Extract `useGameMode` hook scaffolding + interface
   - Status: `[ ]` TODO · Files: `hooks/useGameMode.ts` (new), `hooks/gameModes/` (folder) · Test: vitest scaffold
