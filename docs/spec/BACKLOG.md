@@ -369,6 +369,24 @@
 - **Deferred follow-up:** `AuditLogService` integration (`ai.generate.deepseek`, `ai.fallback.triggered`, `group.ai_generate`); cost tracking; CloudWatch monthly-spend alarm; manual verify Bedrock pricing constants before prod.
 - **Status:** ✅ DONE 2026-05-12 — commits `d4f2f42` (Phase B BE), `c88d465` (Phase C FE), `1a2980a` (Phase D tests).
 
+### BL-AD-8 — Quiz Set Editor unified page
+- **Issue:** Modal 2-tab "AI tạo / Tự soạn" + metadata-only `QuizSetCreate.tsx` thay bằng 1 trang editor thống nhất — AI là tool button, không phải mode tách biệt. Question list sidebar 260px + main editor body.
+- **Spec impact:** SPEC_GROUP §6.B new (Quiz Set Editor Page); §6.A workflow paragraph reduced (delegates to §6.B).
+- **Decisions locked (D1-D10):** see `docs/prompts/PROMPT_QUIZ_SET_EDITOR_PAGE.md`. Q1-Q4 confirmed in `docs/audit/AUDIT_REPORT_QUIZSET_EDITOR.md`.
+- **Delivered:**
+  - 7 new endpoints in `ChurchGroupController.java` (per-question CRUD + reorder + set-scoped AI gen + per-question AI rewrite).
+  - New page `apps/web/src/pages/group/QuizSetEditor.tsx` + 9 sub-components in `pages/group/quizset-editor/`.
+  - API client extended (`api/quizSets.ts`): getQuizSetFull, addQuestion, updateQuestion, deleteQuestion, reorderQuestions, aiGenerateForSet, aiRewriteQuestion.
+  - Auto-save: debounce 2s + force 30s + tab-close + React Router blocker.
+  - Mobile responsive (CSS media queries < 768px).
+  - Deleted: `CreateQuizSetModal.tsx` (774 LOC) + `QuizSetCreate.tsx` (510 LOC); GroupDetail.tsx modal state/handlers (~280 LOC) removed.
+- **Question.source convention:** `ai-group` (AI in group editor), `group-custom` (manual in group editor).
+- **Deferred follow-up:**
+  - BL-AD-9: Bible verse preview card under scripture ref input (requires new `BookController` endpoint to return verse text). Mockup desktop shows italic gold card but ships without preview.
+  - "AI sinh tương tự" + "AI gợi ý đáp án nhiễu" (D8 v2).
+  - RN port of editor (mobile parity beyond responsive web).
+- **Status:** ✅ DONE 2026-05-13 — commits `58c05c7` (Phase A+B), `e4de3e4` (Phase C-H), this commit (Phase I).
+
 ---
 
 ## Cross-references

@@ -579,6 +579,12 @@ Quiz Set có thể chơi với **bất kỳ** trong 5 modes của SPEC_MULTIPLAY
 
 **Sprint 4 integration:** Tất cả live rooms từ Quiz Set tự động dùng Quản trò mode (`hostPlaysGame=false`) — host điều phối, không chơi.
 
+**Quick actions on Quiz Set card (added 2026-05-10):** Trong màn hình Quiz Set list ([apps/web/src/pages/group/QuizSetList.tsx](../../apps/web/src/pages/group/QuizSetList.tsx)), mỗi card `PUBLISHED` hiển thị 2 button shortcut ở footer:
+- **👥 Chơi cùng** — mở `ModePickerModal` (5 multiplayer modes + scheduled). Visible cho mọi role. Picking mode → `POST /api/groups/{id}/live-rooms` → navigate `/room/{code}`.
+- **📅 Đặt lịch** — navigate `/groups/{id}/scheduled-quizzes/new?quizSetId={setId}`. **Chỉ hiện cho LEADER/MOD** (member không thấy nút).
+
+Card click area (ngoài 2 button) → navigate quiz set detail. Button click stops propagation. Card không hiện 2 button khi `publishStatus !== 'PUBLISHED'`. Solo Practice không có shortcut trên card (vẫn truy cập từ detail page) để giữ card gọn.
+
 ### 6.3 Personal Mastery (Sprint 5) — Q-A safe
 
 **Tự ôn solo (member)**: vào Practice mode với câu hỏi từ quiz set.
@@ -627,12 +633,7 @@ LEADER/MOD có thể dùng AI để tạo draft câu hỏi cho quiz set của nh
 
 **Endpoint:** `POST /api/groups/{id}/ai-generate` (`ChurchGroupController.java:932+`).
 
-**Workflow:**
-1. LEADER/MOD mở modal "Tạo bộ câu hỏi mới" → tab "AI Tạo".
-2. Nhập: tên bộ, sách Kinh Thánh, chương, câu, chủ đề, số câu (1-15), độ khó.
-3. Submit → BE calls `AIProviderRouter` với default provider (DeepSeek V3.2 via Bedrock).
-4. Drafts trả về inline trong modal → leader review/edit.
-5. Leader bấm "Lưu bộ câu hỏi" → `POST /api/groups/{id}/quiz-sets/custom` với `source='group-custom', isActive=false`.
+**Workflow:** Tích hợp trong Quiz Set Editor page (§6.B). Modal 2-tab cũ đã được thay thế — xem §6.B.
 
 **Không có:**
 - Model selector — group leader luôn dùng default provider (D3); selector chỉ admin thấy ở `/admin/ai-generator`.
@@ -643,6 +644,65 @@ LEADER/MOD có thể dùng AI để tạo draft câu hỏi cho quiz set của nh
 **Permission:** Chỉ LEADER hoặc MOD của nhóm đó (`requireLeaderOrMod`). MEMBER → 403.
 
 **Response:** `{ success: true, questions: [...], provider: "deepseek" }` (provider field surfaced cho debug/audit; FE không hiển thị).
+
+### 6.B Quiz Set Editor Page (BL-AD-8, 2026-05-13)
+
+Thay thế modal 2-tab "AI tạo / Tự soạn" cũ. Mọi việc create/edit câu hỏi đều thực hiện trên 1 trang editor thống nhất.
+
+**Routes:**
+- `/groups/{groupId}/quiz-sets/new` — create. Auto-tạo DRAFT trống rồi redirect.
+- `/groups/{groupId}/quiz-sets/{setId}/edit` — edit existing.
+
+**Permission:** LEADER/MOD của nhóm. MEMBER → 403.
+
+**Layout (per mockup canonical `docs/mockups/quiz_set_editor_unified_page.html`):**
+- Top bar: back · tên bộ · status badge (NHÁP/ĐÃ XUẤT BẢN, hiện "Đã lưu Ns trước") · pill AI quota · Lưu nháp · Xuất bản
+- Metadata accordion: tên · sách (dropdown 66 books) · chapter range
+- Body 2-col (260px sidebar | editor):
+  - Sidebar: DistributionBar (dễ/TB/khó count) → question list (border-left 3px difficulty, ✓/⚠ status icon, ✨ AI / ✏️ manual source icon, "ĐANG SỬA" pill on active) → 2 buttons "⚡ AI tạo nháp" + "+ Thêm thủ công"
+  - Editor: header (#N · difficulty segmented · AI viết lại / Copy / Delete) → textarea câu hỏi → 4 đáp án A/B/C/D (radio circle để pick correct, ANSWER_OPTION_COLORS canonical) → grid 2-col explanation + scripture ref input
+
+**Mobile (per `quiz_set_editor_mobile.html`):** < 768px stack 1 cột. Metadata bar collapsed → button "Sửa" (deferred to dedicated sheet). Progress segments thay sidebar. Bottom: sticky 3-row action bar (prev/next · AI tạo nháp / Thêm tay · Xuất bản full-width).
+
+**AI integration:**
+- "⚡ AI tạo nháp" (sidebar): mở `AIGeneratePanel` với 3 steppers Dễ/TB/Khó (mỗi tier 0-15) + presets ("Đều nhau", "40/40/20"). Submit → `POST /quiz-sets/{setId}/ai-generate` (D4: auto-link vào set, source=`ai-group`).
+- "AI viết lại" per câu: mở `AIRewriteModal` side-by-side old/new. Submit → `POST /quiz-sets/{setId}/questions/{qid}/ai-rewrite` (return draft WITHOUT save). User accept → frontend patches.
+- KHÔNG có concept "AI mode" vs "Manual mode" — AI là tool button trong editor thống nhất.
+
+**Workflow statuses (Sprint 5 reuse):**
+- DRAFT: auto-save mỗi 30s + debounce 2s on field change; members không thấy
+- PUBLISHED: members thấy + play được
+- ARCHIVED: ẩn nhưng giữ kết quả cũ
+- SOFT_DELETED: 30 ngày hard delete
+
+**Auto-save:**
+- Field change → debounce 2s → `PATCH /quiz-sets/{setId}/questions/{qid}` (per-question) hoặc `PATCH /quiz-sets/{setId}` (metadata)
+- 30s interval → forced flush
+- Question switch / tab close / route navigate → React Router blocker prompt nếu pending; force flush trước proceed
+
+**Validation (block Publish via PublishConfirmModal):**
+- Tên bộ ≥ 3 ký tự
+- ≥ 1 câu hỏi (BE rule hiện vẫn ≥ 5 — sẽ thống nhất Sprint 6+)
+- Mỗi câu valid: content ≥ 10 chars · 4 options ≥ 1 char · correct marked · explanation ≥ 20 chars
+
+**Endpoints (BL-AD-8 Phase B):**
+- `GET    /api/groups/{gid}/quiz-sets/{sid}/full` — fetch set + questions inline
+- `POST   /api/groups/{gid}/quiz-sets/{sid}/questions` — add 1 câu
+- `PATCH  /api/groups/{gid}/quiz-sets/{sid}/questions/{qid}` — partial update
+- `DELETE /api/groups/{gid}/quiz-sets/{sid}/questions/{qid}` — remove + filter
+- `POST   /api/groups/{gid}/quiz-sets/{sid}/questions/reorder` — overwrite order
+- `POST   /api/groups/{gid}/quiz-sets/{sid}/ai-generate` — set-scoped (auto-link, source=`ai-group`)
+- `POST   /api/groups/{gid}/quiz-sets/{sid}/questions/{qid}/ai-rewrite` — return draft, no save
+
+**Removed from spec:**
+- Modal "Tạo bộ câu hỏi" 2-tab "AI tạo / Tự soạn" — fully replaced. File `apps/web/src/components/group/CreateQuizSetModal.tsx` deleted.
+- Metadata-only `QuizSetCreate.tsx` page — replaced bởi unified editor.
+
+**Question.source convention:**
+- `ai-group` — AI-generated trong group context (qua editor)
+- `group-custom` — manual entry trong group context
+- `ai-generated` — admin-curated từ AI tool (admin-only)
+- `admin` — admin-seeded manually
 
 ### 6.5 Edge cases
 
