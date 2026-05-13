@@ -63,10 +63,11 @@
   - **Done**: SectionHeader = 3×14px gold gradient accent bar + 11px sans 700 ivory uppercase tracked 0.16em + optional 11px ivory-faint meta right. DailyCompletedStrip = sage `rgba(74,107,82,0.10)` bg + sage border, 32px check circle, score "X/Y đúng — Giỏi lắm!" (helper `scoreMessage` chia ngưỡng 80/60/0), sub line "Hôm nay · {trailing} · Thử thách mới sau {countdown}" với tabular-nums countdown, glass button "Xem lại bài làm".
 
 - HR-7 Home.tsx refactor — dynamic hierarchy state-aware layout
-  - Status: `[ ]` TODO · Files: `apps/web/src/pages/Home.tsx` + `__tests__/Home.test.tsx` · Test: Vitest update + 5 new tests
+  - Status: `[x]` DONE · Files: `Home.tsx` rewrite + `__tests__/Home.test.tsx` rewrite · Test: 26/26 (was 37)
   - **Spec impact**: `[x]` None (refactor presentation, business logic không đổi)
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Checklist: impl · state-aware render · Tầng 2 (Home tests) pass · manual UI 2 states · commit `feat: HR-7 Home dynamic hierarchy (state-aware layout)` · STOP
+  - Checklist: [x] impl state-aware render · [x] remove Leaderboard inline + ActivityFeed + TierPerksTeaser + GameModeGrid + FeaturedDailyChallenge imports · [x] integrate HomeBanner + FeaturedDailyCard + HeroRankedCard + RankedStandardCard + DailyCompletedStrip + SectionHeader · [x] preserve MotivationCard slotting (sau Daily, trước Missions, gated shouldShowMotivation) · [x] preserve DailyMissionsCard `!isNewUser` gate · [x] preserve BibleJourneyCard + DailyVerseBanner (HR-8 sẽ thay verse) · [x] Home.test rewrite (26 tests new) · [x] build pass · [ ] commit
+  - **Done**: Home.tsx (~280 LOC vs 334 cũ). State A flow: HomeBanner → FeaturedDailyCard → (Motivation if shown) → (Missions if !isNewUser) → "Chế độ chơi chính" 2-col [Practice + RankedStandardCard] → "Chế độ đa dạng" 3-col [Weekly/Mystery/Speed] → "Thi đấu cộng đồng" 3-col → Journey+Verse 2-col. State B flow: HomeBanner → DailyCompletedStrip → HeroRankedCard → (Motivation if shown) → (Missions if !isNewUser) → "Khám phá thêm" 4-col [Practice/Weekly/Mystery/Speed] → "Thi đấu cộng đồng" 3-col → Journey+Verse 2-col. Internal countdown via setInterval(1000). Removed 5 imports (GameModeGrid, FeaturedDailyChallenge, ActivityFeed, TierPerksTeaser, EmptyLeaderboardCTA + inline LeaderboardRow). Removed `useState(lbPeriod)`, `lbData`, `rankData` queries.
 
 - HR-8 Verse footer (drop cap + ornament Cormorant Garamond italic)
   - Status: `[ ]` TODO · Files: `apps/web/src/components/VerseFooter.tsx` + test · Test: Vitest 4 tests

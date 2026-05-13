@@ -1,333 +1,376 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
-import ActivityFeed from '../components/ActivityFeed'
+
 import BibleJourneyCard from '../components/BibleJourneyCard'
 import ComebackModal from '../components/ComebackModal'
+import CompactCard from '../components/CompactCard'
 import DailyBonusModal from '../components/DailyBonusModal'
+import DailyCompletedStrip from '../components/DailyCompletedStrip'
 import DailyMissionsCard from '../components/DailyMissionsCard'
-import EmptyLeaderboardCTA from '../components/EmptyLeaderboardCTA'
-import FeaturedDailyChallenge from '../components/FeaturedDailyChallenge'
 import DailyVerseBanner from '../components/DailyVerseBanner'
-import GameModeGrid from '../components/GameModeGrid'
+import FeaturedDailyCard from '../components/FeaturedDailyCard'
+import HeroRankedCard from '../components/HeroRankedCard'
 import HomeBanner from '../components/HomeBanner'
 import MotivationCard from '../components/MotivationCard'
-import TierPerksTeaser from '../components/TierPerksTeaser'
+import RankedStandardCard from '../components/RankedStandardCard'
+import SectionHeader from '../components/SectionHeader'
 import TutorialOverlay from '../components/TutorialOverlay'
-import { useAuthStore } from '../store/authStore'
 import { api } from '../api/client'
-import { getTierInfo, getTierByPoints } from '../data/tiers'
+
+/* ── Helpers ── */
+function msUntilMidnightUtc(): number {
+  const now = new Date()
+  const next = new Date(
+    Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 0, 0, 0)
+  )
+  return next.getTime() - now.getTime()
+}
+
+function formatHHMMSS(ms: number): string {
+  if (ms <= 0) return '00:00:00'
+  const h = Math.floor(ms / 3_600_000)
+  const m = Math.floor((ms % 3_600_000) / 60_000)
+  const s = Math.floor((ms % 60_000) / 1_000)
+  return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
+}
 
 /* ── Skeleton ── */
 function HomeSkeleton() {
   return (
-    <div className="space-y-8 animate-pulse">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 h-[200px] rounded-2xl bg-surface-container" />
-        <div className="h-[200px] rounded-2xl bg-surface-container-low" />
-      </div>
-      <div className="h-8 w-48 rounded-lg bg-surface-container" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[1, 2, 3, 4, 5, 6].map(i => <div key={i} className="h-48 rounded-2xl bg-surface-container" />)}
-      </div>
-      <div className="grid grid-cols-12 gap-6">
-        <div className="col-span-8 h-80 rounded-2xl bg-surface-container" />
-        <div className="col-span-4 h-80 rounded-2xl bg-surface-container-low" />
+    <div className="space-y-5 animate-pulse">
+      <div className="h-[160px] rounded-[22px] bg-[rgba(40,32,28,0.4)]" />
+      <div className="h-[140px] rounded-2xl bg-[rgba(40,32,28,0.4)]" />
+      <div className="h-[180px] rounded-2xl bg-[rgba(40,32,28,0.3)]" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+        <div className="h-[140px] rounded-2xl bg-[rgba(40,32,28,0.3)]" />
+        <div className="h-[140px] rounded-2xl bg-[rgba(40,32,28,0.3)]" />
       </div>
     </div>
   )
 }
 
+/* ── Card configs (extracted from GameModeGrid for inline render) ── */
+interface ModeConfig {
+  id: string
+  icon: string
+  iconFill?: boolean
+  themeHex: string
+  titleKey: string
+  subtitleKey: string
+  route: string
+  /** Tier-locked threshold. Card click is disabled below this. */
+  lockedUntilPoints?: number
+  lockedUnlockTierKey?: string
+}
+
+const PRACTICE_CARD: ModeConfig = {
+  id: 'practice',
+  icon: 'menu_book',
+  iconFill: true,
+  themeHex: '#6AB8E8',
+  titleKey: 'gameModes.practice',
+  subtitleKey: 'home.compactSubtitles.practice',
+  route: '/practice',
+}
+
+const VARIETY_CARDS: ModeConfig[] = [
+  {
+    id: 'weekly',
+    icon: 'event',
+    iconFill: true,
+    themeHex: '#a855f7',
+    titleKey: 'gameModes.weekly',
+    subtitleKey: 'home.compactSubtitles.weekly',
+    route: '/weekly-quiz',
+  },
+  {
+    id: 'mystery',
+    icon: 'casino',
+    iconFill: true,
+    themeHex: '#d4537e',
+    titleKey: 'gameModes.mystery',
+    subtitleKey: 'home.compactSubtitles.mystery',
+    route: '/mystery-mode',
+  },
+  {
+    id: 'speed',
+    icon: 'speed',
+    iconFill: true,
+    themeHex: '#ff8c42',
+    titleKey: 'gameModes.speed',
+    subtitleKey: 'home.compactSubtitles.speed',
+    route: '/speed-round',
+  },
+]
+
+const GROUP_CARDS: ModeConfig[] = [
+  {
+    id: 'group',
+    icon: 'church',
+    themeHex: '#4a9eff',
+    titleKey: 'gameModes.groups',
+    subtitleKey: 'home.compactSubtitles.group',
+    route: '/groups',
+  },
+  {
+    id: 'multiplayer',
+    icon: 'gamepad',
+    themeHex: '#9b59b6',
+    titleKey: 'gameModes.rooms',
+    subtitleKey: 'home.compactSubtitles.multiplayer',
+    route: '/multiplayer',
+  },
+  {
+    id: 'tournament',
+    icon: 'trophy',
+    themeHex: '#ff6b6b',
+    titleKey: 'gameModes.tournament',
+    subtitleKey: 'home.compactSubtitles.tournament',
+    route: '/tournaments',
+    lockedUntilPoints: 15_000,
+    lockedUnlockTierKey: 'tiers.sage',
+  },
+]
+
+const MATCHMAKING_HINT_MODES = new Set(['tournament', 'multiplayer'])
+
 /* ── Main ── */
 export default function Home() {
   const { t, i18n } = useTranslation()
-  const { user } = useAuthStore()
-  const [lbPeriod, setLbPeriod] = useState<'daily' | 'weekly'>('daily')
+  const navigate = useNavigate()
   const dcLang = (i18n.language === 'en' ? 'en' : 'vi') as 'vi' | 'en'
 
-  // TanStack Query: user profile
+  // Tick once per second to refresh the countdown shown in the Daily strip
+  // and (when daily is not done) the FeaturedDailyCard countdown override.
+  const [, setTick] = useState(0)
+  useEffect(() => {
+    const id = setInterval(() => setTick(t => t + 1), 1000)
+    return () => clearInterval(id)
+  }, [])
+
   const { data: meData, isLoading: meLoading } = useQuery({
     queryKey: ['me'],
     queryFn: () => api.get('/api/me').then(r => r.data),
-    staleTime: 5 * 60_000, // 5 min
+    staleTime: 5 * 60_000,
   })
 
-  // Shared cache with FeaturedDailyChallenge — gate MotivationCard on
-  // alreadyCompleted so users who have already played today don't see the
-  // "Bước 1" nudge.
-  const { data: dcData, isLoading: dcLoading } = useQuery<{ alreadyCompleted?: boolean }>({
-    queryKey: ['daily-challenge', dcLang],
-    queryFn: () => api.get(`/api/daily-challenge?language=${dcLang}`).then(r => r.data),
-    staleTime: 60_000,
-  })
-
-  // Shared cache with DailyMissionsCard — gate MotivationCard on whether
-  // the user has completed at least one mission today.
-  const { data: missionsData, isLoading: missionsLoading } = useQuery<{ missions?: Array<{ completed: boolean }> }>({
-    queryKey: ['daily-missions'],
-    queryFn: () => api.get('/api/me/daily-missions').then(r => r.data),
-    staleTime: 30_000,
-  })
-
-  // TanStack Query: tier progress (includes totalPoints)
   const { data: tierData } = useQuery({
     queryKey: ['me-tier-progress'],
     queryFn: () => api.get('/api/me/tier-progress').then(r => r.data),
     staleTime: 60_000,
   })
 
-  // TanStack Query: leaderboard
-  const { data: lbData, isLoading: lbLoading, isFetching: lbFetching } = useQuery({
-    queryKey: ['home-leaderboard', lbPeriod],
-    queryFn: () => api.get(`/api/leaderboard/${lbPeriod}?size=5`).then(r => r.data),
-    staleTime: 30_000,
-    keepPreviousData: true,
+  const { data: dcData, isLoading: dcLoading } = useQuery<{
+    alreadyCompleted?: boolean
+    totalQuestions?: number
+  }>({
+    queryKey: ['daily-challenge', dcLang],
+    queryFn: () => api.get(`/api/daily-challenge?language=${dcLang}`).then(r => r.data),
+    staleTime: 60_000,
   })
 
-  // TanStack Query: my rank
-  const { data: rankData } = useQuery({
-    queryKey: ['home-my-rank', lbPeriod],
-    queryFn: () => api.get(`/api/leaderboard/${lbPeriod}/my-rank`).then(r => r.data),
+  const { data: dcResult } = useQuery<{
+    correctCount?: number
+    totalQuestions?: number
+  }>({
+    queryKey: ['daily-challenge-result'],
+    queryFn: () => api.get('/api/daily-challenge/result').then(r => r.data),
+    enabled: !!dcData?.alreadyCompleted,
+    staleTime: 60_000,
+  })
+
+  const { data: rankedStatus } = useQuery<{
+    livesRemaining?: number
+    dailyLives?: number
+    questionsCounted?: number
+    cap?: number
+  }>({
+    queryKey: ['ranked-status'],
+    queryFn: () => api.get('/api/me/ranked-status').then(r => r.data),
+    staleTime: 60_000,
+  })
+
+  const { data: missionsData, isLoading: missionsLoading } = useQuery<{
+    missions?: Array<{ completed: boolean }>
+  }>({
+    queryKey: ['daily-missions'],
+    queryFn: () => api.get('/api/me/daily-missions').then(r => r.data),
     staleTime: 30_000,
   })
 
-  if (meLoading && lbLoading) return <HomeSkeleton />
+  if (meLoading) return <HomeSkeleton />
 
   const totalPoints = tierData?.totalPoints ?? meData?.totalPoints ?? 0
-  const leaderboard: any[] = Array.isArray(lbData) ? lbData : []
-  const myRank = rankData?.rank ?? null
-  const userName = user?.name || t('home.defaultName')
-
-  // The leaderboard API returns the top-N users in rank order (rank = index+1).
-  // If the current user's rank falls within that range, they are already
-  // visible in the list above — rendering the sticky "Bạn" row a second
-  // time is just duplication. Only show the sticky row when rank is
-  // BEYOND the displayed window (around-me pattern).
-  const isCurrentUserVisibleInList = myRank != null && myRank <= leaderboard.length
-  const showMyRankSticky = myRank != null && !isCurrentUserVisibleInList
-  const tier = getTierInfo(totalPoints)
-  // Tier level 1..6 — passed into TierPerksTeaser to highlight next-tier perks.
-  const userTierLevel = tier.current.id
-  // HR-6: gate Daily Missions / Leaderboard / Activity on having reached
-  // Tier 2 (Người Tìm Kiếm, 1000 XP). Until then, show MotivationCard
-  // instead — see DECISIONS.md "User mới = totalPoints<1000".
+  const dailyDone = !!dcData?.alreadyCompleted
+  const dailyCorrect = dcResult?.correctCount ?? 0
+  const dailyTotal = dcResult?.totalQuestions ?? dcData?.totalQuestions ?? 5
+  const energyRemaining = rankedStatus?.livesRemaining ?? 100
+  const energyMax = rankedStatus?.dailyLives ?? 100
+  const rankedAnswered = rankedStatus?.questionsCounted ?? 0
+  const rankedCap = rankedStatus?.cap ?? 100
   const isNewUser = totalPoints < 1000
 
-  // MotivationCard ("Bước 1") is a first-time-user nudge. Hide it as soon
-  // as the user shows any engagement signal — DC completed today, an
-  // active streak, or any mission ticked. Default to hidden while data is
-  // loading so returning users don't see a flash of the card.
-  const dcCompletedToday = !!dcData?.alreadyCompleted
+  // MotivationCard ("Bước 1") onboarding nudge — only for brand-new users
+  // showing zero engagement signals. Hides as soon as the user plays
+  // Daily, starts a streak, or completes a mission.
   const hasStreak = (meData?.currentStreak ?? 0) > 0
   const hasCompletedMission = !!missionsData?.missions?.some(m => m.completed)
   const motivationDataReady = !meLoading && !dcLoading && !missionsLoading
   const shouldShowMotivation =
     isNewUser &&
     motivationDataReady &&
-    !dcCompletedToday &&
+    !dailyDone &&
     !hasStreak &&
     !hasCompletedMission
 
+  const countdown = formatHHMMSS(msUntilMidnightUtc())
+
+  const renderModeCard = (card: ModeConfig) => {
+    const isLocked =
+      typeof card.lockedUntilPoints === 'number' &&
+      totalPoints < card.lockedUntilPoints
+    return (
+      <CompactCard
+        key={card.id}
+        id={card.id}
+        icon={card.icon}
+        iconFill={card.iconFill}
+        themeHex={card.themeHex}
+        title={t(card.titleKey)}
+        subtitle={t(card.subtitleKey)}
+        onClick={() => navigate(card.route)}
+        matchmakingHint={
+          MATCHMAKING_HINT_MODES.has(card.id)
+            ? { title: t('home.matchmakingHint') }
+            : undefined
+        }
+        locked={
+          isLocked && card.lockedUnlockTierKey
+            ? {
+                reason: t('home.modeLocked.reason', {
+                  tier: t(card.lockedUnlockTierKey),
+                }) as string,
+              }
+            : undefined
+        }
+      />
+    )
+  }
+
   return (
-    <div data-testid="home-page" className="space-y-8 max-w-7xl mx-auto w-full">
+    <div data-testid="home-page" className="max-w-7xl mx-auto w-full">
       <ComebackModal />
       <DailyBonusModal />
       <TutorialOverlay />
-      {/* ── Banner (HR-2: replaces GreetingCard with sport-app typography) ── */}
+
       <HomeBanner />
 
-      {/* ── Featured Daily Challenge (hero CTA for tier-1) ── */}
-      <FeaturedDailyChallenge />
+      {/* ── Daily section: State A featured / State B completed strip ── */}
+      {dailyDone ? (
+        <DailyCompletedStrip
+          correctCount={dailyCorrect}
+          totalCount={dailyTotal}
+          countdownText={countdown}
+          onReview={() => navigate('/daily')}
+        />
+      ) : (
+        <FeaturedDailyCard onStart={() => navigate('/daily')} />
+      )}
 
-      {/* ── Motivation onboarding nudge (HR-6: only for new users with
-          zero engagement; hides as soon as the user plays today's DC,
-          starts a streak, or completes a mission) ── */}
-      {shouldShowMotivation && <MotivationCard />}
+      {/* ── State B: Hero Ranked promoted right after the Daily strip ── */}
+      {dailyDone && (
+        <HeroRankedCard
+          energyRemaining={energyRemaining}
+          energyMax={energyMax}
+          rankedAnswered={rankedAnswered}
+          rankedCap={rankedCap}
+          onEnter={() => navigate('/ranked')}
+        />
+      )}
 
-      {/* ── Game Modes (HR-4b: outer wrapper header removed; section
-          headers live inside GameModeGrid per mockup). The Bible Basics
-          catechism gate (Ranked unlock) is surfaced inside the Ranked
-          card itself via RankedFeaturedCard. */}
-      <GameModeGrid
-        userStats={{
-          currentStreak: meData?.currentStreak,
-          totalPoints,
-        }}
-      />
+      {/* ── Motivation nudge — slotted between Daily and Missions per
+            Bui 2026-05-13. Only renders for new users with zero signals. */}
+      {shouldShowMotivation && (
+        <div className="mb-5">
+          <MotivationCard />
+        </div>
+      )}
 
-      {/* ── Daily Missions (HR-6: hidden for new users) ── */}
+      {/* ── Daily Missions — hidden for new users (gating preserved
+            from prior HR-6 behavior). */}
       {!isNewUser && (
-        <section>
-          <div data-testid="home-daily-missions"><DailyMissionsCard /></div>
+        <section data-testid="home-daily-missions" className="mb-5">
+          <DailyMissionsCard />
         </section>
       )}
 
-      {/* ── Verse + Journey 2-col (HR-5 — verse promoted from footer) ── */}
+      {/* ── State A: Chế độ chơi chính (Practice + Ranked-standard 2-col) ── */}
+      {!dailyDone && (
+        <>
+          <SectionHeader title="Chế độ chơi chính" />
+          <div
+            data-testid="home-primary-grid"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3.5"
+          >
+            {renderModeCard(PRACTICE_CARD)}
+            <RankedStandardCard
+              energyRemaining={energyRemaining}
+              rankedAnswered={rankedAnswered}
+              rankedCap={rankedCap}
+              onEnter={() => navigate('/ranked')}
+            />
+          </div>
+
+          <SectionHeader
+            title="Chế độ đa dạng"
+            meta="Không ảnh hưởng XP / xếp hạng"
+          />
+          <div
+            data-testid="home-variety-grid"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-3.5"
+          >
+            {VARIETY_CARDS.map(renderModeCard)}
+          </div>
+        </>
+      )}
+
+      {/* ── State B: Khám phá thêm (4-col flat) ── */}
+      {dailyDone && (
+        <>
+          <SectionHeader
+            title="Khám phá thêm"
+            meta="Luyện tập tự do — không tính XP"
+          />
+          <div
+            data-testid="home-explore-grid"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-3"
+          >
+            {renderModeCard(PRACTICE_CARD)}
+            {VARIETY_CARDS.map(renderModeCard)}
+          </div>
+        </>
+      )}
+
+      {/* ── Thi đấu cộng đồng (both states) ── */}
+      <SectionHeader title="Thi đấu cộng đồng" />
+      <div
+        data-testid="home-group-grid"
+        className="grid grid-cols-1 sm:grid-cols-3 gap-3.5"
+      >
+        {GROUP_CARDS.map(renderModeCard)}
+      </div>
+
+      {/* ── Verse + Journey 2-col (verse footer in HR-8 will collapse
+            this back to full-width footer; Journey moves above). */}
       <section
         data-testid="home-verse-journey"
-        className="grid grid-cols-1 lg:grid-cols-2 gap-4"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-7"
       >
         <DailyVerseBanner />
         <BibleJourneyCard />
       </section>
-
-      {/* ── Aspirational next-tier perks (returns null at tier 6) ── */}
-      <TierPerksTeaser userTier={userTierLevel} totalPoints={totalPoints} />
-
-      {/* ── Leaderboard + Activity (HR-6: hidden for new users) ── */}
-      {!isNewUser && (
-      <section
-        data-testid="home-leaderboard"
-        className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-2.5"
-      >
-        <div className="bg-[rgba(50,52,64,0.4)] rounded-2xl p-4 border border-secondary/15">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-on-surface text-[12px] md:text-[13px] font-medium">
-              {t('home.leaderboard')}
-            </h3>
-            <div className="flex gap-1 bg-black/30 rounded-md p-0.5">
-              <button
-                data-testid="leaderboard-tab-daily"
-                onClick={() => setLbPeriod('daily')}
-                className={`px-2 py-1 text-[9px] md:text-[10px] font-medium rounded transition-all ${
-                  lbPeriod === 'daily'
-                    ? 'bg-secondary text-on-secondary'
-                    : 'text-on-surface-variant/45'
-                }`}
-              >
-                {t('home.daily')}
-              </button>
-              <button
-                data-testid="leaderboard-tab-weekly"
-                onClick={() => setLbPeriod('weekly')}
-                className={`px-2 py-1 text-[9px] md:text-[10px] font-medium rounded transition-all ${
-                  lbPeriod === 'weekly'
-                    ? 'bg-secondary text-on-secondary'
-                    : 'text-on-surface-variant/45'
-                }`}
-              >
-                {t('home.weekly')}
-              </button>
-            </div>
-          </div>
-
-          <div
-            className={`flex flex-col gap-1.5 transition-opacity duration-200 ${
-              lbFetching ? 'opacity-50' : 'opacity-100'
-            }`}
-          >
-            {leaderboard.length === 0 ? (
-              <EmptyLeaderboardCTA />
-            ) : (
-              leaderboard.map((p: any, i: number) => (
-                <LeaderboardRow
-                  key={p.userId || i}
-                  rank={i + 1}
-                  name={p.name || p.userName || '?'}
-                  points={p.points || 0}
-                  isTop1={i === 0}
-                />
-              ))
-            )}
-            {showMyRankSticky && (
-              <LeaderboardRow
-                rank={myRank!}
-                name={userName}
-                points={totalPoints}
-                isCurrentUser
-              />
-            )}
-          </div>
-
-          <div className="text-center pt-2.5 mt-1.5 border-t border-white/[0.06]">
-            <Link
-              to="/leaderboard"
-              className="text-[10px] text-secondary hover:underline"
-            >
-              {t('home.viewAll')} →
-            </Link>
-          </div>
-        </div>
-
-        {/* Activity */}
-        <ActivityFeed userCreatedAt={meData?.createdAt} />
-      </section>
-      )}
-    </div>
-  )
-}
-
-interface LeaderboardRowProps {
-  rank: number
-  name: string
-  points: number
-  /** Top-1 row gets the gold-tinted bg + gold rank/XP. */
-  isTop1?: boolean
-  /** Current user row pinned via gold left border + you-suffix. */
-  isCurrentUser?: boolean
-}
-
-/**
- * One leaderboard row in the Home H7 list. Avatar background uses the
- * tier color from {@code data/tiers.ts} so the row at a glance signals
- * the player's standing — top of the list still differentiates by gold
- * accents on rank + XP.
- */
-function LeaderboardRow({ rank, name, points, isTop1, isCurrentUser }: LeaderboardRowProps) {
-  const { t } = useTranslation()
-  const tier = getTierByPoints(points)
-  const tierName = t(tier.nameKey)
-  const initial = (name || '?').charAt(0).toUpperCase()
-
-  const rowClass = isCurrentUser
-    ? 'bg-[rgba(232,168,50,0.04)] border-l-2 border-secondary rounded-r-md'
-    : isTop1
-      ? 'bg-[rgba(232,168,50,0.06)] rounded-md'
-      : ''
-
-  const accent = isTop1 || isCurrentUser
-
-  return (
-    <div
-      data-testid={isCurrentUser ? 'home-my-rank-sticky' : 'leaderboard-row'}
-      className={`flex items-center gap-2 md:gap-2.5 px-1.5 md:px-2 py-1.5 ${rowClass}`}
-    >
-      <span
-        className={`text-[10px] md:text-[11px] font-medium w-3.5 md:w-[18px] text-center shrink-0 ${
-          accent ? 'text-secondary' : 'text-on-surface-variant/45'
-        }`}
-      >
-        {isCurrentUser ? `#${rank}` : rank}
-      </span>
-      <div
-        className="w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-[9px] md:text-[10px] font-medium shrink-0"
-        style={{ background: tier.colorHex, color: '#11131e' }}
-      >
-        {initial}
-      </div>
-      <div className="flex-1 min-w-0">
-        <div
-          className={`text-[10px] md:text-[11px] truncate ${
-            accent ? 'text-on-surface font-medium' : 'text-on-surface/85'
-          }`}
-        >
-          {isCurrentUser ? t('home.you', { name }) : name}
-        </div>
-        <div
-          className="text-[8px] md:text-[9px] truncate"
-          style={{ color: tier.colorHex }}
-        >
-          {tierName}
-        </div>
-      </div>
-      <span
-        className={`text-[10px] md:text-[11px] font-medium shrink-0 ${
-          accent ? 'text-secondary' : 'text-on-surface/85'
-        }`}
-      >
-        {points.toLocaleString()}
-      </span>
     </div>
   )
 }
