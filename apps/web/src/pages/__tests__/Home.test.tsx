@@ -266,12 +266,14 @@ describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
       expect(screen.getByTestId('home-group-grid')).toBeInTheDocument()
     })
 
-    it('renders verse + journey 2-col block', async () => {
+    it('renders Journey then VerseFooter (full-width footer, no 2-col grid)', async () => {
       renderHome()
       await waitFor(() => {
-        expect(screen.getByTestId('home-verse-journey')).toBeInTheDocument()
+        expect(screen.getByTestId('home-journey')).toBeInTheDocument()
       })
-      expect(screen.getByTestId('home-daily-verse')).toBeInTheDocument()
+      expect(screen.getByTestId('verse-footer')).toBeInTheDocument()
+      // 2-col grid removed in HR-8
+      expect(screen.queryByTestId('home-verse-journey')).not.toBeInTheDocument()
     })
 
     it('does NOT render Leaderboard inline (removed in HR-7)', async () => {

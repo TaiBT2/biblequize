@@ -9,7 +9,6 @@ import CompactCard from '../components/CompactCard'
 import DailyBonusModal from '../components/DailyBonusModal'
 import DailyCompletedStrip from '../components/DailyCompletedStrip'
 import DailyMissionsCard from '../components/DailyMissionsCard'
-import DailyVerseBanner from '../components/DailyVerseBanner'
 import FeaturedDailyCard from '../components/FeaturedDailyCard'
 import HeroRankedCard from '../components/HeroRankedCard'
 import HomeBanner from '../components/HomeBanner'
@@ -17,6 +16,7 @@ import MotivationCard from '../components/MotivationCard'
 import RankedStandardCard from '../components/RankedStandardCard'
 import SectionHeader from '../components/SectionHeader'
 import TutorialOverlay from '../components/TutorialOverlay'
+import VerseFooter from '../components/VerseFooter'
 import { api } from '../api/client'
 
 /* ── Helpers ── */
@@ -362,15 +362,13 @@ export default function Home() {
         {GROUP_CARDS.map(renderModeCard)}
       </div>
 
-      {/* ── Verse + Journey 2-col (verse footer in HR-8 will collapse
-            this back to full-width footer; Journey moves above). */}
-      <section
-        data-testid="home-verse-journey"
-        className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-7"
-      >
-        <DailyVerseBanner />
+      {/* ── Journey (full-width) ── */}
+      <section data-testid="home-journey" className="mt-7">
         <BibleJourneyCard />
       </section>
+
+      {/* ── Verse footer (HR-8: Cormorant Garamond italic + drop cap) ── */}
+      <VerseFooter />
     </div>
   )
 }

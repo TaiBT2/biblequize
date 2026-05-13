@@ -70,10 +70,11 @@
   - **Done**: Home.tsx (~280 LOC vs 334 cũ). State A flow: HomeBanner → FeaturedDailyCard → (Motivation if shown) → (Missions if !isNewUser) → "Chế độ chơi chính" 2-col [Practice + RankedStandardCard] → "Chế độ đa dạng" 3-col [Weekly/Mystery/Speed] → "Thi đấu cộng đồng" 3-col → Journey+Verse 2-col. State B flow: HomeBanner → DailyCompletedStrip → HeroRankedCard → (Motivation if shown) → (Missions if !isNewUser) → "Khám phá thêm" 4-col [Practice/Weekly/Mystery/Speed] → "Thi đấu cộng đồng" 3-col → Journey+Verse 2-col. Internal countdown via setInterval(1000). Removed 5 imports (GameModeGrid, FeaturedDailyChallenge, ActivityFeed, TierPerksTeaser, EmptyLeaderboardCTA + inline LeaderboardRow). Removed `useState(lbPeriod)`, `lbData`, `rankData` queries.
 
 - HR-8 Verse footer (drop cap + ornament Cormorant Garamond italic)
-  - Status: `[ ]` TODO · Files: `apps/web/src/components/VerseFooter.tsx` + test · Test: Vitest 4 tests
+  - Status: `[x]` DONE · Files: `VerseFooter.tsx` + test + `global.css` ::first-letter rule + `Home.tsx` swap · Test: 6 + 26 = 32/32
   - **Spec impact**: `[x]` None
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Checklist: impl · `::first-letter` drop cap gold · em-dash cite · Tầng 1 pass · commit `feat: HR-8 Verse footer drop cap + ornament` · STOP
+  - Checklist: [x] impl · [x] `.hr-verse-text::first-letter` rule trong global.css (pseudo-element cần CSS, không inline được) · [x] font-verse Tailwind class (Cormorant Garamond italic) · [x] line + star + line ornament · [x] em-dash cite uppercase tracked 0.22em · [x] Home.tsx swap: DailyVerseBanner → VerseFooter, Journey full-width thay 2-col grid · [x] Home.test 1 assertion update · [ ] commit
+  - **Done**: VerseFooter component (~65 LOC) với `verse` + `source` props (default `getDailyVerse()` + "BTTHĐ 2011"). Drop cap qua `.hr-verse-text::first-letter` rule (3.4em gold + text-shadow). Ornament SVG star giữa 2 gold gradient lines. Cite em-dash `— Hê-bơ-rơ 13:5 · BTTHĐ 2011 —` uppercase tracked 0.22em ivory-dim. Home.tsx: remove DailyVerseBanner import, add VerseFooter, refactor verse-journey 2-col → Journey full-width + VerseFooter below.
 
 - HR-9 Phase 3: Full regression Tầng 3 + manual 2-state QA
   - Status: `[ ]` TODO · Files: N/A (test runner) · Test: full `vitest run` + manual UI
