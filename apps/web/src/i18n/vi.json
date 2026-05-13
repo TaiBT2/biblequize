@@ -34,8 +34,8 @@
     "nav": {
       "home": "Trang chủ",
       "daily": "Hằng ngày",
-      "practice": "Luyện tập",
-      "ranked": "Leo Rank",
+      "practice": "Luyện Tập",
+      "ranked": "Đấu Hạng",
       "multiplayer": "Multiplayer",
       "groups": "Nhóm",
       "leaderboard": "Bảng xếp hạng"
@@ -901,7 +901,7 @@
     "items": {
       "howToPlay": {
         "q": "Làm sao để bắt đầu chơi?",
-        "a": "Bắt đầu với chế độ Luyện Tập — không giới hạn thời gian, không tốn năng lượng. Chọn sách Kinh Thánh, độ khó, số câu rồi bấm Bắt Đầu. Luyện Tập là path onboarding: không trực tiếp cho XP. Khi bạn sẵn sàng cho Thi Đấu Xếp Hạng, hãy hoàn thành Bài Giáo Lý Căn Bản (10 câu cơ bản về đức tin Cơ-đốc, đúng tối thiểu 8/10) để mở khóa — pass 1 lần là vĩnh viễn. Vào được Xếp Hạng, bạn mới bắt đầu tích XP để lên tier."
+        "a": "Bắt đầu với chế độ Luyện Tập — không giới hạn thời gian, không tốn năng lượng. Chọn sách Kinh Thánh, độ khó, số câu rồi bấm Bắt Đầu. Luyện Tập là path onboarding: không trực tiếp cho XP. Khi bạn sẵn sàng cho Đấu Hạng, hãy hoàn thành Bài Giáo Lý Căn Bản (10 câu cơ bản về đức tin Cơ-đốc, đúng tối thiểu 8/10) để mở khóa — pass 1 lần là vĩnh viễn. Vào được Xếp Hạng, bạn mới bắt đầu tích XP để lên tier."
       },
       "bibleTranslation": {
         "q": "Bible Quiz dùng bản dịch Kinh Thánh nào?",
@@ -920,16 +920,16 @@
         "a": "Đây là 2 loại 'tiền tệ' hoàn toàn độc lập trong app. XP là đường progression chính — chỉ kiếm được từ Ranked mode, quyết định tier (1-6), mở khóa chế độ mới, scale phần thưởng, vị trí leaderboard, và unlock cosmetics. Streak là reward engagement — tăng khi bạn chơi Ranked (và sắp tới là Daily) mỗi ngày, không liên quan performance. Bạn có thể có streak cao nhưng tier thấp (user siêng chơi Daily nhưng chưa giỏi Ranked), hoặc ngược lại (user giỏi Ranked nhưng chơi rải rác). Cả hai đều có giá trị riêng: streak thể hiện sự bền bỉ đức tin, XP thể hiện mức độ thông thạo Kinh Thánh."
       },
       "howUnlockRanked": {
-        "q": "Thi Đấu Xếp Hạng mở khóa khi nào?",
+        "q": "Đấu Hạng mở khóa khi nào?",
         "a": "Hoàn thành Bài Giáo Lý Căn Bản — 10 câu hỏi cơ bản về đức tin Cơ-đốc (Ba Ngôi, đặc tính Đức Chúa Trời, Christology, sự cứu rỗi bởi đức tin, v.v.). Đúng tối thiểu 8/10 là pass — và pass 1 lần là mở khóa Xếp Hạng vĩnh viễn. Nếu chưa pass, có cooldown 60 giây giữa các lần thử. Sau khi mở khóa Xếp Hạng, bạn bắt đầu tích XP để lên tier tiếp theo."
       },
       "howEarnXp": {
         "q": "XP kiếm từ đâu và có mất không?",
-        "a": "Hai nguồn XP: (1) Thi Đấu Xếp Hạng — mỗi câu đúng Easy +8, Medium +12, Hard +18, cộng bonus tốc độ và combo 1.2/1.5× (nguồn chính, 100-500 XP/session). (2) Thử Thách Ngày — hoàn thành 1 lần/ngày cộng +50 XP (max 1,500 XP/tháng, giúp user casual vẫn tiến triển). Luyện Tập và các mode khác không tích XP — chúng đóng góp vào lịch sử câu hỏi, streak, và path mở khóa sớm. Câu sai không mất XP (chỉ mất năng lượng ở Ranked). Lifetime XP chỉ tăng, không bao giờ reset."
+        "a": "Hai nguồn XP: (1) Đấu Hạng — mỗi câu đúng Easy +8, Medium +12, Hard +18, cộng bonus tốc độ và combo 1.2/1.5× (nguồn chính, 100-500 XP/session). (2) Thử Thách Ngày — hoàn thành 1 lần/ngày cộng +50 XP (max 1,500 XP/tháng, giúp user casual vẫn tiến triển). Luyện Tập và các mode khác không tích XP — chúng đóng góp vào lịch sử câu hỏi, streak, và path mở khóa sớm. Câu sai không mất XP (chỉ mất năng lượng ở Ranked). Lifetime XP chỉ tăng, không bao giờ reset."
       },
       "practiceVsRanked": {
-        "q": "Luyện Tập khác Thi Đấu Xếp Hạng thế nào?",
-        "a": "Luyện Tập: miễn phí, không giới hạn, chọn sách/độ khó tùy ý, hiển thị giải thích sau mỗi câu, có thể dùng Gợi Ý vô hạn. Thi Đấu Xếp Hạng: tốn năng lượng (5/câu sai), câu hỏi random, không chọn sách, nhưng leo leaderboard chỉ tính từ chế độ này. Practice để học, Ranked để đua."
+        "q": "Luyện Tập khác Đấu Hạng thế nào?",
+        "a": "Luyện Tập: miễn phí, không giới hạn, chọn sách/độ khó tùy ý, hiển thị giải thích sau mỗi câu, có thể dùng Gợi Ý vô hạn. Đấu Hạng: tốn năng lượng (5/câu sai), câu hỏi random, không chọn sách, nhưng leo leaderboard chỉ tính từ chế độ này. Practice để học, Ranked để đua."
       },
       "dailyStreak": {
         "q": "Thử Thách Ngày và Streak hoạt động ra sao?",
@@ -941,7 +941,7 @@
       },
       "energySystem": {
         "q": "Năng lượng (⚡) hoạt động như thế nào?",
-        "a": "Mỗi ngày được 100 năng lượng. Thi Đấu Xếp Hạng: trả lời sai mất 5 năng lượng, trả lời đúng không mất. Hết năng lượng không chơi Ranked được nữa — chuyển sang Luyện Tập (miễn phí) hoặc chờ reset nửa đêm. Regen theo hạng: Tân Tín Hữu 20/giờ, Hiền Triết 28/giờ, Sứ Đồ 35/giờ."
+        "a": "Mỗi ngày được 100 năng lượng. Đấu Hạng: trả lời sai mất 5 năng lượng, trả lời đúng không mất. Hết năng lượng không chơi Ranked được nữa — chuyển sang Luyện Tập (miễn phí) hoặc chờ reset nửa đêm. Regen theo hạng: Tân Tín Hữu 20/giờ, Hiền Triết 28/giờ, Sứ Đồ 35/giờ."
       },
       "lifelines": {
         "q": "Gợi Ý (Lifeline) dùng khi nào và như thế nào?",
@@ -1867,7 +1867,7 @@
       "backHome": "Quay lại trang chủ",
       "passTitle": "Chúc mừng!",
       "passSubtitle": "Bạn đã đúng {{correct}}/{{total}} câu — vượt qua Bài Giáo Lý Căn Bản.",
-      "passUnlock": "Đã mở khóa: Thi Đấu Xếp Hạng",
+      "passUnlock": "Đã mở khóa: Đấu Hạng",
       "passCta": "Bắt đầu Ranked ngay",
       "failTitle": "Bạn đúng {{correct}}/{{total}} câu — chưa đủ",
       "failSubtitle": "Cần đúng tối thiểu {{threshold}} để pass. Hãy ôn lại bài bên dưới rồi thử lại.",
@@ -1882,9 +1882,9 @@
     },
     "card": {
       "passedBadge": "Đã hoàn thành Bài Giáo Lý",
-      "rankedHeader": "Thi Đấu Xếp Hạng",
+      "rankedHeader": "Đấu Hạng",
       "rankedDescription": "Tranh tài trực tiếp, kiếm điểm rank lớn.",
-      "unlockHeader": "Hoàn thành Bài Giáo Lý Căn Bản để mở khóa Thi Đấu Xếp Hạng",
+      "unlockHeader": "Hoàn thành Bài Giáo Lý Căn Bản để mở khóa Đấu Hạng",
       "subtitle": "{{total}} câu hỏi cơ bản về đức tin Cơ-đốc — đúng tối thiểu {{threshold}} để pass.",
       "attemptCount": "Đã thử: {{count}} lần",
       "attemptCount_one": "Đã thử: {{count}} lần",
@@ -2183,7 +2183,7 @@
     }
   },
   "ranked": {
-    "title": "Thi Đấu Xếp Hạng",
+    "title": "Đấu Hạng",
     "today": "Hôm Nay",
     "points": "điểm",
     "energy": "Năng lượng",

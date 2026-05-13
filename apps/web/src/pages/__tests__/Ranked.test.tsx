@@ -114,7 +114,7 @@ describe('Ranked Mode Dashboard', () => {
   it('renders header with title and tier', async () => {
     renderRanked()
     await waitFor(() => {
-      expect(screen.getByText('Thi Đấu Xếp Hạng')).toBeInTheDocument()
+      expect(screen.getByText('Đấu Hạng')).toBeInTheDocument()
     })
   })
 

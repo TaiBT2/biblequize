@@ -58,20 +58,16 @@
 ### BL-4 — i18n wording normalize: "Đấu Hạng"
 - **Spec canonical (Q4):** Mode names = "Luyện Tập" + "Đấu Hạng" (Vietnamese-only).
 - **Code reality (không nhất quán):**
-  - `apps/web/src/i18n/vi.json:37-38` — "Luyện tập" (l thường) + "Leo Rank"
-  - `apps/mobile/src/i18n/vi.json:63-65` — "Luyện Tập" + "Thi Đấu"
-  - Một số string khác trong vi.json dùng "Ranked" trực tiếp
+  - ~~`apps/web/src/i18n/vi.json:37-38` — "Luyện tập" (l thường) + "Leo Rank"~~ → **2026-05-13 web fix**: line 37 → "Luyện Tập", line 38 → "Đấu Hạng"
+  - `apps/mobile/src/i18n/vi.json:63-65` — "Luyện Tập" + "Thi Đấu" ⬜ (mobile out of scope HR sprint)
+  - ~~Một số string khác trong vi.json dùng "Thi Đấu Xếp Hạng" trực tiếp~~ → **2026-05-13 web fix**: replace_all "Thi Đấu Xếp Hạng" → "Đấu Hạng" (passUnlock, rankedHeader, unlockHeader, ranked.title + ~6 FAQ sentences). 1 test updated (`Ranked.test.tsx:117`).
 - **Cần làm:**
-  - Find/replace toàn bộ `apps/web/src/i18n/vi.json` + `apps/mobile/src/i18n/vi.json`:
-    - "Luyện tập" → "Luyện Tập" (capital T)
-    - "Leo Rank" → "Đấu Hạng"
-    - "Thi Đấu" (mode name) → "Đấu Hạng"
-    - "Ranked" (đứng độc lập trong VN UI) → "Đấu Hạng"
-  - Re-run `cd apps/web && npm run validate:i18n`
-  - Update unit tests assert text mới
-  - Snapshot test mobile screens
-- **Status:** ⬜ TODO
-- **Ref:** AUDIT_SUMMARY Q4
+  - ✅ `apps/web/src/i18n/vi.json`: "Leo Rank" → "Đấu Hạng" + "Luyện tập" → "Luyện Tập" + "Thi Đấu Xếp Hạng" → "Đấu Hạng" (DONE 2026-05-13)
+  - ⬜ `apps/mobile/src/i18n/vi.json`: "Thi Đấu" → "Đấu Hạng"
+  - ⬜ Re-run `cd apps/web && npm run validate:i18n` (chạy 2026-05-13 — count 1002 hardcoded / 16 missing keys; pre-existing debt, không tăng từ BL-4)
+  - Update unit tests assert text mới — web 1 test done; mobile TBD
+- **Status:** 🟡 PARTIALLY DONE (web ✅, mobile ⬜)
+- **Ref:** AUDIT_SUMMARY Q4 · prereq cho HR-4 HeroRankedCard 2026-05-13
 
 ### BL-5 — Liturgical Seasons: ship 2 mùa thiếu + wire ×1.5 bonus
 - **Spec canonical (Q3):** 4 mùa Liturgical (Phục Sinh / Ngũ Tuần / Cảm Tạ / Giáng Sinh) + ×1.5 bonus trong Ranked + Daily Challenge.
