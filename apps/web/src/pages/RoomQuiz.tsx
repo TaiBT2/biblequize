@@ -396,9 +396,22 @@ const RoomQuiz: React.FC = () => {
         }
 
         case 'QUIZ_END': {
-          const d = msg.data as any;
+          // QUIZ_END payload varies per mode:
+          //   Battle Royale  → { finalResults: PlayerScore[] }
+          //   Team vs Team   → { leaderboard|finalResults: PlayerScore[]; teamWinner; scoreA; scoreB }
+          //   Sudden Death   → PlayerScore[]  OR  { finalResults: PlayerScore[] }
+          //   Speed Race     → same shape as Sudden Death
+          // Keep union narrow so each branch's accesses are type-checked.
+          type QuizEndObject = {
+            finalResults?: PlayerScore[];
+            leaderboard?: PlayerScore[];
+            teamWinner?: string | null;
+            scoreA?: number;
+            scoreB?: number;
+          };
+          const d = msg.data as QuizEndObject | PlayerScore[];
           if (isBattleRoyale) {
-            const results = d.finalResults as PlayerScore[] | undefined;
+            const results = Array.isArray(d) ? d : d.finalResults;
             if (results && results.length > 0) {
               setFinalResults(results);
               setShowPodium(true);
@@ -406,18 +419,19 @@ const RoomQuiz: React.FC = () => {
               navigate(`/multiplayer`, { replace: true });
             }
           } else if (isTeamVsTeam) {
-            const results = Array.isArray(d.leaderboard) ? d.leaderboard : (Array.isArray(d.finalResults) ? d.finalResults : []);
+            const obj = Array.isArray(d) ? ({} as QuizEndObject) : d;
+            const results = obj.leaderboard ?? obj.finalResults ?? [];
             setFinalResults(results);
-            setTeamWinner(d.teamWinner ?? null);
-            setTeamWinScoreA(d.scoreA ?? 0);
-            setTeamWinScoreB(d.scoreB ?? 0);
+            setTeamWinner(obj.teamWinner ?? null);
+            setTeamWinScoreA(obj.scoreA ?? 0);
+            setTeamWinScoreB(obj.scoreB ?? 0);
           } else if (isSuddenDeath) {
-            const results = Array.isArray(d) ? d : (Array.isArray(d.finalResults) ? d.finalResults : []);
+            const results = Array.isArray(d) ? d : (d.finalResults ?? []);
             setFinalResults(results);
             setShowPodium(true);
           } else {
             // Speed Race: show podium if results available
-            const results = Array.isArray(d.finalResults) ? d.finalResults : (Array.isArray(d) ? d : []);
+            const results = Array.isArray(d) ? d : (d.finalResults ?? []);
             if (results.length > 0) {
               setFinalResults(results);
               setShowPodium(true);

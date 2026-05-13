@@ -48,10 +48,10 @@
   - Outcome: định nghĩa `ImportError`, `ImportDryResult`, `ImportResult`, `SimilarQuestion`, `DuplicateWarning`, `BookCoverage`, `CoverageResponse`. Replace 4× `useState<any>` + 3× `(x: any)` map callbacks. ESLint warnings 294 → 286 (-8). Type-check clean cho 2 file.
 
 - CQ-6 FE — Type STOMP message ở `RoomQuiz.tsx` (bỏ `msg.data as any`)
-  - Status: `[ ]` TODO · Files: [RoomQuiz.tsx#L399](apps/web/src/pages/RoomQuiz.tsx#L399), `apps/web/src/types/stomp.ts` (new) · Test: existing RoomQuiz tests
-  - **Spec impact**: `[x]` SPEC_MULTIPLAYER §STOMP events (chuẩn hoá payload type)
-  - **Spec strategy**: `[x]` (c) `[no-spec-impact]` (type-only, behavior unchanged)
-  - Checklist: định nghĩa `StompRoomMessage`, `StompQuestionMessage`, etc. khớp BE DTO · grep `as any` RoomQuiz → 0 hit · Tầng 1+2 pass · commit `refactor: type STOMP frames in RoomQuiz`
+  - Status: `[x]` DONE · Files: [RoomQuiz.tsx](apps/web/src/pages/RoomQuiz.tsx) (QUIZ_END case typed inline với `QuizEndObject | PlayerScore[]` union)
+  - **Spec impact**: `[x]` None (existing inline assertions for other cases were already typed)
+  - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
+  - Outcome: grep `as any` apps/web/src/pages/RoomQuiz.tsx → 0 hit (was 1). Behavior unchanged — same Array.isArray runtime branches, now type-safe. Type-check clean.
 
 ### Phase 3 — FE Web admin migration to TanStack Query (Major, ~2 ngày)
 
