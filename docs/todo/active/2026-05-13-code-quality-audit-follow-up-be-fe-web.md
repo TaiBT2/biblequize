@@ -1,9 +1,21 @@
-# 2026-05-13 — Code Quality Audit follow-up (BE + FE Web)
+# 2026-05-13 — Code Quality Audit follow-up (BE + FE Web) [PARTIALLY DONE]
 
 > **Source**: Fullstack audit 2026-05-13 (3 Explore agents song song). Mobile gác lại — session này chỉ làm BE + FE Web.
 > **Scope**: 24 task chia 6 phase. Mỗi task 1 commit, <100 LOC, format `feat|fix|refactor|test|chore: ...`.
 > **Branch**: `chore/code-quality-improvements`.
 > **Strategy mapping**: Hầu hết task là refactor / hygiene → `[no-spec-impact]`. Riêng CQ-2 (XP surge) chạm BL-3, CQ-3 chạm BL-15 → cập nhật `docs/spec/BACKLOG.md`.
+
+## Session 2026-05-13 outcome
+
+**Shipped (12 commit):** Phase 1 + 2 + 3 (CQ-1..CQ-10) + 2 investigation docs (CQ-11, CQ-19).
+
+**Deferred to follow-up sprint:**
+- **Phase 4** — RoomQuiz split (CQ-12..18, 7 task). Design doc DONE ([REFACTOR_ROOMQUIZ.md](docs/dev/REFACTOR_ROOMQUIZ.md)) — implementation pending user review.
+- **Phase 5** — BE typed DTO (CQ-20..21 + spillover, ~3-6 commit). Audit DONE ([AUDIT_MAP_REQUEST_BODY.md](docs/dev/AUDIT_MAP_REQUEST_BODY.md)) — scope decision pending (15 vs 39 endpoints).
+- **Phase 6** — Testcontainers test depth (CQ-22..24, 3 task). Pending dep approval (`org.testcontainers:1.19.x`).
+- **CQ-2b** — XP surge auto-trigger (BL-3-trigger spinoff). Tracked in [BACKLOG.md](docs/spec/BACKLOG.md) BL-3-trigger.
+
+Khi nào tiếp tục: tạo task mới `2026-XX-XX-roomquiz-split.md` cho Phase 4, etc. — không reopen task này.
 
 ### Phase 1 — Quick wins (Critical, ~1 ngày)
 
