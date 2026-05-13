@@ -33,6 +33,34 @@ interface Question {
 
 interface ApiPage { questions: Question[]; total: number; page: number; size: number; totalPages: number }
 
+// Import & duplicate-check API shapes (POST /api/admin/questions/import?dryRun=… and 409 POSSIBLE_DUPLICATE).
+interface ImportError {
+  line?: number
+  index?: number
+  error: string
+}
+interface ImportDryResult {
+  willImport: number
+  errors?: ImportError[]
+}
+interface ImportResult {
+  imported: number
+  errors?: ImportError[]
+}
+interface SimilarQuestion {
+  questionId: string
+  content: string
+  book?: string
+  chapter?: number
+  verseStart?: number
+  similarityPercent: number
+}
+interface DuplicateWarning {
+  error: 'POSSIBLE_DUPLICATE'
+  message: string
+  similarQuestions?: SimilarQuestion[]
+}
+
 // ── Constants ──────────────────────────────────────────────────────────────────
 
 const TYPE_LABEL_KEYS: Record<string, string> = {
@@ -110,10 +138,10 @@ export default function QuestionsAdmin() {
   // ── import modal
   const [importOpen,      setImportOpen]      = useState(false)
   const [importFile,      setImportFile]      = useState<File | null>(null)
-  const [importDryResult, setImportDryResult] = useState<any>(null)
-  const [importResult,    setImportResult]    = useState<any>(null)
+  const [importDryResult, setImportDryResult] = useState<ImportDryResult | null>(null)
+  const [importResult,    setImportResult]    = useState<ImportResult | null>(null)
   const [importLoading,   setImportLoading]   = useState(false)
-  const [duplicateWarning, setDuplicateWarning] = useState<any>(null)
+  const [duplicateWarning, setDuplicateWarning] = useState<DuplicateWarning | null>(null)
 
   // ── Fetch ──────────────────────────────────────────────────────────────────
 
@@ -632,7 +660,7 @@ export default function QuestionsAdmin() {
               <div data-testid="duplicate-warning" className="p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/30">
                 <h4 className="text-yellow-400 font-semibold text-sm mb-2">⚠️ {duplicateWarning.message}</h4>
                 <div className="space-y-2 mb-3">
-                  {duplicateWarning.similarQuestions?.map((q: any) => (
+                  {duplicateWarning.similarQuestions?.map((q) => (
                     <div key={q.questionId} className="bg-white/5 rounded p-2 text-xs">
                       <p className="text-on-surface">{q.content}</p>
                       <p className="text-on-surface-variant mt-1">
@@ -684,13 +712,13 @@ export default function QuestionsAdmin() {
                   <div className="font-medium text-white/80">{t('admin.questions.import.dryRunTitle')}</div>
                   <div className="flex gap-4">
                     <span className="text-emerald-400">{t('admin.questions.import.willImport')} <strong>{importDryResult.willImport}</strong></span>
-                    {importDryResult.errors?.length > 0 && (
+                    {importDryResult.errors && importDryResult.errors.length > 0 && (
                       <span className="text-rose-400">{t('admin.questions.import.errorCount')} <strong>{importDryResult.errors.length}</strong></span>
                     )}
                   </div>
-                  {importDryResult.errors?.length > 0 && (
+                  {importDryResult.errors && importDryResult.errors.length > 0 && (
                     <div className="mt-2 max-h-28 overflow-y-auto space-y-1">
-                      {importDryResult.errors.map((e: any, i: number) => (
+                      {importDryResult.errors.map((e, i) => (
                         <div key={i} className="text-xs text-rose-300">
                           {e.line ? t('admin.questions.import.linePrefix', { line: e.line }) : e.index ? t('admin.questions.import.indexPrefix', { index: e.index }) : ''}: {e.error}
                         </div>
@@ -720,7 +748,7 @@ export default function QuestionsAdmin() {
               <div className="text-lg font-semibold text-emerald-400 mb-1">{t('admin.questions.import.successTitle')}</div>
               <div className="text-sm text-white/70">
                 <span dangerouslySetInnerHTML={{ __html: t('admin.questions.import.addedCount', { count: importResult.imported }) }} />
-                {importResult.errors?.length > 0 && (
+                {importResult.errors && importResult.errors.length > 0 && (
                   <span className="text-rose-300 ml-2">{t('admin.questions.import.errorsCount', { count: importResult.errors.length })}</span>
                 )}
               </div>

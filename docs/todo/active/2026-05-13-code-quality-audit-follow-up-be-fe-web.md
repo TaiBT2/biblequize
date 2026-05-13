@@ -43,10 +43,9 @@
   - Outcome: `npm run lint:errors-only` → 0 errors. `npm run lint` → 0 errors / 294 warnings (baseline for CQ-5, CQ-6 to drain). Warnings are mostly `no-explicit-any`, `no-console` (debug-guarded), `react-hooks/exhaustive-deps`, `react-refresh/only-export-components`.
 
 - CQ-5 FE — Fix 3× `useState<any>` ở admin pages
-  - Status: `[ ]` TODO · Files: [admin/Questions.tsx](apps/web/src/pages/admin/Questions.tsx), [admin/QuestionQuality.tsx](apps/web/src/pages/admin/QuestionQuality.tsx) · Test: type-check + existing admin tests
-  - **Spec impact**: `[x]` None
-  - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Checklist: định nghĩa `ImportDryResult`, `ImportResult`, `DuplicateWarning`, `CoverageMetrics` interface gần BE DTO · `tsc --noEmit` clean · Tầng 1+2 pass · commit `refactor: type admin import/coverage state [no-spec-impact]`
+  - Status: `[x]` DONE · Files: [admin/Questions.tsx](apps/web/src/pages/admin/Questions.tsx), [admin/QuestionQuality.tsx](apps/web/src/pages/admin/QuestionQuality.tsx)
+  - **Spec impact**: `[x]` None · **Spec strategy**: `[x]` (c) `[no-spec-impact]`
+  - Outcome: định nghĩa `ImportError`, `ImportDryResult`, `ImportResult`, `SimilarQuestion`, `DuplicateWarning`, `BookCoverage`, `CoverageResponse`. Replace 4× `useState<any>` + 3× `(x: any)` map callbacks. ESLint warnings 294 → 286 (-8). Type-check clean cho 2 file.
 
 - CQ-6 FE — Type STOMP message ở `RoomQuiz.tsx` (bỏ `msg.data as any`)
   - Status: `[ ]` TODO · Files: [RoomQuiz.tsx#L399](apps/web/src/pages/RoomQuiz.tsx#L399), `apps/web/src/types/stomp.ts` (new) · Test: existing RoomQuiz tests

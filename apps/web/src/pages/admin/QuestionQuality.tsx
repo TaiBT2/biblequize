@@ -2,9 +2,19 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { api } from '../../api/client'
 
+// Shape returned by GET /api/admin/questions/coverage. BE returns either form
+// depending on grouping mode; FE normalises to array via Object.entries below.
+interface BookCoverage {
+  book?: string
+  easy?: number
+  medium?: number
+  hard?: number
+}
+type CoverageResponse = Record<string, BookCoverage> | BookCoverage[]
+
 export default function QuestionQuality() {
   const { t } = useTranslation()
-  const [coverage, setCoverage] = useState<any>(null)
+  const [coverage, setCoverage] = useState<CoverageResponse | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
@@ -36,7 +46,10 @@ export default function QuestionQuality() {
          : !coverage ? <p className="text-[#d5c4af]/40 text-sm">{t('admin.questionQuality.loadError')}</p>
          : (
           <div className="space-y-2 max-h-96 overflow-y-auto">
-            {(Array.isArray(coverage) ? coverage : Object.entries(coverage).map(([book, data]: any) => ({ book, ...data }))).map((item: any, i: number) => {
+            {(Array.isArray(coverage)
+              ? coverage
+              : Object.entries(coverage).map(([book, data]) => ({ book, ...(data as BookCoverage) }))
+            ).map((item: BookCoverage, i: number) => {
               const easy = item.easy || 0
               const medium = item.medium || 0
               const hard = item.hard || 0
