@@ -36,11 +36,11 @@
 ### Phase 2 — FE Web type safety + lint (Major, ~1 ngày)
 
 - CQ-4 FE — Setup ESLint config cho `apps/web`
-  - Status: `[ ]` TODO · Files: `apps/web/.eslintrc.cjs` (new), `apps/web/package.json` (lint script + deps) · Test: `npm run lint` pass (cho phép warnings ban đầu)
+  - Status: `[x]` DONE · Files: [.eslintrc.cjs](apps/web/.eslintrc.cjs) (new), [package.json](apps/web/package.json) (`lint`/`lint:fix`/`lint:errors-only` scripts + 5 devDeps), 7 test files auto-fixed `let` → `const`
   - **Spec impact**: `[x]` None
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Rules cốt lõi: `@typescript-eslint/no-explicit-any` (warn), `react-hooks/exhaustive-deps` (warn), `no-console` (warn except `console.error|warn`), Tailwind plugin nếu được — không add nhiều deps mới, hỏi user trước (CLAUDE.md §Dependencies)
-  - Checklist: hỏi user về deps · impl · `npm run lint` exit 0 · CI script update · commit `chore: enable ESLint for apps/web`
+  - Deps added (user-approved 2026-05-13): `eslint@^8.57`, `@typescript-eslint/parser@^7.18`, `@typescript-eslint/eslint-plugin@^7.18`, `eslint-plugin-react-hooks@^4.6`, `eslint-plugin-react-refresh@^0.4`
+  - Outcome: `npm run lint:errors-only` → 0 errors. `npm run lint` → 0 errors / 294 warnings (baseline for CQ-5, CQ-6 to drain). Warnings are mostly `no-explicit-any`, `no-console` (debug-guarded), `react-hooks/exhaustive-deps`, `react-refresh/only-export-components`.
 
 - CQ-5 FE — Fix 3× `useState<any>` ở admin pages
   - Status: `[ ]` TODO · Files: [admin/Questions.tsx](apps/web/src/pages/admin/Questions.tsx), [admin/QuestionQuality.tsx](apps/web/src/pages/admin/QuestionQuality.tsx) · Test: type-check + existing admin tests

@@ -8,7 +8,7 @@ vi.mock('../../api/client', () => ({ api: { get: (...a: any[]) => mockApiGet(...
 
 // authStore.User has NO `id` field in production (only name/email/avatar/role/currentStreak).
 // Leaderboard now identifies current user via my-rank API response (userId field).
-let authState = { isAuthenticated: true, isLoading: false, user: { name: 'Test User', email: 'a@b.com' } }
+const authState = { isAuthenticated: true, isLoading: false, user: { name: 'Test User', email: 'a@b.com' } }
 vi.mock('../../store/authStore', () => ({
   useAuthStore: (s?: (st: any) => any) => s ? s(authState) : authState,
   useAuth: () => authState,

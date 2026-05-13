@@ -26,7 +26,7 @@ vi.mock('react-router-dom', async () => {
   }
 })
 
-let authState = { isAuthenticated: true, isLoading: false, user: { name: 'Test', email: 'a@b.com' } }
+const authState = { isAuthenticated: true, isLoading: false, user: { name: 'Test', email: 'a@b.com' } }
 vi.mock('../../store/authStore', () => ({
   useAuthStore: (selector?: (s: any) => any) => selector ? selector(authState) : authState,
   useAuth: () => authState,

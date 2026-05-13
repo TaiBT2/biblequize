@@ -11,7 +11,7 @@ import JoinRoom from '../JoinRoom'
 
 describe('JoinRoom (deprecated)', () => {
   it('redirects to /multiplayer', () => {
-    let currentPath = ''
+    const currentPath = ''
     render(
       <MemoryRouter initialEntries={['/room/join']}>
         <Routes>
