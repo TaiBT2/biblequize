@@ -766,7 +766,7 @@ public class RankedController {
 
     @PostMapping("/ranked/sync-progress")
     public ResponseEntity<Map<String, Object>> syncProgress(Authentication authentication) {
-        System.out.println("=== syncProgress METHOD CALLED ===");
+        log.debug("syncProgress called");
         try {
             String email = resolveEmail(authentication);
             if (email == null) {

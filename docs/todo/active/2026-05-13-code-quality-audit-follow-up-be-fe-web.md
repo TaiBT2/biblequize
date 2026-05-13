@@ -8,10 +8,10 @@
 ### Phase 1 — Quick wins (Critical, ~1 ngày)
 
 - CQ-1 BE — Thay 4× `System.out.println` bằng Slf4j
-  - Status: `[ ]` TODO · Files: [OAuth2FailureHandler.java](apps/api/src/main/java/com/biblequiz/infrastructure/security/OAuth2FailureHandler.java), [RankedController.java](apps/api/src/main/java/com/biblequiz/api/RankedController.java) · Test: existing slice tests pass
+  - Status: `[x]` DONE · Files: [OAuth2FailureHandler.java](apps/api/src/main/java/com/biblequiz/infrastructure/security/OAuth2FailureHandler.java), [RankedController.java](apps/api/src/main/java/com/biblequiz/api/RankedController.java) · Test: RankedControllerTest 43/43 pass, full JUnit 963/966 (3 pre-existing flakies unrelated)
   - **Spec impact**: `[x]` None (CLAUDE.md §KHÔNG được làm rule)
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Checklist: grep `System.out.println` BE → 0 hit · Tầng 1+2 pass · commit `chore: replace System.out.println with Slf4j [no-spec-impact]`
+  - Outcome: grep `System.out.println` apps/api/src → 0 hit (was 4). Also fixed `exception.printStackTrace()` in OAuth2FailureHandler (same anti-pattern, same method). 3 println → 1 idiomatic `log.warn(..., exception)` with structured fields.
 
 - CQ-2 BE — Wire XP surge multiplier hoặc xóa dead code (BL-3)
   - Status: `[ ]` TODO · Files: [ScoringService.java](apps/api/src/main/java/com/biblequiz/modules/ranked/service/ScoringService.java#L86-L113), [RankedController.java](apps/api/src/main/java/com/biblequiz/api/RankedController.java), [User.java](apps/api/src/main/java/com/biblequiz/modules/user/entity/User.java) (xpSurgeUntil field) · Test: `ScoringServiceTest` + `RankedControllerTest` (xpSurgeActive=true case)
