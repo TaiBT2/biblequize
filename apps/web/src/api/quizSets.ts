@@ -1,4 +1,4 @@
-import { api } from './client'
+import { api, aiApi } from './client'
 
 export type PublishStatus = 'DRAFT' | 'PUBLISHED' | 'ARCHIVED' | 'SOFT_DELETED'
 export type QuizSetDifficulty = 'EASY' | 'MEDIUM' | 'HARD' | 'MIXED'
@@ -252,4 +252,119 @@ export function getModeAvailability(mode: RoomMode, total: number): { available:
   if (total < cfg.min) return { available: false, reason: `Cần ≥${cfg.min} câu hỏi` }
   if (cfg.even && total % 2 !== 0) return { available: false, reason: `Cần số câu chẵn` }
   return { available: true }
+}
+
+// ──────────────────────────────────────────────────────────────
+// BL-AD-8 — Quiz Set Editor (Phase B/C)
+// ──────────────────────────────────────────────────────────────
+
+export type QuestionDifficulty = 'easy' | 'medium' | 'hard'
+export type QuestionSource = 'admin' | 'ai-generated' | 'ai-group' | 'group-custom' | string
+
+export interface EditorQuestion {
+  id: string
+  book: string
+  chapter: number | null
+  verseStart: number | null
+  verseEnd: number | null
+  difficulty: QuestionDifficulty
+  type: string
+  content: string
+  options: string[]
+  correctAnswer: number[]
+  explanation: string | null
+  source: QuestionSource
+  language: string
+}
+
+export interface QuizSetFull extends QuizSet {
+  questions: EditorQuestion[]
+}
+
+export async function getQuizSetFull(groupId: string, setId: string): Promise<QuizSetFull> {
+  const res = await api.get(`/api/groups/${groupId}/quiz-sets/${setId}/full`)
+  return res.data.quizSet
+}
+
+export interface AddQuestionBody {
+  content?: string
+  book?: string
+  chapter?: number | null
+  verseStart?: number | null
+  verseEnd?: number | null
+  difficulty?: QuestionDifficulty
+  options?: string[]
+  correctAnswer?: number[] | number
+  explanation?: string | null
+  language?: string
+}
+
+export async function addQuestion(groupId: string, setId: string, body: AddQuestionBody = {}): Promise<{
+  question: EditorQuestion
+  totalQuestions: number
+}> {
+  const res = await api.post(`/api/groups/${groupId}/quiz-sets/${setId}/questions`, body)
+  return { question: res.data.question, totalQuestions: res.data.totalQuestions }
+}
+
+export async function updateQuestion(groupId: string, setId: string, qid: string, body: Partial<AddQuestionBody>): Promise<EditorQuestion> {
+  const res = await api.patch(`/api/groups/${groupId}/quiz-sets/${setId}/questions/${qid}`, body)
+  return res.data.question
+}
+
+export async function deleteQuestion(groupId: string, setId: string, qid: string): Promise<number> {
+  const res = await api.delete(`/api/groups/${groupId}/quiz-sets/${setId}/questions/${qid}`)
+  return res.data.totalQuestions
+}
+
+export async function reorderQuestions(groupId: string, setId: string, questionIds: string[]): Promise<string[]> {
+  const res = await api.post(`/api/groups/${groupId}/quiz-sets/${setId}/questions/reorder`, { questionIds })
+  return res.data.questionIds
+}
+
+export interface AIGenerateForSetBody {
+  countEasy: number
+  countMedium: number
+  countHard: number
+  book: string
+  chapterFrom: number
+  chapterTo?: number
+  verseFrom?: number
+  verseTo?: number
+  topic?: string
+  language?: 'vi' | 'en'
+}
+
+export interface AIGenerateForSetResponse {
+  questions: EditorQuestion[]
+  totalQuestions: number
+  provider: string
+  used: number
+  limit: number
+  remaining: number
+}
+
+export async function aiGenerateForSet(groupId: string, setId: string, body: AIGenerateForSetBody): Promise<AIGenerateForSetResponse> {
+  const res = await aiApi.post(`/api/groups/${groupId}/quiz-sets/${setId}/ai-generate`, body)
+  return res.data
+}
+
+export interface AIRewriteResponse {
+  draft: Partial<EditorQuestion> & { content?: string; options?: string[]; correctAnswer?: number[] | number; explanation?: string }
+  provider: string
+  used: number
+  limit: number
+  remaining: number
+}
+
+export async function aiRewriteQuestion(
+  groupId: string, setId: string, qid: string, hint?: string
+): Promise<AIRewriteResponse> {
+  const res = await aiApi.post(`/api/groups/${groupId}/quiz-sets/${setId}/questions/${qid}/ai-rewrite`, { hint: hint ?? '' })
+  return res.data
+}
+
+export async function getAIQuota(groupId: string): Promise<{ used: number; limit: number; remaining: number }> {
+  const res = await api.get(`/api/groups/${groupId}/ai-quota`)
+  return res.data
 }

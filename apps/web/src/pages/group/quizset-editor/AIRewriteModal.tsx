@@ -1,0 +1,164 @@
+import { useState } from 'react'
+import type { EditorQuestion } from '../../../api/quizSets'
+import { COLOR } from './styles'
+
+interface Draft {
+  content?: string
+  options?: string[]
+  correctAnswer?: number[] | number
+  explanation?: string
+}
+
+interface Props {
+  open: boolean
+  current: EditorQuestion
+  remaining: number
+  limit: number
+  onClose: () => void
+  onGenerate: (hint: string) => Promise<Draft | null>
+  onAccept: (draft: Draft) => void
+}
+
+export default function AIRewriteModal({ open, current, remaining, limit, onClose, onGenerate, onAccept }: Props) {
+  const [hint, setHint] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [draft, setDraft] = useState<Draft | null>(null)
+  const [error, setError] = useState<string | null>(null)
+
+  if (!open) return null
+
+  const handleGenerate = async () => {
+    if (remaining < 1) { setError('Đã hết quota AI hôm nay'); return }
+    setBusy(true); setError(null)
+    try {
+      const d = await onGenerate(hint.trim())
+      if (d && d.content) setDraft(d)
+      else setError('AI không trả về câu mới hợp lệ')
+    } catch (e: any) {
+      setError(e?.response?.data?.message || e?.message || 'Lỗi khi gọi AI')
+    } finally { setBusy(false) }
+  }
+
+  const correctIdx = draft?.correctAnswer != null
+    ? (Array.isArray(draft.correctAnswer) ? draft.correctAnswer[0] : draft.correctAnswer)
+    : null
+
+  return (
+    <div onClick={onClose} style={{
+      position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.65)', zIndex: 50,
+      display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16,
+    }}>
+      <div onClick={e => e.stopPropagation()} style={{
+        background: COLOR.bgPanel, border: `1px solid ${COLOR.borderSubtle}`,
+        borderRadius: 12, maxWidth: 720, width: '100%', maxHeight: '90vh', overflowY: 'auto',
+      }}>
+        <div style={{ padding: '18px 22px', borderBottom: `1px solid ${COLOR.borderXSubtle}`, display: 'flex', alignItems: 'center', gap: 10 }}>
+          <i className="ti ti-refresh" style={{ fontSize: 20, color: COLOR.gold }} aria-hidden />
+          <div style={{ flex: 1, fontSize: 15, fontWeight: 500, color: COLOR.textPrimary }}>AI viết lại câu hỏi</div>
+          <span style={{ fontSize: 11, color: COLOR.textMuted }}>Quota: {remaining}/{limit}</span>
+          <button onClick={onClose} style={{
+            background: 'transparent', border: 'none', color: COLOR.textMuted, cursor: 'pointer', padding: 4,
+          }}>
+            <i className="ti ti-x" style={{ fontSize: 18 }} aria-hidden />
+          </button>
+        </div>
+
+        <div style={{ padding: '18px 22px' }}>
+          <label style={{ display: 'block', fontSize: 11, color: COLOR.textMuted, marginBottom: 6, letterSpacing: 0.6, fontWeight: 500 }}>
+            GỢI Ý CHO AI (tùy chọn)
+          </label>
+          <input
+            type="text" value={hint} onChange={e => setHint(e.target.value)}
+            placeholder='VD: tập trung vào nhân vật A-bra-ham, làm khó hơn...'
+            style={{
+              width: '100%', background: COLOR.inputBg, border: `1px solid ${COLOR.borderSubtle}`,
+              color: COLOR.textPrimary, padding: '9px 12px', borderRadius: 7,
+              fontSize: 13, fontFamily: 'inherit', boxSizing: 'border-box', marginBottom: 12, outline: 'none',
+            }}
+          />
+          <button onClick={handleGenerate} disabled={busy || remaining < 1} style={{
+            background: busy || remaining < 1 ? 'rgba(232,168,50,0.30)' : COLOR.gold, color: '#1a1226',
+            border: 'none', padding: '9px 16px', borderRadius: 8, fontSize: 13, fontWeight: 500,
+            cursor: busy || remaining < 1 ? 'not-allowed' : 'pointer',
+            display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 16,
+            opacity: busy || remaining < 1 ? 0.6 : 1,
+          }}>
+            <i className={`ti ${busy ? 'ti-loader-2' : 'ti-refresh'}`} style={{
+              fontSize: 14, animation: busy ? 'spin 1s linear infinite' : undefined,
+            }} aria-hidden />
+            {busy ? 'Đang tạo lại...' : draft ? 'Tạo phiên bản khác' : 'Tạo lại câu này'}
+            <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+          </button>
+
+          {error && (
+            <div style={{
+              background: 'rgba(239,68,68,0.10)', border: `1px solid rgba(239,68,68,0.30)`,
+              color: COLOR.danger, padding: '8px 12px', borderRadius: 7, fontSize: 12, marginBottom: 12,
+            }}>{error}</div>
+          )}
+
+          {draft && (
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+              <div style={panelStyle()}>
+                <div style={headerLabelStyle()}>Bản hiện tại</div>
+                <div style={{ fontSize: 13, color: COLOR.textSecondary, marginBottom: 10 }}>{current.content}</div>
+                {(current.options || []).map((o, i) => (
+                  <div key={i} style={optionRow(i, current.correctAnswer?.[0] === i)}>{'ABCD'[i]}. {o || <em>—</em>}</div>
+                ))}
+                {current.explanation && (
+                  <div style={{ marginTop: 8, fontSize: 11, color: COLOR.textMuted, fontStyle: 'italic' }}>
+                    {current.explanation}
+                  </div>
+                )}
+              </div>
+              <div style={{ ...panelStyle(), borderColor: COLOR.goldBorder }}>
+                <div style={{ ...headerLabelStyle(), color: COLOR.gold }}>Bản mới</div>
+                <div style={{ fontSize: 13, color: COLOR.textPrimary, marginBottom: 10 }}>{draft.content}</div>
+                {(draft.options || []).map((o, i) => (
+                  <div key={i} style={optionRow(i, correctIdx === i)}>{'ABCD'[i]}. {o}</div>
+                ))}
+                {draft.explanation && (
+                  <div style={{ marginTop: 8, fontSize: 11, color: COLOR.textMuted, fontStyle: 'italic' }}>
+                    {draft.explanation}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {draft && (
+            <div style={{ display: 'flex', gap: 8, marginTop: 16, justifyContent: 'flex-end' }}>
+              <button onClick={onClose} style={{
+                background: 'rgba(255,255,255,0.04)', color: COLOR.textSecondary,
+                border: `1px solid ${COLOR.borderSubtle}`,
+                padding: '9px 16px', borderRadius: 8, fontSize: 13, cursor: 'pointer',
+              }}>Giữ bản cũ</button>
+              <button onClick={() => { onAccept(draft); onClose() }} style={{
+                background: COLOR.gold, color: '#1a1226',
+                border: 'none', padding: '9px 18px', borderRadius: 8,
+                fontSize: 13, fontWeight: 500, cursor: 'pointer',
+              }}>Dùng bản mới</button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function panelStyle(): React.CSSProperties {
+  return {
+    background: COLOR.inputBg, border: `1px solid ${COLOR.borderSubtle}`,
+    borderRadius: 8, padding: 14,
+  }
+}
+function headerLabelStyle(): React.CSSProperties {
+  return { fontSize: 10, color: COLOR.textMuted, letterSpacing: 0.6, fontWeight: 500, marginBottom: 8, textTransform: 'uppercase' }
+}
+function optionRow(_i: number, isCorrect: boolean): React.CSSProperties {
+  return {
+    fontSize: 12, padding: '3px 0',
+    color: isCorrect ? COLOR.success : COLOR.textSecondary,
+    fontWeight: isCorrect ? 500 : 400,
+  }
+}

@@ -61,7 +61,7 @@ import ScheduledQuizDetail from './pages/ScheduledQuizDetail'
 import ScheduledQuizPlay from './pages/ScheduledQuizPlay'
 import GroupAnalytics from './pages/GroupAnalytics'
 import QuizSetList from './pages/group/QuizSetList'
-import QuizSetCreate from './pages/group/QuizSetCreate'
+import QuizSetEditor from './pages/group/QuizSetEditor'
 import QuizSetDetail from './pages/group/QuizSetDetail'
 import Tournaments from './pages/Tournaments'
 import TournamentDetail from './pages/TournamentDetail'
@@ -140,7 +140,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="/groups/:id" element={<RequireAuth><GroupDetail /></RequireAuth>} />
                   <Route path="/groups/:id/analytics" element={<RequireAuth><GroupAnalytics /></RequireAuth>} />
                   <Route path="/groups/:id/quiz-sets" element={<RequireAuth><QuizSetList /></RequireAuth>} />
-                  <Route path="/groups/:id/quiz-sets/new" element={<RequireAuth><QuizSetCreate /></RequireAuth>} />
+                  <Route path="/groups/:id/quiz-sets/new" element={<RequireAuth><QuizSetEditor mode="create" /></RequireAuth>} />
+                  <Route path="/groups/:id/quiz-sets/:setId/edit" element={<RequireAuth><QuizSetEditor mode="edit" /></RequireAuth>} />
                   <Route path="/groups/:id/quiz-sets/:setId" element={<RequireAuth><QuizSetDetail /></RequireAuth>} />
                   <Route path="/groups/:id/scheduled-quizzes/new" element={<RequireAuth><ScheduledQuizCreate /></RequireAuth>} />
                   <Route path="/groups/:id/scheduled-quizzes/:quizId" element={<RequireAuth><ScheduledQuizDetail /></RequireAuth>} />

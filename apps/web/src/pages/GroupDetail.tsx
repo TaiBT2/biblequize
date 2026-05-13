@@ -1525,7 +1525,7 @@ const GroupDetail: React.FC = () => {
             )}
             {isLeaderOrMod && quizSets.length > 0 && (
               <button
-                onClick={openCreateModal}
+                onClick={() => navigate(`/groups/${id}/quiz-sets/new`)}
                 className="inline-flex items-center gap-1 text-secondary text-[12px] font-bold rounded-lg px-3 py-1.5 transition-all"
                 style={{ background: 'rgba(232,168,50,0.1)', border: '1px solid rgba(232,168,50,0.25)' }}
               >
@@ -1554,7 +1554,7 @@ const GroupDetail: React.FC = () => {
                 {isLeaderOrMod ? t('groups.emptyQuizSetsDescLeader') : t('groups.emptyQuizSetsDescMember')}
               </div>
               {isLeaderOrMod && (
-                <button onClick={openCreateModal}
+                <button onClick={() => navigate(`/groups/${id}/quiz-sets/new`)}
                   className="rounded-[10px] px-6 py-3 text-[14px] font-bold inline-flex items-center gap-2 transition hover:brightness-110"
                   style={{ background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)', color: '#11131e', boxShadow: '0 4px 16px rgba(232,168,50,0.3)' }}>
                   <span className="material-symbols-outlined text-[18px]">add</span>
