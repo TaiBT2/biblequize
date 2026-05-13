@@ -78,6 +78,16 @@ export default {
           c: '#E8C76A', // Gold — năng lượng, joy (ấm hơn primary gold)
           d: '#7AB87A', // Sage — bình an, growth
         },
+        // HR-1 Modern Spiritual atmosphere tokens — used by HomeBanner,
+        // FeaturedDailyCard, HeroRankedCard, VerseFooter. Hardcoded hex
+        // (memory: CSS variables cause white-background rendering bug).
+        ivory: '#f5f0e6',
+        'ivory-dim': '#b8b1a3',
+        'ivory-faint': '#6e6a60',
+        'gold-deep': '#c98a1c',
+        'gold-shadow': '#7a5818',
+        maroon: '#7c2d3a',
+        sage: '#4a6b52',
       },
       fontFamily: {
         sans: ['Be Vietnam Pro', 'system-ui', 'sans-serif'],
@@ -86,7 +96,9 @@ export default {
         label: ['Be Vietnam Pro', 'system-ui', 'sans-serif'],
         // V3 design — "Sacred Modernist Gaming"
         sora: ['Sora', 'Be Vietnam Pro', 'system-ui', 'sans-serif'],
-        verse: ['"Crimson Pro"', 'Playfair Display', 'serif'],
+        // HR-1: Cormorant Garamond italic ONLY for verse text + drop cap.
+        // Do not use this stack elsewhere (mode titles, headings, etc.).
+        verse: ['"Cormorant Garamond"', '"Crimson Pro"', 'Playfair Display', 'serif'],
         // Legacy
         serif: ['Playfair Display', 'serif'],
         cursive: ['Caveat', 'cursive'],

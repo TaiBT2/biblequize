@@ -14,10 +14,14 @@
   - **Result**: ZERO backend changes (`/api/daily-challenge` đã trả `alreadyCompleted`). Test baseline: 1212. ~910 LOC + ~33 new tests estimate. 3 open questions cho Bui (xoá Leaderboard/Activity/TierPerks khỏi Home?).
 
 - HR-1 Atmosphere + global tokens (noise SVG, radial gradients, font weight 800, Cormorant Garamond italic, Tailwind colors)
-  - Status: `[ ]` TODO · Files: `apps/web/src/styles/global.css`, `apps/web/tailwind.config.ts`, `apps/web/index.html` · Test: build + visual check
+  - Status: `[x]` DONE · Files: `apps/web/src/styles/global.css`, `apps/web/tailwind.config.js`, `apps/web/index.html` · Test: build pass + Home.test 37/37
   - **Spec impact**: `[x]` None (presentation only)
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Checklist: impl · build pass · subtle atmosphere visible · commit `feat: HR-1 atmosphere tokens + Cormorant Garamond italic` · STOP
+  - Checklist: [x] impl · [x] build pass · [x] Tầng 2 (Home.test 37/37) · [ ] commit · STOP
+  - **Done**:
+    - `global.css`: removed 3 duplicate `body` declarations + 4 legacy CSS vars (`--deep-space`/`--glass-surface`/`--dark-bg`/`--card-bg` — confirmed ZERO deps outside global.css). Added 1 consolidated body block với 4-layer radial gradient atmosphere (`#0a0c14` base + gold + maroon hints), `body::before` noise (data URI SVG), `body::after` vignette, `#root` z-index promotion, `@keyframes breathe` + `.animate-breathe` cho HR-2 streak flame.
+    - `tailwind.config.js`: thêm `ivory` `#f5f0e6`, `ivory-dim` `#b8b1a3`, `ivory-faint` `#6e6a60`, `gold-deep` `#c98a1c`, `gold-shadow` `#7a5818`, `maroon` `#7c2d3a`, `sage` `#4a6b52`. Update `fontFamily.verse` prepend Cormorant Garamond (keep Crimson Pro fallback). KHÔNG touch `fontFamily.serif` (vẫn Playfair Display — preserved cho DailyChallenge quote + DailyVerseBanner sẽ thay ở HR-8).
+    - `index.html`: load Cormorant Garamond italic-only `1,500;1,600;1,700` (non-blocking preload+swap). Remove `bg-[#11131e]` từ body class (let CSS atmosphere show through).
 
 - HR-2 Banner update (sport-app numbers, tabular-nums, weight 800, breathing streak)
   - Status: `[ ]` TODO · Files: `apps/web/src/components/HomeBanner.tsx` (hoặc inline trong Home.tsx) + test · Test: Vitest 4 tests
