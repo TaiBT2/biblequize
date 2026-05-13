@@ -1,0 +1,43 @@
+// Central queryKey factories for TanStack Query.
+// Pattern: tkdodo's "factory style" — each domain exposes `all` (root), `list`,
+// and optionally `detail(id)`. Keep keys as `as const` tuples so cache lookups
+// & invalidations are type-safe.
+//
+// Usage:
+//   useQuery({ queryKey: queryKeys.tournaments.list(), queryFn: ... })
+//   queryClient.invalidateQueries({ queryKey: queryKeys.tournaments.all })
+//
+// Add new domains here when migrating callers off `useEffect + api.get`.
+
+export const queryKeys = {
+  tournaments: {
+    all: ['tournaments'] as const,
+    list: () => [...queryKeys.tournaments.all, 'list'] as const,
+    detail: (id: string) => [...queryKeys.tournaments.all, 'detail', id] as const,
+  },
+
+  rankings: {
+    all: ['rankings'] as const,
+    list: () => [...queryKeys.rankings.all, 'list'] as const,
+  },
+
+  adminGroups: {
+    all: ['admin', 'groups'] as const,
+    list: () => [...queryKeys.adminGroups.all, 'list'] as const,
+    detail: (id: string) => [...queryKeys.adminGroups.all, 'detail', id] as const,
+  },
+
+  adminNotifications: {
+    all: ['admin', 'notifications'] as const,
+    list: () => [...queryKeys.adminNotifications.all, 'list'] as const,
+  },
+
+  reviewQueue: {
+    all: ['reviewQueue'] as const,
+    list: (status?: string) =>
+      status === undefined
+        ? ([...queryKeys.reviewQueue.all, 'list'] as const)
+        : ([...queryKeys.reviewQueue.all, 'list', status] as const),
+    counts: () => [...queryKeys.reviewQueue.all, 'counts'] as const,
+  },
+} as const

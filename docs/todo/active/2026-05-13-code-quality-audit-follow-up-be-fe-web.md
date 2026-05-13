@@ -56,11 +56,9 @@
 ### Phase 3 — FE Web admin migration to TanStack Query (Major, ~2 ngày)
 
 - CQ-7 FE — Tạo `apps/web/src/api/queryKeys.ts` central
-  - Status: `[ ]` TODO · Files: `api/queryKeys.ts` (new) · Test: smoke test factory functions
-  - **Spec impact**: `[x]` None
-  - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Pattern: `queryKeys.tournaments.list(filters)`, `queryKeys.tournaments.detail(id)`, etc. — tham khảo TkDodo blog
-  - Checklist: factory cho 5 admin domain (tournaments, rankings, groups, notifications, reviewQueue) · commit `chore: add central queryKeys factory`
+  - Status: `[x]` DONE · Files: [api/queryKeys.ts](apps/web/src/api/queryKeys.ts) (new)
+  - **Spec impact**: `[x]` None · **Spec strategy**: `[x]` (c) `[no-spec-impact]`
+  - Outcome: 5 domain factories (tournaments, rankings, adminGroups, adminNotifications, reviewQueue) với pattern `all/list/detail` per tkdodo. Sẵn sàng để CQ-8..10 consume.
 
 - CQ-8 FE — Migrate [admin/Events.tsx](apps/web/src/pages/admin/Events.tsx) → useQuery
   - Status: `[ ]` TODO · Files: `admin/Events.tsx` · Test: vitest existing + 1 query test mới
