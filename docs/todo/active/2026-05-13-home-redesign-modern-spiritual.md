@@ -42,10 +42,11 @@
   - **Done**: Maroon+gold radial bg + 3px gold left border + 16px radius. Pulsing dot label "THỬ THÁCH HÔM NAY · MỚI SẴN SÀNG". Title sans 800 24px ivory. Tagline + meta (5 dots indicator + clock + people optional). Right column: "CÒN LẠI TRONG NGÀY" + countdown (tabular-nums gold-light) + gold-gradient CTA "Vào chơi ngay →". Props: questionCount/estimatedMinutes/globalParticipants/countdownText/onStart. Self-contained countdown via setInterval(1000) khi `countdownText` undefined. Mobile: countdown + CTA stack ngang dưới content.
 
 - HR-4 HeroRankedCard component (State B hero — daily đã làm, Ranked promoted)
-  - Status: `[ ]` TODO · Files: `apps/web/src/components/HeroRankedCard.tsx` + test · Test: Vitest 5 tests
-  - **Spec impact**: `[x]` None
+  - Status: `[x]` DONE · Files: `apps/web/src/components/HeroRankedCard.tsx` + test · Test: 6/6
+  - **Spec impact**: `[x]` None (consumes BL-4 fix from prior commit)
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Checklist: impl · gold gradient bg · default labels override-able · Tầng 1 pass · commit `feat: HR-4 HeroRankedCard component` · STOP
+  - Checklist: [x] impl · [x] gold gradient base + radial highlight overlay (split for jsdom) · [x] custom label/tagline props · [x] uses t('gameModes.ranked') = "Đấu Hạng" · [x] 6 tests pass · [ ] commit
+  - **Done**: full gold gradient bg (#e8a832→#c98a1c→#7a5818) + radial gold highlight overlay (inner div pour jsdom parse được nhiều layers). Box-shadow gold tint + gold ring + inset highlight. Decorative SVG ornament. Title sans 800 34px dark `#1a1208` với text-shadow gold tint. Energy + ranked progress với line SVG icons. CTA dark `#1a1208` + gold text "Vào trận →" hover translateX(3px). Whole card clickable (role=button, keyboard Enter/Space).
 
 - HR-5 RankedStandardCard component (State A standard — daily chưa làm, Ranked không promoted)
   - Status: `[ ]` TODO · Files: `apps/web/src/components/RankedStandardCard.tsx` + test · Test: Vitest 4 tests
