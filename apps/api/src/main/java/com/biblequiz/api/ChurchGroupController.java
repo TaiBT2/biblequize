@@ -1106,6 +1106,9 @@ public class ChurchGroupController {
             qs.setName(name);
             qs.setQuestionIds(savedIds);
             qs.setCreatedBy(user);
+            // Auto-derive difficulty from the actual question mix so the list card can
+            // render a meaningful DỄ/TB/KHÓ breakdown instead of 0/0/0 (BL-S5-3 rule).
+            qs.setDifficulty(churchGroupService.computeDifficulty(qs));
             groupQuizSetRepository.save(qs);
 
             Map<String, Object> result = new LinkedHashMap<>();

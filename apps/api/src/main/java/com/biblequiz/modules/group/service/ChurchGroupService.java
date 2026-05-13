@@ -942,7 +942,7 @@ public class ChurchGroupService {
 
     /** BL-S5-3 — Map Question.Difficulty (lowercase) → GroupQuizSet.Difficulty (uppercase + MIXED). */
     @SuppressWarnings("unchecked")
-    private GroupQuizSet.Difficulty computeDifficulty(GroupQuizSet set) {
+    public GroupQuizSet.Difficulty computeDifficulty(GroupQuizSet set) {
         Object qidsObj = set.getQuestionIds();
         if (!(qidsObj instanceof List<?> rawList) || rawList.isEmpty()) {
             return GroupQuizSet.Difficulty.MEDIUM;
