@@ -203,7 +203,12 @@ export default function QuizSetEditor({ mode: forcedMode }: Props) {
     } catch (e) { console.error(e) }
   }
 
-  const handleAIGenerate = async (req: { countEasy: number; countMedium: number; countHard: number; topic?: string }) => {
+  const handleAIGenerate = async (req: {
+    countEasy: number; countMedium: number; countHard: number;
+    chapterFrom: number; chapterTo: number;
+    verseFrom: number | null; verseTo: number | null;
+    topic?: string;
+  }) => {
     if (!groupId || !quizSet) return
     setAiBusy(true); setAiError(null)
     try {
@@ -213,10 +218,10 @@ export default function QuizSetEditor({ mode: forcedMode }: Props) {
         countMedium: req.countMedium,
         countHard: req.countHard,
         book: scope.book,
-        chapterFrom: scope.chapterFrom,
-        chapterTo: scope.chapterTo,
-        verseFrom: 1,
-        verseTo: 50,
+        chapterFrom: req.chapterFrom,
+        chapterTo: req.chapterTo,
+        verseFrom: req.verseFrom ?? undefined,
+        verseTo: req.verseTo ?? undefined,
         topic: req.topic || topic || undefined,
         language: 'vi',
       })
@@ -373,7 +378,6 @@ export default function QuizSetEditor({ mode: forcedMode }: Props) {
 
       <AIGeneratePanel
         open={aiPanelOpen}
-        scopeLabel={`${scope.book} ${scope.chapterFrom}${scope.chapterTo > scope.chapterFrom ? `-${scope.chapterTo}` : ''}`}
         scope={scope}
         remaining={aiQuota.remaining}
         limit={aiQuota.limit}

@@ -1,53 +1,87 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { COLOR, DIFFICULTY_COLORS } from './styles'
+
+interface Scope {
+  book: string
+  chapterFrom: number
+  chapterTo: number
+}
+
+export interface AIGenerateRequest {
+  countEasy: number
+  countMedium: number
+  countHard: number
+  chapterFrom: number
+  chapterTo: number
+  verseFrom: number | null
+  verseTo: number | null
+  topic?: string
+}
 
 interface Props {
   open: boolean
-  scopeLabel: string
-  scope: { book: string; chapterFrom: number; chapterTo: number }
+  scope: Scope
   remaining: number
   limit: number
   topic?: string
   onClose: () => void
-  onGenerate: (req: { countEasy: number; countMedium: number; countHard: number; topic?: string }) => Promise<void>
+  onGenerate: (req: AIGenerateRequest) => Promise<void>
   busy?: boolean
   error?: string | null
 }
 
 export default function AIGeneratePanel({
-  open, scopeLabel, remaining, limit, topic: defaultTopic, onClose, onGenerate, busy, error,
+  open, scope, remaining, limit, topic: defaultTopic, onClose, onGenerate, busy, error,
 }: Props) {
   const [easy, setEasy] = useState(2)
   const [medium, setMedium] = useState(2)
   const [hard, setHard] = useState(1)
   const [topic, setTopic] = useState(defaultTopic || '')
 
+  const [chFrom, setChFrom] = useState(scope.chapterFrom)
+  const [chTo, setChTo] = useState(scope.chapterTo)
+  const [vFromStr, setVFromStr] = useState('')
+  const [vToStr, setVToStr] = useState('')
+
+  // Reseed scope when opened with a different metadata scope
+  useEffect(() => {
+    if (open) {
+      setChFrom(scope.chapterFrom)
+      setChTo(Math.max(scope.chapterFrom, scope.chapterTo))
+    }
+  }, [open, scope.chapterFrom, scope.chapterTo])
+
+  if (!open) return null
+
   const total = easy + medium + hard
   const overQuota = total > remaining
   const tooLarge = total > 15
   const disabled = total <= 0 || overQuota || tooLarge || busy
-
-  if (!open) return null
+  const pct = (n: number) => total > 0 ? Math.round((n / total) * 100) : 0
 
   const Stepper = ({
     value, setValue, label, color,
   }: { value: number; setValue: (n: number) => void; label: string; color: typeof DIFFICULTY_COLORS.easy }) => (
     <div style={{
-      flex: 1, background: color.bg, border: `1px solid ${color.border}`,
-      borderRadius: 10, padding: '12px 14px', textAlign: 'center',
+      background: color.bg, border: `1px solid ${color.border}`,
+      borderRadius: 8, padding: '10px 8px',
     }}>
-      <div style={{ fontSize: 11, color: color.accent, fontWeight: 500, letterSpacing: 0.6, marginBottom: 8 }}>{label}</div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 5, justifyContent: 'center', marginBottom: 8 }}>
+        <span style={{ display: 'inline-block', width: 7, height: 7, background: color.accent, borderRadius: '50%' }} />
+        <span style={{ fontSize: 11, fontWeight: 500, color: color.accent, letterSpacing: 0.5 }}>{label}</span>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '24px 1fr 24px', gap: 4, alignItems: 'center' }}>
         <button onClick={() => setValue(Math.max(0, value - 1))} style={{
-          width: 28, height: 28, borderRadius: 6,
-          background: 'rgba(255,255,255,0.04)', color: COLOR.textSecondary,
-          border: `1px solid ${COLOR.borderSubtle}`, cursor: 'pointer', fontSize: 14,
+          background: 'rgba(255,255,255,0.06)', color: COLOR.textSecondary, border: 'none',
+          width: 24, height: 24, borderRadius: 5, cursor: 'pointer', fontSize: 14, lineHeight: 1,
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
         }}>−</button>
-        <span style={{ fontSize: 22, fontWeight: 600, color: color.accent, minWidth: 28, display: 'inline-block' }}>{value}</span>
+        <div style={{ fontSize: 18, fontWeight: 500, color: COLOR.textPrimary, textAlign: 'center' }}>{value}</div>
         <button onClick={() => setValue(Math.min(15, value + 1))} style={{
-          width: 28, height: 28, borderRadius: 6,
-          background: 'rgba(255,255,255,0.04)', color: COLOR.textSecondary,
-          border: `1px solid ${COLOR.borderSubtle}`, cursor: 'pointer', fontSize: 14,
+          background: `rgba(${color.accent === '#4ade80' ? '74,222,128' : color.accent === '#fbbf24' ? '251,191,36' : '239,68,68'},0.15)`,
+          color: color.accent, border: 'none',
+          width: 24, height: 24, borderRadius: 5, cursor: 'pointer', fontSize: 14, lineHeight: 1,
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
         }}>+</button>
       </div>
     </div>
@@ -60,116 +94,231 @@ export default function AIGeneratePanel({
     }}>
       <div onClick={e => e.stopPropagation()} style={{
         background: COLOR.bgPanel, border: `1px solid ${COLOR.borderSubtle}`,
-        borderRadius: 12, maxWidth: 580, width: '100%', maxHeight: '90vh', overflowY: 'auto',
+        borderRadius: 16, maxWidth: 580, width: '100%', maxHeight: '92vh', overflowY: 'auto',
+        boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
       }}>
-        <div style={{ padding: '18px 22px', borderBottom: `1px solid ${COLOR.borderXSubtle}`, display: 'flex', alignItems: 'center', gap: 10 }}>
-          <i className="ti ti-sparkles" style={{ fontSize: 20, color: COLOR.gold }} aria-hidden />
-          <div style={{ flex: 1 }}>
-            <div style={{ fontSize: 15, fontWeight: 500, color: COLOR.textPrimary }}>AI tạo nháp câu hỏi</div>
-            <div style={{ fontSize: 11, color: COLOR.textMuted, marginTop: 2 }}>Phạm vi: {scopeLabel}</div>
+        <div style={{ padding: '20px 24px 0', display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1 }}>
+            <i className="ti ti-sparkles" style={{ fontSize: 20, color: COLOR.gold }} aria-hidden />
+            <div style={{ fontSize: 16, fontWeight: 500, color: COLOR.textPrimary }}>AI tạo nháp câu hỏi</div>
+          </div>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: 5,
+            background: COLOR.goldBg, border: `1px solid rgba(232,168,50,0.22)`,
+            padding: '4px 9px', borderRadius: 999, fontSize: 11, color: COLOR.gold,
+          }}>
+            <i className="ti ti-sparkles" style={{ fontSize: 12 }} aria-hidden />
+            <span>{limit - remaining}/{limit}</span>
           </div>
           <button onClick={onClose} style={{
-            background: 'transparent', border: 'none', color: COLOR.textMuted,
-            cursor: 'pointer', padding: 4, display: 'inline-flex',
-          }}>
+            background: 'transparent', border: 'none', color: COLOR.textDisabled, cursor: 'pointer', padding: 4,
+          }} aria-label="Đóng">
             <i className="ti ti-x" style={{ fontSize: 18 }} aria-hidden />
           </button>
         </div>
 
-        <div style={{ padding: '18px 22px' }}>
+        <div style={{ padding: '20px 24px 0' }}>
+          <div style={{ marginBottom: 6, fontSize: 11, color: COLOR.textMuted, letterSpacing: 0.6, fontWeight: 500 }}>
+            SÁCH KINH THÁNH
+          </div>
           <div style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            marginBottom: 12, fontSize: 12, color: COLOR.textMuted,
+            background: COLOR.inputBg, border: `1px solid rgba(232,168,50,0.30)`,
+            borderRadius: 8, padding: '11px 13px', fontSize: 13, color: COLOR.textPrimary, marginBottom: 14,
           }}>
-            <span>Tổng: <strong style={{ color: COLOR.textPrimary }}>{total}</strong> câu</span>
-            <span style={{ color: overQuota ? COLOR.danger : COLOR.textDisabled }}>
-              Còn lại trong ngày: {remaining}/{limit}
-            </span>
+            <i className="ti ti-book" style={{ fontSize: 14, color: COLOR.gold, marginRight: 8, verticalAlign: -2 }} aria-hidden />
+            {scope.book}
+            <span style={{ marginLeft: 8, color: COLOR.textDisabled, fontSize: 11 }}>(chỉnh ở mục Thông tin bộ)</span>
           </div>
 
-          <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
-            <Stepper value={easy} setValue={setEasy} label="DỄ" color={DIFFICULTY_COLORS.easy} />
-            <Stepper value={medium} setValue={setMedium} label="TRUNG BÌNH" color={DIFFICULTY_COLORS.medium} />
-            <Stepper value={hard} setValue={setHard} label="KHÓ" color={DIFFICULTY_COLORS.hard} />
+          {/* PHẠM VI: Chương + Câu */}
+          <div style={{
+            background: 'rgba(255,255,255,0.02)', border: `1px solid ${COLOR.borderXSubtle}`,
+            borderRadius: 10, padding: '12px 14px', marginBottom: 16,
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
+              <i className="ti ti-bookmarks" style={{ fontSize: 13, color: COLOR.textMuted }} aria-hidden />
+              <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6 }}>PHẠM VI</span>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }} className="ai-scope-grid">
+              <div>
+                <div style={{ fontSize: 11, fontWeight: 500, color: COLOR.textSecondary, marginBottom: 6 }}>Chương</div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 6, alignItems: 'center' }}>
+                  <input type="number" min={1} value={chFrom}
+                    onChange={e => {
+                      const v = Math.max(1, +e.target.value || 1)
+                      setChFrom(v)
+                      if (chTo < v) setChTo(v)
+                    }}
+                    style={scopeInput()} />
+                  <span style={{ color: COLOR.textDisabled, fontSize: 11 }}>đến</span>
+                  <input type="number" min={chFrom} value={chTo}
+                    onChange={e => setChTo(Math.max(chFrom, +e.target.value || chFrom))}
+                    style={scopeInput()} />
+                </div>
+              </div>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 6 }}>
+                  <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textSecondary }}>Câu</span>
+                  <span style={{ fontSize: 11, color: COLOR.textDisabled }}>tuỳ chọn</span>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 6, alignItems: 'center' }}>
+                  <input type="number" min={1} placeholder="1" value={vFromStr}
+                    onChange={e => setVFromStr(e.target.value)}
+                    style={scopeInput(true)} />
+                  <span style={{ color: COLOR.textDisabled, fontSize: 11 }}>đến</span>
+                  <input type="number" min={1} placeholder="31" value={vToStr}
+                    onChange={e => setVToStr(e.target.value)}
+                    style={scopeInput(true)} />
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div style={{ display: 'flex', gap: 6, marginBottom: 16 }}>
-            <button onClick={() => { setEasy(2); setMedium(2); setHard(2) }} style={chipBtn()}>
-              Đều nhau (2/2/2)
-            </button>
-            <button onClick={() => { setEasy(4); setMedium(4); setHard(2) }} style={chipBtn()}>
-              40/40/20 (4/4/2)
-            </button>
-            <button onClick={() => { setEasy(0); setMedium(0); setHard(0) }} style={chipBtn()}>
-              Xoá
-            </button>
+          {/* CHỦ ĐỀ */}
+          <div style={{ marginBottom: 18 }}>
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6, marginBottom: 6,
+            }}>
+              <span>CHỦ ĐỀ BÀI HỌC</span>
+              <span style={{ color: COLOR.textDisabled, fontWeight: 400, letterSpacing: 0 }}>Không bắt buộc</span>
+            </div>
+            <textarea
+              rows={2}
+              value={topic}
+              onChange={e => setTopic(e.target.value)}
+              placeholder="VD: Sự sáng tạo, sự sa ngã, lời hứa cứu chuộc..."
+              style={{
+                width: '100%', background: COLOR.inputBg, border: `1px solid ${COLOR.borderSubtle}`,
+                color: COLOR.textPrimary, padding: '11px 13px', borderRadius: 8,
+                fontSize: 13, fontFamily: 'inherit', boxSizing: 'border-box', resize: 'none', outline: 'none',
+              }}
+            />
           </div>
 
-          <label style={{ display: 'block', fontSize: 11, color: COLOR.textMuted, marginBottom: 6, letterSpacing: 0.6, fontWeight: 500 }}>
-            CHỦ ĐỀ (tùy chọn)
-          </label>
-          <input
-            type="text"
-            value={topic}
-            onChange={e => setTopic(e.target.value)}
-            placeholder="VD: Sự sáng tạo, tình yêu của Đức Chúa Trời..."
-            style={{
-              width: '100%', background: COLOR.inputBg, border: `1px solid ${COLOR.borderSubtle}`,
-              color: COLOR.textPrimary, padding: '9px 12px', borderRadius: 7,
-              fontSize: 13, fontFamily: 'inherit', boxSizing: 'border-box', marginBottom: 14,
-              outline: 'none',
-            }}
-          />
+          {/* PHÂN BỔ ĐỘ KHÓ */}
+          <div style={{
+            background: 'rgba(255,255,255,0.02)', border: `1px solid ${COLOR.borderXSubtle}`,
+            borderRadius: 10, padding: '12px 14px', marginBottom: 18,
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <i className="ti ti-chart-bar" style={{ fontSize: 13, color: COLOR.textMuted }} aria-hidden />
+                <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6 }}>PHÂN BỔ ĐỘ KHÓ</span>
+              </div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 12 }}>
+                <span style={{ color: COLOR.textDisabled }}>Tổng:</span>
+                <span style={{ fontWeight: 500, color: COLOR.gold, fontSize: 14 }}>{total}</span>
+                <span style={{ color: COLOR.textDisabled }}>câu</span>
+              </div>
+            </div>
+
+            {/* Stacked bar */}
+            <div style={{
+              display: 'flex', height: 6, borderRadius: 3, overflow: 'hidden',
+              marginBottom: 14, background: 'rgba(255,255,255,0.05)',
+            }}>
+              <div style={{ width: `${pct(easy)}%`, background: DIFFICULTY_COLORS.easy.accent, transition: 'width 0.2s' }} />
+              <div style={{ width: `${pct(medium)}%`, background: DIFFICULTY_COLORS.medium.accent, transition: 'width 0.2s' }} />
+              <div style={{ width: `${pct(hard)}%`, background: DIFFICULTY_COLORS.hard.accent, transition: 'width 0.2s' }} />
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginBottom: 12 }}>
+              <Stepper value={easy} setValue={setEasy} label="DỄ" color={DIFFICULTY_COLORS.easy} />
+              <Stepper value={medium} setValue={setMedium} label="TB" color={DIFFICULTY_COLORS.medium} />
+              <Stepper value={hard} setValue={setHard} label="KHÓ" color={DIFFICULTY_COLORS.hard} />
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingTop: 10, borderTop: `1px solid rgba(255,255,255,0.04)` }}>
+              <span style={{ fontSize: 11, color: COLOR.textDisabled }}>Gợi ý:</span>
+              <button onClick={() => { setEasy(2); setMedium(2); setHard(2) }} style={pillBtn()}>
+                <i className="ti ti-scale" style={{ fontSize: 12 }} aria-hidden /> Đều nhau
+              </button>
+              <button onClick={() => { setEasy(4); setMedium(4); setHard(2) }} style={pillBtn(true)}>
+                <i className="ti ti-chart-pie" style={{ fontSize: 12 }} aria-hidden /> Đề xuất 40/40/20
+              </button>
+            </div>
+          </div>
 
           {error && (
             <div style={{
               background: 'rgba(239,68,68,0.10)', border: `1px solid rgba(239,68,68,0.30)`,
-              color: COLOR.danger, padding: '8px 12px', borderRadius: 7,
-              fontSize: 12, marginBottom: 12,
+              color: COLOR.danger, padding: '8px 12px', borderRadius: 7, fontSize: 12, marginBottom: 12,
             }}>
               <i className="ti ti-alert-circle" style={{ fontSize: 14, marginRight: 6, verticalAlign: -2 }} aria-hidden />
               {error}
             </div>
           )}
+        </div>
 
-          {busy && (
-            <div style={{
-              background: COLOR.goldBg, border: `1px solid rgba(232,168,50,0.22)`,
-              color: COLOR.gold, padding: '10px 12px', borderRadius: 7,
-              fontSize: 12, marginBottom: 12, textAlign: 'center',
-            }}>
-              <i className="ti ti-loader-2" style={{ fontSize: 14, marginRight: 6, verticalAlign: -2, animation: 'spin 1s linear infinite', display: 'inline-block' }} aria-hidden />
-              Đang tạo {total} câu... ~20-30 giây
-              <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-            </div>
-          )}
-
+        <div style={{
+          padding: '16px 24px 20px', borderTop: `1px solid rgba(255,255,255,0.04)`,
+          background: 'rgba(255,255,255,0.015)',
+        }}>
           <button
-            onClick={() => onGenerate({ countEasy: easy, countMedium: medium, countHard: hard, topic: topic.trim() || undefined })}
+            onClick={() => {
+              const vFrom = vFromStr.trim() === '' ? null : Math.max(1, +vFromStr || 1)
+              const vTo = vToStr.trim() === '' ? null : Math.max(vFrom ?? 1, +vToStr || (vFrom ?? 1))
+              onGenerate({
+                countEasy: easy, countMedium: medium, countHard: hard,
+                chapterFrom: chFrom, chapterTo: chTo,
+                verseFrom: vFrom, verseTo: vTo,
+                topic: topic.trim() || undefined,
+              })
+            }}
             disabled={disabled}
             style={{
               width: '100%',
               background: disabled ? 'rgba(232,168,50,0.30)' : COLOR.gold,
-              color: '#1a1226', border: 'none', padding: '12px 18px',
-              borderRadius: 8, fontSize: 14, fontWeight: 500,
+              color: '#1a1226', border: 'none', padding: '13px 16px',
+              borderRadius: 10, fontSize: 14, fontWeight: 500,
               cursor: disabled ? 'not-allowed' : 'pointer',
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8,
               opacity: disabled ? 0.6 : 1,
             }}
           >
-            <i className="ti ti-sparkles" style={{ fontSize: 16 }} aria-hidden />
-            {tooLarge ? 'Tối đa 15 câu/lần' : overQuota ? 'Vượt quota AI hôm nay' : `Tạo ${total} câu · ${easy} dễ + ${medium} TB + ${hard} khó`}
+            <i className={`ti ti-${busy ? 'loader-2' : 'sparkles'}`}
+               style={{ fontSize: 16, animation: busy ? 'spin 1s linear infinite' : undefined }} aria-hidden />
+            {busy
+              ? `Đang tạo ${total} câu...`
+              : tooLarge
+                ? 'Tối đa 15 câu/lần'
+                : overQuota
+                  ? `Vượt quota (còn ${remaining})`
+                  : <>Tạo {total} câu hỏi với AI <span style={{ opacity: 0.7, fontWeight: 400, marginLeft: 4 }}>· {easy} dễ + {medium} TB + {hard} khó</span></>}
           </button>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 10, fontSize: 11, color: COLOR.textDisabled }}>
+            <i className="ti ti-clock" style={{ fontSize: 12 }} aria-hidden />
+            <span>AI tạo nháp ~20-30s · Bạn xem lại + chỉnh sửa trước khi lưu</span>
+          </div>
         </div>
+
+        <style>{`
+          @keyframes spin { to { transform: rotate(360deg); } }
+          @media (max-width: 480px) {
+            .ai-scope-grid { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
       </div>
     </div>
   )
 }
 
-function chipBtn(): React.CSSProperties {
+function scopeInput(placeholderStyle = false): React.CSSProperties {
   return {
-    background: 'rgba(255,255,255,0.04)', color: COLOR.textSecondary,
-    border: `1px solid ${COLOR.borderSubtle}`, padding: '5px 11px',
-    borderRadius: 999, fontSize: 11, cursor: 'pointer',
+    width: '100%', background: COLOR.inputBg,
+    border: `1px solid ${placeholderStyle ? COLOR.borderXSubtle : COLOR.borderSubtle}`,
+    color: COLOR.textPrimary, padding: 9, borderRadius: 7, fontSize: 13,
+    textAlign: 'center', boxSizing: 'border-box', fontFamily: 'inherit', outline: 'none',
+  }
+}
+
+function pillBtn(highlighted = false): React.CSSProperties {
+  return {
+    background: highlighted ? COLOR.goldBg : 'rgba(255,255,255,0.04)',
+    color: highlighted ? COLOR.gold : COLOR.textSecondary,
+    border: `1px solid ${highlighted ? 'rgba(232,168,50,0.22)' : COLOR.borderSubtle}`,
+    padding: '4px 10px', borderRadius: 999, fontSize: 11, cursor: 'pointer',
+    display: 'inline-flex', alignItems: 'center', gap: 4,
   }
 }
