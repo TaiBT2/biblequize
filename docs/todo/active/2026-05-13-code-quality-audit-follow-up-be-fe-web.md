@@ -104,9 +104,13 @@
 ### Phase 5 — BE typed DTO migration (Major, ~1 sprint)
 
 - CQ-19 BE — Investigation: audit `Map<String, Object>` request body usage
-  - Status: `[ ]` TODO · Files: `AUDIT_MAP_REQUEST_BODY.md` (new) — **read-only**
-  - Output: list endpoint + line ref cần migrate, ưu tiên theo độ "nóng"
-  - Checklist: grep `Map<String, Object>.*@RequestBody` BE → liệt kê · user review trước CQ-20
+  - Status: `[x]` DONE · Files: [docs/dev/AUDIT_MAP_REQUEST_BODY.md](docs/dev/AUDIT_MAP_REQUEST_BODY.md) (new)
+  - **Spec impact**: `[x]` None · **Spec strategy**: `[x]` (c) `[no-spec-impact]`
+  - Outcome: Phát hiện **17 controllers / 39 endpoints / 12+ `@SuppressWarnings("unchecked")`** — lớn hơn nhiều so với scope CQ-20/21 cũ. Phân thành 3 batch ưu tiên (Auth+Room+Ranked → ChurchGroup core → UserQuestion+Scheduled). Original TODO scope cho CQ-20/21 = chỉ ChurchGroupController quá hẹp.
+  - **GATE**: User cần review audit + decide:
+    1. Scope CQ-20/21: 3-commit batch (15 endpoints) vs. full 39-endpoint scrub?
+    2. DTO style: Java `record` vs class?
+    3. Có cần ArchUnit/Checkstyle rule chặn regression?
 
 - CQ-20 BE — Migrate ChurchGroupController endpoints → typed DTO + `@Valid`
   - Status: `[ ]` TODO · Files: [ChurchGroupController.java](apps/api/src/main/java/com/biblequiz/api/ChurchGroupController.java), `api/dto/group/*.java` (new) · Test: existing `ChurchGroupControllerTest` + validation case mới
