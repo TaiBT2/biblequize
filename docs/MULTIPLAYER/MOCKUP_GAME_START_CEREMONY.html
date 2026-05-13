@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Game Start Ceremony</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Be Vietnam Pro', sans-serif; background: #0a0c14; color: #e5e7eb; }
+  .font-display { font-family: 'Sora', sans-serif; }
+
+  /* Glass card */
+  .glass {
+    background: rgba(50,52,64,0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .glass-strong {
+    background: rgba(50,52,64,0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(232,168,50,0.15);
+  }
+
+  /* Phone frame */
+  .phone {
+    width: 390px;
+    height: 780px;
+    border-radius: 44px;
+    background: #11131e;
+    border: 8px solid #1c1f2c;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+  .phone::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 28px;
+    border-radius: 14px;
+    background: #0a0c14;
+    z-index: 50;
+  }
+  .phone-screen {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  /* Animations */
+  @keyframes numZoom {
+    0%   { transform: scale(0.3); opacity: 0; filter: blur(20px); }
+    25%  { transform: scale(1.2); opacity: 1; filter: blur(0); }
+    65%  { transform: scale(1.0); opacity: 1; filter: blur(0); }
+    100% { transform: scale(0.85); opacity: 0; filter: blur(0); }
+  }
+  @keyframes ringPulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50%      { transform: scale(1.6); opacity: 0; }
+  }
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 60px rgba(232,168,50,0.5), 0 0 140px rgba(232,168,50,0.25); }
+    50%      { box-shadow: 0 0 120px rgba(232,168,50,0.7), 0 0 240px rgba(232,168,50,0.4); }
+  }
+  @keyframes goSlam {
+    0%   { transform: scale(0.4) rotate(-8deg); opacity: 0; letter-spacing: 0.5em; }
+    25%  { transform: scale(1.3) rotate(2deg); opacity: 1; letter-spacing: 0.05em; }
+    50%  { transform: scale(1) rotate(0); }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+  }
+  @keyframes confettiFall {
+    0%   { transform: translateY(-100px) rotate(0); opacity: 1; }
+    100% { transform: translateY(800px) rotate(720deg); opacity: 0; }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .num-anim { animation: numZoom 1s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+  .ring { animation: ringPulse 1s ease-out; }
+  .glow-pulse { animation: glowPulse 1.5s ease-in-out infinite; }
+  .go-slam { animation: goSlam 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+  .fade-in { animation: fadeIn 0.4s ease-out; }
+
+  /* Confetti pieces */
+  .confetti-piece {
+    position: absolute;
+    width: 8px;
+    height: 14px;
+    top: -20px;
+    animation: confettiFall 1.8s ease-in forwards;
+  }
+
+  /* Player join slide in */
+  @keyframes joinSlide {
+    from { transform: translateX(-30px) scale(0.9); opacity: 0; }
+    to   { transform: translateX(0) scale(1); opacity: 1; }
+  }
+  .join-slide { animation: joinSlide 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+
+  /* State controls */
+  .state-btn {
+    transition: all 0.2s;
+  }
+  .state-btn.active {
+    background: linear-gradient(135deg, #e8a832 0%, #d4941f 100%);
+    color: #11131e;
+    box-shadow: 0 0 20px rgba(232,168,50,0.4);
+  }
+
+  .gold-grad {
+    background: linear-gradient(135deg, #e8a832 0%, #f4c560 50%, #e8a832 100%);
+  }
+  .gold-text-grad {
+    background: linear-gradient(135deg, #f4c560 0%, #e8a832 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+</style>
+</head>
+<body class="min-h-screen">
+
+<div class="max-w-[1400px] mx-auto px-6 py-10">
+
+  <!-- Header -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="px-2.5 py-1 rounded-md bg-[#e8a832]/15 text-[#e8a832] text-xs font-semibold tracking-wide uppercase">Mockup · Sprint 2</span>
+      <span class="text-xs text-gray-500">BibleQuiz Multiplayer</span>
+    </div>
+    <h1 class="text-3xl font-bold font-display text-white">Game Start Ceremony</h1>
+    <p class="text-gray-400 text-sm mt-2 max-w-2xl">
+      Khoảnh khắc <span class="text-[#e8a832] font-semibold">host bấm "Bắt đầu" → câu 1 hiện ra</span>.
+      Hiện tại: race condition + 0 sound + 0 animation. Đề xuất: 5s cinematic countdown với gold pulse, sound, haptic, server-synced timer.
+    </p>
+  </div>
+
+  <!-- State toggles -->
+  <div class="glass rounded-2xl p-4 mb-8">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Trạng thái</span>
+      <div class="h-px flex-1 bg-white/5"></div>
+      <span id="time-stamp" class="text-xs font-mono text-[#e8a832]">T+0.0s</span>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <button onclick="setState('lobby')" class="state-btn active px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/5 text-gray-300 hover:bg-white/10" data-state="lobby">
+        ① Host bấm "Bắt đầu"
+      </button>
+      <button onclick="setState('c5')" class="state-btn px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/5 text-gray-300 hover:bg-white/10" data-state="c5">
+        ② Countdown 5
+      </button>
+      <button onclick="setState('c3')" class="state-btn px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/5 text-gray-300 hover:bg-white/10" data-state="c3">
+        ③ Countdown 3
+      </button>
+      <button onclick="setState('c1')" class="state-btn px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/5 text-gray-300 hover:bg-white/10" data-state="c1">
+        ④ Countdown 1
+      </button>
+      <button onclick="setState('go')" class="state-btn px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/5 text-gray-300 hover:bg-white/10" data-state="go">
+        ⑤ BẮT ĐẦU!
+      </button>
+      <button onclick="setState('q1')" class="state-btn px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/5 text-gray-300 hover:bg-white/10" data-state="q1">
+        ⑥ Câu 1
+      </button>
+      <div class="ml-auto flex gap-2">
+        <button onclick="autoplay()" class="px-3.5 py-2 rounded-lg text-sm font-semibold bg-[#e8a832]/15 text-[#e8a832] hover:bg-[#e8a832]/25 border border-[#e8a832]/30">
+          ▶ Autoplay
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main grid: phone + notes -->
+  <div class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-10">
+
+    <!-- Phone -->
+    <div class="flex justify-center">
+      <div class="phone">
+        <div class="phone-screen">
+
+          <!-- ============================== -->
+          <!-- STATE: LOBBY (host pressed start) -->
+          <!-- ============================== -->
+          <div id="state-lobby" class="state-panel absolute inset-0 bg-[#11131e]">
+            <!-- Status bar mock -->
+            <div class="h-11 flex items-center justify-between px-7 pt-2 text-xs text-white/80 font-semibold">
+              <span>9:41</span>
+              <span class="flex gap-1">
+                <span>📶</span><span>🔋</span>
+              </span>
+            </div>
+
+            <!-- Top bar -->
+            <div class="px-5 py-3 flex items-center justify-between">
+              <button class="w-9 h-9 rounded-full glass flex items-center justify-center text-gray-400">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              </button>
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                <span class="text-xs text-gray-400">Đã kết nối</span>
+              </div>
+              <button class="w-9 h-9 rounded-full glass flex items-center justify-center text-gray-400">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 8v4l3 2"/></svg>
+              </button>
+            </div>
+
+            <!-- Hero -->
+            <div class="px-5 mt-2">
+              <div class="glass rounded-2xl p-5 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#e8a832]/10 to-transparent"></div>
+                <div class="relative">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="px-2 py-0.5 rounded bg-[#e8a832]/20 text-[#e8a832] text-[10px] font-bold uppercase tracking-wider">⚡ Speed Race</span>
+                    <span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 text-[10px] font-bold uppercase tracking-wider">Công khai</span>
+                  </div>
+                  <div class="text-xs text-gray-400 mb-1">Mã phòng</div>
+                  <div class="font-display text-3xl font-extrabold gold-text-grad tracking-[0.3em]">QZ8K2M</div>
+                  <div class="grid grid-cols-3 gap-3 mt-4 text-center">
+                    <div><div class="text-xs text-gray-500">Câu hỏi</div><div class="text-sm font-bold text-white">15</div></div>
+                    <div><div class="text-xs text-gray-500">Thời gian</div><div class="text-sm font-bold text-white">30s</div></div>
+                    <div><div class="text-xs text-gray-500">Người chơi</div><div class="text-sm font-bold text-white">3 / 4</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Players -->
+            <div class="px-5 mt-4">
+              <div class="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">Người chơi</div>
+              <div class="grid grid-cols-2 gap-2.5">
+                <div class="glass rounded-xl p-3 flex items-center gap-2.5 border border-[#e8a832]/30">
+                  <div class="w-9 h-9 rounded-full bg-gradient-to-br from-[#e8a832] to-[#d4941f] flex items-center justify-center font-bold text-[#11131e]">B</div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm font-semibold text-white truncate flex items-center gap-1">Bui <span class="text-[#e8a832]">👑</span></div>
+                    <div class="text-[10px] text-[#e8a832]">Host · Sẵn sàng</div>
+                  </div>
+                </div>
+                <div class="glass rounded-xl p-3 flex items-center gap-2.5">
+                  <div class="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center font-bold text-white">A</div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm font-semibold text-white truncate">An</div>
+                    <div class="text-[10px] text-emerald-400">✓ Sẵn sàng</div>
+                  </div>
+                </div>
+                <div class="glass rounded-xl p-3 flex items-center gap-2.5">
+                  <div class="w-9 h-9 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center font-bold text-white">C</div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm font-semibold text-white truncate">Chi</div>
+                    <div class="text-[10px] text-emerald-400">✓ Sẵn sàng</div>
+                  </div>
+                </div>
+                <div class="rounded-xl p-3 flex items-center gap-2.5 border border-dashed border-white/10">
+                  <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center text-gray-600">+</div>
+                  <div class="text-xs text-gray-600">Slot trống</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom button -->
+            <div class="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#11131e] via-[#11131e] to-transparent">
+              <button class="w-full py-4 rounded-2xl gold-grad font-display font-extrabold text-[#11131e] text-base shadow-lg shadow-[#e8a832]/30 flex items-center justify-center gap-2">
+                <span>BẮT ĐẦU!</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- ============================== -->
+          <!-- STATE: COUNTDOWN -->
+          <!-- ============================== -->
+          <div id="state-c5" class="state-panel absolute inset-0 hidden">
+            <!-- Lobby dimmed in background -->
+            <div class="absolute inset-0 bg-[#11131e]"></div>
+            <div class="absolute inset-0 bg-black/60"></div>
+
+            <!-- Center stage -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+              <div class="text-xs font-semibold text-[#e8a832] uppercase tracking-[0.4em] mb-6 fade-in">BẮT ĐẦU TRONG</div>
+
+              <div class="relative">
+                <!-- Pulsing glow ring -->
+                <div class="absolute inset-0 rounded-full ring border-2 border-[#e8a832]"></div>
+                <!-- Number circle -->
+                <div class="w-48 h-48 rounded-full glass-strong glow-pulse flex items-center justify-center">
+                  <div id="countdown-num" class="font-display font-black text-[10rem] gold-text-grad leading-none num-anim">5</div>
+                </div>
+              </div>
+
+              <!-- Mode chip -->
+              <div class="mt-10 glass rounded-full px-4 py-2 flex items-center gap-2 fade-in">
+                <span class="text-lg">⚡</span>
+                <span class="text-sm font-semibold text-white">Speed Race · 15 câu</span>
+              </div>
+
+              <!-- Player avatars row -->
+              <div class="mt-6 flex items-center gap-2 fade-in">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#e8a832] to-[#d4941f] flex items-center justify-center text-xs font-bold text-[#11131e] border-2 border-[#11131e]">B</div>
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-xs font-bold text-white border-2 border-[#11131e] -ml-2">A</div>
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-xs font-bold text-white border-2 border-[#11131e] -ml-2">C</div>
+                <span class="ml-2 text-xs text-gray-400">3 người chơi</span>
+              </div>
+            </div>
+
+            <!-- FX indicators -->
+            <div class="absolute top-14 right-4 flex flex-col gap-1.5">
+              <div class="glass rounded-full px-2.5 py-1 flex items-center gap-1.5">
+                <span class="text-xs">🔊</span>
+                <span class="text-[10px] font-semibold text-[#e8a832]">tick.mp3</span>
+              </div>
+              <div class="glass rounded-full px-2.5 py-1 flex items-center gap-1.5">
+                <span class="text-xs">📳</span>
+                <span class="text-[10px] font-semibold text-[#e8a832]">light</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================== -->
+          <!-- STATE: GO! -->
+          <!-- ============================== -->
+          <div id="state-go" class="state-panel absolute inset-0 hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#e8a832] via-[#d4941f] to-[#11131e]"></div>
+            <div class="absolute inset-0 bg-[#11131e]/40"></div>
+
+            <!-- Confetti -->
+            <div id="confetti-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+
+            <!-- Center -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center px-6">
+              <div class="font-black text-6xl text-white go-slam tracking-tight text-center" style="font-family: 'Be Vietnam Pro', sans-serif; text-shadow: 0 4px 30px rgba(0,0,0,0.5); line-height: 1.15;">
+                BẮT ĐẦU!
+              </div>
+              <div class="mt-4 text-base font-semibold text-white/90 fade-in" style="animation-delay: 0.4s; animation-fill-mode: backwards;">
+                Câu hỏi đầu tiên đang đến...
+              </div>
+            </div>
+
+            <div class="absolute top-14 right-4 flex flex-col gap-1.5">
+              <div class="glass-strong rounded-full px-2.5 py-1 flex items-center gap-1.5">
+                <span class="text-xs">🔊</span>
+                <span class="text-[10px] font-semibold text-[#e8a832]">gameStart.mp3</span>
+              </div>
+              <div class="glass-strong rounded-full px-2.5 py-1 flex items-center gap-1.5">
+                <span class="text-xs">📳</span>
+                <span class="text-[10px] font-semibold text-[#e8a832]">success</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================== -->
+          <!-- STATE: Q1 First Frame -->
+          <!-- ============================== -->
+          <div id="state-q1" class="state-panel absolute inset-0 hidden bg-[#11131e]">
+            <!-- Status bar -->
+            <div class="h-11 flex items-center justify-between px-7 pt-2 text-xs text-white/80 font-semibold">
+              <span>9:41</span>
+              <span class="flex gap-1"><span>📶</span><span>🔋</span></span>
+            </div>
+
+            <!-- Header bar -->
+            <div class="px-5 py-3 flex items-center justify-between fade-in">
+              <div class="glass rounded-full px-3 py-1.5 flex items-center gap-2">
+                <span class="text-xs">⚡</span>
+                <span class="text-xs font-semibold text-white">Câu 1 / 15</span>
+              </div>
+              <!-- Server-sync timer -->
+              <div class="flex items-center gap-2">
+                <div class="relative w-12 h-12">
+                  <svg class="w-12 h-12 -rotate-90" viewBox="0 0 48 48">
+                    <circle cx="24" cy="24" r="20" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="4"/>
+                    <circle cx="24" cy="24" r="20" fill="none" stroke="#e8a832" stroke-width="4" stroke-linecap="round"
+                      stroke-dasharray="125.6" stroke-dashoffset="0"/>
+                  </svg>
+                  <div class="absolute inset-0 flex items-center justify-center font-display font-bold text-base text-white">30</div>
+                </div>
+              </div>
+              <button class="w-9 h-9 rounded-full glass flex items-center justify-center text-gray-400">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+              </button>
+            </div>
+
+            <!-- Live scoreboard -->
+            <div class="px-5 mt-1 fade-in" style="animation-delay: 0.1s; animation-fill-mode: backwards;">
+              <div class="flex items-center gap-2 overflow-x-auto pb-1">
+                <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5 border border-[#e8a832]/30">
+                  <div class="w-5 h-5 rounded-full bg-gradient-to-br from-[#e8a832] to-[#d4941f] flex items-center justify-center text-[10px] font-bold text-[#11131e]">B</div>
+                  <span class="text-xs font-semibold text-white">0</span>
+                </div>
+                <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5">
+                  <div class="w-5 h-5 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-[10px] font-bold text-white">A</div>
+                  <span class="text-xs font-semibold text-white">0</span>
+                </div>
+                <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5">
+                  <div class="w-5 h-5 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-[10px] font-bold text-white">C</div>
+                  <span class="text-xs font-semibold text-white">0</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question -->
+            <div class="px-5 mt-5 fade-in" style="animation-delay: 0.2s; animation-fill-mode: backwards;">
+              <div class="text-xs text-[#e8a832] font-semibold mb-2 uppercase tracking-wider">📖 Sáng Thế Ký 1</div>
+              <h2 class="text-xl font-display font-bold text-white leading-snug">
+                Trong sáu ngày sáng tạo, Đức Chúa Trời tạo dựng điều gì vào ngày thứ tư?
+              </h2>
+            </div>
+
+            <!-- Options -->
+            <div class="px-5 mt-6 space-y-2.5 fade-in" style="animation-delay: 0.3s; animation-fill-mode: backwards;">
+              <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left hover:border-[#ff7a59]/40 transition border border-transparent">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(255,122,89,0.15); color: #ff7a59;">A</div>
+                <span class="text-sm text-white">Trời và đất</span>
+              </button>
+              <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left hover:border-[#4ea8de]/40 transition border border-transparent">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(78,168,222,0.15); color: #4ea8de;">B</div>
+                <span class="text-sm text-white">Cây cối và thực vật</span>
+              </button>
+              <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left hover:border-[#e8a832]/40 transition border border-transparent">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(232,168,50,0.15); color: #e8a832;">C</div>
+                <span class="text-sm text-white">Mặt trời, mặt trăng và các vì sao</span>
+              </button>
+              <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left hover:border-[#86b8a0]/40 transition border border-transparent">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(134,184,160,0.15); color: #86b8a0;">D</div>
+                <span class="text-sm text-white">Con người</span>
+              </button>
+            </div>
+
+            <!-- Server sync indicator -->
+            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 glass rounded-full px-3 py-1 flex items-center gap-1.5">
+              <div class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
+              <span class="text-[10px] text-gray-400 font-mono">synced · server t=30.0s</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes column -->
+    <div class="space-y-4">
+
+      <!-- Current vs Proposed -->
+      <div class="glass rounded-2xl p-5">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-xs font-semibold uppercase tracking-wider text-[#e8a832]">So sánh</span>
+          <div class="h-px flex-1 bg-white/5"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <div class="text-xs font-bold text-red-400 mb-2 uppercase tracking-wider">❌ Hiện tại</div>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li class="flex gap-2"><span class="text-red-400">·</span>Race condition: GAME_STARTING vs ROOM_STARTING — 50% lần user bị yank thẳng vào quiz</li>
+              <li class="flex gap-2"><span class="text-red-400">·</span>3 giây countdown nhưng không sound, không animation lớn</li>
+              <li class="flex gap-2"><span class="text-red-400">·</span>Timer client-side (Date.now) → bất công cho Speed Race</li>
+              <li class="flex gap-2"><span class="text-red-400">·</span>Không có moment "BẮT ĐẦU!" cảm xúc</li>
+              <li class="flex gap-2"><span class="text-red-400">·</span>Quiz screen mount đột ngột, không transition</li>
+            </ul>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-emerald-400 mb-2 uppercase tracking-wider">✅ Đề xuất</div>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li class="flex gap-2"><span class="text-emerald-400">·</span>Single source of truth: chỉ GAME_STARTING (xóa ROOM_STARTING send)</li>
+              <li class="flex gap-2"><span class="text-emerald-400">·</span>5 giây countdown với gold pulse + tick.mp3 mỗi giây</li>
+              <li class="flex gap-2"><span class="text-emerald-400">·</span>Server gửi <code class="text-[#e8a832]">startedAtMs</code> → tất cả client compute timer giống nhau</li>
+              <li class="flex gap-2"><span class="text-emerald-400">·</span>"BẮT ĐẦU!" full-screen + confetti + gameStart.mp3 + haptic success</li>
+              <li class="flex gap-2"><span class="text-emerald-400">·</span>Q1 fade-in từng phần (header → score → question → options)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sound + Haptic spec -->
+      <div class="glass rounded-2xl p-5">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-xs font-semibold uppercase tracking-wider text-[#e8a832]">Sound + Haptic Timeline</span>
+          <div class="h-px flex-1 bg-white/5"></div>
+        </div>
+        <div class="space-y-2 text-sm">
+          <div class="flex items-center gap-3 py-2 border-b border-white/5">
+            <span class="font-mono text-xs text-[#e8a832] w-14">T+0.0s</span>
+            <span class="text-gray-300 flex-1">Host bấm Start · countdown overlay fade in</span>
+            <span class="text-xs text-gray-500">whoosh.mp3</span>
+          </div>
+          <div class="flex items-center gap-3 py-2 border-b border-white/5">
+            <span class="font-mono text-xs text-[#e8a832] w-14">T+1.0s</span>
+            <span class="text-gray-300 flex-1">"5" hiện · pulse + ring</span>
+            <span class="text-xs text-gray-500">tick.mp3 · light haptic</span>
+          </div>
+          <div class="flex items-center gap-3 py-2 border-b border-white/5">
+            <span class="font-mono text-xs text-[#e8a832] w-14">T+2.0s</span>
+            <span class="text-gray-300 flex-1">"4" hiện</span>
+            <span class="text-xs text-gray-500">tick.mp3</span>
+          </div>
+          <div class="flex items-center gap-3 py-2 border-b border-white/5">
+            <span class="font-mono text-xs text-[#e8a832] w-14">T+3.0s</span>
+            <span class="text-gray-300 flex-1">"3" hiện · glow tăng</span>
+            <span class="text-xs text-gray-500">tick.mp3</span>
+          </div>
+          <div class="flex items-center gap-3 py-2 border-b border-white/5">
+            <span class="font-mono text-xs text-[#e8a832] w-14">T+4.0s</span>
+            <span class="text-gray-300 flex-1">"2" hiện</span>
+            <span class="text-xs text-gray-500">tick.mp3</span>
+          </div>
+          <div class="flex items-center gap-3 py-2 border-b border-white/5">
+            <span class="font-mono text-xs text-[#e8a832] w-14">T+5.0s</span>
+            <span class="text-gray-300 flex-1">"1" hiện · glow peak</span>
+            <span class="text-xs text-gray-500">tickHigh.mp3</span>
+          </div>
+          <div class="flex items-center gap-3 py-2 border-b border-white/5">
+            <span class="font-mono text-xs text-[#e8a832] w-14">T+6.0s</span>
+            <span class="text-gray-300 flex-1">"BẮT ĐẦU!" slam + confetti</span>
+            <span class="text-xs text-gray-500">gameStart.mp3 · success haptic</span>
+          </div>
+          <div class="flex items-center gap-3 py-2">
+            <span class="font-mono text-xs text-[#e8a832] w-14">T+6.6s</span>
+            <span class="text-gray-300 flex-1">Q1 fade-in (server <code class="text-[#e8a832]">startedAtMs</code> = T+6.6s)</span>
+            <span class="text-xs text-gray-500">questionAppear.mp3</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Backend changes -->
+      <div class="glass rounded-2xl p-5">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-xs font-semibold uppercase tracking-wider text-[#e8a832]">Backend changes</span>
+          <div class="h-px flex-1 bg-white/5"></div>
+        </div>
+        <div class="space-y-3 text-sm text-gray-300">
+          <div>
+            <div class="font-mono text-xs text-[#e8a832] mb-1">RoomQuizService.java:57</div>
+            <code class="block bg-black/30 rounded p-2 text-xs">- GAME_STARTING_COUNTDOWN_S = 3<br>+ GAME_STARTING_COUNTDOWN_S = 5</code>
+          </div>
+          <div>
+            <div class="font-mono text-xs text-[#e8a832] mb-1">WebSocketMessage.java — QuestionStartData</div>
+            <code class="block bg-black/30 rounded p-2 text-xs">+ Long startedAtMs;  // System.currentTimeMillis() at broadcast moment</code>
+          </div>
+          <div>
+            <div class="font-mono text-xs text-[#e8a832] mb-1">RoomLobby.tsx:227</div>
+            <code class="block bg-black/30 rounded p-2 text-xs">- send('/app/room/' + roomId + '/start', {})  // xóa</code>
+          </div>
+          <div>
+            <div class="font-mono text-xs text-[#e8a832] mb-1">RoomQuiz.tsx:127</div>
+            <code class="block bg-black/30 rounded p-2 text-xs">- questionStartedAt.current = Date.now()<br>+ const offset = Date.now() - data.startedAtMs<br>+ timeLeft = max(0, data.timeLimit - offset / 1000)</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spec compliance -->
+      <div class="rounded-2xl p-5 border border-[#e8a832]/30 bg-[#e8a832]/5">
+        <div class="flex items-start gap-3">
+          <span class="text-xl">📋</span>
+          <div class="flex-1">
+            <div class="font-bold text-[#e8a832] mb-1">SPEC compliance check</div>
+            <p class="text-sm text-gray-300">
+              SPEC_USER_v3 §5.4.5 nhắc đến reconnect grace 60s nhưng không quy định cụ thể countdown ceremony.
+              Đề xuất 5s là "industry standard" (Kahoot 5s, Quizizz 3s với sound). Có thể configurable qua <code class="text-[#e8a832]">app_config</code> (xem SPEC_ADMIN §13).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let currentState = 'lobby';
+  let autoplayTimer = null;
+  const sequence = ['lobby', 'c5', 'c5', 'c3', 'c3', 'c1', 'c1', 'go', 'go', 'q1'];
+  const numbers = { c5: '5', c3: '3', c1: '1' };
+  const timeMap = { lobby: 'T+0.0s', c5: 'T+1.0s', c3: 'T+3.0s', c1: 'T+5.0s', go: 'T+6.0s', q1: 'T+6.6s' };
+
+  function setState(s) {
+    if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+    currentState = s;
+
+    // Hide all
+    document.querySelectorAll('.state-panel').forEach(p => p.classList.add('hidden'));
+
+    // Determine which panel
+    let panelId = 'state-' + s;
+    if (s === 'c5' || s === 'c3' || s === 'c1') {
+      panelId = 'state-c5';
+      const numEl = document.getElementById('countdown-num');
+      numEl.textContent = numbers[s];
+      // Restart animation
+      numEl.classList.remove('num-anim');
+      void numEl.offsetWidth;
+      numEl.classList.add('num-anim');
+    }
+    document.getElementById(panelId).classList.remove('hidden');
+
+    // Toggle button active state
+    document.querySelectorAll('.state-btn[data-state]').forEach(b => {
+      b.classList.toggle('active', b.dataset.state === s);
+    });
+
+    // Update timestamp
+    document.getElementById('time-stamp').textContent = timeMap[s] || 'T+0.0s';
+
+    // Trigger confetti on GO
+    if (s === 'go') triggerConfetti();
+  }
+
+  function triggerConfetti() {
+    const container = document.getElementById('confetti-container');
+    container.innerHTML = '';
+    const colors = ['#e8a832', '#f4c560', '#ff7a59', '#4ea8de', '#86b8a0', '#ffffff'];
+    for (let i = 0; i < 40; i++) {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random() * 100 + '%';
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.animationDelay = (Math.random() * 0.3) + 's';
+      piece.style.animationDuration = (1.5 + Math.random() * 1) + 's';
+      container.appendChild(piece);
+    }
+  }
+
+  function autoplay() {
+    if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; return; }
+    let i = 0;
+    const seq = ['lobby', 'c5', 'c3', 'c1', 'go', 'q1'];
+    const delays = [800, 1000, 1000, 1000, 1200, 2000];
+    function step() {
+      if (i >= seq.length) { autoplayTimer = null; return; }
+      setState(seq[i]);
+      autoplayTimer = setTimeout(step, delays[i]);
+      i++;
+    }
+    step();
+  }
+
+  // Init
+  setState('lobby');
+</script>
+
+</body>
+</html>

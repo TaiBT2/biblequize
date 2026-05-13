@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Host-Organizer (Quản trò) Flow</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Be Vietnam Pro', sans-serif; background: #0a0c14; color: #e5e7eb; }
+  .font-display { font-family: 'Sora', sans-serif; }
+  .font-vn-display { font-family: 'Be Vietnam Pro', sans-serif; }
+
+  .glass {
+    background: rgba(50,52,64,0.55);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .glass-strong {
+    background: rgba(50,52,64,0.78);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(232,168,50,0.15);
+  }
+
+  .phone {
+    width: 380px;
+    height: 760px;
+    border-radius: 44px;
+    background: #11131e;
+    border: 8px solid #1c1f2c;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+  .phone::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 28px;
+    border-radius: 14px;
+    background: #0a0c14;
+    z-index: 50;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulseGold {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(232,168,50,0); }
+    50%      { box-shadow: 0 0 24px 4px rgba(232,168,50,0.5); }
+  }
+  @keyframes spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+
+  .fade-in { animation: fadeIn 0.4s ease-out backwards; }
+  .pulse-gold { animation: pulseGold 1.5s ease-in-out infinite; }
+  .spin-slow { animation: spin 1.4s linear infinite; }
+
+  .state-btn { transition: all 0.2s; }
+  .state-btn.active {
+    background: linear-gradient(135deg, #e8a832 0%, #d4941f 100%);
+    color: #11131e;
+    box-shadow: 0 0 20px rgba(232,168,50,0.4);
+  }
+  .role-host { background: linear-gradient(135deg, #e8a832 0%, #d4941f 100%); }
+  .role-player { background: rgba(50,52,64,0.55); border: 1px solid rgba(232,168,50,0.3); }
+
+  .gold-grad { background: linear-gradient(135deg, #e8a832 0%, #f4c560 50%, #e8a832 100%); }
+  .gold-text-grad {
+    background: linear-gradient(135deg, #f4c560 0%, #e8a832 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .green-grad { background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%); }
+  .red-grad { background: linear-gradient(135deg, #f87171 0%, #ef4444 100%); }
+
+  .scroll-thin::-webkit-scrollbar { width: 4px; }
+  .scroll-thin::-webkit-scrollbar-track { background: transparent; }
+  .scroll-thin::-webkit-scrollbar-thumb { background: rgba(232,168,50,0.2); border-radius: 2px; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<div class="max-w-[1500px] mx-auto px-6 py-10">
+
+  <!-- Header -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="px-2.5 py-1 rounded-md bg-[#e8a832]/15 text-[#e8a832] text-xs font-semibold tracking-wide uppercase">Mockup · Sprint 4</span>
+      <span class="text-xs text-gray-500">Host-Organizer Flow · Pattern Kahoot</span>
+    </div>
+    <h1 class="text-3xl font-bold font-vn-display text-white">Quản trò không chơi · Player thi đấu fair</h1>
+    <p class="text-gray-400 text-sm mt-2 max-w-3xl">
+      Architectural change: <span class="text-[#e8a832] font-semibold">Quản trò chỉ điều phối, không tham gia trả lời câu hỏi</span> → loại bỏ host advantage trong group quiz set.
+      So sánh side-by-side: cùng moment, view của Quản trò vs Player khác nhau ra sao.
+    </p>
+  </div>
+
+  <!-- Role + State toggle -->
+  <div class="glass rounded-2xl p-4 mb-8">
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+        <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Vai trò xem</div>
+        <div class="flex gap-2">
+          <button onclick="setRole('host')" class="role-btn role-host px-4 py-2 rounded-lg text-sm font-bold text-[#11131e] flex-1" data-role="host">
+            👑 Quản trò
+          </button>
+          <button onclick="setRole('player')" class="role-btn role-player px-4 py-2 rounded-lg text-sm font-semibold text-gray-300 flex-1" data-role="player">
+            👤 Player (An)
+          </button>
+        </div>
+      </div>
+      <div>
+        <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Trạng thái</div>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="setState('lobby')" class="state-btn active px-3 py-2 rounded-lg text-xs font-semibold bg-white/5 text-gray-300" data-state="lobby">① Lobby</button>
+          <button onclick="setState('quiz')" class="state-btn px-3 py-2 rounded-lg text-xs font-semibold bg-white/5 text-gray-300" data-state="quiz">② Đang chơi</button>
+          <button onclick="setState('end')" class="state-btn px-3 py-2 rounded-lg text-xs font-semibold bg-white/5 text-gray-300" data-state="end">③ Kết thúc</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main: 2 phones side by side -->
+  <div class="flex justify-center gap-12 mb-12 flex-wrap">
+
+    <!-- HOST PHONE -->
+    <div class="flex flex-col items-center">
+      <div class="text-xs font-bold text-[#e8a832] uppercase tracking-[0.3em] mb-3">
+        👑 Màn hình Quản trò
+      </div>
+      <div class="phone">
+
+        <!-- ============================================ -->
+        <!-- HOST · LOBBY -->
+        <!-- ============================================ -->
+        <div id="host-lobby" class="host-state absolute inset-0 bg-[#11131e]">
+          <div class="h-11 flex items-center justify-between px-7 pt-2 text-xs text-white/80 font-semibold">
+            <span>9:41</span><span class="flex gap-1"><span>📶</span><span>🔋</span></span>
+          </div>
+
+          <div class="px-5 py-3 flex items-center justify-between">
+            <button class="w-9 h-9 rounded-full glass flex items-center justify-center text-gray-400">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+              <span class="text-xs text-gray-400">Đã kết nối</span>
+            </div>
+            <button class="w-9 h-9 rounded-full glass flex items-center justify-center text-gray-400">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+            </button>
+          </div>
+
+          <!-- Hero -->
+          <div class="px-5 mt-2">
+            <div class="glass rounded-2xl p-4 relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-[#e8a832]/12 to-transparent"></div>
+              <div class="relative">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="px-2 py-0.5 rounded bg-[#e8a832]/20 text-[#e8a832] text-[10px] font-bold uppercase tracking-wider">⚡ Speed Race</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 text-[10px] font-bold uppercase tracking-wider">Group Quiz Set</span>
+                </div>
+                <div class="text-xs text-gray-400 mb-1">Mã phòng · bạn là Quản trò</div>
+                <div class="font-vn-display text-3xl font-extrabold gold-text-grad tracking-[0.3em]">QZ8K2M</div>
+                <div class="grid grid-cols-3 gap-3 mt-3 text-center text-xs">
+                  <div><div class="text-gray-500 text-[10px]">Câu hỏi</div><div class="font-bold text-white">15</div></div>
+                  <div><div class="text-gray-500 text-[10px]">Player</div><div class="font-bold text-white">3 / 8</div></div>
+                  <div><div class="text-gray-500 text-[10px]">Sẵn sàng</div><div class="font-bold text-emerald-400">2 / 3</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Role explanation -->
+          <div class="px-5 mt-3">
+            <div class="rounded-xl p-3 border border-[#e8a832]/30 bg-[#e8a832]/5 flex items-start gap-3">
+              <span class="text-xl shrink-0">👑</span>
+              <div class="text-xs text-gray-300 leading-relaxed">
+                <span class="font-semibold text-[#e8a832]">Bạn là Quản trò.</span> Bạn điều phối trận đấu, không trả lời câu hỏi để đảm bảo công bằng cho người chơi.
+              </div>
+            </div>
+          </div>
+
+          <!-- Players list -->
+          <div class="px-5 mt-3">
+            <div class="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">Người chơi (3)</div>
+            <div class="space-y-2">
+              <div class="glass rounded-xl p-2.5 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center font-bold text-white">A</div>
+                <div class="flex-1">
+                  <div class="text-sm font-semibold text-white">An</div>
+                  <div class="text-[10px] text-emerald-400">✓ Sẵn sàng</div>
+                </div>
+                <button class="text-gray-500 hover:text-red-400 text-xs">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13H5v-2h14v2z"/></svg>
+                </button>
+              </div>
+              <div class="glass rounded-xl p-2.5 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center font-bold text-white">C</div>
+                <div class="flex-1">
+                  <div class="text-sm font-semibold text-white">Chi</div>
+                  <div class="text-[10px] text-emerald-400">✓ Sẵn sàng</div>
+                </div>
+                <button class="text-gray-500 hover:text-red-400 text-xs">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13H5v-2h14v2z"/></svg>
+                </button>
+              </div>
+              <div class="glass rounded-xl p-2.5 flex items-center gap-3 opacity-70">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center font-bold text-white">D</div>
+                <div class="flex-1">
+                  <div class="text-sm font-semibold text-white">Dũng</div>
+                  <div class="text-[10px] text-yellow-400">⏳ Chưa sẵn sàng</div>
+                </div>
+                <button class="text-gray-500 hover:text-red-400 text-xs">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13H5v-2h14v2z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom: invite + start -->
+          <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#11131e] via-[#11131e]">
+            <div class="grid grid-cols-3 gap-2 mb-2">
+              <button class="py-2 rounded-lg glass border border-[#e8a832]/30 text-[#e8a832] text-[10px] font-semibold flex flex-col items-center gap-0.5">
+                <span class="text-base">📋</span><span>Sao chép</span>
+              </button>
+              <button class="py-2 rounded-lg glass border border-[#e8a832]/30 text-[#e8a832] text-[10px] font-semibold flex flex-col items-center gap-0.5">
+                <span class="text-base">🔗</span><span>Link</span>
+              </button>
+              <button class="py-2 rounded-lg glass border border-[#e8a832]/30 text-[#e8a832] text-[10px] font-semibold flex flex-col items-center gap-0.5">
+                <span class="text-base">📱</span><span>QR</span>
+              </button>
+            </div>
+            <button class="w-full py-3.5 rounded-xl gold-grad font-vn-display font-extrabold text-[#11131e] text-base flex items-center justify-center gap-2 disabled:opacity-50" disabled>
+              <span>BẮT ĐẦU TRẬN ĐẤU</span>
+            </button>
+            <div class="text-center text-[10px] text-gray-500 mt-1.5">
+              ⏳ Đợi Dũng sẵn sàng (cần ≥2 player)
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- HOST · QUIZ (spectator + controls) -->
+        <!-- ============================================ -->
+        <div id="host-quiz" class="host-state absolute inset-0 bg-[#11131e] hidden">
+          <div class="h-11 flex items-center justify-between px-7 pt-2 text-xs text-white/80 font-semibold">
+            <span>9:41</span><span class="flex gap-1"><span>📶</span><span>🔋</span></span>
+          </div>
+
+          <!-- Header -->
+          <div class="px-4 py-2 flex items-center justify-between border-b border-white/5">
+            <div class="flex items-center gap-2">
+              <span class="px-1.5 py-0.5 rounded bg-[#e8a832]/20 text-[#e8a832] text-[9px] font-bold uppercase">👑 Quản trò</span>
+              <span class="text-xs font-semibold text-white">Câu 5 / 15</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="font-vn-display font-bold text-[#e8a832] text-base">18s</div>
+              <div class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
+            </div>
+          </div>
+
+          <!-- Question display -->
+          <div class="px-4 py-3 border-b border-white/5">
+            <div class="text-[10px] text-[#e8a832] font-semibold mb-1.5 uppercase tracking-wider">📖 Sáng Thế Ký 1:14-19</div>
+            <h2 class="text-sm font-vn-display font-bold text-white leading-snug mb-3">
+              Trong sáu ngày sáng tạo, Đức Chúa Trời tạo dựng điều gì vào ngày thứ tư?
+            </h2>
+            <!-- Compact options with correct highlighted -->
+            <div class="grid grid-cols-2 gap-1.5">
+              <div class="rounded-lg p-2 flex items-center gap-2 opacity-50 bg-white/5">
+                <div class="w-5 h-5 rounded text-[10px] font-bold flex items-center justify-center" style="background: rgba(255,122,89,0.15); color: #ff7a59;">A</div>
+                <span class="text-[10px] text-white">Trời và đất</span>
+              </div>
+              <div class="rounded-lg p-2 flex items-center gap-2 opacity-50 bg-white/5">
+                <div class="w-5 h-5 rounded text-[10px] font-bold flex items-center justify-center" style="background: rgba(78,168,222,0.15); color: #4ea8de;">B</div>
+                <span class="text-[10px] text-white">Cây cối</span>
+              </div>
+              <div class="rounded-lg p-2 flex items-center gap-2 border border-emerald-400/40 col-span-2" style="background: rgba(74,222,128,0.12);">
+                <div class="w-5 h-5 rounded text-[10px] font-bold flex items-center justify-center green-grad text-white">C</div>
+                <span class="text-[10px] text-white font-semibold flex-1">Mặt trời, mặt trăng và các vì sao</span>
+                <span class="text-[9px] text-emerald-400 font-bold">✓ ĐÁP ÁN</span>
+              </div>
+              <div class="rounded-lg p-2 flex items-center gap-2 opacity-50 bg-white/5 col-span-2">
+                <div class="w-5 h-5 rounded text-[10px] font-bold flex items-center justify-center" style="background: rgba(134,184,160,0.15); color: #86b8a0;">D</div>
+                <span class="text-[10px] text-white">Con người</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live answer status -->
+          <div class="px-4 py-3 border-b border-white/5">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Tình trạng trả lời</span>
+              <span class="text-[10px] font-bold text-emerald-400">2 / 3 đã trả lời</span>
+            </div>
+            <div class="space-y-1.5">
+              <div class="flex items-center gap-2 text-xs">
+                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-[10px] font-bold text-white">A</div>
+                <span class="text-white flex-1">An</span>
+                <span class="text-emerald-400 text-[10px] font-bold">✓ ĐÚNG · 2.4s</span>
+              </div>
+              <div class="flex items-center gap-2 text-xs">
+                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-[10px] font-bold text-white">C</div>
+                <span class="text-white flex-1">Chi</span>
+                <span class="text-red-400 text-[10px] font-bold">✗ SAI · 3.1s</span>
+              </div>
+              <div class="flex items-center gap-2 text-xs">
+                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-[10px] font-bold text-white">D</div>
+                <span class="text-white flex-1">Dũng</span>
+                <span class="text-yellow-400 text-[10px] flex items-center gap-1">
+                  <div class="w-3 h-3 rounded-full border-2 border-yellow-400 border-t-transparent spin-slow"></div>
+                  Đang chọn...
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live scoreboard -->
+          <div class="px-4 py-3 border-b border-white/5">
+            <div class="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">🏆 Bảng xếp hạng tạm thời</div>
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 text-xs">
+                <span class="text-[10px] font-bold text-[#e8a832] w-3">1</span>
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-[9px] font-bold text-white">A</div>
+                <span class="text-white flex-1">An</span>
+                <span class="font-bold text-[#e8a832]">62</span>
+              </div>
+              <div class="flex items-center gap-2 text-xs">
+                <span class="text-[10px] font-bold text-gray-400 w-3">2</span>
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-[9px] font-bold text-white">C</div>
+                <span class="text-white flex-1">Chi</span>
+                <span class="font-bold text-white">35</span>
+              </div>
+              <div class="flex items-center gap-2 text-xs">
+                <span class="text-[10px] font-bold text-[#cd7f32] w-3">3</span>
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-[9px] font-bold text-white">D</div>
+                <span class="text-white flex-1">Dũng</span>
+                <span class="font-bold text-gray-300">28</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Host controls -->
+          <div class="absolute bottom-0 left-0 right-0 p-3 bg-[#11131e] border-t border-white/5">
+            <div class="text-[10px] font-bold text-[#e8a832] uppercase tracking-wider mb-2 flex items-center gap-2">
+              <span>🎛️</span><span>Điều khiển trận đấu</span>
+            </div>
+            <div class="grid grid-cols-4 gap-1.5">
+              <button class="py-2 rounded-lg glass border border-white/10 text-white text-[10px] font-semibold flex flex-col items-center gap-0.5 hover:bg-white/5">
+                <span class="text-sm">⏸️</span><span>Tạm dừng</span>
+              </button>
+              <button class="py-2 rounded-lg glass border border-white/10 text-white text-[10px] font-semibold flex flex-col items-center gap-0.5 hover:bg-white/5">
+                <span class="text-sm">⏭️</span><span>Bỏ câu</span>
+              </button>
+              <button class="py-2 rounded-lg glass border border-white/10 text-white text-[10px] font-semibold flex flex-col items-center gap-0.5 hover:bg-white/5">
+                <span class="text-sm">💬</span><span>Nhắn</span>
+              </button>
+              <button class="py-2 rounded-lg glass border border-red-500/20 text-red-400 text-[10px] font-semibold flex flex-col items-center gap-0.5 hover:bg-red-500/5">
+                <span class="text-sm">🛑</span><span>Kết thúc</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- HOST · END (organizer wrap-up) -->
+        <!-- ============================================ -->
+        <div id="host-end" class="host-state absolute inset-0 hidden">
+          <div class="absolute inset-0" style="background: radial-gradient(ellipse at top, rgba(232,168,50,0.18) 0%, #11131e 60%);"></div>
+
+          <div class="relative h-full flex flex-col">
+            <div class="h-11 flex items-center justify-between px-7 pt-2 text-xs text-white/80 font-semibold flex-shrink-0">
+              <span>9:41</span><span class="flex gap-1"><span>📶</span><span>🔋</span></span>
+            </div>
+
+            <div class="px-4 py-2 flex items-center justify-between flex-shrink-0">
+              <span class="px-2 py-0.5 rounded bg-[#e8a832]/20 text-[#e8a832] text-[10px] font-bold uppercase">👑 Quản trò</span>
+              <button class="w-8 h-8 rounded-full glass flex items-center justify-center text-gray-400">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+
+            <!-- Title -->
+            <div class="text-center pt-3 pb-2 fade-in">
+              <div class="text-[10px] text-[#e8a832] font-bold uppercase tracking-[0.3em] mb-1">Trận đấu kết thúc</div>
+              <div class="flex items-center justify-center gap-2">
+                <span class="text-2xl">🎉</span>
+                <h1 class="font-vn-display font-black text-2xl gold-text-grad tracking-tight" style="line-height: 1.1;">Cảm ơn Quản trò!</h1>
+              </div>
+            </div>
+
+            <!-- Winner card -->
+            <div class="px-5 mt-3 fade-in" style="animation-delay: 0.1s;">
+              <div class="glass-strong rounded-2xl p-3 border border-[#e8a832]/30 flex items-center gap-3">
+                <div class="text-2xl">👑</div>
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-base font-bold text-white">A</div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Người chiến thắng</div>
+                  <div class="font-vn-display font-bold text-white text-lg leading-tight">An</div>
+                  <div class="text-xs text-[#e8a832] font-bold">252 điểm</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Match stats -->
+            <div class="px-5 mt-3 fade-in" style="animation-delay: 0.2s;">
+              <div class="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">📊 Thống kê trận đấu</div>
+              <div class="grid grid-cols-2 gap-2">
+                <div class="glass rounded-xl p-2.5">
+                  <div class="text-[10px] text-gray-400 uppercase">Tổng câu hỏi</div>
+                  <div class="font-vn-display font-bold text-white text-base">15</div>
+                </div>
+                <div class="glass rounded-xl p-2.5">
+                  <div class="text-[10px] text-gray-400 uppercase">Thời lượng</div>
+                  <div class="font-vn-display font-bold text-white text-base">7m 32s</div>
+                </div>
+                <div class="glass rounded-xl p-2.5">
+                  <div class="text-[10px] text-gray-400 uppercase">Người chơi</div>
+                  <div class="font-vn-display font-bold text-white text-base">3</div>
+                </div>
+                <div class="glass rounded-xl p-2.5">
+                  <div class="text-[10px] text-gray-400 uppercase">Tỷ lệ đúng TB</div>
+                  <div class="font-vn-display font-bold text-emerald-400 text-base">68%</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Compact rankings -->
+            <div class="px-5 mt-3 fade-in" style="animation-delay: 0.3s;">
+              <div class="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">🏆 Xếp hạng cuối cùng</div>
+              <div class="space-y-1.5">
+                <div class="glass rounded-lg p-2 flex items-center gap-2 border border-[#e8a832]/30">
+                  <span class="text-[10px] font-bold text-[#e8a832] w-3">1</span>
+                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-[10px] font-bold text-white">A</div>
+                  <span class="text-xs font-semibold text-white flex-1">An</span>
+                  <span class="text-xs text-emerald-400">11/15 đúng</span>
+                  <span class="font-bold text-[#e8a832] text-xs">252</span>
+                </div>
+                <div class="glass rounded-lg p-2 flex items-center gap-2">
+                  <span class="text-[10px] font-bold text-gray-300 w-3">2</span>
+                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-[10px] font-bold text-white">C</div>
+                  <span class="text-xs font-semibold text-white flex-1">Chi</span>
+                  <span class="text-xs text-emerald-400">8/15 đúng</span>
+                  <span class="font-bold text-white text-xs">156</span>
+                </div>
+                <div class="glass rounded-lg p-2 flex items-center gap-2">
+                  <span class="text-[10px] font-bold text-[#cd7f32] w-3">3</span>
+                  <div class="w-6 h-6 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-[10px] font-bold text-white">D</div>
+                  <span class="text-xs font-semibold text-white flex-1">Dũng</span>
+                  <span class="text-xs text-emerald-400">7/15 đúng</span>
+                  <span class="font-bold text-gray-300 text-xs">124</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Host actions -->
+            <div class="flex-1"></div>
+            <div class="p-3 fade-in" style="animation-delay: 0.4s;">
+              <button class="w-full py-3 rounded-xl gold-grad font-vn-display font-bold text-sm text-[#11131e] flex items-center justify-center gap-2 mb-2">
+                <span>🔄</span><span>Tổ chức trận mới với cùng nhóm</span>
+              </button>
+              <div class="grid grid-cols-3 gap-1.5">
+                <button class="py-2 rounded-lg glass border border-white/10 text-white text-[10px] font-semibold flex items-center justify-center gap-1">
+                  <span>📊</span><span>Phân tích</span>
+                </button>
+                <button class="py-2 rounded-lg glass border border-white/10 text-white text-[10px] font-semibold flex items-center justify-center gap-1">
+                  <span>📤</span><span>Xuất CSV</span>
+                </button>
+                <button class="py-2 rounded-lg glass border border-red-500/20 text-red-400 text-[10px] font-semibold flex items-center justify-center gap-1">
+                  <span>🚪</span><span>Đóng</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="mt-3 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#e8a832]/10 border border-[#e8a832]/30">
+          <span class="text-[10px] text-[#e8a832] font-bold uppercase tracking-wider">Không trả lời câu hỏi · chỉ điều phối</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLAYER PHONE -->
+    <div class="flex flex-col items-center">
+      <div class="text-xs font-bold text-emerald-400 uppercase tracking-[0.3em] mb-3">
+        👤 Màn hình Player (An)
+      </div>
+      <div class="phone">
+
+        <!-- ============================================ -->
+        <!-- PLAYER · LOBBY -->
+        <!-- ============================================ -->
+        <div id="player-lobby" class="player-state absolute inset-0 bg-[#11131e]">
+          <div class="h-11 flex items-center justify-between px-7 pt-2 text-xs text-white/80 font-semibold">
+            <span>9:41</span><span class="flex gap-1"><span>📶</span><span>🔋</span></span>
+          </div>
+
+          <div class="px-5 py-3 flex items-center justify-between">
+            <button class="w-9 h-9 rounded-full glass flex items-center justify-center text-gray-400">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+              <span class="text-xs text-gray-400">Đã kết nối</span>
+            </div>
+            <button class="w-9 h-9 rounded-full glass flex items-center justify-center text-gray-400">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+            </button>
+          </div>
+
+          <!-- Compact hero -->
+          <div class="px-5 mt-2">
+            <div class="glass rounded-2xl p-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 rounded bg-[#e8a832]/20 text-[#e8a832] text-[10px] font-bold uppercase tracking-wider">⚡ Speed Race</span>
+                <span class="text-xs text-gray-400">QZ8K2M</span>
+              </div>
+              <div class="text-xs text-gray-400 mb-2">Quản trò: <span class="text-[#e8a832] font-semibold">Bui</span> 👑</div>
+              <div class="grid grid-cols-3 gap-3 text-center text-xs">
+                <div><div class="text-gray-500 text-[10px]">Câu hỏi</div><div class="font-bold text-white">15</div></div>
+                <div><div class="text-gray-500 text-[10px]">Time/câu</div><div class="font-bold text-white">30s</div></div>
+                <div><div class="text-gray-500 text-[10px]">Player</div><div class="font-bold text-white">3</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Host badge -->
+          <div class="px-5 mt-3">
+            <div class="rounded-xl p-3 border border-[#e8a832]/20 bg-[#e8a832]/5 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#e8a832] to-[#d4941f] flex items-center justify-center font-bold text-[#11131e]">B</div>
+              <div class="flex-1">
+                <div class="text-[10px] text-gray-400 uppercase font-semibold">👑 Quản trò</div>
+                <div class="text-sm font-bold text-white">Bui</div>
+              </div>
+              <span class="text-[9px] text-gray-500">Không chơi</span>
+            </div>
+          </div>
+
+          <!-- Players (without host) -->
+          <div class="px-5 mt-3">
+            <div class="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider flex items-center gap-2">
+              <span>Người chơi</span>
+              <span class="text-emerald-400">2 / 3 sẵn sàng</span>
+            </div>
+            <div class="space-y-2">
+              <div class="rounded-xl p-2.5 flex items-center gap-3 border border-emerald-400/30" style="background: rgba(74,222,128,0.06);">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center font-bold text-white">A</div>
+                <div class="flex-1">
+                  <div class="text-sm font-semibold text-white">An <span class="text-[10px] text-[#e8a832] font-bold">(BẠN)</span></div>
+                  <div class="text-[10px] text-emerald-400">✓ Sẵn sàng</div>
+                </div>
+              </div>
+              <div class="glass rounded-xl p-2.5 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center font-bold text-white">C</div>
+                <div class="flex-1">
+                  <div class="text-sm font-semibold text-white">Chi</div>
+                  <div class="text-[10px] text-emerald-400">✓ Sẵn sàng</div>
+                </div>
+              </div>
+              <div class="glass rounded-xl p-2.5 flex items-center gap-3 opacity-70">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center font-bold text-white">D</div>
+                <div class="flex-1">
+                  <div class="text-sm font-semibold text-white">Dũng</div>
+                  <div class="text-[10px] text-yellow-400">⏳ Chưa sẵn sàng</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom: ready button -->
+          <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#11131e] via-[#11131e]">
+            <button class="w-full py-3.5 rounded-xl green-grad font-vn-display font-extrabold text-white text-base flex items-center justify-center gap-2">
+              <span>✓ ĐÃ SẴN SÀNG</span>
+            </button>
+            <div class="text-center text-[10px] text-gray-500 mt-1.5">
+              Quản trò sẽ bắt đầu khi tất cả sẵn sàng
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- PLAYER · QUIZ (gameplay) -->
+        <!-- ============================================ -->
+        <div id="player-quiz" class="player-state absolute inset-0 bg-[#11131e] hidden">
+          <div class="h-11 flex items-center justify-between px-7 pt-2 text-xs text-white/80 font-semibold">
+            <span>9:41</span><span class="flex gap-1"><span>📶</span><span>🔋</span></span>
+          </div>
+
+          <div class="px-5 py-3 flex items-center justify-between">
+            <div class="glass rounded-full px-3 py-1.5 flex items-center gap-2">
+              <span class="text-xs">⚡</span>
+              <span class="text-xs font-semibold text-white">Câu 5 / 15</span>
+            </div>
+            <div class="relative w-12 h-12">
+              <svg class="w-12 h-12 -rotate-90" viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="20" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="4"/>
+                <circle cx="24" cy="24" r="20" fill="none" stroke="#e8a832" stroke-width="4" stroke-linecap="round" stroke-dasharray="125.6" stroke-dashoffset="50"/>
+              </svg>
+              <div class="absolute inset-0 flex items-center justify-center font-display font-bold text-base text-white">18</div>
+            </div>
+            <button class="w-9 h-9 rounded-full glass flex items-center justify-center text-gray-400">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+            </button>
+          </div>
+
+          <!-- Live scoreboard (NO HOST!) -->
+          <div class="px-5 mt-1">
+            <div class="flex items-center gap-2 overflow-x-auto pb-1">
+              <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5 border border-[#e8a832]/30">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-[10px] font-bold text-white">A</div>
+                <span class="text-xs font-semibold text-white">62</span>
+                <span class="text-[10px] text-emerald-400 font-bold">(BẠN)</span>
+              </div>
+              <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-[10px] font-bold text-white">C</div>
+                <span class="text-xs font-semibold text-white">35</span>
+              </div>
+              <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-[10px] font-bold text-white">D</div>
+                <span class="text-xs font-semibold text-white">28</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question -->
+          <div class="px-5 mt-5">
+            <div class="text-xs text-[#e8a832] font-semibold mb-2 uppercase tracking-wider">📖 Sáng Thế Ký 1</div>
+            <h2 class="text-xl font-vn-display font-bold text-white leading-snug">
+              Trong sáu ngày sáng tạo, Đức Chúa Trời tạo dựng điều gì vào ngày thứ tư?
+            </h2>
+          </div>
+
+          <!-- Options (full size, tappable) -->
+          <div class="px-5 mt-6 space-y-2.5">
+            <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(255,122,89,0.15); color: #ff7a59;">A</div>
+              <span class="text-sm text-white">Trời và đất</span>
+            </button>
+            <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(78,168,222,0.15); color: #4ea8de;">B</div>
+              <span class="text-sm text-white">Cây cối và thực vật</span>
+            </button>
+            <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(232,168,50,0.15); color: #e8a832;">C</div>
+              <span class="text-sm text-white">Mặt trời, mặt trăng và các vì sao</span>
+            </button>
+            <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(134,184,160,0.15); color: #86b8a0;">D</div>
+              <span class="text-sm text-white">Con người</span>
+            </button>
+          </div>
+
+          <!-- Host hint pinned bottom -->
+          <div class="absolute bottom-3 left-1/2 -translate-x-1/2">
+            <div class="glass rounded-full px-3 py-1 flex items-center gap-1.5">
+              <span class="text-xs">👑</span>
+              <span class="text-[10px] text-gray-400">Quản trò Bui đang theo dõi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- PLAYER · END (personal results) -->
+        <!-- ============================================ -->
+        <div id="player-end" class="player-state absolute inset-0 hidden">
+          <div class="absolute inset-0" style="background: radial-gradient(ellipse at top, rgba(232,168,50,0.18) 0%, #11131e 60%);"></div>
+
+          <div class="relative h-full flex flex-col">
+            <div class="h-11 flex items-center justify-between px-7 pt-2 text-xs text-white/80 font-semibold flex-shrink-0">
+              <span>9:41</span><span class="flex gap-1"><span>📶</span><span>🔋</span></span>
+            </div>
+
+            <div class="px-4 py-2 flex items-center justify-between flex-shrink-0">
+              <span class="px-2 py-0.5 rounded bg-white/5 text-gray-300 text-[10px] font-bold uppercase">Player</span>
+              <button class="w-8 h-8 rounded-full glass flex items-center justify-center text-gray-400">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+
+            <!-- Hero -->
+            <div class="px-5 mt-3 fade-in">
+              <div class="glass-strong rounded-2xl p-4 border border-[#e8a832]/40 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#e8a832]/15 to-transparent"></div>
+                <div class="relative flex items-center gap-3">
+                  <div class="relative shrink-0">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-xl font-bold text-white">A</div>
+                    <div class="absolute -bottom-1 -right-1 w-7 h-7 rounded-full flex items-center justify-center font-vn-display font-black text-sm text-[#11131e] gold-grad border-2 border-[#1c1f2c]">1</div>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Bạn về thứ</div>
+                    <div class="font-vn-display font-black text-3xl gold-text-grad tracking-tight" style="line-height: 1.1;">Hạng 1!</div>
+                    <div class="text-xs text-[#e8a832] font-bold mt-0.5">252 điểm 👑</div>
+                  </div>
+                  <div class="text-3xl">🏆</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="px-5 mt-3 flex-shrink-0 fade-in" style="animation-delay: 0.2s;">
+              <div class="grid grid-cols-3 gap-2">
+                <div class="glass rounded-xl p-3 text-center">
+                  <div class="text-[9px] text-gray-400 uppercase font-semibold">Đúng</div>
+                  <div class="font-vn-display font-bold text-emerald-400 text-base">11<span class="text-gray-500 text-xs">/15</span></div>
+                </div>
+                <div class="glass rounded-xl p-3 text-center">
+                  <div class="text-[9px] text-gray-400 uppercase font-semibold">Chính xác</div>
+                  <div class="font-vn-display font-bold text-[#e8a832] text-base">73%</div>
+                </div>
+                <div class="glass rounded-xl p-3 text-center">
+                  <div class="text-[9px] text-gray-400 uppercase font-semibold">Combo cao</div>
+                  <div class="font-vn-display font-bold text-orange-400 text-base">×4 🔥</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rankings (no host) -->
+            <div class="px-5 mt-3 fade-in" style="animation-delay: 0.3s;">
+              <div class="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+                <span>🏆 Bảng xếp hạng</span>
+                <div class="h-px flex-1 bg-white/5"></div>
+              </div>
+              <div class="space-y-1.5">
+                <div class="flex items-center gap-2.5 rounded-xl p-2.5 border-2 border-[#e8a832]/30" style="background: rgba(232,168,50,0.06);">
+                  <div class="w-7 h-7 rounded-lg flex items-center justify-center font-vn-display font-black text-sm text-[#11131e] gold-grad">1</div>
+                  <div class="w-7 h-7 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-xs font-bold text-white">A</div>
+                  <span class="text-sm font-semibold text-white flex-1">An <span class="text-[10px] text-[#e8a832] font-bold">(BẠN)</span></span>
+                  <span class="font-display font-bold text-[#e8a832] text-sm">252</span>
+                </div>
+                <div class="flex items-center gap-2.5 glass rounded-xl p-2.5">
+                  <div class="w-7 h-7 rounded-lg flex items-center justify-center font-vn-display font-black text-sm text-[#11131e]" style="background: linear-gradient(135deg, #e5e7eb, #9ca3af);">2</div>
+                  <div class="w-7 h-7 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-xs font-bold text-white">C</div>
+                  <span class="text-sm font-semibold text-white flex-1">Chi</span>
+                  <span class="font-display font-bold text-white text-sm">156</span>
+                </div>
+                <div class="flex items-center gap-2.5 glass rounded-xl p-2.5">
+                  <div class="w-7 h-7 rounded-lg flex items-center justify-center font-vn-display font-black text-sm text-white" style="background: linear-gradient(135deg, #cd7f32, #8b5a2b);">3</div>
+                  <div class="w-7 h-7 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-xs font-bold text-white">D</div>
+                  <span class="text-sm font-semibold text-white flex-1">Dũng</span>
+                  <span class="font-display font-bold text-gray-300 text-sm">124</span>
+                </div>
+              </div>
+              <!-- Host info separately -->
+              <div class="mt-3 pt-3 border-t border-white/5 flex items-center gap-2.5 px-2">
+                <span class="text-base">👑</span>
+                <span class="text-[10px] text-gray-500 flex-1">Quản trò: <span class="text-[#e8a832] font-semibold">Bui</span></span>
+                <span class="text-[10px] text-gray-500">Cảm ơn nhé!</span>
+              </div>
+            </div>
+
+            <!-- Player actions -->
+            <div class="flex-1"></div>
+            <div class="p-4 fade-in" style="animation-delay: 0.5s;">
+              <button class="w-full py-3 rounded-xl gold-grad font-vn-display font-bold text-sm text-[#11131e] flex items-center justify-center gap-2 mb-2">
+                <span>📤</span><span>Chia sẻ kết quả</span>
+              </button>
+              <div class="grid grid-cols-2 gap-2">
+                <button class="py-2.5 rounded-xl glass border border-white/10 font-semibold text-xs text-white flex items-center justify-center gap-1.5">
+                  <span>⚔️</span><span>Phòng mới</span>
+                </button>
+                <button class="py-2.5 rounded-xl glass border border-white/10 font-semibold text-xs text-white flex items-center justify-center gap-1.5">
+                  <span>🏠</span><span>Trang chủ</span>
+                </button>
+              </div>
+              <div class="text-center text-[10px] text-gray-500 mt-2.5">
+                Đợi Quản trò tổ chức trận mới...
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="mt-3 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30">
+          <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">Trả lời câu hỏi · thi đấu fair</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Notes -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
+
+    <div class="glass rounded-2xl p-5">
+      <div class="text-xs font-semibold uppercase tracking-wider text-[#e8a832] mb-3">🎯 Khác biệt chính</div>
+      <table class="w-full text-xs">
+        <thead>
+          <tr class="border-b border-white/10">
+            <th class="text-left py-2 text-[10px] font-semibold text-gray-400"></th>
+            <th class="text-left py-2 text-[10px] font-semibold text-[#e8a832]">👑 Quản trò</th>
+            <th class="text-left py-2 text-[10px] font-semibold text-emerald-400">👤 Player</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-300">
+          <tr class="border-b border-white/5"><td class="py-2 text-gray-400">Trả lời câu hỏi</td><td class="text-red-400">✗</td><td class="text-emerald-400">✓</td></tr>
+          <tr class="border-b border-white/5"><td class="py-2 text-gray-400">Có ranking</td><td class="text-red-400">✗</td><td class="text-emerald-400">✓</td></tr>
+          <tr class="border-b border-white/5"><td class="py-2 text-gray-400">Nút Sẵn sàng</td><td class="text-red-400">✗</td><td class="text-emerald-400">✓</td></tr>
+          <tr class="border-b border-white/5"><td class="py-2 text-gray-400">Bắt đầu trận</td><td class="text-emerald-400">✓</td><td class="text-red-400">✗</td></tr>
+          <tr class="border-b border-white/5"><td class="py-2 text-gray-400">Pause / Skip / End</td><td class="text-emerald-400">✓</td><td class="text-red-400">✗</td></tr>
+          <tr class="border-b border-white/5"><td class="py-2 text-gray-400">Thấy đáp án đúng</td><td class="text-emerald-400">✓ Real-time</td><td class="text-yellow-400">Sau khi trả lời</td></tr>
+          <tr class="border-b border-white/5"><td class="py-2 text-gray-400">Thấy live answer status</td><td class="text-emerald-400">✓ Ai đã trả lời</td><td class="text-red-400">✗</td></tr>
+          <tr><td class="py-2 text-gray-400">Kick player</td><td class="text-emerald-400">✓</td><td class="text-red-400">✗</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="glass rounded-2xl p-5">
+      <div class="text-xs font-semibold uppercase tracking-wider text-[#e8a832] mb-3">🎛️ 4 Host Controls</div>
+      <ul class="space-y-3 text-sm text-gray-300">
+        <li>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-base">⏸️</span>
+            <span class="font-semibold text-white">Tạm dừng</span>
+          </div>
+          <div class="text-xs text-gray-400 ml-6">Freeze timer + tất cả player nhận overlay "Quản trò đã tạm dừng". Resume → countdown 3-2-1.</div>
+        </li>
+        <li>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-base">⏭️</span>
+            <span class="font-semibold text-white">Bỏ câu</span>
+          </div>
+          <div class="text-xs text-gray-400 ml-6">Câu hiện tại bị bỏ qua, không tính điểm cho ai. Sang câu kế tiếp ngay. Hữu ích nếu câu hỏi lỗi.</div>
+        </li>
+        <li>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-base">💬</span>
+            <span class="font-semibold text-white">Nhắn cả phòng</span>
+          </div>
+          <div class="text-xs text-gray-400 ml-6">Modal input → broadcast message hiện trên màn hình tất cả player 5s. Vd: "Câu này quan trọng, đọc kỹ Sáng Thế Ký 1 nhé!"</div>
+        </li>
+        <li>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-base">🛑</span>
+            <span class="font-semibold text-red-400">Kết thúc sớm</span>
+          </div>
+          <div class="text-xs text-gray-400 ml-6">Confirm modal → end game ngay với rankings hiện tại. Dùng khi hết giờ học.</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="rounded-2xl p-5 border border-[#e8a832]/30 bg-[#e8a832]/5">
+      <div class="text-xs font-semibold uppercase tracking-wider text-[#e8a832] mb-3">💡 Lý do thiết kế</div>
+      <ul class="space-y-2.5 text-xs text-gray-300">
+        <li class="flex gap-2">
+          <span class="text-[#e8a832] font-bold">·</span>
+          <div><b class="text-white">Loại bỏ host advantage</b>: host không trả lời → fair tuyệt đối với players, kể cả khi dùng Group Quiz Set tự tạo</div>
+        </li>
+        <li class="flex gap-2">
+          <span class="text-[#e8a832] font-bold">·</span>
+          <div><b class="text-white">Phù hợp văn hóa hội thánh</b>: mục sư / group leader thực ra muốn vai trò "người dẫn" hơn là "đối thủ" với members</div>
+        </li>
+        <li class="flex gap-2">
+          <span class="text-[#e8a832] font-bold">·</span>
+          <div><b class="text-white">Match Kahoot pattern</b>: pattern đã chứng minh effective trong giáo dục, mục sư đã quen</div>
+        </li>
+        <li class="flex gap-2">
+          <span class="text-[#e8a832] font-bold">·</span>
+          <div><b class="text-white">Setup TV Host Mode v1.5</b>: host-as-organizer là precondition cho TV mode sau này</div>
+        </li>
+        <li class="flex gap-2">
+          <span class="text-[#e8a832] font-bold">·</span>
+          <div><b class="text-white">Min 2 players</b>: phòng tối thiểu 1 host + 2 player = 3 người. Phù hợp use case nhóm tế bào.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Edge cases -->
+  <div class="glass rounded-2xl p-5 mb-8">
+    <div class="text-xs font-semibold uppercase tracking-wider text-[#e8a832] mb-4">⚠️ Edge cases cần cover</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+      <div class="rounded-xl p-3 bg-white/5">
+        <div class="font-semibold text-white mb-1">Host muốn tự chơi 1 mình</div>
+        <div class="text-xs text-gray-400">Không thể tạo phòng multiplayer. Chuyển sang Practice Mode (single-player).</div>
+      </div>
+      <div class="rounded-xl p-3 bg-white/5">
+        <div class="font-semibold text-white mb-1">Phòng chỉ còn 1 player</div>
+        <div class="text-xs text-gray-400">Game tiếp tục với 1 player solo. Hoặc host bấm "Kết thúc sớm". (1v0 không có ý nghĩa cạnh tranh)</div>
+      </div>
+      <div class="rounded-xl p-3 bg-white/5">
+        <div class="font-semibold text-white mb-1">Host disconnect 60s (R4)</div>
+        <div class="text-xs text-gray-400">Promote next player thành host. Player đó dừng chơi, chuyển sang vai Quản trò. Score đến hiện tại của họ giữ lại nhưng không tính ranking.</div>
+      </div>
+      <div class="rounded-xl p-3 bg-white/5">
+        <div class="font-semibold text-white mb-1">Host được promote không muốn làm</div>
+        <div class="text-xs text-gray-400">Sprint 4 chưa cover. Defer Sprint 5 hoặc cho phép họ "Trao quyền" cho player khác.</div>
+      </div>
+      <div class="rounded-xl p-3 bg-white/5">
+        <div class="font-semibold text-white mb-1">Tournament organizer (Q5 đã quyết)</div>
+        <div class="text-xs text-gray-400">Tournament organizer VẪN chơi (không thay đổi). Chỉ Multiplayer Room mới có host-organizer separation.</div>
+      </div>
+      <div class="rounded-xl p-3 bg-white/5">
+        <div class="font-semibold text-white mb-1">Migration từ data cũ</div>
+        <div class="text-xs text-gray-400">Rooms cũ (status=ENDED) không bị ảnh hưởng. Rooms LOBBY/IN_PROGRESS hiện có sẽ vẫn host=player cho đến khi end. Sprint 4 chỉ áp dụng cho rooms mới tạo.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Backend changes preview -->
+  <div class="glass rounded-2xl p-5 mb-8">
+    <div class="text-xs font-semibold uppercase tracking-wider text-[#e8a832] mb-4">🔧 Backend changes preview</div>
+    <div class="space-y-3 text-xs text-gray-300">
+      <div>
+        <div class="font-semibold text-white mb-1">RoomService.startRoom validation</div>
+        <pre class="bg-black/30 rounded p-2 overflow-x-auto"><code>// OLD: cần ≥2 RoomPlayer
+if (room.getCurrentPlayers() &lt; 2) throw new BadRequestException("...")
+
+// NEW: cần ≥2 player KHÔNG TÍNH host
+long playerCount = roomPlayerRepository.countByRoomIdAndUserIdNot(roomId, room.getHost().getId());
+if (playerCount &lt; 2) throw new BadRequestException("Cần ít nhất 2 người chơi (không tính Quản trò)");</code></pre>
+      </div>
+      <div>
+        <div class="font-semibold text-white mb-1">RoomQuizService skip host</div>
+        <pre class="bg-black/30 rounded p-2 overflow-x-auto"><code>// Trong runQuiz, skip host khi:
+// - Gửi câu hỏi qua WS (chỉ broadcast to players topic)
+// - Tính score
+// - Add vào ranking
+players = roomPlayerRepository.findByRoomIdAndUserIdNot(roomId, room.getHost().getId());</code></pre>
+      </div>
+      <div>
+        <div class="font-semibold text-white mb-1">Endpoints mới (host controls)</div>
+        <pre class="bg-black/30 rounded p-2 overflow-x-auto"><code>POST /api/rooms/{id}/host/pause
+POST /api/rooms/{id}/host/resume
+POST /api/rooms/{id}/host/skip-question
+POST /api/rooms/{id}/host/broadcast { message }
+POST /api/rooms/{id}/host/end-early</code></pre>
+      </div>
+      <div>
+        <div class="font-semibold text-white mb-1">Frontend route split</div>
+        <pre class="bg-black/30 rounded p-2 overflow-x-auto"><code>/room/{id}/quiz       → player view (RoomQuizPlayer.tsx)
+/room/{id}/host       → host view (RoomQuizHost.tsx) — NEW
+                        Backend phân biệt qua user.id === room.hostId</code></pre>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let currentRole = 'host';
+  let currentState = 'lobby';
+
+  function setRole(r) {
+    currentRole = r;
+    document.querySelectorAll('.role-btn').forEach(b => {
+      const isActive = b.dataset.role === r;
+      if (isActive) {
+        b.classList.add('role-host');
+        b.classList.remove('role-player');
+        if (r === 'host') {
+          b.style.background = 'linear-gradient(135deg, #e8a832 0%, #d4941f 100%)';
+          b.style.color = '#11131e';
+        } else {
+          b.style.background = 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)';
+          b.style.color = '#11131e';
+        }
+      } else {
+        b.style.background = 'rgba(50,52,64,0.55)';
+        b.style.color = '#9ca3af';
+      }
+    });
+  }
+
+  function setState(s) {
+    currentState = s;
+    document.querySelectorAll('.host-state').forEach(p => p.classList.add('hidden'));
+    document.querySelectorAll('.player-state').forEach(p => p.classList.add('hidden'));
+    document.getElementById('host-' + s).classList.remove('hidden');
+    document.getElementById('player-' + s).classList.remove('hidden');
+    document.querySelectorAll('.state-btn[data-state]').forEach(b => {
+      b.classList.toggle('active', b.dataset.state === s);
+    });
+    // Re-trigger fade-in animations
+    document.querySelectorAll('.host-state:not(.hidden) .fade-in, .player-state:not(.hidden) .fade-in').forEach(el => {
+      el.classList.remove('fade-in');
+      void el.offsetWidth;
+      el.classList.add('fade-in');
+    });
+  }
+
+  setState('lobby');
+</script>
+
+</body>
+</html>

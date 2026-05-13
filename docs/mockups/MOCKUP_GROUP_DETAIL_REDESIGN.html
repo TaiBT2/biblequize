@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Group Detail Redesign — No Leaderboard, Activity Feed + Pulse</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Be Vietnam Pro', sans-serif; background: #0a0c14; color: #e5e7eb; }
+
+  .glass {
+    background: rgba(50,52,64,0.55);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .glass-strong {
+    background: rgba(50,52,64,0.78);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(232,168,50,0.15);
+  }
+  .glass-subtle {
+    background: rgba(50,52,64,0.3);
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .desktop-frame {
+    width: 1280px; height: 800px;
+    border-radius: 16px;
+    background: #11131e;
+    border: 4px solid #1c1f2c;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    overflow: hidden;
+    position: relative;
+  }
+  .browser-bar {
+    height: 36px; background: #1c1f2c;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; padding: 0 16px; gap: 8px;
+  }
+  .browser-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+  .scroll-thin::-webkit-scrollbar { width: 6px; }
+  .scroll-thin::-webkit-scrollbar-track { background: transparent; }
+  .scroll-thin::-webkit-scrollbar-thumb { background: rgba(232,168,50,0.2); border-radius: 3px; }
+
+  .gold-grad { background: linear-gradient(135deg, #e8a832 0%, #d4941f 100%); }
+  .green-grad { background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%); }
+
+  .state-btn { transition: all 0.2s; }
+  .state-btn.active {
+    background: linear-gradient(135deg, #e8a832 0%, #d4941f 100%);
+    color: #11131e;
+    box-shadow: 0 0 20px rgba(232,168,50,0.4);
+  }
+
+  .nav-item { transition: all 0.15s; }
+  .nav-item:hover { background: rgba(255,255,255,0.03); }
+  .nav-item.active {
+    background: rgba(232,168,50,0.1);
+    border-left: 2px solid #e8a832;
+  }
+  .nav-item.active span:first-child { color: #e8a832; }
+
+  /* Pulse indicator */
+  .pulse-strong {
+    background: linear-gradient(135deg, rgba(74,222,128,0.15), rgba(34,197,94,0.05));
+    border: 1px solid rgba(74,222,128,0.3);
+  }
+  .pulse-medium {
+    background: linear-gradient(135deg, rgba(232,168,50,0.15), rgba(212,148,31,0.05));
+    border: 1px solid rgba(232,168,50,0.3);
+  }
+  .pulse-weak {
+    background: linear-gradient(135deg, rgba(255,122,89,0.15), rgba(207,90,57,0.05));
+    border: 1px solid rgba(255,122,89,0.3);
+  }
+
+  /* Activity feed item types */
+  .activity-mastery { background: rgba(74,222,128,0.06); border-left: 3px solid #4ade80; }
+  .activity-quiz { background: rgba(232,168,50,0.06); border-left: 3px solid #e8a832; }
+  .activity-room { background: rgba(168,85,247,0.06); border-left: 3px solid #a855f7; }
+  .activity-announce { background: rgba(78,168,222,0.06); border-left: 3px solid #4ea8de; }
+  .activity-member { background: rgba(255,122,89,0.06); border-left: 3px solid #ff7a59; }
+
+  /* Pulse beat animation */
+  @keyframes pulse-beat {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.7; }
+  }
+  .pulse-dot { animation: pulse-beat 2s ease-in-out infinite; }
+
+  .quick-action {
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .quick-action:hover {
+    transform: translateY(-2px);
+    border-color: rgba(232,168,50,0.4) !important;
+  }
+  .quick-action:disabled,
+  .quick-action.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+</style>
+</head>
+<body class="min-h-screen">
+
+<div class="max-w-[1500px] mx-auto px-6 py-10">
+
+  <!-- Header -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="px-2.5 py-1 rounded-md bg-[#e8a832]/15 text-[#e8a832] text-xs font-semibold tracking-wide uppercase">Mockup Desktop · Redesign</span>
+      <span class="text-xs text-gray-500">Group Detail v2 · No Leaderboard · Activity Feed + Pulse</span>
+    </div>
+    <h1 class="text-3xl font-bold text-white">Group Detail Redesign — bỏ Leaderboard, thêm Activity Feed</h1>
+    <p class="text-gray-400 text-sm mt-2 max-w-3xl">
+      Decisions: bỏ leaderboard ranking (không phù hợp văn hóa Tin Lành) · thay bằng <span class="text-[#e8a832] font-semibold">Activity Feed</span> + <span class="text-emerald-400 font-semibold">Cell Group Pulse</span> · defer Tournament · Analytics tab riêng cho Leader. 2 màn hình: Member view (default) và Leader view (có Pulse + Analytics tab).
+    </p>
+  </div>
+
+  <!-- State toggle -->
+  <div class="glass rounded-2xl p-4 mb-8">
+    <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Vai trò xem</div>
+    <div class="flex flex-wrap gap-2">
+      <button onclick="setState('member')" class="state-btn px-4 py-2 rounded-lg text-xs font-semibold bg-white/5 text-gray-300" data-state="member">👤 Member view (no Analytics)</button>
+      <button onclick="setState('leader')" class="state-btn active px-4 py-2 rounded-lg text-xs font-semibold bg-white/5 text-gray-300" data-state="leader">👑 Leader view (with Pulse + Analytics)</button>
+    </div>
+  </div>
+
+  <!-- Desktop frame -->
+  <div class="flex justify-center mb-12">
+    <div class="desktop-frame">
+
+      <!-- Browser chrome -->
+      <div class="browser-bar">
+        <div class="browser-dot bg-red-500/70"></div>
+        <div class="browser-dot bg-yellow-500/70"></div>
+        <div class="browser-dot bg-green-500/70"></div>
+        <div class="flex-1 mx-6 px-3 py-1 rounded-lg bg-[#0a0c14] text-xs text-gray-400">🔒 biblequiz.app/group/123</div>
+      </div>
+
+      <!-- Content -->
+      <div class="relative" style="height: 760px;">
+
+        <!-- ================================================ -->
+        <!-- LEADER VIEW (default)                            -->
+        <!-- ================================================ -->
+        <div id="state-leader" class="state-panel absolute inset-0 flex bg-[#0a0c14]">
+
+          <!-- Sidebar -->
+          <aside class="w-[220px] shrink-0 bg-[#11131e] border-r border-white/5 flex flex-col">
+            <div class="px-4 py-4 border-b border-white/5">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg gold-grad flex items-center justify-center text-[#11131e] font-extrabold text-sm">B</div>
+                <span class="font-extrabold text-white text-sm">BibleQuiz</span>
+              </div>
+            </div>
+
+            <div class="px-3 py-3 border-b border-white/5">
+              <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2 px-2">Hội thánh</div>
+              <button class="w-full glass-subtle rounded-lg p-2 flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg gold-grad flex items-center justify-center text-[#11131e] font-bold text-xs shrink-0">FM</div>
+                <div class="flex-1 text-left min-w-0">
+                  <div class="text-xs font-bold text-white truncate">FMC Đà Nẵng</div>
+                  <div class="text-[10px] text-[#e8a832]">👑 Bạn là Trưởng</div>
+                </div>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="text-gray-400 shrink-0"><path d="M7 10l5 5 5-5z"/></svg>
+              </button>
+            </div>
+
+            <nav class="flex-1 py-2">
+              <a class="nav-item flex items-center gap-3 px-4 py-2 text-sm">
+                <span class="text-gray-500">🏠</span>
+                <span class="text-gray-300">Trang chủ</span>
+              </a>
+              <a class="nav-item active flex items-center gap-3 px-4 py-2 text-sm">
+                <span>👥</span>
+                <span class="font-semibold">Nhóm này</span>
+              </a>
+              <a class="nav-item flex items-center gap-3 px-4 py-2 text-sm">
+                <span class="text-gray-500">📚</span>
+                <span class="text-gray-300">Bộ câu hỏi</span>
+                <span class="ml-auto text-[10px] text-[#e8a832] font-bold">15</span>
+              </a>
+              <a class="nav-item flex items-center gap-3 px-4 py-2 text-sm">
+                <span class="text-gray-500">🎮</span>
+                <span class="text-gray-300">Live Rooms</span>
+                <span class="ml-auto text-[10px] text-emerald-400 font-bold pulse-dot">2</span>
+              </a>
+              <a class="nav-item flex items-center gap-3 px-4 py-2 text-sm">
+                <span class="text-gray-500">📅</span>
+                <span class="text-gray-300">Lên lịch</span>
+              </a>
+              <a class="nav-item flex items-center gap-3 px-4 py-2 text-sm">
+                <span class="text-gray-500">📊</span>
+                <span class="text-gray-300">Phân tích</span>
+                <span class="ml-auto text-[9px] text-[#e8a832] bg-[#e8a832]/15 px-1.5 py-0.5 rounded font-bold">👑</span>
+              </a>
+            </nav>
+
+            <!-- Group quick info card (replace personal streak) -->
+            <div class="m-3 glass-subtle rounded-xl p-3 border border-emerald-400/20" style="background: rgba(74,222,128,0.05);">
+              <div class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <span class="pulse-dot text-base">🟢</span><span>Đang online</span>
+              </div>
+              <div class="text-2xl font-extrabold text-white">3 <span class="text-xs text-gray-400 font-normal">/12</span></div>
+              <div class="mt-2 pt-2 border-t border-emerald-400/15">
+                <div class="text-[9px] text-gray-400 uppercase font-semibold mb-1">🎮 Phòng đang mở</div>
+                <button class="text-[11px] text-emerald-400 hover:underline block leading-tight">"Bài giảng tuần 18" →</button>
+                <button class="text-[11px] text-emerald-400 hover:underline block leading-tight mt-0.5">"Câu chuyện Đa-vít" →</button>
+              </div>
+            </div>
+
+            <div class="px-3 py-3 border-t border-white/5">
+              <button class="w-full flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-xs">B</div>
+                <div class="flex-1 text-left min-w-0">
+                  <div class="text-xs font-semibold text-white truncate">Bui Nguyễn</div>
+                  <div class="text-[10px] text-[#e8a832]">👑 Trưởng nhóm</div>
+                </div>
+              </button>
+            </div>
+          </aside>
+
+          <!-- Main content -->
+          <div class="flex-1 overflow-y-auto scroll-thin">
+
+            <!-- HEADER section: clean, gọn -->
+            <header class="bg-gradient-to-br from-[#11131e] to-[#1a1d2e] border-b border-white/5 px-8 py-5">
+              <div class="flex items-start gap-4">
+                <!-- Avatar -->
+                <div class="w-16 h-16 rounded-2xl gold-grad flex items-center justify-center text-3xl shrink-0 shadow-lg">
+                  ⛪
+                </div>
+
+                <!-- Title + meta -->
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-3 mb-2">
+                    <h1 class="text-2xl font-extrabold text-white">FMC Đà Nẵng</h1>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-gradient-to-r from-[#e8a832]/20 to-[#d4941f]/20 border-[#e8a832]/40 text-[#e8a832]">
+                      <span>👑</span><span>BẠN LÀ TRƯỞNG NHÓM</span>
+                    </span>
+                  </div>
+
+                  <div class="flex items-center gap-4 text-xs text-gray-400">
+                    <span class="flex items-center gap-1.5">
+                      <span>👥</span>
+                      <span class="text-gray-300 font-semibold">12 thành viên</span>
+                    </span>
+                    <span class="text-gray-600">·</span>
+                    <span class="flex items-center gap-1.5">
+                      <span>📅</span>
+                      <span>Tạo 14 ngày trước</span>
+                    </span>
+
+                    <div class="ml-auto flex items-center gap-2">
+                      <span class="text-gray-500">Mã:</span>
+                      <button class="font-mono text-sm text-[#e8a832] bg-[#e8a832]/10 px-2.5 py-1 rounded border border-[#e8a832]/20 hover:bg-[#e8a832]/15 flex items-center gap-1.5">
+                        <span>NVH059</span>
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                      </button>
+                      <button class="w-7 h-7 rounded-lg glass-subtle border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#e8a832]" title="QR Code">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-2 shrink-0">
+                  <button class="w-9 h-9 rounded-lg glass-subtle border border-white/10 flex items-center justify-center text-gray-400 hover:text-white" title="Cài đặt">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  </button>
+                  <button class="px-4 py-2 rounded-lg gold-grad text-[#11131e] text-sm font-extrabold flex items-center gap-1.5 hover:opacity-90">
+                    <span>👥</span><span>MỜI</span>
+                  </button>
+                </div>
+              </div>
+            </header>
+
+            <!-- CELL GROUP PULSE (leader-only) -->
+            <section class="px-8 pt-5">
+              <div class="rounded-2xl p-4 pulse-strong">
+                <div class="flex items-center gap-3">
+                  <div class="text-3xl pulse-dot">🟢</div>
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-0.5">
+                      <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">Nhịp sinh hoạt nhóm</span>
+                      <span class="text-[9px] text-gray-500 px-1.5 py-0.5 rounded bg-white/5">👑 Chỉ Leader</span>
+                      <span class="text-[9px] text-gray-500 ml-auto">Cập nhật mỗi 24h · Xem chi tiết →</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <span class="text-base font-extrabold text-emerald-400">MẠNH</span>
+                      <div class="flex-1 max-w-md">
+                        <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
+                          <div class="h-full green-grad" style="width: 75%;"></div>
+                        </div>
+                      </div>
+                      <span class="text-xs text-emerald-400 font-bold">75/100</span>
+                    </div>
+                    <div class="text-xs text-gray-300 mt-1.5 leading-relaxed">
+                      8/12 thành viên active tuần này · 3 live rooms · 2 quiz set mới · Duy trì momentum tốt 🙌
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- QUICK ACTIONS -->
+            <section class="px-8 pt-5">
+              <h2 class="text-xs font-bold text-[#e8a832] uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                <span>⚡</span><span>Hành động nhanh</span>
+              </h2>
+              <div class="grid grid-cols-4 gap-3">
+                <button class="quick-action glass rounded-xl p-3 text-left border border-white/5">
+                  <div class="text-2xl mb-1.5">📚</div>
+                  <div class="text-sm font-bold text-white">Tạo bộ câu hỏi</div>
+                  <div class="text-[10px] text-gray-400 mt-0.5">Bài giảng / Sinh hoạt</div>
+                </button>
+                <button class="quick-action glass rounded-xl p-3 text-left border border-emerald-400/30" style="background: rgba(74,222,128,0.05);">
+                  <div class="text-2xl mb-1.5">🎮</div>
+                  <div class="text-sm font-bold text-white">Bắt đầu Live</div>
+                  <div class="text-[10px] text-emerald-400 mt-0.5 font-semibold">Realtime · 5 modes</div>
+                </button>
+                <button class="quick-action glass rounded-xl p-3 text-left border border-white/5">
+                  <div class="text-2xl mb-1.5">📅</div>
+                  <div class="text-sm font-bold text-white">Lên lịch quiz</div>
+                  <div class="text-[10px] text-gray-400 mt-0.5">Async · Có deadline</div>
+                </button>
+                <button class="quick-action glass rounded-xl p-3 text-left border border-white/5">
+                  <div class="text-2xl mb-1.5">📢</div>
+                  <div class="text-sm font-bold text-white">Đăng thông báo</div>
+                  <div class="text-[10px] text-gray-400 mt-0.5">Cho 12 thành viên</div>
+                </button>
+              </div>
+            </section>
+
+            <!-- 2-COLUMN LAYOUT: ACTIVITY FEED + RIGHT PANEL -->
+            <div class="px-8 pt-5 pb-8 grid grid-cols-3 gap-4">
+
+              <!-- LEFT 2-cols: Activity Feed -->
+              <div class="col-span-2">
+                <div class="flex items-center justify-between mb-3">
+                  <h2 class="text-xs font-bold text-[#e8a832] uppercase tracking-wider flex items-center gap-1.5">
+                    <span>📜</span><span>Nhịp sinh hoạt nhóm</span>
+                  </h2>
+                  <div class="flex gap-1.5">
+                    <button class="text-[10px] px-2 py-1 rounded-full bg-[#e8a832]/15 text-[#e8a832] font-semibold border border-[#e8a832]/30">Tất cả</button>
+                    <button class="text-[10px] px-2 py-1 rounded-full glass-subtle text-gray-400 font-semibold border border-white/10">📚 Quiz</button>
+                    <button class="text-[10px] px-2 py-1 rounded-full glass-subtle text-gray-400 font-semibold border border-white/10">🎮 Live</button>
+                    <button class="text-[10px] px-2 py-1 rounded-full glass-subtle text-gray-400 font-semibold border border-white/10">📢 Tin</button>
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  <!-- LIVE NOW pinned -->
+                  <div class="rounded-xl p-3 border-2 border-emerald-400/40" style="background: rgba(74,222,128,0.08);">
+                    <div class="flex items-center gap-3">
+                      <div class="w-9 h-9 rounded-lg green-grad flex items-center justify-center text-base shrink-0">🎮</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2">
+                          <span class="text-[9px] font-bold text-emerald-400 uppercase pulse-dot">● ĐANG DIỄN RA</span>
+                          <span class="text-[10px] text-gray-500">vừa bắt đầu</span>
+                        </div>
+                        <div class="text-sm font-bold text-white mt-0.5">Live Room: "Bài giảng tuần 18 — Phục Sinh"</div>
+                        <div class="text-[10px] text-gray-300 mt-0.5">Mode: 📚 Sequential · Host: TAI THANH · 4/8 người tham gia</div>
+                      </div>
+                      <button class="px-3 py-1.5 rounded-lg green-grad text-[#11131e] text-xs font-bold whitespace-nowrap">Tham gia →</button>
+                    </div>
+                  </div>
+
+                  <!-- Mastery achievement -->
+                  <div class="activity-mastery rounded-xl p-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-xs shrink-0">M</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="text-sm">
+                          <span class="text-emerald-400 font-bold">Minh Hằng</span>
+                          <span class="text-gray-300"> đã thuộc hết </span>
+                          <span class="text-white font-semibold">"Câu chuyện Đa-vít & Gô-li-át"</span>
+                          <span class="text-emerald-400 font-bold ml-1">🏆</span>
+                        </div>
+                        <div class="text-[10px] text-gray-500 mt-0.5">10 phút trước · Personal Mastery</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Quiz set created -->
+                  <div class="activity-quiz rounded-xl p-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#e8a832] to-[#d4941f] flex items-center justify-center text-[#11131e] font-bold text-xs shrink-0">B</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="text-sm">
+                          <span class="text-[#e8a832] font-bold">Bui</span>
+                          <span class="text-gray-300"> tạo bộ câu hỏi mới: </span>
+                          <span class="text-white font-semibold">"Bài giảng tuần 19 — Lễ Ngũ Tuần"</span>
+                        </div>
+                        <div class="text-[10px] text-gray-500 mt-0.5">2 giờ trước · 12 câu · 📍 Công Vụ 2</div>
+                      </div>
+                      <button class="text-[10px] text-[#e8a832] hover:underline shrink-0">Xem →</button>
+                    </div>
+                  </div>
+
+                  <!-- Live room ended -->
+                  <div class="activity-room rounded-xl p-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white text-xs shrink-0">🎮</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="text-sm">
+                          <span class="text-gray-300">Live room </span>
+                          <span class="text-white font-semibold">"Bài giảng tuần 17"</span>
+                          <span class="text-gray-300"> kết thúc</span>
+                        </div>
+                        <div class="text-[10px] text-gray-500 mt-0.5">Hôm qua · 8 người tham gia · MVP: An Tuấn (450đ)</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Member joined -->
+                  <div class="activity-member rounded-xl p-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-xs shrink-0">L</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="text-sm">
+                          <span class="text-orange-400 font-bold">Linh Đan</span>
+                          <span class="text-gray-300"> tham gia nhóm</span>
+                          <span class="ml-1">👋</span>
+                        </div>
+                        <div class="text-[10px] text-gray-500 mt-0.5">Hôm qua · Thành viên thứ 12</div>
+                      </div>
+                      <button class="text-[10px] text-gray-400 hover:text-white shrink-0">Chào mừng</button>
+                    </div>
+                  </div>
+
+                  <!-- Announcement -->
+                  <div class="activity-announce rounded-xl p-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#e8a832] to-[#d4941f] flex items-center justify-center text-[#11131e] font-bold text-xs shrink-0">B</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="text-sm">
+                          <span class="text-sky-400 font-bold">📢 Thông báo:</span>
+                          <span class="text-gray-300 ml-1">Mời cả nhóm tham gia buổi học Chủ Nhật 9h sáng. Sẽ có quiz "Bài giảng tuần 18"...</span>
+                        </div>
+                        <div class="text-[10px] text-gray-500 mt-0.5">Bui · 2 ngày trước</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Mastery achievement -->
+                  <div class="activity-mastery rounded-xl p-3 opacity-80">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center text-white font-bold text-xs shrink-0">A</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="text-sm">
+                          <span class="text-emerald-400 font-bold">An Tuấn</span>
+                          <span class="text-gray-300"> đạt 100% accuracy </span>
+                          <span class="text-white font-semibold">"Quiz Phục Sinh"</span>
+                        </div>
+                        <div class="text-[10px] text-gray-500 mt-0.5">3 ngày trước</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button class="w-full py-3 rounded-xl glass-subtle border border-dashed border-white/10 text-gray-400 text-xs hover:border-[#e8a832]/30 hover:text-[#e8a832]">
+                    Xem thêm hoạt động →
+                  </button>
+                </div>
+              </div>
+
+              <!-- RIGHT 1-col: Members preview + Quiz Sets preview -->
+              <div class="space-y-4">
+
+                <!-- Members section -->
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-xs font-bold text-[#e8a832] uppercase tracking-wider flex items-center gap-1.5">
+                      <span>👥</span><span>Thành viên</span>
+                      <span class="text-gray-500 font-normal">(12)</span>
+                    </h2>
+                    <button class="text-[10px] text-gray-400 hover:text-[#e8a832]">Xem tất cả →</button>
+                  </div>
+                  <div class="glass rounded-xl p-3">
+                    <!-- Online members first -->
+                    <div class="text-[9px] font-bold text-emerald-400 uppercase tracking-wider mb-2">🟢 Đang online (3)</div>
+                    <div class="space-y-1.5 mb-3">
+                      <div class="flex items-center gap-2">
+                        <div class="relative shrink-0">
+                          <div class="w-7 h-7 rounded-full gold-grad flex items-center justify-center text-[#11131e] font-bold text-[10px]">B</div>
+                          <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 border border-[#11131e]"></span>
+                        </div>
+                        <span class="text-xs text-white font-semibold">Bui Nguyễn</span>
+                        <span class="text-[9px] text-[#e8a832] ml-auto">👑</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div class="relative shrink-0">
+                          <div class="w-7 h-7 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-[10px]">M</div>
+                          <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 border border-[#11131e]"></span>
+                        </div>
+                        <span class="text-xs text-white">Minh Hằng</span>
+                        <span class="text-[9px] text-emerald-400 ml-auto">đang chơi</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div class="relative shrink-0">
+                          <div class="w-7 h-7 rounded-full bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center text-white font-bold text-[10px]">A</div>
+                          <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 border border-[#11131e]"></span>
+                        </div>
+                        <span class="text-xs text-white">An Tuấn</span>
+                      </div>
+                    </div>
+                    <div class="text-[9px] font-bold text-gray-500 uppercase tracking-wider mb-2 pt-2 border-t border-white/5">Khác (9)</div>
+                    <div class="flex flex-wrap gap-1">
+                      <div class="w-7 h-7 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white font-bold text-[10px]">L</div>
+                      <div class="w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-[10px]">T</div>
+                      <div class="w-7 h-7 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-[10px]">H</div>
+                      <div class="w-7 h-7 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center text-white font-bold text-[10px]">D</div>
+                      <div class="w-7 h-7 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-bold text-[10px]">N</div>
+                      <div class="w-7 h-7 rounded-full glass-subtle border border-white/10 flex items-center justify-center text-gray-500 text-[10px]">+4</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Top Quiz Sets -->
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-xs font-bold text-[#e8a832] uppercase tracking-wider flex items-center gap-1.5">
+                      <span>📚</span><span>Phổ biến gần đây</span>
+                    </h2>
+                    <button class="text-[10px] text-gray-400 hover:text-[#e8a832]">Tất cả 15 →</button>
+                  </div>
+                  <div class="space-y-2">
+                    <button class="w-full glass rounded-xl p-2.5 flex items-center gap-2.5 hover:border-[#e8a832]/30 transition-all border border-white/5 text-left">
+                      <div class="w-9 h-9 rounded-lg flex items-center justify-center text-xl shrink-0" style="background: linear-gradient(135deg, #1a1d2e 0%, #4a3d2e 100%);">📖</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="text-xs font-bold text-white truncate">Bài giảng tuần 18</div>
+                        <div class="text-[10px] text-gray-500">15 câu · ▶ 24x · ⭐ 4.8</div>
+                      </div>
+                    </button>
+                    <button class="w-full glass rounded-xl p-2.5 flex items-center gap-2.5 hover:border-[#e8a832]/30 transition-all border border-white/5 text-left">
+                      <div class="w-9 h-9 rounded-lg green-grad flex items-center justify-center text-xl shrink-0">🎈</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="text-xs font-bold text-white truncate">Đa-vít & Gô-li-át</div>
+                        <div class="text-[10px] text-gray-500">10 câu · ▶ 32x · ⭐ 5.0</div>
+                      </div>
+                    </button>
+                    <button class="w-full glass rounded-xl p-2.5 flex items-center gap-2.5 hover:border-[#e8a832]/30 transition-all border border-white/5 text-left">
+                      <div class="w-9 h-9 rounded-lg flex items-center justify-center text-xl shrink-0" style="background: linear-gradient(135deg, #1a3d2e 0%, #2a4d3e 100%);">✝️</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="text-xs font-bold text-white truncate">Bài giảng tuần 16</div>
+                        <div class="text-[10px] text-gray-500">10 câu · ▶ 15x · ⭐ 4.7</div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ================================================ -->
+        <!-- MEMBER VIEW (no Pulse, no Analytics)             -->
+        <!-- ================================================ -->
+        <div id="state-member" class="state-panel absolute inset-0 hidden flex bg-[#0a0c14]">
+
+          <!-- Sidebar (same but member role) -->
+          <aside class="w-[220px] shrink-0 bg-[#11131e] border-r border-white/5 flex flex-col">
+            <div class="px-4 py-4 border-b border-white/5">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg gold-grad flex items-center justify-center text-[#11131e] font-extrabold text-sm">B</div>
+                <span class="font-extrabold text-white text-sm">BibleQuiz</span>
+              </div>
+            </div>
+
+            <div class="px-3 py-3 border-b border-white/5">
+              <button class="w-full glass-subtle rounded-lg p-2 flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg gold-grad flex items-center justify-center text-[#11131e] font-bold text-xs shrink-0">FM</div>
+                <div class="flex-1 text-left min-w-0">
+                  <div class="text-xs font-bold text-white truncate">FMC Đà Nẵng</div>
+                  <div class="text-[10px] text-gray-400">12 thành viên</div>
+                </div>
+              </button>
+            </div>
+
+            <nav class="flex-1 py-2">
+              <a class="nav-item flex items-center gap-3 px-4 py-2 text-sm">
+                <span class="text-gray-500">🏠</span>
+                <span class="text-gray-300">Trang chủ</span>
+              </a>
+              <a class="nav-item active flex items-center gap-3 px-4 py-2 text-sm">
+                <span>👥</span>
+                <span class="font-semibold">Nhóm này</span>
+              </a>
+              <a class="nav-item flex items-center gap-3 px-4 py-2 text-sm">
+                <span class="text-gray-500">📚</span>
+                <span class="text-gray-300">Bộ câu hỏi</span>
+                <span class="ml-auto text-[10px] text-gray-500">15</span>
+              </a>
+              <a class="nav-item flex items-center gap-3 px-4 py-2 text-sm">
+                <span class="text-gray-500">🎮</span>
+                <span class="text-gray-300">Live Rooms</span>
+                <span class="ml-auto text-[10px] text-emerald-400 font-bold pulse-dot">2</span>
+              </a>
+              <!-- KHÔNG có Phân tích tab cho Member -->
+            </nav>
+
+            <div class="m-3 glass-subtle rounded-xl p-3 border border-emerald-400/20" style="background: rgba(74,222,128,0.05);">
+              <div class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <span class="pulse-dot text-base">🟢</span><span>Đang online</span>
+              </div>
+              <div class="text-2xl font-extrabold text-white">3 <span class="text-xs text-gray-400 font-normal">/12</span></div>
+              <div class="mt-2 pt-2 border-t border-emerald-400/15">
+                <div class="text-[9px] text-gray-400 uppercase font-semibold mb-1">🎮 Phòng đang mở</div>
+                <button class="text-[11px] text-emerald-400 hover:underline block leading-tight">"Bài giảng tuần 18" →</button>
+                <button class="text-[11px] text-emerald-400 hover:underline block leading-tight mt-0.5">"Câu chuyện Đa-vít" →</button>
+              </div>
+            </div>
+
+            <div class="px-3 py-3 border-t border-white/5">
+              <button class="w-full flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-xs">M</div>
+                <div class="flex-1 text-left min-w-0">
+                  <div class="text-xs font-semibold text-white truncate">Minh Hằng</div>
+                  <div class="text-[10px] text-gray-400">Thành viên</div>
+                </div>
+              </button>
+            </div>
+          </aside>
+
+          <!-- Main content for Member -->
+          <div class="flex-1 overflow-y-auto scroll-thin">
+            <!-- Header -->
+            <header class="bg-gradient-to-br from-[#11131e] to-[#1a1d2e] border-b border-white/5 px-8 py-5">
+              <div class="flex items-start gap-4">
+                <div class="w-16 h-16 rounded-2xl gold-grad flex items-center justify-center text-3xl shrink-0 shadow-lg">⛪</div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-3 mb-2">
+                    <h1 class="text-2xl font-extrabold text-white">FMC Đà Nẵng</h1>
+                  </div>
+                  <div class="flex items-center gap-4 text-xs text-gray-400">
+                    <span class="flex items-center gap-1.5">
+                      <span>👥</span>
+                      <span class="text-gray-300 font-semibold">12 thành viên</span>
+                    </span>
+                    <span class="text-gray-600">·</span>
+                    <span class="flex items-center gap-1.5">
+                      <span>👑</span>
+                      <span>Trưởng: Bui Nguyễn</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                  <button class="px-4 py-2 rounded-lg glass-subtle border border-white/10 text-gray-300 text-xs font-semibold flex items-center gap-1.5 hover:border-red-400/30 hover:text-red-400">
+                    <span>🚪</span><span>Rời nhóm</span>
+                  </button>
+                </div>
+              </div>
+            </header>
+
+            <!-- KHÔNG có Pulse cho member -->
+
+            <!-- QUICK ACTIONS for member - 2 actions thực sự actionable (bỏ Tham gia Live vì đã có Live Now banner) -->
+            <section class="px-8 pt-5">
+              <h2 class="text-xs font-bold text-[#e8a832] uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                <span>⚡</span><span>Hành động nhanh</span>
+              </h2>
+              <div class="grid grid-cols-2 gap-3">
+                <button class="quick-action glass rounded-xl p-3 text-left border border-white/5">
+                  <div class="text-2xl mb-1.5">📚</div>
+                  <div class="text-sm font-bold text-white">Tự ôn quiz set</div>
+                  <div class="text-[10px] text-gray-400 mt-0.5">15 bộ · Personal Mastery tracking</div>
+                </button>
+                <button class="quick-action glass rounded-xl p-3 text-left border border-purple-400/30" style="background: rgba(168,85,247,0.05);">
+                  <div class="text-2xl mb-1.5">📅</div>
+                  <div class="text-sm font-bold text-white">Quiz đang lên lịch</div>
+                  <div class="text-[10px] text-purple-400 mt-0.5 font-semibold">2 quiz · Hết hạn Chủ Nhật</div>
+                </button>
+              </div>
+            </section>
+
+            <!-- 2-COLUMN LAYOUT -->
+            <div class="px-8 pt-5 pb-8 grid grid-cols-3 gap-4">
+
+              <!-- LEFT 2-cols: Activity Feed (same as leader) -->
+              <div class="col-span-2">
+                <div class="flex items-center justify-between mb-3">
+                  <h2 class="text-xs font-bold text-[#e8a832] uppercase tracking-wider flex items-center gap-1.5">
+                    <span>📜</span><span>Nhịp sinh hoạt nhóm</span>
+                  </h2>
+                  <div class="flex gap-1.5">
+                    <button class="text-[10px] px-2 py-1 rounded-full bg-[#e8a832]/15 text-[#e8a832] font-semibold border border-[#e8a832]/30">Tất cả</button>
+                    <button class="text-[10px] px-2 py-1 rounded-full glass-subtle text-gray-400 font-semibold border border-white/10">📚 Quiz</button>
+                    <button class="text-[10px] px-2 py-1 rounded-full glass-subtle text-gray-400 font-semibold border border-white/10">🎮 Live</button>
+                    <button class="text-[10px] px-2 py-1 rounded-full glass-subtle text-gray-400 font-semibold border border-white/10">📢 Tin</button>
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  <!-- LIVE NOW -->
+                  <div class="rounded-xl p-3 border-2 border-emerald-400/40" style="background: rgba(74,222,128,0.08);">
+                    <div class="flex items-center gap-3">
+                      <div class="w-9 h-9 rounded-lg green-grad flex items-center justify-center text-base shrink-0">🎮</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2">
+                          <span class="text-[9px] font-bold text-emerald-400 uppercase pulse-dot">● ĐANG DIỄN RA</span>
+                          <span class="text-[10px] text-gray-500">vừa bắt đầu</span>
+                        </div>
+                        <div class="text-sm font-bold text-white mt-0.5">Live Room: "Bài giảng tuần 18 — Phục Sinh"</div>
+                        <div class="text-[10px] text-gray-300 mt-0.5">Mode: 📚 Sequential · 4/8 người tham gia</div>
+                      </div>
+                      <button class="px-3 py-1.5 rounded-lg green-grad text-[#11131e] text-xs font-bold whitespace-nowrap">Tham gia →</button>
+                    </div>
+                  </div>
+
+                  <!-- Activity items same as leader view -->
+                  <div class="activity-mastery rounded-xl p-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-xs shrink-0">M</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="text-sm">
+                          <span class="text-emerald-400 font-bold">Bạn</span>
+                          <span class="text-gray-300"> đã thuộc hết </span>
+                          <span class="text-white font-semibold">"Câu chuyện Đa-vít & Gô-li-át"</span>
+                          <span class="text-emerald-400 font-bold ml-1">🏆</span>
+                        </div>
+                        <div class="text-[10px] text-gray-500 mt-0.5">10 phút trước · Personal Mastery</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="activity-quiz rounded-xl p-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#e8a832] to-[#d4941f] flex items-center justify-center text-[#11131e] font-bold text-xs shrink-0">B</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="text-sm">
+                          <span class="text-[#e8a832] font-bold">👑 Bui</span>
+                          <span class="text-gray-300"> tạo bộ câu hỏi mới: </span>
+                          <span class="text-white font-semibold">"Bài giảng tuần 19"</span>
+                        </div>
+                        <div class="text-[10px] text-gray-500 mt-0.5">2 giờ trước · 12 câu</div>
+                      </div>
+                      <button class="text-[10px] text-[#e8a832] hover:underline shrink-0">Xem →</button>
+                    </div>
+                  </div>
+
+                  <div class="activity-room rounded-xl p-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white text-xs shrink-0">🎮</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="text-sm">
+                          <span class="text-gray-300">Live room </span>
+                          <span class="text-white font-semibold">"Bài giảng tuần 17"</span>
+                          <span class="text-gray-300"> kết thúc</span>
+                        </div>
+                        <div class="text-[10px] text-gray-500 mt-0.5">Hôm qua · 8 người tham gia</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="activity-announce rounded-xl p-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#e8a832] to-[#d4941f] flex items-center justify-center text-[#11131e] font-bold text-xs shrink-0">B</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="text-sm">
+                          <span class="text-sky-400 font-bold">📢 Thông báo:</span>
+                          <span class="text-gray-300 ml-1">Mời cả nhóm tham gia buổi học Chủ Nhật 9h sáng...</span>
+                        </div>
+                        <div class="text-[10px] text-gray-500 mt-0.5">Bui · 2 ngày trước</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT: Members + Quiz Sets (same as leader) -->
+              <div class="space-y-4">
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-xs font-bold text-[#e8a832] uppercase tracking-wider flex items-center gap-1.5">
+                      <span>👥</span><span>Thành viên</span>
+                      <span class="text-gray-500 font-normal">(12)</span>
+                    </h2>
+                    <button class="text-[10px] text-gray-400 hover:text-[#e8a832]">Xem tất cả →</button>
+                  </div>
+                  <div class="glass rounded-xl p-3">
+                    <div class="text-[9px] font-bold text-emerald-400 uppercase tracking-wider mb-2">🟢 Đang online (3)</div>
+                    <div class="space-y-1.5 mb-3">
+                      <div class="flex items-center gap-2">
+                        <div class="relative shrink-0">
+                          <div class="w-7 h-7 rounded-full gold-grad flex items-center justify-center text-[#11131e] font-bold text-[10px]">B</div>
+                          <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 border border-[#11131e]"></span>
+                        </div>
+                        <span class="text-xs text-white font-semibold">Bui Nguyễn</span>
+                        <span class="text-[9px] text-[#e8a832] ml-auto">👑</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div class="relative shrink-0">
+                          <div class="w-7 h-7 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-[10px]">M</div>
+                          <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 border border-[#11131e]"></span>
+                        </div>
+                        <span class="text-xs text-white font-semibold">Bạn</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <div class="relative shrink-0">
+                          <div class="w-7 h-7 rounded-full bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center text-white font-bold text-[10px]">A</div>
+                          <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 border border-[#11131e]"></span>
+                        </div>
+                        <span class="text-xs text-white">An Tuấn</span>
+                      </div>
+                    </div>
+                    <div class="text-[9px] font-bold text-gray-500 uppercase tracking-wider mb-2 pt-2 border-t border-white/5">Khác (9)</div>
+                    <div class="flex flex-wrap gap-1">
+                      <div class="w-7 h-7 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white font-bold text-[10px]">L</div>
+                      <div class="w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-[10px]">T</div>
+                      <div class="w-7 h-7 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-[10px]">H</div>
+                      <div class="w-7 h-7 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center text-white font-bold text-[10px]">D</div>
+                      <div class="w-7 h-7 rounded-full glass-subtle border border-white/10 flex items-center justify-center text-gray-500 text-[10px]">+5</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Personal mastery summary -->
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                      <span>🎯</span><span>Tiến độ học của bạn</span>
+                    </h2>
+                  </div>
+                  <div class="glass rounded-xl p-3 border border-emerald-400/20" style="background: rgba(74,222,128,0.04);">
+                    <div class="text-center mb-3">
+                      <div class="text-3xl font-extrabold text-emerald-400">8<span class="text-base text-gray-400 font-normal">/15</span></div>
+                      <div class="text-[10px] text-gray-400 uppercase font-semibold mt-1">Bộ câu hỏi đã thuộc</div>
+                    </div>
+                    <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
+                      <div class="h-full green-grad" style="width: 53%;"></div>
+                    </div>
+                    <div class="text-[10px] text-gray-400 text-center mt-2">53% mastery toàn nhóm</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="grid grid-cols-2 gap-6 mb-8">
+    <!-- Decisions chốt -->
+    <div class="rounded-2xl p-5 border border-[#e8a832]/30 bg-[#e8a832]/5">
+      <div class="text-xs font-semibold uppercase tracking-wider text-[#e8a832] mb-3">✅ 4 decisions chốt (Bui ủy quyền)</div>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li class="flex gap-2"><span class="text-emerald-400 font-bold">✓</span> <div><b class="text-white">Bỏ Leaderboard hoàn toàn</b> — không phù hợp văn hóa Tin Lành. Replace bằng Activity Feed + Personal Mastery.</div></li>
+        <li class="flex gap-2"><span class="text-emerald-400 font-bold">✓</span> <div><b class="text-white">Defer Tournament</b> — group hầu hết &lt;4 members, tournament logic phức tạp, ROI thấp.</div></li>
+        <li class="flex gap-2"><span class="text-emerald-400 font-bold">✓</span> <div><b class="text-white">Activity Feed Sprint 6</b> — sau Sprint 5 (Quiz Set Professional). Sprint hiện tại chỉ UX polish.</div></li>
+        <li class="flex gap-2"><span class="text-emerald-400 font-bold">✓</span> <div><b class="text-white">Approve Pulse heuristic</b>: 50% active ratio + 30% live rooms/week + 20% new content/week. Strong ≥0.7, Medium 0.4-0.7, Weak &lt;0.4.</div></li>
+      </ul>
+    </div>
+
+    <!-- Member vs Leader differences -->
+    <div class="glass rounded-2xl p-5">
+      <div class="text-xs font-semibold uppercase tracking-wider text-[#e8a832] mb-3">🎭 Member view vs Leader view</div>
+      <table class="w-full text-xs">
+        <thead>
+          <tr class="border-b border-white/10">
+            <th class="text-left py-2 text-[10px] font-semibold text-gray-400">Element</th>
+            <th class="text-left py-2 text-[10px] font-semibold text-gray-400">Member</th>
+            <th class="text-left py-2 text-[10px] font-semibold text-gray-400">Leader</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-300">
+          <tr class="border-b border-white/5"><td class="py-1.5">Cell Group Pulse</td><td class="text-gray-500">❌ Hidden</td><td class="text-emerald-400">✅ Show</td></tr>
+          <tr class="border-b border-white/5"><td class="py-1.5">Sidebar "Phân tích"</td><td class="text-gray-500">❌ Hidden</td><td class="text-emerald-400">✅ Visible</td></tr>
+          <tr class="border-b border-white/5"><td class="py-1.5">Quick Actions count</td><td class="text-gray-500">2 (Tự ôn, Scheduled)</td><td class="text-emerald-400">4 (Tạo quiz, Live, Schedule, Mời)</td></tr>
+          <tr class="border-b border-white/5"><td class="py-1.5">"Tham gia Live Room" button</td><td class="text-gray-500">❌ Không cần (Live Now banner đã có)</td><td class="text-emerald-400">✅ "Bắt đầu Live"</td></tr>
+          <tr class="border-b border-white/5"><td class="py-1.5">"Tạo quiz" / "Lên lịch" / "Mời" actions</td><td class="text-gray-500">❌ Hidden</td><td class="text-emerald-400">✅ Show</td></tr>
+          <tr class="border-b border-white/5"><td class="py-1.5">"Rời nhóm" button</td><td class="text-emerald-400">✅ Show</td><td class="text-gray-500">❌ Hidden</td></tr>
+          <tr class="border-b border-white/5"><td class="py-1.5">Settings ⚙️ button</td><td class="text-gray-500">❌ Hidden</td><td class="text-emerald-400">✅ Show</td></tr>
+          <tr class="border-b border-white/5"><td class="py-1.5">Activity Feed</td><td class="text-emerald-400">✅ Same</td><td class="text-emerald-400">✅ Same</td></tr>
+          <tr class="border-b border-white/5"><td class="py-1.5">Members preview</td><td class="text-emerald-400">✅ Same</td><td class="text-emerald-400">✅ Same</td></tr>
+          <tr><td class="py-1.5">Personal Mastery summary (right)</td><td class="text-emerald-400">✅ Show</td><td class="text-gray-500">→ Replaced by Quiz top</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Sprint plan update -->
+  <div class="grid grid-cols-2 gap-6 mb-8">
+    <div class="glass rounded-2xl p-5">
+      <div class="text-xs font-semibold uppercase tracking-wider text-[#e8a832] mb-3">📋 Updated Sprint Plan</div>
+      <div class="space-y-3 text-sm">
+        <div>
+          <div class="font-bold text-white mb-1">Sprint hiện tại (UX Polish — 3-4 ngày)</div>
+          <ul class="text-xs text-gray-400 space-y-1 ml-4 list-disc">
+            <li>Bỏ tab "Leaderboard" khỏi UI</li>
+            <li>Header polish + code QR + role badge contrast</li>
+            <li>Empty states cho new groups</li>
+            <li>Sidebar context (hide personal cards in group)</li>
+            <li>Disable tournament khi members &lt;4</li>
+            <li>Tab Analytics riêng (leader-only) thay tab Phân tích cũ</li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold text-white mb-1">Sprint 5 (Quiz Set Professional — 8 ngày)</div>
+          <ul class="text-xs text-gray-400 space-y-1 ml-4 list-disc">
+            <li>Giữ nguyên plan đã chốt</li>
+            <li>Q-1 đến Q-8 + docs</li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold text-emerald-400 mb-1">Sprint 6 NEW (Activity Feed + Pulse — 5 ngày)</div>
+          <ul class="text-xs text-gray-400 space-y-1 ml-4 list-disc">
+            <li>Activity Feed entity + service + API</li>
+            <li>Cell Group Pulse calculation cron</li>
+            <li>Frontend Activity Feed component (filters, real-time)</li>
+            <li>Pulse indicator UI cho leader</li>
+            <li>Live Room banner ("ĐANG DIỄN RA" pinned at top)</li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold text-gray-500 mb-1">Defer / Backlog</div>
+          <ul class="text-xs text-gray-500 space-y-1 ml-4 list-disc">
+            <li>Tournament (members &lt;4 = useless)</li>
+            <li>Group streak concept</li>
+            <li>Prayer requests (Sprint 7+)</li>
+            <li>Sermon resources library</li>
+            <li>Calendar view</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass rounded-2xl p-5">
+      <div class="text-xs font-semibold uppercase tracking-wider text-[#e8a832] mb-3">🔧 Backend changes (Sprint 6)</div>
+      <pre class="bg-black/30 rounded p-3 overflow-x-auto text-[10px] text-gray-300 leading-relaxed"><code>-- V53__group_activity_feed.sql
+CREATE TABLE group_activity (
+  id BIGINT PK,
+  group_id BIGINT FK,
+  actor_user_id BIGINT FK,
+  type ENUM(
+    'MASTERY_COMPLETED',
+    'QUIZ_SET_CREATED',
+    'QUIZ_SET_UPDATED',
+    'LIVE_ROOM_STARTED',
+    'LIVE_ROOM_ENDED',
+    'ANNOUNCEMENT_POSTED',
+    'MEMBER_JOINED',
+    'MEMBER_LEFT',
+    'SCHEDULED_QUIZ_CREATED'
+  ),
+  metadata JSON,
+  created_at TIMESTAMP,
+  INDEX (group_id, created_at DESC)
+);
+
+-- V54__group_pulse.sql
+CREATE TABLE group_pulse_snapshot (
+  group_id BIGINT PK,
+  pulse_score DECIMAL(3,2),  -- 0.00-1.00
+  active_ratio DECIMAL(3,2),
+  live_rooms_count INT,
+  new_content_count INT,
+  status ENUM('STRONG','MEDIUM','WEAK'),
+  computed_at TIMESTAMP
+);
+
+-- Cron: GroupPulseScheduler
+-- @Scheduled(cron = "0 0 1 * * *")  // 1am daily
+public void computeAllGroupPulses() {
+  for (each group) {
+    pulse = activeRatio*0.5 + liveRooms*0.3 
+          + newContent*0.2;
+    save snapshot;
+  }
+}</code></pre>
+    </div>
+  </div>
+
+  <!-- API endpoints -->
+  <div class="glass rounded-2xl p-5">
+    <div class="text-xs font-semibold uppercase tracking-wider text-[#e8a832] mb-3">🔌 New API endpoints (Sprint 6)</div>
+    <table class="w-full text-xs">
+      <thead>
+        <tr class="border-b border-white/10">
+          <th class="text-left py-2 text-[10px] font-semibold text-gray-400">Method</th>
+          <th class="text-left py-2 text-[10px] font-semibold text-gray-400">Path</th>
+          <th class="text-left py-2 text-[10px] font-semibold text-gray-400">Auth</th>
+          <th class="text-left py-2 text-[10px] font-semibold text-gray-400">Note</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-300">
+        <tr class="border-b border-white/5"><td class="py-1.5 font-mono text-emerald-400">GET</td><td class="py-1.5 font-mono">/api/groups/{id}/activity</td><td>Member</td><td>Paginated, filter by type, default 20 items</td></tr>
+        <tr class="border-b border-white/5"><td class="py-1.5 font-mono text-emerald-400">GET</td><td class="py-1.5 font-mono">/api/groups/{id}/pulse</td><td>Leader+Mod</td><td>Latest pulse snapshot + 7-day trend</td></tr>
+        <tr class="border-b border-white/5"><td class="py-1.5 font-mono text-emerald-400">GET</td><td class="py-1.5 font-mono">/api/groups/{id}/online-members</td><td>Member</td><td>Members currently online (Redis presence)</td></tr>
+        <tr class="border-b border-white/5"><td class="py-1.5 font-mono text-emerald-400">GET</td><td class="py-1.5 font-mono">/api/groups/{id}/active-rooms</td><td>Member</td><td>List Live Rooms in LOBBY/IN_PROGRESS</td></tr>
+        <tr><td class="py-1.5 text-red-400">DELETE</td><td class="py-1.5 font-mono">/api/groups/{id}/leaderboard*</td><td>—</td><td class="text-red-400">REMOVE existing endpoint (Q-A leaderboard sunset)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+  function setState(s) {
+    document.querySelectorAll('.state-panel').forEach(p => p.classList.add('hidden'));
+    document.getElementById('state-' + s).classList.remove('hidden');
+    document.querySelectorAll('.state-btn[data-state]').forEach(b => {
+      b.classList.toggle('active', b.dataset.state === s);
+    });
+  }
+  setState('leader');
+</script>
+
+</body>
+</html>

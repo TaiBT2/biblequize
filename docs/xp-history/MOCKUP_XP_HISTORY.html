@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup: Lịch sử XP Section — BibleQuiz Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  html, body {
+    background: #0a0c14;
+    color: #f3f4f6;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  
+  body {
+    padding: 40px 20px 80px;
+    background: 
+      radial-gradient(ellipse at top left, rgba(232,168,50,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(167,139,250,0.03) 0%, transparent 50%),
+      #0a0c14;
+  }
+  
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  
+  /* ===== Layout ===== */
+  .page-header {
+    max-width: 1280px;
+    margin: 0 auto 32px;
+    text-align: center;
+  }
+  .page-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #f3f4f6;
+    margin-bottom: 8px;
+  }
+  .page-header p {
+    font-size: 14px;
+    color: #9ca3af;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .layout-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  
+  @media (min-width: 1100px) {
+    .layout-grid {
+      grid-template-columns: 1fr 380px;
+      align-items: start;
+    }
+  }
+  
+  /* ===== Viewport labels ===== */
+  .viewport-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: rgba(232,168,50,0.08);
+    border: 1px solid rgba(232,168,50,0.2);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #e8a832;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+  .viewport-label .material-symbols-outlined {
+    font-size: 14px;
+  }
+  
+  .state-divider {
+    margin: 64px 0 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .state-divider h2 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .state-divider span {
+    font-size: 12px;
+    color: #6b7280;
+  }
+  
+  /* ===== Profile page context wrapper (mimics existing layout width) ===== */
+  .profile-content {
+    max-width: 952px;
+  }
+  
+  .mobile-frame {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  
+  /* ===== SECTION CARD (matches existing pattern) ===== */
+  .section-card {
+    background: rgba(50, 52, 64, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 28px 32px;
+  }
+  .mobile-frame .section-card {
+    padding: 20px 18px;
+    border-radius: 16px;
+  }
+  
+  /* ===== Section header (matches "BỘ SƯU TẬP HUY HIỆU" pattern) ===== */
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .section-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-header-icon {
+    color: #e8a832;
+    font-size: 18px !important;
+  }
+  .section-header-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e8a832;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .section-header-link {
+    font-size: 13px;
+    color: #e8a832;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .section-header-link:hover {
+    opacity: 0.7;
+  }
+  
+  .section-subtitle {
+    font-size: 13px;
+    color: #9ca3af;
+    margin-bottom: 18px;
+    margin-top: -10px;
+  }
+  
+  /* ===== Banner: scope note (info muted) ===== */
+  .scope-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+    background: rgba(96, 165, 250, 0.06);
+    border: 1px solid rgba(96, 165, 250, 0.15);
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+  .scope-note .material-symbols-outlined {
+    color: #60a5fa;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .scope-note-text {
+    font-size: 12.5px;
+    color: #cbd5e1;
+    line-height: 1.5;
+  }
+  .mobile-frame .scope-note-text {
+    font-size: 11.5px;
+  }
+  
+  /* ===== Banner: history start date (gold accent) ===== */
+  .start-date-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: rgba(232, 168, 50, 0.08);
+    border: 1px solid rgba(232, 168, 50, 0.2);
+    border-radius: 10px;
+    margin-bottom: 18px;
+    font-size: 12.5px;
+    color: #e8a832;
+    font-weight: 500;
+  }
+  .start-date-banner .material-symbols-outlined {
+    font-size: 16px;
+  }
+  
+  /* ===== ENTRY CARD ===== */
+  .xp-entry {
+    background: rgba(28, 30, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 14px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .xp-entry:hover {
+    border-color: rgba(232, 168, 50, 0.15);
+    background: rgba(32, 34, 46, 0.7);
+  }
+  .xp-entry.expanded {
+    border-color: rgba(232, 168, 50, 0.25);
+    background: rgba(32, 34, 46, 0.7);
+  }
+  
+  /* Entry summary row */
+  .xp-entry-summary {
+    display: flex;
+    align-items: center;
+    padding: 16px 18px;
+    gap: 14px;
+    cursor: pointer;
+  }
+  .mobile-frame .xp-entry-summary {
+    padding: 14px 14px;
+    gap: 11px;
+  }
+  
+  /* Source icon (left) */
+  .xp-source-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .mobile-frame .xp-source-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+  
+  .xp-source-icon.ranked {
+    background: linear-gradient(135deg, rgba(232,168,50,0.2) 0%, rgba(251,191,36,0.15) 100%);
+    border: 1px solid rgba(232,168,50,0.3);
+    color: #fbbf24;
+  }
+  .xp-source-icon.star {
+    background: linear-gradient(135deg, rgba(167,139,250,0.18) 0%, rgba(196,181,253,0.12) 100%);
+    border: 1px solid rgba(167,139,250,0.3);
+    color: #c4b5fd;
+  }
+  .xp-source-icon.daily {
+    background: linear-gradient(135deg, rgba(96,165,250,0.18) 0%, rgba(147,197,253,0.12) 100%);
+    border: 1px solid rgba(96,165,250,0.3);
+    color: #93c5fd;
+  }
+  .xp-source-icon .material-symbols-outlined {
+    font-size: 22px;
+  }
+  .mobile-frame .xp-source-icon .material-symbols-outlined {
+    font-size: 20px;
+  }
+  
+  /* Entry middle (title + meta) */
+  .xp-entry-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .xp-entry-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #f3f4f6;
+    line-height: 1.3;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mobile-frame .xp-entry-title {
+    font-size: 13.5px;
+  }
+  .xp-entry-meta {
+    font-size: 12px;
+    color: #9ca3af;
+    line-height: 1.4;
+  }
+  .mobile-frame .xp-entry-meta {
+    font-size: 11.5px;
+  }
+  .xp-entry-meta .dot {
+    margin: 0 6px;
+    opacity: 0.5;
+  }
+  
+  /* Entry right (XP amount + chevron) */
+  .xp-entry-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .xp-amount {
+    font-size: 16px;
+    font-weight: 700;
+    color: #4ade80;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .mobile-frame .xp-amount {
+    font-size: 14.5px;
+  }
+  .xp-chevron {
+    color: #6b7280;
+    font-size: 20px !important;
+    transition: transform 0.2s, color 0.2s;
+  }
+  .xp-entry.expanded .xp-chevron {
+    transform: rotate(180deg);
+    color: #e8a832;
+  }
+  .xp-entry-summary:not(.has-chevron) .xp-chevron {
+    display: none;
+  }
+  
+  /* ===== Expanded breakdown ===== */
+  .xp-breakdown {
+    padding: 0 18px 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    margin-top: 4px;
+    padding-top: 14px;
+  }
+  .mobile-frame .xp-breakdown {
+    padding: 0 14px 14px;
+    padding-top: 12px;
+  }
+  
+  .breakdown-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 0;
+    font-size: 13px;
+  }
+  .mobile-frame .breakdown-row {
+    font-size: 12px;
+    padding: 6px 0;
+  }
+  .breakdown-row + .breakdown-row {
+    border-top: 1px solid rgba(255,255,255,0.03);
+  }
+  .breakdown-label {
+    color: #9ca3af;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .breakdown-label .material-symbols-outlined {
+    font-size: 15px;
+    color: #fbbf24;
+  }
+  .breakdown-value {
+    color: #f3f4f6;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .breakdown-value.bonus {
+    color: #4ade80;
+  }
+  .breakdown-value.multiplier {
+    color: #c4b5fd;
+    font-weight: 700;
+  }
+  
+  .breakdown-total {
+    margin-top: 10px;
+    padding-top: 12px;
+    border-top: 2px solid rgba(232, 168, 50, 0.2) !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .breakdown-total .breakdown-label {
+    color: #f3f4f6;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .breakdown-total .breakdown-value {
+    font-size: 18px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #e8a832 0%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .breakdown-action {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .breakdown-action a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #e8a832;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .breakdown-action a:hover {
+    opacity: 0.7;
+  }
+  .breakdown-action .material-symbols-outlined {
+    font-size: 16px;
+  }
+  
+  /* ===== Load more button ===== */
+  .load-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    margin-top: 16px;
+    background: rgba(50, 52, 64, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .load-more:hover {
+    border-color: rgba(232, 168, 50, 0.2);
+    color: #e8a832;
+  }
+  .load-more .material-symbols-outlined {
+    font-size: 16px;
+  }
+  
+  /* ===== Empty state ===== */
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px 32px;
+  }
+  .mobile-frame .empty-state {
+    padding: 28px 16px 24px;
+  }
+  
+  .empty-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+    margin: 0 auto 18px;
+    background: linear-gradient(135deg, rgba(232,168,50,0.1) 0%, rgba(232,168,50,0.04) 100%);
+    border: 1px solid rgba(232,168,50,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .empty-icon .material-symbols-outlined {
+    font-size: 36px;
+    color: #e8a832;
+  }
+  .empty-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #f3f4f6;
+    margin-bottom: 6px;
+  }
+  .empty-desc {
+    font-size: 13px;
+    color: #9ca3af;
+    line-height: 1.5;
+    max-width: 320px;
+    margin: 0 auto 18px;
+  }
+  .empty-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #e8a832 0%, #fbbf24 100%);
+    border: none;
+    border-radius: 10px;
+    color: #11131e;
+    font-size: 13.5px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    text-decoration: none;
+  }
+  .empty-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(232, 168, 50, 0.3);
+  }
+  .empty-cta .material-symbols-outlined {
+    font-size: 16px;
+  }
+  
+  /* ===== Annotation cards ===== */
+  .annotations {
+    background: rgba(50, 52, 64, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .annotations h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e8a832;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .annotations h3 .material-symbols-outlined {
+    font-size: 16px;
+  }
+  .annotation-item {
+    padding: 12px 14px;
+    background: rgba(28, 30, 42, 0.5);
+    border-left: 2px solid #e8a832;
+    border-radius: 4px 8px 8px 4px;
+    margin-bottom: 10px;
+  }
+  .annotation-item:last-child {
+    margin-bottom: 0;
+  }
+  .annotation-key {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fbbf24;
+    margin-bottom: 4px;
+  }
+  .annotation-value {
+    font-size: 12.5px;
+    color: #cbd5e1;
+    line-height: 1.5;
+  }
+  .annotation-value code {
+    font-family: 'SF Mono', 'Monaco', monospace;
+    background: rgba(232,168,50,0.1);
+    color: #fbbf24;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 11.5px;
+  }
+  
+  /* ===== Status pill on annotations ===== */
+  .pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+  .pill.gold {
+    background: rgba(232, 168, 50, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(232, 168, 50, 0.3);
+  }
+  .pill.purple {
+    background: rgba(167, 139, 250, 0.15);
+    color: #c4b5fd;
+    border: 1px solid rgba(167, 139, 250, 0.3);
+  }
+  .pill.blue {
+    background: rgba(96, 165, 250, 0.15);
+    color: #93c5fd;
+    border: 1px solid rgba(96, 165, 250, 0.3);
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Mockup: Section "Lịch sử XP"</h1>
+  <p>Section mới đặt trong Profile page, giữa "Phân Tích Chi Tiết" và "Prestige". Match Sacred Modernist tokens hiện tại.</p>
+</div>
+
+<!-- ============ STATE 1: ACTIVE WITH ENTRIES (DESKTOP + ANNOTATIONS) ============ -->
+<div class="state-divider">
+  <h2>State 1 · Có lịch sử (active)</h2>
+  <span>Desktop · 952px content · 4 entries shown</span>
+</div>
+
+<div class="layout-grid">
+  
+  <!-- LEFT: Profile content area -->
+  <div class="profile-content">
+    
+    <!-- The XP History Section -->
+    <div class="section-card">
+      
+      <!-- Section header -->
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="material-symbols-outlined section-header-icon">history</span>
+          <span class="section-header-title">Lịch Sử XP</span>
+        </div>
+        <a href="#" class="section-header-link">Xem tất cả →</a>
+      </div>
+      
+      <!-- Start date banner (only when firstEventDate exists) -->
+      <div class="start-date-banner">
+        <span class="material-symbols-outlined">flag</span>
+        <span>Lịch sử XP bắt đầu từ <strong>01/05/2026</strong></span>
+      </div>
+      
+      <!-- Scope note -->
+      <div class="scope-note">
+        <span class="material-symbols-outlined">info</span>
+        <div class="scope-note-text">
+          Chỉ <strong>Xếp hạng</strong>, <strong>Thử thách hàng ngày</strong>, và phần thưởng <strong>lên Star</strong> được ghi nhận. 
+          Multiplayer, Tournament, và các chế độ vui (Mystery / Speed Round) không cộng XP.
+        </div>
+      </div>
+      
+      <!-- Entry 1: RANKED_SESSION (expanded — show full breakdown) -->
+      <div class="xp-entry expanded">
+        <div class="xp-entry-summary has-chevron">
+          <div class="xp-source-icon ranked">
+            <span class="material-symbols-outlined">trophy</span>
+          </div>
+          <div class="xp-entry-body">
+            <div class="xp-entry-title">Phiên Xếp hạng — Sáng Thế Ký</div>
+            <div class="xp-entry-meta">
+              8/10 đúng <span class="dot">·</span> 80% <span class="dot">·</span> 14:23 hôm nay
+            </div>
+          </div>
+          <div class="xp-entry-right">
+            <div class="xp-amount">+127 XP</div>
+            <span class="material-symbols-outlined xp-chevron">expand_more</span>
+          </div>
+        </div>
+        
+        <div class="xp-breakdown">
+          <div class="breakdown-row">
+            <span class="breakdown-label">Điểm cơ bản</span>
+            <span class="breakdown-value">72</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-label">
+              <span class="material-symbols-outlined">bolt</span>
+              Bonus tốc độ
+            </span>
+            <span class="breakdown-value bonus">+28</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-label">
+              <span class="material-symbols-outlined">local_fire_department</span>
+              Bonus combo (max ×1.2 ở câu thứ 5)
+            </span>
+            <span class="breakdown-value bonus">+18</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-label">
+              <span class="material-symbols-outlined">military_tech</span>
+              Hệ số Tier (Tân Tín Hữu)
+            </span>
+            <span class="breakdown-value multiplier">×1.0</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-label">
+              <span class="material-symbols-outlined">wb_sunny</span>
+              Câu đầu ngày (×2)
+            </span>
+            <span class="breakdown-value bonus">+9</span>
+          </div>
+          
+          <div class="breakdown-total">
+            <span class="breakdown-label">Tổng cộng</span>
+            <span class="breakdown-value">127 XP</span>
+          </div>
+          
+          <div class="breakdown-action">
+            <a href="#">
+              Xem chi tiết từng câu
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Entry 2: STAR_BONUS -->
+      <div class="xp-entry">
+        <div class="xp-entry-summary">
+          <div class="xp-source-icon star">
+            <span class="material-symbols-outlined">stars</span>
+          </div>
+          <div class="xp-entry-body">
+            <div class="xp-entry-title">Lên Star 3 — Tân Tín Hữu</div>
+            <div class="xp-entry-meta">
+              Phần thưởng vượt mốc <span class="dot">·</span> 14:18 hôm nay
+            </div>
+          </div>
+          <div class="xp-entry-right">
+            <div class="xp-amount">+30 XP</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Entry 3: DAILY_COMPLETION -->
+      <div class="xp-entry">
+        <div class="xp-entry-summary">
+          <div class="xp-source-icon daily">
+            <span class="material-symbols-outlined">calendar_month</span>
+          </div>
+          <div class="xp-entry-body">
+            <div class="xp-entry-title">Thử thách hàng ngày</div>
+            <div class="xp-entry-meta">
+              4/5 đúng <span class="dot">·</span> Hôm qua, 09:42
+            </div>
+          </div>
+          <div class="xp-entry-right">
+            <div class="xp-amount">+50 XP</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Entry 4: RANKED_SESSION (collapsed) -->
+      <div class="xp-entry">
+        <div class="xp-entry-summary has-chevron">
+          <div class="xp-source-icon ranked">
+            <span class="material-symbols-outlined">trophy</span>
+          </div>
+          <div class="xp-entry-body">
+            <div class="xp-entry-title">Phiên Xếp hạng — Xuất Hành</div>
+            <div class="xp-entry-meta">
+              6/10 đúng <span class="dot">·</span> 60% <span class="dot">·</span> 2 ngày trước
+            </div>
+          </div>
+          <div class="xp-entry-right">
+            <div class="xp-amount">+88 XP</div>
+            <span class="material-symbols-outlined xp-chevron">expand_more</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Load more -->
+      <button class="load-more">
+        <span class="material-symbols-outlined">refresh</span>
+        Tải thêm (12 mục)
+      </button>
+      
+    </div>
+    
+  </div>
+  
+  <!-- RIGHT: Annotations -->
+  <div class="annotations">
+    <h3>
+      <span class="material-symbols-outlined">notes</span>
+      Design notes
+    </h3>
+    
+    <div class="annotation-item">
+      <div class="annotation-key">Source colors <span class="pill gold">RANKED</span> <span class="pill purple">STAR</span> <span class="pill blue">DAILY</span></div>
+      <div class="annotation-value">3 source types có 3 màu icon riêng để user phân biệt nhanh khi scroll. RANKED dùng gold (chính), STAR purple (giữa Tia Sáng-Vinh Quang), DAILY blue (calendar metaphor).</div>
+    </div>
+    
+    <div class="annotation-item">
+      <div class="annotation-key">Entry pattern</div>
+      <div class="annotation-value">Compact row: <code>icon · title + meta · XP + chevron</code>. Click anywhere → expand breakdown. STAR/DAILY không expand vì chỉ 1 số (+30/+50 flat) — không có chevron.</div>
+    </div>
+    
+    <div class="annotation-item">
+      <div class="annotation-key">XP color = green #4ade80</div>
+      <div class="annotation-value">Cộng điểm = positive, dùng green như success state. KHÔNG dùng gold để tránh confusion với section header / accent links.</div>
+    </div>
+    
+    <div class="annotation-item">
+      <div class="annotation-key">Total trong breakdown = gold gradient</div>
+      <div class="annotation-value">Tổng cộng được nhấn mạnh bằng gold gradient text giống QuizResults pattern hiện tại (đồng bộ visual).</div>
+    </div>
+    
+    <div class="annotation-item">
+      <div class="annotation-key">Scope note (blue info banner)</div>
+      <div class="annotation-value">Quan trọng để set expectation. User chơi Multiplayer thắng nhưng không thấy entry → confused. Banner clarify ngay từ đầu.</div>
+    </div>
+    
+    <div class="annotation-item">
+      <div class="annotation-key">Start date banner (gold)</div>
+      <div class="annotation-value">"Ship from now on" approach — KHÔNG backfill historical. Banner explain rõ user không cần lo "tại sao thiếu lịch sử cũ".</div>
+    </div>
+    
+    <div class="annotation-item">
+      <div class="annotation-key">"Xem tất cả" link</div>
+      <div class="annotation-value">Section trong Profile chỉ show ~5 entries gần nhất. Click → mở full page <code>/profile/xp-history</code> với pagination đầy đủ. (Optional — có thể defer, chỉ inline pagination.)</div>
+    </div>
+    
+    <div class="annotation-item">
+      <div class="annotation-key">Drill-down "Xem chi tiết từng câu"</div>
+      <div class="annotation-value">Chỉ trên RANKED entries (expanded). Link tới <code>/review/:sessionId</code> — extend Review page với <code>pointsEarned</code> per answer (Commit 7 trong prompt).</div>
+    </div>
+    
+    <div class="annotation-item">
+      <div class="annotation-key">Tier multiplier hiện ×1.0?</div>
+      <div class="annotation-value">User Tier 1 (Tân Tín Hữu) → multiplier ×1.0. Vẫn show row để user thấy "đây là cái tôi sẽ unlock khi lên tier" — motivation. Nếu confusing, có thể hide khi ×1.0.</div>
+    </div>
+    
+  </div>
+  
+</div>
+
+<!-- ============ STATE 2: MOBILE VIEW ============ -->
+<div class="state-divider">
+  <h2>State 2 · Mobile</h2>
+  <span>~380px viewport · same content compacted</span>
+</div>
+
+<div class="mobile-frame">
+  <div class="section-card">
+    
+    <div class="section-header">
+      <div class="section-header-left">
+        <span class="material-symbols-outlined section-header-icon">history</span>
+        <span class="section-header-title">Lịch Sử XP</span>
+      </div>
+      <a href="#" class="section-header-link">Xem tất cả →</a>
+    </div>
+    
+    <div class="start-date-banner">
+      <span class="material-symbols-outlined">flag</span>
+      <span>Bắt đầu từ <strong>01/05/2026</strong></span>
+    </div>
+    
+    <div class="scope-note">
+      <span class="material-symbols-outlined">info</span>
+      <div class="scope-note-text">
+        Chỉ Xếp hạng, Thử thách hàng ngày, và lên Star được ghi nhận.
+      </div>
+    </div>
+    
+    <!-- Entry 1: RANKED expanded -->
+    <div class="xp-entry expanded">
+      <div class="xp-entry-summary has-chevron">
+        <div class="xp-source-icon ranked">
+          <span class="material-symbols-outlined">trophy</span>
+        </div>
+        <div class="xp-entry-body">
+          <div class="xp-entry-title">Xếp hạng — Sáng Thế Ký</div>
+          <div class="xp-entry-meta">
+            8/10 · 80% · 14:23
+          </div>
+        </div>
+        <div class="xp-entry-right">
+          <div class="xp-amount">+127</div>
+          <span class="material-symbols-outlined xp-chevron">expand_more</span>
+        </div>
+      </div>
+      
+      <div class="xp-breakdown">
+        <div class="breakdown-row">
+          <span class="breakdown-label">Điểm cơ bản</span>
+          <span class="breakdown-value">72</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">
+            <span class="material-symbols-outlined">bolt</span>
+            Bonus tốc độ
+          </span>
+          <span class="breakdown-value bonus">+28</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">
+            <span class="material-symbols-outlined">local_fire_department</span>
+            Combo (×1.2)
+          </span>
+          <span class="breakdown-value bonus">+18</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">
+            <span class="material-symbols-outlined">military_tech</span>
+            Tier
+          </span>
+          <span class="breakdown-value multiplier">×1.0</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-label">
+            <span class="material-symbols-outlined">wb_sunny</span>
+            Câu đầu ngày
+          </span>
+          <span class="breakdown-value bonus">+9</span>
+        </div>
+        
+        <div class="breakdown-total">
+          <span class="breakdown-label">Tổng</span>
+          <span class="breakdown-value">127 XP</span>
+        </div>
+        
+        <div class="breakdown-action">
+          <a href="#">
+            Xem từng câu
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Entry 2: STAR -->
+    <div class="xp-entry">
+      <div class="xp-entry-summary">
+        <div class="xp-source-icon star">
+          <span class="material-symbols-outlined">stars</span>
+        </div>
+        <div class="xp-entry-body">
+          <div class="xp-entry-title">Lên Star 3 — Tân Tín Hữu</div>
+          <div class="xp-entry-meta">14:18 hôm nay</div>
+        </div>
+        <div class="xp-entry-right">
+          <div class="xp-amount">+30</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Entry 3: DAILY -->
+    <div class="xp-entry">
+      <div class="xp-entry-summary">
+        <div class="xp-source-icon daily">
+          <span class="material-symbols-outlined">calendar_month</span>
+        </div>
+        <div class="xp-entry-body">
+          <div class="xp-entry-title">Thử thách hàng ngày</div>
+          <div class="xp-entry-meta">4/5 · Hôm qua</div>
+        </div>
+        <div class="xp-entry-right">
+          <div class="xp-amount">+50</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Entry 4: RANKED collapsed -->
+    <div class="xp-entry">
+      <div class="xp-entry-summary has-chevron">
+        <div class="xp-source-icon ranked">
+          <span class="material-symbols-outlined">trophy</span>
+        </div>
+        <div class="xp-entry-body">
+          <div class="xp-entry-title">Xếp hạng — Xuất Hành</div>
+          <div class="xp-entry-meta">6/10 · 60% · 2 ngày</div>
+        </div>
+        <div class="xp-entry-right">
+          <div class="xp-amount">+88</div>
+          <span class="material-symbols-outlined xp-chevron">expand_more</span>
+        </div>
+      </div>
+    </div>
+    
+    <button class="load-more">
+      <span class="material-symbols-outlined">refresh</span>
+      Tải thêm (12)
+    </button>
+    
+  </div>
+</div>
+
+
+<!-- ============ STATE 3: EMPTY STATE ============ -->
+<div class="state-divider">
+  <h2>State 3 · Empty (user mới, chưa có XP event)</h2>
+  <span>Hiển thị khi user totalCount = 0</span>
+</div>
+
+<div class="layout-grid">
+  
+  <div class="profile-content">
+    <div class="section-card">
+      
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="material-symbols-outlined section-header-icon">history</span>
+          <span class="section-header-title">Lịch Sử XP</span>
+        </div>
+      </div>
+      
+      <div class="empty-state">
+        <div class="empty-icon">
+          <span class="material-symbols-outlined">history_toggle_off</span>
+        </div>
+        <div class="empty-title">Chưa có lịch sử XP</div>
+        <div class="empty-desc">
+          Bắt đầu chơi <strong>Xếp hạng</strong> hoặc <strong>Thử thách hàng ngày</strong> 
+          để xem cách điểm được tính và cộng vào tổng XP của bạn.
+        </div>
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+          <a class="empty-cta" href="#">
+            <span class="material-symbols-outlined">trophy</span>
+            Bắt đầu Xếp hạng
+          </a>
+          <a class="empty-cta" href="#" style="background: rgba(50,52,64,0.6); border: 1px solid rgba(232,168,50,0.3); color: #e8a832;">
+            <span class="material-symbols-outlined">calendar_month</span>
+            Thử thách hôm nay
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div class="annotations">
+    <h3>
+      <span class="material-symbols-outlined">notes</span>
+      Empty state notes
+    </h3>
+    
+    <div class="annotation-item">
+      <div class="annotation-key">Trigger</div>
+      <div class="annotation-value">Hiển thị khi <code>GET /api/me/xp-history</code> trả <code>totalCount = 0</code>. KHÔNG hiển thị scope note + start date banner trong empty state — giảm clutter.</div>
+    </div>
+    
+    <div class="annotation-item">
+      <div class="annotation-key">2 CTAs</div>
+      <div class="annotation-value">Primary (gold) → Ranked vì là main XP source. Secondary (outline) → Daily vì +50 quick win cho user mới. Cả 2 đều có icon match source type.</div>
+    </div>
+    
+    <div class="annotation-item">
+      <div class="annotation-key">Icon = history_toggle_off</div>
+      <div class="annotation-value">Material symbol có ý "lịch sử rỗng/chưa bắt đầu". Tone friendly, không alarming.</div>
+    </div>
+    
+    <div class="annotation-item">
+      <div class="annotation-key">Tone</div>
+      <div class="annotation-value">"Bắt đầu... <strong>để xem cách điểm được tính</strong>" — emphasize transparency value, không chỉ "chơi đi". Match purpose của feature (verify scoring).</div>
+    </div>
+    
+  </div>
+  
+</div>
+
+
+<!-- ============ STATE 4: PARTIAL STATE — chỉ có DAILY/STAR, chưa có RANKED ============ -->
+<div class="state-divider">
+  <h2>State 4 · Edge case — User chỉ chơi Daily Challenge (không Ranked)</h2>
+  <span>Verify UI hoạt động khi không có RANKED entry</span>
+</div>
+
+<div class="mobile-frame">
+  <div class="section-card">
+    
+    <div class="section-header">
+      <div class="section-header-left">
+        <span class="material-symbols-outlined section-header-icon">history</span>
+        <span class="section-header-title">Lịch Sử XP</span>
+      </div>
+    </div>
+    
+    <div class="scope-note">
+      <span class="material-symbols-outlined">info</span>
+      <div class="scope-note-text">
+        Bạn có thể nhận thêm XP bằng cách chơi <strong>Xếp hạng</strong>.
+      </div>
+    </div>
+    
+    <div class="xp-entry">
+      <div class="xp-entry-summary">
+        <div class="xp-source-icon daily">
+          <span class="material-symbols-outlined">calendar_month</span>
+        </div>
+        <div class="xp-entry-body">
+          <div class="xp-entry-title">Thử thách hàng ngày</div>
+          <div class="xp-entry-meta">5/5 · Hôm nay, 08:30</div>
+        </div>
+        <div class="xp-entry-right">
+          <div class="xp-amount">+50</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="xp-entry">
+      <div class="xp-entry-summary">
+        <div class="xp-source-icon daily">
+          <span class="material-symbols-outlined">calendar_month</span>
+        </div>
+        <div class="xp-entry-body">
+          <div class="xp-entry-title">Thử thách hàng ngày</div>
+          <div class="xp-entry-meta">4/5 · Hôm qua</div>
+        </div>
+        <div class="xp-entry-right">
+          <div class="xp-amount">+50</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="xp-entry">
+      <div class="xp-entry-summary">
+        <div class="xp-source-icon daily">
+          <span class="material-symbols-outlined">calendar_month</span>
+        </div>
+        <div class="xp-entry-body">
+          <div class="xp-entry-title">Thử thách hàng ngày</div>
+          <div class="xp-entry-meta">5/5 · 2 ngày trước</div>
+        </div>
+        <div class="xp-entry-right">
+          <div class="xp-amount">+50</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+<script>
+  // Demo: click expand on entries with chevron
+  document.querySelectorAll('.xp-entry-summary.has-chevron').forEach(summary => {
+    summary.addEventListener('click', () => {
+      const entry = summary.closest('.xp-entry');
+      // Only the 4th entry (collapsed RANKED) is expandable in demo
+      // 1st is already expanded
+      if (!entry.querySelector('.xp-breakdown')) {
+        // Would normally fetch+show breakdown
+        return;
+      }
+      entry.classList.toggle('expanded');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup — Quiz Gameplay & Results</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Be Vietnam Pro', sans-serif; background: #0a0c14; color: #e5e7eb; }
+  .font-display { font-family: 'Sora', sans-serif; }
+
+  .glass {
+    background: rgba(50,52,64,0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .glass-strong {
+    background: rgba(50,52,64,0.78);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(232,168,50,0.15);
+  }
+
+  .phone {
+    width: 390px;
+    height: 780px;
+    border-radius: 44px;
+    background: #11131e;
+    border: 8px solid #1c1f2c;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+  .phone::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 28px;
+    border-radius: 14px;
+    background: #0a0c14;
+    z-index: 50;
+  }
+
+  /* Animations */
+  @keyframes flashGreen {
+    0%, 100% { background-color: transparent; }
+    20%      { background-color: rgba(74,222,128,0.15); }
+  }
+  @keyframes flashRed {
+    0%, 100% { background-color: transparent; }
+    20%      { background-color: rgba(239,68,68,0.18); }
+  }
+  @keyframes scoreFloat {
+    0%   { transform: translateY(0) scale(0.7); opacity: 0; }
+    20%  { transform: translateY(-10px) scale(1.2); opacity: 1; }
+    80%  { transform: translateY(-60px) scale(1); opacity: 1; }
+    100% { transform: translateY(-100px) scale(0.9); opacity: 0; }
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25%      { transform: translateX(-6px); }
+    75%      { transform: translateX(6px); }
+  }
+  @keyframes glowGreen {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+    50%      { box-shadow: 0 0 30px 4px rgba(74,222,128,0.4); }
+  }
+  @keyframes glowRed {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+    50%      { box-shadow: 0 0 24px 2px rgba(239,68,68,0.35); }
+  }
+  @keyframes panelSlideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes comboSlide {
+    0%   { transform: translateY(-100%) scale(0.8); opacity: 0; }
+    20%  { transform: translateY(0) scale(1.1); opacity: 1; }
+    35%  { transform: translateY(0) scale(1); }
+    85%  { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-30%) scale(0.9); opacity: 0; }
+  }
+  @keyframes podiumRise {
+    from { transform: translateY(40px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes confettiFall {
+    0%   { transform: translateY(-50px) rotate(0); opacity: 1; }
+    100% { transform: translateY(800px) rotate(720deg); opacity: 0; }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 40px rgba(232,168,50,0.4); }
+    50%      { box-shadow: 0 0 80px rgba(232,168,50,0.7); }
+  }
+  @keyframes pulseRed {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.05); }
+  }
+  @keyframes spin {
+    from { transform: rotate(0); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .flash-green { animation: flashGreen 0.6s ease-out; }
+  .flash-red   { animation: flashRed 0.6s ease-out; }
+  .score-float { animation: scoreFloat 2s ease-out forwards; }
+  .shake       { animation: shake 0.4s ease-out; }
+  .glow-green  { animation: glowGreen 1.4s ease-in-out infinite; }
+  .glow-red    { animation: glowRed 1s ease-in-out 2; }
+  .panel-slide { animation: panelSlideUp 0.45s cubic-bezier(0.34,1.56,0.64,1); }
+  .combo-slide { animation: comboSlide 2.4s ease-in-out forwards; }
+  .podium-rise { animation: podiumRise 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+  .fade-in     { animation: fadeIn 0.4s ease-out backwards; }
+  .pulse-glow  { animation: pulseGlow 1.5s ease-in-out infinite; }
+  .pulse-red   { animation: pulseRed 1s ease-in-out infinite; }
+  .spin-slow   { animation: spin 1.4s linear infinite; }
+
+  .confetti-piece {
+    position: absolute;
+    width: 8px;
+    height: 14px;
+    top: -20px;
+    animation: confettiFall 2s ease-in forwards;
+  }
+
+  .state-btn { transition: all 0.2s; }
+  .state-btn.active {
+    background: linear-gradient(135deg, #e8a832 0%, #d4941f 100%);
+    color: #11131e;
+    box-shadow: 0 0 20px rgba(232,168,50,0.4);
+  }
+
+  .gold-grad { background: linear-gradient(135deg, #e8a832 0%, #f4c560 50%, #e8a832 100%); }
+  .gold-text-grad {
+    background: linear-gradient(135deg, #f4c560 0%, #e8a832 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .green-grad { background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%); }
+  .red-grad   { background: linear-gradient(135deg, #f87171 0%, #ef4444 100%); }
+  .combo-grad { background: linear-gradient(135deg, #ff7a59 0%, #e8a832 50%, #ff7a59 100%); }
+</style>
+</head>
+<body class="min-h-screen">
+
+<div class="max-w-[1400px] mx-auto px-6 py-10">
+
+  <!-- Header -->
+  <div class="mb-8">
+    <div class="flex items-center gap-3 mb-2">
+      <span class="px-2.5 py-1 rounded-md bg-[#e8a832]/15 text-[#e8a832] text-xs font-semibold tracking-wide uppercase">Mockup · Sprint 2</span>
+      <span class="text-xs text-gray-500">Multiplayer Speed Race</span>
+    </div>
+    <h1 class="text-3xl font-bold font-display text-white">Quiz Gameplay & Results</h1>
+    <p class="text-gray-400 text-sm mt-2 max-w-2xl">
+      Reveal states sau khi user trả lời, combo banner, và quiz end
+      (<span class="text-[#e8a832] font-semibold">phân biệt host vs player</span>).
+      Mỗi state có sound + haptic indicator để dễ wire vào <code class="text-[#e8a832]">soundManager.ts</code>.
+    </p>
+  </div>
+
+  <!-- State toggles -->
+  <div class="glass rounded-2xl p-4 mb-8">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Trạng thái</span>
+      <div class="h-px flex-1 bg-white/5"></div>
+      <span id="time-stamp" class="text-xs font-mono text-[#e8a832]">câu 5 / 15</span>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <button onclick="setState('optimistic')" class="state-btn active px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/5 text-gray-300 hover:bg-white/10" data-state="optimistic">
+        ① Đã chọn (chờ)
+      </button>
+      <button onclick="setState('correct')" class="state-btn px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/5 text-gray-300 hover:bg-white/10" data-state="correct">
+        ② Đúng
+      </button>
+      <button onclick="setState('combo')" class="state-btn px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/5 text-gray-300 hover:bg-white/10" data-state="combo">
+        ③ Đúng + Combo 5
+      </button>
+      <button onclick="setState('wrong')" class="state-btn px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/5 text-gray-300 hover:bg-white/10" data-state="wrong">
+        ④ Sai + Giải thích
+      </button>
+      <button onclick="setState('end-host')" class="state-btn px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/5 text-gray-300 hover:bg-white/10" data-state="end-host">
+        ⑤ Kết thúc · HOST
+      </button>
+      <button onclick="setState('end-player')" class="state-btn px-3.5 py-2 rounded-lg text-sm font-semibold bg-white/5 text-gray-300 hover:bg-white/10" data-state="end-player">
+        ⑥ Kết thúc · PLAYER
+      </button>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-10">
+
+    <!-- Phone -->
+    <div class="flex justify-center">
+      <div class="phone">
+
+        <!-- ============================== -->
+        <!-- STATE 1: OPTIMISTIC (selected, waiting for others) -->
+        <!-- ============================== -->
+        <div id="state-optimistic" class="state-panel absolute inset-0 bg-[#11131e]">
+          <!-- Status bar -->
+          <div class="h-11 flex items-center justify-between px-7 pt-2 text-xs text-white/80 font-semibold">
+            <span>9:41</span><span class="flex gap-1"><span>📶</span><span>🔋</span></span>
+          </div>
+
+          <!-- Header -->
+          <div class="px-5 py-3 flex items-center justify-between">
+            <div class="glass rounded-full px-3 py-1.5 flex items-center gap-2">
+              <span class="text-xs">⚡</span>
+              <span class="text-xs font-semibold text-white">Câu 5 / 15</span>
+            </div>
+            <div class="relative w-12 h-12">
+              <svg class="w-12 h-12 -rotate-90" viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="20" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="4"/>
+                <circle cx="24" cy="24" r="20" fill="none" stroke="#e8a832" stroke-width="4" stroke-linecap="round" stroke-dasharray="125.6" stroke-dashoffset="50"/>
+              </svg>
+              <div class="absolute inset-0 flex items-center justify-center font-display font-bold text-base text-white">18</div>
+            </div>
+            <button class="w-9 h-9 rounded-full glass flex items-center justify-center text-gray-400">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+            </button>
+          </div>
+
+          <!-- Live scoreboard -->
+          <div class="px-5 mt-1">
+            <div class="flex items-center gap-2 overflow-x-auto pb-1">
+              <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5 border border-[#e8a832]/30">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-[#e8a832] to-[#d4941f] flex items-center justify-center text-[10px] font-bold text-[#11131e]">B</div>
+                <span class="text-xs font-semibold text-white">42</span>
+                <span class="text-[10px] text-emerald-400">✓</span>
+              </div>
+              <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-[10px] font-bold text-white">A</div>
+                <span class="text-xs font-semibold text-white">38</span>
+                <span class="text-[10px] text-emerald-400">✓</span>
+              </div>
+              <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5 opacity-60">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-[10px] font-bold text-white">C</div>
+                <span class="text-xs font-semibold text-white">35</span>
+                <div class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question -->
+          <div class="px-5 mt-5">
+            <div class="text-xs text-[#e8a832] font-semibold mb-2 uppercase tracking-wider">📖 Sáng Thế Ký 1</div>
+            <h2 class="text-xl font-display font-bold text-white leading-snug">
+              Trong sáu ngày sáng tạo, Đức Chúa Trời tạo dựng điều gì vào ngày thứ tư?
+            </h2>
+          </div>
+
+          <!-- Options - C is selected (gold border) -->
+          <div class="px-5 mt-6 space-y-2.5">
+            <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left border border-transparent opacity-40">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(255,122,89,0.15); color: #ff7a59;">A</div>
+              <span class="text-sm text-white">Trời và đất</span>
+            </button>
+            <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left border border-transparent opacity-40">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(78,168,222,0.15); color: #4ea8de;">B</div>
+              <span class="text-sm text-white">Cây cối và thực vật</span>
+            </button>
+            <button class="w-full glass-strong rounded-xl p-3.5 flex items-center gap-3 text-left border-2" style="border-color: #e8a832;">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(232,168,50,0.25); color: #e8a832;">C</div>
+              <span class="text-sm text-white font-semibold">Mặt trời, mặt trăng và các vì sao</span>
+              <div class="ml-auto flex items-center gap-1.5">
+                <span class="text-[10px] text-[#e8a832] font-bold">ĐÃ CHỌN</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8a832"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </div>
+            </button>
+            <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left border border-transparent opacity-40">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(134,184,160,0.15); color: #86b8a0;">D</div>
+              <span class="text-sm text-white">Con người</span>
+            </button>
+          </div>
+
+          <!-- Waiting indicator -->
+          <div class="absolute bottom-0 left-0 right-0 p-4">
+            <div class="glass-strong rounded-xl p-3 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full border-2 border-[#e8a832] border-t-transparent spin-slow"></div>
+              <div class="flex-1">
+                <div class="text-sm font-semibold text-white">Đang chờ 1 người nữa...</div>
+                <div class="text-xs text-gray-400">Chi đang chọn</div>
+              </div>
+              <div class="flex gap-1">
+                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-[10px] font-bold text-white border-2 border-[#11131e]">A</div>
+                <div class="w-6 h-6 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-[10px] font-bold text-white border-2 border-[#11131e] -ml-1">C</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================== -->
+        <!-- STATE 2: CORRECT REVEAL -->
+        <!-- ============================== -->
+        <div id="state-correct" class="state-panel absolute inset-0 bg-[#11131e] hidden flash-green">
+          <div class="h-11 flex items-center justify-between px-7 pt-2 text-xs text-white/80 font-semibold">
+            <span>9:41</span><span class="flex gap-1"><span>📶</span><span>🔋</span></span>
+          </div>
+
+          <div class="px-5 py-3 flex items-center justify-between">
+            <div class="glass rounded-full px-3 py-1.5 flex items-center gap-2">
+              <span class="text-xs">⚡</span>
+              <span class="text-xs font-semibold text-white">Câu 5 / 15</span>
+            </div>
+            <div class="px-3 py-1.5 rounded-full green-grad font-display font-extrabold text-sm text-white">
+              ĐÚNG!
+            </div>
+            <button class="w-9 h-9 rounded-full glass flex items-center justify-center text-gray-400">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+            </button>
+          </div>
+
+          <!-- Updated scoreboard - B (you) jumped -->
+          <div class="px-5 mt-1">
+            <div class="flex items-center gap-2 overflow-x-auto pb-1">
+              <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5 border-2 border-[#e8a832]">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-[#e8a832] to-[#d4941f] flex items-center justify-center text-[10px] font-bold text-[#11131e]">B</div>
+                <span class="text-xs font-semibold text-white">60</span>
+                <span class="text-[10px] text-emerald-400 font-bold">+18</span>
+              </div>
+              <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-[10px] font-bold text-white">A</div>
+                <span class="text-xs font-semibold text-white">52</span>
+                <span class="text-[10px] text-emerald-400 font-bold">+14</span>
+              </div>
+              <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-[10px] font-bold text-white">C</div>
+                <span class="text-xs font-semibold text-white">35</span>
+                <span class="text-[10px] text-red-400">+0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 mt-5">
+            <div class="text-xs text-[#e8a832] font-semibold mb-2 uppercase tracking-wider">📖 Sáng Thế Ký 1:14-19</div>
+            <h2 class="text-xl font-display font-bold text-white leading-snug">
+              Trong sáu ngày sáng tạo, Đức Chúa Trời tạo dựng điều gì vào ngày thứ tư?
+            </h2>
+          </div>
+
+          <!-- Options: C green glow + check, others dimmed -->
+          <div class="px-5 mt-6 space-y-2.5">
+            <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left border border-transparent opacity-30">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(255,122,89,0.15); color: #ff7a59;">A</div>
+              <span class="text-sm text-white">Trời và đất</span>
+            </button>
+            <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left border border-transparent opacity-30">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(78,168,222,0.15); color: #4ea8de;">B</div>
+              <span class="text-sm text-white">Cây cối và thực vật</span>
+            </button>
+            <button class="w-full rounded-xl p-3.5 flex items-center gap-3 text-left border-2 glow-green relative" style="background: rgba(74,222,128,0.18); border-color: #4ade80;">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm green-grad text-white">C</div>
+              <span class="text-sm text-white font-semibold">Mặt trời, mặt trăng và các vì sao</span>
+              <div class="ml-auto">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#4ade80"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </div>
+              <!-- Score float -->
+              <div class="absolute -top-2 right-2 score-float">
+                <span class="font-display font-extrabold text-xl text-emerald-400" style="text-shadow: 0 0 10px rgba(74,222,128,0.6);">+18</span>
+              </div>
+            </button>
+            <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left border border-transparent opacity-30">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(134,184,160,0.15); color: #86b8a0;">D</div>
+              <span class="text-sm text-white">Con người</span>
+            </button>
+          </div>
+
+          <!-- Stats card -->
+          <div class="absolute bottom-16 left-0 right-0 px-5 fade-in" style="animation-delay: 0.3s;">
+            <div class="glass-strong rounded-xl p-3 flex items-center justify-around text-center">
+              <div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-wider">Thời gian</div>
+                <div class="font-display font-bold text-white text-sm">2.4s</div>
+              </div>
+              <div class="w-px h-8 bg-white/10"></div>
+              <div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-wider">Tốc độ</div>
+                <div class="font-display font-bold text-emerald-400 text-sm">⚡ Nhanh</div>
+              </div>
+              <div class="w-px h-8 bg-white/10"></div>
+              <div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-wider">Hạng</div>
+                <div class="font-display font-bold text-[#e8a832] text-sm">↑ #1</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Auto advance bar -->
+          <div class="absolute bottom-0 left-0 right-0 p-3">
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+              <div class="flex-1 h-1 rounded-full bg-white/5 overflow-hidden">
+                <div class="h-full green-grad" style="width: 60%;"></div>
+              </div>
+              <span>Câu 6 sau 1.2s</span>
+            </div>
+          </div>
+
+          <!-- FX -->
+          <div class="absolute top-14 right-4 flex flex-col gap-1.5">
+            <div class="glass rounded-full px-2.5 py-1 flex items-center gap-1.5">
+              <span class="text-xs">🔊</span>
+              <span class="text-[10px] font-semibold text-emerald-400">correct.mp3</span>
+            </div>
+            <div class="glass rounded-full px-2.5 py-1 flex items-center gap-1.5">
+              <span class="text-xs">📳</span>
+              <span class="text-[10px] font-semibold text-emerald-400">light</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================== -->
+        <!-- STATE 3: CORRECT + COMBO 5 -->
+        <!-- ============================== -->
+        <div id="state-combo" class="state-panel absolute inset-0 bg-[#11131e] hidden flash-green">
+          <div class="h-11 flex items-center justify-between px-7 pt-2 text-xs text-white/80 font-semibold">
+            <span>9:41</span><span class="flex gap-1"><span>📶</span><span>🔋</span></span>
+          </div>
+
+          <div class="px-5 py-3 flex items-center justify-between">
+            <div class="glass rounded-full px-3 py-1.5 flex items-center gap-2">
+              <span class="text-xs">⚡</span>
+              <span class="text-xs font-semibold text-white">Câu 5 / 15</span>
+            </div>
+            <div class="px-3 py-1.5 rounded-full green-grad font-display font-extrabold text-sm text-white">
+              ĐÚNG!
+            </div>
+            <button class="w-9 h-9 rounded-full glass flex items-center justify-center text-gray-400">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+            </button>
+          </div>
+
+          <!-- COMBO BANNER slides down from top -->
+          <div class="absolute top-20 left-0 right-0 px-5 z-20 combo-slide">
+            <div class="rounded-2xl p-4 combo-grad flex items-center gap-3 shadow-2xl" style="box-shadow: 0 10px 60px rgba(232,168,50,0.5);">
+              <div class="text-4xl">🔥</div>
+              <div class="flex-1">
+                <div class="font-display font-black text-2xl text-white" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">COMBO ×5!</div>
+                <div class="text-xs font-semibold text-white/95">5 câu đúng liên tiếp · điểm ×1.2</div>
+              </div>
+              <div class="text-right">
+                <div class="font-display font-black text-2xl text-white" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">+22</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 mt-1">
+            <div class="flex items-center gap-2 overflow-x-auto pb-1">
+              <div class="rounded-full px-2.5 py-1.5 flex items-center gap-1.5 border-2 border-[#e8a832] pulse-red" style="background: rgba(255,122,89,0.15);">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-[#e8a832] to-[#d4941f] flex items-center justify-center text-[10px] font-bold text-[#11131e]">B</div>
+                <span class="text-xs font-bold text-white">82</span>
+                <span class="text-[10px] text-orange-400">🔥</span>
+              </div>
+              <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-[10px] font-bold text-white">A</div>
+                <span class="text-xs font-semibold text-white">52</span>
+              </div>
+              <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-[10px] font-bold text-white">C</div>
+                <span class="text-xs font-semibold text-white">35</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 mt-5 opacity-60">
+            <div class="text-xs text-[#e8a832] font-semibold mb-2 uppercase tracking-wider">📖 Sáng Thế Ký 1:14-19</div>
+            <h2 class="text-xl font-display font-bold text-white leading-snug">
+              Trong sáu ngày sáng tạo, Đức Chúa Trời tạo dựng điều gì vào ngày thứ tư?
+            </h2>
+          </div>
+
+          <div class="px-5 mt-6 space-y-2.5 opacity-90">
+            <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left opacity-30">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(255,122,89,0.15); color: #ff7a59;">A</div>
+              <span class="text-sm text-white">Trời và đất</span>
+            </button>
+            <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left opacity-30">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(78,168,222,0.15); color: #4ea8de;">B</div>
+              <span class="text-sm text-white">Cây cối và thực vật</span>
+            </button>
+            <button class="w-full rounded-xl p-3.5 flex items-center gap-3 text-left border-2 glow-green" style="background: rgba(74,222,128,0.18); border-color: #4ade80;">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm green-grad text-white">C</div>
+              <span class="text-sm text-white font-semibold">Mặt trời, mặt trăng và các vì sao</span>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#4ade80" class="ml-auto"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </button>
+            <button class="w-full glass rounded-xl p-3.5 flex items-center gap-3 text-left opacity-30">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(134,184,160,0.15); color: #86b8a0;">D</div>
+              <span class="text-sm text-white">Con người</span>
+            </button>
+          </div>
+
+          <div class="absolute bottom-0 left-0 right-0 p-3">
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+              <div class="flex-1 h-1 rounded-full bg-white/5 overflow-hidden">
+                <div class="h-full green-grad" style="width: 60%;"></div>
+              </div>
+              <span>Câu 6 sau 1.2s</span>
+            </div>
+          </div>
+
+          <div class="absolute top-14 right-4 flex flex-col gap-1.5">
+            <div class="glass rounded-full px-2.5 py-1 flex items-center gap-1.5">
+              <span class="text-xs">🔊</span>
+              <span class="text-[10px] font-semibold text-orange-400">combo5.mp3</span>
+            </div>
+            <div class="glass rounded-full px-2.5 py-1 flex items-center gap-1.5">
+              <span class="text-xs">📳</span>
+              <span class="text-[10px] font-semibold text-orange-400">medium</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================== -->
+        <!-- STATE 4: WRONG + EXPLANATION -->
+        <!-- ============================== -->
+        <div id="state-wrong" class="state-panel absolute inset-0 bg-[#11131e] hidden flash-red">
+          <div class="h-11 flex items-center justify-between px-7 pt-2 text-xs text-white/80 font-semibold">
+            <span>9:41</span><span class="flex gap-1"><span>📶</span><span>🔋</span></span>
+          </div>
+
+          <div class="px-5 py-3 flex items-center justify-between">
+            <div class="glass rounded-full px-3 py-1.5 flex items-center gap-2">
+              <span class="text-xs">⚡</span>
+              <span class="text-xs font-semibold text-white">Câu 5 / 15</span>
+            </div>
+            <div class="px-3 py-1.5 rounded-full red-grad font-display font-extrabold text-sm text-white">
+              SAI
+            </div>
+            <button class="w-9 h-9 rounded-full glass flex items-center justify-center text-gray-400">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+            </button>
+          </div>
+
+          <!-- Scoreboard - B (you) didn't gain -->
+          <div class="px-5 mt-1">
+            <div class="flex items-center gap-2 overflow-x-auto pb-1">
+              <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5 border-2 border-red-400/40">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-[#e8a832] to-[#d4941f] flex items-center justify-center text-[10px] font-bold text-[#11131e]">B</div>
+                <span class="text-xs font-semibold text-white">42</span>
+                <span class="text-[10px] text-red-400">+0</span>
+              </div>
+              <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5 border border-emerald-400/30">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-[10px] font-bold text-white">A</div>
+                <span class="text-xs font-semibold text-white">52</span>
+                <span class="text-[10px] text-emerald-400 font-bold">+14</span>
+              </div>
+              <div class="glass rounded-full px-2.5 py-1.5 flex items-center gap-1.5">
+                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-[10px] font-bold text-white">C</div>
+                <span class="text-xs font-semibold text-white">47</span>
+                <span class="text-[10px] text-emerald-400 font-bold">+12</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 mt-5">
+            <div class="text-xs text-[#e8a832] font-semibold mb-2 uppercase tracking-wider">📖 Sáng Thế Ký 1:14-19</div>
+            <h2 class="text-base font-display font-bold text-white leading-snug">
+              Trong sáu ngày sáng tạo, Đức Chúa Trời tạo dựng điều gì vào ngày thứ tư?
+            </h2>
+          </div>
+
+          <!-- Options: A is wrong (user picked, red), C is correct (green) -->
+          <div class="px-5 mt-4 space-y-2 shake">
+            <button class="w-full rounded-xl p-3 flex items-center gap-3 text-left border-2" style="background: rgba(239,68,68,0.15); border-color: #ef4444;">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm red-grad text-white">A</div>
+              <span class="text-xs text-white font-semibold">Trời và đất</span>
+              <div class="ml-auto flex items-center gap-1">
+                <span class="text-[9px] text-red-400 font-bold">BẠN CHỌN</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#ef4444"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </div>
+            </button>
+            <button class="w-full glass rounded-xl p-3 flex items-center gap-3 text-left opacity-30">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(78,168,222,0.15); color: #4ea8de;">B</div>
+              <span class="text-xs text-white">Cây cối và thực vật</span>
+            </button>
+            <button class="w-full rounded-xl p-3 flex items-center gap-3 text-left border-2 glow-green" style="background: rgba(74,222,128,0.18); border-color: #4ade80;">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm green-grad text-white">C</div>
+              <span class="text-xs text-white font-semibold">Mặt trời, mặt trăng và các vì sao</span>
+              <div class="ml-auto flex items-center gap-1">
+                <span class="text-[9px] text-emerald-400 font-bold">ĐÁP ÁN</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#4ade80"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </div>
+            </button>
+            <button class="w-full glass rounded-xl p-3 flex items-center gap-3 text-left opacity-30">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-sm" style="background: rgba(134,184,160,0.15); color: #86b8a0;">D</div>
+              <span class="text-xs text-white">Con người</span>
+            </button>
+          </div>
+
+          <!-- Explanation panel slide up -->
+          <div class="absolute bottom-0 left-0 right-0 panel-slide">
+            <div class="glass-strong rounded-t-3xl border-t border-x border-[#e8a832]/20 p-4 pb-6">
+              <div class="flex items-start gap-3 mb-3">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(232,168,50,0.15);">
+                  <span class="text-lg">💡</span>
+                </div>
+                <div class="flex-1">
+                  <div class="text-xs text-[#e8a832] font-bold mb-1 uppercase tracking-wider">Sáng Thế Ký 1:14-19</div>
+                  <p class="text-xs text-gray-200 leading-relaxed">
+                    Vào ngày thứ tư, Đức Chúa Trời tạo dựng các vì sáng trên bầu trời để phân biệt ngày và đêm, làm dấu hiệu cho thì tiết, ngày và năm. Ngài làm ra hai vì sáng lớn — mặt trời và mặt trăng — cùng các vì sao.
+                  </p>
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <button class="flex-1 py-2.5 rounded-xl glass border border-[#e8a832]/30 flex items-center justify-center gap-2 text-xs font-semibold text-[#e8a832]">
+                  <span>🔖</span>
+                  <span>Đánh dấu ôn lại</span>
+                </button>
+                <button class="px-4 py-2.5 rounded-xl gold-grad font-display font-bold text-xs text-[#11131e]">
+                  Tiếp tục →
+                </button>
+              </div>
+              <div class="mt-3 flex items-center gap-2 text-[10px] text-gray-500">
+                <div class="flex-1 h-1 rounded-full bg-white/5 overflow-hidden">
+                  <div class="h-full bg-[#e8a832]" style="width: 30%;"></div>
+                </div>
+                <span>Tự đóng sau 4s</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute top-14 right-4 flex flex-col gap-1.5">
+            <div class="glass rounded-full px-2.5 py-1 flex items-center gap-1.5">
+              <span class="text-xs">🔊</span>
+              <span class="text-[10px] font-semibold text-red-400">wrong.mp3</span>
+            </div>
+            <div class="glass rounded-full px-2.5 py-1 flex items-center gap-1.5">
+              <span class="text-xs">📳</span>
+              <span class="text-[10px] font-semibold text-red-400">heavy</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================== -->
+        <!-- STATE 5: QUIZ END - HOST -->
+        <!-- ============================== -->
+        <div id="state-end-host" class="state-panel absolute inset-0 hidden">
+          <!-- Bg gradient -->
+          <div class="absolute inset-0" style="background: radial-gradient(ellipse at top, rgba(232,168,50,0.25) 0%, #11131e 60%);"></div>
+          <!-- Confetti -->
+          <div id="confetti-host" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+
+          <div class="relative h-full flex flex-col">
+            <!-- Status bar -->
+            <div class="h-11 flex items-center justify-between px-7 pt-2 text-xs text-white/80 font-semibold flex-shrink-0">
+              <span>9:41</span><span class="flex gap-1"><span>📶</span><span>🔋</span></span>
+            </div>
+
+            <!-- Header -->
+            <div class="px-5 py-2 flex items-center justify-between flex-shrink-0">
+              <div class="glass rounded-full px-3 py-1 flex items-center gap-2">
+                <span class="text-[10px] font-bold text-[#e8a832] uppercase">👑 Host</span>
+                <span class="text-[10px] text-gray-400">·</span>
+                <span class="text-[10px] text-white">QZ8K2M</span>
+              </div>
+              <button class="w-8 h-8 rounded-full glass flex items-center justify-center text-gray-400">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+
+            <!-- Title -->
+            <div class="px-5 mt-2 text-center flex-shrink-0">
+              <div class="text-[10px] text-[#e8a832] font-bold uppercase tracking-[0.3em] mb-2">Speed Race kết thúc</div>
+              <div class="flex items-center justify-center gap-2.5">
+                <span class="text-2xl leading-none">🏆</span>
+                <h1 class="font-black text-2xl gold-text-grad tracking-tight" style="font-family: 'Be Vietnam Pro', sans-serif; line-height: 1.1;">Vinh quang!</h1>
+              </div>
+            </div>
+
+            <!-- Podium -->
+            <div class="px-5 mt-10 flex-shrink-0">
+              <div class="flex items-end justify-center gap-2 h-44">
+                <!-- 2nd place -->
+                <div class="flex-1 flex flex-col items-center podium-rise" style="animation-delay: 0.2s;">
+                  <div class="relative mb-2">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-base font-bold text-white border-2 border-[#11131e]">A</div>
+                  </div>
+                  <div class="text-xs font-semibold text-white">An</div>
+                  <div class="font-display font-bold text-[#9ca3af] text-sm">198đ</div>
+                  <div class="w-full mt-2 rounded-t-lg flex items-center justify-center font-display font-black text-2xl text-[#11131e]" style="height: 60px; background: linear-gradient(180deg, #e5e7eb 0%, #9ca3af 100%);">2</div>
+                </div>
+                <!-- 1st place -->
+                <div class="flex-1 flex flex-col items-center podium-rise relative" style="animation-delay: 0s;">
+                  <div class="text-xl mb-1.5 leading-none">👑</div>
+                  <div class="relative mb-2">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#e8a832] to-[#d4941f] flex items-center justify-center text-lg font-bold text-[#11131e] border-2 border-[#e8a832] pulse-glow">B</div>
+                  </div>
+                  <div class="text-sm font-bold text-white">Bui</div>
+                  <div class="font-display font-black text-[#e8a832] text-base">252đ</div>
+                  <div class="w-full mt-2 rounded-t-lg flex items-center justify-center font-display font-black text-3xl text-[#11131e]" style="height: 90px; background: linear-gradient(180deg, #f4c560 0%, #e8a832 100%); box-shadow: 0 -10px 40px rgba(232,168,50,0.5);">1</div>
+                </div>
+                <!-- 3rd place -->
+                <div class="flex-1 flex flex-col items-center podium-rise" style="animation-delay: 0.4s;">
+                  <div class="relative mb-2">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-base font-bold text-white border-2 border-[#11131e]">C</div>
+                  </div>
+                  <div class="text-xs font-semibold text-white">Chi</div>
+                  <div class="font-display font-bold text-[#cd7f32] text-sm">156đ</div>
+                  <div class="w-full mt-2 rounded-t-lg flex items-center justify-center font-display font-black text-2xl text-white" style="height: 45px; background: linear-gradient(180deg, #cd7f32 0%, #8b5a2b 100%);">3</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats summary -->
+            <div class="px-5 mt-5 flex-shrink-0 fade-in" style="animation-delay: 0.6s;">
+              <div class="glass rounded-xl p-3 grid grid-cols-3 text-center">
+                <div>
+                  <div class="text-[10px] text-gray-400 uppercase tracking-wider">Câu hỏi</div>
+                  <div class="font-display font-bold text-white text-sm">15</div>
+                </div>
+                <div class="border-x border-white/5">
+                  <div class="text-[10px] text-gray-400 uppercase tracking-wider">Thời gian</div>
+                  <div class="font-display font-bold text-white text-sm">7m 32s</div>
+                </div>
+                <div>
+                  <div class="text-[10px] text-gray-400 uppercase tracking-wider">Người chơi</div>
+                  <div class="font-display font-bold text-white text-sm">3</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Host actions -->
+            <div class="flex-1"></div>
+            <div class="p-4 flex-shrink-0 fade-in" style="animation-delay: 0.8s;">
+              <div class="glass-strong rounded-2xl p-3 mb-3">
+                <div class="text-[10px] font-bold text-[#e8a832] uppercase tracking-wider mb-2">👑 Lựa chọn của Host</div>
+                <div class="space-y-2">
+                  <button class="w-full py-3 rounded-xl gold-grad font-display font-bold text-sm text-[#11131e] flex items-center justify-center gap-2">
+                    <span>🔄</span>
+                    <span>Chơi lại với phòng này</span>
+                  </button>
+                  <div class="grid grid-cols-2 gap-2">
+                    <button class="py-2.5 rounded-xl glass border border-white/10 font-semibold text-xs text-white flex items-center justify-center gap-1.5">
+                      <span>📊</span>
+                      <span>Chi tiết</span>
+                    </button>
+                    <button class="py-2.5 rounded-xl glass border border-red-500/20 font-semibold text-xs text-red-400 flex items-center justify-center gap-1.5">
+                      <span>🚪</span>
+                      <span>Đóng phòng</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute top-14 right-4 flex flex-col gap-1.5 z-30">
+            <div class="glass rounded-full px-2.5 py-1 flex items-center gap-1.5">
+              <span class="text-xs">🔊</span>
+              <span class="text-[10px] font-semibold text-[#e8a832]">victory.mp3</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================== -->
+        <!-- STATE 6: QUIZ END - PLAYER -->
+        <!-- ============================== -->
+        <div id="state-end-player" class="state-panel absolute inset-0 hidden">
+          <div class="absolute inset-0" style="background: radial-gradient(ellipse at top, rgba(232,168,50,0.18) 0%, #11131e 60%);"></div>
+          <div id="confetti-player" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+
+          <div class="relative h-full flex flex-col">
+            <div class="h-11 flex items-center justify-between px-7 pt-2 text-xs text-white/80 font-semibold flex-shrink-0">
+              <span>9:41</span><span class="flex gap-1"><span>📶</span><span>🔋</span></span>
+            </div>
+
+            <div class="px-5 py-2 flex items-center justify-between flex-shrink-0">
+              <div class="glass rounded-full px-3 py-1 flex items-center gap-2">
+                <span class="text-[10px] font-semibold text-gray-400 uppercase">Người chơi</span>
+                <span class="text-[10px] text-gray-400">·</span>
+                <span class="text-[10px] text-white">QZ8K2M</span>
+              </div>
+              <button class="w-8 h-8 rounded-full glass flex items-center justify-center text-gray-400">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+
+            <!-- Personal result hero -->
+            <div class="px-5 mt-3 flex-shrink-0 fade-in">
+              <div class="glass-strong rounded-2xl p-4 border border-[#e8a832]/30 relative overflow-hidden">
+                <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(229,231,235,0.08) 0%, transparent 50%);"></div>
+                <div class="relative flex items-center gap-3">
+                  <div class="relative shrink-0">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-lg font-bold text-white">A</div>
+                    <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center font-black text-xs text-[#11131e] border-2 border-[#1c1f2c]" style="background: linear-gradient(135deg, #f3f4f6 0%, #9ca3af 100%); font-family: 'Be Vietnam Pro', sans-serif;">2</div>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">Bạn về thứ</div>
+                    <div class="font-black text-3xl text-white tracking-tight" style="font-family: 'Be Vietnam Pro', sans-serif; line-height: 1.1;">Hạng 2</div>
+                    <div class="text-xs text-gray-300 mt-0.5">An · 198 điểm</div>
+                  </div>
+                  <!-- SVG silver medal (replaces emoji 🥈 to fix overlap) -->
+                  <svg width="44" height="56" viewBox="0 0 44 56" class="shrink-0">
+                    <defs>
+                      <linearGradient id="silverGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#f3f4f6"/>
+                        <stop offset="50%" stop-color="#d1d5db"/>
+                        <stop offset="100%" stop-color="#6b7280"/>
+                      </linearGradient>
+                      <linearGradient id="ribbonGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#3b82f6"/>
+                        <stop offset="100%" stop-color="#1e40af"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M11 0 L17 24 L22 20 L18 0 Z" fill="url(#ribbonGrad)"/>
+                    <path d="M33 0 L27 24 L22 20 L26 0 Z" fill="#1e40af"/>
+                    <circle cx="22" cy="38" r="14" fill="url(#silverGrad)" stroke="#6b7280" stroke-width="0.5"/>
+                    <text x="22" y="44" text-anchor="middle" font-size="16" font-weight="900" fill="#1c1f2c" font-family="'Be Vietnam Pro', sans-serif">2</text>
+                  </svg>
+                </div>
+                <div class="grid grid-cols-3 gap-2 mt-3 pt-3 border-t border-white/5 text-center relative">
+                  <div>
+                    <div class="text-[9px] text-gray-400 uppercase">Đúng</div>
+                    <div class="font-display font-bold text-emerald-400 text-base">11<span class="text-gray-500 text-xs">/15</span></div>
+                  </div>
+                  <div class="border-x border-white/5">
+                    <div class="text-[9px] text-gray-400 uppercase">Chính xác</div>
+                    <div class="font-display font-bold text-[#e8a832] text-base">73%</div>
+                  </div>
+                  <div>
+                    <div class="text-[9px] text-gray-400 uppercase">Combo cao</div>
+                    <div class="font-display font-bold text-orange-400 text-base">×4 🔥</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Compact rankings list -->
+            <div class="px-5 mt-3 flex-shrink-0 fade-in" style="animation-delay: 0.2s;">
+              <div class="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+                <span>🏆 Bảng xếp hạng cuối cùng</span>
+                <div class="h-px flex-1 bg-white/5"></div>
+              </div>
+              <div class="space-y-1.5">
+                <div class="flex items-center gap-3 glass rounded-xl p-2.5 border border-[#e8a832]/30">
+                  <div class="w-7 h-7 rounded-lg flex items-center justify-center font-display font-black text-sm text-[#11131e] gold-grad">1</div>
+                  <div class="w-7 h-7 rounded-full bg-gradient-to-br from-[#e8a832] to-[#d4941f] flex items-center justify-center text-xs font-bold text-[#11131e]">B</div>
+                  <span class="text-sm font-semibold text-white flex-1">Bui <span class="text-[#e8a832]">👑</span></span>
+                  <span class="font-display font-bold text-[#e8a832] text-sm">252</span>
+                </div>
+                <div class="flex items-center gap-3 rounded-xl p-2.5 border-2 border-[#e8a832]/20" style="background: rgba(232,168,50,0.06);">
+                  <div class="w-7 h-7 rounded-lg flex items-center justify-center font-display font-black text-sm text-[#11131e]" style="background: linear-gradient(135deg, #e5e7eb, #9ca3af);">2</div>
+                  <div class="w-7 h-7 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-xs font-bold text-white">A</div>
+                  <span class="text-sm font-semibold text-white flex-1">An <span class="text-[#e8a832] text-[10px] font-bold">(BẠN)</span></span>
+                  <span class="font-display font-bold text-white text-sm">198</span>
+                </div>
+                <div class="flex items-center gap-3 glass rounded-xl p-2.5">
+                  <div class="w-7 h-7 rounded-lg flex items-center justify-center font-display font-black text-sm text-white" style="background: linear-gradient(135deg, #cd7f32, #8b5a2b);">3</div>
+                  <div class="w-7 h-7 rounded-full bg-gradient-to-br from-sky-500 to-sky-700 flex items-center justify-center text-xs font-bold text-white">C</div>
+                  <span class="text-sm font-semibold text-white flex-1">Chi</span>
+                  <span class="font-display font-bold text-gray-300 text-sm">156</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Player actions -->
+            <div class="flex-1"></div>
+            <div class="p-4 flex-shrink-0 fade-in" style="animation-delay: 0.5s;">
+              <button class="w-full py-3 rounded-xl gold-grad font-display font-bold text-sm text-[#11131e] flex items-center justify-center gap-2 mb-2">
+                <span>📤</span>
+                <span>Chia sẻ kết quả</span>
+              </button>
+              <div class="grid grid-cols-2 gap-2">
+                <button class="py-2.5 rounded-xl glass border border-white/10 font-semibold text-xs text-white flex items-center justify-center gap-1.5">
+                  <span>⚔️</span>
+                  <span>Phòng mới</span>
+                </button>
+                <button class="py-2.5 rounded-xl glass border border-white/10 font-semibold text-xs text-white flex items-center justify-center gap-1.5">
+                  <span>🏠</span>
+                  <span>Trang chủ</span>
+                </button>
+              </div>
+              <div class="text-center text-[10px] text-gray-500 mt-3">
+                Host có thể bắt đầu trận mới · đang chờ...
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute top-14 right-4 flex flex-col gap-1.5 z-30">
+            <div class="glass rounded-full px-2.5 py-1 flex items-center gap-1.5">
+              <span class="text-xs">🔊</span>
+              <span class="text-[10px] font-semibold text-[#e8a832]">complete.mp3</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Notes column -->
+    <div class="space-y-4">
+
+      <!-- Sound + Haptic spec -->
+      <div class="glass rounded-2xl p-5">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-xs font-semibold uppercase tracking-wider text-[#e8a832]">Sound + Haptic per state</span>
+          <div class="h-px flex-1 bg-white/5"></div>
+        </div>
+        <div class="space-y-2 text-sm">
+          <div class="flex items-center gap-3 py-2 border-b border-white/5">
+            <span class="w-32 text-xs font-semibold text-gray-300">① Đã chọn (chờ)</span>
+            <span class="text-xs text-gray-500 flex-1">— · select haptic light</span>
+          </div>
+          <div class="flex items-center gap-3 py-2 border-b border-white/5">
+            <span class="w-32 text-xs font-semibold text-emerald-300">② Đúng</span>
+            <span class="text-xs text-gray-500 flex-1">correct.mp3 · light haptic</span>
+          </div>
+          <div class="flex items-center gap-3 py-2 border-b border-white/5">
+            <span class="w-32 text-xs font-semibold text-orange-300">③ Combo 5</span>
+            <span class="text-xs text-gray-500 flex-1">combo5.mp3 · medium haptic + glow pulse</span>
+          </div>
+          <div class="flex items-center gap-3 py-2 border-b border-white/5">
+            <span class="w-32 text-xs font-semibold text-red-300">④ Sai</span>
+            <span class="text-xs text-gray-500 flex-1">wrong.mp3 · heavy haptic + screen shake</span>
+          </div>
+          <div class="flex items-center gap-3 py-2 border-b border-white/5">
+            <span class="w-32 text-xs font-semibold text-[#e8a832]">⑤ Kết thúc Host</span>
+            <span class="text-xs text-gray-500 flex-1">victory.mp3 + confetti · success haptic</span>
+          </div>
+          <div class="flex items-center gap-3 py-2">
+            <span class="w-32 text-xs font-semibold text-[#e8a832]">⑥ Kết thúc Player</span>
+            <span class="text-xs text-gray-500 flex-1">complete.mp3 · success haptic</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Host vs Player diff -->
+      <div class="glass rounded-2xl p-5">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-xs font-semibold uppercase tracking-wider text-[#e8a832]">Host vs Player end-screen</span>
+          <div class="h-px flex-1 bg-white/5"></div>
+        </div>
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/10">
+              <th class="text-left py-2 text-xs font-semibold text-gray-400"></th>
+              <th class="text-left py-2 text-xs font-semibold text-[#e8a832]">👑 Host</th>
+              <th class="text-left py-2 text-xs font-semibold text-gray-300">Player</th>
+            </tr>
+          </thead>
+          <tbody class="text-xs">
+            <tr class="border-b border-white/5">
+              <td class="py-2 text-gray-400">Podium + bảng xếp hạng</td>
+              <td class="text-emerald-400">✓</td>
+              <td class="text-emerald-400">✓</td>
+            </tr>
+            <tr class="border-b border-white/5">
+              <td class="py-2 text-gray-400">Stats summary trận</td>
+              <td class="text-emerald-400">Tổng (15 câu, 7m 32s, 3 người)</td>
+              <td class="text-emerald-400">Cá nhân (11/15, 73%, combo ×4)</td>
+            </tr>
+            <tr class="border-b border-white/5">
+              <td class="py-2 text-gray-400">CTA chính</td>
+              <td class="text-[#e8a832] font-semibold">Chơi lại với phòng này</td>
+              <td class="text-[#e8a832] font-semibold">Chia sẻ kết quả</td>
+            </tr>
+            <tr class="border-b border-white/5">
+              <td class="py-2 text-gray-400">CTA phụ</td>
+              <td class="text-gray-300">Chi tiết · Đóng phòng</td>
+              <td class="text-gray-300">Phòng mới · Trang chủ</td>
+            </tr>
+            <tr class="border-b border-white/5">
+              <td class="py-2 text-gray-400">"Đang chờ" hint</td>
+              <td class="text-gray-500">—</td>
+              <td class="text-gray-300">"Host có thể bắt đầu trận mới · đang chờ..."</td>
+            </tr>
+            <tr>
+              <td class="py-2 text-gray-400">Confetti</td>
+              <td class="text-emerald-400">Mạnh (40 pieces)</td>
+              <td class="text-emerald-400">Nhẹ (15 pieces) — chỉ winner thấy mạnh</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Backend changes -->
+      <div class="glass rounded-2xl p-5">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-xs font-semibold uppercase tracking-wider text-[#e8a832]">Wire-up notes</span>
+          <div class="h-px flex-1 bg-white/5"></div>
+        </div>
+        <div class="space-y-3 text-sm text-gray-300">
+          <div>
+            <div class="text-xs font-bold text-emerald-400 mb-1">Reveal trigger</div>
+            <p class="text-xs">Server gửi <code class="text-[#e8a832]">ROUND_END {correctAnswer, rankings[], explanation, scriptureRef}</code> → FE switch state từ "optimistic" → "correct" hoặc "wrong" theo <code class="text-[#e8a832]">data.rankings.find(p =&gt; p.id === me).isCorrect</code>.</p>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-orange-400 mb-1">Combo detection</div>
+            <p class="text-xs">FE track <code class="text-[#e8a832]">comboCount</code> local. Hit 5 → show combo5 banner. Hit 10 → combo10 banner (gold + lớn hơn). Reset on wrong.</p>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-red-400 mb-1">Wrong panel auto-dismiss</div>
+            <p class="text-xs">SPEC §4.5 nói 4s auto-dismiss. Trong multiplayer, server kiểm soát timing — auto-dismiss timer chỉ là UX, không skip server <code class="text-[#e8a832]">QUESTION_START</code> tiếp theo.</p>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-[#e8a832] mb-1">Host detection</div>
+            <p class="text-xs"><code class="text-[#e8a832]">isHost = room.hostId === me.id</code>. Render conditional CTA section. Cùng component <code class="text-[#e8a832]">QuizEndScreen</code> với <code class="text-[#e8a832]">isHost</code> prop.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edge cases note -->
+      <div class="rounded-2xl p-5 border border-[#e8a832]/30 bg-[#e8a832]/5">
+        <div class="flex items-start gap-3">
+          <span class="text-xl">⚠️</span>
+          <div class="flex-1">
+            <div class="font-bold text-[#e8a832] mb-2 text-sm">Edge cases cần cover</div>
+            <ul class="text-xs text-gray-300 space-y-1.5">
+              <li class="flex gap-2"><span class="text-[#e8a832]">·</span><b>Timeout (không trả lời):</b> coi như sai, vào state ④ với label "Hết giờ" thay vì "Bạn chọn"</li>
+              <li class="flex gap-2"><span class="text-[#e8a832]">·</span><b>Disconnect giữa câu:</b> reconnect → server resync state, FE quyết định show optimistic hay reveal dựa trên server data</li>
+              <li class="flex gap-2"><span class="text-[#e8a832]">·</span><b>Battle Royale eliminated:</b> state ④ thay nút "Tiếp tục" bằng banner "Bạn đã bị loại · xem các vòng còn lại"</li>
+              <li class="flex gap-2"><span class="text-[#e8a832]">·</span><b>Hòa điểm cuối trận:</b> tie-break theo total responseMs (SPEC §5.4.1). Show 2 người ở vị trí 1 với badge "🤝 Hòa"</li>
+              <li class="flex gap-2"><span class="text-[#e8a832]">·</span><b>Solo (1 người):</b> không bao giờ xảy ra trong multiplayer (min 2 người), nhưng nếu opponent leave → auto end với label "Đối thủ đã rời phòng"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let currentState = 'optimistic';
+  const stateLabels = {
+    optimistic: 'câu 5 / 15 · chờ kết quả',
+    correct: 'câu 5 / 15 · đúng',
+    combo: 'câu 5 / 15 · combo ×5',
+    wrong: 'câu 5 / 15 · sai',
+    'end-host': 'kết thúc · host view',
+    'end-player': 'kết thúc · player view'
+  };
+
+  function setState(s) {
+    currentState = s;
+    document.querySelectorAll('.state-panel').forEach(p => p.classList.add('hidden'));
+    document.getElementById('state-' + s).classList.remove('hidden');
+    document.querySelectorAll('.state-btn[data-state]').forEach(b => {
+      b.classList.toggle('active', b.dataset.state === s);
+    });
+    document.getElementById('time-stamp').textContent = stateLabels[s];
+
+    // Re-trigger animations by toggling classes
+    if (s === 'correct' || s === 'combo') {
+      const panel = document.getElementById('state-' + s);
+      panel.classList.remove('flash-green');
+      void panel.offsetWidth;
+      panel.classList.add('flash-green');
+    }
+    if (s === 'wrong') {
+      const panel = document.getElementById('state-wrong');
+      panel.classList.remove('flash-red');
+      void panel.offsetWidth;
+      panel.classList.add('flash-red');
+    }
+    if (s === 'end-host') triggerConfetti('confetti-host', 40);
+    if (s === 'end-player') triggerConfetti('confetti-player', 15);
+  }
+
+  function triggerConfetti(containerId, count) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    const colors = ['#e8a832', '#f4c560', '#ff7a59', '#4ea8de', '#86b8a0', '#ffffff'];
+    for (let i = 0; i < count; i++) {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random() * 100 + '%';
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.animationDelay = (Math.random() * 0.4) + 's';
+      piece.style.animationDuration = (1.6 + Math.random() * 1.2) + 's';
+      container.appendChild(piece);
+    }
+  }
+
+  setState('optimistic');
+</script>
+
+</body>
+</html>

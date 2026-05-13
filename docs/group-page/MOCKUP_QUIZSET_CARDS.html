@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Set Cards — Redesign Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #11131e;
+    color: #e8eaed;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    min-height: 100vh;
+    padding: 32px;
+  }
+  .container { max-width: 1280px; margin: 0 auto; }
+  .page-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #e8a832;
+    margin-bottom: 8px;
+  }
+  .page-sub {
+    color: #9ba0ad;
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 32px 0 16px 0;
+  }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .section-count {
+    background: rgba(232, 168, 50, 0.15);
+    color: #e8a832;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .btn-create {
+    background: #e8a832;
+    color: #11131e;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+  }
+  .btn-create:hover { background: #f0b842; }
+
+  /* Active scheduled banner — KEEP existing pattern */
+  .active-banner {
+    background: linear-gradient(135deg, rgba(80, 130, 240, 0.15) 0%, rgba(60, 100, 200, 0.1) 100%);
+    border: 1px solid rgba(80, 130, 240, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .active-icon {
+    width: 48px; height: 48px;
+    background: rgba(80, 130, 240, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .active-icon .material-symbols-outlined { color: #5b8df0; font-size: 28px; }
+  .active-content { flex: 1; }
+  .active-label {
+    color: #5b8df0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .active-title { font-weight: 600; font-size: 16px; margin-bottom: 4px; }
+  .active-meta { color: #9ba0ad; font-size: 13px; }
+  .btn-join {
+    background: #5b8df0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+  }
+  .btn-join:hover { background: #6e9af2; }
+
+  /* Card grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 20px;
+  }
+
+  /* === QUIZ SET CARD === */
+  .card {
+    background: rgba(50, 52, 64, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s;
+  }
+  .card:hover {
+    border-color: rgba(232, 168, 50, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Header strip */
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  .badge-published {
+    background: rgba(74, 222, 128, 0.15);
+    color: #4ade80;
+  }
+  .badge-draft {
+    background: rgba(156, 163, 175, 0.15);
+    color: #9ba0ad;
+  }
+  .badge-scheduled {
+    background: rgba(91, 141, 240, 0.15);
+    color: #5b8df0;
+  }
+  .badge-archived {
+    background: rgba(180, 130, 80, 0.15);
+    color: #c89968;
+  }
+  .book-pill {
+    background: rgba(232, 168, 50, 0.1);
+    color: #e8a832;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: 8px;
+  }
+  .menu-btn {
+    background: transparent;
+    border: none;
+    color: #9ba0ad;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .menu-btn:hover { background: rgba(255, 255, 255, 0.05); color: #e8eaed; }
+
+  /* Body */
+  .card-body { padding: 16px; flex: 1; }
+  .card-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #f5f5f5;
+  }
+  .card-topic {
+    color: #9ba0ad;
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+
+  /* Difficulty pills */
+  .diff-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .diff-pill {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    padding: 6px 8px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .diff-pill .num {
+    display: block;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 1px;
+  }
+  .diff-pill .label {
+    font-size: 10px;
+    color: #9ba0ad;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .diff-easy .num { color: #4ade80; }
+  .diff-medium .num { color: #e8a832; }
+  .diff-hard .num { color: #ef4444; }
+
+  /* Stats row */
+  .stats-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    font-size: 12px;
+    color: #9ba0ad;
+  }
+  .stats-row .stat {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .stats-row .stat .material-symbols-outlined {
+    font-size: 15px;
+  }
+  .stats-row .divider {
+    width: 1px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .stats-row .highlight { color: #e8a832; font-weight: 600; }
+
+  /* Schedule context */
+  .schedule-info {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: rgba(91, 141, 240, 0.08);
+    border: 1px solid rgba(91, 141, 240, 0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #aabce8;
+  }
+  .schedule-info .material-symbols-outlined { font-size: 16px; color: #5b8df0; }
+  .schedule-info .countdown { color: #5b8df0; font-weight: 700; margin-left: auto; }
+
+  /* Personal best */
+  .personal-best {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: rgba(232, 168, 50, 0.08);
+    border: 1px solid rgba(232, 168, 50, 0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #e8a832;
+  }
+  .personal-best .material-symbols-outlined { font-size: 16px; }
+  .personal-best .score-val { font-weight: 700; margin-left: auto; }
+
+  /* Action footer */
+  .card-actions {
+    padding: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.15);
+  }
+  .btn-primary {
+    flex: 1;
+    background: #e8a832;
+    color: #11131e;
+    border: none;
+    padding: 11px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .btn-primary:hover { background: #f0b842; transform: scale(1.02); }
+  .btn-primary .material-symbols-outlined { font-size: 18px; }
+
+  .btn-icon {
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #c9cdd6;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .btn-icon:hover {
+    background: rgba(232, 168, 50, 0.1);
+    border-color: rgba(232, 168, 50, 0.3);
+    color: #e8a832;
+  }
+  .btn-icon .material-symbols-outlined { font-size: 20px; }
+
+  /* Draft state — leader only */
+  .card.draft .card-actions { background: rgba(0, 0, 0, 0.3); }
+  .card.draft .btn-primary {
+    background: rgba(232, 168, 50, 0.15);
+    color: #e8a832;
+    border: 1px dashed rgba(232, 168, 50, 0.4);
+  }
+  .card.draft .btn-primary:hover { background: rgba(232, 168, 50, 0.25); transform: none; }
+
+  /* Annotation labels */
+  .annotation {
+    display: inline-block;
+    background: rgba(232, 168, 50, 0.1);
+    border: 1px dashed rgba(232, 168, 50, 0.4);
+    color: #e8a832;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  /* Notes section */
+  .notes {
+    margin-top: 48px;
+    padding: 24px;
+    background: rgba(50, 52, 64, 0.3);
+    border-radius: 12px;
+    border-left: 3px solid #e8a832;
+  }
+  .notes h3 {
+    font-family: 'Sora', sans-serif;
+    color: #e8a832;
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+  .notes ul { padding-left: 20px; }
+  .notes li {
+    color: #c9cdd6;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 6px;
+  }
+  .notes code {
+    background: rgba(232, 168, 50, 0.1);
+    color: #e8a832;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1 class="page-title">Quiz Set Cards — Redesign</h1>
+  <p class="page-sub">4 card states + 3 play mode entry points (Co-play / Schedule / Solo)</p>
+
+  <!-- Existing "Đang diễn ra" section — kept as-is for context -->
+  <div class="active-banner">
+    <div class="active-icon">
+      <span class="material-symbols-outlined">schedule</span>
+    </div>
+    <div class="active-content">
+      <div class="active-label">QUIZ ĐÃ ĐẶT LỊCH</div>
+      <div class="active-title">Sáng Thế Ký · Chương 1-3</div>
+      <div class="active-meta">Còn 1 ngày 16h · 10 câu · 5 thành viên đã đăng ký</div>
+    </div>
+    <button class="btn-join">
+      <span class="material-symbols-outlined">play_arrow</span>
+      Tham gia ngay
+    </button>
+  </div>
+
+  <!-- Section header -->
+  <div class="section-header">
+    <div class="section-title">
+      <span class="material-symbols-outlined" style="color:#e8a832;">collections_bookmark</span>
+      Bộ câu hỏi
+      <span class="section-count">4</span>
+    </div>
+    <button class="btn-create">
+      <span class="material-symbols-outlined" style="font-size:18px;">add</span>
+      Tạo bộ câu hỏi
+    </button>
+  </div>
+
+  <span class="annotation">⬇ 4 card states để compare</span>
+
+  <div class="grid">
+
+    <!-- ============ CARD 1: Published, default ============ -->
+    <div class="card">
+      <div class="card-header">
+        <span class="badge badge-published">
+          <span class="material-symbols-outlined" style="font-size:12px;">check_circle</span>
+          Đã xuất bản
+        </span>
+        <span class="book-pill">Sáng Thế Ký</span>
+        <button class="menu-btn"><span class="material-symbols-outlined" style="font-size:18px;">more_vert</span></button>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Chương 1-3 · Sự sáng tạo</div>
+        <div class="card-topic">Tạo dựng thế gian, A-đam và Ê-va, sa ngã</div>
+
+        <div class="diff-row">
+          <div class="diff-pill diff-easy"><span class="num">4</span><span class="label">Dễ</span></div>
+          <div class="diff-pill diff-medium"><span class="num">4</span><span class="label">TB</span></div>
+          <div class="diff-pill diff-hard"><span class="num">2</span><span class="label">Khó</span></div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat">
+            <span class="material-symbols-outlined">quiz</span>
+            <span><span class="highlight">10</span> câu</span>
+          </div>
+          <div class="divider"></div>
+          <div class="stat">
+            <span class="material-symbols-outlined">groups</span>
+            <span>12 lượt chơi</span>
+          </div>
+          <div class="divider"></div>
+          <div class="stat">
+            <span class="material-symbols-outlined">schedule</span>
+            <span>2h trước</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn-primary">
+          <span class="material-symbols-outlined">groups</span>
+          Chơi cùng nhau
+        </button>
+        <button class="btn-icon" title="Đặt lịch">
+          <span class="material-symbols-outlined">event</span>
+        </button>
+        <button class="btn-icon" title="Chơi solo">
+          <span class="material-symbols-outlined">person</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ============ CARD 2: Has active schedule ============ -->
+    <div class="card">
+      <div class="card-header">
+        <span class="badge badge-scheduled">
+          <span class="material-symbols-outlined" style="font-size:12px;">event</span>
+          Đã đặt lịch
+        </span>
+        <span class="book-pill">Phúc Âm Giăng</span>
+        <button class="menu-btn"><span class="material-symbols-outlined" style="font-size:18px;">more_vert</span></button>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Chương 1 · Ngôi Lời</div>
+        <div class="card-topic">Đức Chúa Jêsus là Lời, ánh sáng cho thế gian</div>
+
+        <div class="diff-row">
+          <div class="diff-pill diff-easy"><span class="num">3</span><span class="label">Dễ</span></div>
+          <div class="diff-pill diff-medium"><span class="num">5</span><span class="label">TB</span></div>
+          <div class="diff-pill diff-hard"><span class="num">2</span><span class="label">Khó</span></div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat">
+            <span class="material-symbols-outlined">quiz</span>
+            <span><span class="highlight">10</span> câu</span>
+          </div>
+          <div class="divider"></div>
+          <div class="stat">
+            <span class="material-symbols-outlined">how_to_reg</span>
+            <span>5/8 đăng ký</span>
+          </div>
+        </div>
+
+        <div class="schedule-info">
+          <span class="material-symbols-outlined">schedule</span>
+          <span>Bắt đầu 19:00 hôm nay</span>
+          <span class="countdown">Còn 2h 15m</span>
+        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn-primary">
+          <span class="material-symbols-outlined">how_to_reg</span>
+          Đăng ký tham gia
+        </button>
+        <button class="btn-icon" title="Chơi solo trước">
+          <span class="material-symbols-outlined">person</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ============ CARD 3: User has played before ============ -->
+    <div class="card">
+      <div class="card-header">
+        <span class="badge badge-published">
+          <span class="material-symbols-outlined" style="font-size:12px;">check_circle</span>
+          Đã xuất bản
+        </span>
+        <span class="book-pill">Thi Thiên</span>
+        <button class="menu-btn"><span class="material-symbols-outlined" style="font-size:18px;">more_vert</span></button>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Thi Thiên 23 · Đấng chăn giữ</div>
+        <div class="card-topic">Đức Giê-hô-va là Đấng chăn giữ tôi</div>
+
+        <div class="diff-row">
+          <div class="diff-pill diff-easy"><span class="num">3</span><span class="label">Dễ</span></div>
+          <div class="diff-pill diff-medium"><span class="num">3</span><span class="label">TB</span></div>
+          <div class="diff-pill diff-hard"><span class="num">1</span><span class="label">Khó</span></div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat">
+            <span class="material-symbols-outlined">quiz</span>
+            <span><span class="highlight">7</span> câu</span>
+          </div>
+          <div class="divider"></div>
+          <div class="stat">
+            <span class="material-symbols-outlined">groups</span>
+            <span>23 lượt chơi</span>
+          </div>
+        </div>
+
+        <div class="personal-best">
+          <span class="material-symbols-outlined">emoji_events</span>
+          <span>Điểm cao nhất của bạn</span>
+          <span class="score-val">6/7 · 86%</span>
+        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn-primary">
+          <span class="material-symbols-outlined">groups</span>
+          Chơi cùng nhau
+        </button>
+        <button class="btn-icon" title="Đặt lịch">
+          <span class="material-symbols-outlined">event</span>
+        </button>
+        <button class="btn-icon" title="Chơi lại solo">
+          <span class="material-symbols-outlined">refresh</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ============ CARD 4: Draft (leader-only view) ============ -->
+    <div class="card draft">
+      <div class="card-header">
+        <span class="badge badge-draft">
+          <span class="material-symbols-outlined" style="font-size:12px;">edit_note</span>
+          Bản nháp
+        </span>
+        <span class="book-pill">Chưa chọn</span>
+        <button class="menu-btn"><span class="material-symbols-outlined" style="font-size:18px;">more_vert</span></button>
+      </div>
+      <div class="card-body">
+        <div class="card-title">tett</div>
+        <div class="card-topic" style="font-style:italic; color:#7a7f8c;">Chưa có mô tả</div>
+
+        <div class="diff-row">
+          <div class="diff-pill diff-easy"><span class="num">2</span><span class="label">Dễ</span></div>
+          <div class="diff-pill diff-medium"><span class="num">0</span><span class="label">TB</span></div>
+          <div class="diff-pill diff-hard"><span class="num">0</span><span class="label">Khó</span></div>
+        </div>
+
+        <div class="stats-row" style="border:1px dashed rgba(255,255,255,0.1); background:transparent;">
+          <div class="stat">
+            <span class="material-symbols-outlined">warning</span>
+            <span style="color:#e8a832;">Cần ít nhất 5 câu để xuất bản</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn-primary">
+          <span class="material-symbols-outlined">edit</span>
+          Tiếp tục soạn
+        </button>
+        <button class="btn-icon" title="Xóa nháp">
+          <span class="material-symbols-outlined">delete</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Design notes -->
+  <div class="notes">
+    <h3>📝 Design notes</h3>
+    <ul>
+      <li><strong>3-section layout</strong>: header strip (status + book + menu) → body (title + difficulty + stats) → action footer. Loại bỏ vùng book icon vô nghĩa, gain ~40% useful space.</li>
+      <li><strong>1 primary + 2 icon buttons</strong>: "Chơi cùng nhau" là CTA chính (gold, scale on hover). "Đặt lịch" + "Solo" là icon buttons (40×40dp, đủ tap target). Tránh 3 button full-width tạo cramped UI.</li>
+      <li><strong>Status-aware actions</strong>:
+        <ul style="margin-top:6px;">
+          <li>Published default → Co-play | Schedule | Solo</li>
+          <li>Already scheduled → Đăng ký tham gia | Solo (ẩn schedule, vì đã có)</li>
+          <li>User đã chơi → Co-play | Schedule | Refresh icon (Solo replay)</li>
+          <li>Draft → "Tiếp tục soạn" | Delete (ẩn play buttons hoàn toàn)</li>
+        </ul>
+      </li>
+      <li><strong>Difficulty pills</strong> 4/4/2 thay book icon — surface info quan trọng (mức độ khó) thay vì decoration.</li>
+      <li><strong>Personal best banner</strong> chỉ hiện khi user đã chơi quiz set này — encourages replay + reinforces Q-A (personal mastery, không break group leaderboard).</li>
+      <li><strong>Member-only buttons</strong>: Co-play / Schedule / Solo. Leader-only actions (sửa, lưu trữ, xóa) gom vào ⋯ menu để không clutter UI cho member.</li>
+      <li><strong>Color discipline</strong>: tất cả hex hardcoded (gold <code>#e8a832</code>, glass <code>rgba(50,52,64,0.4)</code>, blue <code>#5b8df0</code> cho schedule context). KHÔNG dùng CSS variables.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
