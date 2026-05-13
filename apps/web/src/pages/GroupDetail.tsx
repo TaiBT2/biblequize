@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../store/authStore';
-import { api } from '../api/client';
+import { api, aiApi } from '../api/client';
 import { listScheduledQuizzes, ScheduledQuizSummary } from '../api/scheduledQuiz';
 import GroupActivityTab from '../components/group/GroupActivityTab';
 import GroupAnalyticsTab from '../components/group/GroupAnalyticsTab';
@@ -225,7 +225,7 @@ const GroupDetail: React.FC = () => {
     setQsAiGenerating(true);
     setQsError('');
     try {
-      const res = await api.post(`/api/groups/${id}/ai-generate`, {
+      const res = await aiApi.post(`/api/groups/${id}/ai-generate`, {
         book: qsAiBook.trim(),
         chapter: qsAiChapter,
         chapterEnd: qsAiChapterEnd,

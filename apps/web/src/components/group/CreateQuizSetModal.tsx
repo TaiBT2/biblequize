@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { api } from '../../api/client'
+import { api, aiApi } from '../../api/client'
 
 // Hardcoded hex per mockup `create_quizset_modal_with_difficulty_mix.html`
 // (memory rule: no CSS variables in dialog files to avoid white-bg bug).
@@ -115,7 +115,7 @@ export default function CreateQuizSetModal({ open, groupId, onClose, onSaved }: 
       }
 
       const responses = await Promise.all(buckets.map(b =>
-        api.post(`/api/groups/${groupId}/ai-generate`, { ...payloadBase, count: b.count, difficulty: b.difficulty })
+        aiApi.post(`/api/groups/${groupId}/ai-generate`, { ...payloadBase, count: b.count, difficulty: b.difficulty })
       ))
 
       const all: AiDraft[] = []
