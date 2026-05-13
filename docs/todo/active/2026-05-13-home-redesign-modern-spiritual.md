@@ -49,10 +49,11 @@
   - **Done**: full gold gradient bg (#e8a832→#c98a1c→#7a5818) + radial gold highlight overlay (inner div pour jsdom parse được nhiều layers). Box-shadow gold tint + gold ring + inset highlight. Decorative SVG ornament. Title sans 800 34px dark `#1a1208` với text-shadow gold tint. Energy + ranked progress với line SVG icons. CTA dark `#1a1208` + gold text "Vào trận →" hover translateX(3px). Whole card clickable (role=button, keyboard Enter/Space).
 
 - HR-5 RankedStandardCard component (State A standard — daily chưa làm, Ranked không promoted)
-  - Status: `[ ]` TODO · Files: `apps/web/src/components/RankedStandardCard.tsx` + test · Test: Vitest 4 tests
+  - Status: `[x]` DONE · Files: `apps/web/src/components/RankedStandardCard.tsx` + test · Test: 5/5
   - **Spec impact**: `[x]` None
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Checklist: impl · gold tint (không full gradient) · Tầng 1 pass · commit `feat: HR-5 RankedStandardCard component` · STOP
+  - Checklist: [x] impl · [x] gold tint (low alpha 0.06) NOT full gradient · [x] title via t('gameModes.ranked') = "Đấu Hạng" · [x] 5 tests · [ ] commit
+  - **Done**: Standard mode-card pattern với gold-tint background (linear gradient 6% gold trên glass) + 1px gold border. Icon gold-tinted box, pill "Đã mở khóa" gold. Footer: "Vào trận →" gold CTA + "X / 100 câu hôm nay" right hint. Test verify KHÔNG có #7a5818 (gold-shadow của hero) — ensure NOT full hero gradient.
 
 - HR-6 SectionHeader + DailyCompletedStrip (sage tint)
   - Status: `[ ]` TODO · Files: `apps/web/src/components/SectionHeader.tsx`, `apps/web/src/components/DailyCompletedStrip.tsx` + tests · Test: Vitest 6 tests
