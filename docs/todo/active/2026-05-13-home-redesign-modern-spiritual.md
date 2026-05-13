@@ -35,10 +35,11 @@
     - Home.test.tsx fix 1 test: HR-2 split `45,200` thành span riêng → `getByText('45,200')` match 2 chỗ (banner XP + leaderboard row). Đổi sang `getAllByText().length >= 1`.
 
 - HR-3 FeaturedDailyCard component (State A hero — daily chưa làm)
-  - Status: `[ ]` TODO · Files: `apps/web/src/components/FeaturedDailyCard.tsx` + test · Test: Vitest 5 tests
+  - Status: `[x]` DONE · Files: `apps/web/src/components/FeaturedDailyCard.tsx` + test · Test: 7/7
   - **Spec impact**: `[x]` None
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Checklist: impl · countdown logic · pulsing dot · Tầng 1 pass · commit `feat: HR-3 FeaturedDailyCard component` · STOP
+  - Checklist: [x] impl · [x] internal countdown via setInterval · [x] pulsing dot via animate-pulse · [x] 7 tests pass · [ ] commit
+  - **Done**: Maroon+gold radial bg + 3px gold left border + 16px radius. Pulsing dot label "THỬ THÁCH HÔM NAY · MỚI SẴN SÀNG". Title sans 800 24px ivory. Tagline + meta (5 dots indicator + clock + people optional). Right column: "CÒN LẠI TRONG NGÀY" + countdown (tabular-nums gold-light) + gold-gradient CTA "Vào chơi ngay →". Props: questionCount/estimatedMinutes/globalParticipants/countdownText/onStart. Self-contained countdown via setInterval(1000) khi `countdownText` undefined. Mobile: countdown + CTA stack ngang dưới content.
 
 - HR-4 HeroRankedCard component (State B hero — daily đã làm, Ranked promoted)
   - Status: `[ ]` TODO · Files: `apps/web/src/components/HeroRankedCard.tsx` + test · Test: Vitest 5 tests
