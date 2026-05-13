@@ -1,36 +1,53 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { api } from '../../api/client'
+import { queryKeys } from '../../api/queryKeys'
 
 interface Group { id: string; name: string; code: string; memberCount: number; maxMembers: number; isPublic: boolean; isLocked: boolean; lockReason?: string; leaderName?: string; createdAt: string }
 
+async function fetchGroups(): Promise<Group[]> {
+  const res = await api.get<Group[]>('/api/admin/groups')
+  return Array.isArray(res.data) ? res.data : []
+}
+
 export default function GroupsAdmin() {
   const { t } = useTranslation()
-  const [groups, setGroups] = useState<Group[]>([])
-  const [isLoading, setIsLoading] = useState(false)
+  const queryClient = useQueryClient()
+  const { data: groups = [], isLoading } = useQuery({
+    queryKey: queryKeys.adminGroups.list(),
+    queryFn: fetchGroups,
+  })
+
   const [selected, setSelected] = useState<Group | null>(null)
   const [lockReason, setLockReason] = useState('')
 
-  const fetchGroups = async () => {
-    setIsLoading(true)
-    try { const res = await api.get('/api/admin/groups'); setGroups(Array.isArray(res.data) ? res.data : []) }
-    catch { /* */ } finally { setIsLoading(false) }
-  }
+  const invalidate = () => queryClient.invalidateQueries({ queryKey: queryKeys.adminGroups.all })
 
-  useEffect(() => { fetchGroups() }, [])
+  const lockMutation = useMutation({
+    mutationFn: ({ id, reason }: { id: string; reason: string }) =>
+      api.patch(`/api/admin/groups/${id}/lock`, { reason }),
+    onSuccess: () => { invalidate(); setSelected(null); setLockReason('') },
+  })
 
-  const lockGroup = async (id: string) => {
+  const unlockMutation = useMutation({
+    mutationFn: (id: string) => api.patch(`/api/admin/groups/${id}/unlock`),
+    onSuccess: () => { invalidate(); setSelected(null) },
+  })
+
+  const deleteMutation = useMutation({
+    mutationFn: (id: string) => api.delete(`/api/admin/groups/${id}`),
+    onSuccess: () => { invalidate(); setSelected(null) },
+  })
+
+  const lockGroup = (id: string) => {
     if (lockReason.trim().length < 10) return
-    try { await api.patch(`/api/admin/groups/${id}/lock`, { reason: lockReason }); fetchGroups(); setSelected(null); setLockReason('') } catch { /* */ }
+    lockMutation.mutate({ id, reason: lockReason })
   }
 
-  const unlockGroup = async (id: string) => {
-    try { await api.patch(`/api/admin/groups/${id}/unlock`); fetchGroups(); setSelected(null) } catch { /* */ }
-  }
-
-  const deleteGroup = async (id: string) => {
+  const deleteGroup = (id: string) => {
     if (!confirm(t('admin.groups.deleteConfirm'))) return
-    try { await api.delete(`/api/admin/groups/${id}`); fetchGroups(); setSelected(null) } catch { /* */ }
+    deleteMutation.mutate(id)
   }
 
   return (
@@ -67,7 +84,7 @@ export default function GroupsAdmin() {
             {selected.isLocked ? (
               <div className="space-y-2">
                 <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3 text-red-400 text-sm">{t('admin.groups.lockedBanner', { reason: selected.lockReason ?? '' })}</div>
-                <button onClick={() => unlockGroup(selected.id)} className="w-full py-2 bg-green-600 text-white rounded-lg text-sm font-medium">{t('admin.groups.unlockButton')}</button>
+                <button onClick={() => unlockMutation.mutate(selected.id)} className="w-full py-2 bg-green-600 text-white rounded-lg text-sm font-medium">{t('admin.groups.unlockButton')}</button>
               </div>
             ) : (
               <div className="space-y-2">

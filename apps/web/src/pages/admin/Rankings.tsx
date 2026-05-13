@@ -1,38 +1,49 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { api } from '../../api/client'
+import { queryKeys } from '../../api/queryKeys'
 
 interface Season { id: string; name: string; startDate: string; endDate: string; isActive: boolean }
 
+async function fetchSeasons(): Promise<Season[]> {
+  const res = await api.get<Season[]>('/api/admin/seasons')
+  return Array.isArray(res.data) ? res.data : []
+}
+
 export default function RankingsAdmin() {
   const { t } = useTranslation()
-  const [seasons, setSeasons] = useState<Season[]>([])
-  const [isLoading, setIsLoading] = useState(false)
+  const queryClient = useQueryClient()
+  const { data: seasons = [], isLoading } = useQuery({
+    queryKey: queryKeys.rankings.list(),
+    queryFn: fetchSeasons,
+  })
+
   const [showCreate, setShowCreate] = useState(false)
   const [form, setForm] = useState({ name: '', startDate: '', endDate: '' })
-  const [isSaving, setIsSaving] = useState(false)
 
-  const fetchSeasons = async () => {
-    setIsLoading(true)
-    try {
-      const res = await api.get('/api/admin/seasons')
-      setSeasons(Array.isArray(res.data) ? res.data : [])
-    } catch { /* graceful */ }
-    finally { setIsLoading(false) }
-  }
+  const createMutation = useMutation({
+    mutationFn: (body: typeof form) => api.post('/api/admin/seasons', body),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.rankings.all })
+      setShowCreate(false)
+      setForm({ name: '', startDate: '', endDate: '' })
+    },
+  })
 
-  useEffect(() => { fetchSeasons() }, [])
+  const endMutation = useMutation({
+    mutationFn: (id: string) => api.post(`/api/admin/seasons/${id}/end`),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKeys.rankings.all }),
+  })
 
-  const createSeason = async () => {
+  const createSeason = () => {
     if (!form.name || !form.startDate || !form.endDate) return
-    setIsSaving(true)
-    try { await api.post('/api/admin/seasons', form); fetchSeasons(); setShowCreate(false); setForm({ name: '', startDate: '', endDate: '' }) }
-    catch { /* error */ } finally { setIsSaving(false) }
+    createMutation.mutate(form)
   }
 
-  const endSeason = async (id: string) => {
+  const endSeason = (id: string) => {
     if (!confirm(t('admin.rankings.endConfirm'))) return
-    try { await api.post(`/api/admin/seasons/${id}/end`); fetchSeasons() } catch { /* */ }
+    endMutation.mutate(id)
   }
 
   const active = seasons.find(s => s.isActive)
@@ -51,7 +62,7 @@ export default function RankingsAdmin() {
             <input type="date" value={form.startDate} onChange={e => setForm({ ...form, startDate: e.target.value })} className="flex-1 bg-[#191b25] border border-[#504535]/20 rounded-lg px-4 py-2 text-sm text-[#e1e1ef] [color-scheme:dark]" />
             <input type="date" value={form.endDate} onChange={e => setForm({ ...form, endDate: e.target.value })} className="flex-1 bg-[#191b25] border border-[#504535]/20 rounded-lg px-4 py-2 text-sm text-[#e1e1ef] [color-scheme:dark]" />
           </div>
-          <button data-testid="create-season-submit-btn" onClick={createSeason} disabled={isSaving} className="px-6 py-2 gold-gradient text-[#281900] rounded-lg text-sm font-bold disabled:opacity-50">{isSaving ? t('admin.rankings.creating') : t('admin.rankings.createSeasonSubmit')}</button>
+          <button data-testid="create-season-submit-btn" onClick={createSeason} disabled={createMutation.isPending} className="px-6 py-2 gold-gradient text-[#281900] rounded-lg text-sm font-bold disabled:opacity-50">{createMutation.isPending ? t('admin.rankings.creating') : t('admin.rankings.createSeasonSubmit')}</button>
         </div>
       )}
 
