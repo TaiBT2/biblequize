@@ -1317,6 +1317,479 @@ public class ChurchGroupController {
         }
     }
 
+    // ════════════════════════════════════════════════════════════════
+    // BL-AD-8 — Quiz Set Editor page endpoints (Phase B)
+    // ════════════════════════════════════════════════════════════════
+
+    /**
+     * GET /api/groups/{id}/quiz-sets/{setId}/full
+     * Returns quiz set metadata + ordered questions inline, in one round trip.
+     * Used by QuizSetEditor on initial load. Permission: any group member
+     * (DRAFT visible to creator + leader/mod only).
+     */
+    @GetMapping("/{id}/quiz-sets/{setId}/full")
+    @SuppressWarnings("unchecked")
+    public ResponseEntity<?> getQuizSetFull(@PathVariable("id") String groupId,
+                                             @PathVariable("setId") String setId,
+                                             Principal principal) {
+        try {
+            User user = getUser(principal);
+            groupMemberRepository.findByGroupIdAndUserId(groupId, user.getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Ban khong phai thanh vien cua nhom nay"));
+            GroupQuizSet set = groupQuizSetRepository.findById(setId)
+                    .orElseThrow(() -> new RuntimeException("Quiz set khong ton tai"));
+            if (!set.getGroup().getId().equals(groupId)) {
+                return ResponseEntity.status(403).body(Map.of("success", false, "message", "Quiz set khong thuoc nhom"));
+            }
+            // DRAFT visibility: creator OR leader/mod
+            if (set.getPublishStatus() == GroupQuizSet.PublishStatus.DRAFT
+                    && !set.getCreatedBy().getId().equals(user.getId())
+                    && !isLeaderOrMod(groupId, user.getId())) {
+                return ResponseEntity.status(403).body(Map.of("success", false, "message", "Khong co quyen xem ban nhap nay"));
+            }
+            List<String> qids = (List<String>) set.getQuestionIds();
+            if (qids == null) qids = new ArrayList<>();
+            // Preserve order from questionIds[] — repository.findAllById returns unordered
+            Map<String, Question> byId = questionRepository.findAllById(qids).stream()
+                    .collect(Collectors.toMap(Question::getId, q -> q));
+            List<Map<String, Object>> questions = new ArrayList<>();
+            for (String qid : qids) {
+                Question q = byId.get(qid);
+                if (q != null) questions.add(questionToMap(q));
+            }
+            Map<String, Object> result = new LinkedHashMap<>(com.biblequiz.modules.group.service.ChurchGroupService.quizSetToMap(set));
+            result.put("questions", questions);
+            return ResponseEntity.ok(Map.of("success", true, "quizSet", result));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * POST /api/groups/{id}/quiz-sets/{setId}/questions
+     * Creates a single question (source=group-custom) and appends id to set.questionIds[].
+     * Request body: same shape as a single entry in /quiz-sets/custom body.questions[].
+     */
+    @PostMapping("/{id}/quiz-sets/{setId}/questions")
+    @Transactional
+    @SuppressWarnings("unchecked")
+    public ResponseEntity<?> addQuestionToSet(@PathVariable("id") String groupId,
+                                               @PathVariable("setId") String setId,
+                                               @RequestBody Map<String, Object> raw,
+                                               Principal principal) {
+        try {
+            User user = getUser(principal);
+            requireLeaderOrMod(groupId, user.getId());
+            GroupQuizSet set = loadSetForGroup(groupId, setId);
+
+            Question q = buildQuestionFromMap(raw, "group-custom");
+            questionRepository.save(q);
+
+            List<String> ids = mutableQuestionIds(set);
+            ids.add(q.getId());
+            set.setQuestionIds(ids);
+            set.setTotalQuestions(ids.size());
+            groupQuizSetRepository.save(set);
+
+            return ResponseEntity.ok(Map.of("success", true, "question", questionToMap(q),
+                    "totalQuestions", ids.size()));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * PATCH /api/groups/{id}/quiz-sets/{setId}/questions/{qid}
+     * Partial update of a single question (debounced auto-save target).
+     * Only fields present in body are mutated.
+     */
+    @PatchMapping("/{id}/quiz-sets/{setId}/questions/{qid}")
+    @Transactional
+    @SuppressWarnings("unchecked")
+    public ResponseEntity<?> updateQuestionInSet(@PathVariable("id") String groupId,
+                                                  @PathVariable("setId") String setId,
+                                                  @PathVariable("qid") String qid,
+                                                  @RequestBody Map<String, Object> raw,
+                                                  Principal principal) {
+        try {
+            User user = getUser(principal);
+            requireLeaderOrMod(groupId, user.getId());
+            GroupQuizSet set = loadSetForGroup(groupId, setId);
+            List<String> ids = mutableQuestionIds(set);
+            if (!ids.contains(qid)) {
+                return ResponseEntity.status(404).body(Map.of("success", false, "message", "Cau hoi khong thuoc bo nay"));
+            }
+            Question q = questionRepository.findById(qid)
+                    .orElseThrow(() -> new RuntimeException("Cau hoi khong ton tai"));
+            mergeQuestionFields(q, raw);
+            questionRepository.save(q);
+            return ResponseEntity.ok(Map.of("success", true, "question", questionToMap(q)));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * DELETE /api/groups/{id}/quiz-sets/{setId}/questions/{qid}
+     * Removes a question from the set (and deletes the Question row when source ∈ {ai-group, group-custom}).
+     */
+    @DeleteMapping("/{id}/quiz-sets/{setId}/questions/{qid}")
+    @Transactional
+    public ResponseEntity<?> deleteQuestionFromSet(@PathVariable("id") String groupId,
+                                                    @PathVariable("setId") String setId,
+                                                    @PathVariable("qid") String qid,
+                                                    Principal principal) {
+        try {
+            User user = getUser(principal);
+            requireLeaderOrMod(groupId, user.getId());
+            GroupQuizSet set = loadSetForGroup(groupId, setId);
+            List<String> ids = mutableQuestionIds(set);
+            boolean removed = ids.remove(qid);
+            if (!removed) {
+                return ResponseEntity.status(404).body(Map.of("success", false, "message", "Cau hoi khong thuoc bo nay"));
+            }
+            set.setQuestionIds(ids);
+            set.setTotalQuestions(ids.size());
+            groupQuizSetRepository.save(set);
+            // Hard-delete only for group-owned questions (don't touch admin-curated pool).
+            questionRepository.findById(qid).ifPresent(q -> {
+                String src = q.getSource();
+                if ("group-custom".equals(src) || "ai-group".equals(src)) {
+                    questionRepository.delete(q);
+                }
+            });
+            return ResponseEntity.ok(Map.of("success", true, "totalQuestions", ids.size()));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * POST /api/groups/{id}/quiz-sets/{setId}/questions/reorder
+     * Body: { "questionIds": ["uuid1", "uuid2", ...] }
+     * Must contain exactly the same id set as current — no add/remove.
+     */
+    @PostMapping("/{id}/quiz-sets/{setId}/questions/reorder")
+    @Transactional
+    @SuppressWarnings("unchecked")
+    public ResponseEntity<?> reorderQuestionsInSet(@PathVariable("id") String groupId,
+                                                    @PathVariable("setId") String setId,
+                                                    @RequestBody Map<String, Object> body,
+                                                    Principal principal) {
+        try {
+            User user = getUser(principal);
+            requireLeaderOrMod(groupId, user.getId());
+            GroupQuizSet set = loadSetForGroup(groupId, setId);
+            List<String> newOrder = body.get("questionIds") instanceof List<?> l
+                    ? l.stream().filter(Objects::nonNull).map(Object::toString).collect(Collectors.toList())
+                    : null;
+            if (newOrder == null) {
+                return ResponseEntity.badRequest().body(Map.of("success", false, "message", "questionIds bat buoc"));
+            }
+            List<String> current = mutableQuestionIds(set);
+            if (newOrder.size() != current.size() || !new HashSet<>(newOrder).equals(new HashSet<>(current))) {
+                return ResponseEntity.badRequest().body(Map.of("success", false,
+                        "message", "Danh sach id moi phai khop hoan toan voi danh sach hien tai"));
+            }
+            set.setQuestionIds(newOrder);
+            groupQuizSetRepository.save(set);
+            return ResponseEntity.ok(Map.of("success", true, "questionIds", newOrder));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * POST /api/groups/{id}/quiz-sets/{setId}/ai-generate
+     * Set-scoped AI generation: calls provider router, persists every draft
+     * (source=ai-group), and auto-appends ids to the set.
+     * Body: { countEasy, countMedium, countHard, book, chapterFrom, chapterTo,
+     *         verseFrom?, verseTo?, topic? }
+     */
+    @PostMapping("/{id}/quiz-sets/{setId}/ai-generate")
+    @Transactional
+    @SuppressWarnings("unchecked")
+    public ResponseEntity<?> aiGenerateForSet(@PathVariable("id") String groupId,
+                                               @PathVariable("setId") String setId,
+                                               @RequestBody Map<String, Object> body,
+                                               Principal principal) {
+        try {
+            User user = getUser(principal);
+            requireLeaderOrMod(groupId, user.getId());
+            GroupQuizSet set = loadSetForGroup(groupId, setId);
+
+            int cE = intVal(body.get("countEasy"), 0);
+            int cM = intVal(body.get("countMedium"), 0);
+            int cH = intVal(body.get("countHard"), 0);
+            int total = cE + cM + cH;
+            if (total <= 0 || total > 15) {
+                return ResponseEntity.badRequest().body(Map.of("success", false,
+                        "message", "Tong so cau phai trong khoang 1-15"));
+            }
+            if (!aiQuotaService.tryAcquire(total)) {
+                AIQuotaService.Usage u = aiQuotaService.snapshot();
+                return ResponseEntity.status(429).body(Map.of("success", false,
+                        "error", "QUOTA_EXCEEDED",
+                        "message", "Da dat gioi han AI hom nay",
+                        "used", u.used(), "limit", u.limit(), "remaining", u.remaining()));
+            }
+
+            String book = (String) body.getOrDefault("book", "John");
+            int chapter = intVal(body.get("chapterFrom"), 1);
+            int verseStart = intVal(body.get("verseFrom"), 1);
+            int verseEnd = intVal(body.get("verseTo"), 50);
+            String topic = (String) body.getOrDefault("topic", "");
+            String language = (String) body.getOrDefault("language", "vi");
+
+            String customPrompt = topic.isBlank() ? null :
+                    "Tat ca cau hoi PHAI tap trung vao chu de: \"" + topic.trim() + "\".";
+
+            List<Map<String, Object>> allDrafts = new ArrayList<>();
+            String providerUsed = null;
+            for (Object[] tier : new Object[][]{{"easy", cE}, {"medium", cM}, {"hard", cH}}) {
+                int count = (int) tier[1];
+                if (count <= 0) continue;
+                AIGenerationContext ctx = AIGenerationContext.of(
+                        book, chapter, verseStart, verseEnd,
+                        ((String) tier[0]).toUpperCase(), "MULTIPLE_CHOICE", language,
+                        count, null, customPrompt);
+                AIGenerationResult res = aiProviderRouter.generate(ctx, null);
+                providerUsed = res.providerUsed();
+                for (Map<String, Object> draft : res.questions()) {
+                    Map<String, Object> withDifficulty = new LinkedHashMap<>(draft);
+                    withDifficulty.putIfAbsent("difficulty", (String) tier[0]);
+                    withDifficulty.putIfAbsent("book", book);
+                    withDifficulty.putIfAbsent("chapter", chapter);
+                    withDifficulty.putIfAbsent("verseStart", verseStart);
+                    withDifficulty.putIfAbsent("verseEnd", verseEnd);
+                    withDifficulty.putIfAbsent("language", language);
+                    allDrafts.add(withDifficulty);
+                }
+            }
+
+            List<String> ids = mutableQuestionIds(set);
+            List<Map<String, Object>> savedDtos = new ArrayList<>();
+            for (Map<String, Object> draft : allDrafts) {
+                Question q = buildQuestionFromMap(draft, "ai-group");
+                questionRepository.save(q);
+                ids.add(q.getId());
+                savedDtos.add(questionToMap(q));
+            }
+            set.setQuestionIds(ids);
+            set.setTotalQuestions(ids.size());
+            groupQuizSetRepository.save(set);
+
+            AIQuotaService.Usage usage = aiQuotaService.snapshot();
+            return ResponseEntity.ok(Map.of("success", true,
+                    "questions", savedDtos,
+                    "totalQuestions", ids.size(),
+                    "provider", providerUsed != null ? providerUsed : "auto",
+                    "used", usage.used(),
+                    "limit", usage.limit(),
+                    "remaining", usage.remaining()));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (AIProviderException e) {
+            return ResponseEntity.internalServerError().body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * POST /api/groups/{id}/quiz-sets/{setId}/questions/{qid}/ai-rewrite
+     * Returns 1 fresh draft WITHOUT saving — caller decides accept/discard.
+     * Body: { hint?: string }
+     */
+    @PostMapping("/{id}/quiz-sets/{setId}/questions/{qid}/ai-rewrite")
+    @SuppressWarnings("unchecked")
+    public ResponseEntity<?> aiRewriteQuestion(@PathVariable("id") String groupId,
+                                                @PathVariable("setId") String setId,
+                                                @PathVariable("qid") String qid,
+                                                @RequestBody(required = false) Map<String, Object> body,
+                                                Principal principal) {
+        try {
+            User user = getUser(principal);
+            requireLeaderOrMod(groupId, user.getId());
+            GroupQuizSet set = loadSetForGroup(groupId, setId);
+            List<String> ids = mutableQuestionIds(set);
+            if (!ids.contains(qid)) {
+                return ResponseEntity.status(404).body(Map.of("success", false, "message", "Cau hoi khong thuoc bo nay"));
+            }
+            Question existing = questionRepository.findById(qid)
+                    .orElseThrow(() -> new RuntimeException("Cau hoi khong ton tai"));
+
+            if (!aiQuotaService.tryAcquire(1)) {
+                AIQuotaService.Usage u = aiQuotaService.snapshot();
+                return ResponseEntity.status(429).body(Map.of("success", false,
+                        "error", "QUOTA_EXCEEDED",
+                        "message", "Da dat gioi han AI hom nay",
+                        "used", u.used(), "limit", u.limit(), "remaining", u.remaining()));
+            }
+
+            String hint = body != null && body.get("hint") instanceof String s ? s.trim() : "";
+            String customPrompt = "Viet lai cau hoi nay theo huong khac. Cau goc: \"" + existing.getContent() + "\"."
+                    + (hint.isEmpty() ? "" : " Goi y: " + hint);
+
+            AIGenerationContext ctx = AIGenerationContext.of(
+                    existing.getBook() != null ? existing.getBook() : "John",
+                    existing.getChapter() != null ? existing.getChapter() : 1,
+                    existing.getVerseStart() != null ? existing.getVerseStart() : 1,
+                    existing.getVerseEnd() != null ? existing.getVerseEnd() : 50,
+                    existing.getDifficulty() != null ? existing.getDifficulty().name().toUpperCase() : "MEDIUM",
+                    "MULTIPLE_CHOICE",
+                    existing.getLanguage() != null ? existing.getLanguage() : "vi",
+                    1, null, customPrompt);
+            AIGenerationResult res = aiProviderRouter.generate(ctx, null);
+            Map<String, Object> draft = res.questions().isEmpty() ? Map.of() : res.questions().get(0);
+
+            AIQuotaService.Usage usage = aiQuotaService.snapshot();
+            return ResponseEntity.ok(Map.of("success", true,
+                    "draft", draft,
+                    "provider", res.providerUsed(),
+                    "used", usage.used(),
+                    "limit", usage.limit(),
+                    "remaining", usage.remaining()));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(403).body(Map.of("success", false, "message", e.getMessage()));
+        } catch (AIProviderException e) {
+            return ResponseEntity.internalServerError().body(Map.of("success", false, "message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    // ── BL-AD-8 helpers ──
+
+    private GroupQuizSet loadSetForGroup(String groupId, String setId) {
+        GroupQuizSet set = groupQuizSetRepository.findById(setId)
+                .orElseThrow(() -> new RuntimeException("Quiz set khong ton tai"));
+        if (!set.getGroup().getId().equals(groupId)) {
+            throw new RuntimeException("Quiz set khong thuoc nhom nay");
+        }
+        return set;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<String> mutableQuestionIds(GroupQuizSet set) {
+        List<?> raw = set.getQuestionIds();
+        if (raw == null) return new ArrayList<>();
+        return raw.stream().filter(Objects::nonNull).map(Object::toString).collect(Collectors.toList());
+    }
+
+    private int intVal(Object o, int dflt) {
+        return o instanceof Number n ? n.intValue() : dflt;
+    }
+
+    @SuppressWarnings("unchecked")
+    private Question buildQuestionFromMap(Map<String, Object> raw, String source) {
+        Question q = new Question();
+        q.setId(UUID.randomUUID().toString());
+        q.setContent((String) raw.getOrDefault("content", ""));
+        q.setBook((String) raw.getOrDefault("book", "custom"));
+        if (raw.get("chapter") instanceof Number n) q.setChapter(n.intValue());
+        if (raw.get("verseStart") instanceof Number n) q.setVerseStart(n.intValue());
+        if (raw.get("verseEnd") instanceof Number n) q.setVerseEnd(n.intValue());
+
+        String diffStr = (String) raw.getOrDefault("difficulty", "medium");
+        try { q.setDifficulty(Question.Difficulty.valueOf(diffStr.toLowerCase())); }
+        catch (Exception ex) { q.setDifficulty(Question.Difficulty.medium); }
+
+        q.setType(Question.Type.multiple_choice_single);
+        q.setLanguage((String) raw.getOrDefault("language", "vi"));
+
+        List<String> options = raw.get("options") instanceof List<?> l
+                ? l.stream().map(o -> o == null ? "" : o.toString()).collect(Collectors.toList())
+                : new ArrayList<>();
+        // Always 4-option for editor MCQ; pad if AI returned <4 to avoid bad state.
+        while (options.size() < 4) options.add("");
+        q.setOptions(options);
+
+        Object ca = raw.get("correctAnswer");
+        List<Integer> indexes;
+        if (ca instanceof List<?> list) {
+            indexes = list.stream().map(v -> v instanceof Number n ? n.intValue() : -1).collect(Collectors.toList());
+        } else if (ca instanceof Number n) {
+            indexes = new ArrayList<>(List.of(n.intValue()));
+        } else {
+            indexes = new ArrayList<>(List.of(0));
+        }
+        // Clamp out-of-range so draft never blocks save (validator will warn in UI).
+        indexes = indexes.stream().map(i -> (i < 0 || i >= options.size()) ? 0 : i).collect(Collectors.toList());
+        q.setCorrectAnswer(indexes);
+
+        q.setExplanation((String) raw.get("explanation"));
+        q.setSource(source);
+        q.setIsActive(true);
+        q.setReviewStatus(Question.ReviewStatus.ACTIVE);
+        return q;
+    }
+
+    @SuppressWarnings("unchecked")
+    private void mergeQuestionFields(Question q, Map<String, Object> raw) {
+        if (raw.containsKey("content")) q.setContent((String) raw.get("content"));
+        if (raw.containsKey("book")) q.setBook((String) raw.get("book"));
+        if (raw.containsKey("chapter") && raw.get("chapter") instanceof Number n) q.setChapter(n.intValue());
+        if (raw.containsKey("verseStart") && raw.get("verseStart") instanceof Number n) q.setVerseStart(n.intValue());
+        if (raw.containsKey("verseEnd") && raw.get("verseEnd") instanceof Number n) q.setVerseEnd(n.intValue());
+        if (raw.containsKey("difficulty")) {
+            String d = (String) raw.get("difficulty");
+            if (d != null) {
+                try { q.setDifficulty(Question.Difficulty.valueOf(d.toLowerCase())); } catch (Exception ignore) {}
+            }
+        }
+        if (raw.containsKey("explanation")) q.setExplanation((String) raw.get("explanation"));
+        if (raw.containsKey("language")) q.setLanguage((String) raw.get("language"));
+        if (raw.containsKey("options") && raw.get("options") instanceof List<?> l) {
+            List<String> opts = l.stream().map(o -> o == null ? "" : o.toString()).collect(Collectors.toList());
+            while (opts.size() < 4) opts.add("");
+            q.setOptions(opts);
+        }
+        if (raw.containsKey("correctAnswer")) {
+            Object ca = raw.get("correctAnswer");
+            List<Integer> indexes;
+            if (ca instanceof List<?> list) {
+                indexes = list.stream().map(v -> v instanceof Number n ? n.intValue() : -1).collect(Collectors.toList());
+            } else if (ca instanceof Number n) {
+                indexes = new ArrayList<>(List.of(n.intValue()));
+            } else {
+                indexes = new ArrayList<>(List.of(0));
+            }
+            int sz = q.getOptions() != null ? q.getOptions().size() : 4;
+            int clampSize = sz;
+            indexes = indexes.stream().map(i -> (i < 0 || i >= clampSize) ? 0 : i).collect(Collectors.toList());
+            q.setCorrectAnswer(indexes);
+        }
+    }
+
+    private Map<String, Object> questionToMap(Question q) {
+        Map<String, Object> m = new LinkedHashMap<>();
+        m.put("id", q.getId());
+        m.put("book", q.getBook());
+        m.put("chapter", q.getChapter());
+        m.put("verseStart", q.getVerseStart());
+        m.put("verseEnd", q.getVerseEnd());
+        m.put("difficulty", q.getDifficulty() != null ? q.getDifficulty().name() : null);
+        m.put("type", q.getType() != null ? q.getType().name() : null);
+        m.put("content", q.getContent());
+        m.put("options", q.getOptions());
+        m.put("correctAnswer", q.getCorrectAnswer());
+        m.put("explanation", q.getExplanation());
+        m.put("source", q.getSource());
+        m.put("language", q.getLanguage());
+        return m;
+    }
+
     private void requireLeaderOrMod(String groupId, String userId) {
         GroupMember member = groupMemberRepository.findByGroupIdAndUserId(groupId, userId)
                 .orElseThrow(() -> new IllegalArgumentException("Ban khong phai thanh vien cua nhom nay"));

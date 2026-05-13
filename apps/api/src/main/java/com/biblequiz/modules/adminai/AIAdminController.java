@@ -108,7 +108,7 @@ public class AIAdminController {
         List<String> claudeModels = req.claudeModels();
 
         AIGenerationContext ctx = new AIGenerationContext(
-                book, chapter, verseStart, verseEnd,
+                book, chapter, chapter, verseStart, verseEnd,
                 difficulty, type, language, count,
                 scriptureText, customPrompt, claudeModels);
 
