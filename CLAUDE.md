@@ -93,26 +93,43 @@ Tool: `bash tools/spec-audit/audit.sh` (exit 0/1/2). Chi tiết: `docs/dev/workf
 
 ## Quy trình quản lý Task
 
-> KHÔNG nhận prompt rồi chạy hết 1 lần. Chia nhỏ → ghi TODO.md → làm từng task → ✅ → kế.
+> KHÔNG nhận prompt rồi chạy hết 1 lần. Chia nhỏ → tạo file `docs/todo/active/...md` → cập nhật TODO.md index → làm từng task → ✅ → kế.
 
+### Cấu trúc task tracker
+- **`TODO.md`** ở root = chỉ là **index** (table Active + pointer Archive). KHÔNG append nội dung task vào đây.
+- **`docs/todo/active/YYYY-MM-DD-<slug>.md`** = 1 file/task work-unit. Detail nằm ở đây.
+- **`docs/todo/archive/`** = file đã DONE/SUPERSEDED — di chuyển sang khi xong.
+- Slug: ascii-fold tiếng Việt → kebab-case, < 70 ký tự (vd: `quiz-set-card-actions`, không phải `Quiz Set card: thêm action buttons`).
+
+### 5 bước
 ```
-1. Đọc TODO.md hiện tại — task dở chưa xong?
-2. Phân tích prompt mới → chia tasks (mỗi task = 1 commit, < 100 LOC)
-3. Ghi tasks vào TODO.md theo format:
-   ### Task N: [Tên]
-   - Status: [ ] TODO / [x] DONE / [!] BLOCKED · File(s) · Test
-   - **Spec impact**: [ ] None [ ] SPEC_USER §X [ ] SPEC_ADMIN §X [ ] SPEC_GROUP §X [ ] SPEC_MULTIPLAYER §X [ ] BL-N
-   - **Spec strategy**: [ ] (a) update inline [ ] (b) new BL-N [ ] (c) [no-spec-impact]
-   - Checklist: impl · Tầng 1+2+3 pass · spec/BACKLOG updated · `audit.sh` no NEW broken · commit
-4. Làm task đầu → test pass → ✅ → commit → task kế
-5. Hết tasks → full regression → cập nhật TODO.md
+1. Đọc TODO.md (index) — scan table Active xem task dở chưa xong?
+   Nếu task dở liên quan → mở file detail trong docs/todo/active/.
+2. Phân tích prompt mới → chia tasks (mỗi task = 1 commit, < 100 LOC).
+3. TẠO file mới docs/todo/active/YYYY-MM-DD-<slug>.md theo format dưới,
+   RỒI thêm 1 row vào table Active trong TODO.md (link tới file mới).
+   Format file detail:
+     # YYYY-MM-DD — <Title>
+     > **Source**: ... · **Scope**: ...
+     ### Tasks
+     - <CODE>-N <Tên>
+       - Status: [ ] TODO / [x] DONE / [!] BLOCKED · Files · Test
+       - **Spec impact**: [ ] None [ ] SPEC_USER §X [ ] SPEC_ADMIN §X [ ] SPEC_GROUP §X [ ] SPEC_MULTIPLAYER §X [ ] BL-N
+       - **Spec strategy**: [ ] (a) update inline [ ] (b) new BL-N [ ] (c) [no-spec-impact]
+       - Checklist: impl · Tầng 1+2+3 pass · spec/BACKLOG updated · `audit.sh` no NEW broken · commit
+4. Làm task đầu → test pass → ✅ status trong file detail → commit → task kế.
+5. Hết tasks → full regression → move file sang docs/todo/archive/ → cập nhật TODO.md index (xoá row khỏi Active, thêm vào Archive list).
 ```
+
+### Shortcut
+Có thể dùng skill `/new-task <slug>` để tạo file template + cập nhật index 1 phát.
 
 ### Rules
 - 1 task = 1 commit, < 100 LOC
 - KHÔNG gộp / skip / làm song song
-- Sau mỗi task: cập nhật TODO.md NGAY
-- BLOCKED: ghi lý do, chuyển task không phụ thuộc, quay lại
+- Sau mỗi task: cập nhật status trong file detail NGAY (không đợi cuối)
+- KHÔNG append `## YYYY-MM-DD — ...` section vào root TODO.md — hook sẽ block
+- BLOCKED: ghi lý do trong file detail, chuyển task không phụ thuộc, quay lại
 
 ## Quy trình test bắt buộc (Regression Guard)
 
@@ -189,7 +206,8 @@ Ví dụ: `feat: add TournamentMatch page`, `fix(BL-3): wire XP surge`, `sync: H
 - KHÔNG commit khi test fail; KHÔNG skip Tầng 3 trước commit (kể cả 1 dòng CSS)
 - KHÔNG file > 300 LOC; KHÔNG gộp nhiều thay đổi vào 1 commit
 - KHÔNG disable test cũ để test mới pass; KHÔNG tiếp tục feature khi đang regression
-- KHÔNG nhận prompt rồi code 1 lần — chia TODO.md trước
+- KHÔNG nhận prompt rồi code 1 lần — chia thành file trong `docs/todo/active/` trước
+- KHÔNG append section task `## YYYY-MM-DD — ...` vào root TODO.md — root chỉ là index, detail phải nằm trong `docs/todo/active/<slug>.md` (hook PreToolUse sẽ block)
 - KHÔNG bỏ section Stitch HTML khi sync
 
 ### Specs
