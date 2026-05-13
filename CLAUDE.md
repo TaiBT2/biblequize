@@ -217,15 +217,13 @@ Ví dụ: `feat: add TournamentMatch page`, `fix(BL-3): wire XP surge`, `sync: H
 - KHÔNG dùng "Leo Rank"/"Thi Đấu Ranked" trong VN UI — C2 lock "Đấu Hạng"
 - KHÔNG seed câu hỏi mới mà thiếu `explanation` + `scriptureRef` (BTTHĐ 2011)
 
-## Known Issues & Fix-on-touch (cập nhật 2026-05-09)
+## Known Issues & Fix-on-touch (cập nhật 2026-05-13)
 
 > Khi task chạm file có known issue → **tạo task fix issue đó** TRƯỚC task chính.
 
 ### Critical — fix ngay khi chạm
 
-| # | File | Issue |
-|---|------|-------|
-| 1 | `hooks/useWebSocket.ts` | DEPRECATED — use `useStomp.ts` (STOMP CONNECT header). Migrate caller hoặc native WS. BL-15. |
+_None hiện tại — `hooks/useWebSocket.ts` đã được xóa 2026-05-13 (BL-15 DONE)._
 
 ### Medium — fix khi có thời gian
 - `pages/AuthCallback.tsx` dynamic `import()` → static; `pages/RoomQuiz.tsx` `location.state as any` → typed

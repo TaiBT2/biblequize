@@ -497,7 +497,7 @@ Spring WebSocket + STOMP. Native WS tại `/ws`, SockJS fallback tại `/ws-sock
 
 **Auth:** STOMP CONNECT frame với `Authorization: Bearer {accessToken}` header. `StompAuthChannelInterceptor` parse JWT, attach `Principal` (user email) vào session. `WebSocketConfig.configureClientInboundChannel` đảm bảo interceptor chạy **trước** `WebSocketRateLimitInterceptor`.
 
-> **Note (divergence):** `Known Issues` cũ (CLAUDE.md row #6) ghi "JWT token qua `?token=...` query param trên `useWebSocket.ts`". Đó là hook **legacy** (raw WebSocket, không phải STOMP). Hook hiện đang dùng cho rooms là `useStomp.ts` — gửi token qua **CONNECT header** (`useStomp.ts:56-58`), KHÔNG dùng query param. Spec này document cách STOMP. Nếu refactor về 1 hook duy nhất, follow STOMP pattern.
+> **Note:** Trước đây có 2 hook (legacy `useWebSocket.ts` raw WS với JWT query-param + `useStomp.ts` STOMP với header). Legacy hook đã được delete 2026-05-13 (BL-15 DONE). Hiện chỉ còn `useStomp.ts` — token gửi qua **CONNECT header** (`useStomp.ts:56-58`), KHÔNG dùng query param.
 
 **Rate limit:** `WebSocketRateLimitInterceptor` enforce per-user budget cho mọi SEND frame (chat, reaction, ready, answer). Vượt → frame bị drop silent.
 
@@ -851,7 +851,7 @@ Cross-reference `BACKLOG.md` (root) — multiplayer-related items:
 | MP-4 | Group leaderboard scoring scope (Q-A from SPEC_GROUP) — applies cross-spec | Solo + group scores currently mixed in group leaderboard. Bui locked Q2 = group-play-only (2026-05-09). | `ChurchGroupService.getLeaderboard:86-127` — see [BACKLOG.md](BACKLOG.md) BL-2 |
 | MP-5 | UUID v7 (CLAUDE.md rule) — Room/RoomPlayer dùng `UUID.randomUUID()` (v4) | Defer (low ROI). | `RoomService.java:63` |
 | MP-6 | Sequential mode: host "Skip idle player" button | UX — Sprint 3 work. | `SequentialScoringService.java:27` — see [BACKLOG.md](BACKLOG.md) BL-14 |
-| MP-7 | Deprecate `useWebSocket.ts` legacy hook | Migrate any remaining callers to `useStomp.ts`. | See [BACKLOG.md](BACKLOG.md) BL-15 |
+| MP-7 | ~~Deprecate `useWebSocket.ts` legacy hook~~ | DONE 2026-05-13 — file deleted, all callers already on `useStomp.ts`. | [BACKLOG.md](BACKLOG.md) BL-15 DONE |
 | MP-8 | Migration retroactive cho legacy rooms (`hostPlaysGame=true` → `false`) | Rooms cũ vẫn có host chơi như player. Defer — let R3 retention cleanup tự nhiên trong 24h. | Sprint 4 decision |
 | MP-9 | "Promote không muốn làm Quản trò" edge case | Sau R4 promote, new host có thể không muốn vai trò mới. Hiện tại không có "Trao quyền" action — defer Sprint 5. | Sprint 4 BACKLOG |
 | MP-10 | TV Host Mode v1.5 — two-screen Kahoot pattern | Quản trò mode (Sprint 4) là precondition. v1.5 sẽ thêm route `/room/:id/tv` cho projector display. | Sprint 4 setup |
@@ -1108,7 +1108,7 @@ Backend test classes (verify exist trong `apps/api/src/test/`):
 | MP-2 | BR absence-elimination | **Accept 2-state semantics.** ELIMINATED ≠ LEFT. Disconnect = LEFT (rejoinable). Wrong-answer = ELIMINATED (final). |
 | MP-3 | R2 activity definition | **Accept `createdAt`-only.** Simpler, prevents zombie rooms via chat keep-alive. Override SPEC patch 5.4.0. |
 | MP-6 | Sequential idle player skip | **Add Sprint 3.** Host "Skip" button → BACKLOG BL-14. |
-| MP-7 | useWebSocket vs useStomp | **Deprecate `useWebSocket.ts`.** Plan: grep usage, migrate, remove → BACKLOG BL-15. |
+| MP-7 | useWebSocket vs useStomp | **DONE 2026-05-13.** `useWebSocket.ts` deleted, `useStomp.ts` sole hook. BL-15 closed. |
 | QuestionSource enum (4 vs 2) | **2 values canonical** (DATABASE/CUSTOM). Sub-routing via `questionSetId`/`groupQuizSetId`/`customQuestionIds` fields. Spec §2.4 correct. |
 | MP-5 | UUID v4 vs v7 | **Defer.** Low ROI; no bug. |
 

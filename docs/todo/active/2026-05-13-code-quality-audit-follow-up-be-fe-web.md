@@ -28,10 +28,10 @@
   - Checklist: helper trong TierProgressService · hook vào post-scoring update XP path · unit test threshold detection + idempotency · spec sync · commit `feat(BL-3-trigger): auto-trigger Milestone Burst XP surge`
 
 - CQ-3 FE — Xóa `hooks/useWebSocket.ts` deprecated (BL-15)
-  - Status: `[ ]` TODO · Files: [hooks/useWebSocket.ts](apps/web/src/hooks/useWebSocket.ts) (delete), BACKLOG.md · Test: `grep "useWebSocket"` apps/web → 0 caller (verify trước khi xóa)
-  - **Spec impact**: `[x]` None · BL-15 close
-  - **Spec strategy**: `[x]` (a) update BACKLOG BL-15 DONE
-  - Checklist: grep verify no caller · delete file · BACKLOG updated · Tầng 3 pass · commit `chore(BL-15): remove deprecated useWebSocket hook`
+  - Status: `[x]` DONE · Files: `apps/web/src/hooks/useWebSocket.ts` (deleted, 285 LOC), `apps/web/src/hooks/__tests__/useWebSocket.test.ts` (deleted, 256 LOC / 15 tests), [BACKLOG.md](docs/spec/BACKLOG.md) BL-15 DONE, [CLAUDE.md](CLAUDE.md) §Known Issues Critical row removed, `apps/web/.test-baseline` 1227 → 1212
+  - **Spec impact**: `[x]` None · BL-15 closed
+  - **Spec strategy**: `[x]` (a) update BACKLOG BL-15 DONE + CLAUDE.md known issues
+  - Outcome: `grep "useWebSocket" apps/web/src` → 0 hit. TypeScript type-check không có error mới từ deletion (pre-existing TS errors không liên quan). 114 Vitest failures pre-existing (không phải do deletion — none mention useWebSocket).
 
 ### Phase 2 — FE Web type safety + lint (Major, ~1 ngày)
 

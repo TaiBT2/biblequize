@@ -194,13 +194,12 @@
 
 ### BL-15 — Deprecate `useWebSocket.ts` (legacy raw WS hook)
 - **Spec:** [SPEC_MULTIPLAYER.md §5.1 + Appendix B MP-7](SPEC_MULTIPLAYER.md)
-- **Code:** `apps/web/src/hooks/useWebSocket.ts` (raw WS, query-param JWT) vs `apps/web/src/hooks/useStomp.ts` (STOMP, header JWT). Rooms đã migrate sang useStomp; còn callers nào không?
-- **Cần làm:**
-  - `grep "useWebSocket" apps/web/src` — list remaining callers
-  - Migrate từng caller sang `useStomp` (nếu cần STOMP) hoặc native `WebSocket` API (nếu raw)
-  - Khi count = 0 → delete `useWebSocket.ts`
-  - Update Known Issues row #7 trong CLAUDE.md
-- **Status:** ⬜ TODO
+- **Closed 2026-05-13** (CQ-3, commit on `chore/code-quality-improvements`):
+  - `grep "useWebSocket" apps/web/src` → 0 production callers (only the hook's own test file referenced it).
+  - Migration was already done previously — Rooms use `useStomp.ts` (STOMP CONNECT header) for all WebSocket needs.
+  - Deleted `apps/web/src/hooks/useWebSocket.ts` (285 LOC) + `apps/web/src/hooks/__tests__/useWebSocket.test.ts` (256 LOC, 15 tests).
+  - CLAUDE.md §Known Issues "Critical" row removed.
+- **Status:** ✅ DONE
 
 ### BL-AD-1 — AI Quota: persist via Redis sorted-set
 - **Spec:** [SPEC_ADMIN_v3.1.md §20.1 AD-1](SPEC_ADMIN_v3.1.md)
