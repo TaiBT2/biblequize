@@ -56,10 +56,11 @@
   - **Done**: Standard mode-card pattern với gold-tint background (linear gradient 6% gold trên glass) + 1px gold border. Icon gold-tinted box, pill "Đã mở khóa" gold. Footer: "Vào trận →" gold CTA + "X / 100 câu hôm nay" right hint. Test verify KHÔNG có #7a5818 (gold-shadow của hero) — ensure NOT full hero gradient.
 
 - HR-6 SectionHeader + DailyCompletedStrip (sage tint)
-  - Status: `[ ]` TODO · Files: `apps/web/src/components/SectionHeader.tsx`, `apps/web/src/components/DailyCompletedStrip.tsx` + tests · Test: Vitest 6 tests
+  - Status: `[x]` DONE · Files: `SectionHeader.tsx`, `DailyCompletedStrip.tsx` + 2 tests · Test: 4+6 = 10/10
   - **Spec impact**: `[x]` None
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
-  - Checklist: impl · gold accent bar · sage green tint · Tầng 1 pass · commit `feat: HR-6 SectionHeader + DailyCompletedStrip` · STOP
+  - Checklist: [x] SectionHeader (gold bar + small caps title + optional meta) · [x] DailyCompletedStrip (sage tint pill + check icon + score message + review CTA + countdown) · [x] 10 tests pass · [ ] commit
+  - **Done**: SectionHeader = 3×14px gold gradient accent bar + 11px sans 700 ivory uppercase tracked 0.16em + optional 11px ivory-faint meta right. DailyCompletedStrip = sage `rgba(74,107,82,0.10)` bg + sage border, 32px check circle, score "X/Y đúng — Giỏi lắm!" (helper `scoreMessage` chia ngưỡng 80/60/0), sub line "Hôm nay · {trailing} · Thử thách mới sau {countdown}" với tabular-nums countdown, glass button "Xem lại bài làm".
 
 - HR-7 Home.tsx refactor — dynamic hierarchy state-aware layout
   - Status: `[ ]` TODO · Files: `apps/web/src/pages/Home.tsx` + `__tests__/Home.test.tsx` · Test: Vitest update + 5 new tests
