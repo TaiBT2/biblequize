@@ -1,26 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { useQuery } from '@tanstack/react-query'
 import { api } from '../../api/client'
+import { queryKeys } from '../../api/queryKeys'
 
 interface Tournament { tournamentId: string; name: string; bracketSize: number; status: string; currentRound: number; totalRounds: number; creatorId: string; createdAt: string }
 
+interface TournamentListResponse { items?: Tournament[] }
+
+async function fetchTournaments(): Promise<Tournament[]> {
+  // No admin-specific endpoint yet — reuse the user-visible list.
+  const res = await api.get<Tournament[] | TournamentListResponse>('/api/tournaments')
+  return Array.isArray(res.data) ? res.data : (res.data?.items ?? [])
+}
+
 export default function EventsAdmin() {
   const { t } = useTranslation()
-  const [tournaments, setTournaments] = useState<Tournament[]>([])
-  const [isLoading, setIsLoading] = useState(false)
-
-  const fetchTournaments = async () => {
-    setIsLoading(true)
-    try {
-      // Use existing tournament list — no admin-specific endpoint yet
-      // This will list tournaments the admin can see
-      const res = await api.get('/api/tournaments')
-      setTournaments(Array.isArray(res.data) ? res.data : res.data?.items ?? [])
-    } catch { /* graceful */ }
-    finally { setIsLoading(false) }
-  }
-
-  useEffect(() => { fetchTournaments() }, [])
+  const { data: tournaments = [], isLoading } = useQuery({
+    queryKey: queryKeys.tournaments.list(),
+    queryFn: fetchTournaments,
+  })
 
   const statusBadge = (status: string) => {
     const m: Record<string, string> = { LOBBY: 'bg-blue-500/20 text-blue-400', IN_PROGRESS: 'bg-emerald-500/20 text-emerald-400', COMPLETED: 'bg-[#32343e]/30 text-[#d5c4af]/60', CANCELLED: 'bg-red-500/20 text-red-400' }
