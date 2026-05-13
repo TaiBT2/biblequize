@@ -682,7 +682,7 @@ Thay thế modal 2-tab "AI tạo / Tự soạn" cũ. Mọi việc create/edit c�
 
 **Validation (block Publish via PublishConfirmModal):**
 - Tên bộ ≥ 3 ký tự
-- ≥ 1 câu hỏi (BE rule hiện vẫn ≥ 5 — sẽ thống nhất Sprint 6+)
+- ≥ 5 câu hỏi (match BE `ChurchGroupService.publishQuizSet` rule)
 - Mỗi câu valid: content ≥ 10 chars · 4 options ≥ 1 char · correct marked · explanation ≥ 20 chars
 
 **Endpoints (BL-AD-8 Phase B):**

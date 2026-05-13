@@ -1,6 +1,6 @@
 import { COLOR, DIFFICULTY_COLORS } from './styles'
 import type { EditorQuestion } from '../../../api/quizSets'
-import { validateQuestion, issueLabel } from './validation'
+import { validateQuestion, issueLabel, MIN_QUESTIONS_TO_PUBLISH } from './validation'
 
 interface Props {
   open: boolean
@@ -21,7 +21,9 @@ export default function PublishConfirmModal({
     .filter(x => x.issues.length > 0)
   const blockers: string[] = []
   if (!nameValid) blockers.push('Tên bộ ≥ 3 ký tự')
-  if (questions.length === 0) blockers.push('Cần ≥ 1 câu hỏi')
+  if (questions.length < MIN_QUESTIONS_TO_PUBLISH) {
+    blockers.push(`Cần ≥ ${MIN_QUESTIONS_TO_PUBLISH} câu hỏi (hiện có ${questions.length})`)
+  }
 
   const blocked = blockers.length > 0 || invalid.length > 0
   const counts = { easy: 0, medium: 0, hard: 0 } as Record<string, number>

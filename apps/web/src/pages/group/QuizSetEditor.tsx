@@ -18,6 +18,7 @@ import AIRewriteModal from './quizset-editor/AIRewriteModal'
 import PublishConfirmModal from './quizset-editor/PublishConfirmModal'
 import { COLOR } from './quizset-editor/styles'
 import { useAutoSave } from './quizset-editor/useAutoSave'
+import { MIN_QUESTIONS_TO_PUBLISH } from './quizset-editor/validation'
 
 type Mode = 'create' | 'edit'
 
@@ -321,7 +322,9 @@ export default function QuizSetEditor({ mode: forcedMode }: Props) {
   const lastSavedAgoSec = lastSavedAt ? Math.floor((Date.now() - lastSavedAt) / 1000) : null
   const questions = quizSet.questions ?? []
   const activeIdx = activeQuestion ? questions.findIndex(q => q.id === activeQuestion.id) : -1
-  const canPublish = quizSet.publishStatus === 'DRAFT' && questions.length > 0 && (quizSet.name || '').trim().length >= 3
+  const canPublish = quizSet.publishStatus === 'DRAFT'
+    && questions.length >= MIN_QUESTIONS_TO_PUBLISH
+    && (quizSet.name || '').trim().length >= 3
 
   return (
     <div style={{ background: COLOR.bgDeep, minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>

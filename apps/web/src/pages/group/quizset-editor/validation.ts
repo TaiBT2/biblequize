@@ -23,15 +23,20 @@ export function isQuestionValid(q: EditorQuestion): boolean {
   return validateQuestion(q).length === 0
 }
 
+export const MIN_QUESTIONS_TO_PUBLISH = 5
+
 export type QuizSetIssue =
   | { kind: 'name_short' }
-  | { kind: 'no_questions' }
+  | { kind: 'too_few_questions'; have: number; need: number }
   | { kind: 'invalid_questions'; ids: string[] }
 
 export function validateQuizSet(qs: QuizSetFull): QuizSetIssue[] {
   const issues: QuizSetIssue[] = []
   if (!qs.name || qs.name.trim().length < 3) issues.push({ kind: 'name_short' })
-  if (!qs.questions || qs.questions.length === 0) issues.push({ kind: 'no_questions' })
+  const count = qs.questions?.length ?? 0
+  if (count < MIN_QUESTIONS_TO_PUBLISH) {
+    issues.push({ kind: 'too_few_questions', have: count, need: MIN_QUESTIONS_TO_PUBLISH })
+  }
   const invalid = (qs.questions || []).filter(q => !isQuestionValid(q)).map(q => q.id)
   if (invalid.length > 0) issues.push({ kind: 'invalid_questions', ids: invalid })
   return issues
