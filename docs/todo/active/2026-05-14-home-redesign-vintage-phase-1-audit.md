@@ -6,6 +6,15 @@
 
 ### Phase 2 progress
 
+- **HRV-25** Duo-CTA side-by-side (override HR-7 state-aware design) — `[x]` DONE 2026-05-14
+  - **User decision 2026-05-14**: explicit sign-off to override `HR-7` state-aware design from 2026-05-13 Modern Spiritual sprint. New behavior: Daily card + Đấu Hạng card are ALWAYS side-by-side in a 2-col grid `[1.15fr_1fr]` (vintage Home.html `.duo-cta` proportions). Left card swaps between `FeaturedDailyCard` (todo) and `DailyCompletedStrip` (done); HeroRankedCard always visible on right.
+  - Removed sections: State-A "Chế độ chơi chính" (Practice + RankedStandardCard 2-col) + State-A "Chế độ đa dạng" (Variety 3-col). Collapsed into single always-visible "Khám phá thêm" 4-col grid (Practice + 3 Variety). `RankedStandardCard` no longer rendered in Home (component file preserved for potential future use; its test suite still passes standalone).
+  - Files: `apps/web/src/pages/Home.tsx` (~30 LOC removed, ~20 LOC added; remove RankedStandardCard import, replace state-aware Daily/Hero/State-A grid with `<div data-testid="home-duo-cta">` always-on layout, collapse State-A variety + State-B explore into one always-visible Khám phá thêm 4-col).
+  - Tests: `apps/web/src/pages/__tests__/Home.test.tsx` — removed 3 State-A tests + 4 State-B tests (7 specs of obsolete state-aware HR-7 behavior), added 6 new HRV-25 duo-cta specs (State A duo-cta both visible, State B duo-cta both visible, grid proportions, sections removed, always-visible explore in both states, DOM order). Net -1 test (26 → 25 Home.test cases). Full vitest 1301 total / 1176 pass / 125 pre-existing fail unchanged (0 new failures).
+  - i18n keys `home.primary.title` + `home.variety.title/subtitle` become orphan (still in vi.json + en.json — left in place for safety; can be GC'd in separate i18n sweep).
+  - **Closes BL-19 duo-cta deferred item** — all 4 originally outstanding items resolved (HUD extraction, i18n cleanup, journey path, duo-cta). Vintage Home.html structural parity now ~100% within Home page scope (sidebar remains AppLayout-scoped, separate task if desired).
+  - Strategy: `(c) [no-spec-impact]` per se, but **note this OVERRIDES HR-7 dynamic-hierarchy spec intent**. If SPEC_USER §Home documents HR-7 explicitly, that section needs a follow-up `docs:` commit; currently the spec_audit shows no broken refs introduced.
+
 - **HRV-24** Community grid 1:1.4:1 + accent text-shadow glow — `[x]` DONE 2026-05-14
   - Files: `apps/web/src/pages/Home.tsx` (1 LOC: group grid `sm:grid-cols-3` → `sm:grid-cols-[1fr_1.4fr_1fr]` matching vintage `.community { grid-template-columns: 1fr 1.4fr 1fr }`. Middle slot "Phòng chơi / Multiplayer" now implicitly featured with wider column without needing a separate variant component or BE-driven avatar pile). `apps/web/src/components/HomeBanner.tsx` (1 LOC: `text-shadow: 0 0 24px rgba(244,209,120,0.28)` on the gold-bright accent span in the poetic h1 — illuminated-manuscript glow effect on "cuộc hành trình" / "your journey").
   - Tests: HomeBanner 9/9 + Home 26/26 pass.

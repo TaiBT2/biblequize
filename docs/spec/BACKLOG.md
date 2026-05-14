@@ -265,7 +265,8 @@
   - ~~Full vintage 66-book journey path~~ — **DONE 2026-05-14 (HRV-21)**: BookStation refactor with 72px circular seal disks + SVG dashed curving path behind. Pulse animation on current station via `animate-journey-pulse` (HRV-19).
   - ~~HUD stat-pill extraction~~ — **DONE 2026-05-14 (HRV-16)**: `HomeHud.tsx` extracted from HomeBanner; vintage HUD row sits above Hero greeting per Home.html structure.
   - ~~i18n hardcoded VN strings inside `FeaturedDailyCard` / `RankedStandardCard`~~ — **DONE 2026-05-14 (HRV-20)**: 12 strings extracted to `home.featuredDailyCard.*` + `home.rankedStandard.*` namespaces (avoiding pre-existing `home.featuredDaily.*` namespace clash for DailyChallenge page).
-  - **All BL-19 outstanding items resolved 2026-05-14.** Remaining: structural `duo-cta` side-by-side layout (Daily + Đấu Hạng always visible regardless of completion state) — defer pending user signoff because it conflicts with the state-aware design from sprint 2026-05-13 Modern Spiritual HR-7.
+  - ~~Structural `duo-cta` side-by-side layout~~ — **DONE 2026-05-14 (HRV-25)**: user explicit sign-off to override HR-7 state-aware design. Daily card + Đấu Hạng card always visible side-by-side in `[1.15fr_1fr]` grid matching vintage `.duo-cta`. Removed State-A primary + variety sections (collapsed into always-visible Khám phá thêm 4-col).
+  - **All BL-19 outstanding items resolved 2026-05-14.** Vintage Home.html structural parity ~100% within Home page scope. Only sidebar restyle remains (AppLayout-scoped, separate task if desired).
 - **Ref:** Task file Phase 1 audit + HRV-7..HRV-15 sprint commits on branch `feat/home-redesign-vintage`.
 
 ### BL-18 — Cell Group Pulse heuristic (Sprint 6, leader-only)

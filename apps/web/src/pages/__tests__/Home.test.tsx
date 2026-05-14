@@ -191,42 +191,24 @@ describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
     })
   })
 
-  describe('Dynamic hierarchy — State A (Daily not done)', () => {
-    beforeEach(() => setupApi({ dailyDone: false, totalPoints: 8200 }))
-
-    it('renders FeaturedDailyCard (NOT DailyCompletedStrip + HeroRankedCard)', async () => {
+  // HRV-25: state-aware HR-7 design superseded — both Daily card and
+  // Đấu Hạng card are ALWAYS visible side-by-side in the duo-cta grid.
+  // Only the left card swaps content (FeaturedDailyCard when daily todo,
+  // DailyCompletedStrip when daily done).
+  describe('HRV-25 duo-cta — Daily + Đấu Hạng always side-by-side', () => {
+    it('State A (daily todo): FeaturedDailyCard on left + HeroRankedCard on right', async () => {
+      setupApi({ dailyDone: false, totalPoints: 8200 })
       renderHome()
       await waitFor(() => {
-        expect(screen.getByTestId('featured-daily-card')).toBeInTheDocument()
+        expect(screen.getByTestId('home-duo-cta')).toBeInTheDocument()
       })
+      expect(screen.getByTestId('featured-daily-card')).toBeInTheDocument()
+      expect(screen.getByTestId('hero-ranked-card')).toBeInTheDocument()
       expect(screen.queryByTestId('daily-completed-strip')).not.toBeInTheDocument()
-      expect(screen.queryByTestId('hero-ranked-card')).not.toBeInTheDocument()
     })
 
-    it('renders "Chế độ chơi chính" + "Chế độ đa dạng" sections (not "Khám phá thêm")', async () => {
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByText('Chế độ chơi chính')).toBeInTheDocument()
-      })
-      expect(screen.getByText('Chế độ đa dạng')).toBeInTheDocument()
-      expect(screen.queryByText('Khám phá thêm')).not.toBeInTheDocument()
-    })
-
-    it('Primary grid contains Practice (compact) + RankedStandardCard', async () => {
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByTestId('ranked-standard-card')).toBeInTheDocument()
-      })
-      const primary = screen.getByTestId('home-primary-grid')
-      expect(primary).toBeInTheDocument()
-      expect(primary.contains(screen.getByTestId('ranked-standard-card'))).toBe(true)
-    })
-  })
-
-  describe('Dynamic hierarchy — State B (Daily done)', () => {
-    beforeEach(() => setupApi({ dailyDone: true, totalPoints: 8200 }))
-
-    it('renders DailyCompletedStrip + HeroRankedCard (NOT FeaturedDailyCard)', async () => {
+    it('State B (daily done): DailyCompletedStrip on left + HeroRankedCard on right', async () => {
+      setupApi({ dailyDone: true, totalPoints: 8200 })
       renderHome()
       await waitFor(() => {
         expect(screen.getByTestId('daily-completed-strip')).toBeInTheDocument()
@@ -235,17 +217,15 @@ describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
       expect(screen.queryByTestId('featured-daily-card')).not.toBeInTheDocument()
     })
 
-    it('HeroRankedCard sits BEFORE DailyMissionsCard in DOM order', async () => {
+    it('duo-cta grid uses md:grid-cols-[1.15fr_1fr] vintage proportions', async () => {
+      setupApi({ dailyDone: false, totalPoints: 8200 })
       renderHome()
-      await waitFor(() => {
-        expect(screen.getByTestId('hero-ranked-card')).toBeInTheDocument()
-      })
-      const hero = screen.getByTestId('hero-ranked-card')
-      const missions = screen.getByTestId('home-daily-missions')
-      expect(hero.compareDocumentPosition(missions) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+      const duo = await screen.findByTestId('home-duo-cta')
+      expect(duo.className).toContain('md:grid-cols-[1.15fr_1fr]')
     })
 
-    it('renders "Khám phá thêm" section (not the State A pair)', async () => {
+    it('"Chế độ chơi chính" + "Chế độ đa dạng" sections REMOVED (HRV-25 collapsed into explore)', async () => {
+      setupApi({ dailyDone: false, totalPoints: 8200 })
       renderHome()
       await waitFor(() => {
         expect(screen.getByText('Khám phá thêm')).toBeInTheDocument()
@@ -254,12 +234,35 @@ describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
       expect(screen.queryByText('Chế độ đa dạng')).not.toBeInTheDocument()
     })
 
-    it('"Khám phá thêm" grid uses lg:grid-cols-4', async () => {
+    it('Always-visible "Khám phá thêm" 4-col explore grid in BOTH states', async () => {
+      // State A
+      setupApi({ dailyDone: false, totalPoints: 8200 })
+      const { unmount } = renderHome()
+      await waitFor(() => {
+        expect(screen.getByTestId('home-explore-grid')).toBeInTheDocument()
+      })
+      expect(screen.getByTestId('home-explore-grid').className).toContain('lg:grid-cols-4')
+      unmount()
+
+      // State B
+      vi.clearAllMocks()
+      setupApi({ dailyDone: true, totalPoints: 8200 })
       renderHome()
       await waitFor(() => {
         expect(screen.getByTestId('home-explore-grid')).toBeInTheDocument()
       })
       expect(screen.getByTestId('home-explore-grid').className).toContain('lg:grid-cols-4')
+    })
+
+    it('DailyMissionsCard sits AFTER duo-cta in DOM order (both states)', async () => {
+      setupApi({ dailyDone: true, totalPoints: 8200 })
+      renderHome()
+      await waitFor(() => {
+        expect(screen.getByTestId('home-duo-cta')).toBeInTheDocument()
+      })
+      const duo = screen.getByTestId('home-duo-cta')
+      const missions = screen.getByTestId('home-daily-missions')
+      expect(duo.compareDocumentPosition(missions) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
     })
   })
 

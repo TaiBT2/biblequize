@@ -14,7 +14,6 @@ import HeroRankedCard from '../components/HeroRankedCard'
 import HomeBanner from '../components/HomeBanner'
 import HomeHud from '../components/HomeHud'
 import MotivationCard from '../components/MotivationCard'
-import RankedStandardCard from '../components/RankedStandardCard'
 import SectionHeader from '../components/SectionHeader'
 import TutorialOverlay from '../components/TutorialOverlay'
 import VerseFooter from '../components/VerseFooter'
@@ -280,20 +279,27 @@ export default function Home() {
       <HomeHud />
       <HomeBanner />
 
-      {/* ── Daily section: State A featured / State B completed strip ── */}
-      {dailyDone ? (
-        <DailyCompletedStrip
-          correctCount={dailyCorrect}
-          totalCount={dailyTotal}
-          countdownText={countdown}
-          onReview={() => navigate('/daily')}
-        />
-      ) : (
-        <FeaturedDailyCard onStart={() => navigate('/daily')} />
-      )}
-
-      {/* ── State B: Hero Ranked promoted right after the Daily strip ── */}
-      {dailyDone && (
+      {/* HRV-25 duo-cta — Daily + Đấu Hạng side-by-side per vintage
+          Home.html .duo-cta { grid-template-columns: 1.15fr 1fr }.
+          Always 2-card layout; left card swaps between FeaturedDailyCard
+          (todo) and DailyCompletedStrip (done) but the structural grid
+          stays constant. HeroRankedCard always visible — supersedes the
+          earlier state-aware HR-7 hide-Ranked-when-Daily-todo gating
+          (per user decision 2026-05-14: vintage-faithful layout). */}
+      <div
+        data-testid="home-duo-cta"
+        className="grid grid-cols-1 md:grid-cols-[1.15fr_1fr] gap-3.5 md:gap-5 mb-5 items-stretch"
+      >
+        {dailyDone ? (
+          <DailyCompletedStrip
+            correctCount={dailyCorrect}
+            totalCount={dailyTotal}
+            countdownText={countdown}
+            onReview={() => navigate('/daily')}
+          />
+        ) : (
+          <FeaturedDailyCard onStart={() => navigate('/daily')} />
+        )}
         <HeroRankedCard
           energyRemaining={energyRemaining}
           energyMax={energyMax}
@@ -301,71 +307,34 @@ export default function Home() {
           rankedCap={rankedCap}
           onEnter={() => navigate('/ranked')}
         />
-      )}
+      </div>
 
-      {/* ── Motivation nudge — slotted between Daily and Missions per
-            Bui 2026-05-13. Only renders for new users with zero signals. */}
+      {/* MotivationCard — onboarding nudge for new users only */}
       {shouldShowMotivation && (
         <div className="mb-5">
           <MotivationCard />
         </div>
       )}
 
-      {/* ── Daily Missions — render for all users (Bui 2026-05-14:
-            removed prior `!isNewUser` gate; Daily Missions is the
-            primary "today's task" surface and shouldn't disappear for
-            new users). MotivationCard above still gates on isNewUser
-            so the two coexist for brand-new users. */}
+      {/* DailyMissionsCard — always rendered for all users */}
       <section data-testid="home-daily-missions" className="mb-5">
         <DailyMissionsCard />
       </section>
 
-      {/* ── State A: Chế độ chơi chính (Practice + Ranked-standard 2-col) ── */}
-      {!dailyDone && (
-        <>
-          <SectionHeader title={t('home.primary.title')} />
-          <div
-            data-testid="home-primary-grid"
-            className="grid grid-cols-1 sm:grid-cols-2 gap-3.5"
-          >
-            {renderModeCard(PRACTICE_CARD)}
-            <RankedStandardCard
-              energyRemaining={energyRemaining}
-              rankedAnswered={rankedAnswered}
-              rankedCap={rankedCap}
-              onEnter={() => navigate('/ranked')}
-            />
-          </div>
-
-          <SectionHeader
-            title={t('home.variety.title')}
-            tag={t('home.variety.subtitle')}
-          />
-          <div
-            data-testid="home-variety-grid"
-            className="grid grid-cols-1 sm:grid-cols-3 gap-3.5"
-          >
-            {VARIETY_CARDS.map(renderModeCard)}
-          </div>
-        </>
-      )}
-
-      {/* ── State B: Khám phá thêm (4-col flat) ── */}
-      {dailyDone && (
-        <>
-          <SectionHeader
-            title={t('home.explore.title')}
-            tag={t('home.explore.subtitle')}
-          />
-          <div
-            data-testid="home-explore-grid"
-            className="grid grid-cols-2 lg:grid-cols-4 gap-3"
-          >
-            {renderModeCard(PRACTICE_CARD)}
-            {VARIETY_CARDS.map(renderModeCard)}
-          </div>
-        </>
-      )}
+      {/* Khám phá thêm — always-visible 4-col grid (Practice + 3 Variety).
+          State-aware "Chế độ chơi chính" + "Chế độ đa dạng" sections
+          collapsed into this single explore grid as part of HRV-25. */}
+      <SectionHeader
+        title={t('home.explore.title')}
+        tag={t('home.explore.subtitle')}
+      />
+      <div
+        data-testid="home-explore-grid"
+        className="grid grid-cols-2 lg:grid-cols-4 gap-3"
+      >
+        {renderModeCard(PRACTICE_CARD)}
+        {VARIETY_CARDS.map(renderModeCard)}
+      </div>
 
       {/* ── Thi đấu cộng đồng (both states) ── */}
       {/* HRV-24: community grid 1:1.4:1 per vintage Home.html
