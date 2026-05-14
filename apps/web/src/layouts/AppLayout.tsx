@@ -55,7 +55,6 @@ export default function AppLayout() {
           className="hidden md:flex flex-col h-screen sticky top-0 z-30 bg-[#11131e] w-72 border-r border-surface-container-high/50"
         >
           <SidebarHeader />
-          <SidebarUserCard />
 
           <nav className="flex-1 space-y-1.5 px-3 py-4 overflow-y-auto">
             {navItems.map((item) => (
@@ -139,6 +138,11 @@ export default function AppLayout() {
               </Link>
             </div>
           )}
+
+          {/* User card pinned to sidebar foot per mockup .user-card
+              (margin-top:auto) — moved from above the nav to here so
+              navigation sits closer to the logo. */}
+          <SidebarUserCard />
         </aside>
 
         <main className="flex-1 p-4 md:p-10 lg:p-14 overflow-y-auto bg-[#11131e]">

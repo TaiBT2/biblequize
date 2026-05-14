@@ -30,7 +30,7 @@ export default function SidebarUserCard() {
   const tierName = t(tier.nameKey)
 
   return (
-    <div data-testid="sidebar-user-card" className="px-3 py-3 border-b border-outline-variant/10">
+    <div data-testid="sidebar-user-card" className="px-3 py-3 border-t border-outline-variant/10">
       <UserDropdown
         align="left"
         trigger="card"
