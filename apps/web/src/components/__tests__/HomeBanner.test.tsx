@@ -62,13 +62,13 @@ describe('HomeBanner (HR-2)', () => {
     vi.clearAllMocks()
   })
 
-  it('renders user name in sans extrabold with tight tracking', async () => {
+  it('renders user name in Yeseva One display serif with tight tracking (HRV-10)', async () => {
     setupApi()
     renderBanner()
     const name = await screen.findByTestId('home-greeting-name')
     expect(name).toHaveTextContent('Tai Thanh')
-    expect(name.className).toContain('font-extrabold')
-    expect(name.className).toContain('tracking-[-0.025em]')
+    expect(name.className).toContain('font-display')
+    expect(name.className).toContain('tracking-[-0.02em]')
   })
 
   it('streak stat uses animate-breathe class on flame icon', async () => {
@@ -116,5 +116,23 @@ describe('HomeBanner (HR-2)', () => {
     renderBanner()
     expect(await screen.findByTestId('home-greeting-max-tier')).toBeInTheDocument()
     expect(screen.queryByTestId('home-greeting-progress-bar')).not.toBeInTheDocument()
+  })
+
+  it('XP track renders 6 milestone dots (one per C1 tier — HRV-10)', async () => {
+    setupApi({ totalPoints: 500 })
+    renderBanner()
+    await screen.findByTestId('home-greeting-progress-bar')
+    for (const i of [0, 1, 2, 3, 4, 5]) {
+      expect(screen.getByTestId(`home-greeting-milestone-${i}`)).toBeInTheDocument()
+    }
+    // Ensure we did not accidentally render a 7th dot.
+    expect(screen.queryByTestId('home-greeting-milestone-6')).not.toBeInTheDocument()
+  })
+
+  it('stat numbers use font-numeric (JetBrains Mono) per vintage HUD style', async () => {
+    setupApi({ currentStreak: 7 })
+    renderBanner()
+    const streak = await screen.findByTestId('home-greeting-stat-streak')
+    expect(streak.querySelector('.font-numeric')).not.toBeNull()
   })
 })

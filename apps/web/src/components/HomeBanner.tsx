@@ -75,23 +75,23 @@ export default function HomeBanner() {
   return (
     <section
       data-testid="home-greeting-card"
-      className="relative overflow-hidden rounded-[22px] border border-[rgba(232,168,50,0.14)] backdrop-blur-[14px] p-4 md:p-7 mb-5"
+      className="relative overflow-hidden rounded-[22px] border border-line bg-bg-deep shadow-chunky-soft p-4 md:p-7 mb-5"
       style={{
-        background:
-          'linear-gradient(135deg, rgba(40,32,28,0.6), rgba(24,26,36,0.4)), rgba(24,26,36,0.55)',
+        backgroundImage:
+          'radial-gradient(ellipse 600px 320px at 15% -20%, rgba(232,181,71,0.14), transparent 60%), linear-gradient(135deg, rgba(27,20,36,0.85), rgba(14,10,18,0.95))',
       }}
     >
-      {/* Top-left gold glow */}
+      {/* Top-left gold glow — stronger vintage radial */}
       <div
         aria-hidden
-        className="absolute -top-[40%] -left-[10%] w-[280px] h-[280px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(232,168,50,0.14), transparent 65%)' }}
+        className="absolute -top-[40%] -left-[10%] w-[320px] h-[320px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(244,209,120,0.18), transparent 65%)' }}
       />
-      {/* Bottom accent line */}
+      {/* Bottom accent line — gold-bright */}
       <div
         aria-hidden
-        className="absolute bottom-0 left-[30%] w-[100px] h-px pointer-events-none"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(232,168,50,0.4), transparent)' }}
+        className="absolute bottom-0 left-[30%] w-[120px] h-px pointer-events-none"
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(244,209,120,0.5), transparent)' }}
       />
 
       <div className="relative z-10 grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] gap-4 md:gap-7 items-center">
@@ -122,7 +122,7 @@ export default function HomeBanner() {
           </div>
           <div
             data-testid="home-greeting-name"
-            className="text-[22px] md:text-[30px] font-extrabold leading-[1.1] text-ivory tracking-[-0.025em] mb-2 md:mb-3.5 truncate"
+            className="font-display text-[26px] md:text-[40px] leading-[1.05] text-ivory tracking-[-0.02em] mb-2 md:mb-3.5 truncate"
           >
             {userName}
           </div>
@@ -168,11 +168,14 @@ export default function HomeBanner() {
                     style={{ background: '#f5e3a8', boxShadow: '0 0 14px rgba(232,168,50,0.8)' }}
                   />
                 </div>
-                {/* Milestone dots — pointer-events-none overlay, kept for
-                    backward-compat with Home.test.tsx specs that assert
-                    home-greeting-milestone-N rendering. */}
+                {/* HRV-10: 6 milestone dots (was 5) — aligns with C1
+                    6-tier journey (Tân Tín Hữu / Người Tìm Kiếm / Môn Đồ /
+                    Hiền Triết / Tiên Tri / Sứ Đồ). starIndex still 0..5
+                    from BE = stars within current tier; the visual rail
+                    uses the same dot count but conceptually represents
+                    overall tier progression for the user. */}
                 <div className="absolute inset-0 flex justify-between items-center px-1 pointer-events-none">
-                  {[0, 1, 2, 3, 4].map(i => (
+                  {[0, 1, 2, 3, 4, 5].map(i => (
                     <span
                       key={i}
                       data-testid={`home-greeting-milestone-${i}`}
@@ -255,10 +258,10 @@ function Stat({ icon, testId, value, label }: StatProps) {
       >
         {glyph}
       </div>
-      <div className="text-[18px] md:text-[22px] font-extrabold text-ivory tabular-nums leading-none tracking-[-0.02em]">
+      <div className="font-numeric text-[18px] md:text-[22px] font-bold text-ivory tabular-nums leading-none tracking-[-0.01em]">
         {value.toLocaleString()}
       </div>
-      <div className="text-[9px] font-semibold uppercase tracking-[0.12em] text-ivory-faint mt-1">
+      <div className="text-[9px] font-semibold uppercase tracking-[0.16em] text-ivory-faint mt-1">
         {label}
       </div>
     </div>

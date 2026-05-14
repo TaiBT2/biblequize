@@ -6,6 +6,12 @@
 
 ### Phase 2 progress
 
+- **HRV-10** HomeBanner vintage palette + 6-tier milestone rail — `[x]` DONE 2026-05-14
+  - Files: `apps/web/src/components/HomeBanner.tsx` (~12 LOC: bg-deep + line border + chunky-soft shadow + gold radial glow stronger; name → font-display 26/40px; milestone dots 5 → 6; stat numbers → font-numeric JetBrains Mono), `apps/web/src/components/__tests__/HomeBanner.test.tsx` (update name assertion font-display + tracking-[-0.02em]; add 6-milestone test + font-numeric test, baseline 6 → 8).
+  - Scope intentionally minimal — palette + typography + dot count. HUD stat-pill EXTRACTION (separate from Hero greeting per vintage Home.html) is deferred to HRV-15 final integration if needed; current structure keeps all 3 stats inside HomeBanner, preserving testid contracts.
+  - Test: HomeBanner 8/8 + Home 26/26 pass.
+  - Strategy: `(c) [no-spec-impact]` — visual only.
+
 - **HRV-9** CompactCard vintage variant + Home wire-up — `[x]` DONE 2026-05-14
   - Files: `apps/web/src/components/CompactCard.tsx` (extend with `variant` + `cornerBadge` props, +90 LOC vintage render branch), `apps/web/src/pages/Home.tsx` (add `cornerBadgeKey` to ModeConfig + pass `variant="vintage"` + cornerBadge i18n key per card, +12 LOC), `apps/web/src/i18n/{vi,en}.json` (+8 keys: `home.modeCorner.{practice,weekly,mystery,speed}`).
   - Vintage variant: solid `bg-[#1b1424]` + border `line-soft` + `shadow-chunky-soft` (Duolingo 4px hard offset) + hover lift + active push-down. Solid `themeHex` ico-box 48px with `inset 0 -3px 0 0 rgba(0,0,0,0.22)` for 3D feel. Yeseva One title 18→20px. Optional corner badge (top-right uppercase JetBrains Mono tracked). Lock chip + reason override into ruby palette.
