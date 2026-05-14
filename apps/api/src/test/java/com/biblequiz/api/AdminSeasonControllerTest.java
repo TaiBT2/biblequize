@@ -53,6 +53,21 @@ class AdminSeasonControllerTest {
     }
 
     @Test
+    void createSeason_overlap_returns409() {
+        // Reject any new season whose date range overlaps an existing one —
+        // protects the C9 invariant (one canonical season per quarter, no
+        // overlap) at the write layer. See incident 2026-05-14.
+        when(seasonRepository.existsByStartDateLessThanEqualAndEndDateGreaterThanEqual(any(), any()))
+                .thenReturn(true);
+        var res = controller.createSeason(Map.of(
+                "name", "Stray Season",
+                "startDate", "2026-05-01",
+                "endDate", "2026-05-31"));
+        assertEquals(409, res.getStatusCode().value());
+        verify(seasonRepository, never()).save(any());
+    }
+
+    @Test
     void endSeason_success() {
         Season s = new Season("s1", "Active", LocalDate.of(2026, 1, 1), LocalDate.of(2026, 12, 31));
         s.setIsActive(true);

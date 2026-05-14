@@ -49,6 +49,11 @@ public class AdminSeasonController {
             return ResponseEntity.badRequest().body(Map.of("error", "endDate must be after startDate"));
         }
 
+        if (seasonRepository.existsByStartDateLessThanEqualAndEndDateGreaterThanEqual(end, start)) {
+            return ResponseEntity.status(409).body(Map.of("error",
+                    "season date range overlaps an existing season"));
+        }
+
         Season season = new Season(UUID.randomUUID().toString(), name, start, end);
         season.setCreatedAt(LocalDateTime.now());
         seasonRepository.save(season);
