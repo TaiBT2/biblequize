@@ -10,26 +10,11 @@ vi.mock('../../api/client', () => ({
 
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
-    // Substitute simple {{var}} placeholders so the rendered subtitle
-    // matches what users see in production.
-    t: (key: string, opts?: Record<string, any>) => {
+    t: (key: string) => {
       const dict: Record<string, string> = {
-        'home.journey.title': '🗺 Hành trình 66 sách',
-        'home.journey.subtitleStart': 'Bắt đầu hành trình từ Genesis',
-        'home.journey.subtitleOT':
-          'Đang ở {{book}} · Ma-thi-ơ và Khải Huyền đang đợi bạn',
-        'home.journey.subtitleNT': 'Đang ở {{book}} · Còn {{count}} sách Tân Ước',
-        'home.journey.subtitleDone': 'Bạn đã chinh phục toàn bộ Kinh Thánh! 👑',
-        'home.journey.otLabel': 'Cựu Ước (39)',
-        'home.journey.ntLabel': 'Tân Ước (27)',
+        'home.journey.title': 'Hành trình 66 sách',
       }
-      let template = dict[key] ?? key
-      if (opts) {
-        for (const [k, v] of Object.entries(opts)) {
-          template = template.replace(new RegExp(`\\{\\{\\s*${k}\\s*\\}\\}`, 'g'), String(v))
-        }
-      }
-      return template
+      return dict[key] ?? key
     },
     i18n: { language: 'vi' },
   }),
@@ -48,12 +33,28 @@ function renderCard() {
   )
 }
 
-const summary = (overrides: Partial<{
-  completedBooks: number
-  oldTestamentCompleted: number
-  newTestamentCompleted: number
-  currentBook: string | null
-}> = {}) => ({
+function makeBook(
+  order: number,
+  bookVi: string,
+  status: 'COMPLETED' | 'IN_PROGRESS' | 'LOCKED',
+  masteryPercent = 0,
+) {
+  return {
+    book: bookVi.replace(/\s+/g, ''),
+    bookVi,
+    order,
+    testament: 'OLD',
+    totalQuestions: 100,
+    masteredQuestions: Math.round(masteryPercent),
+    masteryPercent,
+    status,
+  }
+}
+
+const journey = (
+  books: ReturnType<typeof makeBook>[],
+  overrides: Partial<{ completedBooks: number; currentBook: string | null }> = {},
+) => ({
   data: {
     summary: {
       totalBooks: 66,
@@ -61,15 +62,18 @@ const summary = (overrides: Partial<{
       inProgressBooks: 1,
       lockedBooks: 65,
       overallMasteryPercent: 0,
-      oldTestamentCompleted: overrides.oldTestamentCompleted ?? 0,
-      newTestamentCompleted: overrides.newTestamentCompleted ?? 0,
-      currentBook: overrides.currentBook ?? null,
+      oldTestamentCompleted: 0,
+      newTestamentCompleted: 0,
+      currentBook:
+        overrides.currentBook ??
+        books.find(b => b.status === 'IN_PROGRESS')?.book ??
+        null,
     },
-    books: [],
+    books,
   },
 })
 
-describe('BibleJourneyCard (H6)', () => {
+describe('BibleJourneyCard (Modern Spiritual)', () => {
   beforeEach(() => {
     vi.clearAllMocks()
   })
@@ -80,98 +84,116 @@ describe('BibleJourneyCard (H6)', () => {
     expect(container.innerHTML).toBe('')
   })
 
-  it('renders "Bắt đầu hành trình từ Genesis" when not started', async () => {
-    mockApiGet.mockResolvedValue(summary({ currentBook: null, completedBooks: 0 }))
+  it('renders title + meta with current book name', async () => {
+    mockApiGet.mockResolvedValue(
+      journey([makeBook(1, 'Sáng Thế Ký', 'IN_PROGRESS', 5)]),
+    )
     renderCard()
     await waitFor(() => {
-      expect(screen.getByTestId('bible-journey-subtitle').textContent).toBe(
-        'Bắt đầu hành trình từ Genesis',
+      expect(screen.getByTestId('bible-journey-title')).toHaveTextContent(
+        'Hành trình 66 sách',
       )
     })
-    expect(screen.getByTestId('bible-journey-count').textContent).toContain('0')
-  })
-
-  it('renders OT-phase subtitle when current book is in Old Testament', async () => {
-    // Backend returns books array with testament info — H6 picks the
-    // current book's entry to decide OT vs NT phase.
-    mockApiGet.mockResolvedValue({
-      data: {
-        summary: {
-          totalBooks: 66,
-          completedBooks: 5,
-          oldTestamentCompleted: 5,
-          newTestamentCompleted: 0,
-          currentBook: 'Genesis',
-        },
-        books: [{ book: 'Genesis', testament: 'OLD' }],
-      },
-    })
-    renderCard()
-    await waitFor(() => {
-      expect(screen.getByTestId('bible-journey-subtitle').textContent).toContain('Genesis')
-    })
-    expect(screen.getByTestId('bible-journey-subtitle').textContent).toContain(
-      'Ma-thi-ơ',
+    const meta = screen.getByTestId('bible-journey-meta')
+    expect(meta).toHaveTextContent('0')
+    expect(meta).toHaveTextContent('66 sách')
+    expect(screen.getByTestId('bible-journey-current')).toHaveTextContent(
+      'Sáng Thế Ký',
     )
   })
 
-  it('renders NT-phase subtitle with remaining count', async () => {
-    mockApiGet.mockResolvedValue({
-      data: {
-        summary: {
-          totalBooks: 66,
-          completedBooks: 45,
-          oldTestamentCompleted: 39,
-          newTestamentCompleted: 6,
-          currentBook: 'Matthew',
-        },
-        books: [{ book: 'Matthew', testament: 'NEW' }],
-      },
-    })
+  it('omits "Đang ở X" when there is no current book', async () => {
+    mockApiGet.mockResolvedValue(journey([], { currentBook: null }))
     renderCard()
     await waitFor(() => {
-      const sub = screen.getByTestId('bible-journey-subtitle').textContent ?? ''
-      expect(sub).toContain('Matthew')
-      // 27 NT total − 6 done = 21 remaining.
-      expect(sub).toContain('21')
+      expect(screen.getByTestId('bible-journey-meta')).toBeInTheDocument()
+    })
+    expect(screen.queryByTestId('bible-journey-current')).not.toBeInTheDocument()
+  })
+
+  it('renders the static unlock-rule sub line', async () => {
+    mockApiGet.mockResolvedValue(journey([]))
+    renderCard()
+    await waitFor(() => {
+      expect(screen.getByTestId('bible-journey-sub').textContent).toContain(
+        'Hoàn thành 80%',
+      )
     })
   })
 
-  it('renders all-done celebration when 66/66 complete', async () => {
+  it('renders one chip per book up to the visible window (6) plus an overflow chip', async () => {
+    const books = [
+      makeBook(1, 'Sáng Thế Ký', 'IN_PROGRESS', 5),
+      makeBook(2, 'Xuất Hành', 'LOCKED'),
+      makeBook(3, 'Lê-vi Ký', 'LOCKED'),
+      makeBook(4, 'Dân Số Ký', 'LOCKED'),
+      makeBook(5, 'Phục Truyền', 'LOCKED'),
+      makeBook(6, 'Giô-suê', 'LOCKED'),
+      makeBook(7, 'Các Quan Xét', 'LOCKED'),
+      makeBook(8, 'Ru-tơ', 'LOCKED'),
+    ]
+    mockApiGet.mockResolvedValue(journey(books))
+    renderCard()
+    await waitFor(() => {
+      expect(screen.getByTestId('bible-journey-chips')).toBeInTheDocument()
+    })
+    // First 6 chips rendered
+    expect(screen.getByTestId('bible-journey-chip-SángThếKý')).toBeInTheDocument()
+    expect(screen.getByTestId('bible-journey-chip-Giô-suê')).toBeInTheDocument()
+    // Beyond-window chip not rendered
+    expect(screen.queryByTestId('bible-journey-chip-Ru-tơ')).not.toBeInTheDocument()
+    // Overflow chip "+ 2 sách"
+    const overflow = screen.getByTestId('bible-journey-overflow')
+    expect(overflow).toHaveTextContent('+ 2 sách')
+  })
+
+  it('does NOT render an overflow chip when total <= visible window', async () => {
+    const books = [
+      makeBook(1, 'Sáng Thế Ký', 'IN_PROGRESS', 10),
+      makeBook(2, 'Xuất Hành', 'LOCKED'),
+    ]
+    mockApiGet.mockResolvedValue(journey(books))
+    renderCard()
+    await waitFor(() => {
+      expect(screen.getByTestId('bible-journey-chips')).toBeInTheDocument()
+    })
+    expect(screen.queryByTestId('bible-journey-overflow')).not.toBeInTheDocument()
+  })
+
+  it('current chip uses gold treatment + progress fill at masteryPercent', async () => {
     mockApiGet.mockResolvedValue(
-      summary({
-        completedBooks: 66,
-        oldTestamentCompleted: 39,
-        newTestamentCompleted: 27,
-        currentBook: null,
-      }),
+      journey([makeBook(1, 'Sáng Thế Ký', 'IN_PROGRESS', 25)]),
     )
     renderCard()
     await waitFor(() => {
-      expect(screen.getByTestId('bible-journey-subtitle').textContent).toContain('👑')
+      expect(screen.getByTestId('bible-journey-chip-SángThếKý')).toBeInTheDocument()
     })
+    const chip = screen.getByTestId('bible-journey-chip-SángThếKý')
+    expect(chip.getAttribute('data-status')).toBe('IN_PROGRESS')
+    const fill = screen.getByTestId('bible-journey-chip-fill-SángThếKý')
+    expect(fill.getAttribute('style') ?? '').toContain('width: 25%')
   })
 
-  it('split bar fills are sized by OT/NT percentages', async () => {
+  it('locked chip is dim and has data-status=LOCKED', async () => {
     mockApiGet.mockResolvedValue(
-      summary({
-        completedBooks: 10,
-        oldTestamentCompleted: 13, // 33% of 39
-        newTestamentCompleted: 0,
-      }),
+      journey([
+        makeBook(1, 'Sáng Thế Ký', 'IN_PROGRESS', 5),
+        makeBook(2, 'Xuất Hành', 'LOCKED'),
+      ]),
     )
     renderCard()
     await waitFor(() => {
-      const ot = screen.getByTestId('bible-journey-ot-fill') as HTMLElement
-      // 13 / 39 = 33.33% — assert the rounded prefix.
-      expect(ot.style.width).toMatch(/^33\./)
+      expect(screen.getByTestId('bible-journey-chip-XuấtHành')).toBeInTheDocument()
     })
-    const nt = screen.getByTestId('bible-journey-nt-fill') as HTMLElement
-    expect(nt.style.width).toBe('0%')
+    const chip = screen.getByTestId('bible-journey-chip-XuấtHành')
+    expect(chip.getAttribute('data-status')).toBe('LOCKED')
+    expect(chip.className).toContain('opacity-45')
+    // No fill bar for locked chips.
+    expect(screen.queryByTestId('bible-journey-chip-fill-XuấtHành')).not.toBeInTheDocument()
   })
 
   it('whole card is a Link to /journey', async () => {
-    mockApiGet.mockResolvedValue(summary())
+    mockApiGet.mockResolvedValue(journey([]))
     renderCard()
     await waitFor(() => {
       const card = screen.getByTestId('bible-journey-card')

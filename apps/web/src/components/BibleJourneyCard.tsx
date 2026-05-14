@@ -3,32 +3,41 @@ import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 
-/** Mirror of {@code JourneyResponse} on the BE — we only consume the
- *  summary (counts + currentBook) for the Home widget. The full books
- *  array is reserved for the standalone /journey screen. */
+interface BookProgress {
+  book: string
+  bookVi: string
+  order: number
+  testament: 'OLD' | 'NEW'
+  totalQuestions: number
+  masteredQuestions: number
+  masteryPercent: number
+  status: 'COMPLETED' | 'IN_PROGRESS' | 'LOCKED'
+}
+
 interface JourneyData {
   summary: {
     totalBooks: number
     completedBooks: number
+    inProgressBooks: number
+    lockedBooks: number
+    overallMasteryPercent: number
     oldTestamentCompleted: number
     newTestamentCompleted: number
-    overallMasteryPercent: number
     currentBook: string | null
   }
-  books?: Array<{ book: string; testament: string }>
+  books?: BookProgress[]
 }
 
-const OT_TOTAL = 39
-const NT_TOTAL = 27
+const VISIBLE_CHIPS = 6
 
 /**
- * Bible Journey card on Home — H6 elevated treatment.
+ * Bible Journey card — Modern Spiritual rendering of mockup `.journey`
+ * (home_modern.html). Glass card with title + meta + sub line + a
+ * horizontal-scroll row of book chips. Current chip uses the gold
+ * highlight treatment, locked chips show a lock icon. Overflow chip
+ * "+ N sách" represents the remaining books beyond the visible window.
  *
- * Uses the BE-provided OT/NT split so we don't have to re-derive it on
- * the client (see PROMPT_HOME_REDESIGN.md pre-flight). Renders a split
- * progress bar with two flex segments (39 OT slots / 27 NT slots), each
- * filled by its own count. The whole card is a Link to /journey for
- * the deeper book-by-book view.
+ * The whole card links to /journey for the deeper view.
  */
 export default function BibleJourneyCard() {
   const { t, i18n } = useTranslation()
@@ -41,99 +50,228 @@ export default function BibleJourneyCard() {
 
   if (!data) return null
 
-  const { summary, books } = data
-  const otDone = summary.oldTestamentCompleted ?? 0
-  const ntDone = summary.newTestamentCompleted ?? 0
+  const summary = data.summary
+  const books = data.books ?? []
   const totalDone = summary.completedBooks
   const total = summary.totalBooks || 66
-  const otPct = Math.min(100, (otDone / OT_TOTAL) * 100)
-  const ntPct = Math.min(100, (ntDone / NT_TOTAL) * 100)
 
-  // Decide subtitle copy. Order matters: max-tier wins, then "not
-  // started", then OT-vs-NT phase. The OT/NT decision uses the
-  // current book's testament when the books array is present, falling
-  // back to count-based heuristics otherwise.
-  const currentBookEntry = data.books?.find(b => b.book === summary.currentBook)
-  const isAllDone = totalDone >= total
-  const isNotStarted = !summary.currentBook && totalDone === 0
-  const inOldTestament = currentBookEntry
-    ? currentBookEntry.testament === 'OLD'
-    : otDone < OT_TOTAL
+  const currentBookEntry = books.find(b => b.book === summary.currentBook)
+  const currentLabel = currentBookEntry?.bookVi ?? summary.currentBook ?? ''
 
-  let subtitle: string
-  if (isAllDone) {
-    subtitle = t('home.journey.subtitleDone')
-  } else if (isNotStarted) {
-    subtitle = t('home.journey.subtitleStart')
-  } else if (inOldTestament) {
-    subtitle = t('home.journey.subtitleOT', { book: summary.currentBook ?? 'Genesis' })
-  } else {
-    subtitle = t('home.journey.subtitleNT', {
-      book: summary.currentBook ?? '',
-      count: NT_TOTAL - ntDone,
-    })
-  }
+  // First N chips by canonical order; final overflow chip wraps the rest.
+  const visible = books.slice(0, VISIBLE_CHIPS)
+  const remaining = Math.max(0, books.length - VISIBLE_CHIPS)
 
   return (
     <Link
       to="/journey"
       data-testid="bible-journey-card"
-      className="block rounded-2xl border border-[rgba(74,158,255,0.2)] p-3.5 md:p-4 bg-gradient-to-br from-[rgba(74,158,255,0.06)] to-[rgba(168,85,247,0.06)] hover:from-[rgba(74,158,255,0.1)] hover:to-[rgba(168,85,247,0.1)] transition-colors"
+      className="relative block rounded-[18px] border border-[rgba(245,240,230,0.06)] backdrop-blur-[12px] p-5 md:p-6 hover:border-[rgba(232,168,50,0.2)] transition-colors overflow-hidden"
+      style={{ background: 'rgba(24,26,36,0.55)' }}
     >
-      {/* Header row */}
-      <div className="flex items-center justify-between mb-2">
-        <div className="min-w-0">
-          <div className="text-on-surface text-[12px] md:text-[13px] font-medium">
-            {t('home.journey.title')}
-          </div>
-          <div
-            data-testid="bible-journey-subtitle"
-            className="text-on-surface-variant/55 text-[10px] md:text-[11px] mt-0.5 leading-snug"
+      {/* Top-right gold radial glow */}
+      <span
+        aria-hidden
+        className="absolute -top-1/2 -right-[10%] w-[350px] h-[350px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(232,168,50,0.07), transparent 65%)' }}
+      />
+
+      <div className="relative">
+        <div className="flex items-baseline justify-between gap-3 mb-1.5 flex-wrap">
+          <h3
+            data-testid="bible-journey-title"
+            className="flex items-center gap-3 text-[16px] md:text-[18px] font-bold text-ivory tracking-[-0.015em]"
           >
-            {subtitle}
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#e8a832"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="shrink-0"
+            >
+              <path d="M9 5l-6 2v14l6-2 6 2 6-2V5l-6 2-6-2z" />
+              <path d="M9 5v14M15 7v14" />
+            </svg>
+            {t('home.journey.title')}
+          </h3>
+          <div data-testid="bible-journey-meta" className="text-[13px] text-ivory-dim font-medium">
+            <span className="text-secondary font-extrabold text-[16px] tabular-nums">
+              {totalDone}
+            </span>{' '}
+            / {total} sách
+            {currentLabel && (
+              <>
+                {' · '}
+                <em
+                  data-testid="bible-journey-current"
+                  className="not-italic"
+                >Đang ở {currentLabel}</em>
+              </>
+            )}
           </div>
         </div>
-        <div
-          data-testid="bible-journey-count"
-          className="text-on-surface-variant/40 text-[10px] md:text-[11px] shrink-0"
-        >
-          {totalDone} / {total}
-        </div>
-      </div>
 
-      {/* Split bar: 39 OT segments + 27 NT segments */}
-      <div className="flex gap-[3px] h-[5px] md:h-[6px]" data-testid="bible-journey-bar">
-        <div
-          className="rounded-[2px] overflow-hidden"
-          style={{ flex: OT_TOTAL, background: 'rgba(74,158,255,0.15)' }}
+        <p
+          data-testid="bible-journey-sub"
+          className="text-[12px] text-ivory-dim mb-4"
         >
-          <div
-            data-testid="bible-journey-ot-fill"
-            className="h-full rounded-[2px] transition-[width] duration-500"
-            style={{ width: `${otPct}%`, background: '#4a9eff' }}
-          />
-        </div>
-        <div
-          className="rounded-[2px] overflow-hidden"
-          style={{ flex: NT_TOTAL, background: 'rgba(168,85,247,0.15)' }}
-        >
-          <div
-            data-testid="bible-journey-nt-fill"
-            className="h-full rounded-[2px] transition-[width] duration-500"
-            style={{ width: `${ntPct}%`, background: '#a855f7' }}
-          />
-        </div>
-      </div>
+          Bắt đầu từ Sáng Thế Ký · Hoàn thành 80% mỗi sách để mở khóa sách tiếp theo
+        </p>
 
-      {/* Labels */}
-      <div className="flex justify-between mt-1.5">
-        <span className="text-[9px] md:text-[10px]" style={{ color: 'rgba(74,158,255,0.7)' }}>
-          {t('home.journey.otLabel')}
-        </span>
-        <span className="text-[9px] md:text-[10px]" style={{ color: 'rgba(168,85,247,0.7)' }}>
-          {t('home.journey.ntLabel')}
-        </span>
+        {/* Horizontal-scroll book chips */}
+        <div
+          data-testid="bible-journey-chips"
+          className="flex gap-2.5 overflow-x-auto pb-1.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-[5px] [&::-webkit-scrollbar-thumb]:bg-[rgba(232,168,50,0.15)] [&::-webkit-scrollbar-thumb]:rounded-full"
+        >
+          {visible.map(b => (
+            <BookChip key={b.book} book={b} />
+          ))}
+          {remaining > 0 && (
+            <div
+              data-testid="bible-journey-overflow"
+              className="shrink-0 min-w-[138px] rounded-xl px-3.5 py-3 opacity-45 cursor-not-allowed"
+              style={{
+                background: 'rgba(245,240,230,0.025)',
+                border: '1px solid rgba(245,240,230,0.06)',
+              }}
+            >
+              <div className="text-[9px] uppercase tracking-[0.14em] text-ivory-faint font-bold">
+                …
+              </div>
+              <div className="text-[13px] font-bold text-ivory mt-1 leading-tight tracking-[-0.01em]">
+                + {remaining} sách
+              </div>
+              <div className="text-[11px] text-ivory-faint mt-2 font-medium">
+                Còn lại trong hành trình
+              </div>
+              <div className="mt-2 h-[3px] rounded-full bg-[rgba(245,240,230,0.05)]" />
+            </div>
+          )}
+        </div>
       </div>
     </Link>
+  )
+}
+
+function BookChip({ book }: { book: BookProgress }) {
+  const isCurrent = book.status === 'IN_PROGRESS'
+  const isLocked = book.status === 'LOCKED'
+  const isDone = book.status === 'COMPLETED'
+
+  const orderLabel = book.testament === 'OLD'
+    ? `Cựu Ước · ${String(book.order).padStart(2, '0')}`
+    : `Tân Ước · ${String(book.order).padStart(2, '0')}`
+
+  const status = isCurrent
+    ? `Đang chinh phục · ${Math.round(book.masteryPercent)}%`
+    : isDone
+      ? `Hoàn thành · ${Math.round(book.masteryPercent)}%`
+      : 'Khóa'
+
+  const fillPct = Math.max(0, Math.min(100, book.masteryPercent))
+
+  return (
+    <div
+      data-testid={`bible-journey-chip-${book.book}`}
+      data-status={book.status}
+      className={`shrink-0 min-w-[138px] rounded-xl px-3.5 py-3 transition-colors ${
+        isLocked ? 'opacity-45 cursor-not-allowed' : 'cursor-pointer hover:bg-[rgba(245,240,230,0.05)]'
+      }`}
+      style={
+        isCurrent
+          ? {
+              background:
+                'radial-gradient(ellipse 200px 80px at 50% 0%, rgba(232,168,50,0.18), transparent 70%), rgba(232,168,50,0.05)',
+              border: '1px solid rgba(232,168,50,0.45)',
+              boxShadow:
+                '0 0 24px rgba(232,168,50,0.18), inset 0 1px 0 rgba(232,168,50,0.2)',
+            }
+          : {
+              background: 'rgba(245,240,230,0.025)',
+              border: '1px solid rgba(245,240,230,0.06)',
+            }
+      }
+    >
+      <div
+        className={`text-[9px] uppercase tracking-[0.14em] font-bold ${
+          isCurrent ? 'text-gold-deep' : 'text-ivory-faint'
+        }`}
+      >
+        {isCurrent ? orderLabel : String(book.order).padStart(2, '0')}
+      </div>
+      <div
+        className={`text-[13px] font-bold mt-1 leading-tight tracking-[-0.01em] flex items-center gap-1.5 ${
+          isCurrent ? 'text-[#f5e3a8]' : 'text-ivory'
+        }`}
+      >
+        {isLocked ? (
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            className="shrink-0"
+          >
+            <rect x="5" y="11" width="14" height="10" rx="2" />
+            <path d="M8 11V7a4 4 0 018 0v4" />
+          </svg>
+        ) : isDone ? (
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="shrink-0 text-sage"
+          >
+            <path d="M5 13l4 4L19 7" />
+          </svg>
+        ) : (
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            className="shrink-0"
+          >
+            <path d="M4 5v15a2 2 0 002 2h14V3H6a2 2 0 00-2 2z" />
+          </svg>
+        )}
+        {book.bookVi || book.book}
+      </div>
+      <div
+        className={`text-[11px] mt-2 font-medium ${
+          isCurrent ? 'text-tertiary' : 'text-ivory-faint'
+        }`}
+      >
+        {status}
+      </div>
+      <div className="mt-2 h-[3px] rounded-full overflow-hidden bg-[rgba(245,240,230,0.05)]">
+        {(isCurrent || isDone) && fillPct > 0 && (
+          <div
+            data-testid={`bible-journey-chip-fill-${book.book}`}
+            className="h-full rounded-full"
+            style={{
+              width: `${fillPct}%`,
+              background: 'linear-gradient(90deg, #c98a1c, #e8a832, #e7c268)',
+              boxShadow: '0 0 6px rgba(232,168,50,0.6)',
+            }}
+          />
+        )}
+      </div>
+    </div>
   )
 }
