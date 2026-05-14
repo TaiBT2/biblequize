@@ -43,6 +43,14 @@ function renderHud() {
 describe('HomeHud (HRV-16 vintage HUD)', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    // HRV-26 isolation: clear any persisted theme + reset html attr so
+    // each test starts from a clean dark default.
+    try {
+      window.localStorage.removeItem('bq-theme')
+    } catch {
+      /* localStorage unavailable — ignore */
+    }
+    document.documentElement.removeAttribute('data-theme')
   })
 
   it('renders page title "Trang chủ" uppercase tracked', async () => {
@@ -91,5 +99,32 @@ describe('HomeHud (HRV-16 vintage HUD)', () => {
     expect(streak.className).toContain('shadow-chunky-soft')
     expect(streak.className).toContain('border-line-soft')
     expect(streak.className).toContain('bg-bg-deep')
+  })
+
+  it('HRV-26 renders theme toggle button with ☾ glyph by default (dark)', async () => {
+    setupApi()
+    renderHud()
+    const toggle = await screen.findByTestId('home-hud-theme-toggle')
+    expect(toggle).toBeInTheDocument()
+    // Default theme = dark → moon glyph shown (means "switch to light").
+    expect(toggle.textContent?.trim()).toBe('☾')
+  })
+
+  it('HRV-26 theme toggle flips html[data-theme] + persists to localStorage', async () => {
+    setupApi()
+    renderHud()
+    const toggle = await screen.findByTestId('home-hud-theme-toggle')
+    // Click → switches to light. html[data-theme] becomes "light".
+    toggle.click()
+    await waitFor(() => {
+      expect(document.documentElement.getAttribute('data-theme')).toBe('light')
+    })
+    expect(window.localStorage.getItem('bq-theme')).toBe('light')
+    // Click again → back to dark. attribute removed; storage = "dark".
+    toggle.click()
+    await waitFor(() => {
+      expect(document.documentElement.getAttribute('data-theme')).toBeNull()
+    })
+    expect(window.localStorage.getItem('bq-theme')).toBe('dark')
   })
 })

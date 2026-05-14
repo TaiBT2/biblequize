@@ -78,33 +78,32 @@ export default {
           c: '#E8C76A', // Gold — năng lượng, joy (ấm hơn primary gold)
           d: '#7AB87A', // Sage — bình an, growth
         },
-        // HR-1 Modern Spiritual atmosphere tokens — used by HomeBanner,
-        // FeaturedDailyCard, HeroRankedCard, VerseFooter. Hardcoded hex
-        // (memory: CSS variables cause white-background rendering bug).
-        ivory: '#f5f0e6',
-        'ivory-dim': '#b8b1a3',
-        'ivory-faint': '#6e6a60',
-        'gold-deep': '#c98a1c',
-        'gold-shadow': '#7a5818',
-        // Hero Đấu Hạng — Variant 02 Radial Glow (sprint 2026-05-14)
-        'gold-bright': '#f4d178',
-        'gold-cream': '#fff5dc',
-        maroon: '#7c2d3a',
-        sage: '#4a6b52',
-        // HRV-7 Vintage palette — Home redesign 2026-05-14 (Option C Hybrid).
-        // Reuses ivory/gold-bright/gold-deep above; ADDs deeper bg + ruby/emerald/plum
-        // accent family + line for vintage borders. Used by HomeBanner / FeaturedDailyCard /
-        // HeroRankedCard / CompactCard / DailyMissionsCard / BibleJourneyCard restyles.
-        'bg-deep': '#0e0a12',
-        'bg-wash': '#15101b',
-        ruby: '#c73e3e',
-        'ruby-deep': '#8e2727',
-        emerald: '#4fa876',
-        'emerald-deep': '#2f6e4d',
-        plum: '#8c5bb5',
-        'plum-deep': '#5b3681',
-        line: '#2e2238',
-        'line-soft': '#221a2c',
+        // HRV-26 theme-aware tokens — values defined as `r g b` triplets
+        // in global.css `:root` (dark) + `html[data-theme="light"]` (light).
+        // Pattern `rgb(var(--X) / <alpha-value>)` lets Tailwind compute
+        // opacity utilities (bg-ruby/50, border-plum-deep/60) correctly.
+        // Replaces hardcoded hex from HR-1 / Đấu Hạng V2 / HRV-7 sprints —
+        // the "CSS variables cause white-bg bug" note no longer applies
+        // because we use rgb-triplet form (not raw var(--X) directly).
+        ivory: 'rgb(var(--ivory) / <alpha-value>)',
+        'ivory-dim': 'rgb(var(--ivory-dim) / <alpha-value>)',
+        'ivory-faint': 'rgb(var(--ivory-faint) / <alpha-value>)',
+        'gold-deep': 'rgb(var(--gold-deep) / <alpha-value>)',
+        'gold-shadow': 'rgb(var(--gold-shadow) / <alpha-value>)',
+        'gold-bright': 'rgb(var(--gold-bright) / <alpha-value>)',
+        'gold-cream': 'rgb(var(--gold-cream) / <alpha-value>)',
+        maroon: 'rgb(var(--maroon) / <alpha-value>)',
+        sage: 'rgb(var(--sage) / <alpha-value>)',
+        'bg-deep': 'rgb(var(--bg-deep) / <alpha-value>)',
+        'bg-wash': 'rgb(var(--bg-wash) / <alpha-value>)',
+        ruby: 'rgb(var(--ruby) / <alpha-value>)',
+        'ruby-deep': 'rgb(var(--ruby-deep) / <alpha-value>)',
+        emerald: 'rgb(var(--emerald) / <alpha-value>)',
+        'emerald-deep': 'rgb(var(--emerald-deep) / <alpha-value>)',
+        plum: 'rgb(var(--plum) / <alpha-value>)',
+        'plum-deep': 'rgb(var(--plum-deep) / <alpha-value>)',
+        line: 'rgb(var(--line) / <alpha-value>)',
+        'line-soft': 'rgb(var(--line-soft) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['Be Vietnam Pro', 'system-ui', 'sans-serif'],

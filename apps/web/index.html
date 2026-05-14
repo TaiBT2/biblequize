@@ -5,6 +5,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- HRV-26 FOUC-prevention — apply persisted vintage theme BEFORE first
+       paint so users who chose light don't flash dark on reload. Reads
+       localStorage `bq-theme` (matches src/hooks/useTheme.ts STORAGE_KEY).
+       Drives html[data-theme] which selects the CSS-var palette in
+       global.css. Tailwind dark mode (html.dark) stays untouched. -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('bq-theme');
+        if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      } catch (e) { /* localStorage unavailable — fall back to dark default */ }
+    })();
+  </script>
+
   <!-- Primary Meta Tags -->
   <title>BibleQuiz — Hoc Kinh Thanh qua Quiz & Thi dau</title>
   <meta name="description" content="Nen tang hoc Kinh Thanh qua gamification — trac nghiem, thi dau multiplayer, nhom hoi thanh, xep hang theo mua. Hoan toan mien phi." />

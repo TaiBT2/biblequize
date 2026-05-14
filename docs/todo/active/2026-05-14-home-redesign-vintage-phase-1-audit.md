@@ -6,6 +6,21 @@
 
 ### Phase 2 progress
 
+- **HRV-26** Light theme — CSS-var palette + theme toggle + FOUC prevention — `[x]` DONE 2026-05-14
+  - **User decision 2026-05-14**: implement light parchment theme per `docs/designs/biblequiz-light/` mockup (vintage source includes full `html[data-theme="light"]` palette block; user wants both themes working).
+  - Files:
+    - `apps/web/src/styles/global.css` (+50 LOC): `:root` block with 18 vintage tokens as space-separated RGB triplets (dark default) + `html[data-theme="light"]` override with light parchment values (port of vintage source). Added `html[data-theme="light"] body` override (cream radial gradient bg `#f2e9d6` + tone-down noise overlay to 0.025 + warm vignette).
+    - `apps/web/tailwind.config.js` (refactor 18 tokens, ~25 LOC): replace hardcoded hex with `rgb(var(--X) / <alpha-value>)` pattern so Tailwind opacity utilities (`bg-ruby/50`, `border-plum-deep/60`) still work. The old "CSS vars cause white-bg bug" memory note no longer applies because we use rgb-triplet form, not raw `var(--X)`.
+    - `apps/web/src/hooks/useTheme.ts` (NEW, 35 LOC): `useTheme()` returns `{ theme, setTheme, toggle }`. Reads/writes `html[data-theme]` + localStorage `bq-theme`. Defaults to dark; `prefers-color-scheme` intentionally NOT consulted (vintage is dark-first; opt-in light via toggle).
+    - `apps/web/src/components/HomeHud.tsx` (+15 LOC): theme toggle button (☾/☀ glyph), placed at end of HUD stats row. Vintage `.theme-btn` style (bg-deep + line-soft border + chunky-soft shadow + hover gold-bright). Wires to `useTheme.toggle()`.
+    - `apps/web/index.html` (+11 LOC): inline FOUC-prevention `<script>` that reads `localStorage['bq-theme']` BEFORE first paint and sets `html[data-theme="light"]` if persisted — prevents dark→light flash on reload for light-theme users. Pattern lifted from vintage `biblequiz-light/Home.html`.
+    - `apps/web/src/components/__tests__/HomeHud.test.tsx` (+2 tests for HRV-26: toggle button renders with ☾ default, toggle flips html attribute + persists localStorage).
+  - Light theme strategy: **theme-aware semantic roles** via CSS vars. Token names (`ivory`, `bg-deep`, `ruby`, etc.) retained from dark vintage; in light mode their value becomes the contrast inverse (e.g. `ivory` token now stores `42 29 16` = dark brown ink). Components reference tokens by semantic intent — no per-class `dark:` / `light:` Tailwind prefix needed.
+  - Backward-compat: Tailwind `darkMode: "class"` (`html.dark`) preserved untouched — other pages that use `dark:` prefix unaffected. Only the 18 vintage tokens swap via `data-theme`.
+  - Test: full Tier-3 vitest **1303 total / 1178 pass / 125 pre-existing fail** (+2 new HRV-26 tests passing, 0 new failures). Build pass (3.76s, CSS bundle 200.24 → 201.96 KB).
+  - Inline `style={...}` hex/rgba literals in HomeBanner / HeroRankedCard / FeaturedDailyCard / BibleJourneyCard radial-glow gradients are NOT theme-aware (deferred polish — most look acceptable on both themes since the gold/ruby glow tones work on cream + dark surfaces).
+  - Strategy: `(c) [no-spec-impact]`.
+
 - **HRV-25** Duo-CTA side-by-side (override HR-7 state-aware design) — `[x]` DONE 2026-05-14
   - **User decision 2026-05-14**: explicit sign-off to override `HR-7` state-aware design from 2026-05-13 Modern Spiritual sprint. New behavior: Daily card + Đấu Hạng card are ALWAYS side-by-side in a 2-col grid `[1.15fr_1fr]` (vintage Home.html `.duo-cta` proportions). Left card swaps between `FeaturedDailyCard` (todo) and `DailyCompletedStrip` (done); HeroRankedCard always visible on right.
   - Removed sections: State-A "Chế độ chơi chính" (Practice + RankedStandardCard 2-col) + State-A "Chế độ đa dạng" (Variety 3-col). Collapsed into single always-visible "Khám phá thêm" 4-col grid (Practice + 3 Variety). `RankedStandardCard` no longer rendered in Home (component file preserved for potential future use; its test suite still passes standalone).
