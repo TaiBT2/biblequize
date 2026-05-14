@@ -758,6 +758,11 @@
       "title": "Khám phá thêm",
       "subtitle": "Luyện tập tự do — không tính XP"
     },
+    "hero": {
+      "greetingAccent": "cuộc hành trình",
+      "greetingSuffix": "chờ con.",
+      "tagline": "Hôm nay là ngày tốt để mở Kinh Thánh."
+    },
     "heroRanked": {
       "label": "Tiếp theo · Đấu Hạng",
       "tagline": "Daily xong rồi — giờ cạnh tranh ranking thôi",

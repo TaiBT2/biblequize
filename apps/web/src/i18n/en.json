@@ -758,6 +758,11 @@
       "title": "Explore more",
       "subtitle": "Free practice — no XP"
     },
+    "hero": {
+      "greetingAccent": "your journey",
+      "greetingSuffix": "awaits.",
+      "tagline": "Today is a good day to open Scripture."
+    },
     "heroRanked": {
       "label": "Up next · Đấu Hạng (Ranked)",
       "tagline": "Daily done — time to climb the ranks",

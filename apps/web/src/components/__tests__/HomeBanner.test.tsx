@@ -11,6 +11,32 @@ vi.mock('../../store/authStore', () => ({
   useAuthStore: () => ({ user: { name: 'Tai Thanh', email: 'tai@test.com' } }),
 }))
 
+// HRV-17: stub i18n with the actual VN strings we want the tests to
+// assert against. Without this stub, react-i18next returns the raw key
+// in test env (no provider), which would defeat the assertions on the
+// poetic hero h1 + tagline content.
+vi.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string, opts?: { defaultValue?: string }) => {
+      const dict: Record<string, string> = {
+        'home.hero.greetingAccent': 'cuộc hành trình',
+        'home.hero.greetingSuffix': 'chờ con.',
+        'home.hero.tagline': 'Hôm nay là ngày tốt để mở Kinh Thánh.',
+        'home.defaultName': 'Bạn',
+        'home.maxTierReached': 'Cấp tối đa',
+        'tiers.newBeliever': 'Tân Tín Hữu',
+        'tiers.seeker': 'Người Tìm Kiếm',
+        'tiers.disciple': 'Môn Đồ',
+        'tiers.sage': 'Hiền Triết',
+        'tiers.prophet': 'Tiên Tri',
+        'tiers.apostle': 'Sứ Đồ',
+      }
+      return dict[key] ?? opts?.defaultValue ?? key
+    },
+    i18n: { language: 'vi' },
+  }),
+}))
+
 import HomeBanner from '../HomeBanner'
 
 interface MockOpts {
@@ -96,6 +122,41 @@ describe('HomeBanner (HR-2)', () => {
     }
     // Ensure we did not accidentally render a 7th dot.
     expect(screen.queryByTestId('home-greeting-milestone-6')).not.toBeInTheDocument()
+  })
+
+  it('HRV-17 poetic hero h1 contains user name + accent phrase + suffix', async () => {
+    setupApi({ totalPoints: 500 })
+    renderBanner()
+    const name = await screen.findByTestId('home-greeting-name')
+    expect(name).toHaveTextContent('Tai Thanh,')
+    expect(name).toHaveTextContent('cuộc hành trình')
+    expect(name).toHaveTextContent('chờ con.')
+  })
+
+  it('HRV-17 rank chip pill shows current → next tier with pulsing gold dot', async () => {
+    setupApi({ totalPoints: 500 })
+    renderBanner()
+    const chip = await screen.findByTestId('home-greeting-rank-chip')
+    // Pill has rounded-full + bg-bg-deep + line border.
+    expect(chip.className).toContain('rounded-full')
+    expect(chip.className).toContain('bg-bg-deep')
+    expect(chip.className).toContain('border-line')
+    // Pulsing dot present.
+    expect(chip.querySelector('.animate-pulse')).not.toBeNull()
+  })
+
+  it('HRV-17 rank chip is hidden at max tier (no next tier to display)', async () => {
+    setupApi({ totalPoints: 100_000 })
+    renderBanner()
+    await screen.findByTestId('home-greeting-max-tier')
+    expect(screen.queryByTestId('home-greeting-rank-chip')).not.toBeInTheDocument()
+  })
+
+  it('HRV-17 tagline encourages user to open Scripture', async () => {
+    setupApi({ totalPoints: 500 })
+    renderBanner()
+    const tagline = await screen.findByTestId('home-greeting-tagline')
+    expect(tagline.textContent?.toLowerCase()).toContain('kinh thánh')
   })
 
 })

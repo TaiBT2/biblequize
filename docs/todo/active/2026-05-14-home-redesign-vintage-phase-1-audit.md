@@ -6,6 +6,13 @@
 
 ### Phase 2 progress
 
+- **HRV-17** Poetic hero greeting + rank chip pill + tagline — `[x]` DONE 2026-05-14
+  - Files: `apps/web/src/components/HomeBanner.tsx` (+45 LOC: eyebrow now has gold accent dash, h1 multi-line "{name},\n<accent>cuộc hành trình</accent> chờ con.", new rank-chip pill with pulsing gold dot showing current → next tier, tagline "Hôm nay là ngày tốt để mở Kinh Thánh."). `apps/web/src/i18n/{vi,en}.json` (+8 keys: `home.hero.{greetingAccent,greetingSuffix,tagline}` vi+en). `apps/web/src/components/__tests__/HomeBanner.test.tsx` (+30 LOC: add i18n mock + 4 new tests for poetic content + rank chip + max-tier gate + tagline).
+  - Matches vintage Home.html hero spec (h1 `clamp(40px,6vw,72px)` Yeseva One + accent span + rank-chip pill `dot + label` + sub-line tagline). Avatar preserved (our app has avatar in banner, vintage moves it to sidebar — we keep ours for the personal touch).
+  - Max-tier gracefully hides rank chip (no `tier.next` to display) while keeping poetic h1 + tagline + 👑 max-tier message.
+  - Test: HomeBanner 9/9 (was 5, +4 for HRV-17 poetic/chip/tagline assertions) + HomeHud 5/5 + Home 26/26 = 40/40 pass after adding i18n mock to HomeBanner.test.
+  - Strategy: `(c) [no-spec-impact]`.
+
 - **HRV-16** HUD stat-pill extraction (deferred from BL-19) — `[x]` DONE 2026-05-14
   - Files: NEW `apps/web/src/components/HomeHud.tsx` (~85 LOC), NEW `apps/web/src/components/__tests__/HomeHud.test.tsx` (~85 LOC, 5 tests), EDIT `HomeBanner.tsx` (remove stats grid column + Stat helper, ~-65 LOC), EDIT `HomeBanner.test.tsx` (remove 4 stat tests moved to HomeHud), EDIT `Home.tsx` (+2 LOC: import + render HomeHud above HomeBanner).
   - Vintage Home.html structure now matched: HUD row (3 chunky stat pills + page title "Trang chủ" upper-tracked) sits above Hero (avatar + greeting + name + 6-tier XP rail). Cleaner separation of concerns. HomeHud shares TanStack Query keys (`['me']`, `['ranked-status']`) with HomeBanner — single fetch, cached.

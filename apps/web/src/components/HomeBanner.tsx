@@ -94,20 +94,56 @@ export default function HomeBanner() {
           />
         </div>
 
-        {/* Info: greet + name + tier row */}
+        {/* Info: eyebrow + poetic h1 + rank chip + tier row */}
         <div className="min-w-0">
           <div
             data-testid="home-greeting-meta"
-            className="text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary mb-1 md:mb-1.5"
+            className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-bright mb-1.5 md:mb-2.5"
           >
+            <span aria-hidden className="block w-5 h-px bg-gold-bright" />
             {greeting}
           </div>
-          <div
+          {/* HRV-17 poetic h1 greeting — vintage Home.html hero h1.
+              Multi-line: "{Name},\ncuộc hành trình chờ con."
+              <accent> wraps the poetic phrase in gold-bright. */}
+          <h1
             data-testid="home-greeting-name"
-            className="font-display text-[26px] md:text-[40px] leading-[1.05] text-ivory tracking-[-0.02em] mb-2 md:mb-3.5 truncate"
+            className="font-display text-[28px] md:text-[44px] lg:text-[52px] leading-[0.98] text-ivory tracking-[-0.02em] mb-2.5 md:mb-3.5"
           >
-            {userName}
-          </div>
+            <span className="block truncate">{userName},</span>
+            <span className="block">
+              <span className="text-gold-bright">{t('home.hero.greetingAccent')}</span>{' '}
+              <span>{t('home.hero.greetingSuffix')}</span>
+            </span>
+          </h1>
+
+          {!isMaxTier && tier.next && (
+            <div
+              data-testid="home-greeting-rank-chip"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bg-deep border border-line text-[11px] md:text-[12px] font-medium mb-2 md:mb-2.5"
+            >
+              <span
+                aria-hidden
+                className="w-2 h-2 rounded-full bg-gold-bright animate-pulse"
+                style={{ boxShadow: '0 0 10px rgba(244,209,120,0.85)' }}
+              />
+              <span
+                data-testid="home-greeting-tier-label"
+                className="text-gold-bright tracking-[0.04em]"
+              >
+                {t(tier.current.nameKey)}
+              </span>
+              <span className="text-ivory-faint">→</span>
+              <span className="text-ivory-dim">{t(tier.next.nameKey)}</span>
+            </div>
+          )}
+
+          <p
+            data-testid="home-greeting-tagline"
+            className="text-[12px] md:text-[13px] text-ivory-dim mb-3 md:mb-4 max-w-[44ch]"
+          >
+            {t('home.hero.tagline')}
+          </p>
 
           {isMaxTier ? (
             <div
@@ -118,22 +154,9 @@ export default function HomeBanner() {
             </div>
           ) : (
             <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-3.5 text-[13px]">
-              <div className="flex items-center gap-2 whitespace-nowrap">
-                <span
-                  data-testid="home-greeting-tier-label"
-                  className="text-secondary font-bold tracking-[0.02em] text-[14px]"
-                >
-                  {t(tier.current.nameKey)}
-                </span>
-                <span className="text-ivory-faint">→</span>
-                <span className="text-ivory-dim font-medium">
-                  {tier.next && t(tier.next.nameKey)}
-                </span>
-              </div>
-
               <div
                 data-testid="home-greeting-progress-bar"
-                className="relative flex-1 max-w-[240px] h-[5px] bg-white/[0.06] rounded-full overflow-visible"
+                className="relative flex-1 max-w-[280px] h-[5px] bg-white/[0.06] rounded-full overflow-visible"
               >
                 <div
                   data-testid="home-greeting-progress-fill"
