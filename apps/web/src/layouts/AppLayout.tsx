@@ -39,8 +39,17 @@ export default function AppLayout() {
       ? location.pathname === '/'
       : location.pathname === path || location.pathname.startsWith(`${path}/`)
 
+  // HRV-27: opt user-facing pages into the vintage typography family
+  // (Yeseva One h1/h2 via global.css rule scoped to `.vintage-typography`).
+  // Admin pages (/admin/*) and the in-game quiz screens skip the class so
+  // their data-heavy UIs stay in plain sans (font-extrabold KPI numbers,
+  // dense tables, etc. would render poorly with a serif heading face).
+  const isVintageScope = !location.pathname.startsWith('/admin')
+    && !location.pathname.startsWith('/quiz')
+    && !location.pathname.startsWith('/room/quiz')
+
   return (
-    <div className="min-h-screen bg-[#11131e] text-[#e1e1f1]">
+    <div className={`min-h-screen bg-[#11131e] text-[#e1e1f1]${isVintageScope ? ' vintage-typography' : ''}`}>
       <OfflineBanner />
 
       {/* Mobile-only top bar (logo + bell + avatar dropdown). */}

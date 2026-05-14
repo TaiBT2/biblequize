@@ -330,6 +330,35 @@ body::after {
   z-index: 1;
 }
 
+/* HRV-27 unified vintage typography — apply Yeseva One display serif
+   to all h1/h2/h3 inside .vintage-typography (AppLayout opt-in: every
+   user-facing route except /admin/* and /quiz, /room/quiz which keep
+   plain sans for data-heavy / gameplay readability).
+   font-weight 400 because Yeseva One ships only that weight on Google
+   Fonts; existing font-extrabold / font-black className overrides would
+   synthesize ugly fake bold — so we lower it here and let visual
+   emphasis come from size + the display serif character itself, matching
+   vintage `.page-head h1` recipe in docs/designs/biblequiz/leaderboard.css. */
+.vintage-typography h1,
+.vintage-typography h2,
+.vintage-typography h3 {
+  font-family: 'Yeseva One', 'Playfair Display', serif;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+/* Per-element opt-out: any heading that explicitly carries a Tailwind
+   font utility (font-sans / font-mono / font-numeric / font-headline)
+   keeps its declared font. */
+.vintage-typography :is(h1, h2, h3).font-sans,
+.vintage-typography :is(h1, h2, h3).font-mono,
+.vintage-typography :is(h1, h2, h3).font-numeric,
+.vintage-typography :is(h1, h2, h3).font-headline,
+.vintage-typography :is(h1, h2, h3).font-display {
+  font-family: revert;
+  font-weight: revert;
+  letter-spacing: revert;
+}
+
 /* Breathing streak flame — used by HomeBanner stat icon (HR-2). */
 @keyframes breathe {
   0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(251,146,60,0.4)); }

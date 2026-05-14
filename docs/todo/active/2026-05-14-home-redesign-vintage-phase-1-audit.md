@@ -6,6 +6,19 @@
 
 ### Phase 2 progress
 
+- **HRV-27** Unified vintage typography across user-facing pages — `[x]` DONE 2026-05-14
+  - **User feedback 2026-05-14**: "font chữ trên home page đang lệch vs font các trang khác" — Home dùng Yeseva One headings, các page khác dùng plain sans → visual jump khi navigate. Vintage source design lại CONFIRM Yeseva One cho mọi `.page-head h1` ([`docs/designs/biblequiz-light/leaderboard.css:29-31`](../../../../docs/designs/biblequiz-light/leaderboard.css#L29-L31)).
+  - Files:
+    - `apps/web/src/layouts/AppLayout.tsx` (+5 LOC): compute `isVintageScope` from `location.pathname` — opt user-facing routes INTO vintage typography. Excludes `/admin/*` (data-heavy KPI UI), `/quiz` (gameplay), `/room/quiz` (multiplayer gameplay). Adds `vintage-typography` class to AppLayout root when scope matches.
+    - `apps/web/src/styles/global.css` (+25 LOC): `.vintage-typography h1, h2, h3` rule applies `font-family: 'Yeseva One', 'Playfair Display', serif` + `font-weight: 400` + tight tracking. Per-element opt-out via `:is(h1,h2,h3).font-sans/mono/numeric/headline/display` selectors — explicit Tailwind font utility classes on headings revert to their original styling.
+  - Why font-weight: 400 (not extrabold/black like current page headings):
+    - Yeseva One ships only weight 400 on Google Fonts. Applying `font-extrabold` would synthesize fake bold — looks poor on serif.
+    - Vintage `.page-head h1` recipe uses default weight + size for emphasis.
+    - Pages can opt out via `font-sans` class if they need extrabold for specific UX.
+  - Test: full Tier-3 1301 total / 1176 pass / 125 pre-existing fail (unchanged). Build pass.
+  - Scope: Home + Leaderboard + Profile + Practice + Ranked + Journey + Groups + Achievements + Cosmetics + Tournaments + DailyChallenge + WeeklyQuiz + MysteryMode + SpeedRound + Multiplayer + Onboarding + Register + ... (all user routes). Admin + Quiz gameplay opt out.
+  - Strategy: `(c) [no-spec-impact]`.
+
 - **HRV-25** Duo-CTA side-by-side (override HR-7 state-aware design) — `[x]` DONE 2026-05-14
   - **User decision 2026-05-14**: explicit sign-off to override `HR-7` state-aware design from 2026-05-13 Modern Spiritual sprint. New behavior: Daily card + Đấu Hạng card are ALWAYS side-by-side in a 2-col grid `[1.15fr_1fr]` (vintage Home.html `.duo-cta` proportions). Left card swaps between `FeaturedDailyCard` (todo) and `DailyCompletedStrip` (done); HeroRankedCard always visible on right.
   - Removed sections: State-A "Chế độ chơi chính" (Practice + RankedStandardCard 2-col) + State-A "Chế độ đa dạng" (Variety 3-col). Collapsed into single always-visible "Khám phá thêm" 4-col grid (Practice + 3 Variety). `RankedStandardCard` no longer rendered in Home (component file preserved for potential future use; its test suite still passes standalone).
