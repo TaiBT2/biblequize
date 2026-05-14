@@ -6,6 +6,12 @@
 
 ### Phase 2 progress
 
+- **HRV-8** SectionHeader + VerseFooter drop cap restyle (Yeseva One) — `[x]` DONE 2026-05-14
+  - Files: `apps/web/src/components/SectionHeader.tsx` (rewrite, ~40 LOC), `apps/web/src/components/__tests__/SectionHeader.test.tsx` (4→7 tests), `apps/web/src/styles/global.css` (drop cap rule swap, ~5 LOC). VerseFooter.tsx unchanged — body verse keeps Cormorant Garamond italic (Yeseva One has no italic variant, synthesized italic looks bad for flowing text); only drop cap swaps to Yeseva One regular (illuminated-manuscript heavy initial).
+  - SectionHeader: Yeseva One 22→28px responsive title, optional `tag` prop (gold em-dash flavor "— Quest Map —"), optional `meta` right slot (existing). API backward-compat — old call sites still render (just bigger title without uppercase tracked styling).
+  - Test: vitest SectionHeader 7/7 + VerseFooter 6/6 + Home 26/26 pass · global.css sensitive file edited but rule scoped to `.hr-verse-text::first-letter` (only used by VerseFooter).
+  - Strategy: `(c) [no-spec-impact]`.
+
 - **HRV-7** Font + token foundation (Option C Hybrid) — `[x]` DONE 2026-05-14
   - Files: `apps/web/index.html` (+10 LOC), `apps/web/tailwind.config.js` (+29 LOC)
   - Added: Yeseva One + JetBrains Mono font links (preload+swap pattern). `fontFamily.display` (Yeseva One stack) + `fontFamily.numeric` (JetBrains Mono stack) — KEEP existing `mono`/`serif`/`verse` untouched (regression-safe for admin dashboard + verse footer). 9 vintage colors: `bg-deep`/`bg-wash`/`ruby`/`ruby-deep`/`emerald`/`emerald-deep`/`plum`/`plum-deep`/`line`/`line-soft`. 3 boxShadow utilities: `chunky-gold`/`chunky-ruby`/`chunky-soft`.

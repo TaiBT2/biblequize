@@ -337,22 +337,23 @@ body::after {
 }
 .animate-breathe { animation: breathe 2.6s ease-in-out infinite; }
 
-/* HR-8 verse footer drop cap — pseudo-element required for first-letter
-   targeting; cannot be expressed inline. Cormorant Garamond is the only
-   serif allowed in Home (verse-only constraint). !important on font-size
-   to win over Tailwind utility classes on the parent <p>. Per Bui
-   review 2026-05-14: keep text-align:center (Option A) — the floated
-   initial reads as a decorative drop cap without forcing left-align. */
+/* HRV-8 verse footer drop cap — illuminated-manuscript chunky initial.
+   Yeseva One (display serif, no italic variant) gives a heavier, more
+   decorative letter than the prior Cormorant italic. Body verse text
+   stays Cormorant Garamond italic via .font-verse on the <p>. !important
+   on font-size to win over Tailwind utility classes on the parent <p>.
+   Per Bui review 2026-05-14: keep text-align:center (Option A) — the
+   floated initial reads as a decorative drop cap without forcing left-align. */
 .hr-verse-text::first-letter {
-  font-family: 'Cormorant Garamond', 'Crimson Pro', 'Playfair Display', serif !important;
-  font-size: 3.6em !important;
-  font-style: italic;
-  font-weight: 700;
+  font-family: 'Yeseva One', 'Cormorant Garamond', 'Playfair Display', serif !important;
+  font-size: 3.8em !important;
+  font-style: normal;
+  font-weight: 400;
   float: left;
-  line-height: 0.85;
-  padding: 6px 10px 0 0;
+  line-height: 0.82;
+  padding: 8px 12px 0 0;
   color: #e8a832;
-  text-shadow: 0 2px 12px rgba(232,168,50,0.25);
+  text-shadow: 0 2px 14px rgba(232,168,50,0.3);
 }
 
 * {
