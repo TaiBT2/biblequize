@@ -3,11 +3,10 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (14)
+## Active (13)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
-| 2026-05-14 | Season overlap: defensive read + admin write guard | TODO | [detail](docs/todo/active/2026-05-14-season-overlap-defensive-read-write-guard.md) |
 | 2026-05-13 | Home Redesign Modern Spiritual | IN PROGRESS | [detail](docs/todo/active/2026-05-13-home-redesign-modern-spiritual.md) |
 | 2026-05-13 | Disable test data seed on prod + harden guard | TODO | [detail](docs/todo/active/2026-05-13-disable-seed-on-prod-and-harden-guard.md) |
 | 2026-05-13 | Code Quality Audit follow-up (BE + FE Web) | PARTIALLY DONE | [detail](docs/todo/active/2026-05-13-code-quality-audit-follow-up-be-fe-web.md) |
@@ -22,12 +21,14 @@
 | 2026-04-27 | V3 Tier B/C Quality Expansion: 14 books | IN PROGRESS | [detail](docs/todo/active/2026-04-27-v3-tier-b-c-quality-expansion-14-books.md) |
 | 2026-04-19 | Global audience migration: SQL → JSON + i18n prep | PARTIALLY DONE | [detail](docs/todo/active/2026-04-19-global-audience-migration-sql-json-i18n-prep.md) |
 
-## Archive (41)
+## Archive (42)
 
-> 41 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
+> 42 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
 
 <details>
 <summary>Xem inline list (tuỳ chọn)</summary>
+
+- 2026-05-14 — Season overlap: defensive read + admin write guard · DONE · [detail](docs/todo/archive/2026-05-14-season-overlap-defensive-read-write-guard.md)
 
 - 2026-05-10 — Group Detail redesign · DONE · [detail](docs/todo/archive/2026-05-10-group-detail-redesign.md)
 - 2026-05-10 — Fix: Quản trò mất isHost sau WS ROOM_STATE event · DONE · [detail](docs/todo/archive/2026-05-10-fix-quan-tro-mat-ishost-sau-ws-room-state-event.md)

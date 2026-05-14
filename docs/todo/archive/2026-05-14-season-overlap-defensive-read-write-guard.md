@@ -18,7 +18,7 @@ Cleanup data đã chạy (xem chat 2026-05-14). Task này chốt 2 layer hardeni
 ## Tasks
 
 - SOG-1 Defensive read trong `getActiveSeason()`
-  - Status: [ ] TODO
+  - Status: [x] DONE — commit `485e44e`
   - Files: `apps/api/src/main/java/com/biblequiz/modules/season/service/SeasonService.java`, `.../repository/SeasonRepository.java`
   - Test: `apps/api/src/test/java/com/biblequiz/service/SeasonServiceTest.java` (+1 case overlap → prefer is_active=true)
   - Change: thay `findTop...OrderByStartDateDesc` bằng `findTop...OrderByIsActiveDescStartDateDesc` — khi nhiều rows cover today, ưu tiên `is_active=true` rồi mới fallback newest startDate. Vẫn giữ `findByIsActiveTrue()` cho case không có row cover (zero seasons today).
@@ -27,7 +27,7 @@ Cleanup data đã chạy (xem chat 2026-05-14). Task này chốt 2 layer hardeni
   - Checklist: impl · Tầng 1+2 BE pass · DECISIONS updated · commit `fix(season): prefer is_active when seasons overlap today`
 
 - SOG-2 Write validation trong `AdminSeasonController.createSeason()`
-  - Status: [ ] TODO
+  - Status: [x] DONE — commit `83319c9`
   - Files: `apps/api/src/main/java/com/biblequiz/api/AdminSeasonController.java`, `.../repository/SeasonRepository.java`
   - Test: `apps/api/src/test/java/com/biblequiz/api/AdminSeasonControllerTest.java` (+1 case overlap → 409)
   - Change: trước khi save, query `existsByStartDateLessThanEqualAndEndDateGreaterThanEqual(newEnd, newStart)` (overlap criterion: existing.start ≤ new.end AND existing.end ≥ new.start). Nếu tồn tại → reject 409 với message "season date range overlaps existing season(s)".
@@ -36,10 +36,9 @@ Cleanup data đã chạy (xem chat 2026-05-14). Task này chốt 2 layer hardeni
   - Checklist: impl · Tầng 1+2 BE pass · commit `fix(season): reject overlapping date range in admin create`
 
 - SOG-3 Tầng 3 regression
-  - Status: [ ] TODO
-  - Files: none
-  - Test: `cd apps/api && mvn test`
-  - Checklist: số test ≥ baseline · commit (no code change)
+  - Status: [x] DONE — 2026-05-14
+  - Test: `cd apps/api && mvn test` — 969 tests run / 966 pass / 3 fail (`QuestionReviewControllerTest.stats_shouldReturn200`, `RoomControllerTest.createRoom_withValidData_shouldReturn200`, `LifelineServiceTest.useHint_unlimitedQuota_returnsMinusOneRemaining`). All 3 verified pre-existing on commit `358ef24` (before SOG-1/SOG-2). Baseline file `.test-baseline=829` is stale — current tests count is much higher; not regressed by this task.
+  - Note: file baseline cần update riêng — out of scope task này.
 
 ## Out of scope (follow-up)
 
