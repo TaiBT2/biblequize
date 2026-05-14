@@ -184,7 +184,7 @@ export default function FeaturedDailyCard({
             data-testid="featured-daily-card-cta"
             type="button"
             onClick={onStart}
-            className="inline-flex items-center gap-2 px-4 md:px-5 py-2.5 md:py-3 rounded-[11px] font-bold text-[14px] text-[#1a1208] tracking-[0.01em] transition-transform duration-200 hover:translate-x-[3px]"
+            className="inline-flex items-center justify-center gap-2 px-4 md:px-5 py-2.5 md:py-3 rounded-[11px] font-bold text-[14px] text-[#1a1208] tracking-[0.01em] transition-transform duration-200 hover:translate-x-[3px]"
             style={{
               background: 'linear-gradient(135deg, #e8a832, #c98a1c)',
               boxShadow:
