@@ -2,7 +2,15 @@
 
 > **Source**: User prompt 2026-05-14 + design files `docs/designs/biblequiz/` (Home.html + styles.css + 2 screenshots)
 > **Scope**: Read-only audit để gate Phase 2 (UI rebuild). Direction "vintage gamified" — illuminated manuscript meets mobile-game chunkiness. Supersedes `2026-05-13-home-redesign-modern-spiritual` + `2026-05-05-home-redesign-theo-mockup-home-redesign-mockup-html` (per user decision 2026-05-14).
-> **Status**: IN PROGRESS
+> **Status**: PHASE 1 DONE (audit) — PHASE 2 IN PROGRESS (HRV-7 DONE, restyle commits ahead).
+
+### Phase 2 progress
+
+- **HRV-7** Font + token foundation (Option C Hybrid) — `[x]` DONE 2026-05-14
+  - Files: `apps/web/index.html` (+10 LOC), `apps/web/tailwind.config.js` (+29 LOC)
+  - Added: Yeseva One + JetBrains Mono font links (preload+swap pattern). `fontFamily.display` (Yeseva One stack) + `fontFamily.numeric` (JetBrains Mono stack) — KEEP existing `mono`/`serif`/`verse` untouched (regression-safe for admin dashboard + verse footer). 9 vintage colors: `bg-deep`/`bg-wash`/`ruby`/`ruby-deep`/`emerald`/`emerald-deep`/`plum`/`plum-deep`/`line`/`line-soft`. 3 boxShadow utilities: `chunky-gold`/`chunky-ruby`/`chunky-soft`.
+  - Test: build pass ✓ · type-check baseline (no NEW errors) · vitest Home + VerseFooter + DailyVerseBanner 36/36 · full suite 1167 pass / 125 pre-existing failures (verified by stash-test on ErrorContext+ErrorToast: 16 fail without HRV-7 → not caused by tokens).
+  - Strategy: `(c) [no-spec-impact]` — additive only.
 
 ### Tasks
 

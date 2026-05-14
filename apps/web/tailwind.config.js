@@ -91,6 +91,20 @@ export default {
         'gold-cream': '#fff5dc',
         maroon: '#7c2d3a',
         sage: '#4a6b52',
+        // HRV-7 Vintage palette — Home redesign 2026-05-14 (Option C Hybrid).
+        // Reuses ivory/gold-bright/gold-deep above; ADDs deeper bg + ruby/emerald/plum
+        // accent family + line for vintage borders. Used by HomeBanner / FeaturedDailyCard /
+        // HeroRankedCard / CompactCard / DailyMissionsCard / BibleJourneyCard restyles.
+        'bg-deep': '#0e0a12',
+        'bg-wash': '#15101b',
+        ruby: '#c73e3e',
+        'ruby-deep': '#8e2727',
+        emerald: '#4fa876',
+        'emerald-deep': '#2f6e4d',
+        plum: '#8c5bb5',
+        'plum-deep': '#5b3681',
+        line: '#2e2238',
+        'line-soft': '#221a2c',
       },
       fontFamily: {
         sans: ['Be Vietnam Pro', 'system-ui', 'sans-serif'],
@@ -102,10 +116,25 @@ export default {
         // HR-1: Cormorant Garamond italic ONLY for verse text + drop cap.
         // Do not use this stack elsewhere (mode titles, headings, etc.).
         verse: ['"Cormorant Garamond"', '"Crimson Pro"', 'Playfair Display', 'serif'],
+        // HRV-7: Yeseva One — illuminated-manuscript display serif for Home vintage
+        // h1/h2/section labels. Pair with sans body. Do NOT replace verse stack here.
+        display: ['"Yeseva One"', 'Playfair Display', 'serif'],
+        // HRV-7: JetBrains Mono — Home vintage numeric (XP, timers, HUD).
+        // Distinct from font-mono (Orbitron) which is used heavily across admin
+        // dashboard + room/group code modals; do NOT collapse the two.
+        numeric: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
         // Legacy
         serif: ['Playfair Display', 'serif'],
         cursive: ['Caveat', 'cursive'],
         mono: ['Orbitron', 'Courier New', 'monospace'],
+      },
+      boxShadow: {
+        // HRV-7 Chunky shadows — Duolingo-style 6px hard offset + soft glow.
+        // Mobile-game button feel for vintage Home CTAs. Pair with hover:translate-y
+        // for press-down feedback.
+        'chunky-gold': '0 6px 0 0 #a87a1f, 0 16px 30px -10px rgba(232,181,71,0.35)',
+        'chunky-ruby': '0 6px 0 0 #8e2727, 0 16px 30px -10px rgba(199,62,62,0.4)',
+        'chunky-soft': '0 4px 0 0 #2e2238',
       },
       borderRadius: {
         DEFAULT: "0.25rem",
