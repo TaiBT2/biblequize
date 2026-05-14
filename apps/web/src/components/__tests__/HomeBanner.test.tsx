@@ -71,29 +71,6 @@ describe('HomeBanner (HR-2)', () => {
     expect(name.className).toContain('tracking-[-0.02em]')
   })
 
-  it('streak stat uses animate-breathe class on flame icon', async () => {
-    setupApi({ currentStreak: 5 })
-    renderBanner()
-    await waitFor(() => {
-      expect(screen.getByTestId('home-greeting-stat-streak')).toHaveTextContent('5')
-    })
-    const streak = screen.getByTestId('home-greeting-stat-streak')
-    expect(streak.querySelector('.animate-breathe')).not.toBeNull()
-  })
-
-  it('stat numbers use tabular-nums for sport-app alignment', async () => {
-    setupApi({ currentStreak: 12, energy: 85, seasonPoints: 847 })
-    renderBanner()
-    const streak = await screen.findByTestId('home-greeting-stat-streak')
-    const energy = screen.getByTestId('home-greeting-stat-energy')
-    const season = screen.getByTestId('home-greeting-stat-season')
-    // Number element is the second child of the stat div.
-    for (const stat of [streak, energy, season]) {
-      const numEl = stat.querySelector('.tabular-nums')
-      expect(numEl).not.toBeNull()
-    }
-  })
-
   it('XP/next progress uses tabular-nums + gold value + ivory-faint slash', async () => {
     setupApi({ totalPoints: 500 })
     renderBanner()
@@ -101,14 +78,6 @@ describe('HomeBanner (HR-2)', () => {
       expect(screen.getByTestId('home-greeting-progress-pct')).toHaveTextContent(/500.*1,000/)
     })
     expect(screen.getByTestId('home-greeting-progress-pct').className).toContain('tabular-nums')
-  })
-
-  it('formats large stat numbers with thousands separator', async () => {
-    setupApi({ seasonPoints: 12345 })
-    renderBanner()
-    await waitFor(() => {
-      expect(screen.getByTestId('home-greeting-stat-season')).toHaveTextContent('12,345')
-    })
   })
 
   it('renders max-tier message and hides progress bar at 100k pts', async () => {
@@ -129,10 +98,4 @@ describe('HomeBanner (HR-2)', () => {
     expect(screen.queryByTestId('home-greeting-milestone-6')).not.toBeInTheDocument()
   })
 
-  it('stat numbers use font-numeric (JetBrains Mono) per vintage HUD style', async () => {
-    setupApi({ currentStreak: 7 })
-    renderBanner()
-    const streak = await screen.findByTestId('home-greeting-stat-streak')
-    expect(streak.querySelector('.font-numeric')).not.toBeNull()
-  })
 })

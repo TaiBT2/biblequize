@@ -263,7 +263,7 @@
   - `CompactCard variant='modern'` default preserves GameModeGrid/Groups page visuals.
 - **Outstanding (deferred — open follow-ups, not blockers):**
   - Full vintage 66-book journey path (SVG curving path + 72px seal disks with pulse animation per HRV-14 audit) — current restyle uses existing horizontal-scroll chip layout for tractability.
-  - HUD stat-pill extraction (vintage Home.html splits HUD pills above Hero greeting) — current HomeBanner keeps stats inline; restructure deferred to preserve testid contracts.
+  - ~~HUD stat-pill extraction~~ — **DONE 2026-05-14 (HRV-16)**: `HomeHud.tsx` extracted from HomeBanner; vintage HUD row sits above Hero greeting per Home.html structure.
   - i18n hardcoded VN strings inside `FeaturedDailyCard` / `RankedStandardCard` ("Cạnh tranh ranking", "Đã mở khóa", etc.) — pre-existing debt, not introduced by this redesign.
 - **Ref:** Task file Phase 1 audit + HRV-7..HRV-15 sprint commits on branch `feat/home-redesign-vintage`.
 

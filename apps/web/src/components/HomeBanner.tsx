@@ -16,26 +16,17 @@ interface TierProgressData {
   totalPoints?: number
 }
 
-interface RankedStatusData {
-  energy?: number
-  seasonPoints?: number
-  currentBook?: string | null
-}
-
-type StatIcon = 'flame' | 'bolt' | 'coin'
-
 /**
- * Home banner — sport-app typography per home_modern.html `.banner`
- * (HR-2 redesign, replaces GreetingCard). Keeps the home-greeting-*
- * testids so existing Home.test.tsx specs pass without churn.
+ * Home banner — HRV-10 vintage palette (Yeseva One name + 6-tier rail).
+ * Stats moved to HomeHud (HRV-16) per vintage Home.html structure: HUD
+ * row above Hero greeting. Banner now focuses purely on greeting + name +
+ * tier progress.
  *
  * Visual contract:
  * - Avatar 72px gold gradient + inset highlight + dashed gold ring
- * - Name sans 800 30px ivory, tight tracking
+ * - Name Yeseva One 26→40px responsive ivory, tight tracking
  * - Tier row: current (gold) → next (ivory-dim) + 5px progress with
- *   terminal dot + tabular-nums XP/next
- * - 3 stats with line SVG icons, sans 800 22px tabular-nums numbers,
- *   uppercase tracked labels. Streak flame breathes via animate-breathe.
+ *   terminal dot + tabular-nums XP/next + 6 milestone dots (one per C1 tier)
  */
 export default function HomeBanner() {
   const { t } = useTranslation()
@@ -53,16 +44,7 @@ export default function HomeBanner() {
     staleTime: 30_000,
   })
 
-  const { data: rankedStatus } = useQuery<RankedStatusData>({
-    queryKey: ['ranked-status'],
-    queryFn: () => api.get('/api/me/ranked-status').then(r => r.data),
-    staleTime: 60_000,
-  })
-
   const totalPoints = tierProgress?.totalPoints ?? meData?.totalPoints ?? 0
-  const currentStreak = meData?.currentStreak ?? 0
-  const energy = rankedStatus?.energy ?? 100
-  const seasonPoints = rankedStatus?.seasonPoints ?? 0
   const tier = getTierInfo(totalPoints)
   const greeting = getTimeOfDayGreeting(t)
   const userName = user?.name || t('home.defaultName')
@@ -94,7 +76,7 @@ export default function HomeBanner() {
         style={{ background: 'linear-gradient(90deg, transparent, rgba(244,209,120,0.5), transparent)' }}
       />
 
-      <div className="relative z-10 grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] gap-4 md:gap-7 items-center">
+      <div className="relative z-10 grid grid-cols-[auto_1fr] gap-4 md:gap-7 items-center">
         {/* Avatar */}
         <div
           data-testid="home-greeting-avatar"
@@ -203,67 +185,7 @@ export default function HomeBanner() {
           )}
         </div>
 
-        {/* Stats */}
-        <div
-          data-testid="home-greeting-stats"
-          className="col-span-2 md:col-span-1 flex justify-around md:justify-start md:gap-1 pt-2 md:pt-0 border-t md:border-t-0 border-white/[0.04]"
-        >
-          <Stat
-            icon="flame"
-            testId="home-greeting-stat-streak"
-            value={currentStreak}
-            label={t('home.greeting.streak')}
-          />
-          <Stat
-            icon="bolt"
-            testId="home-greeting-stat-energy"
-            value={energy}
-            label={t('home.greeting.energy')}
-          />
-          <Stat
-            icon="coin"
-            testId="home-greeting-stat-season"
-            value={seasonPoints}
-            label={t('home.greeting.seasonPoints')}
-          />
-        </div>
       </div>
     </section>
-  )
-}
-
-interface StatProps {
-  icon: StatIcon
-  testId: string
-  value: number
-  label: string
-}
-
-function Stat({ icon, testId, value, label }: StatProps) {
-  // HR-13b (2026-05-14): revert SVG icons → emoji per Bui — native
-  // OS color rendering gives the same vivid look the old GreetingCard
-  // had (🔥 ember-orange, ⚡ saturated gold, 📊 multi-color medal)
-  // without per-icon SVG art. animate-breathe still pulses the flame.
-  const glyph = icon === 'flame' ? '🔥' : icon === 'bolt' ? '⚡' : '📊'
-  return (
-    <div
-      data-testid={testId}
-      className="text-center px-2 md:px-3.5 py-1 md:py-2 min-w-[70px] border-r last:border-r-0 border-[rgba(232,168,50,0.10)]"
-    >
-      <div
-        className={`text-[18px] md:text-[20px] leading-none mb-1 select-none ${
-          icon === 'flame' ? 'animate-breathe' : ''
-        }`}
-        aria-hidden
-      >
-        {glyph}
-      </div>
-      <div className="font-numeric text-[18px] md:text-[22px] font-bold text-ivory tabular-nums leading-none tracking-[-0.01em]">
-        {value.toLocaleString()}
-      </div>
-      <div className="text-[9px] font-semibold uppercase tracking-[0.16em] text-ivory-faint mt-1">
-        {label}
-      </div>
-    </div>
   )
 }

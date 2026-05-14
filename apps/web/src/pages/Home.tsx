@@ -12,6 +12,7 @@ import DailyMissionsCard from '../components/DailyMissionsCard'
 import FeaturedDailyCard from '../components/FeaturedDailyCard'
 import HeroRankedCard from '../components/HeroRankedCard'
 import HomeBanner from '../components/HomeBanner'
+import HomeHud from '../components/HomeHud'
 import MotivationCard from '../components/MotivationCard'
 import RankedStandardCard from '../components/RankedStandardCard'
 import SectionHeader from '../components/SectionHeader'
@@ -274,6 +275,7 @@ export default function Home() {
       <DailyBonusModal />
       <TutorialOverlay />
 
+      <HomeHud />
       <HomeBanner />
 
       {/* ── Daily section: State A featured / State B completed strip ── */}

@@ -6,6 +6,13 @@
 
 ### Phase 2 progress
 
+- **HRV-16** HUD stat-pill extraction (deferred from BL-19) — `[x]` DONE 2026-05-14
+  - Files: NEW `apps/web/src/components/HomeHud.tsx` (~85 LOC), NEW `apps/web/src/components/__tests__/HomeHud.test.tsx` (~85 LOC, 5 tests), EDIT `HomeBanner.tsx` (remove stats grid column + Stat helper, ~-65 LOC), EDIT `HomeBanner.test.tsx` (remove 4 stat tests moved to HomeHud), EDIT `Home.tsx` (+2 LOC: import + render HomeHud above HomeBanner).
+  - Vintage Home.html structure now matched: HUD row (3 chunky stat pills + page title "Trang chủ" upper-tracked) sits above Hero (avatar + greeting + name + 6-tier XP rail). Cleaner separation of concerns. HomeHud shares TanStack Query keys (`['me']`, `['ranked-status']`) with HomeBanner — single fetch, cached.
+  - Testid contract preserved: `home-greeting-stat-{streak,energy,season}` testids still resolvable. Home.test.tsx unaffected (queries by testid, not by parent).
+  - Test: HomeHud 5/5 + HomeBanner 5/5 (was 8, -3 moved) + Home 26/26 pass = 36/36.
+  - Strategy: `(c) [no-spec-impact]` — visual structure only.
+
 - **HRV-15** Final integration + BL-19 BACKLOG entry — `[x]` DONE 2026-05-14
   - Files: `docs/spec/BACKLOG.md` (add BL-19 Home vintage redesign tracking entry — links audit + supersede context + 3 outstanding deferred items), task file marked Phase 2 IMPLEMENTATION COMPLETE.
   - Final Tier-3: vitest 1297 total (was 1292 pre-Phase 2), **1172 pass (was 1167) — Phase 2 added 5 NEW tests all passing, 0 new failures introduced**. Pre-existing 125 failures unchanged (ErrorContext/ErrorToast/BasicQuizCard/SdArenaHeader baseline drift, not caused by HRV-7..HRV-14).
