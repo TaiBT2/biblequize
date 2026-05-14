@@ -334,29 +334,26 @@ body::after {
    to all h1/h2/h3 inside .vintage-typography (AppLayout opt-in: every
    user-facing route except /admin/* and /quiz, /room/quiz which keep
    plain sans for data-heavy / gameplay readability).
-   font-weight 400 because Yeseva One ships only that weight on Google
-   Fonts; existing font-extrabold / font-black className overrides would
-   synthesize ugly fake bold — so we lower it here and let visual
-   emphasis come from size + the display serif character itself, matching
-   vintage `.page-head h1` recipe in docs/designs/biblequiz/leaderboard.css. */
+   ONLY sets font-family — leaves font-weight + letter-spacing to each
+   element's existing Tailwind utility classes so Home page h1/h2/h3
+   keep their original look (font-display utility already gives them
+   Yeseva One; explicit weight/tracking utilities continue to apply). */
 .vintage-typography h1,
 .vintage-typography h2,
 .vintage-typography h3 {
   font-family: 'Yeseva One', 'Playfair Display', serif;
-  font-weight: 400;
-  letter-spacing: -0.015em;
 }
 /* Per-element opt-out: any heading that explicitly carries a Tailwind
-   font utility (font-sans / font-mono / font-numeric / font-headline)
-   keeps its declared font. */
+   sans/mono/numeric/headline font utility keeps its declared font
+   stack. `font-display` is intentionally NOT in this list — that
+   utility already maps to Yeseva One, so the global rule and the
+   utility agree; no opt-out needed (and reverting would remove
+   font-family entirely, breaking Home headings — was the HRV-27.0 bug). */
 .vintage-typography :is(h1, h2, h3).font-sans,
 .vintage-typography :is(h1, h2, h3).font-mono,
 .vintage-typography :is(h1, h2, h3).font-numeric,
-.vintage-typography :is(h1, h2, h3).font-headline,
-.vintage-typography :is(h1, h2, h3).font-display {
+.vintage-typography :is(h1, h2, h3).font-headline {
   font-family: revert;
-  font-weight: revert;
-  letter-spacing: revert;
 }
 
 /* Breathing streak flame — used by HomeBanner stat icon (HR-2). */
