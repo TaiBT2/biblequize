@@ -21,9 +21,12 @@ interface HeroRankedCardProps {
 }
 
 /**
- * State B hero — full gold-gradient Ranked card promoted to top after
- * Daily Challenge is completed. Per home_modern.html `.hero-ranked`.
- * Title uses t('gameModes.ranked') = "Đấu Hạng" (C2 lock).
+ * State B hero — Ranked card promoted to top after Daily Challenge is
+ * completed. Variant 02 Radial Glow per HERO_RADIAL_AUDIT.md
+ * (2026-05-14): glass dark base + radial gold glow anchored right
+ * (mobile: bottom). Cross ornament sits inside the glow as a cream
+ * "light source" symbol. Title uses t('gameModes.ranked') = "Đấu Hạng"
+ * (C2 lock).
  */
 export default function HeroRankedCard({
   energyRemaining,
@@ -38,7 +41,7 @@ export default function HeroRankedCard({
   return (
     <div
       data-testid="hero-ranked-card"
-      className="relative overflow-hidden rounded-[20px] p-6 md:p-8 mb-3.5 cursor-pointer transition-transform duration-200 hover:-translate-y-0.5"
+      className="relative overflow-hidden rounded-[20px] p-6 md:p-8 mb-3.5 cursor-pointer transition-transform duration-200 hover:-translate-y-0.5 backdrop-blur-[12px] border border-[rgba(232,168,50,0.15)]"
       onClick={onEnter}
       role="button"
       tabIndex={0}
@@ -49,31 +52,43 @@ export default function HeroRankedCard({
         }
       }}
       style={{
-        background: 'linear-gradient(135deg, #e8a832 0%, #c98a1c 55%, #7a5818 100%)',
+        background: 'rgba(50,52,64,0.5)',
         boxShadow:
-          '0 18px 50px -10px rgba(232,168,50,0.30), 0 0 0 1px rgba(232,168,50,0.4), inset 0 1px 0 rgba(255,220,140,0.4)',
+          '0 18px 50px -10px rgba(232,168,50,0.18), inset 0 1px 0 rgba(255,220,140,0.08)',
       }}
     >
-      {/* Radial gold highlight (overlay so jsdom can parse styles cleanly) */}
+      {/* Radial gold glow — desktop variant: anchored right-center,
+          fade left toward the glass base. Cross ornament (below) sits
+          inside this glow zone so it reads as a light source. */}
       <div
-        data-testid="hero-ranked-card-highlight"
+        data-testid="hero-ranked-card-glow-desktop"
         aria-hidden
-        className="absolute inset-0 pointer-events-none"
+        className="hidden md:block absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 400px 200px at 30% 0%, rgba(255,220,140,0.20), transparent 60%)',
+            'radial-gradient(ellipse at 100% 50%, rgba(232,168,50,0.35) 0%, rgba(232,168,50,0.12) 35%, transparent 65%)',
         }}
       />
-      {/* Variant B ornament — Cross + Sunburst per
-          docs/designs/hero_ornament_options.html (Bui choice 2026-05-14).
-          Vertically centered, slotted in the negative space between the
-          left content column and the right CTA. Hidden on mobile to
-          avoid colliding with the stacked CTA. */}
+      {/* Mobile variant: anchored bottom-center so the glow halos the
+          stacked CTA from below (single-column layout, ornament hidden). */}
+      <div
+        data-testid="hero-ranked-card-glow-mobile"
+        aria-hidden
+        className="md:hidden absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse at 50% 100%, rgba(232,168,50,0.35) 0%, rgba(232,168,50,0.12) 35%, transparent 65%)',
+        }}
+      />
+      {/* Cross + Sunburst ornament — now in cream so it reads as a
+          light source inside the radial glow (was dark on gold before
+          the V2 redesign). Hidden on mobile to avoid colliding with
+          the stacked CTA. */}
       <svg
         data-testid="hero-ranked-card-ornament"
         aria-hidden
-        className="hidden md:block absolute top-1/2 -translate-y-1/2 right-[220px] w-[200px] h-[200px] pointer-events-none"
-        style={{ opacity: 0.14, color: '#1a1208' }}
+        className="hidden md:block absolute top-1/2 -translate-y-1/2 right-[220px] w-[200px] h-[200px] pointer-events-none text-gold-cream"
+        style={{ opacity: 0.18 }}
         viewBox="0 0 200 200"
         fill="none"
       >
@@ -107,7 +122,7 @@ export default function HeroRankedCard({
           stroke="currentColor"
           strokeWidth="1.2"
           opacity="0.5"
-          fill="rgba(26,18,8,0.08)"
+          fill="rgba(255,245,220,0.06)"
         />
         {/* Cross */}
         <path
@@ -115,45 +130,42 @@ export default function HeroRankedCard({
           fill="currentColor"
         />
         {/* Cross center decoration */}
-        <circle cx="100" cy="100" r="6" fill="rgba(26,18,8,0.15)" />
+        <circle cx="100" cy="100" r="6" fill="rgba(255,245,220,0.2)" />
       </svg>
 
       <div className="relative grid grid-cols-1 md:grid-cols-[1fr_auto] gap-5 md:gap-7 items-center">
         <div>
           <div
             data-testid="hero-ranked-card-label"
-            className="text-[10px] font-bold tracking-[0.22em] uppercase mb-2"
-            style={{ color: 'rgba(26,18,8,0.7)' }}
+            className="text-[10px] font-bold tracking-[0.22em] uppercase mb-2 text-ivory-dim"
           >
             {label}
           </div>
           <h2
             data-testid="hero-ranked-card-title"
-            className="text-[26px] md:text-[34px] font-extrabold leading-none tracking-[-0.035em] mb-2.5"
-            style={{ color: '#1a1208', textShadow: '0 1px 0 rgba(255,220,140,0.4)' }}
+            className="text-[26px] md:text-[34px] font-extrabold leading-none tracking-[-0.035em] mb-2.5 text-gold-bright"
+            style={{ textShadow: '0 0 24px rgba(232,168,50,0.30)' }}
           >
             {t('gameModes.ranked')}
           </h2>
           <p
             data-testid="hero-ranked-card-tagline"
-            className="text-[13px] font-medium mb-4"
-            style={{ color: 'rgba(26,18,8,0.75)' }}
+            className="text-[13px] font-medium mb-4 text-ivory-dim"
           >
             {tagline}
           </p>
           <div
             data-testid="hero-ranked-card-stats"
-            className="flex flex-wrap gap-4 text-[12px] font-semibold"
-            style={{ color: 'rgba(26,18,8,0.8)' }}
+            className="flex flex-wrap gap-4 text-[12px] font-semibold text-ivory-dim"
           >
             <span data-testid="hero-ranked-card-energy" className="flex items-center gap-1.5">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-secondary">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
               {energyRemaining} / {energyMax} năng lượng
             </span>
             <span data-testid="hero-ranked-card-progress" className="flex items-center gap-1.5">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-secondary">
                 <circle cx="12" cy="12" r="9" />
                 <path d="M12 6v6l4 2" />
               </svg>

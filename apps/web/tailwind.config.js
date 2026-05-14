@@ -86,6 +86,9 @@ export default {
         'ivory-faint': '#6e6a60',
         'gold-deep': '#c98a1c',
         'gold-shadow': '#7a5818',
+        // Hero Đấu Hạng — Variant 02 Radial Glow (sprint 2026-05-14)
+        'gold-bright': '#f4d178',
+        'gold-cream': '#fff5dc',
         maroon: '#7c2d3a',
         sage: '#4a6b52',
       },

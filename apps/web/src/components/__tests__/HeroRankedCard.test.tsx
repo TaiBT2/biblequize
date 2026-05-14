@@ -81,7 +81,11 @@ describe('HeroRankedCard (HR-4)', () => {
     expect(screen.getByTestId('hero-ranked-card-progress')).toHaveTextContent('42 / 100')
   })
 
-  it('uses gold-gradient background style (radial + linear)', () => {
+  it('Variant 02 — glass base + radial gold glow at right (desktop) / bottom (mobile)', () => {
+    // V2 redesign 2026-05-14: card root carries the dark glass base
+    // (rgba(50,52,64,...)), then two responsive overlay divs paint the
+    // radial gold glow — desktop anchored at right-center, mobile
+    // anchored at bottom-center so the glow halos the stacked CTA.
     render(
       <HeroRankedCard
         energyRemaining={0}
@@ -92,10 +96,27 @@ describe('HeroRankedCard (HR-4)', () => {
       />
     )
     const card = screen.getByTestId('hero-ranked-card')
-    const highlight = screen.getByTestId('hero-ranked-card-highlight')
-    expect(card.getAttribute('style') ?? '').toContain('linear-gradient')
-    expect(card.getAttribute('style') ?? '').toContain('#e8a832')
-    expect(highlight.getAttribute('style') ?? '').toContain('radial-gradient')
+    const glowDesktop = screen.getByTestId('hero-ranked-card-glow-desktop')
+    const glowMobile = screen.getByTestId('hero-ranked-card-glow-mobile')
+
+    // jsdom normalizes rgba() with spaces after commas.
+    const stripWS = (s: string) => s.replace(/\s+/g, '')
+
+    // Card root no longer carries a gold linear-gradient — just glass.
+    const cardStyle = stripWS(card.getAttribute('style') ?? '')
+    expect(cardStyle).toContain('rgba(50,52,64')
+    expect(cardStyle).not.toContain('linear-gradient')
+
+    // Desktop glow: radial anchored right-center.
+    const desktopStyle = stripWS(glowDesktop.getAttribute('style') ?? '')
+    expect(desktopStyle).toContain('radial-gradient')
+    expect(desktopStyle).toContain('100%50%')
+    expect(desktopStyle).toContain('rgba(232,168,50,0.35)')
+
+    // Mobile glow: radial anchored bottom-center.
+    const mobileStyle = stripWS(glowMobile.getAttribute('style') ?? '')
+    expect(mobileStyle).toContain('radial-gradient')
+    expect(mobileStyle).toContain('50%100%')
   })
 
   it('fires onEnter when card body clicked (not just CTA)', async () => {
