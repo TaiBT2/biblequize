@@ -58,7 +58,7 @@ export default function RankedStandardCard({
           className="text-[10px] font-semibold uppercase tracking-[0.06em] px-2.5 py-1 rounded-full text-secondary"
           style={{ background: 'rgba(232,168,50,0.14)' }}
         >
-          Đã mở khóa
+          {t('home.rankedStandard.pillUnlocked')}
         </span>
       </div>
 
@@ -72,7 +72,7 @@ export default function RankedStandardCard({
         data-testid="ranked-standard-card-desc"
         className="text-[12px] text-ivory-dim mb-3.5"
       >
-        Cạnh tranh ranking · {energyRemaining} năng lượng sẵn sàng
+        {t('home.rankedStandard.desc', { energy: energyRemaining })}
       </p>
 
       <div className="flex items-center justify-between pt-3 border-t border-white/[0.04]">
@@ -80,7 +80,7 @@ export default function RankedStandardCard({
           data-testid="ranked-standard-card-cta"
           className="text-[13px] font-bold text-secondary flex items-center gap-1.5 group"
         >
-          Vào trận
+          {t('home.rankedStandard.cta')}
           <svg
             width="14"
             height="14"
@@ -96,7 +96,7 @@ export default function RankedStandardCard({
           </svg>
         </span>
         <span data-testid="ranked-standard-card-hint" className="text-[11px] text-ivory-faint">
-          {rankedAnswered} / {rankedCap} câu hôm nay
+          {t('home.rankedStandard.dailyHint', { answered: rankedAnswered, cap: rankedCap })}
         </span>
       </div>
     </div>

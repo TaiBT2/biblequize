@@ -6,6 +6,13 @@
 
 ### Phase 2 progress
 
+- **HRV-20** i18n cleanup (FeaturedDailyCard + RankedStandardCard) + ringed avatar — `[x]` DONE 2026-05-14
+  - **i18n cleanup**: 12 hardcoded VN strings extracted from FeaturedDailyCard (8 keys: label/title/subtitle/questionCount/minutesMeta/participants/countdownLabel/cta) + RankedStandardCard (4 keys: pillUnlocked/desc/cta/dailyHint). Namespace: `home.featuredDailyCard.*` (to avoid clash with pre-existing `home.featuredDaily.*` used by older DailyChallenge surface) + `home.rankedStandard.*`. EN parity added. Net i18n debt: hardcodedCount **1014 → 1007** (-7), missingKeyCount 16 → 17 (+1 pre-existing drift in unrelated files).
+  - **Duplicate JSON keys fix**: discovered + fixed `"hero"` duplicate blocks in both vi.json (lines 761 + 819) and en.json (761 + 819) — JSON parser silently uses LAST occurrence, so HRV-17 `home.hero.greetingAccent/Suffix/tagline` keys were being shadowed by the pre-existing `home.hero.currentBook/questionsToday/...` block. Merged into single `hero` block per locale.
+  - **Avatar restyle (HomeBanner.tsx, ~10 LOC)**: from 56→72px chunky gradient with dashed border ring → 48→60px radial-gradient gold-bright with **double-ring** decoration (inner 2px bg-deep spacer + outer 2px gold-bright). Matches vintage `.avatar-pill` aesthetic — avatar reads as a personal seal initial, not a HUD ornament. Letter inside now uses `font-display` (Yeseva One) for matched seal feel.
+  - Test: FeaturedDailyCard 7/7 (+ i18n mock added) + RankedStandardCard 5/5 (mock extended) + HomeBanner 9/9 + Home 26/26 = 47 tests, all pass.
+  - Strategy: `(c) [no-spec-impact]` — keys extracted from already-shipped UI; visual avatar tweak only.
+
 - **HRV-19** Journey current-chip pulse glow animation — `[x]` DONE 2026-05-14
   - Files: `apps/web/src/styles/global.css` (+18 LOC: `@keyframes journey-pulse` + `.animate-journey-pulse` utility — expanding gold halo box-shadow, no transform to avoid layout reflow). `apps/web/src/components/BibleJourneyCard.tsx` (1 LOC: add `animate-journey-pulse` class to isCurrent chip, remove inline boxShadow override).
   - Matches vintage Home.html `@keyframes pulse` on `.station.current .seal-disk` — the current Bible book station pulses gold every 2.6s, drawing the eye to "where you are now".

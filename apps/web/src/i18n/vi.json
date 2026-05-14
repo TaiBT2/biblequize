@@ -758,17 +758,28 @@
       "title": "Khám phá thêm",
       "subtitle": "Luyện tập tự do — không tính XP"
     },
-    "hero": {
-      "greetingAccent": "cuộc hành trình",
-      "greetingSuffix": "chờ con.",
-      "tagline": "Hôm nay là ngày tốt để mở Kinh Thánh."
-    },
     "heroRanked": {
       "label": "Tiếp theo · Đấu Hạng",
       "tagline": "Daily xong rồi — giờ cạnh tranh ranking thôi",
       "energyMeta": "{{remaining}} / {{max}} năng lượng",
       "progressMeta": "{{answered}} / {{cap}} câu hôm nay",
       "cta": "Vào trận"
+    },
+    "featuredDailyCard": {
+      "label": "Thử thách hôm nay · Mới sẵn sàng",
+      "title": "Bắt đầu ngày mới với Lời Chúa",
+      "subtitle": "{{count}} câu · {{minutes}} phút · Reset mỗi 24 giờ · Cùng cộng đồng",
+      "questionCount": "{{count}} câu hỏi",
+      "minutesMeta": "~ {{minutes}} phút",
+      "participants": "{{count}} đã chơi hôm nay",
+      "countdownLabel": "Còn lại trong ngày",
+      "cta": "Bắt đầu hôm nay"
+    },
+    "rankedStandard": {
+      "pillUnlocked": "Đã mở khóa",
+      "desc": "Cạnh tranh ranking · {{energy}} năng lượng sẵn sàng",
+      "cta": "Vào trận",
+      "dailyHint": "{{answered}} / {{cap}} câu hôm nay"
     },
     "dailyCompleted": {
       "score": "{{correct}}/{{total}} đúng — {{message}}",
@@ -808,7 +819,10 @@
       "mobileStreakLabel": "STREAK",
       "mobileTodayLabel": "HÔM NAY",
       "streakUnit": "ngày",
-      "todayUnit": "câu"
+      "todayUnit": "câu",
+      "greetingAccent": "cuộc hành trình",
+      "greetingSuffix": "chờ con.",
+      "tagline": "Hôm nay là ngày tốt để mở Kinh Thánh."
     },
     "statStreak": "Streak",
     "statStreakValue": "{{count}} ngày",

@@ -758,17 +758,28 @@
       "title": "Explore more",
       "subtitle": "Free practice — no XP"
     },
-    "hero": {
-      "greetingAccent": "your journey",
-      "greetingSuffix": "awaits.",
-      "tagline": "Today is a good day to open Scripture."
-    },
     "heroRanked": {
       "label": "Up next · Đấu Hạng (Ranked)",
       "tagline": "Daily done — time to climb the ranks",
       "energyMeta": "{{remaining}} / {{max}} energy",
       "progressMeta": "{{answered}} / {{cap}} today",
       "cta": "Enter battle"
+    },
+    "featuredDailyCard": {
+      "label": "Today's challenge · Fresh & ready",
+      "title": "Start your day with the Word",
+      "subtitle": "{{count}} questions · {{minutes}} min · Resets every 24h · Community-wide",
+      "questionCount": "{{count}} questions",
+      "minutesMeta": "~ {{minutes}} min",
+      "participants": "{{count}} played today",
+      "countdownLabel": "Remaining today",
+      "cta": "Start today's"
+    },
+    "rankedStandard": {
+      "pillUnlocked": "Unlocked",
+      "desc": "Compete for rank · {{energy}} energy ready",
+      "cta": "Enter battle",
+      "dailyHint": "{{answered}} / {{cap}} today"
     },
     "dailyCompleted": {
       "score": "{{correct}}/{{total}} correct — {{message}}",
@@ -808,7 +819,10 @@
       "mobileStreakLabel": "STREAK",
       "mobileTodayLabel": "TODAY",
       "streakUnit": "days",
-      "todayUnit": "Q"
+      "todayUnit": "Q",
+      "greetingAccent": "your journey",
+      "greetingSuffix": "awaits.",
+      "tagline": "Today is a good day to open Scripture."
     },
     "statStreak": "Streak",
     "statStreakValue": "{{count}} days",

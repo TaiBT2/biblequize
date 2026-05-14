@@ -6,7 +6,22 @@ import RankedStandardCard from '../RankedStandardCard'
 
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
-    t: (key: string) => (key === 'gameModes.ranked' ? 'Đấu Hạng' : key),
+    t: (key: string, opts?: Record<string, unknown>) => {
+      const dict: Record<string, string> = {
+        'gameModes.ranked': 'Đấu Hạng',
+        'home.rankedStandard.pillUnlocked': 'Đã mở khóa',
+        'home.rankedStandard.desc': 'Cạnh tranh ranking · {{energy}} năng lượng sẵn sàng',
+        'home.rankedStandard.cta': 'Vào trận',
+        'home.rankedStandard.dailyHint': '{{answered}} / {{cap}} câu hôm nay',
+      }
+      let s = dict[key] ?? key
+      if (opts) {
+        for (const [k, v] of Object.entries(opts)) {
+          s = s.replace(new RegExp(`\\{\\{${k}\\}\\}`, 'g'), String(v))
+        }
+      }
+      return s
+    },
   }),
 }))
 

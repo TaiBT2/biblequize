@@ -77,21 +77,23 @@ export default function HomeBanner() {
       />
 
       <div className="relative z-10 grid grid-cols-[auto_1fr] gap-4 md:gap-7 items-center">
-        {/* Avatar */}
+        {/* HRV-20 avatar — vintage .avatar-pill style with double-ring
+            decoration (inner bg-deep spacer + outer gold). Smaller than
+            HR-2 (was 56→72px, now 48→60px) so the avatar feels like a
+            personal seal rather than a HUD ornament — matching the
+            illuminated-manuscript aesthetic where the figure is a
+            decorative initial, not the dominant element. */}
         <div
           data-testid="home-greeting-avatar"
-          className="relative w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-full grid place-items-center text-[22px] md:text-[28px] font-extrabold text-[#1a1208] shrink-0"
+          className="relative w-[48px] h-[48px] md:w-[60px] md:h-[60px] rounded-full grid place-items-center font-display text-[18px] md:text-[22px] text-[#1a1208] shrink-0"
           style={{
-            background: 'linear-gradient(135deg, #e8a832 0%, #c98a1c 70%, #7a5818 100%)',
+            background:
+              'radial-gradient(circle at 30% 30%, #f4d178, #c98a1c 70%, #7a5818)',
             boxShadow:
-              '0 0 30px rgba(232,168,50,0.30), inset 0 -8px 16px rgba(122,88,24,0.4), inset 0 4px 8px rgba(255,220,140,0.5)',
+              '0 0 0 2px #0e0a12, 0 0 0 4px rgba(244,209,120,0.85), 0 0 24px rgba(244,209,120,0.30)',
           }}
         >
           {initial}
-          <span
-            aria-hidden
-            className="absolute -inset-[3px] rounded-full border border-[rgba(232,168,50,0.25)] pointer-events-none"
-          />
         </div>
 
         {/* Info: eyebrow + poetic h1 + rank chip + tier row */}

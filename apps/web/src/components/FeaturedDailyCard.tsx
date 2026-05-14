@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface FeaturedDailyCardProps {
   /** Default 5 questions per Daily Challenge spec. */
@@ -42,6 +43,7 @@ export default function FeaturedDailyCard({
   countdownText,
   onStart,
 }: FeaturedDailyCardProps) {
+  const { t } = useTranslation()
   const [tick, setTick] = useState(0)
   useEffect(() => {
     if (countdownText !== undefined) return
@@ -91,15 +93,15 @@ export default function FeaturedDailyCard({
               className="inline-block w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"
               style={{ boxShadow: '0 0 8px rgba(232,168,50,0.7)' }}
             />
-            Thử thách hôm nay · Mới sẵn sàng
+            {t('home.featuredDailyCard.label')}
           </div>
 
           <h2 className="font-display text-[22px] md:text-[28px] text-ivory leading-[1.15] tracking-[-0.015em] mb-1.5">
-            Bắt đầu ngày mới với Lời Chúa
+            {t('home.featuredDailyCard.title')}
           </h2>
 
           <p className="text-[12px] md:text-[13px] text-ivory-dim mb-3.5">
-            {questionCount} câu · {estimatedMinutes} phút · Reset mỗi 24 giờ · Cùng cộng đồng
+            {t('home.featuredDailyCard.subtitle', { count: questionCount, minutes: estimatedMinutes })}
           </p>
 
           <div
@@ -119,7 +121,7 @@ export default function FeaturedDailyCard({
                   />
                 ))}
               </span>
-              {questionCount} câu hỏi
+              {t('home.featuredDailyCard.questionCount', { count: questionCount })}
             </span>
             <span className="flex items-center gap-1.5">
               <svg
@@ -136,7 +138,7 @@ export default function FeaturedDailyCard({
                 <circle cx="12" cy="12" r="9" />
                 <path d="M12 6v6l4 2" />
               </svg>
-              ~ {estimatedMinutes} phút
+              {t('home.featuredDailyCard.minutesMeta', { minutes: estimatedMinutes })}
             </span>
             {showParticipants && (
               <span
@@ -159,7 +161,7 @@ export default function FeaturedDailyCard({
                   <path d="M16 11a3 3 0 100-6" />
                   <path d="M21 21v-1a6 6 0 00-3-5.2" />
                 </svg>
-                {globalParticipants!.toLocaleString()} đã chơi hôm nay
+                {t('home.featuredDailyCard.participants', { count: globalParticipants!.toLocaleString() })}
               </span>
             )}
           </div>
@@ -171,7 +173,7 @@ export default function FeaturedDailyCard({
               data-testid="featured-daily-card-countdown-label"
               className="text-[10px] font-semibold tracking-[0.14em] uppercase text-ivory-faint"
             >
-              Còn lại trong ngày
+              {t('home.featuredDailyCard.countdownLabel')}
             </div>
             <div
               data-testid="featured-daily-card-countdown"
@@ -189,7 +191,7 @@ export default function FeaturedDailyCard({
               background: 'linear-gradient(180deg, #f4d178, #e8a832)',
             }}
           >
-            Bắt đầu hôm nay
+            {t('home.featuredDailyCard.cta')}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M13 5l7 7-7 7" />
             </svg>
