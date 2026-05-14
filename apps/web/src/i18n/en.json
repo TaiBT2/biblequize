@@ -759,7 +759,7 @@
       "subtitle": "Free practice — no XP"
     },
     "heroRanked": {
-      "label": "Up next · Enter the arena",
+      "label": "Up next · Đấu Hạng (Ranked)",
       "tagline": "Daily done — time to climb the ranks",
       "energyMeta": "{{remaining}} / {{max}} energy",
       "progressMeta": "{{answered}} / {{cap}} today",

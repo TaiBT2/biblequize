@@ -42,7 +42,7 @@ export default function HeroRankedCard({
   return (
     <div
       data-testid="hero-ranked-card"
-      className="relative overflow-hidden rounded-[20px] p-6 md:p-8 mb-3.5 cursor-pointer transition-transform duration-200 hover:-translate-y-0.5 backdrop-blur-[12px] border border-[rgba(232,168,50,0.15)]"
+      className="relative overflow-hidden rounded-[20px] p-6 md:p-8 mb-3.5 cursor-pointer transition-transform duration-200 hover:-translate-y-0.5 bg-bg-deep border border-line shadow-chunky-soft"
       onClick={onEnter}
       role="button"
       tabIndex={0}
@@ -52,33 +52,28 @@ export default function HeroRankedCard({
           onEnter()
         }
       }}
-      style={{
-        background: 'rgba(50,52,64,0.5)',
-        boxShadow:
-          '0 18px 50px -10px rgba(232,168,50,0.18), inset 0 1px 0 rgba(255,220,140,0.08)',
-      }}
     >
-      {/* Radial gold glow — desktop variant: anchored right-center,
-          fade left toward the glass base. Cross ornament (below) sits
-          inside this glow zone so it reads as a light source. */}
+      {/* HRV-12: ruby radial glow (desktop right-center, mobile bottom).
+          Replaces V2 gold radial — vintage cta-ranked uses ruby as the
+          primary accent. Cross + sunburst ornament (below) shifts from
+          cream-on-gold to gold-on-ruby to read as a light source inside
+          the new red glow. */}
       <div
         data-testid="hero-ranked-card-glow-desktop"
         aria-hidden
         className="hidden md:block absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse at 100% 50%, rgba(232,168,50,0.35) 0%, rgba(232,168,50,0.12) 35%, transparent 65%)',
+            'radial-gradient(ellipse at 100% 50%, rgba(199,62,62,0.30) 0%, rgba(199,62,62,0.10) 35%, transparent 65%)',
         }}
       />
-      {/* Mobile variant: anchored bottom-center so the glow halos the
-          stacked CTA from below (single-column layout, ornament hidden). */}
       <div
         data-testid="hero-ranked-card-glow-mobile"
         aria-hidden
         className="md:hidden absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse at 50% 100%, rgba(232,168,50,0.35) 0%, rgba(232,168,50,0.12) 35%, transparent 65%)',
+            'radial-gradient(ellipse at 50% 100%, rgba(199,62,62,0.30) 0%, rgba(199,62,62,0.10) 35%, transparent 65%)',
         }}
       />
       {/* Cross + Sunburst ornament — now in cream so it reads as a
@@ -144,7 +139,7 @@ export default function HeroRankedCard({
           </div>
           <h2
             data-testid="hero-ranked-card-title"
-            className="text-[26px] md:text-[34px] font-extrabold leading-none tracking-[-0.035em] mb-2.5 text-gold-bright"
+            className="font-display text-[30px] md:text-[44px] leading-none tracking-[-0.02em] mb-2.5 text-gold-bright"
             style={{ textShadow: '0 0 24px rgba(232,168,50,0.30)' }}
           >
             {t('gameModes.ranked')}
@@ -181,11 +176,9 @@ export default function HeroRankedCard({
             e.stopPropagation()
             onEnter()
           }}
-          className="group inline-flex items-center justify-center gap-2.5 w-full md:w-auto px-5 md:px-6 py-3 md:py-3.5 rounded-xl font-bold text-[15px] tracking-[0.01em] transition-all duration-200 hover:translate-x-[3px]"
+          className="group inline-flex items-center justify-center gap-2.5 w-full md:w-auto px-5 md:px-6 py-3 md:py-3.5 rounded-[14px] font-extrabold uppercase text-[14px] md:text-[15px] tracking-[0.04em] text-ivory shadow-chunky-ruby transition-transform duration-100 hover:-translate-y-0.5 active:translate-y-1 active:shadow-none"
           style={{
-            background: '#1a1208',
-            color: '#e8a832',
-            boxShadow: '0 6px 18px rgba(26,18,8,0.4), inset 0 1px 0 rgba(232,168,50,0.15)',
+            background: 'linear-gradient(180deg, #e55757, #c73e3e)',
           }}
         >
           {t('home.heroRanked.cta')}

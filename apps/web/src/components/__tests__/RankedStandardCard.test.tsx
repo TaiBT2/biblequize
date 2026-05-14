@@ -65,7 +65,7 @@ describe('RankedStandardCard (HR-5)', () => {
     expect(onEnter).toHaveBeenCalledTimes(1)
   })
 
-  it('uses gold-tint background (not the full hero gold gradient)', () => {
+  it('HRV-12 vintage — bg-deep + line border + chunky-soft + subtle ruby radial', () => {
     render(
       <RankedStandardCard
         energyRemaining={100}
@@ -75,10 +75,14 @@ describe('RankedStandardCard (HR-5)', () => {
       />
     )
     const card = screen.getByTestId('ranked-standard-card')
-    const styleAttr = card.getAttribute('style') ?? ''
-    // Must NOT contain the full hero recipe (#7a5818 = hero gold-shadow stop).
-    expect(styleAttr).not.toContain('#7a5818')
-    // Must use the low-alpha gold tint pattern from the mockup.
-    expect(styleAttr).toContain('rgba(232,168,50,0.06)')
+    // Vintage uses Tailwind utility classes for base look — assert classes
+    // first (more stable than inline style assertions).
+    expect(card.className).toContain('bg-bg-deep')
+    expect(card.className).toContain('border-line')
+    expect(card.className).toContain('shadow-chunky-soft')
+    // Subtle ruby radial sits in inline style (background-image).
+    const styleAttr = (card.getAttribute('style') ?? '').replace(/\s+/g, '')
+    expect(styleAttr).toContain('radial-gradient')
+    expect(styleAttr).toContain('rgba(199,62,62,0.12)')
   })
 })

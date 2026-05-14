@@ -6,6 +6,14 @@
 
 ### Phase 2 progress
 
+- **HRV-12** HeroRankedCard + RankedStandardCard ruby chunky + C2 lock fix — `[x]` DONE 2026-05-14
+  - **C2 enforcement**: `home.heroRanked.label` vi.json "Tiếp theo · **Bước vào đấu trường**" → "Tiếp theo · **Đấu Hạng**". en.json "Up next · Enter the arena" → "Up next · Đấu Hạng (Ranked)". Title h2 already used `t('gameModes.ranked')` = "Đấu Hạng" ✓.
+  - HeroRankedCard.tsx: card root = `bg-bg-deep` + `border-line` + `shadow-chunky-soft` (replaces V2 glass `rgba(50,52,64,0.5)`). Radial glow ruby `rgba(199,62,62,0.30)` (replaces V2 gold). Title h2 → `font-display` 30→44px (replaces sans extrabold). CTA → `shadow-chunky-ruby` + ruby gradient `#e55757→#c73e3e` + uppercase tracked + active push-down.
+  - RankedStandardCard.tsx: card root vintage `bg-bg-deep` + `border-line` + `shadow-chunky-soft` (replaces gold border + glass blur). Subtle ruby radial top-right. Title → `font-display` 22px.
+  - HeroRankedCard.test: rewrite V2 glass+gold assertion → vintage class assertions + ruby radial. RankedStandardCard.test: rewrite gold-tint assertion → vintage chunky-soft + ruby radial assertion. 11/11 + 5/5 ranked tests pass after update.
+  - Test: HeroRankedCard 6/6 + RankedStandardCard 5/5 + Home 26/26 pass.
+  - Strategy: `(c) [no-spec-impact]` (visual + i18n string value change — keys preserved, no shape change).
+
 - **HRV-11** FeaturedDailyCard chunky gold + DailyCompletedStrip emerald palette — `[x]` DONE 2026-05-14
   - Files: `apps/web/src/components/FeaturedDailyCard.tsx` (~6 LOC: bg-deep + line border + chunky-soft shadow + vintage gold-bright radial; h2 → font-display 22/28px; CTA → chunky-gold shadow + uppercase tracked + relabel "Bắt đầu hôm nay" matching vintage Home.html; press-down on active:translate-y-1). `apps/web/src/components/DailyCompletedStrip.tsx` (~3 LOC: border emerald-deep/40 + chunky-soft shadow + emerald-tinted gradient bg). DailyCompletedStrip stays minimal — strip layout already close to vintage feel.
   - Test: FeaturedDailyCard 7/7 + DailyCompletedStrip 6/6 + Home 26/26 pass.

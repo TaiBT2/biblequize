@@ -23,7 +23,7 @@ export default function RankedStandardCard({
   return (
     <div
       data-testid="ranked-standard-card"
-      className="relative cursor-pointer rounded-2xl border border-[rgba(232,168,50,0.28)] p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[rgba(232,168,50,0.5)]"
+      className="relative cursor-pointer rounded-2xl border border-line bg-bg-deep shadow-chunky-soft p-5 transition-transform duration-150 hover:-translate-y-0.5"
       role="button"
       tabIndex={0}
       onClick={onEnter}
@@ -34,9 +34,8 @@ export default function RankedStandardCard({
         }
       }}
       style={{
-        background:
-          'linear-gradient(135deg, rgba(232,168,50,0.06), rgba(232,168,50,0.01) 60%), rgba(24,26,36,0.55)',
-        backdropFilter: 'blur(12px)',
+        backgroundImage:
+          'radial-gradient(ellipse 280px 160px at 100% 0%, rgba(199,62,62,0.12), transparent 60%)',
       }}
     >
       <div className="flex items-start justify-between mb-3.5">
@@ -65,7 +64,7 @@ export default function RankedStandardCard({
 
       <h3
         data-testid="ranked-standard-card-title"
-        className="text-[19px] font-bold text-ivory leading-[1.15] mb-1 tracking-[-0.015em]"
+        className="font-display text-[22px] text-ivory leading-[1.1] mb-1 tracking-[-0.015em]"
       >
         {t('gameModes.ranked')}
       </h3>

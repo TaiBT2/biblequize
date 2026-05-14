@@ -759,7 +759,7 @@
       "subtitle": "Luyện tập tự do — không tính XP"
     },
     "heroRanked": {
-      "label": "Tiếp theo · Bước vào đấu trường",
+      "label": "Tiếp theo · Đấu Hạng",
       "tagline": "Daily xong rồi — giờ cạnh tranh ranking thôi",
       "energyMeta": "{{remaining}} / {{max}} năng lượng",
       "progressMeta": "{{answered}} / {{cap}} câu hôm nay",

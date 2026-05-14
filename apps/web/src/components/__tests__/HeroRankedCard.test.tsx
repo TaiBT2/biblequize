@@ -98,11 +98,11 @@ describe('HeroRankedCard (HR-4)', () => {
     expect(screen.getByTestId('hero-ranked-card-progress')).toHaveTextContent('42 / 100')
   })
 
-  it('Variant 02 — glass base + radial gold glow at right (desktop) / bottom (mobile)', () => {
-    // V2 redesign 2026-05-14: card root carries the dark glass base
-    // (rgba(50,52,64,...)), then two responsive overlay divs paint the
-    // radial gold glow — desktop anchored at right-center, mobile
-    // anchored at bottom-center so the glow halos the stacked CTA.
+  it('HRV-12 vintage — bg-deep card + ruby radial glow at right (desktop) / bottom (mobile)', () => {
+    // HRV-12 vintage redesign: card root uses bg-deep + line border +
+    // chunky-soft shadow (vintage cta-ranked style). Glow overlays paint
+    // a ruby radial — desktop anchored at right-center, mobile anchored
+    // at bottom-center. Replaces V2 gold radial.
     render(
       <HeroRankedCard
         energyRemaining={0}
@@ -119,21 +119,22 @@ describe('HeroRankedCard (HR-4)', () => {
     // jsdom normalizes rgba() with spaces after commas.
     const stripWS = (s: string) => s.replace(/\s+/g, '')
 
-    // Card root no longer carries a gold linear-gradient — just glass.
-    const cardStyle = stripWS(card.getAttribute('style') ?? '')
-    expect(cardStyle).toContain('rgba(50,52,64')
-    expect(cardStyle).not.toContain('linear-gradient')
+    // Card root uses vintage classes (bg-deep + line border + shadow-chunky-soft).
+    expect(card.className).toContain('bg-bg-deep')
+    expect(card.className).toContain('border-line')
+    expect(card.className).toContain('shadow-chunky-soft')
 
-    // Desktop glow: radial anchored right-center.
+    // Desktop glow: ruby radial anchored right-center.
     const desktopStyle = stripWS(glowDesktop.getAttribute('style') ?? '')
     expect(desktopStyle).toContain('radial-gradient')
     expect(desktopStyle).toContain('100%50%')
-    expect(desktopStyle).toContain('rgba(232,168,50,0.35)')
+    expect(desktopStyle).toContain('rgba(199,62,62,0.30)')
 
-    // Mobile glow: radial anchored bottom-center.
+    // Mobile glow: ruby radial anchored bottom-center.
     const mobileStyle = stripWS(glowMobile.getAttribute('style') ?? '')
     expect(mobileStyle).toContain('radial-gradient')
     expect(mobileStyle).toContain('50%100%')
+    expect(mobileStyle).toContain('rgba(199,62,62,0.30)')
   })
 
   it('fires onEnter when card body clicked (not just CTA)', async () => {
