@@ -80,11 +80,34 @@ export default function Onboarding() {
               </button>
 
               <button
+                data-testid="onboarding-lang-en"
                 onClick={() => selectLanguage('en')}
                 className="glass-card p-10 rounded-xl group cursor-pointer border border-outline-variant/15 hover:border-secondary/50 transition-all duration-500 flex flex-col items-center space-y-6"
               >
-                <div className="w-20 h-20 rounded-full overflow-hidden shadow-2xl group-hover:scale-110 transition-transform duration-500 ring-2 ring-secondary/20">
-                  <img alt="Flag of United Kingdom" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnGePCC9CJ6oD6XsSzm6QF7xjgnKJuwpJrN221Iz0Mwz7toi1A43JH85t06e9IzLaAUMsCoFCBs4eo9oG09SZ_dP7J3UzDlaRNx-qx6wMhA74juEvu05ZQWYgznz7T8OFIVoL_J2Yaqvuv5RbsetZWaJVLhg1JA1HpOUHiy-9TJreRxZN7TgTU5SGs0ic3YSYK04oCKkZYv572b1BYG11hd0WrMdXAOP0rz_blWLzL7w5v9Q3BUH7uRWd2S-lHcyB4LgF2j8zNI20" />
+                {/* Globe icon (HR-12 2026-05-14) — replaces UK Union Jack
+                    flag. English isn't a country-bound language; using a
+                    globe matches the Google / Apple / Netflix convention
+                    for language pickers. VN card keeps its flag because
+                    Vietnamese is 99% bound to one country. */}
+                <div
+                  data-testid="onboarding-lang-en-icon"
+                  className="flex h-20 w-20 items-center justify-center rounded-full ring-2 ring-secondary/20 shadow-2xl group-hover:scale-110 transition-transform duration-500 border border-[#e8a832]/25 bg-gradient-to-br from-[#e8a832]/15 to-[#c98a1c]/5"
+                >
+                  <svg
+                    aria-label="Globe — international English"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-10 h-10 text-[#e8a832]"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
                 </div>
                 <div className="space-y-2">
                   <p className="text-2xl font-bold text-on-surface">{t('onboarding.langEnName')}</p>

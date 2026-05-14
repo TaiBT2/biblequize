@@ -53,6 +53,29 @@ describe('Onboarding', () => {
       expect(screen.getByText('English')).toBeInTheDocument()
     })
 
+    /**
+     * HR-12 (2026-05-14): English isn't a country-bound language —
+     * 70%+ of speakers live outside the UK. Replace the Union Jack
+     * flag with a globe icon, matching the Google / Apple / Netflix
+     * convention. VN card keeps its flag image.
+     */
+    it('EN language card uses a globe icon, not the UK flag', () => {
+      renderOnboarding()
+      const enCard = screen.getByTestId('onboarding-lang-en')
+      const iconWrap = screen.getByTestId('onboarding-lang-en-icon')
+      // Globe SVG present
+      expect(iconWrap.querySelector('svg circle')).not.toBeNull()
+      // No UK flag image left behind
+      expect(enCard.querySelector('img[alt*="United Kingdom" i]')).toBeNull()
+      expect(enCard.querySelector('img[alt*="UK" i]')).toBeNull()
+    })
+
+    it('VN language card keeps its country flag image', () => {
+      renderOnboarding()
+      const viCard = screen.getByTestId('onboarding-lang-vi')
+      expect(viCard.querySelector('img[alt*="Vietnam" i]')).not.toBeNull()
+    })
+
     it('renders Skip button on language screen', () => {
       renderOnboarding()
       expect(screen.getByText('Skip')).toBeInTheDocument()
