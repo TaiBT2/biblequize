@@ -64,20 +64,58 @@ export default function HeroRankedCard({
             'radial-gradient(ellipse 400px 200px at 30% 0%, rgba(255,220,140,0.20), transparent 60%)',
         }}
       />
-      {/* Decorative ornament (top-right) */}
+      {/* Variant B ornament — Cross + Sunburst per
+          docs/designs/hero_ornament_options.html (Bui choice 2026-05-14).
+          Vertically centered, slotted in the negative space between the
+          left content column and the right CTA. Hidden on mobile to
+          avoid colliding with the stacked CTA. */}
       <svg
+        data-testid="hero-ranked-card-ornament"
         aria-hidden
-        className="absolute top-5 right-7 opacity-40 pointer-events-none"
-        width="80"
-        height="60"
-        viewBox="0 0 80 60"
+        className="hidden md:block absolute top-1/2 -translate-y-1/2 right-[220px] w-[200px] h-[200px] pointer-events-none"
+        style={{ opacity: 0.14, color: '#1a1208' }}
+        viewBox="0 0 200 200"
         fill="none"
       >
-        <path d="M10 30 Q30 10 40 30 Q50 50 70 30" stroke="#1a1208" strokeWidth="1" opacity="0.4" />
-        <circle cx="40" cy="30" r="3" fill="#1a1208" opacity="0.3" />
-        <path d="M5 30 L15 30 M65 30 L75 30" stroke="#1a1208" strokeWidth="0.8" opacity="0.3" />
-        <circle cx="40" cy="15" r="1.5" fill="#1a1208" opacity="0.4" />
-        <circle cx="40" cy="45" r="1.5" fill="#1a1208" opacity="0.4" />
+        {/* Sunburst — 8 main rays */}
+        <g stroke="currentColor" strokeWidth="1.5" opacity="0.55">
+          <line x1="100" y1="100" x2="100" y2="20" />
+          <line x1="100" y1="100" x2="100" y2="180" />
+          <line x1="100" y1="100" x2="20" y2="100" />
+          <line x1="100" y1="100" x2="180" y2="100" />
+          <line x1="100" y1="100" x2="160" y2="40" />
+          <line x1="100" y1="100" x2="40" y2="40" />
+          <line x1="100" y1="100" x2="160" y2="160" />
+          <line x1="100" y1="100" x2="40" y2="160" />
+        </g>
+        {/* Sunburst — 8 secondary rays */}
+        <g stroke="currentColor" strokeWidth="1" opacity="0.35">
+          <line x1="100" y1="100" x2="140" y2="25" />
+          <line x1="100" y1="100" x2="60" y2="25" />
+          <line x1="100" y1="100" x2="175" y2="60" />
+          <line x1="100" y1="100" x2="25" y2="60" />
+          <line x1="100" y1="100" x2="175" y2="140" />
+          <line x1="100" y1="100" x2="25" y2="140" />
+          <line x1="100" y1="100" x2="140" y2="175" />
+          <line x1="100" y1="100" x2="60" y2="175" />
+        </g>
+        {/* Inner halo */}
+        <circle
+          cx="100"
+          cy="100"
+          r="50"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          opacity="0.5"
+          fill="rgba(26,18,8,0.08)"
+        />
+        {/* Cross */}
+        <path
+          d="M92 60 L108 60 L108 92 L140 92 L140 108 L108 108 L108 160 L92 160 L92 108 L60 108 L60 92 L92 92 Z"
+          fill="currentColor"
+        />
+        {/* Cross center decoration */}
+        <circle cx="100" cy="100" r="6" fill="rgba(26,18,8,0.15)" />
       </svg>
 
       <div className="relative grid grid-cols-1 md:grid-cols-[1fr_auto] gap-5 md:gap-7 items-center">
