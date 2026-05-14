@@ -323,11 +323,15 @@ describe('AppLayout — Sidebar widgets (C3)', () => {
     }
   })
 
-  it('Home/default route → sidebar-widgets block does NOT render (modern minimal sidebar)', () => {
-    // 2026-05-14: Streak + DailyMission widgets removed from default
+  it('Home/default route → sidebar-widgets shows LeaderboardRank + LeaderboardSeason (always-visible per user request 2026-05-14)', () => {
+    // 2026-05-14a: Streak + DailyMission widgets removed from default
     // sidebar — both duplicated HomeBanner + DailyMissionsCard.
+    // 2026-05-14b: LeaderboardRank + LeaderboardSeason promoted to
+    // always-visible (every route). Streak/DailyMission still NOT here.
     renderAppLayout()
-    expect(screen.queryByTestId('sidebar-widgets')).toBeNull()
+    expect(screen.queryByTestId('sidebar-widgets')).not.toBeNull()
+    expect(screen.queryByTestId('leaderboard-rank-widget')).not.toBeNull()
+    expect(screen.queryByTestId('leaderboard-season-widget')).not.toBeNull()
     expect(screen.queryByTestId('streak-widget')).toBeNull()
     expect(screen.queryByTestId('daily-mission-widget')).toBeNull()
   })

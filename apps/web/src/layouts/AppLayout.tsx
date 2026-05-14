@@ -84,36 +84,43 @@ export default function AppLayout() {
                 widgets stay because each surfaces page-specific data
                 that isn't repeated in the main column. */}
             {user && (() => {
-              let widgets: React.ReactNode = null
+              // Per user request 2026-05-14: LeaderboardRankWidget +
+              // LeaderboardSeasonWidget hiển thị ở SIDEBAR trên MỌI route
+              // (trước đây chỉ /leaderboard). Các widget khác giữ
+              // route-aware để tránh nhồi sidebar.
+              const alwaysWidgets = (
+                <>
+                  <LeaderboardRankWidget />
+                  <LeaderboardSeasonWidget />
+                </>
+              )
+
+              let routeWidgets: React.ReactNode = null
               if (location.pathname.startsWith('/ranked')) {
-                widgets = (
+                routeWidgets = (
                   <>
                     <SeasonGoalWidget />
                     <WinRateWidget />
                     <WeekComboWidget />
                   </>
                 )
-              } else if (location.pathname.startsWith('/leaderboard')) {
-                widgets = (
-                  <>
-                    <LeaderboardRankWidget />
-                    <LeaderboardSeasonWidget />
-                  </>
-                )
               } else if (location.pathname.startsWith('/groups/')) {
                 const match = location.pathname.match(/^\/groups\/([^/]+)/)
                 const groupId = match ? match[1] : null
                 if (groupId) {
-                  widgets = <GroupQuickInfoSidebar groupId={groupId} />
+                  routeWidgets = <GroupQuickInfoSidebar groupId={groupId} />
                 }
               }
-              if (!widgets) return null
+              // /leaderboard route: alwaysWidgets already cover it — no
+              // extra route-specific widgets, no duplication.
+
               return (
                 <div
                   data-testid="sidebar-widgets"
                   className="pt-5 mt-3 border-t border-white/5 space-y-2.5"
                 >
-                  {widgets}
+                  {alwaysWidgets}
+                  {routeWidgets}
                 </div>
               )
             })()}
