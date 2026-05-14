@@ -24,7 +24,7 @@ function GuestHeader() {
             {t('nav.leaderboard')}
           </Link>
           <a className="font-be-vietnam-pro tracking-tight text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-colors duration-300" href="#">
-            About
+            {t('landing.about')}
           </a>
         </div>
         <div className="flex items-center gap-2 sm:gap-4 ml-auto">
@@ -222,7 +222,7 @@ function TryNowSection() {
             <div className="flex items-center justify-between gap-3 flex-wrap">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-container/60 text-[11px] sm:text-xs font-bold whitespace-nowrap">
                 <span className="material-symbols-outlined text-[14px]">group</span>
-                +1.2k players
+                {t('landing.playersCount')}
               </div>
               <Link
                 to="/daily"
@@ -280,7 +280,7 @@ function LeaderboardPreview() {
             <div className="col-span-2">{t('landing.rank')}</div>
             <div className="col-span-6">{t('landing.warrior')}</div>
             <div className="col-span-2">XP</div>
-            <div className="col-span-2 text-right">Danh Hiệu</div>
+            <div className="col-span-2 text-right">{t('landing.titleHeader')}</div>
           </div>
 
           <div className="divide-y divide-outline-variant/10">
@@ -512,8 +512,8 @@ export default function LandingPage() {
   return (
     <div data-testid="landing-page" className="bg-background font-body text-on-surface selection:bg-secondary selection:text-on-secondary min-h-screen">
       <PageMeta
-        title="Hoc Kinh Thanh qua Quiz & Thi dau"
-        description="Quiz Kinh Thanh tieng Viet — trac nghiem tuong tac, thi dau multiplayer, nhom hoi thanh. Hoan toan mien phi."
+        title="Học Kinh Thánh qua Quiz & Thi đấu"
+        description="Quiz Kinh Thánh tiếng Việt — trắc nghiệm tương tác, thi đấu multiplayer, nhóm hội thánh. Hoàn toàn miễn phí."
         canonicalPath="/"
       />
       <GuestHeader />
