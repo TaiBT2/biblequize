@@ -237,31 +237,50 @@ interface StatProps {
 }
 
 function Stat({ icon, testId, value, label }: StatProps) {
-  const iconColor: Record<StatIcon, string> = {
-    flame: 'text-[#fb923c] animate-breathe',
-    bolt: 'text-tertiary',
-    coin: 'text-secondary',
-  }
+  // HR-13 (2026-05-14): banner stats are focal data points, NOT
+  // decorative — switched from line outline to filled + colored
+  // icons with drop-shadow glow (Strava/Nike sport-app feel). Nav
+  // sidebar, section headers, and mode cards keep their line style.
   return (
     <div
       data-testid={testId}
       className="text-center px-2 md:px-3.5 py-1 md:py-2 min-w-[70px] border-r last:border-r-0 border-[rgba(232,168,50,0.10)]"
     >
-      <div className={`w-[18px] h-[18px] mx-auto mb-1 ${iconColor[icon]}`}>
+      <div
+        className={`w-5 h-5 mx-auto mb-1 ${icon === 'flame' ? 'animate-breathe' : ''}`}
+      >
         {icon === 'flame' && (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            viewBox="0 0 24 24"
+            fill="#fb923c"
+            stroke="none"
+            style={{ filter: 'drop-shadow(0 0 6px rgba(251,146,60,0.55))' }}
+          >
             <path d="M12 2c1 3 4 5 4 9a4 4 0 11-8 0c0-2 1-3 2-4-1-2 0-4 2-5z" />
           </svg>
         )}
         {icon === 'bolt' && (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            viewBox="0 0 24 24"
+            fill="#e7c268"
+            stroke="none"
+            style={{ filter: 'drop-shadow(0 0 4px rgba(231,194,104,0.45))' }}
+          >
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
           </svg>
         )}
         {icon === 'coin' && (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="9" />
-            <path d="M12 7v10M9 10h6M9 14h6" />
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            style={{ filter: 'drop-shadow(0 0 4px rgba(232,168,50,0.40))' }}
+          >
+            <circle cx="12" cy="12" r="9" fill="#e8a832" />
+            <path
+              d="M9 10h6v1.5H9zm0 3h6v1.5H9z"
+              fill="#1a1208"
+              fillOpacity="0.6"
+            />
           </svg>
         )}
       </div>
