@@ -12,14 +12,19 @@ interface UserDropdownProps {
   align?: 'left' | 'right'
   /** Layout variant of the trigger button.
    *  - "compact" (default): just the avatar circle — used by mobile
-   *    top bar where horizontal space is tight.
-   *  - "card": avatar + name + tier + chevron — used by sidebar. */
+   *    top bar AND the sidebar foot (Modern Spiritual minimal sidebar).
+   *  - "card": avatar + name + tier + chevron — legacy wide variant. */
   trigger?: 'compact' | 'card'
   /** When trigger="card", paint the avatar background with this hex
    *  (the user's tier color) and render {@link tierName} as a subtitle
    *  below the displayName. Both ignored for trigger="compact". */
   tierColorHex?: string
   tierName?: string
+  /** Where the dropdown panel opens relative to the trigger.
+   *  - "bottom" (default): panel under the trigger — top bar.
+   *  - "top":             panel above the trigger — sidebar foot
+   *                       where opening downward would clip. */
+  dropPosition?: 'top' | 'bottom'
 }
 
 /**
@@ -36,6 +41,7 @@ export default function UserDropdown({
   trigger = 'compact',
   tierColorHex,
   tierName,
+  dropPosition = 'bottom',
 }: UserDropdownProps) {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
@@ -88,6 +94,8 @@ export default function UserDropdown({
   }
 
   const panelAlign = align === 'left' ? 'left-0' : 'right-0'
+  const panelVertical =
+    dropPosition === 'top' ? 'bottom-full mb-2' : 'top-full mt-2'
 
   return (
     <div ref={wrapRef} className="relative" data-testid="user-dropdown">
@@ -99,7 +107,7 @@ export default function UserDropdown({
         className={
           trigger === 'card'
             ? 'flex items-center gap-3 w-full px-3 py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-colors text-left'
-            : 'w-9 h-9 rounded-full overflow-hidden border-2 border-secondary/30 p-0.5 hover:border-secondary transition-colors'
+            : 'w-10 h-10 rounded-full grid place-items-center transition-transform hover:scale-[1.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/60'
         }
       >
         {trigger === 'card' ? (
@@ -138,11 +146,23 @@ export default function UserDropdown({
             </svg>
           </>
         ) : user?.avatar ? (
-          <img src={user.avatar} alt={displayName} className="w-full h-full rounded-full object-cover" />
+          <img
+            src={user.avatar}
+            alt={displayName}
+            className="w-full h-full rounded-full object-cover border border-[rgba(232,168,50,0.35)]"
+          />
         ) : (
-          <div className="rounded-full w-full h-full bg-surface-container-highest flex items-center justify-center">
-            <span className="material-symbols-outlined text-secondary">person</span>
-          </div>
+          <span
+            data-testid="user-dropdown-avatar-initial"
+            className="w-full h-full rounded-full grid place-items-center text-[15px] font-extrabold text-[#1a1208]"
+            style={{
+              background: 'linear-gradient(135deg, #e8a832 0%, #c98a1c 70%, #7a5818 100%)',
+              boxShadow:
+                '0 0 16px rgba(232,168,50,0.30), inset 0 -4px 10px rgba(122,88,24,0.4), inset 0 2px 4px rgba(255,220,140,0.5)',
+            }}
+          >
+            {displayName.charAt(0).toUpperCase()}
+          </span>
         )}
       </button>
 
@@ -150,7 +170,7 @@ export default function UserDropdown({
         <div
           data-testid="user-dropdown-panel"
           role="menu"
-          className={`absolute ${panelAlign} top-full mt-2 z-50 w-56 bg-surface-container-high rounded-xl border border-outline-variant/20 shadow-2xl overflow-hidden`}
+          className={`absolute ${panelAlign} ${panelVertical} z-50 w-56 bg-surface-container-high rounded-xl border border-outline-variant/20 shadow-2xl overflow-hidden`}
         >
           <div className="p-3 border-b border-outline-variant/10">
             <p className="font-bold text-sm text-on-surface truncate">{displayName}</p>

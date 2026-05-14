@@ -1,42 +1,22 @@
-import { useQuery } from '@tanstack/react-query'
-import { useTranslation } from 'react-i18next'
-import { api } from '../../api/client'
-import { getTierByPoints } from '../../data/tiers'
 import UserDropdown from './UserDropdown'
 
 /**
- * Identity card just under the SidebarHeader. Thin wrapper around
- * {@link UserDropdown} with {@code trigger="card"} — same dropdown
- * panel as the mobile top bar's compact variant. The card variant
- * receives the user's tier color so the avatar + tier subtitle
- * visually signal where the user stands without an extra component
- * tree.
+ * Sidebar foot identity slot — a single 40px gold-gradient avatar
+ * with the user's first initial. Click opens the existing
+ * {@link UserDropdown} menu (Profile / Achievements / Help / Quiz
+ * language / Logout) anchored above the avatar so it doesn't clip
+ * off the bottom of the viewport.
  *
- * Reuses the {@code ['me']} TanStack query key so the totalPoints
- * read here is the same in-flight request GreetingCard already
- * triggers on Home — no extra HTTP round-trip.
+ * Per Bui 2026-05-14: replaces the wide name+tier+chevron card with
+ * the minimal Slack/Discord/Notion pattern.
  */
 export default function SidebarUserCard() {
-  const { t } = useTranslation()
-
-  const { data: meData } = useQuery({
-    queryKey: ['me'],
-    queryFn: () => api.get('/api/me').then(r => r.data),
-    staleTime: 5 * 60_000,
-  })
-
-  const totalPoints = meData?.totalPoints ?? 0
-  const tier = getTierByPoints(totalPoints)
-  const tierName = t(tier.nameKey)
-
   return (
-    <div data-testid="sidebar-user-card" className="px-3 py-3 border-t border-outline-variant/10">
-      <UserDropdown
-        align="left"
-        trigger="card"
-        tierColorHex={tier.colorHex}
-        tierName={tierName}
-      />
+    <div
+      data-testid="sidebar-user-card"
+      className="px-3 py-4 flex items-center justify-center border-t border-outline-variant/10"
+    >
+      <UserDropdown align="left" trigger="compact" dropPosition="top" />
     </div>
   )
 }

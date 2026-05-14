@@ -119,11 +119,16 @@ describe('AppLayout — Logout', () => {
     })
   })
 
-  it('displays user name in sidebar profile card', () => {
+  it('sidebar foot user card shows initial avatar (compact variant)', () => {
+    // 2026-05-14: SidebarUserCard switched from card variant
+    // (avatar+name+tier+chevron) to a 40px gold-gradient avatar that
+    // reveals the dropdown — name appears inside the dropdown panel
+    // when opened, not on the trigger itself.
     renderAppLayout()
-    // User name should appear in sidebar (truncated with max-w)
-    const nameElements = screen.getAllByText('Nguyễn Văn A')
-    expect(nameElements.length).toBeGreaterThanOrEqual(1)
+    const card = screen.getByTestId('sidebar-user-card')
+    expect(card).toBeInTheDocument()
+    expect(card.querySelector('[data-testid="user-dropdown-toggle"]')).not.toBeNull()
+    expect(card.querySelector('[data-testid="user-dropdown-avatar-initial"]')).not.toBeNull()
   })
 
   /**
