@@ -63,6 +63,9 @@ interface ModeConfig {
   /** Tier-locked threshold. Card click is disabled below this. */
   lockedUntilPoints?: number
   lockedUnlockTierKey?: string
+  /** HRV-9 vintage corner badge i18n key (top-right uppercase tracked).
+   *  Only Practice + Variety cards get this; Group cards stay plain. */
+  cornerBadgeKey?: string
 }
 
 const PRACTICE_CARD: ModeConfig = {
@@ -73,6 +76,7 @@ const PRACTICE_CARD: ModeConfig = {
   titleKey: 'gameModes.practice',
   subtitleKey: 'home.compactSubtitles.practice',
   route: '/practice',
+  cornerBadgeKey: 'home.modeCorner.practice',
 }
 
 const VARIETY_CARDS: ModeConfig[] = [
@@ -84,6 +88,7 @@ const VARIETY_CARDS: ModeConfig[] = [
     titleKey: 'gameModes.weekly',
     subtitleKey: 'home.compactSubtitles.weekly',
     route: '/weekly-quiz',
+    cornerBadgeKey: 'home.modeCorner.weekly',
   },
   {
     id: 'mystery',
@@ -93,6 +98,7 @@ const VARIETY_CARDS: ModeConfig[] = [
     titleKey: 'gameModes.mystery',
     subtitleKey: 'home.compactSubtitles.mystery',
     route: '/mystery-mode',
+    cornerBadgeKey: 'home.modeCorner.mystery',
   },
   {
     id: 'speed',
@@ -102,6 +108,7 @@ const VARIETY_CARDS: ModeConfig[] = [
     titleKey: 'gameModes.speed',
     subtitleKey: 'home.compactSubtitles.speed',
     route: '/speed-round',
+    cornerBadgeKey: 'home.modeCorner.speed',
   },
 ]
 
@@ -241,6 +248,8 @@ export default function Home() {
         title={t(card.titleKey)}
         subtitle={t(card.subtitleKey)}
         onClick={() => navigate(card.route)}
+        variant="vintage"
+        cornerBadge={card.cornerBadgeKey ? (t(card.cornerBadgeKey) as string) : undefined}
         matchmakingHint={
           MATCHMAKING_HINT_MODES.has(card.id)
             ? { title: t('home.matchmakingHint') }

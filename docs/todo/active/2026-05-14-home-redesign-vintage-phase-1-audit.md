@@ -6,6 +6,13 @@
 
 ### Phase 2 progress
 
+- **HRV-9** CompactCard vintage variant + Home wire-up — `[x]` DONE 2026-05-14
+  - Files: `apps/web/src/components/CompactCard.tsx` (extend with `variant` + `cornerBadge` props, +90 LOC vintage render branch), `apps/web/src/pages/Home.tsx` (add `cornerBadgeKey` to ModeConfig + pass `variant="vintage"` + cornerBadge i18n key per card, +12 LOC), `apps/web/src/i18n/{vi,en}.json` (+8 keys: `home.modeCorner.{practice,weekly,mystery,speed}`).
+  - Vintage variant: solid `bg-[#1b1424]` + border `line-soft` + `shadow-chunky-soft` (Duolingo 4px hard offset) + hover lift + active push-down. Solid `themeHex` ico-box 48px with `inset 0 -3px 0 0 rgba(0,0,0,0.22)` for 3D feel. Yeseva One title 18→20px. Optional corner badge (top-right uppercase JetBrains Mono tracked). Lock chip + reason override into ruby palette.
+  - Modern variant preserved as-is for `GameModeGrid` (used in Groups page) — backward-compat verified.
+  - Test: Home 26/26 + SectionHeader 7/7 + VerseFooter 6/6 + GameModeGrid 29/29 pass · i18n validate: 1014 hardcoded / 16 missing keys are pre-existing project drift in Group/Multiplayer/RoomQuiz (not files touched).
+  - Strategy: `(c) [no-spec-impact]`.
+
 - **HRV-8** SectionHeader + VerseFooter drop cap restyle (Yeseva One) — `[x]` DONE 2026-05-14
   - Files: `apps/web/src/components/SectionHeader.tsx` (rewrite, ~40 LOC), `apps/web/src/components/__tests__/SectionHeader.test.tsx` (4→7 tests), `apps/web/src/styles/global.css` (drop cap rule swap, ~5 LOC). VerseFooter.tsx unchanged — body verse keeps Cormorant Garamond italic (Yeseva One has no italic variant, synthesized italic looks bad for flowing text); only drop cap swaps to Yeseva One regular (illuminated-manuscript heavy initial).
   - SectionHeader: Yeseva One 22→28px responsive title, optional `tag` prop (gold em-dash flavor "— Quest Map —"), optional `meta` right slot (existing). API backward-compat — old call sites still render (just bigger title without uppercase tracked styling).

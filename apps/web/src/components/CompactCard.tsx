@@ -1,5 +1,7 @@
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 
+export type CompactCardVariant = 'modern' | 'vintage'
+
 interface CompactCardProps {
   /** Unique id used by data-testid (e.g. "compact-card-group"). */
   id: string
@@ -21,6 +23,13 @@ interface CompactCardProps {
   /** Tier-gated lock (HR-4). When set, click is disabled, card is dimmed,
    *  and a lock chip + overlay describing the unlock condition is shown. */
   locked?: { reason: string }
+  /** HRV-9: visual variant. Default 'modern' (themeHex tint, used by
+   *  Groups page legacy). Home redesign uses 'vintage' (chunky shadow,
+   *  solid bg, gradient ico-box, Yeseva One title). */
+  variant?: CompactCardVariant
+  /** HRV-9: top-right uppercase tracked badge for vintage variant
+   *  (e.g. "Free", "Tuần", "10 × 10s"). Ignored when variant !== 'vintage'. */
+  cornerBadge?: string
 }
 
 function hexToRgba(hex: string, alpha: number): string {
@@ -50,6 +59,11 @@ function hexToRgba(hex: string, alpha: number): string {
  * matching border, and matching icon + live-hint text — so the
  * section reads as a vibrant exploration menu instead of six
  * indistinguishable tiles. The whole card is the click target.
+ *
+ * Variants:
+ * - 'modern' (default): legacy themeHex tint look used by Groups page.
+ * - 'vintage' (HRV-9): chunky-soft shadow + solid bg-card + gradient
+ *   ico-box, Yeseva One title, optional corner badge. Used by Home.
  */
 export default function CompactCard({
   id,
@@ -62,8 +76,75 @@ export default function CompactCard({
   onClick,
   matchmakingHint,
   locked,
+  variant = 'modern',
+  cornerBadge,
 }: CompactCardProps) {
   const isLocked = !!locked
+
+  if (variant === 'vintage') {
+    return (
+      <button
+        data-testid={`compact-card-${id}`}
+        data-locked={isLocked || undefined}
+        data-variant="vintage"
+        onClick={isLocked ? undefined : onClick}
+        disabled={isLocked}
+        aria-disabled={isLocked || undefined}
+        title={isLocked ? locked.reason : undefined}
+        className={`relative w-full h-full rounded-[18px] p-4 md:p-5 text-left flex flex-col gap-2 bg-[#1b1424] border border-line-soft shadow-chunky-soft transition-transform hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-none ${
+          isLocked ? 'opacity-60 cursor-not-allowed' : ''
+        }`}
+      >
+        <span
+          aria-hidden
+          className="w-11 h-11 md:w-12 md:h-12 rounded-xl grid place-items-center material-symbols-outlined text-[20px] md:text-[22px] text-white mb-1.5"
+          style={{
+            backgroundColor: themeHex,
+            boxShadow: 'inset 0 -3px 0 0 rgba(0,0,0,0.22)',
+            ...(iconFill ? FILL_1 : {}),
+          }}
+        >
+          {icon}
+        </span>
+        <h3
+          data-testid={`compact-card-${id}-title`}
+          className="font-display text-[18px] md:text-[20px] text-ivory leading-tight"
+        >
+          {title}
+        </h3>
+        <p className="text-[11px] md:text-[12px] text-ivory-faint leading-snug">
+          {subtitle}
+        </p>
+        {cornerBadge && !isLocked && (
+          <span
+            data-testid={`compact-card-${id}-corner-badge`}
+            className="absolute top-3 right-3.5 font-numeric text-[10px] tracking-[0.16em] uppercase text-ivory-faint"
+          >
+            {cornerBadge}
+          </span>
+        )}
+        {isLocked && (
+          <span
+            data-testid={`compact-card-${id}-lock-chip`}
+            className="absolute top-2.5 right-3 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[rgba(199,62,62,0.12)] border border-ruby-deep/60 text-[9px] font-bold uppercase tracking-[0.18em] text-ruby"
+          >
+            <span className="material-symbols-outlined text-[10px]">lock</span>
+            Khóa
+          </span>
+        )}
+        {isLocked && (
+          <div
+            data-testid={`compact-card-${id}-lock-reason`}
+            className="text-[10px] font-medium mt-1 text-gold-bright flex items-center gap-1"
+          >
+            <span className="material-symbols-outlined text-[11px]">flag</span>
+            {locked.reason}
+          </div>
+        )}
+      </button>
+    )
+  }
+
   return (
     <button
       data-testid={`compact-card-${id}`}

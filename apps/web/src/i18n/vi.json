@@ -841,6 +841,12 @@
       "mystery": "Random hoàn toàn",
       "speed": "10 câu × 10s"
     },
+    "modeCorner": {
+      "practice": "Miễn phí",
+      "weekly": "Tuần",
+      "mystery": "Random",
+      "speed": "10 × 10s"
+    },
     "modeHint": {
       "roomsOpen": "{{count}} phòng đang mở",
       "groupNone": "Bạn chưa có nhóm",

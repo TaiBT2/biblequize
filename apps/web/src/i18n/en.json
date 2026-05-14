@@ -847,6 +847,12 @@
       "mystery": "Fully random",
       "speed": "10 × 10s"
     },
+    "modeCorner": {
+      "practice": "Free",
+      "weekly": "Weekly",
+      "mystery": "Random",
+      "speed": "10 × 10s"
+    },
     "activityFeed": {
       "title": "Activity",
       "subtitle": "In your church",
