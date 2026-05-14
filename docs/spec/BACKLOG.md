@@ -262,9 +262,10 @@
   - `font-verse: Cormorant Garamond` PRESERVED — body verse text still renders Cormorant italic; only VerseFooter drop cap swapped to Yeseva One.
   - `CompactCard variant='modern'` default preserves GameModeGrid/Groups page visuals.
 - **Outstanding (deferred — open follow-ups, not blockers):**
-  - Full vintage 66-book journey path (SVG curving path + 72px seal disks with pulse animation per HRV-14 audit) — current restyle uses existing horizontal-scroll chip layout for tractability.
+  - ~~Full vintage 66-book journey path~~ — **DONE 2026-05-14 (HRV-21)**: BookStation refactor with 72px circular seal disks + SVG dashed curving path behind. Pulse animation on current station via `animate-journey-pulse` (HRV-19).
   - ~~HUD stat-pill extraction~~ — **DONE 2026-05-14 (HRV-16)**: `HomeHud.tsx` extracted from HomeBanner; vintage HUD row sits above Hero greeting per Home.html structure.
-  - i18n hardcoded VN strings inside `FeaturedDailyCard` / `RankedStandardCard` ("Cạnh tranh ranking", "Đã mở khóa", etc.) — pre-existing debt, not introduced by this redesign.
+  - ~~i18n hardcoded VN strings inside `FeaturedDailyCard` / `RankedStandardCard`~~ — **DONE 2026-05-14 (HRV-20)**: 12 strings extracted to `home.featuredDailyCard.*` + `home.rankedStandard.*` namespaces (avoiding pre-existing `home.featuredDaily.*` namespace clash for DailyChallenge page).
+  - **All BL-19 outstanding items resolved 2026-05-14.** Remaining: structural `duo-cta` side-by-side layout (Daily + Đấu Hạng always visible regardless of completion state) — defer pending user signoff because it conflicts with the state-aware design from sprint 2026-05-13 Modern Spiritual HR-7.
 - **Ref:** Task file Phase 1 audit + HRV-7..HRV-15 sprint commits on branch `feat/home-redesign-vintage`.
 
 ### BL-18 — Cell Group Pulse heuristic (Sprint 6, leader-only)

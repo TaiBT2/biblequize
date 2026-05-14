@@ -6,6 +6,15 @@
 
 ### Phase 2 progress
 
+- **HRV-21** Vintage journey path — 72px seal-disk stations + SVG curving path — `[x]` DONE 2026-05-14
+  - Files: `apps/web/src/components/BibleJourneyCard.tsx` (~80 LOC: BookChip → BookStation refactor + SVG path overlay + overflow station styled to match).
+  - Replaced rectangular 148px-wide chips with vintage `.station` style: 72px circular seal disk on top, JetBrains Mono testament+order label, Yeseva One book name (15px), status text below. State-differentiated seal: current = gold radial gradient + animate-journey-pulse halo, done = emerald gradient + check icon, locked = dim with lock icon, default = dim with order number. SVG dashed curving path (`M 40 40 Q 140 0, 240 40 T ...`) drawn behind the stations row at top:40px with `preserveAspectRatio="none"` so it scales with container width.
+  - Overflow station ("+N") rebuilt to match seal-disk pattern (dim 72px circle with "+N" inside, then label).
+  - **Closes BL-19 outstanding #1** (full vintage 66-book journey path with seal-disk stations). Visual now matches vintage Home.html `.station` + `.path-svg` recipe.
+  - Testid contracts preserved (`bible-journey-chip-{name}`, `bible-journey-chip-fill-{name}`, `data-status`, `opacity-50` class for locked) — BibleJourneyCard 30/30 tests pass with zero updates needed. Added new testid `bible-journey-path` for the SVG curving path element.
+  - Test: BibleJourneyCard 30/30 + Home 26/26 = 35/35 pass. Build pass (3.74s).
+  - Strategy: `(c) [no-spec-impact]` — visual restructure, no behavior change.
+
 - **HRV-20** i18n cleanup (FeaturedDailyCard + RankedStandardCard) + ringed avatar — `[x]` DONE 2026-05-14
   - **i18n cleanup**: 12 hardcoded VN strings extracted from FeaturedDailyCard (8 keys: label/title/subtitle/questionCount/minutesMeta/participants/countdownLabel/cta) + RankedStandardCard (4 keys: pillUnlocked/desc/cta/dailyHint). Namespace: `home.featuredDailyCard.*` (to avoid clash with pre-existing `home.featuredDaily.*` used by older DailyChallenge surface) + `home.rankedStandard.*`. EN parity added. Net i18n debt: hardcodedCount **1014 → 1007** (-7), missingKeyCount 16 → 17 (+1 pre-existing drift in unrelated files).
   - **Duplicate JSON keys fix**: discovered + fixed `"hero"` duplicate blocks in both vi.json (lines 761 + 819) and en.json (761 + 819) — JSON parser silently uses LAST occurrence, so HRV-17 `home.hero.greetingAccent/Suffix/tagline` keys were being shadowed by the pre-existing `home.hero.currentBook/questionsToday/...` block. Merged into single `hero` block per locale.

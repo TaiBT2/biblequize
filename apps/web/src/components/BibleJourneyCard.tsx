@@ -125,42 +125,71 @@ export default function BibleJourneyCard() {
           {t('home.journeyExtra.subUnlock')}
         </p>
 
-        {/* Horizontal-scroll book chips */}
+        {/* HRV-21: vintage horizontal-scroll path with circular seal-disk
+            stations. SVG dashed curving path sits BEHIND the row, at the
+            vertical center of the disks (top:36px, disks are 72px tall).
+            Stations are 140px wide each, centered text below disk. */}
         <div
           data-testid="bible-journey-chips"
-          className="flex gap-2.5 overflow-x-auto pb-1.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-[5px] [&::-webkit-scrollbar-thumb]:bg-[rgba(232,168,50,0.15)] [&::-webkit-scrollbar-thumb]:rounded-full"
+          className="relative overflow-x-auto pb-2 pt-1 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-[5px] [&::-webkit-scrollbar-thumb]:bg-[rgba(232,168,50,0.15)] [&::-webkit-scrollbar-thumb]:rounded-full"
         >
-          {visible.map(b => (
-            <BookChip key={b.book} book={b} isVi={isVi} />
-          ))}
-          {remaining > 0 && (
-            <div
-              data-testid="bible-journey-overflow"
-              className="shrink-0 min-w-[138px] rounded-xl px-3.5 py-3 opacity-45 cursor-not-allowed"
-              style={{
-                background: 'rgba(245,240,230,0.025)',
-                border: '1px solid rgba(245,240,230,0.06)',
-              }}
-            >
-              <div className="text-[9px] uppercase tracking-[0.14em] text-ivory-faint font-bold">
-                …
+          <svg
+            aria-hidden
+            data-testid="bible-journey-path"
+            className="absolute left-0 right-0 top-[40px] w-full h-[40px] pointer-events-none text-line"
+            preserveAspectRatio="none"
+            viewBox="0 0 1200 80"
+          >
+            <path
+              d="M 40 40 Q 140 0, 240 40 T 440 40 T 640 40 T 840 40 T 1040 40 T 1240 40"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeDasharray="2 8"
+            />
+          </svg>
+          <div className="relative flex gap-3.5 md:gap-5 min-w-max px-1">
+            {visible.map(b => (
+              <BookStation key={b.book} book={b} isVi={isVi} />
+            ))}
+            {remaining > 0 && (
+              <div
+                data-testid="bible-journey-overflow"
+                className="shrink-0 w-[140px] flex flex-col items-center gap-2 text-center opacity-50 cursor-not-allowed"
+              >
+                <div className="w-[72px] h-[72px] rounded-full grid place-items-center border-2 border-line bg-[rgba(17,12,24,0.6)] font-display text-[20px] text-ivory-faint">
+                  +{remaining}
+                </div>
+                <div className="text-[10px] tracking-[0.22em] uppercase font-numeric text-ivory-faint">
+                  …
+                </div>
+                <div className="font-display text-[14px] text-ivory-faint leading-tight">
+                  {t('home.journeyExtra.overflowLabel', { remaining })}
+                </div>
+                <div className="text-[11px] text-ivory-faint font-medium">
+                  {t('home.journeyExtra.overflowSub')}
+                </div>
               </div>
-              <div className="text-[13px] font-bold text-ivory mt-1 leading-tight tracking-[-0.01em]">
-                {t('home.journeyExtra.overflowLabel', { remaining })}
-              </div>
-              <div className="text-[11px] text-ivory-faint mt-2 font-medium">
-                {t('home.journeyExtra.overflowSub')}
-              </div>
-              <div className="mt-2 h-[3px] rounded-full bg-[rgba(245,240,230,0.05)]" />
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </Link>
   )
 }
 
-function BookChip({ book, isVi }: { book: BookProgress; isVi: boolean }) {
+/**
+ * HRV-21 BookStation — vintage circular seal-disk station replacing the
+ * rectangular chip. Per vintage Home.html `.station` recipe: 72px gold/
+ * emerald/dim seal disk on top, then JetBrains Mono testament+order
+ * label, then Yeseva One book name, then status text. SVG dashed path
+ * (parent) curves behind the row of disks to suggest a journey route.
+ *
+ * data-testid `bible-journey-chip-{book}` + `bible-journey-chip-fill-{book}`
+ * are preserved for test contract compatibility — the visual layout
+ * changed but the structural identifiers haven't.
+ */
+function BookStation({ book, isVi }: { book: BookProgress; isVi: boolean }) {
   const { t } = useTranslation()
   const displayName = isVi ? (book.bookVi || book.book) : (book.book || book.bookVi)
   const isCurrent = book.status === 'IN_PROGRESS'
@@ -187,106 +216,71 @@ function BookChip({ book, isVi }: { book: BookProgress; isVi: boolean }) {
     <div
       data-testid={`bible-journey-chip-${book.book}`}
       data-status={book.status}
-      className={`shrink-0 min-w-[148px] rounded-xl px-3.5 py-3 transition-transform ${
+      className={`shrink-0 w-[140px] flex flex-col items-center gap-2 text-center transition-transform ${
         isLocked ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:-translate-y-0.5'
-      } ${isCurrent ? 'animate-journey-pulse' : ''}`}
-      style={
-        isCurrent
-          ? {
-              background:
-                'radial-gradient(ellipse 220px 100px at 50% 0%, rgba(244,209,120,0.22), transparent 70%), rgba(27,20,36,0.85)',
-              border: '1.5px solid rgba(244,209,120,0.55)',
-              // box-shadow now driven by .animate-journey-pulse keyframe
-              // so the current chip pulses an expanding gold halo every
-              // 2.6s (matches vintage @keyframes pulse on .seal-disk).
-            }
-          : isDone
-            ? {
-                background: 'rgba(79,168,118,0.06)',
-                border: '1px solid rgba(79,168,118,0.30)',
-              }
-            : {
-                background: 'rgba(27,20,36,0.6)',
-                border: '1px solid rgba(46,34,56,0.7)',
-              }
-      }
+      }`}
     >
+      {/* Seal disk — 72px circular; current state gets the journey-pulse
+          gold halo animation. Done = emerald gradient with check. Locked
+          = dim with lock icon. Default = dim numbered. */}
       <div
-        className={`text-[9px] uppercase tracking-[0.14em] font-bold ${
-          isCurrent ? 'text-gold-deep' : 'text-ivory-faint'
+        className={`relative w-[72px] h-[72px] rounded-full grid place-items-center border-2 font-display text-[20px] z-10 ${
+          isCurrent ? 'animate-journey-pulse' : ''
         }`}
-      >
-        {isCurrent ? orderLabel : String(book.order).padStart(2, '0')}
-      </div>
-      <div
-        className={`text-[13px] font-bold mt-1 leading-tight tracking-[-0.01em] flex items-center gap-1.5 ${
-          isCurrent ? 'text-[#f5e3a8]' : 'text-ivory'
-        }`}
+        style={
+          isCurrent
+            ? {
+                background:
+                  'radial-gradient(circle at 30% 30%, #f4d178, #c98a1c 70%, #7a5818)',
+                borderColor: '#f4d178',
+                color: '#1a1019',
+              }
+            : isDone
+              ? {
+                  background: 'linear-gradient(180deg, #4fa876, #2f6e4d)',
+                  borderColor: '#4fa876',
+                  color: '#fff',
+                }
+              : {
+                  background: 'rgba(17,12,24,0.7)',
+                  borderColor: '#2e2238',
+                  color: '#4f4658',
+                }
+        }
       >
         {isLocked ? (
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            className="shrink-0"
-          >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
             <rect x="5" y="11" width="14" height="10" rx="2" />
             <path d="M8 11V7a4 4 0 018 0v4" />
           </svg>
         ) : isDone ? (
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="shrink-0 text-sage"
-          >
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 13l4 4L19 7" />
           </svg>
         ) : (
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            className="shrink-0"
-          >
-            <path d="M4 5v15a2 2 0 002 2h14V3H6a2 2 0 00-2 2z" />
-          </svg>
+          String(book.order).padStart(2, '0')
         )}
+      </div>
+      <div className={`font-numeric text-[10px] tracking-[0.20em] uppercase ${isCurrent ? 'text-gold-bright' : 'text-ivory-faint'}`}>
+        {orderLabel}
+      </div>
+      <div className={`font-display text-[15px] leading-tight ${isLocked ? 'text-ivory-faint' : 'text-ivory'}`}>
         {displayName}
       </div>
-      <div
-        className={`text-[11px] mt-2 font-medium ${
-          isCurrent ? 'text-tertiary' : 'text-ivory-faint'
-        }`}
-      >
+      <div className={`text-[11px] font-medium ${isCurrent ? 'text-gold-bright' : 'text-ivory-faint'}`}>
         {status}
       </div>
-      <div className="mt-2 h-[3px] rounded-full overflow-hidden bg-[rgba(245,240,230,0.05)]">
-        {(isCurrent || isDone) && fillPct > 0 && (
-          <div
-            data-testid={`bible-journey-chip-fill-${book.book}`}
-            className="h-full rounded-full"
-            style={{
-              width: `${fillPct}%`,
-              background: 'linear-gradient(90deg, #c98a1c, #e8a832, #e7c268)',
-              boxShadow: '0 0 6px rgba(232,168,50,0.6)',
-            }}
-          />
-        )}
-      </div>
+      {(isCurrent || isDone) && fillPct > 0 && (
+        <div
+          data-testid={`bible-journey-chip-fill-${book.book}`}
+          className="h-[3px] rounded-full"
+          style={{
+            width: `${fillPct}%`,
+            background: 'linear-gradient(90deg, #c98a1c, #e8a832, #e7c268)',
+            boxShadow: '0 0 6px rgba(232,168,50,0.6)',
+          }}
+        />
+      )}
     </div>
   )
 }
