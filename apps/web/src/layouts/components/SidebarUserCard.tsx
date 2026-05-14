@@ -14,7 +14,7 @@ export default function SidebarUserCard() {
   return (
     <div
       data-testid="sidebar-user-card"
-      className="px-3 py-4 flex items-center justify-center border-t border-outline-variant/10"
+      className="px-4 pt-3 pb-4 flex items-center justify-start border-t border-outline-variant/10"
     >
       <UserDropdown align="left" trigger="compact" dropPosition="top" />
     </div>
