@@ -6,6 +6,12 @@
 
 ### Phase 2 progress
 
+- **HRV-18** SectionHeader spacing + tag slot wiring — `[x]` DONE 2026-05-14
+  - Files: `apps/web/src/pages/Home.tsx` (2 LOC: `meta={subtitle}` → `tag={subtitle}` cho variety + explore — subtitle now renders as gold em-dashed flavor "— {subtitle} —" in middle slot instead of right-meta grey text). `apps/web/src/components/SectionHeader.tsx` (1 LOC: margin `mt-10 mb-4` → `mt-12 md:mt-14 mb-4 md:mb-5` for vintage 56px breathing room).
+  - Visual outcome: each major section ("Chế độ đa dạng", "Khám phá thêm") now has the gold em-dashed flavor tag matching vintage Home.html `.section-h .tag` pattern. Increased top margin gives the page more vintage breathing-room rhythm.
+  - Test: SectionHeader 7/7 + Home 26/26 pass — testid contracts preserved.
+  - Strategy: `(c) [no-spec-impact]` — visual polish.
+
 - **HRV-17** Poetic hero greeting + rank chip pill + tagline — `[x]` DONE 2026-05-14
   - Files: `apps/web/src/components/HomeBanner.tsx` (+45 LOC: eyebrow now has gold accent dash, h1 multi-line "{name},\n<accent>cuộc hành trình</accent> chờ con.", new rank-chip pill with pulsing gold dot showing current → next tier, tagline "Hôm nay là ngày tốt để mở Kinh Thánh."). `apps/web/src/i18n/{vi,en}.json` (+8 keys: `home.hero.{greetingAccent,greetingSuffix,tagline}` vi+en). `apps/web/src/components/__tests__/HomeBanner.test.tsx` (+30 LOC: add i18n mock + 4 new tests for poetic content + rank chip + max-tier gate + tagline).
   - Matches vintage Home.html hero spec (h1 `clamp(40px,6vw,72px)` Yeseva One + accent span + rank-chip pill `dot + label` + sub-line tagline). Avatar preserved (our app has avatar in banner, vintage moves it to sidebar — we keep ours for the personal touch).

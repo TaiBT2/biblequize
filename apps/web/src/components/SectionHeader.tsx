@@ -23,7 +23,7 @@ export default function SectionHeader({
   return (
     <div
       data-testid="section-header"
-      className={`flex items-baseline flex-wrap gap-x-4 gap-y-1 mt-10 mb-4 ${className}`}
+      className={`flex items-baseline flex-wrap gap-x-4 gap-y-1 mt-12 md:mt-14 mb-4 md:mb-5 ${className}`}
     >
       <h2
         data-testid="section-header-title"

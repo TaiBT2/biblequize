@@ -337,7 +337,7 @@ export default function Home() {
 
           <SectionHeader
             title={t('home.variety.title')}
-            meta={t('home.variety.subtitle')}
+            tag={t('home.variety.subtitle')}
           />
           <div
             data-testid="home-variety-grid"
@@ -353,7 +353,7 @@ export default function Home() {
         <>
           <SectionHeader
             title={t('home.explore.title')}
-            meta={t('home.explore.subtitle')}
+            tag={t('home.explore.subtitle')}
           />
           <div
             data-testid="home-explore-grid"
