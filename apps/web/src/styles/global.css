@@ -337,6 +337,20 @@ body::after {
 }
 .animate-breathe { animation: breathe 2.6s ease-in-out infinite; }
 
+/* HRV-23 accessibility — respect prefers-reduced-motion for all the
+   custom Home animations. Users who set OS-level "reduce motion" get
+   a static experience: streak flame stops breathing, journey current
+   chip stops pulsing, page entrance fade is instant. Native Tailwind
+   utilities (animate-pulse, animate-bounce-in, etc.) are not affected
+   here — Tailwind ships its own reduced-motion media query guards in
+   recent versions. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-breathe,
+  .animate-journey-pulse {
+    animation: none !important;
+  }
+}
+
 /* HRV-19 vintage journey-chip current-station glow pulse — matches
    vintage Home.html @keyframes pulse on .station.current .seal-disk.
    Expanding box-shadow ring (no transform) so the chip layout doesn't

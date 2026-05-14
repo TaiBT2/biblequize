@@ -272,7 +272,7 @@ export default function Home() {
   }
 
   return (
-    <div data-testid="home-page" className="max-w-7xl mx-auto w-full">
+    <div data-testid="home-page" className="max-w-7xl mx-auto w-full animate-fade-in">
       <ComebackModal />
       <DailyBonusModal />
       <TutorialOverlay />

@@ -6,6 +6,13 @@
 
 ### Phase 2 progress
 
+- **HRV-23** Page fade-in entrance + prefers-reduced-motion accessibility guard — `[x]` DONE 2026-05-14
+  - Files: `apps/web/src/pages/Home.tsx` (+1 LOC: `animate-fade-in` on the page root for a single subtle 0.5s opacity entrance). `apps/web/src/styles/global.css` (+10 LOC: `@media (prefers-reduced-motion: reduce)` guard that disables `animate-breathe` + `animate-journey-pulse` for users who request reduced motion at the OS level).
+  - Single page-level fade keeps the entrance gentle without per-section cascade staging that would draw attention to load order. Reduced-motion users get a fully static experience for the custom Home animations.
+  - `global.css` is sensitive but change is scoped: only adds a new media query guarding two existing utility classes — no existing rules touched.
+  - Test: Home 26/26 pass.
+  - Strategy: `(c) [no-spec-impact]` — visual + a11y polish.
+
 - **HRV-22** HomeSkeleton + MotivationCard vintage palette — `[x]` DONE 2026-05-14
   - Files: `apps/web/src/pages/Home.tsx` (HomeSkeleton ~12 LOC: rgba brown → bg-deep + line-soft border + chunky-soft shadow per vintage feel; added testid `home-skeleton` + small 40px row for HUD skeleton). `apps/web/src/components/MotivationCard.tsx` (~25 LOC: blue palette → plum palette per vintage plum/purple accent family; gradient ico-box `linear-gradient(180deg, #8c5bb5, #5b3681)` with inset bottom black; title→font-display; step pill→font-numeric uppercase tracked; radial plum glow top-left).
   - MotivationCard now reads as the "plum mentor card" matching vintage `--plum` accent — distinct from gold/ruby/emerald used elsewhere so onboarding nudge stands out without competing with main CTAs.
