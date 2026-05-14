@@ -799,6 +799,7 @@
       "subtitle": "Chế độ chính"
     },
     "compactSubtitles": {
+      "practice": "Tự do · Không tính XP",
       "group": "Hội thánh",
       "multiplayer": "2-20 người",
       "tournament": "Bracket 1v1",
@@ -1923,6 +1924,8 @@
     }
   },
   "gameModes": {
+    "practice": "Luyện Tập",
+    "ranked": "Đấu Hạng",
     "rankedBtn": "Vào Thi Đấu",
     "dailyBtn": "Thử Thách Ngay",
     "groups": "Nhóm Giáo Xứ",

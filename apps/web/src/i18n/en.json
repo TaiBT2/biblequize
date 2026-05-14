@@ -805,6 +805,7 @@
       "tournamentOpen": "{{count}} tournaments open"
     },
     "compactSubtitles": {
+      "practice": "Free · No XP",
       "group": "Church groups",
       "multiplayer": "2-20 players",
       "tournament": "1v1 bracket",
@@ -1923,6 +1924,8 @@
     }
   },
   "gameModes": {
+    "practice": "Practice",
+    "ranked": "Ranked",
     "rankedBtn": "Play Ranked",
     "dailyBtn": "Challenge Now",
     "groups": "Church Groups",
