@@ -6,6 +6,13 @@
 
 ### Phase 2 progress
 
+- **HRV-19** Journey current-chip pulse glow animation — `[x]` DONE 2026-05-14
+  - Files: `apps/web/src/styles/global.css` (+18 LOC: `@keyframes journey-pulse` + `.animate-journey-pulse` utility — expanding gold halo box-shadow, no transform to avoid layout reflow). `apps/web/src/components/BibleJourneyCard.tsx` (1 LOC: add `animate-journey-pulse` class to isCurrent chip, remove inline boxShadow override).
+  - Matches vintage Home.html `@keyframes pulse` on `.station.current .seal-disk` — the current Bible book station pulses gold every 2.6s, drawing the eye to "where you are now".
+  - global.css is a sensitive file but change scoped to new keyframe + utility class (no rule edits affecting other components).
+  - Test: BibleJourneyCard 30/30 + Home 26/26 = 35/35 pass.
+  - Strategy: `(c) [no-spec-impact]` — animation polish.
+
 - **HRV-18** SectionHeader spacing + tag slot wiring — `[x]` DONE 2026-05-14
   - Files: `apps/web/src/pages/Home.tsx` (2 LOC: `meta={subtitle}` → `tag={subtitle}` cho variety + explore — subtitle now renders as gold em-dashed flavor "— {subtitle} —" in middle slot instead of right-meta grey text). `apps/web/src/components/SectionHeader.tsx` (1 LOC: margin `mt-10 mb-4` → `mt-12 md:mt-14 mb-4 md:mb-5` for vintage 56px breathing room).
   - Visual outcome: each major section ("Chế độ đa dạng", "Khám phá thêm") now has the gold em-dashed flavor tag matching vintage Home.html `.section-h .tag` pattern. Increased top margin gives the page more vintage breathing-room rhythm.

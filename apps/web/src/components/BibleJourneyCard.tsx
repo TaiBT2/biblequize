@@ -189,15 +189,16 @@ function BookChip({ book, isVi }: { book: BookProgress; isVi: boolean }) {
       data-status={book.status}
       className={`shrink-0 min-w-[148px] rounded-xl px-3.5 py-3 transition-transform ${
         isLocked ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:-translate-y-0.5'
-      }`}
+      } ${isCurrent ? 'animate-journey-pulse' : ''}`}
       style={
         isCurrent
           ? {
               background:
                 'radial-gradient(ellipse 220px 100px at 50% 0%, rgba(244,209,120,0.22), transparent 70%), rgba(27,20,36,0.85)',
               border: '1.5px solid rgba(244,209,120,0.55)',
-              boxShadow:
-                '0 0 28px rgba(244,209,120,0.22), inset 0 1px 0 rgba(244,209,120,0.25)',
+              // box-shadow now driven by .animate-journey-pulse keyframe
+              // so the current chip pulses an expanding gold halo every
+              // 2.6s (matches vintage @keyframes pulse on .seal-disk).
             }
           : isDone
             ? {

@@ -337,6 +337,26 @@ body::after {
 }
 .animate-breathe { animation: breathe 2.6s ease-in-out infinite; }
 
+/* HRV-19 vintage journey-chip current-station glow pulse — matches
+   vintage Home.html @keyframes pulse on .station.current .seal-disk.
+   Expanding box-shadow ring (no transform) so the chip layout doesn't
+   reflow on each pulse. Used by BibleJourneyCard isCurrent chip. */
+@keyframes journey-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 4px rgba(244,209,120,0.18),
+      0 0 28px rgba(244,209,120,0.22),
+      inset 0 1px 0 rgba(244,209,120,0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 0 10px rgba(244,209,120,0.08),
+      0 0 38px rgba(244,209,120,0.38),
+      inset 0 1px 0 rgba(244,209,120,0.30);
+  }
+}
+.animate-journey-pulse { animation: journey-pulse 2.6s ease-in-out infinite; }
+
 /* HRV-8 verse footer drop cap — illuminated-manuscript chunky initial.
    Yeseva One (display serif, no italic variant) gives a heavier, more
    decorative letter than the prior Cormorant italic. Body verse text
