@@ -17,6 +17,12 @@ interface TierProgressData {
 }
 
 interface RankedStatusData {
+  /** BE field is `livesRemaining` — keep `energy` as legacy alias for any
+   *  consumer that still reads it. Bug-fix 2026-05-14: HomeBanner had been
+   *  reading `energy` exclusively, which never exists in the actual
+   *  response, so the stat pill always rendered the 100 fallback instead
+   *  of real lives. */
+  livesRemaining?: number
   energy?: number
   seasonPoints?: number
   currentBook?: string | null
@@ -61,7 +67,7 @@ export default function HomeBanner() {
 
   const totalPoints = tierProgress?.totalPoints ?? meData?.totalPoints ?? 0
   const currentStreak = meData?.currentStreak ?? 0
-  const energy = rankedStatus?.energy ?? 100
+  const energy = rankedStatus?.livesRemaining ?? rankedStatus?.energy ?? 100
   const seasonPoints = rankedStatus?.seasonPoints ?? 0
   const tier = getTierInfo(totalPoints)
   const greeting = getTimeOfDayGreeting(t)
