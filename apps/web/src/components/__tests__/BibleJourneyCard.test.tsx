@@ -10,11 +10,28 @@ vi.mock('../../api/client', () => ({
 
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
-    t: (key: string) => {
+    t: (key: string, opts?: Record<string, unknown>) => {
       const dict: Record<string, string> = {
         'home.journey.title': 'Hành trình 66 sách',
+        'home.journeyExtra.subUnlock':
+          'Bắt đầu từ Sáng Thế Ký · Hoàn thành 80% mỗi sách để mở khóa sách tiếp theo',
+        'home.journeyExtra.metaCountSuffix': '/ {{total}} sách',
+        'home.journeyExtra.metaCurrent': 'Đang ở {{book}}',
+        'home.journeyExtra.testamentOld': 'Cựu Ước',
+        'home.journeyExtra.testamentNew': 'Tân Ước',
+        'home.journeyExtra.statusInProgress': 'Đang chinh phục · {{pct}}%',
+        'home.journeyExtra.statusDone': 'Hoàn thành · {{pct}}%',
+        'home.journeyExtra.statusLocked': 'Khóa',
+        'home.journeyExtra.overflowLabel': '+ {{remaining}} sách',
+        'home.journeyExtra.overflowSub': 'Còn lại trong hành trình',
       }
-      return dict[key] ?? key
+      let template = dict[key] ?? key
+      if (opts) {
+        for (const [k, v] of Object.entries(opts)) {
+          template = template.replace(new RegExp(`\\{\\{\\s*${k}\\s*\\}\\}`, 'g'), String(v))
+        }
+      }
+      return template
     },
     i18n: { language: 'vi' },
   }),

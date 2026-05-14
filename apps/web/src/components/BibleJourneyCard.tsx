@@ -56,7 +56,10 @@ export default function BibleJourneyCard() {
   const total = summary.totalBooks || 66
 
   const currentBookEntry = books.find(b => b.book === summary.currentBook)
-  const currentLabel = currentBookEntry?.bookVi ?? summary.currentBook ?? ''
+  const isVi = i18n.language !== 'en'
+  const localizedBookName = (b: BookProgress | undefined) =>
+    !b ? '' : isVi ? b.bookVi || b.book : b.book || b.bookVi
+  const currentLabel = localizedBookName(currentBookEntry) || summary.currentBook || ''
 
   // First N chips by canonical order; final overflow chip wraps the rest.
   const visible = books.slice(0, VISIBLE_CHIPS)
@@ -102,14 +105,14 @@ export default function BibleJourneyCard() {
             <span className="text-secondary font-extrabold text-[16px] tabular-nums">
               {totalDone}
             </span>{' '}
-            / {total} sách
+            {t('home.journeyExtra.metaCountSuffix', { total })}
             {currentLabel && (
               <>
                 {' · '}
                 <em
                   data-testid="bible-journey-current"
                   className="not-italic"
-                >Đang ở {currentLabel}</em>
+                >{t('home.journeyExtra.metaCurrent', { book: currentLabel })}</em>
               </>
             )}
           </div>
@@ -119,7 +122,7 @@ export default function BibleJourneyCard() {
           data-testid="bible-journey-sub"
           className="text-[12px] text-ivory-dim mb-4"
         >
-          Bắt đầu từ Sáng Thế Ký · Hoàn thành 80% mỗi sách để mở khóa sách tiếp theo
+          {t('home.journeyExtra.subUnlock')}
         </p>
 
         {/* Horizontal-scroll book chips */}
@@ -128,7 +131,7 @@ export default function BibleJourneyCard() {
           className="flex gap-2.5 overflow-x-auto pb-1.5 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-[5px] [&::-webkit-scrollbar-thumb]:bg-[rgba(232,168,50,0.15)] [&::-webkit-scrollbar-thumb]:rounded-full"
         >
           {visible.map(b => (
-            <BookChip key={b.book} book={b} />
+            <BookChip key={b.book} book={b} isVi={isVi} />
           ))}
           {remaining > 0 && (
             <div
@@ -143,10 +146,10 @@ export default function BibleJourneyCard() {
                 …
               </div>
               <div className="text-[13px] font-bold text-ivory mt-1 leading-tight tracking-[-0.01em]">
-                + {remaining} sách
+                {t('home.journeyExtra.overflowLabel', { remaining })}
               </div>
               <div className="text-[11px] text-ivory-faint mt-2 font-medium">
-                Còn lại trong hành trình
+                {t('home.journeyExtra.overflowSub')}
               </div>
               <div className="mt-2 h-[3px] rounded-full bg-[rgba(245,240,230,0.05)]" />
             </div>
@@ -157,20 +160,26 @@ export default function BibleJourneyCard() {
   )
 }
 
-function BookChip({ book }: { book: BookProgress }) {
+function BookChip({ book, isVi }: { book: BookProgress; isVi: boolean }) {
+  const { t } = useTranslation()
+  const displayName = isVi ? (book.bookVi || book.book) : (book.book || book.bookVi)
   const isCurrent = book.status === 'IN_PROGRESS'
   const isLocked = book.status === 'LOCKED'
   const isDone = book.status === 'COMPLETED'
 
-  const orderLabel = book.testament === 'OLD'
-    ? `Cựu Ước · ${String(book.order).padStart(2, '0')}`
-    : `Tân Ước · ${String(book.order).padStart(2, '0')}`
+  const testamentName = t(
+    book.testament === 'OLD'
+      ? 'home.journeyExtra.testamentOld'
+      : 'home.journeyExtra.testamentNew'
+  )
+  const orderLabel = `${testamentName} · ${String(book.order).padStart(2, '0')}`
 
+  const pct = Math.round(book.masteryPercent)
   const status = isCurrent
-    ? `Đang chinh phục · ${Math.round(book.masteryPercent)}%`
+    ? (t('home.journeyExtra.statusInProgress', { pct }) as string)
     : isDone
-      ? `Hoàn thành · ${Math.round(book.masteryPercent)}%`
-      : 'Khóa'
+      ? (t('home.journeyExtra.statusDone', { pct }) as string)
+      : (t('home.journeyExtra.statusLocked') as string)
 
   const fillPct = Math.max(0, Math.min(100, book.masteryPercent))
 
@@ -250,7 +259,7 @@ function BookChip({ book }: { book: BookProgress }) {
             <path d="M4 5v15a2 2 0 002 2h14V3H6a2 2 0 00-2 2z" />
           </svg>
         )}
-        {book.bookVi || book.book}
+        {displayName}
       </div>
       <div
         className={`text-[11px] mt-2 font-medium ${

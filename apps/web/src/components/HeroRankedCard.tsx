@@ -7,15 +7,14 @@ interface HeroRankedCardProps {
   rankedCap: number
   onEnter: () => void
   /**
-   * Optional override. Default = "Tiếp theo · Bước vào đấu trường"
-   * (Daily-done state). For Daily-todo state callers can pass
-   * "Cạnh tranh · Ranking · Phần thưởng mùa".
+   * Optional explicit label override. Defaults to
+   * `t('home.heroRanked.label')` ("Tiếp theo · Bước vào đấu trường").
    */
   label?: string
   /**
-   * Optional override. Default = "Daily xong rồi — giờ cạnh tranh ranking thôi"
-   * (Daily-done state). For Daily-todo state callers can pass
-   * "Cạnh tranh ranking · Sẵn sàng thách thức chưa?".
+   * Optional explicit tagline override. Defaults to
+   * `t('home.heroRanked.tagline')` ("Daily xong rồi — giờ cạnh tranh
+   * ranking thôi").
    */
   tagline?: string
 }
@@ -34,10 +33,12 @@ export default function HeroRankedCard({
   rankedAnswered,
   rankedCap,
   onEnter,
-  label = 'Tiếp theo · Bước vào đấu trường',
-  tagline = 'Daily xong rồi — giờ cạnh tranh ranking thôi',
+  label,
+  tagline,
 }: HeroRankedCardProps) {
   const { t } = useTranslation()
+  const labelText = label ?? (t('home.heroRanked.label') as string)
+  const taglineText = tagline ?? (t('home.heroRanked.tagline') as string)
   return (
     <div
       data-testid="hero-ranked-card"
@@ -139,7 +140,7 @@ export default function HeroRankedCard({
             data-testid="hero-ranked-card-label"
             className="text-[10px] font-bold tracking-[0.22em] uppercase mb-2 text-ivory-dim"
           >
-            {label}
+            {labelText}
           </div>
           <h2
             data-testid="hero-ranked-card-title"
@@ -152,7 +153,7 @@ export default function HeroRankedCard({
             data-testid="hero-ranked-card-tagline"
             className="text-[13px] font-medium mb-4 text-ivory-dim"
           >
-            {tagline}
+            {taglineText}
           </p>
           <div
             data-testid="hero-ranked-card-stats"
@@ -162,14 +163,14 @@ export default function HeroRankedCard({
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-secondary">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
-              {energyRemaining} / {energyMax} năng lượng
+              {t('home.heroRanked.energyMeta', { remaining: energyRemaining, max: energyMax })}
             </span>
             <span data-testid="hero-ranked-card-progress" className="flex items-center gap-1.5">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-secondary">
                 <circle cx="12" cy="12" r="9" />
                 <path d="M12 6v6l4 2" />
               </svg>
-              {rankedAnswered} / {rankedCap} câu hôm nay
+              {t('home.heroRanked.progressMeta', { answered: rankedAnswered, cap: rankedCap })}
             </span>
           </div>
         </div>
@@ -187,7 +188,7 @@ export default function HeroRankedCard({
             boxShadow: '0 6px 18px rgba(26,18,8,0.4), inset 0 1px 0 rgba(232,168,50,0.15)',
           }}
         >
-          Vào trận
+          {t('home.heroRanked.cta')}
           <svg
             width="18"
             height="18"

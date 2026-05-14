@@ -745,14 +745,48 @@
       "cta": "Start"
     },
     "primary": {
-      "title": "Core play"
+      "title": "Primary modes"
     },
     "variety": {
-      "title": "Variety Modes",
+      "title": "Variety modes",
       "subtitle": "Doesn't affect XP / leaderboard"
     },
     "group": {
-      "title": "Group play"
+      "title": "Community play"
+    },
+    "explore": {
+      "title": "Explore more",
+      "subtitle": "Free practice — no XP"
+    },
+    "heroRanked": {
+      "label": "Up next · Enter the arena",
+      "tagline": "Daily done — time to climb the ranks",
+      "energyMeta": "{{remaining}} / {{max}} energy",
+      "progressMeta": "{{answered}} / {{cap}} today",
+      "cta": "Enter battle"
+    },
+    "dailyCompleted": {
+      "score": "{{correct}}/{{total}} correct — {{message}}",
+      "scoreExcellent": "Excellent!",
+      "scoreGood": "Good job!",
+      "scoreEncouraging": "Keep going!",
+      "scoreDone": "Completed",
+      "subToday": "Today",
+      "subCountdown": "Next challenge in {{countdown}}",
+      "review": "Review answers"
+    },
+    "journeyExtra": {
+      "subUnlock": "Start with Genesis · Complete 80% of each book to unlock the next",
+      "metaCount": "{{done}} / {{total}} books",
+      "metaCountSuffix": "/ {{total}} books",
+      "metaCurrent": "Currently in {{book}}",
+      "testamentOld": "Old Testament",
+      "testamentNew": "New Testament",
+      "statusInProgress": "Conquering · {{pct}}%",
+      "statusDone": "Completed · {{pct}}%",
+      "statusLocked": "Locked",
+      "overflowLabel": "+ {{remaining}} more",
+      "overflowSub": "Remaining in the journey"
     },
     "modeLocked": {
       "reason": "Reach {{tier}} to unlock"

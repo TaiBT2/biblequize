@@ -752,7 +752,41 @@
       "subtitle": "Không ảnh hưởng XP / xếp hạng"
     },
     "group": {
-      "title": "Thi đấu nhóm"
+      "title": "Thi đấu cộng đồng"
+    },
+    "explore": {
+      "title": "Khám phá thêm",
+      "subtitle": "Luyện tập tự do — không tính XP"
+    },
+    "heroRanked": {
+      "label": "Tiếp theo · Bước vào đấu trường",
+      "tagline": "Daily xong rồi — giờ cạnh tranh ranking thôi",
+      "energyMeta": "{{remaining}} / {{max}} năng lượng",
+      "progressMeta": "{{answered}} / {{cap}} câu hôm nay",
+      "cta": "Vào trận"
+    },
+    "dailyCompleted": {
+      "score": "{{correct}}/{{total}} đúng — {{message}}",
+      "scoreExcellent": "Giỏi lắm!",
+      "scoreGood": "Tốt lắm!",
+      "scoreEncouraging": "Cố lên!",
+      "scoreDone": "Đã hoàn thành",
+      "subToday": "Hôm nay",
+      "subCountdown": "Thử thách mới sau {{countdown}}",
+      "review": "Xem lại bài làm"
+    },
+    "journeyExtra": {
+      "subUnlock": "Bắt đầu từ Sáng Thế Ký · Hoàn thành 80% mỗi sách để mở khóa sách tiếp theo",
+      "metaCount": "{{done}} / {{total}} sách",
+      "metaCountSuffix": "/ {{total}} sách",
+      "metaCurrent": "Đang ở {{book}}",
+      "testamentOld": "Cựu Ước",
+      "testamentNew": "Tân Ước",
+      "statusInProgress": "Đang chinh phục · {{pct}}%",
+      "statusDone": "Hoàn thành · {{pct}}%",
+      "statusLocked": "Khóa",
+      "overflowLabel": "+ {{remaining}} sách",
+      "overflowSub": "Còn lại trong hành trình"
     },
     "modeLocked": {
       "reason": "Đạt {{tier}} để mở khóa"

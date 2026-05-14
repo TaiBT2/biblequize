@@ -1,25 +1,20 @@
+import { useTranslation } from 'react-i18next'
+
 interface DailyCompletedStripProps {
   correctCount: number
   totalCount: number
-  /** Extra context for the sub-line, e.g. "Hành trình qua 5 sách". */
+  /** Extra context appended to the sub-line. */
   trailingText?: string
   /** Countdown to next Daily reset, e.g. "20:35:43". */
   countdownText: string
   onReview: () => void
 }
 
-function scoreMessage(correct: number, total: number): string {
-  if (total <= 0) return 'Đã hoàn thành'
-  const pct = (correct / total) * 100
-  if (pct >= 80) return 'Giỏi lắm!'
-  if (pct >= 60) return 'Tốt lắm!'
-  return 'Cố lên!'
-}
-
 /**
  * Sage-tint completed Daily strip — replaces the full FeaturedDailyCard
  * once the user finishes today's challenge. Per home_modern.html
- * `.daily-strip`.
+ * `.daily-strip`. Strings come from `home.dailyCompleted.*` so EN/VI
+ * locales render correctly.
  */
 export default function DailyCompletedStrip({
   correctCount,
@@ -28,7 +23,16 @@ export default function DailyCompletedStrip({
   countdownText,
   onReview,
 }: DailyCompletedStripProps) {
-  const message = scoreMessage(correctCount, totalCount)
+  const { t } = useTranslation()
+  const messageKey =
+    totalCount <= 0
+      ? 'home.dailyCompleted.scoreDone'
+      : (correctCount / totalCount) * 100 >= 80
+        ? 'home.dailyCompleted.scoreExcellent'
+        : (correctCount / totalCount) * 100 >= 60
+          ? 'home.dailyCompleted.scoreGood'
+          : 'home.dailyCompleted.scoreEncouraging'
+  const message = t(messageKey) as string
   return (
     <div
       data-testid="daily-completed-strip"
@@ -66,18 +70,21 @@ export default function DailyCompletedStrip({
           className="text-[13px] md:text-[14px] font-bold"
           style={{ color: '#b4d4ba' }}
         >
-          {correctCount}/{totalCount} đúng — {message}
+          {t('home.dailyCompleted.score', {
+            correct: correctCount,
+            total: totalCount,
+            message,
+          })}
         </div>
         <div
           data-testid="daily-completed-strip-sub"
           className="text-[11px] text-ivory-faint mt-0.5"
         >
-          Hôm nay
+          {t('home.dailyCompleted.subToday')}
           {trailingText ? ` · ${trailingText}` : ''}
           {' · '}
-          Thử thách mới sau{' '}
           <span data-testid="daily-completed-strip-countdown" className="tabular-nums">
-            {countdownText}
+            {t('home.dailyCompleted.subCountdown', { countdown: countdownText })}
           </span>
         </div>
       </div>
@@ -105,7 +112,7 @@ export default function DailyCompletedStrip({
           <path d="M4 19V5a2 2 0 012-2h11l3 3v13a2 2 0 01-2 2H6a2 2 0 01-2-2z" />
           <path d="M8 7h6M8 11h8M8 15h5" />
         </svg>
-        Xem lại bài làm
+        {t('home.dailyCompleted.review')}
       </button>
     </div>
   )

@@ -310,7 +310,7 @@ export default function Home() {
       {/* ── State A: Chế độ chơi chính (Practice + Ranked-standard 2-col) ── */}
       {!dailyDone && (
         <>
-          <SectionHeader title="Chế độ chơi chính" />
+          <SectionHeader title={t('home.primary.title')} />
           <div
             data-testid="home-primary-grid"
             className="grid grid-cols-1 sm:grid-cols-2 gap-3.5"
@@ -325,8 +325,8 @@ export default function Home() {
           </div>
 
           <SectionHeader
-            title="Chế độ đa dạng"
-            meta="Không ảnh hưởng XP / xếp hạng"
+            title={t('home.variety.title')}
+            meta={t('home.variety.subtitle')}
           />
           <div
             data-testid="home-variety-grid"
@@ -341,8 +341,8 @@ export default function Home() {
       {dailyDone && (
         <>
           <SectionHeader
-            title="Khám phá thêm"
-            meta="Luyện tập tự do — không tính XP"
+            title={t('home.explore.title')}
+            meta={t('home.explore.subtitle')}
           />
           <div
             data-testid="home-explore-grid"
@@ -355,7 +355,7 @@ export default function Home() {
       )}
 
       {/* ── Thi đấu cộng đồng (both states) ── */}
-      <SectionHeader title="Thi đấu cộng đồng" />
+      <SectionHeader title={t('home.group.title')} />
       <div
         data-testid="home-group-grid"
         className="grid grid-cols-1 sm:grid-cols-3 gap-3.5"

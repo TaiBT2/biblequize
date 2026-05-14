@@ -4,10 +4,27 @@ import userEvent from '@testing-library/user-event'
 
 import HeroRankedCard from '../HeroRankedCard'
 
-// Stub i18next so t('gameModes.ranked') returns the BL-4 value.
+// Stub i18next — return realistic VI strings for the keys the component
+// actually consumes. {{interp}} placeholders get substituted from opts.
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
-    t: (key: string) => (key === 'gameModes.ranked' ? 'Đấu Hạng' : key),
+    t: (key: string, opts?: Record<string, unknown>) => {
+      const dict: Record<string, string> = {
+        'gameModes.ranked': 'Đấu Hạng',
+        'home.heroRanked.label': 'Tiếp theo · Bước vào đấu trường',
+        'home.heroRanked.tagline': 'Daily xong rồi — giờ cạnh tranh ranking thôi',
+        'home.heroRanked.energyMeta': '{{remaining}} / {{max}} năng lượng',
+        'home.heroRanked.progressMeta': '{{answered}} / {{cap}} câu hôm nay',
+        'home.heroRanked.cta': 'Vào trận',
+      }
+      let template = dict[key] ?? key
+      if (opts) {
+        for (const [k, v] of Object.entries(opts)) {
+          template = template.replace(new RegExp(`\\{\\{\\s*${k}\\s*\\}\\}`, 'g'), String(v))
+        }
+      }
+      return template
+    },
   }),
 }))
 
