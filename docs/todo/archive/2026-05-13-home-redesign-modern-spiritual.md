@@ -2,7 +2,7 @@
 
 > **Source**: `docs/designs/PROMPT_HOME_REDESIGN.md` + mockup `docs/designs/home_modern.html`
 > **Scope**: Refactor `apps/web/src/pages/Home.tsx` theo direction "Modern Spiritual" — atmosphere (noise + gold radial gradient) + Be Vietnam Pro 800 sport-app numbers + Cormorant Garamond italic chỉ ở verse + Dynamic Hierarchy 2 states (Daily todo / Daily done). Frontend-only, 5+ components mới. Phase 1 Audit STOP trước Phase 2.
-> **Status**: IN PROGRESS
+> **Status**: SUPERSEDED (2026-05-14) — replaced by [`2026-05-14-home-redesign-vintage-phase-1-audit`](2026-05-14-home-redesign-vintage-phase-1-audit.md). Direction changed to "vintage gamified" (illuminated manuscript + chunky game-UI). Tokens đã ship trên main (HR-1: `ivory`/`gold-deep`/`maroon`/`sage`/Cormorant Garamond) sẽ được audit trong HRV-2 để quyết keep-as-base hoặc revert. HR-2/HR-3 components (HomeBanner, FeaturedDailyCard) sẽ được audit trong HRV-5 để quyết reuse-vs-rewrite.
 
 ### Tasks
 

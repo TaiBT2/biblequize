@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BibleQuiz · Trang chủ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Yeseva+One&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" data-screen-label="Sidebar">
+      <div class="brand">
+        <div class="brand-mark">B</div>
+        <div>
+          <div class="brand-name">BibleQuiz</div>
+          <div class="brand-tag">Hành trình 66</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-link active" href="#home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H10v7H5a1 1 0 0 1-1-1V11z"/></svg>
+          TRANG CHỦ
+        </a>
+        <a class="nav-link" href="#leaderboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h4V10H4v10zm6 0h4V4h-4v16zm6 0h4v-7h-4v7z"/></svg>
+          BẢNG XẾP HẠNG
+        </a>
+        <a class="nav-link" href="#groups">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M15 20c0-2 2-4 4-4s4 2 4 4"/></svg>
+          NHÓM HỘI THÁNH
+        </a>
+        <a class="nav-link" href="#profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+          HỒ SƠ
+        </a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="avatar-pill">T</div>
+        <div class="foot-meta">
+          <b>Tài Thanh</b>
+          <span>New Believer · Lv. 1</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <main class="main">
+
+      <!-- HUD -->
+      <div class="hud">
+        <div class="hud-title">Trang chủ</div>
+        <div class="hud-spacer"></div>
+        <div class="hud-stats">
+          <div class="stat-pill">
+            <div class="ico fire">🔥</div>
+            <div>
+              <div class="num">1</div>
+              <div class="lbl">Streak</div>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <div class="ico bolt">⚡</div>
+            <div>
+              <div class="num">100</div>
+              <div class="lbl">Năng lượng</div>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <div class="ico crown">♛</div>
+            <div>
+              <div class="num">0</div>
+              <div class="lbl">Mùa giải</div>
+            </div>
+          </div>
+        </div>
+        <button id="theme-toggle" class="theme-btn" aria-label="Đổi chế độ sáng/tối">☾</button>
+      </div>
+
+      <!-- HERO GREETING -->
+      <section class="hero" data-screen-label="01 Hero">
+        <div>
+          <div class="hero-eyebrow">Chào buổi chiều</div>
+          <h1>Tài Thanh,<br/><span class="accent">cuộc hành trình</span> chờ con.</h1>
+          <div class="hero-sub">
+            <div class="rank-chip"><span class="dot"></span> New Believer → Seeker</div>
+            <span>Hôm nay là ngày tốt để mở Kinh Thánh.</span>
+          </div>
+        </div>
+        <div class="hero-xp">
+          <div class="row"><span>Tiến trình cấp độ</span><b>0 / 1,000 XP</b></div>
+          <div class="xp-track"><div class="xp-fill" style="width: 0%"></div></div>
+          <div class="xp-marks">
+            <span>New Believer</span>
+            <span>Seeker</span>
+            <span>Disciple</span>
+            <span>Teacher</span>
+            <span>Sage</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TWO BIG CTAs -->
+      <section class="duo-cta" data-screen-label="02 Hành động chính">
+
+        <!-- DAILY -->
+        <article class="cta-card cta-daily">
+          <svg class="progress-arc" viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="50" />
+            <circle class="fill" cx="60" cy="60" r="50"
+              stroke-dasharray="314" stroke-dashoffset="314"
+              transform="rotate(-90 60 60)" />
+            <text x="60" y="58" text-anchor="middle">0/5</text>
+            <text x="60" y="76" text-anchor="middle" style="font-size: 10px; letter-spacing: 0.2em;">CÂU</text>
+          </svg>
+          <div class="label">Hôm nay · Daily</div>
+          <h2>Thử thách<br/>hằng ngày</h2>
+          <p class="blurb">5 câu mỗi ngày để giữ chuỗi. Hoàn thành để mở khóa nhiệm vụ kế tiếp.</p>
+          <div class="cta-meta">
+            <span>Đã trả lời <span class="v">0/5</span></span>
+            <span>Đặt lại sau <span class="v">17:40:27</span></span>
+          </div>
+          <div class="cta-foot">
+            <button class="chunky-btn gold">
+              Bắt đầu hôm nay
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+            <a href="#" style="font-size: 13px; color: var(--ink-muted); text-decoration: underline;">Xem lại bài làm</a>
+          </div>
+        </article>
+
+        <!-- RANKED -->
+        <article class="cta-card cta-ranked">
+          <svg class="swords" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="3" style="color: var(--ruby);">
+            <!-- crossed crosses / sword silhouettes, abstract -->
+            <g opacity="0.4">
+              <path d="M100 30 v140 M70 60 h60" stroke-width="6"/>
+              <circle cx="100" cy="100" r="60"/>
+              <path d="M40 100 L160 100 M100 40 L100 160" stroke-dasharray="4 8"/>
+            </g>
+          </svg>
+          <div class="label">Tiếp theo · Đấu trường</div>
+          <h2>Xếp hạng</h2>
+          <p class="blurb">Daily xong rồi — giờ cạnh tranh thứ hạng với cộng đồng.</p>
+          <div class="cta-meta">
+            <span>Năng lượng <span class="v">100/100</span></span>
+            <span>Hôm nay <span class="v">0/100</span></span>
+          </div>
+          <div class="cta-foot">
+            <button class="chunky-btn red">
+              Vào trận ngay
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+            <span style="font-size: 12px; color: var(--ink-muted); font-family: 'JetBrains Mono', monospace;">+12 XP / trận thắng</span>
+          </div>
+        </article>
+      </section>
+
+      <!-- MISSIONS SCROLL -->
+      <section class="missions" data-screen-label="03 Nhiệm vụ">
+        <div class="missions-head">
+          <div class="ttl">Nhiệm vụ hôm nay</div>
+          <div class="sub">— Daily Quests —</div>
+          <div class="count">1 / 3 HOÀN THÀNH</div>
+        </div>
+
+        <div class="mission">
+          <div class="box">○</div>
+          <div>
+            <div class="name">Trả lời đúng 3 câu</div>
+            <div class="bar"><i style="width: 0%"></i></div>
+          </div>
+          <div class="meta">0/3</div>
+        </div>
+
+        <div class="mission done">
+          <div class="box">✓</div>
+          <div>
+            <div class="name">Hoàn thành thử thách hằng ngày</div>
+            <div class="bar"><i style="width: 100%"></i></div>
+          </div>
+          <div class="meta">1/1</div>
+        </div>
+
+        <div class="mission">
+          <div class="box">○</div>
+          <div>
+            <div class="name">Trả lời 3 câu liên tiếp đúng</div>
+            <div class="bar"><i style="width: 0%"></i></div>
+          </div>
+          <div class="meta">0/3</div>
+        </div>
+      </section>
+
+      <!-- JOURNEY / 66 BOOKS -->
+      <div class="section-h">
+        <div class="label">Hành trình 66 cuốn</div>
+        <div class="tag">— Quest Map —</div>
+        <div class="right">0 / 66 sách</div>
+      </div>
+
+      <section class="journey" data-screen-label="04 Hành trình">
+        <div class="journey-top">
+          <div class="ttl">Cựu Ước</div>
+          <div class="stat">Đang chinh phục: <b>Sáng Thế Ký</b> · 0%</div>
+        </div>
+
+        <div class="path-wrap">
+          <!-- the curving path behind the stations -->
+          <svg class="path-svg" preserveAspectRatio="none" viewBox="0 0 1200 80">
+            <path d="M 40 40 Q 140 0, 240 40 T 440 40 T 640 40 T 840 40 T 1040 40 T 1240 40"
+                  fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-dasharray="2 8" style="color: var(--line);"/>
+          </svg>
+
+          <div class="stations">
+            <div class="station current">
+              <div class="seal"><div class="seal-disk">01</div></div>
+              <div class="ord">CỰU ƯỚC · 01</div>
+              <div class="name">Sáng Thế Ký</div>
+              <div class="meta">Đang chinh phục · 0%</div>
+            </div>
+            <div class="station locked">
+              <div class="seal"><div class="seal-disk">02</div></div>
+              <div class="ord">CỰU ƯỚC · 02</div>
+              <div class="name">Xuất Ê-díp-tô Ký</div>
+              <div class="meta">🔒 Khóa</div>
+            </div>
+            <div class="station locked">
+              <div class="seal"><div class="seal-disk">03</div></div>
+              <div class="ord">CỰU ƯỚC · 03</div>
+              <div class="name">Lê-vi Ký</div>
+              <div class="meta">🔒 Khóa</div>
+            </div>
+            <div class="station locked">
+              <div class="seal"><div class="seal-disk">04</div></div>
+              <div class="ord">CỰU ƯỚC · 04</div>
+              <div class="name">Dân Số Ký</div>
+              <div class="meta">🔒 Khóa</div>
+            </div>
+            <div class="station locked">
+              <div class="seal"><div class="seal-disk">05</div></div>
+              <div class="ord">CỰU ƯỚC · 05</div>
+              <div class="name">Phục Truyền</div>
+              <div class="meta">🔒 Khóa</div>
+            </div>
+            <div class="station locked">
+              <div class="seal"><div class="seal-disk">06</div></div>
+              <div class="ord">CỰU ƯỚC · 06</div>
+              <div class="name">Giô-suê</div>
+              <div class="meta">🔒 Khóa</div>
+            </div>
+            <div class="station locked">
+              <div class="seal"><div class="seal-disk">+60</div></div>
+              <div class="ord">CÒN LẠI</div>
+              <div class="name">60 sách</div>
+              <div class="meta">Trong hành trình</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-cta">
+          <div class="info">Hoàn thành <b>80%</b> mỗi sách để mở khóa sách tiếp theo trong hành trình.</div>
+          <button class="chunky-btn gold" style="padding: 12px 18px; font-size: 13px;">
+            Tiếp tục Sáng Thế Ký
+          </button>
+        </div>
+      </section>
+
+      <!-- MODES -->
+      <div class="section-h">
+        <div class="label">Khám phá thêm</div>
+        <div class="tag">— Luyện tập tự do · không tính XP —</div>
+      </div>
+
+      <section class="modes" data-screen-label="05 Chế độ chơi">
+        <article class="mode-card">
+          <div class="ico-box amber">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 1-2-2V6z"/><path d="M4 6h14M9 4v16"/></svg>
+          </div>
+          <h3>Luyện tập</h3>
+          <p>Miễn phí · không XP</p>
+          <span class="corner">Free</span>
+        </article>
+        <article class="mode-card">
+          <div class="ico-box plum">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+          </div>
+          <h3>Chủ đề tuần</h3>
+          <p>Theme mới mỗi tuần</p>
+          <span class="corner">Tuần</span>
+        </article>
+        <article class="mode-card">
+          <div class="ico-box ruby">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9" r="1.4" fill="currentColor"/><circle cx="15" cy="15" r="1.4" fill="currentColor"/><circle cx="15" cy="9" r="1.4" fill="currentColor"/><circle cx="9" cy="15" r="1.4" fill="currentColor"/></svg>
+          </div>
+          <h3>Mystery</h3>
+          <p>Ngẫu nhiên hoàn toàn</p>
+          <span class="corner">Random</span>
+        </article>
+        <article class="mode-card">
+          <div class="ico-box emerald">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="13" r="8"/><path d="M12 13l4-4M9 3h6M12 5v2"/></svg>
+          </div>
+          <h3>Tốc độ</h3>
+          <p>10 câu × 10 giây</p>
+          <span class="corner">10 × 10s</span>
+        </article>
+      </section>
+
+      <!-- COMMUNITY -->
+      <div class="section-h">
+        <div class="label">Thi đấu cộng đồng</div>
+        <div class="tag">— Multiplayer —</div>
+      </div>
+
+      <section class="community" data-screen-label="06 Cộng đồng">
+        <article class="com-card church">
+          <div class="ico-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v6M9 6h6"/><path d="M5 21V11l7-4 7 4v10"/><path d="M10 21v-5h4v5"/></svg>
+          </div>
+          <h3>Nhóm Hội Thánh</h3>
+          <p>Học cùng anh chị em trong hội thánh</p>
+        </article>
+
+        <article class="com-card com-feature">
+          <div class="ico-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="2" y="7" width="20" height="12" rx="3"/><circle cx="8" cy="13" r="1.4" fill="currentColor"/><circle cx="16" cy="13" r="1.4" fill="currentColor"/><path d="M11 11v4M9 13h4"/></svg>
+          </div>
+          <h3>Phòng chơi</h3>
+          <p>2–20 người · đối kháng trực tiếp</p>
+          <div class="row">
+            <div class="players">
+              <span class="a gold">M</span>
+              <span class="a ruby">P</span>
+              <span class="a plum">A</span>
+              <span class="a emerald">L</span>
+              <span class="a">+8</span>
+            </div>
+            <span style="font-size: 12px; color: var(--ink-muted);">đang online</span>
+            <button class="small-btn">Tạo phòng</button>
+          </div>
+        </article>
+
+        <article class="com-card tour locked">
+          <span class="badge lock">🔒 Khóa</span>
+          <div class="ico-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 4h12v4a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V4z"/><path d="M4 4h2M18 4h2M10 16h4v4h-4z"/><path d="M9 20h6"/></svg>
+          </div>
+          <h3>Giải đấu</h3>
+          <p>1v1 bracket · đạt Sage để mở khóa</p>
+        </article>
+      </section>
+
+      <!-- VERSE -->
+      <section class="verse" data-screen-label="07 Câu Kinh Thánh">
+        <p class="body">
+          <span class="drop">V</span>ì chính ta biết ý định ta định cho các ngươi, là ý định bình an, không phải tai họa.
+        </p>
+        <div class="cite">Giê-rê-mi 29:11 · BTTHĐ 2011</div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Tweaks panel root -->
+  <div id="tweaks-root"></div>
+
+  <!-- React + Babel + Tweaks panel -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="app.jsx"></script>
+
+  <!-- animate progress arc on load -->
+  <script>
+    window.addEventListener("load", () => {
+      const arc = document.querySelector(".progress-arc .fill");
+      if (arc) {
+        const total = 314;
+        const pct = 0; // 0/5 — will animate to 0 dramatically but render as full track
+        arc.style.transition = "stroke-dashoffset 1.2s ease";
+        arc.style.strokeDashoffset = String(total * (1 - pct));
+      }
+    });
+  </script>
+</body>
+</html>

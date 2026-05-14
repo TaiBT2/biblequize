@@ -1,4 +1,6 @@
-# 2026-05-05 — Home Redesign theo mockup `home_redesign_mockup.html` [IN PROGRESS]
+# 2026-05-05 — Home Redesign theo mockup `home_redesign_mockup.html` [SUPERSEDED 2026-05-14]
+
+> **Status**: SUPERSEDED (2026-05-14) — replaced by [`2026-05-14-home-redesign-vintage-phase-1-audit`](2026-05-14-home-redesign-vintage-phase-1-audit.md). Direction changed to "vintage gamified". HR-1 (GreetingCard) + HR-2 (FeaturedDailyChallenge) đã DONE và shipped — audit reuse-vs-rewrite trong HRV-5. Variety routes verified (`/weekly-quiz`, `/mystery-mode`, `/speed-round`) sẽ được reuse trong HRV-3.
 
 > **Source:** Bui yêu cầu redesign Home theo `docs/designs/home_redesign_mockup.html`. Option A incremental (7 commits).
 > **Decisions chốt với Bui (2026-05-05):**

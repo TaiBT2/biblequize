@@ -3,17 +3,16 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (13)
+## Active (12)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
-| 2026-05-13 | Home Redesign Modern Spiritual | IN PROGRESS | [detail](docs/todo/active/2026-05-13-home-redesign-modern-spiritual.md) |
+| 2026-05-14 | Home Redesign (Vintage Gamified) — Phase 1 Audit | IN PROGRESS | [detail](docs/todo/active/2026-05-14-home-redesign-vintage-phase-1-audit.md) |
 | 2026-05-13 | Disable test data seed on prod + harden guard | TODO | [detail](docs/todo/active/2026-05-13-disable-seed-on-prod-and-harden-guard.md) |
 | 2026-05-13 | Code Quality Audit follow-up (BE + FE Web) | PARTIALLY DONE | [detail](docs/todo/active/2026-05-13-code-quality-audit-follow-up-be-fe-web.md) |
 | 2026-05-10 | Quiz Set card: thêm action buttons (Chơi cùng nhau / Đặt lịch) | TODO | [detail](docs/todo/active/2026-05-10-quiz-set-card-them-action-buttons-choi-cung-nhau-dat-lich.md) |
 | 2026-05-06 | Practice screen redesign + new settings | IN PROGRESS | [detail](docs/todo/active/2026-05-06-practice-screen-redesign-new-settings.md) |
 | 2026-05-05 | Quiz Mobile Redesign theo `quiz_mobile_redesign_mockup.html` | IN PROGRESS | [detail](docs/todo/active/2026-05-05-quiz-mobile-redesign-theo-quiz-mobile-redesign-mockup-html.md) |
-| 2026-05-05 | Home Redesign theo mockup `home_redesign_mockup.html` | IN PROGRESS | [detail](docs/todo/active/2026-05-05-home-redesign-theo-mockup-home-redesign-mockup-html.md) |
 | 2026-05-05 | Group Page redesign: Feature A "Chơi cùng nhau" + Feature B "Đặt lịch chơi" | TODO | [detail](docs/todo/active/2026-05-05-group-page-redesign-feature-a-choi-cung-nhau-feature-b-dat-lich-choi.md) |
 | 2026-05-01 | Quiz Screen Redesign — Sprint 1 (P0 critical) | TODO | [detail](docs/todo/active/2026-05-01-quiz-screen-redesign-sprint-1-p0-critical.md) |
 | 2026-04-30 | Ranked Page Redesign (Sacred Modernist v2) | IN PROGRESS | [detail](docs/todo/active/2026-04-30-ranked-page-redesign-sacred-modernist-v2.md) |
@@ -21,13 +20,14 @@
 | 2026-04-27 | V3 Tier B/C Quality Expansion: 14 books | IN PROGRESS | [detail](docs/todo/active/2026-04-27-v3-tier-b-c-quality-expansion-14-books.md) |
 | 2026-04-19 | Global audience migration: SQL → JSON + i18n prep | PARTIALLY DONE | [detail](docs/todo/active/2026-04-19-global-audience-migration-sql-json-i18n-prep.md) |
 
-## Archive (41)
+## Archive (43)
 
-> 41 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
+> 43 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
 
 <details>
 <summary>Xem inline list (tuỳ chọn)</summary>
 
+- 2026-05-13 — Home Redesign Modern Spiritual · SUPERSEDED · [detail](docs/todo/archive/2026-05-13-home-redesign-modern-spiritual.md)
 - 2026-05-10 — Group Detail redesign · DONE · [detail](docs/todo/archive/2026-05-10-group-detail-redesign.md)
 - 2026-05-10 — Fix: Quản trò mất isHost sau WS ROOM_STATE event · DONE · [detail](docs/todo/archive/2026-05-10-fix-quan-tro-mat-ishost-sau-ws-room-state-event.md)
 - 2026-05-09 — Multiplayer Sprint 4: Host-Organizer separation · DONE · [detail](docs/todo/archive/2026-05-09-multiplayer-sprint-4-host-organizer-separation.md)
@@ -40,6 +40,7 @@
 - 2026-05-06 — Spec compliance follow-ups (sau review SPEC_GROUP_v1) · SUPERSEDED · [detail](docs/todo/archive/2026-05-06-spec-compliance-follow-ups-sau-review-spec-group-v1.md)
 - 2026-05-06 — Group → Live Room flow audit fixes · DONE · [detail](docs/todo/archive/2026-05-06-group-live-room-flow-audit-fixes.md)
 - 2026-05-05 — Daily Challenge Redesign theo `daily_challenge_mockup.html` · DONE · [detail](docs/todo/archive/2026-05-05-daily-challenge-redesign-theo-daily-challenge-mockup-html.md)
+- 2026-05-05 — Home Redesign theo mockup `home_redesign_mockup.html` · SUPERSEDED · [detail](docs/todo/archive/2026-05-05-home-redesign-theo-mockup-home-redesign-mockup-html.md)
 - 2026-05-02 — Variety Modes Leaderboard Fix (Option A) · DONE · [detail](docs/todo/archive/2026-05-02-variety-modes-leaderboard-fix-option-a.md)
 - 2026-05-01 — Leaderboard LB-2 Sprint: 3 tabs + 4 liturgical seasons · DONE · [detail](docs/todo/archive/2026-05-01-leaderboard-lb-2-sprint-3-tabs-4-liturgical-seasons.md)
 - 2026-05-01 — Leaderboard Redesign Sprint 1 (P0 + P1 mockup) · DONE · [detail](docs/todo/archive/2026-05-01-leaderboard-redesign-sprint-1-p0-p1-mockup.md)
