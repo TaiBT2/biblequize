@@ -359,9 +359,21 @@ const DailyChallenge: React.FC = () => {
       queryClient.invalidateQueries({ queryKey: ['me'] })
       queryClient.invalidateQueries({ queryKey: ['me-tier-progress'] })
       queryClient.invalidateQueries({ queryKey: ['daily-missions'] })
+      // Bugfix: invalidate the `alreadyCompleted` status query too, not
+      // just the result query. Home page reads ['daily-challenge', lang]
+      // to decide State A (todo) vs State B (done + Hero Ranked promoted)
+      // — without this invalidation it stayed stale `alreadyCompleted:
+      // false` after completion, so the user saw the State-A daily card
+      // until they F5'd. Partial-key match invalidates all language
+      // variants (['daily-challenge','vi'] and ['daily-challenge','en']).
+      queryClient.invalidateQueries({ queryKey: ['daily-challenge'] })
       queryClient.invalidateQueries({ queryKey: ['daily-challenge-result'] })
       queryClient.invalidateQueries({ queryKey: ['daily-history-30'] })
       queryClient.invalidateQueries({ queryKey: ['daily-leaderboard'] })
+      // Ranked-status query feeds HeroRankedCard energy/cap stats — refetch
+      // so the promoted-after-Daily Hero card shows fresh numbers if the
+      // user already played some ranked questions during the daily session.
+      queryClient.invalidateQueries({ queryKey: ['ranked-status'] })
 
       const XP_MIN_CORRECT = 4
       const localResult: DailyResult = {
