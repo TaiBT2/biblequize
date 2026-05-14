@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
-import { useTheme } from '../hooks/useTheme'
 
 interface MeData {
   totalPoints?: number
@@ -29,7 +28,6 @@ type StatIcon = 'flame' | 'bolt' | 'coin'
  */
 export default function HomeHud() {
   const { t } = useTranslation()
-  const { theme, toggle } = useTheme()
 
   const { data: meData } = useQuery<MeData>({
     queryKey: ['me'],
@@ -80,21 +78,6 @@ export default function HomeHud() {
           value={seasonPoints}
           label={t('home.greeting.seasonPoints')}
         />
-        {/* HRV-26 theme toggle — vintage Home.html .theme-btn ☾/☀.
-            Swaps html[data-theme] which drives the CSS-var palette
-            in global.css. Persists via localStorage. */}
-        <button
-          type="button"
-          data-testid="home-hud-theme-toggle"
-          onClick={toggle}
-          aria-label={theme === 'dark' ? t('home.theme.toggleToLight', 'Chuyển sang sáng') : t('home.theme.toggleToDark', 'Chuyển sang tối')}
-          title={theme === 'dark' ? t('home.theme.toggleToLight', 'Chuyển sang sáng') : t('home.theme.toggleToDark', 'Chuyển sang tối')}
-          className="w-10 h-10 md:w-11 md:h-11 rounded-[12px] grid place-items-center bg-bg-deep border border-line-soft shadow-chunky-soft text-ivory-dim hover:text-gold-bright transition-colors active:translate-y-0.5 active:shadow-none"
-        >
-          <span aria-hidden className="text-[18px] leading-none">
-            {theme === 'dark' ? '☾' : '☀'}
-          </span>
-        </button>
       </div>
     </div>
   )
