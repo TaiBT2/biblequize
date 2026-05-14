@@ -69,21 +69,21 @@ export default function BibleJourneyCard() {
     <Link
       to="/journey"
       data-testid="bible-journey-card"
-      className="relative block rounded-[18px] border border-[rgba(245,240,230,0.06)] backdrop-blur-[12px] p-5 md:p-6 hover:border-[rgba(232,168,50,0.2)] transition-colors overflow-hidden"
-      style={{ background: 'rgba(24,26,36,0.55)' }}
+      className="relative block rounded-[20px] border border-line bg-bg-deep shadow-chunky-soft p-5 md:p-6 transition-transform hover:-translate-y-0.5 overflow-hidden"
     >
-      {/* Top-right gold radial glow */}
+      {/* Vintage gold radial glow (bottom-left) — matches vintage
+          .journey radial-gradient(ellipse 600px 200px at 20% 100%) */}
       <span
         aria-hidden
-        className="absolute -top-1/2 -right-[10%] w-[350px] h-[350px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(232,168,50,0.07), transparent 65%)' }}
+        className="absolute -bottom-1/3 -left-[10%] w-[420px] h-[280px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse, rgba(244,209,120,0.12), transparent 70%)' }}
       />
 
       <div className="relative">
         <div className="flex items-baseline justify-between gap-3 mb-1.5 flex-wrap">
           <h3
             data-testid="bible-journey-title"
-            className="flex items-center gap-3 text-[16px] md:text-[18px] font-bold text-ivory tracking-[-0.015em]"
+            className="flex items-center gap-3 font-display text-[20px] md:text-[24px] text-ivory tracking-[-0.015em]"
           >
             <svg
               width="22"
@@ -101,8 +101,8 @@ export default function BibleJourneyCard() {
             </svg>
             {t('home.journey.title')}
           </h3>
-          <div data-testid="bible-journey-meta" className="text-[13px] text-ivory-dim font-medium">
-            <span className="text-secondary font-extrabold text-[16px] tabular-nums">
+          <div data-testid="bible-journey-meta" className="font-numeric text-[12px] md:text-[13px] text-ivory-dim font-medium">
+            <span className="text-gold-bright font-bold text-[14px] md:text-[16px] tabular-nums">
               {totalDone}
             </span>{' '}
             {t('home.journeyExtra.metaCountSuffix', { total })}
@@ -187,22 +187,27 @@ function BookChip({ book, isVi }: { book: BookProgress; isVi: boolean }) {
     <div
       data-testid={`bible-journey-chip-${book.book}`}
       data-status={book.status}
-      className={`shrink-0 min-w-[138px] rounded-xl px-3.5 py-3 transition-colors ${
-        isLocked ? 'opacity-45 cursor-not-allowed' : 'cursor-pointer hover:bg-[rgba(245,240,230,0.05)]'
+      className={`shrink-0 min-w-[148px] rounded-xl px-3.5 py-3 transition-transform ${
+        isLocked ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:-translate-y-0.5'
       }`}
       style={
         isCurrent
           ? {
               background:
-                'radial-gradient(ellipse 200px 80px at 50% 0%, rgba(232,168,50,0.18), transparent 70%), rgba(232,168,50,0.05)',
-              border: '1px solid rgba(232,168,50,0.45)',
+                'radial-gradient(ellipse 220px 100px at 50% 0%, rgba(244,209,120,0.22), transparent 70%), rgba(27,20,36,0.85)',
+              border: '1.5px solid rgba(244,209,120,0.55)',
               boxShadow:
-                '0 0 24px rgba(232,168,50,0.18), inset 0 1px 0 rgba(232,168,50,0.2)',
+                '0 0 28px rgba(244,209,120,0.22), inset 0 1px 0 rgba(244,209,120,0.25)',
             }
-          : {
-              background: 'rgba(245,240,230,0.025)',
-              border: '1px solid rgba(245,240,230,0.06)',
-            }
+          : isDone
+            ? {
+                background: 'rgba(79,168,118,0.06)',
+                border: '1px solid rgba(79,168,118,0.30)',
+              }
+            : {
+                background: 'rgba(27,20,36,0.6)',
+                border: '1px solid rgba(46,34,56,0.7)',
+              }
       }
     >
       <div

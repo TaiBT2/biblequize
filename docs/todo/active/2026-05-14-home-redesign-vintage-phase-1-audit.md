@@ -6,6 +6,13 @@
 
 ### Phase 2 progress
 
+- **HRV-14** BibleJourneyCard vintage palette + state-differentiated chips — `[x]` DONE 2026-05-14
+  - Files: `apps/web/src/components/BibleJourneyCard.tsx` (~30 LOC). Decision: **restyle in place** (no fork to BibleJourneyVintagePath). Existing horizontal-scroll chip layout matches vintage "stations" concept enough; full SVG curving-path background + 72px seal disks deferred (would be ~120 LOC fork — defer to future Phase if user requests).
+  - Card root: `bg-bg-deep` + `border-line` + `shadow-chunky-soft` (vintage `.journey`). Gold radial glow moved bottom-left (matches vintage `radial-gradient(ellipse 600px 200px at 20% 100%)`). Title h3 → `font-display` 20→24px. Meta count → `font-numeric` (JetBrains Mono) with `gold-bright` for total.
+  - Chip palette by state: `current` = gold-bright radial + 1.5px gold border + glow (more dramatic than V2); `done` = emerald-tinted bg + emerald border (was identical to default); `locked` = darker bg + line border + opacity-50. Hover lift on non-locked chips. `opacity-45 → opacity-50` (minor adjustment).
+  - Test: BibleJourneyCard 30/30 + Home 26/26 pass after updating 1 test assertion `opacity-45 → opacity-50`.
+  - Strategy: `(c) [no-spec-impact]`.
+
 - **HRV-13** DailyMissionsCard vintage scroll-paper — `[x]` DONE 2026-05-14
   - Files: `apps/web/src/components/DailyMissionsCard.tsx` (~40 LOC). Replaces flat surface bg with vintage ruled-paper: `repeating-linear-gradient(180deg, transparent 0 36px, line-soft 36px 37px)` over `linear-gradient(180deg, #1b1424, #241a2e)`. Adds top + bottom dashed decoration spans (`repeating-linear-gradient` horizontal). Header restyled SectionHeader-pattern: Yeseva One title + gold em-dash subtitle "— Daily Quests —" + right meta count (JetBrains Mono). Mission checkbox: 5x5 → 6x6, rounded-md (vintage seal square), thicker border-2, completed state filled gold-bright + dark icon.
   - Test: DailyMissionsCard 5/5 + Home 26/26 pass — testids stable.
