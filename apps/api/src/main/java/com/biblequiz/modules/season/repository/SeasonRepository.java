@@ -17,11 +17,15 @@ public interface SeasonRepository extends JpaRepository<Season, String> {
 
     /**
      * Find the season covering {@code date1..date2} (intended use:
-     * {@code findFor(today, today)}). Uses {@code findTop...OrderByStartDateDesc}
-     * to guarantee at most one row even when multiple Seasons happen to overlap
-     * the date — e.g. legacy data from older seeder versions overlapping the
-     * new quarter grid. Tie-break by most recent {@code startDate} so freshly
-     * seeded rows win over stale legacy rows.
+     * {@code findFor(today, today)}). Uses {@code findTop...OrderByIsActiveDescStartDateDesc}
+     * to guarantee at most one row even when multiple Seasons overlap the date.
+     * Tie-break: prefer {@code is_active=true} first (canonical seeded current
+     * quarter), then most recent {@code startDate}. Protects against test/legacy
+     * data leak (e.g. a stray "Season E2E Test" row with startDate later than
+     * the canonical {@code season-YYYY-qN} would have won under pure-startDate
+     * ordering — see incident 2026-05-14).
      */
-    Optional<Season> findTopByStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(LocalDate date1, LocalDate date2);
+    Optional<Season> findTopByStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByIsActiveDescStartDateDesc(LocalDate date1, LocalDate date2);
+
+    boolean existsByStartDateLessThanEqualAndEndDateGreaterThanEqual(LocalDate date1, LocalDate date2);
 }

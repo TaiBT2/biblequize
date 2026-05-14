@@ -53,7 +53,7 @@ class SeasonServiceTest {
     @Test
     void getActiveSeason_byDate_shouldReturnSeasonCoveringToday() {
         // Date-based lookup — primary path per LB-2 / DECISIONS 2026-05-01 4B
-        when(seasonRepository.findTopByStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(any(), any()))
+        when(seasonRepository.findTopByStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByIsActiveDescStartDateDesc(any(), any()))
                 .thenReturn(Optional.of(activeSeason));
 
         Optional<Season> result = seasonService.getActiveSeason();
@@ -65,8 +65,31 @@ class SeasonServiceTest {
     }
 
     @Test
+    void getActiveSeason_overlap_repoOrderingPicksActiveOverNewerStartDate() {
+        // Documents the overlap contract: when multiple seasons cover today,
+        // repo's OrderByIsActiveDescStartDateDesc returns the is_active=true
+        // canonical row instead of a stray newer-startDate row (e.g. test
+        // data leak — see incident 2026-05-14). Service trusts repo ordering;
+        // this test asserts it asks for that exact finder.
+        Season canonical = new Season();
+        canonical.setId("season-2026-q2");
+        canonical.setName("Mùa Ngũ Tuần 2026");
+        canonical.setStartDate(LocalDate.now().minusDays(43));
+        canonical.setEndDate(LocalDate.now().plusDays(47));
+        canonical.setIsActive(true);
+        when(seasonRepository.findTopByStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByIsActiveDescStartDateDesc(any(), any()))
+                .thenReturn(Optional.of(canonical));
+
+        Optional<Season> result = seasonService.getActiveSeason();
+
+        assertTrue(result.isPresent());
+        assertEquals("season-2026-q2", result.get().getId());
+        verify(seasonRepository, never()).findByIsActiveTrue();
+    }
+
+    @Test
     void getActiveSeason_dateLookupEmpty_fallsBackToIsActiveTrue() {
-        when(seasonRepository.findTopByStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(any(), any()))
+        when(seasonRepository.findTopByStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByIsActiveDescStartDateDesc(any(), any()))
                 .thenReturn(Optional.empty());
         when(seasonRepository.findByIsActiveTrue()).thenReturn(Optional.of(activeSeason));
 
@@ -78,7 +101,7 @@ class SeasonServiceTest {
 
     @Test
     void getActiveSeason_whenNone_shouldReturnEmpty() {
-        when(seasonRepository.findTopByStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(any(), any()))
+        when(seasonRepository.findTopByStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByIsActiveDescStartDateDesc(any(), any()))
                 .thenReturn(Optional.empty());
         when(seasonRepository.findByIsActiveTrue()).thenReturn(Optional.empty());
 

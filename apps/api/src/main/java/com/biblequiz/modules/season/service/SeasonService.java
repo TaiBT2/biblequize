@@ -25,18 +25,17 @@ public class SeasonService {
 
     /**
      * Returns the season covering today's date — date-based lookup per
-     * DECISIONS.md 2026-05-01 "4B: compute on-the-fly". 4 liturgical
-     * seasons per year don't overlap WITHIN the new quarter grid, but
-     * legacy rows from older seeder versions can overlap the new grid
-     * (e.g. legacy "Mùa Phục Sinh 2026" Mar-May vs new
-     * {@code season-2026-q2} Apr-Jun). Repo uses
-     * {@code findTop...OrderByStartDateDesc} so newer-startDate rows win.
-     * Falls back to {@code findByIsActiveTrue()} if no row covers today.
+     * DECISIONS.md 2026-05-01 "4B: compute on-the-fly". When multiple rows
+     * overlap today (legacy or test-leak data), repo orders by
+     * {@code is_active DESC, start_date DESC} so the canonical seeded current
+     * quarter (which {@code SeasonSeeder} flags {@code is_active=true}) wins
+     * over stray rows. Falls back to {@code findByIsActiveTrue()} if no row
+     * covers today.
      */
     public Optional<Season> getActiveSeason() {
         LocalDate today = LocalDate.now(ZoneOffset.UTC);
         Optional<Season> byDate = seasonRepository
-                .findTopByStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByStartDateDesc(today, today);
+                .findTopByStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByIsActiveDescStartDateDesc(today, today);
         if (byDate.isPresent()) {
             return byDate;
         }

@@ -22,6 +22,7 @@
   - Old DB rows (1 random-UUID Mùa Phục Sinh 2026 từ seeder cũ) thành "rác" — không xóa để tránh data loss. SeasonSeeder mới idempotent qua ID nên chạy lại an toàn.
   - Daily tab variants nếu cần restore sau → endpoint BE còn nguyên, FE chỉ thiếu UI tab.
 - KHÔNG thay đổi khi refactor trừ khi có lý do mới
+- **Update 2026-05-14**: tiebreak khi nhiều seasons cover today đổi từ `OrderByStartDateDesc` → `OrderByIsActiveDescStartDateDesc`. Lý do: incident prod 2026-05-14 — test data leak ("Season E2E Test" startDate=2026-05-01) có startDate mới hơn canonical `season-2026-q2` (startDate=2026-04-01) nên thắng tiebreak cũ → UI hiển thị tên test season. Tiebreak mới ưu tiên `is_active=true` (canonical seeded current quarter) trước, vẫn giữ date-range làm primary filter (4B nguyên vẹn). `AdminSeasonController.createSeason()` cũng add overlap check để chặn ở tầng write — xem `docs/todo/active/2026-05-14-season-overlap-defensive-read-write-guard.md`.
 
 ---
 
