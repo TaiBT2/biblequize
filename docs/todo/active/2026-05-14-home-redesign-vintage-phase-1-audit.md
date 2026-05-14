@@ -6,6 +6,13 @@
 
 ### Phase 2 progress
 
+- **HRV-15** Final integration + BL-19 BACKLOG entry — `[x]` DONE 2026-05-14
+  - Files: `docs/spec/BACKLOG.md` (add BL-19 Home vintage redesign tracking entry — links audit + supersede context + 3 outstanding deferred items), task file marked Phase 2 IMPLEMENTATION COMPLETE.
+  - Final Tier-3: vitest 1297 total (was 1292 pre-Phase 2), **1172 pass (was 1167) — Phase 2 added 5 NEW tests all passing, 0 new failures introduced**. Pre-existing 125 failures unchanged (ErrorContext/ErrorToast/BasicQuizCard/SdArenaHeader baseline drift, not caused by HRV-7..HRV-14).
+  - Spec audit: 67 broken refs / 325 orphans / 212 undocumented — all pre-existing (Phase 2 introduces zero new spec references in source files; only audit report MD + task MD reference local paths).
+  - i18n: 8 new keys added (home.modeCorner × 4 in vi + en); pre-existing 1014/16 hardcoded count unchanged (Phase 2 touched components reused existing t() calls or carried over pre-existing hardcoded VN strings — flagged for separate cleanup sprint per BL-19 outstanding).
+  - Strategy: `(b) BL-19 NEW BACKLOG entry`. Spec impact: SPEC_USER §Home (visual redesign documented inline via BACKLOG link).
+
 - **HRV-14** BibleJourneyCard vintage palette + state-differentiated chips — `[x]` DONE 2026-05-14
   - Files: `apps/web/src/components/BibleJourneyCard.tsx` (~30 LOC). Decision: **restyle in place** (no fork to BibleJourneyVintagePath). Existing horizontal-scroll chip layout matches vintage "stations" concept enough; full SVG curving-path background + 72px seal disks deferred (would be ~120 LOC fork — defer to future Phase if user requests).
   - Card root: `bg-bg-deep` + `border-line` + `shadow-chunky-soft` (vintage `.journey`). Gold radial glow moved bottom-left (matches vintage `radial-gradient(ellipse 600px 200px at 20% 100%)`). Title h3 → `font-display` 20→24px. Meta count → `font-numeric` (JetBrains Mono) with `gold-bright` for total.

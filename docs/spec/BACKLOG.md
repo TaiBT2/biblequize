@@ -250,6 +250,23 @@
 - **Status:** ⬜ DEFER Sprint 6
 - **Cause:** GD-1 / 2026-05-10 (placeholder shipped, real feed deferred)
 
+### BL-19 — Home page vintage gamified redesign (2026-05-14 sprint)
+- **Source design:** `docs/designs/biblequiz/` (Home.html + styles.css + screenshots) — illuminated-manuscript meets mobile-game chunkiness.
+- **Audit:** `apps/web/src/pages/__tests__/HOME_REDESIGN_VINTAGE_AUDIT.md` (2026-05-14).
+- **Task tracker:** `docs/todo/active/2026-05-14-home-redesign-vintage-phase-1-audit.md` (Phase 1 audit + Phase 2 HRV-7..HRV-15 sub-tasks all DONE).
+- **Status:** ✅ DONE 2026-05-14 — supersedes prior `2026-05-13-home-redesign-modern-spiritual` + `2026-05-05-home-redesign-theo-mockup-home-redesign-mockup-html` (both moved to `docs/todo/archive/`).
+- **Touched components (Home only):** HomeBanner, FeaturedDailyCard, DailyCompletedStrip, HeroRankedCard, RankedStandardCard, SectionHeader, CompactCard (variant prop), VerseFooter drop cap (`global.css`), DailyMissionsCard, BibleJourneyCard. Infra-only: `index.html` (add Yeseva One + JetBrains Mono), `tailwind.config.js` (+9 vintage colors, +2 fontFamily, +3 boxShadow utilities). Sidebar (`AppLayout`) OUT OF SCOPE — separate task if needed.
+- **Constraints enforced:** C1 (6-tier VN preserved via existing `data/tiers.ts` + i18n; XP milestone rail bumped 5 → 6 dots), C2 ("Đấu Hạng" lock — `home.heroRanked.label` vi/en strings fixed to remove "đấu trường"), C4 (BTTHĐ 2011 cite preserved in VerseFooter), C5 (answer colors untouched — Home doesn't render quiz answers).
+- **Backward-compat notes:**
+  - `mono: Orbitron` PRESERVED untouched (used by ~15 admin dashboard + room/group modal files). New `font-numeric` (JetBrains Mono) is a separate utility for Home HUD only.
+  - `font-verse: Cormorant Garamond` PRESERVED — body verse text still renders Cormorant italic; only VerseFooter drop cap swapped to Yeseva One.
+  - `CompactCard variant='modern'` default preserves GameModeGrid/Groups page visuals.
+- **Outstanding (deferred — open follow-ups, not blockers):**
+  - Full vintage 66-book journey path (SVG curving path + 72px seal disks with pulse animation per HRV-14 audit) — current restyle uses existing horizontal-scroll chip layout for tractability.
+  - HUD stat-pill extraction (vintage Home.html splits HUD pills above Hero greeting) — current HomeBanner keeps stats inline; restructure deferred to preserve testid contracts.
+  - i18n hardcoded VN strings inside `FeaturedDailyCard` / `RankedStandardCard` ("Cạnh tranh ranking", "Đã mở khóa", etc.) — pre-existing debt, not introduced by this redesign.
+- **Ref:** Task file Phase 1 audit + HRV-7..HRV-15 sprint commits on branch `feat/home-redesign-vintage`.
+
 ### BL-18 — Cell Group Pulse heuristic (Sprint 6, leader-only)
 - **Spec:** [SPEC_GROUP_v1.3.md §13 (NEW in v1.4 changelog)](SPEC_GROUP_v1.3.md)
 - **Code:** `apps/web/src/components/group/CellGroupPulseCard.tsx` is the placeholder shipped GD-9; wire backend.
