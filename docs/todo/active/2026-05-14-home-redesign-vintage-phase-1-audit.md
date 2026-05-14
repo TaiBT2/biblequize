@@ -6,6 +6,12 @@
 
 ### Phase 2 progress
 
+- **HRV-22** HomeSkeleton + MotivationCard vintage palette — `[x]` DONE 2026-05-14
+  - Files: `apps/web/src/pages/Home.tsx` (HomeSkeleton ~12 LOC: rgba brown → bg-deep + line-soft border + chunky-soft shadow per vintage feel; added testid `home-skeleton` + small 40px row for HUD skeleton). `apps/web/src/components/MotivationCard.tsx` (~25 LOC: blue palette → plum palette per vintage plum/purple accent family; gradient ico-box `linear-gradient(180deg, #8c5bb5, #5b3681)` with inset bottom black; title→font-display; step pill→font-numeric uppercase tracked; radial plum glow top-left).
+  - MotivationCard now reads as the "plum mentor card" matching vintage `--plum` accent — distinct from gold/ruby/emerald used elsewhere so onboarding nudge stands out without competing with main CTAs.
+  - Test: MotivationCard 6/6 + Home 26/26 = 32/32 pass.
+  - Strategy: `(c) [no-spec-impact]`.
+
 - **HRV-21** Vintage journey path — 72px seal-disk stations + SVG curving path — `[x]` DONE 2026-05-14
   - Files: `apps/web/src/components/BibleJourneyCard.tsx` (~80 LOC: BookChip → BookStation refactor + SVG path overlay + overflow station styled to match).
   - Replaced rectangular 148px-wide chips with vintage `.station` style: 72px circular seal disk on top, JetBrains Mono testament+order label, Yeseva One book name (15px), status text below. State-differentiated seal: current = gold radial gradient + animate-journey-pulse halo, done = emerald gradient + check icon, locked = dim with lock icon, default = dim with order number. SVG dashed curving path (`M 40 40 Q 140 0, 240 40 T ...`) drawn behind the stations row at top:40px with `preserveAspectRatio="none"` so it scales with container width.

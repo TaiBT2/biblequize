@@ -37,16 +37,18 @@ function formatHHMMSS(ms: number): string {
   return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
 }
 
-/* ── Skeleton ── */
+/* ── Skeleton (HRV-22: vintage palette — bg-deep + line border + chunky-soft) ── */
 function HomeSkeleton() {
+  const block = 'rounded-2xl bg-bg-deep border border-line-soft shadow-chunky-soft'
   return (
-    <div className="space-y-5 animate-pulse">
-      <div className="h-[160px] rounded-[22px] bg-[rgba(40,32,28,0.4)]" />
-      <div className="h-[140px] rounded-2xl bg-[rgba(40,32,28,0.4)]" />
-      <div className="h-[180px] rounded-2xl bg-[rgba(40,32,28,0.3)]" />
+    <div data-testid="home-skeleton" className="space-y-5 animate-pulse">
+      <div className={`h-[40px] ${block}`} />
+      <div className={`h-[180px] rounded-[22px] bg-bg-deep border border-line shadow-chunky-soft`} />
+      <div className={`h-[140px] ${block}`} />
+      <div className={`h-[180px] ${block}`} />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-        <div className="h-[140px] rounded-2xl bg-[rgba(40,32,28,0.3)]" />
-        <div className="h-[140px] rounded-2xl bg-[rgba(40,32,28,0.3)]" />
+        <div className={`h-[140px] ${block}`} />
+        <div className={`h-[140px] ${block}`} />
       </div>
     </div>
   )
