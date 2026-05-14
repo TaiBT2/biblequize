@@ -6,6 +6,11 @@
 
 ### Phase 2 progress
 
+- **HRV-11** FeaturedDailyCard chunky gold + DailyCompletedStrip emerald palette — `[x]` DONE 2026-05-14
+  - Files: `apps/web/src/components/FeaturedDailyCard.tsx` (~6 LOC: bg-deep + line border + chunky-soft shadow + vintage gold-bright radial; h2 → font-display 22/28px; CTA → chunky-gold shadow + uppercase tracked + relabel "Bắt đầu hôm nay" matching vintage Home.html; press-down on active:translate-y-1). `apps/web/src/components/DailyCompletedStrip.tsx` (~3 LOC: border emerald-deep/40 + chunky-soft shadow + emerald-tinted gradient bg). DailyCompletedStrip stays minimal — strip layout already close to vintage feel.
+  - Test: FeaturedDailyCard 7/7 + DailyCompletedStrip 6/6 + Home 26/26 pass.
+  - Strategy: `(c) [no-spec-impact]`.
+
 - **HRV-10** HomeBanner vintage palette + 6-tier milestone rail — `[x]` DONE 2026-05-14
   - Files: `apps/web/src/components/HomeBanner.tsx` (~12 LOC: bg-deep + line border + chunky-soft shadow + gold radial glow stronger; name → font-display 26/40px; milestone dots 5 → 6; stat numbers → font-numeric JetBrains Mono), `apps/web/src/components/__tests__/HomeBanner.test.tsx` (update name assertion font-display + tracking-[-0.02em]; add 6-milestone test + font-numeric test, baseline 6 → 8).
   - Scope intentionally minimal — palette + typography + dot count. HUD stat-pill EXTRACTION (separate from Hero greeting per vintage Home.html) is deferred to HRV-15 final integration if needed; current structure keeps all 3 stats inside HomeBanner, preserving testid contracts.

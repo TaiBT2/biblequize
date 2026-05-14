@@ -58,10 +58,10 @@ export default function FeaturedDailyCard({
   return (
     <div
       data-testid="featured-daily-card"
-      className="relative overflow-hidden rounded-2xl border border-[rgba(232,168,50,0.18)] border-l-[3px] border-l-secondary p-5 md:p-6 mb-5 backdrop-blur-[14px] transition-all duration-200 hover:border-[rgba(232,168,50,0.35)] hover:-translate-y-px hover:shadow-[0_10px_30px_-8px_rgba(232,168,50,0.18)]"
+      className="relative overflow-hidden rounded-2xl border border-line bg-bg-deep shadow-chunky-soft p-5 md:p-6 mb-5 transition-transform hover:-translate-y-0.5"
       style={{
-        background:
-          'radial-gradient(ellipse 350px 200px at 90% 0%, rgba(124,45,58,0.15), transparent 60%), radial-gradient(ellipse 300px 150px at 20% 100%, rgba(232,168,50,0.08), transparent 60%), rgba(28,22,18,0.7)',
+        backgroundImage:
+          'radial-gradient(ellipse 360px 220px at 90% 0%, rgba(244,209,120,0.16), transparent 60%), radial-gradient(ellipse 320px 180px at 15% 100%, rgba(232,168,50,0.10), transparent 60%)',
       }}
     >
       {/* Decorative ornament (top-right) */}
@@ -94,7 +94,7 @@ export default function FeaturedDailyCard({
             Thử thách hôm nay · Mới sẵn sàng
           </div>
 
-          <h2 className="text-[20px] md:text-[24px] font-extrabold text-ivory leading-[1.2] tracking-[-0.025em] mb-1">
+          <h2 className="font-display text-[22px] md:text-[28px] text-ivory leading-[1.15] tracking-[-0.015em] mb-1.5">
             Bắt đầu ngày mới với Lời Chúa
           </h2>
 
@@ -184,15 +184,13 @@ export default function FeaturedDailyCard({
             data-testid="featured-daily-card-cta"
             type="button"
             onClick={onStart}
-            className="inline-flex items-center justify-center gap-2 px-4 md:px-5 py-2.5 md:py-3 rounded-[11px] font-bold text-[14px] text-[#1a1208] tracking-[0.01em] transition-transform duration-200 hover:translate-x-[3px]"
+            className="inline-flex items-center justify-center gap-2 px-5 md:px-6 py-3 md:py-3.5 rounded-[14px] font-extrabold uppercase text-[13px] md:text-[14px] text-[#1a1208] tracking-[0.04em] shadow-chunky-gold transition-transform duration-100 hover:-translate-y-0.5 active:translate-y-1 active:shadow-none"
             style={{
-              background: 'linear-gradient(135deg, #e8a832, #c98a1c)',
-              boxShadow:
-                '0 4px 14px rgba(232,168,50,0.30), inset 0 1px 0 rgba(255,220,140,0.4)',
+              background: 'linear-gradient(180deg, #f4d178, #e8a832)',
             }}
           >
-            Vào chơi ngay
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            Bắt đầu hôm nay
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M13 5l7 7-7 7" />
             </svg>
           </button>

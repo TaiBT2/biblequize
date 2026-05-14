@@ -36,10 +36,10 @@ export default function DailyCompletedStrip({
   return (
     <div
       data-testid="daily-completed-strip"
-      className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5 rounded-[14px] mb-5"
+      className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5 rounded-[14px] mb-5 border border-emerald-deep/40 shadow-chunky-soft"
       style={{
-        background: 'rgba(74,107,82,0.10)',
-        border: '1px solid rgba(74,107,82,0.25)',
+        background:
+          'linear-gradient(135deg, rgba(79,168,118,0.10), rgba(47,110,77,0.06))',
       }}
     >
       <div
