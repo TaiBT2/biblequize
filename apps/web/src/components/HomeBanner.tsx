@@ -114,7 +114,12 @@ export default function HomeBanner() {
           >
             <span className="block truncate">{userName},</span>
             <span className="block">
-              <span className="text-gold-bright">{t('home.hero.greetingAccent')}</span>{' '}
+              <span
+                className="text-gold-bright"
+                style={{ textShadow: '0 0 24px rgba(244,209,120,0.28)' }}
+              >
+                {t('home.hero.greetingAccent')}
+              </span>{' '}
               <span>{t('home.hero.greetingSuffix')}</span>
             </span>
           </h1>

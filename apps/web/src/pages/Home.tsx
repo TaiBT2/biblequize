@@ -368,10 +368,14 @@ export default function Home() {
       )}
 
       {/* ── Thi đấu cộng đồng (both states) ── */}
+      {/* HRV-24: community grid 1:1.4:1 per vintage Home.html
+          `.community { grid-template-columns: 1fr 1.4fr 1fr }`. The
+          middle slot (Phòng chơi / Multiplayer) is implicitly featured
+          via wider column allocation. */}
       <SectionHeader title={t('home.group.title')} />
       <div
         data-testid="home-group-grid"
-        className="grid grid-cols-1 sm:grid-cols-3 gap-3.5"
+        className="grid grid-cols-1 sm:grid-cols-[1fr_1.4fr_1fr] gap-3.5"
       >
         {GROUP_CARDS.map(renderModeCard)}
       </div>

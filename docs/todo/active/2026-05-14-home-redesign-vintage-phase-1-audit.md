@@ -6,6 +6,11 @@
 
 ### Phase 2 progress
 
+- **HRV-24** Community grid 1:1.4:1 + accent text-shadow glow — `[x]` DONE 2026-05-14
+  - Files: `apps/web/src/pages/Home.tsx` (1 LOC: group grid `sm:grid-cols-3` → `sm:grid-cols-[1fr_1.4fr_1fr]` matching vintage `.community { grid-template-columns: 1fr 1.4fr 1fr }`. Middle slot "Phòng chơi / Multiplayer" now implicitly featured with wider column without needing a separate variant component or BE-driven avatar pile). `apps/web/src/components/HomeBanner.tsx` (1 LOC: `text-shadow: 0 0 24px rgba(244,209,120,0.28)` on the gold-bright accent span in the poetic h1 — illuminated-manuscript glow effect on "cuộc hành trình" / "your journey").
+  - Tests: HomeBanner 9/9 + Home 26/26 pass.
+  - Strategy: `(c) [no-spec-impact]` — micro visual polish.
+
 - **HRV-23** Page fade-in entrance + prefers-reduced-motion accessibility guard — `[x]` DONE 2026-05-14
   - Files: `apps/web/src/pages/Home.tsx` (+1 LOC: `animate-fade-in` on the page root for a single subtle 0.5s opacity entrance). `apps/web/src/styles/global.css` (+10 LOC: `@media (prefers-reduced-motion: reduce)` guard that disables `animate-breathe` + `animate-journey-pulse` for users who request reduced motion at the OS level).
   - Single page-level fade keeps the entrance gentle without per-section cascade staging that would draw attention to load order. Reduced-motion users get a fully static experience for the custom Home animations.
