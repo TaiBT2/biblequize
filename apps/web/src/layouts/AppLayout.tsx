@@ -2,8 +2,6 @@ import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
 import { useTranslation } from 'react-i18next'
 import OfflineBanner from '../components/OfflineBanner'
-import StreakWidget from '../components/StreakWidget'
-import DailyMissionWidget from '../components/DailyMissionWidget'
 import GroupQuickInfoSidebar from '../components/group/GroupQuickInfoSidebar'
 import SeasonGoalWidget from '../components/SeasonGoalWidget'
 import WinRateWidget from '../components/WinRateWidget'
@@ -77,48 +75,48 @@ export default function AppLayout() {
               </Link>
             ))}
 
-            {/* Sidebar engagement widgets — route-aware (R1 of Ranked
-                redesign): /ranked surfaces season-specific widgets
-                (goal / win rate / combo) instead of the generic
-                Streak + Daily Mission pair, since Ranked dashboard
-                already shows Streak as a primary card and the
-                generic widgets duplicated that info (RK-P0-1). All
-                other routes keep the original pair. */}
-            {user && (
-              <div
-                data-testid="sidebar-widgets"
-                className="pt-5 mt-3 border-t border-white/5 space-y-2.5"
-              >
-                {location.pathname.startsWith('/ranked') ? (
+            {/* Sidebar engagement widgets — route-aware. The previous
+                Streak + Daily Mission pair on Home/default was removed
+                2026-05-14 (per Bui): both duplicated the HomeBanner
+                streak stat and DailyMissionsCard main section. Modern
+                apps (Slack/Discord/Notion) keep the sidebar minimal —
+                only the user card pinned at the foot. Route-aware
+                widgets stay because each surfaces page-specific data
+                that isn't repeated in the main column. */}
+            {user && (() => {
+              let widgets: React.ReactNode = null
+              if (location.pathname.startsWith('/ranked')) {
+                widgets = (
                   <>
                     <SeasonGoalWidget />
                     <WinRateWidget />
                     <WeekComboWidget />
                   </>
-                ) : location.pathname.startsWith('/leaderboard') ? (
+                )
+              } else if (location.pathname.startsWith('/leaderboard')) {
+                widgets = (
                   <>
                     <LeaderboardRankWidget />
                     <LeaderboardSeasonWidget />
                   </>
-                ) : location.pathname.startsWith('/groups/') ? (
-                  // GD-5: in group context, replace personal Streak + Daily
-                  // Mission with a Group Quick Info card per
-                  // MOCKUP_GROUP_DETAIL_REDESIGN.html — surfaces active rooms
-                  // and total members. Route param parsed from pathname:
-                  // /groups/<id> or /groups/<id>/<sub-route>.
-                  (() => {
-                    const match = location.pathname.match(/^\/groups\/([^/]+)/);
-                    const groupId = match ? match[1] : null;
-                    return groupId ? <GroupQuickInfoSidebar groupId={groupId} /> : null;
-                  })()
-                ) : (
-                  <>
-                    <StreakWidget />
-                    <DailyMissionWidget />
-                  </>
-                )}
-              </div>
-            )}
+                )
+              } else if (location.pathname.startsWith('/groups/')) {
+                const match = location.pathname.match(/^\/groups\/([^/]+)/)
+                const groupId = match ? match[1] : null
+                if (groupId) {
+                  widgets = <GroupQuickInfoSidebar groupId={groupId} />
+                }
+              }
+              if (!widgets) return null
+              return (
+                <div
+                  data-testid="sidebar-widgets"
+                  className="pt-5 mt-3 border-t border-white/5 space-y-2.5"
+                >
+                  {widgets}
+                </div>
+              )
+            })()}
           </nav>
 
           {/* Admin panel link — admin / content_mod only. */}

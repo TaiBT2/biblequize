@@ -318,12 +318,13 @@ describe('AppLayout — Sidebar widgets (C3)', () => {
     }
   })
 
-  it('logged-in user → sidebar-widgets block visible', () => {
+  it('Home/default route → sidebar-widgets block does NOT render (modern minimal sidebar)', () => {
+    // 2026-05-14: Streak + DailyMission widgets removed from default
+    // sidebar — both duplicated HomeBanner + DailyMissionsCard.
     renderAppLayout()
-    expect(screen.getByTestId('sidebar-widgets')).toBeInTheDocument()
-    expect(screen.getByTestId('streak-widget')).toBeInTheDocument()
-    // DailyMissionWidget is in skeleton state by default mock
-    expect(screen.getByTestId('daily-mission-widget-skeleton')).toBeInTheDocument()
+    expect(screen.queryByTestId('sidebar-widgets')).toBeNull()
+    expect(screen.queryByTestId('streak-widget')).toBeNull()
+    expect(screen.queryByTestId('daily-mission-widget')).toBeNull()
   })
 
   it('logged-out user (user=null) → sidebar-widgets block does NOT render', () => {
@@ -332,29 +333,6 @@ describe('AppLayout — Sidebar widgets (C3)', () => {
     expect(screen.queryByTestId('sidebar-widgets')).toBeNull()
     expect(screen.queryByTestId('streak-widget')).toBeNull()
     expect(screen.queryByTestId('daily-mission-widget')).toBeNull()
-    expect(screen.queryByTestId('daily-mission-widget-skeleton')).toBeNull()
-  })
-
-  it('mission data loaded → DailyMissionWidget renders (not skeleton)', () => {
-    mockUseQuery.mockReturnValue({
-      data: {
-        date: '2026-04-30',
-        missions: [
-          { slot: 1, type: 'x', description: 'a', progress: 5, target: 5, completed: true },
-          { slot: 2, type: 'y', description: 'b', progress: 2, target: 5, completed: false },
-          { slot: 3, type: 'z', description: 'c', progress: 0, target: 5, completed: false },
-        ],
-        allCompleted: false,
-        bonusClaimed: false,
-        bonusXp: 100,
-      },
-      isLoading: false,
-      isError: false,
-    })
-    renderAppLayout()
-    expect(screen.getByTestId('daily-mission-widget')).toBeInTheDocument()
-    expect(screen.getByTestId('daily-mission-widget-progress')).toHaveTextContent('1/3')
-    // Skeleton no longer in tree once data loaded
     expect(screen.queryByTestId('daily-mission-widget-skeleton')).toBeNull()
   })
 
