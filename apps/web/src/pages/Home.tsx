@@ -298,13 +298,14 @@ export default function Home() {
         </div>
       )}
 
-      {/* ── Daily Missions — hidden for new users (gating preserved
-            from prior HR-6 behavior). */}
-      {!isNewUser && (
-        <section data-testid="home-daily-missions" className="mb-5">
-          <DailyMissionsCard />
-        </section>
-      )}
+      {/* ── Daily Missions — render for all users (Bui 2026-05-14:
+            removed prior `!isNewUser` gate; Daily Missions is the
+            primary "today's task" surface and shouldn't disappear for
+            new users). MotivationCard above still gates on isNewUser
+            so the two coexist for brand-new users. */}
+      <section data-testid="home-daily-missions" className="mb-5">
+        <DailyMissionsCard />
+      </section>
 
       {/* ── State A: Chế độ chơi chính (Practice + Ranked-standard 2-col) ── */}
       {!dailyDone && (

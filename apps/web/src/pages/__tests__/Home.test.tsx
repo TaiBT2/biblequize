@@ -32,6 +32,12 @@ vi.mock('../../components/DailyCompletedStrip', () => ({
   default: () => <div data-testid="daily-completed-strip">DailyCompletedStrip</div>,
 }))
 
+// DailyMissionsCard is rendered for all users (Bui 2026-05-14 — gate
+// removed). Mock to keep these specs focused on Home layout.
+vi.mock('../../components/DailyMissionsCard', () => ({
+  default: () => <div data-testid="daily-missions-card-mock">DailyMissionsCard</div>,
+}))
+
 const mockApiGet = vi.fn()
 vi.mock('../../api/client', () => ({
   api: { get: (...args: any[]) => mockApiGet(...args) },
@@ -303,13 +309,16 @@ describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
       })
     })
 
-    it('hides DailyMissionsCard for new user (totalPoints<1000)', async () => {
+    it('shows DailyMissionsCard for new user too (gate removed 2026-05-14)', async () => {
       setupApi({ totalPoints: 200 })
       renderHome()
       await waitFor(() => {
         expect(screen.getByTestId('motivation-card')).toBeInTheDocument()
       })
-      expect(screen.queryByTestId('home-daily-missions')).not.toBeInTheDocument()
+      // DailyMissionsCard now ALWAYS renders — coexists with MotivationCard
+      // for brand-new users so they see today's tasks alongside the
+      // onboarding nudge.
+      expect(screen.getByTestId('home-daily-missions')).toBeInTheDocument()
     })
 
     it('shows DailyMissionsCard for active user (totalPoints≥1000)', async () => {

@@ -339,14 +339,18 @@ body::after {
 
 /* HR-8 verse footer drop cap — pseudo-element required for first-letter
    targeting; cannot be expressed inline. Cormorant Garamond is the only
-   serif allowed in Home (verse-only constraint). */
+   serif allowed in Home (verse-only constraint). !important on font-size
+   to win over Tailwind utility classes on the parent <p>. Per Bui
+   review 2026-05-14: keep text-align:center (Option A) — the floated
+   initial reads as a decorative drop cap without forcing left-align. */
 .hr-verse-text::first-letter {
-  font-family: 'Cormorant Garamond', 'Crimson Pro', 'Playfair Display', serif;
-  font-size: 3.4em;
+  font-family: 'Cormorant Garamond', 'Crimson Pro', 'Playfair Display', serif !important;
+  font-size: 3.6em !important;
+  font-style: italic;
   font-weight: 700;
   float: left;
   line-height: 0.85;
-  padding: 4px 8px 0 0;
+  padding: 6px 10px 0 0;
   color: #e8a832;
   text-shadow: 0 2px 12px rgba(232,168,50,0.25);
 }

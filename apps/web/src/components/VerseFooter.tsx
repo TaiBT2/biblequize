@@ -23,37 +23,45 @@ export default function VerseFooter({ verse, source = 'BTTHĐ 2011' }: VerseFoot
       data-testid="verse-footer"
       className="relative mt-8 pt-7"
     >
-      {/* Ornament: line · star · line */}
+      {/* Ornament: line · star · line. flex-1 spans expand to fill
+          remaining space (capped at 200px each on wide screens) so the
+          two gold-gradient lines flank the star symmetrically. h-[2px]
+          + 0.6 alpha keeps the lines readable without competing with
+          the verse below. Per Bui review 2026-05-14: bumped from h-px
+          / 0.4 alpha which were too faint to register. */}
       <div
         aria-hidden
         data-testid="verse-footer-ornament"
-        className="flex items-center justify-center gap-3 mb-4"
+        className="flex items-center justify-center gap-3 mb-5"
       >
         <span
-          className="flex-1 max-w-[160px] h-px"
+          data-testid="verse-footer-ornament-line"
+          className="block flex-1 max-w-[200px] h-[2px]"
           style={{
             background:
-              'linear-gradient(90deg, transparent, rgba(232,168,50,0.4), transparent)',
+              'linear-gradient(90deg, transparent, rgba(232,168,50,0.6), transparent)',
           }}
         />
         <svg
-          width="16"
-          height="16"
+          width="18"
+          height="18"
           viewBox="0 0 24 24"
           fill="none"
           stroke="#e8a832"
-          strokeWidth="1.5"
+          strokeWidth="1.6"
           strokeLinecap="round"
           strokeLinejoin="round"
-          opacity={0.7}
+          opacity={0.85}
+          className="shrink-0"
         >
           <path d="M12 2l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" />
         </svg>
         <span
-          className="flex-1 max-w-[160px] h-px"
+          data-testid="verse-footer-ornament-line"
+          className="block flex-1 max-w-[200px] h-[2px]"
           style={{
             background:
-              'linear-gradient(90deg, transparent, rgba(232,168,50,0.4), transparent)',
+              'linear-gradient(90deg, transparent, rgba(232,168,50,0.6), transparent)',
           }}
         />
       </div>
