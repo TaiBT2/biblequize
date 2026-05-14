@@ -41,13 +41,44 @@ export default function DailyMissionsCard() {
   const completedCount = missions.filter(m => m.completed).length
 
   return (
-    <div className="rounded-2xl bg-[rgba(50,52,64,0.4)] border border-secondary/15 p-4 md:p-4">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-3">
-        <h3 className="text-on-surface text-[12px] md:text-[13px] font-medium">
+    <div
+      data-testid="daily-missions-card"
+      className="relative overflow-hidden rounded-2xl border border-line shadow-chunky-soft px-4 py-5 md:px-7 md:py-6"
+      style={{
+        backgroundImage:
+          'repeating-linear-gradient(180deg, transparent 0 36px, rgba(34,26,44,0.5) 36px 37px), linear-gradient(180deg, #1b1424, #241a2e)',
+      }}
+    >
+      {/* HRV-13 scroll-paper top/bottom dashed decoration (vintage
+          .missions::before/after equivalents) — pure decoration, hidden
+          from screen readers. */}
+      <span
+        aria-hidden
+        className="absolute left-2 right-2 top-2 h-[5px] pointer-events-none"
+        style={{
+          background:
+            'repeating-linear-gradient(90deg, #2e2238 0 8px, transparent 8px 14px)',
+        }}
+      />
+      <span
+        aria-hidden
+        className="absolute left-2 right-2 bottom-2 h-[5px] pointer-events-none"
+        style={{
+          background:
+            'repeating-linear-gradient(90deg, #2e2238 0 8px, transparent 8px 14px)',
+        }}
+      />
+
+      {/* Header — vintage SectionHeader-style: Yeseva One title + gold
+          em-dash subtitle + right meta count */}
+      <div className="flex items-baseline flex-wrap gap-x-3 gap-y-1 mb-4">
+        <h3 className="font-display text-[18px] md:text-[22px] text-ivory leading-none">
           {t('home.dailyMissionsHeader')}
         </h3>
-        <span className="text-on-surface-variant/40 text-[10px] md:text-[11px]">
+        <span className="text-[10px] font-semibold tracking-[0.24em] uppercase text-secondary">
+          — Daily Quests —
+        </span>
+        <span className="ml-auto font-numeric text-[11px] text-ivory-faint">
           {t('home.dailyMissionsCount', { completed: completedCount, total: missions.length })}
         </span>
       </div>
@@ -62,12 +93,13 @@ export default function DailyMissionsCard() {
               data-testid="mission-item"
               className="flex items-center gap-2 md:gap-2.5"
             >
-              {/* Outline circle — filled gold when completed */}
+              {/* Outline circle — filled gold when completed (HRV-13:
+                  thicker border + line-soft default for vintage feel) */}
               <div
-                className={`w-4 h-4 md:w-[18px] md:h-[18px] rounded-full flex-shrink-0 flex items-center justify-center ${
+                className={`w-5 h-5 md:w-6 md:h-6 rounded-md flex-shrink-0 flex items-center justify-center ${
                   m.completed
-                    ? 'bg-secondary text-[#11131e]'
-                    : 'border-[1.5px] border-white/25'
+                    ? 'bg-gold-bright text-[#1a1019] border-2 border-secondary'
+                    : 'border-2 border-line bg-[rgba(17,12,24,0.6)]'
                 }`}
               >
                 {m.completed && (

@@ -6,6 +6,11 @@
 
 ### Phase 2 progress
 
+- **HRV-13** DailyMissionsCard vintage scroll-paper — `[x]` DONE 2026-05-14
+  - Files: `apps/web/src/components/DailyMissionsCard.tsx` (~40 LOC). Replaces flat surface bg with vintage ruled-paper: `repeating-linear-gradient(180deg, transparent 0 36px, line-soft 36px 37px)` over `linear-gradient(180deg, #1b1424, #241a2e)`. Adds top + bottom dashed decoration spans (`repeating-linear-gradient` horizontal). Header restyled SectionHeader-pattern: Yeseva One title + gold em-dash subtitle "— Daily Quests —" + right meta count (JetBrains Mono). Mission checkbox: 5x5 → 6x6, rounded-md (vintage seal square), thicker border-2, completed state filled gold-bright + dark icon.
+  - Test: DailyMissionsCard 5/5 + Home 26/26 pass — testids stable.
+  - Strategy: `(c) [no-spec-impact]`.
+
 - **HRV-12** HeroRankedCard + RankedStandardCard ruby chunky + C2 lock fix — `[x]` DONE 2026-05-14
   - **C2 enforcement**: `home.heroRanked.label` vi.json "Tiếp theo · **Bước vào đấu trường**" → "Tiếp theo · **Đấu Hạng**". en.json "Up next · Enter the arena" → "Up next · Đấu Hạng (Ranked)". Title h2 already used `t('gameModes.ranked')` = "Đấu Hạng" ✓.
   - HeroRankedCard.tsx: card root = `bg-bg-deep` + `border-line` + `shadow-chunky-soft` (replaces V2 glass `rgba(50,52,64,0.5)`). Radial glow ruby `rgba(199,62,62,0.30)` (replaces V2 gold). Title h2 → `font-display` 30→44px (replaces sans extrabold). CTA → `shadow-chunky-ruby` + ruby gradient `#e55757→#c73e3e` + uppercase tracked + active push-down.
