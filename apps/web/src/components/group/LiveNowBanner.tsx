@@ -20,7 +20,7 @@ const MODE_LABELS: Record<string, string> = {
   SPEED_RACE: '⚡ Speed Race',
   TEAM_VS_TEAM: '⚔️ Team vs Team',
   BATTLE_ROYALE: '💀 Battle Royale',
-  SUDDEN_DEATH: '🥊 Sudden Death',
+  SUDDEN_DEATH: '👑 Đấu vương',
   SEQUENTIAL: '📚 Sequential',
 };
 

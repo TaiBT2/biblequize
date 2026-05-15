@@ -22,7 +22,7 @@ const SLIDES = [
     icon: '👥',
     step: '02 / 03',
     title: 'Thi đấu cùng nhau',
-    description: '4 chế độ chơi nhóm: Speed Race, Battle Royale, Team vs Team, Sudden Death.',
+    description: '4 chế độ chơi nhóm: Đua Tốc Độ, Sinh Tồn, Đội Đấu Đội, Đấu Vương.',
     features: ['Real-time PvP', 'Nhóm Hội Thánh', 'Giải đấu Tournament'],
   },
   {

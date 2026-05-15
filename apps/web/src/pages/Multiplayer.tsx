@@ -38,7 +38,7 @@ const MODE_CONFIG: Record<RoomMode, { label: string; icon: string; color: string
   SPEED_RACE:   { label: 'Speed Race',   icon: '⚡', color: '#e8a832', border: 'rgba(232,168,50,0.35)',  bg: 'rgba(232,168,50,0.12)',  btnBg: 'rgba(232,168,50,0.15)', btnText: '#e8a832' },
   BATTLE_ROYALE:{ label: 'Battle Royale',icon: '❤️', color: '#f87171', border: 'rgba(239,68,68,0.35)',   bg: 'rgba(239,68,68,0.12)',   btnBg: 'rgba(239,68,68,0.15)', btnText: '#f87171' },
   TEAM_VS_TEAM: { label: 'Team vs Team', icon: '👥', color: '#6AB8E8', border: 'rgba(74,158,255,0.35)',  bg: 'rgba(74,158,255,0.12)',  btnBg: 'rgba(74,158,255,0.15)', btnText: '#6AB8E8' },
-  SUDDEN_DEATH: { label: 'Sudden Death', icon: '👑', color: '#c084fc', border: 'rgba(168,85,247,0.35)',  bg: 'rgba(168,85,247,0.12)',  btnBg: 'rgba(168,85,247,0.15)', btnText: '#c084fc' },
+  SUDDEN_DEATH: { label: 'Đấu vương',   icon: '👑', color: '#c084fc', border: 'rgba(168,85,247,0.35)',  bg: 'rgba(168,85,247,0.12)',  btnBg: 'rgba(168,85,247,0.15)', btnText: '#c084fc' },
 };
 
 const DIFFICULTY_CONFIG: Record<RoomDifficulty, { label: string; icon: string; color: string; bg: string }> = {

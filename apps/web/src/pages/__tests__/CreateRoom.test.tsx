@@ -64,7 +64,7 @@ describe('CreateRoom', () => {
     expect(screen.getAllByText('Đua tốc độ').length).toBeGreaterThanOrEqual(1)
     expect(screen.getByText('Sinh tồn')).toBeInTheDocument()
     expect(screen.getByText('Đội đấu đội')).toBeInTheDocument()
-    expect(screen.getByText('Cái chết bất ngờ')).toBeInTheDocument()
+    expect(screen.getByText('Đấu vương')).toBeInTheDocument()
   })
 
   // 3. Mode selection highlights active

@@ -75,8 +75,8 @@ const MODE_INFO: Record<string, ModeInfo> = {
     chipColor: '#60a5fa', chipBg: 'rgba(96,165,250,0.15)', chipBorder: 'rgba(96,165,250,0.4)',
   },
   SUDDEN_DEATH: {
-    label: 'Sudden Death', icon: 'swords',
-    ruleTitle: 'Luật Sudden Death',
+    label: 'Đấu vương', icon: 'swords',
+    ruleTitle: 'Luật Đấu vương',
     ruleText: 'Sai một câu là thua. Hai người đấu tay đôi.',
     ruleDetail: 'Chỉ 2 người đấu cùng lúc. Sai 1 câu là thua. Người chiến thắng sẽ đấu tiếp người tiếp theo trong hàng đợi.',
     chipColor: '#c084fc', chipBg: 'rgba(192,132,252,0.15)', chipBorder: 'rgba(192,132,252,0.4)',

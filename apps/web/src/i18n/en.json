@@ -1373,7 +1373,7 @@
       "speed_race": "Speed Race",
       "battle_royale": "Battle Royale",
       "team_vs_team": "Team vs Team",
-      "sudden_death": "Sudden Death"
+      "sudden_death": "King of the Hill"
     },
     "quiz": {
       "roomHeader": "Room #{{code}}",
