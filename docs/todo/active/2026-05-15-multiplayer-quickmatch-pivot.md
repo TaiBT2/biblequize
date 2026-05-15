@@ -101,7 +101,7 @@
   - Checklist: rewrite CTAs → tests pass → commit ~60 LOC
 
 - QP-9 FE: QuickMatchRoomCard + filter chip
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/multiplayer/QuickMatchRoomCard.tsx` (new), update `Multiplayer.tsx` (filter chip + branch render)
   - Distinct from RoomCard: indigo accent, "Đấu Nhanh" badge top-right, room code title `Phòng #{roomCode}`, kicker shows actual mode + scope (vd "Speed Race · Cựu Ước"), source icon (`cpu` for DB / `auto_awesome` for AI), avatar stack, capacity X/Y, "Vào ngay →" indigo CTA.
   - RoomsSection: filter chip "Đấu Nhanh" first in chip row (indigo). Branch render: `room.quickMatch ? <QuickMatchRoomCard/> : <RoomCard/>`.

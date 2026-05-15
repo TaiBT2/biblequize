@@ -15,6 +15,7 @@ import { useAuth } from '../store/authStore'
 import { MODE_LIST, MODE_META, type RoomModeId } from './create-room/modeMeta'
 import JoinByCodeBar from './multiplayer/JoinByCodeBar'
 import RoomCard from './multiplayer/RoomCard'
+import QuickMatchRoomCard from './multiplayer/QuickMatchRoomCard'
 import EmptyState from './multiplayer/EmptyState'
 import QuickMatchEntryCard from './multiplayer/QuickMatchEntryCard'
 import type { PublicRoom, RoomMode, SortOption } from './multiplayer/types'
@@ -48,7 +49,7 @@ export default function Multiplayer() {
   const { isAuthenticated } = useAuth()
 
   const [sort, setSort] = useState<SortOption>('newest')
-  const [modeFilter, setModeFilter] = useState<RoomMode | 'ALL'>('ALL')
+  const [modeFilter, setModeFilter] = useState<RoomMode | 'ALL' | 'QUICK_MATCH'>('ALL')
   const [codeJoinError, setCodeJoinError] = useState<string | null>(null)
   const [isCodeJoining, setIsCodeJoining] = useState(false)
   const [roomEndedBanner, setRoomEndedBanner] = useState<string | null>(null)
@@ -92,7 +93,11 @@ export default function Multiplayer() {
   if (!isAuthenticated) return null
 
   const allRooms = data?.rooms ?? []
-  const filtered = modeFilter === 'ALL' ? allRooms : allRooms.filter(r => r.mode === modeFilter)
+  const filtered = (() => {
+    if (modeFilter === 'ALL') return allRooms
+    if (modeFilter === 'QUICK_MATCH') return allRooms.filter(r => r.quickMatch === true)
+    return allRooms.filter(r => !r.quickMatch && r.mode === modeFilter)
+  })()
   const sorted = [...filtered].sort((a, b) => {
     if (sort === 'filling') return (b.currentPlayers / b.maxPlayers) - (a.currentPlayers / a.maxPlayers)
     return new Date(b.createdAt ?? 0).getTime() - new Date(a.createdAt ?? 0).getTime()
@@ -276,6 +281,14 @@ export default function Multiplayer() {
         {/* Filter chips: All + 4 modes + divider + sort */}
         <div className="flex items-center gap-2 flex-wrap">
           <FilterChip active={modeFilter === 'ALL'} onClick={() => setModeFilter('ALL')}>Tất cả</FilterChip>
+          <FilterChip
+            active={modeFilter === 'QUICK_MATCH'}
+            onClick={() => setModeFilter('QUICK_MATCH')}
+            icon="rocket_launch"
+            iconColor="#818cf8"
+          >
+            Đấu Nhanh
+          </FilterChip>
           {MODE_LIST.map(m => (
             <FilterChip
               key={m.id}
@@ -305,7 +318,11 @@ export default function Multiplayer() {
           <EmptyState />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {sorted.map(room => <RoomCard key={room.id} room={room} />)}
+            {sorted.map(room =>
+              room.quickMatch
+                ? <QuickMatchRoomCard key={room.id} room={room} />
+                : <RoomCard key={room.id} room={room} />
+            )}
           </div>
         )}
       </section>

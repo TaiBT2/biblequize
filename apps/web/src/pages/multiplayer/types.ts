@@ -23,6 +23,8 @@ export interface PublicRoom {
   playerInitials: string[]
   /** Backend-computed: true if THIS viewer can click join/continue. */
   joinable?: boolean
+  /** QP-9: TRUE = Đấu Nhanh room (no Quản trò, indigo card variant). */
+  quickMatch?: boolean
 }
 
 export const DIFFICULTY_CONFIG: Record<RoomDifficulty, { label: string; color: string; bg: string }> = {
