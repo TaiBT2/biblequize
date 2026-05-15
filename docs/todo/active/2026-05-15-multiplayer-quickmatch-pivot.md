@@ -49,7 +49,7 @@
   - Checklist: endpoint + DTO + service method → commit ~200 LOC
 
 - QP-3 BE: QuickMatchQuestionSourceService
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/api/src/main/java/com/biblequiz/modules/room/service/QuickMatchQuestionSourceService.java`, wire vào `RoomQuizService.startQuiz()`
   - `selectQuestions(source, count, book, chapter, verseStart, verseEnd)`: DB path → `QuestionRepository.findRandom...` với filter, mixed difficulty 30/50/20. AI path → `AIProviderRouter.generate(ctx)` → serialize result thành JSON string → return cả 2 dạng `List<Question>` (cho game) + `String json` (cho persistence vào `Room.aiQuestionsPayload`).
   - `RoomQuizService.startQuiz()` update: nếu `room.quickMatch && room.aiQuestionsPayload != null` → deserialize JSON → dùng làm question list, KHÔNG query Question table.
