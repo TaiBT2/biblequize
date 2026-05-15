@@ -39,7 +39,7 @@
   - Checklist: service + DTO + controller + repo method + 4 tests → commit ~150 LOC
 
 - MPP-3 FE: Join code thin bar + Solo Arena entry card + hero 50/50 layout
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/multiplayer/JoinByCodeBar.tsx` (mới, thin 56px bar variant), `apps/web/src/pages/multiplayer/SoloArenaEntryCard.tsx` (mới, indigo), `apps/web/src/pages/Multiplayer.tsx` (restructure hero)
   - Tạo `JoinByCodeBar` thin variant của `CodeInput`: gold-tinted bar height ~56px, label + 6 inputs nhỏ + button inline cùng row. Đặt ABOVE hero row.
   - Tạo `SoloArenaEntryCard` indigo `#6366f1` gradient với "NEW" badge shimmer + descrip + "Bắt đầu Solo" button. Click → `/solo-arena`.

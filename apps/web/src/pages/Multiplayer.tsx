@@ -13,9 +13,10 @@ import { useQuery } from '@tanstack/react-query'
 import { api } from '../api/client'
 import { useAuth } from '../store/authStore'
 import { MODE_LIST, MODE_META, type RoomModeId } from './create-room/modeMeta'
-import CodeInput from './multiplayer/CodeInput'
+import JoinByCodeBar from './multiplayer/JoinByCodeBar'
 import RoomCard from './multiplayer/RoomCard'
 import EmptyState from './multiplayer/EmptyState'
+import SoloArenaEntryCard from './multiplayer/SoloArenaEntryCard'
 import type { PublicRoom, RoomMode, SortOption } from './multiplayer/types'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
@@ -146,10 +147,13 @@ export default function Multiplayer() {
         </button>
       </header>
 
-      {/* ── Hero row: Tạo phòng (3/5) + Tham gia bằng mã (2/5) ── */}
-      <section className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+      {/* ── Thin "Tham gia mã" bar (above hero per canonical mockup) ── */}
+      <JoinByCodeBar onJoin={handleJoinByCode} disabled={isCodeJoining} error={codeJoinError} />
+
+      {/* ── Hero row 50/50: Tạo phòng (gold) + Solo Arena (indigo) ── */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
-          className="lg:col-span-3 rounded-2xl p-6 relative overflow-hidden"
+          className="rounded-2xl p-6 relative overflow-hidden"
           style={{
             background: 'linear-gradient(135deg, rgba(232,168,50,0.12), rgba(231,194,104,0.06))',
             border: '1px solid rgba(232,168,50,0.25)',
@@ -168,15 +172,20 @@ export default function Multiplayer() {
                   workspace_premium
                 </span>
               </div>
-              <div className="text-[11px] tracking-widest uppercase font-bold" style={{ color: '#e8a832' }}>
+              <div className="text-[10px] tracking-widest uppercase font-bold" style={{ color: '#e8a832' }}>
                 Bạn sẽ là Quản trò
               </div>
             </div>
-            <h2 className="text-[22px] font-extrabold mb-1.5 leading-tight text-white">Tạo phòng &amp; điều phối trận đấu</h2>
-            <p className="text-[13px] text-white/65 mb-5 max-w-md leading-relaxed">
+            <h2 className="text-[20px] font-extrabold mb-1.5 leading-tight text-white">Tạo phòng đa người chơi</h2>
+            <p className="text-[12.5px] text-white/65 mb-4 leading-relaxed">
               Quản trò không trả lời câu hỏi — bạn dẫn dắt, theo dõi, và đảm bảo công bằng cho người chơi.
-              Phù hợp cho nhóm tế bào, Bible study, hoặc thi đua bạn bè.
+              Phù hợp cho nhóm tế bào, Bible study, thi đua bạn bè.
             </p>
+            <div className="flex items-center gap-2 mb-5 flex-wrap">
+              <FeatureTag icon="group" label="2–20 người" />
+              <FeatureTag icon="layers" label="4 chế độ" />
+              <FeatureTag icon="wifi" label="Realtime" />
+            </div>
             <button
               data-testid="multiplayer-create-btn"
               onClick={() => navigate('/room/create')}
@@ -184,28 +193,12 @@ export default function Multiplayer() {
               style={{ background: 'linear-gradient(135deg, #e8a832, #e7c268)', color: '#1a1226' }}
             >
               <span className="material-symbols-outlined" style={{ fontSize: 18 }}>add</span>
-              {t('multiplayer.createRoom', 'Tạo phòng mới')}
+              {t('multiplayer.createRoom', 'Tạo Phòng')}
             </button>
           </div>
         </div>
 
-        <div
-          className="lg:col-span-2 rounded-2xl p-6"
-          style={{ background: 'rgba(50,52,64,0.4)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.06)' }}
-        >
-          <div className="flex items-center gap-2 mb-3">
-            <div
-              className="w-9 h-9 rounded-lg flex items-center justify-center"
-              style={{ background: 'rgba(255,255,255,0.06)' }}
-            >
-              <span className="material-symbols-outlined" style={{ fontSize: 18, color: 'rgba(255,255,255,0.8)' }}>key</span>
-            </div>
-            <div className="text-[11px] tracking-widest uppercase font-bold text-white/60">Tham gia phòng</div>
-          </div>
-          <h2 className="text-[18px] font-bold mb-1 leading-tight text-white">Có mã từ bạn bè?</h2>
-          <p className="text-[12px] text-white/50 mb-4">Nhập mã 6 chữ số / chữ cái</p>
-          <CodeInput onJoin={handleJoinByCode} disabled={isCodeJoining} error={codeJoinError} />
-        </div>
+        <SoloArenaEntryCard />
       </section>
 
       {/* ── Mode showcase ── */}
@@ -327,6 +320,18 @@ function LiveDot() {
     <span className="relative inline-block w-2 h-2">
       <span className="absolute inset-0 rounded-full bg-green-500" />
       <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-75" />
+    </span>
+  )
+}
+
+function FeatureTag({ icon, label }: { icon: string; label: string }) {
+  return (
+    <span
+      className="px-2 py-1 rounded-md text-[10px] font-semibold flex items-center gap-1"
+      style={{ background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.6)' }}
+    >
+      <span className="material-symbols-outlined" style={{ fontSize: 12 }}>{icon}</span>
+      {label}
     </span>
   )
 }
