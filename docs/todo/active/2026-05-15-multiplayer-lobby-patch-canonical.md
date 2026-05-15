@@ -58,7 +58,7 @@
   - Checklist: 1 file mới + route → commit < 80 LOC
 
 - MPP-5 FE: Sidebar `WeeklyMultiplayerStatsWidget` conditional render
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/multiplayer/WeeklyMultiplayerStatsWidget.tsx` (mới), `apps/web/src/api/users.ts` (add fetch fn nếu chưa có), `apps/web/src/layouts/AppLayout.tsx` (conditional insert)
   - Widget glass card với "TUẦN NÀY" sky-blue label + big wins number + win rate + MVP count. useQuery 60s staleTime, hide gracefully on error.
   - AppLayout: `useLocation()` → render widget chỉ khi `pathname.startsWith('/multiplayer')`.

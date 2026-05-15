@@ -8,6 +8,7 @@ import WinRateWidget from '../components/WinRateWidget'
 import WeekComboWidget from '../components/WeekComboWidget'
 import LeaderboardRankWidget from '../components/LeaderboardRankWidget'
 import LeaderboardSeasonWidget from '../components/LeaderboardSeasonWidget'
+import WeeklyMultiplayerStatsWidget from '../pages/multiplayer/WeeklyMultiplayerStatsWidget'
 import SidebarHeader from './components/SidebarHeader'
 import SidebarUserCard from './components/SidebarUserCard'
 import MobileTopBar from './components/MobileTopBar'
@@ -110,6 +111,10 @@ export default function AppLayout() {
                 if (groupId) {
                   routeWidgets = <GroupQuickInfoSidebar groupId={groupId} />
                 }
+              } else if (location.pathname.startsWith('/multiplayer')) {
+                // MPP-5: weekly multiplayer stats replaces the meaningless
+                // generic "Vị trí #1" framing on /multiplayer specifically.
+                routeWidgets = <WeeklyMultiplayerStatsWidget />
               }
               // /leaderboard route: alwaysWidgets already cover it — no
               // extra route-specific widgets, no duplication.
