@@ -38,6 +38,9 @@ type RoomDetails = {
   /** Sprint 4: false = Quản trò mode (host orchestrates only). Defaults
    *  true on the FE for legacy rooms whose payload omits the field. */
   hostPlaysGame?: boolean;
+  /** QP-10 (Đấu Nhanh): true = soft-host quick match room. No Quản trò,
+   *  any player can hit Start once ≥2 players are ready. */
+  quickMatch?: boolean;
 };
 type ChatMessage = {
   sender: string; text: string;
@@ -392,6 +395,7 @@ const RoomLobby: React.FC = () => {
   // would be undefined for them. Fall back to comparing against viewerUserId
   // so the host still resolves as host in the lobby UI.
   const hostPlaysGame = room?.hostPlaysGame !== false; // defaults true (legacy)
+  const isQuickMatch = !!room?.quickMatch;
   const isHost = (myPlayer?.userId === room?.hostId)
       || (!hostPlaysGame && viewerUserId != null && viewerUserId === room?.hostId);
   const isOrganizerMode = isHost && !hostPlaysGame;
@@ -408,9 +412,18 @@ const RoomLobby: React.FC = () => {
   // Sprint 4: Quan Tro mode requires ≥2 non-host players (host doesn't play);
   // legacy mode keeps ≥1 non-host (host + 1 = 2 total).
   const minNonHost = !hostPlaysGame ? 2 : 1;
-  const canStart = room?.status === 'LOBBY'
-    && nonHostPlayers.length >= minNonHost
-    && (isGroupLive || readyNonHostCount === nonHostPlayers.length);
+  // QP-10: Quick Match has no Quản trò; require ≥2 ready players
+  // (host displayed as auto-ready via PlayerSlot) instead of host-driven start.
+  const quickMatchReadyCount = useMemo(
+    () => room?.players?.filter(p => p.isReady || p.userId === room?.hostId).length ?? 0,
+    [room],
+  );
+  const canStart = room?.status === 'LOBBY' && (
+    isQuickMatch
+      ? quickMatchReadyCount >= 2
+      : nonHostPlayers.length >= minNonHost
+        && (isGroupLive || readyNonHostCount === nonHostPlayers.length)
+  );
 
   const statusPrimary = (() => {
     if (!room) return '';
@@ -713,8 +726,28 @@ const RoomLobby: React.FC = () => {
         <ActivityLogPanel entries={activity} statusHint={statusSecondary} />
         <div className="overflow-y-auto px-4 lg:px-7 py-4 lg:py-5 pb-24 lg:pb-5" data-testid="lobby-scroll-content">
 
+          {/* ─── QP-10: Quick Match indigo banner (no Quản trò) ─── */}
+          {isQuickMatch && (
+            <div
+              className="rounded-xl px-4 py-3 mb-4 flex items-start gap-3"
+              style={{
+                background: 'rgba(99,102,241,0.08)',
+                border: '1px solid rgba(99,102,241,0.3)',
+              }}
+              data-testid="lobby-quickmatch-banner"
+            >
+              <span className="material-symbols-outlined flex-shrink-0" style={{ color: '#818cf8', fontSize: 20 }}>
+                rocket_launch
+              </span>
+              <div className="text-xs leading-relaxed" style={{ color: '#d1d5db' }}>
+                <span className="font-bold" style={{ color: '#a5b4fc' }}>Đấu Nhanh — Không có Quản trò.</span>{' '}
+                Bất kỳ ai cũng có thể bấm <strong>Bắt đầu</strong> khi đủ 2 người sẵn sàng.
+              </div>
+            </div>
+          )}
+
           {/* ─── Sprint 4: Quản trò badge / host info card ─── */}
-          {isOrganizerMode && (
+          {!isQuickMatch && isOrganizerMode && (
             <div
               className="rounded-xl px-4 py-3 mb-4 flex items-start gap-3"
               style={{
@@ -730,7 +763,7 @@ const RoomLobby: React.FC = () => {
               </div>
             </div>
           )}
-          {!isOrganizerMode && !hostPlaysGame && room.hostName && (
+          {!isQuickMatch && !isOrganizerMode && !hostPlaysGame && room.hostName && (
             <div
               className="rounded-xl px-4 py-3 mb-4 flex items-center gap-3"
               style={{
@@ -911,7 +944,7 @@ const RoomLobby: React.FC = () => {
                 teamBPlayers={teamBPlayers}
                 hostId={room.hostId}
                 myUserId={viewerUserId ?? undefined}
-                isHost={isHost}
+                isHost={isHost && !isQuickMatch}
                 myTeam={myPlayer?.team}
                 kickMenuFor={kickMenuFor}
                 setKickMenuFor={setKickMenuFor}
@@ -929,7 +962,7 @@ const RoomLobby: React.FC = () => {
                     hostId={room.hostId}
                     myUserId={viewerUserId ?? undefined}
                     suddenDeathOrder={isSuddenDeath ? idx : undefined}
-                    canKick={isHost && p.userId !== room.hostId}
+                    canKick={isHost && !isQuickMatch && p.userId !== room.hostId}
                     kickOpen={kickMenuFor === p.userId}
                     onKickToggle={() => setKickMenuFor(kickMenuFor === p.userId ? null : p.userId)}
                     onKickConfirm={() => handleKick(p.userId)}
@@ -999,6 +1032,7 @@ const RoomLobby: React.FC = () => {
                 myReady={!!myPlayer?.isReady}
                 onStart={handleStart}
                 onToggleReady={handleToggleReady}
+                isQuickMatch={isQuickMatch}
               />
             }
           />
@@ -1025,6 +1059,7 @@ const RoomLobby: React.FC = () => {
             myReady={!!myPlayer?.isReady}
             onStart={handleStart}
             onToggleReady={handleToggleReady}
+            isQuickMatch={isQuickMatch}
           />
         </footer>
       )}
@@ -1118,8 +1153,32 @@ const LobbyCTA: React.FC<{
   myReady: boolean;
   onStart: () => void;
   onToggleReady: () => void;
-}> = ({ isHost, canStart, statusSecondary, myReady, onStart, onToggleReady }) => {
-  if (isHost) {
+  /** QP-10: Đấu Nhanh — any player sees Start button once canStart is true. */
+  isQuickMatch?: boolean;
+}> = ({ isHost, canStart, statusSecondary, myReady, onStart, onToggleReady, isQuickMatch }) => {
+  // QP-10: in Quick Match, once ≥2 players are ready, the start button is
+  // exposed to every player (no Quản trò). Players still toggle Ready below.
+  if (isQuickMatch && canStart) {
+    return (
+      <button
+        onClick={onStart}
+        data-testid="lobby-start-btn"
+        className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-extrabold"
+        style={{
+          background: 'linear-gradient(135deg, #6366f1 0%, #818cf8 100%)',
+          color: '#fff',
+          boxShadow: '0 6px 20px rgba(99,102,241,0.3)',
+        }}
+      >
+        <span className="material-symbols-outlined text-lg">rocket_launch</span>
+        <span>BẮT ĐẦU TRẬN ĐẤU</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </button>
+    );
+  }
+  if (isHost && !isQuickMatch) {
     return (
       <button
         onClick={onStart}

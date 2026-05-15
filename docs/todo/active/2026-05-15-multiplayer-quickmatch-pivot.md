@@ -109,7 +109,7 @@
   - Checklist: new component + branch + filter logic → commit ~180 LOC
 
 - QP-10 FE: RoomLobby quick-match variant
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/RoomLobby.tsx`
   - Conditional: nếu `room.quickMatch` → indigo info banner ("Không có Quản trò — bất kỳ ai có thể bấm Bắt đầu khi đủ 2 người") thay Quản trò gold banner. Start button visible to all when readyCount >= 2. Hide host control panel.
   - **Spec strategy**: [x] (a) update inline (SPEC_MULTIPLAYER §7.4 variant table row)
