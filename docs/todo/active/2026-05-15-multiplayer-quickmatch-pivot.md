@@ -57,7 +57,7 @@
   - Checklist: service + RoomQuizService wire → commit ~180 LOC
 
 - QP-4 BE: DailyQuickMatchCounter Redis
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/api/src/main/java/com/biblequiz/modules/room/service/DailyQuickMatchCounter.java`, expose `remainingToday` qua existing `/api/me/multiplayer-stats` response
   - Redis SETEX key `quickmatch:daily:{userId}:{yyyymmdd}`, INCR on create, TTL until 24h UTC EOD. `hasReachedCap()`, `increment()`, `getRemainingToday()`. Add field `quickMatchRemainingToday` vào `WeeklyMultiplayerStatsDTO`.
   - **Spec strategy**: [x] (a) update inline (SPEC_USER §27.2 response shape)

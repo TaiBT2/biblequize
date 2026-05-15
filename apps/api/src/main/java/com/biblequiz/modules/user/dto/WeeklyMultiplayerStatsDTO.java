@@ -13,5 +13,7 @@ public record WeeklyMultiplayerStatsDTO(
     long wins,
     long totalMatches,
     double winRate,
-    long mvpCount
+    long mvpCount,
+    /** QP-4: remaining Quick Match (Đấu Nhanh) attempts today (cap 3/day). */
+    int quickMatchRemainingToday
 ) {}

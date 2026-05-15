@@ -3,6 +3,7 @@ package com.biblequiz.modules.user.service;
 import com.biblequiz.modules.achievement.repository.UserAchievementRepository;
 import com.biblequiz.modules.room.entity.RoomPlayer;
 import com.biblequiz.modules.room.repository.RoomPlayerRepository;
+import com.biblequiz.modules.room.service.DailyQuickMatchCounter;
 import com.biblequiz.modules.user.dto.WeeklyMultiplayerStatsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,7 @@ public class MultiplayerStatsService {
 
     @Autowired private RoomPlayerRepository roomPlayerRepository;
     @Autowired private UserAchievementRepository userAchievementRepository;
+    @Autowired private DailyQuickMatchCounter dailyQuickMatchCounter;
 
     public WeeklyMultiplayerStatsDTO getWeeklyStats(String userId) {
         LocalDateTime weekStart = computeWeekStart();
@@ -54,7 +56,8 @@ public class MultiplayerStatsService {
                 wins,
                 totalMatches,
                 winRate,
-                mvpCount);
+                mvpCount,
+                dailyQuickMatchCounter.getRemainingToday(userId));
     }
 
     /** Monday 00:00 of the current calendar week, system zone. */
