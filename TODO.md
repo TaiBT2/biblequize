@@ -28,6 +28,7 @@
 <details>
 <summary>Xem inline list (tuỳ chọn)</summary>
 
+- 2026-05-15 — Multiplayer Lobby redesign (MOCKUP_MULTIPLAYER_LOBBY.html) · DONE · [detail](docs/todo/archive/2026-05-15-multiplayer-lobby-redesign.md)
 - 2026-05-15 — Create Room redesign (create_room_redesign.html) · DONE · [detail](docs/todo/archive/2026-05-15-create-room-redesign.md)
 - 2026-05-15 — Personal Quiz Set AI (Phase 2) · DONE · [detail](docs/todo/archive/2026-05-15-personal-quiz-set-ai-phase-2.md)
 - 2026-05-14 — Personal Quiz Set parity with Group (Phase 1 MVP) · DONE · [detail](docs/todo/archive/2026-05-14-personal-quiz-set-parity-phase-1.md)

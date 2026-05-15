@@ -133,7 +133,10 @@ describe('Multiplayer page', () => {
       },
     })
     renderPage()
-    expect(await screen.findByText('Team vs Team')).toBeTruthy()
+    // Mode label appears in 3 places after MLR redesign: mode showcase card,
+    // filter chip, and the room card itself. Assert at least one rendered.
+    const matches = await screen.findAllByText('Team vs Team')
+    expect(matches.length).toBeGreaterThanOrEqual(1)
   })
 
   it('"Bộ câu hỏi" button is hidden on mobile (md:flex class present)', async () => {

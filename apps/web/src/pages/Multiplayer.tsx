@@ -1,497 +1,112 @@
-import { useState, useRef, useEffect, type CSSProperties } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { useQuery } from '@tanstack/react-query';
-import { api } from '../api/client';
-import { useAuth } from '../store/authStore';
+// MLR — Multiplayer Lobby page, redesigned per
+// docs/MULTIPLAYER/MOCKUP_MULTIPLAYER_LOBBY.html.
+//
+// Structure: top header (kicker + live count + title + "Bộ câu hỏi") →
+// hero row 3:2 (Tạo phòng card + Join code) → mode showcase (4 cards) →
+// active rooms section (filter chips + 2 states). BE contract
+// (/api/rooms/public + /api/rooms/join) and i18n keys unchanged.
 
-// ─── Types ───────────────────────────────────────────────────────────────────
+import { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { useQuery } from '@tanstack/react-query'
+import { api } from '../api/client'
+import { useAuth } from '../store/authStore'
+import { MODE_LIST, MODE_META, type RoomModeId } from './create-room/modeMeta'
+import CodeInput from './multiplayer/CodeInput'
+import RoomCard from './multiplayer/RoomCard'
+import EmptyState from './multiplayer/EmptyState'
+import type { PublicRoom, RoomMode, SortOption } from './multiplayer/types'
 
-type RoomMode = 'SPEED_RACE' | 'BATTLE_ROYALE' | 'TEAM_VS_TEAM' | 'SUDDEN_DEATH';
-type RoomStatus = 'LOBBY' | 'IN_PROGRESS' | 'ENDED' | 'CANCELLED';
-type RoomDifficulty = 'EASY' | 'MEDIUM' | 'HARD' | 'MIXED';
-type SortOption = 'newest' | 'filling' | 'difficulty';
+const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 
-interface PublicRoom {
-  id: string;
-  roomCode: string;
-  roomName: string;
-  mode: RoomMode;
-  status: RoomStatus;
-  isPublic: boolean;
-  currentPlayers: number;
-  maxPlayers: number;
-  questionCount: number;
-  timePerQuestion: number;
-  difficulty: RoomDifficulty;
-  bookScope: string;
-  hostName: string;
-  createdAt: string;
-  playerInitials: string[];
-  /** Backend-computed: true if THIS viewer can click join/continue. */
-  joinable?: boolean;
+const MODE_TAGLINE: Record<RoomModeId, { tag: string; desc: string; range: string }> = {
+  SPEED_RACE:    { tag: 'Phổ biến',  desc: 'Đáp nhanh, điểm cao. Tốc độ × độ chính xác.', range: '2–10 người' },
+  BATTLE_ROYALE: { tag: 'Kịch tính', desc: 'Sai 1 câu là bị loại. Người cuối cùng thắng.',  range: '3–20 người' },
+  TEAM_VS_TEAM:  { tag: 'Nhóm',      desc: '2 đội đối kháng. Tổng điểm đội cao hơn thắng.', range: '4–20 người' },
+  SUDDEN_DEATH:  { tag: '1v1',       desc: 'Đối đầu 1v1, sai là thua. Hàng đợi thách đấu.', range: '2–20 người' },
 }
 
-// ─── Constants ───────────────────────────────────────────────────────────────
-
-const MODE_CONFIG: Record<RoomMode, { label: string; icon: string; color: string; border: string; bg: string; btnBg: string; btnText: string }> = {
-  SPEED_RACE:   { label: 'Speed Race',   icon: '⚡', color: '#e8a832', border: 'rgba(232,168,50,0.35)',  bg: 'rgba(232,168,50,0.12)',  btnBg: 'rgba(232,168,50,0.15)', btnText: '#e8a832' },
-  BATTLE_ROYALE:{ label: 'Battle Royale',icon: '❤️', color: '#f87171', border: 'rgba(239,68,68,0.35)',   bg: 'rgba(239,68,68,0.12)',   btnBg: 'rgba(239,68,68,0.15)', btnText: '#f87171' },
-  TEAM_VS_TEAM: { label: 'Team vs Team', icon: '👥', color: '#6AB8E8', border: 'rgba(74,158,255,0.35)',  bg: 'rgba(74,158,255,0.12)',  btnBg: 'rgba(74,158,255,0.15)', btnText: '#6AB8E8' },
-  SUDDEN_DEATH: { label: 'Đấu vương',   icon: '👑', color: '#c084fc', border: 'rgba(168,85,247,0.35)',  bg: 'rgba(168,85,247,0.12)',  btnBg: 'rgba(168,85,247,0.15)', btnText: '#c084fc' },
-};
-
-const DIFFICULTY_CONFIG: Record<RoomDifficulty, { label: string; icon: string; color: string; bg: string }> = {
-  EASY:   { label: 'Dễ',   icon: '😊', color: '#97C459', bg: 'rgba(99,153,34,0.15)' },
-  MEDIUM: { label: 'Trung',icon: '⚡', color: '#ff8c42', bg: 'rgba(255,140,66,0.15)' },
-  HARD:   { label: 'Khó',  icon: '🔥', color: '#f87171', bg: 'rgba(239,68,68,0.15)' },
-  MIXED:  { label: 'Trộn', icon: '🌐', color: '#e8a832', bg: 'rgba(232,168,50,0.15)' },
-};
-
-const BOOK_SCOPE_TESTAMENT: Record<string, { label: string; color: string; bg: string }> = {
-  ALL:            { label: '66 sách',    color: '#c084fc', bg: 'rgba(168,85,247,0.15)' },
-  OLD_TESTAMENT:  { label: 'Cựu Ước',   color: '#6AB8E8', bg: 'rgba(74,158,255,0.15)' },
-  NEW_TESTAMENT:  { label: 'Tân Ước',   color: '#6AB8E8', bg: 'rgba(74,158,255,0.15)' },
-  GOSPELS:        { label: '4 Phúc Âm', color: '#6AB8E8', bg: 'rgba(74,158,255,0.15)' },
-};
-
-const FILL_1: CSSProperties = { fontVariationSettings: "'FILL' 1" };
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function getTestamentBadge(bookScope: string) {
-  const key = bookScope?.toUpperCase();
-  return BOOK_SCOPE_TESTAMENT[key] ?? { label: 'Cựu Ước', color: '#6AB8E8', bg: 'rgba(74,158,255,0.15)' };
+const MODE_DISPLAY_LABEL: Record<RoomModeId, string> = {
+  SPEED_RACE: 'Speed Race',
+  BATTLE_ROYALE: 'Battle Royale',
+  TEAM_VS_TEAM: 'Team vs Team',
+  SUDDEN_DEATH: 'Đấu vương',
 }
 
-function formatBookScope(bookScope: string): string {
-  const map: Record<string, string> = {
-    ALL: 'Toàn bộ Kinh Thánh',
-    OLD_TESTAMENT: 'Cựu Ước (39 sách)',
-    NEW_TESTAMENT: 'Tân Ước (27 sách)',
-    GOSPELS: '4 Phúc Âm',
-    EPISTLES: '21 Thư Tín',
-  };
-  return map[bookScope?.toUpperCase()] ?? bookScope ?? 'Kinh Thánh';
+function hexToRgba(hex: string, a: number): string {
+  const h = hex.replace('#', '')
+  const n = parseInt(h.length === 3 ? h.split('').map(c => c + c).join('') : h, 16)
+  return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`
 }
 
-function formatRelativeTime(createdAt: string): string {
-  if (!createdAt) return 'Vừa tạo';
-  const ts = new Date(createdAt).getTime();
-  if (!Number.isFinite(ts)) return 'Vừa tạo';
-  const mins = Math.floor((Date.now() - ts) / 60000);
-  if (mins < 1) return 'Vừa tạo';
-  if (mins < 60) return `${mins} phút trước`;
-  return `${Math.floor(mins / 60)} giờ trước`;
-}
+export default function Multiplayer() {
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const { isAuthenticated } = useAuth()
 
-// ─── Sub-components ──────────────────────────────────────────────────────────
+  const [sort, setSort] = useState<SortOption>('newest')
+  const [modeFilter, setModeFilter] = useState<RoomMode | 'ALL'>('ALL')
+  const [codeJoinError, setCodeJoinError] = useState<string | null>(null)
+  const [isCodeJoining, setIsCodeJoining] = useState(false)
+  const [roomEndedBanner, setRoomEndedBanner] = useState<string | null>(null)
 
-function AvatarStack({ initials, current, max }: { initials: string[]; current: number; max: number }) {
-  const shown = initials.slice(0, 5);
-  const empty = Math.max(0, max - current);
-  const colors = ['rgba(232,168,50,0.3)', 'rgba(74,158,255,0.3)', 'rgba(168,85,247,0.3)', 'rgba(99,153,34,0.3)', 'rgba(255,140,66,0.3)'];
-  const textColors = ['#e8a832', '#6AB8E8', '#c084fc', '#97C459', '#ff8c42'];
-
-  return (
-    <div className="flex items-center gap-2">
-      <div className="flex">
-        {shown.map((initial, i) => (
-          <div
-            key={i}
-            className="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-semibold border-2"
-            style={{
-              background: colors[i % colors.length],
-              color: textColors[i % textColors.length],
-              borderColor: '#11131e',
-              marginLeft: i > 0 ? '-8px' : undefined,
-              zIndex: 10 - i,
-            }}
-          >
-            {initial}
-          </div>
-        ))}
-        {Array.from({ length: Math.min(empty, 3) }).map((_, i) => (
-          <div
-            key={`empty-${i}`}
-            className="w-7 h-7 rounded-full flex items-center justify-center text-sm border"
-            style={{
-              background: 'rgba(255,255,255,0.04)',
-              color: 'rgba(255,255,255,0.25)',
-              borderColor: 'rgba(255,255,255,0.12)',
-              borderStyle: 'dashed',
-              marginLeft: '-8px',
-              zIndex: 10 - shown.length - i,
-            }}
-          >
-            +
-          </div>
-        ))}
-      </div>
-      <div>
-        <div className="text-white text-[11px] font-semibold">{current}/{max}</div>
-        <div className="text-[9px]" style={{ color: current >= max ? '#f87171' : current >= max - 1 ? '#ff8c42' : '#97C459' }}>
-          {current >= max ? 'Đã đầy' : current >= max - 1 ? 'Còn 1 chỗ!' : `Cần ${max - current} nữa`}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function CodeInput({ onJoin, disabled }: { onJoin: (code: string) => void; disabled?: boolean }) {
-  const [chars, setChars] = useState<string[]>(['', '', '', '', '', '']);
-  const refs = useRef<(HTMLInputElement | null)[]>([]);
-
-  const code = chars.join('');
-  const filled = chars.filter(Boolean).length;
-
-  const handleChange = (i: number, val: string) => {
-    const char = val.replace(/[^A-Z0-9]/gi, '').toUpperCase().slice(-1);
-    const next = [...chars];
-    next[i] = char;
-    setChars(next);
-    if (char && i < 5) refs.current[i + 1]?.focus();
-  };
-
-  const handleKeyDown = (i: number, e: React.KeyboardEvent) => {
-    if (e.key === 'Backspace' && !chars[i] && i > 0) {
-      refs.current[i - 1]?.focus();
-    }
-    if (e.key === 'Enter' && filled === 6) onJoin(code);
-  };
-
-  const handlePaste = (e: React.ClipboardEvent) => {
-    e.preventDefault();
-    const pasted = e.clipboardData.getData('text').replace(/[^A-Z0-9]/gi, '').toUpperCase().slice(0, 6);
-    const next = Array(6).fill('');
-    pasted.split('').forEach((c, i) => { next[i] = c; });
-    setChars(next);
-    refs.current[Math.min(pasted.length, 5)]?.focus();
-  };
-
-  return (
-    <div>
-      {/* Inputs + button inline (same row) */}
-      <div className="flex items-center gap-2">
-        <div className="flex gap-1 flex-1">
-          {chars.map((c, i) => (
-            <input
-              key={i}
-              ref={(el) => { refs.current[i] = el; }}
-              type="text"
-              inputMode="text"
-              maxLength={2}
-              value={c}
-              onChange={(e) => handleChange(i, e.target.value)}
-              onKeyDown={(e) => handleKeyDown(i, e)}
-              onPaste={handlePaste}
-              data-testid={`code-digit-${i}`}
-              className="w-9 h-11 flex-shrink-0 rounded-lg text-center text-lg font-bold outline-none transition-all"
-              style={{
-                background: 'rgba(0,0,0,0.3)',
-                border: `0.5px solid ${c ? 'rgba(232,168,50,0.5)' : 'rgba(232,168,50,0.2)'}`,
-                color: c ? '#e8a832' : 'rgba(255,255,255,0.2)',
-                boxShadow: c ? '0 0 8px rgba(232,168,50,0.15)' : 'none',
-              }}
-            />
-          ))}
-        </div>
-        <button
-          onClick={() => { if (filled === 6 && !disabled) onJoin(code); }}
-          disabled={filled < 6 || disabled}
-          className="text-xs font-semibold px-4 py-2.5 rounded-lg transition-all flex-shrink-0"
-          style={{
-            background: filled === 6 && !disabled ? 'rgba(232,168,50,0.2)' : 'rgba(255,255,255,0.04)',
-            color: filled === 6 && !disabled ? '#e8a832' : 'rgba(255,255,255,0.25)',
-            border: `0.5px solid ${filled === 6 && !disabled ? 'rgba(232,168,50,0.4)' : 'rgba(255,255,255,0.08)'}`,
-            cursor: filled === 6 && !disabled ? 'pointer' : 'not-allowed',
-          }}
-        >
-          {disabled ? '...' : 'Vào →'}
-        </button>
-      </div>
-      {/* Status text below inputs */}
-      <div className="mt-1.5">
-        <span className="text-[10px]" style={{ color: 'rgba(255,255,255,0.35)' }}>
-          {filled === 6 ? '✓ Sẵn sàng vào phòng' : `Còn thiếu ${6 - filled} ký tự`}
-        </span>
-      </div>
-    </div>
-  );
-}
-
-function RoomCard({ room }: { room: PublicRoom }) {
-  const navigate = useNavigate();
-  const [joining, setJoining] = useState(false);
-  const [joinError, setJoinError] = useState<string | null>(null);
-  const mode = MODE_CONFIG[room.mode] ?? MODE_CONFIG.SPEED_RACE;
-  const diff = DIFFICULTY_CONFIG[room.difficulty] ?? DIFFICULTY_CONFIG.MIXED;
-  const testament = getTestamentBadge(room.bookScope);
-  const isWaiting = room.status === 'LOBBY';
-  const isPlaying = room.status === 'IN_PROGRESS';
-  const isFull = room.currentPlayers >= room.maxPlayers;
-  const isAlmostFull = room.currentPlayers >= room.maxPlayers - 1 && !isFull;
-
-  const handleJoin = async (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    if (!room.id || joining) return;
-    setJoining(true);
-    setJoinError(null);
-    try {
-      const res = await api.post('/api/rooms/join', { roomCode: room.roomCode });
-      const joinedRoom = res.data.room;
-      // If the room is mid-game (rejoin path), drop straight into /quiz —
-      // /lobby would just spin until the next QUESTION_START arrives.
-      const target = joinedRoom.status === 'IN_PROGRESS' ? 'quiz' : 'lobby';
-      navigate(`/room/${joinedRoom.id}/${target}`, { state: { room: joinedRoom, mode: joinedRoom.mode, viewerUserId: res.data.viewerUserId } });
-    } catch (err: any) {
-      setJoinError(err?.response?.data?.message || 'Không thể vào phòng');
-      setJoining(false);
-    }
-  };
-
-  const statusConfig = isPlaying
-    ? { dot: '#e8a832', text: 'Đang chơi', textColor: '#e8a832' }
-    : isFull
-    ? { dot: '#f87171', text: 'Đã đầy', textColor: '#f87171' }
-    : isAlmostFull
-    ? { dot: '#ff8c42', text: 'Sắp đầy!', textColor: '#ff8c42' }
-    : { dot: '#97C459', text: 'Đang chờ', textColor: '#97C459' };
-
-  return (
-    <article
-      data-testid="room-card"
-      className="rounded-xl p-3.5 cursor-pointer transition-all duration-200 flex flex-col gap-3"
-      style={{
-        background: 'rgba(50,52,64,0.4)',
-        border: `0.5px solid ${isAlmostFull ? mode.color + '66' : mode.border}`,
-        boxShadow: isAlmostFull ? `0 0 16px ${mode.color}18` : undefined,
-      }}
-      onClick={() => {
-        if (isWaiting && !isFull) handleJoin();
-      }}
-    >
-      {/* Top row: mode badge + status */}
-      <div className="flex items-center justify-between">
-        <div
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold"
-          style={{ background: mode.bg, color: mode.color, border: `0.5px solid ${mode.border}` }}
-        >
-          <span>{mode.icon}</span> {mode.label}
-        </div>
-        <div className="flex items-center gap-1.5">
-          <span
-            className="w-1.5 h-1.5 rounded-full"
-            style={{ background: statusConfig.dot, boxShadow: `0 0 5px ${statusConfig.dot}` }}
-          />
-          <span className="text-[10px] font-semibold" style={{ color: statusConfig.textColor }}>
-            {statusConfig.text}
-          </span>
-        </div>
-      </div>
-
-      {/* Room title */}
-      <div className="text-white text-sm font-semibold leading-snug">{room.roomName}</div>
-
-      {/* Host + time + public badge */}
-      <div className="flex items-center gap-1.5 flex-wrap">
-        <div
-          className="w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-semibold flex-shrink-0"
-          style={{ background: mode.bg, color: mode.color }}
-        >
-          {room.hostName ? room.hostName.charAt(0).toUpperCase() : '?'}
-        </div>
-        <span className="text-[11px]" style={{ color: 'rgba(255,255,255,0.7)' }}>{room.hostName ?? 'Unknown'}</span>
-        <span style={{ color: 'rgba(255,255,255,0.25)' }}>·</span>
-        <span className="text-[10px]" style={{ color: 'rgba(255,255,255,0.45)' }}>{formatRelativeTime(room.createdAt)}</span>
-        <span
-          className="ml-auto px-1.5 py-0.5 rounded-full text-[9px] font-semibold"
-          style={room.isPublic
-            ? { background: 'rgba(99,153,34,0.15)', color: '#97C459' }
-            : { background: 'rgba(255,140,66,0.12)', color: '#ff8c42' }
-          }
-        >
-          {room.isPublic ? 'PUBLIC' : '🔒 PRIVATE'}
-        </span>
-      </div>
-
-      {/* Bible context box */}
-      <div
-        className="rounded-lg px-3 py-2.5 flex flex-col gap-1.5"
-        style={{ background: 'rgba(0,0,0,0.22)' }}
-      >
-        <div className="flex items-center gap-1.5 text-[11px]" style={{ color: 'rgba(255,255,255,0.85)' }}>
-          <span>📖</span>
-          <span className="font-medium">{formatBookScope(room.bookScope)}</span>
-          <span
-            className="ml-auto px-1.5 py-0.5 rounded-full text-[9px]"
-            style={{ background: testament.bg, color: testament.color }}
-          >
-            {testament.label}
-          </span>
-        </div>
-        <div className="flex items-center gap-3 text-[11px]" style={{ color: 'rgba(255,255,255,0.6)' }}>
-          <span>📝 {room.questionCount ?? 10} câu</span>
-          <span>⏱ {room.timePerQuestion ?? 30}s/câu</span>
-          <span
-            className="px-1.5 py-0.5 rounded-full text-[10px] font-semibold"
-            style={{ background: diff.bg, color: diff.color }}
-          >
-            {diff.icon} {diff.label}
-          </span>
-        </div>
-      </div>
-
-      {/* Join error */}
-      {joinError && (
-        <div className="text-[11px] px-2 py-1 rounded-lg" style={{ background: 'rgba(239,68,68,0.12)', color: '#f87171' }}>
-          ⚠ {joinError}
-        </div>
-      )}
-
-      {/* Footer: avatar stack + CTA */}
-      <div className="flex items-center justify-between">
-        <AvatarStack
-          initials={room.playerInitials ?? []}
-          current={room.currentPlayers}
-          max={room.maxPlayers}
-        />
-
-        {isWaiting && !isFull && (
-          <button
-            onClick={handleJoin}
-            disabled={joining}
-            className="px-4 py-2 rounded-lg text-xs font-semibold transition-all disabled:opacity-60"
-            style={{
-              background: isAlmostFull ? mode.color : mode.btnBg,
-              color: isAlmostFull ? '#11131e' : mode.btnText,
-              border: isAlmostFull ? 'none' : `0.5px solid ${mode.border}`,
-              boxShadow: isAlmostFull ? `0 0 12px ${mode.color}50` : undefined,
-            }}
-          >
-            {joining ? '...' : isAlmostFull ? 'Vào nhanh →' : 'Vào →'}
-          </button>
-        )}
-        {isWaiting && isFull && (
-          <button
-            disabled
-            className="px-4 py-2 rounded-lg text-xs font-semibold cursor-not-allowed"
-            style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.25)' }}
-          >
-            Đã đầy
-          </button>
-        )}
-        {isPlaying && (
-          room.joinable ? (
-            <button
-              onClick={handleJoin}
-              disabled={joining}
-              title="Quay lại trận đấu"
-              className="px-4 py-2 rounded-lg text-xs font-semibold disabled:opacity-50"
-              style={{ background: 'rgba(232,168,50,0.12)', color: '#e8a832', border: '0.5px solid rgba(232,168,50,0.3)' }}
-            >
-              {joining ? 'Đang vào...' : 'Tiếp tục →'}
-            </button>
-          ) : (
-            <span
-              className="px-4 py-2 rounded-lg text-xs font-semibold cursor-not-allowed"
-              style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.4)', border: '0.5px solid rgba(255,255,255,0.06)' }}
-              title="Trận đấu đang diễn ra · không thể tham gia"
-            >
-              Đang chơi
-            </span>
-          )
-        )}
-      </div>
-    </article>
-  );
-}
-
-// ─── Main Page ────────────────────────────────────────────────────────────────
-
-const Multiplayer = () => {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { isAuthenticated } = useAuth();
-  const [sort, setSort] = useState<SortOption>('newest');
-  const [codeJoinError, setCodeJoinError] = useState<string | null>(null);
-  const [isCodeJoining, setIsCodeJoining] = useState(false);
-  const [roomEndedBanner, setRoomEndedBanner] = useState<string | null>(null);
-
-  // SPEC §5.4.0 — RoomLobby/RoomQuiz redirect here with a reason in nav
-  // state when the backend cleanup paths force the room to end. Show a
-  // banner once and clear the nav state so a refresh doesn't re-show it.
+  // Show banner once when redirected here with a roomEndedReason in nav state.
   useEffect(() => {
-    const navState = location.state as { roomEndedReason?: string; kickedFromRoom?: boolean } | null;
+    const navState = location.state as { roomEndedReason?: string } | null
     if (navState?.roomEndedReason) {
-      setRoomEndedBanner(navState.roomEndedReason);
-      window.history.replaceState({}, '');
-      const timer = setTimeout(() => setRoomEndedBanner(null), 6000);
-      return () => clearTimeout(timer);
+      setRoomEndedBanner(navState.roomEndedReason)
+      window.history.replaceState({}, '')
+      const timer = setTimeout(() => setRoomEndedBanner(null), 6000)
+      return () => clearTimeout(timer)
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   const handleJoinByCode = async (code: string) => {
-    setIsCodeJoining(true);
-    setCodeJoinError(null);
+    setIsCodeJoining(true)
+    setCodeJoinError(null)
     try {
-      const res = await api.post('/api/rooms/join', { roomCode: code });
-      const room = res.data.room;
-      const target = room.status === 'IN_PROGRESS' ? 'quiz' : 'lobby';
-      navigate(`/room/${room.id}/${target}`, { state: { room, mode: room.mode, viewerUserId: res.data.viewerUserId } });
+      const res = await api.post('/api/rooms/join', { roomCode: code })
+      const room = res.data.room
+      const target = room.status === 'IN_PROGRESS' ? 'quiz' : 'lobby'
+      navigate(`/room/${room.id}/${target}`, { state: { room, mode: room.mode, viewerUserId: res.data.viewerUserId } })
     } catch (err: any) {
-      setCodeJoinError(err?.response?.data?.message || 'Mã phòng không hợp lệ hoặc phòng đã đầy');
-      setIsCodeJoining(false);
+      setCodeJoinError(err?.response?.data?.message || 'Mã phòng không hợp lệ hoặc phòng đã đầy')
+      setIsCodeJoining(false)
     }
-  };
+  }
 
-  useEffect(() => {
-    if (!isAuthenticated) navigate('/login');
-  }, [isAuthenticated, navigate]);
+  useEffect(() => { if (!isAuthenticated) navigate('/login') }, [isAuthenticated, navigate])
 
   const { data, isLoading, isError, refetch, isFetching } = useQuery<{ success: boolean; rooms: PublicRoom[] }>({
     queryKey: ['public-rooms'],
-    queryFn: () => api.get('/api/rooms/public').then((r) => r.data),
+    queryFn: () => api.get('/api/rooms/public').then(r => r.data),
     enabled: isAuthenticated,
     refetchInterval: 30000,
     staleTime: 15000,
-  });
+  })
 
-  if (!isAuthenticated) return null;
+  if (!isAuthenticated) return null
 
-  const allRooms = data?.rooms ?? [];
+  const allRooms = data?.rooms ?? []
+  const filtered = modeFilter === 'ALL' ? allRooms : allRooms.filter(r => r.mode === modeFilter)
+  const sorted = [...filtered].sort((a, b) => {
+    if (sort === 'filling') return (b.currentPlayers / b.maxPlayers) - (a.currentPlayers / a.maxPlayers)
+    return new Date(b.createdAt ?? 0).getTime() - new Date(a.createdAt ?? 0).getTime()
+  })
 
-  const sorted = [...allRooms].sort((a, b) => {
-    if (sort === 'filling') {
-      const fillA = a.currentPlayers / a.maxPlayers;
-      const fillB = b.currentPlayers / b.maxPlayers;
-      return fillB - fillA;
-    }
-    if (sort === 'difficulty') {
-      const order: Record<RoomDifficulty, number> = { EASY: 0, MEDIUM: 1, HARD: 2, MIXED: 3 };
-      return (order[a.difficulty] ?? 3) - (order[b.difficulty] ?? 3);
-    }
-    return new Date(b.createdAt ?? 0).getTime() - new Date(a.createdAt ?? 0).getTime();
-  });
-
-  const waitingCount = allRooms.filter((r) => r.status === 'LOBBY').length;
-  const playingCount = allRooms.filter((r) => r.status === 'IN_PROGRESS').length;
-  const liveCount = waitingCount + playingCount;
+  const liveCount = allRooms.filter(r => r.status === 'LOBBY' || r.status === 'IN_PROGRESS').length
 
   return (
-    <div data-testid="multiplayer-page" className="space-y-6">
+    <div data-testid="multiplayer-page" className="max-w-[1180px] mx-auto space-y-6">
 
       {roomEndedBanner && (
         <div
           data-testid="multiplayer-room-ended-banner"
           className="rounded-xl px-4 py-3 flex items-center gap-3"
-          style={{
-            background: 'rgba(232,168,50,0.08)',
-            border: '1px solid rgba(232,168,50,0.25)',
-            color: '#fbbf24',
-          }}
+          style={{ background: 'rgba(232,168,50,0.08)', border: '1px solid rgba(232,168,50,0.25)', color: '#fbbf24' }}
         >
           <span className="material-symbols-outlined text-lg">info</span>
           <span className="text-sm font-medium">
@@ -500,214 +115,270 @@ const Multiplayer = () => {
         </div>
       )}
 
-      {/* ── Page Header ── */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-        <div className="flex items-start gap-3">
-          <div
-            className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-            style={{ background: 'rgba(232,168,50,0.15)' }}
-          >
-            <span className="text-lg">⚔️</span>
-          </div>
-          <div>
-            <div className="text-[11px] font-semibold tracking-wider mb-0.5" style={{ color: 'rgba(232,168,50,0.7)', letterSpacing: '0.05em' }}>
-              {t('multiplayer.subtitle', 'CHẾ ĐỘ ĐA NGƯỜI CHƠI')}
-            </div>
-            <h2 className="text-xl font-bold text-white leading-tight">{t('multiplayer.title', 'Phòng chơi')}</h2>
-            <p className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.45)' }}>
-              {t('multiplayer.desc', '4 chế độ · Realtime')}
-              {liveCount > 0 && <span className="ml-2" style={{ color: '#97C459' }}>· {liveCount} phòng đang sống</span>}
-            </p>
-          </div>
-        </div>
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => navigate('/my-sets')}
-            className="hidden md:flex items-center gap-2 py-2.5 px-4 rounded-xl text-sm font-semibold border border-secondary/30 text-secondary hover:bg-secondary/10 transition-colors"
-          >
-            <span className="material-symbols-outlined text-sm" style={FILL_1}>menu_book</span>
-            Bộ câu hỏi
-          </button>
-          <button
-            data-testid="multiplayer-create-btn"
-            onClick={() => navigate('/room/create')}
-            className="flex items-center justify-center gap-2 py-3 md:py-2.5 px-5 rounded-xl text-sm font-bold shadow-md transition-all hover:opacity-90 w-full md:w-auto"
-            style={{ background: '#e8a832', color: '#412d00', boxShadow: '0 0 20px rgba(232,168,50,0.25)' }}
-          >
-            <span className="material-symbols-outlined text-sm" style={FILL_1}>add_circle</span>
-            {t('multiplayer.createRoom', 'Tạo phòng mới')}
-          </button>
-        </div>
-      </div>
-
-      {/* ── Join by code ── */}
-      <div
-        className="p-5 rounded-2xl flex flex-col gap-3"
-        style={{
-          background: 'rgba(50,52,64,0.4)',
-          border: '0.5px solid rgba(232,168,50,0.2)',
-          borderLeft: '3px solid #e8a832',
-        }}
-      >
+      {/* ── Top header ── */}
+      <header className="flex items-start justify-between gap-6 flex-wrap">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span>🔑</span>
-            <span className="text-white text-sm font-semibold">{t('multiplayer.joinByCode', 'Tham gia bằng mã')}</span>
-          </div>
-          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>
-            {t('multiplayer.joinByCodeDesc', 'Có mã 6 ký tự từ bạn bè? Vào ngay không cần tìm')}
-          </p>
-        </div>
-        <CodeInput onJoin={handleJoinByCode} disabled={isCodeJoining} />
-        {codeJoinError && (
-          <div className="mt-2 text-[11px] px-2 py-1.5 rounded-lg" style={{ background: 'rgba(239,68,68,0.12)', color: '#f87171' }}>
-            ⚠ {codeJoinError}
-          </div>
-        )}
-      </div>
-
-      {/* ── Room list header: title + live badge + toolbar ── */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between flex-wrap gap-3">
-          <div className="flex items-center gap-3">
-            <span className="text-white text-base font-bold">{t('multiplayer.waitingRooms', 'Phòng đang chờ')}</span>
-            <span
-              className="flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold"
-              style={{ background: 'rgba(99,153,34,0.15)', color: '#97C459', border: '0.5px solid rgba(99,153,34,0.3)' }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#97C459', boxShadow: '0 0 5px #97C459' }} />
-              LIVE {liveCount}
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
+            <span className="text-[11px] tracking-[0.2em] uppercase font-bold" style={{ color: '#e8a832' }}>
+              {t('multiplayer.subtitle', 'Chế độ Đa người chơi')}
+            </span>
+            <span className="w-1 h-1 rounded-full bg-white/30" />
+            <span className="flex items-center gap-1.5 text-[11px] text-white/60">
+              <LiveDot />
+              <span><span className="font-bold text-white">{liveCount}</span> phòng đang sống</span>
             </span>
           </div>
+          <h1 className="text-[28px] md:text-[34px] font-extrabold tracking-tight leading-tight text-white">
+            {t('multiplayer.title', 'Phòng Chơi')}
+          </h1>
+          <p className="text-[13px] text-white/55 mt-1">
+            {t('multiplayer.desc', 'Realtime · 4 chế độ · Mời bạn bè cùng học Kinh Thánh qua game')}
+          </p>
+        </div>
 
-          <div className="flex items-center gap-2 flex-wrap">
-            {/* Refresh — desktop only (mobile pull-to-refresh implied) */}
+        <button
+          onClick={() => navigate('/my-sets')}
+          className="hidden md:flex items-center gap-2 px-4 h-10 rounded-lg text-[13px] font-semibold transition-colors"
+          style={{ background: 'rgba(50,52,64,0.4)', border: '1px solid rgba(255,255,255,0.06)', color: '#fff' }}
+        >
+          <span className="material-symbols-outlined text-sm" style={FILL_1}>menu_book</span>
+          Bộ câu hỏi
+        </button>
+      </header>
+
+      {/* ── Hero row: Tạo phòng (3/5) + Tham gia bằng mã (2/5) ── */}
+      <section className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+        <div
+          className="lg:col-span-3 rounded-2xl p-6 relative overflow-hidden"
+          style={{
+            background: 'linear-gradient(135deg, rgba(232,168,50,0.12), rgba(231,194,104,0.06))',
+            border: '1px solid rgba(232,168,50,0.25)',
+            boxShadow: '0 0 24px -8px rgba(232,168,50,0.3)',
+          }}
+        >
+          <div className="absolute -right-12 -top-12 w-48 h-48 rounded-full pointer-events-none"
+            style={{ background: 'radial-gradient(circle, rgba(232,168,50,0.15) 0%, transparent 70%)' }} />
+          <div className="relative">
+            <div className="flex items-center gap-2 mb-3">
+              <div
+                className="w-9 h-9 rounded-lg flex items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #e8a832, #e7c268)' }}
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#11131e', fontVariationSettings: "'FILL' 1" }}>
+                  workspace_premium
+                </span>
+              </div>
+              <div className="text-[11px] tracking-widest uppercase font-bold" style={{ color: '#e8a832' }}>
+                Bạn sẽ là Quản trò
+              </div>
+            </div>
+            <h2 className="text-[22px] font-extrabold mb-1.5 leading-tight text-white">Tạo phòng &amp; điều phối trận đấu</h2>
+            <p className="text-[13px] text-white/65 mb-5 max-w-md leading-relaxed">
+              Quản trò không trả lời câu hỏi — bạn dẫn dắt, theo dõi, và đảm bảo công bằng cho người chơi.
+              Phù hợp cho nhóm tế bào, Bible study, hoặc thi đua bạn bè.
+            </p>
+            <button
+              data-testid="multiplayer-create-btn"
+              onClick={() => navigate('/room/create')}
+              className="w-full md:w-auto inline-flex items-center justify-center gap-2 h-11 px-5 rounded-lg text-[14px] font-bold transition-opacity hover:opacity-90"
+              style={{ background: 'linear-gradient(135deg, #e8a832, #e7c268)', color: '#1a1226' }}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>add</span>
+              {t('multiplayer.createRoom', 'Tạo phòng mới')}
+            </button>
+          </div>
+        </div>
+
+        <div
+          className="lg:col-span-2 rounded-2xl p-6"
+          style={{ background: 'rgba(50,52,64,0.4)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.06)' }}
+        >
+          <div className="flex items-center gap-2 mb-3">
+            <div
+              className="w-9 h-9 rounded-lg flex items-center justify-center"
+              style={{ background: 'rgba(255,255,255,0.06)' }}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: 18, color: 'rgba(255,255,255,0.8)' }}>key</span>
+            </div>
+            <div className="text-[11px] tracking-widest uppercase font-bold text-white/60">Tham gia phòng</div>
+          </div>
+          <h2 className="text-[18px] font-bold mb-1 leading-tight text-white">Có mã từ bạn bè?</h2>
+          <p className="text-[12px] text-white/50 mb-4">Nhập mã 6 chữ số / chữ cái</p>
+          <CodeInput onJoin={handleJoinByCode} disabled={isCodeJoining} error={codeJoinError} />
+        </div>
+      </section>
+
+      {/* ── Mode showcase ── */}
+      <section>
+        <div className="flex items-baseline justify-between mb-4">
+          <div>
+            <h3 className="text-[18px] font-bold tracking-tight text-white">4 chế độ chơi</h3>
+            <p className="text-[12px] text-white/50">Mỗi mode có luật & cách tính điểm riêng — chọn mode phù hợp khi tạo phòng</p>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          {MODE_LIST.map(m => {
+            const meta = MODE_TAGLINE[m.id]
+            return (
+              <button
+                key={m.id}
+                type="button"
+                onClick={() => navigate(`/room/create?mode=${m.id}`)}
+                className="rounded-xl p-5 text-left transition-all hover:-translate-y-0.5"
+                style={{
+                  background: `linear-gradient(135deg, ${hexToRgba(m.color, 0.10)}, ${hexToRgba(m.color, 0.02)})`,
+                  border: `1px solid ${hexToRgba(m.color, 0.18)}`,
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = hexToRgba(m.color, 0.4) }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = hexToRgba(m.color, 0.18) }}
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <span className="material-symbols-outlined" style={{ fontSize: 28, color: m.color, fontVariationSettings: "'FILL' 1" }}>
+                    {m.icon}
+                  </span>
+                  <span className="text-[10px] font-bold tracking-wider uppercase" style={{ color: m.color }}>
+                    {meta.tag}
+                  </span>
+                </div>
+                <h4 className="text-[15px] font-bold mb-1 text-white">{MODE_DISPLAY_LABEL[m.id]}</h4>
+                <p className="text-[11px] text-white/55 leading-relaxed mb-3">{meta.desc}</p>
+                <div className="flex items-center gap-1.5 text-[10px] text-white/40">
+                  <span className="material-symbols-outlined" style={{ fontSize: 12 }}>group</span>
+                  <span>{meta.range}</span>
+                </div>
+              </button>
+            )
+          })}
+        </div>
+      </section>
+
+      {/* ── Active rooms section ── */}
+      <section className="space-y-4">
+        <div className="flex items-center justify-between flex-wrap gap-3">
+          <div className="flex items-center gap-3">
+            <h3 className="text-[18px] font-bold tracking-tight text-white">
+              {t('multiplayer.waitingRooms', 'Phòng đang chờ')}
+            </h3>
+            <span
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-full"
+              style={{ background: 'rgba(34,197,94,0.10)', border: '1px solid rgba(34,197,94,0.20)' }}
+            >
+              <LiveDot />
+              <span className="text-[10px] font-bold uppercase tracking-wider text-green-400">Live · {liveCount}</span>
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
             <button
               onClick={() => refetch()}
               disabled={isFetching}
               title={t('multiplayer.refresh', 'Làm mới')}
-              aria-label={t('multiplayer.refresh', 'Làm mới danh sách phòng')}
-              className="hidden md:inline-flex p-1.5 rounded-lg transition-colors"
-              style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.55)', border: '0.5px solid rgba(255,255,255,0.08)' }}
+              className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
+              style={{ background: 'rgba(255,255,255,0.04)' }}
             >
-              <span className={`material-symbols-outlined text-[18px] ${isFetching ? 'animate-spin' : ''}`}>refresh</span>
-            </button>
-
-            {/* Sort tabs */}
-            <div
-              className="inline-flex rounded-lg p-0.5"
-              style={{ background: 'rgba(0,0,0,0.3)' }}
-            >
-              {([['newest', 'Mới'], ['filling', 'Sắp đầy'], ['difficulty', 'Khó']] as [SortOption, string][]).map(([val, label]) => (
-                <button
-                  key={val}
-                  onClick={() => setSort(val)}
-                  className="px-2.5 py-1 rounded-md text-[10px] font-semibold transition-all"
-                  style={sort === val
-                    ? { background: '#e8a832', color: '#412d00' }
-                    : { background: 'transparent', color: 'rgba(255,255,255,0.5)' }
-                  }
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-
-            {/* Search — desktop only */}
-            <button
-              title={t('multiplayer.search', 'Tìm kiếm')}
-              aria-label={t('multiplayer.search', 'Tìm phòng theo tên')}
-              className="hidden md:inline-flex p-1.5 rounded-lg transition-colors"
-              style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.55)', border: '0.5px solid rgba(255,255,255,0.08)' }}
-            >
-              <span className="material-symbols-outlined text-[18px]">search</span>
+              <span className={`material-symbols-outlined text-white/70 ${isFetching ? 'animate-spin' : ''}`} style={{ fontSize: 14 }}>refresh</span>
             </button>
           </div>
         </div>
 
-      </div>
-
-      {/* ── Room list ── */}
-      {isLoading ? (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-          {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className="h-52 rounded-xl animate-pulse"
-              style={{ background: 'rgba(50,52,64,0.3)' }}
-            />
+        {/* Filter chips: All + 4 modes + divider + sort */}
+        <div className="flex items-center gap-2 flex-wrap">
+          <FilterChip active={modeFilter === 'ALL'} onClick={() => setModeFilter('ALL')}>Tất cả</FilterChip>
+          {MODE_LIST.map(m => (
+            <FilterChip
+              key={m.id}
+              active={modeFilter === m.id}
+              onClick={() => setModeFilter(m.id)}
+              icon={m.icon}
+              iconColor={m.color}
+            >
+              {MODE_DISPLAY_LABEL[m.id]}
+            </FilterChip>
           ))}
+          <div className="w-px h-5 bg-white/10 mx-1" />
+          <FilterChip active={sort === 'newest'} onClick={() => setSort('newest')}>Mới nhất</FilterChip>
+          <FilterChip active={sort === 'filling'} onClick={() => setSort('filling')}>Sắp đầy</FilterChip>
         </div>
-      ) : isError ? (
-        <div
-          data-testid="multiplayer-error-state"
-          className="flex flex-col items-center justify-center py-20 rounded-3xl"
-          style={{ background: 'rgba(248,113,113,0.06)', border: '1px solid rgba(248,113,113,0.2)' }}
-        >
-          <div
-            className="w-20 h-20 rounded-full flex items-center justify-center mb-5"
-            style={{ background: 'rgba(248,113,113,0.12)' }}
-          >
-            <span className="material-symbols-outlined text-4xl" style={{ color: '#f87171' }}>error</span>
-          </div>
-          <h5 className="text-lg font-bold text-white mb-2">{t('multiplayer.errorTitle', 'Không thể tải danh sách phòng')}</h5>
-          <p className="text-sm text-center max-w-xs mb-7" style={{ color: 'rgba(255,255,255,0.55)' }}>
-            {t('multiplayer.errorDesc', 'Hệ thống đang gặp sự cố. Vui lòng thử lại.')}
-          </p>
-          <button
-            onClick={() => refetch()}
-            disabled={isFetching}
-            className="py-3 px-8 rounded-xl font-bold text-sm shadow-lg transition-all hover:opacity-90 disabled:opacity-60"
-            style={{ background: '#e8a832', color: '#412d00' }}
-          >
-            {isFetching ? t('common.loading', 'Đang tải...') : t('common.retry', 'Thử lại')}
-          </button>
-        </div>
-      ) : sorted.length === 0 ? (
-        <div
-          className="flex flex-col items-center justify-center py-20 rounded-3xl"
-          style={{ background: 'rgba(50,52,64,0.2)', border: '2px dashed rgba(255,255,255,0.08)' }}
-        >
-          <div
-            className="w-20 h-20 rounded-full flex items-center justify-center mb-5"
-            style={{ background: 'rgba(50,52,64,0.6)' }}
-          >
-            <span className="material-symbols-outlined text-4xl" style={{ color: 'rgba(255,255,255,0.25)' }}>sentiment_dissatisfied</span>
-          </div>
-          <h5 className="text-lg font-bold text-white mb-2">{t('multiplayer.emptyTitle', 'Chưa có phòng nào đang chờ')}</h5>
-          <p className="text-sm text-center max-w-xs mb-7" style={{ color: 'rgba(255,255,255,0.45)' }}>
-            {t('multiplayer.emptyDesc', 'Bạn là người tiên phong! Tạo phòng đầu tiên và mời anh chị em cùng chơi.')}
-          </p>
-          <button
-            onClick={() => navigate('/room/create')}
-            className="py-3 px-8 rounded-xl font-bold text-sm shadow-lg transition-all hover:opacity-90"
-            style={{ background: '#e8a832', color: '#412d00' }}
-          >
-            {t('multiplayer.createRoomNow', '+ Tạo phòng đầu tiên')}
-          </button>
-        </div>
-      ) : (
-        <>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-            {sorted.map((room) => (
-              <RoomCard key={room.id} room={room} />
+
+        {/* Rooms list (loading / error / empty / populated) */}
+        {isLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {[1, 2, 3, 4].map(i => (
+              <div key={i} className="h-44 rounded-xl animate-pulse" style={{ background: 'rgba(50,52,64,0.3)' }} />
             ))}
           </div>
-
-          {allRooms.length > sorted.length && (
-            <div className="text-center mt-2">
-              <button
-                className="px-6 py-2.5 rounded-lg text-sm font-semibold transition-all"
-                style={{ background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.65)', border: '0.5px solid rgba(255,255,255,0.1)' }}
-              >
-                {t('multiplayer.loadMore', `Xem thêm ${allRooms.length - sorted.length} phòng →`)}
-              </button>
-            </div>
-          )}
-        </>
-      )}
+        ) : isError ? (
+          <ErrorState onRetry={() => refetch()} retrying={isFetching} />
+        ) : sorted.length === 0 ? (
+          <EmptyState />
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {sorted.map(room => <RoomCard key={room.id} room={room} />)}
+          </div>
+        )}
+      </section>
     </div>
-  );
-};
+  )
+}
 
-export default Multiplayer;
+// ── Local sub-components ─────────────────────────────────────────────────────
+
+function LiveDot() {
+  return (
+    <span className="relative inline-block w-2 h-2">
+      <span className="absolute inset-0 rounded-full bg-green-500" />
+      <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-75" />
+    </span>
+  )
+}
+
+function FilterChip({
+  active, onClick, children, icon, iconColor,
+}: {
+  active: boolean
+  onClick: () => void
+  children: React.ReactNode
+  icon?: string
+  iconColor?: string
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="inline-flex items-center gap-1.5 px-3 h-8 rounded-full text-[12px] font-semibold transition-colors"
+      style={{
+        background: active ? 'rgba(232,168,50,0.15)' : 'transparent',
+        border: `1px solid ${active ? 'rgba(232,168,50,0.4)' : 'rgba(255,255,255,0.10)'}`,
+        color: active ? '#e8a832' : 'rgba(255,255,255,0.7)',
+      }}
+    >
+      {icon && (
+        <span className="material-symbols-outlined" style={{ fontSize: 12, color: iconColor }}>{icon}</span>
+      )}
+      {children}
+    </button>
+  )
+}
+
+function ErrorState({ onRetry, retrying }: { onRetry: () => void; retrying: boolean }) {
+  return (
+    <div
+      data-testid="multiplayer-error-state"
+      className="flex flex-col items-center justify-center py-20 rounded-2xl"
+      style={{ background: 'rgba(248,113,113,0.06)', border: '1px solid rgba(248,113,113,0.2)' }}
+    >
+      <div className="w-20 h-20 rounded-full flex items-center justify-center mb-5" style={{ background: 'rgba(248,113,113,0.12)' }}>
+        <span className="material-symbols-outlined" style={{ fontSize: 32, color: '#f87171' }}>error</span>
+      </div>
+      <h5 className="text-lg font-bold text-white mb-2">Không thể tải danh sách phòng</h5>
+      <p className="text-sm text-white/55 text-center max-w-xs mb-6">Hệ thống đang gặp sự cố. Vui lòng thử lại.</p>
+      <button
+        onClick={onRetry}
+        disabled={retrying}
+        className="py-3 px-8 rounded-xl font-bold text-sm disabled:opacity-60"
+        style={{ background: 'linear-gradient(135deg, #e8a832, #e7c268)', color: '#1a1226' }}
+      >
+        {retrying ? 'Đang tải...' : 'Thử lại'}
+      </button>
+    </div>
+  )
+}
