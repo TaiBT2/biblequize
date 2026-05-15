@@ -19,38 +19,41 @@ export interface ModeMeta {
   badge: { bg: string; fg: string; border: string }
 }
 
+// Palette canonical per PROMPT_MULTIPLAYER_LOBBY_REDESIGN.md §0.1 — hardcoded
+// hex values (NEVER CSS variables, mockup rendering bug). Sudden Death =
+// amber #fbbf24, NOT streak orange #fb923c.
 export const MODE_META: Record<RoomModeId, ModeMeta> = {
   SPEED_RACE: {
     id: 'SPEED_RACE',
     icon: 'bolt',
     labelKey: 'room.modes.speed_race',
     descKey: 'createRoom.modeDesc.speed_race',
-    color: '#60a5fa',
-    badge: { bg: 'rgba(96,165,250,0.15)',  fg: '#93c5fd', border: 'rgba(96,165,250,0.35)' },
+    color: '#38bdf8',
+    badge: { bg: 'rgba(56,189,248,0.15)',  fg: '#7dd3fc', border: 'rgba(56,189,248,0.35)' },
   },
   BATTLE_ROYALE: {
     id: 'BATTLE_ROYALE',
-    icon: 'favorite',
+    icon: 'swords',
     labelKey: 'room.modes.battle_royale',
     descKey: 'createRoom.modeDesc.battle_royale',
-    color: '#f87171',
-    badge: { bg: 'rgba(248,113,113,0.15)', fg: '#fca5a5', border: 'rgba(248,113,113,0.35)' },
+    color: '#ef4444',
+    badge: { bg: 'rgba(239,68,68,0.15)',   fg: '#fca5a5', border: 'rgba(239,68,68,0.35)' },
   },
   TEAM_VS_TEAM: {
     id: 'TEAM_VS_TEAM',
     icon: 'groups',
     labelKey: 'room.modes.team_vs_team',
     descKey: 'createRoom.modeDesc.team_vs_team',
-    color: '#4ade80',
-    badge: { bg: 'rgba(74,222,128,0.15)',  fg: '#86efac', border: 'rgba(74,222,128,0.35)' },
+    color: '#a855f7',
+    badge: { bg: 'rgba(168,85,247,0.15)',  fg: '#d8b4fe', border: 'rgba(168,85,247,0.35)' },
   },
   SUDDEN_DEATH: {
     id: 'SUDDEN_DEATH',
-    icon: 'workspace_premium',
+    icon: 'target',
     labelKey: 'room.modes.sudden_death',
     descKey: 'createRoom.modeDesc.sudden_death',
-    color: '#c084fc',
-    badge: { bg: 'rgba(192,132,252,0.15)', fg: '#d8b4fe', border: 'rgba(192,132,252,0.35)' },
+    color: '#fbbf24',
+    badge: { bg: 'rgba(251,191,36,0.15)',  fg: '#fcd34d', border: 'rgba(251,191,36,0.35)' },
   },
 }
 
