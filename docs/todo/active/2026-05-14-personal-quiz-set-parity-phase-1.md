@@ -51,7 +51,7 @@
   - Checklist: endpoint + service + test → commit < 100 LOC
 
 - PQS-4 FE: API adapter `api/personalQuizSets.ts`
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/api/personalQuizSets.ts` (mới)
   - Export functions với signature giống `api/quizSets.ts` nhưng KHÔNG nhận `groupId`: `createQuizSet`, `updateQuizSet`, `publishQuizSet`, `getQuizSetFull`, `addQuestion`, `updateQuestion`, `deleteQuestion`, `reorderQuestions`. Internally call `/api/question-sets/*` + `/api/user-questions/*`.
   - `addQuestion`: gộp 2 call (POST `/api/user-questions` → POST `/api/question-sets/{id}/items` với `questionId`). Trả về `{question: EditorQuestion, totalQuestions}`.
