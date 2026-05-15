@@ -417,32 +417,57 @@
 
 ## Multiplayer Lobby Redesign (2026-05-15) — Deferred items
 
-### BL-MP-QM — Quick Match endpoint
-- **Status:** ⬜ Deferred (post-launch)
-- **Effort:** ~1 day BE + 0.5 day FE
-- **Trigger:** Implement when DAU > 200 (community size justifies matchmaking)
-- **Scope:**
-  - `POST /api/rooms/quick-match` — find best public LOBBY room with slot, or create with user's last preferences
-  - FE button "Tìm trận nhanh" on Multiplayer hero next to "Tạo Phòng"
-- **Why deferred:** Current FMC Đà Nẵng community size means quick-match would 80% fall through to CreateRoom anyway. Wait for traffic.
-- **Ref:** `docs/MULTIPLAYER/PROMPT_MULTIPLAYER_LOBBY_REDESIGN.md` §0.2
+### BL-MP-QM — Quick Match (Đấu Nhanh) — 🚧 ACTIVE SPRINT (2026-05-15)
+- **Status:** 🚧 IN PROGRESS — pivoted from BL-MP-SOLO after concept misinterpretation. Implementation tracked as QP-1..QP-REGRESSION in `docs/todo/active/2026-05-15-multiplayer-quickmatch-pivot.md`.
+- **Effort:** ~3 days
+- **Why active:** "Solo" was misinterpreted as single-player. Real intent = multiplayer without Quản trò, server soft-coordinates. See `docs/new-multiplayer/PROMPT_MULTIPLAYER_QUICKMATCH_PIVOT.md`.
+- **Scope (locked 2026-05-15 after 4 corrections):**
 
-### BL-MP-SOLO — Solo Arena full implementation
-- **Status:** ⬜ Scoped, separate prompt needed
-- **Effort:** ~5–7 days (BE + FE)
-- **Trigger:** After Sprint 5 ships, OR if Phòng Chơi empty-state retention data justifies prioritizing
+#### BE
+- Migration **V57**: `ALTER TABLE rooms ADD COLUMN quick_match BOOLEAN NOT NULL DEFAULT FALSE, ADD COLUMN ai_questions_payload JSON NULL` + index `(quick_match, status)`.
+- `POST /api/rooms/quick-match` — body `{ mode, bookScope, questionCount, timePerQuestion, source }`. **Always-create** (Liên Quân custom lobby pattern, no matchmaking). Daily cap 3/user/day + AI tier-lock (Tier 4+) + anti-cheat (not in another room).
+- `QuickMatchQuestionSourceService` — DB random with book/chapter/verse filter (30/50/20 difficulty mix) OR AI gen one-shot. **AI questions persist ONLY in `Room.aiQuestionsPayload` JSON** — not saved to `Question` table. Purged with R5 room cleanup.
+- `DailyQuickMatchCounter` (Redis SETEX 24h TTL, key `quickmatch:daily:{userId}:{yyyymmdd}`).
+- Soft-host: `hostPlaysGame=true` forced, `hostId` = creator (no privilege). Any player can `POST /api/rooms/{id}/start` when ≥2 ready.
+- 5 host control endpoints (pause/resume/skip/broadcast/end-early) reject quick-match with 422 `QUICK_MATCH_NO_HOST_CONTROLS`.
+
+#### FE
+- Rename `SoloArenaEntryCard.tsx` → `QuickMatchEntryCard.tsx` (git mv), copy update per mockup v3 (rocket icon, "Vào ngay · Không cần host" kicker, daily quota indicator).
+- **NEW** `QuickMatchConfigModal.tsx` — modal popup with 5 sections: mode picker (4 cards) · scope select · count chips · time chips · source toggle (AI disabled+badge if Tier < 4). Click EntryCard CTA → opens this modal → submit → `triggerQuickMatch(config)`.
+- Delete `SoloArenaPlaceholder.tsx` + `/solo-arena` route (replaced by Quick Match flow).
+- `EmptyRoomsState`: 4-mode-grid + Solo soft-link → **2 CTAs** (Đấu Nhanh indigo opens modal · Tạo phòng Quản trò gold).
+- `QuickMatchRoomCard.tsx` — distinct variant: indigo accent, "Đấu Nhanh" badge, room code title, mode+scope kicker, source icon (cpu/auto_awesome).
+- `RoomsSection` filter chip "Đấu Nhanh" first.
+- `RoomLobby` variant: indigo info banner thay Quản trò gold, start visible to all when 2+ ready, hide host control panel.
+- `triggerQuickMatch(config)` + error handler trong `api/rooms.ts`.
+
+#### Locked decisions (LOCK 2026-05-15)
+- Naming: "Đấu Nhanh" (VI) / `quickMatch` field / `QUICK_MATCH_NO_HOST_CONTROLS` error code
+- Match policy: **always-create** (creator chooses config)
+- Source: DATABASE default / AI_GENERATED Tier 4+ unlock
+- AI storage: ephemeral `Room.aiQuestionsPayload JSON` — NO save to `Question` pool
+- Daily cap: 3 trận/ngày/user — Redis backed
+- Color: indigo `#6366f1` → `#818cf8` gradient
+- Config UI: modal popup (`QuickMatchConfigModal`)
+- XP/Leaderboard: NONE (variety-style)
+
+- **Ref:** `docs/new-multiplayer/PROMPT_MULTIPLAYER_QUICKMATCH_PIVOT.md` + `docs/new-multiplayer/MOCKUP_MULTIPLAYER_LOBBY_v3.html`
+
+### BL-MP-QM-CUSTOM — Quick Match v2 user preferences (deferred)
+- **Status:** ⬜ Deferred (v2)
+- **Effort:** ~1 day FE + 0.5 day BE
+- **Trigger:** After BL-MP-QM v1 ships + user feedback indicates demand
 - **Scope:**
-  - Replace `apps/web/src/pages/SoloArenaPlaceholder.tsx` (Coming Soon) with real Solo Arena page
-  - BE: `SoloArenaSessionService` (fork ~70% from `RankedSessionService`)
-  - Question source: RANDOM_DB | AI_GENERATED toggle (tier-locked AI per Bui's recommendation Tier 4+)
-  - Daily cap 3 sessions (recommended), reset UTC 0h
-  - No XP, no leaderboard (variety-style)
-  - Anti-spoiler: lazy server-side selection, per-session seed, no pool preview API
-- **Pending decisions (need Bui confirm before prompt):**
-  - Tier-lock for AI source: Tier 4+? Or open all tiers with reduced quota per user?
-  - Daily cap: 3 sessions/day fixed? Or scale with tier?
-  - Page name: "Solo Arena" (EN, current) vs "Đấu Trường Solo" (VI) vs "Thử Thách Solo"?
-- **Ref:** `docs/MULTIPLAYER/PROMPT_MULTIPLAYER_LOBBY_REDESIGN.md` §0.2
+  - Persistent user preferences for default Quick Match config (source / count / scope)
+  - Sticky in user profile, not query param
+  - Sidebar gear button on `QuickMatchEntryCard` to open settings
+  - BE: add user preference fields to `User` entity or new `UserPreferences` table
+- **Ref:** `docs/new-multiplayer/PROMPT_MULTIPLAYER_QUICKMATCH_PIVOT.md` §0.2
+
+### BL-MP-SOLO — Solo Arena (CLOSED 2026-05-15)
+- **Status:** ❌ CANCELLED — concept pivoted to BL-MP-QM (Quick Match)
+- **Reason:** "Solo" was misinterpreted as single-player. Intent was multiplayer-without-host (Quick Match pattern). MPP-3/4 shipped Solo Arena placeholder + entry card; QP-6/7 will rename/replace those with Quick Match equivalents.
+- **Replacement:** All scope absorbed into BL-MP-QM above.
 
 ### BL-MP-PALETTE — Multiplayer palette canonical patch (2026-05-15, shipped)
 - **Issue:** MLR commit 77165a9 đã ship palette mode khác với canonical PROMPT_MULTIPLAYER_LOBBY_REDESIGN §0.1.
