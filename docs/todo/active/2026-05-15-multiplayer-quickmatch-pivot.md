@@ -72,7 +72,7 @@
   - Checklist: branch logic + 5 endpoint guards → commit ~80 LOC
 
 - QP-6 FE: Rename SoloArenaEntryCard → QuickMatchEntryCard (opens modal)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/multiplayer/SoloArenaEntryCard.tsx` → rename → `QuickMatchEntryCard.tsx`, update import in `Multiplayer.tsx`
   - Use `git mv` to preserve history. Update copy per mockup v3: rocket icon (`rocket_launch`), "Vào ngay · Không cần host" kicker, "Đấu Nhanh" title, "Server tự điều phối — bạn vào là chơi" copy, 3 tags (Speed Race / 2–10 / Random — thực ra hiển thị "Tùy bạn chọn" vì v2 cho config), quota indicator `{N}/3 trận Đấu Nhanh hôm nay`. Click button → opens `QuickMatchConfigModal` (QP-6.5).
   - Export `QUICK_MATCH_COLORS` from `modeMeta.ts` (move from inline `SOLO` const trong file SoloArenaEntryCard).

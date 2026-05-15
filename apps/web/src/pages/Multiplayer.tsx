@@ -16,7 +16,7 @@ import { MODE_LIST, MODE_META, type RoomModeId } from './create-room/modeMeta'
 import JoinByCodeBar from './multiplayer/JoinByCodeBar'
 import RoomCard from './multiplayer/RoomCard'
 import EmptyState from './multiplayer/EmptyState'
-import SoloArenaEntryCard from './multiplayer/SoloArenaEntryCard'
+import QuickMatchEntryCard from './multiplayer/QuickMatchEntryCard'
 import type { PublicRoom, RoomMode, SortOption } from './multiplayer/types'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
@@ -198,7 +198,7 @@ export default function Multiplayer() {
           </div>
         </div>
 
-        <SoloArenaEntryCard />
+        <QuickMatchEntryCard />
       </section>
 
       {/* ── Mode showcase ── */}
