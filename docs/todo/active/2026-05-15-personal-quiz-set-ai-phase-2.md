@@ -26,7 +26,7 @@
   - Checklist: endpoint + service + test → commit < 100 LOC
 
 - PQS2-2 BE: Endpoint `POST /api/question-sets/{id}/questions/{qid}/ai-rewrite`
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/api/src/main/java/com/biblequiz/api/QuestionSetController.java`
   - Validate owner sở hữu set + question trong set, `tryAcquire(1)`, build `AIGenerationContext` từ `UserQuestion` hiện tại (book/chapter/verseStart-end/difficulty/language), `customPrompt = "Viết lại câu hỏi này..."` + optional hint, count=1 → trả `{draft, provider, used, limit, remaining}`. KHÔNG save — FE accept thì update qua endpoint `PUT /api/user-questions/{id}` đã có.
   - Test: JUnit — rewrite return draft không persist.
@@ -55,7 +55,7 @@
   - Checklist: prop + wire → Tầng 1+2+3 pass → commit < 30 LOC
 
 - PQS2-5 BE: Endpoint helper `GET /api/question-sets/ai-quota` (chỉ tạo nếu PQS2-3 cần)
-  - Status: [ ] TODO (may be merged into PQS2-1 or skipped if existing endpoint reusable)
+  - Status: [x] DONE (merged into PQS2-2 commit)
   - Files: `apps/api/src/main/java/com/biblequiz/api/QuestionSetController.java`
   - Đơn giản: `aiQuotaService.snapshot()` → return `{used, limit, remaining}`. Không auth-specific.
   - **Spec strategy**: [x] (c) `[no-spec-impact]`

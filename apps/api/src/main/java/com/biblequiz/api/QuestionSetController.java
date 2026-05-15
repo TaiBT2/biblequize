@@ -400,6 +400,77 @@ public class QuestionSetController {
         return o instanceof Number n ? n.intValue() : fallback;
     }
 
+    /**
+     * POST /api/question-sets/{id}/questions/{qid}/ai-rewrite
+     * Returns 1 fresh draft WITHOUT saving — FE accept/discards via PUT
+     * /api/user-questions/{qid}. Body: { hint?: string }
+     */
+    @PostMapping("/{id}/questions/{qid}/ai-rewrite")
+    public ResponseEntity<?> aiRewriteQuestion(@PathVariable String id,
+                                                @PathVariable String qid,
+                                                @RequestBody(required = false) Map<String, Object> body,
+                                                Principal principal) {
+        try {
+            User user = getUser(principal);
+            QuestionSet set = service.getById(id);
+            if (!set.getUser().getId().equals(user.getId())) {
+                return ResponseEntity.status(403).body(Map.of("success", false, "message", "Không có quyền"));
+            }
+            UserQuestion existing = service.getItems(id).stream()
+                    .map(QuestionSetItem::getUserQuestion)
+                    .filter(q -> q.getId().equals(qid))
+                    .findFirst()
+                    .orElse(null);
+            if (existing == null) {
+                return ResponseEntity.status(404).body(Map.of("success", false, "message", "Câu hỏi không thuộc bộ này"));
+            }
+
+            if (!aiQuotaService.tryAcquire(1)) {
+                AIQuotaService.Usage u = aiQuotaService.snapshot();
+                return ResponseEntity.status(429).body(Map.of("success", false,
+                        "error", "QUOTA_EXCEEDED",
+                        "message", "Đã đạt giới hạn AI hôm nay",
+                        "used", u.used(), "limit", u.limit(), "remaining", u.remaining()));
+            }
+
+            String hint = body != null && body.get("hint") instanceof String s ? s.trim() : "";
+            String customPrompt = "Viết lại câu hỏi này theo hướng khác. Câu gốc: \"" + existing.getContent() + "\"."
+                    + (hint.isEmpty() ? "" : " Gợi ý: " + hint);
+
+            AIGenerationContext ctx = AIGenerationContext.of(
+                    existing.getBook() != null ? existing.getBook() : "John",
+                    existing.getChapterStart() != null ? existing.getChapterStart() : 1,
+                    existing.getVerseStart() != null ? existing.getVerseStart() : 1,
+                    existing.getVerseEnd() != null ? existing.getVerseEnd() : 50,
+                    existing.getDifficulty() != null ? existing.getDifficulty().name() : "MEDIUM",
+                    "MULTIPLE_CHOICE",
+                    existing.getLanguage() != null ? existing.getLanguage() : "vi",
+                    1, null, customPrompt);
+            AIGenerationResult res = aiProviderRouter.generate(ctx, null);
+            Map<String, Object> draft = res.questions().isEmpty() ? Map.of() : res.questions().get(0);
+
+            AIQuotaService.Usage u = aiQuotaService.snapshot();
+            return ResponseEntity.ok(Map.of("success", true,
+                    "draft", draft,
+                    "provider", res.providerUsed(),
+                    "used", u.used(), "limit", u.limit(), "remaining", u.remaining()));
+        } catch (SecurityException e) {
+            return ResponseEntity.status(403).body(err(e));
+        } catch (AIProviderException e) {
+            return ResponseEntity.internalServerError().body(err(e));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(err(e));
+        }
+    }
+
+    /** PQS2-5: GET /api/question-sets/ai-quota — snapshot global daily quota. */
+    @GetMapping("/ai-quota")
+    public ResponseEntity<?> getAiQuota() {
+        AIQuotaService.Usage u = aiQuotaService.snapshot();
+        return ResponseEntity.ok(Map.of(
+                "used", u.used(), "limit", u.limit(), "remaining", u.remaining()));
+    }
+
     // ── DTO helpers ───────────────────────────────────────────────────────────
 
     private Map<String, Object> toDTO(QuestionSet s, boolean withOwner) {
