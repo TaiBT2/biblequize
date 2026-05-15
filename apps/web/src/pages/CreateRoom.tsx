@@ -58,9 +58,10 @@ export default function CreateRoom() {
     questionSetId: null as string | null,
   })
 
+  // Only PUBLISHED sets are playable — DRAFTs are hidden from the picker (PQS-8).
   const { data: setsData } = useQuery({
-    queryKey: ['my-sets'],
-    queryFn: () => api.get('/api/question-sets').then(r => r.data),
+    queryKey: ['my-sets', 'published'],
+    queryFn: () => api.get('/api/question-sets', { params: { status: 'PUBLISHED' } }).then(r => r.data),
     enabled: formData.questionSource === 'CUSTOM',
   })
   const userSets: { id: string; name: string; questionCount: number; visibility: string }[] = setsData?.sets ?? []
@@ -274,8 +275,8 @@ export default function CreateRoom() {
                 </div>
                 {userSets.length === 0 ? (
                   <div className="p-4 rounded-xl border border-dashed border-outline-variant/20 text-center">
-                    <p className="text-xs text-on-surface-variant/60">Chưa có bộ câu hỏi nào.</p>
-                    <Link to="/my-sets" className="text-xs text-secondary hover:underline mt-1 inline-block">Tạo bộ đầu tiên →</Link>
+                    <p className="text-xs text-on-surface-variant/60">Chưa có bộ câu hỏi nào đã xuất bản.</p>
+                    <Link to="/my-sets" className="text-xs text-secondary hover:underline mt-1 inline-block">Soạn bộ mới →</Link>
                   </div>
                 ) : (
                   <div className="space-y-2 max-h-[200px] overflow-y-auto pr-0.5">

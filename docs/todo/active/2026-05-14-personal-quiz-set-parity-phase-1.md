@@ -99,7 +99,7 @@
   - Checklist: rewrite card + xoá form → Tầng 1+2 pass → commit < 100 LOC
 
 - PQS-8 FE: `CreateRoom.tsx` lọc PUBLISHED-only cho custom set picker
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/CreateRoom.tsx`
   - `useQuery` user sets pass `?status=PUBLISHED` để DRAFT không show trong dropdown. Empty state: "Chưa có bộ PUBLISHED nào. <Link>Soạn bộ mới</Link>".
   - Test: Playwright — user có 1 DRAFT + 1 PUBLISHED → dropdown chỉ list PUBLISHED.
