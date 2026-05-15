@@ -59,7 +59,9 @@ describe('CreateRoom', () => {
   // 2. All 4 game mode cards
   it('renders all 4 game mode cards', () => {
     renderCreateRoom()
-    expect(screen.getByText('Đua tốc độ')).toBeInTheDocument()
+    // Active mode label appears in both the mode card AND the preview badge,
+    // so use getAllByText for the default-active SPEED_RACE.
+    expect(screen.getAllByText('Đua tốc độ').length).toBeGreaterThanOrEqual(1)
     expect(screen.getByText('Sinh tồn')).toBeInTheDocument()
     expect(screen.getByText('Đội đấu đội')).toBeInTheDocument()
     expect(screen.getByText('Cái chết bất ngờ')).toBeInTheDocument()

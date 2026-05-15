@@ -6,6 +6,8 @@ import type { ModeMeta } from './modeMeta'
 
 interface Props {
   mode: ModeMeta
+  /** Translated mode label, e.g. "Đua tốc độ". */
+  modeLabel: string
   roomName: string
   questionCount: number
   timePerQuestion: number
@@ -24,7 +26,7 @@ interface Props {
 }
 
 export default function PreviewPanel({
-  mode, roomName, questionCount, timePerQuestion, difficultyLabel,
+  mode, modeLabel, roomName, questionCount, timePerQuestion, difficultyLabel,
   bookScopeLabel, isPublic, questionSource, selectedSet,
   loading, canSubmit, missingSetWarning, error, onSubmit,
 }: Props) {
@@ -58,10 +60,7 @@ export default function PreviewPanel({
             style={{ background: mode.badge.bg, color: mode.badge.fg, border: `1px solid ${mode.badge.border}` }}
           >
             <span className="material-symbols-outlined" style={{ fontSize: 14 }}>{mode.icon}</span>
-            <span>{mode.labelKey === 'room.modes.speed_race' ? 'Đua tốc độ'
-                  : mode.labelKey === 'room.modes.battle_royale' ? 'Sinh tồn'
-                  : mode.labelKey === 'room.modes.team_vs_team' ? 'Đội đấu đội'
-                  : 'Cái chết bất ngờ'}</span>
+            <span>{modeLabel}</span>
           </span>
         </div>
 

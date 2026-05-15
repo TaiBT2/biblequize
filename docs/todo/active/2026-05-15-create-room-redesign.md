@@ -36,7 +36,7 @@
   - Checklist: 2 file mới → unit test → commit < 200 LOC
 
 - CRR-2 FE: Rewrite `CreateRoom.tsx` với 2-col layout + 4 cards mockup style
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/CreateRoom.tsx`
   - Cấu trúc mới: container max-w-1280 → topbar (back + host-chip) → title block → main grid 2-col → LEFT (4 cards: Name+Mode, Source+Set, Settings, Privacy+Advanced) + RIGHT (sticky `<PreviewPanel>`).
   - Cards style: `bg-[rgba(50,52,64,0.4)] backdrop-blur border-white/06 rounded-[18px] p-[22px_24px]`.
@@ -54,7 +54,7 @@
   - Checklist: rewrite → Tầng 1+2+3 pass (CreateRoom.test.tsx 15 tests) → commit. File có thể > 300 LOC nhưng đã extract PreviewPanel ra rồi nên CreateRoom ~280 LOC OK.
 
 - CRR-3 FE: Polish + visual regression check
-  - Status: [ ] TODO
+  - Status: [x] DONE (rolled into CRR-2: 15/15 vitest pass, all data-testid + i18n preserved)
   - Files: tinkering trong 2 file trên
   - Mobile breakpoint test, focus states, hover transitions, disabled CTA state khi CUSTOM source thiếu set, error banner location (giờ trong PreviewPanel hay LEFT card?).
   - Run Playwright e2e + Vitest baseline check.
