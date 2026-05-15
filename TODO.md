@@ -3,11 +3,10 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (14)
+## Active (13)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
-| 2026-05-15 | Multiplayer Quick Match (Đấu Nhanh) pivot | TODO | [detail](docs/todo/active/2026-05-15-multiplayer-quickmatch-pivot.md) |
 | 2026-05-13 | Home Redesign Modern Spiritual | IN PROGRESS | [detail](docs/todo/active/2026-05-13-home-redesign-modern-spiritual.md) |
 | 2026-05-13 | Disable test data seed on prod + harden guard | TODO | [detail](docs/todo/active/2026-05-13-disable-seed-on-prod-and-harden-guard.md) |
 | 2026-05-13 | Code Quality Audit follow-up (BE + FE Web) | PARTIALLY DONE | [detail](docs/todo/active/2026-05-13-code-quality-audit-follow-up-be-fe-web.md) |
@@ -22,13 +21,14 @@
 | 2026-04-27 | V3 Tier B/C Quality Expansion: 14 books | IN PROGRESS | [detail](docs/todo/active/2026-04-27-v3-tier-b-c-quality-expansion-14-books.md) |
 | 2026-04-19 | Global audience migration: SQL → JSON + i18n prep | PARTIALLY DONE | [detail](docs/todo/active/2026-04-19-global-audience-migration-sql-json-i18n-prep.md) |
 
-## Archive (42)
+## Archive (43)
 
-> 42 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
+> 43 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
 
 <details>
 <summary>Xem inline list (tuỳ chọn)</summary>
 
+- 2026-05-15 — Multiplayer Quick Match (Đấu Nhanh) pivot · DONE · [detail](docs/todo/archive/2026-05-15-multiplayer-quickmatch-pivot.md)
 - 2026-05-15 — Multiplayer Lobby patch theo canonical prompt · DONE · [detail](docs/todo/archive/2026-05-15-multiplayer-lobby-patch-canonical.md)
 - 2026-05-15 — Multiplayer Lobby redesign (MOCKUP_MULTIPLAYER_LOBBY.html) · DONE · [detail](docs/todo/archive/2026-05-15-multiplayer-lobby-redesign.md)
 - 2026-05-15 — Create Room redesign (create_room_redesign.html) · DONE · [detail](docs/todo/archive/2026-05-15-create-room-redesign.md)

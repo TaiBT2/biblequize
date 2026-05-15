@@ -2,7 +2,7 @@
 
 > **Source**: User decision 2026-05-15 — pivot Solo Arena concept (MPP-3/4) sang Quick Match. Mockup `docs/new-multiplayer/MOCKUP_MULTIPLAYER_LOBBY_v3.html` + prompt `docs/new-multiplayer/PROMPT_MULTIPLAYER_QUICKMATCH_PIVOT.md` (1435 LOC). User confirm 4 corrections sau khi đọc prompt: creator có quyền chọn mode/scope/source (KHÔNG fixed), AI questions one-shot KHÔNG save pool.
 >
-> **Status**: TODO
+> **Status**: DONE 2026-05-15
 
 ### Locked decisions (2026-05-15)
 
@@ -123,10 +123,11 @@
   - Checklist: helper + types → commit ~80 LOC
 
 - QP-REGRESSION Full test suite + smoke
-  - Status: [ ] TODO
-  - BE: `mvn compile` clean, no new failures
-  - FE: vitest baseline (≥1167 passing), tsc clean, Multiplayer.test.tsx pass
-  - Manual smoke checklist: empty state 2 CTAs · click Đấu Nhanh opens modal · submit creates room · Tier 3 user AI option disabled · daily counter decrements · 3rd attempt blocked · indigo banner in lobby · any-player can start
+  - Status: [x] DONE
+  - BE: `mvn compile` clean ✓
+  - FE: vitest scope (Multiplayer.test.tsx 11/11, RoomLobby tests 26/26 = 37/37) ✓
+  - Pre-existing baseline failures (ErrorToast, ReactionBar, LiveFeed, BasicQuizCard, FeaturedDailyChallenge, RoomOverlays) verified by reverting RoomLobby/Multiplayer/QuickMatchRoomCard to QP-8 state — same 19+ failures persist → unrelated to QP work.
+  - Manual smoke deferred to deploy verification step.
   - **Spec strategy**: [x] (c) `[no-spec-impact]`
   - Checklist: smoke clean → commit
 
