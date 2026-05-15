@@ -351,8 +351,8 @@ export default function QuizSetEditor({
             background: COLOR.bgSection, color: COLOR.textMuted, fontSize: 14, padding: 32, textAlign: 'center',
           }}>
             {aiEnabled
-              ? 'Chưa có câu nào. Dùng "⚡ AI tạo nháp" hoặc "+ Thêm thủ công" trong sidebar.'
-              : 'Chưa có câu nào. Bấm "+ Thêm thủ công" trong sidebar để bắt đầu.'}
+              ? 'Chưa có câu nào. Bấm "⚡ AI tạo nháp" hoặc "+ Thêm thủ công" ở đầu sidebar bên trái.'
+              : 'Chưa có câu nào. Bấm "+ Thêm thủ công" ở đầu sidebar bên trái để bắt đầu.'}
           </div>
         )}
       </div>

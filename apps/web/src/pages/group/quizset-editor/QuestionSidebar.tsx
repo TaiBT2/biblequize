@@ -59,9 +59,42 @@ export default function QuestionSidebar({
         })}
       </div>
 
+      {/* Action buttons — pinned above the list so "Thêm thủ công" stays
+          visible even when the list is empty / very long. */}
+      <div style={{
+        display: 'flex', flexDirection: 'column', gap: 6,
+        paddingBottom: 12, marginBottom: 8,
+        borderBottom: `1px solid ${COLOR.borderXSubtle}`,
+      }}>
+        {onAIGenerate && (
+          <button onClick={onAIGenerate} disabled={aiBusy} style={{
+            background: COLOR.goldBgStrong, color: COLOR.gold,
+            border: `1px solid ${COLOR.goldBorder}`,
+            padding: '9px 11px', borderRadius: 7, fontSize: 12, fontWeight: 500,
+            cursor: aiBusy ? 'wait' : 'pointer',
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 5,
+            opacity: aiBusy ? 0.6 : 1,
+          }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>auto_awesome</span>
+            {aiBusy ? 'Đang tạo...' : 'AI tạo nháp'}
+          </button>
+        )}
+        <button onClick={onAddManual} disabled={addBusy} style={{
+          background: COLOR.gold, color: '#1a1226',
+          border: 'none',
+          padding: '9px 11px', borderRadius: 7, fontSize: 12, fontWeight: 600,
+          cursor: addBusy ? 'wait' : 'pointer',
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 5,
+          opacity: addBusy ? 0.6 : 1,
+        }}>
+          <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>add</span>
+          Thêm thủ công
+        </button>
+      </div>
+
       {/* Scrollable question list */}
       <div style={{
-        display: 'flex', flexDirection: 'column', gap: 4, marginBottom: 14,
+        display: 'flex', flexDirection: 'column', gap: 4,
         overflowY: 'auto', flex: 1, minHeight: 0,
       }}>
         {questions.length === 0 && (
@@ -69,7 +102,7 @@ export default function QuestionSidebar({
             padding: '24px 12px', textAlign: 'center', color: COLOR.textDisabled,
             fontSize: 12, fontStyle: 'italic',
           }}>
-            Chưa có câu hỏi. Dùng AI hoặc thêm thủ công.
+            Chưa có câu hỏi. Bấm nút trên để bắt đầu.
           </div>
         )}
         {questions.map((q, idx) => {
@@ -119,34 +152,6 @@ export default function QuestionSidebar({
             </div>
           )
         })}
-      </div>
-
-      {/* Action buttons */}
-      <div style={{ borderTop: `1px solid ${COLOR.borderXSubtle}`, paddingTop: 12, display: 'flex', flexDirection: 'column', gap: 6 }}>
-        {onAIGenerate && (
-          <button onClick={onAIGenerate} disabled={aiBusy} style={{
-            background: COLOR.goldBgStrong, color: COLOR.gold,
-            border: `1px solid ${COLOR.goldBorder}`,
-            padding: '9px 11px', borderRadius: 7, fontSize: 12, fontWeight: 500,
-            cursor: aiBusy ? 'wait' : 'pointer',
-            display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 5,
-            opacity: aiBusy ? 0.6 : 1,
-          }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>auto_awesome</span>
-            {aiBusy ? 'Đang tạo...' : 'AI tạo nháp'}
-          </button>
-        )}
-        <button onClick={onAddManual} disabled={addBusy} style={{
-          background: 'rgba(255,255,255,0.04)', color: COLOR.textSecondary,
-          border: `1px solid ${COLOR.borderSubtle}`,
-          padding: '9px 11px', borderRadius: 7, fontSize: 12,
-          cursor: addBusy ? 'wait' : 'pointer',
-          display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 5,
-          opacity: addBusy ? 0.6 : 1,
-        }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>add</span>
-          Thêm thủ công
-        </button>
       </div>
     </div>
   )
