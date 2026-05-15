@@ -4,9 +4,11 @@ import com.biblequiz.api.dto.PromoteAdminRequest;
 import com.biblequiz.api.dto.UserResponse;
 import com.biblequiz.infrastructure.audit.AuditEventStatus;
 import com.biblequiz.infrastructure.audit.AuditService;
+import com.biblequiz.modules.user.dto.WeeklyMultiplayerStatsDTO;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 import com.biblequiz.modules.user.service.AccountDeletionService;
+import com.biblequiz.modules.user.service.MultiplayerStatsService;
 import com.biblequiz.modules.quiz.service.BookMasteryService;
 import com.biblequiz.modules.ranked.service.TierProgressService;
 import com.biblequiz.modules.ranked.service.UserTierService;
@@ -86,6 +88,40 @@ public class UserController {
 
     @Autowired
     private PrestigeService prestigeService;
+
+    @Autowired
+    private MultiplayerStatsService multiplayerStatsService;
+
+    /**
+     * MPP-2 — Weekly multiplayer stats for the Phòng Chơi sidebar widget.
+     * Returns wins / totalMatches / winRate / mvpCount aggregated over the
+     * current week (Monday 00:00 → now).
+     */
+    @GetMapping("/multiplayer-stats")
+    public ResponseEntity<?> getMultiplayerStats(
+            Authentication authentication,
+            @RequestParam(defaultValue = "weekly") String period) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+        if (!"weekly".equals(period)) {
+            return ResponseEntity.badRequest().body(Map.of(
+                "code", "INVALID_PERIOD",
+                "message", "Currently only 'weekly' period supported"
+            ));
+        }
+        String email = resolveEmail(authentication);
+        Optional<User> userOpt = userRepository.findByEmail(email);
+        if (userOpt.isEmpty()) return ResponseEntity.notFound().build();
+        WeeklyMultiplayerStatsDTO stats = multiplayerStatsService.getWeeklyStats(userOpt.get().getId());
+        return ResponseEntity.ok(stats);
+    }
+
+    private String resolveEmail(Authentication authentication) {
+        if (authentication.getPrincipal() instanceof UserDetails ud) return ud.getUsername();
+        if (authentication.getPrincipal() instanceof OAuth2User oauth) return oauth.getAttribute("email");
+        return null;
+    }
 
     @GetMapping
     public ResponseEntity<UserResponse> getCurrentUser(Authentication authentication) {

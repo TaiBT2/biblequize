@@ -29,8 +29,8 @@
   - **Spec strategy**: [x] (c) `[no-spec-impact]`
   - Checklist: edit 4 entries → tests pass → commit < 50 LOC
 
-- MPP-2 BE: Endpoint `GET /api/users/me/multiplayer-stats?period=weekly`
-  - Status: [ ] TODO
+- MPP-2 BE: Endpoint `GET /api/me/multiplayer-stats?period=weekly`
+  - Status: [x] DONE
   - Files: `apps/api/src/main/java/com/biblequiz/modules/user/service/MultiplayerStatsService.java` (mới), `WeeklyMultiplayerStatsDTO.java` (mới), `UserController.java` (add endpoint), repository method update
   - Service compute từ `RoomPlayer.finalRank == 1` (win), aggregate `wins`, `totalMatches`, `winRate`, `mvpCount` (UserAchievement category MULTIPLAYER_MVP). Week start = Monday 00:00 UTC (match leaderboard).
   - Test: 4 JUnit cases — zero matches, mixed wins, week boundary, MVP join.

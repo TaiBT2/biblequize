@@ -66,4 +66,19 @@ public interface RoomPlayerRepository extends JpaRepository<RoomPlayer, String> 
            "WHERE rp.user.id = :userId " +
            "AND rp.room.status IN ('LOBBY', 'IN_PROGRESS')")
     List<String> findActiveRoomIdsByUserId(@Param("userId") String userId);
+
+    /**
+     * MPP-2 — Find all RoomPlayer rows for a user whose room ENDED within the
+     * given window. Backs the weekly multiplayer-stats widget. Only counts
+     * rows where the room actually reached the ended state, so still-running
+     * matches don't pollute win-rate.
+     */
+    @Query("SELECT rp FROM RoomPlayer rp " +
+           "WHERE rp.user.id = :userId " +
+           "AND rp.room.status = 'ENDED' " +
+           "AND rp.room.endedAt >= :from " +
+           "AND rp.room.endedAt < :to")
+    List<RoomPlayer> findEndedMatchesInWindow(@Param("userId") String userId,
+                                               @Param("from") java.time.LocalDateTime from,
+                                               @Param("to")   java.time.LocalDateTime to);
 }
