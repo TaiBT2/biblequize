@@ -75,7 +75,7 @@ import OnboardingTryQuiz from './pages/OnboardingTryQuiz'
 import Journey from './pages/Journey'
 import Help from './pages/Help'
 import MySets from './pages/MySets'
-import SetEditor from './pages/SetEditor'
+import PersonalQuizSetEditor from './pages/PersonalQuizSetEditor'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -166,7 +166,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="/room/create" element={<RequireAuth><CreateRoom /></RequireAuth>} />
                   <Route path="/room/join" element={<RequireAuth><JoinRoom /></RequireAuth>} />
                   <Route path="/my-sets" element={<RequireAuth><MySets /></RequireAuth>} />
-                  <Route path="/my-sets/:setId" element={<RequireAuth><SetEditor /></RequireAuth>} />
+                  <Route path="/my-sets/new" element={<RequireAuth><PersonalQuizSetEditor mode="create" /></RequireAuth>} />
+                  <Route path="/my-sets/:setId/edit" element={<RequireAuth><PersonalQuizSetEditor mode="edit" /></RequireAuth>} />
+                  {/* Back-compat: legacy /my-sets/:setId redirects users into the new editor. */}
+                  <Route path="/my-sets/:setId" element={<RequireAuth><PersonalQuizSetEditor mode="edit" /></RequireAuth>} />
                 </Route>
 
                 {/* Public pages (no auth) */}

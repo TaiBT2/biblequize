@@ -76,7 +76,7 @@
   - Checklist: refactor → Tầng 1+2 pass → group E2E pass → commit ~100 LOC (có thể tách 2 commit nếu lớn)
 
 - PQS-6 FE: Route + page wrapper cho personal editor
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/PersonalQuizSetEditor.tsx` (mới — thin wrapper), `apps/web/src/main.tsx` (route)
   - Wrapper: mount `<QuizSetEditor api={personalApi} ownership="personal" backHref="/my-sets" />`. Logic create-then-redirect tương tự group: nếu route `/my-sets/new` → tạo DRAFT mới, navigate `/my-sets/:newId/edit`.
   - Routes mới: `/my-sets/new`, `/my-sets/:setId/edit`. Giữ `/my-sets/:setId` (read-only view? hoặc redirect → `/edit` nếu owner+DRAFT). Quyết định khi làm: redirect `/my-sets/:id` → `/edit` cho đơn giản.
