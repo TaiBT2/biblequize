@@ -33,7 +33,7 @@
   - Checklist: append BACKLOG → commit < 50 LOC
 
 - QP-1 BE: Migration V57 + Room entity fields
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/api/src/main/resources/db/migration/V57__add_room_quick_match.sql`, `apps/api/src/main/java/com/biblequiz/modules/room/entity/Room.java`
   - SQL: `ALTER TABLE rooms ADD COLUMN quick_match BOOLEAN NOT NULL DEFAULT FALSE, ADD COLUMN ai_questions_payload JSON NULL`. Index `idx_rooms_quick_match (quick_match, status)` cho find/filter.
   - Entity: `boolean quickMatch = false`, `String aiQuestionsPayload` (lưu JSON string) + getter/setter.

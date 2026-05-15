@@ -80,6 +80,20 @@ public class Room {
     @Column(name = "is_co_play", nullable = false)
     private boolean isCoPlay = false;
 
+    // QP-1 (V57): Đấu Nhanh (Quick Match) flag. TRUE = server soft-coordinates,
+    // host plays like a regular player, Quản trò controls disabled (pause /
+    // skip / broadcast / end-early reject 422 QUICK_MATCH_NO_HOST_CONTROLS),
+    // any player can call /start when ≥2 ready. FALSE = traditional room.
+    @Column(name = "quick_match", nullable = false)
+    private boolean quickMatch = false;
+
+    // QP-1 (V57): ephemeral storage for AI-generated questions per Bùi pivot
+    // 2026-05-15 — AI questions are one-shot, NOT persisted to `questions`
+    // table. Game loads from this JSON when starting; R5 room cleanup purges
+    // it when room ENDED. NULL for DB-source rooms.
+    @Column(name = "ai_questions_payload", columnDefinition = "JSON")
+    private String aiQuestionsPayload;
+
     @Column(name = "started_at")
     private LocalDateTime startedAt;
 
@@ -212,4 +226,10 @@ public LocalDateTime getCreatedAt() { return createdAt; }
 
     public boolean isCoPlay() { return isCoPlay; }
     public void setCoPlay(boolean coPlay) { this.isCoPlay = coPlay; }
+
+    public boolean isQuickMatch() { return quickMatch; }
+    public void setQuickMatch(boolean quickMatch) { this.quickMatch = quickMatch; }
+
+    public String getAiQuestionsPayload() { return aiQuestionsPayload; }
+    public void setAiQuestionsPayload(String aiQuestionsPayload) { this.aiQuestionsPayload = aiQuestionsPayload; }
 }
