@@ -98,16 +98,26 @@ export default function EditorTopBar({
         opacity: saving ? 0.6 : 1,
       }}>Lưu nháp</button>
 
-      <button onClick={onPublish} disabled={!canPublish} style={{
-        background: canPublish ? COLOR.gold : 'rgba(232,168,50,0.30)',
-        color: '#1a1226', border: 'none', padding: '8px 18px', borderRadius: 8,
-        fontSize: 13, fontWeight: 500, cursor: canPublish ? 'pointer' : 'not-allowed',
-        display: 'inline-flex', alignItems: 'center', gap: 5,
-        opacity: canPublish ? 1 : 0.6,
-      }}>
-        <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>rocket_launch</span>
-        {status === 'PUBLISHED' ? `Lưu thay đổi` : `Xuất bản (${questionCount} câu)`}
-      </button>
+      {(() => {
+        // Button has 2 modes:
+        //   DRAFT     → "Xuất bản (N câu)" — enabled only when canPublish (≥5 câu + name ≥3 ký tự)
+        //   PUBLISHED → "Lưu thay đổi"     — enabled whenever not currently saving
+        const enabled = status === 'PUBLISHED' ? !saving : canPublish
+        return (
+          <button onClick={onPublish} disabled={!enabled} style={{
+            background: enabled ? COLOR.gold : 'rgba(232,168,50,0.30)',
+            color: '#1a1226', border: 'none', padding: '8px 18px', borderRadius: 8,
+            fontSize: 13, fontWeight: 500, cursor: enabled ? 'pointer' : 'not-allowed',
+            display: 'inline-flex', alignItems: 'center', gap: 5,
+            opacity: enabled ? 1 : 0.6,
+          }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>
+              {status === 'PUBLISHED' ? 'save' : 'rocket_launch'}
+            </span>
+            {status === 'PUBLISHED' ? `Lưu thay đổi` : `Xuất bản (${questionCount} câu)`}
+          </button>
+        )
+      })()}
     </div>
   )
 }

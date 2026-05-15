@@ -119,8 +119,12 @@ export default function QuestionSidebar({
               onClick={() => onActivate(q.id)}
               style={{
                 background: isActive ? COLOR.goldBg : 'rgba(255,255,255,0.04)',
-                border: `1px solid ${isActive ? COLOR.goldBorder : COLOR.borderXSubtle}`,
-                borderLeft: `3px solid ${valid ? col.border : COLOR.danger}`,
+                // Split `border` shorthand to avoid React warning about
+                // shorthand-then-longhand `borderLeft` conflict.
+                borderTop:    `1px solid ${isActive ? COLOR.goldBorder : COLOR.borderXSubtle}`,
+                borderRight:  `1px solid ${isActive ? COLOR.goldBorder : COLOR.borderXSubtle}`,
+                borderBottom: `1px solid ${isActive ? COLOR.goldBorder : COLOR.borderXSubtle}`,
+                borderLeft:   `3px solid ${valid ? col.border : COLOR.danger}`,
                 borderRadius: 6,
                 padding: '9px 11px',
                 cursor: 'pointer',

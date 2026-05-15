@@ -264,7 +264,9 @@ export default function QuizSetEditor({
   const handlePublishClick = async () => {
     await flushQuestionSave()
     await flushMetaSave()
-    setPublishOpen(true)
+    // PUBLISHED → button label is "Lưu thay đổi": the two flushes above are
+    // the save; opening the publish modal would just confuse + fail BE check.
+    if (quizSet?.publishStatus === 'DRAFT') setPublishOpen(true)
   }
 
   const handleConfirmPublish = async () => {
