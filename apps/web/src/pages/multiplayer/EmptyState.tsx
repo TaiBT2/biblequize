@@ -51,7 +51,7 @@ export default function EmptyState() {
         <div className="text-[10px] tracking-widest uppercase text-white/40 font-bold mb-3">
           Tạo nhanh theo chế độ
         </div>
-        <div className="grid grid-cols-2 gap-2 max-w-sm mx-auto">
+        <div className="grid grid-cols-2 gap-2 max-w-sm mx-auto mb-6">
           {MODE_LIST.map(m => (
             <button
               key={m.id}
@@ -72,6 +72,23 @@ export default function EmptyState() {
               {QUICK_LABEL[m.id] ?? m.id}
             </button>
           ))}
+        </div>
+
+        {/* MPP-6: Solo Arena soft-link — "no one online?" fallback */}
+        <div className="pt-5 border-t border-white/[0.06]">
+          <div className="text-[11px] text-white/45 mb-2">Không có ai online?</div>
+          <button
+            type="button"
+            onClick={() => navigate('/solo-arena')}
+            className="inline-flex items-center gap-2 text-[12px] font-semibold transition-colors"
+            style={{ color: '#a5b4fc' }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = '#818cf8' }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = '#a5b4fc' }}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: 14 }}>person</span>
+            Thử Solo Arena — chơi 1 mình
+            <span className="material-symbols-outlined" style={{ fontSize: 14 }}>arrow_forward</span>
+          </button>
         </div>
       </div>
     </div>

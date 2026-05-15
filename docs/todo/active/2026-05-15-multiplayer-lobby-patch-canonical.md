@@ -67,7 +67,7 @@
   - Checklist: widget + conditional render → commit ~120 LOC
 
 - MPP-6 FE: Empty state add Solo Arena soft-link
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/multiplayer/EmptyState.tsx`
   - Thêm divider + "Không có ai online?" + button "Thử Solo Arena → chơi 1 mình" với indigo accent. Click → `/solo-arena`.
   - **Spec impact**: [x] None
