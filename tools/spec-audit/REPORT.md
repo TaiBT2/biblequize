@@ -1,27 +1,27 @@
 # Spec Audit Report
 
-**Generated:** 2026-05-15T03:29:15Z
+**Generated:** 2026-05-15T09:45:19Z
 **Specs scanned:** 6 files in `docs/spec/`
 
 ## Summary
 
 | Metric | Count |
 |---|---|
-| Total spec sections | 458 |
-| Sections with code refs | 132 |
-| Total code refs | 320 |
-| Unique code files referenced | 176 |
-| **Broken refs (HIGH)** | **65** |
-| Orphan sections (MEDIUM) | 326 |
-| Undocumented business files (MEDIUM) | 210 |
+| Total spec sections | 462 |
+| Sections with code refs | 135 |
+| Total code refs | 325 |
+| Unique code files referenced | 181 |
+| **Broken refs (HIGH)** | **64** |
+| Orphan sections (MEDIUM) | 327 |
+| Undocumented business files (MEDIUM) | 216 |
 
 ## Stats — file-level coverage
 
 | Concern | Files in scope | Files referenced | Coverage |
 |---|---|---|---|
 | BE Controller | 37 | 2 | 5% |
-| BE Service | 53 | 3 | 6% |
-| FE User Page | 103 | 9 | 9% |
+| BE Service | 54 | 4 | 7% |
+| FE User Page | 112 | 12 | 11% |
 | FE Admin Page | 36 | 5 | 14% |
 
 ## Broken Refs (HIGH)
@@ -60,14 +60,13 @@
 | SPEC_GROUP_v1.3.md | 6.B Quiz Set Editor Page (BL-AD-8, 2026-05-13) | `apps/web/src/components/group/CreateQuizSetModal.tsx` | (no line) | 698 | file_not_found |
 | SPEC_GROUP_v1.3.md | 6.B Quiz Set Editor Page (BL-AD-8, 2026-05-13) | `QuizSetCreate.tsx` | (no line) | 699 | bare_filename_not_found |
 | SPEC_MULTIPLAYER.md | 5.1 Connection | `useWebSocket.ts` | (no line) | 500 | bare_filename_not_found |
-| SPEC_MULTIPLAYER.md | 7.1 Multiplayer (`pages/Multiplayer.tsx`) | `pages/Multiplayer.tsx` | (no line) | 627 | file_not_found |
-| SPEC_MULTIPLAYER.md | 7.2 CreateRoom (`pages/CreateRoom.tsx`) | `pages/CreateRoom.tsx` | (no line) | 634 | file_not_found |
-| SPEC_MULTIPLAYER.md | 7.3 JoinRoom (`pages/JoinRoom.tsx`) | `pages/JoinRoom.tsx` | (no line) | 656 | file_not_found |
-| SPEC_MULTIPLAYER.md | 7.4 RoomLobby (`pages/RoomLobby.tsx`) — mode-aware + role-aware | `pages/RoomLobby.tsx` | (no line) | 664 | file_not_found |
-| SPEC_MULTIPLAYER.md | 7.5 RoomQuiz — split routes (Sprint 4) | `pages/RoomQuiz.tsx` | (no line) | 713 | file_not_found |
-| SPEC_MULTIPLAYER.md | 7.5 RoomQuiz — split routes (Sprint 4) | `pages/RoomQuizHost.tsx` | (no line) | 733 | file_not_found |
-| SPEC_MULTIPLAYER.md | 10. Known Issues | `useWebSocket.ts` | (no line) | 854 | bare_filename_not_found |
-| SPEC_MULTIPLAYER.md | Appendix B — Resolved questions (2026-05-09) | `useWebSocket.ts` | (no line) | 1111 | bare_filename_not_found |
+| SPEC_MULTIPLAYER.md | 7.2 CreateRoom (`pages/CreateRoom.tsx`) | `pages/CreateRoom.tsx` | (no line) | 644 | file_not_found |
+| SPEC_MULTIPLAYER.md | 7.3 JoinRoom (`pages/JoinRoom.tsx`) | `pages/JoinRoom.tsx` | (no line) | 666 | file_not_found |
+| SPEC_MULTIPLAYER.md | 7.4 RoomLobby (`pages/RoomLobby.tsx`) — mode-aware + role-aware | `pages/RoomLobby.tsx` | (no line) | 674 | file_not_found |
+| SPEC_MULTIPLAYER.md | 7.5 RoomQuiz — split routes (Sprint 4) | `pages/RoomQuiz.tsx` | (no line) | 723 | file_not_found |
+| SPEC_MULTIPLAYER.md | 7.5 RoomQuiz — split routes (Sprint 4) | `pages/RoomQuizHost.tsx` | (no line) | 743 | file_not_found |
+| SPEC_MULTIPLAYER.md | 10. Known Issues | `useWebSocket.ts` | (no line) | 864 | bare_filename_not_found |
+| SPEC_MULTIPLAYER.md | Appendix B — Resolved questions (2026-05-09) | `useWebSocket.ts` | (no line) | 1121 | bare_filename_not_found |
 | SPEC_USER_v3.1.md | 3.5 Basic Quiz gate (catechism → unlock Ranked) | `add_basic_quiz_unlock.sql` | (no line) | 155 | bare_filename_not_found |
 | SPEC_USER_v3.1.md | 4.7 Milestone Burst (XP surge) | `add_xp_surge_to_users.sql` | (no line) | 236 | bare_filename_not_found |
 | SPEC_USER_v3.1.md | 5.3 Daily Challenge | `add_daily_completions.sql` | (no line) | 295 | bare_filename_not_found |

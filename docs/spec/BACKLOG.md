@@ -415,6 +415,42 @@
 
 ---
 
+## Multiplayer Lobby Redesign (2026-05-15) — Deferred items
+
+### BL-MP-QM — Quick Match endpoint
+- **Status:** ⬜ Deferred (post-launch)
+- **Effort:** ~1 day BE + 0.5 day FE
+- **Trigger:** Implement when DAU > 200 (community size justifies matchmaking)
+- **Scope:**
+  - `POST /api/rooms/quick-match` — find best public LOBBY room with slot, or create with user's last preferences
+  - FE button "Tìm trận nhanh" on Multiplayer hero next to "Tạo Phòng"
+- **Why deferred:** Current FMC Đà Nẵng community size means quick-match would 80% fall through to CreateRoom anyway. Wait for traffic.
+- **Ref:** `docs/MULTIPLAYER/PROMPT_MULTIPLAYER_LOBBY_REDESIGN.md` §0.2
+
+### BL-MP-SOLO — Solo Arena full implementation
+- **Status:** ⬜ Scoped, separate prompt needed
+- **Effort:** ~5–7 days (BE + FE)
+- **Trigger:** After Sprint 5 ships, OR if Phòng Chơi empty-state retention data justifies prioritizing
+- **Scope:**
+  - Replace `apps/web/src/pages/SoloArenaPlaceholder.tsx` (Coming Soon) with real Solo Arena page
+  - BE: `SoloArenaSessionService` (fork ~70% from `RankedSessionService`)
+  - Question source: RANDOM_DB | AI_GENERATED toggle (tier-locked AI per Bui's recommendation Tier 4+)
+  - Daily cap 3 sessions (recommended), reset UTC 0h
+  - No XP, no leaderboard (variety-style)
+  - Anti-spoiler: lazy server-side selection, per-session seed, no pool preview API
+- **Pending decisions (need Bui confirm before prompt):**
+  - Tier-lock for AI source: Tier 4+? Or open all tiers with reduced quota per user?
+  - Daily cap: 3 sessions/day fixed? Or scale with tier?
+  - Page name: "Solo Arena" (EN, current) vs "Đấu Trường Solo" (VI) vs "Thử Thách Solo"?
+- **Ref:** `docs/MULTIPLAYER/PROMPT_MULTIPLAYER_LOBBY_REDESIGN.md` §0.2
+
+### BL-MP-PALETTE — Multiplayer palette canonical patch (2026-05-15, shipped)
+- **Issue:** MLR commit 77165a9 đã ship palette mode khác với canonical PROMPT_MULTIPLAYER_LOBBY_REDESIGN §0.1.
+- **Delivered:** commit `c71506c` realigns `apps/web/src/pages/create-room/modeMeta.ts` palette: speed=#38bdf8 (was #60a5fa), battle=#ef4444 (was #f87171), team=#a855f7 (was #4ade80), sudden=#fbbf24 AMBER (was #c084fc, never #fb923c streak). Sudden icon `workspace_premium` → `target`.
+- **Status:** ✅ DONE 2026-05-15 — commits c71506c (palette), 64d01ca (Solo Arena hero), 60988f7 (sidebar widget), 510df61 (Solo soft-link).
+
+---
+
 ## Cross-references
 - Canonical specs: [SPEC_USER_v3.1.md](SPEC_USER_v3.1.md), [SPEC_MULTIPLAYER.md](SPEC_MULTIPLAYER.md), [SPEC_ADMIN_v3.1.md](SPEC_ADMIN_v3.1.md), [SPEC_GROUP_v1.3.md](SPEC_GROUP_v1.3.md) (Sprint 5)
 - Roadmap (defer features): [SPEC_ROADMAP.md](SPEC_ROADMAP.md)

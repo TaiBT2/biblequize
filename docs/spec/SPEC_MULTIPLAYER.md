@@ -624,12 +624,22 @@ Topic: `/topic/room/{roomId}`. Mọi message wrap bởi `WebSocketMessage.Messag
 
 5 màn hình FE chính trong `apps/web/src/pages/`. Tất cả dùng `useStomp` hook để wire WS.
 
-### 7.1 Multiplayer (`pages/Multiplayer.tsx`)
+### 7.1 Multiplayer (`apps/web/src/pages/Multiplayer.tsx`) — redesigned 2026-05-15
 
-Landing page chế độ multiplayer. Hiển thị:
-- 5 mode cards với icon + mô tả ngắn.
-- Quick actions: "Tạo phòng" → `CreateRoom`, "Tham gia mã" → `JoinRoom`, "Phòng công khai" → `Rooms`.
-- (Optional) Recent rooms user vừa rời.
+Landing page chế độ multiplayer. Layout v2 (MLR + MPP patch):
+
+1. **Top header** — kicker "CHẾ ĐỘ ĐA NGƯỜI CHƠI" gold uppercase + animated green live-dot + live count ("N phòng đang sống") + H1 "Phòng Chơi" + "Bộ câu hỏi" button on the right (mobile-hidden via `hidden md:flex`).
+2. **JoinByCodeBar** — thin 56px gold-tinted bar above the hero: label + 6 inputs (36×36) + "Vào phòng" button. `apps/web/src/pages/multiplayer/JoinByCodeBar.tsx`.
+3. **Hero row 50/50:**
+   - LEFT `Tạo phòng` (gold) — "Bạn sẽ là Quản trò" chip + feature tags (2–20 người · 4 chế độ · Realtime) + "Tạo Phòng" CTA → `/room/create`.
+   - RIGHT `SoloArenaEntryCard` (indigo `#6366f1` → `#818cf8`) — "MỚI" shimmer badge + "1 người chơi" kicker + descrip + 2 source tags + "Bắt đầu Solo" CTA → `/solo-arena` placeholder. Full Solo Arena tracked as BL-MP-SOLO.
+4. **Mode showcase** — 4 cards using canonical palette from `apps/web/src/pages/create-room/modeMeta.ts` (speed=#38bdf8, battle=#ef4444, team=#a855f7, sudden=#fbbf24 AMBER + `target` icon). GROUP_LIVE_SEQUENTIAL excluded (chỉ tạo từ Group context, §3.5).
+5. **Active rooms section** — filter chips (All + 4 modes + sort newest/filling) + 2 states:
+   - **EmptyState** — friendly "Hãy là phòng đầu tiên hôm nay!" + 4 mode quick-create + **Solo Arena soft-link** ("Không có ai online? Thử Solo Arena").
+   - **Populated** — grid 2-col `RoomCard` với mode icon box + status pill + host crown + avatar stack + meta footer + gold CTA ("Tham gia" / "Vào hàng đợi" / "Chọn đội").
+6. **Sidebar widget** — `WeeklyMultiplayerStatsWidget` shown only on `/multiplayer*` routes (AppLayout conditional). Wired to `GET /api/me/multiplayer-stats?period=weekly` (SPEC_USER §27.2).
+
+**Deferred (Phase 2):** "Tìm trận nhanh" matchmaking (BL-MP-QM), live activity ticker (Sprint 6), mini 2-team display per Team Room card.
 
 ### 7.2 CreateRoom (`pages/CreateRoom.tsx`)
 

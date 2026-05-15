@@ -4,7 +4,7 @@
 >
 > **Scope**: Áp dụng các điểm khác biệt vs MLR vừa ship để match canonical prompt, nhưng GIỮ kiến trúc MLR (sub-components đã extract, `pages/multiplayer/` folder).
 >
-> **Status**: TODO
+> **Status**: DONE (shipped 2026-05-15)
 
 ### Divergence cần patch (7 deltas)
 
@@ -75,7 +75,7 @@
   - Checklist: append section → commit < 30 LOC
 
 - MPP-7 Docs: BACKLOG entries BL-MP-QM + BL-MP-SOLO + audit re-run
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `docs/spec/BACKLOG.md`, `tools/spec-audit/REPORT.md` (auto)
   - Thêm 2 entries: BL-MP-QM (Quick Match deferred until DAU>200), BL-MP-SOLO (Solo Arena full impl scoped, separate prompt).
   - **Spec impact**: [x] BL-MP-QM, BL-MP-SOLO

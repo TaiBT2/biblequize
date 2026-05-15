@@ -1130,6 +1130,7 @@ REACTION, CHAT
 | GET | `/api/me/devices` |
 | POST | `/api/me/devices` |
 | DELETE | `/api/me/devices/{token}` |
+| GET | `/api/me/multiplayer-stats?period=weekly` | Weekly multiplayer aggregated stats (wins, totalMatches, winRate, mvpCount). Powers the Phòng Chơi sidebar "Tuần này" widget. Week boundary = Monday 00:00 system zone. See `apps/api/src/main/java/com/biblequiz/modules/user/service/MultiplayerStatsService.java`. |
 
 ### 27.3 Books & Questions
 | Method | Path |

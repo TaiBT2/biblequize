@@ -3,11 +3,10 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (14)
+## Active (13)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
-| 2026-05-15 | Multiplayer Lobby patch theo canonical prompt | TODO | [detail](docs/todo/active/2026-05-15-multiplayer-lobby-patch-canonical.md) |
 | 2026-05-13 | Home Redesign Modern Spiritual | IN PROGRESS | [detail](docs/todo/active/2026-05-13-home-redesign-modern-spiritual.md) |
 | 2026-05-13 | Disable test data seed on prod + harden guard | TODO | [detail](docs/todo/active/2026-05-13-disable-seed-on-prod-and-harden-guard.md) |
 | 2026-05-13 | Code Quality Audit follow-up (BE + FE Web) | PARTIALLY DONE | [detail](docs/todo/active/2026-05-13-code-quality-audit-follow-up-be-fe-web.md) |
@@ -29,6 +28,7 @@
 <details>
 <summary>Xem inline list (tuỳ chọn)</summary>
 
+- 2026-05-15 — Multiplayer Lobby patch theo canonical prompt · DONE · [detail](docs/todo/archive/2026-05-15-multiplayer-lobby-patch-canonical.md)
 - 2026-05-15 — Multiplayer Lobby redesign (MOCKUP_MULTIPLAYER_LOBBY.html) · DONE · [detail](docs/todo/archive/2026-05-15-multiplayer-lobby-redesign.md)
 - 2026-05-15 — Create Room redesign (create_room_redesign.html) · DONE · [detail](docs/todo/archive/2026-05-15-create-room-redesign.md)
 - 2026-05-15 — Personal Quiz Set AI (Phase 2) · DONE · [detail](docs/todo/archive/2026-05-15-personal-quiz-set-ai-phase-2.md)
