@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BibleQuiz · Bảng xếp hạng</title>
+<script>
+  (function(){ try { var t = localStorage.getItem("bq-theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch(e){} })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Yeseva+One&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="leaderboard.css" />
+</head>
+<body>
+  <div class="shell">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" data-screen-label="Sidebar">
+      <div class="brand">
+        <div class="brand-mark">B</div>
+        <div>
+          <div class="brand-name">BibleQuiz</div>
+          <div class="brand-tag">Hành trình 66</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-link" href="Home.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H10v7H5a1 1 0 0 1-1-1V11z"/></svg>
+          TRANG CHỦ
+        </a>
+        <a class="nav-link active" href="#leaderboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h4V10H4v10zm6 0h4V4h-4v16zm6 0h4v-7h-4v7z"/></svg>
+          BẢNG XẾP HẠNG
+        </a>
+        <a class="nav-link" href="#groups">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M15 20c0-2 2-4 4-4s4 2 4 4"/></svg>
+          NHÓM HỘI THÁNH
+        </a>
+        <a class="nav-link" href="#profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+          HỒ SƠ
+        </a>
+      </nav>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div class="side-card">
+          <div class="label">Vị trí của bạn</div>
+          <div class="v">#—</div>
+          <div class="meta">Chưa có điểm trong tuần này</div>
+        </div>
+        <div class="side-card season">
+          <div class="label">Mùa giải</div>
+          <div class="v">Mùa Ngũ Tuần 2026</div>
+          <div class="meta">⏱ Còn 46 ngày</div>
+        </div>
+      </div>
+
+      <div class="sidebar-foot">
+        <div class="avatar-pill">T</div>
+        <div class="foot-meta">
+          <b>Tài Thanh</b>
+          <span>Tân Tín Hữu · Lv. 1</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <main class="main">
+
+      <!-- HUD -->
+      <div class="hud">
+        <div class="hud-title">Xếp hạng</div>
+        <div class="hud-spacer"></div>
+        <div class="hud-stats">
+          <div class="stat-pill">
+            <div class="ico fire">🔥</div>
+            <div>
+              <div class="num">1</div>
+              <div class="lbl">Streak</div>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <div class="ico bolt">⚡</div>
+            <div>
+              <div class="num">100</div>
+              <div class="lbl">Năng lượng</div>
+            </div>
+          </div>
+        </div>
+        <button id="theme-toggle" class="theme-btn" aria-label="Đổi chế độ sáng/tối">☾</button>
+      </div>
+
+      <!-- PAGE HEAD -->
+      <section class="page-head" data-screen-label="01 Tiêu đề">
+        <div>
+          <div class="page-eyebrow">Mùa Ngũ Tuần · 2026</div>
+          <h1>Bảng <span class="accent">Xếp Hạng</span></h1>
+          <p class="sub">Cộng đồng cùng nhau leo bậc thang Kinh Thánh. Top 3 mỗi tier nhận badge Vinh Quang khi mùa kết thúc.</p>
+        </div>
+        <div class="season-clock">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="13" r="8"/><path d="M12 13V8M9 3h6M12 5v3"/></svg>
+          </div>
+          <div>
+            <div class="label">Mùa kết thúc sau</div>
+            <div class="time">46 ngày · 16 giờ · 02 phút</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PODIUM -->
+      <section class="podium" data-screen-label="02 Bục vinh quang">
+        <!-- decorative rays / halo behind the podium -->
+        <svg class="podium-rays" viewBox="0 0 720 380" fill="none">
+          <defs>
+            <radialGradient id="rays" cx="50%" cy="20%" r="55%">
+              <stop offset="0%" stop-color="#E8B547" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#E8B547" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <g stroke="currentColor" stroke-width="1.5" style="color: var(--gold);">
+            <line x1="360" y1="80" x2="160" y2="20"/>
+            <line x1="360" y1="80" x2="240" y2="0"/>
+            <line x1="360" y1="80" x2="360" y2="-20"/>
+            <line x1="360" y1="80" x2="480" y2="0"/>
+            <line x1="360" y1="80" x2="560" y2="20"/>
+            <line x1="360" y1="80" x2="80" y2="80"/>
+            <line x1="360" y1="80" x2="640" y2="80"/>
+          </g>
+          <circle cx="360" cy="80" r="220" fill="url(#rays)"/>
+        </svg>
+
+        <div class="podium-grid">
+
+          <!-- 2nd -->
+          <div class="throne silver" data-screen-label="2nd">
+            <div class="laurel">
+              <svg viewBox="0 0 130 130" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M65 18 C 30 30, 18 60, 30 95 C 38 110, 50 115, 65 115" stroke-linecap="round"/>
+                <path d="M65 18 C 100 30, 112 60, 100 95 C 92 110, 80 115, 65 115" stroke-linecap="round"/>
+                <g stroke-width="1.5">
+                  <path d="M28 50 L18 48 M30 65 L18 65 M34 80 L22 84 M42 95 L32 102"/>
+                  <path d="M102 50 L112 48 M100 65 L112 65 M96 80 L108 84 M88 95 L98 102"/>
+                </g>
+              </svg>
+              <div class="av silver">T</div>
+              <div class="place">2</div>
+            </div>
+            <div class="name">Test Tier 6</div>
+            <div class="tier">Môn Đồ</div>
+            <div class="pedestal">
+              <div class="score">7,178</div>
+              <div class="questions">733 CÂU</div>
+            </div>
+          </div>
+
+          <!-- 1st -->
+          <div class="throne first" data-screen-label="1st">
+            <div class="crown">👑</div>
+            <div class="laurel">
+              <svg viewBox="0 0 150 150" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M75 22 C 32 36, 18 70, 30 110 C 40 128, 55 134, 75 134" stroke-linecap="round"/>
+                <path d="M75 22 C 118 36, 132 70, 120 110 C 110 128, 95 134, 75 134" stroke-linecap="round"/>
+                <g stroke-width="1.5">
+                  <path d="M28 56 L16 54 M30 74 L16 74 M34 92 L20 96 M42 110 L30 118"/>
+                  <path d="M122 56 L134 54 M120 74 L134 74 M116 92 L130 96 M108 110 L120 118"/>
+                  <path d="M48 36 L40 30 M58 28 L52 18 M92 28 L98 18 M102 36 L110 30"/>
+                </g>
+              </svg>
+              <div class="av gold">N</div>
+              <div class="place">1</div>
+            </div>
+            <div class="name">Nguyễn Văn An</div>
+            <div class="tier">Môn Đồ</div>
+            <div class="pedestal">
+              <div class="score">8,402</div>
+              <div class="questions">849 CÂU</div>
+            </div>
+          </div>
+
+          <!-- 3rd -->
+          <div class="throne bronze" data-screen-label="3rd">
+            <div class="laurel">
+              <svg viewBox="0 0 130 130" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M65 18 C 30 30, 18 60, 30 95 C 38 110, 50 115, 65 115" stroke-linecap="round"/>
+                <path d="M65 18 C 100 30, 112 60, 100 95 C 92 110, 80 115, 65 115" stroke-linecap="round"/>
+                <g stroke-width="1.5">
+                  <path d="M28 50 L18 48 M30 65 L18 65 M34 80 L22 84 M42 95 L32 102"/>
+                  <path d="M102 50 L112 48 M100 65 L112 65 M96 80 L108 84 M88 95 L98 102"/>
+                </g>
+              </svg>
+              <div class="av bronze">Đ</div>
+              <div class="place">3</div>
+            </div>
+            <div class="name">Đỗ Quang Phong</div>
+            <div class="tier">Môn Đồ</div>
+            <div class="pedestal">
+              <div class="score">6,434</div>
+              <div class="questions">655 CÂU</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- TABS -->
+      <div class="tabs" role="tablist" data-screen-label="03 Tab">
+        <button class="active" role="tab">Hàng tuần</button>
+        <button role="tab">Mùa</button>
+        <button role="tab">Mọi thời đại</button>
+      </div>
+
+      <!-- RANKED LIST -->
+      <section class="rank-list" data-screen-label="04 Danh sách">
+
+        <div class="rank-row top10">
+          <div class="pos">04</div>
+          <div class="av">T</div>
+          <div>
+            <div class="name">Test Tier 5</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>3,733</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row top10">
+          <div class="pos">05</div>
+          <div class="av">P</div>
+          <div>
+            <div class="name">Phan Văn Nam</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>3,698</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row top10">
+          <div class="pos">06</div>
+          <div class="av">Đ</div>
+          <div>
+            <div class="name">Đặng Gia Huy</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>3,391</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row top10">
+          <div class="pos">07</div>
+          <div class="av">B</div>
+          <div>
+            <div class="name">Bùi Thị Kim</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>3,364</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row top10">
+          <div class="pos">08</div>
+          <div class="av">C</div>
+          <div>
+            <div class="name">Chị Hương</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>3,268</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row top10">
+          <div class="pos">09</div>
+          <div class="av">P</div>
+          <div>
+            <div class="name">Phạm Đức</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>3,259</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row top10">
+          <div class="pos">10</div>
+          <div class="av">A</div>
+          <div>
+            <div class="name">Admin Chính</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>3,206</b><span>điểm</span></div>
+        </div>
+
+        <div class="gap-divider">— Hạng 11 trở đi —</div>
+
+        <div class="rank-row">
+          <div class="pos">11</div>
+          <div class="av">T</div>
+          <div>
+            <div class="name">Test Tier 4</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>2,948</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row">
+          <div class="pos">12</div>
+          <div class="av">L</div>
+          <div>
+            <div class="name">Lê Minh Châu</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>2,937</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row">
+          <div class="pos">13</div>
+          <div class="av">L</div>
+          <div>
+            <div class="name">Lý Thị Oanh</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>2,892</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row">
+          <div class="pos">14</div>
+          <div class="av">H</div>
+          <div>
+            <div class="name">Hà Thanh Quân</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>2,848</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row">
+          <div class="pos">15</div>
+          <div class="av">T</div>
+          <div>
+            <div class="name">Trần Thị Bình</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>2,839</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row">
+          <div class="pos">16</div>
+          <div class="av">N</div>
+          <div>
+            <div class="name">Ngô Quốc Long</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>2,796</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row">
+          <div class="pos">17</div>
+          <div class="av">M</div>
+          <div>
+            <div class="name">Mục Sư Minh</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>2,795</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row">
+          <div class="pos">18</div>
+          <div class="av">H</div>
+          <div>
+            <div class="name">Hoàng Thị Em</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>2,701</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row">
+          <div class="pos">19</div>
+          <div class="av">M</div>
+          <div>
+            <div class="name">Mod Nội Dung</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>2,624</b><span>điểm</span></div>
+        </div>
+
+        <div class="rank-row">
+          <div class="pos">20</div>
+          <div class="av">T</div>
+          <div>
+            <div class="name">Test Tier 3</div>
+            <div class="tier">Người Tìm Kiếm</div>
+          </div>
+          <div class="score"><b>2,512</b><span>điểm</span></div>
+        </div>
+
+        <!-- Pinned YOU row -->
+        <div class="you-row" data-screen-label="05 Vị trí của bạn">
+          <div class="pos">—</div>
+          <div class="av">T</div>
+          <div>
+            <div class="name">TÀI THANH <span class="you-tag">Bạn</span></div>
+            <div class="tier">Tân Tín Hữu · Chưa có điểm tuần này</div>
+          </div>
+          <div class="score"><b>0</b><span>điểm</span></div>
+        </div>
+
+      </section>
+
+      <!-- TIER LADDER -->
+      <section class="ladder" data-screen-label="06 Bậc thang Tier">
+        <div class="ladder-head">
+          <div class="ttl">Bậc thang Vinh Quang</div>
+          <div class="tag">— Season Tiers —</div>
+          <div class="sub">Cuối mùa, top 3 mỗi tier sẽ nhận badge Vinh Quang Mùa Ngũ Tuần 2026.</div>
+        </div>
+
+        <div class="ladder-grid">
+          <article class="tier-card t1 you">
+            <div class="seal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v18M5 7l7 4 7-4M5 12l7 4 7-4"/></svg>
+            </div>
+            <div class="name">Tân Tín Hữu</div>
+            <div class="range">0 – 999 đ</div>
+            <div class="current-tag">Bạn đang ở đây</div>
+          </article>
+
+          <article class="tier-card t2">
+            <div class="seal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="6"/><path d="M16 16l5 5"/></svg>
+            </div>
+            <div class="name">Người Tìm Kiếm</div>
+            <div class="range">1,000 – 4,999 đ</div>
+            <div class="current-tag">Tier 2</div>
+          </article>
+
+          <article class="tier-card t3">
+            <div class="seal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 4h12v8a6 6 0 0 1-12 0V4z"/><path d="M3 4h3M18 4h3M10 16h4v4h-4z"/></svg>
+            </div>
+            <div class="name">Môn Đồ</div>
+            <div class="range">5,000 – 14,999 đ</div>
+            <div class="current-tag">Tier 3</div>
+          </article>
+
+          <article class="tier-card t4">
+            <div class="seal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3l3 6 6 .8-4.5 4.2 1.2 6.4L12 17.4 6.3 20.4l1.2-6.4L3 9.8l6-.8z"/></svg>
+            </div>
+            <div class="name">Hiền Triết</div>
+            <div class="range">15,000 – 39,999 đ</div>
+            <div class="current-tag">Tier 4</div>
+          </article>
+
+          <article class="tier-card t5">
+            <div class="seal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2c2 4 2 6 0 8-2-2-2-4 0-8z" fill="currentColor" stroke="none"/><path d="M12 10c4 0 7 3 7 7 0 3-3 5-7 5s-7-2-7-5c0-4 3-7 7-7z"/></svg>
+            </div>
+            <div class="name">Tiên Tri</div>
+            <div class="range">40,000 – 99,999 đ</div>
+            <div class="current-tag">Tier 5</div>
+          </article>
+
+          <article class="tier-card t6">
+            <div class="seal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v18M9 7h6M7 21h10M5 14l7-7 7 7"/></svg>
+            </div>
+            <div class="name">Sứ Đồ</div>
+            <div class="range">100,000+ đ</div>
+            <div class="current-tag">Tier 6 · Đỉnh</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- VERSE -->
+      <section class="verse" data-screen-label="07 Câu Kinh Thánh">
+        <p class="body">
+          <span class="drop">A</span>i lớn hơn trong các ngươi, sẽ làm đầy tớ các ngươi. Còn ai tự nhắc mình lên, sẽ phải hạ xuống.
+        </p>
+        <div class="cite">Ma-thi-ơ 23:11–12 · BTTHĐ 2011</div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Tweaks panel root -->
+  <div id="tweaks-root"></div>
+
+  <!-- React + Babel + Tweaks panel -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="app.jsx"></script>
+
+  <!-- Tabs interactivity -->
+  <script>
+    document.querySelectorAll(".tabs button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tabs button").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>

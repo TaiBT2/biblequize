@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tạo Phòng — Redesign Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+    background: #11131e;
+    color: #e5e7eb;
+    min-height: 100vh;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(232,168,50,0.08), transparent),
+      radial-gradient(900px 500px at -10% 90%, rgba(96,165,250,0.05), transparent);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* ===== Variant toolbar ===== */
+  .toolbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: rgba(11,13,22,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 10px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    font-size: 12px;
+  }
+  .toolbar-label {
+    color: #9ca3af;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 10px;
+  }
+  .toolbar-group {
+    display: flex;
+    gap: 3px;
+    background: rgba(50,52,64,0.5);
+    padding: 3px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .toolbar-btn {
+    padding: 5px 10px;
+    background: transparent;
+    border: none;
+    color: #d1d5db;
+    font: inherit;
+    font-size: 11px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 500;
+  }
+  .toolbar-btn:hover { color: #fff; }
+  .toolbar-btn.active {
+    background: linear-gradient(135deg, #e8a832, #e7c268);
+    color: #1a1a1a;
+    font-weight: 700;
+  }
+  .toolbar-note {
+    margin-left: auto;
+    color: #6b7280;
+    font-size: 11px;
+    font-style: italic;
+  }
+
+  /* ===== Container ===== */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 86px 32px 64px;
+  }
+
+  /* ===== Top row ===== */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #d1d5db;
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    transition: all 0.15s;
+  }
+  .back-btn:hover { background: rgba(255,255,255,0.05); color: #fff; }
+  .host-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: linear-gradient(135deg, rgba(232,168,50,0.18), rgba(231,194,104,0.06));
+    border: 1px solid rgba(232,168,50,0.32);
+    border-radius: 999px;
+    color: #f0c674;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .host-chip svg { color: #e8a832; }
+  .host-chip strong { color: #f5d484; font-weight: 700; }
+
+  /* ===== Title ===== */
+  .title-block { margin-bottom: 28px; }
+  .title-block h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    letter-spacing: -0.01em;
+  }
+  .title-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, rgba(232,168,50,0.22), rgba(231,194,104,0.06));
+    border-radius: 12px;
+    border: 1px solid rgba(232,168,50,0.3);
+    color: #e8a832;
+  }
+  .title-block .subtitle {
+    color: #9ca3af;
+    font-size: 14.5px;
+    padding-left: 58px;
+  }
+
+  /* ===== Grid ===== */
+  .main-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 1024px) {
+    .main-grid { grid-template-columns: 1fr; }
+    .preview-wrap { position: static !important; }
+  }
+
+  /* ===== Card ===== */
+  .card {
+    background: rgba(50,52,64,0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 18px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+  }
+  .card:last-child { margin-bottom: 0; }
+
+  .card-label {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 11px;
+    font-weight: 700;
+    color: #9ca3af;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-section { margin-bottom: 22px; }
+  .card-section:last-child { margin-bottom: 0; }
+
+  /* ===== Input ===== */
+  .text-input {
+    width: 100%;
+    padding: 12px 14px;
+    background: rgba(15,18,28,0.6);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    color: #fff;
+    font: inherit;
+    font-size: 15px;
+    transition: all 0.15s;
+  }
+  .text-input::placeholder { color: #6b7280; }
+  .text-input:focus {
+    outline: none;
+    border-color: rgba(232,168,50,0.5);
+    background: rgba(15,18,28,0.8);
+  }
+  .input-hint { font-size: 12px; color: #6b7280; margin-top: 6px; }
+
+  /* ===== Mode grid ===== */
+  .mode-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .mode-card {
+    position: relative;
+    background: rgba(15,18,28,0.5);
+    border: 1.5px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 16px 12px 14px;
+    cursor: pointer;
+    transition: all 0.18s;
+    overflow: hidden;
+  }
+  .mode-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--mc, transparent);
+    opacity: 0.07;
+    transition: opacity 0.18s;
+  }
+  .mode-card:hover { transform: translateY(-1px); }
+  .mode-card:hover::before { opacity: 0.13; }
+  .mode-card.active {
+    border-color: var(--mc);
+    box-shadow: 0 0 0 1px var(--mc), 0 10px 28px -10px var(--mc);
+  }
+  .mode-card.active::before { opacity: 0.18; }
+  .mode-card .mode-icon {
+    position: relative;
+    width: 32px; height: 32px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--mc-bg, rgba(255,255,255,0.06));
+    color: var(--mc, #e8a832);
+    margin-bottom: 10px;
+  }
+  .mode-card .mode-name {
+    position: relative;
+    font-weight: 600;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.25;
+  }
+  .mode-card .mode-check {
+    position: absolute;
+    top: 10px; right: 10px;
+    color: var(--mc);
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .mode-card.active .mode-check { opacity: 1; }
+
+  .mode-speed    { --mc: #60a5fa; --mc-bg: rgba(96,165,250,0.18); }
+  .mode-survival { --mc: #f87171; --mc-bg: rgba(248,113,113,0.18); }
+  .mode-team     { --mc: #4ade80; --mc-bg: rgba(74,222,128,0.18); }
+  .mode-sudden   { --mc: #c084fc; --mc-bg: rgba(192,132,252,0.18); }
+
+  .mode-desc {
+    margin-top: 12px;
+    padding: 11px 14px;
+    background: rgba(15,18,28,0.5);
+    border-left: 3px solid var(--mc, #e8a832);
+    border-radius: 8px;
+    font-size: 13px;
+    color: #d1d5db;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .mode-desc svg { color: var(--mc, #e8a832); flex-shrink: 0; }
+
+  /* ===== Segmented tabs (source) ===== */
+  .seg-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .seg-tab {
+    padding: 13px 14px;
+    background: rgba(15,18,28,0.5);
+    border: 1.5px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+  }
+  .seg-tab:hover { background: rgba(15,18,28,0.7); }
+  .seg-tab.active {
+    background: linear-gradient(135deg, rgba(232,168,50,0.18), rgba(231,194,104,0.06));
+    border-color: rgba(232,168,50,0.5);
+  }
+  .seg-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: rgba(255,255,255,0.05);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    flex-shrink: 0;
+  }
+  .seg-tab.active .seg-icon {
+    background: rgba(232,168,50,0.2);
+    color: #e8a832;
+  }
+  .seg-body { display: flex; flex-direction: column; min-width: 0; }
+  .seg-title { font-weight: 600; color: #e5e7eb; font-size: 14px; }
+  .seg-tab.active .seg-title { color: #fff; }
+  .seg-sub { font-size: 11.5px; color: #9ca3af; margin-top: 1px; }
+
+  /* ===== Set picker ===== */
+  .set-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 14px 0 8px;
+  }
+  .set-row-label {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 11px;
+    font-weight: 700;
+    color: #9ca3af;
+  }
+  .set-row-action {
+    background: none;
+    border: none;
+    color: #e8a832;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .set-row-action:hover { color: #f0c674; }
+
+  .set-card {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    padding: 14px;
+    background: rgba(15,18,28,0.5);
+    border: 1.5px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .set-card:hover { background: rgba(15,18,28,0.7); }
+  .set-card.selected {
+    border-color: rgba(232,168,50,0.5);
+    background: linear-gradient(135deg, rgba(232,168,50,0.12), rgba(231,194,104,0.04));
+  }
+  .set-card-icon {
+    width: 42px; height: 42px;
+    background: rgba(232,168,50,0.16);
+    color: #e8a832;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .set-card-body { flex: 1; min-width: 0; }
+  .set-card-name { font-weight: 600; color: #fff; font-size: 15px; }
+  .set-card-meta {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .set-card-check { color: #e8a832; opacity: 0; transition: opacity 0.15s; }
+  .set-card.selected .set-card-check { opacity: 1; }
+
+  /* ===== System bank info (when source = system) ===== */
+  .system-info {
+    margin-top: 14px;
+    padding: 14px;
+    background: rgba(15,18,28,0.5);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: #d1d5db;
+  }
+  .system-info-icon {
+    width: 42px; height: 42px;
+    background: rgba(96,165,250,0.15);
+    color: #60a5fa;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .system-info strong { color: #fff; }
+
+  /* ===== Settings grid ===== */
+  .settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 24px;
+  }
+  .field-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #9ca3af;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .chip-group {
+    display: flex;
+    gap: 4px;
+    background: rgba(15,18,28,0.55);
+    padding: 4px;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+  }
+  .chip-group button {
+    flex: 1;
+    padding: 8px 8px;
+    background: transparent;
+    border: none;
+    color: #d1d5db;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .chip-group button:hover { color: #fff; }
+  .chip-group button.active {
+    background: linear-gradient(135deg, #e8a832, #e7c268);
+    color: #1a1a1a;
+    font-weight: 700;
+  }
+
+  .select-chip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 14px;
+    background: rgba(15,18,28,0.55);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    cursor: pointer;
+    color: #e5e7eb;
+    font-size: 14px;
+    transition: all 0.15s;
+  }
+  .select-chip:hover { background: rgba(15,18,28,0.75); border-color: rgba(255,255,255,0.12); }
+
+  .estimate-line {
+    margin-top: 16px;
+    padding: 10px 14px;
+    background: rgba(96,165,250,0.08);
+    border: 1px solid rgba(96,165,250,0.22);
+    border-radius: 10px;
+    color: #93c5fd;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ===== Toggle row ===== */
+  .toggle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .toggle-row + .toggle-row {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .toggle-row-body { display: flex; align-items: center; gap: 12px; }
+  .toggle-row-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: rgba(232,168,50,0.14);
+    color: #e8a832;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .toggle-row-title { font-weight: 600; color: #fff; font-size: 14px; }
+  .toggle-row-sub { font-size: 12px; color: #9ca3af; margin-top: 2px; }
+
+  .switch {
+    position: relative;
+    width: 42px; height: 24px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+  .switch::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 20px; height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+  .switch.on { background: linear-gradient(135deg, #e8a832, #e7c268); }
+  .switch.on::after { transform: translateX(18px); }
+
+  .advanced-toggle {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    background: none;
+    border-left: none; border-right: none; border-bottom: none;
+    color: #9ca3af;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    text-align: left;
+  }
+  .advanced-toggle:hover { color: #e5e7eb; }
+
+  /* ===== Preview (right column) ===== */
+  .preview-wrap { position: sticky; top: 86px; }
+  .preview-card {
+    background: linear-gradient(180deg, rgba(50,52,64,0.55), rgba(50,52,64,0.3));
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.4);
+  }
+  .preview-header {
+    padding: 16px 20px;
+    background: rgba(15,18,28,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .preview-header-title {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 11px;
+    font-weight: 700;
+    color: #9ca3af;
+  }
+  .preview-mode-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--bbg);
+    color: var(--bc);
+    border: 1px solid var(--bb);
+  }
+  .badge-speed    { --bbg: rgba(96,165,250,0.15); --bc: #93c5fd; --bb: rgba(96,165,250,0.35); }
+  .badge-survival { --bbg: rgba(248,113,113,0.15); --bc: #fca5a5; --bb: rgba(248,113,113,0.35); }
+  .badge-team     { --bbg: rgba(74,222,128,0.15);  --bc: #86efac; --bb: rgba(74,222,128,0.35);  }
+  .badge-sudden   { --bbg: rgba(192,132,252,0.15); --bc: #d8b4fe; --bb: rgba(192,132,252,0.35); }
+
+  .preview-body { padding: 20px; }
+  .preview-name {
+    font-size: 19px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .preview-name.muted { color: #6b7280; font-weight: 500; font-style: italic; }
+  .preview-sub { font-size: 12.5px; color: #9ca3af; margin-bottom: 18px; }
+
+  .preview-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .stat-box {
+    padding: 12px;
+    background: rgba(15,18,28,0.45);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 11px;
+  }
+  .stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .stat-value .stat-unit { font-size: 13px; font-weight: 500; color: #9ca3af; margin-left: 1px; }
+  .stat-value.text-only { font-size: 14px; }
+  .stat-label {
+    font-size: 10.5px;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+    font-weight: 600;
+  }
+
+  .preview-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .preview-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #d1d5db;
+  }
+  .preview-row svg { color: #9ca3af; flex-shrink: 0; }
+  .preview-row.missing { color: #fca5a5; }
+  .preview-row.missing svg { color: #f87171; }
+
+  .preview-cta-wrap {
+    padding: 16px 20px 20px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    background: rgba(15,18,28,0.35);
+  }
+  .preview-warning {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: rgba(248,113,113,0.08);
+    border: 1px solid rgba(248,113,113,0.25);
+    border-radius: 9px;
+    color: #fca5a5;
+    font-size: 12.5px;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .cta-btn {
+    width: 100%;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, #e8a832, #e7c268);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 12px;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.15s;
+    box-shadow: 0 8px 24px -8px rgba(232,168,50,0.5);
+  }
+  .cta-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px -8px rgba(232,168,50,0.6);
+  }
+  .cta-btn.disabled {
+    background: rgba(255,255,255,0.06);
+    color: #6b7280;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+  .cta-btn.disabled:hover { transform: none; box-shadow: none; }
+  .cta-hint {
+    font-size: 11.5px;
+    color: #6b7280;
+    text-align: center;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Variant toolbar (for review only) ===== -->
+<div class="toolbar">
+  <span class="toolbar-label">Chế độ</span>
+  <div class="toolbar-group" data-group="mode">
+    <button class="toolbar-btn active" data-mode="speed">Đua tốc độ</button>
+    <button class="toolbar-btn" data-mode="survival">Sinh tồn</button>
+    <button class="toolbar-btn" data-mode="team">Đội đấu đội</button>
+    <button class="toolbar-btn" data-mode="sudden">Cái chết</button>
+  </div>
+  <span class="toolbar-label">Nguồn</span>
+  <div class="toolbar-group" data-group="source">
+    <button class="toolbar-btn" data-source="system">Hệ thống</button>
+    <button class="toolbar-btn active" data-source="custom">Tự tạo</button>
+  </div>
+  <span class="toolbar-label">Bộ câu hỏi</span>
+  <div class="toolbar-group" data-group="set">
+    <button class="toolbar-btn" data-set="none">Chưa chọn</button>
+    <button class="toolbar-btn active" data-set="selected">Đã chọn</button>
+  </div>
+  <span class="toolbar-note">Toolbar chỉ để review · sẽ bỏ khi implement</span>
+</div>
+
+<div class="container">
+
+  <!-- ===== Top row: back + host chip ===== -->
+  <div class="topbar">
+    <button class="back-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+      Quay lại
+    </button>
+    <div class="host-chip">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
+      <span><strong>Quản trò</strong> · bạn điều phối, không chơi</span>
+    </div>
+  </div>
+
+  <!-- ===== Title ===== -->
+  <div class="title-block">
+    <h1>
+      <span class="title-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258C21.31 9.69 21.302 9.64 21.296 9.59A4 4 0 0 0 17.32 5z"/></svg>
+      </span>
+      Tạo Phòng
+    </h1>
+    <p class="subtitle">Mời bạn bè và điều phối trận đấu Kinh Thánh</p>
+  </div>
+
+  <div class="main-grid">
+
+    <!-- ===== LEFT COLUMN ===== -->
+    <div>
+
+      <!-- Card 1: Name + Mode -->
+      <div class="card">
+        <div class="card-section">
+          <div class="card-label">Tên phòng</div>
+          <input type="text" class="text-input" placeholder="VD: Phòng Kinh Thánh vui" />
+          <div class="input-hint">Để trống để dùng tên mặc định</div>
+        </div>
+
+        <div class="card-section">
+          <div class="card-label">Chế độ chơi</div>
+          <div class="mode-grid" id="modeGrid">
+            <div class="mode-card mode-speed active" data-mode="speed">
+              <div class="mode-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <div class="mode-name">Đua tốc độ</div>
+              <svg class="mode-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="mode-card mode-survival" data-mode="survival">
+              <div class="mode-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+              </div>
+              <div class="mode-name">Sinh tồn</div>
+              <svg class="mode-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="mode-card mode-team" data-mode="team">
+              <div class="mode-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div class="mode-name">Đội đấu đội</div>
+              <svg class="mode-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="mode-card mode-sudden" data-mode="sudden">
+              <div class="mode-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+              </div>
+              <div class="mode-name">Cái chết bất ngờ</div>
+              <svg class="mode-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+
+          <div class="mode-desc mode-speed" id="modeDesc">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span id="modeDescText">Ai trả lời nhanh và đúng sẽ thắng. Tốc độ là yếu tố quyết định.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Question source -->
+      <div class="card">
+        <div class="card-label">Nguồn câu hỏi</div>
+        <div class="seg-tabs" id="sourceTabs">
+          <div class="seg-tab" data-source="system">
+            <div class="seg-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+            </div>
+            <div class="seg-body">
+              <div class="seg-title">Ngân hàng hệ thống</div>
+              <div class="seg-sub">6,702 câu · toàn bộ Kinh Thánh</div>
+            </div>
+          </div>
+          <div class="seg-tab active" data-source="custom">
+            <div class="seg-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></svg>
+            </div>
+            <div class="seg-body">
+              <div class="seg-title">Tự tạo câu hỏi</div>
+              <div class="seg-sub">AI hoặc thủ công trong phòng chờ</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Set picker (shown when source = custom) -->
+        <div id="setSection">
+          <div class="set-row">
+            <span class="set-row-label">Bộ câu hỏi</span>
+            <button class="set-row-action">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              Tạo bộ mới
+            </button>
+          </div>
+          <div class="set-card selected" id="setCard">
+            <div class="set-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="set-card-body">
+              <div class="set-card-name">Bộ câu hỏi test</div>
+              <div class="set-card-meta">
+                <span>5 câu</span><span>·</span><span>Riêng tư</span>
+              </div>
+            </div>
+            <svg class="set-card-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+
+        <!-- System info (shown when source = system) -->
+        <div id="systemSection" style="display:none">
+          <div class="system-info">
+            <div class="system-info-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            </div>
+            <div>
+              Câu hỏi sẽ được chọn ngẫu nhiên từ <strong>6,702 câu hỏi</strong> trong ngân hàng theo độ khó và sách Kinh Thánh anh chọn bên dưới.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Match settings -->
+      <div class="card">
+        <div class="card-label">Cài đặt trận đấu</div>
+        <div class="settings-grid">
+          <div>
+            <div class="field-label">Số câu hỏi</div>
+            <div class="chip-group">
+              <button>10</button>
+              <button class="active">15</button>
+              <button>20</button>
+              <button>30</button>
+            </div>
+          </div>
+          <div>
+            <div class="field-label">Độ khó</div>
+            <div class="chip-group">
+              <button>Dễ</button>
+              <button>TB</button>
+              <button>Khó</button>
+              <button class="active">Tổng hợp</button>
+            </div>
+          </div>
+          <div>
+            <div class="field-label">Thời gian / câu</div>
+            <div class="chip-group">
+              <button>10s</button>
+              <button>15s</button>
+              <button>20s</button>
+              <button class="active">30s</button>
+            </div>
+          </div>
+          <div>
+            <div class="field-label">Sách Kinh Thánh</div>
+            <div class="select-chip">
+              <span>Tất cả 66 sách</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#9ca3af"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="estimate-line">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Ước lượng trận đấu khoảng <strong style="color:#bfdbfe;margin-left:2px">~8 phút</strong>
+        </div>
+      </div>
+
+      <!-- Card 4: Privacy & Advanced -->
+      <div class="card">
+        <div class="toggle-row">
+          <div class="toggle-row-body">
+            <div class="toggle-row-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            </div>
+            <div>
+              <div class="toggle-row-title">Phòng công khai</div>
+              <div class="toggle-row-sub">Mọi người đều có thể tìm và tham gia</div>
+            </div>
+          </div>
+          <div class="switch on" id="publicSwitch"></div>
+        </div>
+        <button class="advanced-toggle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          Cài đặt nâng cao
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== RIGHT COLUMN: Preview ===== -->
+    <div>
+      <div class="preview-wrap">
+        <div class="preview-card">
+          <div class="preview-header">
+            <span class="preview-header-title">Tổng quan</span>
+            <span class="preview-mode-badge badge-speed" id="previewBadge">
+              <svg id="previewBadgeIcon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span id="previewMode">Đua tốc độ</span>
+            </span>
+          </div>
+          <div class="preview-body">
+            <div class="preview-name muted" id="previewName">Tên mặc định</div>
+            <div class="preview-sub">Bạn là quản trò · 4 người tối đa</div>
+
+            <div class="preview-stats">
+              <div class="stat-box">
+                <div class="stat-value">15 <span class="stat-unit">câu</span></div>
+                <div class="stat-label">Số câu hỏi</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">30<span class="stat-unit">s</span></div>
+                <div class="stat-label">Mỗi câu</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">~8 <span class="stat-unit">phút</span></div>
+                <div class="stat-label">Tổng thời gian</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value text-only">Tổng hợp</div>
+                <div class="stat-label">Độ khó</div>
+              </div>
+            </div>
+
+            <div class="preview-rows">
+              <div class="preview-row" id="previewSet">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                <span id="previewSetText">Bộ câu hỏi test · 5 câu</span>
+              </div>
+              <div class="preview-row">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg>
+                <span>Tất cả 66 sách Kinh Thánh</span>
+              </div>
+              <div class="preview-row">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span>Công khai · ai cũng có thể tham gia</span>
+              </div>
+            </div>
+          </div>
+          <div class="preview-cta-wrap">
+            <div class="preview-warning" id="previewWarning" style="display:none">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+              <span>Chọn bộ câu hỏi để tiếp tục</span>
+            </div>
+            <button class="cta-btn" id="ctaBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258C21.31 9.69 21.302 9.64 21.296 9.59A4 4 0 0 0 17.32 5z"/></svg>
+              <span>Tạo phòng & điều phối</span>
+            </button>
+            <div class="cta-hint">Sau khi tạo, anh sẽ nhận mã phòng để chia sẻ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const modeData = {
+  speed: {
+    name: 'Đua tốc độ',
+    desc: 'Ai trả lời nhanh và đúng sẽ thắng. Tốc độ là yếu tố quyết định.',
+    descClass: 'mode-speed',
+    badgeClass: 'badge-speed',
+    iconHTML: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+    iconFill: 'currentColor', iconStroke: 'none'
+  },
+  survival: {
+    name: 'Sinh tồn',
+    desc: 'Trả lời sai bị loại. Người sống sót cuối cùng giành chiến thắng.',
+    descClass: 'mode-survival',
+    badgeClass: 'badge-survival',
+    iconHTML: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>',
+    iconFill: 'currentColor', iconStroke: 'none'
+  },
+  team: {
+    name: 'Đội đấu đội',
+    desc: 'Chia thành 2 đội. Tổng điểm của đội nào cao hơn sẽ thắng.',
+    descClass: 'mode-team',
+    badgeClass: 'badge-team',
+    iconHTML: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    iconFill: 'none', iconStroke: 'currentColor'
+  },
+  sudden: {
+    name: 'Cái chết bất ngờ',
+    desc: 'Câu hỏi cuối quyết định tất cả — mọi điểm trước đó đều reset.',
+    descClass: 'mode-sudden',
+    badgeClass: 'badge-sudden',
+    iconHTML: '<circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>',
+    iconFill: 'none', iconStroke: 'currentColor'
+  }
+};
+
+// ===== Mode toggle =====
+function setMode(mode) {
+  document.querySelectorAll('#modeGrid .mode-card').forEach(c => c.classList.remove('active'));
+  document.querySelector('#modeGrid .mode-card[data-mode="' + mode + '"]').classList.add('active');
+
+  const desc = document.getElementById('modeDesc');
+  desc.className = 'mode-desc ' + modeData[mode].descClass;
+  document.getElementById('modeDescText').textContent = modeData[mode].desc;
+
+  const badge = document.getElementById('previewBadge');
+  badge.className = 'preview-mode-badge ' + modeData[mode].badgeClass;
+  document.getElementById('previewMode').textContent = modeData[mode].name;
+
+  const icon = document.getElementById('previewBadgeIcon');
+  icon.setAttribute('fill', modeData[mode].iconFill);
+  icon.setAttribute('stroke', modeData[mode].iconStroke);
+  icon.setAttribute('stroke-width', '2');
+  icon.innerHTML = modeData[mode].iconHTML;
+}
+
+document.querySelectorAll('[data-group="mode"] .toolbar-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-group="mode"] .toolbar-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    setMode(btn.dataset.mode);
+  });
+});
+
+document.querySelectorAll('#modeGrid .mode-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const mode = card.dataset.mode;
+    document.querySelector('[data-group="mode"] .toolbar-btn[data-mode="' + mode + '"]').click();
+  });
+});
+
+// ===== Source toggle =====
+function setSource(source) {
+  document.querySelectorAll('#sourceTabs .seg-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('#sourceTabs .seg-tab[data-source="' + source + '"]').classList.add('active');
+
+  document.getElementById('setSection').style.display = source === 'custom' ? 'block' : 'none';
+  document.getElementById('systemSection').style.display = source === 'system' ? 'block' : 'none';
+
+  const previewSet = document.getElementById('previewSet');
+  if (source === 'system') {
+    previewSet.querySelector('span').textContent = 'Ngân hàng hệ thống · 6,702 câu';
+    previewSet.classList.remove('missing');
+    document.getElementById('previewWarning').style.display = 'none';
+    document.getElementById('ctaBtn').classList.remove('disabled');
+  } else {
+    const currentSetState = document.querySelector('[data-group="set"] .toolbar-btn.active').dataset.set;
+    setSet(currentSetState);
+  }
+}
+
+document.querySelectorAll('[data-group="source"] .toolbar-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-group="source"] .toolbar-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    setSource(btn.dataset.source);
+  });
+});
+
+document.querySelectorAll('#sourceTabs .seg-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const source = tab.dataset.source;
+    document.querySelector('[data-group="source"] .toolbar-btn[data-source="' + source + '"]').click();
+  });
+});
+
+// ===== Set toggle =====
+function setSet(state) {
+  const card = document.getElementById('setCard');
+  const previewSet = document.getElementById('previewSet');
+  const previewSetText = document.getElementById('previewSetText');
+  const warning = document.getElementById('previewWarning');
+  const cta = document.getElementById('ctaBtn');
+
+  if (state === 'selected') {
+    card.classList.add('selected');
+    previewSet.classList.remove('missing');
+    previewSetText.textContent = 'Bộ câu hỏi test · 5 câu';
+    warning.style.display = 'none';
+    cta.classList.remove('disabled');
+  } else {
+    card.classList.remove('selected');
+    previewSet.classList.add('missing');
+    previewSetText.textContent = 'Chưa chọn bộ câu hỏi';
+    warning.style.display = 'flex';
+    cta.classList.add('disabled');
+  }
+}
+
+document.querySelectorAll('[data-group="set"] .toolbar-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-group="set"] .toolbar-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    setSet(btn.dataset.set);
+  });
+});
+
+document.getElementById('setCard').addEventListener('click', () => {
+  const isSelected = document.getElementById('setCard').classList.contains('selected');
+  const newState = isSelected ? 'none' : 'selected';
+  document.querySelector('[data-group="set"] .toolbar-btn[data-set="' + newState + '"]').click();
+});
+
+// ===== Chip groups =====
+document.querySelectorAll('.chip-group').forEach(group => {
+  group.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      group.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+});
+
+// ===== Public switch =====
+document.getElementById('publicSwitch').addEventListener('click', function() {
+  this.classList.toggle('on');
+});
+
+// ===== Name input → preview update =====
+document.querySelector('.text-input').addEventListener('input', function() {
+  const previewName = document.getElementById('previewName');
+  if (this.value.trim()) {
+    previewName.textContent = this.value;
+    previewName.classList.remove('muted');
+  } else {
+    previewName.textContent = 'Tên mặc định';
+    previewName.classList.add('muted');
+  }
+});
+</script>
+</body>
+</html>

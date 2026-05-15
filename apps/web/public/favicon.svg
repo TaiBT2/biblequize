@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f4d178"/>
+      <stop offset="55%" stop-color="#e8a832"/>
+      <stop offset="100%" stop-color="#7a5818"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="6" fill="#11131e"/>
+  <!-- Chunky Latin cross — 8px wide bars so it stays legible when the
+       browser scales the favicon down to 16×16 in the tab. Vertical bar
+       (x 12..20, y 3..29) + horizontal crossbar (x 6..26, y 10..18). -->
+  <path d="M12 3h8v7h6v8h-6v11h-8V18H6v-8h6z" fill="url(#g)"/>
+</svg>

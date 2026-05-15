@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280, initial-scale=1">
+<title>Hero Ranked · Ornament Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #0a0c14;
+    color: #f5f0e6;
+    font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse 1000px 700px at 18% -5%, rgba(232,168,50,0.08), transparent 55%),
+      #0a0c14;
+    min-height: 100vh;
+    padding: 40px 32px;
+  }
+
+  /* ─────────── Container ─────────── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .intro {
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(232,168,50,0.15);
+  }
+  .intro h1 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .intro h1 .gold { color: #e8a832; }
+  .intro p {
+    font-size: 13px;
+    color: #b8b1a3;
+    line-height: 1.6;
+    max-width: 760px;
+  }
+
+  /* ─────────── Variant block ─────────── */
+  .variant {
+    margin-bottom: 36px;
+  }
+  .variant-label {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .variant-pill {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(232,168,50,0.18), rgba(232,168,50,0.04));
+    color: #e8a832;
+    border: 1px solid rgba(232,168,50,0.35);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .variant-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #f5f0e6;
+    letter-spacing: -0.01em;
+  }
+  .variant-desc {
+    font-size: 12px;
+    color: #8a8f9c;
+    margin-bottom: 14px;
+    line-height: 1.5;
+    max-width: 720px;
+  }
+
+  /* ─────────── Hero card base ─────────── */
+  .hero {
+    background:
+      radial-gradient(ellipse 400px 200px at 30% 0%, rgba(255,220,140,0.20), transparent 60%),
+      linear-gradient(135deg, #e8a832 0%, #c98a1c 55%, #7a5818 100%);
+    border-radius: 20px;
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 18px 50px -10px rgba(232,168,50,0.30),
+      0 0 0 1px rgba(232,168,50,0.4),
+      inset 0 1px 0 rgba(255,220,140,0.4);
+    min-height: 168px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 0 0 0 0 0 0.3 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.25;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 28px;
+    align-items: center;
+  }
+  .hero-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(26,18,8,0.7);
+    margin-bottom: 8px;
+  }
+  .hero-title {
+    font-size: 34px;
+    font-weight: 800;
+    color: #1a1208;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    margin-bottom: 10px;
+    text-shadow: 0 1px 0 rgba(255,220,140,0.4);
+  }
+  .hero-tagline {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(26,18,8,0.75);
+    margin-bottom: 18px;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 18px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(26,18,8,0.8);
+  }
+  .hero-stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-stat svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2;
+  }
+  .hero-cta {
+    background: #1a1208;
+    color: #e8a832;
+    border: 1px solid #1a1208;
+    padding: 14px 26px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    box-shadow: 0 6px 18px rgba(26,18,8,0.4), inset 0 1px 0 rgba(232,168,50,0.15);
+    white-space: nowrap;
+  }
+  .hero-cta:hover {
+    background: #2a1f12;
+    transform: translateX(3px);
+  }
+  .hero-cta svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2;
+    transition: transform 0.2s;
+  }
+  .hero:hover .hero-cta svg {
+    transform: translateX(4px);
+  }
+
+  /* ─────────── Ornament base ─────────── */
+  .ornament {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     VARIANT A: Crown + halo (vương miện - metaphor "rank")
+     ═══════════════════════════════════════════════════════ */
+  .hero-A .ornament {
+    right: 230px;
+    width: 180px;
+    height: 180px;
+    opacity: 0.16;
+  }
+  .hero-A .ornament svg {
+    width: 100%;
+    height: 100%;
+    color: #1a1208;
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     VARIANT B: Cross + sunburst (thánh giá tỏa sáng)
+     ═══════════════════════════════════════════════════════ */
+  .hero-B .ornament {
+    right: 220px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.14;
+  }
+  .hero-B .ornament svg {
+    width: 100%;
+    height: 100%;
+    color: #1a1208;
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     VARIANT C: Laurel wreath (vòng nguyệt quế chiến thắng)
+     ═══════════════════════════════════════════════════════ */
+  .hero-C .ornament {
+    right: 210px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.15;
+  }
+  .hero-C .ornament svg {
+    width: 100%;
+    height: 100%;
+    color: #1a1208;
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     VARIANT D: Open book + cross (sách + thánh giá - bible)
+     ═══════════════════════════════════════════════════════ */
+  .hero-D .ornament {
+    right: 220px;
+    width: 190px;
+    height: 190px;
+    opacity: 0.13;
+  }
+  .hero-D .ornament svg {
+    width: 100%;
+    height: 100%;
+    color: #1a1208;
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     VARIANT E: Geometric mandala (hoa văn hình học)
+     ═══════════════════════════════════════════════════════ */
+  .hero-E .ornament {
+    right: 200px;
+    width: 220px;
+    height: 220px;
+    opacity: 0.10;
+  }
+  .hero-E .ornament svg {
+    width: 100%;
+    height: 100%;
+    color: #1a1208;
+  }
+
+  /* ─────────── Notes panel ─────────── */
+  .notes {
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: rgba(50,52,64,0.4);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    font-size: 11px;
+    color: #b8b1a3;
+    line-height: 1.6;
+  }
+  .notes strong { color: #f5f0e6; }
+  .notes .pro { color: #84b48c; }
+  .notes .con { color: #d97586; }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="intro">
+    <h1>Hero Ranked · <span class="gold">Ornament Options</span></h1>
+    <p>5 concepts để fill khoảng trống ở center-right. Cùng card layout (gold gradient, padding, button), chỉ khác ornament SVG. Opacity 10-16% để subtle, không cạnh tranh với title/CTA. Hidden trên mobile (&lt;768px).</p>
+  </div>
+
+  <!-- ─────────────────────────────────── VARIANT A ─────────────────────────────────── -->
+  <div class="variant">
+    <div class="variant-label">
+      <span class="variant-pill">A</span>
+      <span class="variant-title">Crown + Halo</span>
+    </div>
+    <p class="variant-desc">Vương miện 5 đỉnh + halo tròn — metaphor "Ranked = compete for crown". Cohesive với concept ranking/competition.</p>
+
+    <div class="hero hero-A">
+      <div class="ornament">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Halo circle -->
+          <circle cx="100" cy="105" r="78" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+          <circle cx="100" cy="105" r="90" stroke="currentColor" stroke-width="0.8" opacity="0.3"/>
+          
+          <!-- Crown band -->
+          <path d="M50 120 L150 120 L150 135 L50 135 Z" fill="currentColor"/>
+          
+          <!-- Crown spikes (5 spikes) -->
+          <path d="M50 120 L62 80 L70 105 L82 70 L90 105 L100 60 L110 105 L118 70 L130 105 L138 80 L150 120 Z" fill="currentColor"/>
+          
+          <!-- Gemstones on spikes -->
+          <circle cx="62" cy="80" r="3" fill="currentColor" opacity="0.6"/>
+          <circle cx="82" cy="70" r="3.5" fill="currentColor" opacity="0.6"/>
+          <circle cx="100" cy="60" r="4" fill="currentColor" opacity="0.6"/>
+          <circle cx="118" cy="70" r="3.5" fill="currentColor" opacity="0.6"/>
+          <circle cx="138" cy="80" r="3" fill="currentColor" opacity="0.6"/>
+          
+          <!-- Decorative dots on band -->
+          <circle cx="65" cy="127" r="2" fill="currentColor" opacity="0.4"/>
+          <circle cx="85" cy="127" r="2" fill="currentColor" opacity="0.4"/>
+          <circle cx="100" cy="127" r="2.5" fill="currentColor" opacity="0.5"/>
+          <circle cx="115" cy="127" r="2" fill="currentColor" opacity="0.4"/>
+          <circle cx="135" cy="127" r="2" fill="currentColor" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="hero-content">
+        <div>
+          <div class="hero-label">Tiếp theo · Bước vào đấu trường</div>
+          <h2 class="hero-title">Đấu Hạng</h2>
+          <p class="hero-tagline">Daily xong rồi — giờ cạnh tranh ranking thôi</p>
+          <div class="hero-stats">
+            <span class="hero-stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              100 / 100 năng lượng
+            </span>
+            <span class="hero-stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
+              0 / 100 câu hôm nay
+            </span>
+          </div>
+        </div>
+        <button class="hero-cta">
+          Vào trận
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="notes">
+      <strong>Crown ornament:</strong> Direct metaphor cho "Ranked" — cạnh tranh để đạt crown.
+      <span class="pro">✓ Pros:</span> dễ hiểu, gamification feel, cohesive với "Vinh Quang" tier (👑).
+      <span class="con">✗ Cons:</span> hơi "thông tục" không gắn với Bible — crown trong KT (mão thánh) có meaning khác.
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────── VARIANT B ─────────────────────────────────── -->
+  <div class="variant">
+    <div class="variant-label">
+      <span class="variant-pill">B</span>
+      <span class="variant-title">Cross + Sunburst</span>
+    </div>
+    <p class="variant-desc">Thánh giá ở giữa + tia sáng tỏa ra (sunburst radiating) — concept "Light of the Word". Spiritual, không phải competitive.</p>
+
+    <div class="hero hero-B">
+      <div class="ornament">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sunburst rays (12 rays) -->
+          <g stroke="currentColor" stroke-width="1.5" opacity="0.55">
+            <line x1="100" y1="100" x2="100" y2="20"/>
+            <line x1="100" y1="100" x2="100" y2="180"/>
+            <line x1="100" y1="100" x2="20" y2="100"/>
+            <line x1="100" y1="100" x2="180" y2="100"/>
+            <line x1="100" y1="100" x2="160" y2="40"/>
+            <line x1="100" y1="100" x2="40" y2="40"/>
+            <line x1="100" y1="100" x2="160" y2="160"/>
+            <line x1="100" y1="100" x2="40" y2="160"/>
+          </g>
+          <g stroke="currentColor" stroke-width="1" opacity="0.35">
+            <line x1="100" y1="100" x2="140" y2="25"/>
+            <line x1="100" y1="100" x2="60" y2="25"/>
+            <line x1="100" y1="100" x2="175" y2="60"/>
+            <line x1="100" y1="100" x2="25" y2="60"/>
+            <line x1="100" y1="100" x2="175" y2="140"/>
+            <line x1="100" y1="100" x2="25" y2="140"/>
+            <line x1="100" y1="100" x2="140" y2="175"/>
+            <line x1="100" y1="100" x2="60" y2="175"/>
+          </g>
+          
+          <!-- Inner halo -->
+          <circle cx="100" cy="100" r="50" stroke="currentColor" stroke-width="1.2" opacity="0.5" fill="rgba(26,18,8,0.08)"/>
+          
+          <!-- Cross -->
+          <path d="M92 60 L108 60 L108 92 L140 92 L140 108 L108 108 L108 160 L92 160 L92 108 L60 108 L60 92 L92 92 Z" fill="currentColor"/>
+          
+          <!-- Cross center decoration -->
+          <circle cx="100" cy="100" r="6" fill="rgba(26,18,8,0.15)"/>
+        </svg>
+      </div>
+      <div class="hero-content">
+        <div>
+          <div class="hero-label">Tiếp theo · Bước vào đấu trường</div>
+          <h2 class="hero-title">Đấu Hạng</h2>
+          <p class="hero-tagline">Daily xong rồi — giờ cạnh tranh ranking thôi</p>
+          <div class="hero-stats">
+            <span class="hero-stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              100 / 100 năng lượng
+            </span>
+            <span class="hero-stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
+              0 / 100 câu hôm nay
+            </span>
+          </div>
+        </div>
+        <button class="hero-cta">
+          Vào trận
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="notes">
+      <strong>Cross + Sunburst:</strong> Spiritual focal point — thánh giá tỏa sáng.
+      <span class="pro">✓ Pros:</span> rõ ràng Bible identity, illuminated manuscript feel, đẹp về visual symmetry.
+      <span class="con">✗ Cons:</span> hơi "đậm tôn giáo" — có thể OVER cho Ranked card (competitive context); reserve cross cho moments khác (Daily/Verse).
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────── VARIANT C ─────────────────────────────────── -->
+  <div class="variant">
+    <div class="variant-label">
+      <span class="variant-pill">C</span>
+      <span class="variant-title">Laurel Wreath</span>
+    </div>
+    <p class="variant-desc">Vòng nguyệt quế (laurel wreath) — symbol cổ điển cho "victory / achievement". Đẹp & trung tính, không tôn giáo cực đoan, không gamification thường tục.</p>
+
+    <div class="hero hero-C">
+      <div class="ornament">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Left laurel branch -->
+          <g stroke="currentColor" stroke-width="1.5" fill="none">
+            <path d="M50 100 Q40 70 50 50" opacity="0.6"/>
+            <!-- leaves on left branch -->
+            <path d="M48 90 Q35 85 32 95 Q40 100 50 95 Z" fill="currentColor" opacity="0.55"/>
+            <path d="M45 78 Q32 73 30 84 Q38 88 48 82 Z" fill="currentColor" opacity="0.55"/>
+            <path d="M44 66 Q31 62 30 73 Q38 76 47 70 Z" fill="currentColor" opacity="0.55"/>
+            <path d="M46 54 Q33 51 33 62 Q40 64 48 58 Z" fill="currentColor" opacity="0.55"/>
+          </g>
+          
+          <!-- Right laurel branch (mirror) -->
+          <g stroke="currentColor" stroke-width="1.5" fill="none">
+            <path d="M150 100 Q160 70 150 50" opacity="0.6"/>
+            <path d="M152 90 Q165 85 168 95 Q160 100 150 95 Z" fill="currentColor" opacity="0.55"/>
+            <path d="M155 78 Q168 73 170 84 Q162 88 152 82 Z" fill="currentColor" opacity="0.55"/>
+            <path d="M156 66 Q169 62 170 73 Q162 76 153 70 Z" fill="currentColor" opacity="0.55"/>
+            <path d="M154 54 Q167 51 167 62 Q160 64 152 58 Z" fill="currentColor" opacity="0.55"/>
+          </g>
+          
+          <!-- Bottom curves connecting -->
+          <path d="M50 100 Q70 130 100 135 Q130 130 150 100" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.5"/>
+          
+          <!-- Bottom leaves -->
+          <path d="M75 115 Q65 122 72 130 Q82 126 80 115 Z" fill="currentColor" opacity="0.55"/>
+          <path d="M125 115 Q135 122 128 130 Q118 126 120 115 Z" fill="currentColor" opacity="0.55"/>
+          <path d="M95 130 Q88 138 96 140 Q104 138 100 128 Z" fill="currentColor" opacity="0.55"/>
+          <path d="M105 130 Q112 138 104 140 Q100 138 100 128 Z" fill="currentColor" opacity="0.55"/>
+          
+          <!-- Center star -->
+          <path d="M100 70 L105 85 L120 85 L108 94 L113 109 L100 100 L87 109 L92 94 L80 85 L95 85 Z" fill="currentColor" opacity="0.85"/>
+          
+          <!-- Top tie/ribbon dot -->
+          <circle cx="100" cy="48" r="3" fill="currentColor" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="hero-content">
+        <div>
+          <div class="hero-label">Tiếp theo · Bước vào đấu trường</div>
+          <h2 class="hero-title">Đấu Hạng</h2>
+          <p class="hero-tagline">Daily xong rồi — giờ cạnh tranh ranking thôi</p>
+          <div class="hero-stats">
+            <span class="hero-stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              100 / 100 năng lượng
+            </span>
+            <span class="hero-stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
+              0 / 100 câu hôm nay
+            </span>
+          </div>
+        </div>
+        <button class="hero-cta">
+          Vào trận
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="notes">
+      <strong>Laurel wreath + star:</strong> Classical victory symbol — universal, không quá tôn giáo, không thường tục.
+      <span class="pro">✓ Pros:</span> elegant, "earned achievement" feel, đẹp hài hoà, illuminated manuscript có dùng nhiều.
+      <span class="con">✗ Cons:</span> hơi "decorative" — không có narrative meaning mạnh.
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────── VARIANT D ─────────────────────────────────── -->
+  <div class="variant">
+    <div class="variant-label">
+      <span class="variant-pill">D</span>
+      <span class="variant-title">Open Bible + Sword (Heb 4:12)</span>
+    </div>
+    <p class="variant-desc">Sách Kinh Thánh mở + thanh kiếm xuyên qua — reference Hê-bơ-rơ 4:12 "Lời Đức Chúa Trời sắc bén hơn gươm hai lưỡi". Spiritual + competitive metaphor cùng lúc.</p>
+
+    <div class="hero hero-D">
+      <div class="ornament">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Open book pages background -->
+          <path d="M40 130 L100 110 L160 130 L160 80 L100 60 L40 80 Z" fill="currentColor" opacity="0.2"/>
+          
+          <!-- Book spine/center -->
+          <line x1="100" y1="60" x2="100" y2="110" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+          
+          <!-- Page lines (left) -->
+          <line x1="55" y1="85" x2="92" y2="78" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+          <line x1="55" y1="93" x2="92" y2="86" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+          <line x1="55" y1="101" x2="92" y2="94" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+          <line x1="55" y1="109" x2="92" y2="102" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+          
+          <!-- Page lines (right) -->
+          <line x1="108" y1="78" x2="145" y2="85" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+          <line x1="108" y1="86" x2="145" y2="93" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+          <line x1="108" y1="94" x2="145" y2="101" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+          <line x1="108" y1="102" x2="145" y2="109" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+          
+          <!-- Book edges -->
+          <path d="M40 130 L100 110 L160 130" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.7"/>
+          <path d="M40 80 L100 60 L160 80" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.7"/>
+          <path d="M40 80 L40 130" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+          <path d="M160 80 L160 130" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+          
+          <!-- Sword blade vertical through book -->
+          <path d="M97 20 L103 20 L103 145 L100 152 L97 145 Z" fill="currentColor" opacity="0.85"/>
+          
+          <!-- Sword guard (crossguard) -->
+          <rect x="80" y="45" width="40" height="6" fill="currentColor" opacity="0.85"/>
+          <circle cx="83" cy="48" r="3" fill="currentColor"/>
+          <circle cx="117" cy="48" r="3" fill="currentColor"/>
+          
+          <!-- Sword handle/grip -->
+          <rect x="96" y="28" width="8" height="17" fill="currentColor" opacity="0.7"/>
+          
+          <!-- Sword pommel -->
+          <circle cx="100" cy="22" r="5" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="hero-content">
+        <div>
+          <div class="hero-label">Tiếp theo · Bước vào đấu trường</div>
+          <h2 class="hero-title">Đấu Hạng</h2>
+          <p class="hero-tagline">Daily xong rồi — giờ cạnh tranh ranking thôi</p>
+          <div class="hero-stats">
+            <span class="hero-stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              100 / 100 năng lượng
+            </span>
+            <span class="hero-stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
+              0 / 100 câu hôm nay
+            </span>
+          </div>
+        </div>
+        <button class="hero-cta">
+          Vào trận
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="notes">
+      <strong>Open Bible + Sword:</strong> Reference Hê-bơ-rơ 4:12 — "Lời ĐCT sắc bén hơn gươm hai lưỡi". Bible + competition unified metaphor.
+      <span class="pro">✓ Pros:</span> deeply meaningful (verse reference), unique cho Bible app, balance spiritual + competitive.
+      <span class="con">✗ Cons:</span> hơi "đậm" — sword có thể negative connotation với vài users (violence/war); cần verify với FMC community.
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────── VARIANT E ─────────────────────────────────── -->
+  <div class="variant">
+    <div class="variant-label">
+      <span class="variant-pill">E</span>
+      <span class="variant-title">Geometric Mandala</span>
+    </div>
+    <p class="variant-desc">Hoa văn hình học symmetric (mandala-style nhưng không Phật giáo) — pattern từ rose windows nhà thờ Gothic. Pure decorative, không có narrative meaning, đẹp về thuần hình học.</p>
+
+    <div class="hero hero-E">
+      <div class="ornament">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Outer circle -->
+          <circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <circle cx="100" cy="100" r="85" stroke="currentColor" stroke-width="0.8" opacity="0.3"/>
+          
+          <!-- 8 outer petals -->
+          <g stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.6">
+            <path d="M100 15 Q120 50 100 85 Q80 50 100 15 Z"/>
+            <path d="M185 100 Q150 120 115 100 Q150 80 185 100 Z"/>
+            <path d="M100 185 Q120 150 100 115 Q80 150 100 185 Z"/>
+            <path d="M15 100 Q50 120 85 100 Q50 80 15 100 Z"/>
+            <path d="M160 40 Q140 65 115 85 Q130 60 160 40 Z"/>
+            <path d="M160 160 Q140 135 115 115 Q130 140 160 160 Z"/>
+            <path d="M40 160 Q60 135 85 115 Q70 140 40 160 Z"/>
+            <path d="M40 40 Q60 65 85 85 Q70 60 40 40 Z"/>
+          </g>
+          
+          <!-- Inner circle -->
+          <circle cx="100" cy="100" r="50" stroke="currentColor" stroke-width="1.2" opacity="0.55"/>
+          
+          <!-- 6-pointed star (Star of David style — biblical) -->
+          <path d="M100 60 L122 95 L100 130 L78 95 Z" stroke="currentColor" stroke-width="1.2" fill="currentColor" opacity="0.45"/>
+          <path d="M70 80 L130 80 L100 130 Z" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.55"/>
+          <path d="M70 120 L130 120 L100 70 Z" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.55"/>
+          
+          <!-- Center dot -->
+          <circle cx="100" cy="100" r="6" fill="currentColor" opacity="0.7"/>
+          <circle cx="100" cy="100" r="12" stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="hero-content">
+        <div>
+          <div class="hero-label">Tiếp theo · Bước vào đấu trường</div>
+          <h2 class="hero-title">Đấu Hạng</h2>
+          <p class="hero-tagline">Daily xong rồi — giờ cạnh tranh ranking thôi</p>
+          <div class="hero-stats">
+            <span class="hero-stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              100 / 100 năng lượng
+            </span>
+            <span class="hero-stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
+              0 / 100 câu hôm nay
+            </span>
+          </div>
+        </div>
+        <button class="hero-cta">
+          Vào trận
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="notes">
+      <strong>Geometric Mandala (Gothic rose window style):</strong> Pure decorative pattern, inspired bởi rose windows nhà thờ Gothic.
+      <span class="pro">✓ Pros:</span> elegant, không "đậm tôn giáo", reusable cho nhiều cards khác (Featured Daily, Section dividers), Star of David subtle reference.
+      <span class="con">✗ Cons:</span> không có narrative meaning rõ; có thể đọc như "geometric pattern generic" thay vì spiritual.
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────── COMPARISON ─────────────────────────────────── -->
+  <div style="margin-top: 50px; padding-top: 24px; border-top: 1px solid rgba(232,168,50,0.15);">
+    <h2 style="font-size: 16px; font-weight: 700; margin-bottom: 14px; color: #f5f0e6;">So sánh nhanh</h2>
+    <table style="width: 100%; font-size: 12px; color: #b8b1a3; border-collapse: collapse;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+          <th style="text-align: left; padding: 10px 12px; color: #e8a832; font-weight: 700;">Variant</th>
+          <th style="text-align: left; padding: 10px 12px; color: #e8a832; font-weight: 700;">Symbol</th>
+          <th style="text-align: left; padding: 10px 12px; color: #e8a832; font-weight: 700;">Meaning fit</th>
+          <th style="text-align: left; padding: 10px 12px; color: #e8a832; font-weight: 700;">Risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+          <td style="padding: 10px 12px;"><strong style="color:#f5f0e6">A — Crown</strong></td>
+          <td style="padding: 10px 12px;">Vương miện 5 đỉnh + halo</td>
+          <td style="padding: 10px 12px;">Direct "Ranked = crown competition"</td>
+          <td style="padding: 10px 12px;">Hơi thông tục, không Bible-specific</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+          <td style="padding: 10px 12px;"><strong style="color:#f5f0e6">B — Cross + Sunburst</strong></td>
+          <td style="padding: 10px 12px;">Thánh giá tỏa sáng</td>
+          <td style="padding: 10px 12px;">Spiritual focal — Light of the Word</td>
+          <td style="padding: 10px 12px;">OVER cho competitive card; cross reserve cho Daily/Verse</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+          <td style="padding: 10px 12px;"><strong style="color:#f5f0e6">C — Laurel + Star</strong></td>
+          <td style="padding: 10px 12px;">Vòng nguyệt quế + sao</td>
+          <td style="padding: 10px 12px;">Classical victory, neutral</td>
+          <td style="padding: 10px 12px;">Decorative không deep meaning</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+          <td style="padding: 10px 12px;"><strong style="color:#f5f0e6">D — Bible + Sword</strong></td>
+          <td style="padding: 10px 12px;">Sách + gươm (Hê-bơ-rơ 4:12)</td>
+          <td style="padding: 10px 12px;">Bible + competition unified</td>
+          <td style="padding: 10px 12px;">Sword có thể negative với 1 số users</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 12px;"><strong style="color:#f5f0e6">E — Gothic Mandala</strong></td>
+          <td style="padding: 10px 12px;">Rose window + Star of David</td>
+          <td style="padding: 10px 12px;">Cathedral aesthetic, reusable</td>
+          <td style="padding: 10px 12px;">Generic-looking nếu không tinh tế</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 30px; padding: 16px 20px; background: rgba(232,168,50,0.06); border-left: 3px solid #e8a832; border-radius: 8px;">
+    <p style="font-size: 12px; color: #c5c8d0; line-height: 1.6;">
+      <strong style="color:#e8a832">My recommendation:</strong> <strong style="color:#f5f0e6">Variant C (Laurel + Star)</strong> — elegant universal, không quá tôn giáo, không quá thông tục, đẹp hài hoà trên gold background. 
+      <br><br>
+      <strong style="color:#e8a832">Alternative:</strong> <strong style="color:#f5f0e6">Variant D (Bible + Sword)</strong> nếu Bui muốn meaning sâu hơn (Hê-bơ-rơ 4:12 reference) và đã verify với FMC community rằng sword imagery OK.
+      <br><br>
+      <strong style="color:#e8a832">Avoid:</strong> Variant B (cross) — quá "đậm tôn giáo" cho competitive Ranked card; reserve cross imagery cho Daily Challenge hoặc Verse footer thay vì.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
