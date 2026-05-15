@@ -826,10 +826,10 @@ rooms.question_set_id  -- FK optional (V37 also adds group_quiz_set_id)
 rooms.custom_question_ids JSON  -- V36, host inline custom list
 ```
 
-### 19.3 UI (Phase 1 MVP, 2026-05-14)
+### 19.3 UI (Phase 1+2, 2026-05-15)
 - `/my-sets` — list user's sets + DRAFT/PUBLISHED chip; "Tạo bộ mới" navigates straight to the editor.
 - `/my-sets/new` — auto-creates DRAFT then redirects to `/my-sets/:id/edit`.
-- `/my-sets/:setId/edit` — shared `QuizSetEditor` with `ownership="personal"`: rich metadata, DRAFT→PUBLISHED workflow (≥5 câu + name ≥3 ký tự), auto-save. AI generate / AI rewrite hidden until Phase 2 (shared 200/day quota with group).
+- `/my-sets/:setId/edit` — shared `QuizSetEditor` with `ownership="personal"` + `aiEnabled`: rich metadata, DRAFT→PUBLISHED workflow (≥5 câu + name ≥3 ký tự), auto-save, **AI tạo nháp + AI viết lại** (share 200/day quota with group via `AIQuotaService`).
 - `/my-sets/:setId` — legacy path, redirects into editor.
 
 ### 19.4 Use cases

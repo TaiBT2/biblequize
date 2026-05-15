@@ -4,7 +4,7 @@
 >
 > **Scope**: Bật AI Generate + AI Rewrite cho personal set, share quota 200/ngày với group (locked decision 2026-05-14). Tái sử dụng `AIProviderRouter` + `AIQuotaService` (Redis-backed shared global) — đúng hạ tầng group đang dùng.
 >
-> **Status**: TODO
+> **Status**: DONE (shipped 2026-05-15)
 
 ### Background
 
@@ -62,7 +62,7 @@
   - Checklist: endpoint + test → commit < 20 LOC
 
 - PQS2-6 Docs: Update BL-19 "Phase 2 shipped" + close task
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `docs/spec/BACKLOG.md`, `docs/spec/SPEC_USER_v3.1.md`, task file → archive
   - Move BL-19 "Deferred to Phase 2" items lên "Delivered" section. SPEC_USER §19.3 update "AI generate / AI rewrite available, shared 200/day quota with group".
   - **Spec strategy**: [x] (a) update inline

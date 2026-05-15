@@ -1,6 +1,6 @@
 # Spec Audit Report
 
-**Generated:** 2026-05-15T01:52:02Z
+**Generated:** 2026-05-15T03:29:15Z
 **Specs scanned:** 6 files in `docs/spec/`
 
 ## Summary
@@ -9,8 +9,8 @@
 |---|---|
 | Total spec sections | 458 |
 | Sections with code refs | 132 |
-| Total code refs | 319 |
-| Unique code files referenced | 175 |
+| Total code refs | 320 |
+| Unique code files referenced | 176 |
 | **Broken refs (HIGH)** | **65** |
 | Orphan sections (MEDIUM) | 326 |
 | Undocumented business files (MEDIUM) | 210 |
@@ -51,10 +51,10 @@
 | BACKLOG.md | BL-AUDIT-4 — Variety mode pages referenced but don't exist (`MysteryMode.tsx`, `SpeedRound.tsx`, `WeeklyQuiz.tsx`) | `pages/WeeklyQuiz.tsx` | (no line) | 306 | file_not_found |
 | BACKLOG.md | BL-AUDIT-5 — `Groups.tsx` ambiguous (admin vs user page) | `Groups.tsx` | (no line) | 310 | bare_filename_ambiguous_(2_matches) |
 | BACKLOG.md | BL-AUDIT-5 — `Groups.tsx` ambiguous (admin vs user page) | `Groups.tsx` | (no line) | 311 | bare_filename_ambiguous_(2_matches) |
-| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `QuizSetCreate.tsx` | (no line) | 396 | bare_filename_not_found |
-| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `api/quizSets.ts` | (no line) | 402 | file_not_found |
-| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `CreateQuizSetModal.tsx` | (no line) | 405 | bare_filename_not_found |
-| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `QuizSetCreate.tsx` | (no line) | 405 | bare_filename_not_found |
+| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `QuizSetCreate.tsx` | (no line) | 399 | bare_filename_not_found |
+| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `api/quizSets.ts` | (no line) | 405 | file_not_found |
+| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `CreateQuizSetModal.tsx` | (no line) | 408 | bare_filename_not_found |
+| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `QuizSetCreate.tsx` | (no line) | 408 | bare_filename_not_found |
 | SPEC_ADMIN_v3.1.md | 2. Admin Panel Routes | `Groups.tsx` | (no line) | 76 | bare_filename_ambiguous_(2_matches) |
 | SPEC_ADMIN_v3.1.md | 14.2 Schema (`audit_events` V4) | `infrastructure/audit/AuditEvent.java` | (no line) | 513 | file_not_found |
 | SPEC_GROUP_v1.3.md | 6.B Quiz Set Editor Page (BL-AD-8, 2026-05-13) | `apps/web/src/components/group/CreateQuizSetModal.tsx` | (no line) | 698 | file_not_found |
