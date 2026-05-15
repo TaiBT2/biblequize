@@ -1,5 +1,10 @@
 package com.biblequiz.api;
 
+import com.biblequiz.modules.adminai.provider.AIGenerationContext;
+import com.biblequiz.modules.adminai.provider.AIGenerationResult;
+import com.biblequiz.modules.adminai.provider.AIProviderException;
+import com.biblequiz.modules.adminai.provider.AIProviderRouter;
+import com.biblequiz.modules.adminai.quota.AIQuotaService;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 import com.biblequiz.modules.userquiz.entity.QuestionSet;
@@ -13,6 +18,8 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +45,8 @@ public class QuestionSetController {
 
     @Autowired private QuestionSetService service;
     @Autowired private UserRepository userRepository;
+    @Autowired private AIProviderRouter aiProviderRouter;
+    @Autowired private AIQuotaService aiQuotaService;
 
     // ── Create ────────────────────────────────────────────────────────────────
 
@@ -305,6 +314,90 @@ public class QuestionSetController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(err(e));
         }
+    }
+
+    // ── PQS2-1: Set-scoped AI generation ──────────────────────────────────────
+
+    /**
+     * POST /api/question-sets/{id}/ai-generate
+     * Body: { countEasy, countMedium, countHard, book, chapterFrom, chapterTo?,
+     *         verseFrom?, verseTo?, topic?, language? }
+     * Shares the 200/day quota with group AI generate via AIQuotaService.
+     */
+    @PostMapping("/{id}/ai-generate")
+    @SuppressWarnings("unchecked")
+    public ResponseEntity<?> aiGenerateForSet(@PathVariable String id,
+                                               @RequestBody Map<String, Object> body,
+                                               Principal principal) {
+        try {
+            User user = getUser(principal);
+            int cE = intVal(body.get("countEasy"), 0);
+            int cM = intVal(body.get("countMedium"), 0);
+            int cH = intVal(body.get("countHard"), 0);
+            int total = cE + cM + cH;
+            if (total <= 0 || total > 15) {
+                return ResponseEntity.badRequest().body(Map.of("success", false,
+                        "message", "Tổng số câu phải trong khoảng 1-15"));
+            }
+            if (!aiQuotaService.tryAcquire(total)) {
+                AIQuotaService.Usage u = aiQuotaService.snapshot();
+                return ResponseEntity.status(429).body(Map.of("success", false,
+                        "error", "QUOTA_EXCEEDED",
+                        "message", "Đã đạt giới hạn AI hôm nay",
+                        "used", u.used(), "limit", u.limit(), "remaining", u.remaining()));
+            }
+
+            String book = (String) body.getOrDefault("book", "John");
+            int chapter = intVal(body.get("chapterFrom"), 1);
+            int verseStart = intVal(body.get("verseFrom"), 1);
+            int verseEnd = intVal(body.get("verseTo"), 50);
+            String topic = (String) body.getOrDefault("topic", "");
+            String language = (String) body.getOrDefault("language", "vi");
+            String customPrompt = topic.isBlank() ? null :
+                    "Tất cả câu hỏi PHẢI tập trung vào chủ đề: \"" + topic.trim() + "\".";
+
+            List<Map<String, Object>> drafts = new ArrayList<>();
+            String providerUsed = null;
+            for (Object[] tier : new Object[][]{{"easy", cE}, {"medium", cM}, {"hard", cH}}) {
+                int count = (int) tier[1];
+                if (count <= 0) continue;
+                AIGenerationContext ctx = AIGenerationContext.of(
+                        book, chapter, verseStart, verseEnd,
+                        ((String) tier[0]).toUpperCase(), "MULTIPLE_CHOICE", language,
+                        count, null, customPrompt);
+                AIGenerationResult res = aiProviderRouter.generate(ctx, null);
+                providerUsed = res.providerUsed();
+                for (Map<String, Object> draft : res.questions()) {
+                    Map<String, Object> withDifficulty = new LinkedHashMap<>(draft);
+                    withDifficulty.putIfAbsent("difficulty", (String) tier[0]);
+                    drafts.add(withDifficulty);
+                }
+            }
+
+            List<UserQuestion> saved = service.attachAIQuestions(
+                    id, user.getId(), drafts, book, chapter, verseStart, verseEnd, language);
+            List<QuestionSetItem> items = service.getItems(id);
+            List<Map<String, Object>> editorQuestions = items.stream()
+                    .filter(it -> saved.stream().anyMatch(s -> s.getId().equals(it.getUserQuestion().getId())))
+                    .map(this::toEditorQuestion).toList();
+
+            AIQuotaService.Usage u = aiQuotaService.snapshot();
+            return ResponseEntity.ok(Map.of("success", true,
+                    "questions", editorQuestions,
+                    "totalQuestions", items.size(),
+                    "provider", providerUsed != null ? providerUsed : "auto",
+                    "used", u.used(), "limit", u.limit(), "remaining", u.remaining()));
+        } catch (SecurityException e) {
+            return ResponseEntity.status(403).body(err(e));
+        } catch (AIProviderException e) {
+            return ResponseEntity.internalServerError().body(err(e));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(err(e));
+        }
+    }
+
+    private static int intVal(Object o, int fallback) {
+        return o instanceof Number n ? n.intValue() : fallback;
     }
 
     // ── DTO helpers ───────────────────────────────────────────────────────────
