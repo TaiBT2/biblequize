@@ -94,7 +94,7 @@
   - Checklist: file delete + route remove + grep clean → commit < 40 LOC
 
 - QP-8 FE: EmptyRoomsState 2 CTAs (Đấu Nhanh opens modal)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/multiplayer/EmptyState.tsx`
   - Replace 4-mode-grid + Solo soft-link → 2 primary CTAs: Đấu Nhanh (indigo gradient, opens `QuickMatchConfigModal`) + Tạo phòng Quản trò (gold outline, navigate `/room/create`). Per mockup v3 §EmptyState.
   - **Spec strategy**: [x] (c) `[no-spec-impact]`
