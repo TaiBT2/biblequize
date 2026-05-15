@@ -132,8 +132,9 @@ public class Room {
     }
 
     public enum QuestionSource {
-        DATABASE,   // Dùng ngân hàng câu hỏi hệ thống
-        CUSTOM      // Host tự tạo (AI hoặc thủ công)
+        DATABASE,        // Dùng ngân hàng câu hỏi hệ thống
+        CUSTOM,          // Host tự tạo (Quản trò flow — saved Question rows hoặc QuestionSet)
+        AI_GENERATED     // QP-2 Đấu Nhanh: AI sinh one-shot, lưu Room.aiQuestionsPayload, KHÔNG save table
     }
     
     // Constructors

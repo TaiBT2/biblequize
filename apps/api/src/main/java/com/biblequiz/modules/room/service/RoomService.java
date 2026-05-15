@@ -119,6 +119,59 @@ public class RoomService {
     }
 
     /**
+     * QP-2 — Create a Quick Match (Đấu Nhanh) room. Always creates a new
+     * room (NOT find-or-create, per Bùi pivot 2026-05-15) with the
+     * creator's chosen config. Host plays like everyone (no Quản trò),
+     * any player can /start when ≥2 ready (QP-5).
+     *
+     * <p>Source-specific behaviour:
+     * <ul>
+     *   <li>{@code DATABASE}: pre-picked question IDs are stored in
+     *       {@code Room.customQuestionIds} JSON (anti-spoiler).
+     *   <li>{@code AI_GENERATED}: AI-generated payload stored in
+     *       {@code Room.aiQuestionsPayload} JSON (one-shot, never saved
+     *       to {@code questions} table).
+     * </ul>
+     */
+    public Room createQuickMatchRoom(User host, Room.RoomMode mode, String bookScope,
+                                      Integer questionCount, Integer timePerQuestion,
+                                      Room.QuestionSource source,
+                                      List<String> preselectedIds, String aiPayloadJson) {
+        String roomId = UUID.randomUUID().toString();
+        String roomCode = generateRoomCode();
+        while (roomRepository.findByRoomCode(roomCode).isPresent()) {
+            roomCode = generateRoomCode();
+        }
+
+        Room room = new Room();
+        room.setId(roomId);
+        room.setRoomCode(roomCode);
+        room.setRoomName("Phòng Đấu Nhanh của " + host.getName());
+        room.setHost(host);
+        room.setMaxPlayers(10);
+        room.setQuestionCount(questionCount != null ? questionCount : 10);
+        room.setTimePerQuestion(timePerQuestion != null ? timePerQuestion : 30);
+        room.setStatus(Room.RoomStatus.LOBBY);
+        room.setMode(mode != null ? mode : Room.RoomMode.SPEED_RACE);
+        room.setIsPublic(true);
+        room.setDifficulty(Room.RoomDifficulty.MIXED);
+        room.setBookScope(bookScope != null && !bookScope.isBlank() ? bookScope : "ALL");
+        room.setQuestionSource(source != null ? source : Room.QuestionSource.DATABASE);
+        room.setHostPlaysGame(true);
+        room.setQuickMatch(true);
+        if (preselectedIds != null && !preselectedIds.isEmpty()) {
+            room.setCustomQuestionIds(preselectedIds);
+        }
+        if (aiPayloadJson != null && !aiPayloadJson.isBlank()) {
+            room.setAiQuestionsPayload(aiPayloadJson);
+        }
+
+        roomRepository.save(room);
+        addPlayerToRoom(roomId, host);
+        return room;
+    }
+
+    /**
      * Join a room by room code
      */
     public Room joinRoom(String roomCode, User user) throws Exception {

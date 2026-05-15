@@ -41,7 +41,7 @@
   - Checklist: migration + entity + JUnit compile pass → commit < 60 LOC
 
 - QP-2 BE: `POST /api/rooms/quick-match` endpoint
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/api/src/main/java/com/biblequiz/api/RoomController.java`, new DTO `QuickMatchRequest`, `RoomService.createQuickMatchRoom()`
   - Body: `{ mode, bookScope, questionCount, timePerQuestion, source }`. Validate daily cap (QP-4) + AI tier-lock (Tier 4+) + user not in another room. Always create new Room với `quickMatch=true`, `hostPlaysGame=true`, config từ body. Nếu source=AI: pre-generate inline qua QP-3 service, save JSON vào `aiQuestionsPayload`. Increment daily counter. Return RoomDetailsDTO.
   - Errors: 422 `DAILY_CAP_REACHED`, 422 `AI_TIER_LOCKED`, 422 `ALREADY_IN_ANOTHER_ROOM`.

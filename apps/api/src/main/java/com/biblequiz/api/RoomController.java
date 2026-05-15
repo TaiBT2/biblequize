@@ -2,8 +2,11 @@ package com.biblequiz.api;
 
 import com.biblequiz.api.websocket.RoomWebSocketController;
 import com.biblequiz.api.websocket.WebSocketMessage;
+import com.biblequiz.modules.ranked.service.UserTierService;
 import com.biblequiz.modules.room.entity.Room;
+import com.biblequiz.modules.room.service.DailyQuickMatchCounter;
 import com.biblequiz.modules.room.service.HostControlService;
+import com.biblequiz.modules.room.service.QuickMatchQuestionSourceService;
 import com.biblequiz.modules.room.service.RoomQuizService;
 import com.biblequiz.modules.room.service.RoomAnalyticsService;
 import com.biblequiz.modules.room.service.RoomService;
@@ -18,6 +21,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -44,6 +48,15 @@ public class RoomController {
 
     @Autowired
     private HostControlService hostControlService;
+
+    @Autowired
+    private DailyQuickMatchCounter dailyQuickMatchCounter;
+
+    @Autowired
+    private QuickMatchQuestionSourceService quickMatchQuestionSource;
+
+    @Autowired
+    private UserTierService userTierService;
 
     /**
      * POST /api/rooms - Tạo phòng mới
@@ -99,6 +112,101 @@ public class RoomController {
             RoomService.RoomDetailsDTO details = roomService.getRoomDetails(room.getId());
 
             return ResponseEntity.ok(Map.of("success", true, "room", details, "viewerUserId", user.getId()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+        }
+    }
+
+    /**
+     * QP-2 — POST /api/rooms/quick-match
+     *
+     * Always-create Đấu Nhanh room with the creator's chosen config
+     * (mode / bookScope / questionCount / timePerQuestion / source).
+     * Soft-host: creator plays like a regular player (hostPlaysGame=true)
+     * but Quản trò controls reject (QP-5). Daily cap 3/user/day (QP-4).
+     * AI source requires Tier 4+ (Hiền Triết).
+     *
+     * Error codes (422): DAILY_CAP_REACHED · AI_TIER_LOCKED ·
+     *                    AI_GENERATION_INSUFFICIENT
+     */
+    @PostMapping("/quick-match")
+    public ResponseEntity<?> createQuickMatch(@RequestBody Map<String, Object> body, Principal principal) {
+        try {
+            User user = getUser(principal);
+
+            // Daily cap check (QP-4)
+            if (dailyQuickMatchCounter.hasReachedCap(user.getId())) {
+                return ResponseEntity.unprocessableEntity().body(Map.of(
+                        "success", false,
+                        "error", "DAILY_CAP_REACHED",
+                        "message", "Đã hết lượt Đấu Nhanh hôm nay. Quay lại sau 0h UTC.",
+                        "remaining", 0));
+            }
+
+            // Parse config
+            String modeStr = body.get("mode") instanceof String s ? s : "SPEED_RACE";
+            String bookScope = body.get("bookScope") instanceof String s && !s.isBlank() ? s : "ALL";
+            int questionCount = body.get("questionCount") instanceof Number n ? n.intValue() : 10;
+            int timePerQuestion = body.get("timePerQuestion") instanceof Number n ? n.intValue() : 30;
+            String sourceStr = body.get("source") instanceof String s ? s : "DATABASE";
+
+            if (questionCount < 5 || questionCount > 20) questionCount = 10;
+            if (timePerQuestion < 10 || timePerQuestion > 60) timePerQuestion = 30;
+
+            Room.RoomMode mode;
+            try { mode = Room.RoomMode.valueOf(modeStr.toUpperCase()); }
+            catch (IllegalArgumentException e) { mode = Room.RoomMode.SPEED_RACE; }
+
+            Room.QuestionSource source;
+            try { source = Room.QuestionSource.valueOf(sourceStr.toUpperCase()); }
+            catch (IllegalArgumentException e) { source = Room.QuestionSource.DATABASE; }
+
+            // AI tier-lock (Tier 4+)
+            if (source == Room.QuestionSource.AI_GENERATED) {
+                int tier = userTierService.getTierLevel(user.getId());
+                if (tier < 4) {
+                    return ResponseEntity.unprocessableEntity().body(Map.of(
+                            "success", false,
+                            "error", "AI_TIER_LOCKED",
+                            "message", "Mở khóa AI sinh câu hỏi từ Tier 4 (Hiền Triết)",
+                            "currentTier", tier));
+                }
+            }
+
+            // Generate / pick questions inline
+            List<String> preselectedIds = null;
+            String aiPayload = null;
+            if (source == Room.QuestionSource.AI_GENERATED) {
+                int chapterFrom = body.get("chapterFrom") instanceof Number n ? n.intValue() : 1;
+                int chapterTo   = body.get("chapterTo")   instanceof Number n ? n.intValue() : Math.max(chapterFrom, 50);
+                int verseFrom   = body.get("verseFrom")   instanceof Number n ? n.intValue() : 1;
+                int verseTo     = body.get("verseTo")     instanceof Number n ? n.intValue() : 50;
+                String language = body.get("language") instanceof String s ? s : "vi";
+                try {
+                    aiPayload = quickMatchQuestionSource.generateAiPayload(
+                            bookScope, chapterFrom, chapterTo, verseFrom, verseTo, questionCount, language);
+                } catch (Exception e) {
+                    return ResponseEntity.unprocessableEntity().body(Map.of(
+                            "success", false,
+                            "error", "AI_GENERATION_INSUFFICIENT",
+                            "message", e.getMessage() != null ? e.getMessage() : "Không sinh đủ câu hỏi"));
+                }
+            } else {
+                preselectedIds = quickMatchQuestionSource.pickDatabaseIds(bookScope, questionCount);
+            }
+
+            // Create room + increment counter (atomic-ish; on save failure counter stays unincremented)
+            Room room = roomService.createQuickMatchRoom(user, mode, bookScope, questionCount, timePerQuestion,
+                    source, preselectedIds, aiPayload);
+            dailyQuickMatchCounter.increment(user.getId());
+
+            RoomService.RoomDetailsDTO details = roomService.getRoomDetails(room.getId());
+            return ResponseEntity.ok(Map.of(
+                    "success", true,
+                    "room", details,
+                    "viewerUserId", user.getId(),
+                    "quickMatch", true,
+                    "remainingToday", dailyQuickMatchCounter.getRemainingToday(user.getId())));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
         }
