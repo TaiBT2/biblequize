@@ -64,7 +64,7 @@
   - Checklist: counter component + DTO field + MultiplayerStatsService inject → commit ~100 LOC
 
 - QP-5 BE: Start logic any-player + Quản trò controls reject
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/api/src/main/java/com/biblequiz/modules/room/service/RoomService.java` (or wherever `startRoom()` lives), Quản trò endpoint methods in RoomController
   - `startRoom()` branch: nếu `room.quickMatch` → assert user in room, không cần host. Nếu traditional → giữ `assertUserIsHost()`.
   - 5 host endpoints (`/host/pause`, `/host/resume`, `/host/skip`, `/host/broadcast`, `/host/end-early`) thêm guard: nếu `room.quickMatch` → throw 422 `QUICK_MATCH_NO_HOST_CONTROLS`.

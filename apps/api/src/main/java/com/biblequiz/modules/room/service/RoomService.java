@@ -118,6 +118,12 @@ public class RoomService {
         return room;
     }
 
+    /** QP-5 helper: returns Room entity or null if missing. Used by host
+     *  control endpoints to short-circuit reject on quick-match rooms. */
+    public Room getRoomEntity(String roomId) {
+        return roomRepository.findById(roomId).orElse(null);
+    }
+
     /**
      * QP-2 — Create a Quick Match (Đấu Nhanh) room. Always creates a new
      * room (NOT find-or-create, per Bùi pivot 2026-05-15) with the
@@ -494,7 +500,14 @@ public class RoomService {
     public void startRoom(String roomId, String userId) throws Exception {
         Room room = roomRepository.findById(roomId).orElseThrow(() -> new Exception("Phòng không tồn tại"));
 
-        if (!room.getHost().getId().equals(userId)) {
+        // QP-5: Đấu Nhanh — any player in the room can start when conditions
+        // below are met (no Quản trò privilege). Otherwise only the host.
+        if (room.isQuickMatch()) {
+            boolean inRoom = roomPlayerRepository.findByRoomIdAndUserId(roomId, userId).isPresent();
+            if (!inRoom) {
+                throw new Exception("Bạn không có trong phòng này");
+            }
+        } else if (!room.getHost().getId().equals(userId)) {
             throw new Exception("Chỉ chủ phòng mới có thể bắt đầu");
         }
 

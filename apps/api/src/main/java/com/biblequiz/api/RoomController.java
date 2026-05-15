@@ -410,34 +410,53 @@ public class RoomController {
 
     // ── Sprint 4: Quản trò controls ──────────────────────────────────────────
 
+    /**
+     * QP-5: reject Quản trò controls on Đấu Nhanh rooms. Throws
+     * RuntimeException("QUICK_MATCH_NO_HOST_CONTROLS") which the per-endpoint
+     * catch surfaces as HTTP 422 with the canonical error code.
+     */
+    private void assertNotQuickMatch(String roomId) {
+        Room room = roomService.getRoomEntity(roomId);
+        if (room != null && room.isQuickMatch()) {
+            throw new RuntimeException("QUICK_MATCH_NO_HOST_CONTROLS");
+        }
+    }
+
+    private ResponseEntity<?> handleHostError(Exception e) {
+        if ("QUICK_MATCH_NO_HOST_CONTROLS".equals(e.getMessage())) {
+            return ResponseEntity.unprocessableEntity().body(Map.of(
+                    "success", false,
+                    "error", "QUICK_MATCH_NO_HOST_CONTROLS",
+                    "message", "Quản trò không khả dụng trong phòng Đấu Nhanh"));
+        }
+        return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
+    }
+
     @PostMapping("/{id}/host/pause")
     public ResponseEntity<?> pauseGame(@PathVariable String id, Principal principal) {
         try {
+            assertNotQuickMatch(id);
             hostControlService.pauseGame(id, getUser(principal).getId());
             return ResponseEntity.ok(Map.of("success", true));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
-        }
+        } catch (Exception e) { return handleHostError(e); }
     }
 
     @PostMapping("/{id}/host/resume")
     public ResponseEntity<?> resumeGame(@PathVariable String id, Principal principal) {
         try {
+            assertNotQuickMatch(id);
             hostControlService.resumeGame(id, getUser(principal).getId());
             return ResponseEntity.ok(Map.of("success", true));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
-        }
+        } catch (Exception e) { return handleHostError(e); }
     }
 
     @PostMapping("/{id}/host/skip-question")
     public ResponseEntity<?> skipQuestion(@PathVariable String id, Principal principal) {
         try {
+            assertNotQuickMatch(id);
             hostControlService.skipQuestion(id, getUser(principal).getId());
             return ResponseEntity.ok(Map.of("success", true));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
-        }
+        } catch (Exception e) { return handleHostError(e); }
     }
 
     @PostMapping("/{id}/host/broadcast")
@@ -445,22 +464,20 @@ public class RoomController {
                                                   @RequestBody Map<String, String> body,
                                                   Principal principal) {
         try {
+            assertNotQuickMatch(id);
             String message = body != null ? body.get("message") : null;
             hostControlService.broadcastHostMessage(id, getUser(principal).getId(), message);
             return ResponseEntity.ok(Map.of("success", true));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
-        }
+        } catch (Exception e) { return handleHostError(e); }
     }
 
     @PostMapping("/{id}/host/end-early")
     public ResponseEntity<?> endGameEarly(@PathVariable String id, Principal principal) {
         try {
+            assertNotQuickMatch(id);
             hostControlService.endGameEarly(id, getUser(principal).getId());
             return ResponseEntity.ok(Map.of("success", true));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(Map.of("success", false, "message", e.getMessage()));
-        }
+        } catch (Exception e) { return handleHostError(e); }
     }
 
     private User getUser(Principal principal) {
