@@ -19,6 +19,9 @@ export default function MysteryMode() {
             questions,
             mode: 'mystery_mode',
             showExplanation: true,
+            // Spec §5.4: Mystery Mode = 25s/câu. UI badge advertises 25s; without
+            // this prop, Quiz.tsx silently falls back to DEFAULT_TIMER=30.
+            timePerQuestion: 25,
           },
         })
       }

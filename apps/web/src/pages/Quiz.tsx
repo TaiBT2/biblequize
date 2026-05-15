@@ -83,6 +83,32 @@ const Quiz: React.FC = () => {
   // Ranked (server-driven) and any future modes that consume lives.
   const isPracticeMode = !settings?.mode || settings.mode === 'practice'
 
+  /** Where the close (×) button + "back to mode" link should send the user.
+   *  Each mode entry returns to its own start page so users don't get dumped
+   *  on /practice after a mystery/speed quiz they launched from Home. */
+  const quitPath: string = (() => {
+    if (settings?.isRanked || settings?.mode === 'ranked') return '/ranked'
+    if (settings?.mode === 'mystery_mode') return '/mystery-mode'
+    if (settings?.mode === 'speed_round')  return '/speed-round'
+    return '/practice'
+  })()
+
+  /** PlayAgain refetch — variety modes need fresh random questions on replay
+   *  ("Random hoàn toàn" promise). Other modes reuse the original set. */
+  const refetchVarietyQuestions = async (): Promise<Question[] | null> => {
+    try {
+      if (settings?.mode === 'mystery_mode') {
+        const r = await api.post('/api/quiz/mystery')
+        return (r.data?.questions as Question[]) ?? null
+      }
+      if (settings?.mode === 'speed_round') {
+        const r = await api.get('/api/quiz/speed-round')
+        return (r.data?.questions as Question[]) ?? null
+      }
+    } catch { /* fall through — reuse original questions */ }
+    return null
+  }
+
   const [questions, setQuestions] = useState<Question[]>([])
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
@@ -512,7 +538,17 @@ const Quiz: React.FC = () => {
     return (
       <QuizResults
         stats={finalizedStats}
-        onPlayAgain={() => {
+        onPlayAgain={async () => {
+          // Variety modes (mystery / speed) refetch a fresh random batch so
+          // "Random hoàn toàn" / "10 câu × 10s" actually delivers new content
+          // instead of replaying the same 10 questions. Best-effort: if the
+          // fetch fails, fall back to the original set.
+          const fresh = await refetchVarietyQuestions()
+          if (fresh && fresh.length > 0) {
+            setQuestions(fresh)
+            setUserAnswers(new Array(fresh.length).fill(null))
+            setQuestionScores(new Array(fresh.length).fill(0))
+          }
           setCurrentQuestionIndex(0)
           setSelectedAnswer(null)
           setShowResult(false)
@@ -533,8 +569,12 @@ const Quiz: React.FC = () => {
           setTimeLeft(timerLimit)
           setIsQuizCompleted(false)
           setLastQuestionScore(0)
-          setUserAnswers(new Array(questions.length).fill(null))
-          setQuestionScores(new Array(questions.length).fill(0))
+          // (Variety refetch above already reset these for fresh batches;
+          // keep these for non-variety modes that reuse the original set.)
+          if (!fresh) {
+            setUserAnswers(new Array(questions.length).fill(null))
+            setQuestionScores(new Array(questions.length).fill(0))
+          }
           setQuizStartTime(Date.now())
           setQuizStats(prev => ({
             ...prev,
@@ -588,12 +628,12 @@ const Quiz: React.FC = () => {
       <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-surface-container-low border-b border-outline-variant/10">
         <div className="flex items-center gap-3">
           <Link
-            to={settings?.isRanked ? '/ranked' : '/practice'}
+            to={quitPath}
             className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-variant transition-colors"
             onClick={(e) => {
               e.preventDefault()
               if (confirm(t('quiz.confirmQuit'))) {
-                navigate(settings?.isRanked ? '/ranked' : '/practice')
+                navigate(quitPath)
               }
             }}
           >
