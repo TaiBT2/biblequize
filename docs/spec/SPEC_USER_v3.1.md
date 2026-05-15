@@ -807,7 +807,7 @@ User tap anywhere → next step → done.
 
 ## 19. Question Sets (user-created)
 
-> **Source:** V35 `question_sets.sql` + V36 + V37; entities `QuestionSet`, `QuestionSetItem`; web `pages/MySets.tsx`, `pages/SetEditor.tsx`.
+> **Source:** V35 `question_sets.sql` + V36 + V37 + V56 (Phase 1 metadata parity with group); entities `apps/api/src/main/java/com/biblequiz/modules/userquiz/entity/QuestionSet.java`, `QuestionSetItem`; web `apps/web/src/pages/MySets.tsx`, `apps/web/src/pages/PersonalQuizSetEditor.tsx` (wrapper) → `apps/web/src/pages/group/QuizSetEditor.tsx` (shared with group).
 
 ### 19.1 Phân biệt
 - **Personal Question Set** (§19 này) — user tự tạo, riêng tư hoặc public, dùng cho Practice + Multiplayer host custom.
@@ -815,19 +815,26 @@ User tap anywhere → next step → done.
 
 ### 19.2 Schema
 ```sql
-question_sets (id, owner_id, name, visibility ENUM('PRIVATE','PUBLIC'), created_at)
+question_sets (id, owner_id, name, visibility ENUM('PRIVATE','PUBLIC'), created_at,
+               -- V56 Phase 1 metadata parity:
+               cover_image_url, tags JSON, cover_scripture, author_note,
+               difficulty ENUM, estimated_duration_min, suggested_mode, language,
+               publish_status ENUM('DRAFT','PUBLISHED','ARCHIVED','SOFT_DELETED'),
+               published_at)
 question_set_items (id, question_set_id FK, question_id, order_index)
 rooms.question_set_id  -- FK optional (V37 also adds group_quiz_set_id)
 rooms.custom_question_ids JSON  -- V36, host inline custom list
 ```
 
-### 19.3 UI
-- `/my-sets` — list user's sets + create button.
-- `/my-sets/:setId` (`SetEditor.tsx`) — search & add questions, reorder, set visibility.
+### 19.3 UI (Phase 1 MVP, 2026-05-14)
+- `/my-sets` — list user's sets + DRAFT/PUBLISHED chip; "Tạo bộ mới" navigates straight to the editor.
+- `/my-sets/new` — auto-creates DRAFT then redirects to `/my-sets/:id/edit`.
+- `/my-sets/:setId/edit` — shared `QuizSetEditor` with `ownership="personal"`: rich metadata, DRAFT→PUBLISHED workflow (≥5 câu + name ≥3 ký tự), auto-save. AI generate / AI rewrite hidden until Phase 2 (shared 200/day quota with group).
+- `/my-sets/:setId` — legacy path, redirects into editor.
 
 ### 19.4 Use cases
 - Practice: "Chơi với set" → load questions từ set.
-- Multiplayer: Host create room → chọn `question_source = CUSTOM` + chọn set hoặc custom_question_ids.
+- Multiplayer: Host create room → chọn `question_source = CUSTOM` + chọn set hoặc custom_question_ids. CreateRoom picker only lists `publish_status = PUBLISHED` sets (BL-19, PQS-8).
 
 ---
 

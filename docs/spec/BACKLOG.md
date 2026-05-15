@@ -374,6 +374,24 @@
 - **Deferred follow-up:** `AuditLogService` integration (`ai.generate.deepseek`, `ai.fallback.triggered`, `group.ai_generate`); cost tracking; CloudWatch monthly-spend alarm; manual verify Bedrock pricing constants before prod.
 - **Status:** ✅ DONE 2026-05-12 — commits `d4f2f42` (Phase B BE), `c88d465` (Phase C FE), `1a2980a` (Phase D tests).
 
+### BL-19 — Personal Quiz Set parity with Group (Phase 1 MVP shipped)
+- **Issue:** Personal sets (MySets + SetEditor) shipped pre-Sprint-5 with only `{name, description, visibility}` and no DRAFT→PUBLISHED workflow, while group sets (Sprint 5) gained 15 metadata fields + workflow + AI-on-set. Users creating bộ câu hỏi from the multiplayer page got a much weaker editor than the group flow.
+- **Spec impact:** SPEC_USER §X (personal quiz set authoring) — TODO inline once user reviews Phase 1 UX. Tracked here as BL until then.
+- **Delivered (Phase 1 MVP, this branch):**
+  - V56 migration: 10 new cols on `question_sets` (cover, tags, scripture, authorNote, difficulty, duration, suggestedMode, language, publishStatus, publishedAt); existing rows backfilled to PUBLISHED so CreateRoom keeps working.
+  - `QuestionSetController`: POST + new PATCH accept full Sprint 5 metadata; new PATCH `/publish` (≥5 câu, ≥3 char name, must be DRAFT); new GET `/full` returning EditorQuestion-shape questions; GET list accepts `?status=PUBLISHED` filter.
+  - `apps/web/src/pages/group/QuizSetEditor.tsx` refactored to receive an injectable API adapter + ownership flag; `apps/web/src/pages/group/GroupQuizSetEditor.tsx` wrapper preserves the existing /groups route unchanged.
+  - New `apps/web/src/api/personalQuizSets.ts` adapter + `apps/web/src/pages/PersonalQuizSetEditor.tsx` wrapper + routes `/my-sets/new` and `/my-sets/:setId/edit`; legacy 553-LOC SetEditor.tsx removed.
+  - `MySets` shows DRAFT/PUBLISHED chips, scripture/tag previews; inline create form gone — button goes straight to the editor.
+  - `CreateRoom` custom-set picker queries `?status=PUBLISHED` so DRAFTs aren't playable.
+- **Deferred to Phase 2 (separate task):**
+  - Personal folder entity + UI (group has `GroupQuizSetFolder`, personal does not).
+  - AI generate on personal set (will share the existing 200/day group quota — locked decision 2026-05-14).
+  - AI rewrite on personal question.
+  - Folder picker in `MetadataAccordion` when ownership === 'personal'.
+- **Status:** 🟡 Phase 1 SHIPPED · Phase 2 backlog.
+- **Ref:** task file `docs/todo/active/2026-05-14-personal-quiz-set-parity-phase-1.md`.
+
 ### BL-AD-8 — Quiz Set Editor unified page
 - **Issue:** Modal 2-tab "AI tạo / Tự soạn" + metadata-only `QuizSetCreate.tsx` thay bằng 1 trang editor thống nhất — AI là tool button, không phải mode tách biệt. Question list sidebar 260px + main editor body.
 - **Spec impact:** SPEC_GROUP §6.B new (Quiz Set Editor Page); §6.A workflow paragraph reduced (delegates to §6.B).

@@ -6,7 +6,7 @@
 >
 > **AI quota decision**: khi sang Phase 2, personal AI **dùng chung counter 200/ngày** với group (user choice 2026-05-14).
 >
-> **Status**: TODO
+> **Status**: DONE (Phase 1 MVP shipped 2026-05-15)
 
 ### Background
 
@@ -108,7 +108,7 @@
   - Checklist: edit query + empty state → Tầng 3 pass → commit < 30 LOC
 
 - PQS-9 Docs: Thêm BL-N vào BACKLOG.md + cập nhật spec audit
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `docs/spec/BACKLOG.md`
   - Thêm BL entry: "BL-N Personal Quiz Set parity with Group (Phase 1 MVP)" — link tới task file này; note Phase 2 hoãn (folder + AI generate trên set + AI rewrite).
   - Chạy `bash tools/spec-audit/audit.sh` → ensure không có NEW broken.
