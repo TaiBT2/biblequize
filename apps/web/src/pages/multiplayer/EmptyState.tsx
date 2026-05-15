@@ -74,22 +74,9 @@ export default function EmptyState() {
           ))}
         </div>
 
-        {/* MPP-6: Solo Arena soft-link — "no one online?" fallback */}
-        <div className="pt-5 border-t border-white/[0.06]">
-          <div className="text-[11px] text-white/45 mb-2">Không có ai online?</div>
-          <button
-            type="button"
-            onClick={() => navigate('/solo-arena')}
-            className="inline-flex items-center gap-2 text-[12px] font-semibold transition-colors"
-            style={{ color: '#a5b4fc' }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = '#818cf8' }}
-            onMouseLeave={(e) => { e.currentTarget.style.color = '#a5b4fc' }}
-          >
-            <span className="material-symbols-outlined" style={{ fontSize: 14 }}>person</span>
-            Thử Solo Arena — chơi 1 mình
-            <span className="material-symbols-outlined" style={{ fontSize: 14 }}>arrow_forward</span>
-          </button>
-        </div>
+        {/* Solo Arena soft-link removed in QP-7 — concept pivoted to
+            Quick Match (Đấu Nhanh). QP-8 will replace this entire empty
+            state with the 2-CTA layout per mockup v3. */}
       </div>
     </div>
   )

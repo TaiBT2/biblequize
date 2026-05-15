@@ -87,7 +87,7 @@
   - Checklist: modal + form state + submit → commit ~200 LOC
 
 - QP-7 FE: Delete SoloArenaPlaceholder + /solo-arena route
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: delete `apps/web/src/pages/SoloArenaPlaceholder.tsx`, edit `apps/web/src/main.tsx` (remove route + import)
   - Grep `solo-arena|SoloArena` ensure no residual references trong active source (chỉ allow trong docs/archive).
   - **Spec strategy**: [x] (c) `[no-spec-impact]`
