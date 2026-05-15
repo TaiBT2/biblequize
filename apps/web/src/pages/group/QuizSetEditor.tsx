@@ -77,6 +77,16 @@ export default function QuizSetEditor({
   const [publishOpen, setPublishOpen] = useState(false)
   const [publishBusy, setPublishBusy] = useState(false)
 
+  /** Brief "✓ Đã lưu" toast — fires on every manual save click so the user
+   *  gets feedback even when there are no pending changes to flush. */
+  const [saveFlash, setSaveFlash] = useState(false)
+  const flashSaved = useCallback(() => {
+    setLastSavedAt(Date.now())
+    setSaveFlash(true)
+    const t = setTimeout(() => setSaveFlash(false), 1500)
+    return () => clearTimeout(t)
+  }, [])
+
   const [scope, setScope] = useState({ book: 'Sáng Thế Ký', chapterFrom: 1, chapterTo: 1 })
   const [topic, setTopic] = useState('')
   const dirtyMetaRef = useRef(false)
@@ -266,7 +276,11 @@ export default function QuizSetEditor({
     await flushMetaSave()
     // PUBLISHED → button label is "Lưu thay đổi": the two flushes above are
     // the save; opening the publish modal would just confuse + fail BE check.
-    if (quizSet?.publishStatus === 'DRAFT') setPublishOpen(true)
+    if (quizSet?.publishStatus === 'DRAFT') {
+      setPublishOpen(true)
+    } else {
+      flashSaved()
+    }
   }
 
   const handleConfirmPublish = async () => {
@@ -285,6 +299,7 @@ export default function QuizSetEditor({
   const handleSaveDraftClick = async () => {
     await flushQuestionSave()
     await flushMetaSave()
+    flashSaved()
   }
 
   const handleActivate = async (id: string) => {
@@ -396,6 +411,27 @@ export default function QuizSetEditor({
         onGotoQuestion={id => setActiveId(id)}
         busy={publishBusy}
       />
+
+      {/* Save toast — confirms manual save click landed even when nothing
+          was actually pending (auto-save had already flushed). */}
+      <div
+        role="status"
+        aria-live="polite"
+        style={{
+          position: 'fixed', top: 80, right: 24, zIndex: 100,
+          padding: '10px 18px', borderRadius: 8, fontSize: 13, fontWeight: 600,
+          background: 'rgba(74,222,128,0.95)', color: '#0a1f0a',
+          boxShadow: '0 6px 20px rgba(0,0,0,0.35)',
+          display: 'flex', alignItems: 'center', gap: 6,
+          pointerEvents: 'none',
+          opacity: saveFlash ? 1 : 0,
+          transform: saveFlash ? 'translateY(0)' : 'translateY(-8px)',
+          transition: 'opacity 200ms ease, transform 200ms ease',
+        }}
+      >
+        <span className="material-symbols-outlined" style={{ fontSize: 16 }} aria-hidden>check_circle</span>
+        Đã lưu
+      </div>
 
       <style>{`
         @media (max-width: 768px) {
