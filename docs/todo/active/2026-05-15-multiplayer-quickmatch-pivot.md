@@ -116,7 +116,7 @@
   - Checklist: variant render + spec → commit ~100 LOC
 
 - QP-11 FE: triggerQuickMatch helper + error handler
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/api/rooms.ts` (add `triggerQuickMatch(config)` + `handleQuickMatchError`), update `WeeklyMultiplayerStatsDTO` TS type với `quickMatchRemainingToday`
   - POST `/api/rooms/quick-match` body shape match QP-2. Error handler maps codes → friendly VN toasts (already-in-room / daily-cap / tier-lock).
   - **Spec strategy**: [x] (c) `[no-spec-impact]`
