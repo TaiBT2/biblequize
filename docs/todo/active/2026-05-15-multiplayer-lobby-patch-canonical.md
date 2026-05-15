@@ -50,7 +50,7 @@
   - Checklist: 2 file mới + Multiplayer.tsx restructure → tests pass → commit ~250 LOC
 
 - MPP-4 FE: `/solo-arena` placeholder route + Coming Soon page
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/SoloArenaPlaceholder.tsx` (mới), `apps/web/src/main.tsx` (route)
   - Coming Soon page: indigo gradient, "Solo Arena", subtitle "Sắp ra mắt", back-to-multiplayer button.
   - **Spec impact**: [x] None

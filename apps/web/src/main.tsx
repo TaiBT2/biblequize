@@ -76,6 +76,7 @@ import Journey from './pages/Journey'
 import Help from './pages/Help'
 import MySets from './pages/MySets'
 import PersonalQuizSetEditor from './pages/PersonalQuizSetEditor'
+import SoloArenaPlaceholder from './pages/SoloArenaPlaceholder'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -165,6 +166,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="/rooms" element={<RequireAuth><Rooms /></RequireAuth>} />
                   <Route path="/room/create" element={<RequireAuth><CreateRoom /></RequireAuth>} />
                   <Route path="/room/join" element={<RequireAuth><JoinRoom /></RequireAuth>} />
+                  <Route path="/solo-arena" element={<RequireAuth><SoloArenaPlaceholder /></RequireAuth>} />
                   <Route path="/my-sets" element={<RequireAuth><MySets /></RequireAuth>} />
                   <Route path="/my-sets/new" element={<RequireAuth><PersonalQuizSetEditor mode="create" /></RequireAuth>} />
                   <Route path="/my-sets/:setId/edit" element={<RequireAuth><PersonalQuizSetEditor mode="edit" /></RequireAuth>} />
