@@ -35,7 +35,7 @@
   - Checklist: endpoint + test → commit < 70 LOC
 
 - PQS2-3 FE: Wire `personalQuizSets.ts` 3 stub lên endpoint thật
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/api/personalQuizSets.ts`
   - `aiGenerateForSet(setId, body)`: POST `/api/question-sets/{setId}/ai-generate` → response shape matches `AIGenerateForSetResponse`. Sau khi gen, gọi `getQuizSetFull` để sync state (vì BE trả `questions` từ Question table nhưng FE state cần EditorQuestion từ UserQuestion).
   - `aiRewriteQuestion(setId, qid, hint)`: POST `/api/question-sets/{setId}/questions/{qid}/ai-rewrite` → trả `AIRewriteResponse`.
@@ -46,7 +46,7 @@
   - Checklist: wire stubs → unit test → commit < 50 LOC
 
 - PQS2-4 FE: Tách `aiEnabled` thành prop độc lập + enable cho personal
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/group/QuizSetEditor.tsx`, `apps/web/src/pages/PersonalQuizSetEditor.tsx`
   - Thêm prop `aiEnabled?: boolean` vào `QuizSetEditor` Props, default `ownership === 'group'` để group flow unchanged. `PersonalQuizSetEditor` truyền `aiEnabled={true}` explicit.
   - Test: Playwright e2e — vào `/my-sets/:setId/edit` thấy 2 button "AI tạo nháp" + "Thêm thủ công"; click AI → modal mở.

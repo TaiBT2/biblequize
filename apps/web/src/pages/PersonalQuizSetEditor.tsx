@@ -36,6 +36,7 @@ export default function PersonalQuizSetEditor({ mode }: Props) {
       editPathBase="/my-sets/"
       detailPathBase="/my-sets/"
       api={adapter}
+      aiEnabled
     />
   )
 }

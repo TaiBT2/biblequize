@@ -46,15 +46,17 @@ interface Props {
   /** Where to navigate after publish (will append `${setId}`). Trailing slash required. */
   detailPathBase: string
   api: QuizSetEditorApi
+  /** Toggle AI Generate + AI Rewrite UI. Defaults to true for group, false for personal. */
+  aiEnabled?: boolean
 }
 
 export default function QuizSetEditor({
   mode: forcedMode, setIdFromRoute, ownership, ownerName, backHref,
-  editPathBase, detailPathBase, api,
+  editPathBase, detailPathBase, api, aiEnabled: aiEnabledProp,
 }: Props) {
   const navigate = useNavigate()
   const mode: Mode = forcedMode ?? (setIdFromRoute ? 'edit' : 'create')
-  const aiEnabled = ownership === 'group'
+  const aiEnabled = aiEnabledProp ?? (ownership === 'group')
 
   const [quizSet, setQuizSet] = useState<QuizSetFull | null>(null)
   const [activeId, setActiveId] = useState<string | null>(null)
