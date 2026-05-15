@@ -1,6 +1,7 @@
 package com.biblequiz.modules.userquiz.entity;
 
 import com.biblequiz.modules.user.entity.User;
+import com.biblequiz.shared.converter.JsonStringListConverter;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -14,6 +15,8 @@ import java.util.List;
 public class QuestionSet {
 
     public enum Visibility { PRIVATE, PUBLIC }
+    public enum PublishStatus { DRAFT, PUBLISHED, ARCHIVED, SOFT_DELETED }
+    public enum Difficulty { EASY, MEDIUM, HARD, MIXED }
 
     @Id
     @Column(length = 36)
@@ -49,6 +52,42 @@ public class QuestionSet {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    // ── Phase 1 MVP metadata (V56) ─────────────────────────────────────────────
+
+    @Column(name = "cover_image_url", length = 500)
+    private String coverImageUrl;
+
+    @Convert(converter = JsonStringListConverter.class)
+    @Column(columnDefinition = "JSON")
+    private List<String> tags = new ArrayList<>();
+
+    @Column(name = "cover_scripture", length = 100)
+    private String coverScripture;
+
+    @Column(name = "author_note", length = 1000)
+    private String authorNote;
+
+    @Enumerated(EnumType.STRING)
+    private Difficulty difficulty;
+
+    @Column(name = "estimated_duration_min")
+    private Integer estimatedDurationMin;
+
+    @Column(name = "suggested_mode", length = 50)
+    private String suggestedMode;
+
+    @Column(length = 2, nullable = false)
+    private String language = "VI";
+
+    // Entity-level default = DRAFT for new rows; SQL default = PUBLISHED for back-compat
+    // (V56 backfill keeps existing rows playable in CreateRoom).
+    @Enumerated(EnumType.STRING)
+    @Column(name = "publish_status", nullable = false, length = 20)
+    private PublishStatus publishStatus = PublishStatus.DRAFT;
+
+    @Column(name = "published_at")
+    private LocalDateTime publishedAt;
+
     // ── Getters / Setters ─────────────────────────────────────────────────────
 
     public String getId() { return id; }
@@ -74,4 +113,34 @@ public class QuestionSet {
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public LocalDateTime getUpdatedAt() { return updatedAt; }
+
+    public String getCoverImageUrl() { return coverImageUrl; }
+    public void setCoverImageUrl(String coverImageUrl) { this.coverImageUrl = coverImageUrl; }
+
+    public List<String> getTags() { return tags; }
+    public void setTags(List<String> tags) { this.tags = tags; }
+
+    public String getCoverScripture() { return coverScripture; }
+    public void setCoverScripture(String coverScripture) { this.coverScripture = coverScripture; }
+
+    public String getAuthorNote() { return authorNote; }
+    public void setAuthorNote(String authorNote) { this.authorNote = authorNote; }
+
+    public Difficulty getDifficulty() { return difficulty; }
+    public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
+
+    public Integer getEstimatedDurationMin() { return estimatedDurationMin; }
+    public void setEstimatedDurationMin(Integer estimatedDurationMin) { this.estimatedDurationMin = estimatedDurationMin; }
+
+    public String getSuggestedMode() { return suggestedMode; }
+    public void setSuggestedMode(String suggestedMode) { this.suggestedMode = suggestedMode; }
+
+    public String getLanguage() { return language; }
+    public void setLanguage(String language) { this.language = language; }
+
+    public PublishStatus getPublishStatus() { return publishStatus; }
+    public void setPublishStatus(PublishStatus publishStatus) { this.publishStatus = publishStatus; }
+
+    public LocalDateTime getPublishedAt() { return publishedAt; }
+    public void setPublishedAt(LocalDateTime publishedAt) { this.publishedAt = publishedAt; }
 }
