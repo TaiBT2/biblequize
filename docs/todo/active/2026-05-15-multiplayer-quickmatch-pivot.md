@@ -80,7 +80,7 @@
   - Checklist: rename + new copy + modal trigger → commit ~120 LOC
 
 - QP-6.5 FE: QuickMatchConfigModal
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/multiplayer/QuickMatchConfigModal.tsx` (new)
   - Modal popup, indigo accent. 5 sections: (1) Mode 4 cards radio (SR/BR/Team/Đấu vương) — reuse `modeMeta` palette · (2) Book scope select (ALL/OT/NT/specific book picker — initial: just ALL/OT/NT/GOSPELS dropdown) · (3) Question count chip group (5/10/15/20) · (4) Time chip group (15/20/30s) · (5) Source toggle (System default · AI sinh — disabled+badge nếu tier < 4). Submit button → `triggerQuickMatch(config)` → navigate `/room/{id}/lobby`. Error toasts cho 3 error codes.
   - **Spec strategy**: [x] (c) `[no-spec-impact]`
