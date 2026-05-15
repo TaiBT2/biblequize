@@ -87,7 +87,7 @@
   - Checklist: wrapper + route + xoá SetEditor → Tầng 1+2+3 pass → commit < 80 LOC
 
 - PQS-7 FE: Cập nhật `MySets.tsx` (status chip + bỏ inline form)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/MySets.tsx`
   - Bỏ inline create form (40+ LOC `creating` state). Button "Tạo bộ mới" → navigate `/my-sets/new` luôn.
   - Card hiển thị thêm: `DRAFT`/`PUBLISHED` chip; cover image (nếu có); tags (max 2 + "+N"); scripture (1 dòng); suggested mode emoji.

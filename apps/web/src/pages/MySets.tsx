@@ -7,6 +7,11 @@ type QuestionSet = {
   id: string; name: string; description: string;
   visibility: 'PRIVATE' | 'PUBLIC'; questionCount: number;
   createdAt: string; updatedAt: string;
+  // PQS-1 metadata (optional — old rows backfilled to PUBLISHED)
+  publishStatus?: 'DRAFT' | 'PUBLISHED' | 'ARCHIVED' | 'SOFT_DELETED';
+  tags?: string[] | null;
+  coverScripture?: string | null;
+  coverImageUrl?: string | null;
 };
 
 const MAX_SETS = 10;
@@ -14,9 +19,6 @@ const MAX_SETS = 10;
 export default function MySets() {
   const navigate = useNavigate();
   const qc = useQueryClient();
-  const [creating, setCreating] = useState(false);
-  const [newName, setNewName] = useState('');
-  const [newDesc, setNewDesc] = useState('');
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
 
   const { data, isLoading } = useQuery({
@@ -27,17 +29,6 @@ export default function MySets() {
   const sets: QuestionSet[] = data?.sets ?? [];
   const lockedIds: string[] = data?.locked ?? [];
 
-  const createMutation = useMutation({
-    mutationFn: (body: { name: string; description: string }) =>
-      api.post('/api/question-sets', body).then(r => r.data),
-    onSuccess: (res) => {
-      qc.invalidateQueries({ queryKey: ['my-sets'] });
-      setCreating(false);
-      setNewName(''); setNewDesc('');
-      navigate(`/my-sets/${res.set.id}`);
-    },
-  });
-
   const deleteMutation = useMutation({
     mutationFn: (id: string) => api.delete(`/api/question-sets/${id}`).then(r => r.data),
     onSuccess: () => {
@@ -45,11 +36,6 @@ export default function MySets() {
       setDeleteConfirm(null);
     },
   });
-
-  const handleCreate = () => {
-    if (!newName.trim()) return;
-    createMutation.mutate({ name: newName.trim(), description: newDesc.trim() });
-  };
 
   return (
     <div className="min-h-screen" style={{ background: '#11131e' }}>
@@ -67,7 +53,7 @@ export default function MySets() {
             </div>
           </div>
           <button
-            onClick={() => setCreating(true)}
+            onClick={() => navigate('/my-sets/new')}
             disabled={sets.length >= MAX_SETS}
             className="gold-gradient px-4 py-2 rounded-xl text-[#11131e] font-bold text-sm flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
           >
@@ -75,41 +61,6 @@ export default function MySets() {
             Tạo bộ mới
           </button>
         </div>
-
-        {/* Create form */}
-        {creating && (
-          <div className="glass-card rounded-2xl p-5 mb-5">
-            <h3 className="text-sm font-semibold text-on-surface mb-4">Bộ câu hỏi mới</h3>
-            <div className="space-y-3">
-              <input
-                autoFocus
-                type="text"
-                placeholder="Tên bộ câu hỏi *"
-                value={newName}
-                onChange={e => setNewName(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && handleCreate()}
-                className="w-full bg-surface-container-highest rounded-xl px-4 py-2.5 text-sm text-on-surface placeholder:text-on-surface-variant/50 outline-none focus:ring-2 focus:ring-secondary/50"
-              />
-              <input
-                type="text"
-                placeholder="Mô tả (tuỳ chọn)"
-                value={newDesc}
-                onChange={e => setNewDesc(e.target.value)}
-                className="w-full bg-surface-container-highest rounded-xl px-4 py-2.5 text-sm text-on-surface placeholder:text-on-surface-variant/50 outline-none focus:ring-2 focus:ring-secondary/50"
-              />
-              <div className="flex gap-2 justify-end">
-                <button onClick={() => { setCreating(false); setNewName(''); setNewDesc(''); }}
-                  className="px-4 py-2 rounded-xl text-sm text-on-surface-variant border border-white/10 hover:bg-white/5 transition-colors">
-                  Huỷ
-                </button>
-                <button onClick={handleCreate} disabled={!newName.trim() || createMutation.isPending}
-                  className="gold-gradient px-4 py-2 rounded-xl text-sm font-bold text-[#11131e] disabled:opacity-50">
-                  {createMutation.isPending ? 'Đang tạo...' : 'Tạo và soạn câu hỏi'}
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Sets grid */}
         {isLoading ? (
@@ -128,16 +79,18 @@ export default function MySets() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {sets.map(set => {
               const locked = lockedIds.includes(set.id);
+              const isDraft = set.publishStatus === 'DRAFT';
+              const tags = set.tags ?? [];
               return (
                 <div key={set.id} className="glass-card rounded-2xl p-5 flex flex-col gap-3 relative group">
-                  {/* Visibility badge */}
-                  <div className="flex items-center justify-between">
+                  {/* Status + locked badges */}
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
                     <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                      set.visibility === 'PUBLIC'
-                        ? 'bg-green-500/20 text-green-400'
-                        : 'bg-white/10 text-on-surface-variant'
+                      isDraft
+                        ? 'bg-amber-500/20 text-amber-400'
+                        : 'bg-green-500/20 text-green-400'
                     }`}>
-                      {set.visibility === 'PUBLIC' ? 'Public' : 'Riêng tư'}
+                      {isDraft ? 'NHÁP' : 'ĐÃ XUẤT BẢN'}
                     </span>
                     {locked && (
                       <span className="text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 flex items-center gap-1">
@@ -150,8 +103,23 @@ export default function MySets() {
                   {/* Name + desc */}
                   <div className="flex-1">
                     <h3 className="text-sm font-semibold text-on-surface leading-tight">{set.name}</h3>
+                    {set.coverScripture && (
+                      <p className="text-xs text-secondary/80 mt-1 italic">📖 {set.coverScripture}</p>
+                    )}
                     {set.description && (
                       <p className="text-xs text-on-surface-variant mt-1 line-clamp-2">{set.description}</p>
+                    )}
+                    {tags.length > 0 && (
+                      <div className="flex gap-1 mt-2 flex-wrap">
+                        {tags.slice(0, 2).map(tag => (
+                          <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded bg-white/5 text-on-surface-variant">
+                            #{tag}
+                          </span>
+                        ))}
+                        {tags.length > 2 && (
+                          <span className="text-[10px] px-1.5 py-0.5 text-on-surface-variant/60">+{tags.length - 2}</span>
+                        )}
+                      </div>
                     )}
                   </div>
 
@@ -169,9 +137,9 @@ export default function MySets() {
 
                   {/* Actions */}
                   <div className="flex gap-2">
-                    <Link to={`/my-sets/${set.id}`}
+                    <Link to={`/my-sets/${set.id}/edit`}
                       className="flex-1 py-2 rounded-xl text-xs font-semibold text-center border border-secondary/40 text-secondary hover:bg-secondary/10 transition-colors">
-                      {locked ? 'Xem' : 'Soạn câu hỏi'}
+                      {locked ? 'Xem' : isDraft ? 'Tiếp tục soạn' : 'Sửa'}
                     </Link>
                     {!locked && (
                       <button
