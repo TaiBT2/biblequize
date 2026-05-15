@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -33,6 +34,10 @@ public class QuestionSetService {
     // ── Create ────────────────────────────────────────────────────────────────
 
     public QuestionSet create(User user, String name, String description) {
+        return create(user, name, description, null);
+    }
+
+    public QuestionSet create(User user, String name, String description, Map<String, Object> metadata) {
         long count = setRepo.countByUserId(user.getId());
         if (count >= MAX_SETS_PER_USER) {
             throw new IllegalStateException("Đã đạt giới hạn " + MAX_SETS_PER_USER + " bộ câu hỏi.");
@@ -42,9 +47,61 @@ public class QuestionSetService {
         set.setName(name);
         set.setDescription(description);
         set.setUser(user);
+        applyMetadata(set, metadata);
         QuestionSet saved = setRepo.save(set);
         log.info("[QuestionSet] User {} created set '{}'", user.getId(), name);
         return saved;
+    }
+
+    /** PATCH metadata + name/description partial update. Locked sets cannot be edited. */
+    public QuestionSet patchMetadata(String setId, String userId, Map<String, Object> patch) {
+        QuestionSet set = requireOwnerNotLocked(setId, userId);
+        if (patch == null) return set;
+        if (patch.containsKey("name")) {
+            Object v = patch.get("name");
+            if (v instanceof String s && !s.isBlank()) set.setName(s);
+        }
+        if (patch.containsKey("description")) {
+            Object v = patch.get("description");
+            set.setDescription(v instanceof String s ? s : null);
+        }
+        applyMetadata(set, patch);
+        return setRepo.save(set);
+    }
+
+    @SuppressWarnings("unchecked")
+    private void applyMetadata(QuestionSet set, Map<String, Object> m) {
+        if (m == null) return;
+        if (m.containsKey("coverImageUrl")) set.setCoverImageUrl((String) m.get("coverImageUrl"));
+        if (m.containsKey("tags") && m.get("tags") instanceof List<?> tagList) {
+            List<String> stringTags = tagList.stream()
+                    .filter(java.util.Objects::nonNull)
+                    .map(Object::toString)
+                    .toList();
+            set.setTags(stringTags.size() > 5
+                    ? new ArrayList<>(stringTags.subList(0, 5))
+                    : new ArrayList<>(stringTags));
+        }
+        if (m.containsKey("coverScripture")) set.setCoverScripture((String) m.get("coverScripture"));
+        if (m.containsKey("authorNote")) set.setAuthorNote((String) m.get("authorNote"));
+        if (m.containsKey("suggestedMode")) set.setSuggestedMode((String) m.get("suggestedMode"));
+        if (m.containsKey("language")) {
+            Object v = m.get("language");
+            if (v instanceof String s && !s.isBlank()) set.setLanguage(s.toUpperCase());
+        }
+        if (m.containsKey("difficulty")) {
+            Object d = m.get("difficulty");
+            if (d == null) set.setDifficulty(null);
+            else if (d instanceof String s && !s.isBlank()) {
+                try { set.setDifficulty(QuestionSet.Difficulty.valueOf(s.toUpperCase())); }
+                catch (IllegalArgumentException ignored) { /* skip invalid */ }
+            }
+        }
+        if (m.containsKey("estimatedDurationMin")) {
+            Object v = m.get("estimatedDurationMin");
+            if (v == null) set.setEstimatedDurationMin(null);
+            else if (v instanceof Number n) set.setEstimatedDurationMin(n.intValue());
+        }
     }
 
     // ── Read ──────────────────────────────────────────────────────────────────

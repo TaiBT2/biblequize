@@ -29,7 +29,7 @@
   - Checklist: migration → entity update → JUnit pass → commit < 100 LOC
 
 - PQS-2 BE: Mở rộng `QuestionSetController` accept + return metadata mới
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/api/src/main/java/com/biblequiz/api/QuestionSetController.java`
   - Update `POST /api/question-sets` accept full metadata body (cover/tags/scripture/authorNote/difficulty/duration/suggestedMode/language). Default `publish_status = DRAFT` khi tạo mới.
   - Update `PUT /api/question-sets/{id}` → đổi sang `PATCH` (partial update); accept đầy đủ metadata fields. Giữ PUT cũ tạm thời để FE chuyển dần (deprecate trong Phase 2).

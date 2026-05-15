@@ -47,7 +47,7 @@ public class QuestionSetController {
             User user = getUser(principal);
             String name = required(body, "name");
             String desc = body.get("description") instanceof String s ? s : null;
-            QuestionSet set = service.create(user, name, desc);
+            QuestionSet set = service.create(user, name, desc, body);
             return ResponseEntity.ok(Map.of("success", true, "set", toDTO(set, false)));
         } catch (SecurityException e) {
             return ResponseEntity.status(403).body(err(e));
@@ -59,10 +59,17 @@ public class QuestionSetController {
     // ── List ──────────────────────────────────────────────────────────────────
 
     @GetMapping
-    public ResponseEntity<?> listMine(Principal principal) {
+    public ResponseEntity<?> listMine(@RequestParam(required = false) String status,
+                                       Principal principal) {
         try {
             User user = getUser(principal);
             List<QuestionSet> sets = service.listByUser(user.getId());
+            if (status != null && !status.isBlank()) {
+                try {
+                    QuestionSet.PublishStatus filter = QuestionSet.PublishStatus.valueOf(status.toUpperCase());
+                    sets = sets.stream().filter(s -> s.getPublishStatus() == filter).toList();
+                } catch (IllegalArgumentException ignored) { /* invalid filter → return all */ }
+            }
             return ResponseEntity.ok(Map.of("success", true,
                     "sets", sets.stream().map(s -> toDTO(s, false)).toList(),
                     "locked", sets.stream()
@@ -120,6 +127,22 @@ public class QuestionSetController {
             String name = required(body, "name");
             String desc = body.get("description") instanceof String s ? s : null;
             QuestionSet set = service.update(id, user.getId(), name, desc);
+            return ResponseEntity.ok(Map.of("success", true, "set", toDTO(set, false)));
+        } catch (SecurityException e) {
+            return ResponseEntity.status(403).body(err(e));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(err(e));
+        }
+    }
+
+    /** Partial update — name, description, and all Phase 1 metadata (cover, tags, scripture, mode, difficulty, language, duration). */
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> patch(@PathVariable String id,
+                                    @RequestBody Map<String, Object> body,
+                                    Principal principal) {
+        try {
+            User user = getUser(principal);
+            QuestionSet set = service.patchMetadata(id, user.getId(), body);
             return ResponseEntity.ok(Map.of("success", true, "set", toDTO(set, false)));
         } catch (SecurityException e) {
             return ResponseEntity.status(403).body(err(e));
@@ -256,6 +279,17 @@ public class QuestionSetController {
         dto.put("questionCount", s.getQuestionCount());
         dto.put("createdAt",     s.getCreatedAt() != null ? s.getCreatedAt().toString() : "");
         dto.put("updatedAt",     s.getUpdatedAt() != null ? s.getUpdatedAt().toString() : "");
+        // PQS-1 metadata
+        dto.put("coverImageUrl",        s.getCoverImageUrl());
+        dto.put("tags",                 s.getTags());
+        dto.put("coverScripture",       s.getCoverScripture());
+        dto.put("authorNote",           s.getAuthorNote());
+        dto.put("difficulty",           s.getDifficulty() != null ? s.getDifficulty().name() : null);
+        dto.put("estimatedDurationMin", s.getEstimatedDurationMin());
+        dto.put("suggestedMode",        s.getSuggestedMode());
+        dto.put("language",             s.getLanguage());
+        dto.put("publishStatus",        s.getPublishStatus() != null ? s.getPublishStatus().name() : null);
+        dto.put("publishedAt",          s.getPublishedAt() != null ? s.getPublishedAt().toString() : null);
         if (withOwner && s.getUser() != null) {
             dto.put("ownerName", s.getUser().getName());
         }
