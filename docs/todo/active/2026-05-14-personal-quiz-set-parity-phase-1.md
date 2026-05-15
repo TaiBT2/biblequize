@@ -64,7 +64,7 @@
   - Checklist: file mới + unit test → commit < 100 LOC
 
 - PQS-5 FE: Refactor `QuizSetEditor` nhận API adapter qua prop
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/src/pages/group/QuizSetEditor.tsx` (+ có thể rename → `pages/shared/QuizSetEditor.tsx` nếu cần — quyết định khi làm)
   - Đổi signature: thêm prop `api: QuizSetEditorApi` (interface gồm tất cả functions từ `quizSets.ts` đang dùng) + prop `backHref` + prop `ownership: 'personal' | 'group'`. Xoá hardcode `groupId` từ `useParams`, đổi sang `ownerScope` (group → `groupId`, personal → user implicit).
   - Tất cả handler (`handleAddManual`, `handleAIGenerate`, `handlePublishClick`, `handleConfirmPublish`, `persistQuestion`, `persistMetadata`) gọi `api.*` thay vì import trực tiếp.

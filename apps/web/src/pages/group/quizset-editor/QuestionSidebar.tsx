@@ -6,7 +6,8 @@ interface Props {
   questions: EditorQuestion[]
   activeId: string | null
   onActivate: (id: string) => void
-  onAIGenerate: () => void
+  /** Omit to hide the "AI tạo nháp" button (personal scope in Phase 1). */
+  onAIGenerate?: () => void
   onAddManual: () => void
   aiBusy?: boolean
   addBusy?: boolean
@@ -122,17 +123,19 @@ export default function QuestionSidebar({
 
       {/* Action buttons */}
       <div style={{ borderTop: `1px solid ${COLOR.borderXSubtle}`, paddingTop: 12, display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <button onClick={onAIGenerate} disabled={aiBusy} style={{
-          background: COLOR.goldBgStrong, color: COLOR.gold,
-          border: `1px solid ${COLOR.goldBorder}`,
-          padding: '9px 11px', borderRadius: 7, fontSize: 12, fontWeight: 500,
-          cursor: aiBusy ? 'wait' : 'pointer',
-          display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 5,
-          opacity: aiBusy ? 0.6 : 1,
-        }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>auto_awesome</span>
-          {aiBusy ? 'Đang tạo...' : 'AI tạo nháp'}
-        </button>
+        {onAIGenerate && (
+          <button onClick={onAIGenerate} disabled={aiBusy} style={{
+            background: COLOR.goldBgStrong, color: COLOR.gold,
+            border: `1px solid ${COLOR.goldBorder}`,
+            padding: '9px 11px', borderRadius: 7, fontSize: 12, fontWeight: 500,
+            cursor: aiBusy ? 'wait' : 'pointer',
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 5,
+            opacity: aiBusy ? 0.6 : 1,
+          }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>auto_awesome</span>
+            {aiBusy ? 'Đang tạo...' : 'AI tạo nháp'}
+          </button>
+        )}
         <button onClick={onAddManual} disabled={addBusy} style={{
           background: 'rgba(255,255,255,0.04)', color: COLOR.textSecondary,
           border: `1px solid ${COLOR.borderSubtle}`,

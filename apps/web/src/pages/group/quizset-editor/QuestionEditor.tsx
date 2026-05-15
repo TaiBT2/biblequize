@@ -10,7 +10,8 @@ interface Props {
   question: EditorQuestion
   onChange: (patch: Partial<EditorQuestion>) => void
   onDelete: () => void
-  onAIRewrite: () => void
+  /** Omit to hide the "AI viết lại" button (personal scope in Phase 1). */
+  onAIRewrite?: () => void
   onDuplicate?: () => void
   rewriting?: boolean
 }
@@ -93,17 +94,19 @@ export default function QuestionEditor({
         </div>
 
         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 6 }}>
-          <button onClick={onAIRewrite} disabled={rewriting} style={{
-            background: COLOR.goldBg, color: COLOR.gold,
-            border: `1px solid rgba(232,168,50,0.22)`,
-            padding: '5px 10px', borderRadius: 6, fontSize: 11,
-            cursor: rewriting ? 'wait' : 'pointer',
-            display: 'inline-flex', alignItems: 'center', gap: 4,
-            opacity: rewriting ? 0.6 : 1,
-          }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>refresh</span>
-            {rewriting ? 'Đang viết lại...' : 'AI viết lại'}
-          </button>
+          {onAIRewrite && (
+            <button onClick={onAIRewrite} disabled={rewriting} style={{
+              background: COLOR.goldBg, color: COLOR.gold,
+              border: `1px solid rgba(232,168,50,0.22)`,
+              padding: '5px 10px', borderRadius: 6, fontSize: 11,
+              cursor: rewriting ? 'wait' : 'pointer',
+              display: 'inline-flex', alignItems: 'center', gap: 4,
+              opacity: rewriting ? 0.6 : 1,
+            }}>
+              <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>refresh</span>
+              {rewriting ? 'Đang viết lại...' : 'AI viết lại'}
+            </button>
+          )}
           {onDuplicate && (
             <button onClick={onDuplicate} title="Sao chép câu" style={{
               background: 'transparent', color: COLOR.textDisabled,

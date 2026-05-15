@@ -3,15 +3,16 @@ import type { PublishStatus } from '../../../api/quizSets'
 import { COLOR } from './styles'
 
 interface Props {
-  groupId: string
-  groupName?: string
+  backHref: string
+  ownerName?: string
   quizSetName: string
   status: PublishStatus
   lastSavedAgoSec: number | null
   saving: boolean
   questionCount: number
-  aiUsed: number
-  aiLimit: number
+  /** Omit to hide the AI quota badge (personal scope in Phase 1). */
+  aiUsed?: number
+  aiLimit?: number
   onPublish: () => void
   onSaveDraft: () => void
   canPublish: boolean
@@ -34,11 +35,12 @@ function formatAgo(sec: number): string {
 }
 
 export default function EditorTopBar({
-  groupId, groupName, quizSetName, status, lastSavedAgoSec, saving,
+  backHref, ownerName, quizSetName, status, lastSavedAgoSec, saving,
   questionCount, aiUsed, aiLimit, onPublish, onSaveDraft, canPublish,
 }: Props) {
   const navigate = useNavigate()
   const badge = statusBadge(status, lastSavedAgoSec, saving)
+  const showAi = typeof aiUsed === 'number' && typeof aiLimit === 'number' && aiLimit > 0
 
   return (
     <div style={{
@@ -51,7 +53,7 @@ export default function EditorTopBar({
       flexWrap: 'wrap',
     }}>
       <button
-        onClick={() => navigate(`/groups/${groupId}`)}
+        onClick={() => navigate(backHref)}
         style={{
           background: 'transparent', border: 'none', color: COLOR.textMuted, cursor: 'pointer',
           display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 13, padding: '6px 10px', borderRadius: 6,
@@ -65,10 +67,10 @@ export default function EditorTopBar({
         <div style={{ fontSize: 14, color: COLOR.textPrimary, fontWeight: 500 }}>
           {quizSetName || 'Bộ câu hỏi mới'}
         </div>
-        {groupName && (
+        {ownerName && (
           <>
             <span style={{ color: COLOR.textDisabled, fontSize: 12 }}>·</span>
-            <div style={{ fontSize: 12, color: COLOR.textMuted }}>{groupName}</div>
+            <div style={{ fontSize: 12, color: COLOR.textMuted }}>{ownerName}</div>
           </>
         )}
         <span style={{
@@ -78,14 +80,16 @@ export default function EditorTopBar({
         }}>{badge.label}</span>
       </div>
 
-      <div style={{
-        display: 'inline-flex', alignItems: 'center', gap: 5,
-        background: COLOR.goldBg, border: `1px solid rgba(232,168,50,0.22)`,
-        padding: '4px 9px', borderRadius: 999, fontSize: 11, color: COLOR.gold,
-      }}>
-        <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>auto_awesome</span>
-        <span>AI: {aiUsed}/{aiLimit}</span>
-      </div>
+      {showAi && (
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', gap: 5,
+          background: COLOR.goldBg, border: `1px solid rgba(232,168,50,0.22)`,
+          padding: '4px 9px', borderRadius: 999, fontSize: 11, color: COLOR.gold,
+        }}>
+          <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>auto_awesome</span>
+          <span>AI: {aiUsed}/{aiLimit}</span>
+        </div>
+      )}
 
       <button onClick={onSaveDraft} disabled={saving} style={{
         background: 'rgba(255,255,255,0.04)', color: COLOR.textSecondary,
