@@ -116,6 +116,31 @@ public class QuestionSetController {
         }
     }
 
+    /** GET full payload: metadata + questions in EditorQuestion shape (parity with group /full). */
+    @GetMapping("/{id}/full")
+    public ResponseEntity<?> getFull(@PathVariable String id, Principal principal) {
+        try {
+            QuestionSet set = service.getById(id);
+            if (set.getVisibility() == QuestionSet.Visibility.PRIVATE && principal != null) {
+                User user = getUser(principal);
+                if (!set.getUser().getId().equals(user.getId())) {
+                    return ResponseEntity.status(403).body(Map.of("success", false, "message", "Không có quyền xem"));
+                }
+            }
+            List<QuestionSetItem> items = service.getItems(id);
+            Map<String, Object> quizSet = toDTO(set, false);
+            quizSet.put("totalQuestions", set.getQuestionCount());
+            quizSet.put("questionIds", items.stream().map(i -> i.getUserQuestion().getId()).toList());
+            quizSet.put("questions", items.stream().map(this::toEditorQuestion).toList());
+            return ResponseEntity.ok(Map.of(
+                    "success", true,
+                    "quizSet", quizSet,
+                    "locked", service.isLocked(id)));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(err(e));
+        }
+    }
+
     // ── Update ────────────────────────────────────────────────────────────────
 
     @PutMapping("/{id}")
@@ -144,6 +169,20 @@ public class QuestionSetController {
             User user = getUser(principal);
             QuestionSet set = service.patchMetadata(id, user.getId(), body);
             return ResponseEntity.ok(Map.of("success", true, "set", toDTO(set, false)));
+        } catch (SecurityException e) {
+            return ResponseEntity.status(403).body(err(e));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(err(e));
+        }
+    }
+
+    /** DRAFT → PUBLISHED. Validates name + question count. */
+    @PatchMapping("/{id}/publish")
+    public ResponseEntity<?> publish(@PathVariable String id, Principal principal) {
+        try {
+            User user = getUser(principal);
+            QuestionSet set = service.publish(id, user.getId());
+            return ResponseEntity.ok(Map.of("success", true, "quizSet", toDTO(set, false)));
         } catch (SecurityException e) {
             return ResponseEntity.status(403).body(err(e));
         } catch (Exception e) {
@@ -293,6 +332,27 @@ public class QuestionSetController {
         if (withOwner && s.getUser() != null) {
             dto.put("ownerName", s.getUser().getName());
         }
+        return dto;
+    }
+
+    /** Map a set item → EditorQuestion shape used by the shared QuizSetEditor (FE). */
+    private Map<String, Object> toEditorQuestion(QuestionSetItem item) {
+        UserQuestion q = item.getUserQuestion();
+        var dto = new java.util.HashMap<String, Object>();
+        dto.put("id",            q.getId());
+        dto.put("book",          q.getBook() != null ? q.getBook() : "");
+        dto.put("chapter",       q.getChapterStart());
+        dto.put("verseStart",    q.getVerseStart());
+        dto.put("verseEnd",      q.getVerseEnd());
+        dto.put("difficulty",    q.getDifficulty() != null ? q.getDifficulty().name().toLowerCase() : "medium");
+        dto.put("type",          "single");
+        dto.put("content",       q.getContent() != null ? q.getContent() : "");
+        dto.put("options",       q.getOptions() != null ? q.getOptions() : List.of());
+        // Group uses correctAnswer: number[]. UserQuestion stores single Integer → wrap in array.
+        dto.put("correctAnswer", q.getCorrectAnswer() != null ? List.of(q.getCorrectAnswer()) : List.of(0));
+        dto.put("explanation",   q.getExplanation() != null ? q.getExplanation() : "");
+        dto.put("source",        q.getSource() != null ? q.getSource().name().toLowerCase() : "manual");
+        dto.put("language",      q.getLanguage() != null ? q.getLanguage() : "vi");
         return dto;
     }
 

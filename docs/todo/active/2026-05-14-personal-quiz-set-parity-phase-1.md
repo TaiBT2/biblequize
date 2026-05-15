@@ -40,7 +40,7 @@
   - Checklist: controller + service → JUnit pass → commit < 100 LOC
 
 - PQS-3 BE: Endpoint publish + GET `/full` cho personal set
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/api/src/main/java/com/biblequiz/api/QuestionSetController.java` + service
   - `PATCH /api/question-sets/{id}/publish`: validate owner, status hiện tại = DRAFT, `questionCount >= 5`, `name.trim().length >= 3` → set `PUBLISHED` + `publishedAt = NOW()`. Trả lỗi 400 `{code: 'INSUFFICIENT_QUESTIONS' | 'NAME_TOO_SHORT'}` để FE hiển thị.
   - `GET /api/question-sets/{id}/full`: trả `{set, questions, locked}` với `questions` mảng object đầy đủ (content, options, correctAnswer, book, chapter, verseStart, verseEnd, difficulty, explanation, source, language) — shape khớp `EditorQuestion` của group.

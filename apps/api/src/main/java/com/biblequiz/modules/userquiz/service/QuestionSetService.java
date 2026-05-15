@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +26,8 @@ public class QuestionSetService {
 
     private static final Logger log = LoggerFactory.getLogger(QuestionSetService.class);
     private static final int MAX_SETS_PER_USER = 10;
+    public static final int MIN_QUESTIONS_TO_PUBLISH = 5;
+    public static final int MIN_NAME_LENGTH = 3;
 
     @Autowired private QuestionSetRepository setRepo;
     @Autowired private QuestionSetItemRepository itemRepo;
@@ -129,6 +132,24 @@ public class QuestionSetService {
         QuestionSet set = requireOwnerNotLocked(setId, userId);
         set.setName(name);
         set.setDescription(description);
+        return setRepo.save(set);
+    }
+
+    /** DRAFT → PUBLISHED transition. Validates name length + question count. */
+    public QuestionSet publish(String setId, String userId) {
+        QuestionSet set = requireOwner(setId, userId);
+        if (set.getPublishStatus() != QuestionSet.PublishStatus.DRAFT) {
+            throw new IllegalStateException("Chỉ bộ DRAFT mới publish được (hiện: " + set.getPublishStatus() + ")");
+        }
+        if (set.getName() == null || set.getName().trim().length() < MIN_NAME_LENGTH) {
+            throw new IllegalStateException("Tên bộ phải có ≥" + MIN_NAME_LENGTH + " ký tự");
+        }
+        if (set.getQuestionCount() < MIN_QUESTIONS_TO_PUBLISH) {
+            throw new IllegalStateException("Cần tối thiểu " + MIN_QUESTIONS_TO_PUBLISH + " câu hỏi để publish");
+        }
+        set.setPublishStatus(QuestionSet.PublishStatus.PUBLISHED);
+        set.setPublishedAt(LocalDateTime.now());
+        log.info("[QuestionSet] Set {} published by user {}", setId, userId);
         return setRepo.save(set);
     }
 
