@@ -3,10 +3,12 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (13)
+## Active (15)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-05-18 | Fix Daily Challenge question card clipped on mobile | DONE | [detail](docs/todo/active/2026-05-18-fix-daily-challenge-question-clipped-mobile.md) |
+| 2026-05-18 | Fix MobileTopBar broken avatar alt-text overflow | DONE | [detail](docs/todo/active/2026-05-18-fix-mobile-topbar-broken-avatar-alt-overflow.md) |
 | 2026-05-13 | Home Redesign Modern Spiritual | IN PROGRESS | [detail](docs/todo/active/2026-05-13-home-redesign-modern-spiritual.md) |
 | 2026-05-13 | Disable test data seed on prod + harden guard | TODO | [detail](docs/todo/active/2026-05-13-disable-seed-on-prod-and-harden-guard.md) |
 | 2026-05-13 | Code Quality Audit follow-up (BE + FE Web) | PARTIALLY DONE | [detail](docs/todo/active/2026-05-13-code-quality-audit-follow-up-be-fe-web.md) |

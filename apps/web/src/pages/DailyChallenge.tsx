@@ -7,7 +7,7 @@ import ShareCard from '../components/ShareCard'
 import PageMeta from '../components/PageMeta'
 import { getQuizLanguage } from '../utils/quizLanguage'
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton'
-import { wrapProperNouns, formatVerseRef } from '../utils/textHelpers'
+import { wrapProperNouns, formatVerseRef, getQuestionLengthClass } from '../utils/textHelpers'
 import { useAuthStore } from '../store/authStore'
 import { DAILY_VERSES } from '../data/verses'
 import { PageHeader } from './daily/PageHeader'
@@ -464,28 +464,40 @@ const DailyChallenge: React.FC = () => {
           ))}
         </div>
 
-        <div className="w-full space-y-16">
-          <div className="relative w-full aspect-[16/9] md:aspect-[21/7] flex flex-col items-center justify-center text-center p-10 bg-surface-container-low rounded-[2.5rem] border border-outline-variant/10 shadow-2xl overflow-hidden">
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-32 bg-secondary rounded-r-full" />
-            <div className="inline-flex items-center gap-1.5 bg-secondary/10 border border-secondary/20 rounded-full px-3 py-1 mb-4">
-              <span className="material-symbols-outlined text-secondary text-xs">menu_book</span>
-              <span className="text-secondary text-[11px] font-medium tracking-wider">
-                {formatVerseRef({ book: question.book, chapter: question.chapter })}
-              </span>
-            </div>
-            <h2
-              data-testid="daily-question-text"
-              className="question-text font-headline text-2xl md:text-4xl font-extrabold tracking-tight leading-snug max-w-3xl text-on-surface"
-            >
-              {wrapProperNouns(question.content)}
-            </h2>
-            <div className="mt-6 flex items-center gap-2 text-on-surface-variant/60">
-              <span className="material-symbols-outlined text-sm">menu_book</span>
-              <span className="text-xs font-bold uppercase tracking-widest">
-                {question.book}{question.chapter ? ` - ${t('quiz.chapter', { chapter: question.chapter })}` : ''}
-              </span>
-            </div>
-          </div>
+        <div className="w-full space-y-6 md:space-y-16">
+          {(() => {
+            const lenClass = getQuestionLengthClass(question.content)
+            const mobileFontCls =
+              lenClass === 'short'  ? 'text-[21px] font-bold text-center' :
+              lenClass === 'medium' ? 'text-[18px] font-semibold text-center' :
+                                      'text-[15px] font-semibold text-left'
+            return (
+              <div
+                data-question-length={lenClass}
+                className="relative w-full aspect-auto min-h-[160px] md:aspect-[21/7] md:min-h-0 flex flex-col items-center justify-center text-center p-5 md:p-10 bg-surface-container-low rounded-2xl md:rounded-[2.5rem] border border-outline-variant/10 shadow-2xl overflow-hidden"
+              >
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 md:w-2 h-20 md:h-32 bg-secondary rounded-r-full" />
+                <div className="inline-flex items-center gap-1.5 bg-secondary/10 border border-secondary/20 rounded-full px-3 py-1 mb-3 md:mb-4">
+                  <span className="material-symbols-outlined text-secondary text-xs">menu_book</span>
+                  <span className="text-secondary text-[11px] font-medium tracking-wider">
+                    {formatVerseRef({ book: question.book, chapter: question.chapter })}
+                  </span>
+                </div>
+                <h2
+                  data-testid="daily-question-text"
+                  className={`question-text font-headline ${mobileFontCls} md:text-4xl md:font-extrabold md:text-center tracking-tight leading-snug max-w-3xl text-on-surface w-full`}
+                >
+                  {wrapProperNouns(question.content)}
+                </h2>
+                <div className="hidden md:flex mt-6 items-center gap-2 text-on-surface-variant/60">
+                  <span className="material-symbols-outlined text-sm">menu_book</span>
+                  <span className="text-xs font-bold uppercase tracking-widest">
+                    {question.book}{question.chapter ? ` - ${t('quiz.chapter', { chapter: question.chapter })}` : ''}
+                  </span>
+                </div>
+              </div>
+            )
+          })()}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {question.options.map((option, i) => {

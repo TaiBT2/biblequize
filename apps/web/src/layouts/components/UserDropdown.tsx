@@ -48,6 +48,11 @@ export default function UserDropdown({
   const { user, logout } = useAuthStore()
   const [open, setOpen] = useState(false)
   const [loggingOut, setLoggingOut] = useState(false)
+  // Track avatar img load failure (Google OAuth URLs hay bị 429/403 trên
+  // mobile). Khi hỏng, fallback về initial circle thay vì để browser
+  // render alt text — alt text không tôn trọng w-10 h-10 và tràn ra
+  // ngoài viền nút trên MobileTopBar.
+  const [avatarBroken, setAvatarBroken] = useState(false)
   const wrapRef = useRef<HTMLDivElement>(null)
 
   // Close menu when clicking outside or pressing Escape.
@@ -73,6 +78,7 @@ export default function UserDropdown({
   }, [open])
 
   const displayName = user?.name || t('home.defaultName')
+  const showAvatarImg = Boolean(user?.avatar) && !avatarBroken
   const lang = (i18n.language === 'en' ? 'en' : 'vi') as QuizLanguage
 
   const handleLogout = async () => {
@@ -120,8 +126,13 @@ export default function UserDropdown({
                   : undefined
               }
             >
-              {user?.avatar ? (
-                <img src={user.avatar} alt={displayName} className="w-full h-full rounded-full object-cover" />
+              {showAvatarImg ? (
+                <img
+                  src={user!.avatar}
+                  alt={displayName}
+                  onError={() => setAvatarBroken(true)}
+                  className="w-full h-full rounded-full object-cover"
+                />
               ) : (
                 <span className={!tierColorHex ? 'text-secondary' : undefined}>
                   {displayName.charAt(0).toUpperCase()}
@@ -145,10 +156,11 @@ export default function UserDropdown({
               <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </>
-        ) : user?.avatar ? (
+        ) : showAvatarImg ? (
           <img
-            src={user.avatar}
+            src={user!.avatar}
             alt={displayName}
+            onError={() => setAvatarBroken(true)}
             className="w-full h-full rounded-full object-cover border border-[rgba(232,168,50,0.35)]"
           />
         ) : (
