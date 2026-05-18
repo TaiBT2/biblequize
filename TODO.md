@@ -3,13 +3,14 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (18)
+## Active (19)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
 | 2026-05-18 | Profile Sprint 1 quick wins (dead buttons + UX polish) | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-1-quick-wins.md) |
 | 2026-05-18 | Profile Sprint 2: skeleton states + split monolith | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-2-states-and-split.md) |
 | 2026-05-18 | Profile Sprint 3: SPEC §21.1 catch-up (Journey + Cosmetic frame) | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-3-spec-features.md) |
+| 2026-05-18 | Profile Sprint 4: Edit Profile modal (wire dead button) | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-4-edit-modal.md) |
 | 2026-05-18 | Fix Daily Challenge question card clipped on mobile | DONE | [detail](docs/todo/active/2026-05-18-fix-daily-challenge-question-clipped-mobile.md) |
 | 2026-05-18 | Fix MobileTopBar broken avatar alt-text overflow | DONE | [detail](docs/todo/active/2026-05-18-fix-mobile-topbar-broken-avatar-alt-overflow.md) |
 | 2026-05-13 | Home Redesign Modern Spiritual | IN PROGRESS | [detail](docs/todo/active/2026-05-13-home-redesign-modern-spiritual.md) |

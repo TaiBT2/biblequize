@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '../../api/client'
 import { TIERS } from '../../data/tiers'
 import type { CosmeticResponse, UserProfile } from './types'
+import { EditProfileModal } from './EditProfileModal'
 
 // Map active cosmetic frame ID ("frame_tier3") to a hex color from the
 // canonical tier palette. Returns null when the user has no frame set
@@ -25,6 +27,7 @@ export function HeroCompact({ profile, initial, tierEmoji, tierName, tierLevel }
   tierLevel: number
 }) {
   const { t } = useTranslation()
+  const [editing, setEditing] = useState(false)
   const { data: cosmetics } = useQuery<CosmeticResponse>({
     queryKey: ['profile-cosmetics'],
     queryFn: () => api.get('/api/me/cosmetics').then(r => r.data),
@@ -88,15 +91,15 @@ export function HeroCompact({ profile, initial, tierEmoji, tierName, tierLevel }
           <span className="material-symbols-outlined text-[18px]">share</span>
         </button>
         <button
-          disabled
-          aria-disabled="true"
-          title={t('profile.editProfileComingSoon')}
-          className="h-10 px-4 rounded-xl gold-gradient text-on-secondary text-sm font-semibold inline-flex items-center gap-1.5 opacity-50 cursor-not-allowed"
+          data-testid="profile-edit-btn"
+          onClick={() => setEditing(true)}
+          className="h-10 px-4 rounded-xl gold-gradient text-on-secondary text-sm font-semibold inline-flex items-center gap-1.5 hover:shadow-[0_6px_18px_rgba(232,168,50,0.3)] transition-shadow"
         >
           <span className="material-symbols-outlined text-[18px]">edit</span>
           {t('profile.editProfile')}
         </button>
       </div>
+      <EditProfileModal open={editing} onClose={() => setEditing(false)} profile={profile} />
     </section>
   )
 }
