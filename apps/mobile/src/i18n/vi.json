@@ -62,7 +62,7 @@
     "leaderboard": "Bảng Xếp Hạng",
     "practice": "Luyện Tập",
     "practiceDesc": "Học không áp lực",
-    "ranked": "Thi Đấu",
+    "ranked": "Đấu Hạng",
     "rankedDesc": "Tranh tài xếp hạng",
     "daily": "Thử Thách Ngày",
     "dailyDesc": "5 câu mỗi ngày",
@@ -111,14 +111,14 @@
     "start": "Bắt đầu"
   },
   "ranked": {
-    "title": "Thi Đấu Xếp Hạng",
+    "title": "Đấu Hạng",
     "energy": "Năng lượng",
     "energyCost": "Sai -5 năng lượng/câu",
     "autoDifficulty": "Độ khó tự động",
     "autoDifficultyDesc": "Theo tier level của bạn",
     "xpBoost": "XP nhân tier",
     "xpBoostDesc": "Tier cao hơn = XP nhiều hơn",
-    "start": "Vào Thi Đấu"
+    "start": "Vào Đấu Hạng"
   },
   "daily": {
     "title": "Thử Thách Hàng Ngày",

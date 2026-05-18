@@ -1,3 +1,5 @@
+import { ANSWER_COLORS } from '@biblequize/shared/constants'
+
 export const colors = {
   // Background
   bgPrimary: '#11131e',
@@ -45,10 +47,9 @@ export const colors = {
   tierStar: '#eab308',
   tierGlory: '#ef4444',
 
-  // Answer Color Mapping (Quiz screen) — DESIGN_TOKENS.md "Game Mode Accent"
-  // Vị trí cố định: A=top-left, B=top-right, C=bottom-left, D=bottom-right.
-  answerA: '#E8826A', // Coral
-  answerB: '#6AB8E8', // Sky
-  answerC: '#E8C76A', // Gold
-  answerD: '#7AB87A', // Sage
+  // Answer Color Mapping (Quiz screen) — C5 canonical from @biblequize/shared/constants.
+  answerA: ANSWER_COLORS.A, // Coral
+  answerB: ANSWER_COLORS.B, // Sky
+  answerC: ANSWER_COLORS.C, // Gold
+  answerD: ANSWER_COLORS.D, // Sage
 } as const

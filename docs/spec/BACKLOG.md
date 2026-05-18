@@ -59,14 +59,14 @@
 - **Spec canonical (Q4):** Mode names = "Luyện Tập" + "Đấu Hạng" (Vietnamese-only).
 - **Code reality (không nhất quán):**
   - ~~`apps/web/src/i18n/vi.json:37-38` — "Luyện tập" (l thường) + "Leo Rank"~~ → **2026-05-13 web fix**: line 37 → "Luyện Tập", line 38 → "Đấu Hạng"
-  - `apps/mobile/src/i18n/vi.json:63-65` — "Luyện Tập" + "Thi Đấu" ⬜ (mobile out of scope HR sprint)
+  - ~~`apps/mobile/src/i18n/vi.json:63-65` — "Luyện Tập" + "Thi Đấu"~~ → **2026-05-18 S0-4 fix**: line 65 → "Đấu Hạng" + ranked.title (line 114) "Thi Đấu Xếp Hạng" → "Đấu Hạng" + ranked.start "Vào Thi Đấu" → "Vào Đấu Hạng"
   - ~~Một số string khác trong vi.json dùng "Thi Đấu Xếp Hạng" trực tiếp~~ → **2026-05-13 web fix**: replace_all "Thi Đấu Xếp Hạng" → "Đấu Hạng" (passUnlock, rankedHeader, unlockHeader, ranked.title + ~6 FAQ sentences). 1 test updated (`Ranked.test.tsx:117`).
 - **Cần làm:**
   - ✅ `apps/web/src/i18n/vi.json`: "Leo Rank" → "Đấu Hạng" + "Luyện tập" → "Luyện Tập" + "Thi Đấu Xếp Hạng" → "Đấu Hạng" (DONE 2026-05-13)
-  - ⬜ `apps/mobile/src/i18n/vi.json`: "Thi Đấu" → "Đấu Hạng"
+  - ✅ `apps/mobile/src/i18n/vi.json`: "Thi Đấu" → "Đấu Hạng" + ranked.title + ranked.start (DONE 2026-05-18 S0-4)
   - ⬜ Re-run `cd apps/web && npm run validate:i18n` (chạy 2026-05-13 — count 1002 hardcoded / 16 missing keys; pre-existing debt, không tăng từ BL-4)
-  - Update unit tests assert text mới — web 1 test done; mobile TBD
-- **Status:** 🟡 PARTIALLY DONE (web ✅, mobile ⬜)
+  - Update unit tests assert text mới — web 1 test done; mobile N/A (no test asserting old "Thi Đấu" string)
+- **Status:** ✅ DONE (web 2026-05-13, mobile 2026-05-18 S0-4 via packages/shared/constants/modes.ts CORE_MODE_LABELS_VI)
 - **Ref:** AUDIT_SUMMARY Q4 · prereq cho HR-4 HeroRankedCard 2026-05-13
 
 ### BL-5 — Liturgical Seasons: ship 2 mùa thiếu + wire ×1.5 bonus
