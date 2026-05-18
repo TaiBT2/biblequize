@@ -71,6 +71,19 @@ const Profile: React.FC = () => {
     enabled: isAuthenticated,
   })
 
+  // Lifetime accuracy + session count via /api/me/stats. Previously FE summed
+  // from the paginated /api/me/history payload, which only ever covered the
+  // first 20 sessions — totals were wrong for any active user.
+  const { data: statsData } = useQuery<{
+    totalAnswered?: number; totalCorrect?: number; accuracyPercent?: number; totalSessions?: number
+  }>({
+    queryKey: ['me-stats'],
+    queryFn: async () => {
+      try { return (await api.get('/api/me/stats')).data } catch { return {} }
+    },
+    enabled: isAuthenticated,
+  })
+
   if (!isAuthenticated || !authUser) {
     return (
       <div className="flex items-center justify-center py-24">
@@ -111,11 +124,14 @@ const Profile: React.FC = () => {
     expRemaining: nextTier ? nextTier.minPoints - points : 0,
   }
 
+  // Stats from /api/me/stats (lifetime); heatmap still uses paginated
+  // /api/me/history because heatmap visualisation only needs recent
+  // session dates and the date histogram doesn't need full history.
   const history = historyData?.items ?? []
-  const totalSessions = history.length
-  const totalQuestions = history.reduce((sum, s) => sum + (s.totalQuestions ?? 0), 0)
-  const totalCorrect = history.reduce((sum, s) => sum + (s.correctAnswers ?? 0), 0)
-  const correctRate = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 1000) / 10 : 0
+  const totalSessions = statsData?.totalSessions ?? 0
+  const totalQuestions = statsData?.totalAnswered ?? 0
+  const totalCorrect = statsData?.totalCorrect ?? 0
+  const correctRate = statsData?.accuracyPercent ?? 0
   const heatmapLevels = buildHeatmapLevels(history)
   const activeDays = heatmapLevels.filter(l => l > 0).length
   const initial = (profile.name || '?').trim().charAt(0).toUpperCase()

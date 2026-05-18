@@ -45,6 +45,14 @@ public interface UserQuestionHistoryRepository extends JpaRepository<UserQuestio
            "GROUP BY h.question.book")
     List<Object[]> getAccuracyByBook(@Param("userId") String userId);
 
+    /**
+     * Lifetime accuracy aggregate across every book: [timesSeen, timesCorrect, timesWrong].
+     * Single-row result; SUMs return NULL when the user has no history.
+     */
+    @Query("SELECT SUM(h.timesSeen), SUM(h.timesCorrect), SUM(h.timesWrong) " +
+           "FROM UserQuestionHistory h WHERE h.user.id = :userId")
+    Object[] sumOverallAccuracy(@Param("userId") String userId);
+
     // Spring Data JPA @Modifying DML contract accepts only void / int /
     // Integer return types. `long` threw InvalidDataAccessApiUsageException
     // at call time (surfaced via admin reset-history during e2e setup).

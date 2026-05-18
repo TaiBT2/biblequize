@@ -775,4 +775,55 @@ public class UserController {
         response.put("suggestedPractice", suggestedPractice);
         return ResponseEntity.ok(response);
     }
+
+    /**
+     * Lifetime user stats — overall accuracy + session count. Powers the
+     * Profile StatsStrip "Tỉ lệ đúng" + "Tổng phiên" cards which previously
+     * tried to aggregate from a paginated /api/me/history payload (FE was
+     * only seeing the first page → wrong totals for active users).
+     *
+     * <p>Accuracy denominator is {@code timesCorrect + timesWrong} per the
+     * existing /weaknesses convention; {@code timesSeen} returned alongside
+     * for transparency. Session count uses completed sessions only.</p>
+     */
+    @GetMapping("/stats")
+    public ResponseEntity<?> getStats(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        String email = null;
+        if (authentication.getPrincipal() instanceof UserDetails ud) {
+            email = ud.getUsername();
+        } else if (authentication.getPrincipal() instanceof OAuth2User oauth2) {
+            email = oauth2.getAttribute("email");
+        }
+
+        Optional<User> userOpt = email != null ? userRepository.findByEmail(email) : Optional.empty();
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
+        }
+
+        String userId = userOpt.get().getId();
+        Object[] sums = userQuestionHistoryRepository.sumOverallAccuracy(userId);
+        long totalSeen = sums != null && sums[0] != null ? ((Number) sums[0]).longValue() : 0;
+        long totalCorrect = sums != null && sums[1] != null ? ((Number) sums[1]).longValue() : 0;
+        long totalWrong = sums != null && sums[2] != null ? ((Number) sums[2]).longValue() : 0;
+        long totalAnswered = totalCorrect + totalWrong;
+        double accuracyPercent = totalAnswered > 0
+                ? Math.round((double) totalCorrect / totalAnswered * 1000.0) / 10.0
+                : 0;
+
+        long totalSessions = quizSessionRepository.countByOwnerIdAndStatus(
+                userId, QuizSession.Status.completed);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("totalSeen", totalSeen);
+        response.put("totalAnswered", totalAnswered);
+        response.put("totalCorrect", totalCorrect);
+        response.put("totalWrong", totalWrong);
+        response.put("accuracyPercent", accuracyPercent);
+        response.put("totalSessions", totalSessions);
+        return ResponseEntity.ok(response);
+    }
 }
