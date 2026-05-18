@@ -876,7 +876,13 @@ Grid layout, locked = grayscale + lock icon. Click → modal hiện điều ki�
 
 ### 21.2 Settings
 `Settings`:
-- Account (name, avatar, email read-only)
+- Account (name, avatar, email read-only). Avatar mechanism (FE `EditProfileModal`, BE `PATCH /api/me`):
+  - Source-of-truth column: `users.avatar_url VARCHAR(500)` — single text field. **KHÔNG cho upload file**, **KHÔNG cho nhập URL tự do** trong UI.
+  - 3 sources, resolved client-side bằng `resolveAvatar(avatarUrl, name)`:
+    1. **OAuth picture URL** — http(s) URL set bởi `OAuth2SuccessHandler` lần đầu user đăng nhập Google/Facebook. Surface as a dedicated "use account photo" tile trong preset grid.
+    2. **Preset library** — value `preset:<id>` (xem `apps/web/src/data/avatars.ts`, 12 emoji-based options).
+    3. **Initial fallback** — chữ cái đầu của display name, render bằng `font-verse` Cormorant Garamond italic màu `#e8a832` khi cả 2 nguồn trên đều vắng / không nhận diện được.
+  - Email row hiển thị read-only với chip 🔒.
 - Language (interface + quiz)
 - Sound & Haptics
 - Notifications (xem §16)

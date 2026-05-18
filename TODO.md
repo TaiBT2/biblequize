@@ -3,18 +3,19 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (22)
+## Active (19)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-05-18 | Profile Edit modal redesign (Sacred Modernist + avatar preset) | DONE | [detail](docs/todo/active/2026-05-18-profile-edit-modal-redesign-sacred-modernist.md) |
+| 2026-05-18 | Fix Daily Missions "Trả lời đúng 3 câu" + "combo 3" không tick | DONE | [detail](docs/todo/active/2026-05-18-fix-daily-missions-tracking.md) |
+| 2026-05-18 | Fix Daily Challenge button "Vào chơi" còn hiện sau khi đã hoàn thành | TODO | [detail](docs/todo/active/2026-05-18-fix-daily-challenge-stale-cta.md) |
 | 2026-05-18 | Profile Sprint 1 quick wins (dead buttons + UX polish) | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-1-quick-wins.md) |
 | 2026-05-18 | Profile Sprint 2: skeleton states + split monolith | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-2-states-and-split.md) |
 | 2026-05-18 | Profile Sprint 3: SPEC §21.1 catch-up (Journey + Cosmetic frame) | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-3-spec-features.md) |
-| 2026-05-18 | Profile Sprint 4: Edit Profile modal (wire dead button) | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-4-edit-modal.md) |
-| 2026-05-18 | Profile Sprint 5: Stats hiển thị 0 dù user đã chơi (2 FE bug) | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-5-stats-zero-bug.md) |
-| 2026-05-18 | Profile Sprint 6: BE /api/me/stats lifetime accuracy | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-6-stats-endpoint.md) |
-| 2026-05-18 | Profile Sprint 7: include Daily Challenge in /api/me/stats | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-7-include-daily-in-stats.md) |
+| 2026-05-18 | Profile Sprint 4: Edit Profile modal (wire dead button) | TODO | [detail](docs/todo/active/2026-05-18-profile-sprint-4-edit-modal.md) |
 | 2026-05-18 | Fix Daily Challenge question card clipped on mobile | DONE | [detail](docs/todo/active/2026-05-18-fix-daily-challenge-question-clipped-mobile.md) |
+| 2026-05-18 | Fix FeaturedDailyCard CTA + label wrap xấu ở 360px | TODO | [detail](docs/todo/active/2026-05-18-fix-featured-daily-card-mobile-button-wrap.md) |
 | 2026-05-18 | Fix MobileTopBar broken avatar alt-text overflow | DONE | [detail](docs/todo/active/2026-05-18-fix-mobile-topbar-broken-avatar-alt-overflow.md) |
 | 2026-05-13 | Home Redesign Modern Spiritual | IN PROGRESS | [detail](docs/todo/active/2026-05-13-home-redesign-modern-spiritual.md) |
 | 2026-05-13 | Disable test data seed on prod + harden guard | TODO | [detail](docs/todo/active/2026-05-13-disable-seed-on-prod-and-harden-guard.md) |
@@ -30,13 +31,14 @@
 | 2026-04-27 | V3 Tier B/C Quality Expansion: 14 books | IN PROGRESS | [detail](docs/todo/active/2026-04-27-v3-tier-b-c-quality-expansion-14-books.md) |
 | 2026-04-19 | Global audience migration: SQL → JSON + i18n prep | PARTIALLY DONE | [detail](docs/todo/active/2026-04-19-global-audience-migration-sql-json-i18n-prep.md) |
 
-## Archive (43)
+## Archive (44)
 
-> 43 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
+> 44 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
 
 <details>
 <summary>Xem inline list (tuỳ chọn)</summary>
 
+- 2026-05-18 — Fix seed VN: thay từ "text" tiếng Anh sang "Kinh Thánh"/"đoạn" · DONE · [detail](docs/todo/archive/2026-05-18-fix-seed-vn-text-wording.md)
 - 2026-05-15 — Multiplayer Quick Match (Đấu Nhanh) pivot · DONE · [detail](docs/todo/archive/2026-05-15-multiplayer-quickmatch-pivot.md)
 - 2026-05-15 — Multiplayer Lobby patch theo canonical prompt · DONE · [detail](docs/todo/archive/2026-05-15-multiplayer-lobby-patch-canonical.md)
 - 2026-05-15 — Multiplayer Lobby redesign (MOCKUP_MULTIPLAYER_LOBBY.html) · DONE · [detail](docs/todo/archive/2026-05-15-multiplayer-lobby-redesign.md)

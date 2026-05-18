@@ -128,6 +128,57 @@ test.describe('W-M10 Tier Progression — L1 Smoke @smoke @tier', () => {
       await expect(page.getByTestId('profile-days-at-tier6')).toBeVisible()
     })
 
+    test('W-M10-L1-009: Edit Profile modal mo, doi ten, chon preset avatar, luu @smoke @profile', async ({
+      tier3Page,
+    }) => {
+      // ============================================================
+      // SECTION 1: SETUP
+      // ============================================================
+      const page = tier3Page
+      await page.goto('/profile')
+      await page.getByTestId('profile-edit-btn').waitFor({ state: 'visible' })
+
+      // ============================================================
+      // SECTION 2: ACTIONS — open modal, change name, pick preset, save
+      // ============================================================
+      await page.getByTestId('profile-edit-btn').click()
+      await expect(page.getByTestId('edit-profile-modal')).toBeVisible()
+
+      // Avatar URL field must NOT be present any more
+      await expect(page.getByTestId('edit-profile-avatar-input')).toHaveCount(0)
+
+      // Open preset grid and pick the "lion" preset
+      await page.getByTestId('edit-profile-avatar-toggle').click()
+      await expect(page.getByTestId('edit-profile-preset-grid')).toBeVisible()
+      await page.getByTestId('edit-profile-preset-lion').click()
+      await expect(page.getByTestId('edit-profile-avatar-preview')).toContainText('🦁')
+
+      // Tweak display name
+      const nameInput = page.getByTestId('edit-profile-name-input')
+      await nameInput.click()
+      await nameInput.fill('Tester L1-009')
+
+      // ============================================================
+      // SECTION 3: SAVE + close, then assert modal dismissed
+      // ============================================================
+      const saveResp = page.waitForResponse(r => r.url().endsWith('/api/me') && r.request().method() === 'PATCH')
+      await page.getByTestId('edit-profile-submit').click()
+      const resp = await saveResp
+      expect(resp.ok()).toBeTruthy()
+      await expect(page.getByTestId('edit-profile-modal')).toHaveCount(0)
+    })
+
+    test('W-M10-L1-010: Edit Profile modal dong qua nut X @smoke @profile', async ({
+      tier3Page,
+    }) => {
+      const page = tier3Page
+      await page.goto('/profile')
+      await page.getByTestId('profile-edit-btn').click()
+      await expect(page.getByTestId('edit-profile-modal')).toBeVisible()
+      await page.getByTestId('edit-profile-close').click()
+      await expect(page.getByTestId('edit-profile-modal')).toHaveCount(0)
+    })
+
   })
 
   test.describe('Cosmetics Page', () => {

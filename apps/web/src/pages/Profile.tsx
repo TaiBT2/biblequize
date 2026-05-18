@@ -134,7 +134,6 @@ const Profile: React.FC = () => {
   const correctRate = statsData?.accuracyPercent ?? 0
   const heatmapLevels = buildHeatmapLevels(history)
   const activeDays = heatmapLevels.filter(l => l > 0).length
-  const initial = (profile.name || '?').trim().charAt(0).toUpperCase()
 
   return (
     <div data-testid="profile-page" className="space-y-4">
@@ -145,7 +144,6 @@ const Profile: React.FC = () => {
 
       <HeroCompact
         profile={profile}
-        initial={initial}
         tierEmoji={currentTier.iconEmoji}
         tierName={tierProgress.currentTierName}
         tierLevel={currentTier.id}

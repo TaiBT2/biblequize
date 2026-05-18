@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 import { useAuthStore } from '../store/authStore'
 import { TIERS, getTierByPoints } from '../data/tiers'
+import { resolveAvatar } from '../utils/avatar'
 
 type Tab = 'weekly' | 'season' | 'all_time'
 
@@ -145,16 +146,21 @@ export default function Leaderboard() {
                     className={`${layout.avatar} rounded-full overflow-hidden border-2 ${isFirst ? 'shadow-[0_0_20px_rgba(232,168,50,0.4)]' : ''}`}
                     style={{ borderColor: isFirst ? '#e8a832' : tierColor + '99' }}
                   >
-                    {player.avatarUrl ? (
-                      <img alt={`Rank ${layout.rank}`} className="w-full h-full object-cover" src={player.avatarUrl} />
-                    ) : (
-                      <div
-                        className="w-full h-full flex items-center justify-center text-sm md:text-xl font-medium text-[#11131e]"
-                        style={{ background: tierColor }}
-                      >
-                        {player.name?.charAt(0)}
-                      </div>
-                    )}
+                    {(() => {
+                      const r = resolveAvatar(player.avatarUrl, player.name)
+                      if (r.kind === 'img') return <img alt={`Rank ${layout.rank}`} className="w-full h-full object-cover" src={r.src} />
+                      if (r.kind === 'preset') return (
+                        <div className="w-full h-full flex items-center justify-center text-base md:text-2xl" style={{ background: r.preset.bg }} aria-hidden>{r.preset.emoji}</div>
+                      )
+                      return (
+                        <div
+                          className="w-full h-full flex items-center justify-center text-sm md:text-xl font-medium text-[#11131e]"
+                          style={{ background: tierColor }}
+                        >
+                          {r.initial}
+                        </div>
+                      )
+                    })()}
                   </div>
                   {/* Arabic-numeral rank badge — replaces La Mã (LB-P1-2) */}
                   <div
@@ -327,7 +333,15 @@ function LeaderboardListRow({ rank, name, points, avatarUrl, streak, trend, isMe
   const tier = getTierByPoints(points)
   const tierColor = tier.colorHex
   const tierName = t(tier.nameKey)
-  const initial = (name || '?').charAt(0).toUpperCase()
+  const resolved = resolveAvatar(avatarUrl, name)
+
+  const renderAvatarBody = () => {
+    if (resolved.kind === 'img') return <img alt={name} className="w-full h-full object-cover" src={resolved.src} />
+    if (resolved.kind === 'preset') return (
+      <div className="w-full h-full flex items-center justify-center text-base md:text-xl" style={{ background: resolved.preset.bg }} aria-hidden>{resolved.preset.emoji}</div>
+    )
+    return resolved.initial
+  }
 
   if (isMe) {
     return (
@@ -337,7 +351,7 @@ function LeaderboardListRow({ rank, name, points, avatarUrl, streak, trend, isMe
       >
         <div className="w-7 md:w-8 text-center font-black text-[#11131e]">{rank}</div>
         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-[#11131e] shadow-lg overflow-hidden flex items-center justify-center text-[#11131e] font-bold" style={{ background: tierColor }}>
-          {avatarUrl ? <img alt={name} className="w-full h-full object-cover" src={avatarUrl} /> : initial}
+          {renderAvatarBody()}
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
@@ -369,7 +383,7 @@ function LeaderboardListRow({ rank, name, points, avatarUrl, streak, trend, isMe
     >
       <div className="w-7 md:w-8 text-center font-black text-on-surface-variant group-hover:text-on-surface transition-colors text-sm">{rank}</div>
       <div className="w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden flex items-center justify-center text-sm font-bold text-[#11131e]" style={{ background: tierColor }}>
-        {avatarUrl ? <img alt={name} className="w-full h-full object-cover" src={avatarUrl} /> : initial}
+        {renderAvatarBody()}
       </div>
       <div className="flex-1 min-w-0">
         <h3 className="font-bold text-xs md:text-sm text-on-surface truncate">{name}</h3>

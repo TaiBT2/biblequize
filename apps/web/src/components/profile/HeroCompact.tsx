@@ -5,6 +5,7 @@ import { api } from '../../api/client'
 import { TIERS } from '../../data/tiers'
 import type { CosmeticResponse, UserProfile } from './types'
 import { EditProfileModal } from './EditProfileModal'
+import { resolveAvatar } from '../../utils/avatar'
 
 // Map active cosmetic frame ID ("frame_tier3") to a hex color from the
 // canonical tier palette. Returns null when the user has no frame set
@@ -19,9 +20,8 @@ function activeFrameColor(activeFrame: string | null | undefined): string | null
   return tier?.colorHex ?? null
 }
 
-export function HeroCompact({ profile, initial, tierEmoji, tierName, tierLevel }: {
+export function HeroCompact({ profile, tierEmoji, tierName, tierLevel }: {
   profile: UserProfile
-  initial: string
   tierEmoji: string
   tierName: string
   tierLevel: number
@@ -34,6 +34,11 @@ export function HeroCompact({ profile, initial, tierEmoji, tierName, tierLevel }
     staleTime: 5 * 60_000,
   })
   const frameColor = activeFrameColor(cosmetics?.activeFrame)
+  const resolved = resolveAvatar(profile.avatarUrl, profile.name)
+  const baseAvatarStyle: React.CSSProperties = frameColor
+    ? { borderColor: frameColor, boxShadow: `0 0 18px ${frameColor}55, 0 10px 25px rgba(0,0,0,0.4)` }
+    : {}
+  const presetBg = resolved.kind === 'preset' ? { background: resolved.preset.bg } : {}
   return (
     <section className="relative overflow-hidden rounded-3xl border border-outline-variant/10 bg-gradient-to-br from-secondary/[0.08] to-surface-container/40 p-6 md:p-7 flex flex-col md:flex-row items-start md:items-center gap-5">
       <div className="absolute -top-10 -right-10 w-52 h-52 rounded-full bg-gradient-radial from-secondary/10 to-transparent pointer-events-none" />
@@ -42,12 +47,24 @@ export function HeroCompact({ profile, initial, tierEmoji, tierName, tierLevel }
         <div
           data-testid="profile-avatar"
           data-cosmetic-frame={cosmetics?.activeFrame ?? undefined}
-          className={`w-[88px] h-[88px] rounded-full overflow-hidden bg-gradient-to-br from-outline to-outline-variant flex items-center justify-center text-4xl font-extrabold text-white border-[3px] shadow-2xl ${frameColor ? '' : 'border-secondary/40'}`}
-          style={frameColor ? { borderColor: frameColor, boxShadow: `0 0 18px ${frameColor}55, 0 10px 25px rgba(0,0,0,0.4)` } : undefined}
+          className={`w-[88px] h-[88px] rounded-full overflow-hidden flex items-center justify-center border-[3px] shadow-2xl ${frameColor ? '' : 'border-secondary/40'} ${resolved.kind === 'preset' ? '' : 'bg-gradient-to-br from-outline to-outline-variant'}`}
+          style={{ ...baseAvatarStyle, ...presetBg }}
         >
-          {profile.avatarUrl ? (
-            <img alt="User avatar" className="w-full h-full object-cover" src={profile.avatarUrl} />
-          ) : initial}
+          {resolved.kind === 'img' && (
+            <img alt="User avatar" className="w-full h-full object-cover" src={resolved.src} />
+          )}
+          {resolved.kind === 'preset' && (
+            <span className="text-5xl leading-none" aria-hidden>{resolved.preset.emoji}</span>
+          )}
+          {resolved.kind === 'initial' && (
+            <span
+              className="font-verse italic font-bold leading-none"
+              style={{ color: '#e8a832', fontSize: '44px' }}
+              aria-hidden
+            >
+              {resolved.initial}
+            </span>
+          )}
         </div>
         <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full gold-gradient flex items-center justify-center text-base border-[3px] border-background">
           {tierEmoji}
