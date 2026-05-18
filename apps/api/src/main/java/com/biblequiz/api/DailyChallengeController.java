@@ -96,17 +96,22 @@ public class DailyChallengeController {
      * POST /api/daily-challenge/answer — check a single answer without a real QuizSession.
      * Returns isCorrect, correctAnswer indices, and explanation.
      * Public (guests can play), no auth required.
+     *
+     * <p>When authenticated, the result is also fed into the daily-mission
+     * tracker (answer_correct + answer_combo). Guests are unaffected.
      */
     @PostMapping("/answer")
     public ResponseEntity<Map<String, Object>> checkAnswer(
+            Authentication authentication,
             @RequestBody Map<String, Object> body) {
         String questionId = (String) body.get("questionId");
         Integer selectedAnswer = (Integer) body.get("answer");
         if (questionId == null || selectedAnswer == null) {
             return ResponseEntity.badRequest().body(Map.of("error", "questionId and answer are required"));
         }
+        String userIdOrEmail = authentication != null ? authentication.getName() : null;
         try {
-            return ResponseEntity.ok(dailyChallengeService.checkAnswer(questionId, selectedAnswer));
+            return ResponseEntity.ok(dailyChallengeService.checkAnswer(questionId, selectedAnswer, userIdOrEmail));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }

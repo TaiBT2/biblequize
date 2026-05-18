@@ -368,12 +368,32 @@ public class DailyChallengeService {
      * Used by the dedicated /api/daily-challenge/answer endpoint so the
      * frontend does not need a real QuizSession (daily sessions are
      * client-side tracking IDs only).
+     *
+     * <p>When {@code userIdOrEmail} is non-null, also wires the answer into
+     * the daily-mission tracker (answer_correct + answer_combo). Guest
+     * answers (userIdOrEmail=null) skip tracking. Mission failures are
+     * swallowed so they never break the answer-check response.
      */
-    public Map<String, Object> checkAnswer(String questionId, int selectedAnswer) {
+    public Map<String, Object> checkAnswer(String questionId, int selectedAnswer, String userIdOrEmail) {
         Question question = questionRepository.findById(questionId)
                 .orElseThrow(() -> new IllegalArgumentException("Question not found: " + questionId));
         List<Integer> correctAnswer = question.getCorrectAnswer();
         boolean isCorrect = correctAnswer != null && correctAnswer.contains(selectedAnswer);
+
+        if (userIdOrEmail != null) {
+            resolveUserId(userIdOrEmail).ifPresent(uid -> {
+                try {
+                    if (isCorrect) {
+                        dailyMissionService.trackProgress(uid, "answer_correct", 1);
+                    }
+                    dailyMissionService.trackComboProgress(uid, "answer_combo", isCorrect);
+                } catch (RuntimeException ex) {
+                    log.warn("Daily mission tracking failed for user {} ({}). Answer flow unaffected.",
+                            uid, ex.getMessage());
+                }
+            });
+        }
+
         Map<String, Object> result = new LinkedHashMap<>();
         result.put("isCorrect", isCorrect);
         result.put("correctAnswer", correctAnswer != null ? correctAnswer : List.of());
