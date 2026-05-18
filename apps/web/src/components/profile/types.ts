@@ -43,3 +43,47 @@ export interface WeaknessData {
 export type HeatmapLevel = 0 | 1 | 2 | 3 | 4
 
 export const FILL_STYLE = { fontVariationSettings: "'FILL' 1" }
+
+export type BookStatus = 'COMPLETED' | 'IN_PROGRESS' | 'LOCKED'
+
+export interface BookProgress {
+  book: string
+  bookVi: string
+  orderIndex: number
+  testament: 'OLD' | 'NEW'
+  totalQuestions: number
+  masteredQuestions: number
+  masteryPercent: number
+  status: BookStatus
+}
+
+export interface JourneySummary {
+  total: number
+  completed: number
+  inProgress: number
+  locked: number
+  overallMastery: number
+  oldTestamentCompleted: number
+  newTestamentCompleted: number
+  currentBook: string | null
+}
+
+export interface JourneyResponse {
+  summary: JourneySummary
+  books: BookProgress[]
+}
+
+export interface CosmeticItem {
+  id: string
+  name: string
+  tier: number
+  unlocked: boolean
+  active: boolean
+}
+
+export interface CosmeticResponse {
+  activeFrame: string | null
+  activeTheme: string | null
+  frames: CosmeticItem[]
+  themes: CosmeticItem[]
+}

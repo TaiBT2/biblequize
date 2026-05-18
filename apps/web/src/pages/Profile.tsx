@@ -11,6 +11,7 @@ import { HeroCompact } from '../components/profile/HeroCompact'
 import { StatsStrip } from '../components/profile/StatsStrip'
 import { TierProgressCard } from '../components/profile/TierProgressCard'
 import { HeatmapCard, buildHeatmapLevels } from '../components/profile/HeatmapCard'
+import { BibleJourneyCard } from '../components/profile/BibleJourneyCard'
 import { BadgeCollection } from '../components/profile/BadgeCollection'
 import { AnalyticsCard } from '../components/profile/AnalyticsCard'
 import { PrestigeSection } from '../components/profile/PrestigeSection'
@@ -141,6 +142,8 @@ const Profile: React.FC = () => {
       />
 
       <HeatmapCard cells={heatmapLevels} activeDays={activeDays} />
+
+      <BibleJourneyCard />
 
       <BadgeCollection achievements={achievements} loading={achievementsLoading} />
 
