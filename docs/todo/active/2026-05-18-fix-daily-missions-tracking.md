@@ -40,6 +40,14 @@ Tier-1 mission template ([DailyMissionService.java:39-44](apps/api/src/main/java
   - **Spec strategy**: [x] (c) [no-spec-impact]
   - Checklist: ✅ impl · ✅ Tầng 3 pass · ⏳ commit
 
+- DM-TRACK-3b BE: thêm hook vào `RankedController.submitRankedAnswer` (line 185) — endpoint này có inline validation, KHÔNG đi qua `SessionService.submitAnswer`. Nếu không hook, Ranked players sẽ thấy mission stay 0/3. Cùng pattern: `dailyMissionService.trackProgress/trackComboProgress` với try/catch.
+  - Status: [x] DONE
+  - Files: `apps/api/src/main/java/com/biblequiz/api/RankedController.java`
+  - Test: Tầng 3 BE 942 pass / 32 pre-existing fail (đầu tiên dùng required=true → 79 errors do @WebMvcTest không inject; chuyển sang @Autowired(required=false) → baseline restored).
+  - **Spec impact**: [x] None
+  - **Spec strategy**: [x] (c) [no-spec-impact]
+  - Checklist: ✅ impl · ✅ Tầng 3 pass · ⏳ commit
+
 - DM-TRACK-4 FE: invalidate `['daily-missions']` query sau khi `submitAnswer` đúng — để widget tick ngay không cần F5. Hook ở SessionAnswer mutation (Practice/Ranked) + Daily Challenge `handleAnswer`.
   - Status: [ ] TODO
   - Files: `apps/web/src/pages/DailyChallenge.tsx`, các hooks/components có submit-answer mutation

@@ -79,6 +79,11 @@ public class RankedController {
     @Autowired
     private com.biblequiz.modules.ranked.service.UserTierService userTierService;
 
+    /** Optional — kept off the required graph so @WebMvcTest slices don't need to mock it.
+     *  Mission tracking is best-effort and must never break the ranked answer response. */
+    @Autowired(required = false)
+    private com.biblequiz.modules.quiz.service.DailyMissionService dailyMissionService;
+
     @Autowired
     private com.biblequiz.modules.notification.service.NotificationService notificationService;
 
@@ -309,6 +314,22 @@ public class RankedController {
                 if (email != null) {
                     User user = userRepository.findByEmail(email).orElse(null);
                     if (user != null) {
+                        // Wire daily-mission tracker: this endpoint bypasses
+                        // SessionService.submitAnswer so the DM-TRACK-2 hook
+                        // doesn't cover Ranked. Try/catch keeps tracking
+                        // failures from breaking the ranked answer response.
+                        if (dailyMissionService != null) {
+                            try {
+                                if (isCorrect) {
+                                    dailyMissionService.trackProgress(user.getId(), "answer_correct", 1);
+                                }
+                                dailyMissionService.trackComboProgress(user.getId(), "answer_combo", isCorrect);
+                            } catch (RuntimeException missionErr) {
+                                log.warn("Daily mission tracking failed for user {} ({}). Ranked flow unaffected.",
+                                        user.getId(), missionErr.getMessage());
+                            }
+                        }
+
                         LocalDate today = LocalDate.now(ZoneOffset.UTC);
                         UserDailyProgress udp = udpRepository.findByUserIdAndDate(user.getId(), today)
                                 .orElse(new UserDailyProgress(UUID.randomUUID().toString(), user, today));
