@@ -52,10 +52,21 @@ const Profile: React.FC = () => {
     enabled: isAuthenticated,
   })
 
-  const { data: historyData } = useQuery<{ content?: SessionHistory[] }>({
+  const { data: historyData } = useQuery<{ items?: SessionHistory[] }>({
     queryKey: ['my-history'],
     queryFn: async () => {
-      try { return (await api.get('/api/me/history')).data } catch { return { content: [] } }
+      try { return (await api.get('/api/me/history')).data } catch { return { items: [] } }
+    },
+    enabled: isAuthenticated,
+  })
+
+  // totalPoints isn't exposed on /api/me (UserResponse DTO doesn't include it).
+  // It's computed server-side via UserTierService.getTotalPoints and returned
+  // by /api/me/tier-progress, so fetch that endpoint to drive Stats + Tier.
+  const { data: tierProgressData } = useQuery<{ totalPoints?: number }>({
+    queryKey: ['me-tier-progress'],
+    queryFn: async () => {
+      try { return (await api.get('/api/me/tier-progress')).data } catch { return { totalPoints: 0 } }
     },
     enabled: isAuthenticated,
   })
@@ -86,7 +97,7 @@ const Profile: React.FC = () => {
     )
   }
 
-  const points = profile.totalPoints ?? 0
+  const points = tierProgressData?.totalPoints ?? 0
   const currentTier = getTierByPoints(points)
   const nextTier = getNextTier(points)
   const tierProgress = {
@@ -100,7 +111,7 @@ const Profile: React.FC = () => {
     expRemaining: nextTier ? nextTier.minPoints - points : 0,
   }
 
-  const history = historyData?.content ?? (Array.isArray(historyData) ? historyData as unknown as SessionHistory[] : [])
+  const history = historyData?.items ?? []
   const totalSessions = history.length
   const totalQuestions = history.reduce((sum, s) => sum + (s.totalQuestions ?? 0), 0)
   const totalCorrect = history.reduce((sum, s) => sum + (s.correctAnswers ?? 0), 0)

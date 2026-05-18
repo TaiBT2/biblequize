@@ -63,11 +63,12 @@ beforeEach(() => {
   authState = { isAuthenticated: true, isLoading: false, user: { name: 'Nguyễn Văn A', email: 'a@b.com' } }
 })
 
-function setupMocks(overrides?: { profile?: any; achievements?: any; history?: any }) {
+function setupMocks(overrides?: { profile?: any; achievements?: any; history?: any; tierProgress?: any }) {
   mockGet.mockImplementation((url: string) => {
     if (url === '/api/me') return Promise.resolve({ data: overrides?.profile ?? MOCK_PROFILE })
+    if (url === '/api/me/tier-progress') return Promise.resolve({ data: overrides?.tierProgress ?? { totalPoints: 2500 } })
     if (url === '/api/achievements/me') return Promise.resolve({ data: overrides?.achievements ?? MOCK_ACHIEVEMENTS })
-    if (url === '/api/me/history') return Promise.resolve({ data: overrides?.history ?? { content: [] } })
+    if (url === '/api/me/history') return Promise.resolve({ data: overrides?.history ?? { items: [] } })
     return Promise.reject(new Error(`Unmocked URL: ${url}`))
   })
 }
@@ -121,7 +122,7 @@ describe('Profile page (API-driven)', () => {
   })
 
   it('shows empty heatmap CTA when no history', async () => {
-    setupMocks({ history: { content: [] } })
+    setupMocks({ history: { items: [] } })
     renderProfile()
     expect(await screen.findByText('Hãy bắt đầu chuỗi học!')).toBeTruthy()
   })
@@ -136,8 +137,9 @@ describe('Profile page (API-driven)', () => {
   it('shows error state when profile API fails', async () => {
     mockGet.mockImplementation((url: string) => {
       if (url === '/api/me') return Promise.reject(new Error('Network error'))
+      if (url === '/api/me/tier-progress') return Promise.resolve({ data: { totalPoints: 0 } })
       if (url === '/api/achievements/me') return Promise.resolve({ data: [] })
-      if (url === '/api/me/history') return Promise.resolve({ data: { content: [] } })
+      if (url === '/api/me/history') return Promise.resolve({ data: { items: [] } })
       return Promise.reject(new Error(`Unmocked URL: ${url}`))
     })
     renderProfile()
