@@ -1,5 +1,21 @@
 import { useTranslation } from 'react-i18next'
-import type { UserProfile } from './types'
+import { useQuery } from '@tanstack/react-query'
+import { api } from '../../api/client'
+import { TIERS } from '../../data/tiers'
+import type { CosmeticResponse, UserProfile } from './types'
+
+// Map active cosmetic frame ID ("frame_tier3") to a hex color from the
+// canonical tier palette. Returns null when the user has no frame set
+// or the ID is unrecognised — caller falls back to the default
+// secondary-tone border.
+function activeFrameColor(activeFrame: string | null | undefined): string | null {
+  if (!activeFrame) return null
+  const match = activeFrame.match(/^frame_tier(\d)$/)
+  if (!match) return null
+  const tierId = Number(match[1])
+  const tier = TIERS.find(t => t.id === tierId)
+  return tier?.colorHex ?? null
+}
 
 export function HeroCompact({ profile, initial, tierEmoji, tierName, tierLevel }: {
   profile: UserProfile
@@ -9,12 +25,23 @@ export function HeroCompact({ profile, initial, tierEmoji, tierName, tierLevel }
   tierLevel: number
 }) {
   const { t } = useTranslation()
+  const { data: cosmetics } = useQuery<CosmeticResponse>({
+    queryKey: ['profile-cosmetics'],
+    queryFn: () => api.get('/api/me/cosmetics').then(r => r.data),
+    staleTime: 5 * 60_000,
+  })
+  const frameColor = activeFrameColor(cosmetics?.activeFrame)
   return (
     <section className="relative overflow-hidden rounded-3xl border border-outline-variant/10 bg-gradient-to-br from-secondary/[0.08] to-surface-container/40 p-6 md:p-7 flex flex-col md:flex-row items-start md:items-center gap-5">
       <div className="absolute -top-10 -right-10 w-52 h-52 rounded-full bg-gradient-radial from-secondary/10 to-transparent pointer-events-none" />
 
       <div className="relative shrink-0">
-        <div data-testid="profile-avatar" className="w-[88px] h-[88px] rounded-full overflow-hidden bg-gradient-to-br from-outline to-outline-variant flex items-center justify-center text-4xl font-extrabold text-white border-[3px] border-secondary/40 shadow-2xl">
+        <div
+          data-testid="profile-avatar"
+          data-cosmetic-frame={cosmetics?.activeFrame ?? undefined}
+          className={`w-[88px] h-[88px] rounded-full overflow-hidden bg-gradient-to-br from-outline to-outline-variant flex items-center justify-center text-4xl font-extrabold text-white border-[3px] shadow-2xl ${frameColor ? '' : 'border-secondary/40'}`}
+          style={frameColor ? { borderColor: frameColor, boxShadow: `0 0 18px ${frameColor}55, 0 10px 25px rgba(0,0,0,0.4)` } : undefined}
+        >
           {profile.avatarUrl ? (
             <img alt="User avatar" className="w-full h-full object-cover" src={profile.avatarUrl} />
           ) : initial}

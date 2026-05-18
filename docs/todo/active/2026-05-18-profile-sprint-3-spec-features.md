@@ -10,7 +10,7 @@
   - Use `GET /api/me/journey` → render summary stats + 66 book grid grouped by OLD/NEW testament
   - Status indicators: COMPLETED (green) / IN_PROGRESS (gold) / LOCKED (muted)
   - Click LOCKED book → no-op; click IN_PROGRESS / COMPLETED → navigate to /practice?book=
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: new `BibleJourneyCard.tsx` + `types.ts` (add JourneyResponse types) + `Profile.tsx` (import + render) + `i18n/vi.json` + `i18n/en.json`
   - Commit: `feat: Profile Bible Journey card (SPEC §21.1) [no-spec-impact]`
 
@@ -18,7 +18,7 @@
   - Use `GET /api/me/cosmetics` → `activeFrame` (e.g. `frame_tier3`)
   - Map 6 tier frame IDs to ring styles (color + glow + thickness) — reuse tier `colorHex` from `data/tiers.ts`
   - Replace HeroCompact avatar `border-[3px] border-secondary/40` with tier-aware frame
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `HeroCompact.tsx` + `types.ts` (add CosmeticResponse) + small fetch hook OR pass from Profile.tsx
   - Commit: `feat: Profile hero avatar cosmetic frame (SPEC §21.1) [no-spec-impact]`
 
