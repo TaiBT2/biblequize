@@ -13,6 +13,7 @@ import com.biblequiz.modules.quiz.service.BookMasteryService;
 import com.biblequiz.modules.ranked.service.TierProgressService;
 import com.biblequiz.modules.ranked.service.UserTierService;
 import com.biblequiz.modules.quiz.service.DailyMissionService;
+import com.biblequiz.modules.daily.repository.DailyCompletionRepository;
 import com.biblequiz.modules.user.service.ComebackService;
 import com.biblequiz.modules.user.service.CosmeticService;
 import com.biblequiz.modules.ranked.service.PrestigeService;
@@ -64,6 +65,9 @@ public class UserController {
 
     @Autowired
     private UserQuestionHistoryRepository userQuestionHistoryRepository;
+
+    @Autowired
+    private DailyCompletionRepository dailyCompletionRepository;
 
     @Autowired
     private AccountDeletionService accountDeletionService;
@@ -805,20 +809,34 @@ public class UserController {
         }
 
         String userId = userOpt.get().getId();
-        Object[] sums = userQuestionHistoryRepository.sumOverallAccuracy(userId);
-        long totalSeen = sums != null && sums[0] != null ? ((Number) sums[0]).longValue() : 0;
-        long totalCorrect = sums != null && sums[1] != null ? ((Number) sums[1]).longValue() : 0;
-        long totalWrong = sums != null && sums[2] != null ? ((Number) sums[2]).longValue() : 0;
-        long totalAnswered = totalCorrect + totalWrong;
+
+        // Practice + Ranked aggregate from per-question history.
+        Object[] uqhSums = userQuestionHistoryRepository.sumOverallAccuracy(userId);
+        long uqhSeen = uqhSums != null && uqhSums[0] != null ? ((Number) uqhSums[0]).longValue() : 0;
+        long uqhCorrect = uqhSums != null && uqhSums[1] != null ? ((Number) uqhSums[1]).longValue() : 0;
+        long uqhWrong = uqhSums != null && uqhSums[2] != null ? ((Number) uqhSums[2]).longValue() : 0;
+
+        // Daily Challenge doesn't write to UserQuestionHistory or QuizSession by
+        // design (DailyChallengeController POST /answer is "without a real
+        // QuizSession"). Its lifetime aggregate lives in DailyCompletion.
+        Object[] dcSums = dailyCompletionRepository.sumStatsByUserId(userId);
+        long dcSessions = dcSums != null && dcSums[0] != null ? ((Number) dcSums[0]).longValue() : 0;
+        long dcCorrect = dcSums != null && dcSums[1] != null ? ((Number) dcSums[1]).longValue() : 0;
+        long dcAnswered = dcSums != null && dcSums[2] != null ? ((Number) dcSums[2]).longValue() : 0;
+
+        long totalCorrect = uqhCorrect + dcCorrect;
+        long totalWrong = uqhWrong + (dcAnswered - dcCorrect);
+        long totalAnswered = (uqhCorrect + uqhWrong) + dcAnswered;
         double accuracyPercent = totalAnswered > 0
                 ? Math.round((double) totalCorrect / totalAnswered * 1000.0) / 10.0
                 : 0;
 
-        long totalSessions = quizSessionRepository.countByOwnerIdAndStatus(
+        long sessionSessions = quizSessionRepository.countByOwnerIdAndStatus(
                 userId, QuizSession.Status.completed);
+        long totalSessions = sessionSessions + dcSessions;
 
         Map<String, Object> response = new HashMap<>();
-        response.put("totalSeen", totalSeen);
+        response.put("totalSeen", uqhSeen + dcAnswered);
         response.put("totalAnswered", totalAnswered);
         response.put("totalCorrect", totalCorrect);
         response.put("totalWrong", totalWrong);

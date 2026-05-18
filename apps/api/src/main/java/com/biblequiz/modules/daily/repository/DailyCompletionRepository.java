@@ -21,4 +21,13 @@ public interface DailyCompletionRepository extends JpaRepository<DailyCompletion
     List<DailyCompletion> findByUserIdAndDateRange(@Param("userId") String userId,
                                                     @Param("startDate") LocalDate startDate,
                                                     @Param("endDate") LocalDate endDate);
+
+    /**
+     * Lifetime Daily Challenge aggregate for one user:
+     * [completionCount, sumCorrect, sumTotalQuestions]. SUMs return NULL
+     * when the user has no completions; caller treats null as 0.
+     */
+    @Query("SELECT COUNT(dc), SUM(dc.correctCount), SUM(dc.totalQuestions) " +
+            "FROM DailyCompletion dc WHERE dc.user.id = :userId")
+    Object[] sumStatsByUserId(@Param("userId") String userId);
 }
