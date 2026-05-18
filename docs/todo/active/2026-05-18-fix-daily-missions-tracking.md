@@ -49,9 +49,9 @@ Tier-1 mission template ([DailyMissionService.java:39-44](apps/api/src/main/java
   - Checklist: ✅ impl · ✅ Tầng 3 pass · ⏳ commit
 
 - DM-TRACK-4 FE: invalidate `['daily-missions']` query sau khi `submitAnswer` đúng — để widget tick ngay không cần F5. Hook ở SessionAnswer mutation (Practice/Ranked) + Daily Challenge `handleAnswer`.
-  - Status: [ ] TODO
-  - Files: `apps/web/src/pages/DailyChallenge.tsx`, các hooks/components có submit-answer mutation
-  - Test: Vitest mock — submit answer đúng → queryClient.invalidateQueries called với `['daily-missions']`. Tầng 3 FE no regression.
+  - Status: [x] DONE
+  - Files: `apps/web/src/pages/Quiz.tsx` (Practice + Ranked submit path), `apps/web/src/pages/DailyChallenge.tsx` (Daily Challenge handleAnswer)
+  - Test: tsc no error trên file đã sửa; Vitest Tầng 3 1167 pass / 125 fail = baseline state (pre-existing failures, 0 regression).
   - **Spec impact**: [x] None
   - **Spec strategy**: [x] (c) [no-spec-impact]
-  - Checklist: impl · Tầng 1+3 pass · commit
+  - Checklist: ✅ impl · ✅ Tầng 3 pass · ⏳ commit

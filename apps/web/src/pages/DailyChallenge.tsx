@@ -344,7 +344,11 @@ const DailyChallenge: React.FC = () => {
       setCurrentExplanation('')
       setResults((prev) => [...prev, false])
     }
-  }, [answered, challengeData, sessionId, currentIndex])
+    // Refresh daily-missions widget so "answer_correct" + "answer_combo"
+    // tick/reset without an F5 (mission tracking happens BE-side in
+    // DailyChallengeService.checkAnswer when authenticated).
+    queryClient.invalidateQueries({ queryKey: ['daily-missions'] })
+  }, [answered, challengeData, sessionId, currentIndex, queryClient])
 
   // ── Next question ───────────────────────────────────────────────────────
   const handleNext = useCallback(async () => {

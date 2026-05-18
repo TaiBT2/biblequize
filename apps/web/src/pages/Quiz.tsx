@@ -383,6 +383,10 @@ const Quiz: React.FC = () => {
       correct = answerIndex === (currentQuestion.correctAnswer?.[0] ?? -1)
     }
 
+    // Refresh daily missions so "answer_correct" + "answer_combo" tick
+    // (and combo resets) without waiting for an F5.
+    queryClient.invalidateQueries({ queryKey: ['daily-missions'] })
+
     setIsCorrect(correct)
 
     let questionScore = 0
