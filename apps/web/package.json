@@ -29,6 +29,7 @@
     "validate:i18n": "node scripts/validate-i18n.mjs"
   },
   "dependencies": {
+    "@biblequize/shared": "workspace:*",
     "@stomp/stompjs": "^7.0.0",
     "@tanstack/react-query": "^5.56.2",
     "axios": "^1.7.2",
