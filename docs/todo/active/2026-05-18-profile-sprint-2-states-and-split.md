@@ -18,9 +18,9 @@
   - `Profile.tsx` còn ~150 LOC (page-level data fetching + layout)
   - Mỗi component < 300 LOC theo CLAUDE.md rule
   - Pure mechanical refactor — không đổi behavior
-  - Status: [ ] TODO
-  - Files: `apps/web/src/pages/Profile.tsx` + new `apps/web/src/components/profile/*.tsx` (9 files)
-  - Test: Tầng 3 — pass count = baseline + Profile test 10/10 still green
+  - Status: [x] DONE
+  - Files: `apps/web/src/pages/Profile.tsx` (990 → 158 LOC) + new `apps/web/src/components/profile/` (11 files, all < 140 LOC each)
+  - Test: ✅ Tầng 3 1167/125 = clean state (0 regression). Profile 10/10 pass. tsc clean.
   - Commit: `refactor: split Profile.tsx into components/profile/* [no-spec-impact]`
 
 ### Common
