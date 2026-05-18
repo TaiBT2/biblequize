@@ -3,6 +3,7 @@ package com.biblequiz.infrastructure.seed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,8 +23,15 @@ public class TestDataSeeder {
     @Autowired private NotificationSeeder notificationSeeder;
     @Autowired private FeedbackSeeder feedbackSeeder;
 
+    @Value("${app.environment:}")
+    private String environment;
+
     @Transactional
     public SeedResult seedAll(boolean reset) {
+        if ("production".equalsIgnoreCase(environment)) {
+            log.warn("Test data seedAll() BLOCKED: app.environment={} (production)", environment);
+            return new SeedResult();
+        }
         long start = System.currentTimeMillis();
         SeedResult result = new SeedResult();
 
@@ -48,6 +56,10 @@ public class TestDataSeeder {
 
     @Transactional
     public void clearAllData() {
+        if ("production".equalsIgnoreCase(environment)) {
+            log.warn("Test data clearAllData() BLOCKED: app.environment={} (production)", environment);
+            return;
+        }
         feedbackSeeder.clear();
         notificationSeeder.clear();
         tournamentSeeder.clear();

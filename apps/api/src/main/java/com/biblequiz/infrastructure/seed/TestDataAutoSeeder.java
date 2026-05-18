@@ -25,8 +25,15 @@ public class TestDataAutoSeeder implements ApplicationRunner {
     @Value("${app.test-data.enabled:false}")
     private boolean enabled;
 
+    @Value("${app.environment:}")
+    private String environment;
+
     @Override
     public void run(ApplicationArguments args) {
+        if ("production".equalsIgnoreCase(environment)) {
+            log.warn("Test data auto-seed BLOCKED: app.environment={} (production)", environment);
+            return;
+        }
         if (!enabled) {
             log.debug("Test data auto-seed disabled");
             return;
