@@ -6,11 +6,14 @@
 
 ### Tasks
 
+> **Sprint status (2026-05-18)**: ✅ DONE — all 7 task committed, regression PASS (mobile 33/33; web vitest in progress at S0-7 commit time; api untouched).
+> **Commits**: c5d2666 (plan docs) · 2470dc2 (S0-1) · b398da5 (S0-2) · 9f7a65e (S0-3) · 1a3fec3 (S0-4 + BL-4 closed) · ee646bd (S0-5) · db5ce2a (S0-6).
+
 - **S0-1 Init pnpm workspaces**
   - Tạo root `package.json` (private, name "biblequize") + `pnpm-workspace.yaml` (`apps/*`, `packages/*`).
   - `.npmrc` set `auto-install-peers=true`, `node-linker=hoisted` (Expo cần hoisted để metro resolve).
   - Verify: `pnpm install` succeed; `pnpm --filter web build` + `pnpm --filter mobile start` + `pnpm --filter api ...` chạy như cũ.
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `package.json` (new root), `pnpm-workspace.yaml` (new), `.npmrc` (new)
   - Test: Tầng 3 — `pnpm --filter web test:unit`, `pnpm --filter mobile test`, `pnpm --filter api test` baseline.
   - Spec impact: None.
@@ -21,7 +24,7 @@
   - `packages/shared/tsconfig.json` extends root, declaration: true, composite: true.
   - `packages/shared/src/{types,constants,logic,i18n-keys}/index.ts` — export rỗng + placeholder comment.
   - Web + mobile thêm `"@biblequize/shared": "workspace:*"` vào dependencies; verify resolve.
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `packages/shared/**` (new), `apps/web/package.json`, `apps/mobile/package.json`
   - Test: Build cả web + mobile — no broken import.
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
@@ -30,7 +33,7 @@
   - Inventory types duplicate: User, Tier, Question, Session, Room, QuizSet, ScheduledQuiz, Achievement, Notification — đọc cả `apps/web/src/types/` + `apps/mobile/src/types/models.ts`, giữ shape canonical (web là source of truth nếu lệch).
   - Move sang `packages/shared/src/types/{user,tier,question,session,room,quizSet,scheduledQuiz,achievement,notification}.ts`.
   - Web + mobile re-export hoặc import trực tiếp; remove duplicate definitions.
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `packages/shared/src/types/**` (new), `apps/web/src/types/**`, `apps/mobile/src/types/models.ts`
   - Test: `tsc --noEmit` cả web + mobile clean (no regression). Vitest + Jest baseline.
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
@@ -41,7 +44,7 @@
   - `packages/shared/src/constants/answerColors.ts` — `{ A: "#FF7F7F", B: "#7FBEFF", C: "#FFD700", D: "#A8C8A8" }` (C5).
   - `packages/shared/src/constants/books.ts` — 66 Protestant books (C4).
   - Web + mobile import + replace string literals/duplicate maps.
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `packages/shared/src/constants/**` (new), grep apps/ for `"Luyện Tập"` / `"Đấu Hạng"` / `"Thi Đấu"` / tier strings, replace.
   - Test: Vitest + Jest baseline. Web Playwright smoke verify UI text unchanged.
   - Spec impact: BL-4 mobile partial → DONE (i18n "Thi Đấu" → "Đấu Hạng" replaced via shared constants).
@@ -51,7 +54,7 @@
   - Compare `apps/web/src/logic/` (nếu có) vs `apps/mobile/src/logic/{scoring,streaks,tierProgression}.ts`.
   - Move canonical version sang `packages/shared/src/logic/`, mobile + web re-export.
   - Move tests `apps/mobile/src/logic/__tests__/*` sang `packages/shared/src/logic/__tests__/` — chạy bằng jest hoặc vitest tuỳ theo runner shared package.
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `packages/shared/src/logic/**` (new), `apps/mobile/src/logic/**` (re-export), `apps/web/src/logic/**` (re-export hoặc xoá nếu duplicate)
   - Test: All 3 logic suites pass — count ≥ baseline (mobile hiện có 3 test files).
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
@@ -60,7 +63,7 @@
   - `packages/shared/src/i18n-keys/index.ts` — `export const I18nKey = { profile: { editTitle: "profile.editTitle" }, ... } as const` (typed registry mirror vi.json structure).
   - Web + mobile `t(I18nKey.profile.editTitle)` thay `t("profile.editTitle")` — catch missing keys compile-time.
   - Migration scope task này: TOP-LEVEL keys + 1 namespace mẫu (e.g., `profile.*`). Full migration defer S6 polish.
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `packages/shared/src/i18n-keys/index.ts` (new), 1-2 file mẫu trong web + mobile dùng pattern mới
   - Test: `tsc --noEmit` clean. Vitest + Jest baseline.
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
@@ -70,7 +73,7 @@
   - So sánh test count vs `.test-baseline` web + api. Update nếu count tăng (do logic test giờ chạy từ shared). KHÔNG được giảm.
   - Build production: `pnpm --filter web build` + `pnpm --filter mobile expo prebuild` (Android) — verify no broken import từ workspace resolution.
   - `tools/spec-audit/audit.sh` — exit code 0 hoặc 1 (không NEW broken).
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/web/.test-baseline`, `apps/api/.test-baseline` (update only if increased)
   - Test: SELF — đây là test gate.
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.

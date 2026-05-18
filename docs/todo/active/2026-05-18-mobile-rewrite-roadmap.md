@@ -40,7 +40,7 @@
 
 | # | Sprint | Mục tiêu | Tuần | Detail file (tạo khi start) |
 |---|---|---|---|---|
-| **S0** | Monorepo + shared package | Convert root → pnpm workspaces, tách `packages/shared/{types,logic,constants,i18n-keys}` | 1 | [`s0-monorepo-setup.md`](2026-05-18-mobile-rewrite-s0-monorepo-setup.md) ← bắt đầu trước |
+| **S0** ✅ | Monorepo + shared package | Convert root → pnpm workspaces, tách `packages/shared/{types,logic,constants,i18n-keys}` | 1 | [`s0-monorepo-setup.md`](2026-05-18-mobile-rewrite-s0-monorepo-setup.md) — DONE 2026-05-18 |
 | **S1** | Polish stubs + BL-4 | Wire 4 multiplayer screens minimal + TryQuiz real BE + i18n rename | 1-2 | `s1-polish-stubs.md` |
 | **S2** | Beta launch internal | EAS Build config + Sentry mobile + version channel + icon/splash polish | 1 | `s2-beta-internal.md` |
 | **S3** | Multiplayer realtime full | 5 modes STOMP parity + Quản trò + chat + RoomAnalytics | 2-3 | `s3-multiplayer-realtime.md` |
