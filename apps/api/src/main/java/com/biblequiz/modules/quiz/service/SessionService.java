@@ -52,6 +52,10 @@ public class SessionService {
     @org.springframework.beans.factory.annotation.Autowired(required = false)
     private com.biblequiz.modules.group.service.GroupQuizSetMasteryService groupQuizSetMasteryService;
 
+    /** Optional — same pattern. Mission tracking must never fail an answer submit. */
+    @org.springframework.beans.factory.annotation.Autowired(required = false)
+    private DailyMissionService dailyMissionService;
+
     public SessionService(QuizSessionRepository quizSessionRepository,
             QuizSessionQuestionRepository quizSessionQuestionRepository,
             QuestionRepository questionRepository,
@@ -447,8 +451,28 @@ public class SessionService {
         recordQuestionHistory(user, question, isCorrect);
         updateEarlyRankedUnlockProgress(user, session.getMode(), isCorrect);
         creditNonRankedProgress(user, session.getMode(), isCorrect, scoreDelta);
+        trackDailyMissionAnswer(user.getId(), isCorrect);
 
         return toAnswerResult(answer, question);
+    }
+
+    /**
+     * Wire a single answer event into the daily-mission tracker.
+     * "answer_correct" increments only on correct; "answer_combo" tracks
+     * the streak (reset on wrong). Wrapped in try/catch so mission failures
+     * never break the user's answer submission.
+     */
+    private void trackDailyMissionAnswer(String userId, boolean isCorrect) {
+        if (dailyMissionService == null) return;
+        try {
+            if (isCorrect) {
+                dailyMissionService.trackProgress(userId, "answer_correct", 1);
+            }
+            dailyMissionService.trackComboProgress(userId, "answer_combo", isCorrect);
+        } catch (RuntimeException ex) {
+            log.warn("Daily mission tracking failed for user {} ({}). Answer flow unaffected.",
+                    userId, ex.getMessage());
+        }
     }
 
     /**

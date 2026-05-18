@@ -25,12 +25,12 @@ Tier-1 mission template ([DailyMissionService.java:39-44](apps/api/src/main/java
   - Checklist: ✅ impl · ✅ Tầng 1+3 pass · ⏳ commit
 
 - DM-TRACK-2 BE: hook `SessionService.submitAnswer` — sau line 449 (creditNonRankedProgress), gọi `dailyMissionService.trackProgress(user.id, "answer_correct", 1)` khi `isCorrect=true`, và `trackComboProgress(user.id, "answer_combo", isCorrect)` luôn (cả đúng/sai để reset streak). Wrap try/catch để không crash submit-answer khi mission tracking lỗi.
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/api/src/main/java/com/biblequiz/modules/quiz/service/SessionService.java`
-  - Test: BE Tầng 1 SessionServiceTest — submit đúng → mission progress tăng; submit sai → combo reset. Tầng 3 BE no regression.
+  - Test: BE Tầng 1 SessionServiceTest 38/38 pass; Tầng 3 942 pass / 32 pre-existing fail = baseline preserved.
   - **Spec impact**: [x] None
   - **Spec strategy**: [x] (c) [no-spec-impact]
-  - Checklist: impl · BE Tầng 1+3 pass · commit
+  - Checklist: ✅ impl · ✅ Tầng 1+3 pass · ⏳ commit
 
 - DM-TRACK-3 BE: thêm `Authentication` param vào `DailyChallengeController.checkAnswer` + hook tracking trong `DailyChallengeService.checkAnswer(questionId, selectedAnswer, userId)`. Guest (userId=null) skip tracking.
   - Status: [ ] TODO
