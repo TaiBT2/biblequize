@@ -128,6 +128,81 @@ class DailyMissionServiceTest {
     }
 
     @Test
+    void trackCombo_incrementsOnCorrect() {
+        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        DailyMission m = new DailyMission("id1", USER_ID, today, 3, "answer_combo", "{}", 3);
+        m.setProgress(1);
+        when(missionRepository.findByUserIdAndDateOrderByMissionSlot(USER_ID, today))
+                .thenReturn(new ArrayList<>(List.of(m)));
+
+        service.trackComboProgress(USER_ID, "answer_combo", true);
+
+        assertEquals(2, m.getProgress());
+        assertFalse(m.isCompleted());
+        verify(missionRepository).save(m);
+    }
+
+    @Test
+    void trackCombo_resetsOnWrong() {
+        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        DailyMission m = new DailyMission("id1", USER_ID, today, 3, "answer_combo", "{}", 3);
+        m.setProgress(2);
+        when(missionRepository.findByUserIdAndDateOrderByMissionSlot(USER_ID, today))
+                .thenReturn(new ArrayList<>(List.of(m)));
+
+        service.trackComboProgress(USER_ID, "answer_combo", false);
+
+        assertEquals(0, m.getProgress());
+        assertFalse(m.isCompleted());
+        verify(missionRepository).save(m);
+    }
+
+    @Test
+    void trackCombo_completesAtTarget() {
+        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        DailyMission m = new DailyMission("id1", USER_ID, today, 3, "answer_combo", "{}", 3);
+        m.setProgress(2);
+        when(missionRepository.findByUserIdAndDateOrderByMissionSlot(USER_ID, today))
+                .thenReturn(new ArrayList<>(List.of(m)));
+
+        service.trackComboProgress(USER_ID, "answer_combo", true);
+
+        assertEquals(3, m.getProgress());
+        assertTrue(m.isCompleted());
+        assertNotNull(m.getCompletedAt());
+    }
+
+    @Test
+    void trackCombo_idempotentAfterCompletion() {
+        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        DailyMission m = new DailyMission("id1", USER_ID, today, 3, "answer_combo", "{}", 3);
+        m.setProgress(3);
+        m.setCompleted(true);
+        when(missionRepository.findByUserIdAndDateOrderByMissionSlot(USER_ID, today))
+                .thenReturn(new ArrayList<>(List.of(m)));
+
+        service.trackComboProgress(USER_ID, "answer_combo", false);
+
+        assertTrue(m.isCompleted());
+        assertEquals(3, m.getProgress());
+        verify(missionRepository, never()).save(any());
+    }
+
+    @Test
+    void trackCombo_skipSaveWhenProgressAlreadyZero() {
+        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        DailyMission m = new DailyMission("id1", USER_ID, today, 3, "answer_combo", "{}", 3);
+        m.setProgress(0);
+        when(missionRepository.findByUserIdAndDateOrderByMissionSlot(USER_ID, today))
+                .thenReturn(new ArrayList<>(List.of(m)));
+
+        service.trackComboProgress(USER_ID, "answer_combo", false);
+
+        assertEquals(0, m.getProgress());
+        verify(missionRepository, never()).save(any());
+    }
+
+    @Test
     void getMissionsResponse_returnsCorrectShape() {
         LocalDate today = LocalDate.now(ZoneOffset.UTC);
         when(missionRepository.findByUserIdAndDateOrderByMissionSlot(USER_ID, today))

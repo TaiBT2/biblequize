@@ -132,6 +132,37 @@ public class DailyMissionService {
         checkAndGrantBonus(userId, today, missions);
     }
 
+    /**
+     * Track combo/streak progress: increment on correct, reset to 0 on wrong.
+     * Idempotent once mission is completed (so a later wrong answer doesn't
+     * "un-complete" the achievement). Used for {@code answer_combo} style
+     * missions where progress represents current consecutive-correct streak.
+     */
+    @Transactional
+    public void trackComboProgress(String userId, String missionType, boolean correct) {
+        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        List<DailyMission> missions = missionRepository.findByUserIdAndDateOrderByMissionSlot(userId, today);
+
+        for (DailyMission m : missions) {
+            if (!m.getMissionType().equals(missionType) || m.isCompleted()) continue;
+            if (correct) {
+                m.setProgress(Math.min(m.getProgress() + 1, m.getTarget()));
+                if (m.getProgress() >= m.getTarget()) {
+                    m.setCompleted(true);
+                    m.setCompletedAt(LocalDateTime.now(ZoneOffset.UTC));
+                    log.info("[DAILY_MISSION] Combo mission {} completed for user {}", m.getMissionType(), userId);
+                }
+            } else if (m.getProgress() > 0) {
+                m.setProgress(0);
+            } else {
+                continue; // no change → skip save
+            }
+            missionRepository.save(m);
+        }
+
+        checkAndGrantBonus(userId, today, missions);
+    }
+
     private void checkAndGrantBonus(String userId, LocalDate date, List<DailyMission> missions) {
         if (missions.size() < 3) return;
 
