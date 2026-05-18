@@ -13,11 +13,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.25.0
+      - name: Install workspace deps
+        run: pnpm install --frozen-lockfile
       - name: Web build
-        working-directory: apps/web
-        run: |
-          npm ci || npm i
-          npm run build
+        run: pnpm --filter biblequiz-web build
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:

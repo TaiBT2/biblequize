@@ -1,0 +1,16 @@
+{
+  "name": "biblequize",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.25.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "web:dev": "pnpm --filter biblequiz-web dev",
+    "web:build": "pnpm --filter biblequiz-web build",
+    "web:test": "pnpm --filter biblequiz-web test",
+    "mobile:start": "pnpm --filter mobile start",
+    "mobile:test": "pnpm --filter mobile test"
+  }
+}
