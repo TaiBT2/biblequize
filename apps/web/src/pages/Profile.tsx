@@ -261,7 +261,7 @@ function HeroCompact({ profile, initial, tierEmoji, tierName, tierLevel }: {
           {profile.name}
         </h2>
         <span data-testid="profile-tier-badge" className="inline-flex items-center gap-1.5 mt-1.5 px-2.5 py-1 rounded-full bg-secondary/10 border border-secondary/30 text-xs font-semibold text-secondary">
-          <span>{tierEmoji}</span> {tierName} · {t('profile.tierCurrentSub', { n: tierLevel }).split('·')[0].trim()}
+          <span>{tierEmoji}</span> {tierName} · {t('profile.tierLevelLabel', { n: tierLevel })}
         </span>
         <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2.5 text-xs text-on-surface-variant">
           <span data-testid="profile-email" className="inline-flex items-center gap-1">
@@ -280,11 +280,24 @@ function HeroCompact({ profile, initial, tierEmoji, tierName, tierLevel }: {
       <div className="flex gap-2 relative shrink-0">
         <button
           aria-label={t('profile.share')}
+          onClick={async () => {
+            const url = window.location.href
+            const text = t('profile.shareText', { name: profile.name, tier: tierName })
+            if (typeof navigator !== 'undefined' && navigator.share) {
+              try { await navigator.share({ title: t('profile.shareTitle'), text, url }); return } catch { /* user cancelled */ }
+            }
+            try { await navigator.clipboard.writeText(url) } catch { /* no-op */ }
+          }}
           className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-on-surface hover:bg-white/10 transition-colors flex items-center justify-center"
         >
           <span className="material-symbols-outlined text-[18px]">share</span>
         </button>
-        <button className="h-10 px-4 rounded-xl gold-gradient text-on-secondary text-sm font-semibold inline-flex items-center gap-1.5 hover:shadow-[0_6px_18px_rgba(232,168,50,0.3)] transition-shadow">
+        <button
+          disabled
+          aria-disabled="true"
+          title={t('profile.editProfileComingSoon')}
+          className="h-10 px-4 rounded-xl gold-gradient text-on-secondary text-sm font-semibold inline-flex items-center gap-1.5 opacity-50 cursor-not-allowed"
+        >
           <span className="material-symbols-outlined text-[18px]">edit</span>
           {t('profile.editProfile')}
         </button>
@@ -569,11 +582,7 @@ function HeatmapCard({ cells, activeDays }: { cells: HeatmapLevel[]; activeDays:
           </div>
         </div>
       ) : (
-        <p className="text-on-surface-variant text-center py-6">{t('profile.startPlaying')}</p>
-      )}
-
-      {!hasData && (
-        <div className="mt-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-xl bg-secondary/[0.05] border border-dashed border-secondary/20">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-xl bg-secondary/[0.05] border border-dashed border-secondary/20">
           <div className="text-xs text-on-surface-variant">
             🌱 <strong className="text-on-surface font-semibold">{t('profile.heatmapEmptyTitle')}</strong>{' '}
             {t('profile.heatmapEmptyDesc')}
@@ -615,9 +624,9 @@ function BadgeCollection({ achievements, loading }: { achievements: Achievement[
           <span className="material-symbols-outlined text-[18px] text-secondary">workspace_premium</span>
           {t('profile.badgeCollection')}
         </h2>
-        <a className="text-xs font-semibold text-secondary hover:underline" href="#">
+        <Link to="/achievements" className="text-xs font-semibold text-secondary hover:underline">
           {t('profile.badgeViewAll', { n: achievements.length })} →
-        </a>
+        </Link>
       </div>
 
       <div className="flex gap-1.5 mb-4">
@@ -874,11 +883,11 @@ function PrestigeSection() {
           {t('profile.prestigeFullDescription')}
         </p>
         <div className="flex items-center gap-2 mt-3">
-          <span className="px-2 py-0.5 rounded-full bg-secondary/15 text-secondary text-[10px] font-bold">🌱 1</span>
+          <span className="px-2 py-0.5 rounded-full bg-secondary/15 text-secondary text-[10px] font-bold">P{prestigeLevel}</span>
           <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden">
             <div className="h-full rounded-full bg-gradient-to-r from-secondary to-purple-400" style={{ width: `${progress}%` }} />
           </div>
-          <span className="px-2 py-0.5 rounded-full bg-white/5 text-on-surface-variant text-[10px] font-bold">👑 6</span>
+          <span className="px-2 py-0.5 rounded-full bg-white/5 text-on-surface-variant text-[10px] font-bold">P{prestigeLevel + 1}</span>
         </div>
         <p className="text-[11px] text-on-surface-variant mt-2">
           <span data-testid="profile-days-at-tier6" className="font-bold text-on-surface">{daysAtTier6}</span>/{daysRequired} {t('profile.prestigeDaysLabel').toLowerCase()}

@@ -120,10 +120,10 @@ describe('Profile page (API-driven)', () => {
     expect(screen.getByText('Rực cháy')).toBeTruthy()
   })
 
-  it('shows empty heatmap message when no history', async () => {
+  it('shows empty heatmap CTA when no history', async () => {
     setupMocks({ history: { content: [] } })
     renderProfile()
-    expect(await screen.findByText('Bắt đầu chơi để xem nhật ký học tập')).toBeTruthy()
+    expect(await screen.findByText('Hãy bắt đầu chuỗi học!')).toBeTruthy()
   })
 
   it('shows login prompt when not authenticated', () => {
