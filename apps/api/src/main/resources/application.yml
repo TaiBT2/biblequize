@@ -145,6 +145,6 @@ app:
       # Reads src/main/resources/seed/questions/*_quiz.json on startup.
       # Idempotent: deterministic UUIDs per question → second startup no-ops.
       # Disable after a one-shot production seed if further boot-time work is undesired.
-      enabled: ${QUESTION_SEEDING_ENABLED:true}
+      enabled: ${QUESTION_SEEDING_ENABLED:false}
       # Pattern matches VI (*_quiz.json) + EN (*_quiz_en.json) seed files.
       pattern: ${QUESTION_SEEDING_PATTERN:classpath*:seed/questions/*_quiz*.json}
