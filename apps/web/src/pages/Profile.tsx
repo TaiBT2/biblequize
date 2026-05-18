@@ -701,13 +701,14 @@ function BadgeTile({ achievement }: { achievement: Achievement }) {
 function AnalyticsCard() {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const { data, isLoading } = useQuery<WeaknessData>({
+  const { data, isLoading, isError } = useQuery<WeaknessData>({
     queryKey: ['weaknesses'],
     queryFn: () => api.get('/api/me/weaknesses').then(r => r.data),
     staleTime: 5 * 60_000,
   })
 
-  if (isLoading || !data) return null
+  if (isLoading) return <SkeletonBlock className="h-56" />
+  if (isError || !data) return null
   if (data.weakBooks.length === 0 && data.strongBooks.length === 0) return null
 
   const suggested = data.suggestedPractice ?? data.weakBooks[0]?.book ?? null
@@ -851,7 +852,7 @@ function Toggle({ on, onChange }: { on: boolean; onChange: (next: boolean) => vo
 
 function PrestigeSection() {
   const { t } = useTranslation()
-  const { data } = useQuery<{
+  const { data, isLoading, isError } = useQuery<{
     canPrestige: boolean; prestigeLevel: number; daysAtTier6: number
     daysRequired: number; nextPrestigeName: string | null
   }>({
@@ -860,7 +861,8 @@ function PrestigeSection() {
     staleTime: 60_000,
   })
 
-  if (!data) return null
+  if (isLoading) return <SkeletonBlock className="h-32" />
+  if (isError || !data) return null
   const { prestigeLevel, daysAtTier6, daysRequired, canPrestige, nextPrestigeName } = data
   const progress = Math.min(100, (daysAtTier6 / daysRequired) * 100)
 
