@@ -79,7 +79,7 @@ public class ShareCardService {
                             justify-content:center;font-size:14px;font-weight:bold">%s</div>
                 <div style="font-size:14px">%s</div>
               </div>
-              <div style="position:absolute;bottom:12px;font-size:11px;color:#556677">biblequiz.app</div>
+              <div style="position:absolute;bottom:12px;font-size:11px;color:#556677">forbible.org</div>
             </div>
             </body></html>
             """.formatted(date, stars, correctAnswers, totalQuestions, score,
@@ -114,7 +114,7 @@ public class ShareCardService {
                             justify-content:center;font-size:14px;font-weight:bold">%s</div>
                 <div style="font-size:14px">%s</div>
               </div>
-              <div style="position:absolute;bottom:12px;font-size:11px;color:#556677">biblequiz.app</div>
+              <div style="position:absolute;bottom:12px;font-size:11px;color:#556677">forbible.org</div>
             </div>
             </body></html>
             """.formatted(icon, tierName, userName.substring(0, 1).toUpperCase(), userName);

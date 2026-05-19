@@ -171,7 +171,7 @@ export default function ShareCard({
           </div>
 
           {/* Watermark */}
-          <p className="text-center text-[10px] text-on-surface-variant/40 font-medium">biblequiz.app</p>
+          <p className="text-center text-[10px] text-on-surface-variant/40 font-medium">forbible.org</p>
         </div>
       </div>
 

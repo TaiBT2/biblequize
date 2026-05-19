@@ -60,9 +60,9 @@ describe('ShareCard', () => {
   })
 
   // 8. Watermark present
-  it('shows biblequiz.app watermark', () => {
+  it('shows forbible.org watermark', () => {
     render(<ShareCard sessionId="s1" correct={5} total={10} userName="Test" />)
-    expect(screen.getByText('biblequiz.app')).toBeInTheDocument()
+    expect(screen.getByText('forbible.org')).toBeInTheDocument()
   })
 
   // 9. Share button renders

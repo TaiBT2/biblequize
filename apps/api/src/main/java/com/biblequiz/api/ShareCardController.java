@@ -64,7 +64,7 @@ public class ShareCardController {
 
         if (!isSocialBot(userAgent)) {
             return ResponseEntity.status(302)
-                    .header("Location", "https://biblequiz.app/share/session/" + sessionId)
+                    .header("Location", "https://forbible.org/share/session/" + sessionId)
                     .build();
         }
 
@@ -81,8 +81,8 @@ public class ShareCardController {
             description = name + " da tra loi dung " + correct + "/" + total + " cau (" + pct + "%). Ban co lam tot hon khong?";
         }
 
-        String ogHtml = buildOgHtml(title, description, "https://biblequiz.app/og-image.png",
-                "https://biblequiz.app/share/session/" + sessionId);
+        String ogHtml = buildOgHtml(title, description, "https://forbible.org/og-image.png",
+                "https://forbible.org/share/session/" + sessionId);
         return ResponseEntity.ok(ogHtml);
     }
 
@@ -93,7 +93,7 @@ public class ShareCardController {
 
         if (!isSocialBot(userAgent)) {
             return ResponseEntity.status(302)
-                    .header("Location", "https://biblequiz.app/share/tier-up/" + tierKey)
+                    .header("Location", "https://forbible.org/share/tier-up/" + tierKey)
                     .build();
         }
 
@@ -108,8 +108,8 @@ public class ShareCardController {
         String title = "BibleQuiz — Dat cap " + tierName + "!";
         String description = "Dat thanh tich " + tierName + " tren BibleQuiz. Hoc Kinh Thanh moi ngay!";
 
-        String ogHtml = buildOgHtml(title, description, "https://biblequiz.app/og-image.png",
-                "https://biblequiz.app/share/tier-up/" + tierKey);
+        String ogHtml = buildOgHtml(title, description, "https://forbible.org/og-image.png",
+                "https://forbible.org/share/tier-up/" + tierKey);
         return ResponseEntity.ok(ogHtml);
     }
 
@@ -119,7 +119,7 @@ public class ShareCardController {
 
         if (!isSocialBot(userAgent)) {
             return ResponseEntity.status(302)
-                    .header("Location", "https://biblequiz.app/daily")
+                    .header("Location", "https://forbible.org/daily")
                     .build();
         }
 
@@ -127,8 +127,8 @@ public class ShareCardController {
         String ogHtml = buildOgHtml(
                 "BibleQuiz — Thu thach ngay " + date,
                 "5 cau hoi Kinh Thanh moi ngay. Ban co the tra loi dung het khong?",
-                "https://biblequiz.app/og-image.png",
-                "https://biblequiz.app/daily");
+                "https://forbible.org/og-image.png",
+                "https://forbible.org/daily");
         return ResponseEntity.ok(ogHtml);
     }
 
