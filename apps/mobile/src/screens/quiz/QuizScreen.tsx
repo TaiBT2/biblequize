@@ -313,20 +313,22 @@ export default function QuizScreen() {
             effect, large rounded icon + bonus points hint + gold gradient CTA. */}
         {showResult && (
           <View style={[styles.resultBar, isCorrect ? styles.resultCorrect : styles.resultWrong]}>
-            <View style={[styles.resultIconCircle, isCorrect ? styles.resultIconCorrect : styles.resultIconWrong]}>
-              <Text style={styles.resultIconText}>{isCorrect ? '✓' : '✗'}</Text>
-            </View>
-            <View style={styles.resultInfo}>
-              <Text style={styles.resultTitle}>{isCorrect ? 'Chính xác!' : 'Sai rồi'}</Text>
-              <Text style={[styles.resultSubtitle, isCorrect ? styles.resultSubCorrect : styles.resultSubWrong]}>
-                {isCorrect ? (isDailyMode ? '+20 điểm thưởng' : `+${questionScores[qIndex] ?? 0} điểm`) : 'Không cộng điểm'}
-              </Text>
-              {!isCorrect && showExplanation && question.explanation && (
-                <Text style={styles.explanation} numberOfLines={2}>{question.explanation}</Text>
-              )}
+            <View style={styles.resultTopRow}>
+              <View style={[styles.resultIconCircle, isCorrect ? styles.resultIconCorrect : styles.resultIconWrong]}>
+                <Text style={styles.resultIconText}>{isCorrect ? '✓' : '✗'}</Text>
+              </View>
+              <View style={styles.resultInfo}>
+                <Text style={styles.resultTitle}>{isCorrect ? 'Chính xác!' : 'Sai rồi'}</Text>
+                <Text style={[styles.resultSubtitle, isCorrect ? styles.resultSubCorrect : styles.resultSubWrong]}>
+                  {isCorrect ? (isDailyMode ? '+20 điểm thưởng' : `+${questionScores[qIndex] ?? 0} điểm`) : 'Không cộng điểm'}
+                </Text>
+                {!isCorrect && showExplanation && question.explanation && (
+                  <Text style={styles.explanation} numberOfLines={3}>{question.explanation}</Text>
+                )}
+              </View>
             </View>
             <Pressable onPress={nextQuestion} style={styles.nextBtn}>
-              <Text style={styles.nextText}>{qIndex + 1 >= questions.length ? 'Xem kết quả' : 'Tiếp →'}</Text>
+              <Text style={styles.nextText}>{qIndex + 1 >= questions.length ? 'Xem kết quả' : 'Câu tiếp theo'}</Text>
             </Pressable>
           </View>
         )}
@@ -402,7 +404,6 @@ const styles = StyleSheet.create({
   ansText: { flex: 1, fontSize: typography.size.base, color: colors.textPrimary },
   ansTextFaded: { color: colors.textMuted },
   resultBar: {
-    flexDirection: 'row', alignItems: 'center',
     padding: spacing.md, gap: spacing.md,
     borderRadius: borderRadius['2xl'], marginTop: spacing.md,
     backgroundColor: colors.surfaceContainerHighest,
@@ -413,6 +414,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 8 },
     elevation: 8,
   },
+  resultTopRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   resultCorrect: { borderColor: 'rgba(34,197,94,0.4)' },
   resultWrong: { borderColor: 'rgba(239,68,68,0.4)' },
   resultIconCircle: {
@@ -427,7 +429,12 @@ const styles = StyleSheet.create({
   resultSubtitle: { fontSize: typography.size.xs, fontWeight: typography.weight.medium, marginTop: 2 },
   resultSubCorrect: { color: colors.success },
   resultSubWrong: { color: colors.error },
-  explanation: { fontSize: typography.size.xs, color: colors.textSecondary, marginTop: 4, maxWidth: 220 },
-  nextBtn: { backgroundColor: colors.gold, borderRadius: borderRadius.lg, paddingHorizontal: spacing.xl, paddingVertical: spacing.md },
-  nextText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.onSecondary },
+  explanation: { fontSize: typography.size.xs, color: colors.textSecondary, marginTop: 4 },
+  nextBtn: {
+    backgroundColor: colors.gold, borderRadius: borderRadius.xl,
+    paddingVertical: spacing.md, alignItems: 'center',
+    shadowColor: colors.gold, shadowOpacity: 0.35, shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 }, elevation: 6,
+  },
+  nextText: { fontSize: typography.size.base, fontWeight: typography.weight.bold, color: colors.onSecondary, letterSpacing: 0.3 },
 })
