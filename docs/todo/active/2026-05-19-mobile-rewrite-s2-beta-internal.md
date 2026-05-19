@@ -10,6 +10,11 @@
 > - Icon redesign: defer (cần designer)
 > - DSN/EAS projectId: user fill in `.env` sau, code dùng env-driven no-op fallback
 
+> **Sprint status (2026-05-19)**: ✅ DONE — 5 task + plan + finalize, M1 milestone reached.
+> **Commits**: 8e8f613 (plan) · dbae4c0 (S2-1 app.json) · 45f223d (S2-2 eas.json) · c2c4bd0 (S2-3 Sentry) · baaf8f6 (S2-4 .env) · 2dad14b (S2-5 beta docs).
+> **Regression**: mobile jest 33/33 PASS · mobile tsc CLEAN · web untouched.
+> **Manual next step (user)**: `cd apps/mobile && eas login && eas init` + thêm `EXPO_PUBLIC_SENTRY_DSN` vào `.env` → `eas build --profile preview --platform android` cho APK đầu tiên.
+
 ### Tasks
 
 - **S2-1 app.json branding + dark theme polish**
@@ -18,7 +23,7 @@
   - `splash.backgroundColor: "#ffffff"` → `"#11131e"` (match brand dark)
   - `android.adaptiveIcon.backgroundColor: "#ffffff"` → `"#11131e"`
   - iOS: add `bundleIdentifier: "com.biblequiz.app"` (parity với android.package)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/app.json`
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -27,7 +32,7 @@
   - `preview`: internal distribution APK/IPA, point staging API
   - `production`: store-ready (defer actual submit to S7)
   - `cli.appVersionSource: "remote"` để EAS quản version
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/eas.json` (new)
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -37,20 +42,20 @@
   - `apps/mobile/src/lib/sentry.ts` — init wrapper, no-op khi DSN missing
   - `App.tsx` — call `initSentry()` trước render, wrap với `Sentry.wrap()`
   - `ErrorBoundary.tsx` — call `Sentry.captureException(error, { contexts: { react: { componentStack } } })` trong componentDidCatch
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/lib/sentry.ts` (new), `apps/mobile/App.tsx`, `apps/mobile/src/components/feedback/ErrorBoundary.tsx`, `apps/mobile/app.json` (plugin), `apps/mobile/package.json`
   - Spec impact: SPEC_ROADMAP §2.9 — un-defer Sentry cho mobile. Strategy: (a) update SPEC_ROADMAP inline.
 
 - **S2-4 .env.example update + EXPO_PUBLIC_SENTRY_DSN**
   - Add `EXPO_PUBLIC_SENTRY_DSN=` (empty default → Sentry no-op)
   - Add `EXPO_PUBLIC_ENV=` (development|preview|production) — passed to Sentry environment tag
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/.env.example`
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
 - **S2-5 Beta tester docs**
   - New `docs/dev/mobile-beta.md` — Expo Go setup, EAS internal track invite flow, manual QA checklist (5 stubs từ S1, single-player flow, group features)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `docs/dev/mobile-beta.md` (new)
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -59,7 +64,7 @@
   - mobile tsc clean
   - Web không touched (skip vitest)
   - Update roadmap S2 → DONE, S2 file all tasks DONE, TODO.md index, M1 milestone reached
-  - Status: [ ] TODO
+  - Status: [x] DONE
 
 ### Common
 

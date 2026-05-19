@@ -42,7 +42,7 @@
 |---|---|---|---|---|
 | **S0** ✅ | Monorepo + shared package | Convert root → pnpm workspaces, tách `packages/shared/{types,logic,constants,i18n-keys}` | 1 | [`s0-monorepo-setup.md`](2026-05-18-mobile-rewrite-s0-monorepo-setup.md) — DONE 2026-05-18 |
 | **S1** ✅ | Polish stubs + BL-4 | Wire 4 multiplayer screens minimal + TryQuiz type narrow (BL-4 closed S0-4) | 1-2 | [`s1-polish-stubs.md`](2026-05-19-mobile-rewrite-s1-polish-stubs.md) — DONE 2026-05-19 |
-| **S2** | Beta launch internal | EAS Build config + Sentry mobile + version channel + icon/splash polish | 1 | `s2-beta-internal.md` |
+| **S2** ✅ | Beta launch internal | EAS Build config + Sentry mobile + branding polish | 1 | [`s2-beta-internal.md`](2026-05-19-mobile-rewrite-s2-beta-internal.md) — DONE 2026-05-19, **M1 milestone reached** |
 | **S3** | Multiplayer realtime full | 5 modes STOMP parity + Quản trò + chat + RoomAnalytics | 2-3 | `s3-multiplayer-realtime.md` |
 | **S4** | Quiz Set workflow | QuizSetList/Editor/Detail (Sprint 5 parity) + MySets/PersonalEditor | 2 | `s4-quiz-set-workflow.md` |
 | **S5** | Scheduled + Tournament detail | ScheduledQuiz 3 screens + TournamentDetail/Match + GroupAnalytics | 1-2 | `s5-scheduled-tournament.md` |
