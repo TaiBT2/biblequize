@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { View, Text, StyleSheet, Pressable, Alert, BackHandler } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
+import { useQueryClient } from '@tanstack/react-query'
 import SafeScreen from '../../components/layout/SafeScreen'
 import ProgressBar from '../../components/ui/ProgressBar'
 import CountdownTimer from '../../components/quiz/CountdownTimer'
@@ -48,8 +49,10 @@ export default function QuizScreen() {
   const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const route = useRoute<any>()
+  const queryClient = useQueryClient()
   const { trigger: haptic } = useHaptic()
   const { questions = [], sessionId, mode = 'practice', timePerQuestion = 30, showExplanation = true } = route.params ?? {}
+  const isDailyMode = mode === 'daily'
 
   const [qIndex, setQIndex] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
@@ -124,20 +127,45 @@ export default function QuizScreen() {
     newScores[qIndex] = qScore
     setQuestionScores(newScores)
 
-    // Submit to server
-    if (sessionId) {
-      try {
+    // Submit to server — daily mode uses dedicated endpoint cho BE tracking
+    // (daily missions tick, history, leaderboard). Web parity: apps/web/src/pages/DailyChallenge.tsx:347.
+    try {
+      if (isDailyMode) {
+        await apiClient.post('/api/daily-challenge/answer', {
+          questionId: question.id,
+          answer: idx,
+        })
+        // Refresh daily-missions widget khi user trở về Home
+        queryClient.invalidateQueries({ queryKey: ['daily-missions'] })
+      } else if (sessionId) {
         await apiClient.post(`/api/sessions/${sessionId}/answer`, {
           questionId: question.id,
           answer: idx,
           clientElapsedMs: (timePerQuestion - timeLeft) * 1000,
         })
-      } catch { /* non-critical */ }
-    }
-  }, [showResult, question, combo, timeLeft, qIndex, userAnswers, questionScores, sessionId, timePerQuestion])
+      }
+    } catch { /* non-critical */ }
+  }, [showResult, question, combo, timeLeft, qIndex, userAnswers, questionScores, sessionId, timePerQuestion, isDailyMode, queryClient])
 
-  const nextQuestion = () => {
+  const nextQuestion = async () => {
     if (qIndex + 1 >= questions.length) {
+      // Daily mode: POST /complete + invalidate 8 queries (web parity
+      // apps/web/src/pages/DailyChallenge.tsx:382-402).
+      if (isDailyMode) {
+        try {
+          await apiClient.post('/api/daily-challenge/complete', {
+            score,
+            correctCount,
+          })
+        } catch { /* non-critical — UI already shows result */ }
+        queryClient.invalidateQueries({ queryKey: ['me'] })
+        queryClient.invalidateQueries({ queryKey: ['daily-missions'] })
+        queryClient.invalidateQueries({ queryKey: ['daily-challenge'] })
+        queryClient.invalidateQueries({ queryKey: ['daily-challenge-result'] })
+        queryClient.invalidateQueries({ queryKey: ['ranked-status'] })
+        queryClient.invalidateQueries({ queryKey: ['leaderboard'] })
+        queryClient.invalidateQueries({ queryKey: ['daily-leaderboard'] })
+      }
       const stats = {
         totalScore: score,
         correctAnswers: correctCount,
@@ -146,6 +174,7 @@ export default function QuizScreen() {
         questions,
         userAnswers,
         questionScores,
+        mode,
       }
       navigation.replace('QuizResults', { stats })
     } else {
