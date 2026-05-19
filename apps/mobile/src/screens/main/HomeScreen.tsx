@@ -60,10 +60,15 @@ export default function HomeScreen() {
     staleTime: 5 * 60_000,
   })
 
+  // Stale CTA fix (DC-STALE-M1): mirror web DC-STALE-3 — 10s staleTime +
+  // refetchOnMount: 'always' để mỗi lần focus Home đều validate `alreadyCompleted`.
+  // Tránh race-condition khi user complete daily trên device khác.
   const { data: daily } = useQuery<DailyChallengeStatus>({
     queryKey: ['daily-challenge'],
     queryFn: () => apiClient.get('/api/daily-challenge').then(r => r.data),
-    staleTime: 60_000,
+    staleTime: 10_000,
+    refetchOnMount: 'always',
+    refetchOnReconnect: true,
   })
 
   const { data: ranked } = useQuery<RankedStatus>({
