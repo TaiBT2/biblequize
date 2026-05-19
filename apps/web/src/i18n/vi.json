@@ -2219,7 +2219,7 @@
     "freezeIndicator": "Đóng băng chuỗi",
     "freezePerWeek": "{{count}}× / tuần",
     "heatmapTitle": "Lịch sử {{days}} ngày gần đây",
-    "heatmapStats": "{{completed}}/{{total}} ngày hoàn thành ({{percent}}%)",
+    "heatmapStats": "{{completed}}/{{total}} ngày hoàn thành",
     "heatmapMissed": "bỏ",
     "heatmapLegendLow": "Ít",
     "heatmapLegendHigh": "Hoàn hảo",

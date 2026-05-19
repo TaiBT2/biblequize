@@ -68,7 +68,12 @@ Findings báo cáo trong session — confirm BE-zero cho DC-1/2/3/5/6. DC-4 free
   - **Spec strategy**: `[no-spec-impact]`
 
 - DC-6 Reorder + spacing
-  - Status: [ ] TODO
+  - Status: [x] DONE
+  - **Reorder**: thứ tự State A đã đúng target từ sau DC-5: `PageHeader → HeroCard (slim) → StreakCard (full-width) → HeatmapCard (when historyDays.length > 0)`. Không cần reorder gì thêm.
+  - **Spacing**: tất cả block dùng `mb-7` (28px) nhất quán — không tight, không quá rộng.
+  - **QA visual**: grep `var(--` trên DailyChallenge.tsx + daily/ → 0 hits. Bg + glass + gold đều hardcode hex per constraint #1.
+  - **Reframe heatmap stats** ([i18n vi+en line 2222](apps/web/src/i18n/vi.json#L2222)): drop `({{percent}}%)` parenthetical — "3/30 ngày hoàn thành (10%)" → "3/30 ngày hoàn thành". Bỏ % để tránh "grading" feel; ratio raw đủ thông tin, color heatmap riêng đã encode mức độ.
+  - **Spec strategy**: `[no-spec-impact]`
 
 - DC-REGRESSION 4-tier test
   - Status: [ ] TODO

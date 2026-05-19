@@ -2219,7 +2219,7 @@
     "freezeIndicator": "Streak freeze",
     "freezePerWeek": "{{count}}× / week",
     "heatmapTitle": "Last {{days}} days",
-    "heatmapStats": "{{completed}}/{{total}} days done ({{percent}}%)",
+    "heatmapStats": "{{completed}}/{{total}} days done",
     "heatmapMissed": "missed",
     "heatmapLegendLow": "Less",
     "heatmapLegendHigh": "Perfect",
