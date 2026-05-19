@@ -67,6 +67,10 @@ export default function QuizScreen() {
   const [correctCount, setCorrectCount] = useState(0)
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>(new Array(questions.length).fill(null))
   const [questionScores, setQuestionScores] = useState<number[]>(new Array(questions.length).fill(0))
+  // Daily mode: BE strip correctAnswer khỏi GET /api/daily-challenge payload
+  // cho đến khi user complete (security). Phải lấy correctAnswer từ POST
+  // /api/daily-challenge/answer response. Lưu state để render highlight reveal.
+  const [revealedCorrectIdx, setRevealedCorrectIdx] = useState<number | null>(null)
 
   const question = questions[qIndex]
   const progress = questions.length > 0 ? ((qIndex + 1) / questions.length) * 100 : 0
@@ -98,10 +102,42 @@ export default function QuizScreen() {
     setSelected(idx)
     setShowResult(true)
 
-    const correct = idx === (question?.correctAnswer?.[0] ?? -1)
-    setIsCorrect(correct)
+    // Daily mode: BE strip correctAnswer khỏi GET payload. Phải hỏi /answer
+    // endpoint để biết đáp án đúng. Practice/Ranked: question.correctAnswer
+    // có sẵn trong payload (controller khác không strip).
+    let correctIdx: number | undefined = question?.correctAnswer?.[0]
+    let correct = false
 
-    // Haptic feedback
+    if (isDailyMode) {
+      try {
+        const res = await apiClient.post('/api/daily-challenge/answer', {
+          questionId: question.id,
+          answer: idx,
+        })
+        correct = !!res.data?.isCorrect
+        const ca = res.data?.correctAnswer
+        if (Array.isArray(ca) && ca.length > 0) correctIdx = ca[0]
+        queryClient.invalidateQueries({ queryKey: ['daily-missions'] })
+      } catch {
+        // Fallback: dùng local check (sai khi BE strip, nhưng tránh stuck).
+        correct = idx === (correctIdx ?? -1)
+      }
+    } else {
+      correct = idx === (correctIdx ?? -1)
+      try {
+        if (sessionId) {
+          await apiClient.post(`/api/sessions/${sessionId}/answer`, {
+            questionId: question.id,
+            answer: idx,
+            clientElapsedMs: (timePerQuestion - timeLeft) * 1000,
+          })
+        }
+      } catch { /* non-critical */ }
+    }
+
+    setIsCorrect(correct)
+    setRevealedCorrectIdx(correctIdx ?? null)
+
     if (correct) haptic('success')
     else haptic('error')
 
@@ -122,7 +158,6 @@ export default function QuizScreen() {
       setCombo(0)
     }
 
-    // Record answer
     const newAnswers = [...userAnswers]
     newAnswers[qIndex] = idx
     setUserAnswers(newAnswers)
@@ -134,26 +169,7 @@ export default function QuizScreen() {
       next[qIndex] = correct
       return next
     })
-
-    // Submit to server — daily mode uses dedicated endpoint cho BE tracking
-    // (daily missions tick, history, leaderboard). Web parity: apps/web/src/pages/DailyChallenge.tsx:347.
-    try {
-      if (isDailyMode) {
-        await apiClient.post('/api/daily-challenge/answer', {
-          questionId: question.id,
-          answer: idx,
-        })
-        // Refresh daily-missions widget khi user trở về Home
-        queryClient.invalidateQueries({ queryKey: ['daily-missions'] })
-      } else if (sessionId) {
-        await apiClient.post(`/api/sessions/${sessionId}/answer`, {
-          questionId: question.id,
-          answer: idx,
-          clientElapsedMs: (timePerQuestion - timeLeft) * 1000,
-        })
-      }
-    } catch { /* non-critical */ }
-  }, [showResult, question, combo, timeLeft, qIndex, userAnswers, questionScores, sessionId, timePerQuestion, isDailyMode, queryClient])
+  }, [showResult, question, combo, timeLeft, qIndex, userAnswers, questionScores, sessionId, timePerQuestion, isDailyMode, queryClient, haptic])
 
   const nextQuestion = async () => {
     if (qIndex + 1 >= questions.length) {
@@ -190,6 +206,7 @@ export default function QuizScreen() {
       setSelected(null)
       setShowResult(false)
       setIsCorrect(null)
+      setRevealedCorrectIdx(null)
       setTimeLeft(timePerQuestion)
     }
   }
@@ -247,8 +264,11 @@ export default function QuizScreen() {
         <View style={styles.answers}>
           {question.options?.map((opt: string, idx: number) => {
             const isSel = selected === idx
-            const isRight = showResult && idx === question.correctAnswer?.[0]
-            const isWrong = showResult && isSel && idx !== question.correctAnswer?.[0]
+            // revealedCorrectIdx (state) thay vì question.correctAnswer trực
+            // tiếp vì BE strip field khi alreadyCompleted=false (daily mode).
+            const correctIdx = revealedCorrectIdx ?? question.correctAnswer?.[0]
+            const isRight = showResult && idx === correctIdx
+            const isWrong = showResult && isSel && idx !== correctIdx
             // Web parity: khi đã reveal, các đáp án không đúng/không chọn fade
             // gray để correct answer nổi bật (eliminate ambiguity giữa
             // default position tint vs correct reveal).
