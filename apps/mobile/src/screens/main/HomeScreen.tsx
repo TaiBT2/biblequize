@@ -27,12 +27,28 @@ interface DailyChallengeStatus {
   totalCount?: number
 }
 
+/**
+ * BE response shape từ `/api/me/ranked-status` (RankedController.java:610-616):
+ *   { date, livesRemaining, questionsCounted, pointsToday, cap, dailyLives, ... }
+ *
+ * `livesRemaining` = năng lượng còn lại (BE constant MAX_ENERGY=100 cho user mới).
+ * `questionsCounted` = số câu đã làm hôm nay.
+ * `cap` = daily question cap (default 30).
+ *
+ * Tên field trong BE legacy gọi "lives" (per SPEC-v2 comment "energy: 100/day, -5 per wrong").
+ * Mobile + web rename UI sang "energy" — translate field name khi đọc.
+ */
 interface RankedStatus {
-  energyRemaining?: number
-  energyMax?: number
-  rankedAnswered?: number
-  rankedCap?: number
+  livesRemaining?: number
+  /** Legacy alias web uses — keep cho backward-compat nếu BE từng đổi. */
+  energy?: number
+  questionsCounted?: number
+  cap?: number
+  dailyLives?: number
 }
+
+const ENERGY_MAX_DEFAULT = 100 // SPEC-v2 RankedController.MAX_ENERGY
+const RANKED_CAP_DEFAULT = 30  // SPEC-v2 RankedController.DAILY_QUESTION_CAP
 
 export default function HomeScreen() {
   const { t } = useTranslation()
@@ -59,10 +75,12 @@ export default function HomeScreen() {
   const totalPoints = me?.totalPoints ?? 0
   const streak = me?.currentStreak ?? 0
   const seasonPoints = me?.seasonPoints
-  const energyRemaining = ranked?.energyRemaining ?? 0
-  const energyMax = ranked?.energyMax ?? 100
-  const rankedAnswered = ranked?.rankedAnswered ?? 0
-  const rankedCap = ranked?.rankedCap ?? 30
+  // BE field = livesRemaining (legacy "lives" name), fallback `energy` cho
+  // future-proof, default MAX_ENERGY=100 khi BE chưa create record cho user.
+  const energyRemaining = ranked?.livesRemaining ?? ranked?.energy ?? ENERGY_MAX_DEFAULT
+  const energyMax = ENERGY_MAX_DEFAULT
+  const rankedAnswered = ranked?.questionsCounted ?? 0
+  const rankedCap = ranked?.cap ?? RANKED_CAP_DEFAULT
   const isDailyDone = !!daily?.alreadyCompleted
 
   const rankedLocked = totalPoints < RANKED_UNLOCK_XP
@@ -77,8 +95,8 @@ export default function HomeScreen() {
         <HomeBanner
           totalPoints={totalPoints}
           streak={streak}
-          energyRemaining={ranked?.energyRemaining}
-          energyMax={ranked?.energyMax}
+          energyRemaining={energyRemaining}
+          energyMax={energyMax}
           seasonPoints={seasonPoints}
         />
 
