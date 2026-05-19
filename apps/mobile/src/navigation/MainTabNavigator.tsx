@@ -163,12 +163,15 @@ export default function MainTabNavigator() {
           tabBarIcon: ({ color, size }) => <MaterialIcons name="home" size={size} color={color} />,
         }}
       />
+      {/* QuizTab hidden từ bottom bar (2026-05-19 user request) — stack vẫn
+          registered để Home cards + internal nav (PracticeSelect → Quiz →
+          Results → Review) work qua navigate('QuizTab', { screen: ... }). */}
       <Tab.Screen
         name="QuizTab"
         component={QuizStackNavigator}
         options={{
-          tabBarLabel: 'Quiz',
-          tabBarIcon: ({ color, size }) => <MaterialIcons name="quiz" size={size} color={color} />,
+          tabBarButton: () => null,
+          tabBarItemStyle: { display: 'none' },
         }}
       />
       <Tab.Screen
