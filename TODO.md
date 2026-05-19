@@ -3,10 +3,11 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (22)
+## Active (23)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-05-19 | Rebrand production domain → `forbible.org` | TODO | [detail](docs/todo/active/2026-05-19-rebrand-prod-domain-to-forbible-org.md) |
 | 2026-05-18 | Avatar preset rework: people + Bible characters | TODO | [detail](docs/todo/active/2026-05-18-avatar-preset-bible-characters.md) |
 | 2026-05-18 | Mobile rewrite roadmap (RN Expo + monorepo, MVP-first) | PLANNED | [detail](docs/todo/active/2026-05-18-mobile-rewrite-roadmap.md) |
 | 2026-05-18 | Mobile rewrite S0: monorepo + packages/shared setup | DONE | [detail](docs/todo/active/2026-05-18-mobile-rewrite-s0-monorepo-setup.md) |
