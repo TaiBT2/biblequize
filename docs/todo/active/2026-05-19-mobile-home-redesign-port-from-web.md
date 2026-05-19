@@ -5,6 +5,10 @@
 
 > **Recon (2026-05-19)**: web Home.tsx 375 LOC, 2 states based on `/api/daily-challenge` alreadyCompleted boolean. 7 API endpoints: /api/me, /api/me/tier-progress, /api/daily-challenge, /api/daily-challenge/result, /api/me/ranked-status, /api/me/daily-missions, /api/me/journey. State A: FeaturedDailyCard + RankedStandardCard. State B: DailyCompletedStrip + HeroRankedCard.
 
+> **Sprint status (2026-05-19)**: ✅ DONE — 7 task done, mobile Home match web Modern Spiritual design (state machine A/B).
+> **Commits**: 1a3bf3b (Option A i18n fix) · e73ac1c (plan) · ea519da (HOME-1 Banner) · e6864ff (HOME-2 Daily cards) · 66783f6 (HOME-3 Ranked cards) · 95ea691 (HOME-4 CompactCard) · 397b362 (HOME-5 DailyMissions) · c59b71c (HOME-6/7 HomeScreen rewrite + finalize).
+> **Regression**: mobile jest 33/33 PASS · mobile tsc CLEAN. Manual QA Expo Go cần.
+
 ### Tasks
 
 - **HOME-1 HomeBanner component**
@@ -12,7 +16,7 @@
   - Avatar (gold border 64px) + greeting "Chào, {name}!" + tier name + progress bar
   - Stats row: 🔥 streak · ⚡ energy · 🏆 season points
   - Replace inline topBar + tierCard trong HomeScreen
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/components/home/HomeBanner.tsx` (new)
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -20,14 +24,14 @@
   - New `FeaturedDailyCard.tsx` (State A): maroon+gold hero card với "THỬ THÁCH HÔM NAY" label + countdown timer + "Vào chơi ngay →" gold CTA
   - New `DailyCompletedStrip.tsx` (State B): sage pill với ✓ + "X/Y đúng" + countdown next daily + "Xem lại" button
   - Self-managed setInterval(1000) cho countdown (UTC midnight)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/components/home/FeaturedDailyCard.tsx`, `DailyCompletedStrip.tsx` (new)
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
 - **HOME-3 HeroRankedCard + RankedStandardCard**
   - New `HeroRankedCard.tsx` (State B): full gold gradient hero với "Đấu Hạng" title + energy bar + progress + dark CTA "Vào trận →"
   - New `RankedStandardCard.tsx` (State A): compact card với energy + ranked daily-cap (X/Y) + "Vào Đấu Hạng" CTA
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/components/home/{HeroRankedCard,RankedStandardCard}.tsx` (new)
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -38,13 +42,13 @@
     - "Chế độ chơi chính" 2-col (Practice + Ranked card từ HOME-3)
     - "Chế độ đa dạng" 2-col mobile (Weekly/Mystery/Speed)
     - "Thi đấu cộng đồng" 2-col mobile (Groups/Multiplayer/Tournament tier-locked)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/components/home/{CompactCard,SectionHeader}.tsx` (new)
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
 - **HOME-5 DailyMissionsCard 3 rows**
   - New `DailyMissionsCard.tsx`: fetch `/api/me/daily-missions`, render 3 mission rows với progress circle (filled=completed) + description + inline progress bar (X/Y)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/components/home/DailyMissionsCard.tsx` (new)
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -53,7 +57,7 @@
   - State A render: HomeBanner → FeaturedDailyCard → DailyMissionsCard → Primary grid (Practice + RankedStandardCard) → Variety grid → Community grid
   - State B render: HomeBanner → DailyCompletedStrip → HeroRankedCard → DailyMissionsCard → Explore 2-col grid → Community grid
   - Drop old layout (top bar + tier card + 6-card grid + leaderboard preview) — leaderboard preview moved tới Leaderboard tab (already separate)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/main/HomeScreen.tsx` (rewrite)
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -61,7 +65,7 @@
   - mobile jest ≥ 33, mobile tsc clean
   - Manual QA reminder: cần test trên Expo Go device thật để verify State A/B switch
   - Update task file status DONE, archive khi user confirm
-  - Status: [ ] TODO
+  - Status: [x] DONE
 
 ### Common
 
