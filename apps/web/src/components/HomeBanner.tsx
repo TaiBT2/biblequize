@@ -122,13 +122,13 @@ export default function HomeBanner() {
         <div className="min-w-0">
           <div
             data-testid="home-greeting-meta"
-            className="hidden md:block text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary md:mb-1.5"
+            className="text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary mb-1 md:mb-1.5"
           >
             {greeting}
           </div>
           <div
             data-testid="home-greeting-name"
-            className="hidden md:block text-[30px] font-extrabold leading-[1.1] text-ivory tracking-[-0.025em] md:mb-3.5 truncate"
+            className="text-[22px] md:text-[30px] font-extrabold leading-[1.1] text-ivory tracking-[-0.025em] mb-2 md:mb-3.5 truncate"
           >
             {userName}
           </div>
@@ -141,7 +141,7 @@ export default function HomeBanner() {
               👑 {t('home.maxTierReached')}
             </div>
           ) : (
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-3.5 text-[13px]">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3.5 text-[13px]">
               <div className="flex items-center gap-2 whitespace-nowrap">
                 <span
                   data-testid="home-greeting-tier-label"
@@ -155,9 +155,10 @@ export default function HomeBanner() {
                 </span>
               </div>
 
+              <div className="flex items-center gap-3 w-full sm:contents">
               <div
                 data-testid="home-greeting-progress-bar"
-                className="relative flex-1 max-w-[240px] h-[5px] bg-white/[0.06] rounded-full overflow-visible"
+                className="relative flex-1 sm:max-w-[240px] h-[5px] bg-white/[0.06] rounded-full overflow-visible"
               >
                 <div
                   data-testid="home-greeting-progress-fill"
@@ -194,7 +195,7 @@ export default function HomeBanner() {
 
               <span
                 data-testid="home-greeting-progress-pct"
-                className="whitespace-nowrap tabular-nums font-bold text-[14px]"
+                className="whitespace-nowrap tabular-nums font-bold text-[14px] text-right"
               >
                 <span className="text-secondary">{totalPoints.toLocaleString()}</span>
                 <span className="text-ivory-faint text-[12px] font-medium">
@@ -202,6 +203,7 @@ export default function HomeBanner() {
                   / {tier.next?.minPoints.toLocaleString()} XP
                 </span>
               </span>
+              </div>
             </div>
           )}
         </div>
