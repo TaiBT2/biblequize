@@ -81,6 +81,11 @@ describe('QuizResults', () => {
     expect(screen.getByTestId('quiz-results-accuracy')).toHaveTextContent('80%')
   })
 
+  it('renders total score slot in hero block (even without bonuses)', () => {
+    renderResults({ totalScore: 150 })
+    expect(screen.getByTestId('quiz-results-total-score')).toBeInTheDocument()
+  })
+
   it('does NOT render score breakdown when there are no bonuses', () => {
     renderResults()
     expect(screen.queryByTestId('quiz-results-breakdown')).not.toBeInTheDocument()

@@ -1165,7 +1165,9 @@
       "correct": "Correct",
       "correctShort": "Correct",
       "accuracyShort": "Accuracy",
-      "time": "Time"
+      "time": "Time",
+      "score": "Total score",
+      "scoreShort": "Score"
     },
     "breakdown": {
       "base": "Base score",

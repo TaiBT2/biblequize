@@ -134,13 +134,12 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
   }, [isRanked])
 
   // Book aggregates
-  const { books, primaryBook, accuracy, totalSec, diffRows, breakdown, isHigh, tone, emoji } = useMemo(() => {
+  const { books, primaryBook, accuracy, diffRows, breakdown, isHigh, tone, emoji } = useMemo(() => {
     if (!stats) {
       return {
         books: [] as { book: string; correct: number; total: number; acc: number }[],
         primaryBook: '',
         accuracy: 0,
-        totalSec: 0,
         diffRows: [] as { key: 'easy' | 'medium' | 'hard'; correct: number; total: number; pct: number }[],
         breakdown: null as null | { base: number; speed: number; combo: number; multiplier: number; total: number; hasBonuses: boolean },
         isHigh: false,
@@ -167,7 +166,6 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
     const acc = stats.totalQuestions > 0
       ? Math.round((stats.correctAnswers / stats.totalQuestions) * 100)
       : 0
-    const sec = Math.floor((stats.totalTime || 0) / 1000)
 
     const rows = (['easy', 'medium', 'hard'] as const).map((k) => {
       const b = stats.difficultyBreakdown[k]
@@ -188,7 +186,6 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
       books: bookList,
       primaryBook: bookList[0]?.book ?? '',
       accuracy: acc,
-      totalSec: sec,
       diffRows: rows,
       breakdown: hasBonuses ? { base: base ?? total, speed, combo, multiplier, total, hasBonuses: true } : null,
       isHigh: t.state === 'high',
@@ -211,10 +208,6 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
       </div>
     )
   }
-
-  const totalMin = Math.floor(totalSec / 60)
-  const totalSecRem = totalSec % 60
-  const timeText = `${totalMin}:${totalSecRem.toString().padStart(2, '0')}`
 
   // Hero variant tokens
   const heroBg = isHigh
@@ -294,8 +287,13 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
                 <div className="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant">{t('results.stats.accuracyShort')}</div>
               </div>
               <div className="bg-[rgba(17,19,30,0.5)] py-3 px-2">
-                <div className="text-lg md:text-xl font-extrabold leading-none mb-1 tabular-nums text-[#d1d5db]">{timeText}</div>
-                <div className="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant">{t('results.stats.time')}</div>
+                <div data-testid="quiz-results-total-score" className="text-lg md:text-xl font-extrabold leading-none mb-1 tabular-nums bg-gradient-to-br from-[#e8a832] to-[#fbbf24] bg-clip-text text-transparent">
+                  {scoreDisplay}
+                </div>
+                <div className="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant">
+                  <span className="md:hidden">{t('results.stats.scoreShort')}</span>
+                  <span className="hidden md:inline">{t('results.stats.score')}</span>
+                </div>
               </div>
             </div>
           </div>

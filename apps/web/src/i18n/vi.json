@@ -1165,7 +1165,9 @@
       "correct": "Câu đúng",
       "correctShort": "Đúng",
       "accuracyShort": "Chính xác",
-      "time": "Thời gian"
+      "time": "Thời gian",
+      "score": "Tổng điểm",
+      "scoreShort": "Điểm"
     },
     "breakdown": {
       "base": "Điểm cơ bản",
