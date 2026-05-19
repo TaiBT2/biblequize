@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { View, Text, StyleSheet, Pressable, Alert, BackHandler, Modal, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, Pressable, Alert, BackHandler, ScrollView } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { useQueryClient } from '@tanstack/react-query'
@@ -364,7 +364,10 @@ export default function QuizScreen() {
             <>
               {showExplanationUi && (
                 <Pressable
+                  testID="quiz-explanation-pill"
                   onPress={() => setExplanationCollapsed(false)}
+                  hitSlop={{ top: 12, bottom: 12, left: 24, right: 24 }}
+                  android_ripple={{ color: 'rgba(255,255,255,0.1)', borderless: false }}
                   style={[
                     styles.expPill,
                     isCorrect ? styles.expPillCorrect : styles.expPillWrong,
@@ -376,45 +379,6 @@ export default function QuizScreen() {
                   </Text>
                 </Pressable>
               )}
-              {/* Panel overlay — tap backdrop / Android back để collapse về pill.
-                  Web parity (apps/web/src/pages/DailyChallenge.tsx archived todo
-                  2026-05-19 click-outside-to-close). */}
-              <Modal
-                transparent
-                visible={showExplanationUi && !explanationCollapsed}
-                animationType="fade"
-                onRequestClose={() => setExplanationCollapsed(true)}
-              >
-                <Pressable
-                  style={styles.expBackdrop}
-                  onPress={() => setExplanationCollapsed(true)}
-                >
-                  <Pressable
-                    onPress={() => { /* swallow tap — không close khi tap trong panel */ }}
-                    style={[styles.expPanel, isCorrect ? styles.expPanelCorrect : styles.expPanelWrong]}
-                  >
-                    <View style={styles.expHeader}>
-                      {!isCorrect && correctOptionText && (
-                        <View style={styles.expCorrectAns}>
-                          <Text style={styles.expCorrectIcon}>✓</Text>
-                          <Text style={styles.expCorrectText} numberOfLines={3}>
-                            Đáp án đúng: {correctOptionText}
-                          </Text>
-                        </View>
-                      )}
-                      <Pressable onPress={() => setExplanationCollapsed(true)} style={styles.expClose} hitSlop={8}>
-                        <Text style={styles.expCloseText}>✕</Text>
-                      </Pressable>
-                    </View>
-                    {hasExp && (
-                      <View style={styles.expBody}>
-                        <Text style={styles.expBodyIcon}>💡</Text>
-                        <Text style={styles.expBodyText}>{question.explanation}</Text>
-                      </View>
-                    )}
-                  </Pressable>
-                </Pressable>
-              </Modal>
               <View style={[styles.resultBar, isCorrect ? styles.resultCorrect : styles.resultWrong]}>
                 <View style={styles.resultTopRow}>
                   <View style={[styles.resultIconCircle, isCorrect ? styles.resultIconCorrect : styles.resultIconWrong]}>
@@ -432,6 +396,47 @@ export default function QuizScreen() {
                 </Pressable>
               </View>
             </>
+          )
+        })()}
+
+        {/* Explanation panel overlay — absolute positioned on top of everything
+            inside container, dim backdrop. Tap backdrop → collapse về pill.
+            (Bỏ Modal vì pill tap không bắt được sự kiện trên 1 số device —
+            simple absolute overlay tin cậy hơn.) */}
+        {showResult && !explanationCollapsed && (() => {
+          const correctIdx = revealedCorrectIdx ?? question.correctAnswer?.[0]
+          const correctOptionText = correctIdx != null ? question.options?.[correctIdx] : undefined
+          const hasExp = showExplanation && question.explanation
+          return (
+            <Pressable
+              style={styles.expBackdrop}
+              onPress={() => setExplanationCollapsed(true)}
+            >
+              <Pressable
+                onPress={() => { /* swallow */ }}
+                style={[styles.expPanel, isCorrect ? styles.expPanelCorrect : styles.expPanelWrong]}
+              >
+                <View style={styles.expHeader}>
+                  {!isCorrect && correctOptionText && (
+                    <View style={styles.expCorrectAns}>
+                      <Text style={styles.expCorrectIcon}>✓</Text>
+                      <Text style={styles.expCorrectText} numberOfLines={3}>
+                        Đáp án đúng: {correctOptionText}
+                      </Text>
+                    </View>
+                  )}
+                  <Pressable onPress={() => setExplanationCollapsed(true)} style={styles.expClose} hitSlop={12}>
+                    <Text style={styles.expCloseText}>✕</Text>
+                  </Pressable>
+                </View>
+                {hasExp && (
+                  <View style={styles.expBody}>
+                    <Text style={styles.expBodyIcon}>💡</Text>
+                    <Text style={styles.expBodyText}>{question.explanation}</Text>
+                  </View>
+                )}
+              </Pressable>
+            </Pressable>
           )
         })()}
       </View>
@@ -566,13 +571,16 @@ const styles = StyleSheet.create({
   expPillText: { fontSize: 12, fontWeight: typography.weight.bold, letterSpacing: 0.3 },
   expPillTextCorrect: { color: colors.gold },
   expPillTextWrong: { color: '#f87171' },
-  // Modal backdrop: full-screen dim overlay, tap để collapse panel.
+  // Absolute overlay backdrop trong container — full bleed (negative margin
+  // để escape container padding). Tap để collapse panel.
   expBackdrop: {
-    flex: 1,
+    position: 'absolute',
+    top: -spacing.lg, left: -spacing.lg, right: -spacing.lg, bottom: -spacing.lg,
     backgroundColor: 'rgba(0,0,0,0.55)',
     justifyContent: 'flex-end',
     padding: spacing.lg,
     paddingBottom: spacing['3xl'],
+    zIndex: 100,
   },
   expPanel: {
     backgroundColor: 'rgba(50,52,64,0.98)',
