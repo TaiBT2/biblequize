@@ -127,7 +127,8 @@
     "xpBonus": "+50 XP",
     "streak": "Streak",
     "start": "Start",
-    "loadingQuestions": "Loading questions..."
+    "loadingQuestions": "Loading questions...",
+    "alreadyCompletedToast": "You already completed today's challenge. Come back tomorrow!"
   },
   "review": {
     "title": "Review",

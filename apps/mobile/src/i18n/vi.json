@@ -127,7 +127,8 @@
     "xpBonus": "+50 XP",
     "streak": "Streak",
     "start": "Bắt đầu",
-    "loadingQuestions": "Đang tải câu hỏi..."
+    "loadingQuestions": "Đang tải câu hỏi...",
+    "alreadyCompletedToast": "Bạn đã hoàn thành thử thách hôm nay rồi. Quay lại ngày mai nhé!"
   },
   "review": {
     "title": "Xem lại",

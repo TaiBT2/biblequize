@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import SafeScreen from '../../components/layout/SafeScreen'
 import Button from '../../components/ui/Button'
 import Card from '../../components/ui/Card'
@@ -12,6 +12,7 @@ import { colors, typography, spacing, borderRadius } from '../../theme'
 export default function DailyChallengeScreen() {
   const { t } = useTranslation()
   const navigation = useNavigation<any>()
+  const qc = useQueryClient()
   const [starting, setStarting] = useState(false)
 
   const { data } = useQuery({
@@ -22,15 +23,6 @@ export default function DailyChallengeScreen() {
 
   const questions = data?.questions ?? []
 
-  /**
-   * Match web flow (apps/web/src/pages/DailyChallenge.tsx:335 handleStart):
-   * POST /api/daily-challenge/start → returns sessionId → quiz tracked BE-side.
-   *
-   * Graceful degradation: nếu /start fail (network/timeout/auth), vẫn proceed
-   * navigate Quiz với sessionId=undefined. BE /api/daily-challenge/answer là
-   * stateless lookup by questionId — không strict require sessionId. UX tốt
-   * hơn block user khi network flaky.
-   */
   const handleStart = async () => {
     if (questions.length === 0) {
       Alert.alert('Chưa sẵn sàng', 'Câu hỏi đang tải, vui lòng đợi giây lát.')
@@ -39,13 +31,24 @@ export default function DailyChallengeScreen() {
     setStarting(true)
     let sessionId: string | undefined
     try {
-      // 5s timeout — short hơn axios default 10s vì user already waited cho
-      // GET /api/daily-challenge questions. Tránh button stuck spinner > 10s.
       const startRes = await apiClient.post('/api/daily-challenge/start', {}, { timeout: 5000 })
       sessionId = startRes.data?.sessionId
     } catch (e: any) {
-      // Log but không block — vẫn proceed quiz. Sentry mobile sẽ capture
-      // nếu cần debug tại sao /start fail (network, 5xx, timeout).
+      // DC-STALE-M2: 409 = đã hoàn thành hôm nay (BE guard từ DC-STALE-1).
+      // Invalidate cache + báo user, KHÔNG navigate (tránh leak correctAnswer).
+      if (e?.response?.status === 409) {
+        await qc.invalidateQueries({ queryKey: ['daily-challenge'] })
+        setStarting(false)
+        Alert.alert(
+          t('daily.title'),
+          t('daily.alreadyCompletedToast'),
+          [{ text: 'OK', onPress: () => navigation.goBack() }],
+        )
+        return
+      }
+      // Các lỗi khác (network/5xx/timeout): graceful degradation — proceed
+      // quiz với sessionId=undefined. BE /answer là stateless lookup theo
+      // questionId nên vẫn track được. Sentry mobile capture nếu cần debug.
       console.warn('[DailyChallenge] /start failed, proceeding without sessionId:', e?.message ?? e)
     }
     navigation.navigate('Quiz', {
@@ -54,7 +57,6 @@ export default function DailyChallengeScreen() {
       mode: 'daily',
       showExplanation: true,
     })
-    // Reset starting trong case nav fail hoặc user back về screen.
     setStarting(false)
   }
 

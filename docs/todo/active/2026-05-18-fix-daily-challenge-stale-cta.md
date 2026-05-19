@@ -53,7 +53,7 @@
   - Checklist: impl · Tầng 1+3 pass · commit
 
 - DC-STALE-M2 Mobile `DailyChallengeScreen.handleStart` catch 409 — hiện `console.warn` rồi vẫn navigate Quiz (`DailyChallengeScreen.tsx:34-59`). Sửa: catch HTTP 409 → invalidate `['daily-challenge', lang]` + `['daily-challenge-result', lang]` → show Alert/Toast i18n `daily.alreadyCompletedToast` → đứng lại trên Home, KHÔNG navigate. Phụ thuộc DC-STALE-1 BE guard.
-  - Status: [ ] TODO
+  - Status: [x] DONE (defensive — chờ DC-STALE-1 BE guard land thì active)
   - Files: `apps/mobile/src/screens/quiz/DailyChallengeScreen.tsx`, `apps/mobile/src/i18n/{vi,en}.json` (hoặc shared package)
   - Test: jest DailyChallengeScreen mock 409 → assert no `navigation.navigate('Quiz')` + invalidate called; manual: complete daily web → ngay sau đó bấm CTA mobile → toast hiện
   - **Spec impact**: [x] None
