@@ -2181,11 +2181,6 @@
       "rewardBase": "base",
       "rewardPerfect": "nếu đúng hết",
       "cta": "Bắt đầu thử thách",
-      "previewHeadline": "Đừng để chuỗi gãy!",
-      "previewSubStreak": "Bạn đang có streak",
-      "streakDaysSpan": "{{count}} ngày",
-      "previewSubTail": "Một thử thách 5 phút nữa thôi.",
-      "previewSubFresh": "Hoàn thành thử thách hôm nay để bắt đầu chuỗi mới.",
       "yesterdayPrefix": "Hôm qua:",
       "yesterdayBody": "bạn đúng {{correct}}/{{total}} câu, hoàn thành trong {{time}}."
     },

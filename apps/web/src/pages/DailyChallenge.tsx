@@ -679,7 +679,6 @@ const DailyChallenge: React.FC = () => {
         state={isCompleted ? 'done' : 'ready'}
         questionCount={questionCount}
         timeLimit={timeLimit}
-        currentStreak={currentStreak}
         yesterday={yesterdayQuery.data}
         onStart={handleStart}
         done={heroDone}

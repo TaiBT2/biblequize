@@ -26,7 +26,15 @@ Findings báo cáo trong session — confirm BE-zero cho DC-1/2/3/5/6. DC-4 free
   - **Spec strategy**: `[no-spec-impact]` — đồng bộ `SPEC_USER §17.2` (verse là banner Home, không thuộc Daily Challenge)
 
 - DC-2 Gỡ block streak trùng trong hero
-  - Status: [ ] TODO
+  - Status: [x] DONE
+  - Removed:
+    - `apps/web/src/pages/daily/HeroCard.tsx:121-147` (`ReadyRight` function — 140px flame + "Đừng để chuỗi gãy!" + sub-text)
+    - `apps/web/src/pages/daily/HeroCard.tsx:53-62` → grid conditional 2-col chỉ cho `state='done'`, ready state = single-col
+    - `apps/web/src/pages/daily/HeroCard.tsx:30` (prop `currentStreak`)
+    - `apps/web/src/pages/DailyChallenge.tsx:691` (prop forwarding)
+    - i18n vi+en: 5 keys orphan dropped (`previewHeadline`, `previewSubStreak`, `streakDaysSpan`, `previewSubTail`, `previewSubFresh`)
+  - StreakCard riêng giờ là nguồn streak DUY NHẤT (DC-4 sẽ chỉnh sau)
+  - **Spec strategy**: `[no-spec-impact]`
 
 - DC-3 Thu gọn hero + fix "hoàn thành trong —" placeholder
   - Status: [ ] TODO

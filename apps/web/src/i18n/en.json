@@ -2181,11 +2181,6 @@
       "rewardBase": "base",
       "rewardPerfect": "if all correct",
       "cta": "Start challenge",
-      "previewHeadline": "Don't break your streak!",
-      "previewSubStreak": "You have a streak of",
-      "streakDaysSpan": "{{count}} days",
-      "previewSubTail": "Just one more 5-minute challenge.",
-      "previewSubFresh": "Complete today's challenge to start a new streak.",
       "yesterdayPrefix": "Yesterday:",
       "yesterdayBody": "you got {{correct}}/{{total}} correct in {{time}}."
     },

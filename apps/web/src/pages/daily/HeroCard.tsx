@@ -27,7 +27,6 @@ interface HeroCardProps {
   // Ready state inputs
   questionCount: number
   timeLimit: number
-  currentStreak: number
   yesterday?: YesterdaySummary
   onStart: () => void
   // Done state inputs
@@ -50,15 +49,19 @@ export function HeroCard(props: HeroCardProps) {
   return (
     <div className="relative bg-[rgba(50,52,64,0.4)] backdrop-blur-md border border-[rgba(232,168,50,0.15)] rounded-[20px] overflow-hidden mb-7">
       <div className="absolute inset-y-0 right-0 w-[400px] bg-[radial-gradient(circle_at_right,rgba(239,68,68,0.08)_0%,transparent_60%)] pointer-events-none" />
-      <div className="relative z-[1] grid grid-cols-1 lg:grid-cols-[1.6fr_1fr]">
-        {/* LEFT */}
-        <div className="p-8 lg:border-r border-white/5">
+      <div className={`relative z-[1] grid grid-cols-1 ${props.state === 'done' ? 'lg:grid-cols-[1.6fr_1fr]' : ''}`}>
+        {/* LEFT (or full-width on ready state) */}
+        <div className={`p-8 ${props.state === 'done' ? 'lg:border-r border-white/5' : ''}`}>
           {props.state === 'ready' ? <ReadyLeft {...props} /> : <DoneLeft {...props} />}
         </div>
-        {/* RIGHT */}
-        <div className="p-8 bg-[rgba(17,19,30,0.3)]">
-          {props.state === 'ready' ? <ReadyRight {...props} /> : <DoneRight {...props} />}
-        </div>
+        {/* RIGHT — only Done state. Ready hero is single-column post-DC-1/DC-2
+            (verse moved to Home banner, big-flame streak block now lives
+            exclusively in the standalone StreakCard). */}
+        {props.state === 'done' && (
+          <div className="p-8 bg-[rgba(17,19,30,0.3)]">
+            <DoneRight {...props} />
+          </div>
+        )}
       </div>
     </div>
   )
@@ -115,34 +118,6 @@ export function HeroCard(props: HeroCardProps) {
           </div>
         )}
       </>
-    )
-  }
-
-  function ReadyRight({ currentStreak }: HeroCardProps) {
-    return (
-      <div className="text-center">
-        <div className="w-[140px] h-[140px] mx-auto mb-4 rounded-full bg-[radial-gradient(circle,rgba(239,68,68,0.15)_0%,rgba(249,115,22,0.08)_50%,transparent_70%)] grid place-items-center relative">
-          <span
-            className="text-[80px]"
-            style={{
-              background: 'linear-gradient(135deg, #ef4444 0%, #f97316 50%, #fbbf24 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              filter: 'drop-shadow(0 4px 12px rgba(239,68,68,0.4))',
-            }}
-          >
-            🔥
-          </span>
-          <span className="absolute inset-0 rounded-full border-2 border-dashed border-[rgba(239,68,68,0.2)] animate-spin-slow" />
-        </div>
-        <div className="text-base font-bold mb-1.5 text-on-surface">{t('daily.ready.previewHeadline')}</div>
-        <div className="text-xs text-on-surface-variant leading-relaxed">
-          {currentStreak > 0
-            ? <>{t('daily.ready.previewSubStreak')} <strong className="text-[#f97316]">{t('daily.ready.streakDaysSpan', { count: currentStreak })}</strong>. {t('daily.ready.previewSubTail')}</>
-            : t('daily.ready.previewSubFresh')}
-        </div>
-      </div>
     )
   }
 
