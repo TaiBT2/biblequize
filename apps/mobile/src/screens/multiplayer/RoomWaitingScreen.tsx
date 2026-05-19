@@ -7,6 +7,7 @@ import SafeScreen from '../../components/layout/SafeScreen'
 import Card from '../../components/ui/Card'
 import Avatar from '../../components/ui/Avatar'
 import Button from '../../components/ui/Button'
+import ChatOverlay, { ChatMessage } from '../../components/multiplayer/ChatOverlay'
 import { apiClient } from '../../api/client'
 import { useStomp } from '../../hooks/useStomp'
 import { colors, typography, spacing } from '../../theme'
@@ -50,6 +51,8 @@ export default function RoomWaitingScreen() {
   })
 
   const [players, setPlayers] = useState<PlayerInfo[]>([])
+  const [chatOpen, setChatOpen] = useState(false)
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([])
 
   useEffect(() => {
     if (room?.players) setPlayers(room.players)
@@ -68,6 +71,16 @@ export default function RoomWaitingScreen() {
       case 'ROOM_STARTING':
         navigation.replace('MultiplayerQuiz', { roomId })
         break
+      case 'CHAT_MESSAGE': {
+        const d = msg.data ?? {}
+        setChatMessages(prev => [...prev, {
+          senderId: d.senderId,
+          sender: d.sender ?? d.senderName ?? 'Người chơi',
+          text: String(d.text ?? ''),
+          receivedAt: Date.now(),
+        }])
+        break
+      }
     }
   }, [navigation, refetch, roomId])
 
@@ -142,7 +155,16 @@ export default function RoomWaitingScreen() {
         {isHost && (
           <Button title="Bắt đầu" onPress={handleStart} fullWidth />
         )}
+
+        <Button title="💬 Mở chat" onPress={() => setChatOpen(true)} variant="outline" fullWidth />
       </ScrollView>
+
+      <ChatOverlay
+        visible={chatOpen}
+        onClose={() => setChatOpen(false)}
+        messages={chatMessages}
+        onSend={(text) => send(`/app/room/${roomId}/chat`, { text })}
+      />
     </SafeScreen>
   )
 }

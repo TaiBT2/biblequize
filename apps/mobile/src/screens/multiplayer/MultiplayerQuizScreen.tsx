@@ -5,6 +5,7 @@ import { useRoute, useNavigation } from '@react-navigation/native'
 import type { Question } from '../../types/models'
 import SafeScreen from '../../components/layout/SafeScreen'
 import CountdownTimer from '../../components/quiz/CountdownTimer'
+import ChatOverlay, { ChatMessage } from '../../components/multiplayer/ChatOverlay'
 import { useStomp } from '../../hooks/useStomp'
 import { useHaptic } from '../../hooks/useHaptic'
 import { colors, typography, spacing, borderRadius } from '../../theme'
@@ -42,6 +43,8 @@ export default function MultiplayerQuizScreen() {
   const [timeLeft, setTimeLeft] = useState(0)
   const [timeLimit, setTimeLimit] = useState(0)
   const [combo, setCombo] = useState(0)
+  const [chatOpen, setChatOpen] = useState(false)
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([])
   const questionStartedAt = useRef<number>(0)
   const selectedRef = useRef<number | null>(null)
   const { trigger: haptic } = useHaptic()
@@ -95,6 +98,16 @@ export default function MultiplayerQuizScreen() {
         navigation.replace('MultiplayerResults', { roomId, leaderboard })
         break
       }
+      case 'CHAT_MESSAGE': {
+        const d = msg.data ?? {}
+        setChatMessages(prev => [...prev, {
+          senderId: d.senderId,
+          sender: d.sender ?? d.senderName ?? 'Người chơi',
+          text: String(d.text ?? ''),
+          receivedAt: Date.now(),
+        }])
+        break
+      }
     }
   }, [navigation, roomId, haptic])
 
@@ -145,6 +158,7 @@ export default function MultiplayerQuizScreen() {
         </View>
 
         <View style={s.answers}>
+          {/* eslint-disable-next-line react/no-array-index-key */}
           {question.options.map((opt, idx) => {
             const isSelected = selected === idx
             const isCorrect = correctIndex === idx
@@ -172,6 +186,17 @@ export default function MultiplayerQuizScreen() {
             )
           })}
         </View>
+
+        <Pressable style={s.chatFab} onPress={() => setChatOpen(true)}>
+          <Text style={s.chatFabIcon}>💬</Text>
+        </Pressable>
+
+        <ChatOverlay
+          visible={chatOpen}
+          onClose={() => setChatOpen(false)}
+          messages={chatMessages}
+          onSend={(text) => send(`/app/room/${roomId}/chat`, { text })}
+        />
       </View>
     </SafeScreen>
   )
@@ -222,4 +247,18 @@ const s = StyleSheet.create({
   },
   letterText: { fontSize: typography.size.base, fontWeight: typography.weight.bold, color: colors.textPrimary },
   answerText: { fontSize: typography.size.base, fontWeight: typography.weight.medium, color: colors.textPrimary, flex: 1 },
+  chatFab: {
+    position: 'absolute',
+    right: spacing.xl,
+    bottom: spacing.xl,
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    backgroundColor: colors.surfaceContainerHighest,
+    borderWidth: 2,
+    borderColor: colors.gold,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  chatFabIcon: { fontSize: 22 },
 })
