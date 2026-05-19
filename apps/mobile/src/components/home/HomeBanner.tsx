@@ -142,9 +142,7 @@ export default function HomeBanner({
         <Stat icon="🔥" value={streak} label="STREAK" breathe />
         <Stat
           icon="⚡"
-          /* Energy luôn show "X/Y" để có context max (web parity).
-             Default 100 max khi BE không return field — tránh hiển thị bare số khó hiểu. */
-          valueText={`${energyRemaining ?? 0}/${energyMax ?? 100}`}
+          value={energyRemaining ?? 0}
           label="NĂNG LƯỢNG"
         />
         <Stat
