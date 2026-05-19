@@ -9,7 +9,7 @@ interface PageMetaProps {
 
 export default function PageMeta({ title, description, ogImage, canonicalPath }: PageMetaProps) {
   const fullTitle = `${title} — BibleQuiz`
-  const baseUrl = 'https://biblequiz.app'
+  const baseUrl = 'https://forbible.org'
 
   return (
     <Helmet>

@@ -20,4 +20,4 @@ Disallow: /achievements
 Disallow: /multiplayer
 Disallow: /settings
 
-Sitemap: https://biblequiz.app/sitemap.xml
+Sitemap: https://forbible.org/sitemap.xml
