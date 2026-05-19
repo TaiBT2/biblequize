@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useQuery } from '@tanstack/react-query'
 import SafeScreen from '../../components/layout/SafeScreen'
@@ -22,16 +22,34 @@ export default function DailyChallengeScreen() {
 
   const questions = data?.questions ?? []
 
+  /**
+   * Match web flow (apps/web/src/pages/DailyChallenge.tsx:335 handleStart):
+   * POST /api/daily-challenge/start → returns sessionId → quiz tracked BE-side.
+   *
+   * Trước đây chỉ navigate('Quiz', { questions }) → BE không biết user started,
+   * `/answer` endpoint không có session context → progress + missions không tick.
+   */
   const handleStart = async () => {
+    if (questions.length === 0) {
+      Alert.alert('Chưa sẵn sàng', 'Câu hỏi đang tải, vui lòng đợi giây lát.')
+      return
+    }
     setStarting(true)
     try {
+      const startRes = await apiClient.post('/api/daily-challenge/start')
+      const sessionId: string | undefined = startRes.data?.sessionId
       navigation.navigate('Quiz', {
+        sessionId,
         questions,
         mode: 'daily',
         showExplanation: true,
       })
-    } catch {
+    } catch (e: any) {
       setStarting(false)
+      Alert.alert(
+        'Không bắt đầu được',
+        e?.response?.data?.message ?? 'Lỗi kết nối server. Thử lại sau.',
+      )
     }
   }
 
