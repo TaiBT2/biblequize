@@ -2182,7 +2182,8 @@
       "rewardPerfect": "if all correct",
       "cta": "Start challenge",
       "yesterdayPrefix": "Yesterday:",
-      "yesterdayBody": "you got {{correct}}/{{total}} correct in {{time}}."
+      "yesterdayBody": "you got {{correct}}/{{total}} correct in {{time}}.",
+      "yesterdayBodyNoTime": "you got {{correct}}/{{total}} correct."
     },
     "done": {
       "statusBadge": "Completed at {{time}}",

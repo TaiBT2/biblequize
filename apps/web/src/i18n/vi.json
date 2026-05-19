@@ -2182,7 +2182,8 @@
       "rewardPerfect": "nếu đúng hết",
       "cta": "Bắt đầu thử thách",
       "yesterdayPrefix": "Hôm qua:",
-      "yesterdayBody": "bạn đúng {{correct}}/{{total}} câu, hoàn thành trong {{time}}."
+      "yesterdayBody": "bạn đúng {{correct}}/{{total}} câu, hoàn thành trong {{time}}.",
+      "yesterdayBodyNoTime": "bạn đúng {{correct}}/{{total}} câu."
     },
     "done": {
       "statusBadge": "Đã hoàn thành lúc {{time}}",

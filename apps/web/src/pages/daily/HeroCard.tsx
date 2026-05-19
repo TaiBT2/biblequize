@@ -110,11 +110,16 @@ export function HeroCard(props: HeroCardProps) {
         {yesterday?.completed && (
           <div className="mt-4 px-3.5 py-3 bg-[rgba(17,19,30,0.4)] border-l-[3px] border-[rgba(96,165,250,0.5)] rounded-lg text-xs text-on-surface-variant leading-relaxed">
             📊 <strong className="text-[#93c5fd]">{t('daily.ready.yesterdayPrefix')}</strong>{' '}
-            {t('daily.ready.yesterdayBody', {
-              correct: yesterday.correctCount ?? 0,
-              total: yesterday.totalQuestions ?? 5,
-              time: formatTime(yesterday.timeSeconds),
-            })}
+            {yesterday.timeSeconds && yesterday.timeSeconds > 0
+              ? t('daily.ready.yesterdayBody', {
+                  correct: yesterday.correctCount ?? 0,
+                  total: yesterday.totalQuestions ?? 5,
+                  time: formatTime(yesterday.timeSeconds),
+                })
+              : t('daily.ready.yesterdayBodyNoTime', {
+                  correct: yesterday.correctCount ?? 0,
+                  total: yesterday.totalQuestions ?? 5,
+                })}
           </div>
         )}
       </>

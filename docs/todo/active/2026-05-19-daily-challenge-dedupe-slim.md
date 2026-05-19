@@ -37,7 +37,14 @@ Findings báo cáo trong session — confirm BE-zero cho DC-1/2/3/5/6. DC-4 free
   - **Spec strategy**: `[no-spec-impact]`
 
 - DC-3 Thu gọn hero + fix "hoàn thành trong —" placeholder
-  - Status: [ ] TODO
+  - Status: [x] DONE
+  - Hero structure: badge → title → desc → MetaItem pills → reward box → CTA → "Hôm qua" line — đã đúng từ sau DC-2 (chỉ còn ReadyLeft, single-col).
+  - Placeholder fix: `apps/web/src/pages/daily/HeroCard.tsx:110-122` — branch JSX theo `yesterday.timeSeconds > 0`:
+    - Có time → render full `yesterdayBody` ("...hoàn thành trong M:SS.")
+    - Không có time → render `yesterdayBodyNoTime` mới ("bạn đúng X/Y câu.") — bỏ hẳn mệnh đề "hoàn thành trong"
+  - `yesterday?.completed === false` vẫn ẩn toàn bộ dòng (gate sẵn từ trước)
+  - i18n: thêm `daily.ready.yesterdayBodyNoTime` cho vi+en
+  - **Spec strategy**: `[no-spec-impact]`
 
 - DC-4 Streak card scale + week-strip labels + freeze wording (B: drop "used")
   - Status: [ ] TODO
