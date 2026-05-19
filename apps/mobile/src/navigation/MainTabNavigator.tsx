@@ -80,10 +80,15 @@ function QuizStackNavigator() {
 
 function MultiplayerStackNavigator() {
   return (
-    <MultiplayerStack.Navigator screenOptions={{ headerShown: false }}>
+    <MultiplayerStack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Leaderboard"
+    >
       {/* Leaderboard là root screen của tab "Bảng Xếp Hạng" (2026-05-19) —
           multiplayer screens vẫn registered + accessible từ Home cards via
-          navigation.navigate('MultiplayerTab', { screen: 'MultiplayerLobby' }). */}
+          navigation.navigate('MultiplayerTab', { screen: 'MultiplayerLobby' }).
+          initialRouteName explicit để guarantee fresh mount route + tránh
+          stale persisted state hiển thị MultiplayerLobby. */}
       <MultiplayerStack.Screen name="Leaderboard" component={LeaderboardScreen} />
       <MultiplayerStack.Screen name="MultiplayerLobby" component={MultiplayerLobbyScreen} />
       <MultiplayerStack.Screen name="CreateRoom" component={CreateRoomScreen} />
@@ -169,6 +174,19 @@ export default function MainTabNavigator() {
       <Tab.Screen
         name="MultiplayerTab"
         component={MultiplayerStackNavigator}
+        listeners={({ navigation }) => ({
+          // Tap tab khi đã focus → reset về Leaderboard root (popToTop)
+          // Fix UX: user thấy "Failed to load rooms" sau khi đổi tab structure,
+          // pop về root khắc phục cached navigation state.
+          tabPress: (e) => {
+            const state = navigation.getState()
+            const tab = state.routes.find((r: any) => r.name === 'MultiplayerTab') as any
+            if (tab?.state && (tab.state.index ?? 0) > 0) {
+              e.preventDefault()
+              ;(navigation as any).navigate('MultiplayerTab', { screen: 'Leaderboard' })
+            }
+          },
+        })}
         options={{
           tabBarLabel: 'Xếp Hạng',
           tabBarIcon: ({ color, size }) => <MaterialIcons name="leaderboard" size={size} color={color} />,
