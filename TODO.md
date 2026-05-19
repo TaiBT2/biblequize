@@ -3,11 +3,12 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (25)
+## Active (26)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
-| 2026-05-19 | HomeBanner: "Mùa này" → "Đấu Hạng" + 🏆 icon | TODO | [detail](docs/todo/active/2026-05-19-home-banner-season-stat-clarity.md) |
+| 2026-05-19 | Home mobile: variety + group grids 1-col → 2-col | DONE | [detail](docs/todo/active/2026-05-19-home-mobile-cards-2col.md) |
+| 2026-05-19 | HomeBanner: "Mùa này" → "Đấu Hạng" + 🏆 icon | DONE | [detail](docs/todo/active/2026-05-19-home-banner-season-stat-clarity.md) |
 | 2026-05-19 | HomeBanner mobile: ẩn greeting + name | DONE | [detail](docs/todo/active/2026-05-19-home-banner-mobile-hide-greeting-name.md) |
 | 2026-05-19 | Quiz Results: hiển thị tổng điểm trong hero block | DONE | [detail](docs/todo/active/2026-05-19-quiz-results-show-score.md) |
 | 2026-05-19 | Rebrand production domain → `forbible.org` | TODO | [detail](docs/todo/active/2026-05-19-rebrand-prod-domain-to-forbible-org.md) |
