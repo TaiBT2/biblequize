@@ -11,8 +11,8 @@ export function PageHeader({ todayLabel, countdown, seasonName }: PageHeaderProp
   return (
     <div className="flex items-start justify-between gap-5 flex-wrap mb-6">
       <div className="flex-1 min-w-[280px]">
-        <h2 className="text-3xl font-extrabold tracking-tight mb-2 flex items-center gap-3">
-          <span className="w-10 h-10 rounded-[10px] bg-gradient-to-br from-[#ef4444] to-[#f97316] grid place-items-center text-[22px] text-white shadow-[0_4px_16px_rgba(239,68,68,0.3)]">
+        <h2 className="text-[22px] md:text-3xl font-extrabold tracking-tight mb-2 flex items-center gap-2.5 md:gap-3 whitespace-nowrap">
+          <span className="w-9 h-9 md:w-10 md:h-10 rounded-[10px] bg-gradient-to-br from-[#ef4444] to-[#f97316] grid place-items-center text-[20px] md:text-[22px] text-white shadow-[0_4px_16px_rgba(239,68,68,0.3)] shrink-0">
             <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>local_fire_department</span>
           </span>
           {t('daily.title')}
