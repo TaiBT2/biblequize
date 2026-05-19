@@ -28,7 +28,7 @@ interface RankedStatusData {
   currentBook?: string | null
 }
 
-type StatIcon = 'flame' | 'bolt' | 'coin'
+type StatIcon = 'flame' | 'bolt' | 'trophy'
 
 /**
  * Home banner — sport-app typography per home_modern.html `.banner`
@@ -224,7 +224,7 @@ export default function HomeBanner() {
             label={t('home.greeting.energy')}
           />
           <Stat
-            icon="coin"
+            icon="trophy"
             testId="home-greeting-stat-season"
             value={seasonPoints}
             label={t('home.greeting.seasonPoints')}
@@ -245,9 +245,9 @@ interface StatProps {
 function Stat({ icon, testId, value, label }: StatProps) {
   // HR-13b (2026-05-14): revert SVG icons → emoji per Bui — native
   // OS color rendering gives the same vivid look the old GreetingCard
-  // had (🔥 ember-orange, ⚡ saturated gold, 📊 multi-color medal)
-  // without per-icon SVG art. animate-breathe still pulses the flame.
-  const glyph = icon === 'flame' ? '🔥' : icon === 'bolt' ? '⚡' : '📊'
+  // had (🔥 ember-orange, ⚡ saturated gold, 🏆 trophy gold) without
+  // per-icon SVG art. animate-breathe still pulses the flame.
+  const glyph = icon === 'flame' ? '🔥' : icon === 'bolt' ? '⚡' : '🏆'
   return (
     <div
       data-testid={testId}

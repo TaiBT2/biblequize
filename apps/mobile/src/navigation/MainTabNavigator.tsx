@@ -59,7 +59,6 @@ function HomeStackNavigator() {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="Leaderboard" component={LeaderboardScreen} />
       <HomeStack.Screen name="Journey" component={JourneyMapScreen} />
       <HomeStack.Screen name="Notifications" component={NotificationsScreen} />
     </HomeStack.Navigator>
@@ -82,6 +81,10 @@ function QuizStackNavigator() {
 function MultiplayerStackNavigator() {
   return (
     <MultiplayerStack.Navigator screenOptions={{ headerShown: false }}>
+      {/* Leaderboard là root screen của tab "Bảng Xếp Hạng" (2026-05-19) —
+          multiplayer screens vẫn registered + accessible từ Home cards via
+          navigation.navigate('MultiplayerTab', { screen: 'MultiplayerLobby' }). */}
+      <MultiplayerStack.Screen name="Leaderboard" component={LeaderboardScreen} />
       <MultiplayerStack.Screen name="MultiplayerLobby" component={MultiplayerLobbyScreen} />
       <MultiplayerStack.Screen name="CreateRoom" component={CreateRoomScreen} />
       <MultiplayerStack.Screen name="RoomWaiting" component={RoomWaitingScreen} />
@@ -167,8 +170,8 @@ export default function MainTabNavigator() {
         name="MultiplayerTab"
         component={MultiplayerStackNavigator}
         options={{
-          tabBarLabel: 'Chơi cùng',
-          tabBarIcon: ({ color, size }) => <MaterialIcons name="groups" size={size} color={color} />,
+          tabBarLabel: 'Xếp Hạng',
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="leaderboard" size={size} color={color} />,
         }}
       />
       <Tab.Screen

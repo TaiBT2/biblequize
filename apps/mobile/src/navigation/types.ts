@@ -26,7 +26,6 @@ export type MainTabParamList = {
 
 export type HomeStackParamList = {
   Home: undefined
-  Leaderboard: undefined
   Journey: undefined
   Notifications: undefined
 }
@@ -44,6 +43,7 @@ export type QuizStackParamList = {
 }
 
 export type MultiplayerStackParamList = {
+  Leaderboard: undefined
   MultiplayerLobby: undefined
   CreateRoom: undefined
   RoomWaiting: { roomId: string; isHost: boolean }
