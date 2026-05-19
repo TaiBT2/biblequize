@@ -40,7 +40,7 @@ describe('PrivacyPolicy', () => {
 
   it('contains contact email', () => {
     renderPage()
-    expect(screen.getByText(/privacy@biblequiz\.app/)).toBeInTheDocument()
+    expect(screen.getByText(/privacy@forbible\.org/)).toBeInTheDocument()
   })
 
   it('has a back link to home page', () => {

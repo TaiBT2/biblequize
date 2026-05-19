@@ -128,7 +128,7 @@ export default function Help() {
         <p className="text-sm text-on-surface-variant">
           {t('help.contactHint')}{' '}
           <a
-            href="mailto:support@biblequiz.app"
+            href="mailto:support@forbible.org"
             className="font-bold text-secondary hover:underline"
           >
             {t('help.contactCta')}

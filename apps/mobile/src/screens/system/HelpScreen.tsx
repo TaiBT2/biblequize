@@ -90,7 +90,7 @@ export default function HelpScreen() {
           )
         })}
 
-        <Text style={s.footer}>Cần hỗ trợ thêm? Liên hệ support@biblequiz.app</Text>
+        <Text style={s.footer}>Cần hỗ trợ thêm? Liên hệ support@forbible.org</Text>
       </ScrollView>
     </SafeScreen>
   )

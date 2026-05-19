@@ -41,7 +41,7 @@ describe('TermsOfService', () => {
 
   it('contains contact email', () => {
     renderPage()
-    expect(screen.getByText(/support@biblequiz\.app/)).toBeInTheDocument()
+    expect(screen.getByText(/support@forbible\.org/)).toBeInTheDocument()
   })
 
   it('has a back link to home page', () => {

@@ -94,8 +94,8 @@ export default function PrivacyPolicy() {
               {isVi ? '7. Liên hệ' : '7. Contact'}
             </h2>
             <p>{isVi
-              ? 'Nếu có câu hỏi về chính sách bảo mật, vui lòng liên hệ: privacy@biblequiz.app'
-              : 'For privacy policy questions, please contact: privacy@biblequiz.app'
+              ? 'Nếu có câu hỏi về chính sách bảo mật, vui lòng liên hệ: privacy@forbible.org'
+              : 'For privacy policy questions, please contact: privacy@forbible.org'
             }</p>
           </section>
         </div>

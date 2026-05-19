@@ -103,8 +103,8 @@ export default function TermsOfService() {
               {isVi ? '8. Liên hệ' : '8. Contact'}
             </h2>
             <p>{isVi
-              ? 'Nếu có câu hỏi về điều khoản sử dụng, vui lòng liên hệ: support@biblequiz.app'
-              : 'For questions about these terms, please contact: support@biblequiz.app'
+              ? 'Nếu có câu hỏi về điều khoản sử dụng, vui lòng liên hệ: support@forbible.org'
+              : 'For questions about these terms, please contact: support@forbible.org'
             }</p>
           </section>
         </div>
