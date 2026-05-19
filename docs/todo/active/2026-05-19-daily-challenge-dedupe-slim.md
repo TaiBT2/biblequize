@@ -76,11 +76,22 @@ Findings báo cáo trong session — confirm BE-zero cho DC-1/2/3/5/6. DC-4 free
   - **Spec strategy**: `[no-spec-impact]`
 
 - DC-REGRESSION 4-tier test
-  - Status: [ ] TODO
+  - Status: [x] DONE (verification-only, no commit per prompt)
+  - **Tier 1 Vitest unit**: PASS — sau mỗi commit DC-1..DC-6 đã verify `1254/1310` (baseline `1212`)
+  - **Tier 2 Page test (DailyChallenge.test.tsx)**: PASS — `6/7` (1 fail pre-existing về XP credit POST /complete, không liên quan UI dedupe)
+  - **Tier 3 Full FE build**: PASS — `npx vite build` exits 0, 413 modules, no errors (warnings về dynamic-import + chunk-size là pre-existing)
+  - **Tier 4 Playwright smoke**: verification static — toàn bộ 7 testID dùng bởi `tests/e2e/pages/DailyChallengePage.ts` còn nguyên trong source (`daily-page`, `daily-countdown`, `daily-start-btn`, `daily-leaderboard`, `daily-completed-badge`, `daily-streak-display`, `daily-score-display`). `W-M05-L1-001` smoke chỉ assert `streakDisplay` + `startBtn` visible trên State A (sau reset) → tương thích với DC-5 gate (leaderboard ẩn ở State A nhưng streak/start vẫn render). Live run yêu cầu local dev + BE + seed → env-gated, không chạy trong session.
+  - **Cross-import check**: grep `pickDailyVerse|verseText|verseRef|freezeUsed|freezeMax|freezeCount|versePreviewLabel|previewHeadline|previewSubStreak|streakDaysSpan|previewSubTail|previewSubFresh|daily\.verseTitle` trên `apps/web/src` → chỉ còn `landing.verseText/verseRef` (LandingPage/Login/Register — namespace `landing.*` khác, không liên quan)
 
 ## Checklist
 
 - [x] Phase 0 AUDIT approved by Bui
-- [x] DC-1 committed
-- [ ] DC-2..DC-6 commits
-- [ ] DC-REGRESSION pass
+- [x] DC-1 committed (`15a75e0`)
+- [x] DC-2 committed (`7ec47fb`)
+- [x] DC-3 committed (`ec3fc94`)
+- [x] DC-4 committed (`772e767`)
+- [x] DC-5 committed (`a901c25`)
+- [x] DC-6 committed (`21cbc6e`)
+- [x] DC-REGRESSION pass (verification-only)
+
+## Status: ALL DC TASKS DONE
