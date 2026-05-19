@@ -122,13 +122,13 @@ export default function HomeBanner() {
         <div className="min-w-0">
           <div
             data-testid="home-greeting-meta"
-            className="text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary mb-1 md:mb-1.5"
+            className="hidden md:block text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary md:mb-1.5"
           >
             {greeting}
           </div>
           <div
             data-testid="home-greeting-name"
-            className="text-[22px] md:text-[30px] font-extrabold leading-[1.1] text-ivory tracking-[-0.025em] mb-2 md:mb-3.5 truncate"
+            className="hidden md:block text-[30px] font-extrabold leading-[1.1] text-ivory tracking-[-0.025em] md:mb-3.5 truncate"
           >
             {userName}
           </div>
