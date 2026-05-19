@@ -47,8 +47,10 @@ export type MultiplayerStackParamList = {
   MultiplayerLobby: undefined
   CreateRoom: undefined
   RoomWaiting: { roomId: string; isHost: boolean }
-  MultiplayerQuiz: { roomId: string }
-  MultiplayerResults: { roomId: string }
+  MultiplayerQuiz: { roomId: string; userId?: string }
+  RoomQuizHost: { roomId: string }
+  MultiplayerResults: { roomId: string; leaderboard?: any[] }
+  RoomAnalytics: { roomId: string }
   TournamentBracket: { tournamentId: string }
 }
 

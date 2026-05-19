@@ -69,7 +69,13 @@ export default function RoomWaitingScreen() {
         refetch()
         break
       case 'ROOM_STARTING':
-        navigation.replace('MultiplayerQuiz', { roomId })
+        // Branch: host trong "Quản trò" mode (hostPlaysGame=false) → RoomQuizHost;
+        // else → MultiplayerQuiz như player.
+        if (room?.hostId === viewerUserId && room?.hostPlaysGame === false) {
+          navigation.replace('RoomQuizHost', { roomId })
+        } else {
+          navigation.replace('MultiplayerQuiz', { roomId, userId: viewerUserId })
+        }
         break
       case 'CHAT_MESSAGE': {
         const d = msg.data ?? {}

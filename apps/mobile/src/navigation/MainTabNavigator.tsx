@@ -19,6 +19,7 @@ import RoomWaitingScreen from '../screens/multiplayer/RoomWaitingScreen'
 import MultiplayerQuizScreen from '../screens/multiplayer/MultiplayerQuizScreen'
 import MultiplayerResultsScreen from '../screens/multiplayer/MultiplayerResultsScreen'
 import TournamentBracketScreen from '../screens/multiplayer/TournamentBracketScreen'
+import RoomQuizHostScreen from '../screens/multiplayer/RoomQuizHostScreen'
 import GroupsListScreen from '../screens/social/GroupsListScreen'
 import GroupDetailScreen from '../screens/social/GroupDetailScreen'
 import GroupJoinScreen from '../screens/social/GroupJoinScreen'
@@ -70,6 +71,7 @@ function MultiplayerStackNavigator() {
       <MultiplayerStack.Screen name="CreateRoom" component={CreateRoomScreen} />
       <MultiplayerStack.Screen name="RoomWaiting" component={RoomWaitingScreen} />
       <MultiplayerStack.Screen name="MultiplayerQuiz" component={MultiplayerQuizScreen} />
+      <MultiplayerStack.Screen name="RoomQuizHost" component={RoomQuizHostScreen} />
       <MultiplayerStack.Screen name="MultiplayerResults" component={MultiplayerResultsScreen} />
       <MultiplayerStack.Screen name="TournamentBracket" component={TournamentBracketScreen} />
     </MultiplayerStack.Navigator>
