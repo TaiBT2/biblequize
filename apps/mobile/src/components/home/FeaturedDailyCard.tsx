@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react'
 import { View, Text, StyleSheet, Pressable, Animated } from 'react-native'
 import Svg, { Defs, RadialGradient, Stop, Rect, Path, Circle } from 'react-native-svg'
+import { useQuery } from '@tanstack/react-query'
 import { useCountdownToMidnight } from './useCountdownToMidnight'
+import { apiClient } from '../../api/client'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
 interface Props {
@@ -9,6 +11,11 @@ interface Props {
   estimatedMinutes?: number
   globalParticipants?: number
   onStart: () => void
+}
+
+interface SeasonInfo {
+  active?: boolean
+  name?: string
 }
 
 /**
@@ -25,6 +32,15 @@ export default function FeaturedDailyCard({
 }: Props) {
   const countdown = useCountdownToMidnight()
   const pulse = useRef(new Animated.Value(0.5)).current
+
+  // DC-PARITY-M4: mirror web `FeaturedDailyChallenge` season chip. Informational
+  // only (no ×1.5 bonus wired per DECISIONS.md 2026-05-02).
+  const { data: season } = useQuery<SeasonInfo | null>({
+    queryKey: ['season', 'active'],
+    queryFn: () => apiClient.get('/api/seasons/active').then(r => r.data).catch(() => null),
+    staleTime: 5 * 60_000,
+  })
+  const seasonName = season?.active && season.name ? season.name : null
 
   // Pulsing dot animation
   useEffect(() => {
@@ -104,6 +120,12 @@ export default function FeaturedDailyCard({
               <Text style={s.metaText}>{globalParticipants!.toLocaleString()} đã chơi</Text>
             </View>
           )}
+          {seasonName && (
+            <View style={s.seasonChip} testID="featured-daily-season-chip">
+              <Text style={s.seasonChipIcon}>✦</Text>
+              <Text style={s.seasonChipText} numberOfLines={1}>{seasonName}</Text>
+            </View>
+          )}
         </View>
 
         {/* Footer: countdown + CTA */}
@@ -166,6 +188,18 @@ const s = StyleSheet.create({
   questionDot: {
     width: 8, height: 8, borderRadius: 4,
     borderWidth: 1.5, borderColor: 'rgba(232,168,50,0.5)',
+  },
+  seasonChip: {
+    flexDirection: 'row', alignItems: 'center', gap: 4,
+    paddingHorizontal: 8, paddingVertical: 3,
+    borderRadius: borderRadius.full,
+    backgroundColor: 'rgba(232,168,50,0.14)',
+    borderWidth: 1, borderColor: 'rgba(232,168,50,0.35)',
+  },
+  seasonChipIcon: { fontSize: 11, color: colors.gold },
+  seasonChipText: {
+    fontSize: 11, fontWeight: typography.weight.semibold, color: colors.gold,
+    letterSpacing: 0.2, maxWidth: 140,
   },
 
   footer: {
