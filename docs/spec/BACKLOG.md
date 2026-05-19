@@ -150,11 +150,12 @@
 ### BL-11 — Mobile feature parity gaps vs web
 | Gap | Where | Notes |
 |---|---|---|
-| ~~Multiplayer realtime (STOMP)~~ → **2026-05-19 S1 wired**: useStomp hook + RoomWaiting (REST+STOMP), MultiplayerQuiz (SPEED_RACE minimal), MultiplayerResults, TournamentBracket. 5-mode overlays (BR/TVT/SD) + Quản trò + RoomAnalytics defer S3. |
-| Cosmetics page | none | Chưa expose |
-| Tournament match scoring detail | partial | Chỉ có bracket view |
-| SetEditor | none | Chưa có UI |
-| Scheduled quizzes | none | Chưa có routes |
+| ~~Multiplayer realtime (STOMP)~~ ✅ | `apps/mobile/src/screens/multiplayer/` + `components/multiplayer/` | **2026-05-19 S1+S3 fully wired**: useStomp + RoomWaiting + MultiplayerQuiz (timer + haptic + combo) + Results + TournamentBracket + 3 mode overlays (EliminationOverlay BR, TeamScoreBar TVT, MatchResultOverlay SD) + ChatOverlay + ReactionBar (6 emojis) + Quản trò RoomQuizHostScreen (5 controls) + RoomAnalyticsScreen. |
+| Cosmetics page | none | Chưa expose — defer S6 |
+| Tournament match scoring detail | partial | TournamentBracketScreen wired S1-6 (list-per-round); visual tree defer S5 |
+| SetEditor | none | Chưa có UI — defer S4 |
+| Scheduled quizzes | none | Chưa có routes — defer S5 |
+| GROUP_LIVE_SEQUENTIAL per-player reveal | none | Defer S4 nếu Group features touched |
 
 - **Action:** Discuss với product timeline cho mobile parity.
 

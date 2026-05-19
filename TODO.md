@@ -12,7 +12,7 @@
 | 2026-05-18 | Mobile rewrite S0: monorepo + packages/shared setup | DONE | [detail](docs/todo/active/2026-05-18-mobile-rewrite-s0-monorepo-setup.md) |
 | 2026-05-19 | Mobile rewrite S1: polish 5 stubs + useStomp foundation | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s1-polish-stubs.md) |
 | 2026-05-19 | Mobile rewrite S2: beta launch internal (EAS + Sentry + branding) | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s2-beta-internal.md) |
-| 2026-05-19 | Mobile rewrite S3: multiplayer realtime full (5 modes + Quản trò + chat + analytics) | TODO | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s3-multiplayer-realtime.md) |
+| 2026-05-19 | Mobile rewrite S3: multiplayer realtime full (5 modes + Quản trò + chat + analytics) | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s3-multiplayer-realtime.md) |
 | 2026-05-18 | Profile Edit modal redesign (Sacred Modernist + avatar preset) | DONE | [detail](docs/todo/active/2026-05-18-profile-edit-modal-redesign-sacred-modernist.md) |
 | 2026-05-18 | Fix Daily Missions "Trả lời đúng 3 câu" + "combo 3" không tick | DONE | [detail](docs/todo/active/2026-05-18-fix-daily-missions-tracking.md) |
 | 2026-05-18 | Fix Daily Challenge button "Vào chơi" còn hiện sau khi đã hoàn thành | TODO | [detail](docs/todo/active/2026-05-18-fix-daily-challenge-stale-cta.md) |

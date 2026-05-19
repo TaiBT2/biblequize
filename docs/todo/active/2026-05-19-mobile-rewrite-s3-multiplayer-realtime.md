@@ -6,12 +6,16 @@
 
 > **Recon (2026-05-19)**: Mobile QuizScreen single-player đã có timer ring + useHaptic + POS_RGB → reusable. Web có EliminationScreen/TeamScoreBar/MatchResultOverlay/ReactionBar patterns → port mobile. BE chat dest `/app/room/{id}/chat` + reaction `/app/room/{id}/reaction`. RoomAnalytics `GET /api/rooms/{id}/analytics` returns per-round breakdown.
 
+> **Sprint status (2026-05-19)**: ✅ DONE — 9 task + plan + finalize.
+> **Commits**: cf22fc8 (plan) · e309f17 (S3-1 CountdownTimer) · 2c35ae1 (S3-2 timer+haptic+combo) · 95b3ca1 (S3-3 ChatOverlay) · 57b0cf5 (S3-4 ReactionBar) · 002a782 (S3-5 EliminationOverlay) · 941ece4 (S3-6 TeamScoreBar) · ea0c5b1 (S3-7 MatchResultOverlay) · af07be7 (S3-8 RoomQuizHostScreen) · 0259d03 (S3-9 RoomAnalyticsScreen).
+> **Regression**: mobile jest 33/33 PASS · mobile tsc CLEAN · web untouched.
+
 ### Tasks
 
 - **S3-1 Extract CountdownTimer component (reusable)**
   - Pull SVG ring + 4-colour state logic từ [QuizScreen.tsx](../../../apps/mobile/src/screens/quiz/QuizScreen.tsx) ra `apps/mobile/src/components/quiz/CountdownTimer.tsx`. Props: `{ timeLeft, timeLimit, size? }`.
   - Replace inline impl trong QuizScreen với `<CountdownTimer />`.
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/components/quiz/CountdownTimer.tsx` (new), `apps/mobile/src/screens/quiz/QuizScreen.tsx`
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -19,7 +23,7 @@
   - Add `<CountdownTimer />` từ S3-1, tick down từ QUESTION_START timeLimit
   - useHaptic trigger 'success' khi answer correct, 'error' khi wrong (detect từ ROUND_END correctIndex vs selected)
   - Combo state: increment khi correct, reset khi wrong, display "🔥 N" badge
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/multiplayer/MultiplayerQuizScreen.tsx`
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -28,7 +32,7 @@
   - Listen CHAT_MESSAGE event → append to messages state
   - Send `/app/room/{roomId}/chat` { text } — 500 char limit (BE enforces)
   - Add toggle button "Chat" trong MultiplayerQuizScreen + RoomWaitingScreen
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/components/multiplayer/ChatOverlay.tsx` (new), `apps/mobile/src/screens/multiplayer/MultiplayerQuizScreen.tsx`, `apps/mobile/src/screens/multiplayer/RoomWaitingScreen.tsx`
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -38,7 +42,7 @@
   - Listen REACTION event → enqueue, render max 6 simultaneously
   - Send `/app/room/{roomId}/reaction` { reaction } — BE rate limits 3/10s
   - Wire trong MultiplayerQuizScreen
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/components/multiplayer/ReactionBar.tsx` (new), `apps/mobile/src/screens/multiplayer/MultiplayerQuizScreen.tsx`
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -46,7 +50,7 @@
   - New `apps/mobile/src/components/multiplayer/EliminationOverlay.tsx` — full-screen modal khi user bị eliminate. Props: `{ rank, totalPlayers, onContinueSpectate }`. Error-red theme + skull icon + "Hạng #N/Tổng" + "Xem tiếp" button.
   - Listen PLAYER_ELIMINATED event với matchUserId === me → show overlay, set spectator mode
   - activeCount status text "X người còn lại" trên QuizScreen header
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/components/multiplayer/EliminationOverlay.tsx` (new), `apps/mobile/src/screens/multiplayer/MultiplayerQuizScreen.tsx`
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -54,14 +58,14 @@
   - New `apps/mobile/src/components/multiplayer/TeamScoreBar.tsx` — horizontal bar Team A (blue) vs Team B (red) proportional fills + score numbers + "Perfect!" badge khi cả team correct round
   - Listen TEAM_SCORE_UPDATE event → update scoreA/scoreB
   - Wire trên top MultiplayerQuizScreen khi mode === TEAM_VS_TEAM
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/components/multiplayer/TeamScoreBar.tsx` (new), `apps/mobile/src/screens/multiplayer/MultiplayerQuizScreen.tsx`
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
 - **S3-7 SUDDEN_DEATH MatchResultOverlay**
   - New `apps/mobile/src/components/multiplayer/MatchResultOverlay.tsx` — modal 3s auto-dismiss showing winner/loser names + next match countdown. Props: `{ winnerName, loserName, iWon }`.
   - Listen MATCH_RESULT event với mode === SUDDEN_DEATH → show overlay
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/components/multiplayer/MatchResultOverlay.tsx` (new), `apps/mobile/src/screens/multiplayer/MultiplayerQuizScreen.tsx`
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -71,7 +75,7 @@
   - 5 host action buttons: Pause / Resume / Skip Question / Broadcast / End Early
   - Each calls `POST /api/rooms/{id}/host/{pause|resume|skip-question|broadcast|end-early}`
   - Navigate from RoomWaitingScreen khi host start AND !hostPlaysGame
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/multiplayer/RoomQuizHostScreen.tsx` (new), `apps/mobile/src/screens/multiplayer/RoomWaitingScreen.tsx` (nav logic), `apps/mobile/src/navigation/types.ts` + `MainTabNavigator.tsx`/RootNavigator (route reg)
   - Spec impact: BL-11 progress + SPEC_MULTIPLAYER Sprint 4 Host-Organizer separation. Strategy: (c) `[no-spec-impact]`.
 
@@ -82,7 +86,7 @@
     - Avg response time
     - Top player rankings
   - Add "Xem chi tiết" button trên MultiplayerResultsScreen → navigate Analytics
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/multiplayer/RoomAnalyticsScreen.tsx` (new), `apps/mobile/src/screens/multiplayer/MultiplayerResultsScreen.tsx`, navigation route reg
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -91,7 +95,7 @@
   - mobile tsc clean
   - Web không touched (skip vitest)
   - Update roadmap S3 → DONE, BL-11 → close (5-mode + Quản trò + RoomAnalytics đã done; chat + reactions wired; Cosmetics + SetEditor + Scheduled defer S4-S6)
-  - Status: [ ] TODO
+  - Status: [x] DONE
 
 ### Common
 
