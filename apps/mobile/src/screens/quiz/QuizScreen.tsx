@@ -310,7 +310,7 @@ export default function QuizScreen() {
                       styles.letterText,
                       !useReveal && !isFaded && { color: `rgb(${rgb})` },
                       isFaded && styles.letterTextFaded,
-                      (isRight || isWrong) && { color: colors.onSecondary },
+                      (isRight || isWrong) && { color: '#fff' },
                     ]}
                   >
                     {LETTERS[idx]}
@@ -318,12 +318,17 @@ export default function QuizScreen() {
                 </View>
                 <Text style={[
                   styles.ansText,
-                  isRight && { color: colors.success },
-                  isWrong && { color: colors.error },
+                  (isRight || isWrong) && styles.ansTextReveal,
                   isFaded && styles.ansTextFaded,
                 ]} numberOfLines={2}>
                   {opt}
                 </Text>
+                {isRight && (
+                  <Text style={styles.ansBadgeCorrect}>✓ ĐÚNG{isSel ? ' · BẠN CHỌN' : ''}</Text>
+                )}
+                {isWrong && (
+                  <Text style={styles.ansBadgeWrong}>✗ BẠN CHỌN</Text>
+                )}
               </Pressable>
             )
           })}
@@ -412,17 +417,34 @@ const styles = StyleSheet.create({
   },
   // ansSelected dropped — per-position selected style now inline (uses
   // POS_RGB so the gold accent matches the position colour).
-  ansCorrect: { borderColor: colors.success, backgroundColor: 'rgba(34,197,94,0.1)' },
-  ansWrong: { borderColor: colors.error, backgroundColor: 'rgba(239,68,68,0.1)' },
-  ansFaded: { borderColor: 'rgba(255,255,255,0.06)', backgroundColor: 'rgba(255,255,255,0.02)', opacity: 0.45 },
-  letter: { width: 32, height: 32, borderRadius: 8, backgroundColor: colors.surfaceContainerHighest, alignItems: 'center', justifyContent: 'center', marginRight: spacing.md },
-  letterCorrect: { backgroundColor: colors.success },
-  letterWrong: { backgroundColor: colors.error },
+  // Web parity: rgba(74,222,128,0.18) bg + #4ade80 border + green glow shadow.
+  ansCorrect: {
+    borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.18)',
+    shadowColor: '#4ade80', shadowOpacity: 0.35, shadowRadius: 16,
+    shadowOffset: { width: 0, height: 0 }, elevation: 4,
+  },
+  // Web parity: rgba(239,68,68,0.15) bg + #ef4444 border.
+  ansWrong: { borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.15)' },
+  // Web parity disabled state: transparent everything + opacity 0.25
+  // (mockup spec, AnswerButton.tsx case 'disabled').
+  ansFaded: { borderColor: 'transparent', backgroundColor: 'transparent', opacity: 0.25 },
+  letter: { width: 36, height: 36, borderRadius: 10, backgroundColor: colors.surfaceContainerHighest, alignItems: 'center', justifyContent: 'center', marginRight: spacing.md },
+  letterCorrect: { backgroundColor: '#4ade80' },
+  letterWrong: { backgroundColor: '#ef4444' },
   letterFaded: { backgroundColor: 'rgba(255,255,255,0.06)' },
-  letterText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold },
+  letterText: { fontSize: typography.size.base, fontWeight: typography.weight.bold, color: colors.gold },
   letterTextFaded: { color: colors.textMuted },
-  ansText: { flex: 1, fontSize: typography.size.base, color: colors.textPrimary },
+  ansText: { flex: 1, fontSize: typography.size.base, color: colors.textPrimary, fontWeight: typography.weight.medium },
+  ansTextReveal: { color: '#fff', fontWeight: typography.weight.semibold },
   ansTextFaded: { color: colors.textMuted },
+  ansBadgeCorrect: {
+    fontSize: 10, fontWeight: typography.weight.bold, color: '#4ade80',
+    marginLeft: spacing.sm, letterSpacing: 0.3,
+  },
+  ansBadgeWrong: {
+    fontSize: 10, fontWeight: typography.weight.bold, color: '#f87171',
+    marginLeft: spacing.sm, letterSpacing: 0.3,
+  },
   resultBar: {
     padding: spacing.md, gap: spacing.md,
     borderRadius: borderRadius['2xl'], marginTop: spacing.md,
