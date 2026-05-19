@@ -249,13 +249,15 @@ export default function QuizScreen() {
             const isSel = selected === idx
             const isRight = showResult && idx === question.correctAnswer?.[0]
             const isWrong = showResult && isSel && idx !== question.correctAnswer?.[0]
+            // Web parity: khi đã reveal, các đáp án không đúng/không chọn fade
+            // gray để correct answer nổi bật (eliminate ambiguity giữa
+            // default position tint vs correct reveal).
+            const isFaded = showResult && !isRight && !isSel
             const total = question.options?.length ?? 0
             const rgb = POS_RGB[colorPositionFor(idx, total)]
 
-            // Default = subtle position tint; selected = stronger; eliminated/
-            // disabled inherits default + opacity (handled in JSX below).
             const useReveal = isRight || isWrong
-            const positionStyle = useReveal
+            const positionStyle = useReveal || isFaded
               ? null
               : isSel
                 ? { borderColor: `rgb(${rgb})`, backgroundColor: `rgba(${rgb},0.20)` }
@@ -271,12 +273,14 @@ export default function QuizScreen() {
                   positionStyle,
                   isRight && styles.ansCorrect,
                   isWrong && styles.ansWrong,
+                  isFaded && styles.ansFaded,
                 ]}
               >
                 <View
                   style={[
                     styles.letter,
-                    !useReveal && { backgroundColor: `rgba(${rgb},0.30)` },
+                    !useReveal && !isFaded && { backgroundColor: `rgba(${rgb},0.30)` },
+                    isFaded && styles.letterFaded,
                     isRight && styles.letterCorrect,
                     isWrong && styles.letterWrong,
                   ]}
@@ -284,14 +288,20 @@ export default function QuizScreen() {
                   <Text
                     style={[
                       styles.letterText,
-                      !useReveal && { color: `rgb(${rgb})` },
+                      !useReveal && !isFaded && { color: `rgb(${rgb})` },
+                      isFaded && styles.letterTextFaded,
                       (isRight || isWrong) && { color: colors.onSecondary },
                     ]}
                   >
                     {LETTERS[idx]}
                   </Text>
                 </View>
-                <Text style={[styles.ansText, isRight && { color: colors.success }, isWrong && { color: colors.error }]} numberOfLines={2}>
+                <Text style={[
+                  styles.ansText,
+                  isRight && { color: colors.success },
+                  isWrong && { color: colors.error },
+                  isFaded && styles.ansTextFaded,
+                ]} numberOfLines={2}>
                   {opt}
                 </Text>
               </Pressable>
@@ -382,11 +392,15 @@ const styles = StyleSheet.create({
   // POS_RGB so the gold accent matches the position colour).
   ansCorrect: { borderColor: colors.success, backgroundColor: 'rgba(34,197,94,0.1)' },
   ansWrong: { borderColor: colors.error, backgroundColor: 'rgba(239,68,68,0.1)' },
+  ansFaded: { borderColor: 'rgba(255,255,255,0.06)', backgroundColor: 'rgba(255,255,255,0.02)', opacity: 0.45 },
   letter: { width: 32, height: 32, borderRadius: 8, backgroundColor: colors.surfaceContainerHighest, alignItems: 'center', justifyContent: 'center', marginRight: spacing.md },
   letterCorrect: { backgroundColor: colors.success },
   letterWrong: { backgroundColor: colors.error },
+  letterFaded: { backgroundColor: 'rgba(255,255,255,0.06)' },
   letterText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold },
+  letterTextFaded: { color: colors.textMuted },
   ansText: { flex: 1, fontSize: typography.size.base, color: colors.textPrimary },
+  ansTextFaded: { color: colors.textMuted },
   resultBar: {
     flexDirection: 'row', alignItems: 'center',
     padding: spacing.md, gap: spacing.md,
