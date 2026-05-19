@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next'
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { View, Text, StyleSheet, Pressable, Alert } from 'react-native'
 import { useRoute, useNavigation } from '@react-navigation/native'
 import type { Question } from '../../types/models'
 import SafeScreen from '../../components/layout/SafeScreen'
+import CountdownTimer from '../../components/quiz/CountdownTimer'
 import { useStomp } from '../../hooks/useStomp'
+import { useHaptic } from '../../hooks/useHaptic'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 import { ANSWER_COLORS } from '@biblequize/shared/constants'
 
@@ -37,7 +39,28 @@ export default function MultiplayerQuizScreen() {
   const [totalQuestions, setTotalQuestions] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
   const [correctIndex, setCorrectIndex] = useState<number | null>(null)
+  const [timeLeft, setTimeLeft] = useState(0)
+  const [timeLimit, setTimeLimit] = useState(0)
+  const [combo, setCombo] = useState(0)
   const questionStartedAt = useRef<number>(0)
+  const selectedRef = useRef<number | null>(null)
+  const { trigger: haptic } = useHaptic()
+
+  // Sync selected → ref for use trong ROUND_END callback (avoid stale closure).
+  useEffect(() => { selectedRef.current = selected }, [selected])
+
+  // Countdown tick — derived from server startedAtMs so all players stay in sync.
+  useEffect(() => {
+    if (!question || correctIndex !== null) return
+    const tick = () => {
+      const elapsedSec = (Date.now() - questionStartedAt.current) / 1000
+      const left = Math.max(0, Math.ceil(timeLimit - elapsedSec))
+      setTimeLeft(left)
+    }
+    tick()
+    const id = setInterval(tick, 250)
+    return () => clearInterval(id)
+  }, [question, timeLimit, correctIndex])
 
   const handleMessage = useCallback((msg: any) => {
     switch (msg?.type) {
@@ -47,12 +70,24 @@ export default function MultiplayerQuizScreen() {
         setQuestion(d.question)
         setQuestionIndex(d.questionIndex)
         setTotalQuestions(d.totalQuestions)
+        setTimeLimit(d.timeLimit ?? 0)
+        setTimeLeft(d.timeLimit ?? 0)
         setSelected(null)
         setCorrectIndex(null)
         break
       }
       case 'ROUND_END': {
-        setCorrectIndex(msg.data?.correctIndex ?? null)
+        const correct = msg.data?.correctIndex ?? null
+        setCorrectIndex(correct)
+        if (selectedRef.current !== null && correct !== null) {
+          const wasCorrect = selectedRef.current === correct
+          haptic(wasCorrect ? 'success' : 'error')
+          if (wasCorrect) {
+            setCombo(c => c + 1)
+          } else {
+            setCombo(0)
+          }
+        }
         break
       }
       case 'QUIZ_END': {
@@ -61,7 +96,7 @@ export default function MultiplayerQuizScreen() {
         break
       }
     }
-  }, [navigation, roomId])
+  }, [navigation, roomId, haptic])
 
   const { connected, send } = useStomp({ roomId, onMessage: handleMessage })
 
@@ -90,9 +125,20 @@ export default function MultiplayerQuizScreen() {
   return (
     <SafeScreen>
       <View style={s.container}>
-        <Text style={s.questionMeta}>
-          Câu {questionIndex + 1} / {totalQuestions} · {question.book}
-        </Text>
+        <View style={s.header}>
+          <Text style={s.questionMeta}>
+            Câu {questionIndex + 1} / {totalQuestions} · {question.book}
+          </Text>
+          {combo > 0 && (
+            <View style={s.comboBadge}>
+              <Text style={s.comboText}>🔥 {combo}</Text>
+            </View>
+          )}
+        </View>
+
+        <View style={s.timerRow}>
+          <CountdownTimer timeLeft={timeLeft} timeLimit={timeLimit} size={56} />
+        </View>
 
         <View style={s.questionCard}>
           <Text style={s.questionText}>{question.content}</Text>
@@ -135,7 +181,11 @@ const s = StyleSheet.create({
   container: { flex: 1, padding: spacing.xl, gap: spacing.lg },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   waiting: { fontSize: typography.size.base, color: colors.textMuted },
+  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   questionMeta: { fontSize: typography.size.sm, color: colors.textMuted, fontWeight: typography.weight.bold },
+  comboBadge: { backgroundColor: colors.surfaceContainer, borderRadius: borderRadius.full, paddingHorizontal: spacing.md, paddingVertical: spacing.xs },
+  comboText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold },
+  timerRow: { alignItems: 'center' },
   questionCard: {
     backgroundColor: colors.surfaceContainer,
     borderRadius: borderRadius['2xl'],
