@@ -87,6 +87,14 @@ export default function MultiplayerResultsScreen() {
           </>
         )}
 
+        {roomId && (
+          <Button
+            title="📊 Xem chi tiết trận"
+            onPress={() => navigation.navigate('RoomAnalytics', { roomId })}
+            variant="outline"
+            fullWidth
+          />
+        )}
         <Button title="Về trang chủ" onPress={() => navigation.popToTop()} fullWidth />
       </ScrollView>
     </SafeScreen>
