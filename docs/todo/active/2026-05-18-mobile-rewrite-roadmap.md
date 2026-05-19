@@ -46,7 +46,7 @@
 | **S3** ✅ | Multiplayer realtime full | 5 modes STOMP parity + Quản trò + chat + reactions + RoomAnalytics | 2-3 | [`s3-multiplayer-realtime.md`](2026-05-19-mobile-rewrite-s3-multiplayer-realtime.md) — DONE 2026-05-19 (BL-11 closed) |
 | **S4** ✅ | Quiz Set workflow | MySets + Editor MVP + Detail + GroupList; AI gen + auto-save + group editor defer | 2 | [`s4-quiz-set-workflow.md`](2026-05-19-mobile-rewrite-s4-quiz-set-workflow.md) — DONE 2026-05-19 |
 | **S5** ✅ | Scheduled + Tournament detail | ScheduledQuiz 4 screens (list/create/detail/play) + TournamentDetail/Match + GroupAnalytics | 1-2 | [`s5-scheduled-tournament.md`](2026-05-19-mobile-rewrite-s5-scheduled-tournament.md) — DONE 2026-05-19 |
-| **S6** | Cosmetics + Help + a11y polish | CosmeticsScreen + Help + onboarding polish + a11y audit | 1 | `s6-cosmetics-help-polish.md` |
+| **S6** ✅ | Cosmetics + Help + a11y polish | CosmeticsScreen + HelpScreen FAQ + Splash fade-in + a11y FABs/answers/modals | 1 | [`s6-cosmetics-help-polish.md`](2026-05-19-mobile-rewrite-s6-cosmetics-help-polish.md) — DONE 2026-05-19, **M2 milestone reached** |
 | **S7** | Production release | App Store + Play Store assets/screenshots/privacy, submit review | 1-2 | `s7-production-release.md` |
 
 ### Milestones

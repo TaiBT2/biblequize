@@ -151,7 +151,7 @@
 | Gap | Where | Notes |
 |---|---|---|
 | ~~Multiplayer realtime (STOMP)~~ ✅ | `apps/mobile/src/screens/multiplayer/` + `components/multiplayer/` | **2026-05-19 S1+S3 fully wired**: useStomp + RoomWaiting + MultiplayerQuiz (timer + haptic + combo) + Results + TournamentBracket + 3 mode overlays (EliminationOverlay BR, TeamScoreBar TVT, MatchResultOverlay SD) + ChatOverlay + ReactionBar (6 emojis) + Quản trò RoomQuizHostScreen (5 controls) + RoomAnalyticsScreen. |
-| Cosmetics page | none | Chưa expose — defer S6 |
+| Cosmetics page | ✅ | **2026-05-19 S6 shipped**: CosmeticsScreen (2 sections Khung Avatar + Theme, 3-col grid, tier-tinted icons, gold ring active, 🔒 locked với Alert "Lên hạng để mở khoá"). Wired GET/PATCH /api/me/cosmetics. |
 | Tournament match scoring detail | ✅ | **2026-05-19 S5 shipped**: TournamentDetailScreen (hero + join/start CTAs + status badge) + TournamentMatchScreen (VS layout, 3 hearts, forfeit). Real-time match gameplay defer (BE flow TBD). |
 | SetEditor (personal MVP) | ✅ | **2026-05-19 S4 shipped**: MySets + PersonalQuizSetEditor (metadata 6 fields + manual save + publish workflow) + QuestionEditor sub-screen (4 options + difficulty + book/chapter) + QuizSetDetail read-only + GroupQuizSetList. AI gen + auto-save + group editor + folder mgmt + visibility toggle defer S6+. |
 | Scheduled quizzes | ✅ | **2026-05-19 S5 shipped**: ScheduledQuizList (status filter) + Create (leader/mod form với quiz set picker) + Detail (status banner + my stats + leaderboard 30s poll) + Play (question carousel + submit + result). Native date picker + push notif defer. |
