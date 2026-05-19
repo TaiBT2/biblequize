@@ -6,6 +6,7 @@ import type { Question } from '../../types/models'
 import SafeScreen from '../../components/layout/SafeScreen'
 import CountdownTimer from '../../components/quiz/CountdownTimer'
 import ChatOverlay, { ChatMessage } from '../../components/multiplayer/ChatOverlay'
+import ReactionBar, { IncomingReaction, ReactionEmoji } from '../../components/multiplayer/ReactionBar'
 import { useStomp } from '../../hooks/useStomp'
 import { useHaptic } from '../../hooks/useHaptic'
 import { colors, typography, spacing, borderRadius } from '../../theme'
@@ -45,6 +46,7 @@ export default function MultiplayerQuizScreen() {
   const [combo, setCombo] = useState(0)
   const [chatOpen, setChatOpen] = useState(false)
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([])
+  const [reactions, setReactions] = useState<IncomingReaction[]>([])
   const questionStartedAt = useRef<number>(0)
   const selectedRef = useRef<number | null>(null)
   const { trigger: haptic } = useHaptic()
@@ -105,6 +107,15 @@ export default function MultiplayerQuizScreen() {
           sender: d.sender ?? d.senderName ?? 'Người chơi',
           text: String(d.text ?? ''),
           receivedAt: Date.now(),
+        }])
+        break
+      }
+      case 'REACTION': {
+        const d = msg.data ?? {}
+        setReactions(prev => [...prev, {
+          id: `${d.senderId ?? 'anon'}-${Date.now()}-${Math.random()}`,
+          senderName: d.senderName ?? d.sender ?? 'Người chơi',
+          reaction: String(d.reaction ?? '👏'),
         }])
         break
       }
@@ -186,6 +197,12 @@ export default function MultiplayerQuizScreen() {
             )
           })}
         </View>
+
+        <ReactionBar
+          onSend={(r: ReactionEmoji) => send(`/app/room/${roomId}/reaction`, { reaction: r })}
+          incoming={reactions}
+          onClear={(id) => setReactions(prev => prev.filter(r => r.id !== id))}
+        />
 
         <Pressable style={s.chatFab} onPress={() => setChatOpen(true)}>
           <Text style={s.chatFabIcon}>💬</Text>
