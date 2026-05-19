@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { View, Text, StyleSheet, Pressable, Alert, BackHandler } from 'react-native'
+import { View, Text, StyleSheet, Pressable, Alert, BackHandler, Modal } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { useQueryClient } from '@tanstack/react-query'
@@ -358,31 +358,46 @@ export default function QuizScreen() {
           return (
             <>
               {showExplanationUi && (
-                explanationCollapsed ? (
+                <Pressable
+                  onPress={() => setExplanationCollapsed(false)}
+                  style={[
+                    styles.expPill,
+                    isCorrect ? styles.expPillCorrect : styles.expPillWrong,
+                  ]}
+                >
+                  <Text style={styles.expPillIcon}>💡</Text>
+                  <Text style={[styles.expPillText, isCorrect ? styles.expPillTextCorrect : styles.expPillTextWrong]}>
+                    Xem giải thích
+                  </Text>
+                </Pressable>
+              )}
+              {/* Panel overlay — tap backdrop / Android back để collapse về pill.
+                  Web parity (apps/web/src/pages/DailyChallenge.tsx archived todo
+                  2026-05-19 click-outside-to-close). */}
+              <Modal
+                transparent
+                visible={showExplanationUi && !explanationCollapsed}
+                animationType="fade"
+                onRequestClose={() => setExplanationCollapsed(true)}
+              >
+                <Pressable
+                  style={styles.expBackdrop}
+                  onPress={() => setExplanationCollapsed(true)}
+                >
                   <Pressable
-                    onPress={() => setExplanationCollapsed(false)}
-                    style={[
-                      styles.expPill,
-                      isCorrect ? styles.expPillCorrect : styles.expPillWrong,
-                    ]}
+                    onPress={() => { /* swallow tap — không close khi tap trong panel */ }}
+                    style={[styles.expPanel, isCorrect ? styles.expPanelCorrect : styles.expPanelWrong]}
                   >
-                    <Text style={styles.expPillIcon}>💡</Text>
-                    <Text style={[styles.expPillText, isCorrect ? styles.expPillTextCorrect : styles.expPillTextWrong]}>
-                      Xem giải thích
-                    </Text>
-                  </Pressable>
-                ) : (
-                  <View style={[styles.expPanel, isCorrect ? styles.expPanelCorrect : styles.expPanelWrong]}>
                     <View style={styles.expHeader}>
                       {!isCorrect && correctOptionText && (
                         <View style={styles.expCorrectAns}>
                           <Text style={styles.expCorrectIcon}>✓</Text>
-                          <Text style={styles.expCorrectText} numberOfLines={2}>
+                          <Text style={styles.expCorrectText} numberOfLines={3}>
                             Đáp án đúng: {correctOptionText}
                           </Text>
                         </View>
                       )}
-                      <Pressable onPress={() => setExplanationCollapsed(true)} style={styles.expClose}>
+                      <Pressable onPress={() => setExplanationCollapsed(true)} style={styles.expClose} hitSlop={8}>
                         <Text style={styles.expCloseText}>✕</Text>
                       </Pressable>
                     </View>
@@ -392,9 +407,9 @@ export default function QuizScreen() {
                         <Text style={styles.expBodyText}>{question.explanation}</Text>
                       </View>
                     )}
-                  </View>
-                )
-              )}
+                  </Pressable>
+                </Pressable>
+              </Modal>
               <View style={[styles.resultBar, isCorrect ? styles.resultCorrect : styles.resultWrong]}>
                 <View style={styles.resultTopRow}>
                   <View style={[styles.resultIconCircle, isCorrect ? styles.resultIconCorrect : styles.resultIconWrong]}>
@@ -545,15 +560,22 @@ const styles = StyleSheet.create({
   expPillText: { fontSize: 12, fontWeight: typography.weight.bold, letterSpacing: 0.3 },
   expPillTextCorrect: { color: colors.gold },
   expPillTextWrong: { color: '#f87171' },
+  // Modal backdrop: full-screen dim overlay, tap để collapse panel.
+  expBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.55)',
+    justifyContent: 'flex-end',
+    padding: spacing.lg,
+    paddingBottom: spacing['3xl'],
+  },
   expPanel: {
-    marginTop: spacing.md,
-    backgroundColor: 'rgba(50,52,64,0.95)',
+    backgroundColor: 'rgba(50,52,64,0.98)',
     borderRadius: borderRadius['2xl'],
     borderWidth: 1,
     padding: spacing.lg,
     gap: spacing.md,
-    shadowColor: '#000', shadowOpacity: 0.4, shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 }, elevation: 6,
+    shadowColor: '#000', shadowOpacity: 0.5, shadowRadius: 20,
+    shadowOffset: { width: 0, height: 10 }, elevation: 12,
   },
   expPanelCorrect: { borderColor: 'rgba(74,222,128,0.20)' },
   expPanelWrong: { borderColor: 'rgba(239,68,68,0.20)' },
