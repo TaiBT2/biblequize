@@ -2,11 +2,14 @@ import { useTranslation } from 'react-i18next'
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import type { Question } from '../../types/models'
 import SafeScreen from '../../components/layout/SafeScreen'
 import ProgressBar from '../../components/ui/ProgressBar'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
-const SAMPLE_QUESTIONS = [
+type SampleQuestion = Pick<Question, 'content' | 'options' | 'book'> & { correctAnswer: number }
+
+const SAMPLE_QUESTIONS: SampleQuestion[] = [
   {
     content: 'Sách đầu tiên trong Kinh Thánh là gì?',
     options: ['Sáng Thế Ký', 'Xuất Hành', 'Ma-thi-ơ', 'Thi Thiên'],
