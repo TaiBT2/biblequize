@@ -178,13 +178,16 @@ export default function MainTabNavigator() {
         name="MultiplayerTab"
         component={MultiplayerStackNavigator}
         listeners={({ navigation }) => ({
-          // Tap tab khi đã focus → reset về Leaderboard root (popToTop)
-          // Fix UX: user thấy "Failed to load rooms" sau khi đổi tab structure,
-          // pop về root khắc phục cached navigation state.
+          // Tap tab → luôn reset về Leaderboard nếu current route khác.
+          // Fix HMR cached state + UX bug: user nhấn tab nhưng vẫn thấy
+          // MultiplayerLobby do nav state cũ còn pinned.
           tabPress: (e) => {
             const state = navigation.getState()
             const tab = state.routes.find((r: any) => r.name === 'MultiplayerTab') as any
-            if (tab?.state && (tab.state.index ?? 0) > 0) {
+            const tabState = tab?.state
+            if (!tabState) return
+            const currentRoute = tabState.routes?.[tabState.index ?? 0]
+            if (currentRoute && currentRoute.name !== 'Leaderboard') {
               e.preventDefault()
               ;(navigation as any).navigate('MultiplayerTab', { screen: 'Leaderboard' })
             }
