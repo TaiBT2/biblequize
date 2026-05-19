@@ -28,8 +28,8 @@
   - **Spec strategy**: [x] (b) new BL-N (cùng BL với M1)
   - Checklist: impl · Tầng 1+3 pass · commit
 
-- DC-PARITY-M3 Mobile `DailyStreakHeatmap` — 7-day heatmap (rows = ngày, cell tô gold khi completed) + longest streak + freeze count. Port từ `apps/web/src/pages/daily/StreakCard.tsx`. Endpoint: GET `/api/daily-challenge/streak` (verify exist). Render trong `DailyResultScreen` + dùng lại trên `HomeScreen` (replace số streak hiện tại).
-  - Status: [ ] TODO
+- DC-PARITY-M3 Mobile `DailyStreakHeatmap` — 7-day heatmap (rows = ngày, cell tô gold khi completed) + longest streak + freeze count. Port từ `apps/web/src/pages/daily/StreakCard.tsx`. Endpoint: GET `/api/daily-challenge/history?days=7` (sử dụng thay vì `/streak`). Render trong `DailyResultScreen`. HomeScreen integration defer — xem Out of scope dưới.
+  - Status: [x] DONE (DailyResultScreen integration). HomeScreen replace defer — conflict với `feedback_mobile_stats_bare_numbers` preference giữ stat-row compact.
   - Files: `apps/mobile/src/components/daily/DailyStreakHeatmap.tsx` (new), `apps/mobile/src/screens/main/HomeScreen.tsx`, `apps/mobile/src/screens/quiz/DailyResultScreen.tsx`
   - Test: jest heatmap render 7 days với mix completed/not; manual: tap về Home thấy heatmap thay vì số
   - **Spec impact**: [ ] None [x] SPEC_USER §14 Streak System
@@ -49,6 +49,7 @@
 - Streak Freeze UI control (web cũng chưa hoàn chỉnh, defer riêng).
 - 30-day HeatmapCard (web có, nhưng mobile space-constrained — đợi UX research).
 - Push notification streak warning < 2h (BE-driven, không thuộc gap UI).
+- HomeScreen replace số streak bằng heatmap (M3) — defer vì conflict UX preference [[feedback_mobile_stats_bare_numbers]]. HomeBanner giữ bare số, heatmap chỉ hiện ở DailyResultScreen.
 
 ### Refs
 

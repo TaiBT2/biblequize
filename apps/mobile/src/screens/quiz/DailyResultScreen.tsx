@@ -8,6 +8,7 @@ import SafeScreen from '../../components/layout/SafeScreen'
 import Button from '../../components/ui/Button'
 import Card from '../../components/ui/Card'
 import { DailyLeaderboardCard, type DailyLbEntry } from '../../components/daily/DailyLeaderboardCard'
+import { DailyStreakHeatmap } from '../../components/daily/DailyStreakHeatmap'
 import { apiClient } from '../../api/client'
 import { useAuthStore } from '../../stores/authStore'
 import { colors, typography, spacing, borderRadius } from '../../theme'
@@ -48,6 +49,8 @@ export default function DailyResultScreen() {
   const betterThanPercent = result?.betterThanPercent
 
   const userName = useAuthStore(state => state.user?.name) ?? '—'
+  const currentStreak = useAuthStore(state => state.user?.currentStreak) ?? 0
+  const longestStreak = useAuthStore(state => state.user?.longestStreak)
   const myEntry: DailyLbEntry | null = result
     ? {
         rank: result.rankGlobal ?? 0,
@@ -106,6 +109,8 @@ export default function DailyResultScreen() {
             🎯 {t('daily.done.betterThan', { percent: betterThanPercent })}
           </Text>
         )}
+
+        <DailyStreakHeatmap currentStreak={currentStreak} longestStreak={longestStreak} />
 
         <DailyLeaderboardCard myEntry={myEntry} myCompleted={true} />
 

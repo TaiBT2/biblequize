@@ -145,7 +145,14 @@
       "youLine": "Bạn",
       "loadingMyRank": "Đang tính hạng...",
       "notCompleted": "Chưa hoàn thành hôm nay"
-    }
+    },
+    "streak": {
+      "title": "Chuỗi ngày",
+      "daysLine": "ngày liên tiếp",
+      "longest": "Kỷ lục: {{count}} ngày"
+    },
+    "daySun": "CN", "dayMon": "T2", "dayTue": "T3",
+    "dayWed": "T4", "dayThu": "T5", "dayFri": "T6", "daySat": "T7"
   },
   "review": {
     "title": "Xem lại",

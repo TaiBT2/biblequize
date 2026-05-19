@@ -145,7 +145,14 @@
       "youLine": "You",
       "loadingMyRank": "Calculating rank...",
       "notCompleted": "Not completed today"
-    }
+    },
+    "streak": {
+      "title": "Streak",
+      "daysLine": "days in a row",
+      "longest": "Best: {{count}} days"
+    },
+    "daySun": "Sun", "dayMon": "Mon", "dayTue": "Tue",
+    "dayWed": "Wed", "dayThu": "Thu", "dayFri": "Fri", "daySat": "Sat"
   },
   "review": {
     "title": "Review",
