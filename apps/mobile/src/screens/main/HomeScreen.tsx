@@ -12,14 +12,18 @@ import { apiClient } from '../../api/client'
 import { getTierProgress } from '../../logic/tierProgression'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
+/**
+ * Mode metadata. Title + desc read từ i18n `home.*` keys runtime để pickup
+ * BL-4 fixes ("Đấu Hạng" canonical) + future i18n updates không cần code change.
+ */
 const GAME_MODES = [
-  { id: 'practice', icon: '📖', title: 'Luyện Tập', desc: 'Học không áp lực', route: 'PracticeSelect', color: colors.gold },
-  { id: 'ranked', icon: '⚡', title: 'Thi Đấu', desc: 'Tranh tài xếp hạng', route: 'Ranked', color: colors.gold },
-  { id: 'daily', icon: '📅', title: 'Thử Thách Ngày', desc: '5 câu mỗi ngày', route: 'DailyChallenge', color: colors.tertiary },
-  { id: 'mystery', icon: '🎲', title: 'Mystery', desc: 'Random 1.5x XP', route: 'MysteryMode', color: '#ec4899' },
-  { id: 'speed', icon: '⚡', title: 'Speed Round', desc: '10 câu × 10s', route: 'SpeedRound', color: '#f97316' },
-  { id: 'multiplayer', icon: '👥', title: 'Chơi Cùng', desc: 'Tạo phòng PvP', route: 'MultiplayerLobby', color: colors.info },
-]
+  { id: 'practice',    icon: '📖', titleKey: 'home.practice',    descKey: 'home.practiceDesc',    route: 'PracticeSelect',    color: 'gold' },
+  { id: 'ranked',      icon: '⚡', titleKey: 'home.ranked',      descKey: 'home.rankedDesc',      route: 'Ranked',            color: 'gold' },
+  { id: 'daily',       icon: '📅', titleKey: 'home.daily',       descKey: 'home.dailyDesc',       route: 'DailyChallenge',    color: 'tertiary' },
+  { id: 'mystery',     icon: '🎲', titleKey: 'home.mystery',     descKey: 'home.mysteryDesc',     route: 'MysteryMode',       color: 'pink' },
+  { id: 'speed',       icon: '⚡', titleKey: 'home.speed',       descKey: 'home.speedDesc',       route: 'SpeedRound',        color: 'orange' },
+  { id: 'multiplayer', icon: '👥', titleKey: 'home.multiplayer', descKey: 'home.multiplayerDesc', route: 'MultiplayerLobby',  color: 'info' },
+] as const
 
 export default function HomeScreen() {
   const { t } = useTranslation()
@@ -73,7 +77,7 @@ export default function HomeScreen() {
         </Card>
 
         {/* Game modes grid */}
-        <Text style={styles.sectionTitle}>Chế độ chơi</Text>
+        <Text style={styles.sectionTitle}>{t('home.gameModes')}</Text>
         <View style={styles.modesGrid}>
           {GAME_MODES.map((mode) => (
             <Pressable
@@ -82,17 +86,17 @@ export default function HomeScreen() {
               style={({ pressed }) => [styles.modeCard, pressed && styles.pressed]}
             >
               <Text style={styles.modeIcon}>{mode.icon}</Text>
-              <Text style={styles.modeTitle}>{mode.title}</Text>
-              <Text style={styles.modeDesc}>{mode.desc}</Text>
+              <Text style={styles.modeTitle}>{t(mode.titleKey)}</Text>
+              <Text style={styles.modeDesc}>{t(mode.descKey)}</Text>
             </Pressable>
           ))}
         </View>
 
         {/* Leaderboard preview */}
         <View style={styles.sectionRow}>
-          <Text style={styles.sectionTitle}>Bảng Xếp Hạng</Text>
+          <Text style={styles.sectionTitle}>{t('home.leaderboard')}</Text>
           <Pressable onPress={() => navigation.navigate('Leaderboard')}>
-            <Text style={styles.viewAll}>Xem tất cả</Text>
+            <Text style={styles.viewAll}>{t('common.viewAll')}</Text>
           </Pressable>
         </View>
         <LeaderboardPreview />
