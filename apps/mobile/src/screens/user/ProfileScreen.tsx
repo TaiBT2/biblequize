@@ -63,6 +63,7 @@ export default function ProfileScreen() {
         {/* Menu items */}
         {[
           { icon: '🏆', label: 'Thành tích', screen: 'Achievements' },
+          { icon: '📚', label: 'Bộ câu hỏi của tôi', screen: 'MySets' },
           { icon: '⚙️', label: 'Cài đặt', screen: 'Settings' },
         ].map(item => (
           <Pressable key={item.screen} onPress={() => navigation.navigate(item.screen)} style={s.menuItem}>

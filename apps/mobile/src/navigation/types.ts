@@ -59,6 +59,8 @@ export type GroupsStackParamList = {
   GroupDetail: { groupId: string }
   GroupJoin: undefined
   GroupCreate: undefined
+  GroupQuizSetList: { groupId: string }
+  QuizSetDetail: { setId: string; isPersonal: boolean; groupId?: string }
 }
 
 export type ProfileStackParamList = {
@@ -68,4 +70,8 @@ export type ProfileStackParamList = {
   Settings: undefined
   Cosmetics: undefined
   Legal: { type: 'privacy' | 'terms' | 'about' }
+  MySets: undefined
+  QuizSetDetail: { setId: string; isPersonal: boolean; groupId?: string }
+  PersonalQuizSetEditor: { setId?: string }
+  QuestionEditor: { setId: string; questionId?: string; question?: any }
 }

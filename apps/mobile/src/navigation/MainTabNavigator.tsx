@@ -21,6 +21,11 @@ import MultiplayerResultsScreen from '../screens/multiplayer/MultiplayerResultsS
 import TournamentBracketScreen from '../screens/multiplayer/TournamentBracketScreen'
 import RoomQuizHostScreen from '../screens/multiplayer/RoomQuizHostScreen'
 import RoomAnalyticsScreen from '../screens/multiplayer/RoomAnalyticsScreen'
+import MySetsScreen from '../screens/quizSets/MySetsScreen'
+import QuizSetDetailScreen from '../screens/quizSets/QuizSetDetailScreen'
+import PersonalQuizSetEditorScreen from '../screens/quizSets/PersonalQuizSetEditorScreen'
+import QuestionEditorScreen from '../screens/quizSets/QuestionEditorScreen'
+import GroupQuizSetListScreen from '../screens/quizSets/GroupQuizSetListScreen'
 import GroupsListScreen from '../screens/social/GroupsListScreen'
 import GroupDetailScreen from '../screens/social/GroupDetailScreen'
 import GroupJoinScreen from '../screens/social/GroupJoinScreen'
@@ -87,6 +92,8 @@ function GroupsStackNavigator() {
       <GroupsStack.Screen name="GroupDetail" component={GroupDetailScreen} />
       <GroupsStack.Screen name="GroupJoin" component={GroupJoinScreen} />
       <GroupsStack.Screen name="GroupCreate" component={GroupCreateScreen} />
+      <GroupsStack.Screen name="GroupQuizSetList" component={GroupQuizSetListScreen} />
+      <GroupsStack.Screen name="QuizSetDetail" component={QuizSetDetailScreen} />
     </GroupsStack.Navigator>
   )
 }
@@ -97,6 +104,10 @@ function ProfileStackNavigator() {
       <ProfileStack.Screen name="Profile" component={ProfileScreen} />
       <ProfileStack.Screen name="Achievements" component={AchievementsScreen} />
       <ProfileStack.Screen name="Settings" component={SettingsScreen} />
+      <ProfileStack.Screen name="MySets" component={MySetsScreen} />
+      <ProfileStack.Screen name="QuizSetDetail" component={QuizSetDetailScreen} />
+      <ProfileStack.Screen name="PersonalQuizSetEditor" component={PersonalQuizSetEditorScreen} />
+      <ProfileStack.Screen name="QuestionEditor" component={QuestionEditorScreen} />
     </ProfileStack.Navigator>
   )
 }

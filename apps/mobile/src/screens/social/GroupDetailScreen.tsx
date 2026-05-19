@@ -1,18 +1,20 @@
 import { useTranslation } from 'react-i18next'
 import React from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
-import { useRoute } from '@react-navigation/native'
+import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native'
+import { useRoute, useNavigation } from '@react-navigation/native'
 import { useQuery } from '@tanstack/react-query'
 import SafeScreen from '../../components/layout/SafeScreen'
 import Card from '../../components/ui/Card'
 import Avatar from '../../components/ui/Avatar'
 import { apiClient } from '../../api/client'
-import { colors, typography, spacing } from '../../theme'
+import { colors, typography, spacing, borderRadius } from '../../theme'
 
 export default function GroupDetailScreen() {
   const { t } = useTranslation()
   const route = useRoute<any>()
-  const { data } = useQuery({ queryKey: ['group', route.params?.groupId], queryFn: () => apiClient.get('/api/groups/' + route.params?.groupId).then(r => r.data), enabled: !!route.params?.groupId })
+  const navigation = useNavigation<any>()
+  const groupId: string = route.params?.groupId ?? ''
+  const { data } = useQuery({ queryKey: ['group', groupId], queryFn: () => apiClient.get('/api/groups/' + groupId).then(r => r.data), enabled: !!groupId })
   const group = data ?? {}
   const members: any[] = group.members ?? []
 
@@ -21,6 +23,13 @@ export default function GroupDetailScreen() {
       <ScrollView contentContainerStyle={s.content}>
         <View style={s.header}><Text style={{ fontSize: 48 }}>⛪</Text><Text style={s.title}>{group.name ?? 'Nhóm'}</Text>
           <Text style={s.meta}>{members.length} thành viên • Mã: {group.code ?? ''}</Text></View>
+
+        <Pressable style={s.quizSetsBtn} onPress={() => navigation.navigate('GroupQuizSetList', { groupId })}>
+          <Text style={s.quizSetsIcon}>📚</Text>
+          <Text style={s.quizSetsLabel}>Bộ câu hỏi nhóm</Text>
+          <Text style={s.quizSetsArrow}>›</Text>
+        </Pressable>
+
         <Text style={s.section}>Thành viên</Text>
         {members.map((m: any) => (
           <Card key={m.userId} style={s.row}>
@@ -42,4 +51,18 @@ const s = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   name: { fontSize: typography.size.sm, fontWeight: typography.weight.semibold, color: colors.textPrimary },
   role: { fontSize: 10, color: colors.textMuted }, pts: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold },
+  quizSetsBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+    backgroundColor: colors.surfaceContainer,
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.lg,
+    borderRadius: borderRadius.lg,
+    borderLeftWidth: 3,
+    borderLeftColor: colors.gold,
+  },
+  quizSetsIcon: { fontSize: 22 },
+  quizSetsLabel: { flex: 1, fontSize: typography.size.base, fontWeight: typography.weight.semibold, color: colors.textPrimary },
+  quizSetsArrow: { fontSize: 22, color: colors.textMuted },
 })
