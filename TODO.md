@@ -3,10 +3,11 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (27)
+## Active (28)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-05-19 | HomeBanner unified stack layout (mobile parity) | DONE | [detail](docs/todo/active/2026-05-19-home-banner-unified-stack-layout.md) |
 | 2026-05-19 | HomeBanner mobile restructure: show greet+name, full-width progress | DONE | [detail](docs/todo/active/2026-05-19-home-banner-mobile-restructure.md) |
 | 2026-05-19 | Home mobile: variety + group grids 1-col → 2-col | DONE | [detail](docs/todo/active/2026-05-19-home-mobile-cards-2col.md) |
 | 2026-05-19 | HomeBanner: "Mùa này" → "Đấu Hạng" + 🏆 icon | DONE | [detail](docs/todo/active/2026-05-19-home-banner-season-stat-clarity.md) |

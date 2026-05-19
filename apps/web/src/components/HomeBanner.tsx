@@ -100,52 +100,51 @@ export default function HomeBanner() {
         style={{ background: 'linear-gradient(90deg, transparent, rgba(232,168,50,0.4), transparent)' }}
       />
 
-      <div className="relative z-10 grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] gap-4 md:gap-7 items-center">
-        {/* Avatar */}
-        <div
-          data-testid="home-greeting-avatar"
-          className="relative w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-full grid place-items-center text-[22px] md:text-[28px] font-extrabold text-[#1a1208] shrink-0"
-          style={{
-            background: 'linear-gradient(135deg, #e8a832 0%, #c98a1c 70%, #7a5818 100%)',
-            boxShadow:
-              '0 0 30px rgba(232,168,50,0.30), inset 0 -8px 16px rgba(122,88,24,0.4), inset 0 4px 8px rgba(255,220,140,0.5)',
-          }}
-        >
-          {initial}
-          <span
-            aria-hidden
-            className="absolute -inset-[3px] rounded-full border border-[rgba(232,168,50,0.25)] pointer-events-none"
-          />
-        </div>
-
-        {/* Info: greet + name + tier row */}
-        <div className="min-w-0">
+      <div className="relative z-10 flex flex-col gap-3 md:gap-4">
+        {/* Avatar + Info row */}
+        <div className="flex items-center gap-4 md:gap-7">
           <div
-            data-testid="home-greeting-meta"
-            className="text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary mb-1 md:mb-1.5"
+            data-testid="home-greeting-avatar"
+            className="relative w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-full grid place-items-center text-[22px] md:text-[28px] font-extrabold text-[#1a1208] shrink-0"
+            style={{
+              background: 'linear-gradient(135deg, #e8a832 0%, #c98a1c 70%, #7a5818 100%)',
+              boxShadow:
+                '0 0 30px rgba(232,168,50,0.30), inset 0 -8px 16px rgba(122,88,24,0.4), inset 0 4px 8px rgba(255,220,140,0.5)',
+            }}
           >
-            {greeting}
-          </div>
-          <div
-            data-testid="home-greeting-name"
-            className="text-[22px] md:text-[30px] font-extrabold leading-[1.1] text-ivory tracking-[-0.025em] mb-2 md:mb-3.5 truncate"
-          >
-            {userName}
+            {initial}
+            <span
+              aria-hidden
+              className="absolute -inset-[3px] rounded-full border border-[rgba(232,168,50,0.25)] pointer-events-none"
+            />
           </div>
 
-          {isMaxTier ? (
+          <div className="min-w-0 flex-1">
             <div
-              data-testid="home-greeting-max-tier"
-              className="text-sm font-semibold text-secondary"
+              data-testid="home-greeting-meta"
+              className="text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary mb-1 md:mb-1.5"
             >
-              👑 {t('home.maxTierReached')}
+              {greeting}
             </div>
-          ) : (
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3.5 text-[13px]">
-              <div className="flex items-center gap-2 whitespace-nowrap">
+            <div
+              data-testid="home-greeting-name"
+              className="text-[24px] md:text-[30px] font-extrabold leading-[1.1] text-ivory tracking-[-0.025em] mb-1.5 md:mb-2 truncate"
+            >
+              {userName}
+            </div>
+
+            {isMaxTier ? (
+              <div
+                data-testid="home-greeting-max-tier"
+                className="text-sm font-semibold text-secondary"
+              >
+                👑 {t('home.maxTierReached')}
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 whitespace-nowrap text-[14px]">
                 <span
                   data-testid="home-greeting-tier-label"
-                  className="text-secondary font-bold tracking-[0.02em] text-[14px]"
+                  className="text-secondary font-bold tracking-[0.02em]"
                 >
                   {t(tier.current.nameKey)}
                 </span>
@@ -154,64 +153,67 @@ export default function HomeBanner() {
                   {tier.next && t(tier.next.nameKey)}
                 </span>
               </div>
-
-              <div className="flex items-center gap-3 w-full sm:contents">
-              <div
-                data-testid="home-greeting-progress-bar"
-                className="relative flex-1 sm:max-w-[240px] h-[5px] bg-white/[0.06] rounded-full overflow-visible"
-              >
-                <div
-                  data-testid="home-greeting-progress-fill"
-                  className="h-full rounded-full relative transition-[width] duration-500"
-                  style={{
-                    width: `${progressPct}%`,
-                    background: 'linear-gradient(90deg, #c98a1c, #e8a832 50%, #e7c268)',
-                    boxShadow: '0 0 12px rgba(232,168,50,0.5)',
-                  }}
-                >
-                  <span
-                    aria-hidden
-                    className="absolute right-0 -top-[3px] w-[11px] h-[11px] rounded-full"
-                    style={{ background: '#f5e3a8', boxShadow: '0 0 14px rgba(232,168,50,0.8)' }}
-                  />
-                </div>
-                {/* Milestone dots — pointer-events-none overlay, kept for
-                    backward-compat with Home.test.tsx specs that assert
-                    home-greeting-milestone-N rendering. */}
-                <div className="absolute inset-0 flex justify-between items-center px-1 pointer-events-none">
-                  {[0, 1, 2, 3, 4].map(i => (
-                    <span
-                      key={i}
-                      data-testid={`home-greeting-milestone-${i}`}
-                      className={`w-1 h-1 rounded-full ${
-                        i < starIndex
-                          ? 'bg-white shadow-[0_0_4px_rgba(255,255,255,0.6)]'
-                          : 'bg-white/25'
-                      }`}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <span
-                data-testid="home-greeting-progress-pct"
-                className="whitespace-nowrap tabular-nums font-bold text-[14px] text-right"
-              >
-                <span className="text-secondary">{totalPoints.toLocaleString()}</span>
-                <span className="text-ivory-faint text-[12px] font-medium">
-                  {' '}
-                  / {tier.next?.minPoints.toLocaleString()} XP
-                </span>
-              </span>
-              </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
 
-        {/* Stats */}
+        {/* Progress + XP row (full-width) */}
+        {!isMaxTier && (
+          <div className="flex items-center gap-3">
+            <div
+              data-testid="home-greeting-progress-bar"
+              className="relative flex-1 h-[5px] bg-white/[0.06] rounded-full overflow-visible"
+            >
+              <div
+                data-testid="home-greeting-progress-fill"
+                className="h-full rounded-full relative transition-[width] duration-500"
+                style={{
+                  width: `${progressPct}%`,
+                  background: 'linear-gradient(90deg, #c98a1c, #e8a832 50%, #e7c268)',
+                  boxShadow: '0 0 12px rgba(232,168,50,0.5)',
+                }}
+              >
+                <span
+                  aria-hidden
+                  className="absolute right-0 -top-[3px] w-[11px] h-[11px] rounded-full"
+                  style={{ background: '#f5e3a8', boxShadow: '0 0 14px rgba(232,168,50,0.8)' }}
+                />
+              </div>
+              {/* Milestone dots — pointer-events-none overlay, kept for
+                  backward-compat with Home.test.tsx specs that assert
+                  home-greeting-milestone-N rendering. */}
+              <div className="absolute inset-0 flex justify-between items-center px-1 pointer-events-none">
+                {[0, 1, 2, 3, 4].map(i => (
+                  <span
+                    key={i}
+                    data-testid={`home-greeting-milestone-${i}`}
+                    className={`w-1 h-1 rounded-full ${
+                      i < starIndex
+                        ? 'bg-white shadow-[0_0_4px_rgba(255,255,255,0.6)]'
+                        : 'bg-white/25'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <span
+              data-testid="home-greeting-progress-pct"
+              className="whitespace-nowrap tabular-nums font-bold text-[14px] text-right"
+            >
+              <span className="text-secondary">{totalPoints.toLocaleString()}</span>
+              <span className="text-ivory-faint text-[12px] font-medium">
+                {' '}
+                / {tier.next?.minPoints.toLocaleString()} XP
+              </span>
+            </span>
+          </div>
+        )}
+
+        {/* Stats row (full-width) */}
         <div
           data-testid="home-greeting-stats"
-          className="col-span-2 md:col-span-1 flex justify-around md:justify-start md:gap-1 pt-2 md:pt-0 border-t md:border-t-0 border-white/[0.04]"
+          className="flex justify-around md:justify-center md:gap-2 pt-2 md:pt-3 border-t border-white/[0.04]"
         >
           <Stat
             icon="flame"
@@ -256,14 +258,14 @@ function Stat({ icon, testId, value, label }: StatProps) {
       className="text-center px-2 md:px-3.5 py-1 md:py-2 min-w-[70px] border-r last:border-r-0 border-[rgba(232,168,50,0.10)]"
     >
       <div
-        className={`text-[18px] md:text-[20px] leading-none mb-1 select-none ${
+        className={`text-[20px] md:text-[22px] leading-none mb-1 select-none ${
           icon === 'flame' ? 'animate-breathe' : ''
         }`}
         aria-hidden
       >
         {glyph}
       </div>
-      <div className="text-[18px] md:text-[22px] font-extrabold text-ivory tabular-nums leading-none tracking-[-0.02em]">
+      <div className="text-[22px] md:text-[24px] font-extrabold text-ivory tabular-nums leading-none tracking-[-0.02em]">
         {value.toLocaleString()}
       </div>
       <div className="text-[9px] font-semibold uppercase tracking-[0.12em] text-ivory-faint mt-1">
