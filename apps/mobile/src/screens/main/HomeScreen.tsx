@@ -1,165 +1,176 @@
 import { useTranslation } from 'react-i18next'
 import React from 'react'
-import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native'
+import { View, StyleSheet, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useQuery } from '@tanstack/react-query'
 import SafeScreen from '../../components/layout/SafeScreen'
-import Card from '../../components/ui/Card'
-import Avatar from '../../components/ui/Avatar'
-import ProgressBar from '../../components/ui/ProgressBar'
-import { useAuthStore } from '../../stores/authStore'
+import HomeBanner from '../../components/home/HomeBanner'
+import FeaturedDailyCard from '../../components/home/FeaturedDailyCard'
+import DailyCompletedStrip from '../../components/home/DailyCompletedStrip'
+import HeroRankedCard from '../../components/home/HeroRankedCard'
+import RankedStandardCard from '../../components/home/RankedStandardCard'
+import CompactCard from '../../components/home/CompactCard'
+import SectionHeader from '../../components/home/SectionHeader'
+import DailyMissionsCard from '../../components/home/DailyMissionsCard'
 import { apiClient } from '../../api/client'
-import { getTierProgress } from '../../logic/tierProgression'
-import { colors, typography, spacing, borderRadius } from '../../theme'
+import { colors, spacing } from '../../theme'
 
-/**
- * Mode metadata. Title + desc read từ i18n `home.*` keys runtime để pickup
- * BL-4 fixes ("Đấu Hạng" canonical) + future i18n updates không cần code change.
- */
-const GAME_MODES = [
-  { id: 'practice',    icon: '📖', titleKey: 'home.practice',    descKey: 'home.practiceDesc',    route: 'PracticeSelect',    color: 'gold' },
-  { id: 'ranked',      icon: '⚡', titleKey: 'home.ranked',      descKey: 'home.rankedDesc',      route: 'Ranked',            color: 'gold' },
-  { id: 'daily',       icon: '📅', titleKey: 'home.daily',       descKey: 'home.dailyDesc',       route: 'DailyChallenge',    color: 'tertiary' },
-  { id: 'mystery',     icon: '🎲', titleKey: 'home.mystery',     descKey: 'home.mysteryDesc',     route: 'MysteryMode',       color: 'pink' },
-  { id: 'speed',       icon: '⚡', titleKey: 'home.speed',       descKey: 'home.speedDesc',       route: 'SpeedRound',        color: 'orange' },
-  { id: 'multiplayer', icon: '👥', titleKey: 'home.multiplayer', descKey: 'home.multiplayerDesc', route: 'MultiplayerLobby',  color: 'info' },
-] as const
+const RANKED_UNLOCK_XP = 1000
+const MULTIPLAYER_UNLOCK_XP = 1000
+const TOURNAMENT_UNLOCK_XP = 15000
+
+interface DailyChallengeStatus {
+  alreadyCompleted?: boolean
+  questionCount?: number
+  estimatedMinutes?: number
+  correctCount?: number
+  totalCount?: number
+}
+
+interface RankedStatus {
+  energyRemaining?: number
+  energyMax?: number
+  rankedAnswered?: number
+  rankedCap?: number
+}
 
 export default function HomeScreen() {
   const { t } = useTranslation()
   const navigation = useNavigation<any>()
-  const { user } = useAuthStore()
 
-  const { data: meData } = useQuery({
+  const { data: me } = useQuery({
     queryKey: ['me'],
     queryFn: () => apiClient.get('/api/me').then(r => r.data),
     staleTime: 5 * 60_000,
   })
 
-  const totalPoints = meData?.totalPoints ?? 0
-  const tier = getTierProgress(totalPoints)
-  const streak = meData?.currentStreak ?? 0
+  const { data: daily } = useQuery<DailyChallengeStatus>({
+    queryKey: ['daily-challenge'],
+    queryFn: () => apiClient.get('/api/daily-challenge').then(r => r.data),
+    staleTime: 60_000,
+  })
+
+  const { data: ranked } = useQuery<RankedStatus>({
+    queryKey: ['ranked-status'],
+    queryFn: () => apiClient.get('/api/me/ranked-status').then(r => r.data).catch(() => ({})),
+    staleTime: 60_000,
+  })
+
+  const totalPoints = me?.totalPoints ?? 0
+  const streak = me?.currentStreak ?? 0
+  const seasonPoints = me?.seasonPoints
+  const energyRemaining = ranked?.energyRemaining ?? 0
+  const energyMax = ranked?.energyMax ?? 100
+  const rankedAnswered = ranked?.rankedAnswered ?? 0
+  const rankedCap = ranked?.rankedCap ?? 30
+  const isDailyDone = !!daily?.alreadyCompleted
+
+  const rankedLocked = totalPoints < RANKED_UNLOCK_XP
+  const multiplayerLocked = totalPoints < MULTIPLAYER_UNLOCK_XP
+  const tournamentLocked = totalPoints < TOURNAMENT_UNLOCK_XP
+
+  const navTo = (tab: string, screen: string) => () => navigation.navigate(tab, { screen })
 
   return (
     <SafeScreen>
-      <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
-        {/* Top bar */}
-        <View style={styles.topBar}>
-          <Text style={styles.brand}>BibleQuiz</Text>
-          <View style={styles.topRight}>
-            <View style={styles.streakBadge}>
-              <Text style={styles.streakIcon}>🔥</Text>
-              <Text style={styles.streakText}>{streak}</Text>
+      <ScrollView contentContainerStyle={s.content}>
+        <HomeBanner
+          totalPoints={totalPoints}
+          streak={streak}
+          energyRemaining={ranked?.energyRemaining}
+          energyMax={ranked?.energyMax}
+          seasonPoints={seasonPoints}
+        />
+
+        {isDailyDone ? (
+          <DailyCompletedStrip
+            correctCount={daily?.correctCount ?? 0}
+            totalCount={daily?.totalCount ?? daily?.questionCount ?? 5}
+            onReview={navTo('QuizTab', 'DailyChallenge')}
+          />
+        ) : (
+          <FeaturedDailyCard
+            questionCount={daily?.questionCount ?? 5}
+            estimatedMinutes={daily?.estimatedMinutes}
+            onStart={navTo('QuizTab', 'DailyChallenge')}
+          />
+        )}
+
+        {isDailyDone && !rankedLocked && (
+          <HeroRankedCard
+            energyRemaining={energyRemaining}
+            energyMax={energyMax}
+            rankedAnswered={rankedAnswered}
+            rankedCap={rankedCap}
+            onEnter={navTo('QuizTab', 'Ranked')}
+          />
+        )}
+
+        <DailyMissionsCard />
+
+        {!isDailyDone && (
+          <>
+            <SectionHeader title={t('home.gameModes')} />
+            <View style={s.grid2}>
+              <CompactCard
+                icon="📖"
+                title={t('home.practice')}
+                subtitle={t('home.practiceDesc')}
+                onPress={navTo('QuizTab', 'PracticeSelect')}
+              />
+              <RankedStandardCard
+                energyRemaining={energyRemaining}
+                energyMax={energyMax}
+                rankedAnswered={rankedAnswered}
+                rankedCap={rankedCap}
+                onEnter={navTo('QuizTab', 'Ranked')}
+                locked={rankedLocked}
+              />
             </View>
-            <Pressable onPress={() => navigation.navigate('ProfileTab')}>
-              <Avatar uri={user?.avatarUrl} name={user?.name} size={36} borderColor={colors.gold} />
-            </Pressable>
-          </View>
+          </>
+        )}
+
+        <SectionHeader title="Chế độ đa dạng" />
+        <View style={s.grid2}>
+          <CompactCard icon="📅" themeColor={colors.tertiary} title="Thử thách tuần"
+            subtitle="7 câu / tuần"
+            onPress={navTo('QuizTab', 'WeeklyQuiz')} />
+          <CompactCard icon="🎲" themeColor="#ec4899" title={t('home.mystery')}
+            subtitle={t('home.mysteryDesc')}
+            onPress={navTo('QuizTab', 'MysteryMode')} />
+        </View>
+        <View style={s.grid2}>
+          <CompactCard icon="⚡" themeColor="#f97316" title={t('home.speed')}
+            subtitle={t('home.speedDesc')}
+            onPress={navTo('QuizTab', 'SpeedRound')} />
+          <View style={{ flex: 1 }} />
         </View>
 
-        {/* Tier progress card */}
-        <Card style={styles.tierCard}>
-          <View style={styles.tierHeader}>
-            <Text style={styles.tierIcon}>{tier.current.icon}</Text>
-            <View style={styles.tierInfo}>
-              <Text style={styles.tierName}>{tier.current.name}</Text>
-              <Text style={styles.tierPoints}>
-                {totalPoints.toLocaleString()}{tier.next ? ` / ${tier.next.minPoints.toLocaleString()}` : ''} XP
-              </Text>
-            </View>
-          </View>
-          <ProgressBar progress={tier.percent} height={8} />
-          {tier.next && (
-            <Text style={styles.tierNext}>
-              Còn {tier.pointsToNext.toLocaleString()} XP đến {tier.next.name}
-            </Text>
-          )}
-        </Card>
-
-        {/* Game modes grid */}
-        <Text style={styles.sectionTitle}>{t('home.gameModes')}</Text>
-        <View style={styles.modesGrid}>
-          {GAME_MODES.map((mode) => (
-            <Pressable
-              key={mode.id}
-              onPress={() => navigation.navigate('QuizTab', { screen: mode.route })}
-              style={({ pressed }) => [styles.modeCard, pressed && styles.pressed]}
-            >
-              <Text style={styles.modeIcon}>{mode.icon}</Text>
-              <Text style={styles.modeTitle}>{t(mode.titleKey)}</Text>
-              <Text style={styles.modeDesc}>{t(mode.descKey)}</Text>
-            </Pressable>
-          ))}
+        <SectionHeader title="Thi đấu cộng đồng" />
+        <View style={s.grid2}>
+          <CompactCard icon="⛪" themeColor={colors.info} title={t('nav.groups')}
+            subtitle="Nhóm Hội Thánh"
+            onPress={() => navigation.navigate('GroupsTab')} />
+          <CompactCard icon="👥" themeColor={colors.info} title={t('home.multiplayer')}
+            subtitle={t('home.multiplayerDesc')}
+            onPress={navTo('MultiplayerTab', 'MultiplayerLobby')}
+            locked={multiplayerLocked}
+            matchmakingHint={multiplayerLocked ? `Mở khoá @ ${MULTIPLAYER_UNLOCK_XP} XP` : undefined} />
         </View>
-
-        {/* Leaderboard preview */}
-        <View style={styles.sectionRow}>
-          <Text style={styles.sectionTitle}>{t('home.leaderboard')}</Text>
-          <Pressable onPress={() => navigation.navigate('Leaderboard')}>
-            <Text style={styles.viewAll}>{t('common.viewAll')}</Text>
-          </Pressable>
+        <View style={s.grid2}>
+          <CompactCard icon="🏆" themeColor={colors.gold} title="Giải đấu"
+            subtitle="Bracket loại trực tiếp"
+            onPress={navTo('MultiplayerTab', 'MultiplayerLobby')}
+            locked={tournamentLocked}
+            matchmakingHint={tournamentLocked ? `Mở khoá @ ${TOURNAMENT_UNLOCK_XP} XP` : undefined} />
+          <View style={{ flex: 1 }} />
         </View>
-        <LeaderboardPreview />
       </ScrollView>
     </SafeScreen>
   )
 }
 
-function LeaderboardPreview() {
-  const { data } = useQuery({
-    queryKey: ['home-leaderboard'],
-    queryFn: () => apiClient.get('/api/leaderboard/weekly?size=3').then(r => r.data),
-    staleTime: 60_000,
-  })
-
-  const entries = Array.isArray(data) ? data : []
-  if (entries.length === 0) return null
-
-  return (
-    <Card>
-      {entries.map((entry: any, i: number) => (
-        <View key={entry.userId ?? i} style={[styles.lbRow, i < entries.length - 1 && styles.lbRowBorder]}>
-          <Text style={styles.lbRank}>#{i + 1}</Text>
-          <Avatar uri={entry.avatarUrl} name={entry.name} size={32} />
-          <Text style={styles.lbName} numberOfLines={1}>{entry.name}</Text>
-          <Text style={styles.lbPoints}>{entry.points?.toLocaleString()} XP</Text>
-        </View>
-      ))}
-    </Card>
-  )
-}
-
-const styles = StyleSheet.create({
-  scroll: { flex: 1 },
-  content: { padding: spacing.lg, paddingBottom: spacing['4xl'] },
-  topBar: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: spacing.xl },
-  brand: { fontSize: typography.size.xl, fontWeight: typography.weight.bold, color: colors.gold },
-  topRight: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  streakBadge: { flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surfaceContainer, borderRadius: borderRadius.full, paddingHorizontal: spacing.md, paddingVertical: spacing.xs },
-  streakIcon: { fontSize: 14 },
-  streakText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold, marginLeft: spacing.xs },
-  tierCard: { marginBottom: spacing.xl },
-  tierHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: spacing.md },
-  tierIcon: { fontSize: 32, marginRight: spacing.md },
-  tierInfo: { flex: 1 },
-  tierName: { fontSize: typography.size.lg, fontWeight: typography.weight.bold, color: colors.gold },
-  tierPoints: { fontSize: typography.size.xs, color: colors.textMuted, marginTop: 2 },
-  tierNext: { fontSize: typography.size.xs, color: colors.textMuted, marginTop: spacing.sm, textAlign: 'right' },
-  sectionTitle: { fontSize: typography.size.lg, fontWeight: typography.weight.bold, color: colors.textPrimary, marginBottom: spacing.md },
-  sectionRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: spacing.md, marginTop: spacing.xl },
-  viewAll: { fontSize: typography.size.sm, color: colors.gold, fontWeight: typography.weight.bold },
-  modesGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md, marginBottom: spacing.lg },
-  modeCard: {
-    width: '48%', backgroundColor: colors.surfaceContainer, borderRadius: borderRadius.xl,
-    padding: spacing.lg, borderWidth: 1, borderColor: colors.borderDefault,
-  },
-  pressed: { opacity: 0.8 },
-  modeIcon: { fontSize: 24, marginBottom: spacing.sm },
-  modeTitle: { fontSize: typography.size.base, fontWeight: typography.weight.bold, color: colors.textPrimary },
-  modeDesc: { fontSize: typography.size.xs, color: colors.textMuted, marginTop: spacing.xs },
-  lbRow: { flexDirection: 'row', alignItems: 'center', paddingVertical: spacing.md, gap: spacing.md },
-  lbRowBorder: { borderBottomWidth: 1, borderBottomColor: colors.borderDefault },
-  lbRank: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold, width: 28 },
-  lbName: { flex: 1, fontSize: typography.size.sm, fontWeight: typography.weight.medium, color: colors.textPrimary },
-  lbPoints: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.textSecondary },
+const s = StyleSheet.create({
+  content: { padding: spacing.lg, gap: spacing.md, paddingBottom: spacing['2xl'] },
+  grid2: { flexDirection: 'row', gap: spacing.sm },
 })
