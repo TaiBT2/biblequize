@@ -6,20 +6,24 @@
 
 > **BE infra confirmed (recon 2026-05-19)**: STOMP `/ws` với JWT trong CONNECT frame; topic `/topic/room/{id}`; 8 send dests `/app/room/{id}/{join,leave,ready,start,answer,advance,chat,reaction}`; 24 event types. REST `RoomController` đầy đủ create/join/start/leave/host-controls. Tournament `GET /api/tournaments/{id}/bracket` returns rounds×matches.
 
+> **Sprint status (2026-05-19)**: ✅ DONE — 6 task wired + regression PASS.
+> **Commits**: 261d125 (plan) · 8493f6d (S1-1 useStomp) · 364f81a (S1-2 TryQuiz type) · 535a73e (S1-3 RoomWaiting) · d6922ca (S1-4 MultiplayerQuiz) · 1b542a9 (S1-5 Results) · 9d32ac9 (S1-6 TournamentBracket).
+> **Regression**: mobile jest 33/33 PASS · mobile tsc CLEAN · web untouched (no re-test needed).
+
 ### Tasks
 
 - **S1-1 useStomp mobile hook (foundation)**
   - New `apps/mobile/src/hooks/useStomp.ts` — port từ [`apps/web/src/hooks/useStomp.ts`](../../../apps/web/src/hooks/useStomp.ts) sang RN (async token từ AsyncStorage, không `window.location`).
   - Export `getBaseURL` từ `apps/mobile/src/api/client.ts` để useStomp dùng.
   - Test: smoke jest unit — mock @stomp/stompjs Client, verify hook activate/deactivate.
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/hooks/useStomp.ts`, `apps/mobile/src/api/client.ts` (export)
   - Spec impact: BL-15 progress (mobile chưa wire WS nên N/A trước, giờ có hook là chuẩn bị S3). Strategy: (c) `[no-spec-impact]`.
 
 - **S1-2 TryQuizScreen — use shared Question type**
   - Replace inline `SAMPLE_QUESTIONS` shape với `Pick<Question, 'content' | 'options' | 'correctAnswer' | 'book'>` từ @biblequize/shared/types.
   - Keep 3 hardcoded samples (pre-auth onboarding, no BE call needed). Spec accepted-debt — onboarding sample.
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/onboarding/TryQuizScreen.tsx`
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -29,7 +33,7 @@
   - Ready toggle button: `send('/app/room/{id}/ready', { ready: !ready })`.
   - Host start button: POST `/api/rooms/{id}/start` → navigate to MultiplayerQuiz.
   - Listen `ROOM_STARTING` → all players navigate.
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/multiplayer/RoomWaitingScreen.tsx`
   - Spec impact: BL-11 progress (multiplayer realtime stub → wired). Strategy: (c) `[no-spec-impact]`.
 
@@ -38,21 +42,21 @@
   - Send answer: `send('/app/room/{id}/answer', { questionId, selectedIndex, elapsedMs })`.
   - Listen QUIZ_END → navigate to MultiplayerResults với payload.
   - Skip mode-specific overlays (BR elimination, TVT team scores, SD match) — defer S3.
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/multiplayer/MultiplayerQuizScreen.tsx`
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
 - **S1-5 MultiplayerResultsScreen wire**
   - Accept results từ `route.params.results` (nav từ Quiz screen với QUIZ_END payload) HOẶC fallback fetch `GET /api/rooms/{id}/leaderboard` nếu params missing.
   - Render top 3 podium + full list scroll.
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/multiplayer/MultiplayerResultsScreen.tsx`
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
 - **S1-6 TournamentBracketScreen wire bracket endpoint**
   - Replace placeholder text với real `GET /api/tournaments/{id}/bracket` query.
   - Render rounds × matches grid (simple list per round, not visual tree).
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/multiplayer/TournamentBracketScreen.tsx`
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -61,7 +65,7 @@
   - `pnpm --filter mobile exec tsc --noEmit` clean
   - Web vitest baseline ≥ 1212 passing (S0 was 1253)
   - Update roadmap S1 → DONE, S1 file all tasks DONE, TODO.md index
-  - Status: [ ] TODO
+  - Status: [x] DONE
 
 ### Common
 

@@ -150,7 +150,7 @@
 ### BL-11 — Mobile feature parity gaps vs web
 | Gap | Where | Notes |
 |---|---|---|
-| Multiplayer realtime (STOMP) | `apps/mobile/src/screens/multiplayer/` | Stub only — comment nói sẽ tích hợp |
+| ~~Multiplayer realtime (STOMP)~~ → **2026-05-19 S1 wired**: useStomp hook + RoomWaiting (REST+STOMP), MultiplayerQuiz (SPEED_RACE minimal), MultiplayerResults, TournamentBracket. 5-mode overlays (BR/TVT/SD) + Quản trò + RoomAnalytics defer S3. |
 | Cosmetics page | none | Chưa expose |
 | Tournament match scoring detail | partial | Chỉ có bracket view |
 | SetEditor | none | Chưa có UI |
