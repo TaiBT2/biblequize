@@ -231,6 +231,16 @@ const DailyChallenge: React.FC = () => {
     staleTime: 30 * 60_000,
   })
 
+  // Tier level drives per-week streak-freeze allowance shown in StreakCard.
+  // Reuse the existing /api/me/tier-progress endpoint (same one HomeBanner
+  // reads) so we don't add a new BE call.
+  const tierProgressQuery = useQuery<{ tierLevel?: number }>({
+    queryKey: ['me-tier-progress'],
+    queryFn: () => api.get('/api/me/tier-progress').then((r) => r.data),
+    enabled: isAuthenticated,
+    staleTime: 5 * 60_000,
+  })
+
   // Sync resultQuery → local dailyResult so completion handler can also push.
   // When the /result payload omits {completed:true} but challengeData says
   // alreadyCompleted, we still mark complete using whatever fields are
@@ -287,6 +297,15 @@ const DailyChallenge: React.FC = () => {
   // through other quiz modes without completing today's Daily, leaving
   // the page showing 0 while the sidebar showed 2.
   const currentStreak = userStreak
+
+  // Per-tier streak-freeze allowance (SPEC_USER §3.2.2 / tierPerks.ts):
+  // T1-2 = 1, T3-4 = 2, T5-6 = 3. Defaults to 1 while tier data loads.
+  const freezesPerWeek = (() => {
+    const tier = tierProgressQuery.data?.tierLevel ?? 1
+    if (tier >= 5) return 3
+    if (tier >= 3) return 2
+    return 1
+  })()
 
   const leaderboardEntries = useMemo<DailyLbEntry[]>(() => {
     const data = leaderboardQuery.data
@@ -696,8 +715,7 @@ const DailyChallenge: React.FC = () => {
         <StreakCard
           currentStreak={currentStreak}
           last7Days={last7Days}
-          freezeUsed={0}
-          freezeMax={1}
+          freezesPerWeek={freezesPerWeek}
         />
       </div>
 

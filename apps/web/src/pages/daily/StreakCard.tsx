@@ -3,12 +3,22 @@ import { useTranslation } from 'react-i18next'
 interface StreakCardProps {
   currentStreak: number
   last7Days: { label: string; date: string; isToday: boolean; completed: boolean }[]
-  freezeUsed?: number
-  freezeMax?: number
+  /** Per-tier streak-freeze allowance (1 = T1-T2, 2 = T3-T4, 3 = T5-T6).
+   *  Decision 2026-05-19 (option B): we surface only the per-week benefit
+   *  count and drop the "used/total" framing because the BE entity is a
+   *  Boolean (`User.streakFreezeUsedThisWeek`) so it can't truthfully
+   *  represent partial-use for tiers with allowance > 1. */
+  freezesPerWeek?: number
 }
 
-export function StreakCard({ currentStreak, last7Days, freezeUsed = 0, freezeMax = 1 }: StreakCardProps) {
+export function StreakCard({ currentStreak, last7Days, freezesPerWeek = 1 }: StreakCardProps) {
   const { t } = useTranslation()
+  // Scale celebration graphic by streak length — a 1-day streak should not
+  // own the biggest visual on the page (prompt DC-4: "Streak 1 ngày KHÔNG
+  // được chiếm graphic to nhất màn"). Threshold of 7 matches the week strip.
+  const isHighStreak = currentStreak >= 7
+  const flameClass = isHighStreak ? 'text-[56px]' : 'text-[36px]'
+  const numberClass = isHighStreak ? 'text-5xl' : 'text-3xl'
   return (
     <div
       data-testid="daily-streak-display"
@@ -20,7 +30,7 @@ export function StreakCard({ currentStreak, last7Days, freezeUsed = 0, freezeMax
       </div>
       <div className="text-center pt-2 pb-3.5">
         <div
-          className="text-[56px] leading-none"
+          className={`${flameClass} leading-none`}
           style={{
             background: 'linear-gradient(135deg, #ef4444 0%, #f97316 60%, #fbbf24 100%)',
             WebkitBackgroundClip: 'text',
@@ -31,7 +41,7 @@ export function StreakCard({ currentStreak, last7Days, freezeUsed = 0, freezeMax
         >
           🔥
         </div>
-        <div className="text-5xl font-extrabold leading-none text-on-surface -mt-1.5">{currentStreak}</div>
+        <div className={`${numberClass} font-extrabold leading-none text-on-surface -mt-1.5`}>{currentStreak}</div>
         <div className="text-xs text-on-surface-variant mt-1">{t('daily.streakDaysLine')}</div>
       </div>
 
@@ -44,12 +54,15 @@ export function StreakCard({ currentStreak, last7Days, freezeUsed = 0, freezeMax
               : d.completed
                 ? 'bg-gradient-to-br from-[#ef4444] to-[#f97316] text-white border-transparent'
                 : 'bg-white/5 text-on-surface-variant border border-white/5'
+          // Always render the day label so no day reads as an unlabeled
+          // circle (DC-4: 3 states must be distinguishable — done /
+          // chưa làm / hôm nay — through bg+border, not by hiding text).
           return (
             <div
               key={d.date}
               className={`aspect-square rounded-full grid place-items-center text-[10px] font-bold ${cls}`}
             >
-              {d.completed && !d.isToday ? '' : (d.completed && d.isToday ? '✓' : d.label)}
+              {d.label}
             </div>
           )
         })}
@@ -61,7 +74,7 @@ export function StreakCard({ currentStreak, last7Days, freezeUsed = 0, freezeMax
           {t('daily.freezeIndicator')}
         </span>
         <span className="text-on-surface font-bold">
-          {t('daily.freezeCount', { used: freezeUsed, total: freezeMax })}
+          {t('daily.freezePerWeek', { count: freezesPerWeek })}
         </span>
       </div>
     </div>

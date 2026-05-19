@@ -47,8 +47,16 @@ Findings báo cáo trong session — confirm BE-zero cho DC-1/2/3/5/6. DC-4 free
   - **Spec strategy**: `[no-spec-impact]`
 
 - DC-4 Streak card scale + week-strip labels + freeze wording (B: drop "used")
-  - Status: [ ] TODO
-  - Decision: B — drop "used" wording, hiển thị benefit per-tier-only ("Đóng băng chuỗi: {N}/tuần"). Reason: BE entity field `User.streakFreezeUsedThisWeek` chỉ là Boolean (không count), expose ra FE sẽ inaccurate cho T3+. Chọn B để giữ BE-zero và tránh nói dối user.
+  - Status: [x] DONE
+  - Decision: B — drop "used" wording, hiển thị benefit per-tier-only. Reason: BE entity field `User.streakFreezeUsedThisWeek` chỉ là Boolean (không count), expose ra FE sẽ inaccurate cho T3+. Chọn B để giữ BE-zero và tránh nói dối user.
+  - Changes:
+    - `apps/web/src/pages/daily/StreakCard.tsx:23-25` — scale theo streak: `<7` → flame 36px + number `text-3xl`; `>=7` → flame 56px + number `text-5xl` (giữ celebration cũ)
+    - `apps/web/src/pages/daily/StreakCard.tsx:61-70` — week strip: always show `d.label`, bỏ rendering rỗng ('') → 3 trạng thái phân biệt bằng bg/border (gold-solid: hôm nay done · gold-dashed: hôm nay chưa · red-gradient: past done · gray: past chưa)
+    - `apps/web/src/pages/daily/StreakCard.tsx:74-82` — freeze block: new key `daily.freezePerWeek` = `{N}× / tuần` thay cho `freezeCount` (used/total)
+    - `apps/web/src/pages/DailyChallenge.tsx:233-242` — thêm `tierProgressQuery` reuse `/api/me/tier-progress` (BE-zero)
+    - `apps/web/src/pages/DailyChallenge.tsx:301-309` — compute `freezesPerWeek` từ `tierLevel`: T1-2=1, T3-4=2, T5-6=3 per SPEC_USER §3.2.2
+  - i18n: `freezeIndicator` đổi label sang "Đóng băng chuỗi" / "Streak freeze", `freezeCount` → `freezePerWeek` ({count}× / tuần)
+  - **Spec strategy**: `[no-spec-impact]` (đúng SPEC_USER §14 + §3.2.2)
 
 - DC-5 Leaderboard chỉ hiện State B
   - Status: [ ] TODO
