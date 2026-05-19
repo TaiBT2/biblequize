@@ -26,8 +26,10 @@ export default function DailyChallengeScreen() {
    * Match web flow (apps/web/src/pages/DailyChallenge.tsx:335 handleStart):
    * POST /api/daily-challenge/start → returns sessionId → quiz tracked BE-side.
    *
-   * Trước đây chỉ navigate('Quiz', { questions }) → BE không biết user started,
-   * `/answer` endpoint không có session context → progress + missions không tick.
+   * Graceful degradation: nếu /start fail (network/timeout/auth), vẫn proceed
+   * navigate Quiz với sessionId=undefined. BE /api/daily-challenge/answer là
+   * stateless lookup by questionId — không strict require sessionId. UX tốt
+   * hơn block user khi network flaky.
    */
   const handleStart = async () => {
     if (questions.length === 0) {
@@ -35,22 +37,25 @@ export default function DailyChallengeScreen() {
       return
     }
     setStarting(true)
+    let sessionId: string | undefined
     try {
-      const startRes = await apiClient.post('/api/daily-challenge/start')
-      const sessionId: string | undefined = startRes.data?.sessionId
-      navigation.navigate('Quiz', {
-        sessionId,
-        questions,
-        mode: 'daily',
-        showExplanation: true,
-      })
+      // 5s timeout — short hơn axios default 10s vì user already waited cho
+      // GET /api/daily-challenge questions. Tránh button stuck spinner > 10s.
+      const startRes = await apiClient.post('/api/daily-challenge/start', {}, { timeout: 5000 })
+      sessionId = startRes.data?.sessionId
     } catch (e: any) {
-      setStarting(false)
-      Alert.alert(
-        'Không bắt đầu được',
-        e?.response?.data?.message ?? 'Lỗi kết nối server. Thử lại sau.',
-      )
+      // Log but không block — vẫn proceed quiz. Sentry mobile sẽ capture
+      // nếu cần debug tại sao /start fail (network, 5xx, timeout).
+      console.warn('[DailyChallenge] /start failed, proceeding without sessionId:', e?.message ?? e)
     }
+    navigation.navigate('Quiz', {
+      sessionId,
+      questions,
+      mode: 'daily',
+      showExplanation: true,
+    })
+    // Reset starting trong case nav fail hoặc user back về screen.
+    setStarting(false)
   }
 
   return (
