@@ -9,6 +9,7 @@ import ChatOverlay, { ChatMessage } from '../../components/multiplayer/ChatOverl
 import ReactionBar, { IncomingReaction, ReactionEmoji } from '../../components/multiplayer/ReactionBar'
 import EliminationOverlay from '../../components/multiplayer/EliminationOverlay'
 import TeamScoreBar from '../../components/multiplayer/TeamScoreBar'
+import MatchResultOverlay from '../../components/multiplayer/MatchResultOverlay'
 import { useStomp } from '../../hooks/useStomp'
 import { useHaptic } from '../../hooks/useHaptic'
 import { colors, typography, spacing, borderRadius } from '../../theme'
@@ -53,6 +54,7 @@ export default function MultiplayerQuizScreen() {
   const [eliminated, setEliminated] = useState<{ rank: number; total: number } | null>(null)
   const [activeCount, setActiveCount] = useState<number | null>(null)
   const [teamScores, setTeamScores] = useState<{ a: number; b: number; perfectA?: boolean; perfectB?: boolean } | null>(null)
+  const [matchResult, setMatchResult] = useState<{ winnerName: string; loserName: string; iWon: boolean } | null>(null)
   const questionStartedAt = useRef<number>(0)
   const selectedRef = useRef<number | null>(null)
   const { trigger: haptic } = useHaptic()
@@ -140,6 +142,15 @@ export default function MultiplayerQuizScreen() {
           b: Number(d.scoreB ?? d.teamB ?? 0),
           perfectA: !!d.perfectA,
           perfectB: !!d.perfectB,
+        })
+        break
+      }
+      case 'MATCH_RESULT': {
+        const d = msg.data ?? {}
+        setMatchResult({
+          winnerName: d.winnerName ?? 'Người chơi',
+          loserName: d.loserName ?? 'Người chơi',
+          iWon: !!viewerUserId && d.winnerId === viewerUserId,
         })
         break
       }
@@ -254,6 +265,14 @@ export default function MultiplayerQuizScreen() {
           rank={eliminated?.rank ?? 0}
           totalPlayers={eliminated?.total ?? 0}
           onContinueSpectate={() => setEliminated(null)}
+        />
+
+        <MatchResultOverlay
+          visible={!!matchResult}
+          winnerName={matchResult?.winnerName ?? ''}
+          loserName={matchResult?.loserName ?? ''}
+          iWon={matchResult?.iWon ?? false}
+          onDismiss={() => setMatchResult(null)}
         />
       </View>
     </SafeScreen>
