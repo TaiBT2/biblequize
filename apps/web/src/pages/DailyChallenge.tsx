@@ -529,7 +529,12 @@ const DailyChallenge: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {question.options.map((option, i) => {
               let state: AnswerState = 'default'
-              if (answered) {
+              // Only enter the reveal branch once the API has reported the
+              // correct indices — otherwise the picked option flashes 'wrong'
+              // (red + X badge) for ~100ms while `correctAnswerIndices` is
+              // still []. Until then, show 'selected' (per-letter color +
+              // glow) as click acknowledgment.
+              if (answered && isCorrect !== null) {
                 if (correctAnswerIndices.includes(i)) state = 'correct'
                 else if (i === selectedAnswer) state = 'wrong'
                 else state = 'disabled'
