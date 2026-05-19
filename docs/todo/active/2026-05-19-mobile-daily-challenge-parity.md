@@ -21,7 +21,7 @@
   - Checklist: impl · Tầng 1+3 pass · BACKLOG entry · commit
 
 - DC-PARITY-M2 Mobile `DailyLeaderboardCard` — component hiển thị top 10 daily + rank của user (`betterThanPercent`). Endpoint: GET `/api/daily-challenge/leaderboard?language=X` (đã có cho web). Render dưới ring trong `DailyResultScreen`. Port từ `apps/web/src/pages/daily/DailyLeaderboard.tsx`.
-  - Status: [ ] TODO
+  - Status: [x] DONE (endpoint thực tế dùng `/api/leaderboard/daily?size=10` shared với web)
   - Files: `apps/mobile/src/components/daily/DailyLeaderboardCard.tsx` (new), `apps/mobile/src/screens/quiz/DailyResultScreen.tsx`
   - Test: jest render với mock data; manual: assert rank hiện + tô đậm row của user
   - **Spec impact**: [ ] None [x] SPEC_USER §5.3

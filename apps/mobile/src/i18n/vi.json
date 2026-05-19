@@ -137,6 +137,14 @@
       "betterThan": "Bạn làm tốt hơn {{percent}}% người chơi hôm nay",
       "reviewCta": "Xem lại câu trả lời",
       "homeCta": "Về trang chủ"
+    },
+    "lb": {
+      "title": "Bảng xếp hạng hôm nay",
+      "loading": "Đang tải...",
+      "empty": "Chưa có ai hoàn thành hôm nay",
+      "youLine": "Bạn",
+      "loadingMyRank": "Đang tính hạng...",
+      "notCompleted": "Chưa hoàn thành hôm nay"
     }
   },
   "review": {

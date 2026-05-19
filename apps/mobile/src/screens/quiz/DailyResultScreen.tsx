@@ -7,13 +7,16 @@ import Svg, { Defs, LinearGradient, Stop, Circle } from 'react-native-svg'
 import SafeScreen from '../../components/layout/SafeScreen'
 import Button from '../../components/ui/Button'
 import Card from '../../components/ui/Card'
+import { DailyLeaderboardCard, type DailyLbEntry } from '../../components/daily/DailyLeaderboardCard'
 import { apiClient } from '../../api/client'
+import { useAuthStore } from '../../stores/authStore'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
 interface DailyResultResponse {
   betterThanPercent?: number
   xpEarned?: number
   rankGlobal?: number
+  score?: number
 }
 
 /**
@@ -43,6 +46,17 @@ export default function DailyResultScreen() {
 
   const xpEarned = result?.xpEarned ?? (isPerfect ? 75 : 50)
   const betterThanPercent = result?.betterThanPercent
+
+  const userName = useAuthStore(state => state.user?.name) ?? '—'
+  const myEntry: DailyLbEntry | null = result
+    ? {
+        rank: result.rankGlobal ?? 0,
+        name: userName,
+        score: result.score ?? stats?.totalScore ?? 0,
+        correctCount: correct,
+        totalQuestions: total,
+      }
+    : null
 
   const RING_RADIUS = 70
   const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS
@@ -92,6 +106,8 @@ export default function DailyResultScreen() {
             🎯 {t('daily.done.betterThan', { percent: betterThanPercent })}
           </Text>
         )}
+
+        <DailyLeaderboardCard myEntry={myEntry} myCompleted={true} />
 
         <View style={s.actions}>
           <Button title={t('daily.done.reviewCta')} variant="outline" fullWidth

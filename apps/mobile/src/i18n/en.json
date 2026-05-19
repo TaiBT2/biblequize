@@ -137,6 +137,14 @@
       "betterThan": "Better than {{percent}}% of today's players",
       "reviewCta": "Review answers",
       "homeCta": "Back home"
+    },
+    "lb": {
+      "title": "Today's leaderboard",
+      "loading": "Loading...",
+      "empty": "No one has completed today",
+      "youLine": "You",
+      "loadingMyRank": "Calculating rank...",
+      "notCompleted": "Not completed today"
     }
   },
   "review": {
