@@ -452,7 +452,7 @@ const DailyChallenge: React.FC = () => {
     const correctOptionText = question.options[correctAnswerIndices[0] ?? -1] ?? ''
 
     return (
-      <main className="relative min-h-screen pt-6 pb-12 px-6 flex flex-col items-center justify-center max-w-5xl mx-auto">
+      <main className={`relative min-h-screen pt-6 px-6 flex flex-col items-center justify-center max-w-5xl mx-auto ${answered ? 'pb-56 sm:pb-44' : 'pb-12'}`}>
         <div className="w-full flex items-center justify-between mb-6">
           <div>
             <h2 className="text-lg font-extrabold tracking-tight text-on-surface">{t('daily.title')}</h2>
@@ -541,59 +541,63 @@ const DailyChallenge: React.FC = () => {
           </div>
         </div>
 
-        {answered && isCorrect !== null && (!isCorrect || currentExplanation) && (
-          explanationCollapsed ? (
-            <button
-              data-testid="daily-explanation-pill"
-              type="button"
-              onClick={() => setExplanationCollapsed(false)}
-              className={`fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-full glass-panel border text-xs font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-transform ${
-                isCorrect ? 'border-secondary/30 text-secondary' : 'border-error/30 text-error'
-              }`}
-            >
-              <span className="material-symbols-outlined text-sm" style={FILL_1}>lightbulb</span>
-              {t('quiz.showExplanationAgain', 'Xem giải thích')}
-            </button>
-          ) : (
-            <div ref={explanationRef} className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg">
-              <div className={`glass-panel p-5 rounded-2xl border space-y-3 max-h-[50vh] overflow-y-auto ${isCorrect ? 'border-green-500/20' : 'border-error/20'}`}>
-                <div className="flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-2 min-w-0">
-                    {!isCorrect && correctOptionText && (
-                      <>
-                        <span className="material-symbols-outlined text-green-400 text-sm flex-shrink-0" style={FILL_1}>check_circle</span>
-                        <span className="text-sm font-bold text-green-400 truncate">
-                          {t('quiz.correctAnswerIs', { answer: correctOptionText })}
-                        </span>
-                      </>
+        {/* Fixed bottom dock for answered state. Combines the optional
+            explanation pill/panel and the result bar in a single column
+            so they share spacing and never overlap the answer grid. The
+            pad-bottom on <main> above guarantees the last answer row
+            scrolls clear of this dock. */}
+        {answered && isCorrect !== null && (
+          <div className="fixed bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] sm:w-[calc(100%-3rem)] max-w-lg flex flex-col items-center gap-2">
+            {(!isCorrect || currentExplanation) && (
+              explanationCollapsed ? (
+                <button
+                  data-testid="daily-explanation-pill"
+                  type="button"
+                  onClick={() => setExplanationCollapsed(false)}
+                  className={`px-4 py-2 rounded-full glass-panel border text-xs font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-transform ${
+                    isCorrect ? 'border-secondary/30 text-secondary' : 'border-error/30 text-error'
+                  }`}
+                >
+                  <span className="material-symbols-outlined text-sm" style={FILL_1}>lightbulb</span>
+                  {t('quiz.showExplanationAgain', 'Xem giải thích')}
+                </button>
+              ) : (
+                <div ref={explanationRef} className="w-full">
+                  <div className={`glass-panel p-5 rounded-2xl border space-y-3 max-h-[50vh] overflow-y-auto ${isCorrect ? 'border-green-500/20' : 'border-error/20'}`}>
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2 min-w-0">
+                        {!isCorrect && correctOptionText && (
+                          <>
+                            <span className="material-symbols-outlined text-green-400 text-sm flex-shrink-0" style={FILL_1}>check_circle</span>
+                            <span className="text-sm font-bold text-green-400 truncate">
+                              {t('quiz.correctAnswerIs', { answer: correctOptionText })}
+                            </span>
+                          </>
+                        )}
+                      </div>
+                      <button
+                        data-testid="daily-explanation-close"
+                        type="button"
+                        onClick={() => setExplanationCollapsed(true)}
+                        className="text-on-surface-variant/60 hover:text-on-surface transition-colors -mr-1 flex-shrink-0"
+                        aria-label={t('quiz.minimizeExplanation', 'Thu nhỏ')}
+                      >
+                        <span className="material-symbols-outlined text-base">close</span>
+                      </button>
+                    </div>
+                    {currentExplanation && (
+                      <p className="text-on-surface-variant text-sm leading-relaxed flex items-start gap-1.5">
+                        <span className="material-symbols-outlined text-sm mt-0.5 text-secondary/60">lightbulb</span>
+                        <span>{currentExplanation}</span>
+                      </p>
                     )}
                   </div>
-                  <button
-                    data-testid="daily-explanation-close"
-                    type="button"
-                    onClick={() => setExplanationCollapsed(true)}
-                    className="text-on-surface-variant/60 hover:text-on-surface transition-colors -mr-1 flex-shrink-0"
-                    aria-label={t('quiz.minimizeExplanation', 'Thu nhỏ')}
-                  >
-                    <span className="material-symbols-outlined text-base">close</span>
-                  </button>
                 </div>
-                {currentExplanation && (
-                  <p className="text-on-surface-variant text-sm leading-relaxed flex items-start gap-1.5">
-                    <span className="material-symbols-outlined text-sm mt-0.5 text-secondary/60">lightbulb</span>
-                    <span>{currentExplanation}</span>
-                  </p>
-                )}
-              </div>
-            </div>
-          )
-        )}
-
-        {answered && isCorrect !== null && (
-          <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-3rem)] max-w-lg">
+              )
+            )}
             <div
               data-testid="daily-answer-feedback"
-              className="bg-surface-container-highest p-4 sm:p-5 rounded-3xl border border-secondary/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 glass-panel"
+              className="w-full bg-surface-container-highest p-4 sm:p-5 rounded-3xl border border-secondary/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 glass-panel"
             >
               <div className="flex items-center gap-4 min-w-0">
                 <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center flex-shrink-0 ${isCorrect ? 'bg-secondary/20' : 'bg-error/20'}`}>
