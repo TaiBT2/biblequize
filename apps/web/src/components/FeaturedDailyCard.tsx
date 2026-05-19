@@ -166,10 +166,10 @@ export default function FeaturedDailyCard({
         </div>
 
         <div className="flex md:flex-col items-center md:items-end justify-between md:justify-center gap-3">
-          <div className="text-right">
+          <div className="text-left md:text-right min-w-0">
             <div
               data-testid="featured-daily-card-countdown-label"
-              className="text-[10px] font-semibold tracking-[0.14em] uppercase text-ivory-faint"
+              className="text-[10px] font-semibold tracking-[0.08em] md:tracking-[0.14em] uppercase text-ivory-faint whitespace-nowrap"
             >
               Còn lại trong ngày
             </div>
@@ -184,7 +184,7 @@ export default function FeaturedDailyCard({
             data-testid="featured-daily-card-cta"
             type="button"
             onClick={onStart}
-            className="inline-flex items-center justify-center gap-2 px-4 md:px-5 py-2.5 md:py-3 rounded-[11px] font-bold text-[14px] text-[#1a1208] tracking-[0.01em] transition-transform duration-200 hover:translate-x-[3px]"
+            className="inline-flex flex-shrink-0 items-center justify-center gap-1.5 md:gap-2 px-3.5 md:px-5 py-2.5 md:py-3 rounded-[11px] font-bold text-[13px] md:text-[14px] text-[#1a1208] tracking-[0.01em] whitespace-nowrap transition-transform duration-200 hover:translate-x-[3px]"
             style={{
               background: 'linear-gradient(135deg, #e8a832, #c98a1c)',
               boxShadow:
