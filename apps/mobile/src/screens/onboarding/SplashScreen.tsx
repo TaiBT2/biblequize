@@ -1,29 +1,36 @@
 import { useTranslation } from 'react-i18next'
-import React, { useEffect } from 'react'
-import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
+import React, { useEffect, useRef } from 'react'
+import { View, Text, StyleSheet, ActivityIndicator, Animated } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { colors, typography, spacing } from '../../theme'
 
 export default function SplashScreen() {
   const { t } = useTranslation()
   const navigation = useNavigation<any>()
+  const titleOpacity = useRef(new Animated.Value(0)).current
+  const titleScale = useRef(new Animated.Value(0.9)).current
 
   useEffect(() => {
+    Animated.parallel([
+      Animated.timing(titleOpacity, { toValue: 1, duration: 600, useNativeDriver: true }),
+      Animated.spring(titleScale, { toValue: 1, friction: 5, useNativeDriver: true }),
+    ]).start()
+
     const timer = setTimeout(() => {
       navigation.replace('LanguageSelection')
     }, 2000)
     return () => clearTimeout(timer)
-  }, [navigation])
+  }, [navigation, titleOpacity, titleScale])
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} accessibilityRole="header" accessibilityLabel="BibleQuiz đang khởi động">
       <View style={styles.glowTopLeft} />
       <View style={styles.glowBottomRight} />
 
-      <View style={styles.center}>
+      <Animated.View style={[styles.center, { opacity: titleOpacity, transform: [{ scale: titleScale }] }]}>
         <Text style={styles.title}>BibleQuiz</Text>
         <Text style={styles.subtitle}>Lời Chúa trong từng câu hỏi</Text>
-      </View>
+      </Animated.View>
 
       <View style={styles.bottom}>
         <ActivityIndicator size="small" color={colors.gold} />

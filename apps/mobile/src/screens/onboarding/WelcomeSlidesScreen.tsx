@@ -60,7 +60,12 @@ export default function WelcomeSlidesScreen() {
         {/* Skip button */}
         <View style={styles.topBar}>
           <View />
-          <Pressable onPress={handleSkip}>
+          <Pressable
+            onPress={handleSkip}
+            hitSlop={12}
+            accessibilityLabel="Bỏ qua giới thiệu"
+            accessibilityRole="button"
+          >
             <Text style={styles.skipText}>Bỏ qua</Text>
           </Pressable>
         </View>
