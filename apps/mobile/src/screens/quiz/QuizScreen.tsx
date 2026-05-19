@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { View, Text, StyleSheet, Pressable, Alert, BackHandler, Modal } from 'react-native'
+import { View, Text, StyleSheet, Pressable, Alert, BackHandler, Modal, ScrollView } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { useQueryClient } from '@tanstack/react-query'
@@ -274,8 +274,13 @@ export default function QuizScreen() {
         </View>
 
         {/* Answers — per-position colour mapping (Coral/Sky/Gold/Sage), QZ-P0-1.
-            Reveal states (correct=green, wrong=red) override the position colour. */}
-        <View style={styles.answers}>
+            ScrollView để khi result bar xuất hiện, answers tự scroll thay vì
+            overflow đè (đặc biệt D khi text 2 dòng + result bar stacked). */}
+        <ScrollView
+          style={styles.answersScroll}
+          contentContainerStyle={styles.answers}
+          showsVerticalScrollIndicator={false}
+        >
           {question.options?.map((opt: string, idx: number) => {
             const isSel = selected === idx
             // revealedCorrectIdx (state) thay vì question.correctAnswer trực
@@ -346,7 +351,7 @@ export default function QuizScreen() {
               </Pressable>
             )
           })}
-        </View>
+        </ScrollView>
 
         {/* Floating feedback bar (web parity) — fixed bottom với glass-panel
             effect, large rounded icon + bonus points hint + gold gradient CTA. */}
@@ -481,7 +486,8 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   questionText: { fontSize: typography.size.xl, fontWeight: typography.weight.bold, color: colors.textPrimary, textAlign: 'center', lineHeight: 30 },
-  answers: { gap: spacing.md, flex: 1 },
+  answersScroll: { flex: 1 },
+  answers: { gap: spacing.md, paddingBottom: spacing.sm },
   answerBtn: {
     flexDirection: 'row', alignItems: 'center', padding: spacing.lg,
     backgroundColor: colors.surfaceContainer, borderRadius: borderRadius.xl,
