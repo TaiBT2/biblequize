@@ -133,9 +133,17 @@ export default function DailyChallengeScreen() {
             <Text style={s.statusText}>{t('daily.ready.statusBadge')}</Text>
           </View>
 
-          {/* Heading + subline */}
-          <Text style={s.heading}>{t('daily.ready.title', { count: questionCount })}</Text>
-          <Text style={s.subline}>{t('daily.ready.desc')}</Text>
+          {/* Section label */}
+          <Text style={s.sectionLabel}>{t('daily.ready.label')}</Text>
+
+          {/* Heading: 2-tone (default + gold highlight) */}
+          <Text style={s.heading}>
+            {t('daily.ready.title', { count: questionCount })}
+            <Text style={s.headingHighlight}>{t('daily.ready.titleHighlight')}</Text>
+          </Text>
+
+          {/* Subline — italic verse-style quote */}
+          <Text style={s.subline}>"{t('daily.ready.desc')}"</Text>
 
           {/* Meta chips */}
           <View style={s.metaRow}>
@@ -148,7 +156,7 @@ export default function DailyChallengeScreen() {
           {/* Reward breakdown card */}
           <View style={s.rewardCard}>
             <View style={s.rewardIconBox}>
-              <Text style={s.rewardIconEmoji}>⭐</Text>
+              <Text style={s.rewardIconEmoji}>🏅</Text>
             </View>
             <View style={{ flex: 1 }}>
               <Text style={s.rewardLabel}>{t('daily.ready.rewardLabel')}</Text>
@@ -261,8 +269,14 @@ const s = StyleSheet.create({
   statusDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#ef4444' },
   statusText: { fontSize: 10, fontWeight: typography.weight.bold, color: '#fca5a5', letterSpacing: 0.5 },
 
-  heading: { fontSize: 24, fontWeight: typography.weight.black, color: colors.textPrimary, letterSpacing: -0.5, lineHeight: 30 },
-  subline: { fontSize: 13, color: colors.textMuted, lineHeight: 19, marginBottom: spacing.xs },
+  sectionLabel: {
+    fontSize: 11, fontWeight: typography.weight.bold,
+    color: colors.textMuted, letterSpacing: 1.5,
+    marginTop: spacing.sm,
+  },
+  heading: { fontSize: 26, fontWeight: typography.weight.black, color: colors.textPrimary, letterSpacing: -0.5, lineHeight: 32 },
+  headingHighlight: { color: colors.gold },
+  subline: { fontSize: 14, fontStyle: 'italic', color: colors.textSecondary, lineHeight: 21, marginBottom: spacing.xs },
 
   metaRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
   metaChip: {
