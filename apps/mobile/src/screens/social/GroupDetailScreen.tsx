@@ -30,6 +30,20 @@ export default function GroupDetailScreen() {
           <Text style={s.quizSetsArrow}>›</Text>
         </Pressable>
 
+        <Pressable style={s.quizSetsBtn} onPress={() => navigation.navigate('ScheduledQuizList', { groupId, canManage: group.myRole === 'LEADER' || group.myRole === 'MOD' })}>
+          <Text style={s.quizSetsIcon}>📅</Text>
+          <Text style={s.quizSetsLabel}>Lịch thi đấu</Text>
+          <Text style={s.quizSetsArrow}>›</Text>
+        </Pressable>
+
+        {(group.myRole === 'LEADER' || group.myRole === 'MOD') && (
+          <Pressable style={s.quizSetsBtn} onPress={() => navigation.navigate('GroupAnalytics', { groupId })}>
+            <Text style={s.quizSetsIcon}>📊</Text>
+            <Text style={s.quizSetsLabel}>Phân tích nhóm</Text>
+            <Text style={s.quizSetsArrow}>›</Text>
+          </Pressable>
+        )}
+
         <Text style={s.section}>Thành viên</Text>
         {members.map((m: any) => (
           <Card key={m.userId} style={s.row}>

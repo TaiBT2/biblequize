@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import React from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
-import { useRoute } from '@react-navigation/native'
+import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native'
+import { useRoute, useNavigation } from '@react-navigation/native'
 import { useQuery } from '@tanstack/react-query'
 import SafeScreen from '../../components/layout/SafeScreen'
 import Card from '../../components/ui/Card'
@@ -39,6 +39,7 @@ interface BracketResponse {
 export default function TournamentBracketScreen() {
   const { t } = useTranslation()
   const route = useRoute<any>()
+  const navigation = useNavigation<any>()
   const tournamentId: string | undefined = route.params?.tournamentId
 
   const { data, isLoading, error } = useQuery<BracketResponse>({
@@ -70,22 +71,27 @@ export default function TournamentBracketScreen() {
             {matches.map(match => {
               const [p1, p2] = match.participants
               return (
-                <Card key={match.matchId} style={s.matchCard}>
-                  <View style={s.matchRow}>
-                    <Text style={[s.matchPlayer, p1?.isWinner && s.matchWinner]}>
-                      {p1?.userName ?? 'TBD'}
-                    </Text>
-                    <Text style={s.matchVs}>vs</Text>
-                    <Text style={[s.matchPlayer, p2?.isWinner && s.matchWinner]}>
-                      {match.isBye ? 'Bye' : (p2?.userName ?? 'TBD')}
-                    </Text>
-                  </View>
-                  <View style={s.matchScoreRow}>
-                    <Text style={s.matchScore}>{p1?.score ?? '-'}</Text>
-                    <Text style={s.matchStatus}>{match.status}</Text>
-                    <Text style={s.matchScore}>{p2?.score ?? '-'}</Text>
-                  </View>
-                </Card>
+                <Pressable
+                  key={match.matchId}
+                  onPress={() => navigation.navigate('TournamentMatch', { tournamentId: tournamentId!, matchId: match.matchId })}
+                >
+                  <Card style={s.matchCard}>
+                    <View style={s.matchRow}>
+                      <Text style={[s.matchPlayer, p1?.isWinner && s.matchWinner]}>
+                        {p1?.userName ?? 'TBD'}
+                      </Text>
+                      <Text style={s.matchVs}>vs</Text>
+                      <Text style={[s.matchPlayer, p2?.isWinner && s.matchWinner]}>
+                        {match.isBye ? 'Bye' : (p2?.userName ?? 'TBD')}
+                      </Text>
+                    </View>
+                    <View style={s.matchScoreRow}>
+                      <Text style={s.matchScore}>{p1?.score ?? '-'}</Text>
+                      <Text style={s.matchStatus}>{match.status}</Text>
+                      <Text style={s.matchScore}>{p2?.score ?? '-'}</Text>
+                    </View>
+                  </Card>
+                </Pressable>
               )
             })}
           </View>

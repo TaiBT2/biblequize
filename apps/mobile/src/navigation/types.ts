@@ -52,6 +52,8 @@ export type MultiplayerStackParamList = {
   MultiplayerResults: { roomId: string; leaderboard?: any[] }
   RoomAnalytics: { roomId: string }
   TournamentBracket: { tournamentId: string }
+  TournamentDetail: { tournamentId: string }
+  TournamentMatch: { tournamentId: string; matchId: string }
 }
 
 export type GroupsStackParamList = {
@@ -61,6 +63,11 @@ export type GroupsStackParamList = {
   GroupCreate: undefined
   GroupQuizSetList: { groupId: string }
   QuizSetDetail: { setId: string; isPersonal: boolean; groupId?: string }
+  GroupAnalytics: { groupId: string }
+  ScheduledQuizList: { groupId: string; canManage?: boolean }
+  ScheduledQuizCreate: { groupId: string }
+  ScheduledQuizDetail: { groupId: string; quizId: string }
+  ScheduledQuizPlay: { groupId: string; quizId: string }
 }
 
 export type ProfileStackParamList = {

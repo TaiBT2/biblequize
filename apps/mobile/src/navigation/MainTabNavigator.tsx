@@ -26,6 +26,13 @@ import QuizSetDetailScreen from '../screens/quizSets/QuizSetDetailScreen'
 import PersonalQuizSetEditorScreen from '../screens/quizSets/PersonalQuizSetEditorScreen'
 import QuestionEditorScreen from '../screens/quizSets/QuestionEditorScreen'
 import GroupQuizSetListScreen from '../screens/quizSets/GroupQuizSetListScreen'
+import GroupAnalyticsScreen from '../screens/social/GroupAnalyticsScreen'
+import ScheduledQuizListScreen from '../screens/scheduled/ScheduledQuizListScreen'
+import ScheduledQuizCreateScreen from '../screens/scheduled/ScheduledQuizCreateScreen'
+import ScheduledQuizDetailScreen from '../screens/scheduled/ScheduledQuizDetailScreen'
+import ScheduledQuizPlayScreen from '../screens/scheduled/ScheduledQuizPlayScreen'
+import TournamentDetailScreen from '../screens/multiplayer/TournamentDetailScreen'
+import TournamentMatchScreen from '../screens/multiplayer/TournamentMatchScreen'
 import GroupsListScreen from '../screens/social/GroupsListScreen'
 import GroupDetailScreen from '../screens/social/GroupDetailScreen'
 import GroupJoinScreen from '../screens/social/GroupJoinScreen'
@@ -81,6 +88,8 @@ function MultiplayerStackNavigator() {
       <MultiplayerStack.Screen name="MultiplayerResults" component={MultiplayerResultsScreen} />
       <MultiplayerStack.Screen name="RoomAnalytics" component={RoomAnalyticsScreen} />
       <MultiplayerStack.Screen name="TournamentBracket" component={TournamentBracketScreen} />
+      <MultiplayerStack.Screen name="TournamentDetail" component={TournamentDetailScreen} />
+      <MultiplayerStack.Screen name="TournamentMatch" component={TournamentMatchScreen} />
     </MultiplayerStack.Navigator>
   )
 }
@@ -94,6 +103,11 @@ function GroupsStackNavigator() {
       <GroupsStack.Screen name="GroupCreate" component={GroupCreateScreen} />
       <GroupsStack.Screen name="GroupQuizSetList" component={GroupQuizSetListScreen} />
       <GroupsStack.Screen name="QuizSetDetail" component={QuizSetDetailScreen} />
+      <GroupsStack.Screen name="GroupAnalytics" component={GroupAnalyticsScreen} />
+      <GroupsStack.Screen name="ScheduledQuizList" component={ScheduledQuizListScreen} />
+      <GroupsStack.Screen name="ScheduledQuizCreate" component={ScheduledQuizCreateScreen} />
+      <GroupsStack.Screen name="ScheduledQuizDetail" component={ScheduledQuizDetailScreen} />
+      <GroupsStack.Screen name="ScheduledQuizPlay" component={ScheduledQuizPlayScreen} />
     </GroupsStack.Navigator>
   )
 }
