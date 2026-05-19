@@ -71,6 +71,10 @@ export default function QuizScreen() {
   // cho đến khi user complete (security). Phải lấy correctAnswer từ POST
   // /api/daily-challenge/answer response. Lưu state để render highlight reveal.
   const [revealedCorrectIdx, setRevealedCorrectIdx] = useState<number | null>(null)
+  // Web parity: explanation hiển thị qua pill toggle (collapsed=true) ↔ panel
+  // (collapsed=false). Mặc định collapsed=true → user thấy pill nhỏ, tap để
+  // xem full. Apps/web/src/pages/DailyChallenge.tsx:544-590.
+  const [explanationCollapsed, setExplanationCollapsed] = useState(true)
 
   const question = questions[qIndex]
   const progress = questions.length > 0 ? ((qIndex + 1) / questions.length) * 100 : 0
@@ -207,6 +211,7 @@ export default function QuizScreen() {
       setShowResult(false)
       setIsCorrect(null)
       setRevealedCorrectIdx(null)
+      setExplanationCollapsed(true)
       setTimeLeft(timePerQuestion)
     }
   }
@@ -336,27 +341,70 @@ export default function QuizScreen() {
 
         {/* Floating feedback bar (web parity) — fixed bottom với glass-panel
             effect, large rounded icon + bonus points hint + gold gradient CTA. */}
-        {showResult && (
-          <View style={[styles.resultBar, isCorrect ? styles.resultCorrect : styles.resultWrong]}>
-            <View style={styles.resultTopRow}>
-              <View style={[styles.resultIconCircle, isCorrect ? styles.resultIconCorrect : styles.resultIconWrong]}>
-                <Text style={styles.resultIconText}>{isCorrect ? '✓' : '✗'}</Text>
+        {showResult && (() => {
+          const correctIdx = revealedCorrectIdx ?? question.correctAnswer?.[0]
+          const correctOptionText = correctIdx != null ? question.options?.[correctIdx] : undefined
+          const hasExp = showExplanation && question.explanation
+          const showExplanationUi = isCorrect !== null && (!isCorrect || hasExp)
+          return (
+            <>
+              {showExplanationUi && (
+                explanationCollapsed ? (
+                  <Pressable
+                    onPress={() => setExplanationCollapsed(false)}
+                    style={[
+                      styles.expPill,
+                      isCorrect ? styles.expPillCorrect : styles.expPillWrong,
+                    ]}
+                  >
+                    <Text style={styles.expPillIcon}>💡</Text>
+                    <Text style={[styles.expPillText, isCorrect ? styles.expPillTextCorrect : styles.expPillTextWrong]}>
+                      Xem giải thích
+                    </Text>
+                  </Pressable>
+                ) : (
+                  <View style={[styles.expPanel, isCorrect ? styles.expPanelCorrect : styles.expPanelWrong]}>
+                    <View style={styles.expHeader}>
+                      {!isCorrect && correctOptionText && (
+                        <View style={styles.expCorrectAns}>
+                          <Text style={styles.expCorrectIcon}>✓</Text>
+                          <Text style={styles.expCorrectText} numberOfLines={2}>
+                            Đáp án đúng: {correctOptionText}
+                          </Text>
+                        </View>
+                      )}
+                      <Pressable onPress={() => setExplanationCollapsed(true)} style={styles.expClose}>
+                        <Text style={styles.expCloseText}>✕</Text>
+                      </Pressable>
+                    </View>
+                    {hasExp && (
+                      <View style={styles.expBody}>
+                        <Text style={styles.expBodyIcon}>💡</Text>
+                        <Text style={styles.expBodyText}>{question.explanation}</Text>
+                      </View>
+                    )}
+                  </View>
+                )
+              )}
+              <View style={[styles.resultBar, isCorrect ? styles.resultCorrect : styles.resultWrong]}>
+                <View style={styles.resultTopRow}>
+                  <View style={[styles.resultIconCircle, isCorrect ? styles.resultIconCorrect : styles.resultIconWrong]}>
+                    <Text style={styles.resultIconText}>{isCorrect ? '✓' : '✗'}</Text>
+                  </View>
+                  <View style={styles.resultInfo}>
+                    <Text style={styles.resultTitle}>{isCorrect ? 'Chính xác!' : 'Sai rồi'}</Text>
+                    <Text style={[styles.resultSubtitle, isCorrect ? styles.resultSubCorrect : styles.resultSubWrong]}>
+                      {isCorrect ? (isDailyMode ? '+20 điểm thưởng' : `+${questionScores[qIndex] ?? 0} điểm`) : 'Không cộng điểm'}
+                    </Text>
+                  </View>
+                </View>
+                <Pressable onPress={nextQuestion} style={styles.nextBtn}>
+                  <Text style={styles.nextText}>{qIndex + 1 >= questions.length ? 'Xem kết quả' : 'Câu tiếp theo'}</Text>
+                </Pressable>
               </View>
-              <View style={styles.resultInfo}>
-                <Text style={styles.resultTitle}>{isCorrect ? 'Chính xác!' : 'Sai rồi'}</Text>
-                <Text style={[styles.resultSubtitle, isCorrect ? styles.resultSubCorrect : styles.resultSubWrong]}>
-                  {isCorrect ? (isDailyMode ? '+20 điểm thưởng' : `+${questionScores[qIndex] ?? 0} điểm`) : 'Không cộng điểm'}
-                </Text>
-                {!isCorrect && showExplanation && question.explanation && (
-                  <Text style={styles.explanation} numberOfLines={3}>{question.explanation}</Text>
-                )}
-              </View>
-            </View>
-            <Pressable onPress={nextQuestion} style={styles.nextBtn}>
-              <Text style={styles.nextText}>{qIndex + 1 >= questions.length ? 'Xem kết quả' : 'Câu tiếp theo'}</Text>
-            </Pressable>
-          </View>
-        )}
+            </>
+          )
+        })()}
       </View>
     </SafeScreen>
   )
@@ -471,7 +519,44 @@ const styles = StyleSheet.create({
   resultSubtitle: { fontSize: typography.size.xs, fontWeight: typography.weight.medium, marginTop: 2 },
   resultSubCorrect: { color: colors.success },
   resultSubWrong: { color: colors.error },
-  explanation: { fontSize: typography.size.xs, color: colors.textSecondary, marginTop: 4 },
+  expPill: {
+    alignSelf: 'center',
+    flexDirection: 'row', alignItems: 'center', gap: 6,
+    paddingHorizontal: 14, paddingVertical: 8,
+    borderRadius: borderRadius.full,
+    backgroundColor: 'rgba(50,52,64,0.85)',
+    borderWidth: 1,
+    marginTop: spacing.md,
+    shadowColor: '#000', shadowOpacity: 0.3, shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 }, elevation: 4,
+  },
+  expPillCorrect: { borderColor: 'rgba(232,168,50,0.30)' },
+  expPillWrong: { borderColor: 'rgba(239,68,68,0.30)' },
+  expPillIcon: { fontSize: 13 },
+  expPillText: { fontSize: 12, fontWeight: typography.weight.bold, letterSpacing: 0.3 },
+  expPillTextCorrect: { color: colors.gold },
+  expPillTextWrong: { color: '#f87171' },
+  expPanel: {
+    marginTop: spacing.md,
+    backgroundColor: 'rgba(50,52,64,0.95)',
+    borderRadius: borderRadius['2xl'],
+    borderWidth: 1,
+    padding: spacing.lg,
+    gap: spacing.md,
+    shadowColor: '#000', shadowOpacity: 0.4, shadowRadius: 12,
+    shadowOffset: { width: 0, height: 6 }, elevation: 6,
+  },
+  expPanelCorrect: { borderColor: 'rgba(74,222,128,0.20)' },
+  expPanelWrong: { borderColor: 'rgba(239,68,68,0.20)' },
+  expHeader: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: spacing.sm },
+  expCorrectAns: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: 6 },
+  expCorrectIcon: { fontSize: 14, color: '#4ade80', fontWeight: typography.weight.bold },
+  expCorrectText: { flex: 1, fontSize: 13, fontWeight: typography.weight.bold, color: '#4ade80' },
+  expClose: { padding: 4 },
+  expCloseText: { fontSize: 14, color: colors.textMuted },
+  expBody: { flexDirection: 'row', alignItems: 'flex-start', gap: 6 },
+  expBodyIcon: { fontSize: 13, color: 'rgba(232,168,50,0.7)', marginTop: 1 },
+  expBodyText: { flex: 1, fontSize: 13, lineHeight: 19, color: colors.textSecondary },
   nextBtn: {
     backgroundColor: colors.gold, borderRadius: borderRadius.xl,
     paddingVertical: spacing.md, alignItems: 'center',
