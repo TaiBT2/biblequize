@@ -154,6 +154,9 @@ const DailyChallenge: React.FC = () => {
   const [currentExplanation, setCurrentExplanation] = useState<string>('')
   const [results, setResults] = useState<boolean[]>([])
   const [correctAnswerIndices, setCorrectAnswerIndices] = useState<number[]>([])
+  // Hidden by default so the panel doesn't cover the answer grid on short
+  // mobile viewports (S21 Ultra report 2026-05-19). User taps pill to expand.
+  const [explanationCollapsed, setExplanationCollapsed] = useState(true)
 
   // Result state
   const [dailyResult, setDailyResult] = useState<DailyResult | null>(null)
@@ -412,6 +415,7 @@ const DailyChallenge: React.FC = () => {
       setIsCorrect(null)
       setCurrentExplanation('')
       setCorrectAnswerIndices([])
+      setExplanationCollapsed(true)
     }
   }, [challengeData, currentIndex, results, sessionId, queryClient])
 
@@ -529,24 +533,51 @@ const DailyChallenge: React.FC = () => {
         </div>
 
         {answered && (!isCorrect || currentExplanation) && (
-          <div className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg">
-            <div className={`glass-panel p-5 rounded-2xl border space-y-3 max-h-[50vh] overflow-y-auto ${isCorrect ? 'border-green-500/20' : 'border-error/20'}`}>
-              {!isCorrect && correctOptionText && (
-                <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-green-400 text-sm" style={FILL_1}>check_circle</span>
-                  <span className="text-sm font-bold text-green-400">
-                    {t('quiz.correctAnswerIs', { answer: correctOptionText })}
-                  </span>
+          explanationCollapsed ? (
+            <button
+              data-testid="daily-explanation-pill"
+              type="button"
+              onClick={() => setExplanationCollapsed(false)}
+              className={`fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-full glass-panel border text-xs font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-transform ${
+                isCorrect ? 'border-secondary/30 text-secondary' : 'border-error/30 text-error'
+              }`}
+            >
+              <span className="material-symbols-outlined text-sm" style={FILL_1}>lightbulb</span>
+              {t('quiz.showExplanationAgain', 'Xem giải thích')}
+            </button>
+          ) : (
+            <div className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg">
+              <div className={`glass-panel p-5 rounded-2xl border space-y-3 max-h-[50vh] overflow-y-auto ${isCorrect ? 'border-green-500/20' : 'border-error/20'}`}>
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 min-w-0">
+                    {!isCorrect && correctOptionText && (
+                      <>
+                        <span className="material-symbols-outlined text-green-400 text-sm flex-shrink-0" style={FILL_1}>check_circle</span>
+                        <span className="text-sm font-bold text-green-400 truncate">
+                          {t('quiz.correctAnswerIs', { answer: correctOptionText })}
+                        </span>
+                      </>
+                    )}
+                  </div>
+                  <button
+                    data-testid="daily-explanation-close"
+                    type="button"
+                    onClick={() => setExplanationCollapsed(true)}
+                    className="text-on-surface-variant/60 hover:text-on-surface transition-colors -mr-1 flex-shrink-0"
+                    aria-label={t('quiz.minimizeExplanation', 'Thu nhỏ')}
+                  >
+                    <span className="material-symbols-outlined text-base">close</span>
+                  </button>
                 </div>
-              )}
-              {currentExplanation && (
-                <p className="text-on-surface-variant text-sm leading-relaxed flex items-start gap-1.5">
-                  <span className="material-symbols-outlined text-sm mt-0.5 text-secondary/60">lightbulb</span>
-                  <span>{currentExplanation}</span>
-                </p>
-              )}
+                {currentExplanation && (
+                  <p className="text-on-surface-variant text-sm leading-relaxed flex items-start gap-1.5">
+                    <span className="material-symbols-outlined text-sm mt-0.5 text-secondary/60">lightbulb</span>
+                    <span>{currentExplanation}</span>
+                  </p>
+                )}
+              </div>
             </div>
-          </div>
+          )
         )}
 
         {answered && (
