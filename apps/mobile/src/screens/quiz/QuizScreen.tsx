@@ -61,6 +61,9 @@ export default function QuizScreen() {
   const [timeLeft, setTimeLeft] = useState(timePerQuestion)
   const [score, setScore] = useState(0)
   const [combo, setCombo] = useState(0)
+  const [perQuestionResults, setPerQuestionResults] = useState<(boolean | null)[]>(
+    new Array(questions.length).fill(null),
+  )
   const [correctCount, setCorrectCount] = useState(0)
   const [userAnswers, setUserAnswers] = useState<(number | null)[]>(new Array(questions.length).fill(null))
   const [questionScores, setQuestionScores] = useState<number[]>(new Array(questions.length).fill(0))
@@ -126,6 +129,11 @@ export default function QuizScreen() {
     const newScores = [...questionScores]
     newScores[qIndex] = qScore
     setQuestionScores(newScores)
+    setPerQuestionResults(prev => {
+      const next = [...prev]
+      next[qIndex] = correct
+      return next
+    })
 
     // Submit to server — daily mode uses dedicated endpoint cho BE tracking
     // (daily missions tick, history, leaderboard). Web parity: apps/web/src/pages/DailyChallenge.tsx:347.
@@ -207,17 +215,30 @@ export default function QuizScreen() {
           </View>
         </View>
 
-        <ProgressBar progress={progress} height={4} />
+        {/* Multi-segment progress (web parity): per-question state visualization.
+            Past correct = green, past wrong = red, current = gold, upcoming = muted. */}
+        <View style={styles.segmentsRow}>
+          {questions.map((_: any, i: number) => {
+            let bg: string = 'rgba(255,255,255,0.08)'
+            if (i < qIndex) {
+              bg = perQuestionResults[i] ? colors.success : colors.error
+            } else if (i === qIndex) {
+              bg = colors.gold
+            }
+            return <View key={i} style={[styles.segment, { backgroundColor: bg }]} />
+          })}
+        </View>
 
         <View style={styles.timerRow}>
           <CountdownTimer timeLeft={timeLeft} timeLimit={timePerQuestion} size={64} />
           <Text style={styles.bookLabel}>{question.book} {question.chapter}</Text>
         </View>
 
-        {/* Question — verse badge top + question text (QZ-P0-2 mobile parity). */}
+        {/* Question card với left gold accent bar (signature Sacred Modernist). */}
         <View style={styles.questionCard}>
+          <View style={styles.questionAccentBar} />
           <View style={styles.verseBadge}>
-            <Text style={styles.verseBadgeText}>{formatVerseRef(question)}</Text>
+            <Text style={styles.verseBadgeText}>📖 {formatVerseRef(question)}</Text>
           </View>
           <Text style={styles.questionText}>{question.content}</Text>
         </View>
@@ -279,17 +300,24 @@ export default function QuizScreen() {
           })}
         </View>
 
-        {/* Result footer */}
+        {/* Floating feedback bar (web parity) — fixed bottom với glass-panel
+            effect, large rounded icon + bonus points hint + gold gradient CTA. */}
         {showResult && (
           <View style={[styles.resultBar, isCorrect ? styles.resultCorrect : styles.resultWrong]}>
-            <View>
-              <Text style={styles.resultTitle}>{isCorrect ? '✓ Chính xác!' : '✗ Sai rồi!'}</Text>
+            <View style={[styles.resultIconCircle, isCorrect ? styles.resultIconCorrect : styles.resultIconWrong]}>
+              <Text style={styles.resultIconText}>{isCorrect ? '✓' : '✗'}</Text>
+            </View>
+            <View style={styles.resultInfo}>
+              <Text style={styles.resultTitle}>{isCorrect ? 'Chính xác!' : 'Sai rồi'}</Text>
+              <Text style={[styles.resultSubtitle, isCorrect ? styles.resultSubCorrect : styles.resultSubWrong]}>
+                {isCorrect ? (isDailyMode ? '+20 điểm thưởng' : `+${questionScores[qIndex] ?? 0} điểm`) : 'Không cộng điểm'}
+              </Text>
               {!isCorrect && showExplanation && question.explanation && (
                 <Text style={styles.explanation} numberOfLines={2}>{question.explanation}</Text>
               )}
             </View>
             <Pressable onPress={nextQuestion} style={styles.nextBtn}>
-              <Text style={styles.nextText}>{qIndex + 1 >= questions.length ? 'Kết quả' : 'Tiếp →'}</Text>
+              <Text style={styles.nextText}>{qIndex + 1 >= questions.length ? 'Xem kết quả' : 'Tiếp →'}</Text>
             </Pressable>
           </View>
         )}
@@ -307,12 +335,28 @@ const styles = StyleSheet.create({
   qCount: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.textSecondary },
   comboBadge: { backgroundColor: colors.surfaceContainer, borderRadius: borderRadius.full, paddingHorizontal: spacing.md, paddingVertical: spacing.xs },
   comboText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold },
+  segmentsRow: { flexDirection: 'row', gap: 6, marginTop: spacing.xs },
+  segment: { flex: 1, height: 5, borderRadius: 2.5 },
   timerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: spacing.lg },
   bookLabel: { fontSize: typography.size.xs, color: colors.textMuted },
   questionCard: {
+    position: 'relative',
     backgroundColor: colors.surfaceContainer, borderRadius: borderRadius['2xl'],
-    padding: spacing.xl, marginBottom: spacing.xl, minHeight: 100, justifyContent: 'center',
+    padding: spacing.xl, paddingLeft: spacing.xl + 4,
+    marginBottom: spacing.xl, minHeight: 100, justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(232,168,50,0.10)',
+  },
+  questionAccentBar: {
+    position: 'absolute',
+    left: 0,
+    top: '20%',
+    bottom: '20%',
+    width: 4,
+    backgroundColor: colors.gold,
+    borderTopRightRadius: 4,
+    borderBottomRightRadius: 4,
   },
   verseBadge: {
     backgroundColor: 'rgba(232,168,50,0.10)',
@@ -346,12 +390,31 @@ const styles = StyleSheet.create({
   letterText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold },
   ansText: { flex: 1, fontSize: typography.size.base, color: colors.textPrimary },
   resultBar: {
-    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
-    padding: spacing.lg, borderRadius: borderRadius.xl, marginTop: spacing.md,
+    flexDirection: 'row', alignItems: 'center',
+    padding: spacing.md, gap: spacing.md,
+    borderRadius: borderRadius['2xl'], marginTop: spacing.md,
+    backgroundColor: colors.surfaceContainerHighest,
+    borderWidth: 1,
+    shadowColor: '#000',
+    shadowOpacity: 0.4,
+    shadowRadius: 20,
+    shadowOffset: { width: 0, height: 8 },
+    elevation: 8,
   },
-  resultCorrect: { backgroundColor: 'rgba(34,197,94,0.15)' },
-  resultWrong: { backgroundColor: 'rgba(239,68,68,0.15)' },
-  resultTitle: { fontSize: typography.size.base, fontWeight: typography.weight.bold, color: colors.textPrimary },
+  resultCorrect: { borderColor: 'rgba(34,197,94,0.4)' },
+  resultWrong: { borderColor: 'rgba(239,68,68,0.4)' },
+  resultIconCircle: {
+    width: 44, height: 44, borderRadius: 22,
+    alignItems: 'center', justifyContent: 'center',
+  },
+  resultIconCorrect: { backgroundColor: 'rgba(34,197,94,0.20)' },
+  resultIconWrong: { backgroundColor: 'rgba(239,68,68,0.20)' },
+  resultIconText: { fontSize: 22, fontWeight: typography.weight.bold, color: colors.textPrimary },
+  resultInfo: { flex: 1 },
+  resultTitle: { fontSize: typography.size.base, fontWeight: typography.weight.bold, color: colors.textPrimary, lineHeight: 18 },
+  resultSubtitle: { fontSize: typography.size.xs, fontWeight: typography.weight.medium, marginTop: 2 },
+  resultSubCorrect: { color: colors.success },
+  resultSubWrong: { color: colors.error },
   explanation: { fontSize: typography.size.xs, color: colors.textSecondary, marginTop: 4, maxWidth: 220 },
   nextBtn: { backgroundColor: colors.gold, borderRadius: borderRadius.lg, paddingHorizontal: spacing.xl, paddingVertical: spacing.md },
   nextText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.onSecondary },
