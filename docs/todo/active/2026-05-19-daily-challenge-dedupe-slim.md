@@ -59,7 +59,13 @@ Findings báo cáo trong session — confirm BE-zero cho DC-1/2/3/5/6. DC-4 free
   - **Spec strategy**: `[no-spec-impact]` (đúng SPEC_USER §14 + §3.2.2)
 
 - DC-5 Leaderboard chỉ hiện State B
-  - Status: [ ] TODO
+  - Status: [x] DONE
+  - `apps/web/src/pages/DailyChallenge.tsx:709-735` — branch theo `isCompleted`:
+    - `false` (State A): chỉ render `<StreakCard>` full-width, không render `<DailyLeaderboard>` — tránh tín hiệu "Bạn — Chưa làm hôm nay / 0 đ" trước khi user bấm Start
+    - `true` (State B): giữ grid `lg:grid-cols-[2fr_1fr]` cho Leaderboard + StreakCard, surface ranking thật làm reward
+  - Component `DailyLeaderboard` không xóa, chỉ gate render — query `leaderboardQuery` vẫn chạy (cache có sẵn khi user complete)
+  - SPEC_USER §5.3 mô tả BE behavior + endpoints + edge cases, KHÔNG mô tả layout screen
+  - **Spec strategy**: `[no-spec-impact]`
 
 - DC-6 Reorder + spacing
   - Status: [ ] TODO

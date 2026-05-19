@@ -706,18 +706,32 @@ const DailyChallenge: React.FC = () => {
         onDownload={() => setShowShareCard(true)}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-5 mb-7">
-        <DailyLeaderboard
-          entries={leaderboardEntries}
-          myEntry={myEntry}
-          myCompleted={isCompleted}
-        />
-        <StreakCard
-          currentStreak={currentStreak}
-          last7Days={last7Days}
-          freezesPerWeek={freezesPerWeek}
-        />
-      </div>
+      {/* Leaderboard chỉ hiện ở State B (post-completion). Trên State A
+          (chưa làm hôm nay), block "Bạn — Chưa làm hôm nay / 0 đ" là tín
+          hiệu động lực ngược trước khi user kịp bấm Bắt đầu. Khi đã
+          hoàn thành, surface ranking thật làm reward. */}
+      {isCompleted ? (
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-5 mb-7">
+          <DailyLeaderboard
+            entries={leaderboardEntries}
+            myEntry={myEntry}
+            myCompleted={isCompleted}
+          />
+          <StreakCard
+            currentStreak={currentStreak}
+            last7Days={last7Days}
+            freezesPerWeek={freezesPerWeek}
+          />
+        </div>
+      ) : (
+        <div className="mb-7">
+          <StreakCard
+            currentStreak={currentStreak}
+            last7Days={last7Days}
+            freezesPerWeek={freezesPerWeek}
+          />
+        </div>
+      )}
 
       {historyDays.length > 0 && (
         <div className="mb-7">
