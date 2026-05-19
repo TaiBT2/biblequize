@@ -29,8 +29,6 @@ interface HeroCardProps {
   timeLimit: number
   currentStreak: number
   yesterday?: YesterdaySummary
-  verseText?: string
-  verseRef?: string
   onStart: () => void
   // Done state inputs
   done?: DoneSummary
@@ -120,7 +118,7 @@ export function HeroCard(props: HeroCardProps) {
     )
   }
 
-  function ReadyRight({ currentStreak, verseText, verseRef }: HeroCardProps) {
+  function ReadyRight({ currentStreak }: HeroCardProps) {
     return (
       <div className="text-center">
         <div className="w-[140px] h-[140px] mx-auto mb-4 rounded-full bg-[radial-gradient(circle,rgba(239,68,68,0.15)_0%,rgba(249,115,22,0.08)_50%,transparent_70%)] grid place-items-center relative">
@@ -139,23 +137,11 @@ export function HeroCard(props: HeroCardProps) {
           <span className="absolute inset-0 rounded-full border-2 border-dashed border-[rgba(239,68,68,0.2)] animate-spin-slow" />
         </div>
         <div className="text-base font-bold mb-1.5 text-on-surface">{t('daily.ready.previewHeadline')}</div>
-        <div className="text-xs text-on-surface-variant leading-relaxed mb-[18px]">
+        <div className="text-xs text-on-surface-variant leading-relaxed">
           {currentStreak > 0
             ? <>{t('daily.ready.previewSubStreak')} <strong className="text-[#f97316]">{t('daily.ready.streakDaysSpan', { count: currentStreak })}</strong>. {t('daily.ready.previewSubTail')}</>
             : t('daily.ready.previewSubFresh')}
         </div>
-        {verseText && (
-          <div className="bg-[rgba(17,19,30,0.5)] border border-[rgba(232,168,50,0.1)] rounded-xl px-4 py-3.5 text-left">
-            <div className="text-[10px] text-secondary font-bold uppercase tracking-[0.5px] mb-1.5 flex items-center gap-1">
-              <span className="material-symbols-outlined text-[12px]">menu_book</span>
-              {t('daily.ready.versePreviewLabel')}
-            </div>
-            <div className="text-[13px] leading-relaxed text-on-surface italic mb-2">
-              {verseText}
-            </div>
-            <div className="text-[11px] text-on-surface-variant font-semibold">— {verseRef}</div>
-          </div>
-        )}
       </div>
     )
   }

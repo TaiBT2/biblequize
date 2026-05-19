@@ -2186,7 +2186,6 @@
       "streakDaysSpan": "{{count}} ngày",
       "previewSubTail": "Một thử thách 5 phút nữa thôi.",
       "previewSubFresh": "Hoàn thành thử thách hôm nay để bắt đầu chuỗi mới.",
-      "versePreviewLabel": "Câu Kinh Thánh hôm nay",
       "yesterdayPrefix": "Hôm qua:",
       "yesterdayBody": "bạn đúng {{correct}}/{{total}} câu, hoàn thành trong {{time}}."
     },
@@ -2223,7 +2222,6 @@
     "streakDaysLine": "ngày liên tục",
     "freezeIndicator": "Streak Freeze",
     "freezeCount": "{{used}} / {{total}} tuần này",
-    "verseTitle": "Câu gốc",
     "heatmapTitle": "Lịch sử {{days}} ngày gần đây",
     "heatmapStats": "{{completed}}/{{total}} ngày hoàn thành ({{percent}}%)",
     "heatmapMissed": "bỏ",

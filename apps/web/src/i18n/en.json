@@ -2186,7 +2186,6 @@
       "streakDaysSpan": "{{count}} days",
       "previewSubTail": "Just one more 5-minute challenge.",
       "previewSubFresh": "Complete today's challenge to start a new streak.",
-      "versePreviewLabel": "Today's verse",
       "yesterdayPrefix": "Yesterday:",
       "yesterdayBody": "you got {{correct}}/{{total}} correct in {{time}}."
     },
@@ -2223,7 +2222,6 @@
     "streakDaysLine": "days in a row",
     "freezeIndicator": "Streak Freeze",
     "freezeCount": "{{used}} / {{total}} this week",
-    "verseTitle": "Verse",
     "heatmapTitle": "Last {{days}} days",
     "heatmapStats": "{{completed}}/{{total}} days done ({{percent}}%)",
     "heatmapMissed": "missed",

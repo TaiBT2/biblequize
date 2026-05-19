@@ -9,7 +9,6 @@ import { getQuizLanguage } from '../utils/quizLanguage'
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton'
 import { wrapProperNouns, formatVerseRef, getQuestionLengthClass } from '../utils/textHelpers'
 import { useAuthStore } from '../store/authStore'
-import { DAILY_VERSES } from '../data/verses'
 import { PageHeader } from './daily/PageHeader'
 import { HeroCard } from './daily/HeroCard'
 import { DailyLeaderboard, type DailyLbEntry } from './daily/DailyLeaderboard'
@@ -107,13 +106,6 @@ function getLast7Days(t: (key: string) => string, completedDates: Set<string>) {
     })
   }
   return days
-}
-
-function pickDailyVerse(): { text: string; ref: string } {
-  const dayOfYear = Math.floor(
-    (Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000
-  )
-  return DAILY_VERSES[dayOfYear % DAILY_VERSES.length]
 }
 
 // ─── Loading Skeleton ───────────────────────────────────────────────────────
@@ -270,7 +262,6 @@ const DailyChallenge: React.FC = () => {
   const loading = challengeQuery.isLoading
 
   // ── Derived ─────────────────────────────────────────────────────────────
-  const verse = useMemo(() => pickDailyVerse(), [])
   const todayLabel = useMemo(() => getTodayLabel(t), [t])
 
   const historyDays = useMemo<HeatmapDay[]>(() => {
@@ -690,8 +681,6 @@ const DailyChallenge: React.FC = () => {
         timeLimit={timeLimit}
         currentStreak={currentStreak}
         yesterday={yesterdayQuery.data}
-        verseText={verse.text}
-        verseRef={verse.ref}
         onStart={handleStart}
         done={heroDone}
         onReview={() => setShowReviewModal(true)}
@@ -705,25 +694,12 @@ const DailyChallenge: React.FC = () => {
           myEntry={myEntry}
           myCompleted={isCompleted}
         />
-        <div className="flex flex-col gap-4">
-          <StreakCard
-            currentStreak={currentStreak}
-            last7Days={last7Days}
-            freezeUsed={0}
-            freezeMax={1}
-          />
-          <div className="bg-gradient-to-b from-[rgba(232,168,50,0.04)] to-[rgba(50,52,64,0.4)] backdrop-blur-md border border-[rgba(232,168,50,0.1)] rounded-2xl p-5">
-            <div className="flex items-center gap-2 text-[15px] font-bold mb-3.5">
-              <span className="material-symbols-outlined text-lg text-secondary">menu_book</span>
-              {t('daily.verseTitle')}
-            </div>
-            <div className="text-[15px] leading-[1.7] text-on-surface italic mb-3 relative pl-4">
-              <span className="absolute left-0 -top-2.5 text-4xl text-secondary leading-none font-serif">&ldquo;</span>
-              {verse.text}
-            </div>
-            <div className="text-xs text-secondary font-bold text-right">— {verse.ref}</div>
-          </div>
-        </div>
+        <StreakCard
+          currentStreak={currentStreak}
+          last7Days={last7Days}
+          freezeUsed={0}
+          freezeMax={1}
+        />
       </div>
 
       {historyDays.length > 0 && (
