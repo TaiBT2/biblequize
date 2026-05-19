@@ -152,10 +152,11 @@
 |---|---|---|
 | ~~Multiplayer realtime (STOMP)~~ ✅ | `apps/mobile/src/screens/multiplayer/` + `components/multiplayer/` | **2026-05-19 S1+S3 fully wired**: useStomp + RoomWaiting + MultiplayerQuiz (timer + haptic + combo) + Results + TournamentBracket + 3 mode overlays (EliminationOverlay BR, TeamScoreBar TVT, MatchResultOverlay SD) + ChatOverlay + ReactionBar (6 emojis) + Quản trò RoomQuizHostScreen (5 controls) + RoomAnalyticsScreen. |
 | Cosmetics page | none | Chưa expose — defer S6 |
-| Tournament match scoring detail | partial | TournamentBracketScreen wired S1-6 (list-per-round); visual tree defer S5 |
+| Tournament match scoring detail | ✅ | **2026-05-19 S5 shipped**: TournamentDetailScreen (hero + join/start CTAs + status badge) + TournamentMatchScreen (VS layout, 3 hearts, forfeit). Real-time match gameplay defer (BE flow TBD). |
 | SetEditor (personal MVP) | ✅ | **2026-05-19 S4 shipped**: MySets + PersonalQuizSetEditor (metadata 6 fields + manual save + publish workflow) + QuestionEditor sub-screen (4 options + difficulty + book/chapter) + QuizSetDetail read-only + GroupQuizSetList. AI gen + auto-save + group editor + folder mgmt + visibility toggle defer S6+. |
-| Scheduled quizzes | none | Chưa có routes — defer S5 |
-| GROUP_LIVE_SEQUENTIAL per-player reveal | none | Defer S4 nếu Group features touched |
+| Scheduled quizzes | ✅ | **2026-05-19 S5 shipped**: ScheduledQuizList (status filter) + Create (leader/mod form với quiz set picker) + Detail (status banner + my stats + leaderboard 30s poll) + Play (question carousel + submit + result). Native date picker + push notif defer. |
+| GroupAnalytics | ✅ | **2026-05-19 S5 shipped**: GroupAnalyticsScreen (4-stat grid + weekly 7-bar chart + top contributors). GD-2 rule: hide charts khi group <7 ngày. |
+| GROUP_LIVE_SEQUENTIAL per-player reveal | none | Defer S6+ |
 
 - **Action:** Discuss với product timeline cho mobile parity.
 

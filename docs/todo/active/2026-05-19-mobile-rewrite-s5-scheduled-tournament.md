@@ -6,6 +6,10 @@
 
 > **Recon (2026-05-19)**: ScheduledQuiz endpoints đầy đủ trong web `api/scheduledQuiz.ts` (list, create, detail, start, submit, leaderboard). Tournament: match detail embedded trong bracket response — chỉ có forfeit endpoint riêng. Group analytics: `GET /api/groups/{id}/analytics` (leader/mod only) — weeklyActivity + topContributors.
 
+> **Sprint status (2026-05-19)**: ✅ DONE — 9 task + plan + finalize.
+> **Commits**: 107b3cc (plan) · 6ef5c04 (S5-1 APIs) · 2d491b0 (S5-2 List) · c9c8ea6 (S5-3 Create) · 29b73ea (S5-4 Detail) · aa21f1d (S5-5 Play) · 1221742 (S5-6/7 Tournament + Card fix) · 593db35 (S5-8 GroupAnalytics) · 0208630 (S5-9 nav).
+> **Regression**: mobile jest 33/33 PASS · mobile tsc CLEAN · web untouched.
+
 ### Tasks
 
 - **S5-1 scheduledQuiz API wrapper**
@@ -14,7 +18,7 @@
     - `startScheduledQuizAttempt(groupId, quizId)`, `submitScheduledQuizAttempt(groupId, quizId, body)`
     - `getScheduledQuizLeaderboard(groupId, quizId)`
   - All inline TypeScript interfaces (ScheduledQuizSummary, ScheduledQuizDetail, etc.)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/api/scheduledQuiz.ts` (new)
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -22,7 +26,7 @@
   - New `apps/mobile/src/screens/scheduled/ScheduledQuizListScreen.tsx` — list per group với status filter pills (ACTIVE / ENDED)
   - Card: name, deadline countdown, questionCount, status badge, tap → Detail
   - FAB "+ Tạo lịch" (leader/mod only — check role from group cache)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/scheduled/ScheduledQuizListScreen.tsx` (new)
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -35,7 +39,7 @@
     - isLeaderboardPublic toggle
     - sendNotifications toggle
     - Submit → createScheduledQuiz → navigate Detail
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/scheduled/ScheduledQuizCreateScreen.tsx` (new)
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -46,7 +50,7 @@
     - My stats: attemptsUsed, bestScore, bestCorrectCount
     - Leaderboard table với rank + name + score + correctCount + timeSeconds
     - Auto-refresh leaderboard mỗi 30s (refetchInterval)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/scheduled/ScheduledQuizDetailScreen.tsx` (new)
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -58,7 +62,7 @@
     - Progress bar top
     - Submit khi answer cuối: collect answers + timeSeconds → submitScheduledQuizAttempt → result screen
     - Result: score + correctCount + back to detail
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/scheduled/ScheduledQuizPlayScreen.tsx` (new)
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -68,7 +72,7 @@
     - Meta cards: currentRound/totalRounds, creator name
     - Action buttons: "Tham gia" (POST /join) khi LOBBY + not joined; "Bắt đầu" (POST /start) khi creator + LOBBY
     - "Xem bracket" button → existing TournamentBracketScreen (S1-6)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/multiplayer/TournamentDetailScreen.tsx` (new), `apps/mobile/src/api/tournaments.ts` (new minimal)
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -80,7 +84,7 @@
     - Forfeit button (red) với confirm → POST /matches/{matchId}/forfeit
     - "Trở về bracket" button
     - Live gameplay defer — TBD nếu BE expose roomId hoặc separate flow
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/multiplayer/TournamentMatchScreen.tsx` (new)
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -91,7 +95,7 @@
     - Weekly activity simple bar chart (7 bars proportional)
     - Top contributors list (rank + name + score + questionsAnswered)
     - Empty state khi group <7 days old (GD-2 rule)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/social/GroupAnalyticsScreen.tsx` (new)
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -101,14 +105,14 @@
   - GroupDetailScreen: add CTAs "📅 Lịch thi đấu" → ScheduledQuizList + "📊 Phân tích" (leader/mod only) → GroupAnalytics
   - Tournament list trong MultiplayerStack (nếu chưa có) — link từ MultiplayerLobby
   - Update TournamentBracketScreen tap match → TournamentMatchScreen
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/navigation/types.ts`, `MainTabNavigator.tsx`, `screens/social/GroupDetailScreen.tsx`, `screens/multiplayer/TournamentBracketScreen.tsx`
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
 - **S5-10 Tầng 3 regression + mark sprint DONE**
   - mobile jest ≥ 33 baseline, mobile tsc clean
   - Update roadmap S5 → DONE, BL-11 Scheduled + Tournament detail + Group analytics rows closed
-  - Status: [ ] TODO
+  - Status: [x] DONE
 
 ### Common
 
