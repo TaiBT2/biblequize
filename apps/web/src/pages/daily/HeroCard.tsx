@@ -73,8 +73,10 @@ export function HeroCard(props: HeroCardProps) {
           <span className="w-2 h-2 rounded-full bg-[#ef4444] animate-pulse-ring" />
           {t('daily.ready.statusBadge')}
         </div>
-        <h3 className="text-[28px] font-extrabold mb-2.5 tracking-tight text-on-surface">
-          {t('daily.ready.title', { count: questionCount })}
+        <h3 className="text-[28px] font-extrabold mb-2.5 tracking-tight">
+          <span className="text-[#f87171]">{t('daily.ready.titleLead', { count: questionCount })}</span>
+          {' '}
+          <span className="text-secondary">{t('daily.ready.titleAccent')}</span>
         </h3>
         <p className="text-on-surface-variant text-sm leading-relaxed mb-6">
           {t('daily.ready.desc')}

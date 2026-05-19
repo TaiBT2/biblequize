@@ -2169,7 +2169,8 @@
     "dayNameSaturday": "Thứ Bảy",
     "ready": {
       "statusBadge": "Sẵn sàng",
-      "title": "{{count}} câu hỏi chờ bạn hôm nay",
+      "titleLead": "{{count}} câu,",
+      "titleAccent": "một cộng đồng",
       "desc": "Cùng một bộ câu hỏi cho tất cả mọi người trên thế giới — xem bạn đứng ở đâu trong cộng đồng. Hoàn thành để giữ chuỗi và nhận XP.",
       "metaQuestions": "{{count}} câu",
       "metaTime": "~{{minutes}} phút",

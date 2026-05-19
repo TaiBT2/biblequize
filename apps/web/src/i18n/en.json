@@ -2169,7 +2169,8 @@
     "dayNameSaturday": "Saturday",
     "ready": {
       "statusBadge": "Ready",
-      "title": "{{count}} questions waiting for you today",
+      "titleLead": "{{count}} questions,",
+      "titleAccent": "one community",
       "desc": "Same questions for everyone worldwide — see where you stand in the community. Complete to keep your streak and earn XP.",
       "metaQuestions": "{{count}} questions",
       "metaTime": "~{{minutes}} min",
