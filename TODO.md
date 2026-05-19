@@ -15,7 +15,7 @@
 | 2026-05-19 | Mobile rewrite S3: multiplayer realtime full (5 modes + Quản trò + chat + analytics) | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s3-multiplayer-realtime.md) |
 | 2026-05-19 | Mobile rewrite S4: Quiz Set workflow (personal MVP + group list) | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s4-quiz-set-workflow.md) |
 | 2026-05-19 | Mobile rewrite S5: Scheduled quiz + Tournament detail + Group analytics | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s5-scheduled-tournament.md) |
-| 2026-05-19 | Mobile rewrite S6: Cosmetics + Help + a11y polish | TODO | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s6-cosmetics-help-polish.md) |
+| 2026-05-19 | Mobile rewrite S6: Cosmetics + Help + a11y polish | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s6-cosmetics-help-polish.md) |
 | 2026-05-18 | Profile Edit modal redesign (Sacred Modernist + avatar preset) | DONE | [detail](docs/todo/active/2026-05-18-profile-edit-modal-redesign-sacred-modernist.md) |
 | 2026-05-18 | Fix Daily Missions "Trả lời đúng 3 câu" + "combo 3" không tick | DONE | [detail](docs/todo/active/2026-05-18-fix-daily-missions-tracking.md) |
 | 2026-05-18 | Fix Daily Challenge button "Vào chơi" còn hiện sau khi đã hoàn thành | TODO | [detail](docs/todo/active/2026-05-18-fix-daily-challenge-stale-cta.md) |

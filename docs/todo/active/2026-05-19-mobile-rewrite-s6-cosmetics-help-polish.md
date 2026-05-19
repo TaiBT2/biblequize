@@ -6,6 +6,10 @@
 
 > **Recon (2026-05-19)**: `/api/me/cosmetics` returns { activeFrame, activeTheme, frames: CosmeticItem[], themes: CosmeticItem[] }. PATCH same endpoint với activeFrame/activeTheme. CosmeticItem: { id, name, tier, unlocked, active }. Web FAQ embedded data trong `data/faqData.ts` (FAQ_ITEMS + FAQ_CATEGORIES) — i18n via `help.items.<id>.{q,a}` keys.
 
+> **Sprint status (2026-05-19)**: ✅ DONE — 5 task + plan + finalize. **M2 milestone reached** (full feature parity).
+> **Commits**: 2d91998 (plan) · ac740b0 (S6-1 Cosmetics) · b95278a (S6-2 Help) · 6a8db7e (S6-3 Splash polish) · 9f64b9f (S6-4 a11y) · 5bc2b17 (S6-5 nav).
+> **Regression**: mobile jest 33/33 PASS · mobile tsc CLEAN · web untouched.
+
 ### Tasks
 
 - **S6-1 cosmetics API + CosmeticsScreen**
@@ -15,7 +19,7 @@
     - Grid 3-col items với tier icon + name + locked overlay (🔒) khi !unlocked
     - Tap unlocked item → mut activate
     - Active item: gold ring border + "✓ Đang dùng" badge
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/api/cosmetics.ts` (new), `apps/mobile/src/screens/user/CosmeticsScreen.tsx` (new)
   - Spec impact: BL-11 close (Cosmetics row). Strategy: (c) `[no-spec-impact]`.
 
@@ -26,7 +30,7 @@
     - Per item: accordion (tap chevron → expand/collapse Q+A từ i18n keys)
     - Top sticky: section anchor jump buttons
   - i18n keys `help.categories.<cat>` + `help.items.<id>.{q,a}` — copy từ web vi.json + en.json (port relevant subset)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/system/HelpScreen.tsx` (new), `apps/mobile/src/i18n/vi.json` + `en.json` (add `help.*` keys)
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -34,7 +38,7 @@
   - `WelcomeSlidesScreen`: thêm "Bỏ qua" button top-right → navigate.replace('Login')
   - `TryQuizScreen`: thêm progress dots indicator dưới (1 of 3 → 2 of 3 → 3 of 3)
   - `SplashScreen`: extend 1500ms → 2500ms để hiển thị logo lâu hơn (cảm giác polished)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/onboarding/{WelcomeSlidesScreen,TryQuizScreen,SplashScreen}.tsx`
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -46,7 +50,7 @@
     - Quiz answer buttons (label "Đáp án A: <content>")
   - Verify minimum tap target 44x44 cho touch surfaces
   - `accessibilityState={{ selected: isActive }}` cho filter pills
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: ~5-7 files với hot-spots a11y touches
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -54,7 +58,7 @@
   - types.ts ProfileStack: add Cosmetics + Help routes
   - MainTabNavigator: register CosmeticsScreen + HelpScreen vào ProfileStack
   - ProfileScreen menu thêm "🎨 Trang trí" → Cosmetics + "❓ Trợ giúp" → Help
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/navigation/types.ts`, `MainTabNavigator.tsx`, `screens/user/ProfileScreen.tsx`
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -62,7 +66,7 @@
   - mobile jest ≥ 33, mobile tsc clean
   - Web vitest baseline check (no S6 web touched)
   - Update roadmap S6 → DONE, BL-11 Cosmetics row closed, M2 milestone reached
-  - Status: [ ] TODO
+  - Status: [x] DONE
 
 ### Common
 
