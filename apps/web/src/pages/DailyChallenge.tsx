@@ -70,14 +70,6 @@ const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 const LETTERS = ['A', 'B', 'C', 'D']
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
-function formatCountdown(diff: number): string {
-  if (diff <= 0) return '00:00:00'
-  const hours = Math.floor(diff / (1000 * 60 * 60))
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000)
-  return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-}
-
 function getTodayLabel(t: (key: string) => string): string {
   const d = new Date()
   const dayKeys = [
@@ -155,23 +147,6 @@ const DailyChallenge: React.FC = () => {
   const [dailyResult, setDailyResult] = useState<DailyResult | null>(null)
   const [showShareCard, setShowShareCard] = useState(false)
   const [showReviewModal, setShowReviewModal] = useState(false)
-
-  // Countdown
-  const [countdown, setCountdown] = useState('')
-
-  // ── Countdown timer to UTC midnight ─────────────────────────────────────
-  useEffect(() => {
-    const updateCountdown = () => {
-      const now = new Date()
-      const tomorrow = new Date(now)
-      tomorrow.setUTCDate(tomorrow.getUTCDate() + 1)
-      tomorrow.setUTCHours(0, 0, 0, 0)
-      setCountdown(formatCountdown(tomorrow.getTime() - now.getTime()))
-    }
-    updateCountdown()
-    const interval = setInterval(updateCountdown, 1000)
-    return () => clearInterval(interval)
-  }, [])
 
   // Click-outside on the explanation panel collapses it so the answer grid
   // behind is visible. Only attach the listener while a panel is open.
@@ -692,7 +667,7 @@ const DailyChallenge: React.FC = () => {
         canonicalPath="/daily"
       />
 
-      <PageHeader todayLabel={todayLabel} countdown={countdown} seasonName={seasonName} />
+      <PageHeader todayLabel={todayLabel} seasonName={seasonName} />
 
       <HeroCard
         state={isCompleted ? 'done' : 'ready'}

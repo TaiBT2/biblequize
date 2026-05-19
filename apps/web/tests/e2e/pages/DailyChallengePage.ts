@@ -4,7 +4,6 @@ import { BasePage } from './BasePage'
 export class DailyChallengePage extends BasePage {
   // ── Locators ──────────────────────────────────────────────
   readonly container: Locator
-  readonly countdown: Locator
   readonly startBtn: Locator
   readonly leaderboard: Locator
   readonly completedBadge: Locator
@@ -17,7 +16,6 @@ export class DailyChallengePage extends BasePage {
   constructor(page: Page) {
     super(page)
     this.container = page.getByTestId('daily-page')
-    this.countdown = page.getByTestId('daily-countdown')
     this.startBtn = page.getByTestId('daily-start-btn')
     this.leaderboard = page.getByTestId('daily-leaderboard')
     this.completedBadge = page.getByTestId('daily-completed-badge')

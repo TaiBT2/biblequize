@@ -88,7 +88,7 @@ test.describe('W-M05 Daily Challenge', () => {
 
   // ── W-M05-L2-004 — UI flow: /daily page visible with start button ──
 
-  test('W-M05-L2-004: daily page shows countdown, start button, reward display', async ({
+  test('W-M05-L2-004: daily page shows start button (ready state)', async ({
     tier3Page: page,
   }) => {
     const dailyPage = new DailyChallengePage(page)
@@ -96,11 +96,6 @@ test.describe('W-M05 Daily Challenge', () => {
 
     await expect(dailyPage.container).toBeVisible()
     await expect(dailyPage.startBtn).toBeEnabled()
-
-    // Countdown timer should be visible (time until next reset)
-    const countdownVisible = await dailyPage.countdown.isVisible().catch(() => false)
-    // Accept if countdown may not be present in all UI states
-    expect(countdownVisible || true).toBeTruthy()
   })
 
   // ── W-M05-L2-005 — Start daily quiz -> /quiz?mode=daily, 5 questions loaded ──

@@ -2140,7 +2140,6 @@
     "loadError": "Could not load challenge. Please try again.",
     "noOneCompleted": "No one has completed today's challenge yet",
     "notCompleted": "Not completed",
-    "refreshIn": "Refreshes in",
     "resultTitle": "Results",
     "shareResult": "Share result",
     "startChallenge": "Start Challenge",
@@ -2161,7 +2160,6 @@
       "good": "Well Done!",
       "tryAgain": "Keep Trying!"
     },
-    "utcResetHint": "UTC · 7am Vietnam time",
     "dayNameSunday": "Sunday",
     "dayNameMonday": "Monday",
     "dayNameTuesday": "Tuesday",

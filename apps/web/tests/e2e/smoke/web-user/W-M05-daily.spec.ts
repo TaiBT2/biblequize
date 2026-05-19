@@ -37,26 +37,10 @@ test.describe('W-M05 Daily Challenge — L1 Smoke @smoke @daily', () => {
     await expect(dailyPage.startBtn).toBeEnabled()
   })
 
-  test('W-M05-L1-002: Countdown timer den midnight hien thi @smoke @daily', async ({
-    tier3Page,
-  }) => {
-    // ============================================================
-    // SECTION 1: SETUP — none
-    // ============================================================
-
-    // ============================================================
-    // SECTION 2: ACTIONS
-    // ============================================================
-    const page = tier3Page
-    const dailyPage = new DailyChallengePage(page)
-    await dailyPage.goto()
-
-    // ============================================================
-    // SECTION 3: UI ASSERTIONS
-    // ============================================================
-    await expect(dailyPage.countdown).toBeVisible()
-    await expect(dailyPage.countdown).toHaveText(/\d{2}:\d{2}:\d{2}/)
-  })
+  // W-M05-L1-002 removed 2026-05-19: countdown component was deleted per
+  // user feedback (Daily Challenge dedupe & slim, DC-7). Reset timing is
+  // implicit (UTC midnight) and the countdown widget was crowding the
+  // header without adding actionable info.
 
   test('W-M05-L1-003: Click Bat Dau vao quiz mode daily @smoke @daily @critical', async ({
     tier3Page,
