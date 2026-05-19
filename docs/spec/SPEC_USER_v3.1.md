@@ -1010,7 +1010,7 @@ Firebase Cloud Messaging (FCM). Đăng ký device token: `POST /api/me/devices`.
 
 ### 24.6 Deep links
 ```
-prefixes: ['biblequiz://', 'https://biblequiz.app']
+prefixes: ['biblequiz://', 'https://forbible.org']
 config:
   Main → DailyTab: 'daily'
   Main → GroupsTab → GroupDetail: 'groups/:id'
@@ -1074,7 +1074,7 @@ EN ~20–30% dài hơn VN → test buttons không tràn, nav labels không cắt
 
 ### 26.1 Connection
 ```
-wss://api.biblequiz.app/ws  (STOMP over WS)
+wss://be.forbible.org/ws  (STOMP over WS)
 JWT qua query param: ?token=<accessToken>  (xem useWebSocket.ts:142-145)
 ```
 
