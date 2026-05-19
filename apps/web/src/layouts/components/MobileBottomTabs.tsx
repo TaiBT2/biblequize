@@ -8,11 +8,11 @@ interface TabConfig {
 }
 
 /**
- * Direction-3 active-only-label layout (HM-MB-2 fix): inactive tabs
- * render the icon only, the active tab renders an icon + label pill.
- * Solves the 320px wrap risk that 4 always-visible 2-word labels
- * created on iPhone SE — only one label is on screen at a time, and
- * the pill flexes to its content width.
+ * Stacked icon + always-visible label layout (2026-05-19): every tab
+ * renders icon on top + label below; active tab uses the gold accent
+ * color and a short underline indicator. Replaces the previous
+ * active-only pill which hid 3 of 4 labels and made the bar feel
+ * empty on mobile.
  *
  * Tabs match the existing AppLayout {@code navItems} list one-to-one
  * so the bottom-nav refactor is a pure style change — no item drift,
@@ -43,7 +43,7 @@ export default function MobileBottomTabs() {
   return (
     <nav
       data-testid="mobile-bottom-tabs"
-      className="md:hidden fixed bottom-0 left-0 w-full z-40 flex items-center justify-between gap-2 px-3 pt-2 bg-[#11131e]/90 backdrop-blur-xl border-t border-[rgba(232,168,50,0.15)]"
+      className="md:hidden fixed bottom-0 left-0 w-full z-40 flex items-stretch justify-between px-1 pt-1 bg-[#11131e]/90 backdrop-blur-xl border-t border-[rgba(232,168,50,0.15)]"
       style={{ paddingBottom: 'max(8px, env(safe-area-inset-bottom))' }}
     >
       {TABS.map(tab => {
@@ -56,21 +56,31 @@ export default function MobileBottomTabs() {
             data-active={active ? 'true' : 'false'}
             aria-label={t(tab.labelKey) as string}
             aria-current={active ? 'page' : undefined}
-            className={`flex items-center justify-center gap-2 min-h-[44px] transition-all duration-200 ease-out ${
+            className={`relative flex-1 flex flex-col items-center justify-center gap-0.5 min-h-[52px] px-1 transition-colors duration-200 ease-out ${
               active
-                ? 'bg-secondary/10 text-secondary px-4 rounded-full font-medium'
-                : 'text-on-surface/40 hover:text-on-surface/70 px-3'
+                ? 'text-secondary'
+                : 'text-on-surface/50 hover:text-on-surface/80'
             }`}
           >
             <span
-              className={`material-symbols-outlined ${active ? 'text-[18px]' : 'text-[22px]'}`}
+              className="material-symbols-outlined text-[22px]"
               style={active ? { fontVariationSettings: "'FILL' 1" } : undefined}
               aria-hidden="true"
             >
               {tab.icon}
             </span>
+            <span
+              className={`text-[11px] leading-tight whitespace-nowrap ${
+                active ? 'font-semibold' : 'font-medium'
+              }`}
+            >
+              {t(tab.labelKey)}
+            </span>
             {active && (
-              <span className="text-[12px] whitespace-nowrap">{t(tab.labelKey)}</span>
+              <span
+                aria-hidden="true"
+                className="absolute bottom-0 h-[2px] w-6 rounded-full bg-secondary"
+              />
             )}
           </Link>
         )
