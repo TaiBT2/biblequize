@@ -8,13 +8,18 @@ WebBrowser.maybeCompleteAuthSession()
 
 const WEB_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID ?? ''
 const ANDROID_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID ?? ''
+const IOS_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID ?? ''
 
 export function useGoogleAuth() {
   const setAuth = useAuthStore(s => s.setAuth)
 
+  // Expo Go: dùng webClientId qua auth proxy (không cần native bundle).
+  // EAS Build standalone: iOS + Android client IDs phải match bundleId/package
+  // trong Google Cloud Console OAuth credentials.
   const [request, response, promptAsync] = Google.useAuthRequest({
     webClientId: WEB_CLIENT_ID,
     androidClientId: ANDROID_CLIENT_ID,
+    iosClientId: IOS_CLIENT_ID,
   })
 
   useEffect(() => {
