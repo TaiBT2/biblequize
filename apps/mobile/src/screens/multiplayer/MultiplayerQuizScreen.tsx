@@ -7,6 +7,7 @@ import SafeScreen from '../../components/layout/SafeScreen'
 import CountdownTimer from '../../components/quiz/CountdownTimer'
 import ChatOverlay, { ChatMessage } from '../../components/multiplayer/ChatOverlay'
 import ReactionBar, { IncomingReaction, ReactionEmoji } from '../../components/multiplayer/ReactionBar'
+import EliminationOverlay from '../../components/multiplayer/EliminationOverlay'
 import { useStomp } from '../../hooks/useStomp'
 import { useHaptic } from '../../hooks/useHaptic'
 import { colors, typography, spacing, borderRadius } from '../../theme'
@@ -35,6 +36,7 @@ export default function MultiplayerQuizScreen() {
   const route = useRoute<any>()
   const navigation = useNavigation<any>()
   const roomId: string = route.params?.roomId ?? ''
+  const viewerUserId: string | undefined = route.params?.userId
 
   const [question, setQuestion] = useState<Question | null>(null)
   const [questionIndex, setQuestionIndex] = useState(0)
@@ -47,6 +49,8 @@ export default function MultiplayerQuizScreen() {
   const [chatOpen, setChatOpen] = useState(false)
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([])
   const [reactions, setReactions] = useState<IncomingReaction[]>([])
+  const [eliminated, setEliminated] = useState<{ rank: number; total: number } | null>(null)
+  const [activeCount, setActiveCount] = useState<number | null>(null)
   const questionStartedAt = useRef<number>(0)
   const selectedRef = useRef<number | null>(null)
   const { trigger: haptic } = useHaptic()
@@ -119,8 +123,16 @@ export default function MultiplayerQuizScreen() {
         }])
         break
       }
+      case 'PLAYER_ELIMINATED': {
+        const d = msg.data ?? {}
+        if (typeof d.activeCount === 'number') setActiveCount(d.activeCount)
+        if (viewerUserId && d.userId === viewerUserId) {
+          setEliminated({ rank: d.rank ?? 0, total: d.totalPlayers ?? 0 })
+        }
+        break
+      }
     }
-  }, [navigation, roomId, haptic])
+  }, [navigation, roomId, haptic, viewerUserId])
 
   const { connected, send } = useStomp({ roomId, onMessage: handleMessage })
 
@@ -152,6 +164,7 @@ export default function MultiplayerQuizScreen() {
         <View style={s.header}>
           <Text style={s.questionMeta}>
             Câu {questionIndex + 1} / {totalQuestions} · {question.book}
+            {activeCount !== null && ` · ${activeCount} còn lại`}
           </Text>
           {combo > 0 && (
             <View style={s.comboBadge}>
@@ -213,6 +226,13 @@ export default function MultiplayerQuizScreen() {
           onClose={() => setChatOpen(false)}
           messages={chatMessages}
           onSend={(text) => send(`/app/room/${roomId}/chat`, { text })}
+        />
+
+        <EliminationOverlay
+          visible={!!eliminated}
+          rank={eliminated?.rank ?? 0}
+          totalPlayers={eliminated?.total ?? 0}
+          onContinueSpectate={() => setEliminated(null)}
         />
       </View>
     </SafeScreen>
