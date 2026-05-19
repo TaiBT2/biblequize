@@ -86,12 +86,13 @@
 - **Mô tả:** Theme + decorations đổi theo mùa Liturgical (snow effect cho Giáng Sinh, hoa cho Phục Sinh, v.v).
 - **Vì sao defer:** Cosmetic-only, ROI thấp; ship sau khi Premium thêm doanh thu.
 
-### 2.9 Sentry monitoring (TBD)
-- **Status:** Spec cũ mention `@sentry/react` (FE) + `sentry-spring-boot-starter` (BE) — **chưa ship**.
-  - `apps/web/package.json`: không có `@sentry/*`
-  - `apps/api/pom.xml`: không có `sentry-spring-boot`
-- **Quyết định:** Giữ trong roadmap. Khi quyết định ship → tạo task spec impact: error tracking, source maps upload, env tagging.
-- **Alternative considered:** Stick with current logging + audit_events (V4) cho beta.
+### 2.9 Sentry monitoring (PARTIALLY SHIPPED — mobile only)
+- **Status:**
+  - ✅ Mobile (`apps/mobile`): shipped 2026-05-19 S2-3 — `@sentry/react-native@^8.11.1` + `apps/mobile/src/lib/sentry.ts` init wrapper + `App.tsx` Sentry.wrap + `ErrorBoundary.componentDidCatch` captureException. DSN driven bằng `EXPO_PUBLIC_SENTRY_DSN`; no-op khi missing. Env tag từ `EXPO_PUBLIC_ENV` (eas.json profile).
+  - ⬜ Web (`apps/web`): chưa ship. Vẫn defer pending tách scope (web traffic lớn hơn mobile beta).
+  - ⬜ Backend (`apps/api`): chưa ship `sentry-spring-boot-starter`. Vẫn defer.
+- **Quyết định:** Mobile un-defer cho beta crash monitoring. Web + BE giữ defer tới khi cần.
+- **Alternative considered (BE/web):** Stick with current logging + audit_events (V4).
 
 ---
 
@@ -103,6 +104,7 @@
 | 2026-04-19 | Tier naming = religious (CŨ) — không dùng Light-themed | DECISIONS.md |
 | 2026-05-09 | Q4 mode wording: "Luyện Tập" + "Đấu Hạng" (Vietnamese-only) | AUDIT_SUMMARY.md |
 | 2026-05-09 | Sentry → defer (chưa ship; remove khỏi current spec) | AUDIT_SUMMARY.md |
+| 2026-05-19 | Sentry mobile un-defer (S2-3 beta crash monitoring); web + BE giữ defer | Roadmap S2 mobile rewrite |
 | 2026-05-09 | Q-A group leaderboard = group-play-only | AUDIT_SUMMARY.md |
 
 ---

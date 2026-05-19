@@ -6,7 +6,10 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import RootNavigator from './src/navigation/RootNavigator'
 import ErrorBoundary from './src/components/feedback/ErrorBoundary'
 import OfflineBanner from './src/components/feedback/OfflineBanner'
+import { initSentry, Sentry } from './src/lib/sentry'
 import './src/i18n'
+
+initSentry()
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -14,7 +17,7 @@ const queryClient = new QueryClient({
   },
 })
 
-export default function App() {
+function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
@@ -29,3 +32,5 @@ export default function App() {
     </GestureHandlerRootView>
   )
 }
+
+export default Sentry.wrap(App)
