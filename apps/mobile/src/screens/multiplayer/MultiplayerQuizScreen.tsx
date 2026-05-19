@@ -8,6 +8,7 @@ import CountdownTimer from '../../components/quiz/CountdownTimer'
 import ChatOverlay, { ChatMessage } from '../../components/multiplayer/ChatOverlay'
 import ReactionBar, { IncomingReaction, ReactionEmoji } from '../../components/multiplayer/ReactionBar'
 import EliminationOverlay from '../../components/multiplayer/EliminationOverlay'
+import TeamScoreBar from '../../components/multiplayer/TeamScoreBar'
 import { useStomp } from '../../hooks/useStomp'
 import { useHaptic } from '../../hooks/useHaptic'
 import { colors, typography, spacing, borderRadius } from '../../theme'
@@ -51,6 +52,7 @@ export default function MultiplayerQuizScreen() {
   const [reactions, setReactions] = useState<IncomingReaction[]>([])
   const [eliminated, setEliminated] = useState<{ rank: number; total: number } | null>(null)
   const [activeCount, setActiveCount] = useState<number | null>(null)
+  const [teamScores, setTeamScores] = useState<{ a: number; b: number; perfectA?: boolean; perfectB?: boolean } | null>(null)
   const questionStartedAt = useRef<number>(0)
   const selectedRef = useRef<number | null>(null)
   const { trigger: haptic } = useHaptic()
@@ -131,6 +133,16 @@ export default function MultiplayerQuizScreen() {
         }
         break
       }
+      case 'TEAM_SCORE_UPDATE': {
+        const d = msg.data ?? {}
+        setTeamScores({
+          a: Number(d.scoreA ?? d.teamA ?? 0),
+          b: Number(d.scoreB ?? d.teamB ?? 0),
+          perfectA: !!d.perfectA,
+          perfectB: !!d.perfectB,
+        })
+        break
+      }
     }
   }, [navigation, roomId, haptic, viewerUserId])
 
@@ -172,6 +184,15 @@ export default function MultiplayerQuizScreen() {
             </View>
           )}
         </View>
+
+        {teamScores && (
+          <TeamScoreBar
+            scoreA={teamScores.a}
+            scoreB={teamScores.b}
+            perfectA={teamScores.perfectA}
+            perfectB={teamScores.perfectB}
+          />
+        )}
 
         <View style={s.timerRow}>
           <CountdownTimer timeLeft={timeLeft} timeLimit={timeLimit} size={56} />
