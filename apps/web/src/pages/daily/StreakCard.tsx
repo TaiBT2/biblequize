@@ -45,7 +45,12 @@ export function StreakCard({ currentStreak, last7Days, freezesPerWeek = 1 }: Str
         <div className="text-xs text-on-surface-variant mt-1">{t('daily.streakDaysLine')}</div>
       </div>
 
-      <div className="grid grid-cols-7 gap-1.5 mt-[18px]">
+      {/* Week strip — fixed-size circles centered, so the row stays compact
+          regardless of card width. Before DC-5, StreakCard lived in a narrow
+          right column where `aspect-square` happened to render small; after
+          the leaderboard gate the card is full-width on State A and the
+          circles ballooned to ~100px each. Bound them to 44px. */}
+      <div className="flex justify-around gap-1.5 mt-[18px]">
         {last7Days.map((d) => {
           const cls = d.completed && d.isToday
             ? 'bg-gradient-to-br from-secondary to-[#d97706] text-on-secondary border-2 border-[#fbbf24]'
@@ -60,7 +65,7 @@ export function StreakCard({ currentStreak, last7Days, freezesPerWeek = 1 }: Str
           return (
             <div
               key={d.date}
-              className={`aspect-square rounded-full grid place-items-center text-[10px] font-bold ${cls}`}
+              className={`w-11 h-11 rounded-full grid place-items-center text-[11px] font-bold flex-shrink-0 ${cls}`}
             >
               {d.label}
             </div>
