@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
@@ -157,6 +157,7 @@ const DailyChallenge: React.FC = () => {
   // Hidden by default so the panel doesn't cover the answer grid on short
   // mobile viewports (S21 Ultra report 2026-05-19). User taps pill to expand.
   const [explanationCollapsed, setExplanationCollapsed] = useState(true)
+  const explanationRef = useRef<HTMLDivElement>(null)
 
   // Result state
   const [dailyResult, setDailyResult] = useState<DailyResult | null>(null)
@@ -179,6 +180,24 @@ const DailyChallenge: React.FC = () => {
     const interval = setInterval(updateCountdown, 1000)
     return () => clearInterval(interval)
   }, [])
+
+  // Click-outside on the explanation panel collapses it so the answer grid
+  // behind is visible. Only attach the listener while a panel is open.
+  useEffect(() => {
+    if (!answered || explanationCollapsed) return
+    const onPointerDown = (e: MouseEvent | TouchEvent) => {
+      const node = explanationRef.current
+      if (node && !node.contains(e.target as Node)) {
+        setExplanationCollapsed(true)
+      }
+    }
+    document.addEventListener('mousedown', onPointerDown)
+    document.addEventListener('touchstart', onPointerDown)
+    return () => {
+      document.removeEventListener('mousedown', onPointerDown)
+      document.removeEventListener('touchstart', onPointerDown)
+    }
+  }, [answered, explanationCollapsed])
 
   // ── Data fetching via TanStack Query ────────────────────────────────────
   const challengeQuery = useQuery<DailyChallengeData>({
@@ -546,7 +565,7 @@ const DailyChallenge: React.FC = () => {
               {t('quiz.showExplanationAgain', 'Xem giải thích')}
             </button>
           ) : (
-            <div className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg">
+            <div ref={explanationRef} className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg">
               <div className={`glass-panel p-5 rounded-2xl border space-y-3 max-h-[50vh] overflow-y-auto ${isCorrect ? 'border-green-500/20' : 'border-error/20'}`}>
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2 min-w-0">

@@ -40,13 +40,14 @@
 | 2026-04-27 | V3 Tier B/C Quality Expansion: 14 books | IN PROGRESS | [detail](docs/todo/active/2026-04-27-v3-tier-b-c-quality-expansion-14-books.md) |
 | 2026-04-19 | Global audience migration: SQL → JSON + i18n prep | PARTIALLY DONE | [detail](docs/todo/active/2026-04-19-global-audience-migration-sql-json-i18n-prep.md) |
 
-## Archive (46)
+## Archive (47)
 
-> 46 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
+> 47 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
 
 <details>
 <summary>Xem inline list (tuỳ chọn)</summary>
 
+- 2026-05-19 — Daily Challenge explanation panel — click outside to close · DONE · [detail](docs/todo/archive/2026-05-19-daily-explanation-click-outside-to-close.md)
 - 2026-05-19 — Fix Daily Challenge explanation panel auto-shows + covers answer options · DONE · [detail](docs/todo/archive/2026-05-19-fix-daily-challenge-explanation-hidden-by-default.md)
 - 2026-05-18 — Fix FeaturedDailyCard CTA + label wrap xấu ở 360px · DONE · [detail](docs/todo/archive/2026-05-18-fix-featured-daily-card-mobile-button-wrap.md)
 - 2026-05-18 — Fix seed VN: thay từ "text" tiếng Anh sang "Kinh Thánh"/"đoạn" · DONE · [detail](docs/todo/archive/2026-05-18-fix-seed-vn-text-wording.md)
