@@ -76,6 +76,8 @@ export default function MySetsScreen() {
         <Pressable
           style={s.fab}
           onPress={() => navigation.navigate('PersonalQuizSetEditor', { setId: undefined })}
+          accessibilityLabel="Tạo bộ câu hỏi mới"
+          accessibilityRole="button"
         >
           <Text style={s.fabText}>+ Tạo bộ mới</Text>
         </Pressable>

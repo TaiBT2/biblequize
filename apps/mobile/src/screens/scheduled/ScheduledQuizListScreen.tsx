@@ -98,6 +98,8 @@ export default function ScheduledQuizListScreen() {
           <Pressable
             style={s.fab}
             onPress={() => navigation.navigate('ScheduledQuizCreate', { groupId })}
+            accessibilityLabel="Tạo lịch thi đấu mới"
+            accessibilityRole="button"
           >
             <Text style={s.fabText}>+ Tạo lịch mới</Text>
           </Pressable>

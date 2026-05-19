@@ -64,7 +64,12 @@ export default function ChatOverlay({ visible, onClose, messages, onSend, myUser
         <View style={s.handle} />
         <View style={s.headerRow}>
           <Text style={s.title}>Trò chuyện</Text>
-          <Pressable onPress={onClose} hitSlop={8}>
+          <Pressable
+            onPress={onClose}
+            hitSlop={8}
+            accessibilityLabel="Đóng chat"
+            accessibilityRole="button"
+          >
             <Text style={s.closeText}>✕</Text>
           </Pressable>
         </View>
@@ -99,7 +104,13 @@ export default function ChatOverlay({ visible, onClose, messages, onSend, myUser
             onSubmitEditing={handleSend}
             returnKeyType="send"
           />
-          <Pressable onPress={handleSend} style={[s.sendBtn, !draft.trim() && s.sendBtnDisabled]}>
+          <Pressable
+            onPress={handleSend}
+            style={[s.sendBtn, !draft.trim() && s.sendBtnDisabled]}
+            accessibilityLabel="Gửi tin nhắn"
+            accessibilityRole="button"
+            accessibilityState={{ disabled: !draft.trim() }}
+          >
             <Text style={s.sendText}>Gửi</Text>
           </Pressable>
         </View>

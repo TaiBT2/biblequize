@@ -58,6 +58,9 @@ export default function ReactionBar({ onSend, incoming, onClear }: Props) {
             key={r}
             onPress={() => handleSend(r)}
             disabled={disabled}
+            accessibilityLabel={`Gửi reaction ${r}`}
+            accessibilityRole="button"
+            accessibilityState={{ disabled }}
             style={[s.btn, disabled && s.btnDisabled]}
           >
             <Text style={s.emoji}>{r}</Text>

@@ -226,6 +226,9 @@ export default function MultiplayerQuizScreen() {
                 key={idx}
                 onPress={() => handleAnswer(idx)}
                 disabled={selected !== null}
+                accessibilityLabel={`Đáp án ${LETTERS[idx]}: ${opt}`}
+                accessibilityRole="button"
+                accessibilityState={{ selected: isSelected, disabled: selected !== null }}
                 style={[
                   s.answerBtn,
                   { borderColor: tint },
@@ -249,7 +252,12 @@ export default function MultiplayerQuizScreen() {
           onClear={(id) => setReactions(prev => prev.filter(r => r.id !== id))}
         />
 
-        <Pressable style={s.chatFab} onPress={() => setChatOpen(true)}>
+        <Pressable
+          style={s.chatFab}
+          onPress={() => setChatOpen(true)}
+          accessibilityLabel="Mở chat"
+          accessibilityRole="button"
+        >
           <Text style={s.chatFabIcon}>💬</Text>
         </Pressable>
 
