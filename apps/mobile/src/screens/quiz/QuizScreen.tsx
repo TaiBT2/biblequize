@@ -184,7 +184,7 @@ export default function QuizScreen() {
         questionScores,
         mode,
       }
-      navigation.replace('QuizResults', { stats })
+      navigation.replace(isDailyMode ? 'DailyResults' : 'QuizResults', { stats })
     } else {
       setQIndex(i => i + 1)
       setSelected(null)

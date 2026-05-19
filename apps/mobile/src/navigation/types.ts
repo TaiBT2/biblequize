@@ -34,6 +34,7 @@ export type QuizStackParamList = {
   PracticeSelect: undefined
   Quiz: { sessionId?: string; questions?: any[]; mode?: string; timePerQuestion?: number; showExplanation?: boolean }
   QuizResults: { stats: any }
+  DailyResults: { stats: any }
   QuizReview: { stats: any }
   DailyChallenge: undefined
   Ranked: undefined

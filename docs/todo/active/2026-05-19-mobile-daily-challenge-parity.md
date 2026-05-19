@@ -13,7 +13,7 @@
 ### Tasks
 
 - DC-PARITY-M1 Mobile `DailyResultScreen` — tạo screen mới (hoặc branch trong `QuizResultsScreen` khi `mode==='daily'`) hiển thị accuracy ring SVG (gradient stroke), số câu đúng / tổng, time breakdown, bonus XP nếu ≥4 đúng (50 XP), CTA "Xem lại" + "Về Home". Port từ `apps/web/src/pages/daily/HeroCard.tsx` (DoneLeft/DoneRight). Sau quiz `complete()` → navigate sang screen này thay vì generic results.
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/quiz/DailyResultScreen.tsx` (new) hoặc `QuizResultsScreen.tsx` (branch), `apps/mobile/src/navigation/QuizStack.tsx`
   - Test: jest component render snapshot; manual: complete daily mobile → assert screen mới hiện ring + bonus
   - **Spec impact**: [ ] None [x] SPEC_USER §5.3 Daily Challenge (post-completion UX)

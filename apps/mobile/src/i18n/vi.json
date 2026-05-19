@@ -128,7 +128,16 @@
     "streak": "Streak",
     "start": "Bắt đầu",
     "loadingQuestions": "Đang tải câu hỏi...",
-    "alreadyCompletedToast": "Bạn đã hoàn thành thử thách hôm nay rồi. Quay lại ngày mai nhé!"
+    "alreadyCompletedToast": "Bạn đã hoàn thành thử thách hôm nay rồi. Quay lại ngày mai nhé!",
+    "done": {
+      "badge": "ĐÃ HOÀN THÀNH HÔM NAY",
+      "scoreOf": "/ {{total}} câu đúng",
+      "rewardLabel": "PHẦN THƯỞNG",
+      "perfectBonus": "+25 XP perfect",
+      "betterThan": "Bạn làm tốt hơn {{percent}}% người chơi hôm nay",
+      "reviewCta": "Xem lại câu trả lời",
+      "homeCta": "Về trang chủ"
+    }
   },
   "review": {
     "title": "Xem lại",
