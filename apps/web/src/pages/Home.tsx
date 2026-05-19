@@ -330,7 +330,7 @@ export default function Home() {
           />
           <div
             data-testid="home-variety-grid"
-            className="grid grid-cols-1 sm:grid-cols-3 gap-3.5"
+            className="grid grid-cols-2 sm:grid-cols-3 gap-3.5"
           >
             {VARIETY_CARDS.map(renderModeCard)}
           </div>
@@ -358,7 +358,7 @@ export default function Home() {
       <SectionHeader title={t('home.group.title')} />
       <div
         data-testid="home-group-grid"
-        className="grid grid-cols-1 sm:grid-cols-3 gap-3.5"
+        className="grid grid-cols-2 sm:grid-cols-3 gap-3.5"
       >
         {GROUP_CARDS.map(renderModeCard)}
       </div>
