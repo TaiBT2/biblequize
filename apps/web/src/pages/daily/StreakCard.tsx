@@ -11,14 +11,28 @@ interface StreakCardProps {
   freezesPerWeek?: number
 }
 
+const MILESTONES = [7, 14, 30, 60, 100, 365]
+
 export function StreakCard({ currentStreak, last7Days, freezesPerWeek = 1 }: StreakCardProps) {
   const { t } = useTranslation()
   // Scale celebration graphic by streak length — a 1-day streak should not
   // own the biggest visual on the page (prompt DC-4: "Streak 1 ngày KHÔNG
   // được chiếm graphic to nhất màn"). Threshold of 7 matches the week strip.
   const isHighStreak = currentStreak >= 7
-  const flameClass = isHighStreak ? 'text-[56px]' : 'text-[36px]'
-  const numberClass = isHighStreak ? 'text-5xl' : 'text-3xl'
+  const flameClass = isHighStreak ? 'text-[56px]' : 'text-[40px]'
+  const numberClass = isHighStreak ? 'text-5xl' : 'text-4xl'
+
+  // Next-milestone caption — gives the user a concrete target instead of
+  // an isolated number. Falls back to a "fresh start" prompt at streak 0
+  // and a legendary tag past the highest milestone.
+  const nextMilestone = MILESTONES.find((m) => m > currentStreak)
+  const caption =
+    currentStreak === 0
+      ? t('daily.streakFresh')
+      : nextMilestone
+        ? t('daily.streakNextMilestone', { count: nextMilestone - currentStreak, milestone: nextMilestone })
+        : t('daily.streakLegendary', { count: currentStreak })
+
   return (
     <div
       data-testid="daily-streak-display"
@@ -28,7 +42,7 @@ export function StreakCard({ currentStreak, last7Days, freezesPerWeek = 1 }: Str
         <span className="material-symbols-outlined text-lg text-[#f97316]">local_fire_department</span>
         {t('daily.streakTitle')}
       </div>
-      <div className="text-center pt-2 pb-3.5">
+      <div className="flex items-center justify-center gap-4 pt-3 pb-2">
         <div
           className={`${flameClass} leading-none`}
           style={{
@@ -41,9 +55,12 @@ export function StreakCard({ currentStreak, last7Days, freezesPerWeek = 1 }: Str
         >
           🔥
         </div>
-        <div className={`${numberClass} font-extrabold leading-none text-on-surface -mt-1.5`}>{currentStreak}</div>
-        <div className="text-xs text-on-surface-variant mt-1">{t('daily.streakDaysLine')}</div>
+        <div className="text-left">
+          <div className={`${numberClass} font-extrabold leading-none text-on-surface`}>{currentStreak}</div>
+          <div className="text-xs text-on-surface-variant mt-1">{t('daily.streakDaysLine')}</div>
+        </div>
       </div>
+      <div className="text-[11px] text-center text-on-surface-variant/80 mb-2">{caption}</div>
 
       {/* Week strip — fixed-size circles centered, so the row stays compact
           regardless of card width. Before DC-5, StreakCard lived in a narrow
