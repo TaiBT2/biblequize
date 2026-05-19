@@ -33,6 +33,8 @@ import ScheduledQuizDetailScreen from '../screens/scheduled/ScheduledQuizDetailS
 import ScheduledQuizPlayScreen from '../screens/scheduled/ScheduledQuizPlayScreen'
 import TournamentDetailScreen from '../screens/multiplayer/TournamentDetailScreen'
 import TournamentMatchScreen from '../screens/multiplayer/TournamentMatchScreen'
+import CosmeticsScreen from '../screens/user/CosmeticsScreen'
+import HelpScreen from '../screens/system/HelpScreen'
 import GroupsListScreen from '../screens/social/GroupsListScreen'
 import GroupDetailScreen from '../screens/social/GroupDetailScreen'
 import GroupJoinScreen from '../screens/social/GroupJoinScreen'
@@ -122,6 +124,8 @@ function ProfileStackNavigator() {
       <ProfileStack.Screen name="QuizSetDetail" component={QuizSetDetailScreen} />
       <ProfileStack.Screen name="PersonalQuizSetEditor" component={PersonalQuizSetEditorScreen} />
       <ProfileStack.Screen name="QuestionEditor" component={QuestionEditorScreen} />
+      <ProfileStack.Screen name="Cosmetics" component={CosmeticsScreen} />
+      <ProfileStack.Screen name="Help" component={HelpScreen} />
     </ProfileStack.Navigator>
   )
 }

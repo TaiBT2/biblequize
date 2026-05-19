@@ -76,6 +76,7 @@ export type ProfileStackParamList = {
   Achievements: undefined
   Settings: undefined
   Cosmetics: undefined
+  Help: undefined
   Legal: { type: 'privacy' | 'terms' | 'about' }
   MySets: undefined
   QuizSetDetail: { setId: string; isPersonal: boolean; groupId?: string }
