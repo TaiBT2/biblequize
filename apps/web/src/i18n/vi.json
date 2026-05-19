@@ -2169,9 +2169,10 @@
     "dayNameSaturday": "Thứ Bảy",
     "ready": {
       "statusBadge": "Sẵn sàng",
+      "eyebrow": "Thử thách hôm nay",
       "titleLead": "{{count}} câu,",
       "titleAccent": "một cộng đồng",
-      "desc": "Cùng một bộ câu hỏi cho tất cả mọi người trên thế giới — xem bạn đứng ở đâu trong cộng đồng. Hoàn thành để giữ chuỗi và nhận XP.",
+      "desc": "Hãy trung tín — phần thưởng dành cho người bền lòng.",
       "metaQuestions": "{{count}} câu",
       "metaTime": "~{{minutes}} phút",
       "metaGlobal": "Toàn cầu",

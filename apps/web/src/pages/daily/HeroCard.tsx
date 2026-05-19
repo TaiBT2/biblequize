@@ -69,19 +69,22 @@ export function HeroCard(props: HeroCardProps) {
   function ReadyLeft({ questionCount, timeLimit, yesterday, onStart }: HeroCardProps) {
     return (
       <>
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[20px] mb-[18px] bg-gradient-to-br from-[rgba(239,68,68,0.15)] to-[rgba(249,115,22,0.1)] border border-[rgba(239,68,68,0.3)] text-[#fca5a5] text-xs font-bold uppercase tracking-[0.5px]">
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[20px] mb-3 bg-gradient-to-br from-[rgba(239,68,68,0.15)] to-[rgba(249,115,22,0.1)] border border-[rgba(239,68,68,0.3)] text-[#fca5a5] text-xs font-bold uppercase tracking-[0.5px]">
           <span className="w-2 h-2 rounded-full bg-[#ef4444] animate-pulse-ring" />
           {t('daily.ready.statusBadge')}
+        </div>
+        <div className="text-[11px] text-on-surface-variant/70 font-semibold uppercase tracking-[0.18em] mb-1.5">
+          {t('daily.ready.eyebrow')}
         </div>
         <h3 className="text-[28px] font-extrabold mb-2.5 tracking-tight">
           <span className="text-on-surface">{t('daily.ready.titleLead', { count: questionCount })}</span>
           {' '}
           <span className="text-secondary">{t('daily.ready.titleAccent')}</span>
         </h3>
-        <p className="text-on-surface-variant text-sm leading-relaxed mb-6">
-          {t('daily.ready.desc')}
+        <p className="text-on-surface-variant text-sm italic leading-relaxed mb-6">
+          &ldquo;{t('daily.ready.desc')}&rdquo;
         </p>
-        <div className="flex gap-2 mb-[22px] flex-wrap">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-[22px]">
           <MetaItem icon="quiz" text={t('daily.ready.metaQuestions', { count: questionCount })} />
           <MetaItem icon="timer" text={t('daily.ready.metaTime', { minutes: timeLimit })} />
           <MetaItem icon="public" text={t('daily.ready.metaGlobal')} />

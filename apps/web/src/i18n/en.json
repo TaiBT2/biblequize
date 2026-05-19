@@ -2169,9 +2169,10 @@
     "dayNameSaturday": "Saturday",
     "ready": {
       "statusBadge": "Ready",
+      "eyebrow": "Today's challenge",
       "titleLead": "{{count}} questions,",
       "titleAccent": "one community",
-      "desc": "Same questions for everyone worldwide — see where you stand in the community. Complete to keep your streak and earn XP.",
+      "desc": "Be faithful — the reward is for those who endure.",
       "metaQuestions": "{{count}} questions",
       "metaTime": "~{{minutes}} min",
       "metaGlobal": "Global",
