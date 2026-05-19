@@ -74,7 +74,7 @@ export function HeroCard(props: HeroCardProps) {
           {t('daily.ready.statusBadge')}
         </div>
         <h3 className="text-[28px] font-extrabold mb-2.5 tracking-tight">
-          <span className="text-[#f87171]">{t('daily.ready.titleLead', { count: questionCount })}</span>
+          <span className="text-on-surface">{t('daily.ready.titleLead', { count: questionCount })}</span>
           {' '}
           <span className="text-secondary">{t('daily.ready.titleAccent')}</span>
         </h3>
