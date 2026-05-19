@@ -9,6 +9,7 @@ import CountdownTimer from '../../components/quiz/CountdownTimer'
 import { apiClient } from '../../api/client'
 import { calculateScore } from '../../logic/scoring'
 import { useHaptic } from '../../hooks/useHaptic'
+import { useSound } from '../../hooks/useSound'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
 const LETTERS = ['A', 'B', 'C', 'D']
@@ -51,6 +52,7 @@ export default function QuizScreen() {
   const route = useRoute<any>()
   const queryClient = useQueryClient()
   const { trigger: haptic } = useHaptic()
+  const { play: playSound } = useSound()
   const { questions = [], sessionId, mode = 'practice', timePerQuestion = 30, showExplanation = true } = route.params ?? {}
   const isDailyMode = mode === 'daily'
 
@@ -142,8 +144,15 @@ export default function QuizScreen() {
     setIsCorrect(correct)
     setRevealedCorrectIdx(correctIdx ?? null)
 
-    if (correct) haptic('success')
-    else haptic('error')
+    // Sound + haptic parity với web soundManager.play('correctAnswer'/'wrongAnswer')
+    // + RoomQuiz tactile (apps/web/src/services/soundManager.ts:90-104).
+    if (correct) {
+      haptic('success')
+      playSound('correct')
+    } else {
+      haptic('error')
+      playSound('wrong')
+    }
 
     let qScore = 0
     if (correct) {
@@ -173,7 +182,7 @@ export default function QuizScreen() {
       next[qIndex] = correct
       return next
     })
-  }, [showResult, question, combo, timeLeft, qIndex, userAnswers, questionScores, sessionId, timePerQuestion, isDailyMode, queryClient, haptic])
+  }, [showResult, question, combo, timeLeft, qIndex, userAnswers, questionScores, sessionId, timePerQuestion, isDailyMode, queryClient, haptic, playSound])
 
   const nextQuestion = async () => {
     if (qIndex + 1 >= questions.length) {
