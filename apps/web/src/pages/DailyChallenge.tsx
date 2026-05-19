@@ -551,7 +551,7 @@ const DailyChallenge: React.FC = () => {
           </div>
         </div>
 
-        {answered && (!isCorrect || currentExplanation) && (
+        {answered && isCorrect !== null && (!isCorrect || currentExplanation) && (
           explanationCollapsed ? (
             <button
               data-testid="daily-explanation-pill"
@@ -599,7 +599,7 @@ const DailyChallenge: React.FC = () => {
           )
         )}
 
-        {answered && (
+        {answered && isCorrect !== null && (
           <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-3rem)] max-w-lg">
             <div
               data-testid="daily-answer-feedback"
