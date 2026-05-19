@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, Text, StyleSheet, Pressable } from 'react-native'
+import React, { useEffect, useRef } from 'react'
+import { View, Text, StyleSheet, Pressable, Animated } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Svg, { Defs, LinearGradient, RadialGradient, Rect, Stop } from 'react-native-svg'
 import { useAuthStore } from '../../stores/authStore'
@@ -139,21 +139,55 @@ export default function HomeBanner({
 
       {/* Stats row — 3 columns với vertical borders */}
       <View style={s.statsRow}>
-        <Stat icon="🔥" value={streak} label="CHUỖI" />
-        {typeof energyRemaining === 'number' && (
-          <Stat icon="⚡" value={energyRemaining} label={energyMax ? `/${energyMax} NL` : 'NĂNG LƯỢNG'} />
-        )}
-        <Stat icon="🏆" value={seasonPoints ?? totalPoints} label={seasonPoints != null ? 'MÙA' : 'XP'} />
+        <Stat icon="🔥" value={streak} label="STREAK" breathe />
+        <Stat
+          icon="⚡"
+          /* Energy luôn show "X/Y" để có context max (web parity).
+             Default 100 max khi BE không return field — tránh hiển thị bare số khó hiểu. */
+          valueText={`${energyRemaining ?? 0}/${energyMax ?? 100}`}
+          label="NĂNG LƯỢNG"
+        />
+        <Stat
+          icon="🏆"
+          value={seasonPoints ?? totalPoints}
+          label={seasonPoints != null ? 'ĐIỂM MÙA' : 'XP'}
+        />
       </View>
     </View>
   )
 }
 
-function Stat({ icon, value, label }: { icon: StatIcon; value: number; label: string }) {
+interface StatProps {
+  icon: StatIcon
+  value?: number
+  /** Override numeric value với pre-formatted string (vd "40/100"). */
+  valueText?: string
+  label: string
+  /** Apply breath animation (used cho flame icon, web parity animate-breathe). */
+  breathe?: boolean
+}
+
+function Stat({ icon, value, valueText, label, breathe }: StatProps) {
+  const scale = useRef(new Animated.Value(1)).current
+
+  useEffect(() => {
+    if (!breathe) return
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(scale, { toValue: 1.15, duration: 900, useNativeDriver: true }),
+        Animated.timing(scale, { toValue: 1, duration: 900, useNativeDriver: true }),
+      ]),
+    ).start()
+  }, [breathe, scale])
+
   return (
     <View style={s.statItem}>
-      <Text style={s.statIcon}>{icon}</Text>
-      <Text style={s.statValue}>{value.toLocaleString()}</Text>
+      <Animated.Text style={[s.statIcon, breathe && { transform: [{ scale }] }]}>
+        {icon}
+      </Animated.Text>
+      <Text style={s.statValue}>
+        {valueText ?? (value ?? 0).toLocaleString()}
+      </Text>
       <Text style={s.statLabel}>{label}</Text>
     </View>
   )
