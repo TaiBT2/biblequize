@@ -258,5 +258,72 @@
     "oldTestament": "Old Testament",
     "newTestament": "New Testament",
     "questions": "questions"
+  },
+  "help": {
+    "categories": {
+      "gettingStarted": "Getting Started",
+      "tiers": "Tiers & XP",
+      "modes": "Game Modes",
+      "gameplay": "Gameplay",
+      "account": "Account"
+    },
+    "items": {
+      "howToPlay": {
+        "q": "How do I play BibleQuiz?",
+        "a": "Choose Practice for stress-free learning, or Ranked to compete. Each correct answer earns XP based on difficulty + speed."
+      },
+      "bibleTranslation": {
+        "q": "Which Bible translation is used?",
+        "a": "BibleQuiz uses the Vietnamese Revised Version 2011 (BTTHĐ) — the official Protestant Vietnamese Bible."
+      },
+      "changeLanguage": {
+        "q": "How do I change the language?",
+        "a": "Settings > Language. The app supports Vietnamese + English."
+      },
+      "tierSystem": {
+        "q": "How does the tier system work?",
+        "a": "6 tiers from New Believer (0 XP) to Apostle (100k+ XP): New Believer → Seeker → Disciple → Sage → Prophet → Apostle."
+      },
+      "streakVsXp": {
+        "q": "What is the difference between Streak and XP?",
+        "a": "XP is cumulative progress to next tier. Streak counts consecutive days played — doesn't reset tier but boosts combo multipliers."
+      },
+      "howUnlockRanked": {
+        "q": "How to unlock Ranked mode?",
+        "a": "Reach 1000 XP (Tier 2 - Seeker) OR achieve 80% accuracy in Practice."
+      },
+      "howEarnXp": {
+        "q": "How to earn XP fast?",
+        "a": "Correct + fast answers score more. Combo 5/10 in a row multiplies 1.2x/1.5x. Daily Challenge gives 50 XP/day."
+      },
+      "practiceVsRanked": {
+        "q": "Practice vs Ranked?",
+        "a": "Practice: pick book + difficulty, no pressure. Ranked: random tier-locked questions, energy bar, affects tier."
+      },
+      "dailyStreak": {
+        "q": "What is Daily Challenge?",
+        "a": "5 new questions daily from random books. Complete to keep streak + earn 50 XP."
+      },
+      "groupsTournament": {
+        "q": "Groups vs Tournament?",
+        "a": "Group = community. Create quiz sets, play with friends. Tournament = single-elimination bracket, 3 lives per match."
+      },
+      "energySystem": {
+        "q": "What is Energy?",
+        "a": "Ranked mode only. Wrong answer = -5 energy. When empty, must wait for time-based refill."
+      },
+      "lifelines": {
+        "q": "How do lifelines work?",
+        "a": "Hint: suggests an answer. Daily usage cap based on tier. More unlocks at higher tiers."
+      },
+      "dataPrivacy": {
+        "q": "How is my data protected?",
+        "a": "BibleQuiz follows GDPR. Email + name used for auth, not sold to third parties. Details: Settings > Privacy Policy."
+      },
+      "deleteAccount": {
+        "q": "How do I delete my account?",
+        "a": "Settings > Account > Delete account. Action is irreversible — XP, streak, groups will be lost."
+      }
+    }
   }
 }

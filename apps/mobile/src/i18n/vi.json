@@ -258,5 +258,72 @@
     "oldTestament": "Cựu Ước",
     "newTestament": "Tân Ước",
     "questions": "questions"
+  },
+  "help": {
+    "categories": {
+      "gettingStarted": "Bắt đầu",
+      "tiers": "Hạng & XP",
+      "modes": "Chế độ chơi",
+      "gameplay": "Cơ chế",
+      "account": "Tài khoản"
+    },
+    "items": {
+      "howToPlay": {
+        "q": "Cách chơi BibleQuiz như thế nào?",
+        "a": "Chọn chế độ Luyện Tập để học không áp lực, hoặc Đấu Hạng để tranh tài. Mỗi câu trả lời đúng cho điểm XP dựa trên độ khó + tốc độ."
+      },
+      "bibleTranslation": {
+        "q": "Bản Kinh Thánh nào được dùng?",
+        "a": "BibleQuiz dùng Kinh Thánh Bản Truyền Thống Hiệu Đính 2011 (BTTHĐ) — bản chính thức của Tin Lành Việt Nam."
+      },
+      "changeLanguage": {
+        "q": "Làm sao đổi ngôn ngữ?",
+        "a": "Vào Cài đặt > Ngôn ngữ. App hỗ trợ Tiếng Việt + English."
+      },
+      "tierSystem": {
+        "q": "Hệ thống hạng hoạt động ra sao?",
+        "a": "Có 6 hạng từ Tân Tín Hữu (0 XP) đến Sứ Đồ (100k+ XP): Tân Tín Hữu → Người Tìm Kiếm → Môn Đồ → Hiền Triết → Tiên Tri → Sứ Đồ."
+      },
+      "streakVsXp": {
+        "q": "Streak khác XP thế nào?",
+        "a": "XP là điểm tích lũy nâng hạng. Streak là chuỗi ngày chơi liên tiếp — không reset hạng nhưng tăng combo bonus."
+      },
+      "howUnlockRanked": {
+        "q": "Mở khoá Đấu Hạng thế nào?",
+        "a": "Đạt 1000 XP (Tier 2 - Người Tìm Kiếm) HOẶC đạt 80% accuracy ở Luyện Tập."
+      },
+      "howEarnXp": {
+        "q": "Cách kiếm XP nhanh?",
+        "a": "Trả lời đúng + nhanh được nhiều điểm hơn. Combo 5/10 câu liên tiếp nhân điểm 1.2x/1.5x. Daily Challenge cho 50 XP/ngày."
+      },
+      "practiceVsRanked": {
+        "q": "Luyện Tập khác Đấu Hạng?",
+        "a": "Luyện Tập: chọn sách + độ khó, không áp lực. Đấu Hạng: random tier-locked questions, có energy bar, ảnh hưởng tier."
+      },
+      "dailyStreak": {
+        "q": "Daily Challenge là gì?",
+        "a": "5 câu hỏi mới mỗi ngày từ random sách. Hoàn thành giữ streak + nhận 50 XP."
+      },
+      "groupsTournament": {
+        "q": "Nhóm và Giải đấu?",
+        "a": "Nhóm = community. Tạo bộ câu hỏi, mời người chơi cùng. Giải đấu = bracket loại trực tiếp, mỗi trận 3 mạng."
+      },
+      "energySystem": {
+        "q": "Năng lượng (Energy) là gì?",
+        "a": "Chỉ áp dụng ở Đấu Hạng. Sai câu hỏi mất 5 năng lượng. Hết năng lượng phải đợi nạp lại theo thời gian."
+      },
+      "lifelines": {
+        "q": "Lifeline hoạt động ra sao?",
+        "a": "Hint: gợi ý đáp án. Có giới hạn dùng/ngày tùy tier. Mở khoá thêm khi lên hạng."
+      },
+      "dataPrivacy": {
+        "q": "Dữ liệu của tôi được bảo vệ thế nào?",
+        "a": "BibleQuiz tuân thủ GDPR. Email + tên dùng cho auth, không bán cho bên thứ ba. Chi tiết: Cài đặt > Chính sách bảo mật."
+      },
+      "deleteAccount": {
+        "q": "Cách xoá tài khoản?",
+        "a": "Vào Cài đặt > Tài khoản > Xoá tài khoản. Hành động không thể hoàn tác — XP, streak, group sẽ mất."
+      }
+    }
   }
 }
