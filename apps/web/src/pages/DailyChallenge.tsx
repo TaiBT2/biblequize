@@ -699,16 +699,20 @@ const DailyChallenge: React.FC = () => {
           />
         </div>
       ) : (
-        <div className="mb-7">
+        // State A: pair StreakCard with the 30-day heatmap side-by-side on
+        // lg+ so the page doesn't read as a 3-row stack with mostly empty
+        // horizontal space. Mobile stays vertical (default grid-cols-1).
+        <div className={`grid grid-cols-1 ${historyDays.length > 0 ? 'lg:grid-cols-[2fr_3fr]' : ''} gap-5 mb-7`}>
           <StreakCard
             currentStreak={currentStreak}
             last7Days={last7Days}
             freezesPerWeek={freezesPerWeek}
           />
+          {historyDays.length > 0 && <HeatmapCard days={historyDays} />}
         </div>
       )}
 
-      {historyDays.length > 0 && (
+      {isCompleted && historyDays.length > 0 && (
         <div className="mb-7">
           <HeatmapCard days={historyDays} />
         </div>
