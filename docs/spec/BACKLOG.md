@@ -153,7 +153,7 @@
 | ~~Multiplayer realtime (STOMP)~~ ✅ | `apps/mobile/src/screens/multiplayer/` + `components/multiplayer/` | **2026-05-19 S1+S3 fully wired**: useStomp + RoomWaiting + MultiplayerQuiz (timer + haptic + combo) + Results + TournamentBracket + 3 mode overlays (EliminationOverlay BR, TeamScoreBar TVT, MatchResultOverlay SD) + ChatOverlay + ReactionBar (6 emojis) + Quản trò RoomQuizHostScreen (5 controls) + RoomAnalyticsScreen. |
 | Cosmetics page | none | Chưa expose — defer S6 |
 | Tournament match scoring detail | partial | TournamentBracketScreen wired S1-6 (list-per-round); visual tree defer S5 |
-| SetEditor | none | Chưa có UI — defer S4 |
+| SetEditor (personal MVP) | ✅ | **2026-05-19 S4 shipped**: MySets + PersonalQuizSetEditor (metadata 6 fields + manual save + publish workflow) + QuestionEditor sub-screen (4 options + difficulty + book/chapter) + QuizSetDetail read-only + GroupQuizSetList. AI gen + auto-save + group editor + folder mgmt + visibility toggle defer S6+. |
 | Scheduled quizzes | none | Chưa có routes — defer S5 |
 | GROUP_LIVE_SEQUENTIAL per-player reveal | none | Defer S4 nếu Group features touched |
 

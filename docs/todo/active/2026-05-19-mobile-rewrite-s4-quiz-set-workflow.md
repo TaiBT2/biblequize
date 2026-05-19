@@ -6,6 +6,10 @@
 
 > **Recon (2026-05-19)**: Web có 2 contexts personal (`/api/question-sets`) + group (`/api/groups/{id}/quiz-sets`). Editor shared (QuizSetEditor 600+ LOC, 15 metadata fields, DRAFT→PUBLISHED workflow). Question CRUD qua `/api/user-questions/*` rồi attach via `/items`. Mobile MVP cắt AI gen, auto-save, folder, visibility toggle.
 
+> **Sprint status (2026-05-19)**: ✅ DONE — 7 task + plan + finalize.
+> **Commits**: 5cdaaaa (plan) · 7bdaf80 (S4-1 API) · f7fd099 (S4-2 MySets) · ec7f23d (S4-3 Detail) · a4f04e5 (S4-4 Editor) · d8e8120 (S4-5 QuestionEditor) · aac1baf (S4-6 GroupList) · 17d0652 (S4-7 nav).
+> **Regression**: mobile jest 33/33 PASS · mobile tsc CLEAN · web untouched.
+
 ### Tasks
 
 - **S4-1 API client wrappers — personalQuizSets**
@@ -14,7 +18,7 @@
     - `addQuestion(setId, body)` → POST /api/user-questions → POST /items → refetch
     - `updateQuestion(setId, qid, body)`, `deleteQuestion(setId, qid)`, `reorderQuestions(setId, ids)`
   - Inline TypeScript types: QuizSet, QuizSetFull, EditorQuestion, CreateQuizSetBody
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/api/personalQuizSets.ts` (new)
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -23,7 +27,7 @@
   - Card: status badge (NHÁP gold / ĐÃ XUẤT BẢN green), name, question count, updatedAt relative, tap → Detail
   - FAB "+ Tạo bộ mới" → navigate Editor (create mode)
   - Empty state: "Chưa có bộ câu hỏi nào" + CTA
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/quizSets/MySetsScreen.tsx` (new)
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -35,7 +39,7 @@
     - Questions preview list (first 5 — full list trong editor)
     - "Bắt đầu Luyện Tập" gold button (calls solo practice — defer wire BE since `/api/question-sets/{id}/solo-practice` chưa expose cho personal; show coming soon nếu personal context)
     - Edit button → Editor (nếu owner — mặc định cho personal)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/quizSets/QuizSetDetailScreen.tsx` (new)
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -49,7 +53,7 @@
     - Delete question swipe action (or trash icon)
     - Publish validation: name truthy + ≥ 5 questions
   - Manual save (no auto-save complexity); show "Đã lưu lúc HH:MM" timestamp
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/quizSets/PersonalQuizSetEditorScreen.tsx` (new)
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -59,7 +63,7 @@
     - Form: content (multiline), 4 option inputs với radio để pick correctAnswer, difficulty (segmented EASY/MEDIUM/HARD), book + chapter, explanation (multiline), language
     - Save button → addQuestion hoặc updateQuestion → navigate back to Editor
     - Cancel button → navigate back without saving
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/quizSets/QuestionEditorScreen.tsx` (new)
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -71,7 +75,7 @@
     - Tap → QuizSetDetail (group context — passes groupId for solo-practice endpoint)
     - Status filter pills (ALL/PUBLISHED/ARCHIVED) — KHÔNG show DRAFT cho MEMBER
   - Defer: search, sort, folder tree (S5+)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/screens/quizSets/GroupQuizSetListScreen.tsx` (new), `apps/mobile/src/api/groupQuizSets.ts` (new — minimal list endpoint)
   - Spec impact: BL-11 progress. Strategy: (c) `[no-spec-impact]`.
 
@@ -79,7 +83,7 @@
   - Add 4 routes vào navigation/types.ts + register MainTabNavigator hoặc tab-specific stack
   - MySetsScreen accessible từ ProfileTab hoặc MultiplayerTab — chọn ProfileTab (cùng user content)
   - GroupQuizSetListScreen accessible từ GroupDetailScreen ("Bộ câu hỏi" tab/button)
-  - Status: [ ] TODO
+  - Status: [x] DONE
   - Files: `apps/mobile/src/navigation/types.ts`, `apps/mobile/src/navigation/MainTabNavigator.tsx`, `apps/mobile/src/screens/social/GroupDetailScreen.tsx` (add CTA), `apps/mobile/src/screens/user/ProfileScreen.tsx` (add MySets entry)
   - Spec impact: None. Strategy: (c) `[no-spec-impact]`.
 
@@ -88,7 +92,7 @@
   - mobile tsc clean
   - Web không touched (skip vitest)
   - Update roadmap S4 → DONE, BL-11 SetEditor row marked closed (personal MVP done; group editor + AI + auto-save defer)
-  - Status: [ ] TODO
+  - Status: [x] DONE
 
 ### Common
 
