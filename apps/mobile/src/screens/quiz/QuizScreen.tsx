@@ -231,7 +231,6 @@ export default function QuizScreen() {
 
         <View style={styles.timerRow}>
           <CountdownTimer timeLeft={timeLeft} timeLimit={timePerQuestion} size={64} />
-          <Text style={styles.bookLabel}>{question.book} {question.chapter}</Text>
         </View>
 
         {/* Question card với left gold accent bar (signature Sacred Modernist). */}
@@ -337,8 +336,7 @@ const styles = StyleSheet.create({
   comboText: { fontSize: typography.size.sm, fontWeight: typography.weight.bold, color: colors.gold },
   segmentsRow: { flexDirection: 'row', gap: 6, marginTop: spacing.xs },
   segment: { flex: 1, height: 5, borderRadius: 2.5 },
-  timerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: spacing.lg },
-  bookLabel: { fontSize: typography.size.xs, color: colors.textMuted },
+  timerRow: { flexDirection: 'row', alignItems: 'center', marginVertical: spacing.lg },
   questionCard: {
     position: 'relative',
     backgroundColor: colors.surfaceContainer, borderRadius: borderRadius['2xl'],
