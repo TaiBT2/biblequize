@@ -1,27 +1,27 @@
 # Spec Audit Report
 
-**Generated:** 2026-05-15T09:45:19Z
+**Generated:** 2026-05-19T03:21:03Z
 **Specs scanned:** 6 files in `docs/spec/`
 
 ## Summary
 
 | Metric | Count |
 |---|---|
-| Total spec sections | 462 |
-| Sections with code refs | 135 |
-| Total code refs | 325 |
-| Unique code files referenced | 181 |
-| **Broken refs (HIGH)** | **64** |
-| Orphan sections (MEDIUM) | 327 |
-| Undocumented business files (MEDIUM) | 216 |
+| Total spec sections | 463 |
+| Sections with code refs | 137 |
+| Total code refs | 333 |
+| Unique code files referenced | 189 |
+| **Broken refs (HIGH)** | **68** |
+| Orphan sections (MEDIUM) | 326 |
+| Undocumented business files (MEDIUM) | 219 |
 
 ## Stats — file-level coverage
 
 | Concern | Files in scope | Files referenced | Coverage |
 |---|---|---|---|
 | BE Controller | 37 | 2 | 5% |
-| BE Service | 54 | 4 | 7% |
-| FE User Page | 112 | 12 | 11% |
+| BE Service | 55 | 4 | 7% |
+| FE User Page | 113 | 11 | 10% |
 | FE Admin Page | 36 | 5 | 14% |
 
 ## Broken Refs (HIGH)
@@ -30,31 +30,34 @@
 
 | Spec | Section | File | Lines | Spec line | Reason |
 |---|---|---|---|---|---|
-| BACKLOG.md | BL-15 — Deprecate `useWebSocket.ts` (legacy raw WS hook) | `useWebSocket.ts` | (no line) | 191 | bare_filename_not_found |
-| BACKLOG.md | BL-15 — Deprecate `useWebSocket.ts` (legacy raw WS hook) | `apps/web/src/hooks/useWebSocket.ts` | (no line) | 196 | file_not_found |
-| BACKLOG.md | BL-15 — Deprecate `useWebSocket.ts` (legacy raw WS hook) | `apps/web/src/hooks/__tests__/useWebSocket.test.ts` | (no line) | 196 | file_not_found |
-| BACKLOG.md | BL-AUDIT-1 — Spec refs use partial paths (e.g. `pages/Multiplayer.tsx`) | `pages/Multiplayer.tsx` | (no line) | 289 | file_not_found |
-| BACKLOG.md | BL-AUDIT-1 — Spec refs use partial paths (e.g. `pages/Multiplayer.tsx`) | `pages/Multiplayer.tsx` | (no line) | 290 | file_not_found |
-| BACKLOG.md | BL-AUDIT-1 — Spec refs use partial paths (e.g. `pages/Multiplayer.tsx`) | `pages/CreateRoom.tsx` | (no line) | 290 | file_not_found |
-| BACKLOG.md | BL-AUDIT-1 — Spec refs use partial paths (e.g. `pages/Multiplayer.tsx`) | `pages/JoinRoom.tsx` | (no line) | 290 | file_not_found |
-| BACKLOG.md | BL-AUDIT-1 — Spec refs use partial paths (e.g. `pages/Multiplayer.tsx`) | `pages/RoomLobby.tsx` | (no line) | 290 | file_not_found |
-| BACKLOG.md | BL-AUDIT-1 — Spec refs use partial paths (e.g. `pages/Multiplayer.tsx`) | `pages/RoomQuiz.tsx` | (no line) | 290 | file_not_found |
-| BACKLOG.md | BL-AUDIT-2 — `RoomQuizHost.tsx` / `RoomQuizPlayer.tsx` referenced but not implemented | `RoomQuizPlayer.tsx` | (no line) | 295 | bare_filename_not_found |
-| BACKLOG.md | BL-AUDIT-2 — `RoomQuizHost.tsx` / `RoomQuizPlayer.tsx` referenced but not implemented | `pages/RoomQuizHost.tsx` | (no line) | 296 | file_not_found |
-| BACKLOG.md | BL-AUDIT-2 — `RoomQuizHost.tsx` / `RoomQuizPlayer.tsx` referenced but not implemented | `pages/RoomQuizPlayer.tsx` | (no line) | 296 | file_not_found |
-| BACKLOG.md | BL-AUDIT-2 — `RoomQuizHost.tsx` / `RoomQuizPlayer.tsx` referenced but not implemented | `pages/RoomQuiz.tsx` | (no line) | 296 | file_not_found |
-| BACKLOG.md | BL-AUDIT-3 — Migration filename refs in SPEC_USER use bare names | `add_basic_quiz_unlock.sql` | (no line) | 301 | bare_filename_not_found |
-| BACKLOG.md | BL-AUDIT-3 — Migration filename refs in SPEC_USER use bare names | `add_xp_surge_to_users.sql` | (no line) | 301 | bare_filename_not_found |
-| BACKLOG.md | BL-AUDIT-3 — Migration filename refs in SPEC_USER use bare names | `add_daily_completions.sql` | (no line) | 301 | bare_filename_not_found |
-| BACKLOG.md | BL-AUDIT-4 — Variety mode pages referenced but don't exist (`MysteryMode.tsx`, `SpeedRound.tsx`, `WeeklyQuiz.tsx`) | `pages/MysteryMode.tsx` | (no line) | 306 | file_not_found |
-| BACKLOG.md | BL-AUDIT-4 — Variety mode pages referenced but don't exist (`MysteryMode.tsx`, `SpeedRound.tsx`, `WeeklyQuiz.tsx`) | `pages/SpeedRound.tsx` | (no line) | 306 | file_not_found |
-| BACKLOG.md | BL-AUDIT-4 — Variety mode pages referenced but don't exist (`MysteryMode.tsx`, `SpeedRound.tsx`, `WeeklyQuiz.tsx`) | `pages/WeeklyQuiz.tsx` | (no line) | 306 | file_not_found |
-| BACKLOG.md | BL-AUDIT-5 — `Groups.tsx` ambiguous (admin vs user page) | `Groups.tsx` | (no line) | 310 | bare_filename_ambiguous_(2_matches) |
-| BACKLOG.md | BL-AUDIT-5 — `Groups.tsx` ambiguous (admin vs user page) | `Groups.tsx` | (no line) | 311 | bare_filename_ambiguous_(2_matches) |
-| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `QuizSetCreate.tsx` | (no line) | 399 | bare_filename_not_found |
-| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `api/quizSets.ts` | (no line) | 405 | file_not_found |
-| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `CreateQuizSetModal.tsx` | (no line) | 408 | bare_filename_not_found |
-| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `QuizSetCreate.tsx` | (no line) | 408 | bare_filename_not_found |
+| BACKLOG.md | BL-15 — Deprecate `useWebSocket.ts` (legacy raw WS hook) | `useWebSocket.ts` | (no line) | 193 | bare_filename_not_found |
+| BACKLOG.md | BL-15 — Deprecate `useWebSocket.ts` (legacy raw WS hook) | `apps/web/src/hooks/useWebSocket.ts` | (no line) | 198 | file_not_found |
+| BACKLOG.md | BL-15 — Deprecate `useWebSocket.ts` (legacy raw WS hook) | `apps/web/src/hooks/__tests__/useWebSocket.test.ts` | (no line) | 198 | file_not_found |
+| BACKLOG.md | BL-AUDIT-1 — Spec refs use partial paths (e.g. `pages/Multiplayer.tsx`) | `pages/Multiplayer.tsx` | (no line) | 291 | file_not_found |
+| BACKLOG.md | BL-AUDIT-1 — Spec refs use partial paths (e.g. `pages/Multiplayer.tsx`) | `pages/Multiplayer.tsx` | (no line) | 292 | file_not_found |
+| BACKLOG.md | BL-AUDIT-1 — Spec refs use partial paths (e.g. `pages/Multiplayer.tsx`) | `pages/CreateRoom.tsx` | (no line) | 292 | file_not_found |
+| BACKLOG.md | BL-AUDIT-1 — Spec refs use partial paths (e.g. `pages/Multiplayer.tsx`) | `pages/JoinRoom.tsx` | (no line) | 292 | file_not_found |
+| BACKLOG.md | BL-AUDIT-1 — Spec refs use partial paths (e.g. `pages/Multiplayer.tsx`) | `pages/RoomLobby.tsx` | (no line) | 292 | file_not_found |
+| BACKLOG.md | BL-AUDIT-1 — Spec refs use partial paths (e.g. `pages/Multiplayer.tsx`) | `pages/RoomQuiz.tsx` | (no line) | 292 | file_not_found |
+| BACKLOG.md | BL-AUDIT-2 — `RoomQuizHost.tsx` / `RoomQuizPlayer.tsx` referenced but not implemented | `RoomQuizPlayer.tsx` | (no line) | 297 | bare_filename_not_found |
+| BACKLOG.md | BL-AUDIT-2 — `RoomQuizHost.tsx` / `RoomQuizPlayer.tsx` referenced but not implemented | `pages/RoomQuizHost.tsx` | (no line) | 298 | file_not_found |
+| BACKLOG.md | BL-AUDIT-2 — `RoomQuizHost.tsx` / `RoomQuizPlayer.tsx` referenced but not implemented | `pages/RoomQuizPlayer.tsx` | (no line) | 298 | file_not_found |
+| BACKLOG.md | BL-AUDIT-2 — `RoomQuizHost.tsx` / `RoomQuizPlayer.tsx` referenced but not implemented | `pages/RoomQuiz.tsx` | (no line) | 298 | file_not_found |
+| BACKLOG.md | BL-AUDIT-3 — Migration filename refs in SPEC_USER use bare names | `add_basic_quiz_unlock.sql` | (no line) | 303 | bare_filename_not_found |
+| BACKLOG.md | BL-AUDIT-3 — Migration filename refs in SPEC_USER use bare names | `add_xp_surge_to_users.sql` | (no line) | 303 | bare_filename_not_found |
+| BACKLOG.md | BL-AUDIT-3 — Migration filename refs in SPEC_USER use bare names | `add_daily_completions.sql` | (no line) | 303 | bare_filename_not_found |
+| BACKLOG.md | BL-AUDIT-4 — Variety mode pages referenced but don't exist (`MysteryMode.tsx`, `SpeedRound.tsx`, `WeeklyQuiz.tsx`) | `pages/MysteryMode.tsx` | (no line) | 308 | file_not_found |
+| BACKLOG.md | BL-AUDIT-4 — Variety mode pages referenced but don't exist (`MysteryMode.tsx`, `SpeedRound.tsx`, `WeeklyQuiz.tsx`) | `pages/SpeedRound.tsx` | (no line) | 308 | file_not_found |
+| BACKLOG.md | BL-AUDIT-4 — Variety mode pages referenced but don't exist (`MysteryMode.tsx`, `SpeedRound.tsx`, `WeeklyQuiz.tsx`) | `pages/WeeklyQuiz.tsx` | (no line) | 308 | file_not_found |
+| BACKLOG.md | BL-AUDIT-5 — `Groups.tsx` ambiguous (admin vs user page) | `Groups.tsx` | (no line) | 312 | bare_filename_ambiguous_(2_matches) |
+| BACKLOG.md | BL-AUDIT-5 — `Groups.tsx` ambiguous (admin vs user page) | `Groups.tsx` | (no line) | 313 | bare_filename_ambiguous_(2_matches) |
+| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `QuizSetCreate.tsx` | (no line) | 401 | bare_filename_not_found |
+| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `api/quizSets.ts` | (no line) | 407 | file_not_found |
+| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `CreateQuizSetModal.tsx` | (no line) | 410 | bare_filename_not_found |
+| BACKLOG.md | BL-AD-8 — Quiz Set Editor unified page | `QuizSetCreate.tsx` | (no line) | 410 | bare_filename_not_found |
+| BACKLOG.md | BL-MP-QM — Quick Match (Đấu Nhanh) — 🚧 ACTIVE SPRINT (2026-05-15) | `SoloArenaEntryCard.tsx` | (no line) | 437 | bare_filename_not_found |
+| BACKLOG.md | BL-MP-QM — Quick Match (Đấu Nhanh) — 🚧 ACTIVE SPRINT (2026-05-15) | `SoloArenaPlaceholder.tsx` | (no line) | 439 | bare_filename_not_found |
+| BACKLOG.md | BL-MP-QM — Quick Match (Đấu Nhanh) — 🚧 ACTIVE SPRINT (2026-05-15) | `api/rooms.ts` | (no line) | 444 | file_not_found |
 | SPEC_ADMIN_v3.1.md | 2. Admin Panel Routes | `Groups.tsx` | (no line) | 76 | bare_filename_ambiguous_(2_matches) |
 | SPEC_ADMIN_v3.1.md | 14.2 Schema (`audit_events` V4) | `infrastructure/audit/AuditEvent.java` | (no line) | 513 | file_not_found |
 | SPEC_GROUP_v1.3.md | 6.B Quiz Set Editor Page (BL-AD-8, 2026-05-13) | `apps/web/src/components/group/CreateQuizSetModal.tsx` | (no line) | 698 | file_not_found |
@@ -67,6 +70,7 @@
 | SPEC_MULTIPLAYER.md | 7.5 RoomQuiz — split routes (Sprint 4) | `pages/RoomQuizHost.tsx` | (no line) | 743 | file_not_found |
 | SPEC_MULTIPLAYER.md | 10. Known Issues | `useWebSocket.ts` | (no line) | 864 | bare_filename_not_found |
 | SPEC_MULTIPLAYER.md | Appendix B — Resolved questions (2026-05-09) | `useWebSocket.ts` | (no line) | 1121 | bare_filename_not_found |
+| SPEC_ROADMAP.md | 2.9 Sentry monitoring (PARTIALLY SHIPPED — mobile only) | `App.tsx` | (no line) | 91 | bare_filename_not_found |
 | SPEC_USER_v3.1.md | 3.5 Basic Quiz gate (catechism → unlock Ranked) | `add_basic_quiz_unlock.sql` | (no line) | 155 | bare_filename_not_found |
 | SPEC_USER_v3.1.md | 4.7 Milestone Burst (XP surge) | `add_xp_surge_to_users.sql` | (no line) | 236 | bare_filename_not_found |
 | SPEC_USER_v3.1.md | 5.3 Daily Challenge | `add_daily_completions.sql` | (no line) | 295 | bare_filename_not_found |
@@ -91,9 +95,9 @@
 | SPEC_USER_v3.1.md | 19. Question Sets (user-created) | `question_sets.sql` | (no line) | 810 | bare_filename_not_found |
 | SPEC_USER_v3.1.md | 20. Achievements | `pages/Achievements.tsx` | (no line) | 843 | file_not_found |
 | SPEC_USER_v3.1.md | 21. Profile & Stats | `pages/Profile.tsx` | (no line) | 866 | file_not_found |
-| SPEC_USER_v3.1.md | 22. Leaderboard | `pages/Leaderboard.tsx` | (no line) | 897 | file_not_found |
-| SPEC_USER_v3.1.md | 25.4 Bible book names | `apps/web/src/data/bookNames.ts` | (no line) | 1048 | file_not_found |
-| SPEC_USER_v3.1.md | 25.5 Validator | `apps/web/scripts/validate-i18n.ts` | (no line) | 1055 | file_not_found |
+| SPEC_USER_v3.1.md | 22. Leaderboard | `pages/Leaderboard.tsx` | (no line) | 903 | file_not_found |
+| SPEC_USER_v3.1.md | 25.4 Bible book names | `apps/web/src/data/bookNames.ts` | (no line) | 1054 | file_not_found |
+| SPEC_USER_v3.1.md | 25.5 Validator | `apps/web/scripts/validate-i18n.ts` | (no line) | 1061 | file_not_found |
 
 ## Orphan Sections (MEDIUM)
 
@@ -115,24 +119,24 @@ _(Showing first 30 — full list via `node parse-spec-refs.js --orphans`.)_
 | BACKLOG.md | BL-9 — Verify TanStack Query coverage in admin pages | 132 |
 | BACKLOG.md | Lower priority | 148 |
 | BACKLOG.md | BL-11 — Mobile feature parity gaps vs web | 150 |
-| BACKLOG.md | BL-12 — Group Leaderboard endpoint test for Q-A fix | 161 |
-| BACKLOG.md | Added 2026-05-09 (Phase 2 spec refinement) | 167 |
-| BACKLOG.md | BL-AD-2 — Configuration: build `app_config` table + admin CRUD | 206 |
-| BACKLOG.md | BL-AD-3 — Notification broadcast: lightweight campaign system | 211 |
-| BACKLOG.md | BL-AD-4 — Audit log: standardize via `AuditEventService.record(...)` | 216 |
-| BACKLOG.md | BL-AD-5 — Question soft delete (30-day retention) | 221 |
-| BACKLOG.md | BL-16 — Group leaderboard endpoint `410 Gone` (Q-A sunset) | 231 |
-| BACKLOG.md | Done (recent — keep until next sprint review) | 267 |
-| BACKLOG.md | Added 2026-05-09 (First spec-audit run — `tools/spec-audit/`) | 280 |
-| BACKLOG.md | BL-AUDIT-6 — Coverage critically low across all concerns | 315 |
-| BACKLOG.md | BL-AUDIT-7 — 304 orphan spec sections (no code refs) | 320 |
-| BACKLOG.md | Sprint 5 (Quiz Set Professional) — Deferred items | 327 |
-| BACKLOG.md | BL-S5-1 — Mastery hook into QuizSession.completeSession | 329 |
-| BACKLOG.md | BL-S5-2 — i18n keys cho 3 FE pages Sprint 5 | 340 |
-| BACKLOG.md | BL-S5-3 — Auto-derive Difficulty cho quiz set | 348 |
-| BACKLOG.md | BL-S5-4 — Folder UI trong QuizSetList + QuizSetCreate | 353 |
-| BACKLOG.md | BL-S5-5 — Pixel-perfect mockup match | 358 |
-| BACKLOG.md | BL-AD-7 — DeepSeek V3.2 Bedrock integration | 363 |
+| BACKLOG.md | BL-12 — Group Leaderboard endpoint test for Q-A fix | 163 |
+| BACKLOG.md | Added 2026-05-09 (Phase 2 spec refinement) | 169 |
+| BACKLOG.md | BL-AD-2 — Configuration: build `app_config` table + admin CRUD | 208 |
+| BACKLOG.md | BL-AD-3 — Notification broadcast: lightweight campaign system | 213 |
+| BACKLOG.md | BL-AD-4 — Audit log: standardize via `AuditEventService.record(...)` | 218 |
+| BACKLOG.md | BL-AD-5 — Question soft delete (30-day retention) | 223 |
+| BACKLOG.md | BL-16 — Group leaderboard endpoint `410 Gone` (Q-A sunset) | 233 |
+| BACKLOG.md | Done (recent — keep until next sprint review) | 269 |
+| BACKLOG.md | Added 2026-05-09 (First spec-audit run — `tools/spec-audit/`) | 282 |
+| BACKLOG.md | BL-AUDIT-6 — Coverage critically low across all concerns | 317 |
+| BACKLOG.md | BL-AUDIT-7 — 304 orphan spec sections (no code refs) | 322 |
+| BACKLOG.md | Sprint 5 (Quiz Set Professional) — Deferred items | 329 |
+| BACKLOG.md | BL-S5-1 — Mastery hook into QuizSession.completeSession | 331 |
+| BACKLOG.md | BL-S5-2 — i18n keys cho 3 FE pages Sprint 5 | 342 |
+| BACKLOG.md | BL-S5-3 — Auto-derive Difficulty cho quiz set | 350 |
+| BACKLOG.md | BL-S5-4 — Folder UI trong QuizSetList + QuizSetCreate | 355 |
+| BACKLOG.md | BL-S5-5 — Pixel-perfect mockup match | 360 |
+| BACKLOG.md | BL-AD-7 — DeepSeek V3.2 Bedrock integration | 365 |
 
 ## Undocumented Files (MEDIUM)
 

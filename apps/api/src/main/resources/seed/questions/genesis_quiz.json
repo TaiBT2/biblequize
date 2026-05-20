@@ -2696,7 +2696,7 @@
     "verseEnd": 7,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Gia-cốp đến Bê-tên hai lần. Lần thứ hai (Sáng 35), ông đến đó vì lý do nào theo chính lời text ghi lại?",
+    "content": "Gia-cốp đến Bê-tên hai lần. Lần thứ hai (Sáng 35), ông đến đó vì lý do nào theo chính lời Kinh Thánh ghi lại?",
     "correctAnswer": [
       0
     ],
@@ -2730,7 +2730,7 @@
       1,
       2
     ],
-    "explanation": "Sáng 37:3 — áo nhiều màu cha may; 39:12 — áo bị vợ Pô-ti-pha giật khi ông chạy; 41:42 — áo vải gai mịn Pha-ra-ôn ban khi tôn ông làm tể tướng. Chi tiết 'áo gấm thêu vàng dâng cha già' không có trong text.",
+    "explanation": "Sáng 37:3 — áo nhiều màu cha may; 39:12 — áo bị vợ Pô-ti-pha giật khi ông chạy; 41:42 — áo vải gai mịn Pha-ra-ôn ban khi tôn ông làm tể tướng. Chi tiết 'áo gấm thêu vàng dâng cha già' không có trong Kinh Thánh.",
     "language": "vi",
     "options": [
       "Áo nhiều màu cha may cho Giô-sép",
@@ -2786,7 +2786,7 @@
     "correctAnswer": [
       1
     ],
-    "explanation": "Sáng 25:21 — 'Y-sác khẩn cầu Đức Giê-hô-va cho vợ mình son sẻ; Đức Giê-hô-va nhậm lời'. Với Sa-ra (16-21), Áp-ra-ham không được ghi cầu trực tiếp. Với Ra-chên (30:22), text nói 'Đức Chúa Trời nhớ đến Ra-chên', không nói Gia-cốp cầu.",
+    "explanation": "Sáng 25:21 — 'Y-sác khẩn cầu Đức Giê-hô-va cho vợ mình son sẻ; Đức Giê-hô-va nhậm lời'. Với Sa-ra (16-21), Áp-ra-ham không được ghi cầu trực tiếp. Với Ra-chên (30:22), Kinh Thánh nói 'Đức Chúa Trời nhớ đến Ra-chên', không nói Gia-cốp cầu.",
     "language": "vi",
     "options": [
       "Sa-ra",
@@ -2810,7 +2810,7 @@
     "verseEnd": 11,
     "difficulty": "hard",
     "type": "multiple_choice_multi",
-    "content": "Trong Sáng Thế Ký, các tổ phụ có lúc giới thiệu vợ mình là 'em gái'. Trường hợp nào CÓ trong text? (chọn tất cả đúng)",
+    "content": "Trong Sáng Thế Ký, các tổ phụ có lúc giới thiệu vợ mình là 'em gái'. Trường hợp nào CÓ trong Kinh Thánh? (chọn tất cả đúng)",
     "correctAnswer": [
       0,
       1,
@@ -3149,7 +3149,7 @@
     "verseEnd": 15,
     "difficulty": "hard",
     "type": "multiple_choice_single",
-    "content": "Sáng 4:15 (RVV11) — Đức Giê-hô-va đặt một dấu trên Ca-in. Theo chính lời text, mục đích của dấu là để 'ai gặp Ca-in thì sẽ KHÔNG ___'.",
+    "content": "Sáng 4:15 (RVV11) — Đức Giê-hô-va đặt một dấu trên Ca-in. Theo chính lời Kinh Thánh, mục đích của dấu là để 'ai gặp Ca-in thì sẽ KHÔNG ___'.",
     "correctAnswer": [
       3
     ],
@@ -3345,7 +3345,7 @@
       2
     ],
     "verseEnd": 28,
-    "content": "Trong Sáng 49, Gia-cốp chúc phước cho 12 con trước khi qua đời. Lời chúc nào CÓ thật trong text? (chọn tất cả đúng)",
+    "content": "Trong Sáng 49, Gia-cốp chúc phước cho 12 con trước khi qua đời. Lời chúc nào CÓ thật trong Kinh Thánh? (chọn tất cả đúng)",
     "explanation": "Sáng 49:3-4 (Ru-bên 'sôi nổi như nước'), 49:9-10 (Giu-đa 'sư tử tơ' và 'phủ việt'), 49:22 (Giô-sép 'cây sai trái'). Bên-gia-min trong 49:27 được mô tả là 'chó sói hay cấu xé', KHÔNG phải bồ câu.",
     "language": "vi",
     "options": [
@@ -3454,7 +3454,7 @@
       1
     ],
     "verseEnd": 16,
-    "content": "A-ga (mẹ Ích-ma-ên) bị đuổi khỏi nhà Áp-ra-ham hai lần khác nhau trong Sáng Thế Ký. Tình huống nào CÓ trong text? (chọn tất cả đúng)",
+    "content": "A-ga (mẹ Ích-ma-ên) bị đuổi khỏi nhà Áp-ra-ham hai lần khác nhau trong Sáng Thế Ký. Tình huống nào CÓ trong Kinh Thánh? (chọn tất cả đúng)",
     "explanation": "Sáng 16:6-9 — A-ga lần đầu chạy trốn vì Sa-rai hành hạ; thiên sứ bảo bà trở lại. Sáng 21:9-21 — sau khi Y-sác sinh, Sa-ra đòi đuổi A-ga và Ích-ma-ên; Đức Chúa Trời gặp họ trong sa mạc. Các tình huống khác không có trong Kinh Thánh.",
     "language": "vi",
     "options": [
