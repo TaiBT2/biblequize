@@ -131,7 +131,12 @@ export default function HomeScreen() {
 
         <DailyMissionsCard />
 
-        {!isDailyDone && (
+        {/* Game modes — hiển thị khi:
+            - !isDailyDone (CTA chính cho người dùng), HOẶC
+            - isDailyDone + rankedLocked (HeroRankedCard không render vì
+              chưa unlock, nên fallback compact 2-cell Practice + Ranked
+              locked để user vẫn thấy 2 mode chính). */}
+        {(!isDailyDone || rankedLocked) && (
           <>
             <SectionHeader title={t('home.gameModes')} />
             <View style={s.grid2}>
