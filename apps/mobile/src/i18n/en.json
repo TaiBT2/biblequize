@@ -87,6 +87,21 @@
       "title": "Complete today's challenge",
       "description": "Finish your first Daily Challenge to unlock Missions, Leaderboard, and start a streak.",
       "cta": "Start"
+    },
+    "journey": {
+      "title": "🗺 Journey of 66 books"
+    },
+    "journeyExtra": {
+      "subUnlock": "Start from Genesis · Complete 80% of each book to unlock the next",
+      "metaCountSuffix": "/ {{total}} books",
+      "metaCurrent": "On {{book}}",
+      "testamentOld": "Old Testament",
+      "testamentNew": "New Testament",
+      "statusInProgress": "Conquering · {{pct}}%",
+      "statusDone": "Done · {{pct}}%",
+      "statusLocked": "Locked",
+      "overflowLabel": "+ {{remaining}} books",
+      "overflowSub": "Remaining in journey"
     }
   },
   "quiz": {

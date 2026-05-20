@@ -87,6 +87,21 @@
       "title": "Hoàn thành thử thách hôm nay",
       "description": "Sau khi hoàn thành Daily Challenge đầu tiên, bạn sẽ mở khóa Nhiệm vụ ngày, Bảng xếp hạng, và bắt đầu chuỗi (streak).",
       "cta": "Bắt đầu"
+    },
+    "journey": {
+      "title": "🗺 Hành trình 66 sách"
+    },
+    "journeyExtra": {
+      "subUnlock": "Bắt đầu từ Sáng Thế Ký · Hoàn thành 80% mỗi sách để mở khóa sách tiếp theo",
+      "metaCountSuffix": "/ {{total}} sách",
+      "metaCurrent": "Đang ở {{book}}",
+      "testamentOld": "Cựu Ước",
+      "testamentNew": "Tân Ước",
+      "statusInProgress": "Đang chinh phục · {{pct}}%",
+      "statusDone": "Hoàn thành · {{pct}}%",
+      "statusLocked": "Khóa",
+      "overflowLabel": "+ {{remaining}} sách",
+      "overflowSub": "Còn lại trong hành trình"
     }
   },
   "quiz": {

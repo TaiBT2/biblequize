@@ -13,6 +13,7 @@ import CompactCard from '../../components/home/CompactCard'
 import SectionHeader from '../../components/home/SectionHeader'
 import DailyMissionsCard from '../../components/home/DailyMissionsCard'
 import MotivationCard from '../../components/home/MotivationCard'
+import BibleJourneyCard from '../../components/home/BibleJourneyCard'
 import VerseFooter from '../../components/home/VerseFooter'
 import { apiClient } from '../../api/client'
 import { colors, spacing } from '../../theme'
@@ -236,6 +237,8 @@ export default function HomeScreen() {
             matchmakingHint={tournamentLocked ? t('home.unlockAt', { xp: TOURNAMENT_UNLOCK_XP }) : undefined} />
           <View style={{ flex: 1 }} />
         </View>
+
+        <BibleJourneyCard onPress={() => navigation.navigate('HomeTab', { screen: 'Journey' })} />
 
         <VerseFooter />
       </ScrollView>
