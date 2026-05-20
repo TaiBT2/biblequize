@@ -3,11 +3,11 @@ import { resolveAvatar, isGoogleAvatarUrl, isOAuthAvatarUrl } from '../avatar'
 
 describe('resolveAvatar', () => {
   it('returns preset branch for known preset id', () => {
-    const result = resolveAvatar('preset:lion', 'Anh')
+    const result = resolveAvatar('preset:disciple', 'Anh')
     expect(result.kind).toBe('preset')
     if (result.kind === 'preset') {
-      expect(result.preset.id).toBe('lion')
-      expect(result.preset.emoji).toBe('🦁')
+      expect(result.preset.id).toBe('disciple')
+      expect(result.preset.emoji).toBe('🧔')
     }
   })
 
@@ -61,7 +61,7 @@ describe('isGoogleAvatarUrl / isOAuthAvatarUrl', () => {
 
   it('rejects unrelated URLs and falsy', () => {
     expect(isGoogleAvatarUrl('https://example.com/me.jpg')).toBe(false)
-    expect(isOAuthAvatarUrl('preset:lion')).toBe(false)
+    expect(isOAuthAvatarUrl('preset:disciple')).toBe(false)
     expect(isOAuthAvatarUrl(null)).toBe(false)
     expect(isOAuthAvatarUrl(undefined)).toBe(false)
   })

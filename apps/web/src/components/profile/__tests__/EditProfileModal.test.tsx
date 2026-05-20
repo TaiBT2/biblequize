@@ -55,19 +55,19 @@ describe('EditProfileModal', () => {
     renderModal(BASE_PROFILE)
     fireEvent.click(screen.getByTestId('edit-profile-avatar-toggle'))
     expect(screen.getByTestId('edit-profile-preset-grid')).toBeTruthy()
-    fireEvent.click(screen.getByTestId('edit-profile-preset-lion'))
+    fireEvent.click(screen.getByTestId('edit-profile-preset-disciple'))
     // Preview switches from initial to preset emoji
     const preview = screen.getByTestId('edit-profile-avatar-preview')
-    expect(preview.textContent).toBe('🦁')
+    expect(preview.textContent).toBe('🧔')
   })
 
   it('submits PATCH with preset:<id> when a preset is selected', async () => {
     renderModal(BASE_PROFILE)
     fireEvent.click(screen.getByTestId('edit-profile-avatar-toggle'))
-    fireEvent.click(screen.getByTestId('edit-profile-preset-dove'))
+    fireEvent.click(screen.getByTestId('edit-profile-preset-king'))
     fireEvent.click(screen.getByTestId('edit-profile-submit'))
     await waitFor(() => expect(mockPatch).toHaveBeenCalled())
-    expect(mockPatch).toHaveBeenCalledWith('/api/me', { name: 'Trần Văn B', avatarUrl: 'preset:dove' })
+    expect(mockPatch).toHaveBeenCalledWith('/api/me', { name: 'Trần Văn B', avatarUrl: 'preset:king' })
   })
 
   it('shows Google avatar tile in preset grid only when profile uses an OAuth picture', () => {
