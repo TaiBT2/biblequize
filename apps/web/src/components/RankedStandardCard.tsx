@@ -65,7 +65,7 @@ export default function RankedStandardCard({
 
       <h3
         data-testid="ranked-standard-card-title"
-        className="text-[19px] font-bold text-ivory leading-[1.15] mb-1 tracking-[-0.015em]"
+        className="text-[13px] md:text-[14px] font-bold text-ivory leading-tight mb-1 tracking-[-0.01em]"
       >
         {t('gameModes.ranked')}
       </h3>
