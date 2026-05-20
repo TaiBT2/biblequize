@@ -14,12 +14,20 @@ import SectionHeader from './SectionHeader'
  * filled circle (completed) + description + inline progress bar (X/Y).
  */
 export default function DailyMissionsCard() {
-  const { data: missions = [] } = useQuery<DailyMission[]>({
+  const { data } = useQuery<DailyMission[] | { missions?: DailyMission[] } | null>({
     queryKey: ['daily-missions'],
     queryFn: () => apiClient.get('/api/me/daily-missions').then(r => r.data?.missions ?? r.data ?? []),
     staleTime: 30_000,
     refetchInterval: 60_000,
   })
+
+  // Defensive: TanStack cache có thể bị pollute bởi component khác (queryKey
+  // collision) hoặc BE shape khác. Always normalize sang array.
+  const missions: DailyMission[] = Array.isArray(data)
+    ? data
+    : Array.isArray((data as { missions?: DailyMission[] })?.missions)
+      ? (data as { missions?: DailyMission[] }).missions!
+      : []
 
   if (missions.length === 0) return null
 

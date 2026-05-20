@@ -85,9 +85,13 @@ export default function HomeScreen() {
     refetchOnReconnect: true,
   })
 
-  const { data: missions } = useQuery<{ missions?: { completed?: boolean }[] }>({
-    queryKey: ['daily-missions'],
-    queryFn: () => apiClient.get('/api/daily-missions').then(r => r.data).catch(() => null as any),
+  // Bug fix: trước queryKey trùng với DailyMissionsCard nhưng endpoint sai
+  // (/api/daily-missions thay vì /api/me/daily-missions) → 404 → catch trả
+  // null pollute cache → DailyMissionsCard đọc null → missions.length throw.
+  // Đổi sang queryKey riêng + endpoint đúng + fallback shape match.
+  const { data: missionsData } = useQuery<{ missions?: { completed?: boolean }[] }>({
+    queryKey: ['daily-missions-summary'],
+    queryFn: () => apiClient.get('/api/me/daily-missions').then(r => r.data).catch(() => ({ missions: [] })),
     staleTime: 30_000,
   })
 
@@ -128,7 +132,7 @@ export default function HomeScreen() {
   // bắt đầu chơi: complete daily, có streak, hoặc complete mission.
   const isNewUser = totalPoints < 1000
   const hasStreak = streak > 0
-  const hasCompletedMission = !!missions?.missions?.some(m => m.completed)
+  const hasCompletedMission = !!missionsData?.missions?.some(m => m.completed)
   const shouldShowMotivation =
     isNewUser && !dailyLoading && !isDailyDone && !hasStreak && !hasCompletedMission
 
