@@ -112,7 +112,7 @@ export default function QuizSetList() {
     setPickerBusy(true); setPickerError(null)
     try {
       const room = await createLiveRoomFromQuizSet(groupId, { quizSetId: pickerQuizSet.id, mode })
-      navigate(`/room/${room.roomCode}`)
+      navigate(`/room/${room.id}/lobby`, { state: { fromGroupId: groupId } })
     } catch (err: any) {
       setPickerError(err?.response?.data?.message || err.message)
     } finally {

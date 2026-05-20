@@ -37,6 +37,23 @@ export default function LiveNowBanner({ groupId }: { groupId: string }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [rooms, setRooms] = useState<ActiveRoom[]>([]);
+  const [joining, setJoining] = useState(false);
+
+  const handleJoin = async (room: ActiveRoom) => {
+    if (joining) return;
+    setJoining(true);
+    try {
+      const res = await api.post('/api/rooms/join', { roomCode: room.roomCode });
+      const joined = res.data.room;
+      navigate(`/room/${joined.id}/lobby`, { state: { room: joined, viewerUserId: res.data.viewerUserId, fromGroupId: groupId } });
+    } catch {
+      // Fallback: still navigate so the lobby's fetchRoom can show a real error
+      // (host re-entering a stale link, etc.) instead of leaving the user stuck.
+      navigate(`/room/${room.id}/lobby`, { state: { fromGroupId: groupId } });
+    } finally {
+      setJoining(false);
+    }
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -93,8 +110,9 @@ export default function LiveNowBanner({ groupId }: { groupId: string }) {
           </div>
         </div>
         <button
-          onClick={() => navigate(`/room/${room.roomCode}`)}
-          className="px-3 py-1.5 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 text-[#11131e] text-xs font-bold whitespace-nowrap shadow-[0_0_12px_rgba(74,222,128,0.3)]"
+          onClick={() => handleJoin(room)}
+          disabled={joining}
+          className="px-3 py-1.5 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 text-[#11131e] text-xs font-bold whitespace-nowrap shadow-[0_0_12px_rgba(74,222,128,0.3)] disabled:opacity-60"
         >
           {t('groups.liveNow.join')} →
         </button>

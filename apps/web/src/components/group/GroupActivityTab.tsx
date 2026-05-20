@@ -19,12 +19,15 @@ interface Props {
   groupId: string;
   groupCreatedAt?: string;
   isLeader: boolean;
+  /** Leader OR mod — can access the Câu hỏi tab and see the quiz-sets preview. */
+  isLeaderOrMod: boolean;
   memberCount: number;
   announcementsCount: number;
   members: MemberPreview[];
   quizSets: QuizSetPreview[];
   hasActiveScheduledQuiz: boolean;
   scheduledCount: number;
+  firstScheduledQuizId?: string | null;
   playingSetId?: string | null;
   onCreateQuizSet: () => void;
   onPostAnnouncement: () => void;
@@ -62,6 +65,7 @@ export default function GroupActivityTab(props: Props) {
         isLeader={props.isLeader}
         hasActiveScheduledQuiz={props.hasActiveScheduledQuiz}
         scheduledCount={props.scheduledCount}
+        firstScheduledQuizId={props.firstScheduledQuizId ?? null}
         onCreateQuizSet={props.onCreateQuizSet}
         onPostAnnouncement={props.onPostAnnouncement}
         onSwitchToQuizSets={() => props.onSwitchToTab('quizsets')}
@@ -77,12 +81,16 @@ export default function GroupActivityTab(props: Props) {
             total={props.memberCount}
             onViewAll={() => props.onSwitchToTab('members')}
           />
-          <QuizSetsPreviewCard
-            quizSets={props.quizSets}
-            onPlay={props.onPlayQuizSet}
-            onViewAll={() => props.onSwitchToTab('quizsets')}
-            playingId={props.playingSetId}
-          />
+          {/* Leader/mod only — members can't open the Câu hỏi tab anymore (solo
+              practice was removed 2026-05-20), so the preview would dead-end them. */}
+          {props.isLeaderOrMod && (
+            <QuizSetsPreviewCard
+              quizSets={props.quizSets}
+              onPlay={props.onPlayQuizSet}
+              onViewAll={() => props.onSwitchToTab('quizsets')}
+              playingId={props.playingSetId}
+            />
+          )}
         </div>
       </div>
     </div>

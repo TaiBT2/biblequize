@@ -175,6 +175,43 @@ describe('NotificationPanel', () => {
     expect(onClose).not.toHaveBeenCalled()
   })
 
+  it('groups consecutive identical (same type + same title) notifications into one row with ×N badge', () => {
+    const notifs: PanelNotification[] = [
+      makeNotif({ id: 'd1', type: 'daily_reminder', title: 'Câu hỏi mới mỗi ngày', body: 'b', createdAt: new Date(Date.now() - 1 * 86400000).toISOString() }),
+      makeNotif({ id: 'd2', type: 'daily_reminder', title: 'Câu hỏi mới mỗi ngày', body: 'b', createdAt: new Date(Date.now() - 2 * 86400000).toISOString() }),
+      makeNotif({ id: 'd3', type: 'daily_reminder', title: 'Câu hỏi mới mỗi ngày', body: 'b', createdAt: new Date(Date.now() - 3 * 86400000).toISOString() }),
+    ]
+    render(<Harness notifications={notifs} unreadCount={3} />)
+    // Only the latest (d1) representative row renders.
+    expect(screen.getByTestId('notification-item-d1')).toBeInTheDocument()
+    expect(screen.queryByTestId('notification-item-d2')).toBeNull()
+    expect(screen.queryByTestId('notification-item-d3')).toBeNull()
+    // Group badge shows count.
+    expect(screen.getByTestId('notification-group-badge-d1')).toHaveTextContent('×3')
+  })
+
+  it('different types are NOT grouped — each renders its own row', () => {
+    const notifs: PanelNotification[] = [
+      makeNotif({ id: 'a', type: 'streak_warning', title: 'Streak sắp gãy!' }),
+      makeNotif({ id: 'b', type: 'tier_up', title: 'Streak sắp gãy!' }), // same title, diff type → separate
+    ]
+    render(<Harness notifications={notifs} unreadCount={2} />)
+    expect(screen.getByTestId('notification-item-a')).toBeInTheDocument()
+    expect(screen.getByTestId('notification-item-b')).toBeInTheDocument()
+    expect(screen.queryByTestId('notification-group-badge-a')).toBeNull()
+  })
+
+  it('grouped row keeps unread style if ANY item in the group is unread', () => {
+    const notifs: PanelNotification[] = [
+      makeNotif({ id: 'r1', type: 'daily_reminder', title: 'X', isRead: true, createdAt: new Date(Date.now() - 1 * 86400000).toISOString() }),
+      makeNotif({ id: 'r2', type: 'daily_reminder', title: 'X', isRead: false, createdAt: new Date(Date.now() - 2 * 86400000).toISOString() }),
+    ]
+    const { container } = render(<Harness notifications={notifs} unreadCount={1} />)
+    // Gold unread dot still shown.
+    const dots = container.querySelectorAll('[aria-hidden="true"].rounded-full')
+    expect(dots.length).toBe(1)
+  })
+
   it('shows gold dot only on unread items', () => {
     const notifs: PanelNotification[] = [
       makeNotif({ id: 'unread', isRead: false }),

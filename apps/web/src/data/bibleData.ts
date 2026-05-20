@@ -76,3 +76,50 @@ export function getChapterCount(book: string): number {
 export function getVerseCount(book: string, chapter: number): number {
   return BIBLE_VERSES[book]?.[chapter - 1] ?? 30
 }
+
+// Protestant 66 books in canonical order, VN ↔ EN parallel arrays.
+// Stored value across the app is the VN form (legacy); the EN form is only for
+// display when locale === 'en'. Indices align between both arrays.
+export const BIBLE_BOOKS_VI: readonly string[] = [
+  'Sáng Thế Ký', 'Xuất Ê-díp-tô Ký', 'Lê-vi Ký', 'Dân-số Ký', 'Phục Truyền',
+  'Giô-suê', 'Các Quan Xét', 'Ru-tơ', '1 Sa-mu-ên', '2 Sa-mu-ên',
+  '1 Các Vua', '2 Các Vua', '1 Sử Ký', '2 Sử Ký', 'E-xơ-ra',
+  'Nê-hê-mi', 'Ê-xơ-tê', 'Gióp', 'Thi-thiên', 'Châm Ngôn',
+  'Truyền Đạo', 'Nhã Ca', 'Ê-sai', 'Giê-rê-mi', 'Ca Thương',
+  'Ê-xê-chi-ên', 'Đa-ni-ên', 'Ô-sê', 'Giô-ên', 'A-mốt',
+  'Áp-đia', 'Giô-na', 'Mi-chê', 'Na-hum', 'Ha-ba-cúc',
+  'Sô-phô-ni', 'A-ghê', 'Xa-cha-ri', 'Ma-la-chi',
+  'Ma-thi-ơ', 'Mác', 'Lu-ca', 'Giăng', 'Công Vụ',
+  'Rô-ma', '1 Cô-rinh-tô', '2 Cô-rinh-tô', 'Ga-la-ti', 'Ê-phê-sô',
+  'Phi-líp', 'Cô-lô-se', '1 Tê-sa-lô-ni-ca', '2 Tê-sa-lô-ni-ca',
+  '1 Ti-mô-thê', '2 Ti-mô-thê', 'Tít', 'Phi-lê-môn', 'Hê-bơ-rơ',
+  'Gia-cơ', '1 Phi-e-rơ', '2 Phi-e-rơ', '1 Giăng', '2 Giăng',
+  '3 Giăng', 'Giu-đe', 'Khải Huyền',
+] as const
+
+export const BIBLE_BOOKS_EN: readonly string[] = [
+  'Genesis', 'Exodus', 'Leviticus', 'Numbers', 'Deuteronomy',
+  'Joshua', 'Judges', 'Ruth', '1 Samuel', '2 Samuel',
+  '1 Kings', '2 Kings', '1 Chronicles', '2 Chronicles', 'Ezra',
+  'Nehemiah', 'Esther', 'Job', 'Psalms', 'Proverbs',
+  'Ecclesiastes', 'Song of Solomon', 'Isaiah', 'Jeremiah', 'Lamentations',
+  'Ezekiel', 'Daniel', 'Hosea', 'Joel', 'Amos',
+  'Obadiah', 'Jonah', 'Micah', 'Nahum', 'Habakkuk',
+  'Zephaniah', 'Haggai', 'Zechariah', 'Malachi',
+  'Matthew', 'Mark', 'Luke', 'John', 'Acts',
+  'Romans', '1 Corinthians', '2 Corinthians', 'Galatians', 'Ephesians',
+  'Philippians', 'Colossians', '1 Thessalonians', '2 Thessalonians',
+  '1 Timothy', '2 Timothy', 'Titus', 'Philemon', 'Hebrews',
+  'James', '1 Peter', '2 Peter', '1 John', '2 John',
+  '3 John', 'Jude', 'Revelation',
+] as const
+
+const VI_TO_EN: Record<string, string> = Object.fromEntries(
+  BIBLE_BOOKS_VI.map((vi, i) => [vi, BIBLE_BOOKS_EN[i]]),
+)
+
+/** Display a book name in the requested locale; falls back to input. */
+export function localizeBibleBook(bookVi: string, lang: 'vi' | 'en'): string {
+  if (lang === 'vi') return bookVi
+  return VI_TO_EN[bookVi] ?? bookVi
+}

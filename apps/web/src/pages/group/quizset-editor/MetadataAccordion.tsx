@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { QuizSetFull } from '../../../api/quizSets'
+import { BIBLE_BOOKS_VI, localizeBibleBook } from '../../../data/bibleData'
 import { COLOR, DARK_INPUT_STYLE } from './styles'
 
 interface Props {
@@ -12,32 +14,18 @@ interface Props {
   onScopeChange?: (s: { book: string; chapterFrom: number; chapterTo: number }) => void
 }
 
-const BIBLE_BOOKS = [
-  'Sáng Thế Ký', 'Xuất Ê-díp-tô Ký', 'Lê-vi Ký', 'Dân-số Ký', 'Phục Truyền',
-  'Giô-suê', 'Các Quan Xét', 'Ru-tơ', '1 Sa-mu-ên', '2 Sa-mu-ên',
-  '1 Các Vua', '2 Các Vua', '1 Sử Ký', '2 Sử Ký', 'E-xơ-ra',
-  'Nê-hê-mi', 'Ê-xơ-tê', 'Gióp', 'Thi-thiên', 'Châm Ngôn',
-  'Truyền Đạo', 'Nhã Ca', 'Ê-sai', 'Giê-rê-mi', 'Ca Thương',
-  'Ê-xê-chi-ên', 'Đa-ni-ên', 'Ô-sê', 'Giô-ên', 'A-mốt',
-  'Áp-đia', 'Giô-na', 'Mi-chê', 'Na-hum', 'Ha-ba-cúc',
-  'Sô-phô-ni', 'A-ghê', 'Xa-cha-ri', 'Ma-la-chi',
-  'Ma-thi-ơ', 'Mác', 'Lu-ca', 'Giăng', 'Công Vụ',
-  'Rô-ma', '1 Cô-rinh-tô', '2 Cô-rinh-tô', 'Ga-la-ti', 'Ê-phê-sô',
-  'Phi-líp', 'Cô-lô-se', '1 Tê-sa-lô-ni-ca', '2 Tê-sa-lô-ni-ca',
-  '1 Ti-mô-thê', '2 Ti-mô-thê', 'Tít', 'Phi-lê-môn', 'Hê-bơ-rơ',
-  'Gia-cơ', '1 Phi-e-rơ', '2 Phi-e-rơ', '1 Giăng', '2 Giăng',
-  '3 Giăng', 'Giu-đe', 'Khải Huyền',
-]
-
 export default function MetadataAccordion({
   quizSet, onChange, defaultOpen = true,
   defaultBook = 'Sáng Thế Ký', defaultChapterFrom = 1, defaultChapterTo = 1,
   onScopeChange,
 }: Props) {
+  const { t, i18n } = useTranslation()
   const [open, setOpen] = useState(defaultOpen)
   const [book, setBook] = useState(defaultBook)
   const [chapterFrom, setChapterFrom] = useState(defaultChapterFrom)
   const [chapterTo, setChapterTo] = useState(defaultChapterTo)
+
+  const lang: 'vi' | 'en' = i18n.language?.startsWith('en') ? 'en' : 'vi'
 
   const emitScope = (b: string, cf: number, ct: number) => {
     onScopeChange?.({ book: b, chapterFrom: cf, chapterTo: Math.max(cf, ct) })
@@ -55,19 +43,19 @@ export default function MetadataAccordion({
       >
         <span className="material-symbols-outlined" style={{ fontSize: 14, color: COLOR.textMuted }} aria-hidden>{open ? 'expand_more' : 'chevron_right'}</span>
         <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6 }}>
-          THÔNG TIN BỘ CÂU HỎI
+          {t('quizSet.editor.metadata.header')}
         </span>
         <span style={{ color: COLOR.textDisabled, fontSize: 11, marginLeft: 4 }}>
-          · {book} {chapterFrom}{chapterTo > chapterFrom ? `-${chapterTo}` : ''}
+          · {localizeBibleBook(book, lang)} {chapterFrom}{chapterTo > chapterFrom ? `-${chapterTo}` : ''}
           {quizSet.coverScripture ? ` · ${quizSet.coverScripture}` : ''}
         </span>
       </div>
 
       {open && (
-        <div className="qse-meta-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 1.5fr)', gap: 12 }}>
+        <div className="qse-meta-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.6fr) minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, 0.6fr)', gap: 12 }}>
           <input
             type="text"
-            placeholder="Tên bộ câu hỏi *"
+            placeholder={t('quizSet.editor.metadata.namePlaceholder')}
             value={quizSet.name || ''}
             onChange={e => onChange({ name: e.target.value })}
             style={DARK_INPUT_STYLE}
@@ -84,7 +72,11 @@ export default function MetadataAccordion({
                 cursor: 'pointer',
               }}
             >
-              {BIBLE_BOOKS.map(b => <option key={b} value={b} style={{ background: COLOR.inputBg }}>{b}</option>)}
+              {BIBLE_BOOKS_VI.map(b => (
+                <option key={b} value={b} style={{ background: COLOR.inputBg }}>
+                  {localizeBibleBook(b, lang)}
+                </option>
+              ))}
             </select>
             <span className="material-symbols-outlined" style={{
               position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)',
@@ -97,12 +89,33 @@ export default function MetadataAccordion({
               onChange={e => { const v = Math.max(1, +e.target.value || 1); setChapterFrom(v); emitScope(book, v, chapterTo) }}
               style={{ ...DARK_INPUT_STYLE, textAlign: 'center', padding: 9 }}
             />
-            <span style={{ color: COLOR.textDisabled, fontSize: 11 }}>đến</span>
+            <span style={{ color: COLOR.textDisabled, fontSize: 11 }}>{t('quizSet.editor.metadata.chapterTo')}</span>
             <input
               type="number" min={chapterFrom} value={chapterTo}
               onChange={e => { const v = Math.max(chapterFrom, +e.target.value || chapterFrom); setChapterTo(v); emitScope(book, chapterFrom, v) }}
               style={{ ...DARK_INPUT_STYLE, textAlign: 'center', padding: 9 }}
             />
+          </div>
+          <div style={{ position: 'relative' }} title={t('quizSet.editor.metadata.languageTitle')}>
+            <select
+              aria-label={t('quizSet.editor.metadata.languageLabel')}
+              data-testid="qse-language-select"
+              value={(quizSet.language || 'vi').toLowerCase()}
+              onChange={e => onChange({ language: e.target.value })}
+              style={{
+                ...DARK_INPUT_STYLE,
+                paddingRight: 26,
+                appearance: 'none',
+                cursor: 'pointer',
+              }}
+            >
+              <option value="vi" style={{ background: COLOR.inputBg }}>{t('quizSet.editor.metadata.langVi')}</option>
+              <option value="en" style={{ background: COLOR.inputBg }}>{t('quizSet.editor.metadata.langEn')}</option>
+            </select>
+            <span className="material-symbols-outlined" style={{
+              position: 'absolute', right: 8, top: '50%', transform: 'translateY(-50%)',
+              fontSize: 13, color: COLOR.textDisabled, pointerEvents: 'none',
+            }} aria-hidden>expand_more</span>
           </div>
         </div>
       )}

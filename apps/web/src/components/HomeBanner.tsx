@@ -4,6 +4,7 @@ import { api } from '../api/client'
 import { useAuthStore } from '../store/authStore'
 import { getTierInfo } from '../data/tiers'
 import { getTimeOfDayGreeting } from '../utils/greeting'
+import { localizeSeasonName } from '../utils/seasonName'
 
 interface TierProgressData {
   tierLevel: number
@@ -26,6 +27,12 @@ interface RankedStatusData {
   energy?: number
   seasonPoints?: number
   currentBook?: string | null
+}
+
+interface ActiveSeasonData {
+  active: boolean
+  id?: string
+  name?: string
 }
 
 type StatIcon = 'flame' | 'bolt' | 'trophy'
@@ -65,10 +72,23 @@ export default function HomeBanner() {
     staleTime: 60_000,
   })
 
+  // Active season name drives the trophy stat label (e.g. "Mùa Ngũ Tuần")
+  // so users understand the number is season-scoped, not all-time. Falls
+  // back to the static "Đấu Hạng" i18n value when no season is active
+  // (off-season window). Long TTL — season names don't change mid-day.
+  const { data: activeSeason } = useQuery<ActiveSeasonData>({
+    queryKey: ['active-season'],
+    queryFn: () => api.get('/api/seasons/active').then(r => r.data),
+    staleTime: 30 * 60_000,
+  })
+
   const totalPoints = tierProgress?.totalPoints ?? meData?.totalPoints ?? 0
   const currentStreak = meData?.currentStreak ?? 0
   const energy = rankedStatus?.livesRemaining ?? rankedStatus?.energy ?? 100
   const seasonPoints = rankedStatus?.seasonPoints ?? 0
+  const seasonLabel = activeSeason?.active && activeSeason.name
+    ? (localizeSeasonName(activeSeason.name, t) ?? activeSeason.name)
+    : t('home.greeting.seasonPoints')
   const tier = getTierInfo(totalPoints)
   const greeting = getTimeOfDayGreeting(t)
   const userName = user?.name || t('home.defaultName')
@@ -276,7 +296,7 @@ export default function HomeBanner() {
             icon="trophy"
             testId="home-greeting-stat-season"
             value={seasonPoints}
-            label={t('home.greeting.seasonPoints')}
+            label={seasonLabel}
           />
         </div>
       </div>

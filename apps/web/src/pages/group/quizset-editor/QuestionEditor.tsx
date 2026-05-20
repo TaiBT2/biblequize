@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { EditorQuestion } from '../../../api/quizSets'
 import { ANSWER_OPTION_COLORS, COLOR, DARK_INPUT_STYLE, DARK_TEXTAREA_STYLE, DIFFICULTY_COLORS } from './styles'
 import { validateQuestion } from './validation'
@@ -31,6 +32,7 @@ const SCRIPTURE_RE = /^[A-Za-zÀ-ỹĐđ0-9\s]+\s\d+(:\d+(-\d+)?)?$/
 export default function QuestionEditor({
   index, question, onChange, onDelete, onAIRewrite, onDuplicate, rewriting,
 }: Props) {
+  const { t } = useTranslation()
   const issues = useMemo(() => validateQuestion(question), [question])
   const issueByKind = new Map(issues.map(i => [i.kind === 'option_empty' ? `option_empty_${i.index}` : i.kind, i] as const))
 
@@ -70,14 +72,18 @@ export default function QuestionEditor({
 
       {/* Header: number + difficulty + actions */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16, flexWrap: 'wrap' }}>
-        <span style={{ fontSize: 13, color: COLOR.textDisabled }}>Câu</span>
+        <span style={{ fontSize: 13, color: COLOR.textDisabled }}>{t('quizSet.editor.question.labelQuestion')}</span>
         <span style={{ fontSize: 18, fontWeight: 500, color: COLOR.textPrimary }}>#{index + 1}</span>
 
         <div style={{ display: 'flex', gap: 4, padding: 2, background: COLOR.inputBg, borderRadius: 6 }}>
           {(['easy', 'medium', 'hard'] as const).map(d => {
             const active = dk === d
             const col = DIFFICULTY_COLORS[d]
-            const label = d === 'easy' ? 'Dễ' : d === 'medium' ? 'TB' : 'Khó'
+            const label = d === 'easy'
+              ? t('quizSet.editor.question.diffEasy')
+              : d === 'medium'
+                ? t('quizSet.editor.question.diffMedium')
+                : t('quizSet.editor.question.diffHard')
             return (
               <button
                 key={d}
@@ -104,11 +110,11 @@ export default function QuestionEditor({
               opacity: rewriting ? 0.6 : 1,
             }}>
               <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>refresh</span>
-              {rewriting ? 'Đang viết lại...' : 'AI viết lại'}
+              {rewriting ? t('quizSet.editor.question.aiRewriting') : t('quizSet.editor.question.aiRewrite')}
             </button>
           )}
           {onDuplicate && (
-            <button onClick={onDuplicate} title="Sao chép câu" style={{
+            <button onClick={onDuplicate} title={t('quizSet.editor.question.duplicateTooltip')} style={{
               background: 'transparent', color: COLOR.textDisabled,
               border: `1px solid ${COLOR.borderSubtle}`,
               padding: '5px 8px', borderRadius: 6, fontSize: 11, cursor: 'pointer',
@@ -117,7 +123,7 @@ export default function QuestionEditor({
               <span className="material-symbols-outlined" style={{ fontSize: 13 }} aria-hidden>content_copy</span>
             </button>
           )}
-          <button onClick={onDelete} title="Xoá câu" style={{
+          <button onClick={onDelete} title={t('quizSet.editor.question.deleteTooltip')} style={{
             background: 'transparent', color: COLOR.danger,
             border: `1px solid rgba(239,68,68,0.25)`,
             padding: '5px 8px', borderRadius: 6, fontSize: 11, cursor: 'pointer',
@@ -130,7 +136,7 @@ export default function QuestionEditor({
       {/* Question textarea */}
       <div style={{ marginBottom: 16 }}>
         <label style={{ display: 'block', fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6, marginBottom: 6 }}>
-          CÂU HỎI <span style={{ color: COLOR.danger }}>*</span>
+          {t('quizSet.editor.question.fieldQuestion')} <span style={{ color: COLOR.danger }}>*</span>
         </label>
         <textarea
           rows={2}
@@ -143,7 +149,7 @@ export default function QuestionEditor({
           ref={el => {
             if (el) { el.style.height = 'auto'; el.style.height = Math.max(el.scrollHeight, 60) + 'px' }
           }}
-          placeholder="Nhập nội dung câu hỏi..."
+          placeholder={t('quizSet.editor.question.questionPlaceholder')}
           style={{
             ...DARK_TEXTAREA_STYLE,
             borderColor: issueByKind.has('short_content') ? COLOR.warning : COLOR.goldFocus,
@@ -153,14 +159,14 @@ export default function QuestionEditor({
           }}
         />
         {issueByKind.has('short_content') && (
-          <div style={{ fontSize: 10, color: COLOR.warning, marginTop: 4 }}>Cần ≥10 ký tự</div>
+          <div style={{ fontSize: 10, color: COLOR.warning, marginTop: 4 }}>{t('quizSet.editor.question.shortContentHint')}</div>
         )}
       </div>
 
       {/* Options A/B/C/D */}
       <div style={{ marginBottom: 16 }}>
         <label style={{ display: 'block', fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6, marginBottom: 8 }}>
-          ĐÁP ÁN <span style={{ color: COLOR.textDisabled, fontWeight: 400, letterSpacing: 0 }}>· Bấm vào tròn để chọn đáp án đúng</span>
+          {t('quizSet.editor.question.fieldOptions')} <span style={{ color: COLOR.textDisabled, fontWeight: 400, letterSpacing: 0 }}>· {t('quizSet.editor.question.optionHelp')}</span>
         </label>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
           {ANSWER_OPTION_COLORS.map((meta, i) => {
@@ -182,7 +188,7 @@ export default function QuestionEditor({
                 <button
                   type="button"
                   onClick={() => onChange({ correctAnswer: [i] })}
-                  title={isCorrect ? 'Đáp án đúng' : 'Chọn làm đáp án đúng'}
+                  title={isCorrect ? t('quizSet.editor.question.correctAnswer') : t('quizSet.editor.question.pickCorrect')}
                   style={{
                     width: 16, height: 16,
                     background: isCorrect ? COLOR.success : 'transparent',
@@ -204,7 +210,7 @@ export default function QuestionEditor({
                   ref={el => {
                     if (el) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px' }
                   }}
-                  placeholder={`Đáp án ${meta.letter}...`}
+                  placeholder={t('quizSet.editor.question.optionPlaceholder', { letter: meta.letter })}
                   style={{
                     flex: 1, background: 'transparent', border: 'none',
                     color: isCorrect ? COLOR.textPrimary : COLOR.textSecondary,
@@ -219,7 +225,7 @@ export default function QuestionEditor({
           })}
         </div>
         {issueByKind.has('no_correct') && (
-          <div style={{ fontSize: 10, color: COLOR.warning, marginTop: 6 }}>Chọn 1 đáp án đúng bằng cách bấm vào tròn</div>
+          <div style={{ fontSize: 10, color: COLOR.warning, marginTop: 6 }}>{t('quizSet.editor.question.noCorrectHint')}</div>
         )}
       </div>
 
@@ -227,7 +233,7 @@ export default function QuestionEditor({
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.5fr) minmax(0,1fr)', gap: 12 }} className="qse-grid">
         <div>
           <label style={{ display: 'block', fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6, marginBottom: 6 }}>
-            GIẢI THÍCH <span style={{ color: COLOR.danger }}>*</span>
+            {t('quizSet.editor.question.fieldExplanation')} <span style={{ color: COLOR.danger }}>*</span>
           </label>
           <textarea
             rows={3}
@@ -240,7 +246,7 @@ export default function QuestionEditor({
             ref={el => {
               if (el) { el.style.height = 'auto'; el.style.height = Math.max(el.scrollHeight, 80) + 'px' }
             }}
-            placeholder="Tại sao đáp án này đúng..."
+            placeholder={t('quizSet.editor.question.explainPlaceholder')}
             style={{
               ...DARK_TEXTAREA_STYLE,
               borderColor: issueByKind.has('short_explanation') ? COLOR.warning : COLOR.borderSubtle,
@@ -251,20 +257,20 @@ export default function QuestionEditor({
           />
           {issueByKind.has('short_explanation') && (
             <div style={{ fontSize: 10, color: COLOR.warning, marginTop: 4 }}>
-              {(question.explanation || '').trim().length}/20 ký tự tối thiểu
+              {t('quizSet.editor.question.shortExplanationHint', { current: (question.explanation || '').trim().length })}
             </div>
           )}
         </div>
         <div>
           <label style={{ display: 'block', fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6, marginBottom: 6 }}>
-            CÂU KINH THÁNH <span style={{ color: COLOR.danger }}>*</span>
+            {t('quizSet.editor.question.fieldScripture')} <span style={{ color: COLOR.danger }}>*</span>
           </label>
           <input
             type="text"
             value={scriptureInput}
             onChange={e => setScriptureInput(e.target.value)}
             onBlur={onScriptureBlur}
-            placeholder="Sáng Thế Ký 2:7"
+            placeholder={t('quizSet.editor.question.scripturePlaceholder')}
             style={{
               ...DARK_INPUT_STYLE,
               borderColor: scriptureValid ? COLOR.goldFocus : COLOR.danger,
@@ -276,7 +282,7 @@ export default function QuestionEditor({
           />
           {!scriptureValid && (
             <div style={{ fontSize: 10, color: COLOR.danger, marginTop: 4 }}>
-              Định dạng: Sáng Thế Ký 2:7 hoặc Sáng Thế Ký 2:7-9
+              {t('quizSet.editor.question.scriptureBadFormat')}
             </div>
           )}
         </div>

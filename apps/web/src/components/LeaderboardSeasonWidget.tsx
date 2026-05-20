@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
+import { localizeSeasonName } from '../utils/seasonName'
 
 interface ActiveSeasonResponse {
   active?: boolean
@@ -52,7 +53,7 @@ export default function LeaderboardSeasonWidget() {
         className="text-[13px] font-semibold leading-none mb-1"
         style={{ color: '#fff' }}
       >
-        {season?.name ?? t('leaderboard.sidebar.seasonNone')}
+        {localizeSeasonName(season?.name, t) ?? t('leaderboard.sidebar.seasonNone')}
       </div>
       <p
         className="text-[10px] leading-snug"

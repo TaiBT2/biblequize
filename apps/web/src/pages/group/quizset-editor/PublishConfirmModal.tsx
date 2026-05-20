@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { COLOR, DIFFICULTY_COLORS } from './styles'
 import type { EditorQuestion } from '../../../api/quizSets'
 import { validateQuestion, issueLabel, MIN_QUESTIONS_TO_PUBLISH } from './validation'
@@ -15,14 +16,15 @@ interface Props {
 export default function PublishConfirmModal({
   open, questions, nameValid, onClose, onConfirm, onGotoQuestion, busy,
 }: Props) {
+  const { t } = useTranslation()
   if (!open) return null
 
   const invalid = questions.map((q, i) => ({ q, idx: i, issues: validateQuestion(q) }))
     .filter(x => x.issues.length > 0)
   const blockers: string[] = []
-  if (!nameValid) blockers.push('Tên bộ ≥ 3 ký tự')
+  if (!nameValid) blockers.push(t('quizSet.editor.publishConfirm.blockerNameShort'))
   if (questions.length < MIN_QUESTIONS_TO_PUBLISH) {
-    blockers.push(`Cần ≥ ${MIN_QUESTIONS_TO_PUBLISH} câu hỏi (hiện có ${questions.length})`)
+    blockers.push(t('quizSet.editor.publishConfirm.blockerNeedQuestions', { min: MIN_QUESTIONS_TO_PUBLISH, have: questions.length }))
   }
 
   const blocked = blockers.length > 0 || invalid.length > 0
@@ -44,7 +46,9 @@ export default function PublishConfirmModal({
         <div style={{ padding: '18px 22px', borderBottom: `1px solid ${COLOR.borderXSubtle}`, display: 'flex', alignItems: 'center', gap: 10 }}>
           <span className="material-symbols-outlined" style={{ fontSize: 20, color: blocked ? COLOR.warning : COLOR.gold }} aria-hidden>{blocked ? 'warning' : 'rocket_launch'}</span>
           <div style={{ fontSize: 15, fontWeight: 500, color: COLOR.textPrimary }}>
-            {blocked ? `Còn ${blockers.length + invalid.length} vấn đề cần sửa` : 'Xuất bản bộ câu hỏi?'}
+            {blocked
+              ? t('quizSet.editor.publishConfirm.blockedTitle', { count: blockers.length + invalid.length })
+              : t('quizSet.editor.publishConfirm.confirmTitle')}
           </div>
         </div>
 
@@ -72,10 +76,10 @@ export default function PublishConfirmModal({
                         alignItems: 'center', justifyContent: 'space-between', gap: 8,
                       }}>
                       <div>
-                        <span style={{ color: COLOR.warning, fontWeight: 500 }}>Câu #{idx + 1}:</span>{' '}
-                        {issues.map(issueLabel).join(' · ')}
+                        <span style={{ color: COLOR.warning, fontWeight: 500 }}>{t('quizSet.editor.publishConfirm.questionPrefix', { idx: idx + 1 })}</span>{' '}
+                        {issues.map(iss => issueLabel(t, iss)).join(' · ')}
                       </div>
-                      <span style={{ color: COLOR.gold, fontSize: 11 }}>Đi tới →</span>
+                      <span style={{ color: COLOR.gold, fontSize: 11 }}>{t('quizSet.editor.publishConfirm.gotoQuestion')}</span>
                     </button>
                   ))}
                 </div>
@@ -83,7 +87,7 @@ export default function PublishConfirmModal({
               <button onClick={onClose} style={{
                 width: '100%', background: COLOR.gold, color: '#1a1226',
                 border: 'none', padding: '10px', borderRadius: 8, fontSize: 13, fontWeight: 500, cursor: 'pointer',
-              }}>Quay lại sửa</button>
+              }}>{t('quizSet.editor.publishConfirm.backToFix')}</button>
             </>
           ) : (
             <>
@@ -92,13 +96,17 @@ export default function PublishConfirmModal({
                 borderRadius: 8, padding: 14, marginBottom: 16,
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: COLOR.textPrimary, marginBottom: 8 }}>
-                  <span>Tổng số câu</span>
+                  <span>{t('quizSet.editor.publishConfirm.totalQuestions')}</span>
                   <span style={{ fontWeight: 500 }}>{questions.length}</span>
                 </div>
                 <div style={{ display: 'flex', gap: 6 }}>
                   {(['easy', 'medium', 'hard'] as const).map(d => {
                     const col = DIFFICULTY_COLORS[d]
-                    const lbl = d === 'easy' ? 'Dễ' : d === 'medium' ? 'TB' : 'Khó'
+                    const lbl = d === 'easy'
+                      ? t('quizSet.editor.publishConfirm.diffEasy')
+                      : d === 'medium'
+                        ? t('quizSet.editor.publishConfirm.diffMedium')
+                        : t('quizSet.editor.publishConfirm.diffHard')
                     return (
                       <div key={d} style={{
                         flex: 1, background: col.chip, color: col.accent,
@@ -110,7 +118,7 @@ export default function PublishConfirmModal({
               </div>
 
               <p style={{ fontSize: 13, color: COLOR.textSecondary, marginBottom: 16, lineHeight: 1.5 }}>
-                Sau khi xuất bản, mọi thành viên trong nhóm sẽ thấy bộ câu hỏi này và có thể chơi. Bạn vẫn có thể chỉnh sửa hoặc lưu trữ sau này.
+                {t('quizSet.editor.publishConfirm.explainPublish')}
               </p>
 
               <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
@@ -118,7 +126,7 @@ export default function PublishConfirmModal({
                   background: 'rgba(255,255,255,0.04)', color: COLOR.textSecondary,
                   border: `1px solid ${COLOR.borderSubtle}`,
                   padding: '9px 16px', borderRadius: 8, fontSize: 13, cursor: 'pointer',
-                }}>Hủy</button>
+                }}>{t('quizSet.editor.publishConfirm.cancel')}</button>
                 <button onClick={onConfirm} disabled={busy} style={{
                   background: COLOR.gold, color: '#1a1226', border: 'none',
                   padding: '9px 18px', borderRadius: 8, fontSize: 13, fontWeight: 500,
@@ -126,7 +134,7 @@ export default function PublishConfirmModal({
                   display: 'inline-flex', alignItems: 'center', gap: 6,
                 }}>
                   <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>rocket_launch</span>
-                  {busy ? 'Đang xuất bản...' : 'Xuất bản'}
+                  {busy ? t('quizSet.editor.publishConfirm.publishing') : t('quizSet.editor.publishConfirm.publish')}
                 </button>
               </div>
             </>

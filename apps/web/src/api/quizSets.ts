@@ -69,12 +69,10 @@ export async function listQuizSets(groupId: string, params?: ListQuizSetsParams)
 }
 
 export async function getQuizSet(groupId: string, setId: string): Promise<QuizSet> {
-  const res = await api.get(`/api/groups/${groupId}/quiz-sets`, { params: { search: setId } })
-  // Fallback: list endpoint không có by-id getter; hiện tại không cần — list trả về full data.
-  // Tìm trong page result bằng id chính xác.
-  const found = (res.data.quizSets as QuizSet[]).find(qs => qs.id === setId)
-  if (!found) throw new Error('Quiz set không tìm thấy')
-  return found
+  // BE không có endpoint by-id riêng cho metadata; /full trả về metadata + questions
+  // trong một round-trip. Detail page chỉ dùng metadata; extra `questions` field harmless.
+  const res = await api.get(`/api/groups/${groupId}/quiz-sets/${setId}/full`)
+  return res.data.quizSet
 }
 
 export interface CreateQuizSetBody {
@@ -159,11 +157,6 @@ export async function deleteFolder(groupId: string, folderId: string): Promise<v
   await api.delete(`/api/groups/${groupId}/quiz-set-folders/${folderId}`)
 }
 
-/** BL-S5-1: start solo practice session từ group quiz set. Returns sessionId + questions để navigate sang /quiz. */
-export async function startSoloPractice(groupId: string, setId: string) {
-  const res = await api.post(`/api/groups/${groupId}/quiz-sets/${setId}/solo-practice`)
-  return res.data as { sessionId: string; questions: unknown[] }
-}
 
 export interface QuizSetAttempt {
   sessionId: string

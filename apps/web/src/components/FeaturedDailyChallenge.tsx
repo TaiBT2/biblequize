@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { api } from '../api/client'
 import { useBookName } from '../hooks/useBookName'
+import { localizeSeasonName } from '../utils/seasonName'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 
@@ -153,7 +154,9 @@ export default function FeaturedDailyChallenge() {
   }
 
   const completed = data.alreadyCompleted
-  const seasonName = season?.active && season.name ? season.name : null
+  const seasonName = season?.active && season.name
+    ? (localizeSeasonName(season.name, t) ?? season.name)
+    : null
 
   // ── State B: completed today ──
   if (completed) {

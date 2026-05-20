@@ -679,13 +679,12 @@ body::after {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #00ff41, #ff0080);
+  background: rgba(232, 168, 50, 0.25);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #00ff41, #ff0080);
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  background: rgba(232, 168, 50, 0.45);
 }
 
 /* Loading animation */

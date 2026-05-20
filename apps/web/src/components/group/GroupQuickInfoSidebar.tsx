@@ -48,6 +48,21 @@ export default function GroupQuickInfoSidebar({ groupId }: { groupId: string }) 
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [group, setGroup] = useState<GroupSummary | null>(null);
+  const [joining, setJoining] = useState(false);
+
+  const handleJoinRoom = async (room: ActiveRoom) => {
+    if (joining) return;
+    setJoining(true);
+    try {
+      const res = await api.post('/api/rooms/join', { roomCode: room.roomCode });
+      const joined = res.data.room;
+      navigate(`/room/${joined.id}/lobby`, { state: { room: joined, viewerUserId: res.data.viewerUserId, fromGroupId: groupId } });
+    } catch {
+      navigate(`/room/${room.id}/lobby`, { state: { fromGroupId: groupId } });
+    } finally {
+      setJoining(false);
+    }
+  };
   const [rooms, setRooms] = useState<ActiveRoom[]>([]);
 
   useEffect(() => {
@@ -97,8 +112,9 @@ export default function GroupQuickInfoSidebar({ groupId }: { groupId: string }) 
             {rooms.slice(0, 3).map((room) => (
               <button
                 key={room.id}
-                onClick={() => navigate(`/room/${room.roomCode}`)}
-                className="text-[11px] text-emerald-400 hover:underline block leading-tight text-left w-full truncate"
+                onClick={() => handleJoinRoom(room)}
+                disabled={joining}
+                className="text-[11px] text-emerald-400 hover:underline block leading-tight text-left w-full truncate disabled:opacity-60"
                 title={room.roomName}
               >
                 "{room.roomName}" →

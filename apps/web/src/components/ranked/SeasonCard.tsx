@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { api } from '../../api/client'
+import { localizeSeasonName } from '../../utils/seasonName'
 
 interface ActiveSeasonResponse {
   active: boolean
@@ -55,7 +56,7 @@ export default function SeasonCard() {
   })
 
   const seasonId = activeSeason?.active ? activeSeason.id : null
-  const seasonName = activeSeason?.active ? activeSeason.name : null
+  const seasonName = activeSeason?.active ? (localizeSeasonName(activeSeason.name, t) ?? activeSeason.name) : null
 
   const { data: myRank } = useQuery<MyRankResponse | null>({
     queryKey: ['season-my-rank', seasonId],

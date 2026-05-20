@@ -370,6 +370,10 @@ const RoomLobby: React.FC = () => {
   };
   const handleLeave = async () => {
     if (roomId) { try { await api.post(`/api/rooms/${roomId}/leave`); } catch { /* ignore */ } }
+    // Prefer the explicit fromGroupId nav state (set when entering via the
+    // group's "Chơi cùng nhau" flow); fall back to room.groupId for direct
+    // co-play deep-links so leader returns to the group page they came from.
+    // Standalone /multiplayer rooms (no group affiliation) go back to /multiplayer.
     const navState = location.state as { fromGroupId?: string } | null;
     const fromGroupId = navState?.fromGroupId ?? room?.groupId ?? undefined;
     navigate(fromGroupId ? `/groups/${fromGroupId}` : '/multiplayer');

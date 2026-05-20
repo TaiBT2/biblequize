@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import {
   archiveQuizSet, cloneQuizSet, createLiveRoomFromQuizSet, deleteQuizSet,
   getMyMastery, getQuizSet, MODE_LABELS,
-  publishQuizSet, startSoloPractice, type QuizSet, type QuizSetMastery,
+  publishQuizSet, type QuizSet, type QuizSetMastery,
   type RoomMode, unarchiveQuizSet,
 } from '../../api/quizSets'
 import ModePickerModal from '../../components/group/ModePickerModal'
@@ -80,25 +80,7 @@ export default function QuizSetDetail() {
     setBusy(true)
     try {
       const room = await createLiveRoomFromQuizSet(groupId, { quizSetId: quizSet.id, mode })
-      navigate(`/room/${room.roomCode}`)
-    } catch (err: any) {
-      setError(err?.response?.data?.message || err.message)
-    } finally { setBusy(false); setShowModePicker(false) }
-  }
-
-  const startSolo = async () => {
-    if (!groupId) return
-    setBusy(true)
-    try {
-      const sess = await startSoloPractice(groupId, quizSet.id)
-      navigate('/quiz', {
-        state: {
-          sessionId: sess.sessionId,
-          questions: sess.questions,
-          showExplanation: true,
-          timePerQuestion: 30,
-        },
-      })
+      navigate(`/room/${room.id}/lobby`, { state: { fromGroupId: groupId } })
     } catch (err: any) {
       setError(err?.response?.data?.message || err.message)
     } finally { setBusy(false); setShowModePicker(false) }
@@ -217,16 +199,10 @@ export default function QuizSetDetail() {
             />
 
             {quizSet.publishStatus === 'PUBLISHED' && (
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  onClick={startSolo} disabled={busy}
-                  className="py-2.5 rounded-xl qs-glass border border-[#e8a832]/30 text-[#e8a832] font-semibold text-xs flex items-center justify-center gap-1.5 disabled:opacity-50"
-                ><span>📚</span><span>{t('quizSet.detail.soloPractice')}</span></button>
-                <button
-                  onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${quizSet.id}`)}
-                  className="py-2.5 rounded-xl qs-glass border border-white/10 text-white font-semibold text-xs flex items-center justify-center gap-1.5"
-                ><span>📅</span><span>{t('quizSet.detail.schedule')}</span></button>
-              </div>
+              <button
+                onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${quizSet.id}`)}
+                className="w-full py-2.5 rounded-xl qs-glass border border-white/10 text-white font-semibold text-xs flex items-center justify-center gap-1.5"
+              ><span>📅</span><span>{t('quizSet.detail.schedule')}</span></button>
             )}
 
             <LeaderActionsRow
@@ -254,16 +230,10 @@ export default function QuizSetDetail() {
               onUnarchive={() => action(() => unarchiveQuizSet(groupId!, setId!))}
             />
             {quizSet.publishStatus === 'PUBLISHED' && (
-              <div className="grid grid-cols-2 gap-2 mt-2">
-                <button
-                  onClick={startSolo} disabled={busy}
-                  className="py-2.5 rounded-xl qs-glass-subtle border border-[#e8a832]/30 text-[#e8a832] font-semibold text-xs flex items-center justify-center gap-1.5 disabled:opacity-50"
-                ><span>📚</span><span>{t('quizSet.detail.soloPractice')}</span></button>
-                <button
-                  onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${quizSet.id}`)}
-                  className="py-2.5 rounded-xl qs-glass-subtle border border-white/10 text-white font-semibold text-xs flex items-center justify-center gap-1.5"
-                ><span>📅</span><span>{t('quizSet.detail.schedule')}</span></button>
-              </div>
+              <button
+                onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${quizSet.id}`)}
+                className="w-full mt-2 py-2.5 rounded-xl qs-glass-subtle border border-white/10 text-white font-semibold text-xs flex items-center justify-center gap-1.5"
+              ><span>📅</span><span>{t('quizSet.detail.schedule')}</span></button>
             )}
           </div>
 
@@ -360,7 +330,7 @@ export default function QuizSetDetail() {
         <ModePickerModal
           quizSet={quizSet} busy={busy} groupId={groupId!}
           onPick={startMode}
-          onSolo={startSolo}
+          onSolo={null}
           onClose={() => setShowModePicker(false)}
         />
       )}

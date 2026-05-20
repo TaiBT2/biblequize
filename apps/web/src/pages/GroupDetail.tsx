@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../store/authStore';
 import { api, aiApi } from '../api/client';
 import { listScheduledQuizzes, ScheduledQuizSummary } from '../api/scheduledQuiz';
 import GroupActivityTab from '../components/group/GroupActivityTab';
-import GroupAnalyticsTab from '../components/group/GroupAnalyticsTab';
 import GroupCodeModal from '../components/group/GroupCodeModal';
 import QuizSetCard from '../components/group/QuizSetCard';
 import QuizSetListCard from '../components/group/QuizSetListCard';
 import type { QuizSet as ApiQuizSet, PublishStatus, QuizSetDifficulty } from '../api/quizSets';
+import { resolveAvatar } from '../utils/avatar';
 
 interface Member {
   userId: string;
@@ -81,7 +81,7 @@ interface GroupStreak {
 
 type AnalyticsPeriod = '7d' | '30d' | '90d';
 
-type TabKey = 'activity' | 'members' | 'announcements' | 'quizsets' | 'analytics';
+type TabKey = 'activity' | 'members' | 'announcements' | 'quizsets';
 
 const GROUP_BANNER =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDFnTx3fGDw7x7TL7ge8vDEEkbSjq2ai-wsyEd__vq0byTyOGvi3d1WQJV-Z692ksccl6DDoOTaPZ-RL6J3WDmSBY0g8tNHqXPey9lmDhtJm5uWerKyh-E_CoWIffIBMnkKidiZmdYyryDzyan-U5KggGWHq86m0LjMDFuhdre8DhsrG1bfRTGgMv0gcxaS723-h-Ktb7hs3pnVXl86T0Bxzczh42s-_TVCqF9GGN9tV6Evi0FZeIe1ilRaSLf4vwUHB7Q31bszVCE';
@@ -131,7 +131,7 @@ const GroupDetail: React.FC = () => {
   const initialTabRaw = searchParams.get('tab');
   // Backward-compat: legacy `?tab=leaderboard` URLs (pre-GD-1) redirect to activity.
   const initialTab = (initialTabRaw === 'leaderboard' ? 'activity' : initialTabRaw) as TabKey | null;
-  const validInitial: TabKey = initialTab && ['activity', 'members', 'announcements', 'quizsets', 'analytics'].includes(initialTab)
+  const validInitial: TabKey = initialTab && ['activity', 'members', 'announcements', 'quizsets'].includes(initialTab)
     ? initialTab
     : 'activity';
   const [activeTab, setActiveTab] = useState<TabKey>(validInitial);
@@ -227,6 +227,20 @@ const GroupDetail: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const [showQrModal, setShowQrModal] = useState(false);
 
+  // 3-dot header menu (Rời nhóm / Báo cáo)
+  const [showHeaderMenu, setShowHeaderMenu] = useState(false);
+  const headerMenuRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!showHeaderMenu) return;
+    const onDocClick = (e: MouseEvent) => {
+      if (headerMenuRef.current && !headerMenuRef.current.contains(e.target as Node)) setShowHeaderMenu(false);
+    };
+    const onEsc = (e: KeyboardEvent) => { if (e.key === 'Escape') setShowHeaderMenu(false); };
+    document.addEventListener('mousedown', onDocClick);
+    document.addEventListener('keydown', onEsc);
+    return () => { document.removeEventListener('mousedown', onDocClick); document.removeEventListener('keydown', onEsc); };
+  }, [showHeaderMenu]);
+
   // Report group modal (SPEC v1.1 §12.4 — member submits report to admin)
   type ReportReason = 'SPAM' | 'INAPPROPRIATE' | 'HARASSMENT' | 'OTHER';
   const [showReportModal, setShowReportModal] = useState(false);
@@ -269,6 +283,13 @@ const GroupDetail: React.FC = () => {
   const myRole = group?.myRole ?? fallbackMember?.role;
   const isLeader = myRole === 'LEADER';
   const isLeaderOrMod = myRole === 'LEADER' || myRole === 'MOD';
+
+  // Non-leader/mod can't see the quizsets tab; if they deep-link `?tab=quizsets`
+  // bounce back to the default activity tab once role is known.
+  useEffect(() => {
+    if (group && activeTab === 'quizsets' && !isLeaderOrMod) handleTabChange('activity');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [group, activeTab, isLeaderOrMod]);
 
   const fetchGroup = useCallback(async () => {
     setLoading(true);
@@ -603,41 +624,131 @@ const GroupDetail: React.FC = () => {
   const latestQuizSetsForOverview = quizSets.slice(0, 3);
   const memberTotalForOverview = group.members?.length ?? 0;
 
-  return (
-    <div className="relative pb-12 max-w-5xl mx-auto px-4 lg:px-6 pt-6" data-testid="group-detail-page">
+  // Identify "me" by name (matches the codebase convention; User type has no id field).
+  const me = user?.name ? group.members?.find(m => m.name === user.name) : undefined;
+  const joinedAtRaw = me?.joinedAt ?? (group as any).createdAt;
+  const joinedAtLabel = (() => {
+    if (!joinedAtRaw) return null;
+    const d = new Date(joinedAtRaw);
+    if (!Number.isFinite(d.getTime())) return null;
+    return `${t('groups.joinedAtPrefix')} ${d.getMonth() + 1}/${d.getFullYear()}`;
+  })();
 
-      {/* ── Compact Header (mockup: groups_member_dashboard.html / groups_leader_dashboard.html) ── */}
+  const handleShare = async () => {
+    setShowHeaderMenu(false);
+    const url = `${window.location.origin}/groups/join?code=${encodeURIComponent(group.code)}`;
+    const shareData = { title: group.name, text: `${t('groups.shareInvite')} ${group.code}`, url };
+    if (navigator.share) {
+      try { await navigator.share(shareData); return; } catch { /* user cancelled */ }
+    }
+    handleCopyCode();
+  };
+
+  return (
+    <div className="relative pb-12 max-w-5xl mx-auto px-4 lg:px-6 pt-4 sm:pt-6" data-testid="group-detail-page">
+
+      {/* ── App bar: back + 3-dot menu (mockup 2026-05-20) ── */}
+      <div className="flex items-center justify-between mb-3" data-testid="group-detail-appbar">
+        <button
+          type="button"
+          onClick={() => navigate('/groups')}
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-on-surface/75 hover:text-on-surface hover:bg-white/5 transition-colors text-[13px]"
+        >
+          <span className="material-symbols-outlined text-[18px]">arrow_back</span>
+          {t('groups.backToList')}
+        </button>
+        <div ref={headerMenuRef} style={{ position: 'relative' }}>
+          <button
+            type="button"
+            onClick={() => setShowHeaderMenu(v => !v)}
+            aria-label={t('groups.moreActions')}
+            aria-haspopup="menu"
+            aria-expanded={showHeaderMenu}
+            data-testid="group-header-menu-btn"
+            className={`w-9 h-9 rounded-full inline-flex items-center justify-center text-on-surface/70 hover:text-on-surface transition-colors ${
+              showHeaderMenu ? 'bg-white/10' : 'hover:bg-white/5'
+            }`}
+          >
+            <span className="material-symbols-outlined text-[20px]">more_horiz</span>
+          </button>
+          {showHeaderMenu && (
+            <div
+              role="menu"
+              data-testid="group-header-menu"
+              className="absolute right-0 top-11 z-30 min-w-[200px] rounded-xl border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.4)] p-1 backdrop-blur-md"
+              style={{ background: 'rgba(40,42,56,0.98)' }}
+            >
+              {isLeader ? (
+                <button
+                  type="button"
+                  role="menuitem"
+                  onClick={() => { setShowHeaderMenu(false); openEditModal(); }}
+                  className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-md text-[13px] text-on-surface hover:bg-white/5 transition-colors text-left"
+                >
+                  <span className="material-symbols-outlined text-[17px]">settings</span>
+                  {t('groups.settings')}
+                </button>
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    role="menuitem"
+                    data-testid="group-leave-btn"
+                    onClick={() => { setShowHeaderMenu(false); handleLeave(); }}
+                    className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-md text-[13px] text-on-surface hover:bg-white/5 transition-colors text-left"
+                  >
+                    <span className="material-symbols-outlined text-[17px]">logout</span>
+                    {t('groups.leaveGroup')}
+                  </button>
+                  {/* SPEC v1.1 §2.2 — members + mods can report */}
+                  <button
+                    type="button"
+                    role="menuitem"
+                    data-testid="group-report-btn"
+                    onClick={() => { setShowHeaderMenu(false); setShowReportModal(true); }}
+                    className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-md text-[13px] text-[#fca5a5] hover:bg-red-500/10 transition-colors text-left"
+                    title={t('groups.reportTooltip')}
+                  >
+                    <span className="material-symbols-outlined text-[17px]">flag</span>
+                    {t('groups.reportCta')}
+                  </button>
+                </>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* ── Compact Header (redesign 2026-05-20: avatar + inline title + subtitle + invite code) ── */}
       <header
-        className={`rounded-[14px] p-3 sm:p-4 mb-3 lg:flex lg:items-center lg:gap-4 ${
+        className={`rounded-[14px] p-3 sm:p-4 mb-3 ${
           isLeader
             ? 'bg-gradient-to-br from-[rgba(232,168,50,0.1)] to-[rgba(50,52,64,0.4)] border-[0.5px] border-[rgba(232,168,50,0.3)]'
             : 'bg-[rgba(50,52,64,0.4)] border-[0.5px] border-[rgba(232,168,50,0.2)]'
         }`}
       >
-        <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+        <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
           <div
-            className={`w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-[13px] sm:rounded-[14px] bg-[rgba(232,168,50,0.15)] flex items-center justify-center flex-shrink-0 overflow-hidden ${
+            className={`w-[44px] h-[44px] sm:w-[52px] sm:h-[52px] rounded-[12px] bg-[rgba(232,168,50,0.15)] flex items-center justify-center flex-shrink-0 overflow-hidden mt-0.5 ${
               isLeader ? 'border-[1.5px] border-secondary' : 'border-[1.5px] border-[rgba(232,168,50,0.4)]'
             }`}
           >
             {group.avatarUrl ? (
               <img alt={group.name} src={group.avatarUrl} className="w-full h-full object-cover" />
             ) : (
-              <span className="text-[24px] sm:text-[28px]">⛪</span>
+              <span className="text-[22px] sm:text-[26px]">⛪</span>
             )}
           </div>
 
           <div className="flex-1 min-w-0" data-testid="group-detail-name">
             <div className="flex items-center gap-2 flex-wrap">
-              <h2 data-testid="group-name-heading" className="text-on-surface text-[18px] sm:text-[22px] font-bold m-0 truncate">
+              <h2 data-testid="group-name-heading" className="text-on-surface text-[17px] sm:text-[20px] font-bold m-0 truncate">
                 {group.name?.trim() || t('groups.untitledGroup')}
               </h2>
               {isLeader ? (
-                // GD-8: solid gold pill with dark text for WCAG AA contrast
-                // (previously text-secondary on gold-tinted bg failed contrast).
                 <span
                   data-testid="role-badge-leader"
-                  className="bg-gradient-to-r from-secondary to-[#d4941f] text-[#11131e] px-2.5 py-1 rounded-full text-[10px] font-extrabold border border-[rgba(232,168,50,0.7)] whitespace-nowrap shadow-[0_0_10px_rgba(232,168,50,0.35)] inline-flex items-center gap-1"
+                  className="bg-gradient-to-r from-secondary to-[#d4941f] text-[#11131e] px-2 py-0.5 rounded-full text-[10px] font-extrabold border border-[rgba(232,168,50,0.7)] whitespace-nowrap shadow-[0_0_10px_rgba(232,168,50,0.35)] inline-flex items-center gap-1"
                 >
                   <span>👑</span>
                   <span>{t('groups.leaderBadge')}</span>
@@ -645,7 +756,7 @@ const GroupDetail: React.FC = () => {
               ) : myRole === 'MOD' ? (
                 <span
                   data-testid="role-badge-mod"
-                  className="bg-gradient-to-r from-sky-500/30 to-sky-600/20 text-[#bae6fd] px-2.5 py-1 rounded-full text-[10px] font-extrabold border border-sky-400/60 inline-flex items-center gap-1 whitespace-nowrap"
+                  className="bg-gradient-to-r from-sky-500/30 to-sky-600/20 text-[#bae6fd] px-2 py-0.5 rounded-full text-[10px] font-extrabold border border-sky-400/60 inline-flex items-center gap-1 whitespace-nowrap"
                 >
                   <span className="material-symbols-outlined text-[11px]">shield</span>
                   Mod
@@ -660,145 +771,73 @@ const GroupDetail: React.FC = () => {
                 </span>
               )}
             </div>
-            {/* GD-7 — meta row split into stats group (left) + code copy (right) for less cramping */}
-            <div className="text-on-surface/55 text-[11px] sm:text-[12px] mt-1.5 flex items-center justify-between gap-3 flex-wrap">
-              <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
-                <span data-testid="group-member-count" className="whitespace-nowrap">👥 {group.members?.length || 0} {t('groups.members')}</span>
-                {leader && (
-                  <>
-                    <span className="text-on-surface/30">·</span>
-                    <span className="truncate max-w-[140px] sm:max-w-none">👑 {leader.name}</span>
-                  </>
-                )}
-              </div>
-              {/* GD-FIX-8: cohesive code section — single bordered pill grouping
-                  label + code + copy + QR icons so they read as one unit. */}
-              <div
-                data-testid="group-code-pill"
-                className="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-[rgba(50,52,64,0.5)] border border-white/[0.08] hover:border-white/15 transition-colors"
-              >
-                <span className="text-[10px] uppercase tracking-wider text-on-surface/40 font-semibold">
-                  {t('groups.groupCodeLabel')}
-                </span>
-                <button
-                  data-testid="group-join-code"
-                  onClick={handleCopyCode}
-                  title={t('groups.copyCodeTooltip', { defaultValue: 'Click to copy invite code' })}
-                  className="font-mono text-secondary text-[12px] inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity"
-                >
-                  <span>{copied ? t('groups.copied') : group.code}</span>
-                  <span className="material-symbols-outlined text-[13px]">{copied ? 'check' : 'content_copy'}</span>
-                </button>
-                <span className="w-px h-4 bg-white/10" aria-hidden />
-                <button
-                  type="button"
-                  data-testid="group-show-qr"
-                  onClick={() => setShowQrModal(true)}
-                  title={t('groups.qrModal.openTooltip')}
-                  aria-label={t('groups.qrModal.openTooltip')}
-                  className="text-on-surface/55 hover:text-secondary transition-colors flex items-center justify-center"
-                >
-                  <span className="material-symbols-outlined text-[16px]">qr_code_2</span>
-                </button>
-              </div>
+            {/* Subtitle line: members count · 👑 Leader name */}
+            <div className="text-on-surface/60 text-[12px] mt-1 flex items-center gap-2 flex-wrap">
+              <span data-testid="group-member-count" className="whitespace-nowrap">👥 {group.members?.length || 0} {t('groups.members')}</span>
+              {leader && (
+                <>
+                  <span className="text-on-surface/30">·</span>
+                  <span className="truncate flex items-center gap-1">
+                    <span>👑</span>
+                    <span className="text-on-surface/70">{t('groups.leaderRole', { defaultValue: 'Trưởng nhóm' })}:</span>
+                    <span className="font-semibold text-secondary truncate">{leader.name}</span>
+                  </span>
+                </>
+              )}
             </div>
+            {joinedAtLabel && (
+              <div className="text-on-surface/45 text-[11px] mt-0.5">
+                {joinedAtLabel}
+              </div>
+            )}
           </div>
         </div>
 
-        <div className="hidden lg:flex gap-2 flex-shrink-0 ml-auto justify-end mt-3 lg:mt-0">
-          {isLeader && (
-            <Link
-              to={`/groups/${id}/analytics`}
-              className="bg-[rgba(232,168,50,0.15)] text-secondary border-[0.5px] border-[rgba(232,168,50,0.4)] rounded-lg px-3 sm:px-3.5 py-2 text-[11px] font-medium hover:brightness-110 transition-all flex items-center gap-1.5"
-            >
-              📊 {t('groupAnalytics.title')}
-            </Link>
-          )}
-          {isLeader ? (
-            <button
-              onClick={openEditModal}
-              className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3 sm:px-3.5 py-2 text-[11px] font-medium hover:bg-white/10 transition-all flex items-center gap-1.5"
-            >
-              ⚙️ {t('groups.settings')}
-            </button>
-          ) : (
-            <>
-              <button
-                data-testid="group-leave-btn"
-                onClick={handleLeave}
-                className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3 sm:px-3.5 py-2 text-[11px] font-medium hover:bg-white/10 transition-all flex items-center gap-1.5"
-              >
-                🚪 {t('groups.leaveGroup')}
-              </button>
-              {/* SPEC v1.1 §2.2 — leaders can't report their own group; members + mods can */}
-              <button
-                data-testid="group-report-btn"
-                onClick={() => setShowReportModal(true)}
-                className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3 sm:px-3.5 py-2 text-[11px] font-medium hover:bg-white/10 transition-all flex items-center gap-1.5"
-                title={t('groups.reportTooltip')}
-              >
-                <span className="material-symbols-outlined text-[13px]">flag</span>
-                {t('groups.reportCta')}
-              </button>
-            </>
-          )}
-          {isLeaderOrMod && (
-            <button
-              onClick={handleCopyCode}
-              className="bg-secondary text-on-secondary rounded-lg px-3 sm:px-3.5 py-2 text-[11px] font-medium shadow-[0_0_18px_rgba(232,168,50,0.2)] hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5"
-            >
-              🔗 {t('groups.invite')}
-            </button>
-          )}
-        </div>
-
-        {/* Mobile/tablet action row — compact grid (mockup: 2fr 1fr 1fr style) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 mt-3 lg:hidden">
-          {isLeaderOrMod && (
-            <button
-              onClick={handleCopyCode}
-              className="col-span-2 sm:col-span-1 bg-secondary text-on-secondary rounded-lg px-3 py-2 text-[11px] font-bold shadow-[0_0_18px_rgba(232,168,50,0.2)] hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5"
-            >
-              <span className="material-symbols-outlined text-[14px]">person_add</span>
-              {t('groups.invite')}
-            </button>
-          )}
-          {isLeader && (
-            <Link
-              to={`/groups/${id}/analytics`}
-              className="bg-[rgba(232,168,50,0.15)] text-secondary border-[0.5px] border-[rgba(232,168,50,0.4)] rounded-lg px-3 py-2 text-[11px] font-bold hover:brightness-110 transition-all flex items-center justify-center gap-1.5"
-            >
-              <span className="material-symbols-outlined text-[14px]">analytics</span>
-              {t('groupAnalytics.title')}
-            </Link>
-          )}
-          {isLeader ? (
-            <button
-              onClick={openEditModal}
-              className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3 py-2 text-[11px] font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-1.5"
-            >
-              <span className="material-symbols-outlined text-[14px]">settings</span>
-              {t('groups.settings')}
-            </button>
-          ) : (
-            <>
-              <button
-                onClick={handleLeave}
-                className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3 py-2 text-[11px] font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-1.5"
-              >
-                <span className="material-symbols-outlined text-[14px]">logout</span>
-                {t('groups.leaveGroup')}
-              </button>
-              <button
-                onClick={() => setShowReportModal(true)}
-                className="bg-white/5 text-on-surface/70 border-[0.5px] border-white/10 rounded-lg px-3 py-2 text-[11px] font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-1.5"
-                title={t('groups.reportTooltip')}
-              >
-                <span className="material-symbols-outlined text-[14px]">flag</span>
-                {t('groups.reportCta')}
-              </button>
-            </>
-          )}
+        {/* Invite code row — full-width on mobile, embedded in header card */}
+        <div
+          data-testid="group-code-pill"
+          className="mt-3 inline-flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[rgba(50,52,64,0.5)] border border-white/[0.08] hover:border-white/15 transition-colors w-full sm:w-auto"
+        >
+          <span className="text-[10px] uppercase tracking-wider text-on-surface/40 font-semibold whitespace-nowrap">
+            {t('groups.groupCodeLabel')}
+          </span>
+          <button
+            data-testid="group-join-code"
+            onClick={handleCopyCode}
+            title={t('groups.copyCodeTooltip', { defaultValue: 'Click to copy invite code' })}
+            className="font-mono italic text-secondary text-[13px] flex-1 sm:flex-none text-left hover:opacity-80 transition-opacity"
+          >
+            {copied ? t('groups.copied') : group.code}
+          </button>
+          <button
+            type="button"
+            onClick={handleCopyCode}
+            title={t('groups.copyCodeTooltip', { defaultValue: 'Click to copy invite code' })}
+            aria-label={t('groups.copyCodeTooltip', { defaultValue: 'Copy invite code' })}
+            className="w-7 h-7 rounded-md inline-flex items-center justify-center text-on-surface/55 hover:text-on-surface hover:bg-white/5 transition-colors"
+          >
+            <span className="material-symbols-outlined text-[15px]">{copied ? 'check' : 'content_copy'}</span>
+          </button>
+          <button
+            type="button"
+            data-testid="group-show-qr"
+            onClick={() => setShowQrModal(true)}
+            title={t('groups.qrModal.openTooltip')}
+            aria-label={t('groups.qrModal.openTooltip')}
+            className="w-7 h-7 rounded-md inline-flex items-center justify-center text-on-surface/55 hover:text-secondary hover:bg-white/5 transition-colors"
+          >
+            <span className="material-symbols-outlined text-[16px]">qr_code_2</span>
+          </button>
+          <button
+            type="button"
+            data-testid="group-share-invite"
+            onClick={handleShare}
+            title={t('groups.shareInvite')}
+            aria-label={t('groups.shareInvite')}
+            className="w-7 h-7 rounded-md inline-flex items-center justify-center text-on-surface/55 hover:text-secondary hover:bg-white/5 transition-colors"
+          >
+            <span className="material-symbols-outlined text-[16px]">share</span>
+          </button>
         </div>
       </header>
 
@@ -811,11 +850,12 @@ const GroupDetail: React.FC = () => {
           { key: 'activity', label: t('groups.tabs.activity') },
           { key: 'members', label: t('groups.membersTab'), count: membersCount },
           { key: 'announcements', label: t('groups.announcementsTab'), count: announcementsCount, hasNotification: true },
-          { key: 'quizsets', label: t('groups.quizSetsTab'), count: quizSetsCount },
-          ...(isLeaderOrMod ? [{ key: 'analytics' as TabKey, label: t('groups.tabs.analytics'), leaderOnly: true }] : []),
+          // Leader/Mod only: members no longer get solo practice access, so the
+          // Câu hỏi tab is leader-tooling territory only (publish + co-play orchestration).
+          ...(isLeaderOrMod ? [{ key: 'quizsets' as TabKey, label: t('groups.quizSetsTab'), count: quizSetsCount, leaderOnly: true }] : []),
         ];
         return (
-          <nav className="flex items-center gap-6 border-b border-white/10 overflow-x-auto whitespace-nowrap mb-4">
+          <nav className="flex flex-nowrap items-center justify-between gap-x-2 sm:gap-x-6 sm:justify-start border-b border-white/10 mb-4 whitespace-nowrap">
             {TABS.map(tab => {
               const active = activeTab === tab.key;
               return (
@@ -823,7 +863,7 @@ const GroupDetail: React.FC = () => {
                   key={tab.key}
                   onClick={() => handleTabChange(tab.key)}
                   data-testid={`group-tab-${tab.key}`}
-                  className={`pb-2.5 px-1 text-[12px] font-medium tracking-wide transition-colors flex items-center gap-1.5 ${
+                  className={`pb-2.5 px-0.5 sm:px-1 text-[11px] sm:text-[12px] font-medium sm:tracking-wide transition-colors inline-flex items-center gap-1 sm:gap-1.5 ${
                     active
                       ? 'text-secondary border-b-2 border-secondary'
                       : 'text-on-surface/55 hover:text-on-surface'
@@ -868,6 +908,7 @@ const GroupDetail: React.FC = () => {
           groupId={id!}
           groupCreatedAt={(group as any).createdAt}
           isLeader={isLeader}
+          isLeaderOrMod={isLeaderOrMod}
           memberCount={memberTotalForOverview}
           announcementsCount={announcements.length}
           members={(group.members ?? []).map((m) => ({
@@ -888,21 +929,13 @@ const GroupDetail: React.FC = () => {
           }))}
           hasActiveScheduledQuiz={activeScheduled.length > 0}
           scheduledCount={activeScheduled.length}
+          firstScheduledQuizId={activeScheduled[0]?.id ?? null}
           playingSetId={playingSetId}
           onCreateQuizSet={openCreateModal}
           onPostAnnouncement={() => handleTabChange('announcements')}
           onInvite={handleCopyCode}
           onSwitchToTab={(key) => handleTabChange(key)}
           onPlayQuizSet={handlePlayQuizSet}
-        />
-      )}
-
-      {/* ===== ANALYTICS TAB (GD-9: leader-only, embeds Pulse placeholder + KPI + chart) ===== */}
-      {activeTab === 'analytics' && isLeaderOrMod && (
-        <GroupAnalyticsTab
-          groupId={id!}
-          groupCreatedAt={(group as any).createdAt}
-          groupMemberCount={(group as any).memberCount ?? group.members?.length}
         />
       )}
 
@@ -1032,11 +1065,12 @@ const GroupDetail: React.FC = () => {
                             : 'bg-[rgba(74,158,255,0.3)] text-[#6AB8E8]'
                         }`}
                       >
-                        {m.avatarUrl ? (
-                          <img alt={m.name} src={m.avatarUrl} className="w-full h-full rounded-full object-cover" />
-                        ) : (
-                          (m.name || '?').charAt(0).toUpperCase()
-                        )}
+                        {(() => {
+                          const r = resolveAvatar(m.avatarUrl, m.name);
+                          if (r.kind === 'img')    return <img alt={m.name} src={r.src} className="w-full h-full rounded-full object-cover" />;
+                          if (r.kind === 'preset') return <span className="w-full h-full rounded-full flex items-center justify-center text-base" style={{ background: r.preset.bg }} aria-hidden>{r.preset.emoji}</span>;
+                          return r.initial;
+                        })()}
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="text-on-surface text-[11px] sm:text-[12px] font-medium flex items-center gap-1 sm:gap-1.5 flex-wrap">
@@ -1173,9 +1207,28 @@ const GroupDetail: React.FC = () => {
                 <div className="w-7 h-7 border-2 border-secondary/20 border-t-secondary rounded-full animate-spin" />
               </div>
             ) : announcements.length === 0 ? (
-              <p className="text-center text-on-surface-variant py-6 text-[12px]">
-                {t('groups.noAnnouncements')}
-              </p>
+              <div
+                data-testid="announcements-empty"
+                className="flex flex-col items-center text-center py-10 px-4"
+              >
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4"
+                  style={{
+                    background: 'rgba(232,168,50,0.15)',
+                    border: '1px solid rgba(232,168,50,0.3)',
+                  }}
+                >
+                  <span className="material-symbols-outlined text-[28px] text-secondary">campaign</span>
+                </div>
+                <div className="text-on-surface text-[16px] font-bold mb-2">{t('groups.noAnnouncements')}</div>
+                <p className="text-on-surface/55 text-[12px] leading-relaxed max-w-[320px] mb-5">
+                  {t('groups.noAnnouncementsDesc')}
+                </p>
+                <div className="w-full max-w-[280px] border-t border-dashed border-white/10 pt-4 text-on-surface/45 text-[11px] inline-flex items-center justify-center gap-1.5">
+                  <span className="material-symbols-outlined text-[14px]">notifications</span>
+                  <span>{t('groups.noAnnouncementsFooter')}</span>
+                </div>
+              </div>
             ) : (
               <div className="flex flex-col gap-2">
                 {announcements.map(a => {
@@ -1227,14 +1280,13 @@ const GroupDetail: React.FC = () => {
                       try {
                         const res = await api.post('/api/rooms/join', { roomCode: rm.roomCode });
                         const joined = res.data.room;
-                        navigate(`/room/${joined.id}/lobby`, { state: { room: joined, viewerUserId: res.data.viewerUserId } });
+                        navigate(`/room/${joined.id}/lobby`, { state: { room: joined, viewerUserId: res.data.viewerUserId, fromGroupId: id } });
                       } catch {
-                        navigate(`/room/${rm.id}/lobby`);
+                        navigate(`/room/${rm.id}/lobby`, { state: { fromGroupId: id } });
                       }
                     }}
-                    className="relative w-full overflow-hidden rounded-2xl p-5 text-left cursor-pointer transition-all hover:brightness-110 grid items-center gap-4"
+                    className="live-call-banner relative w-full overflow-hidden rounded-2xl p-4 sm:p-5 text-left cursor-pointer transition-all hover:brightness-110 grid items-center gap-3 sm:gap-4 grid-cols-[auto_minmax(0,1fr)] sm:grid-cols-[auto_minmax(0,1fr)_auto]"
                     style={{
-                      gridTemplateColumns: 'auto 1fr auto',
                       background: 'linear-gradient(135deg, rgba(167,139,250,0.15) 0%, rgba(50,52,64,0.4) 60%)',
                       border: '1px solid rgba(167,139,250,0.4)',
                       backdropFilter: 'blur(12px)',
@@ -1251,20 +1303,22 @@ const GroupDetail: React.FC = () => {
                       <span className="material-symbols-outlined text-[24px]">groups</span>
                     </div>
                     <div className="min-w-0 relative z-[1]">
-                      <div className="inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wider mb-1"
+                      <div className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wide sm:tracking-wider mb-1"
                         style={{ color: '#c4b5fd' }}>
-                        <span className="w-[7px] h-[7px] rounded-full inline-block animate-pulse"
+                        <span className="w-[7px] h-[7px] rounded-full inline-block flex-shrink-0 animate-pulse"
                           style={{ background: '#a78bfa', boxShadow: '0 0 0 0 rgba(167,139,250,0.5)' }} />
-                        {isInProgress ? `Đang chơi · ${rm.currentPlayers} người` : `Trưởng nhóm vừa mở phòng · ${opened}`}
+                        <span className="truncate">
+                          {isInProgress ? `Đang chơi · ${rm.currentPlayers} người` : `Trưởng nhóm vừa mở phòng · ${opened}`}
+                        </span>
                       </div>
-                      <div className="text-on-surface text-[17px] font-extrabold mb-1 truncate">
+                      <div className="text-on-surface text-[15px] sm:text-[17px] font-extrabold mb-1 truncate">
                         "{rm.quizSetName || rm.roomName}" — đang chờ bạn
                       </div>
-                      <div className="text-[12px] text-on-surface/60">
+                      <div className="text-[12px] text-on-surface/60 truncate">
                         {rm.currentPlayers}/{rm.maxPlayers} người · Mã phòng {rm.roomCode}
                       </div>
                     </div>
-                    <div className="flex-shrink-0 relative z-[1] py-3.5 px-6 rounded-[11px] inline-flex items-center gap-2 text-[14px] font-extrabold text-white"
+                    <div className="col-span-2 sm:col-span-1 flex-shrink-0 relative z-[1] py-3 sm:py-3.5 px-4 sm:px-6 rounded-[11px] flex sm:inline-flex items-center justify-center gap-2 text-[14px] font-extrabold text-white"
                       style={{
                         background: 'linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%)',
                         boxShadow: '0 6px 20px rgba(167,139,250,0.35)',
@@ -1301,10 +1355,10 @@ const GroupDetail: React.FC = () => {
                         try {
                           const res = await api.post('/api/rooms/join', { roomCode: rm.roomCode });
                           const joined = res.data.room;
-                          navigate(`/room/${joined.id}/lobby`, { state: { room: joined, viewerUserId: res.data.viewerUserId } });
+                          navigate(`/room/${joined.id}/lobby`, { state: { room: joined, viewerUserId: res.data.viewerUserId, fromGroupId: id } });
                         } catch (e: any) {
                           // Nếu user đã ở trong phòng rồi → vào thẳng lobby
-                          navigate(`/room/${rm.id}/lobby`);
+                          navigate(`/room/${rm.id}/lobby`, { state: { fromGroupId: id } });
                         }
                       }}
                       className="rounded-2xl p-4 text-left cursor-pointer transition-all hover:brightness-110"

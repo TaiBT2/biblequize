@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { EditorQuestion } from '../../../api/quizSets'
 import { COLOR } from './styles'
 
@@ -20,6 +21,7 @@ interface Props {
 }
 
 export default function AIRewriteModal({ open, current, remaining, limit, onClose, onGenerate, onAccept }: Props) {
+  const { t } = useTranslation()
   const [hint, setHint] = useState('')
   const [busy, setBusy] = useState(false)
   const [draft, setDraft] = useState<Draft | null>(null)
@@ -28,14 +30,14 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
   if (!open) return null
 
   const handleGenerate = async () => {
-    if (remaining < 1) { setError('Đã hết quota AI hôm nay'); return }
+    if (remaining < 1) { setError(t('quizSet.editor.aiRewrite.quotaExhausted')); return }
     setBusy(true); setError(null)
     try {
       const d = await onGenerate(hint.trim())
       if (d && d.content) setDraft(d)
-      else setError('AI không trả về câu mới hợp lệ')
+      else setError(t('quizSet.editor.aiRewrite.noValidResponse'))
     } catch (e: any) {
-      setError(e?.response?.data?.message || e?.message || 'Lỗi khi gọi AI')
+      setError(e?.response?.data?.message || e?.message || t('quizSet.editor.aiRewrite.errorGeneric'))
     } finally { setBusy(false) }
   }
 
@@ -54,8 +56,8 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
       }}>
         <div style={{ padding: '18px 22px', borderBottom: `1px solid ${COLOR.borderXSubtle}`, display: 'flex', alignItems: 'center', gap: 10 }}>
           <span className="material-symbols-outlined" style={{ fontSize: 20, color: COLOR.gold }} aria-hidden>refresh</span>
-          <div style={{ flex: 1, fontSize: 15, fontWeight: 500, color: COLOR.textPrimary }}>AI viết lại câu hỏi</div>
-          <span style={{ fontSize: 11, color: COLOR.textMuted }}>Quota: {remaining}/{limit}</span>
+          <div style={{ flex: 1, fontSize: 15, fontWeight: 500, color: COLOR.textPrimary }}>{t('quizSet.editor.aiRewrite.title')}</div>
+          <span style={{ fontSize: 11, color: COLOR.textMuted }}>{t('quizSet.editor.aiRewrite.quota', { remaining, limit })}</span>
           <button onClick={onClose} style={{
             background: 'transparent', border: 'none', color: COLOR.textMuted, cursor: 'pointer', padding: 4,
           }}>
@@ -65,11 +67,11 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
 
         <div style={{ padding: '18px 22px' }}>
           <label style={{ display: 'block', fontSize: 11, color: COLOR.textMuted, marginBottom: 6, letterSpacing: 0.6, fontWeight: 500 }}>
-            GỢI Ý CHO AI (tùy chọn)
+            {t('quizSet.editor.aiRewrite.hintLabel')}
           </label>
           <input
             type="text" value={hint} onChange={e => setHint(e.target.value)}
-            placeholder='VD: tập trung vào nhân vật A-bra-ham, làm khó hơn...'
+            placeholder={t('quizSet.editor.aiRewrite.hintPlaceholder')}
             style={{
               width: '100%', background: COLOR.inputBg, border: `1px solid ${COLOR.borderSubtle}`,
               color: COLOR.textPrimary, padding: '9px 12px', borderRadius: 7,
@@ -86,7 +88,7 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
             <span className="material-symbols-outlined" style={{
               fontSize: 14, animation: busy ? 'spin 1s linear infinite' : undefined,
             }} aria-hidden>{busy ? 'progress_activity' : 'refresh'}</span>
-            {busy ? 'Đang tạo lại...' : draft ? 'Tạo phiên bản khác' : 'Tạo lại câu này'}
+            {busy ? t('quizSet.editor.aiRewrite.generating') : draft ? t('quizSet.editor.aiRewrite.generateAnother') : t('quizSet.editor.aiRewrite.generateFirst')}
             <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
           </button>
 
@@ -100,7 +102,7 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
           {draft && (
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
               <div style={panelStyle()}>
-                <div style={headerLabelStyle()}>Bản hiện tại</div>
+                <div style={headerLabelStyle()}>{t('quizSet.editor.aiRewrite.currentVersion')}</div>
                 <div style={{ fontSize: 13, color: COLOR.textSecondary, marginBottom: 10 }}>{current.content}</div>
                 {(current.options || []).map((o, i) => (
                   <div key={i} style={optionRow(i, current.correctAnswer?.[0] === i)}>{'ABCD'[i]}. {o || <em>—</em>}</div>
@@ -112,7 +114,7 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
                 )}
               </div>
               <div style={{ ...panelStyle(), borderColor: COLOR.goldBorder }}>
-                <div style={{ ...headerLabelStyle(), color: COLOR.gold }}>Bản mới</div>
+                <div style={{ ...headerLabelStyle(), color: COLOR.gold }}>{t('quizSet.editor.aiRewrite.newVersion')}</div>
                 <div style={{ fontSize: 13, color: COLOR.textPrimary, marginBottom: 10 }}>{draft.content}</div>
                 {(draft.options || []).map((o, i) => (
                   <div key={i} style={optionRow(i, correctIdx === i)}>{'ABCD'[i]}. {o}</div>
@@ -132,12 +134,12 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
                 background: 'rgba(255,255,255,0.04)', color: COLOR.textSecondary,
                 border: `1px solid ${COLOR.borderSubtle}`,
                 padding: '9px 16px', borderRadius: 8, fontSize: 13, cursor: 'pointer',
-              }}>Giữ bản cũ</button>
+              }}>{t('quizSet.editor.aiRewrite.keepOld')}</button>
               <button onClick={() => { onAccept(draft); onClose() }} style={{
                 background: COLOR.gold, color: '#1a1226',
                 border: 'none', padding: '9px 18px', borderRadius: 8,
                 fontSize: 13, fontWeight: 500, cursor: 'pointer',
-              }}>Dùng bản mới</button>
+              }}>{t('quizSet.editor.aiRewrite.acceptNew')}</button>
             </div>
           )}
         </div>

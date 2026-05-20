@@ -1,3 +1,4 @@
+import type { TFunction } from 'i18next'
 import type { EditorQuestion, QuizSetFull } from '../../../api/quizSets'
 
 export type QuestionIssue =
@@ -42,12 +43,12 @@ export function validateQuizSet(qs: QuizSetFull): QuizSetIssue[] {
   return issues
 }
 
-export function issueLabel(i: QuestionIssue): string {
+export function issueLabel(t: TFunction, i: QuestionIssue): string {
   switch (i.kind) {
-    case 'short_content':     return 'Câu hỏi quá ngắn (cần ≥10 ký tự)'
-    case 'option_empty':      return `Đáp án ${'ABCD'[i.index]} trống`
-    case 'no_correct':        return 'Chưa chọn đáp án đúng'
-    case 'short_explanation': return 'Giải thích quá ngắn (cần ≥20 ký tự)'
-    case 'bad_scripture':     return 'Câu Kinh Thánh sai định dạng'
+    case 'short_content':     return t('quizSet.editor.validation.shortContent')
+    case 'option_empty':      return t('quizSet.editor.validation.optionEmpty', { letter: 'ABCD'[i.index] })
+    case 'no_correct':        return t('quizSet.editor.validation.noCorrect')
+    case 'short_explanation': return t('quizSet.editor.validation.shortExplanation')
+    case 'bad_scripture':     return t('quizSet.editor.validation.badScripture')
   }
 }

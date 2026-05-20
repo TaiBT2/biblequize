@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { localizeBibleBook } from '../../../data/bibleData'
 import { COLOR, DIFFICULTY_COLORS } from './styles'
 
 interface Scope {
@@ -33,6 +35,8 @@ interface Props {
 export default function AIGeneratePanel({
   open, scope, remaining, limit, topic: defaultTopic, onClose, onGenerate, busy, error,
 }: Props) {
+  const { t, i18n } = useTranslation()
+  const lang: 'vi' | 'en' = i18n.language?.startsWith('en') ? 'en' : 'vi'
   const [easy, setEasy] = useState(2)
   const [medium, setMedium] = useState(2)
   const [hard, setHard] = useState(1)
@@ -100,7 +104,7 @@ export default function AIGeneratePanel({
         <div style={{ padding: '20px 24px 0', display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1 }}>
             <span className="material-symbols-outlined" style={{ fontSize: 20, color: COLOR.gold }} aria-hidden>auto_awesome</span>
-            <div style={{ fontSize: 16, fontWeight: 500, color: COLOR.textPrimary }}>AI tạo nháp câu hỏi</div>
+            <div style={{ fontSize: 16, fontWeight: 500, color: COLOR.textPrimary }}>{t('quizSet.editor.aiPanel.title')}</div>
           </div>
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 5,
@@ -112,22 +116,22 @@ export default function AIGeneratePanel({
           </div>
           <button onClick={onClose} style={{
             background: 'transparent', border: 'none', color: COLOR.textDisabled, cursor: 'pointer', padding: 4,
-          }} aria-label="Đóng">
+          }} aria-label={t('quizSet.editor.aiPanel.close')}>
             <span className="material-symbols-outlined" style={{ fontSize: 18 }} aria-hidden>close</span>
           </button>
         </div>
 
         <div style={{ padding: '20px 24px 0' }}>
           <div style={{ marginBottom: 6, fontSize: 11, color: COLOR.textMuted, letterSpacing: 0.6, fontWeight: 500 }}>
-            SÁCH KINH THÁNH
+            {t('quizSet.editor.aiPanel.bookHeader')}
           </div>
           <div style={{
             background: COLOR.inputBg, border: `1px solid rgba(232,168,50,0.30)`,
             borderRadius: 8, padding: '11px 13px', fontSize: 13, color: COLOR.textPrimary, marginBottom: 14,
           }}>
             <span className="material-symbols-outlined" style={{ fontSize: 14, color: COLOR.gold, marginRight: 8, verticalAlign: -2 }} aria-hidden>menu_book</span>
-            {scope.book}
-            <span style={{ marginLeft: 8, color: COLOR.textDisabled, fontSize: 11 }}>(chỉnh ở mục Thông tin bộ)</span>
+            {localizeBibleBook(scope.book, lang)}
+            <span style={{ marginLeft: 8, color: COLOR.textDisabled, fontSize: 11 }}>{t('quizSet.editor.aiPanel.bookEditHint')}</span>
           </div>
 
           {/* PHẠM VI: Chương + Câu */}
@@ -137,11 +141,11 @@ export default function AIGeneratePanel({
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
               <span className="material-symbols-outlined" style={{ fontSize: 13, color: COLOR.textMuted }} aria-hidden>bookmarks</span>
-              <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6 }}>PHẠM VI</span>
+              <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6 }}>{t('quizSet.editor.aiPanel.scopeHeader')}</span>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }} className="ai-scope-grid">
               <div>
-                <div style={{ fontSize: 11, fontWeight: 500, color: COLOR.textSecondary, marginBottom: 6 }}>Chương</div>
+                <div style={{ fontSize: 11, fontWeight: 500, color: COLOR.textSecondary, marginBottom: 6 }}>{t('quizSet.editor.aiPanel.chapterLabel')}</div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 6, alignItems: 'center' }}>
                   <input type="number" min={1} value={chFrom}
                     onChange={e => {
@@ -150,7 +154,7 @@ export default function AIGeneratePanel({
                       if (chTo < v) setChTo(v)
                     }}
                     style={scopeInput()} />
-                  <span style={{ color: COLOR.textDisabled, fontSize: 11 }}>đến</span>
+                  <span style={{ color: COLOR.textDisabled, fontSize: 11 }}>{t('quizSet.editor.aiPanel.chapterTo')}</span>
                   <input type="number" min={chFrom} value={chTo}
                     onChange={e => setChTo(Math.max(chFrom, +e.target.value || chFrom))}
                     style={scopeInput()} />
@@ -158,14 +162,14 @@ export default function AIGeneratePanel({
               </div>
               <div>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 6 }}>
-                  <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textSecondary }}>Câu</span>
-                  <span style={{ fontSize: 11, color: COLOR.textDisabled }}>tuỳ chọn</span>
+                  <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textSecondary }}>{t('quizSet.editor.aiPanel.verseLabel')}</span>
+                  <span style={{ fontSize: 11, color: COLOR.textDisabled }}>{t('quizSet.editor.aiPanel.verseOptional')}</span>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 6, alignItems: 'center' }}>
                   <input type="number" min={1} placeholder="1" value={vFromStr}
                     onChange={e => setVFromStr(e.target.value)}
                     style={scopeInput(true)} />
-                  <span style={{ color: COLOR.textDisabled, fontSize: 11 }}>đến</span>
+                  <span style={{ color: COLOR.textDisabled, fontSize: 11 }}>{t('quizSet.editor.aiPanel.chapterTo')}</span>
                   <input type="number" min={1} placeholder="31" value={vToStr}
                     onChange={e => setVToStr(e.target.value)}
                     style={scopeInput(true)} />
@@ -180,14 +184,14 @@ export default function AIGeneratePanel({
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6, marginBottom: 6,
             }}>
-              <span>CHỦ ĐỀ BÀI HỌC</span>
-              <span style={{ color: COLOR.textDisabled, fontWeight: 400, letterSpacing: 0 }}>Không bắt buộc</span>
+              <span>{t('quizSet.editor.aiPanel.topicHeader')}</span>
+              <span style={{ color: COLOR.textDisabled, fontWeight: 400, letterSpacing: 0 }}>{t('quizSet.editor.aiPanel.topicOptional')}</span>
             </div>
             <textarea
               rows={2}
               value={topic}
               onChange={e => setTopic(e.target.value)}
-              placeholder="VD: Sự sáng tạo, sự sa ngã, lời hứa cứu chuộc..."
+              placeholder={t('quizSet.editor.aiPanel.topicPlaceholder')}
               style={{
                 width: '100%', background: COLOR.inputBg, border: `1px solid ${COLOR.borderSubtle}`,
                 color: COLOR.textPrimary, padding: '11px 13px', borderRadius: 8,
@@ -204,12 +208,12 @@ export default function AIGeneratePanel({
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <span className="material-symbols-outlined" style={{ fontSize: 13, color: COLOR.textMuted }} aria-hidden>bar_chart</span>
-                <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6 }}>PHÂN BỔ ĐỘ KHÓ</span>
+                <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6 }}>{t('quizSet.editor.aiPanel.difficultyHeader')}</span>
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 12 }}>
-                <span style={{ color: COLOR.textDisabled }}>Tổng:</span>
+                <span style={{ color: COLOR.textDisabled }}>{t('quizSet.editor.aiPanel.totalLabel')}</span>
                 <span style={{ fontWeight: 500, color: COLOR.gold, fontSize: 14 }}>{total}</span>
-                <span style={{ color: COLOR.textDisabled }}>câu</span>
+                <span style={{ color: COLOR.textDisabled }}>{t('quizSet.editor.aiPanel.totalUnit')}</span>
               </div>
             </div>
 
@@ -224,18 +228,18 @@ export default function AIGeneratePanel({
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginBottom: 12 }}>
-              <Stepper value={easy} setValue={setEasy} label="DỄ" color={DIFFICULTY_COLORS.easy} />
-              <Stepper value={medium} setValue={setMedium} label="TB" color={DIFFICULTY_COLORS.medium} />
-              <Stepper value={hard} setValue={setHard} label="KHÓ" color={DIFFICULTY_COLORS.hard} />
+              <Stepper value={easy} setValue={setEasy} label={t('quizSet.editor.aiPanel.diffEasy')} color={DIFFICULTY_COLORS.easy} />
+              <Stepper value={medium} setValue={setMedium} label={t('quizSet.editor.aiPanel.diffMedium')} color={DIFFICULTY_COLORS.medium} />
+              <Stepper value={hard} setValue={setHard} label={t('quizSet.editor.aiPanel.diffHard')} color={DIFFICULTY_COLORS.hard} />
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingTop: 10, borderTop: `1px solid rgba(255,255,255,0.04)` }}>
-              <span style={{ fontSize: 11, color: COLOR.textDisabled }}>Gợi ý:</span>
+              <span style={{ fontSize: 11, color: COLOR.textDisabled }}>{t('quizSet.editor.aiPanel.suggestion')}</span>
               <button onClick={() => { setEasy(2); setMedium(2); setHard(2) }} style={pillBtn()}>
-                <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>balance</span> Đều nhau
+                <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>balance</span> {t('quizSet.editor.aiPanel.balance')}
               </button>
               <button onClick={() => { setEasy(4); setMedium(4); setHard(2) }} style={pillBtn(true)}>
-                <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>pie_chart</span> Đề xuất 40/40/20
+                <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>pie_chart</span> {t('quizSet.editor.aiPanel.recommended')}
               </button>
             </div>
           </div>
@@ -280,16 +284,16 @@ export default function AIGeneratePanel({
             <span className="material-symbols-outlined"
                style={{ fontSize: 16, animation: busy ? 'spin 1s linear infinite' : undefined }} aria-hidden>{busy ? 'progress_activity' : 'auto_awesome'}</span>
             {busy
-              ? `Đang tạo ${total} câu...`
+              ? t('quizSet.editor.aiPanel.generating', { total })
               : tooLarge
-                ? 'Tối đa 15 câu/lần'
+                ? t('quizSet.editor.aiPanel.tooLarge')
                 : overQuota
-                  ? `Vượt quota (còn ${remaining})`
-                  : <>Tạo {total} câu hỏi với AI <span style={{ opacity: 0.7, fontWeight: 400, marginLeft: 4 }}>· {easy} dễ + {medium} TB + {hard} khó</span></>}
+                  ? t('quizSet.editor.aiPanel.overQuota', { remaining })
+                  : <>{t('quizSet.editor.aiPanel.ctaGenerate', { total })} <span style={{ opacity: 0.7, fontWeight: 400, marginLeft: 4 }}>{t('quizSet.editor.aiPanel.ctaBreakdown', { easy, medium, hard })}</span></>}
           </button>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 10, fontSize: 11, color: COLOR.textDisabled }}>
             <span className="material-symbols-outlined" style={{ fontSize: 12 }} aria-hidden>schedule</span>
-            <span>AI tạo nháp ~20-30s · Bạn xem lại + chỉnh sửa trước khi lưu</span>
+            <span>{t('quizSet.editor.aiPanel.durationHint')}</span>
           </div>
         </div>
 

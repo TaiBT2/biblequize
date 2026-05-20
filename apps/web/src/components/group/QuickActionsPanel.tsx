@@ -50,6 +50,8 @@ export interface QuickActionsPanelProps {
   isLeader: boolean;
   hasActiveScheduledQuiz: boolean;
   scheduledCount: number;
+  /** ID of the earliest active scheduled quiz — used to deep-link members to its detail. */
+  firstScheduledQuizId?: string | null;
   onCreateQuizSet: () => void;
   onPostAnnouncement: () => void;
   onSwitchToQuizSets: () => void;
@@ -107,27 +109,31 @@ export default function QuickActionsPanel(props: QuickActionsPanelProps) {
     );
   }
 
+  // Members can no longer self-practice (solo mode removed 2026-05-20).
+  // Scheduled-quiz card is the only remaining member quick action; hide the
+  // section entirely when nothing's available so the layout stays tidy.
+  if (!props.hasActiveScheduledQuiz) return null;
   return (
     <section data-testid="group-quick-actions-member">
       {heading}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <ActionCard
-          icon="📚"
-          label={t('groups.action.practice')}
-          hint={t('groups.action.practice.hint', { count: props.quizSetsCount })}
-          onClick={props.onSwitchToQuizSets}
-          testId="qa-practice"
+          icon="📅"
+          label={t('groups.action.scheduledQuiz')}
+          hint={t('groups.action.scheduledQuiz.hint', { count: props.scheduledCount })}
+          highlight
+          onClick={() => {
+            // Deep-link to the first active scheduled quiz; fall back to the
+            // group page if the id wasn't passed (defensive — should always
+            // be present when hasActiveScheduledQuiz is true).
+            if (props.firstScheduledQuizId) {
+              navigate(`/groups/${props.groupId}/scheduled-quizzes/${props.firstScheduledQuizId}`)
+            } else {
+              navigate(`/groups/${props.groupId}`)
+            }
+          }}
+          testId="qa-scheduled"
         />
-        {props.hasActiveScheduledQuiz && (
-          <ActionCard
-            icon="📅"
-            label={t('groups.action.scheduledQuiz')}
-            hint={t('groups.action.scheduledQuiz.hint', { count: props.scheduledCount })}
-            highlight
-            onClick={() => navigate('/scheduled-quiz')}
-            testId="qa-scheduled"
-          />
-        )}
       </div>
     </section>
   );

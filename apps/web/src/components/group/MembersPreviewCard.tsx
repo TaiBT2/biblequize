@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { resolveAvatar } from '../../utils/avatar';
 
 export interface MemberPreview {
   userId: string;
@@ -35,11 +36,12 @@ function Avatar({ member, withOnlineDot }: { member: MemberPreview; withOnlineDo
       title={`${member.name}${member.role === 'LEADER' ? ' · 👑 Leader' : member.role === 'MOD' ? ' · 🛡️ Mod' : ''}`}
       className="relative w-9 h-9 rounded-full bg-[rgba(232,168,50,0.15)] border border-[rgba(232,168,50,0.3)] flex items-center justify-center text-[12px] font-bold text-secondary overflow-hidden shrink-0"
     >
-      {member.avatarUrl ? (
-        <img src={member.avatarUrl} alt={member.name} className="w-full h-full object-cover" />
-      ) : (
-        (member.name || '?').charAt(0).toUpperCase()
-      )}
+      {(() => {
+        const r = resolveAvatar(member.avatarUrl, member.name);
+        if (r.kind === 'img')    return <img src={r.src} alt={member.name} className="w-full h-full object-cover" />;
+        if (r.kind === 'preset') return <span className="w-full h-full flex items-center justify-center text-base" style={{ background: r.preset.bg }} aria-hidden>{r.preset.emoji}</span>;
+        return r.initial;
+      })()}
       {member.role === 'LEADER' && (
         <span className="absolute -top-0.5 -right-0.5 text-[8px]">👑</span>
       )}

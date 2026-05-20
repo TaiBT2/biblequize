@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import type { TFunction } from 'i18next'
 import type { PublishStatus } from '../../../api/quizSets'
 import { COLOR } from './styles'
 
@@ -18,28 +20,32 @@ interface Props {
   canPublish: boolean
 }
 
-function statusBadge(status: PublishStatus, savedAgo: number | null, saving: boolean) {
+function statusBadge(t: TFunction, status: PublishStatus, savedAgo: number | null, saving: boolean) {
   if (status === 'DRAFT') {
-    const label = saving ? 'ĐANG LƯU...' : savedAgo == null ? 'NHÁP' : `NHÁP · ĐÃ LƯU ${formatAgo(savedAgo)} TRƯỚC`
+    let label: string
+    if (saving) label = t('quizSet.editor.topbar.saving')
+    else if (savedAgo == null) label = t('quizSet.editor.topbar.draft')
+    else label = t('quizSet.editor.topbar.draftSavedAgo', { ago: formatAgo(t, savedAgo) })
     return { bg: 'rgba(251,191,36,0.10)', color: COLOR.warning, label }
   }
-  if (status === 'PUBLISHED') return { bg: 'rgba(74,222,128,0.12)', color: COLOR.success, label: 'ĐÃ XUẤT BẢN' }
-  if (status === 'ARCHIVED')  return { bg: 'rgba(156,163,175,0.12)', color: COLOR.textMuted, label: 'ĐÃ LƯU TRỮ' }
-  return { bg: 'rgba(239,68,68,0.12)', color: COLOR.danger, label: 'ĐÃ XOÁ' }
+  if (status === 'PUBLISHED') return { bg: 'rgba(74,222,128,0.12)', color: COLOR.success, label: t('quizSet.editor.topbar.published') }
+  if (status === 'ARCHIVED')  return { bg: 'rgba(156,163,175,0.12)', color: COLOR.textMuted, label: t('quizSet.editor.topbar.archived') }
+  return { bg: 'rgba(239,68,68,0.12)', color: COLOR.danger, label: t('quizSet.editor.topbar.deleted') }
 }
 
-function formatAgo(sec: number): string {
-  if (sec < 60) return `${sec}s`
-  if (sec < 3600) return `${Math.floor(sec / 60)} phút`
-  return `${Math.floor(sec / 3600)}h`
+function formatAgo(t: TFunction, sec: number): string {
+  if (sec < 60) return t('quizSet.editor.topbar.agoSec', { n: sec })
+  if (sec < 3600) return t('quizSet.editor.topbar.agoMin', { n: Math.floor(sec / 60) })
+  return t('quizSet.editor.topbar.agoHour', { n: Math.floor(sec / 3600) })
 }
 
 export default function EditorTopBar({
   backHref, ownerName, quizSetName, status, lastSavedAgoSec, saving,
   questionCount, aiUsed, aiLimit, onPublish, onSaveDraft, canPublish,
 }: Props) {
+  const { t } = useTranslation()
   const navigate = useNavigate()
-  const badge = statusBadge(status, lastSavedAgoSec, saving)
+  const badge = statusBadge(t, status, lastSavedAgoSec, saving)
   const showAi = typeof aiUsed === 'number' && typeof aiLimit === 'number' && aiLimit > 0
 
   return (
@@ -59,13 +65,13 @@ export default function EditorTopBar({
           display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 13, padding: '6px 10px', borderRadius: 6,
         }}
       >
-        <span className="material-symbols-outlined" style={{ fontSize: 16 }} aria-hidden>arrow_back</span> Quay lại
+        <span className="material-symbols-outlined" style={{ fontSize: 16 }} aria-hidden>arrow_back</span> {t('quizSet.editor.topbar.back')}
       </button>
 
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 10, minWidth: 200 }}>
         <span className="material-symbols-outlined" style={{ fontSize: 18, color: COLOR.gold }} aria-hidden>menu_book</span>
         <div style={{ fontSize: 14, color: COLOR.textPrimary, fontWeight: 500 }}>
-          {quizSetName || 'Bộ câu hỏi mới'}
+          {quizSetName || t('quizSet.editor.topbar.defaultName')}
         </div>
         {ownerName && (
           <>
@@ -96,12 +102,12 @@ export default function EditorTopBar({
         border: `1px solid ${COLOR.borderSubtle}`,
         padding: '8px 14px', borderRadius: 8, fontSize: 13, cursor: 'pointer',
         opacity: saving ? 0.6 : 1,
-      }}>Lưu nháp</button>
+      }}>{t('quizSet.editor.topbar.saveDraft')}</button>
 
       {(() => {
         // Button has 2 modes:
-        //   DRAFT     → "Xuất bản (N câu)" — enabled only when canPublish (≥5 câu + name ≥3 ký tự)
-        //   PUBLISHED → "Lưu thay đổi"     — enabled whenever not currently saving
+        //   DRAFT     → "Publish (N qs)" — enabled only when canPublish (≥5 qs + name ≥3 chars)
+        //   PUBLISHED → "Save changes"   — enabled whenever not currently saving
         const enabled = status === 'PUBLISHED' ? !saving : canPublish
         return (
           <button onClick={onPublish} disabled={!enabled} style={{
@@ -114,7 +120,9 @@ export default function EditorTopBar({
             <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>
               {status === 'PUBLISHED' ? 'save' : 'rocket_launch'}
             </span>
-            {status === 'PUBLISHED' ? `Lưu thay đổi` : `Xuất bản (${questionCount} câu)`}
+            {status === 'PUBLISHED'
+              ? t('quizSet.editor.topbar.saveChanges')
+              : t('quizSet.editor.topbar.publishWithCount', { count: questionCount })}
           </button>
         )
       })()}

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import type { EditorQuestion } from '../../../api/quizSets'
 import { COLOR, DIFFICULTY_COLORS } from './styles'
 import { isQuestionValid, validateQuestion } from './validation'
@@ -21,6 +22,7 @@ function difficultyKey(d: string | null | undefined): keyof typeof DIFFICULTY_CO
 export default function QuestionSidebar({
   questions, activeId, onActivate, onAIGenerate, onAddManual, aiBusy, addBusy,
 }: Props) {
+  const { t } = useTranslation()
   const counts = { easy: 0, medium: 0, hard: 0 }
   for (const q of questions) {
     const k = difficultyKey(q.difficulty)
@@ -37,8 +39,8 @@ export default function QuestionSidebar({
       minHeight: 0,
     }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10, padding: '0 4px' }}>
-        <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6 }}>CÂU HỎI</span>
-        <span style={{ fontSize: 11, color: COLOR.textDisabled }}>{questions.length} câu</span>
+        <span style={{ fontSize: 11, fontWeight: 500, color: COLOR.textMuted, letterSpacing: 0.6 }}>{t('quizSet.editor.sidebar.header')}</span>
+        <span style={{ fontSize: 11, color: COLOR.textDisabled }}>{t('quizSet.editor.sidebar.questionCount', { count: questions.length })}</span>
       </div>
 
       {/* Distribution bar */}
@@ -48,7 +50,11 @@ export default function QuestionSidebar({
       }}>
         {(['easy', 'medium', 'hard'] as const).map(d => {
           const col = DIFFICULTY_COLORS[d]
-          const label = d === 'easy' ? 'dễ' : d === 'medium' ? 'TB' : 'khó'
+          const label = d === 'easy'
+            ? t('quizSet.editor.sidebar.diffEasyShort')
+            : d === 'medium'
+              ? t('quizSet.editor.sidebar.diffMediumShort')
+              : t('quizSet.editor.sidebar.diffHardShort')
           return (
             <div key={d} style={{
               flex: 1, textAlign: 'center', padding: 4,
@@ -76,7 +82,7 @@ export default function QuestionSidebar({
             opacity: aiBusy ? 0.6 : 1,
           }}>
             <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>auto_awesome</span>
-            {aiBusy ? 'Đang tạo...' : 'AI tạo nháp'}
+            {aiBusy ? t('quizSet.editor.sidebar.generating') : t('quizSet.editor.sidebar.btnAIGenerate')}
           </button>
         )}
         <button onClick={onAddManual} disabled={addBusy} style={{
@@ -88,7 +94,7 @@ export default function QuestionSidebar({
           opacity: addBusy ? 0.6 : 1,
         }}>
           <span className="material-symbols-outlined" style={{ fontSize: 14 }} aria-hidden>add</span>
-          Thêm thủ công
+          {t('quizSet.editor.sidebar.btnAddManual')}
         </button>
       </div>
 
@@ -102,7 +108,7 @@ export default function QuestionSidebar({
             padding: '24px 12px', textAlign: 'center', color: COLOR.textDisabled,
             fontSize: 12, fontStyle: 'italic',
           }}>
-            Chưa có câu hỏi. Bấm nút trên để bắt đầu.
+            {t('quizSet.editor.sidebar.emptyHint')}
           </div>
         )}
         {questions.map((q, idx) => {
@@ -138,12 +144,12 @@ export default function QuestionSidebar({
                    style={{ fontSize: 11, color: COLOR.textDisabled }} aria-hidden>{isAI ? 'auto_awesome' : 'edit'}</span>
                 {isActive && (
                   <span style={{ marginLeft: 'auto', fontSize: 9, color: COLOR.gold, fontWeight: 500, letterSpacing: 0.5 }}>
-                    ĐANG SỬA
+                    {t('quizSet.editor.sidebar.badgeEditing')}
                   </span>
                 )}
                 {!isActive && !valid && (
                   <span style={{ marginLeft: 'auto', fontSize: 9, color: COLOR.warning, fontWeight: 500, letterSpacing: 0.5 }}>
-                    THIẾU
+                    {t('quizSet.editor.sidebar.badgeMissing')}
                   </span>
                 )}
               </div>
@@ -151,7 +157,7 @@ export default function QuestionSidebar({
                 fontSize: 12, color: isActive ? COLOR.textPrimary : COLOR.textSecondary,
                 lineHeight: 1.4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
               }}>
-                {q.content || <em style={{ color: COLOR.textDisabled }}>câu hỏi trống</em>}
+                {q.content || <em style={{ color: COLOR.textDisabled }}>{t('quizSet.editor.sidebar.emptyContent')}</em>}
               </div>
             </div>
           )

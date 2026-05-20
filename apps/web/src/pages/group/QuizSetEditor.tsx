@@ -5,10 +5,12 @@
 // wrapper; personal route mounts via PersonalQuizSetEditor (PQS-6).
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import type {
   AIGenerateForSetBody, AIGenerateForSetResponse, AIRewriteResponse,
   AddQuestionBody, CreateQuizSetBody, EditorQuestion, QuizSet, QuizSetFull,
 } from '../../api/quizSets'
+import { BIBLE_BOOKS_VI } from '../../data/bibleData'
 import EditorTopBar from './quizset-editor/EditorTopBar'
 import MetadataAccordion from './quizset-editor/MetadataAccordion'
 import QuestionSidebar from './quizset-editor/QuestionSidebar'
@@ -54,6 +56,7 @@ export default function QuizSetEditor({
   mode: forcedMode, setIdFromRoute, ownership, ownerName, backHref,
   editPathBase, detailPathBase, api, aiEnabled: aiEnabledProp,
 }: Props) {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const mode: Mode = forcedMode ?? (setIdFromRoute ? 'edit' : 'create')
   const aiEnabled = aiEnabledProp ?? (ownership === 'group')
@@ -77,7 +80,7 @@ export default function QuizSetEditor({
   const [publishOpen, setPublishOpen] = useState(false)
   const [publishBusy, setPublishBusy] = useState(false)
 
-  /** Brief "✓ Đã lưu" toast — fires on every manual save click so the user
+  /** Brief saved toast — fires on every manual save click so the user
    *  gets feedback even when there are no pending changes to flush. */
   const [saveFlash, setSaveFlash] = useState(false)
   const flashSaved = useCallback(() => {
@@ -87,7 +90,7 @@ export default function QuizSetEditor({
     return () => clearTimeout(t)
   }, [])
 
-  const [scope, setScope] = useState({ book: 'Sáng Thế Ký', chapterFrom: 1, chapterTo: 1 })
+  const [scope, setScope] = useState({ book: BIBLE_BOOKS_VI[0], chapterFrom: 1, chapterTo: 1 })
   const [topic, setTopic] = useState('')
   const dirtyMetaRef = useRef(false)
 
@@ -103,7 +106,7 @@ export default function QuizSetEditor({
     ;(async () => {
       try {
         if (mode === 'create' && !setIdFromRoute) {
-          const created = await api.createQuizSet({ name: 'Bộ câu hỏi mới' })
+          const created = await api.createQuizSet({ name: t('quizSet.editor.parent.defaultSetName') })
           if (cancelled) return
           navigate(`${editPathBase}${created.id}/edit`, { replace: true })
           return
@@ -121,7 +124,7 @@ export default function QuizSetEditor({
           try { setAiQuota(await api.getAIQuota()) } catch { /* ignore */ }
         }
       } catch (e: any) {
-        if (!cancelled) setLoadError(e?.response?.data?.message || e?.message || 'Không tải được bộ câu hỏi')
+        if (!cancelled) setLoadError(e?.response?.data?.message || e?.message || t('quizSet.editor.parent.loadError'))
       } finally {
         if (!cancelled) setLoading(false)
       }
@@ -183,7 +186,7 @@ export default function QuizSetEditor({
       const { question, totalQuestions } = await api.addQuestion(quizSet.id, {
         content: '', book: scope.book, chapter: scope.chapterFrom,
         difficulty: 'medium', options: ['', '', '', ''], correctAnswer: [0],
-        explanation: '', language: 'vi',
+        explanation: '', language: (quizSet.language || 'vi').toLowerCase(),
       })
       setQuizSet(prev => prev ? {
         ...prev,
@@ -197,7 +200,7 @@ export default function QuizSetEditor({
 
   const handleDelete = async (qid: string) => {
     if (!quizSet) return
-    if (!window.confirm('Xoá câu này khỏi bộ?')) return
+    if (!window.confirm(t('quizSet.editor.parent.deletePrompt'))) return
     try {
       const total = await api.deleteQuestion(quizSet.id, qid)
       setQuizSet(prev => prev ? {
@@ -226,7 +229,8 @@ export default function QuizSetEditor({
         countEasy: req.countEasy, countMedium: req.countMedium, countHard: req.countHard,
         book: scope.book, chapterFrom: req.chapterFrom, chapterTo: req.chapterTo,
         verseFrom: req.verseFrom ?? undefined, verseTo: req.verseTo ?? undefined,
-        topic: req.topic || topic || undefined, language: 'vi',
+        topic: req.topic || topic || undefined,
+        language: ((quizSet.language || 'vi').toLowerCase() === 'en' ? 'en' : 'vi'),
       })
       setQuizSet(prev => prev ? {
         ...prev,
@@ -239,11 +243,11 @@ export default function QuizSetEditor({
       setAiPanelOpen(false)
     } catch (e: any) {
       if (e?.response?.status === 429) {
-        setAiError('Đã hết quota AI hôm nay (200 câu). Thử lại ngày mai.')
+        setAiError(t('quizSet.editor.parent.aiQuotaExhausted'))
         const u = e.response.data
         if (u?.used != null) setAiQuota({ used: u.used, limit: u.limit, remaining: u.remaining })
       } else {
-        setAiError(e?.response?.data?.message || e?.message || 'Lỗi khi tạo AI')
+        setAiError(e?.response?.data?.message || e?.message || t('quizSet.editor.parent.aiErrorGeneric'))
       }
     } finally { setAiBusy(false) }
   }
@@ -274,7 +278,7 @@ export default function QuizSetEditor({
   const handlePublishClick = async () => {
     await flushQuestionSave()
     await flushMetaSave()
-    // PUBLISHED → button label is "Lưu thay đổi": the two flushes above are
+    // PUBLISHED → button label is "Save changes": the two flushes above are
     // the save; opening the publish modal would just confuse + fail BE check.
     if (quizSet?.publishStatus === 'DRAFT') {
       setPublishOpen(true)
@@ -292,7 +296,7 @@ export default function QuizSetEditor({
       setPublishOpen(false)
       navigate(`${detailPathBase}${quizSet.id}`)
     } catch (e: any) {
-      alert(e?.response?.data?.message || e?.message || 'Lỗi khi xuất bản')
+      alert(e?.response?.data?.message || e?.message || t('quizSet.editor.parent.publishError'))
     } finally { setPublishBusy(false) }
   }
 
@@ -308,9 +312,9 @@ export default function QuizSetEditor({
     setActiveId(id)
   }
 
-  if (loading) return <PageShell><div style={spinnerStyle()}>Đang tải...</div></PageShell>
+  if (loading) return <PageShell><div style={spinnerStyle()}>{t('quizSet.editor.parent.loading')}</div></PageShell>
   if (loadError) return <PageShell><div style={errorStyle()}>{loadError}</div></PageShell>
-  if (!quizSet) return <PageShell><div style={errorStyle()}>Không tìm thấy bộ câu hỏi</div></PageShell>
+  if (!quizSet) return <PageShell><div style={errorStyle()}>{t('quizSet.editor.parent.notFoundSet')}</div></PageShell>
 
   const lastSavedAgoSec = lastSavedAt ? Math.floor((Date.now() - lastSavedAt) / 1000) : null
   const questions = quizSet.questions ?? []
@@ -370,8 +374,8 @@ export default function QuizSetEditor({
             background: COLOR.bgSection, color: COLOR.textMuted, fontSize: 14, padding: 32, textAlign: 'center',
           }}>
             {aiEnabled
-              ? 'Chưa có câu nào. Bấm "⚡ AI tạo nháp" hoặc "+ Thêm thủ công" ở đầu sidebar bên trái.'
-              : 'Chưa có câu nào. Bấm "+ Thêm thủ công" ở đầu sidebar bên trái để bắt đầu.'}
+              ? t('quizSet.editor.parent.emptyPanelWithAI')
+              : t('quizSet.editor.parent.emptyPanelManual')}
           </div>
         )}
       </div>
@@ -430,7 +434,7 @@ export default function QuizSetEditor({
         }}
       >
         <span className="material-symbols-outlined" style={{ fontSize: 16 }} aria-hidden>check_circle</span>
-        Đã lưu
+        {t('quizSet.editor.parent.savedToast')}
       </div>
 
       <style>{`

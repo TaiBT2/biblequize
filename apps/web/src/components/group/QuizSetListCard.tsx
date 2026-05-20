@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
-  getMyAttempts, startSoloPractice, playQuizSetCoPlay,
-  type QuizSet, type QuizSetMasterySummary, type QuizSetAttempt,
+  archiveQuizSet, deleteQuizSet, playQuizSetCoPlay, unarchiveQuizSet,
+  type QuizSet,
 } from '../../api/quizSets'
 
 // Hardcoded hex per MOCKUP_QUIZSET_CARDS.html (Bui rule: no CSS variables in card files,
@@ -96,73 +96,53 @@ function formatRelative(iso?: string | null): string {
 }
 
 export default function QuizSetListCard({
-  groupId, qs, myRole, isMember,
+  groupId, qs, myRole, isMember: _isMember,
   activeCoPlayRoom, activeSchedule,
   onPlayCoPlay: _onPlayCoPlay, onSchedule: _onSchedule,
   onEditDraft, onDeleteDraft, onUnarchive,
   onClick,
 }: Props) {
+  void _isMember // legacy prop, no longer used since solo practice was removed (2026-05-20)
   const navigate = useNavigate()
-  const [mastery, setMastery] = useState<QuizSetMasterySummary | null>(null)
-  const [attempts, setAttempts] = useState<QuizSetAttempt[]>([])
-  const [attemptsLoaded, setAttemptsLoaded] = useState(false)
-  const [showAttempts, setShowAttempts] = useState(false)
-  const [soloModal, setSoloModal] = useState(false)
-  const [soloBusy, setSoloBusy] = useState(false)
-  const [soloError, setSoloError] = useState<string | null>(null)
   const [coPlayBusy, setCoPlayBusy] = useState(false)
   const [coPlayError, setCoPlayError] = useState<string | null>(null)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuBusy, setMenuBusy] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
 
   const badge = statusBadge(qs.publishStatus)
   const book = bookFromTagsOrScripture(qs)
   const dist = difficultyDistribution(qs)
   const isLeader = myRole === 'LEADER' || myRole === 'MOD'
-  const hasPlayed = !!mastery && mastery.totalAttempts > 0
   const isPublished = qs.publishStatus === 'PUBLISHED'
   const isDraft = qs.publishStatus === 'DRAFT'
   const isArchived = qs.publishStatus === 'ARCHIVED'
 
-  // Eager-fetch mastery summary for PUBLISHED to render personal-best banner.
   useEffect(() => {
-    if (!isPublished || !isMember) return
-    let canceled = false
-    getMyAttempts(groupId, qs.id)
-      .then(res => {
-        if (canceled) return
-        setMastery(res.masterySummary)
-        setAttempts(res.attempts)
-        setAttemptsLoaded(true)
-      })
-      .catch(() => { /* silent — banner just won't render */ })
-    return () => { canceled = true }
-  }, [groupId, qs.id, isPublished, isMember])
-
-  const ensureAttemptsLoaded = async () => {
-    if (attemptsLoaded) return
-    try {
-      const res = await getMyAttempts(groupId, qs.id)
-      setMastery(res.masterySummary)
-      setAttempts(res.attempts)
-      setAttemptsLoaded(true)
-    } catch (_) { /* ignore */ }
-  }
-
-  const handleSoloClick = async (e: React.MouseEvent) => {
-    e.stopPropagation()
-    setSoloError(null)
-    await ensureAttemptsLoaded()
-    setSoloModal(true)
-  }
-
-  const handleSoloConfirm = async () => {
-    setSoloBusy(true); setSoloError(null)
-    try {
-      const result = await startSoloPractice(groupId, qs.id)
-      navigate(`/quiz/${result.sessionId}?mode=solo&quizSetId=${qs.id}`)
-    } catch (err: any) {
-      setSoloError(err?.response?.data?.message || err?.message || 'Không thể bắt đầu lượt chơi')
-      setSoloBusy(false)
+    if (!menuOpen) return
+    const onDocClick = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) setMenuOpen(false)
     }
+    document.addEventListener('mousedown', onDocClick)
+    return () => document.removeEventListener('mousedown', onDocClick)
+  }, [menuOpen])
+
+  const handleMenuAction = async (
+    action: 'edit' | 'detail' | 'archive' | 'unarchive' | 'delete',
+  ) => {
+    setMenuOpen(false)
+    if (action === 'edit')   { navigate(`/groups/${groupId}/quiz-sets/${qs.id}/edit`); return }
+    if (action === 'detail') { navigate(`/groups/${groupId}/quiz-sets/${qs.id}`); return }
+    if (action === 'delete' && !window.confirm(`Xóa bộ "${qs.name}"?`)) return
+    setMenuBusy(true)
+    try {
+      if (action === 'archive')    await archiveQuizSet(groupId, qs.id)
+      if (action === 'unarchive')  await unarchiveQuizSet(groupId, qs.id)
+      if (action === 'delete')     await deleteQuizSet(groupId, qs.id)
+      navigate(0)
+    } catch (err: any) {
+      window.alert(err?.response?.data?.message || err?.message || 'Thao tác thất bại')
+    } finally { setMenuBusy(false) }
   }
 
   const handleCoPlay = async (e: React.MouseEvent) => {
@@ -171,7 +151,10 @@ export default function QuizSetListCard({
     setCoPlayBusy(true); setCoPlayError(null)
     try {
       const room = await playQuizSetCoPlay(groupId, qs.id)
-      navigate(`/room/${room.id}/lobby`)
+      // Pass fromGroupId so RoomLobby's leave handler returns to the group page
+      // (RoomDetailsDTO doesn't expose groupId, only groupQuizSetId — this state
+      // is the only way leave knows where to go back).
+      navigate(`/room/${room.id}/lobby`, { state: { fromGroupId: groupId } })
     } catch (err: any) {
       const msg = err?.response?.data?.message || err?.message || 'Không thể tạo phòng'
       setCoPlayError(msg)
@@ -234,18 +217,52 @@ export default function QuizSetListCard({
             }}
           >{book}</span>
           {isLeader && (
-            <button
-              type="button"
-              onClick={e => { stop(e); /* TODO: open contextual leader menu */ }}
-              aria-label="Tùy chọn"
-              style={{
-                background: 'transparent', border: 'none', color: HEX.textMuted,
-                cursor: 'pointer', width: 28, height: 28, borderRadius: 6,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}
-            >
-              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>more_vert</span>
-            </button>
+            <div ref={menuRef} style={{ position: 'relative' }}>
+              <button
+                type="button"
+                onClick={e => { stop(e); setMenuOpen(v => !v) }}
+                aria-label="Tùy chọn"
+                aria-haspopup="menu"
+                aria-expanded={menuOpen}
+                data-testid="btn-card-menu"
+                disabled={menuBusy}
+                style={{
+                  background: menuOpen ? 'rgba(255,255,255,0.08)' : 'transparent',
+                  border: 'none', color: HEX.textMuted,
+                  cursor: menuBusy ? 'wait' : 'pointer',
+                  width: 28, height: 28, borderRadius: 6,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: 18 }}>more_vert</span>
+              </button>
+              {menuOpen && (
+                <div
+                  role="menu"
+                  data-testid="card-menu"
+                  style={{
+                    position: 'absolute', top: 32, right: 0, zIndex: 30,
+                    minWidth: 180,
+                    background: 'rgba(40, 42, 56, 0.98)',
+                    backdropFilter: 'blur(16px)',
+                    WebkitBackdropFilter: 'blur(16px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: 10, padding: 4,
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.4)',
+                  }}
+                >
+                  <MenuItem icon="edit"        label="Sửa câu hỏi" onClick={() => handleMenuAction('edit')} testId="menu-edit" />
+                  <MenuItem icon="visibility"  label="Xem chi tiết" onClick={() => handleMenuAction('detail')} testId="menu-detail" />
+                  {isPublished && (
+                    <MenuItem icon="archive" label="Lưu trữ" onClick={() => handleMenuAction('archive')} testId="menu-archive" />
+                  )}
+                  {isArchived && (
+                    <MenuItem icon="lock_open" label="Mở khóa" onClick={() => handleMenuAction('unarchive')} testId="menu-unarchive" />
+                  )}
+                  <MenuItem icon="delete" label="Xóa" onClick={() => handleMenuAction('delete')} danger testId="menu-delete" />
+                </div>
+              )}
+            </div>
           )}
         </div>
 
@@ -294,75 +311,6 @@ export default function QuizSetListCard({
             )}
           </div>
 
-          {/* Personal best banner — only when user has played */}
-          {hasPlayed && mastery && (
-            <div
-              style={{
-                marginTop: 10, padding: '10px 12px',
-                background: 'rgba(232, 168, 50, 0.08)',
-                border: '1px solid rgba(232, 168, 50, 0.2)',
-                borderRadius: 10,
-                display: 'flex', alignItems: 'center', gap: 8,
-                fontSize: 12, color: HEX.gold,
-              }}
-              data-testid="personal-best-banner"
-            >
-              <span className="material-symbols-outlined" style={{ fontSize: 16 }}>emoji_events</span>
-              <span>Điểm cao nhất của bạn</span>
-              <span style={{ fontWeight: 700, marginLeft: 'auto' }}>
-                {mastery.bestScore}
-                {mastery.bestAccuracy != null && ` · ${Number(mastery.bestAccuracy).toFixed(0)}%`}
-              </span>
-            </div>
-          )}
-
-          {/* Collapsible my-attempts panel */}
-          {hasPlayed && attemptsLoaded && (
-            <div style={{ marginTop: 10 }}>
-              <button
-                type="button"
-                onClick={e => { stop(e); setShowAttempts(v => !v) }}
-                aria-expanded={showAttempts}
-                data-testid="my-attempts-toggle"
-                style={{
-                  background: 'transparent', border: 'none', color: HEX.textMuted,
-                  cursor: 'pointer', fontSize: 11, padding: 0,
-                  display: 'flex', alignItems: 'center', gap: 4, fontFamily: 'inherit',
-                }}
-              >
-                <span className="material-symbols-outlined" style={{ fontSize: 14 }}>
-                  {showAttempts ? 'expand_less' : 'expand_more'}
-                </span>
-                Lượt chơi của bạn ({mastery!.totalAttempts})
-              </button>
-              {showAttempts && attempts.length > 0 && (
-                <ul
-                  data-testid="my-attempts-list"
-                  style={{ listStyle: 'none', margin: '6px 0 0 0', padding: 0, fontSize: 11, color: HEX.textMuted }}
-                >
-                  {attempts.map((a, i) => {
-                    const isBest = a.score === mastery!.bestScore && a.score > 0
-                    return (
-                      <li
-                        key={a.sessionId}
-                        style={{
-                          padding: '4px 8px', display: 'flex', alignItems: 'center', gap: 8,
-                          color: isBest ? HEX.gold : HEX.textMuted,
-                          background: isBest ? 'rgba(232, 168, 50, 0.06)' : 'transparent',
-                          borderRadius: 4,
-                          fontWeight: isBest ? 600 : 400,
-                        }}
-                      >
-                        <span style={{ minWidth: 50 }}>Lần {attempts.length - i}</span>
-                        <span>{a.correctAnswers}/{a.totalQuestions} ({Number(a.accuracy).toFixed(0)}%)</span>
-                        <span style={{ marginLeft: 'auto', color: HEX.textDim }}>{formatRelative(a.completedAt)}</span>
-                      </li>
-                    )
-                  })}
-                </ul>
-              )}
-            </div>
-          )}
         </div>
 
         {/* ACTIONS FOOTER — state-aware */}
@@ -374,7 +322,7 @@ export default function QuizSetListCard({
           }}
         >
           {isPublished && isLeader && (
-            // Leader/Mod: full action set — Chơi cùng nhau + Đặt lịch + Chơi solo.
+            // Leader/Mod: Chơi cùng nhau + Đặt lịch (solo removed 2026-05-20).
             <>
               <button
                 type="button"
@@ -397,116 +345,79 @@ export default function QuizSetListCard({
                 {coPlayBusy ? 'Đang tạo phòng...' : 'Chơi cùng nhau'}
               </button>
               <IconButton
-                disabled
-                title="Tính năng đặt lịch sắp ra mắt"
-                aria-label="Đặt lịch (sắp ra mắt)"
+                title="Đặt lịch quiz"
+                aria-label="Đặt lịch quiz"
                 icon="event"
-                onClick={stop}
+                onClick={e => {
+                  stop(e)
+                  navigate(`/groups/${groupId}/scheduled-quizzes/new?quizSetId=${qs.id}`)
+                }}
                 data-testid="btn-schedule"
-              />
-              <IconButton
-                title={hasPlayed ? 'Chơi lại solo' : 'Chơi solo'}
-                aria-label={hasPlayed ? 'Chơi lại solo' : 'Chơi solo'}
-                icon={hasPlayed ? 'refresh' : 'person'}
-                onClick={handleSoloClick}
-                disabled={!isMember}
-                data-testid="btn-solo"
               />
             </>
           )}
 
           {isPublished && !isLeader && (() => {
-            // Member view: chỉ "Tự ôn solo" là default; nếu có live co-play
-            // room hoặc scheduled session thì primary CTA đổi thành "Tham gia".
+            // Member view: only Tham gia surfaces (live co-play room or scheduled session).
+            // Without either, members see no action button — they reach quiz sets via
+            // the leader's invite to a live or scheduled session, not by browsing.
             if (activeCoPlayRoom) {
               return (
-                <>
-                  <button
-                    type="button"
-                    onClick={e => { stop(e); navigate(`/room/${activeCoPlayRoom.id}/lobby`) }}
-                    title="Tham gia trận đấu đang diễn ra"
-                    aria-label="Tham gia trận đấu"
-                    data-testid="btn-join-live"
-                    style={{
-                      flex: 1, background: HEX.green, color: HEX.navy, border: 'none',
-                      padding: '11px 14px', borderRadius: 10,
-                      fontWeight: 700, fontSize: 14, cursor: 'pointer',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-                      fontFamily: 'inherit',
-                    }}
-                  >
-                    <span className="material-symbols-outlined" style={{ fontSize: 18 }}>play_arrow</span>
-                    Tham gia
-                    {activeCoPlayRoom.currentPlayers != null && activeCoPlayRoom.maxPlayers != null && (
-                      <span style={{ fontSize: 12, fontWeight: 600, opacity: 0.85 }}>
-                        ({activeCoPlayRoom.currentPlayers}/{activeCoPlayRoom.maxPlayers})
-                      </span>
-                    )}
-                  </button>
-                  <IconButton
-                    title={hasPlayed ? 'Chơi lại solo' : 'Tự ôn solo'}
-                    aria-label={hasPlayed ? 'Chơi lại solo' : 'Tự ôn solo'}
-                    icon={hasPlayed ? 'refresh' : 'person'}
-                    onClick={handleSoloClick}
-                    disabled={!isMember}
-                    data-testid="btn-solo"
-                  />
-                </>
+                <button
+                  type="button"
+                  onClick={e => { stop(e); navigate(`/room/${activeCoPlayRoom.id}/lobby`, { state: { fromGroupId: groupId } }) }}
+                  title="Tham gia trận đấu đang diễn ra"
+                  aria-label="Tham gia trận đấu"
+                  data-testid="btn-join-live"
+                  style={{
+                    flex: 1, background: HEX.green, color: HEX.navy, border: 'none',
+                    padding: '11px 14px', borderRadius: 10,
+                    fontWeight: 700, fontSize: 14, cursor: 'pointer',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                    fontFamily: 'inherit',
+                  }}
+                >
+                  <span className="material-symbols-outlined" style={{ fontSize: 18 }}>play_arrow</span>
+                  Tham gia
+                  {activeCoPlayRoom.currentPlayers != null && activeCoPlayRoom.maxPlayers != null && (
+                    <span style={{ fontSize: 12, fontWeight: 600, opacity: 0.85 }}>
+                      ({activeCoPlayRoom.currentPlayers}/{activeCoPlayRoom.maxPlayers})
+                    </span>
+                  )}
+                </button>
               )
             }
             if (activeSchedule) {
               return (
-                <>
-                  <button
-                    type="button"
-                    onClick={e => { stop(e); navigate(`/groups/${groupId}/scheduled-quizzes/${activeSchedule.id}`) }}
-                    title="Tham gia lịch quiz này"
-                    aria-label="Tham gia lịch quiz"
-                    data-testid="btn-join-schedule"
-                    style={{
-                      flex: 1, background: HEX.blue, color: '#fff', border: 'none',
-                      padding: '11px 14px', borderRadius: 10,
-                      fontWeight: 700, fontSize: 14, cursor: 'pointer',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-                      fontFamily: 'inherit',
-                    }}
-                  >
-                    <span className="material-symbols-outlined" style={{ fontSize: 18 }}>how_to_reg</span>
-                    Tham gia lịch
-                  </button>
-                  <IconButton
-                    title={hasPlayed ? 'Chơi lại solo' : 'Tự ôn solo'}
-                    aria-label={hasPlayed ? 'Chơi lại solo' : 'Tự ôn solo'}
-                    icon={hasPlayed ? 'refresh' : 'person'}
-                    onClick={handleSoloClick}
-                    disabled={!isMember}
-                    data-testid="btn-solo"
-                  />
-                </>
+                <button
+                  type="button"
+                  onClick={e => { stop(e); navigate(`/groups/${groupId}/scheduled-quizzes/${activeSchedule.id}`) }}
+                  title="Tham gia lịch quiz này"
+                  aria-label="Tham gia lịch quiz"
+                  data-testid="btn-join-schedule"
+                  style={{
+                    flex: 1, background: HEX.blue, color: '#fff', border: 'none',
+                    padding: '11px 14px', borderRadius: 10,
+                    fontWeight: 700, fontSize: 14, cursor: 'pointer',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                    fontFamily: 'inherit',
+                  }}
+                >
+                  <span className="material-symbols-outlined" style={{ fontSize: 18 }}>how_to_reg</span>
+                  Tham gia lịch
+                </button>
               )
             }
-            // Default member view: full-width solo replay CTA.
+            // No active room or scheduled session — hint member to wait for leader.
             return (
-              <button
-                type="button"
-                onClick={handleSoloClick}
-                disabled={!isMember}
-                title={hasPlayed ? 'Chơi lại solo' : 'Tự ôn solo'}
-                aria-label={hasPlayed ? 'Chơi lại solo' : 'Tự ôn solo'}
-                data-testid="btn-solo"
+              <div
+                data-testid="btn-wait-leader"
                 style={{
-                  flex: 1, background: HEX.gold, color: HEX.navy, border: 'none',
-                  padding: '11px 14px', borderRadius: 10,
-                  fontWeight: 700, fontSize: 14,
-                  cursor: !isMember ? 'not-allowed' : 'pointer',
-                  opacity: !isMember ? 0.6 : 1,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-                  fontFamily: 'inherit',
+                  flex: 1, padding: '11px 14px', borderRadius: 10,
+                  background: 'rgba(255,255,255,0.04)', color: HEX.textMuted,
+                  fontSize: 12, textAlign: 'center', fontStyle: 'italic',
                 }}
-              >
-                <span className="material-symbols-outlined" style={{ fontSize: 18 }}>{hasPlayed ? 'refresh' : 'person'}</span>
-                {hasPlayed ? 'Chơi lại solo' : 'Tự ôn solo'}
-              </button>
+              >Đợi trưởng nhóm bắt đầu</div>
             )
           })()}
           {isDraft && isLeader && (
@@ -587,79 +498,6 @@ export default function QuizSetListCard({
         >{coPlayError}</div>
       )}
 
-      {/* SOLO MODAL */}
-      {soloModal && (
-        <div
-          onClick={() => !soloBusy && setSoloModal(false)}
-          style={{
-            position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            zIndex: 50, padding: 16,
-          }}
-          data-testid="solo-modal"
-        >
-          <div
-            onClick={e => e.stopPropagation()}
-            style={{
-              background: 'rgba(40, 42, 56, 0.95)',
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              borderRadius: 16, maxWidth: 420, width: '100%',
-              padding: 24, color: HEX.textPrimary,
-            }}
-          >
-            <h2 style={{ fontFamily: '"Sora", sans-serif', fontSize: 18, fontWeight: 700, marginBottom: 6 }}>
-              Chơi solo: {qs.name}
-            </h2>
-            {mastery && mastery.totalAttempts > 0 ? (
-              <div style={{ fontSize: 13, color: HEX.textMuted, marginBottom: 18 }}>
-                Đã chơi: <span style={{ color: HEX.gold, fontWeight: 600 }}>{mastery.totalAttempts} lượt</span>
-                {' · '}
-                Best: <span style={{ color: HEX.gold, fontWeight: 600 }}>
-                  {mastery.bestScore}/{qs.totalQuestions}
-                  {mastery.bestAccuracy != null && ` (${Number(mastery.bestAccuracy).toFixed(0)}%)`}
-                </span>
-              </div>
-            ) : (
-              <div style={{ fontSize: 13, color: HEX.textMuted, marginBottom: 18 }}>
-                Lượt chơi đầu tiên của bạn — chúc may mắn!
-              </div>
-            )}
-            {soloError && (
-              <div style={{
-                padding: '8px 12px', borderRadius: 8, marginBottom: 12,
-                background: 'rgba(239, 68, 68, 0.15)', color: HEX.red, fontSize: 12,
-              }}>{soloError}</div>
-            )}
-            <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
-              <button
-                type="button"
-                onClick={() => setSoloModal(false)}
-                disabled={soloBusy}
-                style={{
-                  background: 'transparent', color: HEX.textMuted,
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  padding: '8px 14px', borderRadius: 8, cursor: 'pointer',
-                  fontFamily: 'inherit', fontSize: 13,
-                }}
-              >Hủy</button>
-              <button
-                type="button"
-                onClick={handleSoloConfirm}
-                disabled={soloBusy}
-                data-testid="solo-modal-confirm"
-                style={{
-                  background: HEX.gold, color: HEX.navy,
-                  border: 'none', padding: '8px 14px', borderRadius: 8,
-                  cursor: soloBusy ? 'wait' : 'pointer',
-                  fontFamily: 'inherit', fontSize: 13, fontWeight: 700,
-                }}
-              >{soloBusy ? 'Đang bắt đầu...' : 'Bắt đầu lượt mới'}</button>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   )
 }
@@ -699,6 +537,34 @@ interface IconButtonProps {
   'aria-label': string
   disabled?: boolean
   'data-testid'?: string
+}
+
+function MenuItem({
+  icon, label, onClick, danger, testId,
+}: {
+  icon: string; label: string; onClick: () => void; danger?: boolean; testId?: string;
+}) {
+  return (
+    <button
+      type="button"
+      role="menuitem"
+      onClick={e => { e.stopPropagation(); onClick() }}
+      data-testid={testId}
+      style={{
+        width: '100%', display: 'flex', alignItems: 'center', gap: 10,
+        background: 'transparent', border: 'none',
+        color: danger ? HEX.red : HEX.textPrimary,
+        padding: '9px 12px', borderRadius: 6,
+        fontSize: 13, fontFamily: 'inherit', textAlign: 'left',
+        cursor: 'pointer',
+      }}
+      onMouseEnter={e => { e.currentTarget.style.background = danger ? 'rgba(239, 68, 68, 0.12)' : 'rgba(255,255,255,0.06)' }}
+      onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}
+    >
+      <span className="material-symbols-outlined" style={{ fontSize: 17 }}>{icon}</span>
+      {label}
+    </button>
+  )
 }
 
 function IconButton(props: IconButtonProps) {
