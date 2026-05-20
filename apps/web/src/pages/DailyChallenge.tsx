@@ -535,6 +535,7 @@ const DailyChallenge: React.FC = () => {
                   state={state}
                   onClick={() => handleAnswer(i)}
                   testId={`daily-option-${i}`}
+                  pickedByUser={i === selectedAnswer}
                 />
               )
             })}
