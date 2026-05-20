@@ -53,7 +53,22 @@ export default function QuizScreen() {
   const queryClient = useQueryClient()
   const { trigger: haptic } = useHaptic()
   const { play: playSound } = useSound()
-  const { questions = [], sessionId, mode = 'practice', timePerQuestion = 30, showExplanation = true } = route.params ?? {}
+  // Defensive normalization: route.params destructure default `= []` chỉ
+  // áp dụng khi undefined. Nếu navigation pass null (xảy ra với React Nav
+  // pop/restore state hoặc deeplink), default không kick in → questions=null
+  // → mọi `questions.length` throw "Cannot read property 'length' of null".
+  const _params = (route.params ?? {}) as {
+    questions?: any[] | null
+    sessionId?: string
+    mode?: string
+    timePerQuestion?: number
+    showExplanation?: boolean
+  }
+  const questions: any[] = Array.isArray(_params.questions) ? _params.questions : []
+  const sessionId = _params.sessionId
+  const mode = typeof _params.mode === 'string' ? _params.mode : 'practice'
+  const timePerQuestion = typeof _params.timePerQuestion === 'number' ? _params.timePerQuestion : 30
+  const showExplanation = _params.showExplanation !== false
   const isDailyMode = mode === 'daily'
 
   const [qIndex, setQIndex] = useState(0)

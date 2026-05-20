@@ -48,7 +48,14 @@ export default function DailyResultScreen() {
   const { t } = useTranslation()
   const navigation = useNavigation<any>()
   const route = useRoute<any>()
-  const stats = route.params?.stats
+  // Defensive: stats có thể null khi nav pop/restore state.
+  const stats = (route.params?.stats ?? {}) as {
+    correctAnswers?: number
+    totalQuestions?: number
+    totalScore?: number
+    questionScores?: number[] | null
+    questions?: unknown[] | null
+  }
   const pulse = useRef(new Animated.Value(0.5)).current
 
   useEffect(() => {
@@ -60,8 +67,8 @@ export default function DailyResultScreen() {
     ).start()
   }, [pulse])
 
-  const correct = stats?.correctAnswers ?? 0
-  const total = stats?.totalQuestions ?? 5
+  const correct = stats.correctAnswers ?? 0
+  const total = stats.totalQuestions ?? 5
   const percent = total > 0 ? Math.round((correct / total) * 100) : 0
   const isPerfect = correct === total && total > 0
 
@@ -78,8 +85,7 @@ export default function DailyResultScreen() {
   const rankGroup = result?.rankGroup
   const completedAt = result?.completedAt
   const breakdown: boolean[] = result?.resultsBreakdown
-    ?? stats?.questionScores?.map((sc: number) => sc > 0)
-    ?? []
+    ?? (Array.isArray(stats.questionScores) ? stats.questionScores.map((sc: number) => sc > 0) : [])
 
   const userName = useAuthStore(state => state.user?.name) ?? '—'
   const currentStreak = useAuthStore(state => state.user?.currentStreak) ?? 0
@@ -87,7 +93,7 @@ export default function DailyResultScreen() {
   const myEntry: DailyLbEntry | null = result
     ? {
         rank: rankGlobal ?? 0, name: userName,
-        score: result.score ?? stats?.totalScore ?? 0,
+        score: result.score ?? stats.totalScore ?? 0,
         correctCount: correct, totalQuestions: total,
       }
     : null
