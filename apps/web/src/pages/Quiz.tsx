@@ -459,22 +459,39 @@ const Quiz: React.FC = () => {
     setQuestionScores(newQuestionScores)
 
     setQuizStats(prev => {
-      const newStats = { ...prev }
+      // PURE updater — every nested object/array is copied before mutation.
+      // The previous version did `const newStats = { ...prev }` then
+      // `newStats.difficultyBreakdown[diff].total += 1` which mutated
+      // `prev.difficultyBreakdown[diff]` (shared reference). React 18
+      // StrictMode runs updaters twice in dev to surface this exact bug,
+      // so the breakdown numbers showed up doubled (5/8 easy displayed
+      // as 10/16 — user report 2026-05-20).
       const difficulty = currentQuestion.difficulty as 'easy' | 'medium' | 'hard'
-      newStats.difficultyBreakdown[difficulty].total += 1
-      if (correct) {
-        newStats.difficultyBreakdown[difficulty].correct += 1
-        newStats.difficultyBreakdown[difficulty].score += questionScore
+      const prevBucket = prev.difficultyBreakdown[difficulty]
+      const newBucket = {
+        total: prevBucket.total + 1,
+        correct: prevBucket.correct + (correct ? 1 : 0),
+        score: prevBucket.score + (correct ? questionScore : 0),
       }
-      newStats.timePerQuestion.push(timeTaken)
-      newStats.totalTime = Date.now() - quizStartTime
-      newStats.averageTime = newStats.timePerQuestion.reduce((a, b) => a + b, 0) / newStats.timePerQuestion.length
-      newStats.totalScore = score + questionScore
-      newStats.correctAnswers = correctAnswers + (correct ? 1 : 0)
-      newStats.accuracy = (newStats.correctAnswers / newStats.totalQuestions) * 100
-      newStats.userAnswers = newUserAnswers
-      newStats.questionScores = newQuestionScores
-      return newStats
+      const newTimePerQuestion = [...prev.timePerQuestion, timeTaken]
+      const newCorrectAnswers = correctAnswers + (correct ? 1 : 0)
+      return {
+        ...prev,
+        difficultyBreakdown: {
+          ...prev.difficultyBreakdown,
+          [difficulty]: newBucket,
+        },
+        timePerQuestion: newTimePerQuestion,
+        totalTime: Date.now() - quizStartTime,
+        averageTime: newTimePerQuestion.reduce((a, b) => a + b, 0) / newTimePerQuestion.length,
+        totalScore: score + questionScore,
+        correctAnswers: newCorrectAnswers,
+        accuracy: prev.totalQuestions > 0
+          ? (newCorrectAnswers / prev.totalQuestions) * 100
+          : 0,
+        userAnswers: newUserAnswers,
+        questionScores: newQuestionScores,
+      }
     })
 
     if (settings?.mode === 'ranked' && settings?.sessionId) {
@@ -553,10 +570,7 @@ const Quiz: React.FC = () => {
       userAnswers,
       questionScores,
     }
-    return (
-      <QuizResults
-        stats={finalizedStats}
-        onPlayAgain={async () => {
+    const handlePlayAgain = async () => {
           // Variety modes (mystery / speed) refetch a fresh random batch so
           // "Random hoàn toàn" / "10 câu × 10s" actually delivers new content
           // instead of replaying the same 10 questions. Best-effort: if the
@@ -610,7 +624,11 @@ const Quiz: React.FC = () => {
             userAnswers: new Array(questions.length).fill(null),
             questionScores: new Array(questions.length).fill(0)
           }))
-        }}
+        }
+    return (
+      <QuizResults
+        stats={finalizedStats}
+        onPlayAgain={handlePlayAgain}
         onBackToHome={() => navigate(location.state?.isRanked ? '/ranked' : '/')}
         isRanked={location.state?.isRanked || false}
         sessionId={location.state?.sessionId}

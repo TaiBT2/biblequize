@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import confetti from 'canvas-confetti'
 import { soundManager } from '../services/soundManager'
 import { haptic } from '../utils/haptics'
+import MobileBottomTabs from '../layouts/components/MobileBottomTabs'
 
 interface Question {
   id: string
@@ -237,7 +238,7 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
   } as const
 
   return (
-    <div data-testid="quiz-results-page" className="min-h-screen bg-[#11131e] p-4 py-8 md:py-12">
+    <div data-testid="quiz-results-page" className="min-h-screen bg-[#11131e] p-4 py-8 md:py-12 pb-28 md:pb-12">
       <main className="max-w-2xl mx-auto w-full flex flex-col">
 
         {/* HERO BLOCK */}
@@ -440,6 +441,14 @@ const QuizResults: React.FC<QuizResultsProps> = ({ stats, onPlayAgain, onBackToH
         </button>
 
       </main>
+
+      {/* /quiz route lives OUTSIDE AppLayout for immersive gameplay
+          (main.tsx line 181-186) so MobileBottomTabs would normally be
+          hidden here. Surface them on the Results screen — gameplay is
+          over, the user wants nav back. The pb-28 above on the wrapper
+          adds the 80px clearance so the "Về trang chủ" link doesn't
+          sit under the fixed bar. */}
+      <MobileBottomTabs />
     </div>
   )
 }
