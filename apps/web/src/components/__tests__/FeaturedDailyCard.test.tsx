@@ -5,53 +5,49 @@ import userEvent from '@testing-library/user-event'
 import FeaturedDailyCard from '../FeaturedDailyCard'
 
 describe('FeaturedDailyCard (HR-3)', () => {
-  it('renders title, tagline, and default meta (5 câu / 3 phút)', () => {
-    render(<FeaturedDailyCard onStart={() => {}} countdownText="12:34:56" />)
-    expect(screen.getByText('Bắt đầu ngày mới với Lời Chúa')).toBeInTheDocument()
-    expect(screen.getByText(/5 câu · 3 phút/)).toBeInTheDocument()
+  it('renders title with "Lời Chúa" emphasis and default meta pills', () => {
+    render(
+      <FeaturedDailyCard
+        onStart={() => {}}
+        countdownText="12:34:56"
+        todayOverride={new Date(2026, 4, 19)}
+      />
+    )
+    // Title text is split across <span> for emphasis — use textContent match.
+    const heading = screen.getByRole('heading', { level: 2 })
+    expect(heading).toHaveTextContent('Bắt đầu ngày mới với Lời Chúa')
+    expect(screen.getByText(/5 câu/)).toBeInTheDocument()
+    expect(screen.getByText(/~3 phút/)).toBeInTheDocument()
+    expect(screen.getByText(/Cùng cộng đồng/)).toBeInTheDocument()
     expect(screen.getByTestId('featured-daily-card-countdown')).toHaveTextContent('12:34:56')
   })
 
-  it('fires onStart when CTA is clicked', async () => {
+  it('renders date label in dd/M format', () => {
+    render(
+      <FeaturedDailyCard
+        onStart={() => {}}
+        countdownText="00:00:01"
+        todayOverride={new Date(2026, 4, 19)}
+      />
+    )
+    expect(screen.getByTestId('featured-daily-card-date')).toHaveTextContent('19/5')
+  })
+
+  it('renders reward block with +50 XP', () => {
+    render(<FeaturedDailyCard onStart={() => {}} countdownText="00:00:01" />)
+    const reward = screen.getByTestId('featured-daily-card-reward')
+    expect(reward).toHaveTextContent('Phần thưởng')
+    expect(reward).toHaveTextContent('+50 XP')
+  })
+
+  it('CTA button text is "Bắt đầu" and fires onStart when clicked', async () => {
     const onStart = vi.fn()
     const user = userEvent.setup()
     render(<FeaturedDailyCard onStart={onStart} countdownText="00:00:01" />)
-    await user.click(screen.getByTestId('featured-daily-card-cta'))
+    const cta = screen.getByTestId('featured-daily-card-cta')
+    expect(cta).toHaveTextContent('Bắt đầu')
+    await user.click(cta)
     expect(onStart).toHaveBeenCalledTimes(1)
-  })
-
-  it('hides global participants row when prop is undefined', () => {
-    render(<FeaturedDailyCard onStart={() => {}} countdownText="00:00:01" />)
-    expect(screen.queryByTestId('featured-daily-card-participants')).not.toBeInTheDocument()
-  })
-
-  it('hides global participants row when count is 0', () => {
-    render(
-      <FeaturedDailyCard onStart={() => {}} globalParticipants={0} countdownText="00:00:01" />
-    )
-    expect(screen.queryByTestId('featured-daily-card-participants')).not.toBeInTheDocument()
-  })
-
-  it('renders globalParticipants with locale-formatted number when > 0', () => {
-    render(
-      <FeaturedDailyCard onStart={() => {}} globalParticipants={1247} countdownText="00:00:01" />
-    )
-    const row = screen.getByTestId('featured-daily-card-participants')
-    expect(row).toHaveTextContent('1,247')
-    expect(row).toHaveTextContent('đã chơi hôm nay')
-  })
-
-  it('renders one dot indicator per questionCount', () => {
-    render(
-      <FeaturedDailyCard
-        questionCount={7}
-        onStart={() => {}}
-        countdownText="00:00:01"
-      />
-    )
-    const dotsContainer = screen.getByTestId('featured-daily-card-dots')
-    const dots = dotsContainer.querySelectorAll('[aria-hidden]')
-    expect(dots.length).toBe(7)
   })
 
   it('countdown label has tabular-nums for digit alignment', () => {

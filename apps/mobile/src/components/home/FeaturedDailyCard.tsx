@@ -1,48 +1,28 @@
 import React, { useEffect, useRef } from 'react'
 import { View, Text, StyleSheet, Pressable, Animated } from 'react-native'
-import Svg, { Defs, RadialGradient, Stop, Rect, Path, Circle } from 'react-native-svg'
-import { useQuery } from '@tanstack/react-query'
+import Svg, { Defs, RadialGradient, Stop, Rect } from 'react-native-svg'
 import { useCountdownToMidnight } from './useCountdownToMidnight'
-import { apiClient } from '../../api/client'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
 interface Props {
   questionCount?: number
   estimatedMinutes?: number
-  globalParticipants?: number
   onStart: () => void
 }
 
-interface SeasonInfo {
-  active?: boolean
-  name?: string
+function formatDayMonth(d: Date): string {
+  return `${d.getDate()}/${d.getMonth() + 1}`
 }
 
-/**
- * State A daily hero — match web `FeaturedDailyCard` (home_modern.html `.daily-featured`).
- * Maroon+gold radial atmosphere via SVG defs, gold left-border accent (3px),
- * top-right decorative ornament, pulsing label dot, dot-style question
- * indicator, gold CTA with subtle inset highlight.
- */
 export default function FeaturedDailyCard({
   questionCount = 5,
   estimatedMinutes = 3,
-  globalParticipants,
   onStart,
 }: Props) {
   const countdown = useCountdownToMidnight()
   const pulse = useRef(new Animated.Value(0.5)).current
+  const dayLabel = formatDayMonth(new Date())
 
-  // DC-PARITY-M4: mirror web `FeaturedDailyChallenge` season chip. Informational
-  // only (no ×1.5 bonus wired per DECISIONS.md 2026-05-02).
-  const { data: season } = useQuery<SeasonInfo | null>({
-    queryKey: ['season', 'active'],
-    queryFn: () => apiClient.get('/api/seasons/active').then(r => r.data).catch(() => null),
-    staleTime: 5 * 60_000,
-  })
-  const seasonName = season?.active && season.name ? season.name : null
-
-  // Pulsing dot animation
   useEffect(() => {
     Animated.loop(
       Animated.sequence([
@@ -52,11 +32,8 @@ export default function FeaturedDailyCard({
     ).start()
   }, [pulse])
 
-  const showParticipants = typeof globalParticipants === 'number' && globalParticipants > 0
-
   return (
     <View style={s.card}>
-      {/* Radial gradient atmosphere — maroon top-right + gold bottom-left + dark base */}
       <Svg style={StyleSheet.absoluteFill} preserveAspectRatio="none">
         <Defs>
           <RadialGradient id="maroonGlow" cx="90%" cy="0%" rx="70%" ry="50%">
@@ -73,59 +50,43 @@ export default function FeaturedDailyCard({
         <Rect width="100%" height="100%" fill="url(#goldGlow)" />
       </Svg>
 
-      {/* Top-right decorative ornament */}
-      <Svg
-        style={s.ornament}
-        width={70}
-        height={50}
-        viewBox="0 0 70 50"
-      >
-        <Path d="M5 25 Q20 8 35 25 Q50 42 65 25" stroke="#e8a832" strokeWidth={1} opacity={0.5} fill="none" />
-        <Circle cx={35} cy={25} r={2.5} fill="#e8a832" opacity={0.6} />
-        <Circle cx={35} cy={12} r={1.2} fill="#e8a832" opacity={0.5} />
-        <Circle cx={35} cy={38} r={1.2} fill="#e8a832" opacity={0.5} />
-        <Path d="M2 25 L10 25 M60 25 L68 25" stroke="#e8a832" strokeWidth={0.8} opacity={0.4} fill="none" />
-      </Svg>
-
       <View style={s.content}>
-        {/* Label row with pulsing dot */}
+        {/* Label row: dot + label · date */}
         <View style={s.labelRow}>
           <Animated.View style={[s.pulseDot, { opacity: pulse }]} />
-          <Text style={s.label}>THỬ THÁCH HÔM NAY · MỚI SẴN SÀNG</Text>
+          <Text style={s.label}>THỬ THÁCH HÔM NAY</Text>
+          <Text style={s.labelDot}>·</Text>
+          <Text style={s.labelDate}>{dayLabel}</Text>
         </View>
 
-        {/* Heading + subline */}
-        <Text style={s.heading}>Bắt đầu ngày mới với Lời Chúa</Text>
-        <Text style={s.subline}>
-          {questionCount} câu · {estimatedMinutes} phút · Reset mỗi 24 giờ
+        {/* Heading with "Lời Chúa" gold italic emphasis */}
+        <Text style={s.heading} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.8}>
+          Bắt đầu ngày mới với <Text style={s.headingAccent}>Lời Chúa</Text>
         </Text>
 
-        {/* Meta row: dots + question count + clock */}
-        <View style={s.metaRow}>
-          <View style={s.metaItem}>
-            <View style={s.dotsInline}>
-              {Array.from({ length: questionCount }).map((_, i) => (
-                <View key={i} style={s.questionDot} />
-              ))}
-            </View>
-            <Text style={s.metaText}>{questionCount} câu hỏi</Text>
+        {/* Pill chips */}
+        <View style={s.pillRow}>
+          <View style={s.pill}>
+            <Text style={s.pillIcon}>📖</Text>
+            <Text style={s.pillText} numberOfLines={1}>{questionCount} câu</Text>
           </View>
-          <View style={s.metaItem}>
-            <Text style={s.metaIcon}>⏱</Text>
-            <Text style={s.metaText}>~{estimatedMinutes} phút</Text>
+          <View style={s.pill}>
+            <Text style={s.pillIcon}>⏱</Text>
+            <Text style={s.pillText} numberOfLines={1}>~{estimatedMinutes} phút</Text>
           </View>
-          {showParticipants && (
-            <View style={s.metaItem}>
-              <Text style={s.metaIcon}>👥</Text>
-              <Text style={s.metaText}>{globalParticipants!.toLocaleString()} đã chơi</Text>
-            </View>
-          )}
-          {seasonName && (
-            <View style={s.seasonChip} testID="featured-daily-season-chip">
-              <Text style={s.seasonChipIcon}>✦</Text>
-              <Text style={s.seasonChipText} numberOfLines={1}>{seasonName}</Text>
-            </View>
-          )}
+          <View style={[s.pill, s.pillShrink]}>
+            <Text style={s.pillIcon}>🌐</Text>
+            <Text style={s.pillText} numberOfLines={1}>Cùng cộng đồng</Text>
+          </View>
+        </View>
+
+        {/* Reward block */}
+        <View style={s.reward}>
+          <Text style={s.rewardIcon}>🏆</Text>
+          <Text style={s.rewardText}>
+            <Text style={s.rewardLabel}>Phần thưởng: </Text>
+            <Text style={s.rewardValue}>+50 XP</Text>
+          </Text>
         </View>
 
         {/* Footer: countdown + CTA */}
@@ -137,12 +98,11 @@ export default function FeaturedDailyCard({
           <Pressable
             onPress={onStart}
             style={({ pressed }) => [s.cta, pressed && s.ctaPressed]}
-            accessibilityLabel="Vào chơi thử thách hôm nay"
+            accessibilityLabel="Bắt đầu thử thách hôm nay"
             accessibilityRole="button"
           >
-            {/* Inset highlight overlay top — fake gradient bevel */}
             <View style={s.ctaInsetHighlight} pointerEvents="none" />
-            <Text style={s.ctaText}>Vào chơi ngay →</Text>
+            <Text style={s.ctaText}>Bắt đầu  →</Text>
           </Pressable>
         </View>
       </View>
@@ -159,54 +119,62 @@ const s = StyleSheet.create({
     borderColor: 'rgba(232,168,50,0.18)',
     borderLeftWidth: 3,
     borderLeftColor: colors.gold,
-    // RN doesn't support box-shadow with offset Y + spread well on Android;
-    // use elevation + shadowColor for cross-platform glow.
     shadowColor: '#e8a832',
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.12,
     shadowRadius: 14,
     elevation: 4,
   },
-  ornament: { position: 'absolute', top: 12, right: 16, opacity: 0.5 },
-  content: { padding: spacing.xl, gap: spacing.xs },
+  content: { padding: spacing.xl },
 
-  labelRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, marginBottom: 4 },
+  labelRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, marginBottom: spacing.sm },
   pulseDot: {
     width: 6, height: 6, borderRadius: 3, backgroundColor: colors.gold,
     shadowColor: colors.gold, shadowOpacity: 0.7, shadowRadius: 4, shadowOffset: { width: 0, height: 0 },
   },
   label: { fontSize: 10, fontWeight: typography.weight.bold, color: colors.gold, letterSpacing: 2 },
+  labelDot: { fontSize: 10, color: colors.gold, opacity: 0.5 },
+  labelDate: { fontSize: 10, fontWeight: typography.weight.semibold, color: colors.textMuted, letterSpacing: 1 },
 
-  heading: { fontSize: 22, fontWeight: typography.weight.bold, color: colors.textPrimary, letterSpacing: -0.5, lineHeight: 28 },
-  subline: { fontSize: 12, color: colors.textMuted, marginTop: 2 },
-
-  metaRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md, marginTop: spacing.md, alignItems: 'center' },
-  metaItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  metaIcon: { fontSize: 13, color: colors.tertiary },
-  metaText: { fontSize: 11, color: colors.textMuted },
-  dotsInline: { flexDirection: 'row', gap: 4 },
-  questionDot: {
-    width: 8, height: 8, borderRadius: 4,
-    borderWidth: 1.5, borderColor: 'rgba(232,168,50,0.5)',
+  heading: {
+    fontSize: 17, fontWeight: typography.weight.bold, color: colors.textPrimary,
+    letterSpacing: -0.5, lineHeight: 22, marginBottom: spacing.md,
   },
-  seasonChip: {
+  headingAccent: {
+    color: colors.gold,
+    fontStyle: 'italic',
+    fontWeight: typography.weight.bold,
+  },
+
+  pillRow: { flexDirection: 'row', flexWrap: 'nowrap', gap: 6, marginBottom: spacing.md },
+  pill: {
     flexDirection: 'row', alignItems: 'center', gap: 4,
-    paddingHorizontal: 8, paddingVertical: 3,
+    paddingHorizontal: 8, paddingVertical: 4,
     borderRadius: borderRadius.full,
-    backgroundColor: 'rgba(232,168,50,0.14)',
-    borderWidth: 1, borderColor: 'rgba(232,168,50,0.35)',
+    borderWidth: 1, borderColor: 'rgba(232,168,50,0.20)',
+    backgroundColor: 'rgba(232,168,50,0.06)',
   },
-  seasonChipIcon: { fontSize: 11, color: colors.gold },
-  seasonChipText: {
-    fontSize: 11, fontWeight: typography.weight.semibold, color: colors.gold,
-    letterSpacing: 0.2, maxWidth: 140,
+  pillShrink: { flexShrink: 1 },
+  pillIcon: { fontSize: 10 },
+  pillText: { fontSize: 11, color: colors.textMuted },
+
+  reward: {
+    flexDirection: 'row', alignItems: 'center', gap: 10,
+    paddingHorizontal: 14, paddingVertical: 10,
+    borderRadius: borderRadius.lg,
+    borderWidth: 1, borderColor: 'rgba(232,168,50,0.25)',
+    backgroundColor: 'rgba(232,168,50,0.08)',
+    marginBottom: spacing.md,
   },
+  rewardIcon: { fontSize: 16 },
+  rewardText: { fontSize: 13, color: colors.textPrimary },
+  rewardLabel: { color: colors.textMuted },
+  rewardValue: { color: colors.gold, fontWeight: typography.weight.bold },
 
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: spacing.lg,
     gap: spacing.md,
   },
   countdownBlock: { gap: 2 },
@@ -221,9 +189,9 @@ const s = StyleSheet.create({
 
   cta: {
     backgroundColor: '#e8a832',
-    paddingHorizontal: 18,
+    paddingHorizontal: 20,
     paddingVertical: 12,
-    borderRadius: 11,
+    borderRadius: 12,
     overflow: 'hidden',
     shadowColor: '#e8a832',
     shadowOffset: { width: 0, height: 4 },
@@ -238,7 +206,7 @@ const s = StyleSheet.create({
     backgroundColor: 'rgba(255,220,140,0.5)',
   },
   ctaText: {
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: typography.weight.bold,
     color: '#1a1208',
     letterSpacing: 0.2,
