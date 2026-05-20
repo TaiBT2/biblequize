@@ -85,12 +85,26 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
     List<Question> findRandomQuestionsByDifficultyExcludingIds(@Param("difficulty") Question.Difficulty difficulty,
                                                                 @Param("excludeIds") List<String> excludeIds,
                                                                 Pageable pageable);
-    
+
     @Query("SELECT q FROM Question q WHERE q.isActive = true AND q.book = :book AND q.difficulty = :difficulty AND q.id NOT IN :excludeIds ORDER BY RAND()")
     List<Question> findRandomQuestionsByBookAndDifficultyExcludingIds(@Param("book") String book,
                                                                       @Param("difficulty") Question.Difficulty difficulty,
                                                                       @Param("excludeIds") List<String> excludeIds,
                                                                       Pageable pageable);
+
+    // Quick Match DATABASE source filters by language so rooms don't mix vi/en.
+    @Query("SELECT q FROM Question q WHERE q.isActive = true AND q.language = :language AND q.difficulty = :difficulty AND q.id NOT IN :excludeIds ORDER BY RAND()")
+    List<Question> findRandomQuestionsByLanguageAndDifficultyExcludingIds(@Param("language") String language,
+                                                                          @Param("difficulty") Question.Difficulty difficulty,
+                                                                          @Param("excludeIds") List<String> excludeIds,
+                                                                          Pageable pageable);
+
+    @Query("SELECT q FROM Question q WHERE q.isActive = true AND q.language = :language AND q.book = :book AND q.difficulty = :difficulty AND q.id NOT IN :excludeIds ORDER BY RAND()")
+    List<Question> findRandomQuestionsByLanguageAndBookAndDifficultyExcludingIds(@Param("language") String language,
+                                                                                  @Param("book") String book,
+                                                                                  @Param("difficulty") Question.Difficulty difficulty,
+                                                                                  @Param("excludeIds") List<String> excludeIds,
+                                                                                  Pageable pageable);
     
     // Performance optimization: Get question count by filters
     @Query("SELECT COUNT(q) FROM Question q WHERE q.isActive = true AND " +

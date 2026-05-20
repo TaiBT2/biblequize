@@ -174,6 +174,7 @@ public class RoomController {
             }
 
             // Generate / pick questions inline
+            String language = body.get("language") instanceof String s ? s : "vi";
             List<String> preselectedIds = null;
             String aiPayload = null;
             if (source == Room.QuestionSource.AI_GENERATED) {
@@ -181,7 +182,6 @@ public class RoomController {
                 int chapterTo   = body.get("chapterTo")   instanceof Number n ? n.intValue() : Math.max(chapterFrom, 50);
                 int verseFrom   = body.get("verseFrom")   instanceof Number n ? n.intValue() : 1;
                 int verseTo     = body.get("verseTo")     instanceof Number n ? n.intValue() : 50;
-                String language = body.get("language") instanceof String s ? s : "vi";
                 try {
                     aiPayload = quickMatchQuestionSource.generateAiPayload(
                             bookScope, chapterFrom, chapterTo, verseFrom, verseTo, questionCount, language);
@@ -192,7 +192,7 @@ public class RoomController {
                             "message", e.getMessage() != null ? e.getMessage() : "Không sinh đủ câu hỏi"));
                 }
             } else {
-                preselectedIds = quickMatchQuestionSource.pickDatabaseIds(bookScope, questionCount);
+                preselectedIds = quickMatchQuestionSource.pickDatabaseIds(bookScope, questionCount, language);
             }
 
             // Create room + increment counter (atomic-ish; on save failure counter stays unincremented)

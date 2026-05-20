@@ -54,17 +54,20 @@ public class QuickMatchQuestionSourceService {
     /**
      * Pick {@code count} question IDs from the DB with a 30/50/20
      * difficulty mix. {@code book} is optional ({@code null} or "ALL"
-     * → no book filter).
+     * → no book filter). {@code language} filters vi/en so rooms don't
+     * mix the two pools (bug 2026-05-20 — was leaking EN questions into
+     * VN rooms because language wasn't passed through).
      */
-    public List<String> pickDatabaseIds(String book, int count) {
+    public List<String> pickDatabaseIds(String book, int count, String language) {
         int easy = Math.round(count * 0.30f);
         int hard = Math.round(count * 0.20f);
         int medium = count - easy - hard;
 
+        String lang = (language == null || language.isBlank()) ? "vi" : language;
         List<Question> bag = new ArrayList<>();
-        bag.addAll(pick(book, Question.Difficulty.easy, easy));
-        bag.addAll(pick(book, Question.Difficulty.medium, medium));
-        bag.addAll(pick(book, Question.Difficulty.hard, hard));
+        bag.addAll(pick(lang, book, Question.Difficulty.easy, easy));
+        bag.addAll(pick(lang, book, Question.Difficulty.medium, medium));
+        bag.addAll(pick(lang, book, Question.Difficulty.hard, hard));
         Collections.shuffle(bag, RANDOM);
 
         // Trim if any tier returned more than requested (shouldn't happen
@@ -72,14 +75,14 @@ public class QuickMatchQuestionSourceService {
         return bag.stream().limit(count).map(Question::getId).toList();
     }
 
-    private List<Question> pick(String book, Question.Difficulty diff, int count) {
+    private List<Question> pick(String language, String book, Question.Difficulty diff, int count) {
         if (count <= 0) return List.of();
         PageRequest pr = PageRequest.of(0, count);
         List<String> excludeNone = List.of("__none__");
         if (book == null || book.isBlank() || "ALL".equalsIgnoreCase(book)) {
-            return questionRepository.findRandomQuestionsByDifficultyExcludingIds(diff, excludeNone, pr);
+            return questionRepository.findRandomQuestionsByLanguageAndDifficultyExcludingIds(language, diff, excludeNone, pr);
         }
-        return questionRepository.findRandomQuestionsByBookAndDifficultyExcludingIds(book, diff, excludeNone, pr);
+        return questionRepository.findRandomQuestionsByLanguageAndBookAndDifficultyExcludingIds(language, book, diff, excludeNone, pr);
     }
 
     /**
