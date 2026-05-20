@@ -33,26 +33,32 @@ export default function HeroRankedCard({
       accessibilityLabel="Vào Đấu Hạng"
       accessibilityRole="button"
     >
-      {/* Soft blended background — 2 layered radial gradients tạo cảm giác
-          card phẳng + warm fade thay vì patches glow/ornament rõ rệt.
-          - Layer 1: gold spread rộng cover toàn card, opacity rất nhẹ.
-          - Layer 2: highlight đậm hơn tại corner để gợi depth, fade nhanh.
-          KHÔNG dùng ornament (user feedback: card hòa vào nhau như web). */}
+      {/* Blended background — 3 layered radials tạo warm fade từ giữa ra
+          rìa + accent corner. Không có hard edges, card hòa vào parent
+          background tối. */}
       <Svg style={StyleSheet.absoluteFill} preserveAspectRatio="none">
         <Defs>
-          <RadialGradient id="hrGlowWide" cx="50%" cy="50%" rx="120%" ry="100%">
-            <Stop offset="0%" stopColor="#e8a832" stopOpacity="0.10" />
-            <Stop offset="50%" stopColor="#e8a832" stopOpacity="0.05" />
+          {/* Center spread — warmth lan tỏa toàn card */}
+          <RadialGradient id="hrGlowCenter" cx="50%" cy="50%" rx="140%" ry="110%">
+            <Stop offset="0%" stopColor="#e8a832" stopOpacity="0.14" />
+            <Stop offset="45%" stopColor="#e8a832" stopOpacity="0.06" />
             <Stop offset="100%" stopColor="#e8a832" stopOpacity="0" />
           </RadialGradient>
-          <RadialGradient id="hrGlowAccent" cx="100%" cy="0%" rx="60%" ry="80%">
-            <Stop offset="0%" stopColor="#e8a832" stopOpacity="0.18" />
-            <Stop offset="60%" stopColor="#e8a832" stopOpacity="0.04" />
+          {/* Top accent — gold corner highlight depth */}
+          <RadialGradient id="hrGlowTop" cx="80%" cy="-10%" rx="80%" ry="90%">
+            <Stop offset="0%" stopColor="#e8a832" stopOpacity="0.22" />
+            <Stop offset="55%" stopColor="#e8a832" stopOpacity="0.06" />
             <Stop offset="100%" stopColor="#e8a832" stopOpacity="0" />
+          </RadialGradient>
+          {/* Subtle border-gradient replacement — tô tint nhẹ rìa */}
+          <RadialGradient id="hrEdgeFade" cx="50%" cy="50%" rx="95%" ry="95%">
+            <Stop offset="80%" stopColor="#e8a832" stopOpacity="0" />
+            <Stop offset="100%" stopColor="#e8a832" stopOpacity="0.10" />
           </RadialGradient>
         </Defs>
-        <Rect width="100%" height="100%" fill="url(#hrGlowWide)" />
-        <Rect width="100%" height="100%" fill="url(#hrGlowAccent)" />
+        <Rect width="100%" height="100%" fill="url(#hrGlowCenter)" />
+        <Rect width="100%" height="100%" fill="url(#hrGlowTop)" />
+        <Rect width="100%" height="100%" fill="url(#hrEdgeFade)" />
       </Svg>
 
       <View style={s.content}>
@@ -90,14 +96,19 @@ export default function HeroRankedCard({
 const s = StyleSheet.create({
   card: {
     position: 'relative',
-    backgroundColor: 'rgba(50,52,64,0.5)',
+    // Bg gần đen mờ hơn để blend vào surrounding screen bg. Trước
+    // rgba(50,52,64,0.5) tạo hard edge "box" rõ. Giảm xuống 0.18 + bỏ
+    // border visible → card chỉ là tint khác biệt subtle với surrounding.
+    backgroundColor: 'rgba(40,38,46,0.35)',
     borderRadius: 20,
-    borderWidth: 1, borderColor: 'rgba(232,168,50,0.15)',
+    // Border gradient mềm via SVG layer phía dưới (xem hrGlowAccent).
+    // KHÔNG dùng borderWidth solid (tạo edge cứng).
     padding: spacing.xl,
     overflow: 'hidden',
-    // shadow approximation cho boxShadow `0 18px 50px -10px rgba(232,168,50,0.18)`.
-    shadowColor: '#e8a832', shadowOpacity: 0.18, shadowRadius: 25,
-    shadowOffset: { width: 0, height: 18 }, elevation: 6,
+    // Outer gold shadow bleed rộng vào surrounding để card "hòa" vào
+    // background tối thay vì cắt ra như box.
+    shadowColor: '#e8a832', shadowOpacity: 0.22, shadowRadius: 40,
+    shadowOffset: { width: 0, height: 8 }, elevation: 8,
   },
   cardPressed: { opacity: 0.92, transform: [{ translateY: 1 }] },
   content: { gap: 10, position: 'relative', zIndex: 1 },
