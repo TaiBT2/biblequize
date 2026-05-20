@@ -89,6 +89,13 @@
       "cta": "Bắt đầu"
     },
     "primarySection": "Chế độ chơi chính",
+    "heroRanked": {
+      "label": "Tiếp theo · Bước vào đấu trường",
+      "tagline": "Daily xong rồi — giờ cạnh tranh ranking thôi",
+      "energyMeta": "{{remaining}} / {{max}} năng lượng",
+      "progressMeta": "{{answered}} / {{cap}} câu hôm nay",
+      "cta": "Vào trận"
+    },
     "practiceFeatured": {
       "title": "Luyện tập",
       "description": "Học theo nhịp riêng",

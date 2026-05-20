@@ -89,6 +89,13 @@
       "cta": "Start"
     },
     "primarySection": "Main game modes",
+    "heroRanked": {
+      "label": "Next · Enter the arena",
+      "tagline": "Daily done — time to compete for ranking",
+      "energyMeta": "{{remaining}} / {{max}} energy",
+      "progressMeta": "{{answered}} / {{cap}} questions today",
+      "cta": "Enter"
+    },
     "practiceFeatured": {
       "title": "Practice",
       "description": "Learn at your own pace",
