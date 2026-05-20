@@ -3,17 +3,18 @@
 // time → avatar stack + capacity + meta (Q câu · Ts/câu · difficulty) → CTA.
 
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../../api/client'
 import { MODE_META, type RoomModeId } from '../create-room/modeMeta'
 import AvatarStack from './AvatarStack'
 import { DIFFICULTY_CONFIG, formatBookScope, formatRelativeTime, type PublicRoom } from './types'
 
-const STATUS_BADGE: Record<'WAITING' | 'ALMOST_FULL' | 'FULL' | 'PLAYING', { bg: string; fg: string; label: string }> = {
-  WAITING:     { bg: 'rgba(74,222,128,0.15)',  fg: '#86efac', label: 'Đang chờ' },
-  ALMOST_FULL: { bg: 'rgba(255,140,66,0.15)',  fg: '#fb923c', label: 'Sắp đầy' },
-  FULL:        { bg: 'rgba(248,113,113,0.15)', fg: '#fca5a5', label: 'Đã đầy'  },
-  PLAYING:     { bg: 'rgba(232,168,50,0.15)',  fg: '#fbbf24', label: 'Đang chơi' },
+const STATUS_BADGE_STYLE: Record<'WAITING' | 'ALMOST_FULL' | 'FULL' | 'PLAYING', { bg: string; fg: string; key: string }> = {
+  WAITING:     { bg: 'rgba(74,222,128,0.15)',  fg: '#86efac', key: 'multiplayer.room.statusWaiting' },
+  ALMOST_FULL: { bg: 'rgba(255,140,66,0.15)',  fg: '#fb923c', key: 'multiplayer.room.statusAlmostFull' },
+  FULL:        { bg: 'rgba(248,113,113,0.15)', fg: '#fca5a5', key: 'multiplayer.room.statusFull'  },
+  PLAYING:     { bg: 'rgba(232,168,50,0.15)',  fg: '#fbbf24', key: 'multiplayer.room.statusPlaying' },
 }
 
 function hexToRgba(hex: string, a: number): string {
@@ -23,6 +24,7 @@ function hexToRgba(hex: string, a: number): string {
 }
 
 export default function RoomCard({ room }: { room: PublicRoom }) {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const [joining, setJoining] = useState(false)
   const [joinError, setJoinError] = useState<string | null>(null)
@@ -33,10 +35,10 @@ export default function RoomCard({ room }: { room: PublicRoom }) {
   const almostFull = !isFull && room.currentPlayers >= room.maxPlayers - 1
   const playing = room.status === 'IN_PROGRESS'
   const waiting = room.status === 'LOBBY'
-  const status = playing ? STATUS_BADGE.PLAYING
-    : isFull ? STATUS_BADGE.FULL
-    : almostFull ? STATUS_BADGE.ALMOST_FULL
-    : STATUS_BADGE.WAITING
+  const status = playing ? STATUS_BADGE_STYLE.PLAYING
+    : isFull ? STATUS_BADGE_STYLE.FULL
+    : almostFull ? STATUS_BADGE_STYLE.ALMOST_FULL
+    : STATUS_BADGE_STYLE.WAITING
 
   const handleJoin = async (e?: React.MouseEvent) => {
     e?.stopPropagation()
@@ -48,18 +50,18 @@ export default function RoomCard({ room }: { room: PublicRoom }) {
       const target = joined.status === 'IN_PROGRESS' ? 'quiz' : 'lobby'
       navigate(`/room/${joined.id}/${target}`, { state: { room: joined, mode: joined.mode, viewerUserId: res.data.viewerUserId } })
     } catch (err: any) {
-      setJoinError(err?.response?.data?.message || 'Không thể vào phòng')
+      setJoinError(err?.response?.data?.message || t('multiplayer.joinError'))
       setJoining(false)
     }
   }
 
   const cta = playing
-    ? (room.joinable ? { label: joining ? 'Đang vào...' : 'Tiếp tục →', enabled: true }
-                     : { label: 'Đang chơi',                              enabled: false })
-    : isFull         ? { label: 'Đã đầy',     enabled: false }
-    : room.mode === 'SUDDEN_DEATH' ? { label: 'Vào hàng đợi →', enabled: true }
-    : room.mode === 'TEAM_VS_TEAM' ? { label: 'Chọn đội →',     enabled: true }
-                                   : { label: 'Tham gia →',    enabled: true }
+    ? (room.joinable ? { label: joining ? t('multiplayer.room.ctaJoining') : t('multiplayer.room.ctaResume'), enabled: true }
+                     : { label: t('multiplayer.room.ctaPlaying'),         enabled: false })
+    : isFull         ? { label: t('multiplayer.room.ctaFull'),            enabled: false }
+    : room.mode === 'SUDDEN_DEATH' ? { label: t('multiplayer.room.ctaQueue'),    enabled: true }
+    : room.mode === 'TEAM_VS_TEAM' ? { label: t('multiplayer.room.ctaPickTeam'), enabled: true }
+                                   : { label: t('multiplayer.room.ctaJoin'),    enabled: true }
 
   const ctaEnabled = cta.enabled && waiting && !joining
 
@@ -98,7 +100,7 @@ export default function RoomCard({ room }: { room: PublicRoom }) {
           className="px-2 py-0.5 rounded-md text-[10px] font-bold flex-shrink-0"
           style={{ background: status.bg, color: status.fg }}
         >
-          {status.label}
+          {t(status.key)}
         </span>
       </div>
 
@@ -107,12 +109,12 @@ export default function RoomCard({ room }: { room: PublicRoom }) {
         <span className="material-symbols-outlined" style={{ fontSize: 14, color: '#e8a832' }}>workspace_premium</span>
         <span className="truncate">{room.hostName ?? '—'}</span>
         <span className="w-1 h-1 rounded-full bg-white/20" />
-        <span className="text-white/45 flex-shrink-0">{formatRelativeTime(room.createdAt)}</span>
+        <span className="text-white/45 flex-shrink-0">{formatRelativeTime(t, room.createdAt)}</span>
         {!room.isPublic && (
           <span
             className="ml-auto px-1.5 py-0.5 rounded-full text-[9px] font-bold"
             style={{ background: 'rgba(255,140,66,0.12)', color: '#ff8c42' }}
-          >🔒 RIÊNG TƯ</span>
+          >{t('multiplayer.room.privateBadge')}</span>
         )}
       </div>
 
@@ -120,11 +122,11 @@ export default function RoomCard({ room }: { room: PublicRoom }) {
       <div className="flex items-center justify-between gap-2">
         <AvatarStack initials={room.playerInitials ?? []} current={room.currentPlayers} max={room.maxPlayers} />
         <div className="text-[10px] text-white/40 text-right flex-shrink-0">
-          <div>{room.questionCount ?? 10} câu · {room.timePerQuestion ?? 30}s/câu</div>
+          <div>{t('multiplayer.room.questionsMeta', { count: room.questionCount ?? 10, time: room.timePerQuestion ?? 30 })}</div>
           <div className="mt-0.5">
-            <span className="text-white/55">{formatBookScope(room.bookScope)}</span>
+            <span className="text-white/55">{formatBookScope(t, room.bookScope)}</span>
             <span className="mx-1 text-white/20">·</span>
-            <span style={{ color: diff.color }}>{diff.label}</span>
+            <span style={{ color: diff.color }}>{t(diff.labelKey)}</span>
           </div>
         </div>
       </div>

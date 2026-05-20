@@ -3,6 +3,7 @@
 // Inputs are 36×36 (compact) vs the legacy 44×52 CodeInput.
 
 import { useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface Props {
   onJoin: (code: string) => void
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export default function JoinByCodeBar({ onJoin, disabled, error }: Props) {
+  const { t } = useTranslation()
   const [digits, setDigits] = useState<string[]>(['', '', '', '', '', ''])
   const refs = useRef<(HTMLInputElement | null)[]>([])
 
@@ -53,9 +55,9 @@ export default function JoinByCodeBar({ onJoin, disabled, error }: Props) {
           <span className="material-symbols-outlined" style={{ fontSize: 14, color: '#e8a832' }}>key</span>
         </div>
         <div>
-          <div className="text-[12px] font-bold leading-tight text-white">Có mã từ bạn bè?</div>
+          <div className="text-[12px] font-bold leading-tight text-white">{t('multiplayer.join.kicker')}</div>
           <div className="text-[10px] leading-tight" style={{ color: error ? '#fca5a5' : 'rgba(255,255,255,0.45)' }}>
-            {error ?? 'Nhập 6 chữ số / chữ cái'}
+            {error ?? t('multiplayer.join.hint')}
           </div>
         </div>
       </div>
@@ -96,7 +98,7 @@ export default function JoinByCodeBar({ onJoin, disabled, error }: Props) {
           border: ready ? 'none' : '1px solid rgba(255,255,255,0.1)',
         }}
       >
-        {disabled ? 'Đang vào...' : 'Vào phòng →'}
+        {disabled ? t('multiplayer.join.joining') : t('multiplayer.join.submit')}
       </button>
     </div>
   )

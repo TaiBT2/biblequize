@@ -1,6 +1,7 @@
 // MLR — Join-by-code 6-input box (lifted out of Multiplayer.tsx).
 // Mockup style: 44×52 inputs, slightly larger than the legacy 36×44.
 import { useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface Props {
   onJoin: (code: string) => void
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export default function CodeInput({ onJoin, disabled, error }: Props) {
+  const { t } = useTranslation()
   const [chars, setChars] = useState<string[]>(['', '', '', '', '', ''])
   const refs = useRef<(HTMLInputElement | null)[]>([])
 
@@ -76,7 +78,7 @@ export default function CodeInput({ onJoin, disabled, error }: Props) {
           border: ready ? 'none' : '1px solid rgba(255,255,255,0.1)',
         }}
       >
-        {disabled ? 'Đang vào...' : 'Vào phòng →'}
+        {disabled ? t('multiplayer.join.joining') : t('multiplayer.join.submit')}
       </button>
       {error && (
         <div
@@ -87,7 +89,7 @@ export default function CodeInput({ onJoin, disabled, error }: Props) {
         </div>
       )}
       {!error && filled > 0 && filled < 6 && (
-        <p className="text-[10px] text-white/35 mt-1.5">Còn thiếu {6 - filled} ký tự</p>
+        <p className="text-[10px] text-white/35 mt-1.5">{t('multiplayer.join.remaining', { count: 6 - filled })}</p>
       )}
     </div>
   )

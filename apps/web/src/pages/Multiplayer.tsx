@@ -22,24 +22,11 @@ import type { PublicRoom, RoomMode, SortOption } from './multiplayer/types'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 
-const MODE_TAGLINE: Record<RoomModeId, { tag: string; desc: string; range: string }> = {
-  SPEED_RACE:    { tag: 'Phổ biến',  desc: 'Đáp nhanh, điểm cao. Tốc độ × độ chính xác.', range: '2–10 người' },
-  BATTLE_ROYALE: { tag: 'Kịch tính', desc: 'Sai 1 câu là bị loại. Người cuối cùng thắng.',  range: '3–20 người' },
-  TEAM_VS_TEAM:  { tag: 'Nhóm',      desc: '2 đội đối kháng. Tổng điểm đội cao hơn thắng.', range: '4–20 người' },
-  SUDDEN_DEATH:  { tag: '1v1',       desc: 'Đối đầu 1v1, sai là thua. Hàng đợi thách đấu.', range: '2–20 người' },
-}
-
 const MODE_DISPLAY_LABEL: Record<RoomModeId, string> = {
   SPEED_RACE: 'Speed Race',
   BATTLE_ROYALE: 'Battle Royale',
   TEAM_VS_TEAM: 'Team vs Team',
   SUDDEN_DEATH: 'Đấu vương',
-}
-
-function hexToRgba(hex: string, a: number): string {
-  const h = hex.replace('#', '')
-  const n = parseInt(h.length === 3 ? h.split('').map(c => c + c).join('') : h, 16)
-  return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`
 }
 
 export default function Multiplayer() {
@@ -75,7 +62,7 @@ export default function Multiplayer() {
       const target = room.status === 'IN_PROGRESS' ? 'quiz' : 'lobby'
       navigate(`/room/${room.id}/${target}`, { state: { room, mode: room.mode, viewerUserId: res.data.viewerUserId } })
     } catch (err: any) {
-      setCodeJoinError(err?.response?.data?.message || 'Mã phòng không hợp lệ hoặc phòng đã đầy')
+      setCodeJoinError(err?.response?.data?.message || t('multiplayer.badRoomCode'))
       setIsCodeJoining(false)
     }
   }
@@ -131,7 +118,7 @@ export default function Multiplayer() {
             <span className="w-1 h-1 rounded-full bg-white/30" />
             <span className="flex items-center gap-1.5 text-[11px] text-white/60">
               <LiveDot />
-              <span><span className="font-bold text-white">{liveCount}</span> phòng đang sống</span>
+              <span><span className="font-bold text-white">{liveCount}</span> {t('multiplayer.liveRoomsSuffix')}</span>
             </span>
           </div>
           <h1 className="text-[28px] md:text-[34px] font-extrabold tracking-tight leading-tight text-white">
@@ -148,7 +135,7 @@ export default function Multiplayer() {
           style={{ background: 'rgba(50,52,64,0.4)', border: '1px solid rgba(255,255,255,0.06)', color: '#fff' }}
         >
           <span className="material-symbols-outlined text-sm" style={FILL_1}>menu_book</span>
-          Bộ câu hỏi
+          {t('multiplayer.quizSetsBtn')}
         </button>
       </header>
 
@@ -178,18 +165,17 @@ export default function Multiplayer() {
                 </span>
               </div>
               <div className="text-[10px] tracking-widest uppercase font-bold" style={{ color: '#e8a832' }}>
-                Bạn sẽ là Quản trò
+                {t('multiplayer.create.kicker')}
               </div>
             </div>
-            <h2 className="text-[20px] font-extrabold mb-1.5 leading-tight text-white">Tạo phòng đa người chơi</h2>
+            <h2 className="text-[20px] font-extrabold mb-1.5 leading-tight text-white">{t('multiplayer.create.title')}</h2>
             <p className="text-[12.5px] text-white/65 mb-4 leading-relaxed">
-              Quản trò không trả lời câu hỏi — bạn dẫn dắt, theo dõi, và đảm bảo công bằng cho người chơi.
-              Phù hợp cho nhóm tế bào, Bible study, thi đua bạn bè.
+              {t('multiplayer.create.desc')}
             </p>
             <div className="flex items-center gap-2 mb-5 flex-wrap">
-              <FeatureTag icon="group" label="2–20 người" />
-              <FeatureTag icon="layers" label="4 chế độ" />
-              <FeatureTag icon="wifi" label="Realtime" />
+              <FeatureTag icon="group" label={t('multiplayer.create.tagPlayers')} />
+              <FeatureTag icon="layers" label={t('multiplayer.create.tagModes')} />
+              <FeatureTag icon="wifi" label={t('multiplayer.create.tagRealtime')} />
             </div>
             <button
               data-testid="multiplayer-create-btn"
@@ -206,49 +192,8 @@ export default function Multiplayer() {
         <QuickMatchEntryCard />
       </section>
 
-      {/* ── Mode showcase ── */}
-      <section>
-        <div className="flex items-baseline justify-between mb-4">
-          <div>
-            <h3 className="text-[18px] font-bold tracking-tight text-white">4 chế độ chơi</h3>
-            <p className="text-[12px] text-white/50">Mỗi mode có luật & cách tính điểm riêng — chọn mode phù hợp khi tạo phòng</p>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-          {MODE_LIST.map(m => {
-            const meta = MODE_TAGLINE[m.id]
-            return (
-              <button
-                key={m.id}
-                type="button"
-                onClick={() => navigate(`/room/create?mode=${m.id}`)}
-                className="rounded-xl p-5 text-left transition-all hover:-translate-y-0.5"
-                style={{
-                  background: `linear-gradient(135deg, ${hexToRgba(m.color, 0.10)}, ${hexToRgba(m.color, 0.02)})`,
-                  border: `1px solid ${hexToRgba(m.color, 0.18)}`,
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = hexToRgba(m.color, 0.4) }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = hexToRgba(m.color, 0.18) }}
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className="material-symbols-outlined" style={{ fontSize: 28, color: m.color, fontVariationSettings: "'FILL' 1" }}>
-                    {m.icon}
-                  </span>
-                  <span className="text-[10px] font-bold tracking-wider uppercase" style={{ color: m.color }}>
-                    {meta.tag}
-                  </span>
-                </div>
-                <h4 className="text-[15px] font-bold mb-1 text-white">{MODE_DISPLAY_LABEL[m.id]}</h4>
-                <p className="text-[11px] text-white/55 leading-relaxed mb-3">{meta.desc}</p>
-                <div className="flex items-center gap-1.5 text-[10px] text-white/40">
-                  <span className="material-symbols-outlined" style={{ fontSize: 12 }}>group</span>
-                  <span>{meta.range}</span>
-                </div>
-              </button>
-            )
-          })}
-        </div>
-      </section>
+      {/* ── Mode showcase hidden 2026-05-20 (per user request) — modes still
+            picked via /room/create flow; component preserved for future re-enable. */}
 
       {/* ── Active rooms section ── */}
       <section className="space-y-4">
@@ -280,14 +225,14 @@ export default function Multiplayer() {
 
         {/* Filter chips: All + 4 modes + divider + sort */}
         <div className="flex items-center gap-2 flex-wrap">
-          <FilterChip active={modeFilter === 'ALL'} onClick={() => setModeFilter('ALL')}>Tất cả</FilterChip>
+          <FilterChip active={modeFilter === 'ALL'} onClick={() => setModeFilter('ALL')}>{t('multiplayer.filterAll')}</FilterChip>
           <FilterChip
             active={modeFilter === 'QUICK_MATCH'}
             onClick={() => setModeFilter('QUICK_MATCH')}
             icon="rocket_launch"
             iconColor="#818cf8"
           >
-            Đấu Nhanh
+            {t('multiplayer.filterQuickMatch')}
           </FilterChip>
           {MODE_LIST.map(m => (
             <FilterChip
@@ -301,8 +246,8 @@ export default function Multiplayer() {
             </FilterChip>
           ))}
           <div className="w-px h-5 bg-white/10 mx-1" />
-          <FilterChip active={sort === 'newest'} onClick={() => setSort('newest')}>Mới nhất</FilterChip>
-          <FilterChip active={sort === 'filling'} onClick={() => setSort('filling')}>Sắp đầy</FilterChip>
+          <FilterChip active={sort === 'newest'} onClick={() => setSort('newest')}>{t('multiplayer.sortNewest')}</FilterChip>
+          <FilterChip active={sort === 'filling'} onClick={() => setSort('filling')}>{t('multiplayer.sortFilling')}</FilterChip>
         </div>
 
         {/* Rooms list (loading / error / empty / populated) */}
@@ -382,6 +327,7 @@ function FilterChip({
 }
 
 function ErrorState({ onRetry, retrying }: { onRetry: () => void; retrying: boolean }) {
+  const { t } = useTranslation()
   return (
     <div
       data-testid="multiplayer-error-state"
@@ -391,15 +337,15 @@ function ErrorState({ onRetry, retrying }: { onRetry: () => void; retrying: bool
       <div className="w-20 h-20 rounded-full flex items-center justify-center mb-5" style={{ background: 'rgba(248,113,113,0.12)' }}>
         <span className="material-symbols-outlined" style={{ fontSize: 32, color: '#f87171' }}>error</span>
       </div>
-      <h5 className="text-lg font-bold text-white mb-2">Không thể tải danh sách phòng</h5>
-      <p className="text-sm text-white/55 text-center max-w-xs mb-6">Hệ thống đang gặp sự cố. Vui lòng thử lại.</p>
+      <h5 className="text-lg font-bold text-white mb-2">{t('multiplayer.loadErrorTitle')}</h5>
+      <p className="text-sm text-white/55 text-center max-w-xs mb-6">{t('multiplayer.loadErrorDesc')}</p>
       <button
         onClick={onRetry}
         disabled={retrying}
         className="py-3 px-8 rounded-xl font-bold text-sm disabled:opacity-60"
         style={{ background: 'linear-gradient(135deg, #e8a832, #e7c268)', color: '#1a1226' }}
       >
-        {retrying ? 'Đang tải...' : 'Thử lại'}
+        {retrying ? t('multiplayer.loadErrorLoading') : t('multiplayer.loadErrorRetry')}
       </button>
     </div>
   )

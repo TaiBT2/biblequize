@@ -5,6 +5,7 @@
 // for AI_GENERATED (room.questionSource = 'AI_GENERATED' from QP-2).
 
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../../api/client'
 import AvatarStack from './AvatarStack'
@@ -26,6 +27,7 @@ function modeShortLabel(id: string): string {
 }
 
 export default function QuickMatchRoomCard({ room }: { room: PublicRoom }) {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const [joining, setJoining] = useState(false)
   const [joinError, setJoinError] = useState<string | null>(null)
@@ -44,7 +46,7 @@ export default function QuickMatchRoomCard({ room }: { room: PublicRoom }) {
       navigate(`/room/${joined.id}/${target}`, { state: { room: joined, mode: joined.mode, viewerUserId: res.data.viewerUserId } })
     } catch (err: unknown) {
       const msg = (err as { response?: { data?: { message?: string } } })?.response?.data?.message
-      setJoinError(msg || 'Không thể vào phòng')
+      setJoinError(msg || t('multiplayer.joinError'))
       setJoining(false)
     }
   }
@@ -66,7 +68,7 @@ export default function QuickMatchRoomCard({ room }: { room: PublicRoom }) {
         style={{ background: 'rgba(99,102,241,0.2)', border: '1px solid rgba(99,102,241,0.4)' }}
       >
         <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: INDIGO_LIGHT }}>
-          Đấu Nhanh
+          {t('multiplayer.filterQuickMatch')}
         </span>
       </div>
 
@@ -80,9 +82,9 @@ export default function QuickMatchRoomCard({ room }: { room: PublicRoom }) {
         </div>
         <div className="min-w-0">
           <div className="text-[10px] font-bold tracking-wider uppercase" style={{ color: INDIGO_LIGHT }}>
-            {modeShortLabel(room.mode)} · Không host
+            {t('multiplayer.quickMatch.noHost', { mode: modeShortLabel(room.mode) })}
           </div>
-          <div className="text-sm font-bold text-white truncate">Phòng #{room.roomCode}</div>
+          <div className="text-sm font-bold text-white truncate">{t('multiplayer.quickMatch.roomCode', { code: room.roomCode })}</div>
         </div>
       </div>
 
@@ -94,16 +96,16 @@ export default function QuickMatchRoomCard({ room }: { room: PublicRoom }) {
         >
           {isAi ? 'auto_awesome' : 'memory'}
         </span>
-        <span>{isAi ? 'AI gen câu hỏi' : 'Server điều phối'}</span>
+        <span>{isAi ? t('multiplayer.quickMatch.aiSource') : t('multiplayer.quickMatch.serverSource')}</span>
         <span className="w-1 h-1 rounded-full bg-white/20" />
-        <span>{formatBookScope(room.bookScope)}</span>
+        <span>{formatBookScope(t, room.bookScope)}</span>
       </div>
 
       {/* Avatar stack + meta */}
       <div className="flex items-center justify-between gap-2">
         <AvatarStack initials={room.playerInitials ?? []} current={room.currentPlayers} max={room.maxPlayers} />
         <div className="text-[10px] text-white/40 text-right flex-shrink-0">
-          {room.questionCount ?? 10} câu · {room.timePerQuestion ?? 30}s/câu
+          {t('multiplayer.quickMatch.questionsMeta', { count: room.questionCount ?? 10, time: room.timePerQuestion ?? 30 })}
         </div>
       </div>
 
@@ -120,7 +122,7 @@ export default function QuickMatchRoomCard({ room }: { room: PublicRoom }) {
         className="w-full h-9 rounded-lg text-white text-[12px] font-bold transition-opacity hover:opacity-90 disabled:opacity-60"
         style={{ background: isFull ? 'rgba(255,255,255,0.06)' : INDIGO_GRADIENT, color: isFull ? 'rgba(255,255,255,0.4)' : '#fff' }}
       >
-        {joining ? 'Đang vào...' : isFull ? 'Đã đầy' : 'Vào ngay →'}
+        {joining ? t('multiplayer.quickMatch.ctaJoining') : isFull ? t('multiplayer.quickMatch.ctaFull') : t('multiplayer.quickMatch.ctaEnterNow')}
       </button>
 
       {/* Reference imports to keep the variable usage explicit. */}

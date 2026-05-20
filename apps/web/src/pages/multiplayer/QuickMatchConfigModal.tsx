@@ -6,6 +6,7 @@
 // Pattern: controlled form trong overlay, Esc + click backdrop dismiss.
 
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { MODE_LIST, MODE_META, type RoomModeId } from '../create-room/modeMeta'
 import {
@@ -14,10 +15,10 @@ import {
 } from '../../api/quickMatch'
 
 const BOOK_SCOPE_OPTIONS = [
-  { value: 'ALL',           label: 'Tất cả 66 sách' },
-  { value: 'OLD_TESTAMENT', label: 'Cựu Ước (39)' },
-  { value: 'NEW_TESTAMENT', label: 'Tân Ước (27)' },
-  { value: 'GOSPELS',       label: '4 Phúc Âm' },
+  { value: 'ALL',           labelKey: 'multiplayer.config.scopeAll' },
+  { value: 'OLD_TESTAMENT', labelKey: 'multiplayer.config.scopeOldTestament' },
+  { value: 'NEW_TESTAMENT', labelKey: 'multiplayer.config.scopeNewTestament' },
+  { value: 'GOSPELS',       labelKey: 'multiplayer.config.scopeGospels' },
 ]
 const COUNT_OPTIONS = [5, 10, 15, 20]
 const TIME_OPTIONS = [15, 20, 30]
@@ -31,11 +32,13 @@ interface Props {
 }
 
 export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: Props) {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const [mode, setMode] = useState<RoomModeId>('SPEED_RACE')
   const [bookScope, setBookScope] = useState('ALL')
   const [count, setCount] = useState(10)
   const [time, setTime] = useState(30)
+  const [language, setLanguage] = useState<'vi' | 'en'>('vi')
   const [source, setSource] = useState<QuickMatchSource>('DATABASE')
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -59,7 +62,7 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
         questionCount: count,
         timePerQuestion: time,
         source: aiUnlocked ? source : 'DATABASE',
-        language: 'vi',
+        language,
       }
       const res = await triggerQuickMatch(config)
       navigate(`/room/${res.room.id}/lobby`)
@@ -91,15 +94,15 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
         <div className="px-6 pt-5 pb-3 flex items-start justify-between">
           <div>
             <div className="text-[10px] tracking-widest uppercase font-bold mb-1" style={{ color: '#a5b4fc' }}>
-              Cấu hình nhanh
+              {t('multiplayer.config.kicker')}
             </div>
-            <h2 className="text-[20px] font-extrabold text-white">Đấu Nhanh</h2>
+            <h2 className="text-[20px] font-extrabold text-white">{t('multiplayer.config.title')}</h2>
           </div>
           <button
             type="button"
             onClick={onClose}
             className="w-8 h-8 rounded-lg flex items-center justify-center text-white/60 hover:text-white hover:bg-white/[0.06]"
-            aria-label="Đóng"
+            aria-label={t('multiplayer.config.close')}
           >
             <span className="material-symbols-outlined" style={{ fontSize: 20 }}>close</span>
           </button>
@@ -107,7 +110,7 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
 
         <div className="px-6 pb-6 space-y-5">
           {/* Mode */}
-          <Section label="Chế độ">
+          <Section label={t('multiplayer.config.sectionMode')}>
             <div className="grid grid-cols-2 gap-2">
               {MODE_LIST.map(m => {
                 const active = mode === m.id
@@ -131,48 +134,60 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
             </div>
           </Section>
 
-          {/* Scope */}
-          <Section label="Phạm vi câu hỏi">
-            <select
-              value={bookScope}
-              onChange={e => setBookScope(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-lg text-[13px] text-white outline-none appearance-none cursor-pointer"
-              style={{
-                background: 'rgba(17,19,30,0.6)',
-                border: '1px solid rgba(255,255,255,0.08)',
-              }}
-            >
-              {BOOK_SCOPE_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
-            </select>
-          </Section>
+          {/* Scope + Language */}
+          <div className="grid grid-cols-[1fr_auto] gap-3">
+            <Section label={t('multiplayer.config.sectionScope')}>
+              <select
+                value={bookScope}
+                onChange={e => setBookScope(e.target.value)}
+                className="w-full px-3 py-2.5 rounded-lg text-[13px] text-white outline-none appearance-none cursor-pointer"
+                style={{
+                  background: 'rgba(17,19,30,0.6)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                }}
+              >
+                {BOOK_SCOPE_OPTIONS.map(o => <option key={o.value} value={o.value}>{t(o.labelKey)}</option>)}
+              </select>
+            </Section>
+            <Section label={t('multiplayer.config.sectionLanguage')}>
+              <ChipGroup
+                options={[
+                  { value: 'vi', label: 'VN' },
+                  { value: 'en', label: 'EN' },
+                ]}
+                value={language}
+                onChange={setLanguage}
+              />
+            </Section>
+          </div>
 
           {/* Count + Time */}
           <div className="grid grid-cols-2 gap-3">
-            <Section label="Số câu">
+            <Section label={t('multiplayer.config.sectionCount')}>
               <ChipGroup options={COUNT_OPTIONS.map(n => ({ value: n, label: String(n) }))} value={count} onChange={setCount} />
             </Section>
-            <Section label="Thời gian / câu">
+            <Section label={t('multiplayer.config.sectionTime')}>
               <ChipGroup options={TIME_OPTIONS.map(s => ({ value: s, label: `${s}s` }))} value={time} onChange={setTime} />
             </Section>
           </div>
 
           {/* Source */}
-          <Section label="Nguồn câu hỏi">
+          <Section label={t('multiplayer.config.sectionSource')}>
             <div className="grid grid-cols-2 gap-2">
               <SourceButton
                 active={source === 'DATABASE'}
                 onClick={() => setSource('DATABASE')}
                 icon="storage"
-                title="Hệ thống"
-                desc="Random từ ngân hàng"
+                title={t('multiplayer.config.sourceDatabase')}
+                desc={t('multiplayer.config.sourceDatabaseDesc')}
               />
               <SourceButton
                 active={source === 'AI_GENERATED'}
                 onClick={() => aiUnlocked && setSource('AI_GENERATED')}
                 disabled={!aiUnlocked}
                 icon="auto_awesome"
-                title="AI sinh"
-                desc={aiUnlocked ? 'One-shot, không lưu' : 'Tier 4+ mở khóa'}
+                title={t('multiplayer.config.sourceAi')}
+                desc={aiUnlocked ? t('multiplayer.config.sourceAiUnlocked') : t('multiplayer.config.sourceAiLocked')}
               />
             </div>
           </Section>
@@ -195,11 +210,11 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
             style={{ background: `linear-gradient(135deg, ${INDIGO} 0%, #818cf8 100%)` }}
           >
             <span className="material-symbols-outlined" style={{ fontSize: 18 }}>rocket_launch</span>
-            {submitting ? 'Đang tạo phòng...' : 'Vào trận'}
+            {submitting ? t('multiplayer.config.submitting') : t('multiplayer.config.submit')}
             <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
           </button>
           <p className="text-[10.5px] text-center text-white/40 mt-1">
-            Không tính XP · Cap 3 trận/ngày · Server tự điều phối, không cần Quản trò
+            {t('multiplayer.config.footer')}
           </p>
         </div>
       </div>

@@ -4,6 +4,7 @@
 // trò (gold outline) navigates to the existing /room/create flow.
 
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import QuickMatchConfigModal from './QuickMatchConfigModal'
 
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export default function EmptyState({ userTier = 1 }: Props) {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const [modalOpen, setModalOpen] = useState(false)
 
@@ -45,10 +47,10 @@ export default function EmptyState({ userTier = 1 }: Props) {
           </div>
 
           <h4 className="text-[18px] font-bold mb-2 text-white">
-            Chưa có phòng nào đang chờ
+            {t('multiplayer.empty.title')}
           </h4>
           <p className="text-[13px] text-white/55 leading-relaxed mb-6">
-            Hai lựa chọn để bắt đầu chơi ngay:
+            {t('multiplayer.empty.subtitle')}
           </p>
 
           <div className="grid grid-cols-1 gap-2 max-w-sm mx-auto">
@@ -60,14 +62,14 @@ export default function EmptyState({ userTier = 1 }: Props) {
               style={{ background: INDIGO_GRADIENT }}
             >
               <span className="material-symbols-outlined" style={{ fontSize: 18 }}>rocket_launch</span>
-              Đấu Nhanh — server ghép trận tự động
+              {t('multiplayer.empty.ctaQuickMatch')}
               <span className="material-symbols-outlined ml-auto" style={{ fontSize: 14 }}>arrow_forward</span>
             </button>
 
             {/* Divider */}
             <div className="flex items-center gap-3 my-1">
               <div className="flex-1 h-px bg-white/[0.06]" />
-              <div className="text-[10px] tracking-widest uppercase text-white/30 font-bold">hoặc</div>
+              <div className="text-[10px] tracking-widest uppercase text-white/30 font-bold">{t('multiplayer.empty.or')}</div>
               <div className="flex-1 h-px bg-white/[0.06]" />
             </div>
 
@@ -85,7 +87,7 @@ export default function EmptyState({ userTier = 1 }: Props) {
               onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(232,168,50,0.3)' }}
             >
               <span className="material-symbols-outlined" style={{ fontSize: 18 }}>workspace_premium</span>
-              Tạo phòng Quản trò (tùy chỉnh)
+              {t('multiplayer.empty.ctaCreateOrganizer')}
               <span className="material-symbols-outlined ml-auto" style={{ fontSize: 14 }}>arrow_forward</span>
             </button>
           </div>

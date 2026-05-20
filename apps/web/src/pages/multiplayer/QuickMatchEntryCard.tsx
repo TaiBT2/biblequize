@@ -5,6 +5,7 @@
 // /api/me/multiplayer-stats response (QP-4 quickMatchRemainingToday).
 
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '../../api/client'
 import QuickMatchConfigModal from './QuickMatchConfigModal'
@@ -27,6 +28,7 @@ interface Props {
 interface MultiplayerStats { quickMatchRemainingToday?: number }
 
 export default function QuickMatchEntryCard({ userTier = 1 }: Props) {
+  const { t } = useTranslation()
   const [modalOpen, setModalOpen] = useState(false)
   const { data } = useQuery<MultiplayerStats>({
     queryKey: ['multiplayer-stats', 'weekly'],
@@ -65,7 +67,7 @@ export default function QuickMatchEntryCard({ userTier = 1 }: Props) {
             auto_awesome
           </span>
           <span className="text-[10px] font-bold tracking-wider uppercase" style={{ color: QM.primaryLighter }}>
-            Mới
+            {t('multiplayer.quickMatch.badgeNew')}
           </span>
         </div>
 
@@ -80,20 +82,20 @@ export default function QuickMatchEntryCard({ userTier = 1 }: Props) {
               </span>
             </div>
             <div className="text-[10px] tracking-widest uppercase font-bold" style={{ color: QM.primaryLighter }}>
-              Vào ngay · Không cần host
+              {t('multiplayer.quickMatch.kicker')}
             </div>
           </div>
 
-          <h2 className="text-[20px] font-extrabold mb-1.5 leading-tight text-white">Đấu Nhanh</h2>
+          <h2 className="text-[20px] font-extrabold mb-1.5 leading-tight text-white">{t('multiplayer.quickMatch.title')}</h2>
           <p className="text-[12.5px] text-white/65 mb-4 leading-relaxed">
-            Server tự điều phối — bạn vào là chơi. Không phải đợi Quản trò, không phải rủ bạn bè.
-            Đủ <strong className="text-white">2 người</strong> là game bắt đầu.
+            {t('multiplayer.quickMatch.desc1')}{' '}
+            <span dangerouslySetInnerHTML={{ __html: t('multiplayer.quickMatch.desc2') }} />
           </p>
 
           <div className="flex items-center gap-2 mb-5 flex-wrap">
-            <Tag icon="tune" label="Bạn chọn mode + scope" />
-            <Tag icon="group" label="2–10 người" />
-            <Tag icon="casino" label="System hoặc AI" />
+            <Tag icon="tune" label={t('multiplayer.quickMatch.tagBookScope')} />
+            <Tag icon="group" label={t('multiplayer.quickMatch.tagPlayers')} />
+            <Tag icon="casino" label={t('multiplayer.quickMatch.tagSource')} />
           </div>
 
           <button
@@ -104,17 +106,17 @@ export default function QuickMatchEntryCard({ userTier = 1 }: Props) {
             style={{ background: QM.gradient }}
           >
             <span className="material-symbols-outlined" style={{ fontSize: 18 }}>rocket_launch</span>
-            {exhausted ? 'Đã hết lượt hôm nay' : 'Đấu Nhanh'}
+            {exhausted ? t('multiplayer.quickMatch.ctaExhausted') : t('multiplayer.quickMatch.cta')}
             {!exhausted && (
               <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
             )}
           </button>
 
           <div className="flex items-center justify-between mt-2.5 text-[10px]">
-            <span className="text-white/40">
-              Hôm nay: <span className="text-white/60 font-semibold">{used}/3</span> trận Đấu Nhanh
-            </span>
-            <span className="text-white/40">Không tính XP</span>
+            <span className="text-white/40" dangerouslySetInnerHTML={{
+              __html: t('multiplayer.quickMatch.today', { used }),
+            }} />
+            <span className="text-white/40">{t('multiplayer.quickMatch.noXp')}</span>
           </div>
         </div>
       </div>

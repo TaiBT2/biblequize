@@ -3,6 +3,7 @@
 // leaderboard rank with multiplayer-context stats from MPP-2 BE endpoint.
 
 import { useQuery } from '@tanstack/react-query'
+import { useTranslation } from 'react-i18next'
 import { api } from '../../api/client'
 
 interface WeeklyStats {
@@ -15,6 +16,7 @@ interface WeeklyStats {
 }
 
 export default function WeeklyMultiplayerStatsWidget() {
+  const { t } = useTranslation()
   const { data, isLoading, isError } = useQuery<WeeklyStats>({
     queryKey: ['multiplayer-stats', 'weekly'],
     queryFn: () => api.get('/api/me/multiplayer-stats', { params: { period: 'weekly' } }).then(r => r.data),
@@ -53,19 +55,19 @@ export default function WeeklyMultiplayerStatsWidget() {
       }}
     >
       <div className="text-[10px] tracking-widest uppercase font-bold mb-2" style={{ color: '#38bdf8' }}>
-        Tuần này
+        {t('multiplayer.stats.weekHeader')}
       </div>
       <div className="flex items-baseline justify-between mb-3">
         <div className="text-[26px] font-extrabold leading-none text-white">{data.wins}</div>
-        <div className="text-[10px] text-white/50">trận thắng</div>
+        <div className="text-[10px] text-white/50">{t('multiplayer.stats.wins')}</div>
       </div>
       <div className="space-y-1.5 text-[11px]">
         <div className="flex justify-between text-white/70">
-          <span>Tỷ lệ thắng</span>
+          <span>{t('multiplayer.stats.winRate')}</span>
           <span className="font-bold text-white">{winRatePct}%</span>
         </div>
         <div className="flex justify-between text-white/70">
-          <span>MVP</span>
+          <span>{t('multiplayer.stats.mvp')}</span>
           <span className="font-bold" style={{ color: '#e8a832' }}>×{data.mvpCount}</span>
         </div>
       </div>

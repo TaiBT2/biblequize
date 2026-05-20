@@ -4,9 +4,14 @@ import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-// Mocks
+// Mocks — t() stub returns the key when no string fallback so tests can match
+// against i18n key paths. Object-typed 2nd arg (interpolation params) returns
+// the key alone so React doesn't crash trying to render the params object.
 vi.mock('react-i18next', () => ({
-  useTranslation: () => ({ t: (k: string, fallback?: string) => fallback ?? k }),
+  useTranslation: () => ({
+    t: (k: string, fallbackOrParams?: unknown) =>
+      typeof fallbackOrParams === 'string' ? fallbackOrParams : k,
+  }),
 }))
 
 vi.mock('../../store/authStore', () => ({
@@ -71,7 +76,7 @@ describe('Multiplayer page', () => {
 
   it('shows empty state when no rooms', async () => {
     renderPage()
-    expect(await screen.findByText(/Chưa có phòng nào đang chờ/)).toBeTruthy()
+    expect(await screen.findByText('multiplayer.empty.title')).toBeTruthy()
   })
 
   it('shows room cards when rooms returned', async () => {
@@ -112,9 +117,10 @@ describe('Multiplayer page', () => {
       },
     })
     renderPage()
-    expect(await screen.findByText('Cựu Ước (39 sách)')).toBeTruthy()
-    expect(await screen.findByText(/20 câu/)).toBeTruthy()
-    expect(await screen.findByText(/15s\/câu/)).toBeTruthy()
+    // i18n keys (mock returns the key when no string fallback).
+    expect(await screen.findByText('multiplayer.book.oldTestament')).toBeTruthy()
+    // questionsMeta interpolates count + time; mock returns the key.
+    expect(await screen.findByText('multiplayer.room.questionsMeta')).toBeTruthy()
   })
 
   it('displays mode badge with correct label', async () => {
@@ -142,7 +148,7 @@ describe('Multiplayer page', () => {
   it('"Bộ câu hỏi" button is hidden on mobile (md:flex class present)', async () => {
     renderPage()
     await screen.findByTestId('multiplayer-page')
-    const setsBtn = screen.getByText('Bộ câu hỏi').closest('button')
+    const setsBtn = screen.getByText('multiplayer.quizSetsBtn').closest('button')
     expect(setsBtn?.className).toMatch(/hidden/)
     expect(setsBtn?.className).toMatch(/md:flex/)
   })

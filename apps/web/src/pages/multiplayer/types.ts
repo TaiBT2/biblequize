@@ -1,5 +1,7 @@
 // MLR — Shared types for the Multiplayer Lobby page + sub-components.
 
+import type { TFunction } from 'i18next'
+
 export type RoomMode = 'SPEED_RACE' | 'BATTLE_ROYALE' | 'TEAM_VS_TEAM' | 'SUDDEN_DEATH'
 export type RoomStatus = 'LOBBY' | 'IN_PROGRESS' | 'ENDED' | 'CANCELLED'
 export type RoomDifficulty = 'EASY' | 'MEDIUM' | 'HARD' | 'MIXED'
@@ -27,30 +29,33 @@ export interface PublicRoom {
   quickMatch?: boolean
 }
 
-export const DIFFICULTY_CONFIG: Record<RoomDifficulty, { label: string; color: string; bg: string }> = {
-  EASY:   { label: 'Dễ',   color: '#97C459', bg: 'rgba(99,153,34,0.15)' },
-  MEDIUM: { label: 'TB',   color: '#ff8c42', bg: 'rgba(255,140,66,0.15)' },
-  HARD:   { label: 'Khó',  color: '#f87171', bg: 'rgba(239,68,68,0.15)' },
-  MIXED:  { label: 'Tổng hợp', color: '#e8a832', bg: 'rgba(232,168,50,0.15)' },
+export const DIFFICULTY_CONFIG: Record<RoomDifficulty, { labelKey: string; color: string; bg: string }> = {
+  EASY:   { labelKey: 'multiplayer.difficulty.easy',   color: '#97C459', bg: 'rgba(99,153,34,0.15)' },
+  MEDIUM: { labelKey: 'multiplayer.difficulty.medium', color: '#ff8c42', bg: 'rgba(255,140,66,0.15)' },
+  HARD:   { labelKey: 'multiplayer.difficulty.hard',   color: '#f87171', bg: 'rgba(239,68,68,0.15)' },
+  MIXED:  { labelKey: 'multiplayer.difficulty.mixed',  color: '#e8a832', bg: 'rgba(232,168,50,0.15)' },
 }
 
-export function formatBookScope(bookScope: string): string {
-  const map: Record<string, string> = {
-    ALL: 'Tất cả 66 sách',
-    OLD_TESTAMENT: 'Cựu Ước (39 sách)',
-    NEW_TESTAMENT: 'Tân Ước (27 sách)',
-    GOSPELS: '4 Phúc Âm',
-    EPISTLES: '21 Thư Tín',
-  }
-  return map[bookScope?.toUpperCase()] ?? bookScope ?? 'Kinh Thánh'
+const BOOK_SCOPE_KEYS: Record<string, string> = {
+  ALL: 'multiplayer.book.all',
+  OLD_TESTAMENT: 'multiplayer.book.oldTestament',
+  NEW_TESTAMENT: 'multiplayer.book.newTestament',
+  GOSPELS: 'multiplayer.book.gospels',
+  EPISTLES: 'multiplayer.book.epistles',
 }
 
-export function formatRelativeTime(createdAt: string): string {
-  if (!createdAt) return 'Vừa tạo'
+export function formatBookScope(t: TFunction, bookScope: string): string {
+  const key = BOOK_SCOPE_KEYS[bookScope?.toUpperCase()]
+  if (key) return t(key)
+  return bookScope || t('multiplayer.book.fallback')
+}
+
+export function formatRelativeTime(t: TFunction, createdAt: string): string {
+  if (!createdAt) return t('multiplayer.time.justCreated')
   const ts = new Date(createdAt).getTime()
-  if (!Number.isFinite(ts)) return 'Vừa tạo'
+  if (!Number.isFinite(ts)) return t('multiplayer.time.justCreated')
   const mins = Math.floor((Date.now() - ts) / 60000)
-  if (mins < 1) return 'Vừa tạo'
-  if (mins < 60) return `${mins} phút trước`
-  return `${Math.floor(mins / 60)} giờ trước`
+  if (mins < 1) return t('multiplayer.time.justCreated')
+  if (mins < 60) return t('multiplayer.time.minutesAgo', { count: mins })
+  return t('multiplayer.time.hoursAgo', { count: Math.floor(mins / 60) })
 }
