@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useQuery } from '@tanstack/react-query'
 import SafeScreen from '../../components/layout/SafeScreen'
@@ -22,24 +22,101 @@ export default function RankedScreen() {
     staleTime: 5 * 60_000,
   })
 
-  const totalPoints = meData?.totalPoints ?? 0
+  // Web parity HomeBanner.tsx:56-68: totalPoints sống ở /api/me/tier-progress,
+  // KHÔNG ở /api/me. UserResponse DTO không có field totalPoints → đọc trực
+  // tiếp `meData?.totalPoints` luôn undefined → tier card mãi mãi hiển thị
+  // Tân Tín Hữu 0 XP dù user đã credit XP thực qua Ranked/Daily.
+  const { data: tierProgress } = useQuery<{ totalPoints?: number }>({
+    queryKey: ['tier-progress'],
+    queryFn: () => apiClient.get('/api/me/tier-progress').then(r => r.data),
+    staleTime: 30_000,
+  })
+
+  const totalPoints = tierProgress?.totalPoints ?? meData?.totalPoints ?? 0
   const tier = getTierProgress(totalPoints)
 
+  // Web parity (apps/web/src/pages/Ranked.tsx:30-83): 2-step ranked start.
+  // 1. POST /api/ranked/sessions → sessionId + currentBook (RankedController,
+  //    no basicQuizPassed gate — gate handled upstream by HomeScreen via
+  //    ['basic-quiz-status']).
+  // 2. GET /api/questions filtered by askedQuestionIdsToday + book + difficulty.
+  // Generic POST /api/sessions { mode: 'ranked' } (previous mobile call) routes
+  // through SessionService which (a) enforces a stale basicQuizPassed gate that
+  // throws for users who passed catechism on web before the field existed,
+  // (b) skips ranked-specific scoring pipeline → energy/leaderboard/XP not
+  // updated. That's the prior "XP không cộng" bug too.
+  let step = 'init'
   const handleStart = async () => {
+    if (starting) return
     setStarting(true)
     try {
-      const res = await apiClient.post('/api/sessions', {
-        mode: 'ranked',
-        questionCount: 10,
-        difficulty: 'all',
-      })
+      step = 'POST /api/ranked/sessions'
+      const sessRes = await apiClient.post('/api/ranked/sessions', {})
+      const sessionId: string | undefined = sessRes.data?.sessionId
+      if (!sessionId) throw new Error('BE returned no sessionId')
+
+      step = 'GET /api/me/ranked-status'
+      const statusRes = await apiClient.get('/api/me/ranked-status')
+      const status = statusRes.data ?? {}
+      const askedIds: string[] = Array.isArray(status.askedQuestionIdsToday)
+        ? status.askedQuestionIdsToday : []
+      const currentBook: string | undefined = status.currentBook
+      const currentDifficulty: string | undefined = status.currentDifficulty
+
+      const exclude = new Set<string>(askedIds)
+      const questions: any[] = []
+      const addUnique = (items: any[]) => {
+        for (const q of items ?? []) {
+          if (!q?.id || exclude.has(q.id) || questions.find((x: any) => x.id === q.id)) continue
+          questions.push(q)
+          exclude.add(q.id)
+          if (questions.length >= 10) break
+        }
+      }
+
+      step = 'GET /api/questions (filtered)'
+      if (questions.length < 10) {
+        const params: any = { limit: 10 - questions.length, excludeIds: Array.from(exclude) }
+        if (currentBook) params.book = currentBook
+        if (currentDifficulty && currentDifficulty !== 'all') params.difficulty = currentDifficulty
+        addUnique((await apiClient.get('/api/questions', { params })).data ?? [])
+      }
+      step = 'GET /api/questions (book-only fallback)'
+      if (questions.length < 10 && currentBook) {
+        addUnique((await apiClient.get('/api/questions', {
+          params: { limit: 10 - questions.length, book: currentBook, excludeIds: Array.from(exclude) }
+        })).data ?? [])
+      }
+      step = 'GET /api/questions (any-book fallback)'
+      if (questions.length < 10) {
+        addUnique((await apiClient.get('/api/questions', {
+          params: { limit: 10 - questions.length, excludeIds: Array.from(exclude) }
+        })).data ?? [])
+      }
+
+      if (questions.length === 0) {
+        Alert.alert(
+          'Hết câu hỏi hôm nay',
+          'Bạn đã trả lời hết câu hỏi có sẵn hôm nay. Quay lại sau khi thêm câu mới.',
+        )
+        setStarting(false)
+        return
+      }
+
       navigation.navigate('Quiz', {
-        sessionId: res.data.sessionId,
-        questions: res.data.questions,
+        sessionId,
+        questions,
         mode: 'ranked',
         isRanked: true,
+        timePerQuestion: 90,
+        showExplanation: false,
       })
-    } catch {
+    } catch (err) {
+      const e = err as { response?: { status?: number; data?: any }; message?: string }
+      const detail = e?.response?.status
+        ? `HTTP ${e.response.status} · ${JSON.stringify(e.response.data ?? {}).slice(0, 200)}`
+        : (e?.message ?? String(err))
+      Alert.alert('Không vào được Đấu Hạng', `[${step}] ${detail}`)
       setStarting(false)
     }
   }

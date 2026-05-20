@@ -164,9 +164,18 @@ public class DailyChallengeService {
         response.put("completed", true);
         response.put("date", dateStr);
         response.put("score", payload.getOrDefault("score", 0));
-        response.put("correctCount", payload.getOrDefault("correct", 0));
+        Object correctRaw = payload.getOrDefault("correct", 0);
+        int correctCount = correctRaw instanceof Number n ? n.intValue() : 0;
+        response.put("correctCount", correctCount);
         response.put("totalQuestions", payload.getOrDefault("total", DAILY_QUESTION_COUNT));
-        boolean xpEarned = Boolean.TRUE.equals(payload.getOrDefault("xpEarned", false));
+        // Recompute xpEarned từ correctCount thay vì trust cached boolean. Lý do:
+        // (a) Một số entry cache cũ có thể có `xpEarned` deserialize không khớp
+        //     Boolean.TRUE (mismatch type sau Redis JSON roundtrip).
+        // (b) Defensive backstop: nếu cache state lệch (correctCount ≥ threshold
+        //     nhưng xpEarned=false), recompute giải cứu display. Chỉ ảnh hưởng
+        //     display — actual credit logic ở markCompleted vẫn dựa trên live
+        //     correctCount khi POST /complete được gọi lần đầu.
+        boolean xpEarned = correctCount >= DAILY_XP_MIN_CORRECT;
         response.put("xpEarned", xpEarned ? DAILY_COMPLETION_XP : 0);
         response.put("xpMinCorrect", DAILY_XP_MIN_CORRECT);
         response.put("completedAt", payload.get("completedAt"));

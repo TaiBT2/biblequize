@@ -3,11 +3,14 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (38)
+## Active (41)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
 | 2026-05-20 | Ranked spec catch-up: tier-difficulty + UserQuestionHistory write (BL-20, BL-21) | DONE | [detail](docs/todo/active/2026-05-20-ranked-spec-catchup-difficulty-history.md) |
+| 2026-05-20 | Mobile: query `/api/me/tier-progress` để totalPoints hiển thị thực (web parity) | TODO | [detail](docs/todo/active/2026-05-20-mobile-tier-progress-totalpoints.md) |
+| 2026-05-20 | Mobile Daily +0 XP race fix (FE result-bar gate + BE getResultData backstop) | TODO | [detail](docs/todo/active/2026-05-20-mobile-daily-xp-race-fix.md) |
+| 2026-05-20 | Mobile Ranked endpoint migration → `/api/ranked/sessions` (fix stuck loading + XP pipeline) | TODO | [detail](docs/todo/active/2026-05-20-mobile-ranked-endpoint-migration.md) |
 | 2026-05-20 | Mobile: invalidate `['me']` sau finish Ranked/Practice (XP không cộng vào HomeBanner/Leaderboard) | TODO | [detail](docs/todo/active/2026-05-20-mobile-quiz-finish-invalidate-me.md) |
 | 2026-05-20 | Ranked DESKTOP redesign v2 (mockup_ranked_desktop_v2.html, 5 sub-tasks) | DONE | [detail](docs/todo/active/2026-05-20-ranked-desktop-redesign-v2.md) |
 | 2026-05-20 | Fix score ≠ XP leaderboard mismatch (Rank + Daily) | DONE | [detail](docs/todo/active/2026-05-20-fix-scoring-xp-mismatch.md) |

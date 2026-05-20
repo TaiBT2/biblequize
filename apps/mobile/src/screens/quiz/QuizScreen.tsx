@@ -70,6 +70,7 @@ export default function QuizScreen() {
   const timePerQuestion = typeof _params.timePerQuestion === 'number' ? _params.timePerQuestion : 30
   const showExplanation = _params.showExplanation !== false
   const isDailyMode = mode === 'daily'
+  const isRankedMode = mode === 'ranked'
 
   const [qIndex, setQIndex] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
@@ -145,15 +146,24 @@ export default function QuizScreen() {
       }
     } else {
       correct = idx === (correctIdx ?? -1)
-      try {
-        if (sessionId) {
-          await apiClient.post(`/api/sessions/${sessionId}/answer`, {
-            questionId: question.id,
-            answer: idx,
-            clientElapsedMs: (timePerQuestion - timeLeft) * 1000,
-          })
-        }
-      } catch { /* non-critical */ }
+      // Fire-and-forget — `correct` đã tính được local nên KHÔNG await BE.
+      // Trước đây await đã tạo race condition: result bar render (showResult=true)
+      // trước khi state updates flush → user có thể tap "Câu tiếp theo" sớm hơn
+      // setCorrectCount → nextQuestion thấy stale state → /complete POST sai →
+      // BE cache xpEarned=false stuck cả ngày qua idempotency.
+      if (sessionId) {
+        // Ranked phải đi qua RankedController để trigger energy decrement,
+        // tier-scaled XP scoring, season ranking, leaderboard cache invalidate
+        // (web parity Quiz.tsx submitAnswer flow).
+        const url = isRankedMode
+          ? `/api/ranked/sessions/${sessionId}/answer`
+          : `/api/sessions/${sessionId}/answer`
+        apiClient.post(url, {
+          questionId: question.id,
+          answer: idx,
+          clientElapsedMs: (timePerQuestion - timeLeft) * 1000,
+        }).catch(() => { /* non-critical */ })
+      }
     }
 
     setIsCorrect(correct)
@@ -197,12 +207,12 @@ export default function QuizScreen() {
       next[qIndex] = correct
       return next
     })
-  }, [showResult, question, combo, timeLeft, qIndex, userAnswers, questionScores, sessionId, timePerQuestion, isDailyMode, queryClient, haptic, playSound])
+  }, [showResult, question, combo, timeLeft, qIndex, userAnswers, questionScores, sessionId, timePerQuestion, isDailyMode, isRankedMode, queryClient, haptic, playSound])
 
   const nextQuestion = async () => {
     if (qIndex + 1 >= questions.length) {
-      // Daily mode: POST /complete + invalidate 8 queries (web parity
-      // apps/web/src/pages/DailyChallenge.tsx:382-402).
+      // Daily mode: POST /complete + invalidate daily-specific queries (web
+      // parity apps/web/src/pages/DailyChallenge.tsx:382-402).
       if (isDailyMode) {
         try {
           await apiClient.post('/api/daily-challenge/complete', {
@@ -210,14 +220,24 @@ export default function QuizScreen() {
             correctCount,
           })
         } catch { /* non-critical — UI already shows result */ }
-        queryClient.invalidateQueries({ queryKey: ['me'] })
         queryClient.invalidateQueries({ queryKey: ['daily-missions'] })
+        queryClient.invalidateQueries({ queryKey: ['daily-missions-summary'] })
         queryClient.invalidateQueries({ queryKey: ['daily-challenge'] })
         queryClient.invalidateQueries({ queryKey: ['daily-challenge-result'] })
-        queryClient.invalidateQueries({ queryKey: ['ranked-status'] })
-        queryClient.invalidateQueries({ queryKey: ['leaderboard'] })
         queryClient.invalidateQueries({ queryKey: ['daily-leaderboard'] })
       }
+      // Cross-mode invalidate (web parity apps/web/src/pages/Quiz.tsx:222-227):
+      // mọi mode (Daily/Practice/Ranked) đều có thể bump totalPoints, streak,
+      // seasonPoints, livesRemaining, leaderboard rank. Phải invalidate ngoài
+      // `if (isDailyMode)` để HomeBanner và Leaderboard pick up XP mới — nếu
+      // không, query `['me']` staleTime=5min sẽ giữ XP cũ sau Ranked match.
+      // `['tier-progress']` là primary nguồn của totalPoints/tierLevel trên
+      // HomeBanner + RankedScreen — phải invalidate để XP mới hiển thị ngay.
+      queryClient.invalidateQueries({ queryKey: ['me'] })
+      queryClient.invalidateQueries({ queryKey: ['tier-progress'] })
+      queryClient.invalidateQueries({ queryKey: ['ranked-status'] })
+      queryClient.invalidateQueries({ queryKey: ['leaderboard'] })
+      queryClient.invalidateQueries({ queryKey: ['season', 'active'] })
       const stats = {
         totalScore: score,
         correctAnswers: correctCount,
@@ -369,8 +389,13 @@ export default function QuizScreen() {
         </ScrollView>
 
         {/* Floating feedback bar (web parity) — fixed bottom với glass-panel
-            effect, large rounded icon + bonus points hint + gold gradient CTA. */}
-        {showResult && (() => {
+            effect, large rounded icon + bonus points hint + gold gradient CTA.
+            Gate trên `isCorrect !== null` để chặn race condition trong daily
+            mode: showResult flip sync trước await /answer, isCorrect chỉ set
+            sau BE response. Nếu render result bar khi isCorrect còn null, user
+            tap "Câu tiếp theo" trước khi setCorrectCount fire → POST /complete
+            gửi stale count → BE cache xpEarned=false stuck cả ngày. */}
+        {showResult && isCorrect !== null && (() => {
           const correctIdx = revealedCorrectIdx ?? question.correctAnswer?.[0]
           const correctOptionText = correctIdx != null ? question.options?.[correctIdx] : undefined
           const hasExp = showExplanation && question.explanation

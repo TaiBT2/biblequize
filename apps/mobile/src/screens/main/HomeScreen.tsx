@@ -74,6 +74,17 @@ export default function HomeScreen() {
     staleTime: 5 * 60_000,
   })
 
+  // Web parity (apps/web/src/components/HomeBanner.tsx:56-68): totalPoints
+  // sống ở /api/me/tier-progress, KHÔNG ở /api/me. UserResponse DTO không
+  // có field totalPoints → `me?.totalPoints` luôn undefined → fallback 0.
+  // Đây là root cause "0 / 1000 XP" mãi mãi trên HomeBanner mobile dù user
+  // đã credit XP qua Ranked/Daily.
+  const { data: tierProgress } = useQuery<{ totalPoints?: number }>({
+    queryKey: ['tier-progress'],
+    queryFn: () => apiClient.get('/api/me/tier-progress').then(r => r.data),
+    staleTime: 30_000,
+  })
+
   // Stale CTA fix (DC-STALE-M1): mirror web DC-STALE-3 — 10s staleTime +
   // refetchOnMount: 'always' để mỗi lần focus Home đều validate `alreadyCompleted`.
   // Tránh race-condition khi user complete daily trên device khác.
@@ -110,7 +121,7 @@ export default function HomeScreen() {
     staleTime: 30_000,
   })
 
-  const totalPoints = me?.totalPoints ?? 0
+  const totalPoints = tierProgress?.totalPoints ?? me?.totalPoints ?? 0
   const streak = me?.currentStreak ?? 0
   const seasonPoints = me?.seasonPoints
   // BE field = livesRemaining (legacy "lives" name), fallback `energy` cho
