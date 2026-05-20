@@ -47,7 +47,7 @@ export default function HeroRankedCard({
 
       <View style={s.content}>
         <Text style={s.label}>{t('home.heroRanked.label')}</Text>
-        <Text style={s.title}>{t('gameModes.ranked')}</Text>
+        <Text style={s.title}>{t('home.ranked')}</Text>
         <Text style={s.tagline}>{t('home.heroRanked.tagline')}</Text>
 
         <View style={s.statsRow}>
