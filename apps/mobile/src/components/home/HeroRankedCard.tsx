@@ -33,16 +33,42 @@ export default function HeroRankedCard({
       accessibilityLabel="Vào Đấu Hạng"
       accessibilityRole="button"
     >
-      {/* Radial gold glow overlay — anchored bottom-center, fades upward. */}
+      {/* Radial gold glow + cross/sunburst ornament — web parity với V2
+          Radial Glow design. Glow anchored right-center, ornament inside
+          glow zone reads như light source. */}
       <Svg style={StyleSheet.absoluteFill} preserveAspectRatio="none">
         <Defs>
-          <RadialGradient id="hrGlow" cx="50%" cy="100%" rx="80%" ry="60%">
-            <Stop offset="0%" stopColor="#e8a832" stopOpacity="0.35" />
-            <Stop offset="35%" stopColor="#e8a832" stopOpacity="0.12" />
-            <Stop offset="65%" stopColor="#e8a832" stopOpacity="0" />
+          <RadialGradient id="hrGlow" cx="85%" cy="55%" rx="65%" ry="80%">
+            <Stop offset="0%" stopColor="#e8a832" stopOpacity="0.45" />
+            <Stop offset="35%" stopColor="#e8a832" stopOpacity="0.18" />
+            <Stop offset="70%" stopColor="#e8a832" stopOpacity="0" />
           </RadialGradient>
         </Defs>
         <Rect width="100%" height="100%" fill="url(#hrGlow)" />
+      </Svg>
+
+      {/* Cross + sunburst ornament — cream color reads as light source
+          inside gold glow zone. Web hides on <md breakpoint nhưng mobile
+          phone modern (~412dp) đủ rộng để render. */}
+      <Svg
+        style={s.ornament}
+        width={140}
+        height={140}
+        viewBox="0 0 200 200"
+        fill="none"
+      >
+        {/* 8 main sunburst rays */}
+        <Path d="M100 100 L100 20 M100 100 L100 180 M100 100 L20 100 M100 100 L180 100 M100 100 L160 40 M100 100 L40 40 M100 100 L160 160 M100 100 L40 160"
+          stroke="#fff5dc" strokeWidth={1.5} opacity={0.35} strokeLinecap="round" />
+        {/* 8 secondary rays */}
+        <Path d="M100 100 L140 25 M100 100 L60 25 M100 100 L175 60 M100 100 L25 60 M100 100 L175 140 M100 100 L25 140 M100 100 L140 175 M100 100 L60 175"
+          stroke="#fff5dc" strokeWidth={1} opacity={0.22} strokeLinecap="round" />
+        {/* Inner halo circle */}
+        <Path d="M100 50 a50 50 0 1 0 0 100 a50 50 0 1 0 0 -100"
+          stroke="#fff5dc" strokeWidth={1.2} opacity={0.32} fill="rgba(255,245,220,0.04)" />
+        {/* Cross */}
+        <Path d="M92 60 L108 60 L108 92 L140 92 L140 108 L108 108 L108 160 L92 160 L92 108 L60 108 L60 92 L92 92 Z"
+          fill="#fff5dc" opacity={0.16} />
       </Svg>
 
       <View style={s.content}>
@@ -98,7 +124,12 @@ const s = StyleSheet.create({
     shadowOffset: { width: 0, height: 18 }, elevation: 6,
   },
   cardPressed: { opacity: 0.92, transform: [{ translateY: 1 }] },
-  content: { gap: 10 },
+  ornament: {
+    position: 'absolute',
+    right: -30, top: '50%', marginTop: -70,
+    pointerEvents: 'none',
+  },
+  content: { gap: 10, position: 'relative', zIndex: 1 },
 
   label: {
     fontSize: 10, fontWeight: typography.weight.bold,
