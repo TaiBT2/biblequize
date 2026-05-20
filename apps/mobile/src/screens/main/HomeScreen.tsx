@@ -15,7 +15,6 @@ import DailyMissionsCard from '../../components/home/DailyMissionsCard'
 import { apiClient } from '../../api/client'
 import { colors, spacing } from '../../theme'
 
-const RANKED_UNLOCK_XP = 1000
 const MULTIPLAYER_UNLOCK_XP = 1000
 const TOURNAMENT_UNLOCK_XP = 15000
 
@@ -45,6 +44,18 @@ interface RankedStatus {
   questionsCounted?: number
   cap?: number
   dailyLives?: number
+}
+
+/**
+ * Basic Quiz (catechism) status — gating cho Ranked mode (web parity).
+ * Web RankedFeaturedCard.tsx dùng cùng endpoint /api/basic-quiz/status.
+ * `passed` = đã hoàn thành catechism với ≥ threshold đúng → unlock Ranked.
+ * `cooldownRemainingSeconds` > 0 nghĩa là vừa fail, đang chờ retry.
+ */
+interface BasicQuizStatus {
+  passed?: boolean
+  cooldownRemainingSeconds?: number
+  totalQuestions?: number
 }
 
 const ENERGY_MAX_DEFAULT = 100 // SPEC-v2 RankedController.MAX_ENERGY
@@ -77,6 +88,15 @@ export default function HomeScreen() {
     staleTime: 60_000,
   })
 
+  // Web parity: Ranked unlock gated bởi catechism quiz, KHÔNG phải XP threshold.
+  // Trước (sai): rankedLocked = totalPoints < 1000. User pass catechism trên
+  // web vẫn bị mobile lock do XP < 1000.
+  const { data: basicQuizStatus } = useQuery<BasicQuizStatus>({
+    queryKey: ['basic-quiz-status'],
+    queryFn: () => apiClient.get('/api/basic-quiz/status').then(r => r.data).catch(() => null),
+    staleTime: 30_000,
+  })
+
   const totalPoints = me?.totalPoints ?? 0
   const streak = me?.currentStreak ?? 0
   const seasonPoints = me?.seasonPoints
@@ -88,7 +108,9 @@ export default function HomeScreen() {
   const rankedCap = ranked?.cap ?? RANKED_CAP_DEFAULT
   const isDailyDone = !!daily?.alreadyCompleted
 
-  const rankedLocked = totalPoints < RANKED_UNLOCK_XP
+  // Web parity: ranked unlock = catechism passed (RankedFeaturedCard.tsx).
+  // Khi data chưa load → assume locked (false-safe, BE enforce truth).
+  const rankedLocked = !basicQuizStatus?.passed
   const multiplayerLocked = totalPoints < MULTIPLAYER_UNLOCK_XP
   const tournamentLocked = totalPoints < TOURNAMENT_UNLOCK_XP
 
