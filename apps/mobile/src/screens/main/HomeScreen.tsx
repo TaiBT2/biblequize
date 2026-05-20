@@ -12,6 +12,7 @@ import RankedStandardCard from '../../components/home/RankedStandardCard'
 import CompactCard from '../../components/home/CompactCard'
 import SectionHeader from '../../components/home/SectionHeader'
 import DailyMissionsCard from '../../components/home/DailyMissionsCard'
+import MotivationCard from '../../components/home/MotivationCard'
 import VerseFooter from '../../components/home/VerseFooter'
 import { apiClient } from '../../api/client'
 import { colors, spacing } from '../../theme'
@@ -75,12 +76,18 @@ export default function HomeScreen() {
   // Stale CTA fix (DC-STALE-M1): mirror web DC-STALE-3 — 10s staleTime +
   // refetchOnMount: 'always' để mỗi lần focus Home đều validate `alreadyCompleted`.
   // Tránh race-condition khi user complete daily trên device khác.
-  const { data: daily } = useQuery<DailyChallengeStatus>({
+  const { data: daily, isLoading: dailyLoading } = useQuery<DailyChallengeStatus>({
     queryKey: ['daily-challenge'],
     queryFn: () => apiClient.get('/api/daily-challenge').then(r => r.data),
     staleTime: 10_000,
     refetchOnMount: 'always',
     refetchOnReconnect: true,
+  })
+
+  const { data: missions } = useQuery<{ missions?: { completed?: boolean }[] }>({
+    queryKey: ['daily-missions'],
+    queryFn: () => apiClient.get('/api/daily-missions').then(r => r.data).catch(() => null as any),
+    staleTime: 30_000,
   })
 
   const { data: ranked } = useQuery<RankedStatus>({
@@ -114,6 +121,15 @@ export default function HomeScreen() {
   const rankedLocked = !basicQuizStatus?.passed
   const multiplayerLocked = totalPoints < MULTIPLAYER_UNLOCK_XP
   const tournamentLocked = totalPoints < TOURNAMENT_UNLOCK_XP
+
+  // MotivationCard ("Bước 1") onboarding nudge — chỉ hiện cho new user
+  // chưa có engagement signals (web Home.tsx:213-226). Hide ngay khi user
+  // bắt đầu chơi: complete daily, có streak, hoặc complete mission.
+  const isNewUser = totalPoints < 1000
+  const hasStreak = streak > 0
+  const hasCompletedMission = !!missions?.missions?.some(m => m.completed)
+  const shouldShowMotivation =
+    isNewUser && !dailyLoading && !isDailyDone && !hasStreak && !hasCompletedMission
 
   const navTo = (tab: string, screen: string) => () => navigation.navigate(tab, { screen })
 
@@ -150,6 +166,10 @@ export default function HomeScreen() {
             rankedCap={rankedCap}
             onEnter={navTo('QuizTab', 'Ranked')}
           />
+        )}
+
+        {shouldShowMotivation && (
+          <MotivationCard onStartDaily={navTo('QuizTab', 'DailyChallenge')} />
         )}
 
         <DailyMissionsCard />

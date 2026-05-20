@@ -81,7 +81,13 @@
     "tournament": "Tournament",
     "tournamentDesc": "Single-elim bracket",
     "unlockAt": "Unlock @ {{xp}} XP",
-    "pointsToNext": "{{points}} XP to {{tier}}"
+    "pointsToNext": "{{points}} XP to {{tier}}",
+    "motivation": {
+      "step": "Step 1",
+      "title": "Complete today's challenge",
+      "description": "Finish your first Daily Challenge to unlock Missions, Leaderboard, and start a streak.",
+      "cta": "Start"
+    }
   },
   "quiz": {
     "question": "Q {{current}}/{{total}}",

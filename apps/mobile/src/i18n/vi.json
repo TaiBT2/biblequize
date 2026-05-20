@@ -81,7 +81,13 @@
     "tournament": "Giải đấu",
     "tournamentDesc": "Bracket loại trực tiếp",
     "unlockAt": "Mở khoá @ {{xp}} XP",
-    "pointsToNext": "Còn {{points}} XP đến {{tier}}"
+    "pointsToNext": "Còn {{points}} XP đến {{tier}}",
+    "motivation": {
+      "step": "Bước 1",
+      "title": "Hoàn thành thử thách hôm nay",
+      "description": "Sau khi hoàn thành Daily Challenge đầu tiên, bạn sẽ mở khóa Nhiệm vụ ngày, Bảng xếp hạng, và bắt đầu chuỗi (streak).",
+      "cta": "Bắt đầu"
+    }
   },
   "quiz": {
     "question": "Câu {{current}}/{{total}}",
