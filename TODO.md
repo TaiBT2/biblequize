@@ -3,10 +3,13 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (46)
+## Active (49)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-05-20 | Home: hide FeaturedDailyCard when MotivationCard shows (dedupe new-user CTA) | TODO | [detail](docs/todo/active/2026-05-20-home-hide-daily-card-when-motivation-shows.md) |
+| 2026-05-20 | Group Detail mobile redesign (compact header + 3-dot menu + drop Phân tích) | TODO | [detail](docs/todo/active/2026-05-20-group-detail-mobile-redesign.md) |
+| 2026-05-20 | Quiz Set Editor i18n (group + personal shared, 8 files) | TODO | [detail](docs/todo/active/2026-05-20-quizset-editor-i18n.md) |
 | 2026-05-20 | Mobile RankedResultScreen redesign (3 state A/B/C + review modal, mockup) | TODO | [detail](docs/todo/active/2026-05-20-mobile-ranked-result-screen-redesign.md) |
 | 2026-05-20 | Mobile RankedScreen redesign → web parity (5 sections) | TODO | [detail](docs/todo/active/2026-05-20-mobile-ranked-intro-redesign-web-parity.md) |
 | 2026-05-20 | Ranked result screen redesign (3 state A/B/C + review modal) | DONE | [detail](docs/todo/active/2026-05-20-ranked-result-screen-redesign.md) |

@@ -300,25 +300,26 @@ describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
     })
   })
 
-  describe('MotivationCard + Missions gating', () => {
-    it('renders MotivationCard for new user (totalPoints<1000, no engagement)', async () => {
+  // MotivationCard removed 2026-05-20: FeaturedDailyCard already provides
+  // full onboarding context (5 câu/3 phút/countdown/CTA) so the "Bước 1"
+  // nudge was redundant + caused decision fatigue for new users.
+  describe('Daily + Missions surfaces (post-MotivationCard removal)', () => {
+    it('shows FeaturedDailyCard for new user with daily not done', async () => {
       setupApi({ totalPoints: 200, dailyDone: false, currentStreak: 0, missionsCompleted: false })
       renderHome()
       await waitFor(() => {
-        expect(screen.getByTestId('motivation-card')).toBeInTheDocument()
+        expect(screen.getByTestId('featured-daily-card')).toBeInTheDocument()
       })
+      expect(screen.queryByTestId('motivation-card')).not.toBeInTheDocument()
     })
 
-    it('shows DailyMissionsCard for new user too (gate removed 2026-05-14)', async () => {
+    it('shows DailyMissionsCard for new user', async () => {
       setupApi({ totalPoints: 200 })
       renderHome()
       await waitFor(() => {
-        expect(screen.getByTestId('motivation-card')).toBeInTheDocument()
+        expect(screen.getByTestId('home-daily-missions')).toBeInTheDocument()
       })
-      // DailyMissionsCard now ALWAYS renders — coexists with MotivationCard
-      // for brand-new users so they see today's tasks alongside the
-      // onboarding nudge.
-      expect(screen.getByTestId('home-daily-missions')).toBeInTheDocument()
+      expect(screen.queryByTestId('motivation-card')).not.toBeInTheDocument()
     })
 
     it('shows DailyMissionsCard for active user (totalPoints≥1000)', async () => {
@@ -330,52 +331,17 @@ describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
       expect(screen.queryByTestId('motivation-card')).not.toBeInTheDocument()
     })
 
-    it('hides MotivationCard for new user once Daily is done', async () => {
+    it('hides FeaturedDailyCard once Daily is done (shows completed strip)', async () => {
       setupApi({ totalPoints: 200, dailyDone: true })
       renderHome()
       await waitFor(() => {
         expect(screen.getByTestId('home-page')).toBeInTheDocument()
       })
-      // Wait for daily-challenge fetch to settle so motivation gating fires.
       await waitFor(() => {
         const calls = mockApiGet.mock.calls.map((c: any) => c[0])
         expect(calls.some((u: string) => u.includes('/api/daily-challenge'))).toBe(true)
       })
-      expect(screen.queryByTestId('motivation-card')).not.toBeInTheDocument()
-    })
-
-    it('hides MotivationCard for new user with currentStreak > 0', async () => {
-      setupApi({ totalPoints: 200, currentStreak: 3, dailyDone: false })
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByTestId('home-page')).toBeInTheDocument()
-      })
-      await waitFor(() => {
-        const calls = mockApiGet.mock.calls.map((c: any) => c[0])
-        expect(calls.some((u: string) => u.includes('/api/me/daily-missions'))).toBe(true)
-      })
-      expect(screen.queryByTestId('motivation-card')).not.toBeInTheDocument()
-    })
-
-    it('hides MotivationCard for new user with a completed mission', async () => {
-      setupApi({ totalPoints: 200, missionsCompleted: true, dailyDone: false })
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByTestId('home-page')).toBeInTheDocument()
-      })
-      await waitFor(() => {
-        const calls = mockApiGet.mock.calls.map((c: any) => c[0])
-        expect(calls.some((u: string) => u.includes('/api/me/daily-missions'))).toBe(true)
-      })
-      expect(screen.queryByTestId('motivation-card')).not.toBeInTheDocument()
-    })
-
-    it('boundary: totalPoints=1000 hides MotivationCard, shows Missions', async () => {
-      setupApi({ totalPoints: 1000 })
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByTestId('home-daily-missions')).toBeInTheDocument()
-      })
+      expect(screen.queryByTestId('featured-daily-card')).not.toBeInTheDocument()
       expect(screen.queryByTestId('motivation-card')).not.toBeInTheDocument()
     })
   })

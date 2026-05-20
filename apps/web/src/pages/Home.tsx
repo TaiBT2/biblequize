@@ -12,7 +12,6 @@ import DailyMissionsCard from '../components/DailyMissionsCard'
 import FeaturedDailyCard from '../components/FeaturedDailyCard'
 import HeroRankedCard from '../components/HeroRankedCard'
 import HomeBanner from '../components/HomeBanner'
-import MotivationCard from '../components/MotivationCard'
 import RankedStandardCard from '../components/RankedStandardCard'
 import SectionHeader from '../components/SectionHeader'
 import TutorialOverlay from '../components/TutorialOverlay'
@@ -192,14 +191,6 @@ export default function Home() {
     staleTime: 60_000,
   })
 
-  const { data: missionsData, isLoading: missionsLoading } = useQuery<{
-    missions?: Array<{ completed: boolean }>
-  }>({
-    queryKey: ['daily-missions'],
-    queryFn: () => api.get('/api/me/daily-missions').then(r => r.data),
-    staleTime: 30_000,
-  })
-
   if (meLoading) return <HomeSkeleton />
 
   const totalPoints = tierData?.totalPoints ?? meData?.totalPoints ?? 0
@@ -210,20 +201,6 @@ export default function Home() {
   const energyMax = rankedStatus?.dailyLives ?? 100
   const rankedAnswered = rankedStatus?.questionsCounted ?? 0
   const rankedCap = rankedStatus?.cap ?? 100
-  const isNewUser = totalPoints < 1000
-
-  // MotivationCard ("Bước 1") onboarding nudge — only for brand-new users
-  // showing zero engagement signals. Hides as soon as the user plays
-  // Daily, starts a streak, or completes a mission.
-  const hasStreak = (meData?.currentStreak ?? 0) > 0
-  const hasCompletedMission = !!missionsData?.missions?.some(m => m.completed)
-  const motivationDataReady = !meLoading && !dcLoading && !missionsLoading
-  const shouldShowMotivation =
-    isNewUser &&
-    motivationDataReady &&
-    !dailyDone &&
-    !hasStreak &&
-    !hasCompletedMission
 
   const countdown = formatHHMMSS(msUntilMidnightUtc())
 
@@ -290,19 +267,10 @@ export default function Home() {
         />
       )}
 
-      {/* ── Motivation nudge — slotted between Daily and Missions per
-            Bui 2026-05-13. Only renders for new users with zero signals. */}
-      {shouldShowMotivation && (
-        <div className="mb-5">
-          <MotivationCard />
-        </div>
-      )}
-
       {/* ── Daily Missions — render for all users (Bui 2026-05-14:
             removed prior `!isNewUser` gate; Daily Missions is the
             primary "today's task" surface and shouldn't disappear for
-            new users). MotivationCard above still gates on isNewUser
-            so the two coexist for brand-new users. */}
+            new users). */}
       <section data-testid="home-daily-missions" className="mb-5">
         <DailyMissionsCard />
       </section>
