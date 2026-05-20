@@ -180,10 +180,10 @@ export default function HomeScreen() {
           </>
         )}
 
-        <SectionHeader title="Chế độ đa dạng" />
+        <SectionHeader title={t('home.varietySection')} />
         <View style={s.grid2}>
-          <CompactCard icon="📅" themeColor={colors.tertiary} title="Thử thách tuần"
-            subtitle="7 câu / tuần"
+          <CompactCard icon="📅" themeColor={colors.tertiary} title={t('home.weekly')}
+            subtitle={t('home.weeklyDesc')}
             onPress={navTo('QuizTab', 'WeeklyQuiz')} />
           <CompactCard icon="🎲" themeColor="#ec4899" title={t('home.mystery')}
             subtitle={t('home.mysteryDesc')}
@@ -196,23 +196,23 @@ export default function HomeScreen() {
           <View style={{ flex: 1 }} />
         </View>
 
-        <SectionHeader title="Thi đấu cộng đồng" />
+        <SectionHeader title={t('home.communitySection')} />
         <View style={s.grid2}>
-          <CompactCard icon="⛪" themeColor={colors.info} title={t('nav.groups')}
-            subtitle="Nhóm Hội Thánh"
+          <CompactCard icon="⛪" themeColor={colors.info} title={t('home.groups')}
+            subtitle={t('home.groupsDesc')}
             onPress={() => navigation.navigate('GroupsTab')} />
           <CompactCard icon="👥" themeColor={colors.info} title={t('home.multiplayer')}
             subtitle={t('home.multiplayerDesc')}
             onPress={navTo('MultiplayerTab', 'MultiplayerLobby')}
             locked={multiplayerLocked}
-            matchmakingHint={multiplayerLocked ? `Mở khoá @ ${MULTIPLAYER_UNLOCK_XP} XP` : undefined} />
+            matchmakingHint={multiplayerLocked ? t('home.unlockAt', { xp: MULTIPLAYER_UNLOCK_XP }) : undefined} />
         </View>
         <View style={s.grid2}>
-          <CompactCard icon="🏆" themeColor={colors.gold} title="Giải đấu"
-            subtitle="Bracket loại trực tiếp"
+          <CompactCard icon="🏆" themeColor={colors.gold} title={t('home.tournament')}
+            subtitle={t('home.tournamentDesc')}
             onPress={navTo('MultiplayerTab', 'MultiplayerLobby')}
             locked={tournamentLocked}
-            matchmakingHint={tournamentLocked ? `Mở khoá @ ${TOURNAMENT_UNLOCK_XP} XP` : undefined} />
+            matchmakingHint={tournamentLocked ? t('home.unlockAt', { xp: TOURNAMENT_UNLOCK_XP }) : undefined} />
           <View style={{ flex: 1 }} />
         </View>
       </ScrollView>
