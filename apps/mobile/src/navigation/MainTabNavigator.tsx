@@ -13,6 +13,7 @@ import QuizResultsScreen from '../screens/quiz/QuizResultsScreen'
 import DailyResultScreen from '../screens/quiz/DailyResultScreen'
 import QuizReviewScreen from '../screens/quiz/QuizReviewScreen'
 import DailyChallengeScreen from '../screens/quiz/DailyChallengeScreen'
+import BasicQuizScreen from '../screens/quiz/BasicQuizScreen'
 import RankedScreen from '../screens/quiz/RankedScreen'
 import MultiplayerLobbyScreen from '../screens/multiplayer/MultiplayerLobbyScreen'
 import CreateRoomScreen from '../screens/multiplayer/CreateRoomScreen'
@@ -76,6 +77,7 @@ function QuizStackNavigator() {
       <QuizStack.Screen name="QuizReview" component={QuizReviewScreen} />
       <QuizStack.Screen name="DailyChallenge" component={DailyChallengeScreen} />
       <QuizStack.Screen name="Ranked" component={RankedScreen} />
+      <QuizStack.Screen name="BasicQuiz" component={BasicQuizScreen} />
     </QuizStack.Navigator>
   )
 }

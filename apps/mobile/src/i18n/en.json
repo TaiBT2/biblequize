@@ -91,6 +91,7 @@
     "journey": {
       "title": "🗺 Journey of 66 books"
     },
+    "basicQuizHint": "Pass Bible Basics Quiz to unlock",
     "journeyExtra": {
       "subUnlock": "Start from Genesis · Complete 80% of each book to unlock the next",
       "metaCountSuffix": "/ {{total}} books",
@@ -159,6 +160,25 @@
     "start": "Start",
     "loadingQuestions": "Loading questions...",
     "alreadyCompletedToast": "You already completed today's challenge. Come back tomorrow!",
+    "basicQuiz": {
+      "title": "Bible Basics Quiz",
+      "counter": "Q {{current}}/{{total}}",
+      "prev": "Previous",
+      "next": "Next",
+      "submit": "Submit",
+      "submitting": "Submitting...",
+      "errorTitle": "Failed to load questions",
+      "errorMessage": "Please try again in a few minutes.",
+      "retryLoad": "Retry",
+      "backHome": "Back to home",
+      "passTitle": "Congratulations!",
+      "passSubtitle": "You got {{correct}}/{{total}} correct — passed the Bible Basics Quiz.",
+      "passUnlock": "Unlocked: Ranked",
+      "passCta": "Start Ranked now",
+      "failTitle": "{{correct}}/{{total}} correct — not enough",
+      "failSubtitle": "Need at least {{threshold}} to pass. Try again after cooldown.",
+      "cooldownMessage": "Retry available in: {{time}}"
+    },
     "ready": {
       "statusBadge": "READY",
       "label": "TODAY'S CHALLENGE",

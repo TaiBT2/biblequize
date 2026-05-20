@@ -91,6 +91,7 @@
     "journey": {
       "title": "🗺 Hành trình 66 sách"
     },
+    "basicQuizHint": "Cần thi Bài Giáo Lý để mở khoá",
     "journeyExtra": {
       "subUnlock": "Bắt đầu từ Sáng Thế Ký · Hoàn thành 80% mỗi sách để mở khóa sách tiếp theo",
       "metaCountSuffix": "/ {{total}} sách",
@@ -159,6 +160,25 @@
     "start": "Bắt đầu",
     "loadingQuestions": "Đang tải câu hỏi...",
     "alreadyCompletedToast": "Bạn đã hoàn thành thử thách hôm nay rồi. Quay lại ngày mai nhé!",
+    "basicQuiz": {
+      "title": "Bài Giáo Lý Căn Bản",
+      "counter": "Câu {{current}}/{{total}}",
+      "prev": "Câu trước",
+      "next": "Câu kế",
+      "submit": "Nộp bài",
+      "submitting": "Đang nộp...",
+      "errorTitle": "Không tải được câu hỏi",
+      "errorMessage": "Vui lòng thử lại sau ít phút.",
+      "retryLoad": "Thử lại",
+      "backHome": "Quay lại trang chủ",
+      "passTitle": "Chúc mừng!",
+      "passSubtitle": "Bạn đã đúng {{correct}}/{{total}} câu — vượt qua Bài Giáo Lý Căn Bản.",
+      "passUnlock": "Đã mở khóa: Đấu Hạng",
+      "passCta": "Bắt đầu Ranked ngay",
+      "failTitle": "Bạn đúng {{correct}}/{{total}} câu — chưa đủ",
+      "failSubtitle": "Cần đúng tối thiểu {{threshold}} để pass. Hãy thử lại sau cooldown.",
+      "cooldownMessage": "Có thể thử lại sau: {{time}}"
+    },
     "ready": {
       "statusBadge": "SẴN SÀNG",
       "label": "THỬ THÁCH HÔM NAY",

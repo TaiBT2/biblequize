@@ -38,6 +38,7 @@ export type QuizStackParamList = {
   QuizReview: { stats: any }
   DailyChallenge: undefined
   Ranked: undefined
+  BasicQuiz: undefined
   WeeklyQuiz: undefined
   MysteryMode: undefined
   SpeedRound: undefined

@@ -9,24 +9,32 @@ interface Props {
   rankedAnswered: number
   rankedCap: number
   onEnter: () => void
+  /** Khi locked + onLockedPress → tap navigates đến screen unlock (catechism).
+   *  Nếu omit khi locked → card disabled như cũ. */
+  onLockedPress?: () => void
+  lockedHint?: string
   locked?: boolean
 }
 
 /**
  * State A ranked compact card (port từ web HR-5).
- * Dùng trong 2-col primary grid bên cạnh Practice CompactCard.
+ * Khi locked: subtitle hiển thị lockedHint + tap → onLockedPress (thường
+ * navigate đến BasicQuizScreen để pass catechism).
  */
 export default function RankedStandardCard({
-  energyRemaining, energyMax, rankedAnswered, rankedCap, onEnter, locked,
+  energyRemaining, energyMax, rankedAnswered, rankedCap,
+  onEnter, onLockedPress, lockedHint, locked,
 }: Props) {
+  const tapHandler = locked ? onLockedPress : onEnter
+  const isTappable = !!tapHandler
+
   return (
     <Pressable
-      onPress={locked ? undefined : onEnter}
-      disabled={locked}
-      style={[s.card, locked && s.locked]}
+      onPress={tapHandler}
+      disabled={!isTappable}
+      style={[s.card, locked && !onLockedPress && s.locked]}
       accessibilityLabel={locked ? 'Đấu Hạng — chưa mở khoá' : 'Vào Đấu Hạng'}
       accessibilityRole="button"
-      accessibilityState={{ disabled: locked }}
     >
       <View style={s.header}>
         <Text style={s.icon}>⚡</Text>
@@ -34,14 +42,19 @@ export default function RankedStandardCard({
         {locked && <Text style={s.lockBadge}>🔒</Text>}
       </View>
 
-      <Text style={s.subtitle}>Tranh tài xếp hạng</Text>
+      <Text style={s.subtitle} numberOfLines={2}>
+        {locked && lockedHint ? lockedHint : 'Tranh tài xếp hạng'}
+      </Text>
 
-      <View style={s.metaRow}>
-        <Text style={s.metaItem}>⚡ {energyRemaining}/{energyMax}</Text>
-        <Text style={s.metaItem}>📊 {rankedAnswered}/{rankedCap}</Text>
-      </View>
-
-      <ProgressBar progress={energyMax > 0 ? (energyRemaining / energyMax) * 100 : 0} height={4} />
+      {!locked && (
+        <>
+          <View style={s.metaRow}>
+            <Text style={s.metaItem}>⚡ {energyRemaining}/{energyMax}</Text>
+            <Text style={s.metaItem}>📊 {rankedAnswered}/{rankedCap}</Text>
+          </View>
+          <ProgressBar progress={energyMax > 0 ? (energyRemaining / energyMax) * 100 : 0} height={4} />
+        </>
+      )}
     </Pressable>
   )
 }

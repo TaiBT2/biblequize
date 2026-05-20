@@ -196,6 +196,8 @@ export default function HomeScreen() {
                 rankedAnswered={rankedAnswered}
                 rankedCap={rankedCap}
                 onEnter={navTo('QuizTab', 'Ranked')}
+                onLockedPress={navTo('QuizTab', 'BasicQuiz')}
+                lockedHint={t('home.basicQuizHint')}
                 locked={rankedLocked}
               />
             </View>
