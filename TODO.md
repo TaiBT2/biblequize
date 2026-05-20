@@ -3,10 +3,12 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (36)
+## Active (38)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-05-20 | Ranked spec catch-up: tier-difficulty + UserQuestionHistory write (BL-20, BL-21) | DONE | [detail](docs/todo/active/2026-05-20-ranked-spec-catchup-difficulty-history.md) |
+| 2026-05-20 | Mobile: invalidate `['me']` sau finish Ranked/Practice (XP không cộng vào HomeBanner/Leaderboard) | TODO | [detail](docs/todo/active/2026-05-20-mobile-quiz-finish-invalidate-me.md) |
 | 2026-05-20 | Ranked DESKTOP redesign v2 (mockup_ranked_desktop_v2.html, 5 sub-tasks) | DONE | [detail](docs/todo/active/2026-05-20-ranked-desktop-redesign-v2.md) |
 | 2026-05-20 | Fix score ≠ XP leaderboard mismatch (Rank + Daily) | DONE | [detail](docs/todo/active/2026-05-20-fix-scoring-xp-mismatch.md) |
 | 2026-05-20 | Ranked timer: 90s/câu flat (SPEC §3.2 update) | DONE | [detail](docs/todo/active/2026-05-20-ranked-timer-90s.md) |

@@ -1,10 +1,15 @@
 package com.biblequiz.api;
 
+import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.entity.UserBookProgress;
 import com.biblequiz.modules.quiz.entity.UserDailyProgress;
+import com.biblequiz.modules.quiz.entity.UserQuestionHistory;
 import com.biblequiz.modules.quiz.repository.UserBookProgressRepository;
 import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
+import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
 import com.biblequiz.modules.quiz.service.BookProgressionService;
+import com.biblequiz.modules.quiz.service.SmartQuestionSelector;
+import com.biblequiz.modules.quiz.service.SmartQuestionSelector.QuestionFilter;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 
@@ -25,7 +30,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 @RestController
@@ -78,6 +86,12 @@ public class RankedController {
 
     @Autowired
     private com.biblequiz.modules.ranked.service.UserTierService userTierService;
+
+    @Autowired
+    private SmartQuestionSelector smartQuestionSelector;
+
+    @Autowired
+    private UserQuestionHistoryRepository userQuestionHistoryRepository;
 
     /** Optional — kept off the required graph so @WebMvcTest slices don't need to mock it.
      *  Mission tracking is best-effort and must never break the ranked answer response. */
@@ -185,6 +199,110 @@ public class RankedController {
         body.put("bookProgress", bookProgress);
 
         return ResponseEntity.ok(body);
+    }
+
+    /**
+     * Tier-aware question select for Ranked (BL-20 / RANK-CATCHUP-1, 2026-05-20).
+     *
+     * Replaces the previous FE pattern in Ranked.tsx that issued 3 manual
+     * /api/questions calls (filtered → book-only → any-book) — that flow
+     * skipped {@link SmartQuestionSelector} entirely so the SPEC §3.2
+     * tier-based difficulty distribution (70/25/5 for T1 down to 5/35/60
+     * for T6) was never applied to Ranked.
+     *
+     * <p>Body: {@code { limit:10, excludeIds:[], book?, difficulty?, language? }}.
+     * Resolves the caller's tier from {@code userTierService}, hands the
+     * filter to {@code smartQuestionSelector.selectQuestions(userId, ..)}
+     * which already does tier-distributed Easy/Medium/Hard + UserQuestion
+     * History-aware ordering (unseen → review → long-ago → recent).
+     * Post-filters by {@code excludeIds} (today's already-asked set in
+     * UserDailyProgress.askedQuestionIds) — overfetches by
+     * {@code excludeIds.size() + 5} so the final batch still hits limit.
+     *
+     * <p>Guest fallback: when there's no authenticated user, falls back to
+     * the legacy uniform random pool via {@code QuestionRepository} so
+     * landing-page demos still work.
+     */
+    @PostMapping("/ranked/questions/select")
+    public ResponseEntity<Map<String, Object>> selectRankedQuestions(
+            @RequestBody(required = false) Map<String, Object> body,
+            Authentication authentication) {
+        Map<String, Object> req = body != null ? body : new HashMap<>();
+        int limit = req.get("limit") instanceof Number n ? n.intValue() : 10;
+        if (limit <= 0 || limit > 50) limit = 10;
+        String book = stringOrNull(req.get("book"));
+        String difficulty = stringOrNull(req.get("difficulty"));
+        String language = stringOrNull(req.get("language"));
+        if (language == null || language.isBlank()) language = "vi";
+
+        Set<String> excludeSet = new HashSet<>();
+        Object excludeRaw = req.get("excludeIds");
+        if (excludeRaw instanceof List<?> rawList) {
+            for (Object o : rawList) {
+                if (o != null) excludeSet.add(o.toString());
+            }
+        }
+
+        String userId = null;
+        if (authentication != null) {
+            String email = resolveEmail(authentication);
+            if (email != null) {
+                User user = userRepository.findByEmail(email).orElse(null);
+                if (user != null) userId = user.getId();
+            }
+        }
+
+        QuestionFilter filter = new QuestionFilter(
+                (book != null && !book.isBlank()) ? book : null,
+                (difficulty != null && !difficulty.isBlank() && !"all".equalsIgnoreCase(difficulty)) ? difficulty : null,
+                language);
+
+        List<Question> picked;
+        if (userId != null) {
+            // Overfetch so post-filter still has enough after dropping excluded IDs.
+            int overfetch = limit + excludeSet.size() + 5;
+            List<Question> candidates = smartQuestionSelector.selectQuestions(userId, overfetch, filter);
+            picked = new java.util.ArrayList<>();
+            for (Question q : candidates) {
+                if (q == null || q.getId() == null) continue;
+                if (excludeSet.contains(q.getId())) continue;
+                picked.add(q);
+                if (picked.size() >= limit) break;
+            }
+
+            // Fallback: if book filter starved the pool, retry without book.
+            if (picked.size() < limit && filter.book() != null) {
+                QuestionFilter relaxed = new QuestionFilter(null, filter.difficulty(), language);
+                List<Question> more = smartQuestionSelector.selectQuestions(userId, overfetch, relaxed);
+                Set<String> have = new HashSet<>();
+                for (Question q : picked) have.add(q.getId());
+                for (Question q : more) {
+                    if (picked.size() >= limit) break;
+                    if (q == null || q.getId() == null) continue;
+                    if (have.contains(q.getId()) || excludeSet.contains(q.getId())) continue;
+                    picked.add(q);
+                    have.add(q.getId());
+                }
+            }
+        } else {
+            // Guest path — uniform random, no history awareness. /ranked
+            // is auth-gated by AppLayout but keep this branch defensive
+            // so a stray unauthenticated call doesn't 500.
+            List<Question> pool = new java.util.ArrayList<>(questionRepository.findAllActiveByLanguage(language));
+            pool.removeIf(q -> q == null || q.getId() == null || excludeSet.contains(q.getId()));
+            java.util.Collections.shuffle(pool);
+            picked = pool.size() > limit ? pool.subList(0, limit) : pool;
+        }
+
+        Map<String, Object> resp = new HashMap<>();
+        resp.put("questions", picked);
+        return ResponseEntity.ok(resp);
+    }
+
+    private static String stringOrNull(Object o) {
+        if (o == null) return null;
+        String s = o.toString().trim();
+        return s.isEmpty() ? null : s;
     }
 
     @RequestMapping(value = "/ranked/sessions/{id}/answer", method = RequestMethod.POST)
@@ -368,6 +486,22 @@ public class RankedController {
 
                         udpRepository.save(udp);
 
+                        // BL-21 (RANK-CATCHUP-3, 2026-05-20): mirror the Practice flow
+                        // by writing UserQuestionHistory on every ranked answer. Without
+                        // this, Profile stats `countByUserId` / `countMasteredByUserId`
+                        // miss every ranked attempt and cross-day repeat avoidance has
+                        // no data to work with. Best-effort — wrap in its own try/catch
+                        // so a UQH failure (FK race, etc.) doesn't break the answer
+                        // response. Mirrors SessionService.recordQuestionHistory:735-763.
+                        if (questionId != null) {
+                            try {
+                                recordRankedQuestionHistory(user, questionId, isCorrect);
+                            } catch (RuntimeException uqhErr) {
+                                log.warn("UQH write failed for user={} q={} ({}). Ranked submit unaffected.",
+                                        user.getId(), questionId, uqhErr.getMessage());
+                            }
+                        }
+
                         // Bump GroupMember.lastActiveAt for the inactive-filter on
                         // /api/groups/{id}/members. Best-effort — never fail the
                         // ranked answer submit if group bookkeeping errors.
@@ -503,6 +637,54 @@ public class RankedController {
             errorResp.put("error", e.getMessage());
             return ResponseEntity.status(500).body(errorResp);
         }
+    }
+
+    /**
+     * BL-21 (RANK-CATCHUP-3, 2026-05-20) — upsert UserQuestionHistory after
+     * a ranked answer so Profile stats + spaced-repetition reviewer (which
+     * already read this table for Practice) include Ranked attempts.
+     *
+     * <p>Mirrors {@code SessionService.recordQuestionHistory:735-763} — same
+     * SRS schedule (correct → review in min(30, timesCorrect×3) days;
+     * wrong → review in 1 day). Question entity is loaded by ID to satisfy
+     * the FK + populate the new row; if it's been hard-deleted between
+     * answer submission and this write the upsert is silently skipped.
+     */
+    private void recordRankedQuestionHistory(User user, String questionId, boolean isCorrect) {
+        java.util.Optional<UserQuestionHistory> existing =
+                userQuestionHistoryRepository.findByUserIdAndQuestionId(user.getId(), questionId);
+
+        UserQuestionHistory history;
+        if (existing.isPresent()) {
+            history = existing.get();
+        } else {
+            Question question = questionRepository.findById(questionId).orElse(null);
+            if (question == null) {
+                log.warn("UQH skip — question {} not found for user {}", questionId, user.getId());
+                return;
+            }
+            history = new UserQuestionHistory(UUID.randomUUID().toString(), user, question);
+            history.setTimesSeen(0);
+            history.setTimesCorrect(0);
+            history.setTimesWrong(0);
+        }
+
+        history.setTimesSeen(history.getTimesSeen() + 1);
+        LocalDateTime now = LocalDateTime.now();
+        history.setLastSeenAt(now);
+
+        if (isCorrect) {
+            history.setTimesCorrect(history.getTimesCorrect() + 1);
+            history.setLastCorrectAt(now);
+            int days = Math.min(30, history.getTimesCorrect() * 3);
+            history.setNextReviewAt(now.plusDays(days));
+        } else {
+            history.setTimesWrong(history.getTimesWrong() + 1);
+            history.setLastWrongAt(now);
+            history.setNextReviewAt(now.plusDays(1));
+        }
+
+        userQuestionHistoryRepository.save(history);
     }
 
     @GetMapping("/me/ranked-status")

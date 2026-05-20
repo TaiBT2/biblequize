@@ -1,6 +1,6 @@
 # BACKLOG — Code Gaps vs Canonical Spec
 
-**Last updated:** 2026-05-12
+**Last updated:** 2026-05-20
 **Purpose:** Mọi điểm code chưa khớp canonical spec (SPEC_USER_v3.1 / SPEC_ADMIN_v3.1 / SPEC_GROUP_v1.2 / SPEC_MULTIPLAYER) hoặc tech debt cần fix.
 
 > **Quy tắc:** Mỗi item có ID `BL-N`, status, owner placeholder, references. Khi fix xong → đánh ✅ DONE + ghi commit hash + xoá item sau 1 sprint.
@@ -414,6 +414,21 @@
   - "AI sinh tương tự" + "AI gợi ý đáp án nhiễu" (D8 v2).
   - RN port of editor (mobile parity beyond responsive web).
 - **Status:** ✅ DONE 2026-05-13 — commits `58c05c7` (Phase A+B), `e4de3e4` (Phase C-H), this commit (Phase I).
+
+### BL-20 — Ranked không enforce tier-based difficulty distribution
+- **Issue:** SPEC_USER §3.2 hứa Easy/Med/Hard% theo tier (T1: 70/25/5 → T6: 5/35/60). `TierDifficultyConfig.getDistribution()` có sẵn nhưng chỉ được consume bởi `SmartQuestionSelector.selectQuestions()`. Ranked.tsx FE gọi thẳng `/api/questions?excludeIds=...&book={book}` không qua SmartQuestionSelector → mọi tier nhận distribution uniform từ pool seed của sách đó. T6 không nhận nhiều câu Hard hơn T1; "leo tier khó hơn" chỉ tồn tại qua XP multiplier ×2.0, không qua content khó.
+- **Audit ref:** Ranked.tsx:51-67 manual select; SmartQuestionSelector callers: SessionService (Practice), VarietyQuizController (Mystery/Speed), AdminTestController (preview) — none from Ranked.
+- **Fix:** RANK-CATCHUP-1 + RANK-CATCHUP-2 — BE endpoint `/api/ranked/questions/select` wrap SmartQuestionSelector; FE Ranked.tsx 1 call thay 3 fallback.
+- **Effort:** ~1 ngày BE + 0.5 ngày FE
+- **Status:** ✅ DONE 2026-05-20 — this commit. New endpoint `POST /api/ranked/questions/select` wraps SmartQuestionSelector; Ranked.tsx now 1-call (was 3-fallback).
+
+### BL-21 — Ranked không ghi UserQuestionHistory → profile stats thiếu + cross-day repeat
+- **Issue:** `RankedController.submitRankedAnswer` không upsert `UserQuestionHistory` row sau khi user trả lời. Practice path qua `SessionService:763` đã ghi đúng. Hệ quả: (1) Profile stats `userQuestionHistoryRepository.countByUserId` ("đã chơi N câu") thiếu count Ranked toàn bộ; (2) Cross-day anti-repeat không khả thi vì không có lifetime history — `UserDailyProgress.askedQuestionIds` chỉ scope 1 ngày UTC; (3) Spaced-repetition (nextReviewAt) impossible cho Ranked.
+- **Audit ref:** `historyRepository.save` callers: SessionService.persistAnswer + AdminTestController (test seed) — RankedController missing.
+- **Fix:** RANK-CATCHUP-3 — upsert UQH row trong RankedController.submitRankedAnswer after UDP save. Wrap try/catch để UQH failure không break Ranked response.
+- **Follow-up (defer):** RANK-CATCHUP-4 cross-day exclude via UQH recent-N IDs.
+- **Effort:** ~0.5 ngày BE
+- **Status:** ✅ DONE 2026-05-20 — this commit. `RankedController.submitRankedAnswer` now upserts UQH (try/catch isolated so a UQH failure doesn't break the ranked answer response). Spaced-repetition (`nextReviewAt`) populated mirroring SessionService.
 
 ---
 

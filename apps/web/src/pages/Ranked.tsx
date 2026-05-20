@@ -36,35 +36,24 @@ export default function Ranked() {
       const sessionId = res.data.sessionId
       if (!sessionId) throw new Error('BE returned no sessionId')
 
+      // Tier-aware question pick — BE endpoint runs SmartQuestionSelector
+      // server-side so Easy/Medium/Hard% follows SPEC §3.2 tier table (T1
+      // 70/25/5 → T6 5/35/60). Replaces the previous FE pattern that
+      // issued up to 3 /api/questions queries and never applied tier
+      // distribution at all (BL-20, fix 2026-05-20).
       const serverAskedIds: string[] = rankedStatus.askedQuestionIdsToday ?? []
       const localAskedIds: string[] = (() => { try { return JSON.parse(localStorage.getItem('askedQuestionIds') || '[]') } catch { return [] } })()
-      const exclude = new Set<string>([...serverAskedIds, ...localAskedIds])
+      const excludeIds = Array.from(new Set<string>([...serverAskedIds, ...localAskedIds]))
 
-      const questions: any[] = []
-      const addUnique = (items: any[]) => {
-        for (const q of items ?? []) {
-          if (!q?.id || exclude.has(q.id) || questions.find((x: any) => x.id === q.id)) continue
-          questions.push(q)
-          exclude.add(q.id)
-          if (questions.length >= 10) break
-        }
-      }
-
-      step = 'GET /api/questions (filtered)'
-      if (questions.length < 10) {
-        const params: any = { limit: 10 - questions.length, excludeIds: Array.from(exclude) }
-        if (rankedStatus.currentBook) params.book = rankedStatus.currentBook
-        if (rankedStatus.currentDifficulty && rankedStatus.currentDifficulty !== 'all') params.difficulty = rankedStatus.currentDifficulty
-        addUnique((await api.get('/api/questions', { params })).data ?? [])
-      }
-      step = 'GET /api/questions (book-only fallback)'
-      if (questions.length < 10 && rankedStatus.currentBook) {
-        addUnique((await api.get('/api/questions', { params: { limit: 10 - questions.length, book: rankedStatus.currentBook, excludeIds: Array.from(exclude) } })).data ?? [])
-      }
-      step = 'GET /api/questions (any-book fallback)'
-      if (questions.length < 10) {
-        addUnique((await api.get('/api/questions', { params: { limit: 10 - questions.length, excludeIds: Array.from(exclude) } })).data ?? [])
-      }
+      step = 'POST /api/ranked/questions/select'
+      const pickRes = await api.post('/api/ranked/questions/select', {
+        limit: 10,
+        excludeIds,
+        book: rankedStatus.currentBook,
+        difficulty: rankedStatus.currentDifficulty,
+        language: getQuizLanguage(),
+      })
+      const questions: any[] = pickRes.data?.questions ?? []
 
       if (questions.length === 0) {
         alert(t('ranked.noQuestionsLeft', 'Bạn đã trả lời hết câu hỏi có sẵn hôm nay. Quay lại sau khi thêm câu mới.'))
