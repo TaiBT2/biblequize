@@ -15,18 +15,15 @@ interface DailyStatsCardsProps {
 }
 
 /**
- * Daily stats 2-col grid (mockup line 118-150) — replaces the
- * previous 3-card row that mixed Questions / Points / Accuracy with
- * inconsistent styling (RK-P1-5: Card 1 had progress bar + sub-text,
- * Card 2 just a number with awkward empty bottom). Accuracy moved to
- * sidebar `WinRateWidget` in R1, so this row is now exactly two
- * symmetric cards: questions · points-today.
+ * Daily stats — 2 compact cards (questions + points-today) sized to fit
+ * the 3-col row alongside RankedStreakCard. Renders as fragment so the
+ * parent grid in Ranked.tsx controls layout. Anatomy per cell:
+ *   icon (top-left)  |  big number (center)  |  uppercase label (bottom)
  *
- * Both cards now share the same anatomy:
- *   header: label (left) + meta (right)
- *   number: big gold value + optional unit
- *   bar:    thin coloured fill
- *   sub:    actionable hint (questions left / points to top-N)
+ * Slimmer than the v1 design (which had progress bars + sub-hints inside
+ * each cell) per user mockup 2026-05-20 — declutters the intro screen.
+ * Delta / top-N hint text moved to tooltip on hover (title attr) so the
+ * numbers stay surfaced but the row reads as one balanced stat strip.
  */
 export default function DailyStatsCards({
   questionsAnswered,
@@ -39,12 +36,6 @@ export default function DailyStatsCards({
 }: DailyStatsCardsProps) {
   const { t } = useTranslation()
 
-  const questionsLeft = Math.max(0, questionsCap - questionsAnswered)
-  const questionsPct = questionsCap > 0 ? (questionsAnswered / questionsCap) * 100 : 0
-
-  // Pick the most achievable top-N target the user hasn't yet hit.
-  // R10 will fill pointsToTop100 directly; until then prefer
-  // pointsToTop100 → pointsToTop50 → pointsToTop10.
   const topTarget =
     pointsToTop100 != null
       ? { points: pointsToTop100, rank: 100 }
@@ -54,116 +45,78 @@ export default function DailyStatsCards({
           ? { points: pointsToTop10, rank: 10 }
           : null
 
-  // Points bar fill — visualise progress toward the top target if we
-  // have one, else fall back to a flat 24% (matches mockup) so the
-  // card doesn't look broken with an empty bar.
-  const pointsBarPct = topTarget
-    ? Math.min(100, (pointsToday / (pointsToday + topTarget.points)) * 100)
-    : Math.min(100, pointsToday > 0 ? 24 : 0)
-
   const deltaText = (() => {
     if (dailyDelta == null) return null
     if (dailyDelta > 0) return t('ranked.deltaYesterdayUp', { points: dailyDelta })
-    if (dailyDelta < 0)
-      return t('ranked.deltaYesterdayDown', { points: Math.abs(dailyDelta) })
+    if (dailyDelta < 0) return t('ranked.deltaYesterdayDown', { points: Math.abs(dailyDelta) })
     return t('ranked.deltaYesterdaySame')
   })()
 
+  const pointsHint = topTarget
+    ? t('ranked.pointsToTopHint', { points: topTarget.points, rank: topTarget.rank })
+    : null
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-      {/* ── Card 1: questions counted ── */}
+    <>
+      {/* ── Questions counted ── */}
       <section
         data-testid="ranked-questions-card"
-        className="rounded-2xl border border-secondary/15 p-4 md:p-5"
+        className="rounded-2xl border border-secondary/15 p-3 md:p-4 flex flex-col items-center text-center"
         style={{ background: 'rgba(50,52,64,0.4)' }}
+        title={t('ranked.questionsLeftToday', { count: Math.max(0, questionsCap - questionsAnswered) })}
       >
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-on-surface-variant/60 text-[11px] tracking-wider">
-            {t('ranked.questionsCountedLabel')}
-          </span>
-          <span className="text-on-surface-variant/45 text-[11px]">
-            {t('ranked.capPerDay', { count: questionsCap })}
-          </span>
-        </div>
-        <div className="flex items-baseline gap-1.5 mb-3">
+        <span className="material-symbols-outlined text-secondary/80 text-base mb-1">quiz</span>
+        <div className="flex items-baseline gap-1">
           <span
             data-testid="ranked-questions-counted"
-            className="text-[28px] font-medium leading-none text-secondary"
+            className="text-secondary text-[22px] md:text-[24px] font-medium leading-none"
           >
             {questionsAnswered}
           </span>
-          <span className="text-on-surface-variant/40 text-[13px]">/{questionsCap}</span>
+          <span className="text-on-surface-variant/45 text-[11px]">/{questionsCap}</span>
         </div>
-        <div className="bg-white/[0.06] rounded-[3px] h-[5px] overflow-hidden mb-1.5">
-          <div
-            data-testid="ranked-today-progress"
-            className="h-full rounded-[3px] bg-secondary transition-[width] duration-500"
-            style={{ width: `${questionsPct}%` }}
-          />
-        </div>
-        <p className="text-on-surface-variant/45 text-[10px]">
-          {t('ranked.questionsLeftToday', { count: questionsLeft })}
-        </p>
+        <span className="text-on-surface-variant/55 text-[9px] md:text-[10px] tracking-wider uppercase mt-1.5">
+          {t('ranked.questionsTodayShort')}
+        </span>
       </section>
 
-      {/* ── Card 2: points today + delta ── */}
+      {/* ── Points today ── */}
       <section
         data-testid="ranked-points-card"
-        className="rounded-2xl border border-secondary/15 p-4 md:p-5"
+        className="rounded-2xl border border-secondary/15 p-3 md:p-4 flex flex-col items-center text-center"
         style={{ background: 'rgba(50,52,64,0.4)' }}
+        title={[deltaText, pointsHint].filter(Boolean).join(' • ') || undefined}
       >
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-on-surface-variant/60 text-[11px] tracking-wider">
-            {t('ranked.pointsTodayLabel')}
-          </span>
-          {deltaText && (
-            <span
-              data-testid="ranked-points-delta"
-              className="text-[11px] font-medium"
-              style={{
-                color:
-                  dailyDelta != null && dailyDelta > 0
-                    ? '#4ade80'
-                    : dailyDelta != null && dailyDelta < 0
-                      ? '#fb923c'
-                      : 'rgba(255,255,255,0.45)',
-              }}
-            >
-              {deltaText}
-            </span>
-          )}
-        </div>
-        <div className="flex items-baseline gap-1.5 mb-3">
+        <span className="material-symbols-outlined text-secondary/80 text-base mb-1">
+          military_tech
+        </span>
+        <span
+          data-testid="ranked-points-today"
+          className="text-secondary text-[22px] md:text-[24px] font-medium leading-none"
+        >
+          {pointsToday}
+        </span>
+        {deltaText ? (
           <span
-            data-testid="ranked-points-today"
-            className="text-[28px] font-medium leading-none text-secondary"
-          >
-            {pointsToday}
-          </span>
-          <span className="text-on-surface-variant/50 text-[12px]">
-            {t('ranked.points')}
-          </span>
-        </div>
-        <div className="bg-white/[0.06] rounded-[3px] h-[5px] overflow-hidden mb-1.5">
-          <div
-            className="h-full rounded-[3px] transition-[width] duration-500"
+            data-testid="ranked-points-delta"
+            className="text-[9px] md:text-[10px] tracking-wider uppercase mt-1.5"
             style={{
-              width: `${pointsBarPct}%`,
-              background: 'linear-gradient(90deg, #e8a832, #4a9eff)',
+              color:
+                dailyDelta != null && dailyDelta > 0
+                  ? '#4ade80'
+                  : dailyDelta != null && dailyDelta < 0
+                    ? '#fb923c'
+                    : 'rgba(255,255,255,0.55)',
             }}
-          />
-        </div>
-        {topTarget ? (
-          <p className="text-on-surface-variant/45 text-[10px]">
-            {t('ranked.pointsToTopHint', {
-              points: topTarget.points,
-              rank: topTarget.rank,
-            })}
-          </p>
+          >
+            {t('ranked.pointsTodayShort')}
+          </span>
         ) : (
-          <p className="text-on-surface-variant/35 text-[10px] italic">&nbsp;</p>
+          <span className="text-on-surface-variant/55 text-[9px] md:text-[10px] tracking-wider uppercase mt-1.5">
+            {t('ranked.pointsTodayShort')}
+          </span>
         )}
       </section>
-    </div>
+    </>
   )
 }

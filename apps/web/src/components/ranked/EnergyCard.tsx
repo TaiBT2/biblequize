@@ -8,8 +8,8 @@ interface EnergyCardProps {
 }
 
 interface UrgencyConfig {
-  /** Tailwind class for the segment fill colour. */
-  segmentClass: string
+  /** Fill color (hex) for the single horizontal bar. */
+  fillHex: string
   /** Hex for the big number text. */
   numberHex: string
   /** Optional CSS animation class — used for low-energy pulse. */
@@ -24,32 +24,29 @@ interface UrgencyConfig {
 function urgencyFor(energy: number, max: number): UrgencyConfig {
   if (max <= 0 || energy <= 0) {
     return {
-      segmentClass: 'bg-[rgba(255,255,255,0.08)]',
+      fillHex: 'rgba(255,255,255,0.08)',
       numberHex: 'rgba(255,255,255,0.45)',
     }
   }
   const pct = (energy / max) * 100
   if (pct < 10) {
-    return {
-      segmentClass: 'bg-[#ef4444]',
-      numberHex: '#ef4444',
-      numberAnimClass: 'animate-pulse',
-    }
+    return { fillHex: '#ef4444', numberHex: '#ef4444', numberAnimClass: 'animate-pulse' }
   }
-  if (pct < 20) return { segmentClass: 'bg-[#ff8c42]', numberHex: '#ff8c42' }
-  if (pct < 50) return { segmentClass: 'bg-[#eab308]', numberHex: '#eab308' }
-  return { segmentClass: 'bg-secondary', numberHex: '#e8a832' }
+  if (pct < 20) return { fillHex: '#ff8c42', numberHex: '#ff8c42' }
+  if (pct < 50) return { fillHex: '#eab308', numberHex: '#eab308' }
+  return { fillHex: '#e8a832', numberHex: '#e8a832' }
 }
 
 /**
- * Energy card on /ranked — primary card in the 1.5fr / 1fr top row
- * with Streak. Reflects the mockup (line 76-100): label + recover-in
- * countdown, big number with descriptor, 5-segment fill bar, footer
- * explainer.
+ * Energy card — slim full-width hero (mockup 2026-05-20):
+ *   header row : ⚡ NĂNG LƯỢNG          🕐 Phục hồi sau HH:MM:SS
+ *   number row : 100 / 100              ✓ Đủ chơi −20 câu
+ *   bar        : single yellow horizontal fill (urgency color band)
  *
- * Adds urgency colour bands per RK-P2-4 (gold/yellow/orange/red/grey
- * for out) so the user notices when they're running low without
- * having to read the number.
+ * Drops the previous 5-segment bar + bottom explainer per user mockup
+ * — the row is the primary "do I have energy?" signal so keep it
+ * uncluttered. Urgency colour band (gold→yellow→orange→red→grey) is
+ * preserved so the user notices low energy without reading the number.
  */
 export default function EnergyCard({
   energy,
@@ -59,9 +56,7 @@ export default function EnergyCard({
   const { t } = useTranslation()
   const isOut = energy <= 0
   const cfg = urgencyFor(energy, energyMax)
-  // Segments fill in proportion to current energy, 5 slots of 20%.
-  const SEG_COUNT = 5
-  const filledSegments = isOut ? 0 : Math.max(1, Math.round((energy / energyMax) * SEG_COUNT))
+  const fillPct = energyMax > 0 ? Math.max(0, Math.min(100, (energy / energyMax) * 100)) : 0
   const questionsLeft = Math.floor(energy / 5)
 
   return (
@@ -94,27 +89,31 @@ export default function EnergyCard({
           {energy}
         </span>
         <span className="text-on-surface-variant/40 text-[14px]">/{energyMax}</span>
-        <span className="text-on-surface-variant/50 text-[11px] ml-auto">
-          {isOut
-            ? t('ranked.outOfEnergy')
-            : t('ranked.questionsLeft', { count: questionsLeft })}
-        </span>
+        {isOut ? (
+          <span
+            data-testid="ranked-energy-status"
+            className="ml-auto text-[11px] font-medium text-on-surface-variant/50"
+          >
+            {t('ranked.outOfEnergy')}
+          </span>
+        ) : (
+          <span
+            data-testid="ranked-energy-status"
+            className="ml-auto inline-flex items-center gap-1 text-[11px] font-medium"
+            style={{ color: '#4ade80' }}
+          >
+            <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+            {t('ranked.energyEnoughForNQuestions', { count: questionsLeft })}
+          </span>
+        )}
       </div>
 
-      <div className="flex gap-1 mb-2" data-testid="ranked-energy-segments">
-        {Array.from({ length: SEG_COUNT }).map((_, i) => (
-          <div
-            key={i}
-            className={`flex-1 h-2 rounded-[2px] transition-colors ${
-              i < filledSegments ? cfg.segmentClass : 'bg-white/[0.06]'
-            }`}
-          />
-        ))}
+      <div className="bg-white/[0.06] rounded-full h-2 overflow-hidden" data-testid="ranked-energy-bar">
+        <div
+          className="h-full rounded-full transition-[width] duration-500"
+          style={{ width: `${fillPct}%`, background: cfg.fillHex }}
+        />
       </div>
-
-      <p className="text-on-surface-variant/40 text-[10px] leading-snug">
-        {t('ranked.energyExplainer')}
-      </p>
     </section>
   )
 }

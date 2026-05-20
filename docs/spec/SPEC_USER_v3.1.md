@@ -107,16 +107,18 @@ SPEC_USER v3.1 mô tả **các tính năng đã ship** đang phục vụ user th
 
 > **Source:** `apps/api/src/main/java/com/biblequiz/modules/ranked/service/TierDifficultyConfig.java:13-22`.
 
-| Tier | Easy% | Medium% | Hard% | Timer (s) |
-|---|---|---|---|---|
-| 1 | 70 | 25 | 5 | 30 |
-| 2 | 55 | 35 | 10 | 28 |
-| 3 | 35 | 45 | 20 | 25 |
-| 4 | 20 | 50 | 30 | 23 |
-| 5 | 10 | 40 | 50 | 20 |
-| 6 | 5 | 35 | 60 | 18 |
+| Tier | Easy% | Medium% | Hard% |
+|---|---|---|---|
+| 1 | 70 | 25 | 5 |
+| 2 | 55 | 35 | 10 |
+| 3 | 35 | 45 | 20 |
+| 4 | 20 | 50 | 30 |
+| 5 | 10 | 40 | 50 |
+| 6 | 5 | 35 | 60 |
 
 Áp dụng cho Ranked + Practice (qua `SmartQuestionSelector.selectQuestions()` `:36-76` khi caller không chỉ định difficulty cụ thể).
+
+**Timer:** 90s/câu flat cho Ranked (policy 2026-05-20 — user request "tối đa 90s"). Câu hỏi Bible có scripture reference dài + cần đọc kỹ → 30s quá ngắn. FE-controlled via `Ranked.tsx` truyền `timePerQuestion: 90` xuống Quiz.tsx. BE `TierDifficultyConfig.timerSeconds` còn lại (giá trị legacy 30→18) chỉ dùng cho `SessionService.startSession` (Practice smart selection path) — không ảnh hưởng Ranked.
 
 ### 3.3 Rewards per tier
 

@@ -120,15 +120,17 @@ export default function SeasonCard() {
         {t('ranked.seasonRewardHint', { name: seasonName })}
       </p>
 
-      {/* Mobile stacks the three stat columns vertically; desktop keeps
-          them side-by-side with vertical separators. The border + pl
-          utilities are inverted between breakpoints so the divider sits
-          at the top of each row on mobile (a single hairline is the
-          least invasive grouping signal in a thin column). */}
-      <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4 mb-3">
-        {/* Rank column */}
-        <div className="md:min-w-[88px]">
-          <div className="text-on-surface-variant/50 text-[10px] tracking-wider mb-0.5">
+      {/* Two side-by-side stat sub-cards (rank + points). Trend column
+          dropped per user mockup 2026-05-20 — placeholder "—" added no
+          signal until R10 BE wires seasonRankDelta. Bottom row keeps
+          the points-to-championship hint + leaderboard link. */}
+      <div className="grid grid-cols-2 gap-3 mb-3">
+        {/* Rank sub-card */}
+        <div
+          className="rounded-xl p-3 md:p-4"
+          style={{ background: 'rgba(50,52,64,0.4)' }}
+        >
+          <div className="text-on-surface-variant/55 text-[10px] tracking-wider mb-1.5 uppercase">
             {t('ranked.seasonRankLabel')}
           </div>
           {rank != null ? (
@@ -136,7 +138,7 @@ export default function SeasonCard() {
               <div className="flex items-baseline gap-1">
                 <span
                   data-testid="ranked-season-rank"
-                  className="text-secondary text-[26px] font-medium leading-none"
+                  className="text-secondary text-[26px] md:text-[28px] font-medium leading-none"
                 >
                   #{rank}
                 </span>
@@ -147,7 +149,7 @@ export default function SeasonCard() {
                 )}
               </div>
               {percentile != null && (
-                <div className="text-[10px] mt-0.5" style={{ color: 'rgba(74,158,255,0.7)' }}>
+                <div className="text-[10px] mt-1" style={{ color: 'rgba(74,158,255,0.7)' }}>
                   {t('ranked.seasonRankPercentile', { percent: percentile.toFixed(1) })}
                 </div>
               )}
@@ -155,52 +157,44 @@ export default function SeasonCard() {
           ) : (
             <div
               data-testid="ranked-season-rank"
-              className="text-on-surface-variant/60 text-[14px] font-medium"
+              className="text-on-surface-variant/60 text-[16px] font-medium"
             >
               {t('ranked.unranked')}
             </div>
           )}
         </div>
 
-        {/* Points column */}
-        <div className="md:flex-1 md:pl-4 md:border-l border-t md:border-t-0 border-white/[0.08] pt-3 md:pt-0">
-          <div className="text-on-surface-variant/50 text-[10px] tracking-wider mb-0.5">
+        {/* Points sub-card */}
+        <div
+          className="rounded-xl p-3 md:p-4"
+          style={{ background: 'rgba(50,52,64,0.4)' }}
+        >
+          <div className="text-on-surface-variant/55 text-[10px] tracking-wider mb-1.5 uppercase">
             {t('ranked.seasonPointsBigLabel')}
           </div>
           <div
             data-testid="ranked-season-points"
-            className="text-on-surface text-[22px] font-medium leading-none"
+            className="text-on-surface text-[26px] md:text-[28px] font-medium leading-none"
           >
             {seasonPoints}
-          </div>
-          {pointsToChamp > 0 && (
-            <div className="text-on-surface-variant/45 text-[10px] mt-0.5">
-              {t('ranked.seasonPointsToChamp', { points: pointsToChamp.toLocaleString('vi-VN') })}
-            </div>
-          )}
-        </div>
-
-        {/* Trend column — placeholder until R10 BE adds seasonRankDelta */}
-        <div className="md:pl-4 md:border-l border-t md:border-t-0 border-white/[0.08] pt-3 md:pt-0">
-          <div className="text-on-surface-variant/50 text-[10px] tracking-wider mb-0.5">
-            {t('ranked.seasonTrendLabel')}
-          </div>
-          <div
-            data-testid="ranked-season-trend"
-            className="text-on-surface-variant/40 text-[22px] font-medium leading-none"
-          >
-            {t('ranked.seasonNoTrend')}
           </div>
         </div>
       </div>
 
-      <Link
-        to="/leaderboard?period=season"
-        data-testid="ranked-season-leaderboard-link"
-        className="text-secondary text-[11px] hover:underline"
-      >
-        {t('ranked.seasonViewLeaderboard')}
-      </Link>
+      <div className="flex items-center justify-between gap-3 flex-wrap">
+        {pointsToChamp > 0 ? (
+          <span className="text-on-surface-variant/55 text-[11px]">
+            {t('ranked.seasonPointsToChamp', { points: pointsToChamp.toLocaleString('vi-VN') })}
+          </span>
+        ) : <span />}
+        <Link
+          to="/leaderboard?period=season"
+          data-testid="ranked-season-leaderboard-link"
+          className="text-secondary text-[11px] hover:underline"
+        >
+          {t('ranked.seasonViewLeaderboard')} →
+        </Link>
+      </div>
     </section>
   )
 }

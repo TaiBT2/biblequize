@@ -5,59 +5,40 @@ interface RankedStreakCardProps {
 }
 
 /**
- * Streak card on /ranked — second slot in the 1.5fr / 1fr top row.
- * Mockup pattern (line 102-114): orange-tinted bg, 🔥 + label + big
- * number + motivational sub-text mentioning the 7-day "Diligent"
- * badge.
- *
- * Note: this card lives in the main content area so the streak signal
- * is always visible to the user — sidebar widgets on /ranked dropped
- * the generic StreakWidget per RK-P0-1 (which would have duplicated
- * with this card).
+ * Streak card — compact stat tile sized to fit the 3-col row alongside
+ * Questions + Points (mockup 2026-05-20). Anatomy: 🔥 icon top-center,
+ * big orange number, uppercase label "NGÀY STREAK". The longer
+ * motivational copy (kept-going / badge hint) moved to `title` so the
+ * encouragement is still there on hover without bloating the tile.
  */
 export default function RankedStreakCard({ streak }: RankedStreakCardProps) {
   const { t } = useTranslation()
+  const hint = streak > 0 ? t('ranked.streakKeepGoing') : t('ranked.streakBadgeHint')
 
   return (
     <section
       data-testid="ranked-streak-card"
-      className="rounded-2xl border p-4 md:p-5 flex flex-col"
+      className="rounded-2xl border p-3 md:p-4 flex flex-col items-center text-center"
       style={{
         background: 'rgba(255,140,66,0.06)',
         borderColor: 'rgba(255,140,66,0.3)',
       }}
+      title={hint}
     >
-      <div className="flex items-center gap-2 mb-3">
-        <span className="text-sm">🔥</span>
-        <span
-          className="text-[11px] font-medium tracking-wider uppercase"
-          style={{ color: 'rgba(255,140,66,0.8)' }}
-        >
-          {t('ranked.streakHeader')}
-        </span>
-      </div>
-
-      <div className="flex items-baseline gap-2 mb-3">
-        <span
-          data-testid="ranked-streak-count"
-          className="text-[32px] font-medium leading-none"
-          style={{ color: '#ff8c42' }}
-        >
-          {streak}
-        </span>
-        <span className="text-on-surface-variant/50 text-[12px]">
-          {t('ranked.streakDays', { count: streak }).replace(/^\d+\s*/, '')}
-        </span>
-      </div>
-
-      <p
-        className="text-[11px] leading-snug"
-        style={{ color: 'rgba(255,140,66,0.7)' }}
+      <span className="text-base mb-1">🔥</span>
+      <span
+        data-testid="ranked-streak-count"
+        className="text-[22px] md:text-[24px] font-medium leading-none"
+        style={{ color: '#ff8c42' }}
       >
-        {streak > 0
-          ? t('ranked.streakKeepGoing')
-          : t('ranked.streakBadgeHint')}
-      </p>
+        {streak}
+      </span>
+      <span
+        className="text-[9px] md:text-[10px] tracking-wider uppercase mt-1.5"
+        style={{ color: 'rgba(255,140,66,0.8)' }}
+      >
+        {t('ranked.streakHeader')}
+      </span>
     </section>
   )
 }

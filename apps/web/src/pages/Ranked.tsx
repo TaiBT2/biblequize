@@ -12,8 +12,6 @@ import EnergyCard from '../components/ranked/EnergyCard'
 import RankedStreakCard from '../components/ranked/RankedStreakCard'
 import DailyStatsCards from '../components/ranked/DailyStatsCards'
 import SeasonCard from '../components/ranked/SeasonCard'
-import CurrentBookCard from '../components/ranked/CurrentBookCard'
-import RecentMatchesSection from '../components/ranked/RecentMatchesSection'
 import RankedActionFooter from '../components/ranked/RankedActionFooter'
 
 export default function Ranked() {
@@ -32,9 +30,13 @@ export default function Ranked() {
 
   const startRankedQuiz = async () => {
     if (!rankedStatus) return
+    let step = 'init'
     try {
+      step = 'POST /api/ranked/sessions'
       const res = await api.post('/api/ranked/sessions', { language: getQuizLanguage() })
       const sessionId = res.data.sessionId
+      if (!sessionId) throw new Error('BE returned no sessionId')
+
       const serverAskedIds: string[] = rankedStatus.askedQuestionIdsToday ?? []
       const localAskedIds: string[] = (() => { try { return JSON.parse(localStorage.getItem('askedQuestionIds') || '[]') } catch { return [] } })()
       const exclude = new Set<string>([...serverAskedIds, ...localAskedIds])
@@ -49,22 +51,41 @@ export default function Ranked() {
         }
       }
 
+      step = 'GET /api/questions (filtered)'
       if (questions.length < 10) {
         const params: any = { limit: 10 - questions.length, excludeIds: Array.from(exclude) }
         if (rankedStatus.currentBook) params.book = rankedStatus.currentBook
         if (rankedStatus.currentDifficulty && rankedStatus.currentDifficulty !== 'all') params.difficulty = rankedStatus.currentDifficulty
         addUnique((await api.get('/api/questions', { params })).data ?? [])
       }
+      step = 'GET /api/questions (book-only fallback)'
       if (questions.length < 10 && rankedStatus.currentBook) {
         addUnique((await api.get('/api/questions', { params: { limit: 10 - questions.length, book: rankedStatus.currentBook, excludeIds: Array.from(exclude) } })).data ?? [])
       }
+      step = 'GET /api/questions (any-book fallback)'
       if (questions.length < 10) {
         addUnique((await api.get('/api/questions', { params: { limit: 10 - questions.length, excludeIds: Array.from(exclude) } })).data ?? [])
       }
 
-      navigate('/quiz', { state: { sessionId, mode: 'ranked', questions, showExplanation: false, isRanked: true } })
-    } catch {
-      alert(t('ranked.cannotStart'))
+      if (questions.length === 0) {
+        // BE returned no fresh questions — user has answered every question in
+        // the seed pool for today (excludeIds covers all). Surface a specific
+        // message instead of the generic "cannot start".
+        alert(t('ranked.noQuestionsLeft', 'Bạn đã trả lời hết câu hỏi có sẵn hôm nay. Quay lại sau khi thêm câu mới.'))
+        return
+      }
+
+      // Ranked timer = 90s/question (user policy 2026-05-20). Was previously
+      // falling back to Quiz.tsx DEFAULT_TIMER=30 — too tight for the
+      // long-form Bible scripture references the questions contain.
+      navigate('/quiz', { state: { sessionId, mode: 'ranked', questions, showExplanation: false, isRanked: true, timePerQuestion: 90 } })
+    } catch (err) {
+      const e = err as { response?: { status?: number; data?: unknown }; message?: string }
+      const detail = e?.response?.status
+        ? `HTTP ${e.response.status} · ${JSON.stringify(e.response.data ?? {}).slice(0, 200)}`
+        : e?.message ?? String(err)
+      console.error(`[startRankedQuiz] failed at "${step}":`, err)
+      alert(`${t('ranked.cannotStart')}\n\n[${step}] ${detail}`)
     }
   }
 
@@ -99,12 +120,6 @@ export default function Ranked() {
   const tierProgressPct = nextTier
     ? (tierData?.tierProgressPercent ?? tierInfo.progressPct)
     : 100
-  const bookPct = rankedStatus.bookProgress?.progressPercentage ?? 0
-  const difficultyLabel = rankedStatus.currentDifficulty === 'all' ? t('practice.mixed')
-    : rankedStatus.currentDifficulty === 'easy' ? t('practice.easy')
-    : rankedStatus.currentDifficulty === 'medium' ? t('practice.medium')
-    : rankedStatus.currentDifficulty === 'hard' ? t('practice.hard') : rankedStatus.currentDifficulty
-
   return (
     <main data-testid="ranked-page" className="max-w-5xl mx-auto space-y-6 pb-[120px] md:pb-[112px]">
       <RankedHeader />
@@ -118,35 +133,30 @@ export default function Ranked() {
         starIndex={tierData?.starIndex}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-3">
-        <EnergyCard
-          energy={rankedStatus.livesRemaining ?? 0}
-          energyMax={rankedStatus.dailyLives ?? 0}
-          recoverTimeLeft={timeLeft || '--:--:--'}
-        />
+      {/* Energy full-width — Streak moved out of the energy-streak grid
+          into the 3-stat row below per RANK-INTRO-1. */}
+      <EnergyCard
+        energy={rankedStatus.livesRemaining ?? 0}
+        energyMax={rankedStatus.dailyLives ?? 0}
+        recoverTimeLeft={timeLeft || '--:--:--'}
+      />
+
+      {/* 3-stat row: Streak + Questions + Points (compact icon+number+label).
+          DailyStatsCards renders as fragment ⇒ 2 sibling cards in this grid. */}
+      <div className="grid grid-cols-3 gap-3">
         <RankedStreakCard streak={user?.currentStreak ?? 0} />
+        <DailyStatsCards
+          questionsAnswered={rankedStatus.questionsCounted ?? 0}
+          questionsCap={rankedStatus.cap || 0}
+          pointsToday={rankedStatus.pointsToday ?? 0}
+          dailyDelta={rankedStatus.dailyDelta}
+          pointsToTop100={rankedStatus.pointsToTop100}
+          pointsToTop50={rankedStatus.pointsToTop50}
+          pointsToTop10={rankedStatus.pointsToTop10}
+        />
       </div>
 
-      <DailyStatsCards
-        questionsAnswered={rankedStatus.questionsCounted ?? 0}
-        questionsCap={rankedStatus.cap || 0}
-        pointsToday={rankedStatus.pointsToday ?? 0}
-        dailyDelta={rankedStatus.dailyDelta}
-        pointsToTop100={rankedStatus.pointsToTop100}
-        pointsToTop50={rankedStatus.pointsToTop50}
-        pointsToTop10={rankedStatus.pointsToTop10}
-      />
-
       <SeasonCard />
-
-      <CurrentBookCard
-        bookName={rankedStatus.currentBook}
-        bookIndex={rankedStatus.currentBookIndex ?? 0}
-        masteryPct={bookPct}
-        difficultyLabel={difficultyLabel}
-      />
-
-      <RecentMatchesSection />
 
       <RankedActionFooter
         canPlay={canPlay}
