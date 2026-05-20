@@ -160,6 +160,10 @@ export default function RankedScreen() {
       navigation.navigate('Quiz', {
         sessionId, questions, mode: 'ranked', isRanked: true,
         timePerQuestion: 90, showExplanation: false,
+        // Snapshot totalPoints trước quiz để RankedResultScreen diff vs
+        // currentTotalPoints sau quiz → detect tier-up (state B) (web parity
+        // RankedQuizResults state-B trigger).
+        previousTotalPoints: totalPoints,
       })
     } catch (err) {
       const e = err as { response?: { status?: number; data?: any }; message?: string }

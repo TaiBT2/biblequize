@@ -11,6 +11,7 @@ import PracticeSelectScreen from '../screens/quiz/PracticeSelectScreen'
 import QuizScreen from '../screens/quiz/QuizScreen'
 import QuizResultsScreen from '../screens/quiz/QuizResultsScreen'
 import DailyResultScreen from '../screens/quiz/DailyResultScreen'
+import RankedResultScreen from '../screens/quiz/RankedResultScreen'
 import QuizReviewScreen from '../screens/quiz/QuizReviewScreen'
 import DailyChallengeScreen from '../screens/quiz/DailyChallengeScreen'
 import BasicQuizScreen from '../screens/quiz/BasicQuizScreen'
@@ -74,6 +75,7 @@ function QuizStackNavigator() {
       <QuizStack.Screen name="Quiz" component={QuizScreen} />
       <QuizStack.Screen name="QuizResults" component={QuizResultsScreen} />
       <QuizStack.Screen name="DailyResults" component={DailyResultScreen} />
+      <QuizStack.Screen name="RankedResults" component={RankedResultScreen} />
       <QuizStack.Screen name="QuizReview" component={QuizReviewScreen} />
       <QuizStack.Screen name="DailyChallenge" component={DailyChallengeScreen} />
       <QuizStack.Screen name="Ranked" component={RankedScreen} />

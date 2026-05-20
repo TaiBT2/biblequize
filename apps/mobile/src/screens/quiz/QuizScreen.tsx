@@ -63,14 +63,19 @@ export default function QuizScreen() {
     mode?: string
     timePerQuestion?: number
     showExplanation?: boolean
+    previousTotalPoints?: number
   }
   const questions: any[] = Array.isArray(_params.questions) ? _params.questions : []
   const sessionId = _params.sessionId
   const mode = typeof _params.mode === 'string' ? _params.mode : 'practice'
   const timePerQuestion = typeof _params.timePerQuestion === 'number' ? _params.timePerQuestion : 30
   const showExplanation = _params.showExplanation !== false
+  const previousTotalPoints = typeof _params.previousTotalPoints === 'number' ? _params.previousTotalPoints : 0
   const isDailyMode = mode === 'daily'
   const isRankedMode = mode === 'ranked'
+
+  // Track quiz start time để compute totalTime cho result screen.
+  const [quizStartTime] = useState(() => Date.now())
 
   const [qIndex, setQIndex] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
@@ -247,8 +252,15 @@ export default function QuizScreen() {
         userAnswers,
         questionScores,
         mode,
+        // Ranked-specific fields for RankedResultScreen (state B/C detection
+        // + total time display). previousTotalPoints forwarded từ RankedScreen.
+        totalTime: Date.now() - quizStartTime,
+        previousTotalPoints,
       }
-      navigation.replace(isDailyMode ? 'DailyResults' : 'QuizResults', { stats })
+      const resultsScreen = isDailyMode ? 'DailyResults'
+        : isRankedMode ? 'RankedResults'
+        : 'QuizResults'
+      navigation.replace(resultsScreen, { stats })
     } else {
       setQIndex(i => i + 1)
       setSelected(null)
