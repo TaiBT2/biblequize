@@ -146,9 +146,10 @@ const Quiz: React.FC = () => {
   const [showCombo, setShowCombo] = useState(false)
   const [answerAnim, setAnswerAnim] = useState<'correct' | 'wrong' | null>(null)
   const [scorePopping, setScorePopping] = useState(false)
-  // Click-outside-to-minimise on the explanation popup so users can scan
-  // their answer grid behind it. Resets per question.
-  const [explanationCollapsed, setExplanationCollapsed] = useState(false)
+  // Hidden by default so the pill doesn't cover the answer grid on short
+  // mobile viewports (user report 2026-05-20 — pill at bottom-48 was
+  // overlapping answer D). User taps "Xem giải thích" pill to expand panel.
+  const [explanationCollapsed, setExplanationCollapsed] = useState(true)
   const explanationRef = useRef<HTMLDivElement | null>(null)
 
   const currentQuestion = questions[currentQuestionIndex]
@@ -225,10 +226,11 @@ const Quiz: React.FC = () => {
     }
   }, [isQuizCompleted, queryClient])
 
-  // Reset the explanation popup to expanded whenever a new feedback shows
-  // (new question, or just-answered the current one).
+  // Reset the explanation popup to collapsed whenever a new feedback shows
+  // (new question, or just-answered the current one). Keeps the panel hidden
+  // until the user explicitly taps the "Xem giải thích" pill.
   useEffect(() => {
-    setExplanationCollapsed(false)
+    setExplanationCollapsed(true)
   }, [currentQuestionIndex, showResult])
 
   // Click-outside on the explanation panel collapses it so the answer grid
@@ -699,8 +701,11 @@ const Quiz: React.FC = () => {
         </div>
       )}
 
-      {/* Main Content */}
-      <main className="relative min-h-screen pt-24 pb-12 px-6 flex flex-col items-center justify-center max-w-5xl mx-auto">
+      {/* Main Content — pad-bottom grows when the feedback dock is visible
+          so the answer grid scrolls clear of the dock instead of being
+          covered by it (the dock was floating at `bottom-48` and overlapping
+          answer D on short mobile viewports — fix 2026-05-20). */}
+      <main className={`relative min-h-screen pt-24 px-6 flex flex-col items-center justify-center max-w-5xl mx-auto ${showResult ? 'pb-56 sm:pb-44' : 'pb-12'}`}>
         {/* Mobile-only HUD strip — 3 pills (energy/combo/score) per QM-2 mockup.
             Replaces desktop "Top Stats Row" on small screens. */}
         <div
@@ -882,19 +887,26 @@ const Quiz: React.FC = () => {
                   compact={questionLenClass === 'long'}
                   onClick={() => handleAnswerSelect(index)}
                   testId={`quiz-answer-${index}`}
+                  pickedByUser={isSelected}
                 />
               )
             })}
           </div>
         </div>
 
-        {/* Gameplay Footer */}
+        {/* Gameplay Footer — only renders pre-answer. Once `showResult` is
+            true both controls are useless (hint can't change a revealed
+            answer; skip can't unsubmit) and the bottom dock already shows
+            the score delta + "Câu tiếp theo" CTA, so the footer is just
+            visual noise. User report 2026-05-20: skip button looked active
+            after answering. */}
         {/*
           AskOpinion (community poll) lifeline was removed in v1 — it needs
           a critical mass of community answers (cold-start problem). Will
           be reintroduced in v2 once we reach ≥30 samples/question avg.
           See DECISIONS.md 2026-04-18.
         */}
+        {!showResult && (
         <div className="mt-16 w-full flex justify-between items-center opacity-80">
           <button
             data-testid="quiz-hint-btn"
@@ -927,150 +939,122 @@ const Quiz: React.FC = () => {
             <span className="text-xs font-bold uppercase tracking-widest">{t('quiz.skip')}</span>
           </button>
         </div>
+        )}
       </main>
 
-      {/* Confirmation Modal — feedback bar with the score delta + Next button.
-          Mobile: stack vertically (button full-width below) so "+N Điểm thưởng"
-          doesn't get squeezed into a 3-line wrap. Desktop: horizontal row. */}
-      {showResult && (
-        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-3rem)] max-w-lg">
-          <div
-            data-testid="quiz-answer-feedback"
-            className="bg-surface-container-highest p-4 sm:p-5 rounded-3xl border border-secondary/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 glass-panel"
-          >
-            <div className="flex items-center gap-4 min-w-0">
-              <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center flex-shrink-0 ${isCorrect ? 'bg-secondary/20' : 'bg-error/20'}`}>
-                <span
-                  className={`material-symbols-outlined text-2xl ${isCorrect ? 'text-secondary' : 'text-error'}`}
-                  style={FILL_STYLE}
-                >{isCorrect ? 'verified' : 'cancel'}</span>
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="text-base font-bold text-on-surface leading-tight">
-                  {isCorrect ? t('quiz.correct') : t('quiz.incorrect')}
-                </p>
-                <p data-testid="quiz-score-delta" className={`text-xs font-medium leading-tight mt-0.5 ${isCorrect ? 'text-secondary/80' : 'text-error/80'}`}>
-                  {isCorrect ? t('quiz.bonusPoints', { points: lastQuestionScore }) : t('quiz.noPoints')}
-                </p>
-              </div>
-            </div>
-            <button
-              data-testid="quiz-next-btn"
-              onClick={nextQuestion}
-              className="bg-gradient-to-r from-secondary to-tertiary text-on-secondary px-6 sm:px-8 py-3 rounded-2xl font-black text-sm shadow-xl active:scale-95 transition-all hover:brightness-110 whitespace-nowrap w-full sm:w-auto"
+      {/* Bottom dock — single fixed container that stacks the (optional)
+          explanation pill/panel above the feedback bar. Previously these were
+          two separate `fixed` elements (pill at bottom-48 → overlapped
+          answer D on short mobile viewports). Wrapping them in one column
+          keeps the pill above the feedback bar without floating over the
+          answer grid (fix 2026-05-20, mirrors DailyChallenge dock pattern). */}
+      {showResult && (() => {
+        const hasWrongExp = isCorrect === false && (currentQuestion.explanation || currentQuestion.verseStart)
+        const hasRightExp = isCorrect === true && settings?.showExplanation && currentQuestion.explanation
+        const hasExp = hasWrongExp || hasRightExp
+        const pillBorder = isCorrect ? 'border-secondary/30 text-secondary' : 'border-error/30 text-error'
+        return (
+          <div className="fixed bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] sm:w-[calc(100%-3rem)] max-w-lg flex flex-col items-center gap-2">
+            {hasExp && (
+              explanationCollapsed ? (
+                <button
+                  data-testid="quiz-explanation-pill"
+                  type="button"
+                  onClick={() => setExplanationCollapsed(false)}
+                  className={`px-4 py-2 rounded-full glass-panel border text-xs font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-transform ${pillBorder}`}
+                >
+                  <span className="material-symbols-outlined text-sm" style={FILL_STYLE}>lightbulb</span>
+                  {t('quiz.showExplanationAgain', 'Xem giải thích')}
+                </button>
+              ) : (
+                <div ref={explanationRef} data-testid="quiz-explanation" className="w-full animate-slide-up">
+                  <div className={`glass-panel p-5 rounded-2xl border space-y-3 max-h-[50vh] overflow-y-auto ${isCorrect ? 'border-secondary/20' : 'border-error/20'}`}>
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2 min-w-0">
+                        {hasWrongExp && (
+                          <>
+                            <span className="material-symbols-outlined text-green-400 text-sm flex-shrink-0" style={FILL_STYLE}>check_circle</span>
+                            <span className="text-sm font-bold text-green-400 truncate">
+                              {t('quiz.correctAnswerIs', { answer: currentQuestion.options[currentQuestion.correctAnswer?.[0] ?? 0] ?? '' })}
+                            </span>
+                          </>
+                        )}
+                        {hasRightExp && (
+                          <span className="text-sm font-bold text-on-surface">
+                            {t('quiz.explanation')}
+                          </span>
+                        )}
+                      </div>
+                      <button
+                        data-testid="quiz-explanation-close"
+                        type="button"
+                        onClick={() => setExplanationCollapsed(true)}
+                        className="text-on-surface-variant/60 hover:text-on-surface transition-colors -mr-1 flex-shrink-0"
+                        aria-label={t('quiz.minimizeExplanation', 'Thu nhỏ')}
+                      >
+                        <span className="material-symbols-outlined text-base">close</span>
+                      </button>
+                    </div>
+                    {hasWrongExp && currentQuestion.verseStart && (
+                      <p className="text-secondary text-sm font-medium flex items-center gap-1.5">
+                        <span className="material-symbols-outlined text-sm">menu_book</span>
+                        {currentQuestion.book} {currentQuestion.chapter}:{currentQuestion.verseStart}
+                        {currentQuestion.verseEnd && currentQuestion.verseEnd !== currentQuestion.verseStart
+                          ? `–${currentQuestion.verseEnd}` : ''}
+                      </p>
+                    )}
+                    {currentQuestion.explanation && (
+                      <p className="text-on-surface-variant text-sm leading-relaxed flex items-start gap-1.5">
+                        <span className="material-symbols-outlined text-sm mt-0.5 text-secondary/60">lightbulb</span>
+                        <span>{currentQuestion.explanation}</span>
+                      </p>
+                    )}
+                    {hasWrongExp && (
+                      <button
+                        onClick={() => {
+                          try { api.post('/api/me/bookmarks', { questionId: currentQuestion.id }) } catch {}
+                        }}
+                        className="flex items-center gap-1.5 text-xs font-bold text-secondary hover:text-secondary/80 transition-colors mt-1"
+                      >
+                        <span className="material-symbols-outlined text-sm">bookmark_add</span>
+                        {t('quiz.bookmarkForReview', 'Đánh dấu ôn lại')}
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )
+            )}
+            <div
+              data-testid="quiz-answer-feedback"
+              className="w-full bg-surface-container-highest p-4 sm:p-5 rounded-3xl border border-secondary/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 glass-panel"
             >
-              {currentQuestionIndex + 1 >= questions.length ? t('quiz.viewResults') : t('quiz.nextQuestion')}
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Explanation panel — always show for wrong answers.
-          Bottom offset clears the feedback bar at bottom-10 (which on mobile
-          can wrap to 2-3 lines with "+N Điểm thưởng" → ~120-140px tall) so
-          the explanation text isn't truncated. max-h + overflow-y-auto keeps
-          long explanations from spilling above the answer grid. */}
-      {showResult && isCorrect === false && (currentQuestion.explanation || currentQuestion.verseStart) && (
-        explanationCollapsed ? (
-          <button
-            data-testid="quiz-explanation-pill"
-            type="button"
-            onClick={(e) => { e.stopPropagation(); setExplanationCollapsed(false) }}
-            className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-full glass-panel border border-error/30 text-error text-xs font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-transform"
-          >
-            <span className="material-symbols-outlined text-sm" style={FILL_STYLE}>info</span>
-            {t('quiz.showExplanationAgain', 'Xem giải thích')}
-          </button>
-        ) : (
-        <div ref={explanationRef} data-testid="quiz-explanation" className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg animate-slide-up">
-          <div className="glass-panel p-5 rounded-2xl border border-error/20 space-y-3 max-h-[50vh] overflow-y-auto">
-            {/* Header row with close button */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-green-400 text-sm" style={FILL_STYLE}>check_circle</span>
-                <span className="text-sm font-bold text-green-400">
-                  {t('quiz.correctAnswerIs', { answer: currentQuestion.options[currentQuestion.correctAnswer?.[0] ?? 0] ?? '' })}
-                </span>
+              <div className="flex items-center gap-4 min-w-0">
+                <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center flex-shrink-0 ${isCorrect ? 'bg-secondary/20' : 'bg-error/20'}`}>
+                  <span
+                    className={`material-symbols-outlined text-2xl ${isCorrect ? 'text-secondary' : 'text-error'}`}
+                    style={FILL_STYLE}
+                  >{isCorrect ? 'verified' : 'cancel'}</span>
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-base font-bold text-on-surface leading-tight">
+                    {isCorrect ? t('quiz.correct') : t('quiz.incorrect')}
+                  </p>
+                  <p data-testid="quiz-score-delta" className={`text-xs font-medium leading-tight mt-0.5 ${isCorrect ? 'text-secondary/80' : 'text-error/80'}`}>
+                    {isCorrect ? t('quiz.bonusPoints', { points: lastQuestionScore }) : t('quiz.noPoints')}
+                  </p>
+                </div>
               </div>
               <button
-                data-testid="quiz-explanation-close"
-                type="button"
-                onClick={(e) => { e.stopPropagation(); setExplanationCollapsed(true) }}
-                className="text-on-surface-variant/60 hover:text-on-surface transition-colors -mr-1"
-                aria-label={t('quiz.minimizeExplanation', 'Thu nhỏ')}
+                data-testid="quiz-next-btn"
+                onClick={nextQuestion}
+                className="bg-gradient-to-r from-secondary to-tertiary text-on-secondary px-6 sm:px-8 py-3 rounded-2xl font-black text-sm shadow-xl active:scale-95 transition-all hover:brightness-110 whitespace-nowrap w-full sm:w-auto"
               >
-                <span className="material-symbols-outlined text-base">close</span>
-              </button>
-            </div>
-
-            {/* Scripture reference */}
-            {currentQuestion.verseStart && (
-              <p className="text-secondary text-sm font-medium flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-sm">menu_book</span>
-                {currentQuestion.book} {currentQuestion.chapter}:{currentQuestion.verseStart}
-                {currentQuestion.verseEnd && currentQuestion.verseEnd !== currentQuestion.verseStart
-                  ? `–${currentQuestion.verseEnd}` : ''}
-              </p>
-            )}
-
-            {/* Explanation */}
-            {currentQuestion.explanation && (
-              <p className="text-on-surface-variant text-sm leading-relaxed flex items-start gap-1.5">
-                <span className="material-symbols-outlined text-sm mt-0.5 text-secondary/60">lightbulb</span>
-                <span>{currentQuestion.explanation}</span>
-              </p>
-            )}
-
-            {/* Bookmark button */}
-            <button
-              onClick={() => {
-                try { api.post('/api/me/bookmarks', { questionId: currentQuestion.id }) } catch {}
-              }}
-              className="flex items-center gap-1.5 text-xs font-bold text-secondary hover:text-secondary/80 transition-colors mt-1"
-            >
-              <span className="material-symbols-outlined text-sm">bookmark_add</span>
-              {t('quiz.bookmarkForReview', 'Đánh dấu ôn lại')}
-            </button>
-          </div>
-        </div>
-        )
-      )}
-
-      {/* Explanation for correct — only when showExplanation setting is on.
-          Same bottom offset + scroll cap as the wrong-answer panel (mobile
-          responsive fix). */}
-      {showResult && isCorrect === true && settings?.showExplanation && currentQuestion.explanation && (
-        explanationCollapsed ? (
-          <button
-            data-testid="quiz-explanation-pill"
-            type="button"
-            onClick={(e) => { e.stopPropagation(); setExplanationCollapsed(false) }}
-            className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-full glass-panel border border-secondary/30 text-secondary text-xs font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-transform"
-          >
-            <span className="material-symbols-outlined text-sm" style={FILL_STYLE}>info</span>
-            {t('quiz.showExplanationAgain', 'Xem giải thích')}
-          </button>
-        ) : (
-        <div ref={explanationRef} className="fixed bottom-48 sm:bottom-36 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-3rem)] max-w-lg">
-          <div className="glass-panel p-4 rounded-2xl border border-outline-variant/10 text-sm text-on-surface-variant max-h-[50vh] overflow-y-auto">
-            <div className="flex items-start justify-between gap-3">
-              <p>
-                <strong className="text-on-surface">{t('quiz.explanation')}:</strong> {currentQuestion.explanation}
-              </p>
-              <button
-                data-testid="quiz-explanation-close"
-                type="button"
-                onClick={(e) => { e.stopPropagation(); setExplanationCollapsed(true) }}
-                className="text-on-surface-variant/60 hover:text-on-surface transition-colors flex-shrink-0"
-                aria-label={t('quiz.minimizeExplanation', 'Thu nhỏ')}
-              >
-                <span className="material-symbols-outlined text-base">close</span>
+                {currentQuestionIndex + 1 >= questions.length ? t('quiz.viewResults') : t('quiz.nextQuestion')}
               </button>
             </div>
           </div>
-        </div>
         )
-      )}
+      })()}
     </div>
   )
 }
