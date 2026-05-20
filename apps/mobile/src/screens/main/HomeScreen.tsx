@@ -164,7 +164,22 @@ export default function HomeScreen() {
           <DailyCompletedStrip
             correctCount={daily?.correctCount ?? 0}
             totalCount={daily?.totalCount ?? daily?.questionCount ?? 5}
-            onReview={navTo('QuizTab', 'DailyChallenge')}
+            onReview={() => navigation.navigate('QuizTab', {
+              // Navigate trực tiếp sang DailyResults (review screen) thay vì
+              // DailyChallenge (start screen). Trước đây nav sang start screen
+              // → user thấy "Bắt đầu thử thách" CTA dù đã hoàn thành, click
+              // Start chỉ bị block bởi /start endpoint 409 → confusing UX.
+              // Pass minimal stats; DailyResultScreen sẽ fetch breakdown đầy đủ
+              // từ /api/daily-challenge/result.
+              screen: 'DailyResults',
+              params: {
+                stats: {
+                  correctAnswers: daily?.correctCount ?? 0,
+                  totalQuestions: daily?.totalCount ?? daily?.questionCount ?? 5,
+                  mode: 'daily',
+                },
+              },
+            })}
           />
         ) : (
           <FeaturedDailyCard

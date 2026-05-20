@@ -55,6 +55,22 @@ export default function DailyChallengeScreen() {
     refetchOnMount: 'always',
   })
 
+  // Defense-in-depth: nếu user navigate tới screen này (qua tab, deeplink,
+  // hoặc back-stack) sau khi đã hoàn thành daily, redirect sang DailyResults
+  // để show review thay vì start CTA. HomeScreen "Xem lại" CTA đã nav trực
+  // tiếp sang DailyResults — guard này cover còn lại các entry points khác.
+  React.useEffect(() => {
+    if (challenge?.alreadyCompleted) {
+      navigation.replace('DailyResults', {
+        stats: {
+          correctAnswers: challenge.correctCount,
+          totalQuestions: challenge.totalCount ?? challenge.totalQuestions ?? challenge.questionCount ?? 5,
+          mode: 'daily',
+        },
+      })
+    }
+  }, [challenge?.alreadyCompleted, navigation])
+
   const { data: season } = useQuery<SeasonInfo | null>({
     queryKey: ['season', 'active'],
     queryFn: () => apiClient.get('/api/seasons/active').then(r => r.data).catch(() => null),

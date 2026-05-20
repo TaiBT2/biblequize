@@ -20,6 +20,11 @@ interface DailyResultResponse {
   timeSeconds?: number
   completedAt?: string
   resultsBreakdown?: boolean[]
+  // BE getResultData fields cần thiết khi user vào DailyResults qua "Xem lại"
+  // (không có stats route param từ quiz session). Source: DailyChallengeService
+  // .getResultData line 167-168.
+  correctCount?: number
+  totalQuestions?: number
 }
 
 function formatTime(seconds?: number): string {
@@ -67,16 +72,20 @@ export default function DailyResultScreen() {
     ).start()
   }, [pulse])
 
-  const correct = stats.correctAnswers ?? 0
-  const total = stats.totalQuestions ?? 5
-  const percent = total > 0 ? Math.round((correct / total) * 100) : 0
-  const isPerfect = correct === total && total > 0
-
   const { data: result } = useQuery<DailyResultResponse>({
     queryKey: ['daily-challenge-result'],
     queryFn: () => apiClient.get('/api/daily-challenge/result').then(r => r.data),
     staleTime: 60_000,
   })
+
+  // Fall back to BE result khi stats route param thiếu — xảy ra khi user
+  // navigate qua "Xem lại" (HomeScreen DailyCompletedStrip) thay vì ngay
+  // sau finish quiz. Stats từ local quiz session không tồn tại trong path
+  // này, phải đọc từ /api/daily-challenge/result.
+  const correct = stats.correctAnswers ?? result?.correctCount ?? 0
+  const total = stats.totalQuestions ?? result?.totalQuestions ?? 5
+  const percent = total > 0 ? Math.round((correct / total) * 100) : 0
+  const isPerfect = correct === total && total > 0
 
   const xpEarned = result?.xpEarned ?? (isPerfect ? 75 : 50)
   const betterThanPercent = result?.betterThanPercent
