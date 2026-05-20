@@ -479,6 +479,12 @@ public class RankedController {
             resp.put("livesRemaining", p.livesRemaining);
             resp.put("questionsCounted", p.questionsCounted);
             resp.put("pointsToday", p.pointsToday);
+            // Per-question XP awarded — surfaced so FE can show the same value
+            // it credits to the leaderboard. Without this, Quiz.tsx falls back
+            // to its own local formula (different base values, no tier/surge)
+            // and the user sees a per-question score ~4× higher than the
+            // actual leaderboard delta (bug report 2026-05-20).
+            resp.put("earned", earned);
             resp.put("streak", p.currentStreak);
 
             // Include book progression information

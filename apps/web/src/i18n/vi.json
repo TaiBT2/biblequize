@@ -2196,6 +2196,7 @@
       "rowBetterThan": "Tốt hơn",
       "betterThanValue": "{{percent}}% người chơi",
       "rowXP": "XP nhận được",
+      "xpThresholdMissed": "Cần ≥4/5 đúng để nhận 50 XP",
       "qDotTitle": "Câu {{num}}: {{status}}",
       "qDotCorrect": "Đúng",
       "qDotWrong": "Sai",

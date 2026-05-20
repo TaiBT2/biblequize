@@ -393,13 +393,25 @@ const Quiz: React.FC = () => {
 
     let questionScore = 0
     if (correct) {
-      const baseScore = currentQuestion.difficulty === 'easy' ? 10 :
-        currentQuestion.difficulty === 'medium' ? 20 : 30
-      const timeBonus = Math.floor(timeLeft / 2)
-      const perfectBonus = timeLeft >= 25 ? 5 : 0
-      const difficultyMultiplier = currentQuestion.difficulty === 'hard' ? 1.5 :
-        currentQuestion.difficulty === 'medium' ? 1.2 : 1
-      questionScore = Math.floor((baseScore + timeBonus + perfectBonus) * difficultyMultiplier)
+      // Ranked mode: server is authoritative for XP. Use the per-question
+      // `earned` value returned by `/api/ranked/sessions/{id}/answer` so the
+      // displayed score matches what hits the leaderboard. Falls through to
+      // the FE formula only when the field is missing (older BE / non-ranked
+      // modes that haven't migrated to server-side scoring yet).
+      const serverEarned = typeof rankedResponse?.earned === 'number'
+        ? (rankedResponse.earned as number)
+        : null
+      if (serverEarned != null) {
+        questionScore = serverEarned
+      } else {
+        const baseScore = currentQuestion.difficulty === 'easy' ? 10 :
+          currentQuestion.difficulty === 'medium' ? 20 : 30
+        const timeBonus = Math.floor(timeLeft / 2)
+        const perfectBonus = timeLeft >= 25 ? 5 : 0
+        const difficultyMultiplier = currentQuestion.difficulty === 'hard' ? 1.5 :
+          currentQuestion.difficulty === 'medium' ? 1.2 : 1
+        questionScore = Math.floor((baseScore + timeBonus + perfectBonus) * difficultyMultiplier)
+      }
 
       setScore(prev => prev + questionScore)
       const newCombo = combo + 1

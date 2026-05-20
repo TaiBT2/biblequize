@@ -800,7 +800,7 @@ const DailyChallenge: React.FC = () => {
           <div className="max-w-md w-full glass-card rounded-2xl border border-white/5 p-6" onClick={(e) => e.stopPropagation()}>
             <ShareCard
               sessionId={dailyResult.sessionId ?? sessionId ?? ''}
-              score={dailyResult.score}
+              score={dailyResult.xpEarned ?? 0}
               correct={dailyResult.correctCount}
               total={dailyResult.totalQuestions}
               userName={userName ?? ''}

@@ -158,7 +158,15 @@ export function HeroCard(props: HeroCardProps) {
           {done.betterThanPercent != null && (
             <SummaryRow icon="trending_up" label={t('daily.done.rowBetterThan')} value={t('daily.done.betterThanValue', { percent: done.betterThanPercent })} valueClass="text-[#4ade80]" />
           )}
-          <SummaryRow icon="workspace_premium" label={t('daily.done.rowXP')} value={`+${done.xpEarned} XP`} valueClass="text-secondary" lastRow />
+          <SummaryRow
+            icon="workspace_premium"
+            label={t('daily.done.rowXP')}
+            value={done.xpEarned > 0
+              ? `+${done.xpEarned} XP`
+              : t('daily.done.xpThresholdMissed', 'Cần ≥4/5 đúng để nhận 50 XP')}
+            valueClass={done.xpEarned > 0 ? 'text-secondary' : 'text-on-surface-variant/55 text-[11px]'}
+            lastRow
+          />
           {done.resultsBreakdown && done.resultsBreakdown.length > 0 && (
             <div className="flex gap-1 mt-3.5">
               {done.resultsBreakdown.map((correct, i) => (

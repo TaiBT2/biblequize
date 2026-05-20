@@ -2196,6 +2196,7 @@
       "rowBetterThan": "Better than",
       "betterThanValue": "{{percent}}% of players",
       "rowXP": "XP earned",
+      "xpThresholdMissed": "Need ≥4/5 correct to earn 50 XP",
       "qDotTitle": "Q{{num}}: {{status}}",
       "qDotCorrect": "Correct",
       "qDotWrong": "Wrong",
