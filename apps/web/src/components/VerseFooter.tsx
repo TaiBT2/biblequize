@@ -9,11 +9,16 @@ interface VerseFooterProps {
 }
 
 /**
- * Footer-style verse — Cormorant Garamond italic 22px with a gold
- * drop cap (`.hr-verse-text::first-letter` rule in global.css), gold
- * line + star ornament above, em-dash uppercase cite below. Per
- * home_modern.html `.verse-section`. This is the ONLY component allowed
- * to render Cormorant Garamond per HR-1 typography rules.
+ * Footer-style verse — Cormorant Garamond italic 22px centered, with a
+ * gold line + star ornament above and an em-dash uppercase cite below.
+ * Per home_modern.html `.verse-section`. This is the ONLY component
+ * allowed to render Cormorant Garamond per HR-1 typography rules.
+ *
+ * The gold drop cap (HR-8) was removed 2026-05-20 per user request —
+ * the floated "::first-letter" broke center alignment on short verses
+ * and competed visually with the ornament star above. CSS rule
+ * `.hr-verse-text::first-letter` remains in global.css for now in case
+ * a future page wants to opt in; no component uses the class.
  */
 export default function VerseFooter({ verse, source = 'BTTHĐ 2011' }: VerseFooterProps = {}) {
   const v = verse ?? getDailyVerse()
@@ -68,7 +73,7 @@ export default function VerseFooter({ verse, source = 'BTTHĐ 2011' }: VerseFoot
 
       <p
         data-testid="verse-footer-text"
-        className="hr-verse-text font-verse italic text-[18px] md:text-[22px] font-medium text-ivory text-center max-w-[720px] mx-auto px-4 md:px-8 leading-[1.55]"
+        className="font-verse italic text-[18px] md:text-[22px] font-medium text-ivory text-center max-w-[720px] mx-auto px-4 md:px-8 leading-[1.55]"
       >
         {v.text}
       </p>

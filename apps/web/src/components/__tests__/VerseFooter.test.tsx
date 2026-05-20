@@ -16,13 +16,13 @@ describe('VerseFooter (HR-8)', () => {
     expect(text.className).toContain('italic')
   })
 
-  it('drop-cap is applied via .hr-verse-text class so ::first-letter targets it', () => {
+  it('does NOT apply the .hr-verse-text drop-cap class (removed 2026-05-20 — broke center alignment)', () => {
     render(
       <VerseFooter
         verse={{ text: 'Khởi đầu là Lời', ref: 'Giăng 1:1' }}
       />
     )
-    expect(screen.getByTestId('verse-footer-text').className).toContain('hr-verse-text')
+    expect(screen.getByTestId('verse-footer-text').className).not.toContain('hr-verse-text')
   })
 
   it('cite renders reference + default BTTHĐ 2011 source with em-dashes', () => {
