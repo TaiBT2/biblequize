@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import Svg, { Defs, RadialGradient, Stop, Rect, Path } from 'react-native-svg'
+import Svg, { Defs, RadialGradient, Stop, Rect } from 'react-native-svg'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
 interface Props {
@@ -33,42 +33,26 @@ export default function HeroRankedCard({
       accessibilityLabel="Vào Đấu Hạng"
       accessibilityRole="button"
     >
-      {/* Radial gold glow + cross/sunburst ornament — web parity với V2
-          Radial Glow design. Glow anchored right-center, ornament inside
-          glow zone reads như light source. */}
+      {/* Soft blended background — 2 layered radial gradients tạo cảm giác
+          card phẳng + warm fade thay vì patches glow/ornament rõ rệt.
+          - Layer 1: gold spread rộng cover toàn card, opacity rất nhẹ.
+          - Layer 2: highlight đậm hơn tại corner để gợi depth, fade nhanh.
+          KHÔNG dùng ornament (user feedback: card hòa vào nhau như web). */}
       <Svg style={StyleSheet.absoluteFill} preserveAspectRatio="none">
         <Defs>
-          <RadialGradient id="hrGlow" cx="85%" cy="55%" rx="65%" ry="80%">
-            <Stop offset="0%" stopColor="#e8a832" stopOpacity="0.45" />
-            <Stop offset="35%" stopColor="#e8a832" stopOpacity="0.18" />
-            <Stop offset="70%" stopColor="#e8a832" stopOpacity="0" />
+          <RadialGradient id="hrGlowWide" cx="50%" cy="50%" rx="120%" ry="100%">
+            <Stop offset="0%" stopColor="#e8a832" stopOpacity="0.10" />
+            <Stop offset="50%" stopColor="#e8a832" stopOpacity="0.05" />
+            <Stop offset="100%" stopColor="#e8a832" stopOpacity="0" />
+          </RadialGradient>
+          <RadialGradient id="hrGlowAccent" cx="100%" cy="0%" rx="60%" ry="80%">
+            <Stop offset="0%" stopColor="#e8a832" stopOpacity="0.18" />
+            <Stop offset="60%" stopColor="#e8a832" stopOpacity="0.04" />
+            <Stop offset="100%" stopColor="#e8a832" stopOpacity="0" />
           </RadialGradient>
         </Defs>
-        <Rect width="100%" height="100%" fill="url(#hrGlow)" />
-      </Svg>
-
-      {/* Cross + sunburst ornament — cream color reads as light source
-          inside gold glow zone. Web hides on <md breakpoint nhưng mobile
-          phone modern (~412dp) đủ rộng để render. */}
-      <Svg
-        style={s.ornament}
-        width={140}
-        height={140}
-        viewBox="0 0 200 200"
-        fill="none"
-      >
-        {/* 8 main sunburst rays */}
-        <Path d="M100 100 L100 20 M100 100 L100 180 M100 100 L20 100 M100 100 L180 100 M100 100 L160 40 M100 100 L40 40 M100 100 L160 160 M100 100 L40 160"
-          stroke="#fff5dc" strokeWidth={1.5} opacity={0.35} strokeLinecap="round" />
-        {/* 8 secondary rays */}
-        <Path d="M100 100 L140 25 M100 100 L60 25 M100 100 L175 60 M100 100 L25 60 M100 100 L175 140 M100 100 L25 140 M100 100 L140 175 M100 100 L60 175"
-          stroke="#fff5dc" strokeWidth={1} opacity={0.22} strokeLinecap="round" />
-        {/* Inner halo circle */}
-        <Path d="M100 50 a50 50 0 1 0 0 100 a50 50 0 1 0 0 -100"
-          stroke="#fff5dc" strokeWidth={1.2} opacity={0.32} fill="rgba(255,245,220,0.04)" />
-        {/* Cross */}
-        <Path d="M92 60 L108 60 L108 92 L140 92 L140 108 L108 108 L108 160 L92 160 L92 108 L60 108 L60 92 L92 92 Z"
-          fill="#fff5dc" opacity={0.16} />
+        <Rect width="100%" height="100%" fill="url(#hrGlowWide)" />
+        <Rect width="100%" height="100%" fill="url(#hrGlowAccent)" />
       </Svg>
 
       <View style={s.content}>
@@ -78,21 +62,13 @@ export default function HeroRankedCard({
 
         <View style={s.statsRow}>
           <View style={s.statItem}>
-            <Svg width={14} height={14} viewBox="0 0 24 24">
-              <Path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
-                fill="none" stroke={colors.gold} strokeWidth={2}
-                strokeLinecap="round" strokeLinejoin="round" />
-            </Svg>
+            <Text style={s.statIcon}>⚡</Text>
             <Text style={s.statText}>
               {t('home.heroRanked.energyMeta', { remaining: energyRemaining, max: energyMax })}
             </Text>
           </View>
           <View style={s.statItem}>
-            <Svg width={14} height={14} viewBox="0 0 24 24">
-              <Path d="M12 6v6l4 2" fill="none" stroke={colors.gold} strokeWidth={2}
-                strokeLinecap="round" strokeLinejoin="round" />
-              <Path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" fill="none" stroke={colors.gold} strokeWidth={2} />
-            </Svg>
+            <Text style={s.statIcon}>🕒</Text>
             <Text style={s.statText}>
               {t('home.heroRanked.progressMeta', { answered: rankedAnswered, cap: rankedCap })}
             </Text>
@@ -124,11 +100,6 @@ const s = StyleSheet.create({
     shadowOffset: { width: 0, height: 18 }, elevation: 6,
   },
   cardPressed: { opacity: 0.92, transform: [{ translateY: 1 }] },
-  ornament: {
-    position: 'absolute',
-    right: -30, top: '50%', marginTop: -70,
-    pointerEvents: 'none',
-  },
   content: { gap: 10, position: 'relative', zIndex: 1 },
 
   label: {
@@ -152,6 +123,7 @@ const s = StyleSheet.create({
 
   statsRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md, marginVertical: spacing.xs },
   statItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  statIcon: { fontSize: 13, color: colors.gold },
   statText: { fontSize: 12, fontWeight: typography.weight.semibold, color: 'rgba(225,225,241,0.65)' },
 
   cta: {
