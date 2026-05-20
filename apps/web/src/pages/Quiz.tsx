@@ -10,6 +10,7 @@ import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton'
 import { CircularTimer } from '../components/quiz/CircularTimer'
 import { wrapProperNouns, formatVerseRef, getQuestionLengthClass } from '../utils/textHelpers'
 import QuizResults from './QuizResults'
+import RankedQuizResults from './RankedQuizResults'
 
 interface Question {
   id: string
@@ -625,11 +626,32 @@ const Quiz: React.FC = () => {
             questionScores: new Array(questions.length).fill(0)
           }))
         }
+    const handleBackToHome = () => navigate(location.state?.isRanked ? '/ranked' : '/')
+
+    // Ranked mode gets the dedicated 3-state result screen
+    // (`docs/mockups/mockup_ranked_result.html`, 2026-05-20). Practice /
+    // Mystery / Speed keep the original generic QuizResults so they
+    // don't lose their difficulty breakdown section.
+    if (location.state?.isRanked) {
+      const previousTier = (location.state as any)?.previousTier ?? null
+      return (
+        <RankedQuizResults
+          stats={finalizedStats}
+          previousTier={previousTier}
+          livesRemaining={serverEnergy ?? 0}
+          resetTimeLeft={(location.state as any)?.resetTimeLeft ?? '--:--:--'}
+          sessionId={location.state?.sessionId}
+          onPlayAgain={handlePlayAgain}
+          onBackToHome={handleBackToHome}
+        />
+      )
+    }
+
     return (
       <QuizResults
         stats={finalizedStats}
         onPlayAgain={handlePlayAgain}
-        onBackToHome={() => navigate(location.state?.isRanked ? '/ranked' : '/')}
+        onBackToHome={handleBackToHome}
         isRanked={location.state?.isRanked || false}
         sessionId={location.state?.sessionId}
       />

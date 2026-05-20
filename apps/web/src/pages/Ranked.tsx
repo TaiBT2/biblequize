@@ -60,7 +60,19 @@ export default function Ranked() {
         return
       }
 
-      navigate('/quiz', { state: { sessionId, mode: 'ranked', questions, showExplanation: false, isRanked: true, timePerQuestion: 90 } })
+      // previousTier snapshot so RankedQuizResults can detect tier-up
+      // by comparing against /api/me/tier-progress after the quiz —
+      // BE creates a notification on tier-up but doesn't expose the
+      // flag in submitRankedAnswer response, so FE diff is simpler
+      // than adding a new BE contract (2026-05-20).
+      const previousTier = tierData ? {
+        level: tierData.tierLevel,
+        name: tierData.tierName,
+        totalPoints: tierData.totalPoints,
+        nextTierPoints: tierData.nextTierPoints,
+      } : null
+
+      navigate('/quiz', { state: { sessionId, mode: 'ranked', questions, showExplanation: false, isRanked: true, timePerQuestion: 90, previousTier } })
     } catch (err) {
       const e = err as { response?: { status?: number; data?: unknown }; message?: string }
       const detail = e?.response?.status
