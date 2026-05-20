@@ -3,11 +3,12 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (42)
+## Active (43)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
 | 2026-05-20 | Ranked spec catch-up: tier-difficulty + UserQuestionHistory write (BL-20, BL-21) | DONE | [detail](docs/todo/active/2026-05-20-ranked-spec-catchup-difficulty-history.md) |
+| 2026-05-20 | Mobile Quiz: unified scroll cho question + answers (fix ngột ngạt) | TODO | [detail](docs/todo/active/2026-05-20-mobile-quiz-unified-scroll.md) |
 | 2026-05-20 | Mobile Daily "Xem lại" → route đúng sang Review (không phải Start) | TODO | [detail](docs/todo/active/2026-05-20-mobile-daily-xem-lai-routes-to-review.md) |
 | 2026-05-20 | Mobile: query `/api/me/tier-progress` để totalPoints hiển thị thực (web parity) | TODO | [detail](docs/todo/active/2026-05-20-mobile-tier-progress-totalpoints.md) |
 | 2026-05-20 | Mobile Daily +0 XP race fix (FE result-bar gate + BE getResultData backstop) | TODO | [detail](docs/todo/active/2026-05-20-mobile-daily-xp-race-fix.md) |

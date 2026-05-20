@@ -295,27 +295,31 @@ export default function QuizScreen() {
           })}
         </View>
 
-        <View style={styles.timerRow}>
-          <CountdownTimer timeLeft={timeLeft} timeLimit={timePerQuestion} size={64} />
-        </View>
-
-        {/* Question card với left gold accent bar (signature Sacred Modernist). */}
-        <View style={styles.questionCard}>
-          <View style={styles.questionAccentBar} />
-          <View style={styles.verseBadge}>
-            <Text style={styles.verseBadgeText}>📖 {formatVerseRef(question)}</Text>
-          </View>
-          <Text style={styles.questionText}>{question.content}</Text>
-        </View>
-
-        {/* Answers — per-position colour mapping (Coral/Sky/Gold/Sage), QZ-P0-1.
-            ScrollView để khi result bar xuất hiện, answers tự scroll thay vì
-            overflow đè (đặc biệt D khi text 2 dòng + result bar stacked). */}
+        {/* Outer ScrollView wrap timer + question + answers để toàn bộ content
+            scroll cùng nhau. Trước đây chỉ answers scroll, question fixed →
+            khi result bar appear, answers space bị nén ngột ngạt và user
+            không thể scroll lên xem lại question dài. Header + segments giữ
+            fixed top, result bar giữ fixed bottom (sibling, sau ScrollView). */}
         <ScrollView
-          style={styles.answersScroll}
-          contentContainerStyle={styles.answers}
+          style={styles.contentScroll}
+          contentContainerStyle={styles.contentScrollInner}
           showsVerticalScrollIndicator={false}
         >
+          <View style={styles.timerRow}>
+            <CountdownTimer timeLeft={timeLeft} timeLimit={timePerQuestion} size={64} />
+          </View>
+
+          {/* Question card với left gold accent bar (signature Sacred Modernist). */}
+          <View style={styles.questionCard}>
+            <View style={styles.questionAccentBar} />
+            <View style={styles.verseBadge}>
+              <Text style={styles.verseBadgeText}>📖 {formatVerseRef(question)}</Text>
+            </View>
+            <Text style={styles.questionText}>{question.content}</Text>
+          </View>
+
+          {/* Answers — per-position colour mapping (Coral/Sky/Gold/Sage), QZ-P0-1. */}
+          <View style={styles.answers}>
           {question.options?.map((opt: string, idx: number) => {
             const isSel = selected === idx
             // revealedCorrectIdx (state) thay vì question.correctAnswer trực
@@ -386,6 +390,7 @@ export default function QuizScreen() {
               </Pressable>
             )
           })}
+          </View>
         </ScrollView>
 
         {/* Floating feedback bar (web parity) — fixed bottom với glass-panel
@@ -531,8 +536,12 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   questionText: { fontSize: typography.size.xl, fontWeight: typography.weight.bold, color: colors.textPrimary, textAlign: 'center', lineHeight: 30 },
-  answersScroll: { flex: 1 },
-  answers: { gap: spacing.md, paddingBottom: spacing.sm },
+  contentScroll: { flex: 1 },
+  // paddingBottom đủ để content cuối cùng (answer D) không bị che bởi result
+  // bar khi nó render. result bar height ~110px (icon row 44 + nextBtn ~50 +
+  // gap + padding). Cộng thêm ~40px cho explanation pill margin nếu show.
+  contentScrollInner: { paddingBottom: spacing.sm },
+  answers: { gap: spacing.md, paddingBottom: spacing.sm, marginTop: spacing.md },
   answerBtn: {
     flexDirection: 'row', alignItems: 'center', padding: spacing.lg,
     backgroundColor: colors.surfaceContainer, borderRadius: borderRadius.xl,
