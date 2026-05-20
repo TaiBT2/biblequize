@@ -37,8 +37,8 @@ export default function LoginScreen() {
     setLoading(true)
     try {
       const res = await apiClient.post('/api/auth/mobile/login', {
-        email: 'mobile@test.com',
-        password: 'password123',
+        email: 'test1@dev.local',
+        password: 'Test@123456',
       })
       const d = res.data
       setAuth(
