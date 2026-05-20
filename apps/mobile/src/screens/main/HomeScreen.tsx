@@ -8,7 +8,7 @@ import HomeBanner from '../../components/home/HomeBanner'
 import FeaturedDailyCard from '../../components/home/FeaturedDailyCard'
 import DailyCompletedStrip from '../../components/home/DailyCompletedStrip'
 import HeroRankedCard from '../../components/home/HeroRankedCard'
-import RankedStandardCard from '../../components/home/RankedStandardCard'
+import FeaturedModeCard from '../../components/home/FeaturedModeCard'
 import CompactCard from '../../components/home/CompactCard'
 import SectionHeader from '../../components/home/SectionHeader'
 import DailyMissionsCard from '../../components/home/DailyMissionsCard'
@@ -182,23 +182,40 @@ export default function HomeScreen() {
               locked để user vẫn thấy 2 mode chính). */}
         {(!isDailyDone || rankedLocked) && (
           <>
-            <SectionHeader title={t('home.gameModes')} />
+            <SectionHeader title={t('home.primarySection')} />
             <View style={s.grid2}>
-              <CompactCard
+              <FeaturedModeCard
+                theme="blue"
                 icon="📖"
-                title={t('home.practice')}
-                subtitle={t('home.practiceDesc')}
+                title={t('home.practiceFeatured.title')}
+                description={t('home.practiceFeatured.description')}
+                badge={t('home.practiceFeatured.badge')}
+                ctaLabel={t('home.practiceFeatured.cta')}
                 onPress={navTo('QuizTab', 'PracticeSelect')}
+                testID="featured-card-practice"
               />
-              <RankedStandardCard
-                energyRemaining={energyRemaining}
-                energyMax={energyMax}
-                rankedAnswered={rankedAnswered}
-                rankedCap={rankedCap}
-                onEnter={navTo('QuizTab', 'Ranked')}
-                onLockedPress={navTo('QuizTab', 'BasicQuiz')}
-                lockedHint={t('home.basicQuizHint')}
-                locked={rankedLocked}
+              <FeaturedModeCard
+                theme="gold"
+                icon="⚡"
+                title={t('home.rankedFeatured.title')}
+                description={t('home.rankedFeatured.description')}
+                badge={
+                  rankedLocked
+                    ? t('home.rankedFeatured.needBasicQuiz.badge')
+                    : t('home.rankedFeatured.unlocked.badge')
+                }
+                meta={
+                  !rankedLocked
+                    ? t('home.rankedFeatured.energyMeta', { remaining: energyRemaining, max: energyMax })
+                    : undefined
+                }
+                ctaLabel={
+                  rankedLocked
+                    ? t('home.rankedFeatured.needBasicQuiz.cta')
+                    : t('home.rankedFeatured.unlocked.cta')
+                }
+                onPress={rankedLocked ? navTo('QuizTab', 'BasicQuiz') : navTo('QuizTab', 'Ranked')}
+                testID="featured-card-ranked"
               />
             </View>
           </>

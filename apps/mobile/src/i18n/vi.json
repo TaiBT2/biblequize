@@ -88,6 +88,26 @@
       "description": "Sau khi hoàn thành Daily Challenge đầu tiên, bạn sẽ mở khóa Nhiệm vụ ngày, Bảng xếp hạng, và bắt đầu chuỗi (streak).",
       "cta": "Bắt đầu"
     },
+    "primarySection": "Chế độ chơi chính",
+    "practiceFeatured": {
+      "title": "Luyện tập",
+      "description": "Học theo nhịp riêng",
+      "badge": "Không áp lực",
+      "cta": "Bắt đầu"
+    },
+    "rankedFeatured": {
+      "title": "Thi đấu Ranked",
+      "description": "Cạnh tranh ranking",
+      "energyMeta": "{{remaining}}/{{max}} năng lượng",
+      "unlocked": {
+        "badge": "Đã mở khoá",
+        "cta": "Vào trận"
+      },
+      "needBasicQuiz": {
+        "badge": "Cần Giáo Lý",
+        "cta": "Làm bài giáo lý"
+      }
+    },
     "journey": {
       "title": "🗺 Hành trình 66 sách"
     },
