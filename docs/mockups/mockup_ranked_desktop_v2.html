@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đấu Hạng — Desktop Redesign (with sidebar)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#11131e;
+    font-family:'Be Vietnam Pro',sans-serif;
+    color:#e7e8ee;
+    min-height:100vh;
+  }
+  .material-symbols-outlined { font-family:'Material Symbols Outlined'; line-height:1; }
+
+  /* ========== APP SHELL ========== */
+  .app {
+    display:flex;
+    min-height:100vh;
+  }
+
+  /* ========== SIDEBAR ========== */
+  .sidebar {
+    width:260px; flex-shrink:0;
+    background:#0e1019;
+    border-right:1px solid rgba(255,255,255,0.05);
+    display:flex; flex-direction:column;
+    padding:18px 14px 18px;
+    position:sticky; top:0; height:100vh;
+  }
+  .sb-top {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:6px 8px 18px;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+    margin-bottom:10px;
+  }
+  .brand {
+    display:flex; align-items:center; gap:9px;
+    font-size:16px; font-weight:800; color:#e8a832; letter-spacing:-.3px;
+  }
+  .brand-ic {
+    width:30px;height:30px;border-radius:8px;background:#e8a832;
+    display:flex;align-items:center;justify-content:center;color:#1a1206;
+  }
+  .brand-ic .material-symbols-outlined { font-size:18px; }
+  .bell {
+    position:relative; width:34px;height:34px;border-radius:50%;
+    background:rgba(50,52,64,0.5); display:flex;align-items:center;justify-content:center;
+    color:#cdced8; cursor:pointer; border:none;
+  }
+  .bell .material-symbols-outlined { font-size:18px; }
+  .bell .nb {
+    position:absolute; top:-3px; right:-3px;
+    background:#ff6b6b; color:#fff; font-size:9px; font-weight:700;
+    padding:2px 5px; border-radius:999px; line-height:1;
+  }
+
+  .sb-nav { display:flex; flex-direction:column; gap:3px; padding:6px 0; }
+  .sb-nav a {
+    color:#7a7c8a; font-size:13px; font-weight:600; text-decoration:none;
+    padding:11px 14px; border-radius:10px;
+    display:flex; align-items:center; gap:11px;
+    transition:all .15s;
+  }
+  .sb-nav a:hover { color:#e7e8ee; background:rgba(255,255,255,0.03); }
+  .sb-nav a.active {
+    color:#e8a832; background:rgba(232,168,50,0.08);
+  }
+  .sb-nav a .material-symbols-outlined { font-size:19px; }
+
+  .sb-widgets {
+    flex:1; overflow-y:auto;
+    margin-top:14px; padding-top:14px;
+    border-top:1px solid rgba(255,255,255,0.04);
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .sb-widgets::-webkit-scrollbar { width:0; }
+  .sw {
+    background:rgba(50,52,64,0.3);
+    border:1px solid rgba(255,255,255,0.04);
+    border-radius:12px; padding:13px 14px;
+  }
+  .sw .lbl {
+    font-size:9px; font-weight:700; letter-spacing:1.4px;
+    color:#7a7c8a; text-transform:uppercase; margin-bottom:6px;
+  }
+  .sw .val {
+    font-size:14px; font-weight:700; color:#e7e8ee;
+  }
+  .sw .sub { font-size:11px; color:#7a7c8a; margin-top:3px; }
+
+  /* widget specific: friends near you */
+  .sw-friends ul { list-style:none; display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+  .sw-friends li {
+    display:flex; align-items:center; gap:9px; font-size:12px;
+  }
+  .sw-friends .av {
+    width:24px;height:24px;border-radius:50%;
+    background:rgba(232,168,50,0.2); color:#e8a832;
+    display:flex;align-items:center;justify-content:center;
+    font-size:10px; font-weight:700; flex-shrink:0;
+  }
+  .sw-friends .nm { color:#cdced8; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .sw-friends .pts { color:#7a7c8a; font-size:11px; }
+  .sw-friends .up { color:#6dd0a0; }
+  .sw-friends .dn { color:#ff7a3a; }
+
+  .sw-verse .quote {
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500;
+    color:#c8b07e; font-size:13px; line-height:1.4;
+    margin-top:4px;
+  }
+  .sw-verse .ref {
+    font-size:10px; color:#7a7c8a; margin-top:6px; text-align:right;
+  }
+
+  .sb-bottom {
+    padding-top:12px; border-top:1px solid rgba(255,255,255,0.04);
+    display:flex; align-items:center; gap:10px;
+  }
+  .sb-avatar {
+    width:36px;height:36px;border-radius:50%; background:#e8a832;
+    color:#1a1206; font-weight:800; display:flex;align-items:center;justify-content:center;
+    font-size:13px; cursor:pointer; flex-shrink:0;
+  }
+  .sb-userinfo .nm { font-size:13px; font-weight:600; color:#cdced8; }
+  .sb-userinfo .sub { font-size:10px; color:#7a7c8a; }
+
+  /* ========== MAIN ========== */
+  .main {
+    flex:1;
+    padding:36px 48px 80px;
+    max-width:1280px;
+  }
+
+  /* PAGE HEADER */
+  .pgheader {
+    display:flex; align-items:flex-end; justify-content:space-between;
+    margin-bottom:24px;
+  }
+  .pgheader h1 {
+    font-size:34px; font-weight:800; letter-spacing:-1px; line-height:1;
+  }
+  .pgheader h1 em {
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600;
+    color:#e8a832;
+  }
+  .pgheader p { font-size:13px; color:#9a9cab; margin-top:8px; }
+  .howto {
+    font-size:13px; color:#e8a832; font-weight:600; text-decoration:none;
+    display:flex; align-items:center; gap:5px;
+    padding:9px 14px; border:1px solid rgba(232,168,50,0.25);
+    border-radius:10px;
+  }
+  .howto:hover { background:rgba(232,168,50,0.06); }
+  .howto .material-symbols-outlined { font-size:16px; }
+
+  /* CARD BASE */
+  .card {
+    background:rgba(50,52,64,0.35);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:22px;
+    position:relative; overflow:hidden;
+  }
+
+  /* HERO TIER BANNER */
+  .hero {
+    padding:28px 32px;
+    margin-bottom:18px;
+  }
+  .hero::after {
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(60% 80% at 8% 0%, rgba(232,168,50,0.10), transparent 60%),
+      radial-gradient(50% 70% at 95% 100%, rgba(232,168,50,0.07), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-top {
+    display:flex; align-items:center; justify-content:space-between; gap:30px;
+    position:relative; z-index:1;
+  }
+  .hero-current { display:flex; align-items:center; gap:16px; }
+  .tier-badge {
+    display:flex; align-items:center; gap:11px;
+    background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12);
+    padding:10px 16px; border-radius:14px;
+  }
+  .tier-badge .ic {
+    width:26px;height:26px;border-radius:8px;
+    background:rgba(232,168,50,0.15); color:#e8a832;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .tier-badge .ic .material-symbols-outlined { font-size:17px; }
+  .tier-badge .nm { font-size:14px; font-weight:700; letter-spacing:-.2px; }
+  .stars { display:flex; gap:4px; align-items:center; }
+  .stars .material-symbols-outlined { font-size:20px; }
+  .stars .on { color:#e8a832; }
+  .stars .off { color:#3a3c48; }
+  .stars .ask {
+    margin-left:6px; width:18px;height:18px;border-radius:50%;
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+    color:#7a7c8a; font-size:10px; font-weight:700;
+    display:flex;align-items:center;justify-content:center; cursor:help;
+  }
+  .hero-target { text-align:right; }
+  .hero-target .lbl {
+    font-size:10px; font-weight:700; letter-spacing:1.5px;
+    color:#7a7c8a; text-transform:uppercase; margin-bottom:5px;
+  }
+  .hero-target .nm {
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600;
+    color:#e8a832; font-size:22px; line-height:1; letter-spacing:-.3px;
+  }
+  .hero-target .gap { font-size:12px; color:#9a9cab; margin-top:7px; }
+  .hero-target .gap b { color:#cdced8; font-weight:600; }
+
+  .hero-bar-wrap { margin-top:22px; position:relative; z-index:1; }
+  .hero-bar {
+    height:9px; background:rgba(255,255,255,0.05); border-radius:99px;
+    overflow:hidden;
+  }
+  .hero-bar > i {
+    display:block; height:100%; width:57.8%;
+    background:linear-gradient(90deg,#e8a832,#f0c060);
+    border-radius:99px;
+    box-shadow:0 0 18px rgba(232,168,50,0.4);
+  }
+  .hero-bar-foot {
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:9px; font-size:12px;
+  }
+  .hero-bar-foot .l { color:#cdced8; font-weight:600; }
+  .hero-bar-foot .l b { color:#e8a832; font-weight:800; font-size:14px; }
+  .hero-bar-foot .r { color:#7a7c8a; }
+
+  /* 2-COL ROW */
+  .row2 {
+    display:grid; grid-template-columns:1.55fr 1fr;
+    gap:18px; margin-bottom:18px;
+  }
+
+  /* STATS CARD */
+  .stats { padding:0; display:flex; flex-direction:column; }
+  .energy {
+    padding:24px 28px 22px;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .ehead {
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:12px;
+  }
+  .ehead-l {
+    display:flex; align-items:center; gap:8px;
+    font-size:11px; font-weight:700; letter-spacing:1.3px;
+    color:#9a9cab; text-transform:uppercase;
+  }
+  .ehead-l .material-symbols-outlined { font-size:17px; color:#e8a832; }
+  .ehead-r {
+    font-size:12px; color:#7a7c8a;
+    display:flex; align-items:center; gap:4px;
+  }
+  .ehead-r .material-symbols-outlined { font-size:13px; }
+  .eval { display:flex; align-items:baseline; gap:7px; margin-bottom:13px; }
+  .eval .big {
+    font-size:40px; font-weight:800; color:#e8a832; line-height:1; letter-spacing:-1.5px;
+  }
+  .eval .mx { font-size:15px; color:#7a7c8a; font-weight:600; }
+  .eval .ok {
+    margin-left:auto; font-size:11px; color:#6dd0a0; font-weight:600;
+    display:flex; align-items:center; gap:5px;
+    background:rgba(109,208,160,0.08); padding:5px 11px; border-radius:99px;
+  }
+  .eval .ok .material-symbols-outlined { font-size:14px; }
+  .ebar {
+    height:7px; background:rgba(255,255,255,0.05); border-radius:99px; overflow:hidden;
+  }
+  .ebar > i {
+    display:block; height:100%; width:30%;
+    background:linear-gradient(90deg,#e8a832,#f0c060);
+  }
+
+  .ministats { display:grid; grid-template-columns:1fr 1fr 1fr; }
+  .ms {
+    padding:20px 14px 18px; text-align:center;
+    border-right:1px solid rgba(255,255,255,0.06);
+  }
+  .ms:last-child { border-right:none; }
+  .ms .lbl {
+    font-size:10px; font-weight:700; letter-spacing:1.2px;
+    color:#7a7c8a; text-transform:uppercase; margin-bottom:9px;
+  }
+  .ms .ic { margin-bottom:5px; }
+  .ms .ic .material-symbols-outlined { font-size:17px; color:#9a9cab; }
+  .ms.streak .ic .material-symbols-outlined { color:#ff7a3a; }
+  .ms .val {
+    font-size:24px; font-weight:800; letter-spacing:-.5px; line-height:1;
+  }
+  .ms.streak .val { color:#ff7a3a; }
+  .ms .val .sub { font-size:13px; color:#7a7c8a; font-weight:600; }
+  .ms .ctx { font-size:11px; color:#7a7c8a; margin-top:6px; }
+
+  /* ACTION PANEL */
+  .action {
+    padding:24px 26px 26px;
+    background:linear-gradient(155deg, rgba(232,168,50,0.10), rgba(50,52,64,0.35) 55%);
+    display:flex; flex-direction:column;
+    position:relative;
+  }
+  .action::after {
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(50% 70% at 80% 10%, rgba(232,168,50,0.18), transparent 60%);
+    pointer-events:none;
+  }
+  .action > * { position:relative; z-index:1; }
+  .action-eyebrow {
+    font-size:10px; font-weight:700; letter-spacing:1.8px;
+    color:#e8a832; text-transform:uppercase;
+    display:flex; align-items:center; gap:6px;
+  }
+  .action-eyebrow::before {
+    content:""; width:16px; height:1.5px; background:#e8a832;
+  }
+  .action-title {
+    font-size:20px; font-weight:800; margin-top:10px; line-height:1.2; letter-spacing:-.4px;
+  }
+  .action-title em {
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600;
+    color:#e8a832;
+  }
+  .action-helper {
+    font-size:12px; color:#9a9cab; margin-top:8px; line-height:1.5;
+  }
+  .scope-block { margin-top:20px; }
+  .scope-lbl {
+    font-size:10px; font-weight:700; letter-spacing:1.3px;
+    color:#7a7c8a; text-transform:uppercase; margin-bottom:7px;
+  }
+  .scope-pick {
+    width:100%; display:flex; align-items:center; gap:10px;
+    background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.10);
+    padding:12px 14px; border-radius:12px; cursor:pointer;
+    color:#e7e8ee; font-family:inherit; font-size:14px; font-weight:600;
+  }
+  .scope-pick:hover { border-color:rgba(232,168,50,0.4); }
+  .scope-pick .material-symbols-outlined.book { font-size:17px; color:#e8a832; }
+  .scope-pick .material-symbols-outlined.chev { font-size:19px; color:#7a7c8a; margin-left:auto; }
+
+  .cta {
+    margin-top:16px;
+    background:linear-gradient(180deg,#f0b84a,#e09a28);
+    color:#1a1206; border:none; border-radius:13px;
+    padding:16px; font-family:'Be Vietnam Pro',sans-serif; font-size:15px; font-weight:700;
+    display:flex; align-items:center; justify-content:center; gap:9px; cursor:pointer;
+    box-shadow:0 12px 30px -10px rgba(232,168,50,0.55);
+    transition:transform .12s;
+  }
+  .cta:hover { transform:translateY(-1px); }
+  .cta .material-symbols-outlined { font-size:22px; }
+  .cta-sub {
+    text-align:center; font-size:11px; color:#9a9cab; margin-top:9px;
+  }
+  .cta-sub b { color:#cdced8; font-weight:600; }
+
+  /* SEASON CARD */
+  .season {
+    padding:26px 32px;
+    display:grid; grid-template-columns:1.4fr 1fr;
+    gap:32px; align-items:center;
+  }
+  .season::after {
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(50% 70% at 100% 0%, rgba(232,168,50,0.06), transparent 60%);
+    pointer-events:none;
+  }
+  .season-l, .season-r { position:relative; z-index:1; }
+  .season-name {
+    display:flex; align-items:center; gap:10px;
+    font-size:19px; font-weight:800; letter-spacing:-.3px;
+  }
+  .season-name .material-symbols-outlined { color:#e8a832; font-size:22px; }
+  .season-meta {
+    margin-top:7px; display:flex; gap:14px;
+    font-size:12px; color:#7a7c8a; flex-wrap:wrap;
+  }
+  .season-meta .dot { color:#3a3c48; }
+  .season-prize { margin-top:13px; font-size:13px; color:#9a9cab; line-height:1.5; }
+  .season-prize i {
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600;
+    color:#c8b07e;
+  }
+  .season-progress { margin-top:16px; display:flex; align-items:center; gap:14px; }
+  .season-progress .bar {
+    flex:1; height:6px; background:rgba(255,255,255,0.05); border-radius:99px; overflow:hidden;
+  }
+  .season-progress .bar > i {
+    display:block; height:100%; width:52.8%;
+    background:linear-gradient(90deg,#e8a832,#f0c060);
+  }
+  .season-progress .txt { font-size:12px; color:#9a9cab; white-space:nowrap; }
+  .season-progress .txt b { color:#cdced8; font-weight:600; }
+
+  .season-stats { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .ss {
+    background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.05);
+    border-radius:13px; padding:16px 18px;
+  }
+  .ss .lbl {
+    font-size:10px; font-weight:700; letter-spacing:1.3px;
+    color:#7a7c8a; text-transform:uppercase;
+  }
+  .ss .val {
+    font-size:28px; font-weight:800; letter-spacing:-.8px; margin-top:5px; line-height:1;
+  }
+  .ss .val.gold { color:#e8a832; }
+  .season-link {
+    display:flex; justify-content:flex-end; align-items:center; gap:5px;
+    margin-top:12px;
+    color:#e8a832; font-size:13px; font-weight:600;
+    text-decoration:none;
+  }
+  .season-link .material-symbols-outlined { font-size:15px; transition:transform .15s; }
+  .season-link:hover .material-symbols-outlined { transform:translateX(3px); }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ SIDEBAR (app shell) ============ -->
+  <aside class="sidebar">
+    <div class="sb-top">
+      <div class="brand">
+        <div class="brand-ic"><span class="material-symbols-outlined">menu_book</span></div>
+        BibleQuiz
+      </div>
+      <button class="bell">
+        <span class="material-symbols-outlined">notifications</span>
+        <span class="nb">9+</span>
+      </button>
+    </div>
+
+    <nav class="sb-nav">
+      <a href="#"><span class="material-symbols-outlined">home</span>Trang chủ</a>
+      <a href="#" class="active"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">leaderboard</span>Xếp hạng</a>
+      <a href="#"><span class="material-symbols-outlined">groups</span>Nhóm</a>
+      <a href="#"><span class="material-symbols-outlined">person</span>Cá nhân</a>
+    </nav>
+
+    <!-- Sidebar widgets — đề xuất cho context Đấu Hạng (không trùng main).
+         Bỏ: Vị trí #1, Mùa hiện tại, Mục tiêu mùa (trùng main).
+         Thay bằng widget bổ trợ thật. -->
+    <div class="sb-widgets">
+      <div class="sw sw-friends">
+        <div class="lbl">Bạn bè gần bạn</div>
+        <ul>
+          <li><span class="av">M</span><span class="nm">Minh Anh</span><span class="pts up">+82</span></li>
+          <li><span class="av">P</span><span class="nm">Phương N.</span><span class="pts up">+34</span></li>
+          <li><span class="av">L</span><span class="nm">Long Lê</span><span class="pts dn">−15</span></li>
+        </ul>
+      </div>
+
+      <div class="sw">
+        <div class="lbl">Streak đóng băng</div>
+        <div class="val">Còn 1 lần</div>
+        <div class="sub">Cho tuần này</div>
+      </div>
+
+      <div class="sw sw-verse">
+        <div class="lbl">Câu khích lệ</div>
+        <div class="quote">"Hãy hết lòng… như làm cho Chúa."</div>
+        <div class="ref">— Cô-lô-se 3:23</div>
+      </div>
+    </div>
+
+    <div class="sb-bottom">
+      <div class="sb-avatar">T</div>
+      <div class="sb-userinfo">
+        <div class="nm">Tài Bùi</div>
+        <div class="sub">Tân Tín Hữu · 2★</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+
+    <div class="pgheader">
+      <div>
+        <h1>Đấu <em>Hạng</em></h1>
+        <p>Cạnh tranh điểm số mỗi ngày — leo tier, vào BXH mùa</p>
+      </div>
+      <a class="howto" href="#">Cách chơi <span class="material-symbols-outlined">arrow_forward</span></a>
+    </div>
+
+    <!-- HERO TIER BANNER -->
+    <div class="card hero">
+      <div class="hero-top">
+        <div class="hero-current">
+          <div class="tier-badge">
+            <div class="ic"><span class="material-symbols-outlined">workspace_premium</span></div>
+            <div class="nm">Tân Tín Hữu</div>
+          </div>
+          <div class="stars">
+            <span class="material-symbols-outlined on" style="font-variation-settings:'FILL' 1">star</span>
+            <span class="material-symbols-outlined on" style="font-variation-settings:'FILL' 1">star</span>
+            <span class="material-symbols-outlined off">star</span>
+            <span class="material-symbols-outlined off">star</span>
+            <span class="material-symbols-outlined off">star</span>
+            <span class="ask" title="Mỗi tier có 5 sao — đạt đủ XP mới lên tier kế tiếp">?</span>
+          </div>
+        </div>
+        <div class="hero-target">
+          <div class="lbl">Đích tiếp theo</div>
+          <div class="nm">Người Tìm Kiếm</div>
+          <div class="gap">Còn <b>422 XP</b></div>
+        </div>
+      </div>
+      <div class="hero-bar-wrap">
+        <div class="hero-bar"><i></i></div>
+        <div class="hero-bar-foot">
+          <div class="l"><b>578</b> XP</div>
+          <div class="r">/ 1.000 XP</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2-COL: STATS | ACTION -->
+    <div class="row2">
+      <div class="card stats">
+        <div class="energy">
+          <div class="ehead">
+            <div class="ehead-l"><span class="material-symbols-outlined">bolt</span>Năng lượng</div>
+            <div class="ehead-r"><span class="material-symbols-outlined">schedule</span>Phục hồi sau 23:59:39</div>
+          </div>
+          <div class="eval">
+            <span class="big">30</span>
+            <span class="mx">/ 100</span>
+            <span class="ok"><span class="material-symbols-outlined">check_circle</span> Đủ chơi ~6 câu</span>
+          </div>
+          <div class="ebar"><i></i></div>
+        </div>
+        <div class="ministats">
+          <div class="ms streak">
+            <div class="lbl">Chuỗi liên tục</div>
+            <div class="ic"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">local_fire_department</span></div>
+            <div class="val">1 <span class="sub">ngày</span></div>
+            <div class="ctx">Đừng để gãy chuỗi</div>
+          </div>
+          <div class="ms">
+            <div class="lbl">Câu hôm nay</div>
+            <div class="ic"><span class="material-symbols-outlined">quiz</span></div>
+            <div class="val">29 <span class="sub">/ 100</span></div>
+            <div class="ctx">Cap 100 câu / ngày</div>
+          </div>
+          <div class="ms">
+            <div class="lbl">Điểm hôm nay</div>
+            <div class="ic"><span class="material-symbols-outlined">military_tech</span></div>
+            <div class="val">282</div>
+            <div class="ctx">Cộng vào điểm mùa</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card action">
+        <div class="action-eyebrow">Bắt đầu trận đấu</div>
+        <div class="action-title">Sẵn sàng <em>leo hạng</em>?</div>
+        <div class="action-helper">Mỗi câu sai tốn 5 năng lượng. Trả lời đúng không tốn gì.</div>
+
+        <div class="scope-block">
+          <div class="scope-lbl">Phạm vi câu hỏi</div>
+          <button class="scope-pick">
+            <span class="material-symbols-outlined book">menu_book</span>
+            Toàn Kinh Thánh
+            <span class="material-symbols-outlined chev">expand_more</span>
+          </button>
+        </div>
+
+        <button class="cta">
+          <span class="material-symbols-outlined">play_arrow</span>
+          Vào trận đấu
+        </button>
+        <div class="cta-sub"><b>~6 câu</b> với năng lượng hiện có</div>
+      </div>
+    </div>
+
+    <!-- SEASON CARD full-width -->
+    <div class="card season">
+      <div class="season-l">
+        <div class="season-name">
+          <span class="material-symbols-outlined">emoji_events</span>
+          Mùa Ngũ Tuần 2026
+        </div>
+        <div class="season-meta">
+          <span>Kết thúc sau <b style="color:#cdced8">41 ngày</b></span>
+          <span class="dot">•</span>
+          <span>Bonus <b style="color:#e8a832">×1.5</b> câu theo mùa</span>
+        </div>
+        <div class="season-prize">
+          Top 3 mỗi tier nhận badge <i>"Vinh Quang Mùa Ngũ Tuần 2026"</i>
+        </div>
+        <div class="season-progress">
+          <div class="bar"><i></i></div>
+          <div class="txt">Còn <b>472 điểm</b> đến mục tiêu mùa</div>
+        </div>
+      </div>
+      <div class="season-r">
+        <div class="season-stats">
+          <div class="ss">
+            <div class="lbl">Hạng mùa</div>
+            <div class="val gold">#1</div>
+          </div>
+          <div class="ss">
+            <div class="lbl">Điểm mùa</div>
+            <div class="val">528</div>
+          </div>
+        </div>
+        <a class="season-link" href="#">Xem bảng xếp hạng đầy đủ <span class="material-symbols-outlined">arrow_forward</span></a>
+      </div>
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>

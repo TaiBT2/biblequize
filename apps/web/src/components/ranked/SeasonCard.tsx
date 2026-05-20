@@ -15,12 +15,12 @@ interface MyRankResponse {
   userId?: string
   rank?: number
   points?: number
-  /** R10 will populate; not in BE response yet. When available, we
-   *  render "Top {percentile}%" alongside the rank. */
+  /** R10 will populate; not in BE response yet. */
   totalPlayers?: number
 }
 
 const CHAMPIONSHIP_THRESHOLD = 1000
+const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 
 function daysUntil(endDateIso?: string | null): number | null {
   if (!endDateIso) return null
@@ -32,17 +32,18 @@ function daysUntil(endDateIso?: string | null): number | null {
 }
 
 /**
- * Season card on /ranked — replaces the previous
- * "you-are-here" position bar with markers (RK-P0-2 hardcoded
- * position, RK-P1-3 linear scale doesn't reflect difficulty
- * progression). The card surfaces three glanceable stats:
- *   - season rank (with optional percentile when totalPlayers known)
- *   - season points (and "to championship" target)
- *   - trend column (placeholder until R10 BE adds seasonRankDelta)
+ * Season card — desktop v2 (mockup_ranked_desktop_v2.html .season
+ * 2026-05-20). 2-col grid 1.4fr/1fr on md+:
+ *   LEFT  : 🏆 season name (large) + meta row (ends-in + ×1.5 bonus chip)
+ *           + Cormorant prize quote + thin progress bar toward championship.
+ *   RIGHT : two stacked stat sub-cards (Hạng mùa #N gold, Điểm mùa N) +
+ *           leaderboard link with arrow hover-shift.
  *
- * Data flow: GET /api/seasons/active → GET /api/seasons/{id}/my-rank.
- * Both fail silently — empty state renders a "no active season" line
- * so the section never disappears mid-page.
+ * Mobile (< md): falls back to a single column with sub-cards stacked
+ * below the text block (the layout we shipped earlier today).
+ *
+ * R10 trend column is still deferred — no rendering until BE adds
+ * seasonRankDelta to /api/seasons/{id}/my-rank.
  */
 export default function SeasonCard() {
   const { t } = useTranslation()
@@ -68,7 +69,7 @@ export default function SeasonCard() {
       <section
         data-testid="ranked-season-card"
         data-state="no-active-season"
-        className="rounded-2xl border p-4 md:p-5 text-center"
+        className="rounded-[22px] border p-5 md:p-6 text-center"
         style={{
           background:
             'linear-gradient(135deg, rgba(74,158,255,0.06), rgba(168,85,247,0.06))',
@@ -87,6 +88,7 @@ export default function SeasonCard() {
   const seasonPoints = myRank?.points ?? 0
   const days = daysUntil(activeSeason.endDate)
   const pointsToChamp = Math.max(0, CHAMPIONSHIP_THRESHOLD - seasonPoints)
+  const champPct = Math.min(100, (seasonPoints / CHAMPIONSHIP_THRESHOLD) * 100)
   const percentile = rank != null && totalPlayers != null && totalPlayers > 0
     ? Math.max(0.1, ((1 - (rank - 1) / totalPlayers) * 100))
     : null
@@ -95,104 +97,140 @@ export default function SeasonCard() {
     <section
       data-testid="ranked-season-card"
       data-state="active"
-      className="rounded-2xl border p-4 md:p-5"
+      className="relative overflow-hidden rounded-[22px] border p-5 md:p-7 grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-5 md:gap-8 md:items-center"
       style={{
         background:
           'linear-gradient(135deg, rgba(74,158,255,0.06), rgba(168,85,247,0.06))',
         borderColor: 'rgba(74,158,255,0.2)',
       }}
     >
-      <div className="flex items-center justify-between mb-1">
-        <div className="flex items-center gap-2">
-          <span className="text-sm">🏆</span>
-          <span className="text-on-surface text-[14px] font-medium">{seasonName}</span>
-        </div>
-        {days != null && (
-          <span
-            data-testid="ranked-season-end"
-            className="text-on-surface-variant/50 text-[11px]"
-          >
-            {t('ranked.seasonEndsIn', { days })}
-          </span>
-        )}
-      </div>
-      <p className="text-on-surface-variant/55 text-[11px] mb-3.5">
-        {t('ranked.seasonRewardHint', { name: seasonName })}
-      </p>
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(50% 70% at 100% 0%, rgba(232,168,50,0.06), transparent 60%)',
+        }}
+      />
 
-      {/* Two side-by-side stat sub-cards (rank + points). Trend column
-          dropped per user mockup 2026-05-20 — placeholder "—" added no
-          signal until R10 BE wires seasonRankDelta. Bottom row keeps
-          the points-to-championship hint + leaderboard link. */}
-      <div className="grid grid-cols-2 gap-3 mb-3">
-        {/* Rank sub-card */}
-        <div
-          className="rounded-xl p-3 md:p-4"
-          style={{ background: 'rgba(50,52,64,0.4)' }}
-        >
-          <div className="text-on-surface-variant/55 text-[10px] tracking-wider mb-1.5 uppercase">
-            {t('ranked.seasonRankLabel')}
+      {/* LEFT — text block */}
+      <div className="relative z-10">
+        <div className="flex items-center gap-2.5">
+          <span className="material-symbols-outlined text-secondary text-[22px]" style={FILL_1}>
+            emoji_events
+          </span>
+          <span className="text-on-surface text-[18px] md:text-[19px] font-extrabold tracking-tight">
+            {seasonName}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-3.5 flex-wrap mt-2 text-[12px] text-on-surface-variant/55">
+          {days != null && (
+            <span data-testid="ranked-season-end">
+              {t('ranked.seasonEndsIn', { days })}
+            </span>
+          )}
+          <span className="text-on-surface-variant/30">•</span>
+          <span>
+            {t('ranked.seasonBonusChip', 'Bonus')}{' '}
+            <b className="text-secondary font-extrabold">×1.5</b>{' '}
+            {t('ranked.seasonBonusChipSuffix', 'câu theo mùa')}
+          </span>
+        </div>
+
+        <p className="text-on-surface-variant/65 text-[13px] mt-3.5 leading-relaxed">
+          {t('ranked.seasonRewardHintItalic', 'Top 3 mỗi tier nhận badge')}{' '}
+          <i className="font-headline italic font-semibold" style={{ color: '#c8b07e' }}>
+            "{t('ranked.seasonBadgeName', 'Vinh Quang')} {seasonName}"
+          </i>
+        </p>
+
+        <div className="flex items-center gap-3.5 mt-4">
+          <div className="flex-1 bg-white/[0.05] rounded-full h-1.5 overflow-hidden">
+            <div
+              className="h-full rounded-full transition-[width] duration-700"
+              style={{
+                width: `${champPct}%`,
+                background: 'linear-gradient(90deg, #e8a832, #f0c060)',
+              }}
+            />
           </div>
-          {rank != null ? (
-            <>
-              <div className="flex items-baseline gap-1">
-                <span
+          <span className="text-[12px] text-on-surface-variant/65 whitespace-nowrap">
+            {pointsToChamp > 0 ? (
+              <>
+                {t('ranked.seasonStillNeedsPrefix', 'Còn')}{' '}
+                <b className="text-on-surface font-semibold">
+                  {pointsToChamp.toLocaleString('vi-VN')} {t('ranked.points')}
+                </b>
+                {' '}
+                {t('ranked.seasonStillNeedsSuffix', 'đến mục tiêu mùa')}
+              </>
+            ) : (
+              t('ranked.seasonChampReached', 'Đã đạt mục tiêu mùa 🎉')
+            )}
+          </span>
+        </div>
+      </div>
+
+      {/* RIGHT — 2 sub-stat cards + leaderboard link */}
+      <div className="relative z-10">
+        <div className="grid grid-cols-2 gap-3">
+          <div
+            className="rounded-[13px] border border-white/[0.05] px-4 py-3.5 md:px-[18px] md:py-4"
+            style={{ background: 'rgba(0,0,0,0.22)' }}
+          >
+            <div className="text-on-surface-variant/55 text-[10px] tracking-[1.3px] font-bold uppercase">
+              {t('ranked.seasonRankLabel')}
+            </div>
+            {rank != null ? (
+              <>
+                <div
                   data-testid="ranked-season-rank"
-                  className="text-secondary text-[26px] md:text-[28px] font-medium leading-none"
+                  className="text-secondary text-[26px] md:text-[28px] font-extrabold leading-none tracking-tight mt-1.5"
                 >
                   #{rank}
-                </span>
-                {totalPlayers != null && (
-                  <span className="text-on-surface-variant/50 text-[11px]">
-                    {t('ranked.seasonRankSlash', { total: totalPlayers })}
-                  </span>
-                )}
-              </div>
-              {percentile != null && (
-                <div className="text-[10px] mt-1" style={{ color: 'rgba(74,158,255,0.7)' }}>
-                  {t('ranked.seasonRankPercentile', { percent: percentile.toFixed(1) })}
                 </div>
-              )}
-            </>
-          ) : (
-            <div
-              data-testid="ranked-season-rank"
-              className="text-on-surface-variant/60 text-[16px] font-medium"
-            >
-              {t('ranked.unranked')}
-            </div>
-          )}
-        </div>
-
-        {/* Points sub-card */}
-        <div
-          className="rounded-xl p-3 md:p-4"
-          style={{ background: 'rgba(50,52,64,0.4)' }}
-        >
-          <div className="text-on-surface-variant/55 text-[10px] tracking-wider mb-1.5 uppercase">
-            {t('ranked.seasonPointsBigLabel')}
+                {percentile != null && (
+                  <div className="text-[10px] mt-1" style={{ color: 'rgba(74,158,255,0.7)' }}>
+                    {t('ranked.seasonRankPercentile', { percent: percentile.toFixed(1) })}
+                  </div>
+                )}
+              </>
+            ) : (
+              <div
+                data-testid="ranked-season-rank"
+                className="text-on-surface-variant/60 text-[16px] font-semibold mt-1.5"
+              >
+                {t('ranked.unranked')}
+              </div>
+            )}
           </div>
+
           <div
-            data-testid="ranked-season-points"
-            className="text-on-surface text-[26px] md:text-[28px] font-medium leading-none"
+            className="rounded-[13px] border border-white/[0.05] px-4 py-3.5 md:px-[18px] md:py-4"
+            style={{ background: 'rgba(0,0,0,0.22)' }}
           >
-            {seasonPoints}
+            <div className="text-on-surface-variant/55 text-[10px] tracking-[1.3px] font-bold uppercase">
+              {t('ranked.seasonPointsBigLabel')}
+            </div>
+            <div
+              data-testid="ranked-season-points"
+              className="text-on-surface text-[26px] md:text-[28px] font-extrabold leading-none tracking-tight mt-1.5"
+            >
+              {seasonPoints}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="flex items-center justify-between gap-3 flex-wrap">
-        {pointsToChamp > 0 ? (
-          <span className="text-on-surface-variant/55 text-[11px]">
-            {t('ranked.seasonPointsToChamp', { points: pointsToChamp.toLocaleString('vi-VN') })}
-          </span>
-        ) : <span />}
         <Link
           to="/leaderboard?period=season"
           data-testid="ranked-season-leaderboard-link"
-          className="text-secondary text-[11px] hover:underline"
+          className="group flex items-center justify-end gap-1 mt-3 text-secondary text-[12px] md:text-[13px] font-semibold hover:underline"
         >
-          {t('ranked.seasonViewLeaderboard')} →
+          {t('ranked.seasonViewLeaderboard')}
+          <span className="material-symbols-outlined text-[15px] transition-transform group-hover:translate-x-0.5">
+            arrow_forward
+          </span>
         </Link>
       </div>
     </section>
