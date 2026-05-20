@@ -3,10 +3,14 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (31)
+## Active (35)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-05-20 | Fix score ≠ XP leaderboard mismatch (Rank + Daily) | DONE | [detail](docs/todo/active/2026-05-20-fix-scoring-xp-mismatch.md) |
+| 2026-05-20 | Ranked timer: 90s/câu flat (SPEC §3.2 update) | DONE | [detail](docs/todo/active/2026-05-20-ranked-timer-90s.md) |
+| 2026-05-20 | Ranked intro screen slim + redesign (4 sub-tasks) | DONE | [detail](docs/todo/active/2026-05-20-ranked-intro-slim-redesign.md) |
+| 2026-05-20 | Fix Quiz (rank) explanation auto-shows + pill covers answer D | DONE | [detail](docs/todo/active/2026-05-20-fix-quiz-explanation-hidden-by-default.md) |
 | 2026-05-19 | Daily Challenge: Dedupe & Slim Redesign (DC-1..6) | DONE | [detail](docs/todo/active/2026-05-19-daily-challenge-dedupe-slim.md) |
 | 2026-05-19 | Mobile Daily Challenge parity: done-page + season chip + streak heatmap | TODO | [detail](docs/todo/active/2026-05-19-mobile-daily-challenge-parity.md) |
 | 2026-05-19 | HomeBanner: revert desktop 3-col, mobile-only full-width progress | DONE | [detail](docs/todo/active/2026-05-19-home-banner-revert-desktop-keep-mobile-fullwidth.md) |
