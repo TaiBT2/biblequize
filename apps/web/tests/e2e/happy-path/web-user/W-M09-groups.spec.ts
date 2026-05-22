@@ -1073,4 +1073,144 @@ test.describe('W-M09 Church Groups — L2 Happy Path @happy-path @groups', () =>
     }
   })
 
+  // ── Quiz Set workflow Round 3: clone / folder / AI permission gate ──
+
+  test('W-M09-L2-022: Leader clones a quiz set — copy is a new DRAFT @write @serial', async ({
+    testApi,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP
+    // ============================================================
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+
+    try {
+      const questionIds = await fetchQuestionIds(5)
+      const original = await createQuizSetAs(token3, groupId, 'E2E Cloneable Set', questionIds)
+      await publishQuizSet(token3, groupId, original.id)
+
+      // ============================================================
+      // SECTION 2: ACTIONS — leader clones the published set
+      // ============================================================
+      const res = await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets/${original.id}/clone`, {
+        method: 'POST', headers: { Authorization: `Bearer ${token3}` },
+      })
+      const body = await res.json()
+
+      // ============================================================
+      // SECTION 3: UI ASSERTIONS — N/A
+      // ============================================================
+
+      // ============================================================
+      // SECTION 4: API VERIFICATION — fresh id, DRAFT, "(Bản sao)" suffix
+      // ============================================================
+      expect(res.ok, `clone failed: ${JSON.stringify(body)}`).toBe(true)
+      expect(body.quizSet.id).toBeTruthy()
+      expect(body.quizSet.id).not.toBe(original.id)
+      expect(body.quizSet.publishStatus).toBe('DRAFT')
+      expect(body.quizSet.name).toContain('(Bản sao)')
+      expect(body.quizSet.totalQuestions).toBe(questionIds.length)
+    } finally {
+      await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token4}` },
+      })
+      await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+      })
+    }
+  })
+
+  test('W-M09-L2-023: Leader creates a quiz-set folder — appears in the folder list @write @serial', async ({
+    testApi,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP
+    // ============================================================
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+
+    try {
+      // ============================================================
+      // SECTION 2: ACTIONS — create folder, then list
+      // ============================================================
+      const createRes = await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-set-folders`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token3}` },
+        body: JSON.stringify({ name: 'E2E Folder', color: '#a855f7', displayOrder: 1 }),
+      })
+      const createBody = await createRes.json()
+      expect(createRes.ok, `createFolder failed: ${JSON.stringify(createBody)}`).toBe(true)
+      const folderId = createBody.folder.id as string
+      expect(folderId).toBeTruthy()
+
+      const listRes = await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-set-folders`, {
+        headers: { Authorization: `Bearer ${token3}` },
+      })
+      const listBody = await listRes.json()
+
+      // ============================================================
+      // SECTION 3: UI ASSERTIONS — N/A
+      // ============================================================
+
+      // ============================================================
+      // SECTION 4: API VERIFICATION
+      // ============================================================
+      expect(listRes.ok).toBe(true)
+      const found = (listBody.folders ?? []).find((f: any) => f.id === folderId)
+      expect(found).toBeTruthy()
+      expect(found.name).toBe('E2E Folder')
+    } finally {
+      await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token4}` },
+      })
+      await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+      })
+    }
+  })
+
+  test('W-M09-L2-024: Member cannot trigger AI question generation — permission gate @write @serial @security', async ({
+    testApi,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP
+    // ============================================================
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+
+    try {
+      // ============================================================
+      // SECTION 2: ACTIONS — member hits the group-level AI endpoint
+      //   (we intentionally test the rejection path so the real Gemini
+      //    call is never made — gate must run before that)
+      // ============================================================
+      const res = await fetch(`${BASE_URL}/api/groups/${groupId}/ai-generate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token4}` },
+        body: JSON.stringify({ topic: 'Sáng Thế Ký', count: 3 }),
+      })
+      const body = await res.json()
+
+      // ============================================================
+      // SECTION 3: UI ASSERTIONS — N/A
+      // ============================================================
+
+      // ============================================================
+      // SECTION 4: API VERIFICATION — rejected, not a 200 success
+      // ============================================================
+      expect(res.ok).toBe(false)
+      expect(body.success).toBe(false)
+    } finally {
+      await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token4}` },
+      })
+      await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+      })
+    }
+  })
+
 })
