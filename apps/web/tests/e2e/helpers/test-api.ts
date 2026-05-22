@@ -262,7 +262,23 @@ export class TestApi {
         `getMe(${email}) failed: ${res.status} ${await res.text()}`,
       )
     }
-    return (await res.json()) as UserProfile
+    const profile = (await res.json()) as UserProfile
+    // /api/me no longer carries totalPoints — it lives on /api/me/tier-progress.
+    // Merge it so scoring tests can diff points before/after answering.
+    try {
+      const tp = await fetch(`${this.baseUrl}/api/me/tier-progress`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      if (tp.ok) {
+        const tpData = (await tp.json()) as { totalPoints?: number }
+        if (typeof tpData.totalPoints === 'number') {
+          profile.totalPoints = tpData.totalPoints
+        }
+      }
+    } catch {
+      /* best-effort — leave totalPoints as-is if tier-progress is down */
+    }
+    return profile
   }
 
   /** Login as user (if needed) then GET /api/me/ranked-status. */

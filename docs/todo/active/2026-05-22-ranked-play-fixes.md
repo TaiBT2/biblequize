@@ -19,7 +19,8 @@
     Hibernate proxies → Jackson serialization failure. Now maps to plain DTO maps.
 
 - RKP-3 Sync W-M04 ranked e2e suite with the redesigned Ranked page
-  - Status: [ ] TODO · Files: `apps/web/tests/e2e/pages/RankedPage.ts`,
+  - Status: [x] DONE — W-M04: 18 passed / 0 failed / 3 skipped (was 17 failed)
+  - Files: `apps/web/tests/e2e/pages/RankedPage.ts`,
     `apps/web/tests/e2e/global-setup.ts`, `apps/web/tests/e2e/smoke|happy-path/.../W-M04-ranked.spec.ts`,
     `apps/web/src/pages/Ranked.tsx` (testid only)
   - **Spec impact**: [x] None (test infra)

@@ -221,6 +221,11 @@ async function globalSetup(_config: FullConfig): Promise<void> {
         localStorage.setItem('userName', name)
         localStorage.setItem('userEmail', e)
         if (avatar) localStorage.setItem('userAvatar', avatar)
+        // Pin Vietnamese — Playwright's Chrome reports en-US, which i18next's
+        // navigator detection would otherwise cache. The detector reads the
+        // `quizLanguage` key (see src/i18n/index.ts lookupLocalStorage).
+        // Tests assert VN copy.
+        localStorage.setItem('quizLanguage', 'vi')
       },
       {
         name: loginData.name,

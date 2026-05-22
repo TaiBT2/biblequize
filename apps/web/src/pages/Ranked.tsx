@@ -269,7 +269,7 @@ export default function Ranked() {
             </div>
 
             {/* 3-mini stats row — internal grid w/ desktop dividers. */}
-            <div className="grid grid-cols-3">
+            <div className="grid grid-cols-3" data-testid="ranked-today-progress">
               {/* Streak */}
               <div
                 data-testid="ranked-streak-card"

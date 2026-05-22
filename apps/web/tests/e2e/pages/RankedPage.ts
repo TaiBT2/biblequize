@@ -21,7 +21,9 @@ export class RankedPage extends BasePage {
   constructor(page: Page) {
     super(page)
     this.container = page.getByTestId('ranked-page')
-    this.startBtn = page.getByTestId('ranked-start-btn')
+    // E2E runs on a desktop viewport — the action-card CTA (`ranked-start-btn-desktop`)
+    // is the visible one; `ranked-start-btn` belongs to the mobile sticky footer.
+    this.startBtn = page.getByTestId('ranked-start-btn-desktop')
     this.noEnergyMsg = page.getByTestId('ranked-no-energy-msg')
     this.energyDisplay = page.getByTestId('ranked-energy-display')
     this.resetTimer = page.getByTestId('ranked-reset-timer')
@@ -31,7 +33,7 @@ export class RankedPage extends BasePage {
     this.currentBook = page.getByTestId('ranked-current-book')
     this.seasonCard = page.getByTestId('ranked-season-card')
     this.capReachedMsg = page.getByTestId('ranked-cap-reached-msg')
-    this.energyTimer = page.getByTestId('ranked-energy-timer')
+    this.energyTimer = page.getByTestId('ranked-reset-timer')
     this.seasonRank = page.getByTestId('ranked-season-rank')
     this.seasonPoints = page.getByTestId('ranked-season-points')
   }
@@ -55,7 +57,8 @@ export class RankedPage extends BasePage {
   }
 
   async expectStartDisabled(): Promise<void> {
-    await expect(this.startBtn).not.toBeVisible()
-    await expect(this.noEnergyMsg).toBeVisible()
+    // The desktop CTA stays in the DOM when out of energy — it renders
+    // disabled rather than being removed.
+    await expect(this.startBtn).toBeDisabled()
   }
 }

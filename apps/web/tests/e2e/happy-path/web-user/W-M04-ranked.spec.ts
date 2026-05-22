@@ -48,7 +48,8 @@ test.describe('W-M04 Ranked Mode', () => {
     // UI assertions
     await expect(rankedPage.tierBadge).toContainText('Môn Đồ')
     await rankedPage.expectEnergyToBe(100)
-    await expect(rankedPage.questionsCounted).toContainText('0/100')
+    // `ranked-questions-counted` wraps the count only ("/ cap" is a sibling).
+    await expect(rankedPage.questionsCounted).toHaveText('0')
     await expect(rankedPage.startBtn).toBeEnabled()
 
     // Section 4: API Verification
@@ -108,11 +109,13 @@ test.describe('W-M04 Ranked Mode', () => {
     const quizPage = new QuizPage(page)
     await expect(quizPage.questionText).toBeVisible()
 
-    // Wait for timer to count down ~20s (to minimize speed bonus)
+    // Wait until the timer counted down ~15s (minimize speed bonus). Ranked
+    // timer is 90s flat now, so poll relative to the starting value.
+    const startTimer003 = Number(await quizPage.timer.textContent())
     await expect.poll(
-      async () => await quizPage.timer.textContent(),
+      async () => Number(await quizPage.timer.textContent()),
       { intervals: [500], timeout: 22_000 }
-    ).toMatch(/^(5|6|7|8|9|10)$/) // wait until timer shows 5-10 (was 30)
+    ).toBeLessThanOrEqual(startTimer003 - 15)
     await quizPage.answerOption(0)
     await expect(quizPage.answerFeedback).toBeVisible()
 
@@ -204,11 +207,12 @@ test.describe('W-M04 Ranked Mode', () => {
     // Answer 5 questions (hoping for correct answers to test combo)
     for (let i = 0; i < 5; i++) {
       await expect(quizPage.questionText).toBeVisible()
-      // Wait for timer to count down ~3s (minimize speed bonus variance)
+      // Wait until the timer dropped ~2s (minimize speed-bonus variance).
+      const startTimer007 = Number(await quizPage.timer.textContent())
       await expect.poll(
-        async () => await quizPage.timer.textContent(),
-        { intervals: [300], timeout: 4_000 }
-      ).toMatch(/^(2[0-8])$/)
+        async () => Number(await quizPage.timer.textContent()),
+        { intervals: [300], timeout: 6_000 }
+      ).toBeLessThanOrEqual(startTimer007 - 2)
       await quizPage.answerOption(0)
       await expect(quizPage.answerFeedback).toBeVisible()
 
@@ -284,11 +288,12 @@ test.describe('W-M04 Ranked Mode', () => {
     const quizPage = new QuizPage(page)
     await expect(quizPage.questionText).toBeVisible()
 
-    // Wait ~5s (minimize speed bonus — test focuses on daily first x2)
+    // Wait until the timer dropped ~4s (test focuses on daily-first x2).
+    const startTimer009 = Number(await quizPage.timer.textContent())
     await expect.poll(
-      async () => await quizPage.timer.textContent(),
-      { intervals: [300], timeout: 6_000 }
-    ).toMatch(/^(2[0-5])$/)
+      async () => Number(await quizPage.timer.textContent()),
+      { intervals: [300], timeout: 8_000 }
+    ).toBeLessThanOrEqual(startTimer009 - 4)
     await quizPage.answerOption(0)
     await expect(quizPage.answerFeedback).toBeVisible()
 
@@ -382,15 +387,12 @@ test.describe('W-M04 Ranked Mode', () => {
     const rankedPage = new RankedPage(page)
     await rankedPage.goto()
 
-    // UI: questions counted shows 100/100
-    await expect(rankedPage.questionsCounted).toContainText('100/100')
+    // UI: questions counted shows the cap (count span only — "/100" is sibling)
+    await expect(rankedPage.questionsCounted).toHaveText('100')
 
-    // When cap is reached, start button is REMOVED from DOM (not disabled)
-    // and ranked-cap-reached-msg is shown
-    const startVisible = await rankedPage.startBtn.isVisible().catch(() => false)
-    const capMsgVisible = await rankedPage.capReachedMsg.isVisible().catch(() => false)
-    // At least one indicator of cap reached should be true
-    expect(!startVisible || capMsgVisible).toBeTruthy()
+    // When the daily cap is reached the desktop CTA stays in the DOM but
+    // renders disabled — the user cannot start a match.
+    await expect(rankedPage.startBtn).toBeDisabled()
 
     // Section 4: API Verification
     const ranked = await testApi.getRankedStatus(TEST_EMAIL)

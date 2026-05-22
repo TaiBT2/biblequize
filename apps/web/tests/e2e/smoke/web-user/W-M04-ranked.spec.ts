@@ -34,7 +34,9 @@ test.describe('W-M04 Ranked Mode — L1 Smoke @smoke @ranked', () => {
     await expect(page).toHaveURL('/ranked')
     await expect(rankedPage.container).toBeVisible()
     await expect(rankedPage.energyDisplay).toBeVisible()
-    await expect(rankedPage.energyDisplay).toHaveText(/\d+\/\d+/)
+    // `ranked-energy-display` wraps the energy number only; the "/ max" is a
+    // sibling span in the redesigned card.
+    await expect(rankedPage.energyDisplay).toHaveText(/^\d+$/)
     await expect(rankedPage.startBtn).toBeVisible()
     await expect(rankedPage.startBtn).toBeEnabled()
   })
@@ -63,26 +65,17 @@ test.describe('W-M04 Ranked Mode — L1 Smoke @smoke @ranked', () => {
     // appears only in the Season card (assertion in W-M04-L1-005).
   })
 
-  test('W-M04-L1-003: Current book section hien thi @smoke @ranked', async ({
+  // SUPERSEDED: the legacy OT/NT "current book" card was removed in the
+  // Liturgical Coverage redesign (sprint 2026-05-21) — it is now CoverageCard,
+  // which is feature-flag gated. Re-enable as a coverage-card test once the
+  // flag is on by default.
+  test.skip('W-M04-L1-003: Current book section hien thi @smoke @ranked', async ({
     tier3Page,
   }) => {
-    // ============================================================
-    // SECTION 1: SETUP — none
-    // ============================================================
-
-    // ============================================================
-    // SECTION 2: ACTIONS
-    // ============================================================
     const page = tier3Page
     const rankedPage = new RankedPage(page)
     await rankedPage.goto()
-
-    // ============================================================
-    // SECTION 3: UI ASSERTIONS
-    // ============================================================
     await expect(rankedPage.currentBook).toBeVisible()
-    await expect(page.getByTestId('ranked-current-book-name')).toBeVisible()
-    await expect(page.getByTestId('ranked-current-book-progress')).toBeVisible()
   })
 
   test('W-M04-L1-004: Click Vao Thi Dau tao session va vao quiz @smoke @ranked @critical @write', async ({
@@ -194,7 +187,7 @@ test.describe('W-M04 Ranked Mode — L1 Smoke @smoke @ranked', () => {
     const rankedPage = new RankedPage(page)
     await rankedPage.goto()
 
-    const timerLocator = page.getByTestId('ranked-energy-timer')
+    const timerLocator = page.getByTestId('ranked-reset-timer')
     await timerLocator.waitFor({ state: 'visible' })
     const timerValue1 = await timerLocator.textContent()
 
