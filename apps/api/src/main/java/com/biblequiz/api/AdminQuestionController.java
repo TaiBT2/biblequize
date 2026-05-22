@@ -628,7 +628,7 @@ public class AdminQuestionController {
         VI_BOOK_MAP.put("e-xơ-ra", "Ezra"); VI_BOOK_MAP.put("nê-hê-mi", "Nehemiah");
         VI_BOOK_MAP.put("ê-xơ-tê", "Esther"); VI_BOOK_MAP.put("gióp", "Job");
         VI_BOOK_MAP.put("thi thiên", "Psalms"); VI_BOOK_MAP.put("châm ngôn", "Proverbs");
-        VI_BOOK_MAP.put("truyền đạo", "Ecclesiastes"); VI_BOOK_MAP.put("nhã ca", "Song of Solomon");
+        VI_BOOK_MAP.put("truyền đạo", "Ecclesiastes"); VI_BOOK_MAP.put("nhã ca", "Song of Songs");
         VI_BOOK_MAP.put("ê-sai", "Isaiah"); VI_BOOK_MAP.put("giê-rê-mi", "Jeremiah");
         VI_BOOK_MAP.put("ca thương", "Lamentations"); VI_BOOK_MAP.put("ê-xê-chi-ên", "Ezekiel");
         VI_BOOK_MAP.put("đa-ni-ên", "Daniel"); VI_BOOK_MAP.put("ô-sê", "Hosea");

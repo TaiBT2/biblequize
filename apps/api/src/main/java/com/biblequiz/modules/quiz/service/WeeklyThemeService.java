@@ -32,7 +32,7 @@ public class WeeklyThemeService {
         new WeeklyTheme("journeys", "Các cuộc hành trình", "Journeys & Travels",
             List.of("Genesis", "Exodus", "Numbers", "Acts")),
         new WeeklyTheme("love", "Tình yêu thương", "Love & Compassion",
-            List.of("Ruth", "Song of Solomon", "John", "1 Corinthians", "1 John")),
+            List.of("Ruth", "Song of Songs", "John", "1 Corinthians", "1 John")),
         new WeeklyTheme("courage", "Can đảm", "Courage & Faith",
             List.of("Joshua", "Judges", "1 Samuel", "Daniel", "Hebrews"))
     );
