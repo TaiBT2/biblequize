@@ -67,6 +67,39 @@ class UserDailyProgressRepositoryTest {
                 "findAllTimeLeaderboard GROUP BY must include u.created_at; was:\n" + sql);
     }
 
+    // ── LBW-1 zero-point filter lock ─────────────────────────────────────────
+    // Practice/Single play creates a UDP row with points_counted=0 (only
+    // ranked + daily challenge credit points). These users must not appear
+    // on the leaderboard. Lock the WHERE/HAVING clause so a refactor cannot
+    // silently let them back in.
+
+    @Test
+    void findDailyLeaderboard_filtersZeroPointUsers() throws Exception {
+        String sql = normalize(getQuery("findDailyLeaderboard",
+                java.time.LocalDate.class, int.class, int.class));
+        assertTrue(sql.contains("COALESCE(udp.points_counted, 0) > 0"),
+                "findDailyLeaderboard must filter rows with 0 points; was:\n" + sql);
+    }
+
+    @Test
+    void findWeeklyLeaderboard_filtersZeroPointUsers() throws Exception {
+        String sql = normalize(getQuery("findWeeklyLeaderboard",
+                java.time.LocalDate.class, java.time.LocalDate.class, int.class, int.class));
+        assertTrue(sql.contains("HAVING SUM(COALESCE(udp.points_counted, 0)) > 0"),
+                "findWeeklyLeaderboard must HAVING-filter users whose summed points are 0; was:\n" + sql);
+    }
+
+    @Test
+    void findAllTimeLeaderboard_filtersZeroPointUsers() throws Exception {
+        String sql = normalize(getQuery("findAllTimeLeaderboard", int.class, int.class));
+        assertTrue(sql.contains("HAVING SUM(COALESCE(udp.points_counted, 0)) > 0"),
+                "findAllTimeLeaderboard must HAVING-filter users whose summed points are 0; was:\n" + sql);
+    }
+
+    private String normalize(String sql) {
+        return sql.replaceAll("\\s+", " ");
+    }
+
     private void assertOrderByTieBreak(String sql, String methodName) {
         // Match the canonical tie-break clause; whitespace tolerant.
         String normalized = sql.replaceAll("\\s+", " ");

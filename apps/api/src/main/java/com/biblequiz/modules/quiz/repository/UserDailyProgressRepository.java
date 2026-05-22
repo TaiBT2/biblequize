@@ -51,10 +51,12 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
     // points are ranked by questions answered DESC (active users rank higher),
     // then by users.created_at ASC for deterministic ordering when both
     // points and questions tie.
+    // LBW-1: only surface users with >0 points so Practice-only players
+    // (whose UDP row exists with points_counted=0) don't pad the board.
     @Query(value = "SELECT u.id AS userId, u.name AS name, u.avatar_url AS avatarUrl, "
             + "COALESCE(udp.points_counted, 0) AS points, COALESCE(udp.questions_counted, 0) AS questions "
             + "FROM user_daily_progress udp JOIN users u ON udp.user_id = u.id "
-            + "WHERE udp.date = :date "
+            + "WHERE udp.date = :date AND COALESCE(udp.points_counted, 0) > 0 "
             + "ORDER BY points DESC, questions DESC, u.created_at ASC "
             + "LIMIT :limit OFFSET :offset", nativeQuery = true)
     List<Object[]> findDailyLeaderboard(@Param("date") LocalDate date,
@@ -64,11 +66,13 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
     // Tie-break order (PL-2): see findDailyLeaderboard. u.created_at is
     // included in GROUP BY because MySQL strict mode requires every
     // non-aggregated column referenced in ORDER BY to appear in GROUP BY.
+    // LBW-1: HAVING filter drops 0-point users (same rationale as daily).
     @Query(value = "SELECT u.id AS userId, u.name AS name, u.avatar_url AS avatarUrl, "
             + "SUM(COALESCE(udp.points_counted, 0)) AS points, SUM(COALESCE(udp.questions_counted, 0)) AS questions "
             + "FROM user_daily_progress udp JOIN users u ON udp.user_id = u.id "
             + "WHERE udp.date BETWEEN :startDate AND :endDate "
             + "GROUP BY u.id, u.name, u.avatar_url, u.created_at "
+            + "HAVING SUM(COALESCE(udp.points_counted, 0)) > 0 "
             + "ORDER BY points DESC, questions DESC, u.created_at ASC "
             + "LIMIT :limit OFFSET :offset", nativeQuery = true)
     List<Object[]> findWeeklyLeaderboard(@Param("startDate") LocalDate startDate,
@@ -76,10 +80,12 @@ public interface UserDailyProgressRepository extends JpaRepository<UserDailyProg
 
     // Paginated all-time leaderboard — GROUP BY at database level.
     // Tie-break order (PL-2): see findDailyLeaderboard.
+    // LBW-1: HAVING filter drops 0-point users.
     @Query(value = "SELECT u.id AS userId, u.name AS name, u.avatar_url AS avatarUrl, "
             + "SUM(COALESCE(udp.points_counted, 0)) AS points, SUM(COALESCE(udp.questions_counted, 0)) AS questions "
             + "FROM user_daily_progress udp JOIN users u ON udp.user_id = u.id "
             + "GROUP BY u.id, u.name, u.avatar_url, u.created_at "
+            + "HAVING SUM(COALESCE(udp.points_counted, 0)) > 0 "
             + "ORDER BY points DESC, questions DESC, u.created_at ASC "
             + "LIMIT :limit OFFSET :offset", nativeQuery = true)
     List<Object[]> findAllTimeLeaderboard(@Param("limit") int limit, @Param("offset") int offset);
