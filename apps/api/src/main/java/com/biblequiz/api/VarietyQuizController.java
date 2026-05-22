@@ -100,7 +100,7 @@ public class VarietyQuizController {
 
         // Random from ALL books, ALL difficulties
         List<Question> questions = smartQuestionSelector.selectQuestions(
-                userId, 10, new QuestionFilter(null, null, language));
+                userId, 10, new QuestionFilter((String) null, null, language));
 
         Map<String, Object> response = new LinkedHashMap<>();
         response.put("questions", questions);
@@ -119,7 +119,7 @@ public class VarietyQuizController {
 
         // 10 EASY questions, 10 seconds each, 2x XP
         List<Question> questions = smartQuestionSelector.selectQuestions(
-                userId, 10, new QuestionFilter(null, "easy", language));
+                userId, 10, new QuestionFilter((String) null, "easy", language));
 
         Map<String, Object> response = new LinkedHashMap<>();
         response.put("available", true);

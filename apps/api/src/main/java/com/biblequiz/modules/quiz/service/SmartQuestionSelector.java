@@ -1,5 +1,6 @@
 package com.biblequiz.modules.quiz.service;
 
+import com.biblequiz.modules.quiz.dto.QuestionMeta;
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
@@ -35,11 +36,10 @@ public class SmartQuestionSelector {
      */
     public List<Question> selectQuestions(String userId, int count, QuestionFilter filter) {
         if (filter.difficulty() != null) {
-            // Explicit difficulty → use smart selection with that difficulty only
-            return selectWithSmartHistory(userId, count, filter);
+            List<String> ids = selectIdsWithSmartHistory(userId, count, filter);
+            return fetchInOrder(ids);
         }
 
-        // No explicit difficulty → distribute by tier
         int tierLevel = userTierService.getTierLevel(userId);
         DifficultyDistribution dist = tierDifficultyConfig.getDistribution(tierLevel);
 
@@ -47,32 +47,29 @@ public class SmartQuestionSelector {
         int mediumCount = (int) Math.round(count * dist.mediumPercent() / 100.0);
         int hardCount = count - easyCount - mediumCount;
 
-        List<Question> questions = new ArrayList<>();
-        questions.addAll(selectWithSmartHistory(userId, easyCount,
-                new QuestionFilter(filter.book(), "easy", filter.language())));
-        questions.addAll(selectWithSmartHistory(userId, mediumCount,
-                new QuestionFilter(filter.book(), "medium", filter.language())));
-        questions.addAll(selectWithSmartHistory(userId, hardCount,
-                new QuestionFilter(filter.book(), "hard", filter.language())));
+        List<String> selectedIds = new ArrayList<>();
+        selectedIds.addAll(selectIdsWithSmartHistory(userId, easyCount,
+                new QuestionFilter(filter.books(), "easy", filter.language())));
+        selectedIds.addAll(selectIdsWithSmartHistory(userId, mediumCount,
+                new QuestionFilter(filter.books(), "medium", filter.language())));
+        selectedIds.addAll(selectIdsWithSmartHistory(userId, hardCount,
+                new QuestionFilter(filter.books(), "hard", filter.language())));
 
-        // If not enough from per-difficulty, fill from any difficulty
-        if (questions.size() < count) {
-            int remaining = count - questions.size();
-            Set<String> selectedIds = new HashSet<>();
-            for (Question q : questions) selectedIds.add(q.getId());
-
-            List<Question> extra = selectWithSmartHistory(userId, remaining,
-                    new QuestionFilter(filter.book(), null, filter.language()));
-            for (Question q : extra) {
-                if (!selectedIds.contains(q.getId())) {
-                    questions.add(q);
-                    if (questions.size() >= count) break;
+        if (selectedIds.size() < count) {
+            int remaining = count - selectedIds.size();
+            Set<String> already = new HashSet<>(selectedIds);
+            List<String> extra = selectIdsWithSmartHistory(userId, remaining,
+                    new QuestionFilter(filter.books(), null, filter.language()));
+            for (String id : extra) {
+                if (!already.contains(id)) {
+                    selectedIds.add(id);
+                    if (selectedIds.size() >= count) break;
                 }
             }
         }
 
-        Collections.shuffle(questions);
-        return questions;
+        Collections.shuffle(selectedIds);
+        return fetchInOrder(selectedIds);
     }
 
     /**
@@ -84,32 +81,33 @@ public class SmartQuestionSelector {
     }
 
     /**
-     * Smart selection from a single pool (with or without difficulty filter).
+     * Smart selection on metadata-only projection.
      * Prioritizes: unseen → need review → seen long ago → seen recently.
+     * Returns selected IDs (in priority order). Caller batch-fetches full Question entities.
      */
-    private List<Question> selectWithSmartHistory(String userId, int count, QuestionFilter filter) {
+    private List<String> selectIdsWithSmartHistory(String userId, int count, QuestionFilter filter) {
         if (count <= 0) return List.of();
 
         Set<String> seenIds = new HashSet<>(historyRepository.findQuestionIdsByUserId(userId));
         Set<String> reviewIds = new HashSet<>(
                 historyRepository.findNeedReviewQuestionIds(userId, LocalDateTime.now()));
 
-        List<Question> allQuestions = findByFilter(filter);
+        List<QuestionMeta> allMetas = findMetaByFilter(filter);
 
-        List<Question> neverSeen = new ArrayList<>();
-        List<Question> needReview = new ArrayList<>();
-        List<Question> seenLongAgo = new ArrayList<>();
-        List<Question> seenRecently = new ArrayList<>();
+        List<QuestionMeta> neverSeen = new ArrayList<>();
+        List<QuestionMeta> needReview = new ArrayList<>();
+        List<QuestionMeta> seenLongAgo = new ArrayList<>();
+        List<QuestionMeta> seenRecently = new ArrayList<>();
 
         LocalDateTime thirtyDaysAgo = LocalDateTime.now().minusDays(30);
 
-        for (Question q : allQuestions) {
-            if (!seenIds.contains(q.getId())) {
+        for (QuestionMeta q : allMetas) {
+            if (!seenIds.contains(q.id())) {
                 neverSeen.add(q);
-            } else if (reviewIds.contains(q.getId())) {
+            } else if (reviewIds.contains(q.id())) {
                 needReview.add(q);
             } else {
-                historyRepository.findByUserIdAndQuestionId(userId, q.getId())
+                historyRepository.findByUserIdAndQuestionId(userId, q.id())
                         .ifPresent(h -> {
                             if (h.getLastSeenAt().isBefore(thirtyDaysAgo)) {
                                 seenLongAgo.add(q);
@@ -125,7 +123,7 @@ public class SmartQuestionSelector {
         Collections.shuffle(seenLongAgo);
         Collections.shuffle(seenRecently);
 
-        List<Question> selected = new ArrayList<>();
+        List<QuestionMeta> selected = new ArrayList<>();
 
         int newCount = Math.min((int) (count * 0.6), neverSeen.size());
         selected.addAll(neverSeen.subList(0, newCount));
@@ -138,7 +136,7 @@ public class SmartQuestionSelector {
 
         int remaining = count - selected.size();
         if (remaining > 0) {
-            List<Question> fallback = new ArrayList<>();
+            List<QuestionMeta> fallback = new ArrayList<>();
             if (newCount < neverSeen.size())
                 fallback.addAll(neverSeen.subList(newCount, neverSeen.size()));
             if (revCount < needReview.size())
@@ -150,27 +148,50 @@ public class SmartQuestionSelector {
             selected.addAll(fallback.subList(0, Math.min(remaining, fallback.size())));
         }
 
-        return selected;
+        List<String> ids = new ArrayList<>(selected.size());
+        for (QuestionMeta m : selected) ids.add(m.id());
+        return ids;
     }
 
-    private List<Question> findByFilter(QuestionFilter filter) {
-        String book = filter.book();
+    private List<QuestionMeta> findMetaByFilter(QuestionFilter filter) {
+        List<String> books = filter.books();
         String language = filter.language() != null ? filter.language() : "vi";
         Question.Difficulty difficulty = (filter.difficulty() != null
                 && !filter.difficulty().isEmpty()
                 && !"all".equalsIgnoreCase(filter.difficulty()))
                 ? Question.Difficulty.valueOf(filter.difficulty().toLowerCase()) : null;
 
-        boolean hasBook = book != null && !book.isEmpty();
-        if (hasBook && difficulty != null) {
-            return questionRepository.findAllActiveByLanguageAndBookAndDifficulty(language, book, difficulty);
-        } else if (hasBook) {
-            return questionRepository.findAllActiveByLanguageAndBook(language, book);
-        } else if (difficulty != null) {
-            return questionRepository.findAllActiveByLanguageAndDifficulty(language, difficulty);
-        } else {
-            return questionRepository.findAllActiveByLanguage(language);
+        int bookCount = books == null ? 0 : books.size();
+        if (bookCount == 0) {
+            return difficulty != null
+                    ? questionRepository.findMetaByLanguageAndDifficulty(language, difficulty)
+                    : questionRepository.findMetaByLanguage(language);
         }
+        if (bookCount == 1) {
+            String book = books.get(0);
+            return difficulty != null
+                    ? questionRepository.findMetaByLanguageAndBookAndDifficulty(language, book, difficulty)
+                    : questionRepository.findMetaByLanguageAndBook(language, book);
+        }
+        return difficulty != null
+                ? questionRepository.findMetaByLanguageAndBooksAndDifficulty(language, books, difficulty)
+                : questionRepository.findMetaByLanguageAndBooks(language, books);
+    }
+
+    /**
+     * Batch-fetch full Question entities by IDs, preserving the input order.
+     */
+    private List<Question> fetchInOrder(List<String> ids) {
+        if (ids.isEmpty()) return List.of();
+        List<Question> fetched = questionRepository.findAllById(ids);
+        Map<String, Question> byId = new HashMap<>(fetched.size());
+        for (Question q : fetched) byId.put(q.getId(), q);
+        List<Question> ordered = new ArrayList<>(ids.size());
+        for (String id : ids) {
+            Question q = byId.get(id);
+            if (q != null) ordered.add(q);
+        }
+        return ordered;
     }
 
     /**
@@ -200,9 +221,27 @@ public class SmartQuestionSelector {
         return result;
     }
 
-    public record QuestionFilter(String book, String difficulty, String language) {
+    /**
+     * Filter for question selection. Canonical field is {@code books} (list)
+     * per SPEC_USER_v3.2 §7.7.4. Single-book convenience constructors preserved
+     * for backward compatibility — Practice, Variety, Mystery still pass one or zero books.
+     */
+    public record QuestionFilter(List<String> books, String difficulty, String language) {
+        public QuestionFilter {
+            if (books == null) books = List.of();
+        }
+        public QuestionFilter(List<String> books, String difficulty) {
+            this(books, difficulty, "vi");
+        }
+        public QuestionFilter(String book, String difficulty, String language) {
+            this(book == null || book.isEmpty() ? List.of() : List.of(book), difficulty, language);
+        }
         public QuestionFilter(String book, String difficulty) {
             this(book, difficulty, "vi");
+        }
+        /** Backward-compat accessor: returns first book or null. */
+        public String book() {
+            return books == null || books.isEmpty() ? null : books.get(0);
         }
     }
 }

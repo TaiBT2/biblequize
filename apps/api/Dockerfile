@@ -23,5 +23,6 @@ COPY --from=build /app/target/biblequiz-api-0.1.0.jar app.jar
 EXPOSE 8080
 
 # Command chạy app
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# -XX:MaxRAMPercentage=75 — use 75% of container RAM as heap (default 25% leaves too much idle)
+ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75", "-jar", "app.jar"]
 

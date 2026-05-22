@@ -130,6 +130,30 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
     @Query("SELECT q FROM Question q WHERE q.isActive = true AND q.language = :language AND q.book = :book AND q.difficulty = :difficulty")
     List<Question> findAllActiveByLanguageAndBookAndDifficulty(@Param("language") String language, @Param("book") String book, @Param("difficulty") Question.Difficulty difficulty);
 
+    @Query("SELECT new com.biblequiz.modules.quiz.dto.QuestionMeta(q.id, q.book, q.difficulty) " +
+           "FROM Question q WHERE q.isActive = true AND q.language = :language")
+    List<com.biblequiz.modules.quiz.dto.QuestionMeta> findMetaByLanguage(@Param("language") String language);
+
+    @Query("SELECT new com.biblequiz.modules.quiz.dto.QuestionMeta(q.id, q.book, q.difficulty) " +
+           "FROM Question q WHERE q.isActive = true AND q.language = :language AND q.difficulty = :difficulty")
+    List<com.biblequiz.modules.quiz.dto.QuestionMeta> findMetaByLanguageAndDifficulty(@Param("language") String language, @Param("difficulty") Question.Difficulty difficulty);
+
+    @Query("SELECT new com.biblequiz.modules.quiz.dto.QuestionMeta(q.id, q.book, q.difficulty) " +
+           "FROM Question q WHERE q.isActive = true AND q.language = :language AND q.book = :book")
+    List<com.biblequiz.modules.quiz.dto.QuestionMeta> findMetaByLanguageAndBook(@Param("language") String language, @Param("book") String book);
+
+    @Query("SELECT new com.biblequiz.modules.quiz.dto.QuestionMeta(q.id, q.book, q.difficulty) " +
+           "FROM Question q WHERE q.isActive = true AND q.language = :language AND q.book = :book AND q.difficulty = :difficulty")
+    List<com.biblequiz.modules.quiz.dto.QuestionMeta> findMetaByLanguageAndBookAndDifficulty(@Param("language") String language, @Param("book") String book, @Param("difficulty") Question.Difficulty difficulty);
+
+    @Query("SELECT new com.biblequiz.modules.quiz.dto.QuestionMeta(q.id, q.book, q.difficulty) " +
+           "FROM Question q WHERE q.isActive = true AND q.language = :language AND q.book IN :books")
+    List<com.biblequiz.modules.quiz.dto.QuestionMeta> findMetaByLanguageAndBooks(@Param("language") String language, @Param("books") List<String> books);
+
+    @Query("SELECT new com.biblequiz.modules.quiz.dto.QuestionMeta(q.id, q.book, q.difficulty) " +
+           "FROM Question q WHERE q.isActive = true AND q.language = :language AND q.book IN :books AND q.difficulty = :difficulty")
+    List<com.biblequiz.modules.quiz.dto.QuestionMeta> findMetaByLanguageAndBooksAndDifficulty(@Param("language") String language, @Param("books") List<String> books, @Param("difficulty") Question.Difficulty difficulty);
+
     // Review workflow
     Page<Question> findByReviewStatus(Question.ReviewStatus reviewStatus, Pageable pageable);
 

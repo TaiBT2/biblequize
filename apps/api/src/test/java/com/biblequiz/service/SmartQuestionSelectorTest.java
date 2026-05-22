@@ -1,5 +1,6 @@
 package com.biblequiz.service;
 
+import com.biblequiz.modules.quiz.dto.QuestionMeta;
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.entity.UserQuestionHistory;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
@@ -49,7 +50,7 @@ class SmartQuestionSelectorTest {
     @BeforeEach
     void setUp() {
         // Use explicit difficulty to skip tier distribution logic for simpler tests
-        defaultFilter = new QuestionFilter(null, "easy", "vi");
+        defaultFilter = new QuestionFilter((String) null, "easy", "vi");
         allQuestions = IntStream.range(0, 100)
                 .mapToObj(i -> createQuestion("q-" + i))
                 .toList();
@@ -65,13 +66,32 @@ class SmartQuestionSelectorTest {
         return q;
     }
 
+    /**
+     * Helper for the two-step selector flow (commit 1b refactor):
+     * 1. Stub meta projection method returning {@link QuestionMeta} list
+     * 2. Stub {@code findAllById} returning the matching full {@link Question} objects
+     * Pool is the canonical question list backing both stubs.
+     */
+    private void stubMetaForDifficulty(Question.Difficulty diff, List<Question> pool) {
+        List<QuestionMeta> metas = pool.stream()
+                .map(q -> new QuestionMeta(q.getId(), q.getBook(), q.getDifficulty()))
+                .toList();
+        when(questionRepository.findMetaByLanguageAndDifficulty("vi", diff)).thenReturn(metas);
+        when(questionRepository.findAllById(anyIterable())).thenAnswer(invocation -> {
+            Iterable<String> ids = invocation.getArgument(0);
+            Set<String> idSet = new HashSet<>();
+            ids.forEach(idSet::add);
+            return pool.stream().filter(q -> idSet.contains(q.getId())).toList();
+        });
+    }
+
     @Test
     void selectQuestions_prioritizesUnseenQuestions() {
         // User has seen 10 questions, DB has 100
         List<String> seenIds = IntStream.range(0, 10)
                 .mapToObj(i -> "q-" + i).toList();
 
-        when(questionRepository.findAllActiveByLanguageAndDifficulty(eq("vi"), eq(Question.Difficulty.easy))).thenReturn(new ArrayList<>(allQuestions));
+        stubMetaForDifficulty(Question.Difficulty.easy, allQuestions);
         when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(seenIds);
         when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
 
@@ -93,7 +113,7 @@ class SmartQuestionSelectorTest {
         List<String> reviewIds = IntStream.range(0, 5)
                 .mapToObj(i -> "q-" + i).toList();
 
-        when(questionRepository.findAllActiveByLanguageAndDifficulty(eq("vi"), eq(Question.Difficulty.easy))).thenReturn(new ArrayList<>(allQuestions));
+        stubMetaForDifficulty(Question.Difficulty.easy, allQuestions);
         when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(seenIds);
         when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(reviewIds);
 
@@ -109,7 +129,7 @@ class SmartQuestionSelectorTest {
         List<String> seenIds = IntStream.range(0, 20)
                 .mapToObj(i -> "q-" + i).toList();
 
-        when(questionRepository.findAllActiveByLanguageAndDifficulty(eq("vi"), eq(Question.Difficulty.easy))).thenReturn(new ArrayList<>(smallPool));
+        stubMetaForDifficulty(Question.Difficulty.easy, smallPool);
         when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(seenIds);
         when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
         for (String qId : seenIds) {
@@ -126,7 +146,7 @@ class SmartQuestionSelectorTest {
 
     @Test
     void selectQuestions_neverReturnsLessThanRequested_ifPoolSufficient() {
-        when(questionRepository.findAllActiveByLanguageAndDifficulty(eq("vi"), eq(Question.Difficulty.easy))).thenReturn(new ArrayList<>(allQuestions));
+        stubMetaForDifficulty(Question.Difficulty.easy, allQuestions);
         when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
         when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
 
@@ -139,7 +159,7 @@ class SmartQuestionSelectorTest {
     void selectQuestions_returnsAvailable_ifPoolInsufficient() {
         List<Question> smallPool = allQuestions.subList(0, 5);
 
-        when(questionRepository.findAllActiveByLanguageAndDifficulty(eq("vi"), eq(Question.Difficulty.easy))).thenReturn(new ArrayList<>(smallPool));
+        stubMetaForDifficulty(Question.Difficulty.easy, smallPool);
         when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
         when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
 
@@ -150,7 +170,7 @@ class SmartQuestionSelectorTest {
 
     @Test
     void selectQuestions_noDuplicates() {
-        when(questionRepository.findAllActiveByLanguageAndDifficulty(eq("vi"), eq(Question.Difficulty.easy))).thenReturn(new ArrayList<>(allQuestions));
+        stubMetaForDifficulty(Question.Difficulty.easy, allQuestions);
         when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
         when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
 
@@ -166,7 +186,7 @@ class SmartQuestionSelectorTest {
     void selectQuestions_respectsDifficultyDistributionForTier() {
         // Tier 3: 35% easy, 45% medium, 20% hard
         // Use null difficulty to trigger tier-based distribution
-        QuestionFilter noDiffFilter = new QuestionFilter(null, null, "vi");
+        QuestionFilter noDiffFilter = new QuestionFilter((String) null, null, "vi");
 
         when(userTierService.getTierLevel(USER_ID)).thenReturn(3);
         when(tierDifficultyConfig.getDistribution(3))
@@ -189,12 +209,20 @@ class SmartQuestionSelectorTest {
             return q;
         }).toList();
 
-        when(questionRepository.findAllActiveByLanguageAndDifficulty("vi", Question.Difficulty.easy))
-                .thenReturn(new ArrayList<>(easyQs));
-        when(questionRepository.findAllActiveByLanguageAndDifficulty("vi", Question.Difficulty.medium))
-                .thenReturn(new ArrayList<>(medQs));
-        when(questionRepository.findAllActiveByLanguageAndDifficulty("vi", Question.Difficulty.hard))
-                .thenReturn(new ArrayList<>(hardQs));
+        List<Question> allTierQs = new ArrayList<>();
+        allTierQs.addAll(easyQs); allTierQs.addAll(medQs); allTierQs.addAll(hardQs);
+        when(questionRepository.findMetaByLanguageAndDifficulty("vi", Question.Difficulty.easy))
+                .thenReturn(easyQs.stream().map(q -> new QuestionMeta(q.getId(), q.getBook(), q.getDifficulty())).toList());
+        when(questionRepository.findMetaByLanguageAndDifficulty("vi", Question.Difficulty.medium))
+                .thenReturn(medQs.stream().map(q -> new QuestionMeta(q.getId(), q.getBook(), q.getDifficulty())).toList());
+        when(questionRepository.findMetaByLanguageAndDifficulty("vi", Question.Difficulty.hard))
+                .thenReturn(hardQs.stream().map(q -> new QuestionMeta(q.getId(), q.getBook(), q.getDifficulty())).toList());
+        when(questionRepository.findAllById(anyIterable())).thenAnswer(invocation -> {
+            Iterable<String> ids = invocation.getArgument(0);
+            Set<String> idSet = new HashSet<>();
+            ids.forEach(idSet::add);
+            return allTierQs.stream().filter(q -> idSet.contains(q.getId())).toList();
+        });
         when(historyRepository.findQuestionIdsByUserId(USER_ID)).thenReturn(List.of());
         when(historyRepository.findNeedReviewQuestionIds(eq(USER_ID), any())).thenReturn(List.of());
 
