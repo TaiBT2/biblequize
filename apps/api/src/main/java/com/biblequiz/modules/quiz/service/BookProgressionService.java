@@ -5,6 +5,15 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @deprecated Replaced by the Liturgical Coverage System
+ * (SPEC_USER_v3.2 §7.1). Active in legacy Ranked flow while
+ * feature flag {@code app.features.liturgical-coverage.enabled = false}.
+ * When the flag flips ON, RankedController bypasses this service.
+ * Full removal scheduled for Phase 4 of the Liturgical Coverage sprint
+ * (post 30-day stability). Do NOT add new callers.
+ */
+@Deprecated
 @Service
 public class BookProgressionService {
 

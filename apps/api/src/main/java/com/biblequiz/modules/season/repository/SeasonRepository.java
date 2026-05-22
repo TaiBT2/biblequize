@@ -28,4 +28,10 @@ public interface SeasonRepository extends JpaRepository<Season, String> {
     Optional<Season> findTopByStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByIsActiveDescStartDateDesc(LocalDate date1, LocalDate date2);
 
     boolean existsByStartDateLessThanEqualAndEndDateGreaterThanEqual(LocalDate date1, LocalDate date2);
+
+    /** Seasons whose calendar end date is exactly {@code date} — badge-award trigger. */
+    List<Season> findByEndDate(LocalDate date);
+
+    /** Seasons whose end date falls in {@code [start, end]} — badge reconciliation sweep. */
+    List<Season> findByEndDateBetween(LocalDate start, LocalDate end);
 }

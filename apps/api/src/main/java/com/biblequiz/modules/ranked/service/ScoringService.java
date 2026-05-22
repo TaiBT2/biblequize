@@ -85,20 +85,42 @@ public class ScoringService {
      */
     public ScoreResult calculateWithTier(Question.Difficulty difficulty, int clientElapsedMs,
                                           int currentStreak, boolean isDailyFirst, int tierLevel) {
-        return calculateWithTier(difficulty, clientElapsedMs, currentStreak, isDailyFirst, tierLevel, false);
+        return calculateWithTier(difficulty, clientElapsedMs, currentStreak, isDailyFirst, tierLevel, false, false);
     }
 
     /**
-     * Calculate with tier XP multiplier + optional XP surge (1.5x from milestone burst).
-     * Canonical formula per SPEC_USER §4.6: {@code final = base × tier.xpMultiplier × (surge ? 1.5 : 1)}.
-     * Wired by {@code RankedController.submitRankedAnswer} 2026-05-13 (BL-3).
+     * Backward-compat overload (no liturgical season bonus). Delegates with isInSeasonBook=false.
      */
     public ScoreResult calculateWithTier(Question.Difficulty difficulty, int clientElapsedMs,
                                           int currentStreak, boolean isDailyFirst, int tierLevel,
                                           boolean xpSurgeActive) {
+        return calculateWithTier(difficulty, clientElapsedMs, currentStreak, isDailyFirst,
+                tierLevel, xpSurgeActive, false);
+    }
+
+    /**
+     * Calculate with tier XP multiplier + optional XP surge + optional liturgical season bonus.
+     *
+     * <p>Canonical formula per SPEC_USER_v3.2 §4.6 + §7.10.3:
+     * {@code final = base × tier.xpMultiplier × (surge ? 1.5 : 1) × (seasonFocus ? 1.5 : 1)}.</p>
+     *
+     * <p>Wired:
+     * <ul>
+     *   <li>tier — BL-3 2026-05-13</li>
+     *   <li>xpSurge — BL-3 2026-05-13</li>
+     *   <li>isInSeasonBook — Liturgical Coverage sprint commit 7, 2026-05-21
+     *       (caller computes via {@code LiturgicalSeasonService.isInSeasonFocus})</li>
+     * </ul></p>
+     */
+    public ScoreResult calculateWithTier(Question.Difficulty difficulty, int clientElapsedMs,
+                                          int currentStreak, boolean isDailyFirst, int tierLevel,
+                                          boolean xpSurgeActive, boolean isInSeasonBook) {
         ScoreResult base = calculate(difficulty, clientElapsedMs, currentStreak, isDailyFirst);
         double multiplier = tierRewardsConfig.getRewards(tierLevel).xpMultiplier();
         if (xpSurgeActive) {
+            multiplier *= 1.5;
+        }
+        if (isInSeasonBook) {
             multiplier *= 1.5;
         }
         int boosted = (int) Math.round(base.earned * multiplier);

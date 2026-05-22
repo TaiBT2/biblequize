@@ -1,8 +1,12 @@
 package com.biblequiz.modules.season.entity;
 
+import com.biblequiz.shared.converter.JsonListConverter;
+
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "seasons")
@@ -27,6 +31,14 @@ public class Season {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    /**
+     * Focus books for the Liturgical Coverage Climax phase (weeks 9-11)
+     * and ×1.5 score bonus (§7.10.3). 3-5 canonical Bible book names.
+     */
+    @Column(name = "focus_books", columnDefinition = "JSON")
+    @Convert(converter = JsonListConverter.class)
+    private List<String> focusBooks = new ArrayList<>();
+
     public Season() {}
 
     public Season(String id, String name, LocalDate startDate, LocalDate endDate) {
@@ -48,4 +60,6 @@ public class Season {
     public void setIsActive(Boolean isActive) { this.isActive = isActive; }
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public List<String> getFocusBooks() { return focusBooks; }
+    public void setFocusBooks(List<String> focusBooks) { this.focusBooks = focusBooks; }
 }

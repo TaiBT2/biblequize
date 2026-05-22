@@ -22,7 +22,11 @@ public class BookMasteryService {
     public static final double COMPLETION_THRESHOLD = 80.0;
 
     public enum BookStatus {
-        COMPLETED, IN_PROGRESS, LOCKED
+        COMPLETED, IN_PROGRESS, NOT_STARTED,
+        /** @deprecated SPEC_USER_v3.2 §7.10.1 — LOCKED removed; kept for API back-compat
+         *  during transition. Service no longer emits this value. Remove after FE + mobile
+         *  drop LOCKED references (Phase 4). */
+        @Deprecated LOCKED
     }
 
     public record BookProgress(
@@ -59,10 +63,11 @@ public class BookMasteryService {
             BookStatus status;
             if (masteryPct >= COMPLETION_THRESHOLD) {
                 status = BookStatus.COMPLETED;
-            } else if (masteryPct > 0 || i == 0 || isUnlocked(progress, i)) {
+            } else if (masteryPct > 0) {
                 status = BookStatus.IN_PROGRESS;
             } else {
-                status = BookStatus.LOCKED;
+                // §7.10.1 — LOCKED removed; sequential gate dropped. All books clickable.
+                status = BookStatus.NOT_STARTED;
             }
 
             progress.add(new BookProgress(
@@ -73,11 +78,6 @@ public class BookMasteryService {
         }
 
         return progress;
-    }
-
-    private boolean isUnlocked(List<BookProgress> progress, int index) {
-        if (index == 0) return true;
-        return progress.get(index - 1).status() == BookStatus.COMPLETED;
     }
 
     public JourneySummary getJourneySummary(String userId, String language) {

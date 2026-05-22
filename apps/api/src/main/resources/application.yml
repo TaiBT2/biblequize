@@ -148,3 +148,14 @@ app:
       enabled: ${QUESTION_SEEDING_ENABLED:false}
       # Pattern matches VI (*_quiz.json) + EN (*_quiz_en.json) seed files.
       pattern: ${QUESTION_SEEDING_PATTERN:classpath*:seed/questions/*_quiz*.json}
+  features:
+    # Liturgical Coverage System (SPEC_USER_v3.2 §7). Defaults OFF.
+    # Enable globally then ramp rollout-percent (0..100) gradually.
+    # Stable userId hash modulo — same user always in same bucket.
+    liturgical-coverage:
+      enabled: ${LITURGICAL_COVERAGE_ENABLED:false}
+      rollout-percent: ${LITURGICAL_COVERAGE_ROLLOUT_PERCENT:0}
+      # Phase 2 data migration job (SPEC §7.9.3). Default OFF.
+      # Set to true for one restart, verify count, then set back to false.
+      migration:
+        run-at-startup: ${LITURGICAL_COVERAGE_MIGRATION_RUN_AT_STARTUP:false}

@@ -93,6 +93,18 @@ public class RankedController {
     @Autowired
     private UserQuestionHistoryRepository userQuestionHistoryRepository;
 
+    @Autowired
+    private com.biblequiz.modules.season.service.LiturgicalSeasonService liturgicalSeasonService;
+
+    @Autowired
+    private com.biblequiz.infrastructure.feature.FeatureFlagService featureFlagService;
+
+    @Autowired
+    private com.biblequiz.modules.coverage.service.LiturgicalCoverageService liturgicalCoverageService;
+
+    @Autowired
+    private com.biblequiz.modules.coverage.service.CoverageAnalytics coverageAnalytics;
+
     /** Optional — kept off the required graph so @WebMvcTest slices don't need to mock it.
      *  Mission tracking is best-effort and must never break the ranked answer response. */
     @Autowired(required = false)
@@ -252,27 +264,55 @@ public class RankedController {
             }
         }
 
-        QuestionFilter filter = new QuestionFilter(
-                (book != null && !book.isBlank()) ? book : null,
-                (difficulty != null && !difficulty.isBlank() && !"all".equalsIgnoreCase(difficulty)) ? difficulty : null,
-                language);
+        // §7 Liturgical Coverage path: override book filter with week's active pool.
+        // Gated by feature flag → same rollout audience as ×1.5 bonus + coverage UI.
+        List<String> coverageBooks = null;
+        if (userId != null && featureFlagService.isLiturgicalCoverageEnabled(userId)) {
+            coverageBooks = resolveCoverageWeekBooks(userId, language);
+        }
+
+        QuestionFilter filter;
+        if (coverageBooks != null) {
+            filter = new QuestionFilter(coverageBooks,
+                    (difficulty != null && !difficulty.isBlank() && !"all".equalsIgnoreCase(difficulty)) ? difficulty : null,
+                    language);
+        } else {
+            filter = new QuestionFilter(
+                    (book != null && !book.isBlank()) ? book : null,
+                    (difficulty != null && !difficulty.isBlank() && !"all".equalsIgnoreCase(difficulty)) ? difficulty : null,
+                    language);
+        }
 
         List<Question> picked;
+        boolean poolExhausted = false;
         if (userId != null) {
             // Overfetch so post-filter still has enough after dropping excluded IDs.
             int overfetch = limit + excludeSet.size() + 5;
-            List<Question> candidates = smartQuestionSelector.selectQuestions(userId, overfetch, filter);
-            picked = new java.util.ArrayList<>();
-            for (Question q : candidates) {
-                if (q == null || q.getId() == null) continue;
-                if (excludeSet.contains(q.getId())) continue;
-                picked.add(q);
-                if (picked.size() >= limit) break;
-            }
+            picked = pickFromSelector(userId, overfetch, limit, filter, excludeSet);
 
-            // Fallback: if book filter starved the pool, retry without book.
-            if (picked.size() < limit && filter.book() != null) {
-                QuestionFilter relaxed = new QuestionFilter(null, filter.difficulty(), language);
+            if (coverageBooks != null) {
+                // §7.11.4 Liturgical pool exhaustion fallback chain
+                int week = currentWeekFor(userId);
+                int tier = userTierService.getTierLevel(userId);
+                if (picked.size() < limit) {
+                    // Fallback 1: drop same-day exclusion (allow repeats within day)
+                    coverageAnalytics.poolExhaustionFallback(userId, 1, week, tier, language);
+                    picked = pickFromSelector(userId, overfetch, limit, filter, java.util.Set.of());
+                }
+                if (picked.size() < limit && filter.difficulty() != null) {
+                    // Fallback 2: drop difficulty filter (mix tier distribution)
+                    coverageAnalytics.poolExhaustionFallback(userId, 2, week, tier, language);
+                    QuestionFilter noDiff = new QuestionFilter(coverageBooks, null, language);
+                    picked = pickFromSelector(userId, overfetch, limit, noDiff, java.util.Set.of());
+                }
+                if (picked.isEmpty()) {
+                    // Fallback 3: pool exhausted — signal client to unlock next week
+                    coverageAnalytics.poolExhaustionFallback(userId, 3, week, tier, language);
+                    poolExhausted = true;
+                }
+            } else if (picked.size() < limit && filter.book() != null) {
+                // Legacy fallback: if book filter starved the pool, retry without book.
+                QuestionFilter relaxed = new QuestionFilter((String) null, filter.difficulty(), language);
                 List<Question> more = smartQuestionSelector.selectQuestions(userId, overfetch, relaxed);
                 Set<String> have = new HashSet<>();
                 for (Question q : picked) have.add(q.getId());
@@ -296,7 +336,56 @@ public class RankedController {
 
         Map<String, Object> resp = new HashMap<>();
         resp.put("questions", picked);
+        if (poolExhausted) {
+            resp.put("poolExhausted", true);
+            resp.put("suggestedAction", "UNLOCK_NEXT_WEEK");
+        }
         return ResponseEntity.ok(resp);
+    }
+
+    /**
+     * Resolve the user's current-week book pool for Liturgical Coverage path.
+     * Returns null on any failure (caller falls back to legacy filter).
+     */
+    private List<String> resolveCoverageWeekBooks(String userId, String language) {
+        try {
+            var seasonOpt = liturgicalSeasonService.getCurrentSeason();
+            if (seasonOpt.isEmpty()) return null;
+            String seasonId = seasonOpt.get().getId();
+            int tier = userTierService.getTierLevel(userId);
+            var coverage = liturgicalCoverageService.getOrCreateCoverage(userId, seasonId, tier);
+            List<String> active = liturgicalCoverageService.getActivePool(coverage, seasonId);
+            return active == null || active.isEmpty() ? null : active;
+        } catch (Exception e) {
+            log.warn("Failed to resolve coverage week books for user {}: {}", userId, e.getMessage());
+            return null;
+        }
+    }
+
+    private int currentWeekFor(String userId) {
+        try {
+            var seasonOpt = liturgicalSeasonService.getCurrentSeason();
+            if (seasonOpt.isEmpty()) return 0;
+            return liturgicalCoverageService
+                    .getOrCreateCoverage(userId, seasonOpt.get().getId(),
+                            userTierService.getTierLevel(userId))
+                    .getCurrentWeek();
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    private List<Question> pickFromSelector(String userId, int overfetch, int limit,
+                                             QuestionFilter filter, Set<String> excludeSet) {
+        List<Question> candidates = smartQuestionSelector.selectQuestions(userId, overfetch, filter);
+        List<Question> picked = new java.util.ArrayList<>();
+        for (Question q : candidates) {
+            if (q == null || q.getId() == null) continue;
+            if (excludeSet.contains(q.getId())) continue;
+            picked.add(q);
+            if (picked.size() >= limit) break;
+        }
+        return picked;
     }
 
     private static String stringOrNull(Object o) {
@@ -382,10 +471,12 @@ public class RankedController {
                 // to tier 1 without surge — same effective scoring as before.
                 int tierLevel = 1;
                 boolean xpSurgeActive = false;
+                String resolvedUserId = null;
                 try {
                     String email = resolveEmail(authentication);
                     User user = email != null ? userRepository.findByEmail(email).orElse(null) : null;
                     if (user != null) {
+                        resolvedUserId = user.getId();
                         tierLevel = userTierService.getTierLevel(user.getId());
                         xpSurgeActive = user.getXpSurgeUntil() != null
                                 && user.getXpSurgeUntil().isAfter(LocalDateTime.now());
@@ -393,10 +484,20 @@ public class RankedController {
                 } catch (Exception ignore) {
                 }
 
+                // §7.10.3 ×1.5 liturgical season focus bonus, gated by feature flag.
+                // Same rollout audience as Liturgical Coverage so behavior stays consistent.
+                boolean isInSeasonBook = false;
+                if (currentQ != null && currentQ.getBook() != null
+                        && featureFlagService.isLiturgicalCoverageEnabled(resolvedUserId)) {
+                    isInSeasonBook = liturgicalSeasonService
+                            .isInSeasonFocus(LocalDate.now(ZoneOffset.UTC), currentQ.getBook());
+                }
+
                 com.biblequiz.modules.ranked.service.ScoringService.ScoreResult score =
                         scoringService.calculateWithTier(
                                 currentQ != null ? currentQ.getDifficulty() : null,
-                                clientElapsedMs, p.currentStreak, false, tierLevel, xpSurgeActive);
+                                clientElapsedMs, p.currentStreak, false, tierLevel, xpSurgeActive,
+                                isInSeasonBook);
                 earned = score.earned;
                 p.pointsToday += earned;
 
@@ -407,7 +508,34 @@ public class RankedController {
 
             log.debug("Points: earned={} total={} streak={}", earned, p.pointsToday, p.currentStreak);
 
-            // Check if should advance to next book
+            // §7.1.4 Liturgical Coverage tick (gated by feature flag).
+            // Dual-write: increments UserSeasonCoverage AND keeps legacy
+            // currentBook advancement below for backward compat. Removal
+            // of legacy path scheduled for Phase 4 (post 30-day stability).
+            com.biblequiz.modules.coverage.service.LiturgicalCoverageService.WeekCompletionResult
+                    weekResult = null;
+            try {
+                String email = resolveEmail(authentication);
+                User userForCoverage = email != null ? userRepository.findByEmail(email).orElse(null) : null;
+                if (userForCoverage != null
+                        && featureFlagService.isLiturgicalCoverageEnabled(userForCoverage.getId())
+                        && currentQ != null && currentQ.getBook() != null) {
+                    var seasonOpt = liturgicalSeasonService.getCurrentSeason();
+                    if (seasonOpt.isPresent()) {
+                        int tier = userTierService.getTierLevel(userForCoverage.getId());
+                        // Ensure record exists before tick (lazy-create)
+                        liturgicalCoverageService.getOrCreateCoverage(
+                                userForCoverage.getId(), seasonOpt.get().getId(), tier);
+                        weekResult = liturgicalCoverageService.tickBookCoverage(
+                                userForCoverage.getId(), seasonOpt.get().getId(),
+                                currentQ.getBook(), tier);
+                    }
+                }
+            } catch (Exception coverageErr) {
+                log.warn("Coverage tick failed (non-fatal): {}", coverageErr.getMessage());
+            }
+
+            // Legacy: sequential book advancement gate. @Deprecated — removed in Phase 4.
             boolean shouldAdvance = bookProgressionService.shouldAdvanceToNextBook(
                     p.currentBook, p.questionsInCurrentBook, p.correctAnswersInCurrentBook);
 
@@ -629,6 +757,14 @@ public class RankedController {
             resp.put("correctAnswersInCurrentBook", p.correctAnswersInCurrentBook);
             resp.put("isPostCycle", p.isPostCycle);
             resp.put("bookProgress", bookProgress);
+
+            // §7.1.5 — surface Liturgical week completion to FE WeekCompleteModal.
+            boolean weekCompleted = weekResult != null && weekResult.justCompleted();
+            resp.put("weekCompleted", weekCompleted);
+            if (weekCompleted) {
+                resp.put("completedWeek", weekResult.completedWeek());
+                resp.put("nextWeekBooks", weekResult.nextWeekBooks());
+            }
 
             return ResponseEntity.ok(resp);
         } catch (Exception e) {
