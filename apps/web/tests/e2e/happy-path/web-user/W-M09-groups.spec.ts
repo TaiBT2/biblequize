@@ -630,4 +630,262 @@ test.describe('W-M09 Church Groups — L2 Happy Path @happy-path @groups', () =>
     await fetch(`${BASE_URL}/api/groups/${groupId}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token3}` } })
   })
 
+  // ── Quiz Set workflow (leader ↔ member) — SPEC_GROUP §6.1, §6.2 ──
+
+  async function ensureNoGroup(token: string): Promise<void> {
+    const me = await (await fetch(`${BASE_URL}/api/groups/me`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })).json()
+    if (me.hasGroup && me.groupId) {
+      await fetch(`${BASE_URL}/api/groups/${me.groupId}/leave`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      await fetch(`${BASE_URL}/api/groups/${me.groupId}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
+      })
+    }
+  }
+
+  async function setupGroupWithMember(
+    leaderToken: string,
+    memberToken: string,
+  ): Promise<{ groupId: string }> {
+    await ensureNoGroup(memberToken)
+    await ensureNoGroup(leaderToken)
+    const res = await fetch(`${BASE_URL}/api/groups`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${leaderToken}` },
+      body: JSON.stringify({ name: 'E2E QuizSet Group', description: 'test', language: 'vi' }),
+    })
+    const body = await res.json()
+    const groupId = body.group.id as string
+    const code = body.group.code as string
+    const joinRes = await fetch(`${BASE_URL}/api/groups/join`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${memberToken}` },
+      body: JSON.stringify({ code }),
+    })
+    expect(joinRes.ok, `member join failed: ${await joinRes.clone().text()}`).toBe(true)
+    return { groupId }
+  }
+
+  async function fetchQuestionIds(count: number): Promise<string[]> {
+    const data = await (await fetch(`${BASE_URL}/api/questions?count=${count}`)).json()
+    const arr: any[] = Array.isArray(data) ? data : data.questions ?? data.content ?? []
+    return arr.slice(0, count).map((q) => q.id)
+  }
+
+  async function createQuizSetAs(
+    token: string,
+    groupId: string,
+    name: string,
+    questionIds: string[],
+  ): Promise<any> {
+    const res = await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ name, questionIds }),
+    })
+    const body = await res.json()
+    expect(res.ok, `createQuizSet failed: ${JSON.stringify(body)}`).toBe(true)
+    return body.quizSet
+  }
+
+  async function publishQuizSet(token: string, groupId: string, setId: string): Promise<Response> {
+    return fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets/${setId}/publish`, {
+      method: 'PATCH',
+      headers: { Authorization: `Bearer ${token}` },
+    })
+  }
+
+  test('W-M09-L2-014: Leader creates quiz set — defaults to DRAFT status @write @serial @critical', async ({
+    testApi,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP — leader + member in a fresh group
+    // ============================================================
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+
+    try {
+      // ============================================================
+      // SECTION 2: ACTIONS — leader creates the quiz set
+      // ============================================================
+      const questionIds = await fetchQuestionIds(5)
+      expect(questionIds.length).toBeGreaterThan(0)
+      const quizSet = await createQuizSetAs(token3, groupId, 'E2E Draft Set', questionIds)
+
+      // ============================================================
+      // SECTION 3: UI ASSERTIONS — N/A (API-only test)
+      // ============================================================
+
+      // ============================================================
+      // SECTION 4: API VERIFICATION — DRAFT until explicitly published
+      // ============================================================
+      expect(quizSet.id).toBeTruthy()
+      expect(quizSet.name).toBe('E2E Draft Set')
+      expect(quizSet.publishStatus).toBe('DRAFT')
+    } finally {
+      // ============================================================
+      // CLEANUP
+      // ============================================================
+      await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token4}` },
+      })
+      await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+      })
+    }
+  })
+
+  test('W-M09-L2-015: Leader publishes quiz set — DRAFT → PUBLISHED @write @serial', async ({
+    testApi,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP
+    // ============================================================
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+
+    try {
+      const questionIds = await fetchQuestionIds(5)
+      const quizSet = await createQuizSetAs(token3, groupId, 'E2E Publishable Set', questionIds)
+      expect(quizSet.publishStatus).toBe('DRAFT')
+
+      // ============================================================
+      // SECTION 2: ACTIONS
+      // ============================================================
+      const res = await publishQuizSet(token3, groupId, quizSet.id)
+      const body = await res.json()
+
+      // ============================================================
+      // SECTION 3: UI ASSERTIONS — N/A
+      // ============================================================
+
+      // ============================================================
+      // SECTION 4: API VERIFICATION
+      // ============================================================
+      expect(res.ok).toBe(true)
+      expect(body.quizSet.publishStatus).toBe('PUBLISHED')
+      expect(body.quizSet.id).toBe(quizSet.id)
+    } finally {
+      await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token4}` },
+      })
+      await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+      })
+    }
+  })
+
+  test('W-M09-L2-016: Member only sees PUBLISHED quiz sets — leader DRAFT is hidden @write @serial @critical', async ({
+    testApi,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP — leader creates 2 sets, publishes only one
+    // ============================================================
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+
+    try {
+      const questionIds = await fetchQuestionIds(5)
+      const draftSet = await createQuizSetAs(token3, groupId, 'E2E Stays Draft', questionIds)
+      const publishedSet = await createQuizSetAs(token3, groupId, 'E2E Gets Published', questionIds)
+      const pubRes = await publishQuizSet(token3, groupId, publishedSet.id)
+      expect(pubRes.ok).toBe(true)
+
+      // ============================================================
+      // SECTION 2: ACTIONS — list as the member and as the leader
+      // ============================================================
+      const memberList = await (await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets`, {
+        headers: { Authorization: `Bearer ${token4}` },
+      })).json()
+      const leaderList = await (await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets`, {
+        headers: { Authorization: `Bearer ${token3}` },
+      })).json()
+
+      // ============================================================
+      // SECTION 3: UI ASSERTIONS — N/A
+      // ============================================================
+
+      // ============================================================
+      // SECTION 4: API VERIFICATION — visibility filter per SPEC_GROUP §6.1 (Q-5)
+      // ============================================================
+      const memberIds = (memberList.quizSets ?? []).map((q: any) => q.id)
+      const leaderIds = (leaderList.quizSets ?? []).map((q: any) => q.id)
+      expect(memberIds).toContain(publishedSet.id)
+      expect(memberIds).not.toContain(draftSet.id)
+      // Leader sees both — the draft they own + the published set.
+      expect(leaderIds).toContain(draftSet.id)
+      expect(leaderIds).toContain(publishedSet.id)
+    } finally {
+      await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token4}` },
+      })
+      await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+      })
+    }
+  })
+
+  test('W-M09-L2-017: Member cannot edit or delete the leader\'s quiz set @write @serial @security', async ({
+    testApi,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP
+    // ============================================================
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+
+    try {
+      const questionIds = await fetchQuestionIds(5)
+      const quizSet = await createQuizSetAs(token3, groupId, 'E2E Protected Set', questionIds)
+      await publishQuizSet(token3, groupId, quizSet.id)
+
+      // ============================================================
+      // SECTION 2: ACTIONS — member attempts to edit + delete
+      // ============================================================
+      const editRes = await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets/${quizSet.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token4}` },
+        body: JSON.stringify({ name: 'Hijack Attempt' }),
+      })
+      const deleteRes = await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets/${quizSet.id}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token4}` },
+      })
+
+      // ============================================================
+      // SECTION 3: UI ASSERTIONS — N/A
+      // ============================================================
+
+      // ============================================================
+      // SECTION 4: API VERIFICATION — both rejected; set unchanged
+      // ============================================================
+      expect(editRes.ok).toBe(false)
+      expect(deleteRes.ok).toBe(false)
+
+      // The set should still be there with its original name.
+      const reread = await (await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets`, {
+        headers: { Authorization: `Bearer ${token3}` },
+      })).json()
+      const still = (reread.quizSets ?? []).find((q: any) => q.id === quizSet.id)
+      expect(still).toBeTruthy()
+      expect(still.name).toBe('E2E Protected Set')
+    } finally {
+      await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token4}` },
+      })
+      await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+      })
+    }
+  })
+
 })
