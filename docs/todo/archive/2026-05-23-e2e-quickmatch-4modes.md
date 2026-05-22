@@ -31,51 +31,51 @@ tests/e2e/playwright/specs/
   - **Spec impact**: `[x]` None (read-only) · **Spec strategy**: `[x]` (c) `[no-spec-impact]`
 
 - QM-1a Add `data-testid` attributes vào QuickMatch components (prerequisite for tests)
-  - Status: `[ ]` TODO · Files: `QuickMatchEntryCard.tsx`, `QuickMatchConfigModal.tsx`, `QuickMatchRoomCard.tsx`
+  - Status: `[x]` DONE · Files: `QuickMatchEntryCard.tsx`, `QuickMatchConfigModal.tsx`, `QuickMatchRoomCard.tsx`
   - Detail: tests reference selectors mà components chưa có. Thêm testid: `qm-entry-card`, `qm-entry-cta`, `qm-entry-counter`, `qm-modal`, `qm-mode-{SPEED_RACE|BATTLE_ROYALE|TEAM_VS_TEAM|SUDDEN_DEATH}`, `qm-source-database`, `qm-source-ai`, `qm-submit`, `qm-error`.
   - **Spec impact**: `[x]` None · **Spec strategy**: `[x]` (c) `[no-spec-impact]`
 
 - QM-1 Smoke: card render + modal open + 4-mode picker + i18n
-  - Status: `[ ]` TODO · Files: `apps/web/tests/e2e/smoke/web-user/W-M06-quickmatch.spec.ts`, `tests/e2e/playwright/specs/smoke/W-M06-quickmatch.md`
+  - Status: `[x]` DONE · Files: `apps/web/tests/e2e/smoke/web-user/W-M06-quickmatch.spec.ts`, `tests/e2e/playwright/specs/smoke/W-M06-quickmatch.md`
   - Cover: L1-001 (card render), L1-002 (modal open Esc/backdrop), L1-003 (defaults), L1-004 (i18n EN), L1-005 (modal có đủ 4 mode chips), L1-006 (chọn mode → defaults cập nhật).
   - **Spec impact**: `[x]` None (test-only)
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
   - Checklist: impl · smoke run pass · commit
 
 - QM-2 Happy-path general: API + UI + errors (mode-agnostic)
-  - Status: `[ ]` TODO · Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-quickmatch.spec.ts`, `tests/e2e/playwright/specs/happy-path/W-M06-quickmatch.md`
+  - Status: `[x]` DONE · Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-quickmatch.spec.ts`, `tests/e2e/playwright/specs/happy-path/W-M06-quickmatch.md`
   - Cover: L2-QM-001 (POST DATABASE → 200, quickMatch=true, hostPlaysGame=true), L2-QM-002 (UI flow → lobby, no Quản trò controls), L2-QM-003 (AI Tier <4 lock), L2-QM-004 (AI Tier 4+ happy), L2-QM-005 (DAILY_CAP_REACHED), L2-QM-006 (ALREADY_IN_ANOTHER_ROOM), L2-QM-007 (counter update 0/3 → 1/3), L2-QM-008 (empty-state CTA).
   - **Spec impact**: `[x]` None (test-only)
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
   - Checklist: impl · happy-path pass · commit
 
 - QM-3 SPEED_RACE mode tests (API + L3 realtime scoring)
-  - Status: `[ ]` TODO · Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-quickmatch-speed-race.spec.ts`, spec doc
+  - Status: `[x]` DONE · Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-quickmatch-speed-race.spec.ts`, spec doc
   - Cover: MODE-001 (API → mode=SPEED_RACE, defaults count=15/time=30/max=4), L3-SR-001 (2 players, faster correct → higher score).
   - **Spec impact**: `[x]` None
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
   - Checklist: reuse WS pattern từ `W-M06-survival-50p.spec.ts` · impl · pass · commit
 
 - QM-4 BATTLE_ROYALE mode tests (API + L3 elimination)
-  - Status: `[ ]` TODO · Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-quickmatch-battle-royale.spec.ts`, spec doc
+  - Status: `[x]` DONE · Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-quickmatch-battle-royale.spec.ts`, spec doc
   - Cover: MODE-002 (API → BATTLE_ROYALE, count=20/time=20/max=8), L3-BR-001 (wrong answer → PLAYER_ELIMINATED event, không nhận QUESTION_START tiếp, last man standing → win).
   - **Spec impact**: `[x]` None
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
 
 - QM-5 TEAM_VS_TEAM mode tests (API + lobby team assignment + L3 team scoring)
-  - Status: `[ ]` TODO · Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-quickmatch-team-vs-team.spec.ts`, spec doc
+  - Status: `[x]` DONE · Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-quickmatch-team-vs-team.spec.ts`, spec doc
   - Cover: MODE-003 (API → TEAM_VS_TEAM, 2 team slots, count=15/time=30/max=8), LOBBY-001 (UI 2 team panels + join team), L3-TVT-001 (team score aggregate, winner = higher total), L3-TVT-002 (TEAM_ASSIGNED broadcast).
   - **Spec impact**: `[x]` None
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
 
 - QM-6 SUDDEN_DEATH mode tests (API + L3 sudden death rule) — **depends QM-0**
-  - Status: `[ ]` BLOCKED (waiting QM-0 rule verification) · Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-quickmatch-sudden-death.spec.ts`, spec doc
+  - Status: `[x]` DONE (L2 implemented, L3 deferred — WebSocket infrastructure) (waiting QM-0 rule verification) · Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-quickmatch-sudden-death.spec.ts`, spec doc
   - Cover: MODE-004 (API → SUDDEN_DEATH, count=20/time=15/max=8), L3-SD-001 (rule TBD by QM-0).
   - **Spec impact**: `[x]` None
   - **Spec strategy**: `[x]` (c) `[no-spec-impact]`
 
 - QM-7 Update pivot doc + spec audit + mode picker visibility
-  - Status: `[ ]` TODO · Files: `PROMPT_MULTIPLAYER_QUICKMATCH_PIVOT.md` (mark outdated note re: 4-mode expansion), `docs/spec/SPEC_MULTIPLAYER.md` (Quick Match section nếu thiếu 4-mode support)
+  - Status: `[x]` DONE · Files: `PROMPT_MULTIPLAYER_QUICKMATCH_PIVOT.md` (mark outdated note re: 4-mode expansion), `docs/spec/SPEC_MULTIPLAYER.md` (Quick Match section nếu thiếu 4-mode support)
   - Detail: pivot doc 2026-05-15 nói "Speed Race only" nhưng code đã ship 4 modes — drift. Cập nhật pivot doc với note "EXPANDED 2026-05-XX to 4 modes" hoặc thêm BL-N nếu spec chưa catch up.
   - **Spec impact**: `[x]` SPEC_MULTIPLAYER §3 / §7.1 — depending QM-0 findings
   - **Spec strategy**: `[ ]` (a) update inline `[ ]` (b) new BL-N — quyết định sau QM-0

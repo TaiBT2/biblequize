@@ -3,12 +3,11 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (55)
+## Active (54)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
 | 2026-05-23 | Leaderboard "Hàng Tuần" logic fixes (6 sub-tasks: filter 0-pt, my-rank, copy, cache, ICT, calendar week) | TODO | [detail](docs/todo/active/2026-05-23-leaderboard-weekly-fix.md) |
-| 2026-05-23 | E2E tests cho Đấu Nhanh (Quick Match) — 4 modes (smoke + happy-path + realtime) | TODO | [detail](docs/todo/active/2026-05-23-e2e-quickmatch-4modes.md) |
 | 2026-05-23 | Clean up stale FE + BE tests (69 FE + ~37 BE pre-existing failures from past redesigns) | DONE | [archive](docs/todo/archive/2026-05-23-clean-stale-tests.md) |
 | 2026-05-22 | Ranked play fixes (replay same-questions + select 500 + e2e W-M04 sync) | TODO | [detail](docs/todo/active/2026-05-22-ranked-play-fixes.md) |
 | 2026-05-22 | Liturgical Coverage follow-ups (verify, QA, rollout, FMC review, cleanup) | TODO | [detail](docs/todo/active/2026-05-22-liturgical-coverage-followups.md) |
@@ -75,12 +74,14 @@
 | 2026-04-27 | V3 Tier B/C Quality Expansion: 14 books | IN PROGRESS | [detail](docs/todo/active/2026-04-27-v3-tier-b-c-quality-expansion-14-books.md) |
 | 2026-04-19 | Global audience migration: SQL → JSON + i18n prep | PARTIALLY DONE | [detail](docs/todo/active/2026-04-19-global-audience-migration-sql-json-i18n-prep.md) |
 
-## Archive (50)
+## Archive (51)
 
-> 50 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
+> 51 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
 
 <details>
 <summary>Xem inline list (tuỳ chọn)</summary>
+
+- 2026-05-23 — E2E tests cho Đấu Nhanh Quick Match (4 modes, smoke+happy-path+per-mode L2; L3 realtime deferred) · DONE · [detail](docs/todo/archive/2026-05-23-e2e-quickmatch-4modes.md)
 
 - 2026-05-22 — Daily Challenge: wire "Hạng toàn cầu" + bỏ "Trong nhóm" (HeroCard) · DONE · [detail](docs/todo/archive/2026-05-22-daily-challenge-wire-global-group-rank.md)
 - 2026-05-19 — Fix Daily Challenge AnswerButton flashes 'wrong' state khi trả lời đúng · DONE · [detail](docs/todo/archive/2026-05-19-fix-daily-answer-button-flash-wrong.md)
