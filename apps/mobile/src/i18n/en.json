@@ -170,13 +170,23 @@
   },
   "ranked": {
     "title": "Ranked Match",
+    "subtitle": "Climb tiers, join the season board, earn Glory",
     "energy": "Energy",
     "energyCost": "Wrong -5 energy/question",
     "autoDifficulty": "Auto difficulty",
     "autoDifficultyDesc": "Based on your tier",
     "xpBoost": "Tier XP boost",
     "xpBoostDesc": "Higher tier = more XP",
-    "start": "Enter Ranked"
+    "start": "Enter Ranked",
+    "cta_loading": "Loading...",
+    "cta_cap_reached": "Daily limit reached",
+    "cta_out_of_energy": "Out of energy",
+    "today_book": "Today's book",
+    "season_remaining": "{{days}} days left",
+    "pool_exhausted": "No questions left for this week. Come back after unlocking the next week.",
+    "no_questions_title": "No questions today",
+    "no_questions_body": "You've answered all available questions today. Come back after new ones are added.",
+    "start_error_title": "Cannot enter Ranked"
   },
   "daily": {
     "title": "Daily Challenge",

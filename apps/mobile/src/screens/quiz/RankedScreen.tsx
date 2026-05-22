@@ -4,7 +4,9 @@ import { View, Text, StyleSheet, ScrollView, Alert, Pressable } from 'react-nati
 import { useNavigation } from '@react-navigation/native'
 import { useQuery } from '@tanstack/react-query'
 import SafeScreen from '../../components/layout/SafeScreen'
+import CoverageHint from '../../components/ranked/CoverageHint'
 import { apiClient } from '../../api/client'
+import { useCoverageStatus } from '../../hooks/useCoverageStatus'
 import { getTierProgress, getStarInfo } from '../../logic/tierProgression'
 import { colors, typography, spacing, borderRadius } from '../../theme'
 
@@ -50,9 +52,10 @@ interface SeasonInfo {
  * - capReached → "Đã đạt giới hạn hôm nay"
  */
 export default function RankedScreen() {
-  const { t: _t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const navigation = useNavigation<any>()
   const [starting, setStarting] = useState(false)
+  const { data: coverage } = useCoverageStatus()
 
   const { data: meData } = useQuery({
     queryKey: ['me'],
@@ -99,8 +102,11 @@ export default function RankedScreen() {
   const canPlay = !isOutOfEnergy && !capReached
   const questionsLeftFromEnergy = Math.floor(energy / ENERGY_COST_PER_WRONG)
 
-  // 2-step start flow (web parity Ranked.tsx:30-83): POST /api/ranked/sessions
-  // → GET /api/me/ranked-status → GET /api/questions filtered + fallbacks.
+  // Start flow (web parity Ranked.tsx): POST /api/ranked/sessions →
+  // GET /api/me/ranked-status (for excludeIds) → POST /api/ranked/questions/select.
+  // The select endpoint runs SmartQuestionSelector server-side so tier-aware
+  // Easy/Medium/Hard distribution applies (SPEC §7.2). Replaces the legacy
+  // 3× GET /api/questions which returned uniform-random (mobile P0 bug).
   let step = 'init'
   const handleStart = async () => {
     if (starting || !canPlay) return
@@ -116,43 +122,26 @@ export default function RankedScreen() {
       const status = statusRes.data ?? {}
       const askedIds: string[] = Array.isArray(status.askedQuestionIdsToday)
         ? status.askedQuestionIdsToday : []
-      const currentBook: string | undefined = status.currentBook
-      const currentDifficulty: string | undefined = status.currentDifficulty
 
-      const exclude = new Set<string>(askedIds)
-      const questions: any[] = []
-      const addUnique = (items: any[]) => {
-        for (const q of items ?? []) {
-          if (!q?.id || exclude.has(q.id) || questions.find((x: any) => x.id === q.id)) continue
-          questions.push(q)
-          exclude.add(q.id)
-          if (questions.length >= 10) break
-        }
-      }
+      // Single tier-aware pick. No `book` field — BE derives the pool from
+      // Liturgical Coverage state (flag ON) or tier distribution (flag OFF).
+      step = 'POST /api/ranked/questions/select'
+      const pickRes = await apiClient.post('/api/ranked/questions/select', {
+        limit: 10,
+        language: i18n.language,
+        excludeIds: askedIds,
+      })
+      const questions: any[] = pickRes.data?.questions ?? []
+      const poolExhausted: boolean = pickRes.data?.poolExhausted === true
 
-      step = 'GET /api/questions (filtered)'
-      if (questions.length < 10) {
-        const params: any = { limit: 10 - questions.length, excludeIds: Array.from(exclude) }
-        if (currentBook) params.book = currentBook
-        if (currentDifficulty && currentDifficulty !== 'all') params.difficulty = currentDifficulty
-        addUnique((await apiClient.get('/api/questions', { params })).data ?? [])
-      }
-      step = 'GET /api/questions (book-only fallback)'
-      if (questions.length < 10 && currentBook) {
-        addUnique((await apiClient.get('/api/questions', {
-          params: { limit: 10 - questions.length, book: currentBook, excludeIds: Array.from(exclude) }
-        })).data ?? [])
-      }
-      step = 'GET /api/questions (any-book fallback)'
-      if (questions.length < 10) {
-        addUnique((await apiClient.get('/api/questions', {
-          params: { limit: 10 - questions.length, excludeIds: Array.from(exclude) }
-        })).data ?? [])
+      if (poolExhausted) {
+        Alert.alert(t('ranked.title'), t('ranked.pool_exhausted'))
+        setStarting(false)
+        return
       }
 
       if (questions.length === 0) {
-        Alert.alert('Hết câu hỏi hôm nay',
-          'Bạn đã trả lời hết câu hỏi có sẵn hôm nay. Quay lại sau khi thêm câu mới.')
+        Alert.alert(t('ranked.no_questions_title'), t('ranked.no_questions_body'))
         setStarting(false)
         return
       }
@@ -170,7 +159,7 @@ export default function RankedScreen() {
       const detail = e?.response?.status
         ? `HTTP ${e.response.status} · ${JSON.stringify(e.response.data ?? {}).slice(0, 200)}`
         : (e?.message ?? String(err))
-      Alert.alert('Không vào được Đấu Hạng', `[${step}] ${detail}`)
+      Alert.alert(t('ranked.start_error_title'), `[${step}] ${detail}`)
       setStarting(false)
     }
   }
@@ -178,13 +167,14 @@ export default function RankedScreen() {
   return (
     <SafeScreen>
       <ScrollView contentContainerStyle={s.content} showsVerticalScrollIndicator={false}>
-        {/* 1. Header — 2-tone title + subtitle (web RankedHeader.tsx parity) */}
+        {/* 1. Header — canonical "Đấu Hạng" (C2) */}
         <View style={s.header}>
-          <Text style={s.title}>
-            Thi Đấu <Text style={s.titleAccent}>Xếp Hạng</Text>
-          </Text>
-          <Text style={s.subtitle}>Leo tier, vào BXH mùa, nhận Vinh Quang</Text>
+          <Text style={s.title}>{t('ranked.title')}</Text>
+          <Text style={s.subtitle}>{t('ranked.subtitle')}</Text>
         </View>
+
+        {/* Liturgical Coverage hint — renders only when user is in rollout */}
+        {coverage && <CoverageHint coverage={coverage} />}
 
         {/* 2. Tier Progress Card */}
         <View style={s.card}>
@@ -324,10 +314,10 @@ export default function RankedScreen() {
           ]}
         >
           <Text style={[s.ctaText, !canPlay && s.ctaTextDisabled]}>
-            {starting ? 'Đang tải...'
-              : capReached ? 'Đã đạt giới hạn hôm nay'
-              : isOutOfEnergy ? 'Hết năng lượng'
-              : 'Vào Thi Đấu'}
+            {starting ? t('ranked.cta_loading')
+              : capReached ? t('ranked.cta_cap_reached')
+              : isOutOfEnergy ? t('ranked.cta_out_of_energy')
+              : t('ranked.start')}
           </Text>
         </Pressable>
         <Text style={s.ctaCaption}>

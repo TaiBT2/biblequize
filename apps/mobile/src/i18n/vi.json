@@ -170,13 +170,23 @@
   },
   "ranked": {
     "title": "Đấu Hạng",
+    "subtitle": "Leo tier, vào BXH mùa, nhận Vinh Quang",
     "energy": "Năng lượng",
     "energyCost": "Sai -5 năng lượng/câu",
     "autoDifficulty": "Độ khó tự động",
     "autoDifficultyDesc": "Theo tier level của bạn",
     "xpBoost": "XP nhân tier",
     "xpBoostDesc": "Tier cao hơn = XP nhiều hơn",
-    "start": "Vào Đấu Hạng"
+    "start": "Vào Đấu Hạng",
+    "cta_loading": "Đang tải...",
+    "cta_cap_reached": "Đã đạt giới hạn hôm nay",
+    "cta_out_of_energy": "Hết năng lượng",
+    "today_book": "Hôm nay ôn",
+    "season_remaining": "Còn {{days}} ngày",
+    "pool_exhausted": "Đã hết câu hỏi cho tuần này. Quay lại sau khi mở tuần kế.",
+    "no_questions_title": "Hết câu hỏi hôm nay",
+    "no_questions_body": "Bạn đã trả lời hết câu hỏi có sẵn hôm nay. Quay lại sau khi thêm câu mới.",
+    "start_error_title": "Không vào được Đấu Hạng"
   },
   "daily": {
     "title": "Thử Thách Hàng Ngày",
