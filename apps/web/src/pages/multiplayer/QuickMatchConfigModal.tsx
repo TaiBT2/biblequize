@@ -76,11 +76,13 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
     <div
       role="dialog"
       aria-modal="true"
+      data-testid="qm-modal-backdrop"
       onClick={onClose}
       className="fixed inset-0 z-50 flex items-center justify-center px-4 py-8 overflow-y-auto"
       style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}
     >
       <div
+        data-testid="qm-modal"
         onClick={e => e.stopPropagation()}
         className="w-full max-w-[520px] rounded-2xl"
         style={{
@@ -118,6 +120,8 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
                   <button
                     key={m.id}
                     type="button"
+                    data-testid={`qm-mode-${m.id}`}
+                    data-active={active}
                     onClick={() => setMode(m.id)}
                     className="flex items-center gap-2 px-3 h-10 rounded-lg text-[12px] font-semibold transition-colors text-left"
                     style={{
@@ -175,6 +179,7 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
           <Section label={t('multiplayer.config.sectionSource')}>
             <div className="grid grid-cols-2 gap-2">
               <SourceButton
+                testId="qm-source-database"
                 active={source === 'DATABASE'}
                 onClick={() => setSource('DATABASE')}
                 icon="storage"
@@ -182,6 +187,7 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
                 desc={t('multiplayer.config.sourceDatabaseDesc')}
               />
               <SourceButton
+                testId="qm-source-ai"
                 active={source === 'AI_GENERATED'}
                 onClick={() => aiUnlocked && setSource('AI_GENERATED')}
                 disabled={!aiUnlocked}
@@ -194,6 +200,7 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
 
           {error && (
             <div
+              data-testid="qm-error"
               className="px-3 py-2 rounded-lg text-[12px]"
               style={{ background: 'rgba(239,68,68,0.10)', border: '1px solid rgba(239,68,68,0.25)', color: '#fca5a5' }}
             >
@@ -204,6 +211,7 @@ export default function QuickMatchConfigModal({ open, onClose, userTier = 1 }: P
           {/* Submit */}
           <button
             type="button"
+            data-testid="qm-submit"
             onClick={handleSubmit}
             disabled={submitting}
             className="w-full inline-flex items-center justify-center gap-2 h-11 rounded-lg text-[14px] font-bold text-white transition-opacity hover:opacity-90 disabled:opacity-60"
@@ -265,14 +273,17 @@ function ChipGroup<T extends string | number>({
 }
 
 function SourceButton({
-  active, onClick, disabled, icon, title, desc,
+  active, onClick, disabled, icon, title, desc, testId,
 }: {
   active: boolean; onClick: () => void; disabled?: boolean;
-  icon: string; title: string; desc: string
+  icon: string; title: string; desc: string; testId?: string
 }) {
   return (
     <button
       type="button"
+      data-testid={testId}
+      data-active={active}
+      data-disabled={disabled ? 'true' : undefined}
       onClick={onClick}
       disabled={disabled}
       className="flex items-start gap-2 p-3 rounded-lg text-left transition-colors disabled:cursor-not-allowed"

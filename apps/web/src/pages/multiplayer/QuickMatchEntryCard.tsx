@@ -43,6 +43,7 @@ export default function QuickMatchEntryCard({ userTier = 1 }: Props) {
   return (
     <>
       <div
+        data-testid="qm-entry-card"
         className="rounded-2xl p-6 relative overflow-hidden transition-transform"
         style={{
           background: `linear-gradient(135deg, ${QM.tintBg} 0%, ${QM.tintBgSoft} 100%)`,
@@ -100,6 +101,7 @@ export default function QuickMatchEntryCard({ userTier = 1 }: Props) {
 
           <button
             type="button"
+            data-testid="qm-entry-cta"
             onClick={() => setModalOpen(true)}
             disabled={exhausted}
             className="w-full inline-flex items-center justify-center gap-2 h-11 px-5 rounded-lg text-[14px] font-bold text-white transition-opacity hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
@@ -113,9 +115,15 @@ export default function QuickMatchEntryCard({ userTier = 1 }: Props) {
           </button>
 
           <div className="flex items-center justify-between mt-2.5 text-[10px]">
-            <span className="text-white/40" dangerouslySetInnerHTML={{
-              __html: t('multiplayer.quickMatch.today', { used }),
-            }} />
+            <span
+              data-testid="qm-entry-counter"
+              data-used={used}
+              data-remaining={remaining}
+              className="text-white/40"
+              dangerouslySetInnerHTML={{
+                __html: t('multiplayer.quickMatch.today', { used }),
+              }}
+            />
             <span className="text-white/40">{t('multiplayer.quickMatch.noXp')}</span>
           </div>
         </div>
