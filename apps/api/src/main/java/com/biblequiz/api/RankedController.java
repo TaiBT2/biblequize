@@ -334,8 +334,17 @@ public class RankedController {
             picked = pool.size() > limit ? pool.subList(0, limit) : pool;
         }
 
+        // Map to plain objects — never serialize raw JPA entities. The selector
+        // may hand back uninitialized Hibernate proxies (left in the persistence
+        // context by UserQuestionHistory lookups) which Jackson cannot serialize
+        // ("No serializer found for ... ByteBuddyInterceptor").
+        List<Map<String, Object>> questionDtos = new java.util.ArrayList<>(picked.size());
+        for (Question q : picked) {
+            if (q != null) questionDtos.add(questionToMap(q));
+        }
+
         Map<String, Object> resp = new HashMap<>();
-        resp.put("questions", picked);
+        resp.put("questions", questionDtos);
         if (poolExhausted) {
             resp.put("poolExhausted", true);
             resp.put("suggestedAction", "UNLOCK_NEXT_WEEK");
@@ -386,6 +395,25 @@ public class RankedController {
             if (picked.size() >= limit) break;
         }
         return picked;
+    }
+
+    /** Serialize a Question entity (possibly a Hibernate proxy) to a plain map. */
+    private static Map<String, Object> questionToMap(Question q) {
+        Question e = (Question) org.hibernate.Hibernate.unproxy(q);
+        Map<String, Object> m = new HashMap<>();
+        m.put("id", e.getId());
+        m.put("book", e.getBook());
+        m.put("chapter", e.getChapter());
+        m.put("verseStart", e.getVerseStart());
+        m.put("verseEnd", e.getVerseEnd());
+        m.put("difficulty", e.getDifficulty() != null ? e.getDifficulty().name() : null);
+        m.put("type", e.getType() != null ? e.getType().name() : null);
+        m.put("content", e.getContent());
+        m.put("options", e.getOptions());
+        m.put("correctAnswer", e.getCorrectAnswer());
+        m.put("explanation", e.getExplanation());
+        m.put("correctAnswerText", e.getCorrectAnswerText());
+        return m;
     }
 
     private static String stringOrNull(Object o) {
