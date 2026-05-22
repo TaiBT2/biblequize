@@ -18,7 +18,6 @@ interface DoneSummary {
   completedAt?: string
   timeSeconds?: number
   rankGlobal?: number
-  rankGroup?: number
   resultsBreakdown?: boolean[]
 }
 
@@ -251,9 +250,11 @@ export function HeroCard(props: HeroCardProps) {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-2 mb-3.5">
+        {/* Single-col: chỉ "Hạng toàn cầu". Ô "Trong nhóm" đã bỏ — Daily
+            Challenge là hoạt động solo, group leaderboard locked group-play-only
+            (SPEC_GROUP Q-A) + §10 đang deprecated. */}
+        <div className="grid grid-cols-1 gap-2 mb-3.5">
           <StatMini value={done.rankGlobal != null ? `#${done.rankGlobal}` : '—'} label={t('daily.done.rankGlobal')} highlight />
-          <StatMini value={done.rankGroup != null ? `#${done.rankGroup}` : '—'} label={t('daily.done.rankGroup')} success />
         </div>
         <div className="grid grid-cols-2 gap-2">
           <ShareBtn icon="share" label={t('daily.done.share')} onClick={onShare} />

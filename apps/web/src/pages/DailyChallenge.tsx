@@ -673,7 +673,6 @@ const DailyChallenge: React.FC = () => {
       : dailyResult.completedAt,
     timeSeconds: dailyResult.timeSeconds,
     rankGlobal: myGlobalRank ?? dailyResult.rankGlobal,
-    rankGroup: dailyResult.rankGroup,
     resultsBreakdown: results.length === dailyResult.totalQuestions ? results : undefined,
   } : undefined
 
