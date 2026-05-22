@@ -27,10 +27,13 @@ async function loginAndGetToken(email: string): Promise<string> {
   return data.accessToken
 }
 
+// POST /api/rooms responds with { success, room, viewerUserId } — the helper
+// returns the inner `room` object (fields: id, roomCode, roomName, mode,
+// maxPlayers, status, hostId, players).
 async function createRoom(
   token: string,
-  body = { name: 'E2E Test Room', mode: 'SPEED_RACE', maxPlayers: 4 },
-): Promise<{ id: string; code: string }> {
+  body: Record<string, unknown> = { roomName: 'E2E Test Room', mode: 'SPEED_RACE', maxPlayers: 4 },
+): Promise<any> {
   const res = await fetch(`${BASE_URL}/api/rooms`, {
     method: 'POST',
     headers: {
@@ -39,39 +42,32 @@ async function createRoom(
     },
     body: JSON.stringify(body),
   })
-  return (await res.json()) as { id: string; code: string }
+  return (await res.json()).room
 }
 
-async function joinRoom(token: string, code: string): Promise<Response> {
+async function joinRoom(token: string, roomCode: string): Promise<Response> {
   return fetch(`${BASE_URL}/api/rooms/join`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ code }),
+    body: JSON.stringify({ roomCode }),
   })
 }
 
-async function deleteRoom(token: string, roomId: string): Promise<void> {
-  await fetch(`${BASE_URL}/api/rooms/${roomId}`, {
-    method: 'DELETE',
-    headers: { Authorization: `Bearer ${token}` },
-  })
-}
-
-async function getRoom(
-  token: string,
-  roomId: string,
-): Promise<Response> {
+// GET /api/rooms/{id} responds with { success, viewerUserId, room }.
+async function getRoom(token: string, roomId: string): Promise<Response> {
   return fetch(`${BASE_URL}/api/rooms/${roomId}`, {
     headers: { Authorization: `Bearer ${token}` },
   })
 }
 
+// Best-effort cleanup: there is no delete-room endpoint, so the host leaves
+// instead. Stale LOBBY rooms are reaped by the abandonment scheduler.
 async function leaveRoom(token: string, roomId: string): Promise<Response> {
   return fetch(`${BASE_URL}/api/rooms/${roomId}/leave`, {
-    method: 'DELETE',
+    method: 'POST',
     headers: { Authorization: `Bearer ${token}` },
   })
 }
@@ -101,23 +97,21 @@ test.describe('W-M06 Multiplayer Lobby — L2 Happy Path @happy-path @multiplaye
     // SECTION 4: API VERIFICATION
     // ============================================================
     expect(room.id).toBeTruthy()
-    expect(room.code).toMatch(/^[A-Z0-9]{6}$/)
+    expect(room.roomCode).toMatch(/^[A-Z0-9]{6}$/)
     expect(room).toMatchObject({
-      name: 'E2E Test Room',
+      roomName: 'E2E Test Room',
       mode: 'SPEED_RACE',
       maxPlayers: 4,
-      status: 'WAITING',
+      status: 'LOBBY',
     })
-    expect(room).toHaveProperty('hostUserId')
-    // Host auto-added to players
-    const players = (room as any).players
-    expect(Array.isArray(players)).toBe(true)
-    expect(players.length).toBeGreaterThanOrEqual(1)
+    expect(room).toHaveProperty('hostId')
+    // players is an array (host is NOT a RoomPlayer in Quản trò mode default).
+    expect(Array.isArray(room.players)).toBe(true)
 
     // ============================================================
     // CLEANUP
     // ============================================================
-    await deleteRoom(token, room.id)
+    await leaveRoom(token, room.id)
   })
 
   test('W-M06-L2-002: UI create room flow — fill form, submit, redirect to lobby @write @serial', async ({
@@ -181,7 +175,7 @@ test.describe('W-M06 Multiplayer Lobby — L2 Happy Path @happy-path @multiplaye
     // ============================================================
     if (roomId) {
       const token = await loginAndGetToken(TEST3_EMAIL)
-      await deleteRoom(token, roomId)
+      await leaveRoom(token, roomId)
     }
   })
 
@@ -198,7 +192,7 @@ test.describe('W-M06 Multiplayer Lobby — L2 Happy Path @happy-path @multiplaye
     // ============================================================
     // SECTION 2: ACTIONS — test4 joins
     // ============================================================
-    const joinRes = await joinRoom(token4, room.code)
+    const joinRes = await joinRoom(token4, room.roomCode)
     expect(joinRes.ok).toBe(true)
 
     // ============================================================
@@ -209,16 +203,16 @@ test.describe('W-M06 Multiplayer Lobby — L2 Happy Path @happy-path @multiplaye
     // SECTION 4: API VERIFICATION
     // ============================================================
     const roomRes = await getRoom(token3, room.id)
-    const roomData = await roomRes.json()
-    expect(roomData.players?.length).toBe(2)
+    const roomData = (await roomRes.json()).room
+    expect(roomData.players?.length).toBe(1)
 
     // ============================================================
-    // CLEANUP
+    // CLEANUP — the joiner leaves; the empty room is then auto-deleted
     // ============================================================
-    await deleteRoom(token3, room.id)
+    await leaveRoom(token4, room.id)
   })
 
-  test('W-M06-L2-004: Join invalid code returns 404 @write @serial', async ({
+  test('W-M06-L2-004: Join invalid code is rejected @write @serial', async ({
     testApi,
   }) => {
     // ============================================================
@@ -236,61 +230,75 @@ test.describe('W-M06 Multiplayer Lobby — L2 Happy Path @happy-path @multiplaye
     // ============================================================
 
     // ============================================================
-    // SECTION 4: API VERIFICATION
+    // SECTION 4: API VERIFICATION — joinRoom rejects unknown code with 400
     // ============================================================
-    expect(res.status).toBe(404)
+    expect(res.status).toBe(400)
+    const body = await res.json()
+    expect(body.success).toBe(false)
   })
 
-  test('W-M06-L2-005: Join full room returns 409 @write @serial', async ({
+  test('W-M06-L2-005: Join full room is rejected @write @serial', async ({
     testApi,
   }) => {
     // ============================================================
-    // SECTION 1: SETUP — create room maxPlayers=2, fill with 2 users
+    // SECTION 1: SETUP — create room maxPlayers=2, fill it with 2 players
+    //   (Quản trò mode: host is not a player, so 2 joiners fill maxPlayers=2)
     // ============================================================
     const token3 = await loginAndGetToken(TEST3_EMAIL)
     const room = await createRoom(token3, {
-      name: 'Full Room',
+      roomName: 'E2E Full Room',
       mode: 'SPEED_RACE',
       maxPlayers: 2,
     })
     const token4 = await loginAndGetToken(TEST4_EMAIL)
-    await joinRoom(token4, room.code)
+    const token5 = await loginAndGetToken(TEST5_EMAIL)
+    expect((await joinRoom(token4, room.roomCode)).ok).toBe(true)
+    expect((await joinRoom(token5, room.roomCode)).ok).toBe(true)
 
     // ============================================================
-    // SECTION 2: ACTIONS — test5 tries to join full room
+    // SECTION 2: ACTIONS — a 3rd player tries to join the full room
     // ============================================================
-    const token5 = await loginAndGetToken(TEST5_EMAIL)
-    const res = await joinRoom(token5, room.code)
+    const token6 = await loginAndGetToken('test6@dev.local')
+    const res = await joinRoom(token6, room.roomCode)
 
     // ============================================================
     // SECTION 3: UI ASSERTIONS — N/A
     // ============================================================
 
     // ============================================================
-    // SECTION 4: API VERIFICATION
+    // SECTION 4: API VERIFICATION — full room rejected with 400
     // ============================================================
-    expect(res.status).toBe(409)
+    expect(res.status).toBe(400)
+    const body = await res.json()
+    expect(body.message).toContain('đầy')
 
     // ============================================================
-    // CLEANUP
+    // CLEANUP — both joiners leave; the empty room is then auto-deleted
     // ============================================================
-    await deleteRoom(token3, room.id)
+    await leaveRoom(token4, room.id)
+    await leaveRoom(token5, room.id)
   })
 
-  test('W-M06-L2-006: Room list GET /api/rooms returns waiting rooms @parallel-safe', async ({
-    tier3Page,
+  test('W-M06-L2-006: Public room list GET /api/rooms/public returns rooms @write @serial', async ({
     testApi,
   }) => {
     // ============================================================
-    // SECTION 1: SETUP — none
+    // SECTION 1: SETUP — create one public room so the list is non-empty
     // ============================================================
+    const token = await loginAndGetToken(TEST3_EMAIL)
+    const room = await createRoom(token, {
+      roomName: 'E2E Public Room',
+      mode: 'SPEED_RACE',
+      maxPlayers: 4,
+      isPublic: true,
+    })
 
     // ============================================================
     // SECTION 2: ACTIONS
     // ============================================================
-    const page = tier3Page
-    // Use page.request for authenticated API call
-    const res = await page.request.get('/api/rooms?status=WAITING')
+    const res = await fetch(`${BASE_URL}/api/rooms/public`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
 
     // ============================================================
     // SECTION 3: UI ASSERTIONS — N/A
@@ -299,30 +307,39 @@ test.describe('W-M06 Multiplayer Lobby — L2 Happy Path @happy-path @multiplaye
     // ============================================================
     // SECTION 4: API VERIFICATION
     // ============================================================
-    expect(res.ok()).toBe(true)
-    const rooms = await res.json()
-    expect(Array.isArray(rooms)).toBe(true)
-    // Each room has required fields
-    for (const room of rooms) {
-      expect(room).toHaveProperty('id')
-      expect(room).toHaveProperty('maxPlayers')
-      expect(room.status).toBe('WAITING')
-    }
+    expect(res.ok).toBe(true)
+    const body = await res.json()
+    expect(body.success).toBe(true)
+    expect(Array.isArray(body.rooms)).toBe(true)
+    const listed = body.rooms.find((r: any) => r.id === room.id)
+    expect(listed).toBeTruthy()
+    expect(listed).toHaveProperty('maxPlayers')
+
+    // ============================================================
+    // CLEANUP
+    // ============================================================
+    await leaveRoom(token, room.id)
   })
 
-  test('W-M06-L2-007: Host leave room — room deleted or ownership transferred @write @serial', async ({
+  test('W-M06-L2-007: Host (legacy mode) leaving lobby drops their player row @write @serial', async ({
     testApi,
   }) => {
     // ============================================================
-    // SECTION 1: SETUP — test3 creates room, test4 joins
+    // SECTION 1: SETUP — legacy-mode room (hostPlaysGame: true) so the host
+    //   is a real RoomPlayer; test4 joins → 2 players
     // ============================================================
     const token3 = await loginAndGetToken(TEST3_EMAIL)
-    const room = await createRoom(token3)
+    const room = await createRoom(token3, {
+      roomName: 'E2E Host Leave Room',
+      mode: 'SPEED_RACE',
+      maxPlayers: 4,
+      hostPlaysGame: true,
+    })
     const token4 = await loginAndGetToken(TEST4_EMAIL)
-    await joinRoom(token4, room.code)
+    expect((await joinRoom(token4, room.roomCode)).ok).toBe(true)
 
     // ============================================================
-    // SECTION 2: ACTIONS — host leaves
+    // SECTION 2: ACTIONS — host leaves the lobby
     // ============================================================
     const leaveRes = await leaveRoom(token3, room.id)
     expect(leaveRes.ok).toBe(true)
@@ -332,31 +349,167 @@ test.describe('W-M06 Multiplayer Lobby — L2 Happy Path @happy-path @multiplaye
     // ============================================================
 
     // ============================================================
-    // SECTION 4: API VERIFICATION
+    // SECTION 4: API VERIFICATION — room survives with the remaining
+    //   player; the host's RoomPlayer row is gone.
     // ============================================================
     const roomRes = await getRoom(token4, room.id)
-    if (roomRes.status === 404) {
-      // Room was deleted when host left
-      expect(roomRes.status).toBe(404)
-    } else {
-      // Ownership transferred to test4
-      const roomData = await roomRes.json()
-      const userId4 = await testApi.getUserIdByEmail(TEST4_EMAIL)
-      expect(roomData.hostUserId).toBe(userId4)
-    }
+    expect(roomRes.ok).toBe(true)
+    const roomData = (await roomRes.json()).room
+    const userId3 = await testApi.getUserIdByEmail(TEST3_EMAIL)
+    expect(roomData.players.some((p: any) => p.userId === userId3)).toBe(false)
 
     // ============================================================
     // CLEANUP
     // ============================================================
-    // Delete room if still exists
-    const cleanupRes = await getRoom(token4, room.id)
-    if (cleanupRes.ok) {
-      await deleteRoom(token4, room.id)
-    }
+    await leaveRoom(token4, room.id)
   })
 
   test('W-M06-L2-008: Gameplay flow deferred to Phase 5 WebSocket @deferred', async () => {
     test.skip(true, 'DEFERRED: Multiplayer gameplay requires Phase 5 WebSocket')
+  })
+
+  // ── Survival mode (BATTLE_ROYALE / "Sinh tồn") — SPEC_MULTIPLAYER §3.2 ──
+
+  test('W-M06-L2-009: Create survival room (BATTLE_ROYALE) — mode persisted @write @serial @survival', async ({
+    testApi,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP
+    // ============================================================
+    const token = await loginAndGetToken(TEST3_EMAIL)
+
+    // ============================================================
+    // SECTION 2: ACTIONS
+    // ============================================================
+    const room = await createRoom(token, {
+      roomName: 'E2E Survival Room',
+      mode: 'BATTLE_ROYALE',
+      maxPlayers: 8,
+    })
+
+    // ============================================================
+    // SECTION 3: UI ASSERTIONS — N/A (API-only test)
+    // ============================================================
+
+    // ============================================================
+    // SECTION 4: API VERIFICATION
+    // ============================================================
+    expect(room.roomCode).toMatch(/^[A-Z0-9]{6}$/)
+    expect(room).toMatchObject({
+      mode: 'BATTLE_ROYALE',
+      maxPlayers: 8,
+      status: 'LOBBY',
+    })
+
+    // ============================================================
+    // CLEANUP
+    // ============================================================
+    await leaveRoom(token, room.id)
+  })
+
+  test('W-M06-L2-010: UI create survival room — select "Sinh tồn" card, redirect to lobby @write @serial @survival', async ({
+    page,
+    testApi,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP
+    // ============================================================
+    const loginPage = new LoginPage(page)
+    await loginPage.goto()
+    await loginPage.loginWithCredentials(TEST3_EMAIL, PASSWORD)
+    await page.waitForURL('/')
+
+    // ============================================================
+    // SECTION 2: ACTIONS
+    // ============================================================
+    await page.goto('/room/create')
+    await page.waitForSelector('[data-testid="create-room-page"]')
+
+    const nameInput = page.getByTestId('create-room-name-input')
+    if (await nameInput.isVisible()) {
+      await nameInput.fill('E2E Survival UI Room')
+    }
+
+    // Select survival mode — label is "Sinh tồn" (vi) / "Battle Royale" (en)
+    const modeSelect = page.getByTestId('create-room-mode-select')
+    await modeSelect
+      .locator('button')
+      .filter({ hasText: /sinh tồn|battle\s*royale/i })
+      .first()
+      .click()
+
+    await page.getByTestId('create-room-submit-btn').click()
+
+    // ============================================================
+    // SECTION 3: UI ASSERTIONS
+    // ============================================================
+    await page.waitForURL(/\/room\/[a-z0-9-]+\/lobby/)
+    await expect(page.getByTestId('lobby-room-code')).toHaveText(/[A-Z0-9]{6}/)
+    await expect(page.getByTestId('lobby-player-grid')).toBeVisible()
+
+    // ============================================================
+    // SECTION 4: API VERIFICATION — room created with survival mode
+    // ============================================================
+    const roomId = page.url().match(/\/room\/([a-z0-9-]+)\/lobby/)?.[1]
+    expect(roomId).toBeTruthy()
+    const token = await loginAndGetToken(TEST3_EMAIL)
+    const roomRes = await getRoom(token, roomId!)
+    const roomData = (await roomRes.json()).room
+    expect(roomData.mode).toBe('BATTLE_ROYALE')
+
+    // ============================================================
+    // CLEANUP
+    // ============================================================
+    await leaveRoom(token, roomId!)
+  })
+
+  test('W-M06-L2-011: Join survival room — 3 players (BR minimum) @write @serial @survival', async ({
+    testApi,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP — test3 creates a BATTLE_ROYALE room
+    // ============================================================
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const room = await createRoom(token3, {
+      roomName: 'E2E Survival Join Room',
+      mode: 'BATTLE_ROYALE',
+      maxPlayers: 8,
+    })
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const token5 = await loginAndGetToken(TEST5_EMAIL)
+
+    // ============================================================
+    // SECTION 2: ACTIONS — test4 + test5 join (Quản trò mode: host is not
+    //   a player, so 2 joiners is the BR-viable non-host count)
+    // ============================================================
+    const join4 = await joinRoom(token4, room.roomCode)
+    const join5 = await joinRoom(token5, room.roomCode)
+    expect(join4.ok).toBe(true)
+    expect(join5.ok).toBe(true)
+
+    // ============================================================
+    // SECTION 3: UI ASSERTIONS — N/A
+    // ============================================================
+
+    // ============================================================
+    // SECTION 4: API VERIFICATION — 2 players joined, mode still BATTLE_ROYALE
+    // ============================================================
+    const roomRes = await getRoom(token3, room.id)
+    const roomData = (await roomRes.json()).room
+    expect(roomData.mode).toBe('BATTLE_ROYALE')
+    expect(roomData.players?.length).toBe(2)
+
+    // ============================================================
+    // CLEANUP — both joiners leave; the empty room is then auto-deleted
+    // ============================================================
+    await leaveRoom(token4, room.id)
+    await leaveRoom(token5, room.id)
+  })
+
+  test('W-M06-L2-012: Survival elimination gameplay deferred to Phase 5 WebSocket @deferred @survival', async () => {
+    // SPEC_MULTIPLAYER §3.2 — PLAYER_ELIMINATED / BATTLE_ROYALE_UPDATE events,
+    // amnesty round (all-wrong), finalRank leaderboard. Requires STOMP gameplay.
+    test.skip(true, 'DEFERRED: Battle Royale elimination flow requires Phase 5 WebSocket')
   })
 
 })

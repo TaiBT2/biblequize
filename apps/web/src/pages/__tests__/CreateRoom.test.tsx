@@ -92,12 +92,12 @@ describe('CreateRoom', () => {
   })
 
   // 6. Max players slider
-  it('renders max players slider with range 2-20', () => {
+  it('renders max players slider with range 2-100', () => {
     renderCreateRoom()
     const slider = document.querySelector('input[type="range"]') as HTMLInputElement
     expect(slider).toBeTruthy()
     expect(slider.min).toBe('2')
-    expect(slider.max).toBe('20')
+    expect(slider.max).toBe('100')
   })
 
   // 7. Visibility toggle

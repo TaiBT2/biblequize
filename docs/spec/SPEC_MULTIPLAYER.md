@@ -44,7 +44,7 @@ Bonus entity (cùng package, ngoài scope spec này): `Challenge` (peer-challeng
 | `id` | `String(36)` | UUID v4 (hiện code gen `UUID.randomUUID()` — NOT v7, divergence với CLAUDE.md "UUID v7"; tracked trong BACKLOG) | PK. |
 | `roomCode` | `String(8)` UNIQUE | 6 ký tự `[A-Z0-9]` từ `SecureRandom` (`RoomService.java:587-596`) | User nhập để join; uppercase enforce trong `RoomController.joinRoom`. |
 | `roomName` | `String(100)` | "Phòng của {host.name}" nếu blank | Validate 5–60 ký tự, không cho repeat 1 ký tự (`RoomController.java:48-53`). |
-| `maxPlayers` | `Integer` | 4 | 2–20 tuỳ mode (FE enforce; BE chấp nhận giá trị trong body). |
+| `maxPlayers` | `Integer` | 4 | 2–100 (FE slider enforce; BE chấp nhận giá trị trong body). Cap nâng từ 20→100 (2026-05-22, xem DECISIONS.md) để hỗ trợ sự kiện lớn. |
 | `currentPlayers` | `Integer` | 0 | **Denormalised counter**, recompute từ `RoomPlayer` count occupied (= không tính LEFT) sau mỗi insert/delete (`RoomService.syncPlayerCount`). |
 | `questionCount` | `Integer` | 10 | Số câu trong session. Không áp dụng cho SUDDEN_DEATH (king-of-the-hill chạy đến khi còn 1 người). |
 | `timePerQuestion` | `Integer` | 30 (giây) | Server-authoritative timer; FE compute remaining = `timeLimit - (now - startedAtMs)` (xem `QuestionStartData.startedAtMs`). |
@@ -255,7 +255,7 @@ isCorrect == true   → 100 + floor((timeLimit_ms - responseMs) / timeLimit_ms �
 Last-man-standing. Mỗi câu loại bớt người trả lời sai. Người cuối cùng thắng.
 
 #### Rules
-- 3–20 players.
+- 3–100 players (cap nâng 2026-05-22, xem DECISIONS.md).
 - Sau mỗi `ROUND_END`: `BattleRoyaleEngine.processRoundEnd` (line 31+) chạy:
   - Lấy danh sách `ACTIVE` players + danh sách user trả lời đúng round này.
   - **Exception**: nếu **TẤT CẢ active đều sai** → không loại ai (round "ân xá").

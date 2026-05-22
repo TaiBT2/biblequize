@@ -481,13 +481,13 @@ export default function CreateRoom() {
                     </span>
                   </div>
                   <input
-                    type="range" min={2} max={20} value={formData.maxPlayers}
+                    type="range" min={2} max={100} value={formData.maxPlayers}
                     onChange={e => setFormData(prev => ({ ...prev, maxPlayers: parseInt(e.target.value) }))}
                     className="w-full accent-[#e8a832] h-2 rounded-full appearance-none cursor-pointer"
                     style={{ background: 'rgba(15,18,28,0.55)' }}
                   />
                   <div className="flex justify-between text-[10px] text-gray-500">
-                    <span>2</span><span>20</span>
+                    <span>2</span><span>100</span>
                   </div>
                 </div>
               </details>

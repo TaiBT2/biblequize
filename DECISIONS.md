@@ -564,3 +564,9 @@
 - Trade-off: User không nhận noti real-time khi app đóng; có thể miss deadline. Phase 2 cân nhắc thêm Web Push hoặc FCM nếu user feedback yêu cầu.
 - KHÔNG thay đổi khi refactor trừ khi có lý do mới
 
+
+## 2026-05-22 — Multiplayer: nâng cap maxPlayers 20 → 100
+- Quyết định: Slider maxPlayers trong Create Room nâng từ 2–20 lên 2–100, áp dụng mọi mode (gồm Sinh tồn / BATTLE_ROYALE). BE vốn không cap nên không đổi.
+- Lý do: Hỗ trợ sự kiện lớn (Hội thánh, trại) chơi multiplayer chung một phòng; giới hạn 20 cũ quá nhỏ.
+- Trade-off: Phòng đông → broadcast WebSocket mỗi vòng nặng hơn; chưa load-test ở mức 100. Theo dõi nếu phòng lớn gây trễ.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới
