@@ -9,6 +9,7 @@ import { useLifeline } from '../hooks/useLifeline'
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton'
 import { CircularTimer } from '../components/quiz/CircularTimer'
 import { wrapProperNouns, formatVerseRef, getQuestionLengthClass } from '../utils/textHelpers'
+import { getQuizLanguage } from '../utils/quizLanguage'
 import { useToast } from '../hooks/useToast'
 import QuizResults from './QuizResults'
 import RankedQuizResults from './RankedQuizResults'
@@ -54,6 +55,12 @@ interface QuizPageSettings {
   showExplanation?: boolean
   isRanked?: boolean
   timePerQuestion?: number
+  previousTier?: {
+    level: number
+    name: string
+    totalPoints: number
+    nextTierPoints: number
+  } | null
 }
 
 const ANSWER_LETTERS = ['A', 'B', 'C', 'D']
@@ -110,6 +117,56 @@ const Quiz: React.FC = () => {
       }
     } catch { /* fall through — reuse original questions */ }
     return null
+  }
+
+  /** Ranked "Chơi trận khác" — a replay must be a brand-new match: a fresh
+   *  session + freshly-selected questions (excluding today's asked IDs).
+   *  Reusing location.state.questions replayed the same 10 (user report
+   *  2026-05-22). Mirrors Ranked.tsx startRankedQuiz. */
+  const startNextRankedMatch = async (): Promise<QuizPageSettings | null> => {
+    try {
+      const language = getQuizLanguage()
+      const statusRes = await api.get('/api/me/ranked-status')
+      const status = statusRes.data
+      const sessRes = await api.post('/api/ranked/sessions', { language })
+      const newSessionId = sessRes.data?.sessionId
+      if (!newSessionId) return null
+      const serverAskedIds: string[] = status?.askedQuestionIdsToday ?? []
+      const localAskedIds: string[] = (() => {
+        try { return JSON.parse(localStorage.getItem('askedQuestionIds') || '[]') } catch { return [] }
+      })()
+      const excludeIds = Array.from(new Set<string>([...serverAskedIds, ...localAskedIds]))
+      const pickRes = await api.post('/api/ranked/questions/select', {
+        limit: 10,
+        excludeIds,
+        book: status?.currentBook,
+        difficulty: status?.currentDifficulty,
+        language,
+      })
+      const freshQuestions: Question[] = pickRes.data?.questions ?? []
+      if (pickRes.data?.poolExhausted === true || freshQuestions.length === 0) return null
+      let previousTier: QuizPageSettings['previousTier'] = null
+      try {
+        const tp = await api.get('/api/me/tier-progress')
+        previousTier = tp.data ? {
+          level: tp.data.tierLevel,
+          name: tp.data.tierName,
+          totalPoints: tp.data.totalPoints,
+          nextTierPoints: tp.data.nextTierPoints,
+        } : null
+      } catch { /* tier-up detection best-effort */ }
+      return {
+        sessionId: newSessionId,
+        mode: 'ranked',
+        questions: freshQuestions,
+        showExplanation: false,
+        isRanked: true,
+        timePerQuestion: 90,
+        previousTier,
+      }
+    } catch {
+      return null
+    }
   }
 
   const [questions, setQuestions] = useState<Question[]>([])
@@ -264,6 +321,19 @@ const Quiz: React.FC = () => {
     const boot = () => {
       try {
         setIsLoading(true)
+        // Full reset so a re-navigation to /quiz (ranked "Chơi trận khác")
+        // starts a clean match instead of inheriting the finished one.
+        setIsQuizCompleted(false)
+        setCurrentQuestionIndex(0)
+        setSelectedAnswer(null)
+        setShowResult(false)
+        setIsCorrect(null)
+        setCombo(0)
+        setScore(0)
+        setCorrectAnswers(0)
+        setLives(PRACTICE_LIVES_MAX)
+        setLastQuestionScore(0)
+        setWeekCompletion(null)
         const initialQuestions = settings?.questions || []
         if (initialQuestions.length > 0) {
           setQuestions(initialQuestions)
@@ -589,6 +659,19 @@ const Quiz: React.FC = () => {
       questionScores,
     }
     const handlePlayAgain = async () => {
+          // Ranked replay = brand-new match. The sessionId lives in the
+          // immutable location.state, so re-navigate with a fresh session +
+          // freshly-selected questions; boot() fully resets quiz state.
+          if (location.state?.isRanked || settings?.mode === 'ranked') {
+            const next = await startNextRankedMatch()
+            if (next) {
+              navigate('/quiz', { state: next, replace: true })
+            } else {
+              // Pool exhausted / error — send back to the ranked hub.
+              navigate('/ranked')
+            }
+            return
+          }
           // Variety modes (mystery / speed) refetch a fresh random batch so
           // "Random hoàn toàn" / "10 câu × 10s" actually delivers new content
           // instead of replaying the same 10 questions. Best-effort: if the
