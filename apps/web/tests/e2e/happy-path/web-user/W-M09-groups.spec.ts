@@ -11,6 +11,8 @@ import { LoginPage } from '../../pages/LoginPage'
 const BASE_URL = process.env.PLAYWRIGHT_API_URL ?? 'http://localhost:8080'
 const TEST3_EMAIL = 'test3@dev.local'
 const TEST4_EMAIL = 'test4@dev.local'
+const TEST5_EMAIL = 'test5@dev.local'
+const ADMIN_EMAIL = 'admin@biblequiz.test'
 const PASSWORD = 'Test@123456'
 
 // ── Helpers ─────────────────────────────────────────────────────────
@@ -1277,6 +1279,446 @@ test.describe('W-M09 Church Groups — L2 Happy Path @happy-path @groups', () =>
       await fetch(`${BASE_URL}/api/groups/${groupId}`, {
         method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
       })
+    }
+  })
+
+  // ── Round 4: leader lifecycle / permissions / data integrity ──
+
+  async function teardown(leaderToken: string, memberToken: string, groupId: string) {
+    await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+      method: 'DELETE', headers: { Authorization: `Bearer ${memberToken}` },
+    })
+    await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+      method: 'DELETE', headers: { Authorization: `Bearer ${leaderToken}` },
+    })
+  }
+
+  async function getMemberRole(token: string, groupId: string, userId: string): Promise<string | null> {
+    const res = await fetch(`${BASE_URL}/api/groups/${groupId}/members`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    const body = await res.json()
+    // GET /members responds with { success, data: { items: [...], total, ... } }.
+    const list: any[] = body.data?.items ?? body.members ?? []
+    const found = list.find((m) => m.userId === userId || m.id === userId)
+    return found ? found.role : null
+  }
+
+  test('W-M09-L2-026: Role endpoint refuses to assign LEADER — transfer is a separate flow @write @serial @security', async ({
+    testApi,
+  }) => {
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+    try {
+      const userId4 = (await (await fetch(`${BASE_URL}/api/me`, { headers: { Authorization: `Bearer ${token4}` } })).json()).id
+      const res = await fetch(`${BASE_URL}/api/groups/${groupId}/members/${userId4}/role`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token3}` },
+        body: JSON.stringify({ role: 'LEADER' }),
+      })
+      const body = await res.json()
+      // Contract per ChurchGroupController:268 — LEADER cannot be assigned via
+      // the role endpoint; promotion goes through the dedicated transfer flow.
+      expect(res.ok).toBe(false)
+      expect(JSON.stringify(body)).toMatch(/leader/i)
+      // Role unchanged.
+      expect(await getMemberRole(token3, groupId, userId4)).toBe('MEMBER')
+    } finally {
+      await teardown(token3, token4, groupId)
+    }
+  })
+
+  test('W-M09-L2-027: Leader promotes member to MOD @write @serial', async ({ testApi }) => {
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+    try {
+      const userId4 = (await (await fetch(`${BASE_URL}/api/me`, { headers: { Authorization: `Bearer ${token4}` } })).json()).id
+      const res = await fetch(`${BASE_URL}/api/groups/${groupId}/members/${userId4}/role`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token3}` },
+        body: JSON.stringify({ role: 'MOD' }),
+      })
+      expect(res.ok).toBe(true)
+      expect(await getMemberRole(token3, groupId, userId4)).toBe('MOD')
+    } finally {
+      await teardown(token3, token4, groupId)
+    }
+  })
+
+  test('W-M09-L2-028: Publish a quiz set with <5 questions is rejected @write @serial', async ({
+    testApi,
+  }) => {
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+    try {
+      const ids = await fetchQuestionIds(3)
+      const set = await createQuizSetAs(token3, groupId, 'E2E Short Set', ids)
+      const res = await publishQuizSet(token3, groupId, set.id)
+      const body = await res.json()
+      expect(res.ok).toBe(false)
+      expect(body.message).toContain('5 cau hoi')
+    } finally {
+      await teardown(token3, token4, groupId)
+    }
+  })
+
+  test('W-M09-L2-029: Kicked user cannot rejoin via the same code @write @serial @security', async ({
+    testApi,
+  }) => {
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    await ensureNoGroup(token4)
+    await ensureNoGroup(token3)
+    const createRes = await fetch(`${BASE_URL}/api/groups`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token3}` },
+      body: JSON.stringify({ name: 'E2E Kick Group', description: 'test', language: 'vi' }),
+    })
+    const groupBody = await createRes.json()
+    const groupId = groupBody.group.id as string
+    const joinCode = groupBody.group.code as string
+    expect((await fetch(`${BASE_URL}/api/groups/join`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token4}` },
+      body: JSON.stringify({ code: joinCode }),
+    })).ok).toBe(true)
+    try {
+      const userId4 = (await (await fetch(`${BASE_URL}/api/me`, { headers: { Authorization: `Bearer ${token4}` } })).json()).id
+      const kickRes = await fetch(`${BASE_URL}/api/groups/${groupId}/members/${userId4}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token3}` },
+        body: JSON.stringify({ reason: 'e2e kick test' }),
+      })
+      expect(kickRes.ok, `kick failed: ${await kickRes.clone().text()}`).toBe(true)
+      const rejoin = await fetch(`${BASE_URL}/api/groups/join`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token4}` },
+        body: JSON.stringify({ code: joinCode }),
+      })
+      expect(rejoin.ok).toBe(false)
+    } finally {
+      await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+      })
+    }
+  })
+
+  test('W-M09-L2-030: Member cannot create an announcement (leader-only) @write @serial @security', async ({
+    testApi,
+  }) => {
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+    try {
+      const leaderPost = await fetch(`${BASE_URL}/api/groups/${groupId}/announcements`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token3}` },
+        body: JSON.stringify({ content: 'Welcome members!' }),
+      })
+      expect(leaderPost.status).toBe(201)
+
+      const memberPost = await fetch(`${BASE_URL}/api/groups/${groupId}/announcements`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token4}` },
+        body: JSON.stringify({ content: 'Hijack' }),
+      })
+      expect(memberPost.ok).toBe(false)
+    } finally {
+      await teardown(token3, token4, groupId)
+    }
+  })
+
+  test('W-M09-L2-031: Scheduled quiz workflow — create / start / submit / leaderboard @write @serial', async ({
+    testApi,
+  }) => {
+    test.setTimeout(60_000)
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+    try {
+      const ids = await fetchQuestionIds(5)
+      const set = await createQuizSetAs(token3, groupId, 'E2E Scheduled Set', ids)
+      expect((await publishQuizSet(token3, groupId, set.id)).ok).toBe(true)
+
+      const deadline = new Date(Date.now() + 24 * 3600 * 1000).toISOString().replace(/Z$/, '')
+      const createRes = await fetch(`${BASE_URL}/api/groups/${groupId}/scheduled-quizzes`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token3}` },
+        body: JSON.stringify({ quizSetId: set.id, name: 'E2E Quiz', deadline, maxAttempts: 3 }),
+      })
+      const createBody = await createRes.json()
+      expect(createRes.ok, `schedule create failed: ${JSON.stringify(createBody)}`).toBe(true)
+      const quizId = createBody.scheduledQuiz.id as string
+
+      const startRes = await fetch(`${BASE_URL}/api/groups/${groupId}/scheduled-quizzes/${quizId}/start`, {
+        method: 'POST', headers: { Authorization: `Bearer ${token4}` },
+      })
+      const startBody = await startRes.json()
+      expect(startRes.ok, `start failed: ${JSON.stringify(startBody)}`).toBe(true)
+      const attemptQuestions: any[] = startBody.attempt.questions ?? startBody.attempt.items ?? []
+      expect(attemptQuestions.length).toBeGreaterThan(0)
+
+      const answers = attemptQuestions.map((q: any) => ({ questionId: q.id ?? q.questionId, answerIndex: 0 }))
+      const submitRes = await fetch(`${BASE_URL}/api/groups/${groupId}/scheduled-quizzes/${quizId}/submit`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token4}` },
+        body: JSON.stringify({ answers, timeSeconds: 30 }),
+      })
+      expect(submitRes.ok, `submit failed: ${await submitRes.clone().text()}`).toBe(true)
+
+      const lbRes = await fetch(`${BASE_URL}/api/groups/${groupId}/scheduled-quizzes/${quizId}/leaderboard`, {
+        headers: { Authorization: `Bearer ${token4}` },
+      })
+      const lbBody = await lbRes.json()
+      expect(lbRes.ok).toBe(true)
+      expect(Array.isArray(lbBody.leaderboard)).toBe(true)
+    } finally {
+      await teardown(token3, token4, groupId)
+    }
+  })
+
+  test('W-M09-L2-032: Live room from quiz set honours the requested TEAM_VS_TEAM mode @write @serial', async ({
+    testApi,
+  }) => {
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+    try {
+      const ids = await fetchQuestionIds(6) // TEAM_VS_TEAM needs ≥6 questions, even count
+      const set = await createQuizSetAs(token3, groupId, 'E2E Team Set', ids)
+      expect((await publishQuizSet(token3, groupId, set.id)).ok).toBe(true)
+
+      const res = await fetch(`${BASE_URL}/api/groups/${groupId}/live-rooms`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token3}` },
+        body: JSON.stringify({ quizSetId: set.id, mode: 'TEAM_VS_TEAM' }),
+      })
+      const body = await res.json()
+      expect(res.ok, `live room failed: ${JSON.stringify(body)}`).toBe(true)
+      expect(body.room.mode).toBe('TEAM_VS_TEAM')
+      expect(body.room.roomCode).toMatch(/^[A-Z0-9]{6}$/)
+
+      // Room is reachable via the room detail endpoint with the same mode.
+      const detail = await (await fetch(`${BASE_URL}/api/rooms/${body.room.id}`, {
+        headers: { Authorization: `Bearer ${token3}` },
+      })).json()
+      expect(detail.room.mode).toBe('TEAM_VS_TEAM')
+    } finally {
+      await teardown(token3, token4, groupId)
+    }
+  })
+
+  test('W-M09-L2-033: Outsider cannot join a group-quiz-set room with the code @write @serial @security', async ({
+    testApi,
+  }) => {
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const token5 = await loginAndGetToken(TEST5_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+    try {
+      const ids = await fetchQuestionIds(5)
+      const set = await createQuizSetAs(token3, groupId, 'E2E Private Set', ids)
+      expect((await publishQuizSet(token3, groupId, set.id)).ok).toBe(true)
+
+      const liveRes = await fetch(`${BASE_URL}/api/groups/${groupId}/live-rooms`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token3}` },
+        body: JSON.stringify({ quizSetId: set.id, mode: 'SPEED_RACE' }),
+      })
+      const liveBody = await liveRes.json()
+      expect(liveRes.ok).toBe(true)
+      const room = liveBody.room ?? liveBody.liveRoom ?? liveBody
+      const roomCode = room.roomCode
+
+      // test5 is not a group member — joining must be rejected by the
+      // RoomService groupQuizSetId membership gate (audit Gap 1).
+      const joinRes = await fetch(`${BASE_URL}/api/rooms/join`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token5}` },
+        body: JSON.stringify({ roomCode }),
+      })
+      expect(joinRes.ok).toBe(false)
+    } finally {
+      await teardown(token3, token4, groupId)
+    }
+  })
+
+  test('W-M09-L2-034: Leader cannot leave the group directly (LEADER_CANNOT_LEAVE) @write @serial', async ({
+    testApi,
+  }) => {
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+    try {
+      const res = await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+      })
+      const body = await res.json().catch(() => ({}))
+      expect(res.ok).toBe(false)
+      expect(JSON.stringify(body)).toContain('LEADER_CANNOT_LEAVE')
+    } finally {
+      await teardown(token3, token4, groupId)
+    }
+  })
+
+  test('W-M09-L2-035: memberCount stays in sync through join / leave / rejoin @write @serial', async ({
+    testApi,
+  }) => {
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    await ensureNoGroup(token4)
+    await ensureNoGroup(token3)
+    const createRes = await fetch(`${BASE_URL}/api/groups`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token3}` },
+      body: JSON.stringify({ name: 'E2E Sync Group', description: 'test', language: 'vi' }),
+    })
+    const groupBody = await createRes.json()
+    const groupId = groupBody.group.id as string
+    const code = groupBody.group.code as string
+    try {
+      const readCount = async () => {
+        const r = await fetch(`${BASE_URL}/api/groups/${groupId}`, { headers: { Authorization: `Bearer ${token3}` } })
+        return ((await r.json()).group ?? {}).memberCount as number
+      }
+      expect(await readCount()).toBe(1)
+      await fetch(`${BASE_URL}/api/groups/join`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token4}` },
+        body: JSON.stringify({ code }),
+      })
+      expect(await readCount()).toBe(2)
+      await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token4}` },
+      })
+      expect(await readCount()).toBe(1)
+      await fetch(`${BASE_URL}/api/groups/join`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token4}` },
+        body: JSON.stringify({ code }),
+      })
+      expect(await readCount()).toBe(2)
+    } finally {
+      await teardown(token3, token4, groupId)
+    }
+  })
+
+  test('W-M09-L2-036: Leader edits a PUBLISHED quiz set without unpublishing @write @serial', async ({
+    testApi,
+  }) => {
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+    try {
+      const ids = await fetchQuestionIds(5)
+      const set = await createQuizSetAs(token3, groupId, 'E2E Live Edit', ids)
+      expect((await publishQuizSet(token3, groupId, set.id)).ok).toBe(true)
+      const res = await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets/${set.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token3}` },
+        body: JSON.stringify({ name: 'E2E Live Edit (renamed)' }),
+      })
+      const body = await res.json()
+      expect(res.ok).toBe(true)
+      expect(body.quizSet.name).toBe('E2E Live Edit (renamed)')
+      expect(body.quizSet.publishStatus).toBe('PUBLISHED')
+    } finally {
+      await teardown(token3, token4, groupId)
+    }
+  })
+
+  test('W-M09-L2-037: Soft-deleted group drops all memberships @write @serial', async ({
+    testApi,
+  }) => {
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+    const delRes = await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+      method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+    })
+    expect(delRes.ok).toBe(true)
+    // Both users must report no current group after soft delete.
+    for (const t of [token3, token4]) {
+      const me = await (await fetch(`${BASE_URL}/api/groups/me`, {
+        headers: { Authorization: `Bearer ${t}` },
+      })).json()
+      expect(me.hasGroup).toBe(false)
+    }
+  })
+
+  test('W-M09-L2-038: Admin locks a group — lock state visible via admin API @write @serial @security', async ({
+    testApi,
+  }) => {
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const adminToken = await loginAndGetToken(ADMIN_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+    try {
+      const lockRes = await fetch(`${BASE_URL}/api/admin/groups/${groupId}/lock`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${adminToken}` },
+        body: JSON.stringify({ reason: 'E2E lock — automated test reason' }),
+      })
+      const lockBody = await lockRes.json()
+      expect(lockRes.ok, `lock failed: ${JSON.stringify(lockBody)}`).toBe(true)
+      expect(lockBody.locked).toBe(true)
+
+      const detail = await (await fetch(`${BASE_URL}/api/admin/groups/${groupId}`, {
+        headers: { Authorization: `Bearer ${adminToken}` },
+      })).json()
+      expect(detail.lockedAt ?? detail.locked).toBeTruthy()
+    } finally {
+      // Unlock before tearing down so leader cleanup is not blocked.
+      await fetch(`${BASE_URL}/api/admin/groups/${groupId}/unlock`, {
+        method: 'PATCH', headers: { Authorization: `Bearer ${adminToken}` },
+      })
+      await teardown(token3, token4, groupId)
+    }
+  })
+
+  test('W-M09-L2-039: Scheduled quiz attempt cap — 4th start is rejected @write @serial', async ({
+    testApi,
+  }) => {
+    test.setTimeout(90_000)
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+    try {
+      const ids = await fetchQuestionIds(5)
+      const set = await createQuizSetAs(token3, groupId, 'E2E Cap Set', ids)
+      expect((await publishQuizSet(token3, groupId, set.id)).ok).toBe(true)
+
+      const deadline = new Date(Date.now() + 24 * 3600 * 1000).toISOString().replace(/Z$/, '')
+      const created = await (await fetch(`${BASE_URL}/api/groups/${groupId}/scheduled-quizzes`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token3}` },
+        body: JSON.stringify({ quizSetId: set.id, name: 'E2E Cap Quiz', deadline, maxAttempts: 3 }),
+      })).json()
+      const quizId = created.scheduledQuiz.id as string
+
+      // Burn 3 attempts cleanly so the 4th has nothing left.
+      for (let i = 0; i < 3; i++) {
+        const start = await (await fetch(`${BASE_URL}/api/groups/${groupId}/scheduled-quizzes/${quizId}/start`, {
+          method: 'POST', headers: { Authorization: `Bearer ${token4}` },
+        })).json()
+        const qs: any[] = start.attempt.questions ?? start.attempt.items ?? []
+        const answers = qs.map((q: any) => ({ questionId: q.id ?? q.questionId, answerIndex: 0 }))
+        const sub = await fetch(`${BASE_URL}/api/groups/${groupId}/scheduled-quizzes/${quizId}/submit`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token4}` },
+          body: JSON.stringify({ answers, timeSeconds: 30 }),
+        })
+        expect(sub.ok, `submit ${i + 1} failed`).toBe(true)
+      }
+      const fourth = await fetch(`${BASE_URL}/api/groups/${groupId}/scheduled-quizzes/${quizId}/start`, {
+        method: 'POST', headers: { Authorization: `Bearer ${token4}` },
+      })
+      expect(fourth.ok).toBe(false)
+    } finally {
+      await teardown(token3, token4, groupId)
     }
   })
 
