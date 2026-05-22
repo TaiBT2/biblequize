@@ -153,6 +153,11 @@ describe('Daily Challenge', () => {
         if (url.includes('/api/daily-challenge/start')) {
           return Promise.resolve({ data: { sessionId: 'daily-xyz' } })
         }
+        if (url.includes('/api/daily-challenge/answer')) {
+          // Page now asks BE to validate the answer instead of comparing
+          // against question.correctAnswer locally.
+          return Promise.resolve({ data: { isCorrect: true, correctAnswer: [0], explanation: '' } })
+        }
         return Promise.resolve({ data: { ok: true } })
       })
 

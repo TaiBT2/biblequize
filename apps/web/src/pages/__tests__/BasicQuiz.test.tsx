@@ -149,7 +149,8 @@ describe('BasicQuiz page — submit + result', () => {
     await answerAllAndSubmit(user)
 
     await waitFor(() => expect(screen.getByTestId('basic-quiz-result-pass')).toBeInTheDocument())
-    expect(screen.getByText(/đã mở khóa.*thi đấu xếp hạng/i)).toBeInTheDocument()
+    // C2 lock: "Đấu Hạng" (not "Thi Đấu Ranked"/"Xếp Hạng").
+    expect(screen.getByText(/đã mở khóa.*đấu hạng/i)).toBeInTheDocument()
 
     await user.click(screen.getByTestId('basic-quiz-pass-cta'))
     expect(mockNavigate).toHaveBeenCalledWith('/ranked')
