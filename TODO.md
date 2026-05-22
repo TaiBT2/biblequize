@@ -3,10 +3,12 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (52)
+## Active (54)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-05-22 | Ranked play fixes (replay same-questions + select 500 + e2e W-M04 sync) | TODO | [detail](docs/todo/active/2026-05-22-ranked-play-fixes.md) |
+| 2026-05-22 | Daily Challenge: wire "Hạng toàn cầu" + "Trong nhóm" (HeroCard luôn hiện "–") | TODO | [detail](docs/todo/active/2026-05-22-daily-challenge-wire-global-group-rank.md) |
 | 2026-05-22 | Liturgical Coverage follow-ups (verify, QA, rollout, FMC review, cleanup) | TODO | [detail](docs/todo/active/2026-05-22-liturgical-coverage-followups.md) |
 | 2026-05-21 | Liturgical Coverage System sprint (P5, 10 commits — replace currentBook with §7 3-layer architecture) | TODO | [detail](docs/todo/active/2026-05-21-liturgical-coverage-sprint.md) |
 | 2026-05-20 | Multiplayer page i18n (Phòng Chơi + sidebar widget) | TODO | [detail](docs/todo/active/2026-05-20-multiplayer-page-i18n.md) |

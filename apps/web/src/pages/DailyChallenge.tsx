@@ -246,6 +246,18 @@ const DailyChallenge: React.FC = () => {
   const isCompleted = !!dailyResult?.completed
   const loading = challengeQuery.isLoading
 
+  // Global rank cho ô "Hạng toàn cầu" trong HeroCard (state done). Endpoint
+  // /daily/my-rank xếp theo UserDailyProgress.pointsCounted — cùng nguồn với
+  // /api/leaderboard/daily mà DailyLeaderboard đã hiển thị. Chỉ fetch sau khi
+  // hoàn thành. Trả null khi user chưa có điểm ngày hôm nay.
+  const myRankQuery = useQuery<{ rank?: number } | null>({
+    queryKey: ['daily-my-rank'],
+    queryFn: () => api.get('/api/leaderboard/daily/my-rank').then((r) => r.data),
+    enabled: isAuthenticated && isCompleted,
+    staleTime: 60_000,
+  })
+  const myGlobalRank = myRankQuery.data?.rank
+
   // ── Derived ─────────────────────────────────────────────────────────────
   const todayLabel = useMemo(() => getTodayLabel(t), [t])
 
@@ -305,7 +317,7 @@ const DailyChallenge: React.FC = () => {
   const myEntry = useMemo<DailyLbEntry | null | undefined>(() => {
     if (!isCompleted || !dailyResult) return null
     return {
-      rank: dailyResult.rankGlobal ?? 0,
+      rank: myGlobalRank ?? dailyResult.rankGlobal ?? 0,
       name: userName ?? '—',
       score: dailyResult.score,
       correctCount: dailyResult.correctCount,
@@ -314,7 +326,7 @@ const DailyChallenge: React.FC = () => {
       avatarInitial: (userName ?? '?').charAt(0).toUpperCase(),
       isMe: true,
     }
-  }, [isCompleted, dailyResult, userName, userAvatar])
+  }, [isCompleted, dailyResult, userName, userAvatar, myGlobalRank])
 
   // ── Start challenge ─────────────────────────────────────────────────────
   const handleStart = useCallback(async () => {
@@ -381,6 +393,7 @@ const DailyChallenge: React.FC = () => {
       queryClient.invalidateQueries({ queryKey: ['daily-challenge-result'] })
       queryClient.invalidateQueries({ queryKey: ['daily-history-30'] })
       queryClient.invalidateQueries({ queryKey: ['daily-leaderboard'] })
+      queryClient.invalidateQueries({ queryKey: ['daily-my-rank'] })
       // Ranked-status query feeds HeroRankedCard energy/cap stats — refetch
       // so the promoted-after-Daily Hero card shows fresh numbers if the
       // user already played some ranked questions during the daily session.
@@ -659,7 +672,7 @@ const DailyChallenge: React.FC = () => {
       ? new Date(dailyResult.completedAt).toISOString()
       : dailyResult.completedAt,
     timeSeconds: dailyResult.timeSeconds,
-    rankGlobal: dailyResult.rankGlobal,
+    rankGlobal: myGlobalRank ?? dailyResult.rankGlobal,
     rankGroup: dailyResult.rankGroup,
     resultsBreakdown: results.length === dailyResult.totalQuestions ? results : undefined,
   } : undefined
