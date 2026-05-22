@@ -493,7 +493,89 @@
 
 ---
 
+## Added 2026-05-21 (Liturgical Coverage §7 follow-ups)
+
+### BL-COVERAGE-PHASE-4A — Rename deprecated UserDailyProgress columns
+- **Source:** SPEC_USER_v3.2 §7.9.7 (Phase 4a — point of no return prep)
+- **Scope:** V?? Flyway migration renaming `users.{current_book,current_book_index,is_post_cycle}` and `user_daily_progress.{current_book,current_book_index,is_post_cycle}` to `_deprecated_*` prefix. Update Hibernate entity `@Column(name=...)` annotations to match.
+- **Gate to ship:** 30 days stable Phase 3 (mobile migrate) + DB backup verified + pre-rename FK/index check (see §7.9.7).
+- **Status:** ⬜ DEFER — held out of sprint v1 to avoid bundling irreversible change
+
+### BL-COVERAGE-PHASE-4B — Drop deprecated UserDailyProgress columns
+- **Source:** SPEC_USER_v3.2 §7.9.5
+- **Scope:** Drop renamed `_deprecated_current_book`, `_deprecated_current_book_index`, `_deprecated_is_post_cycle` columns after 7-day grace post-4a. Also remove `BookProgressionService.java` + dual-gate code in `RankedController:432-444`.
+- **Gate to ship:** 7 days post-Phase 4a (rename) stable, zero P0/P1 bugs touching deprecated columns.
+- **Status:** ⬜ DEFER — follows BL-COVERAGE-PHASE-4A
+
+### BL-COVERAGE-PHASE-4C — Drop user_daily_progress.current_difficulty
+- **Source:** SPEC_USER_v3.2 §7.7.3 + §7.9.5
+- **Scope:** Drop `user_daily_progress.current_difficulty` separately because mobile RankedScreen pre-migration still writes this field.
+- **Gate to ship:** `mobile_legacy_request_count` telemetry = 0 for 30 consecutive days (verifies all mobile users on new endpoint).
+- **Status:** ⬜ DEFER — depends on mobile migration completion
+
+### BL-COVERAGE-MOBILE-MIGRATE — Mobile RankedScreen → new endpoints
+- **Source:** SPEC_USER_v3.2 §7.9.4, task file commit 8 deferred item
+- **Scope:** `apps/mobile/src/screens/quiz/RankedScreen.tsx` migrate `/api/me` → `/api/me/ranked-status` + `/api/me/coverage-status`. Render CoverageCard equivalent. Stop writing `currentDifficulty` field.
+- **Effort:** S (~150 LOC), 1-2 days
+- **Status:** ✅ DONE 2026-05-22 — migrated to `POST /api/ranked/questions/select` (3× legacy GET removed), CoverageHint (Option C), useCoverageStatus hook, header C2 fix, vi/en i18n. tsc clean. Commit-6 tests deferred → BL-MOBILE-COMPONENT-TEST-INFRA.
+
+### BL-MOBILE-COMPONENT-TEST-INFRA — RN component-test infrastructure
+- **Source:** Mobile Ranked migration commit 6 (2026-05-22), blocked
+- **Scope:** Mobile jest currently `ts-jest`/node, `testMatch: *.test.ts` — only pure-logic tests. No RN component testing. Need: add `jest-expo` + `@testing-library/react-native` + `react-test-renderer@19.1.0` devDeps, switch jest preset, write first screen test (`RankedScreen.test.tsx` — verify single endpoint call, language field, no book field, canonical header).
+- **Blocker:** `pnpm add` fails on this Windows env with `ERR_PNPM_ENOENT` on `_tmp_` dirs (likely Defender real-time scan). Retry on env with Defender exclusion for repo dir, or CI.
+- **Effort:** M (infra setup + first test), 1 day
+- **Status:** ⬜ DEFER
+
+### BL-COVERAGE-ADMIN-UI — Admin UI for weekly pairing override
+- **Source:** SPEC_USER_v3.2 §7.14.4 (locked 2026-05-21 — defer v1.5)
+- **Spec canonical:** v1 ship endpoint `PATCH /api/admin/seasons/{seasonId}/pairings/{weekNumber}` only. No UI in v1.
+- **v1.5 requirement:** Admin page `/admin/seasons/{id}/pairings` cho visual editor:
+  - Display 13 weekly pairings của 1 mùa
+  - Drag-drop sách giữa các tuần
+  - Validation: 66 sách cover exactly once, 6 sách/tuần (Foundation/Acceleration/Climax), Mastery weeks empty
+  - Save → call PATCH endpoint per week changed
+- **Effort:** S (~200 LOC FE + reuse existing endpoint), 2-3 ngày
+- **Rationale defer:** Auto pairing đủ tốt cho 4 mùa đầu launch. Manual override rare. UI effort không justify trước v1 launch. Bui/đội mục vụ FMC dùng API/DB nếu cần override gấp.
+- **Status:** ⬜ DEFER v1.5
+
+### BL-UUID-V7-SEASONS — Migrate seasons.id UUID v4 → v7
+- **Source:** SPEC_USER_v3.2 §7.7.1 M1 note (2026-05-21)
+- **Current state:** `Season.java` legacy dùng UUID v4 (entity tồn tại trước CLAUDE.md UUID v7 rule). New entities `weekly_pairings.id`, `user_season_coverage.id` dùng UUID v7 per current convention.
+- **Drift accepted:** FK reference value-only — no compatibility issue. Spec drift documented in §7.7.1.
+- **Future migration:** Only if needed for time-ordered insert performance (e.g., DB index hotspot trên seasons table). Currently 4 mùa × seed = 4 rows total, không có hotspot risk.
+- **Effort:** XS (~10 LOC + 1 migration), 0.5 ngày
+- **Status:** ⬜ DEFER (low ROI, no current pain)
+- **Trigger:** Bump priority if SeasonSeeder logic expands beyond 4 rows hoặc seasons becomes high-write table
+- **Related:** MP-5 (Room/RoomPlayer UUID v4 → v7) — similar tech debt pattern. Consider bundling into single "UUID v7 migration sprint" nếu/khi attack.
+
+### BL-QUESTION-RESEED-HISTORY-PRESERVATION — Preserve user history on book rename
+- **Source:** PROMPT_FIX_SONG_OF_SONGS migration design 2026-05-22
+- **Issue:** QuestionSeeder orphan sweep CASCADE-deletes `user_question_history` when a seed JSON `book` field changes (UUID derived from `book,chapter,verseStart,verseEnd,language,content`). Future book renames lose user progress.
+- **Acceptable for v1:** Pre-launch, few/no real users — Song of Songs fix accepted history loss.
+- **Post-launch problem:** Production user history cannot be discarded for naming standardization.
+- **Solution sketch:** Pre-sweep migration captures `(old_uuid → history rows)` mapping; post-seeder updates `user_question_history.question_id` old→new. Or add `migration_alias` column to `questions` for backward-compat lookup.
+- **Effort:** M (~1-2 days design + impl + test)
+- **Status:** ⬜ DEFER until next book-name change needed post-launch
+
+### BL-RANKED-TEST-STALE-MILESTONE — Cleanup stale `ranked-milestone-*` testids
+- **Source:** 2026-05-21 — flagged during PROMPT_RANKED_ERROR_TOASTS execution
+- **Issue:** `apps/web/src/pages/__tests__/Ranked.test.tsx` có **42 failures** với pattern "Unable to find `[data-testid="ranked-milestone-N"]`". Testids đã bị remove trong prior refactor (commit `f1cbcac` "orchestrator < 250 LOC" hoặc `a8dfcc3 A4`) nhưng tests không được update tương ứng.
+- **Current state:** Tests fail nhưng pre-existing — KHÔNG phải regression từ Coverage sprint. Confirmed via grep: testid `ranked-milestone-*` không tồn tại trong current component tree.
+- **Impact:**
+  - CI noise — 42 false failures hiding real regressions
+  - Developer trust giảm — habit ignore failed tests
+  - Coverage metric inflated/deflated incorrectly
+- **Effort:** S (~2-3 hours)
+  - Option A — Remove stale tests entirely (nếu functionality không còn relevant)
+  - Option B — Update testids to current component structure
+  - Decision depends on whether milestone UX still exists conceptually
+- **Status:** ⬜ DEFER post-launch (không block v1)
+- **Trigger:** Bump priority nếu CI failures cản trở merge/deploy decisions
+- **Related:** Coverage sprint (added 53 new tests passing) — separate from this debt
+
+---
+
 ## Cross-references
-- Canonical specs: [SPEC_USER_v3.1.md](SPEC_USER_v3.1.md), [SPEC_MULTIPLAYER.md](SPEC_MULTIPLAYER.md), [SPEC_ADMIN_v3.1.md](SPEC_ADMIN_v3.1.md), [SPEC_GROUP_v1.3.md](SPEC_GROUP_v1.3.md) (Sprint 5)
+- Canonical specs: [SPEC_USER_v3.2.md](SPEC_USER_v3.2.md), [SPEC_MULTIPLAYER.md](SPEC_MULTIPLAYER.md), [SPEC_ADMIN_v3.1.md](SPEC_ADMIN_v3.1.md), [SPEC_GROUP_v1.3.md](SPEC_GROUP_v1.3.md) (Sprint 5)
 - Roadmap (defer features): [SPEC_ROADMAP.md](SPEC_ROADMAP.md)
 - Audit findings: [../audit/](../audit/)
