@@ -3,12 +3,11 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (54)
+## Active (53)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
 | 2026-05-22 | Ranked play fixes (replay same-questions + select 500 + e2e W-M04 sync) | TODO | [detail](docs/todo/active/2026-05-22-ranked-play-fixes.md) |
-| 2026-05-22 | Daily Challenge: wire "Hạng toàn cầu" + "Trong nhóm" (HeroCard luôn hiện "–") | TODO | [detail](docs/todo/active/2026-05-22-daily-challenge-wire-global-group-rank.md) |
 | 2026-05-22 | Liturgical Coverage follow-ups (verify, QA, rollout, FMC review, cleanup) | TODO | [detail](docs/todo/active/2026-05-22-liturgical-coverage-followups.md) |
 | 2026-05-21 | Liturgical Coverage System sprint (P5, 10 commits — replace currentBook with §7 3-layer architecture) | TODO | [detail](docs/todo/active/2026-05-21-liturgical-coverage-sprint.md) |
 | 2026-05-20 | Multiplayer page i18n (Phòng Chơi + sidebar widget) | TODO | [detail](docs/todo/active/2026-05-20-multiplayer-page-i18n.md) |
@@ -73,13 +72,14 @@
 | 2026-04-27 | V3 Tier B/C Quality Expansion: 14 books | IN PROGRESS | [detail](docs/todo/active/2026-04-27-v3-tier-b-c-quality-expansion-14-books.md) |
 | 2026-04-19 | Global audience migration: SQL → JSON + i18n prep | PARTIALLY DONE | [detail](docs/todo/active/2026-04-19-global-audience-migration-sql-json-i18n-prep.md) |
 
-## Archive (49)
+## Archive (50)
 
-> 49 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
+> 50 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
 
 <details>
 <summary>Xem inline list (tuỳ chọn)</summary>
 
+- 2026-05-22 — Daily Challenge: wire "Hạng toàn cầu" + bỏ "Trong nhóm" (HeroCard) · DONE · [detail](docs/todo/archive/2026-05-22-daily-challenge-wire-global-group-rank.md)
 - 2026-05-19 — Fix Daily Challenge AnswerButton flashes 'wrong' state khi trả lời đúng · DONE · [detail](docs/todo/archive/2026-05-19-fix-daily-answer-button-flash-wrong.md)
 - 2026-05-19 — Fix Daily Challenge feedback flashes "Sai rồi!" trước khi hiện đúng · DONE · [detail](docs/todo/archive/2026-05-19-fix-daily-answer-feedback-flash-wrong.md)
 - 2026-05-19 — Daily Challenge explanation panel — click outside to close · DONE · [detail](docs/todo/archive/2026-05-19-daily-explanation-click-outside-to-close.md)
