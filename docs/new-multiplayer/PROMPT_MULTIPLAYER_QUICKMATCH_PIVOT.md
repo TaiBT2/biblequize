@@ -9,6 +9,15 @@
 
 ---
 
+## ⚠ Outdated — see 2026-05-23 update
+
+**Update 2026-05-23**: §0.1 dưới nói "Mode: SPEED_RACE only". Code đã
+ship đầy đủ **4 modes** (SPEED_RACE / BATTLE_ROYALE / TEAM_VS_TEAM /
+SUDDEN_DEATH) qua `MODE_LIST` trong `QuickMatchConfigModal.tsx:115`.
+Canonical hiện tại: `SPEC_MULTIPLAYER.md §8` (POST `/api/rooms/quick-match`
+row đã document đầy đủ 4 modes). Pivot doc này giữ làm history reference,
+KHÔNG canonical cho behavior hiện hành.
+
 ## 🛑 CRITICAL — Đây là PIVOT, không phải full redesign
 
 Prompt trước (`PROMPT_MULTIPLAYER_LOBBY_REDESIGN.md`) đã chạy xong và shipped. Code hiện tại đã có:
