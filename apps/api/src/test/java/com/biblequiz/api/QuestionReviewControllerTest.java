@@ -172,7 +172,10 @@ class QuestionReviewControllerTest extends BaseControllerTest {
 
         mockMvc.perform(get("/api/admin/review/stats"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.pending").value(5))
+                // The endpoint now splits the bucket into pendingForMe vs totalPending —
+                // the legacy single "pending" field is gone.
+                .andExpect(jsonPath("$.totalPending").value(5))
+                .andExpect(jsonPath("$.pendingForMe").value(5))
                 .andExpect(jsonPath("$.active").value(100))
                 .andExpect(jsonPath("$.rejected").value(3))
                 .andExpect(jsonPath("$.approvalsRequired").value(2));

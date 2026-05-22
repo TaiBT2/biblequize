@@ -95,6 +95,23 @@ class SecurityTest extends BaseControllerTest {
     @MockBean
     private com.biblequiz.modules.quiz.repository.BookRepository bookRepository;
 
+    // RankedController dependencies added since the slice was last refreshed.
+    @MockBean
+    private com.biblequiz.modules.quiz.service.SmartQuestionSelector smartQuestionSelector;
+    @MockBean
+    private com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository userQuestionHistoryRepository;
+    // groupMemberRepository is already provided by BaseControllerTest.
+    @MockBean
+    private com.biblequiz.modules.season.service.LiturgicalSeasonService liturgicalSeasonService;
+    @MockBean
+    private com.biblequiz.infrastructure.feature.FeatureFlagService featureFlagService;
+    @MockBean
+    private com.biblequiz.modules.coverage.service.LiturgicalCoverageService liturgicalCoverageService;
+    @MockBean
+    private com.biblequiz.modules.coverage.service.CoverageAnalytics coverageAnalytics;
+    @MockBean
+    private com.biblequiz.modules.quiz.service.DailyMissionService dailyMissionService;
+
     // ── TC-AUTH-008: Public endpoints accessible without auth ─────────────────
 
     @Test
