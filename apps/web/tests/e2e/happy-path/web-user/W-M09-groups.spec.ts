@@ -1213,4 +1213,71 @@ test.describe('W-M09 Church Groups — L2 Happy Path @happy-path @groups', () =>
     }
   })
 
+  test('W-M09-L2-025: Leader generates questions via AI — returns the requested batch @write @serial @ai', async ({
+    testApi,
+  }) => {
+    // Real provider call (DeepSeek) — give the model time to respond.
+    test.setTimeout(180_000)
+
+    // ============================================================
+    // SECTION 1: SETUP
+    // ============================================================
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+
+    try {
+      // ============================================================
+      // SECTION 2: ACTIONS — small batch to keep token usage modest
+      // ============================================================
+      const requested = 2
+      const res = await fetch(`${BASE_URL}/api/groups/${groupId}/ai-generate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token3}` },
+        body: JSON.stringify({
+          book: 'John',
+          chapter: 3,
+          verseStart: 1,
+          verseEnd: 21,
+          count: requested,
+          difficulty: 'EASY',
+          language: 'vi',
+        }),
+      })
+      const body = await res.json()
+
+      // ============================================================
+      // SECTION 3: UI ASSERTIONS — N/A
+      // ============================================================
+
+      // ============================================================
+      // SECTION 4: API VERIFICATION — quota may legitimately trip; the
+      //   quota path is its own contract, so accept either outcome
+      //   without making the test flaky.
+      // ============================================================
+      if (res.status === 429) {
+        expect(body.error).toBe('QUOTA_EXCEEDED')
+        return
+      }
+      expect(res.ok, `ai-generate failed: ${JSON.stringify(body)}`).toBe(true)
+      expect(body.success).toBe(true)
+      expect(Array.isArray(body.questions)).toBe(true)
+      expect(body.questions.length).toBe(requested)
+      expect(typeof body.provider === 'string' && body.provider.length > 0).toBe(true)
+      // Each generated question carries the load-bearing fields the UI relies on.
+      for (const q of body.questions) {
+        expect(typeof q.content === 'string' && q.content.length > 0).toBe(true)
+        expect(Array.isArray(q.options) && q.options.length >= 2).toBe(true)
+        expect(typeof q.correctAnswer === 'number').toBe(true)
+      }
+    } finally {
+      await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token4}` },
+      })
+      await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+      })
+    }
+  })
+
 })
