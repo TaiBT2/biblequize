@@ -2399,7 +2399,82 @@
       "seasonNoCountdown": "Đợi mùa kế tiếp"
     }
   },
+  "coverage": {
+    "weekLabel": "Tuần {{n}}",
+    "totalCovered": "{{n}}/{{total}} sách",
+    "unlockNextCta": "Mở khóa tuần {{n}}",
+    "badgePreview": "Huy hiệu hiện tại: {{badge}}",
+    "phase": {
+      "foundation": "Nền Tảng",
+      "acceleration": "Tăng Tốc",
+      "climax": "Đỉnh Cao",
+      "mastery": "Hoàn Thiện",
+      "unknown": "—"
+    },
+    "poolExhausted": {
+      "completed": "Pool tuần này đã cạn. Mở khóa tuần kế tiếp để tiếp tục.",
+      "inProgress": "Bạn đã hỏi gần hết câu của tuần. Quay lại ngày mai để pool refresh."
+    },
+    "unlockError": {
+      "WEEK_NOT_COMPLETED": "Bạn cần hoàn thành tuần hiện tại (6/6 sách) trước khi mở tuần kế.",
+      "ALREADY_AHEAD_LIMIT": "Đã đạt giới hạn 1 tuần trước lịch — hãy đợi tuần kế của mùa.",
+      "NO_NEXT_WEEK": "Bạn đang ở tuần cuối mùa — không còn tuần để mở.",
+      "FEATURE_NOT_ENABLED": "Tính năng chưa khả dụng cho tài khoản này.",
+      "UNKNOWN": "Không thể mở khóa tuần kế tiếp."
+    }
+  },
   "ranked": {
+    "pool_exhausted": {
+      "title": "Pool Tuần Cạn",
+      "body": "Bạn đã hỏi gần hết câu của tuần này.",
+      "unlock_cta": "Sang Tuần Kế Tiếp",
+      "defer_cta": "Để mai chơi",
+      "no_unlock_body": "Quay lại mai để pool refresh.",
+      "close_cta": "Đóng"
+    },
+    "week_complete": {
+      "heading_sm": "HOÀN THÀNH TUẦN {{week}}",
+      "heading_lg": "Chinh phục 6 sách",
+      "next_week_label": "Tuần {{next}} mở khóa",
+      "start_next_cta": "Bắt đầu tuần {{next}}",
+      "defer_cta": "Để mai chơi",
+      "close_cta": "Đóng",
+      "mastery_week_heading": "HOÀN THÀNH TUẦN HOÀN THIỆN",
+      "mastery_week_body": "Bạn đã chinh phục tuần cuối của mùa.",
+      "verses": [
+        "Hỡi linh hồn ta, hãy ngợi khen Đức Giê-hô-va.",
+        "Lời Chúa là ngọn đèn cho chân tôi.",
+        "Hãy vui mừng luôn luôn trong Chúa.",
+        "Phước cho người làm xong việc hôm nay."
+      ]
+    },
+    "badge_award": {
+      "heading_sm": "BẠN ĐÃ ĐẠT ĐƯỢC",
+      "season_name": {
+        "EASTER": "Mùa Phục Sinh {{year}}",
+        "PENTECOST": "Mùa Ngũ Tuần {{year}}",
+        "THANKSGIVING": "Mùa Cảm Tạ {{year}}",
+        "CHRISTMAS": "Mùa Giáng Sinh {{year}}"
+      },
+      "tier_name": {
+        "TOAN_THU": "Toàn Thư",
+        "TAN_TAM": "Tận Tâm",
+        "HANH_HUONG": "Hành Hương"
+      },
+      "verses": {
+        "TOAN_THU": "Lời Chúa là ngọn đèn cho chân tôi, ánh sáng cho đường lối tôi.",
+        "TAN_TAM": "Hỡi linh hồn ta, hãy ngợi khen Đức Giê-hô-va.",
+        "HANH_HUONG": "Hãy đi và làm cho muôn dân trở nên môn đồ ta."
+      },
+      "stats": {
+        "books": "Sách",
+        "questions": "Câu",
+        "accuracy": "Chính xác",
+        "days": "Ngày"
+      },
+      "share_cta": "Chia sẻ thành tựu",
+      "close_cta": "Đóng"
+    },
     "title": "Đấu Hạng",
     "today": "Hôm Nay",
     "points": "điểm",
@@ -2573,6 +2648,7 @@
     "completed": "Hoàn thành",
     "inProgress": "Đang chơi",
     "locked": "Chưa mở",
+    "notStarted": "Chưa bắt đầu",
     "mastery": "{{percent}}%",
     "completeToUnlock": "Hoàn thành {{book}} để mở",
     "noQuestions": "Chưa có câu hỏi",

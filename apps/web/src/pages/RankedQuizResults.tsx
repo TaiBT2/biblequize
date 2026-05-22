@@ -1,9 +1,10 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '../api/client'
 import MobileBottomTabs from '../layouts/components/MobileBottomTabs'
+import WeekCompleteModal from '../components/ranked/WeekCompleteModal'
 
 const FILL_1: React.CSSProperties = { fontVariationSettings: "'FILL' 1" }
 const LETTERS = ['A', 'B', 'C', 'D']
@@ -61,6 +62,8 @@ interface Props {
   resetTimeLeft: string
   /** sessionId — used as a stable key for share / re-fetch (not currently consumed). */
   sessionId?: string
+  /** §7.1.5 — set when this session's final answer completed a Liturgical week. */
+  weekCompletion?: { completedWeek: number; nextWeekBooks: string[] } | null
   onPlayAgain: () => void
   onBackToHome: () => void
 }
@@ -86,12 +89,32 @@ export default function RankedQuizResults({
   previousTier,
   livesRemaining,
   resetTimeLeft,
+  weekCompletion,
   onPlayAgain,
   onBackToHome,
 }: Props) {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const [showReviewModal, setShowReviewModal] = useState(false)
+
+  // §7.1.5 — surface WeekCompleteModal ~800ms after results mount so the
+  // user sees their score first (Option B defer-to-results, Bui 2026-05-21).
+  const [weekModalOpen, setWeekModalOpen] = useState(false)
+  useEffect(() => {
+    if (!weekCompletion) return
+    const timer = setTimeout(() => setWeekModalOpen(true), 800)
+    return () => clearTimeout(timer)
+  }, [weekCompletion])
+
+  const handleStartNextWeek = async () => {
+    try {
+      await api.post('/api/ranked/coverage/unlock-next-week')
+    } catch {
+      // Non-blocking — user can unlock from the Ranked page instead.
+    }
+    setWeekModalOpen(false)
+    navigate('/ranked')
+  }
 
   // Fresh tier-progress after the quiz — diff vs previousTier tells
   // us whether the last batch crossed a tier boundary. Cache long
@@ -654,6 +677,16 @@ export default function RankedQuizResults({
             </div>
           </div>
         </div>
+      )}
+
+      {weekCompletion && (
+        <WeekCompleteModal
+          isOpen={weekModalOpen}
+          onClose={() => setWeekModalOpen(false)}
+          completedWeek={weekCompletion.completedWeek}
+          nextWeekBooks={weekCompletion.nextWeekBooks}
+          onStartNextWeek={handleStartNextWeek}
+        />
       )}
     </div>
   )

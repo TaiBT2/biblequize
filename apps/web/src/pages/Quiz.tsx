@@ -9,6 +9,7 @@ import { useLifeline } from '../hooks/useLifeline'
 import { AnswerButton, type AnswerState } from '../components/quiz/AnswerButton'
 import { CircularTimer } from '../components/quiz/CircularTimer'
 import { wrapProperNouns, formatVerseRef, getQuestionLengthClass } from '../utils/textHelpers'
+import { useToast } from '../hooks/useToast'
 import QuizResults from './QuizResults'
 import RankedQuizResults from './RankedQuizResults'
 
@@ -77,6 +78,7 @@ const Quiz: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { t } = useTranslation()
+  const { showToast } = useToast()
   const queryClient = useQueryClient()
   const settings = location.state as QuizPageSettings | null
   const timerLimit = settings?.timePerQuestion ?? DEFAULT_TIMER
@@ -119,6 +121,12 @@ const Quiz: React.FC = () => {
   const [score, setScore] = useState(0)
   const [lives, setLives] = useState(5)
   const [serverEnergy, setServerEnergy] = useState<number | null>(null)
+  // §7.1.5 — Liturgical week completion captured during the 10-question batch,
+  // surfaced on the RankedQuizResults screen (Option B — no mid-quiz interrupt).
+  const [weekCompletion, setWeekCompletion] = useState<{
+    completedWeek: number
+    nextWeekBooks: string[]
+  } | null>(null)
   const [correctAnswers, setCorrectAnswers] = useState(0)
   const [timeLeft, setTimeLeft] = useState(timerLimit)
   const [isQuizCompleted, setIsQuizCompleted] = useState(false)
@@ -278,7 +286,7 @@ const Quiz: React.FC = () => {
             }
           }
         } else {
-          alert(t('quiz.noQuestions'))
+          showToast({ type: 'error', message: t('quiz.noQuestions') })
           navigate('/practice')
         }
       } finally {
@@ -310,6 +318,15 @@ const Quiz: React.FC = () => {
         const data = res.data
         rankedResponse = data
         correct = answerIndex === (currentQuestion.correctAnswer?.[0] ?? -1)
+
+        // §7.1.5 — capture week completion (fires once per week, on any
+        // question of the batch). Held in state until results render.
+        if (data?.weekCompleted === true) {
+          setWeekCompletion({
+            completedWeek: Number(data.completedWeek),
+            nextWeekBooks: Array.isArray(data.nextWeekBooks) ? data.nextWeekBooks : [],
+          })
+        }
 
         try {
           const today = new Date().toISOString().slice(0, 10)
@@ -641,6 +658,7 @@ const Quiz: React.FC = () => {
           livesRemaining={serverEnergy ?? 0}
           resetTimeLeft={(location.state as any)?.resetTimeLeft ?? '--:--:--'}
           sessionId={location.state?.sessionId}
+          weekCompletion={weekCompletion}
           onPlayAgain={handlePlayAgain}
           onBackToHome={handleBackToHome}
         />

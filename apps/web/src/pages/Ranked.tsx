@@ -1,13 +1,21 @@
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useQueryClient } from '@tanstack/react-query'
 import { api } from '../api/client'
 import { getQuizLanguage } from '../utils/quizLanguage'
 import { useAuth } from '../store/authStore'
 import { getTierInfo } from '../data/tiers'
 import { useRankedPage } from '../hooks/useRankedPage'
+import { useCoverageStatus, type UnshownBadge } from '../hooks/useCoverageStatus'
+import { useMarkBadgeShown } from '../hooks/useMarkBadgeShown'
+import { useToast } from '../hooks/useToast'
 import RankedSkeleton from '../components/ranked/RankedSkeleton'
 import RankedHeader from '../components/ranked/RankedHeader'
 import TierProgressCard from '../components/ranked/TierProgressCard'
+import CoverageCard from '../components/ranked/CoverageCard'
+import PoolExhaustedModal from '../components/ranked/PoolExhaustedModal'
+import BadgeAwardModal from '../components/ranked/BadgeAwardModal'
 import SeasonCard from '../components/ranked/SeasonCard'
 import RankedActionFooter from '../components/ranked/RankedActionFooter'
 
@@ -26,6 +34,48 @@ export default function Ranked() {
     isInitialized,
     refetch,
   } = useRankedPage()
+  const queryClient = useQueryClient()
+  const { showToast } = useToast()
+  const { data: coverage } = useCoverageStatus()
+  const [poolExhaustedOpen, setPoolExhaustedOpen] = useState(false)
+
+  // §7.1.8 — surface an earned-but-unshown season badge once on mount.
+  const markBadgeShown = useMarkBadgeShown()
+  const [badgeModalOpen, setBadgeModalOpen] = useState(false)
+  const [activeBadge, setActiveBadge] = useState<UnshownBadge | null>(null)
+  const unshownBadgeId = coverage?.unshownBadge?.id
+  useEffect(() => {
+    if (coverage?.unshownBadge) {
+      setActiveBadge(coverage.unshownBadge)
+      setBadgeModalOpen(true)
+    }
+  }, [unshownBadgeId]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleBadgeClose = async () => {
+    if (activeBadge) {
+      try {
+        await markBadgeShown.mutateAsync(activeBadge.id)
+      } catch {
+        // Non-blocking — coverage-status will still carry it next session.
+      }
+    }
+    setBadgeModalOpen(false)
+    setActiveBadge(null)
+  }
+
+  const handleUnlockNextWeek = async () => {
+    try {
+      await api.post('/api/ranked/coverage/unlock-next-week')
+      queryClient.invalidateQueries({ queryKey: ['me-coverage-status'] })
+    } catch (err) {
+      const e = err as { response?: { data?: { error?: string } } }
+      const code = e?.response?.data?.error ?? 'UNKNOWN'
+      showToast({
+        type: 'error',
+        message: t(`coverage.unlockError.${code}`, t('coverage.unlockError.UNKNOWN')),
+      })
+    }
+  }
 
   const startRankedQuiz = async () => {
     if (!rankedStatus) return
@@ -54,9 +104,20 @@ export default function Ranked() {
         language: getQuizLanguage(),
       })
       const questions: any[] = pickRes.data?.questions ?? []
+      const poolExhausted: boolean = pickRes.data?.poolExhausted === true
+
+      if (poolExhausted) {
+        // §7.11.4 Liturgical pool exhaustion — Sacred Modernist modal
+        // (canUnlockNext drives the CTA set inside the modal).
+        setPoolExhaustedOpen(true)
+        return
+      }
 
       if (questions.length === 0) {
-        alert(t('ranked.noQuestionsLeft', 'Bạn đã trả lời hết câu hỏi có sẵn hôm nay. Quay lại sau khi thêm câu mới.'))
+        showToast({
+          type: 'warning',
+          message: t('ranked.noQuestionsLeft', 'Bạn đã trả lời hết câu hỏi có sẵn hôm nay. Quay lại sau khi thêm câu mới.'),
+        })
         return
       }
 
@@ -78,8 +139,8 @@ export default function Ranked() {
       const detail = e?.response?.status
         ? `HTTP ${e.response.status} · ${JSON.stringify(e.response.data ?? {}).slice(0, 200)}`
         : e?.message ?? String(err)
-      console.error(`[startRankedQuiz] failed at "${step}":`, err)
-      alert(`${t('ranked.cannotStart')}\n\n[${step}] ${detail}`)
+      console.error(`[startRankedQuiz] failed at "${step}": ${detail}`, err)
+      showToast({ type: 'error', message: t('ranked.cannotStart') })
     }
   }
 
@@ -137,6 +198,10 @@ export default function Ranked() {
           tierProgressPct={tierProgressPct}
           starIndex={tierData?.starIndex}
         />
+
+        {coverage && (
+          <CoverageCard coverage={coverage} onUnlockNext={handleUnlockNextWeek} />
+        )}
 
         {/* Stats + Action — 1-col stack on mobile, 2-col 1.55fr/1fr on md+. */}
         <div className="grid grid-cols-1 md:grid-cols-[1.55fr_1fr] gap-[18px]">
@@ -365,6 +430,21 @@ export default function Ranked() {
           onStart={startRankedQuiz}
         />
       </div>
+
+      <PoolExhaustedModal
+        isOpen={poolExhaustedOpen}
+        onClose={() => setPoolExhaustedOpen(false)}
+        canUnlockNext={coverage?.currentWeek.canUnlockNext ?? false}
+        onUnlockNextWeek={handleUnlockNextWeek}
+      />
+
+      {activeBadge && (
+        <BadgeAwardModal
+          isOpen={badgeModalOpen}
+          onClose={handleBadgeClose}
+          badge={activeBadge}
+        />
+      )}
     </main>
   )
 }

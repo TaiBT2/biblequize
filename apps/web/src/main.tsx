@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './styles/global.css'
 import { useAuthStore } from './store/authStore'
 import { ErrorProvider } from './contexts/ErrorContext'
+import { ToastProvider } from './contexts/ToastContext'
 import RequireAuth from './contexts/RequireAuth'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import ErrorBoundary from './components/ErrorBoundary'
@@ -125,6 +126,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <ErrorProvider>
+          <ToastProvider>
             <BrowserRouter>
               <Routes>
                 {/* "/" = LandingPage for guest, Home (with AppLayout) for authenticated */}
@@ -213,6 +215,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
+          </ToastProvider>
         </ErrorProvider>
       </QueryClientProvider>
       </HelmetProvider>

@@ -11,7 +11,7 @@ interface BookProgress {
   totalQuestions: number
   masteredQuestions: number
   masteryPercent: number
-  status: 'COMPLETED' | 'IN_PROGRESS' | 'LOCKED'
+  status: 'COMPLETED' | 'IN_PROGRESS' | 'NOT_STARTED'
 }
 
 interface JourneySummary {
@@ -100,7 +100,7 @@ export default function Journey() {
           </span>
           <span className="flex items-center gap-1">
             <span className="w-2 h-2 rounded-full bg-on-surface-variant/30" />
-            {t('journey.locked')}: {summary.lockedBooks}
+            {t('journey.notStarted')}: {summary.lockedBooks}
           </span>
         </div>
       </section>
@@ -146,8 +146,8 @@ function BookSection({
     <section data-testid={testId}>
       <h2 className="text-sm font-bold text-on-surface-variant uppercase tracking-wider mb-3 px-1">{title}</h2>
       <div className="space-y-2">
-        {books.map((book, idx) => (
-          <BookCard key={book.order} book={book} isVi={isVi} onClick={() => onBookClick(book)} t={t} prevBook={idx > 0 ? books[idx - 1] : null} />
+        {books.map((book) => (
+          <BookCard key={book.order} book={book} isVi={isVi} onClick={() => onBookClick(book)} t={t} />
         ))}
       </div>
     </section>
@@ -155,55 +155,47 @@ function BookSection({
 }
 
 function BookCard({
-  book, isVi, onClick, t, prevBook
+  book, isVi, onClick, t
 }: {
   book: BookProgress
   isVi: boolean
   onClick: () => void
   t: (key: string, opts?: Record<string, any>) => string
-  prevBook: BookProgress | null
 }) {
   const isCompleted = book.status === 'COMPLETED'
-  const isLocked = book.status === 'LOCKED'
   const bookName = isVi && book.bookVi ? book.bookVi : book.book
 
   return (
     <div data-testid="journey-book-card">
     <div
       data-testid={`journey-book-card-${book.book}`}
-      onClick={isLocked ? undefined : onClick}
+      onClick={onClick}
       className={`flex items-center gap-4 p-4 rounded-xl border transition-all ${
         isCompleted
           ? 'bg-secondary/5 border-secondary/30 cursor-pointer hover:border-secondary/50'
-          : isLocked
-            ? 'bg-surface-container/50 border-outline-variant/10 opacity-50 cursor-not-allowed'
-            : 'bg-surface-container border-outline-variant/10 cursor-pointer hover:border-primary/30'
+          : 'bg-surface-container border-outline-variant/10 cursor-pointer hover:border-primary/30'
       }`}
     >
       {/* Status icon */}
       <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${
-        isCompleted ? 'bg-secondary/20' : isLocked ? 'bg-on-surface-variant/10' : 'bg-primary/20'
+        isCompleted ? 'bg-secondary/20' : 'bg-primary/20'
       }`}>
         <span className={`material-symbols-outlined text-lg ${
-          isCompleted ? 'text-secondary' : isLocked ? 'text-on-surface-variant/50' : 'text-primary'
+          isCompleted ? 'text-secondary' : 'text-primary'
         }`} style={isCompleted ? { fontVariationSettings: "'FILL' 1" } : undefined}>
-          {isCompleted ? 'check_circle' : isLocked ? 'lock' : 'menu_book'}
+          {isCompleted ? 'check_circle' : 'menu_book'}
         </span>
       </div>
 
       {/* Book info */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
-          <span data-testid="journey-book-name" className={`font-semibold text-sm ${isLocked ? 'text-on-surface-variant/50' : 'text-on-surface'}`}>
+          <span data-testid="journey-book-name" className="font-semibold text-sm text-on-surface">
             {bookName}
           </span>
           <span className="text-[10px] text-on-surface-variant">#{book.order}</span>
         </div>
-        {isLocked && prevBook ? (
-          <p data-testid="journey-book-mastery" className="text-xs text-on-surface-variant/50 truncate">
-            {t('journey.completeToUnlock', { book: isVi && prevBook.bookVi ? prevBook.bookVi : prevBook.book })}
-          </p>
-        ) : book.totalQuestions > 0 ? (
+        {book.totalQuestions > 0 ? (
           <p data-testid="journey-book-mastery" className="text-xs text-on-surface-variant">
             {t('journey.questions', { count: book.totalQuestions })} · {book.masteredQuestions}/{book.totalQuestions}
           </p>
@@ -213,7 +205,7 @@ function BookCard({
       </div>
 
       {/* Progress bar + percentage */}
-      {!isLocked && book.totalQuestions > 0 && (
+      {book.totalQuestions > 0 && (
         <div className="flex items-center gap-3 shrink-0">
           <div className="w-20 h-2 bg-surface-container-high rounded-full overflow-hidden">
             <div

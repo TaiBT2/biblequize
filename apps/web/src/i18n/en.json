@@ -2399,7 +2399,82 @@
       "seasonNoCountdown": "Awaiting next season"
     }
   },
+  "coverage": {
+    "weekLabel": "Week {{n}}",
+    "totalCovered": "{{n}}/{{total}} books",
+    "unlockNextCta": "Unlock week {{n}}",
+    "badgePreview": "Current badge: {{badge}}",
+    "phase": {
+      "foundation": "Foundation",
+      "acceleration": "Acceleration",
+      "climax": "Climax",
+      "mastery": "Mastery",
+      "unknown": "—"
+    },
+    "poolExhausted": {
+      "completed": "This week's pool is exhausted. Unlock the next week to continue.",
+      "inProgress": "You've answered most of this week's questions. Come back tomorrow for a refresh."
+    },
+    "unlockError": {
+      "WEEK_NOT_COMPLETED": "Complete the current week (6/6 books) before unlocking the next.",
+      "ALREADY_AHEAD_LIMIT": "You're at the 1-week-ahead limit — wait for the next calendar week.",
+      "NO_NEXT_WEEK": "You're already on the season's final week.",
+      "FEATURE_NOT_ENABLED": "This feature is not available for your account yet.",
+      "UNKNOWN": "Couldn't unlock the next week."
+    }
+  },
   "ranked": {
+    "pool_exhausted": {
+      "title": "Week Pool Exhausted",
+      "body": "You've answered most questions for this week.",
+      "unlock_cta": "Unlock Next Week",
+      "defer_cta": "Come back tomorrow",
+      "no_unlock_body": "Come back tomorrow when the pool refreshes.",
+      "close_cta": "Close"
+    },
+    "week_complete": {
+      "heading_sm": "WEEK {{week}} COMPLETE",
+      "heading_lg": "Conquered 6 books",
+      "next_week_label": "Week {{next}} unlocked",
+      "start_next_cta": "Start week {{next}}",
+      "defer_cta": "Come back tomorrow",
+      "close_cta": "Close",
+      "mastery_week_heading": "MASTERY WEEK COMPLETE",
+      "mastery_week_body": "You conquered the final week of the season.",
+      "verses": [
+        "Bless the Lord, O my soul.",
+        "Your word is a lamp to my feet.",
+        "Rejoice in the Lord always.",
+        "Blessed is the one who finishes their work today."
+      ]
+    },
+    "badge_award": {
+      "heading_sm": "YOU HAVE EARNED",
+      "season_name": {
+        "EASTER": "Easter Season {{year}}",
+        "PENTECOST": "Pentecost Season {{year}}",
+        "THANKSGIVING": "Thanksgiving Season {{year}}",
+        "CHRISTMAS": "Christmas Season {{year}}"
+      },
+      "tier_name": {
+        "TOAN_THU": "Whole Bible",
+        "TAN_TAM": "Devoted",
+        "HANH_HUONG": "Pilgrim"
+      },
+      "verses": {
+        "TOAN_THU": "Your word is a lamp to my feet and a light to my path.",
+        "TAN_TAM": "Bless the Lord, O my soul.",
+        "HANH_HUONG": "Go and make disciples of all nations."
+      },
+      "stats": {
+        "books": "Books",
+        "questions": "Questions",
+        "accuracy": "Accuracy",
+        "days": "Days"
+      },
+      "share_cta": "Share achievement",
+      "close_cta": "Close"
+    },
     "title": "Ranked Match",
     "today": "Today",
     "points": "points",
@@ -2573,6 +2648,7 @@
     "completed": "Completed",
     "inProgress": "In Progress",
     "locked": "Locked",
+    "notStarted": "Not started",
     "mastery": "{{percent}}%",
     "completeToUnlock": "Complete {{book}} to unlock",
     "noQuestions": "No questions yet",

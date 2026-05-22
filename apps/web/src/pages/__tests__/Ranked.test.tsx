@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ToastProvider } from '../../contexts/ToastContext'
 
 const mockNavigate = vi.fn()
 vi.mock('react-router-dom', async () => {
@@ -42,7 +43,9 @@ function renderRanked() {
   })
   return render(
     <QueryClientProvider client={queryClient}>
-      <MemoryRouter><Ranked /></MemoryRouter>
+      <ToastProvider>
+        <MemoryRouter><Ranked /></MemoryRouter>
+      </ToastProvider>
     </QueryClientProvider>
   )
 }
