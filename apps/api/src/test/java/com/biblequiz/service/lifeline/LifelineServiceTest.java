@@ -93,7 +93,9 @@ class LifelineServiceTest {
         when(questionRepo.findById(QUESTION_ID)).thenReturn(Optional.of(question));
         when(answerRepo.findBySessionIdAndQuestionIdAndUserId(SESSION_ID, QUESTION_ID, USER_ID))
                 .thenReturn(Optional.empty());
-        when(configService.getHintQuota(QuizSession.Mode.ranked)).thenReturn(2);
+        // lenient: useHint_unlimitedQuota overrides this with an any()-matcher,
+        // leaving the ranked-specific stub unused in that one test.
+        lenient().when(configService.getHintQuota(QuizSession.Mode.ranked)).thenReturn(2);
         when(lifelineUsageRepo.countBySessionAndUserAndType(SESSION_ID, USER_ID, LifelineType.HINT))
                 .thenReturn(0L);
         when(lifelineUsageRepo.findBySessionAndQuestionAndUser(
