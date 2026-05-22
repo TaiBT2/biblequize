@@ -7,8 +7,9 @@
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-05-23 | Leaderboard "Hàng Tuần" logic fixes (6 sub-tasks: filter 0-pt, my-rank, copy, cache, ICT, calendar week) | TODO | [detail](docs/todo/active/2026-05-23-leaderboard-weekly-fix.md) |
 | 2026-05-23 | E2E tests cho Đấu Nhanh (Quick Match) — 4 modes (smoke + happy-path + realtime) | TODO | [detail](docs/todo/active/2026-05-23-e2e-quickmatch-4modes.md) |
-| 2026-05-23 | Clean up stale FE + BE tests (69 FE + ~37 BE pre-existing failures from past redesigns) | TODO | [detail](docs/todo/active/2026-05-23-clean-stale-tests.md) |
+| 2026-05-23 | Clean up stale FE + BE tests (69 FE + ~37 BE pre-existing failures from past redesigns) | DONE | [archive](docs/todo/archive/2026-05-23-clean-stale-tests.md) |
 | 2026-05-22 | Ranked play fixes (replay same-questions + select 500 + e2e W-M04 sync) | TODO | [detail](docs/todo/active/2026-05-22-ranked-play-fixes.md) |
 | 2026-05-22 | Liturgical Coverage follow-ups (verify, QA, rollout, FMC review, cleanup) | TODO | [detail](docs/todo/active/2026-05-22-liturgical-coverage-followups.md) |
 | 2026-05-21 | Liturgical Coverage System sprint (P5, 10 commits — replace currentBook with §7 3-layer architecture) | TODO | [detail](docs/todo/active/2026-05-21-liturgical-coverage-sprint.md) |
