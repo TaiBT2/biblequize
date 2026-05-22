@@ -69,6 +69,12 @@ class UserControllerTest extends BaseControllerTest {
     @MockBean
     private com.biblequiz.modules.ranked.service.PrestigeService prestigeService;
 
+    @MockBean
+    private com.biblequiz.modules.daily.repository.DailyCompletionRepository dailyCompletionRepository;
+
+    @MockBean
+    private com.biblequiz.modules.user.service.MultiplayerStatsService multiplayerStatsService;
+
     private User testUser;
 
     @BeforeEach
