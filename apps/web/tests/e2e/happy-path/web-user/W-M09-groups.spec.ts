@@ -888,4 +888,189 @@ test.describe('W-M09 Church Groups — L2 Happy Path @happy-path @groups', () =>
     }
   })
 
+  // ── Quiz Set workflow Round 2: edit / delete / archive / leaderboard ──
+
+  test('W-M09-L2-018: Leader edits quiz set name + questions @write @serial', async ({
+    testApi,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP
+    // ============================================================
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+
+    try {
+      const initial = await fetchQuestionIds(5)
+      const more = await fetchQuestionIds(7)
+      const quizSet = await createQuizSetAs(token3, groupId, 'E2E Editable Set', initial)
+
+      // ============================================================
+      // SECTION 2: ACTIONS — leader PATCHes name + replaces questions
+      // ============================================================
+      const res = await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets/${quizSet.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token3}` },
+        body: JSON.stringify({ name: 'E2E Edited Set', questionIds: more }),
+      })
+      const body = await res.json()
+
+      // ============================================================
+      // SECTION 3: UI ASSERTIONS — N/A
+      // ============================================================
+
+      // ============================================================
+      // SECTION 4: API VERIFICATION
+      // ============================================================
+      expect(res.ok, `update failed: ${JSON.stringify(body)}`).toBe(true)
+      expect(body.quizSet.name).toBe('E2E Edited Set')
+      expect(body.quizSet.totalQuestions).toBe(more.length)
+    } finally {
+      await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token4}` },
+      })
+      await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+      })
+    }
+  })
+
+  test('W-M09-L2-019: Leader deletes quiz set — disappears from the list @write @serial', async ({
+    testApi,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP
+    // ============================================================
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+
+    try {
+      const questionIds = await fetchQuestionIds(5)
+      const quizSet = await createQuizSetAs(token3, groupId, 'E2E Doomed Set', questionIds)
+
+      // ============================================================
+      // SECTION 2: ACTIONS — leader soft-deletes
+      // ============================================================
+      const delRes = await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets/${quizSet.id}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token3}` },
+      })
+      expect(delRes.ok).toBe(true)
+
+      // ============================================================
+      // SECTION 3: UI ASSERTIONS — N/A
+      // ============================================================
+
+      // ============================================================
+      // SECTION 4: API VERIFICATION — SOFT_DELETED is filtered from the list
+      // ============================================================
+      const list = await (await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets`, {
+        headers: { Authorization: `Bearer ${token3}` },
+      })).json()
+      const found = (list.quizSets ?? []).find((q: any) => q.id === quizSet.id)
+      expect(found).toBeUndefined()
+    } finally {
+      await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token4}` },
+      })
+      await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+      })
+    }
+  })
+
+  test('W-M09-L2-020: Leader archives + unarchives a published quiz set @write @serial', async ({
+    testApi,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP — publish first (archive requires PUBLISHED)
+    // ============================================================
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+
+    try {
+      const questionIds = await fetchQuestionIds(5)
+      const quizSet = await createQuizSetAs(token3, groupId, 'E2E Archive Set', questionIds)
+      const pub = await publishQuizSet(token3, groupId, quizSet.id)
+      expect(pub.ok).toBe(true)
+
+      // ============================================================
+      // SECTION 2: ACTIONS — archive, then unarchive
+      // ============================================================
+      const archiveRes = await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets/${quizSet.id}/archive`, {
+        method: 'PATCH', headers: { Authorization: `Bearer ${token3}` },
+      })
+      const archived = (await archiveRes.json()).quizSet
+
+      const unarchiveRes = await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets/${quizSet.id}/unarchive`, {
+        method: 'PATCH', headers: { Authorization: `Bearer ${token3}` },
+      })
+      const unarchived = (await unarchiveRes.json()).quizSet
+
+      // ============================================================
+      // SECTION 3: UI ASSERTIONS — N/A
+      // ============================================================
+
+      // ============================================================
+      // SECTION 4: API VERIFICATION
+      // ============================================================
+      expect(archiveRes.ok).toBe(true)
+      expect(archived.publishStatus).toBe('ARCHIVED')
+      expect(unarchiveRes.ok).toBe(true)
+      expect(unarchived.publishStatus).toBe('PUBLISHED')
+    } finally {
+      await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token4}` },
+      })
+      await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+      })
+    }
+  })
+
+  test('W-M09-L2-021: Quiz set leaderboard endpoint returns an array for members @write @serial', async ({
+    testApi,
+  }) => {
+    // ============================================================
+    // SECTION 1: SETUP
+    // ============================================================
+    const token3 = await loginAndGetToken(TEST3_EMAIL)
+    const token4 = await loginAndGetToken(TEST4_EMAIL)
+    const { groupId } = await setupGroupWithMember(token3, token4)
+
+    try {
+      const questionIds = await fetchQuestionIds(5)
+      const quizSet = await createQuizSetAs(token3, groupId, 'E2E Leaderboard Set', questionIds)
+      await publishQuizSet(token3, groupId, quizSet.id)
+
+      // ============================================================
+      // SECTION 2: ACTIONS — member fetches the per-set leaderboard
+      // ============================================================
+      const res = await fetch(`${BASE_URL}/api/groups/${groupId}/quiz-sets/${quizSet.id}/leaderboard`, {
+        headers: { Authorization: `Bearer ${token4}` },
+      })
+      const body = await res.json()
+
+      // ============================================================
+      // SECTION 3: UI ASSERTIONS — N/A
+      // ============================================================
+
+      // ============================================================
+      // SECTION 4: API VERIFICATION — no plays yet, but the shape is stable
+      // ============================================================
+      expect(res.ok, `leaderboard fetch failed: ${JSON.stringify(body)}`).toBe(true)
+      expect(body.success).toBe(true)
+      expect(Array.isArray(body.leaderboard ?? body.entries ?? body.rankings)).toBe(true)
+    } finally {
+      await fetch(`${BASE_URL}/api/groups/${groupId}/leave`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token4}` },
+      })
+      await fetch(`${BASE_URL}/api/groups/${groupId}`, {
+        method: 'DELETE', headers: { Authorization: `Bearer ${token3}` },
+      })
+    }
+  })
+
 })
