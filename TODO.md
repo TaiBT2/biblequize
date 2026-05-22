@@ -3,10 +3,11 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (53)
+## Active (54)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-05-23 | Clean up stale FE + BE tests (69 FE + ~37 BE pre-existing failures from past redesigns) | TODO | [detail](docs/todo/active/2026-05-23-clean-stale-tests.md) |
 | 2026-05-22 | Ranked play fixes (replay same-questions + select 500 + e2e W-M04 sync) | TODO | [detail](docs/todo/active/2026-05-22-ranked-play-fixes.md) |
 | 2026-05-22 | Liturgical Coverage follow-ups (verify, QA, rollout, FMC review, cleanup) | TODO | [detail](docs/todo/active/2026-05-22-liturgical-coverage-followups.md) |
 | 2026-05-21 | Liturgical Coverage System sprint (P5, 10 commits — replace currentBook with §7 3-layer architecture) | TODO | [detail](docs/todo/active/2026-05-21-liturgical-coverage-sprint.md) |
