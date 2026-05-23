@@ -8,7 +8,7 @@
 | Date | Title | Status | Detail |
 |---|---|---|---|
 | 2026-05-23 | Ranked: regression tests for RKP-1 + RKP-2 bug fixes (replay match + Hibernate-proxy 500) | DONE | [archive](docs/todo/archive/2026-05-23-ranked-regression-tests-rkp1-rkp2.md) |
-| 2026-05-23 | Ranked: deterministic scoring tests + anti-cheat (6 tiers × combo × speed × server-recompute) | TODO | [detail](docs/todo/active/2026-05-23-ranked-scoring-deterministic-anti-cheat.md) |
+| 2026-05-23 | Ranked: deterministic scoring tests + anti-cheat (6 tiers × combo × speed × server-recompute) | DONE | [archive](docs/todo/archive/2026-05-23-ranked-scoring-deterministic-anti-cheat.md) |
 | 2026-05-23 | Liturgical Coverage: pool-exhaustion fallback chain + season transition + ×1.5 bonus tests | TODO | [detail](docs/todo/active/2026-05-23-liturgical-coverage-fallback-tests.md) |
 | 2026-05-23 | SmartQuestionSelector: tier-distribution + spaced-repetition statistical tests | TODO | [detail](docs/todo/active/2026-05-23-smart-question-selector-distribution-tests.md) |
 | 2026-05-23 | MP audit P0: Lifecycle R1-R5 + Reconnect + Kick + Host transfer (10 case + WS helper) | TODO | [detail](docs/todo/active/2026-05-23-mp-test-lifecycle-reconnect-kick.md) |
