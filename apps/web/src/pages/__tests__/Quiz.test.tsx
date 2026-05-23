@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ToastProvider } from '../../contexts/ToastContext'
@@ -277,5 +277,86 @@ describe('computeEnergyPercent', () => {
   it('ignores lives when server energy is provided (ranked mode)', () => {
     expect(computeEnergyPercent(100, 0)).toBe(100)
     expect(computeEnergyPercent(0, 5)).toBe(0)
+  })
+})
+
+// ── RGT-3 — Ranked "Chơi trận khác" navigates with a fresh sessionId ─────
+//
+// Pins commit 71e94f8 (RKP-1 fix). Reaches the RankedQuizResults screen
+// with a 1-question ranked match, then clicks play-again and asserts the
+// FE both creates a new session (POST /api/ranked/sessions) and picks
+// new questions (POST /api/ranked/questions/select) BEFORE navigating to
+// /quiz with the new sessionId.
+
+describe('Ranked replay (handlePlayAgain → startNextRankedMatch)', () => {
+  it('navigates to /quiz with a fresh sessionId on Chơi trận khác', async () => {
+    mockLocation.state = {
+      mode: 'ranked',
+      isRanked: true,
+      sessionId: 'old-session',
+      questions: [{
+        id: 'q-old',
+        content: 'Câu cũ?',
+        options: ['A', 'B', 'C', 'D'],
+        book: 'Genesis',
+        chapter: 1,
+        difficulty: 'easy',
+        type: 'multiple_choice_single',
+        correctAnswer: [0],
+        explanation: '',
+      }],
+      showExplanation: false,
+      timePerQuestion: 90,
+    }
+    mockApiGet.mockImplementation((url: string) => {
+      if (url.includes('/api/me/ranked-status')) {
+        return Promise.resolve({ data: { livesRemaining: 95, askedQuestionIdsToday: ['q-old'], currentBook: 'Genesis', currentDifficulty: 'easy' } })
+      }
+      if (url.includes('/api/me/tier-progress')) {
+        return Promise.resolve({ data: { tierLevel: 3, tierName: 'Môn Đồ', totalPoints: 5000, nextTierPoints: 15000 } })
+      }
+      if (url.includes('/api/sessions/old-session/review')) return Promise.resolve({ data: {} })
+      return Promise.resolve({ data: [] })
+    })
+    mockApiPost.mockImplementation((url: string) => {
+      if (url.includes('/api/ranked/sessions/old-session/answer')) {
+        return Promise.resolve({ data: { earned: 8, livesRemaining: 95, questionsCounted: 1, isCorrect: true, correctAnswer: [0], explanation: '' } })
+      }
+      if (url === '/api/ranked/sessions' || url.endsWith('/api/ranked/sessions')) {
+        return Promise.resolve({ data: { sessionId: 'new-session-id' } })
+      }
+      if (url.includes('/api/ranked/questions/select')) {
+        return Promise.resolve({ data: { questions: [{ id: 'q-new', content: 'Câu mới?', options: ['A','B','C','D'], book: 'Genesis', chapter: 2, difficulty: 'easy', type: 'multiple_choice_single', correctAnswer: [0], explanation: '' }] } })
+      }
+      return Promise.resolve({ data: {} })
+    })
+
+    renderQuiz()
+
+    // Wait for the question to render, then answer + advance to the result.
+    const opt0 = await screen.findByTestId('quiz-answer-0', {}, { timeout: 3000 })
+    fireEvent.click(opt0)
+    const nextBtn = await screen.findByTestId('quiz-next-btn', {}, { timeout: 3000 })
+    fireEvent.click(nextBtn)
+
+    // Result screen renders → click "Chơi trận khác".
+    const playAgain = await screen.findByTestId('ranked-result-play-again', {}, { timeout: 3000 })
+    fireEvent.click(playAgain)
+
+    // startNextRankedMatch chains the three calls, then navigates.
+    await waitFor(() => {
+      const navArgs = mockNavigate.mock.calls.find((c) => c[0] === '/quiz')
+      expect(navArgs).toBeTruthy()
+      const state = (navArgs as any[])[1]?.state
+      expect(state?.sessionId).toBe('new-session-id')
+      expect(state?.sessionId).not.toBe('old-session')
+      expect(state?.isRanked).toBe(true)
+      expect(state?.questions?.[0]?.id).toBe('q-new')
+    }, { timeout: 3000 })
+
+    // Verify the BE flow happened in order.
+    const postUrls = mockApiPost.mock.calls.map((c) => c[0] as string)
+    expect(postUrls.some((u) => u.endsWith('/api/ranked/sessions'))).toBe(true)
+    expect(postUrls.some((u) => u.includes('/api/ranked/questions/select'))).toBe(true)
   })
 })
