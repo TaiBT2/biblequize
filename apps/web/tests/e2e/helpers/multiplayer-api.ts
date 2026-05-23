@@ -92,3 +92,60 @@ export async function getLeaderboard(token: string, roomId: string): Promise<any
   // Responds with { leaderboard: [...], success }.
   return (await res.json()).leaderboard ?? []
 }
+
+// ── Extended helpers (MPL/MPM audit 2026-05-23) ─────────────────────────────
+
+export interface QuickMatchBody {
+  mode: 'SPEED_RACE' | 'BATTLE_ROYALE' | 'TEAM_VS_TEAM' | 'SUDDEN_DEATH'
+  bookScope?: string
+  questionCount?: number
+  timePerQuestion?: number
+  source?: 'DATABASE' | 'AI_GENERATED'
+  language?: 'vi' | 'en'
+  chapterFrom?: number; chapterTo?: number
+  verseFrom?: number; verseTo?: number
+}
+
+/** POST /api/rooms/quick-match — soft-host Đấu Nhanh room. Returns full response (success/error wrapper). */
+export async function createQuickMatch(token: string, body: QuickMatchBody): Promise<Response> {
+  return postJson('/api/rooms/quick-match', { source: 'DATABASE', bookScope: 'ALL', ...body }, token)
+}
+
+/** POST /api/rooms/{id}/leave — voluntary leave. Mid-game → LEFT; LOBBY → row deleted. */
+export async function leaveRoom(token: string, roomId: string): Promise<Response> {
+  return postJson(`/api/rooms/${roomId}/leave`, {}, token)
+}
+
+/** POST /api/rooms/{id}/kick — host-only, LOBBY only. Body: { userId }. */
+export async function kickPlayer(token: string, roomId: string, userId: string): Promise<Response> {
+  return postJson(`/api/rooms/${roomId}/kick`, { userId }, token)
+}
+
+/** POST /api/rooms/{id}/switch-team — TEAM_VS_TEAM LOBBY only. Body: { team: 'A'|'B' }. */
+export async function switchTeam(token: string, roomId: string, team: 'A' | 'B'): Promise<Response> {
+  return postJson(`/api/rooms/${roomId}/switch-team`, { team }, token)
+}
+
+/** DELETE /api/rooms/{id} — host-only cleanup helper. */
+export async function deleteRoom(token: string, roomId: string): Promise<Response> {
+  return fetch(`${API_URL}/api/rooms/${roomId}`, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${token}` },
+  })
+}
+
+// ── Quản trò Sprint 4 controls (host-only when hostPlaysGame=false) ────────
+
+export const hostPause     = (t: string, r: string) => postJson(`/api/rooms/${r}/host/pause`, {}, t)
+export const hostResume    = (t: string, r: string) => postJson(`/api/rooms/${r}/host/resume`, {}, t)
+export const hostSkip      = (t: string, r: string) => postJson(`/api/rooms/${r}/host/skip-question`, {}, t)
+export const hostBroadcast = (t: string, r: string, message: string) =>
+  postJson(`/api/rooms/${r}/host/broadcast`, { message }, t)
+export const hostEndEarly  = (t: string, r: string) => postJson(`/api/rooms/${r}/host/end-early`, {}, t)
+
+/** GET /api/rooms/{id}/current-question — rehydrate after reconnect. 204 if none. */
+export async function getCurrentQuestion(token: string, roomId: string): Promise<Response> {
+  return fetch(`${API_URL}/api/rooms/${roomId}/current-question`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+}
