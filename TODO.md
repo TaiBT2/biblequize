@@ -3,7 +3,7 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (61)
+## Active (60)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
@@ -14,8 +14,8 @@
 | 2026-05-23 | MP audit P0: Lifecycle R1-R5 + Reconnect + Kick + Host transfer (10 case + WS helper) | TODO | [detail](docs/todo/active/2026-05-23-mp-test-lifecycle-reconnect-kick.md) |
 | 2026-05-23 | MP audit P0+P1: Mode-edge (BR amnesty / SD queue / TVT switch) + Quản trò Sprint 4 + Chat (8 task) | TODO | [detail](docs/todo/active/2026-05-23-mp-test-mode-edge-quan-tro-chat.md) |
 | 2026-05-23 | MP audit P1+P2: Contracts + Scale 100p + Maestro mobile + Admin + WS reconnect (14 task) | TODO | [detail](docs/todo/active/2026-05-23-mp-test-contracts-scale-obs.md) |
-| 2026-05-23 | Leaderboard "Hàng Tuần" logic fixes (6 sub-tasks: filter 0-pt, my-rank, copy, cache, ICT, calendar week) | TODO | [detail](docs/todo/active/2026-05-23-leaderboard-weekly-fix.md) |
 | 2026-05-23 | Clean up stale FE + BE tests (69 FE + ~37 BE pre-existing failures from past redesigns) | DONE | [archive](docs/todo/archive/2026-05-23-clean-stale-tests.md) |
+| 2026-05-23 | Leaderboard "Hàng Tuần" logic fixes (0-pt filter + cache TTL + ICT + calendar week) | DONE | [archive](docs/todo/archive/2026-05-23-leaderboard-weekly-fix.md) |
 | 2026-05-22 | Ranked play fixes (replay same-questions + select 500 + e2e W-M04 sync) | TODO | [detail](docs/todo/active/2026-05-22-ranked-play-fixes.md) |
 | 2026-05-22 | Liturgical Coverage follow-ups (verify, QA, rollout, FMC review, cleanup) | TODO | [detail](docs/todo/active/2026-05-22-liturgical-coverage-followups.md) |
 | 2026-05-21 | Liturgical Coverage System sprint (P5, 10 commits — replace currentBook with §7 3-layer architecture) | TODO | [detail](docs/todo/active/2026-05-21-liturgical-coverage-sprint.md) |

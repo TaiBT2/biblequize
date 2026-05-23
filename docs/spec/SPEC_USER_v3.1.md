@@ -905,13 +905,22 @@ Grid layout, locked = grayscale + lock icon. Click → modal hiện điều ki�
 > **Source:** `LeaderboardController`; web `pages/Leaderboard.tsx`.
 
 ### 22.1 Periods
-| Endpoint | Scope |
-|---|---|
-| `GET /api/leaderboard/daily` | Hôm nay (UTC) |
-| `GET /api/leaderboard/weekly` | Tuần này |
-| `GET /api/leaderboard/monthly` | Tháng này |
-| `GET /api/leaderboard/all-time` | Toàn thời gian |
-| `GET /api/leaderboard/season/{seasonId}` | Mùa hiện tại / chỉ định |
+
+> **Day boundary** — toàn bộ leaderboard window (daily/weekly/monthly/season) tính theo `Asia/Ho_Chi_Minh` (UTC+7) qua helper `GameClock.today()`. UDP writes (Ranked submit + Daily Challenge XP) cũng dùng cùng zone nên user chơi 06:00 ICT (= 23:00 UTC hôm trước) thấy điểm ghi vào "hôm nay". Lock 2026-05-23 (LBW-5).
+
+| Endpoint | Scope | Window math |
+|---|---|---|
+| `GET /api/leaderboard/daily` | Hôm nay (ICT) | `today` |
+| `GET /api/leaderboard/weekly` | Tuần này (ISO, T2→hôm nay ICT) | `weekStart(today) .. today` |
+| `GET /api/leaderboard/monthly` | Tháng này | `today.withDayOfMonth(1) .. today` |
+| `GET /api/leaderboard/all-time` | Toàn thời gian | — |
+| `GET /api/leaderboard/season/{seasonId}` | Mùa hiện tại / chỉ định | `season.startDate .. min(today, season.endDate)` |
+
+**Weekly = ISO calendar week** (Monday → Sunday), reset vào thứ Hai 00:00 ICT (LBW-6 decision 2026-05-23). Trước đó là rolling 7-day không bao giờ visible reset — bị bỏ vì không khớp cảm nhận "tuần này" của user VN.
+
+**Zero-point filter** (LBW-1, 2026-05-23): leaderboard chỉ surface users có ≥1 điểm trong window. User chơi Practice/Single (chỉ ghi `questionsCounted`, không ghi `pointsCounted`) sẽ KHÔNG xuất hiện trong list — tránh pad bảng bằng user 0 điểm.
+
+**Cache TTL**: 60s (LBW-4, 2026-05-23). Writers (RankedController submit + DailyChallengeService creditCompletionXp) gọi `CacheService.invalidateLeaderboards()` ngay sau khi ghi điểm để user không thấy stale rank.
 
 ### 22.2 Season leaderboard
 - Mùa = 3 tháng (4 mùa / năm) — entity `Season` (V7).
