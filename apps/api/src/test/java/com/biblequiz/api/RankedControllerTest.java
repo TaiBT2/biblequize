@@ -1138,6 +1138,101 @@ class RankedControllerTest extends BaseControllerTest {
         org.junit.jupiter.api.Assertions.assertFalse(body.contains("hibernateLazyInitializer"));
     }
 
+    // ── LCT-1..3: Liturgical Coverage pool-exhaustion fallback chain ────────
+    //
+    // SPEC §7.11 — when the current-week book pool runs dry, /questions/select
+    // applies a 3-step fallback:
+    //   1. drop same-day exclusion (allow repeats today)
+    //   2. drop difficulty filter (mix the tier distribution)
+    //   3. set poolExhausted=true → FE shows "Unlock next week" CTA
+
+    private void primeCoverageFlow() {
+        com.biblequiz.modules.season.entity.Season season = new com.biblequiz.modules.season.entity.Season();
+        season.setId("season-pentecost-2026");
+        when(featureFlagService.isLiturgicalCoverageEnabled(anyString())).thenReturn(true);
+        when(liturgicalSeasonService.getCurrentSeason()).thenReturn(Optional.of(season));
+        when(liturgicalSeasonService.getCurrentSeason(any(java.time.LocalDate.class))).thenReturn(Optional.of(season));
+        when(userTierService.getTierLevel(anyString())).thenReturn(3);
+        com.biblequiz.modules.coverage.entity.UserSeasonCoverage cov =
+                new com.biblequiz.modules.coverage.entity.UserSeasonCoverage();
+        when(liturgicalCoverageService.getOrCreateCoverage(anyString(), anyString(), anyInt())).thenReturn(cov);
+        when(liturgicalCoverageService.getActivePool(any(), anyString())).thenReturn(List.of("Genesis", "Matthew"));
+    }
+
+    private List<com.biblequiz.modules.quiz.entity.Question> buildQuestions(int n) {
+        List<com.biblequiz.modules.quiz.entity.Question> out = new java.util.ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            com.biblequiz.modules.quiz.entity.Question q = new com.biblequiz.modules.quiz.entity.Question();
+            q.setId("q-" + i);
+            q.setBook("Genesis");
+            q.setChapter(1);
+            q.setDifficulty(com.biblequiz.modules.quiz.entity.Question.Difficulty.easy);
+            q.setType(com.biblequiz.modules.quiz.entity.Question.Type.multiple_choice_single);
+            q.setContent("?");
+            q.setOptions(List.of("A", "B", "C", "D"));
+            q.setCorrectAnswer(List.of(0));
+            out.add(q);
+        }
+        return out;
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void selectRanked_fallbackBranch1_dropsSameDayExclusion() throws Exception {
+        primeCoverageFlow();
+        // First call (with excludeIds) returns 3 → < limit 10, triggers branch 1.
+        // Second call (no excludeIds) returns 10 → satisfies request, branches 2/3 skipped.
+        when(smartQuestionSelector.selectQuestions(anyString(), anyInt(), any()))
+                .thenReturn(buildQuestions(3))
+                .thenReturn(buildQuestions(10));
+
+        mockMvc.perform(post("/api/ranked/questions/select")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"limit\":10,\"excludeIds\":[\"q-a\"],\"difficulty\":\"easy\",\"language\":\"vi\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.questions.length()").value(10))
+                .andExpect(jsonPath("$.poolExhausted").doesNotExist());
+        verify(coverageAnalytics).poolExhaustionFallback(eq("user-1"), eq(1), anyInt(), anyInt(), anyString());
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void selectRanked_fallbackBranch2_dropsDifficultyFilter() throws Exception {
+        primeCoverageFlow();
+        // Branch 1 still yields too few (3); branch 2 (no difficulty) returns 10.
+        when(smartQuestionSelector.selectQuestions(anyString(), anyInt(), any()))
+                .thenReturn(buildQuestions(3))
+                .thenReturn(buildQuestions(3))
+                .thenReturn(buildQuestions(10));
+
+        mockMvc.perform(post("/api/ranked/questions/select")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"limit\":10,\"excludeIds\":[],\"difficulty\":\"easy\",\"language\":\"vi\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.questions.length()").value(10))
+                .andExpect(jsonPath("$.poolExhausted").doesNotExist());
+        verify(coverageAnalytics).poolExhaustionFallback(eq("user-1"), eq(1), anyInt(), anyInt(), anyString());
+        verify(coverageAnalytics).poolExhaustionFallback(eq("user-1"), eq(2), anyInt(), anyInt(), anyString());
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void selectRanked_fallbackBranch3_setsPoolExhaustedTrue() throws Exception {
+        primeCoverageFlow();
+        // All three selector calls return empty → poolExhausted path.
+        when(smartQuestionSelector.selectQuestions(anyString(), anyInt(), any()))
+                .thenReturn(List.of());
+
+        mockMvc.perform(post("/api/ranked/questions/select")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"limit\":10,\"excludeIds\":[],\"difficulty\":\"easy\",\"language\":\"vi\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.questions.length()").value(0))
+                .andExpect(jsonPath("$.poolExhausted").value(true))
+                .andExpect(jsonPath("$.suggestedAction").value("UNLOCK_NEXT_WEEK"));
+        verify(coverageAnalytics).poolExhaustionFallback(eq("user-1"), eq(3), anyInt(), anyInt(), anyString());
+    }
+
     // ── SCD-4: /sync-progress ignores FE-claimed score / questions ──────────
     //
     // The endpoint takes no @RequestBody — it just returns the user's stored
