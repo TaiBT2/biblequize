@@ -55,8 +55,8 @@ export default function Leaderboard() {
   // information isn't lost — only the tab label stays compact.
   const tabs: { key: Tab; label: string }[] = [
     { key: 'all_time', label: t('leaderboard.allTime') },
-    { key: 'weekly', label: t('leaderboard.weekly') },
     { key: 'season', label: t('leaderboard.season') },
+    { key: 'weekly', label: t('leaderboard.weekly') },
   ]
 
   const { data: tierData } = useQuery({
