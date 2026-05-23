@@ -460,6 +460,32 @@ test.describe('W-M04 Ranked Mode', () => {
     expect(ranked.questionsCounted).toBeGreaterThanOrEqual(1)
   })
 
+  // ── LCT-9 — feature-flag-off keeps the legacy ranked path ──────────────
+  //
+  // When CoverageController returns 404 (feature flag off for this user),
+  // the FE's useCoverageStatus catches it and returns null, so the page
+  // must NOT render the CoverageCard. Pin the dual-path branch.
+
+  test('W-M04-L2-LCT-9: feature-flag-off → no CoverageCard rendered', async ({
+    tier3Page: page,
+    testApi,
+  }) => {
+    await testApi.setState(TEST_EMAIL, { livesRemaining: 100, questionsCounted: 0 })
+    await page.route('**/api/me/coverage-status', async (route) => {
+      await route.fulfill({ status: 404, contentType: 'application/json', body: '{"error":"FEATURE_NOT_ENABLED"}' })
+    })
+
+    const rankedPage = new RankedPage(page)
+    await rankedPage.goto()
+
+    // Page itself still renders normally.
+    await expect(page.getByTestId('ranked-page')).toBeVisible()
+    await expect(rankedPage.energyDisplay).toBeVisible()
+
+    // CoverageCard must be absent in the feature-flag-off path.
+    await expect(page.getByTestId('ranked-coverage-card')).toHaveCount(0)
+  })
+
   // ── LCT-8 — pool-exhausted modal opens when BE returns poolExhausted=true
   //
   // Stub /api/ranked/questions/select to return { poolExhausted: true } and
