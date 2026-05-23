@@ -9,7 +9,9 @@ type Props = {
 
 const InviteShareModal: React.FC<Props> = ({ open, roomCode, onClose }) => {
   const [copied, setCopied] = useState<'code' | 'link' | null>(null);
-  const joinUrl = `${window.location.origin}/join?code=${roomCode}`;
+  // Route registered ở main.tsx là /room/join (NOT /join). QR phải match
+  // exact path — bug user report 2026-05-23.
+  const joinUrl = `${window.location.origin}/room/join?code=${roomCode}`;
 
   useEffect(() => {
     if (!open) return;

@@ -866,7 +866,7 @@ const RoomLobby: React.FC = () => {
                   </button>
                   <button
                     type="button"
-                    onClick={() => copyToClipboard('link', `${window.location.origin}/join?code=${room.roomCode}`)}
+                    onClick={() => copyToClipboard('link', `${window.location.origin}/room/join?code=${room.roomCode}`)}
                     data-testid="lobby-hero-copy-link"
                     className="px-3 py-1.5 rounded-lg text-xs font-semibold inline-flex items-center gap-1.5"
                     style={{
