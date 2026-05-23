@@ -20,7 +20,7 @@
   - Files: bổ sung vào `W-M06-quickmatch-battle-royale.spec.ts` (BR-L3-002 stub đã có)
 
 - MPM-3 SD queue advance + spectator state
-  - Status: `[ ]` TODO · Spec: §3.4 (SuddenDeathMatchService)
+  - Status: `[~]` PARTIAL — commit f20bd916 (1 case): 3 players queue init + matchups → 1 champion, ≥1 MATCH_END, no rank ties. Specific tie-break + spectator-can't-answer cases defer.
   - Sub-cases:
     - Queue rỗng + 1 champion → `MATCH_END` final + game terminal, `finalRank=1` cho champion
     - Loser → SPECTATOR (POST answer reject); winningStreak++; next challenger ACTIVE
@@ -36,7 +36,7 @@
   - Files: bổ sung vào `W-M06-quickmatch-team-vs-team.spec.ts`
 
 - MPM-5 Anti-spoiler Quick Match (lazy server-side)
-  - Status: `[ ]` TODO · Spec: QP-2
+  - Status: `[x]` DONE — commit 5b85914d (3 REST cases): leak scan on POST + GET responses, /current-question 204 in LOBBY.
   - Detail: GET `/api/rooms/{id}` của QM room trước `QUESTION_START` → response KHÔNG chứa text câu hỏi/đáp án (server lazy-select). So sánh response payload thô vs sau QUESTION_START.
   - Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-anti-spoiler.spec.ts`
 
