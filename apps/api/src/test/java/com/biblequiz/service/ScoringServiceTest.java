@@ -295,4 +295,91 @@ class ScoringServiceTest {
         assertTrue(result.isDailyFirst);
         assertEquals(24, result.earned);
     }
+
+    // ── SCD-2: Tier multipliers + xpSurge + liturgical season bonus ──────────
+    //
+    // Pins the canonical formula per SPEC_USER §4.6 + §7.10.3:
+    //   final = base × tier.xpMultiplier × (xpSurge ? 1.5 : 1) × (inSeason ? 1.5 : 1)
+    // Tier table per C1 lock + TierRewardsConfig:
+    //   T1:1.0  T2:1.1  T3:1.2  T4:1.3  T5:1.5  T6:2.0
+
+    @Test
+    void calculateWithTier_easy30s_noStreak_T1_through_T6() {
+        // base 8, no speed bonus (elapsed = TIME_LIMIT), no combo, no dailyFirst
+        // → earned base = 8; multiplier from tier:
+        //   T1: round(8 × 1.0) = 8
+        //   T2: round(8 × 1.1) = 9  (8.8 → 9)
+        //   T3: round(8 × 1.2) = 10 (9.6 → 10)
+        //   T4: round(8 × 1.3) = 10 (10.4 → 10)
+        //   T5: round(8 × 1.5) = 12
+        //   T6: round(8 × 2.0) = 16
+        int[] expected = {8, 9, 10, 10, 12, 16};
+        for (int tier = 1; tier <= 6; tier++) {
+            ScoreResult r = scoringService.calculateWithTier(
+                    Question.Difficulty.easy, 30000, 1, false, tier);
+            assertEquals(expected[tier - 1], r.earned, "tier " + tier);
+        }
+    }
+
+    @Test
+    void calculateWithTier_xpSurgeActive_appliesAdditional1_5x() {
+        // base earned 8 (easy, no speed, no combo, no dailyFirst) at T3 (×1.2)
+        // base × 1.2 = 9.6 → round 10
+        // With xpSurge: base × 1.2 × 1.5 = 14.4 → round 14
+        ScoreResult noSurge = scoringService.calculateWithTier(
+                Question.Difficulty.easy, 30000, 1, false, 3, false, false);
+        ScoreResult surge = scoringService.calculateWithTier(
+                Question.Difficulty.easy, 30000, 1, false, 3, true, false);
+        assertEquals(10, noSurge.earned);
+        assertEquals(14, surge.earned);
+    }
+
+    @Test
+    void calculateWithTier_inSeasonBook_appliesAdditional1_5x() {
+        // Same math as xpSurge — independent multiplier.
+        ScoreResult outSeason = scoringService.calculateWithTier(
+                Question.Difficulty.easy, 30000, 1, false, 3, false, false);
+        ScoreResult inSeason = scoringService.calculateWithTier(
+                Question.Difficulty.easy, 30000, 1, false, 3, false, true);
+        assertEquals(10, outSeason.earned);
+        assertEquals(14, inSeason.earned);
+    }
+
+    @Test
+    void calculateWithTier_xpSurgePlusInSeason_stacksMultiplicatively() {
+        // 8 × 1.2 × 1.5 × 1.5 = 21.6 → round 22
+        ScoreResult r = scoringService.calculateWithTier(
+                Question.Difficulty.easy, 30000, 1, false, 3, true, true);
+        assertEquals(22, r.earned);
+    }
+
+    // ── SCD-2: Speed bonus edge cases ────────────────────────────────────────
+
+    @Test
+    void calculate_elapsedExceedsTimeLimit_speedBonusClampsToZero() {
+        // elapsed > 30000 would yield negative speedRatio; max(0, …) → 0.
+        ScoreResult r = scoringService.calculate(Question.Difficulty.hard, 45000, 1);
+        assertEquals(18, r.baseScore);
+        assertEquals(0, r.speedBonus);
+        assertEquals(18, r.earned);
+    }
+
+    @Test
+    void calculate_zeroElapsed_speedBonusEqualsHalfBase() {
+        // speedRatio = 1, speedBonus = floor(base × 0.5 × 1 × 1) = floor(base/2)
+        assertEquals(4, scoringService.calculate(Question.Difficulty.easy, 0, 1).speedBonus);   // 8/2 = 4
+        assertEquals(6, scoringService.calculate(Question.Difficulty.medium, 0, 1).speedBonus); // 12/2 = 6
+        assertEquals(9, scoringService.calculate(Question.Difficulty.hard, 0, 1).speedBonus);   // 18/2 = 9
+    }
+
+    // ── SCD-2: Combo boundaries — exact thresholds at streak 4/5/9/10 ────────
+
+    @Test
+    void calculate_streakBoundaries_combo100_120_150() {
+        // base 8, no speed bonus, no dailyFirst → subtotal = base × combo%
+        assertEquals(8,  scoringService.calculate(Question.Difficulty.easy, 30000, 4).earned);  // ×1.00
+        assertEquals(9,  scoringService.calculate(Question.Difficulty.easy, 30000, 5).earned);  // ×1.20 → 9.6 → int subtotal = 9 (integer math)
+        assertEquals(9,  scoringService.calculate(Question.Difficulty.easy, 30000, 9).earned);  // still 120%
+        assertEquals(12, scoringService.calculate(Question.Difficulty.easy, 30000, 10).earned); // ×1.50
+    }
 }
