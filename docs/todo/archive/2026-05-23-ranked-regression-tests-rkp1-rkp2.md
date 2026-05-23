@@ -25,7 +25,7 @@ detect a recurrence.
 ## Tasks
 
 - RGT-1 E2E: ranked replay produces a brand-new match
-  - Status: [ ] TODO · Files: `apps/web/tests/e2e/happy-path/web-user/W-M04-ranked.spec.ts`
+  - Status: [x] DONE · Files: `apps/web/tests/e2e/happy-path/web-user/W-M04-ranked.spec.ts`
   - Flow: start ranked → answer 10 → land on result → click "Chơi trận khác"
     → on the new /quiz page assert:
     - the new sessionId differs from the finished one (intercept both
@@ -35,7 +35,7 @@ detect a recurrence.
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
 
 - RGT-2 BE: questions/select serializes when history has a Question proxy
-  - Status: [ ] TODO · Files: `apps/api/src/test/java/com/biblequiz/api/RankedControllerTest.java`
+  - Status: [x] DONE · Files: `apps/api/src/test/java/com/biblequiz/api/RankedControllerTest.java`
     (new or existing)
   - Set up a `@SpringBootTest` (or `@DataJpaTest`+controller slice) that:
     1. Persists a User + several Questions + a `UserQuestionHistory` row
@@ -48,7 +48,7 @@ detect a recurrence.
   - **Spec impact**: [x] None · **Spec strategy**: [x] (c) [no-spec-impact]
 
 - RGT-3 Unit: Quiz.tsx handlePlayAgain for ranked
-  - Status: [ ] TODO · Files: `apps/web/src/pages/__tests__/Quiz.replay.test.tsx`
+  - Status: [x] DONE · Files: `apps/web/src/pages/__tests__/Quiz.replay.test.tsx`
     (new)
   - Mount Quiz at the result-screen state, mock the ranked endpoints, click
     play-again, assert `useNavigate` was called with `/quiz` + a fresh state
