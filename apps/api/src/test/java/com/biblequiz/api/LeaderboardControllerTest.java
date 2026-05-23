@@ -1,6 +1,7 @@
 package com.biblequiz.api;
 
 import com.biblequiz.infrastructure.service.CacheService;
+import com.biblequiz.infrastructure.time.GameClock;
 import com.biblequiz.modules.quiz.entity.UserDailyProgress;
 import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.season.entity.Season;
@@ -14,6 +15,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -94,6 +96,29 @@ class LeaderboardControllerTest extends BaseControllerTest {
         mockMvc.perform(get("/api/leaderboard/weekly"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray());
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void weekly_startsOnMonday_ofCurrentIctWeek_LBW6() throws Exception {
+        // LBW-6: window is the calendar week in Asia/Ho_Chi_Minh, not a
+        // rolling 7-day. start must be the Monday on/before today (ICT);
+        // end must be today (ICT). Capturing the args verifies both the
+        // calendar-week math and the ICT timezone in one shot.
+        org.mockito.ArgumentCaptor<LocalDate> startCap = org.mockito.ArgumentCaptor.forClass(LocalDate.class);
+        org.mockito.ArgumentCaptor<LocalDate> endCap = org.mockito.ArgumentCaptor.forClass(LocalDate.class);
+        when(udpRepository.findWeeklyLeaderboard(startCap.capture(), endCap.capture(), eq(20), eq(0)))
+                .thenReturn(List.of());
+
+        mockMvc.perform(get("/api/leaderboard/weekly")).andExpect(status().isOk());
+
+        LocalDate today = GameClock.today();
+        LocalDate expectedStart = GameClock.weekStart(today);
+        org.junit.jupiter.api.Assertions.assertEquals(expectedStart, startCap.getValue(),
+                "weekly start must be Monday of the current ICT week");
+        org.junit.jupiter.api.Assertions.assertEquals(DayOfWeek.MONDAY, startCap.getValue().getDayOfWeek());
+        org.junit.jupiter.api.Assertions.assertEquals(today, endCap.getValue(),
+                "weekly end must be today (ICT) so future zero-point days don't pad the window");
     }
 
     // ── GET /api/leaderboard/monthly ─────────────────────────────────────────

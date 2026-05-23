@@ -11,6 +11,7 @@ import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 import com.biblequiz.modules.user.service.StreakService;
 import com.biblequiz.infrastructure.service.CacheService;
+import com.biblequiz.infrastructure.time.GameClock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,7 +70,7 @@ public class DailyChallengeService {
     @SuppressWarnings("unchecked")
     public List<Question> getDailyQuestions(LocalDate date, String language) {
         if (date == null) {
-            date = LocalDate.now(ZoneOffset.UTC);
+            date = GameClock.today();
         }
         String lang = (language != null && !language.isBlank()) ? language : "vi";
 
@@ -123,7 +124,7 @@ public class DailyChallengeService {
      * Get today's daily questions (convenience method).
      */
     public List<Question> getTodayQuestions(String language) {
-        return getDailyQuestions(LocalDate.now(ZoneOffset.UTC), language);
+        return getDailyQuestions(GameClock.today(), language);
     }
 
     public List<Question> getTodayQuestions() {
@@ -134,7 +135,7 @@ public class DailyChallengeService {
      * Check if a user has completed today's challenge.
      */
     public boolean hasCompletedToday(String userId) {
-        String key = CACHE_KEY_PREFIX + "completed:" + userId + ":" + LocalDate.now(ZoneOffset.UTC);
+        String key = CACHE_KEY_PREFIX + "completed:" + userId + ":" + GameClock.today();
         return cacheService.exists(key);
     }
 
@@ -153,7 +154,7 @@ public class DailyChallengeService {
      */
     @SuppressWarnings("unchecked")
     public Map<String, Object> getResultData(String userId) {
-        String dateStr = LocalDate.now(ZoneOffset.UTC).toString();
+        String dateStr = GameClock.today().toString();
         String key = CACHE_KEY_PREFIX + "completed:" + userId + ":" + dateStr;
         Optional<Map> cached = cacheService.get(key, Map.class);
         if (cached.isEmpty()) {
@@ -180,7 +181,7 @@ public class DailyChallengeService {
         response.put("xpMinCorrect", DAILY_XP_MIN_CORRECT);
         response.put("completedAt", payload.get("completedAt"));
         // ISO-8601 instant — FE parses with new Date(...) for the countdown.
-        response.put("nextResetAt", LocalDate.now(ZoneOffset.UTC)
+        response.put("nextResetAt", GameClock.today()
                 .plusDays(1).atStartOfDay().toInstant(ZoneOffset.UTC).toString());
         return response;
     }
@@ -201,7 +202,7 @@ public class DailyChallengeService {
      */
     @Transactional
     public void markCompleted(String userId, int score, int correctCount) {
-        String dateStr = LocalDate.now(ZoneOffset.UTC).toString();
+        String dateStr = GameClock.today().toString();
         String key = CACHE_KEY_PREFIX + "completed:" + userId + ":" + dateStr;
         boolean xpEarned = correctCount >= DAILY_XP_MIN_CORRECT;
         Map<String, Object> result = new java.util.HashMap<>();
@@ -225,7 +226,7 @@ public class DailyChallengeService {
         // unique (user_id, date) constraint: re-completing the same day is a
         // no-op at the DB level.
         try {
-            LocalDate today = LocalDate.now(ZoneOffset.UTC);
+            LocalDate today = GameClock.today();
             if (dailyCompletionRepository.findByUserIdAndCompletionDate(user.getId(), today).isEmpty()) {
                 DailyCompletion completion = new DailyCompletion(
                         UUID.randomUUID().toString(), user, today,
@@ -273,7 +274,7 @@ public class DailyChallengeService {
      * canonical per-day points ledger.
      */
     private void creditCompletionXp(User user) {
-        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        LocalDate today = GameClock.today();
         UserDailyProgress udp = userDailyProgressRepository
                 .findByUserIdAndDate(user.getId(), today)
                 .orElseGet(() -> {
@@ -318,7 +319,7 @@ public class DailyChallengeService {
      */
     public List<Map<String, Object>> getHistory(String userIdOrEmail, int days) {
         int safeDays = Math.max(1, Math.min(90, days));
-        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        LocalDate today = GameClock.today();
         LocalDate start = today.minusDays(safeDays - 1L);
 
         Optional<String> uid = resolveUserId(userIdOrEmail);
@@ -355,7 +356,7 @@ public class DailyChallengeService {
      * frontend hides the recap block in that case (per design spec).
      */
     public Map<String, Object> getYesterdaySummary(String userIdOrEmail) {
-        LocalDate yesterday = LocalDate.now(ZoneOffset.UTC).minusDays(1);
+        LocalDate yesterday = GameClock.today().minusDays(1);
         Optional<String> uid = resolveUserId(userIdOrEmail);
         if (uid.isEmpty()) {
             return Map.of("completed", false);

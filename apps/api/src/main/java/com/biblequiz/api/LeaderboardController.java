@@ -7,6 +7,7 @@ import com.biblequiz.modules.season.service.SeasonService;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 import com.biblequiz.infrastructure.service.CacheService;
+import com.biblequiz.infrastructure.time.GameClock;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,7 +17,6 @@ import org.springframework.security.core.Authentication;
 
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import java.time.LocalDate;
-import java.time.ZoneOffset;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -61,7 +61,7 @@ public class LeaderboardController {
             @RequestParam(value = "date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "20") int size) {
-        LocalDate d = date != null ? date : LocalDate.now(ZoneOffset.UTC);
+        LocalDate d = date != null ? date : GameClock.today();
         String cacheKey = CacheService.LEADERBOARD_CACHE_PREFIX + "daily:" + d + ":p" + page + ":s" + size;
         Optional<List> cached = cacheService.get(cacheKey, List.class);
         if (cached.isPresent()) {
@@ -73,13 +73,21 @@ public class LeaderboardController {
         return ResponseEntity.ok(result);
     }
 
+    /**
+     * Weekly leaderboard — LBW-5 + LBW-6: window is the current calendar
+     * week in Asia/Ho_Chi_Minh, starting Monday 00:00 ICT. Previously was
+     * a rolling 7-day UTC window which (a) never visibly reset and (b)
+     * mis-attributed boundary plays for VN users by 7 hours. End date is
+     * clamped to today so an in-flight week doesn't include future
+     * zero-point days.
+     */
     @GetMapping("/weekly")
     @SuppressWarnings("unchecked")
     public ResponseEntity<List<Map<String, Object>>> weekly(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "20") int size) {
-        LocalDate end = LocalDate.now(ZoneOffset.UTC);
-        LocalDate start = end.minusDays(6);
+        LocalDate end = GameClock.today();
+        LocalDate start = GameClock.weekStart(end);
         String cacheKey = CacheService.LEADERBOARD_CACHE_PREFIX + "weekly:" + start + ":" + end + ":p" + page + ":s" + size;
         Optional<List> cached = cacheService.get(cacheKey, List.class);
         if (cached.isPresent()) {
@@ -96,7 +104,7 @@ public class LeaderboardController {
     public ResponseEntity<List<Map<String, Object>>> monthly(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "20") int size) {
-        LocalDate end = LocalDate.now(ZoneOffset.UTC);
+        LocalDate end = GameClock.today();
         LocalDate start = end.withDayOfMonth(1);
         String cacheKey = CacheService.LEADERBOARD_CACHE_PREFIX + "monthly:" + start + ":" + end + ":p" + page + ":s" + size;
         Optional<List> cached = cacheService.get(cacheKey, List.class);
@@ -141,7 +149,7 @@ public class LeaderboardController {
             return ResponseEntity.ok(Collections.emptyList());
         }
         Season s = activeSeason.get();
-        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        LocalDate today = GameClock.today();
         LocalDate end = today.isBefore(s.getEndDate()) ? today : s.getEndDate();
         LocalDate start = s.getStartDate();
         String cacheKey = CacheService.LEADERBOARD_CACHE_PREFIX + "season:" + s.getId() + ":" + start + ":" + end + ":p" + page + ":s" + size;
@@ -178,7 +186,7 @@ public class LeaderboardController {
             return ResponseEntity.ok(null);
         }
 
-        LocalDate targetDate = date != null ? date : LocalDate.now(ZoneOffset.UTC);
+        LocalDate targetDate = date != null ? date : GameClock.today();
         String email = resolveEmail(authentication);
         User user = userRepository.findByEmail(email).orElse(null);
 
@@ -216,8 +224,8 @@ public class LeaderboardController {
             return ResponseEntity.ok(null);
         }
 
-        LocalDate end = LocalDate.now(ZoneOffset.UTC);
-        LocalDate weekStart = end.minusDays(6);
+        LocalDate end = GameClock.today();
+        LocalDate weekStart = GameClock.weekStart(end);
 
         int myPoints = udpRepository.findByUserIdAndDateBetween(user.getId(), weekStart, end)
                 .stream()
@@ -251,7 +259,7 @@ public class LeaderboardController {
             return ResponseEntity.ok(null);
         }
 
-        LocalDate end = LocalDate.now(ZoneOffset.UTC);
+        LocalDate end = GameClock.today();
         LocalDate monthStart = end.withDayOfMonth(1);
 
         int myPoints = udpRepository.findByUserIdAndDateBetween(user.getId(), monthStart, end)
@@ -291,7 +299,7 @@ public class LeaderboardController {
         }
 
         Season s = activeSeason.get();
-        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        LocalDate today = GameClock.today();
         LocalDate end = today.isBefore(s.getEndDate()) ? today : s.getEndDate();
         LocalDate start = s.getStartDate();
 

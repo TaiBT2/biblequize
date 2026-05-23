@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.biblequiz.modules.quiz.entity.UserQuestionHistory;
 import com.biblequiz.modules.quiz.repository.UserQuestionHistoryRepository;
 import com.biblequiz.infrastructure.exception.BusinessLogicException;
+import com.biblequiz.infrastructure.time.GameClock;
 import com.biblequiz.modules.ranked.service.UserTierService;
 
 import java.time.LocalDateTime;
@@ -532,7 +533,7 @@ public class SessionService {
         // continue working for non-ranked play.
         boolean grantPoints = false;
 
-        java.time.LocalDate today = java.time.LocalDate.now(java.time.ZoneOffset.UTC);
+        java.time.LocalDate today = GameClock.today();
         com.biblequiz.modules.quiz.entity.UserDailyProgress udp = userDailyProgressRepository
                 .findByUserIdAndDate(user.getId(), today)
                 .orElseGet(() -> {
@@ -908,7 +909,7 @@ public class SessionService {
     }
 
     private void deductEnergy(String userId, int amount) {
-        var today = java.time.LocalDate.now(java.time.ZoneOffset.UTC);
+        var today = GameClock.today();
         userDailyProgressRepository.findByUserIdAndDate(userId, today).ifPresent(udp -> {
             int current = udp.getLivesRemaining() != null ? udp.getLivesRemaining() : 100;
             udp.setLivesRemaining(Math.max(0, current - amount));

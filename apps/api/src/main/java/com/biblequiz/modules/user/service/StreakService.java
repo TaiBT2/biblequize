@@ -1,5 +1,6 @@
 package com.biblequiz.modules.user.service;
 
+import com.biblequiz.infrastructure.time.GameClock;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 
@@ -40,7 +41,7 @@ public class StreakService {
      * Same-day calls are idempotent (early return when lastPlayedAt is today).
      */
     public void recordActivity(User user) {
-        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        LocalDate today = GameClock.today();
         LocalDateTime lastPlayed = user.getLastPlayedAt();
 
         if (lastPlayed != null) {

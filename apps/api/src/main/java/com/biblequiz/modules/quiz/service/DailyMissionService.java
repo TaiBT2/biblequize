@@ -1,5 +1,6 @@
 package com.biblequiz.modules.quiz.service;
 
+import com.biblequiz.infrastructure.time.GameClock;
 import com.biblequiz.modules.quiz.entity.DailyMission;
 import com.biblequiz.modules.quiz.repository.DailyMissionRepository;
 import com.biblequiz.modules.ranked.service.UserTierService;
@@ -76,7 +77,7 @@ public class DailyMissionService {
      */
     @Transactional
     public List<DailyMission> getOrCreateMissions(String userId) {
-        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        LocalDate today = GameClock.today();
         List<DailyMission> existing = missionRepository.findByUserIdAndDateOrderByMissionSlot(userId, today);
 
         if (!existing.isEmpty()) {
@@ -113,7 +114,7 @@ public class DailyMissionService {
      */
     @Transactional
     public void trackProgress(String userId, String missionType, int increment) {
-        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        LocalDate today = GameClock.today();
         List<DailyMission> missions = missionRepository.findByUserIdAndDateOrderByMissionSlot(userId, today);
 
         for (DailyMission m : missions) {
@@ -140,7 +141,7 @@ public class DailyMissionService {
      */
     @Transactional
     public void trackComboProgress(String userId, String missionType, boolean correct) {
-        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        LocalDate today = GameClock.today();
         List<DailyMission> missions = missionRepository.findByUserIdAndDateOrderByMissionSlot(userId, today);
 
         for (DailyMission m : missions) {
@@ -185,7 +186,7 @@ public class DailyMissionService {
      */
     public Map<String, Object> getMissionsResponse(String userId) {
         List<DailyMission> missions = getOrCreateMissions(userId);
-        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        LocalDate today = GameClock.today();
 
         boolean allCompleted = missions.stream().allMatch(DailyMission::isCompleted);
         boolean bonusClaimed = missions.stream().anyMatch(DailyMission::isBonusClaimed);

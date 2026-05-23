@@ -26,6 +26,7 @@ import com.biblequiz.modules.ranked.service.RankedSessionService.Progress;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.biblequiz.infrastructure.time.GameClock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -180,7 +181,7 @@ public class RankedController {
         String sessionId = "ranked-" + System.currentTimeMillis();
 
         Progress p = new Progress();
-        p.date = LocalDate.now(ZoneOffset.UTC).toString();
+        p.date = GameClock.today().toString();
 
         // Sync with database progress if user is authenticated
         if (authentication != null) {
@@ -459,7 +460,7 @@ public class RankedController {
                 if (email != null) {
                     User user = email != null ? userRepository.findByEmail(email).orElse(null) : null;
                     if (user != null) {
-                        UserDailyProgress udp = udpRepository.findByUserIdAndDate(user.getId(), LocalDate.now(ZoneOffset.UTC)).orElse(null);
+                        UserDailyProgress udp = udpRepository.findByUserIdAndDate(user.getId(), GameClock.today()).orElse(null);
                         if (udp != null && udp.getLastUpdatedAt() != null) {
                             p.livesRemaining = recoverEnergy(p.livesRemaining, udp.getLastUpdatedAt());
                         }
@@ -518,7 +519,7 @@ public class RankedController {
                 if (currentQ != null && currentQ.getBook() != null
                         && featureFlagService.isLiturgicalCoverageEnabled(resolvedUserId)) {
                     isInSeasonBook = liturgicalSeasonService
-                            .isInSeasonFocus(LocalDate.now(ZoneOffset.UTC), currentQ.getBook());
+                            .isInSeasonFocus(GameClock.today(), currentQ.getBook());
                 }
 
                 com.biblequiz.modules.ranked.service.ScoringService.ScoreResult score =
@@ -604,7 +605,7 @@ public class RankedController {
                             }
                         }
 
-                        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+                        LocalDate today = GameClock.today();
                         UserDailyProgress udp = udpRepository.findByUserIdAndDate(user.getId(), today)
                                 .orElse(new UserDailyProgress(UUID.randomUUID().toString(), user, today));
 
@@ -752,7 +753,7 @@ public class RankedController {
                 if (email2 != null) {
                     User user = userRepository.findByEmail(email2).orElse(null);
                     if (user != null) {
-                        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+                        LocalDate today = GameClock.today();
                         UserDailyProgress udp = udpRepository.findByUserIdAndDate(user.getId(), today).orElse(null);
                         if (udp != null) {
                             p.pointsToday = udp.getPointsCounted();
@@ -854,14 +855,14 @@ public class RankedController {
     @GetMapping("/me/ranked-status")
     public ResponseEntity<Map<String, Object>> getRankedStatus(Authentication authentication) {
         Progress p = new Progress();
-        p.date = LocalDate.now(ZoneOffset.UTC).toString();
+        p.date = GameClock.today().toString();
 
         try {
             String email = resolveEmail(authentication);
             if (email != null) {
                 User user = userRepository.findByEmail(email).orElse(null);
                 if (user != null) {
-                    LocalDate today = LocalDate.now(ZoneOffset.UTC);
+                    LocalDate today = GameClock.today();
                     java.util.Optional<UserDailyProgress> opt = udpRepository.findByUserIdAndDate(user.getId(), today);
                     if (opt.isPresent()) {
                         UserDailyProgress udp = opt.get();
@@ -960,7 +961,7 @@ public class RankedController {
         } catch (Exception ignore) {
         }
         Map<String, Object> body = new HashMap<>();
-        body.put("date", p.date != null ? p.date : LocalDate.now(ZoneOffset.UTC).toString());
+        body.put("date", p.date != null ? p.date : GameClock.today().toString());
         body.put("livesRemaining", p.livesRemaining);
         body.put("questionsCounted", p.questionsCounted);
         body.put("pointsToday", p.pointsToday);
@@ -981,7 +982,7 @@ public class RankedController {
             if (email != null) {
                 User user = userRepository.findByEmail(email).orElse(null);
                 if (user != null) {
-                    LocalDate today = LocalDate.now(ZoneOffset.UTC);
+                    LocalDate today = GameClock.today();
                     java.util.Optional<UserDailyProgress> opt = udpRepository.findByUserIdAndDate(user.getId(), today);
                     if (opt.isPresent()) {
                         java.util.List<String> asked = opt.get().getAskedQuestionIds();
@@ -1006,7 +1007,7 @@ public class RankedController {
             if (accuracyEmail != null) {
                 User accuracyUser = userRepository.findByEmail(accuracyEmail).orElse(null);
                 if (accuracyUser != null) {
-                    LocalDate today = LocalDate.now(ZoneOffset.UTC);
+                    LocalDate today = GameClock.today();
                     LocalDateTime todayStart = today.atStartOfDay();
                     LocalDateTime tomorrowStart = today.plusDays(1).atStartOfDay();
                     long total = answerRepository.countRankedAnswersByUserBetween(
@@ -1034,7 +1035,7 @@ public class RankedController {
             if (deltaEmail != null) {
                 User deltaUser = userRepository.findByEmail(deltaEmail).orElse(null);
                 if (deltaUser != null) {
-                    LocalDate today = LocalDate.now(ZoneOffset.UTC);
+                    LocalDate today = GameClock.today();
                     LocalDate yesterday = today.minusDays(1);
                     java.util.Optional<UserDailyProgress> todayUdp =
                             udpRepository.findByUserIdAndDate(deltaUser.getId(), today);
@@ -1172,7 +1173,7 @@ public class RankedController {
                 return ResponseEntity.status(404).body(Map.of("error", "User not found"));
             }
 
-            LocalDate today = LocalDate.now(ZoneOffset.UTC);
+            LocalDate today = GameClock.today();
             java.util.Optional<UserDailyProgress> udpOpt = udpRepository.findByUserIdAndDate(user.getId(), today);
             if (udpOpt.isPresent()) {
                 UserDailyProgress udp = udpOpt.get();
