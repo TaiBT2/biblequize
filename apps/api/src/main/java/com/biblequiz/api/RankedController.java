@@ -669,7 +669,7 @@ public class RankedController {
                         }
 
                         // Invalidate leaderboard cache after score update
-                        cacheService.deletePattern(com.biblequiz.infrastructure.service.CacheService.LEADERBOARD_CACHE_PREFIX + "*");
+                        cacheService.invalidateLeaderboards();
 
                         // Update season ranking if active season exists
                         if (earned > 0) {

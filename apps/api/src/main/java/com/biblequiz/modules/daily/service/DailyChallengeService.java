@@ -288,6 +288,11 @@ public class DailyChallengeService {
         udp.setPointsCounted(before + DAILY_COMPLETION_XP);
         userDailyProgressRepository.save(udp);
 
+        // LBW-4: Daily Challenge XP changes the user's daily / weekly /
+        // season / all-time totals; drop the cached slices so the FE
+        // doesn't show a stale rank for the next 60s.
+        cacheService.invalidateLeaderboards();
+
         log.info("Daily completion XP: user={} +{} XP (pointsCounted {}→{})",
                 user.getId(), DAILY_COMPLETION_XP, before, before + DAILY_COMPLETION_XP);
     }

@@ -36,7 +36,12 @@ public class CacheService {
     private static final Duration DEFAULT_TTL = Duration.ofMinutes(30);
     private static final Duration QUESTIONS_TTL = Duration.ofHours(1);
     private static final Duration USER_SESSION_TTL = Duration.ofMinutes(15);
-    private static final Duration LEADERBOARD_TTL = Duration.ofMinutes(5);
+    // LBW-4: shortened from 5 min to 60s so users see their rank update
+    // shortly after a Ranked / Daily Challenge submit. Writers also
+    // invalidate the cache explicitly via {@link #invalidateLeaderboards()};
+    // the TTL is the upper bound (a backstop for cases where invalidation
+    // didn't fire, e.g. season ticker, prestige reset).
+    private static final Duration LEADERBOARD_TTL = Duration.ofSeconds(60);
     private static final Duration QOTD_TTL = Duration.ofDays(1);
     
     public <T> void put(String key, T value) {
@@ -150,6 +155,18 @@ public class CacheService {
     public <T> Optional<T> getCachedLeaderboard(String period, Class<T> type) {
         String key = LEADERBOARD_CACHE_PREFIX + period;
         return get(key, type);
+    }
+
+    /**
+     * LBW-4: drop every cached leaderboard slice. Call after writing a row
+     * that affects ranking (ranked answer submit, daily-challenge XP, season
+     * adjustment). Wildcard pattern covers daily / weekly / monthly / season
+     * / all-time variants regardless of date and pagination params.
+     *
+     * <p>Best-effort — Redis errors are swallowed inside {@link #deletePattern}.
+     */
+    public void invalidateLeaderboards() {
+        deletePattern(LEADERBOARD_CACHE_PREFIX + "*");
     }
     
     public void cacheQuestionOfTheDay(String language, Object question) {
