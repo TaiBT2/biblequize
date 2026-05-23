@@ -277,14 +277,21 @@ public class RoomWebSocketController {
             // Broadcast answer submitted với pointsEarned
             // Sequential mode: hide isCorrect from broadcast — chỉ reveal sau khi all-answered
             boolean broadcastIsCorrect = mode != Room.RoomMode.GROUP_LIVE_SEQUENTIAL && isCorrect;
-            Map<String, Object> answerData = Map.of(
-                    "playerId", user.getId(),
-                    "username", user.getName(),
-                    "questionIndex", questionIndex,
-                    "answerIndex", answerIndex,
-                    "reactionTimeMs", reactionTimeMs,
-                    "isCorrect", broadcastIsCorrect,
-                    "pointsEarned", mode == Room.RoomMode.GROUP_LIVE_SEQUENTIAL ? 0 : finalPoints);
+            // BUG FIX 2026-05-23: Map.of throws NPE nếu user.getName() null,
+            // khiến ANSWER_SUBMITTED không broadcast → host UI "Tình trạng trả
+            // lời" mãi 0/N. SCORE_UPDATE đi trước (broadcastScoreUpdate có
+            // fallback "Unknown" line 392) nên scoreboard vẫn render được —
+            // gây inconsistency. Dùng HashMap allow null + fallback rõ ràng.
+            String displayName = user.getName() != null ? user.getName()
+                    : playerOpt.map(p -> p.getUsername()).orElse("Unknown");
+            Map<String, Object> answerData = new java.util.HashMap<>();
+            answerData.put("playerId", user.getId());
+            answerData.put("username", displayName);
+            answerData.put("questionIndex", questionIndex);
+            answerData.put("answerIndex", answerIndex);
+            answerData.put("reactionTimeMs", reactionTimeMs);
+            answerData.put("isCorrect", broadcastIsCorrect);
+            answerData.put("pointsEarned", mode == Room.RoomMode.GROUP_LIVE_SEQUENTIAL ? 0 : finalPoints);
             WebSocketMessage.Message message = new WebSocketMessage.Message(
                     WebSocketMessage.MessageTypes.ANSWER_SUBMITTED, answerData);
             messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
