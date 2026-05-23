@@ -16,6 +16,26 @@
 -- Migration order: apply V63 (user data tables) → deploy app with updated
 -- seed JSON → next boot QuestionSeeder syncs the questions table.
 
+-- Pre-step: self-heal user_book_progress when missing.
+-- Historically this table existed only via Hibernate ddl-auto on dev/test
+-- machines — no migration ever created it. Prod (ddl-auto=none) hit a
+-- crash loop here on 2026-05-23 because the UPDATE below referenced a
+-- table Flyway had never built. Create-if-missing so V63 is reproducible
+-- on a fresh DB and any other env that drifted off the entity schema.
+-- Schema mirrors entity UserBookProgress.java.
+CREATE TABLE IF NOT EXISTS user_book_progress (
+    id VARCHAR(36) NOT NULL,
+    user_id VARCHAR(36) NOT NULL,
+    book VARCHAR(100) NOT NULL,
+    answered_count INT NOT NULL DEFAULT 0,
+    correct_count INT NOT NULL DEFAULT 0,
+    unique_question_ids JSON,
+    PRIMARY KEY (id),
+    KEY idx_ubp_user (user_id),
+    KEY idx_ubp_user_book (user_id, book),
+    CONSTRAINT fk_ubp_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- 1. user_book_progress — flat string column
 UPDATE user_book_progress
 SET book = 'Song of Songs'
