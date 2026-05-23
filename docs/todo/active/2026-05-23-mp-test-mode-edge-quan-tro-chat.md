@@ -60,7 +60,7 @@
   - Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-sequential.spec.ts`
 
 - MPM-8 Chat over STOMP
-  - Status: `[ ]` TODO · Spec: archive task 2026-04-25 room-chat
+  - Status: `[x]` DONE — pending commit (3 cases): broadcast contract, empty/whitespace drop, >500-char trim.
   - Sub-cases: send → broadcast tới mọi subscriber; rate limit (TBD); max chars; chat trong IN_PROGRESS OK; history fetch khi rejoin
   - Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-chat.spec.ts`
 

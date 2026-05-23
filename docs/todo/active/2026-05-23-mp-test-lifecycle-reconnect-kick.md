@@ -24,7 +24,7 @@
   - Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-lifecycle.spec.ts`
 
 - MPL-2 Reconnect during 60s grace
-  - Status: `[ ]` TODO · Spec: SPEC_MULTIPLAYER §6.1
+  - Status: `[x]` DONE — commit 578168c9 (2 cases): IN_PROGRESS /leave → LEFT preserved → /join → ACTIVE flip; LOBBY /leave deletes row.
   - Detail: mid-game DC → presence listener mark LEFT → reconnect <60s → status flip ACTIVE ([RoomService:120-121](apps/api/src/main/java/com/biblequiz/modules/room/service/RoomService.java#L120-L121)); state rehydrate qua `GET /api/rooms/{id}/current-question`.
   - Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-reconnect.spec.ts`
 
