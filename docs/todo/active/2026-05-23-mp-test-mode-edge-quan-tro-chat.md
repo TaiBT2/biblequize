@@ -28,7 +28,7 @@
   - Files: bổ sung vào `W-M06-quickmatch-sudden-death.spec.ts` (SD-L3-002/003/004 stub đã có)
 
 - MPM-4 TVT team switch IN_PROGRESS rejected + auto-balance
-  - Status: `[ ]` TODO · Spec: §3.3 ([RoomService:249-253](apps/api/src/main/java/com/biblequiz/modules/room/service/RoomService.java#L249))
+  - Status: `[~]` PARTIAL — LOBBY auto-balance + switch-team done (commit 9df3e1df, 2 cases). IN_PROGRESS reject case needs WS to start game → deferred.
   - Sub-cases:
     - LOBBY: POST `/switch-team` OK; IN_PROGRESS: 422 với message rõ ràng
     - Join sequential 4 players → team A=2, B=2 (balanced); 5th player → team với fewer
@@ -41,7 +41,7 @@
   - Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-anti-spoiler.spec.ts`
 
 - MPM-6 Quản trò Sprint 4 controls (5 endpoints)
-  - Status: `[ ]` TODO · Spec: §8 host/*
+  - Status: `[~]` PARTIAL — negatives done (commit 477a1d0d, 3 cases): all-5-reject-on-QM + all-5-reject-non-host + broadcast-length. Happy paths defer (need WS to flip IN_PROGRESS).
   - 5 endpoint × 2 case (happy + unauthorized non-host = 422):
     - `/host/pause` → broadcast GAME_PAUSED, latch chờ ≤5 phút
     - `/host/resume` → broadcast GAME_RESUMED, latch countDown

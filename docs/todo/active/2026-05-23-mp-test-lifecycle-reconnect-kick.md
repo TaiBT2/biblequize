@@ -8,13 +8,13 @@
 
 ### Tasks
 
-- MPL-0 Prerequisite: `WSContext` shared multi-context WS helper
-  - Status: `[ ]` TODO · Files: `apps/web/tests/e2e/helpers/ws-context.ts` (new)
+- MPL-0 Prerequisite: `MultiplayerSession` shared multi-context WS helper
+  - Status: `[x]` DONE — commit 1a0cdbb6. Extended `multiplayer-api.ts` with createQuickMatch/leaveRoom/kickPlayer/switchTeam/host*/getCurrentQuestion. New `multiplayer-session.ts` with fromRoom/readyAll/expectEventOnAll/autoAnswer/disconnectOne/cleanup/summary.
   - Detail: trừu tượng pattern từ `W-M06-survival-50p.spec.ts` — N browser contexts, STOMP connect, `subscribe('/topic/room/{id}')`, send `/app/room/{id}/ready`, listen for events with timeout + fan-out. API: `WSContext({ players, onEvent }).createQuickMatch(...).joinAll().readyAll().startBy(idx).expectEvent('QUESTION_START', n)`.
   - **Spec impact**: `[x]` None · **Spec strategy**: `[x]` (c) `[no-spec-impact]`
 
 - MPL-1 R1–R5 room lifecycle (5 separate cases)
-  - Status: `[ ]` TODO · Spec: SPEC_MULTIPLAYER §4
+  - Status: `[~]` PARTIAL — R1 done (commit 9df3e1df, 2 cases legacy + Quản trò). R2/R4/R5 cần admin time-shift endpoint hoặc thật sự chờ >30/90 min → defer until BE expose test hooks.
   - Sub-cases:
     - R1 empty lobby: tất cả players leave → `currentPlayers=0` → room DELETED
     - R2 idle timeout: lobby idle >30 min → IDLE_TIMEOUT delete (test via time-shift hoặc admin trigger)
@@ -34,7 +34,7 @@
   - Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-anti-cheat.spec.ts`
 
 - MPL-4 Host kick + rejoin-after-kick
-  - Status: `[ ]` TODO · Spec: §8 endpoint
+  - Status: `[x]` DONE — commit 3a712b21 (4 cases). Pinned current behavior: no ban list (kicked user can rejoin).
   - Detail: host POST `/api/rooms/{id}/kick` (LOBBY only) → player removed; kicked user POST `/join` → expect blocked (verify BE actual rule; chưa rõ rule rejoin)
   - Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-kick.spec.ts`
 

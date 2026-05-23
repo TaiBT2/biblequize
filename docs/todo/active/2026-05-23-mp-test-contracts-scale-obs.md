@@ -19,7 +19,7 @@
   - Files: bổ sung `W-M06-quickmatch.spec.ts` happy-path
 
 - MPC-3 Public/private visibility + viewer-aware `joinable`
-  - Status: `[ ]` TODO · Spec: §8 GET /api/rooms/public
+  - Status: `[x]` DONE — commit 56362fbd (2 cases): private hidden, public visible + joinable=true.
   - Detail: `isPublic=false` room KHÔNG xuất hiện trong `/public`; full room → `joinable=false`; IN_PROGRESS room → `joinable=false`; current viewer trong room → status reflect
   - Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-visibility.spec.ts`
 
@@ -29,7 +29,7 @@
   - Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-scoring-boundary.spec.ts`
 
 - MPC-5 ROOM_FULL trên Quick Match
-  - Status: `[ ]` TODO · Spec: extend existing W-M06-L2-005 cho QM
+  - Status: `[x]` DONE — commit 56362fbd (1 case). Annotates finding if BE accepts >10 (current spec §3.1 says 2-10).
   - Detail: SPEED_RACE max=10, 10 player join → 11th nhận error code phù hợp; same cho BR cap nâng 100
   - Files: bổ sung `W-M06-quickmatch.spec.ts`
 
