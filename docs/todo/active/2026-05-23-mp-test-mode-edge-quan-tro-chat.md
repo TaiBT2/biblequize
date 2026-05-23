@@ -15,7 +15,7 @@
   - Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-group-room.spec.ts`
 
 - MPM-2 BR all-wrong amnesty round
-  - Status: `[ ]` TODO · Spec: SPEC_MULTIPLAYER §3.2 (verified 2026-05-09)
+  - Status: `[x]` DONE — commit 166eed20. Deterministic strategy: all players timeout → empty correctAnswerers → amnesty fires; 0 PLAYER_ELIMINATED across 5 rounds.
   - Detail: 3+ ACTIVE players, tất cả sai 1 câu → KHÔNG `PLAYER_ELIMINATED` broadcast; BR_UPDATE.activeCount unchanged; round kế tiếp tiếp tục.
   - Files: bổ sung vào `W-M06-quickmatch-battle-royale.spec.ts` (BR-L3-002 stub đã có)
 

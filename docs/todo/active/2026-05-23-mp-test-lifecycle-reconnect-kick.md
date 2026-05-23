@@ -29,7 +29,7 @@
   - Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-reconnect.spec.ts`
 
 - MPL-3 Anti-cheat: double-submit + LEFT-player answer
-  - Status: `[ ]` TODO · Spec: §3.1, [RoomWebSocketController:191](apps/api/src/main/java/com/biblequiz/api/websocket/RoomWebSocketController.java#L191)
+  - Status: `[~]` PARTIAL — commit a3b1fd57 (2 cases): double-submit + Quản trò host answer reject (both via leaderboard signal since BE silently returns). LEFT-player case deferred — BE check at line 207 only covers ELIMINATED/SPECTATOR, not LEFT.
   - Detail: same `roundId+userId` POST 2x → reject lần 2; player status=LEFT → POST answer reject (status check line 199-202)
   - Files: `apps/web/tests/e2e/happy-path/web-user/W-M06-anti-cheat.spec.ts`
 
