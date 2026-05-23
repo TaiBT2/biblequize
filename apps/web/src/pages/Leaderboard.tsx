@@ -54,9 +54,9 @@ export default function Leaderboard() {
   // surfaced via the countdown header + sidebar widget on the page itself, so
   // information isn't lost — only the tab label stays compact.
   const tabs: { key: Tab; label: string }[] = [
+    { key: 'all_time', label: t('leaderboard.allTime') },
     { key: 'weekly', label: t('leaderboard.weekly') },
     { key: 'season', label: t('leaderboard.season') },
-    { key: 'all_time', label: t('leaderboard.allTime') },
   ]
 
   const { data: tierData } = useQuery({
