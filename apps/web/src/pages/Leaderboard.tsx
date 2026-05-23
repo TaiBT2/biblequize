@@ -25,7 +25,7 @@ const TAB_TO_API_PATH: Record<Tab, string> = {
 
 export default function Leaderboard() {
   const { t } = useTranslation()
-  const [activeTab, setActiveTab] = useState<Tab>('weekly')
+  const [activeTab, setActiveTab] = useState<Tab>('all_time')
   const user = useAuthStore(s => s.user)
   const apiPath = TAB_TO_API_PATH[activeTab]
 

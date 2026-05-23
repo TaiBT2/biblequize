@@ -139,12 +139,15 @@ describe('Leaderboard', () => {
     expect(document.querySelector('.animate-pulse')).toBeInTheDocument()
   })
 
-  it('LB-2.2: default tab fetches /leaderboard/weekly (Daily tab removed)', () => {
+  it('LB-2.2: default tab fetches /leaderboard/all-time (Daily tab removed, default flipped to all-time 2026-05-23)', () => {
     renderLeaderboard()
-    expect(mockApiGet).toHaveBeenCalledWith(expect.stringContaining('/leaderboard/weekly'))
+    expect(mockApiGet).toHaveBeenCalledWith(expect.stringContaining('/leaderboard/all-time'))
     // Daily endpoint should NOT be called from /leaderboard page after Daily tab removal
     const dailyCalls = mockApiGet.mock.calls.filter((call) => String(call[0]).includes('/leaderboard/daily'))
     expect(dailyCalls).toHaveLength(0)
+    // Weekly should also NOT be auto-fetched on first paint now that all-time is default
+    const weeklyCalls = mockApiGet.mock.calls.filter((call) => String(call[0]).includes('/leaderboard/weekly'))
+    expect(weeklyCalls).toHaveLength(0)
   })
 
   it('LB-2.2: tier section subtitle interpolates active season name', async () => {
