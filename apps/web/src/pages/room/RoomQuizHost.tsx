@@ -161,6 +161,34 @@ const RoomQuizHost: React.FC = () => {
     },
   });
 
+  // Rehydrate first question via REST when navigating từ lobby → host view.
+  // Race: BE fires QUESTION_START đúng lúc host page chưa subscribe xong → host
+  // miss câu đầu (player view có cùng pattern ở RoomQuiz.tsx:539). Bug user
+  // report 2026-05-23 ("chỉ có câu đầu ko hiện"). Fallback REST endpoint trả
+  // 200 nếu mid-question, 204 nếu giữa rounds — silent ignore lỗi.
+  useEffect(() => {
+    if (!roomId) return;
+    let cancelled = false;
+    ;(async () => {
+      try {
+        const res = await api.get(`/api/rooms/${roomId}/current-question`);
+        if (cancelled || res.status !== 200 || !res.data?.question) return;
+        const data = res.data.question as {
+          questionIndex: number; totalQuestions: number;
+          question: Question; timeLimit: number; startedAtMs?: number;
+        };
+        // Only seed if state still empty — STOMP event arrived first wins.
+        setQuestion(prev => prev ?? data.question);
+        setQuestionIndex(prev => (prev > 0 ? prev : data.questionIndex));
+        setTotalQuestions(prev => prev || data.totalQuestions);
+        setTimeLimit(prev => prev || data.timeLimit);
+        const elapsedSec = data.startedAtMs ? (Date.now() - data.startedAtMs) / 1000 : 0;
+        setTimeLeft(prev => prev || Math.max(0, data.timeLimit - elapsedSec));
+      } catch { /* 204/error: keep waiting for QUESTION_START */ }
+    })();
+    return () => { cancelled = true; };
+  }, [roomId]);
+
   // Local timer
   useEffect(() => {
     if (timeLeft <= 0 || isPaused) return;
