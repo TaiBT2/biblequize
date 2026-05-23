@@ -12,6 +12,10 @@ public class RankedSessionService {
 
     public static class Progress {
         public String date;
+        /** Owner of the session — used to reject cross-user posts to /answer.
+         *  Null = legacy session created before the field existed; treated
+         *  as un-owned for backwards compatibility. */
+        public String userId;
         public int livesRemaining = 100;  // SPEC-v2: energy (100/day, -5 per wrong)
         public int questionsCounted = 0;
         public int pointsToday = 0;

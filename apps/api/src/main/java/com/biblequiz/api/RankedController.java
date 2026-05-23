@@ -206,6 +206,12 @@ public class RankedController {
         BookProgressionService.BookProgress bookProgress = bookProgressionService.getBookProgress(p.currentBook);
         p.currentBookIndex = bookProgress.currentIndex - 1; // Convert to 0-based index
 
+        // Stamp ownership so /answer can reject cross-user posts (SCD-6).
+        if (authentication != null) {
+            String email = resolveEmail(authentication);
+            User owner = email != null ? userRepository.findByEmail(email).orElse(null) : null;
+            if (owner != null) p.userId = owner.getId();
+        }
         rankedSessionService.save(sessionId, p);
         body.put("sessionId", sessionId);
         body.put("currentBook", p.currentBook);
@@ -453,6 +459,18 @@ public class RankedController {
             } catch (Exception ignore) {
             }
             Progress p = rankedSessionService.getOrCreate(sessionId);
+
+            // SCD-6 — cross-user ownership check. Legacy sessions with null
+            // userId (created before the field existed) bypass for back-compat.
+            if (p.userId != null && authentication != null) {
+                String authEmail = resolveEmail(authentication);
+                User authUser = authEmail != null ? userRepository.findByEmail(authEmail).orElse(null) : null;
+                if (authUser == null || !p.userId.equals(authUser.getId())) {
+                    return ResponseEntity.status(403).body(Map.of(
+                            "error", "SESSION_OWNERSHIP",
+                            "message", "Session belongs to a different user"));
+                }
+            }
 
             // Recover lives based on time elapsed since last activity
             try {

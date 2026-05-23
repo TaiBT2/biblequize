@@ -31,6 +31,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.hamcrest.Matchers.not;
 
 @WebMvcTest(RankedController.class)
 class RankedControllerTest extends BaseControllerTest {
@@ -188,6 +189,81 @@ class RankedControllerTest extends BaseControllerTest {
                 .andExpect(jsonPath("$.sessionId").value("ranked-123"))
                 .andExpect(jsonPath("$.livesRemaining").isNumber())
                 .andExpect(jsonPath("$.currentBook").isNotEmpty());
+    }
+
+    // ── SCD-3: client cannot inflate XP — server always recomputes ─────────
+    //
+    // The /answer endpoint never reads `score`/`earned`/`correctCount` from
+    // the payload. Pin this contract by sending an enormous fake score and
+    // asserting response.earned matches the (mocked) server computation.
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void submitRankedAnswer_clientFakeScoreInPayload_isIgnored() throws Exception {
+        RankedSessionService.Progress progress = new RankedSessionService.Progress();
+        progress.livesRemaining = 100;
+        progress.questionsCounted = 5;
+        progress.pointsToday = 50;
+        progress.currentBook = "Genesis";
+        when(rankedSessionService.getOrCreate(anyString())).thenReturn(progress);
+
+        com.biblequiz.modules.quiz.entity.Question question = new com.biblequiz.modules.quiz.entity.Question();
+        question.setId("q-1");
+        question.setType(com.biblequiz.modules.quiz.entity.Question.Type.multiple_choice_single);
+        question.setCorrectAnswer(List.of(0));
+        when(questionRepository.findById("q-1")).thenReturn(Optional.of(question));
+        when(scoringService.validateMultipleChoiceSingle(any(), any())).thenReturn(true);
+
+        // Server computes earned=10; client claims 99999 → server's value must win.
+        ScoringService.ScoreResult scoreResult = new ScoringService.ScoreResult(10, 8, 2, 100, false);
+        when(scoringService.calculateWithTier(any(), anyInt(), anyInt(), anyBoolean(), anyInt(), anyBoolean(), anyBoolean()))
+                .thenReturn(scoreResult);
+        when(bookProgressionService.shouldAdvanceToNextBook(anyString(), anyInt(), anyInt())).thenReturn(false);
+
+        mockMvc.perform(post("/api/ranked/sessions/ranked-cheat/answer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"questionId\":\"q-1\",\"answer\":0,\"clientElapsedMs\":5000,"
+                                + "\"score\":99999,\"earned\":99999,\"correctCount\":42}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.earned").value(10))
+                .andExpect(jsonPath("$.earned").value(not(99999)))
+                .andExpect(jsonPath("$.pointsToday").value(60)); // 50 + 10, not 50 + 99999
+    }
+
+    // ── SCD-6: cross-user sessionId is rejected with 403 ───────────────────
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void submitRankedAnswer_sessionOwnedByOtherUser_returns403() throws Exception {
+        RankedSessionService.Progress progress = new RankedSessionService.Progress();
+        progress.userId = "user-other"; // session stamped to a different user
+        progress.livesRemaining = 100;
+        when(rankedSessionService.getOrCreate(anyString())).thenReturn(progress);
+
+        mockMvc.perform(post("/api/ranked/sessions/ranked-victim/answer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"questionId\":\"q-1\",\"answer\":0}"))
+                .andExpect(status().isForbidden())
+                .andExpect(jsonPath("$.error").value("SESSION_OWNERSHIP"));
+    }
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void submitRankedAnswer_legacySessionWithNullUserId_isAllowed() throws Exception {
+        // Sessions created before the userId field existed have userId=null.
+        // The check must not reject them (back-compat) — assert it falls
+        // through to the normal blocked/answer path instead of 403.
+        RankedSessionService.Progress progress = new RankedSessionService.Progress();
+        progress.userId = null;
+        progress.livesRemaining = 0; // forces the blocked branch → 200 with blocked=true
+        progress.questionsCounted = 100;
+        when(rankedSessionService.getOrCreate(anyString())).thenReturn(progress);
+
+        mockMvc.perform(post("/api/ranked/sessions/ranked-legacy/answer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"questionId\":\"q-1\",\"answer\":0}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.blocked").value(true));
     }
 
     @Test
