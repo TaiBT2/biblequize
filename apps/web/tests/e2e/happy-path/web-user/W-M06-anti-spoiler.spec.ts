@@ -19,8 +19,10 @@
 
 import { test, expect } from '@playwright/test'
 import {
-  provisionUsers, createQuickMatch, getCurrentQuestion, deleteRoom,
+  provisionUsers, createRoom, createQuickMatch, getCurrentQuestion,
+  joinRoom, startRoom, deleteRoom,
 } from '../../helpers/multiplayer-api'
+import { MultiplayerSession } from '../../helpers/multiplayer-session'
 
 const API_URL = process.env.PLAYWRIGHT_API_URL ?? 'http://localhost:8080'
 
@@ -96,6 +98,58 @@ test.describe('W-M06-MPM-5 Quick Match anti-spoiler @happy-path @multiplayer @qu
       expect(leaked, `GET /rooms/{id} leaked at ${leaked}`).toBeNull()
     } finally {
       await deleteRoom(host.token, roomId)
+    }
+  })
+
+  test('W-M06-MPM-5-004: QUESTION_START WS payload KHÔNG chứa correctAnswer (regression for fb3ecfad) @write @serial @websocket', async () => {
+    // Regression test cho security fix 2026-05-23: trước fix, BE đẩy
+    // Question.correctAnswer vào DTO của QUESTION_START — Quản trò
+    // subscribe /topic/room/{id} thấy đáp án trước player. Fix bỏ field
+    // khỏi buildQuestionDto. Test này CATCH bug nếu regression.
+    test.setTimeout(60_000)
+
+    const [host] = await provisionUsers('e2e-spoiler-ws-host-', 1)
+    const players = await provisionUsers('e2e-spoiler-ws-player-', 2)
+    let session: MultiplayerSession | undefined
+    let roomId: string | undefined
+
+    try {
+      const room = await createRoom(host.token, {
+        roomName: 'E2E spoiler WS regression',
+        mode: 'SPEED_RACE', maxPlayers: 4,
+        questionCount: 3, timePerQuestion: 30,
+        hostPlaysGame: false, // Quản trò mode — host is the spoiler victim
+      })
+      roomId = room.id
+
+      for (const p of players) await joinRoom(p.token, room.roomCode)
+      session = await MultiplayerSession.fromRoom(host, players, room.id)
+      session.readyAll()
+      await expect
+        .poll(async () => {
+          const r = await fetch(
+            `${API_URL}/api/rooms/${room.id}`,
+            { headers: { Authorization: `Bearer ${host.token}` } },
+          )
+          return (await r.json()).room.players.filter((p: { isReady: boolean }) => p.isReady).length
+        }, { timeout: 20_000, intervals: [400] })
+        .toBe(2)
+
+      await startRoom(host.token, room.id)
+      const qs = await session.waitForObserver('QUESTION_START', 15_000)
+
+      // ── Regression assertion ─────────────────────────────────────────
+      // The QUESTION_START payload.question MUST NOT carry correctAnswer.
+      // If this fails: the security fix was reverted / a code path bypasses
+      // buildQuestionDto and re-leaks the answer to host topic.
+      const questionPayload = (qs.data as { question?: Record<string, unknown> }).question
+      expect(questionPayload, 'QUESTION_START must include question DTO').toBeTruthy()
+      expect(questionPayload, 'QUESTION_START.question must NOT contain correctAnswer (anti-spoiler)')
+        .not.toHaveProperty('correctAnswer')
+      expect(questionPayload, 'also no correctIndex leak').not.toHaveProperty('correctIndex')
+    } finally {
+      if (session) await session.cleanup()
+      if (roomId) await deleteRoom(host.token, roomId)
     }
   })
 
