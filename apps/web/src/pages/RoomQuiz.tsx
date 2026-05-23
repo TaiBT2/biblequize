@@ -312,7 +312,11 @@ const RoomQuiz: React.FC = () => {
           const d = msg.data as { userId: string; username: string; rank: number; activeRemaining: number };
           addToast(d.username, d.rank);
           setActiveCount(d.activeRemaining);
-          if (d.username === myUsername) {
+          // Identity check by userId (NOT username) — display names can
+          // collide hoặc lệch localStorage.userName, khiến eliminated
+          // player KHÔNG thấy màn "Bạn bị loại" → tưởng vẫn chơi
+          // (bug 2026-05-23 user report). userId là server-side stable.
+          if (d.userId === myUserId) {
             setIsEliminated(true);
             setMyRank(d.rank);
             setShowEliminationScreen(true);
