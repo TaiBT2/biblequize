@@ -82,8 +82,22 @@ const RoomQuizHost: React.FC = () => {
           setTimeLimit(d.timeLimit);
           setTimeLeft(d.timeLimit);
           setQuestion(d.question);
-          setCorrectIndex(typeof d.question?.correctAnswer === 'number' ? d.question.correctAnswer : null);
+          // Anti-spoiler 2026-05-23: BE đã bỏ correctAnswer khỏi QUESTION_START
+          // payload (Quản trò subscribe cùng /topic/room/{id} sẽ thấy đáp án
+          // trước player). Reveal chỉ sau ROUND_END / QUESTION_REVEALED.
+          setCorrectIndex(null);
           setLiveAnswers({}); // reset for new round
+          break;
+        }
+        case 'ROUND_END': {
+          const d = msg.data as { correctIndex: number; leaderboard?: unknown };
+          if (typeof d.correctIndex === 'number') setCorrectIndex(d.correctIndex);
+          break;
+        }
+        case 'QUESTION_REVEALED': {
+          // GROUP_LIVE_SEQUENTIAL reveal — same correctIndex field.
+          const d = msg.data as { correctIndex: number };
+          if (typeof d.correctIndex === 'number') setCorrectIndex(d.correctIndex);
           break;
         }
         case 'ANSWER_SUBMITTED': {

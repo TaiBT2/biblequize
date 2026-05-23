@@ -557,6 +557,14 @@ public class RoomQuizService {
         return q;
     }
 
+    /**
+     * Anti-spoiler (security fix 2026-05-23): KHÔNG include correctAnswer
+     * trong QUESTION_START broadcast — Quản trò screen subscribe vào cùng
+     * topic /topic/room/{id} sẽ thấy đáp án trước khi player kịp trả lời.
+     * Đáp án chỉ broadcast qua ROUND_END.correctIndex / QUESTION_REVEALED
+     * sau khi round đóng. Server-side scoring vẫn dùng Question.correctAnswer
+     * trực tiếp từ entity — không cần đẩy vào DTO.
+     */
     private Map<String, Object> buildQuestionDto(Question q) {
         Map<String, Object> dto = new HashMap<>();
         dto.put("id", q.getId());
@@ -565,11 +573,14 @@ public class RoomQuizService {
         dto.put("type", q.getType() != null ? q.getType().name() : "multiple_choice_single");
         dto.put("book", q.getBook());
         dto.put("chapter", q.getChapter());
-        dto.put("correctAnswer", q.getCorrectAnswer() != null && !q.getCorrectAnswer().isEmpty()
-                ? q.getCorrectAnswer().get(0) : 0);
+        // INTENTIONAL: no "correctAnswer" — see method javadoc.
         return dto;
     }
 
+    /**
+     * Same anti-spoiler rule as {@link #buildQuestionDto}. Currently dead
+     * code (no caller) but kept for parity if UserQuestion path is wired.
+     */
     private Map<String, Object> buildQuestionDtoFromUserQuestion(UserQuestion q) {
         Map<String, Object> dto = new HashMap<>();
         dto.put("id", q.getId());
@@ -578,7 +589,7 @@ public class RoomQuizService {
         dto.put("type", "multiple_choice_single");
         dto.put("book", q.getBook() != null ? q.getBook() : "");
         dto.put("chapter", q.getChapterStart() != null ? q.getChapterStart() : 0);
-        dto.put("correctAnswer", q.getCorrectAnswer());
+        // INTENTIONAL: no "correctAnswer" — anti-spoiler.
         return dto;
     }
 
