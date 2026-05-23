@@ -1138,6 +1138,31 @@ class RankedControllerTest extends BaseControllerTest {
         org.junit.jupiter.api.Assertions.assertFalse(body.contains("hibernateLazyInitializer"));
     }
 
+    // ── SCD-4: /sync-progress ignores FE-claimed score / questions ──────────
+    //
+    // The endpoint takes no @RequestBody — it just returns the user's stored
+    // UserDailyProgress. Pin that contract by posting a tampered body and
+    // asserting response numbers come from the DB, not the payload.
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void syncProgress_ignoresClientPayload_returnsDbStoredValues() throws Exception {
+        UserDailyProgress udp = new UserDailyProgress();
+        udp.setQuestionsCounted(7);
+        udp.setPointsCounted(85);
+        udp.setLivesRemaining(40);
+        when(udpRepository.findByUserIdAndDate(eq("user-1"), any())).thenReturn(Optional.of(udp));
+
+        mockMvc.perform(post("/api/ranked/sync-progress")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        // Wildly inflated values — must be ignored.
+                        .content("{\"questionsCounted\":9999,\"pointsToday\":999999,\"livesRemaining\":9999}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.questionsCounted").value(7))
+                .andExpect(jsonPath("$.pointsToday").value(85))
+                .andExpect(jsonPath("$.livesRemaining").value(40));
+    }
+
     // ── TC-RANK-007: Cap 100 questions/day → blocked ──────────────────────────
 
     @Test
