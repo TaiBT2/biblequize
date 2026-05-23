@@ -247,8 +247,9 @@ const RoomQuiz: React.FC = () => {
           appendFeed('round_end', `Câu ${questionIndex + 1} kết thúc · đáp án ${letter}`, 'neutral');
           // Q3: reveal-stats card (only when the player submitted).
           if (lastSubmitMs.current !== null) {
-            const myNew = sortedNew.find(s => s.username === myUsername);
-            const newRank = myNew ? sortedNew.findIndex(s => s.username === myUsername) + 1 : 0;
+            // Identity by playerId (=User.id server-side) — see PLAYER_ELIMINATED fix d504299b.
+            const myNew = sortedNew.find(s => s.playerId === myUserId);
+            const newRank = myNew ? sortedNew.findIndex(s => s.playerId === myUserId) + 1 : 0;
             const newScore = myNew?.score ?? prevScoreRef.current;
             const pointsEarned = Math.max(0, newScore - prevScoreRef.current);
             const rankDelta = prevRankRef.current ? prevRankRef.current - newRank : 0;
@@ -333,7 +334,7 @@ const RoomQuiz: React.FC = () => {
         // ── Team vs Team ──
         case 'TEAM_ASSIGNMENT': {
           const d = msg.data as { players: { userId: string; username: string; team: string }[] };
-          const me = d.players.find(p => p.username === myUsername);
+          const me = d.players.find(p => p.userId === myUserId);
           if (me) setMyTeam(me.team);
           break;
         }
@@ -360,7 +361,8 @@ const RoomQuiz: React.FC = () => {
           setSdChallengerName(d.challengerName);
           setSdQueueRemaining(d.queueRemaining);
           setSdMatchResult(null);
-          const inMatch = d.championName === myUsername || d.challengerName === myUsername;
+          // Identity by ID — championName/challengerName là display names có thể collision.
+          const inMatch = d.championId === myUserId || d.challengerId === myUserId;
           setSdSpectating(!inMatch);
           break;
         }
@@ -382,9 +384,11 @@ const RoomQuiz: React.FC = () => {
         case 'ANSWER_SUBMITTED': {
           const d = msg.data as { playerId: string; username: string; isCorrect: boolean; reactionTimeMs: number };
           // C3: mark this player as having answered this round.
+          // Key Set by playerId (server-stable userId) — consistent with
+          // identity fix d504299b. Username keys collide / can drift.
           setRoundAnswered(prev => {
             const next = new Set(prev);
-            next.add(d.username);
+            next.add(d.playerId);
             return next;
           });
           // Q1: persistent feed history for the new RIGHT column
@@ -507,10 +511,10 @@ const RoomQuiz: React.FC = () => {
   useEffect(() => {
     if (!showPodium || endSoundFiredRef.current) return;
     endSoundFiredRef.current = true;
-    const me = finalResults.find(r => r.username === myUsername);
+    const me = finalResults.find(r => r.playerId === myUserId);
     const won = !!me && me.finalRank === 1;
     soundManager.play(won ? 'victory' : 'quizComplete');
-  }, [showPodium, finalResults, myUsername]);
+  }, [showPodium, finalResults, myUserId]);
 
   // Sprint 2 S2-5: per-second beep in the last 5 seconds, sharper at ≤3.
   // Tracks the last whole-second-played so a 4Hz tick doesn't spam.
@@ -576,7 +580,7 @@ const RoomQuiz: React.FC = () => {
     return () => { cancelled = true; };
   }, [roomId]);
 
-  const inSdMatch = isSuddenDeath && (sdChampionName === myUsername || sdChallengerName === myUsername);
+  const inSdMatch = isSuddenDeath && (sdChampionId === myUserId || sdChallengerId === myUserId);
   const canAnswer = useMemo(
     () => connected && question && timeLeft > 0 && selected === null && !submitting
       && !isEliminated && !(isSuddenDeath && sdSpectating) && !revealedData,
@@ -595,16 +599,16 @@ const RoomQuiz: React.FC = () => {
     lastSubmitMs.current = reactionTimeMs;
     // Snapshot pre-round score + rank so ROUND_END can compute deltas.
     const sortedNow = [...scores].sort((a, b) => b.score - a.score);
-    const myEntry = sortedNow.find(s => s.username === myUsername);
+    const myEntry = sortedNow.find(s => s.playerId === myUserId);
     prevScoreRef.current = myEntry?.score ?? 0;
-    prevRankRef.current = myEntry ? sortedNow.findIndex(s => s.username === myUsername) + 1 : null;
+    prevRankRef.current = myEntry ? sortedNow.findIndex(s => s.playerId === myUserId) + 1 : null;
     setSelected(idx);
     setSubmitting(true);
     // C3: mark myself as answered locally — server's broadcast back to me
     // would re-set this but we can't rely on the round-trip.
     setRoundAnswered(prev => {
       const next = new Set(prev);
-      next.add(myUsername);
+      next.add(myUserId);
       return next;
     });
     const ok = send(`/app/room/${roomId}/answer`, { questionIndex, answerIndex: idx, reactionTimeMs });
@@ -772,7 +776,7 @@ const RoomQuiz: React.FC = () => {
           sidebar). */}
       {!isSequential && selected !== null && correctIndex === null && scores.length > 1 && (() => {
         const pending = scores
-          .filter(s => s.username !== myUsername && !roundAnswered.has(s.username))
+          .filter(s => s.playerId !== myUserId && !roundAnswered.has(s.playerId))
           .slice(0, 5);
         if (pending.length === 0) return null;
         return (
@@ -1055,7 +1059,7 @@ const RoomQuiz: React.FC = () => {
                 <p className="text-on-surface-variant/50 text-xs text-center py-6">{t('room.quiz.noScoresYet')}</p>
               ) : (
                 scores.map((s, idx) => {
-                  const isMe = s.username === myUsername;
+                  const isMe = s.playerId === myUserId;
                   const eliminated = s.playerStatus === 'ELIMINATED';
                   return (
                     <div
@@ -1106,8 +1110,8 @@ const RoomQuiz: React.FC = () => {
               <div className="lg:hidden -mx-4 px-4 pb-1 overflow-x-auto" data-testid="quiz-mobile-chip-strip">
                 <div className="flex items-center gap-2 w-max">
                   {scores.map((s, idx) => {
-                    const isMe = s.username === myUsername;
-                    const answered = roundAnswered.has(s.username);
+                    const isMe = s.playerId === myUserId;
+                    const answered = roundAnswered.has(s.playerId);
                     const initial = (s.username?.[0] ?? '?').toUpperCase();
                     return (
                       <div
@@ -1202,7 +1206,7 @@ const RoomQuiz: React.FC = () => {
                   </div>
                   {scores.length > 0 && (
                     <div className="text-[10px] font-bold text-on-surface-variant">
-                      {t('room.quiz.points', { count: scores.find(s => s.username === myUsername)?.score ?? 0 })}
+                      {t('room.quiz.points', { count: scores.find(s => s.playerId === myUserId)?.score ?? 0 })}
                     </div>
                   )}
                 </div>
@@ -1477,7 +1481,7 @@ const RoomQuiz: React.FC = () => {
                 <p className="text-on-surface-variant/50 text-xs text-center py-6">{t('room.quiz.noScoresYet')}</p>
               ) : (
                 scores.map((s, idx) => {
-                  const isMe = s.username === myUsername;
+                  const isMe = s.playerId === myUserId;
                   const eliminated = s.playerStatus === 'ELIMINATED';
                   return (
                     <div
