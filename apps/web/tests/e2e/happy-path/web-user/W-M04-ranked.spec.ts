@@ -460,6 +460,35 @@ test.describe('W-M04 Ranked Mode', () => {
     expect(ranked.questionsCounted).toBeGreaterThanOrEqual(1)
   })
 
+  // ── LCT-8 — pool-exhausted modal opens when BE returns poolExhausted=true
+  //
+  // Stub /api/ranked/questions/select to return { poolExhausted: true } and
+  // assert the Sacred Modernist PoolExhaustedModal renders. We don't drive
+  // the unlock CTA here — the FE branches on coverage.currentWeek.canUnlockNext
+  // which requires a full coverage-status payload; LCT-4 already pins the
+  // unlock endpoint contract at the BE layer.
+
+  test('W-M04-L2-LCT-8: poolExhausted=true opens the modal', async ({
+    tier3Page: page,
+    testApi,
+  }) => {
+    await testApi.setState(TEST_EMAIL, { livesRemaining: 100, questionsCounted: 0 })
+
+    await page.route('**/api/ranked/questions/select', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ questions: [], poolExhausted: true, suggestedAction: 'UNLOCK_NEXT_WEEK' }),
+      })
+    })
+
+    const rankedPage = new RankedPage(page)
+    await rankedPage.goto()
+    await rankedPage.startQuiz()
+
+    await expect(page.getByTestId('pool-exhausted-modal')).toBeVisible({ timeout: 5_000 })
+  })
+
   // ── RGT-1 — "Chơi trận khác" produces a brand-new match ─────────────────
   //
   // Regression for RKP-1 (commit 71e94f8): replay reused location.state.questions

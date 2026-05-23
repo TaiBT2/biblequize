@@ -26,7 +26,7 @@ export default function PoolExhaustedModal({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="sm" ariaLabel={t('ranked.pool_exhausted.title')}>
-      <div style={{ textAlign: 'center' }}>
+      <div data-testid="pool-exhausted-modal" style={{ textAlign: 'center' }}>
         <span
           className="material-symbols-outlined"
           style={{ fontSize: 60, color: '#e8a832', fontVariationSettings: "'FILL' 1" }}
@@ -56,6 +56,7 @@ export default function PoolExhaustedModal({
             <>
               <button
                 type="button"
+                data-testid="pool-exhausted-unlock-cta"
                 onClick={() => {
                   onUnlockNextWeek()
                   onClose()
