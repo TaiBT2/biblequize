@@ -3,6 +3,7 @@ package com.biblequiz.api;
 import com.biblequiz.infrastructure.service.CacheService;
 import com.biblequiz.modules.achievement.service.AchievementService;
 import com.biblequiz.modules.notification.service.NotificationService;
+import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.entity.UserDailyProgress;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.quiz.repository.UserBookProgressRepository;
@@ -1002,6 +1003,63 @@ class RankedControllerTest extends BaseControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.blocked").value(true))
                 .andExpect(jsonPath("$.livesRemaining").value(0));
+    }
+
+    // ── RGT-2: /questions/select serializes plain DTOs, never raw JPA entity
+    // fields ───────────────────────────────────────────────────────────────
+    //
+    // Regression for commit 3260e6e (RKP-2 fix). The endpoint maps Question
+    // entities to plain Map DTOs via questionToMap(), so Hibernate proxies
+    // left in the persistence context can't crash Jackson. If anyone reverts
+    // to returning the raw `picked` list, entity-only fields (isActive,
+    // reviewStatus, category, …) leak into the JSON — assert they don't,
+    // plus a defensive substring check for the failure signature.
+
+    @Test
+    @WithMockUser(username = "test@example.com")
+    void selectRankedQuestions_returnsPlainDtoShape_notRawEntity() throws Exception {
+        Question q = new Question();
+        q.setId("q-rgt");
+        q.setBook("Genesis");
+        q.setChapter(1);
+        q.setVerseStart(1);
+        q.setVerseEnd(2);
+        q.setDifficulty(Question.Difficulty.easy);
+        q.setType(Question.Type.multiple_choice_single);
+        q.setContent("In the beginning?");
+        q.setOptions(java.util.List.of("A", "B", "C", "D"));
+        q.setCorrectAnswer(java.util.List.of(0));
+        q.setExplanation("Gen 1:1");
+        // Entity-only fields — would leak if the controller returned the raw entity.
+        q.setIsActive(true);
+        q.setReviewStatus(Question.ReviewStatus.ACTIVE);
+        q.setCategory("bible_basics");
+        q.setApprovalsCount(2);
+
+        when(smartQuestionSelector.selectQuestions(eq("user-1"), anyInt(), any()))
+                .thenReturn(java.util.List.of(q));
+
+        String body = mockMvc.perform(post("/api/ranked/questions/select")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"limit\":10,\"excludeIds\":[],\"language\":\"vi\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.questions[0].id").value("q-rgt"))
+                .andExpect(jsonPath("$.questions[0].book").value("Genesis"))
+                .andExpect(jsonPath("$.questions[0].chapter").value(1))
+                .andExpect(jsonPath("$.questions[0].difficulty").value("easy"))
+                .andExpect(jsonPath("$.questions[0].type").value("multiple_choice_single"))
+                .andExpect(jsonPath("$.questions[0].options[0]").value("A"))
+                .andExpect(jsonPath("$.questions[0].correctAnswer[0]").value(0))
+                // Entity-only fields must NOT be serialized — guards against
+                // a future revert to `resp.put("questions", picked)`.
+                .andExpect(jsonPath("$.questions[0].isActive").doesNotExist())
+                .andExpect(jsonPath("$.questions[0].reviewStatus").doesNotExist())
+                .andExpect(jsonPath("$.questions[0].category").doesNotExist())
+                .andExpect(jsonPath("$.questions[0].approvalsCount").doesNotExist())
+                .andExpect(jsonPath("$.questions[0].hibernateLazyInitializer").doesNotExist())
+                .andReturn().getResponse().getContentAsString();
+        // Defensive: the failure signature must never appear in the body.
+        org.junit.jupiter.api.Assertions.assertFalse(body.contains("hibernateLazyInitializer"));
     }
 
     // ── TC-RANK-007: Cap 100 questions/day → blocked ──────────────────────────
