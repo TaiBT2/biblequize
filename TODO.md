@@ -3,10 +3,14 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (57)
+## Active (61)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-05-23 | Ranked: regression tests for RKP-1 + RKP-2 bug fixes (replay match + Hibernate-proxy 500) | TODO | [detail](docs/todo/active/2026-05-23-ranked-regression-tests-rkp1-rkp2.md) |
+| 2026-05-23 | Ranked: deterministic scoring tests + anti-cheat (6 tiers × combo × speed × server-recompute) | TODO | [detail](docs/todo/active/2026-05-23-ranked-scoring-deterministic-anti-cheat.md) |
+| 2026-05-23 | Liturgical Coverage: pool-exhaustion fallback chain + season transition + ×1.5 bonus tests | TODO | [detail](docs/todo/active/2026-05-23-liturgical-coverage-fallback-tests.md) |
+| 2026-05-23 | SmartQuestionSelector: tier-distribution + spaced-repetition statistical tests | TODO | [detail](docs/todo/active/2026-05-23-smart-question-selector-distribution-tests.md) |
 | 2026-05-23 | MP audit P0: Lifecycle R1-R5 + Reconnect + Kick + Host transfer (10 case + WS helper) | TODO | [detail](docs/todo/active/2026-05-23-mp-test-lifecycle-reconnect-kick.md) |
 | 2026-05-23 | MP audit P0+P1: Mode-edge (BR amnesty / SD queue / TVT switch) + Quản trò Sprint 4 + Chat (8 task) | TODO | [detail](docs/todo/active/2026-05-23-mp-test-mode-edge-quan-tro-chat.md) |
 | 2026-05-23 | MP audit P1+P2: Contracts + Scale 100p + Maestro mobile + Admin + WS reconnect (14 task) | TODO | [detail](docs/todo/active/2026-05-23-mp-test-contracts-scale-obs.md) |
