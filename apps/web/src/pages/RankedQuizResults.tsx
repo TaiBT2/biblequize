@@ -483,6 +483,7 @@ export default function RankedQuizResults({
             <>
               <button
                 type="button"
+                data-testid="ranked-result-play-again"
                 onClick={onPlayAgain}
                 className="w-full inline-flex items-center justify-center gap-2 rounded-[14px] py-4 px-4 font-bold text-[15px] text-[#1a1206] hover:-translate-y-0.5 active:translate-y-0 transition-transform"
                 style={{
@@ -530,6 +531,7 @@ export default function RankedQuizResults({
               <div className="flex gap-2.5 mt-2.5">
                 <button
                   type="button"
+                  data-testid="ranked-result-play-again"
                   onClick={onPlayAgain}
                   className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-[13px] py-3.5 px-3 text-[13px] font-semibold border border-white/[0.08] text-on-surface/85 bg-surface-container-high/50"
                 >

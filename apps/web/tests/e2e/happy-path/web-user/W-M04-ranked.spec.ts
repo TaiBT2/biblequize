@@ -459,4 +459,77 @@ test.describe('W-M04 Ranked Mode', () => {
     const ranked = await testApi.getRankedStatus(TEST_EMAIL)
     expect(ranked.questionsCounted).toBeGreaterThanOrEqual(1)
   })
+
+  // ── RGT-1 — "Chơi trận khác" produces a brand-new match ─────────────────
+  //
+  // Regression for RKP-1 (commit 71e94f8): replay reused location.state.questions
+  // + the finished sessionId, so the user got the same 10 questions a second
+  // time. Fixed by creating a fresh session + fresh /questions/select pick on
+  // replay and re-navigating to /quiz.
+
+  test('W-M04-L2-015 (RGT-1): replay creates a brand-new session + fresh questions', async ({
+    tier3Page: page,
+    testApi,
+  }) => {
+    test.slow() // 10 answers + replay flow
+
+    await testApi.resetHistory(TEST_EMAIL)
+    // questionsCounted=1 so daily-first x2 doesn't affect timing, livesRemaining
+    // refilled so we definitely have energy for two batches back-to-back.
+    await testApi.setState(TEST_EMAIL, { livesRemaining: 100, questionsCounted: 1 })
+
+    const rankedPage = new RankedPage(page)
+    await rankedPage.goto()
+
+    // First batch — capture sessionId + questionIds from BE responses
+    const session1Promise = page.waitForResponse(
+      (r) => r.url().includes('/api/ranked/sessions') && r.request().method() === 'POST',
+    )
+    const select1Promise = page.waitForResponse(
+      (r) => r.url().includes('/api/ranked/questions/select') && r.request().method() === 'POST',
+    )
+    await rankedPage.startQuiz()
+    const [session1Res, select1Res] = await Promise.all([session1Promise, select1Promise])
+    const sessionId1 = (await session1Res.json()).sessionId as string
+    const questions1 = ((await select1Res.json()).questions as { id: string }[]).map((q) => q.id)
+    expect(sessionId1).toBeTruthy()
+    expect(questions1.length).toBe(10)
+
+    await page.waitForURL(/\/quiz/)
+    const quizPage = new QuizPage(page)
+
+    // Answer all 10 — correctness doesn't matter for this regression test.
+    // The 10th "Next" click triggers the result screen transition.
+    for (let i = 0; i < 10; i++) {
+      await expect(quizPage.questionText).toBeVisible()
+      await quizPage.answerOption(0)
+      await expect(quizPage.answerFeedback).toBeVisible()
+      await quizPage.waitForNextQuestion()
+    }
+
+    // Land on the ranked result screen.
+    await expect(page.getByTestId('ranked-result-page')).toBeVisible({ timeout: 15_000 })
+
+    // Arm response captures for the replay BEFORE clicking play-again.
+    const session2Promise = page.waitForResponse(
+      (r) => r.url().includes('/api/ranked/sessions') && r.request().method() === 'POST',
+    )
+    const select2Promise = page.waitForResponse(
+      (r) => r.url().includes('/api/ranked/questions/select') && r.request().method() === 'POST',
+    )
+
+    await page.getByTestId('ranked-result-play-again').click()
+
+    const [session2Res, select2Res] = await Promise.all([session2Promise, select2Promise])
+    const sessionId2 = (await session2Res.json()).sessionId as string
+    const questions2 = ((await select2Res.json()).questions as { id: string }[]).map((q) => q.id)
+
+    // RKP-1 regression assertions: sessionId must differ and the new batch
+    // must not reuse any of the first 10 (excludeIds is the server-side guard).
+    expect(sessionId2).toBeTruthy()
+    expect(sessionId2).not.toBe(sessionId1)
+    expect(questions2.length).toBeGreaterThan(0)
+    const overlap = questions2.filter((q) => questions1.includes(q))
+    expect(overlap).toEqual([])
+  })
 })
