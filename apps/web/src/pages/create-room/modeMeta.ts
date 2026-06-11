@@ -3,10 +3,18 @@
 // (slightly lighter than the legacy CreateRoom palette so the preview badges
 // + mode-card tints read clearly against the dark surface).
 
+/** The 4 user-selectable modes (Create Room / Quick Match pickers). */
 export type RoomModeId = 'SPEED_RACE' | 'BATTLE_ROYALE' | 'TEAM_VS_TEAM' | 'SUDDEN_DEATH'
 
-export interface ModeMeta {
-  id: RoomModeId
+/** Every room mode incl. backend-spawned ones (FMR-6 / F-web-5):
+ *  GROUP_LIVE_SEQUENTIAL rooms are only created via the group co-play API,
+ *  never from the Create Room form. */
+export type AnyRoomModeId = RoomModeId | 'GROUP_LIVE_SEQUENTIAL'
+
+/** Defaults to the user-selectable ids so MODE_LIST consumers keep seeing
+ *  `id: RoomModeId`; the backend-spawned entry narrows Id itself. */
+export interface ModeMeta<Id extends AnyRoomModeId = RoomModeId> {
+  id: Id
   /** Material Symbols icon name. */
   icon: string
   /** i18n key for the mode display label (e.g. "Đua tốc độ"). */
@@ -17,12 +25,15 @@ export interface ModeMeta {
   color: string
   /** Preview-badge palette (matches `.badge-*` rules in the mockup). */
   badge: { bg: string; fg: string; border: string }
+  /** True = rooms of this mode are only spawned via backend API (group
+   *  co-play); the mode is metadata-only here and excluded from MODE_LIST. */
+  createdViaApi?: boolean
 }
 
 // Palette canonical per PROMPT_MULTIPLAYER_LOBBY_REDESIGN.md §0.1 — hardcoded
 // hex values (NEVER CSS variables, mockup rendering bug). Sudden Death =
 // amber #fbbf24, NOT streak orange #fb923c.
-export const MODE_META: Record<RoomModeId, ModeMeta> = {
+export const MODE_META: { [K in AnyRoomModeId]: ModeMeta<K> } = {
   SPEED_RACE: {
     id: 'SPEED_RACE',
     icon: 'bolt',
@@ -55,8 +66,23 @@ export const MODE_META: Record<RoomModeId, ModeMeta> = {
     color: '#fbbf24',
     badge: { bg: 'rgba(251,191,36,0.15)',  fg: '#fcd34d', border: 'rgba(251,191,36,0.35)' },
   },
+  // FMR-6 (F-web-5): backend-spawned group co-play mode. Metadata only —
+  // createdViaApi keeps it out of MODE_LIST so the Create Room / Quick Match
+  // pickers stay at 4 user-selectable modes. Palette matches the lobby's
+  // MODE_INFO entry (violet #a78bfa).
+  GROUP_LIVE_SEQUENTIAL: {
+    id: 'GROUP_LIVE_SEQUENTIAL',
+    icon: 'group',
+    labelKey: 'room.modes.group_live_sequential',
+    descKey: 'createRoom.modeDesc.group_live_sequential',
+    color: '#a78bfa',
+    badge: { bg: 'rgba(167,139,250,0.15)', fg: '#c4b5fd', border: 'rgba(167,139,250,0.35)' },
+    createdViaApi: true,
+  },
 }
 
+/** User-selectable modes only — GROUP_LIVE_SEQUENTIAL (createdViaApi) is
+ *  intentionally excluded. */
 export const MODE_LIST: ModeMeta[] = [
   MODE_META.SPEED_RACE,
   MODE_META.BATTLE_ROYALE,

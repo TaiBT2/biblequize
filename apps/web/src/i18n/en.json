@@ -1539,7 +1539,8 @@
       "speed_race": "Speed Race",
       "battle_royale": "Battle Royale",
       "team_vs_team": "Team vs Team",
-      "sudden_death": "King of the Hill"
+      "sudden_death": "King of the Hill",
+      "group_live_sequential": "Play Together"
     },
     "quiz": {
       "roomHeader": "Room #{{code}}",
@@ -2237,7 +2238,8 @@
       "speed_race": "Fastest correct answer wins",
       "battle_royale": "Wrong answer eliminates you — last one standing wins",
       "team_vs_team": "Two teams compete, higher total score wins",
-      "sudden_death": "One wrong answer and you lose — for the brave"
+      "sudden_death": "One wrong answer and you lose — for the brave",
+      "group_live_sequential": "Everyone answers in sequence — the answer reveals once all are done"
     }
   },
   "daily": {

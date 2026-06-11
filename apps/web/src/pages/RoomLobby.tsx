@@ -1,47 +1,18 @@
 import { useEffect, useMemo, useState, useRef } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useStomp } from '../hooks/useStomp';
+import { useRoomChannel } from '../hooks/useRoomChannel';
 import { api } from '../api/client';
 import { QRCodeSVG } from 'qrcode.react';
 import { soundManager } from '../services/soundManager';
 import { haptic } from '../utils/haptics';
 import SequentialLobbyView from './room/SequentialLobbyView';
 import InviteShareModal from '../components/room/InviteShareModal';
+import type { RoomDetails, RoomEvent, RoomPlayer } from '../types/room';
 
-type Player = {
-  id: string; userId: string; username: string; avatarUrl?: string;
-  isReady: boolean; score: number; team?: string; playerStatus?: string;
-  tier?: string;
-};
-type RoomDetails = {
-  id: string; roomCode: string; roomName: string;
-  status: 'LOBBY' | 'IN_PROGRESS' | 'ENDED' | 'CANCELLED';
-  mode: string; isPublic: boolean;
-  maxPlayers: number; currentPlayers: number;
-  questionCount: number; timePerQuestion: number;
-  hostId: string; hostName: string; players: Player[];
-  questionSource?: 'DATABASE' | 'CUSTOM';
-  questionSetId?: string | null;
-  bookScope?: string;
-  difficulty?: string;
-  createdAt?: string;
-  /** Owning group when room was spawned from a group quiz set; null otherwise.
-   *  Server-side fallback so "back to group" works for users who joined via
-   *  room code (no fromGroupId in nav state) or after a page refresh. */
-  groupId?: string | null;
-  /** Group quiz set context — populated when room.groupQuizSetId is set.
-   *  Lobby + quiz screens render "📚 Đang chơi: {name}" pill. */
-  groupQuizSetId?: string | null;
-  groupQuizSetName?: string | null;
-  quizSetTotalQuestions?: number | null;
-  /** Sprint 4: false = Quản trò mode (host orchestrates only). Defaults
-   *  true on the FE for legacy rooms whose payload omits the field. */
-  hostPlaysGame?: boolean;
-  /** QP-10 (Đấu Nhanh): true = soft-host quick match room. No Quản trò,
-   *  any player can hit Start once ≥2 players are ready. */
-  quickMatch?: boolean;
-};
+// Canonical shapes moved to src/types/room.ts (FMR-1) — local aliases keep
+// the page body unchanged.
+type Player = RoomPlayer;
 type ChatMessage = {
   sender: string; text: string;
   isHost?: boolean; isSystem?: boolean; time?: string;
@@ -98,8 +69,6 @@ const DIFFICULTY_LABEL: Record<string, string> = {
 
 const QUICK_EMOJIS = ['👏', '😂', '😱', '🔥', '💪', '🙏'];
 
-const myUsername = () => localStorage.getItem('userName') ?? '';
-
 const fmtTime = (iso?: string) => {
   if (!iso) return '';
   try {
@@ -155,20 +124,20 @@ const RoomLobby: React.FC = () => {
     } catch { /* ignore */ }
   };
 
-  const { connected, reconnecting, send } = useStomp({
-    roomId,
+  // FMR-2: typed room channel (events narrowed via the RoomEvent union).
+  const { connected, reconnecting, send } = useRoomChannel(roomId, {
     onReconnect: () => { fetchRoom(); },
-    onMessage: (msg) => {
+    onEvent: (msg: RoomEvent) => {
       switch (msg.type) {
         case 'ROOM_STATE': {
           // Sprint 2 S2-8: atomic snapshot from BE. Use it instead of the
           // per-event fetchRoom REST round-trips that used to flicker the
           // player list with multi-join races.
-          setRoom(msg.data as RoomDetails);
+          setRoom(msg.data);
           break;
         }
         case 'PLAYER_KICKED': {
-          const d = msg.data as { userId?: string } | undefined;
+          const d = msg.data;
           if (d?.userId && d.userId === viewerUserId) {
             navigate('/multiplayer', { replace: true, state: { kickedFromRoom: true } });
             return;
@@ -181,7 +150,7 @@ const RoomLobby: React.FC = () => {
           break;
         }
         case 'PLAYER_JOINED': {
-          const d = msg.data as { username?: string } | undefined;
+          const d = msg.data;
           if (d?.username) appendActivity(`${d.username} đã tham gia 👋`);
           // S2-9 hook: subtle audio cue when someone enters the lobby.
           soundManager.play('playerJoin');
@@ -189,7 +158,7 @@ const RoomLobby: React.FC = () => {
           break;
         }
         case 'PLAYER_LEFT': {
-          const d = msg.data as { userId?: string } | undefined;
+          const d = msg.data;
           if (d?.userId) {
             const name = room?.players?.find(p => p.userId === d.userId)?.username ?? 'Người chơi';
             appendActivity(`${name} đã rời phòng`);
@@ -198,19 +167,19 @@ const RoomLobby: React.FC = () => {
           break;
         }
         case 'PLAYER_READY': {
-          const d = msg.data as { username?: string; isReady?: boolean } | undefined;
+          const d = msg.data;
           if (d?.username) appendActivity(`${d.username} sẵn sàng ✓`, 'ok');
           // ROOM_STATE will follow.
           break;
         }
         case 'PLAYER_UNREADY': {
-          const d = msg.data as { username?: string } | undefined;
+          const d = msg.data;
           if (d?.username) appendActivity(`${d.username} hủy sẵn sàng`);
           // ROOM_STATE will follow.
           break;
         }
         case 'CHAT_MESSAGE': {
-          const d = msg.data as { sender: string; text: string; isSystem?: boolean };
+          const d = msg.data;
           setChatMessages(prev => [...prev, {
             sender: d.sender, text: d.text,
             isHost: d.sender === room?.hostName,
@@ -224,8 +193,7 @@ const RoomLobby: React.FC = () => {
           // Sprint 2 S2-4: cinematic countdown. Just seed the state — the
           // overlay's own useEffect ticks it down per second with sound +
           // haptic, then navigates after the "BẮT ĐẦU!" beat.
-          const d = msg.data as { countdown: number };
-          setCountdown(d.countdown);
+          setCountdown(msg.data.countdown);
           break;
         }
         case 'QUESTION_START': {
@@ -245,15 +213,14 @@ const RoomLobby: React.FC = () => {
         case 'ROOM_ENDED': {
           // SPEC §5.4.0 R1/R2/R5 — backend cleanup forced the room to end.
           // Stash the reason in nav state so /multiplayer can toast it.
-          const d = msg.data as { reason?: string } | undefined;
-          navigate('/multiplayer', { replace: true, state: { roomEndedReason: d?.reason ?? 'GENERIC' } });
+          navigate('/multiplayer', { replace: true, state: { roomEndedReason: msg.data?.reason ?? 'GENERIC' } });
           break;
         }
         case 'HOST_CHANGED': {
           // SPEC §5.4.0 R4 — old host's grace expired; backend promoted
           // a successor. Refetch room details so the crown + start
           // button move to the new host.
-          const d = msg.data as { newHostId?: string; newHostName?: string } | undefined;
+          const d = msg.data;
           if (d?.newHostName) {
             appendActivity(`${d.newHostName} đã trở thành chủ phòng mới`, 'ok');
           }
@@ -392,9 +359,12 @@ const RoomLobby: React.FC = () => {
   const isSequential = room?.mode === 'GROUP_LIVE_SEQUENTIAL';
   const teamAPlayers = room?.players?.filter(p => p.team === 'A') ?? [];
   const teamBPlayers = room?.players?.filter(p => p.team === 'B') ?? [];
-  const myPlayer = room?.players?.find(p =>
-    viewerUserId ? p.userId === viewerUserId : p.username === myUsername()
-  );
+  // FMR-7 identity sweep: match by server-stable userId only (F-web-2) —
+  // localStorage.userName can drift/collide so it is no longer a logic key.
+  // Until fetchRoom delivers viewerUserId, myPlayer stays undefined.
+  const myPlayer = viewerUserId
+    ? room?.players?.find(p => p.userId === viewerUserId)
+    : undefined;
   // Sprint 4: in Quản trò mode the host is NOT a RoomPlayer, so myPlayer
   // would be undefined for them. Fall back to comparing against viewerUserId
   // so the host still resolves as host in the lobby UI.
@@ -1285,7 +1255,8 @@ const PlayerSlot: React.FC<{
   onKickConfirm: () => void;
 }> = ({ player, hostId, myUserId, suddenDeathOrder, canKick, kickOpen, onKickToggle, onKickConfirm }) => {
   const isHost = player.userId === hostId;
-  const isMe = myUserId ? player.userId === myUserId : player.username === myUsername();
+  // FMR-7 identity sweep: "(bạn)" marker keys off userId only (F-web-2).
+  const isMe = !!myUserId && player.userId === myUserId;
   const isReady = isHost ? true : player.isReady;
   const variant: 'host' | 'ready' | 'waiting' =
     isHost ? 'host' : (isReady ? 'ready' : 'waiting');

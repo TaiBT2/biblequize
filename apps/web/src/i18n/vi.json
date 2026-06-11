@@ -1539,7 +1539,8 @@
       "speed_race": "Đua tốc độ",
       "battle_royale": "Sinh tồn",
       "team_vs_team": "Đội đấu đội",
-      "sudden_death": "Đấu vương"
+      "sudden_death": "Đấu vương",
+      "group_live_sequential": "Chơi cùng nhau"
     },
     "quiz": {
       "roomHeader": "Phòng #{{code}}",
@@ -2237,7 +2238,8 @@
       "speed_race": "Ai trả lời nhanh và đúng sẽ thắng",
       "battle_royale": "Sai là bị loại, người còn lại cuối cùng thắng",
       "team_vs_team": "Hai đội đấu nhau, đội có điểm cao hơn thắng",
-      "sudden_death": "Một câu sai là thua, dành cho người dũng cảm"
+      "sudden_death": "Một câu sai là thua, dành cho người dũng cảm",
+      "group_live_sequential": "Mọi người trả lời tuần tự — chờ tất cả xong mới hiện đáp án"
     }
   },
   "daily": {

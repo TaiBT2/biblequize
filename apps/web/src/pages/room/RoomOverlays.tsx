@@ -2,11 +2,10 @@ import React, { useEffect } from 'react'
 
 const FILL_STYLE = { fontVariationSettings: "'FILL' 1" } as const
 
-export type PlayerScore = {
-  playerId: string; username: string; score: number;
-  correctAnswers: number; totalAnswered: number; accuracy: number;
-  finalRank?: number; playerStatus?: string;
-}
+// Canonical definition lives in src/types/room.ts (FMR-1); re-exported here
+// so existing imports (QuizEndScreen, Podium, tests) keep working.
+import type { PlayerScore } from '../../types/room'
+export type { PlayerScore }
 
 type Question = { id: string; content: string; options: string[] }
 

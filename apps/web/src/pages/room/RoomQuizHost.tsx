@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { useStomp } from '../../hooks/useStomp';
+import { fetchCurrentQuestion, useRoomChannel } from '../../hooks/useRoomChannel';
 import { api } from '../../api/client';
+import type { QuestionStartData, RoomEvent, RoomQuestion } from '../../types/room';
 
 /**
  * Sprint 4 (S4-8) — Quản trò spectator + 4 controls.
@@ -18,7 +19,7 @@ import { api } from '../../api/client';
  * layer only.
  */
 
-type Question = { id: string; content: string; options: string[]; correctAnswer?: number };
+type Question = RoomQuestion;
 type AnswerStatus = 'pending' | 'correct' | 'wrong';
 type LiveAnswer = {
   userId: string;
@@ -68,123 +69,134 @@ const RoomQuizHost: React.FC = () => {
   const [finalRanks, setFinalRanks] = useState<FinalRanking[] | null>(null);
   const [matchStartedAt] = useState(() => Date.now());
 
-  const { connected, reconnecting } = useStomp({
-    roomId,
-    onMessage: (msg) => {
-      switch (msg.type) {
-        case 'QUESTION_START': {
-          const d = msg.data as {
-            questionIndex: number; totalQuestions: number;
-            timeLimit: number; question: Question;
-          };
-          setQuestionIndex(d.questionIndex);
-          setTotalQuestions(d.totalQuestions);
-          setTimeLimit(d.timeLimit);
-          setTimeLeft(d.timeLimit);
-          setQuestion(d.question);
-          // Anti-spoiler 2026-05-23: BE đã bỏ correctAnswer khỏi QUESTION_START
-          // payload (Quản trò subscribe cùng /topic/room/{id} sẽ thấy đáp án
-          // trước player). Reveal chỉ sau ROUND_END / QUESTION_REVEALED.
-          setCorrectIndex(null);
-          setLiveAnswers({}); // reset for new round
-          break;
-        }
-        case 'ROUND_END': {
-          const d = msg.data as { correctIndex: number; leaderboard?: unknown };
-          if (typeof d.correctIndex === 'number') setCorrectIndex(d.correctIndex);
-          break;
-        }
-        case 'QUESTION_REVEALED': {
-          // GROUP_LIVE_SEQUENTIAL reveal — same correctIndex field.
-          const d = msg.data as { correctIndex: number };
-          if (typeof d.correctIndex === 'number') setCorrectIndex(d.correctIndex);
-          break;
-        }
-        case 'ANSWER_SUBMITTED': {
-          const d = msg.data as {
-            playerId: string; username: string;
-            isCorrect: boolean; reactionTimeMs?: number;
-          };
-          setLiveAnswers(prev => ({
-            ...prev,
-            [d.playerId]: {
-              userId: d.playerId,
-              username: d.username,
-              status: d.isCorrect ? 'correct' : 'wrong',
-              reactionTimeMs: d.reactionTimeMs,
-            },
-          }));
-          break;
-        }
-        case 'SCORE_UPDATE': {
-          const d = msg.data as { playerId: string; username?: string; newScore: number };
-          setScores(prev => {
-            const idx = prev.findIndex(s => s.userId === d.playerId);
-            if (idx >= 0) {
-              const next = [...prev];
-              next[idx] = { ...next[idx], score: d.newScore };
-              return next.sort((a, b) => b.score - a.score);
-            }
-            return [...prev, { userId: d.playerId, username: d.username ?? '', score: d.newScore }]
-              .sort((a, b) => b.score - a.score);
-          });
-          break;
-        }
-        case 'GAME_PAUSED':
-          setIsPaused(true);
-          break;
-        case 'GAME_RESUMED':
-          setIsPaused(false);
-          break;
-        case 'QUESTION_SKIPPED':
-          setSkippedToast(true);
-          setTimeout(() => setSkippedToast(false), 2500);
-          break;
-        case 'ROOM_ENDED':
-          // End-early or stuck-game cleanup — show wrap-up if we have ranks
-          // so far, otherwise bounce back to /multiplayer.
-          if (finalRanks == null) {
-            navigate('/multiplayer', { replace: true });
-          }
-          break;
-        case 'QUIZ_END': {
-          const d = msg.data as FinalRanking[] | { finalResults?: FinalRanking[]; leaderboard?: FinalRanking[] } | undefined;
-          let rows: FinalRanking[] = [];
-          if (Array.isArray(d)) rows = d;
-          else if (Array.isArray(d?.finalResults)) rows = d!.finalResults!;
-          else if (Array.isArray(d?.leaderboard)) rows = d!.leaderboard!;
-          rows = [...rows].sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
-          setFinalRanks(rows);
-          break;
-        }
+  // FMR-5: shared typed event union/dispatcher (RoomEvent) — same contract
+  // as the player view, no more ad-hoc per-page payload casts.
+  const handleRoomEvent = (msg: RoomEvent) => {
+    switch (msg.type) {
+      case 'QUESTION_START': {
+        const d = msg.data;
+        setQuestionIndex(d.questionIndex);
+        setTotalQuestions(d.totalQuestions);
+        setTimeLimit(d.timeLimit);
+        setTimeLeft(d.timeLimit);
+        setQuestion(d.question);
+        // Anti-spoiler 2026-05-23: BE đã bỏ correctAnswer khỏi QUESTION_START
+        // payload (Quản trò subscribe cùng /topic/room/{id} sẽ thấy đáp án
+        // trước player). Reveal chỉ sau ROUND_END / QUESTION_REVEALED.
+        setCorrectIndex(null);
+        setLiveAnswers({}); // reset for new round
+        break;
       }
+      case 'ROUND_END': {
+        const d = msg.data;
+        if (typeof d.correctIndex === 'number') setCorrectIndex(d.correctIndex);
+        break;
+      }
+      case 'QUESTION_REVEALED': {
+        // GROUP_LIVE_SEQUENTIAL reveal — same correctIndex field.
+        const d = msg.data;
+        if (typeof d.correctIndex === 'number') setCorrectIndex(d.correctIndex);
+        break;
+      }
+      case 'ANSWER_SUBMITTED': {
+        const d = msg.data;
+        setLiveAnswers(prev => ({
+          ...prev,
+          [d.playerId]: {
+            userId: d.playerId,
+            username: d.username,
+            status: d.isCorrect ? 'correct' : 'wrong',
+            reactionTimeMs: d.reactionTimeMs,
+          },
+        }));
+        break;
+      }
+      case 'SCORE_UPDATE': {
+        const d = msg.data;
+        setScores(prev => {
+          const idx = prev.findIndex(s => s.userId === d.playerId);
+          if (idx >= 0) {
+            const next = [...prev];
+            next[idx] = { ...next[idx], score: d.newScore };
+            return next.sort((a, b) => b.score - a.score);
+          }
+          return [...prev, { userId: d.playerId, username: d.username ?? '', score: d.newScore }]
+            .sort((a, b) => b.score - a.score);
+        });
+        break;
+      }
+      case 'GAME_PAUSED':
+        setIsPaused(true);
+        break;
+      case 'GAME_RESUMED':
+        setIsPaused(false);
+        break;
+      case 'QUESTION_SKIPPED':
+        setSkippedToast(true);
+        setTimeout(() => setSkippedToast(false), 2500);
+        break;
+      case 'ROOM_ENDED':
+        // End-early or stuck-game cleanup — show wrap-up if we have ranks
+        // so far, otherwise bounce back to /multiplayer.
+        if (finalRanks == null) {
+          navigate('/multiplayer', { replace: true });
+        }
+        break;
+      case 'QUIZ_END': {
+        const d = msg.data;
+        let rows: FinalRanking[] = [];
+        if (Array.isArray(d)) rows = d;
+        else if (Array.isArray(d?.finalResults)) rows = d!.finalResults!;
+        else if (Array.isArray(d?.leaderboard)) rows = d!.leaderboard!;
+        rows = [...rows].sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
+        setFinalRanks(rows);
+        break;
+      }
+    }
+  };
+
+  // Apply a REST current-question payload over the live state (reconnect
+  // path) — same reset semantics as a QUESTION_START broadcast, with the
+  // countdown adjusted for how much of the window already elapsed.
+  const applyRehydratedQuestion = (data: QuestionStartData) => {
+    setQuestion(data.question);
+    setQuestionIndex(data.questionIndex);
+    setTotalQuestions(data.totalQuestions);
+    setTimeLimit(data.timeLimit);
+    const elapsedSec = data.startedAtMs ? (Date.now() - data.startedAtMs) / 1000 : 0;
+    setTimeLeft(Math.max(0, data.timeLimit - elapsedSec));
+    setCorrectIndex(null);
+    setLiveAnswers({});
+  };
+
+  const { connected, reconnecting } = useRoomChannel(roomId, {
+    onEvent: handleRoomEvent,
+    // F-web-4 fix (FMR-2): after a WS gap, re-pull the in-flight question.
+    // Only overwrite when the round actually moved on — same-question
+    // reconnects keep the live answer grid intact.
+    onRehydrateQuestion: (data) => {
+      if (data.question.id !== question?.id) applyRehydratedQuestion(data);
     },
   });
 
   // Rehydrate first question via REST when navigating từ lobby → host view.
   // Race: BE fires QUESTION_START đúng lúc host page chưa subscribe xong → host
-  // miss câu đầu (player view có cùng pattern ở RoomQuiz.tsx:539). Bug user
-  // report 2026-05-23 ("chỉ có câu đầu ko hiện"). Fallback REST endpoint trả
-  // 200 nếu mid-question, 204 nếu giữa rounds — silent ignore lỗi.
+  // miss câu đầu (player view có cùng pattern ở RoomQuiz.tsx mount effect). Bug
+  // user report 2026-05-23 ("chỉ có câu đầu ko hiện"). Fallback REST endpoint
+  // trả 200 nếu mid-question, 204 nếu giữa rounds — silent ignore lỗi.
   useEffect(() => {
     if (!roomId) return;
     let cancelled = false;
-    ;(async () => {
-      try {
-        const res = await api.get(`/api/rooms/${roomId}/current-question`);
-        if (cancelled || res.status !== 200 || !res.data?.question) return;
-        const data = res.data.question as {
-          questionIndex: number; totalQuestions: number;
-          question: Question; timeLimit: number; startedAtMs?: number;
-        };
-        // Only seed if state still empty — STOMP event arrived first wins.
-        setQuestion(prev => prev ?? data.question);
-        setQuestionIndex(prev => (prev > 0 ? prev : data.questionIndex));
-        setTotalQuestions(prev => prev || data.totalQuestions);
-        setTimeLimit(prev => prev || data.timeLimit);
-        const elapsedSec = data.startedAtMs ? (Date.now() - data.startedAtMs) / 1000 : 0;
-        setTimeLeft(prev => prev || Math.max(0, data.timeLimit - elapsedSec));
-      } catch { /* 204/error: keep waiting for QUESTION_START */ }
+    (async () => {
+      const data = await fetchCurrentQuestion(roomId);
+      if (cancelled || !data) return;
+      // Only seed if state still empty — STOMP event arrived first wins.
+      setQuestion(prev => prev ?? data.question);
+      setQuestionIndex(prev => (prev > 0 ? prev : data.questionIndex));
+      setTotalQuestions(prev => prev || data.totalQuestions);
+      setTimeLimit(prev => prev || data.timeLimit);
+      const elapsedSec = data.startedAtMs ? (Date.now() - data.startedAtMs) / 1000 : 0;
+      setTimeLeft(prev => prev || Math.max(0, data.timeLimit - elapsedSec));
     })();
     return () => { cancelled = true; };
   }, [roomId]);
