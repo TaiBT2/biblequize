@@ -361,11 +361,10 @@ export default function CreateRoom() {
             </section>
 
             {/* Card 3: Match settings */}
-            <section
-              className={`p-[22px_24px] transition-opacity ${formData.questionSource === 'CUSTOM' ? 'opacity-40 pointer-events-none' : ''}`}
-              style={CARD_STYLE}
-            >
+            <section className="p-[22px_24px]" style={CARD_STYLE}>
               <CardLabel>Cài đặt trận đấu</CardLabel>
+              {/* Vùng chọn câu hỏi — mờ đi khi dùng nguồn "Tự tạo câu hỏi" */}
+              <div className={`transition-opacity ${formData.questionSource === 'CUSTOM' ? 'opacity-40 pointer-events-none' : ''}`}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-[18px]">
                 <ChipGroup
                   label={t('createRoom.questionCount')}
@@ -422,6 +421,28 @@ export default function CreateRoom() {
                   <strong className="text-blue-200">~{Math.max(1, Math.ceil(formData.questionCount * formData.timePerQuestion / 60))} phút</strong>
                 </span>
               </div>
+              </div>
+
+              {/* Số người chơi tối đa — luôn bật, không phụ thuộc nguồn câu hỏi */}
+              <div className="mt-[18px] pt-[18px] border-t border-white/[0.06]">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-[11.5px] font-bold tracking-[0.08em] uppercase text-gray-400">
+                    {t('createRoom.maxPlayers')}
+                  </span>
+                  <span className="px-3 py-1 rounded-full text-xs font-bold" style={{ background: 'rgba(232,168,50,0.15)', color: '#e8a832' }}>
+                    {formData.maxPlayers}
+                  </span>
+                </div>
+                <input
+                  type="range" min={2} max={100} value={formData.maxPlayers}
+                  onChange={e => setFormData(prev => ({ ...prev, maxPlayers: parseInt(e.target.value) }))}
+                  className="w-full accent-[#e8a832] h-2 rounded-full appearance-none cursor-pointer"
+                  style={{ background: 'rgba(15,18,28,0.55)' }}
+                />
+                <div className="flex justify-between text-[10px] text-gray-500 mt-1">
+                  <span>2</span><span>100</span>
+                </div>
+              </div>
             </section>
 
             {/* Card 4: Privacy + Advanced */}
@@ -467,30 +488,6 @@ export default function CreateRoom() {
                   />
                 </button>
               </div>
-
-              <details className="group mt-4 pt-3.5 border-t border-white/[0.06]">
-                <summary className="flex items-center gap-1.5 cursor-pointer list-none text-[13px] font-semibold text-gray-400 hover:text-gray-200 select-none">
-                  <span className="material-symbols-outlined transition-transform group-open:rotate-180" style={{ fontSize: 16 }}>expand_more</span>
-                  Cài đặt nâng cao
-                </summary>
-                <div className="pt-4 space-y-2">
-                  <div className="flex justify-between items-center">
-                    <label className="text-sm font-medium text-gray-300">{t('createRoom.maxPlayers')}</label>
-                    <span className="px-3 py-1 rounded-full text-xs font-bold" style={{ background: 'rgba(232,168,50,0.15)', color: '#e8a832' }}>
-                      {formData.maxPlayers}
-                    </span>
-                  </div>
-                  <input
-                    type="range" min={2} max={100} value={formData.maxPlayers}
-                    onChange={e => setFormData(prev => ({ ...prev, maxPlayers: parseInt(e.target.value) }))}
-                    className="w-full accent-[#e8a832] h-2 rounded-full appearance-none cursor-pointer"
-                    style={{ background: 'rgba(15,18,28,0.55)' }}
-                  />
-                  <div className="flex justify-between text-[10px] text-gray-500">
-                    <span>2</span><span>100</span>
-                  </div>
-                </div>
-              </details>
             </section>
           </div>
 
