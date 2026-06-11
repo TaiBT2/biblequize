@@ -1,0 +1,122 @@
+package com.biblequiz.modules.room.service.mode;
+
+import com.biblequiz.modules.quiz.entity.Question;
+import com.biblequiz.modules.room.entity.Room;
+import com.biblequiz.modules.room.entity.RoomPlayer;
+import com.biblequiz.modules.room.entity.RoomRound;
+import com.biblequiz.modules.room.service.RoomService;
+import com.biblequiz.modules.room.service.SequentialScoringService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
+import java.util.Comparator;
+import java.util.List;
+import java.util.UUID;
+
+/**
+ * GROUP_LIVE_SEQUENTIAL (co-play) — latch-driven flow that does not share
+ * the standard loop: no pause/end-early checks, no ROUND_END broadcast
+ * (QUESTION_REVEALED instead), no between-question sleep, and the host
+ * advances questions manually. Kept as a custom game loop on purpose.
+ */
+@Component
+public class SequentialStrategy implements RoomModeStrategy {
+
+    private static final Logger log = LoggerFactory.getLogger(SequentialStrategy.class);
+
+    private final SequentialScoringService sequentialScoringService;
+
+    public SequentialStrategy(SequentialScoringService sequentialScoringService) {
+        this.sequentialScoringService = sequentialScoringService;
+    }
+
+    @Override
+    public Room.RoomMode mode() {
+        return Room.RoomMode.GROUP_LIVE_SEQUENTIAL;
+    }
+
+    @Override
+    public String displayName() {
+        return "Group Live Sequential";
+    }
+
+    @Override
+    public int calculateScore(boolean isCorrect, int timeLimitSeconds, int reactionTimeMs) {
+        // Sequential: đúng = 100, sai = 0 — no time bonus.
+        return sequentialScoringService.calculateScore(isCorrect);
+    }
+
+    @Override
+    public boolean defersAnswerFeedback() {
+        return true;
+    }
+
+    @Override
+    public Comparator<RoomPlayer> leaderboardComparator() {
+        return RoomService.ORDER_BY_SCORE_DESC;
+    }
+
+    @Override
+    public boolean hasCustomGameLoop() {
+        return true;
+    }
+
+    /**
+     * Sequential mode: chờ all players trả lời (early-wake nếu xong sớm) → reveal
+     * đáp án + per-player answers → đợi host bấm "Sang câu tiếp" → next question.
+     * Khác Speed Race ở chỗ score đơn giản (đúng=100, sai=0) và pause cho thảo luận.
+     */
+    @Override
+    public void runGameLoop(GameLoopContext ctx) throws InterruptedException {
+        String roomId = ctx.roomId;
+        List<Question> questions = ctx.questions;
+
+        for (int i = 0; i < questions.size(); i++) {
+            Question q = questions.get(i);
+            RoomRound round = ctx.roundSaver.save(roomId,
+                    new RoomRound(UUID.randomUUID().toString(), null, i, q.getId(), LocalDateTime.now()));
+            ctx.roomStateService.setCurrentRoundId(roomId, round.getId());
+
+            int activePlayers = (int) ctx.roomPlayerRepository
+                    .countByRoomIdAndPlayerStatus(roomId, RoomPlayer.PlayerStatus.ACTIVE);
+            sequentialScoringService.beginRound(roomId, activePlayers);
+
+            ctx.ws.broadcastQuestionStart(roomId, i, questions.size(),
+                    ctx.questionDtoFactory.build(q), ctx.timePerQuestion);
+
+            // Wait until all answered OR timeout (timer câu hỏi)
+            boolean allAnswered = sequentialScoringService.awaitAllAnsweredOrTimeout(roomId, ctx.timePerQuestion);
+            log.info("[Sequential] room={} q={} allAnswered={} answered={}/{}",
+                    roomId, i, allAnswered,
+                    sequentialScoringService.answeredCount(roomId),
+                    sequentialScoringService.totalPlayers(roomId));
+
+            round.setEndedAt(LocalDateTime.now());
+            ctx.roomRoundRepository.save(round);
+
+            // Reveal — gather per-player answers + correct answer
+            ctx.ws.broadcastQuestionRevealed(roomId, round.getId(), q.getCorrectAnswer().get(0), q.getExplanation());
+
+            // Wait host's manual advance (bounded by 10-min safety)
+            boolean leaderAdvanced = sequentialScoringService.awaitLeaderAdvance(roomId);
+            sequentialScoringService.clearRound(roomId);
+            if (!leaderAdvanced) {
+                log.warn("[Sequential] room={} leader advance timeout — auto-skip to next", roomId);
+            }
+        }
+
+        finishGame(ctx);
+    }
+
+    @Override
+    public void finishGame(GameLoopContext ctx) {
+        List<RoomService.LeaderboardEntryDTO> finalResults =
+                ctx.roomService.buildLeaderboard(ctx.roomId, leaderboardComparator());
+        ctx.roomService.endRoom(ctx.roomId);
+        ctx.ws.broadcastQuizEnd(ctx.roomId, finalResults);
+        log.info("Group Live Sequential kết thúc cho phòng {}", ctx.roomId);
+    }
+}

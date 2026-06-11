@@ -1,18 +1,13 @@
 package com.biblequiz.api.websocket;
 
-import com.biblequiz.modules.quiz.entity.Question;
-import com.biblequiz.modules.quiz.repository.QuestionRepository;
 import com.biblequiz.modules.room.entity.Room;
 import com.biblequiz.modules.room.entity.RoomAnswer;
-import com.biblequiz.modules.room.entity.RoomRound;
 import com.biblequiz.modules.room.repository.RoomAnswerRepository;
-import com.biblequiz.modules.room.repository.RoomPlayerRepository;
 import com.biblequiz.modules.room.repository.RoomRepository;
-import com.biblequiz.modules.room.repository.RoomRoundRepository;
+import com.biblequiz.modules.room.service.RoomAnswerProcessor;
 import com.biblequiz.modules.room.service.RoomService;
 import com.biblequiz.modules.room.service.RoomStateService;
 import com.biblequiz.modules.room.service.SequentialScoringService;
-import com.biblequiz.modules.room.service.SpeedRaceScoringService;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 
@@ -26,7 +21,6 @@ import org.springframework.stereotype.Controller;
 
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 @Controller
 public class RoomWebSocketController {
@@ -44,19 +38,10 @@ public class RoomWebSocketController {
     private RoomStateService roomStateService;
 
     @Autowired
-    private RoomPlayerRepository roomPlayerRepository;
-
-    @Autowired
     private RoomAnswerRepository roomAnswerRepository;
 
     @Autowired
-    private RoomRoundRepository roomRoundRepository;
-
-    @Autowired
-    private QuestionRepository questionRepository;
-
-    @Autowired
-    private SpeedRaceScoringService speedRaceScoringService;
+    private RoomAnswerProcessor answerProcessor;
 
     @Autowired
     private SequentialScoringService sequentialScoringService;
@@ -171,7 +156,9 @@ public class RoomWebSocketController {
     }
 
     /**
-     * Handle submitting answer — Speed Race scoring với anti-cheat
+     * Handle submitting answer — validation/scoring/persistence delegated to
+     * {@link RoomAnswerProcessor}; this handler keeps the STOMP concerns
+     * (principal extraction, payload parsing, broadcasts).
      */
     @MessageMapping("/room/{roomId}/answer")
     public void handleAnswerSubmission(@DestinationVariable String roomId, @Payload Map<String, Object> payload,
@@ -184,120 +171,35 @@ public class RoomWebSocketController {
             int answerIndex = ((Number) payload.get("answerIndex")).intValue();
             int reactionTimeMs = ((Number) payload.get("reactionTimeMs")).intValue();
 
-            // Lấy round hiện tại
-            String roundId = roomStateService.getCurrentRoundId(roomId).orElse(null);
-
-            // Anti-cheat: mỗi player chỉ được submit 1 lần/round
-            if (roundId != null && roomAnswerRepository.existsByRoundIdAndUserId(roundId, user.getId())) {
+            RoomAnswerProcessor.AnswerResult result =
+                    answerProcessor.process(roomId, user, answerIndex, reactionTimeMs);
+            if (!result.accepted) {
+                // Anti-cheat rejections stay silent (no error frame).
                 return;
             }
 
-            // Sprint 4: in Quản trò mode the host orchestrates only — rejecting
-            // their answer here keeps stray RoomAnswer rows from being written
-            // under the host's userId (which would skew analytics + leak into
-            // the early-end watcher's "expected answers" math).
-            Room currentRoom = roomRepository.findById(roomId).orElse(null);
-            if (currentRoom != null && !currentRoom.isHostPlaysGame()
-                    && currentRoom.getHost() != null
-                    && currentRoom.getHost().getId().equals(user.getId())) {
-                return;
+            if (result.scoreUpdate != null) {
+                broadcastScoreUpdate(roomId, user.getId(), result.scoreUpdate.newScore,
+                        result.scoreUpdate.correctAnswers, result.scoreUpdate.totalAnswered);
             }
-
-            // Battle Royale: chỉ ACTIVE players mới được answer
-            var playerOpt = roomPlayerRepository.findByRoomIdAndUserId(roomId, user.getId());
-            if (playerOpt.isPresent()) {
-                var playerStatus = playerOpt.get().getPlayerStatus();
-                if (playerStatus == com.biblequiz.modules.room.entity.RoomPlayer.PlayerStatus.ELIMINATED
-                        || playerStatus == com.biblequiz.modules.room.entity.RoomPlayer.PlayerStatus.SPECTATOR) {
-                    return;
-                }
-            }
-
-            // Server-side answer validation
-            boolean isCorrect = false;
-            int pointsEarned = 0;
-            int timeLimit = 30;
-
-            // Determine mode for scoring dispatch (reuse the lookup from the
-            // Quản trò check above — single fetch).
-            Room.RoomMode mode = currentRoom != null ? currentRoom.getMode() : Room.RoomMode.SPEED_RACE;
-
-            java.util.Optional<WebSocketMessage.QuestionStartData> questionState =
-                    roomStateService.getCurrentQuestion(roomId);
-            if (questionState.isPresent()) {
-                WebSocketMessage.QuestionStartData state = questionState.get();
-                timeLimit = state.timeLimit;
-                String questionId = extractQuestionId(state.question);
-                if (questionId != null) {
-                    Question question = questionRepository.findById(questionId).orElse(null);
-                    if (question != null && question.getCorrectAnswer() != null
-                            && !question.getCorrectAnswer().isEmpty()) {
-                        isCorrect = (answerIndex == question.getCorrectAnswer().get(0));
-                        if (mode == Room.RoomMode.GROUP_LIVE_SEQUENTIAL) {
-                            pointsEarned = sequentialScoringService.calculateScore(isCorrect);
-                        } else {
-                            pointsEarned = speedRaceScoringService.calculateScore(isCorrect, timeLimit, reactionTimeMs);
-                        }
-                    }
-                }
-            }
-
-            // Lưu RoomAnswer entity
-            if (roundId != null) {
-                final int pts = pointsEarned;
-                RoomRound round = roomRoundRepository.findById(roundId).orElse(null);
-                if (round != null) {
-                    RoomAnswer answer = new RoomAnswer(
-                            UUID.randomUUID().toString(), round, user.getId(),
-                            answerIndex, isCorrect, reactionTimeMs, pts);
-                    roomAnswerRepository.save(answer);
-                }
-            }
-
-            // Update RoomPlayer score
-            final boolean answerIsCorrect = isCorrect;
-            final int finalPoints = pointsEarned;
-            roomPlayerRepository.findByRoomIdAndUserId(roomId, user.getId()).ifPresent(roomPlayer -> {
-                // Cập nhật điểm theo Speed Race formula
-                roomPlayer.setScore(roomPlayer.getScore() + finalPoints);
-                roomPlayer.setTotalAnswered(roomPlayer.getTotalAnswered() + 1);
-                if (answerIsCorrect) {
-                    roomPlayer.setCorrectAnswers(roomPlayer.getCorrectAnswers() + 1);
-                }
-                // Cập nhật average reaction time
-                int total = roomPlayer.getTotalAnswered();
-                double newAvg = (roomPlayer.getAverageReactionTime() * (total - 1) + reactionTimeMs) / total;
-                roomPlayer.setAverageReactionTime(newAvg);
-                roomPlayerRepository.save(roomPlayer);
-
-                broadcastScoreUpdate(roomId, user.getId(), roomPlayer.getScore(),
-                        roomPlayer.getCorrectAnswers(), roomPlayer.getTotalAnswered());
-            });
 
             // Broadcast answer submitted với pointsEarned
-            // Sequential mode: hide isCorrect from broadcast — chỉ reveal sau khi all-answered
-            boolean broadcastIsCorrect = mode != Room.RoomMode.GROUP_LIVE_SEQUENTIAL && isCorrect;
-            // BUG FIX 2026-05-23: Map.of throws NPE nếu user.getName() null,
-            // khiến ANSWER_SUBMITTED không broadcast → host UI "Tình trạng trả
-            // lời" mãi 0/N. SCORE_UPDATE đi trước (broadcastScoreUpdate có
-            // fallback "Unknown" line 392) nên scoreboard vẫn render được —
-            // gây inconsistency. Dùng HashMap allow null + fallback rõ ràng.
-            String displayName = user.getName() != null ? user.getName()
-                    : playerOpt.map(p -> p.getUsername()).orElse("Unknown");
+            // BUG FIX 2026-05-23: HashMap (not Map.of) — must tolerate nulls
+            // so ANSWER_SUBMITTED always broadcasts (see RoomAnswerProcessor).
             Map<String, Object> answerData = new java.util.HashMap<>();
             answerData.put("playerId", user.getId());
-            answerData.put("username", displayName);
+            answerData.put("username", result.displayName);
             answerData.put("questionIndex", questionIndex);
             answerData.put("answerIndex", answerIndex);
             answerData.put("reactionTimeMs", reactionTimeMs);
-            answerData.put("isCorrect", broadcastIsCorrect);
-            answerData.put("pointsEarned", mode == Room.RoomMode.GROUP_LIVE_SEQUENTIAL ? 0 : finalPoints);
+            answerData.put("isCorrect", result.broadcastIsCorrect);
+            answerData.put("pointsEarned", result.broadcastPoints);
             WebSocketMessage.Message message = new WebSocketMessage.Message(
                     WebSocketMessage.MessageTypes.ANSWER_SUBMITTED, answerData);
             messagingTemplate.convertAndSend("/topic/room/" + roomId, message);
 
             // Sequential coordination + progress broadcast
-            if (mode == Room.RoomMode.GROUP_LIVE_SEQUENTIAL) {
+            if (result.deferredFeedback) {
                 sequentialScoringService.recordAnswer(roomId);
                 broadcastSequentialProgress(roomId,
                         sequentialScoringService.answeredCount(roomId),
@@ -333,20 +235,6 @@ public class RoomWebSocketController {
         } catch (Exception e) {
             sendError(roomId, "ADVANCE_ERROR", "Lỗi khi chuyển câu: " + e.getMessage());
         }
-    }
-
-    /**
-     * Extract question ID from question object stored in Redis (may be deserialized as Map)
-     */
-    private String extractQuestionId(Object questionObj) {
-        if (questionObj instanceof Map<?, ?> map) {
-            Object id = map.get("id");
-            return id != null ? id.toString() : null;
-        }
-        if (questionObj instanceof Question q) {
-            return q.getId();
-        }
-        return null;
     }
 
     private void sendError(String roomId, String errorType, String message) {

@@ -11,10 +11,14 @@ import com.biblequiz.modules.room.repository.RoomAnswerRepository;
 import com.biblequiz.modules.room.repository.RoomPlayerRepository;
 import com.biblequiz.modules.room.repository.RoomRepository;
 import com.biblequiz.modules.room.repository.RoomRoundRepository;
+import com.biblequiz.modules.room.service.RoomAnswerProcessor;
 import com.biblequiz.modules.room.service.RoomService;
 import com.biblequiz.modules.room.service.RoomStateService;
 import com.biblequiz.modules.room.service.SequentialScoringService;
 import com.biblequiz.modules.room.service.SpeedRaceScoringService;
+import com.biblequiz.modules.room.service.mode.RoomModeRegistry;
+import com.biblequiz.modules.room.service.mode.SequentialStrategy;
+import com.biblequiz.modules.room.service.mode.SpeedRaceStrategy;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 
@@ -27,6 +31,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.core.Authentication;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -88,6 +93,16 @@ class RoomWebSocketControllerTest {
 
         authentication = mock(Authentication.class);
         lenient().when(authentication.getName()).thenReturn("test@example.com");
+
+        // Real answer pipeline wired with the same mocks so the existing
+        // handleAnswer_* assertions still exercise validation/persistence.
+        RoomModeRegistry registry = new RoomModeRegistry(List.of(
+                new SpeedRaceStrategy(speedRaceScoringService),
+                new SequentialStrategy(sequentialScoringService)));
+        RoomAnswerProcessor answerProcessor = new RoomAnswerProcessor(
+                roomStateService, roomAnswerRepository, roomRoundRepository,
+                roomPlayerRepository, questionRepository, roomRepository, registry);
+        ReflectionTestUtils.setField(controller, "answerProcessor", answerProcessor);
     }
 
     // ── handlePlayerJoin ─────────────────────────────────────────────────────

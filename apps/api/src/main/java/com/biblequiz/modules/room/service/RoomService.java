@@ -642,35 +642,32 @@ public class RoomService {
         return new RoomDetailsDTO(room, players, groupId, quizSetName, quizSetTotalQuestions);
     }
 
+    /** Score DESC — Speed Race / Team vs Team / Sequential leaderboards. */
+    public static final Comparator<RoomPlayer> ORDER_BY_SCORE_DESC =
+            Comparator.comparingInt(RoomPlayer::getScore).reversed();
+
+    /** finalRank ASC, unranked (null) last — Battle Royale / Sudden Death. */
+    public static final Comparator<RoomPlayer> ORDER_BY_FINAL_RANK_ASC =
+            Comparator.comparingInt(p -> (p.getFinalRank() != null ? p.getFinalRank() : Integer.MAX_VALUE));
+
     /**
      * Get leaderboard for room (sorted by score)
      */
     public List<LeaderboardEntryDTO> getRoomLeaderboard(String roomId) {
-        List<RoomPlayer> players = roomPlayerRepository.findByRoomIdOrderByScoreDesc(roomId);
-
-        return players.stream()
-            .map(player -> new LeaderboardEntryDTO(
-                player.getUser().getId(),
-                player.getUsername(),
-                player.getAvatarUrl(),
-                player.getScore(),
-                player.getCorrectAnswers(),
-                player.getTotalAnswered(),
-                player.getAccuracy(),
-                player.getFinalRank(),
-                player.getPlayerStatus()
-            ))
-            .collect(Collectors.toList());
+        return buildLeaderboard(roomId, ORDER_BY_SCORE_DESC);
     }
 
     /**
      * Get leaderboard sorted by finalRank (for Battle Royale game end)
      */
     public List<LeaderboardEntryDTO> getRoomLeaderboardWithRanks(String roomId) {
-        List<RoomPlayer> players = roomPlayerRepository.findByRoomId(roomId);
+        return buildLeaderboard(roomId, ORDER_BY_FINAL_RANK_ASC);
+    }
 
-        return players.stream()
-            .sorted(Comparator.comparingInt(p -> (p.getFinalRank() != null ? p.getFinalRank() : Integer.MAX_VALUE)))
+    /** Single leaderboard builder — ordering supplied by the mode strategy. */
+    public List<LeaderboardEntryDTO> buildLeaderboard(String roomId, Comparator<RoomPlayer> order) {
+        return roomPlayerRepository.findByRoomId(roomId).stream()
+            .sorted(order)
             .map(player -> new LeaderboardEntryDTO(
                 player.getUser().getId(),
                 player.getUsername(),
