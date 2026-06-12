@@ -7,6 +7,8 @@ import com.biblequiz.modules.room.repository.RoomRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -50,25 +52,40 @@ public class RoomAbandonmentScheduler {
     @Scheduled(fixedRate = 5 * 60 * 1000L) // every 5 minutes
     public void sweepStuckGames() {
         LocalDateTime cutoff = LocalDateTime.now().minusMinutes(STUCK_THRESHOLD_MINUTES);
-        List<Room> stuck = roomRepository.findStuckInProgressRooms(cutoff);
+        recoverRooms(roomRepository.findStuckInProgressRooms(cutoff),
+                "stuck (threshold " + STUCK_THRESHOLD_MINUTES + " min)");
+    }
 
-        if (stuck.isEmpty()) {
-            log.debug("[ROOM-ABANDON] No stuck IN_PROGRESS rooms (threshold {} min)", STUCK_THRESHOLD_MINUTES);
+    /**
+     * Boot-time orphan recovery. The quiz loop lives in an in-memory @Async
+     * thread, so a fresh JVM has no runner for ANY row still IN_PROGRESS —
+     * those rooms are zombies immediately (players see an expired question
+     * and can never advance), yet the periodic sweep would leave them alive
+     * for up to {@value #STUCK_THRESHOLD_MINUTES} minutes. End them all now.
+     * Single-instance assumption: matches the in-memory game-loop design.
+     */
+    @EventListener(ApplicationReadyEvent.class)
+    public void recoverOrphansOnStartup() {
+        recoverRooms(roomRepository.findStuckInProgressRooms(LocalDateTime.now()),
+                "orphaned by restart");
+    }
+
+    private void recoverRooms(List<Room> rooms, String why) {
+        if (rooms.isEmpty()) {
+            log.debug("[ROOM-ABANDON] No IN_PROGRESS rooms to recover ({})", why);
             return;
         }
-
-        log.warn("[ROOM-ABANDON] Recovering {} stuck IN_PROGRESS rooms (threshold {} min)",
-                stuck.size(), STUCK_THRESHOLD_MINUTES);
-        for (Room room : stuck) {
+        log.warn("[ROOM-ABANDON] Recovering {} IN_PROGRESS rooms ({})", rooms.size(), why);
+        for (Room room : rooms) {
             try {
                 roomService.endRoom(room.getId());
                 webSocketController.broadcastRoomEnded(room.getId(),
                         WebSocketMessage.RoomEndedReason.STUCK_GAME);
-                log.warn("[ROOM-ABANDON] Recovered stuck room {} (started at {})",
+                log.warn("[ROOM-ABANDON] Recovered room {} (started at {})",
                         room.getRoomCode(), room.getStartedAt());
             } catch (Exception e) {
                 // Don't let one bad row poison the sweep — log and continue.
-                log.error("[ROOM-ABANDON] Failed to recover stuck room {}: {}",
+                log.error("[ROOM-ABANDON] Failed to recover room {}: {}",
                         room.getId(), e.getMessage(), e);
             }
         }

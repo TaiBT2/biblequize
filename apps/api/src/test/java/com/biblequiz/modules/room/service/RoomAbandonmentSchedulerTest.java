@@ -80,6 +80,24 @@ class RoomAbandonmentSchedulerTest {
     }
 
     @Test
+    void recoverOrphansOnStartup_endsAllInProgressRoomsRegardlessOfAge() {
+        // A fresh JVM has no quiz-runner threads, so even a seconds-old
+        // IN_PROGRESS room is an orphan — the startup pass must use
+        // cutoff=now (no 90-min grace) and end everything it finds.
+        Room young = stuck("young", LocalDateTime.now().minusMinutes(1));
+        when(roomRepository.findStuckInProgressRooms(any())).thenReturn(List.of(young));
+
+        scheduler.recoverOrphansOnStartup();
+
+        ArgumentCaptor<LocalDateTime> captor = ArgumentCaptor.forClass(LocalDateTime.class);
+        verify(roomRepository).findStuckInProgressRooms(captor.capture());
+        long minutesAgo = ChronoUnit.MINUTES.between(captor.getValue(), LocalDateTime.now());
+        assertTrue(minutesAgo <= 1, "expected cutoff ~now, got " + minutesAgo + " min ago");
+        verify(roomService).endRoom("young");
+        verify(webSocketController).broadcastRoomEnded("young", WebSocketMessage.RoomEndedReason.STUCK_GAME);
+    }
+
+    @Test
     void sweepStuckGames_oneRoomFailing_othersStillRecovered() {
         Room a = stuck("a", LocalDateTime.now().minusHours(2));
         Room b = stuck("b", LocalDateTime.now().minusHours(2));
