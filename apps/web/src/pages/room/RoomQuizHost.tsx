@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { fetchCurrentQuestion, useRoomChannel } from '../../hooks/useRoomChannel';
 import { api } from '../../api/client';
+import { PodiumBlock } from './RoomOverlays';
 import type { QuestionStartData, RoomEvent, RoomQuestion } from '../../types/room';
 
 /**
@@ -307,21 +308,13 @@ const RoomQuizHost: React.FC = () => {
         }}
       >
         <div className="mx-auto w-full max-w-3xl px-4 lg:px-6 pb-10">
-          <header className="pt-4 flex items-center justify-between">
+          <header className="pt-4 flex items-center">
             <span
               className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider"
               style={{ background: 'rgba(232,168,50,0.2)', color: '#e8a832' }}
             >
               👑 Quản trò
             </span>
-            <button
-              onClick={() => navigate('/multiplayer', { replace: true })}
-              className="w-9 h-9 rounded-full grid place-items-center text-gray-400"
-              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}
-              aria-label="Đóng"
-            >
-              <span className="material-symbols-outlined text-[18px]">close</span>
-            </button>
           </header>
 
           {/* Celebration header */}
@@ -345,38 +338,11 @@ const RoomQuizHost: React.FC = () => {
             </div>
           </div>
 
-          {/* Winner hero card */}
+          {/* QTR-6: podium = the celebration moment on the cast/TV screen
+              (replaces the old winner hero card, which duplicated rank #1) */}
           {winner && (
-            <div
-              className="glass-card gold-glow rounded-2xl p-5 lg:p-6 mb-6 flex items-center gap-4 relative overflow-hidden"
-              style={{ border: '1px solid rgba(232,168,50,0.3)' }}
-              data-testid="end-host-winner"
-            >
-              <div
-                className="absolute inset-x-0 top-0 h-1 gold-gradient"
-                aria-hidden="true"
-              />
-              <div className="text-4xl flex-shrink-0" aria-hidden="true">👑</div>
-              <div
-                className="w-14 h-14 rounded-full grid place-items-center font-bold text-xl text-white flex-shrink-0"
-                style={{ background: 'linear-gradient(135deg, #34d399, #059669)' }}
-              >
-                {winner.username?.[0]?.toUpperCase() ?? '?'}
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-[10px] uppercase tracking-wider font-bold" style={{ color: '#9ca3af' }}>
-                  Người chiến thắng
-                </div>
-                <div className="font-black text-xl lg:text-2xl truncate text-on-surface">{winner.username}</div>
-              </div>
-              <div className="text-right flex-shrink-0">
-                <div className="font-black text-2xl lg:text-3xl tabular-nums" style={{ color: '#e8a832' }}>
-                  {winner.score ?? 0}
-                </div>
-                <div className="text-[10px] uppercase tracking-wider font-bold" style={{ color: '#9ca3af' }}>
-                  điểm
-                </div>
-              </div>
+            <div className="mb-8" data-testid="end-host-winner">
+              <PodiumBlock results={finalRanks} />
             </div>
           )}
 
@@ -482,7 +448,7 @@ const RoomQuizHost: React.FC = () => {
                 data-testid="end-host-close"
                 onClick={() => navigate('/multiplayer', { replace: true })}
                 className="py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5"
-                style={{ background: 'rgba(239,68,68,0.06)', border: '1px solid rgba(239,68,68,0.2)', color: '#f87171' }}
+                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
               >
                 <span className="material-symbols-outlined text-[16px]" aria-hidden="true">logout</span>
                 Đóng

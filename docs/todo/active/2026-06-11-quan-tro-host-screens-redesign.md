@@ -57,6 +57,14 @@
 - [x] vitest full green: 129 files / 1284 tests passed (2026-06-12), KHÔNG phải sửa test nào
       (mọi testid + text ngữ nghĩa giữ nguyên); `tsc --noEmit`: 0 lỗi trong RoomQuizHost.
 
+### QTR-6 — Wrap-up polish (design review 2026-06-12)
+- [ ] Thêm podium 3 bậc vào wrap-up Quản trò (tái dùng component podium của player view) — màn TV phải celebratory nhất; ranking list đầy đủ giữ bên dưới.
+- [ ] "Đóng" đỏ → ghost trung tính (đỏ = destructive, sai ngữ nghĩa khi trận đã xong); bỏ ✕ góc trên (trùng affordance).
+- [ ] vitest green.
+
+### BUG kèm theo (màn player, residual F-web-2)
+- [ ] `QuizEndScreen` hiện "Chưa xếp hạng" cho chính người thắng — match "tôi" bằng username (localStorage, dễ lệch tên server) thay vì `userId`. Chuyển identity sang userId.
+
 ### Invariants
 - Logic + STOMP handling không đổi (handlers, state, effects giữ nguyên — chỉ JSX/class).
 - Anti-spoiler: correct answer chỉ hiện sau ROUND_END/QUESTION_REVEALED.

@@ -28,6 +28,7 @@ interface RoomQuizLocationState {
   myTeam?: string;
   isHost?: boolean;
   hostId?: string;
+  viewerUserId?: string;
   fromGroupId?: string;
   groupQuizSetName?: string | null;
   quizSetTotalQuestions?: number | null;
@@ -55,7 +56,13 @@ const RoomQuiz: React.FC = () => {
 
   // Display-only fallback — all identity *logic* matches by userId (FMR-7).
   const myUsername = localStorage.getItem('userName') ?? '';
-  const myUserId = localStorage.getItem('userId') ?? '';
+  // Server-stable identity. Primary: viewerUserId handed through navigation
+  // state (REST join/lobby responses). The legacy localStorage 'userId' key
+  // was never written by the app — kept only as a harmless last resort; the
+  // mount room-fetch below upgrades it from GET /api/rooms/{id}.
+  const [myUserId, setMyUserId] = useState<string>(
+    () => state?.viewerUserId ?? localStorage.getItem('userId') ?? ''
+  );
 
   // Sprint 4 (S4-9): host control state — pause overlay, skip toast, host broadcast banner.
   const hostNameFromState = (state as { hostName?: string } | null)?.hostName;
@@ -404,6 +411,8 @@ const RoomQuiz: React.FC = () => {
       try {
         const roomRes = await api.get(`/api/rooms/${roomId}`);
         if (cancelled) return;
+        // Authoritative viewer identity (covers reloads where nav state is gone).
+        if (roomRes.data?.viewerUserId) setMyUserId(roomRes.data.viewerUserId);
         const status = roomRes.data?.room?.status;
         if (status === 'ENDED') {
           const lbRes = await api.get(`/api/rooms/${roomId}/leaderboard`);
@@ -501,6 +510,7 @@ const RoomQuiz: React.FC = () => {
       <QuizEndScreen
         results={core.finalResults}
         myUsername={myUsername}
+        myUserId={myUserId || undefined}
         isHost={isHost}
         totalQuestions={core.totalQuestions}
         startedAtMs={matchStartedAtRef.current}

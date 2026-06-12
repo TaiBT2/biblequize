@@ -123,11 +123,13 @@ describe('RoomQuizHost', () => {
     })
     expect(await screen.findByTestId('quiz-end-host-page')).toBeInTheDocument()
     expect(screen.getByText(/Cảm ơn Quản trò/i)).toBeInTheDocument()
+    // QTR-6: the celebration block is now an inline podium — winner "An"
+    // stands on step 1 with their score; no finalRank in the payload, so the
+    // podium must rank by score (Speed Race has no finalRank).
     const winner = screen.getByTestId('end-host-winner')
+    expect(winner).toContainElement(screen.getByTestId('podium-block'))
     expect(winner).toHaveTextContent(/An/)
-    // QTR-2: score number and "điểm" label are stacked elements in the hero
-    expect(winner).toHaveTextContent(/252/)
-    expect(winner).toHaveTextContent(/điểm/)
+    expect(winner).toHaveTextContent(/252đ/)
     expect(screen.getByTestId('end-host-rankings').children).toHaveLength(3)
     expect(screen.getByTestId('end-host-replay')).toBeInTheDocument()
   })

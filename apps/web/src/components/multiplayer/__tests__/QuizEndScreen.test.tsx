@@ -49,6 +49,32 @@ describe('QuizEndScreen', () => {
     expect(screen.getByTestId('podium')).toBeInTheDocument()
   })
 
+  it('derives rank from score order when the mode never assigns finalRank (Speed Race)', () => {
+    // Regression: winner used to see "Chưa xếp hạng" because myRank read
+    // finalRank only — Speed Race results carry no finalRank at all.
+    const noRanks: PlayerScore[] = [
+      { playerId: 'a', username: 'An',  score: 829, correctAnswers: 6, totalAnswered: 10, accuracy: 0.6 },
+      { playerId: 'b', username: 'Bui', score: 811, correctAnswers: 6, totalAnswered: 9,  accuracy: 0.66 },
+    ]
+    render(<QuizEndScreen {...baseProps} results={noRanks} myUsername="An" isHost={false} />)
+    expect(screen.getByText(/Hạng 1/)).toBeInTheDocument()
+    expect(screen.queryByText(/Chưa xếp hạng/)).not.toBeInTheDocument()
+  })
+
+  it('identifies "me" by userId even when the localStorage display name drifted', () => {
+    render(
+      <QuizEndScreen
+        {...baseProps}
+        myUsername="stale-old-name"
+        myUserId="b"
+        isHost={false}
+      />,
+    )
+    // PlayerScore b = Bui, finalRank 1 — must resolve via playerId, not username
+    expect(screen.getByText(/Hạng 1/)).toBeInTheDocument()
+    expect(screen.queryByText(/Chưa xếp hạng/)).not.toBeInTheDocument()
+  })
+
   it('host actions wire to onReplay and onClose', () => {
     const onReplay = vi.fn()
     const onClose = vi.fn()

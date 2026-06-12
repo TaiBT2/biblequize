@@ -6,6 +6,9 @@ import type { PlayerScore } from '../../pages/room/RoomOverlays';
 interface Props {
   results: PlayerScore[];
   myUsername: string;
+  /** Server-stable identity — preferred over myUsername (localStorage name
+   *  can drift from the server's display name). */
+  myUserId?: string;
   isHost: boolean;
   totalQuestions: number;
   /** Match start timestamp in millis. Used to render "Thời gian" stat;
@@ -30,14 +33,25 @@ function formatDuration(ms: number | null | undefined): string {
 }
 
 export function QuizEndScreen({
-  results, myUsername, isHost, totalQuestions, startedAtMs,
+  results, myUsername, myUserId, isHost, totalQuestions, startedAtMs,
   onReplay, onClose, onShare, onNewRoom, onHome, onAnalytics,
 }: Props) {
-  const me = useMemo(
-    () => results.find(r => r.username === myUsername),
-    [results, myUsername]
+  // Rank order: finalRank when the mode assigns it (BR/SD), else score DESC
+  // (Speed Race & co never set finalRank — deriving rank from position fixes
+  // the winner being shown as "Chưa xếp hạng").
+  const ranked = useMemo(
+    () => results.slice().sort((a, b) =>
+      (a.finalRank ?? 99) !== (b.finalRank ?? 99)
+        ? (a.finalRank ?? 99) - (b.finalRank ?? 99)
+        : (b.score ?? 0) - (a.score ?? 0)),
+    [results]
   );
-  const myRank = me?.finalRank ?? null;
+  const me = useMemo(
+    () => (myUserId ? ranked.find(r => r.playerId === myUserId) : undefined)
+      ?? ranked.find(r => r.username === myUsername),
+    [ranked, myUserId, myUsername]
+  );
+  const myRank = me ? (me.finalRank ?? ranked.indexOf(me) + 1) : null;
   const totalScore = useMemo(
     () => results.reduce((sum, r) => sum + (r.score ?? 0), 0),
     [results]
@@ -303,11 +317,9 @@ export function QuizEndScreen({
               Bảng xếp hạng
             </div>
             <div className="space-y-2 max-h-64 overflow-y-auto">
-              {results
-                .slice()
-                .sort((a, b) => (a.finalRank ?? 99) - (b.finalRank ?? 99))
+              {ranked
                 .map((r, i) => {
-                  const isMe = r.username === myUsername;
+                  const isMe = myUserId ? r.playerId === myUserId : r.username === myUsername;
                   const rank = r.finalRank ?? i + 1;
                   return (
                     <div

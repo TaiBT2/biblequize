@@ -9,6 +9,40 @@ export type { PlayerScore }
 
 type Question = { id: string; content: string; options: string[] }
 
+/** Inline 3-step podium (no fixed overlay), reusable inside end screens.
+ *  Tolerant of modes that never assign finalRank (e.g. Speed Race): falls
+ *  back to score order so the podium is never empty. */
+export const PodiumBlock: React.FC<{ results: PlayerScore[] }> = ({ results }) => {
+  const ranked = results.slice().sort((a, b) =>
+    (a.finalRank ?? 99) !== (b.finalRank ?? 99)
+      ? (a.finalRank ?? 99) - (b.finalRank ?? 99)
+      : (b.score ?? 0) - (a.score ?? 0))
+  const top3 = ranked.slice(0, 3)
+  const podiumColors = ['from-secondary to-tertiary', 'from-primary/60 to-primary/30', 'from-[#cd7f32]/60 to-[#cd7f32]/30']
+  const podiumHeights = ['h-32', 'h-24', 'h-20']
+  const order = [top3[1], top3[0], top3[2]].filter(Boolean) as PlayerScore[]
+  return (
+    <div className="flex items-end justify-center gap-4" data-testid="podium-block">
+      {order.map((p) => {
+        const rank = top3.indexOf(p)
+        return (
+          <div key={p.playerId} className="flex flex-col items-center">
+            {rank === 0 && <div className="text-2xl mb-1" aria-hidden="true">👑</div>}
+            <div className="w-12 h-12 rounded-full bg-surface-container-high border-2 border-secondary/30 grid place-items-center font-bold text-white mb-2">
+              {p.username?.[0]?.toUpperCase() ?? '?'}
+            </div>
+            <div className="text-on-surface font-bold text-sm mb-0.5 max-w-[110px] text-center truncate">{p.username}</div>
+            <div className="text-secondary text-xs font-bold mb-2 tabular-nums">{p.score ?? 0}đ</div>
+            <div className={`${podiumHeights[rank]} w-24 bg-gradient-to-t ${podiumColors[rank]} rounded-t-2xl flex items-end justify-center pb-3 border border-white/5`}>
+              <span className="text-on-surface font-black text-2xl">{rank + 1}</span>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 // ── Podium screen (Battle Royale / Speed Race end) ──
 export const PodiumScreen: React.FC<{ results: PlayerScore[]; onClose: () => void }> = ({ results, onClose }) => {
   const top3 = results.filter(r => r.finalRank && r.finalRank <= 3).sort((a, b) => (a.finalRank ?? 99) - (b.finalRank ?? 99))

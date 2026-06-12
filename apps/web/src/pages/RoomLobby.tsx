@@ -203,7 +203,7 @@ const RoomLobby: React.FC = () => {
           const dest = isOrganizerMode ? `/room/${roomId}/host` : `/room/${roomId}/quiz`;
           navigate(dest, {
             replace: true,
-            state: { mode: room?.mode, myTeam: room?.players?.find(p => p.userId === viewerUserId)?.team ?? null, isHost, hostId: room?.hostId, hostName: room?.hostName, hostPlaysGame, fromGroupId, groupQuizSetName: room?.groupQuizSetName ?? null, quizSetTotalQuestions: room?.quizSetTotalQuestions ?? null }
+            state: { mode: room?.mode, myTeam: room?.players?.find(p => p.userId === viewerUserId)?.team ?? null, isHost, hostId: room?.hostId, viewerUserId, hostName: room?.hostName, hostPlaysGame, fromGroupId, groupQuizSetName: room?.groupQuizSetName ?? null, quizSetTotalQuestions: room?.quizSetTotalQuestions ?? null }
           });
           break;
         }
@@ -282,7 +282,7 @@ const RoomLobby: React.FC = () => {
       const dest = isOrganizerMode ? `/room/${roomId}/host` : `/room/${roomId}/quiz`;
       navigate(dest, {
         replace: true,
-        state: { mode: room?.mode, myTeam, isHost, hostId: room?.hostId, hostName: room?.hostName, hostPlaysGame, fromGroupId, groupQuizSetName: room?.groupQuizSetName ?? null, quizSetTotalQuestions: room?.quizSetTotalQuestions ?? null },
+        state: { mode: room?.mode, myTeam, isHost, hostId: room?.hostId, viewerUserId, hostName: room?.hostName, hostPlaysGame, fromGroupId, groupQuizSetName: room?.groupQuizSetName ?? null, quizSetTotalQuestions: room?.quizSetTotalQuestions ?? null },
       });
     }, 800);
     return () => clearTimeout(t);
