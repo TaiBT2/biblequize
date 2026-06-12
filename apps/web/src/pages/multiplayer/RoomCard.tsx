@@ -34,7 +34,6 @@ export default function RoomCard({ room }: { room: PublicRoom }) {
   const isFull = room.currentPlayers >= room.maxPlayers
   const almostFull = !isFull && room.currentPlayers >= room.maxPlayers - 1
   const playing = room.status === 'IN_PROGRESS'
-  const waiting = room.status === 'LOBBY'
   const status = playing ? STATUS_BADGE_STYLE.PLAYING
     : isFull ? STATUS_BADGE_STYLE.FULL
     : almostFull ? STATUS_BADGE_STYLE.ALMOST_FULL
@@ -47,7 +46,8 @@ export default function RoomCard({ room }: { room: PublicRoom }) {
     try {
       const res = await api.post('/api/rooms/join', { roomCode: room.roomCode })
       const joined = res.data.room
-      const target = joined.status === 'IN_PROGRESS' ? 'quiz' : 'lobby'
+      const isOrganizerHost = joined.hostPlaysGame === false && joined.hostId === res.data.viewerUserId
+      const target = joined.status === 'IN_PROGRESS' ? (isOrganizerHost ? 'host' : 'quiz') : 'lobby'
       navigate(`/room/${joined.id}/${target}`, { state: { room: joined, mode: joined.mode, viewerUserId: res.data.viewerUserId } })
     } catch (err: any) {
       setJoinError(err?.response?.data?.message || t('multiplayer.joinError'))
@@ -63,7 +63,10 @@ export default function RoomCard({ room }: { room: PublicRoom }) {
     : room.mode === 'TEAM_VS_TEAM' ? { label: t('multiplayer.room.ctaPickTeam'), enabled: true }
                                    : { label: t('multiplayer.room.ctaJoin'),    enabled: true }
 
-  const ctaEnabled = cta.enabled && waiting && !joining
+  // cta.enabled already encodes per-status rules (joinable resume for
+  // IN_PROGRESS, capacity for LOBBY) — don't re-gate on `waiting` here or
+  // the rejoin button stays permanently disabled.
+  const ctaEnabled = cta.enabled && !joining
 
   return (
     <article

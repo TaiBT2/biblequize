@@ -227,6 +227,21 @@ class RoomServiceTest {
     }
 
     @Test
+    void joinRoom_organizerHostRejoinsInProgress_shouldReturnRoomWithoutPlayerRow() throws Exception {
+        // Quản trò mode: the organizer host has no RoomPlayer row, so the
+        // LEFT-row rejoin path can never match them — they must still be able
+        // to re-enter their own live room (e.g. after closing the tab).
+        testRoom.setStatus(Room.RoomStatus.IN_PROGRESS);
+        testRoom.setHostPlaysGame(false);
+        when(roomRepository.findByRoomCode("ABC123")).thenReturn(Optional.of(testRoom));
+
+        Room result = roomService.joinRoom("ABC123", hostUser);
+
+        assertEquals("room-1", result.getId());
+        verify(roomPlayerRepository, never()).save(any(RoomPlayer.class));
+    }
+
+    @Test
     void joinRoom_roomFull_shouldThrowException() {
         testRoom.setMaxPlayers(1);
         testRoom.setCurrentPlayers(1);

@@ -214,6 +214,14 @@ public class RoomService {
         }
 
         if (room.getStatus() == Room.RoomStatus.IN_PROGRESS) {
+            // Quản trò mode: the organizer host intentionally has NO RoomPlayer
+            // row, so the rejoin-by-LEFT-row path below can never match them.
+            // Let the host back into their own live room (no row created).
+            boolean isOrganizerHost = !room.isHostPlaysGame()
+                    && room.getHost() != null && room.getHost().getId().equals(user.getId());
+            if (isOrganizerHost) {
+                return room;
+            }
             // Only previously-registered players can re-enter an in-progress
             // game. Brand-new joiners are blocked because there is no
             // late-join flow into an active quiz.
@@ -723,6 +731,10 @@ public class RoomService {
             // rejected by joinRoom anyway, so don't dangle a useless
             // "Tiếp tục" button in front of them.
             if (viewerUserId == null) return false;
+            // The Quản trò host has no RoomPlayer row — still their room.
+            if (room.getHost() != null && viewerUserId.equals(room.getHost().getId())) {
+                return true;
+            }
             return players.stream().anyMatch(p ->
                     p.getUser() != null && viewerUserId.equals(p.getUser().getId()));
         }
