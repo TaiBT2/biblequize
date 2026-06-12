@@ -350,6 +350,27 @@ class RoomWebSocketControllerTest {
         verify(messagingTemplate, never()).convertAndSend(anyString(), any(WebSocketMessage.Message.class));
     }
 
+    @Test
+    void handleAnswer_leftPlayer_shouldBeIgnored() {
+        // 2026-06-12: a player marked LEFT by the disconnect-grace handler can
+        // still have a live STOMP session (slept tab waking up). Their answer
+        // must be rejected — it would otherwise bump correctAnswers, the BR
+        // final-ranking tie-break, while they are "out of the room".
+        when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.of(testUser));
+        when(roomStateService.getCurrentRoundId("room-1")).thenReturn(Optional.of("round-1"));
+        when(roomAnswerRepository.existsByRoundIdAndUserId("round-1", "user-1")).thenReturn(false);
+
+        RoomPlayer roomPlayer = new RoomPlayer();
+        roomPlayer.setPlayerStatus(RoomPlayer.PlayerStatus.LEFT);
+        when(roomPlayerRepository.findByRoomIdAndUserId("room-1", "user-1")).thenReturn(Optional.of(roomPlayer));
+
+        Map<String, Object> payload = Map.of("questionIndex", 0, "answerIndex", 1, "reactionTimeMs", 3000);
+
+        controller.handleAnswerSubmission("room-1", payload, authentication);
+
+        verify(messagingTemplate, never()).convertAndSend(anyString(), any(WebSocketMessage.Message.class));
+    }
+
     // ── Broadcast helpers ────────────────────────────────────────────────────
 
     @Test

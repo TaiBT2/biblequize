@@ -149,27 +149,9 @@ class BattleRoyaleEngineTest {
         assertEquals(3, p1.getFinalRank()); // 5 correct = rank 3
     }
 
-    // ── Max rounds ──
-
-    @Test
-    void shouldEndGame_maxRoundsReached() {
-        assertTrue(engine.shouldEndGame(40, 20, 3));  // 20*2=40 → reached
-    }
-
-    @Test
-    void shouldEndGame_notReached() {
-        assertFalse(engine.shouldEndGame(10, 20, 3)); // 10 < 40
-    }
-
-    @Test
-    void shouldEndGame_capped50() {
-        assertTrue(engine.shouldEndGame(50, 100, 3));  // min(200,50)=50 → reached
-    }
-
-    @Test
-    void shouldEndGame_lastSurvivor() {
-        assertTrue(engine.shouldEndGame(5, 20, 1));    // 1 player = end
-    }
+    // shouldEndGame (max-rounds rule) removed 2026-06-12: it never had a call
+    // site — the loop runs exactly questionCount rounds, stopping early only
+    // when ≤1 ACTIVE remains (strategy.shouldStopBeforeRound).
 
     @Test
     void assignFinalRanks_byCorrectAnswersThenSpeed() {

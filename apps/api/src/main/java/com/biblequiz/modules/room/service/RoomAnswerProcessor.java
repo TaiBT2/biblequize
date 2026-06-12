@@ -80,14 +80,15 @@ public class RoomAnswerProcessor {
             return AnswerResult.rejected();
         }
 
-        // Battle Royale: chỉ ACTIVE players mới được answer
+        // Chỉ ACTIVE players mới được answer. LEFT cũng bị chặn (2026-06-12):
+        // player bị grace-handler đánh dấu LEFT nhưng STOMP còn sống (tab ngủ
+        // rồi tỉnh) trước đây vẫn ghi được answer → cộng correctAnswers, vốn
+        // là tie-break của BR assignFinalRanks. Rejoin không vỡ: joinRoom flip
+        // LEFT→ACTIVE trước khi họ có thể trả lời.
         Optional<RoomPlayer> playerOpt = roomPlayerRepository.findByRoomIdAndUserId(roomId, user.getId());
-        if (playerOpt.isPresent()) {
-            RoomPlayer.PlayerStatus playerStatus = playerOpt.get().getPlayerStatus();
-            if (playerStatus == RoomPlayer.PlayerStatus.ELIMINATED
-                    || playerStatus == RoomPlayer.PlayerStatus.SPECTATOR) {
-                return AnswerResult.rejected();
-            }
+        if (playerOpt.isPresent()
+                && playerOpt.get().getPlayerStatus() != RoomPlayer.PlayerStatus.ACTIVE) {
+            return AnswerResult.rejected();
         }
 
         // Server-side answer validation

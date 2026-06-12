@@ -75,19 +75,10 @@ public class BattleRoyaleEngine {
     }
 
     /**
-     * Check if max rounds reached and game should end with forced ranking.
-     * maxRounds = min(questionCount * 2, 50)
-     * @return true if game should end
-     */
-    public boolean shouldEndGame(int currentRound, int questionCount, int activePlayersCount) {
-        if (activePlayersCount <= 1) return true;
-        int maxRounds = Math.min(questionCount * 2, 50);
-        return currentRound >= maxRounds;
-    }
-
-    /**
      * Gán rank cuối cho những active players còn lại khi game kết thúc.
      * Sort theo: correctAnswers DESC → averageReactionTime ASC (faster = better).
+     * Canonical per DECISIONS 2026-06-12 — KHÔNG xếp theo score (speed-bonus
+     * phi tuyến làm score không đơn điệu theo số câu đúng).
      */
     @Transactional
     public void assignFinalRanks(String roomId) {
