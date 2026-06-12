@@ -83,6 +83,15 @@ describe('RoomQuizHost', () => {
     expect(mockApiPost).toHaveBeenCalledWith('/api/rooms/r1/host/resume', {})
   })
 
+  it('pause overlay has its own resume button for the host', async () => {
+    await renderHost()
+    lastOnMessage!({ type: 'GAME_PAUSED', data: {} })
+    expect(await screen.findByTestId('host-pause-overlay')).toBeInTheDocument()
+
+    fireEvent.click(screen.getByTestId('host-pause-resume'))
+    expect(mockApiPost).toHaveBeenCalledWith('/api/rooms/r1/host/resume', {})
+  })
+
   it('broadcast modal sends message and clears input', async () => {
     await renderHost()
     fireEvent.click(screen.getByTestId('host-control-broadcast'))

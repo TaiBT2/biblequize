@@ -633,7 +633,11 @@ const RoomQuizHost: React.FC = () => {
                 drives from a phone). */}
             <section
               data-testid="host-controls-bar"
-              className="fixed bottom-0 inset-x-0 z-40 p-3 lg:inset-x-auto lg:right-6 lg:bottom-6 lg:p-0 lg:opacity-40 lg:hover:opacity-100 lg:focus-within:opacity-100 lg:transition-opacity lg:duration-300"
+              className={`fixed bottom-0 inset-x-0 p-3 lg:inset-x-auto lg:right-6 lg:bottom-6 lg:p-0 lg:transition-opacity lg:duration-300 ${
+                isPaused
+                  ? 'z-[60] lg:opacity-100'
+                  : 'z-40 lg:opacity-40 lg:hover:opacity-100 lg:focus-within:opacity-100'
+              }`}
             >
               <div
                 className="glass-panel relative mx-auto max-w-xl rounded-2xl px-3 py-2.5 border lg:mx-0 lg:max-w-none lg:rounded-full lg:px-2 lg:py-1.5"
@@ -794,7 +798,16 @@ const RoomQuizHost: React.FC = () => {
           <div className="text-center">
             <div className="text-5xl mb-3">⏸️</div>
             <div className="font-bold text-2xl mb-1">Trận đấu đã tạm dừng</div>
-            <div className="text-sm text-gray-400">Bấm tiếp tục khi sẵn sàng</div>
+            <div className="text-sm text-gray-400 mb-6">Bấm tiếp tục khi sẵn sàng</div>
+            <button
+              data-testid="host-pause-resume"
+              onClick={handlePauseToggle}
+              className="gold-gradient inline-flex items-center gap-2 px-8 py-3 rounded-full font-bold text-lg"
+              style={{ color: '#11131e' }}
+            >
+              <span className="material-symbols-outlined">play_arrow</span>
+              Tiếp tục
+            </button>
           </div>
         </div>
       )}
