@@ -746,6 +746,11 @@
       "description": "Sau khi hoàn thành Daily Challenge đầu tiên, bạn sẽ mở khóa Nhiệm vụ ngày, Bảng xếp hạng, và bắt đầu chuỗi (streak).",
       "cta": "Bắt đầu"
     },
+    "emptyState": {
+      "label": "Bắt đầu từ đây",
+      "title": "Chinh phục thử thách đầu tiên",
+      "description": "Hoàn thành Thử thách hôm nay để nhận XP, mở khóa hành trình 66 sách và bắt đầu chuỗi ngày của bạn."
+    },
     "primary": {
       "title": "Chế độ chơi chính"
     },

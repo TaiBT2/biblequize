@@ -346,6 +346,43 @@ describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
     })
   })
 
+  // HO-1: brand-new account (0 XP, daily not done, 0 streak) avoids the
+  // "wall of zeros" — leads with a "Bắt đầu từ đây" cue and hides the empty
+  // 0/66 journey. Users with ANY data must be byte-identical (no cue, journey
+  // visible).
+  describe('Empty-state for new users (HO-1)', () => {
+    it('shows "Bắt đầu từ đây" cue and hides Journey for a brand-new user', async () => {
+      setupApi({ totalPoints: 0, dailyDone: false, currentStreak: 0 })
+      renderHome()
+      await waitFor(() => {
+        expect(screen.getByTestId('home-start-here')).toBeInTheDocument()
+      })
+      expect(screen.queryByTestId('home-journey')).not.toBeInTheDocument()
+      // Daily missions still render for everyone (Bui decision).
+      expect(screen.getByTestId('home-daily-missions')).toBeInTheDocument()
+      // Daily hero CTA is the clear first step.
+      expect(screen.getByTestId('featured-daily-card')).toBeInTheDocument()
+    })
+
+    it('does NOT show the cue (and keeps Journey) once the user has XP', async () => {
+      setupApi({ totalPoints: 200, dailyDone: false, currentStreak: 0 })
+      renderHome()
+      await waitFor(() => {
+        expect(screen.getByTestId('home-journey')).toBeInTheDocument()
+      })
+      expect(screen.queryByTestId('home-start-here')).not.toBeInTheDocument()
+    })
+
+    it('does NOT show the cue when streak > 0 even at 0 XP', async () => {
+      setupApi({ totalPoints: 0, dailyDone: false, currentStreak: 3 })
+      renderHome()
+      await waitFor(() => {
+        expect(screen.getByTestId('home-journey')).toBeInTheDocument()
+      })
+      expect(screen.queryByTestId('home-start-here')).not.toBeInTheDocument()
+    })
+  })
+
   describe('Error handling', () => {
     it('renders empty state when all APIs fail (banner + tier fallback)', async () => {
       mockApiGet.mockResolvedValue({ data: {} })

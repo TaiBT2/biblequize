@@ -201,6 +201,13 @@ export default function Home() {
   const energyMax = rankedStatus?.dailyLives ?? 100
   const rankedAnswered = rankedStatus?.questionsCounted ?? 0
   const rankedCap = rankedStatus?.cap ?? 100
+  const currentStreak = meData?.currentStreak ?? 0
+
+  // HO-1: a brand-new account has zero of everything. Detect it so we can
+  // avoid the "wall of zeros" (empty ranking / 0/66 journey) and instead
+  // lead with a single clear first step (the Daily challenge). Everything
+  // gated behind this flag is byte-identical for users WITH any data.
+  const isNewUser = totalPoints === 0 && !dailyDone && currentStreak === 0
 
   const countdown = formatHHMMSS(msUntilMidnightUtc())
 
@@ -243,6 +250,34 @@ export default function Home() {
       <TutorialOverlay />
 
       <HomeBanner />
+
+      {/* ── HO-1: "Bắt đầu từ đây" cue for brand-new users — points at the
+            Daily card below (the hero CTA) so the first step is unmistakable
+            instead of a wall of empty achievement blocks. */}
+      {isNewUser && (
+        <div
+          data-testid="home-start-here"
+          className="glass-card rounded-2xl border border-[rgba(232,168,50,0.18)] border-l-[3px] border-l-secondary px-4 py-3.5 mb-3 flex items-center gap-3"
+        >
+          <span
+            aria-hidden
+            className="material-symbols-outlined text-secondary text-[26px] shrink-0"
+          >
+            arrow_downward
+          </span>
+          <div className="min-w-0">
+            <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary mb-0.5">
+              {t('home.emptyState.label')}
+            </div>
+            <div className="text-[14px] font-bold text-ivory leading-tight">
+              {t('home.emptyState.title')}
+            </div>
+            <p className="text-[12px] text-ivory-dim mt-0.5">
+              {t('home.emptyState.description')}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* ── Daily section: State A featured / State B completed strip ── */}
       {dailyDone ? (
@@ -331,10 +366,14 @@ export default function Home() {
         {GROUP_CARDS.map(renderModeCard)}
       </div>
 
-      {/* ── Journey (full-width) ── */}
-      <section data-testid="home-journey" className="mt-7">
-        <BibleJourneyCard />
-      </section>
+      {/* ── Journey (full-width) — HO-1: hidden for brand-new users so the
+            empty 0/66 "all locked" row doesn't dominate first impression.
+            Surfaces automatically once the user has any activity. ── */}
+      {!isNewUser && (
+        <section data-testid="home-journey" className="mt-7">
+          <BibleJourneyCard />
+        </section>
+      )}
 
       {/* ── Verse footer (HR-8: Cormorant Garamond italic + drop cap) ── */}
       <VerseFooter />

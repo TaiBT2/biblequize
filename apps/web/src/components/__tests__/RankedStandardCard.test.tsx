@@ -11,7 +11,7 @@ vi.mock('react-i18next', () => ({
 }))
 
 describe('RankedStandardCard (HR-5)', () => {
-  it('renders C2-compliant title and pill', () => {
+  it('renders C2-compliant title (HO-3: noisy "Đã mở khóa" pill removed)', () => {
     render(
       <RankedStandardCard
         energyRemaining={100}
@@ -21,7 +21,7 @@ describe('RankedStandardCard (HR-5)', () => {
       />
     )
     expect(screen.getByTestId('ranked-standard-card-title')).toHaveTextContent('Đấu Hạng')
-    expect(screen.getByTestId('ranked-standard-card-pill')).toHaveTextContent('Đã mở khóa')
+    expect(screen.queryByTestId('ranked-standard-card-pill')).not.toBeInTheDocument()
   })
 
   it('shows energy hint inside the description', () => {

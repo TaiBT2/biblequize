@@ -146,9 +146,12 @@ export default function HomeBanner() {
           >
             {greeting}
           </div>
+          {/* HO-2: de-emphasized username (smaller + lighter weight, single
+              truncated line) so the tier + XP progress below become the
+              banner's visual focus. */}
           <div
             data-testid="home-greeting-name"
-            className="text-[24px] md:text-[30px] font-extrabold leading-[1.1] text-ivory tracking-[-0.025em] mb-1.5 md:mb-3.5 truncate"
+            className="text-[16px] md:text-[19px] font-bold leading-[1.15] text-ivory-dim tracking-[-0.015em] mb-1.5 md:mb-3 truncate"
           >
             {userName}
           </div>
@@ -165,7 +168,7 @@ export default function HomeBanner() {
               <div className="flex items-center gap-2 whitespace-nowrap">
                 <span
                   data-testid="home-greeting-tier-label"
-                  className="text-secondary font-bold tracking-[0.02em] text-[14px]"
+                  className="text-secondary font-extrabold tracking-[0.01em] text-[17px] md:text-[20px]"
                 >
                   {t(tier.current.nameKey)}
                 </span>
@@ -275,10 +278,11 @@ export default function HomeBanner() {
           </div>
         )}
 
-        {/* Stats */}
+        {/* Stats — HO-2/HO-5: more breathing room on mobile (gap + padding)
+            so the three chips aren't cramped and the season label has room. */}
         <div
           data-testid="home-greeting-stats"
-          className="col-span-2 md:col-span-1 flex justify-around md:justify-start md:gap-1 pt-2 md:pt-0 border-t md:border-t-0 border-white/[0.04]"
+          className="col-span-2 md:col-span-1 flex justify-between gap-2 md:justify-start md:gap-1 pt-3 mt-1 md:mt-0 md:pt-0 border-t md:border-t-0 border-white/[0.04]"
         >
           <Stat
             icon="flame"
@@ -320,7 +324,7 @@ function Stat({ icon, testId, value, label }: StatProps) {
   return (
     <div
       data-testid={testId}
-      className="text-center px-2 md:px-3.5 py-1 md:py-2 min-w-[70px] border-r last:border-r-0 border-[rgba(232,168,50,0.10)]"
+      className="flex-1 md:flex-none text-center px-1.5 md:px-3.5 py-1 md:py-2 md:min-w-[70px] border-r last:border-r-0 border-[rgba(232,168,50,0.10)]"
     >
       <div
         className={`text-[20px] md:text-[22px] leading-none mb-1 select-none ${
@@ -333,7 +337,9 @@ function Stat({ icon, testId, value, label }: StatProps) {
       <div className="text-[22px] md:text-[24px] font-extrabold text-ivory tabular-nums leading-none tracking-[-0.02em]">
         {value.toLocaleString()}
       </div>
-      <div className="text-[9px] font-semibold uppercase tracking-[0.12em] text-ivory-faint mt-1">
+      {/* HO-2: relaxed tracking + normal leading + wrap so a long season
+          label ("Mùa ... 2026") no longer clips. */}
+      <div className="text-[9px] font-semibold uppercase tracking-[0.06em] leading-[1.2] text-ivory-faint mt-1 break-words">
         {label}
       </div>
     </div>

@@ -746,6 +746,11 @@
       "description": "Once you finish your first Daily Challenge, you'll unlock Daily Missions, the Leaderboard, and start your streak.",
       "cta": "Start"
     },
+    "emptyState": {
+      "label": "Start here",
+      "title": "Conquer your first challenge",
+      "description": "Finish today's challenge to earn XP, unlock the 66-book journey and start your daily streak."
+    },
     "primary": {
       "title": "Primary modes"
     },

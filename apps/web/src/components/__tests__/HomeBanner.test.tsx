@@ -62,13 +62,15 @@ describe('HomeBanner (HR-2)', () => {
     vi.clearAllMocks()
   })
 
-  it('renders user name in sans extrabold with tight tracking', async () => {
+  // HO-2: username is intentionally de-emphasized (smaller + lighter +
+  // truncated) so tier + XP progress become the banner's visual focus.
+  it('renders user name de-emphasized + truncated', async () => {
     setupApi()
     renderBanner()
     const name = await screen.findByTestId('home-greeting-name')
     expect(name).toHaveTextContent('Tai Thanh')
-    expect(name.className).toContain('font-extrabold')
-    expect(name.className).toContain('tracking-[-0.025em]')
+    expect(name.className).toContain('truncate')
+    expect(name.className).toContain('text-ivory-dim')
   })
 
   it('streak stat uses animate-breathe class on flame icon', async () => {

@@ -54,13 +54,9 @@ export default function RankedStandardCard({
             <path d="M7 7H3v2a3 3 0 003 3M17 7h4v2a3 3 0 01-3 3" />
           </svg>
         </div>
-        <span
-          data-testid="ranked-standard-card-pill"
-          className="text-[10px] font-semibold uppercase tracking-[0.06em] px-2.5 py-1 rounded-full text-secondary"
-          style={{ background: 'rgba(232,168,50,0.14)' }}
-        >
-          Đã mở khóa
-        </span>
+        {/* HO-3: removed the hardcoded "Đã mở khóa" pill (noisy + bypassed
+            i18n). Lock affordance stays consistent — only the "Khóa" badge
+            is meaningful as a goal cue. */}
       </div>
 
       <h3
