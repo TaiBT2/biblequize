@@ -7,8 +7,9 @@
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
-| 2026-06-11 | MP refactor BE: RoomModeStrategy + RoomAnswerProcessor (RMS-1..10, no behavior change) | TODO | [detail](docs/todo/active/2026-06-11-mp-refactor-be-mode-strategy.md) |
-| 2026-06-11 | MP refactor FE: typed STOMP events + useRoomChannel + RoomQuiz split (FMR-1..8) | TODO | [detail](docs/todo/active/2026-06-11-mp-refactor-fe-roomquiz-split.md) |
+| 2026-06-11 | Redesign 2 màn Quản trò: in-game host (TV presentation) + wrap-up (QTR-1..5) | DONE | [detail](docs/todo/active/2026-06-11-quan-tro-host-screens-redesign.md) |
+| 2026-06-11 | MP refactor BE: RoomModeStrategy + RoomAnswerProcessor (RMS-1..10, no behavior change) | DONE | [detail](docs/todo/active/2026-06-11-mp-refactor-be-mode-strategy.md) |
+| 2026-06-11 | MP refactor FE: typed STOMP events + useRoomChannel + RoomQuiz split (FMR-1..8) | DONE | [detail](docs/todo/active/2026-06-11-mp-refactor-fe-roomquiz-split.md) |
 | 2026-05-23 | Ranked: regression tests for RKP-1 + RKP-2 bug fixes (replay match + Hibernate-proxy 500) | DONE | [archive](docs/todo/archive/2026-05-23-ranked-regression-tests-rkp1-rkp2.md) |
 | 2026-05-23 | Ranked: deterministic scoring tests + anti-cheat (6 tiers × combo × speed × server-recompute) | DONE | [archive](docs/todo/archive/2026-05-23-ranked-scoring-deterministic-anti-cheat.md) |
 | 2026-05-23 | Liturgical Coverage: pool-exhaustion fallback chain + season transition + ×1.5 bonus tests | DONE | [archive](docs/todo/archive/2026-05-23-liturgical-coverage-fallback-tests.md) |

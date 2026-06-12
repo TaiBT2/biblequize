@@ -43,7 +43,7 @@ describe('RoomQuizHost', () => {
     expect(screen.getByTestId('host-control-end')).toBeInTheDocument()
   })
 
-  it('renders correct-answer highlight when QUESTION_START arrives', async () => {
+  it('anti-spoiler: hides correct answer on QUESTION_START, reveals it on ROUND_END', async () => {
     await renderHost()
     expect(lastOnMessage).not.toBeNull()
     lastOnMessage!({
@@ -56,13 +56,18 @@ describe('RoomQuizHost', () => {
           id: 'q1',
           content: 'Câu hỏi test?',
           options: ['A1', 'B1', 'C1', 'D1'],
-          correctAnswer: 2,
         },
       },
     })
-    // The correct-answer badge should appear next to option C (index 2).
+    expect(await screen.findByText('Câu hỏi test?')).toBeInTheDocument()
+    // Anti-spoiler (2026-05-23): correct answer must NOT be marked while the
+    // round is live — host shares /topic/room/{id} with players.
+    expect(screen.queryByText(/✓ ĐÁP ÁN/)).not.toBeInTheDocument()
+
+    // Reveal only after ROUND_END carries correctIndex.
+    lastOnMessage!({ type: 'ROUND_END', data: { correctIndex: 2 } })
     expect(await screen.findByText(/✓ ĐÁP ÁN/)).toBeInTheDocument()
-    expect(screen.getByText('Câu hỏi test?')).toBeInTheDocument()
+    expect(screen.getByTestId('host-option-2')).toHaveTextContent('✓ ĐÁP ÁN')
   })
 
   it('pause button calls /pause then resume after GAME_PAUSED', async () => {
@@ -111,7 +116,9 @@ describe('RoomQuizHost', () => {
     expect(screen.getByText(/Cảm ơn Quản trò/i)).toBeInTheDocument()
     const winner = screen.getByTestId('end-host-winner')
     expect(winner).toHaveTextContent(/An/)
-    expect(winner).toHaveTextContent(/252 điểm/)
+    // QTR-2: score number and "điểm" label are stacked elements in the hero
+    expect(winner).toHaveTextContent(/252/)
+    expect(winner).toHaveTextContent(/điểm/)
     expect(screen.getByTestId('end-host-rankings').children).toHaveLength(3)
     expect(screen.getByTestId('end-host-replay')).toBeInTheDocument()
   })

@@ -44,6 +44,21 @@ interface FinalRanking {
   totalAnswered?: number;
 }
 
+// QTR-1 — C5 answer palette (A=Coral, B=Sky, C=Gold, D=Sage). Literal class
+// strings per position because Tailwind JIT cannot expand template strings;
+// mirrors components/quiz/AnswerButton.tsx COLORS (host tiles are read-only,
+// so only the default tile + letter variants are needed here).
+const HOST_OPTION_STYLES = [
+  { tile: 'border-answer-a/30 bg-answer-a/10', letter: 'bg-answer-a/20 text-answer-a' },
+  { tile: 'border-answer-b/30 bg-answer-b/10', letter: 'bg-answer-b/20 text-answer-b' },
+  { tile: 'border-answer-c/30 bg-answer-c/10', letter: 'bg-answer-c/20 text-answer-c' },
+  { tile: 'border-answer-d/30 bg-answer-d/10', letter: 'bg-answer-d/20 text-answer-d' },
+] as const;
+
+// Rank accent colors for top-3 rows (gold / silver / bronze) — same values
+// already used across the room end screens.
+const RANK_ACCENTS = ['#e8a832', '#d1d5db', '#cd7f32'] as const;
+
 const RoomQuizHost: React.FC = () => {
   const { roomId } = useParams();
   const navigate = useNavigate();
@@ -271,7 +286,15 @@ const RoomQuizHost: React.FC = () => {
   // a separate roomDetails fetch). Falls back to answered count.
   const playerCount = Math.max(scores.length, answeredCount);
 
-  // ── Sprint 4 (S4-10): Quan Tro wrap-up screen ──
+  // QTR-5 — TV presentation: timer urgency derived per render (pure math,
+  // no extra state). Gold while >50% of the window remains, orange ≤50%,
+  // red ≤20%. #d97706 / #ef4444 already part of this screen's palette.
+  const timerRatio = timeLimit > 0 ? Math.max(0, Math.min(1, timeLeft / timeLimit)) : 0;
+  const timerColor = timerRatio <= 0.2 ? '#ef4444' : timerRatio <= 0.5 ? '#d97706' : '#e8a832';
+
+  // ── Sprint 4 (S4-10): Quan Tro wrap-up screen — QTR-2 visual redesign:
+  // centered max-w-3xl column, winner hero with gold accent + glow, 4 stat
+  // tiles in one row, medal-accented ranking rows with correct-ratio bars. ──
   if (finalRanks) {
     const winner = finalRanks[0];
     return (
@@ -283,57 +306,59 @@ const RoomQuizHost: React.FC = () => {
           fontFamily: "'Be Vietnam Pro', sans-serif",
         }}
       >
-        <header className="px-4 pt-4 flex items-center justify-between">
-          <span
-            className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider"
-            style={{ background: 'rgba(232,168,50,0.2)', color: '#e8a832' }}
-          >
-            👑 Quản trò
-          </span>
-          <button
-            onClick={() => navigate('/multiplayer', { replace: true })}
-            className="w-8 h-8 rounded-full grid place-items-center text-gray-400"
-            style={{ background: 'rgba(255,255,255,0.04)' }}
-            aria-label="Đóng"
-          >
-            ✕
-          </button>
-        </header>
-
-        <div className="text-center pt-6 pb-4">
-          <div className="text-[10px] font-bold uppercase tracking-[0.3em] mb-1" style={{ color: '#e8a832' }}>
-            Trận đấu kết thúc
-          </div>
-          <div className="flex items-center justify-center gap-2">
-            <span className="text-2xl">🎉</span>
-            <h1
-              className="font-black text-3xl tracking-tight"
-              style={{
-                background: 'linear-gradient(135deg, #f4c560 0%, #e8a832 100%)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                color: 'transparent',
-              }}
+        <div className="mx-auto w-full max-w-3xl px-4 lg:px-6 pb-10">
+          <header className="pt-4 flex items-center justify-between">
+            <span
+              className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider"
+              style={{ background: 'rgba(232,168,50,0.2)', color: '#e8a832' }}
             >
-              Cảm ơn Quản trò!
-            </h1>
-          </div>
-        </div>
+              👑 Quản trò
+            </span>
+            <button
+              onClick={() => navigate('/multiplayer', { replace: true })}
+              className="w-9 h-9 rounded-full grid place-items-center text-gray-400"
+              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}
+              aria-label="Đóng"
+            >
+              <span className="material-symbols-outlined text-[18px]">close</span>
+            </button>
+          </header>
 
-        {winner && (
-          <div className="px-5 mb-4">
+          {/* Celebration header */}
+          <div className="text-center pt-8 pb-6">
+            <div className="text-[10px] font-bold uppercase tracking-[0.4em] mb-2" style={{ color: '#e8a832' }}>
+              Trận đấu kết thúc
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <span className="text-3xl" aria-hidden="true">🎉</span>
+              <h1
+                className="font-black text-3xl lg:text-4xl tracking-tight"
+                style={{
+                  background: 'linear-gradient(135deg, #f4c560 0%, #e8a832 100%)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  color: 'transparent',
+                }}
+              >
+                Cảm ơn Quản trò!
+              </h1>
+            </div>
+          </div>
+
+          {/* Winner hero card */}
+          {winner && (
             <div
-              className="rounded-2xl p-3 flex items-center gap-3"
-              style={{
-                background: 'rgba(50,52,64,0.78)',
-                backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(232,168,50,0.3)',
-              }}
+              className="glass-card gold-glow rounded-2xl p-5 lg:p-6 mb-6 flex items-center gap-4 relative overflow-hidden"
+              style={{ border: '1px solid rgba(232,168,50,0.3)' }}
               data-testid="end-host-winner"
             >
-              <div className="text-2xl">👑</div>
               <div
-                className="w-10 h-10 rounded-full grid place-items-center font-bold text-white"
+                className="absolute inset-x-0 top-0 h-1 gold-gradient"
+                aria-hidden="true"
+              />
+              <div className="text-4xl flex-shrink-0" aria-hidden="true">👑</div>
+              <div
+                className="w-14 h-14 rounded-full grid place-items-center font-bold text-xl text-white flex-shrink-0"
                 style={{ background: 'linear-gradient(135deg, #34d399, #059669)' }}
               >
                 {winner.username?.[0]?.toUpperCase() ?? '?'}
@@ -342,99 +367,127 @@ const RoomQuizHost: React.FC = () => {
                 <div className="text-[10px] uppercase tracking-wider font-bold" style={{ color: '#9ca3af' }}>
                   Người chiến thắng
                 </div>
-                <div className="font-bold text-lg truncate">{winner.username}</div>
-                <div className="text-xs font-bold" style={{ color: '#e8a832' }}>
-                  {winner.score ?? 0} điểm
+                <div className="font-black text-xl lg:text-2xl truncate text-on-surface">{winner.username}</div>
+              </div>
+              <div className="text-right flex-shrink-0">
+                <div className="font-black text-2xl lg:text-3xl tabular-nums" style={{ color: '#e8a832' }}>
+                  {winner.score ?? 0}
+                </div>
+                <div className="text-[10px] uppercase tracking-wider font-bold" style={{ color: '#9ca3af' }}>
+                  điểm
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        <div className="px-5 mb-4">
-          <div className="text-[10px] uppercase tracking-wider font-bold mb-2" style={{ color: '#9ca3af' }}>
-            📊 Thống kê trận đấu
+          {/* Stat tiles — one row on ≥sm, 2×2 on mobile */}
+          <div className="mb-6">
+            <div className="text-[10px] uppercase tracking-wider font-bold mb-2" style={{ color: '#9ca3af' }}>
+              📊 Thống kê trận đấu
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3" data-testid="end-host-stats">
+              <StatCard label="Tổng câu hỏi" value={`${matchStats.totalQuestions || finalRanks[0]?.totalAnswered || 0}`} icon="quiz" />
+              <StatCard label="Thời lượng" value={matchStats.duration} icon="timer" />
+              <StatCard label="Người chơi" value={`${matchStats.players}`} icon="group" />
+              <StatCard label="Tỷ lệ đúng TB" value={`${matchStats.avgAccuracy}%`} accent="#34d399" icon="check_circle" />
+            </div>
           </div>
-          <div className="grid grid-cols-2 gap-2" data-testid="end-host-stats">
-            <StatCard label="Tổng câu hỏi" value={`${matchStats.totalQuestions || finalRanks[0]?.totalAnswered || 0}`} />
-            <StatCard label="Thời lượng" value={matchStats.duration} />
-            <StatCard label="Người chơi" value={`${matchStats.players}`} />
-            <StatCard label="Tỷ lệ đúng TB" value={`${matchStats.avgAccuracy}%`} accent="#34d399" />
-          </div>
-        </div>
 
-        <div className="px-5 mb-4">
-          <div className="text-[10px] uppercase tracking-wider font-bold mb-2" style={{ color: '#9ca3af' }}>
-            🏆 Xếp hạng cuối cùng
+          {/* Final rankings — medal accents top 3 + correct-ratio mini bar */}
+          <div className="mb-8">
+            <div className="text-[10px] uppercase tracking-wider font-bold mb-2" style={{ color: '#9ca3af' }}>
+              🏆 Xếp hạng cuối cùng
+            </div>
+            <ul className="space-y-2" data-testid="end-host-rankings">
+              {finalRanks.map((r, i) => {
+                const accent = RANK_ACCENTS[i];
+                const ratio =
+                  typeof r.correctAnswers === 'number' && typeof r.totalAnswered === 'number' && r.totalAnswered > 0
+                    ? r.correctAnswers / r.totalAnswered
+                    : null;
+                return (
+                  <li
+                    key={r.playerId ?? `r${i}`}
+                    className="glass-card rounded-xl px-3 py-2.5 flex items-center gap-3"
+                    style={{
+                      border: accent ? `1px solid ${accent}4D` : '1px solid rgba(255,255,255,0.04)',
+                    }}
+                  >
+                    <span
+                      className="w-7 h-7 rounded-full grid place-items-center text-xs font-black flex-shrink-0"
+                      style={
+                        accent
+                          ? { background: `${accent}33`, color: accent }
+                          : { background: 'rgba(255,255,255,0.05)', color: '#9ca3af' }
+                      }
+                    >
+                      {i + 1}
+                    </span>
+                    <div
+                      className="w-8 h-8 rounded-full grid place-items-center text-xs font-bold text-white flex-shrink-0"
+                      style={{ background: 'linear-gradient(135deg, #6366f1, #4338ca)' }}
+                    >
+                      {r.username?.[0]?.toUpperCase() ?? '?'}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-semibold truncate text-on-surface">{r.username}</div>
+                      {ratio !== null && (
+                        <div className="flex items-center gap-2 mt-1" data-testid={`host-rank-ratio-${i}`}>
+                          <div className="h-1 flex-1 max-w-[120px] rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.08)' }}>
+                            <div
+                              className="h-full rounded-full"
+                              style={{ width: `${Math.round(ratio * 100)}%`, background: '#34d399' }}
+                            />
+                          </div>
+                          <span className="text-[10px] whitespace-nowrap" style={{ color: '#34d399' }}>
+                            {r.correctAnswers}/{r.totalAnswered} đúng
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <span
+                      className="text-base font-black tabular-nums flex-shrink-0"
+                      style={{ color: accent ?? '#fff' }}
+                    >
+                      {r.score ?? 0}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-          <ul className="space-y-1.5" data-testid="end-host-rankings">
-            {finalRanks.map((r, i) => (
-              <li
-                key={r.playerId ?? `r${i}`}
-                className="rounded-lg p-2 flex items-center gap-2"
-                style={{
-                  background: 'rgba(50,52,64,0.55)',
-                  border: i === 0 ? '1px solid rgba(232,168,50,0.3)' : '1px solid rgba(255,255,255,0.04)',
-                }}
+
+          {/* Actions — primary gold CTA + ghost secondary row */}
+          <div>
+            <button
+              data-testid="end-host-replay"
+              onClick={handleReplayWithSameGroup}
+              className="gold-gradient w-full py-3.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2"
+              style={{ color: '#11131e' }}
+            >
+              <span className="material-symbols-outlined text-[18px]" aria-hidden="true">replay</span>
+              <span>Tổ chức trận mới với cùng nhóm</span>
+            </button>
+            <div className="grid grid-cols-2 gap-3 mt-3">
+              <button
+                data-testid="end-host-analytics"
+                onClick={() => navigate(`/room/${roomId}/analytics`)}
+                className="py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5"
+                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
               >
-                <span
-                  className="text-[10px] font-bold w-3"
-                  style={{ color: i === 0 ? '#e8a832' : i === 1 ? '#d1d5db' : i === 2 ? '#cd7f32' : '#9ca3af' }}
-                >
-                  {i + 1}
-                </span>
-                <div
-                  className="w-6 h-6 rounded-full grid place-items-center text-[10px] font-bold text-white"
-                  style={{ background: 'linear-gradient(135deg, #6366f1, #4338ca)' }}
-                >
-                  {r.username?.[0]?.toUpperCase() ?? '?'}
-                </div>
-                <span className="flex-1 text-xs font-semibold truncate">{r.username}</span>
-                {typeof r.correctAnswers === 'number' && typeof r.totalAnswered === 'number' && r.totalAnswered > 0 && (
-                  <span className="text-[10px]" style={{ color: '#34d399' }}>
-                    {r.correctAnswers}/{r.totalAnswered} đúng
-                  </span>
-                )}
-                <span
-                  className="text-xs font-bold tabular-nums"
-                  style={{ color: i === 0 ? '#e8a832' : '#fff' }}
-                >
-                  {r.score ?? 0}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="p-4">
-          <button
-            data-testid="end-host-replay"
-            onClick={handleReplayWithSameGroup}
-            className="w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2"
-            style={{
-              background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
-              color: '#11131e',
-            }}
-          >
-            🔄 <span>Tổ chức trận mới với cùng nhóm</span>
-          </button>
-          <div className="grid grid-cols-2 gap-2 mt-2">
-            <button
-              data-testid="end-host-analytics"
-              onClick={() => navigate(`/room/${roomId}/analytics`)}
-              className="py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1"
-              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
-            >
-              📊 Phân tích
-            </button>
-            <button
-              data-testid="end-host-close"
-              onClick={() => navigate('/multiplayer', { replace: true })}
-              className="py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1"
-              style={{ background: 'rgba(239,68,68,0.06)', border: '1px solid rgba(239,68,68,0.2)', color: '#f87171' }}
-            >
-              🚪 Đóng
-            </button>
+                <span className="material-symbols-outlined text-[16px]" aria-hidden="true">monitoring</span>
+                Phân tích
+              </button>
+              <button
+                data-testid="end-host-close"
+                onClick={() => navigate('/multiplayer', { replace: true })}
+                className="py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5"
+                style={{ background: 'rgba(239,68,68,0.06)', border: '1px solid rgba(239,68,68,0.2)', color: '#f87171' }}
+              >
+                <span className="material-symbols-outlined text-[16px]" aria-hidden="true">logout</span>
+                Đóng
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -460,182 +513,276 @@ const RoomQuizHost: React.FC = () => {
         </div>
       )}
 
-      {/* Header */}
-      <header className="px-4 py-3 flex items-center justify-between border-b" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-        <div className="flex items-center gap-2">
-          <span
-            className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider"
-            style={{ background: 'rgba(232,168,50,0.2)', color: '#e8a832' }}
-          >
-            👑 Quản trò
-          </span>
-          <span className="text-sm font-bold" data-testid="host-question-counter">
-            Câu {questionIndex + (question ? 1 : 0)} / {totalQuestions || '?'}
-          </span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="text-base font-bold" style={{ color: '#e8a832', fontVariantNumeric: 'tabular-nums' }}>
-            {timeLeft}s
+      {/* QTR-5 — TV presentation layout: compact header strip + dramatic
+          timer, oversized question/answers (read-from-the-couch scale),
+          sticky sidebar ticker. Mobile stays single column with the full
+          sticky bottom control bar. */}
+      <div className="mx-auto w-full max-w-7xl px-4 lg:px-6 pt-4 lg:pt-6 pb-28 lg:pb-24">
+        {/* Header strip — badge · Câu X/N · host name | big urgency timer */}
+        <header className="flex items-center justify-between gap-3 mb-2 lg:mb-3" data-testid="host-header">
+          <div className="flex items-center gap-2 lg:gap-3 min-w-0">
+            <span
+              className="px-2 py-0.5 lg:px-2.5 lg:py-1 rounded text-[10px] lg:text-xs font-bold uppercase tracking-wider flex-shrink-0"
+              style={{ background: 'rgba(232,168,50,0.2)', color: '#e8a832' }}
+            >
+              👑 Quản trò
+            </span>
+            <span className="text-sm lg:text-lg font-bold text-on-surface-variant flex-shrink-0" data-testid="host-question-counter">
+              Câu {questionIndex + (question ? 1 : 0)} / {totalQuestions || '?'}
+            </span>
+            {navState.hostName && (
+              <span className="hidden sm:block text-xs lg:text-sm truncate" style={{ color: '#6b7280' }}>
+                · Quản trò: {navState.hostName}
+              </span>
+            )}
           </div>
-          <div className="w-1.5 h-1.5 rounded-full" style={{ background: connected ? '#34d399' : '#ef4444' }} />
+          <div className="flex items-center gap-2 lg:gap-3 flex-shrink-0" data-testid="host-timer">
+            <span className="material-symbols-outlined text-2xl lg:text-3xl" style={{ color: timerColor }} aria-hidden="true">timer</span>
+            <span
+              className="font-black text-3xl lg:text-4xl xl:text-5xl tabular-nums transition-colors duration-500"
+              style={{ color: timerColor }}
+            >
+              {timeLeft}s
+            </span>
+            <div
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ background: connected ? '#34d399' : '#ef4444' }}
+              aria-hidden="true"
+            />
+          </div>
+        </header>
+        {/* Countdown bar — thick, gold → orange → red as time runs out */}
+        <div className="h-2 rounded-full overflow-hidden mb-4 lg:mb-6" style={{ background: 'rgba(255,255,255,0.08)' }}>
+          <div
+            className={`h-full rounded-full transition-all duration-1000 ease-linear${timerRatio > 0.5 ? ' gold-gradient' : ''}`}
+            style={{
+              width: `${timerRatio * 100}%`,
+              background: timerRatio > 0.5 ? undefined : timerColor,
+            }}
+          />
         </div>
-      </header>
 
-      {/* Question display */}
-      <section className="px-4 py-4 border-b" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-        {question ? (
-          <>
-            <h2 className="text-base font-bold leading-snug mb-3 text-white">{question.content}</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {question.options.map((opt, i) => {
-                const isCorrect = correctIndex === i;
-                return (
-                  <div
-                    key={i}
-                    data-testid={`host-option-${i}`}
-                    className="rounded-lg p-2.5 flex items-center gap-2 border"
-                    style={{
-                      background: isCorrect ? 'rgba(74,222,128,0.12)' : 'rgba(255,255,255,0.04)',
-                      borderColor: isCorrect ? 'rgba(74,222,128,0.4)' : 'rgba(255,255,255,0.06)',
-                      opacity: isCorrect ? 1 : 0.55,
-                    }}
-                  >
-                    <div
-                      className="w-6 h-6 rounded grid place-items-center text-xs font-bold"
-                      style={{
-                        background: isCorrect ? 'linear-gradient(135deg, #4ade80, #22c55e)' : 'rgba(255,255,255,0.08)',
-                        color: isCorrect ? '#11131e' : '#9ca3af',
-                      }}
-                    >
-                      {['A','B','C','D'][i] ?? '?'}
-                    </div>
-                    <span className="text-xs flex-1">{opt}</span>
-                    {isCorrect && (
-                      <span className="text-[10px] font-bold" style={{ color: '#4ade80' }}>✓ ĐÁP ÁN</span>
-                    )}
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_340px] xl:grid-cols-[minmax(0,1fr)_380px] gap-4 lg:gap-6 items-start">
+
+          {/* ── Main column ── */}
+          <main className="min-w-0 space-y-4">
+            {/* Question card */}
+            <section className="glass-card rounded-2xl p-4 lg:p-8" data-testid="host-question-card">
+              {question ? (
+                <>
+                  <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold leading-snug lg:leading-snug mb-6 lg:mb-8 text-on-surface">
+                    {question.content}
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4">
+                    {question.options.map((opt, i) => {
+                      const isCorrect = correctIndex === i;
+                      const revealed = correctIndex !== null;
+                      const c = HOST_OPTION_STYLES[i] ?? HOST_OPTION_STYLES[0];
+                      return (
+                        <div
+                          key={i}
+                          data-testid={`host-option-${i}`}
+                          className={
+                            isCorrect
+                              ? 'answer-correct-anim relative flex items-center gap-4 rounded-2xl border-2 px-4 py-5 lg:px-5 lg:py-6 min-h-[72px] scale-[1.02] transition-transform duration-300'
+                              : `relative flex items-center gap-4 rounded-2xl border-2 px-4 py-5 lg:px-5 lg:py-6 min-h-[72px] transition-all duration-200 ${c.tile}${revealed ? ' opacity-20' : ''}`
+                          }
+                          style={
+                            isCorrect
+                              ? {
+                                  background: 'rgba(74,222,128,0.18)',
+                                  borderColor: '#4ade80',
+                                  boxShadow: '0 0 40px rgba(74,222,128,0.45)',
+                                }
+                              : undefined
+                          }
+                        >
+                          <div
+                            className={`w-12 h-12 lg:w-14 lg:h-14 rounded-xl grid place-items-center text-xl lg:text-2xl font-bold flex-shrink-0 ${
+                              isCorrect ? 'answer-letter-green-grad text-white shadow-lg' : c.letter
+                            }`}
+                          >
+                            {['A','B','C','D'][i] ?? '?'}
+                          </div>
+                          <span
+                            className={`flex-1 text-xl lg:text-2xl leading-snug ${
+                              isCorrect ? 'text-white font-semibold' : 'text-on-surface font-medium'
+                            }`}
+                          >
+                            {opt}
+                          </span>
+                          {isCorrect && (
+                            <span className="text-xs lg:text-sm font-bold whitespace-nowrap flex-shrink-0" style={{ color: '#4ade80' }}>
+                              ✓ ĐÁP ÁN
+                            </span>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
-                );
-              })}
-            </div>
-          </>
-        ) : (
-          <div className="text-center text-sm text-gray-400 py-6">Đang chờ câu hỏi đầu tiên…</div>
-        )}
-      </section>
+                </>
+              ) : (
+                <div className="text-center text-sm text-gray-400 py-10">Đang chờ câu hỏi đầu tiên…</div>
+              )}
+            </section>
 
-      {/* Live answer status */}
-      <section className="px-4 py-3 border-b" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-[10px] uppercase tracking-wider font-bold" style={{ color: '#9ca3af' }}>
-            Tình trạng trả lời
-          </span>
-          <span className="text-[10px] font-bold" style={{ color: '#4ade80' }}>
-            {answeredCount} / {playerCount} đã trả lời
-          </span>
-        </div>
-        {liveAnswerList.length === 0 ? (
-          <div className="text-xs text-gray-500 italic">Chưa có ai trả lời</div>
-        ) : (
-          <ul className="space-y-1.5" data-testid="host-live-answers">
-            {liveAnswerList.map(a => (
-              <li key={a.userId} className="flex items-center gap-2 text-xs">
-                <div
-                  className="w-6 h-6 rounded-full grid place-items-center text-[10px] font-bold text-white"
-                  style={{ background: 'linear-gradient(135deg, #6366f1, #4338ca)' }}
-                >
-                  {a.username[0]?.toUpperCase() ?? '?'}
+            {/* Controls — QTR-5: the host screen is cast to a TV, so on lg+
+                the 4 admin buttons collapse into a discreet floating pill
+                bottom-right, dimmed (opacity-40) until the host hovers or
+                tabs into it. Mobile keeps the full sticky bottom bar (host
+                drives from a phone). */}
+            <section
+              data-testid="host-controls-bar"
+              className="fixed bottom-0 inset-x-0 z-40 p-3 lg:inset-x-auto lg:right-6 lg:bottom-6 lg:p-0 lg:opacity-40 lg:hover:opacity-100 lg:focus-within:opacity-100 lg:transition-opacity lg:duration-300"
+            >
+              <div
+                className="glass-panel relative mx-auto max-w-xl rounded-2xl px-3 py-2.5 border lg:mx-0 lg:max-w-none lg:rounded-full lg:px-2 lg:py-1.5"
+                style={{ borderColor: 'rgba(255,255,255,0.08)' }}
+              >
+                {actionError && (
+                  <div
+                    className="text-[10px] mb-1.5 text-center lg:absolute lg:bottom-full lg:right-0 lg:mb-2 lg:whitespace-nowrap lg:px-3 lg:py-1.5 lg:rounded-lg lg:glass-panel"
+                    style={{ color: '#f87171' }}
+                  >
+                    {actionError}
+                  </div>
+                )}
+                <div className="flex items-stretch justify-center gap-2 lg:gap-1.5">
+                  <button
+                    data-testid="host-control-pause"
+                    onClick={handlePauseToggle}
+                    className="flex-1 lg:flex-none px-2 lg:px-3.5 py-2 lg:py-1.5 rounded-xl lg:rounded-full flex items-center justify-center gap-1.5 text-xs lg:text-[11px] font-semibold transition-colors"
+                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#fff' }}
+                  >
+                    <span className="material-symbols-outlined text-[18px]" aria-hidden="true">
+                      {isPaused ? 'play_arrow' : 'pause'}
+                    </span>
+                    <span>{isPaused ? 'Tiếp tục' : 'Tạm dừng'}</span>
+                  </button>
+                  <button
+                    data-testid="host-control-skip"
+                    onClick={handleSkip}
+                    className="flex-1 lg:flex-none px-2 lg:px-3.5 py-2 lg:py-1.5 rounded-xl lg:rounded-full flex items-center justify-center gap-1.5 text-xs lg:text-[11px] font-semibold transition-colors"
+                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#fff' }}
+                  >
+                    <span className="material-symbols-outlined text-[18px]" aria-hidden="true">skip_next</span>
+                    <span>Bỏ câu</span>
+                  </button>
+                  <button
+                    data-testid="host-control-broadcast"
+                    onClick={() => setShowBroadcast(true)}
+                    className="flex-1 lg:flex-none px-2 lg:px-3.5 py-2 lg:py-1.5 rounded-xl lg:rounded-full flex items-center justify-center gap-1.5 text-xs lg:text-[11px] font-semibold transition-colors"
+                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#fff' }}
+                  >
+                    <span className="material-symbols-outlined text-[18px]" aria-hidden="true">chat</span>
+                    <span>Nhắn</span>
+                  </button>
+                  <button
+                    data-testid="host-control-end"
+                    onClick={() => setShowEndConfirm(true)}
+                    className="flex-1 lg:flex-none px-2 lg:px-3.5 py-2 lg:py-1.5 rounded-xl lg:rounded-full flex items-center justify-center gap-1.5 text-xs lg:text-[11px] font-semibold transition-colors"
+                    style={{ background: 'rgba(239,68,68,0.06)', border: '1px solid rgba(239,68,68,0.35)', color: '#f87171' }}
+                  >
+                    <span className="material-symbols-outlined text-[18px]" aria-hidden="true">stop_circle</span>
+                    <span>Kết thúc</span>
+                  </button>
                 </div>
-                <span className="flex-1">{a.username}</span>
-                {a.status === 'correct' && (
-                  <span className="text-[10px] font-bold" style={{ color: '#4ade80' }}>
-                    ✓ ĐÚNG{a.reactionTimeMs ? ` · ${(a.reactionTimeMs/1000).toFixed(1)}s` : ''}
-                  </span>
-                )}
-                {a.status === 'wrong' && (
-                  <span className="text-[10px] font-bold" style={{ color: '#f87171' }}>
-                    ✗ SAI{a.reactionTimeMs ? ` · ${(a.reactionTimeMs/1000).toFixed(1)}s` : ''}
-                  </span>
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+              </div>
+            </section>
+          </main>
 
-      {/* Live scoreboard */}
-      <section className="px-4 py-3 border-b" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-        <div className="text-[10px] uppercase tracking-wider font-bold mb-2" style={{ color: '#9ca3af' }}>
-          🏆 Bảng xếp hạng tạm thời
-        </div>
-        {scores.length === 0 ? (
-          <div className="text-xs text-gray-500 italic">Chưa có điểm</div>
-        ) : (
-          <ul className="space-y-1" data-testid="host-scoreboard">
-            {scores.slice(0, 8).map((s, i) => (
-              <li key={s.userId} className="flex items-center gap-2 text-xs">
-                <span className="w-3 text-[10px] font-bold" style={{ color: i === 0 ? '#e8a832' : '#9ca3af' }}>
-                  {i + 1}
+          {/* ── Sidebar (sticky on desktop) ── */}
+          <aside className="space-y-4 lg:sticky lg:top-6" data-testid="host-sidebar">
+            {/* Live answer ticker — QTR-5: TV-readable n/m counter + chips
+                that pop in as ANSWER_SUBMITTED events land. (Per-option
+                counts stay impossible — payload carries no option index.) */}
+            <section className="glass-card rounded-2xl p-4 lg:p-5">
+              <span className="text-[10px] uppercase tracking-wider font-bold" style={{ color: '#9ca3af' }}>
+                Tình trạng trả lời
+              </span>
+              <div className="flex items-baseline gap-2 mt-1 mb-3">
+                <span className="font-black text-3xl lg:text-4xl tabular-nums" style={{ color: '#e8a832' }}>
+                  {answeredCount}
                 </span>
-                <span className="flex-1">{s.username}</span>
-                <span className="font-bold" style={{ color: i === 0 ? '#e8a832' : '#fff', fontVariantNumeric: 'tabular-nums' }}>
-                  {s.score}
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+                <span className="font-bold text-lg tabular-nums text-on-surface-variant">/ {playerCount}</span>
+                <span className="text-xs font-semibold" style={{ color: '#9ca3af' }}>đã trả lời</span>
+              </div>
+              {liveAnswerList.length === 0 ? (
+                <div className="text-xs text-gray-500 italic">Chưa có ai trả lời</div>
+              ) : (
+                <ul className="space-y-2" data-testid="host-live-answers">
+                  {liveAnswerList.map(a => (
+                    <li
+                      key={a.userId}
+                      className="host-chip-pop flex items-center gap-2.5 text-sm rounded-xl px-2.5 py-2"
+                      style={{ background: 'rgba(255,255,255,0.03)' }}
+                    >
+                      <div
+                        className="w-8 h-8 rounded-full grid place-items-center text-xs font-bold text-white flex-shrink-0"
+                        style={{ background: 'linear-gradient(135deg, #6366f1, #4338ca)' }}
+                      >
+                        {a.username[0]?.toUpperCase() ?? '?'}
+                      </div>
+                      <span className="flex-1 truncate font-medium text-on-surface">{a.username}</span>
+                      {a.status === 'correct' && (
+                        <span className="text-xs font-bold whitespace-nowrap" style={{ color: '#4ade80' }}>
+                          ✓ ĐÚNG{a.reactionTimeMs ? ` · ${(a.reactionTimeMs/1000).toFixed(1)}s` : ''}
+                        </span>
+                      )}
+                      {a.status === 'wrong' && (
+                        <span className="text-xs font-bold whitespace-nowrap" style={{ color: '#f87171' }}>
+                          ✗ SAI{a.reactionTimeMs ? ` · ${(a.reactionTimeMs/1000).toFixed(1)}s` : ''}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
 
-      {/* Controls bar */}
-      <section className="fixed bottom-0 left-0 right-0 p-3 border-t"
-               style={{ background: '#11131e', borderColor: 'rgba(255,255,255,0.05)' }}>
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: '#e8a832' }}>
-            🎛️ Điều khiển trận đấu
-          </span>
-          {actionError && (
-            <span className="text-[10px]" style={{ color: '#f87171' }}>· {actionError}</span>
-          )}
+            {/* Live scoreboard — top 5 with rank accents */}
+            <section className="glass-card rounded-2xl p-4">
+              <div className="text-[10px] uppercase tracking-wider font-bold mb-3" style={{ color: '#9ca3af' }}>
+                🏆 Bảng xếp hạng tạm thời
+              </div>
+              {scores.length === 0 ? (
+                <div className="text-xs text-gray-500 italic">Chưa có điểm</div>
+              ) : (
+                <ul className="space-y-1.5" data-testid="host-scoreboard">
+                  {scores.slice(0, 5).map((s, i) => {
+                    const accent = RANK_ACCENTS[i];
+                    return (
+                      <li
+                        key={s.userId}
+                        className="flex items-center gap-2 text-xs rounded-lg px-2 py-1.5"
+                        style={{
+                          background: 'rgba(255,255,255,0.03)',
+                          border: accent ? `1px solid ${accent}33` : '1px solid transparent',
+                        }}
+                      >
+                        <span
+                          className="w-5 h-5 rounded-full grid place-items-center text-[10px] font-black flex-shrink-0"
+                          style={
+                            accent
+                              ? { background: `${accent}33`, color: accent }
+                              : { background: 'rgba(255,255,255,0.05)', color: '#9ca3af' }
+                          }
+                        >
+                          {i + 1}
+                        </span>
+                        <span className="flex-1 truncate text-on-surface">{s.username}</span>
+                        <span className="font-bold tabular-nums" style={{ color: accent ?? '#fff' }}>
+                          {s.score}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </section>
+          </aside>
         </div>
-        <div className="grid grid-cols-4 gap-1.5">
-          <button
-            data-testid="host-control-pause"
-            onClick={handlePauseToggle}
-            className="py-2 rounded-lg flex flex-col items-center gap-0.5 text-[10px] font-semibold"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#fff' }}
-          >
-            <span className="text-sm">{isPaused ? '▶️' : '⏸️'}</span>
-            <span>{isPaused ? 'Tiếp tục' : 'Tạm dừng'}</span>
-          </button>
-          <button
-            data-testid="host-control-skip"
-            onClick={handleSkip}
-            className="py-2 rounded-lg flex flex-col items-center gap-0.5 text-[10px] font-semibold"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#fff' }}
-          >
-            <span className="text-sm">⏭️</span>
-            <span>Bỏ câu</span>
-          </button>
-          <button
-            data-testid="host-control-broadcast"
-            onClick={() => setShowBroadcast(true)}
-            className="py-2 rounded-lg flex flex-col items-center gap-0.5 text-[10px] font-semibold"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#fff' }}
-          >
-            <span className="text-sm">💬</span>
-            <span>Nhắn</span>
-          </button>
-          <button
-            data-testid="host-control-end"
-            onClick={() => setShowEndConfirm(true)}
-            className="py-2 rounded-lg flex flex-col items-center gap-0.5 text-[10px] font-semibold"
-            style={{ background: 'rgba(239,68,68,0.06)', border: '1px solid rgba(239,68,68,0.2)', color: '#f87171' }}
-          >
-            <span className="text-sm">🛑</span>
-            <span>Kết thúc</span>
-          </button>
-        </div>
-      </section>
+      </div>
 
       {/* Pause overlay */}
       {isPaused && (
@@ -726,27 +873,28 @@ const RoomQuizHost: React.FC = () => {
         </div>
       )}
 
-      {/* Spacer so the fixed control bar doesn't cover content */}
-      <div style={{ height: 110 }} />
-
-      {/* Surface hostName from nav state in a footer chip — gives the host
-          a quick identity reminder when juggling tabs. */}
-      {navState.hostName && (
-        <div className="hidden md:block fixed bottom-24 right-4 text-[10px]" style={{ color: '#6b7280' }}>
-          Quản trò: {navState.hostName}
-        </div>
-      )}
+      {/* hostName now lives in the header strip (QTR-5) — the old fixed
+          bottom-right footer chip would collide with the floating controls. */}
     </div>
   );
 };
 
-const StatCard: React.FC<{ label: string; value: string; accent?: string }> = ({ label, value, accent }) => (
+const StatCard: React.FC<{ label: string; value: string; accent?: string; icon?: string }> = ({ label, value, accent, icon }) => (
   <div
-    className="rounded-xl p-2.5"
-    style={{ background: 'rgba(50,52,64,0.55)', border: '1px solid rgba(255,255,255,0.04)' }}
+    className="glass-card rounded-xl p-3"
+    style={{ border: '1px solid rgba(255,255,255,0.04)' }}
   >
-    <div className="text-[10px] uppercase" style={{ color: '#9ca3af' }}>{label}</div>
-    <div className="font-bold text-base" style={{ color: accent ?? '#fff' }}>{value}</div>
+    {icon && (
+      <span
+        className="material-symbols-outlined text-[18px] mb-1 block"
+        style={{ color: accent ?? '#e8a832' }}
+        aria-hidden="true"
+      >
+        {icon}
+      </span>
+    )}
+    <div className="font-black text-lg lg:text-xl tabular-nums" style={{ color: accent ?? '#fff' }}>{value}</div>
+    <div className="text-[10px] uppercase tracking-wide mt-0.5" style={{ color: '#9ca3af' }}>{label}</div>
   </div>
 );
 
