@@ -42,7 +42,7 @@
   - Hero stat row thoáng hơn; 2 card sách journey cuối (đều khóa) đang trông dở dang → cải thiện hoặc gộp vào HO-1.
   - Anchor lại coachmark "Thử thách hàng ngày (1/3)" vào Daily card thay vì đè giữa mode cards.
   - ✅ Stat row breathing room done (in HO-2). Journey empty cards no longer dort-dang for new users (hidden, HO-1).
-  - ⚠️ Deferred: coachmark re-anchoring. TutorialOverlay is a separate component and does NOT reference any Home testid (verified via grep — no querySelector/getElementById on home-* anchors), so changing anchoring would mean reworking that component's positioning logic — out of scope + risky. Noted, not forced.
+  - ✅ Done 2026-06-12 (round 2): coachmark re-anchored. Root cause: `TutorialOverlay` declared `targetId` (`game-mode-*`) but never used it — tooltip floated centered + full-dim, overlapping mode cards; the targetIds pointed at the legacy `GameModeGrid`, dead in current Home. Rewrote to anchor by real data-testid (`featured-daily-card` / `ranked-standard-card` / `compact-card-practice`): scrollIntoView + getBoundingClientRect → gold spotlight ring around the target + tooltip placed below (flips above near viewport bottom); graceful fallback to centered when target absent (jsdom/tests). Verified via screenshot: step 1 now highlights the Daily card with the tooltip beneath it. Tests still green (7/7).
 
 - [~] **HO-6 ⚪ Consistency**
   - Section header đồng nhất (casing + affordance "Xem tất cả"). "Năng lượng 100" thêm ngữ cảnh ngắn nếu hợp.
