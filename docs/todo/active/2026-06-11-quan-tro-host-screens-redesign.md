@@ -57,13 +57,18 @@
 - [x] vitest full green: 129 files / 1284 tests passed (2026-06-12), KHÔNG phải sửa test nào
       (mọi testid + text ngữ nghĩa giữ nguyên); `tsc --noEmit`: 0 lỗi trong RoomQuizHost.
 
-### QTR-6 — Wrap-up polish (design review 2026-06-12)
-- [ ] Thêm podium 3 bậc vào wrap-up Quản trò (tái dùng component podium của player view) — màn TV phải celebratory nhất; ranking list đầy đủ giữ bên dưới.
-- [ ] "Đóng" đỏ → ghost trung tính (đỏ = destructive, sai ngữ nghĩa khi trận đã xong); bỏ ✕ góc trên (trùng affordance).
-- [ ] vitest green.
+### QTR-6 — Wrap-up polish (design review 2026-06-12) — DONE (commit 085699c)
+- [x] Podium 3 bậc vào wrap-up Quản trò: `PodiumBlock` mới (RoomOverlays, inline, fallback rank
+      theo điểm khi mode không set finalRank) thay winner hero card (trùng hạng 1); ranking list giữ dưới.
+- [x] "Đóng" đỏ → ghost trung tính; bỏ ✕ góc trên (trùng affordance).
+- [x] vitest 1287/1287 green (.test-baseline 1287).
 
-### BUG kèm theo (màn player, residual F-web-2)
-- [ ] `QuizEndScreen` hiện "Chưa xếp hạng" cho chính người thắng — match "tôi" bằng username (localStorage, dễ lệch tên server) thay vì `userId`. Chuyển identity sang userId.
+### BUG kèm theo (màn player, residual F-web-2) — DONE (commit 085699c)
+- [x] "Chưa xếp hạng" cho người thắng: 2 nguyên nhân — (a) `myRank` chỉ đọc `finalRank`
+      (Speed Race không bao giờ set) → fallback thứ hạng theo điểm; (b) match "tôi" bằng username
+      localStorage → ưu tiên `playerId === myUserId`. Nguồn userId: RoomLobby truyền `viewerUserId`
+      qua nav state, RoomQuiz nâng cấp từ GET /api/rooms/{id} lúc mount (localStorage 'userId'
+      legacy chưa từng được ghi — giữ làm last resort). 2 regression test.
 
 ### Invariants
 - Logic + STOMP handling không đổi (handlers, state, effects giữ nguyên — chỉ JSX/class).
