@@ -1,6 +1,7 @@
 package com.biblequiz.api;
 
 import com.biblequiz.api.dto.CompleteDailyChallengeRequest;
+import com.biblequiz.infrastructure.time.GameClock;
 import com.biblequiz.modules.daily.service.DailyChallengeService;
 import com.biblequiz.modules.quiz.entity.Question;
 
@@ -13,7 +14,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.ZoneOffset;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -38,7 +38,7 @@ public class DailyChallengeController {
     public ResponseEntity<Map<String, Object>> getDailyChallenge(
             Authentication authentication,
             @RequestParam(defaultValue = "vi") String language) {
-        LocalDate today = LocalDate.now(ZoneOffset.UTC);
+        LocalDate today = GameClock.today();
         List<Question> questions = dailyChallengeService.getTodayQuestions(language);
 
         boolean alreadyCompleted = false;
@@ -82,11 +82,11 @@ public class DailyChallengeController {
      */
     @PostMapping("/start")
     public ResponseEntity<Map<String, Object>> startChallenge(Authentication authentication) {
-        String sessionId = "daily-" + LocalDate.now(ZoneOffset.UTC) + "-" + System.currentTimeMillis();
+        String sessionId = "daily-" + GameClock.today() + "-" + System.currentTimeMillis();
 
         Map<String, Object> response = Map.of(
                 "sessionId", sessionId,
-                "date", LocalDate.now(ZoneOffset.UTC).toString(),
+                "date", GameClock.today().toString(),
                 "totalQuestions", dailyChallengeService.getDailyQuestionCount());
 
         return ResponseEntity.ok(response);
@@ -144,7 +144,7 @@ public class DailyChallengeController {
             return ResponseEntity.ok(Map.of(
                     "completed", true,
                     "alreadyCompleted", true,
-                    "date", LocalDate.now(ZoneOffset.UTC).toString()));
+                    "date", GameClock.today().toString()));
         }
 
         dailyChallengeService.markCompleted(userId, req.getScore(), req.getCorrectCount());
@@ -155,7 +155,7 @@ public class DailyChallengeController {
         Map<String, Object> response = new LinkedHashMap<>();
         response.put("completed", true);
         response.put("alreadyCompleted", false);
-        response.put("date", LocalDate.now(ZoneOffset.UTC).toString());
+        response.put("date", GameClock.today().toString());
         response.put("score", req.getScore());
         response.put("correct", req.getCorrectCount());
         response.put("total", dailyChallengeService.getDailyQuestionCount());

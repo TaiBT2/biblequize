@@ -181,8 +181,11 @@ public class DailyChallengeService {
         response.put("xpMinCorrect", DAILY_XP_MIN_CORRECT);
         response.put("completedAt", payload.get("completedAt"));
         // ISO-8601 instant — FE parses with new Date(...) for the countdown.
+        // F-api-13: the reset moment is VN midnight (GameClock flips the day
+        // there) — stamping the naive midnight as a UTC instant pushed the
+        // countdown 7h late (07:00 VN).
         response.put("nextResetAt", GameClock.today()
-                .plusDays(1).atStartOfDay().toInstant(ZoneOffset.UTC).toString());
+                .plusDays(1).atStartOfDay(GameClock.GAME_ZONE).toInstant().toString());
         return response;
     }
 
@@ -225,9 +228,17 @@ public class DailyChallengeService {
         // not enough for 30-day heatmap or yesterday recap). Idempotent via
         // unique (user_id, date) constraint: re-completing the same day is a
         // no-op at the DB level.
+        //
+        // F-api-15: the DB row doubles as the XP idempotency guard. The
+        // controller's hasCompletedToday check is Redis-only (48h key) — if
+        // Redis is flushed mid-day, markCompleted runs again; without this
+        // guard the +50 XP would be credited twice.
+        boolean alreadyPersistedToday = false;
         try {
             LocalDate today = GameClock.today();
-            if (dailyCompletionRepository.findByUserIdAndCompletionDate(user.getId(), today).isEmpty()) {
+            if (dailyCompletionRepository.findByUserIdAndCompletionDate(user.getId(), today).isPresent()) {
+                alreadyPersistedToday = true;
+            } else {
                 DailyCompletion completion = new DailyCompletion(
                         UUID.randomUUID().toString(), user, today,
                         score, correctCount, DAILY_QUESTION_COUNT,
@@ -240,7 +251,9 @@ public class DailyChallengeService {
                     user.getId(), ex.getMessage());
         }
 
-        if (xpEarned) {
+        if (xpEarned && alreadyPersistedToday) {
+            log.info("Daily completion: user={} already has today's completion row — XP not re-credited", userId);
+        } else if (xpEarned) {
             creditCompletionXp(user);
         } else {
             log.info("Daily completion: user={} scored {}/{} — below threshold {}, XP not credited",

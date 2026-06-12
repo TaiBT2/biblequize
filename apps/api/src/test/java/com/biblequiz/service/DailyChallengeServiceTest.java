@@ -326,14 +326,16 @@ class DailyChallengeServiceTest {
                 80, 4, 5, null, LocalDateTime.now(ZoneOffset.UTC));
 
         when(userRepository.findById(userId)).thenReturn(Optional.of(user));
-        when(userDailyProgressRepository.findByUserIdAndDate(eq(userId), any(LocalDate.class)))
-                .thenReturn(Optional.empty());
         when(dailyCompletionRepository.findByUserIdAndCompletionDate(eq(userId), any(LocalDate.class)))
                 .thenReturn(Optional.of(existing));
 
         dailyChallengeService.markCompleted(userId, 100, 5);
 
         verify(dailyCompletionRepository, never()).save(any(DailyCompletion.class));
+        // F-api-15: the existing row also blocks XP re-credit — the Redis
+        // hasCompletedToday guard alone is lost on a cache flush, and without
+        // this DB-backed check the +50 XP would be credited twice.
+        verify(userDailyProgressRepository, never()).save(any());
     }
 
     // ── DC-3: getHistory returns N entries — missing days as completed:false ─
