@@ -1,7 +1,5 @@
 package com.biblequiz.service;
 
-import com.biblequiz.modules.quiz.entity.UserDailyProgress;
-import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.ranked.service.PrestigeService;
 import com.biblequiz.modules.ranked.service.PrestigeService.PrestigeStatus;
 import com.biblequiz.modules.ranked.service.UserTierService;
@@ -13,12 +11,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -26,13 +22,12 @@ class PrestigeServiceTest {
 
     @Mock private UserRepository userRepository;
     @Mock private UserTierService userTierService;
-    @Mock private UserDailyProgressRepository dailyProgressRepository;
 
     private PrestigeService service;
 
     @BeforeEach
     void setUp() {
-        service = new PrestigeService(userRepository, userTierService, dailyProgressRepository);
+        service = new PrestigeService(userRepository, userTierService);
     }
 
     private User createTier6User(String id, int daysAtTier6, int prestigeLevel) {
@@ -91,7 +86,7 @@ class PrestigeServiceTest {
         User user = createTier6User("u1", 30, 0);
         when(userRepository.findById("u1")).thenReturn(Optional.of(user));
         when(userTierService.getTierLevel("u1")).thenReturn(6);
-        when(dailyProgressRepository.findByUserIdOrderByDateDesc("u1")).thenReturn(List.of());
+        when(userTierService.getLedgerPoints("u1")).thenReturn(0);
 
         Map<String, Object> result = service.executePrestige("u1");
 
@@ -104,22 +99,20 @@ class PrestigeServiceTest {
     }
 
     @Test
-    void executePrestige_resetsAllDailyProgress() {
+    void executePrestige_recordsLedgerOffsetInsteadOfWipingHistory() {
+        // F-api-12 / DECISIONS 2026-06-12: prestige must NOT touch the per-day
+        // points ledger (leaderboards aggregate those rows by date range —
+        // zeroing them rewrote past standings). The reset is an offset:
+        // effective XP = ledger - prestigeXpOffset.
         User user = createTier6User("u1", 30, 0);
         when(userRepository.findById("u1")).thenReturn(Optional.of(user));
         when(userTierService.getTierLevel("u1")).thenReturn(6);
-
-        UserDailyProgress p1 = new UserDailyProgress();
-        p1.setPointsCounted(500);
-        UserDailyProgress p2 = new UserDailyProgress();
-        p2.setPointsCounted(300);
-        when(dailyProgressRepository.findByUserIdOrderByDateDesc("u1")).thenReturn(List.of(p1, p2));
+        when(userTierService.getLedgerPoints("u1")).thenReturn(123_456);
 
         service.executePrestige("u1");
 
-        assertEquals(0, p1.getPointsCounted());
-        assertEquals(0, p2.getPointsCounted());
-        verify(dailyProgressRepository).saveAll(anyList());
+        assertEquals(123_456, user.getPrestigeXpOffset());
+        verify(userRepository).save(user);
     }
 
     @Test

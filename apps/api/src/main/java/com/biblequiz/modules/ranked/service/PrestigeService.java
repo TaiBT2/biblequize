@@ -1,7 +1,5 @@
 package com.biblequiz.modules.ranked.service;
 
-import com.biblequiz.modules.quiz.entity.UserDailyProgress;
-import com.biblequiz.modules.quiz.repository.UserDailyProgressRepository;
 import com.biblequiz.modules.user.entity.User;
 import com.biblequiz.modules.user.repository.UserRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -37,14 +35,11 @@ public class PrestigeService {
 
     private final UserRepository userRepository;
     private final UserTierService userTierService;
-    private final UserDailyProgressRepository dailyProgressRepository;
 
     public PrestigeService(UserRepository userRepository,
-                           UserTierService userTierService,
-                           UserDailyProgressRepository dailyProgressRepository) {
+                           UserTierService userTierService) {
         this.userRepository = userRepository;
         this.userTierService = userTierService;
-        this.dailyProgressRepository = dailyProgressRepository;
     }
 
     public record PrestigeStatus(
@@ -103,12 +98,12 @@ public class PrestigeService {
         user.setDaysAtTier6(0);
         user.setTier6ReachedAt(null);
 
-        // Reset daily progress points (this effectively resets totalPoints since it's aggregated)
-        List<UserDailyProgress> allProgress = dailyProgressRepository.findByUserIdOrderByDateDesc(userId);
-        for (UserDailyProgress p : allProgress) {
-            p.setPointsCounted(0);
-        }
-        dailyProgressRepository.saveAll(allProgress);
+        // F-api-12 / DECISIONS 2026-06-12: reset effective XP via an offset
+        // instead of zeroing the per-day ledger. Leaderboards aggregate the
+        // same rows by date range — wiping them rewrote past weekly/season
+        // standings and destroyed history irreversibly. Tier/progression now
+        // read SUM(points_counted) - prestigeXpOffset (UserTierService).
+        user.setPrestigeXpOffset(userTierService.getLedgerPoints(userId));
 
         userRepository.save(user);
 

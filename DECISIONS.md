@@ -576,3 +576,9 @@
 - Lý do: Suốt trận, sinh tồn chỉ phụ thuộc trả lời ĐÚNG (tốc độ không quyết định loại ai) — phân thắng bại cuối bằng score (nặng speed-bonus) là đổi luật ở vạch đích. Score không đơn điệu theo số câu đúng (mỗi câu ~100–150đ tùy tốc độ → 6 câu nhanh có thể vượt 7 câu chậm) → nghịch lý "ít đúng hơn mà xếp trên". Tốc độ vẫn được thưởng đúng chỗ: tie-break.
 - Trade-off: Leaderboard có thể hiện hạng 1 có score thấp hơn hạng 2 → wrap-up Quản trò hiển thị "X/Y đúng" làm số chính cho phòng BR. Đồng thời xoá `shouldEndGame` (luật max-rounds chưa từng được gọi — dead code).
 - KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-06-12 — Prestige: reset XP bằng OFFSET, không tẩy sổ cái điểm theo ngày
+- Quyết định: `executePrestige` ghi `users.prestige_xp_offset` = tổng sổ cái tại thời điểm prestige (V66); tier/progression đọc `SUM(points_counted) − offset` (clamp ≥0, qua `UserTierService.getTotalPoints`). KHÔNG set `pointsCounted=0` trên các dòng `user_daily_progress` lịch sử nữa.
+- Lý do: Leaderboard ngày/tuần/mùa/all-time aggregate đúng các dòng đó theo khoảng ngày — tẩy sổ làm người prestige bốc hơi hồi tố khỏi mọi bảng xếp hạng (kể cả mùa đã kết thúc), xê dịch hạng người khác, và mất dữ liệu lịch sử vĩnh viễn. Intent gốc chỉ là "reset XP, keep cosmetics".
+- Trade-off: Leaderboard giữ nguyên thành tích cũ của người prestige (đúng mong muốn); thêm 1 cột + 1 phép trừ ở phễu tier. Admin test-seed có thể làm sổ cái < offset → đã clamp 0.
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới

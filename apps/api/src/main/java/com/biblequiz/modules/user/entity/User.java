@@ -75,6 +75,12 @@ public class User {
     @Column(name = "prestige_at", columnDefinition = "JSON")
     private String prestigeAt; // JSON array of timestamps
 
+    /** Ledger total at the moment of the last prestige (V66). Effective XP
+     *  for tier/progression = SUM(points_counted) - this offset; the per-day
+     *  ledger itself is never zeroed so leaderboards/history stay intact. */
+    @Column(name = "prestige_xp_offset", nullable = false)
+    private Integer prestigeXpOffset = 0;
+
     @Column(name = "days_at_tier6", nullable = false)
     private Integer daysAtTier6 = 0;
 
@@ -321,6 +327,9 @@ public class User {
 
     public String getPrestigeAt() { return prestigeAt; }
     public void setPrestigeAt(String prestigeAt) { this.prestigeAt = prestigeAt; }
+
+    public Integer getPrestigeXpOffset() { return prestigeXpOffset; }
+    public void setPrestigeXpOffset(Integer prestigeXpOffset) { this.prestigeXpOffset = prestigeXpOffset; }
 
     public Integer getDaysAtTier6() { return daysAtTier6; }
     public void setDaysAtTier6(Integer daysAtTier6) { this.daysAtTier6 = daysAtTier6; }
