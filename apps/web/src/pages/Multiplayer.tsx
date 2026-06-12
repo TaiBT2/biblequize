@@ -73,8 +73,10 @@ export default function Multiplayer() {
     queryKey: ['public-rooms'],
     queryFn: () => api.get('/api/rooms/public').then(r => r.data),
     enabled: isAuthenticated,
-    refetchInterval: 30000,
-    staleTime: 15000,
+    // 10s poll: a freshly-created room should show up for people already
+    // browsing the lobby without F5 (no lobby-wide STOMP topic yet).
+    refetchInterval: 10000,
+    staleTime: 5000,
   })
 
   if (!isAuthenticated) return null
