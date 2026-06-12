@@ -16,6 +16,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import com.biblequiz.modules.quiz.exception.BasicQuizCooldownException;
 
@@ -205,6 +206,28 @@ public class GlobalExceptionHandler {
                 .build();
         
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+
+    /**
+     * Unknown route (no controller / static resource). Spring throws this for
+     * paths like /actuator/health (Actuator isn't on the classpath), favicon
+     * probes, vuln scanners, etc. It is a plain 404 — must NOT fall through to
+     * the generic handler below, which logged every one at ERROR ("Unexpected
+     * error occurred") and spammed the prod logs.
+     */
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNoResourceFound(NoResourceFoundException ex, WebRequest request) {
+        logger.debug("No resource for path: {}", ex.getResourcePath());
+
+        ErrorResponse error = ErrorResponse.builder()
+                .timestamp(LocalDateTime.now())
+                .status(HttpStatus.NOT_FOUND.value())
+                .error("Not Found")
+                .message("Resource not found")
+                .path(getPath(request))
+                .build();
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 
     @ExceptionHandler(Exception.class)
