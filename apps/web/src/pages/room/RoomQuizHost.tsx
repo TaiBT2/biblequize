@@ -322,8 +322,10 @@ const RoomQuizHost: React.FC = () => {
             <div className="text-[10px] font-bold uppercase tracking-[0.4em] mb-2" style={{ color: '#e8a832' }}>
               Trận đấu kết thúc
             </div>
+            {/* Audience-facing headline (this screen is cast to a TV) —
+                celebrate the winner, not the organizer. */}
             <div className="flex items-center justify-center gap-3">
-              <span className="text-3xl" aria-hidden="true">🎉</span>
+              <span className="text-3xl" aria-hidden="true">🏆</span>
               <h1
                 className="font-black text-3xl lg:text-4xl tracking-tight"
                 style={{
@@ -333,7 +335,7 @@ const RoomQuizHost: React.FC = () => {
                   color: 'transparent',
                 }}
               >
-                Cảm ơn Quản trò!
+                Chúc mừng nhà vô địch!
               </h1>
             </div>
           </div>

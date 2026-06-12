@@ -122,7 +122,7 @@ describe('RoomQuizHost', () => {
       ],
     })
     expect(await screen.findByTestId('quiz-end-host-page')).toBeInTheDocument()
-    expect(screen.getByText(/Cảm ơn Quản trò/i)).toBeInTheDocument()
+    expect(screen.getByText(/Chúc mừng nhà vô địch/i)).toBeInTheDocument()
     // QTR-6: the celebration block is now an inline podium — winner "An"
     // stands on step 1 with their score; no finalRank in the payload, so the
     // podium must rank by score (Speed Race has no finalRank).
