@@ -307,7 +307,12 @@ const RoomLobby: React.FC = () => {
     if (!roomId || togglingReadyRef.current) return;
     togglingReadyRef.current = true;
     haptic.tap(); // Sprint 2 S2-10 — subtle tap on ready toggle.
-    send(`/app/room/${roomId}/ready`, {});
+    const delivered = send(`/app/room/${roomId}/ready`, {});
+    if (!delivered) {
+      // WS still (re)connecting — surface it instead of swallowing the click;
+      // a tap after the connection indicator turns green will go through.
+      appendActivity('Chưa kết nối được tới phòng — thử lại sau giây lát', 'warn');
+    }
     setTimeout(() => { togglingReadyRef.current = false; }, 600);
   };
   const handleStart = async () => {

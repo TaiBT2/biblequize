@@ -56,6 +56,15 @@ export function useStomp({ url = '/ws', roomId, onMessage, onConnect, onReconnec
       connectHeaders: {
         Authorization: `Bearer ${getAccessToken() ?? ''}`,
       },
+      // stompjs reuses connectHeaders for every reconnect attempt. The access
+      // token lives in memory with a short TTL and is refreshed by the REST
+      // 401 interceptor — if the client was created while the token was stale
+      // (or null, e.g. right after a hard reload), a frozen header would make
+      // every retry fail with the same dead token until the page is reloaded.
+      // Re-read the current token before each (re)connect attempt instead.
+      beforeConnect: () => {
+        client.connectHeaders = { Authorization: `Bearer ${getAccessToken() ?? ''}` };
+      },
       onConnect: () => {
         setConnected(true);
         setReconnecting(false);
