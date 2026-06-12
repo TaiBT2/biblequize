@@ -108,7 +108,8 @@ public class RoomController {
                 questionSource = Room.QuestionSource.DATABASE;
             }
 
-            Room room = roomService.createRoom(roomName, user, maxPlayers, questionCount, timePerQuestion, mode, isPublic, difficulty, bookScope, questionSource, questionSetId, hostPlaysGame);
+            String language = body.get("language") instanceof String s && !s.isBlank() ? s : "vi";
+            Room room = roomService.createRoom(roomName, user, maxPlayers, questionCount, timePerQuestion, mode, isPublic, difficulty, bookScope, questionSource, questionSetId, hostPlaysGame, language);
             RoomService.RoomDetailsDTO details = roomService.getRoomDetails(room.getId());
 
             return ResponseEntity.ok(Map.of("success", true, "room", details, "viewerUserId", user.getId()));

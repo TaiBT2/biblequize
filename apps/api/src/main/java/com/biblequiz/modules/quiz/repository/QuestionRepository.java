@@ -105,7 +105,20 @@ public interface QuestionRepository extends JpaRepository<Question, String> {
                                                                                   @Param("difficulty") Question.Difficulty difficulty,
                                                                                   @Param("excludeIds") List<String> excludeIds,
                                                                                   Pageable pageable);
-    
+
+    // Normal-room DATABASE selection (RoomQuizService) — MIXED-difficulty
+    // variants so non-quickmatch rooms don't mix vi/en either (V65).
+    @Query("SELECT q FROM Question q WHERE q.isActive = true AND q.language = :language AND q.id NOT IN :excludeIds ORDER BY RAND()")
+    List<Question> findRandomQuestionsByLanguageExcludingIds(@Param("language") String language,
+                                                             @Param("excludeIds") List<String> excludeIds,
+                                                             Pageable pageable);
+
+    @Query("SELECT q FROM Question q WHERE q.isActive = true AND q.language = :language AND q.book = :book AND q.id NOT IN :excludeIds ORDER BY RAND()")
+    List<Question> findRandomQuestionsByLanguageAndBookExcludingIds(@Param("language") String language,
+                                                                    @Param("book") String book,
+                                                                    @Param("excludeIds") List<String> excludeIds,
+                                                                    Pageable pageable);
+
     // Performance optimization: Get question count by filters
     @Query("SELECT COUNT(q) FROM Question q WHERE q.isActive = true AND " +
            "(:book IS NULL OR q.book = :book) AND " +

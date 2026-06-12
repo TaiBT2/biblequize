@@ -81,6 +81,15 @@ public class RoomService {
                            Room.RoomDifficulty difficulty, String bookScope,
                            Room.QuestionSource questionSource, String questionSetId,
                            Boolean hostPlaysGame) {
+        return createRoom(roomName, host, maxPlayers, questionCount, timePerQuestion, mode, isPublic,
+                difficulty, bookScope, questionSource, questionSetId, hostPlaysGame, null);
+    }
+
+    public Room createRoom(String roomName, User host, Integer maxPlayers, Integer questionCount,
+                           Integer timePerQuestion, Room.RoomMode mode, Boolean isPublic,
+                           Room.RoomDifficulty difficulty, String bookScope,
+                           Room.QuestionSource questionSource, String questionSetId,
+                           Boolean hostPlaysGame, String language) {
         String roomId = UUID.randomUUID().toString();
         String roomCode = generateRoomCode();
 
@@ -101,6 +110,7 @@ public class RoomService {
         room.setIsPublic(isPublic != null ? isPublic : false);
         room.setDifficulty(difficulty != null ? difficulty : Room.RoomDifficulty.MIXED);
         room.setBookScope(bookScope != null && !bookScope.isBlank() ? bookScope : "ALL");
+        room.setLanguage(language != null && !language.isBlank() ? language : "vi");
         room.setQuestionSource(questionSource != null ? questionSource : Room.QuestionSource.DATABASE);
         if (questionSetId != null && !questionSetId.isBlank()) {
             room.setQuestionSetId(questionSetId);

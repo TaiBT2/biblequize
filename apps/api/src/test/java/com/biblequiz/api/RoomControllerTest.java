@@ -86,10 +86,10 @@ class RoomControllerTest extends BaseControllerTest {
     @Order(1)
     @WithMockUser(username = "test@example.com")
     void createRoom_withValidData_shouldReturn200() throws Exception {
-        // RoomService.createRoom now takes 12 args — hostPlaysGame was added
-        // for the Quản trò flow (Sprint 4 soft-host). The 11-arg overload still
-        // exists but the controller calls the 12-arg one.
-        when(roomService.createRoom(anyString(), any(User.class), anyInt(), anyInt(), anyInt(), any(), anyBoolean(), any(), any(), any(), any(), any()))
+        // RoomService.createRoom now takes 13 args — language was added (V65)
+        // so DATABASE-source selection can filter vi/en. The shorter overloads
+        // still exist but the controller calls the 13-arg one.
+        when(roomService.createRoom(anyString(), any(User.class), anyInt(), anyInt(), anyInt(), any(), anyBoolean(), any(), any(), any(), any(), any(), anyString()))
                 .thenReturn(testRoom);
         when(roomService.getRoomDetails("room-1")).thenReturn(testRoomDetails);
 

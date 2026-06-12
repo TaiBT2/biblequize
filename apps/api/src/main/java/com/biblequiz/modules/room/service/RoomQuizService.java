@@ -282,6 +282,9 @@ public class RoomQuizService {
     private List<Question> loadQuestionsFromDatabase(Room room, int questionCount) {
         String scope = room.getBookScope() != null ? room.getBookScope() : "ALL";
         Room.RoomDifficulty diff = room.getDifficulty() != null ? room.getDifficulty() : Room.RoomDifficulty.MIXED;
+        // V65: always filter by the room's language — without this, rooms
+        // mixed vi/en questions in the same match.
+        String lang = room.getLanguage() != null && !room.getLanguage().isBlank() ? room.getLanguage() : "vi";
         PageRequest page = PageRequest.of(0, questionCount);
         List<String> empty = List.of();
 
@@ -290,14 +293,14 @@ public class RoomQuizService {
         if (diff != Room.RoomDifficulty.MIXED) {
             Question.Difficulty qDiff = Question.Difficulty.valueOf(diff.name());
             if (isSpecificBook) {
-                return questionRepository.findRandomQuestionsByBookAndDifficultyExcludingIds(scope, qDiff, empty, page);
+                return questionRepository.findRandomQuestionsByLanguageAndBookAndDifficultyExcludingIds(lang, scope, qDiff, empty, page);
             }
-            return questionRepository.findRandomQuestionsByDifficultyExcludingIds(qDiff, empty, page);
+            return questionRepository.findRandomQuestionsByLanguageAndDifficultyExcludingIds(lang, qDiff, empty, page);
         }
         if (isSpecificBook) {
-            return questionRepository.findRandomQuestionsByBookExcludingIds(scope, empty, page);
+            return questionRepository.findRandomQuestionsByLanguageAndBookExcludingIds(lang, scope, empty, page);
         }
-        return questionRepository.findRandomQuestionsNative(questionCount);
+        return questionRepository.findRandomQuestionsByLanguageExcludingIds(lang, empty, page);
     }
 
     /** Chuyển UserQuestion thành Question transient (không lưu DB) để dùng trong quiz flow. */

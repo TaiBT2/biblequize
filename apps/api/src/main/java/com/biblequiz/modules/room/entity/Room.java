@@ -51,6 +51,11 @@ public class Room {
     @Column(name = "book_scope", length = 100)
     private String bookScope = "ALL";
 
+    /** Question language (vi/en) — DATABASE-source selection filters on this
+     *  so a room never mixes languages (V65). */
+    @Column(name = "language", nullable = false, length = 5)
+    private String language = "vi";
+
     @Column(name = "question_source", nullable = false, length = 20)
     @Enumerated(EnumType.STRING)
     private QuestionSource questionSource = QuestionSource.DATABASE;
@@ -200,6 +205,9 @@ public LocalDateTime getCreatedAt() { return createdAt; }
 
     public String getBookScope() { return bookScope; }
     public void setBookScope(String bookScope) { this.bookScope = bookScope; }
+
+    public String getLanguage() { return language; }
+    public void setLanguage(String language) { this.language = language; }
 
     public QuestionSource getQuestionSource() { return questionSource; }
     public void setQuestionSource(QuestionSource questionSource) { this.questionSource = questionSource; }
