@@ -570,3 +570,9 @@
 - Lý do: Hỗ trợ sự kiện lớn (Hội thánh, trại) chơi multiplayer chung một phòng; giới hạn 20 cũ quá nhỏ.
 - Trade-off: Phòng đông → broadcast WebSocket mỗi vòng nặng hơn; chưa load-test ở mức 100. Theo dõi nếu phòng lớn gây trễ.
 - KHÔNG thay đổi khi refactor trừ khi có lý do mới
+
+## 2026-06-12 — Battle Royale: xếp hạng người sống sót theo SỐ CÂU ĐÚNG, không theo score
+- Quyết định: Khi nhiều người sống sót tới hết `questionCount`, thứ hạng cuối = `correctAnswers DESC → averageReactionTime ASC` (giữ nguyên `BattleRoyaleEngine.assignFinalRanks`). Spec §3.2 sửa theo code (trước ghi "xếp theo score").
+- Lý do: Suốt trận, sinh tồn chỉ phụ thuộc trả lời ĐÚNG (tốc độ không quyết định loại ai) — phân thắng bại cuối bằng score (nặng speed-bonus) là đổi luật ở vạch đích. Score không đơn điệu theo số câu đúng (mỗi câu ~100–150đ tùy tốc độ → 6 câu nhanh có thể vượt 7 câu chậm) → nghịch lý "ít đúng hơn mà xếp trên". Tốc độ vẫn được thưởng đúng chỗ: tie-break.
+- Trade-off: Leaderboard có thể hiện hạng 1 có score thấp hơn hạng 2 → wrap-up Quản trò hiển thị "X/Y đúng" làm số chính cho phòng BR. Đồng thời xoá `shouldEndGame` (luật max-rounds chưa từng được gọi — dead code).
+- KHÔNG thay đổi khi refactor trừ khi có lý do mới

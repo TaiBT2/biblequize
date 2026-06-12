@@ -578,7 +578,7 @@
 - **Issue:** SPEC_MULTIPLAYER §3.2 edge case nói khi nhiều người sống tới hết `questionCount` thì "xếp hạng theo **score**", nhưng `BattleRoyaleEngine.assignFinalRanks` xếp theo **correctAnswers DESC → averageReactionTime ASC**. Hai thước tương quan nhưng không đồng nhất (score có speed-bonus phi tuyến từ công thức Speed Race) — có thể cho thứ hạng khác nhau.
 - **Also found:** `BattleRoyaleEngine.shouldEndGame` (luật max rounds `min(questionCount*2, 50)`) là **dead code** — không call-site nào; trận chỉ chạy đúng `questionCount` vòng. Hoặc xoá method, hoặc spec hóa luật vòng phụ rồi wire vào loop.
 - **Effort:** S — chốt canonical (score vs correct-count) rồi sửa 1 trong 2 phía + pin test; xoá/wire `shouldEndGame`.
-- **Status:** ⬜ OPEN — cần user/Bùi chốt canonical trước khi sửa
+- **Status:** ✅ RESOLVED 2026-06-12 — user chốt canonical = **correctAnswers → avgReactionTime** (giữ code, sửa spec §3.2; xem DECISIONS.md 2026-06-12). `shouldEndGame` dead code đã xoá cùng tests của nó. Wrap-up Quản trò hiển thị "X/Y đúng" làm số chính cho BR.
 - **Related:** apps/api/DOMAIN.md §4.3.1 (as-implemented chi tiết, LOCAL-ONLY)
 
 ---

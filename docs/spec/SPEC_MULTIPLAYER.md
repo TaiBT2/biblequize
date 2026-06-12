@@ -272,7 +272,7 @@ Dùng chung `SpeedRaceScoringService` cho điểm (bonus tốc độ vẫn áp d
   - `LEFT` — voluntary leave or disconnect-without-grace (`RoomService.java:311`, `RoomPresenceListener` cho mọi mode). User có thể rejoin (status flips ACTIVE in `RoomService.java:120-121`).
   - **Decision (Bui canonical 2026-05-09):** Accept current 2-state semantics. Disconnect mid-BR-game = LEFT (rejoinable until host/scheduler ends room), KHÔNG auto-ELIMINATED. Rationale: distinguish "lost a round" vs "lost connection"; allows reconnect-and-rejoin during 60s grace.
 - Câu cuối còn 2 người, cả 2 sai → ân xá, không ai bị loại; round kế tiếp tiếp tục.
-- Câu cuối còn 2 người, cả 2 đúng → cả 2 còn ACTIVE, game tiếp tục đến hết `questionCount` rồi xếp hạng theo score.
+- Câu cuối còn 2 người, cả 2 đúng → cả 2 còn ACTIVE, game tiếp tục đến hết `questionCount` rồi xếp hạng survivors theo **`correctAnswers DESC → averageReactionTime ASC`** (`BattleRoyaleEngine.assignFinalRanks`). KHÔNG xếp theo score — score (công thức Speed Race) chỉ để hiển thị; canonical per DECISIONS 2026-06-12 (score không đơn điệu theo số câu đúng → tránh nghịch lý "ít đúng hơn mà xếp trên").
 
 ### 3.3 Team vs Team (`TEAM_VS_TEAM`)
 
