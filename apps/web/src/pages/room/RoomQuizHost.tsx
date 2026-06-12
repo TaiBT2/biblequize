@@ -298,6 +298,11 @@ const RoomQuizHost: React.FC = () => {
   // tiles in one row, medal-accented ranking rows with correct-ratio bars. ──
   if (finalRanks) {
     const winner = finalRanks[0];
+    // BR ranks by correctAnswers (DECISIONS 2026-06-12) — show "X/Y đúng" as
+    // the primary number so rank #1 never displays a lower score than #2.
+    const isBattleRoyale = navState.mode === 'BATTLE_ROYALE';
+    const brMetric = (r: { correctAnswers?: number; totalAnswered?: number }) =>
+      `${r.correctAnswers ?? 0}/${r.totalAnswered ?? 0} đúng`;
     return (
       <div
         data-testid="quiz-end-host-page"
@@ -344,7 +349,7 @@ const RoomQuizHost: React.FC = () => {
               (replaces the old winner hero card, which duplicated rank #1) */}
           {winner && (
             <div className="mb-8" data-testid="end-host-winner">
-              <PodiumBlock results={finalRanks} />
+              <PodiumBlock results={finalRanks} metric={isBattleRoyale ? brMetric : undefined} />
             </div>
           )}
 
@@ -413,12 +418,23 @@ const RoomQuizHost: React.FC = () => {
                         </div>
                       )}
                     </div>
-                    <span
-                      className="text-base font-black tabular-nums flex-shrink-0"
-                      style={{ color: accent ?? '#fff' }}
-                    >
-                      {r.score ?? 0}
-                    </span>
+                    {isBattleRoyale ? (
+                      <span className="text-right flex-shrink-0">
+                        <span className="block text-base font-black tabular-nums" style={{ color: accent ?? '#fff' }}>
+                          {r.correctAnswers ?? 0}/{r.totalAnswered ?? 0}
+                        </span>
+                        <span className="block text-[10px] tabular-nums" style={{ color: '#9ca3af' }}>
+                          {r.score ?? 0}đ
+                        </span>
+                      </span>
+                    ) : (
+                      <span
+                        className="text-base font-black tabular-nums flex-shrink-0"
+                        style={{ color: accent ?? '#fff' }}
+                      >
+                        {r.score ?? 0}
+                      </span>
+                    )}
                   </li>
                 );
               })}

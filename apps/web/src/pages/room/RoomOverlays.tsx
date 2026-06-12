@@ -12,7 +12,13 @@ type Question = { id: string; content: string; options: string[] }
 /** Inline 3-step podium (no fixed overlay), reusable inside end screens.
  *  Tolerant of modes that never assign finalRank (e.g. Speed Race): falls
  *  back to score order so the podium is never empty. */
-export const PodiumBlock: React.FC<{ results: PlayerScore[] }> = ({ results }) => {
+export const PodiumBlock: React.FC<{
+  results: PlayerScore[]
+  /** Per-player metric under the name; defaults to "{score}đ". Battle Royale
+   *  passes "X/Y đúng" — rank là correctAnswers-first nên hiển thị score to
+   *  sẽ tạo nghịch lý "hạng 1 ít điểm hơn hạng 2" (DECISIONS 2026-06-12). */
+  metric?: (p: PlayerScore) => string
+}> = ({ results, metric }) => {
   const ranked = results.slice().sort((a, b) =>
     (a.finalRank ?? 99) !== (b.finalRank ?? 99)
       ? (a.finalRank ?? 99) - (b.finalRank ?? 99)
@@ -32,7 +38,7 @@ export const PodiumBlock: React.FC<{ results: PlayerScore[] }> = ({ results }) =
               {p.username?.[0]?.toUpperCase() ?? '?'}
             </div>
             <div className="text-on-surface font-bold text-sm mb-0.5 max-w-[110px] text-center truncate">{p.username}</div>
-            <div className="text-secondary text-xs font-bold mb-2 tabular-nums">{p.score ?? 0}đ</div>
+            <div className="text-secondary text-xs font-bold mb-2 tabular-nums">{metric ? metric(p) : `${p.score ?? 0}đ`}</div>
             <div className={`${podiumHeights[rank]} w-24 bg-gradient-to-t ${podiumColors[rank]} rounded-t-2xl flex items-end justify-center pb-3 border border-white/5`}>
               <span className="text-on-surface font-black text-2xl">{rank + 1}</span>
             </div>
