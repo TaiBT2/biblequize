@@ -50,8 +50,16 @@ public class ScoringService {
                                   int currentStreak, boolean isDailyFirst) {
         int baseScore = getBaseScore(difficulty);
 
+        // F-api-5: clientElapsedMs is client-supplied — clamp to [0, TIME_LIMIT_MS]
+        // before it feeds the speed bonus. Without the upper clamp a forged
+        // negative value (e.g. -100000) pushed speedRatio above 1 and the
+        // quadratic bonus to ~18× the legitimate max, inflating ranked score
+        // (and thus tier + leaderboard). The lower clamp also folds in the old
+        // Math.max(0,...) for over-time answers.
+        int clampedElapsedMs = Math.max(0, Math.min(clientElapsedMs, TIME_LIMIT_MS));
+
         // Quadratic speed bonus: floor(basePoints * 0.5 * speedRatio²)
-        double speedRatio = Math.max(0.0, (double) (TIME_LIMIT_MS - clientElapsedMs) / TIME_LIMIT_MS);
+        double speedRatio = (double) (TIME_LIMIT_MS - clampedElapsedMs) / TIME_LIMIT_MS;
         int speedBonus = (int) Math.floor(baseScore * 0.5 * speedRatio * speedRatio);
 
         int subtotal = baseScore + speedBonus;

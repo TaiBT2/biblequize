@@ -14,7 +14,7 @@ Bible Quiz là ứng dụng **enterprise-grade** "chơi mà học" Kinh Thánh v
 
 ### 🎮 Game Modes
 - **Single-player & Practice**: Chơi cá nhân không giới hạn, không ảnh hưởng leaderboard
-- **Ranked Mode**: Leo hạng với giới hạn 50 câu/ngày, 30 mạng/ngày, tự động chuyển sách theo thứ tự Sáng Thế Ký → Khải Huyền
+- **Ranked Mode**: Leo hạng với giới hạn 100 câu/ngày, 100 energy/ngày (−5 mỗi câu sai, hồi +20/giờ), tự động chuyển sách theo thứ tự Sáng Thế Ký → Khải Huyền
 - **Multiplayer Rooms**: Phòng thi nhiều người với realtime scoreboard
 - **Tournament Mode**: Giải đấu 1v1 loại trực tiếp (mỗi người 3 mạng/trận)
 - **Achievement System**: Hệ thống thành tích và bookmark câu hỏi

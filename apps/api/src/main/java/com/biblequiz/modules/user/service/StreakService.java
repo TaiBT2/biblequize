@@ -52,6 +52,16 @@ public class StreakService {
                 return;
             }
 
+            // F-api-8: lazy weekly reset of the streak freeze. resetWeeklyStreakFreeze()
+            // existed but had no scheduled caller, so the "1 freeze per week" perk
+            // degraded to "1 per lifetime" — once used it never came back. Reset it
+            // here when this activity falls in a later ISO week (VN) than the last
+            // play, which is the only moment the flag is read anyway.
+            if (!GameClock.weekStart(lastPlayedDate).equals(GameClock.weekStart(today))
+                    && Boolean.TRUE.equals(user.getStreakFreezeUsedThisWeek())) {
+                user.setStreakFreezeUsedThisWeek(false);
+            }
+
             long daysSinceLastPlay = ChronoUnit.DAYS.between(lastPlayedDate, today);
 
             if (daysSinceLastPlay == 1) {
@@ -90,7 +100,9 @@ public class StreakService {
     }
 
     /**
-     * Reset weekly streak freeze (should be called by scheduler every Monday).
+     * Reset weekly streak freeze. Kept for explicit/admin use; the normal
+     * weekly reset now happens lazily inside {@link #recordActivity} (F-api-8)
+     * so no scheduler scanning every user is required.
      */
     public void resetWeeklyStreakFreeze(User user) {
         user.setStreakFreezeUsedThisWeek(false);

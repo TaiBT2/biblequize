@@ -109,6 +109,21 @@ class StreakServiceTest {
     }
 
     @Test
+    void recordActivity_inLaterWeek_shouldLazilyResetStreakFreeze() {
+        // F-api-8: the weekly freeze reset had no scheduled caller, so a used
+        // freeze never came back ("1 per lifetime"). recordActivity now resets
+        // it when the activity lands in a later ISO week than the last play.
+        // 8 days back is always a previous ISO week.
+        testUser.setStreakFreezeUsedThisWeek(true);
+        testUser.setLastPlayedAt(LocalDateTime.now(ZoneOffset.UTC).minusDays(8));
+
+        streakService.recordActivity(testUser);
+
+        assertFalse(testUser.getStreakFreezeUsedThisWeek(),
+                "freeze should be reset once a new week begins");
+    }
+
+    @Test
     void recordActivity_missedMultipleDays_shouldResetStreak() {
         testUser.setCurrentStreak(15);
         testUser.setLongestStreak(15);

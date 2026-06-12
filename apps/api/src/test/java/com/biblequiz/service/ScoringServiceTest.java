@@ -77,6 +77,24 @@ class ScoringServiceTest {
     }
 
     @Test
+    void calculate_negativeElapsed_shouldClampToMaxBonusNotInflate() {
+        // F-api-5: a forged negative clientElapsedMs once pushed speedRatio > 1
+        // (e.g. -100000 → ratio ≈ 4.33, bonus ≈ 18× max). Must clamp to the
+        // instant-answer max, identical to elapsed=0.
+        ScoreResult forged = scoringService.calculate(Question.Difficulty.easy, -100000, 1);
+        ScoreResult instant = scoringService.calculate(Question.Difficulty.easy, 0, 1);
+        assertEquals(instant.speedBonus, forged.speedBonus);
+        assertEquals(4, forged.speedBonus); // not the inflated value an unclamped ratio² gave
+    }
+
+    @Test
+    void calculate_overTimeElapsed_shouldHaveZeroSpeedBonus() {
+        // elapsed beyond the limit clamps to TIME_LIMIT_MS → ratio 0.
+        ScoreResult result = scoringService.calculate(Question.Difficulty.easy, 999_999, 1);
+        assertEquals(0, result.speedBonus);
+    }
+
+    @Test
     void calculate_mediumInstant_shouldHaveCorrectBonus() {
         // speedRatio = 1.0, bonus = floor(12 * 0.5 * 1.0) = 6
         ScoreResult result = scoringService.calculate(Question.Difficulty.medium, 0, 1);
