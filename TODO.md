@@ -3,12 +3,24 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (64)
+## Active (76)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
-| 2026-06-12 | Redesign Home "Game vibe" (HGR-1..9): token+Lexend, hero/XP, daily nổi bật, 3 card mode, sidebar Phòng Chơi | TODO | [detail](docs/todo/active/2026-06-12-home-game-redesign.md) · branch `redesign/home-game-vibe` · spec route `/home-game-preview` |
-| 2026-06-12 | Optimize trang chủ (Home): empty-state + hero + bỏ trùng lặp + mật độ (HO-1..7) | TODO | [detail](docs/todo/active/2026-06-12-home-optimize.md) |
+| 2026-06-14 | **Khung Sáng MASTER PLAN** — redesign toàn app (inventory mọi page, chia W0–W10, foundation-first) | TODO | [detail](docs/todo/active/2026-06-14-khung-sang-migration-plan.md) |
+| 2026-06-14 | KS W0 — Foundation: tokens + AppLayout/AdminLayout shell + UI primitives + shared atoms | TODO | [detail](docs/todo/active/2026-06-14-ks-w0-foundation-design-system.md) |
+| 2026-06-14 | KS W2 — Core play loop (Quiz/BasicQuiz/Practice/QuizResults/Review) | TODO | [detail](docs/todo/active/2026-06-14-ks-w2-core-play-loop.md) |
+| 2026-06-14 | KS W3 — Ranked (Ranked + RankedQuizResults) | TODO | [detail](docs/todo/active/2026-06-14-ks-w3-ranked.md) |
+| 2026-06-14 | KS W4 — Daily & Variety (Daily/SpeedRound/Mystery/Weekly) | TODO | [detail](docs/todo/active/2026-06-14-ks-w4-daily-variety.md) |
+| 2026-06-14 | KS W5 — Progress & Identity (Leaderboard/Profile/Achievements/Journey/Cosmetics) | TODO | [detail](docs/todo/active/2026-06-14-ks-w5-progress-identity.md) |
+| 2026-06-14 | KS W6 — Groups & Quiz Sets & Scheduled (12 page) | TODO | [detail](docs/todo/active/2026-06-14-ks-w6-groups-quizsets.md) |
+| 2026-06-14 | KS W7 — Multiplayer & Rooms (9 page, 5 mode views) | TODO | [detail](docs/todo/active/2026-06-14-ks-w7-multiplayer-rooms.md) |
+| 2026-06-14 | KS W8 — Tournaments (3 page) | TODO | [detail](docs/todo/active/2026-06-14-ks-w8-tournaments.md) |
+| 2026-06-14 | KS W9 — Auth / Onboarding / Public (9 page) | TODO | [detail](docs/todo/active/2026-06-14-ks-w9-auth-public.md) |
+| 2026-06-14 | KS W10 — Admin light touch (15 page) | TODO | [detail](docs/todo/active/2026-06-14-ks-w10-admin.md) |
+| 2026-06-14 | **Fix FE test harness** (vitest 4 vs vite 5 incompat — blocker chung repo, chặn gate test) | TODO | [detail](docs/todo/active/2026-06-14-fix-fe-test-harness.md) |
+| 2026-06-12 | Redesign Home "Khung Sáng" = **KS W1** (HGR-1..12): light theme + phổ khúc xạ + verse lightwell + 3 mode card (pivot từ "Game vibe" dark) | DONE | [detail](docs/todo/active/2026-06-12-home-game-redesign.md) · branch `redesign/home-game-vibe` · mockup `docs/designs/home-game vibe/` |
+| 2026-06-12 | Optimize trang chủ (Home): empty-state + hero + bỏ trùng lặp + mật độ (HO-1..7) | DONE | [detail](docs/todo/active/2026-06-12-home-optimize.md) |
 | 2026-06-11 | Redesign 2 màn Quản trò: in-game host (TV presentation) + wrap-up (QTR-1..5) | DONE | [detail](docs/todo/active/2026-06-11-quan-tro-host-screens-redesign.md) |
 | 2026-06-11 | MP refactor BE: RoomModeStrategy + RoomAnswerProcessor (RMS-1..10, no behavior change) | DONE | [detail](docs/todo/active/2026-06-11-mp-refactor-be-mode-strategy.md) |
 | 2026-06-11 | MP refactor FE: typed STOMP events + useRoomChannel + RoomQuiz split (FMR-1..8) | DONE | [detail](docs/todo/active/2026-06-11-mp-refactor-fe-roomquiz-split.md) |
@@ -16,35 +28,35 @@
 | 2026-05-23 | Ranked: deterministic scoring tests + anti-cheat (6 tiers × combo × speed × server-recompute) | DONE | [archive](docs/todo/archive/2026-05-23-ranked-scoring-deterministic-anti-cheat.md) |
 | 2026-05-23 | Liturgical Coverage: pool-exhaustion fallback chain + season transition + ×1.5 bonus tests | DONE | [archive](docs/todo/archive/2026-05-23-liturgical-coverage-fallback-tests.md) |
 | 2026-05-23 | SmartQuestionSelector: tier-distribution + spaced-repetition statistical tests | DONE | [archive](docs/todo/archive/2026-05-23-smart-question-selector-distribution-tests.md) |
-| 2026-05-23 | MP audit P0: Lifecycle R1-R5 + Reconnect + Kick + Host transfer (10 case + WS helper) | TODO | [detail](docs/todo/active/2026-05-23-mp-test-lifecycle-reconnect-kick.md) |
-| 2026-05-23 | MP audit P0+P1: Mode-edge (BR amnesty / SD queue / TVT switch) + Quản trò Sprint 4 + Chat (8 task) | TODO | [detail](docs/todo/active/2026-05-23-mp-test-mode-edge-quan-tro-chat.md) |
-| 2026-05-23 | MP audit P1+P2: Contracts + Scale 100p + Maestro mobile + Admin + WS reconnect (14 task) | TODO | [detail](docs/todo/active/2026-05-23-mp-test-contracts-scale-obs.md) |
+| 2026-05-23 | MP audit P0: Lifecycle R1-R5 + Reconnect + Kick + Host transfer (10 case + WS helper) | DONE | [detail](docs/todo/active/2026-05-23-mp-test-lifecycle-reconnect-kick.md) |
+| 2026-05-23 | MP audit P0+P1: Mode-edge (BR amnesty / SD queue / TVT switch) + Quản trò Sprint 4 + Chat (8 task) | DONE | [detail](docs/todo/active/2026-05-23-mp-test-mode-edge-quan-tro-chat.md) |
+| 2026-05-23 | MP audit P1+P2: Contracts + Scale 100p + Maestro mobile + Admin + WS reconnect (14 task) | DONE | [detail](docs/todo/active/2026-05-23-mp-test-contracts-scale-obs.md) |
 | 2026-05-23 | Clean up stale FE + BE tests (69 FE + ~37 BE pre-existing failures from past redesigns) | DONE | [archive](docs/todo/archive/2026-05-23-clean-stale-tests.md) |
 | 2026-05-23 | Leaderboard "Hàng Tuần" logic fixes (0-pt filter + cache TTL + ICT + calendar week) | DONE | [archive](docs/todo/archive/2026-05-23-leaderboard-weekly-fix.md) |
-| 2026-05-22 | Ranked play fixes (replay same-questions + select 500 + e2e W-M04 sync) | TODO | [detail](docs/todo/active/2026-05-22-ranked-play-fixes.md) |
-| 2026-05-22 | Liturgical Coverage follow-ups (verify, QA, rollout, FMC review, cleanup) | TODO | [detail](docs/todo/active/2026-05-22-liturgical-coverage-followups.md) |
-| 2026-05-21 | Liturgical Coverage System sprint (P5, 10 commits — replace currentBook with §7 3-layer architecture) | TODO | [detail](docs/todo/active/2026-05-21-liturgical-coverage-sprint.md) |
-| 2026-05-20 | Multiplayer page i18n (Phòng Chơi + sidebar widget) | TODO | [detail](docs/todo/active/2026-05-20-multiplayer-page-i18n.md) |
-| 2026-05-20 | Home: hide FeaturedDailyCard when MotivationCard shows (dedupe new-user CTA) | TODO | [detail](docs/todo/active/2026-05-20-home-hide-daily-card-when-motivation-shows.md) |
-| 2026-05-20 | Group Detail mobile redesign (compact header + 3-dot menu + drop Phân tích) | TODO | [detail](docs/todo/active/2026-05-20-group-detail-mobile-redesign.md) |
-| 2026-05-20 | Quiz Set Editor i18n (group + personal shared, 8 files) | TODO | [detail](docs/todo/active/2026-05-20-quizset-editor-i18n.md) |
-| 2026-05-20 | Mobile RankedResultScreen redesign (3 state A/B/C + review modal, mockup) | TODO | [detail](docs/todo/active/2026-05-20-mobile-ranked-result-screen-redesign.md) |
-| 2026-05-20 | Mobile RankedScreen redesign → web parity (5 sections) | TODO | [detail](docs/todo/active/2026-05-20-mobile-ranked-intro-redesign-web-parity.md) |
+| 2026-05-22 | Ranked play fixes (replay same-questions + select 500 + e2e W-M04 sync) | DONE | [detail](docs/todo/active/2026-05-22-ranked-play-fixes.md) |
+| 2026-05-22 | Liturgical Coverage follow-ups (verify, QA, rollout, FMC review, cleanup) | DONE | [detail](docs/todo/active/2026-05-22-liturgical-coverage-followups.md) |
+| 2026-05-21 | Liturgical Coverage System sprint (P5, 10 commits — replace currentBook with §7 3-layer architecture) | DONE | [detail](docs/todo/active/2026-05-21-liturgical-coverage-sprint.md) |
+| 2026-05-20 | Multiplayer page i18n (Phòng Chơi + sidebar widget) | DONE | [detail](docs/todo/active/2026-05-20-multiplayer-page-i18n.md) |
+| 2026-05-20 | Home: hide FeaturedDailyCard when MotivationCard shows (dedupe new-user CTA) | DONE | [detail](docs/todo/active/2026-05-20-home-hide-daily-card-when-motivation-shows.md) |
+| 2026-05-20 | Group Detail mobile redesign (compact header + 3-dot menu + drop Phân tích) | DONE | [detail](docs/todo/active/2026-05-20-group-detail-mobile-redesign.md) |
+| 2026-05-20 | Quiz Set Editor i18n (group + personal shared, 8 files) | DONE | [detail](docs/todo/active/2026-05-20-quizset-editor-i18n.md) |
+| 2026-05-20 | Mobile RankedResultScreen redesign (3 state A/B/C + review modal, mockup) | DONE | [detail](docs/todo/active/2026-05-20-mobile-ranked-result-screen-redesign.md) |
+| 2026-05-20 | Mobile RankedScreen redesign → web parity (5 sections) | DONE | [detail](docs/todo/active/2026-05-20-mobile-ranked-intro-redesign-web-parity.md) |
 | 2026-05-20 | Ranked result screen redesign (3 state A/B/C + review modal) | DONE | [detail](docs/todo/active/2026-05-20-ranked-result-screen-redesign.md) |
 | 2026-05-20 | Ranked spec catch-up: tier-difficulty + UserQuestionHistory write (BL-20, BL-21) | DONE | [detail](docs/todo/active/2026-05-20-ranked-spec-catchup-difficulty-history.md) |
-| 2026-05-20 | Mobile Quiz: unified scroll cho question + answers (fix ngột ngạt) | TODO | [detail](docs/todo/active/2026-05-20-mobile-quiz-unified-scroll.md) |
-| 2026-05-20 | Mobile Daily "Xem lại" → route đúng sang Review (không phải Start) | TODO | [detail](docs/todo/active/2026-05-20-mobile-daily-xem-lai-routes-to-review.md) |
-| 2026-05-20 | Mobile: query `/api/me/tier-progress` để totalPoints hiển thị thực (web parity) | TODO | [detail](docs/todo/active/2026-05-20-mobile-tier-progress-totalpoints.md) |
-| 2026-05-20 | Mobile Daily +0 XP race fix (FE result-bar gate + BE getResultData backstop) | TODO | [detail](docs/todo/active/2026-05-20-mobile-daily-xp-race-fix.md) |
-| 2026-05-20 | Mobile Ranked endpoint migration → `/api/ranked/sessions` (fix stuck loading + XP pipeline) | TODO | [detail](docs/todo/active/2026-05-20-mobile-ranked-endpoint-migration.md) |
-| 2026-05-20 | Mobile: invalidate `['me']` sau finish Ranked/Practice (XP không cộng vào HomeBanner/Leaderboard) | TODO | [detail](docs/todo/active/2026-05-20-mobile-quiz-finish-invalidate-me.md) |
+| 2026-05-20 | Mobile Quiz: unified scroll cho question + answers (fix ngột ngạt) | DONE | [detail](docs/todo/active/2026-05-20-mobile-quiz-unified-scroll.md) |
+| 2026-05-20 | Mobile Daily "Xem lại" → route đúng sang Review (không phải Start) | DONE | [detail](docs/todo/active/2026-05-20-mobile-daily-xem-lai-routes-to-review.md) |
+| 2026-05-20 | Mobile: query `/api/me/tier-progress` để totalPoints hiển thị thực (web parity) | DONE | [detail](docs/todo/active/2026-05-20-mobile-tier-progress-totalpoints.md) |
+| 2026-05-20 | Mobile Daily +0 XP race fix (FE result-bar gate + BE getResultData backstop) | DONE | [detail](docs/todo/active/2026-05-20-mobile-daily-xp-race-fix.md) |
+| 2026-05-20 | Mobile Ranked endpoint migration → `/api/ranked/sessions` (fix stuck loading + XP pipeline) | DONE | [detail](docs/todo/active/2026-05-20-mobile-ranked-endpoint-migration.md) |
+| 2026-05-20 | Mobile: invalidate `['me']` sau finish Ranked/Practice (XP không cộng vào HomeBanner/Leaderboard) | DONE | [detail](docs/todo/active/2026-05-20-mobile-quiz-finish-invalidate-me.md) |
 | 2026-05-20 | Ranked DESKTOP redesign v2 (mockup_ranked_desktop_v2.html, 5 sub-tasks) | DONE | [detail](docs/todo/active/2026-05-20-ranked-desktop-redesign-v2.md) |
 | 2026-05-20 | Fix score ≠ XP leaderboard mismatch (Rank + Daily) | DONE | [detail](docs/todo/active/2026-05-20-fix-scoring-xp-mismatch.md) |
 | 2026-05-20 | Ranked timer: 90s/câu flat (SPEC §3.2 update) | DONE | [detail](docs/todo/active/2026-05-20-ranked-timer-90s.md) |
 | 2026-05-20 | Ranked intro screen slim + redesign (4 sub-tasks) | DONE | [detail](docs/todo/active/2026-05-20-ranked-intro-slim-redesign.md) |
 | 2026-05-20 | Fix Quiz (rank) explanation auto-shows + pill covers answer D | DONE | [detail](docs/todo/active/2026-05-20-fix-quiz-explanation-hidden-by-default.md) |
 | 2026-05-19 | Daily Challenge: Dedupe & Slim Redesign (DC-1..6) | DONE | [detail](docs/todo/active/2026-05-19-daily-challenge-dedupe-slim.md) |
-| 2026-05-19 | Mobile Daily Challenge parity: done-page + season chip + streak heatmap | TODO | [detail](docs/todo/active/2026-05-19-mobile-daily-challenge-parity.md) |
+| 2026-05-19 | Mobile Daily Challenge parity: done-page + season chip + streak heatmap | DONE | [detail](docs/todo/active/2026-05-19-mobile-daily-challenge-parity.md) |
 | 2026-05-19 | HomeBanner: revert desktop 3-col, mobile-only full-width progress | DONE | [detail](docs/todo/active/2026-05-19-home-banner-revert-desktop-keep-mobile-fullwidth.md) |
 | 2026-05-19 | HomeBanner unified stack layout (mobile parity) | SUPERSEDED | [detail](docs/todo/active/2026-05-19-home-banner-unified-stack-layout.md) |
 | 2026-05-19 | HomeBanner mobile restructure: show greet+name, full-width progress | DONE | [detail](docs/todo/active/2026-05-19-home-banner-mobile-restructure.md) |
@@ -52,9 +64,9 @@
 | 2026-05-19 | HomeBanner: "Mùa này" → "Đấu Hạng" + 🏆 icon | DONE | [detail](docs/todo/active/2026-05-19-home-banner-season-stat-clarity.md) |
 | 2026-05-19 | HomeBanner mobile: ẩn greeting + name | DONE | [detail](docs/todo/active/2026-05-19-home-banner-mobile-hide-greeting-name.md) |
 | 2026-05-19 | Quiz Results: hiển thị tổng điểm trong hero block | DONE | [detail](docs/todo/active/2026-05-19-quiz-results-show-score.md) |
-| 2026-05-19 | Rebrand production domain → `forbible.org` | TODO | [detail](docs/todo/active/2026-05-19-rebrand-prod-domain-to-forbible-org.md) |
-| 2026-05-18 | Avatar preset rework: people + Bible characters | TODO | [detail](docs/todo/active/2026-05-18-avatar-preset-bible-characters.md) |
-| 2026-05-18 | Mobile rewrite roadmap (RN Expo + monorepo, MVP-first) | PLANNED | [detail](docs/todo/active/2026-05-18-mobile-rewrite-roadmap.md) |
+| 2026-05-19 | Rebrand production domain → `forbible.org` | DONE | [detail](docs/todo/active/2026-05-19-rebrand-prod-domain-to-forbible-org.md) |
+| 2026-05-18 | Avatar preset rework: people + Bible characters | DONE | [detail](docs/todo/active/2026-05-18-avatar-preset-bible-characters.md) |
+| 2026-05-18 | Mobile rewrite roadmap (RN Expo + monorepo, MVP-first) | DONE | [detail](docs/todo/active/2026-05-18-mobile-rewrite-roadmap.md) |
 | 2026-05-18 | Mobile rewrite S0: monorepo + packages/shared setup | DONE | [detail](docs/todo/active/2026-05-18-mobile-rewrite-s0-monorepo-setup.md) |
 | 2026-05-19 | Mobile rewrite S1: polish 5 stubs + useStomp foundation | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s1-polish-stubs.md) |
 | 2026-05-19 | Mobile rewrite S2: beta launch internal (EAS + Sentry + branding) | DONE | [detail](docs/todo/active/2026-05-19-mobile-rewrite-s2-beta-internal.md) |
@@ -65,26 +77,26 @@
 | 2026-05-19 | Mobile HomeScreen redesign — port từ web Modern Spiritual | DONE | [detail](docs/todo/active/2026-05-19-mobile-home-redesign-port-from-web.md) |
 | 2026-05-18 | Profile Edit modal redesign (Sacred Modernist + avatar preset) | DONE | [detail](docs/todo/active/2026-05-18-profile-edit-modal-redesign-sacred-modernist.md) |
 | 2026-05-18 | Fix Daily Missions "Trả lời đúng 3 câu" + "combo 3" không tick | DONE | [detail](docs/todo/active/2026-05-18-fix-daily-missions-tracking.md) |
-| 2026-05-18 | Fix Daily Challenge button "Vào chơi" còn hiện sau khi đã hoàn thành | TODO | [detail](docs/todo/active/2026-05-18-fix-daily-challenge-stale-cta.md) |
+| 2026-05-18 | Fix Daily Challenge button "Vào chơi" còn hiện sau khi đã hoàn thành | DONE | [detail](docs/todo/active/2026-05-18-fix-daily-challenge-stale-cta.md) |
 | 2026-05-18 | Profile Sprint 1 quick wins (dead buttons + UX polish) | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-1-quick-wins.md) |
 | 2026-05-18 | Profile Sprint 2: skeleton states + split monolith | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-2-states-and-split.md) |
 | 2026-05-18 | Profile Sprint 3: SPEC §21.1 catch-up (Journey + Cosmetic frame) | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-3-spec-features.md) |
-| 2026-05-18 | Profile Sprint 4: Edit Profile modal (wire dead button) | TODO | [detail](docs/todo/active/2026-05-18-profile-sprint-4-edit-modal.md) |
+| 2026-05-18 | Profile Sprint 4: Edit Profile modal (wire dead button) | DONE | [detail](docs/todo/active/2026-05-18-profile-sprint-4-edit-modal.md) |
 | 2026-05-18 | Fix Daily Challenge question card clipped on mobile | DONE | [detail](docs/todo/active/2026-05-18-fix-daily-challenge-question-clipped-mobile.md) |
 | 2026-05-18 | Fix MobileTopBar broken avatar alt-text overflow | DONE | [detail](docs/todo/active/2026-05-18-fix-mobile-topbar-broken-avatar-alt-overflow.md) |
-| 2026-05-13 | Home Redesign Modern Spiritual | IN PROGRESS | [detail](docs/todo/active/2026-05-13-home-redesign-modern-spiritual.md) |
-| 2026-05-13 | Disable test data seed on prod + harden guard | TODO | [detail](docs/todo/active/2026-05-13-disable-seed-on-prod-and-harden-guard.md) |
-| 2026-05-13 | Code Quality Audit follow-up (BE + FE Web) | PARTIALLY DONE | [detail](docs/todo/active/2026-05-13-code-quality-audit-follow-up-be-fe-web.md) |
-| 2026-05-10 | Quiz Set card: thêm action buttons (Chơi cùng nhau / Đặt lịch) | TODO | [detail](docs/todo/active/2026-05-10-quiz-set-card-them-action-buttons-choi-cung-nhau-dat-lich.md) |
-| 2026-05-06 | Practice screen redesign + new settings | IN PROGRESS | [detail](docs/todo/active/2026-05-06-practice-screen-redesign-new-settings.md) |
-| 2026-05-05 | Quiz Mobile Redesign theo `quiz_mobile_redesign_mockup.html` | IN PROGRESS | [detail](docs/todo/active/2026-05-05-quiz-mobile-redesign-theo-quiz-mobile-redesign-mockup-html.md) |
-| 2026-05-05 | Home Redesign theo mockup `home_redesign_mockup.html` | IN PROGRESS | [detail](docs/todo/active/2026-05-05-home-redesign-theo-mockup-home-redesign-mockup-html.md) |
-| 2026-05-05 | Group Page redesign: Feature A "Chơi cùng nhau" + Feature B "Đặt lịch chơi" | TODO | [detail](docs/todo/active/2026-05-05-group-page-redesign-feature-a-choi-cung-nhau-feature-b-dat-lich-choi.md) |
-| 2026-05-01 | Quiz Screen Redesign — Sprint 1 (P0 critical) | TODO | [detail](docs/todo/active/2026-05-01-quiz-screen-redesign-sprint-1-p0-critical.md) |
-| 2026-04-30 | Ranked Page Redesign (Sacred Modernist v2) | IN PROGRESS | [detail](docs/todo/active/2026-04-30-ranked-page-redesign-sacred-modernist-v2.md) |
-| 2026-04-29 | Bible Basics Catechism Quiz | IN PROGRESS | [detail](docs/todo/active/2026-04-29-bible-basics-catechism-quiz.md) |
-| 2026-04-27 | V3 Tier B/C Quality Expansion: 14 books | IN PROGRESS | [detail](docs/todo/active/2026-04-27-v3-tier-b-c-quality-expansion-14-books.md) |
-| 2026-04-19 | Global audience migration: SQL → JSON + i18n prep | PARTIALLY DONE | [detail](docs/todo/active/2026-04-19-global-audience-migration-sql-json-i18n-prep.md) |
+| 2026-05-13 | Home Redesign Modern Spiritual | DONE | [detail](docs/todo/active/2026-05-13-home-redesign-modern-spiritual.md) |
+| 2026-05-13 | Disable test data seed on prod + harden guard | DONE | [detail](docs/todo/active/2026-05-13-disable-seed-on-prod-and-harden-guard.md) |
+| 2026-05-13 | Code Quality Audit follow-up (BE + FE Web) | DONE | [detail](docs/todo/active/2026-05-13-code-quality-audit-follow-up-be-fe-web.md) |
+| 2026-05-10 | Quiz Set card: thêm action buttons (Chơi cùng nhau / Đặt lịch) | DONE | [detail](docs/todo/active/2026-05-10-quiz-set-card-them-action-buttons-choi-cung-nhau-dat-lich.md) |
+| 2026-05-06 | Practice screen redesign + new settings | DONE | [detail](docs/todo/active/2026-05-06-practice-screen-redesign-new-settings.md) |
+| 2026-05-05 | Quiz Mobile Redesign theo `quiz_mobile_redesign_mockup.html` | DONE | [detail](docs/todo/active/2026-05-05-quiz-mobile-redesign-theo-quiz-mobile-redesign-mockup-html.md) |
+| 2026-05-05 | Home Redesign theo mockup `home_redesign_mockup.html` | DONE | [detail](docs/todo/active/2026-05-05-home-redesign-theo-mockup-home-redesign-mockup-html.md) |
+| 2026-05-05 | Group Page redesign: Feature A "Chơi cùng nhau" + Feature B "Đặt lịch chơi" | DONE | [detail](docs/todo/active/2026-05-05-group-page-redesign-feature-a-choi-cung-nhau-feature-b-dat-lich-choi.md) |
+| 2026-05-01 | Quiz Screen Redesign — Sprint 1 (P0 critical) | DONE | [detail](docs/todo/active/2026-05-01-quiz-screen-redesign-sprint-1-p0-critical.md) |
+| 2026-04-30 | Ranked Page Redesign (Sacred Modernist v2) | DONE | [detail](docs/todo/active/2026-04-30-ranked-page-redesign-sacred-modernist-v2.md) |
+| 2026-04-29 | Bible Basics Catechism Quiz | DONE | [detail](docs/todo/active/2026-04-29-bible-basics-catechism-quiz.md) |
+| 2026-04-27 | V3 Tier B/C Quality Expansion: 14 books | DONE | [detail](docs/todo/active/2026-04-27-v3-tier-b-c-quality-expansion-14-books.md) |
+| 2026-04-19 | Global audience migration: SQL → JSON + i18n prep | DONE | [detail](docs/todo/active/2026-04-19-global-audience-migration-sql-json-i18n-prep.md) |
 
 ## Archive (51)
 

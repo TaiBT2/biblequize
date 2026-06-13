@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BibleQuiz — Khung Sáng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,600;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBFAF5; --bg-2:#F2F0E7; --ink:#16151B; --mut:#6C6A62; --dim:#A8A69C; --hair:#E7E4DA;
+  /* phổ khúc xạ — thiết bị nhận diện chính */
+  --c-sap:#2D46C8; --c-eme:#0E8A6B; --c-amb:#F59E0B; --c-amb-d:#D97F06; --c-rub:#E0354B;
+  --spectrum:linear-gradient(90deg, var(--c-sap), var(--c-eme) 34%, var(--c-amb) 64%, var(--c-rub));
+  --ff-d:'Bricolage Grotesque',sans-serif; --ff-b:'Be Vietnam Pro',sans-serif; --ff-v:'Literata',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-b); background:var(--bg); color:var(--ink); position:relative; overflow-x:hidden;}
+/* lightwell : tia nắng cao + bụi sáng, cực nhạt */
+body::before{content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(1100px 560px at 50% -16%, rgba(255,221,150,.5), transparent 60%),
+    conic-gradient(from 90deg at 50% -10%, transparent 0 42%, rgba(245,158,11,.05) 46%, transparent 50%, rgba(45,70,200,.04) 54%, transparent 58%);}
+/* grain gallery wall */
+body::after{content:''; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.035; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+a{text-decoration:none; color:inherit}
+.wrap{max-width:1180px; margin:0 auto; padding:0 32px; position:relative; z-index:1;}
+@keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important}}
+
+/* ============ NAV ============ */
+.top{position:sticky; top:0; z-index:20; background:rgba(251,250,245,.82); backdrop-filter:blur(14px); border-bottom:1px solid var(--hair);}
+.top-in{display:flex; align-items:center; gap:26px; height:64px;}
+.logo{display:flex; align-items:center; gap:10px; font-family:var(--ff-d); font-weight:800; font-size:19px; letter-spacing:-.01em}
+.logo-mark{width:30px;height:34px; position:relative; border-radius:15px 15px 7px 7px / 18px 18px 7px 7px; overflow:hidden;
+  background:var(--spectrum); box-shadow:0 4px 14px -4px rgba(245,158,11,.5)}
+.logo-mark::after{content:''; position:absolute; inset:3px; background:var(--bg); border-radius:13px 13px 5px 5px / 16px 16px 5px 5px}
+.logo-mark::before{content:''; position:absolute; left:50%; top:9px; transform:translateX(-50%); width:7px; height:13px; z-index:1;
+  border-radius:50% 50% 50% 50%/62% 62% 38% 38%; background:linear-gradient(180deg,var(--c-amb),var(--c-rub))}
+.nav{display:flex; gap:3px; margin-left:6px}
+.nav a{font-size:13.5px; font-weight:600; color:var(--mut); padding:8px 14px; border-radius:99px}
+.nav a:hover{color:var(--ink); background:var(--bg-2)}
+.nav a.on{color:#fff; background:var(--ink)}
+.tright{margin-left:auto; display:flex; align-items:center; gap:16px}
+.ts{display:flex; align-items:center; gap:7px; font-size:13px; font-weight:800}
+.ts .k{width:8px;height:8px;border-radius:2px} .ts small{font-weight:700; color:var(--dim); font-size:10.5px}
+.tav{width:34px;height:34px;border-radius:11px; background:linear-gradient(140deg,var(--c-sap),#5168E0); color:#fff; display:grid; place-items:center; font-family:var(--ff-d); font-weight:800; font-size:15px}
+
+/* ============ HERO ============ */
+.hero{padding:52px 0 6px; text-align:center; position:relative}
+.eyebrow{font-size:11px; font-weight:800; letter-spacing:.24em; color:var(--c-amb-d); margin-bottom:12px}
+.h-title{font-family:var(--ff-d); font-size:clamp(40px,5.6vw,66px); font-weight:800; letter-spacing:-.03em; line-height:1.02}
+.h-title .nm{position:relative; white-space:nowrap; color:var(--ink)}
+.h-title .nm::after{content:''; position:absolute; left:-4px; right:-4px; bottom:6px; height:16px; z-index:-1; border-radius:4px;
+  background:var(--spectrum); background-size:200% 100%; opacity:.5; filter:blur(.5px); animation:shimmer 7s ease-in-out infinite}
+.h-sub{margin-top:16px; font-size:15px; color:var(--mut); display:flex; align-items:center; justify-content:center; gap:11px; flex-wrap:wrap}
+.h-sub b{color:var(--ink); font-weight:700}
+.lvchip{font-size:11px; font-weight:800; color:#fff; padding:4px 11px; border-radius:99px; background:var(--ink)}
+
+/* XP — kính ghép, ô đầy phát phổ sáng */
+.xp{margin:24px auto 0; max-width:560px}
+.xp-row{display:flex; gap:5px}
+.seg{flex:1; height:13px; border-radius:4px; background:var(--bg-2); border:1px solid var(--hair); position:relative; overflow:hidden}
+.seg.f{border-color:transparent; background:var(--spectrum); background-size:520% 100%}
+.seg.f.s1{background-position:0% 50%} .seg.f.s2{background-position:25% 50%} .seg.f.s3{background-position:50% 50%}
+.seg.h::after{content:''; position:absolute; inset:0; width:18%; background:var(--c-amb)}
+.xp-cap{display:flex; justify-content:space-between; margin-top:10px; font-size:12px; color:var(--mut)}
+.xp-cap b{color:var(--ink)}
+
+/* ============ VERSE — LIGHTWELL (vòm kính sáng) ============ */
+.verse{position:relative; margin:40px auto 0; max-width:740px; padding:46px 54px 36px; text-align:center;
+  background:radial-gradient(120% 80% at 50% 4%, rgba(255,236,190,.85), #fff 62%);
+  border:1px solid var(--hair); border-bottom:none;
+  border-radius:240px 240px 0 0 / 180px 180px 0 0;
+  box-shadow:0 -10px 60px -24px rgba(245,158,11,.5), inset 0 1px 0 #fff;}
+.verse::before{content:''; position:absolute; left:50%; top:-2px; transform:translateX(-50%); width:74%; height:3px; border-radius:99px;
+  background:var(--spectrum); opacity:.6}
+.verse .cap{font-size:10.5px; font-weight:800; letter-spacing:.26em; color:var(--c-amb-d); margin-bottom:18px}
+.verse .body{font-family:var(--ff-v); font-size:25px; line-height:1.5; color:var(--ink)}
+.verse .lampmark{display:flex; justify-content:center; margin:0 0 16px}
+.verse .lampmark .fl{width:15px; height:21px; border-radius:50% 50% 50% 50%/62% 62% 38% 38%;
+  background:linear-gradient(180deg,#FFE7A6,var(--c-amb) 52%,#FF6F3D);
+  box-shadow:0 0 18px rgba(245,158,11,.65); animation:flick 2.6s ease-in-out infinite}
+@keyframes flick{0%,100%{transform:scaleY(1) scaleX(1)}48%{transform:scaleY(1.12) scaleX(.92)}72%{transform:scaleY(.95) scaleX(1.05)}}
+.verse .body em{font-style:italic; color:var(--c-amb-d)}
+.verse .ref{margin-top:16px; font-size:11px; font-weight:800; letter-spacing:.2em; color:var(--dim); clear:both}
+/* bệ cửa sổ : phổ sáng đổ xuống trang */
+.sill{max-width:740px; margin:0 auto 8px; height:14px; border-radius:0 0 12px 12px;
+  background:var(--spectrum); filter:blur(.4px);
+  box-shadow:0 26px 50px -22px rgba(45,70,200,.35), 0 26px 50px -22px rgba(224,53,75,.3)}
+.verse-act{text-align:center; font-size:12px; color:var(--mut); margin-top:14px}
+
+/* ============ SECTION ============ */
+.sec{display:flex; align-items:center; gap:12px; margin:46px 0 16px}
+.sec .idx{font-family:var(--ff-d); font-size:12px; font-weight:800; color:#fff; width:26px; height:26px; border-radius:8px; display:grid; place-items:center}
+.sec .idx.c1{background:var(--c-amb)} .sec .idx.c2{background:var(--c-rub)} .sec .idx.c3{background:var(--c-sap)}
+.sec h2{font-family:var(--ff-d); font-size:22px; font-weight:700; letter-spacing:-.015em}
+.sec .right{margin-left:auto; font-size:12.5px; font-weight:700; color:var(--mut)}
+
+/* ============ DAILY ============ */
+.daily{position:relative; background:#fff; border:1px solid var(--hair); border-radius:22px; padding:30px 32px; overflow:hidden;
+  box-shadow:0 34px 64px -34px rgba(245,158,11,.5), 0 14px 34px -22px rgba(224,53,75,.22)}
+.daily::before{content:''; position:absolute; top:0; left:0; right:0; height:5px; background:var(--spectrum)}
+.daily::after{content:''; position:absolute; right:-80px; top:-100px; width:280px; height:280px; border-radius:50%;
+  background:radial-gradient(closest-side, rgba(255,200,90,.3), transparent); pointer-events:none}
+.daily-grid{display:flex; gap:28px; align-items:center; flex-wrap:wrap; position:relative}
+.daily-main{flex:1; min-width:300px}
+.d-badge{display:inline-flex; align-items:center; gap:7px; font-size:10.5px; font-weight:800; letter-spacing:.14em; color:var(--c-amb-d);
+  background:rgba(245,158,11,.1); padding:6px 13px; border-radius:99px; margin-bottom:13px}
+.d-badge i{width:7px;height:7px;border-radius:99px;background:var(--c-amb)}
+.daily h3{font-family:var(--ff-d); font-size:31px; font-weight:800; letter-spacing:-.02em; line-height:1.12}
+.daily h3 span{color:var(--c-amb-d)}
+.d-meta{display:flex; gap:8px; margin-top:14px; flex-wrap:wrap}
+.chip{font-size:12px; font-weight:600; color:var(--mut); border:1px solid var(--hair); background:var(--bg); padding:6px 13px; border-radius:99px}
+.d-side{display:flex; flex-direction:column; align-items:flex-end; gap:12px}
+.d-timer{font-size:12px; color:var(--mut)} .d-timer b{color:var(--ink); font-variant-numeric:tabular-nums}
+.cta{display:inline-flex; align-items:center; gap:10px; font-weight:800; font-size:14.5px; color:#fff;
+  background:linear-gradient(135deg,#FF9D2E 0%, #FF5A45 55%, var(--c-rub) 100%);
+  padding:15px 27px; border-radius:14px; cursor:pointer; border:none; transition:transform .15s, box-shadow .15s, filter .15s;
+  box-shadow:0 16px 34px -12px rgba(224,53,75,.6), 0 4px 16px -6px rgba(245,158,11,.55)}
+.cta:hover{transform:translateY(-2px); filter:brightness(1.05)} .cta .xp-tag{background:rgba(255,255,255,.25); color:#fff; font-size:11px; font-weight:800; padding:3px 8px; border-radius:7px}
+
+/* ============ QUESTS + LB ============ */
+.cols{display:grid; grid-template-columns:1.6fr 1fr; gap:16px}
+.card{background:#fff; border:1px solid var(--hair); border-radius:20px; padding:6px 24px}
+.q{display:flex; align-items:center; gap:14px; padding:17px 0; border-bottom:1px solid var(--hair)} .q:last-child{border:none}
+.q .lamp{width:9px;height:13px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%; background:var(--bg-2); border:1px solid var(--hair); flex:none}
+.q.done .lamp{background:linear-gradient(180deg,#FFE08A,var(--c-amb)); border-color:transparent; box-shadow:0 0 8px rgba(245,158,11,.6)}
+.q.prog .lamp{background:linear-gradient(180deg,#FFD98A,#FF8A3D); border-color:transparent; box-shadow:0 0 7px rgba(255,138,61,.5)}
+.q .t{font-size:13.5px; font-weight:600; flex:1} .q.done .t{color:var(--mut)}
+.q .bar{width:150px; height:7px; background:var(--bg-2); border-radius:99px; overflow:hidden}
+.q .bar i{display:block; height:100%; border-radius:99px}
+.q.done .bar i{background:linear-gradient(90deg,#FFD773,var(--c-amb))} .q.prog .bar i{background:linear-gradient(90deg,var(--c-amb),#FF8A3D)}
+.q .num{width:34px; text-align:right; font-size:12px; font-weight:800; color:var(--mut); font-variant-numeric:tabular-nums}
+.lb{padding:18px 24px}
+.lb-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:10px}
+.lb-head h4{font-family:var(--ff-d); font-size:15px; font-weight:700} .lb-head a{font-size:11.5px; font-weight:700; color:var(--mut)}
+.lr{display:flex; align-items:center; gap:11px; padding:9px 10px; border-radius:12px; font-size:13px}
+.lr.me{background:linear-gradient(90deg, rgba(245,158,11,.13), transparent); outline:1.5px solid rgba(245,158,11,.4)}
+.lr .p{font-family:var(--ff-d); font-weight:800; width:16px; color:var(--dim)} .lr.me .p{color:var(--c-amb-d)}
+.lr .a{width:26px;height:26px;border-radius:9px; display:grid; place-items:center; color:#fff; font-size:11px; font-weight:800}
+.lr .nm{flex:1; font-weight:600; color:var(--mut)} .lr.me .nm{color:var(--ink); font-weight:700}
+.lr .pt{font-weight:800; font-variant-numeric:tabular-nums; font-size:12.5px} .lr:not(.me) .pt{color:var(--mut)}
+.lb-foot{margin-top:12px; padding-top:12px; border-top:1px dashed var(--hair); font-size:11.5px; color:var(--mut)} .lb-foot b{color:var(--ink)}
+
+/* ============ MODES — kính cửa sổ khúc xạ ============ */
+.modes{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.mode{position:relative; background:#fff; border:1px solid var(--hair); padding:24px;
+  border-radius:64px 64px 22px 22px / 30px 30px 22px 22px; overflow:hidden;
+  display:flex; flex-direction:column; gap:8px; min-height:256px; transition:transform .2s, box-shadow .2s}
+.mode::before{content:''; position:absolute; top:0; left:0; right:0; height:5px}
+.mode.m1::before{background:linear-gradient(90deg,var(--c-sap),#6E86F0)} .mode.m2::before{background:linear-gradient(90deg,var(--c-rub),#FF7A5A)} .mode.m3::before{background:linear-gradient(90deg,var(--c-eme),#46C89A)}
+.mode.m1{box-shadow:0 26px 46px -28px rgba(45,70,200,.5)} .mode.m2{box-shadow:0 26px 46px -28px rgba(224,53,75,.5)} .mode.m3{box-shadow:0 26px 46px -28px rgba(14,138,107,.5)}
+.mode:hover{transform:translateY(-5px)}
+.mode.m1:hover{box-shadow:0 34px 60px -26px rgba(45,70,200,.62)} .mode.m2:hover{box-shadow:0 34px 60px -26px rgba(224,53,75,.62)} .mode.m3:hover{box-shadow:0 34px 60px -26px rgba(14,138,107,.62)}
+.mode .tag{font-size:10px; font-weight:800; letter-spacing:.18em; margin-top:4px}
+.m1 .tag{color:var(--c-sap)} .m2 .tag{color:var(--c-rub)} .m3 .tag{color:var(--c-eme)}
+.mode h4{font-family:var(--ff-d); font-size:23px; font-weight:800; letter-spacing:-.02em}
+.mode .d{font-size:12.5px; color:var(--mut); line-height:1.55}
+.mode .inner{margin-top:auto; border:1px solid var(--hair); background:var(--bg); border-radius:14px; padding:12px 14px; font-size:12px; color:var(--mut)}
+.mode .inner b{color:var(--ink)}
+.mini{height:6px; background:#fff; border:1px solid var(--hair); border-radius:99px; margin-top:9px; overflow:hidden}
+.mini i{display:block; height:100%; width:46%; border-radius:99px; background:linear-gradient(90deg,var(--c-sap),#7E94F4)}
+.live{display:inline-block; width:7px;height:7px;border-radius:99px; margin-right:6px}
+.avs{display:inline-flex; vertical-align:middle; margin-left:7px}
+.avs i{width:18px;height:18px;border-radius:99px; border:2px solid #fff; margin-left:-6px}
+.avs .x{width:auto; min-width:18px; padding:0 4px; background:var(--ink); color:#fff; font-size:8.5px; font-weight:800; display:inline-grid; place-items:center}
+.mode .go{display:flex; justify-content:space-between; align-items:center; margin-top:14px; font-size:13.5px; font-weight:800}
+.m1 .go{color:var(--c-sap)} .m2 .go{color:var(--c-rub)} .m3 .go{color:var(--c-eme)}
+.mode .go .ar{transition:transform .18s} .mode:hover .go .ar{transform:translateX(4px)}
+.m1 .live{background:var(--c-sap)} .m2 .live{background:var(--c-rub)} .m3 .live{background:var(--c-eme)}
+.m1 .avs i:nth-child(1){background:var(--c-sap)} .m1 .avs i:nth-child(2){background:var(--c-amb)} .m1 .avs i:nth-child(3){background:var(--c-eme)}
+.m2 .avs i:nth-child(1){background:var(--c-rub)} .m2 .avs i:nth-child(2){background:var(--c-amb)} .m2 .avs i:nth-child(3){background:var(--c-sap)}
+.m3 .avs i:nth-child(1){background:var(--c-eme)} .m3 .avs i:nth-child(2){background:var(--c-sap)} .m3 .avs i:nth-child(3){background:var(--c-rub)}
+.foot{height:80px}
+@media (max-width:980px){ .cols{grid-template-columns:1fr} .modes{grid-template-columns:1fr} .nav{display:none} .verse{padding:40px 28px 30px} .verse .body{font-size:21px} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="logo" href="#"><span class="logo-mark"></span> BibleQuiz</a>
+    <nav class="nav"><a class="on" href="#">Trang chủ</a><a href="#">Xếp hạng</a><a href="#">Nhóm</a><a href="#">Phòng Chơi</a><a href="#">Cá nhân</a></nav>
+    <div class="tright">
+      <div class="ts"><span class="k" style="background:var(--c-rub)"></span>1 <small>STREAK</small></div>
+      <div class="ts"><span class="k" style="background:var(--c-amb)"></span>100 <small>NL</small></div>
+      <div class="ts"><span class="k" style="background:var(--c-eme)"></span>1.298 <small>MÙA</small></div>
+      <div class="tav">T</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="eyebrow">✦ CHÀO BUỔI TỐI · THỨ BẢY 12/6</div>
+    <h1 class="h-title">Sẵn sàng chưa, <span class="nm">Tai Thanh?</span></h1>
+    <div class="h-sub">
+      <span class="lvchip">LV. 12</span>
+      <span>Người Tìm Kiếm → <b>Môn Đồ</b></span><span style="color:var(--dim)">·</span>
+      <span>Hạng tuần <b>#1</b> / 1.204 người</span>
+    </div>
+    <div class="xp">
+      <div class="xp-row">
+        <div class="seg f s1"></div><div class="seg f s2"></div><div class="seg f s3"></div>
+        <div class="seg h"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+      </div>
+      <div class="xp-cap"><span><b>1.590</b> / 5.000 XP</span><span>còn <b>3.410 XP</b> đến Môn Đồ</span></div>
+    </div>
+  </section>
+
+  <!-- VERSE LIGHTWELL -->
+  <section class="verse">
+    <div class="cap">CÂU GỐC HÔM NAY</div>
+    <div class="lampmark" aria-hidden="true"><span class="fl"></span></div>
+    <div class="body">“Lời Chúa là <em>ngọn đèn</em> cho chân tôi, ánh sáng cho đường lối tôi.”</div>
+    <div class="ref">THI THIÊN 119 : 105</div>
+  </section>
+  <div class="sill"></div>
+  <div class="verse-act">Hoàn thành nhiệm vụ hôm nay để tích thêm ánh sáng cho hành trình của bạn</div>
+
+  <!-- DAILY -->
+  <div class="sec"><span class="idx c1">1</span><h2>Thử thách hôm nay</h2></div>
+  <section class="daily">
+    <div class="daily-grid">
+      <div class="daily-main">
+        <div class="d-badge"><i></i> ƯU TIÊN HÔM NAY</div>
+        <h3>Bắt đầu ngày mới với <span>Lời Chúa</span></h3>
+        <div class="d-meta"><span class="chip">📖 5 câu</span><span class="chip">⏱ ~3 phút</span><span class="chip">🌐 Cùng cộng đồng</span></div>
+      </div>
+      <div class="d-side"><div class="d-timer">Còn lại trong ngày · <b>12:49:19</b></div><button class="cta">Chơi ngay <span class="xp-tag">+50 XP</span></button></div>
+    </div>
+  </section>
+
+  <!-- QUESTS + LB -->
+  <div class="sec"><span class="idx c2">2</span><h2>Nhiệm vụ hôm nay</h2><span class="right">1/3 hoàn thành</span></div>
+  <div class="cols">
+    <div class="card">
+      <div class="q done"><span class="lamp"></span><div class="t">Chơi 1 ván bất kỳ</div><div class="bar"><i style="width:100%"></i></div><div class="num">✓</div></div>
+      <div class="q prog"><span class="lamp"></span><div class="t">Trả lời đúng 5 câu khó</div><div class="bar"><i style="width:20%"></i></div><div class="num">1/5</div></div>
+      <div class="q"><span class="lamp"></span><div class="t">Đạt 60+ điểm trong Đấu Hạng</div><div class="bar"><i style="width:0%"></i></div><div class="num">0/1</div></div>
+    </div>
+    <div class="card lb">
+      <div class="lb-head"><h4>Top điểm tuần</h4><a href="#">Bảng đầy đủ →</a></div>
+      <div class="lr me"><div class="p">1</div><div class="a" style="background:linear-gradient(140deg,var(--c-sap),#5168E0)">T</div><div class="nm">Tai Thanh</div><div class="pt">8.940</div></div>
+      <div class="lr"><div class="p">2</div><div class="a" style="background:var(--c-amb)">M</div><div class="nm">Minh Anh</div><div class="pt">8.120</div></div>
+      <div class="lr"><div class="p">3</div><div class="a" style="background:var(--c-eme)">K</div><div class="nm">Khôi Nguyên</div><div class="pt">7.430</div></div>
+      <div class="lb-foot">Mùa <b>Ngũ Tuần ’26</b> · còn 17 ngày</div>
+    </div>
+  </div>
+
+  <!-- MODES -->
+  <div class="sec"><span class="idx c3">3</span><h2>Chế độ chơi chính</h2></div>
+  <section class="modes">
+    <a class="mode m1" href="#"><div class="tag">HỌC MỘT MÌNH</div><h4>Luyện Tập</h4><div class="d">Tự do, không tính XP — luyện theo từng sách.</div>
+      <div class="inner">Đang học dở · <b>Sáng Thế Ký</b><div class="mini"><i></i></div><div style="margin-top:8px">23/50 câu · còn 27 để hoàn thành sách</div></div>
+      <div class="go"><span>Tiếp tục</span><span class="ar">→</span></div></a>
+    <a class="mode m2" href="#"><div class="tag">THI ĐẤU</div><h4>Đấu Hạng</h4><div class="d">Cạnh tranh bảng xếp hạng theo mùa.</div>
+      <div class="inner"><span class="live"></span><b>142</b> người đang thi đấu<span class="avs"><i></i><i></i><i></i><i class="x">+9</i></span><div style="margin-top:8px">Hạng của bạn · <b style="color:var(--c-rub)">#1</b></div></div>
+      <div class="go"><span>Vào trận</span><span class="ar">→</span></div></a>
+    <a class="mode m3" href="#"><div class="tag">CÙNG NHAU</div><h4>Phòng Chơi</h4><div class="d">Chơi cùng bạn bè & hội thánh — 5 chế độ.</div>
+      <div class="inner"><span class="live"></span><b>8</b> phòng đang mở · <b>42</b> người<span class="avs"><i></i><i></i><i></i><i class="x">+39</i></span><div style="margin-top:8px">Hội thánh của bạn có <b>2 phòng</b> đang mở</div></div>
+      <div class="go"><span>Tìm phòng</span><span class="ar">→</span></div></a>
+  </section>
+
+  <div class="foot"></div>
+</div>
+</body>
+</html>
