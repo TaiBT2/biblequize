@@ -52,7 +52,7 @@ Layout **1 cột giữa** (`max-width:1180px`) + **TopNav sticky ngang** (KHÔNG
 
 ## 3. Tasks theo component
 - [ ] **HGR-1 Tokens + fonts**: copy `biblequiz-tokens.css` → `apps/web/src/styles/tokens.css`, `import` ở `main.tsx`; merge `theme.extend` (`bq.*` colors, fonts display/verse, shadows khúc xạ, anim `flick`/`shimmer`) vào `tailwind.config.js`; thêm 2 class `.bq-arch-card`/`.bq-arch-well`; nạp 3 font (Bricolage Grotesque + Literata; Be Vietnam Pro đã có) vào `index.html`. **Verify trang khác KHÔNG vỡ** (token mới namespaced `bq-*`/`--bq-*`, additive). ⚠️ Xem rủi ro CSS-var §5.
-- [ ] **HGR-2 Live preview route** `/home-khung-sang-preview` → `HomeKhungSangMock.tsx` (port trung thực HTML mockup, CSS scoped, data tĩnh) để **duyệt visual trước khi promote**. Thay vai trò mock dark cũ.
+- [x] **HGR-2 Live preview route** `/home-khung-sang-preview` → `HomeKhungSangMock.tsx` — DONE (build ✓). Port trung thực HTML mockup, CSS scoped `.hks`, data tĩnh. Mở `localhost:5173/home-khung-sang-preview` để duyệt visual trước khi promote.
 - [ ] **HGR-3 AppShell / lightwell**: wrapper `.bq-lightwell` (godray + grain, `position:fixed; z-index:0; pointer-events:none`). **Quyết định nav**: Home dùng TopNav mới hay giữ `AppLayout` hiện có? → khảo sát `layouts/AppLayout.tsx` (file nhạy cảm) rồi chốt ở §6.
 - [ ] **HGR-4 HeroGreeting**: tên + gạch phổ shimmer + LV chip NGẮN + "tier → nextTier" + "Hạng tuần #k / N". Test chuỗi VN dài (tier name) không vỡ.
 - [ ] **HGR-5 XpSpectrumBar**: 10 ô, ô đầy lấy lát spectrum (`background-position` dịch), ô đang nhen amber. Đọc % <1s, contrast ≥3:1 (props `value/max/segments` — xem spec §3.3).
