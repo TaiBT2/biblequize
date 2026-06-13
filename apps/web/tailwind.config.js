@@ -91,6 +91,24 @@ export default {
         'gold-cream': '#fff5dc',
         maroon: '#7c2d3a',
         sage: '#4a6b52',
+        // "Khung Sáng" jewel palette (KS migration W0-1). CSS-var backed for
+        // season-theming (data-season). Additive — does NOT touch Sacred
+        // Modernist tokens. Defined in src/styles/tokens.css.
+        bq: {
+          paper:   'var(--bq-paper)',
+          white:   'var(--bq-white)',
+          inset:   'var(--bq-paper-sunk)',
+          hair:    'var(--bq-hairline)',
+          ink:     'var(--bq-ink)',
+          ink2:    'var(--bq-ink-soft)',
+          ink3:    'var(--bq-ink-faint)',
+          sapphire:'var(--bq-sapphire)',
+          emerald: 'var(--bq-emerald)',
+          amber:   'var(--bq-amber)',
+          amberd:  'var(--bq-amber-deep)',
+          ruby:    'var(--bq-ruby)',
+          ember:   'var(--bq-ember)',
+        },
       },
       fontFamily: {
         sans: ['Be Vietnam Pro', 'system-ui', 'sans-serif'],
@@ -99,6 +117,10 @@ export default {
         label: ['Be Vietnam Pro', 'system-ui', 'sans-serif'],
         // V3 design — "Sacred Modernist Gaming"
         sora: ['Sora', 'Be Vietnam Pro', 'system-ui', 'sans-serif'],
+        // "Khung Sáng" (KS W0-1): display = Bricolage Grotesque, verse = Literata.
+        // `literata` is separate from `verse` (Cormorant, HR-1) to avoid clobbering.
+        display: ['"Bricolage Grotesque"', 'Be Vietnam Pro', 'system-ui', 'sans-serif'],
+        literata: ['Literata', 'Georgia', 'serif'],
         // HR-1: Cormorant Garamond italic ONLY for verse text + drop cap.
         // Do not use this stack elsewhere (mode titles, headings, etc.).
         verse: ['"Cormorant Garamond"', '"Crimson Pro"', 'Playfair Display', 'serif'],
@@ -114,13 +136,46 @@ export default {
         "2xl": "1rem",
         "3xl": "1.5rem",
         full: "9999px",
+        // Khung Sáng (KS W0-1)
+        bq: "22px",
       },
+      // Khung Sáng signature gradients / shadows / typography (KS W0-1)
+      fontSize: {
+        hero:    'clamp(40px,5.6vw,66px)',
+        verse:   '25px',
+        eyebrow: '11px',
+      },
+      letterSpacing: { eyebrow: '.22em' },
+      backgroundImage: {
+        'bq-spectrum': 'var(--bq-spectrum)',
+        'bq-action':   'var(--bq-action)',
+        'bq-flame':    'var(--bq-flame)',
+      },
+      boxShadow: {
+        'bq-soft':   'var(--bq-shadow-soft)',
+        'bq-sap':    'var(--bq-shadow-sap)',
+        'bq-sap-h':  'var(--bq-shadow-sap-h)',
+        'bq-rub':    'var(--bq-shadow-rub)',
+        'bq-rub-h':  'var(--bq-shadow-rub-h)',
+        'bq-eme':    'var(--bq-shadow-eme)',
+        'bq-eme-h':  'var(--bq-shadow-eme-h)',
+        'bq-amb':    'var(--bq-shadow-amb)',
+        'bq-action': 'var(--bq-glow-action)',
+        'bq-flame':  'var(--bq-glow-flame)',
+      },
+      transitionTimingFunction: { bq: 'cubic-bezier(.2,.7,.3,1)' },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.3s ease-out',
         'bounce-in': 'bounceIn 0.6s ease-out',
+        // Khung Sáng
+        flick:   'flick 2.6s ease-in-out infinite',
+        shimmer: 'shimmer 7s ease-in-out infinite',
       },
       keyframes: {
+        // Khung Sáng
+        flick:   { '0%,100%': { transform: 'scaleY(1) scaleX(1)' }, '48%': { transform: 'scaleY(1.12) scaleX(.92)' }, '72%': { transform: 'scaleY(.95) scaleX(1.05)' } },
+        shimmer: { '0%,100%': { backgroundPosition: '0% 50%' }, '50%': { backgroundPosition: '100% 50%' } },
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
