@@ -41,17 +41,17 @@ export default function AppLayout() {
       : location.pathname === path || location.pathname.startsWith(`${path}/`)
 
   return (
-    <div className="min-h-screen bg-[#11131e] text-[#e1e1f1]">
+    <div className="min-h-screen bg-bq-paper text-bq-ink bq-lightwell">
       <OfflineBanner />
 
       {/* Mobile-only top bar (logo + bell + avatar dropdown). */}
       <MobileTopBar />
 
-      <div className="flex min-h-screen">
+      <div className="flex min-h-screen relative z-10">
         {/* Desktop sidebar — hidden on mobile. */}
         <aside
           data-testid="app-sidebar"
-          className="hidden md:flex flex-col h-screen sticky top-0 z-30 bg-[#11131e] w-72 border-r border-surface-container-high/50"
+          className="hidden md:flex flex-col h-screen sticky top-0 z-30 bg-bq-paper/80 backdrop-blur-sm w-72 border-r border-bq-hair"
         >
           <SidebarHeader />
 
@@ -62,8 +62,8 @@ export default function AppLayout() {
                 to={item.path}
                 className={`px-4 py-3 flex items-center gap-3 font-bold text-xs uppercase tracking-widest rounded-lg transition-all ${
                   isActive(item.path)
-                    ? 'gold-gradient text-[#412d00] shadow-lg shadow-secondary/10'
-                    : 'text-[#e1e1f1]/60 hover:text-[#e1e1f1] hover:bg-surface-container'
+                    ? 'bg-bq-ink text-white shadow-bq-soft'
+                    : 'text-bq-ink2 hover:text-bq-ink hover:bg-bq-inset'
                 }`}
               >
                 <span
@@ -122,7 +122,7 @@ export default function AppLayout() {
               return (
                 <div
                   data-testid="sidebar-widgets"
-                  className="pt-5 mt-3 border-t border-white/5 space-y-2.5"
+                  className="pt-5 mt-3 border-t border-bq-hair space-y-2.5"
                 >
                   {alwaysWidgets}
                   {routeWidgets}
@@ -137,10 +137,10 @@ export default function AppLayout() {
             user?.role === 'CONTENT_MOD' ||
             user?.role === 'content_mod') && (
             <div className="px-3 pb-4">
-              <div className="border-t border-white/5 mb-3" />
+              <div className="border-t border-bq-hair mb-3" />
               <Link
                 to="/admin"
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-gradient-to-r from-[#e8a832]/10 to-[#e7c268]/10 border border-[#e8a832]/20 text-[#e8a832] hover:bg-[#e8a832]/20 transition-colors text-sm font-medium"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-bq-amber/10 border border-bq-amber/30 text-bq-amberd hover:bg-bq-amber/20 transition-colors text-sm font-medium"
               >
                 <span className="material-symbols-outlined text-lg">admin_panel_settings</span>
                 <span>{t('nav.adminPanel')}</span>
@@ -155,7 +155,7 @@ export default function AppLayout() {
           <SidebarUserCard />
         </aside>
 
-        <main className="flex-1 p-4 md:p-10 lg:p-14 overflow-y-auto bg-[#11131e]">
+        <main className="flex-1 p-4 md:p-10 lg:p-14 overflow-y-auto">
           <div className="max-w-7xl mx-auto">
             <Outlet />
           </div>

@@ -17,13 +17,13 @@ export default function MobileTopBar() {
   return (
     <header
       data-testid="mobile-top-bar"
-      className="md:hidden sticky top-0 z-40 flex items-center justify-between px-3 h-12 bg-[#11131e]/90 backdrop-blur-md border-b border-outline-variant/10"
+      className="md:hidden sticky top-0 z-40 flex items-center justify-between px-3 h-12 bg-bq-paper/90 backdrop-blur-md border-b border-bq-hair"
     >
       <Link
         to="/"
-        className="text-base font-black text-secondary tracking-tighter hover:opacity-80 transition-opacity"
+        className="font-display text-base font-black text-bq-ink tracking-tighter hover:opacity-80 transition-opacity"
       >
-        Bible Quiz
+        Bible<span className="text-bq-amberd">Quiz</span>
       </Link>
       <div className="flex items-center gap-1">
         <NotificationBell />
