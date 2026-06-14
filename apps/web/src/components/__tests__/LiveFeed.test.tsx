@@ -49,27 +49,27 @@ describe('LiveFeed', () => {
     expect(container.innerHTML).toBe('')
   })
 
-  it('displays correct answer with green styling', () => {
+  it('displays correct answer with emerald styling', () => {
     const incoming = { playerId: 'other', username: 'Alice', isCorrect: true, reactionTimeMs: 2500 }
     const { container } = render(<LiveFeed incoming={incoming} myId="me" />)
-    const event = container.querySelector('.bg-green-500\\/20')
+    const event = container.querySelector('.bg-bq-emerald\\/15')
     expect(event).toBeTruthy()
-    expect(event!.className).toContain('text-green-400')
+    expect(event!.className).toContain('text-bq-emerald')
   })
 
-  it('displays wrong answer with red styling', () => {
+  it('displays wrong answer with ruby styling', () => {
     const incoming = { playerId: 'other', username: 'Bob', isCorrect: false, reactionTimeMs: 3000 }
     const { container } = render(<LiveFeed incoming={incoming} myId="me" />)
-    const event = container.querySelector('.bg-red-500\\/20')
+    const event = container.querySelector('.bg-bq-ruby\\/15')
     expect(event).toBeTruthy()
-    expect(event!.className).toContain('text-red-400')
+    expect(event!.className).toContain('text-bq-ruby')
   })
 
   it('uses correct translation key for correct answers', () => {
     // Math.random mocked to 0.5 => index = floor(0.5*4) = 2 => CORRECT_KEYS[2]
     const incoming = { playerId: 'other', username: 'Alice', isCorrect: true, reactionTimeMs: 2500 }
     const { container } = render(<LiveFeed incoming={incoming} myId="me" />)
-    const event = container.querySelector('.bg-green-500\\/20')
+    const event = container.querySelector('.bg-bq-emerald\\/15')
     expect(event!.textContent).toContain('liveFeed.correct3')
     expect(event!.textContent).toContain('name=Alice')
     expect(event!.textContent).toContain('time=2.5')
@@ -79,7 +79,7 @@ describe('LiveFeed', () => {
     // Math.random mocked to 0.5 => index = floor(0.5*3) = 1 => WRONG_KEYS[1]
     const incoming = { playerId: 'other', username: 'Bob', isCorrect: false, reactionTimeMs: 3000 }
     const { container } = render(<LiveFeed incoming={incoming} myId="me" />)
-    const event = container.querySelector('.bg-red-500\\/20')
+    const event = container.querySelector('.bg-bq-ruby\\/15')
     expect(event!.textContent).toContain('liveFeed.wrong2')
     expect(event!.textContent).toContain('name=Bob')
   })

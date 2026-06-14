@@ -11,10 +11,10 @@ import AvatarStack from './AvatarStack'
 import { DIFFICULTY_CONFIG, formatBookScope, formatRelativeTime, type PublicRoom } from './types'
 
 const STATUS_BADGE_STYLE: Record<'WAITING' | 'ALMOST_FULL' | 'FULL' | 'PLAYING', { bg: string; fg: string; key: string }> = {
-  WAITING:     { bg: 'rgba(74,222,128,0.15)',  fg: '#86efac', key: 'multiplayer.room.statusWaiting' },
-  ALMOST_FULL: { bg: 'rgba(255,140,66,0.15)',  fg: '#fb923c', key: 'multiplayer.room.statusAlmostFull' },
-  FULL:        { bg: 'rgba(248,113,113,0.15)', fg: '#fca5a5', key: 'multiplayer.room.statusFull'  },
-  PLAYING:     { bg: 'rgba(232,168,50,0.15)',  fg: '#fbbf24', key: 'multiplayer.room.statusPlaying' },
+  WAITING:     { bg: 'rgba(14,138,107,0.12)', fg: '#0E8A6B', key: 'multiplayer.room.statusWaiting' },
+  ALMOST_FULL: { bg: 'rgba(245,158,11,0.14)', fg: '#D97F06', key: 'multiplayer.room.statusAlmostFull' },
+  FULL:        { bg: 'rgba(224,53,75,0.12)',  fg: '#E0354B', key: 'multiplayer.room.statusFull'  },
+  PLAYING:     { bg: 'rgba(217,127,6,0.14)',  fg: '#D97F06', key: 'multiplayer.room.statusPlaying' },
 }
 
 function hexToRgba(hex: string, a: number): string {
@@ -71,11 +71,9 @@ export default function RoomCard({ room }: { room: PublicRoom }) {
   return (
     <article
       data-testid="room-card"
-      className="rounded-xl p-4 flex flex-col gap-3 transition-all"
+      className="rounded-xl p-4 flex flex-col gap-3 transition-all bg-bq-white shadow-bq-soft"
       style={{
-        background: 'rgba(50,52,64,0.4)',
-        backdropFilter: 'blur(12px)',
-        border: `1px solid ${almostFull ? hexToRgba(mode.color, 0.4) : 'rgba(255,255,255,0.06)'}`,
+        border: `1px solid ${almostFull ? hexToRgba(mode.color, 0.4) : '#E7E4DA'}`,
         boxShadow: almostFull ? `0 0 16px ${hexToRgba(mode.color, 0.12)}` : undefined,
         cursor: ctaEnabled ? 'pointer' : 'default',
       }}
@@ -96,7 +94,7 @@ export default function RoomCard({ room }: { room: PublicRoom }) {
             <div className="text-[10px] font-bold tracking-wider uppercase truncate" style={{ color: mode.color }}>
               {modeLabel(room.mode)}
             </div>
-            <div className="text-sm font-bold text-white truncate">{room.roomName}</div>
+            <div className="text-sm font-bold text-bq-ink truncate">{room.roomName}</div>
           </div>
         </div>
         <span
@@ -108,15 +106,15 @@ export default function RoomCard({ room }: { room: PublicRoom }) {
       </div>
 
       {/* Host + relative time */}
-      <div className="flex items-center gap-2 text-[11px] text-white/55">
-        <span className="material-symbols-outlined" style={{ fontSize: 14, color: '#e8a832' }}>workspace_premium</span>
+      <div className="flex items-center gap-2 text-[11px] text-bq-ink2">
+        <span className="material-symbols-outlined" style={{ fontSize: 14, color: '#D97F06' }}>workspace_premium</span>
         <span className="truncate">{room.hostName ?? '—'}</span>
-        <span className="w-1 h-1 rounded-full bg-white/20" />
-        <span className="text-white/45 flex-shrink-0">{formatRelativeTime(t, room.createdAt)}</span>
+        <span className="w-1 h-1 rounded-full bg-bq-hair" />
+        <span className="text-bq-ink3 flex-shrink-0">{formatRelativeTime(t, room.createdAt)}</span>
         {!room.isPublic && (
           <span
             className="ml-auto px-1.5 py-0.5 rounded-full text-[9px] font-bold"
-            style={{ background: 'rgba(255,140,66,0.12)', color: '#ff8c42' }}
+            style={{ background: 'rgba(245,158,11,0.12)', color: '#D97F06' }}
           >{t('multiplayer.room.privateBadge')}</span>
         )}
       </div>
@@ -124,18 +122,18 @@ export default function RoomCard({ room }: { room: PublicRoom }) {
       {/* Avatar stack + meta footer */}
       <div className="flex items-center justify-between gap-2">
         <AvatarStack initials={room.playerInitials ?? []} current={room.currentPlayers} max={room.maxPlayers} />
-        <div className="text-[10px] text-white/40 text-right flex-shrink-0">
+        <div className="text-[10px] text-bq-ink3 text-right flex-shrink-0">
           <div>{t('multiplayer.room.questionsMeta', { count: room.questionCount ?? 10, time: room.timePerQuestion ?? 30 })}</div>
           <div className="mt-0.5">
-            <span className="text-white/55">{formatBookScope(t, room.bookScope)}</span>
-            <span className="mx-1 text-white/20">·</span>
+            <span className="text-bq-ink2">{formatBookScope(t, room.bookScope)}</span>
+            <span className="mx-1 text-bq-ink3">·</span>
             <span style={{ color: diff.color }}>{t(diff.labelKey)}</span>
           </div>
         </div>
       </div>
 
       {joinError && (
-        <div className="text-[11px] px-2 py-1 rounded-lg" style={{ background: 'rgba(239,68,68,0.12)', color: '#f87171' }}>
+        <div className="text-[11px] px-2 py-1 rounded-lg" style={{ background: 'rgba(224,53,75,0.10)', color: '#E0354B' }}>
           ⚠ {joinError}
         </div>
       )}
@@ -145,8 +143,8 @@ export default function RoomCard({ room }: { room: PublicRoom }) {
         disabled={!ctaEnabled}
         className="w-full h-9 rounded-lg text-[12px] font-bold transition-colors disabled:cursor-not-allowed"
         style={{
-          background: ctaEnabled ? 'linear-gradient(135deg, #e8a832, #e7c268)' : 'rgba(255,255,255,0.06)',
-          color: ctaEnabled ? '#1a1226' : 'rgba(255,255,255,0.4)',
+          background: ctaEnabled ? 'var(--bq-action)' : '#F2F0E7',
+          color: ctaEnabled ? '#FFFFFF' : '#A8A69C',
         }}
       >
         {cta.label}

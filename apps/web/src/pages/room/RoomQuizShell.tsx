@@ -107,18 +107,18 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-surface font-body text-on-surface overflow-hidden relative">
+    <div className="min-h-screen bg-bq-paper font-body text-bq-ink overflow-hidden relative">
       {/* Sprint 4 (S4-9): Quan Tro pause overlay */}
       {isPaused && (
         <div
           data-testid="player-pause-overlay"
           className="fixed inset-0 z-50 grid place-items-center backdrop-blur-sm"
-          style={{ background: 'rgba(0,0,0,0.7)' }}
+          style={{ background: 'rgba(20,20,30,0.55)' }}
         >
-          <div className="text-center px-6">
+          <div className="text-center px-6 bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl py-8">
             <div className="text-5xl mb-3">⏸️</div>
-            <div className="font-bold text-2xl text-white mb-1">Trận đấu đã tạm dừng</div>
-            <div className="text-sm text-gray-400">Quản trò sẽ tiếp tục trong giây lát</div>
+            <div className="font-bold text-2xl text-bq-ink mb-1">Trận đấu đã tạm dừng</div>
+            <div className="text-sm text-bq-ink2">Quản trò sẽ tiếp tục trong giây lát</div>
           </div>
         </div>
       )}
@@ -129,15 +129,14 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
           className="fixed top-16 left-4 right-4 z-40"
         >
           <div
-            className="rounded-xl p-3 flex items-start gap-2 max-w-md mx-auto"
-            style={{ background: 'rgba(232,168,50,0.15)', border: '1px solid rgba(232,168,50,0.4)', backdropFilter: 'blur(8px)' }}
+            className="rounded-xl p-3 flex items-start gap-2 max-w-md mx-auto bg-bq-white border border-bq-amber/40 shadow-bq-soft"
           >
             <span className="text-base flex-shrink-0">👑</span>
             <div className="min-w-0">
-              <div className="text-[10px] font-bold uppercase" style={{ color: '#e8a832' }}>
+              <div className="text-[10px] font-bold uppercase" style={{ color: 'var(--bq-amber-deep)' }}>
                 {hostBroadcast.hostName}
               </div>
-              <div className="text-sm text-white">{hostBroadcast.message}</div>
+              <div className="text-sm text-bq-ink">{hostBroadcast.message}</div>
             </div>
           </div>
         </div>
@@ -146,8 +145,8 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
       {skipToast && (
         <div
           data-testid="player-skip-toast"
-          className="fixed top-16 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-lg text-sm"
-          style={{ background: 'rgba(232,168,50,0.95)', color: '#11131e' }}
+          className="fixed top-16 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-lg text-sm text-white"
+          style={{ background: 'var(--bq-amber-deep)' }}
         >
           ⏭️ Câu này đã được Quản trò bỏ qua
         </div>
@@ -159,8 +158,7 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
           className="fixed bottom-2 left-1/2 -translate-x-1/2 z-30 pointer-events-none"
         >
           <div
-            className="rounded-full px-3 py-1 flex items-center gap-1.5 text-[10px]"
-            style={{ background: 'rgba(50,52,64,0.6)', backdropFilter: 'blur(8px)', color: '#9ca3af' }}
+            className="rounded-full px-3 py-1 flex items-center gap-1.5 text-[10px] bg-bq-white border border-bq-hair shadow-bq-soft text-bq-ink2"
           >
             <span>👑</span>
             <span>Quản trò {hostNameFromState} đang theo dõi</span>
@@ -169,8 +167,8 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
       )}
       {/* Background Decorative Elements */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#9b59b6]/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-secondary/5 blur-[120px] rounded-full" />
+        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-bq-emerald/5 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-bq-amber/5 blur-[120px] rounded-full" />
       </div>
 
       {/* Social Fun: Reactions only — the floating LiveFeed toaster is
@@ -197,28 +195,22 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
             style={{ paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 16px)' }}
           >
             <div
-              className="rounded-xl p-3 flex items-center gap-3"
-              style={{
-                background: 'rgba(50,52,64,0.85)',
-                backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                boxShadow: '0 -8px 30px rgba(0,0,0,0.4)',
-              }}
+              className="rounded-xl p-3 flex items-center gap-3 bg-bq-white border border-bq-hair shadow-bq-soft"
             >
               <div
                 className="w-8 h-8 rounded-full flex-shrink-0"
                 style={{
-                  border: '2px solid #e8a832',
+                  border: '2px solid var(--bq-amber-deep)',
                   borderTopColor: 'transparent',
                   animation: 'spin 0.9s linear infinite',
                 }}
                 aria-hidden="true"
               />
               <div className="flex-1 min-w-0">
-                <div className="text-sm font-semibold text-white truncate">
+                <div className="text-sm font-semibold text-bq-ink truncate">
                   Đang chờ {pending.length} người nữa...
                 </div>
-                <div className="text-xs truncate" style={{ color: '#9ca3af' }}>
+                <div className="text-xs truncate" style={{ color: 'var(--bq-ink-soft)' }}>
                   {pending.map(p => p.username).join(', ')} đang chọn
                 </div>
               </div>
@@ -231,10 +223,10 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
                       width: 24, height: 24,
                       marginLeft: i === 0 ? 0 : -4,
                       background: i % 2 === 0
-                        ? 'linear-gradient(135deg, #4ade80 0%, #047857 100%)'
-                        : 'linear-gradient(135deg, #38bdf8 0%, #0369a1 100%)',
+                        ? 'linear-gradient(135deg, var(--bq-emerald-lt) 0%, var(--bq-emerald) 100%)'
+                        : 'linear-gradient(135deg, var(--bq-sapphire-lt) 0%, var(--bq-sapphire) 100%)',
                       color: '#fff',
-                      border: '2px solid #11131e',
+                      border: '2px solid var(--bq-white)',
                       zIndex: pending.length - i,
                     }}
                   >
@@ -249,8 +241,8 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
 
       {/* Reconnecting banner */}
       {reconnecting && (
-        <div className="fixed top-0 inset-x-0 z-50 px-4 py-2.5 bg-secondary-container/90 border-b border-secondary/30 text-on-surface text-sm text-center animate-pulse flex items-center justify-center gap-2">
-          <span className="material-symbols-outlined text-secondary text-sm animate-spin">sync</span>
+        <div className="fixed top-0 inset-x-0 z-50 px-4 py-2.5 bg-bq-amber/10 border-b border-bq-amber/30 text-bq-ink text-sm text-center animate-pulse flex items-center justify-center gap-2">
+          <span className="material-symbols-outlined text-bq-amberd text-sm animate-spin">sync</span>
           {t('room.reconnecting')}
         </div>
       )}
@@ -277,14 +269,14 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
       )}
 
       {/* ═══════════ HEADER BAR (Q2: mockup state ③/④) ═══════════ */}
-      <header className="fixed top-0 left-0 w-full z-50 bg-surface-container-low/90 backdrop-blur-xl border-b border-outline-variant/10">
+      <header className="fixed top-0 left-0 w-full z-50 bg-bq-white/90 backdrop-blur-xl border-b border-bq-hair">
         <div className="flex items-center justify-between px-4 lg:px-6 h-14">
           {/* Left: mode chip + "Câu N/M" + progress bar */}
           <div className="flex items-center gap-3 min-w-0">
-            <div className={`w-2 h-2 rounded-full flex-shrink-0 ${connected ? 'bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.4)]' : 'bg-error shadow-[0_0_6px_rgba(255,180,171,0.4)]'}`} />
+            <div className={`w-2 h-2 rounded-full flex-shrink-0 ${connected ? 'bg-bq-emerald shadow-[0_0_6px_rgba(14,138,107,0.4)]' : 'bg-bq-ruby shadow-[0_0_6px_rgba(224,53,75,0.4)]'}`} />
             <span
               className="text-[10px] font-bold uppercase tracking-[0.1em] flex-shrink-0"
-              style={{ color: '#9b59b6' }}
+              style={{ color: 'var(--bq-emerald)' }}
             >
               {gameMode.replace(/_/g, ' ')}
             </span>
@@ -292,9 +284,9 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
               <span
                 className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold flex-shrink-0 max-w-[160px] truncate"
                 style={{
-                  color: '#e8a832',
-                  background: 'rgba(232, 168, 50, 0.1)',
-                  border: '1px solid rgba(232, 168, 50, 0.3)',
+                  color: 'var(--bq-amber-deep)',
+                  background: 'color-mix(in srgb, var(--bq-amber) 10%, transparent)',
+                  border: '1px solid color-mix(in srgb, var(--bq-amber) 30%, transparent)',
                 }}
                 data-testid="quiz-header-quizset"
                 title={groupQuizSetName}
@@ -303,21 +295,19 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
                 <span className="truncate">{groupQuizSetName}</span>
               </span>
             )}
-            <div className="hidden sm:block h-4 w-px" style={{ background: 'rgba(255,255,255,0.1)' }} />
-            <span className="text-sm font-bold text-on-surface flex-shrink-0">
+            <div className="hidden sm:block h-4 w-px bg-bq-hair" />
+            <span className="text-sm font-bold text-bq-ink flex-shrink-0">
               {t('room.quiz.questionProgress', { current: questionIndex + 1, total: totalQuestions || '?' })}
             </span>
             {totalQuestions > 0 && (
               <div
-                className="hidden sm:block w-32 lg:w-48 h-1.5 rounded-full overflow-hidden flex-shrink-0"
-                style={{ background: 'rgba(255,255,255,0.05)' }}
+                className="hidden sm:block w-32 lg:w-48 h-1.5 rounded-full overflow-hidden flex-shrink-0 bg-bq-inset"
                 aria-label="Tiến độ câu hỏi"
               >
                 <div
-                  className="h-full rounded-full transition-all"
+                  className="h-full rounded-full transition-all bg-bq-action"
                   style={{
                     width: `${((questionIndex + 1) / totalQuestions) * 100}%`,
-                    background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
                   }}
                 />
               </div>
@@ -333,12 +323,12 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
                 className="px-3 lg:px-4 py-1.5 rounded-full font-extrabold text-white text-xs lg:text-sm"
                 style={{
                   background: selected === correctIndex
-                    ? 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)'
-                    : 'linear-gradient(135deg, #ef4444 0%, #b91c1c 100%)',
+                    ? 'linear-gradient(135deg, var(--bq-emerald-lt) 0%, var(--bq-emerald) 100%)'
+                    : 'linear-gradient(135deg, var(--bq-ruby-lt) 0%, var(--bq-ruby) 100%)',
                   fontFamily: "'Be Vietnam Pro', sans-serif",
                   boxShadow: selected === correctIndex
-                    ? '0 0 24px rgba(74,222,128,0.4)'
-                    : '0 0 24px rgba(239,68,68,0.4)',
+                    ? '0 0 24px rgba(14,138,107,0.4)'
+                    : '0 0 24px rgba(224,53,75,0.4)',
                 }}
               >
                 {selected === correctIndex ? '✓ ĐÚNG!' : '✗ SAI'}
@@ -358,13 +348,13 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
                 <circle
                   cx="24" cy="24" r="20"
                   fill="none" strokeWidth="4"
-                  stroke="rgba(255,255,255,0.08)"
+                  stroke="var(--bq-paper-sunk)"
                 />
                 <circle
                   cx="24" cy="24" r="20"
                   fill="none" strokeWidth="4"
                   strokeLinecap="round"
-                  stroke={timeLeft <= 5 ? '#ef4444' : '#e8a832'}
+                  stroke={timeLeft <= 5 ? 'var(--bq-ruby)' : 'var(--bq-amber-deep)'}
                   strokeDasharray="125.6"
                   strokeDashoffset={125.6 - (timerPercent / 100) * 125.6}
                   style={{ transition: 'stroke-dashoffset 250ms linear' }}
@@ -372,7 +362,7 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
               </svg>
               <span
                 className={`absolute font-bold text-base ${timeLeft <= 5 ? 'animate-pulse' : ''}`}
-                style={{ color: timeLeft <= 5 ? '#ef4444' : '#fff' }}
+                style={{ color: timeLeft <= 5 ? 'var(--bq-ruby)' : 'var(--bq-ink)' }}
               >
                 {Math.ceil(timeLeft)}
               </span>
@@ -381,9 +371,9 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
         </div>
 
         {/* Timer progress bar (mobile only) */}
-        <div className="h-1 bg-surface-container-highest md:hidden">
+        <div className="h-1 bg-bq-inset md:hidden">
           <div
-            className={`h-full transition-all duration-1000 ${timeLeft <= 5 ? 'bg-error' : 'bg-gradient-to-r from-secondary to-tertiary'}`}
+            className={`h-full transition-all duration-1000 ${timeLeft <= 5 ? 'bg-bq-ruby' : 'bg-bq-action'}`}
             style={{ width: `${timerPercent}%` }}
           />
         </div>
@@ -406,11 +396,11 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
           {/* ── LEFT: Scoreboard (lg only — same content as the trailing
                 mobile block; on lg+ it's a sticky sidebar) ── */}
           <aside
-            className="hidden lg:block self-start lg:sticky lg:top-20 bg-surface-container rounded-2xl border border-outline-variant/10 p-4"
+            className="hidden lg:block self-start lg:sticky lg:top-20 bg-bq-white rounded-2xl border border-bq-hair shadow-bq-soft p-4"
             data-testid="quiz-scoreboard-left"
           >
-            <div className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant mb-4 flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-[#9b59b6] text-sm" style={FILL_STYLE}>
+            <div className="text-[10px] font-bold uppercase tracking-[0.1em] text-bq-ink2 mb-4 flex items-center gap-1.5">
+              <span className="material-symbols-outlined text-bq-emerald text-sm" style={FILL_STYLE}>
                 {isBattleRoyale ? 'swords' :
                  isTeamVsTeam ? 'groups' :
                  isSuddenDeath ? 'local_fire_department' :
@@ -423,7 +413,7 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
             </div>
             <div className="space-y-1.5 max-h-[60vh] overflow-auto pr-1">
               {scores.length === 0 ? (
-                <p className="text-on-surface-variant/50 text-xs text-center py-6">{t('room.quiz.noScoresYet')}</p>
+                <p className="text-bq-ink3 text-xs text-center py-6">{t('room.quiz.noScoresYet')}</p>
               ) : (
                 scores.map((s, idx) => {
                   const isMe = s.playerId === myUserId;
@@ -432,33 +422,33 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
                     <div
                       key={s.playerId}
                       className={`flex items-center justify-between p-2.5 rounded-xl border transition-colors ${
-                        isMe ? 'border-secondary/30 bg-secondary/5' :
-                        eliminated ? 'border-transparent bg-surface-container-low opacity-40' :
-                        idx === 0 ? 'border-secondary/15 bg-surface-container-low' :
-                        'border-outline-variant/5 bg-surface-container-low'
+                        isMe ? 'border-bq-amber/30 bg-bq-amber/5' :
+                        eliminated ? 'border-transparent bg-bq-inset opacity-40' :
+                        idx === 0 ? 'border-bq-amber/15 bg-bq-inset' :
+                        'border-bq-hair bg-bq-inset'
                       }`}
                     >
                       <div className="flex items-center gap-2 min-w-0">
                         <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-[10px] font-black flex-shrink-0 ${
-                          eliminated ? 'bg-surface-container-highest text-on-surface-variant' :
-                          idx === 0 ? 'bg-secondary/15 text-secondary border border-secondary/20' :
-                          'bg-surface-container-highest text-on-surface-variant'
+                          eliminated ? 'bg-bq-inset text-bq-ink2' :
+                          idx === 0 ? 'bg-bq-amber/15 text-bq-amberd border border-bq-amber/20' :
+                          'bg-bq-inset text-bq-ink2'
                         }`}>
                           {eliminated ? (
                             <span className="material-symbols-outlined text-xs" style={FILL_STYLE}>skull</span>
                           ) : isSuddenDeath ? (
-                            <span className="material-symbols-outlined text-xs text-[#ff8c42]" style={FILL_STYLE}>local_fire_department</span>
+                            <span className="material-symbols-outlined text-xs text-bq-ember" style={FILL_STYLE}>local_fire_department</span>
                           ) : idx + 1}
                         </div>
                         <div className={`text-sm font-medium truncate ${
-                          isMe ? 'text-secondary' : eliminated ? 'text-on-surface-variant' : 'text-on-surface'
+                          isMe ? 'text-bq-amberd' : eliminated ? 'text-bq-ink2' : 'text-bq-ink'
                         }`}>
                           {s.username}{isMe ? t('room.quiz.youSuffix') : ''}
                         </div>
                       </div>
                       <div className="text-right flex-shrink-0">
-                        <div className={`text-sm font-black ${eliminated ? 'text-on-surface-variant' : 'text-on-surface'}`}>{s.score}</div>
-                        <div className="text-on-surface-variant/50 text-[10px] font-bold">{s.correctAnswers}/{s.totalAnswered}</div>
+                        <div className={`text-sm font-black ${eliminated ? 'text-bq-ink2' : 'text-bq-ink'}`}>{s.score}</div>
+                        <div className="text-bq-ink3 text-[10px] font-bold">{s.correctAnswers}/{s.totalAnswered}</div>
                       </div>
                     </div>
                   );
@@ -483,34 +473,31 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
                     return (
                       <div
                         key={s.playerId}
-                        className="rounded-full px-2.5 py-1.5 flex items-center gap-1.5 flex-shrink-0"
+                        className="rounded-full px-2.5 py-1.5 flex items-center gap-1.5 flex-shrink-0 bg-bq-white shadow-bq-soft"
                         style={{
-                          background: 'rgba(50,52,64,0.55)',
-                          backdropFilter: 'blur(12px)',
-                          border: isMe ? '1.5px solid rgba(232,168,50,0.5)' : '1px solid rgba(255,255,255,0.06)',
+                          border: isMe ? '1.5px solid color-mix(in srgb, var(--bq-amber) 50%, transparent)' : '1px solid var(--bq-hairline)',
                           opacity: !answered && !isMe ? 0.7 : 1,
                         }}
                       >
                         <div
-                          className="w-5 h-5 rounded-full grid place-items-center text-[10px] font-bold"
+                          className="w-5 h-5 rounded-full grid place-items-center text-[10px] font-bold text-white"
                           style={{
                             background: isMe
-                              ? 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)'
+                              ? 'linear-gradient(135deg, var(--bq-amber-lt) 0%, var(--bq-amber-deep) 100%)'
                               : idx === 0
-                              ? 'linear-gradient(135deg, #4ade80 0%, #047857 100%)'
-                              : 'linear-gradient(135deg, #38bdf8 0%, #0369a1 100%)',
-                            color: isMe ? '#11131e' : '#fff',
+                              ? 'linear-gradient(135deg, var(--bq-emerald-lt) 0%, var(--bq-emerald) 100%)'
+                              : 'linear-gradient(135deg, var(--bq-sapphire-lt) 0%, var(--bq-sapphire) 100%)',
                           }}
                         >
                           {initial}
                         </div>
-                        <span className="text-xs font-semibold text-white tabular-nums">{s.score}</span>
+                        <span className="text-xs font-semibold text-bq-ink tabular-nums">{s.score}</span>
                         {answered ? (
-                          <span className="text-[10px]" style={{ color: '#4ade80' }}>✓</span>
+                          <span className="text-[10px]" style={{ color: 'var(--bq-emerald)' }}>✓</span>
                         ) : (
                           <span
                             className="w-2 h-2 rounded-full animate-pulse"
-                            style={{ background: '#fbbf24' }}
+                            style={{ background: 'var(--bq-amber-deep)' }}
                             aria-label="Đang chọn"
                           />
                         )}
@@ -536,22 +523,22 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
                 {/* Mobile round counter (non-sequential modes) */}
                 <div className="flex items-center justify-between md:hidden">
                   <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-secondary text-sm" style={FILL_STYLE}>quiz</span>
-                    <span className="text-[10px] font-black uppercase tracking-wider text-secondary">
+                    <span className="material-symbols-outlined text-bq-amberd text-sm" style={FILL_STYLE}>quiz</span>
+                    <span className="text-[10px] font-black uppercase tracking-wider text-bq-amberd">
                       {t('room.quiz.questionProgress', { current: questionIndex + 1, total: totalQuestions || '?' })}
                     </span>
                   </div>
                   {scores.length > 0 && (
-                    <div className="text-[10px] font-bold text-on-surface-variant">
+                    <div className="text-[10px] font-bold text-bq-ink2">
                       {t('room.quiz.points', { count: scores.find(s => s.playerId === myUserId)?.score ?? 0 })}
                     </div>
                   )}
                 </div>
 
                 {/* Question Card (Stitch design — non-sequential modes) */}
-                <div className="relative w-full flex flex-col items-center justify-center text-center p-8 md:p-10 bg-surface-container-low rounded-[2rem] border border-outline-variant/10 shadow-2xl overflow-hidden min-h-[140px]">
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-24 bg-secondary rounded-r-full" />
-                  <h2 className="font-headline text-xl md:text-3xl font-extrabold tracking-tight leading-snug max-w-3xl text-on-surface">
+                <div className="relative w-full flex flex-col items-center justify-center text-center p-8 md:p-10 bg-bq-white rounded-[2rem] border border-bq-hair shadow-bq-soft overflow-hidden min-h-[140px]">
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-24 bg-bq-amber rounded-r-full" />
+                  <h2 className="font-display text-xl md:text-3xl font-extrabold tracking-tight leading-snug max-w-3xl text-bq-ink">
                     {question?.content || t('room.quiz.waitingQuestion')}
                   </h2>
                 </div>
@@ -577,7 +564,7 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
 
             {/* Feedback */}
             {selected !== null && correctIndex === null && !br.isSpectator && !(isSuddenDeath && sd.sdSpectating) && !isSequential && (
-              <div className="text-center text-on-surface-variant text-sm animate-pulse flex items-center justify-center gap-2">
+              <div className="text-center text-bq-ink2 text-sm animate-pulse flex items-center justify-center gap-2">
                 <span className="material-symbols-outlined text-sm animate-spin">hourglass_empty</span>
                 {t('room.quiz.waitingResult')}
               </div>
@@ -639,7 +626,7 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
             {/* Spectator feedback */}
             {correctIndex !== null && (br.isSpectator || (isSuddenDeath && sd.sdSpectating)) && (
               <div className="text-center text-sm">
-                <span className="text-[#4a9eff] flex items-center justify-center gap-1.5">
+                <span className="text-bq-sapphire flex items-center justify-center gap-1.5">
                   <span className="material-symbols-outlined text-sm">visibility</span>
                   {t('room.quiz.spectatorNote')}
                 </span>
@@ -659,19 +646,19 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
 
           {/* ── RIGHT (lg+): Live feed sidebar matching mockup state ③/④ ── */}
           <aside
-            className="hidden lg:flex flex-col self-start lg:sticky lg:top-20 bg-surface-container rounded-2xl border border-outline-variant/10 overflow-hidden"
+            className="hidden lg:flex flex-col self-start lg:sticky lg:top-20 bg-bq-white rounded-2xl border border-bq-hair shadow-bq-soft overflow-hidden"
             data-testid="quiz-live-feed"
             style={{ maxHeight: 'calc(100vh - 6rem)' }}
           >
-            <div className="px-4 py-3 border-b border-outline-variant/10 flex items-center gap-2">
+            <div className="px-4 py-3 border-b border-bq-hair flex items-center gap-2">
               <span className="text-sm" aria-hidden="true">📢</span>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-bq-ink2">
                 Live feed
               </span>
             </div>
             <div className="flex-1 px-4 py-3 space-y-2 overflow-y-auto">
               {feedHistory.length === 0 ? (
-                <p className="text-on-surface-variant/50 text-xs italic text-center py-4">
+                <p className="text-bq-ink3 text-xs italic text-center py-4">
                   Đang chờ hoạt động đầu tiên...
                 </p>
               ) : (
@@ -681,9 +668,9 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
                     className="text-xs"
                     style={{
                       color:
-                        e.tone === 'ok' ? 'rgba(74,222,128,0.85)' :
-                        e.tone === 'fail' ? 'rgba(248,113,113,0.85)' :
-                        'rgba(156,163,175,0.7)',
+                        e.tone === 'ok' ? 'var(--bq-emerald)' :
+                        e.tone === 'fail' ? 'var(--bq-ruby)' :
+                        'var(--bq-ink-soft)',
                       fontStyle: e.kind === 'round_end' ? 'italic' : 'normal',
                     }}
                   >
@@ -695,9 +682,9 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
           </aside>
 
           {/* ── Leaderboard / Side Panel (mobile only — desktop uses LEFT) ── */}
-          <div className="lg:hidden bg-surface-container rounded-2xl border border-outline-variant/10 p-4 self-start">
-            <div className="text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant mb-4 flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-[#9b59b6] text-sm" style={FILL_STYLE}>
+          <div className="lg:hidden bg-bq-white rounded-2xl border border-bq-hair shadow-bq-soft p-4 self-start">
+            <div className="text-[10px] font-bold uppercase tracking-[0.1em] text-bq-ink2 mb-4 flex items-center gap-1.5">
+              <span className="material-symbols-outlined text-bq-emerald text-sm" style={FILL_STYLE}>
                 {isBattleRoyale ? 'swords' :
                  isTeamVsTeam ? 'groups' :
                  isSuddenDeath ? 'local_fire_department' :
@@ -710,7 +697,7 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
             </div>
             <div className="space-y-1.5 max-h-[55vh] overflow-auto pr-1">
               {scores.length === 0 ? (
-                <p className="text-on-surface-variant/50 text-xs text-center py-6">{t('room.quiz.noScoresYet')}</p>
+                <p className="text-bq-ink3 text-xs text-center py-6">{t('room.quiz.noScoresYet')}</p>
               ) : (
                 scores.map((s, idx) => {
                   const isMe = s.playerId === myUserId;
@@ -719,33 +706,33 @@ const RoomQuizShell: React.FC<RoomQuizShellProps> = ({
                     <div
                       key={s.playerId}
                       className={`flex items-center justify-between p-2.5 rounded-xl border transition-colors ${
-                        isMe ? 'border-secondary/30 bg-secondary/5' :
-                        eliminated ? 'border-transparent bg-surface-container-low opacity-40' :
-                        idx === 0 ? 'border-secondary/15 bg-surface-container-low' :
-                        'border-outline-variant/5 bg-surface-container-low'
+                        isMe ? 'border-bq-amber/30 bg-bq-amber/5' :
+                        eliminated ? 'border-transparent bg-bq-inset opacity-40' :
+                        idx === 0 ? 'border-bq-amber/15 bg-bq-inset' :
+                        'border-bq-hair bg-bq-inset'
                       }`}
                     >
                       <div className="flex items-center gap-2">
                         <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-[10px] font-black ${
-                          eliminated ? 'bg-surface-container-highest text-on-surface-variant' :
-                          idx === 0 ? 'bg-secondary/15 text-secondary border border-secondary/20' :
-                          'bg-surface-container-highest text-on-surface-variant'
+                          eliminated ? 'bg-bq-inset text-bq-ink2' :
+                          idx === 0 ? 'bg-bq-amber/15 text-bq-amberd border border-bq-amber/20' :
+                          'bg-bq-inset text-bq-ink2'
                         }`}>
                           {eliminated ? (
                             <span className="material-symbols-outlined text-xs" style={FILL_STYLE}>skull</span>
                           ) : isSuddenDeath ? (
-                            <span className="material-symbols-outlined text-xs text-[#ff8c42]" style={FILL_STYLE}>local_fire_department</span>
+                            <span className="material-symbols-outlined text-xs text-bq-ember" style={FILL_STYLE}>local_fire_department</span>
                           ) : idx + 1}
                         </div>
                         <div className={`text-sm font-medium truncate max-w-[80px] ${
-                          isMe ? 'text-secondary' : eliminated ? 'text-on-surface-variant' : 'text-on-surface'
+                          isMe ? 'text-bq-amberd' : eliminated ? 'text-bq-ink2' : 'text-bq-ink'
                         }`}>
                           {s.username}{isMe ? t('room.quiz.youSuffix') : ''}
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className={`text-sm font-black ${eliminated ? 'text-on-surface-variant' : 'text-on-surface'}`}>{s.score}</div>
-                        <div className="text-on-surface-variant/50 text-[10px] font-bold">{s.correctAnswers}/{s.totalAnswered}</div>
+                        <div className={`text-sm font-black ${eliminated ? 'text-bq-ink2' : 'text-bq-ink'}`}>{s.score}</div>
+                        <div className="text-bq-ink3 text-[10px] font-bold">{s.correctAnswers}/{s.totalAnswered}</div>
                       </div>
                     </div>
                   );

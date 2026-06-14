@@ -41,11 +41,11 @@ const SequentialLobbyView: React.FC<Props> = ({
   // Error state — host closed room, room expired, network failure on retry.
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-4" style={{ background: '#0a0b13' }}>
+      <div className="min-h-screen flex items-center justify-center px-4" style={{ background: '#FBFAF5' }}>
         <div className="text-center space-y-4 max-w-sm">
-          <span className="material-symbols-outlined text-error text-5xl">error</span>
-          <p className="text-on-surface text-base">{error}</p>
-          <button onClick={onLeave} className="text-secondary underline text-sm">
+          <span className="material-symbols-outlined text-bq-ruby text-5xl">error</span>
+          <p className="text-bq-ink text-base">{error}</p>
+          <button onClick={onLeave} className="text-bq-amberd underline text-sm">
             Quay lại
           </button>
         </div>
@@ -54,55 +54,53 @@ const SequentialLobbyView: React.FC<Props> = ({
   }
 
   return (
-    <div className="min-h-screen text-on-surface px-4 py-5 max-w-3xl mx-auto" style={{ background: '#0a0b13' }}>
+    <div className="min-h-screen text-bq-ink px-4 py-5 max-w-3xl mx-auto" style={{ background: '#FBFAF5' }}>
       {/* Reconnecting banner — same UX as the standard lobby */}
       {reconnecting && (
-        <div className="fixed top-0 left-0 right-0 z-[70] bg-error-container/90 text-on-error-container text-center py-2 text-sm font-medium">
+        <div className="fixed top-0 left-0 right-0 z-[70] bg-bq-ruby/90 text-white text-center py-2 text-sm font-medium">
           <span className="material-symbols-outlined text-sm align-middle mr-1">wifi_off</span>
           Đang kết nối lại...
         </div>
       )}
       {!connected && !reconnecting && (
-        <div className="fixed top-0 left-0 right-0 z-[70] bg-orange-500/20 text-orange-300 text-center py-2 text-xs font-medium">
+        <div className="fixed top-0 left-0 right-0 z-[70] bg-bq-amber/15 text-bq-amberd text-center py-2 text-xs font-medium">
           Mất kết nối
         </div>
       )}
 
       {/* Page header */}
       <div className="mb-5 flex items-center gap-2.5">
-        <button onClick={onLeave} className="text-on-surface/60 hover:text-on-surface" aria-label="Back">
+        <button onClick={onLeave} className="text-bq-ink2 hover:text-bq-ink" aria-label="Back">
           <span className="material-symbols-outlined">arrow_back</span>
         </button>
         <div className="flex items-center gap-2.5 flex-1 min-w-0">
           <div className="w-8 h-8 rounded-lg grid place-items-center flex-shrink-0"
-            style={{ background: 'linear-gradient(135deg, rgba(167,139,250,0.2) 0%, rgba(124,58,237,0.1) 100%)', border: '1px solid rgba(167,139,250,0.3)' }}>
-            <span className="material-symbols-outlined text-[18px]" style={{ color: '#a78bfa', ...FILL }}>play_circle</span>
+            style={{ background: 'linear-gradient(135deg, rgba(45,70,200,0.16) 0%, rgba(45,70,200,0.06) 100%)', border: '1px solid rgba(45,70,200,0.3)' }}>
+            <span className="material-symbols-outlined text-[18px]" style={{ color: '#2D46C8', ...FILL }}>play_circle</span>
           </div>
           <div className="min-w-0">
-            <h2 className="text-[18px] font-extrabold truncate">Phòng "{roomName}"</h2>
-            <p className="text-on-surface-variant text-[12px]">Đang chờ thành viên tham gia</p>
+            <h2 className="font-display text-[18px] font-extrabold truncate">Phòng "{roomName}"</h2>
+            <p className="text-bq-ink2 text-[12px]">Đang chờ thành viên tham gia</p>
           </div>
         </div>
       </div>
 
       {/* Lobby card */}
-      <div className="rounded-2xl p-5 mb-4"
+      <div className="rounded-2xl p-5 mb-4 bg-bq-white shadow-bq-soft"
         style={{
-          background: 'rgba(50,52,64,0.4)',
-          backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(232,168,50,0.15)',
+          border: '1px solid #E7E4DA',
         }}
       >
         {/* Room code wrap */}
         <div className="rounded-xl px-4 py-3.5 mb-4 flex items-center justify-between"
-          style={{ background: 'rgba(17,19,30,0.5)', border: '1px solid rgba(232,168,50,0.2)' }}>
+          style={{ background: '#F2F0E7', border: '1px solid rgba(245,158,11,0.25)' }}>
           <div className="flex-1 min-w-0">
-            <div className="text-[10px] uppercase tracking-[1px] text-on-surface/60 mb-0.5">Mã tham gia · Chia sẻ với anh chị em</div>
-            <div className="text-[22px] font-extrabold tabular-nums" style={{ color: '#e8a832', letterSpacing: 4 }}>{roomCode}</div>
+            <div className="text-[10px] uppercase tracking-[1px] text-bq-ink2 mb-0.5">Mã tham gia · Chia sẻ với anh chị em</div>
+            <div className="text-[22px] font-extrabold tabular-nums" style={{ color: '#D97F06', letterSpacing: 4 }}>{roomCode}</div>
           </div>
           <button onClick={handleCopy}
             className="rounded-lg px-3 py-2 text-[11px] font-bold flex items-center gap-1.5"
-            style={{ background: 'rgba(232,168,50,0.15)', color: '#e8a832', border: '1px solid rgba(232,168,50,0.3)' }}>
+            style={{ background: 'rgba(245,158,11,0.15)', color: '#D97F06', border: '1px solid rgba(245,158,11,0.3)' }}>
             <span className="material-symbols-outlined text-[14px]">{copied ? 'check' : 'content_copy'}</span>
             {copied ? 'Đã copy' : 'Sao chép'}
           </button>
@@ -116,10 +114,10 @@ const SequentialLobbyView: React.FC<Props> = ({
             { icon: 'forum', value: 'Tuần tự', label: 'Có pause' },
           ].map((c, i) => (
             <div key={i} className="rounded-lg px-3 py-2.5 text-center"
-              style={{ background: 'rgba(17,19,30,0.4)', border: '1px solid rgba(255,255,255,0.04)' }}>
-              <span className="material-symbols-outlined text-[16px] block mb-1" style={{ color: '#a78bfa' }}>{c.icon}</span>
+              style={{ background: '#F2F0E7', border: '1px solid #E7E4DA' }}>
+              <span className="material-symbols-outlined text-[16px] block mb-1" style={{ color: '#2D46C8' }}>{c.icon}</span>
               <div className="text-[14px] font-extrabold">{c.value}</div>
-              <div className="text-[9px] uppercase tracking-wide text-on-surface/60 mt-0.5">{c.label}</div>
+              <div className="text-[9px] uppercase tracking-wide text-bq-ink2 mt-0.5">{c.label}</div>
             </div>
           ))}
         </div>
@@ -127,10 +125,10 @@ const SequentialLobbyView: React.FC<Props> = ({
         {/* Players header */}
         <div className="flex items-center justify-between mb-3">
           <div className="text-[13px] font-bold flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-[16px] text-green-400">groups</span>
+            <span className="material-symbols-outlined text-[16px] text-bq-emerald">groups</span>
             Người tham gia
           </div>
-          <span className="text-[11px] font-bold rounded-md px-2 py-0.5 bg-green-500/10 text-green-400">
+          <span className="text-[11px] font-bold rounded-md px-2 py-0.5 bg-bq-emerald/10 text-bq-emerald">
             {players.length} / {maxPlayers}
           </span>
         </div>
@@ -144,21 +142,21 @@ const SequentialLobbyView: React.FC<Props> = ({
               <div key={p.userId} className="text-center relative">
                 {isHostP && <div className="absolute -top-1.5 left-1/2 translate-x-[60%] text-[14px]">👑</div>}
                 <div className={`w-12 h-12 rounded-full mx-auto mb-1.5 grid place-items-center font-extrabold text-[18px] border-2 ${
-                  isHostP ? 'border-[#fbbf24]' : ready ? 'border-green-400' : 'border-white/10'
+                  isHostP ? 'border-[#F59E0B]' : ready ? 'border-bq-emerald' : 'border-bq-hair'
                 }`}
                   style={{
                     background: isHostP
-                      ? 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)'
+                      ? 'linear-gradient(135deg, #F59E0B 0%, #D97F06 100%)'
                       : ready
-                        ? 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)'
-                        : 'rgba(50,52,64,0.5)',
-                    color: isHostP || ready ? '#11131e' : '#d1d5db',
+                        ? 'linear-gradient(135deg, #46C89A 0%, #0E8A6B 100%)'
+                        : '#F2F0E7',
+                    color: isHostP || ready ? '#FFFFFF' : '#6C6A62',
                   }}>
                   {p.username[0]?.toUpperCase()}
                 </div>
-                <div className="text-[11px] font-semibold text-on-surface/85 truncate">{p.username}</div>
+                <div className="text-[11px] font-semibold text-bq-ink truncate">{p.username}</div>
                 <div className={`text-[9px] uppercase tracking-wider font-bold mt-0.5 ${
-                  isHostP ? 'text-[#fbbf24]' : ready ? 'text-green-400' : 'text-on-surface/40'
+                  isHostP ? 'text-bq-amberd' : ready ? 'text-bq-emerald' : 'text-bq-ink3'
                 }`}>
                   {isHostP ? 'Trưởng' : ready ? 'Sẵn sàng' : 'Đang vào...'}
                 </div>
@@ -167,10 +165,10 @@ const SequentialLobbyView: React.FC<Props> = ({
           })}
           {Array.from({ length: emptySlots }).map((_, i) => (
             <div key={`empty-${i}`} className="text-center">
-              <div className="w-12 h-12 rounded-full mx-auto mb-1.5 grid place-items-center text-white/20 text-[20px] border-2 border-dashed border-white/10">
+              <div className="w-12 h-12 rounded-full mx-auto mb-1.5 grid place-items-center text-bq-ink3 text-[20px] border-2 border-dashed border-bq-hair">
                 +
               </div>
-              <div className="text-[11px] text-on-surface/40">Chờ...</div>
+              <div className="text-[11px] text-bq-ink3">Chờ...</div>
             </div>
           ))}
         </div>
@@ -181,24 +179,23 @@ const SequentialLobbyView: React.FC<Props> = ({
             <div className="flex gap-2.5 mb-2.5">
               <button onClick={onLeave}
                 className="rounded-xl px-4 py-3.5 text-[13px] font-bold"
-                style={{ background: 'rgba(50,52,64,0.6)', color: '#d1d5db', border: '1px solid rgba(255,255,255,0.08)' }}>
+                style={{ background: '#F2F0E7', color: '#6C6A62', border: '1px solid #E7E4DA' }}>
                 Đóng phòng
               </button>
               <button onClick={onStart}
-                className="flex-1 rounded-xl py-4 text-[15px] font-extrabold flex items-center justify-center gap-2"
-                style={{ background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)', color: '#11131e', boxShadow: '0 6px 20px rgba(232,168,50,0.3)' }}>
+                className="flex-1 rounded-xl py-4 text-[15px] font-extrabold flex items-center justify-center gap-2 bg-bq-action text-white shadow-bq-action">
                 <span className="material-symbols-outlined text-[20px]">play_arrow</span>
                 Bắt đầu chơi
               </button>
             </div>
-            <div className="text-center text-[11px] text-on-surface/60">
-              <strong className="text-[#fbbf24]">Lưu ý:</strong> Khi bắt đầu, người vào sau sẽ không tham gia được
+            <div className="text-center text-[11px] text-bq-ink2">
+              <strong className="text-bq-amberd">Lưu ý:</strong> Khi bắt đầu, người vào sau sẽ không tham gia được
             </div>
           </>
         ) : (
           <div className="rounded-lg px-4 py-3 flex items-center justify-center gap-1.5 text-[12px]"
-            style={{ background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.25)', color: '#c4b5fd' }}>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#a78bfa] animate-pulse" />
+            style={{ background: 'rgba(45,70,200,0.06)', border: '1px solid rgba(45,70,200,0.22)', color: '#2D46C8' }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-bq-sapphire animate-pulse" />
             Đang chờ trưởng phòng bắt đầu...
           </div>
         )}

@@ -22,11 +22,11 @@ const TeamVsTeamView: React.FC<{ team: TeamVsTeamState }> = ({ team }) => (
 export const TeamHeaderBadge: React.FC<{ myTeam: string }> = ({ myTeam }) => (
   <div className={`hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full border ${
     myTeam === 'A'
-      ? 'bg-[#4a9eff]/10 border-[#4a9eff]/20'
-      : 'bg-error/10 border-error/20'
+      ? 'bg-bq-sapphire/10 border-bq-sapphire/20'
+      : 'bg-bq-ruby/10 border-bq-ruby/20'
   }`}>
-    <span className={`w-2 h-2 rounded-full ${myTeam === 'A' ? 'bg-[#4a9eff]' : 'bg-error'}`} />
-    <span className={`text-[10px] font-black ${myTeam === 'A' ? 'text-[#4a9eff]' : 'text-error'}`}>
+    <span className={`w-2 h-2 rounded-full ${myTeam === 'A' ? 'bg-bq-sapphire' : 'bg-bq-ruby'}`} />
+    <span className={`text-[10px] font-black ${myTeam === 'A' ? 'text-bq-sapphire' : 'text-bq-ruby'}`}>
       Team {myTeam}
     </span>
   </div>
@@ -38,8 +38,8 @@ export const PerfectRoundBanner: React.FC<{
 }> = ({ perfectA, perfectB, myTeam }) => (
   <div className={`p-4 rounded-2xl border text-center font-bold text-sm animate-pulse ${
     (perfectA && myTeam === 'A') || (perfectB && myTeam === 'B')
-      ? 'border-secondary/30 bg-secondary/5 text-secondary'
-      : 'border-[#9b59b6]/30 bg-[#9b59b6]/5 text-[#9b59b6]'
+      ? 'border-bq-amber/30 bg-bq-amber/5 text-bq-amberd'
+      : 'border-bq-emerald/30 bg-bq-emerald/5 text-bq-emerald'
   }`}>
     <span className="material-symbols-outlined text-sm mr-1" style={FILL_STYLE}>stars</span>
     Perfect Round! {perfectA ? 'Team A' : ''}{perfectA && perfectB ? ' & ' : ''}{perfectB ? 'Team B' : ''} +50 diem!

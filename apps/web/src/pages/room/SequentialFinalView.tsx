@@ -43,13 +43,13 @@ const SequentialFinalView: React.FC<Props> = ({
   const top3 = sorted.slice(0, 3)
 
   return (
-    <div className="min-h-screen text-on-surface px-4 py-6 max-w-3xl mx-auto" style={{ background: '#0a0b13' }} data-testid="sequential-final">
+    <div className="min-h-screen text-bq-ink px-4 py-6 max-w-3xl mx-auto" style={{ background: '#FBFAF5' }} data-testid="sequential-final">
       {/* Final banner */}
-      <div className="rounded-2xl p-5 text-center mb-4"
-        style={{ background: 'linear-gradient(135deg, rgba(232,168,50,0.15) 0%, rgba(50,52,64,0.4) 60%)', border: '1px solid rgba(232,168,50,0.3)' }}>
-        <div className="text-[48px] mb-2" style={{ filter: 'drop-shadow(0 4px 12px rgba(251,191,36,0.4))' }}>🎉</div>
-        <h3 className="text-xl font-extrabold mb-1">Hoàn thành!</h3>
-        <p className="text-on-surface/60 text-[12px]">
+      <div className="rounded-2xl p-5 text-center mb-4 bg-bq-white shadow-bq-soft"
+        style={{ border: '1px solid rgba(245,158,11,0.3)' }}>
+        <div className="text-[48px] mb-2" style={{ filter: 'drop-shadow(0 4px 12px rgba(245,158,11,0.35))' }}>🎉</div>
+        <h3 className="font-display text-xl font-extrabold mb-1">Hoàn thành!</h3>
+        <p className="text-bq-ink2 text-[12px]">
           "{roomName}" · {totalQuestions} câu · {sorted.length} người chơi{totalSeconds ? ` · ${fmtElapsed(totalSeconds)}` : ''}
         </p>
       </div>
@@ -61,30 +61,30 @@ const SequentialFinalView: React.FC<Props> = ({
             if (!p) return <div key={idx} />
             const place = idx === 0 ? 'second' : idx === 1 ? 'first' : 'third'
             const medal = place === 'first' ? '🥇' : place === 'second' ? '🥈' : '🥉'
-            const borderColor = place === 'first' ? 'rgba(251,191,36,0.4)'
-              : place === 'second' ? 'rgba(209,213,219,0.25)' : 'rgba(217,119,6,0.3)'
-            const avatarBg = place === 'first' ? 'linear-gradient(135deg, #fbbf24, #d97706)'
-              : place === 'second' ? 'linear-gradient(135deg, #93c5fd, #3b82f6)' : 'linear-gradient(135deg, #f472b6, #ec4899)'
-            const avatarColor = place === 'third' ? '#fff' : '#11131e'
+            const borderColor = place === 'first' ? 'rgba(245,158,11,0.4)'
+              : place === 'second' ? 'rgba(45,70,200,0.25)' : 'rgba(224,53,75,0.3)'
+            const avatarBg = place === 'first' ? 'linear-gradient(135deg, #F59E0B, #D97F06)'
+              : place === 'second' ? 'linear-gradient(135deg, #6E86F0, #2D46C8)' : 'linear-gradient(135deg, #FF7A5A, #E0354B)'
+            const avatarColor = '#FFFFFF'
             const avatarSize = place === 'first' ? 48 : 40
             return (
-              <div key={p.playerId} className="rounded-xl text-center relative px-2 py-3.5"
-                style={{ background: 'rgba(50,52,64,0.4)', border: `1.5px solid ${borderColor}`, paddingTop: place === 'first' ? 22 : 14 }}>
+              <div key={p.playerId} className="rounded-xl text-center relative px-2 py-3.5 bg-bq-white shadow-bq-soft"
+                style={{ border: `1.5px solid ${borderColor}`, paddingTop: place === 'first' ? 22 : 14 }}>
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-[22px]">{medal}</div>
                 <div className="rounded-full mx-auto mb-1.5 grid place-items-center font-extrabold border-2"
                   style={{
                     width: avatarSize, height: avatarSize,
                     fontSize: place === 'first' ? 18 : 14,
                     background: avatarBg, color: avatarColor,
-                    borderColor: place === 'first' ? '#fbbf24' : place === 'second' ? '#93c5fd' : '#f472b6',
+                    borderColor: place === 'first' ? '#F59E0B' : place === 'second' ? '#6E86F0' : '#FF7A5A',
                   }}>
                   {p.username[0]?.toUpperCase()}
                 </div>
                 <div className="text-[11px] font-bold truncate mb-1">{p.username}</div>
-                <div className="font-extrabold tabular-nums" style={{ color: '#e8a832', fontSize: place === 'first' ? 16 : 14 }}>
+                <div className="font-extrabold tabular-nums" style={{ color: '#D97F06', fontSize: place === 'first' ? 16 : 14 }}>
                   {p.score}
                 </div>
-                <div className="text-[9px] text-on-surface/60 mt-0.5">
+                <div className="text-[9px] text-bq-ink2 mt-0.5">
                   {p.correctAnswers ?? 0}/{totalQuestions}{p.averageReactionTime ? ` · ${fmtAvg(p.averageReactionTime)} TB` : ''}
                 </div>
               </div>
@@ -94,7 +94,7 @@ const SequentialFinalView: React.FC<Props> = ({
       )}
 
       {/* Full leaderboard list */}
-      <div className="rounded-xl p-1.5 mb-4" style={{ background: 'rgba(50,52,64,0.3)' }}>
+      <div className="rounded-xl p-1.5 mb-4 bg-bq-white border border-bq-hair shadow-bq-soft">
         {sorted.map((p, idx) => {
           const isMe = p.username === myUsername
           return (
@@ -102,31 +102,30 @@ const SequentialFinalView: React.FC<Props> = ({
               className={`grid gap-2.5 items-center px-2.5 py-2.5 rounded-lg ${isMe ? 'border' : ''}`}
               style={{
                 gridTemplateColumns: '28px 32px 1fr auto',
-                background: isMe ? 'rgba(232,168,50,0.1)' : 'transparent',
-                borderColor: isMe ? 'rgba(232,168,50,0.25)' : 'transparent',
+                background: isMe ? 'rgba(245,158,11,0.1)' : 'transparent',
+                borderColor: isMe ? 'rgba(245,158,11,0.25)' : 'transparent',
               }}>
-              <span className={`text-center text-[12px] font-extrabold ${isMe ? 'text-[#fbbf24]' : 'text-on-surface/40'}`}>
+              <span className={`text-center text-[12px] font-extrabold ${isMe ? 'text-bq-amberd' : 'text-bq-ink3'}`}>
                 {idx + 1}
               </span>
-              <div className="w-8 h-8 rounded-full grid place-items-center text-[12px] font-bold"
+              <div className="w-8 h-8 rounded-full grid place-items-center text-[12px] font-bold text-white"
                 style={{
-                  background: isMe ? 'linear-gradient(135deg, #e8a832, #d97706)'
-                    : idx === 0 ? 'linear-gradient(135deg, #fbbf24, #d97706)'
-                    : 'linear-gradient(135deg, #6b7280, #4b5563)',
-                  color: isMe || idx === 0 ? '#11131e' : '#f3f4f6',
+                  background: isMe ? 'linear-gradient(135deg, #F59E0B, #D97F06)'
+                    : idx === 0 ? 'linear-gradient(135deg, #F59E0B, #D97F06)'
+                    : 'linear-gradient(135deg, #A8A69C, #6C6A62)',
                 }}>
                 {p.username[0]?.toUpperCase()}
               </div>
               <div className="min-w-0">
                 <div className="text-[12px] font-semibold truncate flex items-center gap-1.5">
                   {p.username}
-                  {isMe && <span className="text-[8px] font-extrabold rounded px-1.5 py-0.5" style={{ background: 'rgba(232,168,50,0.2)', color: '#fbbf24' }}>BẠN</span>}
+                  {isMe && <span className="text-[8px] font-extrabold rounded px-1.5 py-0.5" style={{ background: 'rgba(245,158,11,0.2)', color: '#D97F06' }}>BẠN</span>}
                 </div>
-                <div className="text-[10px] text-on-surface/60 mt-0.5">
+                <div className="text-[10px] text-bq-ink2 mt-0.5">
                   {p.correctAnswers ?? 0}/{totalQuestions} đúng{p.averageReactionTime ? ` · ${fmtAvg(p.averageReactionTime)} trung bình` : ''}
                 </div>
               </div>
-              <div className="text-[13px] font-extrabold tabular-nums" style={{ color: '#e8a832' }}>{p.score}</div>
+              <div className="text-[13px] font-extrabold tabular-nums" style={{ color: '#D97F06' }}>{p.score}</div>
             </div>
           )
         })}
@@ -136,21 +135,19 @@ const SequentialFinalView: React.FC<Props> = ({
       <div className="flex gap-2.5">
         <button onClick={onShare ?? onClose}
           className="rounded-xl px-4 py-3.5 text-[13px] font-bold flex items-center gap-1.5"
-          style={{ background: 'rgba(50,52,64,0.6)', color: '#d1d5db', border: '1px solid rgba(255,255,255,0.08)' }}>
+          style={{ background: '#FFFFFF', color: '#6C6A62', border: '1px solid #E7E4DA' }}>
           <span className="material-symbols-outlined text-[16px]">share</span>
           Chia sẻ kết quả
         </button>
         {isHost ? (
           <button onClick={onCreateNew ?? onClose}
-            className="flex-1 rounded-xl py-3.5 text-[14px] font-extrabold flex items-center justify-center gap-2"
-            style={{ background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)', color: '#11131e', boxShadow: '0 6px 20px rgba(232,168,50,0.3)' }}>
+            className="flex-1 rounded-xl py-3.5 text-[14px] font-extrabold flex items-center justify-center gap-2 bg-bq-action text-white shadow-bq-action">
             <span className="material-symbols-outlined text-[18px]">refresh</span>
             Tạo phòng mới
           </button>
         ) : (
           <button onClick={onClose}
-            className="flex-1 rounded-xl py-3.5 text-[14px] font-extrabold"
-            style={{ background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)', color: '#11131e' }}>
+            className="flex-1 rounded-xl py-3.5 text-[14px] font-extrabold bg-bq-action text-white shadow-bq-action">
             Quay về nhóm
           </button>
         )}

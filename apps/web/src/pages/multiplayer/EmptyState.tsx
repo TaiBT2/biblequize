@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import QuickMatchConfigModal from './QuickMatchConfigModal'
 
-const INDIGO_GRADIENT = 'linear-gradient(135deg, #6366f1 0%, #818cf8 100%)'
+const INDIGO_GRADIENT = 'linear-gradient(135deg, #2D46C8 0%, #6E86F0 100%)'
 
 interface Props {
   /** Forward to config modal so AI source can be tier-gated. */
@@ -23,33 +23,28 @@ export default function EmptyState({ userTier = 1 }: Props) {
   return (
     <>
       <div
-        className="rounded-2xl p-10"
-        style={{
-          background: 'rgba(50,52,64,0.4)',
-          backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255,255,255,0.06)',
-        }}
+        className="rounded-2xl p-10 bg-bq-white border border-bq-hair shadow-bq-soft"
       >
         <div className="text-center max-w-md mx-auto">
           <div
             className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-5"
             style={{
-              background: 'linear-gradient(135deg, rgba(232,168,50,0.12), rgba(231,194,104,0.04))',
-              border: '1px solid rgba(232,168,50,0.2)',
+              background: 'linear-gradient(135deg, rgba(245,158,11,0.14), rgba(255,224,138,0.06))',
+              border: '1px solid rgba(245,158,11,0.25)',
             }}
           >
             <span
               className="material-symbols-outlined"
-              style={{ fontSize: 32, color: '#e8a832', fontVariationSettings: "'FILL' 1" }}
+              style={{ fontSize: 32, color: '#D97F06', fontVariationSettings: "'FILL' 1" }}
             >
               auto_awesome
             </span>
           </div>
 
-          <h4 className="text-[18px] font-bold mb-2 text-white">
+          <h4 className="font-display text-[18px] font-bold mb-2 text-bq-ink">
             {t('multiplayer.empty.title')}
           </h4>
-          <p className="text-[13px] text-white/55 leading-relaxed mb-6">
+          <p className="text-[13px] text-bq-ink2 leading-relaxed mb-6">
             {t('multiplayer.empty.subtitle')}
           </p>
 
@@ -68,9 +63,9 @@ export default function EmptyState({ userTier = 1 }: Props) {
 
             {/* Divider */}
             <div className="flex items-center gap-3 my-1">
-              <div className="flex-1 h-px bg-white/[0.06]" />
-              <div className="text-[10px] tracking-widest uppercase text-white/30 font-bold">{t('multiplayer.empty.or')}</div>
-              <div className="flex-1 h-px bg-white/[0.06]" />
+              <div className="flex-1 h-px bg-bq-hair" />
+              <div className="text-[10px] tracking-widest uppercase text-bq-ink3 font-bold">{t('multiplayer.empty.or')}</div>
+              <div className="flex-1 h-px bg-bq-hair" />
             </div>
 
             {/* Secondary: Tạo phòng Quản trò */}
@@ -79,12 +74,12 @@ export default function EmptyState({ userTier = 1 }: Props) {
               onClick={() => navigate('/room/create')}
               className="flex items-center gap-2 px-4 h-11 rounded-lg text-[13px] font-bold transition-colors"
               style={{
-                background: 'linear-gradient(135deg, rgba(232,168,50,0.12), rgba(231,194,104,0.04))',
-                border: '1px solid rgba(232,168,50,0.3)',
-                color: '#e8a832',
+                background: 'linear-gradient(135deg, rgba(245,158,11,0.14), rgba(255,224,138,0.06))',
+                border: '1px solid rgba(245,158,11,0.35)',
+                color: '#D97F06',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(232,168,50,0.5)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(232,168,50,0.3)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(245,158,11,0.6)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(245,158,11,0.35)' }}
             >
               <span className="material-symbols-outlined" style={{ fontSize: 18 }}>workspace_premium</span>
               {t('multiplayer.empty.ctaCreateOrganizer')}

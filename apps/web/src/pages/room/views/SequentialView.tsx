@@ -24,10 +24,10 @@ const SequentialView: React.FC<{
     <>
       <div className="flex items-center gap-3 mb-4">
         <div className="flex-1">
-          <div className="text-[10px] font-bold uppercase tracking-[1px]" style={{ color: '#a78bfa' }}>
+          <div className="text-[10px] font-bold uppercase tracking-[1px]" style={{ color: 'var(--bq-emerald)' }}>
             CÂU {questionIndex + 1} / {totalQuestions || '?'}
           </div>
-          <div className="text-[12px] text-on-surface/85 font-semibold mt-0.5">
+          <div className="text-[12px] text-bq-ink2 font-semibold mt-0.5">
             {playingCount > 0
               ? `${playingCount}/${playingCount} đang chơi`
               : t('room.quiz.waitingQuestion')}
@@ -35,26 +35,25 @@ const SequentialView: React.FC<{
         </div>
         <div className="relative w-[38px] h-[38px] flex-shrink-0">
           <svg viewBox="0 0 38 38" className="w-full h-full -rotate-90">
-            <circle cx="19" cy="19" r="16" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="4" />
-            <circle cx="19" cy="19" r="16" fill="none" stroke="#e8a832" strokeWidth="4" strokeLinecap="round"
+            <circle cx="19" cy="19" r="16" fill="none" stroke="var(--bq-hairline)" strokeWidth="4" />
+            <circle cx="19" cy="19" r="16" fill="none" stroke="var(--bq-amber-deep)" strokeWidth="4" strokeLinecap="round"
               strokeDasharray="113" strokeDashoffset={113 * (1 - timerPercent / 100)} />
           </svg>
-          <div className="absolute inset-0 grid place-items-center text-[12px] font-extrabold tabular-nums" style={{ color: '#e8a832' }}>
+          <div className="absolute inset-0 grid place-items-center text-[12px] font-extrabold tabular-nums" style={{ color: 'var(--bq-amber-deep)' }}>
             {timeLeft}
           </div>
         </div>
       </div>
-      {/* Purple progress bar */}
-      <div className="h-1 rounded-full overflow-hidden mb-5" style={{ background: 'rgba(255,255,255,0.06)' }}>
+      {/* Emerald progress bar */}
+      <div className="h-1 rounded-full overflow-hidden mb-5" style={{ background: 'var(--bq-paper-sunk)' }}>
         <div className="h-full rounded-full" style={{
           width: `${totalQuestions > 0 ? ((questionIndex + 1) / totalQuestions) * 100 : 0}%`,
-          background: 'linear-gradient(90deg, #a78bfa 0%, #c084fc 100%)',
+          background: 'linear-gradient(90deg, var(--bq-emerald) 0%, var(--bq-emerald-lt) 100%)',
         }} />
       </div>
       {/* Question box centered (mockup style) */}
-      <div className="rounded-xl px-4 py-5 mb-4 text-center"
-        style={{ background: 'rgba(17,19,30,0.5)', border: '1px solid rgba(232,168,50,0.1)' }}>
-        <div className="text-[16px] md:text-[18px] font-semibold leading-snug">
+      <div className="rounded-xl px-4 py-5 mb-4 text-center bg-bq-white border border-bq-hair shadow-bq-soft">
+        <div className="text-[16px] md:text-[18px] font-semibold leading-snug text-bq-ink">
           {question?.content || t('room.quiz.waitingQuestion')}
         </div>
       </div>
@@ -68,21 +67,17 @@ export const SequentialWaitingStrip: React.FC<{ seq: SequentialModeState }> = ({
   return (
     <div
       data-testid="sequential-waiting-strip"
-      className="rounded-xl px-4 py-3.5 flex items-center gap-3"
-      style={{
-        background: 'linear-gradient(135deg, rgba(167,139,250,0.1) 0%, rgba(50,52,64,0.4) 60%)',
-        border: '1px solid rgba(167,139,250,0.25)',
-      }}
+      className="rounded-xl px-4 py-3.5 flex items-center gap-3 bg-bq-white border border-bq-hair shadow-bq-soft"
     >
       <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-        style={{ background: 'rgba(167,139,250,0.15)', border: '1px solid rgba(167,139,250,0.3)' }}
+        style={{ background: 'color-mix(in srgb, var(--bq-emerald) 12%, transparent)', border: '1px solid color-mix(in srgb, var(--bq-emerald) 30%, transparent)' }}
       >
-        <span className="material-symbols-outlined text-[18px] animate-pulse" style={{ color: '#a78bfa' }}>
+        <span className="material-symbols-outlined text-[18px] animate-pulse" style={{ color: 'var(--bq-emerald)' }}>
           hourglass_empty
         </span>
       </div>
-      <div className="flex-1 text-on-surface text-[12px] font-medium leading-snug">
-        <strong style={{ color: '#c4b5fd' }}>
+      <div className="flex-1 text-bq-ink text-[12px] font-medium leading-snug">
+        <strong style={{ color: 'var(--bq-emerald)' }}>
           {t('room.quiz.sequentialWaiting', { remaining: Math.max(0, seq.seqTotal - seq.seqAnswered) })}
         </strong>
         {' '}{t('room.quiz.sequentialWaitingDesc')}
@@ -93,8 +88,8 @@ export const SequentialWaitingStrip: React.FC<{ seq: SequentialModeState }> = ({
               className="w-2 h-2 rounded-full"
               style={{
                 background: i < seq.seqAnswered
-                  ? 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)'
-                  : 'rgba(167,139,250,0.3)',
+                  ? 'linear-gradient(135deg, var(--bq-emerald-lt) 0%, var(--bq-emerald) 100%)'
+                  : 'var(--bq-paper-sunk)',
               }}
             />
           ))}
@@ -115,41 +110,36 @@ export const SequentialRevealPanel: React.FC<{
   return (
     <div
       data-testid="sequential-reveal-panel"
-      className="rounded-xl p-4 space-y-3"
-      style={{
-        background: 'rgba(50,52,64,0.6)',
-        border: '1px solid rgba(232,168,50,0.25)',
-        backdropFilter: 'blur(12px)',
-      }}
+      className="rounded-xl p-4 space-y-3 bg-bq-white border border-bq-hair shadow-bq-soft"
     >
       <div className="flex items-center gap-2">
-        <span className="material-symbols-outlined text-[20px] text-secondary" style={FILL_STYLE}>
+        <span className="material-symbols-outlined text-[20px] text-bq-amberd" style={FILL_STYLE}>
           check_circle
         </span>
-        <span className="text-on-surface font-bold text-[14px]">
+        <span className="text-bq-ink font-bold text-[14px]">
           {t('room.quiz.sequentialAnswerIs', { letter: ANSWER_LETTERS[revealedData.correctIndex] })}
         </span>
       </div>
       {revealedData.explanation && (
-        <p className="text-on-surface-variant text-[12px] leading-relaxed">
+        <p className="text-bq-ink2 text-[12px] leading-relaxed">
           {revealedData.explanation}
         </p>
       )}
       {/* Per-player answers */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2 border-t border-white/5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2 border-t border-bq-hair">
         {revealedData.answers.map(a => (
           <div
             key={a.userId}
             className={`px-2 py-1.5 rounded-md text-[11px] flex items-center justify-between gap-1 ${
               a.isCorrect
-                ? 'bg-green-500/10 border border-green-500/20'
+                ? 'bg-bq-emerald/10 border border-bq-emerald/20'
                 : a.answerIndex === null
-                  ? 'bg-white/5 border border-white/10'
-                  : 'bg-error/10 border border-error/20'
+                  ? 'bg-bq-inset border border-bq-hair'
+                  : 'bg-bq-ruby/10 border border-bq-ruby/20'
             }`}
           >
-            <span className="truncate text-on-surface/90 font-medium">{a.username}</span>
-            <span className={`flex-shrink-0 font-bold ${a.isCorrect ? 'text-green-400' : a.answerIndex === null ? 'text-on-surface/40' : 'text-error'}`}>
+            <span className="truncate text-bq-ink font-medium">{a.username}</span>
+            <span className={`flex-shrink-0 font-bold ${a.isCorrect ? 'text-bq-emerald' : a.answerIndex === null ? 'text-bq-ink3' : 'text-bq-ruby'}`}>
               {a.answerIndex === null ? '—' : ANSWER_LETTERS[a.answerIndex]}
             </span>
           </div>
@@ -159,23 +149,18 @@ export const SequentialRevealPanel: React.FC<{
           The reveal panel only renders after BE has decided the round
           is over (all-answered OR question timeout), so the host can
           always advance from here — no need to gate on seqAnswered. */}
-      <div className="pt-2 border-t border-white/5">
+      <div className="pt-2 border-t border-bq-hair">
         {isHost ? (
           <button
             data-testid="sequential-advance-btn"
             onClick={onAdvance}
-            className="w-full py-3 rounded-xl text-[14px] font-bold flex items-center justify-center gap-2 transition-all hover:brightness-110"
-            style={{
-              background: 'linear-gradient(135deg, #e8a832 0%, #d97706 100%)',
-              color: '#11131e',
-              boxShadow: '0 6px 20px rgba(232,168,50,0.3)',
-            }}
+            className="w-full py-3 rounded-xl text-[14px] font-bold flex items-center justify-center gap-2 transition-all hover:brightness-110 bg-bq-action text-white shadow-bq-action"
           >
             {t('room.quiz.sequentialAdvance')}
             <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
           </button>
         ) : (
-          <div className="text-center text-on-surface-variant text-[12px] py-2 flex items-center justify-center gap-2">
+          <div className="text-center text-bq-ink2 text-[12px] py-2 flex items-center justify-center gap-2">
             <span className="material-symbols-outlined text-[14px] animate-pulse">hourglass_empty</span>
             {t('room.quiz.sequentialWaitingForLeader')}
           </div>

@@ -56,15 +56,15 @@ export default function CodeInput({ onJoin, disabled, error }: Props) {
             onKeyDown={(e) => handleKeyDown(i, e)}
             onPaste={handlePaste}
             data-testid={`code-digit-${i}`}
-            className="text-center text-[22px] font-semibold text-white outline-none transition-colors"
+            className="text-center text-[22px] font-semibold text-bq-ink outline-none transition-colors"
             style={{
               width: 44, height: 52,
-              background: 'rgba(17,19,30,0.6)',
-              border: `1px solid ${c ? '#e8a832' : 'rgba(255,255,255,0.08)'}`,
+              background: '#F2F0E7',
+              border: `1px solid ${c ? '#D97F06' : '#E7E4DA'}`,
               borderRadius: 10,
             }}
-            onFocus={(e) => { e.currentTarget.style.borderColor = '#e8a832' }}
-            onBlur={(e) => { e.currentTarget.style.borderColor = c ? '#e8a832' : 'rgba(255,255,255,0.08)' }}
+            onFocus={(e) => { e.currentTarget.style.borderColor = '#D97F06' }}
+            onBlur={(e) => { e.currentTarget.style.borderColor = c ? '#D97F06' : '#E7E4DA' }}
           />
         ))}
       </div>
@@ -73,9 +73,9 @@ export default function CodeInput({ onJoin, disabled, error }: Props) {
         disabled={!ready}
         className="w-full inline-flex items-center justify-center gap-1.5 h-10 rounded-lg text-[13px] font-semibold transition-colors disabled:cursor-not-allowed"
         style={{
-          background: ready ? 'linear-gradient(135deg, #e8a832, #e7c268)' : 'rgba(255,255,255,0.06)',
-          color: ready ? '#1a1226' : 'rgba(255,255,255,0.5)',
-          border: ready ? 'none' : '1px solid rgba(255,255,255,0.1)',
+          background: ready ? 'var(--bq-action)' : '#F2F0E7',
+          color: ready ? '#FFFFFF' : '#A8A69C',
+          border: ready ? 'none' : '1px solid #E7E4DA',
         }}
       >
         {disabled ? t('multiplayer.join.joining') : t('multiplayer.join.submit')}
@@ -83,13 +83,13 @@ export default function CodeInput({ onJoin, disabled, error }: Props) {
       {error && (
         <div
           className="mt-2 text-[11px] px-2 py-1.5 rounded-lg"
-          style={{ background: 'rgba(239,68,68,0.12)', color: '#f87171' }}
+          style={{ background: 'rgba(224,53,75,0.10)', color: '#E0354B' }}
         >
           ⚠ {error}
         </div>
       )}
       {!error && filled > 0 && filled < 6 && (
-        <p className="text-[10px] text-white/35 mt-1.5">{t('multiplayer.join.remaining', { count: 6 - filled })}</p>
+        <p className="text-[10px] text-bq-ink3 mt-1.5">{t('multiplayer.join.remaining', { count: 6 - filled })}</p>
       )}
     </div>
   )
