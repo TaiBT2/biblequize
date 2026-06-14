@@ -65,17 +65,17 @@ export default function DailyStatsCards({
         style={{ background: 'rgba(50,52,64,0.4)' }}
         title={t('ranked.questionsLeftToday', { count: Math.max(0, questionsCap - questionsAnswered) })}
       >
-        <span className="material-symbols-outlined text-secondary/80 text-base mb-1">quiz</span>
+        <span className="material-symbols-outlined text-bq-amberd/80 text-base mb-1">quiz</span>
         <div className="flex items-baseline gap-1">
           <span
             data-testid="ranked-questions-counted"
-            className="text-secondary text-[22px] md:text-[24px] font-medium leading-none"
+            className="text-bq-amberd text-[22px] md:text-[24px] font-medium leading-none"
           >
             {questionsAnswered}
           </span>
-          <span className="text-on-surface-variant/45 text-[11px]">/{questionsCap}</span>
+          <span className="text-bq-ink2/45 text-[11px]">/{questionsCap}</span>
         </div>
-        <span className="text-on-surface-variant/55 text-[9px] md:text-[10px] tracking-wider uppercase mt-1.5">
+        <span className="text-bq-ink2/55 text-[9px] md:text-[10px] tracking-wider uppercase mt-1.5">
           {t('ranked.questionsTodayShort')}
         </span>
       </section>
@@ -87,12 +87,12 @@ export default function DailyStatsCards({
         style={{ background: 'rgba(50,52,64,0.4)' }}
         title={[deltaText, pointsHint].filter(Boolean).join(' • ') || undefined}
       >
-        <span className="material-symbols-outlined text-secondary/80 text-base mb-1">
+        <span className="material-symbols-outlined text-bq-amberd/80 text-base mb-1">
           military_tech
         </span>
         <span
           data-testid="ranked-points-today"
-          className="text-secondary text-[22px] md:text-[24px] font-medium leading-none"
+          className="text-bq-amberd text-[22px] md:text-[24px] font-medium leading-none"
         >
           {pointsToday}
         </span>
@@ -112,7 +112,7 @@ export default function DailyStatsCards({
             {t('ranked.pointsTodayShort')}
           </span>
         ) : (
-          <span className="text-on-surface-variant/55 text-[9px] md:text-[10px] tracking-wider uppercase mt-1.5">
+          <span className="text-bq-ink2/55 text-[9px] md:text-[10px] tracking-wider uppercase mt-1.5">
             {t('ranked.pointsTodayShort')}
           </span>
         )}

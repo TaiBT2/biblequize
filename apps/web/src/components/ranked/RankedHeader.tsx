@@ -18,21 +18,21 @@ export default function RankedHeader() {
   return (
     <header className="flex items-end justify-between mb-6 gap-4 flex-wrap">
       <div className="min-w-0">
-        <h1 className="text-on-surface font-extrabold leading-none tracking-tight text-[24px] md:text-[34px]">
+        <h1 className="font-display text-bq-ink font-extrabold leading-none tracking-tight text-[24px] md:text-[34px]">
           {t('ranked.titleLeading')}{' '}
-          <span className="font-headline italic font-semibold text-secondary">
+          <span className="font-headline italic font-semibold text-bq-ruby">
             {t('ranked.titleAccent')}
           </span>
         </h1>
-        <p className="text-on-surface-variant/55 text-[12px] md:text-[13px] mt-2">
+        <p className="text-bq-ink3 text-[12px] md:text-[13px] mt-2">
           {t('ranked.subtitle')}
         </p>
       </div>
       <Link
         to="/help#ranked"
         data-testid="ranked-how-to-play"
-        className="text-secondary text-[12px] md:text-[13px] font-semibold inline-flex items-center gap-1.5 transition-colors shrink-0
-                   md:px-3.5 md:py-2 md:border md:border-secondary/25 md:rounded-[10px] md:hover:bg-secondary/[0.06]"
+        className="text-bq-ruby text-[12px] md:text-[13px] font-semibold inline-flex items-center gap-1.5 transition-colors shrink-0
+                   md:px-3.5 md:py-2 md:border md:border-bq-ruby/25 md:rounded-[10px] md:hover:bg-bq-ruby/[0.06]"
       >
         {t('ranked.howToPlay')}
         <span className="material-symbols-outlined text-[16px]" style={FILL_1}>arrow_forward</span>

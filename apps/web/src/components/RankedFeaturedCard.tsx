@@ -116,7 +116,7 @@ export default function RankedFeaturedCard({ isRecommended, recommendReason }: R
           <span
             data-testid="ranked-featured-status"
             data-state="passed"
-            className="text-secondary font-medium"
+            className="text-bq-amberd font-medium"
           >
             {t('rankedFeatured.unlocked.badge')}
           </span>
@@ -144,9 +144,9 @@ export default function RankedFeaturedCard({ isRecommended, recommendReason }: R
           <span
             data-testid="ranked-featured-status"
             data-state="cooldown"
-            className="text-on-surface-variant"
+            className="text-bq-ink2"
           >
-            <span data-testid="ranked-featured-cooldown" className="text-secondary font-medium">
+            <span data-testid="ranked-featured-cooldown" className="text-bq-amberd font-medium">
               {t('rankedFeatured.cooldown.countdown', { time: formatMmSs(localCooldown) })}
             </span>
           </span>
@@ -174,7 +174,7 @@ export default function RankedFeaturedCard({ isRecommended, recommendReason }: R
         <span
           data-testid="ranked-featured-status"
           data-state="needs-quiz"
-          className="text-secondary font-medium whitespace-nowrap"
+          className="text-bq-amberd font-medium whitespace-nowrap"
         >
           {t('rankedFeatured.needBasicQuiz.label', { count: totalQuestions })}
         </span>

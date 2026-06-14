@@ -42,7 +42,7 @@ export default function RankedStandardCard({
       <div className="flex items-start justify-between mb-3.5">
         <div
           data-testid="ranked-standard-card-icon"
-          className="w-11 h-11 rounded-xl grid place-items-center text-secondary"
+          className="w-11 h-11 rounded-xl grid place-items-center text-bq-amberd"
           style={{
             background:
               'linear-gradient(135deg, rgba(232,168,50,0.20), rgba(232,168,50,0.06))',
@@ -61,13 +61,13 @@ export default function RankedStandardCard({
 
       <h3
         data-testid="ranked-standard-card-title"
-        className="text-[13px] md:text-[14px] font-bold text-ivory leading-tight mb-1 tracking-[-0.01em]"
+        className="text-[13px] md:text-[14px] font-bold text-bq-ink leading-tight mb-1 tracking-[-0.01em]"
       >
         {t('gameModes.ranked')}
       </h3>
       <p
         data-testid="ranked-standard-card-desc"
-        className="text-[12px] text-ivory-dim mb-3.5"
+        className="text-[12px] text-bq-ink2 mb-3.5"
       >
         Cạnh tranh ranking · {energyRemaining} năng lượng sẵn sàng
       </p>
@@ -75,7 +75,7 @@ export default function RankedStandardCard({
       <div className="flex items-center justify-between pt-3 border-t border-white/[0.04]">
         <span
           data-testid="ranked-standard-card-cta"
-          className="text-[13px] font-bold text-secondary flex items-center gap-1.5 group"
+          className="text-[13px] font-bold text-bq-amberd flex items-center gap-1.5 group"
         >
           Vào trận
           <svg
@@ -92,7 +92,7 @@ export default function RankedStandardCard({
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
         </span>
-        <span data-testid="ranked-standard-card-hint" className="text-[11px] text-ivory-faint">
+        <span data-testid="ranked-standard-card-hint" className="text-[11px] text-bq-ink3">
           {rankedAnswered} / {rankedCap} câu hôm nay
         </span>
       </div>

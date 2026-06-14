@@ -63,24 +63,23 @@ function MatchRow({ match }: RowProps) {
     <Link
       to={`/sessions/${match.id}/review`}
       data-testid="ranked-match-row"
-      className="rounded-md border border-white/[0.04] flex items-center gap-3 px-3 py-2.5 hover:bg-surface-container-high/40 transition-colors"
+      className="rounded-md border border-bq-hair bg-bq-white shadow-bq-soft flex items-center gap-3 px-3 py-2.5 hover:bg-bq-inset transition-colors"
       style={{
-        background: 'rgba(50,52,64,0.4)',
         borderLeftWidth: '2px',
-        borderLeftColor: passed ? '#639922' : 'rgba(255,180,171,0.5)',
+        borderLeftColor: passed ? '#0E8A6B' : '#E0354B',
       }}
     >
       <div
         className="text-[12px] font-medium w-3.5 shrink-0 text-center"
-        style={{ color: passed ? '#639922' : 'rgba(255,180,171,0.7)' }}
+        style={{ color: passed ? '#0E8A6B' : '#E0354B' }}
       >
         {passed ? '✓' : '✗'}
       </div>
       <div className="flex-1 min-w-0">
-        <div className="text-on-surface text-[12px] font-medium truncate">
+        <div className="text-bq-ink text-[12px] font-medium truncate">
           {match.currentBook ?? t('ranked.title')}
         </div>
-        <div className="text-on-surface-variant/45 text-[10px]">
+        <div className="text-bq-ink3 text-[10px]">
           {t('ranked.recentMatchMeta', {
             count: total,
             percent: accuracyPct,
@@ -89,8 +88,8 @@ function MatchRow({ match }: RowProps) {
         </div>
       </div>
       <div
-        className="text-[13px] font-medium shrink-0"
-        style={{ color: passed ? '#e8a832' : 'rgba(255,255,255,0.4)' }}
+        className="text-[13px] font-bold shrink-0"
+        style={{ color: passed ? '#D97F06' : '#A8A69C' }}
       >
         +{score}
       </div>
@@ -121,13 +120,13 @@ export default function RecentMatchesSection() {
   return (
     <section>
       <div className="flex items-baseline justify-between mb-2">
-        <span className="text-on-surface/85 text-[13px] font-medium">
+        <span className="text-bq-ink text-[13px] font-medium">
           {t('ranked.recentMatchesSection')}
         </span>
         <Link
           to="/profile?tab=history"
           data-testid="ranked-recent-matches-view-all"
-          className="text-secondary text-[11px] hover:underline"
+          className="text-bq-amberd text-[11px] hover:underline"
         >
           {t('ranked.recentMatchesViewAll')}
         </Link>
@@ -136,10 +135,9 @@ export default function RecentMatchesSection() {
       {ranked.length === 0 ? (
         <div
           data-testid="ranked-recent-matches-empty"
-          className="rounded-md border border-white/[0.04] px-3 py-4 text-center"
-          style={{ background: 'rgba(50,52,64,0.4)' }}
+          className="rounded-md border border-bq-hair bg-bq-white shadow-bq-soft px-3 py-4 text-center"
         >
-          <p className="text-on-surface-variant/55 text-[11px]">
+          <p className="text-bq-ink3 text-[11px]">
             {t('ranked.recentMatchEmpty')}
           </p>
         </div>

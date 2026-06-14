@@ -70,14 +70,9 @@ export default function SeasonCard() {
       <section
         data-testid="ranked-season-card"
         data-state="no-active-season"
-        className="rounded-[22px] border p-5 md:p-6 text-center"
-        style={{
-          background:
-            'linear-gradient(135deg, rgba(74,158,255,0.06), rgba(168,85,247,0.06))',
-          borderColor: 'rgba(74,158,255,0.2)',
-        }}
+        className="rounded-[22px] border border-bq-hair bg-bq-white shadow-bq-soft p-5 md:p-6 text-center"
       >
-        <p className="text-on-surface-variant/55 text-[12px]">
+        <p className="text-bq-ink3 text-[12px]">
           {t('ranked.seasonNoActive')}
         </p>
       </section>
@@ -98,69 +93,64 @@ export default function SeasonCard() {
     <section
       data-testid="ranked-season-card"
       data-state="active"
-      className="relative overflow-hidden rounded-[22px] border p-5 md:p-7 grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-5 md:gap-8 md:items-center"
-      style={{
-        background:
-          'linear-gradient(135deg, rgba(74,158,255,0.06), rgba(168,85,247,0.06))',
-        borderColor: 'rgba(74,158,255,0.2)',
-      }}
+      className="relative overflow-hidden rounded-[22px] border border-bq-hair bg-bq-white shadow-bq-sap p-5 md:p-7 grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-5 md:gap-8 md:items-center"
     >
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(50% 70% at 100% 0%, rgba(232,168,50,0.06), transparent 60%)',
+            'radial-gradient(50% 70% at 100% 0%, rgba(45,70,200,0.06), transparent 60%)',
         }}
       />
 
       {/* LEFT — text block */}
       <div className="relative z-10">
         <div className="flex items-center gap-2.5">
-          <span className="material-symbols-outlined text-secondary text-[22px]" style={FILL_1}>
+          <span className="material-symbols-outlined text-bq-amberd text-[22px]" style={FILL_1}>
             emoji_events
           </span>
-          <span className="text-on-surface text-[18px] md:text-[19px] font-extrabold tracking-tight">
+          <span className="font-display text-bq-ink text-[18px] md:text-[19px] font-extrabold tracking-tight">
             {seasonName}
           </span>
         </div>
 
-        <div className="flex items-center gap-3.5 flex-wrap mt-2 text-[12px] text-on-surface-variant/55">
+        <div className="flex items-center gap-3.5 flex-wrap mt-2 text-[12px] text-bq-ink3">
           {days != null && (
             <span data-testid="ranked-season-end">
               {t('ranked.seasonEndsIn', { days })}
             </span>
           )}
-          <span className="text-on-surface-variant/30">•</span>
+          <span className="text-bq-ink3/60">•</span>
           <span>
             {t('ranked.seasonBonusChip', 'Bonus')}{' '}
-            <b className="text-secondary font-extrabold">×1.5</b>{' '}
+            <b className="text-bq-amberd font-extrabold">×1.5</b>{' '}
             {t('ranked.seasonBonusChipSuffix', 'câu theo mùa')}
           </span>
         </div>
 
-        <p className="text-on-surface-variant/65 text-[13px] mt-3.5 leading-relaxed">
+        <p className="text-bq-ink2 text-[13px] mt-3.5 leading-relaxed">
           {t('ranked.seasonRewardHintItalic', 'Top 3 mỗi tier nhận badge')}{' '}
-          <i className="font-headline italic font-semibold" style={{ color: '#c8b07e' }}>
+          <i className="font-headline italic font-semibold text-bq-amberd">
             "{t('ranked.seasonBadgeName', 'Vinh Quang')} {seasonName}"
           </i>
         </p>
 
         <div className="flex items-center gap-3.5 mt-4">
-          <div className="flex-1 bg-white/[0.05] rounded-full h-1.5 overflow-hidden">
+          <div className="flex-1 bg-bq-inset border border-bq-hair rounded-full h-1.5 overflow-hidden">
             <div
               className="h-full rounded-full transition-[width] duration-700"
               style={{
                 width: `${champPct}%`,
-                background: 'linear-gradient(90deg, #e8a832, #f0c060)',
+                background: 'linear-gradient(90deg,#2D46C8,#0E8A6B 34%,#F59E0B 64%,#E0354B)',
               }}
             />
           </div>
-          <span className="text-[12px] text-on-surface-variant/65 whitespace-nowrap">
+          <span className="text-[12px] text-bq-ink2 whitespace-nowrap">
             {pointsToChamp > 0 ? (
               <>
                 {t('ranked.seasonStillNeedsPrefix', 'Còn')}{' '}
-                <b className="text-on-surface font-semibold">
+                <b className="text-bq-ink font-semibold">
                   {pointsToChamp.toLocaleString('vi-VN')} {t('ranked.points')}
                 </b>
                 {' '}
@@ -176,23 +166,20 @@ export default function SeasonCard() {
       {/* RIGHT — 2 sub-stat cards + leaderboard link */}
       <div className="relative z-10">
         <div className="grid grid-cols-2 gap-3">
-          <div
-            className="rounded-[13px] border border-white/[0.05] px-4 py-3.5 md:px-[18px] md:py-4"
-            style={{ background: 'rgba(0,0,0,0.22)' }}
-          >
-            <div className="text-on-surface-variant/55 text-[10px] tracking-[1.3px] font-bold uppercase">
+          <div className="rounded-[13px] border border-bq-hair bg-bq-inset px-4 py-3.5 md:px-[18px] md:py-4">
+            <div className="text-bq-ink3 text-[10px] tracking-[1.3px] font-bold uppercase">
               {t('ranked.seasonRankLabel')}
             </div>
             {rank != null ? (
               <>
                 <div
                   data-testid="ranked-season-rank"
-                  className="text-secondary text-[26px] md:text-[28px] font-extrabold leading-none tracking-tight mt-1.5"
+                  className="text-bq-amberd text-[26px] md:text-[28px] font-extrabold leading-none tracking-tight mt-1.5"
                 >
                   #{rank}
                 </div>
                 {percentile != null && (
-                  <div className="text-[10px] mt-1" style={{ color: 'rgba(74,158,255,0.7)' }}>
+                  <div className="text-[10px] mt-1 text-bq-sapphire">
                     {t('ranked.seasonRankPercentile', { percent: percentile.toFixed(1) })}
                   </div>
                 )}
@@ -200,23 +187,20 @@ export default function SeasonCard() {
             ) : (
               <div
                 data-testid="ranked-season-rank"
-                className="text-on-surface-variant/60 text-[16px] font-semibold mt-1.5"
+                className="text-bq-ink3 text-[16px] font-semibold mt-1.5"
               >
                 {t('ranked.unranked')}
               </div>
             )}
           </div>
 
-          <div
-            className="rounded-[13px] border border-white/[0.05] px-4 py-3.5 md:px-[18px] md:py-4"
-            style={{ background: 'rgba(0,0,0,0.22)' }}
-          >
-            <div className="text-on-surface-variant/55 text-[10px] tracking-[1.3px] font-bold uppercase">
+          <div className="rounded-[13px] border border-bq-hair bg-bq-inset px-4 py-3.5 md:px-[18px] md:py-4">
+            <div className="text-bq-ink3 text-[10px] tracking-[1.3px] font-bold uppercase">
               {t('ranked.seasonPointsBigLabel')}
             </div>
             <div
               data-testid="ranked-season-points"
-              className="text-on-surface text-[26px] md:text-[28px] font-extrabold leading-none tracking-tight mt-1.5"
+              className="text-bq-ink text-[26px] md:text-[28px] font-extrabold leading-none tracking-tight mt-1.5"
             >
               {seasonPoints}
             </div>
@@ -226,7 +210,7 @@ export default function SeasonCard() {
         <Link
           to="/leaderboard?period=season"
           data-testid="ranked-season-leaderboard-link"
-          className="group flex items-center justify-end gap-1 mt-3 text-secondary text-[12px] md:text-[13px] font-semibold hover:underline"
+          className="group flex items-center justify-end gap-1 mt-3 text-bq-amberd text-[12px] md:text-[13px] font-semibold hover:underline"
         >
           {t('ranked.seasonViewLeaderboard')}
           <span className="material-symbols-outlined text-[15px] transition-transform group-hover:translate-x-0.5">

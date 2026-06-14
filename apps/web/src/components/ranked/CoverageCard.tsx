@@ -30,21 +30,20 @@ export default function CoverageCard({ coverage, onUnlockNext }: CoverageCardPro
   return (
     <section
       data-testid="ranked-coverage-card"
-      className="rounded-[22px] border border-white/[0.06] p-4 md:p-5"
-      style={{ background: 'rgba(50,52,64,0.4)', backdropFilter: 'blur(12px)' }}
+      className="rounded-[22px] border border-bq-hair bg-bq-white shadow-bq-soft p-4 md:p-5"
     >
       <div className="flex items-baseline justify-between mb-3">
         <div className="flex items-baseline gap-2">
-          <span className="text-on-surface text-[14px] font-semibold">
+          <span className="text-bq-ink text-[14px] font-semibold">
             {t('coverage.weekLabel', { n: weekNumber })}
           </span>
-          <span className="px-2 py-0.5 rounded-full text-[10px] font-medium uppercase tracking-wider bg-secondary/15 text-secondary">
+          <span className="px-2 py-0.5 rounded-full text-[10px] font-medium uppercase tracking-wider bg-bq-amber/15 text-bq-amberd">
             {t(PHASE_KEYS[phase])}
           </span>
         </div>
         <span
           data-testid="ranked-coverage-progress-text"
-          className="text-on-surface-variant/70 text-[11px]"
+          className="text-bq-ink2 text-[11px]"
         >
           {t('coverage.totalCovered', { n: totalCovered, total: 66 })}
         </span>
@@ -60,8 +59,8 @@ export default function CoverageCard({ coverage, onUnlockNext }: CoverageCardPro
             data-testid={`coverage-book-${book.code}`}
             className={`flex items-center justify-between rounded-lg px-3 py-2 text-[12px] ${
               book.covered
-                ? 'bg-secondary/15 text-secondary'
-                : 'bg-white/[0.04] text-on-surface-variant/85'
+                ? 'bg-bq-amber/15 text-bq-amberd'
+                : 'bg-bq-inset text-bq-ink2'
             }`}
           >
             <span className="truncate">{book.code}</span>
@@ -77,14 +76,14 @@ export default function CoverageCard({ coverage, onUnlockNext }: CoverageCardPro
           type="button"
           data-testid="ranked-coverage-unlock-cta"
           onClick={onUnlockNext}
-          className="w-full rounded-lg px-3 py-2 text-[13px] font-medium bg-secondary text-on-secondary hover:opacity-90 transition-opacity"
+          className="w-full rounded-lg px-3 py-2 text-[13px] font-bold bg-bq-action text-white shadow-bq-action hover:opacity-90 transition-opacity"
         >
           {t('coverage.unlockNextCta', { n: weekNumber + 1 })}
         </button>
       )}
 
       {!completed && currentBadgePreview && (
-        <div className="text-on-surface-variant/60 text-[11px] mt-1">
+        <div className="text-bq-ink3 text-[11px] mt-1">
           {t('coverage.badgePreview', { badge: currentBadgePreview })}
         </div>
       )}
