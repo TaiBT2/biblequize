@@ -93,10 +93,10 @@ function pickHue(id: string): NonNullable<PublicGroupListItem['avatarHue']> {
   return HUE_KEYS[hash % HUE_KEYS.length];
 }
 const HUE_BG: Record<NonNullable<PublicGroupListItem['avatarHue']>, string> = {
-  gold: 'bg-[rgba(232,168,50,0.15)]',
-  blue: 'bg-[rgba(74,158,255,0.15)]',
-  purple: 'bg-[rgba(168,85,247,0.15)]',
-  green: 'bg-[rgba(99,153,34,0.15)]',
+  gold: 'bg-bq-amber/15',
+  blue: 'bg-bq-sapphire/15',
+  purple: 'bg-bq-sapphire/15',
+  green: 'bg-bq-emerald/15',
 };
 const HUE_ICON: Record<NonNullable<PublicGroupListItem['avatarHue']>, string> = {
   gold: '⛪', blue: '📖', purple: '✝️', green: '🕊️',
@@ -107,11 +107,11 @@ const HUE_ICON: Record<NonNullable<PublicGroupListItem['avatarHue']>, string> = 
 function GroupsPageSkeleton() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-6 space-y-6 animate-pulse" data-testid="groups-skeleton">
-      <div className="h-12 bg-[rgba(50,52,64,0.4)] rounded-xl" />
-      <div className="h-20 bg-[rgba(50,52,64,0.4)] rounded-2xl" />
+      <div className="h-12 bg-bq-inset rounded-xl" />
+      <div className="h-20 bg-bq-inset rounded-2xl" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {[0, 1, 2].map((i) => (
-          <div key={i} className="h-44 bg-[rgba(50,52,64,0.4)] rounded-2xl" />
+          <div key={i} className="h-44 bg-bq-inset rounded-2xl" />
         ))}
       </div>
     </div>
@@ -130,20 +130,20 @@ function GroupCard({ group, onOpen }: { group: MyGroupSummary; onOpen: (id: stri
     <button
       data-testid="group-card"
       onClick={() => onOpen(group.id)}
-      className={`relative text-left bg-[rgba(50,52,64,0.4)] backdrop-blur-md border-[1px] rounded-2xl p-4 sm:p-5 flex flex-col gap-3.5 hover:-translate-y-0.5 hover:bg-[rgba(50,52,64,0.55)] transition-all overflow-hidden ${
+      className={`relative text-left bg-bq-white shadow-bq-soft border rounded-2xl p-4 sm:p-5 flex flex-col gap-3.5 hover:-translate-y-0.5 transition-all overflow-hidden ${
         isLeader
-          ? 'border-[rgba(232,168,50,0.25)] hover:border-[rgba(232,168,50,0.45)]'
-          : 'border-[rgba(232,168,50,0.1)] hover:border-[rgba(232,168,50,0.4)]'
+          ? 'border-bq-amber/35 hover:border-bq-amber/55'
+          : 'border-bq-hair hover:border-bq-amber/40'
       }`}
     >
       {/* Leader gradient overlay */}
       {isLeader && (
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-[rgba(232,168,50,0.06)] to-transparent" />
+        <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-bq-amber/[0.06] to-transparent" />
       )}
 
       {/* Top: avatar + name + role badge */}
       <div className="flex gap-3 sm:gap-3.5 items-start relative">
-        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-[rgba(232,168,50,0.2)] to-[rgba(217,119,6,0.1)] border border-[rgba(232,168,50,0.25)] flex items-center justify-center flex-shrink-0 overflow-hidden">
+        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-bq-amber/20 to-bq-amberd/10 border border-bq-amber/25 flex items-center justify-center flex-shrink-0 overflow-hidden">
           {group.avatarUrl ? (
             <img alt={group.name} src={group.avatarUrl} className="w-full h-full object-cover" />
           ) : (
@@ -152,26 +152,26 @@ function GroupCard({ group, onOpen }: { group: MyGroupSummary; onOpen: (id: stri
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <div className="text-on-surface text-[14px] sm:text-[16px] font-semibold truncate flex-1 min-w-0">
+            <div className="text-bq-ink text-[14px] sm:text-[16px] font-semibold truncate flex-1 min-w-0">
               {group.name}
             </div>
             {isLeader ? (
-              <span className="bg-gradient-to-br from-[#e8a832] to-[#d97706] text-[#11131e] text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md flex items-center gap-1 flex-shrink-0">
+              <span className="bg-bq-amberd text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md flex items-center gap-1 flex-shrink-0">
                 <span className="material-symbols-outlined text-[11px]">workspace_premium</span>
                 {t('groups.roleLeaderShort')}
               </span>
             ) : isMod ? (
-              <span className="bg-[rgba(96,165,250,0.15)] text-[#60a5fa] border border-[rgba(96,165,250,0.3)] text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md flex-shrink-0">
+              <span className="bg-bq-sapphire/15 text-bq-sapphire border border-bq-sapphire/30 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md flex-shrink-0">
                 {t('groups.roleModShort')}
               </span>
             ) : (
-              <span className="bg-[rgba(74,222,128,0.12)] text-[#4ade80] border border-[rgba(74,222,128,0.25)] text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md flex-shrink-0">
+              <span className="bg-bq-inset text-bq-ink2 border border-bq-hair text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md flex-shrink-0">
                 {t('groups.roleMemberShort')}
               </span>
             )}
           </div>
           {group.description && (
-            <div className="text-on-surface/55 text-[11px] sm:text-[12px] leading-snug line-clamp-2">
+            <div className="text-bq-ink2 text-[11px] sm:text-[12px] leading-snug line-clamp-2">
               {group.description}
             </div>
           )}
@@ -179,28 +179,28 @@ function GroupCard({ group, onOpen }: { group: MyGroupSummary; onOpen: (id: stri
       </div>
 
       {/* Stats: 3 cells */}
-      <div className="grid grid-cols-3 bg-[rgba(17,19,30,0.4)] rounded-lg p-2.5 sm:p-3 relative">
-        <div className="text-center px-1 border-r border-[rgba(232,168,50,0.06)]">
-          <div className="text-secondary text-[15px] sm:text-[17px] font-bold leading-tight">
+      <div className="grid grid-cols-3 bg-bq-inset rounded-lg p-2.5 sm:p-3 relative">
+        <div className="text-center px-1 border-r border-bq-hair">
+          <div className="text-bq-amberd text-[15px] sm:text-[17px] font-bold leading-tight">
             {group.memberCount}
           </div>
-          <div className="text-on-surface/55 text-[9px] sm:text-[10px] uppercase tracking-wider mt-0.5">
+          <div className="text-bq-ink2 text-[9px] sm:text-[10px] uppercase tracking-wider mt-0.5">
             {t('groups.statMembersShort')}
           </div>
         </div>
-        <div className="text-center px-1 border-r border-[rgba(232,168,50,0.06)]">
-          <div className="text-secondary text-[15px] sm:text-[17px] font-bold leading-tight">
+        <div className="text-center px-1 border-r border-bq-hair">
+          <div className="text-bq-amberd text-[15px] sm:text-[17px] font-bold leading-tight">
             {group.avgScore}
           </div>
-          <div className="text-on-surface/55 text-[9px] sm:text-[10px] uppercase tracking-wider mt-0.5">
+          <div className="text-bq-ink2 text-[9px] sm:text-[10px] uppercase tracking-wider mt-0.5">
             {t('groups.statAvgScore')}
           </div>
         </div>
         <div className="text-center px-1">
-          <div className="text-secondary text-[15px] sm:text-[17px] font-bold leading-tight">
+          <div className="text-bq-amberd text-[15px] sm:text-[17px] font-bold leading-tight">
             {group.accuracy}%
           </div>
-          <div className="text-on-surface/55 text-[9px] sm:text-[10px] uppercase tracking-wider mt-0.5">
+          <div className="text-bq-ink2 text-[9px] sm:text-[10px] uppercase tracking-wider mt-0.5">
             {t('groups.statAccuracy')}
           </div>
         </div>
@@ -208,19 +208,19 @@ function GroupCard({ group, onOpen }: { group: MyGroupSummary; onOpen: (id: stri
 
       {/* Footer: activity dot + (code if leader/mod, rank if member) */}
       <div className="flex items-center justify-between text-[11px] sm:text-[12px] relative">
-        <span className="inline-flex items-center gap-1.5 text-on-surface/55">
+        <span className="inline-flex items-center gap-1.5 text-bq-ink2">
           <span
-            className={`w-1.5 h-1.5 rounded-full ${activeNow ? 'bg-[#4ade80]' : 'bg-on-surface/30'}`}
+            className={`w-1.5 h-1.5 rounded-full ${activeNow ? 'bg-bq-emerald' : 'bg-bq-ink3'}`}
           />
           {activeNow ? t('groups.activityToday') : formatRelativeTime(group.lastActivityAt, t)}
         </span>
         {(isLeader || isMod) && group.code ? (
-          <span className="inline-flex items-center gap-1 text-on-surface/55 font-mono">
+          <span className="inline-flex items-center gap-1 text-bq-ink2 font-mono">
             <span className="material-symbols-outlined text-[13px]">key</span>
             {group.code}
           </span>
         ) : group.role === 'MEMBER' && group.myRank > 0 ? (
-          <span className="text-secondary font-semibold">
+          <span className="text-bq-amberd font-semibold">
             {t('groups.myRankInGroup', { rank: group.myRank, total: group.memberCount })}
           </span>
         ) : null}
@@ -243,7 +243,7 @@ function PublicCard({
   const { t } = useTranslation();
   const hue = group.avatarHue ?? pickHue(group.id);
   return (
-    <div className="w-full h-full bg-[rgba(50,52,64,0.3)] backdrop-blur-md border border-white/5 hover:border-[rgba(232,168,50,0.3)] hover:bg-[rgba(50,52,64,0.5)] rounded-2xl p-3.5 sm:p-4.5 transition-all flex flex-col">
+    <div className="w-full h-full bg-bq-white shadow-bq-soft border border-bq-hair hover:border-bq-amber/30 rounded-2xl p-3.5 sm:p-4.5 transition-all flex flex-col">
       <div className="flex gap-2.5 items-center mb-3">
         <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-lg flex items-center justify-center text-[18px] sm:text-[22px] flex-shrink-0 overflow-hidden ${HUE_BG[hue]}`}>
           {group.avatarUrl ? (
@@ -253,17 +253,17 @@ function PublicCard({
           )}
         </div>
         <div className="flex-1 min-w-0">
-          <div className="text-on-surface text-[13px] sm:text-[14px] font-semibold truncate">
+          <div className="text-bq-ink text-[13px] sm:text-[14px] font-semibold truncate">
             {group.name}
           </div>
-          <div className="text-on-surface/55 text-[10px] sm:text-[11px] inline-flex items-center gap-1 mt-0.5">
+          <div className="text-bq-ink2 text-[10px] sm:text-[11px] inline-flex items-center gap-1 mt-0.5">
             <span className="material-symbols-outlined text-[12px]">group</span>
             {group.memberCount} {t('groups.members')}
           </div>
         </div>
       </div>
       <div
-        className="text-on-surface/55 text-[11px] sm:text-[12px] leading-relaxed line-clamp-2 mb-3 flex-1 min-h-[2.5em]"
+        className="text-bq-ink2 text-[11px] sm:text-[12px] leading-relaxed line-clamp-2 mb-3 flex-1 min-h-[2.5em]"
         title={group.description ?? ''}
       >
         {group.description ?? ''}
@@ -271,7 +271,7 @@ function PublicCard({
       <button
         onClick={() => onJoin(group.code)}
         disabled={joining}
-        className="w-full bg-[rgba(232,168,50,0.1)] text-secondary border border-[rgba(232,168,50,0.25)] hover:bg-[rgba(232,168,50,0.2)] rounded-lg px-3 py-2 text-[11px] sm:text-[12px] font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed mt-auto"
+        className="w-full bg-bq-amber/10 text-bq-amberd border border-bq-amber/30 hover:bg-bq-amber/20 rounded-lg px-3 py-2 text-[11px] sm:text-[12px] font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed mt-auto"
       >
         + {t('groups.joinBtn')}
       </button>
@@ -443,14 +443,14 @@ const Groups: React.FC = () => {
   const hasGroups = myGroups.length > 0;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-5 sm:py-7 pb-24 lg:pb-12 space-y-6 sm:space-y-7" data-testid="groups-page">
+    <div className="bg-bq-paper max-w-6xl mx-auto px-4 sm:px-6 py-5 sm:py-7 pb-24 lg:pb-12 space-y-6 sm:space-y-7" data-testid="groups-page">
       {/* ── Page Header ── */}
       <header className="flex items-end justify-between gap-4 flex-wrap">
         <div>
-          <h2 className="text-on-surface text-[22px] sm:text-[28px] lg:text-[32px] font-extrabold tracking-tight leading-tight">
+          <h2 className="font-display text-bq-ink text-[22px] sm:text-[28px] lg:text-[32px] font-extrabold tracking-tight leading-tight">
             {t('groups.pageTitle')}
           </h2>
-          <p className="text-on-surface/55 text-[12px] sm:text-[14px] mt-1">
+          <p className="text-bq-ink2 text-[12px] sm:text-[14px] mt-1">
             {t('groups.pageSubtitle')}
           </p>
         </div>
@@ -458,7 +458,7 @@ const Groups: React.FC = () => {
         <button
           onClick={() => setShowCreateModal(true)}
           data-testid="groups-create-btn"
-          className="hidden lg:inline-flex items-center gap-2 bg-gradient-to-br from-[#e8a832] to-[#d97706] text-[#11131e] font-bold text-[14px] px-5 py-3 rounded-xl shadow-[0_4px_16px_rgba(232,168,50,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(232,168,50,0.45)] transition-all"
+          className="hidden lg:inline-flex items-center gap-2 bg-bq-action text-white shadow-bq-action font-bold text-[14px] px-5 py-3 rounded-xl hover:-translate-y-0.5 transition-all"
         >
           <span className="material-symbols-outlined">add</span>
           {t('groups.createGroupCta')}
@@ -469,14 +469,14 @@ const Groups: React.FC = () => {
       <form
         onSubmit={handleQuickJoin}
         data-testid="groups-quick-join"
-        className="bg-[rgba(50,52,64,0.4)] backdrop-blur-md border border-[rgba(232,168,50,0.1)] rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-5 flex-wrap"
+        className="bg-bq-white shadow-bq-soft border border-bq-hair rounded-2xl p-4 sm:p-5 flex items-center gap-3 sm:gap-5 flex-wrap"
       >
-        <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[rgba(232,168,50,0.2)] to-[rgba(217,119,6,0.1)] border border-[rgba(232,168,50,0.3)] flex items-center justify-center text-secondary text-[20px] flex-shrink-0">
+        <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-bq-amber/20 to-bq-amberd/10 border border-bq-amber/30 flex items-center justify-center text-bq-amberd text-[20px] flex-shrink-0">
           <span className="material-symbols-outlined">key</span>
         </div>
         <div className="flex-shrink-0">
-          <div className="text-on-surface text-[13px] font-bold">{t('groups.joinByCodeCta')}</div>
-          <div className="text-on-surface/55 text-[11px] mt-0.5">{t('groups.joinByCodeHint')}</div>
+          <div className="text-bq-ink text-[13px] font-bold">{t('groups.joinByCodeCta')}</div>
+          <div className="text-bq-ink2 text-[11px] mt-0.5">{t('groups.joinByCodeHint')}</div>
         </div>
         <div className="flex-1 min-w-[220px] flex gap-2">
           <input
@@ -486,13 +486,13 @@ const Groups: React.FC = () => {
             data-testid="groups-quick-join-input"
             placeholder={t('groups.inviteCodePlaceholder')}
             maxLength={20}
-            className="flex-1 bg-[rgba(17,19,30,0.6)] border border-[rgba(232,168,50,0.15)] focus:border-secondary focus:outline-none rounded-lg px-3 py-2.5 text-on-surface text-[13px] tracking-[2px] uppercase placeholder:tracking-normal placeholder:text-on-surface/40 placeholder:normal-case"
+            className="flex-1 bg-bq-inset border border-bq-hair focus:border-bq-amberd focus:outline-none rounded-lg px-3 py-2.5 text-bq-ink text-[13px] tracking-[2px] uppercase placeholder:tracking-normal placeholder:text-bq-ink3 placeholder:normal-case"
           />
           <button
             type="submit"
             disabled={!quickCode.trim() || quickJoining}
             data-testid="groups-quick-join-submit"
-            className="bg-[rgba(232,168,50,0.12)] text-secondary border border-[rgba(232,168,50,0.25)] hover:bg-[rgba(232,168,50,0.2)] hover:border-secondary rounded-lg px-4 sm:px-5 py-2.5 text-[12px] sm:text-[13px] font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+            className="bg-bq-amber/12 text-bq-amberd border border-bq-amber/30 hover:bg-bq-amber/20 hover:border-bq-amberd rounded-lg px-4 sm:px-5 py-2.5 text-[12px] sm:text-[13px] font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
           >
             {quickJoining ? '…' : t('groups.joinBtn')}
           </button>
@@ -506,10 +506,10 @@ const Groups: React.FC = () => {
       {hasGroups && (
         <section className="space-y-3" data-testid="my-groups-section">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-on-surface text-[15px] sm:text-[17px] font-bold">
-              <span className="material-symbols-outlined text-secondary">church</span>
+            <div className="flex items-center gap-2 text-bq-ink text-[15px] sm:text-[17px] font-bold">
+              <span className="material-symbols-outlined text-bq-amberd">church</span>
               {t('groups.myGroupsSection')}
-              <span className="bg-[rgba(232,168,50,0.12)] text-secondary text-[12px] font-bold px-2.5 py-0.5 rounded-lg">
+              <span className="bg-bq-amber/12 text-bq-amberd text-[12px] font-bold px-2.5 py-0.5 rounded-lg">
                 {myGroups.length}
               </span>
             </div>
@@ -525,21 +525,21 @@ const Groups: React.FC = () => {
       {/* ── Empty hero ── */}
       {!hasGroups && (
         <section data-testid="no-group">
-          <div className="bg-[rgba(50,52,64,0.3)] border border-dashed border-[rgba(232,168,50,0.25)] rounded-2xl px-6 py-9 sm:py-12 text-center">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[rgba(232,168,50,0.08)] flex items-center justify-center mx-auto mb-5 text-secondary">
+          <div className="bg-bq-white shadow-bq-soft border border-dashed border-bq-amber/35 rounded-2xl px-6 py-9 sm:py-12 text-center">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-bq-amber/10 flex items-center justify-center mx-auto mb-5 text-bq-amberd">
               <span className="material-symbols-outlined text-[36px] sm:text-[48px]">church</span>
             </div>
-            <h3 className="text-on-surface text-[18px] sm:text-[22px] font-bold mb-2.5">
+            <h3 className="text-bq-ink text-[18px] sm:text-[22px] font-bold mb-2.5">
               {t('groups.noGroupTitle')}
             </h3>
-            <p className="text-on-surface/55 text-[13px] sm:text-[14px] leading-relaxed max-w-md mx-auto mb-6">
+            <p className="text-bq-ink2 text-[13px] sm:text-[14px] leading-relaxed max-w-md mx-auto mb-6">
               {t('groups.noGroupDesc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 justify-center max-w-sm sm:max-w-none mx-auto">
               <button
                 onClick={() => setShowCreateModal(true)}
                 data-testid="groups-empty-create-btn"
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-br from-[#e8a832] to-[#d97706] text-[#11131e] font-bold text-[14px] px-6 py-3 rounded-xl shadow-[0_4px_16px_rgba(232,168,50,0.3)]"
+                className="inline-flex items-center justify-center gap-2 bg-bq-action text-white shadow-bq-action font-bold text-[14px] px-6 py-3 rounded-xl"
               >
                 <span className="material-symbols-outlined">add</span>
                 {t('groups.createGroupCta')}
@@ -547,7 +547,7 @@ const Groups: React.FC = () => {
               <button
                 onClick={() => setShowJoinModal(true)}
                 data-testid="groups-empty-join-btn"
-                className="inline-flex items-center justify-center gap-2 bg-[rgba(232,168,50,0.1)] text-secondary border border-[rgba(232,168,50,0.3)] font-bold text-[13px] px-6 py-3 rounded-xl"
+                className="inline-flex items-center justify-center gap-2 bg-bq-amber/10 text-bq-amberd border border-bq-amber/30 font-bold text-[13px] px-6 py-3 rounded-xl"
               >
                 <span className="material-symbols-outlined">key</span>
                 {t('groups.joinByCodeCta')}
@@ -561,11 +561,11 @@ const Groups: React.FC = () => {
       {(publicLoading || publicGroups.length > 0) && (
         <section className="space-y-3" data-testid="public-groups-section">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-on-surface text-[15px] sm:text-[17px] font-bold">
-              <span className="material-symbols-outlined text-[#60a5fa]">explore</span>
+            <div className="flex items-center gap-2 text-bq-ink text-[15px] sm:text-[17px] font-bold">
+              <span className="material-symbols-outlined text-bq-sapphire">explore</span>
               {hasGroups ? t('groups.discoverPublic') : t('groups.discoverPublicAlt')}
             </div>
-            <button className="text-on-surface/55 text-[12px] sm:text-[13px] font-semibold hover:text-secondary inline-flex items-center gap-1 transition-colors">
+            <button className="text-bq-ink2 text-[12px] sm:text-[13px] font-semibold hover:text-bq-amberd inline-flex items-center gap-1 transition-colors">
               {t('groups.viewAll')}
               <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
             </button>
@@ -577,7 +577,7 @@ const Groups: React.FC = () => {
               ? [0, 1, 2].map((i) => (
                   <div
                     key={i}
-                    className="snap-start sm:snap-align-none h-36 bg-[rgba(50,52,64,0.4)] rounded-2xl animate-pulse"
+                    className="snap-start sm:snap-align-none h-36 bg-bq-inset rounded-2xl animate-pulse"
                   />
                 ))
               : publicGroups.map((g) => (
@@ -594,7 +594,7 @@ const Groups: React.FC = () => {
         onClick={() => setShowCreateModal(true)}
         aria-label={t('groups.createGroupCta')}
         data-testid="groups-fab-create"
-        className="lg:hidden fixed bottom-24 right-4 w-14 h-14 rounded-2xl bg-gradient-to-br from-[#e8a832] to-[#d97706] text-[#11131e] flex items-center justify-center shadow-[0_8px_24px_rgba(232,168,50,0.4)] active:scale-95 transition-transform z-30"
+        className="lg:hidden fixed bottom-24 right-4 w-14 h-14 rounded-2xl bg-bq-action text-white flex items-center justify-center shadow-bq-action active:scale-95 transition-transform z-30"
       >
         <span className="material-symbols-outlined text-[28px]">add</span>
       </button>
@@ -606,26 +606,26 @@ const Groups: React.FC = () => {
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setShowCreateModal(false)}
           />
-          <div className="relative bg-surface-container rounded-2xl p-7 sm:p-8 w-full max-w-md mx-4 border border-white/10 shadow-2xl">
+          <div className="relative bg-bq-white rounded-2xl p-7 sm:p-8 w-full max-w-md mx-4 border border-bq-hair shadow-bq-soft">
             <button
-              className="absolute top-5 right-5 text-on-surface-variant hover:text-on-surface"
+              className="absolute top-5 right-5 text-bq-ink2 hover:text-bq-ink"
               onClick={() => setShowCreateModal(false)}
               aria-label="Close"
             >
               <span className="material-symbols-outlined">close</span>
             </button>
-            <h3 className="text-lg font-medium mb-5 flex items-center gap-2">
-              <span className="material-symbols-outlined text-secondary">add_circle</span>
+            <h3 className="text-lg font-medium mb-5 flex items-center gap-2 text-bq-ink">
+              <span className="material-symbols-outlined text-bq-amberd">add_circle</span>
               {t('groups.createGroupModal')}
             </h3>
             <form onSubmit={handleCreate} className="space-y-4" data-testid="groups-create-form">
               <div>
-                <label className="block text-[11px] font-medium uppercase tracking-wider text-on-surface-variant mb-1.5">
+                <label className="block text-[11px] font-medium uppercase tracking-wider text-bq-ink2 mb-1.5">
                   {t('groups.groupName')} *
                 </label>
                 <input
                   data-testid="groups-create-name-input"
-                  className="w-full bg-surface-container-low border border-white/10 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary/50"
+                  className="w-full bg-bq-inset border border-bq-hair rounded-lg px-4 py-3 text-bq-ink placeholder:text-bq-ink3 focus:outline-none focus:border-bq-amberd/50"
                   value={createName}
                   onChange={(e) => setCreateName(e.target.value)}
                   placeholder={t('groups.groupNamePlaceholder')}
@@ -634,12 +634,12 @@ const Groups: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-medium uppercase tracking-wider text-on-surface-variant mb-1.5">
+                <label className="block text-[11px] font-medium uppercase tracking-wider text-bq-ink2 mb-1.5">
                   {t('groups.description')}
                 </label>
                 <textarea
                   data-testid="group-description-input"
-                  className="w-full bg-surface-container-low border border-white/10 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary/50 resize-none h-20"
+                  className="w-full bg-bq-inset border border-bq-hair rounded-lg px-4 py-3 text-bq-ink placeholder:text-bq-ink3 focus:outline-none focus:border-bq-amberd/50 resize-none h-20"
                   value={createDesc}
                   onChange={(e) => setCreateDesc(e.target.value)}
                   placeholder={t('groups.descriptionPlaceholder')}
@@ -649,7 +649,7 @@ const Groups: React.FC = () => {
 
               {/* Privacy toggle */}
               <div>
-                <label className="block text-[11px] font-medium uppercase tracking-wider text-on-surface-variant mb-1.5">
+                <label className="block text-[11px] font-medium uppercase tracking-wider text-bq-ink2 mb-1.5">
                   {t('groups.privacyLabel')}
                 </label>
                 <div className="grid grid-cols-2 gap-2" role="radiogroup">
@@ -661,15 +661,15 @@ const Groups: React.FC = () => {
                     onClick={() => setCreateIsPublic(true)}
                     className={`rounded-lg border px-3 py-2.5 text-left transition-all ${
                       createIsPublic
-                        ? 'bg-[rgba(232,168,50,0.1)] border-secondary text-on-surface'
-                        : 'bg-surface-container-low border-white/10 text-on-surface/70 hover:border-white/20'
+                        ? 'bg-bq-amber/10 border-bq-amberd text-bq-ink'
+                        : 'bg-bq-inset border-bq-hair text-bq-ink2 hover:border-bq-ink3/40'
                     }`}
                   >
                     <div className="flex items-center gap-1.5 text-[12px] font-semibold">
                       <span className="material-symbols-outlined text-[15px]">public</span>
                       {t('groups.privacyPublic')}
                     </div>
-                    <div className="text-[10px] text-on-surface/50 mt-0.5 leading-snug">
+                    <div className="text-[10px] text-bq-ink3 mt-0.5 leading-snug">
                       {t('groups.privacyPublicHint')}
                     </div>
                   </button>
@@ -681,15 +681,15 @@ const Groups: React.FC = () => {
                     onClick={() => setCreateIsPublic(false)}
                     className={`rounded-lg border px-3 py-2.5 text-left transition-all ${
                       !createIsPublic
-                        ? 'bg-[rgba(232,168,50,0.1)] border-secondary text-on-surface'
-                        : 'bg-surface-container-low border-white/10 text-on-surface/70 hover:border-white/20'
+                        ? 'bg-bq-amber/10 border-bq-amberd text-bq-ink'
+                        : 'bg-bq-inset border-bq-hair text-bq-ink2 hover:border-bq-ink3/40'
                     }`}
                   >
                     <div className="flex items-center gap-1.5 text-[12px] font-semibold">
                       <span className="material-symbols-outlined text-[15px]">lock</span>
                       {t('groups.privacyPrivate')}
                     </div>
-                    <div className="text-[10px] text-on-surface/50 mt-0.5 leading-snug">
+                    <div className="text-[10px] text-bq-ink3 mt-0.5 leading-snug">
                       {t('groups.privacyPrivateHint')}
                     </div>
                   </button>
@@ -700,7 +700,7 @@ const Groups: React.FC = () => {
               <button
                 type="submit"
                 data-testid="groups-create-submit-btn"
-                className="w-full py-3 gold-gradient text-on-secondary rounded-lg font-medium text-sm shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-3 bg-bq-action text-white shadow-bq-action rounded-lg font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={createLoading || !createName.trim()}
               >
                 {createLoading ? t('groups.creating') : t('groups.createGroupBtn')}
@@ -717,25 +717,25 @@ const Groups: React.FC = () => {
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setShowJoinModal(false)}
           />
-          <div className="relative bg-surface-container rounded-2xl p-7 sm:p-8 w-full max-w-md mx-4 border border-white/10 shadow-2xl">
+          <div className="relative bg-bq-white rounded-2xl p-7 sm:p-8 w-full max-w-md mx-4 border border-bq-hair shadow-bq-soft">
             <button
-              className="absolute top-5 right-5 text-on-surface-variant hover:text-on-surface"
+              className="absolute top-5 right-5 text-bq-ink2 hover:text-bq-ink"
               onClick={() => setShowJoinModal(false)}
               aria-label="Close"
             >
               <span className="material-symbols-outlined">close</span>
             </button>
-            <h3 className="text-lg font-medium mb-5 flex items-center gap-2">
-              <span className="material-symbols-outlined text-tertiary">search</span>
+            <h3 className="text-lg font-medium mb-5 flex items-center gap-2 text-bq-ink">
+              <span className="material-symbols-outlined text-bq-sapphire">search</span>
               {t('groups.joinGroupModal')}
             </h3>
             <form onSubmit={handleModalJoin} className="space-y-4">
               <div>
-                <label className="block text-[11px] font-medium uppercase tracking-wider text-on-surface-variant mb-1.5">
+                <label className="block text-[11px] font-medium uppercase tracking-wider text-bq-ink2 mb-1.5">
                   {t('groups.inviteCode')}
                 </label>
                 <input
-                  className="w-full bg-surface-container-low border border-white/10 rounded-lg px-4 py-3 text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary/50 text-center text-base tracking-widest"
+                  className="w-full bg-bq-inset border border-bq-hair rounded-lg px-4 py-3 text-bq-ink placeholder:text-bq-ink3 focus:outline-none focus:border-bq-amberd/50 text-center text-base tracking-widest"
                   value={joinCode}
                   onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
                   placeholder={t('groups.inviteCodePlaceholder')}
@@ -746,7 +746,7 @@ const Groups: React.FC = () => {
               {joinError && <p className="text-sm text-error font-bold">{joinError}</p>}
               <button
                 type="submit"
-                className="w-full py-3 gold-gradient text-on-secondary rounded-lg font-medium text-sm shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-3 bg-bq-action text-white shadow-bq-action rounded-lg font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={joinLoading || !joinCode.trim()}
               >
                 {joinLoading ? t('groups.joining') : t('groups.joinBtn')}

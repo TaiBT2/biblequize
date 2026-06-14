@@ -87,26 +87,26 @@ export default function GroupQuickInfoSidebar({ groupId }: { groupId: string }) 
   return (
     <div
       data-testid="group-quick-info-sidebar"
-      className="rounded-xl p-3 border border-emerald-400/20"
-      style={{ background: 'rgba(74,222,128,0.05)' }}
+      className="rounded-xl p-3 border border-bq-emerald/20"
+      style={{ background: 'rgba(14,138,107,0.06)' }}
     >
-      <div className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+      <div className="text-[10px] font-bold text-bq-emerald uppercase tracking-wider mb-2 flex items-center gap-1.5">
         <span className="text-base animate-pulse">🟢</span>
         <span>{t('groups.sidebarInfo.activeNow')}</span>
       </div>
-      <div className="text-2xl font-extrabold text-on-surface leading-none">
+      <div className="text-2xl font-extrabold text-bq-ink leading-none">
         {onlineCount}
-        <span className="text-xs text-on-surface/55 font-normal ml-1">/ {totalMembers}</span>
+        <span className="text-xs text-bq-ink2 font-normal ml-1">/ {totalMembers}</span>
       </div>
       {group?.name && (
-        <div className="text-[10px] text-on-surface/55 mt-1 truncate">{group.name}</div>
+        <div className="text-[10px] text-bq-ink2 mt-1 truncate">{group.name}</div>
       )}
 
       {rooms.length > 0 && (
-        <div className="mt-3 pt-3 border-t border-emerald-400/15">
-          <div className="text-[9px] text-on-surface/55 uppercase font-semibold mb-1.5 flex items-center gap-1">
+        <div className="mt-3 pt-3 border-t border-bq-emerald/15">
+          <div className="text-[9px] text-bq-ink2 uppercase font-semibold mb-1.5 flex items-center gap-1">
             🎮 <span>{t('groups.sidebarInfo.openRooms')}</span>
-            <span className="ml-auto text-emerald-400 font-bold">{rooms.length}</span>
+            <span className="ml-auto text-bq-emerald font-bold">{rooms.length}</span>
           </div>
           <div className="space-y-0.5">
             {rooms.slice(0, 3).map((room) => (
@@ -114,14 +114,14 @@ export default function GroupQuickInfoSidebar({ groupId }: { groupId: string }) 
                 key={room.id}
                 onClick={() => handleJoinRoom(room)}
                 disabled={joining}
-                className="text-[11px] text-emerald-400 hover:underline block leading-tight text-left w-full truncate disabled:opacity-60"
+                className="text-[11px] text-bq-emerald hover:underline block leading-tight text-left w-full truncate disabled:opacity-60"
                 title={room.roomName}
               >
                 "{room.roomName}" →
               </button>
             ))}
             {rooms.length > 3 && (
-              <div className="text-[10px] text-on-surface/40 mt-1">
+              <div className="text-[10px] text-bq-ink3 mt-1">
                 {t('groups.sidebarInfo.moreRooms', { count: rooms.length - 3 })}
               </div>
             )}

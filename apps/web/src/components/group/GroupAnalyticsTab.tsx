@@ -38,12 +38,12 @@ function ChartBar({ height, label, isToday }: { height: number; label: string; i
       <div
         className={`w-full rounded-t-[4px] ${
           isToday
-            ? 'bg-gradient-to-b from-[rgba(232,168,50,0.7)] to-secondary shadow-[0_0_8px_rgba(232,168,50,0.4)]'
-            : 'bg-gradient-to-b from-[rgba(232,168,50,0.5)] to-secondary'
+            ? 'bg-gradient-to-b from-bq-amber/70 to-bq-amberd shadow-bq-amb'
+            : 'bg-gradient-to-b from-bq-amber/50 to-bq-amberd'
         }`}
         style={{ height: `${height}%` }}
       />
-      <div className={`text-[9px] ${isToday ? 'text-secondary font-medium' : 'text-on-surface-variant/40'}`}>
+      <div className={`text-[9px] ${isToday ? 'text-bq-amberd font-medium' : 'text-bq-ink3'}`}>
         {label}
       </div>
     </div>
@@ -70,18 +70,18 @@ function KpiCard({
   return (
     <div
       data-testid={testId}
-      className="bg-[rgba(50,52,64,0.5)] border-[0.5px] rounded-lg p-2.5 relative"
+      className="bg-bq-white border-[0.5px] rounded-lg p-2.5 relative"
       style={{ borderColor }}
     >
       <div className="flex items-start justify-between gap-1.5 mb-1">
         <div className="text-[9px] tracking-wider" style={{ color: borderColor }}>{label}</div>
         {tooltip && (
-          <span title={tooltip} aria-label={tooltip} className="text-on-surface/40 hover:text-on-surface/70 cursor-help text-[10px] leading-none mt-0.5">ⓘ</span>
+          <span title={tooltip} aria-label={tooltip} className="text-bq-ink3 hover:text-bq-ink2 cursor-help text-[10px] leading-none mt-0.5">ⓘ</span>
         )}
       </div>
       <div className="flex items-baseline gap-1">
         <span className="text-[22px] font-medium" style={{ color: textColor }}>{value}</span>
-        {unit && <span className="text-on-surface/40 text-[11px]">{unit}</span>}
+        {unit && <span className="text-bq-ink3 text-[11px]">{unit}</span>}
       </div>
     </div>
   );
@@ -140,13 +140,13 @@ export default function GroupAnalyticsTab({ groupId, groupCreatedAt, groupMember
   if (loading) {
     return (
       <div className="flex items-center justify-center py-10">
-        <div className="w-8 h-8 border-2 border-secondary/20 border-t-secondary rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-bq-amber/20 border-t-bq-amberd rounded-full animate-spin" />
       </div>
     );
   }
   if (error) {
     return (
-      <div className="bg-[rgba(50,52,64,0.4)] rounded-2xl p-6 text-center border-[0.5px] border-error/30">
+      <div className="bg-bq-white rounded-2xl p-6 text-center border-[0.5px] border-error/30">
         <span className="material-symbols-outlined text-3xl text-error mb-2 block">error</span>
         <p className="text-error text-sm">{error}</p>
       </div>
@@ -157,12 +157,12 @@ export default function GroupAnalyticsTab({ groupId, groupCreatedAt, groupMember
     <div className="space-y-4" data-testid="group-analytics-tab">
       <CellGroupPulseCard />
 
-      <section className="bg-[rgba(74,158,255,0.05)] border-[0.5px] border-[rgba(74,158,255,0.25)] rounded-xl p-3.5 sm:p-5">
+      <section className="bg-bq-sapphire/[0.05] border-[0.5px] border-bq-sapphire/25 rounded-xl p-3.5 sm:p-5">
         <div className="flex items-center justify-between mb-3">
-          <div className="text-on-surface text-[14px] font-medium">📊 {t('groups.analyticsTitle')}</div>
+          <div className="text-bq-ink text-[14px] font-medium">📊 {t('groups.analyticsTitle')}</div>
           <Link
             to={`/groups/${groupId}/analytics`}
-            className="text-on-surface/55 text-[10px] hover:text-secondary transition-colors"
+            className="text-bq-ink2 text-[10px] hover:text-bq-amberd transition-colors"
           >
             {t('groups.viewFullPage')} →
           </Link>
@@ -174,8 +174,8 @@ export default function GroupAnalyticsTab({ groupId, groupCreatedAt, groupMember
             label={t('groups.kpiActiveWeek')}
             value={activeWeek}
             unit={`/ ${totalMembers}`}
-            borderColor="rgba(99,153,34,0.3)"
-            textColor="#97C459"
+            borderColor="rgba(14,138,107,0.3)"
+            textColor="#0E8A6B"
             tooltip={t('groups.kpiTooltip.activeWeek', { active: activeWeek, total: totalMembers })}
           />
           <KpiCard
@@ -183,8 +183,8 @@ export default function GroupAnalyticsTab({ groupId, groupCreatedAt, groupMember
             label={t('groups.kpiAvgScore')}
             value={avgScore || '—'}
             unit={t('groups.kpiPerPerson')}
-            borderColor="rgba(232,168,50,0.3)"
-            textColor="#e8a832"
+            borderColor="rgba(245,158,11,0.3)"
+            textColor="#D97F06"
             tooltip={t('groups.kpiTooltip.avgScore', {
               sample: activeWeek,
               note: activeWeek > 0 && activeWeek < 3 ? ' ' + t('groups.kpiTooltip.smallSampleWarn') : '',
@@ -194,8 +194,8 @@ export default function GroupAnalyticsTab({ groupId, groupCreatedAt, groupMember
             testId="kpi-tab-accuracy"
             label={t('groups.kpiAccuracy')}
             value={`${accuracy}%`}
-            borderColor="rgba(106,184,232,0.3)"
-            textColor="#6AB8E8"
+            borderColor="rgba(45,70,200,0.3)"
+            textColor="#2D46C8"
             tooltip={t('groups.kpiTooltip.accuracy', { sample: activeWeek })}
           />
           <KpiCard
@@ -203,29 +203,29 @@ export default function GroupAnalyticsTab({ groupId, groupCreatedAt, groupMember
             label={t('groups.kpiInactive')}
             value={inactiveCount}
             unit={t('groups.kpiPeople')}
-            borderColor="rgba(255,140,66,0.3)"
-            textColor="#ff8c42"
+            borderColor="rgba(255,111,61,0.3)"
+            textColor="#FF6F3D"
             tooltip={t('groups.kpiTooltip.inactive', { count: inactiveCount, total: totalMembers, days: 7 })}
           />
         </div>
 
         {chartHidden ? (
-          <div data-testid="analytics-tab-chart-empty" className="bg-[rgba(50,52,64,0.5)] border-[0.5px] border-white/[0.06] rounded-lg p-6 mb-3 text-center">
+          <div data-testid="analytics-tab-chart-empty" className="bg-bq-inset border-[0.5px] border-bq-hair rounded-lg p-6 mb-3 text-center">
             <div className="text-3xl mb-2 opacity-50">📊</div>
-            <div className="text-on-surface text-[12px] font-medium mb-1">
+            <div className="text-bq-ink text-[12px] font-medium mb-1">
               {t('groups.analyticsEmpty.chartTitle')}
             </div>
-            <div className="text-on-surface/55 text-[11px]">
+            <div className="text-bq-ink2 text-[11px]">
               {groupAge.isNew
                 ? t('groups.analyticsEmpty.tooNew', { days: Math.max(0, 7 - groupAge.days) })
                 : t('groups.analyticsEmpty.tooSmall', { min: 3 })}
             </div>
           </div>
         ) : (
-          <div className="bg-[rgba(50,52,64,0.5)] border-[0.5px] border-white/[0.06] rounded-lg p-3 mb-3">
+          <div className="bg-bq-inset border-[0.5px] border-bq-hair rounded-lg p-3 mb-3">
             <div className="flex justify-between items-center mb-2.5">
-              <div className="text-on-surface/85 text-[11px] font-medium">📈 {t('groups.weeklyActivity')}</div>
-              <div className="text-on-surface/40 text-[10px]">{t('groups.weeklyActivitySubtitle')}</div>
+              <div className="text-bq-ink text-[11px] font-medium">📈 {t('groups.weeklyActivity')}</div>
+              <div className="text-bq-ink3 text-[10px]">{t('groups.weeklyActivitySubtitle')}</div>
             </div>
             <div className="grid grid-cols-7 gap-1.5 items-end h-20">
               {weeklyBars.length === 7
@@ -240,21 +240,21 @@ export default function GroupAnalyticsTab({ groupId, groupCreatedAt, groupMember
         )}
 
         {!inactiveAlertHidden && (
-          <div className="bg-[rgba(255,140,66,0.06)] border-[0.5px] border-[rgba(255,140,66,0.3)] rounded-lg px-3 py-2.5 flex justify-between items-start gap-3">
+          <div className="bg-bq-ember/[0.06] border-[0.5px] border-bq-ember/30 rounded-lg px-3 py-2.5 flex justify-between items-start gap-3">
             <div className="flex-1">
               <div className="flex items-center gap-1.5 mb-1">
                 <span className="text-[13px]">⚠️</span>
-                <span className="text-[#ff8c42] text-[11px] font-medium">
+                <span className="text-bq-ember text-[11px] font-medium">
                   {t('groups.inactiveAlert', { count: inactiveCount })}
                 </span>
               </div>
-              <div className="text-on-surface/60 text-[11px] leading-snug">
+              <div className="text-bq-ink2 text-[11px] leading-snug">
                 {t('groups.inactiveAlertDesc')}
               </div>
             </div>
             <Link
               to={`/groups/${groupId}?tab=members&filter=inactive`}
-              className="bg-[rgba(255,140,66,0.15)] text-[#ff8c42] border-[0.5px] border-[rgba(255,140,66,0.4)] rounded-md px-3 py-1.5 text-[11px] font-medium flex-shrink-0 hover:brightness-110 transition-all"
+              className="bg-bq-ember/15 text-bq-ember border-[0.5px] border-bq-ember/40 rounded-md px-3 py-1.5 text-[11px] font-medium flex-shrink-0 hover:brightness-110 transition-all"
             >
               {t('groups.viewInactiveList')}
             </Link>

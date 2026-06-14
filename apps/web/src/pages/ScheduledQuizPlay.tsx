@@ -49,28 +49,28 @@ const ScheduledQuizPlay: React.FC = () => {
     <div className="p-6 max-w-md mx-auto">
       <div className="text-error mb-3">{error}</div>
       <button onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/${quizId}`)}
-        className="px-4 py-2 bg-secondary/15 border border-secondary/30 text-secondary rounded-lg text-sm">
+        className="px-4 py-2 bg-bq-amber/15 border border-bq-amber/30 text-bq-amberd rounded-lg text-sm">
         Quay lại
       </button>
     </div>
   )
 
   if (result) return (
-    <div className="min-h-screen bg-[#0a0b13] text-on-surface p-6 max-w-md mx-auto" data-testid="play-result">
-      <div className="rounded-2xl p-6 text-center" style={{ background: 'linear-gradient(135deg, rgba(232,168,50,0.15), rgba(50,52,64,0.4))', border: '1px solid rgba(232,168,50,0.3)' }}>
+    <div className="min-h-screen bg-bq-paper text-bq-ink p-6 max-w-md mx-auto" data-testid="play-result">
+      <div className="rounded-2xl p-6 text-center bg-bq-white border border-bq-amber/30 shadow-bq-soft">
         <div className="text-5xl mb-3">🎯</div>
-        <h3 className="text-xl font-bold mb-2">{t('scheduledQuiz.attemptDone')}</h3>
-        <div className="text-3xl font-bold text-secondary tabular-nums my-3">{result.score}</div>
-        <p className="text-on-surface/70 text-sm mb-5">{result.correctCount}/{result.totalQuestions} {t('scheduledQuiz.correct')}</p>
+        <h3 className="text-xl font-bold font-display mb-2">{t('scheduledQuiz.attemptDone')}</h3>
+        <div className="text-3xl font-bold text-bq-amberd tabular-nums my-3">{result.score}</div>
+        <p className="text-bq-ink2 text-sm mb-5">{result.correctCount}/{result.totalQuestions} {t('scheduledQuiz.correct')}</p>
         <button onClick={() => navigate(`/groups/${groupId}/scheduled-quizzes/${quizId}`, { replace: true })}
-          className="w-full py-3 rounded-xl font-bold text-sm" style={{ background: 'linear-gradient(135deg, #e8a832, #d97706)', color: '#11131e' }}>
+          className="w-full py-3 rounded-xl font-bold text-sm bg-bq-action text-white shadow-bq-action">
           {t('scheduledQuiz.backToDetail')}
         </button>
       </div>
     </div>
   )
 
-  if (questions.length === 0) return <div className="p-6 text-on-surface/60">Đang tải câu hỏi...</div>
+  if (questions.length === 0) return <div className="p-6 text-bq-ink2">Đang tải câu hỏi...</div>
 
   const q = questions[idx]
   const selected = answers[q.id]
@@ -78,21 +78,21 @@ const ScheduledQuizPlay: React.FC = () => {
   const allAnswered = questions.every(qq => answers[qq.id] !== undefined)
 
   return (
-    <div className="min-h-screen bg-[#0a0b13] text-on-surface p-4 max-w-2xl mx-auto" data-testid="scheduled-quiz-play">
+    <div className="min-h-screen bg-bq-paper text-bq-ink p-4 max-w-2xl mx-auto" data-testid="scheduled-quiz-play">
       <div className="flex items-center justify-between mb-4">
         <button onClick={() => { if (confirm('Thoát? Tiến độ sẽ mất.')) navigate(`/groups/${groupId}/scheduled-quizzes/${quizId}`) }}
-          className="text-on-surface/60" aria-label="Close">
+          className="text-bq-ink2" aria-label="Close">
           <span className="material-symbols-outlined">close</span>
         </button>
-        <div className="text-xs font-bold text-secondary uppercase tracking-wider">CÂU {idx + 1} / {questions.length}</div>
+        <div className="text-xs font-bold text-bq-amberd uppercase tracking-wider">CÂU {idx + 1} / {questions.length}</div>
         <div className="w-6" />
       </div>
 
-      <div className="h-1 bg-white/5 rounded-full mb-6 overflow-hidden">
-        <div className="h-full bg-gradient-to-r from-secondary to-tertiary transition-all" style={{ width: `${((idx + 1) / questions.length) * 100}%` }} />
+      <div className="h-1 bg-bq-inset rounded-full mb-6 overflow-hidden">
+        <div className="h-full bg-bq-amber transition-all" style={{ width: `${((idx + 1) / questions.length) * 100}%` }} />
       </div>
 
-      <div className="rounded-xl bg-[rgba(17,19,30,0.5)] border border-[rgba(232,168,50,0.1)] p-5 mb-5 text-center">
+      <div className="rounded-xl bg-bq-white border border-bq-hair shadow-bq-soft p-5 mb-5 text-center">
         <div className="text-base font-medium leading-relaxed">{q.content}</div>
       </div>
 
@@ -102,10 +102,10 @@ const ScheduledQuizPlay: React.FC = () => {
           return (
             <button key={i} onClick={() => setAnswers(prev => ({ ...prev, [q.id]: i }))}
               className={`text-left rounded-xl p-3.5 flex items-center gap-3 border-[1.5px] min-h-[60px] transition ${
-                isSel ? 'bg-secondary/15 border-secondary shadow-[0_0_0_2px_rgba(232,168,50,0.3)]' : 'bg-[rgba(50,52,64,0.4)] border-white/10 hover:border-white/20'
+                isSel ? 'bg-bq-amber/15 border-bq-amber shadow-[0_0_0_2px_rgba(245,158,11,0.3)]' : 'bg-bq-white border-bq-hair hover:border-bq-ink3'
               }`}>
               <div className={`w-8 h-8 rounded-md grid place-items-center text-sm font-bold flex-shrink-0 border ${
-                isSel ? 'bg-secondary/30 text-secondary border-secondary/50' : 'bg-white/5 text-on-surface/70 border-white/10'
+                isSel ? 'bg-bq-amber/30 text-bq-amberd border-bq-amber/50' : 'bg-bq-inset text-bq-ink2 border-bq-hair'
               }`}>
                 {ANSWER_LETTERS[i]}
               </div>
@@ -117,20 +117,18 @@ const ScheduledQuizPlay: React.FC = () => {
 
       <div className="flex gap-2.5">
         <button onClick={() => setIdx(i => Math.max(0, i - 1))} disabled={idx === 0}
-          className="flex-1 py-3 rounded-xl bg-[rgba(50,52,64,0.6)] border border-white/10 text-sm font-bold disabled:opacity-40">
+          className="flex-1 py-3 rounded-xl bg-bq-inset border border-bq-hair text-bq-ink2 text-sm font-bold disabled:opacity-40">
           {t('scheduledQuiz.prev')}
         </button>
         {!isLast ? (
           <button onClick={() => setIdx(i => Math.min(questions.length - 1, i + 1))}
-            className="flex-1 py-3 rounded-xl text-sm font-bold"
-            style={{ background: 'linear-gradient(135deg, #e8a832, #d97706)', color: '#11131e' }}>
+            className="flex-1 py-3 rounded-xl text-sm font-bold bg-bq-action text-white shadow-bq-action">
             {t('scheduledQuiz.next')}
           </button>
         ) : (
           <button onClick={submitAll} disabled={submitting || !allAnswered}
             data-testid="submit-attempt"
-            className="flex-1 py-3 rounded-xl text-sm font-bold disabled:opacity-50"
-            style={{ background: 'linear-gradient(135deg, #4ade80, #22c55e)', color: '#11131e' }}>
+            className="flex-1 py-3 rounded-xl text-sm font-bold disabled:opacity-50 bg-bq-emerald text-white shadow-bq-eme">
             {submitting ? '...' : t('scheduledQuiz.submitAttempt')}
           </button>
         )}

@@ -22,12 +22,12 @@ interface Props {
 // hash → index, but the entries are spread across hue wheel (gold,
 // emerald, sky, purple, orange, teal) so any 3 indices look distinct.
 const GRADIENTS = [
-  'linear-gradient(135deg, #e8a832 0%, #d4941f 100%)', // 0 — gold
-  'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)', // 1 — emerald
-  'linear-gradient(135deg, #4ea8de 0%, #2d88be 100%)', // 2 — sky
-  'linear-gradient(135deg, #a855f7 0%, #7c3aed 100%)', // 3 — purple
-  'linear-gradient(135deg, #ff7a59 0%, #cf5a39 100%)', // 4 — orange
-  'linear-gradient(135deg, #14b8a6 0%, #0d9488 100%)', // 5 — teal
+  'linear-gradient(135deg, #F59E0B 0%, #D97F06 100%)', // 0 — amber
+  'linear-gradient(135deg, #46C89A 0%, #0E8A6B 100%)', // 1 — emerald
+  'linear-gradient(135deg, #6E86F0 0%, #2D46C8 100%)', // 2 — sapphire
+  'linear-gradient(135deg, #2D46C8 0%, #1E2E86 100%)', // 3 — deep sapphire
+  'linear-gradient(135deg, #FF7A5A 0%, #E0354B 100%)', // 4 — ruby/ember
+  'linear-gradient(135deg, #0E8A6B 0%, #0A6650 100%)', // 5 — deep emerald
 ];
 
 // 32-bit FNV-1a hash for better distribution than the prior shift-add
@@ -62,23 +62,23 @@ export default function QuizSetsPreviewCard({ quizSets, onPlay, onViewAll, playi
   return (
     <section
       data-testid="group-quizsets-preview"
-      className="bg-[rgba(50,52,64,0.55)] border border-white/10 rounded-xl p-4 backdrop-blur-md"
+      className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl p-4"
     >
       <div className="flex items-center justify-between mb-3">
-        <h2 className="text-[11px] font-bold text-secondary uppercase tracking-wider">
+        <h2 className="text-[11px] font-bold text-bq-amberd uppercase tracking-wider">
           📚 {t('groups.quizSetsSection')} ({quizSets.length})
         </h2>
         {quizSets.length > 3 && (
           <button
             onClick={onViewAll}
-            className="text-[10px] text-on-surface/55 hover:text-secondary transition-colors"
+            className="text-[10px] text-bq-ink2 hover:text-bq-amberd transition-colors"
           >
             {t('groups.viewAll')} →
           </button>
         )}
       </div>
       {top3.length === 0 ? (
-        <p className="text-[12px] text-on-surface/55 text-center py-4">
+        <p className="text-[12px] text-bq-ink2 text-center py-4">
           {t('groups.noQuizSets')}
         </p>
       ) : (
@@ -91,7 +91,7 @@ export default function QuizSetsPreviewCard({ quizSets, onPlay, onViewAll, playi
             return (
               <li
                 key={qs.id}
-                className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-white/10 transition-colors"
+                className="flex items-center gap-2.5 p-2 rounded-lg bg-bq-inset border border-bq-hair hover:border-bq-ink3/40 transition-colors"
               >
                 <div
                   className="w-9 h-9 rounded-lg flex items-center justify-center text-lg shrink-0 shadow-inner"
@@ -100,19 +100,19 @@ export default function QuizSetsPreviewCard({ quizSets, onPlay, onViewAll, playi
                   {emoji}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[12px] font-bold text-on-surface truncate">{qs.name}</div>
-                  <div className="text-[10px] text-on-surface/55 flex items-center gap-1.5 flex-wrap">
+                  <div className="text-[12px] font-bold text-bq-ink truncate">{qs.name}</div>
+                  <div className="text-[10px] text-bq-ink2 flex items-center gap-1.5 flex-wrap">
                     <span>{t('groups.questionsCount', { count: qs.questionCount })}</span>
                     {showPlay && (
                       <>
-                        <span className="text-on-surface/30">·</span>
+                        <span className="text-bq-ink3">·</span>
                         <span>▶ {qs.playCount}x</span>
                       </>
                     )}
                     {showRating && (
                       <>
-                        <span className="text-on-surface/30">·</span>
-                        <span className="text-secondary">⭐ {(qs.averageRating ?? 0).toFixed(1)}</span>
+                        <span className="text-bq-ink3">·</span>
+                        <span className="text-bq-amberd">⭐ {(qs.averageRating ?? 0).toFixed(1)}</span>
                       </>
                     )}
                   </div>
@@ -120,7 +120,7 @@ export default function QuizSetsPreviewCard({ quizSets, onPlay, onViewAll, playi
                 <button
                   onClick={() => onPlay(qs.id)}
                   disabled={playingId === qs.id}
-                  className="px-2.5 py-1 rounded-md bg-gradient-to-br from-secondary to-[#d4941f] text-on-secondary text-[10px] font-bold disabled:opacity-50 hover:brightness-110 transition-all whitespace-nowrap"
+                  className="px-2.5 py-1 rounded-md bg-bq-action text-white shadow-bq-action text-[10px] font-bold disabled:opacity-50 hover:brightness-110 transition-all whitespace-nowrap"
                 >
                   {playingId === qs.id ? '...' : t('groups.play')}
                 </button>

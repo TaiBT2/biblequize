@@ -87,32 +87,32 @@ export default function LiveNowBanner({ groupId }: { groupId: string }) {
   return (
     <div
       data-testid="group-live-now-banner"
-      className="rounded-xl p-3 border-2 border-emerald-400/40 bg-emerald-500/10"
+      className="rounded-xl p-3 border-2 border-bq-emerald/40 bg-bq-emerald/10"
     >
       <div className="flex items-center gap-3">
-        <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-base shrink-0">🎮</div>
+        <div className="w-9 h-9 rounded-lg bg-bq-emerald flex items-center justify-center text-base shrink-0">🎮</div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-[9px] font-bold text-emerald-400 uppercase animate-pulse">● {t('groups.liveNow.label')}</span>
-            <span className="text-[10px] text-on-surface/55">{formatRelative(room.createdAt, t)}</span>
+            <span className="text-[9px] font-bold text-bq-emerald uppercase animate-pulse">● {t('groups.liveNow.label')}</span>
+            <span className="text-[10px] text-bq-ink2">{formatRelative(room.createdAt, t)}</span>
             {rooms.length > 1 && (
-              <span className="text-[10px] text-emerald-400 font-semibold ml-auto whitespace-nowrap">
+              <span className="text-[10px] text-bq-emerald font-semibold ml-auto whitespace-nowrap">
                 +{rooms.length - 1} {t('groups.liveNow.morePill')}
               </span>
             )}
           </div>
-          <div className="text-sm font-bold text-on-surface mt-0.5 truncate">
-            <span className="text-on-surface/55 font-normal">{t('groups.liveNow.roomLabel')}: </span>
+          <div className="text-sm font-bold text-bq-ink mt-0.5 truncate">
+            <span className="text-bq-ink2 font-normal">{t('groups.liveNow.roomLabel')}: </span>
             "{room.roomName}"
           </div>
-          <div className="text-[10px] text-on-surface/70 mt-0.5 truncate">
+          <div className="text-[10px] text-bq-ink2 mt-0.5 truncate">
             {meta}
           </div>
         </div>
         <button
           onClick={() => handleJoin(room)}
           disabled={joining}
-          className="px-3 py-1.5 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 text-[#11131e] text-xs font-bold whitespace-nowrap shadow-[0_0_12px_rgba(74,222,128,0.3)] disabled:opacity-60"
+          className="px-3 py-1.5 rounded-lg bg-bq-emerald text-white text-xs font-bold whitespace-nowrap shadow-bq-eme disabled:opacity-60"
         >
           {t('groups.liveNow.join')} →
         </button>

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { QuizSetFull } from '../../../api/quizSets'
 import { BIBLE_BOOKS_VI, localizeBibleBook } from '../../../data/bibleData'
-import { COLOR, DARK_INPUT_STYLE } from './styles'
+import { COLOR, DARK_INPUT_STYLE, INSET_BG } from './styles'
 
 interface Props {
   quizSet: QuizSetFull
@@ -33,7 +33,7 @@ export default function MetadataAccordion({
 
   return (
     <div style={{
-      background: 'rgba(50,52,64,0.25)',
+      background: INSET_BG,
       borderBottom: `1px solid ${COLOR.borderXSubtle}`,
       padding: '14px 24px',
     }}>

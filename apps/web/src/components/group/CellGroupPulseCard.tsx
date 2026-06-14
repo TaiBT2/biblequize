@@ -9,24 +9,24 @@ export default function CellGroupPulseCard() {
   return (
     <div
       data-testid="cell-group-pulse-placeholder"
-      className="rounded-2xl p-4 border border-dashed border-emerald-400/25"
-      style={{ background: 'rgba(74,222,128,0.04)' }}
+      className="rounded-2xl p-4 border border-dashed border-bq-emerald/25"
+      style={{ background: 'rgba(14,138,107,0.06)' }}
     >
       <div className="flex items-center gap-3">
         <div className="text-3xl opacity-40 select-none">💚</div>
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-0.5 flex-wrap">
-            <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">
+            <span className="text-[10px] font-bold text-bq-emerald uppercase tracking-wider">
               {t('groups.pulse.title')}
             </span>
-            <span className="text-[9px] text-on-surface/55 px-1.5 py-0.5 rounded bg-white/5 uppercase">
+            <span className="text-[9px] text-bq-ink2 px-1.5 py-0.5 rounded bg-bq-inset uppercase">
               {t('groups.pulse.comingSoon')}
             </span>
-            <span className="text-[9px] text-on-surface/55 px-1.5 py-0.5 rounded bg-secondary/10 text-secondary uppercase ml-auto">
+            <span className="text-[9px] px-1.5 py-0.5 rounded bg-bq-amber/10 text-bq-amberd uppercase ml-auto">
               👑 {t('groups.pulse.leaderOnly')}
             </span>
           </div>
-          <p className="text-[12px] text-on-surface/60 leading-relaxed">
+          <p className="text-[12px] text-bq-ink2 leading-relaxed">
             {t('groups.pulse.placeholder')}
           </p>
         </div>

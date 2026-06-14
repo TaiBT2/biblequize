@@ -5,20 +5,20 @@ import {
   type QuizSet,
 } from '../../api/quizSets'
 
-// Hardcoded hex per MOCKUP_QUIZSET_CARDS.html (Bui rule: no CSS variables in card files,
-// avoids the white-background bug from var() resolution failures).
+// Khung Sáng palette hex (Bui rule: no CSS variables in card files, avoids the
+// white-background bug from var() resolution failures). Light-theme jewel tokens.
 const HEX = {
-  gold: '#e8a832',
-  goldHover: '#f0b842',
-  navy: '#11131e',
-  textPrimary: '#f5f5f5',
-  textMuted: '#9ba0ad',
-  textDim: '#7a7f8c',
-  iconText: '#c9cdd6',
-  green: '#4ade80',
-  blue: '#5b8df0',
-  red: '#ef4444',
-  copper: '#c89968',
+  gold: '#D97F06',          // bq-amber-deep (contrast-safe on light)
+  goldHover: '#F59E0B',     // bq-amber
+  navy: '#FFFFFF',          // fg on filled jewel buttons
+  textPrimary: '#16151B',   // bq-ink
+  textMuted: '#6C6A62',     // bq-ink-soft
+  textDim: '#A8A69C',       // bq-ink-faint
+  iconText: '#6C6A62',      // bq-ink-soft
+  green: '#0E8A6B',         // bq-emerald
+  blue: '#2D46C8',          // bq-sapphire
+  red: '#E0354B',           // bq-ruby
+  copper: '#D97F06',        // bq-amber-deep
 }
 
 type Role = 'LEADER' | 'MOD' | 'MEMBER' | null
@@ -43,10 +43,10 @@ interface Props {
 
 function statusBadge(status: QuizSet['publishStatus']): { label: string; bg: string; color: string; icon: string } | null {
   switch (status) {
-    case 'PUBLISHED': return { label: 'Đã xuất bản', bg: 'rgba(74, 222, 128, 0.15)', color: HEX.green,  icon: 'check_circle' }
-    case 'DRAFT':     return { label: 'Bản nháp',    bg: 'rgba(156, 163, 175, 0.15)', color: HEX.textMuted, icon: 'edit_note' }
-    case 'ARCHIVED':  return { label: 'Đã lưu trữ',  bg: 'rgba(180, 130, 80, 0.15)',  color: HEX.copper, icon: 'archive' }
-    case 'SOFT_DELETED': return { label: 'Đã xóa',  bg: 'rgba(239, 68, 68, 0.15)',   color: HEX.red, icon: 'delete' }
+    case 'PUBLISHED': return { label: 'Đã xuất bản', bg: 'rgba(14, 138, 107, 0.12)', color: HEX.green,  icon: 'check_circle' }
+    case 'DRAFT':     return { label: 'Bản nháp',    bg: 'rgba(108, 106, 98, 0.12)', color: HEX.textMuted, icon: 'edit_note' }
+    case 'ARCHIVED':  return { label: 'Đã lưu trữ',  bg: 'rgba(217, 127, 6, 0.12)',  color: HEX.copper, icon: 'archive' }
+    case 'SOFT_DELETED': return { label: 'Đã xóa',  bg: 'rgba(224, 53, 75, 0.12)',   color: HEX.red, icon: 'delete' }
     default: return null
   }
 }
@@ -173,15 +173,14 @@ export default function QuizSetListCard({
         data-testid="quiz-set-list-card"
         data-status={qs.publishStatus}
         style={{
-          background: 'rgba(50, 52, 64, 0.4)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
+          background: '#FFFFFF',
+          border: '1px solid #E7E4DA',
           borderRadius: 16,
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
           transition: 'all 0.2s',
+          boxShadow: '0 18px 40px -24px rgba(20,20,30,.28)',
         }}
       >
         {/* HEADER STRIP */}
@@ -191,7 +190,7 @@ export default function QuizSetListCard({
             alignItems: 'center',
             gap: 8,
             padding: '14px 16px',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+            borderBottom: '1px solid #E7E4DA',
           }}
         >
           {badge && (
@@ -210,7 +209,7 @@ export default function QuizSetListCard({
           )}
           <span
             style={{
-              background: 'rgba(232, 168, 50, 0.1)', color: HEX.gold,
+              background: 'rgba(245, 158, 11, 0.12)', color: HEX.gold,
               padding: '4px 10px', borderRadius: 6,
               fontSize: 12, fontWeight: 600,
               marginLeft: 'auto', marginRight: 8,
@@ -227,7 +226,7 @@ export default function QuizSetListCard({
                 data-testid="btn-card-menu"
                 disabled={menuBusy}
                 style={{
-                  background: menuOpen ? 'rgba(255,255,255,0.08)' : 'transparent',
+                  background: menuOpen ? 'rgba(20,20,30,0.06)' : 'transparent',
                   border: 'none', color: HEX.textMuted,
                   cursor: menuBusy ? 'wait' : 'pointer',
                   width: 28, height: 28, borderRadius: 6,
@@ -243,12 +242,10 @@ export default function QuizSetListCard({
                   style={{
                     position: 'absolute', top: 32, right: 0, zIndex: 30,
                     minWidth: 180,
-                    background: 'rgba(40, 42, 56, 0.98)',
-                    backdropFilter: 'blur(16px)',
-                    WebkitBackdropFilter: 'blur(16px)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    background: '#FFFFFF',
+                    border: '1px solid #E7E4DA',
                     borderRadius: 10, padding: 4,
-                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.4)',
+                    boxShadow: '0 18px 40px -24px rgba(20,20,30,.28)',
                   }}
                 >
                   <MenuItem icon="edit"        label="Sửa câu hỏi" onClick={() => handleMenuAction('edit')} testId="menu-edit" />
@@ -270,7 +267,7 @@ export default function QuizSetListCard({
         <div style={{ padding: 16, flex: 1 }}>
           <div
             style={{
-              fontFamily: '"Sora", sans-serif',
+              fontFamily: '"Bricolage Grotesque", "Be Vietnam Pro", sans-serif',
               fontSize: 17, fontWeight: 700,
               marginBottom: 4, color: HEX.textPrimary,
             }}
@@ -294,7 +291,7 @@ export default function QuizSetListCard({
           <div
             style={{
               display: 'flex', alignItems: 'center', gap: 12,
-              padding: '10px 12px', background: 'rgba(0, 0, 0, 0.2)',
+              padding: '10px 12px', background: '#F2F0E7',
               borderRadius: 10, fontSize: 12, color: HEX.textMuted,
             }}
           >
@@ -316,9 +313,9 @@ export default function QuizSetListCard({
         {/* ACTIONS FOOTER — state-aware */}
         <div
           style={{
-            padding: 12, borderTop: '1px solid rgba(255, 255, 255, 0.06)',
+            padding: 12, borderTop: '1px solid #E7E4DA',
             display: 'flex', gap: 8,
-            background: isDraft ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.15)',
+            background: isDraft ? '#F2F0E7' : '#FBFAF5',
           }}
         >
           {isPublished && isLeader && (
@@ -332,7 +329,7 @@ export default function QuizSetListCard({
                 aria-label="Chơi cùng nhau"
                 data-testid="btn-coplay"
                 style={{
-                  flex: 1, background: HEX.gold, color: HEX.navy, border: 'none',
+                  flex: 1, background: HEX.gold, color: '#FFFFFF', border: 'none',
                   padding: '11px 14px', borderRadius: 10,
                   fontWeight: 700, fontSize: 14,
                   cursor: coPlayBusy ? 'not-allowed' : 'pointer',
@@ -370,7 +367,7 @@ export default function QuizSetListCard({
                   aria-label="Tham gia trận đấu"
                   data-testid="btn-join-live"
                   style={{
-                    flex: 1, background: HEX.green, color: HEX.navy, border: 'none',
+                    flex: 1, background: HEX.green, color: '#FFFFFF', border: 'none',
                     padding: '11px 14px', borderRadius: 10,
                     fontWeight: 700, fontSize: 14, cursor: 'pointer',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
@@ -414,7 +411,7 @@ export default function QuizSetListCard({
                 data-testid="btn-wait-leader"
                 style={{
                   flex: 1, padding: '11px 14px', borderRadius: 10,
-                  background: 'rgba(255,255,255,0.04)', color: HEX.textMuted,
+                  background: '#F2F0E7', color: HEX.textMuted,
                   fontSize: 12, textAlign: 'center', fontStyle: 'italic',
                 }}
               >Đợi trưởng nhóm bắt đầu</div>
@@ -427,8 +424,8 @@ export default function QuizSetListCard({
                 onClick={e => { stop(e); onEditDraft ? onEditDraft(qs) : navigate(`/groups/${groupId}/quiz-sets/${qs.id}`) }}
                 style={{
                   flex: 1,
-                  background: 'rgba(232, 168, 50, 0.15)', color: HEX.gold,
-                  border: '1px dashed rgba(232, 168, 50, 0.4)',
+                  background: 'rgba(245, 158, 11, 0.15)', color: HEX.gold,
+                  border: '1px dashed rgba(245, 158, 11, 0.4)',
                   padding: '11px 14px', borderRadius: 10,
                   fontWeight: 700, fontSize: 14, cursor: 'pointer',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
@@ -457,8 +454,8 @@ export default function QuizSetListCard({
                 onClick={e => { stop(e); navigate(`/groups/${groupId}/quiz-sets/${qs.id}`) }}
                 style={{
                   flex: 1,
-                  background: 'rgba(255, 255, 255, 0.06)', color: HEX.iconText,
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  background: '#F2F0E7', color: HEX.iconText,
+                  border: '1px solid #E7E4DA',
                   padding: '11px 14px', borderRadius: 10,
                   fontWeight: 700, fontSize: 14, cursor: 'pointer',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
@@ -491,7 +488,7 @@ export default function QuizSetListCard({
           style={{
             position: 'fixed', bottom: 16, left: '50%', transform: 'translateX(-50%)',
             zIndex: 60, padding: '8px 14px', borderRadius: 8,
-            background: 'rgba(239, 68, 68, 0.9)', color: '#fff',
+            background: 'rgba(224, 53, 75, 0.95)', color: '#fff',
             fontSize: 12, fontFamily: 'inherit', cursor: 'pointer',
           }}
           onClick={() => setCoPlayError(null)}
@@ -506,13 +503,13 @@ function DifficultyPill({ label, count, color }: { label: string; count: number;
   return (
     <div
       style={{
-        flex: 1, background: 'rgba(255, 255, 255, 0.04)',
+        flex: 1, background: '#F2F0E7',
         borderRadius: 8, padding: '6px 8px', textAlign: 'center',
-        border: '1px solid rgba(255, 255, 255, 0.06)',
+        border: '1px solid #E7E4DA',
       }}
     >
       <span style={{ display: 'block', fontWeight: 700, fontSize: 15, marginBottom: 1, color }}>{count}</span>
-      <span style={{ fontSize: 10, color: '#9ba0ad', textTransform: 'uppercase', letterSpacing: 0.3 }}>{label}</span>
+      <span style={{ fontSize: 10, color: '#6C6A62', textTransform: 'uppercase', letterSpacing: 0.3 }}>{label}</span>
     </div>
   )
 }
@@ -527,7 +524,7 @@ function Stat({ icon, children }: { icon: string; children: React.ReactNode }) {
 }
 
 function Divider() {
-  return <div style={{ width: 1, height: 12, background: 'rgba(255, 255, 255, 0.1)' }} />
+  return <div style={{ width: 1, height: 12, background: '#E7E4DA' }} />
 }
 
 interface IconButtonProps {
@@ -558,7 +555,7 @@ function MenuItem({
         fontSize: 13, fontFamily: 'inherit', textAlign: 'left',
         cursor: 'pointer',
       }}
-      onMouseEnter={e => { e.currentTarget.style.background = danger ? 'rgba(239, 68, 68, 0.12)' : 'rgba(255,255,255,0.06)' }}
+      onMouseEnter={e => { e.currentTarget.style.background = danger ? 'rgba(224, 53, 75, 0.10)' : 'rgba(20,20,30,0.05)' }}
       onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}
     >
       <span className="material-symbols-outlined" style={{ fontSize: 17 }}>{icon}</span>
@@ -579,9 +576,9 @@ function IconButton(props: IconButtonProps) {
       data-testid={props['data-testid']}
       style={{
         width: 42, height: 42,
-        background: 'rgba(255, 255, 255, 0.06)',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        color: '#c9cdd6', borderRadius: 10,
+        background: '#F2F0E7',
+        border: '1px solid #E7E4DA',
+        color: '#6C6A62', borderRadius: 10,
         cursor: disabled ? 'not-allowed' : 'pointer',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         fontFamily: 'inherit', opacity: disabled ? 0.5 : 1,

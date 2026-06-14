@@ -13,14 +13,14 @@ interface ActionCardProps {
 }
 
 function ActionCard({ icon, label, hint, onClick, highlight, disabled, disabledReason, testId }: ActionCardProps) {
-  const base = 'rounded-xl p-3 border text-left transition-all flex flex-col gap-1 min-h-[88px] backdrop-blur-md';
+  const base = 'rounded-xl p-3 border text-left transition-all flex flex-col gap-1 min-h-[88px]';
   // GD-FIX-9: primary "Bắt đầu Live" action wears the emerald accent;
-  // neutral cards stay charcoal with subtle borders. Emerald hint text
+  // neutral cards stay light with subtle borders. Emerald hint text
   // when highlight reinforces the primary affordance.
   const enabled = highlight
-    ? 'bg-[rgba(74,222,128,0.06)] border-[rgba(74,222,128,0.35)] hover:bg-[rgba(74,222,128,0.1)] hover:border-[rgba(74,222,128,0.55)] hover:-translate-y-0.5 shadow-[0_0_16px_rgba(74,222,128,0.08)]'
-    : 'bg-[rgba(50,52,64,0.55)] border-white/10 hover:bg-[rgba(50,52,64,0.7)] hover:border-white/20';
-  const off = 'bg-white/[0.02] border-white/5 cursor-not-allowed opacity-50';
+    ? 'bg-bq-emerald/[0.06] border-bq-emerald/35 hover:bg-bq-emerald/10 hover:border-bq-emerald/55 hover:-translate-y-0.5 shadow-bq-eme'
+    : 'bg-bq-white border-bq-hair shadow-bq-soft hover:border-bq-ink3/40 hover:-translate-y-0.5';
+  const off = 'bg-bq-inset border-bq-hair cursor-not-allowed opacity-50';
   return (
     <button
       data-testid={testId}
@@ -31,10 +31,10 @@ function ActionCard({ icon, label, hint, onClick, highlight, disabled, disabledR
       className={`${base} ${disabled ? off : enabled}`}
     >
       <span className="text-lg">{icon}</span>
-      <span className="text-[12px] font-bold text-on-surface leading-tight">{label}</span>
+      <span className="text-[12px] font-bold text-bq-ink leading-tight">{label}</span>
       <span
         className={`text-[10px] leading-snug ${
-          highlight && !disabled ? 'text-emerald-400 font-semibold' : 'text-on-surface/55'
+          highlight && !disabled ? 'text-bq-emerald font-semibold' : 'text-bq-ink2'
         }`}
       >
         {disabled && disabledReason ? disabledReason : hint}
@@ -62,7 +62,7 @@ export default function QuickActionsPanel(props: QuickActionsPanelProps) {
   const navigate = useNavigate();
 
   const heading = (
-    <h2 className="text-[11px] font-bold text-secondary uppercase tracking-wider mb-3">
+    <h2 className="text-[11px] font-bold text-bq-amberd uppercase tracking-wider mb-3">
       ⚡ {t('groups.quickActions.title')}
     </h2>
   );

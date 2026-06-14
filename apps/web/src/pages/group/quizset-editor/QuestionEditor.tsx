@@ -89,7 +89,7 @@ export default function QuestionEditor({
                 key={d}
                 onClick={() => onChange({ difficulty: d })}
                 style={{
-                  background: active ? `rgba(${d === 'easy' ? '74,222,128' : d === 'medium' ? '251,191,36' : '239,68,68'},0.2)` : 'transparent',
+                  background: active ? col.chip : 'transparent',
                   color: active ? col.accent : COLOR.textMuted,
                   border: 'none', padding: '4px 12px', borderRadius: 4,
                   fontSize: 11, fontWeight: active ? 500 : 400, cursor: 'pointer',
@@ -103,7 +103,7 @@ export default function QuestionEditor({
           {onAIRewrite && (
             <button onClick={onAIRewrite} disabled={rewriting} style={{
               background: COLOR.goldBg, color: COLOR.gold,
-              border: `1px solid rgba(232,168,50,0.22)`,
+              border: `1px solid rgba(245,158,11,0.30)`,
               padding: '5px 10px', borderRadius: 6, fontSize: 11,
               cursor: rewriting ? 'wait' : 'pointer',
               display: 'inline-flex', alignItems: 'center', gap: 4,
@@ -125,7 +125,7 @@ export default function QuestionEditor({
           )}
           <button onClick={onDelete} title={t('quizSet.editor.question.deleteTooltip')} style={{
             background: 'transparent', color: COLOR.danger,
-            border: `1px solid rgba(239,68,68,0.25)`,
+            border: `1px solid rgba(224,53,75,0.30)`,
             padding: '5px 8px', borderRadius: 6, fontSize: 11, cursor: 'pointer',
           }}>
             <span className="material-symbols-outlined" style={{ fontSize: 13 }} aria-hidden>delete</span>
@@ -175,8 +175,8 @@ export default function QuestionEditor({
             return (
               <div key={i} style={{
                 display: 'flex', alignItems: 'center', gap: 9,
-                background: isCorrect ? 'rgba(74,222,128,0.06)' : COLOR.inputBg,
-                border: `1px solid ${isCorrect ? 'rgba(74,222,128,0.30)' : empty ? COLOR.warning : COLOR.borderXSubtle}`,
+                background: isCorrect ? 'rgba(14,138,107,0.08)' : COLOR.inputBg,
+                border: `1px solid ${isCorrect ? 'rgba(14,138,107,0.30)' : empty ? COLOR.warning : COLOR.borderXSubtle}`,
                 borderRadius: 8, padding: '9px 12px',
               }}>
                 <div style={{
@@ -192,12 +192,12 @@ export default function QuestionEditor({
                   style={{
                     width: 16, height: 16,
                     background: isCorrect ? COLOR.success : 'transparent',
-                    border: isCorrect ? 'none' : '1.5px solid rgba(255,255,255,0.2)',
+                    border: isCorrect ? 'none' : `1.5px solid ${COLOR.borderSubtle}`,
                     borderRadius: '50%', flexShrink: 0, cursor: 'pointer',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0,
                   }}
                 >
-                  {isCorrect && <span className="material-symbols-outlined" style={{ fontSize: 10, color: COLOR.bgDeep }} aria-hidden>check</span>}
+                  {isCorrect && <span className="material-symbols-outlined" style={{ fontSize: 10, color: '#FFFFFF' }} aria-hidden>check</span>}
                 </button>
                 <textarea
                   rows={1}

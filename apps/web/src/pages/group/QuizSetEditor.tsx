@@ -424,8 +424,8 @@ export default function QuizSetEditor({
         style={{
           position: 'fixed', top: 80, right: 24, zIndex: 100,
           padding: '10px 18px', borderRadius: 8, fontSize: 13, fontWeight: 600,
-          background: 'rgba(74,222,128,0.95)', color: '#0a1f0a',
-          boxShadow: '0 6px 20px rgba(0,0,0,0.35)',
+          background: '#0E8A6B', color: '#FFFFFF',
+          boxShadow: '0 18px 40px -24px rgba(20,20,30,0.28)',
           display: 'flex', alignItems: 'center', gap: 6,
           pointerEvents: 'none',
           opacity: saveFlash ? 1 : 0,

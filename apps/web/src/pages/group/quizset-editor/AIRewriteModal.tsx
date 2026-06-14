@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { EditorQuestion } from '../../../api/quizSets'
-import { COLOR } from './styles'
+import { ACTION_BG, ACTION_BG_DISABLED, ACTION_FG, ACTION_SHADOW, COLOR, INSET_BG } from './styles'
 
 interface Draft {
   content?: string
@@ -47,7 +47,7 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
 
   return (
     <div onClick={onClose} style={{
-      position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.65)', zIndex: 50,
+      position: 'fixed', inset: 0, background: 'rgba(22,21,27,0.45)', zIndex: 50,
       display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16,
     }}>
       <div onClick={e => e.stopPropagation()} style={{
@@ -79,8 +79,9 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
             }}
           />
           <button onClick={handleGenerate} disabled={busy || remaining < 1} style={{
-            background: busy || remaining < 1 ? 'rgba(232,168,50,0.30)' : COLOR.gold, color: '#1a1226',
-            border: 'none', padding: '9px 16px', borderRadius: 8, fontSize: 13, fontWeight: 500,
+            background: busy || remaining < 1 ? ACTION_BG_DISABLED : ACTION_BG, color: ACTION_FG,
+            border: 'none', boxShadow: busy || remaining < 1 ? 'none' : ACTION_SHADOW,
+            padding: '9px 16px', borderRadius: 8, fontSize: 13, fontWeight: 600,
             cursor: busy || remaining < 1 ? 'not-allowed' : 'pointer',
             display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 16,
             opacity: busy || remaining < 1 ? 0.6 : 1,
@@ -94,7 +95,7 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
 
           {error && (
             <div style={{
-              background: 'rgba(239,68,68,0.10)', border: `1px solid rgba(239,68,68,0.30)`,
+              background: 'rgba(224,53,75,0.10)', border: `1px solid rgba(224,53,75,0.30)`,
               color: COLOR.danger, padding: '8px 12px', borderRadius: 7, fontSize: 12, marginBottom: 12,
             }}>{error}</div>
           )}
@@ -131,14 +132,14 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
           {draft && (
             <div style={{ display: 'flex', gap: 8, marginTop: 16, justifyContent: 'flex-end' }}>
               <button onClick={onClose} style={{
-                background: 'rgba(255,255,255,0.04)', color: COLOR.textSecondary,
+                background: INSET_BG, color: COLOR.textSecondary,
                 border: `1px solid ${COLOR.borderSubtle}`,
                 padding: '9px 16px', borderRadius: 8, fontSize: 13, cursor: 'pointer',
               }}>{t('quizSet.editor.aiRewrite.keepOld')}</button>
               <button onClick={() => { onAccept(draft); onClose() }} style={{
-                background: COLOR.gold, color: '#1a1226',
+                background: ACTION_BG, color: ACTION_FG, boxShadow: ACTION_SHADOW,
                 border: 'none', padding: '9px 18px', borderRadius: 8,
-                fontSize: 13, fontWeight: 500, cursor: 'pointer',
+                fontSize: 13, fontWeight: 600, cursor: 'pointer',
               }}>{t('quizSet.editor.aiRewrite.acceptNew')}</button>
             </div>
           )}
@@ -150,7 +151,7 @@ export default function AIRewriteModal({ open, current, remaining, limit, onClos
 
 function panelStyle(): React.CSSProperties {
   return {
-    background: COLOR.inputBg, border: `1px solid ${COLOR.borderSubtle}`,
+    background: INSET_BG, border: `1px solid ${COLOR.borderSubtle}`,
     borderRadius: 8, padding: 14,
   }
 }

@@ -34,21 +34,21 @@ export default function NewGroupOnboarding(props: Props) {
   const tasks = [
     {
       icon: '👥',
-      iconBg: 'rgba(168,85,247,0.18)',
+      iconBg: 'rgba(45,70,200,0.16)',
       label: t('groups.onboarding.task1'),
       done: props.memberCount >= 5,
       action: props.onInvite,
     },
     {
       icon: '📚',
-      iconBg: 'rgba(74,222,128,0.18)',
+      iconBg: 'rgba(14,138,107,0.16)',
       label: t('groups.onboarding.task2'),
       done: props.quizSetsCount > 0,
       action: props.onCreateQuizSet,
     },
     {
       icon: '📢',
-      iconBg: 'rgba(232,168,50,0.18)',
+      iconBg: 'rgba(245,158,11,0.18)',
       label: t('groups.onboarding.task3'),
       done: props.announcementsCount > 0,
       action: props.onPostAnnouncement,
@@ -64,22 +64,22 @@ export default function NewGroupOnboarding(props: Props) {
   return (
     <div
       data-testid="group-onboarding-banner"
-      className="rounded-2xl p-4 sm:p-5 border border-[rgba(232,168,50,0.35)] mb-1"
-      style={{ background: 'rgba(232,168,50,0.07)' }}
+      className="rounded-2xl p-4 sm:p-5 border border-bq-amber/35 mb-1"
+      style={{ background: 'rgba(245,158,11,0.08)' }}
     >
       <div className="flex items-start justify-between gap-3 mb-3">
         <div>
-          <div className="text-[11px] font-bold text-secondary uppercase tracking-wider mb-1">
+          <div className="text-[11px] font-bold text-bq-amberd uppercase tracking-wider mb-1">
             👋 {t('groups.onboarding.title')}
           </div>
-          <div className="text-[13px] text-on-surface">
+          <div className="text-[13px] text-bq-ink">
             {t('groups.onboarding.subtitle', { completed, total: tasks.length })}
           </div>
         </div>
         <button
           onClick={handleDismiss}
           aria-label={t('common.close')}
-          className="text-on-surface/40 hover:text-on-surface w-7 h-7 rounded-md hover:bg-white/5 flex items-center justify-center text-[18px] leading-none"
+          className="text-bq-ink3 hover:text-bq-ink w-7 h-7 rounded-md hover:bg-bq-inset flex items-center justify-center text-[18px] leading-none"
         >
           ×
         </button>
@@ -95,21 +95,21 @@ export default function NewGroupOnboarding(props: Props) {
               data-testid={`onboarding-task-${idx}`}
               className={`w-full flex items-center gap-3 p-3 rounded-lg border transition-colors text-left ${
                 task.done
-                  ? 'border-emerald-400/30 cursor-default'
-                  : 'border-white/10 hover:border-[rgba(232,168,50,0.4)] hover:bg-white/[0.04]'
+                  ? 'border-bq-emerald/30 cursor-default'
+                  : 'border-bq-hair hover:border-bq-amber/40 hover:bg-bq-inset'
               }`}
-              style={task.done ? { background: 'rgba(74,222,128,0.06)' } : undefined}
+              style={task.done ? { background: 'rgba(14,138,107,0.06)' } : undefined}
             >
               <span
                 className="w-8 h-8 rounded-lg flex items-center justify-center text-[16px] shrink-0"
-                style={{ background: task.done ? 'rgba(74,222,128,0.2)' : task.iconBg }}
+                style={{ background: task.done ? 'rgba(14,138,107,0.18)' : task.iconBg }}
               >
                 {task.done ? '✅' : task.icon}
               </span>
-              <span className={`flex-1 text-[12px] ${task.done ? 'text-emerald-400 line-through' : 'text-on-surface'}`}>
+              <span className={`flex-1 text-[12px] ${task.done ? 'text-bq-emerald line-through' : 'text-bq-ink'}`}>
                 {task.label}
               </span>
-              {!task.done && <span className="text-secondary text-[14px] font-semibold">→</span>}
+              {!task.done && <span className="text-bq-amberd text-[14px] font-semibold">→</span>}
             </button>
           </li>
         ))}
