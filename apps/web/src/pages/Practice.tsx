@@ -17,10 +17,10 @@ interface Book {
 }
 
 const DIFFICULTY_OPTIONS = [
-  { key: 'all',    labelKey: 'practice.difficultyAll', icon: 'category',       color: '#c0c4e8' },
-  { key: 'easy',   labelKey: 'practice.easy',          icon: 'sentiment_satisfied', color: '#58D68D' },
-  { key: 'medium', labelKey: 'practice.medium',        icon: 'speed',          color: '#e8a832' },
-  { key: 'hard',   labelKey: 'practice.hard',          icon: 'local_fire_department', color: '#ffb4ab' },
+  { key: 'all',    labelKey: 'practice.difficultyAll', icon: 'category',       color: '#6C6A62' },
+  { key: 'easy',   labelKey: 'practice.easy',          icon: 'sentiment_satisfied', color: '#0E8A6B' },
+  { key: 'medium', labelKey: 'practice.medium',        icon: 'speed',          color: '#D97F06' },
+  { key: 'hard',   labelKey: 'practice.hard',          icon: 'local_fire_department', color: '#E0354B' },
 ]
 
 const COUNT_OPTIONS = [5, 10, 20, 50]
@@ -202,31 +202,31 @@ export default function Practice() {
 
       {/* ── Compact Header ─────────────────────────────────── */}
       <section className="flex items-start gap-3">
-        <div className="w-10 h-10 rounded-xl bg-secondary/15 flex items-center justify-center shrink-0">
-          <span className="material-symbols-outlined text-secondary text-xl" style={FILL_1}>menu_book</span>
+        <div className="w-10 h-10 rounded-xl bg-bq-amber/15 flex items-center justify-center shrink-0">
+          <span className="material-symbols-outlined text-bq-amberd text-xl" style={FILL_1}>menu_book</span>
         </div>
         <div>
-          <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary/80 mb-1">
+          <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-bq-amberd/90 mb-1">
             {t('practice.modeBadge')}
           </p>
-          <h1 className="text-2xl font-bold text-on-surface leading-tight mb-1">
+          <h1 className="font-display text-2xl font-bold text-bq-ink leading-tight mb-1">
             {t('practice.heroTitle')}{t('practice.heroAccent')}
           </h1>
-          <p className="text-sm text-on-surface-variant/70">{t('practice.heroDesc')}</p>
+          <p className="text-sm text-bq-ink2">{t('practice.heroDesc')}</p>
         </div>
       </section>
 
       {/* ── Error ─────────────────────────────────────────── */}
       {errorMsg && (
-        <div className="bg-error-container/30 border border-error/20 rounded-xl p-4 flex items-center gap-3">
-          <span className="material-symbols-outlined text-error text-xl">warning</span>
-          <span className="text-error text-sm font-semibold">{errorMsg}</span>
+        <div className="bg-bq-ruby/10 border border-bq-ruby/25 rounded-xl p-4 flex items-center gap-3">
+          <span className="material-symbols-outlined text-bq-ruby text-xl">warning</span>
+          <span className="text-bq-ruby text-sm font-semibold">{errorMsg}</span>
         </div>
       )}
 
       {/* ── Filter Card (compact, single panel) ──────────── */}
       <form
-        className="bg-surface-container border border-secondary/10 rounded-2xl overflow-hidden"
+        className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl overflow-hidden"
         onSubmit={e => { e.preventDefault(); if (!isDisabled) startQuiz() }}
       >
         <div className="p-6 space-y-6">
@@ -236,8 +236,8 @@ export default function Practice() {
             <div className="space-y-5">
               {/* Quiz Language */}
               <div>
-                <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface-variant/70 mb-2 flex items-center gap-1.5">
-                  <span className="material-symbols-outlined text-sm text-secondary">translate</span>
+                <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-bq-ink2 mb-2 flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-sm text-bq-amberd">translate</span>
                   {t('practice.quizLanguage')}
                 </label>
                 <QuizLanguageSelect onChange={setQuizLang} />
@@ -246,11 +246,11 @@ export default function Practice() {
               {/* Book Selector */}
               <div data-testid="practice-book-select">
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface-variant/70 flex items-center gap-1.5">
-                    <span className="material-symbols-outlined text-sm text-secondary">auto_stories</span>
+                  <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-bq-ink2 flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-sm text-bq-amberd">auto_stories</span>
                     {t('practice.selectBook')}
                   </label>
-                  <span className="text-[10px] font-bold text-secondary/60 tracking-wider">
+                  <span className="text-[10px] font-bold text-bq-amberd/70 tracking-wider">
                     {t('practice.bookCount', { current: books.length || 66, total: 66 })}
                   </span>
                 </div>
@@ -261,13 +261,13 @@ export default function Practice() {
                   placeholder={t('practice.searchBook')}
                   allLabel={t('practice.allBooks')}
                 />
-                <p className="text-on-surface-variant/50 text-[11px] mt-1.5">{t('practice.bookHint')}</p>
+                <p className="text-bq-ink3 text-[11px] mt-1.5">{t('practice.bookHint')}</p>
               </div>
 
               {/* Question Count */}
               <div>
-                <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface-variant/70 mb-2 flex items-center gap-1.5">
-                  <span className="material-symbols-outlined text-sm text-secondary">quiz</span>
+                <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-bq-ink2 mb-2 flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-sm text-bq-amberd">quiz</span>
                   {t('practice.questionCount')}
                 </label>
                 <div className="grid grid-cols-4 gap-2">
@@ -279,8 +279,8 @@ export default function Practice() {
                       onClick={() => setQuestionCount(num)}
                       className={`py-2.5 rounded-lg text-sm font-semibold transition-all
                         ${questionCount === num
-                          ? 'gold-gradient text-on-secondary shadow-md shadow-secondary/25'
-                          : 'bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest'
+                          ? 'bg-bq-action text-white shadow-bq-action'
+                          : 'bg-bq-inset text-bq-ink2 hover:bg-bq-hair'
                         }`}
                     >
                       {num}
@@ -292,11 +292,11 @@ export default function Practice() {
               {/* Time per Question (slider) */}
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface-variant/70 flex items-center gap-1.5">
-                    <span className="material-symbols-outlined text-sm text-secondary">timer</span>
+                  <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-bq-ink2 flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-sm text-bq-amberd">timer</span>
                     {t('practice.timePerQuestion')}
                   </label>
-                  <span className="text-sm font-bold text-secondary tabular-nums">
+                  <span className="text-sm font-bold text-bq-amberd tabular-nums">
                     {t('practice.timePerQuestionValue', { seconds: timePerQuestion })}
                   </span>
                 </div>
@@ -308,10 +308,10 @@ export default function Practice() {
                   step={5}
                   value={timePerQuestion}
                   onChange={e => setTimePerQuestion(Number(e.target.value))}
-                  className="w-full accent-secondary"
+                  className="w-full accent-bq-amberd"
                   aria-label={t('practice.timePerQuestion')}
                 />
-                <p className="text-on-surface-variant/50 text-[11px] mt-1">{t('practice.timePerQuestionHint')}</p>
+                <p className="text-bq-ink3 text-[11px] mt-1">{t('practice.timePerQuestionHint')}</p>
               </div>
             </div>
 
@@ -319,8 +319,8 @@ export default function Practice() {
             <div className="space-y-5">
               {/* Difficulty */}
               <div>
-                <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface-variant/70 mb-2 flex items-center gap-1.5">
-                  <span className="material-symbols-outlined text-sm text-secondary">tune</span>
+                <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-bq-ink2 mb-2 flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-sm text-bq-amberd">tune</span>
                   {t('practice.difficulty')}
                 </label>
                 <div className="grid grid-cols-2 gap-2">
@@ -334,8 +334,8 @@ export default function Practice() {
                         onClick={() => setSelectedDifficulty(d.key)}
                         className={`flex items-center gap-2 py-2.5 px-3 rounded-lg text-sm font-semibold transition-all
                           ${active
-                            ? 'bg-surface-container-highest ring-1 ring-secondary/40 text-on-surface'
-                            : 'bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest'
+                            ? 'bg-bq-inset ring-1 ring-bq-sapphire/40 text-bq-ink'
+                            : 'bg-bq-inset text-bq-ink2 hover:bg-bq-hair'
                           }`}
                       >
                         <span
@@ -354,12 +354,12 @@ export default function Practice() {
               {/* Chapter Range (enabled only when book selected) */}
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface-variant/70 flex items-center gap-1.5">
-                    <span className="material-symbols-outlined text-sm text-secondary">format_list_numbered</span>
+                  <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-bq-ink2 flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-sm text-bq-amberd">format_list_numbered</span>
                     {t('practice.chapterRange')}
                   </label>
                   {selectedBook && (
-                    <span className="text-[10px] font-bold text-on-surface-variant/50">
+                    <span className="text-[10px] font-bold text-bq-ink3">
                       {t('practice.chapterMaxHint', { max: maxChapter })}
                     </span>
                   )}
@@ -377,7 +377,7 @@ export default function Practice() {
                       const v = e.target.value
                       setChapterFrom(v === '' ? '' : clampInt(Number(v), 1, maxChapter))
                     }}
-                    className="px-3 py-2.5 rounded-lg bg-surface-container-high text-on-surface text-sm font-semibold disabled:opacity-40 placeholder:text-on-surface-variant/40 focus:outline-none focus:ring-1 focus:ring-secondary"
+                    className="px-3 py-2.5 rounded-lg bg-bq-inset border border-bq-hair text-bq-ink text-sm font-semibold disabled:opacity-40 placeholder:text-bq-ink3 focus:outline-none focus:ring-1 focus:ring-bq-sapphire"
                   />
                   <input
                     data-testid="practice-chapter-to"
@@ -391,10 +391,10 @@ export default function Practice() {
                       const v = e.target.value
                       setChapterTo(v === '' ? '' : clampInt(Number(v), 1, maxChapter))
                     }}
-                    className="px-3 py-2.5 rounded-lg bg-surface-container-high text-on-surface text-sm font-semibold disabled:opacity-40 placeholder:text-on-surface-variant/40 focus:outline-none focus:ring-1 focus:ring-secondary"
+                    className="px-3 py-2.5 rounded-lg bg-bq-inset border border-bq-hair text-bq-ink text-sm font-semibold disabled:opacity-40 placeholder:text-bq-ink3 focus:outline-none focus:ring-1 focus:ring-bq-sapphire"
                   />
                 </div>
-                <p className="text-on-surface-variant/50 text-[11px] mt-1">
+                <p className="text-bq-ink3 text-[11px] mt-1">
                   {selectedBook ? t('practice.chapterRangeHint') : t('practice.chapterRangeHint')}
                 </p>
               </div>
@@ -402,14 +402,14 @@ export default function Practice() {
               {/* Verse Range (enabled only when single chapter selected) */}
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-on-surface-variant/70 flex items-center gap-1.5">
-                    <span className="material-symbols-outlined text-sm text-secondary">subject</span>
+                  <label className="text-[10px] font-bold uppercase tracking-[0.15em] text-bq-ink2 flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-sm text-bq-amberd">subject</span>
                     {singleChapterSelected
                       ? t('practice.verseRange', { chapter: chapterFrom })
                       : t('practice.verseRange', { chapter: '—' })}
                   </label>
                   {singleChapterSelected && maxVerse > 0 && (
-                    <span className="text-[10px] font-bold text-on-surface-variant/50">
+                    <span className="text-[10px] font-bold text-bq-ink3">
                       {t('practice.verseMaxHint', { max: maxVerse })}
                     </span>
                   )}
@@ -427,7 +427,7 @@ export default function Practice() {
                       const v = e.target.value
                       setVerseFrom(v === '' ? '' : clampInt(Number(v), 1, maxVerse))
                     }}
-                    className="px-3 py-2.5 rounded-lg bg-surface-container-high text-on-surface text-sm font-semibold disabled:opacity-40 placeholder:text-on-surface-variant/40 focus:outline-none focus:ring-1 focus:ring-secondary"
+                    className="px-3 py-2.5 rounded-lg bg-bq-inset border border-bq-hair text-bq-ink text-sm font-semibold disabled:opacity-40 placeholder:text-bq-ink3 focus:outline-none focus:ring-1 focus:ring-bq-sapphire"
                   />
                   <input
                     data-testid="practice-verse-to"
@@ -441,17 +441,17 @@ export default function Practice() {
                       const v = e.target.value
                       setVerseTo(v === '' ? '' : clampInt(Number(v), 1, maxVerse))
                     }}
-                    className="px-3 py-2.5 rounded-lg bg-surface-container-high text-on-surface text-sm font-semibold disabled:opacity-40 placeholder:text-on-surface-variant/40 focus:outline-none focus:ring-1 focus:ring-secondary"
+                    className="px-3 py-2.5 rounded-lg bg-bq-inset border border-bq-hair text-bq-ink text-sm font-semibold disabled:opacity-40 placeholder:text-bq-ink3 focus:outline-none focus:ring-1 focus:ring-bq-sapphire"
                   />
                 </div>
-                <p className="text-on-surface-variant/50 text-[11px] mt-1">{t('practice.verseRangeHint')}</p>
+                <p className="text-bq-ink3 text-[11px] mt-1">{t('practice.verseRangeHint')}</p>
               </div>
             </div>
           </div>
 
           {/* Range error inline */}
           {rangeError && (
-            <div data-testid="practice-range-error" className="bg-error-container/20 border border-error/30 rounded-lg p-3 text-error text-xs font-semibold flex items-center gap-2">
+            <div data-testid="practice-range-error" className="bg-bq-ruby/10 border border-bq-ruby/30 rounded-lg p-3 text-bq-ruby text-xs font-semibold flex items-center gap-2">
               <span className="material-symbols-outlined text-base">error</span>
               {rangeError}
             </div>
@@ -459,18 +459,18 @@ export default function Practice() {
         </div>
 
         {/* ── Footer: Show Explanation Toggle + CTA ─────── */}
-        <div className="border-t border-outline-variant/10 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-surface-container-low/40">
+        <div className="border-t border-bq-hair px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-bq-paper">
           <button
             data-testid="practice-show-explanation-toggle"
             type="button"
             onClick={() => setShowExplanation(p => !p)}
-            className="flex items-center gap-3 text-sm text-on-surface-variant hover:text-on-surface transition-colors"
+            className="flex items-center gap-3 text-sm text-bq-ink2 hover:text-bq-ink transition-colors"
           >
-            <span className="material-symbols-outlined text-base text-secondary" style={FILL_1}>lightbulb</span>
+            <span className="material-symbols-outlined text-base text-bq-amberd" style={FILL_1}>lightbulb</span>
             <span className="font-semibold">{t('practice.showExplanation')}</span>
             <div
               className={`w-10 h-6 rounded-full p-0.5 transition-colors ${
-                showExplanation ? 'bg-secondary' : 'bg-surface-container-highest'
+                showExplanation ? 'bg-bq-amberd' : 'bg-bq-inset'
               }`}
             >
               <div
@@ -485,7 +485,7 @@ export default function Practice() {
             data-testid="practice-start-btn"
             type="submit"
             disabled={isDisabled}
-            className={`gold-gradient text-on-secondary font-bold py-3 px-7 rounded-xl text-sm shadow-lg shadow-secondary/25 transition-all
+            className={`bg-bq-action text-white font-bold py-3 px-7 rounded-xl text-sm shadow-bq-action transition-all
               ${isDisabled
                 ? 'opacity-60 cursor-not-allowed'
                 : 'hover:scale-[1.02] active:scale-95'
@@ -506,25 +506,25 @@ export default function Practice() {
         </div>
 
         {/* Mini stats line */}
-        <div className="text-center text-[11px] text-on-surface-variant/50 pb-3">
+        <div className="text-center text-[11px] text-bq-ink3 pb-3">
           {questionCount} · ~{estimatedMins} {t('practice.stats.minutes').toLowerCase()} · {bookCount} {t('practice.stats.books').toLowerCase()}
         </div>
       </form>
 
       {/* ── Retry Wrong Questions (real count) ──────────── */}
       {wrongCount != null && wrongCount > 0 && (
-        <div data-testid="practice-retry-wrong" className="bg-gradient-to-r from-[#ff8c42]/10 to-surface-container border border-[#ff8c42]/25 rounded-xl px-4 py-3 flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-[#ff8c42]/15 flex items-center justify-center shrink-0">
-            <span className="material-symbols-outlined text-[#ff8c42] text-lg" style={FILL_1}>replay</span>
+        <div data-testid="practice-retry-wrong" className="bg-gradient-to-r from-bq-ember/10 to-bq-white border border-bq-ember/25 rounded-xl px-4 py-3 flex items-center gap-3">
+          <div className="w-9 h-9 rounded-lg bg-bq-ember/15 flex items-center justify-center shrink-0">
+            <span className="material-symbols-outlined text-bq-ember text-lg" style={FILL_1}>replay</span>
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
-              <p className="font-semibold text-on-surface text-sm">{t('practice.retryWrongTitle')}</p>
-              <span className="px-2 py-0.5 rounded-full bg-[#ff8c42]/20 text-[#ff8c42] text-[10px] font-bold">
+              <p className="font-semibold text-bq-ink text-sm">{t('practice.retryWrongTitle')}</p>
+              <span className="px-2 py-0.5 rounded-full bg-bq-ember/20 text-bq-ember text-[10px] font-bold">
                 {wrongCount}
               </span>
             </div>
-            <p className="text-xs text-on-surface-variant/70">{t('practice.retryWrongDesc')}</p>
+            <p className="text-xs text-bq-ink2">{t('practice.retryWrongDesc')}</p>
           </div>
           <button
             data-testid="practice-retry-wrong-btn"
@@ -539,7 +539,7 @@ export default function Practice() {
                 }))
                 .catch(() => setErrorMsg(t('practice.errorCreate')))
             }}
-            className="px-4 py-2 rounded-lg bg-[#ff8c42]/15 border border-[#ff8c42]/35 text-[#ff8c42] font-semibold text-xs hover:bg-[#ff8c42]/20 transition-all active:scale-95"
+            className="px-4 py-2 rounded-lg bg-bq-ember/15 border border-bq-ember/35 text-bq-ember font-semibold text-xs hover:bg-bq-ember/20 transition-all active:scale-95"
           >
             {t('practice.retryButton')} →
           </button>
@@ -550,34 +550,34 @@ export default function Practice() {
       {recentSessions && recentSessions.length > 0 && (
         <section>
           <div className="flex items-center gap-2 mb-3">
-            <span className="material-symbols-outlined text-secondary text-base" style={FILL_1}>history</span>
-            <h2 className="text-sm font-bold text-on-surface">{t('practice.recentSessions')}</h2>
+            <span className="material-symbols-outlined text-bq-amberd text-base" style={FILL_1}>history</span>
+            <h2 className="text-sm font-bold text-bq-ink">{t('practice.recentSessions')}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {recentSessions.map(session => (
               <div
                 key={session.sessionId}
-                className="bg-surface-container border border-outline-variant/10 rounded-xl p-4 hover:border-secondary/25 transition-colors"
+                className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-xl p-4 hover:border-bq-amber/40 transition-colors"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-[11px] text-on-surface-variant/50">{relativeDate(session.createdAt)}</span>
+                  <span className="text-[11px] text-bq-ink3">{relativeDate(session.createdAt)}</span>
                   <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
                     session.accuracy >= 80
-                      ? 'bg-[#58D68D]/10 text-[#58D68D]'
+                      ? 'bg-bq-emerald/10 text-bq-emerald'
                       : session.accuracy >= 60
-                        ? 'bg-secondary/10 text-secondary'
-                        : 'bg-error/10 text-error'
+                        ? 'bg-bq-amber/10 text-bq-amberd'
+                        : 'bg-bq-ruby/10 text-bq-ruby'
                   }`}>
                     {session.accuracy}%
                   </span>
                 </div>
-                <p className="text-sm font-semibold text-on-surface mb-2">
+                <p className="text-sm font-semibold text-bq-ink mb-2">
                   {session.book || t('practice.allBooks')}
                 </p>
-                <div className="h-1 rounded-full bg-surface-container-highest overflow-hidden mb-1">
-                  <div className="h-full gold-gradient" style={{ width: `${session.accuracy}%` }} />
+                <div className="h-1 rounded-full bg-bq-inset overflow-hidden mb-1">
+                  <div className="h-full bg-bq-action" style={{ width: `${session.accuracy}%` }} />
                 </div>
-                <span className="text-[11px] text-on-surface-variant/50">
+                <span className="text-[11px] text-bq-ink3">
                   {session.correctAnswers}/{session.totalQuestions}
                 </span>
               </div>
@@ -587,11 +587,11 @@ export default function Practice() {
       )}
 
       {/* ── Tips Section ──────────────────────────────────── */}
-      <div className="bg-[#6AB8E8]/8 border border-[#6AB8E8]/20 rounded-xl p-3 flex items-center gap-3">
-        <span className="material-symbols-outlined text-[#6AB8E8] text-lg" style={FILL_1}>tips_and_updates</span>
+      <div className="bg-bq-sapphire/8 border border-bq-sapphire/20 rounded-xl p-3 flex items-center gap-3">
+        <span className="material-symbols-outlined text-bq-sapphire text-lg" style={FILL_1}>tips_and_updates</span>
         <div className="flex-1">
-          <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#6AB8E8] mb-0.5">{t('practice.tipsBadge')}</p>
-          <p className="text-xs text-on-surface-variant">{tipOfTheDay}</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-bq-sapphire mb-0.5">{t('practice.tipsBadge')}</p>
+          <p className="text-xs text-bq-ink2">{tipOfTheDay}</p>
         </div>
       </div>
 
@@ -599,7 +599,7 @@ export default function Practice() {
       <div className="pb-2">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-xs font-semibold text-on-surface-variant/50 hover:text-secondary transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-semibold text-bq-ink3 hover:text-bq-amberd transition-colors"
         >
           <span className="material-symbols-outlined text-sm">arrow_back</span>
           {t('practice.backToHome')}

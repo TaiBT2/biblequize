@@ -48,10 +48,10 @@ function formatMmSs(totalSeconds: number): string {
 function QuizSkeleton() {
   return (
     <div data-testid="basic-quiz-skeleton" className="max-w-3xl mx-auto py-12 space-y-6 animate-pulse">
-      <div className="h-3 w-full rounded-full bg-surface-container" />
-      <div className="h-32 rounded-2xl bg-surface-container" />
+      <div className="h-3 w-full rounded-full bg-bq-inset" />
+      <div className="h-32 rounded-2xl bg-bq-inset" />
       <div className="space-y-3">
-        {[0, 1, 2, 3].map(i => <div key={i} className="h-16 rounded-xl bg-surface-container" />)}
+        {[0, 1, 2, 3].map(i => <div key={i} className="h-16 rounded-xl bg-bq-inset" />)}
       </div>
     </div>
   )
@@ -165,19 +165,19 @@ export default function BasicQuiz() {
   if (isError || !questions || questions.length === 0) {
     return (
       <div data-testid="basic-quiz-error" className="max-w-2xl mx-auto py-16 text-center space-y-4">
-        <span className="material-symbols-outlined text-5xl text-error" style={FILL_1}>error</span>
-        <h2 className="text-xl font-bold text-on-surface">{t('basicQuiz.page.errorTitle')}</h2>
-        <p className="text-sm text-on-surface-variant">{t('basicQuiz.page.errorMessage')}</p>
+        <span className="material-symbols-outlined text-5xl text-bq-ruby" style={FILL_1}>error</span>
+        <h2 className="text-xl font-bold text-bq-ink">{t('basicQuiz.page.errorTitle')}</h2>
+        <p className="text-sm text-bq-ink2">{t('basicQuiz.page.errorMessage')}</p>
         <div className="flex gap-3 justify-center">
           <button
             onClick={() => refetch()}
-            className="gold-gradient text-on-secondary px-5 py-2.5 rounded-xl font-bold"
+            className="bg-bq-action text-white shadow-bq-action px-5 py-2.5 rounded-xl font-bold"
           >
             {t('basicQuiz.page.retryLoad')}
           </button>
           <button
             onClick={() => navigate('/')}
-            className="bg-surface-container-highest text-on-surface px-5 py-2.5 rounded-xl font-bold"
+            className="bg-bq-white border border-bq-hair text-bq-ink px-5 py-2.5 rounded-xl font-bold"
           >
             {t('basicQuiz.page.backHome')}
           </button>
@@ -205,11 +205,11 @@ export default function BasicQuiz() {
       {/* Header + progress */}
       <header className="space-y-3">
         <div className="flex items-center justify-between">
-          <h1 className="text-xl sm:text-2xl font-black text-on-surface flex items-center gap-2">
-            <span className="material-symbols-outlined text-secondary" style={FILL_1}>menu_book</span>
+          <h1 className="font-display text-xl sm:text-2xl font-black text-bq-ink flex items-center gap-2">
+            <span className="material-symbols-outlined text-bq-amberd" style={FILL_1}>menu_book</span>
             {t('basicQuiz.page.title')}
           </h1>
-          <span data-testid="basic-quiz-counter" className="text-sm font-bold text-on-surface-variant">
+          <span data-testid="basic-quiz-counter" className="text-sm font-bold text-bq-ink2">
             {t('basicQuiz.page.counter', { current: currentIndex + 1, total: totalQuestions })}
           </span>
         </div>
@@ -218,10 +218,10 @@ export default function BasicQuiz() {
           aria-valuenow={currentIndex + 1}
           aria-valuemax={totalQuestions}
           role="progressbar"
-          className="h-2 rounded-full bg-surface-container overflow-hidden"
+          className="h-2 rounded-full bg-bq-inset overflow-hidden"
         >
           <div
-            className="h-full gold-gradient transition-all"
+            className="h-full bg-bq-action transition-all"
             style={{ width: `${((currentIndex + 1) / totalQuestions) * 100}%` }}
           />
         </div>
@@ -229,8 +229,8 @@ export default function BasicQuiz() {
 
       {/* Question */}
       {currentQuestion && (
-        <section className="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
-          <h2 data-testid="basic-quiz-question" className="text-xl sm:text-2xl font-bold text-on-surface">
+        <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-6 sm:p-8 space-y-6">
+          <h2 data-testid="basic-quiz-question" className="text-xl sm:text-2xl font-bold text-bq-ink">
             {currentQuestion.content}
           </h2>
 
@@ -246,19 +246,19 @@ export default function BasicQuiz() {
                   className={
                     'w-full flex items-start gap-4 p-4 rounded-xl border-2 transition-all text-left active:scale-[0.99] ' +
                     (isSelected
-                      ? 'border-secondary bg-secondary/10 gold-glow'
-                      : 'border-outline-variant/20 bg-surface-container hover:bg-surface-container-high hover:border-outline-variant/40')
+                      ? 'border-bq-amberd bg-bq-amber/10 shadow-bq-amb'
+                      : 'border-bq-hair bg-bq-inset hover:bg-bq-white hover:border-bq-amberd/40')
                   }
                 >
                   <span
                     className={
                       'shrink-0 w-9 h-9 rounded-lg flex items-center justify-center font-black ' +
-                      (isSelected ? 'bg-secondary text-on-secondary' : 'bg-surface-container-highest text-secondary')
+                      (isSelected ? 'bg-bq-action text-white' : 'bg-bq-white text-bq-amberd')
                     }
                   >
                     {LETTERS[idx]}
                   </span>
-                  <span className={'pt-1.5 text-base ' + (isSelected ? 'text-secondary font-semibold' : 'text-on-surface')}>
+                  <span className={'pt-1.5 text-base ' + (isSelected ? 'text-bq-amberd font-semibold' : 'text-bq-ink')}>
                     {option}
                   </span>
                 </button>
@@ -269,7 +269,7 @@ export default function BasicQuiz() {
       )}
 
       {submitError && (
-        <div data-testid="basic-quiz-submit-error" className="rounded-xl border border-error/30 bg-error/10 p-4 text-sm text-error">
+        <div data-testid="basic-quiz-submit-error" className="rounded-xl border border-bq-ruby/30 bg-bq-ruby/10 p-4 text-sm text-bq-ruby">
           {submitError}
         </div>
       )}
@@ -280,7 +280,7 @@ export default function BasicQuiz() {
           data-testid="basic-quiz-prev"
           onClick={goPrev}
           disabled={currentIndex === 0}
-          className="px-5 py-2.5 rounded-xl font-bold bg-surface-container-highest text-on-surface disabled:opacity-40 disabled:cursor-not-allowed"
+          className="px-5 py-2.5 rounded-xl font-bold bg-bq-white border border-bq-hair text-bq-ink disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {t('basicQuiz.page.prev')}
         </button>
@@ -289,7 +289,7 @@ export default function BasicQuiz() {
             data-testid="basic-quiz-next"
             onClick={goNext}
             disabled={answers[currentIndex] == null}
-            className="gold-gradient text-on-secondary px-6 py-2.5 rounded-xl font-bold disabled:opacity-40 disabled:cursor-not-allowed"
+            className="bg-bq-action text-white shadow-bq-action px-6 py-2.5 rounded-xl font-bold disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {t('basicQuiz.page.next')}
           </button>
@@ -298,7 +298,7 @@ export default function BasicQuiz() {
             data-testid="basic-quiz-submit"
             onClick={submit}
             disabled={!allAnswered || phase === 'submitting'}
-            className="gold-gradient text-on-secondary px-6 py-2.5 rounded-xl font-bold disabled:opacity-40 disabled:cursor-not-allowed"
+            className="bg-bq-action text-white shadow-bq-action px-6 py-2.5 rounded-xl font-bold disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {phase === 'submitting' ? t('basicQuiz.page.submitting') : t('basicQuiz.page.submit')}
           </button>
@@ -324,18 +324,18 @@ function ReviewList({ reviews }: { reviews: Review[] }) {
             className={
               'rounded-2xl border p-5 space-y-3 ' +
               (r.correct
-                ? 'border-green-500/20 bg-green-500/5'
-                : 'border-error/20 bg-surface-container')
+                ? 'border-bq-emerald/20 bg-bq-emerald/5'
+                : 'border-bq-ruby/20 bg-bq-inset')
             }
           >
             <div className="flex items-start justify-between gap-3">
-              <p className="font-semibold text-on-surface flex-1">{r.content}</p>
+              <p className="font-semibold text-bq-ink flex-1">{r.content}</p>
               <span
                 className={
                   'shrink-0 inline-flex items-center gap-1 text-[10px] uppercase tracking-widest font-bold px-2 py-1 rounded-full ' +
                   (r.correct
-                    ? 'bg-green-500/15 text-green-400'
-                    : 'bg-error/15 text-error')
+                    ? 'bg-bq-emerald/15 text-bq-emerald'
+                    : 'bg-bq-ruby/15 text-bq-ruby')
                 }
               >
                 <span className="material-symbols-outlined text-sm" style={FILL_1}>
@@ -347,21 +347,21 @@ function ReviewList({ reviews }: { reviews: Review[] }) {
 
             {!r.correct && (
               <div className="grid sm:grid-cols-2 gap-2 text-sm">
-                <div className="rounded-lg border border-error/30 bg-error/5 p-3">
-                  <div className="text-[10px] uppercase tracking-widest text-error font-bold mb-1">
+                <div className="rounded-lg border border-bq-ruby/30 bg-bq-ruby/5 p-3">
+                  <div className="text-[10px] uppercase tracking-widest text-bq-ruby font-bold mb-1">
                     {t('basicQuiz.page.failYourAnswer')}
                   </div>
-                  <div className="text-on-surface">
+                  <div className="text-bq-ink">
                     {selectedIdx != null && r.options[selectedIdx]
                       ? `${LETTERS[selectedIdx] ?? ''}. ${r.options[selectedIdx]}`
                       : t('basicQuiz.page.failSkipped')}
                   </div>
                 </div>
-                <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-3">
-                  <div className="text-[10px] uppercase tracking-widest text-green-400 font-bold mb-1">
+                <div className="rounded-lg border border-bq-emerald/30 bg-bq-emerald/5 p-3">
+                  <div className="text-[10px] uppercase tracking-widest text-bq-emerald font-bold mb-1">
                     {t('basicQuiz.page.failCorrectAnswer')}
                   </div>
-                  <div className="text-on-surface">
+                  <div className="text-bq-ink">
                     {correctIdx >= 0 ? `${LETTERS[correctIdx] ?? ''}. ${r.options[correctIdx]}` : '—'}
                   </div>
                 </div>
@@ -369,19 +369,19 @@ function ReviewList({ reviews }: { reviews: Review[] }) {
             )}
 
             {r.correct && correctIdx >= 0 && (
-              <div className="text-sm rounded-lg border border-green-500/30 bg-green-500/5 p-3">
-                <div className="text-[10px] uppercase tracking-widest text-green-400 font-bold mb-1">
+              <div className="text-sm rounded-lg border border-bq-emerald/30 bg-bq-emerald/5 p-3">
+                <div className="text-[10px] uppercase tracking-widest text-bq-emerald font-bold mb-1">
                   {t('basicQuiz.page.failCorrectAnswer')}
                 </div>
-                <div className="text-on-surface">
+                <div className="text-bq-ink">
                   {`${LETTERS[correctIdx] ?? ''}. ${r.options[correctIdx]}`}
                 </div>
               </div>
             )}
 
             {r.explanation && (
-              <p className="text-sm text-on-surface-variant flex gap-2">
-                <span className="text-secondary shrink-0">💡</span>
+              <p className="text-sm text-bq-ink2 flex gap-2">
+                <span className="text-bq-amberd shrink-0">💡</span>
                 <span>{r.explanation}</span>
               </p>
             )}
@@ -408,29 +408,29 @@ function PassScreen({
       <header className="text-center space-y-4">
         <div className="text-7xl">🎉</div>
         <div className="space-y-2">
-          <h2 className="text-2xl sm:text-3xl font-black text-on-surface">
+          <h2 className="font-display text-2xl sm:text-3xl font-black text-bq-ink">
             {t('basicQuiz.page.passTitle')}
           </h2>
-          <p className="text-on-surface-variant">
+          <p className="text-bq-ink2">
             {t('basicQuiz.page.passSubtitle', { correct: result.correctCount, total: result.totalQuestions })}
           </p>
         </div>
-        <div className="glass-card rounded-2xl p-4 inline-flex items-center gap-3 mx-auto">
-          <span className="material-symbols-outlined text-secondary text-3xl" style={FILL_1}>verified</span>
-          <span className="text-base font-bold text-secondary">{t('basicQuiz.page.passUnlock')}</span>
+        <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-4 inline-flex items-center gap-3 mx-auto">
+          <span className="material-symbols-outlined text-bq-amberd text-3xl" style={FILL_1}>verified</span>
+          <span className="text-base font-bold text-bq-amberd">{t('basicQuiz.page.passUnlock')}</span>
         </div>
         <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
           <button
             data-testid="basic-quiz-pass-cta"
             onClick={onPlayRanked}
-            className="gold-gradient text-on-secondary px-6 py-3 rounded-xl font-bold"
+            className="bg-bq-action text-white shadow-bq-action px-6 py-3 rounded-xl font-bold"
           >
             <span className="material-symbols-outlined align-middle text-base mr-1" style={FILL_1}>play_arrow</span>
             {t('basicQuiz.page.passCta')}
           </button>
           <button
             onClick={onHome}
-            className="bg-surface-container-highest text-on-surface px-6 py-3 rounded-xl font-bold"
+            className="bg-bq-white border border-bq-hair text-bq-ink px-6 py-3 rounded-xl font-bold"
           >
             {t('basicQuiz.page.backHome')}
           </button>
@@ -438,8 +438,8 @@ function PassScreen({
       </header>
 
       <section className="space-y-3">
-        <h3 className="text-base font-bold text-on-surface flex items-center gap-2">
-          <span className="material-symbols-outlined text-secondary" style={FILL_1}>menu_book</span>
+        <h3 className="text-base font-bold text-bq-ink flex items-center gap-2">
+          <span className="material-symbols-outlined text-bq-amberd" style={FILL_1}>menu_book</span>
           {t('basicQuiz.page.reviewAll')}
         </h3>
         <ReviewList reviews={result.reviews} />
@@ -463,30 +463,30 @@ function FailScreen({
     <div data-testid="basic-quiz-result-fail" className="max-w-3xl mx-auto py-10 space-y-6">
       <header className="text-center space-y-3">
         <div className="text-6xl">😅</div>
-        <h2 className="text-2xl font-black text-on-surface">
+        <h2 className="font-display text-2xl font-black text-bq-ink">
           {t('basicQuiz.page.failTitle', { correct: result.correctCount, total: result.totalQuestions })}
         </h2>
-        <p className="text-on-surface-variant">
+        <p className="text-bq-ink2">
           {t('basicQuiz.page.failSubtitle', { threshold: result.threshold })}
         </p>
       </header>
 
       <section className="space-y-3">
-        <h3 className="text-base font-bold text-on-surface flex items-center gap-2">
-          <span className="material-symbols-outlined text-secondary" style={FILL_1}>menu_book</span>
+        <h3 className="text-base font-bold text-bq-ink flex items-center gap-2">
+          <span className="material-symbols-outlined text-bq-amberd" style={FILL_1}>menu_book</span>
           {t('basicQuiz.page.reviewAll')}
         </h3>
         <ReviewList reviews={result.reviews} />
       </section>
 
-      <footer className="rounded-2xl bg-surface-container p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <span data-testid="basic-quiz-fail-cooldown" className="text-sm text-on-surface-variant flex items-center gap-2">
-          <span className="material-symbols-outlined text-secondary">timer</span>
+      <footer className="rounded-2xl bg-bq-inset border border-bq-hair p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span data-testid="basic-quiz-fail-cooldown" className="text-sm text-bq-ink2 flex items-center gap-2">
+          <span className="material-symbols-outlined text-bq-amberd">timer</span>
           {t('basicQuiz.page.cooldownMessage', { time: formatMmSs(cooldownLeft) })}
         </span>
         <button
           onClick={onHome}
-          className="bg-surface-container-highest text-on-surface px-6 py-2.5 rounded-xl font-bold w-full sm:w-auto"
+          className="bg-bq-white border border-bq-hair text-bq-ink px-6 py-2.5 rounded-xl font-bold w-full sm:w-auto"
         >
           {t('basicQuiz.page.backHome')}
         </button>
