@@ -234,8 +234,11 @@ export default function Home() {
           {t('home.hero.ready', 'Sẵn sàng chưa,')}{' '}
           <span data-testid="home-greeting-name" className="relative whitespace-nowrap">
             {userName}?
-            {/* Full-spectrum underline — static + symmetric (sapphire→ruby trải đều dưới tên). */}
-            <span aria-hidden className="absolute left-0 right-0 bottom-[6px] h-3 -z-10 rounded-full bg-bq-spectrum opacity-45 blur-[1px]" />
+            {/* Underline: balanced static full spectrum + a light glint sweeping across. */}
+            <span aria-hidden className="absolute left-0 right-0 bottom-[6px] h-3 -z-10 rounded-full overflow-hidden">
+              <span className="absolute inset-0 bg-bq-spectrum opacity-45 blur-[1px]" />
+              <span className="absolute inset-y-0 w-1/2 bg-gradient-to-r from-transparent via-white/70 to-transparent blur-[1px] animate-sweep" />
+            </span>
           </span>
         </h1>
 

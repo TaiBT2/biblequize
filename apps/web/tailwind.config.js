@@ -171,11 +171,14 @@ export default {
         // Khung Sáng
         flick:   'flick 2.6s ease-in-out infinite',
         shimmer: 'shimmer 7s ease-in-out infinite',
+        sweep:   'sweep 3.2s ease-in-out infinite',
       },
       keyframes: {
         // Khung Sáng
         flick:   { '0%,100%': { transform: 'scaleY(1) scaleX(1)' }, '48%': { transform: 'scaleY(1.12) scaleX(.92)' }, '72%': { transform: 'scaleY(.95) scaleX(1.05)' } },
         shimmer: { '0%,100%': { backgroundPosition: '0% 50%' }, '50%': { backgroundPosition: '100% 50%' } },
+        // Light glint sweeping left→right with a rest off-screen (balanced base stays put).
+        sweep:   { '0%': { transform: 'translateX(-140%)' }, '55%,100%': { transform: 'translateX(140%)' } },
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
