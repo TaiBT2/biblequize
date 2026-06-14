@@ -46,19 +46,19 @@ export default function AdminLayout() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `flex items-center gap-3 px-3 py-2 text-sm transition-colors duration-200 ${
       isActive
-        ? 'text-[#e8a832] font-semibold bg-[#1d1f29] rounded-r-lg border-l-4 border-[#e8a832]'
-        : 'text-[#d5c4af]/60 hover:text-[#e8a832] hover:bg-[#1d1f29]'
+        ? 'text-bq-amberd font-semibold bg-bq-inset rounded-r-lg border-l-4 border-bq-amber'
+        : 'text-bq-ink2 hover:text-bq-ink hover:bg-bq-inset'
     }`
 
   return (
     <div className="flex min-h-screen font-['Be_Vietnam_Pro']">
       {/* Sidebar */}
-      <aside className="fixed left-0 top-0 h-screen w-[240px] bg-[#0c0e17] flex flex-col py-6 gap-2 text-sm tracking-tight z-20">
+      <aside className="fixed left-0 top-0 h-screen w-[240px] bg-bq-paper border-r border-bq-hair flex flex-col py-6 gap-2 text-sm tracking-tight z-20">
         {/* Branding */}
         <div className="px-6 mb-8 flex items-center justify-between">
           <div className="flex flex-col">
-            <span className="text-xl font-bold tracking-tighter text-[#e8a832] uppercase">BIBLEQUIZ</span>
-            <span className="text-[10px] uppercase tracking-widest text-[#d5c4af]/50 font-bold">Admin Panel</span>
+            <span className="font-display text-xl font-bold tracking-tighter text-bq-ink uppercase">BIBLE<span className="text-bq-amberd">QUIZ</span></span>
+            <span className="text-[10px] uppercase tracking-widest text-bq-ink3 font-bold">Admin Panel</span>
           </div>
         </div>
 
@@ -74,19 +74,19 @@ export default function AdminLayout() {
 
         {/* Bottom */}
         <div className="mt-auto px-4 space-y-4 pt-4">
-          <Link to="/" className="flex items-center gap-3 px-3 py-2 text-[#d5c4af]/60 hover:text-[#e8a832] transition-colors text-sm">
+          <Link to="/" className="flex items-center gap-3 px-3 py-2 text-bq-ink2 hover:text-bq-ink transition-colors text-sm">
             <span className="material-symbols-outlined text-xl">arrow_back</span>
             {t('admin.backToApp')}
           </Link>
-          <div className="flex items-center gap-3 px-3 py-3 bg-[#1d1f29] rounded-lg">
-            <div className="w-9 h-9 rounded-full bg-[#e8a832]/20 flex items-center justify-center text-[#e8a832] text-sm font-bold">
+          <div className="flex items-center gap-3 px-3 py-3 bg-bq-inset rounded-lg">
+            <div className="w-9 h-9 rounded-full bg-bq-amber/20 flex items-center justify-center text-bq-amberd text-sm font-bold">
               {user?.name?.charAt(0)?.toUpperCase() || 'A'}
             </div>
             <div className="flex flex-col min-w-0">
-              <span className="text-xs font-bold text-white truncate">{user?.name || 'Admin'}</span>
-              <span className="text-[10px] text-[#d5c4af]/50 uppercase">{user?.role || 'ADMIN'}</span>
+              <span className="text-xs font-bold text-bq-ink truncate">{user?.name || 'Admin'}</span>
+              <span className="text-[10px] text-bq-ink3 uppercase">{user?.role || 'ADMIN'}</span>
             </div>
-            <button onClick={() => logout()} className="ml-auto text-[#d5c4af]/60 hover:text-red-400 transition-colors">
+            <button onClick={() => logout()} className="ml-auto text-bq-ink2 hover:text-bq-ruby transition-colors">
               <span className="material-symbols-outlined text-lg">logout</span>
             </button>
           </div>
@@ -94,27 +94,27 @@ export default function AdminLayout() {
       </aside>
 
       {/* Main content */}
-      <main className="ml-[240px] flex-1 flex flex-col min-h-screen bg-[#11131c]">
+      <main className="ml-[240px] flex-1 flex flex-col min-h-screen bg-bq-paper">
         {/* TopNavBar */}
-        <header className="fixed top-0 right-0 h-[56px] w-[calc(100%-240px)] z-10 bg-[#1d1f29] flex justify-between items-center px-8">
+        <header className="fixed top-0 right-0 h-[56px] w-[calc(100%-240px)] z-10 bg-bq-white border-b border-bq-hair flex justify-between items-center px-8">
           <div className="flex items-center gap-4">
-            <h1 className="text-lg font-bold tracking-tight text-[#e1e1ef]">{pageTitle}</h1>
-            <div className="flex items-center bg-[#0c0e17]/50 rounded-full px-3 py-1 ml-4 border border-[#504535]/10">
-              <span className="material-symbols-outlined text-[#d5c4af] text-sm">search</span>
-              <input className="bg-transparent border-none focus:ring-0 focus:outline-none text-xs w-48 placeholder:text-[#d5c4af]/40 text-[#e1e1ef] ml-2" placeholder="Search analytics or logs..." type="text" />
+            <h1 className="font-display text-lg font-bold tracking-tight text-bq-ink">{pageTitle}</h1>
+            <div className="flex items-center bg-bq-inset rounded-full px-3 py-1 ml-4 border border-bq-hair">
+              <span className="material-symbols-outlined text-bq-ink3 text-sm">search</span>
+              <input className="bg-transparent border-none focus:ring-0 focus:outline-none text-xs w-48 placeholder:text-bq-ink3 text-bq-ink ml-2" placeholder="Search analytics or logs..." type="text" />
             </div>
           </div>
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-4 text-[#d5c4af]">
-              <button className="hover:text-[#e8a832] transition-colors">
+            <div className="flex items-center gap-4 text-bq-ink2">
+              <button className="hover:text-bq-amberd transition-colors">
                 <span className="material-symbols-outlined">history</span>
               </button>
-              <button className="relative hover:text-[#e8a832] transition-colors">
+              <button className="relative hover:text-bq-amberd transition-colors">
                 <span className="material-symbols-outlined">notifications</span>
-                <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#e8a832] rounded-full" />
+                <span className="absolute -top-1 -right-1 w-2 h-2 bg-bq-amber rounded-full" />
               </button>
             </div>
-            <Link to="/admin/questions" className="bg-[#e8a832] hover:brightness-110 transition-all text-[#281900] font-bold text-xs px-4 py-2 rounded flex items-center gap-2">
+            <Link to="/admin/questions" className="bg-bq-action shadow-bq-action hover:brightness-105 transition-all text-white font-bold text-xs px-4 py-2 rounded flex items-center gap-2">
               <span className="material-symbols-outlined text-sm">add</span>
               New Quiz
             </Link>

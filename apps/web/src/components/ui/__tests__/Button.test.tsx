@@ -18,13 +18,13 @@ describe('Button', () => {
   it('applies primary variant by default', () => {
     render(<Button>Primary</Button>)
     const btn = screen.getByRole('button')
-    expect(btn.className).toContain('bg-blue-600')
+    expect(btn.className).toContain('bg-bq-action')
   })
 
   it('applies secondary variant', () => {
     render(<Button variant="secondary">Secondary</Button>)
     const btn = screen.getByRole('button')
-    expect(btn.className).toContain('bg-gray-200')
+    expect(btn.className).toContain('bg-bq-inset')
   })
 
   it('applies outline variant', () => {
@@ -36,7 +36,7 @@ describe('Button', () => {
   it('applies ghost variant', () => {
     render(<Button variant="ghost">Ghost</Button>)
     const btn = screen.getByRole('button')
-    expect(btn.className).toContain('hover:bg-gray-100')
+    expect(btn.className).toContain('hover:bg-bq-inset')
   })
 
   it('applies size classes', () => {

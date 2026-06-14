@@ -63,24 +63,24 @@ export default function ErrorToast({
     switch (type) {
       case 'warning':
         return {
-          bg: 'bg-yellow-900/20',
-          border: 'border-yellow-500/30',
-          icon: 'text-yellow-400',
-          text: 'text-yellow-100'
+          bg: 'bg-bq-white',
+          border: 'border-bq-amber/40',
+          icon: 'text-bq-amberd',
+          text: 'text-bq-ink'
         }
       case 'info':
         return {
-          bg: 'bg-blue-900/20',
-          border: 'border-blue-500/30',
-          icon: 'text-blue-400',
-          text: 'text-blue-100'
+          bg: 'bg-bq-white',
+          border: 'border-bq-sapphire/40',
+          icon: 'text-bq-sapphire',
+          text: 'text-bq-ink'
         }
       default:
         return {
-          bg: 'bg-red-900/20',
-          border: 'border-red-500/30',
-          icon: 'text-red-400',
-          text: 'text-red-100'
+          bg: 'bg-bq-white',
+          border: 'border-bq-ruby/40',
+          icon: 'text-bq-ruby',
+          text: 'text-bq-ink'
         }
     }
   }

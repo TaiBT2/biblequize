@@ -15,7 +15,11 @@ function renderLayout(route = '/admin') {
 describe('AdminLayout', () => {
   it('renders branding', () => {
     renderLayout()
-    expect(screen.getByText('BIBLEQUIZ')).toBeInTheDocument()
+    expect(
+      screen.getByText(
+        (_content, el) => el?.tagName.toLowerCase() === 'span' && el?.textContent === 'BIBLEQUIZ',
+      ),
+    ).toBeInTheDocument()
     expect(screen.getByText('Admin Panel')).toBeInTheDocument()
   })
 
