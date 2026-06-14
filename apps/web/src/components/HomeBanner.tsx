@@ -101,23 +101,18 @@ export default function HomeBanner() {
   return (
     <section
       data-testid="home-greeting-card"
-      className="relative overflow-hidden rounded-[22px] border border-[rgba(232,168,50,0.14)] backdrop-blur-[14px] p-4 md:p-7 mb-5"
-      style={{
-        background:
-          'linear-gradient(135deg, rgba(40,32,28,0.6), rgba(24,26,36,0.4)), rgba(24,26,36,0.55)',
-      }}
+      className="relative overflow-hidden rounded-[22px] border border-bq-hair bg-bq-white shadow-bq-soft p-4 md:p-7 mb-5"
     >
-      {/* Top-left gold glow */}
+      {/* Spectrum signature strip along the top edge */}
+      <div
+        aria-hidden
+        className="absolute top-0 left-0 right-0 h-[4px] bg-bq-spectrum pointer-events-none"
+      />
+      {/* Warm radial glow top-left */}
       <div
         aria-hidden
         className="absolute -top-[40%] -left-[10%] w-[280px] h-[280px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(232,168,50,0.14), transparent 65%)' }}
-      />
-      {/* Bottom accent line */}
-      <div
-        aria-hidden
-        className="absolute bottom-0 left-[30%] w-[100px] h-px pointer-events-none"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(232,168,50,0.4), transparent)' }}
+        style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.12), transparent 65%)' }}
       />
 
       <div className="relative z-10 grid grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_auto] gap-x-4 md:gap-x-7 gap-y-3 md:gap-y-0 items-center">
@@ -142,7 +137,7 @@ export default function HomeBanner() {
         <div className="min-w-0">
           <div
             data-testid="home-greeting-meta"
-            className="text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary mb-1 md:mb-1.5"
+            className="text-[11px] font-semibold uppercase tracking-[0.18em] text-bq-amberd mb-1 md:mb-1.5"
           >
             {greeting}
           </div>
@@ -151,7 +146,7 @@ export default function HomeBanner() {
               banner's visual focus. */}
           <div
             data-testid="home-greeting-name"
-            className="text-[16px] md:text-[19px] font-bold leading-[1.15] text-ivory-dim tracking-[-0.015em] mb-1.5 md:mb-3 truncate"
+            className="font-display text-[18px] md:text-[24px] font-extrabold leading-[1.15] text-bq-ink tracking-[-0.02em] mb-1.5 md:mb-3 truncate"
           >
             {userName}
           </div>
@@ -159,7 +154,7 @@ export default function HomeBanner() {
           {isMaxTier ? (
             <div
               data-testid="home-greeting-max-tier"
-              className="text-sm font-semibold text-secondary"
+              className="text-sm font-semibold text-bq-amberd"
             >
               👑 {t('home.maxTierReached')}
             </div>
@@ -168,12 +163,12 @@ export default function HomeBanner() {
               <div className="flex items-center gap-2 whitespace-nowrap">
                 <span
                   data-testid="home-greeting-tier-label"
-                  className="text-secondary font-extrabold tracking-[0.01em] text-[17px] md:text-[20px]"
+                  className="font-display text-bq-amberd font-extrabold tracking-[0.01em] text-[17px] md:text-[20px]"
                 >
                   {t(tier.current.nameKey)}
                 </span>
-                <span className="text-ivory-faint">→</span>
-                <span className="text-ivory-dim font-medium">
+                <span className="text-bq-ink3">→</span>
+                <span className="text-bq-ink2 font-medium">
                   {tier.next && t(tier.next.nameKey)}
                 </span>
               </div>
@@ -185,21 +180,21 @@ export default function HomeBanner() {
               <div className="hidden md:contents">
                 <div
                   data-testid="home-greeting-progress-bar"
-                  className="relative flex-1 md:max-w-[240px] h-[5px] bg-white/[0.06] rounded-full overflow-visible"
+                  className="relative flex-1 md:max-w-[240px] h-[5px] bg-bq-inset border border-bq-hair rounded-full overflow-visible"
                 >
                   <div
                     data-testid="home-greeting-progress-fill"
                     className="h-full rounded-full relative transition-[width] duration-500"
                     style={{
                       width: `${progressPct}%`,
-                      background: 'linear-gradient(90deg, #c98a1c, #e8a832 50%, #e7c268)',
-                      boxShadow: '0 0 12px rgba(232,168,50,0.5)',
+                      background: 'linear-gradient(90deg,#2D46C8,#0E8A6B 34%,#F59E0B 64%,#E0354B)',
+                      boxShadow: '0 2px 10px -2px rgba(45,70,200,0.4)',
                     }}
                   >
                     <span
                       aria-hidden
                       className="absolute right-0 -top-[3px] w-[11px] h-[11px] rounded-full"
-                      style={{ background: '#f5e3a8', boxShadow: '0 0 14px rgba(232,168,50,0.8)' }}
+                      style={{ background: '#F59E0B', boxShadow: '0 0 12px rgba(245,158,11,0.7)' }}
                     />
                   </div>
                   <div className="absolute inset-0 flex justify-between items-center px-1 pointer-events-none">
@@ -209,8 +204,8 @@ export default function HomeBanner() {
                         data-testid={`home-greeting-milestone-${i}`}
                         className={`w-1 h-1 rounded-full ${
                           i < starIndex
-                            ? 'bg-white shadow-[0_0_4px_rgba(255,255,255,0.6)]'
-                            : 'bg-white/25'
+                            ? 'bg-bq-amber shadow-[0_0_4px_rgba(245,158,11,0.6)]'
+                            : 'bg-bq-hair'
                         }`}
                       />
                     ))}
@@ -237,7 +232,7 @@ export default function HomeBanner() {
           <div className="col-span-2 md:hidden flex items-center gap-3">
             <div
               aria-label="XP progress"
-              className="relative flex-1 h-[5px] bg-white/[0.06] rounded-full overflow-visible"
+              className="relative flex-1 h-[5px] bg-bq-inset border border-bq-hair rounded-full overflow-visible"
             >
               <div
                 className="h-full rounded-full relative transition-[width] duration-500"
@@ -250,7 +245,7 @@ export default function HomeBanner() {
                 <span
                   aria-hidden
                   className="absolute right-0 -top-[3px] w-[11px] h-[11px] rounded-full"
-                  style={{ background: '#f5e3a8', boxShadow: '0 0 14px rgba(232,168,50,0.8)' }}
+                  style={{ background: '#F59E0B', boxShadow: '0 0 12px rgba(245,158,11,0.7)' }}
                 />
               </div>
               <div className="absolute inset-0 flex justify-between items-center px-1 pointer-events-none">
@@ -269,8 +264,8 @@ export default function HomeBanner() {
             </div>
 
             <span className="whitespace-nowrap tabular-nums font-bold text-[14px] text-right">
-              <span className="text-secondary">{totalPoints.toLocaleString()}</span>
-              <span className="text-ivory-faint text-[12px] font-medium">
+              <span className="text-bq-amberd">{totalPoints.toLocaleString()}</span>
+              <span className="text-bq-ink3 text-[12px] font-medium">
                 {' '}
                 / {tier.next?.minPoints.toLocaleString()} XP
               </span>
@@ -282,7 +277,7 @@ export default function HomeBanner() {
             so the three chips aren't cramped and the season label has room. */}
         <div
           data-testid="home-greeting-stats"
-          className="col-span-2 md:col-span-1 flex justify-between gap-2 md:justify-start md:gap-1 pt-3 mt-1 md:mt-0 md:pt-0 border-t md:border-t-0 border-white/[0.04]"
+          className="col-span-2 md:col-span-1 flex justify-between gap-2 md:justify-start md:gap-1 pt-3 mt-1 md:mt-0 md:pt-0 border-t md:border-t-0 border-bq-hair"
         >
           <Stat
             icon="flame"
@@ -324,7 +319,7 @@ function Stat({ icon, testId, value, label }: StatProps) {
   return (
     <div
       data-testid={testId}
-      className="flex-1 md:flex-none text-center px-1.5 md:px-3.5 py-1 md:py-2 md:min-w-[70px] border-r last:border-r-0 border-[rgba(232,168,50,0.10)]"
+      className="flex-1 md:flex-none text-center px-1.5 md:px-3.5 py-1 md:py-2 md:min-w-[70px] border-r last:border-r-0 border-bq-hair"
     >
       <div
         className={`text-[20px] md:text-[22px] leading-none mb-1 select-none ${
@@ -334,12 +329,12 @@ function Stat({ icon, testId, value, label }: StatProps) {
       >
         {glyph}
       </div>
-      <div className="text-[22px] md:text-[24px] font-extrabold text-ivory tabular-nums leading-none tracking-[-0.02em]">
+      <div className="font-display text-[22px] md:text-[24px] font-extrabold text-bq-ink tabular-nums leading-none tracking-[-0.02em]">
         {value.toLocaleString()}
       </div>
       {/* HO-2: relaxed tracking + normal leading + wrap so a long season
           label ("Mùa ... 2026") no longer clips. */}
-      <div className="text-[9px] font-semibold uppercase tracking-[0.06em] leading-[1.2] text-ivory-faint mt-1 break-words">
+      <div className="text-[9px] font-semibold uppercase tracking-[0.06em] leading-[1.2] text-bq-ink3 mt-1 break-words">
         {label}
       </div>
     </div>

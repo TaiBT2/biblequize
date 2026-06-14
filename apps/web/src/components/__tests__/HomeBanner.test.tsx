@@ -62,15 +62,14 @@ describe('HomeBanner (HR-2)', () => {
     vi.clearAllMocks()
   })
 
-  // HO-2: username is intentionally de-emphasized (smaller + lighter +
-  // truncated) so tier + XP progress become the banner's visual focus.
-  it('renders user name de-emphasized + truncated', async () => {
+  // Khung Sáng: the name is the hero focus (display font, ink) + truncated.
+  it('renders user name prominently + truncated', async () => {
     setupApi()
     renderBanner()
     const name = await screen.findByTestId('home-greeting-name')
     expect(name).toHaveTextContent('Tai Thanh')
     expect(name.className).toContain('truncate')
-    expect(name.className).toContain('text-ivory-dim')
+    expect(name.className).toContain('text-bq-ink')
   })
 
   it('streak stat uses animate-breathe class on flame icon', async () => {

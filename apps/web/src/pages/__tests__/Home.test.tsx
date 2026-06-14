@@ -22,18 +22,12 @@ vi.mock('../../components/HeroRankedCard', () => ({
   ),
 }))
 
-vi.mock('../../components/RankedStandardCard', () => ({
-  default: ({ onEnter }: { onEnter: () => void }) => (
-    <button data-testid="ranked-standard-card" onClick={onEnter}>RankedStandardCard</button>
-  ),
-}))
-
 vi.mock('../../components/DailyCompletedStrip', () => ({
   default: () => <div data-testid="daily-completed-strip">DailyCompletedStrip</div>,
 }))
 
-// DailyMissionsCard is rendered for all users (Bui 2026-05-14 — gate
-// removed). Mock to keep these specs focused on Home layout.
+// DailyMissionsCard is rendered for all users. Mock to keep specs focused
+// on Home layout.
 vi.mock('../../components/DailyMissionsCard', () => ({
   default: () => <div data-testid="daily-missions-card-mock">DailyMissionsCard</div>,
 }))
@@ -66,10 +60,7 @@ function renderHome() {
 interface MockOpts {
   totalPoints?: number
   currentStreak?: number
-  starIndex?: number
-  /** Whether today's Daily Challenge has been completed. */
   dailyDone?: boolean
-  /** Missions completed flag — affects motivation gating. */
   missionsCompleted?: boolean
 }
 
@@ -100,7 +91,7 @@ function setupApi(opts: MockOpts = {}) {
         data: {
           tierLevel: opts.totalPoints && opts.totalPoints >= 5000 ? 3 : 1,
           totalPoints: opts.totalPoints ?? 8200,
-          starIndex: opts.starIndex ?? 1,
+          starIndex: 1,
           starXp: 7000,
           nextStarXp: 9000,
           starProgressPercent: 60,
@@ -114,23 +105,11 @@ function setupApi(opts: MockOpts = {}) {
         data: { livesRemaining: 100, dailyLives: 100, questionsCounted: 0, cap: 100, seasonPoints: 0 },
       })
     if (url.includes('/api/daily-challenge/result'))
-      return Promise.resolve({
-        data: { correctCount: 4, totalQuestions: 5, xpEarned: 50 },
-      })
+      return Promise.resolve({ data: { correctCount: 4, totalQuestions: 5, xpEarned: 50 } })
     if (url.includes('/api/daily-challenge'))
-      return Promise.resolve({
-        data: { alreadyCompleted: !!opts.dailyDone, totalQuestions: 5 },
-      })
-    if (url.includes('/api/me/journey'))
-      return Promise.resolve({
-        data: {
-          summary: {
-            totalBooks: 66, completedBooks: 0, inProgressBooks: 1, lockedBooks: 65,
-            overallMasteryPercent: 0, currentBook: null,
-          },
-          books: [],
-        },
-      })
+      return Promise.resolve({ data: { alreadyCompleted: !!opts.dailyDone, totalQuestions: 5 } })
+    if (url.includes('/api/seasons/active'))
+      return Promise.resolve({ data: { active: false } })
     if (url.includes('/api/me'))
       return Promise.resolve({
         data: { totalPoints: opts.totalPoints ?? 8200, currentStreak: opts.currentStreak ?? 0 },
@@ -139,7 +118,7 @@ function setupApi(opts: MockOpts = {}) {
   })
 }
 
-describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
+describe('Home Dashboard (Khung Sáng IA)', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     setupApi()
@@ -163,6 +142,13 @@ describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
       renderHome()
       await waitFor(() => {
         expect(document.querySelector('.max-w-7xl')).toBeInTheDocument()
+      })
+    })
+
+    it('renders the verse lightwell', async () => {
+      renderHome()
+      await waitFor(() => {
+        expect(screen.getByTestId('home-verse')).toBeInTheDocument()
       })
     })
   })
@@ -191,7 +177,7 @@ describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
     })
   })
 
-  describe('Dynamic hierarchy — State A (Daily not done)', () => {
+  describe('Daily hierarchy — State A (Daily not done)', () => {
     beforeEach(() => setupApi({ dailyDone: false, totalPoints: 8200 }))
 
     it('renders FeaturedDailyCard (NOT DailyCompletedStrip + HeroRankedCard)', async () => {
@@ -202,28 +188,9 @@ describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
       expect(screen.queryByTestId('daily-completed-strip')).not.toBeInTheDocument()
       expect(screen.queryByTestId('hero-ranked-card')).not.toBeInTheDocument()
     })
-
-    it('renders "Chế độ chơi chính" + "Chế độ đa dạng" sections (not "Khám phá thêm")', async () => {
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByText('Chế độ chơi chính')).toBeInTheDocument()
-      })
-      expect(screen.getByText('Chế độ đa dạng')).toBeInTheDocument()
-      expect(screen.queryByText('Khám phá thêm')).not.toBeInTheDocument()
-    })
-
-    it('Primary grid contains Practice (compact) + RankedStandardCard', async () => {
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByTestId('ranked-standard-card')).toBeInTheDocument()
-      })
-      const primary = screen.getByTestId('home-primary-grid')
-      expect(primary).toBeInTheDocument()
-      expect(primary.contains(screen.getByTestId('ranked-standard-card'))).toBe(true)
-    })
   })
 
-  describe('Dynamic hierarchy — State B (Daily done)', () => {
+  describe('Daily hierarchy — State B (Daily done)', () => {
     beforeEach(() => setupApi({ dailyDone: true, totalPoints: 8200 }))
 
     it('renders DailyCompletedStrip + HeroRankedCard (NOT FeaturedDailyCard)', async () => {
@@ -234,141 +201,59 @@ describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
       expect(screen.getByTestId('hero-ranked-card')).toBeInTheDocument()
       expect(screen.queryByTestId('featured-daily-card')).not.toBeInTheDocument()
     })
+  })
 
-    it('HeroRankedCard sits BEFORE DailyMissionsCard in DOM order', async () => {
+  describe('Core mode cards (3 jewels)', () => {
+    it('renders "Chế độ chơi chính" section with study/ranked/rooms cards', async () => {
       renderHome()
       await waitFor(() => {
-        expect(screen.getByTestId('hero-ranked-card')).toBeInTheDocument()
+        expect(screen.getByText('Chế độ chơi chính')).toBeInTheDocument()
       })
-      const hero = screen.getByTestId('hero-ranked-card')
-      const missions = screen.getByTestId('home-daily-missions')
-      expect(hero.compareDocumentPosition(missions) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+      expect(screen.getByTestId('home-modes-grid')).toBeInTheDocument()
+      expect(screen.getByTestId('home-mode-study')).toBeInTheDocument()
+      expect(screen.getByTestId('home-mode-ranked')).toBeInTheDocument()
+      expect(screen.getByTestId('home-mode-rooms')).toBeInTheDocument()
     })
 
-    it('renders "Khám phá thêm" section (not the State A pair)', async () => {
+    it('always renders DailyMissionsCard (today\'s quests)', async () => {
       renderHome()
       await waitFor(() => {
-        expect(screen.getByText('Khám phá thêm')).toBeInTheDocument()
+        expect(screen.getByTestId('home-daily-missions')).toBeInTheDocument()
       })
-      expect(screen.queryByText('Chế độ chơi chính')).not.toBeInTheDocument()
-      expect(screen.queryByText('Chế độ đa dạng')).not.toBeInTheDocument()
-    })
-
-    it('"Khám phá thêm" grid uses lg:grid-cols-4', async () => {
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByTestId('home-explore-grid')).toBeInTheDocument()
-      })
-      expect(screen.getByTestId('home-explore-grid').className).toContain('lg:grid-cols-4')
     })
   })
 
-  describe('Common sections (both states)', () => {
-    it('renders "Thi đấu cộng đồng" group section', async () => {
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByText('Thi đấu cộng đồng')).toBeInTheDocument()
-      })
-      expect(screen.getByTestId('home-group-grid')).toBeInTheDocument()
-    })
-
-    it('renders Journey then VerseFooter (full-width footer, no 2-col grid)', async () => {
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByTestId('home-journey')).toBeInTheDocument()
-      })
-      expect(screen.getByTestId('verse-footer')).toBeInTheDocument()
-      // 2-col grid removed in HR-8
-      expect(screen.queryByTestId('home-verse-journey')).not.toBeInTheDocument()
-    })
-
-    it('does NOT render Leaderboard inline (removed in HR-7)', async () => {
+  describe('Dropped sections (Khung Sáng IA simplification)', () => {
+    it('does NOT render the old variety / group / explore / journey sections', async () => {
       renderHome()
       await waitFor(() => {
         expect(screen.getByTestId('home-page')).toBeInTheDocument()
       })
-      expect(screen.queryByText('Bảng Xếp Hạng')).not.toBeInTheDocument()
+      expect(screen.queryByText('Chế độ đa dạng')).not.toBeInTheDocument()
+      expect(screen.queryByText('Khám phá thêm')).not.toBeInTheDocument()
+      expect(screen.queryByText('Thi đấu cộng đồng')).not.toBeInTheDocument()
+      expect(screen.queryByTestId('home-journey')).not.toBeInTheDocument()
       expect(screen.queryByTestId('home-leaderboard')).not.toBeInTheDocument()
     })
-
-    it('does NOT render ActivityFeed (removed in HR-7)', async () => {
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByTestId('home-page')).toBeInTheDocument()
-      })
-      expect(screen.queryByTestId('activity-empty-state')).not.toBeInTheDocument()
-    })
   })
 
-  // MotivationCard removed 2026-05-20: FeaturedDailyCard already provides
-  // full onboarding context (5 câu/3 phút/countdown/CTA) so the "Bước 1"
-  // nudge was redundant + caused decision fatigue for new users.
-  describe('Daily + Missions surfaces (post-MotivationCard removal)', () => {
-    it('shows FeaturedDailyCard for new user with daily not done', async () => {
-      setupApi({ totalPoints: 200, dailyDone: false, currentStreak: 0, missionsCompleted: false })
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByTestId('featured-daily-card')).toBeInTheDocument()
-      })
-      expect(screen.queryByTestId('motivation-card')).not.toBeInTheDocument()
-    })
-
-    it('shows DailyMissionsCard for new user', async () => {
-      setupApi({ totalPoints: 200 })
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByTestId('home-daily-missions')).toBeInTheDocument()
-      })
-      expect(screen.queryByTestId('motivation-card')).not.toBeInTheDocument()
-    })
-
-    it('shows DailyMissionsCard for active user (totalPoints≥1000)', async () => {
-      setupApi({ totalPoints: 8200 })
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByTestId('home-daily-missions')).toBeInTheDocument()
-      })
-      expect(screen.queryByTestId('motivation-card')).not.toBeInTheDocument()
-    })
-
-    it('hides FeaturedDailyCard once Daily is done (shows completed strip)', async () => {
-      setupApi({ totalPoints: 200, dailyDone: true })
-      renderHome()
-      await waitFor(() => {
-        expect(screen.getByTestId('home-page')).toBeInTheDocument()
-      })
-      await waitFor(() => {
-        const calls = mockApiGet.mock.calls.map((c: any) => c[0])
-        expect(calls.some((u: string) => u.includes('/api/daily-challenge'))).toBe(true)
-      })
-      expect(screen.queryByTestId('featured-daily-card')).not.toBeInTheDocument()
-      expect(screen.queryByTestId('motivation-card')).not.toBeInTheDocument()
-    })
-  })
-
-  // HO-1: brand-new account (0 XP, daily not done, 0 streak) avoids the
-  // "wall of zeros" — leads with a "Bắt đầu từ đây" cue and hides the empty
-  // 0/66 journey. Users with ANY data must be byte-identical (no cue, journey
-  // visible).
+  // HO-1: brand-new account leads with a "Bắt đầu từ đây" cue.
   describe('Empty-state for new users (HO-1)', () => {
-    it('shows "Bắt đầu từ đây" cue and hides Journey for a brand-new user', async () => {
+    it('shows "Bắt đầu từ đây" cue for a brand-new user', async () => {
       setupApi({ totalPoints: 0, dailyDone: false, currentStreak: 0 })
       renderHome()
       await waitFor(() => {
         expect(screen.getByTestId('home-start-here')).toBeInTheDocument()
       })
-      expect(screen.queryByTestId('home-journey')).not.toBeInTheDocument()
-      // Daily missions still render for everyone (Bui decision).
       expect(screen.getByTestId('home-daily-missions')).toBeInTheDocument()
-      // Daily hero CTA is the clear first step.
       expect(screen.getByTestId('featured-daily-card')).toBeInTheDocument()
     })
 
-    it('does NOT show the cue (and keeps Journey) once the user has XP', async () => {
+    it('does NOT show the cue once the user has XP', async () => {
       setupApi({ totalPoints: 200, dailyDone: false, currentStreak: 0 })
       renderHome()
       await waitFor(() => {
-        expect(screen.getByTestId('home-journey')).toBeInTheDocument()
+        expect(screen.getByTestId('home-modes-grid')).toBeInTheDocument()
       })
       expect(screen.queryByTestId('home-start-here')).not.toBeInTheDocument()
     })
@@ -377,14 +262,14 @@ describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
       setupApi({ totalPoints: 0, dailyDone: false, currentStreak: 3 })
       renderHome()
       await waitFor(() => {
-        expect(screen.getByTestId('home-journey')).toBeInTheDocument()
+        expect(screen.getByTestId('home-modes-grid')).toBeInTheDocument()
       })
       expect(screen.queryByTestId('home-start-here')).not.toBeInTheDocument()
     })
   })
 
   describe('Error handling', () => {
-    it('renders empty state when all APIs fail (banner + tier fallback)', async () => {
+    it('renders banner with name + tier fallback when all APIs return empty', async () => {
       mockApiGet.mockResolvedValue({ data: {} })
       renderHome()
       await waitFor(() => {
@@ -394,10 +279,7 @@ describe('Home Dashboard (HR-7 dynamic hierarchy)', () => {
     })
 
     it('no undefined/null leaks into UI when API returns empty data', async () => {
-      mockApiGet.mockImplementation((url: string) => {
-        if (url.includes('/api/me')) return Promise.resolve({ data: {} })
-        return Promise.resolve({ data: {} })
-      })
+      mockApiGet.mockResolvedValue({ data: {} })
       renderHome()
       await waitFor(() => {
         expect(screen.queryByText(/undefined/i)).not.toBeInTheDocument()
