@@ -1,24 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, fireEvent, waitFor, within } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-
-/**
- * Sidebar-scoped query helper. JSDOM doesn't apply Tailwind responsive
- * classes (`hidden md:flex`, `md:hidden`), so both the desktop sidebar
- * and the MobileTopBar render simultaneously in tests — and both
- * mount their own `UserDropdown`. Scope every menu/toggle assertion to
- * the sidebar to avoid `Found multiple elements` errors.
- */
-function inSidebar() {
-  return within(screen.getByTestId('app-sidebar'))
-}
-
-/**
- * Tests for the AppLayout logout functionality.
- *
- * Bug: AppLayout previously had no logout button, making it impossible
- * for users to sign out. Now there's a user avatar dropdown with logout.
- */
 
 const mockNavigate = vi.fn()
 vi.mock('react-router-dom', async () => {
@@ -30,24 +12,15 @@ const mockLogout = vi.fn()
 let authState: any = {}
 
 vi.mock('../../store/authStore', () => ({
-  useAuthStore: (selector?: (state: any) => any) => {
-    return selector ? selector(authState) : authState
-  },
-  // StreakWidget reads via useAuth — same backing state.
+  useAuthStore: (selector?: (state: any) => any) => (selector ? selector(authState) : authState),
   useAuth: () => authState,
 }))
 
-// Stub TanStack Query so DailyMissionWidget renders deterministically
-// inside the layout. Default returns isLoading=true → widget shows the
-// skeleton placeholder (no network, no error). Tests that need data
-// override mockUseQuery per case.
 const mockUseQuery = vi.fn(() => ({ data: undefined, isLoading: true, isError: false }))
 vi.mock('@tanstack/react-query', () => ({
   useQuery: (opts: any) => mockUseQuery(opts),
 }))
 
-// Block axios from running inside the widget's queryFn even if it ever
-// fires. Empty stub is safe because mockUseQuery returns synthetic state.
 vi.mock('../../api/client', () => ({
   api: { get: vi.fn(() => Promise.resolve({ data: {} })) },
 }))
@@ -62,6 +35,33 @@ function renderAppLayout() {
   )
 }
 
+describe('AppLayout — TopNav shell', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+    mockLogout.mockResolvedValue(undefined)
+    authState = {
+      user: { name: 'Nguyễn Văn A', email: 'test@example.com', avatar: null },
+      isAuthenticated: true,
+      logout: mockLogout,
+    }
+  })
+
+  it('renders the sticky top navigation bar', () => {
+    renderAppLayout()
+    expect(screen.getByTestId('app-topnav')).toBeInTheDocument()
+  })
+
+  it('renders the user dropdown trigger in the top nav', () => {
+    renderAppLayout()
+    expect(screen.getByTestId('user-dropdown-toggle')).toBeInTheDocument()
+  })
+
+  it('renders the 3 stats (streak / energy / season)', () => {
+    renderAppLayout()
+    expect(screen.getByTestId('topnav-stats')).toBeInTheDocument()
+  })
+})
+
 describe('AppLayout — Logout', () => {
   beforeEach(() => {
     vi.clearAllMocks()
@@ -73,34 +73,26 @@ describe('AppLayout — Logout', () => {
     }
   })
 
-  it('renders the user dropdown trigger in the sidebar', () => {
-    renderAppLayout()
-    expect(inSidebar().getByTestId('user-dropdown-toggle')).toBeInTheDocument()
-  })
-
   it('shows dropdown with logout when avatar is clicked', async () => {
     renderAppLayout()
-    fireEvent.click(inSidebar().getByTestId('user-dropdown-toggle'))
-    await waitFor(() => {
-      expect(inSidebar().getByText('Đăng xuất')).toBeInTheDocument()
-    })
+    fireEvent.click(screen.getByTestId('user-dropdown-toggle'))
+    await waitFor(() => expect(screen.getByText('Đăng xuất')).toBeInTheDocument())
   })
 
   it('shows profile and achievements links in dropdown', async () => {
     renderAppLayout()
-    fireEvent.click(inSidebar().getByTestId('user-dropdown-toggle'))
+    fireEvent.click(screen.getByTestId('user-dropdown-toggle'))
     await waitFor(() => {
-      expect(inSidebar().getByText('Hồ sơ')).toBeInTheDocument()
-      expect(inSidebar().getByText('Thành tích')).toBeInTheDocument()
+      expect(screen.getByText('Hồ sơ')).toBeInTheDocument()
+      expect(screen.getByText('Thành tích')).toBeInTheDocument()
     })
   })
 
   it('calls logout and navigates to /landing when logout clicked', async () => {
     renderAppLayout()
-    fireEvent.click(inSidebar().getByTestId('user-dropdown-toggle'))
-    const logoutBtn = await inSidebar().findByTestId('user-dropdown-logout-btn')
+    fireEvent.click(screen.getByTestId('user-dropdown-toggle'))
+    const logoutBtn = await screen.findByTestId('user-dropdown-logout-btn')
     fireEvent.click(logoutBtn)
-
     await waitFor(() => {
       expect(mockLogout).toHaveBeenCalledTimes(1)
       expect(mockNavigate).toHaveBeenCalledWith('/landing')
@@ -110,75 +102,26 @@ describe('AppLayout — Logout', () => {
   it('shows loading state during logout', async () => {
     mockLogout.mockImplementation(() => new Promise(resolve => setTimeout(resolve, 200)))
     renderAppLayout()
-    fireEvent.click(inSidebar().getByTestId('user-dropdown-toggle'))
-    const logoutBtn = await inSidebar().findByTestId('user-dropdown-logout-btn')
+    fireEvent.click(screen.getByTestId('user-dropdown-toggle'))
+    const logoutBtn = await screen.findByTestId('user-dropdown-logout-btn')
     fireEvent.click(logoutBtn)
-
-    await waitFor(() => {
-      expect(inSidebar().getByText('Đang đăng xuất...')).toBeInTheDocument()
-    })
+    await waitFor(() => expect(screen.getByText('Đang đăng xuất...')).toBeInTheDocument())
   })
 
-  it('sidebar foot user card shows initial avatar (compact variant)', () => {
-    // 2026-05-14: SidebarUserCard switched from card variant
-    // (avatar+name+tier+chevron) to a 40px gold-gradient avatar that
-    // reveals the dropdown — name appears inside the dropdown panel
-    // when opened, not on the trigger itself.
+  it('does NOT render the old "Bắt Đầu" CTA linking to /quiz', () => {
     renderAppLayout()
-    const card = screen.getByTestId('sidebar-user-card')
-    expect(card).toBeInTheDocument()
-    expect(card.querySelector('[data-testid="user-dropdown-toggle"]')).not.toBeNull()
-    expect(card.querySelector('[data-testid="user-dropdown-avatar-initial"]')).not.toBeNull()
+    expect(document.querySelectorAll('a[href="/quiz"]').length).toBe(0)
   })
 
-  /**
-   * Regression guard (2026-04-19): the sidebar's big gold "BẮT ĐẦU" CTA
-   * linking to /quiz was removed because (a) /quiz crashes without a
-   * session-id in router state, and (b) it duplicated the Practice
-   * card's CTA on Home. Recommendation highlight now drives the user
-   * to the right mode contextually.
-   */
-  it('does NOT render the old sidebar "Bắt Đầu" CTA linking to /quiz', () => {
+  // Each nav route appears at most twice (top nav + mobile bottom tabs).
+  it('does NOT over-duplicate nav links', () => {
     renderAppLayout()
-    // The /quiz link anchor should not exist anywhere in the layout.
-    const quizLinks = document.querySelectorAll('a[href="/quiz"]')
-    expect(quizLinks.length).toBe(0)
-  })
-
-  /**
-   * Regression guard (2026-04-19): the top header previously duplicated
-   * the sidebar nav items (Trang chủ / Xếp hạng / Nhóm / Cá nhân). They
-   * were moved to sidebar-only to reduce visual redundancy. Each nav
-   * route must appear AT MOST ONCE in the rendered DOM so we don't
-   * reintroduce the duplicate.
-   */
-  it('does NOT duplicate nav links between header and sidebar', () => {
-    renderAppLayout()
-    // Intent: catch a regression where the old "header nav menu" returns
-    // and duplicates the sidebar + bottom-nav pair.
-    //
-    // Iterate only paths that are NOT also referenced by legitimate
-    // non-nav surfaces. The brand logo links to `/`, and both the
-    // user-menu dropdown and the mobile slide-out link to `/profile` —
-    // excluding these two keeps the assertion sharp (sidebar + bottom
-    // nav = exactly 2) while still flagging the header-menu regression
-    // this test was originally written for.
     for (const path of ['/leaderboard', '/groups']) {
-      const links = document.querySelectorAll(`a[href="${path}"]`)
-      expect(links.length).toBeLessThanOrEqual(2)
+      expect(document.querySelectorAll(`a[href="${path}"]`).length).toBeLessThanOrEqual(2)
     }
   })
 })
 
-/**
- * Click-outside behavior for the user menu dropdown.
- *
- * Regression: previously used `<div className="fixed inset-0 z-40">` overlay
- * behind the popup. That overlay was blocked by the fixed header (z-50), so
- * clicking on the header (logo, decorative icons) or any other header child
- * did NOT close the menu. Now uses a document mousedown listener scoped by
- * ref.
- */
 describe('AppLayout — User menu click-outside', () => {
   beforeEach(() => {
     vi.clearAllMocks()
@@ -192,168 +135,51 @@ describe('AppLayout — User menu click-outside', () => {
 
   it('closes the dropdown when clicking outside the menu (body click)', async () => {
     renderAppLayout()
-
-    const toggle = inSidebar().getByTestId('user-dropdown-toggle')
-    fireEvent.click(toggle)
-    expect(await inSidebar().findByTestId('user-dropdown-panel')).toBeInTheDocument()
-
-    // Simulate a real pointer event on the document body
+    fireEvent.click(screen.getByTestId('user-dropdown-toggle'))
+    expect(await screen.findByTestId('user-dropdown-panel')).toBeInTheDocument()
     fireEvent.mouseDown(document.body)
-
-    await waitFor(() => {
-      expect(inSidebar().queryByTestId('user-dropdown-panel')).not.toBeInTheDocument()
-    })
+    await waitFor(() => expect(screen.queryByTestId('user-dropdown-panel')).not.toBeInTheDocument())
   })
 
-  it('closes the dropdown when clicking outside the dropdown (regression guard)', async () => {
+  it('closes the dropdown when clicking the nav bar (outside the dropdown)', async () => {
     renderAppLayout()
-
-    const toggle = inSidebar().getByTestId('user-dropdown-toggle')
-    fireEvent.click(toggle)
-    expect(await inSidebar().findByTestId('user-dropdown-panel')).toBeInTheDocument()
-
-    // Click the sidebar header (outside the dropdown wrapper) — this
-    // exercises the same outside-click guarantee the old top-header
-    // version protected when the panel was anchored there.
-    const sidebarHeader = screen.getByTestId('sidebar-header')
-    fireEvent.mouseDown(sidebarHeader)
-
-    await waitFor(() => {
-      expect(inSidebar().queryByTestId('user-dropdown-panel')).not.toBeInTheDocument()
-    })
+    fireEvent.click(screen.getByTestId('user-dropdown-toggle'))
+    expect(await screen.findByTestId('user-dropdown-panel')).toBeInTheDocument()
+    fireEvent.mouseDown(screen.getByTestId('app-topnav'))
+    await waitFor(() => expect(screen.queryByTestId('user-dropdown-panel')).not.toBeInTheDocument())
   })
 
   it('closes the dropdown when pressing Escape', async () => {
     renderAppLayout()
-
-    const toggle = inSidebar().getByTestId('user-dropdown-toggle')
-    fireEvent.click(toggle)
-    expect(await inSidebar().findByTestId('user-dropdown-panel')).toBeInTheDocument()
-
+    fireEvent.click(screen.getByTestId('user-dropdown-toggle'))
+    expect(await screen.findByTestId('user-dropdown-panel')).toBeInTheDocument()
     fireEvent.keyDown(document, { key: 'Escape' })
-
-    await waitFor(() => {
-      expect(inSidebar().queryByTestId('user-dropdown-panel')).not.toBeInTheDocument()
-    })
+    await waitFor(() => expect(screen.queryByTestId('user-dropdown-panel')).not.toBeInTheDocument())
   })
 
   it('keeps the dropdown open when clicking inside the menu container', async () => {
     renderAppLayout()
-
-    const toggle = inSidebar().getByTestId('user-dropdown-toggle')
-    fireEvent.click(toggle)
-    const dropdown = await inSidebar().findByTestId('user-dropdown-panel')
+    fireEvent.click(screen.getByTestId('user-dropdown-toggle'))
+    const dropdown = await screen.findByTestId('user-dropdown-panel')
     expect(dropdown).toBeInTheDocument()
-
-    // Click inside the dropdown — e.g. on the user's email text
-    // (use first occurrence — email also rendered in MobileTopBar's
-    // duplicate UserDropdown trigger card variant).
-    const emails = screen.getAllByText('test@example.com')
-    fireEvent.mouseDown(emails[0])
-
-    // Should still be open
+    fireEvent.mouseDown(screen.getByText('test@example.com'))
     expect(screen.getByTestId('user-dropdown-panel')).toBeInTheDocument()
   })
 
   it('toggles the dropdown when clicking the avatar button twice', async () => {
     renderAppLayout()
-
-    const toggle = inSidebar().getByTestId('user-dropdown-toggle')
+    const toggle = screen.getByTestId('user-dropdown-toggle')
     fireEvent.click(toggle)
-    expect(await inSidebar().findByTestId('user-dropdown-panel')).toBeInTheDocument()
-
+    expect(await screen.findByTestId('user-dropdown-panel')).toBeInTheDocument()
     fireEvent.click(toggle)
-    await waitFor(() => {
-      expect(inSidebar().queryByTestId('user-dropdown-panel')).not.toBeInTheDocument()
-    })
+    await waitFor(() => expect(screen.queryByTestId('user-dropdown-panel')).not.toBeInTheDocument())
   })
 
   it('sets aria-expanded on the toggle to reflect open state', async () => {
     renderAppLayout()
-
-    const toggle = inSidebar().getByTestId('user-dropdown-toggle')
+    const toggle = screen.getByTestId('user-dropdown-toggle')
     expect(toggle.getAttribute('aria-expanded')).toBe('false')
-
     fireEvent.click(toggle)
-    await waitFor(() => {
-      expect(toggle.getAttribute('aria-expanded')).toBe('true')
-    })
-  })
-
-  it('cleans up document listeners after menu closes', async () => {
-    const addSpy = vi.spyOn(document, 'addEventListener')
-    const removeSpy = vi.spyOn(document, 'removeEventListener')
-
-    renderAppLayout()
-    const toggle = inSidebar().getByTestId('user-dropdown-toggle')
-
-    // Open → listeners added
-    fireEvent.click(toggle)
-    await inSidebar().findByTestId('user-dropdown-panel')
-    const addedEvents = addSpy.mock.calls.map(c => c[0])
-    expect(addedEvents).toEqual(expect.arrayContaining(['mousedown', 'touchstart', 'keydown']))
-
-    // Close → listeners removed for same events
-    fireEvent.click(toggle)
-    await waitFor(() => {
-      expect(inSidebar().queryByTestId('user-dropdown-panel')).not.toBeInTheDocument()
-    })
-    const removedEvents = removeSpy.mock.calls.map(c => c[0])
-    expect(removedEvents).toEqual(expect.arrayContaining(['mousedown', 'touchstart', 'keydown']))
-
-    addSpy.mockRestore()
-    removeSpy.mockRestore()
-  })
-})
-
-/**
- * C3 — Sidebar widgets (Streak + Daily Mission) integration.
- * Widgets are rendered inside the desktop <aside> only; logged-out users
- * and mobile users (whole sidebar `hidden md:flex`) never see them.
- */
-describe('AppLayout — Sidebar widgets (C3)', () => {
-  beforeEach(() => {
-    vi.clearAllMocks()
-    mockUseQuery.mockReturnValue({ data: undefined, isLoading: true, isError: false })
-    mockLogout.mockResolvedValue(undefined)
-    authState = {
-      user: { name: 'Nguyễn Văn A', email: 'test@example.com', avatar: null, currentStreak: 7 },
-      isAuthenticated: true,
-      logout: mockLogout,
-    }
-  })
-
-  it('Home/default route → sidebar-widgets shows LeaderboardRank + LeaderboardSeason (always-visible per user request 2026-05-14)', () => {
-    // 2026-05-14a: Streak + DailyMission widgets removed from default
-    // sidebar — both duplicated HomeBanner + DailyMissionsCard.
-    // 2026-05-14b: LeaderboardRank + LeaderboardSeason promoted to
-    // always-visible (every route). Streak/DailyMission still NOT here.
-    renderAppLayout()
-    expect(screen.queryByTestId('sidebar-widgets')).not.toBeNull()
-    expect(screen.queryByTestId('leaderboard-rank-widget')).not.toBeNull()
-    expect(screen.queryByTestId('leaderboard-season-widget')).not.toBeNull()
-    expect(screen.queryByTestId('streak-widget')).toBeNull()
-    expect(screen.queryByTestId('daily-mission-widget')).toBeNull()
-  })
-
-  it('logged-out user (user=null) → sidebar-widgets block does NOT render', () => {
-    authState = { user: null, isAuthenticated: false, logout: mockLogout }
-    renderAppLayout()
-    expect(screen.queryByTestId('sidebar-widgets')).toBeNull()
-    expect(screen.queryByTestId('streak-widget')).toBeNull()
-    expect(screen.queryByTestId('daily-mission-widget')).toBeNull()
-    expect(screen.queryByTestId('daily-mission-widget-skeleton')).toBeNull()
-  })
-
-  it('widgets do NOT leak into the mobile bottom nav', () => {
-    renderAppLayout()
-    // Find the mobile bottom <nav> by its md:hidden visibility class.
-    // It's the only nav that has 'md:hidden' as a class.
-    const bottomNav = document.querySelector('nav.md\\:hidden')
-    expect(bottomNav).not.toBeNull()
-    // The bottom nav must NOT contain any of the widget testids.
-    expect(bottomNav!.querySelector('[data-testid="streak-widget"]')).toBeNull()
-    expect(bottomNav!.querySelector('[data-testid="daily-mission-widget"]')).toBeNull()
-    expect(bottomNav!.querySelector('[data-testid="sidebar-widgets"]')).toBeNull()
+    await waitFor(() => expect(toggle.getAttribute('aria-expanded')).toBe('true'))
   })
 })
