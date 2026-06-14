@@ -51,10 +51,10 @@
   gap: 4px;
 }
 
-/* Bracket lines for tournament */
-.bracket-line-v { width: 2px; background: #46464d33; }
-.bracket-line-h { height: 2px; background: #46464d33; }
-.active-bracket-line { background: #e8a832; box-shadow: 0 0 8px rgba(232, 168, 50, 0.4); }
+/* Bracket lines for tournament — Khung Sáng: light hairline + amber active */
+.bracket-line-v { width: 1px; background: #E7E4DA; }
+.bracket-line-h { height: 1px; background: #E7E4DA; }
+.active-bracket-line { background: #F59E0B; box-shadow: 0 0 8px rgba(245, 158, 11, 0.35); }
 
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: #11131e; }

@@ -62,12 +62,12 @@ function TimerCircle({ seconds, maxSeconds = 15, size = 80 }: { seconds: number;
   const circumference = 2 * Math.PI * r;
   const progress = Math.max(0, seconds / maxSeconds);
   const strokeDashoffset = circumference * (1 - progress);
-  const color = seconds <= 5 ? '#f87171' : seconds <= 10 ? '#ff8c42' : '#e8a832';
+  const color = seconds <= 5 ? 'var(--bq-ruby)' : seconds <= 10 ? 'var(--bq-amber-deep)' : 'var(--bq-amber)';
 
   return (
     <div className="relative flex-shrink-0" style={{ width: size, height: size }}>
       <svg viewBox="0 0 100 100" width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
-        <circle cx="50" cy="50" r={r} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="6" />
+        <circle cx="50" cy="50" r={r} fill="none" stroke="var(--bq-hairline)" strokeWidth="6" />
         <circle
           cx="50" cy="50" r={r} fill="none"
           stroke={color} strokeWidth="6"
@@ -99,23 +99,23 @@ function PlayerCard({
   highlight?: boolean;
 }) {
   const initial = participant.userName.charAt(0).toUpperCase();
-  const avatarBg = highlight ? 'rgba(156,163,175,0.3)' : 'rgba(255,140,66,0.3)';
-  const avatarBorder = highlight ? '#e8a832' : 'rgba(255,140,66,0.5)';
-  const avatarColor = highlight ? '#fff' : '#ff8c42';
-  const seedBg = highlight ? '#e8a832' : 'rgba(255,255,255,0.6)';
-  const seedColor = highlight ? '#412d00' : '#11131e';
+  const avatarBg = highlight ? 'rgba(245,158,11,0.18)' : 'rgba(255,111,61,0.16)';
+  const avatarBorder = highlight ? 'var(--bq-amber)' : 'rgba(255,111,61,0.5)';
+  const avatarColor = highlight ? 'var(--bq-amber-deep)' : 'var(--bq-ember)';
+  const seedBg = highlight ? 'var(--bq-amber)' : 'var(--bq-paper-sunk)';
+  const seedColor = highlight ? '#FFFFFF' : 'var(--bq-ink)';
 
   return (
     <div
-      className="rounded-2xl p-4 md:p-5 flex flex-col items-center gap-3 transition-all duration-300"
+      className="rounded-2xl p-4 md:p-5 flex flex-col items-center gap-3 transition-all duration-300 bg-bq-white"
       style={{
-        background: 'rgba(50,52,64,0.5)',
+        background: 'var(--bq-white)',
         border: highlight
-          ? '1.5px solid rgba(232,168,50,0.5)'
+          ? '1.5px solid rgba(245,158,11,0.5)'
           : isWinner
-            ? '1.5px solid rgba(232,168,50,0.4)'
-            : '0.5px solid rgba(255,255,255,0.1)',
-        boxShadow: highlight ? '0 0 24px rgba(232,168,50,0.15)' : isWinner ? '0 0 20px rgba(232,168,50,0.1)' : undefined,
+            ? '1.5px solid rgba(245,158,11,0.4)'
+            : '1px solid var(--bq-hairline)',
+        boxShadow: highlight ? '0 0 24px rgba(245,158,11,0.18)' : isWinner ? '0 0 20px rgba(245,158,11,0.12)' : 'var(--bq-shadow-soft)',
         opacity: isLoser ? 0.55 : 1,
       }}
     >
@@ -142,14 +142,14 @@ function PlayerCard({
 
       {/* Name */}
       <div className="text-center">
-        <div className="font-medium text-white leading-tight" style={{ fontSize: 14 }}>
+        <div className="font-medium leading-tight" style={{ fontSize: 14, color: 'var(--bq-ink)' }}>
           {participant.userName}
         </div>
         {isCurrentUser && (
-          <span className="text-[9px] font-medium px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(232,168,50,0.2)', color: '#e8a832' }}>BẠN</span>
+          <span className="text-[9px] font-medium px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(245,158,11,0.18)', color: 'var(--bq-amber-deep)' }}>BẠN</span>
         )}
         {participant.seed != null && !isCurrentUser && (
-          <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 10, marginTop: 1 }}>Seed #{participant.seed}</div>
+          <div style={{ color: 'var(--bq-ink-soft)', fontSize: 10, marginTop: 1 }}>Seed #{participant.seed}</div>
         )}
       </div>
 
@@ -158,19 +158,19 @@ function PlayerCard({
 
       {/* Stats */}
       {(participant.correctCount != null || participant.score > 0) && (
-        <div className="w-full pt-2 mt-1 flex justify-between items-center" style={{ borderTop: '0.5px solid rgba(255,255,255,0.06)' }}>
+        <div className="w-full pt-2 mt-1 flex justify-between items-center" style={{ borderTop: '1px solid var(--bq-hairline)' }}>
           <div className="text-center">
-            <div className="text-[9px] tracking-wider mb-0.5" style={{ color: 'rgba(255,255,255,0.5)' }}>ĐÚNG / SAI</div>
+            <div className="text-[9px] tracking-wider mb-0.5" style={{ color: 'var(--bq-ink-soft)' }}>ĐÚNG / SAI</div>
             <div style={{ fontSize: 13, fontWeight: 500 }}>
-              <span style={{ color: '#97C459' }}>{participant.correctCount ?? participant.score}</span>
-              {participant.wrongCount != null && <span style={{ color: 'rgba(255,255,255,0.4)' }}> / </span>}
-              {participant.wrongCount != null && <span style={{ color: '#f87171' }}>{participant.wrongCount}</span>}
+              <span style={{ color: 'var(--bq-emerald)' }}>{participant.correctCount ?? participant.score}</span>
+              {participant.wrongCount != null && <span style={{ color: 'var(--bq-ink-faint)' }}> / </span>}
+              {participant.wrongCount != null && <span style={{ color: 'var(--bq-ruby)' }}>{participant.wrongCount}</span>}
             </div>
           </div>
           {participant.avgSpeed != null && (
             <div className="text-center">
-              <div className="text-[9px] tracking-wider mb-0.5" style={{ color: 'rgba(255,255,255,0.5)' }}>TỐC ĐỘ TB</div>
-              <div className="text-white font-medium" style={{ fontSize: 13 }}>{participant.avgSpeed.toFixed(1)}s</div>
+              <div className="text-[9px] tracking-wider mb-0.5" style={{ color: 'var(--bq-ink-soft)' }}>TỐC ĐỘ TB</div>
+              <div className="font-medium" style={{ fontSize: 13, color: 'var(--bq-ink)' }}>{participant.avgSpeed.toFixed(1)}s</div>
             </div>
           )}
         </div>
@@ -195,7 +195,7 @@ function GoldConfetti() {
             style={{
               left: `${left}%`, top: '-5%',
               width: size, height: size * 0.6,
-              background: `linear-gradient(${Math.random() * 360}deg, #e8a832, #e7c268, #f8bd45)`,
+              background: `linear-gradient(${Math.random() * 360}deg, var(--bq-amber), var(--bq-amber-lt), var(--bq-ember))`,
               animation: `confettiFall ${duration}s ${delay}s ease-in infinite`,
               opacity: 0.8,
             }}
@@ -271,9 +271,9 @@ const TournamentMatch: React.FC = () => {
   /* ── Loading ── */
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4" style={{ background: '#11131e' }}>
-        <div className="w-12 h-12 rounded-full animate-spin" style={{ border: '3px solid rgba(255,255,255,0.08)', borderTopColor: '#e8a832' }} />
-        <span className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>{t('tournaments.loadingMatch')}</span>
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4" style={{ background: 'var(--bq-paper)' }}>
+        <div className="w-12 h-12 rounded-full animate-spin" style={{ border: '3px solid var(--bq-hairline)', borderTopColor: 'var(--bq-amber)' }} />
+        <span className="text-sm" style={{ color: 'var(--bq-ink-soft)' }}>{t('tournaments.loadingMatch')}</span>
       </div>
     );
   }
@@ -281,13 +281,13 @@ const TournamentMatch: React.FC = () => {
   /* ── Error ── */
   if (error && !match) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-6" style={{ background: '#11131e' }}>
-        <div className="glass-card rounded-2xl p-12 text-center max-w-md w-full">
-          <span className="material-symbols-outlined text-5xl mb-4 block" style={{ color: '#f87171' }}>error</span>
-          <p className="text-sm mb-6" style={{ color: '#f87171' }}>{error}</p>
+      <div className="min-h-screen flex items-center justify-center p-6" style={{ background: 'var(--bq-paper)' }}>
+        <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-12 text-center max-w-md w-full">
+          <span className="material-symbols-outlined text-5xl mb-4 block" style={{ color: 'var(--bq-ruby)' }}>error</span>
+          <p className="text-sm mb-6" style={{ color: 'var(--bq-ruby)' }}>{error}</p>
           <button
             className="px-6 py-2.5 rounded-xl text-sm font-bold"
-            style={{ background: 'rgba(232,168,50,0.1)', border: '0.5px solid rgba(232,168,50,0.3)', color: '#e8a832' }}
+            style={{ background: 'rgba(245,158,11,0.12)', border: '1px solid rgba(245,158,11,0.35)', color: 'var(--bq-amber-deep)' }}
             onClick={() => { setLoading(true); setError(''); fetchMatch(); }}
           >
             {t('common.retry')}
@@ -309,19 +309,19 @@ const TournamentMatch: React.FC = () => {
   const meParticipant = match.participants.find(p => p.userId === currentUserId);
 
   return (
-    <div className="min-h-screen relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(232,168,50,0.03), rgba(168,85,247,0.03), #11131e)' }}>
+    <div className="min-h-screen relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(245,158,11,0.05), rgba(45,70,200,0.04), var(--bq-paper))' }}>
       {/* Background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 rounded-full pointer-events-none" style={{ width: 600, height: 400, background: 'rgba(232,168,50,0.04)', filter: 'blur(120px)' }} />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 rounded-full pointer-events-none" style={{ width: 600, height: 400, background: 'rgba(245,158,11,0.10)', filter: 'blur(120px)' }} />
 
       {/* ── Floating Header ── */}
       <header
         className="sticky top-0 z-20 flex items-center justify-between px-4 py-2.5"
-        style={{ background: 'rgba(0,0,0,0.4)', borderBottom: '0.5px solid rgba(255,255,255,0.06)', backdropFilter: 'blur(12px)' }}
+        style={{ background: 'rgba(255,255,255,0.82)', borderBottom: '1px solid var(--bq-hairline)', backdropFilter: 'blur(12px)' }}
       >
         <button
           onClick={() => navigate(`/tournaments/${id}`)}
           className="flex items-center gap-1.5 text-sm transition-opacity hover:opacity-70"
-          style={{ color: 'rgba(255,255,255,0.5)' }}
+          style={{ color: 'var(--bq-ink-soft)' }}
         >
           <span className="material-symbols-outlined text-base">arrow_back</span>
           <span className="hidden sm:inline">{t('tournaments.backToBracket')}</span>
@@ -332,19 +332,19 @@ const TournamentMatch: React.FC = () => {
           {tournamentName && (
             <span
               className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-medium"
-              style={{ background: 'rgba(232,168,50,0.15)', color: '#e8a832', border: '0.5px solid rgba(232,168,50,0.3)' }}
+              style={{ background: 'rgba(245,158,11,0.15)', color: 'var(--bq-amber-deep)', border: '1px solid rgba(245,158,11,0.3)' }}
             >
               🏆 {tournamentName} — {roundLabel}
             </span>
           )}
-          <span className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
+          <span className="text-xs" style={{ color: 'var(--bq-ink-faint)' }}>
             Match #{match.matchIndex + 1}
           </span>
         </div>
 
         <button
           className="w-8 h-8 rounded-lg flex items-center justify-center"
-          style={{ background: 'rgba(255,255,255,0.05)', border: '0.5px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.5)' }}
+          style={{ background: 'var(--bq-paper-sunk)', border: '1px solid var(--bq-hairline)', color: 'var(--bq-ink-soft)' }}
         >
           <span className="material-symbols-outlined text-sm">settings</span>
         </button>
@@ -354,14 +354,14 @@ const TournamentMatch: React.FC = () => {
 
         {/* ── BYE match ── */}
         {match.isBye && (
-          <div className="glass-card rounded-2xl p-10 text-center">
+          <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-10 text-center">
             <span className="text-5xl block mb-4">🛡️</span>
-            <p className="text-white font-bold text-lg mb-2">{t('tournaments.byeMatch')}</p>
-            <p className="text-sm mb-4" style={{ color: 'rgba(255,255,255,0.5)' }}>{t('tournaments.byeDesc')}</p>
+            <p className="font-bold text-lg mb-2" style={{ color: 'var(--bq-ink)' }}>{t('tournaments.byeMatch')}</p>
+            <p className="text-sm mb-4" style={{ color: 'var(--bq-ink-soft)' }}>{t('tournaments.byeDesc')}</p>
             {p1 && (
-              <div className="inline-flex items-center gap-3 rounded-full px-5 py-2" style={{ background: 'rgba(232,168,50,0.1)', border: '0.5px solid rgba(232,168,50,0.2)' }}>
-                <span style={{ color: '#e8a832' }}>🏆</span>
-                <span className="font-bold" style={{ color: '#e8a832' }}>{p1.userName}</span>
+              <div className="inline-flex items-center gap-3 rounded-full px-5 py-2" style={{ background: 'rgba(245,158,11,0.12)', border: '1px solid rgba(245,158,11,0.3)' }}>
+                <span style={{ color: 'var(--bq-amber-deep)' }}>🏆</span>
+                <span className="font-bold" style={{ color: 'var(--bq-amber-deep)' }}>{p1.userName}</span>
               </div>
             )}
           </div>
@@ -369,23 +369,23 @@ const TournamentMatch: React.FC = () => {
 
         {/* ── PENDING match ── */}
         {!match.isBye && match.status === 'PENDING' && (
-          <div className="glass-card rounded-2xl p-10 text-center">
-            <span className="material-symbols-outlined text-5xl mb-4 block" style={{ color: 'rgba(255,255,255,0.3)' }}>hourglass_empty</span>
-            <p className="text-white font-bold text-lg mb-6">{t('tournaments.pendingMatch')}</p>
+          <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-10 text-center">
+            <span className="material-symbols-outlined text-5xl mb-4 block" style={{ color: 'var(--bq-ink-faint)' }}>hourglass_empty</span>
+            <p className="font-bold text-lg mb-6" style={{ color: 'var(--bq-ink)' }}>{t('tournaments.pendingMatch')}</p>
             {p1 && p2 && (
               <div className="flex items-center justify-center gap-6">
                 <div className="text-center">
-                  <div className="w-14 h-14 rounded-full flex items-center justify-center text-xl font-black mx-auto mb-2" style={{ background: 'rgba(232,168,50,0.15)', color: '#e8a832' }}>
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center text-xl font-black mx-auto mb-2" style={{ background: 'rgba(245,158,11,0.15)', color: 'var(--bq-amber-deep)' }}>
                     {p1.userName.charAt(0).toUpperCase()}
                   </div>
-                  <span className="text-sm font-bold text-white">{p1.userName}</span>
+                  <span className="text-sm font-bold" style={{ color: 'var(--bq-ink)' }}>{p1.userName}</span>
                 </div>
-                <span className="font-black text-xl" style={{ color: 'rgba(255,255,255,0.3)' }}>VS</span>
+                <span className="font-black text-xl" style={{ color: 'var(--bq-ink-faint)' }}>VS</span>
                 <div className="text-center">
-                  <div className="w-14 h-14 rounded-full flex items-center justify-center text-xl font-black mx-auto mb-2" style={{ background: 'rgba(232,168,50,0.15)', color: '#e8a832' }}>
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center text-xl font-black mx-auto mb-2" style={{ background: 'rgba(245,158,11,0.15)', color: 'var(--bq-amber-deep)' }}>
                     {p2.userName.charAt(0).toUpperCase()}
                   </div>
-                  <span className="text-sm font-bold text-white">{p2.userName}</span>
+                  <span className="text-sm font-bold" style={{ color: 'var(--bq-ink)' }}>{p2.userName}</span>
                 </div>
               </div>
             )}
@@ -399,10 +399,10 @@ const TournamentMatch: React.FC = () => {
             {match.status === 'IN_PROGRESS' && (
               <div className="flex items-center justify-center gap-2">
                 <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#97C459' }} />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: '#97C459' }} />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: 'var(--bq-emerald)' }} />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: 'var(--bq-emerald)' }} />
                 </span>
-                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#97C459' }}>LIVE</span>
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: 'var(--bq-emerald)' }}>LIVE</span>
               </div>
             )}
 
@@ -418,9 +418,9 @@ const TournamentMatch: React.FC = () => {
                   highlight={p1.userId === currentUserId}
                 />
               ) : (
-                <div className="glass-card rounded-2xl p-6 text-center" style={{ opacity: 0.4 }}>
+                <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-6 text-center" style={{ opacity: 0.4 }}>
                   <div className="text-3xl mb-2">?</div>
-                  <div className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>TBD</div>
+                  <div className="text-sm" style={{ color: 'var(--bq-ink-soft)' }}>TBD</div>
                 </div>
               )}
 
@@ -429,13 +429,13 @@ const TournamentMatch: React.FC = () => {
                 {match.status === 'IN_PROGRESS' ? (
                   <>
                     <TimerCircle seconds={15} maxSeconds={15} size={72} />
-                    <div className="px-3 py-1 rounded-full text-[10px] font-medium" style={{ background: 'rgba(232,168,50,0.1)', border: '0.5px solid rgba(232,168,50,0.3)', color: '#e8a832' }}>
+                    <div className="px-3 py-1 rounded-full text-[10px] font-medium" style={{ background: 'rgba(245,158,11,0.12)', border: '1px solid rgba(245,158,11,0.3)', color: 'var(--bq-amber-deep)' }}>
                       ⚔️ VS
                     </div>
                   </>
                 ) : (
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'rgba(50,52,64,0.6)', border: '0.5px solid rgba(255,255,255,0.12)' }}>
-                    <span className="material-symbols-outlined" style={{ color: '#e8a832', fontSize: 20 }}>swords</span>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'var(--bq-paper-sunk)', border: '1px solid var(--bq-hairline)' }}>
+                    <span className="material-symbols-outlined" style={{ color: 'var(--bq-amber-deep)', fontSize: 20 }}>swords</span>
                   </div>
                 )}
               </div>
@@ -450,9 +450,9 @@ const TournamentMatch: React.FC = () => {
                   highlight={p2.userId === currentUserId}
                 />
               ) : (
-                <div className="glass-card rounded-2xl p-6 text-center" style={{ opacity: 0.4 }}>
+                <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-6 text-center" style={{ opacity: 0.4 }}>
                   <div className="text-3xl mb-2">?</div>
-                  <div className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>TBD</div>
+                  <div className="text-sm" style={{ color: 'var(--bq-ink-soft)' }}>TBD</div>
                 </div>
               )}
             </div>
@@ -460,28 +460,28 @@ const TournamentMatch: React.FC = () => {
             {/* Stats mini row (mobile compact) */}
             {meParticipant && match.status === 'IN_PROGRESS' && (
               <div className="flex gap-3">
-                <div className="flex-1 flex items-center gap-2 rounded-lg px-3 py-2" style={{ background: 'rgba(50,52,64,0.4)', border: '0.5px solid rgba(255,255,255,0.06)' }}>
-                  <span className="text-[9px]" style={{ color: 'rgba(255,255,255,0.5)' }}>Bạn:</span>
-                  <span className="text-[11px] font-medium" style={{ color: '#97C459' }}>{meParticipant.score}đ</span>
+                <div className="flex-1 flex items-center gap-2 rounded-lg px-3 py-2 bg-bq-white" style={{ border: '1px solid var(--bq-hairline)' }}>
+                  <span className="text-[9px]" style={{ color: 'var(--bq-ink-soft)' }}>Bạn:</span>
+                  <span className="text-[11px] font-medium" style={{ color: 'var(--bq-emerald)' }}>{meParticipant.score}đ</span>
                   {meParticipant.avgSpeed != null && (
                     <>
-                      <span style={{ color: 'rgba(255,255,255,0.3)' }}>·</span>
-                      <span className="text-[10px]" style={{ color: 'rgba(255,255,255,0.7)' }}>{meParticipant.avgSpeed.toFixed(1)}s</span>
+                      <span style={{ color: 'var(--bq-ink-faint)' }}>·</span>
+                      <span className="text-[10px]" style={{ color: 'var(--bq-ink-soft)' }}>{meParticipant.avgSpeed.toFixed(1)}s</span>
                     </>
                   )}
                 </div>
                 {p1 && p2 && (() => {
                   const opponent = p1.userId === currentUserId ? p2 : p1;
                   return (
-                    <div className="flex-1 flex items-center gap-2 justify-end rounded-lg px-3 py-2" style={{ background: 'rgba(50,52,64,0.4)', border: '0.5px solid rgba(255,255,255,0.06)' }}>
+                    <div className="flex-1 flex items-center gap-2 justify-end rounded-lg px-3 py-2 bg-bq-white" style={{ border: '1px solid var(--bq-hairline)' }}>
                       {opponent.avgSpeed != null && (
                         <>
-                          <span className="text-[10px]" style={{ color: 'rgba(255,255,255,0.7)' }}>{opponent.avgSpeed.toFixed(1)}s</span>
-                          <span style={{ color: 'rgba(255,255,255,0.3)' }}>·</span>
+                          <span className="text-[10px]" style={{ color: 'var(--bq-ink-soft)' }}>{opponent.avgSpeed.toFixed(1)}s</span>
+                          <span style={{ color: 'var(--bq-ink-faint)' }}>·</span>
                         </>
                       )}
-                      <span className="text-[11px] font-medium text-white">{opponent.score}đ</span>
-                      <span className="text-[9px]" style={{ color: 'rgba(255,255,255,0.5)' }}>:Đối thủ</span>
+                      <span className="text-[11px] font-medium" style={{ color: 'var(--bq-ink)' }}>{opponent.score}đ</span>
+                      <span className="text-[9px]" style={{ color: 'var(--bq-ink-soft)' }}>:Đối thủ</span>
                     </div>
                   );
                 })()}
@@ -495,7 +495,7 @@ const TournamentMatch: React.FC = () => {
                   onClick={handleForfeit}
                   disabled={forfeitLoading}
                   className="px-6 py-2.5 rounded-xl text-sm font-bold transition-colors disabled:opacity-50"
-                  style={{ background: 'rgba(239,68,68,0.1)', border: '0.5px solid rgba(239,68,68,0.25)', color: '#f87171' }}
+                  style={{ background: 'rgba(224,53,75,0.10)', border: '1px solid rgba(224,53,75,0.3)', color: 'var(--bq-ruby)' }}
                 >
                   <span className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-base">flag</span>
@@ -511,7 +511,7 @@ const TournamentMatch: React.FC = () => {
                 <button
                   onClick={() => navigate(`/tournaments/${id}`)}
                   className="px-8 py-3 rounded-xl font-bold text-sm uppercase tracking-wider hover:scale-105 transition-transform"
-                  style={{ background: '#e8a832', color: '#412d00', boxShadow: '0 0 20px rgba(232,168,50,0.25)' }}
+                  style={{ background: 'var(--bq-action)', color: '#FFFFFF', boxShadow: 'var(--bq-glow-action)' }}
                 >
                   {t('tournaments.backToBracket')}
                 </button>
@@ -527,21 +527,21 @@ const TournamentMatch: React.FC = () => {
           className="fixed inset-0 z-50 flex items-center justify-center"
           onClick={() => setShowWinnerOverlay(false)}
         >
-          <div className="absolute inset-0 backdrop-blur-md" style={{ background: 'rgba(17,19,30,0.9)' }} />
+          <div className="absolute inset-0 backdrop-blur-md" style={{ background: 'rgba(251,250,245,0.92)' }} />
           <GoldConfetti />
           <div className="relative z-10 text-center px-6 max-w-md">
-            <span className="material-symbols-outlined text-7xl mb-4 block" style={{ color: '#e8a832', fontVariationSettings: "'FILL' 1" }}>workspace_premium</span>
+            <span className="material-symbols-outlined text-7xl mb-4 block" style={{ color: 'var(--bq-amber-deep)', fontVariationSettings: "'FILL' 1" }}>workspace_premium</span>
             <div
               className="w-24 h-24 rounded-full flex items-center justify-center text-4xl font-black mx-auto mb-4"
-              style={{ background: 'rgba(232,168,50,0.2)', border: '2px solid rgba(232,168,50,0.5)', color: '#e8a832', boxShadow: '0 0 40px rgba(232,168,50,0.3)' }}
+              style={{ background: 'rgba(245,158,11,0.18)', border: '2px solid rgba(245,158,11,0.5)', color: 'var(--bq-amber-deep)', boxShadow: '0 0 40px rgba(245,158,11,0.3)' }}
             >
               {winner.userName.charAt(0).toUpperCase()}
             </div>
-            <p className="text-3xl md:text-4xl font-black mb-2" style={{ color: '#e8a832' }}>{winner.userName}</p>
-            <p className="text-lg mb-8" style={{ color: 'rgba(255,255,255,0.6)' }}>{t('tournaments.wonMatch')}</p>
+            <p className="text-3xl md:text-4xl font-black mb-2" style={{ color: 'var(--bq-amber-deep)' }}>{winner.userName}</p>
+            <p className="text-lg mb-8" style={{ color: 'var(--bq-ink-soft)' }}>{t('tournaments.wonMatch')}</p>
             <button
               className="px-10 py-4 rounded-xl font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform"
-              style={{ background: '#e8a832', color: '#412d00', boxShadow: '0 0 30px rgba(232,168,50,0.35)' }}
+              style={{ background: 'var(--bq-action)', color: '#FFFFFF', boxShadow: 'var(--bq-glow-action)' }}
               onClick={(e) => { e.stopPropagation(); navigate(`/tournaments/${id}`); }}
             >
               <span className="flex items-center gap-2">
