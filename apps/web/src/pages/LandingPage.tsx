@@ -10,20 +10,20 @@ import QuizLanguageSelect from '../components/QuizLanguageSelect'
 function GuestHeader() {
   const { t } = useTranslation()
   return (
-    <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 bg-[#11131e] shadow-sm shadow-[#0b0e18]/20">
+    <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 bg-bq-white/90 backdrop-blur border-b border-bq-hair shadow-bq-soft">
       <div className="flex items-center gap-4 sm:gap-8 max-w-7xl mx-auto w-full">
-        <div className="text-xl sm:text-2xl font-bold tracking-tighter text-[#f8bd45] font-headline">BibleQuiz</div>
+        <div className="text-xl sm:text-2xl font-bold tracking-tighter text-bq-amberd font-display">BibleQuiz</div>
         <div className="hidden md:flex gap-6 items-center flex-1">
-          <a className="font-be-vietnam-pro tracking-tight text-[#f8bd45] border-b-2 border-[#f8bd45] pb-1" href="#">
+          <a className="font-body tracking-tight text-bq-amberd border-b-2 border-bq-amber pb-1" href="#">
             {t('nav.home')}
           </a>
           <Link
             to="/leaderboard"
-            className="font-be-vietnam-pro tracking-tight text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-colors duration-300"
+            className="font-body tracking-tight text-bq-ink2 hover:text-bq-ink transition-colors duration-300"
           >
             {t('nav.leaderboard')}
           </Link>
-          <a className="font-be-vietnam-pro tracking-tight text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-colors duration-300" href="#">
+          <a className="font-body tracking-tight text-bq-ink2 hover:text-bq-ink transition-colors duration-300" href="#">
             {t('landing.about')}
           </a>
         </div>
@@ -31,13 +31,13 @@ function GuestHeader() {
           <QuizLanguageSelect className="hidden sm:flex" />
           <Link
             to="/login"
-            className="px-2 sm:px-4 py-2 text-sm font-semibold text-[#e1e1f1]/70 hover:text-[#e1e1f1] transition-colors active:scale-95 whitespace-nowrap"
+            className="px-2 sm:px-4 py-2 text-sm font-semibold text-bq-ink2 hover:text-bq-ink transition-colors active:scale-95 whitespace-nowrap"
           >
             {t('auth.login')}
           </Link>
           <Link
             to="/login"
-            className="gold-gradient px-4 sm:px-6 py-2 rounded-xl text-on-secondary font-bold text-sm sm:text-base active:scale-95 transition-transform shadow-lg shadow-secondary/10 inline-block whitespace-nowrap"
+            className="bg-bq-action px-4 sm:px-6 py-2 rounded-xl text-white shadow-bq-action font-bold text-sm sm:text-base active:scale-95 transition-transform inline-block whitespace-nowrap"
           >
             {t('auth.register')}
           </Link>
@@ -53,16 +53,16 @@ function HeroSection() {
   const { t } = useTranslation()
   return (
     <header className="relative pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 overflow-hidden">
-      {/* Background blurs */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl -z-10 opacity-20 pointer-events-none">
-        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-secondary rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-primary-container rounded-full blur-[100px]" />
+      {/* Lightwell atmosphere — high sun ray + jewel refraction, very faint */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl -z-10 pointer-events-none">
+        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-bq-amber/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-bq-sapphire/15 rounded-full blur-[100px]" />
       </div>
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         {/* Left – copy */}
         <div className="space-y-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/20 border border-secondary/20 text-secondary text-sm font-medium tracking-wide">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-bq-amber/10 border border-bq-amber/30 text-bq-amberd text-sm font-medium tracking-wide">
             <span
               className="material-symbols-outlined text-sm"
               style={{ fontVariationSettings: "'FILL' 1" }}
@@ -72,24 +72,24 @@ function HeroSection() {
             {t('landing.tagline')}
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] text-on-surface">
-            {t('landing.heroTitle1')}<span className="text-secondary">{t('landing.heroHighlight')}</span>{t('landing.heroTitle2')}
+          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] text-bq-ink">
+            {t('landing.heroTitle1')}<span className="text-bq-amberd">{t('landing.heroHighlight')}</span>{t('landing.heroTitle2')}
           </h1>
 
-          <p className="text-base sm:text-xl text-on-surface-variant leading-relaxed max-w-lg">
+          <p className="text-base sm:text-xl text-bq-ink2 leading-relaxed max-w-lg">
             {t('landing.heroDesc')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               to="/practice"
-              className="gold-gradient px-8 py-4 rounded-xl text-on-secondary font-bold text-lg shadow-xl shadow-secondary/20 active:scale-95 transition-transform text-center"
+              className="bg-bq-action px-8 py-4 rounded-xl text-white font-bold text-lg shadow-bq-action active:scale-95 transition-transform text-center"
             >
               {t('landing.tryNow')}
             </Link>
             <Link
               to="/login"
-              className="px-8 py-4 rounded-xl border border-outline-variant/30 text-on-surface font-bold text-lg hover:bg-surface-container transition-colors active:scale-95 text-center"
+              className="px-8 py-4 rounded-xl border border-bq-hair text-bq-ink font-bold text-lg hover:bg-bq-inset transition-colors active:scale-95 text-center"
             >
               {t('auth.login')}
             </Link>
@@ -98,20 +98,20 @@ function HeroSection() {
 
         {/* Right – image */}
         <div className="relative group">
-          <div className="absolute -inset-4 bg-secondary/10 rounded-[2rem] blur-2xl group-hover:bg-secondary/20 transition-all" />
+          <div className="absolute -inset-4 bg-bq-amber/10 rounded-[2rem] blur-2xl group-hover:bg-bq-amber/20 transition-all" />
           <img
             alt="Bible and Light"
             width={600}
             height={450}
             fetchPriority="high"
-            className="relative rounded-[2rem] shadow-2xl border border-outline-variant/15 w-full object-cover aspect-[4/3]"
+            className="relative rounded-[2rem] shadow-bq-soft border border-bq-hair w-full object-cover aspect-[4/3]"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpEFLF4HdAAZtQmV6p7ZFtq-07HGD2UVS1ZVgbPxSev4YKp18Amt4MdHqCFGh2JrRl5z8UyUtxx7O5an0EGofE1Kkzf-lnCx_fHn2-S1-sdjas2YKfjghtOoVc-9_Vb69hY_f1Kee_27xarqfLFbHwfQelEbTOKW_ouxi_PqBWzhBFPVaR7BQBwYz9FkBO6DlHAdNGeKKuOutu3XwrKIR75hoWBmThBK6KGHpGo8uO9ZNvkcSIwpmItnWjnMcoahC_NJDQhMWkspM"
           />
 
           {/* Floating streak card */}
-          <div className="absolute -bottom-6 -left-6 glass-card p-6 rounded-2xl border border-outline-variant/20 shadow-xl hidden lg:block">
+          <div className="absolute -bottom-6 -left-6 bg-bq-white p-6 rounded-2xl border border-bq-hair shadow-bq-soft hidden lg:block">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full gold-gradient flex items-center justify-center text-on-secondary">
+              <div className="w-12 h-12 rounded-full bg-bq-flame shadow-bq-flame flex items-center justify-center text-white">
                 <span
                   className="material-symbols-outlined"
                   style={{ fontVariationSettings: "'FILL' 1" }}
@@ -120,8 +120,8 @@ function HeroSection() {
                 </span>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest text-secondary font-bold">{t('landing.dailyStreak')}</p>
-                <p className="text-xl font-bold text-on-surface">{t('landing.daysStreak', { count: 15 })}</p>
+                <p className="text-xs uppercase tracking-widest text-bq-amberd font-bold">{t('landing.dailyStreak')}</p>
+                <p className="text-xl font-bold text-bq-ink">{t('landing.daysStreak', { count: 15 })}</p>
               </div>
             </div>
           </div>
@@ -134,33 +134,33 @@ function HeroSection() {
 /* ────────────────────────────── Features Grid ───────────────────────────── */
 
 const featureKeys = [
-  { icon: 'menu_book', titleKey: 'landing.feature1Title', descKey: 'landing.feature1Desc' },
-  { icon: 'stars', titleKey: 'landing.feature2Title', descKey: 'landing.feature2Desc' },
-  { icon: 'church', titleKey: 'landing.feature3Title', descKey: 'landing.feature3Desc' },
-  { icon: 'workspace_premium', titleKey: 'landing.feature4Title', descKey: 'landing.feature4Desc' },
+  { icon: 'menu_book', titleKey: 'landing.feature1Title', descKey: 'landing.feature1Desc', accent: 'text-bq-sapphire', tint: 'bg-bq-sapphire/10', edge: 'group-hover:border-bq-sapphire' },
+  { icon: 'stars', titleKey: 'landing.feature2Title', descKey: 'landing.feature2Desc', accent: 'text-bq-amberd', tint: 'bg-bq-amber/10', edge: 'group-hover:border-bq-amber' },
+  { icon: 'church', titleKey: 'landing.feature3Title', descKey: 'landing.feature3Desc', accent: 'text-bq-emerald', tint: 'bg-bq-emerald/10', edge: 'group-hover:border-bq-emerald' },
+  { icon: 'workspace_premium', titleKey: 'landing.feature4Title', descKey: 'landing.feature4Desc', accent: 'text-bq-ruby', tint: 'bg-bq-ruby/10', edge: 'group-hover:border-bq-ruby' },
 ]
 
 function FeaturesGrid() {
   const { t } = useTranslation()
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-surface-container-low" aria-label={t('landing.features')}>
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-bq-paper" aria-label={t('landing.features')}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">{t('landing.features')}</h2>
-          <div className="h-1 w-20 gold-gradient mx-auto rounded-full" />
+          <h2 className="font-display text-3xl font-bold mb-4 text-bq-ink">{t('landing.features')}</h2>
+          <div className="h-1 w-20 bg-bq-spectrum mx-auto rounded-full" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {featureKeys.map((f) => (
             <div
               key={f.icon}
-              className="p-8 bg-surface-container rounded-2xl hover:bg-surface-container-high transition-all duration-300 border-b-2 border-transparent hover:border-secondary group"
+              className={`p-8 bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl hover:-translate-y-1 transition-all duration-300 border-b-2 ${f.edge} group`}
             >
-              <div className="w-14 h-14 rounded-xl bg-primary-container flex items-center justify-center text-secondary mb-6 group-hover:scale-110 transition-transform">
+              <div className={`w-14 h-14 rounded-xl ${f.tint} flex items-center justify-center ${f.accent} mb-6 group-hover:scale-110 transition-transform`}>
                 <span className="material-symbols-outlined text-3xl">{f.icon}</span>
               </div>
-              <h3 className="text-xl font-bold mb-3">{t(f.titleKey)}</h3>
-              <p className="text-on-surface-variant">{t(f.descKey)}</p>
+              <h3 className="font-display text-xl font-bold mb-3 text-bq-ink">{t(f.titleKey)}</h3>
+              <p className="text-bq-ink2">{t(f.descKey)}</p>
             </div>
           ))}
         </div>
@@ -178,27 +178,27 @@ function TryNowSection() {
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* Left info */}
         <div>
-          <h2 className="text-4xl font-bold mb-6">{t('landing.tryChallenge')}</h2>
-          <p className="text-lg text-on-surface-variant mb-10 leading-relaxed">
+          <h2 className="font-display text-4xl font-bold mb-6 text-bq-ink">{t('landing.tryChallenge')}</h2>
+          <p className="text-lg text-bq-ink2 mb-10 leading-relaxed">
             {t('landing.tryChallengeDesc')}
           </p>
 
           <div className="space-y-6">
-            <div className="flex items-start gap-4 p-6 bg-surface-container rounded-2xl border-l-4 border-secondary">
-              <span className="material-symbols-outlined text-secondary text-3xl mt-1">verified</span>
+            <div className="flex items-start gap-4 p-6 bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl border-l-4 border-l-bq-amber">
+              <span className="material-symbols-outlined text-bq-amberd text-3xl mt-1">verified</span>
               <div>
-                <h3 className="font-bold text-lg mb-1">{t('landing.updatedRegularly')}</h3>
-                <p className="text-on-surface-variant text-sm">
+                <h3 className="font-bold text-lg mb-1 text-bq-ink">{t('landing.updatedRegularly')}</h3>
+                <p className="text-bq-ink2 text-sm">
                   {t('landing.updatedRegularlyDesc')}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-6 bg-surface-container rounded-2xl border-l-4 border-primary">
-              <span className="material-symbols-outlined text-primary text-3xl mt-1">devices</span>
+            <div className="flex items-start gap-4 p-6 bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl border-l-4 border-l-bq-sapphire">
+              <span className="material-symbols-outlined text-bq-sapphire text-3xl mt-1">devices</span>
               <div>
-                <h3 className="font-bold text-lg mb-1">{t('landing.multiPlatform')}</h3>
-                <p className="text-on-surface-variant text-sm">
+                <h3 className="font-bold text-lg mb-1 text-bq-ink">{t('landing.multiPlatform')}</h3>
+                <p className="text-bq-ink2 text-sm">
                   {t('landing.multiPlatformDesc')}
                 </p>
               </div>
@@ -209,24 +209,25 @@ function TryNowSection() {
         {/* Right cards */}
         <div className="grid gap-6">
           {/* Daily Challenge Card */}
-          <div className="bg-surface-container-high p-6 sm:p-8 rounded-3xl relative overflow-hidden group border border-outline-variant/10">
+          <div className="bg-bq-white p-6 sm:p-8 rounded-3xl relative overflow-hidden group border border-bq-hair shadow-bq-soft">
+            <span aria-hidden className="absolute top-0 inset-x-0 h-[5px] bg-bq-spectrum" />
             <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
-              <span className="px-3 py-1 bg-secondary/20 text-secondary text-xs font-bold rounded-full whitespace-nowrap">
+              <span className="px-3 py-1 bg-bq-amber/15 text-bq-amberd text-xs font-bold rounded-full whitespace-nowrap">
                 {t('landing.popular')}
               </span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold mb-2 pr-20">{t('landing.dailyChallenge')}</h3>
-            <p className="text-on-surface-variant mb-6 text-sm sm:text-base">
+            <h3 className="font-display text-xl sm:text-2xl font-bold mb-2 pr-20 text-bq-ink">{t('landing.dailyChallenge')}</h3>
+            <p className="text-bq-ink2 mb-6 text-sm sm:text-base">
               {t('landing.dailyChallengeDesc')}
             </p>
             <div className="flex items-center justify-between gap-3 flex-wrap">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-container/60 text-[11px] sm:text-xs font-bold whitespace-nowrap">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bq-inset text-bq-ink2 text-[11px] sm:text-xs font-bold whitespace-nowrap">
                 <span className="material-symbols-outlined text-[14px]">group</span>
                 {t('landing.playersCount')}
               </div>
               <Link
                 to="/daily"
-                className="gold-gradient px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl text-on-secondary font-bold text-sm sm:text-base active:scale-95 transition-transform inline-block whitespace-nowrap"
+                className="bg-bq-action px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl text-white shadow-bq-action font-bold text-sm sm:text-base active:scale-95 transition-transform inline-block whitespace-nowrap"
               >
                 {t('gameModes.dailyBtn')}
               </Link>
@@ -234,14 +235,14 @@ function TryNowSection() {
           </div>
 
           {/* Quick Practice Card */}
-          <div className="bg-surface-container p-6 sm:p-8 rounded-3xl border border-outline-variant/10 hover:bg-surface-container-high transition-colors">
-            <h3 className="text-xl sm:text-2xl font-bold mb-2">{t('landing.quickPractice')}</h3>
-            <p className="text-on-surface-variant mb-6 text-sm sm:text-base">
+          <div className="bg-bq-white p-6 sm:p-8 rounded-3xl border border-bq-hair shadow-bq-soft hover:-translate-y-1 transition-transform">
+            <h3 className="font-display text-xl sm:text-2xl font-bold mb-2 text-bq-ink">{t('landing.quickPractice')}</h3>
+            <p className="text-bq-ink2 mb-6 text-sm sm:text-base">
               {t('landing.quickPracticeDesc')}
             </p>
             <Link
               to="/practice"
-              className="block w-full py-3 sm:py-4 rounded-xl border border-secondary text-secondary font-bold hover:bg-secondary/10 transition-all active:scale-95 text-center"
+              className="block w-full py-3 sm:py-4 rounded-xl border border-bq-sapphire text-bq-sapphire font-bold hover:bg-bq-sapphire/10 transition-all active:scale-95 text-center"
             >
               {t('common.startNow')}
             </Link>
@@ -265,53 +266,53 @@ const leaderboardData = [
 function LeaderboardPreview() {
   const { t } = useTranslation()
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-surface-container-lowest" aria-label="Bảng xếp hạng">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-bq-paper" aria-label="Bảng xếp hạng">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <div className="inline-block px-6 py-2 rounded-full gold-gradient text-on-secondary font-extrabold text-lg mb-6 shadow-xl shadow-secondary/10">
+          <div className="inline-block px-6 py-2 rounded-full bg-bq-action text-white shadow-bq-action font-extrabold text-lg mb-6">
             {import.meta.env.VITE_SEASON_NAME || t('landing.seasonDefault')}
           </div>
-          <h2 className="text-4xl font-extrabold tracking-tight">{t('landing.nationalLeaderboard')}</h2>
+          <h2 className="font-display text-4xl font-extrabold tracking-tight text-bq-ink">{t('landing.nationalLeaderboard')}</h2>
         </div>
 
-        <div className="bg-surface-container rounded-2xl sm:rounded-[2rem] overflow-hidden border border-outline-variant/15 shadow-2xl">
+        <div className="bg-bq-white rounded-2xl sm:rounded-[2rem] overflow-hidden border border-bq-hair shadow-bq-soft">
           {/* Header row */}
-          <div className="grid grid-cols-12 px-4 sm:px-8 py-3 sm:py-4 bg-surface-container-high text-[10px] sm:text-xs font-bold text-on-surface-variant uppercase tracking-widest">
+          <div className="grid grid-cols-12 px-4 sm:px-8 py-3 sm:py-4 bg-bq-inset text-[10px] sm:text-xs font-bold text-bq-ink2 uppercase tracking-widest">
             <div className="col-span-2">{t('landing.rank')}</div>
             <div className="col-span-6">{t('landing.warrior')}</div>
             <div className="col-span-2">XP</div>
             <div className="col-span-2 text-right">{t('landing.titleHeader')}</div>
           </div>
 
-          <div className="divide-y divide-outline-variant/10">
+          <div className="divide-y divide-bq-hair">
             {leaderboardData.map((entry, idx) => (
               <div key={entry.rank}>
                 <div
                   className={`grid grid-cols-12 px-4 sm:px-8 py-3 sm:py-5 items-center gap-2 ${
-                    entry.top ? 'bg-secondary/5' : 'hover:bg-surface-container-high transition-colors'
+                    entry.top ? 'bg-bq-amber/10' : 'hover:bg-bq-inset transition-colors'
                   }`}
                 >
-                  <div className={`col-span-2 ${entry.top ? 'font-black text-xl sm:text-2xl text-secondary' : 'font-bold text-on-surface-variant'}`}>
+                  <div className={`col-span-2 ${entry.top ? 'font-black text-xl sm:text-2xl text-bq-amberd' : 'font-bold text-bq-ink2'}`}>
                     {entry.rank}
                   </div>
                   <div className="col-span-6 flex items-center gap-2 sm:gap-4 min-w-0">
                     <div
                       className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs sm:text-base flex-shrink-0 ${
                         entry.top
-                          ? 'bg-secondary text-on-secondary'
-                          : 'bg-primary-container text-primary'
+                          ? 'bg-bq-amber text-white'
+                          : 'bg-bq-sapphire/10 text-bq-sapphire'
                       }`}
                     >
                       {entry.initials}
                     </div>
-                    <span className={`font-bold truncate text-sm sm:text-base ${entry.top ? 'sm:text-lg' : ''}`}>{entry.name}</span>
+                    <span className={`font-bold truncate text-sm sm:text-base text-bq-ink ${entry.top ? 'sm:text-lg' : ''}`}>{entry.name}</span>
                   </div>
-                  <div className={`col-span-2 font-mono text-xs sm:text-base ${entry.top ? 'text-secondary' : 'text-on-surface-variant'}`}>
+                  <div className={`col-span-2 font-mono text-xs sm:text-base ${entry.top ? 'text-bq-amberd' : 'text-bq-ink2'}`}>
                     {entry.xp}
                   </div>
                   <div
                     className={`col-span-2 text-right text-[9px] sm:text-xs font-bold uppercase truncate ${
-                      entry.top ? 'text-secondary' : idx < 3 ? 'text-primary' : 'text-on-surface-variant'
+                      entry.top ? 'text-bq-amberd' : idx < 3 ? 'text-bq-sapphire' : 'text-bq-ink2'
                     }`}
                   >
                     {t(entry.titleKey)}
@@ -320,7 +321,7 @@ function LeaderboardPreview() {
 
                 {/* Ellipsis between rank 03 and rank 10 */}
                 {entry.rank === '03' && (
-                  <div className="text-center py-4 text-on-surface-variant/40">&bull;&bull;&bull;</div>
+                  <div className="text-center py-4 text-bq-ink3">&bull;&bull;&bull;</div>
                 )}
               </div>
             ))}
@@ -340,25 +341,25 @@ function ChurchGroupShowcase() {
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* Image */}
         <div className="order-2 lg:order-1 relative">
-          <div className="absolute -inset-10 bg-primary/10 rounded-full blur-[100px]" />
+          <div className="absolute -inset-10 bg-bq-emerald/10 rounded-full blur-[100px]" />
           <img
             alt="Group studying together"
             width={600}
             height={400}
             loading="lazy"
-            className="relative rounded-[2rem] shadow-2xl z-10"
+            className="relative rounded-[2rem] shadow-bq-soft z-10"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnm3LIt9EiyqGvjOzhF7rg8NoKMQoAjbDHWgkYgYTcjATw8YGu6nvIwD21ypU3A5cSNU5YgzZ4oStRZaYpVP37Fv9KrmqJ1yTWYyNV8MPJOP9EQDvi7dwbLUPj2GK18ZXveYRRuAkiOMNcerFyYD3JwSSOXaWoBWLHZnb1UJZSmhsA5ppJF4A78tXcbZMRiP5dnGucV58PQs__oVK1uan3IZwbSeQ1R7wfr--M3W8K2cn0zQGPw2NGpSpzUFnFsNsWkUcurItdKsw"
           />
 
           {/* Floating stats */}
-          <div className="absolute top-10 -right-8 glass-card p-6 rounded-2xl shadow-xl z-20 border border-white/10 hidden md:block">
-            <div className="text-sm font-bold text-secondary mb-4 uppercase tracking-widest">{t('landing.teamProgress')}</div>
+          <div className="absolute top-10 -right-8 bg-bq-white p-6 rounded-2xl shadow-bq-soft z-20 border border-bq-hair hidden md:block">
+            <div className="text-sm font-bold text-bq-emerald mb-4 uppercase tracking-widest">{t('landing.teamProgress')}</div>
             <div className="space-y-3">
-              <div className="h-2 w-48 bg-surface-container-highest rounded-full overflow-hidden">
-                <div className="h-full w-[75%] gold-gradient" />
+              <div className="h-2 w-48 bg-bq-inset rounded-full overflow-hidden">
+                <div className="h-full w-[75%] bg-bq-spectrum" />
               </div>
-              <div className="h-2 w-48 bg-surface-container-highest rounded-full overflow-hidden">
-                <div className="h-full w-[45%] gold-gradient" />
+              <div className="h-2 w-48 bg-bq-inset rounded-full overflow-hidden">
+                <div className="h-full w-[45%] bg-bq-spectrum" />
               </div>
             </div>
           </div>
@@ -366,29 +367,29 @@ function ChurchGroupShowcase() {
 
         {/* Text + features */}
         <div className="order-1 lg:order-2 space-y-8">
-          <h2 className="text-4xl font-bold leading-tight">{t('landing.churchGroup')}</h2>
-          <p className="text-lg text-on-surface-variant leading-relaxed">
+          <h2 className="font-display text-4xl font-bold leading-tight text-bq-ink">{t('landing.churchGroup')}</h2>
+          <p className="text-lg text-bq-ink2 leading-relaxed">
             {t('landing.churchGroupDesc')}
           </p>
 
           <ul className="space-y-4">
             <li className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-secondary">qr_code_2</span>
-              <span className="text-on-surface font-medium">{t('landing.qrJoin')}</span>
+              <span className="material-symbols-outlined text-bq-emerald">qr_code_2</span>
+              <span className="text-bq-ink font-medium">{t('landing.qrJoin')}</span>
             </li>
             <li className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-secondary">analytics</span>
-              <span className="text-on-surface font-medium">{t('landing.weeklyReport')}</span>
+              <span className="material-symbols-outlined text-bq-emerald">analytics</span>
+              <span className="text-bq-ink font-medium">{t('landing.weeklyReport')}</span>
             </li>
             <li className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-secondary">emoji_events</span>
-              <span className="text-on-surface font-medium">{t('landing.internalTournament')}</span>
+              <span className="material-symbols-outlined text-bq-emerald">emoji_events</span>
+              <span className="text-bq-ink font-medium">{t('landing.internalTournament')}</span>
             </li>
           </ul>
 
           <Link
             to="/groups"
-            className="gold-gradient px-8 py-4 rounded-xl text-on-secondary font-bold text-lg active:scale-95 transition-transform shadow-xl shadow-secondary/10 inline-block"
+            className="bg-bq-action px-8 py-4 rounded-xl text-white font-bold text-lg active:scale-95 transition-transform shadow-bq-action inline-block"
           >
             {t('landing.createFreeGroup')}
           </Link>
@@ -403,17 +404,17 @@ function ChurchGroupShowcase() {
 function DailyVerse() {
   const { t } = useTranslation()
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-surface-container-low" aria-label="Câu Kinh Thánh mỗi ngày">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-bq-paper" aria-label="Câu Kinh Thánh mỗi ngày">
       <div className="max-w-4xl mx-auto text-center">
-        <div className="w-16 h-1 bg-secondary mx-auto mb-10 rounded-full" />
+        <div className="w-16 h-1 bg-bq-spectrum mx-auto mb-10 rounded-full" />
         <div className="relative px-12">
-          <span className="material-symbols-outlined text-7xl text-secondary/20 absolute -top-8 -left-2 scale-x-[-1]">
+          <span className="material-symbols-outlined text-7xl text-bq-amber/30 absolute -top-8 -left-2 scale-x-[-1]">
             format_quote
           </span>
-          <blockquote className="text-3xl md:text-4xl font-light italic leading-relaxed text-on-surface mb-8">
+          <blockquote className="font-literata text-3xl md:text-4xl font-light italic leading-relaxed text-bq-ink mb-8">
             &ldquo;{t('landing.verseText')}&rdquo;
           </blockquote>
-          <cite className="text-xl font-bold text-secondary not-italic">{t('landing.verseRef')}</cite>
+          <cite className="text-xl font-bold text-bq-amberd not-italic">{t('landing.verseRef')}</cite>
         </div>
       </div>
     </section>
@@ -430,18 +431,18 @@ function FooterCTA() {
 
   return (
     <section className="py-32 px-6 relative overflow-hidden text-center" aria-label="Đăng ký miễn phí">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-surface to-primary-container/20" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-bq-paper to-bq-amber/10" />
       <div className="max-w-2xl mx-auto space-y-10">
-        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
+        <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-bq-ink">
           {t('landing.readyToExplore')}
         </h2>
-        <p className="text-on-surface-variant text-lg">
+        <p className="text-bq-ink2 text-lg">
           {t('landing.joinCommunity')}
         </p>
         <div className="flex flex-col items-center gap-4">
           <button
             onClick={handleGoogleSignup}
-            className="flex items-center gap-3 bg-on-surface text-surface px-10 py-4 rounded-xl font-bold text-lg hover:bg-on-surface-variant transition-colors active:scale-95"
+            className="flex items-center gap-3 bg-bq-ink text-white px-10 py-4 rounded-xl font-bold text-lg hover:brightness-110 transition-all active:scale-95"
           >
             <img
               alt="Google"
@@ -453,7 +454,7 @@ function FooterCTA() {
             />
             {t('auth.loginWithGoogle')}
           </button>
-          <p className="text-sm text-on-surface-variant/60">
+          <p className="text-sm text-bq-ink3">
             {t('auth.freeNoAds')}
           </p>
         </div>
@@ -467,26 +468,26 @@ function FooterCTA() {
 function Footer() {
   const { t } = useTranslation()
   return (
-    <footer className="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 bg-[#11131e] border-t border-[#46464d]/15">
+    <footer className="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 bg-bq-inset border-t border-bq-hair">
       <div className="flex flex-col items-center md:items-start gap-2">
-        <div className="text-lg font-bold text-[#f8bd45]">BibleQuiz</div>
-        <p className="font-be-vietnam-pro text-sm leading-relaxed text-[#e1e1f1]/75">
+        <div className="text-lg font-bold text-bq-amberd font-display">BibleQuiz</div>
+        <p className="font-body text-sm leading-relaxed text-bq-ink2">
           {t('landing.copyright')}
         </p>
       </div>
       <div className="flex gap-8">
-        <a className="font-be-vietnam-pro text-sm text-[#e1e1f1]/70 hover:text-[#f8bd45] transition-colors" href="/privacy">
+        <a className="font-body text-sm text-bq-ink2 hover:text-bq-amberd transition-colors" href="/privacy">
           {t('landing.privacy')}
         </a>
-        <a className="font-be-vietnam-pro text-sm text-[#e1e1f1]/70 hover:text-[#f8bd45] transition-colors" href="/terms">
+        <a className="font-body text-sm text-bq-ink2 hover:text-bq-amberd transition-colors" href="/terms">
           {t('landing.terms')}
         </a>
       </div>
       <div className="flex gap-4">
-        <div className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors cursor-pointer">
+        <div className="w-8 h-8 rounded-full bg-bq-white border border-bq-hair flex items-center justify-center text-bq-ink2 hover:text-bq-amberd transition-colors cursor-pointer">
           <span className="material-symbols-outlined text-lg">language</span>
         </div>
-        <div className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors cursor-pointer">
+        <div className="w-8 h-8 rounded-full bg-bq-white border border-bq-hair flex items-center justify-center text-bq-ink2 hover:text-bq-amberd transition-colors cursor-pointer">
           <span className="material-symbols-outlined text-lg">share</span>
         </div>
       </div>
@@ -510,7 +511,7 @@ export default function LandingPage() {
   if (isLoading) return null
 
   return (
-    <div data-testid="landing-page" className="bg-background font-body text-on-surface selection:bg-secondary selection:text-on-secondary min-h-screen">
+    <div data-testid="landing-page" className="bg-bq-paper font-body text-bq-ink selection:bg-bq-amber selection:text-white min-h-screen">
       <PageMeta
         title="Học Kinh Thánh qua Quiz & Thi đấu"
         description="Quiz Kinh Thánh tiếng Việt — trắc nghiệm tương tác, thi đấu multiplayer, nhóm hội thánh. Hoàn toàn miễn phí."
