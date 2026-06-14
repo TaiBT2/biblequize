@@ -32,30 +32,30 @@ export default function SpeedRound() {
     <div className="max-w-2xl mx-auto space-y-8" data-testid="speed-round-page">
       {/* Header */}
       <div className="text-center space-y-4">
-        <div className="w-20 h-20 mx-auto rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center">
-          <span className="material-symbols-outlined text-4xl text-orange-400" style={{ fontVariationSettings: "'FILL' 1" }}>speed</span>
+        <div className="w-20 h-20 mx-auto rounded-2xl bg-bq-ember/10 border border-bq-ember/20 flex items-center justify-center">
+          <span className="material-symbols-outlined text-4xl text-bq-ember" style={{ fontVariationSettings: "'FILL' 1" }}>speed</span>
         </div>
-        <h1 className="text-3xl font-black text-on-surface">Speed Round</h1>
-        <p className="text-on-surface-variant text-sm">{t('gameModes.speedPage.subtitle')}</p>
+        <h1 className="text-3xl font-black font-display text-bq-ink">Speed Round</h1>
+        <p className="text-bq-ink2 text-sm">{t('gameModes.speedPage.subtitle')}</p>
       </div>
 
       {/* Info card */}
-      <div className="bg-surface-container rounded-2xl p-8 border border-orange-500/20 text-center space-y-6" data-testid="speed-round-stats-card">
+      <div className="bg-bq-white rounded-2xl p-8 border border-bq-hair shadow-bq-soft text-center space-y-6" data-testid="speed-round-stats-card">
         <div className="flex justify-center gap-6">
-          <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl px-5 py-3 text-center">
-            <p className="text-3xl font-black text-orange-400">10</p>
-            <p className="text-xs text-on-surface-variant mt-1">{t('gameModes.speedPage.questionsSuffix')}</p>
+          <div className="bg-bq-ember/10 border border-bq-ember/20 rounded-xl px-5 py-3 text-center">
+            <p className="text-3xl font-black text-bq-ember">10</p>
+            <p className="text-xs text-bq-ink2 mt-1">{t('gameModes.speedPage.questionsSuffix')}</p>
           </div>
-          <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl px-5 py-3 text-center" data-testid="speed-round-timer-stat">
-            <p className="text-3xl font-black text-orange-400">10s</p>
-            <p className="text-xs text-on-surface-variant mt-1">{t('gameModes.speedPage.perQuestionSuffix')}</p>
+          <div className="bg-bq-ember/10 border border-bq-ember/20 rounded-xl px-5 py-3 text-center" data-testid="speed-round-timer-stat">
+            <p className="text-3xl font-black text-bq-ember">10s</p>
+            <p className="text-xs text-bq-ink2 mt-1">{t('gameModes.speedPage.perQuestionSuffix')}</p>
           </div>
           {/* "2x XP bonus" stat removed per Bui decision 2026-05-02: variety
               modes are "for fun, no XP" — see MysteryMode.tsx + audit. */}
         </div>
 
-        <div className="space-y-2 text-sm text-on-surface-variant">
-          <p>{t('gameModes.speedPage.onlyEasyNote')} <span className="text-emerald-400 font-bold">{t('gameModes.speedPage.easyWord')}</span> {t('gameModes.speedPage.easyReason')}</p>
+        <div className="space-y-2 text-sm text-bq-ink2">
+          <p>{t('gameModes.speedPage.onlyEasyNote')} <span className="text-bq-emerald font-bold">{t('gameModes.speedPage.easyWord')}</span> {t('gameModes.speedPage.easyReason')}</p>
           <p>{t('gameModes.speedPage.autoAdvanceNote')}</p>
         </div>
 
@@ -63,7 +63,7 @@ export default function SpeedRound() {
           onClick={startQuiz}
           disabled={starting}
           data-testid="speed-round-start-btn"
-          className="px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-black rounded-xl transition-colors disabled:opacity-50"
+          className="px-8 py-3 bg-bq-action text-white font-black rounded-xl shadow-bq-action transition-colors disabled:opacity-50"
         >
           {starting ? '...' : t('gameModes.speedBtn')}
         </button>

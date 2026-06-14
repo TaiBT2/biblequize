@@ -85,7 +85,7 @@ describe('Daily Challenge', () => {
       renderDaily()
       await waitFor(() => {
         const content = screen.queryByText(/Bắt Đầu/i) || screen.queryByText(/Thử Thách/i) ||
-          screen.queryByText(/Hôm Nay/i) || document.querySelector('.gold-gradient')
+          screen.queryByText(/Hôm Nay/i) || document.querySelector('.bg-bq-action')
         expect(content).toBeTruthy()
       }, { timeout: 3000 })
     })

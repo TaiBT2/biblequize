@@ -36,31 +36,31 @@ export function StreakCard({ currentStreak, last7Days, freezesPerWeek = 1 }: Str
   return (
     <div
       data-testid="daily-streak-display"
-      className="bg-gradient-to-b from-[rgba(239,68,68,0.05)] to-[rgba(50,52,64,0.4)] backdrop-blur-md border border-[rgba(239,68,68,0.15)] rounded-2xl p-5"
+      className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-5"
     >
-      <div className="flex items-center gap-2 text-[15px] font-bold mb-0">
-        <span className="material-symbols-outlined text-lg text-[#f97316]">local_fire_department</span>
+      <div className="flex items-center gap-2 text-[15px] font-bold mb-0 text-bq-ink">
+        <span className="material-symbols-outlined text-lg text-bq-ember">local_fire_department</span>
         {t('daily.streakTitle')}
       </div>
       <div className="flex items-center justify-center gap-4 pt-3 pb-2">
         <div
           className={`${flameClass} leading-none`}
           style={{
-            background: 'linear-gradient(135deg, #ef4444 0%, #f97316 60%, #fbbf24 100%)',
+            background: 'var(--bq-flame)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
-            filter: 'drop-shadow(0 4px 12px rgba(239,68,68,0.3))',
+            filter: 'drop-shadow(0 4px 12px rgba(255,111,61,0.35))',
           }}
         >
           🔥
         </div>
         <div className="text-left">
-          <div className={`${numberClass} font-extrabold leading-none text-on-surface`}>{currentStreak}</div>
-          <div className="text-xs text-on-surface-variant mt-1">{t('daily.streakDaysLine')}</div>
+          <div className={`${numberClass} font-extrabold leading-none text-bq-ink`}>{currentStreak}</div>
+          <div className="text-xs text-bq-ink2 mt-1">{t('daily.streakDaysLine')}</div>
         </div>
       </div>
-      <div className="text-[11px] text-center text-on-surface-variant/80 mb-2">{caption}</div>
+      <div className="text-[11px] text-center text-bq-ink2 mb-2">{caption}</div>
 
       {/* Week strip — fixed-size circles centered, so the row stays compact
           regardless of card width. Before DC-5, StreakCard lived in a narrow
@@ -70,12 +70,12 @@ export function StreakCard({ currentStreak, last7Days, freezesPerWeek = 1 }: Str
       <div className="flex justify-around gap-1.5 mt-[18px]">
         {last7Days.map((d) => {
           const cls = d.completed && d.isToday
-            ? 'bg-gradient-to-br from-secondary to-[#d97706] text-on-secondary border-2 border-[#fbbf24]'
+            ? 'bg-bq-flame text-white border-2 border-bq-amber'
             : d.isToday
-              ? 'bg-[rgba(232,168,50,0.15)] border-2 border-dashed border-[rgba(232,168,50,0.5)] text-secondary'
+              ? 'bg-bq-amber/15 border-2 border-dashed border-bq-amber/50 text-bq-amberd'
               : d.completed
-                ? 'bg-gradient-to-br from-[#ef4444] to-[#f97316] text-white border-transparent'
-                : 'bg-white/5 text-on-surface-variant border border-white/5'
+                ? 'bg-bq-flame text-white border-transparent'
+                : 'bg-bq-inset text-bq-ink2 border border-bq-hair'
           // Always render the day label so no day reads as an unlabeled
           // circle (DC-4: 3 states must be distinguishable — done /
           // chưa làm / hôm nay — through bg+border, not by hiding text).
@@ -90,12 +90,12 @@ export function StreakCard({ currentStreak, last7Days, freezesPerWeek = 1 }: Str
         })}
       </div>
 
-      <div className="mt-4 px-3 py-2.5 bg-[rgba(96,165,250,0.06)] border border-[rgba(96,165,250,0.15)] rounded-[10px] flex items-center justify-between text-xs">
-        <span className="text-[#93c5fd] flex items-center gap-1.5">
+      <div className="mt-4 px-3 py-2.5 bg-bq-sapphire/[0.06] border border-bq-sapphire/15 rounded-[10px] flex items-center justify-between text-xs">
+        <span className="text-bq-sapphire flex items-center gap-1.5">
           <span className="material-symbols-outlined text-sm">ac_unit</span>
           {t('daily.freezeIndicator')}
         </span>
-        <span className="text-on-surface font-bold">
+        <span className="text-bq-ink font-bold">
           {t('daily.freezePerWeek', { count: freezesPerWeek })}
         </span>
       </div>

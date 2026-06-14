@@ -36,29 +36,22 @@ export default function DailyCompletedStrip({
   return (
     <div
       data-testid="daily-completed-strip"
-      className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5 rounded-[14px] mb-5"
-      style={{
-        background: 'rgba(74,107,82,0.10)',
-        border: '1px solid rgba(74,107,82,0.25)',
-      }}
+      className="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-3.5 rounded-[14px] mb-5 bg-bq-white border border-bq-hair shadow-bq-soft"
     >
       <div
         aria-hidden
-        className="w-8 h-8 rounded-full grid place-items-center shrink-0"
-        style={{
-          background: 'rgba(74,107,82,0.3)',
-          border: '1px solid rgba(132,180,140,0.5)',
-        }}
+        className="w-8 h-8 rounded-full grid place-items-center shrink-0 bg-bq-emerald/10 border border-bq-emerald/30"
       >
         <svg
           width="16"
           height="16"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#84b48c"
+          stroke="currentColor"
           strokeWidth="2.2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          className="text-bq-emerald"
         >
           <path d="M5 13l4 4L19 7" />
         </svg>
@@ -67,8 +60,7 @@ export default function DailyCompletedStrip({
       <div className="flex-1 min-w-0">
         <div
           data-testid="daily-completed-strip-score"
-          className="text-[13px] md:text-[14px] font-bold"
-          style={{ color: '#b4d4ba' }}
+          className="text-[13px] md:text-[14px] font-bold text-bq-emerald"
         >
           {t('home.dailyCompleted.score', {
             correct: correctCount,
@@ -78,7 +70,7 @@ export default function DailyCompletedStrip({
         </div>
         <div
           data-testid="daily-completed-strip-sub"
-          className="text-[11px] text-ivory-faint mt-0.5"
+          className="text-[11px] text-bq-ink3 mt-0.5"
         >
           {t('home.dailyCompleted.subToday')}
           {trailingText ? ` · ${trailingText}` : ''}
@@ -93,11 +85,7 @@ export default function DailyCompletedStrip({
         data-testid="daily-completed-strip-review"
         type="button"
         onClick={onReview}
-        className="inline-flex items-center gap-1.5 px-3 md:px-3.5 py-2 rounded-lg text-[11px] md:text-[12px] font-medium text-ivory transition-all duration-150 hover:border-[rgba(232,168,50,0.3)]"
-        style={{
-          background: 'rgba(245,240,230,0.06)',
-          border: '1px solid rgba(245,240,230,0.10)',
-        }}
+        className="inline-flex items-center gap-1.5 px-3 md:px-3.5 py-2 rounded-lg text-[11px] md:text-[12px] font-medium text-bq-ink2 bg-bq-paper border border-bq-hair transition-all duration-150 hover:border-bq-amber/30"
       >
         <svg
           width="14"

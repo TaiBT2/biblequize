@@ -18,13 +18,13 @@ export default function DailyVerseBanner() {
   return (
     <section
       data-testid="home-daily-verse"
-      className="relative overflow-hidden rounded-2xl border border-secondary/15 backdrop-blur-md p-5 md:p-6 bg-[linear-gradient(135deg,rgba(232,168,50,0.05)_0%,transparent_50%),rgba(50,52,64,0.4)]"
+      className="relative overflow-hidden rounded-2xl bg-bq-white border border-bq-hair shadow-bq-soft p-5 md:p-6"
     >
       <div className="flex items-center gap-2 mb-3">
-        <span className="material-symbols-outlined text-[18px] text-secondary">menu_book</span>
+        <span className="material-symbols-outlined text-[18px] text-bq-amberd">menu_book</span>
         <h3
           data-testid="home-daily-verse-title"
-          className="text-on-surface text-[13px] md:text-[14px] font-bold"
+          className="text-bq-ink text-[13px] md:text-[14px] font-bold"
         >
           {t('home.verseToday')}
         </h3>
@@ -32,11 +32,11 @@ export default function DailyVerseBanner() {
 
       <p
         data-testid="home-daily-verse-text"
-        className="relative pl-4 md:pl-5 text-on-surface text-[14px] md:text-[16px] italic leading-relaxed mb-3"
+        className="relative pl-4 md:pl-5 text-bq-ink text-[14px] md:text-[16px] italic leading-relaxed mb-3 font-literata"
       >
         <span
           aria-hidden
-          className="absolute left-0 -top-2 text-[28px] md:text-[32px] text-secondary leading-none font-serif"
+          className="absolute left-0 -top-2 text-[28px] md:text-[32px] text-bq-amberd leading-none font-literata"
         >
           “
         </span>
@@ -45,7 +45,7 @@ export default function DailyVerseBanner() {
 
       <p
         data-testid="home-daily-verse-ref"
-        className="text-secondary text-[11px] md:text-[12px] font-bold text-right"
+        className="text-bq-amberd text-[11px] md:text-[12px] font-bold text-right"
       >
         — {verse.ref}
       </p>

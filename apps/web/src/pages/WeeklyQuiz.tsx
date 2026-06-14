@@ -36,7 +36,7 @@ export default function WeeklyQuiz() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="w-12 h-12 border-4 border-purple-400/30 border-t-purple-400 rounded-full animate-spin" />
+        <div className="w-12 h-12 border-4 border-bq-sapphire/30 border-t-bq-sapphire rounded-full animate-spin" />
       </div>
     )
   }
@@ -45,32 +45,32 @@ export default function WeeklyQuiz() {
     <div className="max-w-2xl mx-auto space-y-8" data-testid="weekly-page">
       {/* Header */}
       <div className="text-center space-y-4">
-        <div className="w-20 h-20 mx-auto rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
-          <span className="material-symbols-outlined text-4xl text-purple-400" style={{ fontVariationSettings: "'FILL' 1" }}>event</span>
+        <div className="w-20 h-20 mx-auto rounded-2xl bg-bq-sapphire/10 border border-bq-sapphire/20 flex items-center justify-center">
+          <span className="material-symbols-outlined text-4xl text-bq-sapphire" style={{ fontVariationSettings: "'FILL' 1" }}>event</span>
         </div>
-        <h1 className="text-3xl font-black text-on-surface">{t('gameModes.weekly')}</h1>
-        <p className="text-on-surface-variant text-sm">{t('gameModes.weeklyPage.subtitle')}</p>
+        <h1 className="text-3xl font-black font-display text-bq-ink">{t('gameModes.weekly')}</h1>
+        <p className="text-bq-ink2 text-sm">{t('gameModes.weeklyPage.subtitle')}</p>
       </div>
 
       {/* Theme card */}
       {theme && (
-        <div className="bg-surface-container rounded-2xl p-8 border border-purple-500/20 text-center space-y-4" data-testid="weekly-quiz-theme-card">
-          <p className="text-xs font-bold text-purple-400 uppercase tracking-wider">{t('gameModes.weeklyPage.themeLabel')}</p>
-          <h2 className="text-2xl font-black text-on-surface" data-testid="weekly-theme-title">{theme.themeName}</h2>
-          <p className="text-sm text-on-surface-variant" data-testid="weekly-theme-description">{theme.themeNameEn}</p>
+        <div className="bg-bq-white rounded-2xl p-8 border border-bq-hair shadow-bq-soft text-center space-y-4" data-testid="weekly-quiz-theme-card">
+          <p className="text-xs font-bold text-bq-sapphire uppercase tracking-wider">{t('gameModes.weeklyPage.themeLabel')}</p>
+          <h2 className="text-2xl font-black text-bq-ink" data-testid="weekly-theme-title">{theme.themeName}</h2>
+          <p className="text-sm text-bq-ink2" data-testid="weekly-theme-description">{theme.themeNameEn}</p>
 
           <div className="flex flex-wrap justify-center gap-2 mt-4">
             {theme.books?.slice(0, 5).map((book: string) => (
-              <span key={book} className="text-xs bg-purple-500/10 text-purple-400 px-2 py-1 rounded-full font-medium">
+              <span key={book} className="text-xs bg-bq-sapphire/10 text-bq-sapphire px-2 py-1 rounded-full font-medium">
                 {book}
               </span>
             ))}
             {theme.books?.length > 5 && (
-              <span className="text-xs text-on-surface-variant">+{theme.books.length - 5}</span>
+              <span className="text-xs text-bq-ink2">+{theme.books.length - 5}</span>
             )}
           </div>
 
-          <div className="flex justify-center gap-6 pt-4 text-sm text-on-surface-variant">
+          <div className="flex justify-center gap-6 pt-4 text-sm text-bq-ink2">
             <span>{t('gameModes.weeklyPage.questionCount')}</span>
             <span>•</span>
             <span data-testid="weekly-quiz-countdown">{t('gameModes.weeklyPage.daysLeft', { count: theme.daysLeft })}</span>
@@ -81,7 +81,7 @@ export default function WeeklyQuiz() {
             onClick={startQuiz}
             disabled={starting}
             data-testid="weekly-start-btn"
-            className="mt-4 px-8 py-3 bg-purple-500 hover:bg-purple-600 text-white font-black rounded-xl transition-colors disabled:opacity-50"
+            className="mt-4 px-8 py-3 bg-bq-action text-white font-black rounded-xl shadow-bq-action transition-colors disabled:opacity-50"
           >
             {starting ? '...' : t('gameModes.weeklyBtn')}
           </button>

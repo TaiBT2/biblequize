@@ -43,20 +43,10 @@ export default function DailyMissionWidget() {
     return (
       <div
         data-testid="daily-mission-widget-skeleton"
-        className="rounded-[10px] px-3.5 py-3 animate-pulse"
-        style={{
-          backgroundColor: 'rgba(255,255,255,0.03)',
-          border: '1px solid rgba(255,255,255,0.06)',
-        }}
+        className="rounded-[10px] px-3.5 py-3 animate-pulse bg-bq-white border border-bq-hair shadow-bq-soft"
       >
-        <div
-          className="h-2 w-20 mb-2 rounded"
-          style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
-        />
-        <div
-          className="h-3 w-full rounded"
-          style={{ backgroundColor: 'rgba(255,255,255,0.06)' }}
-        />
+        <div className="h-2 w-20 mb-2 rounded bg-bq-inset" />
+        <div className="h-3 w-full rounded bg-bq-inset" />
       </div>
     )
   }
@@ -74,16 +64,16 @@ export default function DailyMissionWidget() {
   const allDone = totalCompleted === totalTarget
 
   let caption: string
-  let captionColor: string
+  let captionClass: string
   if (allDone) {
     caption = 'Tất cả nhiệm vụ hoàn thành! 🎉'
-    captionColor = '#e8a832' // gold
+    captionClass = 'text-bq-amberd' // gold
   } else if (totalCompleted > 0) {
     caption = `Tiếp tục — còn ${totalTarget - totalCompleted} nhiệm vụ`
-    captionColor = 'rgba(225,225,241,0.7)'
+    captionClass = 'text-bq-ink2'
   } else {
     caption = 'Bắt đầu nhiệm vụ ngày'
-    captionColor = 'rgba(225,225,241,0.5)'
+    captionClass = 'text-bq-ink3'
   }
 
   return (
@@ -92,43 +82,35 @@ export default function DailyMissionWidget() {
       data-testid="daily-mission-widget"
       onClick={() => navigate('/')}
       aria-label="Xem chi tiết nhiệm vụ ngày"
-      className="rounded-[10px] px-3.5 py-3 w-full text-left hover:bg-white/[0.04] transition-colors cursor-pointer"
-      style={{
-        backgroundColor: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.06)',
-      }}
+      className="rounded-[10px] px-3.5 py-3 w-full text-left bg-bq-white border border-bq-hair shadow-bq-soft hover:bg-bq-paper transition-colors cursor-pointer"
     >
       <div
-        className="text-[10px] uppercase font-bold mb-1.5"
-        style={{ letterSpacing: '0.12em', color: 'rgba(225,225,241,0.5)' }}
+        className="text-[10px] uppercase font-bold mb-1.5 text-bq-ink3"
+        style={{ letterSpacing: '0.12em' }}
       >
         🎯 Nhiệm vụ ngày
       </div>
       <div className="flex items-baseline justify-between mb-2">
         <span
           data-testid="daily-mission-widget-progress"
-          className="text-[15px] font-bold text-white"
+          className="text-[15px] font-bold text-bq-ink"
         >
           {totalCompleted}/{totalTarget}
         </span>
-        <span className="text-[10px]" style={{ color: 'rgba(225,225,241,0.5)' }}>
+        <span className="text-[10px] text-bq-ink3">
           hoàn thành
         </span>
       </div>
-      <div
-        className="h-1 w-full rounded-full overflow-hidden mb-1.5"
-        style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
-      >
+      <div className="h-1 w-full rounded-full overflow-hidden mb-1.5 bg-bq-inset">
         <div
           data-testid="daily-mission-widget-bar"
-          className="h-full transition-all duration-700 ease-out"
-          style={{ width: `${pct}%`, backgroundColor: '#4ade80' }}
+          className="h-full transition-all duration-700 ease-out bg-bq-emerald"
+          style={{ width: `${pct}%` }}
         />
       </div>
       <p
         data-testid="daily-mission-widget-caption"
-        className="text-[10px] leading-snug"
-        style={{ color: captionColor }}
+        className={`text-[10px] leading-snug ${captionClass}`}
       >
         {caption}
       </p>
