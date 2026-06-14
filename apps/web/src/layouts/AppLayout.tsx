@@ -12,7 +12,7 @@ const navItems = [
   { path: '/', labelKey: 'nav.home' },
   { path: '/leaderboard', labelKey: 'nav.leaderboard' },
   { path: '/groups', labelKey: 'nav.groups' },
-  { path: '/multiplayer', labelKey: 'nav.rooms' },
+  { path: '/multiplayer', labelKey: 'gameModes.rooms' },
   { path: '/profile', labelKey: 'nav.profile' },
 ]
 

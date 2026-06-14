@@ -66,7 +66,15 @@ function setupApi(opts: MockOpts = {}) {
     if (url.includes('/api/seasons/active'))
       return Promise.resolve({ data: { active: false } })
     if (url.includes('/api/leaderboard/weekly/my-rank'))
-      return Promise.resolve({ data: { rank: 1, total: 1204 } })
+      return Promise.resolve({ data: { rank: 4, total: 7, userId: 'me' } })
+    if (url.includes('/api/leaderboard/weekly'))
+      return Promise.resolve({
+        data: [
+          { userId: 'm', name: 'Minh Anh', points: 1240 },
+          { userId: 'k', name: 'Khôi Nguyên', points: 1080 },
+          { userId: 'me', name: 'Tai Thanh', points: 820 },
+        ],
+      })
     if (url.includes('/api/daily-challenge/result'))
       return Promise.resolve({ data: { correctCount: 4, totalQuestions: 5, xpEarned: 50 } })
     if (url.includes('/api/daily-challenge'))
@@ -153,6 +161,14 @@ describe('Home Dashboard (Khung Sáng IA)', () => {
       expect(screen.getByTestId('home-mode-study')).toBeInTheDocument()
       expect(screen.getByTestId('home-mode-ranked')).toBeInTheDocument()
       expect(screen.getByTestId('home-mode-rooms')).toBeInTheDocument()
+    })
+
+    it('renders the weekly leaderboard card next to the quests', async () => {
+      renderHome()
+      await waitFor(() => expect(screen.getByTestId('home-weekly-leaderboard')).toBeInTheDocument())
+      const lb = screen.getByTestId('home-weekly-leaderboard')
+      expect(lb).toHaveTextContent('Minh Anh')
+      expect(lb).toHaveTextContent('Tai Thanh')
     })
   })
 
