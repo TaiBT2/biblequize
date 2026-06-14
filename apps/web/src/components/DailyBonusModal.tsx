@@ -55,16 +55,16 @@ export default function DailyBonusModal() {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-      <div className="bg-surface-container rounded-2xl p-8 max-w-sm w-full mx-4 border border-secondary/20 shadow-2xl text-center space-y-5">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(22,21,27,0.45)] backdrop-blur-sm">
+      <div className="bg-bq-white rounded-2xl p-8 max-w-sm w-full mx-4 border border-bq-hair shadow-bq-soft text-center space-y-5">
         <div className="text-5xl">{BONUS_ICONS[data.bonusType ?? ''] ?? '🎁'}</div>
         <div>
-          <h2 className="text-xl font-black text-on-surface">{t('modals.dailyBonus.title')}</h2>
-          <p className="text-secondary font-bold mt-2">{data.message}</p>
+          <h2 className="font-display text-xl font-black text-bq-ink">{t('modals.dailyBonus.title')}</h2>
+          <p className="text-bq-amberd font-bold mt-2">{data.message}</p>
         </div>
         <button
           onClick={handleConfirm}
-          className="w-full px-6 py-3 gold-gradient text-on-secondary font-black rounded-xl"
+          className="w-full px-6 py-3 bg-bq-action shadow-bq-action text-white font-black rounded-xl hover:brightness-105 transition"
         >
           {t('modals.dailyBonus.confirmButton')}
         </button>

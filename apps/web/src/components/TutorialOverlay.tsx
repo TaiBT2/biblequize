@@ -69,7 +69,7 @@ export default function TutorialOverlay() {
   return (
     <div className="fixed inset-0 z-[60]" onClick={advance}>
       {/* Dim backdrop */}
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-[rgba(22,21,27,0.4)]" />
 
       {/* Spotlight ring around the highlighted card */}
       {rect && (
@@ -81,7 +81,7 @@ export default function TutorialOverlay() {
             left: rect.left - 6,
             width: rect.width + 12,
             height: rect.height + 12,
-            boxShadow: '0 0 0 9999px rgba(0,0,0,0.5), 0 0 0 2px #e8a832, 0 0 24px rgba(232,168,50,0.45)',
+            boxShadow: '0 0 0 9999px rgba(22,21,27,0.4), 0 0 0 2px #F59E0B, 0 0 24px rgba(245,158,11,0.45)',
           }}
         />
       )}
@@ -92,13 +92,13 @@ export default function TutorialOverlay() {
         className={rect ? 'max-w-sm w-[min(22rem,90vw)] px-4' : 'absolute bottom-32 left-1/2 -translate-x-1/2 max-w-sm w-full px-4'}
         style={tooltipStyle}
       >
-        <div className="glass-card p-4 text-center" onClick={(e) => e.stopPropagation()}>
-          <p className="text-on-surface font-medium mb-3">{t(tip.messageKey)}</p>
+        <div className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-4 text-center" onClick={(e) => e.stopPropagation()}>
+          <p className="text-bq-ink font-medium mb-3">{t(tip.messageKey)}</p>
           <div className="flex justify-between items-center">
-            <span className="text-xs text-on-surface-variant">{step + 1}/{TIPS.length}</span>
+            <span className="text-xs text-bq-ink3">{step + 1}/{TIPS.length}</span>
             <button
               onClick={advance}
-              className="gold-gradient text-on-secondary px-4 py-1.5 rounded-lg text-sm font-bold"
+              className="bg-bq-action text-white shadow-bq-action px-4 py-1.5 rounded-lg text-sm font-bold hover:brightness-105 transition"
             >
               {t('onboarding.tutorialGotIt')}
             </button>
