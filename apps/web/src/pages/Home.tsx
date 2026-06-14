@@ -234,7 +234,8 @@ export default function Home() {
           {t('home.hero.ready', 'Sẵn sàng chưa,')}{' '}
           <span data-testid="home-greeting-name" className="relative whitespace-nowrap">
             {userName}?
-            <span aria-hidden className="absolute left-[-4px] right-[-4px] bottom-[6px] h-4 -z-10 rounded bg-bq-spectrum opacity-50 blur-[0.5px] animate-shimmer" style={{ backgroundSize: '200% 100%' }} />
+            {/* Full-spectrum underline — static + symmetric (sapphire→ruby trải đều dưới tên). */}
+            <span aria-hidden className="absolute left-0 right-0 bottom-[6px] h-3 -z-10 rounded-full bg-bq-spectrum opacity-45 blur-[1px]" />
           </span>
         </h1>
 
