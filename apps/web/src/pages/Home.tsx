@@ -247,6 +247,14 @@ export default function Home() {
     queryKey: ['daily-missions'],
     queryFn: () => api.get('/api/me/daily-missions').then(r => r.data).catch(() => null), staleTime: 60_000,
   })
+  const { data: journey } = useQuery<{ summary?: { currentBook?: string | null }; books?: { book?: string; bookVi?: string; totalQuestions?: number; masteredQuestions?: number; masteryPercent?: number }[] } | null>({
+    queryKey: ['me-journey-home', dcLang],
+    queryFn: () => api.get(`/api/me/journey?language=${i18n.language}`).then(r => r.data).catch(() => null), staleTime: 60_000,
+  })
+  const { data: roomsData } = useQuery<{ rooms?: { status?: string; currentPlayers?: number }[] } | null>({
+    queryKey: ['public-rooms-home'],
+    queryFn: () => api.get('/api/rooms/public').then(r => r.data).catch(() => null), staleTime: 30_000,
+  })
 
   if (meLoading) return <HomeSkeleton />
 
@@ -277,6 +285,18 @@ export default function Home() {
   const top3Pts = topEntries[2]?.points
   const myWeekPts = weeklyRank?.points
   const gapToTop3 = top3Pts != null && myWeekPts != null && top3Pts > myWeekPts ? top3Pts - myWeekPts : null
+
+  // Luyện Tập — current book + progress from journey
+  const curBook = (journey?.books ?? []).find(b => b.book === journey?.summary?.currentBook)
+  const bookName = curBook ? (dcLang === 'vi' ? (curBook.bookVi || curBook.book) : (curBook.book || curBook.bookVi)) : null
+  const bookAnswered = curBook?.masteredQuestions ?? 0
+  const bookTotal = curBook?.totalQuestions ?? 0
+  const bookPct = Math.max(0, Math.min(100, Math.round(curBook?.masteryPercent ?? 0)))
+  const bookRemaining = Math.max(0, bookTotal - bookAnswered)
+  // Phòng Chơi — open rooms + players from public rooms
+  const rooms = roomsData?.rooms ?? []
+  const openRooms = rooms.filter(r => r.status === 'LOBBY' || r.status === 'IN_PROGRESS').length
+  const roomPlayers = rooms.reduce((s, r) => s + (r.currentPlayers ?? 0), 0)
 
   return (
     <div data-testid="home-page" className="max-w-[1180px] mx-auto w-full">
@@ -400,15 +420,45 @@ export default function Home() {
         <h2 className="font-display text-[22px] font-bold tracking-[-0.015em] text-bq-ink">{t('home.primary.title')}</h2>
       </div>
       <div data-testid="home-modes-grid" className="grid grid-cols-1 sm:grid-cols-3 gap-[18px]">
-        <ModeCard variant="study" title={t('gameModes.practice')} desc={t('home.compactSubtitles.practice')}
-          inner={t('home.mode.studyInner', 'Tự do · không tính XP · luyện theo từng sách')} cta={t('home.mode.studyCta', 'Tiếp tục')} onClick={() => navigate('/practice')} />
-        <ModeCard variant="ranked" title={t('gameModes.ranked', 'Đấu Hạng')} desc={t('home.mode.rankedDesc', 'Cạnh tranh bảng xếp hạng theo mùa')}
-          inner={wRank != null
-            ? <span><span className="text-bq-ruby">🏅</span> {t('home.hero.weeklyRank', 'Hạng tuần')} <b className="text-bq-ink">#{wRank}</b>{weeklyRank?.total ? ` / ${weeklyRank.total}` : ''}{gapToTop3 ? ` · ${t('home.mode.gapTop3', 'kém top 3')} ${gapToTop3.toLocaleString()}đ` : ''}</span>
-            : <span>{t('home.mode.rankedInner', 'Năng lượng')} · <b className="text-bq-ink">{energy}</b></span>}
-          cta={t('home.mode.rankedCta', 'Vào trận')} onClick={() => navigate('/ranked')} />
-        <ModeCard variant="rooms" title={t('gameModes.rooms')} desc={t('home.mode.roomsDesc', 'Chơi cùng bạn bè & hội thánh · 5 chế độ')}
-          inner={t('home.mode.roomsInner', 'Tạo phòng hoặc tham gia bằng mã')} cta={t('home.mode.roomsCta', 'Tìm phòng')} onClick={() => navigate('/multiplayer')} />
+        <ModeCard variant="study" title={t('gameModes.practice')} desc={t('home.mode.studyDesc', 'Tự do, không tính XP — luyện theo từng sách.')}
+          cta={t('home.mode.studyCta', 'Tiếp tục')} onClick={() => navigate('/practice')}
+          inner={bookName ? (
+            <div>
+              <div className="flex items-center gap-1.5"><span className="material-symbols-outlined text-[16px]">auto_stories</span> {t('home.mode.studyOngoing', 'Đang học dở')} · <b className="text-bq-ink">{bookName}</b></div>
+              <div className="h-1.5 bg-bq-white border border-bq-hair rounded-full mt-2 overflow-hidden"><div className="h-full rounded-full bg-gradient-to-r from-bq-sapphire to-[#7E94F4]" style={{ width: `${bookPct}%` }} /></div>
+              <div className="mt-2">{bookAnswered}/{bookTotal} {t('home.mode.questions', 'câu')} · {t('home.mode.remaining', 'còn')} {bookRemaining} {t('home.mode.toComplete', 'để hoàn thành sách')}</div>
+            </div>
+          ) : t('home.mode.studyInner', 'Tự do · không tính XP · luyện theo từng sách')} />
+
+        <ModeCard variant="ranked" title={t('gameModes.ranked', 'Đấu Hạng')} desc={t('home.mode.rankedDesc', 'Cạnh tranh bảng xếp hạng theo mùa.')}
+          cta={wRank != null && wRank > 1 ? `${t('home.mode.climbTo', 'Vượt lên hạng')} ${wRank - 1}` : t('home.mode.rankedCta', 'Vào trận')}
+          onClick={() => navigate('/ranked')}
+          inner={wRank != null ? (
+            <div>
+              <div>🏅 {t('home.mode.rankYouAt', 'Bạn đang hạng')} <b className="text-bq-ruby">#{wRank}</b>{weeklyRank?.total ? ` / ${weeklyRank.total} ${t('home.mode.members', 'thành viên')}` : ''}</div>
+              {gapToTop3 ? <div className="mt-2">{t('home.mode.gapTop3Lead', 'Kém top 3 chỉ')} <b className="text-bq-ink">{gapToTop3.toLocaleString()}đ</b> — {t('home.mode.pushUp', 'ráng một ván là vượt')}</div> : null}
+            </div>
+          ) : <span>{t('home.mode.rankedInner', 'Năng lượng')} · <b className="text-bq-ink">{energy}</b></span>} />
+
+        <ModeCard variant="rooms" title={t('gameModes.rooms')} desc={t('home.mode.roomsDesc', 'Chơi cùng bạn bè & hội thánh — 5 chế độ.')}
+          cta={t('home.mode.roomsCta', 'Tìm phòng')} onClick={() => navigate('/multiplayer')}
+          inner={openRooms > 0 ? (
+            <div>
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="w-[7px] h-[7px] rounded-full bg-bq-emerald inline-block" /> <b className="text-bq-ink">{openRooms}</b> {t('home.mode.roomsOpen', 'phòng đang mở')}
+                {roomPlayers > 0 && <> · <b className="text-bq-ink">{roomPlayers}</b> {t('home.mode.people', 'người')}</>}
+                {roomPlayers > 0 && (
+                  <span className="inline-flex ml-1">
+                    {Array.from({ length: Math.min(3, roomPlayers) }).map((_, i) => (
+                      <span key={i} className="w-[18px] h-[18px] rounded-full border-2 border-bq-white -ml-1.5 inline-block" style={{ background: LB_AVATAR[i % LB_AVATAR.length] }} />
+                    ))}
+                    {roomPlayers > 3 && <span className="min-w-[18px] h-[18px] px-1 -ml-1.5 rounded-full bg-bq-ink text-white text-[8.5px] font-extrabold inline-grid place-items-center">+{roomPlayers - 3}</span>}
+                  </span>
+                )}
+              </div>
+              <div className="mt-2">{t('home.mode.roomsHint', 'Vào phòng có sẵn hoặc mở phòng mới')}</div>
+            </div>
+          ) : t('home.mode.roomsInner', 'Chưa có phòng — tạo phòng hoặc tham gia bằng mã')} />
       </div>
 
       {/* ── 3: QUESTS + WEEKLY LEADERBOARD (2-col) ── */}
