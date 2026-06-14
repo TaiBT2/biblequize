@@ -154,29 +154,44 @@ function ModeCard({ variant, title, desc, inner, cta, onClick }: {
 
 /* ── Weekly leaderboard card (Top điểm tuần) ── */
 const LB_AVATAR = ['linear-gradient(140deg,#2D46C8,#5168E0)', '#F59E0B', '#0E8A6B', '#E0354B', '#6E86F0']
-function LeaderboardCard({ entries, myUserId, seasonLabel }: {
-  entries: { userId?: string; name?: string; points?: number }[]; myUserId?: string; seasonLabel: string
+interface LbEntry { userId?: string; name?: string; points?: number; rank?: number }
+function LeaderboardRow({ rank, name, points, me }: { rank: number; name: string; points: number; me: boolean }) {
+  return (
+    <div className={`flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-[13px] ${me ? 'bg-[linear-gradient(90deg,rgba(245,158,11,.13),transparent)] outline outline-[1.5px] outline-bq-amber/40' : ''}`}>
+      <span className={`font-display font-extrabold w-4 tabular-nums ${me ? 'text-bq-amberd' : 'text-bq-ink3'}`}>{rank}</span>
+      <span className="w-[26px] h-[26px] rounded-[9px] grid place-items-center text-white text-[11px] font-extrabold shrink-0" style={{ background: LB_AVATAR[(rank - 1) % LB_AVATAR.length] }}>
+        {(name || '?').charAt(0).toUpperCase()}
+      </span>
+      <span className={`flex-1 truncate ${me ? 'text-bq-ink font-bold' : 'text-bq-ink2 font-semibold'}`}>{name || '—'}</span>
+      <span className={`font-extrabold tabular-nums text-[12.5px] ${me ? 'text-bq-ink' : 'text-bq-ink2'}`}>{(points || 0).toLocaleString()}</span>
+    </div>
+  )
+}
+function LeaderboardCard({ entries, myUserId, me, seasonLabel }: {
+  entries: LbEntry[]; myUserId?: string; me: { name: string; points: number; rank?: number }; seasonLabel: string
 }) {
   const { t } = useTranslation()
+  const inList = !!myUserId && entries.some(e => e.userId === myUserId)
   return (
     <div data-testid="home-weekly-leaderboard" className="bg-bq-white border border-bq-hair rounded-[20px] px-6 py-5 self-start">
       <div className="flex items-baseline justify-between mb-2.5">
         <h4 className="font-display text-[15px] font-bold text-bq-ink">{t('home.lb.title', 'Top điểm tuần')}</h4>
         <Link to="/leaderboard" className="text-[11.5px] font-bold text-bq-ink2 hover:text-bq-ink">{t('home.lb.full', 'Bảng đầy đủ')} →</Link>
       </div>
-      {entries.map((e, i) => {
-        const me = !!myUserId && e.userId === myUserId
-        return (
-          <div key={e.userId || i} className={`flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-[13px] ${me ? 'bg-[linear-gradient(90deg,rgba(245,158,11,.13),transparent)] outline outline-[1.5px] outline-bq-amber/40' : ''}`}>
-            <span className={`font-display font-extrabold w-4 ${me ? 'text-bq-amberd' : 'text-bq-ink3'}`}>{i + 1}</span>
-            <span className="w-[26px] h-[26px] rounded-[9px] grid place-items-center text-white text-[11px] font-extrabold shrink-0" style={{ background: LB_AVATAR[i % LB_AVATAR.length] }}>
-              {(e.name || '?').charAt(0).toUpperCase()}
-            </span>
-            <span className={`flex-1 truncate ${me ? 'text-bq-ink font-bold' : 'text-bq-ink2 font-semibold'}`}>{e.name || '—'}</span>
-            <span className={`font-extrabold tabular-nums text-[12.5px] ${me ? 'text-bq-ink' : 'text-bq-ink2'}`}>{(e.points || 0).toLocaleString()}</span>
-          </div>
-        )
-      })}
+      {entries.length > 0 ? (
+        entries.map((e, i) => (
+          <LeaderboardRow key={e.userId || i} rank={e.rank ?? i + 1} name={e.name || '—'} points={e.points || 0} me={!!myUserId && e.userId === myUserId} />
+        ))
+      ) : (
+        <p className="py-3 text-[12.5px] text-bq-ink2 text-center">{t('home.lb.empty', 'Chưa có ai ghi điểm tuần này — hãy là người đầu tiên!')}</p>
+      )}
+      {/* Sticky "me" row when the user isn't in the visible top list. */}
+      {me.rank != null && !inList && (
+        <>
+          <div className="my-1 border-t border-dashed border-bq-hair" />
+          <LeaderboardRow rank={me.rank} name={me.name} points={me.points} me />
+        </>
+      )}
       <div className="mt-3 pt-3 border-t border-dashed border-bq-hair text-[11.5px] text-bq-ink2">
         {t('home.lb.season', 'Mùa')} <b className="text-bq-ink">{seasonLabel}</b>
       </div>
@@ -209,7 +224,7 @@ export default function Home() {
   const { data: activeSeason } = useQuery<{ active?: boolean; name?: string }>({
     queryKey: ['active-season'], queryFn: () => api.get('/api/seasons/active').then(r => r.data), staleTime: 30 * 60_000,
   })
-  const { data: weeklyRank } = useQuery<{ rank?: number; total?: number; userId?: string } | null>({
+  const { data: weeklyRank } = useQuery<{ rank?: number; total?: number; userId?: string; points?: number } | null>({
     queryKey: ['leaderboard', 'my-rank', 'weekly'],
     queryFn: () => api.get('/api/leaderboard/weekly/my-rank').then(r => r.data).catch(() => null),
     staleTime: 60_000,
@@ -259,6 +274,9 @@ export default function Home() {
   const missionsDone = missions.filter(m => m.completed).length
   const topEntries = Array.isArray(weeklyTop) ? weeklyTop.slice(0, 5) : []
   const myUserId = weeklyRank?.userId
+  const top3Pts = topEntries[2]?.points
+  const myWeekPts = weeklyRank?.points
+  const gapToTop3 = top3Pts != null && myWeekPts != null && top3Pts > myWeekPts ? top3Pts - myWeekPts : null
 
   return (
     <div data-testid="home-page" className="max-w-[1180px] mx-auto w-full">
@@ -386,7 +404,7 @@ export default function Home() {
           inner={t('home.mode.studyInner', 'Tự do · không tính XP · luyện theo từng sách')} cta={t('home.mode.studyCta', 'Tiếp tục')} onClick={() => navigate('/practice')} />
         <ModeCard variant="ranked" title={t('gameModes.ranked', 'Đấu Hạng')} desc={t('home.mode.rankedDesc', 'Cạnh tranh bảng xếp hạng theo mùa')}
           inner={wRank != null
-            ? <span><span className="text-bq-ruby">🏅</span> {t('home.hero.weeklyRank', 'Hạng tuần')} <b className="text-bq-ink">#{wRank}</b>{weeklyRank?.total ? ` / ${weeklyRank.total}` : ''}</span>
+            ? <span><span className="text-bq-ruby">🏅</span> {t('home.hero.weeklyRank', 'Hạng tuần')} <b className="text-bq-ink">#{wRank}</b>{weeklyRank?.total ? ` / ${weeklyRank.total}` : ''}{gapToTop3 ? ` · ${t('home.mode.gapTop3', 'kém top 3')} ${gapToTop3.toLocaleString()}đ` : ''}</span>
             : <span>{t('home.mode.rankedInner', 'Năng lượng')} · <b className="text-bq-ink">{energy}</b></span>}
           cta={t('home.mode.rankedCta', 'Vào trận')} onClick={() => navigate('/ranked')} />
         <ModeCard variant="rooms" title={t('gameModes.rooms')} desc={t('home.mode.roomsDesc', 'Chơi cùng bạn bè & hội thánh · 5 chế độ')}
@@ -399,7 +417,7 @@ export default function Home() {
         <h2 className="font-display text-[22px] font-bold tracking-[-0.015em] text-bq-ink">{t('home.missions.section', 'Nhiệm vụ hôm nay')}</h2>
         <span className="ml-auto text-[12.5px] font-bold text-bq-ink2">{missionsDone}/{missions.length || 3} {t('home.missions.completed', 'hoàn thành')}</span>
       </div>
-      <div className={`grid gap-4 ${topEntries.length ? 'lg:grid-cols-[1.6fr_1fr]' : 'grid-cols-1'}`}>
+      <div className="grid gap-4 lg:grid-cols-[1.6fr_1fr]">
         <section data-testid="home-daily-missions" className="bg-bq-white border border-bq-hair rounded-[20px] px-6 py-1 self-start">
           {missions.length > 0 ? (
             missions.map((m, i) => (
@@ -409,9 +427,12 @@ export default function Home() {
             <div className="py-6 text-center text-[13px] text-bq-ink2">{t('home.missions.empty', 'Chưa có nhiệm vụ hôm nay')}</div>
           )}
         </section>
-        {topEntries.length > 0 && (
-          <LeaderboardCard entries={topEntries} myUserId={myUserId} seasonLabel={seasonLabel} />
-        )}
+        <LeaderboardCard
+          entries={topEntries}
+          myUserId={myUserId}
+          me={{ name: userName, points: myWeekPts ?? 0, rank: weeklyRank?.rank }}
+          seasonLabel={seasonLabel}
+        />
       </div>
 
       <div className="h-16" />

@@ -6,9 +6,9 @@ import { useOnboardingStore } from '../store/onboardingStore'
  *  tooltip to it. Falls back to a centered tooltip when the target isn't on
  *  screen (e.g. unit tests, or a layout where the card is absent). */
 const TIPS = [
-  { targetTestId: 'featured-daily-card', messageKey: 'onboarding.tutorialDaily' },
-  { targetTestId: 'ranked-standard-card', messageKey: 'onboarding.tutorialStreak' },
-  { targetTestId: 'compact-card-practice', messageKey: 'onboarding.tutorialModes' },
+  { targetTestId: 'featured-daily-cta', messageKey: 'onboarding.tutorialDaily' },
+  { targetTestId: 'home-mode-ranked', messageKey: 'onboarding.tutorialStreak' },
+  { targetTestId: 'home-mode-study', messageKey: 'onboarding.tutorialModes' },
 ]
 
 interface Rect { top: number; left: number; width: number; height: number }
