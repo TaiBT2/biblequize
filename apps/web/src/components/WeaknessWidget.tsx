@@ -33,25 +33,25 @@ export default function WeaknessWidget() {
   return (
     <section className="mt-8 space-y-4">
       <div className="flex items-center gap-3">
-        <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>
+        <span className="material-symbols-outlined text-bq-amberd" style={{ fontVariationSettings: "'FILL' 1" }}>
           analytics
         </span>
-        <h2 className="text-lg font-black text-on-surface">{t('components.weakness.title')}</h2>
+        <h2 className="text-lg font-black text-bq-ink">{t('components.weakness.title')}</h2>
       </div>
 
-      <div className="bg-surface-container rounded-xl p-5 border border-outline-variant/10 space-y-5">
+      <div className="bg-bq-white rounded-xl p-5 border border-bq-hair shadow-bq-soft space-y-5">
         {/* Strong books */}
         {data.strongBooks.length > 0 && (
           <div>
-            <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2 flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-sm text-emerald-400">trending_up</span>
+            <p className="text-xs font-bold text-bq-ink2 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <span className="material-symbols-outlined text-sm text-bq-emerald">trending_up</span>
               {t('components.weakness.strongLabel')}
             </p>
             <div className="flex flex-wrap gap-2">
               {data.strongBooks.map(b => (
-                <div key={b.book} className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg px-3 py-1.5">
-                  <span className="text-xs font-bold text-emerald-400">{b.book}</span>
-                  <span className="text-[10px] font-black text-emerald-300">{b.accuracy}%</span>
+                <div key={b.book} className="flex items-center gap-2 bg-bq-emerald/10 border border-bq-emerald/20 rounded-lg px-3 py-1.5">
+                  <span className="text-xs font-bold text-bq-emerald">{b.book}</span>
+                  <span className="text-[10px] font-black text-bq-emerald">{b.accuracy}%</span>
                 </div>
               ))}
             </div>
@@ -61,27 +61,27 @@ export default function WeaknessWidget() {
         {/* Weak books */}
         {data.weakBooks.length > 0 && (
           <div>
-            <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2 flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-sm text-secondary">menu_book</span>
+            <p className="text-xs font-bold text-bq-ink2 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <span className="material-symbols-outlined text-sm text-bq-amberd">menu_book</span>
               {t('components.weakness.weakLabel')}
             </p>
             <div className="space-y-2">
               {data.weakBooks.map(b => (
                 <div key={b.book} data-testid="profile-weakness-item" className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-on-surface">{b.book}</span>
-                    <span className="text-[10px] text-on-surface-variant">
+                    <span className="text-xs font-bold text-bq-ink">{b.book}</span>
+                    <span className="text-[10px] text-bq-ink2">
                       {t('components.weakness.correctFraction', { correct: b.correct, total: b.totalAnswered })}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-20 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+                    <div className="w-20 h-1.5 bg-bq-inset rounded-full overflow-hidden">
                       <div
-                        className={`h-full rounded-full ${b.accuracy >= 60 ? 'bg-secondary' : 'bg-error'}`}
+                        className={`h-full rounded-full ${b.accuracy >= 60 ? 'bg-bq-amber' : 'bg-bq-ruby'}`}
                         style={{ width: `${b.accuracy}%` }}
                       />
                     </div>
-                    <span className={`text-xs font-black ${b.accuracy >= 60 ? 'text-secondary' : 'text-error'}`}>
+                    <span className={`text-xs font-black ${b.accuracy >= 60 ? 'text-bq-amberd' : 'text-bq-ruby'}`}>
                       {b.accuracy}%
                     </span>
                   </div>
@@ -95,7 +95,7 @@ export default function WeaknessWidget() {
         {data.suggestedPractice && (
           <button
             onClick={() => navigate('/practice', { state: { book: data.suggestedPractice } })}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-secondary/10 border border-secondary/20 rounded-xl text-secondary text-sm font-bold hover:bg-secondary/20 transition-colors"
+            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-bq-amber/10 border border-bq-amber/20 rounded-xl text-bq-amberd text-sm font-bold hover:bg-bq-amber/20 transition-colors"
           >
             <span className="material-symbols-outlined text-sm">play_circle</span>
             {t('components.weakness.practiceCta', { book: data.suggestedPractice })}

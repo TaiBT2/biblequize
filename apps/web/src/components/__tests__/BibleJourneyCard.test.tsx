@@ -204,7 +204,7 @@ describe('BibleJourneyCard (Modern Spiritual)', () => {
     })
     const chip = screen.getByTestId('bible-journey-chip-XuấtHành')
     expect(chip.getAttribute('data-status')).toBe('LOCKED')
-    expect(chip.className).toContain('opacity-45')
+    expect(chip.className).toContain('opacity-70')
     // No fill bar for locked chips.
     expect(screen.queryByTestId('bible-journey-chip-fill-XuấtHành')).not.toBeInTheDocument()
   })

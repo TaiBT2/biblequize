@@ -43,19 +43,19 @@ export default function TierPerksTeaser({ userTier, totalPoints }: TierPerksTeas
     <Link
       to="/help#tiers"
       data-testid="tier-perks-teaser"
-      className="block rounded-2xl bg-surface-container p-6 border border-outline-variant/10 hover:border-secondary/20 transition-all group"
+      className="block rounded-2xl bg-bq-white p-6 border border-bq-hair shadow-bq-soft hover:border-bq-amber/40 transition-all group"
     >
       {/* Header */}
       <div className="flex items-center gap-2 mb-2">
-        <span className="material-symbols-outlined text-secondary text-base" style={FILL_1}>
+        <span className="material-symbols-outlined text-bq-amberd text-base" style={FILL_1}>
           auto_awesome
         </span>
-        <h3 className="text-xs font-bold text-on-surface-variant uppercase tracking-widest">
+        <h3 className="text-xs font-bold text-bq-ink2 uppercase tracking-widest">
           {t('home.tierPerks.title')}
         </h3>
       </div>
 
-      <p className="text-sm font-medium text-on-surface mb-5">
+      <p className="text-sm font-medium text-bq-ink mb-5">
         {t('home.tierPerks.subtitle', {
           tierName: t(nextTier.nameKey),
           xp: targetXp.toLocaleString(),
@@ -71,12 +71,12 @@ export default function TierPerksTeaser({ userTier, totalPoints }: TierPerksTeas
             className="flex items-center gap-3"
           >
             <span
-              className="material-symbols-outlined text-secondary text-xl shrink-0"
+              className="material-symbols-outlined text-bq-amberd text-xl shrink-0"
               style={FILL_1}
             >
               {perk.icon}
             </span>
-            <span className="text-sm text-on-surface">
+            <span className="text-sm text-bq-ink">
               {t(`home.tierPerks.${perk.textKey}`, perk.textParams ?? {})}
             </span>
           </li>
@@ -85,20 +85,20 @@ export default function TierPerksTeaser({ userTier, totalPoints }: TierPerksTeas
 
       {/* Progress bar to next tier */}
       <div className="space-y-2 mb-3">
-        <div className="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+        <div className="h-2 w-full bg-bq-inset rounded-full overflow-hidden">
           <div
             data-testid="tier-perks-progress-bar"
-            className="h-full gold-gradient rounded-full"
+            className="h-full bg-bq-action shadow-bq-action rounded-full"
             style={{ width: `${progressPct}%` }}
           />
         </div>
-        <p className="text-xs font-bold text-on-surface-variant">
+        <p className="text-xs font-bold text-bq-ink2">
           {totalPoints.toLocaleString()} / {targetXp.toLocaleString()} XP
         </p>
       </div>
 
       {/* Link */}
-      <p className="text-xs font-bold text-secondary uppercase tracking-widest group-hover:underline">
+      <p className="text-xs font-bold text-bq-amberd uppercase tracking-widest group-hover:underline">
         {t('home.tierPerks.linkText')}
       </p>
     </Link>

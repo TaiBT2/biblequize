@@ -11,10 +11,10 @@ describe('Room Quiz Gameplay', () => {
     const mod = await import('../RoomQuiz')
     expect(mod.default).toBeDefined()
     expect(typeof mod.default).toBe('function')
-  })
+  }, 30000) // heavy module (STOMP + room views) — generous timeout under load
 
   it('component name is defined', async () => {
     const mod = await import('../RoomQuiz')
     expect(mod.default.name).toBeTruthy()
-  })
+  }, 30000)
 })

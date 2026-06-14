@@ -17,21 +17,21 @@ interface TierProgressData {
 
 // Star colors by tier level
 const STAR_COLORS: Record<number, string> = {
-  1: 'text-amber-400',
-  2: 'text-blue-400',
-  3: 'text-blue-600',
-  4: 'text-purple-400',
-  5: 'text-yellow-400',
-  6: 'text-red-400',
+  1: 'text-bq-amber',
+  2: 'text-bq-sapphire',
+  3: 'text-bq-sapphire',
+  4: 'text-bq-sapphire',
+  5: 'text-bq-amberd',
+  6: 'text-bq-ruby',
 }
 
 const STAR_BG: Record<number, string> = {
-  1: 'bg-amber-400',
-  2: 'bg-blue-400',
-  3: 'bg-blue-600',
-  4: 'bg-purple-400',
-  5: 'bg-yellow-400',
-  6: 'bg-red-400',
+  1: 'bg-bq-amber',
+  2: 'bg-bq-sapphire',
+  3: 'bg-bq-sapphire',
+  4: 'bg-bq-sapphire',
+  5: 'bg-bq-amberd',
+  6: 'bg-bq-ruby',
 }
 
 export default function TierProgressBar() {
@@ -46,8 +46,8 @@ export default function TierProgressBar() {
   if (!data) return null
 
   const { tierLevel, starIndex, starProgressPercent } = data
-  const starColor = STAR_COLORS[tierLevel] ?? 'text-amber-400'
-  const starBg = STAR_BG[tierLevel] ?? 'bg-amber-400'
+  const starColor = STAR_COLORS[tierLevel] ?? 'text-bq-amber'
+  const starBg = STAR_BG[tierLevel] ?? 'bg-bq-amber'
 
   // Tier 6 has no stars
   if (tierLevel >= 6) return null
@@ -80,7 +80,7 @@ export default function TierProgressBar() {
               </div>
             ) : (
               // Empty star
-              <span className="material-symbols-outlined text-base text-on-surface-variant/30">
+              <span className="material-symbols-outlined text-base text-bq-ink2/30">
                 star
               </span>
             )}
@@ -89,12 +89,12 @@ export default function TierProgressBar() {
       </div>
 
       {/* Star progress text */}
-      <span data-testid="tier-star-count" className="text-[10px] font-bold text-on-surface-variant ml-1">
+      <span data-testid="tier-star-count" className="text-[10px] font-bold text-bq-ink2 ml-1">
         {starIndex + 1}/5
       </span>
 
       {/* Mini progress bar for current star */}
-      <div className="flex-1 h-1.5 bg-surface-container-high rounded-full overflow-hidden max-w-[80px]">
+      <div className="flex-1 h-1.5 bg-bq-inset rounded-full overflow-hidden max-w-[80px]">
         <div
           className={`h-full rounded-full transition-all duration-500 ${starBg}`}
           style={{ width: `${starProgressPercent}%` }}

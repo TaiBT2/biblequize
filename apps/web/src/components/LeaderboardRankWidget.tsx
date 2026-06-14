@@ -33,28 +33,22 @@ export default function LeaderboardRankWidget() {
   return (
     <div
       data-testid="leaderboard-rank-widget"
-      className="rounded-[10px] px-3.5 py-3"
-      style={{
-        backgroundColor: 'rgba(74,158,255,0.06)',
-        border: '1px solid rgba(74,158,255,0.2)',
-      }}
+      className="rounded-[10px] px-3.5 py-3 bg-bq-white border border-bq-sapphire/20 shadow-bq-soft"
     >
       <div
-        className="text-[10px] uppercase font-bold mb-1.5"
-        style={{ letterSpacing: '0.12em', color: 'rgba(74,158,255,0.7)' }}
+        className="text-[10px] uppercase font-bold mb-1.5 text-bq-sapphire"
+        style={{ letterSpacing: '0.12em' }}
       >
         {t('leaderboard.sidebar.rankLabel')}
       </div>
       <div
         data-testid="leaderboard-rank-widget-value"
-        className="text-[15px] font-semibold leading-none mb-1"
-        style={{ color: '#fff' }}
+        className="text-[15px] font-semibold leading-none mb-1 text-bq-ink"
       >
         {rank != null ? `#${rank}` : t('leaderboard.sidebar.rankNone')}
       </div>
       <p
-        className="text-[10px] leading-snug"
-        style={{ color: 'rgba(225,225,241,0.5)' }}
+        className="text-[10px] leading-snug text-bq-ink2"
       >
         {rank != null ? t('leaderboard.sidebar.rankSubtitle') : t('leaderboard.sidebar.rankNoneSubtitle')}
       </p>

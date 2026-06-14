@@ -11,15 +11,15 @@ export function SoundHapticsSettings() {
   const [hapticsOn, setHapticsOn] = useState(isHapticsEnabled())
 
   return (
-    <section className="bg-surface-container/60 backdrop-blur-sm border border-outline-variant/10 rounded-2xl p-5 md:p-6">
-      <h2 className="text-sm font-bold uppercase tracking-wider text-on-surface inline-flex items-center gap-2 mb-4">
-        <span className="material-symbols-outlined text-[18px] text-secondary" style={FILL_STYLE}>volume_up</span>
+    <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-2xl p-5 md:p-6">
+      <h2 className="text-sm font-bold uppercase tracking-wider text-bq-ink inline-flex items-center gap-2 mb-4">
+        <span className="material-symbols-outlined text-[18px] text-bq-amberd" style={FILL_STYLE}>volume_up</span>
         {t('profile.soundAndHapticsTitle')}
       </h2>
 
-      <div className="divide-y divide-white/[0.04]">
+      <div className="divide-y divide-bq-hair">
         <div className="flex items-center justify-between py-3 gap-4">
-          <span className="text-sm text-on-surface">{t('profile.soundEffectsLabel')}</span>
+          <span className="text-sm text-bq-ink">{t('profile.soundEffectsLabel')}</span>
           <div className="flex items-center gap-3">
             {soundEnabled && (
               <input
@@ -32,10 +32,10 @@ export function SoundHapticsSettings() {
                   setVolume(v)
                   soundManager.setVolume(v / 100)
                 }}
-                className="w-32 h-1 bg-white/10 rounded-full appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white"
+                className="w-32 h-1 bg-bq-inset rounded-full appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-bq-sapphire"
               />
             )}
-            {soundEnabled && <span className="text-xs font-bold text-secondary w-8 text-right">{volume}%</span>}
+            {soundEnabled && <span className="text-xs font-bold text-bq-amberd w-8 text-right">{volume}%</span>}
             <Toggle
               on={soundEnabled}
               onChange={(next) => {
@@ -47,7 +47,7 @@ export function SoundHapticsSettings() {
           </div>
         </div>
         <div className="flex items-center justify-between py-3 gap-4">
-          <span className="text-sm text-on-surface">{t('profile.hapticsLabel')}</span>
+          <span className="text-sm text-bq-ink">{t('profile.hapticsLabel')}</span>
           <Toggle on={hapticsOn} onChange={(next) => { setHapticsOn(next); setHapticsEnabled(next) }} />
         </div>
       </div>
@@ -59,7 +59,7 @@ function Toggle({ on, onChange }: { on: boolean; onChange: (next: boolean) => vo
   return (
     <button
       onClick={() => onChange(!on)}
-      className={`w-10 h-[22px] rounded-full relative transition-colors ${on ? 'gold-gradient' : 'bg-white/10'}`}
+      className={`w-10 h-[22px] rounded-full relative transition-colors ${on ? 'bg-bq-action shadow-bq-action' : 'bg-bq-hair'}`}
       aria-pressed={on}
     >
       <span className={`absolute top-[3px] w-4 h-4 rounded-full bg-white shadow transition-all ${on ? 'right-[3px]' : 'left-[3px]'}`} />
