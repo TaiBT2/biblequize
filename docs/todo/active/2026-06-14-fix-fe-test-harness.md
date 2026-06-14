@@ -31,6 +31,11 @@
 Verify bằng `npm run type-check` (tsc) + `npm run build` (vite) + chạy app thật `localhost:5173`. Ghi rõ trong commit là test gate bị block bởi FTH.
 
 ### Tasks
-- FTH-1 Chốt hướng (A/B/C) với user + xác minh cách team chạy test — Status: [ ] TODO
-- FTH-2 Triển khai fix đã chốt — Status: [ ] TODO
-- FTH-3 Suite về xanh ≥ baseline 1287, cập nhật `.test-baseline` nếu cần — Status: [ ] TODO
+- FTH-1 Chốt hướng — Status: [x] DONE. Root cause thật: **web React 18 vs mobile React 19** dùng chung node_modules hoisted → React 19 thắng, vỡ test (act) + types. User chốt **hướng A** (align web lên React 19 + Vite 6).
+- FTH-2 Triển khai — Status: [x] DONE.
+  - `apps/web/package.json`: react/react-dom `^18`→`^19.1.0`, @types/react(-dom) `^18`→`^19.1.0`, vite `^5`→`^6`, vitest `^4.1.2`→`^3.2.4` (vitest 4 lỗi runner-context trong env này; vitest 3 hợp vite 6).
+  - root `package.json`: pnpm `overrides` ép `react`+`react-dom`=`19.1.0` (align mobile), `@types/react-dom`=`^19.1.0`.
+  - Fix 1 test timer (`FeaturedDailyChallenge` — `vi.useRealTimers()` trước `useFakeTimers`, vitest 3 nghiêm hơn).
+  - Fix 2 type React 19 (`RoomLobby` `RefObject<HTMLDivElement|null>`).
+- FTH-3 Suite xanh — Status: [x] DONE. **1290/1290 pass** (129 files), build vite 6 ✓, FE dev server ✓. `.test-baseline` 1287→**1290**.
+  - Còn ~24 lỗi type-check **pre-existing** (13× `import.meta.env` thiếu `src/vite-env.d.ts`; AIGeneratePanel/Practice/Leaderboard/Skeleton…) — repo KHÔNG gate tsc khi build (`build=vite`), ngoài phạm vi FTH. Có thể tách task dọn type sau.

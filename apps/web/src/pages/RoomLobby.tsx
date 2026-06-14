@@ -1492,10 +1492,10 @@ type ChatViewProps = {
   setInput: (v: string) => void;
   onSend: (v: string) => void;
   onClose: () => void;
-  chatEndRef: React.RefObject<HTMLDivElement>;
+  chatEndRef: React.RefObject<HTMLDivElement | null>;
 };
 
-const ChatBody: React.FC<{ messages: ChatMessage[]; chatEndRef: React.RefObject<HTMLDivElement> }> = ({ messages, chatEndRef }) => (
+const ChatBody: React.FC<{ messages: ChatMessage[]; chatEndRef: React.RefObject<HTMLDivElement | null> }> = ({ messages, chatEndRef }) => (
   <div className="flex-1 overflow-y-auto px-4 py-3 space-y-2.5" style={{ minHeight: 0 }}>
     {messages.length === 1 && messages[0].isSystem && (
       <div className="text-center py-4" style={{ color: '#6b7280', fontSize: 11 }}>
