@@ -19,15 +19,15 @@ describe('AdminLayout', () => {
     expect(screen.getByText('Admin Panel')).toBeInTheDocument()
   })
 
-  it('renders the 7 core + Tier B nav items', () => {
+  it('renders the 7 core + Tier B nav items (i18n VI)', () => {
     renderLayout()
-    const items = ['Users', 'Questions', 'AI Generator', 'Review Queue',
-      'Feedback', 'Groups']
+    // nav labels are i18n-ized; test runs under VI
+    const items = ['Người dùng', 'Câu hỏi', 'Trình tạo AI', 'Hàng đợi duyệt',
+      'Phản hồi', 'Nhóm']
     for (const item of items) {
       expect(screen.getByText(item)).toBeInTheDocument()
     }
-    // Dashboard now appears only in the nav (header title bar removed)
-    expect(screen.getAllByText('Dashboard')).toHaveLength(1)
+    expect(screen.getByText('Tổng quan')).toBeInTheDocument()
   })
 
   it('hides Tier C nav items (ADM-1)', () => {

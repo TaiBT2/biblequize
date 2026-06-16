@@ -9,13 +9,13 @@ import { setQuizLanguage } from '../utils/quizLanguage'
 // were placeholder / niche / auto-seeded. Routes still exist (no 404 on bookmark);
 // they're just not surfaced in the sidebar. Un-hide once wired to real data.
 const NAV_ITEMS = [
-  { path: '/admin', end: true, icon: 'dashboard', label: 'Dashboard' },
-  { path: '/admin/users', icon: 'group', label: 'Users' },
-  { path: '/admin/questions', icon: 'quiz', label: 'Questions' },
-  { path: '/admin/ai-generator', icon: 'psychology', label: 'AI Generator' },
-  { path: '/admin/review-queue', icon: 'queue', label: 'Review Queue' },
-  { path: '/admin/feedback', icon: 'chat_bubble', label: 'Feedback' },
-  { path: '/admin/groups', icon: 'groups_2', label: 'Groups' },
+  { path: '/admin', end: true, icon: 'dashboard', labelKey: 'admin.nav.dashboard' },
+  { path: '/admin/users', icon: 'group', labelKey: 'admin.nav.users' },
+  { path: '/admin/questions', icon: 'quiz', labelKey: 'admin.nav.questions' },
+  { path: '/admin/ai-generator', icon: 'psychology', labelKey: 'admin.nav.aiGenerator' },
+  { path: '/admin/review-queue', icon: 'queue', labelKey: 'admin.nav.reviewQueue' },
+  { path: '/admin/feedback', icon: 'chat_bubble', labelKey: 'admin.nav.feedback' },
+  { path: '/admin/groups', icon: 'groups_2', labelKey: 'admin.nav.groups' },
 ]
 
 export default function AdminLayout() {
@@ -48,7 +48,7 @@ export default function AdminLayout() {
           {NAV_ITEMS.map(item => (
             <NavLink key={item.path} to={item.path} end={item.end} className={navLinkClass}>
               <span className="material-symbols-outlined text-xl">{item.icon}</span>
-              {item.label}
+              {t(item.labelKey)}
             </NavLink>
           ))}
         </nav>

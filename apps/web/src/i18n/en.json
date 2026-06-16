@@ -170,6 +170,15 @@
   },
   "admin": {
     "backToApp": "Back to app",
+    "nav": {
+      "dashboard": "Dashboard",
+      "users": "Users",
+      "questions": "Questions",
+      "aiGenerator": "AI Generator",
+      "reviewQueue": "Review Queue",
+      "feedback": "Feedback",
+      "groups": "Groups"
+    },
     "earlyUnlock": {
       "navLabel": "Early Unlock",
       "pageTitle": "Early Ranked Unlock Metrics",

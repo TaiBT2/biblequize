@@ -170,6 +170,15 @@
   },
   "admin": {
     "backToApp": "Về trang chính",
+    "nav": {
+      "dashboard": "Tổng quan",
+      "users": "Người dùng",
+      "questions": "Câu hỏi",
+      "aiGenerator": "Trình tạo AI",
+      "reviewQueue": "Hàng đợi duyệt",
+      "feedback": "Phản hồi",
+      "groups": "Nhóm"
+    },
     "earlyUnlock": {
       "navLabel": "Early Unlock",
       "pageTitle": "Chỉ số Mở khóa Xếp hạng sớm",
