@@ -223,7 +223,7 @@ describe('FeaturedDailyChallenge', () => {
     const meta = screen.getByTestId('featured-daily-meta')
     expect(meta.textContent).toContain('5 phút')
     expect(meta.textContent).toContain('5 câu')
-    expect(meta.textContent).toContain('+50 XP')
+    expect(meta.textContent).toContain('+150 XP')
     expect(screen.queryByTestId('featured-daily-season-chip')).not.toBeInTheDocument()
   })
 

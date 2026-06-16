@@ -192,7 +192,7 @@
     "title": "Daily Challenge",
     "questionsToday": "questions today",
     "minutes": "minutes",
-    "xpBonus": "+50 XP",
+    "xpBonus": "+150 XP",
     "streak": "Streak",
     "start": "Start",
     "loadingQuestions": "Loading questions...",
@@ -227,8 +227,8 @@
       "metaGlobal": "Global",
       "metaNoEnergy": "No energy cost",
       "rewardLabel": "Max reward",
-      "rewardBase": "base",
-      "rewardPerfect": "if all correct",
+      "rewardBase": "per correct",
+      "rewardPerfect": "if all 5 correct",
       "cta": "Start challenge",
       "yesterdayPrefix": "Yesterday:",
       "yesterdayBody": "you got {{correct}}/{{total}} correct in {{time}}.",
@@ -262,7 +262,7 @@
       "rankGlobal": "Global rank",
       "rankGroup": "Group rank",
       "rewardLabel": "REWARD",
-      "perfectBonus": "+25 XP perfect",
+      "perfectBonus": "+150 XP if all 5 correct",
       "betterThan": "Better than {{percent}}% of today's players",
       "reviewCta": "Review answers",
       "homeCta": "Back home"
@@ -448,7 +448,7 @@
       },
       "howEarnXp": {
         "q": "How to earn XP fast?",
-        "a": "Correct + fast answers score more. Combo 5/10 in a row multiplies 1.2x/1.5x. Daily Challenge gives 50 XP/day."
+        "a": "Correct + fast answers score more. Combo 5/10 in a row multiplies 1.2x/1.5x. Daily Challenge gives up to 150 XP/day."
       },
       "practiceVsRanked": {
         "q": "Practice vs Ranked?",
@@ -456,7 +456,7 @@
       },
       "dailyStreak": {
         "q": "What is Daily Challenge?",
-        "a": "5 new questions daily from random books. Complete to keep streak + earn 50 XP."
+        "a": "5 new questions daily from random books. Complete to keep streak + earn up to 150 XP."
       },
       "groupsTournament": {
         "q": "Groups vs Tournament?",

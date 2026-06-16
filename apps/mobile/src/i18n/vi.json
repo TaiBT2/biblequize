@@ -192,7 +192,7 @@
     "title": "Thử Thách Hàng Ngày",
     "questionsToday": "câu hỏi hôm nay",
     "minutes": "phút",
-    "xpBonus": "+50 XP",
+    "xpBonus": "+150 XP",
     "streak": "Streak",
     "start": "Bắt đầu",
     "loadingQuestions": "Đang tải câu hỏi...",
@@ -227,8 +227,8 @@
       "metaGlobal": "Toàn cầu",
       "metaNoEnergy": "Không trừ năng lượng",
       "rewardLabel": "Phần thưởng tối đa",
-      "rewardBase": "base",
-      "rewardPerfect": "nếu đúng hết",
+      "rewardBase": "mỗi câu đúng",
+      "rewardPerfect": "nếu đúng cả 5",
       "cta": "Bắt đầu thử thách",
       "yesterdayPrefix": "Hôm qua:",
       "yesterdayBody": "bạn đúng {{correct}}/{{total}} câu, hoàn thành trong {{time}}.",
@@ -262,7 +262,7 @@
       "rankGlobal": "Hạng toàn cầu",
       "rankGroup": "Trong nhóm",
       "rewardLabel": "PHẦN THƯỞNG",
-      "perfectBonus": "+25 XP perfect",
+      "perfectBonus": "+150 XP nếu đúng cả 5",
       "betterThan": "Bạn làm tốt hơn {{percent}}% người chơi hôm nay",
       "reviewCta": "Xem lại câu trả lời",
       "homeCta": "Về trang chủ"
@@ -448,7 +448,7 @@
       },
       "howEarnXp": {
         "q": "Cách kiếm XP nhanh?",
-        "a": "Trả lời đúng + nhanh được nhiều điểm hơn. Combo 5/10 câu liên tiếp nhân điểm 1.2x/1.5x. Daily Challenge cho 50 XP/ngày."
+        "a": "Trả lời đúng + nhanh được nhiều điểm hơn. Combo 5/10 câu liên tiếp nhân điểm 1.2x/1.5x. Daily Challenge cho tới 150 XP/ngày."
       },
       "practiceVsRanked": {
         "q": "Luyện Tập khác Đấu Hạng?",
@@ -456,7 +456,7 @@
       },
       "dailyStreak": {
         "q": "Daily Challenge là gì?",
-        "a": "5 câu hỏi mới mỗi ngày từ random sách. Hoàn thành giữ streak + nhận 50 XP."
+        "a": "5 câu hỏi mới mỗi ngày từ random sách. Hoàn thành giữ streak + nhận tới 150 XP."
       },
       "groupsTournament": {
         "q": "Nhóm và Giải đấu?",

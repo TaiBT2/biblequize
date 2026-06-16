@@ -26,3 +26,8 @@ Bảng XP mới theo số câu đúng: `0 / 20 / 40 / 60 / 100 / 150`. Bỏ ngư
   - Status: [x] DONE (BL-22 appended) · Files: `docs/spec/BACKLOG.md` · Test: n/a
   - **Spec strategy**: [x] (b) new BL-N
   - Checklist: append BL-N · commit
+- DCS-5 UI copy sweep: teaser "+50 XP" → "+150 XP (tối đa)" toàn bộ daily surfaces (web + mobile)
+  - Status: [x] DONE (full Vitest 1279/1279; tsc web+mobile clean) · Files: web `HeroCard.tsx`, `Home.tsx`, `FeaturedDailyCard.tsx`, `FeaturedDailyChallenge.tsx`, i18n vi/en; mobile `FeaturedDailyCard.tsx`, `DailyChallengeScreen.tsx`, i18n vi/en; tests `FeaturedDailyChallenge.test`, `FeaturedDailyCard.test` · Test: Vitest + tsc
+  - **Spec impact**: [x] None (copy khớp DECISIONS DCS-1) · **Decision**: teaser = +150 XP max (user chốt 2026-06-16)
+  - **Spec strategy**: [x] (c) [no-spec-impact]
+  - Checklist: KHÔNG đụng ComebackModal/DailyMissionsCard (+50 feature khác) · impl · Vitest + tsc · commit

@@ -408,7 +408,7 @@ export default function Home() {
               className="inline-flex items-center gap-2.5 font-extrabold text-[14.5px] text-white bg-bq-action px-7 py-[15px] rounded-[14px] shadow-bq-action transition hover:-translate-y-0.5 hover:brightness-105"
             >
               {dailyDone ? t('home.daily.reviewCta', 'Xem lại') : t('home.daily.playCta', 'Chơi ngay')}
-              {!dailyDone && <span className="bg-white/25 text-xs font-extrabold px-2 py-0.5 rounded-md">+50 XP</span>}
+              {!dailyDone && <span className="bg-white/25 text-xs font-extrabold px-2 py-0.5 rounded-md">+150 XP</span>}
             </button>
           </div>
         </div>

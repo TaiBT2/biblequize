@@ -33,11 +33,11 @@ describe('FeaturedDailyCard (HR-3)', () => {
     expect(screen.getByTestId('featured-daily-card-date')).toHaveTextContent('19/5')
   })
 
-  it('renders reward block with +50 XP', () => {
+  it('renders reward block with +150 XP', () => {
     render(<FeaturedDailyCard onStart={() => {}} countdownText="00:00:01" />)
     const reward = screen.getByTestId('featured-daily-card-reward')
     expect(reward).toHaveTextContent('Phần thưởng')
-    expect(reward).toHaveTextContent('+50 XP')
+    expect(reward).toHaveTextContent('+150 XP')
   })
 
   it('CTA button text is "Bắt đầu" and fires onStart when clicked', async () => {

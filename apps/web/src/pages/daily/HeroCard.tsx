@@ -98,8 +98,8 @@ export function HeroCard(props: HeroCardProps) {
               {t('daily.ready.rewardLabel')}
             </div>
             <div className="text-sm text-bq-ink font-bold mt-0.5">
-              <strong className="text-bq-amberd">+50 XP</strong> {t('daily.ready.rewardBase')} ·{' '}
-              <strong className="text-bq-amberd">+25 XP</strong> {t('daily.ready.rewardPerfect')}
+              <strong className="text-bq-amberd">+20 XP</strong> {t('daily.ready.rewardBase')} ·{' '}
+              <strong className="text-bq-amberd">+150 XP</strong> {t('daily.ready.rewardPerfect')}
             </div>
           </div>
         </div>
@@ -160,10 +160,8 @@ export function HeroCard(props: HeroCardProps) {
           <SummaryRow
             icon="workspace_premium"
             label={t('daily.done.rowXP')}
-            value={done.xpEarned > 0
-              ? `+${done.xpEarned} XP`
-              : t('daily.done.xpThresholdMissed', 'Cần ≥4/5 đúng để nhận 50 XP')}
-            valueClass={done.xpEarned > 0 ? 'text-bq-amberd' : 'text-bq-ink3 text-[11px]'}
+            value={`+${done.xpEarned} XP`}
+            valueClass={done.xpEarned > 0 ? 'text-bq-amberd' : 'text-bq-ink3'}
             lastRow
           />
           {done.resultsBreakdown && done.resultsBreakdown.length > 0 && (

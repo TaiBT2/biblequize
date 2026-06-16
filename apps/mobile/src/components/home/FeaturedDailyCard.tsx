@@ -85,7 +85,7 @@ export default function FeaturedDailyCard({
           <Text style={s.rewardIcon}>🏆</Text>
           <Text style={s.rewardText}>
             <Text style={s.rewardLabel}>Phần thưởng: </Text>
-            <Text style={s.rewardValue}>+50 XP</Text>
+            <Text style={s.rewardValue}>+150 XP</Text>
           </Text>
         </View>
 

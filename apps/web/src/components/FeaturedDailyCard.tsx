@@ -110,7 +110,7 @@ export default function FeaturedDailyCard({
         <span aria-hidden className="text-[16px]">🏆</span>
         <span className="text-[13px] text-bq-ink">
           <span className="text-bq-ink2">Phần thưởng:</span>{' '}
-          <span className="font-bold text-bq-amberd">+50 XP</span>
+          <span className="font-bold text-bq-amberd">+150 XP</span>
         </span>
       </div>
 

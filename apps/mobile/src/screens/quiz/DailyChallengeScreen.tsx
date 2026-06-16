@@ -177,9 +177,9 @@ export default function DailyChallengeScreen() {
             <View style={{ flex: 1 }}>
               <Text style={s.rewardLabel}>{t('daily.ready.rewardLabel')}</Text>
               <Text style={s.rewardBody}>
-                <Text style={s.rewardXp}>+50 XP</Text>
+                <Text style={s.rewardXp}>+20 XP</Text>
                 <Text style={s.rewardNorm}> {t('daily.ready.rewardBase')} · </Text>
-                <Text style={s.rewardXp}>+25 XP</Text>
+                <Text style={s.rewardXp}>+150 XP</Text>
                 <Text style={s.rewardNorm}> {t('daily.ready.rewardPerfect')}</Text>
               </Text>
             </View>

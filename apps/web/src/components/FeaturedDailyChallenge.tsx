@@ -71,8 +71,8 @@ function formatCountdown(ms: number): string {
  * to single column. Three states preserved: loading, active, completed.
  *
  * Season chip shows only the season name (no XP multiplier) because BE
- * does not currently apply any season multiplier to Daily Challenge —
- * see DECISIONS.md 2026-05-02 (variety/daily are flat +50 XP).
+ * does not currently apply any season multiplier to Daily Challenge.
+ * Daily XP follows the 0/20/40/60/100/150 curve (DECISIONS.md 2026-06-16).
  */
 export default function FeaturedDailyChallenge() {
   const { t, i18n } = useTranslation()
@@ -162,7 +162,7 @@ export default function FeaturedDailyChallenge() {
   if (completed) {
     const correct = resultData?.correctCount ?? 0
     const total = resultData?.totalQuestions ?? data.totalQuestions ?? 5
-    const xpEarned = resultData?.xpEarned ?? 50
+    const xpEarned = resultData?.xpEarned ?? 0
     const scoreKey = scoreMessageKey(correct, total)
 
     return (
