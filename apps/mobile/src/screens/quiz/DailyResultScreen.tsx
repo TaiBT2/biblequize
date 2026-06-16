@@ -85,9 +85,11 @@ export default function DailyResultScreen() {
   const correct = stats.correctAnswers ?? result?.correctCount ?? 0
   const total = stats.totalQuestions ?? result?.totalQuestions ?? 5
   const percent = total > 0 ? Math.round((correct / total) * 100) : 0
-  const isPerfect = correct === total && total > 0
 
-  const xpEarned = result?.xpEarned ?? (isPerfect ? 75 : 50)
+  // BE getResultData returns authoritative xpEarned (= score, the unified daily
+  // reward). Fallback mirrors DailyChallengeService.dailyXp 0/20/40/60/100/150
+  // (DECISIONS.md 2026-06-16) for the rare case the result query is missing.
+  const xpEarned = result?.xpEarned ?? [0, 20, 40, 60, 100, 150][Math.max(0, Math.min(5, correct))]
   const betterThanPercent = result?.betterThanPercent
   const timeSeconds = result?.timeSeconds
   const rankGlobal = result?.rankGlobal
