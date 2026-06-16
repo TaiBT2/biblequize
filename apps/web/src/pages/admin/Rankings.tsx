@@ -51,42 +51,42 @@ export default function RankingsAdmin() {
   return (
     <div data-testid="admin-rankings-page" className="space-y-6">
       <div className="flex items-center justify-between">
-        <div><h2 className="text-2xl font-bold text-[#e1e1ef]">{t('admin.rankings.title')}</h2><p className="text-[#d5c4af]/60 text-sm">{t('admin.rankings.subtitle', { count: seasons.length })}</p></div>
-        <button onClick={() => setShowCreate(!showCreate)} className="px-4 py-2 gold-gradient text-[#281900] rounded-lg text-sm font-bold hover:opacity-90">{t('admin.rankings.createSeasonButton')}</button>
+        <div><h2 className="text-2xl font-bold font-display text-bq-ink">{t('admin.rankings.title')}</h2><p className="text-bq-ink2 text-sm">{t('admin.rankings.subtitle', { count: seasons.length })}</p></div>
+        <button onClick={() => setShowCreate(!showCreate)} className="px-4 py-2 bg-bq-action text-white shadow-bq-action rounded-lg text-sm font-bold hover:opacity-90">{t('admin.rankings.createSeasonButton')}</button>
       </div>
 
       {showCreate && (
-        <div data-testid="create-season-form" className="rounded-lg border border-[#504535]/20 bg-[#1d1f29] p-4 space-y-3">
-          <input data-testid="create-season-name-input" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder={t('admin.rankings.seasonNamePlaceholder')} className="w-full bg-[#191b25] border border-[#504535]/20 rounded-lg px-4 py-2 text-sm text-[#e1e1ef]" />
+        <div data-testid="create-season-form" className="rounded-lg border border-bq-hair bg-bq-white shadow-bq-soft p-4 space-y-3">
+          <input data-testid="create-season-name-input" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder={t('admin.rankings.seasonNamePlaceholder')} className="w-full bg-bq-white border border-bq-hair rounded-lg px-4 py-2 text-sm text-bq-ink placeholder:text-bq-ink3 focus:ring-1 focus:ring-bq-sapphire outline-none" />
           <div className="flex gap-3">
-            <input type="date" value={form.startDate} onChange={e => setForm({ ...form, startDate: e.target.value })} className="flex-1 bg-[#191b25] border border-[#504535]/20 rounded-lg px-4 py-2 text-sm text-[#e1e1ef] [color-scheme:dark]" />
-            <input type="date" value={form.endDate} onChange={e => setForm({ ...form, endDate: e.target.value })} className="flex-1 bg-[#191b25] border border-[#504535]/20 rounded-lg px-4 py-2 text-sm text-[#e1e1ef] [color-scheme:dark]" />
+            <input type="date" value={form.startDate} onChange={e => setForm({ ...form, startDate: e.target.value })} className="flex-1 bg-bq-white border border-bq-hair rounded-lg px-4 py-2 text-sm text-bq-ink focus:ring-1 focus:ring-bq-sapphire outline-none [color-scheme:light]" />
+            <input type="date" value={form.endDate} onChange={e => setForm({ ...form, endDate: e.target.value })} className="flex-1 bg-bq-white border border-bq-hair rounded-lg px-4 py-2 text-sm text-bq-ink focus:ring-1 focus:ring-bq-sapphire outline-none [color-scheme:light]" />
           </div>
-          <button data-testid="create-season-submit-btn" onClick={createSeason} disabled={createMutation.isPending} className="px-6 py-2 gold-gradient text-[#281900] rounded-lg text-sm font-bold disabled:opacity-50">{createMutation.isPending ? t('admin.rankings.creating') : t('admin.rankings.createSeasonSubmit')}</button>
+          <button data-testid="create-season-submit-btn" onClick={createSeason} disabled={createMutation.isPending} className="px-6 py-2 bg-bq-action text-white shadow-bq-action rounded-lg text-sm font-bold disabled:opacity-50">{createMutation.isPending ? t('admin.rankings.creating') : t('admin.rankings.createSeasonSubmit')}</button>
         </div>
       )}
 
       {active && (
-        <div data-testid="active-season-banner" className="rounded-lg border-2 border-emerald-500/30 bg-emerald-500/5 p-5">
+        <div data-testid="active-season-banner" className="rounded-lg border-2 border-bq-emerald/30 bg-bq-emerald/5 p-5">
           <div data-testid="admin-season-active-banner" className="flex items-center justify-between">
             <div>
-              <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">{t('admin.rankings.activeBadge')}</span>
-              <h3 data-testid="active-season-name" className="text-xl font-bold text-[#e1e1ef] mt-1">{active.name}</h3>
-              <p className="text-[#d5c4af]/60 text-sm">{active.startDate} → {active.endDate}</p>
+              <span className="text-bq-emerald text-xs font-bold uppercase tracking-wider">{t('admin.rankings.activeBadge')}</span>
+              <h3 data-testid="active-season-name" className="text-xl font-bold text-bq-ink mt-1">{active.name}</h3>
+              <p className="text-bq-ink2 text-sm">{active.startDate} → {active.endDate}</p>
             </div>
             <span data-testid="admin-season-end-btn" className="inline-flex">
-              <button data-testid="end-season-btn" onClick={() => endSeason(active.id)} className="px-4 py-2 bg-red-600/20 text-red-400 rounded-lg text-sm font-medium hover:bg-red-600/30 border border-red-500/20">{t('admin.rankings.endEarlyButton')}</button>
+              <button data-testid="end-season-btn" onClick={() => endSeason(active.id)} className="px-4 py-2 bg-bq-ruby/15 text-bq-ruby rounded-lg text-sm font-medium hover:bg-bq-ruby/25 border border-bq-ruby/20">{t('admin.rankings.endEarlyButton')}</button>
             </span>
           </div>
         </div>
       )}
 
-      {isLoading ? <div className="text-center text-[#d5c4af]/60 py-8">{t('admin.rankings.loading')}</div>
-       : seasons.filter(s => !s.isActive).length === 0 ? <div className="text-center text-[#d5c4af]/60 py-8">{t('admin.rankings.empty')}</div>
+      {isLoading ? <div className="text-center text-bq-ink2 py-8">{t('admin.rankings.loading')}</div>
+       : seasons.filter(s => !s.isActive).length === 0 ? <div className="text-center text-bq-ink2 py-8">{t('admin.rankings.empty')}</div>
        : <div data-testid="inactive-seasons-list" className="space-y-3"><div data-testid="admin-seasons-archived-list" className="contents">{seasons.filter(s => !s.isActive).map(s => (
-          <div key={s.id} className="rounded-lg border border-[#504535]/20 bg-[#1d1f29] p-4 flex items-center justify-between">
-            <div><h4 className="font-medium text-[#e1e1ef]">{s.name}</h4><p className="text-[#d5c4af]/60 text-xs">{s.startDate} → {s.endDate}</p></div>
-            <span className="text-[#d5c4af]/30 text-xs">{t('admin.rankings.endedLabel')}</span>
+          <div key={s.id} className="rounded-lg border border-bq-hair bg-bq-white shadow-bq-soft p-4 flex items-center justify-between">
+            <div><h4 className="font-medium text-bq-ink">{s.name}</h4><p className="text-bq-ink2 text-xs">{s.startDate} → {s.endDate}</p></div>
+            <span className="text-bq-ink3 text-xs">{t('admin.rankings.endedLabel')}</span>
           </div>
         ))}</div></div>
       }

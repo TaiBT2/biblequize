@@ -42,16 +42,16 @@ function KpiCard({
   return (
     <div
       data-testid={testId}
-      className={`bg-[#1d1f29] rounded-lg h-[110px] flex flex-col justify-center px-6 border-l-2 shadow-sm ${
-        accent ? 'border-[#e8a832]' : 'border-[#504535]/20'
+      className={`bg-bq-white border border-bq-hair shadow-bq-soft rounded-lg h-[110px] flex flex-col justify-center px-6 border-l-2 ${
+        accent ? 'border-l-bq-amberd' : 'border-l-bq-hair'
       }`}
     >
-      <span className="text-[11px] uppercase tracking-[0.2em] text-[#d5c4af]/60 font-semibold">
+      <span className="text-[11px] uppercase tracking-[0.2em] text-bq-ink3 font-semibold">
         {label}
       </span>
       <div className="flex items-baseline justify-between mt-1">
-        <span className="text-2xl font-bold text-white font-mono leading-tight">{value}</span>
-        {hint && <span className="text-[10px] text-[#d5c4af]/50">{hint}</span>}
+        <span className="text-2xl font-display font-bold text-bq-ink leading-tight">{value}</span>
+        {hint && <span className="text-[10px] text-bq-ink3">{hint}</span>}
       </div>
     </div>
   )
@@ -79,7 +79,7 @@ function TimelineChart({ points }: { points: TimelinePoint[] }) {
           >
             <div
               className={`w-full rounded-t ${
-                p.count === 0 ? 'bg-[#504535]/20' : isLast ? 'bg-[#e8a832]' : 'bg-[#e8a832]/60'
+                p.count === 0 ? 'bg-bq-inset' : isLast ? 'bg-bq-amber' : 'bg-bq-amber/60'
               }`}
               style={{ height: `${h}%` }}
             />
@@ -104,17 +104,17 @@ export default function EarlyUnlockMetrics() {
       <div data-testid="early-unlock-metrics-loading" className="space-y-6 animate-pulse">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[1, 2, 3, 4].map(i => (
-            <div key={i} className="h-[110px] bg-[#1d1f29] rounded-lg" />
+            <div key={i} className="h-[110px] bg-bq-inset rounded-lg" />
           ))}
         </div>
-        <div className="h-[200px] bg-[#1d1f29] rounded-lg" />
+        <div className="h-[200px] bg-bq-inset rounded-lg" />
       </div>
     )
   }
 
   if (isError || !data) {
     return (
-      <div data-testid="early-unlock-metrics-error" className="bg-[#1d1f29] rounded-lg p-6 text-[#d5c4af]/60">
+      <div data-testid="early-unlock-metrics-error" className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-lg p-6 text-bq-ink2">
         {t('admin.earlyUnlock.loading')}
       </div>
     )
@@ -129,10 +129,10 @@ export default function EarlyUnlockMetrics() {
   return (
     <div data-testid="early-unlock-metrics-page" className="space-y-8">
       <header>
-        <h1 className="text-2xl font-bold text-white tracking-tight">
+        <h1 className="text-2xl font-display font-bold text-bq-ink tracking-tight">
           {t('admin.earlyUnlock.pageTitle')}
         </h1>
-        <p className="mt-1 text-sm text-[#d5c4af]/60 max-w-2xl">
+        <p className="mt-1 text-sm text-bq-ink2 max-w-2xl">
           {t('admin.earlyUnlock.subtitle')}
         </p>
       </header>
@@ -165,12 +165,12 @@ export default function EarlyUnlockMetrics() {
       </section>
 
       {/* Timeline */}
-      <section className="bg-[#1d1f29] rounded-lg p-6">
-        <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d5c4af]/60 mb-4">
+      <section className="bg-bq-white border border-bq-hair shadow-bq-soft rounded-lg p-6">
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-bq-ink3 mb-4">
           {t('admin.earlyUnlock.timelineTitle')}
         </h2>
         {isEmpty ? (
-          <p data-testid="early-unlock-empty" className="text-sm text-[#d5c4af]/50 py-8 text-center">
+          <p data-testid="early-unlock-empty" className="text-sm text-bq-ink3 py-8 text-center">
             {t('admin.earlyUnlock.emptyState')}
           </p>
         ) : (

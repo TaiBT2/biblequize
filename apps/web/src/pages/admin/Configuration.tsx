@@ -47,32 +47,32 @@ export default function ConfigurationAdmin() {
   return (
     <div data-testid="admin-config-page" className="space-y-6">
       <div className="flex items-center justify-between">
-        <div><h2 className="text-3xl font-extrabold text-[#e1e1ef] tracking-tight">{t('admin.configuration.title')}</h2><p className="text-[#d5c4af] text-sm mt-1">{t('admin.configuration.subtitle')}</p></div>
+        <div><h2 className="text-3xl font-display font-extrabold text-bq-ink tracking-tight">{t('admin.configuration.title')}</h2><p className="text-bq-ink2 text-sm mt-1">{t('admin.configuration.subtitle')}</p></div>
         {dirty.size > 0 && (
-          <button data-testid="config-save-btn" onClick={saveAll} className="px-4 py-2 bg-[#e8a832] text-[#281900] rounded-lg text-sm font-bold hover:brightness-110">
+          <button data-testid="config-save-btn" onClick={saveAll} className="px-4 py-2 bg-bq-action text-white shadow-bq-action rounded-lg text-sm font-bold hover:brightness-110">
             {t('admin.configuration.saveChanges', { count: dirty.size })}
           </button>
         )}
       </div>
 
       {dirty.size > 0 && (
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-3 text-amber-400 text-sm">
+        <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-3 text-bq-amberd text-sm">
           {t('admin.configuration.warningBanner')}
         </div>
       )}
 
       {Object.entries(CONFIG_CATEGORIES).map(([category, items]) => (
-        <div key={category} data-testid={`config-${category.toLowerCase()}-panel`} className="rounded-lg border border-[#504535]/10 bg-[#1d1f29] p-5">
-          <h3 className="font-bold text-[#e1e1ef] mb-4">{category}</h3>
+        <div key={category} data-testid={`config-${category.toLowerCase()}-panel`} className="rounded-lg border border-bq-hair bg-bq-white shadow-bq-soft p-5">
+          <h3 className="font-bold text-bq-ink mb-4">{category}</h3>
           <div className="space-y-3">
             {items.map(item => (
               <div key={item.key} className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-[#d5c4af]">{t(`admin.configuration.labels.${item.key}`)}</p>
-                  <p className="text-[#d5c4af]/30 text-xs">{t('admin.configuration.defaultHint', { key: item.key, default: item.default })}</p>
+                  <p className="text-sm text-bq-ink2">{t(`admin.configuration.labels.${item.key}`)}</p>
+                  <p className="text-bq-ink3 text-xs">{t('admin.configuration.defaultHint', { key: item.key, default: item.default })}</p>
                 </div>
                 <input {...(item.key === 'DAILY_ENERGY' ? { 'data-testid': 'config-daily-energy-input' } : {})} value={getValue(item.key, item.default)} onChange={e => setValue(item.key, e.target.value)}
-                  className={`w-24 bg-[#0c0e17] border-none rounded px-3 py-1 text-sm text-[#e1e1ef] text-right focus:ring-1 focus:ring-[#e8a832] outline-none ${dirty.has(item.key) ? 'ring-1 ring-amber-500/50' : ''}`} />
+                  className={`w-24 bg-bq-inset border border-bq-hair rounded px-3 py-1 text-sm text-bq-ink text-right focus:ring-1 focus:ring-bq-sapphire outline-none ${dirty.has(item.key) ? 'ring-1 ring-amber-500/50' : ''}`} />
               </div>
             ))}
           </div>

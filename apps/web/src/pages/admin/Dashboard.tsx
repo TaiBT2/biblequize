@@ -25,8 +25,8 @@ export default function AdminDashboard() {
   if (isLoading) {
     return (
       <div className="space-y-6 animate-pulse">
-        <div className="grid grid-cols-4 gap-6">{[1,2,3,4].map(i => <div key={i} className="h-[100px] bg-[#1d1f29] rounded-lg" />)}</div>
-        <div className="grid grid-cols-10 gap-8"><div className="col-span-6 h-[400px] bg-[#1d1f29] rounded-lg" /><div className="col-span-4 h-[300px] bg-[#1d1f29] rounded-lg" /></div>
+        <div className="grid grid-cols-4 gap-6">{[1,2,3,4].map(i => <div key={i} className="h-[100px] bg-bq-inset rounded-lg" />)}</div>
+        <div className="grid grid-cols-10 gap-8"><div className="col-span-6 h-[400px] bg-bq-inset rounded-lg" /><div className="col-span-4 h-[300px] bg-bq-inset rounded-lg" /></div>
       </div>
     )
   }
