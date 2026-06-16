@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './styles/global.css'
 import './styles/tokens.css'
 import { useAuthStore } from './store/authStore'
+import { installSessionExpiryHandler } from './auth/sessionExpiry'
 import { ErrorProvider } from './contexts/ErrorContext'
 import { ToastProvider } from './contexts/ToastContext'
 import RequireAuth from './contexts/RequireAuth'
@@ -95,15 +96,9 @@ const queryClient = new QueryClient({
 // Detect cross-tab localStorage changes for ranked data sync
 initStorageSync()
 
-// Handle session expiry from API client — use authStore.logout() then SPA redirect
-window.addEventListener('auth:session-expired', () => {
-  const PUBLIC_PATHS = ['/', '/login', '/auth/callback', '/practice', '/leaderboard']
-  useAuthStore.getState().logout().then(() => {
-    if (!PUBLIC_PATHS.includes(window.location.pathname)) {
-      window.location.href = '/login'
-    }
-  })
-})
+// Handle session expiry from API client (logout + SPA redirect). Guarded
+// against the re-entrant logout→sync-progress→refresh→expiry request loop.
+installSessionExpiryHandler()
 
 // Initialize auth state on app startup (replaces AuthProvider useEffect)
 useAuthStore.getState().checkAuth()
