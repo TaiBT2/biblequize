@@ -44,12 +44,12 @@ Lý do "C ẩn": `Configuration`+`ExportCenter` = placeholder 0 API; `QuestionQu
   - Checklist: [x] impl · [x] Tầng 1 (BE security 5/5) · [x] Tầng 3 BE FULL (1038/1041 pass; 3 fail = StreakServiceTest **pre-existing, date-dependent, unrelated** — chứng minh bằng stash) · [x] spec (SPEC_ADMIN §4.6 + DOMAIN F-api-17→fixed) · [ ] commit
   - ⚠️ **Pre-existing**: 3 StreakServiceTest fail (TC_STREAK_001/004 + freezeAlreadyUsed) — không do ADM-4; cần task riêng.
 
-- **ADM-5 Dọn route + xoá trang placeholder Tier C**
-  - Status: [ ] TODO · Files: router (`App.tsx`/routes) bỏ route Tier C; xoá `Configuration.tsx` + `ExportCenter.tsx` (placeholder thuần); `QuestionQuality.tsx` → giữ coverage, gộp vào Questions hoặc xoá phần "needs API"; xoá test tương ứng
-  - Làm SAU ADM-1 khi đã chắc không ai dùng. Kiểm grep import trước khi xoá.
+- **ADM-5 Dọn route + xoá trang placeholder Tier C** ✅
+  - Status: [x] DONE (2026-06-16) · Files: `main.tsx` (bỏ import+route config/export), `AdminLayout.tsx` (bỏ PAGE_TITLES), **xoá** `Configuration.tsx`+`ExportCenter.tsx`+2 test; `QuestionQuality.tsx` trim còn coverage (bỏ score giả 72 + 3 card needs-API) + test; `.test-baseline` 1287→1278
+  - Giữ route hidden-but-functional: rankings/events/notifications/early-unlock (có BE thật, chỉ ẩn nav).
   - **Spec impact**: [x] None (xoá dead UI)
   - **Spec strategy**: [x] (c) `[no-spec-impact]`
-  - Checklist: impl · Tầng 1+2 · Tầng 3 · commit
+  - Checklist: [x] impl · [x] Tầng 1 (QuestionQuality) · [x] Tầng 3 FE (127 files/1278 pass) · [x] tsc sạch (không lỗi mới) · [ ] commit
 
 ### Out of scope (defer — ghi nhận, chưa làm)
 - F-api-16/18 wire `AuditService` vào mọi mutation admin (audit trail đầy đủ) — chỉ cần nếu có yêu cầu compliance. Tới lúc đó mới un-hide trang Audit.

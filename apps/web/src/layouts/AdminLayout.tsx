@@ -28,8 +28,6 @@ const PAGE_TITLES: Record<string, string> = {
   '/admin/events': 'Events & Tournaments',
   '/admin/groups': 'Groups',
   '/admin/notifications': 'Notifications',
-  '/admin/config': 'Configuration',
-  '/admin/export': 'Export Center',
   '/admin/question-quality': 'Question Quality',
   '/admin/metrics/early-unlock': 'Early Unlock Metrics',
 }

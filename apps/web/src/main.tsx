@@ -38,8 +38,6 @@ import FeedbackAdmin from './pages/admin/Feedback'
 import AdminDashboard from './pages/admin/Dashboard'
 import GroupsAdmin from './pages/admin/Groups'
 import NotificationsAdmin from './pages/admin/Notifications'
-import ConfigurationAdmin from './pages/admin/Configuration'
-import ExportCenter from './pages/admin/ExportCenter'
 import QuestionQuality from './pages/admin/QuestionQuality'
 import EarlyUnlockMetrics from './pages/admin/EarlyUnlockMetrics'
 import TestPanel from './pages/admin/TestPanel'
@@ -204,8 +202,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="review-queue" element={<ReviewQueue />} />
                   <Route path="groups" element={<GroupsAdmin />} />
                   <Route path="notifications" element={<NotificationsAdmin />} />
-                  <Route path="config" element={<ConfigurationAdmin />} />
-                  <Route path="export" element={<ExportCenter />} />
                   <Route path="question-quality" element={<QuestionQuality />} />
                   <Route path="metrics/early-unlock" element={<EarlyUnlockMetrics />} />
                   <Route path="test" element={<TestPanel />} />

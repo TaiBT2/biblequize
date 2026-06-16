@@ -17,23 +17,17 @@ describe('Question Quality', () => {
     await waitFor(() => { expect(screen.getByText('Chất lượng câu hỏi')).toBeInTheDocument() })
   })
 
-  it('renders quality score', async () => {
-    render(<QuestionQuality />)
-    await waitFor(() => { expect(screen.getByText('72')).toBeInTheDocument() })
-  })
-
   it('renders coverage map section', async () => {
     render(<QuestionQuality />)
     await waitFor(() => { expect(screen.getByText(/Coverage Map/)).toBeInTheDocument() })
   })
 
-  it('renders problem categories', async () => {
+  it('does not render removed placeholder blocks (ADM-5)', async () => {
     render(<QuestionQuality />)
-    await waitFor(() => {
-      expect(screen.getByText(/Quá khó/)).toBeInTheDocument()
-      expect(screen.getByText(/Quá dễ/)).toBeInTheDocument()
-      expect(screen.getByText(/Chưa sử dụng/)).toBeInTheDocument()
-    })
+    await waitFor(() => { expect(screen.getByText(/Coverage Map/)).toBeInTheDocument() })
+    // hardcoded "overall score" + needs-API problem cards are gone
+    expect(screen.queryByTestId('quality-overall-score')).not.toBeInTheDocument()
+    expect(screen.queryByText(/Quá khó/)).not.toBeInTheDocument()
   })
 
   it('handles error', () => {
