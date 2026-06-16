@@ -3,11 +3,10 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (63)
+## Active (62)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
-| 2026-06-16 | Sửa câu hỏi: wrap đáp án + nút đánh giá chất lượng (QEV-1..3) | TODO | [detail](docs/todo/active/2026-06-16-question-edit-quality-tools.md) |
 | 2026-06-12 | Optimize trang chủ (Home): empty-state + hero + bỏ trùng lặp + mật độ (HO-1..7) | TODO | [detail](docs/todo/active/2026-06-12-home-optimize.md) |
 | 2026-06-11 | Redesign 2 màn Quản trò: in-game host (TV presentation) + wrap-up (QTR-1..5) | DONE | [detail](docs/todo/active/2026-06-11-quan-tro-host-screens-redesign.md) |
 | 2026-06-11 | MP refactor BE: RoomModeStrategy + RoomAnswerProcessor (RMS-1..10, no behavior change) | DONE | [detail](docs/todo/active/2026-06-11-mp-refactor-be-mode-strategy.md) |
@@ -86,13 +85,15 @@
 | 2026-04-27 | V3 Tier B/C Quality Expansion: 14 books | IN PROGRESS | [detail](docs/todo/active/2026-04-27-v3-tier-b-c-quality-expansion-14-books.md) |
 | 2026-04-19 | Global audience migration: SQL → JSON + i18n prep | PARTIALLY DONE | [detail](docs/todo/active/2026-04-19-global-audience-migration-sql-json-i18n-prep.md) |
 
-## Archive (52)
+## Archive (54)
 
-> 52 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
+> 54 task DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/) — duyệt folder theo ngày để tra cứu.
 
 <details>
 <summary>Xem inline list (tuỳ chọn)</summary>
 
+- 2026-06-16 — Edit câu hỏi: dùng chung modal cho Questions + Review Queue (QED-1..2) · DONE · [detail](docs/todo/archive/2026-06-16-edit-in-review-queue.md)
+- 2026-06-16 — Sửa câu hỏi: wrap đáp án + nút đánh giá chất lượng tức thời (QEV-1..2; QEV-3 AI defer) · DONE · [detail](docs/todo/archive/2026-06-16-question-edit-quality-tools.md)
 - 2026-06-16 — Admin panel: cắt về core (ẩn Tier C, dashboard số liệu thật, review 1-approval, ban REST, xoá trang placeholder) (ADM-1..5) · DONE · [detail](docs/todo/archive/2026-06-16-admin-panel-trim-to-core.md)
 - 2026-05-23 — E2E tests cho Đấu Nhanh Quick Match (4 modes, smoke+happy-path+per-mode L2; L3 realtime deferred) · DONE · [detail](docs/todo/archive/2026-05-23-e2e-quickmatch-4modes.md)
 
