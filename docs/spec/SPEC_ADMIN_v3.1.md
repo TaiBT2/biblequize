@@ -261,6 +261,8 @@ DuplicateStatus        : enum { NO_MATCH, EXACT_MATCH, SAME_VERSE_ANSWER, SIMILA
 ### 7.1 Mục đích
 Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/verse, difficulty, type, language, count) để feed Review Queue.
 
+> **Anti-guessing rules (QQA-1, 2026-06-16):** `AIGenerationService.buildPrompt` ép luật thiết kế distractor cho câu MCQ — 4 đáp án cùng độ dài + cùng dạng ngữ pháp, distractor là near-miss hợp lý (đúng sách/sai chương…), đảo vị trí đáp án đúng, explanation nêu vì sao đáp án sai. Lý do: seed audit 2026-06-16 thấy 80% câu có đáp án đúng dài nhất (~2.4× distractor) → đoán được không cần kiến thức. Ví dụ JSON dùng `correctAnswer: 2` (không neo vị trí A).
+
 ### 7.2 Endpoints
 | Method | Endpoint | Mô tả | Source |
 |--------|----------|-------|--------|

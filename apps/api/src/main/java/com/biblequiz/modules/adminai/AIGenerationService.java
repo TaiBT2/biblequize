@@ -383,6 +383,27 @@ public class AIGenerationService {
             sb.append("Nội dung đoạn Kinh Thánh:\n").append(scriptureText).append("\n\n");
         }
 
+        // Anti-guessing rules for MCQ. Seed audit (2026-06-16) showed 80% of
+        // questions had the correct answer as the longest option (avg 2.4x the
+        // distractors) — a test-wise player could score ~76% by always picking
+        // the longest. These rules kill that tell at the source.
+        boolean isMc = type.startsWith("multiple_choice");
+        if (isMc) {
+            if (isVi) {
+                sb.append("Quy tắc chất lượng đáp án (BẮT BUỘC):\n");
+                sb.append("- 4 đáp án PHẢI gần bằng nhau về độ dài và cùng dạng ngữ pháp (cùng là cụm danh từ, hoặc cùng là câu). TUYỆT ĐỐI không để đáp án đúng dài hơn rõ rệt — đó là dấu hiệu dễ đoán.\n");
+                sb.append("- Đáp án SAI phải hợp lý kiểu \"đúng một phần rồi sai\": đúng sách/sai chương, đúng sự kiện/sai nhân vật, hoặc hiểu lầm phổ biến. KHÔNG dùng đáp án sai vô lý, buồn cười hay lạc đề.\n");
+                sb.append("- Vị trí đáp án đúng phải NGẪU NHIÊN giữa A/B/C/D — không luôn đặt ở A.\n");
+                sb.append("- explanation phải nêu ngắn gọn vì sao đáp án đúng đúng VÀ vì sao một đáp án sai dễ nhầm lại sai.\n\n");
+            } else {
+                sb.append("Answer quality rules (REQUIRED):\n");
+                sb.append("- All 4 options MUST be similar in length and the same grammatical form (all noun phrases, or all sentences). NEVER make the correct answer noticeably longer — it is an obvious giveaway.\n");
+                sb.append("- Wrong options must be plausible \"close-but-wrong\": right book/wrong chapter, right event/wrong person, or a common misconception. Do NOT use absurd, joke, or off-topic distractors.\n");
+                sb.append("- Randomize the position of the correct answer across A/B/C/D — do not always put it at A.\n");
+                sb.append("- The explanation must briefly say why the correct answer is right AND why a tempting wrong answer is wrong.\n\n");
+            }
+        }
+
         sb.append("Trả về ONLY một mảng JSON hợp lệ (không markdown, không text thừa) với đúng ")
           .append(count).append(" object:\n");
         sb.append("[\n  {\n");
@@ -391,7 +412,8 @@ public class AIGenerationService {
         sb.append("    \"difficulty\": \"").append(difficulty).append("\",\n");
         sb.append("    \"language\": \"").append(language).append("\",\n");
         sb.append("    \"options\": [\"Lựa chọn A\", \"Lựa chọn B\", \"Lựa chọn C\", \"Lựa chọn D\"],\n");
-        sb.append("    \"correctAnswer\": 0,\n");
+        // Example index is deliberately non-zero so the model doesn't anchor on A.
+        sb.append("    \"correctAnswer\": 2,\n");
         sb.append("    \"explanation\": \"giải thích ngắn gọn bằng ").append(langName).append("\",\n");
         sb.append("    \"book\": \"").append(book).append("\",\n");
         sb.append("    \"chapter\": ").append(chapter).append(",\n");
