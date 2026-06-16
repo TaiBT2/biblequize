@@ -31,6 +31,7 @@ import AppLayout from './layouts/AppLayout'
 import AIQuestionGenerator from './pages/admin/AIQuestionGenerator'
 import ReviewQueue from './pages/admin/ReviewQueue'
 import QuestionsAdmin from './pages/admin/Questions'
+import QuestionEditPage from './pages/admin/QuestionEditPage'
 import UsersAdmin from './pages/admin/Users'
 import RankingsAdmin from './pages/admin/Rankings'
 import EventsAdmin from './pages/admin/Events'
@@ -195,6 +196,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route index element={<AdminDashboard />} />
                   <Route path="users" element={<UsersAdmin />} />
                   <Route path="questions" element={<QuestionsAdmin />} />
+                  <Route path="questions/new" element={<QuestionEditPage />} />
+                  <Route path="questions/:id/edit" element={<QuestionEditPage />} />
                   <Route path="feedback" element={<FeedbackAdmin />} />
                   <Route path="rankings" element={<RankingsAdmin />} />
                   <Route path="events" element={<EventsAdmin />} />
