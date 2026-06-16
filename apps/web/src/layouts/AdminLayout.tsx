@@ -3,6 +3,10 @@ import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '../store/authStore'
 
+// Nav trimmed to core + Tier B (ADM-1, DECISIONS 2026-06-16). Hidden Tier C pages
+// (rankings, events, notifications, config, export, question-quality, early-unlock)
+// were placeholder / niche / auto-seeded. Routes still exist (no 404 on bookmark);
+// they're just not surfaced in the sidebar. Un-hide once wired to real data.
 const NAV_ITEMS = [
   { path: '/admin', end: true, icon: 'dashboard', label: 'Dashboard' },
   { path: '/admin/users', icon: 'group', label: 'Users' },
@@ -10,14 +14,7 @@ const NAV_ITEMS = [
   { path: '/admin/ai-generator', icon: 'psychology', label: 'AI Generator' },
   { path: '/admin/review-queue', icon: 'queue', label: 'Review Queue' },
   { path: '/admin/feedback', icon: 'chat_bubble', label: 'Feedback' },
-  { path: '/admin/rankings', icon: 'leaderboard', label: 'Seasons & Rankings' },
-  { path: '/admin/events', icon: 'event', label: 'Events & Tournaments' },
   { path: '/admin/groups', icon: 'groups_2', label: 'Groups' },
-  { path: '/admin/notifications', icon: 'notifications', label: 'Notifications' },
-  { path: '/admin/config', icon: 'settings', label: 'Configuration' },
-  { path: '/admin/export', icon: 'download', label: 'Export Center' },
-  { path: '/admin/question-quality', icon: 'verified', label: 'Question Quality' },
-  { path: '/admin/metrics/early-unlock', icon: 'lock_open', label: 'Early Unlock' },
 ]
 
 const PAGE_TITLES: Record<string, string> = {

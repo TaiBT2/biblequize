@@ -19,18 +19,24 @@ describe('AdminLayout', () => {
     expect(screen.getByText('Admin Panel')).toBeInTheDocument()
   })
 
-  it('renders all 13 nav items', () => {
+  it('renders the 7 core + Tier B nav items', () => {
     renderLayout()
     const items = ['Users', 'Questions', 'AI Generator', 'Review Queue',
-      'Feedback', 'Seasons & Rankings', 'Events & Tournaments', 'Groups',
-      'Configuration', 'Export Center', 'Question Quality']
+      'Feedback', 'Groups']
     for (const item of items) {
       expect(screen.getByText(item)).toBeInTheDocument()
     }
     // Dashboard appears in both nav and TopNavBar h1
     expect(screen.getAllByText('Dashboard')).toHaveLength(2)
-    // Notifications appears in both nav and TopNavBar bell icon
-    expect(screen.getAllByText('Notifications')).toHaveLength(1)
+  })
+
+  it('hides Tier C nav items (ADM-1)', () => {
+    renderLayout()
+    const hidden = ['Seasons & Rankings', 'Events & Tournaments', 'Notifications',
+      'Configuration', 'Export Center', 'Question Quality', 'Early Unlock']
+    for (const item of hidden) {
+      expect(screen.queryByText(item)).not.toBeInTheDocument()
+    }
   })
 
   it('renders TopNavBar with page title and search', () => {

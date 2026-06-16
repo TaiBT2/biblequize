@@ -15,12 +15,12 @@ Lý do "C ẩn": `Configuration`+`ExportCenter` = placeholder 0 API; `QuestionQu
 
 ### Tasks
 
-- **ADM-1 Trim AdminLayout nav xuống 7 mục (Core + B)**
-  - Status: [ ] TODO · Files: `apps/web/src/layouts/AdminLayout.tsx` (`NAV_ITEMS` + `PAGE_TITLES`) · Test: `apps/web/src/layouts/__tests__/AdminLayout.test.tsx`
-  - Bỏ khỏi nav: rankings, events, notifications, config, export, question-quality, metrics/early-unlock. **Giữ route definition** (router) để bookmark cũ không 404 — chỉ ẩn khỏi sidebar. Route cleanup ở ADM-5.
-  - **Spec impact**: [x] None (UI nav only)
+- **ADM-1 Trim AdminLayout nav xuống 7 mục (Core + B)** ✅
+  - Status: [x] DONE (2026-06-16) · Files: `apps/web/src/layouts/AdminLayout.tsx` (`NAV_ITEMS`) · Test: `AdminLayout.test.tsx`
+  - Bỏ khỏi nav: rankings, events, notifications, config, export, question-quality, metrics/early-unlock. **Giữ route + PAGE_TITLES** để bookmark cũ không 404 — chỉ ẩn khỏi sidebar. Route+page cleanup ở ADM-5.
+  - **Spec impact**: [x] None (UI nav only, routes intact)
   - **Spec strategy**: [x] (c) `[no-spec-impact]`
-  - Checklist: impl · Tầng 1+2 (AdminLayout test) · Tầng 3 · commit
+  - Checklist: [x] impl · [x] Tầng 1 (AdminLayout 7/7) · [x] Tầng 3 FE · [ ] commit
 
 - **ADM-2 Dashboard: bỏ panel placeholder, giữ số liệu thật** ✅
   - Status: [x] DONE (2026-06-16) · Files: `Dashboard.tsx` (bỏ 4 panel), `dashboard/QuestionQueue.tsx` (rút còn pendingReview), **xoá** `ActionItems/ActivityLog/SessionsChart/UserRegChart.tsx`, `AdminDashboardController.java` (bỏ actionItems/recentActivity/queue placeholder), `Dashboard.test.tsx`
