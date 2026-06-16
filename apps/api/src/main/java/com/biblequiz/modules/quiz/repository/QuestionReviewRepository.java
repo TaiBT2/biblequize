@@ -4,6 +4,7 @@ import com.biblequiz.modules.quiz.entity.QuestionReview;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -14,6 +15,12 @@ import java.util.Optional;
 public interface QuestionReviewRepository extends JpaRepository<QuestionReview, String> {
 
     List<QuestionReview> findByQuestionId(String questionId);
+
+    /** Wipe all reviews for a question — used when an admin sends it back to
+     *  PENDING, starting a fresh review cycle. Caller must be @Transactional. */
+    @Modifying
+    @Query("DELETE FROM QuestionReview r WHERE r.questionId = :questionId")
+    int deleteByQuestionId(@Param("questionId") String questionId);
 
     Optional<QuestionReview> findByQuestionIdAndAdminId(String questionId, String adminId);
 

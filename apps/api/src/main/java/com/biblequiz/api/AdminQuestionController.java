@@ -3,6 +3,7 @@ package com.biblequiz.api;
 import com.biblequiz.infrastructure.exception.BusinessLogicException;
 import com.biblequiz.modules.quiz.entity.Question;
 import com.biblequiz.modules.quiz.repository.QuestionRepository;
+import com.biblequiz.modules.quiz.repository.QuestionReviewRepository;
 import com.biblequiz.modules.quiz.service.BasicQuizService;
 import com.biblequiz.modules.quiz.service.DuplicateDetectionService;
 import com.biblequiz.modules.quiz.service.DuplicateDetectionService.*;
@@ -18,6 +19,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -42,6 +44,9 @@ public class AdminQuestionController {
 
     @Autowired
     private DuplicateDetectionService duplicateDetectionService;
+
+    @Autowired
+    private QuestionReviewRepository reviewRepository;
 
     @Autowired
     private MessageSource messageSource;
@@ -173,6 +178,7 @@ public class AdminQuestionController {
     }
 
     @PutMapping(path = "/{id}")
+    @Transactional
     public ResponseEntity<?> update(@PathVariable("id") String id, @RequestBody Question body) {
         try {
             log.info("[ADMIN] Update question id={} payload received", id);
@@ -183,6 +189,9 @@ public class AdminQuestionController {
             // active → inactive transition on a Bible Basics row and trip
             // the safeguard before .save() commits.
             boolean wasActive = Boolean.TRUE.equals(q.getIsActive());
+            // Snapshot pre-update review status to detect a *transition* into
+            // PENDING (re-queue), so we only reset the review cycle once.
+            Question.ReviewStatus oldStatus = q.getReviewStatus();
             if (body.getBook() != null) q.setBook(normalizeBookName(body.getBook()));
             if (body.getChapter() != null) q.setChapter(body.getChapter());
             if (body.getVerseStart() != null) q.setVerseStart(body.getVerseStart());
@@ -204,6 +213,17 @@ public class AdminQuestionController {
                     if (q.getApprovalsCount() < 2) q.setApprovalsCount(2);
                 } else {
                     q.setIsActive(false);
+                    // Reverting to PENDING starts a fresh review cycle: clear the
+                    // approval count + prior review rows, otherwise the original
+                    // approver's QuestionReview keeps the question invisible in
+                    // every admin's "needs my review" list (pendingForMe) even
+                    // though it counts in totalPending.
+                    if (body.getReviewStatus() == Question.ReviewStatus.PENDING
+                            && oldStatus != Question.ReviewStatus.PENDING) {
+                        q.setApprovalsCount(0);
+                        int cleared = reviewRepository.deleteByQuestionId(id);
+                        log.info("[ADMIN] Question {} re-queued to PENDING, cleared {} prior review(s)", id, cleared);
+                    }
                 }
             }
             if (wasActive && !Boolean.TRUE.equals(q.getIsActive())) {
