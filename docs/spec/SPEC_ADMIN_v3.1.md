@@ -349,6 +349,7 @@ Generate câu hỏi từ 1 đoạn Kinh Thánh theo cấu hình (book/chapter/ve
 - Approve → `approvalsCount++`; nếu `≥ 1` → `reviewStatus=ACTIVE, isActive=true` (tức ngay phê duyệt đầu tiên).
 - Reject → 1 lần duy nhất → `reviewStatus=REJECTED, isActive=false`.
 - Stats: `pendingForMe, totalPending, active, rejected, myActionsToday, approvalsRequired`.
+- **Edit-in-place (QED-2, 2026-06-16):** mỗi câu pending có nút "Sửa" mở **chung** `QuestionEditModal` (giống tab Questions) với `reviewStatus=PENDING` → reviewer sửa-rồi-duyệt tại chỗ; save qua `PUT /api/admin/questions/{id}`. Câu ACTIVE vẫn chỉ sửa ở tab Questions (review queue chỉ chứa PENDING).
 
 ### 8.4 DTO record (review row)
 ```
