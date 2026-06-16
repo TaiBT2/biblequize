@@ -3,10 +3,13 @@
 > Task tracker. Active TODOs ở dưới. DONE/SUPERSEDED đã chuyển sang [`docs/todo/archive/`](docs/todo/archive/).
 > Format mỗi task file theo template CLAUDE.md §Quy trình quản lý Task.
 
-## Active (62)
+## Active (65)
 
 | Date | Title | Status | Detail |
 |---|---|---|---|
+| 2026-06-16 | Seed distractor rewrite → Haladyna/NBME (VN, pilot Genesis) (SDR-1..3) | TODO | [detail](docs/todo/active/2026-06-16-seed-distractor-rewrite-haladyna.md) |
+| 2026-06-16 | AI Generator: enforce error_type cho distractor (AEQ-1..4) | TODO | [detail](docs/todo/active/2026-06-16-ai-generator-error-type-enforcement.md) |
+| 2026-06-16 | AI Generator: CSS polish đồng bộ admin pattern (AIG-1..5) | TODO | [detail](docs/todo/active/2026-06-16-ai-generator-css-polish.md) |
 | 2026-06-12 | Optimize trang chủ (Home): empty-state + hero + bỏ trùng lặp + mật độ (HO-1..7) | TODO | [detail](docs/todo/active/2026-06-12-home-optimize.md) |
 | 2026-06-11 | Redesign 2 màn Quản trò: in-game host (TV presentation) + wrap-up (QTR-1..5) | DONE | [detail](docs/todo/active/2026-06-11-quan-tro-host-screens-redesign.md) |
 | 2026-06-11 | MP refactor BE: RoomModeStrategy + RoomAnswerProcessor (RMS-1..10, no behavior change) | DONE | [detail](docs/todo/active/2026-06-11-mp-refactor-be-mode-strategy.md) |
