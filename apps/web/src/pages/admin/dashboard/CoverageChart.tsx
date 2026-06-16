@@ -1,12 +1,15 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { useBookName } from '../../../hooks/useBookName'
 
 interface BookCoverage {
   book: string; easy: number; medium: number; hard: number; total: number; meetsMinimum: boolean
 }
 
 export default function CoverageChart({ books }: { books: BookCoverage[] }) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const getBookName = useBookName()
+  const lang = i18n.language === 'en' ? 'en' : 'vi'
   if (!books || books.length === 0) return <div className="text-[#d5c4af]/40 text-sm">{t('admin.dashboard.coverage.noData')}</div>
 
   return (
@@ -29,7 +32,7 @@ export default function CoverageChart({ books }: { books: BookCoverage[] }) {
           const textColor = b.meetsMinimum ? 'text-green-400' : pct >= 50 ? 'text-yellow-400' : 'text-red-400'
           return (
             <div key={b.book} data-testid="coverage-book-bar" className="grid grid-cols-12 items-center gap-4 group">
-              <span className="col-span-2 text-[10px] font-mono text-[#d5c4af] group-hover:text-[#e8a832] transition-colors uppercase truncate">{b.book}</span>
+              <span className="col-span-2 text-[10px] font-mono text-[#d5c4af] group-hover:text-[#e8a832] transition-colors uppercase truncate">{getBookName(b.book, lang)}</span>
               <div className="col-span-9 h-1 bg-[#11131c] overflow-hidden rounded-full">
                 <div className={`h-full ${color} rounded-full`} style={{ width: `${pct}%` }} />
               </div>
