@@ -79,9 +79,11 @@ export default function AppLayout() {
             {isAdmin && (
               <Link
                 to="/admin"
-                className="hidden sm:inline-flex items-center gap-1.5 text-[13px] font-semibold text-bq-amberd hover:text-bq-amber transition-colors"
+                data-testid="topnav-admin-link"
+                className="hidden sm:inline-flex items-center gap-1.5 text-[13px] font-semibold text-bq-amberd bg-bq-amber/10 border border-bq-amber/30 px-3 py-1.5 rounded-full hover:bg-bq-amber/20 transition-colors"
               >
                 <span className="material-symbols-outlined text-lg">admin_panel_settings</span>
+                <span className="hidden lg:inline">{t('nav.adminPanel', { defaultValue: 'Quản trị' })}</span>
               </Link>
             )}
             <NotificationBell />
